@@ -1,92 +1,92 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1018832lfm;
-        Fri, 10 Jul 2020 12:48:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzbs68OxarDGY7gTGZLxsljC70h2DIQJPpDA9dL6w71zZHot/pCBGoQj4f6/Rn8IVHtlSBu
-X-Received: by 2002:a25:e051:: with SMTP id x78mr895524ybg.127.1594410521932;
-        Fri, 10 Jul 2020 12:48:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594410521; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1019829lfm;
+        Fri, 10 Jul 2020 12:50:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJybuObzazH2fU7OIgDMfgvgImWu28cF3/Tf8BmxtLbjC85EJ4mzUSAYAh05L2d9SkkQUjhD
+X-Received: by 2002:a25:2315:: with SMTP id j21mr74378001ybj.251.1594410631770;
+        Fri, 10 Jul 2020 12:50:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594410631; cv=none;
         d=google.com; s=arc-20160816;
-        b=WR1mrafT5ItUMJroQS9tuW7/bazKpbMnkaeh9/Fyqfxd0zOAzZ6OfAeG6MiuDeYQlj
-         umrAtbH7UX/uKUmC9ukDT1Cr5i+puaZ6tcNy0TyS/0Bxv31bI3EwFt3qHH6UFtLtITkM
-         j3j6kmoSNEIQvLwxciQ/PF+zUNRjzghQcw00s2PatAhi179cWsiNj2H1Job2bJHwIBk3
-         nuv/Q8VnT5CXDRZuxjtWTN/8LXqpscFBtuBuBYbEQzLL++kS9uS78ap/V/kHxjprOus1
-         iQhcYKo1anFz2oAbo1qSvXBGcHuhFEcFYzstmmlClaztTgCd30xPhYq/tNOTrNFWY72d
-         uOJQ==
+        b=g6VO1/R0z4TKwDAgVUjKHLNsXKQZF/V7knpMYgv4hwoQRyXATTpyNwRo0MoL0IB9M7
+         2DIHbVt7tow5ExnMHYjrC9kPiLjzbw8KGNwReiftqsQnWQMY+nxtyh8SMzSuHdzqCdUp
+         b23hGNPrHMky2DCtMb4CfavQxiqXpdY3IFGY/+q4x4dLY8kdCOTInHSkNQEnitRNQ9nx
+         k+B3i64UtJV0BBGXfBub0qcIrVEcHXIUvGE/gWrnveklflqJaw4YsESFU0OAMktZOTc8
+         vyiquRQuyfoKJgcuRIqsR5HjkE8raSlS8U331io6jfvJt+mwhcsOPt2QC5cwJNux0HcA
+         cn7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=Xvx0go4Jiy4z8hywdAJfzIOcIxJTgEtu7RtU/HnhQTs=;
-        b=ksbgcT3vHscJQAyGHVGZYrFlKxGzwOqpmlszxNbSB5LHzDSnrZsv8LXs9cyB9u6B17
-         e35WGIKdKyUQZ4WQ2F3rJxvrQs0Rt6jmCsLcOOR/j+Fam3IHW5OrbMg8g1YoOcQiNHD5
-         ECweA/SdBYr2BqX0YEsz4rthjijdR8RRA0/Jx99BEJV61DtJuCv9XHDgOoOVLCHmDPhQ
-         nvTPr7w4Qm2ZMbayyZXkxrLJNy0k8vhzJMr4J7lf4obnLD3nYOSsxE0RlMInlyhlVkFy
-         KwxsCSH0/eSSIB76sHfzKsEO4SKyL30C8oxMHGSFZyf36JXL0Qe30sdqXMwDmnC+eYMh
-         k/DA==
+        bh=bu762bAt6ancOo0D8yW2M5mylzUvStKHJZxz0iX1nX0=;
+        b=mCxdQujPZgeCpRHM7yjmsQ+cAVnuI7KJ2240yCh3c2dOPNNxMFjTNVzigW7V+qG/2w
+         PLwXi6nmd9Jwv8Nia1wTBOgmvCSaaHG6kBrjXs7Cddo4/WoB2XxNiTfgVUwG35IBojd3
+         fW4f9UDxT788K/rOrjgrg299spqqj+PrlRMst9KmZUs2nFvhmzlp6ovAOF/n3v7IRQuk
+         G2z4cBblXffWHj5aVrlVf7HscUPxpPf9GJ2DLb3bWB7w94aJQz650jEXrXnQRolvBaEJ
+         s3ThqRw+6b1P/lqizs6wfDeNxQMdkkcMPPgHO/CWL/oIVQo1X+vz+mezCPx9ONdP/Vdp
+         E27Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JPnlt06o;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BJbkpxcz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m4si6268457yba.121.2020.07.10.12.48.41
+        by mx.google.com with ESMTPS id c64si6579212yba.83.2020.07.10.12.50.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jul 2020 12:48:41 -0700 (PDT)
+        Fri, 10 Jul 2020 12:50:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JPnlt06o;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BJbkpxcz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58770 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:32928 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtz0j-0001Ff-9f
-	for alex.bennee@linaro.org; Fri, 10 Jul 2020 15:48:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34134)
+	id 1jtz2V-0002M9-4l
+	for alex.bennee@linaro.org; Fri, 10 Jul 2020 15:50:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jtz0a-0001FW-No
- for qemu-arm@nongnu.org; Fri, 10 Jul 2020 15:48:32 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:35358
+ id 1jtz2O-0002Lg-PI
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2020 15:50:24 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:41472
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1jtz0Z-0007e3-68
- for qemu-arm@nongnu.org; Fri, 10 Jul 2020 15:48:32 -0400
+ id 1jtz2K-0007qc-Mc
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2020 15:50:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594410510;
+ s=mimecast20190719; t=1594410619;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Xvx0go4Jiy4z8hywdAJfzIOcIxJTgEtu7RtU/HnhQTs=;
- b=JPnlt06oZtXAs8c99K58STkvU6NKDJqcGJf16qeoy57sCGvhIaEDTY09b6tfXXA4hCPJ+E
- vpdYKpDPbuXC0Ow3KYqNUfy6NERvug/q9mnCtn3xOhk1EaLs69NQ7TgPivBbEgnX/px7Qi
- KGxU/Tk4sk+sPrgn+EgOzNuQYkaS4wI=
+ bh=bu762bAt6ancOo0D8yW2M5mylzUvStKHJZxz0iX1nX0=;
+ b=BJbkpxczseZvK7csbgAaOZ/8Az/+k0Y5WGCFZvpVPDsAbVqvhxqt8WCE40Vj4Q15DoLSzI
+ v5RrxemUisf1D51C59e4oSn+d7lp5FX7eBYGmCLg5CoVfyq4my70kVg+um3AoK4U8lBVeh
+ obkyA4VJ6b59KXUSqufMwNfyvZPvUYI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-233-yr5Xt0glOBmFliRxkZnheQ-1; Fri, 10 Jul 2020 15:48:28 -0400
-X-MC-Unique: yr5Xt0glOBmFliRxkZnheQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-147-Dohp9c58PruyWu9q0AX2HQ-1; Fri, 10 Jul 2020 15:50:18 -0400
+X-MC-Unique: Dohp9c58PruyWu9q0AX2HQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 344831083E81;
- Fri, 10 Jul 2020 19:48:27 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CAF6C8027EB;
+ Fri, 10 Jul 2020 19:50:16 +0000 (UTC)
 Received: from localhost (unknown [10.40.208.5])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7125F5C1D3;
- Fri, 10 Jul 2020 19:48:13 +0000 (UTC)
-Date: Fri, 10 Jul 2020 21:48:12 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CF71278A5A;
+ Fri, 10 Jul 2020 19:50:00 +0000 (UTC)
+Date: Fri, 10 Jul 2020 21:49:58 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH v5 18/20] tests/acpi: allow override blkdev
-Message-ID: <20200710214812.69e03818@redhat.com>
-In-Reply-To: <20200707125356.32450-19-kraxel@redhat.com>
+Subject: Re: [PATCH v5 19/20] tests/acpi: add microvm test
+Message-ID: <20200710214958.36978f12@redhat.com>
+In-Reply-To: <20200707125356.32450-20-kraxel@redhat.com>
 References: <20200707125356.32450-1-kraxel@redhat.com>
- <20200707125356.32450-19-kraxel@redhat.com>
+ <20200707125356.32450-20-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
@@ -122,44 +122,50 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FvIpv7ymwo/D
+X-TUID: 9zSF30eFir/B
 
-On Tue,  7 Jul 2020 14:53:54 +0200
+On Tue,  7 Jul 2020 14:53:55 +0200
 Gerd Hoffmann <kraxel@redhat.com> wrote:
 
-> microvm needs virtio-blk instead of ide.
-> 
 > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-
 > ---
->  tests/qtest/bios-tables-test.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+>  tests/qtest/bios-tables-test.c | 15 +++++++++++++++
+>  1 file changed, 15 insertions(+)
 > 
 > diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-> index c315156858f4..24b715dce780 100644
+> index 24b715dce780..b5b98d5c0742 100644
 > --- a/tests/qtest/bios-tables-test.c
 > +++ b/tests/qtest/bios-tables-test.c
-> @@ -72,6 +72,7 @@ typedef struct {
->      const char *variant;
->      const char *uefi_fl1;
->      const char *uefi_fl2;
-> +    const char *blkdev;
->      const char *cd;
->      const uint64_t ram_start;
->      const uint64_t scan_len;
-> @@ -635,9 +636,10 @@ static void test_acpi_one(const char *params, test_data *data)
->          args = g_strdup_printf("-machine %s,kernel-irqchip=off %s -accel tcg "
->              "-net none -display none %s "
->              "-drive id=hd0,if=none,file=%s,format=raw "
-> -            "-device ide-hd,drive=hd0 ",
-> +            "-device %s,drive=hd0 ",
->               data->machine, data->tcg_only ? "" : "-accel kvm",
-> -             params ? params : "", disk);
-> +             params ? params : "", disk,
-> +             data->blkdev ?: "ide-hd");
->      }
+> @@ -1007,6 +1007,20 @@ static void test_acpi_virt_tcg_memhp(void)
 >  
->      data->qts = qtest_init(args);
+>  }
+>  
+> +static void test_acpi_microvm_tcg(void)
+> +{
+> +    test_data data;
+> +
+> +    memset(&data, 0, sizeof(data));
+> +    data.machine = "microvm";
+
+> +    data.required_struct_types = base_required_struct_types;
+> +    data.required_struct_types_len = ARRAY_SIZE(base_required_struct_types);
+I vaguely recall this belongs to smbios tables, does actually microvm provide them?
+
+> +    data.blkdev = "virtio-blk-device";
+> +    test_acpi_one(" -machine microvm,acpi=on,rtc=off",
+> +                  &data);
+> +    free_test_data(&data);
+> +}
+> +
+>  static void test_acpi_virt_tcg_numamem(void)
+>  {
+>      test_data data = {
+> @@ -1118,6 +1132,7 @@ int main(int argc, char *argv[])
+>          qtest_add_func("acpi/q35/dimmpxm", test_acpi_q35_tcg_dimm_pxm);
+>          qtest_add_func("acpi/piix4/acpihmat", test_acpi_piix4_tcg_acpi_hmat);
+>          qtest_add_func("acpi/q35/acpihmat", test_acpi_q35_tcg_acpi_hmat);
+> +        qtest_add_func("acpi/microvm", test_acpi_microvm_tcg);
+>      } else if (strcmp(arch, "aarch64") == 0) {
+>          qtest_add_func("acpi/virt", test_acpi_virt_tcg);
+>          qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
 

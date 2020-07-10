@@ -1,164 +1,246 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp481003lfm;
-        Fri, 10 Jul 2020 01:58:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy9LHDxVf4j4CX/1hZ89qkmXBgkAJu+vqu3aJISBpq0DvLeAVBepeyHIVXYmZbwnHTMDcXC
-X-Received: by 2002:a25:54f:: with SMTP id 76mr23163857ybf.367.1594371490225;
-        Fri, 10 Jul 2020 01:58:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594371490; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp482858lfm;
+        Fri, 10 Jul 2020 02:00:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwpI6lgD7bMUkrkQjfi8vqxenQc5yul5tmcKl6ucd7v649YACB6kQtg3ERycifcjx3iqvzf
+X-Received: by 2002:a05:6902:1002:: with SMTP id w2mr65640011ybt.321.1594371658309;
+        Fri, 10 Jul 2020 02:00:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594371658; cv=none;
         d=google.com; s=arc-20160816;
-        b=qSSqtOm34plyIyNNBwX8GXVucvi8+SNZHhK7e3V+KK28flGj4wlzift9IzDU8O5pG6
-         rQkUsVYQ5/XbkZZ5277pzyDoKtJv8etz5KX2qup+a4BMIoteZCAhD/swfhf96TqszVv/
-         3AycYETyA4UjUJolgkVawQJqaqCpTJSxWeiNLRpdXhPBoHYyvDFZ91mAbwkxuTe+1ZtQ
-         4fnc7snLwFMRB7bSfUcPNazUWtKkoVUTPMsIfCGJgcLRKlvPEs7s0Aeyrlf240+8G6l6
-         GtFLRCaFMbxd2BXzpsf1dBB1DD59I4TplsuXar6Gs/EhV9QtRzsvLY0uEm7jbZMgcXD1
-         KnVg==
+        b=UDzy8pKY8xnr1kdvgdXyVVs3dlaq3GE7YpgRgvdfH+vLTo2ezpmbufArDNmxv2NdIf
+         x5LcibXTibfYLFBYyzLgrZQTW8xIsGv/7cMZSzxXezmI/WfNZtILulCMCxxTxG0NtI/5
+         cmJfWv8+POHlYxYp22fqwcaMNWIs+SJU+9/L0OOX/5igZefNk/xoMpwuKFh4Zu8L10+A
+         mIb1gGYlq8k/a1ALSK3rx8NZLIX9AbD2RVqkP9QCW0uBANrF2dnaF7Ka6OXmi03Fx79L
+         6J9WAUzu98O8805ZicUfQI2Spk4tfs1b5TMvEi757BJonE37lU6w5WQYQtCuTVdhqZvM
+         IAtA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=6UuvXk6F+b+Tv3n3h9p2quCLU/54dxm2IrU0BRnuky0=;
-        b=ITTLL62OGul815i8VLxKAohJCPNnTPwcZIoM1rgA2XGPCasYny2QLxdUWYZ1DOv29q
-         Zit2CDMruTpV+6fkJ7YD3FVgR9UN05OEHF20X83PKPLzwbShQYANNHu/04OIwCFNUqvt
-         Hw62d7h71TcLSLjMCJkSssIvoamiRazhmujlSqqOSXFzsuK+qx0GHuS0a/MYgJZ2iZJz
-         FjtZunDCdYcdUsMmoZYVEZ08JbaHT8mg6VnfK4j8mdOJhXwgKmPWUluecIVk8CENNa53
-         eHCqjSkqyXJ/z9rACxDbRf4D4ESDz/D3+79GSFNvPwUMEHdldVBXI6BzDb+rtFQyLbGr
-         eMhA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Ujs5s6dq+LXHgg/Ip1yjMFs8rA0xMczLbD0RicGjPrc=;
+        b=Mjnj1Ct8plDLBaniWo9hcF9bvU16okscw/ZVPl8DDHnEzX604fqRx+61j5GYuIqAHW
+         jYYe4ONBdU/otWthg7rFXq/eVw3aq+dKELsMM6lXUKElbjJsDPwKk0yPyElRCFfSJlbi
+         vmn8zoGmnsjzO8Lfvm8jbrZsVHRYhg3gX6FMatQk03cvSWjmL5LDDRoG0/ez/budmDyw
+         QpxidlakeW0FjBiK4KVx0DD3UZmt1kzmjWM3ytdgIPpRgS5EDkzVyTnIR1hk2Osgm9kL
+         QSrwgUaJ3Q9ZYah0Keyq96hQd4E5ixDeVMP8V/9ciGrgy2tDPLyLTSMPhvS6XVcdFnj/
+         LejA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="D/3BM+Nb";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="FEtswf/4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 186si5230381ybf.396.2020.07.10.01.58.10
+        by mx.google.com with ESMTPS id g131si4993705ybg.82.2020.07.10.02.00.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jul 2020 01:58:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 10 Jul 2020 02:00:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="D/3BM+Nb";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49600 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="FEtswf/4";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50832 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtorB-0003Uz-LE
-	for alex.bennee@linaro.org; Fri, 10 Jul 2020 04:58:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37840)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jtott-0004HP-Io
+	for alex.bennee@linaro.org; Fri, 10 Jul 2020 05:00:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38768)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mcascell@redhat.com>)
- id 1jtoqS-0002vN-Qz
- for qemu-devel@nongnu.org; Fri, 10 Jul 2020 04:57:24 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:39487
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mcascell@redhat.com>)
- id 1jtoqR-0000F3-C9
- for qemu-devel@nongnu.org; Fri, 10 Jul 2020 04:57:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594371442;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=6UuvXk6F+b+Tv3n3h9p2quCLU/54dxm2IrU0BRnuky0=;
- b=D/3BM+Nb1ESS3hw5jPxkyq5H43eiScWg30fbNwiS1rlXT6KH7z61AL/OllxZ0uYwMyrivr
- wN/pkrhwJ0vZRDhBZ+9v1SMpe52KzyPBoz07+ryoXgfnIdhzpIcrG9aWBq6R64Ia/KQIaI
- awuXMWEN4uyPJgvo7fKj7f1IiSUAayE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-285-0jJaHsoGMbWBjIj1jSPDjA-1; Fri, 10 Jul 2020 04:56:12 -0400
-X-MC-Unique: 0jJaHsoGMbWBjIj1jSPDjA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 48B781B18BDB;
- Fri, 10 Jul 2020 08:56:11 +0000 (UTC)
-Received: from fedora.redhat.com (unknown [10.40.193.187])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7F7E574F48;
- Fri, 10 Jul 2020 08:56:09 +0000 (UTC)
-From: Mauro Matteo Cascella <mcascell@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/net/ftgmac100: Fix integer overflow in ftgmac100_do_tx()
-Date: Fri, 10 Jul 2020 10:54:18 +0200
-Message-Id: <20200710085417.638904-1-mcascell@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jtotk-0004Gn-Ha
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2020 05:00:48 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:37477)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jtoti-0000kE-JP
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2020 05:00:48 -0400
+Received: by mail-ot1-x344.google.com with SMTP id w17so3712487otl.4
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2020 02:00:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Ujs5s6dq+LXHgg/Ip1yjMFs8rA0xMczLbD0RicGjPrc=;
+ b=FEtswf/4qTRuU8KQsh2QCzyn6gbv0vfuaUl9GVYnE8QE6S+YBz4km57AqeA67ZvnE0
+ t0POKr9xF5jaGn5iuZkV/fo75a4qSoERCRG1vbsxOKIOqEQ6hr9zFSHnYw9P9OKwfuV/
+ j+UKnxGM886PUO6+1mQPmh0LyQSXo+HcILuaaipR7NSr6PC/6pMCFAbilhxrhYtYjhL4
+ OwROaVZSjiFhHjpmWMMEevw6Hr+XEPbzJmQBfj0j1HP+HHELPrhiILrWeTLmcYWoeDek
+ hqFdSs1mziurGV1SxVJD+vccn+WJRyq1ZXDgoI5c/HLxsqCxkUM0jYwAWGqB59Lvq343
+ nfXg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Ujs5s6dq+LXHgg/Ip1yjMFs8rA0xMczLbD0RicGjPrc=;
+ b=RAaSBOL6G5HafBEjm2udY9Bms4+I+KIRTRlKU7mXf5RYYkpnpZigWF+WKZIu7ViuKZ
+ FgHItNEoRYNDnEBdEZ3phRBC7EJIbH5+OmEC5kzBujWBV7I43ize4j2EO0gk5KXy05sN
+ UFYWyVDDXfqkWE8jnrGnPJRMZV8BdkpjTMGnSy6zLt8bkhx216mesZ9ZO1sjZX/APDfC
+ xasnJDK3JWhL/f668CCgfiW8ObnBrtQgp2UHhdbzojrivGGQUi4vZg/DvvCZW8QTPaKE
+ rDjkg41NkIu1aflmQn1dIXpoOGf1APC0cPQqO5kqrm6B9mHRTJDzitxmTL7BNTH7Dkd4
+ NLpA==
+X-Gm-Message-State: AOAM531/TobIEA3/1I5+8y8OuYz9CTv5IAIoeJfLNxIQqBkMACMBKnRN
+ MLdgb3mQxS76NMUh1EmcEpBeUIOCkAtpwoMXFd9++g==
+X-Received: by 2002:a05:6830:10ce:: with SMTP id
+ z14mr50533620oto.135.1594371645160; 
+ Fri, 10 Jul 2020 02:00:45 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=mcascell@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/09 22:08:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+References: <20200708141856.15776-1-eric.auger@redhat.com>
+ <20200708141856.15776-6-eric.auger@redhat.com>
+In-Reply-To: <20200708141856.15776-6-eric.auger@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Jul 2020 10:00:34 +0100
+Message-ID: <CAFEAcA84TctpCs7i-o-H2=FY9O6fuCc_A4OnWoRX2bg8attgiQ@mail.gmail.com>
+Subject: Re: [PATCH v3 05/11] hw/arm/smmu-common: Manage IOTLB block entries
+To: Eric Auger <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Mauro Matteo Cascella <mcascell@redhat.com>,
- andrew@aj.id.au, qemu-arm@nongnu.org, clg@kaod.org, ezrakiez@gmail.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qVkmKbegwXkI
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Robin Murphy <robin.murphy@arm.com>,
+ zhangfei.gao@foxmail.com, QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /0nYq8MwQ3Ke
 
-An integer overflow issue was reported by Mr. Ziming Zhang, CC'd here. It
-occurs while inserting the VLAN tag in packets whose length is less than
-12 bytes, as (len-12) is passed to memmove() without proper checking.
-This patch is intended to fix this issue by checking the minimum
-Ethernet frame size during packet transmission.
+On Wed, 8 Jul 2020 at 15:19, Eric Auger <eric.auger@redhat.com> wrote:
+>
+> At the moment each entry in the IOTLB corresponds to a page sized
+> mapping (4K, 16K or 64K), even if the page belongs to a mapped
+> block. In case of block mapping this unefficiently consumes IOTLB
+> entries.
+>
+> Change the value of the entry so that it reflects the actual
+> mapping it belongs to (block or page start address and size).
+>
+> Also the level/tg of the entry is encoded in the key. In subsequent
+> patches we will enable range invalidation. This latter is able
+> to provide the level/tg of the entry.
+>
+> Encoding the level/tg directly in the key will allow to invalidate
+> using g_hash_table_remove() when num_pages equals to 1.
+>
+> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>
+> ---
+> v2 -> v3:
+> - simplify the logic in smmu_hash_remove_by_asid_iova as
+>   suggested by Peter
+> - the key is a struct. We take into account the lvl in the
+>   jenkins hash function. Also the equal function is updated.
+>
+> v1 -> v2:
+> - recompute starting_level
+> ---
+>  hw/arm/smmu-internal.h       |  7 ++++
+>  include/hw/arm/smmu-common.h | 10 ++++--
+>  hw/arm/smmu-common.c         | 66 +++++++++++++++++++++++++-----------
+>  hw/arm/smmuv3.c              |  6 ++--
+>  hw/arm/trace-events          |  2 +-
+>  5 files changed, 65 insertions(+), 26 deletions(-)
+>
+> diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
+> index 3104f768cd..55147f29be 100644
+> --- a/hw/arm/smmu-internal.h
+> +++ b/hw/arm/smmu-internal.h
+> @@ -97,4 +97,11 @@ uint64_t iova_level_offset(uint64_t iova, int inputsize,
+>  }
+>
+>  #define SMMU_IOTLB_ASID(key) ((key).asid)
+> +
+> +typedef struct SMMUIOTLBPageInvInfo {
+> +    int asid;
+> +    uint64_t iova;
+> +    uint64_t mask;
+> +} SMMUIOTLBPageInvInfo;
+> +
+>  #endif
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index 79c2c6486a..8b13ab0951 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -97,6 +97,8 @@ typedef struct SMMUPciBus {
+>  typedef struct SMMUIOTLBKey {
+>      uint64_t iova;
+>      uint16_t asid;
+> +    uint8_t tg;
+> +    uint8_t level;
+>  } SMMUIOTLBKey;
+>
+>  typedef struct SMMUState {
+> @@ -159,12 +161,14 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
+>
+>  #define SMMU_IOTLB_MAX_SIZE 256
+>
+> -SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg, hwaddr iova);
+> +SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+> +                                SMMUTransTableInfo *tt, hwaddr iova);
+>  void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
+> -SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint64_t iova);
+> +SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint64_t iova,
+> +                               uint8_t tg, uint8_t level);
+>  void smmu_iotlb_inv_all(SMMUState *s);
+>  void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
+> -void smmu_iotlb_inv_iova(SMMUState *s, uint16_t asid, dma_addr_t iova);
+> +void smmu_iotlb_inv_iova(SMMUState *s, int asid, dma_addr_t iova);
+>
+>  /* Unmap the range of all the notifiers registered to any IOMMU mr */
+>  void smmu_inv_notifiers_all(SMMUState *s);
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 398e958bb4..d373e30aa5 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -39,7 +39,7 @@ static guint smmu_iotlb_key_hash(gconstpointer v)
+>
+>      /* Jenkins hash */
+>      a = b = c = JHASH_INITVAL + sizeof(*key);
+> -    a += key->asid;
+> +    a += key->asid + key->level;
 
-Reported-by: Ziming Zhang <ezrakiez@gmail.com>
-Signed-off-by: Mauro Matteo Cascella <mcascell@redhat.com>
----
- hw/net/ftgmac100.c | 14 ++++++++++++++
- 1 file changed, 14 insertions(+)
+What's the rationale for putting the level into the hash
+but not the tg?
 
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index 043ba61b86..bcf4d84aea 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -238,6 +238,11 @@ typedef struct {
-  */
- #define FTGMAC100_MAX_FRAME_SIZE    9220
- 
-+/*
-+ * Min frame size
-+ */
-+#define FTGMAC100_MIN_FRAME_SIZE    64
-+
- /* Limits depending on the type of the frame
-  *
-  *   9216 for Jumbo frames (+ 4 for VLAN)
-@@ -507,6 +512,15 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
-         }
- 
-         len = FTGMAC100_TXDES0_TXBUF_SIZE(bd.des0);
-+
-+        /* drop small packets */
-+        if (bd.des0 & FTGMAC100_TXDES0_FTS &&
-+            len < FTGMAC100_MIN_FRAME_SIZE) {
-+            qemu_log_mask(LOG_GUEST_ERROR, "%s: frame too small: %d bytes\n",
-+                          __func__, len);
-+            break;
-+        }
-+
-         if (frame_size + len > sizeof(s->frame)) {
-             qemu_log_mask(LOG_GUEST_ERROR, "%s: frame too big : %d bytes\n",
-                           __func__, len);
--- 
-2.26.2
+>      b += extract64(key->iova, 0, 32);
+>      c += extract64(key->iova, 32, 32);
+>
+> @@ -51,24 +51,38 @@ static guint smmu_iotlb_key_hash(gconstpointer v)
+>
+>  static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
+>  {
+> -    const SMMUIOTLBKey *k1 = v1;
+> -    const SMMUIOTLBKey *k2 = v2;
+> -
+> -    return (k1->asid == k2->asid) && (k1->iova == k2->iova);
+> +    return !memcmp(v1, v2, sizeof(SMMUIOTLBKey));
 
+Won't this also compare the padding at the end of the struct
+(which isn't guaranteed to be the same)? I think just comparing
+all the fields would be safer...
+
+>  }
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

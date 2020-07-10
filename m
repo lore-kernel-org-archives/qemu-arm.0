@@ -1,114 +1,112 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp524401lfm;
-        Fri, 10 Jul 2020 02:53:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxirV+fZ03+BkcFtiIfp+tV5Gh1pSbLB2SIHCRDEHOo1shWl9FPMPrzepwPY8KgSRVR5YbS
-X-Received: by 2002:a25:73c2:: with SMTP id o185mr24486768ybc.169.1594374814487;
-        Fri, 10 Jul 2020 02:53:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594374814; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp533512lfm;
+        Fri, 10 Jul 2020 03:05:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxRmnLti5n4cQui8XhWC6upXnkfTOqyK9uPz5XnCVdLXckXcf+sV8gD87b1z6HoULJDiPWo
+X-Received: by 2002:a25:9302:: with SMTP id f2mr5854058ybo.238.1594375532255;
+        Fri, 10 Jul 2020 03:05:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594375532; cv=none;
         d=google.com; s=arc-20160816;
-        b=OjEfHLHxzbPOp0Jh8KTU1RqNfWsp8/Av77wSvuo3kdbwnxm556Iwht82FNx9PMiu5E
-         c3jhG2W3nTRhqoUZiQ/Pm0PkRCQnyJo9YJta1lDGtKqcsMHQ5dMqRWNxLo9wSkll992L
-         N/aV+0TBjMJBjk1xiEpXQypskrIJmFVqIR9sA+XXXjbi/tNkUezb1lJBoW6WquU7MaA1
-         8BnRqwfkltWLPNgWRU3LKumb0iItdYbIJyZT+2fuuaUGZl6c2H3kdJ5ynJ9X78z2ugr+
-         3RzieShoQM90AjTxcBR/x4ZxWoCNG+5Hpj68pFpgJEkVk1BejxUM6xp2krCnrgVWqTbJ
-         k1hg==
+        b=ABnNaeQ+JSm5BpOX2aqtJH1MeKk69vUitIbcnFK4g3JzHOpNDDpzFf8IHv9yoBirrG
+         xHdwlO4p7qEV1KmfFEl89URyF+yHyeCPBuI0OXWar6BK0ts7ueF8YZ8g/p9pamDJyTop
+         eUtn2Cr0ujI/BfXFdzzdUIpZLoLrc9vokCEJIo9GV4RbD3SaP69iI3e2twwpPXgpzJ91
+         Z96ByXvokW/j4XPuaQIdNkP1Hjqbrzuv2Znc2vJZ97RYJlKSh0zcgGhGqwVdCvNa4xMF
+         YzVOOA9gt0qpDKWqU4qLssxsGplLI18NcAj35QnUXAV/xifTPhGfkUZLgbH78SJFPNu5
+         Slbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=vALe+/4SV7l9BcECU7uRDtzu+oiQ5M/MGBxUCa9Vn5Y=;
-        b=UY3yU49BjPwvDT98lEmFQLqNOrz4A8Bh9FlpE4qhjektWszTwOiOPQhWNRHABlLdZ+
-         y53267DXbNHyBPwNLZ/wfTF+w5U9FnwErklpn+3nA/HtFwBQQvUvFL/jlQLwkre8ueXb
-         wzrCWq6GXeTg59Or27bm7jpn1VcHVFQGTUojzQtzBljHTO/rFZpycha1De2vEWA6JkIJ
-         XFDccBqGH8+DxOqzk0DUlPQx//BjTj7iNtpnJFvVfjVxWL2A6jEkoyOG+FBqztWS3mTV
-         yy6w/Kd6HFeIa99ScWGbc15fpj+MubV7qjxdUGgYllNR/UXi6A0L9L/EEDurW1qcayiJ
-         MKtA==
+        bh=jdoClQRd0kYRbTPnH/mx31fwlDLsWEJ/umer1a6uy3Y=;
+        b=RGtjECrc8Lhtns3sbkG6iLAChHYQaIE8PNyE6cTv77x/dnKqo43laRyBS0vMub5esc
+         DXjmby6cbbdTtGFhTGnFgKluHCd9L3Hj0tXGIRYt/H9s0Q50WJ4gKn6B4J4V3zQg56u3
+         +PVaft0diJ1rsBf0r4s3sjFL6EtoED8Og/jmn6tu3BtVg2atBIL91OISix9XogpY6Txp
+         RX2uBSRUeBoDoV1DOJ2bZzTdT3I5jHfljuRsGPwDGBwPT/O6YiRDelVHakh4PPmFza3D
+         LN2/tPGVE22orvlzgi0hVxR8AoaTYwKEUfpvJC+dCqbyxWVZg8ccaLVk0QbS5vMmW4UB
+         T6vA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MPXQcbWC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AqofYet2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t128si5644170ybf.135.2020.07.10.02.53.34
+        by mx.google.com with ESMTPS id f20si5267875ybj.55.2020.07.10.03.05.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jul 2020 02:53:34 -0700 (PDT)
+        Fri, 10 Jul 2020 03:05:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MPXQcbWC;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AqofYet2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:40856 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57492 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jtpin-0004qI-Tp
-	for alex.bennee@linaro.org; Fri, 10 Jul 2020 05:53:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51172)
+	id 1jtpuN-0003xc-Kd
+	for alex.bennee@linaro.org; Fri, 10 Jul 2020 06:05:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53966)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jtpiZ-0004eU-Pa; Fri, 10 Jul 2020 05:53:19 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:34361)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jtpiY-0007H0-4r; Fri, 10 Jul 2020 05:53:19 -0400
-Received: by mail-wr1-x443.google.com with SMTP id f7so5309226wrw.1;
- Fri, 10 Jul 2020 02:53:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=vALe+/4SV7l9BcECU7uRDtzu+oiQ5M/MGBxUCa9Vn5Y=;
- b=MPXQcbWCrOyRkfaCNLG9IY9cnk7igUHITZLaU2bVm5+T+3PPbliczZnz3F5n7a2kRW
- 0SBVCITg2/bPnOIMJGvc3waUyCsokElyk5uP9bpHlKe1suoeG22a4HVhTkDtOe39Yqyt
- UnYQP4mzWqwuHVEFLeVuQa91FKAED7nW/BmAu8tnQxhk6B+MAEBoTA2SiPGizr/NfkbA
- BRWjN7zoAdJJoVyLCJEA9ml/xJA4EfxOpY98z5AlxxckupV5jeZYpKPrRkziieXKRQJW
- GlTJU6VWeh6AG7TWmWN+ohTLST2zbXiIBJ+y/+cT547W6PrzzW0vERK6qj9BLrty2h7Y
- 1SXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vALe+/4SV7l9BcECU7uRDtzu+oiQ5M/MGBxUCa9Vn5Y=;
- b=BxMQkktPywj/aGyT26CKG1+XE3dQNOT0sb/pbTYs1fLFKnk/DEi1WeeDsNF2QzWV6S
- CRcFg7iM86/YAyW0BqqHvU2EN28H6oc//wpebGNcHpeTYKdtMMoSRoxd+zU1uZQXDJqP
- cmYsl0U/AuXV9Dxmc4WJ6tnc1ulj1CxhQOGQxNx/KkKKhW0UE9dx++ahWztQGhKMxL29
- cLrnvv+1h6XYqYNwMw3wxwkGKwIBmmsBjDakSQw1NoEzUmJnbuDMbx3pnvi2rcO2ntM8
- cwK4IntRCmmmcnhAvBTFGbfQSI3UuqqifGnbROs5OEm2bDSv/gIHuzEJfua3z25M3wXF
- waDw==
-X-Gm-Message-State: AOAM530JgDAuTpt2z2SzJ6jLcGREAd00b2265NUF0033/oYXimAj2IU+
- FUitQL52jeZe/t1wocYpxzM=
-X-Received: by 2002:adf:e6c8:: with SMTP id y8mr71318914wrm.40.1594374795559; 
- Fri, 10 Jul 2020 02:53:15 -0700 (PDT)
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id 69sm9149693wma.16.2020.07.10.02.53.14
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 Jul 2020 02:53:14 -0700 (PDT)
-Subject: Re: [PATCH v2 0/5] hw/i2c: Rename method names for consistency and
- add documentation
-To: qemu-devel@nongnu.org
-References: <20200705224154.16917-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <c287bb80-7057-b5f9-5263-84b7a12790bb@amsat.org>
-Date: Fri, 10 Jul 2020 11:53:13 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jtpuG-0003xB-2s
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2020 06:05:24 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21206
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1jtpuE-0000Ws-0j
+ for qemu-arm@nongnu.org; Fri, 10 Jul 2020 06:05:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1594375520;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=jdoClQRd0kYRbTPnH/mx31fwlDLsWEJ/umer1a6uy3Y=;
+ b=AqofYet2InTs45m6cqFeR8o2g8O99J24KlmMjxXFTK4V6/k1s09Lz9cL8MZslheehb1sC9
+ zmaIbgr3g5gfNxY24gAZby2fcVOp28q7Od6vcBKqGFLjJbyqlwlY/IK9ij9TIJjckQ291l
+ z3PhCW92Hhj3PHzKRcvz8svRmHD0XEk=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-466-syxqKGvbNIGxddEvLqyp8g-1; Fri, 10 Jul 2020 06:05:18 -0400
+X-MC-Unique: syxqKGvbNIGxddEvLqyp8g-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E6C51083E82;
+ Fri, 10 Jul 2020 10:05:14 +0000 (UTC)
+Received: from [10.36.113.241] (ovpn-113-241.ams2.redhat.com [10.36.113.241])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3BE9560E1C;
+ Fri, 10 Jul 2020 10:05:06 +0000 (UTC)
+Subject: Re: [PATCH v3 11/11] hw/arm/smmuv3: Advertise SMMUv3.2 range
+ invalidation
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200708141856.15776-1-eric.auger@redhat.com>
+ <20200708141856.15776-12-eric.auger@redhat.com>
+ <CAFEAcA-zXyzq5ph3U0vFuqRz9=NEq-piw_9gsYbrwg=+g9nbXw@mail.gmail.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <41b72b3d-e0b5-f6b1-69a3-2940246447d7@redhat.com>
+Date: Fri, 10 Jul 2020 12:05:04 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200705224154.16917-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <CAFEAcA-zXyzq5ph3U0vFuqRz9=NEq-piw_9gsYbrwg=+g9nbXw@mail.gmail.com>
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/10 04:36:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,41 +119,50 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Markus Armbruster <armbru@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Jan Kiszka <jan.kiszka@web.de>, Andrzej Zaborowski <balrogg@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Will Deacon <will@kernel.org>,
+ zhangfei.gao@foxmail.com, QEMU Developers <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
+ Robin Murphy <robin.murphy@arm.com>, Rob Herring <robh@kernel.org>,
+ Eric Auger <eric.auger.pro@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oYaWlSOtgJfl
+X-TUID: xA4wl9WwHVw2
 
-Corey, this series is now fully reviewed :)
+Hi Peter,
 
-On 7/6/20 12:41 AM, Philippe Mathieu-Daudé wrote:
-> In commit d88c42ff2c we added 2 methods: i2c_try_create_slave()
-> and i2c_realize_and_unref().
-> Markus noted their name could be improved for consistency [1],
-> and Peter reported the lack of documentation [2]. Fix that now.
+On 7/10/20 11:47 AM, Peter Maydell wrote:
+> On Wed, 8 Jul 2020 at 15:20, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> Expose the RIL bit so that the guest driver uses range
+>> invalidation. Range invalidation being an SMMU3.2 feature,
+>> let AIDR advertise SMMUv3.2 support.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > 
-> Since v1:
-> - Addressed Markus review comments
-> - Added Markus/Corey R-b tags
+> I think that to advertise SMMUv3.2 we would also need to
+> set the IDR3.BBML field to something non-zero. That means
+> we need to analyze our implementation of the caching of page
+> table structures to see if we need to do anything different
+> (per the behaviours and guarantees described in section 3.21.1
+> of the spec).
+you're right. I need to further study this feature.
+
+I felt difficult to find out which features are mandatory for a given
+revision number.
 > 
-> [1] https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg07060.html
-> [2] https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg08997.html
+> Alternatively, we could take advantage of the language
+> in section 2.5 that says that a v3.x implementation is
+> allowed to implement features from v3.(x+1), and just
+> set the RIL bit while leaving AIDR advertising us as v3.1.
+Indeed :-)
+
+Thank you for the review!
+
+Eric
 > 
-> $ git backport-diff -u -v1
-> Key:
-> [----] : patches are identical
-> [####] : number of functional differences between upstream/downstream patch
-> [down] : patch is downstream-only
-> The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
+> thanks
+> -- PMM
 > 
-> 001/5:[----] [--] 'hw/i2c/aspeed_i2c: Simplify aspeed_i2c_get_bus()'
-> 002/5:[0006] [FC] 'hw/i2c: Rename i2c_try_create_slave() as i2c_slave_new()'
-> 003/5:[0004] [FC] 'hw/i2c: Rename i2c_realize_and_unref() as i2c_slave_realize_and_unref()'
-> 004/5:[0006] [FC] 'hw/i2c: Rename i2c_create_slave() as i2c_slave_create_simple()'
-> 005/5:[0012] [FC] 'hw/i2c: Document the I2C qdev helpers'
+

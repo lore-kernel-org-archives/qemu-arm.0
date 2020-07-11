@@ -1,110 +1,109 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1867191lfm;
-        Sat, 11 Jul 2020 12:37:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwuBmpD0rTKbHh/ciEmMYl+pHUpzBntyBxjwO0ppWuEeHleU93th4EpDbsVbjOo+2QBB3VR
-X-Received: by 2002:a25:a104:: with SMTP id z4mr14689460ybh.40.1594496237538;
-        Sat, 11 Jul 2020 12:37:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594496237; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1932140lfm;
+        Sat, 11 Jul 2020 14:42:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykTnl6anbmE6GXu3jvL9pzrLs0b6sAB+s9PMF6an4J8JeEN+ZsxAsBU9Hcq6D+xQ+SHUgl
+X-Received: by 2002:a25:4c81:: with SMTP id z123mr41108838yba.309.1594503755311;
+        Sat, 11 Jul 2020 14:42:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594503755; cv=none;
         d=google.com; s=arc-20160816;
-        b=Iu48kn8pbbCtKmyw34VgNbl8URi70+MEAA4RG2gf1cVvbZjzFGiv8jftsivLVAGb4H
-         kB2aIah30TvEM2PfWZDltyJSNCjy+N8wP+Cwm7kTipCg0LQr2fl7F/2qVttl4nSOrLDY
-         d1aPI1ViF22iMOYyyaK15cthWvPkulvKEtnBNWsk4rkUBxXZbXl15+gopfUtNMT2jNW1
-         7f7dGMka5gjt+C1BC6CsJd8SYy8K2vjn3DITUdkeeG9T4wpaZy0A+NtVf0veqrjorzhO
-         k9xIvYL1iwhPXxKgT8y/alqyl4kNw0Ys6PHeZb2ZHz95zxQIzF7hX/x57koL1Xf96i93
-         fudg==
+        b=xrxxyxwMqZE7gQuPGWGU2S9+KTb1wc4+W94w41nAINWDelMWIdg7MSxJKdIA9pdzF7
+         3/syYzpbzUjmFj3O4kpZS5vDKIU/DOhw4UBpwUseNiYzOXg9fsP0/l8Avq0oLW/KZEn8
+         Ye7w/emRWnytjEhT9mviGa9TQf+i7J+1hSYNBAwjOqqxTMcpzXW6rgGLsX3Na3WTsUiD
+         X2Q5N9VM4T68e1A71dLtffdAq4j6xc0gP8Vo2y1ai/tS6zGthnVb1hFlqRXFVyl507BL
+         PWt+RAYbRpDiClKJG702u1/uy/njHjnYIF2NS1WBpUuMsNDCjVUegPHoT8gXwLp5mXwt
+         9K6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=Z3R1VQZdSXlkeFkzd/p5ikGikrtCov/0TjMgvUm1x8o=;
-        b=Y8Xs3glrhOdxPe+Cy58FDS9T5+noN6lmK5wHBJlcQgdGOf7nJplnU4b+t+i9e0CbjI
-         Pgtf5L2zUkfEmP8cexcIvUG+Oq2dwKbAb3gFleN9MQF2CssaTc2Z8WmkanWDsRMTe4PU
-         I+uoXVgHPj3ryrtjlGVxBhKIbkRH+lHmCgNcPV8S82L5NZZGq7RgmSuNGRp85iHku48g
-         mOm//Ub7HJJ9uo5eD4K5mAKE+AxwZg9/84sueUyyb8JWMsFKPWqgnCmSChLPeZvxzqGJ
-         rj88OTpqDFXLHMkJo7RBhlNMzf/Vv92NDu3tws0RgNlGFpQWiqMBCqaHIQWZHq7855Ac
-         SCJA==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=WAnM+AEg28RYA/0yqxUHhCYjcfhg0sGRVBIvk6M3zVM=;
+        b=CWO+A5Ts12CBZVn150piWRo1lIPQwEt2WruLxmUrfvUctsqyHhvv9M0toZ98eGfTWc
+         RnKJge2t0BdqQ/rLxc1v9yBgCPeZODNjCHGG/LCJHYp2Gz7EIDmSZ2JTQgh2SNlAkJak
+         M0lbBpF2xrMpeiGaunH2dtZtlsaPG6OWrwsI41yKOGUxAnxuBfOTlJEbtQCAP3rGWeoU
+         EedaMUeRSS9KzPNR39bskZsmSpqcvtXdoN7LLgDReG7Anjxq21csr0LZgAU1N/iottX9
+         kdm/HYUNp9UDzdgCJ5mZw6zLzN1nCPu2OSg7vHPzdKHCjY22s6PQER+3v35zm1yHIR8k
+         q7sg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IeFf5Q7M;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xYOVdjbx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v132si8497682yba.355.2020.07.11.12.37.17
+        by mx.google.com with ESMTPS id w14si12802929ybt.100.2020.07.11.14.42.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Jul 2020 12:37:17 -0700 (PDT)
+        Sat, 11 Jul 2020 14:42:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IeFf5Q7M;
+       dkim=fail header.i=@linaro.org header.s=google header.b=xYOVdjbx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55616 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53172 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juLJE-0000pu-VD
-	for alex.bennee@linaro.org; Sat, 11 Jul 2020 15:37:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57404)
+	id 1juNGU-0002Gu-MU
+	for alex.bennee@linaro.org; Sat, 11 Jul 2020 17:42:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1juLJ8-0000pj-I0
- for qemu-arm@nongnu.org; Sat, 11 Jul 2020 15:37:10 -0400
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:37808)
+ id 1juNGN-0002Go-Pi
+ for qemu-arm@nongnu.org; Sat, 11 Jul 2020 17:42:27 -0400
+Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:54131)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1juLJ6-0006M4-60
- for qemu-arm@nongnu.org; Sat, 11 Jul 2020 15:37:10 -0400
-Received: by mail-pl1-x642.google.com with SMTP id p1so3620870pls.4
- for <qemu-arm@nongnu.org>; Sat, 11 Jul 2020 12:37:07 -0700 (PDT)
+ id 1juNGM-0003UP-08
+ for qemu-arm@nongnu.org; Sat, 11 Jul 2020 17:42:27 -0400
+Received: by mail-pj1-x1044.google.com with SMTP id cm21so4151442pjb.3
+ for <qemu-arm@nongnu.org>; Sat, 11 Jul 2020 14:42:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:from:to:cc:references:message-id:date:user-agent
+ h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Z3R1VQZdSXlkeFkzd/p5ikGikrtCov/0TjMgvUm1x8o=;
- b=IeFf5Q7MRLknhmumBM/wNuNYzcDNijrZFIONtY9SEp+z6FmL9bgEo0Fc3q+ltvAsyU
- rOU+g4vatLvpri7erdhVZjcvKiAC9iIgM8h+pNZG9lAXvCuZD1Rgmv9IVu/BDD/wpw5G
- LJd/Za7thKIzYPeAyj7O/h9kvBffWI97AsH65I6BMW3czEmvSTnOGIWVK4XJY+a5YcE6
- et+J868lRFcCYeETOT2o7g7S0iWY/33ZeoRT+4nwACIQudaZi0EYqg0Pz9KDlydd031S
- npJ1Qs9pDh4Uc9i6N0fxDA+kFYds4twCqGdOJpc78FVRyg1AdfH4GhdAKheP5/AGJmuk
- kQGA==
+ bh=WAnM+AEg28RYA/0yqxUHhCYjcfhg0sGRVBIvk6M3zVM=;
+ b=xYOVdjbxhN/lKp45Dbc6suFqMijEw5NTs0SFzH2Cgx3udjTGF8GYAnItqYOga74aU3
+ ZvAJmWxaJt0NWs7pzvlaWhHpAvFpNj5uRmdEu33Zfx28Svvj+t2lHJ6KT/YmBmiodSTo
+ u+jAqHvOtrAzg5vVlV22X9nGtn5JO8pSn8hu9iHRerQFx45yTRSPlb47NJ4P6mTcThWD
+ fU/a0vNYyO4r4HEcyFr7JiwO/6Gzeqk4bkMgls4g+voYgb4+pWPl4yf+G9877xo+gBXg
+ anpNLFX5lE8arA3Q1vqQ2AydiTmtP2Wwi4EPZVjDe4ZXRcTp1WywPtBzqZI21nnPjhq3
+ 9EKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:from:to:cc:references:message-id:date
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=Z3R1VQZdSXlkeFkzd/p5ikGikrtCov/0TjMgvUm1x8o=;
- b=A2hEN5NTs6Vu3XP/fZfBTrtIAlyCpHAQVqg8mDz7vuCdBDCnMtGUDRl5AXCej35/vW
- c741SGr0sJERzEeIlICxxc2mLL9pl8dw1RuzZ7eLooiioLhf2aUkoJ8DK6V10J9gozBg
- eMVIA5yrzWrVxLyfGepyiGbmWALjwI9EtrjZurYpQViYRZ2t98/xrGBVrE0It+Eoa84Q
- wbaGYMiAK5fE+wX4JANsV5H2ODkJj8wbNktKwR34F2UYUS7fJAY8cSRJV5x9WrscjIHZ
- eU+lUM0hyBd2a21wp9XSOoLywq48HCVE/+mwWwmlUTMbg7XTlABy1bGWlqqGzF7Q1/FT
- l1+w==
-X-Gm-Message-State: AOAM532xvrucERtNiXpW8GHbwtXvHqZQEuweYpJ9L6B2lip7tjTpVxe3
- Va0unHDzHw8gVSHRSdycHxe0Ng==
-X-Received: by 2002:a17:90b:46d7:: with SMTP id
- jx23mr12751736pjb.191.1594496226539; 
- Sat, 11 Jul 2020 12:37:06 -0700 (PDT)
+ bh=WAnM+AEg28RYA/0yqxUHhCYjcfhg0sGRVBIvk6M3zVM=;
+ b=mFlWlvhn/GDVpZJYYPYuo4276y/mTzN/ArG6bMDYb8J2zy98GHQfJHQ3mloOoF5JBr
+ 6dWcaPJaVlL66T7YdkVjPGDhpdS6mBm6UcSJyE15NbkkU7t9TSoZsSpEtm/E8Ar+3fHB
+ 2weHbalEER6q/OrCW8jle05YgzPE+bpD72Bz/vBZxucKNVhwUKk20Yqbp2LacW5aiG4p
+ DMqiDGcx3kqLHBN0F1/su8qi9CNXWrq26e1DOIky+1RHa5OqgxyXJl8tvl0SMhhBdd+j
+ 1yikVHoc0qTM3PuhLJGclXp4QksFOxP5L/iBWhRFtSZyIuBS57KeJmmicETJhykpwbv/
+ 0VZw==
+X-Gm-Message-State: AOAM533j1nDPrzy6+h6ldtWX1EDWuxOckFDSNOFVnbWcpvi0KWPVJh77
+ VuL04zrJjx9MX2fiIoAOhPZygA==
+X-Received: by 2002:a17:902:b204:: with SMTP id
+ t4mr66587134plr.132.1594503744193; 
+ Sat, 11 Jul 2020 14:42:24 -0700 (PDT)
 Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id b8sm9631736pjm.31.2020.07.11.12.37.05
+ by smtp.gmail.com with ESMTPSA id m1sm9290690pjy.0.2020.07.11.14.42.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 11 Jul 2020 12:37:05 -0700 (PDT)
-Subject: Re: [PATCH v2 06/17] linux-user: Do not use guest_addr_valid for
- h2g_valid
-From: Richard Henderson <richard.henderson@linaro.org>
+ Sat, 11 Jul 2020 14:42:23 -0700 (PDT)
+Subject: Re: [PATCH v2 01/17] tcg: Introduce target-specific page data for
+ user-only
 To: Peter Maydell <peter.maydell@linaro.org>
 References: <20200605041733.415188-1-richard.henderson@linaro.org>
- <20200605041733.415188-7-richard.henderson@linaro.org>
- <CAFEAcA_ca4vAxB-2qfsXVUNPUdyFTJQtcBdkegn4ub8SOiR2TA@mail.gmail.com>
- <d6c82116-8b33-716f-e76b-ecad2f24267d@linaro.org>
-Message-ID: <70dca59c-927b-3fbb-9625-146594c6c245@linaro.org>
-Date: Sat, 11 Jul 2020 12:37:03 -0700
+ <20200605041733.415188-2-richard.henderson@linaro.org>
+ <CAFEAcA-qybDD6GWYPFB6tMfTb9Kj+_bCKCxPyDYMZBr8EwbDmQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <d5659aa8-1e51-455f-c3be-379e3f224817@linaro.org>
+Date: Sat, 11 Jul 2020 14:42:21 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.8.0
 MIME-Version: 1.0
-In-Reply-To: <d6c82116-8b33-716f-e76b-ecad2f24267d@linaro.org>
+In-Reply-To: <CAFEAcA-qybDD6GWYPFB6tMfTb9Kj+_bCKCxPyDYMZBr8EwbDmQ@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -113,7 +112,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,24 +129,77 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
  Stephen Long <steplong@quicinc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h4xiMlTl+zmx
+X-TUID: 9iJm9AnEYOG+
 
-On 7/11/20 12:30 PM, Richard Henderson wrote:
->> The old implementation returns true for
->> HOST_LONG_BITS <= TARGET_VIRT_ADDR_SPACE_BITS
->> (because there's a different definition of guest_addr_valid() there)
->> but this one does a range check even in that case.
+On 6/25/20 9:20 AM, Peter Maydell wrote:
+> On Fri, 5 Jun 2020 at 05:17, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> This data can be allocated by page_alloc_target_data() and
+>> released by page_set_flags(start, end, prot | PAGE_RESET).
+>>
+>> This data will be used to hold tag memory for AArch64 MTE.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
 > 
-> It's part and parcel with patch 1, wherein we are in fact attempting to limit
-> the guest address space to GUEST_ADDR_MAX.
+>> @@ -289,6 +295,8 @@ int walk_memory_regions(void *, walk_memory_regions_fn);
+>>  int page_get_flags(target_ulong address);
+>>  void page_set_flags(target_ulong start, target_ulong end, int flags);
+>>  int page_check_range(target_ulong start, target_ulong len, int flags);
+>> +void *page_get_target_data(target_ulong address);
+>> +void *page_alloc_target_data(target_ulong address, size_t size);
 > 
-> That's why I put patch 1 first, so the behaviour change happens there.
+> Could we have a doc comment for any new function that's got
+> global scope, please?
+> 
+>>  #endif
+>>
+>>  CPUArchState *cpu_copy(CPUArchState *env);
+> 
+>> +void *page_alloc_target_data(target_ulong address, size_t size)
+>> +{
+>> +    PageDesc *p = page_find(address >> TARGET_PAGE_BITS);
+>> +    void *ret = NULL;
+>> +
+>> +    if (p) {
+>> +        ret = p->target_data;
+>> +        if (!ret && (p->flags & PAGE_VALID)) {
+>> +            p->target_data = ret = g_malloc0(size);
+>> +        }
+>> +    }
+>> +    return ret;
+> 
+> Can a PageDesc validly have p->target_data != NULL but
+> p->flags with PAGE_VALID not set ?
 
-Ho hum.  I've just realized the messages are sorted oddly in the mbox here, and
-that the behaviour change is actually coming later in patch 7.
+No.  But we can be called for a page that is not mapped (returning NULL) and
+can be called for a page that already has associated data (returning the old
+value).
 
-So, to summarize, I am intending a change here, it's just a matter of sorting
-things so that one thing happens at a time.
+> It's not clear to me why for a !PAGE_VALID page which
+> has target_data already we return that pointer but
+> if it doesn't have any we don't allocate: either
+> "always allocate" or "always return NULL for non-valid pages"
+> would seem more self-consistent.
+
+I was expecting a non-valid page to have no data.  I will rearrange this to
+
+    ret = NULL;
+    if (p->flags & PAGE_VALID) {
+        ret = p->target_data;
+        if (!ret) {
+            p->target_data = ret = g_malloc0(size);
+        }
+    }
+
+which is probably clearer.
+
+>> +        /* FIXME: Move page flags and target_data for each page.  */
+> 
+> Is this something we're going to address later in the patchset?
+
+I had not, but I should.  Will fix.
 
 
 r~

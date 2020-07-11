@@ -1,116 +1,123 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1177383lfm;
-        Fri, 10 Jul 2020 16:51:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJznY113G8BPc419wqOHQ9Iit7Ks0qsNNmbabqnGPW8DU0eoyzqNpPLD1b5ccxjS0LoCt54u
-X-Received: by 2002:a25:bb07:: with SMTP id z7mr64783445ybg.343.1594425063333;
-        Fri, 10 Jul 2020 16:51:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594425063; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1419892lfm;
+        Fri, 10 Jul 2020 23:46:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxpBlsx/PO0LapWjLDn4NCoGdTbvao+SmDcIntLZ/DUz4eRDkclggh7WNrBvjZPZR8S6Yw4
+X-Received: by 2002:a25:81c2:: with SMTP id n2mr94377976ybm.520.1594449999974;
+        Fri, 10 Jul 2020 23:46:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594449999; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kcr7A4BJYSVDvZHQdZF+gi1ZV8JLlWs3KzJJkgeZNtCgsy3INAeS/MhUKjfESLVAPF
-         NUHup3nlZpt5YbVUz470+DVshRb3cboKiFCvnDC5pUgBJ2WD4dwCdrtO5c+o/XOzqiRL
-         SpCOfnaPQF1lAkxAYZvEAfZYhtH4tFxra5m/jFm8LRekhNC1VOo9lpWIPtkJ2+TpH0be
-         n5NwPdLgyyryDE6CjI35iwSA9+yTwH3MMPVUS02KbZIQHsHSkWri+HZnihCH/THWCGOa
-         QkDM0icPOYu43n79bVudM5LNBQAkFCI9uKTrUZ0hRhl9MupvkDF8pkFxsR1czNrnEWNe
-         lJig==
+        b=iM2itY8VNHd4J4rYBLXbXsr0quR7hge1zdNchwOmDbh34trTd6envj6iVeVhm3i/JQ
+         QKcEUatFp6cxFZ9Q/Wdtq0t+OW5axj0p8UVIuhADValiFXxvWoO9yCJFeGStWiQ8SqER
+         x9omEstNpcRl7+HLlsEB6iFQSPMCqkEYZRiOy7BEdumDE0GpwNduEc726EKxcUEgacIJ
+         SoyiM7Dit1TkXwohC951O8Xmjcrut9L3IxcZNoZftz6jsAJ3D55ni9v2srQt4aU+Mh8U
+         crj6VxCdZ0/RygQE94aJzcooh/lfFpb6+QlEZe4IM2K9L/AfOCGrYy1e9GUoYLwoLmPs
+         6g9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:user-agent
-         :in-reply-to:content-transfer-encoding:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=EZEzUt7O1ol2Sg+jnXkibkoEj5o4nuVGVLftXtZDboc=;
-        b=wyICeisUWYCb6kYS/rKzDtIUutNA+2FU+FritBlBT+DXuTvvVsc4c39Pya7izV6Kg5
-         kzx4QGxnE4dSMlnQFee5uau0M/UWnhsqBupMK1PCsey3dl2NcLNYo3qB6kGIxOlJVbIi
-         u/phH/T/0dl7TD2eeP1j7vIBs4H3fLrDlJos5zQv/8wGOewnk6yH5mIZGbNRwRAb5AyX
-         0Wgzm92SNC7B11sLtylVi3rvOYEEOlrjj1eRQCovih+YIvZpj6SNa+hvZlr+a0sW62W1
-         LciOeJkj5HItDyqbTXd2Ka9if2hSZ8uD2Fg49wYVTP3mFDovrvRdhZzCzk9X4IJDT0pM
-         T9mQ==
+        bh=GPX/+VTRYVIvBeoLayuBrN/vbPHRw0Wh7B1SdAcqqmA=;
+        b=DvVaiPy+vs85szK7lL4nB7uMLmgdE/FdaAW1HqUWrjCICwJc4lswjKvjb55TUQ0mIT
+         Ry9TX1MCXWhvRbWnFri2jkv2h/PqOSKhEQfkt4M/8RrPA8aWFt+5vvgg0QrBrg+m+Iex
+         fIDQgQeMo+IHpkrLtCBY60ET4YzywAKPqROwQHoghegGhqhg3nbURCievZSz7Nnjj7K/
+         HFT3YaDS+dLiL56/IG6jU0j7drIMmC1+PQqW3NmHyEKGVcU4HWCR4ZFFKmHanbTuIy6U
+         neKfM99H1f3eDC14PL0KiQnpyzR9ESwP/+sQwp3asH7DBA4ckhswldO/XpVhRtCVpCOM
+         3pWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="XDco+x/h";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@google.com header.s=20161025 header.b=aoLxkPxV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 128si7036667ybq.226.2020.07.10.16.51.03
+        by mx.google.com with ESMTPS id z6si4057494ybk.292.2020.07.10.23.46.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jul 2020 16:51:03 -0700 (PDT)
+        Fri, 10 Jul 2020 23:46:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="XDco+x/h";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54464 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=aoLxkPxV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:37686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ju2nG-0005AH-OM
-	for alex.bennee@linaro.org; Fri, 10 Jul 2020 19:51:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52302)
+	id 1ju9HT-0008NA-AE
+	for alex.bennee@linaro.org; Sat, 11 Jul 2020 02:46:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45346)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1ju2mg-0004Ol-Hu; Fri, 10 Jul 2020 19:50:26 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:39748)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1ju9HL-0008Mh-A2
+ for qemu-arm@nongnu.org; Sat, 11 Jul 2020 02:46:31 -0400
+Received: from mail-vk1-xa43.google.com ([2607:f8b0:4864:20::a43]:33550)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <tcminyard@gmail.com>)
- id 1ju2me-00035G-TD; Fri, 10 Jul 2020 19:50:26 -0400
-Received: by mail-oi1-x241.google.com with SMTP id w17so6184383oie.6;
- Fri, 10 Jul 2020 16:50:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:date:from:to:cc:subject:message-id:reply-to:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=EZEzUt7O1ol2Sg+jnXkibkoEj5o4nuVGVLftXtZDboc=;
- b=XDco+x/hfNHB0P2uWyPJGW/c9o6tXTvig9zHCsCFnCA9dnlDYEAhxKlU1LHhhKxpfR
- GTU59cwQwccu+OCIau0C38LE7gcGMBNZyOF+lvLh9UrVd7M/cqOi8WUVhGNRa0wNim+g
- d4xUji7jh4M9HmW2hWerRQTZWhc+VnSeKFZPFFcJ90FbYJ1woIz3WJTveAtuQBopWma8
- NfaQWRtt2L0UN6KvcbgiuKP301jilRKrAWyUOTHFcApVmwSQya/ZgRwpl49yINR1RlFz
- 1Hqzzc6PNpM8SGg5pDr90CxDdj2LUv/xcE4sskWqR8hGryp0XdFjJdYIuNdTMXs/MCgk
- gmTw==
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1ju9HJ-00044r-Ay
+ for qemu-arm@nongnu.org; Sat, 11 Jul 2020 02:46:31 -0400
+Received: by mail-vk1-xa43.google.com with SMTP id r7so1719144vkf.0
+ for <qemu-arm@nongnu.org>; Fri, 10 Jul 2020 23:46:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=GPX/+VTRYVIvBeoLayuBrN/vbPHRw0Wh7B1SdAcqqmA=;
+ b=aoLxkPxV2gCFkADN52staENtMVnpWKaCrj0S7bNGpH/ZxjFbnk5b1x1nRUZ6hzAt+I
+ 7n27ZCOYC/m9/NusJvqs9vNLdMnIiDWf/ppM8e9TnFlqT337U83lRmCqe6HHQ1MSHYnb
+ opP6iMPLmN/WRop/2cXiI3S3gicrtOP8ah7mb0fWxKsBRFpLoroPXI/5VdypELiGPoIr
+ urPqIHhe6SxUKOhhxJaqiE5Ro4S6CPWsMkf5h5oTLx+wUQGS7qJqvRHD1vAoT4B/RT2n
+ 1zboCB2u8cP6zZqt34Xezb4Fq27n+3eXIohHwVFTrv6YBlhC+3+Xaz+IUyue5HOgvqee
+ OgXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:from:to:cc:subject:message-id
- :reply-to:references:mime-version:content-disposition
- :content-transfer-encoding:in-reply-to:user-agent;
- bh=EZEzUt7O1ol2Sg+jnXkibkoEj5o4nuVGVLftXtZDboc=;
- b=qdPKiWUJWbiCN53YAAsyCavmP1bO8yWjH+NzYl1jO9vd8T/G8XThK/gvG9qrIxySuB
- JQkO0tuoSzPV2QoHu5IiFLnVUU/UWpulDYfH9/eIobjqsisGSgjBwBZeZQABHVo2GOLX
- /5lhsAyp3jy/6MwLbyT26PUIhC9z4aijs37VKWf3hmxLH/ef8CGId0WXoeinvdrpYrey
- kntnJag0eWLb04sJQfW7LNJqouu4MVPuLN4joAU5Zhe6+mJYufATU1lpt8oCBOD//AZB
- 1epIIEPn8EBVzURApzF0K/QPc9ZkLaGeQLv16sfu6C9OJeRXxl14S3QvMKJrOlsElr6Q
- EZGQ==
-X-Gm-Message-State: AOAM533WpGjnE67xm3dMcN8LvAKFKFEgNkXn+WM1CyNqHxVoDDA+q2CV
- WgRD2ykEipSJ6pLSV/OoCA==
-X-Received: by 2002:a54:4595:: with SMTP id z21mr6027517oib.157.1594425022256; 
- Fri, 10 Jul 2020 16:50:22 -0700 (PDT)
-Received: from serve.minyard.net ([47.184.146.204])
- by smtp.gmail.com with ESMTPSA id 95sm1367866ott.6.2020.07.10.16.50.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 10 Jul 2020 16:50:20 -0700 (PDT)
-Received: from minyard.net (unknown [IPv6:2001:470:b8f6:1b:5810:6df8:8a6e:345])
- by serve.minyard.net (Postfix) with ESMTPSA id DBBE9180714;
- Fri, 10 Jul 2020 23:50:19 +0000 (UTC)
-Date: Fri, 10 Jul 2020 18:50:18 -0500
-From: Corey Minyard <minyard@acm.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v2 0/5] hw/i2c: Rename method names for consistency and
- add documentation
-Message-ID: <20200710235018.GC3235@minyard.net>
-References: <20200705224154.16917-1-f4bug@amsat.org>
- <c287bb80-7057-b5f9-5263-84b7a12790bb@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=GPX/+VTRYVIvBeoLayuBrN/vbPHRw0Wh7B1SdAcqqmA=;
+ b=rxdMWhrbx62HweoLhEN2hQwSBwlGYJXel0zfIm+zGCwoKscOZXM+O2qqb+HDhPEfmt
+ Pt4JakPyWjdisYeOX8oJqKm4ImL+IFS64zvB4Z5LDzsdfTau+DPICqfCjxC8KlnQ5+2e
+ SDP4cObkkJUMOtboQwgrzTWyCeRTnQnIrR3cHg+3b2l4NSk88Mk4bqgDyws3Abxa9qSR
+ jpWmsw4AlCbSaF/i+h1HhzGPWlpXZtjmpPY++uYwIJsfK+MiEtC2WQXBSPfOV/k3anZx
+ V6vx/Q5/TTnZTITVcW+Mk9vQNxGezFgKa33+4KaPY+Jcd1EofeR0pVrNwvwEhKqKpPWp
+ m8Sw==
+X-Gm-Message-State: AOAM533onjp0V7MeIkzAAct0Na8ko5mEaEDWYZEKjthSiMTm3YVBRw6x
+ D4Zhon4pC904UYu3xYW4303HwZQin49iuoiRS7bBRQ==
+X-Received: by 2002:a05:6122:130b:: with SMTP id
+ e11mr21570579vkp.20.1594449986033; 
+ Fri, 10 Jul 2020 23:46:26 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <c287bb80-7057-b5f9-5263-84b7a12790bb@amsat.org>
-User-Agent: Mutt/1.9.4 (2018-02-28)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
- envelope-from=tcminyard@gmail.com; helo=mail-oi1-x241.google.com
+References: <20200709003608.3834629-1-hskinnemoen@google.com>
+ <20200709003608.3834629-2-hskinnemoen@google.com>
+ <2fe8ea5e-56de-f57f-6146-8355125daa7f@amsat.org>
+ <CAFQmdRYx99PpWz6bftCvBR7=YRftD_WNex_A9aoDaeRg=4tsCw@mail.gmail.com>
+ <bd2972b0-0684-e379-6d66-16ceb62deade@amsat.org>
+ <CAFQmdRbHXhd9-HUQP5ET=JQEnQ3FMCQBHajwZrP5d7=iCc0tzA@mail.gmail.com>
+ <ee8bc620-6d58-98ef-1c53-a8687282af50@amsat.org>
+ <CAFQmdRa3u_Sst0i6e2whoJcYau15gVQubhZHmm+z26SD8G8uCQ@mail.gmail.com>
+ <c19401c1-f629-a95f-c8a5-60df78e41061@amsat.org>
+In-Reply-To: <c19401c1-f629-a95f-c8a5-60df78e41061@amsat.org>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Fri, 10 Jul 2020 23:46:14 -0700
+Message-ID: <CAFQmdRafRXYJpZvxbmjiMhNNmQ97GqQREvrYvWWdOPWfYTQq-g@mail.gmail.com>
+Subject: Re: [PATCH v5 01/11] hw/misc: Add NPCM7xx System Global Control
+ Registers device model
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
+ CS20 KFTing <kfting@nuvoton.com>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a43;
+ envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa43.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, PDS_OTHER_BAD_TLD=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001,
+ USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,52 +130,147 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: minyard@acm.org
-Cc: Corey Minyard <cminyard@mvista.com>,
- Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Jan Kiszka <jan.kiszka@web.de>, David Gibson <david@gibson.dropbear.id.au>,
- Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +ZTPRcINKp4N
+X-TUID: Fbbx3DiGDM8I
 
-On Fri, Jul 10, 2020 at 11:53:13AM +0200, Philippe Mathieu-Daudé wrote:
-> Corey, this series is now fully reviewed :)
+On Fri, Jul 10, 2020 at 2:31 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> On 7/9/20 7:42 PM, Havard Skinnemoen wrote:
+> > On Thu, Jul 9, 2020 at 10:24 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
+t.org> wrote:
+> >> On 7/9/20 7:09 PM, Havard Skinnemoen wrote:
+> >>> On Thu, Jul 9, 2020 at 9:23 AM Philippe Mathieu-Daud=C3=A9 <f4bug@ams=
+at.org> wrote:
+> >>>> On 7/9/20 8:43 AM, Havard Skinnemoen wrote:
+> >>>>> On Wed, Jul 8, 2020 at 11:04 PM Philippe Mathieu-Daud=C3=A9 <f4bug@=
+amsat.org> wrote:
+> >>>>>> On 7/9/20 2:35 AM, Havard Skinnemoen wrote:
+> >>>>>>> Implement a device model for the System Global Control Registers =
+in the
+> >>>>>>> NPCM730 and NPCM750 BMC SoCs.
+> >>>>>>>
+> >>>>>>> This is primarily used to enable SMP boot (the boot ROM spins rea=
+ding
+> >>>>>>> the SCRPAD register) and DDR memory initialization; other registe=
+rs are
+> >>>>>>> best effort for now.
+> >>>>>>>
+> >>>>>>> The reset values of the MDLR and PWRON registers are determined b=
+y the
+> >>>>>>> SoC variant (730 vs 750) and board straps respectively.
+> >>>>>>>
+> >>>>>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> >>>>>>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> >>>>>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+> >>>>>>> ---
+> [...]
+> >>>>>> Maybe use HWADDR_PRIx instead of casting to int?
+> >>>>>
+> >>>>> Will do, thanks!
+> >>>>
+> >>>> Glad you are not annoyed by my review comments.
+> >>>>
+> >>>> FYI your series quality is in my top-4 "adding new machine to QEMU".
+> >>>> I'd like to use it as example to follow.
+> >>>>
+> >>>> I am slowly reviewing because this is not part of my work duties,
+> >>>> so I do that in my free time before/after work, which is why I can
+> >>>> barely do more that 2 per day, as I have to learn the SoC and
+> >>>> cross check documentation (or in this case, existing firmware code
+> >>>> since there is no public doc).
+> >>>
+> >>> Your feedback is super valuable, thanks a lot. I really appreciate it=
+.
+> >>
+> >> OK I'll continue, but might not have time until next week.
+> >> After I plan to test too.
+> >
+> > OK, I'll try to post a v6 before the weekend, unless you prefer that I
+> > hold off until you've reviewed the whole series.
+>
+> I don't mind, if it is not too much overhead on your side.
+>
+> What I noticed on the QEMU community is:
+>
+> - If a series reviewed the same day and is almost done except
+>   a single bugfix, it is OK to repost the same day, so the
+>   maintainer is likely to queue it directly.
+>
+> - If there are various reviews, and you do gradual improvements,
+>   it is OK to repost every 3 days. Else reviewers tend to skip/
+>   postpone your series for later.
+>
+> - Pinging for review before 1 week passed is stressing reviewers,
+>   except in case of critical security bug (CVE) or during freeze.
+>
+> - Series with integrated test provided are usually reviewed first.
 
-Ok, I've pulled this in and added the extra reviews that came in.  I'll
-work on getting it out Monday.
+This is very helpful, thanks.
 
-Thanks,
+> >> What would be useful is an acceptance test (see examples in
+> >> tests/acceptance/), using the artefacts from the link you shared
+> >> elsewhere:
+> >> https://openpower.xyz/job/run-meta-ci/distro=3Dubuntu,label=3Dbuilder,=
+target=3Dgsj/lastSuccessfulBuild/artifact/openbmc/build/tmp/deploy/images/g=
+sj/
+> >
+> > Yes, tests are definitely on my radar. I'm working on SPI flash
+> > qtests. I haven't had much success with avocado yet, but I'll keep
+> > trying (perhaps using docker to control the environment more tightly).
+>
+> This might help:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg704907.html
 
--corey
+Thanks, I got it working now.
 
-> 
-> On 7/6/20 12:41 AM, Philippe Mathieu-Daudé wrote:
-> > In commit d88c42ff2c we added 2 methods: i2c_try_create_slave()
-> > and i2c_realize_and_unref().
-> > Markus noted their name could be improved for consistency [1],
-> > and Peter reported the lack of documentation [2]. Fix that now.
-> > 
-> > Since v1:
-> > - Addressed Markus review comments
-> > - Added Markus/Corey R-b tags
-> > 
-> > [1] https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg07060.html
-> > [2] https://lists.gnu.org/archive/html/qemu-devel/2020-06/msg08997.html
-> > 
-> > $ git backport-diff -u -v1
-> > Key:
-> > [----] : patches are identical
-> > [####] : number of functional differences between upstream/downstream patch
-> > [down] : patch is downstream-only
-> > The flags [FC] indicate (F)unctional and (C)ontextual differences, respectively
-> > 
-> > 001/5:[----] [--] 'hw/i2c/aspeed_i2c: Simplify aspeed_i2c_get_bus()'
-> > 002/5:[0006] [FC] 'hw/i2c: Rename i2c_try_create_slave() as i2c_slave_new()'
-> > 003/5:[0004] [FC] 'hw/i2c: Rename i2c_realize_and_unref() as i2c_slave_realize_and_unref()'
-> > 004/5:[0006] [FC] 'hw/i2c: Rename i2c_create_slave() as i2c_slave_create_simple()'
-> > 005/5:[0012] [FC] 'hw/i2c: Document the I2C qdev helpers'
-> 
+> > Since the 5.1 release is frozen now, I might post some followup
+> > patches before this series is merged, e.g. tests, bootrom
+> > submodule+blob, more peripherals, etc. Is it preferable to keep this
+> > series frozen (modulo API updates) since you spent a lot of time
+> > reviewing it, and post the new stuff separately, or is it better to
+> > add new patches to the end of the series and resend the whole thing?
+>
+> If you rework a peripheral, you need to reset the Reviewed-by/Tested-by
+> tags. If you add new peripherals, you only need to reset these tags on
+> the SoC patch. I'm fine either way, I use git-backport-diff to see the
+> SoC changes easily:
+>
+> https://github.com/codyprime/git-scripts/blob/master/git-backport-diff
+
+I've been adding new peripherals incrementally after the basic SoC
+support patch. Is that OK to do without resetting the tags?
+
+But it's more likely that I'll add other things than peripherals next,
+i.e. bootrom and tests.
+
+> >
+> >> But these are apparently not stable links (expire after 30 days?).
+> >
+> > Sorry, I'm too ignorant about Jenkins to know. I'll see if I can
+> > figure something out.
+>
+> What I do in that case is take the binary used for the test,
+> write a comment and push it in a stable branch to my own repo:
+> https://github.com/philmd/qemu-testing-blob/ and use the stable
+> url in the test.
+>
+> We know QEMU emulation worked with this particular binary at some
+> point. We want to avoid regressions in QEMU, so let's keep testing
+> what we know worked. We don't want to track 2 bugs at a time (one
+> in the updated guest and one in QEMU).
+
+Good point. I'll see if I can upload images to github. I might fork
+the openbmc repository and attach binaries to a github release, to
+make it clear where the binaries came from.
+
+I accidentally broke my test image and had some trouble recreating it,
+so I ended up reworking my various hacks a bit. The good news is that
+I got most of them turned into proper bug fixes that I can send
+upstream.
+
+It might take a little longer than I said previously, but I'll try to
+include acceptance tests in the next series.
+
+Havard

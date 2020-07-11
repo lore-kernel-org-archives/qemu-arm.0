@@ -1,95 +1,108 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1833427lfm;
-        Sat, 11 Jul 2020 11:33:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqd9/4O6EcMa12rqK20X33rzydjyIZnts6kaQHtVmX25XFtBfwSLDwfnn5Zq+Or18syBbS
-X-Received: by 2002:a25:c606:: with SMTP id k6mr74055895ybf.0.1594492417860;
-        Sat, 11 Jul 2020 11:33:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594492417; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1861543lfm;
+        Sat, 11 Jul 2020 12:26:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0DXcLMIQdk03bGKfQHsJrpV+efUSz3cDBnWamW2MI0LCFEhS+VVq7asWbIUNBlyVYCsaV
+X-Received: by 2002:a25:640c:: with SMTP id y12mr17632783ybb.195.1594495594550;
+        Sat, 11 Jul 2020 12:26:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594495594; cv=none;
         d=google.com; s=arc-20160816;
-        b=qpJQFhJf3r1HVVGxXcEfHNRhzO1+12DMNZk+N+wn8JIjXbUUVJWKRro4kLXFFYvhh8
-         fcR6pHvWRmNzignTvM2YZ52OtHhJmlb7cl+GTxfAJDS8u1Z0oxZY+4DPp7fkLR4B63nw
-         W3z6GtpRV6QO7A6vxW+MWreiHJmHFgz4mg+HBgXkrRVTwWspAi+Fpzvmd0EZdlAGn8Af
-         B5FCit4pqpkkxfUOvCSJvXS3jlpbrQ7yiC8Pc5PqbwJaB2Yjbca4Z4JjXF1U+VqqDWsZ
-         /Ih4bCujV4nBXKCpZ8vweDNra+prPwdY/CY1HoXWgn9MCoCYLiyvc/3n5YDH7oAv7LzV
-         69hg==
+        b=vgvxAKnXs4286TJxN1yUNcrpU6AZ9n6Sog/8lEZEdoA+jaou4fik1M8/6zoERmwUtK
+         MQrSP/JcaiFEELY43U1aQt+2LStgSVlbv+YWaiOAGvV0B2gsKZik8G3Psu3+tU50DwRx
+         86nNk9YogUcaLKbMaq5x39bSrPxdWqgEDyOPrL0qi419WeDx/MbTYdwZT2mK96IGxIlH
+         1BxCBN0knootXJsBCnXKfnZOEKZYWFWdvYsFFQto6miqA042ox72OGL8L7PidtryUJdf
+         yCKBaArH7rPXROxlypJd9oU1Tm2yV6nKmi5JsAaBs7WfN2rrov2w49BVTl8DbHSA7sIx
+         HgDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=+aYABooH1OESbaFVdKpN9uc4H4yGymKyz0M2s5rGCSQ=;
-        b=lH/B74j5l9Zf0aNQ/eEiRuuVO39+aTn65y/ju4H6ZCejxT6RoWt4VU9mSxuG2TATUQ
-         ygsPPBy5Nl8xL98cwUDrg0xcptOdmZfeHn2O8WCUpnUaN021kKc8hWt8BFFHAE2HHE51
-         0vXkRCP6KNQ6uue9ADSN0Ds97M2m0u0tTTSWQFn8Yzy9ciBQqX1PC8yCAaSbD5GmQgz6
-         iOZ8R2jdtyU2iX2Axxkb+IelFKV7ynTbJLscNHqQywwWXKc6lxpd8mt9+gDDq87s8SpL
-         EdE2bsXnbAvn7XawzsJCt8qvqxhDswGo7q3YfreHt5LK9aJXllZMpuRi7ZXxxLI3bwvX
-         5bLw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ELV1gz6aQk79GXpizeiqgDsyWHiirmL7xY5jfjzqePA=;
+        b=0wTou5aouAlb4KBTvn706HrLFixDUF709XJeO9Jjrorbc0AbM9mrEgv/gOARgrxhIY
+         HtAzQVMC68Cp0B6lFHMF+Ro5ktzpwDqMtkbmWve50ieoNuivq0UTWe3mDklAMK51QUMt
+         jZSe5uGwj+UJkaIkd282mMyU1pTbL/j/bJ9u4Z3auzTARf/v0xsYESqoyz9jHt+zL970
+         TzUlubflBS9PwJozvdaTEVE1x6TH6NcsqxeC138dJbagi1J2PRIuSdFJTY/6WA8GrhUf
+         8Oe73K4p0DdzGwJTZaLnz+NPzKqYeTKJEqKEl8/sQ1OpWedGqReFOalsD9ONMDZuKZTe
+         kp7A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dpRVPyNi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Bu2z4BoN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c5si8933444ybn.72.2020.07.11.11.33.37
+        by mx.google.com with ESMTPS id k4si9345895ybo.454.2020.07.11.12.26.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Jul 2020 11:33:37 -0700 (PDT)
+        Sat, 11 Jul 2020 12:26:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=dpRVPyNi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=Bu2z4BoN;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58380 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50578 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juKJd-0003vz-8j
-	for alex.bennee@linaro.org; Sat, 11 Jul 2020 14:33:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48716)
+	id 1juL8r-0006ix-W5
+	for alex.bennee@linaro.org; Sat, 11 Jul 2020 15:26:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1juKJU-0003vE-Jv
- for qemu-arm@nongnu.org; Sat, 11 Jul 2020 14:33:28 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:35489)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1juL8l-0006ir-1y
+ for qemu-arm@nongnu.org; Sat, 11 Jul 2020 15:26:27 -0400
+Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37771)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1juKJR-0008Bs-6f
- for qemu-arm@nongnu.org; Sat, 11 Jul 2020 14:33:27 -0400
-Received: by mail-ot1-x343.google.com with SMTP id d4so6636220otk.2
- for <qemu-arm@nongnu.org>; Sat, 11 Jul 2020 11:33:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1juL8j-0005DF-1d
+ for qemu-arm@nongnu.org; Sat, 11 Jul 2020 15:26:26 -0400
+Received: by mail-pl1-x641.google.com with SMTP id p1so3613049pls.4
+ for <qemu-arm@nongnu.org>; Sat, 11 Jul 2020 12:26:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+aYABooH1OESbaFVdKpN9uc4H4yGymKyz0M2s5rGCSQ=;
- b=dpRVPyNi2j324OhciYBIvF09TmZgPkdr0anKtdgtCUpx1tmiuKPe4ZXwBnAiF86m3M
- RXBBENJ2NrLt3wQ5EIJoOuFVCy/Nl0A9OmLI6pDjnl/iLAQ3Eq1xy+5SV4TMEAR2FN6b
- VCjc1yQ39ZEH870XHMlwGS8aBmQ9p+4PJmXArtBu6hkmOFpa/KXQQTt/LLobtzqvFnug
- 7UKErtBINJel63cOQ1bWgAWpHqkrn3L92KWEUlRhIAnuURlEmxMUKr9kNWyQDwh4phkw
- dJsPxGMLW1PhOPW6CjzFeNrtxyO8C7uzE6LKSKOS9AR2tSf0RV5zV+6x6wQATjnSQnfZ
- auwQ==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ELV1gz6aQk79GXpizeiqgDsyWHiirmL7xY5jfjzqePA=;
+ b=Bu2z4BoNYBhMYrxcwOPo14yHCurpeS6rXBYfPYBGAxzr8cTd6I3BUw63MMhLqnQMv/
+ T3SsPczJuQJaZQSO3nfFo9b6KgQjsffudmfAs+GqLLWx9HWMCLkWX3M4JNXWYIOobVox
+ ms39KVOHw2C+i5ui1AaUhEfEhO509EKz0eqS8wY3ZF6skWvcPQvKCypB/7wFaHDU733g
+ 0GKFwKoenntWdHCDD0HfGhbZTxtninBj6UU5v11YWSJFnKAHQg5WftQzxcrGuelndshA
+ 7WSGYnJAnSn0UGn4fmOgB55A9ymb37gYIEfcBrK/atDRBMEl5qB3/PXW1KclpeMezjl4
+ vrDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+aYABooH1OESbaFVdKpN9uc4H4yGymKyz0M2s5rGCSQ=;
- b=CzIWiOl2ba6ResvGXPMTjoeDdBe25plwKjr1jfGD7F87X1wZLynlzAsnG5HxUJ3JlE
- AuV7v5aHQVYwDg6UdOy/yEcbB9a8HfN2tCRH8TASZoTf9u6gegRH6WI6Hyt9kwXDHqWT
- xAjkUKvikDv9NsIlbUR+lQYRrGHA/UqUst0FrqMytx+sDxg3xPaQtQ/ETzMCi5eN3Rna
- wfRYp2Il2xx1WEi30uUxZ6CErEB29wu7RBUJ3lut/pq4yVYvMA63Y0z4Xr/3TtOWjGbF
- 0IpTcgolpQkb38gySwMzyix0mARMfJjpOrg6HhRaVfh5YxWtFfLe1ZWjpFcecvBpFODD
- Ax1Q==
-X-Gm-Message-State: AOAM531mYn3QHf7dDTUfXifwqmAvU2+zoJA05WwnwQhwXRJE5fK4tya8
- fvC4wyMs8Rt+HBQI6GIQ9xFyfczDDXnLL2FmpvYjuFQd
-X-Received: by 2002:a05:6830:10ce:: with SMTP id
- z14mr56355260oto.135.1594492403004; 
- Sat, 11 Jul 2020 11:33:23 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ELV1gz6aQk79GXpizeiqgDsyWHiirmL7xY5jfjzqePA=;
+ b=tvJwfiaFsTEnuwPcv7reVPMW58RAtTZsX74CdJYgRRfBcilfSWAiiIJ8HTWNAuoU2W
+ NE9QLpg9U/mGGMd5li2uXHdH1dvlOnZAYZNtig1tbA2OvxfzS4mrKgYFqlc1K6GEcNW1
+ vgtPoTfDNtT7PN8yyG2rFE8pp7O5dusrYKltiGUK9CZ+UADbTSkJ+mwWUfrUQmyr39X3
+ tIW8G/jSkcW4UqjDqJbjpSQCTWwCYBvF6J9Up6Q4v/HSIUWkpfmD6f3C6dL+ZAqyNQVo
+ IN//RYTMLOPf3pMBk1J5MiKUrT0lhMoYjeyB2eSM4lK2tjRc7gyt2iQ/mOj6PQXwnXF4
+ svUQ==
+X-Gm-Message-State: AOAM533u5h5aBPpWY1QvVsazjJsB09MumxfoKJ9Dfs7TdlmOwcMwfLsA
+ 7n6a+W0VkgVO7y1HvBes8yiv2Q==
+X-Received: by 2002:a17:90a:7487:: with SMTP id
+ p7mr11992578pjk.233.1594495582794; 
+ Sat, 11 Jul 2020 12:26:22 -0700 (PDT)
+Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
+ by smtp.gmail.com with ESMTPSA id o18sm11004030pfu.138.2020.07.11.12.26.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 11 Jul 2020 12:26:22 -0700 (PDT)
+Subject: Re: [PATCH v2 07/17] linux-user: Fix guest_addr_valid vs reserved_va
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200605041733.415188-1-richard.henderson@linaro.org>
+ <20200605041733.415188-8-richard.henderson@linaro.org>
+ <CAFEAcA97vFoBSwmFkD6bpObD9P6W8J2iowKhk7mT32+xjte-4w@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <5230c3dd-6294-3de6-fea9-416f3dc84cba@linaro.org>
+Date: Sat, 11 Jul 2020 12:26:19 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.8.0
 MIME-Version: 1.0
-References: <20200628214230.2592-1-peter.maydell@linaro.org>
-In-Reply-To: <20200628214230.2592-1-peter.maydell@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 11 Jul 2020 19:33:12 +0100
-Message-ID: <CAFEAcA_yJZ7TF=xq-q6kpdX965iOZOS6B9kh16EM9Z0zCkVXdA@mail.gmail.com>
-Subject: Re: [PATCH 0/2] hw/arm/palm.c: Fix Coverity issue CID 1421944
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
+In-Reply-To: <CAFEAcA97vFoBSwmFkD6bpObD9P6W8J2iowKhk7mT32+xjte-4w@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -111,30 +124,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Stephen Long <steplong@quicinc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gqdqODL6oAxL
+X-TUID: 74/iqkTtqlw9
 
-On Sun, 28 Jun 2020 at 22:42, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> As for spitz and tosa, fix the Coverity issue CID 1421944 which
-> points out that memory returned from qemu_allocate_irqs() is leaked
-> by encapsulating the GPIO handling into a simple device.
-> As with the other series, detabify the file first.
->
-> thanks
-> -- PMM
->
-> Peter Maydell (2):
->   hw/arm/palm.c: Detabify
->   hw/arm/palm.c: Encapsulate misc GPIO handling in a device
->
->  hw/arm/palm.c | 111 ++++++++++++++++++++++++++++++++++----------------
->  1 file changed, 77 insertions(+), 34 deletions(-)
->
+On 6/25/20 9:37 AM, Peter Maydell wrote:
+> On Fri, 5 Jun 2020 at 05:17, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> We must always use GUEST_ADDR_MAX, because even 32-bit hosts can
+>> use -R <reserved_va> to restrict the memory address of the guest.
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>  include/exec/cpu_ldst.h | 9 ++++-----
+>>  1 file changed, 4 insertions(+), 5 deletions(-)
+> 
+> Doesn't this run into trouble with the arm32 commpage?
+> The reserved_va is set there to 0xffff0000 (stopping
+> at the commpage), but the addresses within the commpage
+> themselves are still valid guest addresses.
 
-ping for code review, anybody?
+Not really.  The commpage is Special, and gets allocated differently.  Normal
+binaries work, e.g. our standard busybox ls.
 
-thanks
--- PMM
+I would imagine the corner case that doesn't work is that you couldn't issue a
+syscall to the commpage, e.g.
+
+    write(1, 0xfffff000, 1);
+
+because the commpage is now outside the normal address space.
+
+But given that it only matters with an explicit -R command-line option, this
+falls into the Well Don't Do That Then category. This is a generic option, and
+works as expected with other 32-bit guests.
+
+
+r~

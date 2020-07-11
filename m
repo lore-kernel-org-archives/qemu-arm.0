@@ -1,123 +1,108 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1419892lfm;
-        Fri, 10 Jul 2020 23:46:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxpBlsx/PO0LapWjLDn4NCoGdTbvao+SmDcIntLZ/DUz4eRDkclggh7WNrBvjZPZR8S6Yw4
-X-Received: by 2002:a25:81c2:: with SMTP id n2mr94377976ybm.520.1594449999974;
-        Fri, 10 Jul 2020 23:46:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594449999; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1530386lfm;
+        Sat, 11 Jul 2020 03:10:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwl7PvD9gkcuzY5fCL7Mei5I4AD0f9eRqAFP6qQOCcMn3OVvJCUnPPmha3rLFb+qzFl5rAZ
+X-Received: by 2002:a25:8802:: with SMTP id c2mr29197723ybl.444.1594462256050;
+        Sat, 11 Jul 2020 03:10:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594462256; cv=none;
         d=google.com; s=arc-20160816;
-        b=iM2itY8VNHd4J4rYBLXbXsr0quR7hge1zdNchwOmDbh34trTd6envj6iVeVhm3i/JQ
-         QKcEUatFp6cxFZ9Q/Wdtq0t+OW5axj0p8UVIuhADValiFXxvWoO9yCJFeGStWiQ8SqER
-         x9omEstNpcRl7+HLlsEB6iFQSPMCqkEYZRiOy7BEdumDE0GpwNduEc726EKxcUEgacIJ
-         SoyiM7Dit1TkXwohC951O8Xmjcrut9L3IxcZNoZftz6jsAJ3D55ni9v2srQt4aU+Mh8U
-         crj6VxCdZ0/RygQE94aJzcooh/lfFpb6+QlEZe4IM2K9L/AfOCGrYy1e9GUoYLwoLmPs
-         6g9w==
+        b=LGWnivv6XDyzHyOmvuE2EqUO1nByDPboah3r4RXW+E5/sfNaqV/WyuV5HYSictibQY
+         v0TLuER8+2UOn7ht0xsvUEMsWpAIP4MaUvLM+CN0WYWscRr8Enz+Hn6HDT4iZ6D/Fp4t
+         i0UEPpqSwNNRwgaGuM7SMbr4b9SHTysyzlQI7TV8b/UiB3d44+96HzOT3L2Bo0yzoxdp
+         qw2BaYleewZoryHXt5yHL8T2tw0SI4h6MT6+teKFYTxhfQkHmA5Nx8NRMp7FhnA+TdAe
+         IQSPgIBo3QymCd/lOn9+cRDPJkPxtL03LeJokC4HMCgcfYSvURASMi4DXBrx4ZT+oZ7u
+         Cmeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=GPX/+VTRYVIvBeoLayuBrN/vbPHRw0Wh7B1SdAcqqmA=;
-        b=DvVaiPy+vs85szK7lL4nB7uMLmgdE/FdaAW1HqUWrjCICwJc4lswjKvjb55TUQ0mIT
-         Ry9TX1MCXWhvRbWnFri2jkv2h/PqOSKhEQfkt4M/8RrPA8aWFt+5vvgg0QrBrg+m+Iex
-         fIDQgQeMo+IHpkrLtCBY60ET4YzywAKPqROwQHoghegGhqhg3nbURCievZSz7Nnjj7K/
-         HFT3YaDS+dLiL56/IG6jU0j7drIMmC1+PQqW3NmHyEKGVcU4HWCR4ZFFKmHanbTuIy6U
-         neKfM99H1f3eDC14PL0KiQnpyzR9ESwP/+sQwp3asH7DBA4ckhswldO/XpVhRtCVpCOM
-         3pWg==
+        bh=V0XJQDKBVgwTNqB7JV+NoE0714DNBcenljLxGJNaaw4=;
+        b=IXnA9Kh0r7W4pQ0EuK64sE95ZJ+g9Z8n4Rzh0cYBuF4fFw+5IPJg7hf1CHpFm4saYw
+         kJvbEYbhvwAxseBYdayt7u//kDl+GwHZjjXW+trWbYwWwswVfIjs8FITKpKweFClhBdK
+         34Cao17pOdGAyEckwp1x3XX36tp3HVmio/wQP8FsF5cB08DpDNGebZutD+lSmIhgUWGR
+         WOHyivyO4zlnpiejRmOrMeoMSD6txpE14ZRYQIVsYZckJtHz2FfsLD9oMt6qAqKn+/it
+         JFnLFN6agPCgcMAK5ooex3RPNxMOksxH/Vu4K6W9YbqZ4c6gA1GJUI3O18pkaLVhsA94
+         PGIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=aoLxkPxV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="S/z1RjSo";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z6si4057494ybk.292.2020.07.10.23.46.39
+        by mx.google.com with ESMTPS id w130si2174628ybe.471.2020.07.11.03.10.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 10 Jul 2020 23:46:39 -0700 (PDT)
+        Sat, 11 Jul 2020 03:10:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=aoLxkPxV;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="S/z1RjSo";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:37686 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:37462 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ju9HT-0008NA-AE
-	for alex.bennee@linaro.org; Sat, 11 Jul 2020 02:46:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45346)
+	id 1juCT9-0000Yl-6J
+	for alex.bennee@linaro.org; Sat, 11 Jul 2020 06:10:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43880)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1ju9HL-0008Mh-A2
- for qemu-arm@nongnu.org; Sat, 11 Jul 2020 02:46:31 -0400
-Received: from mail-vk1-xa43.google.com ([2607:f8b0:4864:20::a43]:33550)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1ju9HJ-00044r-Ay
- for qemu-arm@nongnu.org; Sat, 11 Jul 2020 02:46:31 -0400
-Received: by mail-vk1-xa43.google.com with SMTP id r7so1719144vkf.0
- for <qemu-arm@nongnu.org>; Fri, 10 Jul 2020 23:46:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=GPX/+VTRYVIvBeoLayuBrN/vbPHRw0Wh7B1SdAcqqmA=;
- b=aoLxkPxV2gCFkADN52staENtMVnpWKaCrj0S7bNGpH/ZxjFbnk5b1x1nRUZ6hzAt+I
- 7n27ZCOYC/m9/NusJvqs9vNLdMnIiDWf/ppM8e9TnFlqT337U83lRmCqe6HHQ1MSHYnb
- opP6iMPLmN/WRop/2cXiI3S3gicrtOP8ah7mb0fWxKsBRFpLoroPXI/5VdypELiGPoIr
- urPqIHhe6SxUKOhhxJaqiE5Ro4S6CPWsMkf5h5oTLx+wUQGS7qJqvRHD1vAoT4B/RT2n
- 1zboCB2u8cP6zZqt34Xezb4Fq27n+3eXIohHwVFTrv6YBlhC+3+Xaz+IUyue5HOgvqee
- OgXQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=GPX/+VTRYVIvBeoLayuBrN/vbPHRw0Wh7B1SdAcqqmA=;
- b=rxdMWhrbx62HweoLhEN2hQwSBwlGYJXel0zfIm+zGCwoKscOZXM+O2qqb+HDhPEfmt
- Pt4JakPyWjdisYeOX8oJqKm4ImL+IFS64zvB4Z5LDzsdfTau+DPICqfCjxC8KlnQ5+2e
- SDP4cObkkJUMOtboQwgrzTWyCeRTnQnIrR3cHg+3b2l4NSk88Mk4bqgDyws3Abxa9qSR
- jpWmsw4AlCbSaF/i+h1HhzGPWlpXZtjmpPY++uYwIJsfK+MiEtC2WQXBSPfOV/k3anZx
- V6vx/Q5/TTnZTITVcW+Mk9vQNxGezFgKa33+4KaPY+Jcd1EofeR0pVrNwvwEhKqKpPWp
- m8Sw==
-X-Gm-Message-State: AOAM533onjp0V7MeIkzAAct0Na8ko5mEaEDWYZEKjthSiMTm3YVBRw6x
- D4Zhon4pC904UYu3xYW4303HwZQin49iuoiRS7bBRQ==
-X-Received: by 2002:a05:6122:130b:: with SMTP id
- e11mr21570579vkp.20.1594449986033; 
- Fri, 10 Jul 2020 23:46:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1juCT0-0000YS-A7
+ for qemu-arm@nongnu.org; Sat, 11 Jul 2020 06:10:46 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:42638
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1juCSx-0008Co-LI
+ for qemu-arm@nongnu.org; Sat, 11 Jul 2020 06:10:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1594462241;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=V0XJQDKBVgwTNqB7JV+NoE0714DNBcenljLxGJNaaw4=;
+ b=S/z1RjSo0PT1dRKDwZDskygrbbV2JFGcfsiTE+lyBmyY6acfoHo0oUbkeWJofNvOmgmKS0
+ gibQ0zYuMuWjGx0/x5McVXOZC+Xvj+F/cHmw4Bb7NtAE1o9KPtS16Oi4CFKSMebri+xLz8
+ tcHwRm2TQdjVDxoX8PkJGIon+nPxglw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-206-zDSPhT-QMkS70ACslbHPKQ-1; Sat, 11 Jul 2020 06:10:39 -0400
+X-MC-Unique: zDSPhT-QMkS70ACslbHPKQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BDC51107ACCA;
+ Sat, 11 Jul 2020 10:10:38 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.192.42])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 79B9B610F2;
+ Sat, 11 Jul 2020 10:10:37 +0000 (UTC)
+From: Andrew Jones <drjones@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Subject: [PATCH 1/3] hw/arm/virt: Move post cpu realize check into its own
+ function
+Date: Sat, 11 Jul 2020 12:10:31 +0200
+Message-Id: <20200711101033.47371-2-drjones@redhat.com>
+In-Reply-To: <20200711101033.47371-1-drjones@redhat.com>
+References: <20200711101033.47371-1-drjones@redhat.com>
 MIME-Version: 1.0
-References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-2-hskinnemoen@google.com>
- <2fe8ea5e-56de-f57f-6146-8355125daa7f@amsat.org>
- <CAFQmdRYx99PpWz6bftCvBR7=YRftD_WNex_A9aoDaeRg=4tsCw@mail.gmail.com>
- <bd2972b0-0684-e379-6d66-16ceb62deade@amsat.org>
- <CAFQmdRbHXhd9-HUQP5ET=JQEnQ3FMCQBHajwZrP5d7=iCc0tzA@mail.gmail.com>
- <ee8bc620-6d58-98ef-1c53-a8687282af50@amsat.org>
- <CAFQmdRa3u_Sst0i6e2whoJcYau15gVQubhZHmm+z26SD8G8uCQ@mail.gmail.com>
- <c19401c1-f629-a95f-c8a5-60df78e41061@amsat.org>
-In-Reply-To: <c19401c1-f629-a95f-c8a5-60df78e41061@amsat.org>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Fri, 10 Jul 2020 23:46:14 -0700
-Message-ID: <CAFQmdRafRXYJpZvxbmjiMhNNmQ97GqQREvrYvWWdOPWfYTQq-g@mail.gmail.com>
-Subject: Re: [PATCH v5 01/11] hw/misc: Add NPCM7xx System Global Control
- Registers device model
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a43;
- envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa43.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/11 06:10:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, PDS_OTHER_BAD_TLD=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, URIBL_BLOCKED=0.001,
- USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,147 +115,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, beata.michalska@linaro.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fbbx3DiGDM8I
+X-TUID: +9ML77ylGsWF
 
-On Fri, Jul 10, 2020 at 2:31 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> On 7/9/20 7:42 PM, Havard Skinnemoen wrote:
-> > On Thu, Jul 9, 2020 at 10:24 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
-t.org> wrote:
-> >> On 7/9/20 7:09 PM, Havard Skinnemoen wrote:
-> >>> On Thu, Jul 9, 2020 at 9:23 AM Philippe Mathieu-Daud=C3=A9 <f4bug@ams=
-at.org> wrote:
-> >>>> On 7/9/20 8:43 AM, Havard Skinnemoen wrote:
-> >>>>> On Wed, Jul 8, 2020 at 11:04 PM Philippe Mathieu-Daud=C3=A9 <f4bug@=
-amsat.org> wrote:
-> >>>>>> On 7/9/20 2:35 AM, Havard Skinnemoen wrote:
-> >>>>>>> Implement a device model for the System Global Control Registers =
-in the
-> >>>>>>> NPCM730 and NPCM750 BMC SoCs.
-> >>>>>>>
-> >>>>>>> This is primarily used to enable SMP boot (the boot ROM spins rea=
-ding
-> >>>>>>> the SCRPAD register) and DDR memory initialization; other registe=
-rs are
-> >>>>>>> best effort for now.
-> >>>>>>>
-> >>>>>>> The reset values of the MDLR and PWRON registers are determined b=
-y the
-> >>>>>>> SoC variant (730 vs 750) and board straps respectively.
-> >>>>>>>
-> >>>>>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
-> >>>>>>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> >>>>>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
-> >>>>>>> ---
-> [...]
-> >>>>>> Maybe use HWADDR_PRIx instead of casting to int?
-> >>>>>
-> >>>>> Will do, thanks!
-> >>>>
-> >>>> Glad you are not annoyed by my review comments.
-> >>>>
-> >>>> FYI your series quality is in my top-4 "adding new machine to QEMU".
-> >>>> I'd like to use it as example to follow.
-> >>>>
-> >>>> I am slowly reviewing because this is not part of my work duties,
-> >>>> so I do that in my free time before/after work, which is why I can
-> >>>> barely do more that 2 per day, as I have to learn the SoC and
-> >>>> cross check documentation (or in this case, existing firmware code
-> >>>> since there is no public doc).
-> >>>
-> >>> Your feedback is super valuable, thanks a lot. I really appreciate it=
-.
-> >>
-> >> OK I'll continue, but might not have time until next week.
-> >> After I plan to test too.
-> >
-> > OK, I'll try to post a v6 before the weekend, unless you prefer that I
-> > hold off until you've reviewed the whole series.
->
-> I don't mind, if it is not too much overhead on your side.
->
-> What I noticed on the QEMU community is:
->
-> - If a series reviewed the same day and is almost done except
->   a single bugfix, it is OK to repost the same day, so the
->   maintainer is likely to queue it directly.
->
-> - If there are various reviews, and you do gradual improvements,
->   it is OK to repost every 3 days. Else reviewers tend to skip/
->   postpone your series for later.
->
-> - Pinging for review before 1 week passed is stressing reviewers,
->   except in case of critical security bug (CVE) or during freeze.
->
-> - Series with integrated test provided are usually reviewed first.
+We'll add more to this new function in coming patches so we also
+state the gic must be created and call it below create_gic().
 
-This is very helpful, thanks.
+No functional change intended.
 
-> >> What would be useful is an acceptance test (see examples in
-> >> tests/acceptance/), using the artefacts from the link you shared
-> >> elsewhere:
-> >> https://openpower.xyz/job/run-meta-ci/distro=3Dubuntu,label=3Dbuilder,=
-target=3Dgsj/lastSuccessfulBuild/artifact/openbmc/build/tmp/deploy/images/g=
-sj/
-> >
-> > Yes, tests are definitely on my radar. I'm working on SPI flash
-> > qtests. I haven't had much success with avocado yet, but I'll keep
-> > trying (perhaps using docker to control the environment more tightly).
->
-> This might help:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg704907.html
+Signed-off-by: Andrew Jones <drjones@redhat.com>
+---
+ hw/arm/virt.c | 43 +++++++++++++++++++++++++++----------------
+ 1 file changed, 27 insertions(+), 16 deletions(-)
 
-Thanks, I got it working now.
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 9005dae356be..cb2fa99b1ef5 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1672,6 +1672,31 @@ static void finalize_gic_version(VirtMachineState *vms)
+     }
+ }
+ 
++/*
++ * virt_cpu_post_init() must be called after the CPUs have
++ * been realized and the GIC has been created.
++ */
++static void virt_cpu_post_init(VirtMachineState *vms)
++{
++    bool aarch64;
++
++    aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
++
++    if (!kvm_enabled()) {
++        if (aarch64 && vms->highmem) {
++            int requested_pa_size = 64 - clz64(vms->highest_gpa);
++            int pamax = arm_pamax(ARM_CPU(first_cpu));
++
++            if (pamax < requested_pa_size) {
++                error_report("VCPU supports less PA bits (%d) than "
++                             "requested by the memory map (%d)",
++                             pamax, requested_pa_size);
++                exit(1);
++            }
++        }
++    }
++}
++
+ static void machvirt_init(MachineState *machine)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(machine);
+@@ -1873,22 +1898,6 @@ static void machvirt_init(MachineState *machine)
+     fdt_add_timer_nodes(vms);
+     fdt_add_cpu_nodes(vms);
+ 
+-   if (!kvm_enabled()) {
+-        ARMCPU *cpu = ARM_CPU(first_cpu);
+-        bool aarch64 = object_property_get_bool(OBJECT(cpu), "aarch64", NULL);
+-
+-        if (aarch64 && vms->highmem) {
+-            int requested_pa_size, pamax = arm_pamax(cpu);
+-
+-            requested_pa_size = 64 - clz64(vms->highest_gpa);
+-            if (pamax < requested_pa_size) {
+-                error_report("VCPU supports less PA bits (%d) than requested "
+-                            "by the memory map (%d)", pamax, requested_pa_size);
+-                exit(1);
+-            }
+-        }
+-    }
+-
+     memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
+                                 machine->ram);
+     if (machine->device_memory) {
+@@ -1900,6 +1909,8 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_gic(vms);
+ 
++    virt_cpu_post_init(vms);
++
+     fdt_add_pmu_nodes(vms);
+ 
+     create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
+-- 
+2.25.4
 
-> > Since the 5.1 release is frozen now, I might post some followup
-> > patches before this series is merged, e.g. tests, bootrom
-> > submodule+blob, more peripherals, etc. Is it preferable to keep this
-> > series frozen (modulo API updates) since you spent a lot of time
-> > reviewing it, and post the new stuff separately, or is it better to
-> > add new patches to the end of the series and resend the whole thing?
->
-> If you rework a peripheral, you need to reset the Reviewed-by/Tested-by
-> tags. If you add new peripherals, you only need to reset these tags on
-> the SoC patch. I'm fine either way, I use git-backport-diff to see the
-> SoC changes easily:
->
-> https://github.com/codyprime/git-scripts/blob/master/git-backport-diff
-
-I've been adding new peripherals incrementally after the basic SoC
-support patch. Is that OK to do without resetting the tags?
-
-But it's more likely that I'll add other things than peripherals next,
-i.e. bootrom and tests.
-
-> >
-> >> But these are apparently not stable links (expire after 30 days?).
-> >
-> > Sorry, I'm too ignorant about Jenkins to know. I'll see if I can
-> > figure something out.
->
-> What I do in that case is take the binary used for the test,
-> write a comment and push it in a stable branch to my own repo:
-> https://github.com/philmd/qemu-testing-blob/ and use the stable
-> url in the test.
->
-> We know QEMU emulation worked with this particular binary at some
-> point. We want to avoid regressions in QEMU, so let's keep testing
-> what we know worked. We don't want to track 2 bugs at a time (one
-> in the updated guest and one in QEMU).
-
-Good point. I'll see if I can upload images to github. I might fork
-the openbmc repository and attach binaries to a github release, to
-make it clear where the binaries came from.
-
-I accidentally broke my test image and had some trouble recreating it,
-so I ended up reworking my various hacks a bit. The good news is that
-I got most of them turned into proper bug fixes that I can send
-upstream.
-
-It might take a little longer than I said previously, but I'll try to
-include acceptance tests in the next series.
-
-Havard

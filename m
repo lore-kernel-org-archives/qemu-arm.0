@@ -1,107 +1,114 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2010883lfm;
-        Sat, 11 Jul 2020 17:22:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxmEa5SDTAJFnY4JTkigmDBjHEbaCgztYaYVifwOHocIMfrkUBYEV2yS0dTqfuUsWM1mYvD
-X-Received: by 2002:a25:55:: with SMTP id 82mr13416475yba.485.1594513375806;
-        Sat, 11 Jul 2020 17:22:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594513375; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2173416lfm;
+        Sat, 11 Jul 2020 22:42:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyFmAyk5hScJRIoOdHNj4wUQ2gSkrHpIjzSPhdC3gaict376iBGq3ycxWhloiEN1LY2cfNI
+X-Received: by 2002:a25:7ec1:: with SMTP id z184mr40854307ybc.442.1594532568501;
+        Sat, 11 Jul 2020 22:42:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594532568; cv=none;
         d=google.com; s=arc-20160816;
-        b=J8jadlLz7df7wuZLqj3CpSjqgbKHIA3kVVpQWmb4rAFg4fV5rqxoBq5R7Pz5vPHKvg
-         y9eQuwqlhI7I9G0QxDYtIsiyBNHmRZMsZ7we0VSn2RFSV49IMTJ+OemnXToOkgHr9pvT
-         799ox9FI1kQOK+e2Uzn/gLU69dwNYZxLNgH6IYxwZwklHJXhrGez6n0xLITBwObfj0lI
-         gdyYZDC7atIbxLkLrN15ic0iA+qj1cCX1ipKWXZWPUyQQ6Blj14iPRdUsICOcLDlhVeh
-         eSqQNwLL3OCcF+WqtoCpx+u6CM+Y0b/92C8MfsOsEAoIg7yW6qVqREyd1eggg4ZiJ95d
-         zxVg==
+        b=xQuW55U6KRaBnRjLYhicDUZFmhDKLjtpeZREDSVqQTw4cVMZlFNfo48bFRbtaFpwCO
+         e/P4sCtPkuELvukMV5wgN8kLINBwCQAWePREayI+fs9zd9ye6KvAjxSqSpalCmshxJdr
+         JLmVB5m5UpIQfIqCmKZdGKfWKmdV8BkQC1kvslnx+A/EMXnrzHf623b8wqPx8ET9TO61
+         B3TkcGBzKMYAiH3uo5G6YHarT4ltsMuiK9pbllajjTxaglnw+cO0eRa6mvsyqtM+B8R6
+         JykliehC/yyFQgoordbyaUTWRGdqbSqzeYhma7H2QK0U+ZcYGy9TSOSiYxQ2KRq8jpeB
+         srhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=oZ00LcG+6NseoTgPAtEBCbzXEaU2ZdzV1e/l/jb4AMA=;
-        b=fsZMkD3C6L8uuAa1DrguN3J/fbm/ciW6w+9bWVPDj2brky8qfLbfC8SfU/DQhF4oQ8
-         7yvw9v2tMy1wx1mOLwGQYERjSSeRmYtp+99ovvp6fExC3ijpfa3pwdZr69dNAP473+Yu
-         rd66zAcbXu+Yv2ZJ88tFK9z7sPE3+GQnfBeLf8W72G1fuhlnVeF7eITJJph1Nf+Kk77j
-         PZqOISKJP3o1p0aeCWUN5HuGqKYKTQVg9NIZotmes7fXu5Awre3VVEcUyBuJXJDADeia
-         JJvcXiKrqdqc4zQbN3JKhDX8G1TgYCDpcy5aKo+DKN416lO5M/9R+mpCXuN52rvvXESj
-         luRQ==
+        bh=R7JGDNPgHQ8o8mMfuXeWhuvsU8Fy2T4/aEy75TyBRYY=;
+        b=JVIoUgdkQcQIdI+D9dZdO0puSeRmrW+EgCJW/o8qaAQXW39j5YmbEnmOBx5BsW+0cg
+         wwauZ4ihuxTxKuYc3gTVADynTRfHt2fLYoYLbyHdvxh6y/AIbdTUXOANvHG7mHMlYkiJ
+         EL+K3QshJ0gHLsNyx9xNlXv/ST/XfsJT/SAkBV4QQQWTFTJIVovEyiVttQGHjwCICfsi
+         ZFb+6wPIPVYj9Rnne2WTJQib+h72DmdbatXsHrSjRLVjgK4DDNozWrcJ0kr1omcdey/f
+         6cWl8b83HCQ3nX3+zB3/31Fy5mEb/73zGdzliZp6J5Xpud9Hrw8Ehrj7o+tXx5/wozC0
+         9CyA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zon9W1El;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=cg3gNGBP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w10si13174961ybt.261.2020.07.11.17.22.55
+        by mx.google.com with ESMTPS id m4si10389307yba.121.2020.07.11.22.42.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Jul 2020 17:22:55 -0700 (PDT)
+        Sat, 11 Jul 2020 22:42:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Zon9W1El;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=cg3gNGBP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59684 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:38050 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juPlf-0001ig-6T
-	for alex.bennee@linaro.org; Sat, 11 Jul 2020 20:22:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40026)
+	id 1juUlD-0008Ji-Kb
+	for alex.bennee@linaro.org; Sun, 12 Jul 2020 01:42:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37634)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1juPlX-0001iP-W0; Sat, 11 Jul 2020 20:22:48 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:43179)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1juUl5-0008JS-0V
+ for qemu-arm@nongnu.org; Sun, 12 Jul 2020 01:42:39 -0400
+Received: from mail-vk1-xa43.google.com ([2607:f8b0:4864:20::a43]:45571)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1juPlW-0003Wp-85; Sat, 11 Jul 2020 20:22:47 -0400
-Received: by mail-oi1-x244.google.com with SMTP id x83so7982494oif.10;
- Sat, 11 Jul 2020 17:22:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1juUl1-0005eQ-OW
+ for qemu-arm@nongnu.org; Sun, 12 Jul 2020 01:42:38 -0400
+Received: by mail-vk1-xa43.google.com with SMTP id h1so2096001vkn.12
+ for <qemu-arm@nongnu.org>; Sat, 11 Jul 2020 22:42:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=oZ00LcG+6NseoTgPAtEBCbzXEaU2ZdzV1e/l/jb4AMA=;
- b=Zon9W1ElGKBYqP0HaKxRQh/dREXL/+1E99KltdTKfEiraZBjRUviy0LIJ5swp0iRXq
- +ixrsvgNxKfjtFuVR4st9t59dvvyDnYKytJHYXK17ubCnlMb8xWdLYQ4XZeokoEzrbIM
- +9rvumeDN6uvaiAB9z2dOTT2nepgF0bdnskbBXT50cecCHMSAnp2nb3A/tHMGE1F1tVz
- avndKs73h6slC1ya1TzBaHwmbTT6lpkAdiezvOtY3NwEOkIALyUKwPodIBNjdDxM7coo
- dvfBn5CBeOsNKm73yZB6SU19sNSnOFJzsWbmy+feP7ZqTpEV9Wh9S1uxwD63P6YBBsCJ
- 1CWQ==
+ bh=R7JGDNPgHQ8o8mMfuXeWhuvsU8Fy2T4/aEy75TyBRYY=;
+ b=cg3gNGBPqZpPCKAfA8jpASwD0B2E0bTyJsDb+6IbwTAJ9LowJpNNJQ9nNwF8THV5w0
+ IQQ+2I8NWfplCpydwkIrD+DR4nAqnd5RznUNwlJz2FiQCsOeD/B1wHcSIiW7wTcxdSOG
+ LNpTyE1tsgfayqY9SbV7Lpk79DV9FNvZVFsoWuwrtg2j2xaU3h137OhrOnAHIcxu3VSK
+ kipb9nQEf+DL2WMMUp7VR5MTm5DDY0/Ful/PE4+t03bydL2t5ysy2mLEDaLW4aQLFwYK
+ PEzklb9xAdU1z+XhX+IOajuBgpGzq9b1PQc1WoJxQ35+mX2BJ404c1Bo9YZL0W64HM4D
+ XlcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=oZ00LcG+6NseoTgPAtEBCbzXEaU2ZdzV1e/l/jb4AMA=;
- b=dmzI8TZbfUwZ044KLy2sKztr+YcgBFfzoZsb6romFCay3jZAFqBZMF+tx++nTz29oC
- xOYr7e7+Q3nSO3duzx39sMQD3QOLjZlvzvfAjxlG+jX7X8TCjZoRCD3EZBW5vx0vX5Ai
- SQtJTUonVNBAJWnk23oWL7Wi2+0rK1qMz+mbwyhxdAEO3Tong8aG7CbSg8ohZ/Qd8nL+
- 0T1biqdTqXlLLZiXsMgJe15JNGDibPx7KTbwVX65YI2IvKCtmqoZIkaYO5oFeuFlmSy0
- Px64huGp1EiuHiitpHErVe6HxAgTbmNthIxxYAsYg71PGMLF+6F2JJSTarQre2w35f9i
- dEMg==
-X-Gm-Message-State: AOAM532e8NP/mKCZE1NMpplCndi0p9teyissGaaA6b9Vn7lF6ledJntW
- dZ8sbybEhRzRBH1hamjK+HdOoss5vvEiTSAq/o4=
-X-Received: by 2002:a05:6808:486:: with SMTP id
- z6mr9635087oid.56.1594513364731; 
- Sat, 11 Jul 2020 17:22:44 -0700 (PDT)
+ bh=R7JGDNPgHQ8o8mMfuXeWhuvsU8Fy2T4/aEy75TyBRYY=;
+ b=g3Qkah3gsos8Meou956Q4eE9W4JxyAF0/MITBiFYYSanveNmkqLqS+kFCgUyZpT1Oo
+ omb7denLz+Pq0IKv29VFlGOC2WKMirTGWN6tM9UzxK6+J26Mtri9GRQjUOgJIDIrt71X
+ eZN4FXmu/syg2ZH9KPf9sT0+/PO/n9PPPvk0CvXmF0x5KUtgK6nYAZQ5VsZOymYbxy9K
+ zIJsDGwZfml/gPJg4wSk8kFj21z9p0epZA2igqcouFsYDl1lrro+Fx7jhOjdWnPiDLiQ
+ idohKru9FZMOM+KaqFUiiBikCQsMks+7Iqs74ZnMRxl6QNW15kkWXBBs8JRR26PznLTj
+ 4w4Q==
+X-Gm-Message-State: AOAM531qboHFg8N7QLmZK+swEEMDfYmpfl9n7218VCT8BmyDbgoGsQQA
+ D4AWCEs/QABT/OnfWKaqqQO2+NZdF3G2mjqVTWZKSA==
+X-Received: by 2002:a1f:255:: with SMTP id 82mr56908326vkc.39.1594532554030;
+ Sat, 11 Jul 2020 22:42:34 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200628214230.2592-1-peter.maydell@linaro.org>
- <20200628214230.2592-3-peter.maydell@linaro.org>
-In-Reply-To: <20200628214230.2592-3-peter.maydell@linaro.org>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Sun, 12 Jul 2020 08:22:08 +0800
-Message-ID: <CAKXe6SKv_QAeo4g+2n4uYO2cztDvV06adPShT6KEqzBGRJs9BQ@mail.gmail.com>
-Subject: Re: [PATCH 2/2] hw/arm/palm.c: Encapsulate misc GPIO handling in a
- device
-To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200709003608.3834629-1-hskinnemoen@google.com>
+ <20200709003608.3834629-10-hskinnemoen@google.com>
+ <189922e4-b53f-da64-5663-23b599294248@amsat.org>
+In-Reply-To: <189922e4-b53f-da64-5663-23b599294248@amsat.org>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Sat, 11 Jul 2020 22:42:22 -0700
+Message-ID: <CAFQmdRbY8DHYOOHPREHg63hgLVTVvyMbuMrdauctaBTzaB1=AA@mail.gmail.com>
+Subject: Re: [PATCH v5 09/11] hw/ssi: NPCM7xx Flash Interface Unit device model
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
+ CS20 KFTing <kfting@nuvoton.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
- envelope-from=liq3ea@gmail.com; helo=mail-oi1-x244.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a43;
+ envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa43.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -185
+X-Spam_score: -18.6
+X-Spam_bar: ------------------
+X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,135 +121,962 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Qemu Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mq++hVVjmpGP
+X-TUID: LeNRAj4egh1g
 
-Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2020=E5=B9=B46=E6=9C=8829=
-=E6=97=A5=E5=91=A8=E4=B8=80 =E4=B8=8A=E5=8D=885:43=E5=86=99=E9=81=93=EF=BC=
-=9A
+On Thu, Jul 9, 2020 at 10:00 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
 >
-> Replace the free-floating set of IRQs and palmte_onoff_gpios()
-> function with a simple QOM device that encapsulates this
-> behaviour.
+> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
+> > This implements a device model for the NPCM7xx SPI flash controller.
+> >
+> > Direct reads and writes, and user-mode transactions have been tested in
+> > various modes. Protection features are not implemented yet.
+> >
+> > All the FIU instances are available in the SoC's address space,
+> > regardless of whether or not they're connected to actual flash chips.
+> >
+> > Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> > Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+> > ---
+> >  include/hw/arm/npcm7xx.h     |   2 +
+> >  include/hw/ssi/npcm7xx_fiu.h | 100 +++++++
+> >  hw/arm/npcm7xx.c             |  53 ++++
+> >  hw/ssi/npcm7xx_fiu.c         | 510 +++++++++++++++++++++++++++++++++++
+> >  hw/arm/Kconfig               |   1 +
+> >  hw/ssi/Makefile.objs         |   1 +
+> >  hw/ssi/trace-events          |   9 +
+> >  7 files changed, 676 insertions(+)
+> >  create mode 100644 include/hw/ssi/npcm7xx_fiu.h
+> >  create mode 100644 hw/ssi/npcm7xx_fiu.c
+> >
+> > diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+> > index 3ae9e5dca2..bc99f47286 100644
+> > --- a/include/hw/arm/npcm7xx.h
+> > +++ b/include/hw/arm/npcm7xx.h
+> > @@ -23,6 +23,7 @@
+> >  #include "hw/misc/npcm7xx_gcr.h"
+> >  #include "hw/nvram/npcm7xx_otp.h"
+> >  #include "hw/timer/npcm7xx_timer.h"
+> > +#include "hw/ssi/npcm7xx_fiu.h"
+> >  #include "target/arm/cpu.h"
+> >
+> >  #define NPCM7XX_MAX_NUM_CPUS    (2)
+> > @@ -73,6 +74,7 @@ typedef struct NPCM7xxState {
+> >      NPCM7xxOTPState     key_storage;
+> >      NPCM7xxOTPState     fuse_array;
+> >      NPCM7xxMCState      mc;
+> > +    NPCM7xxFIUState     fiu[2];
+> >  } NPCM7xxState;
+> >
+> >  #define TYPE_NPCM7XX    "npcm7xx"
+> > diff --git a/include/hw/ssi/npcm7xx_fiu.h b/include/hw/ssi/npcm7xx_fiu.=
+h
+> > new file mode 100644
+> > index 0000000000..b867bd0429
+> > --- /dev/null
+> > +++ b/include/hw/ssi/npcm7xx_fiu.h
+> > @@ -0,0 +1,100 @@
+> > +/*
+> > + * Nuvoton NPCM7xx Flash Interface Unit (FIU)
+> > + *
+> > + * Copyright 2020 Google LLC
+> > + *
+> > + * This program is free software; you can redistribute it and/or modif=
+y it
+> > + * under the terms of the GNU General Public License as published by t=
+he
+> > + * Free Software Foundation; either version 2 of the License, or
+> > + * (at your option) any later version.
+> > + *
+> > + * This program is distributed in the hope that it will be useful, but=
+ WITHOUT
+> > + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY =
+or
+> > + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public Licens=
+e
+> > + * for more details.
+> > + */
+> > +#ifndef NPCM7XX_FIU_H
+> > +#define NPCM7XX_FIU_H
+> > +
+> > +#include "hw/ssi/ssi.h"
+> > +#include "hw/sysbus.h"
+> > +
+> > +/**
+> > + * enum NPCM7xxFIURegister - 32-bit FIU register indices.
+> > + */
+> > +enum NPCM7xxFIURegister {
+> > +    NPCM7XX_FIU_DRD_CFG,
+> > +    NPCM7XX_FIU_DWR_CFG,
+> > +    NPCM7XX_FIU_UMA_CFG,
+> > +    NPCM7XX_FIU_UMA_CTS,
+> > +    NPCM7XX_FIU_UMA_CMD,
+> > +    NPCM7XX_FIU_UMA_ADDR,
+> > +    NPCM7XX_FIU_PRT_CFG,
+> > +    NPCM7XX_FIU_UMA_DW0 =3D 0x0020 / sizeof(uint32_t),
+> > +    NPCM7XX_FIU_UMA_DW1,
+> > +    NPCM7XX_FIU_UMA_DW2,
+> > +    NPCM7XX_FIU_UMA_DW3,
+> > +    NPCM7XX_FIU_UMA_DR0,
+> > +    NPCM7XX_FIU_UMA_DR1,
+> > +    NPCM7XX_FIU_UMA_DR2,
+> > +    NPCM7XX_FIU_UMA_DR3,
+> > +    NPCM7XX_FIU_PRT_CMD0,
+> > +    NPCM7XX_FIU_PRT_CMD1,
+> > +    NPCM7XX_FIU_PRT_CMD2,
+> > +    NPCM7XX_FIU_PRT_CMD3,
+> > +    NPCM7XX_FIU_PRT_CMD4,
+> > +    NPCM7XX_FIU_PRT_CMD5,
+> > +    NPCM7XX_FIU_PRT_CMD6,
+> > +    NPCM7XX_FIU_PRT_CMD7,
+> > +    NPCM7XX_FIU_PRT_CMD8,
+> > +    NPCM7XX_FIU_PRT_CMD9,
+> > +    NPCM7XX_FIU_CFG =3D 0x78 / sizeof(uint32_t),
+> > +    NPCM7XX_FIU_NR_REGS,
+> > +};
+> > +
+> > +typedef struct NPCM7xxFIUState NPCM7xxFIUState;
+> > +
+> > +/**
+> > + * struct NPCM7xxFIUFlash - Per-chipselect flash controller state.
+> > + * @direct_access: Memory region for direct flash access.
+> > + * @fiu: Pointer to flash controller shared state.
+> > + */
+> > +typedef struct NPCM7xxFIUFlash {
+> > +    MemoryRegion direct_access;
+> > +    NPCM7xxFIUState *fiu;
+> > +} NPCM7xxFIUFlash;
+> > +
+> > +/**
+> > + * NPCM7xxFIUState - Device state for one Flash Interface Unit.
+> > + * @parent: System bus device.
+> > + * @mmio: Memory region for register access.
+> > + * @cs_count: Number of flash chips that may be connected to this modu=
+le.
+> > + * @active_cs: Currently active chip select, or -1 if no chip is selec=
+ted.
+> > + * @cs_lines: GPIO lines that may be wired to flash chips.
+> > + * @flash: Array of @cs_count per-flash-chip state objects.
+> > + * @spi: The SPI bus mastered by this controller.
+> > + * @regs: Register contents.
+> > + *
+> > + * Each FIU has a shared bank of registers, and controls up to four ch=
+ip
+> > + * selects. Each chip select has a dedicated memory region which may b=
+e used to
+> > + * read and write the flash connected to that chip select as if it wer=
+e memory.
+> > + */
+> > +struct NPCM7xxFIUState {
+> > +    SysBusDevice parent;
+> > +
+> > +    MemoryRegion mmio;
+> > +
+> > +    int32_t cs_count;
+> > +    int32_t active_cs;
+> > +    qemu_irq *cs_lines;
+> > +    NPCM7xxFIUFlash *flash;
+> > +
+> > +    SSIBus *spi;
+> > +
+> > +    uint32_t regs[NPCM7XX_FIU_NR_REGS];
+> > +};
+> > +
+> > +#define TYPE_NPCM7XX_FIU "npcm7xx-fiu"
+> > +#define NPCM7XX_FIU(obj) OBJECT_CHECK(NPCM7xxFIUState, (obj), TYPE_NPC=
+M7XX_FIU)
+> > +
+> > +#endif /* NPCM7XX_FIU_H */
+> > diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+> > index 4d227bb74b..c9ff3dab25 100644
+> > --- a/hw/arm/npcm7xx.c
+> > +++ b/hw/arm/npcm7xx.c
+> > @@ -98,6 +98,37 @@ static const hwaddr npcm7xx_uart_addr[] =3D {
+> >      0xf0004000,
+> >  };
+> >
+> > +static const hwaddr npcm7xx_fiu0_flash_addr[] =3D {
 >
-> This fixes Coverity issue CID 1421944, which points out that
-> the memory returned by qemu_allocate_irqs() is leaked.
+> So per
+> https://github.com/Nuvoton-Israel/bootblock/blob/master/SWC_HAL/Chips/npc=
+m750/npcm750.h
+> this is SPI0 on AHB18,
 >
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > +    0x80000000,
+> > +    0x88000000,
+>
+> CS0 & CS1,
+>
+> also listed:
+>
+> 0x90000000, // CS2
+> 0x98000000, // CS3
 
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Confirmed with Nuvoton off-list that these do not exist. SPI0 only
+supports two chip-selects for direct access.
 
-> ---
->  hw/arm/palm.c | 61 +++++++++++++++++++++++++++++++++++++++++++--------
->  1 file changed, 52 insertions(+), 9 deletions(-)
+I'll add comments.
+
+> > +};
+> > +
+> > +static const hwaddr npcm7xx_fiu3_flash_addr[] =3D {
 >
-> diff --git a/hw/arm/palm.c b/hw/arm/palm.c
-> index 569836178f6..e7bc9ea4c6a 100644
-> --- a/hw/arm/palm.c
-> +++ b/hw/arm/palm.c
-> @@ -124,6 +124,21 @@ static void palmte_button_event(void *opaque, int ke=
-ycode)
->                          !(keycode & 0x80));
->  }
+> Ditto SPI3 on AHB3, and CS0 to CS3.
 >
-> +/*
-> + * Encapsulation of some GPIO line behaviour for the Palm board
-> + *
-> + * QEMU interface:
-> + *  + unnamed GPIO inputs 0..6: for the various miscellaneous input line=
-s
-> + */
-> +
-> +#define TYPE_PALM_MISC_GPIO "palm-misc-gpio"
-> +#define PALM_MISC_GPIO(obj) \
-> +    OBJECT_CHECK(PalmMiscGPIOState, (obj), TYPE_PALM_MISC_GPIO)
-> +
-> +typedef struct PalmMiscGPIOState {
-> +    SysBusDevice parent_obj;
-> +} PalmMiscGPIOState;
-> +
->  static void palmte_onoff_gpios(void *opaque, int line, int level)
->  {
->      switch (line) {
-> @@ -151,23 +166,44 @@ static void palmte_onoff_gpios(void *opaque, int li=
-ne, int level)
->      }
->  }
+> > +    0xa0000000,
+> > +    0xa8000000,
+> > +    0xb0000000,
+> > +    0xb8000000,
+> > +};
+> > +
+> > +static const struct {
+> > +    const char *name;
+> > +    hwaddr regs_addr;
+> > +    int cs_count;
+> > +    const hwaddr *flash_addr;
+> > +} npcm7xx_fiu[] =3D {
+> > +    {
+> > +        .name =3D "fiu0",
+> > +        .regs_addr =3D 0xfb000000,
+> > +        .cs_count =3D ARRAY_SIZE(npcm7xx_fiu0_flash_addr),
 >
-> +static void palm_misc_gpio_init(Object *obj)
-> +{
-> +    DeviceState *dev =3D DEVICE(obj);
-> +
-> +    qdev_init_gpio_in(dev, palmte_onoff_gpios, 7);
-> +}
-> +
-> +static const TypeInfo palm_misc_gpio_info =3D {
-> +    .name =3D TYPE_PALM_MISC_GPIO,
-> +    .parent =3D TYPE_SYS_BUS_DEVICE,
-> +    .instance_size =3D sizeof(PalmMiscGPIOState),
-> +    .instance_init =3D palm_misc_gpio_init,
-> +    /*
-> +     * No class init required: device has no internal state so does not
-> +     * need to set up reset or vmstate, and has no realize method.
-> +     */
-> +};
-> +
->  static void palmte_gpio_setup(struct omap_mpu_state_s *cpu)
->  {
-> -    qemu_irq *misc_gpio;
-> +    DeviceState *misc_gpio;
-> +
-> +    misc_gpio =3D sysbus_create_simple(TYPE_PALM_MISC_GPIO, -1, NULL);
->
->      omap_mmc_handlers(cpu->mmc,
->                      qdev_get_gpio_in(cpu->gpio, PALMTE_MMC_WP_GPIO),
->                      qemu_irq_invert(omap_mpuio_in_get(cpu->mpuio)
->                              [PALMTE_MMC_SWITCH_GPIO]));
->
-> -    misc_gpio =3D qemu_allocate_irqs(palmte_onoff_gpios, cpu, 7);
-> -    qdev_connect_gpio_out(cpu->gpio, PALMTE_MMC_POWER_GPIO,     misc_gpi=
-o[0]);
-> -    qdev_connect_gpio_out(cpu->gpio, PALMTE_SPEAKER_GPIO,       misc_gpi=
-o[1]);
-> -    qdev_connect_gpio_out(cpu->gpio, 11,                        misc_gpi=
-o[2]);
-> -    qdev_connect_gpio_out(cpu->gpio, 12,                        misc_gpi=
-o[3]);
-> -    qdev_connect_gpio_out(cpu->gpio, 13,                        misc_gpi=
-o[4]);
-> -    omap_mpuio_out_set(cpu->mpuio, 1,                           misc_gpi=
-o[5]);
-> -    omap_mpuio_out_set(cpu->mpuio, 3,                           misc_gpi=
-o[6]);
-> +    qdev_connect_gpio_out(cpu->gpio, PALMTE_MMC_POWER_GPIO,
-> +                          qdev_get_gpio_in(misc_gpio, 0));
-> +    qdev_connect_gpio_out(cpu->gpio, PALMTE_SPEAKER_GPIO,
-> +                          qdev_get_gpio_in(misc_gpio, 1));
-> +    qdev_connect_gpio_out(cpu->gpio, 11, qdev_get_gpio_in(misc_gpio, 2))=
+> Hmm without the datasheet, can't tell, but I'd expect 4 CS
+> regardless.
+
+FIU0/SPI0 only has 2 chip selects.
+
+> > +        .flash_addr =3D npcm7xx_fiu0_flash_addr,
+> > +    }, {
+> > +        .name =3D "fiu3",
+> > +        .regs_addr =3D 0xc0000000,
+> > +        .cs_count =3D ARRAY_SIZE(npcm7xx_fiu3_flash_addr),
+> > +        .flash_addr =3D npcm7xx_fiu3_flash_addr,
+> > +    },
+> > +};
+> > +
+> >  void npcm7xx_write_secondary_boot(ARMCPU *cpu, const struct arm_boot_i=
+nfo *info)
+> >  {
+> >      /*
+> > @@ -171,6 +202,12 @@ static void npcm7xx_init(Object *obj)
+> >      for (i =3D 0; i < ARRAY_SIZE(s->tim); i++) {
+> >          object_initialize_child(obj, "tim[*]", &s->tim[i], TYPE_NPCM7X=
+X_TIMER);
+> >      }
+> > +
+> > +    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_fiu) !=3D ARRAY_SIZE(s->fiu))=
 ;
-> +    qdev_connect_gpio_out(cpu->gpio, 12, qdev_get_gpio_in(misc_gpio, 3))=
+> > +    for (i =3D 0; i < ARRAY_SIZE(s->fiu); i++) {
+> > +        object_initialize_child(obj, npcm7xx_fiu[i].name, &s->fiu[i],
+> > +                                TYPE_NPCM7XX_FIU);
+> > +    }
+> >  }
+> >
+> >  static void npcm7xx_realize(DeviceState *dev, Error **errp)
+> > @@ -260,6 +297,22 @@ static void npcm7xx_realize(DeviceState *dev, Erro=
+r **errp)
+> >                         serial_hd(i), DEVICE_LITTLE_ENDIAN);
+> >      }
+> >
+> > +    /* Flash Interface Unit (FIU) */
+> > +    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_fiu) !=3D ARRAY_SIZE(s->fiu))=
 ;
-> +    qdev_connect_gpio_out(cpu->gpio, 13, qdev_get_gpio_in(misc_gpio, 4))=
+> > +    for (i =3D 0; i < ARRAY_SIZE(s->fiu); i++) {
+> > +        SysBusDevice *sbd =3D SYS_BUS_DEVICE(&s->fiu[i]);
+> > +        int j;
+> > +
+> > +        object_property_set_int(OBJECT(sbd), npcm7xx_fiu[i].cs_count,
+> > +                                "cs-count", &error_abort);
+> > +        sysbus_realize(sbd, &error_abort);
+> > +
+> > +        sysbus_mmio_map(sbd, 0, npcm7xx_fiu[i].regs_addr);
+> > +        for (j =3D 0; j < npcm7xx_fiu[i].cs_count; j++) {
+> > +            sysbus_mmio_map(sbd, j + 1, npcm7xx_fiu[i].flash_addr[j]);
+> > +        }
+> > +    }
+> > +
+> >      /* RAM2 (SRAM) */
+> >      memory_region_init_ram(&s->sram, OBJECT(dev), "ram2",
+> >                             NPCM7XX_RAM2_SZ, &error_abort);
+> > diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+> > new file mode 100644
+> > index 0000000000..92ade709e8
+> > --- /dev/null
+> > +++ b/hw/ssi/npcm7xx_fiu.c
+> > @@ -0,0 +1,510 @@
+> > +/*
+> > + * Nuvoton NPCM7xx Flash Interface Unit (FIU)
+> > + *
+> > + * Copyright 2020 Google LLC
+> > + *
+> > + * This program is free software; you can redistribute it and/or modif=
+y it
+> > + * under the terms of the GNU General Public License as published by t=
+he
+> > + * Free Software Foundation; either version 2 of the License, or
+> > + * (at your option) any later version.
+> > + *
+> > + * This program is distributed in the hope that it will be useful, but=
+ WITHOUT
+> > + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY =
+or
+> > + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public Licens=
+e
+> > + * for more details.
+> > + */
+> > +
+> > +#include "qemu/osdep.h"
+> > +
+> > +#include "hw/irq.h"
+> > +#include "hw/qdev-properties.h"
+> > +#include "hw/ssi/npcm7xx_fiu.h"
+> > +#include "migration/vmstate.h"
+> > +#include "qapi/error.h"
+> > +#include "qemu/error-report.h"
+> > +#include "qemu/log.h"
+> > +#include "qemu/module.h"
+> > +#include "qemu/units.h"
+> > +
+> > +#include "trace.h"
+> > +
+> > +/* Up to 128 MiB of flash may be accessed directly as memory. */
+> > +#define NPCM7XX_FIU_FLASH_WINDOW_SIZE (128 * MiB)
+> > +
+> > +/* Each module has 4 KiB of register space. Only a fraction of it is u=
+sed. */
+> > +#define NPCM7XX_FIU_CTRL_REGS_SIZE (4 * KiB)
+> > +
+> > +/* FIU_{DRD,DWR,UMA,PTR}_CFG cannot be written when this bit is set. *=
+/
+> > +#define NPCM7XX_FIU_CFG_LCK BIT(31)
+> > +
+> > +/* Direct Read configuration register fields. */
+> > +#define FIU_DRD_CFG_ADDSIZ(rv) extract32(rv, 16, 2)
+> > +#define FIU_ADDSIZ_3BYTES 0
+> > +#define FIU_ADDSIZ_4BYTES 1
+> > +#define FIU_DRD_CFG_DBW(rv) extract32(rv, 12, 2)
+> > +#define FIU_DRD_CFG_ACCTYPE(rv) extract32(rv, 8, 2)
+> > +#define FIU_DRD_CFG_RDCMD(rv) extract32(rv, 0, 8)
+> > +
+> > +/* Direct Write configuration register fields. */
+> > +#define FIU_DWR_CFG_ADDSIZ(rv) extract32(rv, 16, 2)
+> > +#define FIU_DWR_CFG_WRCMD(rv) extract32(rv, 0, 8)
+> > +
+> > +/* User-Mode Access register fields. */
+> > +
+> > +/* Command Mode Lock and the bits protected by it. */
+> > +#define FIU_UMA_CFG_CMMLCK BIT(30)
+> > +#define FIU_UMA_CFG_CMMLCK_MASK 0x00000403
+> > +
+> > +#define FIU_UMA_CFG_RDATSIZ(rv) extract32(rv, 24, 5)
+> > +#define FIU_UMA_CFG_DBSIZ(rv) extract32(rv, 21, 3)
+> > +#define FIU_UMA_CFG_WDATSIZ(rv) extract32(rv, 16, 5)
+> > +#define FIU_UMA_CFG_ADDSIZ(rv) extract32(rv, 11, 3)
+> > +#define FIU_UMA_CFG_CMDSIZ(rv) extract32(rv, 10, 1)
+> > +#define FIU_UMA_CFG_DBPCK(rv) extract32(rv, 6, 2)
+> > +
+> > +#define FIU_UMA_CTS_RDYIE BIT(25)
+> > +#define FIU_UMA_CTS_RDYST BIT(24)
+> > +#define FIU_UMA_CTS_SW_CS BIT(16)
+> > +#define FIU_UMA_CTS_DEV_NUM(rv) extract32(rv, 8, 2)
+> > +#define FIU_UMA_CTS_EXEC_DONE BIT(0)
+> > +
+> > +/* Direct flash memory read handler. */
+> > +static uint64_t npcm7xx_fiu_flash_read(void *opaque, hwaddr addr,
+> > +                                       unsigned int size)
+> > +{
+> > +    NPCM7xxFIUFlash *f =3D opaque;
+> > +    NPCM7xxFIUState *fiu =3D f->fiu;
+> > +    int cs_id =3D f - fiu->flash;
+>
+> Hmmm? Not obvious.
+
+I'll add a helper function.
+
+
+> > +    uint64_t value =3D 0;
+> > +    uint32_t drd_cfg;
+> > +    int dummy_cycles;
+> > +    int i;
+> > +
+> > +    drd_cfg =3D fiu->regs[NPCM7XX_FIU_DRD_CFG];
+> > +
+> > +    qemu_irq_lower(fiu->cs_lines[cs_id]);
+>
+> Isn't it cleaner to use npcm7xx_fiu_select() here?
+
+Yes, you're right.
+
+> When can we have 'fio->active_cs !=3D cs_id'?
+
+There's a set of user-mode registers that also control CS. I'll log an
+error if CS is already active when we get here (indicating a guest
+software error).
+
+> BTW I'd add a trace event in select/deselect().
+
+Will do.
+
+> > +    ssi_transfer(fiu->spi, FIU_DRD_CFG_RDCMD(drd_cfg));
+> > +
+> > +    switch (FIU_DRD_CFG_ADDSIZ(drd_cfg)) {
+> > +    case FIU_ADDSIZ_4BYTES:
+> > +        ssi_transfer(fiu->spi, extract32(addr, 24, 8));
+> > +        /* fall through */
+> > +    case FIU_ADDSIZ_3BYTES:
+> > +        ssi_transfer(fiu->spi, extract32(addr, 16, 8));
+> > +        ssi_transfer(fiu->spi, extract32(addr, 8, 8));
+> > +        ssi_transfer(fiu->spi, extract32(addr, 0, 8));
+> > +        break;
+> > +
+> > +    default:
+> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad address size %d\n",
+> > +                      DEVICE(fiu)->canonical_path, FIU_DRD_CFG_ADDSIZ(=
+drd_cfg));
+> > +        break;
+> > +    }
+> > +
+> > +    /* Flash chip model expects one transfer per dummy bit, not byte *=
+/
+> > +    dummy_cycles =3D
+> > +        (FIU_DRD_CFG_DBW(drd_cfg) * 8) >> FIU_DRD_CFG_ACCTYPE(drd_cfg)=
 ;
-> +    omap_mpuio_out_set(cpu->mpuio, 1, qdev_get_gpio_in(misc_gpio, 5));
-> +    omap_mpuio_out_set(cpu->mpuio, 3, qdev_get_gpio_in(misc_gpio, 6));
+> > +    for (i =3D 0; i < dummy_cycles; i++) {
+> > +        ssi_transfer(fiu->spi, 0);
 >
->      /* Reset some inputs to initial state.  */
->      qemu_irq_lower(qdev_get_gpio_in(cpu->gpio, PALMTE_USBDETECT_GPIO));
-> @@ -276,3 +312,10 @@ static void palmte_machine_init(MachineClass *mc)
->  }
+> Note to self, might worth a ssi_shift_dummy(count) generic method.
+
+I'm not a huge fan of this interface to be honest. It requires the
+flash controller to have intimate knowledge of the flash chip, and if
+it doesn't predict the dummy phase correctly, or the guest programs
+the wrong number of dummy cycles, the end result is very different
+from what you'll see on a real system. I'd love to see something like
+a number-of-bits parameter to ssi_transfer instead.
+
+> > +    }
+> > +
+> > +    for (i =3D 0; i < size; i++) {
+> > +        value |=3D ssi_transfer(fiu->spi, 0) << (8 * i);
+> > +    }
+> > +
 >
->  DEFINE_MACHINE("cheetah", palmte_machine_init)
-> +
-> +static void palm_register_types(void)
-> +{
-> +    type_register_static(&palm_misc_gpio_info);
-> +}
-> +
-> +type_init(palm_register_types)
-> --
-> 2.20.1
+> Ditto npcm7xx_fiu_deselect().
+
+Will do.
+
+> > +    qemu_irq_raise(fiu->cs_lines[cs_id]);
+> > +
+> > +    trace_npcm7xx_fiu_flash_read(DEVICE(fiu)->canonical_path, cs_id, a=
+ddr, size,
+> > +                                 value);
+> > +
+> > +    return value;
+> > +}
+> > +
+> > +/* Direct flash memory write handler. */
+> > +static void npcm7xx_fiu_flash_write(void *opaque, hwaddr addr, uint64_=
+t v,
+> > +                                    unsigned int size)
+> > +{
+> > +    NPCM7xxFIUFlash *f =3D opaque;
+> > +    NPCM7xxFIUState *fiu =3D f->fiu;
+> > +    int cs_id =3D f - fiu->flash;
+> > +    uint32_t dwr_cfg;
+> > +    int i;
+> > +
+> > +    trace_npcm7xx_fiu_flash_write(DEVICE(fiu)->canonical_path, cs_id, =
+addr,
+> > +                                  size, v);
+> > +
+> > +    dwr_cfg =3D fiu->regs[NPCM7XX_FIU_DWR_CFG];
+> > +
+> > +    qemu_irq_lower(fiu->cs_lines[cs_id]);
+> > +    ssi_transfer(fiu->spi, FIU_DWR_CFG_WRCMD(dwr_cfg));
+> > +
+> > +    switch (FIU_DWR_CFG_ADDSIZ(dwr_cfg)) {
+> > +    case FIU_ADDSIZ_4BYTES:
+> > +        ssi_transfer(fiu->spi, extract32(addr, 24, 8));
+> > +        /* fall through */
+> > +    case FIU_ADDSIZ_3BYTES:
+> > +        ssi_transfer(fiu->spi, extract32(addr, 16, 8));
+> > +        ssi_transfer(fiu->spi, extract32(addr, 8, 8));
+> > +        ssi_transfer(fiu->spi, extract32(addr, 0, 8));
+> > +        break;
+> > +
+> > +    default:
+> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: bad address size %d\n",
+> > +                      DEVICE(fiu)->canonical_path, FIU_DWR_CFG_ADDSIZ(=
+dwr_cfg));
+> > +        break;
+> > +    }
+> > +
+> > +    for (i =3D 0; i < size; i++) {
+> > +        ssi_transfer(fiu->spi, v & 0xff);
+> > +        v >>=3D 8;
 >
+> Or since you use deposit32() in transaction():
 >
+>            extract32(v, 8 * i, 8);
+
+Needs to be extract64(), but done. Also, deposit64() in flash_read().
+
+> > +    }
+> > +
+> > +    qemu_irq_raise(fiu->cs_lines[cs_id]);
+> > +}
+> > +
+> > +static const MemoryRegionOps npcm7xx_fiu_flash_ops =3D {
+> > +    .read =3D npcm7xx_fiu_flash_read,
+> > +    .write =3D npcm7xx_fiu_flash_write,
+> > +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> > +    .valid =3D {
+> > +        .min_access_size =3D 1,
+> > +        .max_access_size =3D 8,
+>
+> Are you sure? Maybe, I can' tell.
+
+Real hardware supports 16 bytes, but there's no way to do more than 8
+in emulation, I think?
+
+> > +        .unaligned =3D true,
+> > +    },
+> > +};
+> > +
+> > +/* Control register read handler. */
+> > +static uint64_t npcm7xx_fiu_ctrl_read(void *opaque, hwaddr addr,
+> > +                                      unsigned int size)
+> > +{
+> > +    hwaddr reg =3D addr / sizeof(uint32_t);
+> > +    NPCM7xxFIUState *s =3D opaque;
+> > +    uint32_t value;
+> > +
+> > +    if (reg < NPCM7XX_FIU_NR_REGS) {
+> > +        value =3D s->regs[reg];
+> > +    } else {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: read from invalid offset 0x%" PRIx64 "\n",
+> > +                      DEVICE(s)->canonical_path, addr);
+> > +        value =3D 0;
+> > +    }
+> > +
+> > +    trace_npcm7xx_fiu_ctrl_read(DEVICE(s)->canonical_path, addr, value=
+);
+> > +
+> > +    return value;
+> > +}
+> > +
+> > +/* Send the specified number of address bytes from the UMA address reg=
+ister. */
+> > +static void send_address(SSIBus *spi, unsigned int addsiz, uint32_t ad=
+dr)
+> > +{
+> > +    /* All cases fall through */
+>
+> Is this comment recognized by -Wimplicit-fallthrough?
+
+Nope. I'll use proper fallthrough comments.
+
+> > +    switch (addsiz) {
+> > +    case 4:
+> > +        ssi_transfer(spi, extract32(addr, 24, 8));
+> > +    case 3:
+> > +        ssi_transfer(spi, extract32(addr, 16, 8));
+> > +    case 2:
+> > +        ssi_transfer(spi, extract32(addr, 8, 8));
+> > +    case 1:
+> > +        ssi_transfer(spi, extract32(addr, 0, 8));
+> > +    case 0:
+> > +        break;
+> > +    }
+> > +}
+> > +
+> > +/* Send the number of dummy bits specified in the UMA config register.=
+ */
+> > +static void send_dummy_bits(SSIBus *spi, uint32_t uma_cfg, uint32_t um=
+a_cmd)
+> > +{
+> > +    unsigned int bits_per_clock =3D 1U << FIU_UMA_CFG_DBPCK(uma_cfg);
+> > +    unsigned int i;
+> > +
+> > +    for (i =3D 0; i < FIU_UMA_CFG_DBSIZ(uma_cfg); i++) {
+> > +        /* Use bytes 0 and 1 first, then keep repeating byte 2 */
+> > +        unsigned int field =3D (i < 2) ? ((i + 1) * 8) : 24;
+> > +        unsigned int j;
+> > +
+> > +        for (j =3D 0; j < 8; j +=3D bits_per_clock) {
+> > +            ssi_transfer(spi, extract32(uma_cmd, field + j, bits_per_c=
+lock));
+> > +        }
+> > +    }
+> > +}
+> > +
+> > +/* Assert the chip select specified in the UMA Control/Status Register=
+. */
+> > +static void npcm7xx_fiu_select(NPCM7xxFIUState *s)
+> > +{
+> > +    int cs_id;
+> > +
+> > +    cs_id =3D FIU_UMA_CTS_DEV_NUM(s->regs[NPCM7XX_FIU_UMA_CTS]);
+> > +    if (cs_id < s->cs_count) {
+> > +        qemu_irq_lower(s->cs_lines[cs_id]);
+> > +    } else {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: UMA to CS%d; this module has only %d chip s=
+elects",
+> > +                      DEVICE(s)->canonical_path, cs_id, s->cs_count);
+> > +        cs_id =3D -1;
+> > +    }
+> > +
+> > +    s->active_cs =3D cs_id;
+> > +}
+> > +
+> > +/* Deassert the currently active chip select. */
+> > +static void npcm7xx_fiu_deselect(NPCM7xxFIUState *s)
+> > +{
+> > +    if (s->active_cs < 0) {
+> > +        return;
+> > +    }
+> > +
+> > +    qemu_irq_raise(s->cs_lines[s->active_cs]);
+> > +    s->active_cs =3D -1;
+> > +}
+> > +
+> > +/* Perform a User-Mode Access transaction. */
+> > +static void npcm7xx_fiu_uma_transaction(NPCM7xxFIUState *s)
+> > +{
+> > +    uint32_t uma_cts =3D s->regs[NPCM7XX_FIU_UMA_CTS];
+> > +    uint32_t uma_cfg;
+> > +    unsigned int i;
+> > +
+> > +    /* SW_CS means the CS is already forced low, so don't touch it. */
+> > +    if (uma_cts & FIU_UMA_CTS_SW_CS) {
+> > +        npcm7xx_fiu_select(s);
+> > +    }
+> > +
+> > +    /* Send command, if present. */
+> > +    uma_cfg =3D s->regs[NPCM7XX_FIU_UMA_CFG];
+> > +    if (FIU_UMA_CFG_CMDSIZ(uma_cfg) > 0) {
+> > +        ssi_transfer(s->spi, extract32(s->regs[NPCM7XX_FIU_UMA_CMD], 0=
+, 8));
+> > +    }
+> > +
+> > +    /* Send address, if present. */
+> > +    send_address(s->spi, FIU_UMA_CFG_ADDSIZ(uma_cfg),
+> > +                 s->regs[NPCM7XX_FIU_UMA_ADDR]);
+> > +
+> > +    /* Write data, if present. */
+> > +    for (i =3D 0; i < FIU_UMA_CFG_WDATSIZ(uma_cfg); i++) {
+> > +        unsigned int reg =3D
+> > +            (i < 16) ? (NPCM7XX_FIU_UMA_DW0 + i / 4) : NPCM7XX_FIU_UMA=
+_DW3;
+> > +        unsigned int field =3D (i % 4) * 8;
+> > +
+> > +        ssi_transfer(s->spi, extract32(s->regs[reg], field, 8));
+> > +    }
+> > +
+> > +    /* Send aummy bits, if present. */
+>
+> Typo "dummy" ;)
+>
+> > +    send_dummy_bits(s->spi, uma_cfg, s->regs[NPCM7XX_FIU_UMA_CMD]);
+> > +
+> > +    /* Read data, if present. */
+> > +    for (i =3D 0; i < FIU_UMA_CFG_RDATSIZ(uma_cfg); i++) {
+> > +        unsigned int reg =3D NPCM7XX_FIU_UMA_DR0 + i / 4;
+> > +        unsigned int field =3D (i % 4) * 8;
+> > +        uint8_t c;
+> > +
+> > +        c =3D ssi_transfer(s->spi, 0);
+> > +        if (reg <=3D NPCM7XX_FIU_UMA_DR3) {
+> > +            s->regs[reg] =3D deposit32(s->regs[reg], field, 8, c);
+> > +        }
+> > +    }
+> > +
+> > +    /* Again, don't touch CS if the user is forcing it low. */
+> > +    if (uma_cts & FIU_UMA_CTS_SW_CS) {
+> > +        npcm7xx_fiu_deselect(s);
+> > +    }
+> > +
+> > +    /* RDYST means a command has completed since it was cleared. */
+> > +    s->regs[NPCM7XX_FIU_UMA_CTS] |=3D FIU_UMA_CTS_RDYST;
+> > +    /* EXEC_DONE means Execute Command / Not Done, so clear it here. *=
+/
+> > +    s->regs[NPCM7XX_FIU_UMA_CTS] &=3D ~FIU_UMA_CTS_EXEC_DONE;
+> > +}
+> > +
+> > +/* Control register write handler. */
+> > +static void npcm7xx_fiu_ctrl_write(void *opaque, hwaddr addr, uint64_t=
+ v,
+> > +                                   unsigned int size)
+> > +{
+> > +    hwaddr reg =3D addr / sizeof(uint32_t);
+> > +    NPCM7xxFIUState *s =3D opaque;
+> > +    uint32_t value =3D v;
+> > +
+> > +    trace_npcm7xx_fiu_ctrl_write(DEVICE(s)->canonical_path, addr, valu=
+e);
+> > +
+> > +    switch (reg) {
+> > +    case NPCM7XX_FIU_UMA_CFG:
+> > +        if (s->regs[reg] & FIU_UMA_CFG_CMMLCK) {
+> > +            value &=3D ~FIU_UMA_CFG_CMMLCK_MASK;
+> > +            value |=3D (s->regs[reg] & FIU_UMA_CFG_CMMLCK_MASK);
+> > +        }
+> > +        /* fall through */
+> > +    case NPCM7XX_FIU_DRD_CFG:
+> > +    case NPCM7XX_FIU_DWR_CFG:
+> > +        if (s->regs[reg] & NPCM7XX_FIU_CFG_LCK) {
+> > +            qemu_log_mask(LOG_GUEST_ERROR,
+> > +                          "%s: write to locked register @ 0x%" PRIx64 =
+"\n",
+> > +                          DEVICE(s)->canonical_path, addr);
+> > +            return;
+> > +        }
+> > +        s->regs[reg] =3D value;
+> > +        break;
+> > +
+> > +    case NPCM7XX_FIU_UMA_CTS:
+> > +        if (value & FIU_UMA_CTS_RDYST) {
+> > +            value &=3D ~FIU_UMA_CTS_RDYST;
+> > +        } else {
+> > +            value |=3D s->regs[reg] & FIU_UMA_CTS_RDYST;
+> > +        }
+> > +        if ((s->regs[reg] ^ value) & FIU_UMA_CTS_SW_CS) {
+> > +            if (value & FIU_UMA_CTS_SW_CS) {
+> > +                /*
+> > +                 * Don't drop CS if there's a transfer in progress, or=
+ we're
+> > +                 * about to start one.
+> > +                 */
+> > +                if (!((value | s->regs[reg]) & FIU_UMA_CTS_EXEC_DONE))=
+ {
+> > +                    npcm7xx_fiu_deselect(s);
+> > +                }
+> > +            } else {
+> > +                npcm7xx_fiu_select(s);
+> > +            }
+> > +        }
+> > +        s->regs[reg] =3D value | (s->regs[reg] & FIU_UMA_CTS_EXEC_DONE=
+);
+> > +        if (value & FIU_UMA_CTS_EXEC_DONE) {
+> > +            npcm7xx_fiu_uma_transaction(s);
+> > +        }
+> > +        break;
+> > +
+> > +    case NPCM7XX_FIU_UMA_DR0 ... NPCM7XX_FIU_UMA_DR3:
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: write to read-only register @ 0x%" PRIx64 "=
+\n",
+> > +                      DEVICE(s)->canonical_path, addr);
+> > +        return;
+> > +
+> > +    case NPCM7XX_FIU_PRT_CFG:
+> > +    case NPCM7XX_FIU_PRT_CMD0 ... NPCM7XX_FIU_PRT_CMD9:
+> > +        qemu_log_mask(LOG_UNIMP, "%s: PRT is not implemented\n", __fun=
+c__);
+> > +        break;
+> > +
+> > +    case NPCM7XX_FIU_UMA_CMD:
+> > +    case NPCM7XX_FIU_UMA_ADDR:
+> > +    case NPCM7XX_FIU_UMA_DW0 ... NPCM7XX_FIU_UMA_DW3:
+> > +    case NPCM7XX_FIU_CFG:
+> > +        s->regs[reg] =3D value;
+> > +        break;
+> > +
+> > +    default:
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: write to invalid offset 0x%" PRIx64 "\n",
+> > +                      DEVICE(s)->canonical_path, addr);
+> > +        return;
+> > +    }
+> > +}
+> > +
+> > +static const MemoryRegionOps npcm7xx_fiu_ctrl_ops =3D {
+> > +    .read =3D npcm7xx_fiu_ctrl_read,
+> > +    .write =3D npcm7xx_fiu_ctrl_write,
+> > +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> > +    .valid =3D {
+> > +        .min_access_size =3D 4,
+> > +        .max_access_size =3D 4,
+> > +        .unaligned =3D false,
+> > +    },
+> > +};
+> > +
+> > +static void npcm7xx_fiu_enter_reset(Object *obj, ResetType type)
+> > +{
+> > +    NPCM7xxFIUState *s =3D NPCM7XX_FIU(obj);
+> > +
+> > +    trace_npcm7xx_fiu_enter_reset(DEVICE(obj)->canonical_path, type);
+> > +
+> > +    memset(s->regs, 0, sizeof(s->regs));
+> > +
+> > +    s->regs[NPCM7XX_FIU_DRD_CFG] =3D 0x0300100b;
+> > +    s->regs[NPCM7XX_FIU_DWR_CFG] =3D 0x03000002;
+> > +    s->regs[NPCM7XX_FIU_UMA_CFG] =3D 0x00000400;
+> > +    s->regs[NPCM7XX_FIU_UMA_CTS] =3D 0x00010000;
+> > +    s->regs[NPCM7XX_FIU_UMA_CMD] =3D 0x0000000b;
+> > +    s->regs[NPCM7XX_FIU_PRT_CFG] =3D 0x00000400;
+> > +    s->regs[NPCM7XX_FIU_CFG] =3D 0x0000000b;
+> > +}
+> > +
+> > +static void npcm7xx_fiu_hold_reset(Object *obj)
+> > +{
+> > +    NPCM7xxFIUState *s =3D NPCM7XX_FIU(obj);
+> > +    int i;
+> > +
+> > +    trace_npcm7xx_fiu_hold_reset(DEVICE(obj)->canonical_path);
+> > +
+> > +    for (i =3D 0; i < s->cs_count; i++) {
+> > +        qemu_irq_raise(s->cs_lines[i]);
+> > +    }
+> > +}
+> > +
+> > +static void npcm7xx_fiu_realize(DeviceState *dev, Error **errp)
+> > +{
+> > +    NPCM7xxFIUState *s =3D NPCM7XX_FIU(dev);
+> > +    SysBusDevice *sbd =3D &s->parent;
+> > +    int i;
+> > +
+> > +    if (s->cs_count <=3D 0) {
+> > +        error_setg(errp, "%s: %d chip selects specified, need at least=
+ one",
+> > +                   dev->canonical_path, s->cs_count);
+> > +        return;
+> > +    }
+> > +
+> > +    s->spi =3D ssi_create_bus(dev, "spi");
+> > +    s->cs_lines =3D g_new0(qemu_irq, s->cs_count);
+>
+> More recent API:
+>
+>        qdev_init_gpio_out_named(dev, &s->cs_count, "cs", s->cs_count);
+
+Cool. Also made a matching change in npcm7xx_boards.c.
+
+> > +    s->flash =3D g_new0(NPCM7xxFIUFlash, s->cs_count);
+> > +
+> > +    /*
+> > +     * Register the control registers region first. It may be followed=
+ by one
+> > +     * or more direct flash access regions.
+> > +     */
+> > +    memory_region_init_io(&s->mmio, OBJECT(s), &npcm7xx_fiu_ctrl_ops, =
+s, "ctrl",
+> > +                          NPCM7XX_FIU_CTRL_REGS_SIZE);
+> > +    sysbus_init_mmio(sbd, &s->mmio);
+> > +
+> > +    for (i =3D 0; i < s->cs_count; i++) {
+> > +        NPCM7xxFIUFlash *flash =3D &s->flash[i];
+> > +        sysbus_init_irq(sbd, &s->cs_lines[i]);
+> > +        flash->fiu =3D s;
+> > +        memory_region_init_io(&flash->direct_access, OBJECT(s),
+> > +                              &npcm7xx_fiu_flash_ops, &s->flash[i], "f=
+lash",
+> > +                              NPCM7XX_FIU_FLASH_WINDOW_SIZE);
+> > +        sysbus_init_mmio(sbd, &flash->direct_access);
+> > +    }
+> > +}
+> > +
+> > +static const VMStateDescription vmstate_npcm7xx_fiu =3D {
+> > +    .name =3D "npcm7xx-fiu",
+> > +    .version_id =3D 0,
+> > +    .minimum_version_id =3D 0,
+> > +    .fields =3D (VMStateField[]) {
+> > +        VMSTATE_INT32(active_cs, NPCM7xxFIUState),
+> > +        VMSTATE_UINT32_ARRAY(regs, NPCM7xxFIUState, NPCM7XX_FIU_NR_REG=
+S),
+> > +        VMSTATE_END_OF_LIST(),
+> > +    },
+> > +};
+> > +
+> > +static Property npcm7xx_fiu_properties[] =3D {
+> > +    DEFINE_PROP_INT32("cs-count", NPCM7xxFIUState, cs_count, 0),
+> > +    DEFINE_PROP_END_OF_LIST(),
+> > +};
+> > +
+> > +static void npcm7xx_fiu_class_init(ObjectClass *klass, void *data)
+> > +{
+> > +    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
+> > +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> > +
+> > +    dc->desc =3D "NPCM7xx Flash Interface Unit";
+> > +    dc->realize =3D npcm7xx_fiu_realize;
+> > +    dc->vmsd =3D &vmstate_npcm7xx_fiu;
+> > +    rc->phases.enter =3D npcm7xx_fiu_enter_reset;
+> > +    rc->phases.hold =3D npcm7xx_fiu_hold_reset;
+> > +    device_class_set_props(dc, npcm7xx_fiu_properties);
+> > +}
+> > +
+> > +static const TypeInfo npcm7xx_fiu_types[] =3D {
+> > +    {
+> > +        .name =3D TYPE_NPCM7XX_FIU,
+> > +        .parent =3D TYPE_SYS_BUS_DEVICE,
+> > +        .instance_size =3D sizeof(NPCM7xxFIUState),
+> > +        .class_init =3D npcm7xx_fiu_class_init,
+> > +    },
+> > +};
+> > +DEFINE_TYPES(npcm7xx_fiu_types);
+> > diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> > index a31d0d282f..8d0ef0593b 100644
+> > --- a/hw/arm/Kconfig
+> > +++ b/hw/arm/Kconfig
+> > @@ -360,6 +360,7 @@ config NPCM7XX
+> >      select ARM_GIC
+> >      select PL310  # cache controller
+> >      select SERIAL
+> > +    select SSI
+> >      select UNIMP
+> >
+> >  config FSL_IMX25
+> > diff --git a/hw/ssi/Makefile.objs b/hw/ssi/Makefile.objs
+> > index 07a85f1967..cab48e72c9 100644
+> > --- a/hw/ssi/Makefile.objs
+> > +++ b/hw/ssi/Makefile.objs
+> > @@ -5,6 +5,7 @@ common-obj-$(CONFIG_XILINX_SPIPS) +=3D xilinx_spips.o
+> >  common-obj-$(CONFIG_ASPEED_SOC) +=3D aspeed_smc.o
+> >  common-obj-$(CONFIG_STM32F2XX_SPI) +=3D stm32f2xx_spi.o
+> >  common-obj-$(CONFIG_MSF2) +=3D mss-spi.o
+> > +common-obj-$(CONFIG_NPCM7XX) +=3D npcm7xx_fiu.o
+> >
+> >  common-obj-$(CONFIG_OMAP) +=3D omap_spi.o
+> >  common-obj-$(CONFIG_IMX) +=3D imx_spi.o
+> > diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+> > index 0ea498de91..8024253c1f 100644
+> > --- a/hw/ssi/trace-events
+> > +++ b/hw/ssi/trace-events
+> > @@ -9,3 +9,12 @@ aspeed_smc_dma_checksum(uint32_t addr, uint32_t data) =
+"0x%08x: 0x%08x"
+> >  aspeed_smc_dma_rw(const char *dir, uint32_t flash_addr, uint32_t dram_=
+addr, uint32_t size) "%s flash:@0x%08x dram:@0x%08x size:0x%08x"
+> >  aspeed_smc_write(uint64_t addr,  uint32_t size, uint64_t data) "@0x%" =
+PRIx64 " size %u: 0x%" PRIx64
+> >  aspeed_smc_flash_select(int cs, const char *prefix) "CS%d %sselect"
+> > +
+> > +# npcm7xx_fiu.c
+> > +
+> > +npcm7xx_fiu_enter_reset(const char *id, int reset_type) "%s reset type=
+: %d"
+> > +npcm7xx_fiu_hold_reset(const char *id) "%s"
+> > +npcm7xx_fiu_ctrl_read(const char *id, uint64_t addr, uint32_t data) "%=
+s offset: 0x%04" PRIx64 " value: 0x%08x"
+> > +npcm7xx_fiu_ctrl_write(const char *id, uint64_t addr, uint32_t data) "=
+%s offset: 0x%04" PRIx64 " value: 0x%08x"
+>
+> Nitpicking again: PRIx32 :p
+
+Will do.
+
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+Thanks!
+
+> > +npcm7xx_fiu_flash_read(const char *id, int cs, uint64_t addr, unsigned=
+ int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value: =
+0x%" PRIx64
+> > +npcm7xx_fiu_flash_write(const char *id, int cs, uint64_t addr, unsigne=
+d int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value:=
+ 0x%" PRIx64
+> >

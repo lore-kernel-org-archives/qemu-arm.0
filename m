@@ -1,116 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1932140lfm;
-        Sat, 11 Jul 2020 14:42:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJykTnl6anbmE6GXu3jvL9pzrLs0b6sAB+s9PMF6an4J8JeEN+ZsxAsBU9Hcq6D+xQ+SHUgl
-X-Received: by 2002:a25:4c81:: with SMTP id z123mr41108838yba.309.1594503755311;
-        Sat, 11 Jul 2020 14:42:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594503755; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2009095lfm;
+        Sat, 11 Jul 2020 17:19:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZqNHG6TJ3TER1KGYN5OybR+3SSVzO/qqXjujT8JCtxkn1r1Tap9ZVjYXdrfnhf05onoOf
+X-Received: by 2002:a25:8007:: with SMTP id m7mr64094148ybk.60.1594513170536;
+        Sat, 11 Jul 2020 17:19:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594513170; cv=none;
         d=google.com; s=arc-20160816;
-        b=xrxxyxwMqZE7gQuPGWGU2S9+KTb1wc4+W94w41nAINWDelMWIdg7MSxJKdIA9pdzF7
-         3/syYzpbzUjmFj3O4kpZS5vDKIU/DOhw4UBpwUseNiYzOXg9fsP0/l8Avq0oLW/KZEn8
-         Ye7w/emRWnytjEhT9mviGa9TQf+i7J+1hSYNBAwjOqqxTMcpzXW6rgGLsX3Na3WTsUiD
-         X2Q5N9VM4T68e1A71dLtffdAq4j6xc0gP8Vo2y1ai/tS6zGthnVb1hFlqRXFVyl507BL
-         PWt+RAYbRpDiClKJG702u1/uy/njHjnYIF2NS1WBpUuMsNDCjVUegPHoT8gXwLp5mXwt
-         9K6w==
+        b=BPPcDmIcvoVvcmr8BwRxP/mSEgIrtSPrBybfuUGXqokJSW0CTHoAFyc28XB1eUgGAT
+         f+RThLdyottH8wxA8UomG89EXYgCBIzWWfE7dyhWsXTVtCOc9v5cCDoNe0FWV6UQ0wmH
+         UJaG6taw7HGmhey2Vw/lxlUnLLPrsXTSMYt/ncTUV7xpgK88VQTrupyD4VFrvtTTnaUL
+         j7yNZD9AV3XGygdabkbmS6XwIpSuZIkH91guwrgA2cs8FIG6xGE13glQDtHqzqKspZB3
+         JgJl2GfalBAVj92oHWt0MAKCG/XES+QzhcfjGlC6K/9RrFkR/AZ/eYEdlV+DWC9LOJ9q
+         702A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=WAnM+AEg28RYA/0yqxUHhCYjcfhg0sGRVBIvk6M3zVM=;
-        b=CWO+A5Ts12CBZVn150piWRo1lIPQwEt2WruLxmUrfvUctsqyHhvv9M0toZ98eGfTWc
-         RnKJge2t0BdqQ/rLxc1v9yBgCPeZODNjCHGG/LCJHYp2Gz7EIDmSZ2JTQgh2SNlAkJak
-         M0lbBpF2xrMpeiGaunH2dtZtlsaPG6OWrwsI41yKOGUxAnxuBfOTlJEbtQCAP3rGWeoU
-         EedaMUeRSS9KzPNR39bskZsmSpqcvtXdoN7LLgDReG7Anjxq21csr0LZgAU1N/iottX9
-         kdm/HYUNp9UDzdgCJ5mZw6zLzN1nCPu2OSg7vHPzdKHCjY22s6PQER+3v35zm1yHIR8k
-         q7sg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=9cPmQGTSAin+ostGOfnapRULbeSJoIJ3JP1SIdBHZbc=;
+        b=pvc+kbYqV4z21nLN0S0YWh9s7yFAXe44GZTdgmFc/pAt3PKDeqBD69QjKzQ8fAiSKT
+         r0WRHAB1E+BqBaVQ/rma2IESL2H6iHgMD5mrjwJNK8wwPvcDk7ls7rsxKUP0yAY/NKxn
+         zd8lTfN5JhnzezcYodskZaEU+P6S5JWodR4LDqAKEFNWCyUhgVwN6FPPJyQ6RaQeXMww
+         Y8VhbmcIZZ0pioXrJtEG3RuwkaMWubnjm4EPQQzw69fJ/XMO/tdftDJCgDbDFsy2dpO4
+         UIMj4j+xHdZgHYrJjX2YsDiYaL8AHhS5O7wCUbb8mymgp+NN/fZd3oJcJDle6P+OAxGK
+         3P4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xYOVdjbx;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gDqAqq2a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w14si12802929ybt.100.2020.07.11.14.42.35
+        by mx.google.com with ESMTPS id k29si4840757ybj.291.2020.07.11.17.19.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 11 Jul 2020 14:42:35 -0700 (PDT)
+        Sat, 11 Jul 2020 17:19:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xYOVdjbx;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=gDqAqq2a;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53172 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:56598 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juNGU-0002Gu-MU
-	for alex.bennee@linaro.org; Sat, 11 Jul 2020 17:42:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48422)
+	id 1juPiL-00009S-TA
+	for alex.bennee@linaro.org; Sat, 11 Jul 2020 20:19:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1juNGN-0002Go-Pi
- for qemu-arm@nongnu.org; Sat, 11 Jul 2020 17:42:27 -0400
-Received: from mail-pj1-x1044.google.com ([2607:f8b0:4864:20::1044]:54131)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1juPiE-00009E-SE; Sat, 11 Jul 2020 20:19:22 -0400
+Received: from mail-oo1-xc43.google.com ([2607:f8b0:4864:20::c43]:44601)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1juNGM-0003UP-08
- for qemu-arm@nongnu.org; Sat, 11 Jul 2020 17:42:27 -0400
-Received: by mail-pj1-x1044.google.com with SMTP id cm21so4151442pjb.3
- for <qemu-arm@nongnu.org>; Sat, 11 Jul 2020 14:42:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=WAnM+AEg28RYA/0yqxUHhCYjcfhg0sGRVBIvk6M3zVM=;
- b=xYOVdjbxhN/lKp45Dbc6suFqMijEw5NTs0SFzH2Cgx3udjTGF8GYAnItqYOga74aU3
- ZvAJmWxaJt0NWs7pzvlaWhHpAvFpNj5uRmdEu33Zfx28Svvj+t2lHJ6KT/YmBmiodSTo
- u+jAqHvOtrAzg5vVlV22X9nGtn5JO8pSn8hu9iHRerQFx45yTRSPlb47NJ4P6mTcThWD
- fU/a0vNYyO4r4HEcyFr7JiwO/6Gzeqk4bkMgls4g+voYgb4+pWPl4yf+G9877xo+gBXg
- anpNLFX5lE8arA3Q1vqQ2AydiTmtP2Wwi4EPZVjDe4ZXRcTp1WywPtBzqZI21nnPjhq3
- 9EKw==
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1juPiD-000396-8N; Sat, 11 Jul 2020 20:19:22 -0400
+Received: by mail-oo1-xc43.google.com with SMTP id o36so1688521ooi.11;
+ Sat, 11 Jul 2020 17:19:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=9cPmQGTSAin+ostGOfnapRULbeSJoIJ3JP1SIdBHZbc=;
+ b=gDqAqq2a60yT5D3G8IZNlrzhoJknRclLX9kFVb02zPFqOSz3M/t/C/D2dasSJyvFFC
+ /KTVizx+cRDUnV+ZBoBmxAFEhExumxkoumFw9Mj2YX1JZJsrceC+ntmSIJp3FvkOXYwa
+ EI6p0tOLTAxqr2STJqlLN9r6eEPHsZEfuN9snidFPeX3osSiwBEDRwG1C/R+ydiMFfpa
+ 2i/74TjGLb9/ynkp9edVFooXkEZmIFertH5j+mZuUUqjeXc5m90CY6GxxT21UUn9iXkO
+ 4yn3lVR1VkAlUkrpE7iHFcxH8v9N123LUdvd68G3sfRx3Qyt/lEDjpgW7plyH6v3S4fU
+ zJDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=WAnM+AEg28RYA/0yqxUHhCYjcfhg0sGRVBIvk6M3zVM=;
- b=mFlWlvhn/GDVpZJYYPYuo4276y/mTzN/ArG6bMDYb8J2zy98GHQfJHQ3mloOoF5JBr
- 6dWcaPJaVlL66T7YdkVjPGDhpdS6mBm6UcSJyE15NbkkU7t9TSoZsSpEtm/E8Ar+3fHB
- 2weHbalEER6q/OrCW8jle05YgzPE+bpD72Bz/vBZxucKNVhwUKk20Yqbp2LacW5aiG4p
- DMqiDGcx3kqLHBN0F1/su8qi9CNXWrq26e1DOIky+1RHa5OqgxyXJl8tvl0SMhhBdd+j
- 1yikVHoc0qTM3PuhLJGclXp4QksFOxP5L/iBWhRFtSZyIuBS57KeJmmicETJhykpwbv/
- 0VZw==
-X-Gm-Message-State: AOAM533j1nDPrzy6+h6ldtWX1EDWuxOckFDSNOFVnbWcpvi0KWPVJh77
- VuL04zrJjx9MX2fiIoAOhPZygA==
-X-Received: by 2002:a17:902:b204:: with SMTP id
- t4mr66587134plr.132.1594503744193; 
- Sat, 11 Jul 2020 14:42:24 -0700 (PDT)
-Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
- by smtp.gmail.com with ESMTPSA id m1sm9290690pjy.0.2020.07.11.14.42.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 11 Jul 2020 14:42:23 -0700 (PDT)
-Subject: Re: [PATCH v2 01/17] tcg: Introduce target-specific page data for
- user-only
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200605041733.415188-1-richard.henderson@linaro.org>
- <20200605041733.415188-2-richard.henderson@linaro.org>
- <CAFEAcA-qybDD6GWYPFB6tMfTb9Kj+_bCKCxPyDYMZBr8EwbDmQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <d5659aa8-1e51-455f-c3be-379e3f224817@linaro.org>
-Date: Sat, 11 Jul 2020 14:42:21 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.8.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=9cPmQGTSAin+ostGOfnapRULbeSJoIJ3JP1SIdBHZbc=;
+ b=EayEIMCUQek36YvaHZPqutNesu9od8La0khTPQdpqF8hM5Jz42C3YBNhXIAyvI4F6U
+ 9wrlmychjoMUhX6XhT/Z6Wgck7Z19A7WP9HHCOOOZwB9PKwVlO4AqhaAAZwHpMQo1p00
+ cYLPqE9YLIs/sZ7FkuUF/mJThE3oE9kvdix6Pcndh+l7nDjKga5xnuwob9+/pXlun0FO
+ TKhPDNkOq5wJoeXkVXfXVZLH11ZZnOFo6AYfYrm+7W+XGAcOjDlIvU+BgK14PFtGMVqi
+ +yPOtFTvq6x+VIhE2mdF0Wh2Lvk8o4a+Gto1CS1oaytDXKdLFjjk9LlkicgPghvd+0LH
+ aDow==
+X-Gm-Message-State: AOAM531XrsFu8qBq7VAF7aUZgHjkQDfFQMQIAGRe+6OoeXRtZVmG0oCm
+ XKid6EIFJONOORDxuYWY3PKsUdvnPtEl9v/txL8=
+X-Received: by 2002:a4a:8257:: with SMTP id t23mr65770171oog.60.1594513159338; 
+ Sat, 11 Jul 2020 17:19:19 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-qybDD6GWYPFB6tMfTb9Kj+_bCKCxPyDYMZBr8EwbDmQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1044;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1044.google.com
+References: <20200628214230.2592-1-peter.maydell@linaro.org>
+ <20200628214230.2592-2-peter.maydell@linaro.org>
+In-Reply-To: <20200628214230.2592-2-peter.maydell@linaro.org>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Sun, 12 Jul 2020 08:18:43 +0800
+Message-ID: <CAKXe6SJts9hBWrFCZY8+fa+2iqEoH-5N9rfTeUA8th=sOq46MQ@mail.gmail.com>
+Subject: Re: [PATCH 1/2] hw/arm/palm.c: Detabify
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c43;
+ envelope-from=liq3ea@gmail.com; helo=mail-oo1-xc43.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -125,81 +112,131 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Stephen Long <steplong@quicinc.com>
+Cc: qemu-arm@nongnu.org, Qemu Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9iJm9AnEYOG+
+X-TUID: Equ96CeSLBX3
 
-On 6/25/20 9:20 AM, Peter Maydell wrote:
-> On Fri, 5 Jun 2020 at 05:17, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> This data can be allocated by page_alloc_target_data() and
->> released by page_set_flags(start, end, prot | PAGE_RESET).
->>
->> This data will be used to hold tag memory for AArch64 MTE.
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
-> 
->> @@ -289,6 +295,8 @@ int walk_memory_regions(void *, walk_memory_regions_fn);
->>  int page_get_flags(target_ulong address);
->>  void page_set_flags(target_ulong start, target_ulong end, int flags);
->>  int page_check_range(target_ulong start, target_ulong len, int flags);
->> +void *page_get_target_data(target_ulong address);
->> +void *page_alloc_target_data(target_ulong address, size_t size);
-> 
-> Could we have a doc comment for any new function that's got
-> global scope, please?
-> 
->>  #endif
->>
->>  CPUArchState *cpu_copy(CPUArchState *env);
-> 
->> +void *page_alloc_target_data(target_ulong address, size_t size)
->> +{
->> +    PageDesc *p = page_find(address >> TARGET_PAGE_BITS);
->> +    void *ret = NULL;
->> +
->> +    if (p) {
->> +        ret = p->target_data;
->> +        if (!ret && (p->flags & PAGE_VALID)) {
->> +            p->target_data = ret = g_malloc0(size);
->> +        }
->> +    }
->> +    return ret;
-> 
-> Can a PageDesc validly have p->target_data != NULL but
-> p->flags with PAGE_VALID not set ?
+Peter Maydell <peter.maydell@linaro.org> =E4=BA=8E2020=E5=B9=B46=E6=9C=8829=
+=E6=97=A5=E5=91=A8=E4=B8=80 =E4=B8=8A=E5=8D=885:45=E5=86=99=E9=81=93=EF=BC=
+=9A
+>
+> Remove hard-tabs from palm.c.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-No.  But we can be called for a page that is not mapped (returning NULL) and
-can be called for a page that already has associated data (returning the old
-value).
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
-> It's not clear to me why for a !PAGE_VALID page which
-> has target_data already we return that pointer but
-> if it doesn't have any we don't allocate: either
-> "always allocate" or "always return NULL for non-valid pages"
-> would seem more self-consistent.
-
-I was expecting a non-valid page to have no data.  I will rearrange this to
-
-    ret = NULL;
-    if (p->flags & PAGE_VALID) {
-        ret = p->target_data;
-        if (!ret) {
-            p->target_data = ret = g_malloc0(size);
-        }
-    }
-
-which is probably clearer.
-
->> +        /* FIXME: Move page flags and target_data for each page.  */
-> 
-> Is this something we're going to address later in the patchset?
-
-I had not, but I should.  Will fix.
-
-
-r~
+> ---
+>  hw/arm/palm.c | 64 +++++++++++++++++++++++++--------------------------
+>  1 file changed, 32 insertions(+), 32 deletions(-)
+>
+> diff --git a/hw/arm/palm.c b/hw/arm/palm.c
+> index 97ca105d297..569836178f6 100644
+> --- a/hw/arm/palm.c
+> +++ b/hw/arm/palm.c
+> @@ -61,21 +61,21 @@ static const MemoryRegionOps static_ops =3D {
+>  /* Palm Tunsgten|E support */
+>
+>  /* Shared GPIOs */
+> -#define PALMTE_USBDETECT_GPIO  0
+> -#define PALMTE_USB_OR_DC_GPIO  1
+> -#define PALMTE_TSC_GPIO                4
+> -#define PALMTE_PINTDAV_GPIO    6
+> -#define PALMTE_MMC_WP_GPIO     8
+> -#define PALMTE_MMC_POWER_GPIO  9
+> -#define PALMTE_HDQ_GPIO                11
+> -#define PALMTE_HEADPHONES_GPIO 14
+> -#define PALMTE_SPEAKER_GPIO    15
+> +#define PALMTE_USBDETECT_GPIO   0
+> +#define PALMTE_USB_OR_DC_GPIO   1
+> +#define PALMTE_TSC_GPIO                 4
+> +#define PALMTE_PINTDAV_GPIO     6
+> +#define PALMTE_MMC_WP_GPIO      8
+> +#define PALMTE_MMC_POWER_GPIO   9
+> +#define PALMTE_HDQ_GPIO                 11
+> +#define PALMTE_HEADPHONES_GPIO  14
+> +#define PALMTE_SPEAKER_GPIO     15
+>  /* MPU private GPIOs */
+> -#define PALMTE_DC_GPIO         2
+> -#define PALMTE_MMC_SWITCH_GPIO 4
+> -#define PALMTE_MMC1_GPIO       6
+> -#define PALMTE_MMC2_GPIO       7
+> -#define PALMTE_MMC3_GPIO       11
+> +#define PALMTE_DC_GPIO          2
+> +#define PALMTE_MMC_SWITCH_GPIO  4
+> +#define PALMTE_MMC1_GPIO        6
+> +#define PALMTE_MMC2_GPIO        7
+> +#define PALMTE_MMC3_GPIO        11
+>
+>  static MouseTransformInfo palmte_pointercal =3D {
+>      .x =3D 320,
+> @@ -100,17 +100,17 @@ static struct {
+>      int column;
+>  } palmte_keymap[0x80] =3D {
+>      [0 ... 0x7f] =3D { -1, -1 },
+> -    [0x3b] =3D { 0, 0 }, /* F1   -> Calendar */
+> -    [0x3c] =3D { 1, 0 }, /* F2   -> Contacts */
+> -    [0x3d] =3D { 2, 0 }, /* F3   -> Tasks List */
+> -    [0x3e] =3D { 3, 0 }, /* F4   -> Note Pad */
+> -    [0x01] =3D { 4, 0 }, /* Esc  -> Power */
+> -    [0x4b] =3D { 0, 1 }, /*         Left */
+> -    [0x50] =3D { 1, 1 }, /*         Down */
+> -    [0x48] =3D { 2, 1 }, /*         Up */
+> -    [0x4d] =3D { 3, 1 }, /*         Right */
+> -    [0x4c] =3D { 4, 1 }, /*         Centre */
+> -    [0x39] =3D { 4, 1 }, /* Spc  -> Centre */
+> +    [0x3b] =3D { 0, 0 },  /* F1   -> Calendar */
+> +    [0x3c] =3D { 1, 0 },  /* F2   -> Contacts */
+> +    [0x3d] =3D { 2, 0 },  /* F3   -> Tasks List */
+> +    [0x3e] =3D { 3, 0 },  /* F4   -> Note Pad */
+> +    [0x01] =3D { 4, 0 },  /* Esc  -> Power */
+> +    [0x4b] =3D { 0, 1 },  /*         Left */
+> +    [0x50] =3D { 1, 1 },  /*         Down */
+> +    [0x48] =3D { 2, 1 },  /*         Up */
+> +    [0x4d] =3D { 3, 1 },  /*         Right */
+> +    [0x4c] =3D { 4, 1 },  /*         Centre */
+> +    [0x39] =3D { 4, 1 },  /* Spc  -> Centre */
+>  };
+>
+>  static void palmte_button_event(void *opaque, int keycode)
+> @@ -161,13 +161,13 @@ static void palmte_gpio_setup(struct omap_mpu_state=
+_s *cpu)
+>                              [PALMTE_MMC_SWITCH_GPIO]));
+>
+>      misc_gpio =3D qemu_allocate_irqs(palmte_onoff_gpios, cpu, 7);
+> -    qdev_connect_gpio_out(cpu->gpio, PALMTE_MMC_POWER_GPIO,    misc_gpio=
+[0]);
+> -    qdev_connect_gpio_out(cpu->gpio, PALMTE_SPEAKER_GPIO,      misc_gpio=
+[1]);
+> -    qdev_connect_gpio_out(cpu->gpio, 11,                       misc_gpio=
+[2]);
+> -    qdev_connect_gpio_out(cpu->gpio, 12,                       misc_gpio=
+[3]);
+> -    qdev_connect_gpio_out(cpu->gpio, 13,                       misc_gpio=
+[4]);
+> -    omap_mpuio_out_set(cpu->mpuio, 1,                          misc_gpio=
+[5]);
+> -    omap_mpuio_out_set(cpu->mpuio, 3,                          misc_gpio=
+[6]);
+> +    qdev_connect_gpio_out(cpu->gpio, PALMTE_MMC_POWER_GPIO,     misc_gpi=
+o[0]);
+> +    qdev_connect_gpio_out(cpu->gpio, PALMTE_SPEAKER_GPIO,       misc_gpi=
+o[1]);
+> +    qdev_connect_gpio_out(cpu->gpio, 11,                        misc_gpi=
+o[2]);
+> +    qdev_connect_gpio_out(cpu->gpio, 12,                        misc_gpi=
+o[3]);
+> +    qdev_connect_gpio_out(cpu->gpio, 13,                        misc_gpi=
+o[4]);
+> +    omap_mpuio_out_set(cpu->mpuio, 1,                           misc_gpi=
+o[5]);
+> +    omap_mpuio_out_set(cpu->mpuio, 3,                           misc_gpi=
+o[6]);
+>
+>      /* Reset some inputs to initial state.  */
+>      qemu_irq_lower(qdev_get_gpio_in(cpu->gpio, PALMTE_USBDETECT_GPIO));
+> --
+> 2.20.1
+>
+>

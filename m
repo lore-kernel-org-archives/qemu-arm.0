@@ -1,103 +1,102 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3507740lfm;
-        Mon, 13 Jul 2020 10:59:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzW+O9Ef50jW3tIATIzFsOJwoXbqCnJoh8ptW2IqBBzwA5G1XvAh3onHUmcsd7Gsh1qAkIL
-X-Received: by 2002:a25:d1c6:: with SMTP id i189mr1795454ybg.497.1594663181648;
-        Mon, 13 Jul 2020 10:59:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594663181; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3507917lfm;
+        Mon, 13 Jul 2020 10:59:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwamp0inOjartQLtSQZUwPzwnoPzP8ztKeCmWxkfq+FUcIeLNkfsIE8BlbhUNo6BWJMG23o
+X-Received: by 2002:a25:dfd2:: with SMTP id w201mr1744405ybg.230.1594663198185;
+        Mon, 13 Jul 2020 10:59:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594663198; cv=none;
         d=google.com; s=arc-20160816;
-        b=BbvdJbvXv4X66MNLgUhRpHcSGWMjMBBwk8R4k3OyHs498QcTk9qM0r72D0dFD2t68z
-         Odupv73cQmhapDgxmqixemu1aaIZH7EYSpTEMyS9eaZy9onJqyIiocr7bRMPSe3ZTS7f
-         8ps4tMAivfi8PsDrQYShaU4vNmmHEenGbk1LkHzkdgATpEvvK/xZqOI7+xT/7u2zWv0w
-         07fq3AnNp4MOPYaGeMZsKvtGIjGtrKdopoUtfwYY5qiZ2yeCMk1oQqa6x5mstrzv3Ud2
-         IFr++HCKGExvIvWCAkA2LXKKP5iX31VTW/+5QXq7qQ/v+jFaeup9ZwKfzfxNUOQhXXY9
-         fRFA==
+        b=V35dgQUfFopIS+KxhWEa8UUlMixkgK+tmh6RnA0MKIJyt5gZA0HYvO5FPD1bqEuyvK
+         AJmVToZSs+aO1MI9AFnsccUjn8tkQ0FDewp/dA8rV40X4slYh8Fu8TpMIUCuXgPH+wLZ
+         kscb/vmeXzzU1MRD6YbUoAToYs6wb5ReN2/sWBl402mWUhwpCO7+l/HJ78U3OIAOLXEI
+         ++RHY0y+qCrSjc1GafCioI1rsvZMdEESLBfsMyo9E2kOSn7udhPcE9rY2vD6voUB0DEm
+         2WtXc/14S2y59l/J00vnnwPHGw1UL7y2Q6c90YNHgQUh8yXmM1Igej7krPOftdVoPqMf
+         WyVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WLE5QjsRSrJvisCuXokX+hOkSwZThvQnwc57RN/mAWs=;
-        b=NAZQS/vmS6fAySbHfCvaRw/A5SiY6JwmWpuMTXS+k9Sd5l5hfUwsBEyLREuCkDvRP0
-         nm/vtVMJJi+h8/uATzYD9HgUSSVWFN7TrZ4AHWnCiFgfN8f+yG5bAT+luaW5sAJfPwf7
-         l+UrelXsTsE2NpZPL527Fo9x073QJMl5Ysx/vmHY9wvdvX7dmgW77bs18RvxoKYhtduy
-         weAMHJD8oSckHjSk9vHcq2IbBQfBTc5IC8x3KtoEcbeHCviziQ0qXZVeYJhoTqhbg6RO
-         j9y05u3qZ2RISPmfQioseUbf+80CVOF03VcXOWnYK7MNkYBMsau23K9Rf3z6wdqgO6ET
-         BPUQ==
+        bh=8Ll1qrclIjkyFqPyTPWaB9zfmblOTcQIEKljCnPs7a4=;
+        b=QNHdJt1Bsnn2xJMIDK7rKRDMwXs8YVUyv7NCCu5uzFAb6yG6zOKP4UcRFnnSYrGoWb
+         W6HhotKBzZ9TCc1O2kbjtMqPgoI94ztR+KCe4wUoTYffOU5kMzjsnkjFdPcCQc5JTpue
+         Rc8oOqW3ISW5x/a2+IDzsETHlU49IAUzHedB5rEl8XCHOTaHpfTyIDhkLdljOX9kq4Wc
+         +kjrQUSsGOclGBYw7ES6WggTkeWkZnkvolLhe+dsoGVGCX75h9l9ItDThzVlp4VSL688
+         KsbOf/BxHxuxaYf7Iv/PykAQkqbcwXCWi1pQod0r9k7CHL3kTAv5ZAAFinx3XKyNjpDb
+         6KGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lK+5vGuT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=H68kDhJ7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k3si9124589ybj.189.2020.07.13.10.59.41
+        by mx.google.com with ESMTPS id e144si1699578ybh.127.2020.07.13.10.59.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 10:59:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Jul 2020 10:59:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lK+5vGuT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=H68kDhJ7;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40496 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jv2jt-00042h-1g
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 13:59:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58790)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jv2k9-00051r-IA
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 13:59:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jv2iA-00028x-Lx
- for qemu-devel@nongnu.org; Mon, 13 Jul 2020 13:57:54 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:42092)
+ id 1jv2iC-0002EO-Hq
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 13:57:56 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:46261)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jv2i9-000851-1N
- for qemu-devel@nongnu.org; Mon, 13 Jul 2020 13:57:54 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id o11so17583115wrv.9
- for <qemu-devel@nongnu.org>; Mon, 13 Jul 2020 10:57:52 -0700 (PDT)
+ id 1jv2iA-00085e-It
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 13:57:56 -0400
+Received: by mail-wr1-x443.google.com with SMTP id r12so17506717wrj.13
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 10:57:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=WLE5QjsRSrJvisCuXokX+hOkSwZThvQnwc57RN/mAWs=;
- b=lK+5vGuTqg809IJL94LWpINZKwFewVjTIbjgd3jhARq6kz9qNroCZkLuEMKaIvIcRJ
- L+unQYZ1ws5ahHLLbBYRI7EvJH6Eyl8RS6ojyQZD/6nPPF/YcuvKafuLnI7y0eQXncUe
- cq2YjxDeECGpAw8xViV6LCYrS9WNWTGdrCbg8qskyYmIRV28DcTevGsxOQXxt04avOTD
- Dviqy4dXkzTA+HYjm5lUWWD7UVp6C8VaaOAWmZhlbtXZLotq30LTKbpKvAjZsJNYtDN5
- Qz+JkkrFW05pa2zive5Rldgf+pYOn63kFdzIzGQa/BoFa5veaWr63m1uVpNDkvkzH1Zx
- VnNA==
+ bh=8Ll1qrclIjkyFqPyTPWaB9zfmblOTcQIEKljCnPs7a4=;
+ b=H68kDhJ78PHBSj2plV/IjHgXqd8gvZxfn4pnVW0sz9b07gOL3eqIlDwabqosAGq/WU
+ QiUPz6nZqo2ZGPKGzTm44b8dB9JI2HRm8jp3U0RMZ0GZCenRhkoZbLMeH5JGj/fAT40b
+ rb7afALgD9eWgpU8Kyv781ER7nVv6luEwM9v5iTi2hTQrIFD2T3tIQxFRh2YShen59lC
+ QMpBZeQmkuEL8MYtuwF5RDKX0h4IvewAviJow1shcVpTn2mEDcj1nqOf75cGO/3IFbph
+ a1gTjhfwe1In1DyB4t1ldARdxCzyGtubT6ojx7AkfJVq0+oBY5G4rE0i5UjvfwHTSq/g
+ 5Btg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=WLE5QjsRSrJvisCuXokX+hOkSwZThvQnwc57RN/mAWs=;
- b=Zna99uBcH2qd6kdTVfkqPBS0fVINfSPpZzvnxwhDTFpg42wrPQLvXse/QNt6GFFK2+
- 59T8YaYOAAKW2BuhIimeyn9zMCbE7GHcDqwAiJB2Z/CkxZmCdQa7O9kWvuHk4IyyRwIB
- iMnPRZu4PWpirPDkT9zGWp2o4P5u9odwU8NJPkQi/EepCgJu1gAr/1cNB4UCFTnq+5ki
- DR8rLRB9l3llEy5tyHtt6rfapnIbSayK6zBJBMjAh7IQQdjcYgn5j/VkBTdhy8DP0HkJ
- 12goxYCBBYRV3aCUMqJrzsSgeABoPtCyEf9t9dUhnIKGMGmhT/MnKAGFpouKw5irM54u
- ygQA==
-X-Gm-Message-State: AOAM530iYadqF0WAj59/3mmOPPqEUEywLMT0AfhH4vj4aNsy2/j3NI6F
- JfFBZR1RdQQNk2D4OIm6vj3gNCU32ezRVw==
-X-Received: by 2002:adf:e50a:: with SMTP id j10mr637018wrm.71.1594663071746;
- Mon, 13 Jul 2020 10:57:51 -0700 (PDT)
+ bh=8Ll1qrclIjkyFqPyTPWaB9zfmblOTcQIEKljCnPs7a4=;
+ b=dwKH+1taMgi1VuIGnpyWkEeL2fiZ3xoweRL+SOjKIiKDXL0lYV6xYvTjs4zLNZYhCl
+ uNp24O3w6Cn3w+01//u4doOkz2MWvebv/5GUHYKILH48/VL2bMp4j38OUUo/W0ZNEvrE
+ eTysjBJDg0MNhky0wCClzIzTGlDuQDNy6vQaRqP+TjmuMsfkyKiaWSWs8CpdygeR0ZpW
+ YeZ+H5hL6flKCfN8l8UdKNO1c+2GgVsofsXNPuYh/64FnUdWhmY5bGOxC8nxh0oJt8IL
+ 021FpL8xn3NX76rJ0lk5lN1Cz2Yab/OW/dXbcd7iib8zgcsz+J2pcydQcOX5wdH8r5CM
+ pwtg==
+X-Gm-Message-State: AOAM5302DMFA3qdoPN/6xBxPYu71iC+tfyhFA0WwDoZ1mSilcRwB1YgJ
+ /8YBOQLDCP3NQWAUNacjAgR8+B0xRBgVww==
+X-Received: by 2002:adf:ef8a:: with SMTP id d10mr615769wro.126.1594663072735; 
+ Mon, 13 Jul 2020 10:57:52 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id j4sm25723721wrp.51.2020.07.13.10.57.50
+ by smtp.gmail.com with ESMTPSA id j4sm25723721wrp.51.2020.07.13.10.57.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 Jul 2020 10:57:51 -0700 (PDT)
+ Mon, 13 Jul 2020 10:57:52 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-5.1 3/4] docs/system: Briefly document gumstix boards
-Date: Mon, 13 Jul 2020 18:57:45 +0100
-Message-Id: <20200713175746.5936-4-peter.maydell@linaro.org>
+Subject: [PATCH for-5.1 4/4] docs/system: Document the arm virt board
+Date: Mon, 13 Jul 2020 18:57:46 +0100
+Message-Id: <20200713175746.5936-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200713175746.5936-1-peter.maydell@linaro.org>
 References: <20200713175746.5936-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -105,86 +104,223 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vdrl59fPRs4+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hLsJUhrTaZhs
 
-Add skeletal documentation of the gumstix boards
-('connex' and 'verdex').
+Document the arm 'virt' board, which has been undocumented
+for far too long given that it is the main recommended board
+type for arm guests.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- docs/system/arm/gumstix.rst | 21 +++++++++++++++++++++
- docs/system/target-arm.rst  |  1 +
- MAINTAINERS                 |  1 +
- 3 files changed, 23 insertions(+)
- create mode 100644 docs/system/arm/gumstix.rst
+ docs/system/arm/virt.rst   | 157 +++++++++++++++++++++++++++++++++++++
+ docs/system/target-arm.rst |   1 +
+ MAINTAINERS                |   1 +
+ 3 files changed, 159 insertions(+)
+ create mode 100644 docs/system/arm/virt.rst
 
-diff --git a/docs/system/arm/gumstix.rst b/docs/system/arm/gumstix.rst
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
 new file mode 100644
-index 00000000000..805e0f8d5df
+index 00000000000..6a7823d8bca
 --- /dev/null
-+++ b/docs/system/arm/gumstix.rst
-@@ -0,0 +1,21 @@
-+Gumstix Connex and Verdex (``connex``, ``verdex``)
-+==================================================
++++ b/docs/system/arm/virt.rst
+@@ -0,0 +1,157 @@
++'virt' generic virtual platform (``virt``)
++==========================================
 +
-+These machines model the Gumstix Connex and Verdex boards.
-+The Connex has a PXA255 CPU and the Verdex has a PXA270.
++The `virt` board is a platform which does not correspond to any
++real hardware; it is designed for use in virtual machines.
++It is the recommended board type if you simply want to run
++a guest such as Linux and do not care about reproducing the
++idiosyncrasies and limitations of a particular bit of real-world
++hardware.
 +
-+Implemented devices:
++This is a "versioned" board model, so as well as the ``virt`` machine
++type itself (which may have improvements, bugfixes and other minor
++changes between QEMU versions) a version is provided that guarantees
++to have the same behaviour as that of previous QEMU releases, so
++that VM migration will work between QEMU versions. For instance the
++``virt-5.0`` machine type will behave like the ``virt`` machine from
++the QEMU 5.0 release, and migration should work between ``virt-5.0``
++of the 5.0 release and ``virt-5.0`` of the 5.1 release. Migration
++is not guaranteed to work between different QEMU releases for
++the non-versioned ``virt`` machine type.
 +
-+ * Flash
-+ * SMC91C111 ethernet
-+ * Interrupt controller
-+ * DMA
-+ * Timer
-+ * GPIO
-+ * MMC/SD card
-+ * FIR
-+ * LCDC
-+ * SSP
-+ * PC Card sockets
-+ * I2C
-+ * I2S
++Supported devices
++"""""""""""""""""
++
++The virt board supports:
++
++- Flash memory
++- One PL011 UART
++- An RTC
++- The fw_cfg device that allows a guest to obtain data from QEMU
++- A PL061 GPIO controller
++- An optional SMMUv3 IOMMU
++- hotpluggable DIMMs
++- hotpluggable NVDIMs
++- 32 virtio-mmio transport devices
++- running guests using the KVM accelerator on aarch64 hardware
++- large amounts of RAM (at least 255GB, and more if using highmem)
++- many CPUs (up to 512 if using a GICv3 and highmem)
++- Secure-World-only devices if the CPU has TrustZone:
++
++  - A second PL011 UART
++  - A secure flash memory
++  - 16MB of secure RAM
++
++Supported guest CPU types:
++
++- ``cortex-a7`` (32-bit)
++- ``cortex-a15`` (32-bit; the default)
++- ``cortex-a53`` (64-bit)
++- ``cortex-a57`` (64-bit)
++- ``cortex-a72`` (64-bit)
++- ``host`` (with KVM only)
++- ``max`` (same as ``host`` for KVM; best possible emulation with TCG)
++
++Note that the default is ``cortex-a15``, so for an AArch64 guest you must
++specify a CPU type.
++
++Graphics output is available, but unlike the x86 PC machine types
++there is no default display device enabled: you should select one from
++the Display devices section of "-device help". The recommended option
++is ``virtio-gpu-pci``; this is the only one which will work correctly
++with KVM. You may also need to ensure your guest kernel is configured
++with support for this; see below.
++
++Machine-specific options
++""""""""""""""""""""""""
++
++The following machine-specific options are supported:
++
++secure
++  Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
++  Arm Security Extensions (TrustZone). The default is ``off``.
++
++virtualization
++  Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
++  Arm Virtualization Extensions. The default is ``off``.
++
++highmem
++  Set ``on``/``off`` to enable/disable placing devices and RAM in physical
++  address space above 32 bits. The default is ``on`` for machine types
++  later than ``virt-2.12``.
++
++gic-version
++  Specify the version of the Generic Interrupt Controller (GIC) to provide.
++  Valid values are:
++
++  ``2``
++    GICv2
++  ``3``
++    GICv3
++  ``host``
++    Use the same GIC version the host provides, when using KVM
++  ``max``
++    Use the best GIC version possible (same as host when using KVM;
++    currently same as ``3``` for TCG, but this may change in future)
++
++its
++  Set ``on``/``off`` to enable/disable ITS instantiation. The default is ``on``
++  for machine types later than ``virt-2.7``.
++
++iommu
++  Set the IOMMU type to create for the guest. Valid values are:
++
++  ``none``
++    Don't create an IOMMU (the default)
++  ``smmuv3``
++    Create an SMMUv3
++
++ras
++  Set ``on``/``off`` to enable/disable reporting host memory errors to a guest
++  using ACPI and guest external abort exceptions. The default is off.
++
++Linux guest kernel configuration
++""""""""""""""""""""""""""""""""
++
++The 'defconfig' for Linux arm and arm64 kernels should include the
++right device drivers for virtio and the PCI controller; however some older
++kernel versions, especially for 32-bit Arm, did not have everything
++enabled by default. If you're not seeing PCI devices that you expect,
++then check that your guest config has::
++
++  CONFIG_PCI=y
++  CONFIG_VIRTIO_PCI=y
++  CONFIG_PCI_HOST_GENERIC=y
++
++If you want to use the ``virtio-gpu-pci`` graphics device you will also
++need::
++
++  CONFIG_DRM=y
++  CONFIG_DRM_VIRTIO_GPU=y
++
++Hardware configuration information for bare-metal programming
++"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
++
++The ``virt`` board automatically generates a device tree blob ("dtb")
++which it passes to the guest. This provides information about the
++addresses, interrupt lines and other configuration of the various devices
++in the system. Guest code can rely on and hard-code the following
++addresses:
++
++- Flash memory starts at address 0x0000_0000
++
++- RAM starts at 0x4000_0000
++
++All other information about device locations may change between
++QEMU versions, so guest code must look in the DTB.
++
++QEMU supports two types of guest image boot for ``virt``, and
++the way for the guest code to locate the dtb binary differs:
++
++- For guests using the Linux kernel boot protocol (this means any
++  non-ELF file passed to the QEMU ``-kernel`` option) the address
++  of the DTB is passed in a register (``r2`` for 32-bit guests,
++  or ``x0`` for 64-bit guests)
++
++- For guests booting as "bare-metal" (any other kind of boot),
++  the DTB is at the start of RAM (0x4000_0000)
 diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 376c18f0b17..163ab915592 100644
+index 163ab915592..4c5b0e4aab8 100644
 --- a/docs/system/target-arm.rst
 +++ b/docs/system/target-arm.rst
-@@ -84,6 +84,7 @@ undocumented; you can get a complete list by running
-    arm/aspeed
-    arm/digic
-    arm/musicpal
-+   arm/gumstix
-    arm/nseries
-    arm/orangepi
-    arm/palm
+@@ -92,6 +92,7 @@ undocumented; you can get a complete list by running
+    arm/collie
+    arm/sx1
+    arm/stellaris
++   arm/virt
+ 
+ Arm CPU features
+ ================
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 048b2d41729..286b076da89 100644
+index 286b076da89..553760e5442 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -650,6 +650,7 @@ R: Philippe Mathieu-Daudé <f4bug@amsat.org>
- L: qemu-arm@nongnu.org
- S: Odd Fixes
- F: hw/arm/gumstix.c
-+F: docs/system/arm/gumstix.rst
+@@ -878,6 +878,7 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/virt*
+ F: include/hw/arm/virt.h
++F: docs/system/arm/virt.rst
  
- i.MX25 PDK
- M: Peter Maydell <peter.maydell@linaro.org>
+ Xilinx Zynq
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
 -- 
 2.20.1
 

@@ -1,91 +1,91 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3229149lfm;
-        Mon, 13 Jul 2020 05:21:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzrfKEqVMx4D6os0T2I9ZpBeJvxjKkPp4brno7pjUR6eD4jC1rIcwfS/A4P/B/R9m8d6RO1
-X-Received: by 2002:a25:acd5:: with SMTP id x21mr126597975ybd.400.1594642882477;
-        Mon, 13 Jul 2020 05:21:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594642882; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3231398lfm;
+        Mon, 13 Jul 2020 05:24:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzMDGGJF/xDcGfV619nTVTqW2Qc2lu6xG056bc+JfYTTDb4vb7MnMaBeKOyFwNYWyFQVAap
+X-Received: by 2002:a25:cc55:: with SMTP id l82mr28778374ybf.232.1594643042760;
+        Mon, 13 Jul 2020 05:24:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594643042; cv=none;
         d=google.com; s=arc-20160816;
-        b=LwIsaw37AUvoV7l1PZuW6m3PzDZA3OwVvbEevqxnog6U7oN2S5wY70w3SltbhZGdwk
-         IhQZJKd03VFfMSE5fIPzspAn3SwRLkfhrH2uJSkih8uF0uQwgls6uxWQPvjutN2FO12y
-         tc6k2hhTtznXWYDjX4w8f5vF78DVwue8uWakzrKWHWx0XNQOIt5TJfSV1JpMeMZWleSl
-         5rrg7lWXbnStAGt/2a42/jXAZ83T3Ai+Th1VlDfyhte6fqMbfOmavcS0Q7j/O2i2blai
-         h6bwlB8aOBaJlRqOuP8Y8R+chvE0NXzIzT5E+EjUU3f03gbhKZdhCkaDcnZQkLZuLojx
-         bwaw==
+        b=RGxfaW3kxHi5x5Pk1Ctzm1hspeAGyVj9m5gBwbbyIe1PTrSi0z02MD13UTCpLL4SEs
+         xOEDhCOpPiaK6QdhqSsJKXfABHwhXZH7pEQkQfWQjg0cxk4xNn4Xsyik8+EAj+AN+IMp
+         E7oHGMKzmeMbj8lu8cNKFKyx5gZKQJMCvJKFvG5V8Q1hJPxrW7PxHDzkqWvEEj8U4XSK
+         HopSw0fJXWSOtN+fCvMe9qIFS3kfyDchydie8qc4eGhjhUiTVUpGBMnntxNLUjrSfbk8
+         DRgvmf8vavQ8si5rPjuMEKuEeOayJughNDeNag0nw/yyqgejMa6/ekZeszDZDifF5ZAy
+         0NGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=Egpc54i5HYWfGCfP9m9uTkxpfsUOjfaZe0mlV+GmJB8=;
-        b=U8oQ6Zpb3YKO4S8rrkIUWF200tOh1rZ8R64ql1hoo287MQHavfz7hW4lo6CLkSdXxA
-         /NxL/0E1TGG4alYUtcMW4oChQw4/ZE2CjZk+2HuvpsdKdgdc45arnh8qvCsq+4sTCuDT
-         xJUqRxLzPT7gj/PYtEG9JqRs0RwhRN6HqYWrX/KrGofzt84z5J1/HnS6+7G+VQ8Fptri
-         UzsXAadJ0QPXQpiuZOj0pVULmIwxJLSfUXpD2YUWI2Up3UfJk8JpFC3wY6EC7LNkMFFB
-         HSm8vCA8RAjHbGnM/fTuuN+DnusYZTEHS4RDMBuR3SKfM0TNsZhg6mUOHBu0e2f8uSqG
-         vQHA==
+        bh=zvt5rbE+Ent617p3br6OPrXJLXMuLhU3VrCurKbfOao=;
+        b=OSqiV5Lia9HN2WQicN7z54HM64FYGYhySN+f/lZLx7nID7M+oQXzq5IgLSLlIPG5By
+         eoyOsAvySAPN1v8qDgeEdfDpYysYBOzxgB55kdUFyH16ImKKwzuqTFg5lq/0P0oK295s
+         5EKhp2dVy/kMFOYXydcIr8GNmPkAWgw5zxTuvj16tMWewzBqnhwjBwDlNlePMYJwrpGN
+         ikp+4veiV/gKLtqjOKd8j31ZyApymRJxs6H6tO4mH9DUt9Vk+Ky48hTIxj3L9rORWBdx
+         gqiVV3vae9SJvpHv2IWmuOTxwY46VSTCcBHH+6saTyllPUqhDLzCgIA+d1b+SBJkPIMe
+         JlFw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a11si15667957ybp.411.2020.07.13.05.21.22
+        by mx.google.com with ESMTPS id m84si16957618ybf.486.2020.07.13.05.24.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 05:21:22 -0700 (PDT)
+        Mon, 13 Jul 2020 05:24:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45706 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49888 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juxST-0002Jh-NO
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 08:21:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59146)
+	id 1juxV4-0004Ez-3o
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 08:24:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60484)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juxSD-0002HM-Jh
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 08:21:05 -0400
-Received: from 1.mo179.mail-out.ovh.net ([178.33.111.220]:50653)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juxUv-0004Dl-79
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 08:23:53 -0400
+Received: from 3.mo178.mail-out.ovh.net ([46.105.44.197]:40464)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juxSB-0007sg-Ri
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 08:21:05 -0400
-Received: from player796.ha.ovh.net (unknown [10.108.57.139])
- by mo179.mail-out.ovh.net (Postfix) with ESMTP id 4B7C216FAF6
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 14:20:58 +0200 (CEST)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juxUs-0008BM-Tc
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 08:23:52 -0400
+Received: from player694.ha.ovh.net (unknown [10.110.208.202])
+ by mo178.mail-out.ovh.net (Postfix) with ESMTP id BC4FBA99A8
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 14:23:48 +0200 (CEST)
 Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
  (Authenticated sender: clg@kaod.org)
- by player796.ha.ovh.net (Postfix) with ESMTPSA id 8DA4C14402D22;
- Mon, 13 Jul 2020 12:20:48 +0000 (UTC)
+ by player694.ha.ovh.net (Postfix) with ESMTPSA id 91363143A8968;
+ Mon, 13 Jul 2020 12:23:33 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003ca60b909-72eb-4364-a51f-3b7e6e2dbd1f,29C60B8BFD44B6CD822E82BF6A6060F4508BB267)
+ (GARM-95G0010353a2ee-ef43-465b-b385-6e216f2222fa,29C60B8BFD44B6CD822E82BF6A6060F4508BB267)
  smtp.auth=clg@kaod.org
-Subject: Re: [PATCH] hw/arm/aspeed: Do not create and attach empty SD cards by
- default
+Subject: Re: [PATCH 1/5] hw/i2c/aspeed_i2c: Simplify aspeed_i2c_get_bus()
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
-References: <20200705173402.15620-1-f4bug@amsat.org>
+References: <20200629173821.22037-1-f4bug@amsat.org>
+ <20200629173821.22037-2-f4bug@amsat.org>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <f21c68c9-a4e3-76cb-7484-1816d5742163@kaod.org>
-Date: Mon, 13 Jul 2020 14:20:48 +0200
+Message-ID: <8511de8e-45e3-e93e-acb4-eb1d75237de5@kaod.org>
+Date: Mon, 13 Jul 2020 14:23:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200705173402.15620-1-f4bug@amsat.org>
+In-Reply-To: <20200629173821.22037-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 5884234388977978201
+X-Ovh-Tracer-Id: 5932366610059594549
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrvdekgdehvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeffvddtudegieefudeugffhjefgieegieegleettdehgfeiieevueeihfegfefgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeeliedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=178.33.111.220; envelope-from=clg@kaod.org;
- helo=1.mo179.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 08:21:01
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrvdekgdehvdcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeffvddtudegieefudeugffhjefgieegieegleettdehgfeiieevueeihfegfefgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgepudenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieelgedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=46.105.44.197; envelope-from=clg@kaod.org;
+ helo=3.mo178.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 08:23:49
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
 X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -98,60 +98,221 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Eddie James <eajames@linux.ibm.com>,
- Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Markus Armbruster <armbru@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ Jan Kiszka <jan.kiszka@web.de>, Andrzej Zaborowski <balrogg@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Tmol9A4ujRrp
+X-TUID: UDH7sI0uZuhx
 
-On 7/5/20 7:34 PM, Philippe Mathieu-Daudé wrote:
-> Since added in commit 2bea128c3d, each SDHCI is wired with a SD
-> card, using empty card when no block drive provided. This is not
-> the desired behavior. The SDHCI exposes a SD bus to plug cards
-> on, if no card available, it is fine to have an unplugged bus.
+On 6/29/20 7:38 PM, Philippe Mathieu-Daudé wrote:
+> Simplify aspeed_i2c_get_bus() by using a AspeedI2CState argument.
 > 
-> Avoid creating unnecessary SD card device when no block drive
-> provided.
-> 
-> Fixes: 2bea128c3d ("hw/sd/aspeed_sdhci: New device")
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Thanks,
-
-C.
-
 > ---
-> Cc: Eddie James <eajames@linux.ibm.com>
-> Cc: Cédric Le Goater <clg@kaod.org>
-> Cc: Joel Stanley <joel@jms.id.au>
-> Cc: Andrew Jeffery <andrew@aj.id.au>
-> ---
->  hw/arm/aspeed.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
+>  include/hw/i2c/aspeed_i2c.h |  2 +-
+>  hw/arm/aspeed.c             | 70 ++++++++++++++++++-------------------
+>  hw/i2c/aspeed_i2c.c         |  3 +-
+>  3 files changed, 37 insertions(+), 38 deletions(-)
 > 
+> diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+> index f1b9e5bf91..243789ae5d 100644
+> --- a/include/hw/i2c/aspeed_i2c.h
+> +++ b/include/hw/i2c/aspeed_i2c.h
+> @@ -93,6 +93,6 @@ typedef struct AspeedI2CClass {
+>  
+>  } AspeedI2CClass;
+>  
+> -I2CBus *aspeed_i2c_get_bus(DeviceState *dev, int busnr);
+> +I2CBus *aspeed_i2c_get_bus(AspeedI2CState *s, int busnr);
+>  
+>  #endif /* ASPEED_I2C_H */
 > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 379f9672a5..11521c4be1 100644
+> index 379f9672a5..1285bf82c0 100644
 > --- a/hw/arm/aspeed.c
 > +++ b/hw/arm/aspeed.c
-> @@ -246,11 +246,12 @@ static void sdhci_attach_drive(SDHCIState *sdhci, DriveInfo *dinfo)
->  {
->          DeviceState *card;
+> @@ -385,13 +385,13 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
 >  
-> -        card = qdev_new(TYPE_SD_CARD);
-> -        if (dinfo) {
-> -            qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
-> -                                    &error_fatal);
-> +        if (!dinfo) {
-> +            return;
->          }
-> +        card = qdev_new(TYPE_SD_CARD);
-> +        qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
-> +                                &error_fatal);
->          qdev_realize_and_unref(card,
->                                 qdev_get_child_bus(DEVICE(sdhci), "sd-bus"),
->                                 &error_fatal);
+>      /* The palmetto platform expects a ds3231 RTC but a ds1338 is
+>       * enough to provide basic RTC features. Alarms will be missing */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 0), "ds1338", 0x68);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
+>  
+> -    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 0), 0x50,
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+>                            eeprom_buf);
+>  
+>      /* add a TMP423 temperature sensor */
+> -    dev = i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2),
+> +    dev = i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 2),
+>                             "tmp423", 0x4c);
+>      object_property_set_int(OBJECT(dev), 31000, "temperature0", &error_abort);
+>      object_property_set_int(OBJECT(dev), 28000, "temperature1", &error_abort);
+> @@ -404,16 +404,16 @@ static void ast2500_evb_i2c_init(AspeedMachineState *bmc)
+>      AspeedSoCState *soc = &bmc->soc;
+>      uint8_t *eeprom_buf = g_malloc0(8 * 1024);
+>  
+> -    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), 0x50,
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 3), 0x50,
+>                            eeprom_buf);
+>  
+>      /* The AST2500 EVB expects a LM75 but a TMP105 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7),
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 7),
+>                       TYPE_TMP105, 0x4d);
+>  
+>      /* The AST2500 EVB does not have an RTC. Let's pretend that one is
+>       * plugged on the I2C bus header */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
+>  }
+>  
+>  static void ast2600_evb_i2c_init(AspeedMachineState *bmc)
+> @@ -428,36 +428,36 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+>  
+>      /* The romulus board expects Epson RX8900 I2C RTC but a ds1338 is
+>       * good enough */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
+>  }
+>  
+>  static void swift_bmc_i2c_init(AspeedMachineState *bmc)
+>  {
+>      AspeedSoCState *soc = &bmc->soc;
+>  
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3), "pca9552", 0x60);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 3), "pca9552", 0x60);
+>  
+>      /* The swift board expects a TMP275 but a TMP105 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "tmp105", 0x48);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 7), "tmp105", 0x48);
+>      /* The swift board expects a pca9551 but a pca9552 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 7), "pca9552", 0x60);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 7), "pca9552", 0x60);
+>  
+>      /* The swift board expects an Epson RX8900 RTC but a ds1338 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "ds1338", 0x32);
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "pca9552", 0x60);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 8), "ds1338", 0x32);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x60);
+>  
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), "tmp423", 0x4c);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 9), "tmp423", 0x4c);
+>      /* The swift board expects a pca9539 but a pca9552 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), "pca9552", 0x74);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 9), "pca9552", 0x74);
+>  
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 10), "tmp423", 0x4c);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 10), "tmp423", 0x4c);
+>      /* The swift board expects a pca9539 but a pca9552 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 10), "pca9552",
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 10), "pca9552",
+>                       0x74);
+>  
+>      /* The swift board expects a TMP275 but a TMP105 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp105", 0x48);
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 12), "tmp105", 0x4a);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x48);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 12), "tmp105", 0x4a);
+>  }
+>  
+>  static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+> @@ -465,32 +465,32 @@ static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+>      AspeedSoCState *soc = &bmc->soc;
+>  
+>      /* bus 2 : */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2), "tmp105", 0x48);
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 2), "tmp105", 0x49);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x48);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 2), "tmp105", 0x49);
+>      /* bus 2 : pca9546 @ 0x73 */
+>  
+>      /* bus 3 : pca9548 @ 0x70 */
+>  
+>      /* bus 4 : */
+>      uint8_t *eeprom4_54 = g_malloc0(8 * 1024);
+> -    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), 0x54,
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 4), 0x54,
+>                            eeprom4_54);
+>      /* PCA9539 @ 0x76, but PCA9552 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "pca9552", 0x76);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 4), "pca9552", 0x76);
+>      /* PCA9539 @ 0x77, but PCA9552 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "pca9552", 0x77);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 4), "pca9552", 0x77);
+>  
+>      /* bus 6 : */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 6), "tmp105", 0x48);
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 6), "tmp105", 0x49);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x48);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 6), "tmp105", 0x49);
+>      /* bus 6 : pca9546 @ 0x73 */
+>  
+>      /* bus 8 : */
+>      uint8_t *eeprom8_56 = g_malloc0(8 * 1024);
+> -    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), 0x56,
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 8), 0x56,
+>                            eeprom8_56);
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "pca9552", 0x60);
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 8), "pca9552", 0x61);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x60);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 8), "pca9552", 0x61);
+>      /* bus 8 : adc128d818 @ 0x1d */
+>      /* bus 8 : adc128d818 @ 0x1f */
+>  
+> @@ -515,25 +515,25 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+>      /* Bus 3: TODO dps310@76 */
+>      dev = i2c_try_create_slave(TYPE_PCA9552, 0x60);
+>      qdev_prop_set_string(dev, "description", "pca1");
+> -    i2c_realize_and_unref(dev, aspeed_i2c_get_bus(DEVICE(&soc->i2c), 3),
+> +    i2c_realize_and_unref(dev, aspeed_i2c_get_bus(&soc->i2c, 3),
+>                            &error_fatal);
+>  
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 4), "tmp423", 0x4c);
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 5), "tmp423", 0x4c);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
+>  
+>      /* The Witherspoon expects a TMP275 but a TMP105 is compatible */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 9), TYPE_TMP105,
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 9), TYPE_TMP105,
+>                       0x4a);
+>  
+>      /* The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 is
+>       * good enough */
+> -    i2c_create_slave(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), "ds1338", 0x32);
+> +    i2c_create_slave(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
+>  
+> -    smbus_eeprom_init_one(aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11), 0x51,
+> +    smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
+>                            eeprom_buf);
+>      dev = i2c_try_create_slave(TYPE_PCA9552, 0x60);
+>      qdev_prop_set_string(dev, "description", "pca0");
+> -    i2c_realize_and_unref(dev, aspeed_i2c_get_bus(DEVICE(&soc->i2c), 11),
+> +    i2c_realize_and_unref(dev, aspeed_i2c_get_bus(&soc->i2c, 11),
+>                            &error_fatal);
+>      /* Bus 11: TODO ucd90160@64 */
+>  }
+> diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+> index fb973a983d..518a3f5c6f 100644
+> --- a/hw/i2c/aspeed_i2c.c
+> +++ b/hw/i2c/aspeed_i2c.c
+> @@ -959,9 +959,8 @@ static void aspeed_i2c_register_types(void)
+>  type_init(aspeed_i2c_register_types)
+>  
+>  
+> -I2CBus *aspeed_i2c_get_bus(DeviceState *dev, int busnr)
+> +I2CBus *aspeed_i2c_get_bus(AspeedI2CState *s, int busnr)
+>  {
+> -    AspeedI2CState *s = ASPEED_I2C(dev);
+>      AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(s);
+>      I2CBus *bus = NULL;
+>  
 > 
 

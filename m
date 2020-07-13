@@ -1,93 +1,110 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3047621lfm;
-        Mon, 13 Jul 2020 00:52:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwiVZX5J2B2TVcAofbrE2KQ4/VH8VPq1A2Hr8IqALSLl7U2wJ3jFYnkNrns9rc1zhuQR1Z6
-X-Received: by 2002:a25:a121:: with SMTP id z30mr39810222ybh.408.1594626748011;
-        Mon, 13 Jul 2020 00:52:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594626748; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3056738lfm;
+        Mon, 13 Jul 2020 01:07:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzSD3gHksOs+7GQ055klWggT/LbkaycIrfF3p0mjw2I8PtJsa3zCGi7R856711HtKVL+X2L
+X-Received: by 2002:a25:18d7:: with SMTP id 206mr9051327yby.473.1594627635353;
+        Mon, 13 Jul 2020 01:07:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594627635; cv=none;
         d=google.com; s=arc-20160816;
-        b=wXUcWFoHmCPrHaQ5oG+SV0p9Vthfj0LYubSOWddUS1ZmWZ68d3D31d+IL2NxZTTCuI
-         C2MpTAHO2iFbwyOO6M4dEzqHWEAeE5VDic2GXZbQzdqv0MB9ZGSTqK80DyJj/7YAr22S
-         cEWWDHAdQ9JbuvR8ovRmIFGiv9Gibnlwv/1G8RkEvi2UNXSbwfolfFKAs9J7X9kNLwhv
-         nB+OnAeVicr5ozM6dyl7uNlNTyC5NkxQx1IU1q8/hZz2/ML/y3Kzwa5RfYA6e4Unf74P
-         HaT3p+XrE7X7qydHscAiMhU7Sh+/htVQJI+9soP+LdNj8dSQwKjQt1QQkkrSqbajpuTz
-         8aWg==
+        b=GhleGK7g6P8VPxuc8P6tdgfgp4imeTIQlX81qUS32+7yZz7dKj6oUSgskO2vF7OGoX
+         zyMK8ETg2yPf0yz0VPN7Iv2qK198xSoxgCqcSFZ7PbRJ7LmdY4D20OsQ+uq3CRnX2iA5
+         v+HIJesXcYd7n5f4LGrDpnE1NGyhp8n3Eg+yhj3mpKy4swdGLg2AOhLgBv7aySW51zWS
+         XeFmHqnri0RjIileSCuw+TL7Ba7mdGVmFDApNs0J/LbwqRhB5RaY3S8WtZc+sgVBq5jB
+         w12ErGIvecPVwM/axJjwEcA+AIC63H+vzPols6MigfxvgwG5DREkDz0ij6exN65HnAMD
+         FzMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=6x3Rl7kcN0MuMcF+Cq6zdDrNAryEByPlu4bDZx0dTp4=;
-        b=c8XmnNCH8qqLzFEeAEPV+XupJmYkm9LKQFJ2xenCUsxF96WggVIvqAIycy1zpCCBQm
-         gELPcsiEapfhSLJeTQr8er1DCGyvze71Af4AYtlS2NO4SH2t7OhFNx+hxA0sx9jkDoz2
-         gwyxXuaMy4sphR5Uik7wqBoWEtdxr+zeYJEYWdfV0qqGwn0jrB392p4tPkcYPL48xrWL
-         ay0X8vOknbJtE1cyHfgGgEF4WDbLHTVDGQkpwQiwb+mjkb+83Xx27dXqkmy9Hy09iRkQ
-         wNzp3Y15PPPktBTeBL1gxDR20N00qrjgCf7/N39e9r1pj+yhvnisl93jY4VRgeOYpTHI
-         X0wA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=u3c6nzETiRerzsAAkRnLd14naRzeIdzULOJdcj7F5N0=;
+        b=UcrSGRJ5OzskAZT6KzyE6ZGibb8AE/n3LWOLmyUb5e6geDG39+vK7SLA0aIkJFffxp
+         r4hr0dgOp0ZtFK05Y2rtS17CkCdp1iw2eyTsskdONJrmCgeugr4aJFjOpM2Wx30R02P0
+         pAGuFFoxj+0kfYL5ohxMGCNb4V/VEoRvMMvxMde/jq/pVJiNTQmllRRrIL1Xs59XdtQY
+         2pHp1hdwQTMkf2CHISIsHVQ6ufqiskorrMJhfa4XlhzY9laHqPTtVi4KcQBF5T+FMZfF
+         nRyXb0VzoVV6VE9oLYFBL0RKTnpjkQAAAR2LiF9UMydF61e99P4lFUfYaNWR8Na6sw8U
+         /S4w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MHEu0COV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l3si12792712ybl.247.2020.07.13.00.52.27
+        by mx.google.com with ESMTPS id x9si14521829ybd.306.2020.07.13.01.07.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 00:52:27 -0700 (PDT)
+        Mon, 13 Jul 2020 01:07:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56418 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=MHEu0COV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:41736 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jutGF-0006h0-Cz
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 03:52:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36152)
+	id 1jutUY-0004Pr-PG
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 04:07:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39812)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jutG7-0006fs-P9
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 03:52:19 -0400
-Received: from 10.mo69.mail-out.ovh.net ([46.105.73.241]:33352)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jutG4-000297-KC
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 03:52:19 -0400
-Received: from player696.ha.ovh.net (unknown [10.108.42.102])
- by mo69.mail-out.ovh.net (Postfix) with ESMTP id 6AEC8985BB
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 09:52:06 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player696.ha.ovh.net (Postfix) with ESMTPSA id 47F4014571F83;
- Mon, 13 Jul 2020 07:51:54 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R0026e4cf995-3468-48a4-921b-b5e1cb283914,29C60B8BFD44B6CD822E82BF6A6060F4508BB267)
- smtp.auth=clg@kaod.org
-Subject: Re: hw/misc/aspeed_scu: 5d971f9e breaks Supermicro AST2400
-To: Erik Smit <erik.lucas.smit@gmail.com>, Joel Stanley <joel@jms.id.au>
+ (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
+ id 1jutUS-0004Pi-TZ; Mon, 13 Jul 2020 04:07:08 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:43154)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
+ id 1jutUR-00041b-CT; Mon, 13 Jul 2020 04:07:08 -0400
+Received: by mail-oi1-x242.google.com with SMTP id x83so10257399oif.10;
+ Mon, 13 Jul 2020 01:07:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=u3c6nzETiRerzsAAkRnLd14naRzeIdzULOJdcj7F5N0=;
+ b=MHEu0COV9uxYHK8bkFedzbidnkUddVP/86HvKo/C6lYUfiKE12knI5HKt/FymvcAKF
+ 1T0Chc7MQe0QPWlpea/RKitpJCGcrnuHPyy50gVlgGUE8yOBLF2VenyjGZaU1M+fk7xG
+ BVtBT8ICD/xG4dqLFJaq0R5wSDK3EX8F1RHG92Mvgt6m7egQakPBJyJQo0RC0Tyk1Yz1
+ 7NhIF8aBOLNxrroNx6hVj+iFSWNLLRteZYZ3gk/W03oVh5ROSholtUkfESt/I1WHsdgg
+ nDkmjvXwUCTHQx7pqFtlN1DIBbI/19s68pcwG1zOcdDO2o1VMBk4LX3zDs8YGJqcpIia
+ Vomw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=u3c6nzETiRerzsAAkRnLd14naRzeIdzULOJdcj7F5N0=;
+ b=aelvZkG1pCc61UviFn20I0aHvTqFHnPqGVLKinsOvup4enkZStC45sJLtTQBLvO/tj
+ cJhjyP84WoQl9F50dBlVRhRNVDZEiDI+mmb5p3HQeRTht+WVpul6nUlT4Zn1OuMST2je
+ jmyVGdzaLuHeGFoI4IwjYv5a+HdxawKnCjaWDBIfZ5tJtU396rNf2+PUKOo4d2PjuIIa
+ LmpRO57eSufzAvCSxLovjs47hMs2G0n9GjTBGC1pbtGqAGMSlDI0Kk2RhK6xzQk+0SCK
+ vo9kYBVlWo3Dof5Iu+pEWiL3VjBMnt9Q7Todcvkn4zGA+DgUOjzUpnYs39feE9XmfzzM
+ SoLw==
+X-Gm-Message-State: AOAM532IuXTEof4qirbPG3LibWKtT1u5OmQgLg6klkqKSPsUla0LP3G+
+ +fO6L+IpawDvt4cc2K0ck42pAypMZ/mVJueY2HGpvj23IvI=
+X-Received: by 2002:a05:6808:a19:: with SMTP id
+ n25mr12349271oij.84.1594627625317; 
+ Mon, 13 Jul 2020 01:07:05 -0700 (PDT)
+MIME-Version: 1.0
 References: <CA+MHfoubt1g2FzcjTw3a0vNr7X2T8Jb+nYoc4_x=Z2TP51afKg@mail.gmail.com>
  <a7acba46-5a9a-5dd2-71c6-7e4586485823@amsat.org>
  <CA+MHfot6FdS2yT0mEsCW36bCfwy-WY-1KPQ-KDfYBKzTy=Gd7w@mail.gmail.com>
  <CACPK8Xdqr+EufMgooCY=D+Vt98qu11YTHE5Fzi5+xqX=wKReeQ@mail.gmail.com>
  <CA+MHfouin6Zmz+GrjWRCc_WzPF=ff-z_5V7BLv0HkL+SW9bRoQ@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <8879bfee-752b-c4e2-7646-c42dec84a440@kaod.org>
-Date: Mon, 13 Jul 2020 09:51:53 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
-MIME-Version: 1.0
-In-Reply-To: <CA+MHfouin6Zmz+GrjWRCc_WzPF=ff-z_5V7BLv0HkL+SW9bRoQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 1343480067347286801
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrvdejgdduvdekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefueeufeevleevleelleejuedtieevtefgteelgfeiieffgfettefhudeigfdtieenucffohhmrghinhepshhuphgvrhhmihgtrhhordgtohhmnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieeliedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=46.105.73.241; envelope-from=clg@kaod.org;
- helo=10.mo69.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 03:52:07
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
+ <8879bfee-752b-c4e2-7646-c42dec84a440@kaod.org>
+In-Reply-To: <8879bfee-752b-c4e2-7646-c42dec84a440@kaod.org>
+From: Erik Smit <erik.lucas.smit@gmail.com>
+Date: Mon, 13 Jul 2020 10:06:54 +0200
+Message-ID: <CA+MHfou6ijtwjzWye6CKaqTa4sKxF1WmgH9juaSdO344uP2UZA@mail.gmail.com>
+Subject: Re: hw/misc/aspeed_scu: 5d971f9e breaks Supermicro AST2400
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
+ envelope-from=erik.lucas.smit@gmail.com; helo=mail-oi1-x242.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -100,219 +117,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Ryan Chen <ryan_chen@aspeedtech.com>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Cc: "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: euzgll7sYbEe
+X-TUID: zu74O4pUQom1
 
-On 7/1/20 7:17 AM, Erik Smit wrote:
-> Hi Joel,
-> 
-> On Wed, 1 Jul 2020 at 02:54, Joel Stanley <joel@jms.id.au> wrote:
->>
->> On Tue, 30 Jun 2020 at 15:32, Erik Smit <erik.lucas.smit@gmail.com> wrote:
->>>
->>> Hi Philippe,
->>>
->>> On Tue, 30 Jun 2020 at 17:29, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>>
->>>> Hi Erik,
->>>>
->>>> On 6/30/20 5:11 PM, Erik Smit wrote:
->>>>> Hello,
->>>>>
->>>>> 5d971f9e memory: Revert "memory: accept mismatching sizes in
->>>>> memory_region_access_valid" breaks Supermicro AST2400 u-boot.
->>>>> Supermicro AST2500 u-boot is fine.
->>>>>
->>>>> The u-boot tries to make a 2-byte read from address 0x84, but
->>>>> aspeed_ast2400_scu_ops has min_access = 4. When I change min_access to
->>>>> 2 or revert above commit, u-boot boots again.
->>>>>
->>>>> Is changing min_access to 2 the right way to fix this?
->>
->> Ryan, do all addresses on the AST2400's APB respond to single byte accesses?
->>
->>>>
->>>> If you have access to the datasheet and can verify, then yes.
->>>> Else I suppose Cédric, Andrew or Joel can check for you.
->>>
->>> I do not have a datasheet. Aspeed seems quite picky about sharing this
->>> and I'm just a random researcher.
->>
->> Erik, can you point us to the image you're using?
-> 
-> SMT_X11_158.bin
-> 
-> You can get it on
-> https://www.supermicro.com/en/products/motherboard/X11SSL-F by
-> clicking on "BMC/IPMI Firmware" on the right.
-> 
->> What is the command line are you testing with?
-> 
-> qemu-system-arm -machine palmetto-bmc -m 512 -drive
-> file=SMT_X11_158.bin,format=raw,if=mtd -nodefaults -nographic -serial
-> stdio
-> 
-> Best regards,
-> 
-> Erik Smit
-> 
+Hi C=C3=A9dric,
 
-Here is a quick fix. But I think we should change valid.min_access_size
-for all Aspeed models since the reads can be done with 1/2/4 bytes.
- 
-    aspeed/scu: Fix valid access size on AST2400
-    
-    The read access size of the SCU registers can be 1/2/4 bytes. Write is
-    only 4 bytes.
-    
-    Signed-off-by: Cédric Le Goater <clg@kaod.org>
+On Mon, 13 Jul 2020 at 09:52, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> With this patch, the supermicro firmware boots further but there is still
+> an issue. It might be the flash definition I used. The machine is detecte=
+d
+> as an AST2300 SoC which is weird.
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 0ccbab7afb60..ca37f935f607 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -327,7 +327,7 @@ static const MemoryRegionOps aspeed_ast2400_scu_ops = {
-     .read = aspeed_scu_read,
-     .write = aspeed_ast2400_scu_write,
-     .endianness = DEVICE_LITTLE_ENDIAN,
--    .valid.min_access_size = 4,
-+    .valid.min_access_size = 1,
-     .valid.max_access_size = 4,
-     .valid.unaligned = false,
- };
+> BMC flash ID:0x19ba20
+> Unable to handle kernel NULL pointer dereference at virtual address 00000=
+000
 
+The firmware is expecting the flash ID to repeat. The following makes it bo=
+ot.
+Not sure if this is the right way to go.
 
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 8227088441..5000930800 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -1041,7 +1041,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+             s->data[i] =3D s->pi->id[i];
+         }
+         for (; i < SPI_NOR_MAX_ID_LEN; i++) {
+-            s->data[i] =3D 0;
++            s->data[i] =3D s->pi->id[i % s->pi->id_len];
+         }
 
-With this patch, the supermicro firmware boots further but there is still 
-an issue. It might be the flash definition I used. The machine is detected
-as an AST2300 SoC which is weird.
+         s->len =3D SPI_NOR_MAX_ID_LEN;
 
-Cheers,
+--=20
+Best Regards,
 
-C.
-
-
-
-U-Boot 2009.01 ( 4月 02 2019 - 15:29:02) ASPEED (v.0.21) 
-
-I2C:   ready
-DRAM:  128 MB
-Flash: 32 MB
-*** Warning - bad CRC, using default environment
-
-In:    serial
-Out:   serial
-Err:   serial
-H/W:   AST2400 series chip
-COM:   port1 and port2
-PWM:   port[ABCDH]
-Hit any key to stop autoboot:  0 
-## Booting kernel from Legacy Image at 21400000 ...
-   Image Name:   21400000
-   Image Type:   ARM Linux Kernel Image (gzip compressed)
-   Data Size:    1536645 Bytes =  1.5 MB
-   Load Address: 40008000
-   Entry Point:  40008000
-   Verifying Checksum ... cramfs size 15032320
-cramfs size 7315456
-OK
-   Uncompressing Kernel Image ... OK
-
-Starting kernel ...
-
-Linux version 2.6.28.9 (root@localhost) (gcc version 4.9.1 (crosstool-NG 1.20.0) ) #1 Wed Nov 20 18:20:38 CST 2019
-CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=00093177
-CPU: VIVT data cache, VIVT instruction cache
-Machine: ASPEED-AST2300
-Memory policy: ECC disabled, Data cache writeback
-Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 20066
-Kernel command line: console=ttyS1,115200 root=/dev/mtdblock2 rootfstype=cramfs noinitrd rw mem=79M
-PID hash table entries: 512 (order: 9, 2048 bytes)
-Console: colour dummy device 80x30
-console [ttyS1] enabled
-Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
-Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
-Memory: 79MB = 79MB total
-Memory: 76736KB available (2848K code, 358K data, 112K init)
-SLUB: Genslabs=12, HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
-Calibrating delay loop... 835.58 BogoMIPS (lpj=4177920)
-Mount-cache hash table entries: 512
-CPU: Testing write buffer coherency: ok
-net_namespace: 636 bytes
-NET: Registered protocol family 16
-SCSI subsystem initialized
-NET: Registered protocol family 2
-IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
-TCP established hash table entries: 4096 (order: 3, 32768 bytes)
-TCP bind hash table entries: 4096 (order: 2, 16384 bytes)
-TCP: Hash tables configured (established 4096 bind 4096)
-TCP reno registered
-NET: Registered protocol family 1
-NetWinder Floating Point Emulator V0.97 (extended precision)
-NTFS driver 2.1.29 [Flags: R/W].
-JFFS2 version 2.2. (NAND) (SUMMARY)  © 2001-2006 Red Hat, Inc.
-fuse init (API version 7.10)
-msgmni has been set to 149
-alg: No test for stdrng (krng)
-io scheduler noop registered
-io scheduler anticipatory registered
-io scheduler deadline registered
-io scheduler cfq registered (default)
-Non-volatile memory driver v1.2
-ttyS0 at MMIO 0x1e783000 (irq = 9) is a ASPEED UART
-ttyS1 at MMIO 0x1e784000 (irq = 10) is a ASPEED UART
-brd: module loaded
-loop: module loaded
-nbd: registered device at major 43
-Driver 'sd' needs updating - please use bus_type methods
-Driver 'sr' needs updating - please use bus_type methods
-BMC flash ID:0x19ba20
-Unable to handle kernel NULL pointer dereference at virtual address 00000000
-pgd = c0004000
-[00000000] *pgd=00000000
-Internal error: Oops: 5 [#1]
-Modules linked in:
-CPU: 0    Not tainted  (2.6.28.9 #1)
-pc : [<c017916c>]    lr : [<c01c6ec4>]    psr: 60000013
-sp : c481de28  ip : c481de38  fp : c481de34
-r10: 00000000  r9 : c481c028  r8 : c030b434
-r7 : c030b5c0  r6 : 0019ba20  r5 : c0304240  r4 : c0304240
-r3 : 0000008c  r2 : c02cc4e8  r1 : 00000000  r0 : c02cc4e9
-Flags: nZCv  IRQs on  FIQs on  Mode SVC_32  ISA ARM  Segment kernel
-Control: 00093177  Table: 40004000  DAC: 00000017
-Process swapper (pid: 1, stack limit = 0xc481c268)
-Stack: (0xc481de28 to 0xc481e000)
-de20:                   c481de64 c481de38 c01c6ec4 c0179168 c001f490 c001f51c 
-de40: c001f494 c001f51c 00000000 c030b5c0 c01c6dcc c481c028 c481dfdc c481de68 
-de60: c00242c4 c01c6dd8 00000000 00000044 c0065200 000212d0 00000000 00000000 
-de80: 00000000 00003433 00000000 00000000 00000000 ffffffff 00000000 00000000 
-dea0: 00000000 ffffffff 00000000 00000000 00000000 c0330210 00000000 c481df4c 
-dec0: 000003e0 c4803480 c481df2c c481ded8 c01756b8 c007e608 00000000 00000000 
-dee0: 000080d0 c4816130 00000000 c033b29c 000080d0 00000000 c481df24 c481df08 
-df00: c0175874 c482eb80 c482f5a0 c032f694 00000000 00000000 00000000 00000000 
-df20: c481df3c c481df30 c01756e8 c0175528 c481df6c c481df40 c00b9294 c01756dc 
-df40: c482f5a0 c02a166b c032f694 00000062 c482eb80 0000002b c032f694 00000000 
-df60: c481df8c c481df70 c00b99f4 c00b9268 c481df8c c482f5a0 c00b9978 c02f3564 
-df80: c481dfbc c481df90 c005e890 c00b998c c481dfac 00003334 00000000 c0010000 
-dfa0: c481dfbc 0000007f c02f2b4c c02f2b50 c481dfdc c001f494 c001f51c 00000000 
-dfc0: 00000000 00000000 00000000 00000000 c481dff4 c481dfe0 c0008a08 c002427c 
-dfe0: 00000000 00000000 00000000 c481dff8 c003f8b8 c000899c 00000000 00000000 
-Backtrace: 
-Function entered at [<c017915c>] from [<c01c6ec4>]
-Function entered at [<c01c6dcc>] from [<c00242c4>]
- r9:c481c028 r8:c01c6dcc r7:c030b5c0 r6:00000000 r5:c001f51c
-r4:c001f494
-Function entered at [<c0024270>] from [<c0008a08>]
-Function entered at [<c0008990>] from [<c003f8b8>]
- r5:00000000 r4:00000000
-Code: e1a0c00d e92dd800 e24cb004 e2402001 (e4d13001) 
----[ end trace 8e932b3f82a003bb ]---
-Kernel panic - not syncing: Attempted to kill init!
-
-
-
+Erik Smit

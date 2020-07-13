@@ -1,187 +1,154 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3330164lfm;
-        Mon, 13 Jul 2020 07:21:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx2VyVJ0gPLgg0Fq/WitjLkEovTpa8Tm8mYn6yXMbu+RcCfjaZt0+/745qE6Ds/jqYF+pX9
-X-Received: by 2002:a25:8b85:: with SMTP id j5mr306124ybl.255.1594650086387;
-        Mon, 13 Jul 2020 07:21:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594650086; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3345220lfm;
+        Mon, 13 Jul 2020 07:37:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiZ1w2gfnu+ljD50TCPyKwE6IaBAbHVN+90PO39Dmd/IXlLwZpSzmkmj6ohDqyh2EYHmly
+X-Received: by 2002:a25:570b:: with SMTP id l11mr483962ybb.246.1594651054918;
+        Mon, 13 Jul 2020 07:37:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594651054; cv=none;
         d=google.com; s=arc-20160816;
-        b=bl3XiSnqpdw9HQ9cshZDcdzfalSEhawgUbmuX8/JPdsvRepx5jkgjDzFMb6XXIQiVs
-         +j7crUxQbScRdu8iMT02dIQPvsrc3NOpTSR+rQrMGfPAl8BM7YtyacU1u1Z/2zijJWIT
-         Hb0hNiKNZhS/6HIVdMY53w4OkBmtCvN+++BUZHK51GQf9plkNuXegQzGdocqOV+S63nt
-         RFvdgwjPjcYPr19QibgFqi9krfY3VCTtIzfgThOK71XuU9ETTlDo1L/ufCyfkJeCNra+
-         bD3+0xDJeMBQszEZaFpKkqy8SebD7Ds++9FtZ/tL1CIntjDzuEO4f8dFcscHast9iaJU
-         xtrw==
+        b=V9ReVlyGihJB/CWyqx+b1z9ZBTqCp4dgNjgF2l2vOQ9wgwfpiu119AZYGvf2tbnlUY
+         sCJT4Dlw/5c/mKpSFXQjkkbLnA7m2pQ3RcPpbqXP7e6pSupOaJijiVoSrIGvqyzkB11C
+         Y/A+kH2Lmcm0TOfdbLJQufl3i8NN3re+Lnve7hl91zCpOm3zxHnSwXskdW3FIsGTsSH+
+         9VlG5PYvkUidJMoUHaK8kBuoy5TPvtjgauE/eikl3OZ3ut14SxFQOEY6PRKG7NXVzt/R
+         qqbee/fmFFbUyGlrqL7fRjQ6PKt+wXr1LfyH427/2DM6ko5DVI6XIV1tNBOC8hVyZAh0
+         fO9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=+DntmE6Ztg8FIaVxvIb+sIfE9k2KY6k9wrMNl7Vrl2U=;
-        b=cpJI6LjlUVQI/tzhLKYzpewedLqif2aJpieMGmbdNY8/xm3jAXbf6sVe/lTZokGRWy
-         mR5GpFPjlF7nS4hy1PMkHJL9HBwWv7oLWxRLonHxU7ypU6CKSrUIkVqqibf0ktc+ST3F
-         RIFPdnjSFzyl6eyBO/JoGtHGL2fregIM6Q0Rm6nino15aK03yu48pZPlTPuPNl0Gqy+4
-         6NAY9npsaMdz8UT2Jy/oX+ETIaw9oEfgEzl+MFl8K501OteEaQ6uH3rF4yGeNPnMInbj
-         IFls6r/60PWxkDmA6p6l14h6By/08WA2TsceMGrBna4/WKW4+0WayLz5Crv3H4psDqsV
-         CXtg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=nB/5rC0VVxktBcVawvErd/qrg+KIJA8SmLqeHRRk/Lw=;
+        b=jXMysArlM5NbvCOSiBYzjsJ+fxjhdyJISjntCdj3drh7/Z2EZvwFsWw6ZdGKZ39or+
+         bBtPYb20a80PTA6Zxz0Wrb1QFah0XVdA2beP8zDA85ohsSajKYS0NdUEHOEdVkBhm8XZ
+         4yf1f3mjFaG0XB0g7Huvdt9lq7z8sJPRZBFd9nyJMcLaxuq3T7yjrNl3BdZPXUKmv20q
+         hCbXk5MZKPb2QNgR3GgXFgRn0TE3CukrGfTmZfryMiw1ZOk7hPOt7E0+urTWLHEnTaWX
+         p93RdvIcsSp/FFuiC9zTDCTb5Z3xBFfVcpnBtDF8GJW9YH4dMNmEhyaw5/frj1+y38Hj
+         azcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="jztX9O/7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l131si14332771ybf.61.2020.07.13.07.21.26
+        by mx.google.com with ESMTPS id j194si13808938ybj.243.2020.07.13.07.37.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 07:21:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Jul 2020 07:37:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34200 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="jztX9O/7";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36500 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juzKf-0005xO-MT
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 10:21:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37762)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1juzaI-0004nv-B5
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 10:37:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44296)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juzJE-0004Dh-KF
- for qemu-devel@nongnu.org; Mon, 13 Jul 2020 10:19:56 -0400
-Received: from 1.mo173.mail-out.ovh.net ([178.33.111.180]:52394)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juzJC-0007na-Ed
- for qemu-devel@nongnu.org; Mon, 13 Jul 2020 10:19:56 -0400
-Received: from player778.ha.ovh.net (unknown [10.110.115.91])
- by mo173.mail-out.ovh.net (Postfix) with ESMTP id 095D5146E61
- for <qemu-devel@nongnu.org>; Mon, 13 Jul 2020 16:19:50 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
- (Authenticated sender: clg@kaod.org)
- by player778.ha.ovh.net (Postfix) with ESMTPSA id 4C0AF1455718C;
- Mon, 13 Jul 2020 14:19:43 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G002f4ce4a81-69c6-402d-9314-f1e4916fb6b6,29C60B8BFD44B6CD822E82BF6A6060F4508BB267)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH] hw/net/ftgmac100: Fix integer overflow in
- ftgmac100_do_tx()
-To: Peter Maydell <peter.maydell@linaro.org>,
- Mauro Matteo Cascella <mcascell@redhat.com>
-References: <20200710085417.638904-1-mcascell@redhat.com>
- <CAFEAcA-pRXOz5JVcwHa8=oaeogwaOK0YVXYQiJUpdM_rFZ+QTA@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <d7affe2b-0a2c-4e06-a874-daccf16bd136@kaod.org>
-Date: Mon, 13 Jul 2020 16:19:42 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1juza8-0004nK-2b
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 10:37:24 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37353)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1juza4-00023h-Pv
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 10:37:23 -0400
+Received: by mail-wm1-x344.google.com with SMTP id o2so13405523wmh.2
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 07:37:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nB/5rC0VVxktBcVawvErd/qrg+KIJA8SmLqeHRRk/Lw=;
+ b=jztX9O/7Tm1QBLswG/KSEekcoGrtP1uoa3C5mQ709P7uaI9ZUgiBvt/FrcQH1gORb1
+ TITwNct1XaEUQCO+j0epMYjNjyVV/DSuYKJmJAkgCpb+B7NVMjyhInp7Oim5IBrT0uft
+ FjWBZu4o7c4L5dLsujcPY9TlBcbNAuWdke+n1+0V7GZhyIXdQGh3eShdx4tCoeEdVJSB
+ 2v5wa0Hfc00gA3yy17OtE6mo814RGaFdZmJfgtqJhQiyjZnUISWgINeEQJOqKOfykZUd
+ 2xGb1Q6ICWG+mTXyngl9hAOfTp8F6vezq0Wu21Q0szAUJHbrbJGZmAHLbAefzKiGt37D
+ pu8g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=nB/5rC0VVxktBcVawvErd/qrg+KIJA8SmLqeHRRk/Lw=;
+ b=FzAvoyCNnhXvuYnird5mbzOCGSYNwBen/Xv5B2hI7fkpEXcmZN+its8RBVuUtluQNV
+ DccvHkTYJWiW4lEoMPrMIxRTXL1FLEiVlHkbUbaI1lhLIApYfMW2rxTzy77bALhuRsgp
+ NBY0MRg0O12ueyaz504szMHEamf79GJlaFxQ63AkiG9bUZ2nvQsu+pu8Qt+BeqJn+7o5
+ 58CoNQ/69dDuUMHCX7R0lqejNEXGVsn9Z6CTBW1fbW9Qq9MJ0YO+XV80kEzH70Lf90UV
+ 7t0/nFt+C6n3zRALQb6LS28bfeA8dTZssycKdYXrXWfhb0H2M1iZIAcYXPGOidtDGSje
+ qsBg==
+X-Gm-Message-State: AOAM531pGZwSZ0YDib3PjpuswPKNiMq7d3B6AcK9I8Cf8gzEC8egJDhs
+ bQ6Hv5C5oHv083Y08AWMXXm4VhWwfNGpIw==
+X-Received: by 2002:a7b:ca4c:: with SMTP id m12mr256888wml.33.1594651038602;
+ Mon, 13 Jul 2020 07:37:18 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id t4sm23464334wmf.4.2020.07.13.07.37.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 Jul 2020 07:37:18 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-5.1] hw/arm/armsse: Assert info->num_cpus is in-bounds in
+ armsse_realize()
+Date: Mon, 13 Jul 2020 15:37:16 +0100
+Message-Id: <20200713143716.9881-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-pRXOz5JVcwHa8=oaeogwaOK0YVXYQiJUpdM_rFZ+QTA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Ovh-Tracer-Id: 7891995398697618332
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrvdekgdejiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhephfffgeelfeejudevuedvvdeigeduteetveffhfffudeggfegleeljeeuieefuedvnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeejkedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=178.33.111.180; envelope-from=clg@kaod.org;
- helo=1.mo173.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 10:19:51
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, ziming zhang <ezrakiez@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WxUFvhx6B6QZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yTnfoLw9rpLM
 
-On 7/10/20 1:33 PM, Peter Maydell wrote:
-> On Fri, 10 Jul 2020 at 09:56, Mauro Matteo Cascella <mcascell@redhat.com> wrote:
->>
->> An integer overflow issue was reported by Mr. Ziming Zhang, CC'd here. It
->> occurs while inserting the VLAN tag in packets whose length is less than
->> 12 bytes, as (len-12) is passed to memmove() without proper checking.
->> This patch is intended to fix this issue by checking the minimum
->> Ethernet frame size during packet transmission.
->>
->> Reported-by: Ziming Zhang <ezrakiez@gmail.com>
->> Signed-off-by: Mauro Matteo Cascella <mcascell@redhat.com>
->> ---
->>  hw/net/ftgmac100.c | 14 ++++++++++++++
->>  1 file changed, 14 insertions(+)
->>
->> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
->> index 043ba61b86..bcf4d84aea 100644
->> --- a/hw/net/ftgmac100.c
->> +++ b/hw/net/ftgmac100.c
->> @@ -238,6 +238,11 @@ typedef struct {
->>   */
->>  #define FTGMAC100_MAX_FRAME_SIZE    9220
->>
->> +/*
->> + * Min frame size
->> + */
->> +#define FTGMAC100_MIN_FRAME_SIZE    64
->> +
->>  /* Limits depending on the type of the frame
->>   *
->>   *   9216 for Jumbo frames (+ 4 for VLAN)
->> @@ -507,6 +512,15 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
->>          }
->>
->>          len = FTGMAC100_TXDES0_TXBUF_SIZE(bd.des0);
->> +
->> +        /* drop small packets */
->> +        if (bd.des0 & FTGMAC100_TXDES0_FTS &&
->> +            len < FTGMAC100_MIN_FRAME_SIZE) {
->> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: frame too small: %d bytes\n",
->> +                          __func__, len);
->> +            break;
->> +        }
->> +
-> 
-> Andrew, Cedric: do you have the datasheet for this devic? Do you
-> know if we should also be flagging the error back to the
-> guest somehow?
+In armsse_realize() we have a loop over [0, info->num_cpus), which
+indexes into various fixed-size arrays in the ARMSSE struct.  This
+confuses Coverity, which warns that we might overrun those arrays
+(CID 1430326, 1430337, 1430371, 1430414, 1430430).  This can't
+actually happen, because the info struct is always one of the entries
+in the armsse_variants[] array and num_cpus is either 1 or 2; we also
+already assert in armsse_init() that num_cpus is not too large.
+However, adding an assert to armsse_realize() like the one in
+armsse_init() should help Coverity figure out that these code paths
+aren't possible.
 
-zero is the only invalid size of a transmit buffer and the specs does
-not have any special information on which bit to raise in that case.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/armsse.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-I think FTGMAC100_INT_NO_NPTXBUF (transmit buffer unavailable) is our 
-best option and we should add an extra 'len == 0' test in front of 
-the dma_memory_read() call to raise it. A zero length is not considered 
-bogus by dma_memory_read() it seems. Is address zero considered bogus ? 
-If not, we need to check that also. 
-
-The code doing the memmove() should be protected by a check on the 
-length, 'sizeof(struct eth_header)' or ETH_HLEN. That will fix the 
-integer overflow. 
-
-For clarity, we could replace 12 and 16 by a L2 header size: 
-'sizeof(struct eth_header)' and 
-'sizeof(struct eth_header) + sizeof(struct vlan_header)'. It can be
-done later.
-
-Thanks,
-
-C. 
-
-
-> I think a 'break' here means we'll never update the
-> descriptor flags to hand it back to the guest, which
-> is probably not what the hardware does.
-> 
-> thanks
-> -- PMM
-> 
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index 64fcab895f7..dcbff9bd8f4 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -452,6 +452,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+ 
++    assert(info->num_cpus <= SSE_MAX_CPUS);
++
+     /* max SRAM_ADDR_WIDTH: 24 - log2(SRAM_NUM_BANK) */
+     assert(is_power_of_2(info->sram_banks));
+     addr_width_max = 24 - ctz32(info->sram_banks);
+-- 
+2.20.1
 

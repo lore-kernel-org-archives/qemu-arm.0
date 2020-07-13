@@ -1,107 +1,109 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3502881lfm;
-        Mon, 13 Jul 2020 10:51:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxsncF/JtuU6/zfRmL3uVnvz1JCXhWXxDKiju1eH6mxJTIY4HcdP/sSYcDdk2S07seuOGcv
-X-Received: by 2002:a25:ba09:: with SMTP id t9mr1835146ybg.128.1594662669200;
-        Mon, 13 Jul 2020 10:51:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594662669; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3509293lfm;
+        Mon, 13 Jul 2020 11:01:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwYkMdDY8BfQGnooZEE/1SXlkO/6hE1g4S87ICJ0SV9h4PHr9waqWjNPdfG6skj7fLxUg1Z
+X-Received: by 2002:a25:414e:: with SMTP id o75mr1775923yba.170.1594663285511;
+        Mon, 13 Jul 2020 11:01:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594663285; cv=none;
         d=google.com; s=arc-20160816;
-        b=oocVvdZqB93m5n/nxRwCIx2gZWDZDYy+oQRXsI/PlSbpAENqD/fRRBmh8PJ/mzH3vi
-         u43TZpOemM6ibhVPqxD8vfWcCchOKaEokthZRypVQqcjPIViq1MZFgA8TNEJPACG+FeK
-         DvEx7jzbRb9/NRB+bdP84DsnZytH0YX7B39AV7aJSabzLJJ5dxhJE27jso6ATXftNHb0
-         5BbFhQS5LP6RO8YrNtnOnoav8quiTUz5tmP1kU+Dnun8dNmLa18dCOqqM3JX79u35OuC
-         TeAeHogfKL6+xlErYJRQYNyEcgnSeGDAcnbMa92OKTIvrSRzWxQ5TL77ll8SXAjZTNiU
-         4jmw==
+        b=KrKTOtczW9vCcQjfZgoXGKBXgYvuld7AhPC+ALqmCdSnZ9PtYCnM1WbmY8hKt8MisO
+         q31jD6Z6/v8Q3TsaesNly8DdXvQJOO5Cr65aHwrjI4fkewyYCbgreHmyVl8JPOUd33DV
+         vTlZkdiLdMTbv3n+IsCGJwX68CF9gUzje4snGQQEPXcvpYZsQ94aho/uy274a8XDM+Rz
+         VfMfLjaWQV6smC6/5V4JfljD/ACF4nnO1FjY6DdIuYz5d3vgobUSjvHwDRVRViPsetQn
+         jftO2bfJhUkYpD9/a3640bCOmPy7AjzEJWpKOkDKMWN7UsRqPCI7ao/zNXWa3CR9Tq7/
+         C8vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=w9ccvdUWDcNVWONo+PyLnO9BNyxcXjYmLZoFSnV+chE=;
-        b=TkVZFEYmMpi/dVBPQfaN7KNhxeWqFj7eOoK+3ujL3vewy3Qw1ecv7nfKhk5sY9ZtWb
-         2ZLiq/CbtkFB9m6rqZD4om3Xs64WooHdNuzB3tUhbuWtW422tBN9l3V3/NfG+oWgVQGA
-         gHTJ8Fy6UTPD8vv3XIGDo770hbXJwk0W4Ci1lrBR6xk0moSxme3oGMQxMDnmnpK+9+x+
-         ylzNpGCGqQFl31DFXSo6ucCcEVWtmRo6Vube0Sm9NBcPwtr3Z12c219sw6+ExszHl9I2
-         mv+Ki80ZzeBBLX9kLwU4mciprkDooU9Uw+fZt8ziw2dIkZyOf320UbiCFbSD0KNQquhI
-         FbKg==
+        bh=MyAyaHoQ2ECMGGb/JEE2cNXWCnlaqD2ovwTlUS2erJc=;
+        b=hR8Kcv+GA0VhSCfAWqQeAt/AYZidEaE0xOcVb97RUqMEEzYWfZPL3a01JDeYYjnQvR
+         Er6UL+oVvitKcB+jTNGZWMgDh/CNQZKdNvfGWc5IP6s9fhM5J3i43nTez/tz7J0lDtVW
+         xFhwJ6hlfgCd9ZBmHpMX3d9EQl7wpLvkaPxD3KZdsgFe4bGlW6MHNErDJK7+IBHLdnbr
+         X7W3ZAfzN4ozZBD20khqRyY2BouMx03Y+Qnxe3Ll8apipviZPl1/gNcKIJ9rg800Va+s
+         dXBZS1p44bt+syKe6gxl6dFns6+KPKzCl2LuTKGifuzBWZ3Pgx4NrJkx1gUrmNc63HG6
+         T4Yw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=anpuXNVo;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="qIOF/ETm";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f88si15743570ybi.79.2020.07.13.10.51.09
+        by mx.google.com with ESMTPS id e139si6462116ybb.219.2020.07.13.11.01.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 10:51:09 -0700 (PDT)
+        Mon, 13 Jul 2020 11:01:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=anpuXNVo;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="qIOF/ETm";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:51298 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46972 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jv2bc-0004or-KQ
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 13:51:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56592)
+	id 1jv2lY-0006kL-U8
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 14:01:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59318)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jv2aj-0003xm-Hz; Mon, 13 Jul 2020 13:50:13 -0400
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:39352)
+ id 1jv2kC-0005Mc-Pv; Mon, 13 Jul 2020 14:00:00 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:36720)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jv2ah-00071l-Lf; Mon, 13 Jul 2020 13:50:13 -0400
-Received: by mail-ej1-x644.google.com with SMTP id w6so18246416ejq.6;
- Mon, 13 Jul 2020 10:50:10 -0700 (PDT)
+ id 1jv2kB-0008F6-7b; Mon, 13 Jul 2020 14:00:00 -0400
+Received: by mail-ej1-x642.google.com with SMTP id dr13so18313490ejc.3;
+ Mon, 13 Jul 2020 10:59:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=w9ccvdUWDcNVWONo+PyLnO9BNyxcXjYmLZoFSnV+chE=;
- b=anpuXNVoQpGcH/XOkY+aPAX1aQyNL5B24WPNQb2SGHVr52SnNABB6zhwM75ply4Gzg
- dekhTgXVk6ZKA1/MMAY9217DdATG8oSWRF/emmZWGbejrmIVR2OC4RZ9vxAIGQh63nsc
- hYhhOAat98RuaQF0xcBtvt9hRhEUPdQDFxEUDimCcbFdoUX5+u4O4KDwvke3XTZcen4L
- WcCG4Aq1juZJx/ke7HZywCHk2BAtAtn5Oohp9Gh3WX3PpcrnDLrP3uYrIk4oo5o8Rq3J
- pHKOA3Cwyo39xogoa4/HRYnfzvQp00u/CDr1alU5lamJyEyiqdGez2an6PtOMfYGgQyw
- biaw==
+ bh=MyAyaHoQ2ECMGGb/JEE2cNXWCnlaqD2ovwTlUS2erJc=;
+ b=qIOF/ETmC6TpDdNQlhmo5zefT0PmPc7cmeQyM+Tl0GZNDX3oeKuHYa4HZgLxSPzk6k
+ /5Z+h/7Ds8sv5UdJ+rBsNy223Qe3BwBTCsU08s6arQSgsLk6zjyuzyETaoPi1rsvhJJ4
+ vR7bi9wSKM3n7xz00BP/YBYMpiwNsuWPa/R925ej9ri0oxashJzLQPf5zmLWaLN0a9IJ
+ SLDmpqimXNstUQ65DCQYkQYSqx5+c2NT4k/wIl1N5RqK7fAQ1nHnPm0RZhd9YzXT0ZhS
+ aUoV+qfG3tTJavvN1UMiSecMtpHELenyRkZrTaEDFibjrAWxgCw3wfk39tPD/9zpSdlM
+ 0E3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=w9ccvdUWDcNVWONo+PyLnO9BNyxcXjYmLZoFSnV+chE=;
- b=O/l8L1k+f4+0K+1Iut6FnIt4R2w49YFzrQhGEfUqqsgTFixr2joWFp/i1oDtOmud/I
- bm7xLEuIHLHcW9S28kTSr5+EeHspHw7GaEZS3qUGSgUGlzEQPgYuHbrP0gDYUKo1JyvQ
- lzDeKXCoSX1QFFEPXLCnnNoEYCaoOW/IrwvqIOTT00p+h+2RE/DxK5EwJE+TCpPqRAhi
- 09Ma2+TsNvg9XO2lvYGeJtVwtMEZC7CYFFziiviQpyZBfoMbtO0PvDSbgiS+SbnHJWuy
- I8qhJU2PVlQB8tFNzZUAV07CBN7Y12M53YByFVLcsVb1eYqmB/itx7DWFISAMBOF5E+l
- kcrQ==
-X-Gm-Message-State: AOAM530mcMJmcj5nd7PqmOAjYYZ/I/H4AKzk0i/79WMkizBPwN8V4O7v
- 5Knr3vgrLx9ZXLehbUE9J7ltjaIFydI=
-X-Received: by 2002:a17:906:5f98:: with SMTP id
- a24mr790290eju.241.1594662609843; 
- Mon, 13 Jul 2020 10:50:09 -0700 (PDT)
+ bh=MyAyaHoQ2ECMGGb/JEE2cNXWCnlaqD2ovwTlUS2erJc=;
+ b=a51VAhGEkzquN83p/9A4ri5qSx5F8NCGOqXLJoxRTPOdCAv47D2Vp//PWKNIEk91+a
+ OJlMwVDAjeXomKzdehdyzoJc5DJ0GoA/uwf8yxGbXOStj9xTPg9uCm4Jt7TfdiQF+v1n
+ Ld0OqPF6ilAKaSOEqekTChnHOgfdQ/JI/SLnvlShv7AC0o2TPPNL10j8FRQJwLxycH6C
+ gfXfJ4brzLakGcVlaP/ynVK7flAYVmcbLCw3B6837BkFMoS7WFkjjzMPTRgm3xgzcZae
+ zED1/I7/H6wVuEUdL0cLO58a3a6nLTUMQJr6FVO4XexAFBw7aru6mqJbL2yHkjQK+bf/
+ 6SAA==
+X-Gm-Message-State: AOAM531kpXQSpoJgRob5jrt50lkUDM7dlJWprkLk2rVT0dJFGy/nGnpM
+ koeRSzNW8SAbYGMmx0yEIkk=
+X-Received: by 2002:a17:906:7b54:: with SMTP id
+ n20mr889013ejo.144.1594663197488; 
+ Mon, 13 Jul 2020 10:59:57 -0700 (PDT)
 Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id x16sm12040058edr.52.2020.07.13.10.50.08
+ by smtp.gmail.com with ESMTPSA id d23sm3934458ejj.74.2020.07.13.10.59.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Jul 2020 10:50:09 -0700 (PDT)
-Subject: Re: [PATCH v5 06/11] hw/arm: Load -bios image as a boot ROM for
- npcm7xx
-To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org
+ Mon, 13 Jul 2020 10:59:56 -0700 (PDT)
+Subject: Re: [PATCH v5 10/11] hw/arm: Wire up BMC boot flash for npcm750-evb
+ and quanta-gsj
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org
 References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-7-hskinnemoen@google.com>
+ <20200709003608.3834629-11-hskinnemoen@google.com>
+ <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f88fae50-cb96-f5db-4820-24667bd8dacc@amsat.org>
-Date: Mon, 13 Jul 2020 19:50:08 +0200
+Message-ID: <9f0855f1-1319-81b3-7758-ba53e5d733e9@amsat.org>
+Date: Mon, 13 Jul 2020 19:59:55 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200709003608.3834629-7-hskinnemoen@google.com>
+In-Reply-To: <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x644.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -127,89 +129,37 @@ Cc: kfting@nuvoton.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Avi.Fishman@nuvoton.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HWBdYeN2jQlu
+X-TUID: +XWP+cqApIHv
 
-On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
-> If a -bios option is specified on the command line, load the image into
-> the internal ROM memory region, which contains the first instructions
-> run by the CPU after reset.
+On 7/13/20 4:57 PM, Cédric Le Goater wrote:
+> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
+>> This allows these NPCM7xx-based boards to boot from a flash image, e.g.
+>> one built with OpenBMC. For example like this:
+>>
+>> IMAGE=${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc
+>> qemu-system-arm -machine quanta-gsj -nographic \
+>> 	-bios ~/qemu/bootrom/npcm7xx_bootrom.bin \
+>> 	-drive file=${IMAGE},if=mtd,bus=0,unit=0,format=raw,snapshot=on
+>>
+>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 > 
-> A minimal Apache-2.0-licensed boot ROM can be found at
-> 
-> https://github.com/google/vbootrom
-> 
-> It is by no means feature complete, but it is enough to launch the
-> Nuvoton bootblock[1] from offset 0 in the flash, which in turn will
-> launch u-boot and finally the Linux kernel.
+> May be we don't need to create the flash object if dinfo is NULL.
 
-Peter, should we include it as submodule with the compiled blob in
-pc-bios/?
+Well, this is not wrong since m25p80_realize() check for the 'drive'
+property, but I'd rather avoid using fake block, and instead force
+users wanting an empty flash to use '-drive driver=null-co,...'.
 
+So I prefer Cédric suggestion too.
+
+> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> Tested-by: Cédric Le Goater <clg@kaod.org>
 > 
-> [1] https://github.com/Nuvoton-Israel/bootblock
+> Nice ! 
 > 
-> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
-> ---
->  hw/arm/npcm7xx_boards.c | 24 ++++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
+> We need a SPI controller model and a network device model now. 
 > 
-> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-> index d78d9f991b..80cf1535f1 100644
-> --- a/hw/arm/npcm7xx_boards.c
-> +++ b/hw/arm/npcm7xx_boards.c
-> @@ -19,8 +19,11 @@
->  #include "hw/arm/boot.h"
->  #include "hw/arm/npcm7xx.h"
->  #include "hw/core/cpu.h"
-> +#include "hw/loader.h"
->  #include "qapi/error.h"
-> +#include "qemu-common.h"
->  #include "qemu/units.h"
-> +#include "sysemu/sysemu.h"
->  
->  #define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7
->  #define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff
-> @@ -34,6 +37,25 @@ static struct arm_boot_info npcm7xx_binfo = {
->      .board_id           = -1,
->  };
->  
-> +static void npcm7xx_load_bootrom(NPCM7xxState *soc)
-> +{
-> +    if (bios_name) {
-> +        g_autofree char *filename = NULL;
-> +        int ret;
-> +
-> +        filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-> +        if (!filename) {
-> +            error_report("Could not find ROM image '%s'", bios_name);
-> +            exit(1);
-> +        }
-> +        ret = load_image_mr(filename, &soc->irom);
-> +        if (ret < 0) {
-> +            error_report("Failed to load ROM image '%s'", filename);
-> +            exit(1);
-> +        }
-> +    }
-> +}
-> +
->  static void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc)
->  {
->      NPCM7xxClass *sc = NPCM7XX_GET_CLASS(soc);
-> @@ -73,6 +95,7 @@ static void npcm750_evb_init(MachineState *machine)
->      npcm7xx_connect_dram(soc, machine->ram);
->      qdev_realize(DEVICE(soc), NULL, &error_abort);
->  
-> +    npcm7xx_load_bootrom(soc);
->      npcm7xx_load_kernel(machine, soc);
->  }
->  
-> @@ -84,6 +107,7 @@ static void quanta_gsj_init(MachineState *machine)
->      npcm7xx_connect_dram(soc, machine->ram);
->      qdev_realize(DEVICE(soc), NULL, &error_abort);
->  
-> +    npcm7xx_load_bootrom(soc);
->      npcm7xx_load_kernel(machine, soc);
->  }
->  
-> 
+> npcm7xx_bootrom.bin is a bit of a pain. Could we include it in 
+> the QEMU roms ? 
+
+Ah, this is what I asked on patch #6 ;)

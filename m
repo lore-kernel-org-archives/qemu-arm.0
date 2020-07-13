@@ -1,145 +1,187 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3234944lfm;
-        Mon, 13 Jul 2020 05:28:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwb4NHm+HpZGtdTZzYMvV8s5wp2Qu7zOQ0yf0xBnKqZ7/bLnJBP1YKaA2F+TtIMWTC2OElt
-X-Received: by 2002:a25:2a8f:: with SMTP id q137mr89896202ybq.462.1594643282840;
-        Mon, 13 Jul 2020 05:28:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594643282; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3330164lfm;
+        Mon, 13 Jul 2020 07:21:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2VyVJ0gPLgg0Fq/WitjLkEovTpa8Tm8mYn6yXMbu+RcCfjaZt0+/745qE6Ds/jqYF+pX9
+X-Received: by 2002:a25:8b85:: with SMTP id j5mr306124ybl.255.1594650086387;
+        Mon, 13 Jul 2020 07:21:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594650086; cv=none;
         d=google.com; s=arc-20160816;
-        b=WBOFm30Uz0FT3bVmgSwU+vQLiwtCrEUWoeRSiBMD3igSC7wXNqQKU1vKi38eyIkYHd
-         CIJCvoqBmgpVySKqfp57I4DMm+xzj/XMNjD2AyvbAniiHE/rPCbUGemsjAWTD6xyrDc9
-         x3oyrVs04oMFBlie+OnMlZOpwEnuWr2hiAiyGnzDjZ+I980DHMlaPTj8hAmd3TzWIHWO
-         BHEPvYAE9hjlaFoV2GHlMA8j4V/BrKQdGj7i7YP4cFkfZBX/VXrnPPZNpvZv5CauBoBN
-         8ybig4/oqGlbz8sWVMgVXn3h3gBAatde8eh1AEKxvJR/ynIIoCAAQ7g1nyMdzZhX2lsk
-         V8mA==
+        b=bl3XiSnqpdw9HQ9cshZDcdzfalSEhawgUbmuX8/JPdsvRepx5jkgjDzFMb6XXIQiVs
+         +j7crUxQbScRdu8iMT02dIQPvsrc3NOpTSR+rQrMGfPAl8BM7YtyacU1u1Z/2zijJWIT
+         Hb0hNiKNZhS/6HIVdMY53w4OkBmtCvN+++BUZHK51GQf9plkNuXegQzGdocqOV+S63nt
+         RFvdgwjPjcYPr19QibgFqi9krfY3VCTtIzfgThOK71XuU9ETTlDo1L/ufCyfkJeCNra+
+         bD3+0xDJeMBQszEZaFpKkqy8SebD7Ds++9FtZ/tL1CIntjDzuEO4f8dFcscHast9iaJU
+         xtrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=VOICyT3wl/EpNQqGgOp1bHXDUkMptuwBmOUfLQ1I5qo=;
-        b=nqhGK5Iu3xw5sWORBOQPOzVmf1CmGsHuXaBXyJ8qipjtsshTQxeldIZjN/esO2C1Jm
-         DfUdBlaMrOuzVTVKiIGaY72j6eU+n4J67RVF6lP/hBc5YfBXf/xL/r3+HYLW6hEYIqdU
-         STeCyW6chOSr8hBcADM/8Mo2EYIuRnzaqlHSM/JdJMcXsST96vH+JOKK5GkuI4VHppSS
-         WbFU4vCEWxPyYL/fhFMmC9El0Qsw+lPNwPeJ29IfZ7gXhVEfrli5PDfxSQp04Z+uIlqc
-         d2o3iRT10G3WIXLc/+3SgdGt7fWIqfxhAOlKViU3aGs/zrkP+7Lj+jtGt8sdmnIhkAKc
-         VY+Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=+DntmE6Ztg8FIaVxvIb+sIfE9k2KY6k9wrMNl7Vrl2U=;
+        b=cpJI6LjlUVQI/tzhLKYzpewedLqif2aJpieMGmbdNY8/xm3jAXbf6sVe/lTZokGRWy
+         mR5GpFPjlF7nS4hy1PMkHJL9HBwWv7oLWxRLonHxU7ypU6CKSrUIkVqqibf0ktc+ST3F
+         RIFPdnjSFzyl6eyBO/JoGtHGL2fregIM6Q0Rm6nino15aK03yu48pZPlTPuPNl0Gqy+4
+         6NAY9npsaMdz8UT2Jy/oX+ETIaw9oEfgEzl+MFl8K501OteEaQ6uH3rF4yGeNPnMInbj
+         IFls6r/60PWxkDmA6p6l14h6By/08WA2TsceMGrBna4/WKW4+0WayLz5Crv3H4psDqsV
+         CXtg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="i+amtIx/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s15si15722629ybk.297.2020.07.13.05.28.02
+        by mx.google.com with ESMTPS id l131si14332771ybf.61.2020.07.13.07.21.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 05:28:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 13 Jul 2020 07:21:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="i+amtIx/";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33238 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34200 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juxYw-0000p5-7H
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 08:28:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60862)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1juzKf-0005xO-MT
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 10:21:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37762)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1juxVe-0005aO-RF
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 08:24:39 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:41562)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1juxVc-0008Gh-UL
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 08:24:38 -0400
-Received: by mail-oi1-x242.google.com with SMTP id y22so10772028oie.8
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 05:24:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=VOICyT3wl/EpNQqGgOp1bHXDUkMptuwBmOUfLQ1I5qo=;
- b=i+amtIx/gAkjr8bLVPaFPzq7r+Ek88quHLausbPiga+dP828zMdWO5Hk1P5ap25VAy
- usOIYLZ0LMnEHbmugH6OdqiP34PFtCknU7lKbw1vJRmK80v9DTZPwZpa1hIFxwiU8qz1
- IVK3lxbL5Rxg2HcP8XIKYLmPKeEea2YIGK8Lgv4SNbHlwuiubnHYqNbgHIK7SuZZUOb/
- nQIp0Oe0e7AyBn4GNNLaMz3N9uir6fK8/g5jRdewauD5+pHGV8FJ2JYvCu/IaTyQB8G2
- 4rzUiofh0QoCtQiW2r+4d8rW0z0xhqxi/uzZYV0a4mTxMUBPHdkqapYQ8OskA85eQDVz
- pTZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=VOICyT3wl/EpNQqGgOp1bHXDUkMptuwBmOUfLQ1I5qo=;
- b=mzKWdmR4vHcvIYliVWi1iulKLTmFOnF2GdhGmk8sd7uhdz5WAnS3HHfzH78G8rSzmu
- rQhZDTJEwzdyrEejGgxt6YVkhS96ZkmtKGVFBcgSlZ7YJGlOF0JonTav50SpoJbMD0ZT
- VzTWtZYyjYLuWLr9WehINuJpRqtGNYiLf8kes2FDDx+sjeS9/QDjooGTMk+c1BYj803N
- CJmfEH+ybyueTWPb0FgfTS/jaIioKLkKqlFsQYZvYPHVr7+OgZC00vLK+gljq2e3pz27
- MTP8nrbl56dO1YNahUXGz+30HUE9jI9MkOhbLCIQghgb/nkO18XN6ldP8SCsomD2Nkkt
- 6UCQ==
-X-Gm-Message-State: AOAM532xHpyBZN56vz634yZ2KHAgeDPUZaQH1cljSKWaPp4XD+Wj8mZJ
- 4u+swztxJEP4bDHfy4SOxrZ0tIICch+voo0luD1ElQ==
-X-Received: by 2002:aca:54c9:: with SMTP id
- i192mr13781214oib.163.1594643075538; 
- Mon, 13 Jul 2020 05:24:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juzJE-0004Dh-KF
+ for qemu-devel@nongnu.org; Mon, 13 Jul 2020 10:19:56 -0400
+Received: from 1.mo173.mail-out.ovh.net ([178.33.111.180]:52394)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juzJC-0007na-Ed
+ for qemu-devel@nongnu.org; Mon, 13 Jul 2020 10:19:56 -0400
+Received: from player778.ha.ovh.net (unknown [10.110.115.91])
+ by mo173.mail-out.ovh.net (Postfix) with ESMTP id 095D5146E61
+ for <qemu-devel@nongnu.org>; Mon, 13 Jul 2020 16:19:50 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player778.ha.ovh.net (Postfix) with ESMTPSA id 4C0AF1455718C;
+ Mon, 13 Jul 2020 14:19:43 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G002f4ce4a81-69c6-402d-9314-f1e4916fb6b6,29C60B8BFD44B6CD822E82BF6A6060F4508BB267)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH] hw/net/ftgmac100: Fix integer overflow in
+ ftgmac100_do_tx()
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Mauro Matteo Cascella <mcascell@redhat.com>
+References: <20200710085417.638904-1-mcascell@redhat.com>
+ <CAFEAcA-pRXOz5JVcwHa8=oaeogwaOK0YVXYQiJUpdM_rFZ+QTA@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <d7affe2b-0a2c-4e06-a874-daccf16bd136@kaod.org>
+Date: Mon, 13 Jul 2020 16:19:42 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-References: <20200705173402.15620-1-f4bug@amsat.org>
- <f21c68c9-a4e3-76cb-7484-1816d5742163@kaod.org>
-In-Reply-To: <f21c68c9-a4e3-76cb-7484-1816d5742163@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Jul 2020 13:24:24 +0100
-Message-ID: <CAFEAcA_5hKh2z2M8ESwhZ=6x_xuv6VVdxUxB=_iZ-x9hujLC=A@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/aspeed: Do not create and attach empty SD cards by
- default
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <CAFEAcA-pRXOz5JVcwHa8=oaeogwaOK0YVXYQiJUpdM_rFZ+QTA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 7891995398697618332
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrvdekgdejiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtjeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhephfffgeelfeejudevuedvvdeigeduteetveffhfffudeggfegleeljeeuieefuedvnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeejkedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdquggvvhgvlhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=178.33.111.180; envelope-from=clg@kaod.org;
+ helo=1.mo173.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 10:19:51
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Eddie James <eajames@linux.ibm.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sflfKrcrMa3C
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, ziming zhang <ezrakiez@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WxUFvhx6B6QZ
 
-On Mon, 13 Jul 2020 at 13:20, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> On 7/5/20 7:34 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Since added in commit 2bea128c3d, each SDHCI is wired with a SD
-> > card, using empty card when no block drive provided. This is not
-> > the desired behavior. The SDHCI exposes a SD bus to plug cards
-> > on, if no card available, it is fine to have an unplugged bus.
-> >
-> > Avoid creating unnecessary SD card device when no block drive
-> > provided.
-> >
-> > Fixes: 2bea128c3d ("hw/sd/aspeed_sdhci: New device")
-> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+On 7/10/20 1:33 PM, Peter Maydell wrote:
+> On Fri, 10 Jul 2020 at 09:56, Mauro Matteo Cascella <mcascell@redhat.com> wrote:
+>>
+>> An integer overflow issue was reported by Mr. Ziming Zhang, CC'd here. It
+>> occurs while inserting the VLAN tag in packets whose length is less than
+>> 12 bytes, as (len-12) is passed to memmove() without proper checking.
+>> This patch is intended to fix this issue by checking the minimum
+>> Ethernet frame size during packet transmission.
+>>
+>> Reported-by: Ziming Zhang <ezrakiez@gmail.com>
+>> Signed-off-by: Mauro Matteo Cascella <mcascell@redhat.com>
+>> ---
+>>  hw/net/ftgmac100.c | 14 ++++++++++++++
+>>  1 file changed, 14 insertions(+)
+>>
+>> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+>> index 043ba61b86..bcf4d84aea 100644
+>> --- a/hw/net/ftgmac100.c
+>> +++ b/hw/net/ftgmac100.c
+>> @@ -238,6 +238,11 @@ typedef struct {
+>>   */
+>>  #define FTGMAC100_MAX_FRAME_SIZE    9220
+>>
+>> +/*
+>> + * Min frame size
+>> + */
+>> +#define FTGMAC100_MIN_FRAME_SIZE    64
+>> +
+>>  /* Limits depending on the type of the frame
+>>   *
+>>   *   9216 for Jumbo frames (+ 4 for VLAN)
+>> @@ -507,6 +512,15 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
+>>          }
+>>
+>>          len = FTGMAC100_TXDES0_TXBUF_SIZE(bd.des0);
+>> +
+>> +        /* drop small packets */
+>> +        if (bd.des0 & FTGMAC100_TXDES0_FTS &&
+>> +            len < FTGMAC100_MIN_FRAME_SIZE) {
+>> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: frame too small: %d bytes\n",
+>> +                          __func__, len);
+>> +            break;
+>> +        }
+>> +
+> 
+> Andrew, Cedric: do you have the datasheet for this devic? Do you
+> know if we should also be flagging the error back to the
+> guest somehow?
 
-Applied to target-arm.next for 5.1, thanks.
+zero is the only invalid size of a transmit buffer and the specs does
+not have any special information on which bit to raise in that case.
 
--- PMM
+I think FTGMAC100_INT_NO_NPTXBUF (transmit buffer unavailable) is our 
+best option and we should add an extra 'len == 0' test in front of 
+the dma_memory_read() call to raise it. A zero length is not considered 
+bogus by dma_memory_read() it seems. Is address zero considered bogus ? 
+If not, we need to check that also. 
+
+The code doing the memmove() should be protected by a check on the 
+length, 'sizeof(struct eth_header)' or ETH_HLEN. That will fix the 
+integer overflow. 
+
+For clarity, we could replace 12 and 16 by a L2 header size: 
+'sizeof(struct eth_header)' and 
+'sizeof(struct eth_header) + sizeof(struct vlan_header)'. It can be
+done later.
+
+Thanks,
+
+C. 
+
+
+> I think a 'break' here means we'll never update the
+> descriptor flags to hand it back to the guest, which
+> is probably not what the hardware does.
+> 
+> thanks
+> -- PMM
+> 
+

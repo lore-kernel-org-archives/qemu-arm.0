@@ -1,118 +1,91 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3165499lfm;
-        Mon, 13 Jul 2020 03:55:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0Ns3aMaOJEYK00TKcrc6E79myeDyWnkSBdzLyGP4qMh5eRdTgA4h0ddpEHVS46m2B50oH
-X-Received: by 2002:a25:385:: with SMTP id 127mr28741238ybd.141.1594637737931;
-        Mon, 13 Jul 2020 03:55:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594637737; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3216961lfm;
+        Mon, 13 Jul 2020 05:07:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyt/STA4yso+Fj3c3DNu7fr11Mp/YVBuQCI0BTsXGmC8dA/p0uoyQ3+nOZfIs5w5ds6rdKJ
+X-Received: by 2002:ac8:f8b:: with SMTP id b11mr85481811qtk.361.1594642039174;
+        Mon, 13 Jul 2020 05:07:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594642039; cv=none;
         d=google.com; s=arc-20160816;
-        b=Uz5fhDXGErwfQ/qfCqbVRa4bOZjx1ga1NYiwW8dzJ3t37AqEXB+Nwf96XvWyHIzWph
-         cgSVTJjn64zlmpNPjhZKtoQoRxMUDt5yuZOjGDM6j81uY0Lj2ZMi4mw+Gz+gzy+6B6Tx
-         zKj8PqNAqgXIe9ljpvOkR4TBRUeMQvfoMV8eefiCuwfCyh7RvB+qm2zhoACP3CRkxCxO
-         cHgbu2ZptkPMIt30O4Vzrn1AQlHTosfuK+yeSlcCn5k+fth51Wmoq2RAPuJZ76txwcGX
-         9O5+KpySNnMBcPz07WREbI9GBoE403g+0tO9PWE9Hsro6SDu1vkxF8+lCwa2EoYx0flf
-         qQCw==
+        b=MspreCnqufmIXwL5J4lkDCrMUGnyeplghb5y46M9Gbr8fz+yFhU0ICppvQfIj1riaV
+         yhhWqvtgPGCK2321xElRhgNT7YRwT9RYDcrNR3o5XTpopCx0txY5SZ07qZ1U7m4aFxg4
+         G1UftbadppSyO1ecj9vg60otE1ytGy+2YMyfHOZohAyOkJwYrxUsvOU+pJ7dYwg6Eaby
+         zRMi/XSlRsrsnP882blr5J0E7WbF72AGenjOlA5NNnRfM9FitscIh0yrMNNpoRGNutz8
+         44Fg1AV6qnV4n42msTLC3S5Kg8Kxy3CHBsF//1uh4v25ubOU7FZbkDSdOUi37r/Egs2W
+         a1Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=nl7LZ281I4Ev2TP0zLsx5mbzjetKalsfc87KsGzkBA0=;
-        b=ntBsEXejDRya22fTqgIN0agtqXCJnHewZqC4nWrtIaByMgaiCqRrIUhTh9NK5xG89z
-         zPL9DDjiUHiIrHsc/8II+OQDl/1IgtXzXTDG6mCmPER7YgE517NsvmsaMCY602G9lfCl
-         9QtOKgS9hJ/Vo0/m0NOPRHB2g7pE4JB82apKr7ojT6Qf0Y+YBAT0idh0ZK0IG3hUF8um
-         V3n8wnpO5imXOimMZoWVMH76H1nil/h3GL+hDDwVv35O32lWuD4jALFxUtogNKmql7JC
-         QCjCzre/zMuEk1Mm6yJFh6wDUagAyQGHMiXRtg6v3kNj1frsUBDyj3aE43R1lqB1lmlx
-         7m0w==
+         :message-id:from:references:to:subject;
+        bh=mB3ZFu+kurA+ydnPD/oFWeA1wm4TxjYCw7/LOIKxXz8=;
+        b=qHwZEwbspekq2XE/yFHCN3N8CsF/NO7CGL3zq1saZJ1zblAqcIFEa8/iJTYRoItd4/
+         nQjYw9BZDy1VDAmOUHm8kFf7KLj6KAKlc8WCfYieFe1ZpZ37OtwZZkboHijpcSOyF1Fx
+         wfPuWsrJNP/+eaFfJ1qsqDOW+Zrlo6yPKLBLB5626ppzQdIT+0ncjbSZVBwVtzzWNkYF
+         Dx84VjRMtpQtVDPPjnqxfPwcHNf3BRoYTIG39dy6MdCr6EGzMTKuqcZyUlpH5y0/qr+T
+         MriBmMMLtFyo4QRQWZgXDn2Umpj5ecZGrmqxK+OL5EQnp/2lLfBgI/e0cpvV/e68uqUY
+         pyaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OU1Ea2N+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x5si11552195ybk.9.2020.07.13.03.55.37
+        by mx.google.com with ESMTPS id e10si8476245qkl.0.2020.07.13.05.07.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 03:55:37 -0700 (PDT)
+        Mon, 13 Jul 2020 05:07:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OU1Ea2N+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34068 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:35558 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juw7V-00083I-AC
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 06:55:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60834)
+	id 1juxEs-0005SR-Ga
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 08:07:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55038)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1juw7N-00082f-3U; Mon, 13 Jul 2020 06:55:29 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:46964)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1juw7L-0003pV-8G; Mon, 13 Jul 2020 06:55:28 -0400
-Received: by mail-ej1-x642.google.com with SMTP id p20so16384080ejd.13;
- Mon, 13 Jul 2020 03:55:26 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=nl7LZ281I4Ev2TP0zLsx5mbzjetKalsfc87KsGzkBA0=;
- b=OU1Ea2N+XmxmcYVtlumhXdUk4Kp4oY29gI6QO5mOzPqQPwZ3pAPKNJWwJTMDXX0e/N
- S7QpsofviWZ/h8BjBVXdysQ/+vsmgcdp+blqpc1WdFGUbuPH8m+Yo5lZ3H96fqo6j620
- C2WaTdjKTL7jRSfwKCrOI0KXWXzylE1uOgqKaq47Q5B29MSq5qtNTkBlaWLnDR/mHlJZ
- YCR86qa3JJ4gndD559iNy+FUnv6MusV8FcHuyHFHtu24tN58QNmQvDXLublkSuBDOPe9
- rYxGR7pjPudVW9dgdyHv/cPvYETck5Cu88aB1PMWn088IqPzsMABeZv+4t0fHWpN1fbF
- J1Ig==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=nl7LZ281I4Ev2TP0zLsx5mbzjetKalsfc87KsGzkBA0=;
- b=rfbc2nix3KUbvkumVMKhu2tIg0eGUu1YrWdNX7qeyLKLj0WRsLtw5rfSS6hcGAg5vg
- oE5pWOua3nfHhVKvtyYseHv8Pikvxq1F/v0ArrHdMmkduEI3zyPOPrHFiNI+u4SEVViO
- 14HZul//cqtLw2d/w6qtw36ZXQXlJ0OlDgZnJy7Ro+E7LPI/RcujsX+qhzsCe+GpayAJ
- FKMGQM+A+F1RdNNWSbdoEoTej0UF3WNQFTSlHDEBUpMcPnv1n16s0NxdcPZ5ZbG+2TGR
- NHMeI2tVXkEPNsEL8kavVaOdhf5J5XWJa4vaZK+FfCr82up20pVG76fLgbh4W68vE+xi
- Xdgg==
-X-Gm-Message-State: AOAM533d9eP9kmR84eazivfWy/AjYW3z7hLYIhDTX7+ORpA2wzmwgeIo
- Xn7KoG485Bj0SAQB7KgnI765feDVI+o=
-X-Received: by 2002:a17:907:94ca:: with SMTP id
- dn10mr71334347ejc.348.1594637725148; 
- Mon, 13 Jul 2020 03:55:25 -0700 (PDT)
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id u60sm11697868edc.59.2020.07.13.03.55.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Jul 2020 03:55:24 -0700 (PDT)
-Subject: Re: [PATCH 2/2] hw/arm/tosa: Encapsulate misc GPIO handling in a
- device
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200628203748.14250-1-peter.maydell@linaro.org>
- <20200628203748.14250-3-peter.maydell@linaro.org>
- <bdc37753-de8e-eba4-75e0-32eada401b24@amsat.org>
- <CAFEAcA-qwjBwxF61NWuDhQACkvGa3TkjWWEbnMX+Uu+J7orzZg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <0c5e649e-397f-13b5-4860-ca0659fcded2@amsat.org>
-Date: Mon, 13 Jul 2020 12:55:23 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juxEj-0005RC-WC
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 08:07:10 -0400
+Received: from 7.mo2.mail-out.ovh.net ([188.165.48.182]:44892)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1juxEi-00064F-28
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 08:07:09 -0400
+Received: from player687.ha.ovh.net (unknown [10.110.103.112])
+ by mo2.mail-out.ovh.net (Postfix) with ESMTP id 502121E1006
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 14:07:05 +0200 (CEST)
+Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Authenticated sender: clg@kaod.org)
+ by player687.ha.ovh.net (Postfix) with ESMTPSA id 9C90D1444834D;
+ Mon, 13 Jul 2020 12:06:56 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G006d8f129a2-5b12-4784-b312-7ece9f41aac6,
+ 29C60B8BFD44B6CD822E82BF6A6060F4508BB267) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH v2] ftgmac100: fix dblac write test
+To: Erik Smit <erik.lucas.smit@gmail.com>, Andrew Jeffery <andrew@aj.id.au>
+References: <20200628142658.29264-1-erik.lucas.smit@gmail.com>
+ <df64d8de-9d7f-474b-8b72-5d2e6c7df1f4@www.fastmail.com>
+ <CA+MHfovCuasf4RrfZrJwfHx4VOeRNfQ=MTMaFG4=Df8cELZ=EA@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <f46d2319-e83f-6d4a-97ba-3f91fe57dd3b@kaod.org>
+Date: Mon, 13 Jul 2020 14:06:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-qwjBwxF61NWuDhQACkvGa3TkjWWEbnMX+Uu+J7orzZg@mail.gmail.com>
+In-Reply-To: <CA+MHfovCuasf4RrfZrJwfHx4VOeRNfQ=MTMaFG4=Df8cELZ=EA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x642.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Ovh-Tracer-Id: 5649765733691001664
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrvdekgdeglecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeffvddtudegieefudeugffhjefgieegieegleettdehgfeiieevueeihfegfefgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieekjedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
+Received-SPF: pass client-ip=188.165.48.182; envelope-from=clg@kaod.org;
+ helo=7.mo2.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 08:07:05
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,96 +98,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Cameron Esfahani via <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: M3/Ra1auWd8L
+X-TUID: Y41cE3OckmQn
 
-On 6/29/20 2:14 PM, Peter Maydell wrote:
-> On Mon, 29 Jun 2020 at 10:39, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> Hi Peter,
->>
->> On 6/28/20 10:37 PM, Peter Maydell wrote:
->>> Currently we have a free-floating set of IRQs and a function
->>> tosa_out_switch() which handle the GPIO lines on the tosa board which
->>> connect to LEDs, and another free-floating IRQ and tosa_reset()
->>> function to handle the GPIO line that resets the system.  Encapsulate
->>> this behaviour in a simple QOM device.
+On 7/7/20 9:42 AM, Erik Smit wrote:
+> Hi Andrew,
+> 
+> On Mon, 6 Jul 2020 at 03:59, Andrew Jeffery <andrew@aj.id.au> wrote:
+>> On Sun, 28 Jun 2020, at 23:56, erik-smit wrote:
+>>> The test of the write of the dblac register was testing the old value
+>>> instead of the new value. This would accept the write of an invalid value
+>>> but subsequently refuse any following valid writes.
 >>>
->>> This commit fixes Coverity issue CID 1421929 (which pointed out that
->>> the 'outsignals' in tosa_gpio_setup() were leaked), because it
->>> removes the use of the qemu_allocate_irqs() API from this code
->>> entirely.
+>>> Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
+>>> ---
+>>> Changes since v1:
 >>>
->>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>> ---
->>> This is simpler than the spitz changes because the new device
->>> doesn't need to refer to any of the other devices on the board.
->>> ---
-> 
->>> +#define TYPE_TOSA_MISC_GPIO "tosa-misc-gpio"
->>> +#define TOSA_MISC_GPIO(obj) \
->>> +    OBJECT_CHECK(TosaMiscGPIOState, (obj), TYPE_TOSA_MISC_GPIO)
->>> +
->>> +typedef struct TosaMiscGPIOState {
->>> +    SysBusDevice parent_obj;
->>> +} TosaMiscGPIOState;
+>>> Changed %ld to HWADDR_PRIx to fix building on mingw
 >>
->> Since we don't really use this type, can we avoid declaring it?
+>> Bit of a nitpick, but the type of the value argument is uint64_t, so shouldn't
+>> the result of the expression captured by FTGMAC100_DBLAC_TXDES_SIZE() and
+>> FTGMAC100_DBLAC_RXDES_SIZE() be printed with a straight PRIx64 rather than
+>> HWADDR_PRIx?
 > 
-> I prefer to be consistent. QOM's implementation allows this kind
-> of shortcut where you don't provide everything that a typical
-> leaf class provides if you don't need all of it, but then it
-> gets confusing if later on somebody wants to add something
-> to that leaf class. I think it's less confusing to have
-> just two standard patterns:
->  * leaf class, no subclasses
->  * a class that will be subclassed
-> and then always provide the same set of TYPE_*, cast macros,
-> structs, etc for whichever of the patterns you're following,
-> even if it happens that these aren't all needed.
+> You are correct. I didn't understand the meaning of the PRI macros and
+> just grabbed the other PRI macro I saw getting used in the file.
 
-Understood.
+With that fixed,
 
-> (https://wiki.qemu.org/Documentation/QOMConventions
-> does a reasonable job of saying what the standard pattern
-> is for the subclassed-class case, but is a bit less clear
-> on the leaf-class case.)
-> 
-> 
->>> +static void tosa_misc_gpio_init(Object *obj)
->>> +{
->>> +    DeviceState *dev = DEVICE(obj);
->>> +
->>
->> Ah, MachineClass does not inherit from DeviceClass, so we can use
->> it to create GPIOs.
->>
->> Something is bugging me here, similar with the LEDs series I sent
->> recently.
->>
->> GPIOs are not specific to a bus. I see ResettableClass takes Object
->> arguments.
->>
->> We should be able to wire GPIO lines to generic Objects like LEDs.
->> Parents don't have to be qdev.
-> 
-> Yes, this is awkward. You pretty much have to inherit from
-> SysBusDevice assuming you want to get reset (the few cases
-> we have which directly inherit from Device like CPUs then
-> end up needing special handling).
-> 
->> Having to create a container to wire GPIOs or hold a reference
->> to a MemoryRegion sounds wrong.
-> 
-> I agree that it would be nicer if MachineState inherited from
-> Device (and if Device got reset properly). But that's a huge
-> amount of rework. For this series I'm just trying to improve
-> the setup for the spitz board, and "logic that's more than
-> just wiring up devices to each other needs to live inside some
-> device, and can't be in the board itself" is the system we have today.
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-We have a large room for improvement :)
+Thanks,
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+C.

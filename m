@@ -1,107 +1,110 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3162475lfm;
-        Mon, 13 Jul 2020 03:49:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzz2TZUS6nZe0nTibXA9NbqFTMdEh1wtMVuh4TSFYoOqkWPuZ02QpsnBMdyXNz06AwsraW0
-X-Received: by 2002:a25:24b:: with SMTP id 72mr73664067ybc.12.1594637394930;
-        Mon, 13 Jul 2020 03:49:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594637394; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3164002lfm;
+        Mon, 13 Jul 2020 03:52:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxCKmXJLqeViAHFk0dK38L/tfOslAG/6SHSP4WgYu5IScrwVeP9rbs02tOiKzhAEHF8bk3U
+X-Received: by 2002:a25:cc4e:: with SMTP id l75mr39597765ybf.377.1594637567082;
+        Mon, 13 Jul 2020 03:52:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594637567; cv=none;
         d=google.com; s=arc-20160816;
-        b=euzc86OLLvbRLcC3XZXkZ78SpbiZpv6f7r2E+qiHt9mzHmEpeQpGv9u2pDfk/PJOd3
-         42xIiI+ps/6l5OFwzCSUpdcIr1ZdOpRn/FoBm08p5FtT6gGqM8BZlD9R1leLaNxlJKme
-         ek1h/tCvUvVnsPa4YQ02fXp3QeJaOcMO4Gg/mUYn7aOcWiynepaCOujcwlb9PdQynzZV
-         X12fR1vYdfIFVDhXOrUENsSEBzLSd0ZgA0G4ZNq1mTN2uzAwNA5ZUVoFBuWOSLP1bjjY
-         XEpL0GEhFJ0XLrV2xsleX0osrB48mEpc1Iph86XrT3E7WdN/HJTWqwECN156yN1x0b8U
-         KiIQ==
+        b=q/c1RveWsD5Y/M3bPHgssHiiAQWQD3Z1A8WnQJOATrYu76mtL1gCsL9O1Ammdz4ZEj
+         pBito/FQoKvaCZUar22Tw+SYDwL6ED7BMxXfecX5g6w9yOTi3LqMYMBDk+T5585yFG1T
+         T3Glmc7TXZ68R7zVtqoyJsW9df483s+9MdR0/nFnev/80hQbDcnvXcBB9wMfZX5vJwUC
+         CKQMGFeK829BrgF/pEKJOVeJB+x0f7BBYqKRZI66DbVTGJUo+YoZOAoBTICFg1S5bvTV
+         q6I18lOXGJE0jHsdjhZKNYikXbvuUJB+s9ZmaVwDShtS3tcmGEnV6G6RqIR54TQAEQPx
+         Kzow==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=qyfulBN7tvoM1TB0fyltT8mEXlDdTpFUm/IpHlk7F0A=;
-        b=vWrFv2J62MPmemx2QWeS46bxYo6qLKIfqAl//ilXo/hbyi6Yr1NebmW1nEqvT0KvPQ
-         S+N8lXNwN1WAnUDs2g6gPtU5IFg36TCxg3fhke4FfKucWDaoCuLRWurL7Do8cyc9zbEw
-         L0KegptSwtJapcg0azW3iJDyCXPOTKbf9XFLwqu2ZDbWEprNa0eM++4hvGs5taOPsmfF
-         6dOVfJ6ksiyl5JnmpV+SDkU1qiMvk5Qy0foTVIpzuvWZr4FPkmfjxOos7eCbAgsG8O8K
-         0E4Y8LMrH2s2FwdB2XntEmRF43o71eGvqZ2WAnpEtRtS6Oy46M6lhw5EL1bpISj+Ygqy
-         E2JA==
+        bh=3G67jKsHCRJ5bPfrH6rxb59LYJUZoYfjRmT+Pruts64=;
+        b=U3gfkw1drh2OGYc+G3EW22iq0vibrAbnBwHUBkc2hwr/zofsUwnqVa/ubjTdZM7ngX
+         Iy45Hz84BwrApbnjFJ8POETf5cm1sIhuOQGN0hqgje507Ldf80WQZQO+AvYJtJ1c0xjm
+         CQceC5BCQGU0VMRadVawzZRBEk8G1Mh4fiBum42Eslei+yA9dahnig+DYcwlbvnykPn4
+         G83m2gBFu/UZZog4x0BMcEOsgtEU5XVHIwyGS42xyVeD4lUywIBbZ8z/J2Udgpztr0/R
+         EohtcgaNlhMyhDH54FGbQ1Crt2MziARi4TWuGhdVhf8ofkhhwFzJxTN7lkxejwbQ8QZF
+         YsZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="GPy/r4pw";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="muIDe/Bp";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c84si1193126yba.7.2020.07.13.03.49.54
+        by mx.google.com with ESMTPS id 124si15301328ybc.38.2020.07.13.03.52.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 03:49:54 -0700 (PDT)
+        Mon, 13 Jul 2020 03:52:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="GPy/r4pw";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="muIDe/Bp";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:53700 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59182 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juw1x-00044y-9y
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 06:49:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59126)
+	id 1juw4k-0006ds-GH
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 06:52:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59834)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1juw1p-00044Y-PH; Mon, 13 Jul 2020 06:49:45 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:37758)
+ id 1juw4Q-0006Dl-7y; Mon, 13 Jul 2020 06:52:26 -0400
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:42181)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1juw1o-0002sL-Ee; Mon, 13 Jul 2020 06:49:45 -0400
-Received: by mail-ej1-x641.google.com with SMTP id lx13so16389569ejb.4;
- Mon, 13 Jul 2020 03:49:43 -0700 (PDT)
+ id 1juw4O-0003OU-O4; Mon, 13 Jul 2020 06:52:25 -0400
+Received: by mail-ed1-x541.google.com with SMTP id z17so13055894edr.9;
+ Mon, 13 Jul 2020 03:52:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:message-id:date:user-agent
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=qyfulBN7tvoM1TB0fyltT8mEXlDdTpFUm/IpHlk7F0A=;
- b=GPy/r4pwLV6ci8+bI8Dl78EfwzuxUOm/1GL6tf9v7rhqQAH65BIIhSdrgAjiplz7cv
- K6Vg6lD/VAJzwslFiTSLub4/e9gYZYDUJpeFFrI+mM+oiynsxCFxvLZGurUBwFhn7upt
- 9MXvNPXImMAm9VjKTbbNN6vjJSOrlg8WTOuQdFaZOPPcoSBsODAARO2cnJfE0kfPLRA0
- nfyzwoFUgtnhFeMyKq02oGjw9of89Ud+JCeblnSDp8mXvCa9u0DxO7pkns9/+ms2BNUT
- gYuFGQpAqYniZJtZHKOmWcbURhLmpd9r+AsdkaQGjiNZOW9+83ZBABRQHWgRjWNmSXB3
- TLYQ==
+ bh=3G67jKsHCRJ5bPfrH6rxb59LYJUZoYfjRmT+Pruts64=;
+ b=muIDe/BpzChXdlAcLkczfrEGmAp11GxfMoRzpt8sADaQeaoh4bvYBNQRdB/7uTxsVF
+ hD2cGmL/ZzRdk5oLN1ZasfoI3BKcxCV1j5aqucLk/h9rJL1rjlTi3rU7sPRYQ1fz7IC2
+ eM94/AKAPGcycJqXI8O0jfUwyeH7VMj3Ld/tdybFJ9ed7ZQuCNCfAkQnZswvV5cOPIoH
+ XUyCRSvuZHT9GJ4FNZF3cd9HH8NrY1kaM0O0aYTH4Fx5kSdAIzqjimcfEVI2o5UCUvvl
+ yLra7cp5k7qpElgaWawK3aFLhiHAoBL7HbVCaSEwhWOlFCWfA29+ShBebg43H/GVPpts
+ NVeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:message-id
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=qyfulBN7tvoM1TB0fyltT8mEXlDdTpFUm/IpHlk7F0A=;
- b=nRdALRRRG/ORtrWhrSSAsGcUOq0UrhK6VW2rlb9OqIIho4L7QOu5TGRyJCFA4I+Tso
- W5xuLipUn3HezIbne4v7+yzPCYXAbnqY7KWX5DcxoFDpe+iQhVvr/f+C4eM91ypyuHyT
- 65lIUQPo8j+2X2KnrKc4WlFbizra9ME2h4BDEJUNbyqrEJ6rL24FnFOSGWryTpDqHm9+
- vdyp5lAbDLrq+dKFBc25je9MKTN4OAE6CJZdxz/Bi5NUQIrreaZMDmMKpDUa03yuGqER
- dPrDcLkwun8DPk0VlzBm+KHloNG7NybQhETxeWCty2n7hoSgXLDvmD9mWEE6mTym8eIC
- NxQw==
-X-Gm-Message-State: AOAM532Bb/nfMLDbCEfBPj/4NENsKMV5UDODkea8hG0ETxznudrH6kt9
- QTzZY08VNa73plWDZbzJQ8bBkTk5MNs=
-X-Received: by 2002:a17:906:a84d:: with SMTP id
- dx13mr64907213ejb.246.1594637382437; 
- Mon, 13 Jul 2020 03:49:42 -0700 (PDT)
+ bh=3G67jKsHCRJ5bPfrH6rxb59LYJUZoYfjRmT+Pruts64=;
+ b=O/0sz39MMZ1Hf834FtQiGUhWiP6lbwr+jYJkyqWNtF5LDzOMNch797Quk7K7x4VRIn
+ cDRVgetQdtuC8WtU5qWe/a4kNe8bfpxPFlusmzDs90CExqZ/sOZBEUUCYrxNyC6FTBb7
+ CvVMHtiUnNlgtRiQrUfe2lsGEQpLAsJpCKEoGeIEkNnCbWY7sFz360jHDs7u0OpUMNOI
+ SOxt1EuKfABr+mqJGJbxi22yXVeILL99eqcefAa9jHA+m2+sTG0qn+A8/nZudrOH9cdc
+ lMLAvbQVKvJ5My67RZax2Hb/gOYlAJRHgakmXM3zPxWPAN56AyaoUxtOOpfsDeWBeMBI
+ r4Vw==
+X-Gm-Message-State: AOAM533IHA6e40jX0dwLuoWmQtj4HyBzlJwGQJWKOY7s6sDpQIcgL39G
+ JM9pRhjDyZttnlWbzjZMMHQBmC4+JP8=
+X-Received: by 2002:a50:bece:: with SMTP id e14mr11267556edk.190.1594637542021; 
+ Mon, 13 Jul 2020 03:52:22 -0700 (PDT)
 Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id u5sm9321472ejz.15.2020.07.13.03.49.41
+ by smtp.gmail.com with ESMTPSA id qc16sm9465728ejb.33.2020.07.13.03.52.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Jul 2020 03:49:41 -0700 (PDT)
-Subject: Re: [PATCH 1/2] hw/arm/palm.c: Detabify
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+ Mon, 13 Jul 2020 03:52:21 -0700 (PDT)
+Subject: Re: [PATCH 2/2] hw/arm/palm.c: Encapsulate misc GPIO handling in a
+ device
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20200628214230.2592-1-peter.maydell@linaro.org>
- <20200628214230.2592-2-peter.maydell@linaro.org>
+ <20200628214230.2592-3-peter.maydell@linaro.org>
+ <4c049b0c-f305-729a-748d-0a7742b496ed@amsat.org>
+ <CAFEAcA_JCSs6BCCw-MYOO8RcyXQ_iNZ63KjuwqEPM7yuvWsdTA@mail.gmail.com>
+ <c9fe0637-9870-b155-3b50-0da3f03d279f@amsat.org>
+ <CAFEAcA_wrzBj_YNSehG8fDy-0et9gaE98eMuw6agsmkDJ0MoEA@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <4a786e25-fa1e-7268-1287-8cce8f367589@amsat.org>
-Date: Mon, 13 Jul 2020 12:49:40 +0200
+Message-ID: <ac8308ac-d4c5-735b-d4ef-9d2cf2bfce97@amsat.org>
+Date: Mon, 13 Jul 2020 12:52:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200628214230.2592-2-peter.maydell@linaro.org>
+In-Reply-To: <CAFEAcA_wrzBj_YNSehG8fDy-0et9gaE98eMuw6agsmkDJ0MoEA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x641.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::541;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x541.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -123,17 +126,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WPgXRPUFujpk
+X-TUID: T09lqaMDhcXO
 
-On 6/28/20 11:42 PM, Peter Maydell wrote:
-> Remove hard-tabs from palm.c.
+On 7/13/20 12:31 PM, Peter Maydell wrote:
+> On Mon, 13 Jul 2020 at 11:21, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> On 7/13/20 12:05 PM, Peter Maydell wrote:
+>>> On Mon, 13 Jul 2020 at 09:57, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>>> Why not make it a generic container in the MachineState and create
+>>>> the container in hw/core/machine.c::machine_initfn()?
+>>>
+>>> I don't think we create containers like that for any other
+>>> machine, do we?
+>>
+>> No but maybe we could. Most boards have some GPIO/LED/reset switch
+>> button. Do all machines have a NUMA memory device? Do all machines
+>> have a dtb? Do all machines use NVDIMM devices? I think we have
+>> more machines using GPIOs than machine using NVDIMM. Anyway I don't
+>> mind, I was just trying to figure where this container belong on QOM.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  hw/arm/palm.c | 64 +++++++++++++++++++++++++--------------------------
->  1 file changed, 32 insertions(+), 32 deletions(-)
+> I think that if machines were qdev objects with the usual
+> reset/gpio/etc capabilities, I might have just implemented
+> this as part of the machine object; but they aren't, and
+> it didn't really seem like the right approach to create an
+> ad-hoc "container that sort of corresponds to the whole
+> machine". Also, since these machines are largely orphan
+> I tend to favour smaller-scale interventions that push them
+> in a better direction rather than more sweeping changes.
 
-Using 'git-diff -w':
+Fair enough. There is something that bugs me in the MachineClass,
+but this is not this series fault. I guess by adding such containers
+in machines, we'll eventually figure out what is the best QOM design
+for it.
+
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+

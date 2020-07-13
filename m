@@ -1,108 +1,116 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3082993lfm;
-        Mon, 13 Jul 2020 01:49:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyrfv8VmY81ESKO/oERgcBhwOLvYgIrG6xsLP2cFcDwvjLrODjf1Itu91FlHlU3g/2yJSql
-X-Received: by 2002:a25:d046:: with SMTP id h67mr37732578ybg.458.1594630176753;
-        Mon, 13 Jul 2020 01:49:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594630176; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3086574lfm;
+        Mon, 13 Jul 2020 01:57:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzvzFaQWC9GHJv/MOjmQ5IsDW6oTeaRV0FXZqDYETRxDs72RQ3PTmyp+/tvJcH5je6sqCM9
+X-Received: by 2002:a25:2a8f:: with SMTP id q137mr88661284ybq.462.1594630651255;
+        Mon, 13 Jul 2020 01:57:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594630651; cv=none;
         d=google.com; s=arc-20160816;
-        b=DJVYo2w523ctNXnHSWD9+Xdm7rK5RopNYoUaF9syl43RmfxoAH+abmrH0OPzv+GQ1H
-         Z43nhK64Gv0YzQaRd3zduWeiO9ivHw9y4ZkfZj2SRzS5/RtEp/dw1RVv9Q9b9FIRTS0G
-         sWNMQqrerPlhQ6lVCa6AvmaBWOU0blhMWoFtcsPgDfn+x53W3FvbnBMyd12xcWRfjs/S
-         UtxMntZzrD34gHp8iSkhUCm0DM/XWONA3036gNCid5qdftGJExCLRcstp0V3DFkhihrC
-         N78kQRvV9v9lZWZXi9MIQctTCKFfsRHtJvuzMr/c6efAJNTihWMAxG2X/nTNZEkZfImE
-         0D7Q==
+        b=Fi3R6Rs4aJYAXg/lnUq6EebGtw/9V5p5glZfOGTJ+Bv4XykJpqcvPu9b418PhkNIlr
+         y1+9fNAFJNJkJWw4L3v36XmEw/OPeUB6emS3GZAlKYWcaUO4CCHuVZljZHUOrc3Fqn/r
+         BIiN7Gj+6zGQ8AO7aayrtdtJ+4RmQTeHM+rAhtx4rarujJOp8dTl0sPCymeJ9OpQ9Ej6
+         IFdyAS1bBt0T5ynb6rmLdeyjsrQczeC9eyy8+CMyffCMPq6tcVOmOdkyXo2QozkUm8qK
+         cyrKe04nt+m7BR35ECg2D6Uwnb8gU1auSUc0oETRnGoT2aVjq8hNDtKVolqmb5E2DG1p
+         OY8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=PW90HBsCIGJfz8DaHaQi+pvUgYz2IHzp5BGt2uL4i/0=;
-        b=MsqvcOfkKuVcNATP08/dSJtWvb0hgfgtfAJ5o/8Tn+6adt4Maq1iBx7qh0B2a8INxS
-         Gzra0aNB7fB83tQwWCGs2/PObk9KK3cVsyzKrdI5k7vHtYgxO7Llap6ThvjUFZ8GRa0R
-         Q4cwBv2aKLKalXKb8M/nG9r36Gonk85mYLkz8i3n2/djfH3IZ3m9gxtoHp00rJ7deivr
-         dx3feMgEOGyoRUsaw4bHlTwYkuRqcKPnFXHpjd7YEbu0SrBjIKrukLrmfCnnwuTxCqiG
-         5gPGTj9d7xMMxskansXPxfZRzHwk6PGqUEI0aeKf+/m+7owqY84+4cBfykRS6WwJ6Qp7
-         914g==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=vTxaeiK4H/wXMOJNW8a2fx6baFKR/j6gqcQDSMLpMQE=;
+        b=rXanjDosy7XsjiAOb9neuuIbMcFdlh8W60e9WdQC7/oqXazedKIhoXJadHXDlDECrB
+         +/qxkuqRLXJROHBlcVHI/9rty9RX6kgC88zep5xx91qqgvIp/7pTEWK3AdDZoYESlllt
+         dp+5Eg8eE+HAE6lLugL9SEQ7kF87NcuFmk136OYifMVpcPHPPvT22NIg557HILAvagC1
+         2KVvYXaEuhqXtH56lXohFQ6ubtc+V9n9SeGwhbSHc16C8d7GMZytascGJL3zPjdiqnzn
+         Z4MF0YGWzMEhT0MoonMAonsDZQ9urdVvvVMRYH8Qs+wM/MbhFnV2Tz0S8eKt9g4wNuCh
+         IM+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ib8x3zFC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mYyYnHHn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10si12999982ybb.99.2020.07.13.01.49.36
+        by mx.google.com with ESMTPS id b62si13686554yba.435.2020.07.13.01.57.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 01:49:36 -0700 (PDT)
+        Mon, 13 Jul 2020 01:57:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ib8x3zFC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mYyYnHHn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48474 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:35374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1juu9Y-0006Bv-5K
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 04:49:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49884)
+	id 1juuHC-0004E0-ML
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 04:57:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51462)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1juu9P-000688-Ly
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 04:49:27 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:57264
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1juu9O-0001PU-1V
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 04:49:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594630165;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=PW90HBsCIGJfz8DaHaQi+pvUgYz2IHzp5BGt2uL4i/0=;
- b=Ib8x3zFCGrBOs6MNjYUkKj+cCV/KVDqEygr1UfdcrPWjXNUERKCXMjLyu6YD5kVMc6B2/6
- +KyGCwO/YiFYVhpv4exNxcJoFqopXBcawxNNXB0NltRlJtrJczSHyU4XLv/fP4Tp+cCwfV
- hO4YGiTxCYd2Wp9RK1e1jEXoFEtt2hg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-150-ANNcMN3hPxyOpf3luDd6tA-1; Mon, 13 Jul 2020 04:49:21 -0400
-X-MC-Unique: ANNcMN3hPxyOpf3luDd6tA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 992E1100CCC0;
- Mon, 13 Jul 2020 08:49:20 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.62])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 040422E020;
- Mon, 13 Jul 2020 08:49:09 +0000 (UTC)
-Date: Mon, 13 Jul 2020 10:49:07 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: Re: [PATCH 3/4] hw/arm/virt-acpi-build: Only expose flash on older
- machine types
-Message-ID: <20200713104907.335bf762@redhat.com>
-In-Reply-To: <20200629140938.17566-4-drjones@redhat.com>
-References: <20200629140938.17566-1-drjones@redhat.com>
- <20200629140938.17566-4-drjones@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1juuH1-0004D9-Lm; Mon, 13 Jul 2020 04:57:19 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:33914)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1juuH0-0002UW-2m; Mon, 13 Jul 2020 04:57:19 -0400
+Received: by mail-wr1-x442.google.com with SMTP id f7so15106657wrw.1;
+ Mon, 13 Jul 2020 01:57:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=vTxaeiK4H/wXMOJNW8a2fx6baFKR/j6gqcQDSMLpMQE=;
+ b=mYyYnHHnNWomP9y1NPkqaZT+hkAUX/f3ZDrPg8VcR+u2UsKwS0kC9S8FglGym8u3dv
+ Rl2HpzHjymNMVDr5rdiOdUM4Mh7Vyemz75VcdoqzF8BGLAQZBK0eNkDkZgMCz6V958Wn
+ SA6IRnIhcgevyi3r9celSm+gwnMnW9rW0F+jcJL0IaY91wSyDF2PbGb58YAqESdlxznt
+ /n1irhq4jQ/Ne+kAmywkpwPm8gZWKsaY6DTO7slgCENqFLA+SnL/7AEJ0IDHj6GtSF5H
+ Pc8BgIjH6UFDeLCPM8vfUyQp6hFmO5i9OddMAaY/Tt0MTV3eaWrnaDpv0PyIPgmqp+dc
+ Dh5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=vTxaeiK4H/wXMOJNW8a2fx6baFKR/j6gqcQDSMLpMQE=;
+ b=Eh3PakK+u4yxiusrVhxEDjvprD3y63DNokQvYoPMQ530rrnZEeq9Kn+5JL+Vpb1ZFL
+ vqk80lnvEUgR2ylSkSFMXAN3Q0r9jng28RFke9XQ9NcBS09AGIuA3azsES9dr2+OmOja
+ lF3DVRbvy2q2yXzGsMd/iL1WH2ZD+x4W9nNoomrYWgfP6NE7KSti6miM5hffdpGMHcSY
+ PVp71NDKzCG79rgFjGb/JNguhSMZuSv4XCYZPaL1tqNJYXJJg3zIQdH1XtkXFPL9Y5ON
+ dkNX7eo+23d1p8N44HFLPFWmJNvC8H7u3t56gN67xwYl0HZO8PyswzmzGtjLy/CKzZRh
+ FJeA==
+X-Gm-Message-State: AOAM5324fZI1mfSYLItkMJtoUnaBG1Q6lAj2scktgASdvafxkuqUDPpw
+ 3NDrEnm7m80ksTHENYUYOhY=
+X-Received: by 2002:adf:f889:: with SMTP id u9mr86336337wrp.149.1594630634292; 
+ Mon, 13 Jul 2020 01:57:14 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id m16sm24891490wro.0.2020.07.13.01.57.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Jul 2020 01:57:13 -0700 (PDT)
+Subject: Re: [PATCH 2/2] hw/arm/palm.c: Encapsulate misc GPIO handling in a
+ device
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200628214230.2592-1-peter.maydell@linaro.org>
+ <20200628214230.2592-3-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <4c049b0c-f305-729a-748d-0a7742b496ed@amsat.org>
+Date: Mon, 13 Jul 2020 10:57:13 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+In-Reply-To: <20200628214230.2592-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 01:36:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,93 +123,121 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, mst@redhat.com, philmd@redhat.com,
- qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- ard.biesheuvel@arm.com, lersek@redhat.com, eric.auger@redhat.com
+Cc: Andrzej Zaborowski <balrogg@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jh9w9LPMwYKB
+X-TUID: djlc07O3Ioz+
 
-On Mon, 29 Jun 2020 16:09:37 +0200
-Andrew Jones <drjones@redhat.com> wrote:
+Hi Peter,
 
-> The flash device is exclusively for the host-controlled firmware, so
-> we should not expose it to the OS. Exposing it risks the OS messing
-> with it, which could break firmware runtime services and surprise the
-> OS when all its changes disappear after reboot.
+On 6/28/20 11:42 PM, Peter Maydell wrote:
+> Replace the free-floating set of IRQs and palmte_onoff_gpios()
+> function with a simple QOM device that encapsulates this
+> behaviour.
 > 
-> As firmware needs the device and uses DT, we leave the device exposed
-> there. It's up to firmware to remove the nodes from DT before sending
-> it on to the OS. However, there's no need to force firmware to remove
-> tables from ACPI (which it doesn't know how to do anyway), so we
-> simply don't add the tables in the first place. But, as we've been
-> adding the tables for quite some time and don't want to change the
-> default hardware exposed to versioned machines, then we only stop
-> exposing the flash device tables for 5.1 and later machine types.
+> This fixes Coverity issue CID 1421944, which points out that
+> the memory returned by qemu_allocate_irqs() is leaked.
 > 
-> Suggested-by: Ard Biesheuvel <ard.biesheuvel@arm.com>
-> Suggested-by: Laszlo Ersek <lersek@redhat.com>
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/arm/virt-acpi-build.c | 5 ++++-
->  hw/arm/virt.c            | 3 +++
->  include/hw/arm/virt.h    | 1 +
->  3 files changed, 8 insertions(+), 1 deletion(-)
+>  hw/arm/palm.c | 61 +++++++++++++++++++++++++++++++++++++++++++--------
+>  1 file changed, 52 insertions(+), 9 deletions(-)
 > 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 1384a2cf2ab4..91f0df7b13a3 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -749,6 +749,7 @@ static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
->  static void
->  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
->      Aml *scope, *dsdt;
->      MachineState *ms = MACHINE(vms);
->      const MemMapEntry *memmap = vms->memmap;
-> @@ -767,7 +768,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->      acpi_dsdt_add_cpus(scope, vms->smp_cpus);
->      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
->                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
-> -    acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-> +    if (vmc->acpi_expose_flash) {
-> +        acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-> +    }
->      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
->      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
->                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index cd0834ce7faf..5adc9ff799ef 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2482,9 +2482,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
->  
->  static void virt_machine_5_0_options(MachineClass *mc)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
->      virt_machine_5_1_options(mc);
->      compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
->      mc->numa_mem_supported = true;
-> +    vmc->acpi_expose_flash = true;
-
-we usually do not version ACPI tables changes
-(unless we have a good reason to do so)
-
+> diff --git a/hw/arm/palm.c b/hw/arm/palm.c
+> index 569836178f6..e7bc9ea4c6a 100644
+> --- a/hw/arm/palm.c
+> +++ b/hw/arm/palm.c
+> @@ -124,6 +124,21 @@ static void palmte_button_event(void *opaque, int keycode)
+>                          !(keycode & 0x80));
 >  }
->  DEFINE_VIRT_MACHINE(5, 0)
 >  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index 31878ddc7223..c65be5fe0bb6 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -119,6 +119,7 @@ typedef struct {
->      bool no_highmem_ecam;
->      bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
->      bool kvm_no_adjvtime;
-> +    bool acpi_expose_flash;
->  } VirtMachineClass;
+> +/*
+> + * Encapsulation of some GPIO line behaviour for the Palm board
+> + *
+> + * QEMU interface:
+> + *  + unnamed GPIO inputs 0..6: for the various miscellaneous input lines
+> + */
+> +
+> +#define TYPE_PALM_MISC_GPIO "palm-misc-gpio"
+> +#define PALM_MISC_GPIO(obj) \
+> +    OBJECT_CHECK(PalmMiscGPIOState, (obj), TYPE_PALM_MISC_GPIO)
+> +
+> +typedef struct PalmMiscGPIOState {
+> +    SysBusDevice parent_obj;
+> +} PalmMiscGPIOState;
+> +
+>  static void palmte_onoff_gpios(void *opaque, int line, int level)
+>  {
+>      switch (line) {
+> @@ -151,23 +166,44 @@ static void palmte_onoff_gpios(void *opaque, int line, int level)
+>      }
+>  }
 >  
->  typedef struct {
+> +static void palm_misc_gpio_init(Object *obj)
+> +{
+> +    DeviceState *dev = DEVICE(obj);
+> +
+> +    qdev_init_gpio_in(dev, palmte_onoff_gpios, 7);
+> +}
+> +
+> +static const TypeInfo palm_misc_gpio_info = {
+> +    .name = TYPE_PALM_MISC_GPIO,
+> +    .parent = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(PalmMiscGPIOState),
+> +    .instance_init = palm_misc_gpio_init,
+> +    /*
+> +     * No class init required: device has no internal state so does not
+> +     * need to set up reset or vmstate, and has no realize method.
+> +     */
+> +};
+> +
+>  static void palmte_gpio_setup(struct omap_mpu_state_s *cpu)
+>  {
+> -    qemu_irq *misc_gpio;
+> +    DeviceState *misc_gpio;
+> +
+> +    misc_gpio = sysbus_create_simple(TYPE_PALM_MISC_GPIO, -1, NULL);
+
+Why not make it a generic container in the MachineState and create
+the container in hw/core/machine.c::machine_initfn()?
+
+>  
+>      omap_mmc_handlers(cpu->mmc,
+>                      qdev_get_gpio_in(cpu->gpio, PALMTE_MMC_WP_GPIO),
+>                      qemu_irq_invert(omap_mpuio_in_get(cpu->mpuio)
+>                              [PALMTE_MMC_SWITCH_GPIO]));
+>  
+> -    misc_gpio = qemu_allocate_irqs(palmte_onoff_gpios, cpu, 7);
+> -    qdev_connect_gpio_out(cpu->gpio, PALMTE_MMC_POWER_GPIO,     misc_gpio[0]);
+> -    qdev_connect_gpio_out(cpu->gpio, PALMTE_SPEAKER_GPIO,       misc_gpio[1]);
+> -    qdev_connect_gpio_out(cpu->gpio, 11,                        misc_gpio[2]);
+> -    qdev_connect_gpio_out(cpu->gpio, 12,                        misc_gpio[3]);
+> -    qdev_connect_gpio_out(cpu->gpio, 13,                        misc_gpio[4]);
+> -    omap_mpuio_out_set(cpu->mpuio, 1,                           misc_gpio[5]);
+> -    omap_mpuio_out_set(cpu->mpuio, 3,                           misc_gpio[6]);
+> +    qdev_connect_gpio_out(cpu->gpio, PALMTE_MMC_POWER_GPIO,
+> +                          qdev_get_gpio_in(misc_gpio, 0));
+> +    qdev_connect_gpio_out(cpu->gpio, PALMTE_SPEAKER_GPIO,
+> +                          qdev_get_gpio_in(misc_gpio, 1));
+> +    qdev_connect_gpio_out(cpu->gpio, 11, qdev_get_gpio_in(misc_gpio, 2));
+> +    qdev_connect_gpio_out(cpu->gpio, 12, qdev_get_gpio_in(misc_gpio, 3));
+> +    qdev_connect_gpio_out(cpu->gpio, 13, qdev_get_gpio_in(misc_gpio, 4));
+> +    omap_mpuio_out_set(cpu->mpuio, 1, qdev_get_gpio_in(misc_gpio, 5));
+> +    omap_mpuio_out_set(cpu->mpuio, 3, qdev_get_gpio_in(misc_gpio, 6));
+>  
+>      /* Reset some inputs to initial state.  */
+>      qemu_irq_lower(qdev_get_gpio_in(cpu->gpio, PALMTE_USBDETECT_GPIO));
+> @@ -276,3 +312,10 @@ static void palmte_machine_init(MachineClass *mc)
+>  }
+>  
+>  DEFINE_MACHINE("cheetah", palmte_machine_init)
+> +
+> +static void palm_register_types(void)
+> +{
+> +    type_register_static(&palm_misc_gpio_info);
+> +}
+> +
+> +type_init(palm_register_types)
+> 
 

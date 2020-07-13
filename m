@@ -1,92 +1,108 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp275128lfm;
-        Wed, 15 Jul 2020 00:42:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxK8nq82sDDxEADPufFt7/Hx65yoVdkp5Jag5LJtaa2saqKWoxlCI5ZouyVvR437bVAl6Pk
-X-Received: by 2002:a25:6910:: with SMTP id e16mr14448174ybc.207.1594798976193;
-        Wed, 15 Jul 2020 00:42:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594798976; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3131696lfm;
+        Mon, 13 Jul 2020 03:05:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwERwCsDWbWrn47s9IkLh1tSlP0t24iRaWFQPCelAvCp14owX/Cc73nv56JyDEJ3DEvCiZ4
+X-Received: by 2002:a5b:3d2:: with SMTP id t18mr32338921ybp.453.1594634753904;
+        Mon, 13 Jul 2020 03:05:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594634753; cv=none;
         d=google.com; s=arc-20160816;
-        b=vDbkGFlg/fyygRSH4Omd3FKbZvDzyNv/eDAZnJXpmcEHmwPblayCTbevRKgULM4vaH
-         +MPRWSh3bqfCBIbYQdahW8F7R66qudnGa8HGRx7krjW76KhmbcvLcZFSG5TcwK8osiZD
-         AV7ej6hfyBni8MO1X/2iYzoAZcOEshJD369fTJWDh80c4kshZsFPDiO30DRiU05gNQ4P
-         fvyvng0m4aQc7axUbfWCm10LjROmsVmsFytf9ZT+gMeddl0BjY2LdjVyzDukyhf4eCUG
-         yHeqWIwf+xQ+9BnGisU9nMuG10TEhBGorQ/knGnw9Oqf6e1jduqxeUS1X7rEFzZ/aO80
-         mb9Q==
+        b=RJRyN3TGnGCQ9VAhFYwjZsuovtE5LmYizjKsnZznAgWLnMF88r++nJwMEWNfU3S4Kc
+         iNJj2ARDWMvSON3UVK2rcDYr5ZojJuRs09UrtWHZB8+EoaQ97chqVXIg+EEMtDhzTvZn
+         A1KQG38kISyStDRPwzVAkD8Wwqf7iefTjR5v+rp11ju26erqv4BPcGmIIJ/SioDnTmGE
+         h7bEr3Pv3v1/W9yDkJP3gz789CoP+h2mSxBJQyQ6ehXyd9BJs7Fx7Xbf9M+lKs+KtPsX
+         kBAmRm9MLpHf+phRWf7s2IYIzPClR+Tb4kq3nH7+PoZ29fojFdWxQ0WzLieglLSNdUxT
+         wg9A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=WNlJGSSEwAkwibnC0C3TRVMdVsYGdBL5Z4nueW2IL3M=;
-        b=Fy0O441doVEGigyGL7lK7unM9hChCIi0wsqVr5JgrhNz0QlS3hbNdlqtutbAbSOpg+
-         Tl8eUfe0QHnOod0RcERCY8CIG4kcJ/xo+88xFOI1/7KwPoeCnG7HKkdKsyr8BXz97qWh
-         D/x5CaHER3pYaSzW0HOEhv/vNZSO0dNYnEJP7qf56Sb+9qdJjgLVlGvhjSZAkB686x0x
-         cAyvLXFOivD5VGg8ZWoUejyO7A39gZo/pltw8UYPR5TXGZwbkYDvSVE8k5XiRN/ItzE0
-         3crMZ1u3Q1mx0c5VHO7iykUGmGDP5OyzNac+HYnACAXsxAKq9QTPoku1XimOBD9NNk5a
-         es+Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=eqW9Kj52y69ZnpMGvLNWRCX82+2t7WxidfGVLvjziz8=;
+        b=OFZihGGXINKQo2VzAR1oksfQ9qy1UP/MqqNeV0UnOewYYnpbJuzR51xTWp8+yQEmaG
+         uZkGq6mYOmj+Vi5sN3R5jxWqAxmk0z8pdVqw35/Lkb3pr+sNvLBnkP47FJc7oVyrQ5qC
+         WV/fuK+1+h3d84UZBgGCQqlw48GPtjFBNhiezDcQrxe6Oz5dZJT5/8bbkwy2BZHaC3/b
+         +m85jVRCI/shuMrsr1fjjzkD/sUy0vcg1Voaa4SHxJFB4PxUD1c/oQdjmmPGB0j7gvEQ
+         EgYNuR1z+/bB8MHVydXYUIGNLDSxMnAie7h3cxK4YYbpxmrGLc2y0RcTxMqJKSs5/q/B
+         E/9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=q1HBULXJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b74si1702794yba.101.2020.07.15.00.42.56
+        by mx.google.com with ESMTPS id g81si13955476ybb.330.2020.07.13.03.05.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jul 2020 00:42:56 -0700 (PDT)
+        Mon, 13 Jul 2020 03:05:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44892 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=q1HBULXJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:51114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvc47-0004rQ-JZ
-	for alex.bennee@linaro.org; Wed, 15 Jul 2020 03:42:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40838)
+	id 1juvLN-0002cA-AE
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 06:05:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jvc40-0004r8-Cg
- for qemu-arm@nongnu.org; Wed, 15 Jul 2020 03:42:48 -0400
-Received: from 9.mo173.mail-out.ovh.net ([46.105.72.44]:55335)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jvc3y-0001WI-8k
- for qemu-arm@nongnu.org; Wed, 15 Jul 2020 03:42:48 -0400
-Received: from player759.ha.ovh.net (unknown [10.108.57.183])
- by mo173.mail-out.ovh.net (Postfix) with ESMTP id 3627814409E
- for <qemu-arm@nongnu.org>; Wed, 15 Jul 2020 09:42:41 +0200 (CEST)
-Received: from kaod.org (lfbn-tou-1-1163-216.w90-76.abo.wanadoo.fr
- [90.76.222.216]) (Authenticated sender: clg@kaod.org)
- by player759.ha.ovh.net (Postfix) with ESMTPSA id B8476145F7BDC;
- Wed, 15 Jul 2020 07:42:30 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R0024ac65c9e-140e-488a-86be-e40f045741a8,D1878713575E7557A8ED5F979EF3ECB62B482302)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v5 10/11] hw/arm: Wire up BMC boot flash for npcm750-evb
- and quanta-gsj
-To: Havard Skinnemoen <hskinnemoen@google.com>
-References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-11-hskinnemoen@google.com>
- <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
- <CAFQmdRZcygskP3iwss01-Jz67yjAP_JENXjWM2Bp8U=DRzxR0Q@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <9a1567f0-f13c-326d-460f-6ad167bcf523@kaod.org>
-Date: Wed, 15 Jul 2020 09:42:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1juvLB-0002bk-Eo
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 06:05:41 -0400
+Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:39321)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1juvL9-0004Dp-Iz
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 06:05:41 -0400
+Received: by mail-oi1-x244.google.com with SMTP id w17so10500270oie.6
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 03:05:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=eqW9Kj52y69ZnpMGvLNWRCX82+2t7WxidfGVLvjziz8=;
+ b=q1HBULXJB8n69p5SBIZPP0W3Q1xRm1Wo5CdxKLf/e7G5faZTrpmsReixp5tOTZrek6
+ wp+z4BPv6OlN3aZS/vX9GR5ccWHQj2VQBZ+rsF5zENxUfuDj6sI99o3xllW9+K9vctzG
+ /6vy4gGS2eHKGQ7zolBEEYZ4JO2BuXLD0a7dIL/ajSWr14pbBws/iy/NCJPJaWwpzG9I
+ cTb5Kl6zk77wiikl5z54XvEBcqiOXTWdyu+gkKpmu/McTC3653HUa0lQU3E5zRkAA/Rp
+ VYQCT/7LAAF235UYiJ7ropcSF70yn0UktC8PCgLs1ssPQ8x9tpwBmtjeTTX74bhSaGk0
+ FYBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=eqW9Kj52y69ZnpMGvLNWRCX82+2t7WxidfGVLvjziz8=;
+ b=eAVG6TMoZ0EeUphfVVE8B/Cfop5xD1HfDqOocjwSpScDE3GGnvW4Oo7AR3RC2U/PRj
+ xZYHhaFovEglkeHedkdx0toTtzM4BAFKagR2lYOtrmSMff6LcCtOoJPcMsDOz3wI5Oyl
+ 442+bROh7yJ6kY5oPUoCy2yFNMejYe2xBRA/YVgYbiQuQiUlRR1u5juxL3dN2mp3CUFy
+ R9ks09OXE6sjH9F/8P7ppZq722oRfZVvxU66XKaM/StMPz5a6hzRxwFUFc/8zZugKrbz
+ i8MWsKQkRIjY0ZwM2tpHlqCnhypihS87E/9poveGsCDAM+gEb+/kOD16uCUkdR0Ag9Cv
+ TNYg==
+X-Gm-Message-State: AOAM530jPitjMiQ4BLaUZVDwu4wjOnVauqjfIMPCdN51GgX63GF6vOpe
+ hOmCzEihWAAqO5y79uznO6K4bDgoR7IWCOOfEb3nfw==
+X-Received: by 2002:aca:1706:: with SMTP id j6mr12708772oii.146.1594634738340; 
+ Mon, 13 Jul 2020 03:05:38 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFQmdRZcygskP3iwss01-Jz67yjAP_JENXjWM2Bp8U=DRzxR0Q@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 12930116007037930451
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrfedugdduvdefucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeekhfetudefffevvdeljeeggeehvdegueeiueefjeeuledtudegudehvdevlefgheenucffohhmrghinhepghhithhhuhgsrdgtohhmnecukfhppedtrddtrddtrddtpdeltddrjeeirddvvddvrddvudeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeehledrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=46.105.72.44; envelope-from=clg@kaod.org;
- helo=9.mo173.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/15 03:42:42
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+References: <20200628214230.2592-1-peter.maydell@linaro.org>
+ <20200628214230.2592-3-peter.maydell@linaro.org>
+ <4c049b0c-f305-729a-748d-0a7742b496ed@amsat.org>
+In-Reply-To: <4c049b0c-f305-729a-748d-0a7742b496ed@amsat.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 13 Jul 2020 11:05:27 +0100
+Message-ID: <CAFEAcA_JCSs6BCCw-MYOO8RcyXQ_iNZ63KjuwqEPM7yuvWsdTA@mail.gmail.com>
+Subject: Re: [PATCH 2/2] hw/arm/palm.c: Encapsulate misc GPIO handling in a
+ device
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x244.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,78 +116,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm <qemu-arm@nongnu.org>, Andrzej Zaborowski <balrogg@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Eduardo Habkost <ehabkost@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9wsSQ5inoEtg
+X-TUID: X/bE5UkyXpUm
 
-On 7/14/20 4:56 AM, Havard Skinnemoen wrote:
-> On Mon, Jul 13, 2020 at 7:57 AM Cédric Le Goater <clg@kaod.org> wrote:
->>
->> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
->>> This allows these NPCM7xx-based boards to boot from a flash image, e.g.
->>> one built with OpenBMC. For example like this:
->>>
->>> IMAGE=${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc
->>> qemu-system-arm -machine quanta-gsj -nographic \
->>>       -bios ~/qemu/bootrom/npcm7xx_bootrom.bin \
->>>       -drive file=${IMAGE},if=mtd,bus=0,unit=0,format=raw,snapshot=on
->>>
->>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
->>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->>
->> May be we don't need to create the flash object if dinfo is NULL.
-> 
-> It's soldered on the board, so you can't really boot the board without
-> it. But if you think it's better to remove it altogether if we don't
-> have an image to load into it, I can do that.
-> 
->>
->> Reviewed-by: Cédric Le Goater <clg@kaod.org>
->> Tested-by: Cédric Le Goater <clg@kaod.org>
->>
->> Nice !
->>
->> We need a SPI controller model and a network device model now.
-> 
-> Yeah, and i2c, PWM, GPIO, etc., but if you're referring to the kernel
-> crash, see below.
+On Mon, 13 Jul 2020 at 09:57, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
+> Why not make it a generic container in the MachineState and create
+> the container in hw/core/machine.c::machine_initfn()?
 
-We don't need all device models but fixing the crash would be better. 
+I don't think we create containers like that for any other
+machine, do we?
 
->> npcm7xx_bootrom.bin is a bit of a pain. Could we include it in
->> the QEMU roms ?
-> 
-> Yeah, I was planning to include this in v6.
-
-Good. It will ease CI.
-
->> spi_master spi0: /ahb/fiu@fb000000/spi-nor@0 has no valid 'spi-max-frequency' property (-22)
->> spi_master spi0: Failed to create SPI device for /ahb/fiu@fb000000/spi-nor@0
-> 
-> This is a device tree bug:
-> 
-> https://github.com/hskinnemoen/openbmc/commit/99b172f88002f4fac939f85debe1187b9c569871
-> 
->> libphy: Fixed MDIO Bus: probed
->> 8<--- cut here ---
->> Unable to handle kernel paging request at virtual address fffffffe
-> 
-> I believe this is a kernel bug:
-> 
-> https://github.com/hskinnemoen/openbmc/commit/77e9f58ba157eabc976f15fa49892128fe2b2382
-> 
-> I needed two additional patches to get all the way to the login prompt:
-> 
-> https://github.com/hskinnemoen/openbmc/commits/20200711-gsj-qemu-0
- 
-
-Great. So are these for mainline or Joel's openbmc branch ? 
-
-Thanks,
-
-C.
+thanks
+-- PMM

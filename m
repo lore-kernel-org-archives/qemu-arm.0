@@ -1,110 +1,117 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3427397lfm;
-        Mon, 13 Jul 2020 09:16:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx/81Pas8oKzb34cgNkSsptiYwNwq+LnBjK7YwdZh1gdkwJSC69Mx/HLy1/E6b4eFVRmLiR
-X-Received: by 2002:a25:aa2a:: with SMTP id s39mr1072760ybi.507.1594656960301;
-        Mon, 13 Jul 2020 09:16:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594656960; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3494860lfm;
+        Mon, 13 Jul 2020 10:39:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyyZymthCvjD5p5KJQoMKyBCJTDpTro5yGAnpNm2Gv4hPmSHuLYXrGwblnMFY9/cYmAlcAC
+X-Received: by 2002:a25:ca13:: with SMTP id a19mr1683572ybg.166.1594661955690;
+        Mon, 13 Jul 2020 10:39:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594661955; cv=none;
         d=google.com; s=arc-20160816;
-        b=nL1E6PzuXntxd9cwHfn2VnvNzPRY4rk3m/PzJG3kbP+CPEQymsBd72sCPie8DG8Ut5
-         ZbkYeHaQ+Z41LARbSyAmJIXrsO3IpnU1aFzXJVsXELcwGMU/oVhwJG9pJ8zRnUmZ2U0X
-         +czdGd/oJKR25m0Zk5x4KJz9BBhZ9cYab73WDJ3v6sNGa3yOzWzhcc1WmnkqyKL1R8xD
-         jfZvByDH1P4AQKRXjlJ6WGBerY2SCYEdMibzD7lqbe0FNu1AGsfGZUKnCAxid2UfCFIN
-         gsSe2hdx/AQct0JwMie4STSDJS0DVWADUdjvyhay1yqk7BAnsn511c/E2LrZ5y8+4YBR
-         S/Ng==
+        b=WBgf76rYsIw0G2aOHU7WIDbVq5Z0npbk9892jmM3n3VddbU+gPPIgUEbWJBMIBJuE4
+         VxMm3v0DzA5hgTSPq/iOMOC/OBpzVyCVn+Pv95TO7DmD9mq9eb7ALfJTn7vbRfxEZVoK
+         RV5dGllZ/y6m15o9IqTHrLwWP3xmChwfsfhx48T1beuXbTuzIs3PcN5W2bYzKtbMWSrj
+         BHcRdhLAdSV1aVF74ls+PTBhRSekKmjv0et3X8i+zOiHN/N3RlOflNq1aKeJXixMaBVd
+         h1S2dKyddq1YXEoI35YzHOW/+vWSrnCQqrnLSCxiQdaA2gopcBdnbhpEUrsqxBUDmHBJ
+         m0EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=orzPIWVnwHo2G6bvPdgUpXbljgj2/uj4fcJ5AHejZmE=;
-        b=qR9p7YLcnlbZN3CVQ1ROJ2YNu0LbcDs5dIRtZvkIE+n7SyrpXxJdLf6knB2AnUrThx
-         cHCG2Shq1Nj5znJ9DiASkpVuEv4G128bjLTrjkPTBjrNzWDGpf2hvVJt7ZM9Y1lYW6uR
-         jphBuuwtMUGH4UUF291Vc4+giDIQfltK7koV6RTjcY+grcXS9Dp4j/+EfeBON3r6mzWr
-         IvgxQPB7YKATki9ey5DfK6hpH98JkYdly3ZuMdYdBLJ05uufoyd8Sl1ZzHxwItWmeRLL
-         PllAqUpmmKV3O7WHSo2OtWV2YMYLRIJx9OT53xLdzjSXsbgA7icoxHspZUgPvIGUltss
-         tSfQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=z36ZAYvnwq9ksAZhdXa7DPRkY3nJXnTgeSqi9jZpawQ=;
+        b=goF/fWgWg9RZJucyGAnWbWazve42pPSy+vVpKgRpBTS9j//Nq0tJ3rQo4448j9kfA1
+         0dQPVVFDruBG4SN8bCTpXRt+w7Fwje6cFtR18bYTMkOJqg2XXJz50xuSW8lU9PWxLDgV
+         HdA82O6eFoex/hYqqCMzCVdIUAVNirEQ7z+eMnJarBgl610qMpAoHdfrdKjLS8ZE4s30
+         XuQ1Y1VB/g0WOQALYycQazruc+yW4Dag2CQFy20ZwmkPoN+xw5afVuYJvadynkEu2vOv
+         Ji8I9b+bYVpriCk5MqOyrgYSrF/3W+4gAcRaTWdGetu5orGcP4awtYj+WteaPuEjxxsf
+         G4Aw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KVsRwm19;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Gmi18Wwx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u127si14870482ybb.412.2020.07.13.09.16.00
+        by mx.google.com with ESMTPS id c77si13970704ybf.271.2020.07.13.10.39.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 09:16:00 -0700 (PDT)
+        Mon, 13 Jul 2020 10:39:15 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=KVsRwm19;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Gmi18Wwx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44962 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:60574 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jv17X-00033x-MB
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 12:15:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56428)
+	id 1jv2Q7-0004gf-2H
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 13:39:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jv17P-00032l-1m
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 12:15:51 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:40655)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jv2Pt-0004eR-S7; Mon, 13 Jul 2020 13:39:01 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:46471)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jv17N-00025k-4u
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 12:15:50 -0400
-Received: by mail-ot1-x343.google.com with SMTP id c25so9934290otf.7
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 09:15:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=orzPIWVnwHo2G6bvPdgUpXbljgj2/uj4fcJ5AHejZmE=;
- b=KVsRwm197wKiC4TuP3EuldNzv4nyRYmF+iYL3uIc15hcVMYyKg74UU4R42PfxTuJIb
- WZ9KE4VFyVyN9ou/cHSbJLhBM1stFjOBsJZCrqDSR9qd8aBBkv2fEunGzyCe7cbKqjZ+
- 8ksPcv9d/NB2XOv0vGbUCXNCWt1XmOkNkjH4/wpwkme20bhCoPLN3W8qPR3J4VXwWTtw
- joj2z3Manvq2XOndisG0AC9yfLIm3pLII5ca4aYNVHEJ/lhXmUVEZVRhT324sqEx7XJ1
- UJUG96mE2m1GJJdYj93XlGEswRCSxrR8jfZdq3XOYi2vpWE/wqaH5H0bADNqujtqTfDH
- trTA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jv2Pr-0005YZ-Sf; Mon, 13 Jul 2020 13:39:01 -0400
+Received: by mail-ed1-x544.google.com with SMTP id dm19so14395804edb.13;
+ Mon, 13 Jul 2020 10:38:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=z36ZAYvnwq9ksAZhdXa7DPRkY3nJXnTgeSqi9jZpawQ=;
+ b=Gmi18Wwx0scK30mGetHfACqOY4tP5I15ETro+0zwtGvLBmW03w3k3HOgACZn2eozCi
+ ZsCWH9mDLvbeBeuhlGpKVRVixWiGn26fV8apRY2FTa2WyX06+MDO9IQbkhw2rTKC5GTH
+ cYm5/35pU47gNcJ7qjnsbon0/VkIHTwsKPh/HbLFgapFoLFTVhfCcxFGiofRZ6GLGxN4
+ OWV0pLI+VXS5+HZ7o1OPVTcFTLwpXuNYXUh52Xy3BOWg0/f1ozbz5TaDjP1dcSOMSkWn
+ VzAQcsvYG4oLqtkju3RfPLuOjOLGUhtH46kz0lDKK2t6gU4BqP1eQEQn5BaOhM4b8reU
+ gXxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=orzPIWVnwHo2G6bvPdgUpXbljgj2/uj4fcJ5AHejZmE=;
- b=fTjE92sH2T12QKbq4NUCnQ7cMm+iK6beLpLQ1tvI/XTJBx/l++vSDktDCRNautWQw6
- KMlLcZsJ2H54JNhVK7/YCJZyfqjR5YLq/Ji9nq3OjaX1J1O3lnkfv/WMyMvxeKYj8iAJ
- 1F2PlN16tsnZXXJTZpWBIcth8q3A1SpKipPaRHfRpnBAbtFfE/O8ZJksEnlREhkysAda
- MAA6PScM3eiViJ3Txwc8/J6pBwnYO7qkWT20nUwjBy/bgoVsbEGxapS0pQ4DantEyjTi
- +85xoHoNU8tM7rBAN3DXVTvr2vUhwDMEC76a1pOub5RrNuhujdxZGWYB+HMbDqsd5+pg
- cSxQ==
-X-Gm-Message-State: AOAM530whSE5XH7tfvH1taCZ0X02t7XcESaKwGCC5SlBHL2bbjJSePjk
- k6OUXqgXa1MwyFrLC/cx2D8WaM81yFRiqP1F6S7BQA==
-X-Received: by 2002:a05:6830:1bd3:: with SMTP id
- v19mr294919ota.91.1594656947378; 
- Mon, 13 Jul 2020 09:15:47 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=z36ZAYvnwq9ksAZhdXa7DPRkY3nJXnTgeSqi9jZpawQ=;
+ b=bGMxey3WW5+Er8xlOgKDdbRTfEOco6MGE1c+UVLADVXchb2qwa3T8DyIIV2ac1JjXf
+ AIdhiC8pAHuSu1YeAOaTM+r6F+FeE1M4rL6gyoRmtvG1J3jcu57hCdiu8zFz/D/GhDUS
+ DPH0NqK8bneSq64W68rsGaumP1sahsS6lILhXl/QlDc99aqK2YUSXUmoZ3XlXUB1jWe1
+ QAOqZGVyu8IyUGh3rAeITP6jiBAUz1mgVtJi6hReVO3RsWKf1TTPQ7d3djw9Vme8NizQ
+ 7Ib55G8BV7XcF/AeFSTMPKSN+ZMgU0F8v+myv11EOWjU4rhSu7fSuW4oUliklXMSQyxS
+ lfIA==
+X-Gm-Message-State: AOAM533PeBfngT1+DL7qgnjLXlB3nvvN3QvRWbBV5DNkoXlSb42b+92N
+ 5MQY7QeDccp+SVU1CV0TCzaQWk/oUjA=
+X-Received: by 2002:a05:6402:1d35:: with SMTP id
+ dh21mr536815edb.186.1594661938106; 
+ Mon, 13 Jul 2020 10:38:58 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id i10sm11917540edx.42.2020.07.13.10.38.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 Jul 2020 10:38:57 -0700 (PDT)
+Subject: Re: [PATCH v5 09/11] hw/ssi: NPCM7xx Flash Interface Unit device model
+To: Havard Skinnemoen <hskinnemoen@google.com>
+References: <20200709003608.3834629-1-hskinnemoen@google.com>
+ <20200709003608.3834629-10-hskinnemoen@google.com>
+ <189922e4-b53f-da64-5663-23b599294248@amsat.org>
+ <CAFQmdRbY8DHYOOHPREHg63hgLVTVvyMbuMrdauctaBTzaB1=AA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <739105bb-5915-bf11-10cc-485ce5e94e73@amsat.org>
+Date: Mon, 13 Jul 2020 19:38:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20200710085417.638904-1-mcascell@redhat.com>
- <CAFEAcA-pRXOz5JVcwHa8=oaeogwaOK0YVXYQiJUpdM_rFZ+QTA@mail.gmail.com>
- <d7affe2b-0a2c-4e06-a874-daccf16bd136@kaod.org>
-In-Reply-To: <d7affe2b-0a2c-4e06-a874-daccf16bd136@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 13 Jul 2020 17:15:36 +0100
-Message-ID: <CAFEAcA9=_RC0w-EgjdPw=UWXZ-ufHjkeDWTMj_jXfSQL8G9GHA@mail.gmail.com>
-Subject: Re: [PATCH] hw/net/ftgmac100: Fix integer overflow in
- ftgmac100_do_tx()
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
+In-Reply-To: <CAFQmdRbY8DHYOOHPREHg63hgLVTVvyMbuMrdauctaBTzaB1=AA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x544.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,71 +124,164 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- Mauro Matteo Cascella <mcascell@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, ziming zhang <ezrakiez@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GLRdVqgI40BI
+X-TUID: 1xVuGLeqCO8s
 
-On Mon, 13 Jul 2020 at 15:19, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> On 7/10/20 1:33 PM, Peter Maydell wrote:
-> > Andrew, Cedric: do you have the datasheet for this device? Do you
-> > know if we should also be flagging the error back to the
-> > guest somehow?
->
-> zero is the only invalid size of a transmit buffer and the specs does
-> not have any special information on which bit to raise in that case.
+On 7/12/20 7:42 AM, Havard Skinnemoen wrote:
+> On Thu, Jul 9, 2020 at 10:00 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
+>>> This implements a device model for the NPCM7xx SPI flash controller.
+>>>
+>>> Direct reads and writes, and user-mode transactions have been tested in
+>>> various modes. Protection features are not implemented yet.
+>>>
+>>> All the FIU instances are available in the SoC's address space,
+>>> regardless of whether or not they're connected to actual flash chips.
+>>>
+>>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+>>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+>>> ---
+>>>  include/hw/arm/npcm7xx.h     |   2 +
+>>>  include/hw/ssi/npcm7xx_fiu.h | 100 +++++++
+>>>  hw/arm/npcm7xx.c             |  53 ++++
+>>>  hw/ssi/npcm7xx_fiu.c         | 510 +++++++++++++++++++++++++++++++++++
+>>>  hw/arm/Kconfig               |   1 +
+>>>  hw/ssi/Makefile.objs         |   1 +
+>>>  hw/ssi/trace-events          |   9 +
+>>>  7 files changed, 676 insertions(+)
+>>>  create mode 100644 include/hw/ssi/npcm7xx_fiu.h
+>>>  create mode 100644 hw/ssi/npcm7xx_fiu.c
+[...]
 
-I found a datasheet which might or might not be the equivalent
-bit of hardware -- does your datasheet have a note on the
-TXBUF_SIZE field of a tx descriptor that says "When the size is 0,
-the descriptor would be discarded" ? (Though I found another
-random doc that just says it's illegal...)
+>>> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+>>> index 4d227bb74b..c9ff3dab25 100644
+>>> --- a/hw/arm/npcm7xx.c
+>>> +++ b/hw/arm/npcm7xx.c
+>>> @@ -98,6 +98,37 @@ static const hwaddr npcm7xx_uart_addr[] = {
+>>>      0xf0004000,
+>>>  };
+>>>
+>>> +static const hwaddr npcm7xx_fiu0_flash_addr[] = {
+>>
+>> So per
+>> https://github.com/Nuvoton-Israel/bootblock/blob/master/SWC_HAL/Chips/npcm750/npcm750.h
+>> this is SPI0 on AHB18,
+>>
+>>> +    0x80000000,
+>>> +    0x88000000,
+>>
+>> CS0 & CS1,
+>>
+>> also listed:
+>>
+>> 0x90000000, // CS2
+>> 0x98000000, // CS3
+> 
+> Confirmed with Nuvoton off-list that these do not exist. SPI0 only
+> supports two chip-selects for direct access.
 
-> I think FTGMAC100_INT_NO_NPTXBUF (transmit buffer unavailable) is our
-> best option and we should add an extra 'len =3D=3D 0' test in front of
-> the dma_memory_read() call to raise it. A zero length is not considered
-> bogus by dma_memory_read() it seems.
+I suppose Novoton confirmed for the particular npcm750, but you aim
+to model the npcm7xx family. I doubt 2 similar IP blocks are that
+different ;) Anyway with a comment this is good.
 
-My best guess at "what the hardware does" here would be:
- * TXBUF_SIZE in a tx descriptor can be anything: the h/w
-   would happily allow you to assemble a tx packet with a
-   whole series of 1-byte sized buffers, each with its own
-   tx descriptor
- * zero-byte tx descriptors might just be marked "done" and
-   skipped over since they have no actual data
- * any checking on max/min lengths would be done
-   only on the accumulated total-packet length (we do this
-   this way already for the frame-too-big check)
- * I suspect "transmit buffer unavailable" means "the ethernet
-   controller needs more data but the next tx descriptor
-   is still marked as owned by the guest" -- this is certainly
-   what we currently do with it, and that doesn't seem like
-   the best thing to signal for the "tx packet too small"
-   case. It's possible that the hardware simply sends out a
-   runt packet of some form if the software tells it to do
-   that. My vote would be for handling it with XPKT_LOST,
-   the same way we do for over-large frames. This probably
-   is not what the hardware does but at least it's a
-   coherent thing that the guest might be expecting to have
-   happen for a tx attempt and it matches the fact that we
-   really are not going to put it on the 'wire'.
+> 
+> I'll add comments.
+> 
+>>> +};
+>>> +
+>>> +static const hwaddr npcm7xx_fiu3_flash_addr[] = {
+>>
+>> Ditto SPI3 on AHB3, and CS0 to CS3.
+>>
+>>> +    0xa0000000,
+>>> +    0xa8000000,
+>>> +    0xb0000000,
+>>> +    0xb8000000,
+>>> +};
+>>> +
+>>> +static const struct {
+>>> +    const char *name;
+>>> +    hwaddr regs_addr;
+>>> +    int cs_count;
+>>> +    const hwaddr *flash_addr;
+>>> +} npcm7xx_fiu[] = {
+>>> +    {
+>>> +        .name = "fiu0",
+>>> +        .regs_addr = 0xfb000000,
+>>> +        .cs_count = ARRAY_SIZE(npcm7xx_fiu0_flash_addr),
+>>
+>> Hmm without the datasheet, can't tell, but I'd expect 4 CS
+>> regardless.
+> 
+> FIU0/SPI0 only has 2 chip selects.
+> 
+>>> +        .flash_addr = npcm7xx_fiu0_flash_addr,
+>>> +    }, {
+>>> +        .name = "fiu3",
+>>> +        .regs_addr = 0xc0000000,
+>>> +        .cs_count = ARRAY_SIZE(npcm7xx_fiu3_flash_addr),
+>>> +        .flash_addr = npcm7xx_fiu3_flash_addr,
+>>> +    },
+>>> +};
+[...]
 
-Side note: I suspect that any failures from
-dma_memory_read() and dma_memory_write() should be
-reported as AHB_ERR (currently we have a mix of
-ignoring them or using NO_NPTXBUF).
+>>> +
+>>> +    /* Flash chip model expects one transfer per dummy bit, not byte */
+>>> +    dummy_cycles =
+>>> +        (FIU_DRD_CFG_DBW(drd_cfg) * 8) >> FIU_DRD_CFG_ACCTYPE(drd_cfg);
+>>> +    for (i = 0; i < dummy_cycles; i++) {
+>>> +        ssi_transfer(fiu->spi, 0);
+>>
+>> Note to self, might worth a ssi_shift_dummy(count) generic method.
+> 
+> I'm not a huge fan of this interface to be honest. It requires the
+> flash controller to have intimate knowledge of the flash chip, and if
+> it doesn't predict the dummy phase correctly, or the guest programs
+> the wrong number of dummy cycles, the end result is very different
+> from what you'll see on a real system. I'd love to see something like
+> a number-of-bits parameter to ssi_transfer instead.
 
-(It would in theory be possible to test some of these edge
-cases on real hardware, but that kind of bare-metal test
-case is usually a pain to put together and way overkill
-for this situation, so I don't think we should bother.)
+Do you mean like these?
 
-> Is address zero considered bogus ?
-> If not, we need to check that also.
+- ssi_transfer_bit(bool value);
+- ssi_shift_dummy_bits(size_t bits);
 
-Writes to address 0 are fine, it is not a special physical address.
+Some interfaces allow bit shifting. SPI doesn't simply because
+nobody had the use :)
 
-thanks
--- PMM
+> 
+>>> +    }
+>>> +
+>>> +    for (i = 0; i < size; i++) {
+>>> +        value |= ssi_transfer(fiu->spi, 0) << (8 * i);
+>>> +    }
+>>> +
+[...]
+
+>>> +static const MemoryRegionOps npcm7xx_fiu_flash_ops = {
+>>> +    .read = npcm7xx_fiu_flash_read,
+>>> +    .write = npcm7xx_fiu_flash_write,
+>>> +    .endianness = DEVICE_LITTLE_ENDIAN,
+>>> +    .valid = {
+>>> +        .min_access_size = 1,
+>>> +        .max_access_size = 8,
+>>
+>> Are you sure? Maybe, I can' tell.
+> 
+> Real hardware supports 16 bytes, but there's no way to do more than 8
+> in emulation, I think?
+
+That would mean you can plug this device on a 128-bit wide bus,
+and you can transfer 128-bit in a single CPU operation.
+
+>>> +        .unaligned = true,
+>>> +    },
+>>> +};
+>>> +

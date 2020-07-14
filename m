@@ -1,106 +1,104 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3824207lfm;
-        Mon, 13 Jul 2020 19:39:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxkUKMgOa1xzldIpUtSWzIEsls69HkMFrYOfEOTHkZ62c/YoWAryw1Bwe+EJlCbfYmCtnVF
-X-Received: by 2002:a25:2f55:: with SMTP id v82mr4603525ybv.157.1594694382776;
-        Mon, 13 Jul 2020 19:39:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594694382; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3832687lfm;
+        Mon, 13 Jul 2020 19:57:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxMIUJLh1Y60yB08OomYFZpSI2ChJoSd+1lsDuOosG0UE7Mj8q13aXFUjEk7Tzo/vuEQszS
+X-Received: by 2002:a25:d297:: with SMTP id j145mr5273869ybg.18.1594695443872;
+        Mon, 13 Jul 2020 19:57:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594695443; cv=none;
         d=google.com; s=arc-20160816;
-        b=NXJyFHEXm5rGLXKiO4uSmsbMEkV5NvmTj4z/1D8nQK73m1MiAz0jmt97jIDSOVmred
-         QX/elqb4LBB+fa0blD3b7Mk9vU07DSY2XheVzdnxmtL8jBilgROU+JOi63AOXw7pGMJ6
-         0dSYKc/V9LPH4hMy55WjGUQMX06bSVIU71YyavBbiImLjsOGcs79rN/eJmoOy9LmEhHA
-         NFLfnlGtXNwyQ1m6xI8eWIgDhx/yG6G2NJfSgFVrIm/py5aLkJqcTukIWYzHSGaATR33
-         LpefRE8ARGXQiKglfDsbClJygb3i24V1pW7+4M9vXSjagszCGSZNv1T8X/f3oWQ8KQd1
-         /U1A==
+        b=A2V0fbiUpGMhtrnxfMU+oLcvAUrtutOQeT2qL8h9ybVAhucmftbSe4Scvjt0UX0Puw
+         Q2cxF6yovIRc9SQ7TiiCqe9QVT4Q2oPQ5EzxdPy9XqKd3MSRlBUdg0e3RbvmwPRtD9z3
+         z2CwBGjxBznvfF7mbgYIwFx0v2PovF3Qg7wJZmk6/g3Rq0aziXJXplRgPkyTVpDuXUnO
+         c4VB0HpOZr0cLy3uVm5jOiKZ9aZExrUUCWStpyxXNHBYzW0cFlt//IRdUs2wrKNU/mk0
+         4F5yz7lZgaIgQvoV5y5cEKBg3rQpennbbQa5wjAHaVUAwueveCrch8AUUjUQr6E/Ttm5
+         sQFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=AHcLMLU0I7VCkHSQgHmqEPXmUwRsuWc9aTFdINvEPI0=;
-        b=B2CxPD9GTHLT8nT3bRz+fdewWikYVAgssM7gHp4G+v3EQQIjQToTBj5y6ivJT/2EAw
-         t7gEUHMRgNv7TqY6LzvJ5MMW2jaSfn2c1BqA8IzP+rUcdwkdtDfOiZTIBSlugucNz48P
-         jHMtj3FfW8GDV6J2fx6VCD+G+rZ6+8USdA8wLRqBbkOqLZMMrBcCn5aWPBphetROhIRw
-         59CSUrAkA8DbT/x8b3eLj3yN9GVnr+1kZBmtWqG/HWHOamUwB8QT/sgzEIyIGmi6quEg
-         qNFkDv/N8X6DocD/3aUEkUWQiMSE8BF+OElUiiEGUSSU+EJRYSNsmvdWz14ZkAAaY0K3
-         bKgA==
+        bh=mE7dPvO1CgW3ZPUxyh6bx2v0qVFfOnWcTV5dKbi21t8=;
+        b=dHLTTFvs7zQFRj62G2xpsbRLYhVy5OBAPhUJwIsaRUcGP18d2NNFQ1LvOXJKO6P3A8
+         rHcVXb+oAbMQthneYfY+GUUGyCuwVUfc4zdbOoC7iGfL6iwS5yJo4ELksM5Qnib5e1q1
+         1QBZMD4Pmkql7H0Q/mDI8NHTmoL+o75WeCHBR0CJm3i9doTBCbZMDvjQs4w0RDWHRnek
+         fraSUu9duomcL0nOr2+teooTdPNEZfxvJZ2Xrgd1+gNmm2adLU016fpLjiqNnySz6VWp
+         7tAl6S6PsyXALzTYHhTchQosOKQPWVUIWpFiaDQXLxfFaCKx+yIe1CJTZb1LsmWBSJkI
+         LarA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=WVfl+Mkv;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=QGDO7pCG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j78si13129692ybg.298.2020.07.13.19.39.42
+        by mx.google.com with ESMTPS id g204si15522730ybg.404.2020.07.13.19.57.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 13 Jul 2020 19:39:42 -0700 (PDT)
+        Mon, 13 Jul 2020 19:57:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=WVfl+Mkv;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=QGDO7pCG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:42900 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51846 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvAr8-00079q-5U
-	for alex.bennee@linaro.org; Mon, 13 Jul 2020 22:39:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36604)
+	id 1jvB8F-0003rD-9u
+	for alex.bennee@linaro.org; Mon, 13 Jul 2020 22:57:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45282)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jvAqz-00078d-RA
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 22:39:33 -0400
-Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41]:37833)
+ id 1jvB82-0003qx-QO
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 22:57:10 -0400
+Received: from mail-ua1-x943.google.com ([2607:f8b0:4864:20::943]:37739)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1jvAqw-0003Zb-A7
- for qemu-arm@nongnu.org; Mon, 13 Jul 2020 22:39:33 -0400
-Received: by mail-vs1-xe41.google.com with SMTP id p25so7738450vsg.4
- for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 19:39:29 -0700 (PDT)
+ id 1jvB80-0002q3-AJ
+ for qemu-arm@nongnu.org; Mon, 13 Jul 2020 22:57:10 -0400
+Received: by mail-ua1-x943.google.com with SMTP id q15so5101417uap.4
+ for <qemu-arm@nongnu.org>; Mon, 13 Jul 2020 19:57:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=AHcLMLU0I7VCkHSQgHmqEPXmUwRsuWc9aTFdINvEPI0=;
- b=WVfl+MkvOuOc2oHfip9IPBw3n3REx1qmitJvDLf0lQFyP0LhfAfQCqmtfkFXfKF+Hf
- 0CA9UML3yjXtbLCHZd5aEQt9fFwOawyb5t0pdXCVFJoGxBemldMtnKe5HIOnJ051SJyb
- JydKpcYdHIq4Fh3VDwhECg/sz2TbnmQl6mmstZ2AMvNzgSrVrOT7YpCtES8oJJR3u0xL
- /bI+LMqFv3+Xcj9HhfzdyecmvkqG6AIpK/Cg9TeXLNLFj3OQADAZXfe4RlhIB1wCF2j9
- M1BOg0jFSRl0TTH0pYnXp6C8AgU+YUgBqTUVD9dxgVYZ/Nag2b/NGBWs8ScZSxLPub2w
- 5dKg==
+ bh=mE7dPvO1CgW3ZPUxyh6bx2v0qVFfOnWcTV5dKbi21t8=;
+ b=QGDO7pCGZBcvnfGmerp+DPxdKbaYedYpQaVm87Rn8bV6onLO+rNA0pqQL1RbHJvslo
+ diW44N/AvKezUVJYAEBiANUSeqiXLZR6a9vIR+ONRcbh+xfyq/SEukKDMm+XsCdv8s+6
+ PmEeUYvFXtaDt9/jvcXRYjihL+QBIZS2N1DR9D/xBz+7wdfsTzFceL51sk8c8o0PO7I4
+ 8w9TU4qbdQm3fmKJqe8DpRzn7EUpXaqb1BnPBrDam8qDGwdLwNERF4Ki9L97H3aShLql
+ SlRM9pknC3k0ONvkaondzQBn6nT/dXNKaE9v5kWAHjfRCOUxMk0+VyfHuton6dM5Z4L+
+ p3TQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=AHcLMLU0I7VCkHSQgHmqEPXmUwRsuWc9aTFdINvEPI0=;
- b=rA6mWkozXU8GfOZpNBxw5E9iiho0ro9qn03sdegQ7z1sd7f8vtkONH6UvZ0ocbvsNi
- bnwV88zMHWb2+jL2BB3Ahr5MhMbyZsPnhHYEVO7GkrYRCVkg9CaTMKy5dBdXXZa/Saff
- rAIP7zFNI8JMADRsjkTjHIkhWSNrkXhRkUBEeGYoklClWvmniCPS7uPldNgG0SS9Ktl0
- PJuV+19fsb8k6hQF690kIdJwGpLo60tjrHjVZvysntazfkO0q3eZWXI2tQmRB3WuzfVN
- xCHS8Pfl99WiOBcLhTfP1V5DM0M5rSILmyOEMalFAQVq8eu0iJ9CVg//97y1M7Xm4jtL
- 86VQ==
-X-Gm-Message-State: AOAM530biChCI8S2PHEeOpoY85cu/CIs1Ay5gtWZv39wv0Fa9uQrLRnE
- InYhrcI/HTpF4gm8xPbTXe2lk7QwlRgX/KIu4eWqrg==
-X-Received: by 2002:a67:7f8e:: with SMTP id a136mr1722204vsd.232.1594694368846; 
- Mon, 13 Jul 2020 19:39:28 -0700 (PDT)
+ bh=mE7dPvO1CgW3ZPUxyh6bx2v0qVFfOnWcTV5dKbi21t8=;
+ b=ZrQRI5lNhxDlNppvtQvkSohb1v+5rp3qpnY6fncTOmolht7EbvXhTvoDa/2mMvOKxG
+ rybAo5IuK1kUKJzYp0ml0fO65z5KFcMMUuvi4LnWBuRWACRAW17gooWwY5F8sxZCjiLR
+ mz28a22jhOj7GyIxwGSjhhCuTERnXRiAlzqRrLiazdjCTtpJLTZ79VmRWBC1QudDxZof
+ VDG9JgB+WW+sk41LAhhMs8mhgwZ07CPAKTyDWb5iLKuvJ5VGpDgtG5zpSUd6aal/pY+i
+ NgZI7GLpMV4B4V6By7wIuWUKFnZDwfWTlqtyNEH7A0BovjkuVvbXbHskf0Oo6YqAMGxU
+ 1r3Q==
+X-Gm-Message-State: AOAM5318ZV5bOEsf0tmru3IBJ5NrQicBxNs/uefItqRLr1Ty9vuux6Q5
+ RKUhAYrFdcZo6NRPDNcbuA4OHpdqwFuywhWjTpY+Ug==
+X-Received: by 2002:ab0:6ec6:: with SMTP id c6mr2208310uav.7.1594695426609;
+ Mon, 13 Jul 2020 19:57:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-10-hskinnemoen@google.com>
- <189922e4-b53f-da64-5663-23b599294248@amsat.org>
- <CAFQmdRbY8DHYOOHPREHg63hgLVTVvyMbuMrdauctaBTzaB1=AA@mail.gmail.com>
- <739105bb-5915-bf11-10cc-485ce5e94e73@amsat.org>
-In-Reply-To: <739105bb-5915-bf11-10cc-485ce5e94e73@amsat.org>
+ <20200709003608.3834629-11-hskinnemoen@google.com>
+ <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
+In-Reply-To: <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
 From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Mon, 13 Jul 2020 19:39:16 -0700
-Message-ID: <CAFQmdRbFB-U4rzNP-wzskQFUa3ZYFvCMyf=wxwnPOHVFej8npA@mail.gmail.com>
-Subject: Re: [PATCH v5 09/11] hw/ssi: NPCM7xx Flash Interface Unit device model
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Date: Mon, 13 Jul 2020 19:56:55 -0700
+Message-ID: <CAFQmdRZcygskP3iwss01-Jz67yjAP_JENXjWM2Bp8U=DRzxR0Q@mail.gmail.com>
+Subject: Re: [PATCH v5 10/11] hw/arm: Wire up BMC boot flash for npcm750-evb
+ and quanta-gsj
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, CS20 KFTing <kfting@nuvoton.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e41;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe41.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::943;
+ envelope-from=hskinnemoen@google.com; helo=mail-ua1-x943.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -185
@@ -109,7 +107,7 @@ X-Spam_bar: ------------------
 X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
  USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -125,215 +123,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RrXvoenYQAMZ
+X-TUID: JGBXGwcNHk2Q
 
-On Mon, Jul 13, 2020 at 10:39 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
+On Mon, Jul 13, 2020 at 7:57 AM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> On 7/12/20 7:42 AM, Havard Skinnemoen wrote:
-> > On Thu, Jul 9, 2020 at 10:00 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
-t.org> wrote:
-> >> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
-> >>> This implements a device model for the NPCM7xx SPI flash controller.
-> >>>
-> >>> Direct reads and writes, and user-mode transactions have been tested =
-in
-> >>> various modes. Protection features are not implemented yet.
-> >>>
-> >>> All the FIU instances are available in the SoC's address space,
-> >>> regardless of whether or not they're connected to actual flash chips.
-> >>>
-> >>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> >>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> >>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
-> >>> ---
-> >>>  include/hw/arm/npcm7xx.h     |   2 +
-> >>>  include/hw/ssi/npcm7xx_fiu.h | 100 +++++++
-> >>>  hw/arm/npcm7xx.c             |  53 ++++
-> >>>  hw/ssi/npcm7xx_fiu.c         | 510 +++++++++++++++++++++++++++++++++=
-++
-> >>>  hw/arm/Kconfig               |   1 +
-> >>>  hw/ssi/Makefile.objs         |   1 +
-> >>>  hw/ssi/trace-events          |   9 +
-> >>>  7 files changed, 676 insertions(+)
-> >>>  create mode 100644 include/hw/ssi/npcm7xx_fiu.h
-> >>>  create mode 100644 hw/ssi/npcm7xx_fiu.c
-> [...]
->
-> >>> diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-> >>> index 4d227bb74b..c9ff3dab25 100644
-> >>> --- a/hw/arm/npcm7xx.c
-> >>> +++ b/hw/arm/npcm7xx.c
-> >>> @@ -98,6 +98,37 @@ static const hwaddr npcm7xx_uart_addr[] =3D {
-> >>>      0xf0004000,
-> >>>  };
-> >>>
-> >>> +static const hwaddr npcm7xx_fiu0_flash_addr[] =3D {
-> >>
-> >> So per
-> >> https://github.com/Nuvoton-Israel/bootblock/blob/master/SWC_HAL/Chips/=
-npcm750/npcm750.h
-> >> this is SPI0 on AHB18,
-> >>
-> >>> +    0x80000000,
-> >>> +    0x88000000,
-> >>
-> >> CS0 & CS1,
-> >>
-> >> also listed:
-> >>
-> >> 0x90000000, // CS2
-> >> 0x98000000, // CS3
+> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
+> > This allows these NPCM7xx-based boards to boot from a flash image, e.g.
+> > one built with OpenBMC. For example like this:
 > >
-> > Confirmed with Nuvoton off-list that these do not exist. SPI0 only
-> > supports two chip-selects for direct access.
->
-> I suppose Novoton confirmed for the particular npcm750, but you aim
-> to model the npcm7xx family. I doubt 2 similar IP blocks are that
-> different ;) Anyway with a comment this is good.
-
-OK. I'm mostly concerned about modeling the chips I know about for
-now. If a chip with four AXI endpoints and four chipselects on SPI0
-appears, it will be a fairly small change to move these arrays into
-the SoC class struct, but I'd rather not do that without evidence that
-such a chip exist.
-
-The IP blocks may be identical for all I know, but they are not wired
-up identically, and that's really what matters here in the SoC-level
-model.
-
+> > IMAGE=3D${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc
+> > qemu-system-arm -machine quanta-gsj -nographic \
+> >       -bios ~/qemu/bootrom/npcm7xx_bootrom.bin \
+> >       -drive file=3D${IMAGE},if=3Dmtd,bus=3D0,unit=3D0,format=3Draw,sna=
+pshot=3Don
 > >
-> > I'll add comments.
-> >
-> >>> +};
-> >>> +
-> >>> +static const hwaddr npcm7xx_fiu3_flash_addr[] =3D {
-> >>
-> >> Ditto SPI3 on AHB3, and CS0 to CS3.
-> >>
-> >>> +    0xa0000000,
-> >>> +    0xa8000000,
-> >>> +    0xb0000000,
-> >>> +    0xb8000000,
-> >>> +};
-> >>> +
-> >>> +static const struct {
-> >>> +    const char *name;
-> >>> +    hwaddr regs_addr;
-> >>> +    int cs_count;
-> >>> +    const hwaddr *flash_addr;
-> >>> +} npcm7xx_fiu[] =3D {
-> >>> +    {
-> >>> +        .name =3D "fiu0",
-> >>> +        .regs_addr =3D 0xfb000000,
-> >>> +        .cs_count =3D ARRAY_SIZE(npcm7xx_fiu0_flash_addr),
-> >>
-> >> Hmm without the datasheet, can't tell, but I'd expect 4 CS
-> >> regardless.
-> >
-> > FIU0/SPI0 only has 2 chip selects.
-> >
-> >>> +        .flash_addr =3D npcm7xx_fiu0_flash_addr,
-> >>> +    }, {
-> >>> +        .name =3D "fiu3",
-> >>> +        .regs_addr =3D 0xc0000000,
-> >>> +        .cs_count =3D ARRAY_SIZE(npcm7xx_fiu3_flash_addr),
-> >>> +        .flash_addr =3D npcm7xx_fiu3_flash_addr,
-> >>> +    },
-> >>> +};
-> [...]
+> > Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 >
-> >>> +
-> >>> +    /* Flash chip model expects one transfer per dummy bit, not byte=
- */
-> >>> +    dummy_cycles =3D
-> >>> +        (FIU_DRD_CFG_DBW(drd_cfg) * 8) >> FIU_DRD_CFG_ACCTYPE(drd_cf=
-g);
-> >>> +    for (i =3D 0; i < dummy_cycles; i++) {
-> >>> +        ssi_transfer(fiu->spi, 0);
-> >>
-> >> Note to self, might worth a ssi_shift_dummy(count) generic method.
-> >
-> > I'm not a huge fan of this interface to be honest. It requires the
-> > flash controller to have intimate knowledge of the flash chip, and if
-> > it doesn't predict the dummy phase correctly, or the guest programs
-> > the wrong number of dummy cycles, the end result is very different
-> > from what you'll see on a real system. I'd love to see something like
-> > a number-of-bits parameter to ssi_transfer instead.
+> May be we don't need to create the flash object if dinfo is NULL.
+
+It's soldered on the board, so you can't really boot the board without
+it. But if you think it's better to remove it altogether if we don't
+have an image to load into it, I can do that.
+
 >
-> Do you mean like these?
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
 >
-> - ssi_transfer_bit(bool value);
-> - ssi_shift_dummy_bits(size_t bits);
+> Nice !
 >
-> Some interfaces allow bit shifting. SPI doesn't simply because
-> nobody had the use :)
+> We need a SPI controller model and a network device model now.
 
-I mean I don't like how the semantics of ssi_transfer changes
-implicitly in the middle of the transfer. One call shifts a whole
-byte, the next 8 shift individual bits, then it's back to bytes again.
-If a mistake is made, the flash controller might end up thinking it's
-shifting 16 bits, but if the flash device only expects 8 dummy bits,
-it will see 8 bits + 8 bytes for a total of 9 bytes of dummies. This
-differs a lot from what would happen on a real device.
+Yeah, and i2c, PWM, GPIO, etc., but if you're referring to the kernel
+crash, see below.
 
-For example, I wrote up a test for the aspeed flash controller against
-a Winbond flash chip in Dual I/O mode. The data ended up getting
-shifted by 15 bytes because of, I think, bugs in the dummy logic on
-both sides. I took a lot of head scratching to figure out what's going
-on.
+> npcm7xx_bootrom.bin is a bit of a pain. Could we include it in
+> the QEMU roms ?
 
-Here's where aspeed_smc figures it needs to send 2 dummy bytes (aka 16
-dummy bits) for a DIO read:
+Yeah, I was planning to include this in v6.
 
-https://elixir.bootlin.com/qemu/latest/source/hw/ssi/aspeed_smc.c#L803
+> spi_master spi0: /ahb/fiu@fb000000/spi-nor@0 has no valid 'spi-max-freque=
+ncy' property (-22)
+> spi_master spi0: Failed to create SPI device for /ahb/fiu@fb000000/spi-no=
+r@0
 
-And here's where the Winbond model decides to expect one dummy _bit_:
+This is a device tree bug:
 
-https://elixir.bootlin.com/qemu/latest/source/hw/block/m25p80.c#L862
+https://github.com/hskinnemoen/openbmc/commit/99b172f88002f4fac939f85debe11=
+87b9c569871
 
-The difference is 15 ssi_transfers, which is what I see in the test.
+> libphy: Fixed MDIO Bus: probed
+> 8<--- cut here ---
+> Unable to handle kernel paging request at virtual address fffffffe
 
-IMO they're both wrong -- they should both expect one dummy byte, or
-four dummy cycles in x2 mode. But the real problem, also IMO, is that
-they can't even agree on whether one ssi_transfer means one bit or one
-byte.
+I believe this is a kernel bug:
 
-While ssi_shift_dummy_bits is strictly nicer than open-coded loops of
-ssi_transfer, it doesn't fix the underlying problem that the dummy
-cycles need to be treated specially by both the flash controller model
-and the device model, and if they're not 100% synchronized (which is
-particularly interesting when you have flash chips with configurable
-dummy cycles), the result is like nothing you'd ever see on a real
-system.
+https://github.com/hskinnemoen/openbmc/commit/77e9f58ba157eabc976f15fa49892=
+128fe2b2382
 
-> >
-> >>> +    }
-> >>> +
-> >>> +    for (i =3D 0; i < size; i++) {
-> >>> +        value |=3D ssi_transfer(fiu->spi, 0) << (8 * i);
-> >>> +    }
-> >>> +
-> [...]
->
-> >>> +static const MemoryRegionOps npcm7xx_fiu_flash_ops =3D {
-> >>> +    .read =3D npcm7xx_fiu_flash_read,
-> >>> +    .write =3D npcm7xx_fiu_flash_write,
-> >>> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
-> >>> +    .valid =3D {
-> >>> +        .min_access_size =3D 1,
-> >>> +        .max_access_size =3D 8,
-> >>
-> >> Are you sure? Maybe, I can' tell.
-> >
-> > Real hardware supports 16 bytes, but there's no way to do more than 8
-> > in emulation, I think?
->
-> That would mean you can plug this device on a 128-bit wide bus,
-> and you can transfer 128-bit in a single CPU operation.
+I needed two additional patches to get all the way to the login prompt:
 
-Hmm, I see what you mean. It can do 16-byte bursts. I'm not sure if
-that looks more like a single 16-byte access or four 4-byte accesses
-on the SPI bus. I was assuming it's the former, but I could be wrong.
-
-Havard
+https://github.com/hskinnemoen/openbmc/commits/20200711-gsj-qemu-0

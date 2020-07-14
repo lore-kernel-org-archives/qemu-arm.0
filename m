@@ -1,110 +1,108 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp67259lfm;
-        Tue, 14 Jul 2020 04:29:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx/lbTXKEh2Kamjbed/StI52NRQ869NrNw5/N1sIYtYWNw8d6FBlU2j+T0gGiCyxZKy8RY1
-X-Received: by 2002:a5b:3c9:: with SMTP id t9mr7516108ybp.55.1594726160345;
-        Tue, 14 Jul 2020 04:29:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594726160; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp74523lfm;
+        Tue, 14 Jul 2020 04:38:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwvp9AUImASdFgHs6hWnQ8O29ZxFl5DjfZgNDnuX3haDD+Mzvtzdok2Svhc+M/cOYVYJKWB
+X-Received: by 2002:a25:2087:: with SMTP id g129mr6971612ybg.136.1594726683491;
+        Tue, 14 Jul 2020 04:38:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594726683; cv=none;
         d=google.com; s=arc-20160816;
-        b=0gkh/x4/M/qZITlvvKFg99+jQ7l1OC93lCXD5G1oUDXg5q3lB9iFxz5s1PheHQIby3
-         bx2/jnKRnLl3iS/AYDBHHHlDTokr5wO80oTxr2c4rCLUNz5FnzPypv5U1MA4EjGX48O/
-         BMGoWHPQLw4p2H8YelCaecUZCIVt5olGpeISeSFvYhuz5QvfZFE4IiA7LiiCrEPkbd8o
-         t/EqE2fuOzzOnGcb1BoV2oVs9imvgHVxGyZz34ey4+ETKA/Tt5y+Xpf0Auu9jdHDGYBb
-         xNHXxZGy+B9Em+HN2A4dK3XGqzAQVUhuH+wHjPmPcjr9K35So8KwZR+MWQ/Imqs8fx/y
-         Bvrw==
+        b=0/WeYajVZIRxUTGX9x50DljIBjnOcS5LzVpFoFXP8WUBZzROjdPIPTgAa5XCvtGNkK
+         6RAp4FeJ+U/Tpw/zBUFWqJzMCtSyrYazOrZkxtqll5u80gRZ+Fr6kR8v+gYfulSmJnuR
+         FqyucKMYxjIMRjCzy3oNCQU46Vcgm3j1jfAmbFvgeGmuJfwiOMKjvG1bUJiqrOR8Skzv
+         7q4ZGXF0hwzrU8IEI00x2xDTkhdAcj4iFBBCWnKFJVUdoXLvNFAZ+PrQ3mKnLQo5pw0E
+         VrtmKVueaGd4En9ap5DPCGKDgMW9ZMbnj0lAntAp4y/Q8BbSYIUx91TjYTQ/drI29fmi
+         37Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=skKYFyg+MpB+wZl4jmCFcPrZA9lj4AMb/KzPUfhJiTA=;
-        b=nRbwvnqjNcWWHOY2KXoV9L6jx9JCwYVj7jPGAN02QOySV5o8THgj55ImcPJfzy7Jsp
-         7ouDo/wtEwlO3M9gjZyCMTC8bxX84E0k5GJuJ1sRS+oIIEYy3vV8hp5/J87iOtMh2s4Q
-         4AXtqlTSNSqdlk0OCOj3ryNnj2SoqQZ21/IWq2NMo0HdOm2bjdzlvbsOfOIfcKz5lEcp
-         l4Y+9LnJfi16kz/pBy909MJAezHcOqFQA69+QsLcB/7coFQiA13bn4z+7/RU7V3Dzm7r
-         iSWRRlXh2wWinnXwY2kD6XJOVZgPqQ67K537RhEeUej4xakzoebMNZKcamhTTieyw00l
-         FW1w==
+        bh=F3IIMSIc9WWISIBv2z+SaeMUuP7HL6DeAAbk+nvM3ys=;
+        b=yq/jXFylFVnqTQEPVmkkA0lNs/V+6fW8xzStK2aR5OvrawhsHaCHkUZ13j9LygWDBV
+         xeXRSvCK4wQF2v+2riXjQvU82nq+7ZiWEt11SDqE856h0s85Ub+N/hzvHuIiC65tCTZF
+         78+Mwgom+nmrgztrcGvPHNtXTdz6BDV6kLruOAlFWKlASB+TBL5BuamcI4eTOBb7eiF5
+         TCaSuMe8w9GwM7Unn3YelQPa5/C3NcSkJhGNXl9NgvC0oYniK8Su9Qqk1x7hDYUuFPhe
+         vQTDJrtG/wufTxahuJeQsKNotK4bm/ssMr2nVyBmMuTcm+62O4Tt4DDDwIudVggt4ns6
+         MzgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JsnsmrDn;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qAIdbv3f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x63si16486312yba.50.2020.07.14.04.29.20
+        by mx.google.com with ESMTPS id f187si17805530ybf.372.2020.07.14.04.38.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jul 2020 04:29:20 -0700 (PDT)
+        Tue, 14 Jul 2020 04:38:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JsnsmrDn;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qAIdbv3f;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38822 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42056 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvJ7f-0008Ry-PU
-	for alex.bennee@linaro.org; Tue, 14 Jul 2020 07:29:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53550)
+	id 1jvJG6-0002B3-Qe
+	for alex.bennee@linaro.org; Tue, 14 Jul 2020 07:38:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56008)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jvJ7U-0008Px-RJ; Tue, 14 Jul 2020 07:29:09 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53233)
+ id 1jvJFy-00029L-5Z; Tue, 14 Jul 2020 07:37:54 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:40215)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jvJ7T-0008Rb-6r; Tue, 14 Jul 2020 07:29:08 -0400
-Received: by mail-wm1-x344.google.com with SMTP id q15so4869986wmj.2;
- Tue, 14 Jul 2020 04:29:06 -0700 (PDT)
+ id 1jvJFw-0001Bu-HS; Tue, 14 Jul 2020 07:37:53 -0400
+Received: by mail-wr1-x442.google.com with SMTP id f2so20940660wrp.7;
+ Tue, 14 Jul 2020 04:37:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=skKYFyg+MpB+wZl4jmCFcPrZA9lj4AMb/KzPUfhJiTA=;
- b=JsnsmrDn/K8RxS1/vulBcJnVSQnQF6+VAgnjsa74fRM/EamCQlfvjHEjyuPzRnBMZ4
- Yg/s4uTehedyAyjhYqhXhA0iIZaOVlm6saeydVJOLmo7F5db5MQWtEtXXujpw3B/lkag
- Q4P8dIDbE5hfnhVrNh4bXt3tviTbPekubN8b8IKRNl1ejQcJ0s8XDXei4fRZNmp1qniD
- MLiDX9NDUBpjc4HDtu/fD7ws83CtOnueJH90yW8MhBmHW7Gm/j6LVF/hJKIC/B74MuLB
- 8+moXJla4KDHNljwjx1o6lfcdv1axMPB1+QyWjFQFHMELAwfu5c4TNUOTH0lYl/vLl+X
- 0tew==
+ bh=F3IIMSIc9WWISIBv2z+SaeMUuP7HL6DeAAbk+nvM3ys=;
+ b=qAIdbv3fVH7IFjNgFqk0pyq5St1vTg7SySsKtMt58NsZDwUY3dfVykFEwX3ELOYo9Q
+ JwyBaoxhJXtIlpabrNSkO/ZoSjRW4duocMsbPwq/V7Jy62sI6iZUWmEyk1RDm/50qVVb
+ ft5HJY2m4f+Fsp1IYbq3fEKQyA7HMIVJ+FjDo2LezaZ1LFhLMCHPaLfyk6qG2uSFU8S0
+ pIytMXSuYj4qvcP4Fm33f2qSM4bAcKqjhAQj2wAbfeCOC+BivUOEsHiWHm1oxI+09Q5w
+ R8MSX19z1V/MAOLwUABO4K98XswRS6tb9/Zxa0Z9BRxsVyBqaDn9Aq2TC/urprdv/2iJ
+ G5ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=skKYFyg+MpB+wZl4jmCFcPrZA9lj4AMb/KzPUfhJiTA=;
- b=n6+Vx93LUHtwLluYHyhUfji9usZNp+4EDkmFjeTm1D1a4yGP1bP8n+ETDlOnanR6lN
- 6rSafQ1xk4XzgMmDhZdpgKh21Zat7uk+bWzZy8n6znBgkqP6IA5W5J6Ga6IJjuxta4OW
- JIDS7WBBoHtjr8Sdm1VELKI9gXKGqXta5R0M0xPhFY/EJyTRG3/kpdfuqI/6FfsFgOFF
- Bln+L5F4jetA1p0vvo94ojk4kamjASGPQfSX2LnG+Fx28McT7MwCNL0M7Gz4BjyfOAHE
- iAfDwoMkW72LMj2wBruCsJMe5RVEYOVst+Uncmlav7IYUsfZjibJS6376m4lnpKCUpgx
- iejQ==
-X-Gm-Message-State: AOAM5322PT7GRS9J6RVRRSFys5FEte1QNgLUC0hEZ81Zux7RP/s++Uvf
- QuJkFXeJHtppcoxnVvlhlUmHg7xzrpM=
-X-Received: by 2002:a1c:7313:: with SMTP id d19mr3636768wmb.147.1594726144717; 
- Tue, 14 Jul 2020 04:29:04 -0700 (PDT)
+ bh=F3IIMSIc9WWISIBv2z+SaeMUuP7HL6DeAAbk+nvM3ys=;
+ b=hePsmQuzDcoSbRv4nA1N3+G5xiyP058z1lcBxFE5e2N3BHvieZ7R6atR02eJ7E6aN8
+ fIEyHtM8xkDvqH7gF/CReTP+idYVtjIalq0pAoZdJPICDlKUzB0Q2C7a//peTZQ+tTNx
+ PtB52gNFlbG1+ykjwq1tiNuA5AC7+rQTxurNBA+2+QxQyljC24Tdnc1aVN5F4TqsX4nJ
+ C226PjjuqxEWYVryxencdpUAWVkYVJK3TjZrDksaUcZZz2n8A4yZv05BHVAGJc+l4niR
+ Oo+IayATv0Sdii7wrBb/zagdgDJmLEbymgK2D0pY0U4dKbXcwNHr+2iGYndXcq/DIGKS
+ iBkg==
+X-Gm-Message-State: AOAM531VOiJgnCO9rxZ3PkfmHhvuIceFY3ko1Kyodiei2IAEngjbAp/5
+ r8WkqXCl/KnpfPFK9v1rTBE=
+X-Received: by 2002:adf:92c4:: with SMTP id 62mr4648045wrn.290.1594726670460; 
+ Tue, 14 Jul 2020 04:37:50 -0700 (PDT)
 Received: from [192.168.1.43] (138.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id g14sm29076004wrm.93.2020.07.14.04.29.02
+ by smtp.gmail.com with ESMTPSA id o29sm30961169wra.5.2020.07.14.04.37.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Jul 2020 04:29:03 -0700 (PDT)
-Subject: Re: [PATCH v5 10/11] hw/arm: Wire up BMC boot flash for npcm750-evb
- and quanta-gsj
-To: Markus Armbruster <armbru@redhat.com>,
- Havard Skinnemoen <hskinnemoen@google.com>
+ Tue, 14 Jul 2020 04:37:49 -0700 (PDT)
+Subject: Re: [PATCH v5 04/11] hw/arm: Add NPCM730 and NPCM750 SoC models
+To: Havard Skinnemoen <hskinnemoen@google.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
 References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-11-hskinnemoen@google.com>
- <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
- <CAFQmdRZcygskP3iwss01-Jz67yjAP_JENXjWM2Bp8U=DRzxR0Q@mail.gmail.com>
- <875zaq78xq.fsf@dusky.pond.sub.org>
+ <20200709003608.3834629-5-hskinnemoen@google.com>
+ <3ec30463-03f8-98e9-9a14-01b0bb698c9b@kaod.org>
+ <CAFQmdRYQxMz_qSr4i_cyqRPEGuq7At=VEOGvsupR3=W7pE3q=g@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <19733456-a672-595d-e721-e0ef26d7f665@amsat.org>
-Date: Tue, 14 Jul 2020 13:29:02 +0200
+Message-ID: <7c978e82-8890-9ba4-096a-92d7cff60b0a@amsat.org>
+Date: Tue, 14 Jul 2020 13:37:48 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <875zaq78xq.fsf@dusky.pond.sub.org>
+In-Reply-To: <CAFQmdRYQxMz_qSr4i_cyqRPEGuq7At=VEOGvsupR3=W7pE3q=g@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -127,60 +125,115 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Qemu-block <qemu-block@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
  CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
+ Joel Stanley <joel@jms.id.au>, IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eBvoTB7i1J6r
+X-TUID: +Fh+lSDQ8Eq/
 
-+ qemu-block experts.
++Markus
 
-On 7/14/20 11:16 AM, Markus Armbruster wrote:
-> Havard Skinnemoen <hskinnemoen@google.com> writes:
-> 
->> On Mon, Jul 13, 2020 at 7:57 AM Cédric Le Goater <clg@kaod.org> wrote:
->>>
->>> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
->>>> This allows these NPCM7xx-based boards to boot from a flash image, e.g.
->>>> one built with OpenBMC. For example like this:
->>>>
->>>> IMAGE=${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc
->>>> qemu-system-arm -machine quanta-gsj -nographic \
->>>>       -bios ~/qemu/bootrom/npcm7xx_bootrom.bin \
->>>>       -drive file=${IMAGE},if=mtd,bus=0,unit=0,format=raw,snapshot=on
->>>>
->>>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
->>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->>>
->>> May be we don't need to create the flash object if dinfo is NULL.
+On 7/14/20 2:44 AM, Havard Skinnemoen wrote:
+> On Mon, Jul 13, 2020 at 8:02 AM Cédric Le Goater <clg@kaod.org> wrote:
 >>
->> It's soldered on the board, so you can't really boot the board without
->> it. But if you think it's better to remove it altogether if we don't
->> have an image to load into it, I can do that.
+>> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
+>>> The Nuvoton NPCM7xx SoC family are used to implement Baseboard
+>>> Management Controllers in servers. While the family includes four SoCs,
+>>> this patch implements limited support for two of them: NPCM730 (targeted
+>>> for Data Center applications) and NPCM750 (targeted for Enterprise
+>>> applications).
+>>>
+>>> This patch includes little more than the bare minimum needed to boot a
+>>> Linux kernel built with NPCM7xx support in direct-kernel mode:
+>>>
+>>>   - Two Cortex-A9 CPU cores with built-in periperhals.
+>>>   - Global Configuration Registers.
+>>>   - Clock Management.
+>>>   - 3 Timer Modules with 5 timers each.
+>>>   - 4 serial ports.
+>>>
+>>> The chips themselves have a lot more features, some of which will be
+>>> added to the model at a later stage.
+>>>
+>>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+>>> ---
+...
+
+>>> +static void npcm7xx_realize(DeviceState *dev, Error **errp)
+>>> +{
+>>> +    NPCM7xxState *s = NPCM7XX(dev);
+>>> +    NPCM7xxClass *nc = NPCM7XX_GET_CLASS(s);
+>>> +    int i;
+>>> +
+>>> +    /* CPUs */
+>>> +    for (i = 0; i < nc->num_cpus; i++) {
+>>> +        object_property_set_int(OBJECT(&s->cpu[i]),
+>>> +                                arm_cpu_mp_affinity(i, NPCM7XX_MAX_NUM_CPUS),
+>>> +                                "mp-affinity", &error_abort);
+>>> +        object_property_set_int(OBJECT(&s->cpu[i]), NPCM7XX_GIC_CPU_IF_ADDR,
+>>> +                                "reset-cbar", &error_abort);
+>>> +        object_property_set_bool(OBJECT(&s->cpu[i]), true,
+>>> +                                 "reset-hivecs", &error_abort);
+>>> +
+>>> +        /* Disable security extensions. */
+>>> +        object_property_set_bool(OBJECT(&s->cpu[i]), false, "has_el3",
+>>> +                                 &error_abort);
+>>> +
+>>> +        qdev_realize(DEVICE(&s->cpu[i]), NULL, &error_abort);
+>>
+>> I would check the error:
+>>
+>>         if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+>>             return;
+>>         }
+>>
+>> same for the sysbus_realize() below.
 > 
-> If a device is a fixed part of the physical board, it should be a fixed
-> part of the virtual board, too.
+> Hmm, I used to propagate these errors until Philippe told me not to
+> (or at least that's how I understood it).
 
-We agree so far but ... how to do it?
+It was before Markus simplification API were merged, you had to
+propagate after each call, since this is a non hot-pluggable SoC
+I suggested to use &error_abort to simplify.
 
-I never used this API, does that makes sense?
+> I'll be happy to do it
+> either way (and the new API makes it really easy to propagate errors),
+> but I worry that I don't fully understand when to propagate errors and
+> when not to.
 
-    if (!dinfo) {
-        QemuOpts *opts;
+Markus explained it on the mailing list recently (as I found the doc
+not obvious). I can't find the thread. I suppose once the work result
+after the "Questionable aspects of QEMU Error's design" discussion is
+merged, the documentation will be clarified.
 
-        opts = qemu_opts_create(NULL, "spi-flash", 1, &error_abort);
-        qdict_put_str(opts, "format", "null-co");
-        qdict_put_int(opts, BLOCK_OPT_SIZE, 64 * MiB);
-        qdict_put_bool(opts, NULL_OPT_ZEROES, false); // XXX
+My rule of thumb so far is:
+- programming error (can't happen) -> &error_abort
+- everything triggerable by user or management layer (via QMP command)
+  -> &error_fatal, as we can't risk loose the user data, we need to
+  shutdown gracefully.
 
-        dinfo = drive_new(opts, IF_MTD, &error_abort);
-        qemu_opts_del(opts);
-    }
-
-We should probably add a public helper for that.
-
-'XXX' because NOR flashes erase content is when hardware bit
-is set, so it would be more useful to return -1/0xff... rather
-than zeroes.
+> 
+> It makes sense to me to propagate errors from *_realize() and
+> error_abort on failure to set simple properties, but I'd like to know
+> if Philippe is on board with that.
+> 
+>>> +    }
+>>> +
+>>> +    /* A9MPCORE peripherals */
+>>> +    object_property_set_int(OBJECT(&s->a9mpcore), nc->num_cpus, "num-cpu",
+>>> +                            &error_abort);
+>>> +    object_property_set_int(OBJECT(&s->a9mpcore), NPCM7XX_NUM_IRQ, "num-irq",
+>>> +                            &error_abort);
+>>> +    sysbus_realize(SYS_BUS_DEVICE(&s->a9mpcore), &error_abort);
+>>> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->a9mpcore), 0, NPCM7XX_CPUP_BA);
+>>> +
+>>> +    for (i = 0; i < nc->num_cpus; i++) {
+>>> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i,
+>>> +                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_IRQ));
+>>> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i + nc->num_cpus,
+>>> +                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_FIQ));
+>>> +    }
+...

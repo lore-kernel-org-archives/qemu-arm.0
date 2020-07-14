@@ -1,104 +1,113 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3973129lfm;
-        Tue, 14 Jul 2020 00:06:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwc5hkcyNz3wH3lH80OyG+lyvMLv8FtmFJ7k+YdRweJ2COmvslVfE8bLbTNR14l/zpgYSXQ
-X-Received: by 2002:a25:abc5:: with SMTP id v63mr5893631ybi.148.1594710382495;
-        Tue, 14 Jul 2020 00:06:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594710382; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4041246lfm;
+        Tue, 14 Jul 2020 01:58:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyozE6u0MyO1ksNzTQrrNfxzeR8g3uE8lildCtZaHJdw51jOQ3F4bfdntM0T6Em88AKMkdO
+X-Received: by 2002:a25:98c6:: with SMTP id m6mr6387174ybo.521.1594717087050;
+        Tue, 14 Jul 2020 01:58:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594717087; cv=none;
         d=google.com; s=arc-20160816;
-        b=sVd6XGDPPKsT0ujMHKZAtlGQI6+DYqB6YPwRZhrl3EQ4SlOc+PsNdrDqncYeJjKfZp
-         NKZrUt2e5vI8MiAMDAopyFeG2DNC5ik3PC9ayPAOysGURHBKGqjOtNCyRTTB8Khavf7J
-         bWGbTUbqrlRYqJN3mcQewyz6Lbt7b7wefNB6v3ZsNhdHkv49lZzh6X+/l9qY05K6MdhF
-         EYQZh1rNt4exy8jKAJikVCuuXRsy7NmjLxcjCpjrH1OmqCWlfiDyEgwtcVROFZU23AE7
-         OtUUUvEsItFOoDsZb8qbGauvXjnuBc0Pznn9w7oETYqMtU7zlvBixWrlVV4Wn9V0ozkh
-         bOXQ==
+        b=FRRYagxqculp2vzvtueezbnOV32WGK2GW8emdpqAxKlUtpuyMyHotZiCnVC6v+Tmik
+         JJ9OZ43tl/vK+13CEePZQ1fRoYWf4r5DlVR5VqF7VAUETGKKgALSrxtmYzDN+2BzTcsf
+         HIcZiO9ak2lBocBUiti3GqfThYioaTMgd2nRH0ORI6aCFM6ja6+TgjPCrJ0cY30Nmt3i
+         m0EpCEVxN84VZ2uCaNMZ61I6y8crGywLxb5QLuuoTsB18cxZRuqkzuqRcrXTeqa5bmVU
+         PM71qYnQdr8NHufEKbAuzxq3utBC9TWS6hjCX3iqwX5NJJLXa2Ilod/2wvuupBDcZmWr
+         g4fQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=Ixxg+GRT7G5TW1fzZfXilfGK38e/HN2BuMRx7Flnqnk=;
-        b=QN0ZQvDzDoxfDhqx9Ony9tV85mZue6rtmexaed4w5GSlGPoxAstRY8erDy09nNQlCw
-         TIX9qcq5o4ONUdaYKkadvURObpo5wJTtGzeMk84ro354rv7KFArbESIjQL8cmIC+YMVO
-         9chHTnbKtzdt87WL9X47yzDYlT6P6IXWDRYJvlzIFVz9Fsl3AE4FPSZHO9MFRabxH3r/
-         XhtZP/e22ayUNPgi9U04Jk2mO7H5e9D3rSopeKzHoSEewsaintksAUl/h4gnTsB8X3r8
-         Ol0gfQq6ci87hOcbJTQwE3LTfk13WmmWd2GSBVYEfPqtkUtohDLI2haulbv88mcJ0y24
-         l77A==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=d7qu47wrEa9Rra+uRd9zMX6T/4ahPlP/4qd4nYZVew8=;
+        b=SQVNla799iM/7yEKd2ThOSyOosx2UMGPs+7GYE7eqNhIJU28+izBC4I1nx3GPqN1Tb
+         xeIj3em29qrZkFIoWwTwejqffN4oQjXACM4saVy29N/RNwrJuECbpFT6v8pvN6hCslNR
+         37e7YzbnDpPhoKbBMcHL82KyVOaUvQUA3NuMEzxF/FLBPE54YRdrW3dfjHuhVVyfp8OJ
+         O7BjcacuISTxs3sneiiILExzVTweXEjYBa7rLlEEXP3bj3dsDw8OeTdimlyISdcjE8e8
+         EX+Nf0D/dg4J0M/oGjgGmPVHyRCi8dg6Z2od+fMa/Y2llPfefDTr6UIssuMxxQAupZzd
+         U4xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KkKmcv1E;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P81i2xbz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14si8535858yba.318.2020.07.14.00.06.22
+        by mx.google.com with ESMTPS id s88si17731290ybi.131.2020.07.14.01.58.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jul 2020 00:06:22 -0700 (PDT)
+        Tue, 14 Jul 2020 01:58:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KkKmcv1E;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=P81i2xbz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58754 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51744 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvF1B-00029L-T4
-	for alex.bennee@linaro.org; Tue, 14 Jul 2020 03:06:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45732)
+	id 1jvGlK-0001aH-FZ
+	for alex.bennee@linaro.org; Tue, 14 Jul 2020 04:58:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42378)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvF13-00028u-WE
- for qemu-arm@nongnu.org; Tue, 14 Jul 2020 03:06:14 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:25110
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jvGlD-0001ZQ-Mt
+ for qemu-arm@nongnu.org; Tue, 14 Jul 2020 04:57:59 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:25776
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvF10-00073V-Tt
- for qemu-arm@nongnu.org; Tue, 14 Jul 2020 03:06:13 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jvGlB-0004zG-QF
+ for qemu-arm@nongnu.org; Tue, 14 Jul 2020 04:57:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594710369;
+ s=mimecast20190719; t=1594717077;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ixxg+GRT7G5TW1fzZfXilfGK38e/HN2BuMRx7Flnqnk=;
- b=KkKmcv1E24hnDrjKQr96tqd+495KkUUS6W2exfRv5WCFFy6SPRVslw0A7zUkCtwjAn23vW
- ajjP6xLwsD3apbV30g4468+Wt9Ueg5Npy0OiTuf0zzlIv0Xnx84w2D3kZEXPDYbQ2j73Et
- 0CjKzX+adRlAxEATI6UJP8s4f38jV/8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-509-s8_5kHitP0GvrMemI38POw-1; Tue, 14 Jul 2020 03:06:05 -0400
-X-MC-Unique: s8_5kHitP0GvrMemI38POw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6CF4E100CCC1;
- Tue, 14 Jul 2020 07:06:03 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
- [10.36.112.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A187876206;
- Tue, 14 Jul 2020 07:05:57 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 20069105A45D; Tue, 14 Jul 2020 09:05:56 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 5/5] hw/i2c: Document the I2C qdev helpers
-References: <20200629173821.22037-1-f4bug@amsat.org>
- <20200629173821.22037-6-f4bug@amsat.org>
- <87zh8kg8qu.fsf@dusky.pond.sub.org>
- <CAFEAcA9cajf=MKv4ZD6ivyDTrK4hWLfBP_9T2mJ6LrWjwGMFGA@mail.gmail.com>
-Date: Tue, 14 Jul 2020 09:05:56 +0200
-In-Reply-To: <CAFEAcA9cajf=MKv4ZD6ivyDTrK4hWLfBP_9T2mJ6LrWjwGMFGA@mail.gmail.com>
- (Peter Maydell's message of "Tue, 30 Jun 2020 14:16:45 +0100")
-Message-ID: <87pn8y8tkb.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ bh=d7qu47wrEa9Rra+uRd9zMX6T/4ahPlP/4qd4nYZVew8=;
+ b=P81i2xbz3BrVotNUlcjiS+smS+TyyyxtdMNNsaiUR655Sw+QakK9ioEg6zSeZYTpQ3soGq
+ Y5HQyjtiudYmdqQk3B1PVa/ddyTVNyZXx/izCBv24HRzugeJZuqzUx42/tdl1kihhT/keJ
+ 31QfK3cg2uEVBeQ/YBXS0/wTYLTzgss=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-276-XVuNM8GhPRKcNgu80ep4dw-1; Tue, 14 Jul 2020 04:57:55 -0400
+X-MC-Unique: XVuNM8GhPRKcNgu80ep4dw-1
+Received: by mail-wr1-f69.google.com with SMTP id b8so20795180wro.19
+ for <qemu-arm@nongnu.org>; Tue, 14 Jul 2020 01:57:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=d7qu47wrEa9Rra+uRd9zMX6T/4ahPlP/4qd4nYZVew8=;
+ b=oy3K05VE+tCUJ+pNpVxirboLVDwE1b3jXnQxVsLJrPtXpIZKFgbODqNjq5Vs3Q20yN
+ Q/vIwptlXnKcfCR/UrgRn8iC6XzLA3iGyheFdcAyrN+vrbjAxUvnBqL3iRkKXkt0qTIJ
+ mfllY4l/RnVhNGH1y9gTtgPIBJaEm47Ob5HDrxrVYzf1gxOICwa1QQ11hApa4TbMPpS0
+ 01H6yLeijGthLCibM92qEEYuYcNwqm9rPLLNas50gy11p5l2oLHby4q1UUev1y1a3geQ
+ UDfPNf4hCKOo87sEvxVB5KW9p3WYUCH7w3oboDK6t1EE12/jwZ9Lzwm6UGR015EZ8LYo
+ 7YHQ==
+X-Gm-Message-State: AOAM532VY60+bXKAiYlao9wAfSaQEhxt25gaedbGYZ3qAimnNSpjaS7a
+ CyZtMcN00fscFEJ2R2PfUzN2WU1ZRlNyMf9350uQt7rgkeUncnZAn2b9zP3xpmORRUOeA42QwrE
+ l7mCKCWXHqSJ/
+X-Received: by 2002:adf:f885:: with SMTP id u5mr3894658wrp.402.1594717074222; 
+ Tue, 14 Jul 2020 01:57:54 -0700 (PDT)
+X-Received: by 2002:adf:f885:: with SMTP id u5mr3894637wrp.402.1594717074006; 
+ Tue, 14 Jul 2020 01:57:54 -0700 (PDT)
+Received: from redhat.com (bzq-79-180-10-140.red.bezeqint.net. [79.180.10.140])
+ by smtp.gmail.com with ESMTPSA id v7sm28837090wrp.45.2020.07.14.01.57.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 14 Jul 2020 01:57:53 -0700 (PDT)
+Date: Tue, 14 Jul 2020 04:57:50 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Andrew Jones <drjones@redhat.com>
+Subject: Re: [PATCH 3/4] hw/arm/virt-acpi-build: Only expose flash on older
+ machine types
+Message-ID: <20200714045537-mutt-send-email-mst@kernel.org>
+References: <20200629140938.17566-1-drjones@redhat.com>
+ <20200629140938.17566-4-drjones@redhat.com>
+ <20200713104907.335bf762@redhat.com>
+ <20200714055109.owrlob6m53notzh3@kamzik.brq.redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+In-Reply-To: <20200714055109.owrlob6m53notzh3@kamzik.brq.redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=mst@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/13 21:44:01
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/14 01:42:04
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -106,7 +115,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,73 +128,116 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Corey Minyard <cminyard@mvista.com>, Andrew Jeffery <andrew@aj.id.au>,
- Joel Stanley <joel@jms.id.au>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Jan Kiszka <jan.kiszka@web.de>, David Gibson <david@gibson.dropbear.id.au>
+Cc: peter.maydell@linaro.org, eric.auger@redhat.com, lersek@redhat.com,
+ qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+ ard.biesheuvel@arm.com, Igor Mammedov <imammedo@redhat.com>, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wpQvA3N4mspE
+X-TUID: LQ1PP5IH6pfy
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On Tue, Jul 14, 2020 at 07:51:09AM +0200, Andrew Jones wrote:
+> On Mon, Jul 13, 2020 at 10:49:07AM +0200, Igor Mammedov wrote:
+> > On Mon, 29 Jun 2020 16:09:37 +0200
+> > Andrew Jones <drjones@redhat.com> wrote:
+> > 
+> > > The flash device is exclusively for the host-controlled firmware, so
+> > > we should not expose it to the OS. Exposing it risks the OS messing
+> > > with it, which could break firmware runtime services and surprise the
+> > > OS when all its changes disappear after reboot.
+> > > 
+> > > As firmware needs the device and uses DT, we leave the device exposed
+> > > there. It's up to firmware to remove the nodes from DT before sending
+> > > it on to the OS. However, there's no need to force firmware to remove
+> > > tables from ACPI (which it doesn't know how to do anyway), so we
+> > > simply don't add the tables in the first place. But, as we've been
+> > > adding the tables for quite some time and don't want to change the
+> > > default hardware exposed to versioned machines, then we only stop
+> > > exposing the flash device tables for 5.1 and later machine types.
+> > > 
+> > > Suggested-by: Ard Biesheuvel <ard.biesheuvel@arm.com>
+> > > Suggested-by: Laszlo Ersek <lersek@redhat.com>
+> > > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > > ---
+> > >  hw/arm/virt-acpi-build.c | 5 ++++-
+> > >  hw/arm/virt.c            | 3 +++
+> > >  include/hw/arm/virt.h    | 1 +
+> > >  3 files changed, 8 insertions(+), 1 deletion(-)
+> > > 
+> > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > > index 1384a2cf2ab4..91f0df7b13a3 100644
+> > > --- a/hw/arm/virt-acpi-build.c
+> > > +++ b/hw/arm/virt-acpi-build.c
+> > > @@ -749,6 +749,7 @@ static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
+> > >  static void
+> > >  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> > >  {
+> > > +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
+> > >      Aml *scope, *dsdt;
+> > >      MachineState *ms = MACHINE(vms);
+> > >      const MemMapEntry *memmap = vms->memmap;
+> > > @@ -767,7 +768,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> > >      acpi_dsdt_add_cpus(scope, vms->smp_cpus);
+> > >      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+> > >                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
+> > > -    acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+> > > +    if (vmc->acpi_expose_flash) {
+> > > +        acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
+> > > +    }
+> > >      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
+> > >      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
+> > >                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+> > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > > index cd0834ce7faf..5adc9ff799ef 100644
+> > > --- a/hw/arm/virt.c
+> > > +++ b/hw/arm/virt.c
+> > > @@ -2482,9 +2482,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
+> > >  
+> > >  static void virt_machine_5_0_options(MachineClass *mc)
+> > >  {
+> > > +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> > > +
+> > >      virt_machine_5_1_options(mc);
+> > >      compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
+> > >      mc->numa_mem_supported = true;
+> > > +    vmc->acpi_expose_flash = true;
+> > 
+> > we usually do not version ACPI tables changes
+> > (unless we have a good reason to do so)
+> 
+> Even when the change is to remove the exposure of hardware from the guest?
+> Before this change, if a guest looked, it had a flash, after this change,
+> if a guest looks, it doesn't.
 
-> On Tue, 30 Jun 2020 at 11:15, Markus Armbruster <armbru@redhat.com> wrote=
-:
->>
->> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
->>
->> > In commit d88c42ff2c we added new prototype but neglected to
->> > add their documentation. Fix that.
->> >
->> > Reported-by: Peter Maydell <peter.maydell@linaro.org>
->> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
->> > + * This function is useful if you have created @dev via qdev_new(),
->> > + * i2c_slave_new() or i2c_slave_try_new() (which take a reference to
->> > + * the device it returns to you), so that you can set properties on i=
-t
->> > + * before realizing it. If you don't need to set properties then
->> > + * i2c_slave_create_simple() is probably better (as it does the creat=
-e,
->> > + * init and realize in one step).
->> > + *
->> > + * If you are embedding the I2C slave into another QOM device and
->> > + * initialized it via some variant on object_initialize_child() then
->> > + * do not use this function, because that family of functions arrange
->> > + * for the only reference to the child device to be held by the paren=
-t
->> > + * via the child<> property, and so the reference-count-drop done her=
-e
->> > + * would be incorrect.  (Instead you would want i2c_slave_realize(),
->> > + * which doesn't currently exist but would be trivial to create if we
->> > + * had any code that wanted it.)
->> > + */
->>
->> The advice on use is more elaborate qdev_realize_and_unref()'s.  That
->> one simply shows intended use.  I doubt we need more.  But as the person
->> who wrote qdev_realize_and_unref(), I'm singularly unqualified judging
->> the need ;)
->
-> If qdev_realize_and_unref() has documentation which gives
-> the use-cases similar to the text above, then we could make
-> this text say "This function follows the patterns and
-> intended usecases for qdev_realize_and_unref(); see the
-> documentation for that function for whether you would be
-> better off using i2c_realize() or (the not-yet-existing)
-> i2c_slave_realize()" or similar. I originally wrote the
-> version of the above text for ssi_realize_and_unref()
-> as essentially the documentation I would have liked
-> qdev_realize_and_unref() to have, ie including the nuances
-> which I had to figure out for myself.
+It's up to the relevant maintainers who know what the semantics are.
+FYI ACPI tables only change across a reset though.
+So it's a question of whether guests get confused even if this
+changes after a reboot.
+Versioning is generally safer, but it's a good idea to document
+the motivation for it.
 
-To document wrappers as simple as ssi_realize_and_unref(), pointing to
-the wrapped function should suffice.  When more elaborate documentation
-is wanted, it's probably wanted for the wrapped function.
 
-Since you felt a need for a more elaborate ssi_realize_and_unref() doc
-comment, you should probably propose a patch for
-qdev_realize_and_unref()'s doc comment :)
+> I'd feel much better versioning a change
+> like that, than not.
+> 
+> Thanks,
+> drew
+> 
+> > 
+> > >  }
+> > >  DEFINE_VIRT_MACHINE(5, 0)
+> > >  
+> > > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> > > index 31878ddc7223..c65be5fe0bb6 100644
+> > > --- a/include/hw/arm/virt.h
+> > > +++ b/include/hw/arm/virt.h
+> > > @@ -119,6 +119,7 @@ typedef struct {
+> > >      bool no_highmem_ecam;
+> > >      bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
+> > >      bool kvm_no_adjvtime;
+> > > +    bool acpi_expose_flash;
+> > >  } VirtMachineClass;
+> > >  
+> > >  typedef struct {
+> > 
+> > 
 

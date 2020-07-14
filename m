@@ -1,186 +1,35 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp132219lfm;
-        Tue, 14 Jul 2020 05:52:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxw0TXFNz1iJmvQnQCWExurUVybHn5XU3Emj37i6ovJJzp7VSOfo/uAVIMkZGvFle+2wgDp
-X-Received: by 2002:a25:2f43:: with SMTP id v64mr7311545ybv.463.1594731166281;
-        Tue, 14 Jul 2020 05:52:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594731166; cv=none;
-        d=google.com; s=arc-20160816;
-        b=sXKrXdOdrRCwgq/xPDRYAkWYKIR77DnZxBcKSd433x3sLy9tDiXxWWXeYxBpl8+Nh7
-         IS7h0+cHYF4YsIkMFq2XRNKIvup5G4Ll73btRsy7Hdi4Le2Ezg3WA6wdw3jRl/nvv8Uk
-         Cnsz40kmr04tycR5G0z4W0K48RAJHmxYR1NcuAA30FJIWh0DRTiucqOJS016EL0D6v2P
-         RkNmP+bWqNWdVwMVny9KTKV9bO91hYRRjsq94X/Y8ROVWuKVKf9y47w8B23IMv6NpSoH
-         92M8or4qqPBbtRN0xyrwyGqeqxc7eb9lo8MCJaDk9/nS6FIa6oGiDQUOiK7d1kmYVYsn
-         9BAg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=DPfgLaHyWMOKNDsYqcI84DHhj8g+HLYXFdDwtMOO4js=;
-        b=cYrO8en7idIa5WNfS0Hy0aHcDq7ZsTwqP7KuJnz4R4Ub+wZr7ZIrAnds7okcVlZ0ap
-         q2rmJBHbf1Sk8Uu+AsrZ+LHKakwPkBkL9Ew0gplPyTOq6TVqQfkkfSWtH9CemcyLCl0z
-         v0RhWLdhLmL+fiRArk111wp+qtTSb5ypLEqYvjIfmWHxEPLvoYQhhZ5Cq9ecglVZPFTh
-         UH22ybNATLbqWn3MtO43Vfs172Baxx6LZLNtJBNdY0LDh+4O8ZT/c+JOrNtG0zkGNGqX
-         1qPmgfls6cMgvk9LACDvDSdp+fga3ZVbaUCBhz3IONWMJVpJC04GoYGZEzoak1jNxzbM
-         RG6Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nlcZfQt9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z186si11058539ybz.463.2020.07.14.05.52.46
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jul 2020 05:52:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nlcZfQt9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:42876 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvKQP-0006LG-KX
-	for alex.bennee@linaro.org; Tue, 14 Jul 2020 08:52:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46214)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jvKOy-0004IP-Ux; Tue, 14 Jul 2020 08:51:16 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43667)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jvKOx-0002lK-5H; Tue, 14 Jul 2020 08:51:16 -0400
-Received: by mail-wr1-x441.google.com with SMTP id j4so21385329wrp.10;
- Tue, 14 Jul 2020 05:51:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=DPfgLaHyWMOKNDsYqcI84DHhj8g+HLYXFdDwtMOO4js=;
- b=nlcZfQt90gS3a2tmc7XIbqtFDkqVyE2c9CL22VB83UtKwgvhnQBHTeJFiGUHrB9xP4
- xuKkaboY1MHWyoIT1+iUbjU7VF43xrTD2wIUDCSvkxPKBL6a23xCYjVadkiVJ93CbQRl
- 9TMAqiaHp56oF2eBpAUOi5OJWID2HA6t9lmPjnQsLtdnPtFT427elr1oAzToe70cPK0O
- 3Bzf/ru9Wn3Uegb6jobIXmSv8WfQR8wZF94A4Jv88oGUwGxemqrfT6kH6/BivRbFDcZ4
- LLcIPBSwX66561Dvh8gclSFR97y2c+xXvLHBCWkzeXX92M0s+4qxU/3YhWfClMSvD849
- Jf0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=DPfgLaHyWMOKNDsYqcI84DHhj8g+HLYXFdDwtMOO4js=;
- b=lMUL5GNs1/U9WbqBuoQdoBtMifTwfGdzc8oS/BjVhPKBQk1TgVZpLuSYXla+ckINMR
- UUQfrBt12l/K9bt3WWGJmZeS5HRSI8bX5mdbNGuFWXxlj6QoEbDKsSwO6lxUJlVuM8IP
- SAgfu/EbZII10Sl7AUUc/nBFxLaA8n3ZzKdj8BoO0mCWc6SdDI1FDWBs2MRycNiE4AyD
- YAot3QoWlt6+L2hl9UCQXXmZb1go2n+rFh2lhd8QJSKozEtsq2Bkgm+UKyHZLAl0oovv
- MwuSvvkNP4rZleSQbspLTxkk3sG3UE1YSGDl8briYPhZtgjbgNNBsaUVOKWVSGWFCipi
- HasQ==
-X-Gm-Message-State: AOAM530eEvjXbJjVfBacQ4nLvS0rFuzhJr+drh99+2AgO1v9YyUpamhD
- lKYj2iH8aM5zge4/xiHpTiwgHGgzeRc=
-X-Received: by 2002:a5d:6603:: with SMTP id n3mr5372081wru.142.1594731072909; 
- Tue, 14 Jul 2020 05:51:12 -0700 (PDT)
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id q188sm4578922wma.46.2020.07.14.05.51.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Jul 2020 05:51:12 -0700 (PDT)
-Subject: Re: [PATCH for-5.1 1/4] docs/system: Briefly document canon-a1100
- board
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id p25sm4143156wmg.39.2020.07.14.06.14.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 14 Jul 2020 06:14:49 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 1D1221FF7E;
+	Tue, 14 Jul 2020 14:14:49 +0100 (BST)
 References: <20200713175746.5936-1-peter.maydell@linaro.org>
  <20200713175746.5936-2-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <5425cea6-8211-d780-dcc8-33e327fda82d@amsat.org>
-Date: Tue, 14 Jul 2020 14:51:11 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+User-agent: mu4e 1.5.4; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH for-5.1 1/4] docs/system: Briefly document canon-a1100
+ board
+In-reply-to: <20200713175746.5936-2-peter.maydell@linaro.org>
+Date: Tue, 14 Jul 2020 14:14:49 +0100
+Message-ID: <87a702z19y.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200713175746.5936-2-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oLMrz+hAy/e0
+Content-Transfer-Encoding: quoted-printable
+X-TUID: LkCplqUWHd6+
 
-On 7/13/20 7:57 PM, Peter Maydell wrote:
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
 > Add skeletal documentation of the canon-a1100 board.
-> 
+>
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  docs/system/arm/digic.rst  | 11 +++++++++++
->  docs/system/target-arm.rst |  1 +
->  MAINTAINERS                |  1 +
->  3 files changed, 13 insertions(+)
->  create mode 100644 docs/system/arm/digic.rst
-> 
-> diff --git a/docs/system/arm/digic.rst b/docs/system/arm/digic.rst
-> new file mode 100644
-> index 00000000000..2b3520ff5e1
-> --- /dev/null
-> +++ b/docs/system/arm/digic.rst
-> @@ -0,0 +1,11 @@
-> +Canon A1100 (``canon-a1100``)
-> +=============================
-> +
-> +This machine is a model of the Canon PowerShot A1100 camera, which
-> +uses the DIGIC SoC. This model is based on reverse engineering efforts
-> +by the contributors to the `CHDK <http://chdk.wikia.com/>`_ and
-> +`Magic Lantern <http://www.magiclantern.fm/>`_ projects.
-> +
-> +The emulation is incomplete. In particular it can't be used
-> +to run the original camera firmware, but it can successfully run
-> +an experimental version of the `barebox bootloader <http://www.barebox.org/>`_.
-> diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-> index 1bd477a2936..8fa51a22817 100644
-> --- a/docs/system/target-arm.rst
-> +++ b/docs/system/target-arm.rst
-> @@ -82,6 +82,7 @@ undocumented; you can get a complete list by running
->     arm/versatile
->     arm/vexpress
->     arm/aspeed
-> +   arm/digic
->     arm/musicpal
->     arm/nseries
->     arm/orangepi
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index fe8139f3675..0f578040b99 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -634,6 +634,7 @@ F: include/hw/arm/digic.h
->  F: hw/*/digic*
->  F: include/hw/*/digic*
->  F: tests/acceptance/machine_arm_canona1100.py
-> +F: docs/system/arm/digic.rst
->  
->  Goldfish RTC
->  M: Anup Patel <anup.patel@wdc.com>
-> 
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
+--=20
+Alex Benn=C3=A9e

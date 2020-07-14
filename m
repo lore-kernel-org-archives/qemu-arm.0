@@ -1,98 +1,96 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4045530lfm;
-        Tue, 14 Jul 2020 02:04:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnbQXM2u/ejazhx0nbgAEak+ZkJROajN78mH+CWvPIX09PgRFlYBbJx+bMUgcDsS1a70Xq
-X-Received: by 2002:a25:8087:: with SMTP id n7mr6262389ybk.439.1594717462999;
-        Tue, 14 Jul 2020 02:04:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594717462; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4049055lfm;
+        Tue, 14 Jul 2020 02:09:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJznYtsKRPobvdYltLTTb6L4+QyHM/z+KX7TIxHFyGHJNZsY7nJil2wKWtCtOM0mRacD6g+t
+X-Received: by 2002:a25:e78f:: with SMTP id e137mr6238435ybh.153.1594717787603;
+        Tue, 14 Jul 2020 02:09:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594717787; cv=none;
         d=google.com; s=arc-20160816;
-        b=YMrKtKFwvgIlhDIE9XYrJht30Wol/qc+vWVogOHRO2SrAuuyd34dmMKNjpIiBxDTtx
-         m4U0hDH0XXk5rBxU2bfDg7YOD29Zc0gW+U5IQuAHdSEhWbKp/8iHImlc3OvdoNkg0x9b
-         hEYjlfgbtRx9hzQyqHSU+vc6TVNRxIaRLsCXCdkcAyl1DPShGx7uequCjZrRpmpFd5km
-         9U0rfXWY8jXTRYarjPrGJFR2Am7BWLIp7v+DNMMjBw/8DZhCyU/Cv9+vSntfDZRJAwwd
-         qFymsV/ogayjcfMpYI9my8BZij70EXnmltJ6Q47tzxr4XrohoYUlYGc5SVeirDHO7/5x
-         ViMA==
+        b=d/qQCjuE+XOleZbDgPvcK0HiDzpciOUHMb6kcaJYHsP53brqOVcGmB4GrPGxpiYcGh
+         0ujU/J44kjPTBRm6iU9d2FB2HMbcCH637AHMpuMPQAp/w4MmVrtEAC4WtVExw9l6UtpK
+         Vy+m/XZ+z2oPG55Xu8AoARDNK6TBM/TeOnKrXaYNqXTDoL5GFEqOJf671tP47sNOlTYg
+         PTWrVQN55PpHscvif0z2NWhHjrO4o4v8mSUgDUFf4EY3UT5ICkzkRGfwGh2VmR3leQlB
+         GMjthBPVk0UPee2MdfqPyqQl9GrOHzSYraaHBx2ddsqCWjIKxcFWk0RLSRnH6t1R+BRa
+         I76Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=g9hElE/6P2hreo6ryqv5PdnNZOX6GMy9ITZ9XVw1ELU=;
-        b=vXUy2zo0NDQf+LLsJbXwKZQjFju0hTZI3gi9roRgMqIrwAoZYA2gRqPvMYlQsfrIET
-         BOKQtyl8MCH0LwBJC+SgHg/fp+CticrOqzZEotfcewzEaBqZkE4s1hCR9ZGtRR2PQNwE
-         lUp95Q4FOe1aUL/t4wfF09ojZ1YklQ/yjOzsiQ3P2a4bRpCDe6hzJyED/Kx/VTozBmzf
-         OgaXNesrfPHvjDPWBvCuKTh+iKiQkM/el+DCFw4YuikWTZjaMiiO4fNPy5Qn8u3ielor
-         lKwo7BbJ7WOBZM3TdtIGyQ85Tjl3530800smcMsEWbghvo5JoUXXpZFRr+21fWl9yDiU
-         tOhg==
+        bh=J3Xo8iLyPOa3pE2dpYfsq0llYfj11FzuDX/kBaw4zJw=;
+        b=q7QHKs+XnNCpLfBvXl0gP5NZjDlhRzL2as2s7SufI64sXLccKaVXE5pCq0eftrTHf2
+         MAc/oO9gMhaftD2d2SHMyzaIEBPF01lAqLD4sYft9V/ainhVLNfz5ubjrQUENl0p+jiQ
+         dOXqsf9FbeSOU+AfcLWja/L5oTe6Whg0+BIWuE0A350YVsCIojd8RvS6sBmmqFtTfl9v
+         Xq0VUnXfwhXGdwMXa/7dW3EMXMhju5pSrWQyz2MCHDvIzHl+0t2iOOFFyDIrTlJ+45+X
+         w3/cOpDqdow98JgFo2pCkfOr0PbrjkAAh1/2hKgiZKdcqLca1ACB1alLIgPmVB+/DG5y
+         Iaww==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QeWq8uId;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RMQ+OH0C;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y9si17673919ybm.274.2020.07.14.02.04.22
+        by mx.google.com with ESMTPS id w138si16901467ybg.94.2020.07.14.02.09.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jul 2020 02:04:22 -0700 (PDT)
+        Tue, 14 Jul 2020 02:09:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=QeWq8uId;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=RMQ+OH0C;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56394 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35174 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvGrO-0003zm-DH
-	for alex.bennee@linaro.org; Tue, 14 Jul 2020 05:04:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43934)
+	id 1jvGwd-00078i-0D
+	for alex.bennee@linaro.org; Tue, 14 Jul 2020 05:09:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45062)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1jvGrG-0003ya-NJ
- for qemu-arm@nongnu.org; Tue, 14 Jul 2020 05:04:14 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32478
+ id 1jvGwW-00078V-CE
+ for qemu-arm@nongnu.org; Tue, 14 Jul 2020 05:09:40 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:59044
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1jvGrE-0005fP-TI
- for qemu-arm@nongnu.org; Tue, 14 Jul 2020 05:04:14 -0400
+ id 1jvGwU-0006Ru-Ks
+ for qemu-arm@nongnu.org; Tue, 14 Jul 2020 05:09:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594717451;
+ s=mimecast20190719; t=1594717777;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=g9hElE/6P2hreo6ryqv5PdnNZOX6GMy9ITZ9XVw1ELU=;
- b=QeWq8uIdf5dnFmpZ4XTVQj7YDgguD4YhGu+KdBXTsLsrKSi6RGp2omDXwNaAcXNL2pC/hs
- pGIcnb8GwiJhFAO7Ox+2qV6p/B/WFN2DxC/M3V9s48pna31o8NUuqsJPkpDqflEivQBb6J
- xy25QeFRFInt064qc99Kd7jnu4DsoyM=
+ bh=J3Xo8iLyPOa3pE2dpYfsq0llYfj11FzuDX/kBaw4zJw=;
+ b=RMQ+OH0ClkEKkeaP3WJmcQo/j2NdC8/C50/Yk7PwrbT34ZpXURYqXx+F4sDTVdMZeNs5b6
+ krufBNHtmtvJVofqzsAAjyVnMbSZ8JNobTsEvNBQND4cKVTv0bpP1Pxp5dM+L1mBw71akO
+ OHdu4nWjsh0tpSPiJsrZWoeTKCmk3z0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-223-CX8NbzVpO3mucJvJemwqwA-1; Tue, 14 Jul 2020 05:04:10 -0400
-X-MC-Unique: CX8NbzVpO3mucJvJemwqwA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-363-DqhdOAvCOMSfmAfs6xVv8w-1; Tue, 14 Jul 2020 05:09:32 -0400
+X-MC-Unique: DqhdOAvCOMSfmAfs6xVv8w-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F052A106B242;
- Tue, 14 Jul 2020 09:04:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AE87AE927;
+ Tue, 14 Jul 2020 09:09:30 +0000 (UTC)
 Received: from [10.72.12.168] (ovpn-12-168.pek2.redhat.com [10.72.12.168])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 74E3C10013C3;
- Tue, 14 Jul 2020 09:04:04 +0000 (UTC)
-Subject: Re: [PATCH v2] ftgmac100: fix dblac write test
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Erik Smit <erik.lucas.smit@gmail.com>, Andrew Jeffery <andrew@aj.id.au>
-References: <20200628142658.29264-1-erik.lucas.smit@gmail.com>
- <df64d8de-9d7f-474b-8b72-5d2e6c7df1f4@www.fastmail.com>
- <CA+MHfovCuasf4RrfZrJwfHx4VOeRNfQ=MTMaFG4=Df8cELZ=EA@mail.gmail.com>
- <f46d2319-e83f-6d4a-97ba-3f91fe57dd3b@kaod.org>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C7B3772AE9;
+ Tue, 14 Jul 2020 09:09:25 +0000 (UTC)
+Subject: Re: [PATCH] hw/net/xgmac: Fix buffer overflow in xgmac_enet_send()
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Mauro Matteo Cascella <mcascell@redhat.com>
+References: <20200710091940.641296-1-mcascell@redhat.com>
+ <CAFEAcA9XQUcdiy2x18Zr+EYDaJ4hY-1Bd-DgL6-j6sJi5Ow+Gg@mail.gmail.com>
 From: Jason Wang <jasowang@redhat.com>
-Message-ID: <f26fe66d-691c-ab4e-a6ea-78306a2b3996@redhat.com>
-Date: Tue, 14 Jul 2020 17:04:02 +0800
+Message-ID: <df0eae88-2bc8-04fa-feb9-7633ba13d635@redhat.com>
+Date: Tue, 14 Jul 2020 17:09:23 +0800
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <f46d2319-e83f-6d4a-97ba-3f91fe57dd3b@kaod.org>
+In-Reply-To: <CAFEAcA9XQUcdiy2x18Zr+EYDaJ4hY-1Bd-DgL6-j6sJi5Ow+Gg@mail.gmail.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
@@ -107,7 +105,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,46 +118,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- Cameron Esfahani via <qemu-devel@nongnu.org>
+Cc: Rob Herring <robh@kernel.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, ziming zhang <ezrakiez@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EjWcrDFOeM1m
+X-TUID: MlxGSD5uyo7u
 
 
-On 2020/7/13 下午8:06, Cédric Le Goater wrote:
-> On 7/7/20 9:42 AM, Erik Smit wrote:
->> Hi Andrew,
+On 2020/7/10 下午7:07, Peter Maydell wrote:
+> On Fri, 10 Jul 2020 at 10:20, Mauro Matteo Cascella <mcascell@redhat.com> wrote:
+>> A buffer overflow issue was reported by Mr. Ziming Zhang, CC'd here. It
+>> occurs while sending an Ethernet frame due to missing break statements
+>> and improper checking of the buffer size.
 >>
->> On Mon, 6 Jul 2020 at 03:59, Andrew Jeffery <andrew@aj.id.au> wrote:
->>> On Sun, 28 Jun 2020, at 23:56, erik-smit wrote:
->>>> The test of the write of the dblac register was testing the old value
->>>> instead of the new value. This would accept the write of an invalid value
->>>> but subsequently refuse any following valid writes.
->>>>
->>>> Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
->>>> ---
->>>> Changes since v1:
->>>>
->>>> Changed %ld to HWADDR_PRIx to fix building on mingw
->>> Bit of a nitpick, but the type of the value argument is uint64_t, so shouldn't
->>> the result of the expression captured by FTGMAC100_DBLAC_TXDES_SIZE() and
->>> FTGMAC100_DBLAC_RXDES_SIZE() be printed with a straight PRIx64 rather than
->>> HWADDR_PRIx?
->> You are correct. I didn't understand the meaning of the PRI macros and
->> just grabbed the other PRI macro I saw getting used in the file.
-> With that fixed,
+>> Reported-by: Ziming Zhang <ezrakiez@gmail.com>
+>> Signed-off-by: Mauro Matteo Cascella <mcascell@redhat.com>
+>> ---
+>>   hw/net/xgmac.c | 7 +++++--
+>>   1 file changed, 5 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/net/xgmac.c b/hw/net/xgmac.c
+>> index 574dd47b41..b872afbb1a 100644
+>> --- a/hw/net/xgmac.c
+>> +++ b/hw/net/xgmac.c
+>> @@ -224,17 +224,20 @@ static void xgmac_enet_send(XgmacState *s)
+>>               DEBUGF_BRK("qemu:%s:ERROR...ERROR...ERROR... -- "
+>>                           "xgmac buffer 1 len on send > 2048 (0x%x)\n",
+>>                            __func__, bd.buffer1_size & 0xfff);
+>> +            break;
+>>           }
+>>           if ((bd.buffer2_size & 0xfff) != 0) {
+>>               DEBUGF_BRK("qemu:%s:ERROR...ERROR...ERROR... -- "
+>>                           "xgmac buffer 2 len on send != 0 (0x%x)\n",
+>>                           __func__, bd.buffer2_size & 0xfff);
+>> +            break;
+>>           }
+>> -        if (len >= sizeof(frame)) {
+>> +        if (frame_size + len >= sizeof(frame)) {
+>>               DEBUGF_BRK("qemu:%s: buffer overflow %d read into %zu "
+>> -                        "buffer\n" , __func__, len, sizeof(frame));
+>> +                        "buffer\n" , __func__, frame_size + len, sizeof(frame));
+>>               DEBUGF_BRK("qemu:%s: buffer1.size=%d; buffer2.size=%d\n",
+>>                           __func__, bd.buffer1_size, bd.buffer2_size);
+>> +            break;
+>>           }
+>>
+>>           cpu_physical_memory_read(bd.buffer1_addr, ptr, len);
+> This is correct in the sense that it avoids the buffer overflow.
 >
-> Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> I suspect that we should probably also be reporting the error
+> back to the guest via some kind of error flag in the descriptor
+> and/or in a status register. Unfortunately I don't have a copy
+> of the datasheet and it doesn't seem to be available online :-(
+> Does anybody have a copy to check ?
 >
-> Thanks,
->
-> C.
+> thanks
+> -- PMM
 
 
-Applied by switching to use PRIx64.
+I tried to download the datasheet from [1] but it's not a programmer 
+manual.
+
+I think we can apply this patch first and do follow-up fixes on top?
 
 Thanks
 
+[1] https://www.synopsys.com/dw/ipdir.php?ds=dwc_ether_xgmac
+
+
+>
 

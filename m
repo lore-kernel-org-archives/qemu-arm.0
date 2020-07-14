@@ -1,120 +1,107 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp356672lfm;
-        Tue, 14 Jul 2020 10:16:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy6Ud8kGohN3+qNWtBEDQVqACxM8trKq5HNnBn365Xw/rKArxNO29kyADcp0HN178BE0nDt
-X-Received: by 2002:a25:448a:: with SMTP id r132mr8780003yba.3.1594747014220;
-        Tue, 14 Jul 2020 10:16:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594747014; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp504553lfm;
+        Tue, 14 Jul 2020 13:36:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyEtt7VghOOFhM7Af2hUyo8cxevRR2E9Thq7CW8EVVv47edZ3rruBHz+WYtd7Az/D3U2jbA
+X-Received: by 2002:a25:740d:: with SMTP id p13mr10580979ybc.250.1594758979301;
+        Tue, 14 Jul 2020 13:36:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594758979; cv=none;
         d=google.com; s=arc-20160816;
-        b=PuaGJ+ld+lSWTvS+rO7yTo+W+JLRcTIoVwStfBKNL23yftr9iE+IRMHR332/oZ9qNn
-         oxRirPBRUfgCEm32PgbjxdeORrcujpB+4jfThU0wjS0sf92skZdUN4tFl46juI2c1WXs
-         Crcuaj7DYTl2nIGQ0ve9Sf+9S3968kpnoV4UTHZ4U0/cnvdSVqhX3qCd+A0sHI7GvWr+
-         GavjMDwH7a/7t3KNA1lScczFrX1HxGsmpLiFgMmQOhW58X9ap1swzO8T8c6AckBpRM/n
-         +Dc3bv1+i15L/Bpitb4uCUspEYkmOgrZiuInY0+7stSrkogAKLgIWSytGKGnyQlC2QKm
-         NFrA==
+        b=rvD2qz067qF2vk+D8lpvmu30mG+ES2YWuhgzKHQesQARogn9cBMcpwaa1b49ncUWr1
+         vx5sr54oL5lA8v+DdGuHPcaF7IhMjpoNouEjq8kVZFHhnIpLDlJilkuKHBRAIiWKmnmj
+         S6F6PmVm2eGwithyy2hiMVI4c/4Bn9tMh8Xs3I3IU5YkCYdk4bUO897Sg7wcqXS1uTga
+         3psecxnhNtOyACFSvyaOlxS/80DZb/mGHkYZthMAHl76mmOdrx72MM9a52klCyR5NDh6
+         4fldDxdzHlmAh7GzNFEXwodkaEznzq1xVYtvElOFJZVAKAUZOCwenbesC7ONxrAH7aXu
+         VSdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=G06bz0G+0zTOMITxITjIWonCFrTFaS1DYVQC/CsPT3g=;
-        b=akOLiXA8fx+ZRGrSK/lRyCMGR1rvWAQhTKtWcvnuKjACBW/4o3xAs581XLm7WQjwg/
-         e6BDyd2mEHjrbd5gm/zS2VcnWw7e3Oqzv47M2VxtTEDoBzDCdA1xZFRdDpa099Bc/Fr7
-         GOCYA9P7g2mR/crl27fWhfg5/2YDKp3sq5loMMNBCbkQqvROC+jT8kov43MCo/l2JcUc
-         n+uxRJdsA5GGpqYRCVoYVZ1KK941yNXG4m4UPe7Rxar9ttpvBsY3nJ2SL23E9h+8fIfD
-         +L2jrMld+egauM69JFbhW8dCnesawgdPNwZnHXRgX2lfw87PfFrSNHEHa8dIYq7utLEO
-         IBvQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=Ng3RgguGDWVhvWuBBD4e16/bRgrWRGoknea1tRRkQhI=;
+        b=Ja+GvexzKbcMUjsdRB+U2++yfg4/LcmIoc3e+5yikPXp2WMsC34p31/sKiR47bDAd/
+         8dj6RcLIammYyK6ptnZuP9md4mfX/0TGGtz2uEWwdicQbeaHDB8anDhRgjiqFBvekKmb
+         BfNWyb019vXtolZ+rJAxOZhluTvButIbkAxAGS8ps7aY26gI0GGKTTr1jLaYwIp4nb6I
+         Sjm6PACwZOcioJr5jBljQ8f/7QXZ2ltR2eYzd9SL8GbHHwxkyRjacZOEnWovcZmhxVFy
+         ZrZacgJo5cpeO1OlMDtPj2Qx26r2QX0Ztd1ljLXY3XdcRWc77ShieJYXa06OHFSC/+Qk
+         kJZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A75fANeI;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="IG4vUJ/f";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 127si17449921ybb.482.2020.07.14.10.16.53
+        by mx.google.com with ESMTPS id n4si160614ybn.165.2020.07.14.13.36.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jul 2020 10:16:54 -0700 (PDT)
+        Tue, 14 Jul 2020 13:36:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A75fANeI;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="IG4vUJ/f";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44458 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59872 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvOY1-0001PR-H4
-	for alex.bennee@linaro.org; Tue, 14 Jul 2020 13:16:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59516)
+	id 1jvRf0-0003ec-Nr
+	for alex.bennee@linaro.org; Tue, 14 Jul 2020 16:36:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39582)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jvOXp-0001OU-Ud; Tue, 14 Jul 2020 13:16:42 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55897)
+ (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
+ id 1jvRet-0003dO-P4; Tue, 14 Jul 2020 16:36:11 -0400
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:34828)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jvOXo-00047V-5Q; Tue, 14 Jul 2020 13:16:41 -0400
-Received: by mail-wm1-x343.google.com with SMTP id g75so7185424wme.5;
- Tue, 14 Jul 2020 10:16:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
+ id 1jvRes-0000l2-3U; Tue, 14 Jul 2020 16:36:11 -0400
+Received: by mail-ej1-x641.google.com with SMTP id rk21so24369340ejb.2;
+ Tue, 14 Jul 2020 13:36:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=G06bz0G+0zTOMITxITjIWonCFrTFaS1DYVQC/CsPT3g=;
- b=A75fANeIgiij9mKlNG56ZzZnxnFQggXZ5wUopP/5cVMCyC5pUEpqbhxguNXWtxNBr2
- nPHs6X0D4ImX/u862g/07bvbCK8HbUMPJiPQzdaLnCaUKJVJO1Uvm2s4f61huSTd0G3J
- f3q4Hkw2LFqyoc3hnNLhUPyN+vpOUK6UbuDDLf/Isq5PZTqhiDM3C7pr3h7W0/asII1e
- c0bt0jX5vAYxpH3lMYahE2lXQmxwBAvttvRCMDFtQp2+aB/S7BdhA29yCBYUZTLl9HbT
- wGZphBvmXqVr5r7PfjgBq6PqnPTCY69aD1JEEZckPxhx2k0PyTicBtmIeGAjIwycOdQO
- nFhA==
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Ng3RgguGDWVhvWuBBD4e16/bRgrWRGoknea1tRRkQhI=;
+ b=IG4vUJ/f5d/d+9rQDMRSLa3aYjn7VUTntTxLfub32Qjg/9h6KkNHKnonetUI0LAGVY
+ O3hDDJl3zA9zKw/lRSGtzegZnfBkXHvJbGH1AbDbJNh/OoblWkbKfCTVVDaDzCcAx5oq
+ cHrLRy/0ceq2bRmz3763utTYfhpENy1o/5ZbONU3GaKG372lfzOBC5WtE/Ez5hGwVA55
+ Rb6bDkuTrjcZLWmuEDePRNgKbP+3cj4cqgkh1yV73g2Q/529i69yVufrDoIHFrN/wEGp
+ kn/uUPP4SbWtfsxzC/gyM+oVP2D5Kfd5X786tf5iQlHwkFtOuZV3EGzHDE+zjS7vybJg
+ R1wQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=G06bz0G+0zTOMITxITjIWonCFrTFaS1DYVQC/CsPT3g=;
- b=XP4+YPvc6oePl3u5G3Z4pRXbYn9bFtOwKBgcj0h/jID7dMtrPiNQ0bmUCQZRQRx47d
- qNqK/Qf/LgXxbAw5KNIcRAhPqhfO900NwIW5M6oZH8/nDqrqr2k62VTvsiAiFzqWY6Wx
- tq1MT9L8DvjMmRru8tZJkPi9zdo086jS1RAO36P6nvnMSSSLoCMWwrM0dYLXsd3Y8iKO
- BfQN9IvHtE8HbcoF31SBQo2kEcMkCiaUrnlbukkifnU37h5JX6+2s+ggNpS9tB0nuakp
- MH/VbUp6/Ihdl7zqhL5mBc+Y4lo+S/95pFDHErIsjZwV18aOg6gl5/xagSNmKnnhHTuw
- k0rQ==
-X-Gm-Message-State: AOAM530ckh4wx2vSREstMj93UosG/rH0jMhy/TveIxJevk6j98oSC0IY
- oZ1ZDhL605ULxu/MHNnzSfw=
-X-Received: by 2002:a1c:81d3:: with SMTP id c202mr4893178wmd.54.1594746996796; 
- Tue, 14 Jul 2020 10:16:36 -0700 (PDT)
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id 1sm5212439wmf.21.2020.07.14.10.16.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Jul 2020 10:16:36 -0700 (PDT)
-Subject: Re: [PATCH v5 10/11] hw/arm: Wire up BMC boot flash for npcm750-evb
- and quanta-gsj
-To: Markus Armbruster <armbru@redhat.com>
-References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-11-hskinnemoen@google.com>
- <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
- <CAFQmdRZcygskP3iwss01-Jz67yjAP_JENXjWM2Bp8U=DRzxR0Q@mail.gmail.com>
- <875zaq78xq.fsf@dusky.pond.sub.org>
- <19733456-a672-595d-e721-e0ef26d7f665@amsat.org>
- <87v9iq2hkv.fsf@dusky.pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e87663cf-7cb2-ca6c-a751-e5c1cebc5440@amsat.org>
-Date: Tue, 14 Jul 2020 19:16:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ bh=Ng3RgguGDWVhvWuBBD4e16/bRgrWRGoknea1tRRkQhI=;
+ b=dXvaVl02QRU/6+zsUDx8Qc55Ahb0r/j7i5QJliqTHCQ9bKZmUtWsWS9o3i1u91q3MH
+ fybkDmJ0rV/oN4A89QA4DwaFtTf2RdTFREN/rZbgaetkTfMRZlgjrzQy+M7/Um3PnIeG
+ ovb4BB5LG06OIEpl2veAS9LMfbAwOOsFwWSQ1PfAGk1j44f4Kc2TBgbbRIKttLchMDJr
+ Vot/qMxOgJ9JJgGdvkSlK2QgFabG1v/4cPp4xZLiSITB1825MlAnx2MK8MNqdLmDyHOq
+ YuML4+ciIvq8E9H935rw+F5iE1car+EpPJhxEhCyCWpBMpg59vxbUar8T1ftlXhvRlfg
+ nBRg==
+X-Gm-Message-State: AOAM5333xr20hQ3n8XPqLsKs2gizYBY4lg0aiC/YLMtAgUnpByyK+ZdQ
+ kBnJcBUFck59RVZg33namNc=
+X-Received: by 2002:a17:906:c1c3:: with SMTP id
+ bw3mr6569151ejb.8.1594758967519; 
+ Tue, 14 Jul 2020 13:36:07 -0700 (PDT)
+Received: from Tank.localdomain (82-73-161-131.cable.dynamic.v4.ziggo.nl.
+ [82.73.161.131])
+ by smtp.gmail.com with ESMTPSA id a2sm15270169edt.48.2020.07.14.13.36.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 14 Jul 2020 13:36:06 -0700 (PDT)
+From: erik-smit <erik.lucas.smit@gmail.com>
+To: 
+Subject: [PATCH] hw/arm/aspeed: Add board model for Supermicro X11 BMC
+Date: Tue, 14 Jul 2020 22:36:04 +0200
+Message-Id: <20200714203604.5676-1-erik.lucas.smit@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <87v9iq2hkv.fsf@dusky.pond.sub.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=erik.lucas.smit@gmail.com; helo=mail-ej1-x641.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -127,100 +114,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Qemu-block <qemu-block@nongnu.org>, Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ erik-smit <erik.lucas.smit@gmail.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EuPgaPGz+klL
+X-TUID: XakRgbi5OXqV
 
-On 7/14/20 6:21 PM, Markus Armbruster wrote:
-> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
-> 
->> + qemu-block experts.
->>
->> On 7/14/20 11:16 AM, Markus Armbruster wrote:
->>> Havard Skinnemoen <hskinnemoen@google.com> writes:
->>>
->>>> On Mon, Jul 13, 2020 at 7:57 AM Cédric Le Goater <clg@kaod.org> wrote:
->>>>>
->>>>> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
->>>>>> This allows these NPCM7xx-based boards to boot from a flash image, e.g.
->>>>>> one built with OpenBMC. For example like this:
->>>>>>
->>>>>> IMAGE=${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc
->>>>>> qemu-system-arm -machine quanta-gsj -nographic \
->>>>>>       -bios ~/qemu/bootrom/npcm7xx_bootrom.bin \
->>>>>>       -drive file=${IMAGE},if=mtd,bus=0,unit=0,format=raw,snapshot=on
->>>>>>
->>>>>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
->>>>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->>>>>
->>>>> May be we don't need to create the flash object if dinfo is NULL.
->>>>
->>>> It's soldered on the board, so you can't really boot the board without
->>>> it. But if you think it's better to remove it altogether if we don't
->>>> have an image to load into it, I can do that.
->>>
->>> If a device is a fixed part of the physical board, it should be a fixed
->>> part of the virtual board, too.
->>
->> We agree so far but ... how to do it?
->>
->> I never used this API, does that makes sense?
->>
->>     if (!dinfo) {
->>         QemuOpts *opts;
->>
->>         opts = qemu_opts_create(NULL, "spi-flash", 1, &error_abort);
->>         qdict_put_str(opts, "format", "null-co");
->>         qdict_put_int(opts, BLOCK_OPT_SIZE, 64 * MiB);
->>         qdict_put_bool(opts, NULL_OPT_ZEROES, false); // XXX
->>
->>         dinfo = drive_new(opts, IF_MTD, &error_abort);
->>         qemu_opts_del(opts);
->>     }
-> 
-> I believe existing code special-cases "no backend" instead of making one
-> up.
-> 
-> Example: pflash_cfi0?.c
-> 
-> If ->blk is non-null, we read its contents into the memory buffer and
-> write updates back, else we leave it blank and don't write updates back.
-> 
-> Making one up could be more elegant.  To find out, you have to try.
+Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
+-- 
+checkpatch was complaining about the length of
+aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc, void *data)
 
-I'd rather avoid ad-hoc code in each device. I2C EEPROM do that too,
-it is a source of head aches.
+so I renamed it to aspeed_machine_smx11_bmc_class_init. Not sure if
+that's the right way to go, since then it's out of sync with the machine
+name "supermicrox11-bmc". But renaming the machine name to "smx11-bmc"
+makes it less descriptive...
 
-From the emulation PoV I'd prefer to always use a block backend,
-regardless the user provide a drive.
+---
+ hw/arm/aspeed.c | 34 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 34 insertions(+)
 
-> 
-> We make up a few default drives (i.e. drives the user doesn't specify):
-> floppy, CD-ROM and SD card.  Ancient part of the user interface, uses
-> DriveInfo.  I doubt we should create more of them.
-> 
-> I believe block backends we make up for internal use should stay away
-> from DriveInfo.  Kevin, what do you think?  How would you make up a
-> null-co block backend for a device's internal use?
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index 379f9672a5..e74a89f427 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -57,6 +57,20 @@ struct AspeedMachineState {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+         SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+ 
++/* TODO: Find the actual hardware value */
++#define SUPERMICROX11_BMC_HW_STRAP1 (                                   \
++        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
++        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2) |                           \
++        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
++        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
++        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
++        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                \
++        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
++        SCU_HW_STRAP_SPI_WIDTH |                                        \
++        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
++        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
++
+ /* AST2500 evb hardware value: 0xF100C2E6 */
+ #define AST2500_EVB_HW_STRAP1 ((                                        \
+         AST2500_HW_STRAP1_DEFAULTS |                                    \
+@@ -600,6 +614,22 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
++static void aspeed_machine_smx11_bmc_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Supermicro X11 BMC (ARM926EJ-S)";
++    amc->soc_name  = "ast2400-a1";
++    amc->hw_strap1 = SUPERMICROX11_BMC_HW_STRAP1;
++    amc->fmc_model = "mx25l25635e";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 1;
++    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
++    amc->i2c_init  = palmetto_bmc_i2c_init;
++    mc->default_ram_size = 256 * MiB;
++}
++
+ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -728,6 +758,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_palmetto_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_smx11_bmc_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("ast2500-evb"),
+         .parent        = TYPE_ASPEED_MACHINE,
+-- 
+2.25.1
 
-I read 'DriveInfo' is the legacy interface, but all the code base use it
-so it is confusing, I don't understand what is the correct interface to
-use.
-
-> 
->> We should probably add a public helper for that.
-> 
-> If we decide we want to make up backends, then yes, we should do that in
-> a helper, not in each device.
-> 
->> 'XXX' because NOR flashes erase content is when hardware bit
->> is set, so it would be more useful to return -1/0xff... rather
->> than zeroes.
-> 
-> 

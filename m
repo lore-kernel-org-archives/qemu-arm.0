@@ -1,94 +1,94 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp600550lfm;
-        Wed, 15 Jul 2020 07:50:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxnmeOCQ4rZ4NA0kP/8N9zrs1ski24TOtZlzBOyrrgdsRekPJ8uim3NXeHmz/UpbsIriCu5
-X-Received: by 2002:a25:804b:: with SMTP id a11mr10938119ybn.363.1594824616879;
-        Wed, 15 Jul 2020 07:50:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594824616; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp600746lfm;
+        Wed, 15 Jul 2020 07:50:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywA/CZ73SN3W+fYC6iuCXJ/PypXq+KrSXuWSQoYq4+96b4BSfTJCoIwxLVEkPyYa8+Kdp4
+X-Received: by 2002:a25:3f82:: with SMTP id m124mr16955792yba.48.1594824630788;
+        Wed, 15 Jul 2020 07:50:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594824630; cv=none;
         d=google.com; s=arc-20160816;
-        b=IncKWN1gnbTeK9iZZcm7m/DCvOWUm/HcYXydnpjSEQDGYo+EQPdz/08luk90Gdk9ZN
-         RY2ZSbiBi5nYs3V0/6gxALpj06yUym3UlCWsnNuggRDAxv/eOBa8YTyq9Et6RQKxhIst
-         DqS+Wpusb0KZh+O+h0BtBTyUMui0DTxuLoD5fFGFm6iSqQ1+Y/boIY1Ml//kbyy4CPnt
-         WO8aJ+xGOjQGr9oFn2xNIsGoaPsMoBpPICadtile7VW7BQywIXi3zMGG8/12dUlfGogW
-         xu7iP8d1I6Aakn10c/Vvx42J21Y1TeFRJ4nyQPgX12eZN9lEP8r9fTLW/AGLWRbGA7A0
-         QRKw==
+        b=es2Etfm2XX528Cjd1ozo5ZGIxAc7m9eWjJ/6K++PAV2s2fCbGlL6KN9fcK4/uB5v0g
+         tD5AM1mo+D1mCzeg9QtUn43TlicXNdaAK+Sad9Ntng8NRZSwgneYpeEVotpwuQQzJvBX
+         q/PQQtSdzWaLdsfYuiUo/mc7NSrUXyAEN2qVCe3678fU1iztVwzSw8ONdGFfzf5iR6pV
+         0DSzmzFGpGz51u2HT2fLfGpfYWHSmNRaGEynhOheJHIHsS2GtvsmhncIXFkKA7Hhl7qh
+         aDpD47wkRw5V2WFHsWid6KMvSqtiCkR/q6rx/WYCyjPgNSgpD5c2O9hoatHX8OLjAAji
+         Tj2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=GwF5kLecPGbFx7XOkpIQGvxC60yxwFLvNgeE86muLgE=;
-        b=0I/LGXYa+HNUYpGRDKaaCVPhm1+g+3hAahJoSKj+YIrqQOlhmE4jcyldKtbQhJPsni
-         PvkK9wTcl2ncN/+7hpk+wJLG8jyFB9TiYZAgnUsitke86HVL1oRgNPmKkIQkjIL5drV3
-         hsVN3ZnUpeagYm/2AKBUr6LzqbvGxPEeHnVM2sVTATEZ6FUeGYLEgRFGz33RpUiQR5Ed
-         qIfGAduDVEqg2kZZN+Ninu+R8zqgOEtsgXu+2M4eUy1E8Y8snjVGE/fiRGjkDQ2LJi4V
-         kFPFfbAOyhtzZbutjhmKucyO/fyhD9jYglGt+MkdDaqIRU7J43/jfOr1aK7WzCkAUo6A
-         EAtw==
+        bh=ZjNwVPAoqSbfouoFM+Try6jwW4/cFWew31JYb8/WKR0=;
+        b=f/CnYm/wAqKTLP2pK2mFVNjCXEcmeM9qn30/mMiB6l5S66OPDA7zuTxGrjdeSE/p82
+         G2zpBb0hNgTcK63WEIfwGvDFdcrY/UhpxLVgTUYvbv6cKQb5K+vIbayHfsXnyb4pokH3
+         xnnzz0RJLGEGrA4xULBqX8TTiBPcLrvWdJq3lzgtbTijM1EfKEkIW6s11RqClFT+b2/0
+         T42R/JafSularP6Cnc1g7cSo9cmJQlj0YOXGVJAug0pIeWO0/VDq8rFa1bMde8pnMBxF
+         H09vRfDhXMI3+G6g/3KXuELrb7rSkVVBpMbJgGX1YB6VHtJfV/hhR0INnJhVwGVhMsKH
+         0GLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TlHACp3x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FDR6bboN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w127si2920447ybe.10.2020.07.15.07.50.16
+        by mx.google.com with ESMTPS id l130si3023115ybc.0.2020.07.15.07.50.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jul 2020 07:50:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 15 Jul 2020 07:50:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TlHACp3x;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FDR6bboN;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55052 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55314 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvijg-0000Qj-8a
-	for alex.bennee@linaro.org; Wed, 15 Jul 2020 10:50:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58726)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jviju-0000Xr-5l
+	for alex.bennee@linaro.org; Wed, 15 Jul 2020 10:50:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58384)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jvijR-0000P3-M8; Wed, 15 Jul 2020 10:50:01 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:40204)
+ id 1jviiZ-0008OW-R8; Wed, 15 Jul 2020 10:49:07 -0400
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:41691)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1jvijP-0000yL-HA; Wed, 15 Jul 2020 10:50:01 -0400
-Received: by mail-io1-xd44.google.com with SMTP id l17so2492288iok.7;
- Wed, 15 Jul 2020 07:49:58 -0700 (PDT)
+ id 1jviiX-0000k0-B1; Wed, 15 Jul 2020 10:49:07 -0400
+Received: by mail-il1-x143.google.com with SMTP id q3so2184711ilt.8;
+ Wed, 15 Jul 2020 07:49:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GwF5kLecPGbFx7XOkpIQGvxC60yxwFLvNgeE86muLgE=;
- b=TlHACp3x5i9hsSwEYd5uZlRy2gy8E+87mlYM+q+5Guzr5HR72CAwU7y60b5WKBmbzH
- 1GeqG8K6sdZloe8KoS5ENliBn2iTZhUN9TLe1bdtMPd0DFieiZ8Jj4uJk5eV+ssnIPa7
- Ef4QYgbGsV94DOHiEC5psLnS7j1GkA12OjgZDIr8YIPVkKdgPrlU1Hyldrhtropnw9rV
- dJKhOUmC2tM8Oln+tAGBPzSLkWBFMNBngUGlybZJ3SV2778oU47QJfuwvbSvC5Wwo50e
- m6avdTxv+134xNHSz1uCufpd+PQMQzCmXPZBDLhP/GBbvlvpkHuSjxE1rISIpjcmdKbv
- qTNQ==
+ :cc; bh=ZjNwVPAoqSbfouoFM+Try6jwW4/cFWew31JYb8/WKR0=;
+ b=FDR6bboN68+tXVd+1BpZ9GSq9BJN8w3M4ufLbiv7nRIklRh+G9xX+WURccuGe7swY6
+ C/SuGdjLzAtYQz8j2qj+N1R/IYtz0pEjWU8BeJFa3l3E3IAkqMM63Rhu9hnSwmHxHHLP
+ 42fzT6cFZpBTUUyeIpXRa8fLB9wt+LM9dA6pdqnAjLL66iYFmRce8MufftEy/E0Q3DX9
+ mgLUSzJ5hIRZzCuzg4AiwrTre7u3mypuKauZWheOvxwDxFQ6q0g0ok/v4b6Ord8pe9lL
+ S6SwQF94pd9auGyn7zZFJkTVgkgwTaXAaUbMRxrTddVgKMs2R15fZGA+ynCaD/dy/ipL
+ JT0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=GwF5kLecPGbFx7XOkpIQGvxC60yxwFLvNgeE86muLgE=;
- b=WswVbJc8gs7V5o1duh8zfJFCBJ1mScbxd2zPO0FvKlktq1SIVTo15sUb16UxpMpUCI
- UEyCtL1flgIW/GdxjF02V7yYHZ/rr1LM/p6mGgf1ibsQY7PNliMgMgYXm6tUf9DBXN5o
- ojvheSmq/qVBPwuTcr39UA3r2STDseAnjjBbrn2hlLMq87lL/qgLEFjRtZAmuIzE6NgD
- uKEVNFggXZr9XocyZ8PeCWmOgxLF3MiP/gcgAKesFo+yzoaPCPIdsBC0fVdymhOYTn6C
- zp9jBDBOSWUvazbz/R/DScqXbYUhz17SuMzaNekPxci67V+KvUmmKgFDVM2Cxbesblxd
- ivKg==
-X-Gm-Message-State: AOAM532sKt5U0m2KKB8TPIh+b019oxPmZmsmtmO5//UpgtKYP0xE5zm9
- 86SdBbMmLgV0m6m8Sp/CyWbfbzmxICIn2I7Fc3E=
-X-Received: by 2002:a5d:9306:: with SMTP id l6mr10611822ion.105.1594824597354; 
- Wed, 15 Jul 2020 07:49:57 -0700 (PDT)
+ bh=ZjNwVPAoqSbfouoFM+Try6jwW4/cFWew31JYb8/WKR0=;
+ b=O3OxwBOIx816lm0IWdPtuEA+CpRkrBcCBO7a5dl3UVhrOoxtaIWlyBjYdEsWKFpYON
+ IcimWaWT3DDZfM6Nprsgx6tMxnH0hx5gGfvB8FR824G/zaAAZcif8/AIMuNc4RF6mWe6
+ +70Hv+8LckoEDFbWaqSoKvnCNVY/d3bRDh+dL+b+3xqMfhBIw6h/3kxczztE3Xs6BkB+
+ fjXaFlINFm8zMcX19Nd4wUlAXDmDhZRyfL8it3yx68U6WqG9UJX31WWvtXDK1dypW5qL
+ LIIR9Dp3XBwhkDmwmWm4rvkLgCPoAh9bDU9coYsEwnF45PkK8uDaFq/tjTdOaVVoi4Sm
+ cl6g==
+X-Gm-Message-State: AOAM531DWRyRlsdB9T9B5LAgfLL5GswA/izBTeZ4tAMpjEIEGRWZOS8x
+ 0Mj+Hc03LLxeec1w6ESWpvjVfMM2uBdlOL77x0k=
+X-Received: by 2002:a92:c213:: with SMTP id j19mr10474891ilo.40.1594824542820; 
+ Wed, 15 Jul 2020 07:49:02 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200715140440.3540942-1-armbru@redhat.com>
- <20200715140440.3540942-3-armbru@redhat.com>
-In-Reply-To: <20200715140440.3540942-3-armbru@redhat.com>
+ <20200715140440.3540942-2-armbru@redhat.com>
+In-Reply-To: <20200715140440.3540942-2-armbru@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 15 Jul 2020 07:39:56 -0700
-Message-ID: <CAKmqyKPuNqq+CrxQ7uqJNKNW54MLbjV-nXHh-yj=LsTObBjBBw@mail.gmail.com>
-Subject: Re: [PATCH for-5.1 2/2] hw: Mark nd_table[] misuse in realize methods
- FIXME
+Date: Wed, 15 Jul 2020 07:39:01 -0700
+Message-ID: <CAKmqyKO5KoK9rJ6JkcnJaHeXTVK1e8iMMS0UzBfygkUw30kudQ@mail.gmail.com>
+Subject: Re: [PATCH for-5.1 1/2] msf2: Unbreak device-list-properties for
+ "msf-soc"
 To: Markus Armbruster <armbru@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -17
@@ -100,17 +100,17 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  "open list:RISC-V" <qemu-riscv@nongnu.org>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>,
@@ -121,19 +121,35 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Subbaraya Sundeep <sundeep.lkml@gmail.com>,
  Beniamino Galvani <b.galvani@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Palmer Dabbelt <palmer@dabbelt.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9pezGI9Fqlyy
+ Palmer Dabbelt <palmer@dabbelt.com>, Edgar Iglesias <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BpCJdqSc0+hn
 
-On Wed, Jul 15, 2020 at 7:06 AM Markus Armbruster <armbru@redhat.com> wrote:
+On Wed, Jul 15, 2020 at 7:08 AM Markus Armbruster <armbru@redhat.com> wrote:
 >
-> nd_table[] contains NIC configuration for boards to pick up.  Device
-> code has no business looking there.  Several devices do it anyway.
-> Two of them already have a suitable FIXME comment: "allwinner-a10" and
-> "msf2-soc".  Copy it to the others: "allwinner-h3", "xlnx-versal",
-> "xlnx,zynqmp", "sparc32-ledma", "riscv.sifive.u.soc".
+> Watch this:
 >
+>     $ qemu-system-aarch64 -M ast2600-evb -S -display none -qmp stdio
+>     {"QMP": {"version": {"qemu": {"micro": 50, "minor": 0, "major": 5}, "package": "v5.0.0-2464-g3a9163af4e"}, "capabilities": ["oob"]}}
+>     {"execute": "qmp_capabilities"}
+>     {"return": {}}
+>     {"execute": "device-list-properties", "arguments": {"typename": "msf2-soc"}}
+>     Unsupported NIC model: ftgmac100
+>     armbru@dusky:~/work/images$ echo $?
+>     1
+>
+> This is what breaks "make check SPEED=slow".
+>
+> Root cause is m2sxxx_soc_initfn()'s messing with nd_table[] via
+> qemu_check_nic_model().  That's wrong.
+>
+> We fixed the exact same bug for device "allwinner-a10" in commit
+> 8aabc5437b "hw/arm/allwinner-a10: Do not use nd_table in instance_init
+> function".  Fix this instance the same way: move the offending code to
+> m2sxxx_soc_realize(), where it's less wrong, and add a FIXME comment.
+>
+> Fixes: 05b7374a58cd18aa3516e33513808896d0ac9b7b
 > Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
@@ -141,73 +157,36 @@ Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 Alistair
 
 > ---
->  hw/arm/allwinner-h3.c | 1 +
->  hw/arm/xlnx-versal.c  | 1 +
->  hw/arm/xlnx-zynqmp.c  | 1 +
->  hw/dma/sparc32_dma.c  | 1 +
->  hw/riscv/sifive_u.c   | 1 +
->  5 files changed, 5 insertions(+)
+>  hw/arm/msf2-soc.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
 >
-> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> index 8e09468e86..ff92ded82c 100644
-> --- a/hw/arm/allwinner-h3.c
-> +++ b/hw/arm/allwinner-h3.c
-> @@ -358,6 +358,7 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
->                                "sd-bus");
->
->      /* EMAC */
-> +    /* FIXME use qdev NIC properties instead of nd_table[] */
->      if (nd_table[0].used) {
->          qemu_check_nic_model(&nd_table[0], TYPE_AW_SUN8I_EMAC);
->          qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index ead038b971..e3aa4bd1e5 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -160,6 +160,7 @@ static void versal_create_gems(Versal *s, qemu_irq *pic)
->          object_initialize_child(OBJECT(s), name, &s->lpd.iou.gem[i],
->                                  TYPE_CADENCE_GEM);
->          dev = DEVICE(&s->lpd.iou.gem[i]);
-> +        /* FIXME use qdev NIC properties instead of nd_table[] */
->          if (nd->used) {
->              qemu_check_nic_model(nd, "cadence_gem");
->              qdev_set_nic_properties(dev, nd);
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index 772cfa3771..5855e5d5bf 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -455,6 +455,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->      for (i = 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
->          NICInfo *nd = &nd_table[i];
->
-> +        /* FIXME use qdev NIC properties instead of nd_table[] */
->          if (nd->used) {
->              qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
->              qdev_set_nic_properties(DEVICE(&s->gem[i]), nd);
-> diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
-> index 9459178866..bcd1626fbd 100644
-> --- a/hw/dma/sparc32_dma.c
-> +++ b/hw/dma/sparc32_dma.c
-> @@ -341,6 +341,7 @@ static void sparc32_ledma_device_realize(DeviceState *dev, Error **errp)
->      DeviceState *d;
->      NICInfo *nd = &nd_table[0];
->
-> +    /* FIXME use qdev NIC properties instead of nd_table[] */
->      qemu_check_nic_model(nd, TYPE_LANCE);
->
->      d = qdev_new(TYPE_LANCE);
-> diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-> index 19a976c9a6..e5682c38a9 100644
-> --- a/hw/riscv/sifive_u.c
-> +++ b/hw/riscv/sifive_u.c
-> @@ -714,6 +714,7 @@ static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
+> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+> index 16bb7c9916..33ea7df342 100644
+> --- a/hw/arm/msf2-soc.c
+> +++ b/hw/arm/msf2-soc.c
+> @@ -82,10 +82,6 @@ static void m2sxxx_soc_initfn(Object *obj)
 >      }
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->otp), 0, memmap[SIFIVE_U_OTP].base);
+>
+>      object_initialize_child(obj, "emac", &s->emac, TYPE_MSS_EMAC);
+> -    if (nd_table[0].used) {
+> -        qemu_check_nic_model(&nd_table[0], TYPE_MSS_EMAC);
+> -        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
+> -    }
+>  }
+>
+>  static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+> @@ -187,6 +183,11 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+>          g_free(bus_name);
+>      }
 >
 > +    /* FIXME use qdev NIC properties instead of nd_table[] */
->      if (nd->used) {
->          qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
->          qdev_set_nic_properties(DEVICE(&s->gem), nd);
+> +    if (nd_table[0].used) {
+> +        qemu_check_nic_model(&nd_table[0], TYPE_MSS_EMAC);
+> +        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
+> +    }
+>      dev = DEVICE(&s->emac);
+>      object_property_set_link(OBJECT(&s->emac), "ahb-bus",
+>                               OBJECT(get_system_memory()), &error_abort);
 > --
 > 2.26.2
 >

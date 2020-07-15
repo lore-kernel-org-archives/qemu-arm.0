@@ -1,103 +1,116 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp562311lfm;
-        Wed, 15 Jul 2020 07:07:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzf3DDhLcLRtLIXmAdChmyvpyaWwb0PKjlSh+SB199QWL+xlg16glkWnV0HggmZP6ayLZBf
-X-Received: by 2002:a25:1381:: with SMTP id 123mr17175725ybt.84.1594822020843;
-        Wed, 15 Jul 2020 07:07:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594822020; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp570473lfm;
+        Wed, 15 Jul 2020 07:16:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyryDTia4b37XJcSpoMFS3Xp451HiUuuJJcsM7fYCfhN/W83tYKkeIiIa53wQdGFgGtLB8z
+X-Received: by 2002:a25:ba8c:: with SMTP id s12mr15727274ybg.278.1594822569068;
+        Wed, 15 Jul 2020 07:16:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594822569; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pl7x5V5V4mjGR8ZJXOoitbrXKLht/hPs79J81Y+z8CiDRZelz0tuXOrLGIPPUab3ip
-         c6f52G978VyWYO+kJ/eMMcmGj7bAfBxoR25GRH7rhwYltTbURKmd6FheZX3AHw8KfgF0
-         LPXyq4Dp4VC7QzahN3eavvJK8wie+8J1xjK+X4osbMPrmJhXwxAoNOdN1QWP7pnr1PEP
-         oD321NBQ3uzCSN2IHsKNQpJY2cC19cM+4n9XIq3VP0jQrsyQanIsC37KFle3jcUjhxtf
-         9Pzjf1/Rj8pUhfzkkApG3LTVj1vZETUhaAzmeCFkwXswNsZJNf8FxBL57b6bUVnw476q
-         oSAQ==
+        b=kv7MoBqyfQVMQ07r8Qo9DGgSmUgZWh+BDvVS8LdEUbyBRPib7jYbNYPmkqE59QAN73
+         bJc9sWQ0iAO/UjiJwPwHZjX4xmJflKimSO3Xn24ViYQLINjXFZgeyiemGryc9fA/dwXV
+         7WcSc6Wx2CqoHeuCElFz/UsSqMCAiOxuldesCtjJNMnc6gyFRTiA3RJJul/V0u+oczEO
+         c8whQRBB72uhilfVAwo01vnyskVJympNcpbia6+qroxMPSwdQm+TtZrlBrdVGGw0YnlV
+         qo6QamRRivOZw3GWX04dDTONznPw8U83+eMclS7fYW3sXRm285ALqwPlZ8UCnyNOlfOX
+         0Uhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=WKVwDo8gc++pP1vRtC4pwYv8NmmthcI9PuigKAgGKc0=;
-        b=Jd7cDqax5hZonAtaXqhq4+dojBRZypQrR7SEcK+PiZGL+bAn+yqWzgs2EZM+/HRftf
-         7eZAs6AlqZodYPUWXl01r062xUJATMqMzPbYYo6hr4d70wsqUwx7iDQ+eLNlYTDHf+vj
-         IPLWb3iOJ/InSnaYiJd1Qkc0j42ktm+U+9jfDm7YZS8hJirDGuKjzoyQwg1FPfPzVuIN
-         4QREWb5wgUDh+Eb89R0Tw7XE/lIBBKn3G7pJk6/OAh6+Tl8kt0SOuIGfeypcvzUUrnnJ
-         f5XuhcPOEhyuSbaZjA/PSPuTzAtGf4u5PNhBzgmBvhiyjlkbsSA8726iSNDYIfwpBY6w
-         7OkA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=TVq26ecTjZoLMmf2gjuQW6BTFjhqJFm1ME41B+oJzGQ=;
+        b=U/s7cOu+jVMOubNi0WHByrvV5NWx4Zziye0yIdcZJy4EmcJtF5Prahy8dCUXtLENWk
+         vQXA9sVtAAwJQY8fg+oKZWMXE79osEaNeP3N2EYbXFr6xJszN96frLxUwS0IgUPTA9CK
+         KDbtmP4/bvPX9ujDTEHPWe5Ua8dAJzZFMzrXmPffloltj8nYaIojBaPkVddqTk6LPc7l
+         hpoET6F5hVBH6sSbmCnJ/koQoAlYEotZ4rVfiVh+4qoKsuhy0RUrMd+nbY7fXjdTY0n8
+         RlyJl/3v38foAnB/bv1A2tyEQ0UwJqLxXkqirqaXLEA51R0qFCggV1AXcJf/QE63BcHR
+         A4Pw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ky3ZXx6X;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=knGB6i4B;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d11si2671916ybl.209.2020.07.15.07.07.00
+        by mx.google.com with ESMTPS id m184si3294261ybf.196.2020.07.15.07.16.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jul 2020 07:07:00 -0700 (PDT)
+        Wed, 15 Jul 2020 07:16:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ky3ZXx6X;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=knGB6i4B;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34460 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:50780 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvi3o-00024g-7B
-	for alex.bennee@linaro.org; Wed, 15 Jul 2020 10:07:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43956)
+	id 1jviCe-0001Hu-Ba
+	for alex.bennee@linaro.org; Wed, 15 Jul 2020 10:16:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47524)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvi1l-0007TK-I8
- for qemu-arm@nongnu.org; Wed, 15 Jul 2020 10:04:53 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:27912
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvi1h-0007JN-O6
- for qemu-arm@nongnu.org; Wed, 15 Jul 2020 10:04:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594821889;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=WKVwDo8gc++pP1vRtC4pwYv8NmmthcI9PuigKAgGKc0=;
- b=Ky3ZXx6X0p7nbJsREddSkWbCnZPwMeAmtOI8Rxazx7QmTm3UlGcRscIouTYCjmBZC7NECG
- k6siAz7J+6R30vM97GjKLFaXKlCNi2wWAVkPxtpsM+XY1bnyvgvRE3zdwaOg/C1VC+37Xb
- QVKIFm31EuU1UKUep3lXYGWNDnX0bS8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-400-vjk8lqGSPX2dD9doOgOCxg-1; Wed, 15 Jul 2020 10:04:45 -0400
-X-MC-Unique: vjk8lqGSPX2dD9doOgOCxg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DA19718C63C5;
- Wed, 15 Jul 2020 14:04:42 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
- [10.36.112.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D3905D9C5;
- Wed, 15 Jul 2020 14:04:42 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id A2F4E11386A6; Wed, 15 Jul 2020 16:04:40 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH for-5.1 0/2] Unbreak make check SPEED=slow
-Date: Wed, 15 Jul 2020 16:04:38 +0200
-Message-Id: <20200715140440.3540942-1-armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jviCW-0001HY-De; Wed, 15 Jul 2020 10:16:00 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:36733)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jviCU-000166-JC; Wed, 15 Jul 2020 10:16:00 -0400
+Received: by mail-wr1-x444.google.com with SMTP id k6so2912509wrn.3;
+ Wed, 15 Jul 2020 07:15:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=TVq26ecTjZoLMmf2gjuQW6BTFjhqJFm1ME41B+oJzGQ=;
+ b=knGB6i4BvXNbgXpQTBXEFigw8mpvy7G8GFiNJBKOyJWqv2S71dro0WWNiqS/6roin/
+ VIbMI4hVpTGCZExFWpsuZ+QT2R1I1Mh32v8ilJUwacYGaPaFyy1x53Otj+H8AhTmx6wr
+ /1wcjrsyTP/vEqWgBZKawaQHCSdS6HjtuHouFMuOROnibaP0/MNIBOqjsJhSTjX+b8pp
+ j1CY25trcHzNmN5sYf6rSfJMRX1ZbLutdsKDkQniudPD2JnO5tyRjkSt+CfsFg+UAPBK
+ yec61E2HdksPNQmt0wHnWraTQI1DtsajnOja+VDlOjN0DlPhaw1g+mASAR5GExMP5OxO
+ 6cVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=TVq26ecTjZoLMmf2gjuQW6BTFjhqJFm1ME41B+oJzGQ=;
+ b=M0G6StmH0krplhQGStwR+3OG2y7ynTcGX5uyCKSu29xOSjISgD5jtgRezMgl5dKuEd
+ A8bhDwsjnl0zLttMb7dPeofw8nMGdleGToGO22j4XU/HsdF6s1X9arxaxot9Mi40XszG
+ IAuV8ftfrWnloNSuFUTlrOBQ8RBxbMxK9aIN4WoXt5ZpMSaT4yLMSjxJqrmBeP/EfwLJ
+ TQJvS/gVQm2rwwiJVV/CIDqF82WlLHl0DoQRdb6clpsK9TPeYsYEkOUpuytPRleszhQM
+ FAdvnnm3m7DX9JX4FncwTKko86dGyEM+nQ98CiC6KKl7H+5OnFEUegPPXdW+8Sjmi6Os
+ hQNQ==
+X-Gm-Message-State: AOAM532Ok59ztU7rMzKz4Bg3r8MaJfJPQxBBSYyEd1kPa5AMLsOdp5uO
+ unRkG5/dGxhiriU4VLe1aLU=
+X-Received: by 2002:adf:f04c:: with SMTP id t12mr11218191wro.382.1594822555812; 
+ Wed, 15 Jul 2020 07:15:55 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id c194sm3565091wme.8.2020.07.15.07.15.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 15 Jul 2020 07:15:53 -0700 (PDT)
+Subject: Re: [PATCH for-5.1 1/2] msf2: Unbreak device-list-properties for
+ "msf-soc"
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+References: <20200715140440.3540942-1-armbru@redhat.com>
+ <20200715140440.3540942-2-armbru@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <ef1d7fe4-0558-cc7b-16d7-906c4aa9915b@amsat.org>
+Date: Wed, 15 Jul 2020 16:15:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/15 02:37:03
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20200715140440.3540942-2-armbru@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,24 +130,66 @@ Cc: peter.maydell@linaro.org, thuth@redhat.com, qemu-riscv@nongnu.org,
  palmer@dabbelt.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iJKlwtAmm8+y
+X-TUID: K3yxsYUZDObc
 
-On the one hand, getting bitten by this bug in production seems
-somewhat unlikely.  On the other hand, shipping with broken "make
-check" would be embarrassing.  So let's consider the fix for 5.1.
+On 7/15/20 4:04 PM, Markus Armbruster wrote:
+> Watch this:
+> 
+>     $ qemu-system-aarch64 -M ast2600-evb -S -display none -qmp stdio
+>     {"QMP": {"version": {"qemu": {"micro": 50, "minor": 0, "major": 5}, "package": "v5.0.0-2464-g3a9163af4e"}, "capabilities": ["oob"]}}
+>     {"execute": "qmp_capabilities"}
+>     {"return": {}}
+>     {"execute": "device-list-properties", "arguments": {"typename": "msf2-soc"}}
+>     Unsupported NIC model: ftgmac100
+>     armbru@dusky:~/work/images$ echo $?
+>     1
+> 
+> This is what breaks "make check SPEED=slow".
+> 
+> Root cause is m2sxxx_soc_initfn()'s messing with nd_table[] via
+> qemu_check_nic_model().  That's wrong.
+> 
+> We fixed the exact same bug for device "allwinner-a10" in commit
+> 8aabc5437b "hw/arm/allwinner-a10: Do not use nd_table in instance_init
+> function".  Fix this instance the same way: move the offending code to
+> m2sxxx_soc_realize(), where it's less wrong, and add a FIXME comment.
 
-Markus Armbruster (2):
-  msf2: Unbreak device-list-properties for "msf-soc"
-  hw: Mark nd_table[] misuse in realize methods FIXME
+That addresses this other thread, right?
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg720658.html
 
- hw/arm/allwinner-h3.c | 1 +
- hw/arm/msf2-soc.c     | 9 +++++----
- hw/arm/xlnx-versal.c  | 1 +
- hw/arm/xlnx-zynqmp.c  | 1 +
- hw/dma/sparc32_dma.c  | 1 +
- hw/riscv/sifive_u.c   | 1 +
- 6 files changed, 10 insertions(+), 4 deletions(-)
-
--- 
-2.26.2
+> 
+> Fixes: 05b7374a58cd18aa3516e33513808896d0ac9b7b
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  hw/arm/msf2-soc.c | 9 +++++----
+>  1 file changed, 5 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+> index 16bb7c9916..33ea7df342 100644
+> --- a/hw/arm/msf2-soc.c
+> +++ b/hw/arm/msf2-soc.c
+> @@ -82,10 +82,6 @@ static void m2sxxx_soc_initfn(Object *obj)
+>      }
+>  
+>      object_initialize_child(obj, "emac", &s->emac, TYPE_MSS_EMAC);
+> -    if (nd_table[0].used) {
+> -        qemu_check_nic_model(&nd_table[0], TYPE_MSS_EMAC);
+> -        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
+> -    }
+>  }
+>  
+>  static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+> @@ -187,6 +183,11 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+>          g_free(bus_name);
+>      }
+>  
+> +    /* FIXME use qdev NIC properties instead of nd_table[] */
+> +    if (nd_table[0].used) {
+> +        qemu_check_nic_model(&nd_table[0], TYPE_MSS_EMAC);
+> +        qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
+> +    }
+>      dev = DEVICE(&s->emac);
+>      object_property_set_link(OBJECT(&s->emac), "ahb-bus",
+>                               OBJECT(get_system_memory()), &error_abort);
+> 
 

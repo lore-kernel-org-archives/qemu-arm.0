@@ -1,123 +1,118 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp4063852lfm;
-        Tue, 14 Jul 2020 02:32:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFLAmzCYqNVxHOQiT0nGGwycOfuHxbo+i137BfmfcwnOd5vcFfzfbDbEWk0ru/Aldypffg
-X-Received: by 2002:a25:8801:: with SMTP id c1mr6491645ybl.174.1594719122035;
-        Tue, 14 Jul 2020 02:32:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594719122; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp325287lfm;
+        Wed, 15 Jul 2020 02:00:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxwCa84xzoZeTxTd+9mWJ/Zu4+EzSf+6+3UY4H35k/CtHWkGAuWJ4m1ktwW/qSreVmEY1tW
+X-Received: by 2002:a25:bc0f:: with SMTP id i15mr14525319ybh.190.1594803632518;
+        Wed, 15 Jul 2020 02:00:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594803632; cv=none;
         d=google.com; s=arc-20160816;
-        b=zo5ADa/A9ZVn1uJ2FTYkQe+m5KQ5kd+82oYPAPeR3bSUnuTH9MHRLfwVfMN1DEBnT2
-         L/X3UqbJ2UddzYZ/jMtYwAzf8i863zLW9DumoPRTTUviP1xanhGM/KSwJXgiJHK05oTW
-         2+DFaBx3jbypkY2w5UfhNqHG7P9ebqNTuIGxX2E24ztFRbgoh6QsYJy8T01jmulmkXVb
-         4xRXQea54OQn3MvU6iqCOXJO/9PRbqbTZBZ4IuF/9vsNgLamfQGgIhJT2l7X+86c7kNG
-         A+nf76cgSdrJbRQWfVYDHfLSngbdbnHRxFLLAHLUq5Ib1Hac87y1d35RWSWHE7WYQkxC
-         NO9g==
+        b=mxhEuanGf5oS1MHebOhv6oJN2HL69EPRKFoyaPESzXQ22hf2R7vW5kdHkX4a2QfOO6
+         YrIIAvyr1Tnl3o40yIG64MO/50ZVEHRqEk4RMLOt0Iip8ehm7hW+281DKm+AnZcHsUJc
+         UPJ0Wdx0lLp2U8yhESryUys8PjZeth8calKm6tJJBVwg9TZNmO+s7nYghQgtxlJ6Qmih
+         U4FkmAlLTZaI61ubxHtcnA0k0wzyN6onvsQKjpwMdT7OTFGY24AC2F5B2iYUtV29hIwm
+         2MDwOTPs0zVQI4R7TmrNrX8Ogqq5bMhzS+TGF+XiskLcce74Obvf5SXKcvSge2huYLXt
+         Qsrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=z8JvkBd0R8tKW1PwI1aEAkvIaqXUeLX6SqSLALIC3M8=;
-        b=Nu0SDqXf1KfOTT8jkMn9Jb0+UMpOguRP3IMke9bBx/or0muptpWtBvz7Wc1EHOSb//
-         GoN+hNyNhDgqqvG+pkmZUoMY1wj/LJMrxwKKtT2jkdzJ1IPcuF2qce2NDCVDd2ndYmnQ
-         td9TKE4pr97n7Q6LbyAOh62GiSZU5cfRwYPMJDs3As9uhJU82vxYsMXKFOsz2icDfeSL
-         JiaZV+x/iMfEysk5nS0C8eqlbdgcxzq3NaX6ssrw9YJBBX6x3aVuW9Bii8w4eE7Ou5yr
-         6bkbqhNKXJYMtfXa77GADMyglVmtLLxfSKEUBD+IIn3LkAOwp6EQunShyD3f6b/OtOGi
-         XluQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=t0BMrJsEPpw2hAuVaHkSZsPO66SYWZMMbSqibMKLzHU=;
+        b=oQCtAhtEXNuVOQbuUsbGezsRHqamn4aA3JNAXzw66n61EJMdQxMQGXtM/WW3ZeD5TE
+         ZjLH0KtBj7E0Ux+FOGYuuvT7VB+3YRIFvgbzZcIxAoWzJc9kBC6PyUIN/1wTO71OtLqP
+         wYTLPO4vJiCxRUZopnJ5hxNlUqFlJ9j2V05Xg2zvvITywQaMtz+I+z954pI5k2KHK8S6
+         DQZPowyIYgHlF/pKac8T3dchibq9jzFvupN0jsx9ksOj2dCfVWWZWTg45YVcQOKLs7VJ
+         mkBfduf4rMKYfkNDMlHOpnsV5ndcDfiHiPAtWfIAJxyeStINtRPkcwJ/KVG4rTT+BgFq
+         IVcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eHyKzut6;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Duirda7Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k134si16868131ybk.384.2020.07.14.02.32.01
+        by mx.google.com with ESMTPS id m125si2120012ybc.118.2020.07.15.02.00.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 14 Jul 2020 02:32:02 -0700 (PDT)
+        Wed, 15 Jul 2020 02:00:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eHyKzut6;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Duirda7Y;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57358 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54258 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvHI9-0001AJ-Dj
-	for alex.bennee@linaro.org; Tue, 14 Jul 2020 05:32:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51982)
+	id 1jvdHD-0007bM-T4
+	for alex.bennee@linaro.org; Wed, 15 Jul 2020 05:00:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43036)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jvHI1-0001A8-DL
- for qemu-arm@nongnu.org; Tue, 14 Jul 2020 05:31:53 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:47705
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvdGy-0007a6-8d
+ for qemu-arm@nongnu.org; Wed, 15 Jul 2020 05:00:16 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:29143
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jvHHz-00015i-Jl
- for qemu-arm@nongnu.org; Tue, 14 Jul 2020 05:31:53 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvdGu-000775-1Q
+ for qemu-arm@nongnu.org; Wed, 15 Jul 2020 05:00:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594719110;
+ s=mimecast20190719; t=1594803610;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=z8JvkBd0R8tKW1PwI1aEAkvIaqXUeLX6SqSLALIC3M8=;
- b=eHyKzut6es+CUuYiSDCpgAVhZ69/bWK58Ss4GGq+4hsZJAzSXtDgVgnReE/REToIZHtcjd
- V8ewTgIm9Qf/8vrlZ/2ijHhZMsqOkSIPmd9qr13n1DhDQoWL2Sc0Aa5ZXViJjfwuafYj8d
- Kh6gonM7NuxT+qAmoDwD4QxDT+gMHws=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-283-O5LBqMcvMYibttTbEjxB2Q-1; Tue, 14 Jul 2020 05:31:48 -0400
-X-MC-Unique: O5LBqMcvMYibttTbEjxB2Q-1
-Received: by mail-wm1-f71.google.com with SMTP id y204so3071712wmd.2
- for <qemu-arm@nongnu.org>; Tue, 14 Jul 2020 02:31:48 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=z8JvkBd0R8tKW1PwI1aEAkvIaqXUeLX6SqSLALIC3M8=;
- b=E735lOlpKJ9OKfwe2R4NcwqDTc/e8r51Nw0LJmRlaOINW3GxgBbr6IEI9ihFMQJEd6
- 1tyTP+GCLX4hFHRrX1HBjvKYD1atr366Wrym6snkidvt9maNL4jxhpF7O6cIXPL/HM3k
- saBUoPBJfxynbeM9wXMIHoQxVcu1sZY7F2aIKcMgUCtTh+yeMiaVwoucXjDI24lqu4eE
- GUga+n+8xFZ/QIAvrZH7xVetXnP+H55AZ7yVmMXp05bScMv8I81LRCHtTuAFp8ICVZbK
- BGo4Vozt/5ZcScp+ToszOih3fE9Ek1wXEl91hzMLiyZZT9eAoObCtBBLLlfJZskMHVmX
- 3jXw==
-X-Gm-Message-State: AOAM532y9lENfTQxV/etgkeGliUxmP+ONrTmQXjuVEbs/lqASY7Yf7Tr
- 4AZ/lQE1Z4bD1rmdJ2JvgzC9QTDEEawVS87CLig0NiPAn6dbkaquWNPAFCBLbfbf4KWK1OTKQ58
- YfGjblwXw887e
-X-Received: by 2002:a1c:dcd5:: with SMTP id t204mr3265232wmg.17.1594719107387; 
- Tue, 14 Jul 2020 02:31:47 -0700 (PDT)
-X-Received: by 2002:a1c:dcd5:: with SMTP id t204mr3265211wmg.17.1594719107111; 
- Tue, 14 Jul 2020 02:31:47 -0700 (PDT)
-Received: from redhat.com (bzq-79-180-10-140.red.bezeqint.net. [79.180.10.140])
- by smtp.gmail.com with ESMTPSA id n16sm3306725wmc.40.2020.07.14.02.31.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 14 Jul 2020 02:31:46 -0700 (PDT)
-Date: Tue, 14 Jul 2020 05:31:43 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: Re: [PATCH 3/4] hw/arm/virt-acpi-build: Only expose flash on older
- machine types
-Message-ID: <20200714053023-mutt-send-email-mst@kernel.org>
-References: <20200629140938.17566-1-drjones@redhat.com>
- <20200629140938.17566-4-drjones@redhat.com>
- <20200713104907.335bf762@redhat.com>
- <20200714055109.owrlob6m53notzh3@kamzik.brq.redhat.com>
- <20200714045537-mutt-send-email-mst@kernel.org>
- <20200714092325.5klaeqelu46mhg76@kamzik.brq.redhat.com>
+ bh=t0BMrJsEPpw2hAuVaHkSZsPO66SYWZMMbSqibMKLzHU=;
+ b=Duirda7YxHztDYELYn5wNea2r2EOCl+N76Mly1LHw7/ytbuOgI935U8QaU97roMZKiL/Yz
+ 4Elzk6racJ+zv1rjFFI5nQtTudlojGEP0YNf0cQIC3wFbsnNbXH3Lz6MzAJeXPR5pH3hbG
+ vVIo0FNgNjuIpPoiZAgMM8aJOpUsrmI=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-206-benxDFtRPBGejNj0yGSJvw-1; Wed, 15 Jul 2020 05:00:07 -0400
+X-MC-Unique: benxDFtRPBGejNj0yGSJvw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 166B78027E2;
+ Wed, 15 Jul 2020 09:00:05 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
+ [10.36.112.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 55EC16FEFC;
+ Wed, 15 Jul 2020 09:00:03 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D68F21370108; Wed, 15 Jul 2020 11:00:01 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v5 10/11] hw/arm: Wire up BMC boot flash for npcm750-evb
+ and quanta-gsj
+References: <20200709003608.3834629-1-hskinnemoen@google.com>
+ <20200709003608.3834629-11-hskinnemoen@google.com>
+ <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
+ <CAFQmdRZcygskP3iwss01-Jz67yjAP_JENXjWM2Bp8U=DRzxR0Q@mail.gmail.com>
+ <875zaq78xq.fsf@dusky.pond.sub.org>
+ <19733456-a672-595d-e721-e0ef26d7f665@amsat.org>
+ <87v9iq2hkv.fsf@dusky.pond.sub.org>
+ <e87663cf-7cb2-ca6c-a751-e5c1cebc5440@amsat.org>
+Date: Wed, 15 Jul 2020 11:00:01 +0200
+In-Reply-To: <e87663cf-7cb2-ca6c-a751-e5c1cebc5440@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 14 Jul 2020 19:16:35
+ +0200")
+Message-ID: <87pn8xywz2.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200714092325.5klaeqelu46mhg76@kamzik.brq.redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=mst@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/14 03:06:09
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/15 02:37:03
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,114 +125,128 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, eric.auger@redhat.com, philmd@redhat.com,
- qemu-devel@nongnu.org, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- ard.biesheuvel@arm.com, Igor Mammedov <imammedo@redhat.com>, lersek@redhat.com
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Qemu-block <qemu-block@nongnu.org>, Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TcMfNcFkp+RB
+X-TUID: wzXgDzFS2SQ3
 
-On Tue, Jul 14, 2020 at 11:23:25AM +0200, Andrew Jones wrote:
-> On Tue, Jul 14, 2020 at 04:57:50AM -0400, Michael S. Tsirkin wrote:
-> > On Tue, Jul 14, 2020 at 07:51:09AM +0200, Andrew Jones wrote:
-> > > On Mon, Jul 13, 2020 at 10:49:07AM +0200, Igor Mammedov wrote:
-> > > > On Mon, 29 Jun 2020 16:09:37 +0200
-> > > > Andrew Jones <drjones@redhat.com> wrote:
-> > > > 
-> > > > > The flash device is exclusively for the host-controlled firmware, so
-> > > > > we should not expose it to the OS. Exposing it risks the OS messing
-> > > > > with it, which could break firmware runtime services and surprise the
-> > > > > OS when all its changes disappear after reboot.
-> > > > > 
-> > > > > As firmware needs the device and uses DT, we leave the device exposed
-> > > > > there. It's up to firmware to remove the nodes from DT before sending
-> > > > > it on to the OS. However, there's no need to force firmware to remove
-> > > > > tables from ACPI (which it doesn't know how to do anyway), so we
-> > > > > simply don't add the tables in the first place. But, as we've been
-> > > > > adding the tables for quite some time and don't want to change the
-> > > > > default hardware exposed to versioned machines, then we only stop
-> > > > > exposing the flash device tables for 5.1 and later machine types.
-> > > > > 
-> > > > > Suggested-by: Ard Biesheuvel <ard.biesheuvel@arm.com>
-> > > > > Suggested-by: Laszlo Ersek <lersek@redhat.com>
-> > > > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > > > ---
-> > > > >  hw/arm/virt-acpi-build.c | 5 ++++-
-> > > > >  hw/arm/virt.c            | 3 +++
-> > > > >  include/hw/arm/virt.h    | 1 +
-> > > > >  3 files changed, 8 insertions(+), 1 deletion(-)
-> > > > > 
-> > > > > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> > > > > index 1384a2cf2ab4..91f0df7b13a3 100644
-> > > > > --- a/hw/arm/virt-acpi-build.c
-> > > > > +++ b/hw/arm/virt-acpi-build.c
-> > > > > @@ -749,6 +749,7 @@ static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
-> > > > >  static void
-> > > > >  build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> > > > >  {
-> > > > > +    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-> > > > >      Aml *scope, *dsdt;
-> > > > >      MachineState *ms = MACHINE(vms);
-> > > > >      const MemMapEntry *memmap = vms->memmap;
-> > > > > @@ -767,7 +768,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-> > > > >      acpi_dsdt_add_cpus(scope, vms->smp_cpus);
-> > > > >      acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
-> > > > >                         (irqmap[VIRT_UART] + ARM_SPI_BASE));
-> > > > > -    acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-> > > > > +    if (vmc->acpi_expose_flash) {
-> > > > > +        acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-> > > > > +    }
-> > > > >      acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
-> > > > >      acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
-> > > > >                      (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
-> > > > > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > > > > index cd0834ce7faf..5adc9ff799ef 100644
-> > > > > --- a/hw/arm/virt.c
-> > > > > +++ b/hw/arm/virt.c
-> > > > > @@ -2482,9 +2482,12 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
-> > > > >  
-> > > > >  static void virt_machine_5_0_options(MachineClass *mc)
-> > > > >  {
-> > > > > +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> > > > > +
-> > > > >      virt_machine_5_1_options(mc);
-> > > > >      compat_props_add(mc->compat_props, hw_compat_5_0, hw_compat_5_0_len);
-> > > > >      mc->numa_mem_supported = true;
-> > > > > +    vmc->acpi_expose_flash = true;
-> > > > 
-> > > > we usually do not version ACPI tables changes
-> > > > (unless we have a good reason to do so)
-> > > 
-> > > Even when the change is to remove the exposure of hardware from the guest?
-> > > Before this change, if a guest looked, it had a flash, after this change,
-> > > if a guest looks, it doesn't.
-> > 
-> > It's up to the relevant maintainers who know what the semantics are.
-> > FYI ACPI tables only change across a reset though.
-> > So it's a question of whether guests get confused even if this
-> > changes after a reboot.
-> 
-> Yup, but it's still the same "machine", so a user may wonder why it
-> changed.
-> 
-> > Versioning is generally safer, but it's a good idea to document
-> > the motivation for it.
-> >
-> 
-> Well, in this case, we could probably push this change to old machine
-> types and nobody would notice. If a guest is using ACPI, then it must
-> be using firmware, and if they're using firmware, then they can't be
-> using the flash. So the user shouldn't care if it's there or not. The
-> only justification for the versioning is because "it's safer". If
-> people feel strongly about avoiding versioning when it's not obviously
-> necessary, then I can respin without it.
-> 
-> Thanks,
-> drew
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-It's up to maintainers either way, but please do tweak the motivation in the commit log
-to include the above.
+> On 7/14/20 6:21 PM, Markus Armbruster wrote:
+>> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+>>=20
+>>> + qemu-block experts.
+>>>
+>>> On 7/14/20 11:16 AM, Markus Armbruster wrote:
+>>>> Havard Skinnemoen <hskinnemoen@google.com> writes:
+>>>>
+>>>>> On Mon, Jul 13, 2020 at 7:57 AM C=C3=A9dric Le Goater <clg@kaod.org> =
+wrote:
+>>>>>>
+>>>>>> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
+>>>>>>> This allows these NPCM7xx-based boards to boot from a flash image, =
+e.g.
+>>>>>>> one built with OpenBMC. For example like this:
+>>>>>>>
+>>>>>>> IMAGE=3D${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc
+>>>>>>> qemu-system-arm -machine quanta-gsj -nographic \
+>>>>>>>       -bios ~/qemu/bootrom/npcm7xx_bootrom.bin \
+>>>>>>>       -drive file=3D${IMAGE},if=3Dmtd,bus=3D0,unit=3D0,format=3Draw=
+,snapshot=3Don
+>>>>>>>
+>>>>>>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+>>>>>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+>>>>>>
+>>>>>> May be we don't need to create the flash object if dinfo is NULL.
+>>>>>
+>>>>> It's soldered on the board, so you can't really boot the board withou=
+t
+>>>>> it. But if you think it's better to remove it altogether if we don't
+>>>>> have an image to load into it, I can do that.
+>>>>
+>>>> If a device is a fixed part of the physical board, it should be a fixe=
+d
+>>>> part of the virtual board, too.
+>>>
+>>> We agree so far but ... how to do it?
+>>>
+>>> I never used this API, does that makes sense?
+>>>
+>>>     if (!dinfo) {
+>>>         QemuOpts *opts;
+>>>
+>>>         opts =3D qemu_opts_create(NULL, "spi-flash", 1, &error_abort);
+>>>         qdict_put_str(opts, "format", "null-co");
+>>>         qdict_put_int(opts, BLOCK_OPT_SIZE, 64 * MiB);
+>>>         qdict_put_bool(opts, NULL_OPT_ZEROES, false); // XXX
+>>>
+>>>         dinfo =3D drive_new(opts, IF_MTD, &error_abort);
+>>>         qemu_opts_del(opts);
+>>>     }
+>>=20
+>> I believe existing code special-cases "no backend" instead of making one
+>> up.
+>>=20
+>> Example: pflash_cfi0?.c
+>>=20
+>> If ->blk is non-null, we read its contents into the memory buffer and
+>> write updates back, else we leave it blank and don't write updates back.
+>>=20
+>> Making one up could be more elegant.  To find out, you have to try.
+>
+> I'd rather avoid ad-hoc code in each device. I2C EEPROM do that too,
+> it is a source of head aches.
+>
+>>>From the emulation PoV I'd prefer to always use a block backend,
+> regardless the user provide a drive.
+>
+>>=20
+>> We make up a few default drives (i.e. drives the user doesn't specify):
+>> floppy, CD-ROM and SD card.  Ancient part of the user interface, uses
+>> DriveInfo.  I doubt we should create more of them.
+>>=20
+>> I believe block backends we make up for internal use should stay away
+>> from DriveInfo.  Kevin, what do you think?  How would you make up a
+>> null-co block backend for a device's internal use?
+>
+> I read 'DriveInfo' is the legacy interface, but all the code base use it
+> so it is confusing, I don't understand what is the correct interface to
+> use.
 
--- 
-MST
+I admit the "legacy" bit is still aspirational.  We still haven't
+managed to replace it for configuring certain onboard devices.
+
+The thing being configured is a device's BlockBackend.
+
+To understand the point I'm trying to make, please ignore "legacy", and
+focus on the actual purpose of DriveInfo: it's (one kind of) user
+configuration for a BlockBackend.
+
+Now let me try to state the problem you're trying to solve.  Instead of
+special-casing "no backend" in device code like pflash_cfi0?.c do, you
+want to make up a "dummy" backend instead.  You need the dummy to read
+some blank value and ignore writes.  One of the null block drivers
+should fit the bill.
+
+Now my point.  Why first make up user configuration, then use that to
+create a BlockBackend, when you could just go ahead and create the
+BlockBackend?
+
+Sadly, I'm not sufficiently familiar with the block API anymore to tell
+you exactly how.  blk_new_with_bs() looks promising.  Perhaps Kevin can
+advise.
+
+>>> We should probably add a public helper for that.
+>>=20
+>> If we decide we want to make up backends, then yes, we should do that in
+>> a helper, not in each device.
+>>=20
+>>> 'XXX' because NOR flashes erase content is when hardware bit
+>>> is set, so it would be more useful to return -1/0xff... rather
+>>> than zeroes.
 

@@ -1,106 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp352091lfm;
-        Wed, 15 Jul 2020 02:35:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzTShP03PpRl8sEKNRhWqgkVUFgd6K/TZ9ZXfW7C5NVLW+KZzqLO5iMiWIEp98YFC1qcgUh
-X-Received: by 2002:a25:694d:: with SMTP id e74mr14565139ybc.489.1594805735548;
-        Wed, 15 Jul 2020 02:35:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594805735; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp353908lfm;
+        Wed, 15 Jul 2020 02:38:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyll8+vUEqfKGV01xJwnkX5REjQ5cjQTYJ2Qp51n153DuQnSQqa+ZdCbI5RAp7IpFnqbGAp
+X-Received: by 2002:a5b:acd:: with SMTP id a13mr13708893ybr.351.1594805899475;
+        Wed, 15 Jul 2020 02:38:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594805899; cv=none;
         d=google.com; s=arc-20160816;
-        b=UJ/FEANpBmHDmxcrSm6FSs/irqqSe98euNHwKvrcKIp68W8ZCMBvvLvDDmQqdnt8vg
-         Ug9V/w+D4mQNpTxiuLthFtZUalFePp4zKNvBfDnsapOyeyCEeQEi8EXabcYRggjnBvE+
-         PVjNcpHRXvb5gWtTn/HzSvh13NLRf//NtRulYvOCA3uAYXNvKlMxOEZgO7EyTwlnTaQx
-         IulQdp32NoQ+Ie/J+JKcFF8JSyoLJpuKua9ifepZG6hmj9akZ/Vo3O5Jw18Vp40UcU0n
-         nYU2JlIqLOsw7idCP/YJcdPWV7ATmIAQz1h2JDMq/i0oNiExc5Nyj58JWNjJaXmhcQ1Z
-         RvBg==
+        b=t2VQX3fTerRwHND41Xe1Rx4ZT07mMATnUCVVbHEQoQLJvM36Ymlo12Mv7kIp25JIyF
+         gwOupnjZoCrvePoDG3xFY7TXeF4qbezCIsHVz8W/DbzyEnCaqRsguPQJ9TEcbtm1tM2i
+         zdqU2r0aEIwQjJIx0ofNDSUWEBWaMbcvv+LM8Vewy6gQyrB++0nSpPAG0qhVLm2cxwVk
+         +6cb1dXTp/9x+tyBEV/3Pw0Kh9pAEEp4C2Z6+NTSP3t3hn+bRfbnRFsUhEJFxNdiPUl6
+         CY98PYB94Nc9TUIPnbXrd9bFavlbwWZQ3PeV3dqaN91rrNsm9L04gzjB4x+Ep1XO7Kwt
+         W5Yw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=1wgkYwopxwjScbqQg3bR+f7tZkTpVNp/UWEcHxJk8Ws=;
-        b=aHL44sHo8PNt1EegX27isSdXOzw9XRMkB/Jr4ADtvgNdBO59wpO1nw8FlfwfMCa7lc
-         wcpGUY8v1wQ2/C9ajLHYNnajQf1bg+GBiZv7UMVkVCgTnUp4RozTYZ2HKpSWKwPqkJjN
-         UK/TXC/N3nlQAnowv4UunudnPJ9FNLVqlPqb/JlS56L6F6T5a4I5SPkOtS2HoyTE2NtL
-         MIj45ZB3yOMW1TcPnOjXaLaM1I7H7/o9Z9mD+fpeBS/28DmrSqT54SV8OXX4MeTNgXKd
-         COAcVaMI9W3lPgE4mK3HFtkJBTRxtUZ+mvXm92n+R5mRZuPmDyKVmGKbOlcRYNy/WOSJ
-         fB3Q==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=/6BbWMPTOUOHAr4XvA1A1gk/qjW4H8USIgYOndpwLeg=;
+        b=oKV7QWvj+rxsJB3/lKr0PBYAiWX5bGAEKW6QwuDSHZ3al6dX2HNGGuT6kBGBnLVAto
+         uXagnFkuiJtdogwySSTsMoR9gN2OyJchQro/25i75ZtL7lEsrky2r52wKxaUqxgML01L
+         rp+wDysn63179eD5luCMbsRncwp9mrofTKxPSUV9zAHuGd3duu0j9Or1XbWWhPuZt5Wg
+         RgxuOvHLAX8MeuRjS38GXjsjbzGeSXHf3DEeqn6PHzkC7NWdLqMCPjQegu0HKKDrR/uS
+         S2xuVoA7B97/k3VV7dGEaLDSpvYbC8ifOTGJuLv/T8u5Qmm+32XT6N2KonRpNAZ7Uygh
+         1Dsw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="U6ByamR/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eX32PXrL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f128si2128385ybf.34.2020.07.15.02.35.35
+        by mx.google.com with ESMTPS id x4si2143299ybo.468.2020.07.15.02.38.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jul 2020 02:35:35 -0700 (PDT)
+        Wed, 15 Jul 2020 02:38:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="U6ByamR/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eX32PXrL;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55650 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58756 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvdp8-0005Wp-TS
-	for alex.bennee@linaro.org; Wed, 15 Jul 2020 05:35:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56130)
+	id 1jvdrm-0006xY-UC
+	for alex.bennee@linaro.org; Wed, 15 Jul 2020 05:38:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvdp1-0005WU-2I
- for qemu-arm@nongnu.org; Wed, 15 Jul 2020 05:35:27 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:52440
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jvdrh-0006xN-6A
+ for qemu-arm@nongnu.org; Wed, 15 Jul 2020 05:38:13 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:54553
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvdox-0004s5-Vc
- for qemu-arm@nongnu.org; Wed, 15 Jul 2020 05:35:26 -0400
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1jvdre-0005SD-Ca
+ for qemu-arm@nongnu.org; Wed, 15 Jul 2020 05:38:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594805721;
+ s=mimecast20190719; t=1594805889;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1wgkYwopxwjScbqQg3bR+f7tZkTpVNp/UWEcHxJk8Ws=;
- b=U6ByamR/DGL+BjzAaOP9JepIEdQhFBhQveQlMwVDjmxftGAobffcQ8C9guulF2e1yzLH+g
- ecFgWJAK4451wOWi18VYah7jKD5XlJ5E4nxT5JXpH4j/lvTMRrf1xx9TWaiSi/ixUJ2+fS
- ss2SCeI6gtZ0vmemhZO9Ee5SGXRwFAw=
+ bh=/6BbWMPTOUOHAr4XvA1A1gk/qjW4H8USIgYOndpwLeg=;
+ b=eX32PXrLdtfBY5ujKL4Jc66nLv1tiPlWWxIpdHOuR1/r+f0EpUBiIn6W20fYbELMg7otdB
+ FpOpwE6QqeaNKpFx+iRso9nFqQw7o9yKuZNxwrVLwcPXjpozBbid2yxyBN5RXKnG2K7UYT
+ 0OgaEAeHtwF0b04HjyhhqDAvqEHtUZI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-415-6-XJBxGGP_GFJNsdFtYFog-1; Wed, 15 Jul 2020 05:35:19 -0400
-X-MC-Unique: 6-XJBxGGP_GFJNsdFtYFog-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-313-38_CCw9hNh6yJD1CxT31ZA-1; Wed, 15 Jul 2020 05:38:07 -0400
+X-MC-Unique: 38_CCw9hNh6yJD1CxT31ZA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0E44A1087;
- Wed, 15 Jul 2020 09:35:18 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
- [10.36.112.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3256B72E74;
- Wed, 15 Jul 2020 09:35:17 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id B0F78105A45D; Wed, 15 Jul 2020 11:35:15 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Havard Skinnemoen <hskinnemoen@google.com>
-Subject: Re: [PATCH v5 04/11] hw/arm: Add NPCM730 and NPCM750 SoC models
-References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-5-hskinnemoen@google.com>
- <3ec30463-03f8-98e9-9a14-01b0bb698c9b@kaod.org>
- <CAFQmdRYQxMz_qSr4i_cyqRPEGuq7At=VEOGvsupR3=W7pE3q=g@mail.gmail.com>
- <7c978e82-8890-9ba4-096a-92d7cff60b0a@amsat.org>
- <877dv63x2e.fsf@dusky.pond.sub.org>
- <11c410d4-b310-faf1-5116-2ab62270c3cb@amsat.org>
- <CAFQmdRZKnP=NCzoVtPz5LFXFKrboTFxY1EWxOD_w9CCFd-dYiA@mail.gmail.com>
-Date: Wed, 15 Jul 2020 11:35:15 +0200
-In-Reply-To: <CAFQmdRZKnP=NCzoVtPz5LFXFKrboTFxY1EWxOD_w9CCFd-dYiA@mail.gmail.com>
- (Havard Skinnemoen's message of "Tue, 14 Jul 2020 18:03:16 -0700")
-Message-ID: <87blkhyvcc.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0C35119067E0;
+ Wed, 15 Jul 2020 09:38:06 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.192.230])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 824646FDD1;
+ Wed, 15 Jul 2020 09:37:57 +0000 (UTC)
+Date: Wed, 15 Jul 2020 11:37:54 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Subject: Re: [PATCH 3/4] hw/arm/virt-acpi-build: Only expose flash on older
+ machine types
+Message-ID: <20200715093754.v376uobabdis7ykg@kamzik.brq.redhat.com>
+References: <20200629140938.17566-1-drjones@redhat.com>
+ <20200629140938.17566-4-drjones@redhat.com>
+ <20200713104907.335bf762@redhat.com>
+ <20200714055109.owrlob6m53notzh3@kamzik.brq.redhat.com>
+ <20200714045537-mutt-send-email-mst@kernel.org>
+ <20200714092325.5klaeqelu46mhg76@kamzik.brq.redhat.com>
+ <20200714164141.1ce6b122@redhat.com>
+ <20200715063648.rigcdnaxveened6u@kamzik.brq.redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <20200715063648.rigcdnaxveened6u@kamzik.brq.redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/15 02:01:40
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -110,7 +107,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,309 +120,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Joel Stanley <joel@jms.id.au>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Cc: peter.maydell@linaro.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ lersek@redhat.com, qemu-devel@nongnu.org, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, ard.biesheuvel@arm.com, philmd@redhat.com,
+ eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s3VQbs5q35Hj
+X-TUID: FPg2n6F5lO2m
 
-Havard Skinnemoen <hskinnemoen@google.com> writes:
-
-> On Tue, Jul 14, 2020 at 10:11 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=
-.org> wrote:
->>
->> On 7/14/20 6:01 PM, Markus Armbruster wrote:
->> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
->> >
->> >> +Markus
->> >>
->> >> On 7/14/20 2:44 AM, Havard Skinnemoen wrote:
->> >>> On Mon, Jul 13, 2020 at 8:02 AM C=C3=A9dric Le Goater <clg@kaod.org>=
- wrote:
->> >>>>
->> >>>> On 7/9/20 2:36 AM, Havard Skinnemoen wrote:
->> >>>>> The Nuvoton NPCM7xx SoC family are used to implement Baseboard
->> >>>>> Management Controllers in servers. While the family includes four =
-SoCs,
->> >>>>> this patch implements limited support for two of them: NPCM730 (ta=
-rgeted
->> >>>>> for Data Center applications) and NPCM750 (targeted for Enterprise
->> >>>>> applications).
->> >>>>>
->> >>>>> This patch includes little more than the bare minimum needed to bo=
-ot a
->> >>>>> Linux kernel built with NPCM7xx support in direct-kernel mode:
->> >>>>>
->> >>>>>   - Two Cortex-A9 CPU cores with built-in periperhals.
->> >>>>>   - Global Configuration Registers.
->> >>>>>   - Clock Management.
->> >>>>>   - 3 Timer Modules with 5 timers each.
->> >>>>>   - 4 serial ports.
->> >>>>>
->> >>>>> The chips themselves have a lot more features, some of which will =
-be
->> >>>>> added to the model at a later stage.
->> >>>>>
->> >>>>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
->> >>>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
->> >>>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->> >>>>> ---
->> >> ...
->> >>
->> >>>>> +static void npcm7xx_realize(DeviceState *dev, Error **errp)
->> >>>>> +{
->> >>>>> +    NPCM7xxState *s =3D NPCM7XX(dev);
->> >>>>> +    NPCM7xxClass *nc =3D NPCM7XX_GET_CLASS(s);
->> >>>>> +    int i;
->> >>>>> +
->> >>>>> +    /* CPUs */
->> >>>>> +    for (i =3D 0; i < nc->num_cpus; i++) {
->> >>>>> +        object_property_set_int(OBJECT(&s->cpu[i]),
->> >>>>> +                                arm_cpu_mp_affinity(i, NPCM7XX_MA=
-X_NUM_CPUS),
->> >>>>> +                                "mp-affinity", &error_abort);
->> >>>>> +        object_property_set_int(OBJECT(&s->cpu[i]), NPCM7XX_GIC_C=
-PU_IF_ADDR,
->> >>>>> +                                "reset-cbar", &error_abort);
->> >>>>> +        object_property_set_bool(OBJECT(&s->cpu[i]), true,
->> >>>>> +                                 "reset-hivecs", &error_abort);
->> >>>>> +
->> >>>>> +        /* Disable security extensions. */
->> >>>>> +        object_property_set_bool(OBJECT(&s->cpu[i]), false, "has_=
-el3",
->> >>>>> +                                 &error_abort);
->> >>>>> +
->> >>>>> +        qdev_realize(DEVICE(&s->cpu[i]), NULL, &error_abort);
->> >>>>
->> >>>> I would check the error:
->> >>>>
->> >>>>         if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
->> >>>>             return;
->> >>>>         }
->> >>>>
->> >>>> same for the sysbus_realize() below.
->> >>>
->> >>> Hmm, I used to propagate these errors until Philippe told me not to
->> >>> (or at least that's how I understood it).
->> >>
->> >> It was before Markus simplification API were merged, you had to
->> >> propagate after each call, since this is a non hot-pluggable SoC
->> >> I suggested to use &error_abort to simplify.
->> >>
->> >>> I'll be happy to do it
->> >>> either way (and the new API makes it really easy to propagate errors=
-),
->> >>> but I worry that I don't fully understand when to propagate errors a=
-nd
->> >>> when not to.
->> >>
->> >> Markus explained it on the mailing list recently (as I found the doc
->> >> not obvious). I can't find the thread. I suppose once the work result
->> >> after the "Questionable aspects of QEMU Error's design" discussion is
->> >> merged, the documentation will be clarified.
->> >
->> > The Error API evolved recently.  Please peruse the big comment in
->> > include/qapi/error.h.  If still unsure, don't hesitate to ask here.
->> >
->> >> My rule of thumb so far is:
->> >> - programming error (can't happen) -> &error_abort
->> >
->> > Correct.  Quote the big comment:
->> >
->> >  * Call a function aborting on errors:
->> >  *     foo(arg, &error_abort);
->> >  * This is more concise and fails more nicely than
->> >  *     Error *err =3D NULL;
->> >  *     foo(arg, &err);
->> >  *     assert(!err); // don't do this
->> >
->> >> - everything triggerable by user or management layer (via QMP command=
-)
->> >>   -> &error_fatal, as we can't risk loose the user data, we need to
->> >>   shutdown gracefully.
->> >
->> > Quote the big comment:
->> >
->> >  * Call a function treating errors as fatal:
->> >  *     foo(arg, &error_fatal);
->> >  * This is more concise than
->> >  *     Error *err =3D NULL;
->> >  *     foo(arg, &err);
->> >  *     if (err) { // don't do this
->> >  *         error_report_err(err);
->> >  *         exit(1);
->> >  *     }
->> >
->> > Terminating the process is generally fine during initial startup,
->> > i.e. before the guest runs.
->> >
->> > It's generally not fine once the guest runs.  Errors need to be handle=
-d
->> > more gracefully then.  A QMP command, for instance, should fail cleanl=
-y,
->> > propagating the error to the monitor core, which then sends it to the
->> > QMP client, and loops to process the next command.
->> >
->> >>> It makes sense to me to propagate errors from *_realize() and
->> >>> error_abort on failure to set simple properties, but I'd like to kno=
-w
->> >>> if Philippe is on board with that.
->> >
->> > Realize methods must not use &error_fatal.  Instead, they should clean
->> > up and fail.
->> >
->> > "Clean up" is the part we often neglect.  The big advantage of
->> > &error_fatal is that you don't have to bother :)
->> >
->> > Questions?
->>
->> One on my side. So in this realize(), all &error_abort uses has
->> to be replaced by local_err + propagate ...:
-
-Except for the ones where failure is a programming error.  For instance,
-...
-
->> static void npcm7xx_realize(DeviceState *dev, Error **errp)
->> {
->>     NPCM7xxState *s =3D NPCM7XX(dev);
->>     NPCM7xxClass *nc =3D NPCM7XX_GET_CLASS(s);
->>     int i;
->>
->>     /* CPUs */
->>     for (i =3D 0; i < nc->num_cpus; i++) {
->>         object_property_set_int(OBJECT(&s->cpu[i]),
->>                                 arm_cpu_mp_affinity(i,
->> NPCM7XX_MAX_NUM_CPUS),
->>                                 "mp-affinity", &error_abort);
->>         object_property_set_int(OBJECT(&s->cpu[i]), NPCM7XX_GIC_CPU_IF_A=
-DDR,
->>                                 "reset-cbar", &error_abort);
->>         object_property_set_bool(OBJECT(&s->cpu[i]), true,
->>                                  "reset-hivecs", &error_abort);
-
-... object_property_set_bool() can fail only when
-
-* No property with that name exists (programming error)
-
-* The property is read-only (programming error)
-
-* Its ->set() method fails
-
-  The method is actually set_bool(), which fails only when
-
-  - the device is already realized (programming errro)
-  - visit_type_bool() fails (programming error)
-
-Now, you may prefer not to know all that here, and instead propagate the
-error.  I have two issues with that: it clutters the code, and the
-impossible error path is untestable.
-
-The common way to limit the clutter is of course skipping the cleanup ;)
-
-You could also aim for the sour spot where the impossible error path is
-wrong.  Extra points for making it subtly wrong, and tempting to copy to
-a place where it's actually possible.
-
-Bah, I'll take &error_abort, thank you very much.
-
->>
->>         /* Disable security extensions. */
->>         object_property_set_bool(OBJECT(&s->cpu[i]), false, "has_el3",
->>                                  &error_abort);
->>
->>         qdev_realize(DEVICE(&s->cpu[i]), NULL, &error_abort);
->>     }
->>     [...]
->>
->> ... but the caller does:
->>
->> static void quanta_gsj_init(MachineState *machine)
->> {
->>     NPCM7xxState *soc;
->>
->>     soc =3D npcm7xx_create_soc(machine, QUANTA_GSJ_POWER_ON_STRAPS);
->>     npcm7xx_connect_dram(soc, machine->ram);
->>     qdev_realize(DEVICE(soc), NULL, &error_abort);
->>                                     ^^^^^^^^^^^^
->>     npcm7xx_load_kernel(machine, soc);
->> }
-
-quanta_gsj_init() states "realizing this device can't fail".
-
-The realize method states "this step can't fail" for a number of steps.
-
-What's wrong with that?
-
->>
->> So we overload the code...
->>
->> My question: Do you confirm this is worth it to propagate?
+On Wed, Jul 15, 2020 at 08:36:48AM +0200, Andrew Jones wrote:
+> On Tue, Jul 14, 2020 at 04:41:41PM +0200, Igor Mammedov wrote:
+> > 
+> > In this particular case I'd drop versioning.
+> >
+> 
+> So it sounds to me like we have some flexibility in our versioned machine
+> maintenance. We can choose to forgo the usual compat code when the risk is
+> deemed low enough. And, if somebody screams, we can always fix it later.
+> I can live with that. I'll go ahead and respin without the versioning.
 >
-> Here's my understanding. Please let me know if it sounds right.
->
-> 1. Internal code failing to set simple properties to predefined values
-> is a programming error, so error_abort is appropriate.
 
-That would be my advice.
+Actually this patch was already merged
 
-> 2. qdev_realize() may fail due to user input, so errors should be propaga=
-ted.
+  2c1fb4d5c011 hw/arm/virt-acpi-build: Only expose flash on older machine types
 
-In general, yes.  For a specific device, you may know it can't fail, and
-then &error_abort may be okay.
+and I don't see much value in posting a patch to remove the compat code.
 
-> 3. machine init can't propagate errors any further, so all errors are
-> fatal.
+Regarding the result of this discussion, my take is that unless the
+policy is to always or to never use versioning, then I think we should
+have guidelines documented which we can follow. Would one of the ACPI
+maintainers like to submit a document with the reasoning for when and
+when not to use versioning? And also for what's expected of the
+commit message justification when versioning is necessary?
 
-Basically yes.
-
-A machine init may also choose to recover from an error.  Say create an
-optional device, and if it doesn't work, just omit it.  Just an example
-for illustration; it feels like a bad idea to me.
-
->        But if all realize() functions follow (1) and (2), only user
-> errors are propagated, so error_fatal should be used to produce a nice
-> error message rather than "Unexpected error, aborting!"
-
-Yes.
-
-> If any of this can ever be hot-plugged, then it means errors may
-> propagate somewhere other than the machine init code, so it becomes
-> extra important not to let bad user input crash the whole qemu
-> process. I don't know if this is a concern when none of these devices
-> can currently be hot-plugged.
-
-Many, many devices neglect to clean up properly on error, and get away
-with it only because all callers treat errors as fatal.
-
-If you decide to take cleanup shortcuts, say because the cleanup is
-untestable, consider adding a comment at least.
-
-> For example, if the user tries to create a machine with 64 MB RAM, the
-> gcr device will report an error because it can't represent less than
-> 128 MB of memory. Currently, this is reported as
->
-> $ ./arm-softmmu/qemu-system-arm -machine npcm750-evb -nographic -m 64
-> Unexpected error in npcm7xx_gcr_realize() at
-> /usr/local/google/home/hskinnemoen/qemu/for-upstream/hw/misc/npcm7xx_gcr.=
-c:151:
-> qemu-system-arm: npcm7xx_gcr: DRAM size 67108864 is too small (128 MiB mi=
-nimum)
-> Aborted
->
-> But if I change npcm7xx_realize() to propagate errors from
-> sysbus_realize(gcr), and change npcm750_evb_init() to use error_fatal
-> instead of error_abort, I get
->
-> $ ./arm-softmmu/qemu-system-arm -machine npcm750-evb -nographic -m 64
-> qemu-system-arm: npcm7xx_gcr: DRAM size 67108864 is too small (128 MiB mi=
-nimum)
->
-> which seems less scary and more accurate.
-
-Looks like a bug fix to me :)
+Thanks,
+drew
 

@@ -1,100 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp560223lfm;
-        Wed, 15 Jul 2020 07:05:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxbO0nI82+KkN65JJLTdCpCSluVJpxlG9/b6WKaUc+y3HWUPzd6ZuTusGbZcQ3XzSrRBqF4
-X-Received: by 2002:a5b:14a:: with SMTP id c10mr16488533ybp.493.1594821901076;
-        Wed, 15 Jul 2020 07:05:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594821901; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp562311lfm;
+        Wed, 15 Jul 2020 07:07:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzf3DDhLcLRtLIXmAdChmyvpyaWwb0PKjlSh+SB199QWL+xlg16glkWnV0HggmZP6ayLZBf
+X-Received: by 2002:a25:1381:: with SMTP id 123mr17175725ybt.84.1594822020843;
+        Wed, 15 Jul 2020 07:07:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594822020; cv=none;
         d=google.com; s=arc-20160816;
-        b=XW8BlGMjxf5ZPgv4PK8r88w0C1JaznujtEV+u8VuUIuN5k4SHOK1Mv2AsJoRiIHBaI
-         ssyYq+qdeVcK8arZJBHwAz2dqUlGapSa5xGZOD6wYE97++UzIDAAiVI2WvQ1A8mkpolj
-         iYVMyLRmhJekLr0JAxuNa2kLFysu5x2bK53/5rCVAvq3Fb6hYYYzDRKiUB7LcETjRZDM
-         mgz3AwiJtogAqgy1oYn817s/3xvxLcGKtQRVbOc3p0Z1/2bk50/c0vOqyC96DXy9MMG0
-         l4xocs2ERnNAyU0OLZ/qFVGJHizb9E9/Fsl3YfPRGe0dOmh3vgfLKVZujTch3ANktLrk
-         O9uA==
+        b=Pl7x5V5V4mjGR8ZJXOoitbrXKLht/hPs79J81Y+z8CiDRZelz0tuXOrLGIPPUab3ip
+         c6f52G978VyWYO+kJ/eMMcmGj7bAfBxoR25GRH7rhwYltTbURKmd6FheZX3AHw8KfgF0
+         LPXyq4Dp4VC7QzahN3eavvJK8wie+8J1xjK+X4osbMPrmJhXwxAoNOdN1QWP7pnr1PEP
+         oD321NBQ3uzCSN2IHsKNQpJY2cC19cM+4n9XIq3VP0jQrsyQanIsC37KFle3jcUjhxtf
+         9Pzjf1/Rj8pUhfzkkApG3LTVj1vZETUhaAzmeCFkwXswNsZJNf8FxBL57b6bUVnw476q
+         oSAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=AkBlyp40DiIM7TNyjoB2z5dsCGgUHKGkbokmCXgV6lk=;
-        b=YK3+bsg8fBOIcAxoFjcwtaXBGVra+xPh3B1j//Dc746aU8pPSWsoYD33W2EbKC/1z1
-         DT65EqOoPyVSbwJBTsHaxAI16ae2aQ+qByeAhAnuO9rbPAPYS0VnL53SGXgtPjfZiuqk
-         l7GpaO/wvcirY/6TsCpdkVWYen5v41iEPYQ5n5xOmVV4zaagGiSRaSEDfW/Hdee/M6Tc
-         F8Wgi9Kd7MIHdf18kjV8nHghHJbmnh+MiTMfjTUEMHP+Cx2XVO13Ht0fS29mf+/Gp7Ba
-         vWXBjqFP9vp975w05wHET9qVCYWY92ExyM2cq1Cex/W43GcySz3Uh9AVQNoHiVq+9Dr4
-         BB2Q==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=WKVwDo8gc++pP1vRtC4pwYv8NmmthcI9PuigKAgGKc0=;
+        b=Jd7cDqax5hZonAtaXqhq4+dojBRZypQrR7SEcK+PiZGL+bAn+yqWzgs2EZM+/HRftf
+         7eZAs6AlqZodYPUWXl01r062xUJATMqMzPbYYo6hr4d70wsqUwx7iDQ+eLNlYTDHf+vj
+         IPLWb3iOJ/InSnaYiJd1Qkc0j42ktm+U+9jfDm7YZS8hJirDGuKjzoyQwg1FPfPzVuIN
+         4QREWb5wgUDh+Eb89R0Tw7XE/lIBBKn3G7pJk6/OAh6+Tl8kt0SOuIGfeypcvzUUrnnJ
+         f5XuhcPOEhyuSbaZjA/PSPuTzAtGf4u5PNhBzgmBvhiyjlkbsSA8726iSNDYIfwpBY6w
+         7OkA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fPaN07xL;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ky3ZXx6X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m184si3020146yba.476.2020.07.15.07.05.00
+        by mx.google.com with ESMTPS id d11si2671916ybl.209.2020.07.15.07.07.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 15 Jul 2020 07:05:01 -0700 (PDT)
+        Wed, 15 Jul 2020 07:07:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fPaN07xL;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ky3ZXx6X;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55902 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34460 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jvi1s-0007Pq-Ap
-	for alex.bennee@linaro.org; Wed, 15 Jul 2020 10:05:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43926)
+	id 1jvi3o-00024g-7B
+	for alex.bennee@linaro.org; Wed, 15 Jul 2020 10:07:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43956)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvi1j-0007Nb-7z
- for qemu-arm@nongnu.org; Wed, 15 Jul 2020 10:04:51 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:40863
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvi1l-0007TK-I8
+ for qemu-arm@nongnu.org; Wed, 15 Jul 2020 10:04:53 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:27912
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvi1h-0007JC-AE
- for qemu-arm@nongnu.org; Wed, 15 Jul 2020 10:04:50 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jvi1h-0007JN-O6
+ for qemu-arm@nongnu.org; Wed, 15 Jul 2020 10:04:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1594821888;
+ s=mimecast20190719; t=1594821889;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AkBlyp40DiIM7TNyjoB2z5dsCGgUHKGkbokmCXgV6lk=;
- b=fPaN07xLwRJtlwtZI2esQOj7uwYM0SPXDfC/uXiMTPpZ1xoCklfl6ZP/RErfk4dEqyda+S
- cghH6lyUTLuHdvBsnjNMNiUt8DlFLLIlLMBzLECTmUq5yJfFsJKU4L6sQQ5OYv3sw7xI9h
- hKb964MOdVPArAfMkC0z8sIrmwD24tU=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=WKVwDo8gc++pP1vRtC4pwYv8NmmthcI9PuigKAgGKc0=;
+ b=Ky3ZXx6X0p7nbJsREddSkWbCnZPwMeAmtOI8Rxazx7QmTm3UlGcRscIouTYCjmBZC7NECG
+ k6siAz7J+6R30vM97GjKLFaXKlCNi2wWAVkPxtpsM+XY1bnyvgvRE3zdwaOg/C1VC+37Xb
+ QVKIFm31EuU1UKUep3lXYGWNDnX0bS8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-447-M1RE-x-FPd2E0MSC6IETBw-1; Wed, 15 Jul 2020 10:04:44 -0400
-X-MC-Unique: M1RE-x-FPd2E0MSC6IETBw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
+ us-mta-400-vjk8lqGSPX2dD9doOgOCxg-1; Wed, 15 Jul 2020 10:04:45 -0400
+X-MC-Unique: vjk8lqGSPX2dD9doOgOCxg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DD5EB18C63C6;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DA19718C63C5;
  Wed, 15 Jul 2020 14:04:42 +0000 (UTC)
 Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
  [10.36.112.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3E3E479D00;
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D3905D9C5;
  Wed, 15 Jul 2020 14:04:42 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id ABBD4113860C; Wed, 15 Jul 2020 16:04:40 +0200 (CEST)
+ id A2F4E11386A6; Wed, 15 Jul 2020 16:04:40 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH for-5.1 2/2] hw: Mark nd_table[] misuse in realize methods
- FIXME
-Date: Wed, 15 Jul 2020 16:04:40 +0200
-Message-Id: <20200715140440.3540942-3-armbru@redhat.com>
-In-Reply-To: <20200715140440.3540942-1-armbru@redhat.com>
-References: <20200715140440.3540942-1-armbru@redhat.com>
+Subject: [PATCH for-5.1 0/2] Unbreak make check SPEED=slow
+Date: Wed, 15 Jul 2020 16:04:38 +0200
+Message-Id: <20200715140440.3540942-1-armbru@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/15 05:07:28
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/15 02:37:03
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -102,7 +97,7 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,83 +117,24 @@ Cc: peter.maydell@linaro.org, thuth@redhat.com, qemu-riscv@nongnu.org,
  palmer@dabbelt.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PD7YTBxJVzj/
+X-TUID: iJKlwtAmm8+y
 
-nd_table[] contains NIC configuration for boards to pick up.  Device
-code has no business looking there.  Several devices do it anyway.
-Two of them already have a suitable FIXME comment: "allwinner-a10" and
-"msf2-soc".  Copy it to the others: "allwinner-h3", "xlnx-versal",
-"xlnx,zynqmp", "sparc32-ledma", "riscv.sifive.u.soc".
+On the one hand, getting bitten by this bug in production seems
+somewhat unlikely.  On the other hand, shipping with broken "make
+check" would be embarrassing.  So let's consider the fix for 5.1.
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
+Markus Armbruster (2):
+  msf2: Unbreak device-list-properties for "msf-soc"
+  hw: Mark nd_table[] misuse in realize methods FIXME
+
  hw/arm/allwinner-h3.c | 1 +
+ hw/arm/msf2-soc.c     | 9 +++++----
  hw/arm/xlnx-versal.c  | 1 +
  hw/arm/xlnx-zynqmp.c  | 1 +
  hw/dma/sparc32_dma.c  | 1 +
  hw/riscv/sifive_u.c   | 1 +
- 5 files changed, 5 insertions(+)
+ 6 files changed, 10 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index 8e09468e86..ff92ded82c 100644
---- a/hw/arm/allwinner-h3.c
-+++ b/hw/arm/allwinner-h3.c
-@@ -358,6 +358,7 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-                               "sd-bus");
- 
-     /* EMAC */
-+    /* FIXME use qdev NIC properties instead of nd_table[] */
-     if (nd_table[0].used) {
-         qemu_check_nic_model(&nd_table[0], TYPE_AW_SUN8I_EMAC);
-         qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
-diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-index ead038b971..e3aa4bd1e5 100644
---- a/hw/arm/xlnx-versal.c
-+++ b/hw/arm/xlnx-versal.c
-@@ -160,6 +160,7 @@ static void versal_create_gems(Versal *s, qemu_irq *pic)
-         object_initialize_child(OBJECT(s), name, &s->lpd.iou.gem[i],
-                                 TYPE_CADENCE_GEM);
-         dev = DEVICE(&s->lpd.iou.gem[i]);
-+        /* FIXME use qdev NIC properties instead of nd_table[] */
-         if (nd->used) {
-             qemu_check_nic_model(nd, "cadence_gem");
-             qdev_set_nic_properties(dev, nd);
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index 772cfa3771..5855e5d5bf 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -455,6 +455,7 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-     for (i = 0; i < XLNX_ZYNQMP_NUM_GEMS; i++) {
-         NICInfo *nd = &nd_table[i];
- 
-+        /* FIXME use qdev NIC properties instead of nd_table[] */
-         if (nd->used) {
-             qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
-             qdev_set_nic_properties(DEVICE(&s->gem[i]), nd);
-diff --git a/hw/dma/sparc32_dma.c b/hw/dma/sparc32_dma.c
-index 9459178866..bcd1626fbd 100644
---- a/hw/dma/sparc32_dma.c
-+++ b/hw/dma/sparc32_dma.c
-@@ -341,6 +341,7 @@ static void sparc32_ledma_device_realize(DeviceState *dev, Error **errp)
-     DeviceState *d;
-     NICInfo *nd = &nd_table[0];
- 
-+    /* FIXME use qdev NIC properties instead of nd_table[] */
-     qemu_check_nic_model(nd, TYPE_LANCE);
- 
-     d = qdev_new(TYPE_LANCE);
-diff --git a/hw/riscv/sifive_u.c b/hw/riscv/sifive_u.c
-index 19a976c9a6..e5682c38a9 100644
---- a/hw/riscv/sifive_u.c
-+++ b/hw/riscv/sifive_u.c
-@@ -714,6 +714,7 @@ static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->otp), 0, memmap[SIFIVE_U_OTP].base);
- 
-+    /* FIXME use qdev NIC properties instead of nd_table[] */
-     if (nd->used) {
-         qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
-         qdev_set_nic_properties(DEVICE(&s->gem), nd);
 -- 
 2.26.2
 

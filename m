@@ -1,215 +1,137 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1497319lfm;
-        Thu, 16 Jul 2020 06:38:04 -0700 (PDT)
-X-Received: by 2002:adf:91e1:: with SMTP id 88mr4993260wri.89.1594906683919;
-        Thu, 16 Jul 2020 06:38:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594906683; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1521973lfm;
+        Thu, 16 Jul 2020 07:07:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx72EAXNuJiEuK4zECfH3NZ6eRPhATXtsGbWnXTbmZ/wH0XObgfz86m5txAjGy6Q5CA//U3
+X-Received: by 2002:a1f:5806:: with SMTP id m6mr3408538vkb.88.1594908470221;
+        Thu, 16 Jul 2020 07:07:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594908470; cv=none;
         d=google.com; s=arc-20160816;
-        b=Gm67m389vBDQzhlmUOJsw8HigUFxkVHRAQ9HoC61dO/jMJOByfIvq/i0i/GlVX2eeO
-         NMGGHnxgzhqBBWcPqMCnud3t/gLkfJDe/3zElnzjX3nvdCCL61R0DBFCczYe8bIIpdgq
-         khquOA2Bxu2AW9V8LH1jXJsVdzWE16cXz0O7KcgVPAn2dwwnu6sa0XlvFlKaZR+PqvIY
-         qPBovfT4ksUGhBicUGHFEOL7eTd7CYMEsqEE2ncY1Pqqdx9aDwDcUA5Ia+lOBfrwOH+k
-         TP23cfErSrgjTwnZbZPJUegZQdzjtaFMHpLRoISyqWzVZ6HYhCKOn9POwSWOeJrcMg0o
-         ENfQ==
+        b=NSUZuT6ceoA+i079x5AWra/bEu2jSGIkTYgOtQC0/cvL8g6DyrirNiwjfTjGwEp6LU
+         awHjXrEiNwaJajaaOjqZR/UF2n/otYSdIOGmOB/eHTxY5P1GMaois5bKF/1H776LqijM
+         9/qED6Ds3K7HXfxfqI/CvhsxjxWyz+QhENTTVr2vzZxv1UuI4fRPCAxFXG1tsKSBHNNH
+         GeG/AnnZ4vB3QYuqfmqZvnlXgEWcYdphhjdlHxre0u1fOJhAJAcdsXDapJaYcBtbMlGh
+         Eftwnmq0xLSdoOOkFSUh1YRZMcYnvCXeJ40DR5D6J40e1s8fsIiOdQiuhlJRN2VexImT
+         7Vew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject:sender
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=kpchH1Ymxb7KdPCSvmu92LHERYgYPs9pq4bs9hihZrg=;
-        b=UDJ3qJwxGrOGzFDt6Z71aLRnjYS3lBcSAlbdthyEdSsIDNWSv4qvtBCb8c3X/SQg64
-         u3RRJcWUYIAykmWLA+INT8fuwCsmDGkFiKn7qML5pGtZw87ioVHYYw67lmamNISgn6d3
-         p+NADAZM3hsfAoa+LbNA9oYL66GsaRzY+NpwMDfJdq1A/2jKsCsqCEu08BOg4SvQz1jN
-         ViPb1OV9Tl4hRH7daeEIb7V+kXHMJU/3Mr1zkglAd5tInUeQ/HPwTIl/wa65dN7voq6S
-         P0t67rdzdDYTRoQKpyHYHO4kfa3XUcwQ934I9bfHcID5rwjFuScpBvSaYIZ4kNx++uJ4
-         EnQQ==
+        bh=meBHaDeM21zC9TdihiN42IiCDadZaFUBqZTAt7ipv2I=;
+        b=Mn/qzz2iHKxRz8wE7JAklFGqzxBE/3j5LGppbI0FQzDaJPymUV5H63RUFfOYfCFVGD
+         Z9h1+d8XzZV+PFUwWnseGWmBn5jR281DPm9QaJIJ1+z8vlEDRIJL1h1b2GPDYBjpjZgs
+         E7EDfnyfhGoE70kTzaqagE7lRjQsHi05MrfKquANZFKT/207Oo4VLMmRQIkxm8mShSTW
+         VXLmtokZtufTbVhAgPdf1Vhwd4gpPZr+Lo7VFc9gvbquoyVSF5DWYr1bsGt3gl6D7tq1
+         WD/X/R3FYToZyGz0Iu0g02GubiMvzqKUSJ9ntSVAgQ8tKV878e8otc9q5XxjSqEQwaRc
+         u+iQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mS+bEVjm;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id e14sor3093250wrx.45.2020.07.16.06.38.03
-        (Google Transport Security);
-        Thu, 16 Jul 2020 06:38:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@linaro.org header.s=google header.b=MdCwDsCJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v143si696200vsv.26.2020.07.16.07.07.50
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 16 Jul 2020 07:07:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mS+bEVjm;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=kpchH1Ymxb7KdPCSvmu92LHERYgYPs9pq4bs9hihZrg=;
-        b=mS+bEVjmN+X5rISH59bOljcw7xb7iqIGNgrx9FQdy8J9GYbr0K49tdty4JTq/0bJkM
-         GdKI+f6jkaWIn3nHXOws4O28tnuu4hpb8yI3gqBiHvNPYxIe/48xaUx7ea34zGudCThi
-         vDVwO4vrDSYcVRi6RCaBrh2vGWNzhJAAd/28kUpBANbSiVhDgf+1oMm/oWuIX4W4YOk6
-         c73+QMLvhXiqmMrNDGPVXdoRJ4yV7UN7/EB12NebRiJIH3x87zBpZPRZ8ep8UW7cu6DA
-         QCAep9a9BPD4DCEvjIhmSsmggs0Z1xGyzr+ZrCgnaNvsKspIpnvxciFlzAOZQIYg5UBK
-         KhYg==
+       dkim=fail header.i=@linaro.org header.s=google header.b=MdCwDsCJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53452 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jw4Y9-0007Vl-Gd
+	for alex.bennee@linaro.org; Thu, 16 Jul 2020 10:07:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38638)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jw4Y1-0007UC-Ov
+ for qemu-arm@nongnu.org; Thu, 16 Jul 2020 10:07:41 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:38964)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jw4Xz-0002Fh-3V
+ for qemu-arm@nongnu.org; Thu, 16 Jul 2020 10:07:41 -0400
+Received: by mail-ot1-x344.google.com with SMTP id 18so4274807otv.6
+ for <qemu-arm@nongnu.org>; Thu, 16 Jul 2020 07:07:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=meBHaDeM21zC9TdihiN42IiCDadZaFUBqZTAt7ipv2I=;
+ b=MdCwDsCJzTWfLpJbtLQlCbtKRQ9S586gBDBEuU1pSn2ujP/fXK1Ge8yMAlt3sZc3Ks
+ G7hms1wRzaRbC8GlNGawrCOTmzEDDWiIwgSTQ3A+BkFMzQfWl6md5dKra/0NbGADMzTL
+ eFUAVXZq/VsQ5fjXRXYqhUiP+pjbcUtUdJgudJ6MG/PwNQRByaZN3bcQxqJVTWfvzCoQ
+ r80xBFdLwxFr9op9nJd/xeIbLfLcrCs9P9Npq88DmSQy+Yya+5/SHP5fl7LGJJQIYup8
+ m4f8mkPkwLrNYNNN76EKpr5FwrSQQDn7xY2NKWTM7bsO0qrKZGOrQWx8iNA+ihjE0vvT
+ hBcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=kpchH1Ymxb7KdPCSvmu92LHERYgYPs9pq4bs9hihZrg=;
-        b=nijb2cKzb6aPSUvykMTO7kxEofffuJ+IY5yTJYmvkYf2BFwBkHDWENViKFXlf8gFmE
-         v3QbEtx9IHjJayOI1g7ql946/J8aWHOjitRwpghUaqzjfbCfHp6GhpQfNwltMhHRzqhn
-         SsXI2ScIu4pdHHjsYjHSnYPaP1v0KeNGL51lndegrPXi4e9xmN59XsYKHWFBDjELdJot
-         /D+hrvPtcVeEPDyFhqDQL43hrSc6D+fGRqn+cxgswWbEkV8b2c83sFpknjrZKQEuFzAE
-         O/CIjd5quMQgdM22m8mPBy8rSZPYsF37BNncNVnlbisW+MXlvDsNHyjqeMkW9KhvpGk4
-         7n8g==
-X-Gm-Message-State: AOAM533UifWYJZJnAMRTB7wTvU2a7yUewE0qhU0dJvxT6+rjKCHG01s0
-	rptptlAlkuE9ZqrECnLDyYw=
-X-Google-Smtp-Source: ABdhPJxxkvC7HpIIvV2DW3hKXwk1yp4Ew5I8mEjWSwCojGpRAIpbU7hcUUkTUjjIdMsKPMXNrAokWg==
-X-Received: by 2002:adf:ff87:: with SMTP id j7mr5461505wrr.128.1594906683318;
-        Thu, 16 Jul 2020 06:38:03 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.138])
-        by smtp.gmail.com with ESMTPSA id g144sm4889336wme.2.2020.07.16.06.38.01
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Jul 2020 06:38:02 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
-Subject: Re: [PATCH v8 08/18] hw/arm/allwinner: add SD/MMC host controller
-To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, b.galvani@gmail.com,
- jasowang@redhat.com, alex.bennee@linaro.org, imammedo@redhat.com
-References: <20200311221854.30370-1-nieklinnenbank@gmail.com>
- <20200311221854.30370-9-nieklinnenbank@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <fb2469a5-6146-de4e-b07a-1c95e8d7e7c0@amsat.org>
-Date: Thu, 16 Jul 2020 15:38:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=meBHaDeM21zC9TdihiN42IiCDadZaFUBqZTAt7ipv2I=;
+ b=Qw+hMuOUfDc83Kcxq0BpMxYoFcr/OjjKm7tgQLAjcF4mEuBMuoZate28dbMSvoAz1o
+ gGSta6DMzs1ddD8btbzXoD6NcfwtyxSLCt2SDwdplVM1eT4SkbBTBzYrwtMZKl2gwfvP
+ I3WxXJc/gU7FHEFDsoDVC0wD13N2nqV3l9BpW4SdCW7VRXuAMTlmh/u9PDCHjTvOBwMb
+ C20krGaV6xyLMBuQRY8KvnaZ7J/v2mZsSKBqyvYmPFbDLp5jigbTPvGj0PuGvltcog1A
+ p+udMYKYJL5Fegm1nHmE9hwqUa0BKxSr/XnNTWSlsVLdN76lyP/GC9cGPVLg6ryDy78z
+ tgBg==
+X-Gm-Message-State: AOAM532fnl1tnznWcxvqT+UnmFNeXy8+yuj8xTTZPWI4+tjIjmX/ES+q
+ 3lyFwuynxTMZFtwdowFfdZjHdXHC2VIZ9lIe8Gc95A==
+X-Received: by 2002:a05:6830:10ce:: with SMTP id
+ z14mr4727217oto.135.1594908457624; 
+ Thu, 16 Jul 2020 07:07:37 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200311221854.30370-9-nieklinnenbank@gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: qIZr/vFsVXv3
+References: <20200715173418.186-1-erik.lucas.smit@gmail.com>
+ <b3c8ef39-5a1e-c49d-6ab8-342f42be088c@kaod.org>
+In-Reply-To: <b3c8ef39-5a1e-c49d-6ab8-342f42be088c@kaod.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 16 Jul 2020 15:07:26 +0100
+Message-ID: <CAFEAcA9H633W4eDsXJ40o0pAje6t103MaKjkaSqrW2BHLmaP7Q@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/arm/aspeed: Add board model for Supermicro X11 BMC
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, erik-smit <erik.lucas.smit@gmail.com>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nRL44SWVC685
 
-On 3/11/20 11:18 PM, Niek Linnenbank wrote:
-> The Allwinner System on Chip families sun4i and above contain
-> an integrated storage controller for Secure Digital (SD) and
-> Multi Media Card (MMC) interfaces. This commit adds support
-> for the Allwinner SD/MMC storage controller with the following
-> emulated features:
-> 
->  * DMA transfers
->  * Direct FIFO I/O
->  * Short/Long format command responses
->  * Auto-Stop command (CMD12)
->  * Insert & remove card detection
-> 
-> The following boards are extended with the SD host controller:
-> 
->  * Cubieboard (hw/arm/cubieboard.c)
->  * Orange Pi PC (hw/arm/orangepi.c)
-> 
-> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  include/hw/arm/allwinner-a10.h   |   2 +
->  include/hw/arm/allwinner-h3.h    |   3 +
->  include/hw/sd/allwinner-sdhost.h | 135 +++++
->  hw/arm/allwinner-a10.c           |  11 +
->  hw/arm/allwinner-h3.c            |  15 +-
->  hw/arm/cubieboard.c              |  15 +
->  hw/arm/orangepi.c                |  16 +
->  hw/sd/allwinner-sdhost.c         | 854 +++++++++++++++++++++++++++++++
->  hw/arm/Kconfig                   |   1 +
->  hw/sd/Makefile.objs              |   1 +
->  hw/sd/trace-events               |   7 +
->  11 files changed, 1059 insertions(+), 1 deletion(-)
->  create mode 100644 include/hw/sd/allwinner-sdhost.h
->  create mode 100644 hw/sd/allwinner-sdhost.c
-...
+On Thu, 16 Jul 2020 at 07:07, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> On 7/15/20 7:34 PM, erik-smit wrote:
+> > Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
+>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-> +static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
-> +                                      unsigned size)
-> +{
-> +    AwSdHostState *s = AW_SDHOST(opaque);
-> +    uint32_t res = 0;
-> +
-> +    switch (offset) {
-...
+Thanks; I've put this in my list of patches to put in
+via target-arm.next once 5.1 is released. If I seem to
+have forgotten about it please ping me once 5.1 is out.
 
-> +    case REG_SD_FIFO:      /* Read/Write FIFO */
-> +        if (sdbus_data_ready(&s->sdbus)) {
-> +            res = sdbus_read_data(&s->sdbus);
-> +            res |= sdbus_read_data(&s->sdbus) << 8;
-> +            res |= sdbus_read_data(&s->sdbus) << 16;
-> +            res |= sdbus_read_data(&s->sdbus) << 24;
-
-Also I'm a bit confused by the endianess here. Does the FIFO
-uses a particular endianess?
-
-> +            allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
-> +            allwinner_sdhost_auto_stop(s);
-> +            allwinner_sdhost_update_irq(s);
-> +        } else {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
-> +                          __func__);
-> +        }
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
-> +                      HWADDR_PRIx"\n", __func__, offset);
-> +        res = 0;
-> +        break;
-> +    }
-> +
-> +    trace_allwinner_sdhost_read(offset, res, size);
-> +    return res;
-> +}
-> +
-> +static void allwinner_sdhost_write(void *opaque, hwaddr offset,
-> +                                   uint64_t value, unsigned size)
-> +{
-> +    AwSdHostState *s = AW_SDHOST(opaque);
-> +
-> +    trace_allwinner_sdhost_write(offset, value, size);
-> +
-> +    switch (offset) {
-...
-
-> +    case REG_SD_FIFO:      /* Read/Write FIFO */
-> +        sdbus_write_data(&s->sdbus, value & 0xff);
-> +        sdbus_write_data(&s->sdbus, (value >> 8) & 0xff);
-> +        sdbus_write_data(&s->sdbus, (value >> 16) & 0xff);
-> +        sdbus_write_data(&s->sdbus, (value >> 24) & 0xff);
-> +        allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
-> +        allwinner_sdhost_auto_stop(s);
-> +        allwinner_sdhost_update_irq(s);
-> +        break;
-> +    case REG_SD_RES_CRC:   /* Response CRC from card/eMMC */
-> +    case REG_SD_DATA7_CRC: /* CRC Data 7 from card/eMMC */
-> +    case REG_SD_DATA6_CRC: /* CRC Data 6 from card/eMMC */
-> +    case REG_SD_DATA5_CRC: /* CRC Data 5 from card/eMMC */
-> +    case REG_SD_DATA4_CRC: /* CRC Data 4 from card/eMMC */
-> +    case REG_SD_DATA3_CRC: /* CRC Data 3 from card/eMMC */
-> +    case REG_SD_DATA2_CRC: /* CRC Data 2 from card/eMMC */
-> +    case REG_SD_DATA1_CRC: /* CRC Data 1 from card/eMMC */
-> +    case REG_SD_DATA0_CRC: /* CRC Data 0 from card/eMMC */
-> +    case REG_SD_CRC_STA:   /* CRC status from card/eMMC in write operation */
-> +        break;
-> +    default:
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
-> +                      HWADDR_PRIx"\n", __func__, offset);
-> +        break;
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps allwinner_sdhost_ops = {
-> +    .read = allwinner_sdhost_read,
-> +    .write = allwinner_sdhost_write,
-> +    .endianness = DEVICE_NATIVE_ENDIAN,
-
-Maybe this device is little endian only?
-
-> +    .valid = {
-> +        .min_access_size = 4,
-> +        .max_access_size = 4,
-> +    },
-> +    .impl.min_access_size = 4,
-> +};
+thanks
+-- PMM

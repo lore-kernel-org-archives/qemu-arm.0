@@ -1,108 +1,92 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1521973lfm;
-        Thu, 16 Jul 2020 07:07:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx72EAXNuJiEuK4zECfH3NZ6eRPhATXtsGbWnXTbmZ/wH0XObgfz86m5txAjGy6Q5CA//U3
-X-Received: by 2002:a1f:5806:: with SMTP id m6mr3408538vkb.88.1594908470221;
-        Thu, 16 Jul 2020 07:07:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594908470; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1524704lfm;
+        Thu, 16 Jul 2020 07:10:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzxb4t/BX+rK51YzF8O2tNgCutnxaeCtxJxSvPZoGp19LMCU3u0XPLTk3czOX1vSGvki3Yp
+X-Received: by 2002:a67:e345:: with SMTP id s5mr3348042vsm.4.1594908645166;
+        Thu, 16 Jul 2020 07:10:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594908645; cv=none;
         d=google.com; s=arc-20160816;
-        b=NSUZuT6ceoA+i079x5AWra/bEu2jSGIkTYgOtQC0/cvL8g6DyrirNiwjfTjGwEp6LU
-         awHjXrEiNwaJajaaOjqZR/UF2n/otYSdIOGmOB/eHTxY5P1GMaois5bKF/1H776LqijM
-         9/qED6Ds3K7HXfxfqI/CvhsxjxWyz+QhENTTVr2vzZxv1UuI4fRPCAxFXG1tsKSBHNNH
-         GeG/AnnZ4vB3QYuqfmqZvnlXgEWcYdphhjdlHxre0u1fOJhAJAcdsXDapJaYcBtbMlGh
-         Eftwnmq0xLSdoOOkFSUh1YRZMcYnvCXeJ40DR5D6J40e1s8fsIiOdQiuhlJRN2VexImT
-         7Vew==
+        b=eBuVncodsJIlpM7F7eeWNU+vesU86mOQhEWLpa0nc0ZkI1YXZ3mLZGOWxauX5KPR7w
+         cJHNOCAlDV98lNdGWU+UpbiatDXAa7rgEjG26FMWJI8Bd19BBiPHyLS22GysDbFQiTs6
+         gR739n3uCwTzJXGuSgV9BekUB5jiHSwLzZ7m+Q/uWQv7uZ5bES3tky5Z5pID2+8wkx4k
+         BYTfCXXbcVkUH/NgSuKOiEUHXvo9D8mM1HD86cwkeaaueI54bJd9CSkSOCF0QfBt2qDG
+         RqeZZ1bGdtywZ6FZ8va24NjbCKVQir5sfchzWerfpjK40GlTIZ/GEJ/C7LgzkBwBGmhx
+         vBmQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=meBHaDeM21zC9TdihiN42IiCDadZaFUBqZTAt7ipv2I=;
-        b=Mn/qzz2iHKxRz8wE7JAklFGqzxBE/3j5LGppbI0FQzDaJPymUV5H63RUFfOYfCFVGD
-         Z9h1+d8XzZV+PFUwWnseGWmBn5jR281DPm9QaJIJ1+z8vlEDRIJL1h1b2GPDYBjpjZgs
-         E7EDfnyfhGoE70kTzaqagE7lRjQsHi05MrfKquANZFKT/207Oo4VLMmRQIkxm8mShSTW
-         VXLmtokZtufTbVhAgPdf1Vhwd4gpPZr+Lo7VFc9gvbquoyVSF5DWYr1bsGt3gl6D7tq1
-         WD/X/R3FYToZyGz0Iu0g02GubiMvzqKUSJ9ntSVAgQ8tKV878e8otc9q5XxjSqEQwaRc
-         u+iQ==
+         :subject:message-id:date:from:in-reply-to:references:mime-version;
+        bh=wWt5ahbOxhvdXh73SENCOrj8jOaH1VwJmV03whzLYgE=;
+        b=V9PGW+FGURI6uQlvjvcALT4JGyWQgBTjRDOr2guW26X1Igdu2YeHdatJyu6KKlBfnC
+         lPX1uvV7a/tmOkK/BzhEiAnJ0nSnnne1Es0u6BVI1Zp0POn1g/1I0dx6OIHDUPGXBwoA
+         +0XRcCuEnaZkmRTpnEOIpGKCesaQHPQPJ52e9WYccAC0OZXU1YRpXAumIIey5WsODLD2
+         6OEvAHiS9CLSqhTGQWaDjiAhi3gqmLnJhrYewOETMbCXNO8kff4Q8rVxphe78SCHAm1N
+         g4e7VMuon/5TO+CKSB0IwRMmqX01LwFh9kxD/wJXxvLFEuL3TnbapJqElO0P9iea6pyS
+         bZzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MdCwDsCJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v143si696200vsv.26.2020.07.16.07.07.50
+        by mx.google.com with ESMTPS id o1si695827vsn.326.2020.07.16.07.10.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jul 2020 07:07:50 -0700 (PDT)
+        Thu, 16 Jul 2020 07:10:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MdCwDsCJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53452 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58148 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jw4Y9-0007Vl-Gd
-	for alex.bennee@linaro.org; Thu, 16 Jul 2020 10:07:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38638)
+	id 1jw4ay-0001Bw-GI
+	for alex.bennee@linaro.org; Thu, 16 Jul 2020 10:10:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39444)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jw4Y1-0007UC-Ov
- for qemu-arm@nongnu.org; Thu, 16 Jul 2020 10:07:41 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:38964)
+ (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
+ id 1jw4am-0001BU-BX; Thu, 16 Jul 2020 10:10:32 -0400
+Received: from mail-oo1-f68.google.com ([209.85.161.68]:42119)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jw4Xz-0002Fh-3V
- for qemu-arm@nongnu.org; Thu, 16 Jul 2020 10:07:41 -0400
-Received: by mail-ot1-x344.google.com with SMTP id 18so4274807otv.6
- for <qemu-arm@nongnu.org>; Thu, 16 Jul 2020 07:07:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=meBHaDeM21zC9TdihiN42IiCDadZaFUBqZTAt7ipv2I=;
- b=MdCwDsCJzTWfLpJbtLQlCbtKRQ9S586gBDBEuU1pSn2ujP/fXK1Ge8yMAlt3sZc3Ks
- G7hms1wRzaRbC8GlNGawrCOTmzEDDWiIwgSTQ3A+BkFMzQfWl6md5dKra/0NbGADMzTL
- eFUAVXZq/VsQ5fjXRXYqhUiP+pjbcUtUdJgudJ6MG/PwNQRByaZN3bcQxqJVTWfvzCoQ
- r80xBFdLwxFr9op9nJd/xeIbLfLcrCs9P9Npq88DmSQy+Yya+5/SHP5fl7LGJJQIYup8
- m4f8mkPkwLrNYNNN76EKpr5FwrSQQDn7xY2NKWTM7bsO0qrKZGOrQWx8iNA+ihjE0vvT
- hBcg==
+ (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
+ id 1jw4ak-0002ec-DB; Thu, 16 Jul 2020 10:10:32 -0400
+Received: by mail-oo1-f68.google.com with SMTP id y9so1197850oot.9;
+ Thu, 16 Jul 2020 07:10:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=meBHaDeM21zC9TdihiN42IiCDadZaFUBqZTAt7ipv2I=;
- b=Qw+hMuOUfDc83Kcxq0BpMxYoFcr/OjjKm7tgQLAjcF4mEuBMuoZate28dbMSvoAz1o
- gGSta6DMzs1ddD8btbzXoD6NcfwtyxSLCt2SDwdplVM1eT4SkbBTBzYrwtMZKl2gwfvP
- I3WxXJc/gU7FHEFDsoDVC0wD13N2nqV3l9BpW4SdCW7VRXuAMTlmh/u9PDCHjTvOBwMb
- C20krGaV6xyLMBuQRY8KvnaZ7J/v2mZsSKBqyvYmPFbDLp5jigbTPvGj0PuGvltcog1A
- p+udMYKYJL5Fegm1nHmE9hwqUa0BKxSr/XnNTWSlsVLdN76lyP/GC9cGPVLg6ryDy78z
- tgBg==
-X-Gm-Message-State: AOAM532fnl1tnznWcxvqT+UnmFNeXy8+yuj8xTTZPWI4+tjIjmX/ES+q
- 3lyFwuynxTMZFtwdowFfdZjHdXHC2VIZ9lIe8Gc95A==
-X-Received: by 2002:a05:6830:10ce:: with SMTP id
- z14mr4727217oto.135.1594908457624; 
- Thu, 16 Jul 2020 07:07:37 -0700 (PDT)
+ bh=wWt5ahbOxhvdXh73SENCOrj8jOaH1VwJmV03whzLYgE=;
+ b=AKdND31/S6iqbAhsfr//eHoEZX2S+i3Ifx5gXIQwnoTnTVWchcEtmcXXRBSIN10dPn
+ iSGzLYp+JZI82OZrKSBwx5kkrlkYTISZzZVl1kKfe4keCQkZoMvEdB7/TRhniB3BOEaN
+ UR1LjogU1EqgdpU97jIoUQOaJQwGYkYIe8sLcg+UGOB/Uc3E8N+NAW3zaKGQNJJp5Rph
+ nf6+wBngKqpqam5mFNBQJfRtZ92Sbr/0uUjOmgWee6g+3jYJcuhtOoxyRMMZFmu2hkWT
+ HA4hnAQNPqxWy7ApFW2ygPXJ63TOlQbaEpVReFQ2dtWZ2ciXpv/X98jKiLcooy9e9gRl
+ +DDA==
+X-Gm-Message-State: AOAM532Jt+VPfEtWdCsC4PLKy0PavfkNz1vEk4gFrQBl2wigK5B8W6VU
+ unTAuIWDY6IThK4ZJYJQhEzPAFTuDIXfuRFEZ9o=
+X-Received: by 2002:a4a:5209:: with SMTP id d9mr4371731oob.40.1594908627931;
+ Thu, 16 Jul 2020 07:10:27 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200715173418.186-1-erik.lucas.smit@gmail.com>
- <b3c8ef39-5a1e-c49d-6ab8-342f42be088c@kaod.org>
-In-Reply-To: <b3c8ef39-5a1e-c49d-6ab8-342f42be088c@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 16 Jul 2020 15:07:26 +0100
-Message-ID: <CAFEAcA9H633W4eDsXJ40o0pAje6t103MaKjkaSqrW2BHLmaP7Q@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm/aspeed: Add board model for Supermicro X11 BMC
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+References: <20200423090118.11199-1-geert+renesas@glider.be>
+ <20200423090118.11199-5-geert+renesas@glider.be>
+ <520d1d07-7530-e133-af6e-a8b4615829b8@amsat.org>
+ <e279f622-3af6-5073-dac0-4c452a88c32b@amsat.org>
+In-Reply-To: <e279f622-3af6-5073-dac0-4c452a88c32b@amsat.org>
+From: Geert Uytterhoeven <geert@linux-m68k.org>
+Date: Thu, 16 Jul 2020 16:10:16 +0200
+Message-ID: <CAMuHMdU_d-Wd1G37=fUUmmoWgSwyu7M0Rjq1Kw-2H=pbo1CFNg@mail.gmail.com>
+Subject: Re: [PATCH QEMU v2 4/5] ARM: PL061: Add gpiodev support
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=209.85.161.68;
+ envelope-from=geert.uytterhoeven@gmail.com; helo=mail-oo1-f68.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/16 10:10:28
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: 1
+X-Spam_score: 0.1
+X-Spam_bar: /
+X-Spam_report: (0.1 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=1,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,23 +99,172 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, erik-smit <erik.lucas.smit@gmail.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Linus Walleij <linus.walleij@linaro.org>, Magnus Damm <magnus.damm@gmail.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
+ "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alexander Graf <graf@amazon.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Bartosz Golaszewski <bartekgola@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nRL44SWVC685
+X-TUID: S42XUNPpBFz2
 
-On Thu, 16 Jul 2020 at 07:07, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+Hi Philippe,
+
+On Thu, Apr 23, 2020 at 12:08 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
+> On 4/23/20 11:33 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > On 4/23/20 11:01 AM, Geert Uytterhoeven wrote:
+> >> Make the PL061 GPIO controller user-creatable, and allow the user to t=
+ie
+> >> a newly created instance to a gpiochip on the host.
+> >>
+> >> To create a new GPIO controller, the QEMU command line must be augment=
+ed
+> >> with:
+> >>
+> >>     -device pl061,host=3D<gpiochip>
+> >>
+> >> with <gpiochip> the name or label of the gpiochip on the host.
+> >>
+> >> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
+
+> >> --- a/hw/gpio/pl061.c
+> >> +++ b/hw/gpio/pl061.c
+> >> @@ -12,11 +12,14 @@
+> >>  #include "hw/arm/fdt.h"
+> >>  #include "hw/gpio/pl061.h"
+> >>  #include "hw/irq.h"
+> >> +#include "hw/qdev-properties.h"
+> >>  #include "hw/sysbus.h"
+> >>  #include "migration/vmstate.h"
+> >> +#include "qapi/error.h"
+> >>  #include "qemu/log.h"
+> >>  #include "qemu/module.h"
+> >>  #include "sysemu/device_tree.h"
+> >> +#include "sysemu/gpiodev.h"
+> >>
+> >>  //#define DEBUG_PL061 1
+> >>
+> >> @@ -41,6 +44,9 @@ static const uint8_t pl061_id_luminary[12] =3D
+> >>  typedef struct PL061State {
+> >>      SysBusDevice parent_obj;
+> >>
+> >> +#ifdef CONFIG_GPIODEV
+> >> +    char *host;
+> >> +#endif
+> >>      MemoryRegion iomem;
+> >>      uint32_t locked;
+> >>      uint32_t data;
+> >> @@ -370,10 +376,39 @@ static void pl061_init(Object *obj)
+> >>      qdev_init_gpio_out(dev, s->out, 8);
+> >>
+> >> +#ifdef CONFIG_GPIODEV
+> >> +static Property pl061_properties[] =3D {
+> >> +    DEFINE_PROP_STRING("host", PL061State, host),
+> >> +    DEFINE_PROP_END_OF_LIST(),
+> >> +};
+> >> +
+> >> +static void pl061_realize(DeviceState *dev, Error **errp)
+> >> +{
+> >> +    PL061State *s =3D PL061(dev);
+> >> +
+> >> +    if (!dev->opts) {
+> >> +        /* Not created by user */
+> >> +        return;
+> >> +    }
+> >> +
+> >> +    if (!s->host) {
+> >> +        error_setg(errp, "'host' property is required");
+> >> +        return;
+> >> +    }
+> >> +
+> >> +    qemu_gpiodev_add(dev, s->host, 8, errp);
+> >> +}
+> >> +#endif /* CONFIG_GPIODEV */
+> >> +
+> >>  static void pl061_class_init(ObjectClass *klass, void *data)
+> >>  {
+> >>      DeviceClass *dc =3D DEVICE_CLASS(klass);
+> >>
+> >> +#ifdef CONFIG_GPIODEV
+> >> +    device_class_set_props(dc, pl061_properties);
+> >> +    dc->realize =3D pl061_realize;
+> >> +    dc->user_creatable =3D true;
+> >> +#endif
+> >>      dc->vmsd =3D &vmstate_pl061;
+> >>      dc->reset =3D &pl061_reset;
+> >>  }
+> >> diff --git a/qemu-options.hx b/qemu-options.hx
+> >> index 292d4e7c0cef6097..182de7fb63923b38 100644
+> >> --- a/qemu-options.hx
+> >> +++ b/qemu-options.hx
+> >> @@ -875,6 +875,15 @@ SRST
+> >>  ``-device isa-ipmi-bt,bmc=3Did[,ioport=3Dval][,irq=3Dval]``
+> >>      Like the KCS interface, but defines a BT interface. The default p=
+ort
+> >>      is 0xe4 and the default interrupt is 5.
+> >> +
+> >> +#ifdef CONFIG_GPIODEV
+> >> +``-device pl061,host=3Dgpiochip``
+> >> +    Add a PL061 GPIO controller, and map its virtual GPIO lines to a =
+GPIO
+> >> +    controller on the host.
+> >> +
+> >> +    ``host=3Dgpiochip``
+> >> +        The name or label of the GPIO controller on the host.
+> >> +#endif
+> >>  ERST
+> >>
+> >>  DEF("name", HAS_ARG, QEMU_OPTION_name,
+> >>
+> >
+> > Instead of restricting this to the pl061, it would be cleaner you add a
+> > GPIO_PLUGGABLE_INTERFACE (or GPIO_BINDABLE_INTERFACE or better name),
+> > and have TYPE_PL061 implement it.
 >
-> On 7/15/20 7:34 PM, erik-smit wrote:
-> > Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
->
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> IOW your backend should consume devices implementing this generic interfa=
+ce.
 
-Thanks; I've put this in my list of patches to put in
-via target-arm.next once 5.1 is released. If I seem to
-have forgotten about it please ping me once 5.1 is out.
+Thanks for the suggestion! I had a look into implementing this.
 
-thanks
--- PMM
+Please pardon my QEMU illiteracy, but I fail to see how adding an
+interface, and letting frontends like pl061.c implement it, will help:
+  - The backend never has to call directly into the frontend: all
+    communication is done indirectly, using existing core qemu irq and
+    qdev gpio calls.
+  - The frontend has to call into the backend once, at initialization
+    time, to pass the host=3D parameter, and the number of GPIOs supported
+    by the frontend (through qemu_gpiodev_add()).
+  - Generalizing host=3D parsing in the backend would be nice, to avoid
+    duplicating this in each and every frontend, but AFAIU, an interface
+    cannot use device_class_set_props(), as InterfaceClass is not
+    derived from DeviceClass.
+
+Note that when adding more features later (input support, and e.g.
+pull-up/down support), the frontend will have to call into the backend
+to change GPIO line configuration at runtime, but this is from frontend
+to backend again, not the other way around.
+
+I do agree that if we ever want to support multiple backends,
+implementing that through an interface (for the backend, not for the
+frontend) would be needed.
+
+What am I missing?
+Thanks again!
+
+Gr{oetje,eeting}s,
+
+                        Geert
+
+--=20
+Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
+.org
+
+In personal conversations with technical people, I call myself a hacker. Bu=
+t
+when I'm talking to journalists I just say "programmer" or something like t=
+hat.
+                                -- Linus Torvalds

@@ -1,74 +1,73 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1482770lfm;
-        Thu, 16 Jul 2020 06:23:00 -0700 (PDT)
-X-Received: by 2002:a5d:4b84:: with SMTP id b4mr5303100wrt.334.1594905780660;
-        Thu, 16 Jul 2020 06:23:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594905780; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1497319lfm;
+        Thu, 16 Jul 2020 06:38:04 -0700 (PDT)
+X-Received: by 2002:adf:91e1:: with SMTP id 88mr4993260wri.89.1594906683919;
+        Thu, 16 Jul 2020 06:38:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594906683; cv=none;
         d=google.com; s=arc-20160816;
-        b=woXW1nLr/HO+hGO1SU2f/HpwG1AelOGCnBroB+9QNL/mh6FkZEnQhaWwivan/xRIrh
-         feH4uBacUXq9ceJvobrAZaPnnzXPEO9fDEtcfSY9W+ismedjDhUO9PMIWGcZn0b1nC5z
-         7X4oJ+FBUBBKbbYl1am/9fzm5rjF3iP+xQmnyEPi/jqgbdtFT7tE7lAcfsva5oOILcWe
-         oP667zUQ2wQ9nZQ4Znxt5IZCKgPdtsqfFpIj0xlzOe2evq+tW8ed0SMJZiT52MbbXbsf
-         /uOvzCAoSXAYQk+AXu719cjuPlsoYuBdoYKrZimdATDyyskGabQhO7g7hhtQwCgZ34Ck
-         ooeQ==
+        b=Gm67m389vBDQzhlmUOJsw8HigUFxkVHRAQ9HoC61dO/jMJOByfIvq/i0i/GlVX2eeO
+         NMGGHnxgzhqBBWcPqMCnud3t/gLkfJDe/3zElnzjX3nvdCCL61R0DBFCczYe8bIIpdgq
+         khquOA2Bxu2AW9V8LH1jXJsVdzWE16cXz0O7KcgVPAn2dwwnu6sa0XlvFlKaZR+PqvIY
+         qPBovfT4ksUGhBicUGHFEOL7eTd7CYMEsqEE2ncY1Pqqdx9aDwDcUA5Ia+lOBfrwOH+k
+         TP23cfErSrgjTwnZbZPJUegZQdzjtaFMHpLRoISyqWzVZ6HYhCKOn9POwSWOeJrcMg0o
+         ENfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
-         :sender:dkim-signature;
-        bh=f8kTRj9f/lKZV3whiDWS/qsQN7HcFp/YvD+z4gzOGw8=;
-        b=hRupPJxOJ0N7GiYFQnVFDusN28Pn39mXWjG7KrvsmB0ymV5f1DiN/TgJGytQjbOmI/
-         P/Do9TF+wSIuUGUAL6WMcWltuwRFr7gXsjZQNDZn7LQyc0XEV8TFyD+mW2LXlV0y6Fzq
-         wX9hk3rFgM97PhGXfG7Uut/StLwv1kXWMAacKbx5FJAj9hs0+zmgVwGMCSHIXmxlBQxI
-         vHCd2WJ52gff1taPrClpLBqcyDcxN68RVUwr97ejlxmqmne8f5hctxY15Fzx2p9nLCd3
-         vhUgw2qDd128h4HrE6UhZvlXi9V7qJu1hIjicj3Sc3bs/MCujRXfOCFatbFmZzDLLhj/
-         yEZw==
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=kpchH1Ymxb7KdPCSvmu92LHERYgYPs9pq4bs9hihZrg=;
+        b=UDJ3qJwxGrOGzFDt6Z71aLRnjYS3lBcSAlbdthyEdSsIDNWSv4qvtBCb8c3X/SQg64
+         u3RRJcWUYIAykmWLA+INT8fuwCsmDGkFiKn7qML5pGtZw87ioVHYYw67lmamNISgn6d3
+         p+NADAZM3hsfAoa+LbNA9oYL66GsaRzY+NpwMDfJdq1A/2jKsCsqCEu08BOg4SvQz1jN
+         ViPb1OV9Tl4hRH7daeEIb7V+kXHMJU/3Mr1zkglAd5tInUeQ/HPwTIl/wa65dN7voq6S
+         P0t67rdzdDYTRoQKpyHYHO4kfa3XUcwQ934I9bfHcID5rwjFuScpBvSaYIZ4kNx++uJ4
+         EnQQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Saayd0+v;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mS+bEVjm;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id c4sor3022786wrm.62.2020.07.16.06.23.00
+        by mx.google.com with SMTPS id e14sor3093250wrx.45.2020.07.16.06.38.03
         (Google Transport Security);
-        Thu, 16 Jul 2020 06:23:00 -0700 (PDT)
+        Thu, 16 Jul 2020 06:38:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Saayd0+v;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=mS+bEVjm;
        spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=gmail.com; s=20161025;
-        h=sender:subject:to:cc:references:from:autocrypt:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=f8kTRj9f/lKZV3whiDWS/qsQN7HcFp/YvD+z4gzOGw8=;
-        b=Saayd0+vy3GQOzwm53X6xFg0xaES0rMLU3ZhFMlWJwTNldspCnDA2mEtojQh/gD4HO
-         oNDuAhkgnt6+7CcRiMrxoZBbeB2IOe4ypEmpzUk/U0jyp+50OklTxE8Qz7RurnnhKdbk
-         n3mUrh6hIQW9Cyqdg65G5PTYoTi5kS9TrQz0H9eomYOti3bxUi8bPb9DoIvi3YrG95xe
-         SBjdXfnP5M/IHIEsgc3UEd93ZCBxH0dusPLVOfz3rg/KmeIpcHaA4ezJxVUcXicUgr6l
-         MZw8cKVD+Rx68mdGdLLtJngV/2SWdnjKm/vzO5ShkxgDqS9NzlOaWkZWcRbd25cebvO+
-         gwGQ==
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=kpchH1Ymxb7KdPCSvmu92LHERYgYPs9pq4bs9hihZrg=;
+        b=mS+bEVjmN+X5rISH59bOljcw7xb7iqIGNgrx9FQdy8J9GYbr0K49tdty4JTq/0bJkM
+         GdKI+f6jkaWIn3nHXOws4O28tnuu4hpb8yI3gqBiHvNPYxIe/48xaUx7ea34zGudCThi
+         vDVwO4vrDSYcVRi6RCaBrh2vGWNzhJAAd/28kUpBANbSiVhDgf+1oMm/oWuIX4W4YOk6
+         c73+QMLvhXiqmMrNDGPVXdoRJ4yV7UN7/EB12NebRiJIH3x87zBpZPRZ8ep8UW7cu6DA
+         QCAep9a9BPD4DCEvjIhmSsmggs0Z1xGyzr+ZrCgnaNvsKspIpnvxciFlzAOZQIYg5UBK
+         KhYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=f8kTRj9f/lKZV3whiDWS/qsQN7HcFp/YvD+z4gzOGw8=;
-        b=rpnNn+l028hjTkBk6iGz/yId/9II42qhHSkEWit8OLGyAqllaHHHNZgTUBPfR/gNSv
-         a+mgd+EXLZGf/kjvTu7ZVXci+/JEGx2y2z6xddpjo4050nfivSHCkDV+2Zc0/Q3c0qWj
-         U46X/1TAH8XGw3ZuXoptErneIOXu79LzFJXo2pHCCbVgjK4581eEY+YTUU4g7TaPFpZ6
-         ZiH+EtQXOXdm1OanyS+m1kXz3v6ugw5VFSaVDBLA71bapDivMDN5H+Ke17kSOpEae1gA
-         L5pChY/vcICD6azuE0uGEMKhnKGHnuA94b3VQ0DvoelQt1yhOeANp7QLlvYRIazfu2U2
-         1EWw==
-X-Gm-Message-State: AOAM5313SZZQ7ZjKJaa10LKzhe5dceo6ApaJ8tGEpmIg0Ny1fc5ab/F6
-	ad1z9TiM4zn/5v2TGYcr74s=
-X-Google-Smtp-Source: ABdhPJwrghvhX7hLwrf11MYvAyQT71KOFsgl5vw+alrTNa0lRkftrAvvXzmb1/VcWyXRnxVbIV891A==
-X-Received: by 2002:adf:f984:: with SMTP id f4mr5004583wrr.221.1594905780151;
-        Thu, 16 Jul 2020 06:23:00 -0700 (PDT)
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=kpchH1Ymxb7KdPCSvmu92LHERYgYPs9pq4bs9hihZrg=;
+        b=nijb2cKzb6aPSUvykMTO7kxEofffuJ+IY5yTJYmvkYf2BFwBkHDWENViKFXlf8gFmE
+         v3QbEtx9IHjJayOI1g7ql946/J8aWHOjitRwpghUaqzjfbCfHp6GhpQfNwltMhHRzqhn
+         SsXI2ScIu4pdHHjsYjHSnYPaP1v0KeNGL51lndegrPXi4e9xmN59XsYKHWFBDjELdJot
+         /D+hrvPtcVeEPDyFhqDQL43hrSc6D+fGRqn+cxgswWbEkV8b2c83sFpknjrZKQEuFzAE
+         O/CIjd5quMQgdM22m8mPBy8rSZPYsF37BNncNVnlbisW+MXlvDsNHyjqeMkW9KhvpGk4
+         7n8g==
+X-Gm-Message-State: AOAM533UifWYJZJnAMRTB7wTvU2a7yUewE0qhU0dJvxT6+rjKCHG01s0
+	rptptlAlkuE9ZqrECnLDyYw=
+X-Google-Smtp-Source: ABdhPJxxkvC7HpIIvV2DW3hKXwk1yp4Ew5I8mEjWSwCojGpRAIpbU7hcUUkTUjjIdMsKPMXNrAokWg==
+X-Received: by 2002:adf:ff87:: with SMTP id j7mr5461505wrr.128.1594906683318;
+        Thu, 16 Jul 2020 06:38:03 -0700 (PDT)
 Return-Path: <philippe.mathieu.daude@gmail.com>
 Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.138])
-        by smtp.gmail.com with ESMTPSA id s10sm8922430wme.31.2020.07.16.06.22.59
+        by smtp.gmail.com with ESMTPSA id g144sm4889336wme.2.2020.07.16.06.38.01
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 16 Jul 2020 06:22:59 -0700 (PDT)
+        Thu, 16 Jul 2020 06:38:02 -0700 (PDT)
 Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
 Subject: Re: [PATCH v8 08/18] hw/arm/allwinner: add SD/MMC host controller
 To: Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-devel@nongnu.org
@@ -77,31 +76,8 @@ Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, b.galvani@gmail.com,
 References: <20200311221854.30370-1-nieklinnenbank@gmail.com>
  <20200311221854.30370-9-nieklinnenbank@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <29ee48af-ff20-9c97-0e09-f752e6186f03@amsat.org>
-Date: Thu, 16 Jul 2020 15:22:58 +0200
+Message-ID: <fb2469a5-6146-de4e-b07a-1c95e8d7e7c0@amsat.org>
+Date: Thu, 16 Jul 2020 15:38:01 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
@@ -109,9 +85,7 @@ In-Reply-To: <20200311221854.30370-9-nieklinnenbank@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: uszuVmvhI8XF
-
-Hi Niek,
+X-TUID: qIZr/vFsVXv3
 
 On 3/11/20 11:18 PM, Niek Linnenbank wrote:
 > The Allwinner System on Chip families sun4i and above contain
@@ -151,128 +125,91 @@ On 3/11/20 11:18 PM, Niek Linnenbank wrote:
 >  create mode 100644 hw/sd/allwinner-sdhost.c
 ...
 
-> +static uint32_t allwinner_sdhost_process_desc(AwSdHostState *s,
-> +                                              hwaddr desc_addr,
-> +                                              TransferDescriptor *desc,
-> +                                              bool is_write, uint32_t max_bytes)
+> +static uint64_t allwinner_sdhost_read(void *opaque, hwaddr offset,
+> +                                      unsigned size)
 > +{
-> +    AwSdHostClass *klass = AW_SDHOST_GET_CLASS(s);
-> +    uint32_t num_done = 0;
-> +    uint32_t num_bytes = max_bytes;
-> +    uint8_t buf[1024];
-
-Is 1024 a constant specific for this device?
-
+> +    AwSdHostState *s = AW_SDHOST(opaque);
+> +    uint32_t res = 0;
 > +
-> +    /* Read descriptor */
-> +    cpu_physical_memory_read(desc_addr, desc, sizeof(*desc));
-
-I missed that while reviewing, but IIUC from [*] below, this code
-is emulating the DMA context right? So we should be using the DMA
-accessors here, dma_memory_read() and dma_memory_write().
-
-> +    if (desc->size == 0) {
-> +        desc->size = klass->max_desc_size;
-> +    } else if (desc->size > klass->max_desc_size) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: DMA descriptor buffer size "
-> +                      " is out-of-bounds: %" PRIu32 " > %zu",
-> +                      __func__, desc->size, klass->max_desc_size);
-> +        desc->size = klass->max_desc_size;
-> +    }
-> +    if (desc->size < num_bytes) {
-> +        num_bytes = desc->size;
-> +    }
-> +
-> +    trace_allwinner_sdhost_process_desc(desc_addr, desc->size,
-> +                                        is_write, max_bytes);
-> +
-> +    while (num_done < num_bytes) {
-> +        /* Try to completely fill the local buffer */
-> +        uint32_t buf_bytes = num_bytes - num_done;
-> +        if (buf_bytes > sizeof(buf)) {
-> +            buf_bytes = sizeof(buf);
-> +        }
-> +
-> +        /* Write to SD bus */
-> +        if (is_write) {
-> +            cpu_physical_memory_read((desc->addr & DESC_SIZE_MASK) + num_done,
-> +                                      buf, buf_bytes);
-> +
-> +            for (uint32_t i = 0; i < buf_bytes; i++) {
-> +                sdbus_write_data(&s->sdbus, buf[i]);
-> +            }
-> +
-> +        /* Read from SD bus */
-> +        } else {
-> +            for (uint32_t i = 0; i < buf_bytes; i++) {
-> +                buf[i] = sdbus_read_data(&s->sdbus);
-> +            }
-> +            cpu_physical_memory_write((desc->addr & DESC_SIZE_MASK) + num_done,
-> +                                       buf, buf_bytes);
-> +        }
-> +        num_done += buf_bytes;
-> +    }
-> +
-> +    /* Clear hold flag and flush descriptor */
-> +    desc->status &= ~DESC_STATUS_HOLD;
-> +    cpu_physical_memory_write(desc_addr, desc, sizeof(*desc));
-> +
-> +    return num_done;
-> +}
-> +
-> +static void allwinner_sdhost_dma(AwSdHostState *s)
-> +{
-> +    TransferDescriptor desc;
-> +    hwaddr desc_addr = s->desc_base;
-> +    bool is_write = (s->command & SD_CMDR_WRITE);
-> +    uint32_t bytes_done = 0;
-> +
-> +    /* Check if DMA can be performed */
-> +    if (s->byte_count == 0 || s->block_size == 0 ||
-> +      !(s->global_ctl & SD_GCTL_DMA_ENB)) {
-> +        return;
-> +    }
-> +
-> +    /*
-> +     * For read operations, data must be available on the SD bus
-> +     * If not, it is an error and we should not act at all
-> +     */
-> +    if (!is_write && !sdbus_data_ready(&s->sdbus)) {
-> +        return;
-> +    }
-> +
-> +    /* Process the DMA descriptors until all data is copied */
-> +    while (s->byte_count > 0) {
-> +        bytes_done = allwinner_sdhost_process_desc(s, desc_addr, &desc,
-> +                                                   is_write, s->byte_count);
-
-[*]
-
-> +        allwinner_sdhost_update_transfer_cnt(s, bytes_done);
-> +
-> +        if (bytes_done <= s->byte_count) {
-> +            s->byte_count -= bytes_done;
-> +        } else {
-> +            s->byte_count = 0;
-> +        }
-> +
-> +        if (desc.status & DESC_STATUS_LAST) {
-> +            break;
-> +        } else {
-> +            desc_addr = desc.next;
-> +        }
-> +    }
-> +
-> +    /* Raise IRQ to signal DMA is completed */
-> +    s->irq_status |= SD_RISR_DATA_COMPLETE | SD_RISR_SDIO_INTR;
-> +
-> +    /* Update DMAC bits */
-> +    s->dmac_status |= SD_IDST_INT_SUMMARY;
-> +
-> +    if (is_write) {
-> +        s->dmac_status |= SD_IDST_TRANSMIT_IRQ;
-> +    } else {
-> +        s->dmac_status |= SD_IDST_RECEIVE_IRQ;
-> +    }
-> +}
+> +    switch (offset) {
 ...
+
+> +    case REG_SD_FIFO:      /* Read/Write FIFO */
+> +        if (sdbus_data_ready(&s->sdbus)) {
+> +            res = sdbus_read_data(&s->sdbus);
+> +            res |= sdbus_read_data(&s->sdbus) << 8;
+> +            res |= sdbus_read_data(&s->sdbus) << 16;
+> +            res |= sdbus_read_data(&s->sdbus) << 24;
+
+Also I'm a bit confused by the endianess here. Does the FIFO
+uses a particular endianess?
+
+> +            allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
+> +            allwinner_sdhost_auto_stop(s);
+> +            allwinner_sdhost_update_irq(s);
+> +        } else {
+> +            qemu_log_mask(LOG_GUEST_ERROR, "%s: no data ready on SD bus\n",
+> +                          __func__);
+> +        }
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
+> +                      HWADDR_PRIx"\n", __func__, offset);
+> +        res = 0;
+> +        break;
+> +    }
+> +
+> +    trace_allwinner_sdhost_read(offset, res, size);
+> +    return res;
+> +}
+> +
+> +static void allwinner_sdhost_write(void *opaque, hwaddr offset,
+> +                                   uint64_t value, unsigned size)
+> +{
+> +    AwSdHostState *s = AW_SDHOST(opaque);
+> +
+> +    trace_allwinner_sdhost_write(offset, value, size);
+> +
+> +    switch (offset) {
+...
+
+> +    case REG_SD_FIFO:      /* Read/Write FIFO */
+> +        sdbus_write_data(&s->sdbus, value & 0xff);
+> +        sdbus_write_data(&s->sdbus, (value >> 8) & 0xff);
+> +        sdbus_write_data(&s->sdbus, (value >> 16) & 0xff);
+> +        sdbus_write_data(&s->sdbus, (value >> 24) & 0xff);
+> +        allwinner_sdhost_update_transfer_cnt(s, sizeof(uint32_t));
+> +        allwinner_sdhost_auto_stop(s);
+> +        allwinner_sdhost_update_irq(s);
+> +        break;
+> +    case REG_SD_RES_CRC:   /* Response CRC from card/eMMC */
+> +    case REG_SD_DATA7_CRC: /* CRC Data 7 from card/eMMC */
+> +    case REG_SD_DATA6_CRC: /* CRC Data 6 from card/eMMC */
+> +    case REG_SD_DATA5_CRC: /* CRC Data 5 from card/eMMC */
+> +    case REG_SD_DATA4_CRC: /* CRC Data 4 from card/eMMC */
+> +    case REG_SD_DATA3_CRC: /* CRC Data 3 from card/eMMC */
+> +    case REG_SD_DATA2_CRC: /* CRC Data 2 from card/eMMC */
+> +    case REG_SD_DATA1_CRC: /* CRC Data 1 from card/eMMC */
+> +    case REG_SD_DATA0_CRC: /* CRC Data 0 from card/eMMC */
+> +    case REG_SD_CRC_STA:   /* CRC status from card/eMMC in write operation */
+> +        break;
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "%s: out-of-bounds offset %"
+> +                      HWADDR_PRIx"\n", __func__, offset);
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps allwinner_sdhost_ops = {
+> +    .read = allwinner_sdhost_read,
+> +    .write = allwinner_sdhost_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+
+Maybe this device is little endian only?
+
+> +    .valid = {
+> +        .min_access_size = 4,
+> +        .max_access_size = 4,
+> +    },
+> +    .impl.min_access_size = 4,
+> +};

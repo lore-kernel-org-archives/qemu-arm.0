@@ -1,270 +1,186 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1524704lfm;
-        Thu, 16 Jul 2020 07:10:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzxb4t/BX+rK51YzF8O2tNgCutnxaeCtxJxSvPZoGp19LMCU3u0XPLTk3czOX1vSGvki3Yp
-X-Received: by 2002:a67:e345:: with SMTP id s5mr3348042vsm.4.1594908645166;
-        Thu, 16 Jul 2020 07:10:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594908645; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1831132lfm;
+        Thu, 16 Jul 2020 13:57:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwUPanpUlatkAQCwy5hLf/R3JC0QhG5LZtKyIEkQYJGiGFVvCRTpQJnU8BlbtKEE+kpbCWA
+X-Received: by 2002:a25:b7cd:: with SMTP id u13mr9051015ybj.362.1594933067828;
+        Thu, 16 Jul 2020 13:57:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594933067; cv=none;
         d=google.com; s=arc-20160816;
-        b=eBuVncodsJIlpM7F7eeWNU+vesU86mOQhEWLpa0nc0ZkI1YXZ3mLZGOWxauX5KPR7w
-         cJHNOCAlDV98lNdGWU+UpbiatDXAa7rgEjG26FMWJI8Bd19BBiPHyLS22GysDbFQiTs6
-         gR739n3uCwTzJXGuSgV9BekUB5jiHSwLzZ7m+Q/uWQv7uZ5bES3tky5Z5pID2+8wkx4k
-         BYTfCXXbcVkUH/NgSuKOiEUHXvo9D8mM1HD86cwkeaaueI54bJd9CSkSOCF0QfBt2qDG
-         RqeZZ1bGdtywZ6FZ8va24NjbCKVQir5sfchzWerfpjK40GlTIZ/GEJ/C7LgzkBwBGmhx
-         vBmQ==
+        b=dpG3m5PfE2nwA2tcxQv04L1cVzpFdKPsC719XomzwFY0hTSkR6l+YlayuZojbldpzM
+         DGxMgJwx3zJKQfXL2uJt8lNpbU+jHeGCtixjObTcSKTv9IC6aeZJmzydOmBA3V0LwssQ
+         3xSDM1gGKAT12uFss3+SvN5O6gZU4ImOgJBPe3UiPNYxn6//8E2quyl/xx0CxqHFbk+4
+         XoasDwrMVXwHUPCE5ptOJsvKMVAGxfPk5yhkR+zGIzM6ItoBcxqndmVX5kQNXIPHHJp1
+         /dpu1IMMnEpoW313yIxyDkXpG8qPD2htubLlVRJHfli2WtSDgTJMUwDFdDH3bGDhJfGL
+         Ybxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version;
-        bh=wWt5ahbOxhvdXh73SENCOrj8jOaH1VwJmV03whzLYgE=;
-        b=V9PGW+FGURI6uQlvjvcALT4JGyWQgBTjRDOr2guW26X1Igdu2YeHdatJyu6KKlBfnC
-         lPX1uvV7a/tmOkK/BzhEiAnJ0nSnnne1Es0u6BVI1Zp0POn1g/1I0dx6OIHDUPGXBwoA
-         +0XRcCuEnaZkmRTpnEOIpGKCesaQHPQPJ52e9WYccAC0OZXU1YRpXAumIIey5WsODLD2
-         6OEvAHiS9CLSqhTGQWaDjiAhi3gqmLnJhrYewOETMbCXNO8kff4Q8rVxphe78SCHAm1N
-         g4e7VMuon/5TO+CKSB0IwRMmqX01LwFh9kxD/wJXxvLFEuL3TnbapJqElO0P9iea6pyS
-         bZzA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=KaTxWEFwh8YfXI8KSxg7J1l0+flvZY2xPiPzQG9QEM8=;
+        b=FFnn4PTGbK6RWyK+V1kJxV72J5EV7UY9p+67YApVltmZJOGvQyFA6h9gS2xQBYewoM
+         rINXm/744hMO7KVdKoREtD8G8kBL/Zd+3jk1MDWJeosbi960687biUSOfG9QlEJthoAG
+         QO4BOvvrdCcdw6o2GPuVUTc6AGBOtiXm2CFSQMj2tV0/I2HIXuNaBO04ltyoQHSebtFP
+         7Xc80Ku7/Lw0nXV3eXjxvFJzZSauUQExrNyDZiCCkufCW8ogNrE2rh3A8tPWh31EiTRF
+         4ZRVGUKouCRwCB1edsl9q9I+RLz9QCAu8efmOiaYoJH/Ww0mMo0Jr1QVMvbvFjD/hq4o
+         9WDw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=S3MXJtmC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o1si695827vsn.326.2020.07.16.07.10.44
+        by mx.google.com with ESMTPS id 125si6605357ybe.484.2020.07.16.13.57.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jul 2020 07:10:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 16 Jul 2020 13:57:47 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58148 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=S3MXJtmC;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:38532 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jw4ay-0001Bw-GI
-	for alex.bennee@linaro.org; Thu, 16 Jul 2020 10:10:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39444)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jwAwt-0001XC-8y
+	for alex.bennee@linaro.org; Thu, 16 Jul 2020 16:57:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
- id 1jw4am-0001BU-BX; Thu, 16 Jul 2020 10:10:32 -0400
-Received: from mail-oo1-f68.google.com ([209.85.161.68]:42119)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1jwAvw-00011V-HZ
+ for qemu-devel@nongnu.org; Thu, 16 Jul 2020 16:56:48 -0400
+Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44]:45961)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <geert.uytterhoeven@gmail.com>)
- id 1jw4ak-0002ec-DB; Thu, 16 Jul 2020 10:10:32 -0400
-Received: by mail-oo1-f68.google.com with SMTP id y9so1197850oot.9;
- Thu, 16 Jul 2020 07:10:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1jwAvu-0000Ln-OT
+ for qemu-devel@nongnu.org; Thu, 16 Jul 2020 16:56:48 -0400
+Received: by mail-vk1-xa44.google.com with SMTP id h1so1637084vkn.12
+ for <qemu-devel@nongnu.org>; Thu, 16 Jul 2020 13:56:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=KaTxWEFwh8YfXI8KSxg7J1l0+flvZY2xPiPzQG9QEM8=;
+ b=S3MXJtmCJIVmtNXryZSm7wuf5r5YkFHxZHttHyYYzH3MeJh3WtokxPap+d9wFrUFgZ
+ mdp293ouPSm7y30wW3sV6IDAa8+OKXaobmMGm/49WrU4+oOpiqNETeQomAXnCmPMHGhl
+ AT/sqhEodfo7trB56LXS5f+pdgsyIq4gdQyEqAMLTCYOcIm+T12qzl/zHLeueYrPlZ3t
+ 7r9AvVIlf0svxJQZU+xkp7646ERHoxgjLBDY4D8VPWg3Y/3YiYzWAIQ+EusmpFIRVvwT
+ SYsJVfrQXKZmWGsG4T0jRHFQCt17CrvmCqWfVlf+qcg5FYKLkBL3u1AHkjMcNsYPK+QO
+ Qsfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=wWt5ahbOxhvdXh73SENCOrj8jOaH1VwJmV03whzLYgE=;
- b=AKdND31/S6iqbAhsfr//eHoEZX2S+i3Ifx5gXIQwnoTnTVWchcEtmcXXRBSIN10dPn
- iSGzLYp+JZI82OZrKSBwx5kkrlkYTISZzZVl1kKfe4keCQkZoMvEdB7/TRhniB3BOEaN
- UR1LjogU1EqgdpU97jIoUQOaJQwGYkYIe8sLcg+UGOB/Uc3E8N+NAW3zaKGQNJJp5Rph
- nf6+wBngKqpqam5mFNBQJfRtZ92Sbr/0uUjOmgWee6g+3jYJcuhtOoxyRMMZFmu2hkWT
- HA4hnAQNPqxWy7ApFW2ygPXJ63TOlQbaEpVReFQ2dtWZ2ciXpv/X98jKiLcooy9e9gRl
- +DDA==
-X-Gm-Message-State: AOAM532Jt+VPfEtWdCsC4PLKy0PavfkNz1vEk4gFrQBl2wigK5B8W6VU
- unTAuIWDY6IThK4ZJYJQhEzPAFTuDIXfuRFEZ9o=
-X-Received: by 2002:a4a:5209:: with SMTP id d9mr4371731oob.40.1594908627931;
- Thu, 16 Jul 2020 07:10:27 -0700 (PDT)
+ bh=KaTxWEFwh8YfXI8KSxg7J1l0+flvZY2xPiPzQG9QEM8=;
+ b=KoXcBQwioUb9Umd8XgaSE4ol4oTdEbWYnGSGg2zowolRf0cBF2s5jlwVui7VKjBYkt
+ GDX14TF/P2UdbnZzaZKVSW+HFR28i9CQnYxaRa3ikW5EkerxPEhMigqK+c25TcUB3rVM
+ 6Ur0Z+dfQ2sLmLwZm6Ld6wa5osDTaNa27rzgQxGn/FACQmQe0XuKcLpZkfM3jedoFT2o
+ 5FCBLRPfUvuDCNYzCeQQdBKij6maOQj4vjKRptVl7JB/OFrXDW//2p6b5xYPmoHpojAm
+ Tnv3Y3o15Gpfju/hpW0dKUV10HyTMMD3B3pqBe5hY6GrYObrQHz7fr88XAN0+w3v1cZ6
+ pNwQ==
+X-Gm-Message-State: AOAM530XwXPhb1DTf/6T5dFgxtyMJG9rrg7aoD5gTgtsQNA5uKDEmRJy
+ v/Lh90okkQkgk2fceb3fc+gun4TFPikDi2dp63Rubg==
+X-Received: by 2002:a1f:38d2:: with SMTP id f201mr4830349vka.91.1594933004141; 
+ Thu, 16 Jul 2020 13:56:44 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200423090118.11199-1-geert+renesas@glider.be>
- <20200423090118.11199-5-geert+renesas@glider.be>
- <520d1d07-7530-e133-af6e-a8b4615829b8@amsat.org>
- <e279f622-3af6-5073-dac0-4c452a88c32b@amsat.org>
-In-Reply-To: <e279f622-3af6-5073-dac0-4c452a88c32b@amsat.org>
-From: Geert Uytterhoeven <geert@linux-m68k.org>
-Date: Thu, 16 Jul 2020 16:10:16 +0200
-Message-ID: <CAMuHMdU_d-Wd1G37=fUUmmoWgSwyu7M0Rjq1Kw-2H=pbo1CFNg@mail.gmail.com>
-Subject: Re: [PATCH QEMU v2 4/5] ARM: PL061: Add gpiodev support
+References: <20200709003608.3834629-1-hskinnemoen@google.com>
+ <20200709003608.3834629-11-hskinnemoen@google.com>
+ <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
+ <CAFQmdRZcygskP3iwss01-Jz67yjAP_JENXjWM2Bp8U=DRzxR0Q@mail.gmail.com>
+ <875zaq78xq.fsf@dusky.pond.sub.org>
+ <19733456-a672-595d-e721-e0ef26d7f665@amsat.org>
+ <87v9iq2hkv.fsf@dusky.pond.sub.org>
+ <e87663cf-7cb2-ca6c-a751-e5c1cebc5440@amsat.org>
+ <87pn8xywz2.fsf@dusky.pond.sub.org>
+ <b3bc658f-a865-8e6b-c904-01c7724e89cc@amsat.org>
+ <CAFQmdRa9FiP6yX=XDrJy5KpjifQyVkQiY6DXtSoJSvfoq7Vm6w@mail.gmail.com>
+In-Reply-To: <CAFQmdRa9FiP6yX=XDrJy5KpjifQyVkQiY6DXtSoJSvfoq7Vm6w@mail.gmail.com>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Thu, 16 Jul 2020 13:56:31 -0700
+Message-ID: <CAFQmdRac6tsZafN3PsnLhPA_Ny032ZAjOFuXkmYvJ-ubjcpPPw@mail.gmail.com>
+Subject: Re: [PATCH v5 10/11] hw/arm: Wire up BMC boot flash for npcm750-evb
+ and quanta-gsj
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Markus Armbruster <armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Qemu-block <qemu-block@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>, 
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=209.85.161.68;
- envelope-from=geert.uytterhoeven@gmail.com; helo=mail-oo1-f68.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/16 10:10:28
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: 1
-X-Spam_score: 0.1
-X-Spam_bar: /
-X-Spam_report: (0.1 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=1,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a44;
+ envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa44.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -185
+X-Spam_score: -18.6
+X-Spam_bar: ------------------
+X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Linus Walleij <linus.walleij@linaro.org>, Magnus Damm <magnus.damm@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Linux-Renesas <linux-renesas-soc@vger.kernel.org>,
- "open list:GPIO SUBSYSTEM" <linux-gpio@vger.kernel.org>,
- qemu-arm <qemu-arm@nongnu.org>, Alexander Graf <graf@amazon.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Bartosz Golaszewski <bartekgola@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S42XUNPpBFz2
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PbknzTGHAH2c
 
-Hi Philippe,
-
-On Thu, Apr 23, 2020 at 12:08 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
-> On 4/23/20 11:33 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > On 4/23/20 11:01 AM, Geert Uytterhoeven wrote:
-> >> Make the PL061 GPIO controller user-creatable, and allow the user to t=
-ie
-> >> a newly created instance to a gpiochip on the host.
-> >>
-> >> To create a new GPIO controller, the QEMU command line must be augment=
-ed
-> >> with:
-> >>
-> >>     -device pl061,host=3D<gpiochip>
-> >>
-> >> with <gpiochip> the name or label of the gpiochip on the host.
-> >>
-> >> Signed-off-by: Geert Uytterhoeven <geert+renesas@glider.be>
-
-> >> --- a/hw/gpio/pl061.c
-> >> +++ b/hw/gpio/pl061.c
-> >> @@ -12,11 +12,14 @@
-> >>  #include "hw/arm/fdt.h"
-> >>  #include "hw/gpio/pl061.h"
-> >>  #include "hw/irq.h"
-> >> +#include "hw/qdev-properties.h"
-> >>  #include "hw/sysbus.h"
-> >>  #include "migration/vmstate.h"
-> >> +#include "qapi/error.h"
-> >>  #include "qemu/log.h"
-> >>  #include "qemu/module.h"
-> >>  #include "sysemu/device_tree.h"
-> >> +#include "sysemu/gpiodev.h"
-> >>
-> >>  //#define DEBUG_PL061 1
-> >>
-> >> @@ -41,6 +44,9 @@ static const uint8_t pl061_id_luminary[12] =3D
-> >>  typedef struct PL061State {
-> >>      SysBusDevice parent_obj;
-> >>
-> >> +#ifdef CONFIG_GPIODEV
-> >> +    char *host;
-> >> +#endif
-> >>      MemoryRegion iomem;
-> >>      uint32_t locked;
-> >>      uint32_t data;
-> >> @@ -370,10 +376,39 @@ static void pl061_init(Object *obj)
-> >>      qdev_init_gpio_out(dev, s->out, 8);
-> >>
-> >> +#ifdef CONFIG_GPIODEV
-> >> +static Property pl061_properties[] =3D {
-> >> +    DEFINE_PROP_STRING("host", PL061State, host),
-> >> +    DEFINE_PROP_END_OF_LIST(),
-> >> +};
-> >> +
-> >> +static void pl061_realize(DeviceState *dev, Error **errp)
-> >> +{
-> >> +    PL061State *s =3D PL061(dev);
-> >> +
-> >> +    if (!dev->opts) {
-> >> +        /* Not created by user */
-> >> +        return;
-> >> +    }
-> >> +
-> >> +    if (!s->host) {
-> >> +        error_setg(errp, "'host' property is required");
-> >> +        return;
-> >> +    }
-> >> +
-> >> +    qemu_gpiodev_add(dev, s->host, 8, errp);
-> >> +}
-> >> +#endif /* CONFIG_GPIODEV */
-> >> +
-> >>  static void pl061_class_init(ObjectClass *klass, void *data)
-> >>  {
-> >>      DeviceClass *dc =3D DEVICE_CLASS(klass);
-> >>
-> >> +#ifdef CONFIG_GPIODEV
-> >> +    device_class_set_props(dc, pl061_properties);
-> >> +    dc->realize =3D pl061_realize;
-> >> +    dc->user_creatable =3D true;
-> >> +#endif
-> >>      dc->vmsd =3D &vmstate_pl061;
-> >>      dc->reset =3D &pl061_reset;
-> >>  }
-> >> diff --git a/qemu-options.hx b/qemu-options.hx
-> >> index 292d4e7c0cef6097..182de7fb63923b38 100644
-> >> --- a/qemu-options.hx
-> >> +++ b/qemu-options.hx
-> >> @@ -875,6 +875,15 @@ SRST
-> >>  ``-device isa-ipmi-bt,bmc=3Did[,ioport=3Dval][,irq=3Dval]``
-> >>      Like the KCS interface, but defines a BT interface. The default p=
-ort
-> >>      is 0xe4 and the default interrupt is 5.
-> >> +
-> >> +#ifdef CONFIG_GPIODEV
-> >> +``-device pl061,host=3Dgpiochip``
-> >> +    Add a PL061 GPIO controller, and map its virtual GPIO lines to a =
-GPIO
-> >> +    controller on the host.
-> >> +
-> >> +    ``host=3Dgpiochip``
-> >> +        The name or label of the GPIO controller on the host.
-> >> +#endif
-> >>  ERST
-> >>
-> >>  DEF("name", HAS_ARG, QEMU_OPTION_name,
-> >>
-> >
-> > Instead of restricting this to the pl061, it would be cleaner you add a
-> > GPIO_PLUGGABLE_INTERFACE (or GPIO_BINDABLE_INTERFACE or better name),
-> > and have TYPE_PL061 implement it.
+On Wed, Jul 15, 2020 at 1:54 PM Havard Skinnemoen
+<hskinnemoen@google.com> wrote:
 >
-> IOW your backend should consume devices implementing this generic interfa=
-ce.
+> On Wed, Jul 15, 2020 at 3:57 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
+org> wrote:
+> >
+> > On 7/15/20 11:00 AM, Markus Armbruster wrote:
+> > > Now my point.  Why first make up user configuration, then use that to
+> > > create a BlockBackend, when you could just go ahead and create the
+> > > BlockBackend?
+> >
+> > CLI issue mostly.
+> >
+> > We can solve it similarly to the recent "sdcard: Do not allow invalid S=
+D
+> > card sizes" patch:
+> >
+> >  if (!dinfo) {
+> >      error_setg(errp, "Missing SPI flash drive");
+> >      error_append_hint(errp, "You can use a dummy drive using:\n");
+> >      error_append_hint(errp, "-drive if=3Dmtd,driver=3Dnull-co,"
+> >                              "read-ones=3Don,size=3D64M\n);
+> >      return;
+> >  }
+> >
+> > having npcm7xx_connect_flash() taking an Error* argument,
+> > and MachineClass::init() call it with &error_fatal.
+>
+> Erroring out if the user specifies a configuration that can't possibly
+> boot sounds good to me. Better than trying to come up with defaults
+> that are still not going to result in a bootable system.
+>
+> For testing recovery paths, I think it makes sense to explicitly
+> specify a null device as you suggest.
 
-Thanks for the suggestion! I had a look into implementing this.
+Hmm, one problem. qom-test fails with
 
-Please pardon my QEMU illiteracy, but I fail to see how adding an
-interface, and letting frontends like pl061.c implement it, will help:
-  - The backend never has to call directly into the frontend: all
-    communication is done indirectly, using existing core qemu irq and
-    qdev gpio calls.
-  - The frontend has to call into the backend once, at initialization
-    time, to pass the host=3D parameter, and the number of GPIOs supported
-    by the frontend (through qemu_gpiodev_add()).
-  - Generalizing host=3D parsing in the backend would be nice, to avoid
-    duplicating this in each and every frontend, but AFAIU, an interface
-    cannot use device_class_set_props(), as InterfaceClass is not
-    derived from DeviceClass.
+qemu-system-aarch64: Missing SPI flash drive
+You can add a dummy drive using:
+-drive if=3Dmtd,driver=3Dnull-co,read-zeroes=3Don,size=3D32M
+Broken pipe
+/usr/local/google/home/hskinnemoen/qemu/for-upstream/tests/qtest/libqtest.c=
+:166:
+kill_qemu() tried to terminate QEMU process but encountered exit
+status 1 (expected 0)
+ERROR qom-test - too few tests run (expected 68, got 7)
 
-Note that when adding more features later (input support, and e.g.
-pull-up/down support), the frontend will have to call into the backend
-to change GPIO line configuration at runtime, but this is from frontend
-to backend again, not the other way around.
-
-I do agree that if we ever want to support multiple backends,
-implementing that through an interface (for the backend, not for the
-frontend) would be needed.
-
-What am I missing?
-Thanks again!
-
-Gr{oetje,eeting}s,
-
-                        Geert
-
---=20
-Geert Uytterhoeven -- There's lots of Linux beyond ia32 -- geert@linux-m68k=
-.org
-
-In personal conversations with technical people, I call myself a hacker. Bu=
-t
-when I'm talking to journalists I just say "programmer" or something like t=
-hat.
-                                -- Linus Torvalds
+So it looks like we might need a different solution to this, unless we
+want to make generic tests more machine-aware...

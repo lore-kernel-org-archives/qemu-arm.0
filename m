@@ -1,99 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2144263lfm;
-        Thu, 16 Jul 2020 23:03:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzQcfXnZRexXYO4q3/KdacZi4+ybz5LwcP7RbT+JbTqZ8ybYqHMO09VtnbA3loBKOpGGh1R
-X-Received: by 2002:a5b:4c5:: with SMTP id u5mr11545294ybp.500.1594965803506;
-        Thu, 16 Jul 2020 23:03:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594965803; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2144357lfm;
+        Thu, 16 Jul 2020 23:03:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxAOZ12JbXoYgmyXpoNaZ2mGx/vPGbuA7ZR3a3lgXjY6Qz9a70WQ8G/+4vEGzAnDHeTp2q0
+X-Received: by 2002:a25:2805:: with SMTP id o5mr11537356ybo.97.1594965813370;
+        Thu, 16 Jul 2020 23:03:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1594965813; cv=none;
         d=google.com; s=arc-20160816;
-        b=FOLptD/VqhYuh789K1IMTtQbu3RmqW9wBT3jplMFlLJaDs3Qg0i9K4VlV3epuunKRx
-         sZ24gVLCKs4kkV50LPgL5vcyzVa29T9Jpn7oA9db0PpzbIstFlBq4LtvoDlmFNeE5t8T
-         TFc2p7iNb9IJKnDumbIA0Cz2RB0bmc0zJUzgBFH9QRFrSyOIU6Sy149AlcGLHLVNOTJB
-         PHTsm83bUTUkt7C0vR1J0YMWNWHcWIREAuVKVxWmTvGq/RV0aPMnpKkWnPGsTyR9xsbO
-         XT93kKwvqhri2j3Fp2WrZIHcwQ8x8NYWGR9cPMRaAnIYTzz/520pApP2Q1OHVIUzJehP
-         FZEQ==
+        b=qYcpLh9GNmyEJgBe+d31I+on0N8sqEI9OqMIBpJqVRDBd1ayUj3f2fNVlCtaMXQuXE
+         W40fFkGi1P4dmoGXUr0huTx1YJduOHC4n0+2RsYkzYUMZ9CCgVWYVY5jrDDqCDmiMOMd
+         KdjSVIMExXSfsjUjv4SqIz7CYvmqeW8h8D3L9fruRHtWrIlGt/8DkEVjn9bqzCm+pNib
+         EFhcgzIAS5rRj2TnXnDs9gkc6li+iroEO5mgy0xpUDy5Z6slRi/93Ou2SeIhmY7oPVox
+         MuBt/hl++HApoiOHrd7tWHbtIlDuls9NJ8UCMT9MP8pfD2pvU99C0gI8cGDcbDtTPRa6
+         Q/6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :from:subject:mime-version:message-id:date:dkim-signature;
-        bh=Fwosz8kLRkDiQhryGgpr4QRGBbidK4SneoP+tig4sng=;
-        b=vmhq2jV9e2fg6CnXt87Ukr6Imsq1K076IbfvPASHcoeujeQ0E+mhjXMWTS4kk9G26u
-         9zW3FEcx4EsVzzREAchmmqLb1ak1UghiHufApkrs7tNUke6s+tsHwk2LRZ9nxOF5UbQN
-         h3sWE/IEkcTBoKL1yf2pwX+CynF5YIEbk+Pu+pAZyZ2vNS+ef/bfKg7CxCjuXkQpO6DZ
-         +EC1mozzPRAupZOhqnFfd5zquP/+cX12/TKSGp4p8Ckvutfp6zvsYO90AHFhv5AmAleo
-         5VDK0M8jxeR+je7OMlqtMLKnxIyRCsqhYrKw2KDlSX+fSCfKvxgvu/IB7lXKU8ZQaRbH
-         SrbQ==
+         :from:subject:references:mime-version:message-id:in-reply-to:date
+         :dkim-signature;
+        bh=Q2iAvXL1jLs7q/iNFlIw4+s2o/tK8vDj+qwa76R5kuI=;
+        b=DV2ctEfDkMQJprnvfiSG8KpURNykd7sG+S0OytBVIpWJcgUOL77zLOM0/cG2C/mf5n
+         IZsIywHbCDg2+XetaWtmJO43bKhTAJLpHGaNZwIPdheVDmdzOJvsLoTKYC6FXsXxJXy5
+         hmTVtSCA0BaFr+Pw4u3mBW45dAV/SnPaEpfpGvztNtZkKOelj8XBXxFRMAWl5ZZ5jEuc
+         EuCktwnXNdmZ+A7IR34yb73hQoB591g3q7U8ViaedKjeLvOlfeTZRdWw7i0uFxv4j267
+         l44riTHZWaLQp7+BSpvOB1kIpxCZWWRYlpKQt9hRzqHpOtFDB/5B/mp+6UvDC4InURoA
+         YCKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=bvcw8job;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=LJNtfeAi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u97si7914581ybi.114.2020.07.16.23.03.23
+        by mx.google.com with ESMTPS id z14si7512894ybm.366.2020.07.16.23.03.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 16 Jul 2020 23:03:23 -0700 (PDT)
+        Thu, 16 Jul 2020 23:03:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=bvcw8job;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=LJNtfeAi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:58704 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58984 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jwJSs-0003Ez-Pl
-	for alex.bennee@linaro.org; Fri, 17 Jul 2020 02:03:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59920)
+	id 1jwJT2-0003My-Jx
+	for alex.bennee@linaro.org; Fri, 17 Jul 2020 02:03:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60002)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3Hj8RXwsKCN8ITLJOOFNPFOHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--hskinnemoen.bounces.google.com>)
- id 1jwJSk-0003Ea-GC
- for qemu-arm@nongnu.org; Fri, 17 Jul 2020 02:03:14 -0400
-Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:34279)
+ <3Ij8RXwsKCOMMXPNSSJRTJSLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--hskinnemoen.bounces.google.com>)
+ id 1jwJSo-0003KC-SO
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2020 02:03:18 -0400
+Received: from mail-yb1-xb4a.google.com ([2607:f8b0:4864:20::b4a]:34280)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3Hj8RXwsKCN8ITLJOOFNPFOHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--hskinnemoen.bounces.google.com>)
- id 1jwJSi-0005AK-7S
- for qemu-arm@nongnu.org; Fri, 17 Jul 2020 02:03:14 -0400
-Received: by mail-yb1-xb4a.google.com with SMTP id z7so10168033ybz.1
- for <qemu-arm@nongnu.org>; Thu, 16 Jul 2020 23:03:11 -0700 (PDT)
+ <3Ij8RXwsKCOMMXPNSSJRTJSLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--hskinnemoen.bounces.google.com>)
+ id 1jwJSm-0005Dq-JP
+ for qemu-arm@nongnu.org; Fri, 17 Jul 2020 02:03:18 -0400
+Received: by mail-yb1-xb4a.google.com with SMTP id z7so10168278ybz.1
+ for <qemu-arm@nongnu.org>; Thu, 16 Jul 2020 23:03:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc
- :content-transfer-encoding;
- bh=Fwosz8kLRkDiQhryGgpr4QRGBbidK4SneoP+tig4sng=;
- b=bvcw8jobFKrwBkCKNugGqIJUUAFFaGszm8bVVx88SiJ85zV1NKpidSNc8AAF83T1Ok
- 1fp4QJ7/oi3+Fp/XZVVTffQzGLGeXWYNJ+cqho54tJaSVywCBpVDavLyaG6R8RS5oxtv
- WabRdoXhU4nNkeLzTZ7eBuwsGqjqrhICnnYkUoadItZ3CaUk7/AjH4IVnvPCX7f2qC51
- XKs4EuT8jc+wKzLowWDucHbbI2i5xYEUWReurZyKHsDKSKdYBDiScbyxbT5cuivQBLGd
- +cWNh6rbKYZvm+wRRdBiF8SXbt7k8c0rL8FpJpPCjix/RJv5wLnCPpMVbg3JFooXKlkM
- 2dgg==
+ h=date:in-reply-to:message-id:mime-version:references:subject:from:to
+ :cc:content-transfer-encoding;
+ bh=Q2iAvXL1jLs7q/iNFlIw4+s2o/tK8vDj+qwa76R5kuI=;
+ b=LJNtfeAib9Kl74U7GvYKGQFZbAHA4L1VwGIl/Y1x1tlgKHHDF65o1QZg0Z4aZLKIk1
+ v0cwNPKq1dw5vC4R+Qs2qCEQvvlTtIiNlY1O8PLQfSjSNJI5KXeMwv6kTPr6Rry0QCLB
+ jJCDabruALBqoojHz0z25pC+49F6t/XGAuNO1KwoPrvHjmq14XGUCCfmeU3M8sA12i3L
+ FsUiaXsIXTK4OYJbdj++gMMFDpZD/H9yXrHPKm8x9UpCEd/YwuNtr4sDOp2cYdY4vv0r
+ Va0aK61xKFg0+8vJTj/K+wSmbWdbB/JgcwCEJzWnCH2j5r4hsNlnGd7PvFoM8Y5YeEnz
+ EfFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc
- :content-transfer-encoding;
- bh=Fwosz8kLRkDiQhryGgpr4QRGBbidK4SneoP+tig4sng=;
- b=Dv/VezDnG3drgtg4H8kBqs5oiNrGDoxME4mw3hgyGnbgC0fXvyVPHPcxcBEiSMBps6
- pi6YS42TNB0i71op4V3btnn6kzWfwVV4bZojhQy83py2TGfS8OxsH64ffCWgF3NQqwGK
- 4hyS3r2otieDRHliOwC0U/OYmOigUxAq5PCVqMV/SP+Z84wkO/fVK30b+sIQzicboMKd
- kZPI54NpSSrI5CsB4I3Uv5KBJVLcPOn6PT9xiqip/bQRGCjf37o7CTp6Fm2I8ZVgQUgz
- c6n7wckoJHuglLcwAGB3wk2+tw4HLd+IoAJFv2ernTMmnaRBWK3CCHD9Yw3DiYBxTipS
- G/+g==
-X-Gm-Message-State: AOAM531D51Bu53dBvmI9dSzFyCg/wkho5Uc89NthRBAigrycsm+BoA0+
- K0QzffBf0xL/7j6wQwcZFQ5ZdhS7WdGsc38Ucg==
-X-Received: by 2002:a25:d843:: with SMTP id p64mr13026140ybg.68.1594965790330; 
- Thu, 16 Jul 2020 23:03:10 -0700 (PDT)
-Date: Thu, 16 Jul 2020 23:02:45 -0700
-Message-Id: <20200717060258.1602319-1-hskinnemoen@google.com>
+ h=x-gm-message-state:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc:content-transfer-encoding;
+ bh=Q2iAvXL1jLs7q/iNFlIw4+s2o/tK8vDj+qwa76R5kuI=;
+ b=IJoGhCIKejfbJoFMxMFABUbX3slWvzsTkNOxk0T0sBr3GZPpmJDLllGzMbZfv5QDAG
+ 21HxMKv766muzekHx3pU7SQTqwcpzCtgI/PU8x51rn/9FD3mBNiyhpgXlorJMB7cw53S
+ rO8C6/K9TPacr02mtbW173E4JB2vziS2e1ar1F2w5fldy9hLhKMNbDXt5k0wjVSQ8D9w
+ kU/1owtZ4iiqFs3Izl5zyTew/io/frHMiPlJHdY+GX1wB9qpCFDtnYCogWeFND5k9SKc
+ 9g0DwiKrPrkpCrDlCiHv4GFv6EBy+U3N9x97dt5qX085gnR2316bwVPYy5MU7uDBP+Ug
+ s3IA==
+X-Gm-Message-State: AOAM5335X8cwTRK7rgI+fYVz+6+tolgc97hgn2p32lUnzI1wthxmvJ3s
+ bspISP5xGuqj8PxzO8uMSD0uvndeMw6upGl3vg==
+X-Received: by 2002:a25:cc4e:: with SMTP id l75mr11177298ybf.377.1594965794879; 
+ Thu, 16 Jul 2020 23:03:14 -0700 (PDT)
+Date: Thu, 16 Jul 2020 23:02:47 -0700
+In-Reply-To: <20200717060258.1602319-1-hskinnemoen@google.com>
+Message-Id: <20200717060258.1602319-3-hskinnemoen@google.com>
 Mime-Version: 1.0
+References: <20200717060258.1602319-1-hskinnemoen@google.com>
 X-Mailer: git-send-email 2.28.0.rc0.105.gf9edc3c819-goog
-Subject: [PATCH v6 00/13] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC machines
+Subject: [PATCH v6 02/13] hw/misc: Add NPCM7xx Clock Controller device model
 From: Havard Skinnemoen <hskinnemoen@google.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Cc: Avi.Fishman@nuvoton.com, kfting@nuvoton.com, 
- Havard Skinnemoen <hskinnemoen@google.com>
+ Havard Skinnemoen <hskinnemoen@google.com>, Joel Stanley <joel@jms.id.au>, 
+ "=?UTF-8?q?C=C3=A9dric=20Le=20Goater?=" <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2607:f8b0:4864:20::b4a;
- envelope-from=3Hj8RXwsKCN8ITLJOOFNPFOHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--hskinnemoen.bounces.google.com;
+ envelope-from=3Ij8RXwsKCOMMXPNSSJRTJSLTTLQJ.HTRVJRZ-FWRSTSLSZ.TWL@flex--hskinnemoen.bounces.google.com;
  helo=mail-yb1-xb4a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
@@ -103,7 +107,7 @@ X-Spam_bar: ----------
 X-Spam_report: (-10.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001, USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,258 +122,393 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LCJvJU2OtkdO
+X-TUID: tZExytEbqaBB
 
-I also pushed this and the previous two patchsets to my qemu fork on github=
-.
-The branches are named npcm7xx-v[1-6].
+Enough functionality to boot the Linux kernel has been implemented. This
+includes:
 
-  https://github.com/hskinnemoen/qemu
+  - Correct power-on reset values so the various clock rates can be
+    accurately calculated.
+  - Clock enables stick around when written.
 
-This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoCs to =
-boot
-an OpenBMC image built for quanta-gsj. This includes device models for:
+In addition, a best effort attempt to implement SECCNT and CNTR25M was
+made even though I don't think the kernel needs them.
 
-  - Global Configuration Registers
-  - Clock Control
-  - Timers
-  - Fuses
-  - Memory Controller
-  - Flash Controller
-
-These modules, along with the existing Cortex A9 CPU cores and built-in
-peripherals, are integrated into a NPCM730 or NPCM750 SoC, which in turn fo=
-rm
-the foundation for the quanta-gsj and npcm750-evb machines, respectively. T=
-he
-two SoCs are very similar; the only difference is that NPCM730 is missing s=
-ome
-peripherals that NPCM750 has, and which are not considered essential for
-datacenter use (e.g. graphics controllers). For more information, see
-
-https://www.nuvoton.com/products/cloud-computing/ibmc/
-
-Both quanta-gsj and npcm750-evb correspond to real boards supported by Open=
-BMC.
-At the end of the series, qemu can boot an OpenBMC image built for one of t=
-hese
-boards with some minor modifications.
-
-The patches in this series were developed by Google and reviewed by Nuvoton=
-. We
-will be maintaining the machine and peripheral support together.
-
-The data sheet for these SoCs is not generally available. Please let me kno=
-w if
-more comments are needed to understand the device behavior.
-
-Changes since v5:
-
-  - Boot ROM included, as a git submodule and a binary blob, and loaded by
-    default, so the -bios option is usually not necessary anymore.
-  - Two acceptance tests added (openbmc image boot, and direct kernel boot)=
-.
-  - npcm7xx_load_kernel() moved to SoC code.
-  - NPCM7XX_TIMER_REF_HZ definition moved to CLK header.
-  - Comments added clarifying available SPI flash chip selects.
-  - Error handling adjustments:
-      - Errors from CPU and GCR realization are propagated through the SoC
-        since they may be triggered by user-configurable parameters.
-      - Machine init uses error_fatal instead of error_abort for SoC
-        realization flash init. This makes error messages more helpful.
-      - Comments added to indicate whether peripherals may fail to realize.
-      - Use ERRP_GUARD() instead of Error *err when possible.
-  - Default CPU type is now set, and attempting to set it to anything else
-    will fail.
-  - Format string fixes (use HWADDR_PRIx, etc.)
-  - Simplified memory size encoding and error checking in npcm7xx_gcr.
-  - Encapsulate non-obvious pointer subtraction into helper functions in th=
-e
-    FIU and TIMER modules.
-  - Incorporate review feedback into the FIU module:
-      - Add select/deselect trace events.
-      - Use npcm7xx_fiu_{de,}select() consistently.
-      - Use extract/deposit in more places for consistency.
-      - Use -Wimplicit-fallthrough compatible fallthrough comments.
-      - Use qdev_init_gpio_out_named instead of sysbus_init_irq for chip
-        selects.
-  - Incorporate review feedback into the TIMER module:
-      - Assert that we never pause a timer that has already expired, instea=
-d of
-        trying to handle it. This should be safe since QEMU_CLOCK_VIRTUAL i=
-s
-        stopped while this code is running.
-      - Simplify the switch blocks in the read and write handlers.
-
-I made a change to error out if a flash drive was not specified, but revert=
-ed
-it because it caused make check to fail (qom-test). When specifying a NULL
-block device, the m25p flash device initializes its in-memory storage with =
-0xff
-and doesn't attempt to write anything back. This seems correct to me.
-
-Changes since v4:
-
-  - OTP cleanups suggested by Philippe Mathieu-Daud=C3=A9.
-      - Added fuse array definitions based on public Nuvoton bootblock code=
-.
-      - Moved class structure to .c file since it's only used internally.
-      - Readability improvements.
-  - Split the first patch and folded parts of it into three other patches s=
-o
-    that CONFIG_NPCM7XX is only enabled after the initial NPCM7xx machine
-    support is added.
-  - DRAM init moved to machine init code.
-  - Consistently use lower-case hex literals.
-  - Switched to fine-grained unimplemented devices, based on public bootblo=
-ck
-    source code. Added a tiny SRAM that got left out previously.
-  - Simplified error handling in npcm7xx_realize() since the board code wil=
-l
-    abort anyway, and SoCs are not hot-pluggable.
-
-Changes since v3:
-
-  - License headers are now GPL v2-or-later throughout.
-  - Added vmstate throughout (except the memory controller, which doesn't
-    really have any state worth saving). Successfully booted a gsj image
-    with two stop/savevm/quit/loadvm cycles along the way.
-      - JFFS2 really doesn't like it if I let qemu keep running after savev=
-m,
-        and then jump back in time with loadvm. I assume this is expected.
-  - Fixed an error API violation in npcm7xx_realize, removed pointless erro=
-r
-    check after object_property_set_link().
-  - Switched the OTP device to use an embedded array instead of a g_malloc0=
-'d
-    one because I couldn't figure out how to set up vmstate for the latter.
-
-Changes since v2:
-
-  - Simplified the MAINTAINERS entry.
-  - Added link to OpenPOWER jenkins for gsj BMC images.
-  - Reverted the smpboot change, back to byte swapping.
-  - Adapted to upstream API changes:
-      - sysbus_init_child_obj -> object_initialize_child
-      - object_property_set_bool -> qdev_realize / sysbus_realize
-      - ssi_create_slave_no_init -> qdev_new
-      - qdev_init_nofail -> qdev_realize_and_unref
-      - ssi_auto_connect_slaves removed
-  - Moved Boot ROM loading from soc to machine init.
-  - Plumbed power-on-straps property from GCR to the machine init code so i=
-t
-    can be properly initialized. Turns out npcm750 memory init doesn't work
-    without this. npcm730 is fine either way, though I'm not sure why.
-  - Reworked the flash init code so it looks more like aspeed (i.e. the fla=
-sh
-    device gets added even if there's no drive).
-
-Changes since v1 (requested by reviewers):
-
-  - Clarify the source of CLK reset values.
-  - Made smpboot a constant byte array, eliinated byte swapping.
-  - NPCM7xxState now stores an array of ARMCPUs, not pointers to ARMCPUs.
-  - Clarify why EL3 is disabled.
-  - Introduce NPCM7XX_NUM_IRQ constant.
-  - Set the number of CPUs according to SoC variant, and disallow command l=
-ine
-    overrides (i.e. you can no longer override the number of CPUs with the =
--smp
-    parameter). This is trying to follow the spirit of
-    https://patchwork.kernel.org/patch/11595407/.
-  - Switch register operations to DEVICE_LITTLE_ENDIAN throughout.
-  - Machine documentation added (new patch).
-
-Changes since v1 to support flash booting:
-
-  - GCR reset value changes to get past memory initialization when booting
-    from flash (patches 2 and 5):
-      - INTCR2 now indicates that the DDR controller is initialized.
-      - INTCR3 is initialized according to DDR memory size. A realize()
-	method was implemented to achieve this.
-  - Refactor the machine initialization a bit to make it easier to drop in
-    machine-specific flash initialization (patch 6).
-  - Extend the series with additional patches to enable booting from flash:
-      - Boot ROM (through the -bios option).
-      - OTP (fuse) controller.
-      - Memory Controller stub (just enough to skip memory training).
-      - Flash controller.
-      - Board-specific flash initialization.
-
-Thanks for reviewing,
-
-Havard
-
-Havard Skinnemoen (13):
-  hw/misc: Add NPCM7xx System Global Control Registers device model
-  hw/misc: Add NPCM7xx Clock Controller device model
-  hw/timer: Add NPCM7xx Timer device model
-  hw/arm: Add NPCM730 and NPCM750 SoC models
-  hw/arm: Add two NPCM7xx-based machines
-  roms: Add virtual Boot ROM for NPCM7xx SoCs
-  hw/arm: Load -bios image as a boot ROM for npcm7xx
-  hw/nvram: NPCM7xx OTP device model
-  hw/mem: Stubbed out NPCM7xx Memory Controller model
-  hw/ssi: NPCM7xx Flash Interface Unit device model
-  hw/arm: Wire up BMC boot flash for npcm750-evb and quanta-gsj
-  docs/system: Add Nuvoton machine documentation
-  tests/acceptance: console boot tests for quanta-gsj
-
- docs/system/arm/nuvoton.rst            |  90 +++++
- docs/system/target-arm.rst             |   1 +
- Makefile                               |   1 +
- default-configs/arm-softmmu.mak        |   1 +
- include/hw/arm/npcm7xx.h               | 111 +++++
- include/hw/mem/npcm7xx_mc.h            |  36 ++
- include/hw/misc/npcm7xx_clk.h          |  72 ++++
- include/hw/misc/npcm7xx_gcr.h          |  76 ++++
- include/hw/nvram/npcm7xx_otp.h         |  88 ++++
- include/hw/ssi/npcm7xx_fiu.h           | 100 +++++
- include/hw/timer/npcm7xx_timer.h       |  96 +++++
- hw/arm/npcm7xx.c                       | 500 +++++++++++++++++++++++
- hw/arm/npcm7xx_boards.c                | 195 +++++++++
- hw/mem/npcm7xx_mc.c                    |  84 ++++
- hw/misc/npcm7xx_clk.c                  | 234 +++++++++++
- hw/misc/npcm7xx_gcr.c                  | 227 +++++++++++
- hw/nvram/npcm7xx_otp.c                 | 424 +++++++++++++++++++
- hw/ssi/npcm7xx_fiu.c                   | 539 +++++++++++++++++++++++++
- hw/timer/npcm7xx_timer.c               | 489 ++++++++++++++++++++++
- .gitmodules                            |   3 +
- MAINTAINERS                            |   8 +
- hw/arm/Kconfig                         |   9 +
- hw/arm/Makefile.objs                   |   1 +
- hw/mem/Makefile.objs                   |   1 +
- hw/misc/Makefile.objs                  |   2 +
- hw/misc/trace-events                   |   8 +
- hw/nvram/Makefile.objs                 |   1 +
- hw/ssi/Makefile.objs                   |   1 +
- hw/ssi/trace-events                    |  11 +
- hw/timer/Makefile.objs                 |   1 +
- hw/timer/trace-events                  |   5 +
- pc-bios/npcm7xx_bootrom.bin            | Bin 0 -> 768 bytes
- roms/Makefile                          |   7 +
- roms/vbootrom                          |   1 +
- tests/acceptance/boot_linux_console.py |  65 +++
- 35 files changed, 3488 insertions(+)
- create mode 100644 docs/system/arm/nuvoton.rst
- create mode 100644 include/hw/arm/npcm7xx.h
- create mode 100644 include/hw/mem/npcm7xx_mc.h
+Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+---
+ include/hw/misc/npcm7xx_clk.h |  72 +++++++++++
+ hw/misc/npcm7xx_clk.c         | 234 ++++++++++++++++++++++++++++++++++
+ hw/misc/Makefile.objs         |   1 +
+ hw/misc/trace-events          |   4 +
+ 4 files changed, 311 insertions(+)
  create mode 100644 include/hw/misc/npcm7xx_clk.h
- create mode 100644 include/hw/misc/npcm7xx_gcr.h
- create mode 100644 include/hw/nvram/npcm7xx_otp.h
- create mode 100644 include/hw/ssi/npcm7xx_fiu.h
- create mode 100644 include/hw/timer/npcm7xx_timer.h
- create mode 100644 hw/arm/npcm7xx.c
- create mode 100644 hw/arm/npcm7xx_boards.c
- create mode 100644 hw/mem/npcm7xx_mc.c
  create mode 100644 hw/misc/npcm7xx_clk.c
- create mode 100644 hw/misc/npcm7xx_gcr.c
- create mode 100644 hw/nvram/npcm7xx_otp.c
- create mode 100644 hw/ssi/npcm7xx_fiu.c
- create mode 100644 hw/timer/npcm7xx_timer.c
- create mode 100644 pc-bios/npcm7xx_bootrom.bin
- create mode 160000 roms/vbootrom
 
+diff --git a/include/hw/misc/npcm7xx_clk.h b/include/hw/misc/npcm7xx_clk.h
+new file mode 100644
+index 0000000000..40ed64ff15
+--- /dev/null
++++ b/include/hw/misc/npcm7xx_clk.h
+@@ -0,0 +1,72 @@
++/*
++ * Nuvoton NPCM7xx Clock Control Registers.
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WIT=
+HOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++#ifndef NPCM7XX_CLK_H
++#define NPCM7XX_CLK_H
++
++#include "exec/memory.h"
++#include "hw/sysbus.h"
++
++/*
++ * The reference clock frequency for the timer modules, and the SECCNT and
++ * CNTR25M registers in this module, is always 25 MHz.
++ */
++#define NPCM7XX_TIMER_REF_HZ            (25000000)
++
++enum NPCM7xxCLKRegisters {
++    NPCM7XX_CLK_CLKEN1,
++    NPCM7XX_CLK_CLKSEL,
++    NPCM7XX_CLK_CLKDIV1,
++    NPCM7XX_CLK_PLLCON0,
++    NPCM7XX_CLK_PLLCON1,
++    NPCM7XX_CLK_SWRSTR,
++    NPCM7XX_CLK_IPSRST1         =3D 0x20 / sizeof(uint32_t),
++    NPCM7XX_CLK_IPSRST2,
++    NPCM7XX_CLK_CLKEN2,
++    NPCM7XX_CLK_CLKDIV2,
++    NPCM7XX_CLK_CLKEN3,
++    NPCM7XX_CLK_IPSRST3,
++    NPCM7XX_CLK_WD0RCR,
++    NPCM7XX_CLK_WD1RCR,
++    NPCM7XX_CLK_WD2RCR,
++    NPCM7XX_CLK_SWRSTC1,
++    NPCM7XX_CLK_SWRSTC2,
++    NPCM7XX_CLK_SWRSTC3,
++    NPCM7XX_CLK_SWRSTC4,
++    NPCM7XX_CLK_PLLCON2,
++    NPCM7XX_CLK_CLKDIV3,
++    NPCM7XX_CLK_CORSTC,
++    NPCM7XX_CLK_PLLCONG,
++    NPCM7XX_CLK_AHBCKFI,
++    NPCM7XX_CLK_SECCNT,
++    NPCM7XX_CLK_CNTR25M,
++    NPCM7XX_CLK_NR_REGS,
++};
++
++typedef struct NPCM7xxCLKState {
++    SysBusDevice parent;
++
++    MemoryRegion iomem;
++
++    uint32_t regs[NPCM7XX_CLK_NR_REGS];
++
++    /* Time reference for SECCNT and CNTR25M, initialized by power on rese=
+t */
++    int64_t ref_ns;
++} NPCM7xxCLKState;
++
++#define TYPE_NPCM7XX_CLK "npcm7xx-clk"
++#define NPCM7XX_CLK(obj) OBJECT_CHECK(NPCM7xxCLKState, (obj), TYPE_NPCM7XX=
+_CLK)
++
++#endif /* NPCM7XX_CLK_H */
+diff --git a/hw/misc/npcm7xx_clk.c b/hw/misc/npcm7xx_clk.c
+new file mode 100644
+index 0000000000..55beecc06f
+--- /dev/null
++++ b/hw/misc/npcm7xx_clk.c
+@@ -0,0 +1,234 @@
++/*
++ * Nuvoton NPCM7xx Clock Control Registers.
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WIT=
+HOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++
++#include "hw/misc/npcm7xx_clk.h"
++#include "migration/vmstate.h"
++#include "qemu/error-report.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qemu/timer.h"
++#include "qemu/units.h"
++#include "trace.h"
++
++#define PLLCON_LOKI     BIT(31)
++#define PLLCON_LOKS     BIT(30)
++#define PLLCON_PWDEN    BIT(12)
++
++/*
++ * These reset values were taken from version 0.91 of the NPCM750R data sh=
+eet.
++ *
++ * All are loaded on power-up reset. CLKENx and SWRSTR should also be load=
+ed on
++ * core domain reset, but this reset type is not yet supported by QEMU.
++ */
++static const uint32_t cold_reset_values[NPCM7XX_CLK_NR_REGS] =3D {
++    [NPCM7XX_CLK_CLKEN1]        =3D 0xffffffff,
++    [NPCM7XX_CLK_CLKSEL]        =3D 0x004aaaaa,
++    [NPCM7XX_CLK_CLKDIV1]       =3D 0x5413f855,
++    [NPCM7XX_CLK_PLLCON0]       =3D 0x00222101 | PLLCON_LOKI,
++    [NPCM7XX_CLK_PLLCON1]       =3D 0x00202101 | PLLCON_LOKI,
++    [NPCM7XX_CLK_IPSRST1]       =3D 0x00001000,
++    [NPCM7XX_CLK_IPSRST2]       =3D 0x80000000,
++    [NPCM7XX_CLK_CLKEN2]        =3D 0xffffffff,
++    [NPCM7XX_CLK_CLKDIV2]       =3D 0xaa4f8f9f,
++    [NPCM7XX_CLK_CLKEN3]        =3D 0xffffffff,
++    [NPCM7XX_CLK_IPSRST3]       =3D 0x03000000,
++    [NPCM7XX_CLK_WD0RCR]        =3D 0xffffffff,
++    [NPCM7XX_CLK_WD1RCR]        =3D 0xffffffff,
++    [NPCM7XX_CLK_WD2RCR]        =3D 0xffffffff,
++    [NPCM7XX_CLK_SWRSTC1]       =3D 0x00000003,
++    [NPCM7XX_CLK_PLLCON2]       =3D 0x00c02105 | PLLCON_LOKI,
++    [NPCM7XX_CLK_CORSTC]        =3D 0x04000003,
++    [NPCM7XX_CLK_PLLCONG]       =3D 0x01228606 | PLLCON_LOKI,
++    [NPCM7XX_CLK_AHBCKFI]       =3D 0x000000c8,
++};
++
++static uint64_t npcm7xx_clk_read(void *opaque, hwaddr offset, unsigned siz=
+e)
++{
++    uint32_t reg =3D offset / sizeof(uint32_t);
++    NPCM7xxCLKState *s =3D opaque;
++    int64_t now_ns;
++    uint32_t value =3D 0;
++
++    if (reg >=3D NPCM7XX_CLK_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
++                      __func__, offset);
++        return 0;
++    }
++
++    switch (reg) {
++    case NPCM7XX_CLK_SWRSTR:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: register @ 0x%04" HWADDR_PRIx " is write-only\n=
+",
++                      __func__, offset);
++        break;
++
++    case NPCM7XX_CLK_SECCNT:
++        now_ns =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        value =3D (now_ns - s->ref_ns) / NANOSECONDS_PER_SECOND;
++        break;
++
++    case NPCM7XX_CLK_CNTR25M:
++        now_ns =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        /*
++         * This register counts 25 MHz cycles, updating every 640 ns. It r=
+olls
++         * over to zero every second.
++         *
++         * The 4 LSBs are always zero: (1e9 / 640) << 4 =3D 25000000.
++         */
++        value =3D (((now_ns - s->ref_ns) / 640) << 4) % NPCM7XX_TIMER_REF_=
+HZ;
++        break;
++
++    default:
++        value =3D s->regs[reg];
++        break;
++    };
++
++    trace_npcm7xx_clk_read(offset, value);
++
++    return value;
++}
++
++static void npcm7xx_clk_write(void *opaque, hwaddr offset,
++                              uint64_t v, unsigned size)
++{
++    uint32_t reg =3D offset / sizeof(uint32_t);
++    NPCM7xxCLKState *s =3D opaque;
++    uint32_t value =3D v;
++
++    trace_npcm7xx_clk_write(offset, value);
++
++    if (reg >=3D NPCM7XX_CLK_NR_REGS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
++                      __func__, offset);
++        return;
++    }
++
++    switch (reg) {
++    case NPCM7XX_CLK_SWRSTR:
++        qemu_log_mask(LOG_UNIMP, "%s: SW reset not implemented: 0x%02x\n",
++                      __func__, value);
++        value =3D 0;
++        break;
++
++    case NPCM7XX_CLK_PLLCON0:
++    case NPCM7XX_CLK_PLLCON1:
++    case NPCM7XX_CLK_PLLCON2:
++    case NPCM7XX_CLK_PLLCONG:
++        if (value & PLLCON_PWDEN) {
++            /* Power down -- clear lock and indicate loss of lock */
++            value &=3D ~PLLCON_LOKI;
++            value |=3D PLLCON_LOKS;
++        } else {
++            /* Normal mode -- assume always locked */
++            value |=3D PLLCON_LOKI;
++            /* Keep LOKS unchanged unless cleared by writing 1 */
++            if (value & PLLCON_LOKS) {
++                value &=3D ~PLLCON_LOKS;
++            } else {
++                value |=3D (value & PLLCON_LOKS);
++            }
++        }
++        break;
++
++    case NPCM7XX_CLK_CNTR25M:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: register @ 0x%04" HWADDR_PRIx " is read-only\n"=
+,
++                      __func__, offset);
++        return;
++    }
++
++    s->regs[reg] =3D value;
++}
++
++static const struct MemoryRegionOps npcm7xx_clk_ops =3D {
++    .read       =3D npcm7xx_clk_read,
++    .write      =3D npcm7xx_clk_write,
++    .endianness =3D DEVICE_LITTLE_ENDIAN,
++    .valid      =3D {
++        .min_access_size        =3D 4,
++        .max_access_size        =3D 4,
++        .unaligned              =3D false,
++    },
++};
++
++static void npcm7xx_clk_enter_reset(Object *obj, ResetType type)
++{
++    NPCM7xxCLKState *s =3D NPCM7XX_CLK(obj);
++
++    QEMU_BUILD_BUG_ON(sizeof(s->regs) !=3D sizeof(cold_reset_values));
++
++    switch (type) {
++    case RESET_TYPE_COLD:
++        memcpy(s->regs, cold_reset_values, sizeof(cold_reset_values));
++        s->ref_ns =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++        return;
++    }
++
++    /*
++     * A small number of registers need to be reset on a core domain reset=
+,
++     * but no such reset type exists yet.
++     */
++    qemu_log_mask(LOG_UNIMP, "%s: reset type %d not implemented.",
++                  __func__, type);
++}
++
++static void npcm7xx_clk_init(Object *obj)
++{
++    NPCM7xxCLKState *s =3D NPCM7XX_CLK(obj);
++
++    memory_region_init_io(&s->iomem, obj, &npcm7xx_clk_ops, s,
++                          TYPE_NPCM7XX_CLK, 4 * KiB);
++    sysbus_init_mmio(&s->parent, &s->iomem);
++}
++
++static const VMStateDescription vmstate_npcm7xx_clk =3D {
++    .name =3D "npcm7xx-clk",
++    .version_id =3D 0,
++    .minimum_version_id =3D 0,
++    .fields =3D (VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(regs, NPCM7xxCLKState, NPCM7XX_CLK_NR_REGS),
++        VMSTATE_INT64(ref_ns, NPCM7xxCLKState),
++        VMSTATE_END_OF_LIST(),
++    },
++};
++
++static void npcm7xx_clk_class_init(ObjectClass *klass, void *data)
++{
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);
++    DeviceClass *dc =3D DEVICE_CLASS(klass);
++
++    dc->desc =3D "NPCM7xx Clock Control Registers";
++    dc->vmsd =3D &vmstate_npcm7xx_clk;
++    rc->phases.enter =3D npcm7xx_clk_enter_reset;
++}
++
++static const TypeInfo npcm7xx_clk_info =3D {
++    .name               =3D TYPE_NPCM7XX_CLK,
++    .parent             =3D TYPE_SYS_BUS_DEVICE,
++    .instance_size      =3D sizeof(NPCM7xxCLKState),
++    .instance_init      =3D npcm7xx_clk_init,
++    .class_init         =3D npcm7xx_clk_class_init,
++};
++
++static void npcm7xx_clk_register_type(void)
++{
++    type_register_static(&npcm7xx_clk_info);
++}
++type_init(npcm7xx_clk_register_type);
+diff --git a/hw/misc/Makefile.objs b/hw/misc/Makefile.objs
+index e00b839f03..9a73c1f77f 100644
+--- a/hw/misc/Makefile.objs
++++ b/hw/misc/Makefile.objs
+@@ -51,6 +51,7 @@ common-obj-$(CONFIG_IMX) +=3D imx_rngc.o
+ common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-hpdmc.o
+ common-obj-$(CONFIG_MILKYMIST) +=3D milkymist-pfpu.o
+ common-obj-$(CONFIG_MAINSTONE) +=3D mst_fpga.o
++common-obj-$(CONFIG_NPCM7XX) +=3D npcm7xx_clk.o
+ common-obj-$(CONFIG_NPCM7XX) +=3D npcm7xx_gcr.o
+ common-obj-$(CONFIG_OMAP) +=3D omap_clk.o
+ common-obj-$(CONFIG_OMAP) +=3D omap_gpmc.o
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index dbf90db8ed..a010699b4f 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -111,6 +111,10 @@ mos6522_set_sr_int(void) "set sr_int"
+ mos6522_write(uint64_t addr, uint64_t val) "reg=3D0x%"PRIx64 " val=3D0x%"P=
+RIx64
+ mos6522_read(uint64_t addr, unsigned val) "reg=3D0x%"PRIx64 " val=3D0x%x"
+=20
++# npcm7xx_clk.c
++npcm7xx_clk_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
++npcm7xx_clk_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
++
+ # npcm7xx_gcr.c
+ npcm7xx_gcr_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
+ npcm7xx_gcr_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 =
+" value: 0x%08" PRIx32
 --=20
 2.28.0.rc0.105.gf9edc3c819-goog
 

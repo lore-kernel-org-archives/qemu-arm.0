@@ -1,85 +1,83 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2384742lfm;
-        Fri, 17 Jul 2020 05:15:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxUV/wM3QKFF0UCuSMQQOXWoHh7FwFFUb/pDcLdrnqcZtf3TTsa4uJUcN7Cm9NNRLoUGsXo
-X-Received: by 2002:a25:ac02:: with SMTP id w2mr13482246ybi.499.1594988122662;
-        Fri, 17 Jul 2020 05:15:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1594988122; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2400974lfm;
+        Mon, 20 Jul 2020 09:08:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwEBp33078VOk0GweEZQtoDg/g/0GF2zZcJXRAFzzrqmer2hJzPXItPx7MwUt9hB8tQi3ic
+X-Received: by 2002:a25:8206:: with SMTP id q6mr35475580ybk.388.1595261301413;
+        Mon, 20 Jul 2020 09:08:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595261301; cv=none;
         d=google.com; s=arc-20160816;
-        b=LtZRUYJKhMyBikhgvfIhl+AxEBkJUCSHTZ8WDhGUK+XeaiMj218M8GTMlyOb3z5aAO
-         JW2yn+616XY7RBgRN0rSLX10Hin8QXtHGW8t72sB+vPCD45h6ac2DMqT56u9oNvKJK0w
-         /lhpWMM9dDPNFfQsVmbG3Tp3vagXY/mK1SF3zqQjxBnarpmz/msSClzJK7qUDWSTTP8z
-         RXXlUJvJ9F7og2udlzIN7o0OzcfonwpmA4OcGpS8KQbrC6cy7JaOKowP9AzgzDXNorlB
-         +j2k7xXo0bOde/BrK6mIKdA0lOb7ZwuLFHb8brxZpsKVpcMITxwuY9SspFo5pcpTLt03
-         Ccag==
+        b=CJJkFfCX2nF+AGbTBP1nj/I4Nn924c+0kj6Czr+BUb9RKiFzex5RGT8OVsajMwJCdP
+         FxB6Tjh7oHZ/ppMzIJv8U9SyleeL3wlmVvrI8vdZLcTRHXIcNY2gkj4KD2XsI2p6cOeh
+         PjZ2FQEMzc511l/HU4/s/AhNg6crZxraY4cwJ9XiBjxB9WSlTwV788SmSN57wX7mBGZn
+         +8foAyJV80uYyZtqAxjv6q5yDEyFP9wIZmDOsDbqqVPl9AxUpXlqqr45mlyiwDXIymZO
+         nin1OYBksc+VpV8Yb08I8akEaglTMzmbm15jU/cOOUs3DqPNV5oGxcD+Zu+ttdctJRK3
+         SLHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=2qxgexELJ0b8pPicHx8FXSDEFr2wR9/CDmae+4wsjJ8=;
-        b=Lgj8NWnphBo+ODoxEtaK8U0UR3Qcqp1QhjEVWpnRuYstohlXh11B+n4VcrrNTb4PT3
-         SsNOE42fIAn0E1BtNmLPMlVFktWi5DKwYEo2XM4BPSZRZNLlzM5KLVx9xiAxIfG76sXG
-         BYAA+oZtCbrTEOvlU+tiOuA1lsBfVGIPNJcfyw8ynpqzuTLg8uGLk1AAASzegqQTtyB8
-         N9XflwJITx+75DmZsLYzJpgqJIdz8mVbxtYguplg57NRBbC9Z4uTv9TfUfNtlRigtoRQ
-         7ceNoF5L6dAkJOycAitplPZYurnJ6zJ8It6UnQZ7s3IDapfj6hI1dkwme+QaNmEtd5nb
-         xdiQ==
+        bh=xSXcck5w755gE1P9P+GY7ZmNubMcfZ+5+w+1UmvJ4qs=;
+        b=KcWEWFT9xKKdjWOTtCvZVHDeG7ZHDuaUBW1NROv/iFIT2QFX2GPmDHRaHkFPvYihO0
+         jcfOLqzj4XS6B5t7WCcBFZywgCA4QemrrZV/r/8G+ivAL2uwWZHhU5vxtdGFNElhyZ4/
+         G6RKxYItqeFDYRIqE0OrxBTiboYs08BvSW2EU2ARdRd84m+6i4yMfSFC1gIs8ZciWr2m
+         r6CAph6Sp/UMvyOgi3x55x1Y1eTgPX3f+ojxR0p7hVSjoBx9+B18pPCKrH2tX24M3M7u
+         W//91dBU3BXcim1RAVjR76RrdhDatrKibEbHgTYEPOhpm7m/HfScX9knkKw+TKJ35mBy
+         xm7g==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r13si8489660ybs.137.2020.07.17.05.15.22
+        by mx.google.com with ESMTPS id f8si17355980ybp.128.2020.07.20.09.08.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jul 2020 05:15:22 -0700 (PDT)
+        Mon, 20 Jul 2020 09:08:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38584 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37024 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jwPGs-00053d-1D
-	for alex.bennee@linaro.org; Fri, 17 Jul 2020 08:15:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38414)
+	id 1jxYKy-0007er-Pr
+	for alex.bennee@linaro.org; Mon, 20 Jul 2020 12:08:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59934)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jwPGj-00053P-Hu
- for qemu-arm@nongnu.org; Fri, 17 Jul 2020 08:15:13 -0400
-Received: from 4.mo3.mail-out.ovh.net ([178.33.46.10]:54719)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxYKs-0007eY-6W
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2020 12:08:14 -0400
+Received: from 8.mo179.mail-out.ovh.net ([46.105.75.26]:44726)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jwPGh-00087H-8J
- for qemu-arm@nongnu.org; Fri, 17 Jul 2020 08:15:13 -0400
-Received: from player795.ha.ovh.net (unknown [10.108.54.74])
- by mo3.mail-out.ovh.net (Postfix) with ESMTP id A5E5825D6AF
- for <qemu-arm@nongnu.org>; Fri, 17 Jul 2020 14:15:01 +0200 (CEST)
-Received: from kaod.org (82-64-250-170.subs.proxad.net [82.64.250.170])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxYKq-0002wo-8W
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2020 12:08:13 -0400
+Received: from player691.ha.ovh.net (unknown [10.110.103.226])
+ by mo179.mail-out.ovh.net (Postfix) with ESMTP id 122C516FB1D
+ for <qemu-arm@nongnu.org>; Mon, 20 Jul 2020 18:08:02 +0200 (CEST)
+Received: from kaod.org (bad36-1-78-202-132-1.fbx.proxad.net [78.202.132.1])
  (Authenticated sender: clg@kaod.org)
- by player795.ha.ovh.net (Postfix) with ESMTPSA id C3EC5144E1AAA;
- Fri, 17 Jul 2020 12:14:55 +0000 (UTC)
+ by player691.ha.ovh.net (Postfix) with ESMTPSA id 3F9C81498A4D2;
+ Mon, 20 Jul 2020 16:07:55 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-100R00314731bc6-1c62-4562-8136-01b5a9a5a681,EDCDB8C856EF0F0B0CA5B21EBB7B009702C7510A)
+ (GARM-97G0025bee732f-b8c7-4e32-8983-4cc0222cbcde,6196D7FED5334CEB3A8C25BBD62C6C93FB7A110A)
  smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v6 07/13] hw/arm: Load -bios image as a boot ROM for
- npcm7xx
-To: Havard Skinnemoen <hskinnemoen@google.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-References: <20200717060258.1602319-1-hskinnemoen@google.com>
- <20200717060258.1602319-8-hskinnemoen@google.com>
+Subject: Re: [PATCH-for-5.1] hw/misc/aspeed_sdmc: Fix incorrect memory size
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200720095829.22839-1-f4bug@amsat.org>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <b5cf9b0f-9ad9-31b8-12ee-c2f8520b8ffd@kaod.org>
-Date: Fri, 17 Jul 2020 14:14:55 +0200
+Message-ID: <ed5e6bd0-0962-b182-3348-d3c6655ef35e@kaod.org>
+Date: Mon, 20 Jul 2020 18:07:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200717060258.1602319-8-hskinnemoen@google.com>
+In-Reply-To: <20200720095829.22839-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 10828060879354170281
+X-Ovh-Tracer-Id: 13934700199559531281
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrfeeigdegjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeffvddtudegieefudeugffhjefgieegieegleettdehgfeiieevueeihfegfefgnecukfhppedtrddtrddtrddtpdekvddrieegrddvhedtrddujedtnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrjeelhedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=178.33.46.10; envelope-from=clg@kaod.org;
- helo=4.mo3.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/17 08:15:02
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrgeeggdejfecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeffvddtudegieefudeugffhjefgieegieegleettdehgfeiieevueeihfegfefgnecukfhppedtrddtrddtrddtpdejkedrvddtvddrudefvddrudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheiledurdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=46.105.75.26; envelope-from=clg@kaod.org;
+ helo=8.mo179.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/20 12:08:03
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -99,93 +97,85 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: kfting@nuvoton.com, Avi.Fishman@nuvoton.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KgTcFUBGFE21
+X-TUID: 6IWVQzCkcA2A
 
-On 7/17/20 8:02 AM, Havard Skinnemoen wrote:
-> If a -bios option is specified on the command line, load the image into
-> the internal ROM memory region, which contains the first instructions
-> run by the CPU after reset.
+On 7/20/20 11:58 AM, Philippe Mathieu-Daudé wrote:
+> The SDRAM Memory Controller has a 32-bit address bus, thus
+> supports up to 4 GiB of DRAM. There is a signed to unsigned
+> conversion error with the AST2600 maximum memory size:
 > 
-> If -bios is not specified, the vbootrom included with qemu is loaded by
-> default.
+>   (uint64_t)(2048 << 20) = (uint64_t)(-2147483648)
+>                          = 0xffffffff40000000
+>                          = 16 EiB - 2 GiB
 > 
-> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+> Fix by using the IEC suffixes which are usually safer, and add
+> a check to verify the memory is valid. This would have catched
+> this bug:
+> 
+>     Unexpected error in aspeed_sdmc_realize() at hw/misc/aspeed_sdmc.c:261:
+>     qemu-system-arm: Invalid RAM size 16 EiB
+
+Indeed :/
+
+> 
+> Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/arm/npcm7xx_boards.c | 31 +++++++++++++++++++++++++++++++
->  1 file changed, 31 insertions(+)
+>  hw/misc/aspeed_sdmc.c | 12 +++++++++---
+>  1 file changed, 9 insertions(+), 3 deletions(-)
 > 
-> diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-> index 0b9dce2b35..f32557e0e1 100644
-> --- a/hw/arm/npcm7xx_boards.c
-> +++ b/hw/arm/npcm7xx_boards.c
-> @@ -18,12 +18,41 @@
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> index 0737d8de81..76dd7e6a20 100644
+> --- a/hw/misc/aspeed_sdmc.c
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -256,6 +256,12 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
+>      AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
 >  
->  #include "hw/arm/npcm7xx.h"
->  #include "hw/core/cpu.h"
-> +#include "hw/loader.h"
->  #include "qapi/error.h"
-> +#include "qemu-common.h"
->  #include "qemu/units.h"
-> +#include "sysemu/sysemu.h"
->  
->  #define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7
->  #define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff
->  
-> +static const char npcm7xx_default_bootrom[] = "npcm7xx_bootrom.bin";
-> +
-> +static void npcm7xx_load_bootrom(NPCM7xxState *soc)
-> +{
-> +    g_autofree char *filename = NULL;
-> +    const char *bootrom;
-> +    int ret;
-> +
-> +    if (bios_name) {
-> +        bootrom = bios_name;
-> +    } else {
-> +        bootrom = npcm7xx_default_bootrom;
+>      s->max_ram_size = asc->max_ram_size;
+> +    if (s->max_ram_size >= 4 * GiB) {
+> +        char *szstr = size_to_str(s->max_ram_size);
+> +        error_setg(errp, "Invalid RAM size %s", szstr);
+> +        g_free(szstr);
+> +        return;
+> +    }
+>
 
-you could simply assign bios_name. No need to resend for that.
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+I would put an assert() since the max RAM size is not user configurable. 
 
 C.
 
-> +    }
-> +
-> +    filename = qemu_find_file(QEMU_FILE_TYPE_BIOS, bootrom);
-> +    if (!filename) {
-> +        error_report("Could not find ROM image '%s'", bootrom);
-> +        exit(1);
-> +    }
-> +    ret = load_image_mr(filename, &soc->irom);
-> +    if (ret < 0) {
-> +        error_report("Failed to load ROM image '%s'", filename);
-> +        exit(1);
-> +    }
-> +}
-> +
->  static void npcm7xx_connect_dram(NPCM7xxState *soc, MemoryRegion *dram)
->  {
->      memory_region_add_subregion(get_system_memory(), NPCM7XX_DRAM_BA, dram);
-> @@ -60,6 +89,7 @@ static void npcm750_evb_init(MachineState *machine)
->      npcm7xx_connect_dram(soc, machine->ram);
->      qdev_realize(DEVICE(soc), NULL, &error_fatal);
+>      memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
+>                            TYPE_ASPEED_SDMC, 0x1000);
+> @@ -341,7 +347,7 @@ static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data)
+>      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
 >  
-> +    npcm7xx_load_bootrom(soc);
->      npcm7xx_load_kernel(machine, soc);
->  }
+>      dc->desc = "ASPEED 2400 SDRAM Memory Controller";
+> -    asc->max_ram_size = 512 << 20;
+> +    asc->max_ram_size = 512 * MiB;
+>      asc->compute_conf = aspeed_2400_sdmc_compute_conf;
+>      asc->write = aspeed_2400_sdmc_write;
+>      asc->valid_ram_sizes = aspeed_2400_ram_sizes;
+> @@ -408,7 +414,7 @@ static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data)
+>      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
 >  
-> @@ -71,6 +101,7 @@ static void quanta_gsj_init(MachineState *machine)
->      npcm7xx_connect_dram(soc, machine->ram);
->      qdev_realize(DEVICE(soc), NULL, &error_fatal);
+>      dc->desc = "ASPEED 2500 SDRAM Memory Controller";
+> -    asc->max_ram_size = 1024 << 20;
+> +    asc->max_ram_size = 1 * GiB;
+>      asc->compute_conf = aspeed_2500_sdmc_compute_conf;
+>      asc->write = aspeed_2500_sdmc_write;
+>      asc->valid_ram_sizes = aspeed_2500_ram_sizes;
+> @@ -485,7 +491,7 @@ static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data)
+>      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
 >  
-> +    npcm7xx_load_bootrom(soc);
->      npcm7xx_load_kernel(machine, soc);
->  }
->  
+>      dc->desc = "ASPEED 2600 SDRAM Memory Controller";
+> -    asc->max_ram_size = 2048 << 20;
+> +    asc->max_ram_size = 2 * GiB;
+>      asc->compute_conf = aspeed_2600_sdmc_compute_conf;
+>      asc->write = aspeed_2600_sdmc_write;
+>      asc->valid_ram_sizes = aspeed_2600_ram_sizes;
 > 
 

@@ -1,112 +1,142 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2069545lfm;
-        Mon, 20 Jul 2020 02:28:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwYaH2445qo+PcsAlJd/VLYCqCxuuHWGsXQoza2ChAGMVTl50gxWijOXqif8mZqo+sQ9yWJ
-X-Received: by 2002:a25:8392:: with SMTP id t18mr34364582ybk.397.1595237292979;
-        Mon, 20 Jul 2020 02:28:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595237292; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2083893lfm;
+        Mon, 20 Jul 2020 02:49:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyTBKmkwKJHCD7mX39r+ZBhcx/qFiSAhrg1QZcP0bVHRhL1HqpKwJ4Vcs+88EhSBiQZ+nDw
+X-Received: by 2002:a25:56c3:: with SMTP id k186mr33781521ybb.183.1595238575245;
+        Mon, 20 Jul 2020 02:49:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595238575; cv=none;
         d=google.com; s=arc-20160816;
-        b=N8+E5bqjoxKTwOBrQ9k8kPftRNb1hMzEKo7ly00mHXrILMKXy6nKAuIjcLvbtVl1lC
-         6PxDPI8hjV7c4Kx+liUthn+qAlrML0VIr21tRM9KO1iNHLWRoV9nH2wFOaDLgmMzZTbZ
-         PYPvb/oAGKDTD0VRpOgMdBJqXIVIEr4ykKiTviLA5r/vGfuQz1clRVpNya+U6wIif9QC
-         ivvwl/HU1Z84GJriPStKYQzP/e6NJQaqp42Caf6igpTyVEVQHp7qbbrd2pzTe7JKSuCP
-         4ENsHCDbMBk1Ez9sWptHar/Yr1MCwdWxkmy+VHm/g2S44niqhbvwbbklsMNpC2SwSUEa
-         Cibw==
+        b=f+ebrSwsuTD95rkV+csCpk7gZ+KnF9j47VVUtXvCuVdU9dUzx7VR2zNMzonOJjvx1W
+         WTgoO07f6dZnREIh2Qlv8gZnqVyxQf8g2E7w9y/4dN6578jg3CUA6L2e07QgAJ8aWEsl
+         VEuFP63kOt+nDuiX/BB1G8YJnfoBXBioGBLJ2jLtNrT4AS/kiWF5K8Phm0oR0RW1e4xO
+         heeZbaV9zeKK3IXu3N6FFSehYVCAMlRk1WGfejbUfllKaeT7NojBCVAAR5KNcd0hXjky
+         aR/FVF86TeASPca+1qWCZ22HsEUGkWV6eHHpxhYxC7YP9neIaUDZJB/A0rh0VAITXqx5
+         NEWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=hyw1x2awEfAoxLL/ZtYXL9am0uEB+u+N63WU1r6fGZI=;
-        b=kOweA3I65X20Mngxqng1IGcZmuJX6k6JcUoLLlN3sUDFHYME+1p1DiDWXBaNIGrmyX
-         1WvhqcOf6ET6nDLi8TzGW2Mw4K2AHHaXCIjTcNlNFnRGjcTDGUROMcsbH93SyGGEDyWu
-         3kCqTRjPVJVphQ49OTP9+pxRA3ZeMVty4WZu2ByCpNHpO5kWHnlibe0MCCvL3+fAUlcC
-         lyjZ2UIc2B9cYTPsjWG0tMGMcC/6Bc2n1GwcJFacohQojF1eNWZcmtvuENXwgETfl05H
-         Txf4Q+CJEQsFLwWYCSMOApP6Z27kTTghs5nTLBKtdnLIdlIornOH/p3G77m1elQH6AiX
-         OTqw==
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=fNJsqz/KLYzuhc5HeX2Wt5ZIRBJ+9XJvw/isbxqhlIs=;
+        b=xRaRYeOw3wvp/xLeKJQ2cONXupmYLvRTevP7n1fohrdc5kjuzR61CWydviSRxNSj8m
+         tJMZA+x/21dbMwYd4PCbQjUZD5DvrYz+buJ5Ve8vEpWMTbfJW9bjLIIR0LHlL0menEQ0
+         8xbP/PlDkuW8GJQR0G5aFWZTtnwS/NpUERJ/EgtSsmE8lJUxjHNfqlfq/M2XwN/esyZN
+         RlT3frA2vy+NpYdVuLYUYSGz58vNufA4TOvGAgId7yj+da0AuvvfC1jqtDezC5aMyAbS
+         o3F8KVfe1ii/7t2wP30X2S5FuslLMZmMEealZ/mR+JiwwvKZsvdJ4Q10M2OaivpmspgX
+         Dk6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h2KmuDIe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YHyfsDN3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 133si16220842ybo.175.2020.07.20.02.28.12
+        by mx.google.com with ESMTPS id x4si15896454ybr.310.2020.07.20.02.49.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jul 2020 02:28:12 -0700 (PDT)
+        Mon, 20 Jul 2020 02:49:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=h2KmuDIe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YHyfsDN3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38690 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38238 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jxS5k-0002BX-Cv
-	for alex.bennee@linaro.org; Mon, 20 Jul 2020 05:28:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55370)
+	id 1jxSQQ-00063M-GQ
+	for alex.bennee@linaro.org; Mon, 20 Jul 2020 05:49:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33834)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1jxS5d-0002B9-Hi
- for qemu-arm@nongnu.org; Mon, 20 Jul 2020 05:28:05 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:47906
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1jxS5b-0002gF-Nt
- for qemu-arm@nongnu.org; Mon, 20 Jul 2020 05:28:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595237283;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=hyw1x2awEfAoxLL/ZtYXL9am0uEB+u+N63WU1r6fGZI=;
- b=h2KmuDIebdOqlkLJHj/pJHuYgnUcB92b0CeUx9ZfjbC8g2BVUYNnKdsrH5iimipl1wM6O8
- W2nxwmfv8BEkOPphbIbuIM+fCAZX1BJFDz5EePKCerkxBx+nOC48HZ6DFKSmHpfWHl1SH8
- 9retCfkiPi6O9UK40mRzrMFI5PJ+7Fg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-459-mIIMRVWqPCOTtXRTcqvpfg-1; Mon, 20 Jul 2020 05:27:59 -0400
-X-MC-Unique: mIIMRVWqPCOTtXRTcqvpfg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 022BF18A1DF3;
- Mon, 20 Jul 2020 09:27:58 +0000 (UTC)
-Received: from [10.72.12.53] (ovpn-12-53.pek2.redhat.com [10.72.12.53])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CC1DD78530;
- Mon, 20 Jul 2020 09:27:49 +0000 (UTC)
-Subject: Re: [PATCH] hw/net/xgmac: Fix buffer overflow in xgmac_enet_send()
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200710091940.641296-1-mcascell@redhat.com>
- <CAFEAcA9XQUcdiy2x18Zr+EYDaJ4hY-1Bd-DgL6-j6sJi5Ow+Gg@mail.gmail.com>
- <df0eae88-2bc8-04fa-feb9-7633ba13d635@redhat.com>
- <CAFEAcA_2zG1E1COPTi78DY2V2-e8sJwc-s0c7cCfm12U2DE00Q@mail.gmail.com>
-From: Jason Wang <jasowang@redhat.com>
-Message-ID: <727aefd4-8881-4ea5-811a-6d7cd20f4b2c@redhat.com>
-Date: Mon, 20 Jul 2020 17:27:48 +0800
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jxSQH-00061D-6H; Mon, 20 Jul 2020 05:49:25 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:40457)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1jxSQF-0005l1-5n; Mon, 20 Jul 2020 05:49:24 -0400
+Received: by mail-wm1-x341.google.com with SMTP id f139so24520079wmf.5;
+ Mon, 20 Jul 2020 02:49:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=fNJsqz/KLYzuhc5HeX2Wt5ZIRBJ+9XJvw/isbxqhlIs=;
+ b=YHyfsDN3EUZCQAImBqz/J0qaw3VSsGGeUBzdMU7V9mJeKVZrpSrbt7MH625WvRQ52D
+ v01tr5t3iUCwQblvGfEFa15PwdL+geAOFAF3xISNkhhRd5CFuqUHwTk0msd//UrOsBkN
+ u5O5J9T0ZT1z9wotqQrxB31b3nUuXAcxS746gr8dj5cluW8KOsPtNMkVu82Qn5+MEt/N
+ vDXAXE0udzLhRWAcBmOC2anREfSXNVjJb85I/lELbXkZcIWiWKTpOsIHdkuAPCVGkEZ9
+ aEuDT6zRECS3ASVeMTugJhF+e1oivrmIyxPRWXNCnpgPlR3Oq/aP2o4m82Pjy/JtVWe2
+ am+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=fNJsqz/KLYzuhc5HeX2Wt5ZIRBJ+9XJvw/isbxqhlIs=;
+ b=pm9FQ9O0BuHJeIhF0k4Hrapcqo0FwF5Z1bdKuYlTvaiC8RhsD1SX/MqbxUn4009jrC
+ QLHnqbjaudi+ZcVozScTtkPN6S11WlFphnKpgFL7PobTK8JTMddcpXHNwRMvmWZy3Rrc
+ E1N+GzCm0z6Ds1j/pXS9GP92UG3+DtDl5OfphtWhOvspTWU1xnjWCDkhS9Dql4KI36Ez
+ qcf2ayaRxBeYplT6t/jIz41JQUtCeazdCOARCyox4kT09h15I9jh0b2+/vDJIitf1X5D
+ PWb1CPZg1JwGM+RQclZLfJJisdr3Y9pj5AEbn2d00Rq2+GwqaxdaCDyaCn4ZN8OG72Ul
+ LGUw==
+X-Gm-Message-State: AOAM533NN2gTinuLvfAb+9wvoqjYkro0SfkMzUmSCwFErxs5/aKwyd71
+ LwCQxCaSBBCTTYWFuUO/zjY=
+X-Received: by 2002:a1c:4846:: with SMTP id v67mr21825402wma.175.1595238560636; 
+ Mon, 20 Jul 2020 02:49:20 -0700 (PDT)
+Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id d81sm33386744wmc.0.2020.07.20.02.49.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 20 Jul 2020 02:49:19 -0700 (PDT)
+Subject: Re: [PATCH v6 13/13] tests/acceptance: console boot tests for
+ quanta-gsj
+To: Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>
+References: <20200717060258.1602319-1-hskinnemoen@google.com>
+ <20200717060258.1602319-14-hskinnemoen@google.com>
+ <f098aa02-28cd-f86b-1641-5e164ba5ca7f@kaod.org>
+ <CACPK8Xe_COP0sLCZnjnRYgA13W73BPnw9g0B5u6DK4++MDy5-A@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <14f844ce-b09a-6d87-5003-155f745c79a3@amsat.org>
+Date: Mon, 20 Jul 2020 11:49:18 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_2zG1E1COPTi78DY2V2-e8sJwc-s0c7cCfm12U2DE00Q@mail.gmail.com>
+In-Reply-To: <CACPK8Xe_COP0sLCZnjnRYgA13W73BPnw9g0B5u6DK4++MDy5-A@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=jasowang@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/19 21:45:06
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,94 +149,155 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Rob Herring <robh@kernel.org>, Mauro Matteo Cascella <mcascell@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- ziming zhang <ezrakiez@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eDpBB3OqNkXS
+X-TUID: H5Mt4HF249HJ
 
-
-On 2020/7/20 下午5:14, Peter Maydell wrote:
-> On Tue, 14 Jul 2020 at 10:09, Jason Wang <jasowang@redhat.com> wrote:
+On 7/20/20 10:22 AM, Joel Stanley wrote:
+> On Fri, 17 Jul 2020 at 12:33, Cédric Le Goater <clg@kaod.org> wrote:
 >>
->> On 2020/7/10 下午7:07, Peter Maydell wrote:
->>> On Fri, 10 Jul 2020 at 10:20, Mauro Matteo Cascella <mcascell@redhat.com> wrote:
->>>> A buffer overflow issue was reported by Mr. Ziming Zhang, CC'd here. It
->>>> occurs while sending an Ethernet frame due to missing break statements
->>>> and improper checking of the buffer size.
->>>>
->>>> Reported-by: Ziming Zhang <ezrakiez@gmail.com>
->>>> Signed-off-by: Mauro Matteo Cascella <mcascell@redhat.com>
->>>> ---
->>>>    hw/net/xgmac.c | 7 +++++--
->>>>    1 file changed, 5 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/hw/net/xgmac.c b/hw/net/xgmac.c
->>>> index 574dd47b41..b872afbb1a 100644
->>>> --- a/hw/net/xgmac.c
->>>> +++ b/hw/net/xgmac.c
->>>> @@ -224,17 +224,20 @@ static void xgmac_enet_send(XgmacState *s)
->>>>                DEBUGF_BRK("qemu:%s:ERROR...ERROR...ERROR... -- "
->>>>                            "xgmac buffer 1 len on send > 2048 (0x%x)\n",
->>>>                             __func__, bd.buffer1_size & 0xfff);
->>>> +            break;
->>>>            }
->>>>            if ((bd.buffer2_size & 0xfff) != 0) {
->>>>                DEBUGF_BRK("qemu:%s:ERROR...ERROR...ERROR... -- "
->>>>                            "xgmac buffer 2 len on send != 0 (0x%x)\n",
->>>>                            __func__, bd.buffer2_size & 0xfff);
->>>> +            break;
->>>>            }
->>>> -        if (len >= sizeof(frame)) {
->>>> +        if (frame_size + len >= sizeof(frame)) {
->>>>                DEBUGF_BRK("qemu:%s: buffer overflow %d read into %zu "
->>>> -                        "buffer\n" , __func__, len, sizeof(frame));
->>>> +                        "buffer\n" , __func__, frame_size + len, sizeof(frame));
->>>>                DEBUGF_BRK("qemu:%s: buffer1.size=%d; buffer2.size=%d\n",
->>>>                            __func__, bd.buffer1_size, bd.buffer2_size);
->>>> +            break;
->>>>            }
->>>>
->>>>            cpu_physical_memory_read(bd.buffer1_addr, ptr, len);
->>> This is correct in the sense that it avoids the buffer overflow.
+>> On 7/17/20 8:02 AM, Havard Skinnemoen wrote:
+>>> This adds two acceptance tests for the quanta-gsj machine.
 >>>
->>> I suspect that we should probably also be reporting the error
->>> back to the guest via some kind of error flag in the descriptor
->>> and/or in a status register. Unfortunately I don't have a copy
->>> of the datasheet and it doesn't seem to be available online :-(
->>> Does anybody have a copy to check ?
->> I tried to download the datasheet from [1] but it's not a programmer
->> manual.
+>>> One test downloads a lightly patched openbmc flash image from github and
+>>> verifies that it boots all the way to the login prompt.
+>>>
+>>> The other test downloads a kernel, initrd and dtb built from the same
+>>> openbmc source and verifies that the kernel detects all CPUs and boots
+>>> to the point where it can't find the root filesystem (because we have no
+>>> flash image in this case).
+>>>
+>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 >>
->> I think we can apply this patch first and do follow-up fixes on top?
-> Yes, agreed, since nobody seems to have docs for this device.
-> This is an only-happens-with-malicious-or-buggy-guest case anyway,
-> and the highbank/midway (only users of the device) aren't important
-> or widely used machine types any more.
->
-> I suppose we could add a comment
-> /*
->   * FIXME: these cases of malformed tx descriptors (bad sizes)
->   * should probably be reported back to the guest somehow
->   * rather than simply silently stopping processing, but we
->   * don't know what the hardware does in this situation.
->   * This will only happen for buggy guests anyway.
->   */
->
-> but anyway
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
->
-> Were you planning to take this patch, Jason, or should I?
+>> It looks good but I am not sure it's a good idea to have tests
+>> point to URLs like :
+>>
+>> https://github.com/hskinnemoen/openbmc/releases/download/20200711-gsj-qemu-0/obmc-phosphor-initramfs-gsj.cpio.xz
+>>
+>> Philippe, Peter, is that OK ?
 
+FWIW I'm happier having something to test than anything.
+If Havard destroys his repo, we can remove/move the test.
+However ...
 
-I've queued for rc1 this with the above suggested comment.
+>>
+>>
+>> If so, Joel, Andrew, could we host FW images on the OpenBMC github ?
+>> and do the same for Aspeed.
+> 
+> Yeah, we can do that if it would be preferred.
 
-Thanks
+... this is certainly better.
 
+> 
+> Nice work on adding a test Havard. I have been meaning to do the same
+> for the aspeed machines for a while.
+> 
+>>
+>> Thanks,
+>>
+>> C.
+>>
+>>> ---
+>>>  tests/acceptance/boot_linux_console.py | 65 ++++++++++++++++++++++++++
+>>>  1 file changed, 65 insertions(+)
+>>>
+>>> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+>>> index 73cc69c499..1d82fc7ff8 100644
+>>> --- a/tests/acceptance/boot_linux_console.py
+>>> +++ b/tests/acceptance/boot_linux_console.py
+>>> @@ -569,6 +569,71 @@ class BootLinuxConsole(LinuxKernelTest):
+>>>                                                  'sda')
+>>>          # cubieboard's reboot is not functioning; omit reboot test.
+>>>
+>>> +    def test_arm_quanta_gsj(self):
+>>> +        """
+>>> +        :avocado: tags=arch:arm
+>>> +        :avocado: tags=machine:quanta-gsj
+>>> +        """
+>>> +        # 25 MiB compressed, 32 MiB uncompressed.
+>>> +        image_url = (
+>>> +                'https://github.com/hskinnemoen/openbmc/releases/download/'
+>>> +                '20200711-gsj-qemu-0/obmc-phosphor-image-gsj.static.mtd.gz')
+>>> +        image_hash = '14895e634923345cb5c8776037ff7876df96f6b1'
+>>> +        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash)
 
->
-> thanks
-> -- PMM
->
+This path is in the Avocado assets cache.
+
+>>> +        image_name = os.path.splitext(os.path.basename(image_path_gz))[0]
+
+You take the basename, so it is not in the Avocado assets cache
+but in the local workdir, good. As this is a temporary file name,
+we don't care much if the name matches. This works too (and the
+reviewer doesn't have to wonder what is the path name):
+
+             image_name = "obmc.mtd"
+
+I'm fine either ways, thanks for adding a pair of tests!
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+>>> +        image_path = os.path.join(self.workdir, image_name)
+>>> +        archive.gzip_uncompress(image_path_gz, image_path)
+>>> +
+>>> +        self.vm.set_console()
+>>> +        drive_args = 'file=' + image_path + ',if=mtd,bus=0,unit=0'
+>>> +        self.vm.add_args('-drive', drive_args)
+>>> +        self.vm.launch()
+>>> +
+>>> +        self.wait_for_console_pattern('> BootBlock by Nuvoton')
+>>> +        self.wait_for_console_pattern('>Device: Poleg BMC NPCM730')
+>>> +        self.wait_for_console_pattern('>Skip DDR init.')
+>>> +        self.wait_for_console_pattern('U-Boot ')
+>>> +        self.wait_for_console_pattern('Booting Linux on physical CPU 0x0')
+>>> +        self.wait_for_console_pattern('CPU1: thread -1, cpu 1, socket 0')
+>>> +        self.wait_for_console_pattern('OpenBMC Project Reference Distro')
+>>> +        self.wait_for_console_pattern('gsj login:')
+>>> +
+>>> +    def test_arm_quanta_gsj_initrd(self):
+>>> +        """
+>>> +        :avocado: tags=arch:arm
+>>> +        :avocado: tags=machine:quanta-gsj
+>>> +        """
+>>> +        initrd_url = (
+>>> +                'https://github.com/hskinnemoen/openbmc/releases/download/'
+>>> +                '20200711-gsj-qemu-0/obmc-phosphor-initramfs-gsj.cpio.xz')
+>>> +        initrd_hash = '98fefe5d7e56727b1eb17d5c00311b1b5c945300'
+>>> +        initrd_path = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
+>>> +        kernel_url = (
+>>> +                'https://github.com/hskinnemoen/openbmc/releases/download/'
+>>> +                '20200711-gsj-qemu-0/uImage-gsj.bin')
+>>> +        kernel_hash = 'fa67b2f141d56d39b3c54305c0e8a899c99eb2c7'
+>>> +        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
+>>> +        dtb_url = (
+>>> +                'https://github.com/hskinnemoen/openbmc/releases/download/'
+>>> +                '20200711-gsj-qemu-0/nuvoton-npcm730-gsj.dtb')
+>>> +        dtb_hash = '18315f7006d7b688d8312d5c727eecd819aa36a4'
+>>> +        dtb_path = self.fetch_asset(dtb_url, asset_hash=dtb_hash)
+>>> +
+>>> +        self.vm.set_console()
+>>> +        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
+>>> +                               'console=ttyS0,115200n8 '
+>>> +                               'earlycon=uart8250,mmio32,0xf0001000')
+>>> +        self.vm.add_args('-kernel', kernel_path,
+>>> +                         '-initrd', initrd_path,
+>>> +                         '-dtb', dtb_path,
+>>> +                         '-append', kernel_command_line)
+>>> +        self.vm.launch()
+>>> +
+>>> +        self.wait_for_console_pattern('Booting Linux on physical CPU 0x0')
+>>> +        self.wait_for_console_pattern('CPU1: thread -1, cpu 1, socket 0')
+>>> +        self.wait_for_console_pattern(
+>>> +                'Give root password for system maintenance')
+>>> +
+>>>      def test_arm_orangepi(self):
+>>>          """
+>>>          :avocado: tags=arch:arm
+>>>
+>>
+> 
 

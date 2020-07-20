@@ -1,126 +1,104 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2009835lfm;
-        Mon, 20 Jul 2020 00:58:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxO3nnTR+NjrGEu2f36zQGCHuFCIdnKy+WuXvev3igreyv1J715J/SHS6MJXC64RUpZYyUP
-X-Received: by 2002:a25:da87:: with SMTP id n129mr34254325ybf.149.1595231915757;
-        Mon, 20 Jul 2020 00:58:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595231915; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2026486lfm;
+        Mon, 20 Jul 2020 01:23:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSzZpJK500AfiAlVVq92yHgoAFTwGnlyFh782iQXZr1JfKVo43codQZFt9xqDKltAQPtd3
+X-Received: by 2002:a25:d017:: with SMTP id h23mr34152339ybg.490.1595233408040;
+        Mon, 20 Jul 2020 01:23:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595233408; cv=none;
         d=google.com; s=arc-20160816;
-        b=uoZVAUcLrghaCoiortuJmPweotqzWtrYsdc8y3X/xnKXBBcc5c34FEE8yjDRvd0qhG
-         tEZUFAaRgN8VHS9XH/kr/x/bVLByIic+X/gYXA7FfAhBd3GnCR2XT3TIgS2JcvXchUb7
-         nMZ7DJ+74oVOqQ9Iv7mySRmpCMVbqzZ28x41RlRgRJx96QFjN0azLmKJ8+F1lZAYBT9M
-         7INX+Ji3LjRGjkR7QxmWlss8i7MXQ7jt0+Ycf7upfPUA/7q98tnkkuGnTcKbhVNrrdtx
-         RaPj5CktEUOUoOH5QxMJztJZhaicq1WQKwbSRia0b48STUmlPon9F+Fm8LSy+FCSaNuD
-         yhwQ==
+        b=D6rmreNDtyfHlVKZTL39cjxm6G0ChB7pql19TzeiCjup0WlNmj3p7dnRd3nCqd5U5b
+         43/TQEl9UZtp1QFhCkildxpA8waw4zfK/ceNvdY0cXsYYp4n0nG0IZ23rbglj/g08ynd
+         xLmVpXr+uGGP3toQelSx23GEJsxldbwNpJXhPHBdwjxlHCfV1wDOcKH97aITKUHPBXN+
+         D4rVPzTlZl27utKpxoBFGWeVx8mkCehrL7xUgJsq/swcop5Ow6I2KMppe23qKhQG+7+s
+         Dpru444kuFXfvOf3F1spIsWHvKd389K/0dx/noRJ4qgUjGjc4R82+mjR2w8CfH22cr+9
+         4lkw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=eoy0XehpgGB/FcfBWwT6NV7B2ZXbt6zhECU0aubmYco=;
-        b=u/WfgJJyMTzGLifUWYiInilVK2//ZuqNndwU25nEqGmro8znS/4W1wGygWCtG4l6Ru
-         aBh1D78CNmJBxRWXXok//GPjenE7DwkDZ7VOzuTx/O5IvXKM7qg6ktB9Us2dPF6Sktlc
-         znK9mWSqSHYB6sbZrdRC6uHGOQkHYrZoeEOlIrg/qkcKSS7xOkpXzgyj3lbZntRV1UC/
-         aO+daYvb8ZQhQPQLNcor7PYmguEUlKe/bU/eanVhq66ciM0Z+SwqXLE29cVTp+dpc663
-         vIqUPwWWmpNJujWQS/tRijq85+nWUpEQPaFhm3zOP/PKjKryBFrf66UcdLV/KYT/VMZT
-         AikQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=ps9sxJqWf6+f62TxYNrCyTGHKofiYB1akozfykT/4iI=;
+        b=OYWV8dWku33gnjL58Z66Ck9T1DQYsLeD7tSz6ikbTjz5Xqplb8OFAEXuxpQFyEn3As
+         N62HKNxt+vxUxM7jENMNc+kBYUO4az05jUp1+RYC7CdPvjOFOTVStCrz1zaPkQK03JjP
+         VCMp5/RMveTFo7ZDR0U6JFTxBlLIN++bEHpVAxhlRe827reDxq0M4KijOVDOi87eHziz
+         ZuSjFHLjLGq0F9cDXCgRhsHGIo74v9/pGWJ17tUbgvmoExuzOLG0cd8S8hYDjcHxSUU9
+         10WHnhH7RBSgoJPv9rTbuszx0zG+G6Ua2XYWl8TkmmCg5FzEdLYNQerfc3GZoZYS3hF0
+         8RTA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hcHn12f2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@jms.id.au header.s=google header.b=GBrCqeeK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e133si5607478ybe.403.2020.07.20.00.58.35
+        by mx.google.com with ESMTPS id a13si16357367ybg.418.2020.07.20.01.23.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jul 2020 00:58:35 -0700 (PDT)
+        Mon, 20 Jul 2020 01:23:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hcHn12f2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36230 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=GBrCqeeK;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jxQh1-0006WT-3d
-	for alex.bennee@linaro.org; Mon, 20 Jul 2020 03:58:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57372)
+	id 1jxR55-00072S-9q
+	for alex.bennee@linaro.org; Mon, 20 Jul 2020 04:23:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34502)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxQgt-0006WI-8k
- for qemu-arm@nongnu.org; Mon, 20 Jul 2020 03:58:27 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35368
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxQgq-0006pX-SU
- for qemu-arm@nongnu.org; Mon, 20 Jul 2020 03:58:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595231903;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eoy0XehpgGB/FcfBWwT6NV7B2ZXbt6zhECU0aubmYco=;
- b=hcHn12f23QHCH2WeE36vCMHo3xQ7cHU+oyxl1Wze29XxFav/GdXa5oyJdJBopzCvAfpoL0
- h+Z2winXHeoT58QDDvh7Q9PRa3AuWS6gaOX8uFH/t1G8zOAUiF9kzgS0/WQcZH1/qhYf5O
- SQEw2535XFAPh0nP7ILhjzI1bL3RSeg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-488-VJfx6-LIN0-4a6NrHVDZAg-1; Mon, 20 Jul 2020 03:58:21 -0400
-X-MC-Unique: VJfx6-LIN0-4a6NrHVDZAg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AFC0C8017FB;
- Mon, 20 Jul 2020 07:58:19 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
- [10.36.112.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D45107303C;
- Mon, 20 Jul 2020 07:58:18 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 6DCAE1141C54; Mon, 20 Jul 2020 09:58:17 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v5 10/11] hw/arm: Wire up BMC boot flash for npcm750-evb
- and quanta-gsj
-References: <20200709003608.3834629-1-hskinnemoen@google.com>
- <20200709003608.3834629-11-hskinnemoen@google.com>
- <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
- <CAFQmdRZcygskP3iwss01-Jz67yjAP_JENXjWM2Bp8U=DRzxR0Q@mail.gmail.com>
- <875zaq78xq.fsf@dusky.pond.sub.org>
- <19733456-a672-595d-e721-e0ef26d7f665@amsat.org>
- <87v9iq2hkv.fsf@dusky.pond.sub.org>
- <e87663cf-7cb2-ca6c-a751-e5c1cebc5440@amsat.org>
- <87pn8xywz2.fsf@dusky.pond.sub.org>
- <b3bc658f-a865-8e6b-c904-01c7724e89cc@amsat.org>
- <CAFQmdRa9FiP6yX=XDrJy5KpjifQyVkQiY6DXtSoJSvfoq7Vm6w@mail.gmail.com>
- <CAFQmdRac6tsZafN3PsnLhPA_Ny032ZAjOFuXkmYvJ-ubjcpPPw@mail.gmail.com>
- <5345d70f-3041-ed13-12e9-9a8e3d803805@amsat.org>
- <416d5243-dc8e-37c6-197f-96dec1c9f5cc@redhat.com>
- <d66bf4fe-7349-a90f-c4fb-a80de7597819@amsat.org>
- <bc258d6f-059d-618d-6ccd-94c04082bb25@amsat.org>
-Date: Mon, 20 Jul 2020 09:58:17 +0200
-In-Reply-To: <bc258d6f-059d-618d-6ccd-94c04082bb25@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 17 Jul 2020 11:00:43
- +0200")
-Message-ID: <87imeihb3a.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jxR4h-000726-Sv; Mon, 20 Jul 2020 04:23:04 -0400
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:44655)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1jxR4f-0001ZO-E4; Mon, 20 Jul 2020 04:23:03 -0400
+Received: by mail-ej1-x643.google.com with SMTP id ga4so17113816ejb.11;
+ Mon, 20 Jul 2020 01:22:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=ps9sxJqWf6+f62TxYNrCyTGHKofiYB1akozfykT/4iI=;
+ b=GBrCqeeK74Q7AYZVaJASz1oFBRHsfOI9QJJiE0DZrzuQAfGt9vEjMu6TkrK9h7G4Jf
+ DMHUS3jWTmRtF0QAc4NJqlzvIyKBgsEDoX1IfKWUzlVjZFT0Oim/+//55D68aWH2nkzG
+ nUegZsz9WDQWHK5Tv1GurBWJnjoGyLzEiV0vY=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=ps9sxJqWf6+f62TxYNrCyTGHKofiYB1akozfykT/4iI=;
+ b=cOiszoppoCYY1l2h6HLRe7F91XixosTZ3ozuNmb24M2J3A2osqSbf5wsDrW70Vh8vd
+ gWunVPGzXwBeULrYlh1eAWCFT8KcJwUbpr6iTi7YNKu/or0gj3c/xGGX27MvHTZkH6wk
+ 5M9mKs8Lrd/qn6S427xx5G/QNcLPdN5ql/K63r7oQQi2D5Hs+hl+DcqVAuEKyrrDgZJP
+ g3oai1b6842QHU3n4Cu+3RTO2esFrUvK/WzI94HtefYPf6AwdzmTQTQMavsj8fR5WRhk
+ yt78R5Psk32yrTzHJHOfzhmAN5MQLEHyg6CmUU4XEno6Q3bPTO0YZH+Zdiv6mQdpLHKY
+ s2Hg==
+X-Gm-Message-State: AOAM532jF+7KD/q048KMPhDPrXvab7h2zQema4jP2lf7NOCHa+qe4F01
+ egW6a4Sp7l8zka27UExM+MEhfRSWXaU96tLlaJk=
+X-Received: by 2002:a17:906:cce6:: with SMTP id
+ ot38mr19453646ejb.266.1595233378570; 
+ Mon, 20 Jul 2020 01:22:58 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20200717060258.1602319-1-hskinnemoen@google.com>
+ <20200717060258.1602319-14-hskinnemoen@google.com>
+ <f098aa02-28cd-f86b-1641-5e164ba5ca7f@kaod.org>
+In-Reply-To: <f098aa02-28cd-f86b-1641-5e164ba5ca7f@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Mon, 20 Jul 2020 08:22:46 +0000
+Message-ID: <CACPK8Xe_COP0sLCZnjnRYgA13W73BPnw9g0B5u6DK4++MDy5-A@mail.gmail.com>
+Subject: Re: [PATCH v6 13/13] tests/acceptance: console boot tests for
+ quanta-gsj
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/20 02:11:17
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x643.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -133,133 +111,151 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  Havard Skinnemoen <hskinnemoen@google.com>,
  QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
+ qemu-arm <qemu-arm@nongnu.org>, Avi Fishman <Avi.Fishman@nuvoton.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: otlKfxo1kiWM
+X-TUID: KfDz9R+MwKiZ
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
-
-> On 7/17/20 10:27 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 7/17/20 10:03 AM, Thomas Huth wrote:
->>> On 17/07/2020 09.48, Philippe Mathieu-Daud=C3=A9 wrote:
->>>> +Thomas
->>>
->>>> On 7/16/20 10:56 PM, Havard Skinnemoen wrote:
->>>>> On Wed, Jul 15, 2020 at 1:54 PM Havard Skinnemoen
->>>>> <hskinnemoen@google.com> wrote:
->>>>>>
->>>>>> On Wed, Jul 15, 2020 at 3:57 AM Philippe Mathieu-Daud=C3=A9 <f4bug@a=
-msat.org> wrote:
->>>>>>>
->>>>>>> On 7/15/20 11:00 AM, Markus Armbruster wrote:
->>>>>>>> Now my point.  Why first make up user configuration, then use that=
- to
->>>>>>>> create a BlockBackend, when you could just go ahead and create the
->>>>>>>> BlockBackend?
->>>>>>>
->>>>>>> CLI issue mostly.
->>>>>>>
->>>>>>> We can solve it similarly to the recent "sdcard: Do not allow inval=
-id SD
->>>>>>> card sizes" patch:
->>>>>>>
->>>>>>>  if (!dinfo) {
->>>>>>>      error_setg(errp, "Missing SPI flash drive");
->>>>>>>      error_append_hint(errp, "You can use a dummy drive using:\n");
->>>>>>>      error_append_hint(errp, "-drive if=3Dmtd,driver=3Dnull-co,"
->>>>>>>                              "read-ones=3Don,size=3D64M\n);
->>>>>>>      return;
->>>>>>>  }
->>>>>>>
->>>>>>> having npcm7xx_connect_flash() taking an Error* argument,
->>>>>>> and MachineClass::init() call it with &error_fatal.
->>>>>>
->>>>>> Erroring out if the user specifies a configuration that can't possib=
-ly
->>>>>> boot sounds good to me. Better than trying to come up with defaults
->>>>>> that are still not going to result in a bootable system.
->>>>>>
->>>>>> For testing recovery paths, I think it makes sense to explicitly
->>>>>> specify a null device as you suggest.
->>>>>
->>>>> Hmm, one problem. qom-test fails with
->>>>>
->>>>> qemu-system-aarch64: Missing SPI flash drive
->>>>> You can add a dummy drive using:
->>>>> -drive if=3Dmtd,driver=3Dnull-co,read-zeroes=3Don,size=3D32M
->>>>> Broken pipe
->>>>> /usr/local/google/home/hskinnemoen/qemu/for-upstream/tests/qtest/libq=
-test.c:166:
->>>>> kill_qemu() tried to terminate QEMU process but encountered exit
->>>>> status 1 (expected 0)
->>>>> ERROR qom-test - too few tests run (expected 68, got 7)
->>>>>
->>>>> So it looks like we might need a different solution to this, unless w=
-e
->>>>> want to make generic tests more machine-aware...
->>>
->>> I didn't follow the other mails in this thread, but what we usually do
->>> in such a case: Add a "if (qtest_enabled())" check to the device or the
->>> machine to ignore the error if it is running in qtest mode.
->>=20
->> Hmm I'm not sure it works in this case. We could do:
->>=20
->>   if (!dinfo) {
->>      if (qtest) {
->>         /* create null drive for qtest */
->>         opts =3D ...;
->>         dinfo =3D drive_new(opts, IF_MTD, &error_abort);
->>      } else {
->>         /* teach user to use proper CLI */
->>         error_setg(errp, "Missing SPI flash drive");
->>         error_append_hint(errp, "You can use a dummy drive using:\n");
->>         error_append_hint(errp, "-drive if=3Dmtd,driver=3Dnull-co,"
->>                                 "read-ones=3Don,size=3D64M\n);
->>      }
->>   }
->>=20
->> But I'm not sure Markus will enjoy it :)
-
-Using drive_new() for creating an internal dummy backend is wrong.
-
-Doing it only when qtest_enabled() doesn't make it less wrong.
-
->> Markus, any better idea about how to handle that with automatic qtests?
+On Fri, 17 Jul 2020 at 12:33, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> FWIW IDE device has a concept of "Anonymous BlockBackend for an empty
-> drive":
+> On 7/17/20 8:02 AM, Havard Skinnemoen wrote:
+> > This adds two acceptance tests for the quanta-gsj machine.
+> >
+> > One test downloads a lightly patched openbmc flash image from github an=
+d
+> > verifies that it boots all the way to the login prompt.
+> >
+> > The other test downloads a kernel, initrd and dtb built from the same
+> > openbmc source and verifies that the kernel detects all CPUs and boots
+> > to the point where it can't find the root filesystem (because we have n=
+o
+> > flash image in this case).
+> >
+> > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 >
-> static void ide_dev_initfn(IDEDevice *dev, IDEDriveKind kind, Error **err=
-p)
-> {
->     IDEBus *bus =3D DO_UPCAST(IDEBus, qbus, dev->qdev.parent_bus);
->     IDEState *s =3D bus->ifs + dev->unit;
->     int ret;
+> It looks good but I am not sure it's a good idea to have tests
+> point to URLs like :
 >
->     if (!dev->conf.blk) {
->         if (kind !=3D IDE_CD) {
->             error_setg(errp, "No drive specified");
->             return;
->         } else {
->             /* Anonymous BlockBackend for an empty drive */
->             dev->conf.blk =3D blk_new(qemu_get_aio_context(), 0, BLK_PERM=
-_ALL);
->             ret =3D blk_attach_dev(dev->conf.blk, &dev->qdev);
->             assert(ret =3D=3D 0);
->         }
->     }
+> https://github.com/hskinnemoen/openbmc/releases/download/20200711-gsj-qem=
+u-0/obmc-phosphor-initramfs-gsj.cpio.xz
+>
+> Philippe, Peter, is that OK ?
+>
+>
+> If so, Joel, Andrew, could we host FW images on the OpenBMC github ?
+> and do the same for Aspeed.
 
-I figure this creates an internal dummy backend the right way, just not
-the kind you need.  For a non-empty one, you get to make up a
-BlockDriverState, then use blk_new_with_bs().
+Yeah, we can do that if it would be preferred.
 
-Is the simplification of device code really worth making up a dummy
-backend?
+Nice work on adding a test Havard. I have been meaning to do the same
+for the aspeed machines for a while.
 
+>
+> Thanks,
+>
+> C.
+>
+> > ---
+> >  tests/acceptance/boot_linux_console.py | 65 ++++++++++++++++++++++++++
+> >  1 file changed, 65 insertions(+)
+> >
+> > diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/=
+boot_linux_console.py
+> > index 73cc69c499..1d82fc7ff8 100644
+> > --- a/tests/acceptance/boot_linux_console.py
+> > +++ b/tests/acceptance/boot_linux_console.py
+> > @@ -569,6 +569,71 @@ class BootLinuxConsole(LinuxKernelTest):
+> >                                                  'sda')
+> >          # cubieboard's reboot is not functioning; omit reboot test.
+> >
+> > +    def test_arm_quanta_gsj(self):
+> > +        """
+> > +        :avocado: tags=3Darch:arm
+> > +        :avocado: tags=3Dmachine:quanta-gsj
+> > +        """
+> > +        # 25 MiB compressed, 32 MiB uncompressed.
+> > +        image_url =3D (
+> > +                'https://github.com/hskinnemoen/openbmc/releases/downl=
+oad/'
+> > +                '20200711-gsj-qemu-0/obmc-phosphor-image-gsj.static.mt=
+d.gz')
+> > +        image_hash =3D '14895e634923345cb5c8776037ff7876df96f6b1'
+> > +        image_path_gz =3D self.fetch_asset(image_url, asset_hash=3Dima=
+ge_hash)
+> > +        image_name =3D os.path.splitext(os.path.basename(image_path_gz=
+))[0]
+> > +        image_path =3D os.path.join(self.workdir, image_name)
+> > +        archive.gzip_uncompress(image_path_gz, image_path)
+> > +
+> > +        self.vm.set_console()
+> > +        drive_args =3D 'file=3D' + image_path + ',if=3Dmtd,bus=3D0,uni=
+t=3D0'
+> > +        self.vm.add_args('-drive', drive_args)
+> > +        self.vm.launch()
+> > +
+> > +        self.wait_for_console_pattern('> BootBlock by Nuvoton')
+> > +        self.wait_for_console_pattern('>Device: Poleg BMC NPCM730')
+> > +        self.wait_for_console_pattern('>Skip DDR init.')
+> > +        self.wait_for_console_pattern('U-Boot ')
+> > +        self.wait_for_console_pattern('Booting Linux on physical CPU 0=
+x0')
+> > +        self.wait_for_console_pattern('CPU1: thread -1, cpu 1, socket =
+0')
+> > +        self.wait_for_console_pattern('OpenBMC Project Reference Distr=
+o')
+> > +        self.wait_for_console_pattern('gsj login:')
+> > +
+> > +    def test_arm_quanta_gsj_initrd(self):
+> > +        """
+> > +        :avocado: tags=3Darch:arm
+> > +        :avocado: tags=3Dmachine:quanta-gsj
+> > +        """
+> > +        initrd_url =3D (
+> > +                'https://github.com/hskinnemoen/openbmc/releases/downl=
+oad/'
+> > +                '20200711-gsj-qemu-0/obmc-phosphor-initramfs-gsj.cpio.=
+xz')
+> > +        initrd_hash =3D '98fefe5d7e56727b1eb17d5c00311b1b5c945300'
+> > +        initrd_path =3D self.fetch_asset(initrd_url, asset_hash=3Dinit=
+rd_hash)
+> > +        kernel_url =3D (
+> > +                'https://github.com/hskinnemoen/openbmc/releases/downl=
+oad/'
+> > +                '20200711-gsj-qemu-0/uImage-gsj.bin')
+> > +        kernel_hash =3D 'fa67b2f141d56d39b3c54305c0e8a899c99eb2c7'
+> > +        kernel_path =3D self.fetch_asset(kernel_url, asset_hash=3Dkern=
+el_hash)
+> > +        dtb_url =3D (
+> > +                'https://github.com/hskinnemoen/openbmc/releases/downl=
+oad/'
+> > +                '20200711-gsj-qemu-0/nuvoton-npcm730-gsj.dtb')
+> > +        dtb_hash =3D '18315f7006d7b688d8312d5c727eecd819aa36a4'
+> > +        dtb_path =3D self.fetch_asset(dtb_url, asset_hash=3Ddtb_hash)
+> > +
+> > +        self.vm.set_console()
+> > +        kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
+> > +                               'console=3DttyS0,115200n8 '
+> > +                               'earlycon=3Duart8250,mmio32,0xf0001000'=
+)
+> > +        self.vm.add_args('-kernel', kernel_path,
+> > +                         '-initrd', initrd_path,
+> > +                         '-dtb', dtb_path,
+> > +                         '-append', kernel_command_line)
+> > +        self.vm.launch()
+> > +
+> > +        self.wait_for_console_pattern('Booting Linux on physical CPU 0=
+x0')
+> > +        self.wait_for_console_pattern('CPU1: thread -1, cpu 1, socket =
+0')
+> > +        self.wait_for_console_pattern(
+> > +                'Give root password for system maintenance')
+> > +
+> >      def test_arm_orangepi(self):
+> >          """
+> >          :avocado: tags=3Darch:arm
+> >
+>

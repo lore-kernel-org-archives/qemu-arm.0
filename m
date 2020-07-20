@@ -1,108 +1,69 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2089721lfm;
-        Mon, 20 Jul 2020 02:59:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz1BGzrhJoZ6yPLSwslvA9Wx5OLhAuaTqO8RQG9yAKOGYbqxXN4td+86b0f2LO3X9tUeq4R
-X-Received: by 2002:a25:2a0a:: with SMTP id q10mr35156685ybq.269.1595239171564;
-        Mon, 20 Jul 2020 02:59:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595239171; cv=none;
-        d=google.com; s=arc-20160816;
-        b=eYFOCLPyMrskJ5f6a+5KoQM10vzZ602AHIV/sf21H4kWPasHAQGW7hqb/FaiAaBNn/
-         wRnONnAzX+DVideWq6HSsDC8gUAwZw/ZU+58WqkFCVwe8TAB67DzD5mtZ3TX9AtuOnDt
-         IxCWhhMNcHoOfFBH30ZYUxKaDJx0DJ+htOWZNI6rtWNLkzbTQVxexNMJhnE1sSVsBxtf
-         rpNTN6f7g8ofk0REG3MxIAzv2F6hES8htlOxh9keRRAfoEgfpImiSUn1LlhM5pxGemto
-         GkcGx3EhuAjWbq9dLLZztJc1JFLUHx6yh+VnTDPI/f93Nt+9PRcPoW0S9D3OI/1aSAQ4
-         htSw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=0R9WNlxMj4PxesDQXzX/Id0a5bZihglA4UZSVrsmxIY=;
-        b=l76Q6r6jqQ9iokiK2AYQEJN1WAdXatZcJ2vZhLBtVANNvnyWcGeQqv5c/nqUDbiDcH
-         2ejOhTew1izdjfH77KhJxmLbeHbvoBBwHg6lAonGdxqQxYhjx9kvdbJUjrnbbJoIu6Fw
-         r7eZh0c1wMlPUD1Vxx02spn5wkMEgspY1exzBhoEEKJnJISwe0eNnKpC+L2xcvs8BKSt
-         w1RiP6a/2V1wBd5EEoO2diq81bxxVNYwlruXurdAR7y+RntF+TWEsVBaD/+ldBlwLiqc
-         4tlCLBBLBC3CWDDVTd0fqpoZJmWcVPittsN6x8WtupIHJs10X13njDPwTzb6OLaYIFAf
-         Z4vw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jUS6dqxU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2095460lfm;
+        Mon, 20 Jul 2020 03:07:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzsDBWKsvrQBEsl+15YeGg+ZFq2GRcW8f7Q20F4+idn1XIsjJzPpdY0WNxqPzDQL3J2wwrO
+X-Received: by 2002:a25:bc0f:: with SMTP id i15mr32875594ybh.190.1595239620637;
+        Mon, 20 Jul 2020 03:07:00 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 124si17668339ybc.38.2020.07.20.02.59.31
+        by mx.google.com with ESMTPS id y9si16225551ybn.123.2020.07.20.03.07.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jul 2020 02:59:31 -0700 (PDT)
+        Mon, 20 Jul 2020 03:07:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jUS6dqxU;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49912 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34610 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jxSa3-0002rp-0K
-	for alex.bennee@linaro.org; Mon, 20 Jul 2020 05:59:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35976)
+	id 1jxShH-00006R-Uw
+	for alex.bennee@linaro.org; Mon, 20 Jul 2020 06:06:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jxSZ9-0002JD-67; Mon, 20 Jul 2020 05:58:35 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41549)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jxSZ7-0007CA-Jv; Mon, 20 Jul 2020 05:58:34 -0400
-Received: by mail-wr1-x444.google.com with SMTP id z15so17170049wrl.8;
- Mon, 20 Jul 2020 02:58:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=0R9WNlxMj4PxesDQXzX/Id0a5bZihglA4UZSVrsmxIY=;
- b=jUS6dqxUC93xccANDgYTtymLi4KjfHM776whWUotydd712ZcpX6u93KYbttVfqlMyQ
- bqzuEVlzBBzMmV2McTFQQuYcbwRRyQDvC9zEx7EV9jTvUclFYa2jFOfkD5QzW7WxlInn
- 9+9wlvaLWlu6rsq42ep5pT1+e18zsgle/8McQtR7HAQXa30egesCugIBa5wdWUA4bezU
- KUHn6Gm+5Q3OWmLmXUGDA2tiQ/RpzUhFgk4Ri2Z4qha317AxMhwvIsItn6Y23Mhi9Gcn
- JumyM3YvBvnOhXKvYy2QgZMl+rASZtlJ5xw5uJ2Lw9b64XIUBeiRoEMcYXdltjlFHh5t
- 1WMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=0R9WNlxMj4PxesDQXzX/Id0a5bZihglA4UZSVrsmxIY=;
- b=RNIthe9o1Cl2idSW2eE37YMLUEJkaJ89QsIC8PMmnM1CGf9inthM4ErfEEBnhblygx
- mEGKoGOaOKcbcz6ihH/7IfKgXKNlN7UbAxC05lJVMmriZuA5lFaAvfAD8Nqjo/buF/81
- HuYgRxCr/nbFx8l+vzLIDinICiN9QVQOeQLvAVtDkqFUhwRPEHZtQHk3fmCMhhjjmtPW
- xN5h8QS6rsFhFn9gq448tLroz+sEeh5fsUHEHZTtNKBMVfabtNWyXVewM+jonCcZr3eQ
- LBIv4/lFjBmJ2W3yTIK0srW4vgUsSsOD1SCJDVvtgIHsrq+K79uqk+q/pPTLp6xLXffe
- KBDA==
-X-Gm-Message-State: AOAM533rmUuDhQ91bjXvX2CfeFE1HWqR4jcMDKp99cCASL69WdbEJU9y
- rZdJMxvuYniV6ze7svN0k/jJvGnsAJU=
-X-Received: by 2002:a5d:6cce:: with SMTP id c14mr20491149wrc.377.1595239111506; 
- Mon, 20 Jul 2020 02:58:31 -0700 (PDT)
-Received: from localhost.localdomain
- (138.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id c194sm31321485wme.8.2020.07.20.02.58.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 20 Jul 2020 02:58:30 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1] hw/misc/aspeed_sdmc: Fix incorrect memory size
-Date: Mon, 20 Jul 2020 11:58:29 +0200
-Message-Id: <20200720095829.22839-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jxSfM-0006aM-Bq; Mon, 20 Jul 2020 06:05:00 -0400
+Resent-Date: Mon, 20 Jul 2020 06:05:00 -0400
+Resent-Message-Id: <E1jxSfM-0006aM-Bq@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21756)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1jxSfK-00082j-Fn; Mon, 20 Jul 2020 06:05:00 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1595239459; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=JDDka/ZwSvEUd2p7vL22PKN+kI+h1eLI36W+zIK+5qzfrRxORE26egzJ+Exwq3I1YQucm/p2jJaZd5fjnYuQSE+nt/HprFw7nApLEwbWrIZJD+6syDdtKkvNeyKmtL7CBz7rpMEFHsSoR/VKopksN66pyJO6wXEkL7exQwFUWi0=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1595239459;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=ji6otuXXKERwtgKd8IuSthmiZ+LXPbuKyg+s59Ash1A=; 
+ b=iR7+ib1g3JHLA5bmYbzKTcruZ4YMBX8IOPUo1Yro8baQNzn6MDzU8pOE/UU7qQyv+WPZpi8+C9wZM7Lv1DfRBIe5U0g+Sp/zmRXq8dpQ9qC1c97ZUjCkHDRP3wvQSg8hz1h36OjKbl3P/D3GwDwhpaZ/omHzyDyhnU8lTDOcpPY=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1595239456253960.4913500133791;
+ Mon, 20 Jul 2020 03:04:16 -0700 (PDT)
+Subject: Re: [PATCH-for-5.1] hw/misc/aspeed_sdmc: Fix incorrect memory size
+Message-ID: <159523945561.16283.15401473238246660496@07a7f0d89f7d>
+In-Reply-To: <20200720095829.22839-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: f4bug@amsat.org
+Date: Mon, 20 Jul 2020 03:04:16 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/20 06:04:32
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,79 +76,23 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, andrew@aj.id.au, qemu-devel@nongnu.org,
+ f4bug@amsat.org, qemu-arm@nongnu.org, joel@jms.id.au, clg@kaod.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yCSYNot+dCUy
+X-TUID: brpdf96jl77q
 
-The SDRAM Memory Controller has a 32-bit address bus, thus
-supports up to 4 GiB of DRAM. There is a signed to unsigned
-conversion error with the AST2600 maximum memory size:
-
-  (uint64_t)(2048 << 20) = (uint64_t)(-2147483648)
-                         = 0xffffffff40000000
-                         = 16 EiB - 2 GiB
-
-Fix by using the IEC suffixes which are usually safer, and add
-a check to verify the memory is valid. This would have catched
-this bug:
-
-    Unexpected error in aspeed_sdmc_realize() at hw/misc/aspeed_sdmc.c:261:
-    qemu-system-arm: Invalid RAM size 16 EiB
-
-Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/misc/aspeed_sdmc.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
-
-diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-index 0737d8de81..76dd7e6a20 100644
---- a/hw/misc/aspeed_sdmc.c
-+++ b/hw/misc/aspeed_sdmc.c
-@@ -256,6 +256,12 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
-     AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
- 
-     s->max_ram_size = asc->max_ram_size;
-+    if (s->max_ram_size >= 4 * GiB) {
-+        char *szstr = size_to_str(s->max_ram_size);
-+        error_setg(errp, "Invalid RAM size %s", szstr);
-+        g_free(szstr);
-+        return;
-+    }
- 
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
-                           TYPE_ASPEED_SDMC, 0x1000);
-@@ -341,7 +347,7 @@ static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data)
-     AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
- 
-     dc->desc = "ASPEED 2400 SDRAM Memory Controller";
--    asc->max_ram_size = 512 << 20;
-+    asc->max_ram_size = 512 * MiB;
-     asc->compute_conf = aspeed_2400_sdmc_compute_conf;
-     asc->write = aspeed_2400_sdmc_write;
-     asc->valid_ram_sizes = aspeed_2400_ram_sizes;
-@@ -408,7 +414,7 @@ static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data)
-     AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
- 
-     dc->desc = "ASPEED 2500 SDRAM Memory Controller";
--    asc->max_ram_size = 1024 << 20;
-+    asc->max_ram_size = 1 * GiB;
-     asc->compute_conf = aspeed_2500_sdmc_compute_conf;
-     asc->write = aspeed_2500_sdmc_write;
-     asc->valid_ram_sizes = aspeed_2500_ram_sizes;
-@@ -485,7 +491,7 @@ static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data)
-     AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
- 
-     dc->desc = "ASPEED 2600 SDRAM Memory Controller";
--    asc->max_ram_size = 2048 << 20;
-+    asc->max_ram_size = 2 * GiB;
-     asc->compute_conf = aspeed_2600_sdmc_compute_conf;
-     asc->write = aspeed_2600_sdmc_write;
-     asc->valid_ram_sizes = aspeed_2600_ram_sizes;
--- 
-2.21.3
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDcyMDA5NTgyOS4yMjgz
+OS0xLWY0YnVnQGFtc2F0Lm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhlIGRvY2tl
+ci1taW5nd0BmZWRvcmEgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3RpbmcgY29tbWFu
+ZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3RhbGxlZCwg
+eW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFNDUklQVCBC
+RUdJTiA9PT0KIyEgL2Jpbi9iYXNoCmV4cG9ydCBBUkNIPXg4Nl82NAptYWtlIGRvY2tlci1pbWFn
+ZS1mZWRvcmEgVj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtbWluZ3dAZmVkb3Jh
+IEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgoKCgpUaGUgZnVsbCBsb2cg
+aXMgYXZhaWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwNzIwMDk1ODI5LjIy
+ODM5LTEtZjRidWdAYW1zYXQub3JnL3Rlc3RpbmcuZG9ja2VyLW1pbmd3QGZlZG9yYS8/dHlwZT1t
+ZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0
+cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXct
+ZGV2ZWxAcmVkaGF0LmNvbQ==

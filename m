@@ -1,119 +1,126 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp315282lfm;
-        Fri, 17 Jul 2020 23:38:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx/VE7jRaKQbavA4z47Ggx/FoVBr1p3PPUzMwq9rJSXXa4yBKkjclW5gcYwZOpufYdy5+KL
-X-Received: by 2002:a25:be86:: with SMTP id i6mr19166057ybk.258.1595054318453;
-        Fri, 17 Jul 2020 23:38:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595054318; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2009835lfm;
+        Mon, 20 Jul 2020 00:58:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxO3nnTR+NjrGEu2f36zQGCHuFCIdnKy+WuXvev3igreyv1J715J/SHS6MJXC64RUpZYyUP
+X-Received: by 2002:a25:da87:: with SMTP id n129mr34254325ybf.149.1595231915757;
+        Mon, 20 Jul 2020 00:58:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595231915; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZzzKXQTPaSavq2xWAp0xwRvgFzcU4ebBjar1nA+grQW8OhCmI0L+Jw5QhSzxJmVYvJ
-         iyQtS7q8lc1SejusC99KZZqjYEUhdsBnhhJguSFdhCsQIfvSIKa6Hs+TxfcdLsUjXIXs
-         ffTOY/p+ouihsNF7Zy4JzGWrhzOxUecjfJ6RjpQkUr0fU0EgcnD3T7dHhF/EJ0ghaAnj
-         uJeZp8CK6xYC1XLJx9MtAj44MXMfgNtDFjT7X9EcB7B9DBRZlZfnT2gS++shzcqQ+hQL
-         IfCSgCw1EKwsUk6OSnXtlUx1snS1Qp312GSRPH4SlVPwewuNBEK0xJGf1C0GzABt85KK
-         PLkg==
+        b=uoZVAUcLrghaCoiortuJmPweotqzWtrYsdc8y3X/xnKXBBcc5c34FEE8yjDRvd0qhG
+         tEZUFAaRgN8VHS9XH/kr/x/bVLByIic+X/gYXA7FfAhBd3GnCR2XT3TIgS2JcvXchUb7
+         nMZ7DJ+74oVOqQ9Iv7mySRmpCMVbqzZ28x41RlRgRJx96QFjN0azLmKJ8+F1lZAYBT9M
+         7INX+Ji3LjRGjkR7QxmWlss8i7MXQ7jt0+Ycf7upfPUA/7q98tnkkuGnTcKbhVNrrdtx
+         RaPj5CktEUOUoOH5QxMJztJZhaicq1WQKwbSRia0b48STUmlPon9F+Fm8LSy+FCSaNuD
+         yhwQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=EsOlMnTrArh+/EAAhuxVogTlQuhGTL9qidrSIGAMKDc=;
-        b=xlpw2gkPWkUAEFfMfoDPG/cX1qwcOpwEQ40kRBHIMKtWIrxvM+mPkvU0dx77Pg3JBT
-         Xc3m5UNhDMOLa9q/GDqTTNSy4Y33uo+bC/ORAu4QUWg5sWaeMMImu0BH3vhIaZoC3wjo
-         v/7ZThGILsZGGtqLZ+Mk8ywufa4XqV+R/OyLwW3Ht+v9s0OpPf/pd9dnF4/IZv6zXi4h
-         5W/Ty3uNmUa+hpBb5ONv3ZFhBFqFuS1mpVTnq/zuXHHvBpGOF9i5kiyP/wEpQlkvdy9/
-         2I0EVjW9tunLpWss1LTFqrSpjeflA50/vLPU01TkgUYxMrddsBE6Fv6Y6htFMVwya7Cs
-         g1Vw==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=eoy0XehpgGB/FcfBWwT6NV7B2ZXbt6zhECU0aubmYco=;
+        b=u/WfgJJyMTzGLifUWYiInilVK2//ZuqNndwU25nEqGmro8znS/4W1wGygWCtG4l6Ru
+         aBh1D78CNmJBxRWXXok//GPjenE7DwkDZ7VOzuTx/O5IvXKM7qg6ktB9Us2dPF6Sktlc
+         znK9mWSqSHYB6sbZrdRC6uHGOQkHYrZoeEOlIrg/qkcKSS7xOkpXzgyj3lbZntRV1UC/
+         aO+daYvb8ZQhQPQLNcor7PYmguEUlKe/bU/eanVhq66ciM0Z+SwqXLE29cVTp+dpc663
+         vIqUPwWWmpNJujWQS/tRijq85+nWUpEQPaFhm3zOP/PKjKryBFrf66UcdLV/KYT/VMZT
+         AikQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I3btEYvK;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hcHn12f2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n4si12117447ybn.165.2020.07.17.23.38.38
+        by mx.google.com with ESMTPS id e133si5607478ybe.403.2020.07.20.00.58.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 17 Jul 2020 23:38:38 -0700 (PDT)
+        Mon, 20 Jul 2020 00:58:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I3btEYvK;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hcHn12f2;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57860 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jwgUX-0004jf-RB
-	for alex.bennee@linaro.org; Sat, 18 Jul 2020 02:38:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46768)
+	id 1jxQh1-0006WT-3d
+	for alex.bennee@linaro.org; Mon, 20 Jul 2020 03:58:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jwgUQ-0004jO-9T; Sat, 18 Jul 2020 02:38:30 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40783)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jwgUO-0000Ok-Ht; Sat, 18 Jul 2020 02:38:30 -0400
-Received: by mail-wm1-x344.google.com with SMTP id f139so20479052wmf.5;
- Fri, 17 Jul 2020 23:38:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=EsOlMnTrArh+/EAAhuxVogTlQuhGTL9qidrSIGAMKDc=;
- b=I3btEYvKCvS/lTXc1G0i71g5A1UpHb0U6AqRZCA1pLOlj/HjCxfMtI0/3wutfrA0nY
- DzvdzYcwFbcpFGgh5YEAsNfeYLeDL7ZNerGRRiD04leuQSD8we2++boU4uy8RdoK942W
- CVD1IG0yCt/Pu8pzeUfjibHD70eLIZseypHuEpwSiNLUyRQWgnw7JusTcOyZoqPmNnSo
- xdl3O/CbHX44ssbSGhSQInsG5AGosF2maR7xMfhYkwz7Ynfw/W+kYgecEQEXCNzdT+PX
- CThJZuNpJTOVUUx2kBQ1mDsbktAVQpMPMzcP/mjSe7G6IjKC/0uX15/eRlHYntpRvY4h
- ULGg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=EsOlMnTrArh+/EAAhuxVogTlQuhGTL9qidrSIGAMKDc=;
- b=J25epOH2q/0oxA1uuS26EAbqOKVYc+ze4gMTZneOseJP/mBl3k3mAIdUf3JQ2/6bTc
- 8CyH4cnbb/frL1tYGr9KfI6aYAzzqKr06wwwwt1IGCUrvfasixlhP7yGO8GnW+NGBORL
- wXifs+ON/rPBfP2HHcvSjlElzMJ2auxiQsZp9RycFBoqufpnFSgemfF0GmeoJD8vIKyG
- 6ijQ0tUNVur78u0y0dsY3tJsiMGwYL5SZ4d7D1WSA1u8PMVzx8fD4arKh7jrx5KF3pT7
- E7+n+b0xl4/CXxm/zeFp+zLw/ZZ96nWPTA03FaLTR+jO1LzLKk7UdWbcx6C5GDJqGDFp
- lsWA==
-X-Gm-Message-State: AOAM5334y/CCee89olG/eAN/Y39XQ6JyUsirK9tzZoyS1OYftqD43wLd
- /L2INKnoSq/MjeB6HwHBRpQ=
-X-Received: by 2002:a1c:c90d:: with SMTP id f13mr13232302wmb.185.1595054306360; 
- Fri, 17 Jul 2020 23:38:26 -0700 (PDT)
-Received: from [192.168.1.43] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id j14sm18278959wrs.75.2020.07.17.23.38.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 17 Jul 2020 23:38:25 -0700 (PDT)
-Subject: Re: [PATCH v6 04/13] hw/arm: Add NPCM730 and NPCM750 SoC models
-To: Havard Skinnemoen <hskinnemoen@google.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Markus Armbruster <armbru@redhat.com>
-References: <20200717060258.1602319-1-hskinnemoen@google.com>
- <20200717060258.1602319-5-hskinnemoen@google.com>
- <99db91b7-60e2-7212-abd2-a6505aee5d3d@kaod.org>
- <CAFQmdRZsGGc27-M_xfExsFD_M1dT4gVjvLewVoGCELJFbZ7hew@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <db1f8432-f8d4-1382-0cc1-4fbb13a1b3d6@amsat.org>
-Date: Sat, 18 Jul 2020 08:38:23 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxQgt-0006WI-8k
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2020 03:58:27 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35368
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxQgq-0006pX-SU
+ for qemu-arm@nongnu.org; Mon, 20 Jul 2020 03:58:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1595231903;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=eoy0XehpgGB/FcfBWwT6NV7B2ZXbt6zhECU0aubmYco=;
+ b=hcHn12f23QHCH2WeE36vCMHo3xQ7cHU+oyxl1Wze29XxFav/GdXa5oyJdJBopzCvAfpoL0
+ h+Z2winXHeoT58QDDvh7Q9PRa3AuWS6gaOX8uFH/t1G8zOAUiF9kzgS0/WQcZH1/qhYf5O
+ SQEw2535XFAPh0nP7ILhjzI1bL3RSeg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-488-VJfx6-LIN0-4a6NrHVDZAg-1; Mon, 20 Jul 2020 03:58:21 -0400
+X-MC-Unique: VJfx6-LIN0-4a6NrHVDZAg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AFC0C8017FB;
+ Mon, 20 Jul 2020 07:58:19 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
+ [10.36.112.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D45107303C;
+ Mon, 20 Jul 2020 07:58:18 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 6DCAE1141C54; Mon, 20 Jul 2020 09:58:17 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v5 10/11] hw/arm: Wire up BMC boot flash for npcm750-evb
+ and quanta-gsj
+References: <20200709003608.3834629-1-hskinnemoen@google.com>
+ <20200709003608.3834629-11-hskinnemoen@google.com>
+ <109d52ed-65bf-0fcc-98f1-47b7a6671d0b@kaod.org>
+ <CAFQmdRZcygskP3iwss01-Jz67yjAP_JENXjWM2Bp8U=DRzxR0Q@mail.gmail.com>
+ <875zaq78xq.fsf@dusky.pond.sub.org>
+ <19733456-a672-595d-e721-e0ef26d7f665@amsat.org>
+ <87v9iq2hkv.fsf@dusky.pond.sub.org>
+ <e87663cf-7cb2-ca6c-a751-e5c1cebc5440@amsat.org>
+ <87pn8xywz2.fsf@dusky.pond.sub.org>
+ <b3bc658f-a865-8e6b-c904-01c7724e89cc@amsat.org>
+ <CAFQmdRa9FiP6yX=XDrJy5KpjifQyVkQiY6DXtSoJSvfoq7Vm6w@mail.gmail.com>
+ <CAFQmdRac6tsZafN3PsnLhPA_Ny032ZAjOFuXkmYvJ-ubjcpPPw@mail.gmail.com>
+ <5345d70f-3041-ed13-12e9-9a8e3d803805@amsat.org>
+ <416d5243-dc8e-37c6-197f-96dec1c9f5cc@redhat.com>
+ <d66bf4fe-7349-a90f-c4fb-a80de7597819@amsat.org>
+ <bc258d6f-059d-618d-6ccd-94c04082bb25@amsat.org>
+Date: Mon, 20 Jul 2020 09:58:17 +0200
+In-Reply-To: <bc258d6f-059d-618d-6ccd-94c04082bb25@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 17 Jul 2020 11:00:43
+ +0200")
+Message-ID: <87imeihb3a.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <CAFQmdRZsGGc27-M_xfExsFD_M1dT4gVjvLewVoGCELJFbZ7hew@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/20 02:11:17
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,130 +133,133 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
  IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CMN7CDF3KLdd
+X-TUID: otlKfxo1kiWM
 
-On 7/17/20 6:59 PM, Havard Skinnemoen wrote:
-> +Markus Armbruster
-> 
-> On Fri, Jul 17, 2020 at 5:20 AM Cédric Le Goater <clg@kaod.org> wrote:
->>
->> On 7/17/20 8:02 AM, Havard Skinnemoen wrote:
->>> The Nuvoton NPCM7xx SoC family are used to implement Baseboard
->>> Management Controllers in servers. While the family includes four SoCs,
->>> this patch implements limited support for two of them: NPCM730 (targeted
->>> for Data Center applications) and NPCM750 (targeted for Enterprise
->>> applications).
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+
+> On 7/17/20 10:27 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> On 7/17/20 10:03 AM, Thomas Huth wrote:
+>>> On 17/07/2020 09.48, Philippe Mathieu-Daud=C3=A9 wrote:
+>>>> +Thomas
 >>>
->>> This patch includes little more than the bare minimum needed to boot a
->>> Linux kernel built with NPCM7xx support in direct-kernel mode:
+>>>> On 7/16/20 10:56 PM, Havard Skinnemoen wrote:
+>>>>> On Wed, Jul 15, 2020 at 1:54 PM Havard Skinnemoen
+>>>>> <hskinnemoen@google.com> wrote:
+>>>>>>
+>>>>>> On Wed, Jul 15, 2020 at 3:57 AM Philippe Mathieu-Daud=C3=A9 <f4bug@a=
+msat.org> wrote:
+>>>>>>>
+>>>>>>> On 7/15/20 11:00 AM, Markus Armbruster wrote:
+>>>>>>>> Now my point.  Why first make up user configuration, then use that=
+ to
+>>>>>>>> create a BlockBackend, when you could just go ahead and create the
+>>>>>>>> BlockBackend?
+>>>>>>>
+>>>>>>> CLI issue mostly.
+>>>>>>>
+>>>>>>> We can solve it similarly to the recent "sdcard: Do not allow inval=
+id SD
+>>>>>>> card sizes" patch:
+>>>>>>>
+>>>>>>>  if (!dinfo) {
+>>>>>>>      error_setg(errp, "Missing SPI flash drive");
+>>>>>>>      error_append_hint(errp, "You can use a dummy drive using:\n");
+>>>>>>>      error_append_hint(errp, "-drive if=3Dmtd,driver=3Dnull-co,"
+>>>>>>>                              "read-ones=3Don,size=3D64M\n);
+>>>>>>>      return;
+>>>>>>>  }
+>>>>>>>
+>>>>>>> having npcm7xx_connect_flash() taking an Error* argument,
+>>>>>>> and MachineClass::init() call it with &error_fatal.
+>>>>>>
+>>>>>> Erroring out if the user specifies a configuration that can't possib=
+ly
+>>>>>> boot sounds good to me. Better than trying to come up with defaults
+>>>>>> that are still not going to result in a bootable system.
+>>>>>>
+>>>>>> For testing recovery paths, I think it makes sense to explicitly
+>>>>>> specify a null device as you suggest.
+>>>>>
+>>>>> Hmm, one problem. qom-test fails with
+>>>>>
+>>>>> qemu-system-aarch64: Missing SPI flash drive
+>>>>> You can add a dummy drive using:
+>>>>> -drive if=3Dmtd,driver=3Dnull-co,read-zeroes=3Don,size=3D32M
+>>>>> Broken pipe
+>>>>> /usr/local/google/home/hskinnemoen/qemu/for-upstream/tests/qtest/libq=
+test.c:166:
+>>>>> kill_qemu() tried to terminate QEMU process but encountered exit
+>>>>> status 1 (expected 0)
+>>>>> ERROR qom-test - too few tests run (expected 68, got 7)
+>>>>>
+>>>>> So it looks like we might need a different solution to this, unless w=
+e
+>>>>> want to make generic tests more machine-aware...
 >>>
->>>   - Two Cortex-A9 CPU cores with built-in periperhals.
->>>   - Global Configuration Registers.
->>>   - Clock Management.
->>>   - 3 Timer Modules with 5 timers each.
->>>   - 4 serial ports.
->>>
->>> The chips themselves have a lot more features, some of which will be
->>> added to the model at a later stage.
->>>
->>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
->>> Reviewed-by: Joel Stanley <joel@jms.id.au>
->>> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->>> ---
->>>  include/hw/arm/npcm7xx.h |  85 ++++++++
->>>  hw/arm/npcm7xx.c         | 407 +++++++++++++++++++++++++++++++++++++++
->>>  hw/arm/Kconfig           |   5 +
->>>  hw/arm/Makefile.objs     |   1 +
->>>  4 files changed, 498 insertions(+)
->>>  create mode 100644 include/hw/arm/npcm7xx.h
->>>  create mode 100644 hw/arm/npcm7xx.c
-...
+>>> I didn't follow the other mails in this thread, but what we usually do
+>>> in such a case: Add a "if (qtest_enabled())" check to the device or the
+>>> machine to ignore the error if it is running in qtest mode.
+>>=20
+>> Hmm I'm not sure it works in this case. We could do:
+>>=20
+>>   if (!dinfo) {
+>>      if (qtest) {
+>>         /* create null drive for qtest */
+>>         opts =3D ...;
+>>         dinfo =3D drive_new(opts, IF_MTD, &error_abort);
+>>      } else {
+>>         /* teach user to use proper CLI */
+>>         error_setg(errp, "Missing SPI flash drive");
+>>         error_append_hint(errp, "You can use a dummy drive using:\n");
+>>         error_append_hint(errp, "-drive if=3Dmtd,driver=3Dnull-co,"
+>>                                 "read-ones=3Don,size=3D64M\n);
+>>      }
+>>   }
+>>=20
+>> But I'm not sure Markus will enjoy it :)
 
->>> +static void npcm7xx_realize(DeviceState *dev, Error **errp)
->>> +{
->>> +    NPCM7xxState *s = NPCM7XX(dev);
->>> +    NPCM7xxClass *nc = NPCM7XX_GET_CLASS(s);
->>> +    int i;
->>> +
->>> +    if (memory_region_size(s->dram) > NPCM7XX_DRAM_SZ) {
->>> +        error_setg(errp, "%s: NPCM7xx cannot address more than %" PRIu64
->>> +                   " MiB of DRAM", __func__, NPCM7XX_DRAM_SZ / MiB);
->>> +        return;
->>> +    }
->>> +
->>> +    /* CPUs */
->>> +    for (i = 0; i < nc->num_cpus; i++) {
->>> +        object_property_set_int(OBJECT(&s->cpu[i]), "mp-affinity",
->>> +                                arm_cpu_mp_affinity(i, NPCM7XX_MAX_NUM_CPUS),
->>> +                                &error_abort);
->>> +        object_property_set_int(OBJECT(&s->cpu[i]), "reset-cbar",
->>> +                                NPCM7XX_GIC_CPU_IF_ADDR, &error_abort);
->>> +        object_property_set_bool(OBJECT(&s->cpu[i]), "reset-hivecs", true,
->>> +                                 &error_abort);
->>> +
->>> +        /* Disable security extensions. */
->>> +        object_property_set_bool(OBJECT(&s->cpu[i]), "has_el3", false,
->>> +                                 &error_abort);
->>> +
->>> +        if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
->>> +            return;
->>> +        }
->>> +    }
->>> +
->>> +    /* A9MPCORE peripherals. Can only fail if we pass bad parameters here. */
->>> +    object_property_set_int(OBJECT(&s->a9mpcore), "num-cpu", nc->num_cpus,
->>> +                            &error_abort);
->>> +    object_property_set_int(OBJECT(&s->a9mpcore), "num-irq", NPCM7XX_NUM_IRQ,
->>> +                            &error_abort);
+Using drive_new() for creating an internal dummy backend is wrong.
 
-[1]
+Doing it only when qtest_enabled() doesn't make it less wrong.
 
->>> +    sysbus_realize(SYS_BUS_DEVICE(&s->a9mpcore), &error_abort);
-
-[2]
-
->>
->> shouldn't we test the return value and use errp ? I don't know what
->> was agreed upon.
-
-Per https://www.mail-archive.com/qemu-devel@nongnu.org/msg723217.html:
-
->> 1. Internal code failing to set simple properties to predefined
->> values is a programming error, so error_abort is appropriate.
+>> Markus, any better idea about how to handle that with automatic qtests?
 >
-> That would be my advice.
+> FWIW IDE device has a concept of "Anonymous BlockBackend for an empty
+> drive":
 >
->> 2. qdev_realize() may fail due to user input, so errors should be
->> propagated.
+> static void ide_dev_initfn(IDEDevice *dev, IDEDriveKind kind, Error **err=
+p)
+> {
+>     IDEBus *bus =3D DO_UPCAST(IDEBus, qbus, dev->qdev.parent_bus);
+>     IDEState *s =3D bus->ifs + dev->unit;
+>     int ret;
 >
-> In general, yes.  For a specific device, you may know it can't fail,
-> and then &error_abort may be okay.
+>     if (!dev->conf.blk) {
+>         if (kind !=3D IDE_CD) {
+>             error_setg(errp, "No drive specified");
+>             return;
+>         } else {
+>             /* Anonymous BlockBackend for an empty drive */
+>             dev->conf.blk =3D blk_new(qemu_get_aio_context(), 0, BLK_PERM=
+_ALL);
+>             ret =3D blk_attach_dev(dev->conf.blk, &dev->qdev);
+>             assert(ret =3D=3D 0);
+>         }
+>     }
 
-So it looks correct.
+I figure this creates an internal dummy backend the right way, just not
+the kind you need.  For a non-empty one, you get to make up a
+BlockDriverState, then use blk_new_with_bs().
 
-> 
-> I'm not sure if I got it 100% right, but what I tried to do was to see
-> which submodules could possibly fail due to user input, and propagate
-> errors from those modules only.
-> 
-> For example, the GCR can fail if the user-provided memory size can't
-> be encoded into registers, so that one clearly needs to be propagated.
-> 
-> Other modules don't take any parameters at all, so they can only fail
-> due to programming errors, hence error_abort.
-> 
-> I wasn't able to find any way command line options could cause the
-> a9mpcore module to fail, but that's one of the cases I'm very unsure
-> about, so I'll be happy to propagate errors from that if you (or
-> anyone else) think it's needed.
-> 
-> I'm also not sure about the CPUs, but ended up going the other way
-> since there's a -cpu option, and it's plausible that the user could
-> cause it to fail even though I couldn't find any specific options to
-> trigger an error.
+Is the simplification of device code really worth making up a dummy
+backend?
+

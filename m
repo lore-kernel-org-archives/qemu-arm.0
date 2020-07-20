@@ -1,133 +1,99 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2083893lfm;
-        Mon, 20 Jul 2020 02:49:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTBKmkwKJHCD7mX39r+ZBhcx/qFiSAhrg1QZcP0bVHRhL1HqpKwJ4Vcs+88EhSBiQZ+nDw
-X-Received: by 2002:a25:56c3:: with SMTP id k186mr33781521ybb.183.1595238575245;
-        Mon, 20 Jul 2020 02:49:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595238575; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2089721lfm;
+        Mon, 20 Jul 2020 02:59:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz1BGzrhJoZ6yPLSwslvA9Wx5OLhAuaTqO8RQG9yAKOGYbqxXN4td+86b0f2LO3X9tUeq4R
+X-Received: by 2002:a25:2a0a:: with SMTP id q10mr35156685ybq.269.1595239171564;
+        Mon, 20 Jul 2020 02:59:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595239171; cv=none;
         d=google.com; s=arc-20160816;
-        b=f+ebrSwsuTD95rkV+csCpk7gZ+KnF9j47VVUtXvCuVdU9dUzx7VR2zNMzonOJjvx1W
-         WTgoO07f6dZnREIh2Qlv8gZnqVyxQf8g2E7w9y/4dN6578jg3CUA6L2e07QgAJ8aWEsl
-         VEuFP63kOt+nDuiX/BB1G8YJnfoBXBioGBLJ2jLtNrT4AS/kiWF5K8Phm0oR0RW1e4xO
-         heeZbaV9zeKK3IXu3N6FFSehYVCAMlRk1WGfejbUfllKaeT7NojBCVAAR5KNcd0hXjky
-         aR/FVF86TeASPca+1qWCZ22HsEUGkWV6eHHpxhYxC7YP9neIaUDZJB/A0rh0VAITXqx5
-         NEWA==
+        b=eYFOCLPyMrskJ5f6a+5KoQM10vzZ602AHIV/sf21H4kWPasHAQGW7hqb/FaiAaBNn/
+         wRnONnAzX+DVideWq6HSsDC8gUAwZw/ZU+58WqkFCVwe8TAB67DzD5mtZ3TX9AtuOnDt
+         IxCWhhMNcHoOfFBH30ZYUxKaDJx0DJ+htOWZNI6rtWNLkzbTQVxexNMJhnE1sSVsBxtf
+         rpNTN6f7g8ofk0REG3MxIAzv2F6hES8htlOxh9keRRAfoEgfpImiSUn1LlhM5pxGemto
+         GkcGx3EhuAjWbq9dLLZztJc1JFLUHx6yh+VnTDPI/f93Nt+9PRcPoW0S9D3OI/1aSAQ4
+         htSw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=fNJsqz/KLYzuhc5HeX2Wt5ZIRBJ+9XJvw/isbxqhlIs=;
-        b=xRaRYeOw3wvp/xLeKJQ2cONXupmYLvRTevP7n1fohrdc5kjuzR61CWydviSRxNSj8m
-         tJMZA+x/21dbMwYd4PCbQjUZD5DvrYz+buJ5Ve8vEpWMTbfJW9bjLIIR0LHlL0menEQ0
-         8xbP/PlDkuW8GJQR0G5aFWZTtnwS/NpUERJ/EgtSsmE8lJUxjHNfqlfq/M2XwN/esyZN
-         RlT3frA2vy+NpYdVuLYUYSGz58vNufA4TOvGAgId7yj+da0AuvvfC1jqtDezC5aMyAbS
-         o3F8KVfe1ii/7t2wP30X2S5FuslLMZmMEealZ/mR+JiwwvKZsvdJ4Q10M2OaivpmspgX
-         Dk6Q==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=0R9WNlxMj4PxesDQXzX/Id0a5bZihglA4UZSVrsmxIY=;
+        b=l76Q6r6jqQ9iokiK2AYQEJN1WAdXatZcJ2vZhLBtVANNvnyWcGeQqv5c/nqUDbiDcH
+         2ejOhTew1izdjfH77KhJxmLbeHbvoBBwHg6lAonGdxqQxYhjx9kvdbJUjrnbbJoIu6Fw
+         r7eZh0c1wMlPUD1Vxx02spn5wkMEgspY1exzBhoEEKJnJISwe0eNnKpC+L2xcvs8BKSt
+         w1RiP6a/2V1wBd5EEoO2diq81bxxVNYwlruXurdAR7y+RntF+TWEsVBaD/+ldBlwLiqc
+         4tlCLBBLBC3CWDDVTd0fqpoZJmWcVPittsN6x8WtupIHJs10X13njDPwTzb6OLaYIFAf
+         Z4vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YHyfsDN3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jUS6dqxU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x4si15896454ybr.310.2020.07.20.02.49.35
+        by mx.google.com with ESMTPS id 124si17668339ybc.38.2020.07.20.02.59.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jul 2020 02:49:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 20 Jul 2020 02:59:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YHyfsDN3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jUS6dqxU;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38238 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49912 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jxSQQ-00063M-GQ
-	for alex.bennee@linaro.org; Mon, 20 Jul 2020 05:49:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33834)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jxSa3-0002rp-0K
+	for alex.bennee@linaro.org; Mon, 20 Jul 2020 05:59:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jxSQH-00061D-6H; Mon, 20 Jul 2020 05:49:25 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:40457)
+ id 1jxSZ9-0002JD-67; Mon, 20 Jul 2020 05:58:35 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41549)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jxSQF-0005l1-5n; Mon, 20 Jul 2020 05:49:24 -0400
-Received: by mail-wm1-x341.google.com with SMTP id f139so24520079wmf.5;
- Mon, 20 Jul 2020 02:49:21 -0700 (PDT)
+ id 1jxSZ7-0007CA-Jv; Mon, 20 Jul 2020 05:58:34 -0400
+Received: by mail-wr1-x444.google.com with SMTP id z15so17170049wrl.8;
+ Mon, 20 Jul 2020 02:58:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
+ h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=fNJsqz/KLYzuhc5HeX2Wt5ZIRBJ+9XJvw/isbxqhlIs=;
- b=YHyfsDN3EUZCQAImBqz/J0qaw3VSsGGeUBzdMU7V9mJeKVZrpSrbt7MH625WvRQ52D
- v01tr5t3iUCwQblvGfEFa15PwdL+geAOFAF3xISNkhhRd5CFuqUHwTk0msd//UrOsBkN
- u5O5J9T0ZT1z9wotqQrxB31b3nUuXAcxS746gr8dj5cluW8KOsPtNMkVu82Qn5+MEt/N
- vDXAXE0udzLhRWAcBmOC2anREfSXNVjJb85I/lELbXkZcIWiWKTpOsIHdkuAPCVGkEZ9
- aEuDT6zRECS3ASVeMTugJhF+e1oivrmIyxPRWXNCnpgPlR3Oq/aP2o4m82Pjy/JtVWe2
- am+g==
+ bh=0R9WNlxMj4PxesDQXzX/Id0a5bZihglA4UZSVrsmxIY=;
+ b=jUS6dqxUC93xccANDgYTtymLi4KjfHM776whWUotydd712ZcpX6u93KYbttVfqlMyQ
+ bqzuEVlzBBzMmV2McTFQQuYcbwRRyQDvC9zEx7EV9jTvUclFYa2jFOfkD5QzW7WxlInn
+ 9+9wlvaLWlu6rsq42ep5pT1+e18zsgle/8McQtR7HAQXa30egesCugIBa5wdWUA4bezU
+ KUHn6Gm+5Q3OWmLmXUGDA2tiQ/RpzUhFgk4Ri2Z4qha317AxMhwvIsItn6Y23Mhi9Gcn
+ JumyM3YvBvnOhXKvYy2QgZMl+rASZtlJ5xw5uJ2Lw9b64XIUBeiRoEMcYXdltjlFHh5t
+ 1WMg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=fNJsqz/KLYzuhc5HeX2Wt5ZIRBJ+9XJvw/isbxqhlIs=;
- b=pm9FQ9O0BuHJeIhF0k4Hrapcqo0FwF5Z1bdKuYlTvaiC8RhsD1SX/MqbxUn4009jrC
- QLHnqbjaudi+ZcVozScTtkPN6S11WlFphnKpgFL7PobTK8JTMddcpXHNwRMvmWZy3Rrc
- E1N+GzCm0z6Ds1j/pXS9GP92UG3+DtDl5OfphtWhOvspTWU1xnjWCDkhS9Dql4KI36Ez
- qcf2ayaRxBeYplT6t/jIz41JQUtCeazdCOARCyox4kT09h15I9jh0b2+/vDJIitf1X5D
- PWb1CPZg1JwGM+RQclZLfJJisdr3Y9pj5AEbn2d00Rq2+GwqaxdaCDyaCn4ZN8OG72Ul
- LGUw==
-X-Gm-Message-State: AOAM533NN2gTinuLvfAb+9wvoqjYkro0SfkMzUmSCwFErxs5/aKwyd71
- LwCQxCaSBBCTTYWFuUO/zjY=
-X-Received: by 2002:a1c:4846:: with SMTP id v67mr21825402wma.175.1595238560636; 
- Mon, 20 Jul 2020 02:49:20 -0700 (PDT)
-Received: from [192.168.1.37] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id d81sm33386744wmc.0.2020.07.20.02.49.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Jul 2020 02:49:19 -0700 (PDT)
-Subject: Re: [PATCH v6 13/13] tests/acceptance: console boot tests for
- quanta-gsj
-To: Joel Stanley <joel@jms.id.au>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
- <clg@kaod.org>
-References: <20200717060258.1602319-1-hskinnemoen@google.com>
- <20200717060258.1602319-14-hskinnemoen@google.com>
- <f098aa02-28cd-f86b-1641-5e164ba5ca7f@kaod.org>
- <CACPK8Xe_COP0sLCZnjnRYgA13W73BPnw9g0B5u6DK4++MDy5-A@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <14f844ce-b09a-6d87-5003-155f745c79a3@amsat.org>
-Date: Mon, 20 Jul 2020 11:49:18 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=0R9WNlxMj4PxesDQXzX/Id0a5bZihglA4UZSVrsmxIY=;
+ b=RNIthe9o1Cl2idSW2eE37YMLUEJkaJ89QsIC8PMmnM1CGf9inthM4ErfEEBnhblygx
+ mEGKoGOaOKcbcz6ihH/7IfKgXKNlN7UbAxC05lJVMmriZuA5lFaAvfAD8Nqjo/buF/81
+ HuYgRxCr/nbFx8l+vzLIDinICiN9QVQOeQLvAVtDkqFUhwRPEHZtQHk3fmCMhhjjmtPW
+ xN5h8QS6rsFhFn9gq448tLroz+sEeh5fsUHEHZTtNKBMVfabtNWyXVewM+jonCcZr3eQ
+ LBIv4/lFjBmJ2W3yTIK0srW4vgUsSsOD1SCJDVvtgIHsrq+K79uqk+q/pPTLp6xLXffe
+ KBDA==
+X-Gm-Message-State: AOAM533rmUuDhQ91bjXvX2CfeFE1HWqR4jcMDKp99cCASL69WdbEJU9y
+ rZdJMxvuYniV6ze7svN0k/jJvGnsAJU=
+X-Received: by 2002:a5d:6cce:: with SMTP id c14mr20491149wrc.377.1595239111506; 
+ Mon, 20 Jul 2020 02:58:31 -0700 (PDT)
+Received: from localhost.localdomain
+ (138.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.138])
+ by smtp.gmail.com with ESMTPSA id c194sm31321485wme.8.2020.07.20.02.58.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Jul 2020 02:58:30 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH-for-5.1] hw/misc/aspeed_sdmc: Fix incorrect memory size
+Date: Mon, 20 Jul 2020 11:58:29 +0200
+Message-Id: <20200720095829.22839-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <CACPK8Xe_COP0sLCZnjnRYgA13W73BPnw9g0B5u6DK4++MDy5-A@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -138,166 +104,90 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- qemu-arm <qemu-arm@nongnu.org>, Avi Fishman <Avi.Fishman@nuvoton.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H5Mt4HF249HJ
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yCSYNot+dCUy
 
-On 7/20/20 10:22 AM, Joel Stanley wrote:
-> On Fri, 17 Jul 2020 at 12:33, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> On 7/17/20 8:02 AM, Havard Skinnemoen wrote:
->>> This adds two acceptance tests for the quanta-gsj machine.
->>>
->>> One test downloads a lightly patched openbmc flash image from github and
->>> verifies that it boots all the way to the login prompt.
->>>
->>> The other test downloads a kernel, initrd and dtb built from the same
->>> openbmc source and verifies that the kernel detects all CPUs and boots
->>> to the point where it can't find the root filesystem (because we have no
->>> flash image in this case).
->>>
->>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->>
->> It looks good but I am not sure it's a good idea to have tests
->> point to URLs like :
->>
->> https://github.com/hskinnemoen/openbmc/releases/download/20200711-gsj-qemu-0/obmc-phosphor-initramfs-gsj.cpio.xz
->>
->> Philippe, Peter, is that OK ?
+The SDRAM Memory Controller has a 32-bit address bus, thus
+supports up to 4 GiB of DRAM. There is a signed to unsigned
+conversion error with the AST2600 maximum memory size:
 
-FWIW I'm happier having something to test than anything.
-If Havard destroys his repo, we can remove/move the test.
-However ...
+  (uint64_t)(2048 << 20) = (uint64_t)(-2147483648)
+                         = 0xffffffff40000000
+                         = 16 EiB - 2 GiB
 
->>
->>
->> If so, Joel, Andrew, could we host FW images on the OpenBMC github ?
->> and do the same for Aspeed.
-> 
-> Yeah, we can do that if it would be preferred.
+Fix by using the IEC suffixes which are usually safer, and add
+a check to verify the memory is valid. This would have catched
+this bug:
 
-... this is certainly better.
+    Unexpected error in aspeed_sdmc_realize() at hw/misc/aspeed_sdmc.c:261:
+    qemu-system-arm: Invalid RAM size 16 EiB
 
-> 
-> Nice work on adding a test Havard. I have been meaning to do the same
-> for the aspeed machines for a while.
-> 
->>
->> Thanks,
->>
->> C.
->>
->>> ---
->>>  tests/acceptance/boot_linux_console.py | 65 ++++++++++++++++++++++++++
->>>  1 file changed, 65 insertions(+)
->>>
->>> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
->>> index 73cc69c499..1d82fc7ff8 100644
->>> --- a/tests/acceptance/boot_linux_console.py
->>> +++ b/tests/acceptance/boot_linux_console.py
->>> @@ -569,6 +569,71 @@ class BootLinuxConsole(LinuxKernelTest):
->>>                                                  'sda')
->>>          # cubieboard's reboot is not functioning; omit reboot test.
->>>
->>> +    def test_arm_quanta_gsj(self):
->>> +        """
->>> +        :avocado: tags=arch:arm
->>> +        :avocado: tags=machine:quanta-gsj
->>> +        """
->>> +        # 25 MiB compressed, 32 MiB uncompressed.
->>> +        image_url = (
->>> +                'https://github.com/hskinnemoen/openbmc/releases/download/'
->>> +                '20200711-gsj-qemu-0/obmc-phosphor-image-gsj.static.mtd.gz')
->>> +        image_hash = '14895e634923345cb5c8776037ff7876df96f6b1'
->>> +        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash)
+Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/misc/aspeed_sdmc.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
 
-This path is in the Avocado assets cache.
-
->>> +        image_name = os.path.splitext(os.path.basename(image_path_gz))[0]
-
-You take the basename, so it is not in the Avocado assets cache
-but in the local workdir, good. As this is a temporary file name,
-we don't care much if the name matches. This works too (and the
-reviewer doesn't have to wonder what is the path name):
-
-             image_name = "obmc.mtd"
-
-I'm fine either ways, thanks for adding a pair of tests!
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
->>> +        image_path = os.path.join(self.workdir, image_name)
->>> +        archive.gzip_uncompress(image_path_gz, image_path)
->>> +
->>> +        self.vm.set_console()
->>> +        drive_args = 'file=' + image_path + ',if=mtd,bus=0,unit=0'
->>> +        self.vm.add_args('-drive', drive_args)
->>> +        self.vm.launch()
->>> +
->>> +        self.wait_for_console_pattern('> BootBlock by Nuvoton')
->>> +        self.wait_for_console_pattern('>Device: Poleg BMC NPCM730')
->>> +        self.wait_for_console_pattern('>Skip DDR init.')
->>> +        self.wait_for_console_pattern('U-Boot ')
->>> +        self.wait_for_console_pattern('Booting Linux on physical CPU 0x0')
->>> +        self.wait_for_console_pattern('CPU1: thread -1, cpu 1, socket 0')
->>> +        self.wait_for_console_pattern('OpenBMC Project Reference Distro')
->>> +        self.wait_for_console_pattern('gsj login:')
->>> +
->>> +    def test_arm_quanta_gsj_initrd(self):
->>> +        """
->>> +        :avocado: tags=arch:arm
->>> +        :avocado: tags=machine:quanta-gsj
->>> +        """
->>> +        initrd_url = (
->>> +                'https://github.com/hskinnemoen/openbmc/releases/download/'
->>> +                '20200711-gsj-qemu-0/obmc-phosphor-initramfs-gsj.cpio.xz')
->>> +        initrd_hash = '98fefe5d7e56727b1eb17d5c00311b1b5c945300'
->>> +        initrd_path = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
->>> +        kernel_url = (
->>> +                'https://github.com/hskinnemoen/openbmc/releases/download/'
->>> +                '20200711-gsj-qemu-0/uImage-gsj.bin')
->>> +        kernel_hash = 'fa67b2f141d56d39b3c54305c0e8a899c99eb2c7'
->>> +        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
->>> +        dtb_url = (
->>> +                'https://github.com/hskinnemoen/openbmc/releases/download/'
->>> +                '20200711-gsj-qemu-0/nuvoton-npcm730-gsj.dtb')
->>> +        dtb_hash = '18315f7006d7b688d8312d5c727eecd819aa36a4'
->>> +        dtb_path = self.fetch_asset(dtb_url, asset_hash=dtb_hash)
->>> +
->>> +        self.vm.set_console()
->>> +        kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
->>> +                               'console=ttyS0,115200n8 '
->>> +                               'earlycon=uart8250,mmio32,0xf0001000')
->>> +        self.vm.add_args('-kernel', kernel_path,
->>> +                         '-initrd', initrd_path,
->>> +                         '-dtb', dtb_path,
->>> +                         '-append', kernel_command_line)
->>> +        self.vm.launch()
->>> +
->>> +        self.wait_for_console_pattern('Booting Linux on physical CPU 0x0')
->>> +        self.wait_for_console_pattern('CPU1: thread -1, cpu 1, socket 0')
->>> +        self.wait_for_console_pattern(
->>> +                'Give root password for system maintenance')
->>> +
->>>      def test_arm_orangepi(self):
->>>          """
->>>          :avocado: tags=arch:arm
->>>
->>
-> 
+diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+index 0737d8de81..76dd7e6a20 100644
+--- a/hw/misc/aspeed_sdmc.c
++++ b/hw/misc/aspeed_sdmc.c
+@@ -256,6 +256,12 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
+     AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
+ 
+     s->max_ram_size = asc->max_ram_size;
++    if (s->max_ram_size >= 4 * GiB) {
++        char *szstr = size_to_str(s->max_ram_size);
++        error_setg(errp, "Invalid RAM size %s", szstr);
++        g_free(szstr);
++        return;
++    }
+ 
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
+                           TYPE_ASPEED_SDMC, 0x1000);
+@@ -341,7 +347,7 @@ static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data)
+     AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
+ 
+     dc->desc = "ASPEED 2400 SDRAM Memory Controller";
+-    asc->max_ram_size = 512 << 20;
++    asc->max_ram_size = 512 * MiB;
+     asc->compute_conf = aspeed_2400_sdmc_compute_conf;
+     asc->write = aspeed_2400_sdmc_write;
+     asc->valid_ram_sizes = aspeed_2400_ram_sizes;
+@@ -408,7 +414,7 @@ static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data)
+     AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
+ 
+     dc->desc = "ASPEED 2500 SDRAM Memory Controller";
+-    asc->max_ram_size = 1024 << 20;
++    asc->max_ram_size = 1 * GiB;
+     asc->compute_conf = aspeed_2500_sdmc_compute_conf;
+     asc->write = aspeed_2500_sdmc_write;
+     asc->valid_ram_sizes = aspeed_2500_ram_sizes;
+@@ -485,7 +491,7 @@ static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data)
+     AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
+ 
+     dc->desc = "ASPEED 2600 SDRAM Memory Controller";
+-    asc->max_ram_size = 2048 << 20;
++    asc->max_ram_size = 2 * GiB;
+     asc->compute_conf = aspeed_2600_sdmc_compute_conf;
+     asc->write = aspeed_2600_sdmc_write;
+     asc->valid_ram_sizes = aspeed_2600_ram_sizes;
+-- 
+2.21.3
 

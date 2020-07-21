@@ -1,90 +1,113 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2975852lfm;
-        Mon, 20 Jul 2020 23:51:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyuA9V2t2k9gJdWpoxznLbivvI/FkNuv6wcbql2BPhmL8T72T1wMo7LqL36AdGZOyc2eWm6
-X-Received: by 2002:a25:a088:: with SMTP id y8mr28788502ybh.253.1595314308866;
-        Mon, 20 Jul 2020 23:51:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595314308; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3029831lfm;
+        Tue, 21 Jul 2020 01:14:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxl++DV6akqTT2GrhOVkf/mQuMhgELcsDSRNOBj9q9v9ccbZKKBn+Ibuyx17uyiubSY/APF
+X-Received: by 2002:a25:25d7:: with SMTP id l206mr38064782ybl.340.1595319295277;
+        Tue, 21 Jul 2020 01:14:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595319295; cv=none;
         d=google.com; s=arc-20160816;
-        b=LdfAG4vUN8tevwcLm4QfAHNgewJifZtPVuxh9UfXlLGL/cCQE2I+XPyRtECAATU8eu
-         4UV518dlbVctihjZll5U28erNsGjbIr5tgAlqP/jbq8AEXvzM32/tSFzR2XsQSV4DMKR
-         EoC4lOXK16WpihG7uOwLtyTrTunYlF6kZDPmb4RR8yNNW07wecpswnZsb/kfgnv4L2xw
-         0ugfQk6NjHHhGF9vJFa3vZGQzIYT8e+O6OfjhxxE7ejs9kazU8k2fG3NYSMomD1AgF1r
-         e9Iip0hz/Xsxu543WH3rHGRJQuEFhMZpOt2VmZdAw//aH8BEyAPNBioDRlV8tObk9w6u
-         QLQQ==
+        b=o2Nxw9LPlEDoTMunIv5v74i3svC0twsN+v1jkNwP28BeYOuYhj6e9XUTEcPwUGQe+S
+         eXhG90JtiHjYkLX4DVNW0W99ZkByepT4a0ffXFYHw5xyaleJxNEIzxvMJ4aYUsNCkYPU
+         Oyw9zj9ni9S+o0o8PFDwaHiNd2GT7D8cMNfmpHYx/0tF1aASIVAAfZ4l7KnMHOboE+4f
+         NhrL1FPJWDwNQzNbqqDKVtJ1gYsQvzwaJDZWFMSChy7ZLWKgknWHj/8ihQWoPPILmbkn
+         wKaF0pLtX1MDNOMAa9voLKgk2wcIyAZXxsrLHzG8kajUm8KIuAqvXbQsrRg/+HXlvRal
+         JCaQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=3li362Rn6PLywKAKYY2xNljUHfB8VYZYtHYV4btuoLc=;
-        b=y5gO5WKTRfE5EvY0j8PWQ8iYn2OWe8AZ4HZkee6K1T/hy34xjPCGt4627XpS65zkid
-         KTvu9JKquBtjusDrToBj/7detPGk4T59KbD6TDkHlJepQfefsvo2NmpMTYWIQB/64+as
-         Pyx3WMiOUD8ZkHsLOIkxgHd75HZ4WDFPOenbVxfDP+Y8gpFJJWOs+/dP1qapSZRLeovD
-         h9knMHAsD39ue/mYZeG2MqijwC/bxoP1xBKZVNTkyiFEH+ChttyV63D5H0HUKgkFCkjB
-         80dmK/7gvJjtwXs3/zDhN7BQW9QBF2/p8E8MLhmIc5QFVjSFZnxSx23DBf54uFDQbjr3
-         i4Xg==
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=etk9kK7oYy1kULz5mrxON5H4x+v0+bH7F22JnVaeOcs=;
+        b=oCpwGodITGu5qrZMpUB1+tz7OU4yrbTGdj3Mzl/VYA3/IPytny8GO2Z34oR02Oj7Yx
+         UQ+Z9CHWE3OSuR14cd5D26MEFXpKu89wIjHV39ehBW1wy1fkFeBaIS/qJLEOw3v0GW3H
+         MOV+txtnYFiv+QxpgeqDF1/Ud5xLcoSvai+xKu31xVII44zPQrG//O/OCVblbIfjK+cO
+         37giUnoZ1S/94YouafCstrSqp95P+JiucJT+ZPY0KLA0nld92nOr73XRN/uFcW+vr/7B
+         ehf94GU926OBlLwe2GZwa0lK2zYxLJo1+U44oZ2b0d7xBHqPw7V/MqziJ88+crtwUNEr
+         oNOg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=K1CQ0SSC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l15si17060984ybt.51.2020.07.20.23.51.48
+        by mx.google.com with ESMTPS id u10si19422502ybb.99.2020.07.21.01.14.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 20 Jul 2020 23:51:48 -0700 (PDT)
+        Tue, 21 Jul 2020 01:14:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46480 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=K1CQ0SSC;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52842 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jxm7w-0008Nm-8O
-	for alex.bennee@linaro.org; Tue, 21 Jul 2020 02:51:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60816)
+	id 1jxnQM-00068M-Fe
+	for alex.bennee@linaro.org; Tue, 21 Jul 2020 04:14:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35560)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxm7m-0008M8-0x
- for qemu-arm@nongnu.org; Tue, 21 Jul 2020 02:51:38 -0400
-Received: from 9.mo179.mail-out.ovh.net ([46.105.76.148]:40943)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxm7i-0007fB-PF
- for qemu-arm@nongnu.org; Tue, 21 Jul 2020 02:51:37 -0400
-Received: from player694.ha.ovh.net (unknown [10.110.171.173])
- by mo179.mail-out.ovh.net (Postfix) with ESMTP id EF1941728C8
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2020 08:51:31 +0200 (CEST)
-Received: from kaod.org (bad36-1-78-202-132-1.fbx.proxad.net [78.202.132.1])
- (Authenticated sender: clg@kaod.org)
- by player694.ha.ovh.net (Postfix) with ESMTPSA id B90871471E195;
- Tue, 21 Jul 2020 06:51:22 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G002408a3cb3-f1ee-4236-b3ef-49371bc1dfc0,622D537D4FED1CEB9E006CC2F7D967EDAF2A62E4)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH-for-5.1 v2] hw/misc/aspeed_sdmc: Fix incorrect memory size
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200720174922.16303-1-f4bug@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <6c2c3fc2-c552-c767-647b-000bdfefd942@kaod.org>
-Date: Tue, 21 Jul 2020 08:51:20 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxnOp-0003oq-MD
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2020 04:13:19 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:53258
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxnOk-0004hT-Pq
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2020 04:13:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1595319194;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=etk9kK7oYy1kULz5mrxON5H4x+v0+bH7F22JnVaeOcs=;
+ b=K1CQ0SSCCFr7xxQ2t0t5BOPzmCEgG/f/ELu9PNx5nlM/iRfnSR2mcpxn7uTbCzW8ChS6NY
+ nF6tfK93XBBybejO1/dZk0Ezypy8h52pU/Q/L0MDmf/XxaGowkqY2yffbjxhzmWIi6PjBi
+ JO0BbopmWaGRP4GPqftCZv/2IP8beHo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-199-7bfwxjCOPDe_FEuCQls2eg-1; Tue, 21 Jul 2020 04:13:09 -0400
+X-MC-Unique: 7bfwxjCOPDe_FEuCQls2eg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4A15A80046D;
+ Tue, 21 Jul 2020 08:13:08 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
+ [10.36.112.143])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B7E926933E;
+ Tue, 21 Jul 2020 08:13:07 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 49D50111CA27; Tue, 21 Jul 2020 10:13:06 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH-for-5.1] hw/misc/aspeed_sdmc: Fix incorrect memory size
+References: <20200720095829.22839-1-f4bug@amsat.org>
+ <ed5e6bd0-0962-b182-3348-d3c6655ef35e@kaod.org>
+ <f7dc7d48-6fd7-e1ba-f94b-cd2764490eb7@amsat.org>
+Date: Tue, 21 Jul 2020 10:13:06 +0200
+In-Reply-To: <f7dc7d48-6fd7-e1ba-f94b-cd2764490eb7@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 20 Jul 2020 19:39:02
+ +0200")
+Message-ID: <877duxb819.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-In-Reply-To: <20200720174922.16303-1-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 10408663167716527083
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrgeehgdduuddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefffdvtddugeeifeduuefghfejgfeigeeigeeltedthefgieeiveeuiefhgeefgfenucfkpheptddrtddrtddrtddpjeekrddvtddvrddufedvrddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepphhlrgihvghrieelgedrhhgrrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehqvghmuhdqrghrmhesnhhonhhgnhhurdhorhhg
-Received-SPF: pass client-ip=46.105.76.148; envelope-from=clg@kaod.org;
- helo=9.mo179.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 02:51:32
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 03:39:19
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,78 +120,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org, Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: l+fE2hW6frDO
+X-TUID: uGFVetmfXVwf
 
-On 7/20/20 7:49 PM, Philippe Mathieu-Daudé wrote:
-> The SDRAM Memory Controller has a 32-bit address bus, thus
-> supports up to 4 GiB of DRAM. There is a signed to unsigned
-> conversion error with the AST2600 maximum memory size:
-> 
->   (uint64_t)(2048 << 20) = (uint64_t)(-2147483648)
->                          = 0xffffffff40000000
->                          = 16 EiB - 2 GiB
-> 
-> Fix by using the IEC suffixes which are usually safer, and add
-> an assertion check to verify the memory is valid. This would have
-> catched this bug:
-> 
->   $ qemu-system-arm -M ast2600-evb
->   qemu-system-arm: hw/misc/aspeed_sdmc.c:258: aspeed_sdmc_realize: Assertion `asc->max_ram_size < 4 * GiB' failed.
->   Aborted (core dumped)
-> 
-> Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+> On 7/20/20 6:07 PM, C=C3=A9dric Le Goater wrote:
+>> On 7/20/20 11:58 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>>> The SDRAM Memory Controller has a 32-bit address bus, thus
+>>> supports up to 4 GiB of DRAM. There is a signed to unsigned
+>>> conversion error with the AST2600 maximum memory size:
+>>>
+>>>   (uint64_t)(2048 << 20) =3D (uint64_t)(-2147483648)
+>>>                          =3D 0xffffffff40000000
+>>>                          =3D 16 EiB - 2 GiB
+>>>
+>>> Fix by using the IEC suffixes which are usually safer, and add
+>>> a check to verify the memory is valid. This would have catched
 
-> ---
-> v2: Assert (Cédric)
-> ---
->  hw/misc/aspeed_sdmc.c | 7 ++++---
->  1 file changed, 4 insertions(+), 3 deletions(-)
-> 
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index 0737d8de81..855848b7d2 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -255,6 +255,7 @@ static void aspeed_sdmc_realize(DeviceState *dev, Error **errp)
->      AspeedSDMCState *s = ASPEED_SDMC(dev);
->      AspeedSDMCClass *asc = ASPEED_SDMC_GET_CLASS(s);
->  
-> +    assert(asc->max_ram_size < 4 * GiB); /* 32-bit address bus */
->      s->max_ram_size = asc->max_ram_size;
->  
->      memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sdmc_ops, s,
-> @@ -341,7 +342,7 @@ static void aspeed_2400_sdmc_class_init(ObjectClass *klass, void *data)
->      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
->  
->      dc->desc = "ASPEED 2400 SDRAM Memory Controller";
-> -    asc->max_ram_size = 512 << 20;
-> +    asc->max_ram_size = 512 * MiB;
->      asc->compute_conf = aspeed_2400_sdmc_compute_conf;
->      asc->write = aspeed_2400_sdmc_write;
->      asc->valid_ram_sizes = aspeed_2400_ram_sizes;
-> @@ -408,7 +409,7 @@ static void aspeed_2500_sdmc_class_init(ObjectClass *klass, void *data)
->      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
->  
->      dc->desc = "ASPEED 2500 SDRAM Memory Controller";
-> -    asc->max_ram_size = 1024 << 20;
-> +    asc->max_ram_size = 1 * GiB;
->      asc->compute_conf = aspeed_2500_sdmc_compute_conf;
->      asc->write = aspeed_2500_sdmc_write;
->      asc->valid_ram_sizes = aspeed_2500_ram_sizes;
-> @@ -485,7 +486,7 @@ static void aspeed_2600_sdmc_class_init(ObjectClass *klass, void *data)
->      AspeedSDMCClass *asc = ASPEED_SDMC_CLASS(klass);
->  
->      dc->desc = "ASPEED 2600 SDRAM Memory Controller";
-> -    asc->max_ram_size = 2048 << 20;
-> +    asc->max_ram_size = 2 * GiB;
->      asc->compute_conf = aspeed_2600_sdmc_compute_conf;
->      asc->write = aspeed_2600_sdmc_write;
->      asc->valid_ram_sizes = aspeed_2600_ram_sizes;
-> 
+caught
+
+>>> this bug:
+>>>
+>>>     Unexpected error in aspeed_sdmc_realize() at hw/misc/aspeed_sdmc.c:=
+261:
+>>>     qemu-system-arm: Invalid RAM size 16 EiB
+>>=20
+>> Indeed :/
+>>=20
+>>>
+>>> Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
+>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>>> ---
+>>>  hw/misc/aspeed_sdmc.c | 12 +++++++++---
+>>>  1 file changed, 9 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+>>> index 0737d8de81..76dd7e6a20 100644
+>>> --- a/hw/misc/aspeed_sdmc.c
+>>> +++ b/hw/misc/aspeed_sdmc.c
+>>> @@ -256,6 +256,12 @@ static void aspeed_sdmc_realize(DeviceState *dev, =
+Error **errp)
+>>>      AspeedSDMCClass *asc =3D ASPEED_SDMC_GET_CLASS(s);
+>>> =20
+>>>      s->max_ram_size =3D asc->max_ram_size;
+>>> +    if (s->max_ram_size >=3D 4 * GiB) {
+>>> +        char *szstr =3D size_to_str(s->max_ram_size);
+>>> +        error_setg(errp, "Invalid RAM size %s", szstr);
+>>> +        g_free(szstr);
+>>> +        return;
+>>> +    }
+>>>
+>>=20
+>> I would put an assert() since the max RAM size is not user configurable.=
+=20
+>
+> As you wish, at this point I'm completely lost with error reporting.
+
+:-/
+
+> Per the manual
+> (https://www.mail-archive.com/qemu-devel@nongnu.org/msg723217.html):
+>
+>  "Many, many devices neglect to clean up properly on error, and get away
+>   with it only because all callers treat errors as fatal.
+>
+>   If you decide to take cleanup shortcuts, say because the cleanup is
+>   untestable, consider adding a comment at least."
+>
+> So I'll go for address + comment:
+>
+>   assert(s->max_ram_size < 4 * GiB); /* 32-bit address bus */
+
+Makes sense.
+
+Note this is *not* a cleanup shortcut, at least not the kind I had in
+mind.
+
+What I had in mind is unclean failure, i.e. returning on error without
+proper cleanup: revert changes made so far, free resources.  This is
+*wrong*.  But the wrongness doesn't matter when all callers treat errors
+as fatal.
+
+Checking an impossible condition with assert() is better than treating
+it as an error and bungling its handling.  If you treat it as an error,
+do it properly.  Since I'm quite skeptical about the chances of pulling
+off "properly" for untestable things, I prefer assertions.
+
+There's another reason.  User errors need to be handled gracefully.
+Programming errors should (in my opinion) trigger abort(), so they get
+fixed.
+
+When the spot that detects the error can't know which kind it is, you
+have to fail cleanly and let the caller decide how to handle the error.
+
+Example: object_property_find() errors out when the property doesn't
+exist.  This may be a programming error, e.g. a well-known property
+isn't found, because a programmer mistyped the property name.  Or it may
+be a user error, e.g. a user mistyped the property name argument of
+qom-get.
+
+When functions have multiple failure modes, and only some of them are
+programming errors, the caller typically can't tell them apart, and errs
+on the side of user error.  Programming errors then get reported as
+(typically confusing!) user errors.
+
+The #1 reason for such awkward functions is lazy thinking + eager
+typing: by treating anything that can go wrong as an error for the
+caller to handle, I can replace thinking about what may go wrong and
+what must not go wrong by typing up a bunch of error paths.  Great time
+saver as long as I stick to the time-honored strategy of not bothering
+to test my error paths.
 

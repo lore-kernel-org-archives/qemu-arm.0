@@ -1,96 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3105640lfm;
-        Tue, 21 Jul 2020 03:03:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6/yUokKiy9qz9NhVzEMbSyuCwBmZbY173ejzf0xa0b0N5DxA8Ua4exPGBv1brVVdsLHdW
-X-Received: by 2002:a25:2685:: with SMTP id m127mr38993598ybm.368.1595325823742;
-        Tue, 21 Jul 2020 03:03:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595325823; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3137221lfm;
+        Tue, 21 Jul 2020 03:46:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiAYy6TGGzStg54v1NzRb+4aw/cJhprkZyaas5Zg7jhz4PYhX4iajQJim9axkPtozh6r40
+X-Received: by 2002:a25:d4d6:: with SMTP id m205mr41591638ybf.390.1595328408151;
+        Tue, 21 Jul 2020 03:46:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595328408; cv=none;
         d=google.com; s=arc-20160816;
-        b=HSpXya7KxAXKv8zDgXPhW/XU2PkQ5y7dJ8z6iwmDAJR2i3fiRwPZ7XrwkM+lzqFwdh
-         Q05h/yODr1F+870FPT6TvFGudl8jNF+Qg6vsaTBv4T1ytqlcZgaDprcPe7dsWxFefLiR
-         C/ZRLhYZfuwQwYouqVGmnX5BBRdAYimqlGFSrRtCHn0+M35u6R/pJpSLHQIUAj6cERjl
-         bgh848hrPffwBLuaMq+Puq/0R8CY+7vvxNoxyqkiFA0GhTm0i227HCAEi4ikE7poVJRe
-         HBt2RpPE5I0em4sbwn2nH4qMnxYrOBRqCpI5UopyHKzY7aJslqTjZT+Zu1VQ3Hc0SadT
-         VS/Q==
+        b=un9hUJlY/zkHtOAIaHMrL1lCOTAQoonjnoD5Q64m3i6aVIj+CUSFVeBI+7D7P3BEW1
+         q+rMANNFFDgRPkMRSI/5F88o017HiyLO5wV28mF0dtPvu7Q0dV1c1evPi527Utw/6kwE
+         QGjrfNEAMRqU3U5wjLQQ5NNX0vLuArWhhytm8Rw/cSaQNzSjRoX3oTPq5UzqnES8yO8s
+         2RUVoJ1yQKf0qpInM8iNuzb4kAQaPgClGUsoSV0mCljHMQQK1tJ0BNnQcI5N2fiQ3DrG
+         099MNq6FRKQLKCWoDeZR4v80mcRaKQTPBS4n6jjU436h0lCg5DW+DR+w0MG3V4QmurW6
+         +7YQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=e7xcg5KmGjBqHll9tFqg/k4svQLOxoH7Gl0fD0088R4=;
-        b=RcaaAwBouIwQYqr52CcZ+U+8vI6PppG4nQJshBuN0y1+/s/PF5JQSEJDTfxj0XPLM7
-         +I8U6PjBePW9PkXx6Cp4FEIcNxgE6wOHHYc9rHT5P50F6yfNwhQe5QBdupSBogpU1Z2f
-         ET2EWtE8fVMy0i7bxvD2MUiR8nG7C91I4HsV12cYp2HHIee9GP+95Alt9igdms9nq8ic
-         dL0R10e8V/p3/UWkmbWzuG8Z9Tfx72gOJFQUTSHGp++3vtM5+hY21LNev+qGHYG5ubgQ
-         jswry1siwbXGjuMfZ8zkBJPjQsNOLcNajvdWF3UlqN0Apzp25BT+KWyrmp+kB+d5eSh9
-         zPHw==
+        bh=2og3SFbeN6YMGfPfc06lXM9ALGmAvp0vst7R1pqYJ/w=;
+        b=mrSGfofESbGMW/cZLzYNo8eYNXr9YxTByiswknSM4HTClqj+c44jWVvWU+ansL/gjx
+         TYgG10Uwp02j8Erq93apEAnpKyHoXNqWuWCTv0Ix9nY1ezon2gG8tEqWp40yTS8cOBBX
+         aBibk5AhiLeugZqZ7ENLs6yjlai9Q91RUZXm4IkiOFvU41zqxkf4GcwJMOH/pba7mVmI
+         Ew0c7mQ8x4FJq1BsmkNIwIee1kHVEkLb3hqHUFoHnrxGjl+4tU03FbE/+gy2AApV7+PO
+         jqJ7EXAz7b5ZNRrAouxnmITJ/kRVT+fKHDYCOKcEJeyCS9H0ZM/j08D+hXP2BsRWdanq
+         8pcw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kOlLPkgQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HQBRQTSz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 207si8871405ybd.431.2020.07.21.03.03.43
+        by mx.google.com with ESMTPS id x3si16496660ybt.216.2020.07.21.03.46.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jul 2020 03:03:43 -0700 (PDT)
+        Tue, 21 Jul 2020 03:46:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=kOlLPkgQ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=HQBRQTSz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39354 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jxp7f-0003Dx-5y
-	for alex.bennee@linaro.org; Tue, 21 Jul 2020 06:03:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48018)
+	id 1jxpnL-000636-Gj
+	for alex.bennee@linaro.org; Tue, 21 Jul 2020 06:46:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34894)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jxp7X-0003CP-Ka
- for qemu-arm@nongnu.org; Tue, 21 Jul 2020 06:03:35 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:45538)
+ id 1jxpn1-00062h-Cj
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2020 06:46:27 -0400
+Received: from mail-oo1-xc41.google.com ([2607:f8b0:4864:20::c41]:38195)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1jxp7V-0007FB-W8
- for qemu-arm@nongnu.org; Tue, 21 Jul 2020 06:03:35 -0400
-Received: by mail-oi1-x242.google.com with SMTP id j11so16706760oiw.12
- for <qemu-arm@nongnu.org>; Tue, 21 Jul 2020 03:03:33 -0700 (PDT)
+ id 1jxpmz-0005zd-0s
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2020 06:46:27 -0400
+Received: by mail-oo1-xc41.google.com with SMTP id x2so3835958oog.5
+ for <qemu-arm@nongnu.org>; Tue, 21 Jul 2020 03:46:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=e7xcg5KmGjBqHll9tFqg/k4svQLOxoH7Gl0fD0088R4=;
- b=kOlLPkgQToWn9AJWJEXIN54kBJTri0u6rFnvw9a2f8FoqDSos0h+pWW1GmMvOYxmC+
- pLB/lXt2f3Oeza7Qhi7ysRtBb3VBmA9NRyfuI8SDn3tP+Zjw205Vh4TgmeFM/hYUos6n
- SizpMpRUtrM91fAnJP/0bFKcV+tSP/lEbUM/3xwSlSbRT2390VND8J7Ah/RYdtC3Rj4/
- mqyhRp3obkJO/mWNZoQIcXIM6sTRpVbsNAsmqpDsTE98gd62pXrxEVKAjqKbL0PHrAjC
- FZrzn2ehrX95+2/rLZJ1tkP0l+WGY+7EZaAQ0nE2KQJ3sdWhh5vfXX2vpniNI1f6C5hd
- yHdw==
+ :cc; bh=2og3SFbeN6YMGfPfc06lXM9ALGmAvp0vst7R1pqYJ/w=;
+ b=HQBRQTSz7++4foz9XXACEBPZWSF8gKkuboQs0aWCskik7A870p44b0UaFJXHmK4KXq
+ ELr/dpl9Xl0EPfAFmUDzna+yfZADIYmLD/BjG/Q5+c5TCOD94HjwjGvpZzocjZyL9Cc3
+ z01N+r/Pw/jDHLpWy3bGSUxwA6lOUmIzJqnLBRbMSV51NAUJpUWzLe8MIFE1eCh7evYz
+ TNtpu6/1XaUBpIl2DZG5uIRrEAqZyMPnRfQVsY0/0JJTzCM/911wqlKSDm/zcRxD2T2P
+ uqiefNJx3bP3bWDWdjvhnQleiff16GLdN2ne7HxUnq+irXdpXh8vhymXYKpTkUMCd9RM
+ P2fA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=e7xcg5KmGjBqHll9tFqg/k4svQLOxoH7Gl0fD0088R4=;
- b=aIL+Vb5CUtQ0pZm/bHquO8GwC1xS6gFZQnPtrCRVomm36nxMf4rOmfbEJUQOuchXmA
- LkxIKF5gHE0s8EylvX+po29znvqVguGnd8weFW3M3EAKk9eBtiU/Y4tBtQFV6D6nuk05
- w42XIXT6QKEv/JfeBeSsNOtfBr2Gv4foeAFiJKr4N1Mb8yh9FYfa6gkJyUuQ330LZVyu
- dzwx5z+nULUXYSNdSRaKyL7OQDd0pvH4Lzw6n4GtYUJzV1mzFqt0a3tp5NzJcWAudrRC
- 6lu6ODaAib8QZu7SMyfxpYWb72dBprzfpUP85CN+h8SdYE2UWbrl7EDRNksByae6lyc8
- E4JQ==
-X-Gm-Message-State: AOAM5338Y/P74fVtjdmZlHjIw809HCRzyAesjMzrO2HoBpwe/H39/HNK
- KzfYhC3QqTj+fDnlG2r3wgkNWFgaVBB29XfmzTVl4A==
-X-Received: by 2002:aca:2819:: with SMTP id 25mr2221544oix.48.1595325812895;
- Tue, 21 Jul 2020 03:03:32 -0700 (PDT)
+ bh=2og3SFbeN6YMGfPfc06lXM9ALGmAvp0vst7R1pqYJ/w=;
+ b=b2kQxU8khPJrq1E00+f1NFyqgKkFwSwL7o/WVAxY0ypEluBkc3CQfbaAMntSjWC79i
+ K+906gWz6ykUNddEiWIpsl3/BhBkI8O8n6DCXR1bRBMwcYLuXKekqIhVi8ei42aOhnyX
+ jIAMqP6whq/6p9V3fJHf1p6SoVIGaAvQKfeGYbviQI5KnkcpWmYrCYhMXMREie3DYaig
+ s5/31qXj5TQoQDw8kf8K/cTMTtOlb59IaFw4zWiClpEq03M9wKqEliksy4NTf5EN1Ldu
+ Te/qiRVXzEBIYnHOiYO6DZEKS4JnP+kNza6QAHmukzVEmndAP72IcG3OZ0ZdzmBGD28V
+ eVSA==
+X-Gm-Message-State: AOAM530ulMgMR4vt31QyOdf5DPtn147F3l1HqwClSnISCsQ9tlUYWw/2
+ EBEbndK5gowk+Vp9N0HAy6ewe9NZfh0Co5qtRbN9iQ==
+X-Received: by 2002:a4a:a685:: with SMTP id f5mr13394425oom.85.1595328383498; 
+ Tue, 21 Jul 2020 03:46:23 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200711101033.47371-1-drjones@redhat.com>
- <20200711101033.47371-2-drjones@redhat.com>
-In-Reply-To: <20200711101033.47371-2-drjones@redhat.com>
+ <20200711101033.47371-4-drjones@redhat.com>
+In-Reply-To: <20200711101033.47371-4-drjones@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Jul 2020 11:03:22 +0100
-Message-ID: <CAFEAcA8D6xvNhaWtf9PPzQuDqj5xucioTYqygGhGJT_2XekT+Q@mail.gmail.com>
-Subject: Re: [PATCH 1/3] hw/arm/virt: Move post cpu realize check into its own
- function
+Date: Tue, 21 Jul 2020 11:46:12 +0100
+Message-ID: <CAFEAcA_GGVyjV_avxAfrRKnF72mxXEEf=J34aq-L8yMnLndigg@mail.gmail.com>
+Subject: Re: [PATCH 3/3] hw/arm/virt: Implement kvm-steal-time
 To: Andrew Jones <drjones@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c41;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -116,22 +115,206 @@ Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
  Beata Michalska <beata.michalska@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gpO/6j2F4f52
+X-TUID: k67N7BzKICXE
 
 On Sat, 11 Jul 2020 at 11:10, Andrew Jones <drjones@redhat.com> wrote:
 >
-> We'll add more to this new function in coming patches so we also
-> state the gic must be created and call it below create_gic().
->
-> No functional change intended.
+> We add the kvm-steal-time CPU property and implement it for machvirt.
+> A tiny bit of refactoring was also done to allow pmu and pvtime to
+> use the same vcpu device helper functions.
 >
 > Signed-off-by: Andrew Jones <drjones@redhat.com>
 > ---
->  hw/arm/virt.c | 43 +++++++++++++++++++++++++++----------------
->  1 file changed, 27 insertions(+), 16 deletions(-)
+>  docs/system/arm/cpu-features.rst | 11 +++++
+>  hw/arm/virt.c                    | 33 ++++++++++++++-
+>  include/hw/arm/virt.h            |  2 +
+>  target/arm/cpu.c                 | 10 +++++
+>  target/arm/cpu.h                 |  4 ++
+>  target/arm/kvm.c                 | 20 +++++++++
+>  target/arm/kvm32.c               |  5 +++
+>  target/arm/kvm64.c               | 70 +++++++++++++++++++++++++++++---
+>  target/arm/kvm_arm.h             | 24 ++++++++++-
+>  target/arm/monitor.c             |  2 +-
+>  tests/qtest/arm-cpu-features.c   | 25 ++++++++++--
+>  11 files changed, 193 insertions(+), 13 deletions(-)
+>
+> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+> index 2d5c06cd016b..4e590e6e9f54 100644
+> --- a/docs/system/arm/cpu-features.rst
+> +++ b/docs/system/arm/cpu-features.rst
+> @@ -200,6 +200,17 @@ the list of KVM VCPU features and their descriptions.
+>                             adjustment, also restoring the legacy (pre-5.0)
+>                             behavior.
+>
+> +  kvm-steal-time           Since v5.1, kvm-steal-time is enabled by
+> +                           default when KVM is enabled, the feature is
+> +                           supported, and the guest is 64-bit.
+> +
+> +                           When kvm-steal-time is enabled a 64-bit guest
+> +                           can account for time its CPUs were not running
+> +                           due to the host not scheduling the corresponding
+> +                           VCPU threads.  The accounting statistics may
+> +                           influence the guest scheduler behavior and/or be
+> +                           exposed to the guest userspace.
+> +
+>  SVE CPU Properties
+>  ==================
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 63ef530933e5..21965a1665ca 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -151,6 +151,7 @@ static const MemMapEntry base_memmap[] = {
+>      [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+>      [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+>      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+> +    [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+>      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+> @@ -1663,13 +1664,26 @@ static void finalize_gic_version(VirtMachineState *vms)
+>   */
+>  static void virt_cpu_post_init(VirtMachineState *vms)
+>  {
+> -    bool aarch64, pmu;
+> +    bool aarch64, pmu, steal_time;
+>      CPUState *cpu;
+>
+>      aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
+>      pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
+> +    steal_time = object_property_get_bool(OBJECT(first_cpu),
+> +                                          "kvm-steal-time", NULL);
+>
+>      if (kvm_enabled()) {
+> +        hwaddr pvtime_base = vms->memmap[VIRT_PVTIME].base;
+> +        hwaddr pvtime_size = vms->memmap[VIRT_PVTIME].size;
+> +
+> +        if (steal_time) {
+> +            MemoryRegion *pvtime = g_new(MemoryRegion, 1);
+> +
+> +            memory_region_init_ram(pvtime, NULL, "pvtime", pvtime_size, NULL);
+> +            memory_region_add_subregion(get_system_memory(), pvtime_base,
+> +                                        pvtime);
 
+I guess when we are looking at how KVM interacts with MemTag
+we'll need to also consider this kind of random-lump-of-ram
+(it will need to have tags)... Same thing with framebuffers etc though.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Could you avoid get_system_memory() here and instead pass in
+'sysmem' from the caller? The virt board has now 4 different
+address spaces it creates and works with (sysmem, secure_sysmem,
+tag_sysmem, secure_tag_sysmem) and I think it's going to be better
+to aim to consistently have the top level function pass the
+lower level functions the MRs they should be putting the devices
+in rather than having the low level function say in some cases
+"I happen to know that get_system_memory() is the same thing as
+'sysmem'".
+
+> +        }
+> +
+>          CPU_FOREACH(cpu) {
+>              if (pmu) {
+>                  assert(arm_feature(&ARM_CPU(cpu)->env, ARM_FEATURE_PMU));
+
+> @@ -2528,6 +2558,7 @@ static void virt_machine_5_0_options(MachineClass *mc)
+>      mc->numa_mem_supported = true;
+>      vmc->acpi_expose_flash = true;
+>      mc->auto_enable_numa_with_memdev = false;
+> +    vmc->kvm_no_steal_time = true;
+
+This will need to move into the 5_1 options, obviously.
+
+>  }
+>  DEFINE_VIRT_MACHINE(5, 0)
+
+> diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+> index 0af46b41c847..d3f3195077fa 100644
+> --- a/target/arm/kvm32.c
+> +++ b/target/arm/kvm32.c
+> @@ -560,6 +560,11 @@ void kvm_arm_pmu_init(CPUState *cs)
+>      qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+>  }
+>
+> +void kvm_arm_pvtime_init(CPUState *cs, uint64_t ipa)
+> +{
+> +    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+> +}
+
+kvm32.c is going to be removed once 5.1 is out the door
+(we deprecated it in 5.0 so can remove in 5.2, I think),
+so this is fine.
+
+> +
+>  #define ARM_REG_DFSR  ARM_CP15_REG32(0, 5, 0, 0)
+>  #define ARM_REG_TTBCR ARM_CP15_REG32(0, 2, 0, 2)
+>  /*
+
+> +void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
+> +{
+> +    static bool has_steal_time;
+> +    static bool probed;
+> +    int fdarray[3];
+> +
+> +    if (!probed) {
+> +        probed = true;
+> +        if (kvm_check_extension(kvm_state, KVM_CAP_VCPU_ATTRIBUTES)) {
+> +            if (!kvm_arm_create_scratch_host_vcpu(NULL, fdarray, NULL)) {
+> +                error_report("Failed to create scratch VCPU");
+> +                abort();
+> +            }
+> +
+> +            has_steal_time = kvm_device_check_attr(fdarray[2],
+> +                                                   KVM_ARM_VCPU_PVTIME_CTRL,
+> +                                                   KVM_ARM_VCPU_PVTIME_IPA);
+> +
+> +            kvm_arm_destroy_scratch_host_vcpu(fdarray);
+
+I was a bit surprised that we create a scratch VCPU here, but
+it looks like we've opted for "create scratch VCPU, check specific
+detail, destroy VCPU" as the usual coding pattern rather than trying
+to coalesce into a single "create scratch VCPU once, cache all
+the info we might need for later". I guess if somebody (a) cares
+about startup performance and (b) finds through profiling that
+creation-and-destruction of the scratch VMs/VCPUs is a significant
+contributor they can write the refactoring themselves :-)
+
+> +        }
+> +    }
+> +
+> +    if (cpu->kvm_steal_time == ON_OFF_AUTO_AUTO) {
+> +        if (!has_steal_time || !arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+> +            cpu->kvm_steal_time = ON_OFF_AUTO_OFF;
+> +        } else {
+> +            cpu->kvm_steal_time = ON_OFF_AUTO_ON;
+> +        }
+> +    } else if (cpu->kvm_steal_time == ON_OFF_AUTO_ON) {
+> +        if (!has_steal_time) {
+> +            error_setg(errp, "'kvm-steal-time' cannot be enabled "
+> +                             "on this host");
+> +            return;
+> +        } else if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+> +            error_setg(errp, "'kvm-steal-time' cannot be enabled "
+> +                             "for AArch32 guests");
+
+Why not? Unlike aarch32-host KVM, aarch32-guest KVM is
+still supported. What's the missing piece for kvm-steal-time
+to work in that setup?
+
+> +            return;
+> +        }
+> +    }
+> +}
+> +
+>  bool kvm_arm_aarch32_supported(void)
+>  {
+>      return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL1_32BIT);
+
+>  static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
+> +static inline void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp) {}
+
+Does this stub need to report an error to the caller via errp,
+or is it a "never called but needs to exist to avoid linker errors" ?
+
 
 thanks
 -- PMM

@@ -1,114 +1,104 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3099889lfm;
-        Tue, 21 Jul 2020 02:55:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzLQ2s3tswGLlVWWlqjVU0Y4krnLAEBcb/JiixSioKp2RmMUOKfPs6K2B9Ih0evWkHgjh4Z
-X-Received: by 2002:a05:6902:4ce:: with SMTP id v14mr41315907ybs.296.1595325340034;
-        Tue, 21 Jul 2020 02:55:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595325340; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3104981lfm;
+        Tue, 21 Jul 2020 03:02:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzDPC12tZk6wNZbovndtBX26VNhUW8DBbdRwNhzxzjkJVxB03vMGQncxiKrJqDk+OciZeDG
+X-Received: by 2002:a25:6c8a:: with SMTP id h132mr41199745ybc.353.1595325773065;
+        Tue, 21 Jul 2020 03:02:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595325773; cv=none;
         d=google.com; s=arc-20160816;
-        b=U5GTX+rlrFsh3x5/6OpfLGY/NokNY03HpSxQpxE/cf7Ygq2BiwdyjhH3qLkqydBlQt
-         wB7oF9KnBJfiBh3ZkmUIwG+UVABbisx2EtAwxrAd49dji4UY3INFO3nO7jblvQBpK8xV
-         HCxUd3PT8qWk03TcmWkiY0t90uD9YyfWHtxytDJXaFkoaCP11k5QlVmDDgqXnaJtGoWp
-         nMOWBYYkajg6uVdG5NFOC796wU87Prjfft6ybz7FtPUYksUqj4fKp4HTpk4c91TjKbrj
-         igHZlEzkd+xEtyjg0QpI0PgPVUCUTsjPI03iugRhh6GkqRhEQNw/LaZenTy8CNg2R8c7
-         Nm2w==
+        b=zaTep9yk+9q6JnDYcVkHy1fDLqYLPc/MWH9sP4fgPS9uxYnqJDHR4mIiVfOM9uqdWC
+         lb5FDJauXTP1pd/iyNsg150CMJzh1hA5jVR47I168McPRM3QcYFig2YJ7mzhLCT3roMy
+         t5BqGVkHcNbiSrKdd8d5KTQ3VE1euxZiAGANgtFM2VBerDqMsbJTt1uVPhjI6ZRkMvbN
+         9mOFgFtWG9OuGzXO9ulHhK7u26cAA76HJilAihZo2DmcVbbWsT/m1Vk61cOQWjlMDExx
+         fo8lJoz/tgdedTLXD1R1LOL1bH6x7tJ8yv2bRGoYvNL2GtGDmtl3THjilPHzs+gpM4Ts
+         m9eA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=eo8swKKlxLLv/Ydaq/Ly0zHq7IqIKqQ7OIOeJZv8ltk=;
-        b=r81Ii4igZNQeh3zUbGH8bv+icUNcYuG089UPrh5yqYOLx1MRnny0vYiOXPDvams/51
-         eBbb6traRYyjeDvR+LBoW1YJszfyoAmbDThBgonsd51VO8PazhckmnoQ3OjfzAl7WQot
-         AsHXRXbU7J5z3EJmw2HoaUiK5igonWOtoAW2Pf5gugupPar9dxAOnsWeljRU/73s3mye
-         +3/2vIoZDFKqVHdJeSlxlarBewIMHho3FyZUkRA23YVvJewAbWO0iSh3vY6bghLEAYNn
-         5U/c18t5yBZm4Fs7y7OYVxRuYY3PoZUpTG4NGfpMQZB8bLEui+ouQETNOwakbZFiXHfg
-         wfmg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=awL/01hPpP9Z7+laZvrYGFEzbSimdAKZH1G/PVXrNcY=;
+        b=n5VR5EKkjqOR6Ejegk20dSf40wsEUgpAp3S5mdn+AqgrutmBiawqnAR8K/Omb0ZLiJ
+         kBfUKPhP9AdyhzxsDQa+4Ooqgbca2g6/8JkUknK7WS+1T9Wysn81RggznZIejKUeeHVc
+         V3+be0Z+gRuSTqiui8NLwxz/zDFJKCrrUNnc4TUICqxl+QjW5hJN63q7MjoghMG7Mf/b
+         u6mknEwK+JefLDFrXGVYoHy98ggwjti5vdPrkJZaYZUVorn0bEsWT6Mn7DoEbRQub6H1
+         RCFvTxzFZV5D4P2sCoWka/xEn7XqtPjl7Tqdxe4a04ZHBbdjtoUYvaSvMVkkl60g0g27
+         FRlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TiddanDK;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nOWOX2lq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k23si18899045ybk.162.2020.07.21.02.55.39
+        by mx.google.com with ESMTPS id y1si19894597yby.225.2020.07.21.03.02.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jul 2020 02:55:40 -0700 (PDT)
+        Tue, 21 Jul 2020 03:02:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TiddanDK;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nOWOX2lq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:56836 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36870 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jxozr-0006jp-DY
-	for alex.bennee@linaro.org; Tue, 21 Jul 2020 05:55:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44968)
+	id 1jxp6q-0002DF-Ci
+	for alex.bennee@linaro.org; Tue, 21 Jul 2020 06:02:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47762)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxozk-0006jK-2G
- for qemu-arm@nongnu.org; Tue, 21 Jul 2020 05:55:32 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:32019
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1jxozh-0005lx-E7
- for qemu-arm@nongnu.org; Tue, 21 Jul 2020 05:55:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595325328;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eo8swKKlxLLv/Ydaq/Ly0zHq7IqIKqQ7OIOeJZv8ltk=;
- b=TiddanDKMi2K6unEs7N2ODTdJBGU/sBw0371JKoAB0jirvqRZDHMB5fYwb2WUN02kdZMLg
- sKirEv9igwsHuCnXYdiyzx4Up0Itdn1tchYhOnOFv5NUGQ+ymb7fcZfNHJxPTfbj+RjuOB
- 5dT5kjX7PEW4PnOVC1YIh/fIUOQEImc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-278-tSsqqvo5NzKitirhPF0nCw-1; Tue, 21 Jul 2020 05:55:24 -0400
-X-MC-Unique: tSsqqvo5NzKitirhPF0nCw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19D3858;
- Tue, 21 Jul 2020 09:55:23 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-143.ams2.redhat.com
- [10.36.112.143])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 811575C1BD;
- Tue, 21 Jul 2020 09:55:22 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 0BEB6111CA27; Tue, 21 Jul 2020 11:55:21 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH-for-5.1] hw/misc/aspeed_sdmc: Fix incorrect memory size
-References: <20200720095829.22839-1-f4bug@amsat.org>
- <ed5e6bd0-0962-b182-3348-d3c6655ef35e@kaod.org>
- <f7dc7d48-6fd7-e1ba-f94b-cd2764490eb7@amsat.org>
- <877duxb819.fsf@dusky.pond.sub.org>
- <cf4153b1-e92d-d12a-6535-c4cf40d87953@amsat.org>
-Date: Tue, 21 Jul 2020 11:55:20 +0200
-In-Reply-To: <cf4153b1-e92d-d12a-6535-c4cf40d87953@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Tue, 21 Jul 2020 11:06:16
- +0200")
-Message-ID: <871rl59oqf.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jxp6i-0002Am-7x
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2020 06:02:44 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:35603)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jxp6g-00076r-FO
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2020 06:02:43 -0400
+Received: by mail-oi1-x242.google.com with SMTP id k4so16732824oik.2
+ for <qemu-arm@nongnu.org>; Tue, 21 Jul 2020 03:02:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=awL/01hPpP9Z7+laZvrYGFEzbSimdAKZH1G/PVXrNcY=;
+ b=nOWOX2lqQUoza4SnwynYKi8vxQHOn7GDGEkruQcAay87WpARypl3Nk+C4w/WOG4gOp
+ 13197TNvSCTJkVhSg4PKP8mh/mv+nF47dNWU9U47gAoQlpic9iWlejyzXqBhyLkrxRkx
+ JrbBdhMcxEJsmLlwMfXIrgYFFtFylzM+ma+1M8Z1C4UWCbAK15SI51itcYC3qxclia7+
+ 2ZT9rz50/rl9aDTioHo9SfjYmcAWS5FF7oVTORSFcrPHok1RT++xoxzd8jZsj6sgnUsl
+ IY1P13SUj++j2lcVar/Vc2dCanc0D7fQa0O2yiNixf+C2r+EOEMD3sK8bwVz9VeMqR24
+ T5jg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=awL/01hPpP9Z7+laZvrYGFEzbSimdAKZH1G/PVXrNcY=;
+ b=k8x/39iPPvagWJ8BggEf9zS4AeqQJpRqPtL4JR7ucQrhZWG+4rT5slA5J8R+fESO23
+ 9UliFszkKz7Ptr+z2lb9MXPpoJeYEyAW9n4g2hQS7vqfQudOLlpI8irLVfOMf49I1YJB
+ kelYw4NNHm68MuO3xLCo9kNIO+zTU02vhWKxhpab0MVmEuzCxIqZBqL1Ziqa+7Cxacps
+ lvTbnryzlg+PExJsFtMA+RWOwl1ZcPcyzb8LqopFrgQxYB8G/Ii4BDbM5AXm1dyEbcWl
+ mcV70hVbX65xhbZqKmcWTrcffjVHYClb/pY/hEOP8quK3Od1ixGMAq+0aP+8aRaNzHEl
+ lixA==
+X-Gm-Message-State: AOAM532mFcmqe+pl7IvNVQWMQoTT4bIgaWo9I7nR03b8g3swDfYumX5H
+ TBxEV6BA1C9VGGjN1H03gIU3orPumQnH7/KBw/tM/A==
+X-Received: by 2002:aca:54c9:: with SMTP id i192mr2364625oib.163.1595325761221; 
+ Tue, 21 Jul 2020 03:02:41 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 01:26:46
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+References: <20200711101033.47371-1-drjones@redhat.com>
+ <20200711101033.47371-3-drjones@redhat.com>
+In-Reply-To: <20200711101033.47371-3-drjones@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 21 Jul 2020 11:02:30 +0100
+Message-ID: <CAFEAcA93VMoQxPSvk7YNkkbXhrFufuFN8R9Sqjj6C97Xz2buvA@mail.gmail.com>
+Subject: Re: [PATCH 2/3] hw/arm/virt: Move kvm pmu setup to virt_cpu_post_init
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,144 +111,93 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Beata Michalska <beata.michalska@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vTGazTn/bvr0
+X-TUID: SwnyRFnk6Qee
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
-
-> On 7/21/20 10:13 AM, Markus Armbruster wrote:
->> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
->>=20
->>> On 7/20/20 6:07 PM, C=C3=A9dric Le Goater wrote:
->>>> On 7/20/20 11:58 AM, Philippe Mathieu-Daud=C3=A9 wrote:
->>>>> The SDRAM Memory Controller has a 32-bit address bus, thus
->>>>> supports up to 4 GiB of DRAM. There is a signed to unsigned
->>>>> conversion error with the AST2600 maximum memory size:
->>>>>
->>>>>   (uint64_t)(2048 << 20) =3D (uint64_t)(-2147483648)
->>>>>                          =3D 0xffffffff40000000
->>>>>                          =3D 16 EiB - 2 GiB
->>>>>
->>>>> Fix by using the IEC suffixes which are usually safer, and add
->>>>> a check to verify the memory is valid. This would have catched
->>=20
->> caught
->>=20
->>>>> this bug:
->>>>>
->>>>>     Unexpected error in aspeed_sdmc_realize() at hw/misc/aspeed_sdmc.=
-c:261:
->>>>>     qemu-system-arm: Invalid RAM size 16 EiB
->>>>
->>>> Indeed :/
->>>>
->>>>>
->>>>> Fixes: 1550d72679 ("aspeed/sdmc: Add AST2600 support")
->>>>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->>>>> ---
->>>>>  hw/misc/aspeed_sdmc.c | 12 +++++++++---
->>>>>  1 file changed, 9 insertions(+), 3 deletions(-)
->>>>>
->>>>> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
->>>>> index 0737d8de81..76dd7e6a20 100644
->>>>> --- a/hw/misc/aspeed_sdmc.c
->>>>> +++ b/hw/misc/aspeed_sdmc.c
->>>>> @@ -256,6 +256,12 @@ static void aspeed_sdmc_realize(DeviceState *dev=
-, Error **errp)
->>>>>      AspeedSDMCClass *asc =3D ASPEED_SDMC_GET_CLASS(s);
->>>>> =20
->>>>>      s->max_ram_size =3D asc->max_ram_size;
->>>>> +    if (s->max_ram_size >=3D 4 * GiB) {
->>>>> +        char *szstr =3D size_to_str(s->max_ram_size);
->>>>> +        error_setg(errp, "Invalid RAM size %s", szstr);
->>>>> +        g_free(szstr);
->>>>> +        return;
->>>>> +    }
->>>>>
->>>>
->>>> I would put an assert() since the max RAM size is not user configurabl=
-e.=20
->>>
->>> As you wish, at this point I'm completely lost with error reporting.
->>=20
->> :-/
->>=20
->>> Per the manual
->>> (https://www.mail-archive.com/qemu-devel@nongnu.org/msg723217.html):
->>>
->>>  "Many, many devices neglect to clean up properly on error, and get awa=
-y
->>>   with it only because all callers treat errors as fatal.
->>>
->>>   If you decide to take cleanup shortcuts, say because the cleanup is
->>>   untestable, consider adding a comment at least."
->>>
->>> So I'll go for address + comment:
->>>
->>>   assert(s->max_ram_size < 4 * GiB); /* 32-bit address bus */
->>=20
->> Makes sense.
->>=20
->> Note this is *not* a cleanup shortcut, at least not the kind I had in
->> mind.
->>=20
->> What I had in mind is unclean failure, i.e. returning on error without
->> proper cleanup: revert changes made so far, free resources.  This is
->> *wrong*.  But the wrongness doesn't matter when all callers treat errors
->> as fatal.
->>=20
->> Checking an impossible condition with assert() is better than treating
->> it as an error and bungling its handling.  If you treat it as an error,
->> do it properly.  Since I'm quite skeptical about the chances of pulling
->> off "properly" for untestable things, I prefer assertions.
->>=20
->> There's another reason.  User errors need to be handled gracefully.
->> Programming errors should (in my opinion) trigger abort(), so they get
->> fixed.
->>=20
->> When the spot that detects the error can't know which kind it is, you
->> have to fail cleanly and let the caller decide how to handle the error.
->>=20
->> Example: object_property_find() errors out when the property doesn't
->> exist.  This may be a programming error, e.g. a well-known property
->> isn't found, because a programmer mistyped the property name.  Or it may
->> be a user error, e.g. a user mistyped the property name argument of
->> qom-get.
->>=20
->> When functions have multiple failure modes, and only some of them are
->> programming errors, the caller typically can't tell them apart, and errs
->> on the side of user error.  Programming errors then get reported as
->> (typically confusing!) user errors.
+On Sat, 11 Jul 2020 at 11:10, Andrew Jones <drjones@redhat.com> wrote:
 >
-> A big part of your reply is worth adding in a "How to correctly use the
-> Error* propagation API for dummies" in docs/devel document.
-
-Right now, that document lives in error.h.  Has it outgrown that home?
-
->> The #1 reason for such awkward functions is lazy thinking + eager
->> typing: by treating anything that can go wrong as an error for the
->> caller to handle, I can replace thinking about what may go wrong and
->> what must not go wrong by typing up a bunch of error paths.  Great time
->> saver as long as I stick to the time-honored strategy of not bothering
->> to test my error paths.
+> Move the KVM PMU setup part of fdt_add_pmu_nodes() to
+> virt_cpu_post_init(), which is a more appropriate location. Now
+> fdt_add_pmu_nodes() is also named more appropriately, because it
+> no longer does anything but fdt node creation.
 >
-> Not all are easily testable :( Or do you have a recomendation? Like
-> forcing an error in the code while developing, so the path is checked?
+> No functional change intended.
+>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  hw/arm/virt.c | 33 +++++++++++++++------------------
+>  1 file changed, 15 insertions(+), 18 deletions(-)
+>
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index cb2fa99b1ef5..63ef530933e5 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -521,30 +521,15 @@ static void fdt_add_gic_node(VirtMachineState *vms)
+>
+>  static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+>  {
+> -    CPUState *cpu;
+> -    ARMCPU *armcpu;
+> +    ARMCPU *armcpu = ARM_CPU(first_cpu);
+>      uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+>
+> -    CPU_FOREACH(cpu) {
+> -        armcpu = ARM_CPU(cpu);
+> -        if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+> -            return;
+> -        }
 
-I prefer to at least understand how errors can happen.  The
-understanding often leads to a way to test, or to the realization that
-it's actually a programming error.
+So previously we would say "if the CPU doesn't actually have
+a PMU, don't put the PMU nodes in the FDT", but in the new logic
+it looks like we put the PMU nodes in the FDT unconditionally ?
 
-When the way to test requires some "unobtanium", i.e. hardware or
-software I can't access or set up with reasonable effort, I feel okay
-adding mockup code for testing, as a best effort.  Proper test coverage
-is then up to the people with the necessary access and knowledge.
+> -        if (kvm_enabled()) {
+> -            if (kvm_irqchip_in_kernel()) {
+> -                kvm_arm_pmu_set_irq(cpu, PPI(VIRTUAL_PMU_IRQ));
+> -            }
+> -            kvm_arm_pmu_init(cpu);
+> -        }
+> -    }
+> -
+>      if (vms->gic_version == VIRT_GIC_VERSION_2) {
+>          irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
+>                               GIC_FDT_IRQ_PPI_CPU_WIDTH,
+>                               (1 << vms->smp_cpus) - 1);
+>      }
+>
+> -    armcpu = ARM_CPU(qemu_get_cpu(0));
+>      qemu_fdt_add_subnode(vms->fdt, "/pmu");
+>      if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
+>          const char compat[] = "arm,armv8-pmuv3";
+> @@ -1678,11 +1663,23 @@ static void finalize_gic_version(VirtMachineState *vms)
+>   */
+>  static void virt_cpu_post_init(VirtMachineState *vms)
+>  {
+> -    bool aarch64;
+> +    bool aarch64, pmu;
+> +    CPUState *cpu;
+>
+>      aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
+> +    pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
+>
+> -    if (!kvm_enabled()) {
+> +    if (kvm_enabled()) {
+> +        CPU_FOREACH(cpu) {
+> +            if (pmu) {
+> +                assert(arm_feature(&ARM_CPU(cpu)->env, ARM_FEATURE_PMU));
+> +                if (kvm_irqchip_in_kernel()) {
+> +                    kvm_arm_pmu_set_irq(cpu, PPI(VIRTUAL_PMU_IRQ));
+> +                }
+> +                kvm_arm_pmu_init(cpu);
+> +            }
+> +        }
+> +    } else {
+>          if (aarch64 && vms->highmem) {
+>              int requested_pa_size = 64 - clz64(vms->highest_gpa);
+>              int pamax = arm_pamax(ARM_CPU(first_cpu));
 
-There will always be the occasional edge case where you have to settle
-for less than proper testing.  That's okay, life is short.  All I really
-ask for is to at least *think* about the error paths and their testing.
-
+thanks
+-- PMM

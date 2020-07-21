@@ -1,114 +1,91 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3339025lfm;
-        Tue, 21 Jul 2020 07:43:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyJnyY4G15c49bnCxGB++1nNffnrzPz97SA2LBYRaWuBOsHw8Wpz3huV934zvZZnft1Snsm
-X-Received: by 2002:a25:24d1:: with SMTP id k200mr40891846ybk.247.1595342639444;
-        Tue, 21 Jul 2020 07:43:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595342639; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp3491454lfm;
+        Tue, 21 Jul 2020 10:37:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9kgNp+GboDrN5x7zhnkegI9HCPv1FK++p2UQ6u+x2T1eGlYJxxxFAwBbRpx9wV3YnD7xo
+X-Received: by 2002:a25:9cc6:: with SMTP id z6mr46206743ybo.202.1595353055335;
+        Tue, 21 Jul 2020 10:37:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595353055; cv=none;
         d=google.com; s=arc-20160816;
-        b=HXp+guheSpD/GOWd09xHlyrlHkUzPazh7HsJL8rX/SCBdQdrLhP2KYngFbh/DJcJLN
-         fN7SLzjdhB2WZIr3P4e7qjSjwMO4gkisrHaSfzk94mWwGxuKokKgiBn34q5KSDmQI1hd
-         hMya+qXXYCpIncNZIqL176vdQ8vIorFXiGiW7g51ZgOf2ZyjykWpHLTspK64s+NRR0AP
-         9LO3KDf55R5JiJigB4xS2y4/P9FyhXa5H/QE3qU2pa4OcgIgxFWcbTJeTKkdcyRxjZ8u
-         Xr/GwgcBWLfMuMOZRbOJuoWRY9l3wowgICfhayPhokfCzvlouZ17GEdRkW+YMG4Dmw40
-         aGCA==
+        b=0vyVfQql7upEQC3HCPS7BGcQIRoJNl5fUHv1JfKYhuHelyJHVao0GjEKTbfHwjQjqI
+         kHjIRKokowdSI6f2Hf76Wzjps6QQRTR75j8aawYTC5uw3JhvRF2UhHy9kdW6v/fH5WSu
+         rCh1j44wo+Jns0M1fqYH/YLxUUSLv3dT8d/EJP2h4TjQKqBIQaLAkZqYeFBiA5rk/wGZ
+         CY+Jgp8DauepzoNubSUp0sbC0i2SgKnDHqtRZuqvzy0PkXc/H0ARZrX150+qMXYcBPuP
+         y0oHsDHjV3HcQDn3LvucFmt/OhcPaTFFgFLmkGNkBglZY9oWjJilCg7LEl7w700HpOsW
+         sLoQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=qtsZMzihjfVxDE6BVI9GmuNegO8Us+Pb++4CrjGJ2b0=;
-        b=JJ9wxdVCYxdvO5X/ZTdnGont/oISqT1o7pj0boh8ZVs2Zc1DBtxNEktEt3DnNwrGfY
-         0LT2WZRy4HAKw4r23aBWYTZ1XEDQYycfIyhJq4znWPbgVoORsazjub0prF1gG9P2FUXl
-         9S0e02U+ULk/G1Vc+KnHQmyUig2h869M+b6TKzRJx5WyEr9putN237X1hUJSrcpRpaTn
-         mpSuQMTkbyCcC1cnJHumx15WUiUobDcbuPvD7e3p5IcMF9RCY6s6Xegu5U6+kjmLmjmR
-         Xu90NFfWg0UoBfPxXQRP9Ol1cXXjyw0NmJvZ36q7fD+kS5NGqttLXQ2N3lm7ew+vr62k
-         c+iQ==
+         :message-id:from:references:to:subject;
+        bh=Rmq/hOMjUnj8LdZcw5eZree6a3G2ICU6sZfzTbvBBOE=;
+        b=R1Iyfl/Mpe1puG9uB5Z/ZtKsmkhu4mbQAR/qtyxJuhoPRLA2BibgL9PNg1ShckZLLE
+         te5FuOPtoH06O5+u7klsDwRndyPK2OMQ3A5OkTP4XRFyoBzTADJHwILACupP7oiF6c/r
+         Kcph0/M1FQkMbG40NdeQUpvs7hToT+a2o92YiXqHEqxwQvhV2dGivGBx78uq+cbqro+a
+         kIvTt4aIrC+mKbKv28P+JA7XCg0V4UlZmOPUxnRWfMkNTlN5qTkZFw556exMk+OtV9t+
+         s6mxnkHknpnOAkr98TR62vOjGY3yXELdQQ0IOcPBzLteZupsu+F+jXLjnPa4VIcFF+57
+         Ozew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H0TFMELz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b144si3124025yba.135.2020.07.21.07.43.59
+        by mx.google.com with ESMTPS id o63si20309091ybc.8.2020.07.21.10.37.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jul 2020 07:43:59 -0700 (PDT)
+        Tue, 21 Jul 2020 10:37:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=H0TFMELz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:52072 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49676 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jxtUs-0004Eh-Qj
-	for alex.bennee@linaro.org; Tue, 21 Jul 2020 10:43:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41440)
+	id 1jxwCs-0007jb-JW
+	for alex.bennee@linaro.org; Tue, 21 Jul 2020 13:37:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59428)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jxtUk-0004E9-Ts; Tue, 21 Jul 2020 10:43:50 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35392)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jxtUj-000758-Av; Tue, 21 Jul 2020 10:43:50 -0400
-Received: by mail-wr1-x444.google.com with SMTP id z2so21512480wrp.2;
- Tue, 21 Jul 2020 07:43:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=qtsZMzihjfVxDE6BVI9GmuNegO8Us+Pb++4CrjGJ2b0=;
- b=H0TFMELziiJMuqusOYByQF/Z7qLWCiAdvLIm4sXMvAtojR0b4HyKh1rsVcflUxiUtY
- XLO+BfoKtf/JNGU6q9teLz3V2QfqOBjvUmR5BDaOSf0AcZgHH9eZVn7+V70hRDBAMee8
- wR798ymxcDjnM92b19QQUPRt41k+VI5X5+V1ddlaON7OHwWck0VlVar11SKHeJh10mV3
- sU1eEkWD0CoZFsJmZ6y5rYVwvszVIe0+ZlQFe3I/ce2hFQ60ZBb9fi62xl2ToR83N7QZ
- N+kQu5x/cjf8xlVwUXUcVn2gUTlhvu6CfsFoHzJsONgGrp/ZvmOUVDZoNXSUg1smkCyA
- 8CTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=qtsZMzihjfVxDE6BVI9GmuNegO8Us+Pb++4CrjGJ2b0=;
- b=QVPagtBPqOlvwXhQoXdNAnBw3U9eKGj+gCMqCrpC18YWIQptVmn8k0OixzquNujbzy
- nbmEXXC13cLOK5dYy5EGmkCY6OYDiGhXIBRITVDa1BKGL63IlgJUjILE87vjhy5rJvon
- Pv8Ma7P401EdgVh3mHCAIMruWg4WqzfhuML3AIoAA4lzwPNGQDzTWVMFAzqZCqB4Jp66
- 01tVY7Of2GuZqcc6bucbetXIgxTUIYmOMQgKd0BW5/XtWV2bkt8iVdLKY2bqBrUC7tkL
- nKj6kYLK6ULWhuLvpOy828ru8mlPCkvN31Y/2IVXO5KACry8PnrcR0gY4xu5S70gnUBE
- yKUw==
-X-Gm-Message-State: AOAM530QIsZtLJerreumYoGwhLaKO2/Sd8QloSHt3T6+d+I4ck7FZcbj
- +AKH89m6dLcLq1OHxTn1pXg=
-X-Received: by 2002:adf:8024:: with SMTP id 33mr29026772wrk.117.1595342627386; 
- Tue, 21 Jul 2020 07:43:47 -0700 (PDT)
-Received: from [192.168.1.36] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id b23sm3958158wmd.37.2020.07.21.07.43.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Jul 2020 07:43:46 -0700 (PDT)
-Subject: Re: [PATCH for-5.1] docs/system/arm/virt: Document mte machine option
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200721143556.19484-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <bdf110e6-417f-ebc3-9a98-4717c04ede0f@amsat.org>
-Date: Tue, 21 Jul 2020 16:43:45 +0200
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxwCc-0007jO-8l
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2020 13:37:18 -0400
+Received: from 13.mo5.mail-out.ovh.net ([87.98.182.191]:39999)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1jxwCa-0000Km-4x
+ for qemu-arm@nongnu.org; Tue, 21 Jul 2020 13:37:17 -0400
+Received: from player788.ha.ovh.net (unknown [10.110.171.117])
+ by mo5.mail-out.ovh.net (Postfix) with ESMTP id A1E7728D604
+ for <qemu-arm@nongnu.org>; Tue, 21 Jul 2020 19:37:05 +0200 (CEST)
+Received: from kaod.org (bad36-1-78-202-132-1.fbx.proxad.net [78.202.132.1])
+ (Authenticated sender: clg@kaod.org)
+ by player788.ha.ovh.net (Postfix) with ESMTPSA id 927871490F6D1;
+ Tue, 21 Jul 2020 17:36:48 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G001ccd963cd-f319-4ddd-b0b3-80e0a7efa07f,622D537D4FED1CEB9E006CC2F7D967EDAF2A62E4)
+ smtp.auth=clg@kaod.org
+Subject: Re: [PATCH v2 2/4] m25p80: Improve command handling for Jedec commands
+To: Guenter Roeck <linux@roeck-us.net>,
+ Alistair Francis <alistair@alistair23.me>, Kevin Wolf <kwolf@redhat.com>
+References: <20200206183219.3756-1-linux@roeck-us.net>
+ <20200206183219.3756-2-linux@roeck-us.net>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <eb21047a-aa9f-eb39-af8a-b5858e01fee5@kaod.org>
+Date: Tue, 21 Jul 2020 19:36:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <20200721143556.19484-1-peter.maydell@linaro.org>
+In-Reply-To: <20200206183219.3756-2-linux@roeck-us.net>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 7bit
+X-Ovh-Tracer-Id: 2864570841254169491
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrgeeigdduuddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfesthejredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehfeejgfeuueeutefgudevfedtvdduvdeiffekudefueduveefjeefheelgffgvdenucffohhmrghinhepshhuphgvrhhmihgtrhhordgtohhmnecukfhppedtrddtrddtrddtpdejkedrvddtvddrudefvddrudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejkeekrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
+Received-SPF: pass client-ip=87.98.182.191; envelope-from=clg@kaod.org;
+ helo=13.mo5.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 13:37:06
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,41 +98,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, Erik Smit <erik.lucas.smit@gmail.com>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kO/uNQ1cDK2M
+X-TUID: kPu2dsFI1v6I
 
-On 7/21/20 4:35 PM, Peter Maydell wrote:
-> Commit 6a0b7505f1fd6769c which added documentation of the virt board
-> crossed in the post with commit 6f4e1405b91da0d0 which added a new
-> 'mte' machine option. Update the docs to include the new option.
+Hello,
 
-I'd use 'mte' between quotes in the patch subject too.
-
-Regardless:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
+On 2/6/20 7:32 PM, Guenter Roeck wrote:
+> When requesting JEDEC data using the JEDEC_READ command, the Linux kernel
+> always requests 6 bytes. The current implementation only returns three
+> bytes, and interprets the remaining three bytes as new commands.
+> While this does not matter most of the time, it is at the very least
+> confusing. To avoid the problem, always report up to 6 bytes of JEDEC
+> data. Fill remaining data with 0.
 > 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Guenter Roeck <linux@roeck-us.net>
 > ---
->  docs/system/arm/virt.rst | 4 ++++
->  1 file changed, 4 insertions(+)
+> v2: Split patch into two parts; improved decription
 > 
-> diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-> index 6621ab7205d..32dc5eb22ee 100644
-> --- a/docs/system/arm/virt.rst
-> +++ b/docs/system/arm/virt.rst
-> @@ -79,6 +79,10 @@ virtualization
->    Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
->    Arm Virtualization Extensions. The default is ``off``.
->  
-> +mte
-> +  Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
-> +  Arm Memory Tagging Extensions. The default is ``off``.
-> +
->  highmem
->    Set ``on``/``off`` to enable/disable placing devices and RAM in physical
->    address space above 32 bits. The default is ``on`` for machine types
+>  hw/block/m25p80.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
 > 
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 5ff8d270c4..53bf63856f 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -1040,8 +1040,11 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>          for (i = 0; i < s->pi->id_len; i++) {
+>              s->data[i] = s->pi->id[i];
+>          }
+> +        for (; i < SPI_NOR_MAX_ID_LEN; i++) {
+> +            s->data[i] = 0;
+> +        }
+
+This is breaking an old firmware (Linux version 2.6.28.9) for a SuperMicro
+board : 
+
+	https://www.supermicro.com/en/products/motherboard/X11SSL-F 
+
+which expects the flash ID to repeat. Erik solved the problem with the patch 
+below and I think it makes sense to wrap around. Anyone knows what should be 
+the expected behavior ? 
+
+Thanks,
+
+C. 
+
+
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 8227088441..5000930800 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -1041,7 +1041,7 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+             s->data[i] = s->pi->id[i];
+         }
+         for (; i < SPI_NOR_MAX_ID_LEN; i++) {
+-            s->data[i] = 0;
++            s->data[i] = s->pi->id[i % s->pi->id_len];
+         }
+
+         s->len = SPI_NOR_MAX_ID_LEN;
 

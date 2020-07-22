@@ -1,102 +1,104 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp413543lfm;
-        Wed, 22 Jul 2020 00:02:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwG51NToidBU0tlC3M3qKMy7efzGtE6V5sdS0NMoNNn1D+YVBITLswRp8FFdoniZEqyVZjx
-X-Received: by 2002:a25:dc4e:: with SMTP id y75mr43610674ybe.39.1595401355064;
-        Wed, 22 Jul 2020 00:02:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595401355; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp416757lfm;
+        Wed, 22 Jul 2020 00:07:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRQH3HG87eXX/km4wRB0AdT/V08iwoXrqSB5O7IIYma5RV1By2s2CdLtfiDU6h/cSgunI7
+X-Received: by 2002:a25:e616:: with SMTP id d22mr45052551ybh.360.1595401623858;
+        Wed, 22 Jul 2020 00:07:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595401623; cv=none;
         d=google.com; s=arc-20160816;
-        b=A9nqALWgp1YgBXGDLmR/D9wuoyTMbaJQx/fwJ4f+Y/FN0X5pW9S0+0rbrZlm+siQ7/
-         EdKqs/NZHUgooplVfwz5JL5lINoVRIbBhep9e42f/GjmtpOhKET1/khEdm/WNoHKzhFG
-         O96135q6WgVW3GJ4VisAY5D74eva69rJug+4zeHFN4VNkyLRM4Gaup8wfYAYngzasBtW
-         EdrBcXnICwtGMt1VGStW70T+qcwp/3ZQbKRjkLBkz2snPRDCgG1VHNbL5Gy3V4ukdhk4
-         2J1lxJnoyREDvwvljS6QAr/DvSSmJAWqxUFqMoBMV7E4pMMdJ9a25ujh/sS3m0j2lbFe
-         QGbg==
+        b=jRTYcclQ/UeAWH4BrQy/il1bPK+nLHEtYkPV/9s/5ydilpoBRZJUU6U6EAijc1oljA
+         IfY/YYcWTNn83J4jBoc+iIFL6KR08ixDoosqjxpqK3tU5rdV/X7ArMk6RNdKoyPS6YDF
+         165Ow4Oa/NoFhGzxlW1/+6aDVOvyyPZkfiYKMKybrHbqEym0eWuEsFW79LP0rOCLQs0+
+         rB38sac8BxigPjEQG+wgDgHszNuqCG/9cc/RuxPaCzZmLLiKsGBQnRyDJ0dBaTgFvLjt
+         N39HpAqZwSsK92BGIptmx1BAEWaczTIpTzuNK3fc8U3CQmwh7HS/C2wp56z96Zi+FMb1
+         XVXg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=bzN8EJ6HdV4a9bj8xeyUD+C6wFog/5bueFYT1szyvfU=;
-        b=SRveIEErkrFuinTxKqd09dL5odswQP0gE7uvHkBPKEJHgd/wAaER3V4gu2Uv51Om0X
-         jEzaaZjzrBkz596SqWE7iOPtLzXb6YnAXfdvCDe/VUgmDc1suMJLtxgoAWVIeOs1p5PC
-         YHoF54rZMZ3JQP8Kuzen/zptLVv4c0OKNq4M+1QPmeSXlsWMcpi3+I08CW9MrtSH5OlI
-         H0ZSqhVyasrKdVypTVVtqCKopvpdPTcPHSrLLf2NKlGxa0PfwU1SC1bXoIdqM9W7Hzcq
-         NwWI4YlNcN9KJrgnZvp17EtCJK83idzr/QkpuZcRgi1AmKXejgnFpFgRlk0Y5n8zmUsn
-         5J2Q==
+        bh=1fE+KYzeMHKnZxP5vA4r0EUpb5JQoiKRPbY9NFx8jY4=;
+        b=aTBW0eOiHP0atOangV68yFAvBLzARoKbGT4UuH2H/NahGkjpSAeD+V/4tfpQe/rDW7
+         n9HN1s9SDWizx7xAakE3dIIHVe8nrcsYGqU8dOElP++tivIQOAniBY0MgqQ2J3fZlOxt
+         emzLl4JYWNx9KPajxXOQ46vTGo5Nt+uKoqmlB/d8+3aoN+FHyr2eGAK6I5gKUOUZj7/C
+         CqWU9gdatRCBgl4GDuZqZ1XnNRewbuUR9Y2x9Of5/vgkHoNNq84eOznXUIwR7jIpO9Ta
+         wfKqrAJyax7JT6768EG+Nr5+TL7Q8msU9gU82fIh9wXICg1FGAvT+UXVgV5TH7KkWKg9
+         Ma4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DUEPo7y5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J7kxrUxd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b79si20357948yba.44.2020.07.22.00.02.34
+        by mx.google.com with ESMTPS id g14si20363638ybq.424.2020.07.22.00.07.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jul 2020 00:02:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Jul 2020 00:07:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DUEPo7y5;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J7kxrUxd;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57116 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37252 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jy8lu-0008Kw-D1
-	for alex.bennee@linaro.org; Wed, 22 Jul 2020 03:02:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49716)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jy8qF-0003cY-8N
+	for alex.bennee@linaro.org; Wed, 22 Jul 2020 03:07:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50520)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jy8le-0008KN-N0
- for qemu-arm@nongnu.org; Wed, 22 Jul 2020 03:02:18 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:35193
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jy8pX-00033Z-Lc
+ for qemu-devel@nongnu.org; Wed, 22 Jul 2020 03:06:19 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:53985
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jy8lc-0003ly-In
- for qemu-arm@nongnu.org; Wed, 22 Jul 2020 03:02:18 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1jy8pU-0004FO-LT
+ for qemu-devel@nongnu.org; Wed, 22 Jul 2020 03:06:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595401335;
+ s=mimecast20190719; t=1595401575;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=bzN8EJ6HdV4a9bj8xeyUD+C6wFog/5bueFYT1szyvfU=;
- b=DUEPo7y52DETT+I0+DtT8Yg86gNVkqhu1cytF5ASLE0cksRJQET5L0YMziJVXzUfWhS7MI
- CZhO2AQt8PvKXgMrEr7Jf/qWYjOiiglR3T4zXdsgcUuriMGaChbglhusGOgKiLW9mFLIVB
- Js9HQnk+7e5O7fmY8LjoSWv/GS79/K4=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-101-pm5U_b9KO8KMZ5x1fwePSA-1; Wed, 22 Jul 2020 03:02:13 -0400
-X-MC-Unique: pm5U_b9KO8KMZ5x1fwePSA-1
-Received: by mail-ej1-f72.google.com with SMTP id yw17so621190ejb.12
- for <qemu-arm@nongnu.org>; Wed, 22 Jul 2020 00:02:13 -0700 (PDT)
+ bh=1fE+KYzeMHKnZxP5vA4r0EUpb5JQoiKRPbY9NFx8jY4=;
+ b=J7kxrUxdQW8ulFvMWVAKXA3MkVNbE6pLTe29NMrU5thSZoQNFewJVH8uUpeKA0Cp8uQjtZ
+ 8ifG+MIpn2ELt8lKlzrmiMbsMWKmmvKJ4fZlTUu8INODLF5m+EAikZV7YOZhJnA+RyY9cW
+ qV0fQLZZOD7DEszxrtO6DPanYyQUqzQ=
+Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
+ [209.85.208.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-490-zZCsNGX3PvK71NfasCjgmA-1; Wed, 22 Jul 2020 03:06:13 -0400
+X-MC-Unique: zZCsNGX3PvK71NfasCjgmA-1
+Received: by mail-ed1-f70.google.com with SMTP id j15so402044edq.11
+ for <qemu-devel@nongnu.org>; Wed, 22 Jul 2020 00:06:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=bzN8EJ6HdV4a9bj8xeyUD+C6wFog/5bueFYT1szyvfU=;
- b=UAice3V2KtbFnHSoY6m8A3/Frv8M6AOZlb6kyXksshCiQWZBD8ywQ4qSb+uN8SQnH1
- /sNdG6PXB2ZpeJ2tMmpX0Na7/ryd1gFtC4B7yFbNRdQ1io1KsyM840ZZA4Oaj8FGPS6L
- kGXf8tQQ2Q4REu3uplgH7Jbi6FRCgzBy5iEsP5OVc3soFoOc/Tihrsd8rOxmHwSIsL5n
- lSAwPkvc+/wVThtzEtTKKZrAd7tN1mlpB7Sv7W3skuqK6iEC/Rbp+Ksf7A+RtsbPwja+
- YzjYNFAHYGQcrHyDq6au14oVjqQtUeoi2jNvbuV5NGLMCR8tIuNXga3irX88MjgVrbgg
- eUUw==
-X-Gm-Message-State: AOAM531sezPTnEGWjxDDHWY2Vi7FpK7RjKtW0UFOVD69s/jc7W20+t56
- 8ATRvzpZEVKDg9KI3B92vVumK8dx7N251kj1d/z6LjayGO+fd704ABu4zipeIWv8DbksX+EV38D
- zIyDJ8lVJL+mK
-X-Received: by 2002:aa7:dacb:: with SMTP id x11mr27876500eds.280.1595401332703; 
- Wed, 22 Jul 2020 00:02:12 -0700 (PDT)
-X-Received: by 2002:aa7:dacb:: with SMTP id x11mr27876466eds.280.1595401332369; 
- Wed, 22 Jul 2020 00:02:12 -0700 (PDT)
+ bh=1fE+KYzeMHKnZxP5vA4r0EUpb5JQoiKRPbY9NFx8jY4=;
+ b=DDP7QIL05LrdrZmyAfQuSlIaE4hCba7D9Dl1v7LbI+U5CuUJ6XS8VPExM4qtWPzGA/
+ 3hXOMzTYd+rNwkgycs70jruNH9xQoBP4Yc0lO1AF5a9pRtufa3toMesp7IRszttPZFlb
+ pNETNr9N6eRtiQkpxTn6sBD/5IS60vxMPXQjzm2xlAlgRsv1V1blAF2P96HbYHG2skCR
+ jFBIFWuLl6ikUmH8cHWpktw77g8MgDXIAY9U7a8BG4xFscsTmERgqdknCCwpSKFIO8X3
+ KeH1vHouL942wdtIbB3G+uW0WdFnEhtyL2+NrKbAGe68YffA9b9ZQJcdN83UpsvrTUYn
+ tH0w==
+X-Gm-Message-State: AOAM533UUHAizECKeyjeKLkpSo0EJNAlZ3ut5bwDvIoLZAlsdJLrNpK+
+ x04/HvrMTia6DfUfY+43PRBI0Ux1WVt1VmZZIYl7SMC8PaOqCOE7siu+DDr0JgbRi6F2AE7+7/J
+ fjJ0bgZZW6YQvV7c=
+X-Received: by 2002:a17:906:578c:: with SMTP id
+ k12mr27738950ejq.339.1595401572450; 
+ Wed, 22 Jul 2020 00:06:12 -0700 (PDT)
+X-Received: by 2002:a17:906:578c:: with SMTP id
+ k12mr27738936ejq.339.1595401572286; 
+ Wed, 22 Jul 2020 00:06:12 -0700 (PDT)
 Received: from [192.168.1.36] (138.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id cn16sm18664729edb.86.2020.07.22.00.02.10
+ by smtp.gmail.com with ESMTPSA id q21sm18206527ejr.75.2020.07.22.00.06.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Jul 2020 00:02:11 -0700 (PDT)
-Subject: Re: [RFC PATCH v2 7/9] sparc/sun4m: Don't set CPUState::halted in
- cpu_devinit()
+ Wed, 22 Jul 2020 00:06:11 -0700 (PDT)
+Subject: Re: [RFC PATCH v2 9/9] target/s390x: Use start-powered-off CPUState
+ property
 To: Thiago Jung Bauermann <bauerman@linux.ibm.com>, qemu-ppc@nongnu.org
 References: <20200722035016.469075-1-bauerman@linux.ibm.com>
- <20200722035016.469075-8-bauerman@linux.ibm.com>
+ <20200722035016.469075-10-bauerman@linux.ibm.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Autocrypt: addr=philmd@redhat.com; keydata=
  mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
@@ -121,42 +123,40 @@ Autocrypt: addr=philmd@redhat.com; keydata=
  9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
  RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
  apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <4dc8f2fe-763b-c25d-7049-20d60229d611@redhat.com>
-Date: Wed, 22 Jul 2020 09:02:10 +0200
+Message-ID: <366d7ab3-cc45-5d47-4317-080c2d594462@redhat.com>
+Date: Wed, 22 Jul 2020 09:06:10 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200722035016.469075-8-bauerman@linux.ibm.com>
+In-Reply-To: <20200722035016.469075-10-bauerman@linux.ibm.com>
 Content-Language: en-US
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 23:34:34
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 21:28:05
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>, David Hildenbrand <david@redhat.com>,
@@ -167,36 +167,42 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0QG3+gjwOkFx
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rS6yMu0wAK0D
 
 On 7/22/20 5:50 AM, Thiago Jung Bauermann wrote:
-> Remove setting of cs->halted from cpu_devinit(), which seems out of place
-> when compared to similar code in other architectures (e.g., ppce500_init()
-> in hw/ppc/e500.c).
+> Instead of setting CPUState::halted to 1 in s390_cpu_initfn(), use the
+> start-powered-off property which makes cpu_common_reset() initialize it to
+> 1 in common code.
 > 
 > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 > ---
->  hw/sparc/sun4m.c | 1 -
->  1 file changed, 1 deletion(-)
+>  target/s390x/cpu.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
 > NB: I was only able to test that this patch builds. I wasn't able to
 > run it.
 > 
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index 766e79bb5e..7b3042a801 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -831,7 +831,6 @@ static void cpu_devinit(const char *cpu_type, unsigned int id,
->      } else {
->          qemu_register_reset(secondary_cpu_reset, cpu);
->          cs = CPU(cpu);
-> -        cs->halted = 1;
->          object_property_set_bool(OBJECT(cs), "start-powered-off", true,
->                                   &error_abort);
->      }
-> 
+> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+> index 08eb674d22..d3a14af1d9 100644
+> --- a/target/s390x/cpu.c
+> +++ b/target/s390x/cpu.c
+> @@ -291,7 +291,8 @@ static void s390_cpu_initfn(Object *obj)
+>      S390CPU *cpu = S390_CPU(obj);
+>  
+>      cpu_set_cpustate_pointers(cpu);
+> -    cs->halted = 1;
+> +    object_property_set_bool(OBJECT(cs), "start-powered-off", true,
+> +                             &error_abort);
 
-Why not squash with previous patch?
+Here this seems overkill since this is the same object, so you can
+directly do:
+
+  +    cs->start_powered_off = true;
+
+>      cs->exception_index = EXCP_HLT;
+>  #if !defined(CONFIG_USER_ONLY)
+>      object_property_add(obj, "crash-information", "GuestPanicInformation",
+> 
 

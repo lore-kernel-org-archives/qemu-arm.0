@@ -1,96 +1,95 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp297785lfm;
-        Tue, 21 Jul 2020 20:55:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwT8KfeCkSObdTCDJzuHRZp5/RSjWOjNaNO+91rGRia+D2DAJLxFNj2v+yHsgw07WJAgrAI
-X-Received: by 2002:a25:7689:: with SMTP id r131mr50570903ybc.125.1595390101912;
-        Tue, 21 Jul 2020 20:55:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595390101; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp297909lfm;
+        Tue, 21 Jul 2020 20:55:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwhNzEjZEYKuACt6kjz6L5j9xQk80qhHfMtRD+pErldtRIBo8R+UyiXQm9yMcHYQm5HSE10
+X-Received: by 2002:a05:6902:1009:: with SMTP id w9mr46575964ybt.30.1595390117921;
+        Tue, 21 Jul 2020 20:55:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595390117; cv=none;
         d=google.com; s=arc-20160816;
-        b=gN/0kb7POj5LFHOTZlTYRciO06PWME3wjHY33nnNs8C+DabfKeU2YLDLp7iONFEHNb
-         kdK1QbtB2CZ7uVFTfUKjiQKexSm/BeqmgHbHQkvJYTyNTD2be2Ffl+txkY6SjNU+eUq8
-         VKAxshXSIwydppmxV1EipFWyD+AGaSQnf4aTV4mgUcUhvr1+aWHUdC3487QJCSMelsRz
-         vETup5urbncahwDB8bjU8CxyKwvU4vbNqFjX7Fz2Pew1DDilSEJEx6BxtU3aTbN+pAjZ
-         p5+K3yC53c4rve3R8KKg9YKYVn6rulMeO45PgNsolO/cRjWZ7Suu8LciCRcrT8VtemLY
-         Re8Q==
+        b=ctb60aw1ba/KznB+52WOJL8yMDx9RndEBLi3r4O8+20j18zBQAdY71w6Nn8b5l0tEZ
+         nMjZDHgH2f6n58kWPxVNbV6MOk28jd4nEJQ0tWzzfNVgLYe65Bi7wH1I2KqO5HSmX5El
+         h1brihjhGBo0YGyB0QqWiuXosH9jZ/X53VhprhVMfuA06Cmzh52/dlh3b/pegUpkaY9Z
+         vIrIa0pk2D1IU+pA6IBmvh4uJpObpK5j1Hhlj1r/K5bLmAAaq8r9PsTHuAtZpfB5GgR+
+         7dkQKqr4NQYBp2vuigN1by37UInvWuY7waglwRcGkZwle5ENL2JXQyhgZ9yTOag+fre/
+         CeYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=7rPKX8qWPo5/yCdNsB0+okBlMnKYixFu87VjY44jtpM=;
-        b=xhjdwbjv9jF8yBuD7eg3Sw0Lk+QWguBYI1GcsFWjpWpyWbQsFmDTEOO/SzGWgY6VB+
-         1nN/juFfLFK6ISxd3+MgBoWp6y6GilRhgOw+ys8vNgEUDJwAxIY/4AdKDwMSQdx4W108
-         MI13LzFPI4yUop0rH9AQgIcZ1TDpR27ypTHA7y7UJPR0kKFxmpISqsWZdtiPpTIfiJUf
-         3LSK0jq8HJ5VmMhhPf+6hJHODpAlpehfpYmNxfwR/vFby0TFIoYl9t3VwJ6Ux03jRxlE
-         iYaKYYa42aL67KJvMmsp+94ITWxw/OJom7PwQTrl/yzYi1y2v++rP4l9OO0rd72Sk+VC
-         ZSZw==
+        bh=tOoyE7JlrFFrVT4oHhYKc8yxbsY7pgD0xcndC9/FnUg=;
+        b=FK6iYNqRgHEsvg3nTvzj5GxkP8XMyIyHu0l3++rAQ42x+oRYabNZmbQoS8wXUPdfVl
+         8eP2WNXSkeVvflqFYry7qhWwgGNo/RW2Ize6Kb6Gev4qQPjJlU/+nUYK3GiQ7suru+U6
+         jcfM1rwr3tPZ6ilH0PIkopp6q0aYhyXsocVEkOgHn4FAW3eY/SMG3k7ZyNdaxi4Zd21C
+         ae8TblbNyKxHCKByZrtDx2ZxkHX7Pzbhz1M3/bLMWbyG7e6AGwNR9toB3CUU1nzJbjwR
+         M4sR5hb5J769moCfDOBquFF71eSMWOvio0fyy1w7ux/V22wcZae1J4BU61BcgnDg9MQY
+         LyuA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s16si21206408ybk.327.2020.07.21.20.55.01
+        by mx.google.com with ESMTPS id d11si20764113ybl.209.2020.07.21.20.55.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 21 Jul 2020 20:55:01 -0700 (PDT)
+        Tue, 21 Jul 2020 20:55:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:38438 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39996 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jy5qP-0003WK-8n
-	for alex.bennee@linaro.org; Tue, 21 Jul 2020 23:55:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43470)
+	id 1jy5qf-00048t-Ag
+	for alex.bennee@linaro.org; Tue, 21 Jul 2020 23:55:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43448)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bauerman@linux.ibm.com>)
- id 1jy5nh-0006aC-90; Tue, 21 Jul 2020 23:52:13 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:23444
- helo=mx0a-001b2d01.pphosted.com)
+ id 1jy5nd-0006Rm-TN; Tue, 21 Jul 2020 23:52:09 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:7306)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bauerman@linux.ibm.com>)
- id 1jy5nf-0003v7-J5; Tue, 21 Jul 2020 23:52:12 -0400
-Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
- by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 06M3VPwr137582; Tue, 21 Jul 2020 23:51:53 -0400
+ id 1jy5nb-0003u5-52; Tue, 21 Jul 2020 23:52:09 -0400
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 06M3Wa2J140323; Tue, 21 Jul 2020 23:51:46 -0400
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0b-001b2d01.pphosted.com with ESMTP id 32d982m6f2-1
+ by mx0a-001b2d01.pphosted.com with ESMTP id 32bvqw7g8p-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 21 Jul 2020 23:51:52 -0400
-Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06M3emdt161844;
- Tue, 21 Jul 2020 23:51:52 -0400
-Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com
- [169.55.85.253])
- by mx0b-001b2d01.pphosted.com with ESMTP id 32d982m6ew-1
+ Tue, 21 Jul 2020 23:51:46 -0400
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06M3Y7Y5143556;
+ Tue, 21 Jul 2020 23:51:46 -0400
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 32bvqw7g8d-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 21 Jul 2020 23:51:52 -0400
-Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
- by ppma01wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06M3naoY019930;
- Wed, 22 Jul 2020 03:51:51 GMT
+ Tue, 21 Jul 2020 23:51:46 -0400
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06M3pcP0003537;
+ Wed, 22 Jul 2020 03:51:44 GMT
 Received: from b01cxnp23033.gho.pok.ibm.com (b01cxnp23033.gho.pok.ibm.com
- [9.57.198.28]) by ppma01wdc.us.ibm.com with ESMTP id 32brq90pqa-1
+ [9.57.198.28]) by ppma04wdc.us.ibm.com with ESMTP id 32brq98r4h-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 22 Jul 2020 03:51:51 +0000
+ Wed, 22 Jul 2020 03:51:44 +0000
 Received: from b01ledav005.gho.pok.ibm.com (b01ledav005.gho.pok.ibm.com
  [9.57.199.110])
  by b01cxnp23033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 06M3ppVH55902704
+ 06M3pi9t40763850
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 22 Jul 2020 03:51:51 GMT
+ Wed, 22 Jul 2020 03:51:44 GMT
 Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 31547AE05F;
- Wed, 22 Jul 2020 03:51:51 +0000 (GMT)
-Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E9047AE05C;
+ by IMSVA (Postfix) with ESMTP id 53225AE05F;
  Wed, 22 Jul 2020 03:51:44 +0000 (GMT)
+Received: from b01ledav005.gho.pok.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id F1CDEAE05C;
+ Wed, 22 Jul 2020 03:51:37 +0000 (GMT)
 Received: from morokweng.localdomain.com (unknown [9.163.58.88])
  by b01ledav005.gho.pok.ibm.com (Postfix) with ESMTP;
- Wed, 22 Jul 2020 03:51:44 +0000 (GMT)
+ Wed, 22 Jul 2020 03:51:37 +0000 (GMT)
 From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 To: qemu-ppc@nongnu.org
-Subject: [PATCH v2 5/9] mips/cps: Use start-powered-off CPUState property
-Date: Wed, 22 Jul 2020 00:50:12 -0300
-Message-Id: <20200722035016.469075-6-bauerman@linux.ibm.com>
+Subject: [PATCH v2 4/9] ppc/e500: Use start-powered-off CPUState property
+Date: Wed, 22 Jul 2020 00:50:11 -0300
+Message-Id: <20200722035016.469075-5-bauerman@linux.ibm.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200722035016.469075-1-bauerman@linux.ibm.com>
 References: <20200722035016.469075-1-bauerman@linux.ibm.com>
@@ -101,15 +100,15 @@ X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
  definitions=2020-07-22_01:2020-07-21,
  2020-07-21 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 clxscore=1015
- phishscore=0 impostorscore=0 mlxscore=0 spamscore=0 lowpriorityscore=0
- priorityscore=1501 bulkscore=0 mlxlogscore=899 adultscore=0 suspectscore=1
+ mlxlogscore=999 spamscore=0
+ bulkscore=0 impostorscore=0 malwarescore=0 mlxscore=0 lowpriorityscore=0
+ suspectscore=1 adultscore=0 clxscore=1015 phishscore=0 priorityscore=1501
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2007220020
-Received-SPF: pass client-ip=148.163.158.5;
+ definitions=main-2007220022
+Received-SPF: pass client-ip=148.163.156.1;
  envelope-from=bauerman@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 23:52:01
-X-ACL-Warn: Detected OS   = Linux 3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/21 23:51:27
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
@@ -142,41 +141,45 @@ Cc: Thiago Jung Bauermann <bauerman@linux.ibm.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HYo8Wothr6Cd
+X-TUID: FSa2cDt7vGg4
 
-Instead of setting CPUState::halted to 1 in main_cpu_reset(), use the
-start-powered-off property which makes cpu_common_reset() initialize it
+Instead of setting CPUState::halted to 1 in ppce500_cpu_reset_sec(), use
+the start-powered-off property which makes cpu_common_reset() initialize it
 to 1 in common code.
 
 Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 ---
- hw/mips/cps.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/ppc/e500.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
 NB: I was only able to test that this patch builds. I wasn't able to
 run it.
 
-diff --git a/hw/mips/cps.c b/hw/mips/cps.c
-index 615e1a1ad2..d5b6c78019 100644
---- a/hw/mips/cps.c
-+++ b/hw/mips/cps.c
-@@ -52,9 +52,6 @@ static void main_cpu_reset(void *opaque)
-     CPUState *cs = CPU(cpu);
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index ab9884e315..dda71bc05d 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -704,9 +704,6 @@ static void ppce500_cpu_reset_sec(void *opaque)
  
      cpu_reset(cs);
--
--    /* All VPs are halted on reset. Leave powering up to CPC. */
+ 
+-    /* Secondary CPU starts in halted state for now. Needs to change when
+-       implementing non-kernel boot. */
 -    cs->halted = 1;
+     cs->exception_index = EXCP_HLT;
  }
  
- static bool cpu_mips_itu_supported(CPUMIPSState *env)
-@@ -89,6 +86,9 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
-             env->itc_tag = mips_itu_get_tag_region(&s->itu);
-             env->itu = &s->itu;
+@@ -897,6 +894,13 @@ void ppce500_init(MachineState *machine)
+         } else {
+             /* Secondary CPUs */
+             qemu_register_reset(ppce500_cpu_reset_sec, cpu);
++
++            /*
++             * Secondary CPU starts in halted state for now. Needs to change
++             * when implementing non-kernel boot.
++             */
++            object_property_set_bool(OBJECT(cs), "start-powered-off", true,
++                                     &error_abort);
          }
-+        /* All VPs are halted on reset. Leave powering up to CPC. */
-+        object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
-+                                 &error_abort);
-         qemu_register_reset(main_cpu_reset, cpu);
      }
  

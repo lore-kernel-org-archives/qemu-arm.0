@@ -1,72 +1,72 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1281771lfm;
-        Wed, 22 Jul 2020 19:57:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzlwG7HhPhqbmw1gAxt+fCI+xL9UzCiim+n7/f5dRueE5sgC5xfd8ZszhILCaKLb5HQQKTX
-X-Received: by 2002:a17:90a:348d:: with SMTP id p13mr2212446pjb.108.1595473072990;
-        Wed, 22 Jul 2020 19:57:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595473072; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1281782lfm;
+        Wed, 22 Jul 2020 19:57:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHg6OYHRTd/8M8na2WIwSZr44Fsxe7UDT3/HVWZFqvW1FggqqxV1vWXyh/dUCV4sIJ7ZKb
+X-Received: by 2002:a25:34c1:: with SMTP id b184mr3715001yba.355.1595473074577;
+        Wed, 22 Jul 2020 19:57:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595473074; cv=none;
         d=google.com; s=arc-20160816;
-        b=CGzgKkrWiysgs4xK3p0n9F30cOmPisOfRj+ezdSwb+8quoflPUQq5ZQHYZaHq+8px9
-         cwlA1kfLUE2S4znq67X4Sr6xBIyA4PT156ioJu5h01KfBQ/keBvHEkNZoyL2eC8j0Flw
-         i2evDR23bPdiRS68THVRacUS24AcSS1smOgbXjbfaC/zl3eIKTNLeUWKK5T9md6SNniY
-         SRgNVVDibHD+jZR+ttaWVDjUkw8z9eIHcbtn5WVg/WQ80mAEWaWVBmU2DibXTYURJasu
-         nfhU6ddKU4KTjDEgZf+GR8xXIG2hBIUNlEVA5ELMhlG/ImjcgIsdsHRxcvFMsCryn2aj
-         si+w==
+        b=doxhaAMvLjO8tWca18wv/39SQt6/CrR7V7vtwyVfuM1ta+t8BZrpaphC14lORPfq9f
+         QoICMGtIZw06X2/Pic+qGTX6BI47uUpuYoTfE3svaptanvyvsuMX5Sczx5svmsuwtbiY
+         RWJf47gFgT8c3zeNyoIuIpMI8RTkBh+o5smYk2ts1AzbVIQ4IjLhkOxggrcALRB7Vt72
+         +eChmibF8ccVQLp2L33M8QiDVcx1aHUEwFacL26nvugqk1Fxfn2OsPPQte8mrlZ58pan
+         QBAw6+b+WV8te96/+nfKmn8kyDnyo1hRgPEFMybNF/PwmKkTUtOx+pkOZEpP9EDtPdVR
+         /xNg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from;
-        bh=H0j/3DqYj/iBXAMUY5K5j2GqBpl8XeiEVbucgYH+9cM=;
-        b=R6Drxs8a9em6A9z/eJfkZWrI5uw01lAxhfLSpxzCkZm0q89aMvU43AnvJmYwnEzrGJ
-         uMzPuQahNu3/dUNMclcowpDqiddGs/9ZGmfDdHF1NVh+UiNOSLHnjG1NEaNjrUiFkKtL
-         GW8B7MP/I4ziiScqu6BXrMjwqlM4EFrx6AhpRgHTq0cwyVlv73tn70R86PyWKOAAStTi
-         UXNf8MlnQvrjDV2Z6Xpm7w0B8BXtuLzF+PZhkiZ0qQvVnwHcXfaF6iyYBDIMpaCTXIMD
-         0hS7qfyiqpWgK8QjtEgyvadg6ESiQVc+zkWYxa8sLGRyLWJu8a8wIpW/W6gn8DBsaq0W
-         CXcg==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from;
+        bh=T8KHi817ZYlMK2qxlmmZsqs/zRd2alqOQC2ts+2TqfM=;
+        b=bmil8aKlyaomy2E/QrmoqCNG7CgGQnfusNZ7jSyGFp5Y/PNpEKFo9HnQK55a8JDuXk
+         zblUCHoSsN6S6V8RgtwVY/1GGxO9K+GTTrlgrzJG9FKS2473DEGpsDRXt79ubg4G3YTL
+         hNB20mk0HHnhisBYLudsafy0gtnpqTO6dWDoJnnHa+CmbKvrC2U5MuZXxn8g16AvfLt2
+         2RieUqR5zTqokdSsdGCbymj9K6SazFoMmhU9Os9UHSzGKR9D+tYm5uXll070w9qTxOsk
+         KIZhb9Fk8tgam9YwI9xOwmSxAaxKp06XUQzNIOf7kjFqRESBAFRpeytlNlJtpizBvRan
+         yLUg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <bauerman@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id n8si881597pfj.84.2020.07.22.19.57.52
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id l137si1249079ybf.346.2020.07.22.19.57.54
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 22 Jul 2020 19:57:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
+        Wed, 22 Jul 2020 19:57:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 06N2ni5u007768;
-	Wed, 22 Jul 2020 22:57:24 -0400
+Received: from pps.filterd (m0098421.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 06N2coPJ089293;
+	Wed, 22 Jul 2020 22:57:31 -0400
 Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 32f23fr4yv-1
+	by mx0a-001b2d01.pphosted.com with ESMTP id 32f1pmrhkf-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 22 Jul 2020 22:57:24 -0400
-Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
-	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06N2qZY7018521;
-	Wed, 22 Jul 2020 22:57:24 -0400
-Received: from ppma03wdc.us.ibm.com (ba.79.3fa9.ip4.static.sl-reverse.com [169.63.121.186])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 32f23fr4yd-1
+	Wed, 22 Jul 2020 22:57:31 -0400
+Received: from m0098421.ppops.net (m0098421.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06N2hRrc099473;
+	Wed, 22 Jul 2020 22:57:31 -0400
+Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com [169.55.85.253])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 32f1pmrhk6-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 22 Jul 2020 22:57:24 -0400
-Received: from pps.filterd (ppma03wdc.us.ibm.com [127.0.0.1])
-	by ppma03wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06N2pGv5019365;
-	Thu, 23 Jul 2020 02:57:22 GMT
-Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com [9.57.198.29])
-	by ppma03wdc.us.ibm.com with ESMTP id 32brq9h2ye-1
+	Wed, 22 Jul 2020 22:57:30 -0400
+Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
+	by ppma01wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06N2naCc029267;
+	Thu, 23 Jul 2020 02:57:30 GMT
+Received: from b01cxnp22034.gho.pok.ibm.com (b01cxnp22034.gho.pok.ibm.com [9.57.198.24])
+	by ppma01wdc.us.ibm.com with ESMTP id 32brq9915x-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 23 Jul 2020 02:57:22 +0000
+	Thu, 23 Jul 2020 02:57:30 +0000
 Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com [9.57.199.111])
-	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 06N2vLAO55837126
+	by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 06N2vTBR31785268
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 23 Jul 2020 02:57:21 GMT
+	Thu, 23 Jul 2020 02:57:29 GMT
 Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id D7AA1AC059;
-	Thu, 23 Jul 2020 02:57:21 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id D9815AC05B;
+	Thu, 23 Jul 2020 02:57:29 +0000 (GMT)
 Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id B50C8AC05F;
-	Thu, 23 Jul 2020 02:57:14 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id 7C5A5AC05E;
+	Thu, 23 Jul 2020 02:57:22 +0000 (GMT)
 Received: from morokweng.localdomain.com (unknown [9.211.93.190])
 	by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
-	Thu, 23 Jul 2020 02:57:14 +0000 (GMT)
+	Thu, 23 Jul 2020 02:57:22 +0000 (GMT)
 From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 To: qemu-ppc@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
@@ -88,95 +88,136 @@ Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
         =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
         Greg Kurz <groug@kaod.org>,
         Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Subject: [PATCH v3 0/8] Generalize start-powered-off property from ARM
-Date: Wed, 22 Jul 2020 23:56:49 -0300
-Message-Id: <20200723025657.644724-1-bauerman@linux.ibm.com>
+Subject: [PATCH v3 1/8] target/arm: Move start-powered-off property to generic CPUState
+Date: Wed, 22 Jul 2020 23:56:50 -0300
+Message-Id: <20200723025657.644724-2-bauerman@linux.ibm.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200723025657.644724-1-bauerman@linux.ibm.com>
+References: <20200723025657.644724-1-bauerman@linux.ibm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
  definitions=2020-07-22_17:2020-07-22,2020-07-22 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 mlxlogscore=999
- adultscore=0 lowpriorityscore=0 impostorscore=0 bulkscore=0 phishscore=0
- priorityscore=1501 malwarescore=0 spamscore=0 clxscore=1015 suspectscore=1
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 malwarescore=0
+ suspectscore=1 mlxlogscore=999 phishscore=0 spamscore=0 priorityscore=1501
+ adultscore=0 bulkscore=0 impostorscore=0 clxscore=1015 lowpriorityscore=0
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2007230018
-X-TUID: /+JGpeaDuD3z
+ definitions=main-2007230014
+X-TUID: CnthDog9J0uG
 
-The ARM code has a start-powered-off property in ARMCPU, which is a
-subclass of CPUState. This property causes arm_cpu_reset() to set
-CPUState::halted to 1, signalling that the CPU should start in a halted
-state. Other architectures also have code which aim to achieve the same
-effect, but without using a property.
+There are other platforms which also have CPUs that start powered off, so
+generalize the start-powered-off property so that it can be used by them.
 
-The ppc/spapr version has a bug where QEMU does a KVM_RUN on the vcpu
-before cs->halted is set to 1, causing the vcpu to run while it's still in
-an unitialized state (more details in patch 3).
+Note that ARMv7MState also has a property of the same name but this patch
+doesn't change it because that class isn't a subclass of CPUState so it
+wouldn't be a trivial change.
 
-Peter Maydell mentioned the ARM start-powered-off property and
-Eduardo Habkost suggested making it generic, so this patch series does
-that, for all cases which I was able to find via grep in the code.
+This change should not cause any change in behavior.
 
-The only problem is that I was only able to test these changes on a ppc64le
-pseries KVM guest, so except for patches 2 and 3, all others are only
-build-tested. Also, my grasp of QOM lifecycle is basically non-existant so
-please be aware of that when reviewing this series.
+Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+---
+ exec.c                | 1 +
+ include/hw/core/cpu.h | 4 ++++
+ target/arm/cpu.c      | 5 ++---
+ target/arm/cpu.h      | 3 ---
+ target/arm/kvm32.c    | 2 +-
+ target/arm/kvm64.c    | 2 +-
+ 6 files changed, 9 insertions(+), 8 deletions(-)
 
-The last patch may be wrong, as pointed out by Eduardo, so I marked it as
-RFC. It may make sense to drop it.
+NB: I was only able to test that this patch builds. I wasn't able to
+run it.
 
-Applies cleanly on yesterday's master.
-
-Changes since v2:
-
-General:
-- Added Philippe's Reviewed-by to some of the patches.
-
-Patch "ppc/spapr: Use start-powered-off CPUState property"
-- Set the CPUState::start_powered_off variable directly rather than using
-  object_property_set_bool(). Suggested by Philippe.
-
-Patch "sparc/sun4m: Remove main_cpu_reset()"
-- New patch. Suggested by Philippe.
-
-Patch "sparc/sun4m: Use start-powered-off CPUState property"
-- Remove secondary_cpu_reset(). Suggested by Philippe.
-- Remove setting of `cs->halted = 1` from cpu_devinit(). Suggested by Philippe.
-
-Patch "Don't set CPUState::halted in cpu_devinit()"
-- Squashed into previous patch. Suggested by Philippe.
-
-Patch "sparc/sun4m: Use one cpu_reset() function for main and secondary CPUs"
-- Dropped.
-
-Patch "target/s390x: Use start-powered-off CPUState property"
-- Set the CPUState::start_powered_off variable directly rather than using
-  object_property_set_bool(). Suggested by Philippe.
-- Mention in the commit message Eduardo's observation that before this
-  patch, the code didn't set cs->halted on reset.
-
-Thiago Jung Bauermann (8):
-  target/arm: Move start-powered-off property to generic CPUState
-  target/arm: Move setting of CPU halted state to generic code
-  ppc/spapr: Use start-powered-off CPUState property
-  ppc/e500: Use start-powered-off CPUState property
-  mips/cps: Use start-powered-off CPUState property
-  sparc/sun4m: Remove main_cpu_reset()
-  sparc/sun4m: Use start-powered-off CPUState property
-  target/s390x: Use start-powered-off CPUState property
-
- exec.c                  |  1 +
- hw/core/cpu.c           |  2 +-
- hw/mips/cps.c           |  6 +++---
- hw/ppc/e500.c           | 10 +++++++---
- hw/ppc/spapr_cpu_core.c | 10 +++++-----
- hw/sparc/sun4m.c        | 28 ++--------------------------
- include/hw/core/cpu.h   |  4 ++++
- target/arm/cpu.c        |  4 +---
- target/arm/cpu.h        |  3 ---
- target/arm/kvm32.c      |  2 +-
- target/arm/kvm64.c      |  2 +-
- target/s390x/cpu.c      |  2 +-
- 12 files changed, 27 insertions(+), 47 deletions(-)
+diff --git a/exec.c b/exec.c
+index 6f381f98e2..82e82fab09 100644
+--- a/exec.c
++++ b/exec.c
+@@ -899,6 +899,7 @@ Property cpu_common_props[] = {
+     DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+ #endif
++    DEFINE_PROP_BOOL("start-powered-off", CPUState, start_powered_off, false),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 8f145733ce..9fc2696db5 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -374,6 +374,10 @@ struct CPUState {
+     bool created;
+     bool stop;
+     bool stopped;
++
++    /* Should CPU start in powered-off state? */
++    bool start_powered_off;
++
+     bool unplug;
+     bool crash_occurred;
+     bool exit_request;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 111579554f..ec65c7653f 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -174,8 +174,8 @@ static void arm_cpu_reset(DeviceState *dev)
+     env->vfp.xregs[ARM_VFP_MVFR1] = cpu->isar.mvfr1;
+     env->vfp.xregs[ARM_VFP_MVFR2] = cpu->isar.mvfr2;
+ 
+-    cpu->power_state = cpu->start_powered_off ? PSCI_OFF : PSCI_ON;
+-    s->halted = cpu->start_powered_off;
++    cpu->power_state = s->start_powered_off ? PSCI_OFF : PSCI_ON;
++    s->halted = s->start_powered_off;
+ 
+     if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
+         env->iwmmxt.cregs[ARM_IWMMXT_wCID] = 0x69051000 | 'Q';
+@@ -2182,7 +2182,6 @@ static const ARMCPUInfo arm_cpus[] = {
+ };
+ 
+ static Property arm_cpu_properties[] = {
+-    DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, false),
+     DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
+     DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
+     DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9e8ed423ea..a925d26996 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -810,9 +810,6 @@ struct ARMCPU {
+      */
+     uint32_t psci_version;
+ 
+-    /* Should CPU start in PSCI powered-off state? */
+-    bool start_powered_off;
+-
+     /* Current power state, access guarded by BQL */
+     ARMPSCIState power_state;
+ 
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index 0af46b41c8..1f2b8f8b7a 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -218,7 +218,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+     /* Determine init features for this CPU */
+     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+-    if (cpu->start_powered_off) {
++    if (cs->start_powered_off) {
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
+     }
+     if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 1169237905..f8a6d905fb 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -775,7 +775,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+     /* Determine init features for this CPU */
+     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+-    if (cpu->start_powered_off) {
++    if (cs->start_powered_off) {
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
+     }
+     if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {

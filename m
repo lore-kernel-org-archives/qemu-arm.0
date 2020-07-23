@@ -1,80 +1,80 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1210247lfm;
-        Wed, 22 Jul 2020 18:00:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz+IS0Jp7QjTwHKybU1r56GxlvmTPLpqf4xpm1kJkXHWitJKBrVCAlwAcVes6jj3adc7Hia
-X-Received: by 2002:a25:31d4:: with SMTP id x203mr3328909ybx.396.1595466034169;
-        Wed, 22 Jul 2020 18:00:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595466034; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1210558lfm;
+        Wed, 22 Jul 2020 18:00:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzHdo3DclRPdtLDvdvM2g7PyjzueQMhiFOxkkeUfOoHNQEANpoXqF8FL281jVC3NPziQuPU
+X-Received: by 2002:a25:d94d:: with SMTP id q74mr3473565ybg.387.1595466057526;
+        Wed, 22 Jul 2020 18:00:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595466057; cv=none;
         d=google.com; s=arc-20160816;
-        b=mFZAOu0io2tKwnYSujIEqMxLoghQe12YBuaxw6Rp2R4HxgKEY9IhI5hwMVmfgL/6nn
-         kbf5pCIb38q8L97T0A5s8G/A02+q5aa68qEzjGYAQcJcSLuVRQDjs6NXuz6rNqQlBqyz
-         e3iBpr95egYoYKM68lvhIHAUhCY1K6wyYbiuTgVcYWlX0yrLbZlwWbZ1PoVpJBuof9a1
-         d/PH2GbHzqQPkv0SpzrGnW41z+meMcjwlWfvYTEu+Q/T61hZlq+AxhPn3LfyKUbjRU2/
-         c/UEpuSswqUfU9BfP3hvBnd0oSqcLsYfdc0aeiQrR5j1rKTaC+sQqH0L++FOBdjfd5PP
-         qqvw==
+        b=HtJSAlufcO1z/VN/yoie569g7msU99lel89/rzXSIk/AZNCe+Ie4l2CIr+OyUVwgUJ
+         H16Bh2txYuo3nF5UVUAtOeAu3Jh+SzG4kUqmPpDixI79j2Dbf1J9hYr1rd98pKpGDMmF
+         r1G3IXUZ3BahOPnPlVoDbZkZJqK6mWye8pEhLHKj+hlFTFXqA910jKTny8pmnokMurWW
+         uyXAOe3+D8iaGndIzSuh5XPsdivYG25WC80Ldur8VQsz8Ec0jWB4PcYJ2D5NzL1IqUP0
+         e3TzGO/NllcnxMjMruQPVzTbRev/SsaJN0CBalkd5UefqKDkeUom6Vu1YZ4beQbBP60f
+         8fJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=6xfP9pur4eCIokZ9jFtLU22yaeU6xGCjbDELT2hiwao=;
-        b=lsLWzbG4Utmq5vqjQqwom2041ZIovjK1l5oeZ94flsd1S6bFEew/c+QbfqA9YIWZeT
-         xetncK/mcDDjQFnHUAj/gMFQHuZ4q4yoeEw6vZlfC5bSKAuJI8G83LBRZ8u8+m3Q1SYp
-         kNNF8gqqM8hs+w6dK4Qdp4uoZJR5EQ2yALbFl6ggZ7Pu+hxZkcuKzvmjojZMLRXnEdcB
-         Y9psQkoTZjmadvpUDwptMOEFYUnAFW3ELpVM7E4TMbge55txcMSLjqixjcjMSxP2qegx
-         /BKY5UWgWahxyHLUD3KCd+JuCtP8LAFZ0m5n7jCDZKtVCBzhfnFCrTp2RumM1b8ZfrVH
-         slsg==
+        bh=10yNT2+tqEDh3CSTqRO8LuqAjExvRL0SxdhJq8+2yeg=;
+        b=tsSlGB+waF/j7HD+h6bxTGJ/rpGJMU3hnGRqPDaytzMi1fNEBGyeHg9oPL6P1j4AgZ
+         MDE+uOZyemcsxiDW2DXqtXSZQagHRt4fX6b703IjNt/RuyCtscgGiWRALGw4viDtcs7V
+         wZiazKL/ZT+Y11mkpVUuJEXNSuCvjfhJnu1CRpdU7PT+5MtHZFxx09ct15uU30l8anrL
+         Q7LoXIXqmwMeJxrKe3VrgVqmGKFXzqPrTQgfRdMKi1ZeO39t4Qji6XNweNPkzEKvdnmP
+         Y3sjU8/qQYaPu5cXedxfXzBhCu3hm0YqPqlrTs6fBGE0u0F8qyX7U7yqYzfoYzMjnp1M
+         ++rA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=D4BEZOPL;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=YiKCuN8s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s10si1187133ybb.249.2020.07.22.18.00.34
+        by mx.google.com with ESMTPS id b2si1307341ybe.441.2020.07.22.18.00.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jul 2020 18:00:34 -0700 (PDT)
+        Wed, 22 Jul 2020 18:00:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=D4BEZOPL;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=YiKCuN8s;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51800 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53156 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jyPb7-0008Te-F9
-	for alex.bennee@linaro.org; Wed, 22 Jul 2020 21:00:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38404)
+	id 1jyPbU-0000hR-TI
+	for alex.bennee@linaro.org; Wed, 22 Jul 2020 21:00:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38408)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1jyPaw-0008QX-6P; Wed, 22 Jul 2020 21:00:22 -0400
-Received: from bilbo.ozlabs.org ([203.11.71.1]:53295 helo=ozlabs.org)
+ id 1jyPaw-0008Qd-CT; Wed, 22 Jul 2020 21:00:22 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:42731)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1jyPau-0007HK-5O; Wed, 22 Jul 2020 21:00:21 -0400
+ id 1jyPau-0007HN-7b; Wed, 22 Jul 2020 21:00:22 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 4BBvBk5hgVz9sRk; Thu, 23 Jul 2020 11:00:14 +1000 (AEST)
+ id 4BBvBk6Pvvz9sRf; Thu, 23 Jul 2020 11:00:14 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=gibson.dropbear.id.au; s=201602; t=1595466014;
- bh=tr7gQrN42u5aEHaqrxncV5QaQ2nEQSjtEEwFVJkNzAo=;
+ bh=/dGgJclc9RTkcxSGPVohP34vadU4jFuxm92lYW2hUIQ=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=D4BEZOPLe5WPvlQqRD22k1IHcutUcFSpDgl/8p0znAMxDe4Ml169YJVlfRkZqOqW3
- u+llE1hg1RUKpX9gojNfwSYVd9kgpxcGTI72rcEXHKsCkS3Q0qNU79a5EBYYH2qgxw
- 0uKvEqls3EmGVm143t2eyCMvfQx2Dh5oSOX2SG+k=
-Date: Thu, 23 Jul 2020 10:55:49 +1000
+ b=YiKCuN8sQG8+6edKLVlPmEt/SDXTmVwADMu8O6hqsc28OWcqLoal8FMqBQlM3hy7o
+ F8Rffg5pnr7hiLN+0aqILejml97YWzeXxk7D54QEDMxpU2ScegFerj9Ud5cBkZ91lA
+ 5ZkPWAGVfguk9B4rmKSo1Hngti/HORT1vQZ0YeLI=
+Date: Thu, 23 Jul 2020 10:57:36 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Subject: Re: [PATCH v2 2/9] target/arm: Move setting of CPU halted state to
- generic code
-Message-ID: <20200723005549.GH5513@umbus.fritz.box>
+Subject: Re: [PATCH v2 6/9] sparc/sun4m: Use start-powered-off CPUState
+ property
+Message-ID: <20200723005736.GK5513@umbus.fritz.box>
 References: <20200722035016.469075-1-bauerman@linux.ibm.com>
- <20200722035016.469075-3-bauerman@linux.ibm.com>
+ <20200722035016.469075-7-bauerman@linux.ibm.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="uJrvpPjGB3z5kYrA"
+ protocol="application/pgp-signature"; boundary="Cy+5HEalSgyXkpVS"
 Content-Disposition: inline
-In-Reply-To: <20200722035016.469075-3-bauerman@linux.ibm.com>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+In-Reply-To: <20200722035016.469075-7-bauerman@linux.ibm.com>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
  helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/22 20:52:06
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -9
 X-Spam_score: -1.0
 X-Spam_bar: -
@@ -108,56 +108,52 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BLVhvA/R5vYA
+X-TUID: lK+fRYZoEzav
 
 
---uJrvpPjGB3z5kYrA
+--Cy+5HEalSgyXkpVS
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jul 22, 2020 at 12:50:09AM -0300, Thiago Jung Bauermann wrote:
-> This change is in a separate patch because it's not so obvious that it
-> won't cause a regression.
+On Wed, Jul 22, 2020 at 12:50:13AM -0300, Thiago Jung Bauermann wrote:
+> Instead of setting CPUState::halted to 1 in secondary_cpu_reset(), use the
+> start-powered-off property which makes cpu_common_reset() initialize it
+> to 1 in common code.
 >=20
-> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
 > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 
 Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/core/cpu.c    | 2 +-
->  target/arm/cpu.c | 1 -
->  2 files changed, 1 insertion(+), 2 deletions(-)
+>  hw/sparc/sun4m.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 >=20
 > NB: I was only able to test that this patch builds. I wasn't able to
-> run it on an ARM machine. I did on a ppc64le pseries KVM guest.
+> run it.
 >=20
-> diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-> index 594441a150..71bb7859f1 100644
-> --- a/hw/core/cpu.c
-> +++ b/hw/core/cpu.c
-> @@ -258,7 +258,7 @@ static void cpu_common_reset(DeviceState *dev)
+> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+> index 9be930415f..766e79bb5e 100644
+> --- a/hw/sparc/sun4m.c
+> +++ b/hw/sparc/sun4m.c
+> @@ -233,7 +233,6 @@ static void secondary_cpu_reset(void *opaque)
+>      CPUState *cs =3D CPU(cpu);
+> =20
+>      cpu_reset(cs);
+> -    cs->halted =3D 1;
+>  }
+> =20
+>  static void cpu_halt_signal(void *opaque, int irq, int level)
+> @@ -833,6 +832,8 @@ static void cpu_devinit(const char *cpu_type, unsigne=
+d int id,
+>          qemu_register_reset(secondary_cpu_reset, cpu);
+>          cs =3D CPU(cpu);
+>          cs->halted =3D 1;
+> +        object_property_set_bool(OBJECT(cs), "start-powered-off", true,
+> +                                 &error_abort);
 >      }
-> =20
->      cpu->interrupt_request =3D 0;
-> -    cpu->halted =3D 0;
-> +    cpu->halted =3D cpu->start_powered_off;
->      cpu->mem_io_pc =3D 0;
->      cpu->icount_extra =3D 0;
->      atomic_set(&cpu->icount_decr_ptr->u32, 0);
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index ec65c7653f..b6c65e4df6 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -175,7 +175,6 @@ static void arm_cpu_reset(DeviceState *dev)
->      env->vfp.xregs[ARM_VFP_MVFR2] =3D cpu->isar.mvfr2;
-> =20
->      cpu->power_state =3D s->start_powered_off ? PSCI_OFF : PSCI_ON;
-> -    s->halted =3D s->start_powered_off;
-> =20
->      if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
->          env->iwmmxt.cregs[ARM_IWMMXT_wCID] =3D 0x69051000 | 'Q';
+>      *cpu_irqs =3D qemu_allocate_irqs(cpu_set_irq, cpu, MAX_PILS);
+>      env->prom_addr =3D prom_addr;
 >=20
 
 --=20
@@ -166,24 +162,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---uJrvpPjGB3z5kYrA
+--Cy+5HEalSgyXkpVS
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8Y4BUACgkQbDjKyiDZ
-s5K3iRAApLHWr2t2WVJoDwgdjlDiUu5LgaiieQH4R6cxApqBnNYE/0oMTnsMSK9g
-LmBG1CcRcjs751PUdZTPECu8HeIk1Jjlsw6m3TZLR8k2JFYlbNjOPFJs4GqZDU74
-KQVuUp0/wIjCppuYNcpjL/i2vnRBiErKvOXy00Z3M9I3Vuux5kWjV9gpMDRuQlCG
-97KgCVmO7YR7eYDX7T4jR1DSNCz1gMeuD5AbiPPR3vk76z9wwoQ48y5+vnLA5TXk
-+iOhHsgtDtlJVVoVCCnmJuoowRzBZDuCiM8BZeGmj0smkn8+h3CcujoX5t7gE0G5
-PdaLewLS3FsZMR89LgsTVGj41EeKpN/ITUxwkdPN9pBxDWhb/pXlzQIAfJadotzZ
-AvaenDHeue4e66oLHe54XGdyTqQBq6tzAq4/Zi3qnALIjRZxC7l2Y2STuB+wkWEX
-JU6sAfme+YLZpIW3FvhvB6jbK+jwDDrRmZ3Z3j5JNy3eJeaz5XCHdZerUVAp/7F5
-SGXRmh+bjX4yb2DDI0/Q57qwaOJWUgp+53mL6758qQ9mktGL0Eekq6i1oeh5xnGZ
-LMLBY2nuftk4QCnhL5IKhxZGmcGHHqWvU/w6MjbYPjd+AG0pwqBfw3JD6R8vDVRv
-SkQQCxZRV1+APEPRjoHBH+BfdP6xagns2j/lostFo/iOVK4lD7I=
-=n6yt
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8Y4IAACgkQbDjKyiDZ
+s5L62g/8C3RVn5hXu4Ubj7n3wjsL2HJXNRFYXkuPXXQFEQSQjV0bcx94ckyrvV9S
+NBYEallDQ8gm7MTI8OyBs7LTBpzyCdg5U4CBU+ybsM78kqrIghMOOnUvBBQip8tm
+ihUBhLSNV08xvUf/S0yjn5pkvmvfDjhZRNGPo9S9u+xY86FqK0Ipm436jAetXq0j
+VJccwALsdj5L3eaYrhKocyRal6VDRIoHAN0HcjClSg85y6Nx7ZJdl8uxNqKWxbgi
+jRmooWASAUUcJJfr+FmE3r+qkl2ZjWu7Tr3/3cPRb7qoXAsrQYMi1Z20W5CvVhRt
+kMcOtJRPW3k/3o5ChwUciZoHvU05bb5KOMGmrdaj4hs85HYrvhywO5m+nNH6DKb7
+Hy5YGwzzZJPtyEUc67n5hGkQqbllyAXw8fTDm18cxYohW60zx8T/kY912R4NRYBf
+bt0GzIYAHwSRE4niINxXdR70cYY4ufh3Cv9vmD29tQVk65EfuZQyPSuTTaCpqqe6
+s8sfCoI4wj6vTuBpeSWEUSEwlyD1A4sFPhKHxehLaMi9SsCgZmpCJcAvjQ2/d2Xi
+kJ199l7Ij18qXe3+lOu3ha4X4Bk8pwz0yW/DDoLuR8tqUvOdca/8CJGXEvk2FyAP
+uapmP3ednQaXA3lDfMX/Bf0Zx75NKmocTrt9RXpKBA+bTXO3FNM=
+=FTDb
 -----END PGP SIGNATURE-----
 
---uJrvpPjGB3z5kYrA--
+--Cy+5HEalSgyXkpVS--

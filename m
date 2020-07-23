@@ -1,103 +1,103 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1197317lfm;
-        Wed, 22 Jul 2020 17:39:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxtIo2cZ1nOQ7VYnkz98bqaodZbhyg5HPDEFWclYtW0C7pbQfhFI2SAjycU2Vr3iXnmSh26
-X-Received: by 2002:a25:68c8:: with SMTP id d191mr715681ybc.283.1595464766413;
-        Wed, 22 Jul 2020 17:39:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595464766; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1198590lfm;
+        Wed, 22 Jul 2020 17:41:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzPqwZzSuZmT+mi65ACOXjENUG2dlACc5wRxUv7I3YW3mH7M84IWEYIFSKCdB7Ot0K68S+4
+X-Received: by 2002:a25:d104:: with SMTP id i4mr3312135ybg.176.1595464902088;
+        Wed, 22 Jul 2020 17:41:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595464902; cv=none;
         d=google.com; s=arc-20160816;
-        b=JvOIct9NiQcTTpprqRKSFrhMNBKFfOCuh7w5Pa31k07lbcxfl7n2jmWDHwE9F/qw3e
-         Avs3P/DW5OcWpKwnk0P/OFVUqYr8BslUo/R7dpJ/7fuu0rqBy/CGb3JzbmQp9qfsFvBk
-         Dpa905MSBmo8Lde43E2dgYMoazmxjpFwgZzv2lzcCT8DZcGMiRMbs8CDsRlMRVuo7pHv
-         2tc2u40TZs4bay90Avik+ri2rrvCrM5U3XIqXXv79q3HXAsbA1BYA/M0LbKuPPoMrcNf
-         y9M3Wmj/ak0/QMDCaRepmr+lhAaOdCjOq682itpbRPSSBhafyC7wyxrr2G3nQv8E7NK6
-         dUsw==
+        b=StPSZEv4fdCTpiiLI7JbCMWuF10coeMYj9CAFXZ4oeLQ+SG5dAnJDCkoVCLUzFY5My
+         VL1BjDAWSdfcLvEX1mJTTzKFj32EGbuRlSFLxyNTqZYymHzBUXzUwSN6JF6O5HFQ475u
+         RscoNJeARG6vQrlGytP64HkaTk70/GI/Q5RnGN9IXBLZklKxJQzKHh+J7zKXcJpDbH0D
+         GcORa4lI5cjqIHh9uDtlmhqHL+TiUT2nDcBvyKOZAyDCEmdhTuTf2zjrpy0qd7haFudy
+         s4kmNVnVBP7z1XLT80BCbeNi+Hwhjsz5SWxveXDxi6YNyWaDR28/t6RCNp53p9bz1HIE
+         i6Iw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:in-reply-to:subject:to:from:user-agent
          :references;
-        bh=zEPS3bFh+zqMyqFMY+NHvGTB1eMze5hU1gQCgy1609E=;
-        b=xGSHb93yE9EG3OHa/g3Wo2ITO0/BxzVr6KSNfrowv+3guadnjD3LOELrx5G49252xp
-         9tIH28mn6xelUfvjLV/PDsA2u1EQR5sg7x9z8vtCZS2d/auVr1nzZVZOlaBOy0ypMRs9
-         CvfYV8v9OTywO1bN1FNpDABd8yKWcnonIvPcd6UUoRsJtrLAxPhvmltX6AVhhRyJPAZI
-         jAQjrMQh7jc9Xs1EpGMqasKmrl/zQ/Goae+Zbs1iky9bTinlhG4D0vNwaBSG5P7En7xl
-         5kRaN7mmjghckXzYbjRILgW0mpNMpdiS4RLwsbqc0r4GfoZjwS+mJklQ1zebMh8glO70
-         M0lg==
+        bh=+dW8N7cWP4pNCJx6aCoDaZ5jtATW52hqOU4Znslu6Ok=;
+        b=DKYO8GsaK8CC9MdHpOSCT8Pf5WLCkuUvplMSXGBWwV8Q8WGvKlR1Ww9YLsHYuDmT7Q
+         5ufScmewwq/duoXTGecTZ2Xy3A1AxMIJRdBRF+BptU/nsGB8RmiQJ5cfaEQ9ChEs+SD0
+         QMGGrxE73f5xMhiP0Km9934oFPyW5eVJLR8JbRKLSfmrGpih+n053Zm+pux0fLaKoHCh
+         LvOqba82epSzKeBcQL7Lo+SkWbqMKJ78QKzFgQQX6Jg9Pxhjkw4+Ey0tIgao97C8Z/GS
+         hsZ9zTbgAoc2O2MtMbivPNN6v9TLumFlRvXgKS/K/pLronh8sN9gQoHaGei3mw1eC82K
+         pqkQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u18si1252774ybd.357.2020.07.22.17.39.26
+        by mx.google.com with ESMTPS id 2si1159468ybn.417.2020.07.22.17.41.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jul 2020 17:39:26 -0700 (PDT)
+        Wed, 22 Jul 2020 17:41:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from localhost ([::1]:56266 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58940 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jyPGf-0005rF-Pq
-	for alex.bennee@linaro.org; Wed, 22 Jul 2020 20:39:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34274)
+	id 1jyPIp-000759-Rx
+	for alex.bennee@linaro.org; Wed, 22 Jul 2020 20:41:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34530)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bauerman@linux.ibm.com>)
- id 1jyPGX-0005qv-Dv; Wed, 22 Jul 2020 20:39:17 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:36178)
+ id 1jyPIV-00074V-Nl; Wed, 22 Jul 2020 20:41:19 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:32250
+ helo=mx0a-001b2d01.pphosted.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bauerman@linux.ibm.com>)
- id 1jyPGV-0004Xl-Gp; Wed, 22 Jul 2020 20:39:17 -0400
-Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
- 06N0WT4L027759; Wed, 22 Jul 2020 20:38:48 -0400
+ id 1jyPIU-0004vr-1K; Wed, 22 Jul 2020 20:41:19 -0400
+Received: from pps.filterd (m0098413.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 06N0VUXb060289; Wed, 22 Jul 2020 20:40:57 -0400
 Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com with ESMTP id 32e1vucrs4-1
+ by mx0b-001b2d01.pphosted.com with ESMTP id 32erjx4504-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 22 Jul 2020 20:38:48 -0400
-Received: from m0098410.ppops.net (m0098410.ppops.net [127.0.0.1])
- by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06N0WfPe028527;
- Wed, 22 Jul 2020 20:38:48 -0400
-Received: from ppma03wdc.us.ibm.com (ba.79.3fa9.ip4.static.sl-reverse.com
- [169.63.121.186])
- by mx0a-001b2d01.pphosted.com with ESMTP id 32e1vucrrv-1
+ Wed, 22 Jul 2020 20:40:57 -0400
+Received: from m0098413.ppops.net (m0098413.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06N0aQeu077235;
+ Wed, 22 Jul 2020 20:40:57 -0400
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 32erjx4500-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 22 Jul 2020 20:38:47 -0400
-Received: from pps.filterd (ppma03wdc.us.ibm.com [127.0.0.1])
- by ppma03wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06N0Z5GA018098;
- Thu, 23 Jul 2020 00:38:46 GMT
-Received: from b03cxnp08026.gho.boulder.ibm.com
- (b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
- by ppma03wdc.us.ibm.com with ESMTP id 32brq9g704-1
+ Wed, 22 Jul 2020 20:40:57 -0400
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06N0ZYgW004681;
+ Thu, 23 Jul 2020 00:40:56 GMT
+Received: from b03cxnp08027.gho.boulder.ibm.com
+ (b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
+ by ppma04wdc.us.ibm.com with ESMTP id 32brq9g6ew-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 23 Jul 2020 00:38:46 +0000
-Received: from b03ledav005.gho.boulder.ibm.com
- (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
- by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 06N0cgFb983598
+ Thu, 23 Jul 2020 00:40:56 +0000
+Received: from b03ledav006.gho.boulder.ibm.com
+ (b03ledav006.gho.boulder.ibm.com [9.17.130.237])
+ by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 06N0erKm27132452
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 23 Jul 2020 00:38:42 GMT
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id AB6FBBE054;
- Thu, 23 Jul 2020 00:38:45 +0000 (GMT)
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7972EBE053;
- Thu, 23 Jul 2020 00:38:41 +0000 (GMT)
+ Thu, 23 Jul 2020 00:40:53 GMT
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 54EDFC6059;
+ Thu, 23 Jul 2020 00:40:55 +0000 (GMT)
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 3B002C6055;
+ Thu, 23 Jul 2020 00:40:51 +0000 (GMT)
 Received: from morokweng.localdomain (unknown [9.211.93.190])
- by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTPS;
- Thu, 23 Jul 2020 00:38:41 +0000 (GMT)
+ by b03ledav006.gho.boulder.ibm.com (Postfix) with ESMTPS;
+ Thu, 23 Jul 2020 00:40:50 +0000 (GMT)
 References: <20200722035016.469075-1-bauerman@linux.ibm.com>
- <20200722035016.469075-2-bauerman@linux.ibm.com>
- <6ca8915c-094e-1880-0e66-618eb354444d@redhat.com>
+ <20200722035016.469075-4-bauerman@linux.ibm.com>
+ <d0f25f95-039e-d150-9369-7a1334ff3e12@redhat.com>
 User-agent: mu4e 1.2.0; emacs 26.3
 From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: Re: [PATCH v2 1/9] target/arm: Move start-powered-off property to
- generic CPUState
-In-reply-to: <6ca8915c-094e-1880-0e66-618eb354444d@redhat.com>
-Date: Wed, 22 Jul 2020 21:38:36 -0300
-Message-ID: <87tuxzrroz.fsf@morokweng.localdomain>
+Subject: Re: [PATCH v2 3/9] ppc/spapr: Use start-powered-off CPUState property
+In-reply-to: <d0f25f95-039e-d150-9369-7a1334ff3e12@redhat.com>
+Date: Wed, 22 Jul 2020 21:40:47 -0300
+Message-ID: <87sgdjrrlc.fsf@morokweng.localdomain>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
@@ -106,15 +106,15 @@ X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
  definitions=2020-07-22_16:2020-07-22,
  2020-07-22 signatures=0
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0
- impostorscore=0 mlxscore=0 phishscore=0 priorityscore=1501 clxscore=1015
- lowpriorityscore=0 adultscore=0 bulkscore=0 suspectscore=0 spamscore=0
- mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
+ priorityscore=1501
+ clxscore=1015 bulkscore=0 impostorscore=0 adultscore=0 phishscore=0
+ malwarescore=0 suspectscore=0 mlxlogscore=999 spamscore=0 mlxscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2006250000 definitions=main-2007220151
-Received-SPF: pass client-ip=148.163.156.1;
+Received-SPF: pass client-ip=148.163.158.5;
  envelope-from=bauerman@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/22 20:39:13
-X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/22 18:08:00
+X-ACL-Warn: Detected OS   = Linux 3.x [generic]
 X-Spam_score_int: -35
 X-Spam_score: -3.6
 X-Spam_bar: ---
@@ -145,47 +145,101 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yP8BVvJ8gEka
+X-TUID: cYzcFkWupyqV
 
 
 Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-> Hi Thiago,
->
 > On 7/22/20 5:50 AM, Thiago Jung Bauermann wrote:
->> There are other platforms which also have CPUs that start powered off, so
->> generalize the start-powered-off property so that it can be used by them.
->>
->> Note that ARMv7MState also has a property of the same name but this patch
->> doesn't change it because that class isn't a subclass of CPUState so it
->> wouldn't be a trivial change.
->>
->> This change should not cause any change in behavior.
->>
+>> PowerPC sPAPR CPUs start in the halted state, and spapr_reset_vcpu()
+>> attempts to implement this by setting CPUState::halted to 1. But that's =
+too
+>> late for the case of hotplugged CPUs in a machine configure with 2 or mo=
+re
+>> threads per core.
+>>=20
+>> By then, other parts of QEMU have already caused the vCPU to run in an
+>> unitialized state a couple of times. For example, ppc_cpu_reset() calls
+>> ppc_tlb_invalidate_all(), which ends up calling async_run_on_cpu(). This
+>> kicks the new vCPU while it has CPUState::halted =3D 0, causing QEMU to =
+issue
+>> a KVM_RUN ioctl on the new vCPU before the guest is able to make the
+>> start-cpu RTAS call to initialize its register state.
+>>=20
+>> This problem doesn't seem to cause visible issues for regular guests, but
+>> on a secure guest running under the Ultravisor it does. The Ultravisor
+>> relies on being able to snoop on the start-cpu RTAS call to map vCPUs to
+>> guests, and this issue causes it to see a stray vCPU that doesn't belong=
+ to
+>> any guest.
+>>=20
+>> Fix by setting the start-powered-off CPUState property in
+>> spapr_create_vcpu(), which makes cpu_common_reset() initialize
+>> CPUState::halted to 1 at an earlier moment.
+>>=20
 >> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
 >> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
->
-> As I participated in reviewing your v1, I'd have appreciated
-> being Cc'ed for v2.
-
-I'm sorry about this. I fixed the Cc list for the next version.
-
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
-
-Thank you very much for your prompt review, and suggestions.
-
-I will post a new version addressing your comments shortly.
-
 >> ---
->>  exec.c                | 1 +
->>  include/hw/core/cpu.h | 4 ++++
->>  target/arm/cpu.c      | 5 ++---
->>  target/arm/cpu.h      | 3 ---
->>  target/arm/kvm32.c    | 2 +-
->>  target/arm/kvm64.c    | 2 +-
->>  6 files changed, 9 insertions(+), 8 deletions(-)
+>>  hw/ppc/spapr_cpu_core.c | 12 +++++++-----
+>>  1 file changed, 7 insertions(+), 5 deletions(-)
+>>=20
+>> NB: Tested on ppc64le pseries KVM guest with two threads per core.=20
+>> Hot-plugging additional cores doesn't cause the bug described above
+>> anymore.
+>>=20
+>> diff --git a/hw/ppc/spapr_cpu_core.c b/hw/ppc/spapr_cpu_core.c
+>> index c4f47dcc04..09feeb5f8f 100644
+>> --- a/hw/ppc/spapr_cpu_core.c
+>> +++ b/hw/ppc/spapr_cpu_core.c
+>> @@ -36,11 +36,6 @@ static void spapr_reset_vcpu(PowerPCCPU *cpu)
+>>=20=20
+>>      cpu_reset(cs);
+>>=20=20
+>> -    /* All CPUs start halted.  CPU0 is unhalted from the machine level
+>> -     * reset code and the rest are explicitly started up by the guest
+>> -     * using an RTAS call */
+>> -    cs->halted =3D 1;
+>> -
+>>      env->spr[SPR_HIOR] =3D 0;
+>>=20=20
+>>      lpcr =3D env->spr[SPR_LPCR];
+>> @@ -288,6 +283,13 @@ static PowerPCCPU *spapr_create_vcpu(SpaprCpuCore *=
+sc, int i, Error **errp)
+>>=20=20
+>>      cpu->machine_data =3D g_new0(SpaprCpuState, 1);
+>>=20=20
+>> +    /*
+>> +     * All CPUs start halted. CPU0 is unhalted from the machine level r=
+eset code
+>> +     * and the rest are explicitly started up by the guest using an RTA=
+S call.
+>> +     */
+>> +    object_property_set_bool(OBJECT(cs), "start-powered-off", true,
+>> +                             &error_abort);
+>
+> Since here object_new() is used, it is simpler to set the field before
+> the object is realized, similarly to cs->cpu_index:
+>
+> -- >8 --
+> @@ -275,6 +275,11 @@ static PowerPCCPU *spapr_create_vcpu(SpaprCpuCore
+> *sc, int i, Error **errp)
+>      cs =3D CPU(obj);
+>      cpu =3D POWERPC_CPU(obj);
+>      cs->cpu_index =3D cc->core_id + i;
+> +    /*
+> +     * All CPUs start halted. CPU0 is unhalted from the machine level
+> reset code
+> +     * and the rest are explicitly started up by the guest using an
+> RTAS call.
+> +     */
+> +    cs->start_powered_off =3D true;
+>      spapr_set_vcpu_id(cpu, cs->cpu_index, &local_err);
+>      if (local_err) {
+>          goto err;
+> ---
 
+Good point. I adopted your suggestion.
 
---
+--=20
 Thiago Jung Bauermann
 IBM Linux Technology Center

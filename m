@@ -1,48 +1,48 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1288892lfm;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1288893lfm;
         Wed, 22 Jul 2020 20:08:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzb1X7wNFM7IuCRESnYxEUpRyl7MWyhj594uChnfv0XNqF/Ebt+tjHZrbuFYAn+bU1/mLeR
-X-Received: by 2002:a17:90a:bf09:: with SMTP id c9mr2156598pjs.221.1595473725396;
+X-Google-Smtp-Source: ABdhPJx3s8R7wCBzs7+uQmtBfsM27mqbezTwUC03XTfvoWWwgYRgF3EtDbp8OTyhjPijBtOa7TB1
+X-Received: by 2002:a63:d605:: with SMTP id q5mr2572412pgg.344.1595473725398;
         Wed, 22 Jul 2020 20:08:45 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1595473725; cv=none;
         d=google.com; s=arc-20160816;
-        b=wXCgRT/g5MdAEuUCpHdeH9KKgwSu0vnCGarRWlPYnYjXo4Dx+kQtJTGdqfNHZdIty3
-         6husiK6Y4RPL9OcASsMCpE6xMWbLe9miGTD23CsZU0kBUkMxE2igefCLZLGpWZky/7pd
-         /dlLmYMIZ9CKjb3PWvkAGegScGyT8VYt3vTQlr+oJBq5wvxny37Gh/blaE2Fc/oO8ybx
-         f4JjJzQq2PZ+KP654DRpJ0MAPhR1s3L1tF2MNO9ZBYbdCPDu071ZdV5vho8kI+VSi/H5
-         buV6EKU1iXJPWaA3QiTpIJ3ykVeWVhImLO2pb8c1ucCtQxKboMfn/Wi5QAsXW3MyZ0vh
-         IjFg==
+        b=ZPYCarT8CYwzeEIjDlnWOrJHYotHmI4XYEwa47Od7q+KZcnL5CI+KJVdXdqIjZAI6G
+         f087QIUjv0aW6O+fTRvb8XTx8QbfI8pJL+t6xy2QO5jBsccCPqHZ5Ui13NdOji1DrhEj
+         rNNSApJ0zs5W0EVs91HfogptMux0c9HyDn4kayiHlkpkfbtjgjH5sE8QU/o2Y9Abx0Mj
+         8joU8piQX5nJGQppwux2/D0b8ohPfMatzuyXLLKE+jy0dZZVm6cOUAX0aXWUx14jiA1m
+         HbVWUPpckfVEhtwTUerbckX9C48LPWsfGmFGIkl0CMjHYfB07LZIMEFe8spazheMj1zi
+         oluA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=Rq789xZprQiOSsxChPVuDV+JaEb4OQjyrr2t2J2n4Pk=;
-        b=ZsgS5ZCGh8lvENZmn4PgKQeM5d3AU0oywZT/omDr2B7vvaIuAr3amjlNvxCw3we0xi
-         ohXKciuNW9lvhp242nQpZqDcLGtl7fgjRagABjhPIEFZdK7Z23OAbr6NNHX3KHCB7YFF
-         d6H5kXIHfmeortyIoDCqfXFM1RKQhxrK92N1y3/YhKy3W6koUfRMheaKImHbZj72OW+7
-         H+7BBMIBZBfj6yvhjxVd73Dr2g9KS20S4T51LfALGTgMeSUerfXPZ1iNGqDtfcMkSCxr
-         nDvsHGpT8o0o4NSdNMIQLsjxNvDi3JBjyCh+QtjS4XFd/MTH85ZTcKev5a6fLArEdR1v
-         SA2Q==
+        bh=EXPVFq5KzJITtqCv3sA5R9HQ/q9sssRR43+O/sCtjn8=;
+        b=QdkIUbiXqkRpqqPBbBe9OuWTN2+6tMMCriU/FRdBAXyRmeCelY0eqCQLcYunto1RNC
+         lqTbaCCz/FJVM//1V85XjJN/ArcBslZsSb4M8pJzSPZoTS6+iOLQTQlz0rSlD29WPVnz
+         xlJ1jYNjNbM6/OuX3Di9YQz/bbaUxSDOrVahD6qvdwnWiw2EIfVxSbcxTJ2lRk0JhjXo
+         aNqsAVc00uX4gpM7GuyfFnIlidLXPUjBU+by8NBhwdvvuVRIjzlTKzburBeHAsLZgy+6
+         8PTXKGvIbp96l90JjXHYISECZTQN/SzWf9KSAh4ZX9yjtBN87NsRZzWlhb0DSCx1HuG9
+         Dw9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=izDzb1gD;
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=UdCDtxZh;
        spf=pass (google.com: domain of dgibson@ozlabs.org designates 203.11.71.1 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
 Return-Path: <dgibson@ozlabs.org>
-Received: from ozlabs.org (bilbo.ozlabs.org. [203.11.71.1])
-        by mx.google.com with ESMTPS id p67si1053382pjp.77.2020.07.22.20.08.44
+Received: from ozlabs.org (ozlabs.org. [203.11.71.1])
+        by mx.google.com with ESMTPS id ds18si1011777pjb.76.2020.07.22.20.08.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 22 Jul 2020 20:08:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 203.11.71.1 as permitted sender) client-ip=203.11.71.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=izDzb1gD;
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=UdCDtxZh;
        spf=pass (google.com: domain of dgibson@ozlabs.org designates 203.11.71.1 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 4BBy2v5bhVz9sRk; Thu, 23 Jul 2020 13:08:39 +1000 (AEST)
+	id 4BBy2v3Cymz9sQt; Thu, 23 Jul 2020 13:08:39 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1595473719;
-	bh=NSGEymlD5gk/g8XY4FPk2eLjlQXVwxFnFpnfdbXwPsk=;
+	bh=uwSl+GwHYfKDJff/le3cud8w1j8l6dZTEu3QU+04iyQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=izDzb1gDnm5JJkgkhLtpfjm3OLioMgy+3A9pa3pg3ZG/SHKorBUxkeW3lD+kSvoYo
-	 un0gZQOVra8VBFBhvj+tQBhaDcgz8CtFHLnDigy9C/YI9nsLf5b9MfrnQzggB/vVcJ
-	 GFVLVQb+kGDhmvsxV7Fn4P/7Ghc0SHATHYOUCunw=
-Date: Thu, 23 Jul 2020 13:08:06 +1000
+	b=UdCDtxZhLNrZIGKVQL3oQdpafcuVVRfo4NsRo9i0ECAh1tkEF6GO/A+jQtg1dptaw
+	 g7CuZjnd70ozyKINr4aCfIbndHi4PNHZIxFkDiuNDdHzcTywgI2kVs4VjxArIIAyhr
+	 59cv/sotWYO1O2I2NijyUQZnLVvrJQU/kqAIGc1k=
+Date: Thu, 23 Jul 2020 13:06:25 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
@@ -62,72 +62,67 @@ Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
 	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
 	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
 	Greg Kurz <groug@kaod.org>
-Subject: Re: [PATCH v3 6/8] sparc/sun4m: Remove main_cpu_reset()
-Message-ID: <20200723030806.GQ5513@umbus.fritz.box>
+Subject: Re: [PATCH v3 2/8] target/arm: Move setting of CPU halted state to
+ generic code
+Message-ID: <20200723030625.GM5513@umbus.fritz.box>
 References: <20200723025657.644724-1-bauerman@linux.ibm.com>
- <20200723025657.644724-7-bauerman@linux.ibm.com>
+ <20200723025657.644724-3-bauerman@linux.ibm.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="XG0jWBK27HhJN4nS"
+	protocol="application/pgp-signature"; boundary="egxrhndXibJAPJ54"
 Content-Disposition: inline
-In-Reply-To: <20200723025657.644724-7-bauerman@linux.ibm.com>
-X-TUID: xWZ3dU4XSd0W
+In-Reply-To: <20200723025657.644724-3-bauerman@linux.ibm.com>
+X-TUID: 3Wl1UmR225dm
 
 
---XG0jWBK27HhJN4nS
+--egxrhndXibJAPJ54
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jul 22, 2020 at 11:56:55PM -0300, Thiago Jung Bauermann wrote:
-> We rely on cpu_common_reset() to set cs->halted to 0, so main_cpu_reset()
-> is pointless.
+On Wed, Jul 22, 2020 at 11:56:51PM -0300, Thiago Jung Bauermann wrote:
+> This change is in a separate patch because it's not so obvious that it
+> won't cause a regression.
 >=20
-> Suggested-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 
-Revieed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/sparc/sun4m.c | 13 +------------
->  1 file changed, 1 insertion(+), 12 deletions(-)
+>  hw/core/cpu.c    | 2 +-
+>  target/arm/cpu.c | 1 -
+>  2 files changed, 1 insertion(+), 2 deletions(-)
 >=20
-> NB: I was only able to test that this patch builds. I wasn't able to
-> run it.
+> NB: I wasn't able to run this patch on an ARM machine. I did run it on
+> a ppc64le pseries KVM guest.
 >=20
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index 9be930415f..f1d92df781 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -218,15 +218,6 @@ static void dummy_cpu_set_irq(void *opaque, int irq,=
- int level)
->  {
->  }
+> diff --git a/hw/core/cpu.c b/hw/core/cpu.c
+> index 594441a150..71bb7859f1 100644
+> --- a/hw/core/cpu.c
+> +++ b/hw/core/cpu.c
+> @@ -258,7 +258,7 @@ static void cpu_common_reset(DeviceState *dev)
+>      }
 > =20
-> -static void main_cpu_reset(void *opaque)
-> -{
-> -    SPARCCPU *cpu =3D opaque;
-> -    CPUState *cs =3D CPU(cpu);
-> -
-> -    cpu_reset(cs);
-> -    cs->halted =3D 0;
-> -}
-> -
->  static void secondary_cpu_reset(void *opaque)
->  {
->      SPARCCPU *cpu =3D opaque;
-> @@ -827,9 +818,7 @@ static void cpu_devinit(const char *cpu_type, unsigne=
-d int id,
->      env =3D &cpu->env;
+>      cpu->interrupt_request =3D 0;
+> -    cpu->halted =3D 0;
+> +    cpu->halted =3D cpu->start_powered_off;
+>      cpu->mem_io_pc =3D 0;
+>      cpu->icount_extra =3D 0;
+>      atomic_set(&cpu->icount_decr_ptr->u32, 0);
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index ec65c7653f..b6c65e4df6 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -175,7 +175,6 @@ static void arm_cpu_reset(DeviceState *dev)
+>      env->vfp.xregs[ARM_VFP_MVFR2] =3D cpu->isar.mvfr2;
 > =20
->      cpu_sparc_set_id(env, id);
-> -    if (id =3D=3D 0) {
-> -        qemu_register_reset(main_cpu_reset, cpu);
-> -    } else {
-> +    if (id !=3D 0) {
->          qemu_register_reset(secondary_cpu_reset, cpu);
->          cs =3D CPU(cpu);
->          cs->halted =3D 1;
+>      cpu->power_state =3D s->start_powered_off ? PSCI_OFF : PSCI_ON;
+> -    s->halted =3D s->start_powered_off;
+> =20
+>      if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
+>          env->iwmmxt.cregs[ARM_IWMMXT_wCID] =3D 0x69051000 | 'Q';
 >=20
 
 --=20
@@ -136,24 +131,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---XG0jWBK27HhJN4nS
+--egxrhndXibJAPJ54
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8Y/xYACgkQbDjKyiDZ
-s5LqkRAAtP6RrKQOrPdqCyervjeCAAFy40nwHcZaoo/OgYhZe7WGhhgCacb2e1iu
-upPSAMaHOSx0KkQta4iPKu6s/tyZrCOfk9s4ISeSuDRw8G6SM7OIAKaMliubyz0i
-rUGyGjGD+ZN0Pew+Uf/lCW5leWd4r18GSECwLUZHHNIOjiAPivqbR4U9DTG6DrNC
-8k6jmVUL5SgP2GIWZy0YvmQjCpJWnsZaTShwIp/IrvNF0LhuaJvinQPDrn9n4bhT
-ThGw+VJyHxuuX/XV4ifGUku1uzn7XF+k2dX4bjrdKAztP/w27Obr2JMOFaNiKMjk
-+jXjmv2lzG8pZKll045uJMLK0b2GdOFCIG2etUrG0EoOBzuthA/bSH5Sk7F40a54
-xvL/Zwwvb7raPtUpFDQ4APKzLDAPsjSOEo9U7Bf53Ee5OFEwH/jNKL+teXZrnLzO
-qNnOsgH5oELJbjzruX2eW81RJCt+cPguUsUmsaPMwb7yoqliSyeqrzZ2tdJrQa5S
-nrSKlTId6/8aDAxXuejHwRIeanLaULD3zZs9DkEAOzTncqtm4najtaMyQVXGZntZ
-QEhf/XHGFXvgUzMRgq+3S6sA8Cn+iZG2KXdXhxbhrQwBc7/tlRe5eFMOSlJpl+go
-iGhbFRvlS4UZ2RlAmt2iVUZQDtHKgC7AkHio0qI1eyrsRjx9Jh0=
-=M1UU
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8Y/rEACgkQbDjKyiDZ
+s5IIsA//eOFnOoHl1OZXOiItrQwlda93YeDHi/KpkGzKa3XXoeklYuNsHpaOLkzZ
+0Sw9Vem2BvsLTkcVfRFkNwSBX6sk2XGkM2d54NUgJO83q2UM40GPl2gqIDqxGUuJ
+9luaHBseZzwUJi7D4IHsWuzaMbPJP2iT1QSgAGYXwt9PdDCT+foOph6QEuwLSXHo
+nMI9llrpyRUr3SRyohYqRRm2eN8KoN9h2XAN5kEa9jELFOIN3DZdYRlp08lstHiY
+ZBbjHal2GNJeWaqXyO6sN6sC0epTL0/LF6cRFA7s1+PqzYQVKCrRq+YZ/2Mvk+CN
+jbvtlHN/vLDRDmPYinhYrHGtcj2leyPMYf8eYG1ghTt2CpXmzw1hG443lw98KtMz
+EVtRxmnP/E9ln3GX6ZbSOOdUOFNyj/o6GoPKf6ZTIY12sGP6VxGTrnOq83vYp+FN
+IzvOXbaagxJCNhR1SbSCBE3N0ifW9ayqWQcXDgJXNK2qqRiXbgi4qQwuOsg4T1vk
+iPbaW+YPBveXkw1ASMnyjZ90GXU4DJHf0ISUvm6rGunp7znDB/bBYbOBWc3WVbJZ
+iDmZ85ECoeqLRPs+XVaZJJCf+Tf2/qqfXy7x1GRkli73ndm2TyKZ7SyU7/LArO6K
+ZcTk8oGZ8WMHEbnoSH4vowIbgz69+PHKHYWjq1+TWIen/8OEgkI=
+=SfHI
 -----END PGP SIGNATURE-----
 
---XG0jWBK27HhJN4nS--
+--egxrhndXibJAPJ54--

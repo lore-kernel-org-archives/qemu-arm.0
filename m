@@ -1,76 +1,76 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1210558lfm;
-        Wed, 22 Jul 2020 18:00:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzHdo3DclRPdtLDvdvM2g7PyjzueQMhiFOxkkeUfOoHNQEANpoXqF8FL281jVC3NPziQuPU
-X-Received: by 2002:a25:d94d:: with SMTP id q74mr3473565ybg.387.1595466057526;
-        Wed, 22 Jul 2020 18:00:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595466057; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1212100lfm;
+        Wed, 22 Jul 2020 18:02:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzgm6kD+5vHENtX+TEgWrPkGHLn3iaX+QZxzr3HyT3d86btX968w3+wbXwxRHOL0mQNjAGt
+X-Received: by 2002:a25:b207:: with SMTP id i7mr3375214ybj.358.1595466176804;
+        Wed, 22 Jul 2020 18:02:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595466176; cv=none;
         d=google.com; s=arc-20160816;
-        b=HtJSAlufcO1z/VN/yoie569g7msU99lel89/rzXSIk/AZNCe+Ie4l2CIr+OyUVwgUJ
-         H16Bh2txYuo3nF5UVUAtOeAu3Jh+SzG4kUqmPpDixI79j2Dbf1J9hYr1rd98pKpGDMmF
-         r1G3IXUZ3BahOPnPlVoDbZkZJqK6mWye8pEhLHKj+hlFTFXqA910jKTny8pmnokMurWW
-         uyXAOe3+D8iaGndIzSuh5XPsdivYG25WC80Ldur8VQsz8Ec0jWB4PcYJ2D5NzL1IqUP0
-         e3TzGO/NllcnxMjMruQPVzTbRev/SsaJN0CBalkd5UefqKDkeUom6Vu1YZ4beQbBP60f
-         8fJA==
+        b=wfwhyisQsJURHGemnRLsxo9LFcsM/GVEPj79JI7mwInP6Ndubi8kkV2FXPJNHBtSur
+         yZN33HJ5UttPsX/LQhx5IRtSvRMmliXfKvUxvI6onCHijVdS5fP4sn+d6zEuwgoxGffz
+         6FVxwmm8kFZyCrXDk7D/WcSKkoj0UfMoiM2KwWN1v6XtBOvE9RXYJkus51X0kvz9BhEC
+         KyHRsV1YgX7lgDgr3HNeuREYkwEyUeoZJaHI/7djjdG0I2BcGIThPqrDmR3qOvx+yAmk
+         kGzAkUZ7vc1Msizuhl7NAmGu5Xf//pwePHJZddEF3ZCDWhbtbHwdnuuUpmoy1VFTsGmk
+         h16A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=10yNT2+tqEDh3CSTqRO8LuqAjExvRL0SxdhJq8+2yeg=;
-        b=tsSlGB+waF/j7HD+h6bxTGJ/rpGJMU3hnGRqPDaytzMi1fNEBGyeHg9oPL6P1j4AgZ
-         MDE+uOZyemcsxiDW2DXqtXSZQagHRt4fX6b703IjNt/RuyCtscgGiWRALGw4viDtcs7V
-         wZiazKL/ZT+Y11mkpVUuJEXNSuCvjfhJnu1CRpdU7PT+5MtHZFxx09ct15uU30l8anrL
-         Q7LoXIXqmwMeJxrKe3VrgVqmGKFXzqPrTQgfRdMKi1ZeO39t4Qji6XNweNPkzEKvdnmP
-         Y3sjU8/qQYaPu5cXedxfXzBhCu3hm0YqPqlrTs6fBGE0u0F8qyX7U7yqYzfoYzMjnp1M
-         ++rA==
+        bh=5oNqD7KWUjRk9MlTtFcMI4WZGns8GbnVGGRyW/L0p1c=;
+        b=GJn5+0EQDmTK0YCdemSmqmvZ60RG7DFb4cjrWfjcMf/kGH46Nz8S3WQDz9OwsLuqiE
+         U10goXKGZJ/jWG5Xxdv/sgv0NhvRsfRfzR8F9pGfbMfCT4UCT8mCnVYx2Y6fYebINOP7
+         28pA+cTtsCn0HI26d4KgW7RgjXmqMItwQ41eIxyeWQnjvto1BZTZ84MES371fPZ7biJL
+         Pc7u0IrKcAFd5AnKHFYHnilmsryYvfeQD+P+vq1SDARkoFLWgnNrOp/XuFUfW3M8mSL9
+         POUNMOh26vRiYZ4KbrHqo9RcHh05rvw4Ao467Y1VAuXXwNCMqFgmNudp1l/2d4v5Cl8G
+         vjAQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=YiKCuN8s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=COxYNQYX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b2si1307341ybe.441.2020.07.22.18.00.57
+        by mx.google.com with ESMTPS id d197si1287053ybc.194.2020.07.22.18.02.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jul 2020 18:00:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 22 Jul 2020 18:02:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=YiKCuN8s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53156 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=COxYNQYX;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jyPbU-0000hR-TI
-	for alex.bennee@linaro.org; Wed, 22 Jul 2020 21:00:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38408)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1jyPdQ-00030M-3T
+	for alex.bennee@linaro.org; Wed, 22 Jul 2020 21:02:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38406)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1jyPaw-0008Qd-CT; Wed, 22 Jul 2020 21:00:22 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:42731)
+ id 1jyPaw-0008QZ-A3; Wed, 22 Jul 2020 21:00:22 -0400
+Received: from ozlabs.org ([2401:3900:2:1::2]:51885)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1jyPau-0007HN-7b; Wed, 22 Jul 2020 21:00:22 -0400
+ id 1jyPat-0007HG-IE; Wed, 22 Jul 2020 21:00:21 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 4BBvBk6Pvvz9sRf; Thu, 23 Jul 2020 11:00:14 +1000 (AEST)
+ id 4BBvBk3vcHz9sRW; Thu, 23 Jul 2020 11:00:14 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=gibson.dropbear.id.au; s=201602; t=1595466014;
- bh=/dGgJclc9RTkcxSGPVohP34vadU4jFuxm92lYW2hUIQ=;
+ bh=zuHmYIrYBOFbbEdGZavubGZBe9b7544HmjAR9Vay8nE=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=YiKCuN8sQG8+6edKLVlPmEt/SDXTmVwADMu8O6hqsc28OWcqLoal8FMqBQlM3hy7o
- F8Rffg5pnr7hiLN+0aqILejml97YWzeXxk7D54QEDMxpU2ScegFerj9Ud5cBkZ91lA
- 5ZkPWAGVfguk9B4rmKSo1Hngti/HORT1vQZ0YeLI=
-Date: Thu, 23 Jul 2020 10:57:36 +1000
+ b=COxYNQYXizt7d/ghFohWDTEMAtZFbercQGaF1uC11VXRPuOSGTWZ5jA14FFZOP0ul
+ bVy+AqxGb8KSAxsApdfplVMXn2UX79tPC8Ao23nNayAmXcUqTg5Ss4Mlmkoeqibe1A
+ HbNzEDbGkuAb6YQwP2bDd46st+7SfnxTihjffhBw=
+Date: Thu, 23 Jul 2020 10:55:30 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Subject: Re: [PATCH v2 6/9] sparc/sun4m: Use start-powered-off CPUState
- property
-Message-ID: <20200723005736.GK5513@umbus.fritz.box>
+Subject: Re: [PATCH v2 1/9] target/arm: Move start-powered-off property to
+ generic CPUState
+Message-ID: <20200723005530.GG5513@umbus.fritz.box>
 References: <20200722035016.469075-1-bauerman@linux.ibm.com>
- <20200722035016.469075-7-bauerman@linux.ibm.com>
+ <20200722035016.469075-2-bauerman@linux.ibm.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="Cy+5HEalSgyXkpVS"
+ protocol="application/pgp-signature"; boundary="MrRUTeZlqqNo1jQ9"
 Content-Disposition: inline
-In-Reply-To: <20200722035016.469075-7-bauerman@linux.ibm.com>
+In-Reply-To: <20200722035016.469075-2-bauerman@linux.ibm.com>
 Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
  helo=ozlabs.org
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
@@ -83,77 +83,156 @@ X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
  Cornelia Huck <cohuck@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
  Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lK+fRYZoEzav
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: I88CymMCxbzi
 
 
---Cy+5HEalSgyXkpVS
+--MrRUTeZlqqNo1jQ9
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jul 22, 2020 at 12:50:13AM -0300, Thiago Jung Bauermann wrote:
-> Instead of setting CPUState::halted to 1 in secondary_cpu_reset(), use the
-> start-powered-off property which makes cpu_common_reset() initialize it
-> to 1 in common code.
+On Wed, Jul 22, 2020 at 12:50:08AM -0300, Thiago Jung Bauermann wrote:
+> There are other platforms which also have CPUs that start powered off, so
+> generalize the start-powered-off property so that it can be used by them.
 >=20
+> Note that ARMv7MState also has a property of the same name but this patch
+> doesn't change it because that class isn't a subclass of CPUState so it
+> wouldn't be a trivial change.
+>=20
+> This change should not cause any change in behavior.
+>=20
+> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
 > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 
 Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/sparc/sun4m.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  exec.c                | 1 +
+>  include/hw/core/cpu.h | 4 ++++
+>  target/arm/cpu.c      | 5 ++---
+>  target/arm/cpu.h      | 3 ---
+>  target/arm/kvm32.c    | 2 +-
+>  target/arm/kvm64.c    | 2 +-
+>  6 files changed, 9 insertions(+), 8 deletions(-)
 >=20
 > NB: I was only able to test that this patch builds. I wasn't able to
 > run it.
 >=20
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index 9be930415f..766e79bb5e 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -233,7 +233,6 @@ static void secondary_cpu_reset(void *opaque)
->      CPUState *cs =3D CPU(cpu);
+> diff --git a/exec.c b/exec.c
+> index 6f381f98e2..82e82fab09 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -899,6 +899,7 @@ Property cpu_common_props[] =3D {
+>      DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
+>                       MemoryRegion *),
+>  #endif
+> +    DEFINE_PROP_BOOL("start-powered-off", CPUState, start_powered_off, f=
+alse),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
 > =20
->      cpu_reset(cs);
-> -    cs->halted =3D 1;
->  }
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 8f145733ce..9fc2696db5 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -374,6 +374,10 @@ struct CPUState {
+>      bool created;
+>      bool stop;
+>      bool stopped;
+> +
+> +    /* Should CPU start in powered-off state? */
+> +    bool start_powered_off;
+> +
+>      bool unplug;
+>      bool crash_occurred;
+>      bool exit_request;
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 111579554f..ec65c7653f 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -174,8 +174,8 @@ static void arm_cpu_reset(DeviceState *dev)
+>      env->vfp.xregs[ARM_VFP_MVFR1] =3D cpu->isar.mvfr1;
+>      env->vfp.xregs[ARM_VFP_MVFR2] =3D cpu->isar.mvfr2;
 > =20
->  static void cpu_halt_signal(void *opaque, int irq, int level)
-> @@ -833,6 +832,8 @@ static void cpu_devinit(const char *cpu_type, unsigne=
-d int id,
->          qemu_register_reset(secondary_cpu_reset, cpu);
->          cs =3D CPU(cpu);
->          cs->halted =3D 1;
-> +        object_property_set_bool(OBJECT(cs), "start-powered-off", true,
-> +                                 &error_abort);
+> -    cpu->power_state =3D cpu->start_powered_off ? PSCI_OFF : PSCI_ON;
+> -    s->halted =3D cpu->start_powered_off;
+> +    cpu->power_state =3D s->start_powered_off ? PSCI_OFF : PSCI_ON;
+> +    s->halted =3D s->start_powered_off;
+> =20
+>      if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
+>          env->iwmmxt.cregs[ARM_IWMMXT_wCID] =3D 0x69051000 | 'Q';
+> @@ -2182,7 +2182,6 @@ static const ARMCPUInfo arm_cpus[] =3D {
+>  };
+> =20
+>  static Property arm_cpu_properties[] =3D {
+> -    DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, fal=
+se),
+>      DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
+>      DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
+>      DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 9e8ed423ea..a925d26996 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -810,9 +810,6 @@ struct ARMCPU {
+>       */
+>      uint32_t psci_version;
+> =20
+> -    /* Should CPU start in PSCI powered-off state? */
+> -    bool start_powered_off;
+> -
+>      /* Current power state, access guarded by BQL */
+>      ARMPSCIState power_state;
+> =20
+> diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+> index 0af46b41c8..1f2b8f8b7a 100644
+> --- a/target/arm/kvm32.c
+> +++ b/target/arm/kvm32.c
+> @@ -218,7 +218,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+> =20
+>      /* Determine init features for this CPU */
+>      memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+> -    if (cpu->start_powered_off) {
+> +    if (cs->start_powered_off) {
+>          cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_POWER_OFF;
 >      }
->      *cpu_irqs =3D qemu_allocate_irqs(cpu_set_irq, cpu, MAX_PILS);
->      env->prom_addr =3D prom_addr;
+>      if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 1169237905..f8a6d905fb 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -775,7 +775,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+> =20
+>      /* Determine init features for this CPU */
+>      memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+> -    if (cpu->start_powered_off) {
+> +    if (cs->start_powered_off) {
+>          cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_POWER_OFF;
+>      }
+>      if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
 >=20
 
 --=20
@@ -162,24 +241,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---Cy+5HEalSgyXkpVS
+--MrRUTeZlqqNo1jQ9
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8Y4IAACgkQbDjKyiDZ
-s5L62g/8C3RVn5hXu4Ubj7n3wjsL2HJXNRFYXkuPXXQFEQSQjV0bcx94ckyrvV9S
-NBYEallDQ8gm7MTI8OyBs7LTBpzyCdg5U4CBU+ybsM78kqrIghMOOnUvBBQip8tm
-ihUBhLSNV08xvUf/S0yjn5pkvmvfDjhZRNGPo9S9u+xY86FqK0Ipm436jAetXq0j
-VJccwALsdj5L3eaYrhKocyRal6VDRIoHAN0HcjClSg85y6Nx7ZJdl8uxNqKWxbgi
-jRmooWASAUUcJJfr+FmE3r+qkl2ZjWu7Tr3/3cPRb7qoXAsrQYMi1Z20W5CvVhRt
-kMcOtJRPW3k/3o5ChwUciZoHvU05bb5KOMGmrdaj4hs85HYrvhywO5m+nNH6DKb7
-Hy5YGwzzZJPtyEUc67n5hGkQqbllyAXw8fTDm18cxYohW60zx8T/kY912R4NRYBf
-bt0GzIYAHwSRE4niINxXdR70cYY4ufh3Cv9vmD29tQVk65EfuZQyPSuTTaCpqqe6
-s8sfCoI4wj6vTuBpeSWEUSEwlyD1A4sFPhKHxehLaMi9SsCgZmpCJcAvjQ2/d2Xi
-kJ199l7Ij18qXe3+lOu3ha4X4Bk8pwz0yW/DDoLuR8tqUvOdca/8CJGXEvk2FyAP
-uapmP3ednQaXA3lDfMX/Bf0Zx75NKmocTrt9RXpKBA+bTXO3FNM=
-=FTDb
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8Y4AIACgkQbDjKyiDZ
+s5KG/xAAheuxIOm/147keYG58h1DJMAKRtgfLlgArGcPgMoxiCc3pyUwgiCzwZJJ
+Vb+M5t9WYdTed/X7ptevwriWMqOCwyzDk/uBj2two3fXiDt8TLcprYBs21YY0HAS
+1Jwk/Vnk9uq89tIdlZ7JRjSJk9DxUakY/gBOKsnTPSX7trVaQu89yy4uliX3AXun
+gCL2ugoGechlQhXfV8KcvQ+haCuMZ+tpIcYitPkHH2QnkRP3zP+Ttg5cG1aYkLIF
+NKRWxxr4KANeyVAC9gkniPyOzWiKhUeuxUPkEdeWk3oJAakGVBD+nVOD3DH/t9jp
+L8dOH2Aw6eweBIIoCe90Utq8FVLQG3CjvMN33xUSWtoo1rtLEY1GM9KMZSKTQ758
+VPkGyiONjzunGUbT0L9dl8wD3Fwg0Y/7yGmbSDTVZdJsg7/DsQ8AnZ6Ho+v+Drgz
+gh7vm1em3bKMeVXLBIWuWh3AxYGKCd3JPqRhYefHzSQ86brwbuBVUpLIQdHrQo32
+lPJCGi3inUWelVvhZOJXRWyKgifzr6QD1mYjIpKbp2HvTalbZIokMgFAJSa9uLlB
+aMD2lIcnxcGvsfFGAthbm8rUMG1WAFVhBXvtXJpV+NvSN5ndFZd1yp9O46ES3Ef2
+0DYn8kuw3JEtpA/ykCv6MMcMqTped01hTUn7Xv04xiTk/w8F+Xo=
+=9IsF
 -----END PGP SIGNATURE-----
 
---Cy+5HEalSgyXkpVS--
+--MrRUTeZlqqNo1jQ9--

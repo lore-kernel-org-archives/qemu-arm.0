@@ -1,48 +1,48 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1288887lfm;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1288889lfm;
         Wed, 22 Jul 2020 20:08:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwo/m63tiW8ghzFz8IuruERQMSJXDvqrmXPthHFNcNImuJEFya5bSDhCm2wJcJZW4vBVDkI
-X-Received: by 2002:a17:902:8204:: with SMTP id x4mr2271193pln.16.1595473724865;
+X-Google-Smtp-Source: ABdhPJxW74OtcvXz1Xzjr5rptP5y9TlUnfkzLCnILVQe+KdF+C2rAQqPQ+R1i2WsS0cqZDkJjHJt
+X-Received: by 2002:a62:2546:: with SMTP id l67mr2455816pfl.154.1595473724977;
         Wed, 22 Jul 2020 20:08:44 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1595473724; cv=none;
         d=google.com; s=arc-20160816;
-        b=Dt2JmIQVn17tEO3PPprK8dbi+2KAMoK9bozhOrLk0HkTAwX0IfgYPJf9hEFQZmZblD
-         yqGHSmYpabhKPnmqLGaKxZb4PwavJYOXm8pHsxi6dX+ZgTKi22ZRoROLhwV5lzTOWHQ5
-         gDFWC8VR3fpECn4LeSc4clhM8SicaMuh5xsqdfNvCeodUjeujuAHjyZcb6tqXgXM/dkw
-         mJOq2SQCljPvaGiBiEfnt9bgjTJ+HY6P3QjnOOvKX5Z53VuUg0Pb5C73OM27Po8R+1WT
-         WrfkwKDqLTYFfWkb7auDn05HPSFgPbul1fobjuuMJhAlIvEpLGRynXrgJhYLUa2Iv+bY
-         DHqw==
+        b=LMLfcSqMEV43qJnGBWx2wlzkulvyQWkSCRdvJI1WBIG43xlVtScwOnOD55Ch5C273x
+         gL2qH8bKT+0zNhTBkbGJTL78q0QuD+GdVa+7Z5veO9zTy8/6HcNxoKAF0EWwLf60cC0h
+         GKI/CVIUrt4es/0DzJ7Q9fi4QEgPneoppQBVMs4i2jeHvKXyreMlv0cXCu3zF9c6xeks
+         qm6IRgcxtrd++R+wZKcusGkyw81qJpBmhN4UwKk5siWtHdGi854puHkQTewth4xTQkr/
+         /W8JTXgjinsa8Xai+9dJd9vi0KO+Bk+DY757rSM2uPe1kR5m/I/pE550gGUX4Ze3J+43
+         L1CA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=in-reply-to:content-disposition:mime-version:references:message-id
          :subject:cc:to:from:date:dkim-signature;
-        bh=qFCpLj+ip4JcE8sJCh4MbwPbtKvRVm8CCCKG8plaw+I=;
-        b=IBNLfku4sgHC8aBtD4Vl/sGM52/KD7CIIuIFVRhv/WZrOvJE9zOLG3DzDylItxQBGZ
-         WVfFpBpU6r/mIhb+/SJo7WsOgMU9igXwOjVNc1iu5/ug4Wl8vcYarz9kPUptsMO6SfwY
-         +LRp6iRp5K1HRN3cDk93b2suSgZVtHadHH6XWP2R3Q057iTOe/cLMX4fpwBzSwRfphcm
-         JzhcE4POrvYMYWoFQ6j5UG6j4B2rVCuwq7GPOw1SkyPKNquF+i+FTESQsmOYAsCgPv66
-         Ar8oVdrXivw2tmOZnUXgwcAZfxdj9j0hQshkPnBNWFIqxUn/7GD+wg5NL+/TmZ1HZbNy
-         dXOg==
+        bh=KHaDw0Z1d6A/+AjQGMxxZQI/R/7W/XRwnrfdYVJ1WmE=;
+        b=yuAxrRxydZXSpzirGsW4VM2ZgrqoIAwRArY3MVf8am7AG4Cs5FGqxVC9wJSKEWYCPy
+         HcRdFCtdU59XwjTZNxd0lnZH/uyUilHwBkzKbowbhV939yxBdJnUHdKpjMEB8OjhOtJo
+         IGLJE/11XACHApHqIJyPfHwgXA+UlvgnWuDJalOIiP7+naDjz4WKs+oPP4IxIS2gyqrI
+         2R3ZVVt8Pgts0PgPj0kooRqds1bwpoJGuWZpCoOlAmia9oeiSJ4YApTNf3pc81JkALSq
+         cVW0+cK1+xVnp4GoWiny1iIGkCD9TwbZfFQXxnh7saAIKa0+8qnPCvEnNMtcDKyclQXZ
+         CYdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=gXyYB4f4;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 203.11.71.1 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b="VNvTh/VV";
+       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
 Return-Path: <dgibson@ozlabs.org>
-Received: from ozlabs.org (bilbo.ozlabs.org. [203.11.71.1])
-        by mx.google.com with ESMTPS id z1si899081pgc.206.2020.07.22.20.08.44
+Received: from ozlabs.org (bilbo.ozlabs.org. [2401:3900:2:1::2])
+        by mx.google.com with ESMTPS id w21si877989pgc.565.2020.07.22.20.08.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
         Wed, 22 Jul 2020 20:08:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 203.11.71.1 as permitted sender) client-ip=203.11.71.1;
+Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=gXyYB4f4;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 203.11.71.1 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b="VNvTh/VV";
+       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
 Received: by ozlabs.org (Postfix, from userid 1007)
-	id 4BBy2v4wbGz9sSJ; Thu, 23 Jul 2020 13:08:39 +1000 (AEST)
+	id 4BBy2v2LQDz9sRW; Thu, 23 Jul 2020 13:08:39 +1000 (AEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=gibson.dropbear.id.au; s=201602; t=1595473719;
-	bh=SuFKnJtCX3Fir48Plm6JLHASs5M1Y7sRHGO+Nub+nCk=;
+	bh=XXBf9GvdJtl/hxVFX9jO+2Y4JyS21BIXHuwyM7dd19Q=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=gXyYB4f4zZemW/JvVg618Yfl0Vh9m40E4hpkjwLLN7Ze+vJWjHrID6hY8srmQBcfI
-	 pq03WecoTTmpqSgCGRJ7iX55AjwXmaLOa662feRF6iCeUPuuDxlgCsvXS7OXdplKtF
-	 j57YtXZ6fsKr4N6Li9yL9FWTpzIsdnm5lCRV/bzU=
-Date: Thu, 23 Jul 2020 13:06:51 +1000
+	b=VNvTh/VVboKLCLrPxn2yZhX/WYD8mDM6KlYx9q/FWPf4Ep0UXDtck1gzsd+EX/C5k
+	 BI2wse9Fgl40ipZOM5HZ2jUJ4S8mwoM4f9DCvlf98vUOf4IfxY5D/Sfd9tsUFozHBu
+	 q4MZa/4j+BK3JX5mCwoffkSGqoMGIXrDzTTSJbSo=
+Date: Thu, 23 Jul 2020 13:06:09 +1000
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
@@ -62,94 +62,144 @@ Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
 	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
 	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
 	Greg Kurz <groug@kaod.org>
-Subject: Re: [PATCH v3 3/8] ppc/spapr: Use start-powered-off CPUState property
-Message-ID: <20200723030651.GN5513@umbus.fritz.box>
+Subject: Re: [PATCH v3 1/8] target/arm: Move start-powered-off property to
+ generic CPUState
+Message-ID: <20200723030609.GL5513@umbus.fritz.box>
 References: <20200723025657.644724-1-bauerman@linux.ibm.com>
- <20200723025657.644724-4-bauerman@linux.ibm.com>
+ <20200723025657.644724-2-bauerman@linux.ibm.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="WeDu0lr7bteb/II5"
+	protocol="application/pgp-signature"; boundary="vTUhhhdwRI43FzeR"
 Content-Disposition: inline
-In-Reply-To: <20200723025657.644724-4-bauerman@linux.ibm.com>
-X-TUID: AH/HjnqHdevm
+In-Reply-To: <20200723025657.644724-2-bauerman@linux.ibm.com>
+X-TUID: K5Ho8eBPijml
 
 
---WeDu0lr7bteb/II5
-Content-Type: text/plain; charset=us-ascii
+--vTUhhhdwRI43FzeR
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Jul 22, 2020 at 11:56:52PM -0300, Thiago Jung Bauermann wrote:
-65;6003;1c> PowerPC sPAPR CPUs start in the halted state, and spapr_reset_v=
-cpu()
-> attempts to implement this by setting CPUState::halted to 1. But that's t=
-oo
-> late for the case of hotplugged CPUs in a machine configure with 2 or more
-> threads per core.
+On Wed, Jul 22, 2020 at 11:56:50PM -0300, Thiago Jung Bauermann wrote:
+> There are other platforms which also have CPUs that start powered off, so
+> generalize the start-powered-off property so that it can be used by them.
 >=20
-> By then, other parts of QEMU have already caused the vCPU to run in an
-> unitialized state a couple of times. For example, ppc_cpu_reset() calls
-> ppc_tlb_invalidate_all(), which ends up calling async_run_on_cpu(). This
-> kicks the new vCPU while it has CPUState::halted =3D 0, causing QEMU to i=
-ssue
-> a KVM_RUN ioctl on the new vCPU before the guest is able to make the
-> start-cpu RTAS call to initialize its register state.
+> Note that ARMv7MState also has a property of the same name but this patch
+> doesn't change it because that class isn't a subclass of CPUState so it
+> wouldn't be a trivial change.
 >=20
-> This problem doesn't seem to cause visible issues for regular guests, but
-> on a secure guest running under the Ultravisor it does. The Ultravisor
-> relies on being able to snoop on the start-cpu RTAS call to map vCPUs to
-> guests, and this issue causes it to see a stray vCPU that doesn't belong =
-to
-> any guest.
->=20
-> Fix by setting the start-powered-off CPUState property in
-> spapr_create_vcpu(), which makes cpu_common_reset() initialize
-> CPUState::halted to 1 at an earlier moment.
+> This change should not cause any change in behavior.
 >=20
 > Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
 > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 
-Acked-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/ppc/spapr_cpu_core.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+>  exec.c                | 1 +
+>  include/hw/core/cpu.h | 4 ++++
+>  target/arm/cpu.c      | 5 ++---
+>  target/arm/cpu.h      | 3 ---
+>  target/arm/kvm32.c    | 2 +-
+>  target/arm/kvm64.c    | 2 +-
+>  6 files changed, 9 insertions(+), 8 deletions(-)
 >=20
-> NB: Tested on ppc64le pseries KVM guest with two threads per core.=20
-> Hot-plugging additional cores doesn't cause the bug described above
-> anymore.
+> NB: I was only able to test that this patch builds. I wasn't able to
+> run it.
 >=20
-> diff --git a/hw/ppc/spapr_cpu_core.c b/hw/ppc/spapr_cpu_core.c
-> index c4f47dcc04..2125fdac34 100644
-> --- a/hw/ppc/spapr_cpu_core.c
-> +++ b/hw/ppc/spapr_cpu_core.c
-> @@ -36,11 +36,6 @@ static void spapr_reset_vcpu(PowerPCCPU *cpu)
+> diff --git a/exec.c b/exec.c
+> index 6f381f98e2..82e82fab09 100644
+> --- a/exec.c
+> +++ b/exec.c
+> @@ -899,6 +899,7 @@ Property cpu_common_props[] =3D {
+>      DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
+>                       MemoryRegion *),
+>  #endif
+> +    DEFINE_PROP_BOOL("start-powered-off", CPUState, start_powered_off, f=
+alse),
+>      DEFINE_PROP_END_OF_LIST(),
+>  };
 > =20
->      cpu_reset(cs);
+> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> index 8f145733ce..9fc2696db5 100644
+> --- a/include/hw/core/cpu.h
+> +++ b/include/hw/core/cpu.h
+> @@ -374,6 +374,10 @@ struct CPUState {
+>      bool created;
+>      bool stop;
+>      bool stopped;
+> +
+> +    /* Should CPU start in powered-off state? */
+> +    bool start_powered_off;
+> +
+>      bool unplug;
+>      bool crash_occurred;
+>      bool exit_request;
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 111579554f..ec65c7653f 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -174,8 +174,8 @@ static void arm_cpu_reset(DeviceState *dev)
+>      env->vfp.xregs[ARM_VFP_MVFR1] =3D cpu->isar.mvfr1;
+>      env->vfp.xregs[ARM_VFP_MVFR2] =3D cpu->isar.mvfr2;
 > =20
-> -    /* All CPUs start halted.  CPU0 is unhalted from the machine level
-> -     * reset code and the rest are explicitly started up by the guest
-> -     * using an RTAS call */
-> -    cs->halted =3D 1;
+> -    cpu->power_state =3D cpu->start_powered_off ? PSCI_OFF : PSCI_ON;
+> -    s->halted =3D cpu->start_powered_off;
+> +    cpu->power_state =3D s->start_powered_off ? PSCI_OFF : PSCI_ON;
+> +    s->halted =3D s->start_powered_off;
+> =20
+>      if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
+>          env->iwmmxt.cregs[ARM_IWMMXT_wCID] =3D 0x69051000 | 'Q';
+> @@ -2182,7 +2182,6 @@ static const ARMCPUInfo arm_cpus[] =3D {
+>  };
+> =20
+>  static Property arm_cpu_properties[] =3D {
+> -    DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, fal=
+se),
+>      DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
+>      DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
+>      DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 9e8ed423ea..a925d26996 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -810,9 +810,6 @@ struct ARMCPU {
+>       */
+>      uint32_t psci_version;
+> =20
+> -    /* Should CPU start in PSCI powered-off state? */
+> -    bool start_powered_off;
 > -
->      env->spr[SPR_HIOR] =3D 0;
+>      /* Current power state, access guarded by BQL */
+>      ARMPSCIState power_state;
 > =20
->      lpcr =3D env->spr[SPR_LPCR];
-> @@ -274,6 +269,11 @@ static PowerPCCPU *spapr_create_vcpu(SpaprCpuCore *s=
-c, int i, Error **errp)
+> diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+> index 0af46b41c8..1f2b8f8b7a 100644
+> --- a/target/arm/kvm32.c
+> +++ b/target/arm/kvm32.c
+> @@ -218,7 +218,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
 > =20
->      cs =3D CPU(obj);
->      cpu =3D POWERPC_CPU(obj);
-> +    /*
-> +     * All CPUs start halted. CPU0 is unhalted from the machine level re=
-set code
-> +     * and the rest are explicitly started up by the guest using an RTAS=
- call.
-> +     */
-> +    cs->start_powered_off =3D true;
->      cs->cpu_index =3D cc->core_id + i;
->      spapr_set_vcpu_id(cpu, cs->cpu_index, &local_err);
->      if (local_err) {
+>      /* Determine init features for this CPU */
+>      memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+> -    if (cpu->start_powered_off) {
+> +    if (cs->start_powered_off) {
+>          cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_POWER_OFF;
+>      }
+>      if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 1169237905..f8a6d905fb 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -775,7 +775,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+> =20
+>      /* Determine init features for this CPU */
+>      memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+> -    if (cpu->start_powered_off) {
+> +    if (cs->start_powered_off) {
+>          cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_POWER_OFF;
+>      }
+>      if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
 >=20
 
 --=20
@@ -158,24 +208,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---WeDu0lr7bteb/II5
+--vTUhhhdwRI43FzeR
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8Y/ssACgkQbDjKyiDZ
-s5KYVxAAv7P27aed2Mohc1UK3Bum8vJaeFcPpfr/EPEfJb78dgyvscEPglAvIBal
-Ia2ElTiYxzROnRiD209HoBR432VeEELIvXtaO99yp/u0sF2QRBrNtMVcZ3DyUWr2
-MbTcD4BSR4Qq1GiCKBGvXtC6fGQv6R1vy3Z31eMqDdPXwnE67DjoiRuuXjQs+DzY
-J2v5BTMhBWcfMJyirzJq02OReKCSZwhRu15l77j/Wyc7LC9nYM/fZxYHxwKGVEL/
-D0w0YpBy7wwtioxKUhuqkeO6ONGc/tWrNTzzDTenfZHUyJ/EC2azYFcSj9y24SiI
-2NjUOsTTtvekOlD+4lW2mS2ZonkgIzYiTTa0PLPIZdJZ8P50ZEO3jbuFdmyPc7ur
-Mz4STuZQT/mPxFuuKU7RPQY04E++cSFIWjYhna3IqTK9K3trICGaC9OhrSQ3EUJp
-hBepwmoeA+Ik+xte4HR7/r+xRnVWME0hEuR/v4qhMiQ3FuK4j1mNBal9x47LTsUg
-r39CO8a0b6V/t3NKRT5CShsBDjQPikk2DX4wyMheRL697Tw4N3pkzI40Cpx0QZgP
-ludgUrzuZ+waEfujZCrPYHac7oRoSrUimV3K54hPoQE4xAAm3rDl97oBpKGHObqk
-2AhiTzBtdkoB1ALG9XLNixXU/gExcrfhxYw84SdfbUYd8zdCxBc=
-=H/Oe
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8Y/p4ACgkQbDjKyiDZ
+s5L65A//XhsDBZQC78Yse+Qdy8bJ5h86KbaxbOBf+A9kvORdxYRt8JIoy1mhh4y3
+NNjzrq5HDKx6YVwW9zLISGtrAT5JzqC4rO8XMsUnxW43FoG1nCErtH6Ml9cW9niw
+5Q/REX6DeDHNOdAMEO3ZMMzc2VOHHD2+GwUg7E1hEjkl8D5HqaLpKUBV5UVCwhgR
+/ZhNgqreHF7YU7fa+HgX/EXoRQ3vVubxmD/zR4mlaegJU+JxFtqGzHqa4BfmQyMJ
+Gx2U4BQvzAK2rNPmOFOQpuEE8X0Nyq4w/5W/V4ZPEhmptJVA9wwpDgNrjGJVp7y+
+6zHmpaoBNDUk2sBpXzUbr05keXxg7H3m6WruWcobyTIW7fyDE8zTy3kxXXQltS8K
+NJSZVGA0yRjwSDy4vMOcfys7hdTvrtD3osbOQh5+pkRHFGYwDsGW8ukSdiRzgHxC
+KQ9PQ4DZqPpa0pWA91sCY54E9LCKEWHxBsafoLsQ4ngXmaIASUj6x0pbYk16ushz
+IXXPEBsvE1pE04lDwaCX3SP3VZvenbYVtu/44CNgBT1EjO8OVnUlx9zU4A0BOqGu
+Tk0O1goMr3Ip7m5xY/HMT75dffpS0gH846+LqisoyA7xWAfmI7p/eoF/BRE/vpeN
+jPFzmznA5N8t2vWAhEXRBv32TMZqkHai6Ag5oUe8uEy62T250fk=
+=QrMU
 -----END PGP SIGNATURE-----
 
---WeDu0lr7bteb/II5--
+--vTUhhhdwRI43FzeR--

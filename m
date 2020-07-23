@@ -1,72 +1,72 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1281974lfm;
-        Wed, 22 Jul 2020 19:58:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy38jGYY8JSK6bVoPit7df3XMl71fzeLvbXT823eXiBSKzNh1OcApfmOJaLMzJERbeN/N48
-X-Received: by 2002:a25:3d87:: with SMTP id k129mr655495yba.356.1595473096774;
-        Wed, 22 Jul 2020 19:58:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595473096; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1282030lfm;
+        Wed, 22 Jul 2020 19:58:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz4B7E+YvcnLfzuRjQEzfnpzy4HweHwENLoyp4OhSsoh35bbqr4oMuiIEVRsgymlLf0YLBx
+X-Received: by 2002:a63:af01:: with SMTP id w1mr2455691pge.23.1595473101201;
+        Wed, 22 Jul 2020 19:58:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595473101; cv=none;
         d=google.com; s=arc-20160816;
-        b=UYrOqwk3Fj2OUW/QrpqKTOTYZOT0pv6ziwsxSy8jp+4dxic1WJTgjrFx+1aEeOaB2d
-         98BDvNTJ2bi+aLerB6xI2aB7wvWrcA/6EQ5+2zIc0bdGEUOQi43kC1Xbqy8TpCQdEEtq
-         XLP385JgMmvIGZmWhnXK9PcWpgkdvlCwqD7nILecXVZaBpPzA9m9wpm9SAZoOXFCmgfX
-         DtQlUuxov4TjUm5/skPu2bxsI6TNsVzeSESUYmXB1ymrfQc+rbrdFz8OJ6v1aHqQZzCm
-         owrIGqtGHNNusIbq1XI56zXjmwPVhDLnAhgfVxtXcUAH2laPoXDK51uAROAVK3DxjS4D
-         H74g==
+        b=mSZtnh2aC8aZr/arRMXVMI2cTMmfU2RlOMVuFIM6S2ulvIdqIYkv2ThOLrrW+Ti4pt
+         mdBI5voYB5ZpBweEOumOQLhaGLhblj2Sm5l1UhQxvJsGo2crtyPYjoWxBDHywfyJVgD3
+         HrToWL7vymsqj8xmTOriuqPK5dNWjqkwro5zAhkIyofUu3aCBtAt6F9JIroTpmoVKuve
+         f5IQ2/m4RbPcD1RY71blfP49RAXZkwryF04Q324Jh4hkT1MUASVeMiHBN5qjobuTUOBU
+         ClrTk8oKYa5nrhceKCRKRMquOtNmPowwEPh2YBEgUsxisfCOxuYsdGQacZLD6S+ublvs
+         3VhQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from;
-        bh=A96b293kqnPHFykOlIsxcYnGXrubEn+ozKf77EeYlO4=;
-        b=Tr9f6NOhi1uBiS52jsiWikpwP+NcB1MRowysUKt14jiqORljD8yxAWz1e3mLyb9uqA
-         8/pHr5OX4hMr6jcJltLM7z9vgyF8GvTorkN27nMhnT4UXURmJKlOvq2+AxX4guaWBTiE
-         BeS94aYzWNgb++8/uhZHv3UnZX6omcYqa7fgIY6TGlIiLd39AmwCri2N9brE2/4S3frI
-         JzCLr+oecBAP0U3jd9U7vfopfGWoli0kB2OLF5GHJJFW2Z2FW6x3PvykLY4rJbJ0f3VT
-         qg6c0YLKYErIGqhQ25NBR2FFFPDq1X2rUivmGXYjf3rS3dWvD+7sfRj+kympHXN6fSFA
-         YteQ==
+        bh=I/QshspLnRdWVLVGr1AaKZpZw3CK2uct3ZuCH9r2FNU=;
+        b=TKpTzPzU/hVEcB+hjMp6rKl+Mires5vDFNJAjvjoeUdWYfuSv0WMszSsaj2FmGvvy+
+         OrDPleD4Sljr8is0Bk3DZKM9LwmWzfcTcFc9UeZiLScEv0qD9kQI+yzWxNWF2Z//zeiC
+         7ysQoKOW1hykAWQqaR5EnVU5tiKQ4jmqAisP6BDOR/qdDWLTC5Oxm/QqodEi7rulb27A
+         XvDgjx6LSuJZKUhq7Wa87Q7T+BquOinkN+XiUHy2cOkkZHtKLGk6Lnq7DVdBFHhlEWlA
+         E3Ju3O82Et3IbUIMPwmvuHZW8BJ6D+xyRVln8MyDRnZsCZunAsWa12x1X6s8GpHP1inh
+         XncQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <bauerman@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id n4si1551756ybk.197.2020.07.22.19.58.16
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id p9si830884plq.27.2020.07.22.19.58.20
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 22 Jul 2020 19:58:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+        Wed, 22 Jul 2020 19:58:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 06N2ZWlZ144123;
-	Wed, 22 Jul 2020 22:57:53 -0400
+Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 06N2WFEj048962;
+	Wed, 22 Jul 2020 22:58:02 -0400
 Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 32e1vwfsk2-1
+	by mx0a-001b2d01.pphosted.com with ESMTP id 32ecpb5j07-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 22 Jul 2020 22:57:53 -0400
-Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
-	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06N2mfrs184668;
-	Wed, 22 Jul 2020 22:57:53 -0400
-Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com [169.47.144.27])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 32e1vwfsjr-1
+	Wed, 22 Jul 2020 22:58:02 -0400
+Received: from m0098393.ppops.net (m0098393.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06N2qUlL105138;
+	Wed, 22 Jul 2020 22:58:02 -0400
+Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com [169.63.214.131])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 32ecpb5hyw-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 22 Jul 2020 22:57:53 -0400
-Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
-	by ppma05wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06N2nYsX009798;
-	Thu, 23 Jul 2020 02:57:52 GMT
-Received: from b01cxnp22035.gho.pok.ibm.com (b01cxnp22035.gho.pok.ibm.com [9.57.198.25])
-	by ppma05wdc.us.ibm.com with ESMTP id 32brq910x7-1
+	Wed, 22 Jul 2020 22:58:01 -0400
+Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
+	by ppma01dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06N2oxeX016127;
+	Thu, 23 Jul 2020 02:58:00 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com [9.57.198.26])
+	by ppma01dal.us.ibm.com with ESMTP id 32brq939rt-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Thu, 23 Jul 2020 02:57:52 +0000
+	Thu, 23 Jul 2020 02:58:00 +0000
 Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com [9.57.199.111])
-	by b01cxnp22035.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 06N2vppB51314986
+	by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 06N2vx6811207650
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Thu, 23 Jul 2020 02:57:52 GMT
+	Thu, 23 Jul 2020 02:57:59 GMT
 Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id E2765AC05E;
-	Thu, 23 Jul 2020 02:57:51 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id BC5C8AC059;
+	Thu, 23 Jul 2020 02:57:59 +0000 (GMT)
 Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 1EEF2AC060;
-	Thu, 23 Jul 2020 02:57:45 +0000 (GMT)
+	by IMSVA (Postfix) with ESMTP id 7A235AC05F;
+	Thu, 23 Jul 2020 02:57:52 +0000 (GMT)
 Received: from morokweng.localdomain.com (unknown [9.211.93.190])
 	by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
-	Thu, 23 Jul 2020 02:57:44 +0000 (GMT)
+	Thu, 23 Jul 2020 02:57:52 +0000 (GMT)
 From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 To: qemu-ppc@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
@@ -88,9 +88,9 @@ Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
         =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
         Greg Kurz <groug@kaod.org>,
         Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Subject: [PATCH v3 4/8] ppc/e500: Use start-powered-off CPUState property
-Date: Wed, 22 Jul 2020 23:56:53 -0300
-Message-Id: <20200723025657.644724-5-bauerman@linux.ibm.com>
+Subject: [PATCH v3 5/8] mips/cps: Use start-powered-off CPUState property
+Date: Wed, 22 Jul 2020 23:56:54 -0300
+Message-Id: <20200723025657.644724-6-bauerman@linux.ibm.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200723025657.644724-1-bauerman@linux.ibm.com>
 References: <20200723025657.644724-1-bauerman@linux.ibm.com>
@@ -100,51 +100,47 @@ Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
  definitions=2020-07-22_17:2020-07-22,2020-07-22 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 phishscore=0
- spamscore=0 bulkscore=0 impostorscore=0 priorityscore=1501
- lowpriorityscore=0 mlxlogscore=999 malwarescore=0 clxscore=1015
- adultscore=0 suspectscore=1 classifier=spam adjust=0 reason=mlx
- scancount=1 engine=8.12.0-2006250000 definitions=main-2007230014
-X-TUID: 5ZIj67znqbKt
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 spamscore=0
+ impostorscore=0 clxscore=1015 suspectscore=1 phishscore=0 malwarescore=0
+ priorityscore=1501 adultscore=0 mlxlogscore=961 mlxscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2007230014
+X-TUID: l7DFBSylDcIO
 
-Instead of setting CPUState::halted to 1 in ppce500_cpu_reset_sec(), use
-the start-powered-off property which makes cpu_common_reset() initialize it
+Instead of setting CPUState::halted to 1 in main_cpu_reset(), use the
+start-powered-off property which makes cpu_common_reset() initialize it
 to 1 in common code.
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 ---
- hw/ppc/e500.c | 10 +++++++---
- 1 file changed, 7 insertions(+), 3 deletions(-)
+ hw/mips/cps.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 NB: I was only able to test that this patch builds. I wasn't able to
 run it.
 
-diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-index ab9884e315..dda71bc05d 100644
---- a/hw/ppc/e500.c
-+++ b/hw/ppc/e500.c
-@@ -704,9 +704,6 @@ static void ppce500_cpu_reset_sec(void *opaque)
+diff --git a/hw/mips/cps.c b/hw/mips/cps.c
+index 615e1a1ad2..d5b6c78019 100644
+--- a/hw/mips/cps.c
++++ b/hw/mips/cps.c
+@@ -52,9 +52,6 @@ static void main_cpu_reset(void *opaque)
+     CPUState *cs = CPU(cpu);
  
      cpu_reset(cs);
- 
--    /* Secondary CPU starts in halted state for now. Needs to change when
--       implementing non-kernel boot. */
+-
+-    /* All VPs are halted on reset. Leave powering up to CPC. */
 -    cs->halted = 1;
-     cs->exception_index = EXCP_HLT;
  }
  
-@@ -897,6 +894,13 @@ void ppce500_init(MachineState *machine)
-         } else {
-             /* Secondary CPUs */
-             qemu_register_reset(ppce500_cpu_reset_sec, cpu);
-+
-+            /*
-+             * Secondary CPU starts in halted state for now. Needs to change
-+             * when implementing non-kernel boot.
-+             */
-+            object_property_set_bool(OBJECT(cs), "start-powered-off", true,
-+                                     &error_abort);
+ static bool cpu_mips_itu_supported(CPUMIPSState *env)
+@@ -89,6 +86,9 @@ static void mips_cps_realize(DeviceState *dev, Error **errp)
+             env->itc_tag = mips_itu_get_tag_region(&s->itu);
+             env->itu = &s->itu;
          }
++        /* All VPs are halted on reset. Leave powering up to CPC. */
++        object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
++                                 &error_abort);
+         qemu_register_reset(main_cpu_reset, cpu);
      }
  

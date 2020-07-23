@@ -1,193 +1,182 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1212397lfm;
-        Wed, 22 Jul 2020 18:03:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwAqySFbo+Nk+Vi86sCqXxS4lxD3weLDRtf7Bead64ig15lSSud7zkuB8tKDubqKQPeOeq3
-X-Received: by 2002:a25:1f55:: with SMTP id f82mr3264183ybf.103.1595466201665;
-        Wed, 22 Jul 2020 18:03:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595466201; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1281771lfm;
+        Wed, 22 Jul 2020 19:57:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzlwG7HhPhqbmw1gAxt+fCI+xL9UzCiim+n7/f5dRueE5sgC5xfd8ZszhILCaKLb5HQQKTX
+X-Received: by 2002:a17:90a:348d:: with SMTP id p13mr2212446pjb.108.1595473072990;
+        Wed, 22 Jul 2020 19:57:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595473072; cv=none;
         d=google.com; s=arc-20160816;
-        b=pLjxpRqbLyPRn1fgFadZAW8uAotaPbF7nR01sCOKMCsUd/Z8JfHoGpKh8OH594395P
-         p2hmNRRm0myArRPoUBCah8Vljf/Pcm5uJHyqVZAYuGM9zDUkHm/Qn0dgmP/HC2satxcc
-         Zbt906RGstT7UzRKXRN6SDz/HDZN30MzvBNLsq3Tn1aE5O1ZMe5LCaksGIz30WR9uxPV
-         pKSE/HY4kyuAqaPIlEe9rfpTb+WXLOYCeK5hW7lDuJHJaC8pCgtnAT7N7182SxJnDOR2
-         4EUixV7H/Y2+6T1dO6cTkBqdUIh0kwO+65aGBfo3B0D5HaYoK1F4SsIK8A5zsAhGHmns
-         24vw==
+        b=CGzgKkrWiysgs4xK3p0n9F30cOmPisOfRj+ezdSwb+8quoflPUQq5ZQHYZaHq+8px9
+         cwlA1kfLUE2S4znq67X4Sr6xBIyA4PT156ioJu5h01KfBQ/keBvHEkNZoyL2eC8j0Flw
+         i2evDR23bPdiRS68THVRacUS24AcSS1smOgbXjbfaC/zl3eIKTNLeUWKK5T9md6SNniY
+         SRgNVVDibHD+jZR+ttaWVDjUkw8z9eIHcbtn5WVg/WQ80mAEWaWVBmU2DibXTYURJasu
+         nfhU6ddKU4KTjDEgZf+GR8xXIG2hBIUNlEVA5ELMhlG/ImjcgIsdsHRxcvFMsCryn2aj
+         si+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=p/5sIy4+G48rX88YCtxoTlXfwpY33neb7nniHb9pOpA=;
-        b=i5+3xud3uKRRA6suSNXWv7kI1obT3sefQ1uK03Xu456eZa9gvWd/1/9LMLxAmMaEPW
-         yEUDWjcBdZwH/RfybKyyZMx3Am/jFnnhCnecTX+ZoHmOWUqoFhs5ZwMGVP3lVtjNReyL
-         IrKSFt4ZeJdvc9g3S4pyzXbY94qIuHQCFdr9KYxcpk4a9J8BX44MyGS7fd9ikk9TyzZK
-         Ww8+sQerEmrTF7RORdCMYCNQceEvgLPwCuMek2856RqIaWTJ1+ECB2fOXYJqo3/G9jdQ
-         O4HmlOtEKkNc4L51CVocV8tn5HXik2RZmTU+9Rz49BdRFMlHUqjM5oJJUfq5GhZ15dIU
-         XRMA==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from;
+        bh=H0j/3DqYj/iBXAMUY5K5j2GqBpl8XeiEVbucgYH+9cM=;
+        b=R6Drxs8a9em6A9z/eJfkZWrI5uw01lAxhfLSpxzCkZm0q89aMvU43AnvJmYwnEzrGJ
+         uMzPuQahNu3/dUNMclcowpDqiddGs/9ZGmfDdHF1NVh+UiNOSLHnjG1NEaNjrUiFkKtL
+         GW8B7MP/I4ziiScqu6BXrMjwqlM4EFrx6AhpRgHTq0cwyVlv73tn70R86PyWKOAAStTi
+         UXNf8MlnQvrjDV2Z6Xpm7w0B8BXtuLzF+PZhkiZ0qQvVnwHcXfaF6iyYBDIMpaCTXIMD
+         0hS7qfyiqpWgK8QjtEgyvadg6ESiQVc+zkWYxa8sLGRyLWJu8a8wIpW/W6gn8DBsaq0W
+         CXcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=bBtJ7vdy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3si1845171ybt.216.2020.07.22.18.03.21
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jul 2020 18:03:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <bauerman@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id n8si881597pfj.84.2020.07.22.19.57.52
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 22 Jul 2020 19:57:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=bBtJ7vdy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33596 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jyPdp-0004Ex-2j
-	for alex.bennee@linaro.org; Wed, 22 Jul 2020 21:03:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38412)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1jyPaw-0008RO-QM; Wed, 22 Jul 2020 21:00:22 -0400
-Received: from ozlabs.org ([2401:3900:2:1::2]:36849)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1jyPau-0007HH-Hk; Wed, 22 Jul 2020 21:00:22 -0400
-Received: by ozlabs.org (Postfix, from userid 1007)
- id 4BBvBk4qCWz9sRR; Thu, 23 Jul 2020 11:00:14 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=gibson.dropbear.id.au; s=201602; t=1595466014;
- bh=Dj0Y0gkrxPHbTK/MI/TwCv7ZL7R9wEyOUsLsGzFq2Z4=;
- h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=bBtJ7vdyoRl3HDe/HBYdeIPU1tT0SpmAmthKh15FonsXjj03Yjd3C5+LH4Gep0c5j
- TWSD3GlK16FVF5aES+lEy3IZoS6smkDw9+K3C2Wf2nlkEpNzBMkk44hO3J9FIZ5tXi
- ZzE1/BuwmnEYWaS7MpZysIaHyUqzb/mt3Mu1hfyc=
-Date: Thu, 23 Jul 2020 10:56:30 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Subject: Re: [PATCH v2 4/9] ppc/e500: Use start-powered-off CPUState property
-Message-ID: <20200723005630.GI5513@umbus.fritz.box>
-References: <20200722035016.469075-1-bauerman@linux.ibm.com>
- <20200722035016.469075-5-bauerman@linux.ibm.com>
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 06N2ni5u007768;
+	Wed, 22 Jul 2020 22:57:24 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 32f23fr4yv-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 22 Jul 2020 22:57:24 -0400
+Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06N2qZY7018521;
+	Wed, 22 Jul 2020 22:57:24 -0400
+Received: from ppma03wdc.us.ibm.com (ba.79.3fa9.ip4.static.sl-reverse.com [169.63.121.186])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 32f23fr4yd-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 22 Jul 2020 22:57:24 -0400
+Received: from pps.filterd (ppma03wdc.us.ibm.com [127.0.0.1])
+	by ppma03wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06N2pGv5019365;
+	Thu, 23 Jul 2020 02:57:22 GMT
+Received: from b01cxnp23034.gho.pok.ibm.com (b01cxnp23034.gho.pok.ibm.com [9.57.198.29])
+	by ppma03wdc.us.ibm.com with ESMTP id 32brq9h2ye-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 23 Jul 2020 02:57:22 +0000
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com [9.57.199.111])
+	by b01cxnp23034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 06N2vLAO55837126
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 23 Jul 2020 02:57:21 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id D7AA1AC059;
+	Thu, 23 Jul 2020 02:57:21 +0000 (GMT)
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id B50C8AC05F;
+	Thu, 23 Jul 2020 02:57:14 +0000 (GMT)
+Received: from morokweng.localdomain.com (unknown [9.211.93.190])
+	by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
+	Thu, 23 Jul 2020 02:57:14 +0000 (GMT)
+From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+To: qemu-ppc@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Greg Kurz <groug@kaod.org>,
+        Thiago Jung Bauermann <bauerman@linux.ibm.com>
+Subject: [PATCH v3 0/8] Generalize start-powered-off property from ARM
+Date: Wed, 22 Jul 2020 23:56:49 -0300
+Message-Id: <20200723025657.644724-1-bauerman@linux.ibm.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="4BlIp4fARb6QCoOq"
-Content-Disposition: inline
-In-Reply-To: <20200722035016.469075-5-bauerman@linux.ibm.com>
-Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
- helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -9
-X-Spam_score: -1.0
-X-Spam_bar: -
-X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, David Hildenbrand <david@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gxMj5CRhvibM
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
+ definitions=2020-07-22_17:2020-07-22,2020-07-22 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 mlxlogscore=999
+ adultscore=0 lowpriorityscore=0 impostorscore=0 bulkscore=0 phishscore=0
+ priorityscore=1501 malwarescore=0 spamscore=0 clxscore=1015 suspectscore=1
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2007230018
+X-TUID: /+JGpeaDuD3z
 
+The ARM code has a start-powered-off property in ARMCPU, which is a
+subclass of CPUState. This property causes arm_cpu_reset() to set
+CPUState::halted to 1, signalling that the CPU should start in a halted
+state. Other architectures also have code which aim to achieve the same
+effect, but without using a property.
 
---4BlIp4fARb6QCoOq
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The ppc/spapr version has a bug where QEMU does a KVM_RUN on the vcpu
+before cs->halted is set to 1, causing the vcpu to run while it's still in
+an unitialized state (more details in patch 3).
 
-On Wed, Jul 22, 2020 at 12:50:11AM -0300, Thiago Jung Bauermann wrote:
-> Instead of setting CPUState::halted to 1 in ppce500_cpu_reset_sec(), use
-> the start-powered-off property which makes cpu_common_reset() initialize =
-it
-> to 1 in common code.
->=20
-> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+Peter Maydell mentioned the ARM start-powered-off property and
+Eduardo Habkost suggested making it generic, so this patch series does
+that, for all cases which I was able to find via grep in the code.
 
-Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+The only problem is that I was only able to test these changes on a ppc64le
+pseries KVM guest, so except for patches 2 and 3, all others are only
+build-tested. Also, my grasp of QOM lifecycle is basically non-existant so
+please be aware of that when reviewing this series.
 
-> ---
->  hw/ppc/e500.c | 10 +++++++---
->  1 file changed, 7 insertions(+), 3 deletions(-)
->=20
-> NB: I was only able to test that this patch builds. I wasn't able to
-> run it.
->=20
-> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
-> index ab9884e315..dda71bc05d 100644
-> --- a/hw/ppc/e500.c
-> +++ b/hw/ppc/e500.c
-> @@ -704,9 +704,6 @@ static void ppce500_cpu_reset_sec(void *opaque)
-> =20
->      cpu_reset(cs);
-> =20
-> -    /* Secondary CPU starts in halted state for now. Needs to change when
-> -       implementing non-kernel boot. */
-> -    cs->halted =3D 1;
->      cs->exception_index =3D EXCP_HLT;
->  }
-> =20
-> @@ -897,6 +894,13 @@ void ppce500_init(MachineState *machine)
->          } else {
->              /* Secondary CPUs */
->              qemu_register_reset(ppce500_cpu_reset_sec, cpu);
-> +
-> +            /*
-> +             * Secondary CPU starts in halted state for now. Needs to ch=
-ange
-> +             * when implementing non-kernel boot.
-> +             */
-> +            object_property_set_bool(OBJECT(cs), "start-powered-off", tr=
-ue,
-> +                                     &error_abort);
->          }
->      }
-> =20
->=20
+The last patch may be wrong, as pointed out by Eduardo, so I marked it as
+RFC. It may make sense to drop it.
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+Applies cleanly on yesterday's master.
 
---4BlIp4fARb6QCoOq
-Content-Type: application/pgp-signature; name="signature.asc"
+Changes since v2:
 
------BEGIN PGP SIGNATURE-----
+General:
+- Added Philippe's Reviewed-by to some of the patches.
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl8Y4D0ACgkQbDjKyiDZ
-s5Lf5w/+PoQjOoiGcvCl8nMUJvCDIB2G8Ft0xGjbAxMJf3IYkQaLAWiczhujLem7
-GYIXtu8WpgjGZj9u+tMEKkfch9L9OtLbmpvRXXxrcBovhXu8YQPoMcjePwbJijVd
-3fxHWC6g+Dc5GUJD3ugqHQP/ntpLjr5+vZ43I6NwOtuL71INn5R5jdHhP36zrCYq
-xQQnRQT3Sg+hoD/9kkffP1qCXm1siw64RwsELLbKCVYbLyI85ZUQJqS3nxiuXlDx
-vp8gMX3NLjDevvz4wkPMOp9xq68CN1sosiQXSzenLNND2f1lx0iC0/RM8WNIvssA
-DitHjO6UJMlqrwHg423ko1G+74VKy7r/3rC91scg0ldXKjceABIGz7RhHvaImLbH
-ar5PG4uTgN6HxjVUK97dgjcFflvfn055jKAoOWOhfJZDtfiSp+JWf79JxQzf1Wt3
-iQVs6NGBxkANwhMVu7ztzJBA3NzoCvpa2fJ0xyoBW49BvNFQqNCGZ9CXeEsD5sny
-r8CQGOhSUYuGs8bmVkQmGEyqRcbDwUPXotF2tUv1iAGZ7NENJsiR+cWaPVX3qxq7
-Iu4hPpIXeMSxvnjIC393yTtzRkDA3wI3d0gG6X2iXFU1qAS3IfAWz+cRAw2ZPyI6
-1/PTAvo9RRKO6T4CPJX2ZBg6hI9DlSXWUjsmGulppBQbTDvxK8g=
-=J82A
------END PGP SIGNATURE-----
+Patch "ppc/spapr: Use start-powered-off CPUState property"
+- Set the CPUState::start_powered_off variable directly rather than using
+  object_property_set_bool(). Suggested by Philippe.
 
---4BlIp4fARb6QCoOq--
+Patch "sparc/sun4m: Remove main_cpu_reset()"
+- New patch. Suggested by Philippe.
+
+Patch "sparc/sun4m: Use start-powered-off CPUState property"
+- Remove secondary_cpu_reset(). Suggested by Philippe.
+- Remove setting of `cs->halted = 1` from cpu_devinit(). Suggested by Philippe.
+
+Patch "Don't set CPUState::halted in cpu_devinit()"
+- Squashed into previous patch. Suggested by Philippe.
+
+Patch "sparc/sun4m: Use one cpu_reset() function for main and secondary CPUs"
+- Dropped.
+
+Patch "target/s390x: Use start-powered-off CPUState property"
+- Set the CPUState::start_powered_off variable directly rather than using
+  object_property_set_bool(). Suggested by Philippe.
+- Mention in the commit message Eduardo's observation that before this
+  patch, the code didn't set cs->halted on reset.
+
+Thiago Jung Bauermann (8):
+  target/arm: Move start-powered-off property to generic CPUState
+  target/arm: Move setting of CPU halted state to generic code
+  ppc/spapr: Use start-powered-off CPUState property
+  ppc/e500: Use start-powered-off CPUState property
+  mips/cps: Use start-powered-off CPUState property
+  sparc/sun4m: Remove main_cpu_reset()
+  sparc/sun4m: Use start-powered-off CPUState property
+  target/s390x: Use start-powered-off CPUState property
+
+ exec.c                  |  1 +
+ hw/core/cpu.c           |  2 +-
+ hw/mips/cps.c           |  6 +++---
+ hw/ppc/e500.c           | 10 +++++++---
+ hw/ppc/spapr_cpu_core.c | 10 +++++-----
+ hw/sparc/sun4m.c        | 28 ++--------------------------
+ include/hw/core/cpu.h   |  4 ++++
+ target/arm/cpu.c        |  4 +---
+ target/arm/cpu.h        |  3 ---
+ target/arm/kvm32.c      |  2 +-
+ target/arm/kvm64.c      |  2 +-
+ target/s390x/cpu.c      |  2 +-
+ 12 files changed, 27 insertions(+), 47 deletions(-)

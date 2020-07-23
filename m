@@ -1,117 +1,126 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp895497lfm;
-        Wed, 22 Jul 2020 10:23:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzEKGLqPJtwJKoveXI5QeiWUMxpT4fqVCWYsBzNn9BNm9nCE1LCVeZsy3eJ50Ya8UADmctK
-X-Received: by 2002:a25:31d7:: with SMTP id x206mr494226ybx.511.1595438595623;
-        Wed, 22 Jul 2020 10:23:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595438595; cv=none;
+Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp1197317lfm;
+        Wed, 22 Jul 2020 17:39:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxtIo2cZ1nOQ7VYnkz98bqaodZbhyg5HPDEFWclYtW0C7pbQfhFI2SAjycU2Vr3iXnmSh26
+X-Received: by 2002:a25:68c8:: with SMTP id d191mr715681ybc.283.1595464766413;
+        Wed, 22 Jul 2020 17:39:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595464766; cv=none;
         d=google.com; s=arc-20160816;
-        b=GvYnGPsDYXRF3QQF10BBkj/8icRIUypYYnN01g9NaR8WR6XMpOJb/9RbqIFSekV9SF
-         dQVwTg6yHxH5JmuVBTkYPRQ5tzl0eL4+w9lJo/8vKhriQQzBPx0g3NMiUuyboUgAiPLT
-         P0SYIR74Un7UwpR0CSut3bHkyLs8m2l7DiRMT539Htwt+uzazbQCHDKa8dC3VO7ek7ZH
-         t/bla3Uwv42Hoa3mXB9apcLwEjJ83PPTGV2UlbcAf1KE2ijq2AmaBzUUDM+V5ERv9Yni
-         KiEeplwf1ymHG4i07nA2PJt/iIkU9+JFb1oZSJqCPjButuc7+xz5fIJF+F6XaE3Xjtoo
-         5ITg==
+        b=JvOIct9NiQcTTpprqRKSFrhMNBKFfOCuh7w5Pa31k07lbcxfl7n2jmWDHwE9F/qw3e
+         Avs3P/DW5OcWpKwnk0P/OFVUqYr8BslUo/R7dpJ/7fuu0rqBy/CGb3JzbmQp9qfsFvBk
+         Dpa905MSBmo8Lde43E2dgYMoazmxjpFwgZzv2lzcCT8DZcGMiRMbs8CDsRlMRVuo7pHv
+         2tc2u40TZs4bay90Avik+ri2rrvCrM5U3XIqXXv79q3HXAsbA1BYA/M0LbKuPPoMrcNf
+         y9M3Wmj/ak0/QMDCaRepmr+lhAaOdCjOq682itpbRPSSBhafyC7wyxrr2G3nQv8E7NK6
+         dUsw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=DuEmvlOWDAVAsYQc5yD3tjnTofa9xCU5lhKJUT3u558=;
-        b=H4QweVE44zoVWrJNIkQS6Gezs2qlB/cxoYqP7x2Vg+XuhR6vZzCThifvDiyrWERZRG
-         fyjjgf98pGAO58DyIv1tKXiBywtjnwrPBma0dF/JV8NEGRDmzUJYYbUCI5RwsPoRMepV
-         jqnTKDgJcUCXIK1uL8hxM32FxXAIdpTNsg82T+aUn/YkgNnc74CNgbHBeCeWjhq7n8pH
-         nBMDX/T36/yeM6OmcucRAG4Higdc5BD2PvbwVcrPhEDlUZAn5qCWBOAl4mtT4E6lxy0I
-         QwzCVfS2mjmhDWmCWB7rrbU05ygTheAdUESy7/QPXIS2ve/dPHeTKru2ajmH9l+Ac8Jc
-         DZxQ==
+         :mime-version:message-id:date:in-reply-to:subject:to:from:user-agent
+         :references;
+        bh=zEPS3bFh+zqMyqFMY+NHvGTB1eMze5hU1gQCgy1609E=;
+        b=xGSHb93yE9EG3OHa/g3Wo2ITO0/BxzVr6KSNfrowv+3guadnjD3LOELrx5G49252xp
+         9tIH28mn6xelUfvjLV/PDsA2u1EQR5sg7x9z8vtCZS2d/auVr1nzZVZOlaBOy0ypMRs9
+         CvfYV8v9OTywO1bN1FNpDABd8yKWcnonIvPcd6UUoRsJtrLAxPhvmltX6AVhhRyJPAZI
+         jAQjrMQh7jc9Xs1EpGMqasKmrl/zQ/Goae+Zbs1iky9bTinlhG4D0vNwaBSG5P7En7xl
+         5kRaN7mmjghckXzYbjRILgW0mpNMpdiS4RLwsbqc0r4GfoZjwS+mJklQ1zebMh8glO70
+         M0lg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nv4NhSrM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o78si273071yba.97.2020.07.22.10.23.15
+        by mx.google.com with ESMTPS id u18si1252774ybd.357.2020.07.22.17.39.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 22 Jul 2020 10:23:15 -0700 (PDT)
+        Wed, 22 Jul 2020 17:39:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Nv4NhSrM;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:32946 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:56266 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jyISY-0007Ak-VB
-	for alex.bennee@linaro.org; Wed, 22 Jul 2020 13:23:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52580)
+	id 1jyPGf-0005rF-Pq
+	for alex.bennee@linaro.org; Wed, 22 Jul 2020 20:39:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34274)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jyISQ-00079k-4k; Wed, 22 Jul 2020 13:23:06 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:43096)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1jyISO-00066M-Jy; Wed, 22 Jul 2020 13:23:05 -0400
-Received: by mail-ej1-x641.google.com with SMTP id a21so3044296ejj.10;
- Wed, 22 Jul 2020 10:23:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=DuEmvlOWDAVAsYQc5yD3tjnTofa9xCU5lhKJUT3u558=;
- b=Nv4NhSrM7B+vcClhBnRfyM0jWYLBBO61upi0DJJBEgFm+Qo1fYtvUuVFZR2i4Ba6bk
- a0VhYx7GlqfRQ/y6QNTzzpe5pvsnKCz5Gd39XFQJ13S9pgtX6j9/Sk3u3YXpBypv0B5V
- 7aXW3dM53TFxeMdXjUoVfnZU92r5xsoCuZMkGyb6++qGoVb5GdpphJU6TrMxhXYzFWsP
- GhhuIHzWwgYQ2Mwvgb7nQxqa1exULeTbOmVsjf7/LY8OA49/MKaCJkhvvCNkXKRx9jpc
- L0E5RPxTQr+a0h7U/L9PpAjIZGAx+5Ovbyq6Dbny/7QUDg3mWYlu+6YwlW7g83Rug+XN
- uucA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=DuEmvlOWDAVAsYQc5yD3tjnTofa9xCU5lhKJUT3u558=;
- b=ig/dMTnDZj3rzT9+cotYpVjWBk7z+msHxkrRM/hp9ukNZspqXNhPczy8IIXlhL0kSL
- X4yUjHA7EiqYDOGgeFSnSGoCbes6yi4l4a/j3G5QC7QDqMm4SW60r3ta9SQxZwvbbBhx
- o0520FbKOIYfGCmh8dQJRHuW0JWOgeesIruWIoUwE7/CsqZoSr4S+PasFiFQjU7fEFfZ
- 4qTvTDSL6AdK/rGpNchl/BcBor8DvdektgeuGBqQyykkF/kBaOUMz+74V3RriaSUUQkO
- a0pLSrHemBqQJK297UAwaQ4Lbi2IcUH133KO3DCAS1ZfK2+TF2Xb8hgbTE55dYhIlX/G
- RvYw==
-X-Gm-Message-State: AOAM533VKYqiO5OT6cNtnN8u2jACNMDwwIziMT+oPazCru3008X8dNv7
- iWA//VZaIzHQtm1/Hhg206E=
-X-Received: by 2002:a17:906:1357:: with SMTP id
- x23mr654769ejb.148.1595438582644; 
- Wed, 22 Jul 2020 10:23:02 -0700 (PDT)
-Received: from [192.168.1.36] (138.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.138])
- by smtp.gmail.com with ESMTPSA id pw7sm176854ejb.94.2020.07.22.10.23.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 22 Jul 2020 10:23:01 -0700 (PDT)
-Subject: Re: [PATCH for-5.1] hw: Only compile the usb-dwc2 controller if it is
- really needed
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <20200722154719.10130-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <d77052d1-6203-d54a-0c36-edfafaa34922@amsat.org>
-Date: Wed, 22 Jul 2020 19:23:00 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <bauerman@linux.ibm.com>)
+ id 1jyPGX-0005qv-Dv; Wed, 22 Jul 2020 20:39:17 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:36178)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bauerman@linux.ibm.com>)
+ id 1jyPGV-0004Xl-Gp; Wed, 22 Jul 2020 20:39:17 -0400
+Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 06N0WT4L027759; Wed, 22 Jul 2020 20:38:48 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 32e1vucrs4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 22 Jul 2020 20:38:48 -0400
+Received: from m0098410.ppops.net (m0098410.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06N0WfPe028527;
+ Wed, 22 Jul 2020 20:38:48 -0400
+Received: from ppma03wdc.us.ibm.com (ba.79.3fa9.ip4.static.sl-reverse.com
+ [169.63.121.186])
+ by mx0a-001b2d01.pphosted.com with ESMTP id 32e1vucrrv-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 22 Jul 2020 20:38:47 -0400
+Received: from pps.filterd (ppma03wdc.us.ibm.com [127.0.0.1])
+ by ppma03wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06N0Z5GA018098;
+ Thu, 23 Jul 2020 00:38:46 GMT
+Received: from b03cxnp08026.gho.boulder.ibm.com
+ (b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
+ by ppma03wdc.us.ibm.com with ESMTP id 32brq9g704-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 23 Jul 2020 00:38:46 +0000
+Received: from b03ledav005.gho.boulder.ibm.com
+ (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
+ by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 06N0cgFb983598
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 23 Jul 2020 00:38:42 GMT
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id AB6FBBE054;
+ Thu, 23 Jul 2020 00:38:45 +0000 (GMT)
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7972EBE053;
+ Thu, 23 Jul 2020 00:38:41 +0000 (GMT)
+Received: from morokweng.localdomain (unknown [9.211.93.190])
+ by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTPS;
+ Thu, 23 Jul 2020 00:38:41 +0000 (GMT)
+References: <20200722035016.469075-1-bauerman@linux.ibm.com>
+ <20200722035016.469075-2-bauerman@linux.ibm.com>
+ <6ca8915c-094e-1880-0e66-618eb354444d@redhat.com>
+User-agent: mu4e 1.2.0; emacs 26.3
+From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: Re: [PATCH v2 1/9] target/arm: Move start-powered-off property to
+ generic CPUState
+In-reply-to: <6ca8915c-094e-1880-0e66-618eb354444d@redhat.com>
+Date: Wed, 22 Jul 2020 21:38:36 -0300
+Message-ID: <87tuxzrroz.fsf@morokweng.localdomain>
 MIME-Version: 1.0
-In-Reply-To: <20200722154719.10130-1-thuth@redhat.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x641.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
+ definitions=2020-07-22_16:2020-07-22,
+ 2020-07-22 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0
+ impostorscore=0 mlxscore=0 phishscore=0 priorityscore=1501 clxscore=1015
+ lowpriorityscore=0 adultscore=0 bulkscore=0 suspectscore=0 spamscore=0
+ mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2007220151
+Received-SPF: pass client-ip=148.163.156.1;
+ envelope-from=bauerman@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/22 20:39:13
+X-ACL-Warn: Detected OS   = Linux 3.x [generic] [fuzzy]
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,52 +133,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, Paul Zimmerman <pauldzim@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, David Hildenbrand <david@redhat.com>,
+ qemu-s390x@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>,
+ Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0VOdbNaCdafk
+X-TUID: yP8BVvJ8gEka
 
-On 7/22/20 5:47 PM, Thomas Huth wrote:
-> The USB_DWC2 switch is currently "default y", so it is included in all
-> qemu-system-* builds, even if it is not needed. Even worse, it does a
-> "select USB", so USB devices are now showing up as available on targets
-> that do not support USB at all. This sysbus device should only be
-> included by the boards that need it, i.e. by the Raspi machines.
 
-Paul already sent that patch (your description is better although):
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg723681.html
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
 
-> 
-> Fixes: 153ef1662c ("dwc-hsotg (dwc2) USB host controller emulation")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/arm/Kconfig | 1 +
->  hw/usb/Kconfig | 1 -
->  2 files changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 4a224a6351..bc3a423940 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -315,6 +315,7 @@ config RASPI
->      select FRAMEBUFFER
->      select PL011 # UART
->      select SDHCI
-> +    select USB_DWC2
->  
->  config STM32F205_SOC
->      bool
-> diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
-> index d4d8c37c28..5e63dc75f8 100644
-> --- a/hw/usb/Kconfig
-> +++ b/hw/usb/Kconfig
-> @@ -48,7 +48,6 @@ config USB_MUSB
->  
->  config USB_DWC2
->      bool
-> -    default y
->      select USB
->  
->  config TUSB6010
-> 
+> Hi Thiago,
+>
+> On 7/22/20 5:50 AM, Thiago Jung Bauermann wrote:
+>> There are other platforms which also have CPUs that start powered off, so
+>> generalize the start-powered-off property so that it can be used by them.
+>>
+>> Note that ARMv7MState also has a property of the same name but this patch
+>> doesn't change it because that class isn't a subclass of CPUState so it
+>> wouldn't be a trivial change.
+>>
+>> This change should not cause any change in behavior.
+>>
+>> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+>> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+>
+> As I participated in reviewing your v1, I'd have appreciated
+> being Cc'ed for v2.
 
+I'm sorry about this. I fixed the Cc list for the next version.
+
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+
+Thank you very much for your prompt review, and suggestions.
+
+I will post a new version addressing your comments shortly.
+
+>> ---
+>>  exec.c                | 1 +
+>>  include/hw/core/cpu.h | 4 ++++
+>>  target/arm/cpu.c      | 5 ++---
+>>  target/arm/cpu.h      | 3 ---
+>>  target/arm/kvm32.c    | 2 +-
+>>  target/arm/kvm64.c    | 2 +-
+>>  6 files changed, 9 insertions(+), 8 deletions(-)
+
+
+--
+Thiago Jung Bauermann
+IBM Linux Technology Center

@@ -1,118 +1,106 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp305243lfy;
-        Fri, 24 Jul 2020 05:55:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRxMqdy97ieJwPq3LQN+CKRjJxeydfgxnTvzy9voWea7vrXhpJfYagbJPnY8yaavHYzgrw
-X-Received: by 2002:a25:6008:: with SMTP id u8mr14280790ybb.519.1595595321127;
-        Fri, 24 Jul 2020 05:55:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595595321; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp317624lfy;
+        Fri, 24 Jul 2020 06:09:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywjVN3WKH85R83QjJ6mouW5Q00wKEWzOB6dhKCLUNUNXOjRUiwLYdz/IDfyF/7y75TRoC4
+X-Received: by 2002:a05:620a:7c1:: with SMTP id 1mr10579154qkb.276.1595596190433;
+        Fri, 24 Jul 2020 06:09:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595596190; cv=none;
         d=google.com; s=arc-20160816;
-        b=RUiVij7SLga68YMQFTGokjT93J5/hYRQJog/HTYsLXK+BL0ArgVaeUOOLqBZttfhdK
-         lQQXh6XMx8BRg079Jpaas6zlovikTZpwQw0sfOpEPnljro4ztHCM9c3Y+ImCGSbcne8o
-         1cUVyvesS4WlFKE5r4DVKgYT0WJaC7V7epYoyzEECm0OlMxb38jfZSzconGTnvtmqT49
-         G1vz0h5E2Yh1YDxxRLTYLbmiGYI063UW3ODjfhtufOr5em7OSfAl8zN/E6OctG54uSgT
-         Cx12nxxkbQVfgdvO+Dl9TZNtaRl7nwWq5Eti3HBG305y2OP4S2iHVmAoUjJBW/W2Xthx
-         VSFg==
+        b=AaZVnZSL7RzF+Wx8PrqmQYhYamEugSp+eszPWjX7AWrdl5cRqZIzDDdU/hUNpjpr5e
+         FstcXM4cbmiX6o3SuH5qjEjMIisiKktYdu851pq8H+w2gqf9EvwNajGoS7FVrwKKrQug
+         acqx1EwZxgrpGtOfbsEAK5CjuZO4Rb+ee4JHJ7u9PLMgnjFiVSvvdJnmQqcRY1pxalym
+         LR7lGkNjfMQgA4NFgrlHLzekxulpULXJfrXRzFVjERF3Yyc4iLfqp9bY7AiIQOVgdi+E
+         eSyr4Gba7uxegKSfxpCjtd3rrYiy04qZLQGzCKxer7HKsMGQUa6WrmRbNUkgBOIw2VQs
+         +QEg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=jr6j5yjl9m6IfHpx6t7CggHYbcvBuJ1x6wyQVRWNojw=;
-        b=bIq7X3T6maXG9PrmkvADEchsuNloE8GeQ17DavI8Roc2o5T2aQheRsKI/WwLEXtsjN
-         32K49q2C71n7Ap1g3cZRS0U4BTPSlgYNDY6Gfr1cy00AN1VREvORKRs5iKhttvRYUP7S
-         pR89g5EcUxBUlHwm/L/2THC7jPVaYJcaf2lyu/JYYLiMjnoPJWcb5ifo76Ih+FcWea7q
-         PBjBBqND5XpJQyFj7WoJGHcFapNa2DTE+C74ELLrVawIvmhOfUZH8m4j0NgFgH+cLdGT
-         57WSeJxkO75A4siXiRjnSDgdC/hMwPnui64N8OgshkfcyhEauw/NtKuwFzSrG1bJvx14
-         rwlQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=pf32PZHwbkGJ++SA36ZGp4vhRgp3xAk7ye74M190BWQ=;
+        b=c3BBLO58jvLT9v9DSteUvf74l0DsIS6AT/qcHnJZLPvWFEY6+lPKbR6mGIocWk/R2u
+         41yGQvd2n22MXYVYYJZ5AnBFdKwNyqs8kUCPO5OZXUdWO+KhRxxVwv1IdfI/H5nnnnCx
+         EWrJrDyjexWBx4A/gKqgEY3pibH8wUgrgRf/lzRNm9g27GMSrTIkzJ6BITdFZhpNgdDo
+         dUF/3u9tXthpk48BTPb1B00JafrwO0oWTwXLqjayo7S/e05AzTh/z0GEpkc3rGel0LUB
+         kfCEMBGSjM1sSCAqO1fcYcnCrB3fpMrSJR21FbBUe8VHqhyD9ryLOTlSVfJfMFcCAxNb
+         v4Cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UXckFoNi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WJCBE3Rn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u18si950646ybd.357.2020.07.24.05.55.20
+        by mx.google.com with ESMTPS id b24si476234qtr.337.2020.07.24.06.09.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 24 Jul 2020 05:55:21 -0700 (PDT)
+        Fri, 24 Jul 2020 06:09:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UXckFoNi;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WJCBE3Rn;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58846 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38622 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jyxEO-000561-Hc
-	for alex.bennee@linaro.org; Fri, 24 Jul 2020 08:55:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36558)
+	id 1jyxSP-0000mb-NK
+	for alex.bennee@linaro.org; Fri, 24 Jul 2020 09:09:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39806)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jyxEF-00054d-I0
- for qemu-arm@nongnu.org; Fri, 24 Jul 2020 08:55:11 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:38077
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1jyxEE-000519-2J
- for qemu-arm@nongnu.org; Fri, 24 Jul 2020 08:55:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595595308;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=jr6j5yjl9m6IfHpx6t7CggHYbcvBuJ1x6wyQVRWNojw=;
- b=UXckFoNigvPd81YrX7zw21yzrhaeOgiWKeWr0HFP4meA7WfxMXFF7YOpPK+GdB3PbCwRhh
- Wzyr4V+EnUP2SCsZU7htoXJiwke5mnKZp3uO1Asj1bM3DfmuOm9UvzCdLCQfq6IVxkU6o3
- 0+Q5iKf9RXQ/Al0sFvbtsIGvOc543l4=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-300-9K5Rh41xPKi5VyJRT9rbiQ-1; Fri, 24 Jul 2020 08:55:04 -0400
-X-MC-Unique: 9K5Rh41xPKi5VyJRT9rbiQ-1
-Received: by mail-wm1-f69.google.com with SMTP id x8so3164903wmk.2
- for <qemu-arm@nongnu.org>; Fri, 24 Jul 2020 05:55:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jyxSI-0000mB-Mn
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2020 09:09:42 -0400
+Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:44537)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1jyxSG-0006ud-7c
+ for qemu-arm@nongnu.org; Fri, 24 Jul 2020 09:09:42 -0400
+Received: by mail-ot1-x343.google.com with SMTP id o72so1345659ota.11
+ for <qemu-arm@nongnu.org>; Fri, 24 Jul 2020 06:09:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=pf32PZHwbkGJ++SA36ZGp4vhRgp3xAk7ye74M190BWQ=;
+ b=WJCBE3RngW1ZZGm45D6GnogkZORpAeQ0GxIa07hDqu8KgTVpQT7TplcpKMDTiiJ+Yr
+ ZpX2HytlcaGxzk/rzseKs6PoZXy6pUoLG5WOC/1zEXoJB0aeAcJTVXvVtVHe9U8j64CS
+ OlAd8y+0wTFYzTLH8zISlWXpq1yRgm49X4nzeOua9JIs6qpwqSExz8sN0/Oc+Y8Bx2ID
+ o7t+GJ4/HLgp7pEGvprpt02f+6RAqwo4vELB8mA/xKRquNi8zhCQ3vitI70E3+FUKoRU
+ 8suGPV4ioJ9K9Fz4Y5cFJsYVg6yWy0Roqkz4F3U4FpL5x+JVooztwznve7tBSbR0PRJc
+ awRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=jr6j5yjl9m6IfHpx6t7CggHYbcvBuJ1x6wyQVRWNojw=;
- b=XQo/e8JGdMHyGLKqbenMbAzrP3gjUp0xNc5KiezqYDuSmo4cTcHPIBZ9n2K9OkJSm7
- XYg/NrP0oWOiyB8RzI3YNZWiqBrjBo1tSiZa2m8y9CzAU3dZOO74Cot8vbSXwvQGepX6
- 1MgOT5TzL9eZlNSFLjMHbOcM8hZ5b2drnDNq7Dukv+KMbkm0dchnmU7sML3PI7MI+ciN
- sjzpV/fp6ByxZAzXKuJyVqHFi0uOgzofN8j3FogFIM0XfYi9Lg+haVFpGg2lawXRSKkw
- W+XZBFTEyDC6yeTg0uxXnUr8W59aevEdQUaCn1/L19l9qQ5viRLjeBrGaRqSwj0qK2gE
- zxHw==
-X-Gm-Message-State: AOAM530pptl+f7J/M1QDWT94gyZ9cgjBPGVFkIuSbn2wqvpe4LwvRfiT
- Oxs83x/LeiRncQYZvoNfVyGbxKMS4hjU8R6HD2EG2cCpgTfEooYBaRm58fvj++zdZTyHrjhD9E7
- r+BGJHMWJkRDW
-X-Received: by 2002:a1c:4c0e:: with SMTP id z14mr8631613wmf.54.1595595303706; 
- Fri, 24 Jul 2020 05:55:03 -0700 (PDT)
-X-Received: by 2002:a1c:4c0e:: with SMTP id z14mr8631595wmf.54.1595595303529; 
- Fri, 24 Jul 2020 05:55:03 -0700 (PDT)
-Received: from redhat.com (bzq-79-179-105-63.red.bezeqint.net. [79.179.105.63])
- by smtp.gmail.com with ESMTPSA id g16sm1193405wrs.88.2020.07.24.05.55.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 24 Jul 2020 05:55:02 -0700 (PDT)
-Date: Fri, 24 Jul 2020 08:55:00 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] ACPI: Assert that we don't run out of the preallocated
- memory
-Message-ID: <20200724085448-mutt-send-email-mst@kernel.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=pf32PZHwbkGJ++SA36ZGp4vhRgp3xAk7ye74M190BWQ=;
+ b=po+pJoP1jRy/+n2qtU70BysNP+BFYYCEAjG6zJ/AkFjPf9t0vl98HwqRUMGus86+qW
+ YurJ+Fgq45xko1OUFCmwYb3b2rruNxXLiwXo4eiQiHI8tI03TcQxrnAFTowOuZqF4yTv
+ a/LgNosDjHnRg6JidWh6l7AL9RxuL0HBbPUysZBnkm6OXpjzxr1djWPq3IKREAbV4p2M
+ wBvUXzonuvT9ymkpFz+CDXd776ED5on5YA9aXgpWXr1WCXZhA3eojQ4cvweWM6XFxD2s
+ yLlmoJUG/6X2YKf/6QYxVKDyU85CO3JRr96No5ty2TTFCgW50vH9/dR6PzQdKfI4+9Rr
+ kEpg==
+X-Gm-Message-State: AOAM533a/xrrQZ7KDoOVWIFSYn/Cm11/fw3GAPU1lZ+tE0f0+tBlluBB
+ kig0W/YnpQfRhsdLP8/ct6ChUE0GO0Atm1uSNo++1w==
+X-Received: by 2002:a05:6830:1bd3:: with SMTP id
+ v19mr8661396ota.91.1595596178472; 
+ Fri, 24 Jul 2020 06:09:38 -0700 (PDT)
+MIME-Version: 1.0
 References: <20200622113146.33421-1-gengdongjiu@huawei.com>
  <CAFEAcA-NDpWCfqQybu=6svi-ZR=MBBxSKz4dRikDXwW8fftsaA@mail.gmail.com>
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-NDpWCfqQybu=6svi-ZR=MBBxSKz4dRikDXwW8fftsaA@mail.gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/24 06:44:00
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ <20200724085448-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20200724085448-mutt-send-email-mst@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 24 Jul 2020 14:09:27 +0100
+Message-ID: <CAFEAcA_Gk4o5tB27fo93HaxXO1xxk5joZZyHxFBvLFrPhD2qBA@mail.gmail.com>
+Subject: Re: [PATCH] ACPI: Assert that we don't run out of the preallocated
+ memory
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,25 +119,32 @@ Cc: Linuxarm <linuxarm@huawei.com>, QEMU Developers <qemu-devel@nongnu.org>,
  Igor Mammedov <imammedo@redhat.com>, Dongjiu Geng <gengdongjiu@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PyeW2jy5J1cc
+X-TUID: W34FxAp8LU6y
 
-On Thu, Jul 23, 2020 at 06:50:06PM +0100, Peter Maydell wrote:
-> On Mon, 22 Jun 2020 at 12:30, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+On Fri, 24 Jul 2020 at 13:55, Michael S. Tsirkin <mst@redhat.com> wrote:
+>
+> On Thu, Jul 23, 2020 at 06:50:06PM +0100, Peter Maydell wrote:
+> > On Mon, 22 Jun 2020 at 12:30, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
+> > >
+> > > data_length is a constant value, so we use assert instead of
+> > > condition check.
+> > >
+> > > Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
+> > > ---
+> > > 1. Address Peter and Michael's comments to use assert instead of if().
+> > > https://lore.kernel.org/qemu-devel/ca79ea28-9ea9-18a5-99ad-25c3eb744721@huawei.com/
 > >
-> > data_length is a constant value, so we use assert instead of
-> > condition check.
+> > Oops, looks like we forgot about this patch -- Michael, are you
+> > taking it through your tree or should I take it via target-arm ?
 > >
-> > Signed-off-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> > ---
-> > 1. Address Peter and Michael's comments to use assert instead of if().
-> > https://lore.kernel.org/qemu-devel/ca79ea28-9ea9-18a5-99ad-25c3eb744721@huawei.com/
-> 
-> Oops, looks like we forgot about this patch -- Michael, are you
-> taking it through your tree or should I take it via target-arm ?
-> 
-> thanks
-> -- PMM
+> > thanks
+> > -- PMM
+>
+> Feel free to merge pls.
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-Feel free to merge pls.
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
+
+Applied to target-arm.next, thanks.
+
+-- PMM

@@ -1,152 +1,234 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2648115lfy;
-        Mon, 27 Jul 2020 01:34:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzYbO1xa2nIyJbuPIie+TK6cc44a6alPB+ZPxbTlhxkONgRYClN4Ig0n7sF8Ja+CA5Ngi07
-X-Received: by 2002:a25:6dd5:: with SMTP id i204mr32047438ybc.319.1595838855526;
-        Mon, 27 Jul 2020 01:34:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595838855; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2816639lfy;
+        Mon, 27 Jul 2020 05:37:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwEgGwYTVYUw+6EAh4eIGcaTg3NUIHKTy3zpQ51BR0qU8ipCFwvBjaZKzSoDkh4mhK+R7sf
+X-Received: by 2002:adf:e8ca:: with SMTP id k10mr20187531wrn.110.1595853444749;
+        Mon, 27 Jul 2020 05:37:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595853444; cv=none;
         d=google.com; s=arc-20160816;
-        b=PTvSPy1NclGc4RIamzEme8jLHWLcSYl3AAeoBbBthM/r0NtAcmLYVGp81shELjhGyR
-         wlZ+dCg8IYpjtHVEtOVvEzbcDp9ozwvFUCp0PXof4US2wAFd6aomIIiB58XBuADXtmTm
-         L58DVS89jSYx34gDNUU8xQhpPK91S1FimRIDLaiThNqvZS6HHIeei2JZj1TMkrThyAt9
-         orZjXOSBq5N3qqXk5xQ/gaZxcfXiYrMHZaj2BE9sb/SdQDDzecDcfoMDx4eeWJWmKci/
-         YvvK7aSQJd/nvlfiIOQ+pTaX5ysR2iOETVzI4M6LMmZSjKrqg0je47qcHql/IR2JKne4
-         zI4A==
+        b=H0u27uYCqzSfwE3yWxxYNi9G38GuhAlVtyaonJCgXMlsytb2KWOBOxgpWzJp1Mbl1b
+         rg6zsTW+Jw+sNrP4vqU7PNkb7D83INMLpOGY9gKhBk2xlNWeMeKB+WkRh3u6XBqF8dtN
+         +Umw10AI53fAKE5NK5mpdK1FPr/FsCPn/OXoL1+1a3VZcewVjJv6Egc5PGkNEy00Agwc
+         fs3tVLKzsKa1zC/DHJ5T3n36wqq2qIuaBqvjfbfAg0B7bRA+azNNCmIINvHqhhr4SlnP
+         f5e3v1ogVAwx0qC2yZWGXuCZQuUJq+yw6pn6I25tHP0LCQQJVd6EhhXl/4KijY0vWNcE
+         obpw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=vxAC7kiFS016cETpwk1rOgUT+R9geqEOY153JJ+pd38=;
-        b=R7Y4fI1118mbZQClpDmDynIhTGSEZYWGco0beoapyEGvN+gL6kOcF6b+ZsXuVg2CMS
-         mGDUVe76jp3qpTC9T7Ln4huIDQfq1fxKaFEwegm0xLrko9lGPbq6fAWzoGH5TC8pFq7R
-         JHTQ49BqgO0jhV1Te8CpGeY5OM3HQuPjb+bUMMBzBgXT1nXMeZ563pNMGgElb5pnzDTE
-         lOaErWV+ztY+ih7SabMhej4EX+XhH5L3xrdK2f+VR0NU13FzfNOxwTm/No4bnRI+Dxdj
-         Q2QDGsD10FG+ZKBAudya9+kRS6bj+LNxlgXTixoaAsWKpPiyCRbGwzuIfOZyo5OifHRo
-         n3eQ==
+        h=mime-version:references:in-reply-to:message-id:subject:cc:to:from
+         :date;
+        bh=m/DjNBdSMMrekJaH1hiwy42ZrosrOQfeSapeZ1oiaq8=;
+        b=JJUfeiJE49vijiz0yHA9FqMBRkDUnPIhQaRvNpvot4xmJZCWJ0bupxvdOnL9yXUtI7
+         YHsdPvFvsiAbbkOByvfA4piYZ3idKgDe1AI2U5P4NWkPhdDHqmJD4VDePMVJ8gLA+XZ9
+         wIp2bcl9Bx3USil3XEHuBLeJFMH+PuP9P+hIdGBNKEho9SddlvOt7/Es5w8+bEgPUef6
+         ARfvisE1obK33XxX2n5HjHEp92yPpEiD27yCgvd4jTWDwT4PJUDeM3wvok0BUWRjGlKi
+         JO6w750stog6xU70DAzfNlu02hPmj5nagJaDaM7AYlaKTiYeop8QLeIGGV/AdAogzTrx
+         Afsg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fA7AcBtl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 125si9938464ybk.185.2020.07.27.01.34.15
+       spf=pass (google.com: domain of groug@kaod.org designates 46.105.41.16 as permitted sender) smtp.mailfrom=groug@kaod.org
+Return-Path: <groug@kaod.org>
+Received: from 17.mo4.mail-out.ovh.net (17.mo4.mail-out.ovh.net. [46.105.41.16])
+        by mx.google.com with ESMTPS id q13si7647370wru.219.2020.07.27.05.37.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jul 2020 01:34:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 27 Jul 2020 05:37:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of groug@kaod.org designates 46.105.41.16 as permitted sender) client-ip=46.105.41.16;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fA7AcBtl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57202 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jzyaM-0003s1-Sw
-	for alex.bennee@linaro.org; Mon, 27 Jul 2020 04:34:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49330)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1jzyaF-0003ro-Pe
- for qemu-arm@nongnu.org; Mon, 27 Jul 2020 04:34:07 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:41048
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1jzyaE-0005Bz-9u
- for qemu-arm@nongnu.org; Mon, 27 Jul 2020 04:34:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595838845;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=vxAC7kiFS016cETpwk1rOgUT+R9geqEOY153JJ+pd38=;
- b=fA7AcBtlNRS/nGwE5C/BocJ3akfp9nnMd6gKrWoZ/lhgncUaPQBI3StDRlUUPThpRYiqPs
- +1nriIObnzGSg2COaPwTQJ+7nE1iJ/bA1yK5RkEkxH9cun7KUVZ6pkaJP7lAb+vNBFtZsx
- SUPtdGeb+YwZ/2zxK+Lamk7ukTkQY+E=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-255-GZ56-Ia_NQGkn41QPapVmw-1; Mon, 27 Jul 2020 04:34:01 -0400
-X-MC-Unique: GZ56-Ia_NQGkn41QPapVmw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 70B4B800468;
- Mon, 27 Jul 2020 08:34:00 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.194.132])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 32D3560BF4;
- Mon, 27 Jul 2020 08:33:59 +0000 (UTC)
-Date: Mon, 27 Jul 2020 10:33:56 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 0/3] hw/arm/virt: Introduce kvm-steal-time
-Message-ID: <20200727083356.6pr6f5ph5wh2aev6@kamzik.brq.redhat.com>
-References: <20200711101033.47371-1-drjones@redhat.com>
- <CAFEAcA_F_zJESdsZbsQaD+SLN5HDuL1x9Z=YrxC9kXw1XGvrcg@mail.gmail.com>
+       spf=pass (google.com: domain of groug@kaod.org designates 46.105.41.16 as permitted sender) smtp.mailfrom=groug@kaod.org
+Received: from player690.ha.ovh.net (unknown [10.110.103.2])
+	by mo4.mail-out.ovh.net (Postfix) with ESMTP id 450DA245C63
+	for <alex.bennee@linaro.org>; Mon, 27 Jul 2020 14:37:24 +0200 (CEST)
+Received: from kaod.org (lns-bzn-46-82-253-208-248.adsl.proxad.net [82.253.208.248])
+	(Authenticated sender: groug@kaod.org)
+	by player690.ha.ovh.net (Postfix) with ESMTPSA id 5444D14989EC8;
+	Mon, 27 Jul 2020 12:36:57 +0000 (UTC)
+Authentication-Results:garm.ovh; auth=pass (GARM-95G0018439f768-0629-4b97-9cca-d49db8edae8c,B7B50C960922AB26A7D550ED897AF9E452A9EBFF) smtp.auth=groug@kaod.org
+Date: Mon, 27 Jul 2020 14:36:56 +0200
+From: Greg Kurz <groug@kaod.org>
+To: David Gibson <david@gibson.dropbear.id.au>
+Cc: Thiago Jung Bauermann <bauerman@linux.ibm.com>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org, Paolo
+ Bonzini <pbonzini@redhat.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Peter Maydell
+ <peter.maydell@linaro.org>, Aleksandar Markovic
+ <aleksandar.qemu.devel@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>, David
+ Hildenbrand <david@redhat.com>, Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?=
+ <philmd@redhat.com>, Alex =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH v3 1/8] target/arm: Move start-powered-off property to
+ generic CPUState
+Message-ID: <20200727143656.277500f0@bahia.lan>
+In-Reply-To: <20200723030609.GL5513@umbus.fritz.box>
+References: <20200723025657.644724-1-bauerman@linux.ibm.com>
+	<20200723025657.644724-2-bauerman@linux.ibm.com>
+	<20200723030609.GL5513@umbus.fritz.box>
+X-Mailer: Claws Mail 3.17.5 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_F_zJESdsZbsQaD+SLN5HDuL1x9Z=YrxC9kXw1XGvrcg@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 03:37:14
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Beata Michalska <beata.michalska@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 57guUak4wx0G
+Content-Type: multipart/signed; boundary="Sig_/x6A_q+XXF/OnOq118RkT5mq";
+ protocol="application/pgp-signature"; micalg=pgp-sha256
+X-Ovh-Tracer-Id: 14592507219021371878
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedriedtgdehhecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpeffhffvuffkjghfofggtgesghdtreerredtjeenucfhrhhomhepifhrvghgucfmuhhriicuoehgrhhouhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepveegffeljeegleehheetiedutefhueehgeetteektddvieevgeeujeevgfelfeejnecukfhppedtrddtrddtrddtpdekvddrvdehfedrvddtkedrvdegkeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrheiledtrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomhepghhrohhugheskhgrohgurdhorhhgpdhrtghpthhtoheprghlvgigrdgsvghnnhgvvgeslhhinhgrrhhordhorhhg
+X-TUID: xNavVcLths6x
 
-On Mon, Jul 20, 2020 at 11:16:41AM +0100, Peter Maydell wrote:
-> On Sat, 11 Jul 2020 at 11:10, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > KVM supports the ability to publish the amount of time that VCPUs
-> > were runnable, but not running due to other host threads running
-> > instead, to the guest. The guest scheduler may use that information
-> > when making decisions and the guest may expose it to its userspace
-> > (Linux publishes this information in /proc/stat). This feature is
-> > called "steal time" as it represents the amount of time stolen from
-> > a guest by scheduling out its VCPUs. To enable this feature KVM
-> > userspace must provide a memory region that will be used to publish
-> > the information to the guest. The memory region is typical migratable
-> > region. The GPA of the region is given to KVM through a VCPU device
-> > ioctl interface. This feature is only available for 64-bit hosts
-> > running 64-bit guests.
-> >
-> > This series provides the QEMU support of this feature. It will
-> > be enabled by default for 5.1 machine types and later, but may
-> > be disabled with a new CPU property "kvm-steal-time".
-> 
-> Just a note that this has missed 5.1, but I'll review it at
-> some point for 5.2.
->
+--Sig_/x6A_q+XXF/OnOq118RkT5mq
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
 
-Yup. No problem. I was out on vacation all last week, so there wasn't
-a chance for me to follow up until now anyway. Thanks for the review.
-I'll get to the responses / respinning tomorrow after I dig out of my
-email backlog.
+On Thu, 23 Jul 2020 13:06:09 +1000
+David Gibson <david@gibson.dropbear.id.au> wrote:
 
-drew
+> On Wed, Jul 22, 2020 at 11:56:50PM -0300, Thiago Jung Bauermann wrote:
+> > There are other platforms which also have CPUs that start powered off, =
+so
+> > generalize the start-powered-off property so that it can be used by the=
+m.
+> >=20
+> > Note that ARMv7MState also has a property of the same name but this pat=
+ch
+> > doesn't change it because that class isn't a subclass of CPUState so it
+> > wouldn't be a trivial change.
+> >=20
+> > This change should not cause any change in behavior.
+> >=20
+> > Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+>=20
+> Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+>=20
 
+Reviewed-by: Greg Kurz <groug@kaod.org>
+
+> > ---
+> >  exec.c                | 1 +
+> >  include/hw/core/cpu.h | 4 ++++
+> >  target/arm/cpu.c      | 5 ++---
+> >  target/arm/cpu.h      | 3 ---
+> >  target/arm/kvm32.c    | 2 +-
+> >  target/arm/kvm64.c    | 2 +-
+> >  6 files changed, 9 insertions(+), 8 deletions(-)
+> >=20
+> > NB: I was only able to test that this patch builds. I wasn't able to
+> > run it.
+> >=20
+> > diff --git a/exec.c b/exec.c
+> > index 6f381f98e2..82e82fab09 100644
+> > --- a/exec.c
+> > +++ b/exec.c
+> > @@ -899,6 +899,7 @@ Property cpu_common_props[] =3D {
+> >      DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
+> >                       MemoryRegion *),
+> >  #endif
+> > +    DEFINE_PROP_BOOL("start-powered-off", CPUState, start_powered_off,=
+ false),
+> >      DEFINE_PROP_END_OF_LIST(),
+> >  };
+> > =20
+> > diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> > index 8f145733ce..9fc2696db5 100644
+> > --- a/include/hw/core/cpu.h
+> > +++ b/include/hw/core/cpu.h
+> > @@ -374,6 +374,10 @@ struct CPUState {
+> >      bool created;
+> >      bool stop;
+> >      bool stopped;
+> > +
+> > +    /* Should CPU start in powered-off state? */
+> > +    bool start_powered_off;
+> > +
+> >      bool unplug;
+> >      bool crash_occurred;
+> >      bool exit_request;
+> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> > index 111579554f..ec65c7653f 100644
+> > --- a/target/arm/cpu.c
+> > +++ b/target/arm/cpu.c
+> > @@ -174,8 +174,8 @@ static void arm_cpu_reset(DeviceState *dev)
+> >      env->vfp.xregs[ARM_VFP_MVFR1] =3D cpu->isar.mvfr1;
+> >      env->vfp.xregs[ARM_VFP_MVFR2] =3D cpu->isar.mvfr2;
+> > =20
+> > -    cpu->power_state =3D cpu->start_powered_off ? PSCI_OFF : PSCI_ON;
+> > -    s->halted =3D cpu->start_powered_off;
+> > +    cpu->power_state =3D s->start_powered_off ? PSCI_OFF : PSCI_ON;
+> > +    s->halted =3D s->start_powered_off;
+> > =20
+> >      if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
+> >          env->iwmmxt.cregs[ARM_IWMMXT_wCID] =3D 0x69051000 | 'Q';
+> > @@ -2182,7 +2182,6 @@ static const ARMCPUInfo arm_cpus[] =3D {
+> >  };
+> > =20
+> >  static Property arm_cpu_properties[] =3D {
+> > -    DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, f=
+alse),
+> >      DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
+> >      DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
+> >      DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 9e8ed423ea..a925d26996 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -810,9 +810,6 @@ struct ARMCPU {
+> >       */
+> >      uint32_t psci_version;
+> > =20
+> > -    /* Should CPU start in PSCI powered-off state? */
+> > -    bool start_powered_off;
+> > -
+> >      /* Current power state, access guarded by BQL */
+> >      ARMPSCIState power_state;
+> > =20
+> > diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+> > index 0af46b41c8..1f2b8f8b7a 100644
+> > --- a/target/arm/kvm32.c
+> > +++ b/target/arm/kvm32.c
+> > @@ -218,7 +218,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+> > =20
+> >      /* Determine init features for this CPU */
+> >      memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+> > -    if (cpu->start_powered_off) {
+> > +    if (cs->start_powered_off) {
+> >          cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_POWER_OFF;
+> >      }
+> >      if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
+> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> > index 1169237905..f8a6d905fb 100644
+> > --- a/target/arm/kvm64.c
+> > +++ b/target/arm/kvm64.c
+> > @@ -775,7 +775,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+> > =20
+> >      /* Determine init features for this CPU */
+> >      memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+> > -    if (cpu->start_powered_off) {
+> > +    if (cs->start_powered_off) {
+> >          cpu->kvm_init_features[0] |=3D 1 << KVM_ARM_VCPU_POWER_OFF;
+> >      }
+> >      if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
+> >=20
+>=20
+
+
+--Sig_/x6A_q+XXF/OnOq118RkT5mq
+Content-Type: application/pgp-signature
+Content-Description: OpenPGP digital signature
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEtIKLr5QxQM7yo0kQcdTV5YIvc9YFAl8eymgACgkQcdTV5YIv
+c9Y5cA//fI3S70yYaqp/nGvaYTyqKR0BdlFHwouXRg1VROwRvgb5kzZy+HBv0UE9
+Ol+K1kJJw3gw0qCTrKyNkV4bQEBEmIjIRz/X51OyZ3+oaXArlpd1dW6phxyo0frF
+sNKo/CBS2vS+g3W523fXdCbBil0RErkTim5Db3TmJD301yUNLv4jy4Ej7hFSvUT5
+EGDOwR0IR/H2HivOoO5r6+cKTUl0rHo95Q/yrgTrjIq5/QZMwCrrMnoiPOfOS+r8
+xTlol5FS8dmfPTDaDtwF+9jkLjXGQozrXMKpgITY71OLR06CcmiNpnLWqqXNCak8
+vIrp8UDjksfssmQ7ikA8FvVsX8I987sfySU5QA6Pt0YdahChhQkc2GFkI/Vhl2HI
+c8Lz53Jg7snLUw/OAtXtWugWN6NEGSaMGMvn0IPtNkV+GQmZQpbCFwoh5WxnVrmP
+ErFsc9dISP9VW8Jr5U5IMd7J50AarPbp5oAJEJaObFi3hkjTMhpSK/vl7q+zoePo
+ByHt2MusgEBDF771iyCHxU1LDByb0lSDjrDbTNzUN+i/qjjvR5udOFBEnwkMmf+M
+0yDKzncIMgZMgXgY16m8bXXqTE52rBhJxAU2IijfVGid1y3SBkXrFzaHsiO0cVJR
+ev7a7b3qU7K5Uy1W8BJTHSU60Dz4hzWieZqKxIo0zACURTK0Ekc=
+=QmXv
+-----END PGP SIGNATURE-----
+
+--Sig_/x6A_q+XXF/OnOq118RkT5mq--

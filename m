@@ -1,93 +1,116 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1678660lfy;
-        Wed, 29 Jul 2020 08:15:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz3K9YyYsGbmObQ+ggYrZqcX+iRzgG5tGIEoNu/lfC7KxfvC9oP2XpTi8SmRgvdjJchVqjH
-X-Received: by 2002:a25:c743:: with SMTP id w64mr33821467ybe.127.1596035751087;
-        Wed, 29 Jul 2020 08:15:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596035751; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3073295lfy;
+        Mon, 27 Jul 2020 11:06:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyjc3SgdX6BDpRqUFnnenNGa/k365b6AHmu80bo8ZFSaultfDXNqQ8nUG1ZsFflrTP7UzeA
+X-Received: by 2002:a25:e751:: with SMTP id e78mr15420832ybh.369.1595873162591;
+        Mon, 27 Jul 2020 11:06:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595873162; cv=none;
         d=google.com; s=arc-20160816;
-        b=iFD9t8VlrnzD4aa81nRk+s9J0u4jWAdG7fEgx5iLUzdDk+L8vvE677SRKjP50rbc/v
-         MBzH4eKXqAY1xorIaQACbJX7fJKvjhEoqhs8MXr6kZp5x9bajpfxnZ6NoGH1QnnW9J8Z
-         ZX+cJlGNhU4+UpDdIviF+NT2+1mjQdvffYRRnSI+dzcscPZRNWuCg70wadwOr05cDOxN
-         appCll1LpY0mMArcqgD0DEwC688a4QllnBRSFkjL6gKMZKb3oGrPdoZQQr/RpP+zRvUG
-         Uekw2g+USwQcwQhaX1xCKo57z7REM3bJF9Dyiu28wvkBLr7dnZn0NmAGG7OEQlRK5EGy
-         viwQ==
+        b=0ZOqCcy/u7Yn7zZlYVzmHa+dR9aZm5POVfx6L//3/pvlMBcyZcMLHnI5lN+X/WrZ2P
+         gslH64i0XoJImLkatTcOKfVgyFuKbFSgEJUFp2KnqLYuFI2mYH05kMqlHRcP/FAXBqf1
+         IuN7e0zUx0KXIHcYQUkohjsweR3213F5/pWCpLTx3EJxX1O2lFSba4GtjyuqkOqLJvN6
+         kPc9Jo40ADt+BZMDzG1Yow/+D5HA1+fGX6HcKVDc4EuGoeEyHFVDn64LS49n07crebPT
+         RLgPVog4J7UZiVD5+CTghlcQcKJW2f8kWLPCrPvJ0zhkNwJ6s4UlvcD6EuZuX253WpBP
+         2RZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=+cObEl5n0/2g844yRZNcgZa4XMMwSNhBNYUy044bT50=;
-        b=JOf5sWQJhUnqoQX1GftwA7yOrPjQ9hWLF6pwQALcOJeq5YV+36tZrIwI7uOnc2Xda0
-         l99tPGtnBRJ+Q+D3GgEuDQH/+x0Fwnbwtm/TSYmhP9zq+dTavwvpPvG760bU5KkdkfLr
-         twmcgjAuYgF0uYaWmCKohVyU6rbYtyicHsK34M+qY7gR6xwbQwoVLRbYZL+xbLNn3doG
-         vcymvwMO0JYpUfigL2o+BMNVh4bDegIcIfmF2YLFI9EXRkaxqkYonCe8BuG7qSaCRpxN
-         rkjs/+xCDnqRPX9Zs4KEjDxRVkgVQwE2J43EjyZu2BEVNSJ8S8Bfu8UAfp6aVWW1Jxhi
-         W9Hw==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=jAf7PSOhvTnKeKI6ooAHauBekFF2p+kqsK3UIrBnQbQ=;
+        b=XsiGQiWquhY5p+bMATZPOU66wHeNdDuamMVmI26+UbOd0rb+kOW1/KwImdZgmTuPSJ
+         TKLqn6BAiV2USFrpMCcSYW7xSaoGO7iQ9PLg9LgLVc21jOv02lLjq4ONtuWbY2gJMj4y
+         hgdmRoCc4ngJr8mG2sZmFDJsaRUcnqo0RF2eG+9rPe2cJjv5w+bggiLeVF10UXpc9upB
+         IcjyJoOGdL89rL+INSAiKsuDPk4wOWK/IZ6WmXOMcI9jIg1/yBuiPYAPVSyYGYOZwrMn
+         7TxlO2gZZNS4m/iDx1V7axso9/p2K7Ss96PaTfWI8u/L5T3j37+RLGRnU+2sJBjjYpbl
+         S0uQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="JLZyQQ/u";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f82si2331773ybf.177.2020.07.29.08.15.50
+        by mx.google.com with ESMTPS id e138si10254636ybc.226.2020.07.27.11.06.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jul 2020 08:15:51 -0700 (PDT)
+        Mon, 27 Jul 2020 11:06:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35248 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="JLZyQQ/u";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:43096 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k0no6-0003sj-EQ
-	for alex.bennee@linaro.org; Wed, 29 Jul 2020 11:15:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43252)
+	id 1k07Vh-0004XU-Um
+	for alex.bennee@linaro.org; Mon, 27 Jul 2020 14:06:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57272)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1k0nnn-0003qR-EA
- for qemu-arm@nongnu.org; Wed, 29 Jul 2020 11:15:31 -0400
-Received: from 6.mo69.mail-out.ovh.net ([46.105.50.107]:45581)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1k0nnl-0001pQ-6C
- for qemu-arm@nongnu.org; Wed, 29 Jul 2020 11:15:31 -0400
-Received: from player762.ha.ovh.net (unknown [10.108.35.223])
- by mo69.mail-out.ovh.net (Postfix) with ESMTP id 0E18198C6A
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2020 17:15:18 +0200 (CEST)
-Received: from kaod.org (bad36-1-78-202-132-1.fbx.proxad.net [78.202.132.1])
- (Authenticated sender: clg@kaod.org)
- by player762.ha.ovh.net (Postfix) with ESMTPSA id A3CED14CDD546;
- Wed, 29 Jul 2020 15:15:09 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G0047b7a6a19-3090-437b-9bb5-a0acfd90bf0b,565E08D03F5381EE4F4017DF562F253825237DEE)
- smtp.auth=clg@kaod.org
-Subject: Re: [PATCH] hw/net/ftgmac100: Fix integer overflow in
- ftgmac100_do_tx()
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200710085417.638904-1-mcascell@redhat.com>
- <CAFEAcA-pRXOz5JVcwHa8=oaeogwaOK0YVXYQiJUpdM_rFZ+QTA@mail.gmail.com>
- <d7affe2b-0a2c-4e06-a874-daccf16bd136@kaod.org>
- <CAFEAcA9=_RC0w-EgjdPw=UWXZ-ufHjkeDWTMj_jXfSQL8G9GHA@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <77ff42a9-a5a4-dea7-0b9a-c699c35b32f9@kaod.org>
-Date: Wed, 29 Jul 2020 17:15:09 +0200
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k07VY-0004WD-O3; Mon, 27 Jul 2020 14:05:52 -0400
+Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:39279)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k07VX-0000Km-2K; Mon, 27 Jul 2020 14:05:52 -0400
+Received: by mail-ed1-x541.google.com with SMTP id o10so3141805edh.6;
+ Mon, 27 Jul 2020 11:05:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=jAf7PSOhvTnKeKI6ooAHauBekFF2p+kqsK3UIrBnQbQ=;
+ b=JLZyQQ/u6qVQWkz7eQ8QBObftsA/rCI6SkNGIIbMxEdlfNMCnIHPHcRe+99FCetKBn
+ r1PzhDBgo9FbpHbvnu9jUeO89YUnkJN2iszCAbf0w+Yv8khvQkK6tRZVI28TEtVZ8N7R
+ FqAiAwV/4bWIVFt5F/qVG25cZFxC6d+ygRWi9bie2gR2gkYnccv5g7m2UCfkE5x9W94h
+ W1U3FCKUvCKUTAa/iqbHqxukHsbtCzLQpHlmdDU8e6LrBaiSGYKBe5f0Rxk9hvaL64UZ
+ l6lsn/UQqvYGV6oIybEkzqq59yrhbWLrOil3AfJxeUzYyol5g1/DYElY2hEoiuCvNryN
+ Vl+w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=jAf7PSOhvTnKeKI6ooAHauBekFF2p+kqsK3UIrBnQbQ=;
+ b=szlLiaxtCjJgtJ4wKsaoWGIUz9s+DVlHkaE+cw9uge8wWtO1cRVhEcy7hgZMnu61Ec
+ mB1tyBnAUx0q1BNXj/5V4GHDyeJSg3/I2X6Kl4BrnSbIvrXISnyIRAONS7D7/CUAf4b8
+ ezlDbcjSGeu51yk0c28crEg/PKPBSWO6+POvYTFxLAnb5+5ap/0mJSA91EG9eA9s5pzS
+ 1ZcV6JOsCDaYqxFnEYjl5L8csNlCB2DFq5mUl9TLgFSWAf+vAxXwyQjWV5VbRDyyStp1
+ BbY1fZGjj1o3eLWOxbtcTyyID5dh1jekvwqScCaqg9dyEWKDzW62v1zj+bJI4IxKfnl6
+ yy9Q==
+X-Gm-Message-State: AOAM531QdxzQ3BGVlEEmdxsqGLdY13gKj9HdXrjS3HzMuhddHF4LP5uq
+ vwc+tDq49QIBBLiNyg7EX7U=
+X-Received: by 2002:a05:6402:b4b:: with SMTP id
+ bx11mr21814201edb.286.1595873149228; 
+ Mon, 27 Jul 2020 11:05:49 -0700 (PDT)
+Received: from [192.168.1.39] (214.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.214])
+ by smtp.gmail.com with ESMTPSA id vr6sm5563721ejb.36.2020.07.27.11.05.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Jul 2020 11:05:48 -0700 (PDT)
+Subject: Re: [PATCH for-5.1] hw/arm/netduino2, netduinoplus2: Set
+ system_clock_scale
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200727162617.26227-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e549c6d3-9fbb-ec47-f6c3-c84e4c625647@amsat.org>
+Date: Mon, 27 Jul 2020 20:05:47 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9=_RC0w-EgjdPw=UWXZ-ufHjkeDWTMj_jXfSQL8G9GHA@mail.gmail.com>
+In-Reply-To: <20200727162617.26227-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Ovh-Tracer-Id: 10557844905496578972
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrieeggdekjecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgsehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfeffvddtudegieefudeugffhjefgieegieegleettdehgfeiieevueeihfegfefgnecukfhppedtrddtrddtrddtpdejkedrvddtvddrudefvddrudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehplhgrhigvrhejiedvrdhhrgdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepqhgvmhhuqdgrrhhmsehnohhnghhnuhdrohhrgh
-Received-SPF: pass client-ip=46.105.50.107; envelope-from=clg@kaod.org;
- helo=6.mo69.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/29 11:15:19
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::541;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x541.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -100,112 +123,111 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- Mauro Matteo Cascella <mcascell@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, ziming zhang <ezrakiez@gmail.com>
+Cc: Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rsdSPICswxpE
+X-TUID: 7cJ/F1lBK27Y
 
-Sorry for the late answer.
-
-On 7/13/20 6:15 PM, Peter Maydell wrote:
-> On Mon, 13 Jul 2020 at 15:19, Cédric Le Goater <clg@kaod.org> wrote:
->> On 7/10/20 1:33 PM, Peter Maydell wrote:
->>> Andrew, Cedric: do you have the datasheet for this device? Do you
->>> know if we should also be flagging the error back to the
->>> guest somehow?
->>
->> zero is the only invalid size of a transmit buffer and the specs does
->> not have any special information on which bit to raise in that case.
+On 7/27/20 6:26 PM, Peter Maydell wrote:
+> The netduino2 and netduinoplus2 boards forgot to set the system_clock_scale
+> global, which meant that if guest code used the systick timer in "use
+> the processor clock" mode it would hang because time never advances.
 > 
-> I found a datasheet which might or might not be the equivalent
-> bit of hardware -- does your datasheet have a note on the
-> TXBUF_SIZE field of a tx descriptor that says "When the size is 0,
-> the descriptor would be discarded" ? (Though I found another
-> random doc that just says it's illegal...)
-
-I only have : 
-
-  TXBUF SIZE: Transmit buffer size in byte
-  The transmit buffer size can not be zero.
-
->> I think FTGMAC100_INT_NO_NPTXBUF (transmit buffer unavailable) is our
->> best option and we should add an extra 'len == 0' test in front of
->> the dma_memory_read() call to raise it. A zero length is not considered
->> bogus by dma_memory_read() it seems.
+> Set the global to match the documented CPU clock speed of these boards.
+> Judging by the data sheet this is slightly simplistic because the
+> SoC allows configuration of the SYSCLK source and frequency via the
+> RCC (reset and clock control) module, but we don't model that.
 > 
-> My best guess at "what the hardware does" here would be:
->  * TXBUF_SIZE in a tx descriptor can be anything: the h/w
->    would happily allow you to assemble a tx packet with a
->    whole series of 1-byte sized buffers, each with its own
->    tx descriptor
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1876187
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> NB: tested with "make check" only...
 
-yes. 
+What about adding another patch with:
 
->  * zero-byte tx descriptors might just be marked "done" and
->    skipped over since they have no actual data
+-- >8 --
+--- a/hw/timer/armv7m_systick.c
++++ b/hw/timer/armv7m_systick.c
+@@ -17,6 +17,7 @@
+ #include "qemu/timer.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "qapi/error.h"
+ #include "trace.h"
 
-yes.
+ /* qemu timers run at 1GHz.   We want something closer to 1MHz.  */
+@@ -221,6 +222,11 @@ static void systick_instance_init(Object *obj)
+ static void systick_realize(DeviceState *dev, Error **errp)
+ {
+     SysTickState *s = SYSTICK(dev);
++
++    if (!system_clock_scale) {
++        error_setg(errp, "can not use systick with 'system_clock_scale
+= 0'");
++        return;
++    }
+     s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, systick_timer_tick, s);
+ }
 
->  * any checking on max/min lengths would be done
->    only on the accumulated total-packet length (we do this
->    this way already for the frame-too-big check)
+---
 
-yes.
-
->  * I suspect "transmit buffer unavailable" means "the ethernet
->    controller needs more data but the next tx descriptor
->    is still marked as owned by the guest" -- this is certainly
->    what we currently do with it, and that doesn't seem like
->    the best thing to signal for the "tx packet too small"
->    case. It's possible that the hardware simply sends out a
->    runt packet of some form if the software tells it to do
->    that. My vote would be for handling it with XPKT_LOST,
->    the same way we do for over-large frames. 
-
-XPKT_LOST means that packets are lost due to late/excessive 
-collision. I have used this status for large frames because
-not other bits made sense.
-
->    This probably
->    is not what the hardware does but at least it's a
->    coherent thing that the guest might be expecting to have
->    happen for a tx attempt and it matches the fact that we
->    really are not going to put it on the 'wire'.
-
-I agree.
+I'll try to review with the datasheets tomorrow morning in case you want
+to get it merged during the day.
 
 > 
-> Side note: I suspect that any failures from
-> dma_memory_read() and dma_memory_write() should be
-> reported as AHB_ERR (currently we have a mix of
-> ignoring them or using NO_NPTXBUF).
-
-AHB_ERR is not used in the Aspeed implementation. I checked with 
-them. But I think it makes sense for other implementations, so we
-can add this status for Linux.
-
-NO_NPTXBUF means a lack a transmit descriptors.
-
-
-XPKT_LOST is our best choice then.
-
-Thanks,
-
-C. 
-
-> (It would in theory be possible to test some of these edge
-> cases on real hardware, but that kind of bare-metal test
-> case is usually a pain to put together and way overkill
-> for this situation, so I don't think we should bother.)
+>  hw/arm/netduino2.c     | 10 ++++++++++
+>  hw/arm/netduinoplus2.c | 10 ++++++++++
+>  2 files changed, 20 insertions(+)
 > 
->> Is address zero considered bogus ?
->> If not, we need to check that also.
-> 
-> Writes to address 0 are fine, it is not a special physical address.
-> 
-> thanks
-> -- PMM
+> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
+> index 79e19392b56..8f103341443 100644
+> --- a/hw/arm/netduino2.c
+> +++ b/hw/arm/netduino2.c
+> @@ -30,10 +30,20 @@
+>  #include "hw/arm/stm32f205_soc.h"
+>  #include "hw/arm/boot.h"
+>  
+> +/* Main SYSCLK frequency in Hz (120MHz) */
+> +#define SYSCLK_FRQ 120000000ULL
+> +
+>  static void netduino2_init(MachineState *machine)
+>  {
+>      DeviceState *dev;
+>  
+> +    /*
+> +     * TODO: ideally we would model the SoC RCC and let it handle
+> +     * system_clock_scale, including its ability to define different
+> +     * possible SYSCLK sources.
+> +     */
+> +    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
+> +
+>      dev = qdev_new(TYPE_STM32F205_SOC);
+>      qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
+> index 958d21dd9f9..68abd3ec69d 100644
+> --- a/hw/arm/netduinoplus2.c
+> +++ b/hw/arm/netduinoplus2.c
+> @@ -30,10 +30,20 @@
+>  #include "hw/arm/stm32f405_soc.h"
+>  #include "hw/arm/boot.h"
+>  
+> +/* Main SYSCLK frequency in Hz (168MHz) */
+> +#define SYSCLK_FRQ 168000000ULL
+> +
+>  static void netduinoplus2_init(MachineState *machine)
+>  {
+>      DeviceState *dev;
+>  
+> +    /*
+> +     * TODO: ideally we would model the SoC RCC and let it handle
+> +     * system_clock_scale, including its ability to define different
+> +     * possible SYSCLK sources.
+> +     */
+> +    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
+> +
+>      dev = qdev_new(TYPE_STM32F405_SOC);
+>      qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
 > 
 

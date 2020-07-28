@@ -1,168 +1,182 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp470003lfy;
-        Tue, 28 Jul 2020 03:43:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzBnIv+U+uSvLShyH7fTLULsHnzAsWimcxB807iYmW7yBU3JLYETLGaVINLtWJrAWF4drPe
-X-Received: by 2002:a25:d92:: with SMTP id 140mr24254634ybn.250.1595933002515;
-        Tue, 28 Jul 2020 03:43:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595933002; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp547805lfy;
+        Tue, 28 Jul 2020 05:29:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw7jD8eG/y1x3YbbZ+sqJcbBbNph3M/2AUKBjDNXP743SvOPS2RLD544qtpP+dlxhtn5dLh
+X-Received: by 2002:a25:d0c2:: with SMTP id h185mr6654437ybg.73.1595939395352;
+        Tue, 28 Jul 2020 05:29:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595939395; cv=none;
         d=google.com; s=arc-20160816;
-        b=fFRy3YYFGsKQ1f2WrT8OyWACUgkzMthrUh3tRcgXv9xIwaJe+HP402YmFLOoh/6uYU
-         1ufeKXVwdegiqulP6oKGg/pe5EXcu3dkzuj72spAP1uHc9tI/9WyEuCMsykrz1VF8zIZ
-         RqDXIx4wGSOuu1kavt1jl0pxlh3hzzv7tJ+JA0eLnkA3/XGGyvxny6wepEG1ZYzJ9LP+
-         t/GLQq0VXT3yQs8EvKJ0UZMEMMCrR+UAzcvc4IvnrqttcDz9Z47kFNC+/KfBMj0wGCDz
-         9Qh6mI7KY9NT/Q1OdtMaBIyRpo8yYmj7LAwq11wlHqvK2GB7UEVLOFRCle/TmGG9H77M
-         jDOw==
+        b=GRulm2sJWfa5WdLJTW8j2J1J7e4tRAZ3dtNU5ScCrnZ5WUzSdvol0SscUlWS9UH/GS
+         u1r91BfaUu9rRpBZd8w/f0998nNRgPazh5YXRloc00f2KurpUFyvK8VzQAbLhf5GswSA
+         cUmkq3SDe6NsGO3BuIZDnL1QjUeR08N0vbdUbuuGf5xc0of8UNVAeb3opQ2xQNjXjnqd
+         S/96oOeI60InT9lpEQFtudyBPfYcRWTbAAvSyyO5K2Ht1MavBbwR7zzVB8cn4AlrBxoY
+         CY5xhia0B8EHqsO6akDXXH2k+kvjkr1K6yXvNkkGCb3avAyzT8MwFQY7nTPLHheooy4A
+         b9Vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=0Zqtu93XjkTXjRgpWdCxN5V6Q2rGF/LY/1avvcwWTU8=;
-        b=tmCBojtC/6qaC1KUXrvROuGU9D+CJV9Tvws/Ad+soIj87jc7Ym+cINodijfBKXJLPc
-         EYRhDjdTt9UyitvjNSai4s/k+1hmKjGZfXuW09Mm7HxYg7mIXppoPW94BuzZHkVsFNio
-         /3GWuorN2tyJl/EM5ajBDE1DrdF2QYGyJUFe77K4J9gUHGFk3Ikef87Zl0CVqwD20/I0
-         xDMmF3fkXEkbbqNCTSZ7/xh+1PTe/f01PMBaMAb0gTn5H/JqYDQ8RN2ziPUuZnyhs8Ev
-         6tE7O80IPLQRjckegyOMmpPrbrGAQZYvHu/ISiMtTAGdgUHoQp6wW56O4iidxnY2+bas
-         HUPg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Sh13qteGxNk/+YTEg4Jt3fxwUcvVSdSZGbREo+9eVTg=;
+        b=HDzgc8SJ2xUw+2XT5b8U0X5mH2C4sxGDXlmAiQ0Fb7N8RI3Im3SxGJxiU6u2QNbVjG
+         jvuWCuqBdVkZxR8lk0SSNg1FvY7Ocvb/PrFSAx7jd70P9xSnRgmBVIesJLn05cdoxear
+         I/XYlTChtIeSypcIVxDJ5SdpVklvKa3rZs0HrU/+foKgF5J2SW4b7je2g4U6zsKNc32Q
+         UyIhAkJdypJakjgtshi7gte5gTMlG1iN08ZrOaojLIvz3qKf7/vG9qeRAnwZ3y98vbJB
+         8NU+zGuX7Ke/RFT3BTWktOiA5vaN8k/pzDPYHFEkDnHZxxoX7/JyVd4yQxkncTUaPGB0
+         /hFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HXJEFfSu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vn4SzqSy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f17si12343512ybg.278.2020.07.28.03.43.22
+        by mx.google.com with ESMTPS id x4si12644496ybo.468.2020.07.28.05.29.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jul 2020 03:43:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Jul 2020 05:29:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HXJEFfSu;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52944 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Vn4SzqSy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:39902 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k0N4r-0002in-Tz
-	for alex.bennee@linaro.org; Tue, 28 Jul 2020 06:43:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54242)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k0Ojy-0002Sa-Q9
+	for alex.bennee@linaro.org; Tue, 28 Jul 2020 08:29:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54670)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k0N1p-0000Fq-8R
- for qemu-devel@nongnu.org; Tue, 28 Jul 2020 06:40:13 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:27795
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k0N1n-0002z1-Ew
- for qemu-devel@nongnu.org; Tue, 28 Jul 2020 06:40:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595932810;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=0Zqtu93XjkTXjRgpWdCxN5V6Q2rGF/LY/1avvcwWTU8=;
- b=HXJEFfSu2uwrvA32achqLO8Mo1sVLXy6Pv81izNd6f3u8/ZHh2LCWDDebZV9HxvBB/od0p
- Ke8yQiSeoiDQgEG6g86R8bDQPgev5SC7yaI7WxZJJ9FAOHsnQjTkGFUux5fydMSsKx+03C
- x2mvwHM1IKFmkKaFV58xOjVrvsfU4xE=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-194-Db-3W4OXMSa6UJo7G_1ccg-1; Tue, 28 Jul 2020 06:40:06 -0400
-X-MC-Unique: Db-3W4OXMSa6UJo7G_1ccg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 23650107ACCA;
- Tue, 28 Jul 2020 10:40:04 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.193.15])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 65716726BA;
- Tue, 28 Jul 2020 10:39:55 +0000 (UTC)
-Date: Tue, 28 Jul 2020 12:39:52 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Subject: Re: [PATCH] hw: add compat machines for 5.2
-Message-ID: <20200728103952.aklbaxcgw7c6eywz@kamzik.brq.redhat.com>
-References: <20200728094645.272149-1-cohuck@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k0Ojq-0002Ph-Ij; Tue, 28 Jul 2020 08:29:46 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:46349)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k0Ojp-0001Ja-1D; Tue, 28 Jul 2020 08:29:46 -0400
+Received: by mail-wr1-x444.google.com with SMTP id r12so18062911wrj.13;
+ Tue, 28 Jul 2020 05:29:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Sh13qteGxNk/+YTEg4Jt3fxwUcvVSdSZGbREo+9eVTg=;
+ b=Vn4SzqSywkB1QxQADgHZbYorccCfGa4oIJyn0gq7YWMdSL5i0LAR2V4s/tuIq7SPoo
+ UQgB2qA1GEB+hXOW3FLeL/m5XYhz+VwSVDHuqAPYu+Pk26umJuyKJGlgUldti5q914wj
+ /N7PF8SZxIYh3W5jHOZqIK3o1zx/YBR+cRaPJgrM4RYCHKM3LLKZvmFR7pWZWykzky96
+ ZiBLtJmn3LdDs8+fyfxQ0StRmSEaNM5j6zuul9NP7x80njhX1b4vEyaMUtL0nFZEcPBs
+ oC3EmBEtX1m7zUKGE9T0ToNcx5E+Gf0CVM1azgcvXPmTwzWWvO2/zq+O0CdoPoFCg2e7
+ xoLQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Sh13qteGxNk/+YTEg4Jt3fxwUcvVSdSZGbREo+9eVTg=;
+ b=G0bpcuQXrSRLzAe74mE57yPvCol7aBGXXuUYf3nBnJQNgjGqp/+a5U3qE60G1EZdnK
+ X6/iqNqhPECfHB+OpGFUgQN7RmD1zd/yA0RLhBBn+zpDSJhyV38SptMXBGFEkXn7p8IB
+ zqRWmUNFDjKFUX0dXTvEzWFlv2yTbmlIdjrTz0hTwsUFeCTaJUrSnVgZuOHiI70ONgOy
+ /CVxHiLlQAVPDdPVz8dWu9MmpLaKG7kRJc3lJSKj6QuUC3IpwFi52hDku+nqeSJk3z6N
+ JUMxum8Oi43u583L5rocbFAOlKapBz1/ksrQUNBcpyXkMoY1+QN0M/m29lKfzcstFefJ
+ opYQ==
+X-Gm-Message-State: AOAM531xojmS63TzBuXLIUnzZ+vddQP631xlmKJkP8xn/kvBAu0Jo5BF
+ 0d+yggvTLgTH9pUKoiemK8QT9hGj
+X-Received: by 2002:adf:de08:: with SMTP id b8mr23433973wrm.4.1595939383101;
+ Tue, 28 Jul 2020 05:29:43 -0700 (PDT)
+Received: from [192.168.1.39] (214.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.214])
+ by smtp.gmail.com with ESMTPSA id r16sm17458842wrr.13.2020.07.28.05.29.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 28 Jul 2020 05:29:42 -0700 (PDT)
+Subject: Re: [PATCH for-5.1? 0/3] Fix AIRCR.SYSRESETREQ for most M-profile
+ boards
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200728103744.6909-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <47817541-68e3-12f8-27b4-552af8389907@amsat.org>
+Date: Tue, 28 Jul 2020 14:29:41 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200728094645.272149-1-cohuck@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/28 06:02:02
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20200728103744.6909-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A/fkCSMJWOQh
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vErOlsMhCShn
 
-On Tue, Jul 28, 2020 at 11:46:45AM +0200, Cornelia Huck wrote:
-> Add 5.2 machine types for arm/i440fx/q35/s390x/spapr.
+On 7/28/20 12:37 PM, Peter Maydell wrote:
+> QEMU's NVIC device provides an outbound qemu_irq "SYSRESETREQ" which
+> it signals when the guest sets the SYSRESETREQ bit in the AIRCR
+> register.  This matches the hardware design (where the CPU has a
+> signal of this name and it is up to the SoC to connect that up to an
+> actual reset mechanism), but in QEMU it mostly results in duplicated
+> code in SoC objects and bugs where SoC model implementors forget to
+> wire up the SYSRESETREQ line.
 > 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> ---
->  hw/arm/virt.c              |  9 ++++++++-
->  hw/core/machine.c          |  3 +++
->  hw/i386/pc.c               |  3 +++
->  hw/i386/pc_piix.c          | 14 +++++++++++++-
->  hw/i386/pc_q35.c           | 13 ++++++++++++-
->  hw/ppc/spapr.c             | 15 +++++++++++++--
->  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
->  include/hw/boards.h        |  3 +++
->  include/hw/i386/pc.h       |  3 +++
->  9 files changed, 71 insertions(+), 6 deletions(-)
+> This patchseries provides a default behaviour for the case where
+> SYSRESETREQ is not actually connected to anything: use
+> qemu_system_reset_request() to perform a system reset. This is a
+> much more plausible default than "do nothing". It allows us to
+> allow us to remove the implementations of SYSRESETREQ handling from
+> the boards which currently hook up a reset function that just
+> does that (stellaris, emcraft-sf2), and also fixes the bugs
+> in these board models which forgot to wire up the signal:
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index ecfee362a182..acf9bfbeceaf 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2546,10 +2546,17 @@ static void machvirt_machine_init(void)
->  }
->  type_init(machvirt_machine_init);
->  
-> +static void virt_machine_5_2_options(MachineClass *mc)
-> +{
-> +}
-> +DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
-> +
->  static void virt_machine_5_1_options(MachineClass *mc)
->  {
-> +    virt_machine_5_2_options(mc);
-> +    compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
->  }
-> -DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
-> +DEFINE_VIRT_MACHINE(5, 1)
->  
->  static void virt_machine_5_0_options(MachineClass *mc)
->  {
+>  * microbit
+>  * mps2-an385
+>  * mps2-an505
+>  * mps2-an511
+>  * mps2-an521
+>  * musca-a
+>  * musca-b1
+>  * netduino
+>  * netduinoplus2
+> 
+> [I admit that I have not specifically checked for datasheets
+> and errata notes for all these boards to confirm that AIRCR.SYSRESETREQ
+> really does reset the system or to look for more complex
+> reset-control logic... As an example, though, the SSE-200 used in
+> the mps2-an521 and the musca boards has a RESET_MASK register in the
+> system control block that allows a guest to suppress reset requests from
+> one or both CPUs. Since we don't model that register, "always reset"
+> is still closer to reasonable behaviour than "do nothing".]
+> 
+> We still allow the board to wire up the signal if it needs to, in case
+> we need to model more complicated reset controller logic (eg if we
+> wanted to get that SSE-200 corner case right in future) or to model
+> buggy SoC hardware which forgot to wire up the line itself. But
+> defaulting to "reset the system" is going to be correct much more
+> often than "do nothing".
+> 
+> Patch 1 introduces a new API for "check whether my qemu_irq is
+> actually connected to anything" (the test is trivial but the
+> encapsulation seems worthwhile); patch 2 provides the new default
+> and patch 3 removes the now-unnecessary SYSRESETREQ handlers in
+> board/SoC code.
 
-For the above hw/arm/virt.c part
+Good cleanup!
 
-Reviewed-by: Andrew Jones <drjones@redhat.com>
-
+Series:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

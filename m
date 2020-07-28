@@ -1,76 +1,76 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp140638lfy;
-        Mon, 27 Jul 2020 18:30:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxzT3n+ug2XMKhDgUL5hiVSGRml3Ww7LVBvfjmV7Jy7STkcalQ3/nPb6h0/ip4E91X4mvvJ
-X-Received: by 2002:a5b:e86:: with SMTP id z6mr39168611ybr.34.1595899815171;
-        Mon, 27 Jul 2020 18:30:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595899815; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp144911lfy;
+        Mon, 27 Jul 2020 18:37:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyCokJorc1JoYirTOB7ftL3o/44o2fhrbtvG8J0KXLmIuOI3znTzT1RPE+V3rUUDrd6PeO2
+X-Received: by 2002:a25:c7cd:: with SMTP id w196mr16260286ybe.351.1595900222647;
+        Mon, 27 Jul 2020 18:37:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595900222; cv=none;
         d=google.com; s=arc-20160816;
-        b=zp4mwagzxeT7fBwaE3Jq8A9WP2behQ0SmccCLu4ENm/VaTLVpa3mq7VUGXSl5gFQGW
-         SuC6DNmiuQHp31zVps/3i5cQ3C9yj1ur8PLaF3gCxc6WKUwI6O56E4eCDUinV39tvq41
-         MFB/tXmoiBgp5Dff7G8/PphnUH1H2VdIfehRUJYX/cnz8u+CxgWA6mzsa0s3B+x5QgKl
-         ioCQ6GC6MKEVWjgQGsI7qm3tMd9PMtdDU5WjY6V/3w7ZgiBQS1J5Q8X7kMiIsH2ypNKC
-         P2bAkP7dYbmPEkXOp70xZ05ZruRUHZZkCSletzITOkN/CKS5jlfkOVwHEi3BtcXMA6LG
-         AuWQ==
+        b=Ia4DRTC3aMvyq0JuVpji6yW2dbdL3Rz/vulRh+Ma+KGFXehFfwLG+8JakEoR9fDBSm
+         KkNoSTKBy7P7FE0luI0VN+cSFi5BvPwu3/6w+juSTikd07pnPIUTQ64Q8Rr8PvG3gdcK
+         pVkhukwA/lZOXCW2GditE6RbZnzpJ0UeH7XELBQUQDI7UV4qOCLgUpKl5sGR1+Sn7d0S
+         yb7D4S7rMRDNtajipeyKR0Z1PwGtMp0U1+O4Rd8xjrbklZytfpmKAP/Yb0bTfEBbm2uC
+         vw0QE01jMRyZ/A3/Zfxk5BaIMPSLmSVCJXS4WJJZKpIsQEEktkIERI7Zp3WNBw/5o7y5
+         WIUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :in-reply-to:mime-version:user-agent:date:message-id:from:references
          :to:subject;
-        bh=UUYpjmpzWS0nTEGvUVhrpK/0TmH6Ew5uH9gEqAga0XI=;
-        b=TI/kgPdjl0a5fC0Vvy03w2m+m7mQzysbUESE5ZAGq60LahGY8NdiztAVaImTbRpAtp
-         n4M7GNLv+Y+kyymg/HtV9dwHf1En+5rIdUxisEgAoraF96d5UW/d3b9Mz6+0v/p3TYQ0
-         rkvgot5gdNGqewCnA8IbA/PcYh3JFe9nnVpUoWmpz3ExHEwNLNG6dKr3o92s2Rbzdxoh
-         9RHRowml31WgjruaOSicJUzcGOXctrNpd5HlUWNJUKfKdkQm2wR1V8Q/8+bq2ogNyGmc
-         l4sHxoukMcO17FRHWYEmGdrZSUXUCp2oD82VbZiww4uEiYLb86TVKPiWZ/AwJ94G2+Ou
-         jVLg==
+        bh=4MySRJqQd/5ZkT9VMINoSCzY9DyxayanAus2lgAxLU4=;
+        b=HqfYCeFfJxIFAKB8oCjqYnfPmXSbR+B9GZtLe2Magr2IYX8qrKLFZghqlGoslfrh1W
+         QCBDVLj4m6f9Bkn5dTUiqD9j3jcox1NSdgyaXCU/xmst5ozBGV4A2sr3R7gOGRhe3kjw
+         ixni4MtL7qrvxuzD14v0b6vpTsQ4dtIHsPWdjEt62MQZ5NlhaQlksDpekIi9o3pdBHmV
+         R1KYDMbAt23EAtgS0lkQ1eoCe0asZ+7huIHZ1gDoLAxk5FDh97PXwjz2m8Uon3J/wsps
+         pscRnh11ZnvUsV8vWdYMzubAZFEmEXrTXWDabOPDBNE8/nmOG6hmQPX03+PP0JjkJave
+         +hNw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l16si8023245ybk.347.2020.07.27.18.30.15
+        by mx.google.com with ESMTPS id k136si9120695ybk.184.2020.07.27.18.37.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jul 2020 18:30:15 -0700 (PDT)
+        Mon, 27 Jul 2020 18:37:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57792 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36448 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k0ERa-0007Dg-HD
-	for alex.bennee@linaro.org; Mon, 27 Jul 2020 21:30:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56222)
+	id 1k0EYA-00026F-2j
+	for alex.bennee@linaro.org; Mon, 27 Jul 2020 21:37:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57128)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1k0ERT-0007DW-C5; Mon, 27 Jul 2020 21:30:07 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:44244 helo=huawei.com)
+ id 1k0EXX-0001D0-6L; Mon, 27 Jul 2020 21:36:23 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:33762 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1k0ERQ-0004Fa-LV; Mon, 27 Jul 2020 21:30:07 -0400
-Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 07366C8D509989393011;
- Tue, 28 Jul 2020 09:29:59 +0800 (CST)
+ id 1k0EXV-00058e-Cz; Mon, 27 Jul 2020 21:36:22 -0400
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 0BD3A25CBDE627D941BF;
+ Tue, 28 Jul 2020 09:36:16 +0800 (CST)
 Received: from [10.174.187.22] (10.174.187.22) by
- DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
- 14.3.487.0; Tue, 28 Jul 2020 09:29:51 +0800
+ DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
+ 14.3.487.0; Tue, 28 Jul 2020 09:36:06 +0800
 Subject: Re: [PATCH] bugfix: irq: Avoid covering object refcount of qemu_irq
-To: Li Qiang <liq3ea@gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20200727130225.32640-1-zhukeqian1@huawei.com>
- <CAKXe6S+L=Uze9Eo8jmPgpCDob_S_fXzvquHw2D974_5+haKdsw@mail.gmail.com>
+ <CAFEAcA9vQMP0YLAuzdPW2m3RcRNySxA0gJQZmeXBUYRy4=Dk+w@mail.gmail.com>
 From: zhukeqian <zhukeqian1@huawei.com>
-Message-ID: <b96f7fc1-17dc-6913-16fb-30c7c5ea3beb@huawei.com>
-Date: Tue, 28 Jul 2020 09:29:50 +0800
+Message-ID: <d8b6e214-a729-26a6-ae2f-f6b59091b613@huawei.com>
+Date: Tue, 28 Jul 2020 09:36:05 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
  Thunderbird/45.7.1
 MIME-Version: 1.0
-In-Reply-To: <CAKXe6S+L=Uze9Eo8jmPgpCDob_S_fXzvquHw2D974_5+haKdsw@mail.gmail.com>
+In-Reply-To: <CAFEAcA9vQMP0YLAuzdPW2m3RcRNySxA0gJQZmeXBUYRy4=Dk+w@mail.gmail.com>
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.187.22]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=zhukeqian1@huawei.com;
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=zhukeqian1@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 21:29:59
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/27 21:36:16
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -91,34 +91,22 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Thomas Huth <thuth@redhat.com>, Esteban Bosse <estebanbosse@gmail.com>,
- Qemu Developers <qemu-devel@nongnu.org>, "Dr . David Alan
- Gilbert" <dgilbert@redhat.com>, yezengruan@huawei.com, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, wanghaibin.wang@huawei.com,
+ Li Qiang <liq3ea@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>, yezengruan@huawei.com,
+ qemu-arm <qemu-arm@nongnu.org>, wanghaibin.wang@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mNz6wPyb95Qi
+X-TUID: 9TBDo1F8J2qu
 
-Hi Qiang,
+Hi Peter,
 
-On 2020/7/27 22:37, Li Qiang wrote:
-> Keqian Zhu <zhukeqian1@huawei.com> 于2020年7月27日周一 下午9:03写道：
+On 2020/7/27 22:41, Peter Maydell wrote:
+> On Mon, 27 Jul 2020 at 14:03, Keqian Zhu <zhukeqian1@huawei.com> wrote:
 >>
 >> Avoid covering object refcount of qemu_irq, otherwise it may causes
 >> memory leak.
-> 
-> Any reproducer?
-> 
-In mainline Qemu. this function is only used in qtest. One of our internal
-self-developed module also use this function. The memory leak is reported
-by ASAN.
-
-Thanks,
-Keqian
-
-> Thanks,
-> Li Qiang
-> 
 >>
 >> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
 >> ---
@@ -140,8 +128,26 @@ Keqian
 >>          gpio_in[i]->handler = handler;
 >>          gpio_in[i]->opaque = &old_irqs[i];
 >>      }
->> --
->> 2.19.1
->>
+> 
+> This function is leaky by design, because it doesn't do anything
+> with the old_irqs array and there's no function for un-intercepting
+> the IRQs (which would need to free that memory). This is not ideal
+> but OK because it's only used in the test suite.
+One of our internal self-developed module also use this function, and we
+implemented a function to remove intercepting, so there is no memory leak
+after this bugfix.
+
+I suggest to merge this bugfix to prepare for future code which may invoke
+this function.
+
+> 
+> Is there a specific bug you're trying to fix here?
+The memory leak is reported by ASAN.
+> 
+
+Thanks,
+Keqian
+> thanks
+> -- PMM
 > .
 > 

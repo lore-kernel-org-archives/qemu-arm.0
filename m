@@ -1,233 +1,238 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3073295lfy;
-        Mon, 27 Jul 2020 11:06:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyjc3SgdX6BDpRqUFnnenNGa/k365b6AHmu80bo8ZFSaultfDXNqQ8nUG1ZsFflrTP7UzeA
-X-Received: by 2002:a25:e751:: with SMTP id e78mr15420832ybh.369.1595873162591;
-        Mon, 27 Jul 2020 11:06:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595873162; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp684803lfy;
+        Tue, 28 Jul 2020 08:15:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz3qTu0U6sAmsCD+5pv+3s7rzirMaGmYMdSRE5ybDL17QTcTTv7sCp/rUWwn09dmix1ez2y
+X-Received: by 2002:a25:da87:: with SMTP id n129mr45167963ybf.149.1595949356393;
+        Tue, 28 Jul 2020 08:15:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595949356; cv=none;
         d=google.com; s=arc-20160816;
-        b=0ZOqCcy/u7Yn7zZlYVzmHa+dR9aZm5POVfx6L//3/pvlMBcyZcMLHnI5lN+X/WrZ2P
-         gslH64i0XoJImLkatTcOKfVgyFuKbFSgEJUFp2KnqLYuFI2mYH05kMqlHRcP/FAXBqf1
-         IuN7e0zUx0KXIHcYQUkohjsweR3213F5/pWCpLTx3EJxX1O2lFSba4GtjyuqkOqLJvN6
-         kPc9Jo40ADt+BZMDzG1Yow/+D5HA1+fGX6HcKVDc4EuGoeEyHFVDn64LS49n07crebPT
-         RLgPVog4J7UZiVD5+CTghlcQcKJW2f8kWLPCrPvJ0zhkNwJ6s4UlvcD6EuZuX253WpBP
-         2RZw==
+        b=ys3sHUilKgnd4SASd6pmJaG5o7kS3ecIK7tyyoY2Ctxl4Y/L4wb1on9OMY7VJ+LPFy
+         Ulu/FlbCCkoeYP9UEmStaefpUGASl+LVDH6sUgBvBfIZir6CnLRnm3uIgt3RQ0XLcWmL
+         zkbihtPJ2gLiSZSzkKbv6o9PQmWtDZGoAq5bMnOZSJV59DNyoWs9YgTlLIDVUHc3wVua
+         p9hLiy/5bsSp2tD8FABC/y9oj10opj4iDtvZDhD1wDPdlZ/BQ8lPiDksdS9QD5GkZUXj
+         tAiAKOBYd70BLGXMEXgS1S80ZHeZdR7OFQsmM8aIB7mpKBSXRFSQgpwIWDhvHxb82ykO
+         udlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=jAf7PSOhvTnKeKI6ooAHauBekFF2p+kqsK3UIrBnQbQ=;
-        b=XsiGQiWquhY5p+bMATZPOU66wHeNdDuamMVmI26+UbOd0rb+kOW1/KwImdZgmTuPSJ
-         TKLqn6BAiV2USFrpMCcSYW7xSaoGO7iQ9PLg9LgLVc21jOv02lLjq4ONtuWbY2gJMj4y
-         hgdmRoCc4ngJr8mG2sZmFDJsaRUcnqo0RF2eG+9rPe2cJjv5w+bggiLeVF10UXpc9upB
-         IcjyJoOGdL89rL+INSAiKsuDPk4wOWK/IZ6WmXOMcI9jIg1/yBuiPYAPVSyYGYOZwrMn
-         7TxlO2gZZNS4m/iDx1V7axso9/p2K7Ss96PaTfWI8u/L5T3j37+RLGRnU+2sJBjjYpbl
-         S0uQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=+FCzgHmXiuU6rMRVcaVlslV/fEexjYvhaArIyICSvqM=;
+        b=puNk9K8o3KyZt40O7XnXwMveQ1+A2YuyFMRALSgZYRUB1C6OH4qJ2tj+8fkHosAaiI
+         cWIWKdT7u/H3XCMfX0aNbeLYlO6/Dc2Cw/qaN3FBWOUitq8JqGwZRdLUDXQwISndQpM6
+         f/QE1lWVc9j5giMRxzG0Vb/2+qL5f4fQElTMIJYsbAL1KqwCV5enVZA3eD/rkqV7tHrJ
+         ibc9HcCoaEK/YHkCU8zStKlwbBxsQpY8IxLn5zffVbRInGVpMfqtfINA2mRAC6x/RfNt
+         cpFEJcpzYFlLh+4RDl3K931CxF0npQSCAoAJTfS5cyPkks1031c5NBv/IM8eDr9dIkWl
+         cl/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="JLZyQQ/u";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e+0Gos4u;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e138si10254636ybc.226.2020.07.27.11.06.02
+        by mx.google.com with ESMTPS id d196si8933270ybc.186.2020.07.28.08.15.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 27 Jul 2020 11:06:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Jul 2020 08:15:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="JLZyQQ/u";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43096 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e+0Gos4u;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k07Vh-0004XU-Um
-	for alex.bennee@linaro.org; Mon, 27 Jul 2020 14:06:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57272)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k0RKd-0000ic-LJ
+	for alex.bennee@linaro.org; Tue, 28 Jul 2020 11:15:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42068)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k07VY-0004WD-O3; Mon, 27 Jul 2020 14:05:52 -0400
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:39279)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k07VX-0000Km-2K; Mon, 27 Jul 2020 14:05:52 -0400
-Received: by mail-ed1-x541.google.com with SMTP id o10so3141805edh.6;
- Mon, 27 Jul 2020 11:05:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=jAf7PSOhvTnKeKI6ooAHauBekFF2p+kqsK3UIrBnQbQ=;
- b=JLZyQQ/u6qVQWkz7eQ8QBObftsA/rCI6SkNGIIbMxEdlfNMCnIHPHcRe+99FCetKBn
- r1PzhDBgo9FbpHbvnu9jUeO89YUnkJN2iszCAbf0w+Yv8khvQkK6tRZVI28TEtVZ8N7R
- FqAiAwV/4bWIVFt5F/qVG25cZFxC6d+ygRWi9bie2gR2gkYnccv5g7m2UCfkE5x9W94h
- W1U3FCKUvCKUTAa/iqbHqxukHsbtCzLQpHlmdDU8e6LrBaiSGYKBe5f0Rxk9hvaL64UZ
- l6lsn/UQqvYGV6oIybEkzqq59yrhbWLrOil3AfJxeUzYyol5g1/DYElY2hEoiuCvNryN
- Vl+w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=jAf7PSOhvTnKeKI6ooAHauBekFF2p+kqsK3UIrBnQbQ=;
- b=szlLiaxtCjJgtJ4wKsaoWGIUz9s+DVlHkaE+cw9uge8wWtO1cRVhEcy7hgZMnu61Ec
- mB1tyBnAUx0q1BNXj/5V4GHDyeJSg3/I2X6Kl4BrnSbIvrXISnyIRAONS7D7/CUAf4b8
- ezlDbcjSGeu51yk0c28crEg/PKPBSWO6+POvYTFxLAnb5+5ap/0mJSA91EG9eA9s5pzS
- 1ZcV6JOsCDaYqxFnEYjl5L8csNlCB2DFq5mUl9TLgFSWAf+vAxXwyQjWV5VbRDyyStp1
- BbY1fZGjj1o3eLWOxbtcTyyID5dh1jekvwqScCaqg9dyEWKDzW62v1zj+bJI4IxKfnl6
- yy9Q==
-X-Gm-Message-State: AOAM531QdxzQ3BGVlEEmdxsqGLdY13gKj9HdXrjS3HzMuhddHF4LP5uq
- vwc+tDq49QIBBLiNyg7EX7U=
-X-Received: by 2002:a05:6402:b4b:: with SMTP id
- bx11mr21814201edb.286.1595873149228; 
- Mon, 27 Jul 2020 11:05:49 -0700 (PDT)
-Received: from [192.168.1.39] (214.red-88-21-68.staticip.rima-tde.net.
- [88.21.68.214])
- by smtp.gmail.com with ESMTPSA id vr6sm5563721ejb.36.2020.07.27.11.05.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Jul 2020 11:05:48 -0700 (PDT)
-Subject: Re: [PATCH for-5.1] hw/arm/netduino2, netduinoplus2: Set
- system_clock_scale
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200727162617.26227-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e549c6d3-9fbb-ec47-f6c3-c84e4c625647@amsat.org>
-Date: Mon, 27 Jul 2020 20:05:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1k0RFp-0000XK-DJ
+ for qemu-devel@nongnu.org; Tue, 28 Jul 2020 11:10:57 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:57036
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1k0RFm-000836-RE
+ for qemu-devel@nongnu.org; Tue, 28 Jul 2020 11:10:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1595949053;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+FCzgHmXiuU6rMRVcaVlslV/fEexjYvhaArIyICSvqM=;
+ b=e+0Gos4u4McCmsT9j1IN3iJkRaDiA5QI8lWdSALu621JzafGWpJhtbF5X/fT+NJWqsO0am
+ yI7kLfG155T+aqUHUkIZE5PjxAQlFTilh/DIP4Fa/MoFYlRmZduuDziyCTbEiG4FyRKXvp
+ 9avNG7NAogiy61pryQWMDEE2f3VvFUc=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-61-x2SwA-VNMHW-XCJH3Xig1g-1; Tue, 28 Jul 2020 11:10:51 -0400
+X-MC-Unique: x2SwA-VNMHW-XCJH3Xig1g-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9250379EC7;
+ Tue, 28 Jul 2020 15:10:49 +0000 (UTC)
+Received: from laptop.redhat.com (ovpn-112-203.ams2.redhat.com [10.36.112.203])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6F9E769328;
+ Tue, 28 Jul 2020 15:10:42 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
+Subject: [PATCH for-5.2 v4 10/11] hw/arm/smmuv3: Support HAD and advertise
+ SMMUv3.1 support
+Date: Tue, 28 Jul 2020 17:08:14 +0200
+Message-Id: <20200728150815.11446-11-eric.auger@redhat.com>
+In-Reply-To: <20200728150815.11446-1-eric.auger@redhat.com>
+References: <20200728150815.11446-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200727162617.26227-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::541;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x541.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/28 10:31:13
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Alistair Francis <alistair@alistair23.me>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7cJ/F1lBK27Y
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: jean-philippe@linaro.org, robh@kernel.org, robin.murphy@arm.com,
+ mst@redhat.com, zhangfei.gao@foxmail.com, shameerali.kolothum.thodi@huawei.com,
+ will@kernel.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y3LS+fzMbw7r
 
-On 7/27/20 6:26 PM, Peter Maydell wrote:
-> The netduino2 and netduinoplus2 boards forgot to set the system_clock_scale
-> global, which meant that if guest code used the systick timer in "use
-> the processor clock" mode it would hang because time never advances.
-> 
-> Set the global to match the documented CPU clock speed of these boards.
-> Judging by the data sheet this is slightly simplistic because the
-> SoC allows configuration of the SYSCLK source and frequency via the
-> RCC (reset and clock control) module, but we don't model that.
-> 
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1876187
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> NB: tested with "make check" only...
+HAD is a mandatory features with SMMUv3.1 if S1P is set, which is
+our case. Other 3.1 mandatory features come with S2P which we don't
+have.
 
-What about adding another patch with:
+So let's support HAD and advertise SMMUv3.1 support in AIDR.
 
--- >8 --
---- a/hw/timer/armv7m_systick.c
-+++ b/hw/timer/armv7m_systick.c
-@@ -17,6 +17,7 @@
- #include "qemu/timer.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "qapi/error.h"
- #include "trace.h"
+HAD support allows the CD to disable hierarchical attributes, ie.
+if the HAD0/1 bit is set, the APTable field of table descriptors
+walked through TTB0/1 is ignored.
 
- /* qemu timers run at 1GHz.   We want something closer to 1MHz.  */
-@@ -221,6 +222,11 @@ static void systick_instance_init(Object *obj)
- static void systick_realize(DeviceState *dev, Error **errp)
- {
-     SysTickState *s = SYSTICK(dev);
-+
-+    if (!system_clock_scale) {
-+        error_setg(errp, "can not use systick with 'system_clock_scale
-= 0'");
-+        return;
-+    }
-     s->timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, systick_timer_tick, s);
- }
-
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
+ hw/arm/smmuv3-internal.h     | 2 ++
+ include/hw/arm/smmu-common.h | 1 +
+ hw/arm/smmu-common.c         | 2 +-
+ hw/arm/smmuv3.c              | 6 +++++-
+ hw/arm/trace-events          | 2 +-
+ 5 files changed, 10 insertions(+), 3 deletions(-)
 
-I'll try to review with the datasheets tomorrow morning in case you want
-to get it merged during the day.
-
-> 
->  hw/arm/netduino2.c     | 10 ++++++++++
->  hw/arm/netduinoplus2.c | 10 ++++++++++
->  2 files changed, 20 insertions(+)
-> 
-> diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-> index 79e19392b56..8f103341443 100644
-> --- a/hw/arm/netduino2.c
-> +++ b/hw/arm/netduino2.c
-> @@ -30,10 +30,20 @@
->  #include "hw/arm/stm32f205_soc.h"
->  #include "hw/arm/boot.h"
->  
-> +/* Main SYSCLK frequency in Hz (120MHz) */
-> +#define SYSCLK_FRQ 120000000ULL
-> +
->  static void netduino2_init(MachineState *machine)
->  {
->      DeviceState *dev;
->  
-> +    /*
-> +     * TODO: ideally we would model the SoC RCC and let it handle
-> +     * system_clock_scale, including its ability to define different
-> +     * possible SYSCLK sources.
-> +     */
-> +    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
-> +
->      dev = qdev_new(TYPE_STM32F205_SOC);
->      qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-> index 958d21dd9f9..68abd3ec69d 100644
-> --- a/hw/arm/netduinoplus2.c
-> +++ b/hw/arm/netduinoplus2.c
-> @@ -30,10 +30,20 @@
->  #include "hw/arm/stm32f405_soc.h"
->  #include "hw/arm/boot.h"
->  
-> +/* Main SYSCLK frequency in Hz (168MHz) */
-> +#define SYSCLK_FRQ 168000000ULL
-> +
->  static void netduinoplus2_init(MachineState *machine)
->  {
->      DeviceState *dev;
->  
-> +    /*
-> +     * TODO: ideally we would model the SoC RCC and let it handle
-> +     * system_clock_scale, including its ability to define different
-> +     * possible SYSCLK sources.
-> +     */
-> +    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
-> +
->      dev = qdev_new(TYPE_STM32F405_SOC);
->      qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-> 
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index bd34a4f330..9ae7d97faf 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -54,6 +54,7 @@ REG32(IDR1,                0x4)
+ 
+ REG32(IDR2,                0x8)
+ REG32(IDR3,                0xc)
++     FIELD(IDR3, HAD,         2, 1);
+ REG32(IDR4,                0x10)
+ REG32(IDR5,                0x14)
+      FIELD(IDR5, OAS,         0, 3);
+@@ -578,6 +579,7 @@ static inline int pa_range(STE *ste)
+         lo = (x)->word[(sel) * 2 + 2] & ~0xfULL;            \
+         hi | lo;                                            \
+     })
++#define CD_HAD(x, sel)   extract32((x)->word[(sel) * 2 + 2], 1, 1)
+ 
+ #define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
+ #define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index 4f6acf634c..880dccd7c0 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -50,6 +50,7 @@ typedef struct SMMUTransTableInfo {
+     uint64_t ttb;              /* TT base address */
+     uint8_t tsz;               /* input range, ie. 2^(64 -tsz)*/
+     uint8_t granule_sz;        /* granule page shift */
++    bool had;                  /* hierarchical attribute disable */
+ } SMMUTransTableInfo;
+ 
+ typedef struct SMMUTLBEntry {
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 8d89a86699..3838db1395 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -316,7 +316,7 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
+         if (is_table_pte(pte, level)) {
+             ap = PTE_APTABLE(pte);
+ 
+-            if (is_permission_fault(ap, perm)) {
++            if (is_permission_fault(ap, perm) && !tt->had) {
+                 info->type = SMMU_PTW_ERR_PERMISSION;
+                 goto error;
+             }
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 718f28462e..b262f0e4a7 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -254,6 +254,8 @@ static void smmuv3_init_regs(SMMUv3State *s)
+     s->idr[1] = FIELD_DP32(s->idr[1], IDR1, EVENTQS, SMMU_EVENTQS);
+     s->idr[1] = FIELD_DP32(s->idr[1], IDR1, CMDQS,   SMMU_CMDQS);
+ 
++    s->idr[3] = FIELD_DP32(s->idr[3], IDR3, HAD, 1);
++
+    /* 4K and 64K granule support */
+     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
+     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
+@@ -270,6 +272,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
+ 
+     s->features = 0;
+     s->sid_split = 0;
++    s->aidr = 0x1;
+ }
+ 
+ static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
+@@ -506,7 +509,8 @@ static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
+         if (tt->ttb & ~(MAKE_64BIT_MASK(0, cfg->oas))) {
+             goto bad_cd;
+         }
+-        trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz);
++        tt->had = CD_HAD(cd, i);
++        trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz, tt->had);
+     }
+ 
+     event->record_trans_faults = CD_R(cd);
+diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+index 3d905e0f7d..c8a4d80f6b 100644
+--- a/hw/arm/trace-events
++++ b/hw/arm/trace-events
+@@ -39,7 +39,7 @@ smmuv3_translate_abort(const char *n, uint16_t sid, uint64_t addr, bool is_write
+ smmuv3_translate_success(const char *n, uint16_t sid, uint64_t iova, uint64_t translated, int perm) "%s sid=%d iova=0x%"PRIx64" translated=0x%"PRIx64" perm=0x%x"
+ smmuv3_get_cd(uint64_t addr) "CD addr: 0x%"PRIx64
+ smmuv3_decode_cd(uint32_t oas) "oas=%d"
+-smmuv3_decode_cd_tt(int i, uint32_t tsz, uint64_t ttb, uint32_t granule_sz) "TT[%d]:tsz:%d ttb:0x%"PRIx64" granule_sz:%d"
++smmuv3_decode_cd_tt(int i, uint32_t tsz, uint64_t ttb, uint32_t granule_sz, bool had) "TT[%d]:tsz:%d ttb:0x%"PRIx64" granule_sz:%d had:%d"
+ smmuv3_cmdq_cfgi_ste(int streamid) "streamid =%d"
+ smmuv3_cmdq_cfgi_ste_range(int start, int end) "start=0x%d - end=0x%d"
+ smmuv3_cmdq_cfgi_cd(uint32_t sid) "streamid = %d"
+-- 
+2.21.3
 

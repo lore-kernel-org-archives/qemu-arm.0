@@ -1,238 +1,231 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp684803lfy;
-        Tue, 28 Jul 2020 08:15:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz3qTu0U6sAmsCD+5pv+3s7rzirMaGmYMdSRE5ybDL17QTcTTv7sCp/rUWwn09dmix1ez2y
-X-Received: by 2002:a25:da87:: with SMTP id n129mr45167963ybf.149.1595949356393;
-        Tue, 28 Jul 2020 08:15:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595949356; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp781527lfy;
+        Tue, 28 Jul 2020 10:10:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxV7X0ziBsiFn+SJOp6miUq/2qYLLq6MRceAU4E/w24xV2r9lvDpKWDInIcZ3YxEDl85Vbk
+X-Received: by 2002:a25:6d87:: with SMTP id i129mr42845664ybc.315.1595956226540;
+        Tue, 28 Jul 2020 10:10:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595956226; cv=none;
         d=google.com; s=arc-20160816;
-        b=ys3sHUilKgnd4SASd6pmJaG5o7kS3ecIK7tyyoY2Ctxl4Y/L4wb1on9OMY7VJ+LPFy
-         Ulu/FlbCCkoeYP9UEmStaefpUGASl+LVDH6sUgBvBfIZir6CnLRnm3uIgt3RQ0XLcWmL
-         zkbihtPJ2gLiSZSzkKbv6o9PQmWtDZGoAq5bMnOZSJV59DNyoWs9YgTlLIDVUHc3wVua
-         p9hLiy/5bsSp2tD8FABC/y9oj10opj4iDtvZDhD1wDPdlZ/BQ8lPiDksdS9QD5GkZUXj
-         tAiAKOBYd70BLGXMEXgS1S80ZHeZdR7OFQsmM8aIB7mpKBSXRFSQgpwIWDhvHxb82ykO
-         udlw==
+        b=gZJMTFT0wJgXcNU564GqyJw3+pywTj/IxS/SplEWBS6ycr+te8kp1+H6qbJErW9uAb
+         P4/1Vr8rUHf8nEZVeRNRNT5YxPl8LFEKbsWbpu0/oaVl929aU1nEYpU1qFZGKYoiY+OB
+         8ODfHqADWHxIJiE6ZFC38p8DXhW7Z204pvsgif0uxfm8fVuFseDrIHN+WGFRNbAzmlII
+         EIsqXHhVXN07ewG9mRDWDSbO0ZuuVzdqlUKPpj5ddspNZctmfSqyGcrGYNz5610Gvdae
+         RpEc+lzy3mnX5Y1J+iwIbYkXXU0TgvPOuPmZnKqHEXEduXzraCQXpeL5IlSblNqx/K/G
+         FsWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=+FCzgHmXiuU6rMRVcaVlslV/fEexjYvhaArIyICSvqM=;
-        b=puNk9K8o3KyZt40O7XnXwMveQ1+A2YuyFMRALSgZYRUB1C6OH4qJ2tj+8fkHosAaiI
-         cWIWKdT7u/H3XCMfX0aNbeLYlO6/Dc2Cw/qaN3FBWOUitq8JqGwZRdLUDXQwISndQpM6
-         f/QE1lWVc9j5giMRxzG0Vb/2+qL5f4fQElTMIJYsbAL1KqwCV5enVZA3eD/rkqV7tHrJ
-         ibc9HcCoaEK/YHkCU8zStKlwbBxsQpY8IxLn5zffVbRInGVpMfqtfINA2mRAC6x/RfNt
-         cpFEJcpzYFlLh+4RDl3K931CxF0npQSCAoAJTfS5cyPkks1031c5NBv/IM8eDr9dIkWl
-         cl/g==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=FsJwPj0J7q1c5WS1Za10a1rCAToPv0+pM/y01TvtYlY=;
+        b=hsxILgM/QnFlGnDdJPjtM4UiQ0pvDJ+otffobmNd2wdnqd524Ml8w7R8XienNdhfC0
+         Fv3DqO2kRRtlFVikCQDE6gbd0Hi77ZnnUV/nP4l+QOfUPmNkfrQrorDvQS/tZrWE8idD
+         FwkrNKaHn6JF4h8QQLD8k7u8TcvwkSwyEnq1cjK6749kkZmBsHFgAUV7qPTjDLtTCqvY
+         ALMLZxMY8F03ZEPuw2OVSAnqUtuMH0VpbubQEHesctYM7gIWcz6ujxokmMfRGjnW1N2W
+         rsyfUj8ZP7f4kWs0BVDLkg4OXBOFb4tVJfcE9hXyGtuLjlrUGf2X8ajsRx+BL6cqyhG8
+         g7Cw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e+0Gos4u;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aGOe278U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d196si8933270ybc.186.2020.07.28.08.15.56
+        by mx.google.com with ESMTPS id m21si15125865ybf.139.2020.07.28.10.10.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jul 2020 08:15:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Jul 2020 10:10:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=e+0Gos4u;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59276 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=aGOe278U;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:34956 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k0RKd-0000ic-LJ
-	for alex.bennee@linaro.org; Tue, 28 Jul 2020 11:15:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42068)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k0T7R-00069S-UV
+	for alex.bennee@linaro.org; Tue, 28 Jul 2020 13:10:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k0RFp-0000XK-DJ
- for qemu-devel@nongnu.org; Tue, 28 Jul 2020 11:10:57 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:57036
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k0RFm-000836-RE
- for qemu-devel@nongnu.org; Tue, 28 Jul 2020 11:10:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595949053;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+FCzgHmXiuU6rMRVcaVlslV/fEexjYvhaArIyICSvqM=;
- b=e+0Gos4u4McCmsT9j1IN3iJkRaDiA5QI8lWdSALu621JzafGWpJhtbF5X/fT+NJWqsO0am
- yI7kLfG155T+aqUHUkIZE5PjxAQlFTilh/DIP4Fa/MoFYlRmZduuDziyCTbEiG4FyRKXvp
- 9avNG7NAogiy61pryQWMDEE2f3VvFUc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-61-x2SwA-VNMHW-XCJH3Xig1g-1; Tue, 28 Jul 2020 11:10:51 -0400
-X-MC-Unique: x2SwA-VNMHW-XCJH3Xig1g-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9250379EC7;
- Tue, 28 Jul 2020 15:10:49 +0000 (UTC)
-Received: from laptop.redhat.com (ovpn-112-203.ams2.redhat.com [10.36.112.203])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6F9E769328;
- Tue, 28 Jul 2020 15:10:42 +0000 (UTC)
-From: Eric Auger <eric.auger@redhat.com>
-To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
-Subject: [PATCH for-5.2 v4 10/11] hw/arm/smmuv3: Support HAD and advertise
- SMMUv3.1 support
-Date: Tue, 28 Jul 2020 17:08:14 +0200
-Message-Id: <20200728150815.11446-11-eric.auger@redhat.com>
-In-Reply-To: <20200728150815.11446-1-eric.auger@redhat.com>
-References: <20200728150815.11446-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <derrick.mckee@gmail.com>)
+ id 1k0T7K-00069F-Uo
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2020 13:10:18 -0400
+Received: from mail-qk1-x729.google.com ([2607:f8b0:4864:20::729]:46257)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <derrick.mckee@gmail.com>)
+ id 1k0T7J-0001Wn-AN
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2020 13:10:18 -0400
+Received: by mail-qk1-x729.google.com with SMTP id d14so19333656qke.13
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2020 10:10:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=FsJwPj0J7q1c5WS1Za10a1rCAToPv0+pM/y01TvtYlY=;
+ b=aGOe278UYleptMUnV4mHvING86iKHll0n7t+4VbmVcQoz+cOtVakLCicDPMXY1lc/t
+ WPWg9oSKLe3P/4NHlqmeCwUrAJeBjszjDgo0fo/SQiCZdoyGLkzEDk4Z5+E3vG0UBTAe
+ gAYqEuF0C7S0RvRt/+xJtNXEJf2RQ7diiAGBMp5HPhhzmFvX3/KVtJL+FrVlx5J7gW7u
+ QaS7KOXTusP3VO33Ypvt8IQVhJNG7XeqhKF0HcPGFNjK/bdVRa24eMTU473eGJQlW4xF
+ Of+Datzmo/nmEfKXKCFfg97wA0Xv9H2nTzl6DkVTqaZ3fFX9BJaWH8u3WH1eVEkzO691
+ NgmQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=FsJwPj0J7q1c5WS1Za10a1rCAToPv0+pM/y01TvtYlY=;
+ b=SW0WJxeeq8aMfOxDQeGJWS4NbatyZOODaUdIh6XwGdsKA0i3pd3QyKut6EWBgPbGx+
+ X96nOCgarlnF+wtSrm0BbXPgeNqta+kGFCP+EPQDbX+wFvD/KRpqwIc50e0zLtmMhSvb
+ FOEYW9z0F/bZWJAg1dRmGx7Rn8LanqnIgdXrqB0p87HpfAWckrH3XGFrwrJ5Ltj6jVQc
+ 1F5HLoNxGfGJ/L/6Q61DSFhILdPaoESODwyxWemYy7SvQRaEvqUomHhg+Knuk/3RS6gN
+ cjCdqsGW5NU2WoijEP57xl8lbgglG+K81LKH3vayg+dOB0QtwtLqqsPtTGbKQJCODb0W
+ 0tOg==
+X-Gm-Message-State: AOAM532trEq5ruhOZhuME0CcP5mVztjdn0q1pwss3GidAMTkqnhAnTvQ
+ kj1blkU7LmCVgLUdQwxsa8BF1MVRaQUbqz0KAMA=
+X-Received: by 2002:a37:9d0d:: with SMTP id g13mr8040025qke.165.1595956216132; 
+ Tue, 28 Jul 2020 10:10:16 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/28 10:31:13
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <c5b4e931-f475-d0ab-70d4-0100cdb55dbc@linaro.org>
+In-Reply-To: <c5b4e931-f475-d0ab-70d4-0100cdb55dbc@linaro.org>
+From: Derrick McKee <derrick.mckee@gmail.com>
+Date: Tue, 28 Jul 2020 13:10:05 -0400
+Message-ID: <CAJoBWHxBv8L1nS_rf85kKPeWkq_E3bTvoMqNu1TRZZvYwg7ANQ@mail.gmail.com>
+Subject: Re: Differing PAC behavior between Qemu and Arm FVP
+To: Richard Henderson <richard.henderson@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000056fecf05ab8383d9"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::729;
+ envelope-from=derrick.mckee@gmail.com; helo=mail-qk1-x729.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: jean-philippe@linaro.org, robh@kernel.org, robin.murphy@arm.com,
- mst@redhat.com, zhangfei.gao@foxmail.com, shameerali.kolothum.thodi@huawei.com,
- will@kernel.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y3LS+fzMbw7r
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "open list:ARM" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +8TSPjb6aJbX
 
-HAD is a mandatory features with SMMUv3.1 if S1P is set, which is
-our case. Other 3.1 mandatory features come with S2P which we don't
-have.
+--00000000000056fecf05ab8383d9
+Content-Type: text/plain; charset="UTF-8"
 
-So let's support HAD and advertise SMMUv3.1 support in AIDR.
+I'm not quite sure if it matters, but I am also using MTE as well.  My
+understanding is that the only affect to PAC is that the available
+signature bits are reduced  But I am definitely getting a valid pointer
+from the second pacda instruction because the autda instruction succeeds.
+My application is kinda convoluted because I was testing out a research
+idea.  I'll try to come up with a minimal test case, and test it out on the
+Qemu master head.
 
-HAD support allows the CD to disable hierarchical attributes, ie.
-if the HAD0/1 bit is set, the APTable field of table descriptors
-walked through TTB0/1 is ignored.
+On Tue, Jul 28, 2020 at 11:50 AM Richard Henderson <
+richard.henderson@linaro.org> wrote:
 
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/smmuv3-internal.h     | 2 ++
- include/hw/arm/smmu-common.h | 1 +
- hw/arm/smmu-common.c         | 2 +-
- hw/arm/smmuv3.c              | 6 +++++-
- hw/arm/trace-events          | 2 +-
- 5 files changed, 10 insertions(+), 3 deletions(-)
+> > The scenario: Application signs pointer 0xdeadbeef using the pacda
+> > instruction to obtain a new pointer 0xXYdeadbeef.  Later, the application
+> > wants to generate a new PAC signature for 0xdeadbeef, but uses
+> 0xXYdeadbeef
+> > as the address for the pacda instruction to generate pointer
+> 0xABdeadbeef.
+> > Finally, the application wants to authenticate using the autda
+> instruction
+> > using 0xABdeadbeef and the modifier used to generate that pointer.>
+> > Qemu behavior: The autda instruction succeeds and 0xdeadbeef is returned.
+> >
+> > FVP behavior: The autda instruction fails, and an invalid pointer is
+> > returned.  In order for the autda instruction to succeed, the pointer
+> > provided to the pacda instruction must have the upper bits set to zero.
+> >
+> > Is this a bug, or are we not very concerned about corner cases like
+> these?
+>
+> Well, actually, if you haven't already gotten an invalid pointer out of
+> step
+> two (the second pacda) then *that* is a bug.  And an invalid pointer
+> should not
+> succeed the autda.
+>
+> So, yes, this does sound like a bug.
+>
+> I will see if I can create a test case for this, but if you already have
+> one,
+> that would also be helpful.
+>
+>
+> r~
+>
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index bd34a4f330..9ae7d97faf 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -54,6 +54,7 @@ REG32(IDR1,                0x4)
- 
- REG32(IDR2,                0x8)
- REG32(IDR3,                0xc)
-+     FIELD(IDR3, HAD,         2, 1);
- REG32(IDR4,                0x10)
- REG32(IDR5,                0x14)
-      FIELD(IDR5, OAS,         0, 3);
-@@ -578,6 +579,7 @@ static inline int pa_range(STE *ste)
-         lo = (x)->word[(sel) * 2 + 2] & ~0xfULL;            \
-         hi | lo;                                            \
-     })
-+#define CD_HAD(x, sel)   extract32((x)->word[(sel) * 2 + 2], 1, 1)
- 
- #define CD_TSZ(x, sel)   extract32((x)->word[0], (16 * (sel)) + 0, 6)
- #define CD_TG(x, sel)    extract32((x)->word[0], (16 * (sel)) + 6, 2)
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 4f6acf634c..880dccd7c0 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -50,6 +50,7 @@ typedef struct SMMUTransTableInfo {
-     uint64_t ttb;              /* TT base address */
-     uint8_t tsz;               /* input range, ie. 2^(64 -tsz)*/
-     uint8_t granule_sz;        /* granule page shift */
-+    bool had;                  /* hierarchical attribute disable */
- } SMMUTransTableInfo;
- 
- typedef struct SMMUTLBEntry {
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 8d89a86699..3838db1395 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -316,7 +316,7 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
-         if (is_table_pte(pte, level)) {
-             ap = PTE_APTABLE(pte);
- 
--            if (is_permission_fault(ap, perm)) {
-+            if (is_permission_fault(ap, perm) && !tt->had) {
-                 info->type = SMMU_PTW_ERR_PERMISSION;
-                 goto error;
-             }
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 718f28462e..b262f0e4a7 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -254,6 +254,8 @@ static void smmuv3_init_regs(SMMUv3State *s)
-     s->idr[1] = FIELD_DP32(s->idr[1], IDR1, EVENTQS, SMMU_EVENTQS);
-     s->idr[1] = FIELD_DP32(s->idr[1], IDR1, CMDQS,   SMMU_CMDQS);
- 
-+    s->idr[3] = FIELD_DP32(s->idr[3], IDR3, HAD, 1);
-+
-    /* 4K and 64K granule support */
-     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN4K, 1);
-     s->idr[5] = FIELD_DP32(s->idr[5], IDR5, GRAN64K, 1);
-@@ -270,6 +272,7 @@ static void smmuv3_init_regs(SMMUv3State *s)
- 
-     s->features = 0;
-     s->sid_split = 0;
-+    s->aidr = 0x1;
- }
- 
- static int smmu_get_ste(SMMUv3State *s, dma_addr_t addr, STE *buf,
-@@ -506,7 +509,8 @@ static int decode_cd(SMMUTransCfg *cfg, CD *cd, SMMUEventInfo *event)
-         if (tt->ttb & ~(MAKE_64BIT_MASK(0, cfg->oas))) {
-             goto bad_cd;
-         }
--        trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz);
-+        tt->had = CD_HAD(cd, i);
-+        trace_smmuv3_decode_cd_tt(i, tt->tsz, tt->ttb, tt->granule_sz, tt->had);
-     }
- 
-     event->record_trans_faults = CD_R(cd);
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 3d905e0f7d..c8a4d80f6b 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -39,7 +39,7 @@ smmuv3_translate_abort(const char *n, uint16_t sid, uint64_t addr, bool is_write
- smmuv3_translate_success(const char *n, uint16_t sid, uint64_t iova, uint64_t translated, int perm) "%s sid=%d iova=0x%"PRIx64" translated=0x%"PRIx64" perm=0x%x"
- smmuv3_get_cd(uint64_t addr) "CD addr: 0x%"PRIx64
- smmuv3_decode_cd(uint32_t oas) "oas=%d"
--smmuv3_decode_cd_tt(int i, uint32_t tsz, uint64_t ttb, uint32_t granule_sz) "TT[%d]:tsz:%d ttb:0x%"PRIx64" granule_sz:%d"
-+smmuv3_decode_cd_tt(int i, uint32_t tsz, uint64_t ttb, uint32_t granule_sz, bool had) "TT[%d]:tsz:%d ttb:0x%"PRIx64" granule_sz:%d had:%d"
- smmuv3_cmdq_cfgi_ste(int streamid) "streamid =%d"
- smmuv3_cmdq_cfgi_ste_range(int start, int end) "start=0x%d - end=0x%d"
- smmuv3_cmdq_cfgi_cd(uint32_t sid) "streamid = %d"
+
 -- 
-2.21.3
+Derrick McKee
+Phone: (703) 957-9362
+Email: derrick.mckee@gmail.com
 
+--00000000000056fecf05ab8383d9
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I&#39;m not quite sure if it matters, but I am also using =
+MTE as well.=C2=A0 My understanding is that the only affect to PAC is that =
+the available signature bits are reduced=C2=A0 But I am definitely getting =
+a valid pointer from the second pacda instruction because the autda instruc=
+tion succeeds.=C2=A0 My application is kinda convoluted because I was testi=
+ng out a research idea.=C2=A0 I&#39;ll try to come up with a minimal test c=
+ase, and test it out on the Qemu master head.<br></div><br><div class=3D"gm=
+ail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Jul 28, 2020 at 11=
+:50 AM Richard Henderson &lt;<a href=3D"mailto:richard.henderson@linaro.org=
+">richard.henderson@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D=
+"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(2=
+04,204,204);padding-left:1ex">&gt; The scenario: Application signs pointer =
+0xdeadbeef using the pacda<br>
+&gt; instruction to obtain a new pointer 0xXYdeadbeef.=C2=A0 Later, the app=
+lication<br>
+&gt; wants to generate a new PAC signature for 0xdeadbeef, but uses 0xXYdea=
+dbeef<br>
+&gt; as the address for the pacda instruction to generate pointer 0xABdeadb=
+eef.<br>
+&gt; Finally, the application wants to authenticate using the autda instruc=
+tion<br>
+&gt; using 0xABdeadbeef and the modifier used to generate that pointer.&gt;=
+<br>
+&gt; Qemu behavior: The autda instruction succeeds and 0xdeadbeef is return=
+ed.<br>
+&gt; <br>
+&gt; FVP behavior: The autda instruction fails, and an invalid pointer is<b=
+r>
+&gt; returned.=C2=A0 In order for the autda instruction to succeed, the poi=
+nter<br>
+&gt; provided to the pacda instruction must have the upper bits set to zero=
+.<br>
+&gt; <br>
+&gt; Is this a bug, or are we not very concerned about corner cases like th=
+ese?<br>
+<br>
+Well, actually, if you haven&#39;t already gotten an invalid pointer out of=
+ step<br>
+two (the second pacda) then *that* is a bug.=C2=A0 And an invalid pointer s=
+hould not<br>
+succeed the autda.<br>
+<br>
+So, yes, this does sound like a bug.<br>
+<br>
+I will see if I can create a test case for this, but if you already have on=
+e,<br>
+that would also be helpful.<br>
+<br>
+<br>
+r~<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature">Derrick McKee<br>Phone: (703) 957-9362<br>Email: <a href=3D=
+"mailto:derrick.mckee@gmail.com" target=3D"_blank">derrick.mckee@gmail.com<=
+/a><br></div>
+
+--00000000000056fecf05ab8383d9--

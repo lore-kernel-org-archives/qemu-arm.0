@@ -1,106 +1,105 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp431400lfy;
-        Tue, 28 Jul 2020 02:47:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwuDWsl+ZN8NW+eM3TJGtiAnKa5YgyyG745xhA1OFLJ681zzB4l8VjaEqzthuybFV+TVmWH
-X-Received: by 2002:a25:8e0b:: with SMTP id p11mr43507406ybl.20.1595929659210;
-        Tue, 28 Jul 2020 02:47:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595929659; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp432456lfy;
+        Tue, 28 Jul 2020 02:49:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzg+//TwGOgR8Ktl9AuhNatBYTTf3dARpU6O4PnBwoULJQBVgDSKj5yyLrXhWpgUGALSlvi
+X-Received: by 2002:a25:dd84:: with SMTP id u126mr45900761ybg.269.1595929758347;
+        Tue, 28 Jul 2020 02:49:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595929758; cv=none;
         d=google.com; s=arc-20160816;
-        b=NRn57D+d6qj/2mDI8d6m/1f2A3FzB+CRdX2IgGLbXeHmURFqslHwS9LyoehQf1ElJv
-         5dN9ZyUt/8RA5jiKd1RhG3JcsczuM93y72yyOjMC3krmSB63V1PkfFZ8cxnFKUNOvU4v
-         UQLb1osHdEEzXxGAstHVbLhPwGsbOxo/l05HSHG57MtPsLTmHR+W3oUlEZRCUDTRvivu
-         K7ue1xCVoImvHJw7G/4kj9z6jqeEmyaZA9cWTbSD2bbGFtAu9OI87NvNrc3V7RyxQaMK
-         3KJd3FpBCdutRouUaBHsK04J74ZBeK2O/0HNXxIWTSKDpbMvttzSxlbqIJAIsZhMUYfj
-         bQtA==
+        b=rxo4+xBxSD5OO78mfgV2L9iVcGYLPMrrfeqoAZwFsJYaniB+Tpo1yw5w20wScTL/Mt
+         YI+T4YkftC9kWfIL3/Th/PsLecs5npI8MR+WkvbO4J+dz4GF0MIHYt238Y32hmjs2+ln
+         qD0EiCxTqQQps7GRdih2O/uKQCxPr65dLWZHT6VE7WQFHxUmxveuSbP3Z8iyaTAtgGFQ
+         X4VCNB0RLHPAq+0ZHnmtdW1ALVXDRDdJqsLOQKPQIZzKRI4hfXvw0wNVws/WyxUuJc9S
+         9DKoPgYZ7OlCrP3xfd2Ru3U4YI5gWSlLYsJnnqgl6GCaM8FId9ER/9t2yKDkcQJLHL1Y
+         gdWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=oGixnmN5ECx8+42m7De8D80tinyjrxrKYytchUbA1s4=;
-        b=CZFzIXOB/Xo/reuC/VzNh3nPQo+LqptR3j+1lskMA6h6BI/OdiL0HNMujKc2neJnwZ
-         5wjM0gwOF9HaDI0LNfR2HCAzGAX4aqGoE4i1eImV65t9ra6M0Tb6AWtEI0QE058Gcd9v
-         0OHqMxkIUzyBPZzZ0ZPSXKK+jOyBjfdePQ6X+tbMal+tqI2vrfeCyfgKaH38zuubmNEg
-         tydx3Y6723S/nF7087eKupqNjIHs1G69qgp0tHf6Vve+i3xXX6DhcX3aUxaoIiVZ0sAi
-         HxCeFl6WjWB4TQcbKgguiGhXR9ktLNQVtzi0Fj/8HX9X4p0vVzm1o1lHaGevWITZiqHL
-         nBjQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=TdyyyqywWUMdnHNVZWGjksiBBFcyc3F5QM+a5cnsI6M=;
+        b=gsF1MXkm309r6ko/x4lGh0kpX1t1SIwP+qzMAXE2NugfENkx32O7+hrxAcNr6rb79y
+         Tu0wi9roi2bg34b2bj6DdrkWHLdoICfQKriafh4eB7drkm12xUC6ONxEm+c1alesOEyp
+         GapdIU8ZXy1PSy6d0FIBrZD9XwCbvZlZOLzDFDWyIwKNZYz7vbMpzPteTzEg4Nf+s8wD
+         LSwE+qjfejrOR/SPmQ01eeB6KJmBJitcKi+zKFbnkKXAxhkH9PyTvM4N+Ff2nbo6mfLp
+         roi9SPkX5Td1F1YSCBNx5vrDnl7geqojH4l78d1FQgDqKKfLZspgR/uNjt0mDVTuFxR6
+         x10Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NuZ4lKtm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CZcmuQz0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p138si9538388ybg.169.2020.07.28.02.47.38
+        by mx.google.com with ESMTPS id y9si12716667ybm.274.2020.07.28.02.49.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jul 2020 02:47:39 -0700 (PDT)
+        Tue, 28 Jul 2020 02:49:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NuZ4lKtm;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CZcmuQz0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51188 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:55330 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k0MCw-0004yW-DK
-	for alex.bennee@linaro.org; Tue, 28 Jul 2020 05:47:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40336)
+	id 1k0MEX-0006mI-Pe
+	for alex.bennee@linaro.org; Tue, 28 Jul 2020 05:49:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40752)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k0MCR-0004dl-1g
- for qemu-arm@nongnu.org; Tue, 28 Jul 2020 05:47:07 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:45429
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k0MCO-0003xi-Jz
- for qemu-arm@nongnu.org; Tue, 28 Jul 2020 05:47:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595929623;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=oGixnmN5ECx8+42m7De8D80tinyjrxrKYytchUbA1s4=;
- b=NuZ4lKtmEqHW2Zd1QYM1EhU1FMwUv0S4a+fu8Te1o69E2/y1xdM9kK3gqjig7MjnlH+W2w
- nvUKTErwfGle5WrHtY2iFnZniM2i/6zfbNdxIJg/zrcJW8RH3MT4QvOx1s+waz+LIyJ55h
- fJk0Ba5iVnRwoBZ5AP186nFwv2oQOQg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-301-tGInl10CNQqZXrJwO6w7tw-1; Tue, 28 Jul 2020 05:46:59 -0400
-X-MC-Unique: tGInl10CNQqZXrJwO6w7tw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F26B71083E83;
- Tue, 28 Jul 2020 09:46:57 +0000 (UTC)
-Received: from localhost (ovpn-113-21.ams2.redhat.com [10.36.113.21])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4B32590E69;
- Tue, 28 Jul 2020 09:46:49 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>
-Subject: [PATCH] hw: add compat machines for 5.2
-Date: Tue, 28 Jul 2020 11:46:45 +0200
-Message-Id: <20200728094645.272149-1-cohuck@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k0MEQ-0006l0-TU
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2020 05:49:10 -0400
+Received: from mail-oo1-xc42.google.com ([2607:f8b0:4864:20::c42]:41710)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k0MEP-00047F-1U
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2020 05:49:10 -0400
+Received: by mail-oo1-xc42.google.com with SMTP id z23so3697558ood.8
+ for <qemu-arm@nongnu.org>; Tue, 28 Jul 2020 02:49:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=TdyyyqywWUMdnHNVZWGjksiBBFcyc3F5QM+a5cnsI6M=;
+ b=CZcmuQz0+fChzJYgANcCMKOFWNVO3nbzqpsuahJiXsM/laZXIVdLxMRAHt4npoyRCl
+ 70G3mD52PI70p0JWv0qRLs8sRNY6sA4RyQWGw0MhGSduBQkCTvCGR1jNVR9bi0lH5ybf
+ Evlj0B7Upx7JgYHHY58hGzlQsFFUm3zQDtIkvPv/D7MBcmSNVl2fyfmzl/Gd7vstKUNC
+ +Q6IlTvmK7gSlUG/vvNFgj3BYV4Qi54EAJFd1o5lKGeBn9brO4CCmePhvSA0P6cG2H3w
+ AdS7niyV6lK1U7v/HaBiz2L7Nt4FroG0yuyFvZ0kWuIOOyQABdSk5N4wb458V5r3HnkS
+ 7XJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=TdyyyqywWUMdnHNVZWGjksiBBFcyc3F5QM+a5cnsI6M=;
+ b=lUHK8064XaCmL6raoPYJN0httoza+/CAlH7OQKbxJn7zQIWgdgFcs2DL/9zNGLBb6o
+ zwZnkv1GAtWcm5hufJk+xlvoSyvxAg7r0T7nJSxDlO4dBCPXyXhHH9m4htwchJllq8iz
+ FBG09uk4NhOYssEEcUp1oqkMLPav98uV1b3pLitlm2Lx+mCqlFKqTsrufKMluk1jd6ZI
+ 3NuVcCkoEhVl1rYpczj99IBzdPVWHauiSfPRRUMXLxY+KoJuCKsCJTl5GkNeCFqrRMab
+ sVAx4icKWRemRYjO42QMnJOTOPgctx7u4MlwIIJrE1Yc6QOYDn9GpiXsBNJQwfNVoJAz
+ et0A==
+X-Gm-Message-State: AOAM532NgEzukcUUfYh8atSzditxwe2MdS7dQpKh55DSYzE6YKT8YDOZ
+ ZtUmV1nRhW+RWopM1zqmicajLJqPifMW9Oan50e9pg==
+X-Received: by 2002:a4a:4c44:: with SMTP id a65mr16107989oob.20.1595929747785; 
+ Tue, 28 Jul 2020 02:49:07 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/28 00:06:48
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20200727130225.32640-1-zhukeqian1@huawei.com>
+ <CAFEAcA9vQMP0YLAuzdPW2m3RcRNySxA0gJQZmeXBUYRy4=Dk+w@mail.gmail.com>
+ <92e8dc9b-deed-afb8-89ae-f50b68bbafa8@redhat.com>
+In-Reply-To: <92e8dc9b-deed-afb8-89ae-f50b68bbafa8@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 28 Jul 2020 10:48:56 +0100
+Message-ID: <CAFEAcA8myew9LM=ARwSwJybzWQu5=uOn55VrF=SX2xZr=bkRFA@mail.gmail.com>
+Subject: Re: [PATCH] bugfix: irq: Avoid covering object refcount of qemu_irq
+To: Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c42;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc42.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,234 +112,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-s390x@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>
+Cc: Esteban Bosse <estebanbosse@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Li Qiang <liq3ea@gmail.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ "Dr . David Alan Gilbert" <dgilbert@redhat.com>, yezengruan@huawei.com,
+ qemu-arm <qemu-arm@nongnu.org>, wanghaibin.wang@huawei.com,
+ Paolo Bonzini <pbonzini@redhat.com>, Keqian Zhu <zhukeqian1@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0e9RNi6wuAGf
+X-TUID: vdh+7b1pUFBN
 
-Add 5.2 machine types for arm/i440fx/q35/s390x/spapr.
+On Tue, 28 Jul 2020 at 09:48, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 27/07/2020 16.41, Peter Maydell wrote:
+> > On Mon, 27 Jul 2020 at 14:03, Keqian Zhu <zhukeqian1@huawei.com> wrote:
+> >>
+> >> Avoid covering object refcount of qemu_irq, otherwise it may causes
+> >> memory leak.
+> >>
+> >> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+> >> ---
+> >>  hw/core/irq.c | 4 +++-
+> >>  1 file changed, 3 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/core/irq.c b/hw/core/irq.c
+> >> index fb3045b912..59af4dfc74 100644
+> >> --- a/hw/core/irq.c
+> >> +++ b/hw/core/irq.c
+> >> @@ -125,7 +125,9 @@ void qemu_irq_intercept_in(qemu_irq *gpio_in, qemu_irq_handler handler, int n)
+> >>      int i;
+> >>      qemu_irq *old_irqs = qemu_allocate_irqs(NULL, NULL, n);
+> >>      for (i = 0; i < n; i++) {
+> >> -        *old_irqs[i] = *gpio_in[i];
+> >> +        old_irqs[i]->handler = gpio_in[i]->handler;
+> >> +        old_irqs[i]->opaque = gpio_in[i]->opaque;
+> >> +
+> >>          gpio_in[i]->handler = handler;
+> >>          gpio_in[i]->opaque = &old_irqs[i];
+> >>      }
+> >
+> > This function is leaky by design, because it doesn't do anything
+> > with the old_irqs array and there's no function for un-intercepting
+> > the IRQs (which would need to free that memory). This is not ideal
+> > but OK because it's only used in the test suite.
+>
+> I think this could better be done without calling qemu_allocate_irqs():
+> Simply call qemu_allocate_irq() (without "s" at the end) within the
+> for-loop for each irq instead. What do you think?
 
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
----
- hw/arm/virt.c              |  9 ++++++++-
- hw/core/machine.c          |  3 +++
- hw/i386/pc.c               |  3 +++
- hw/i386/pc_piix.c          | 14 +++++++++++++-
- hw/i386/pc_q35.c           | 13 ++++++++++++-
- hw/ppc/spapr.c             | 15 +++++++++++++--
- hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
- include/hw/boards.h        |  3 +++
- include/hw/i386/pc.h       |  3 +++
- 9 files changed, 71 insertions(+), 6 deletions(-)
+Well, what are we trying to do with the function? I think that
+your suggestion still doesn't really fix the leak in the sense
+that there's no mechanism for undoing the operation and freeing
+the memory allocated by qemu_allocate_irq(). The whole concept
+of the function is pretty dubious because it's arbitrarily
+re-plugging IRQs, which in the whole of the rest of QEMU are
+assumed to be something that's wired up by board code or by
+an SoC device that "owns" the two devices it's connecting.
+That's fine for test-case purposes, and for the qtest code that
+is the only in-tree user of this function we could construct a
+(nominally) leak-free version of the function by having it return
+some kind of handle that could be passed to a
+qemu_irq_remove_intercept_in() to clean up [this would fix a
+Coverity nag, which would be the main benefit...].
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ecfee362a182..acf9bfbeceaf 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2546,10 +2546,17 @@ static void machvirt_machine_init(void)
- }
- type_init(machvirt_machine_init);
- 
-+static void virt_machine_5_2_options(MachineClass *mc)
-+{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
-+
- static void virt_machine_5_1_options(MachineClass *mc)
- {
-+    virt_machine_5_2_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
-+DEFINE_VIRT_MACHINE(5, 1)
- 
- static void virt_machine_5_0_options(MachineClass *mc)
- {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 2f881d6d75b8..a24fe18ab6a6 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -28,6 +28,9 @@
- #include "hw/mem/nvdimm.h"
- #include "migration/vmstate.h"
- 
-+GlobalProperty hw_compat_5_1[] = {};
-+const size_t hw_compat_5_1_len = G_N_ELEMENTS(hw_compat_5_1);
-+
- GlobalProperty hw_compat_5_0[] = {
-     { "virtio-balloon-device", "page-poison", "false" },
-     { "vmport", "x-read-set-eax", "off" },
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 3d419d599127..1733b5341a62 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -97,6 +97,9 @@
- #include "fw_cfg.h"
- #include "trace.h"
- 
-+GlobalProperty pc_compat_5_1[] = {};
-+const size_t pc_compat_5_1_len = G_N_ELEMENTS(pc_compat_5_1);
-+
- GlobalProperty pc_compat_5_0[] = {};
- const size_t pc_compat_5_0_len = G_N_ELEMENTS(pc_compat_5_0);
- 
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index b789e83f9acb..c5ba70ca17cb 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -426,7 +426,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
- }
- 
--static void pc_i440fx_5_1_machine_options(MachineClass *m)
-+static void pc_i440fx_5_2_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_i440fx_machine_options(m);
-@@ -435,6 +435,18 @@ static void pc_i440fx_5_1_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_I440FX_MACHINE(v5_2, "pc-i440fx-5.2", NULL,
-+                      pc_i440fx_5_2_machine_options);
-+
-+static void pc_i440fx_5_1_machine_options(MachineClass *m)
-+{
-+    pc_i440fx_5_2_machine_options(m);
-+    m->alias = NULL;
-+    m->is_default = false;
-+    compat_props_add(m->compat_props, hw_compat_5_1, hw_compat_5_1_len);
-+    compat_props_add(m->compat_props, pc_compat_5_1, pc_compat_5_1_len);
-+}
-+
- DEFINE_I440FX_MACHINE(v5_1, "pc-i440fx-5.1", NULL,
-                       pc_i440fx_5_1_machine_options);
- 
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index a3e607a544a5..0cb9c18cd44d 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -353,7 +353,7 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->max_cpus = 288;
- }
- 
--static void pc_q35_5_1_machine_options(MachineClass *m)
-+static void pc_q35_5_2_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_q35_machine_options(m);
-@@ -361,6 +361,17 @@ static void pc_q35_5_1_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_Q35_MACHINE(v5_2, "pc-q35-5.2", NULL,
-+                   pc_q35_5_2_machine_options);
-+
-+static void pc_q35_5_1_machine_options(MachineClass *m)
-+{
-+    pc_q35_5_2_machine_options(m);
-+    m->alias = NULL;
-+    compat_props_add(m->compat_props, hw_compat_5_1, hw_compat_5_1_len);
-+    compat_props_add(m->compat_props, pc_compat_5_1, pc_compat_5_1_len);
-+}
-+
- DEFINE_Q35_MACHINE(v5_1, "pc-q35-5.1", NULL,
-                    pc_q35_5_1_machine_options);
- 
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 0ae293ec9431..1c8d0981b382 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4579,15 +4579,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
-     }                                                                \
-     type_init(spapr_machine_register_##suffix)
- 
-+/*
-+ * pseries-5.2
-+ */
-+static void spapr_machine_5_2_class_options(MachineClass *mc)
-+{
-+    /* Defaults for the latest behaviour inherited from the base class */
-+}
-+
-+DEFINE_SPAPR_MACHINE(5_2, "5.2", true);
-+
- /*
-  * pseries-5.1
-  */
- static void spapr_machine_5_1_class_options(MachineClass *mc)
- {
--    /* Defaults for the latest behaviour inherited from the base class */
-+    spapr_machine_5_2_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
- }
- 
--DEFINE_SPAPR_MACHINE(5_1, "5.1", true);
-+DEFINE_SPAPR_MACHINE(5_1, "5.1", false);
- 
- /*
-  * pseries-5.0
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 403d30e13bca..3dc22737a389 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -804,14 +804,26 @@ bool css_migration_enabled(void)
-     }                                                                         \
-     type_init(ccw_machine_register_##suffix)
- 
-+static void ccw_machine_5_2_instance_options(MachineState *machine)
-+{
-+}
-+
-+static void ccw_machine_5_2_class_options(MachineClass *mc)
-+{
-+}
-+DEFINE_CCW_MACHINE(5_2, "5.2", true);
-+
- static void ccw_machine_5_1_instance_options(MachineState *machine)
- {
-+    ccw_machine_5_2_instance_options(machine);
- }
- 
- static void ccw_machine_5_1_class_options(MachineClass *mc)
- {
-+    ccw_machine_5_2_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
- }
--DEFINE_CCW_MACHINE(5_1, "5.1", true);
-+DEFINE_CCW_MACHINE(5_1, "5.1", false);
- 
- static void ccw_machine_5_0_instance_options(MachineState *machine)
- {
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index 426ce5f625a4..bc5b82ad209e 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -319,6 +319,9 @@ struct MachineState {
-     } \
-     type_init(machine_initfn##_register_types)
- 
-+extern GlobalProperty hw_compat_5_1[];
-+extern const size_t hw_compat_5_1_len;
-+
- extern GlobalProperty hw_compat_5_0[];
- extern const size_t hw_compat_5_0_len;
- 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 3d7ed3a55e30..fe52e165b27c 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -193,6 +193,9 @@ void pc_system_firmware_init(PCMachineState *pcms, MemoryRegion *rom_memory);
- void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
-                        const CPUArchIdList *apic_ids, GArray *entry);
- 
-+extern GlobalProperty pc_compat_5_1[];
-+extern const size_t pc_compat_5_1_len;
-+
- extern GlobalProperty pc_compat_5_0[];
- extern const size_t pc_compat_5_0_len;
- 
--- 
-2.25.4
+I agree that copying the refcount here looks wrong, but in
+what situation is the refcount on any of the qemu_irqs
+involved changing anyway?
 
+For non-testing uses of this function it gets trickier (what if the
+device on one end or the other is destroyed while the intercept is
+in place, for instance?) So I'm a bit sceptical of ideas about
+extending the uses of this function to non-test-code, and I think
+I'd want to see what the intended non-test uses were...
+
+thanks
+-- PMM

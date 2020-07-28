@@ -1,157 +1,196 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1017446lfy;
-        Tue, 28 Jul 2020 16:04:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdgR9oPWAXn3AoAvkwBv41itcNzNJWMiseBkP7xrwMYPQqHvTErEeNtyocsRdnn9vB8cbq
-X-Received: by 2002:a62:b409:: with SMTP id h9mr26136623pfn.305.1595977451627;
-        Tue, 28 Jul 2020 16:04:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595977451; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1052548lfy;
+        Tue, 28 Jul 2020 17:04:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZjMeL+JiPjFBYFKh3qGGE560BPhD0GleQOmiPuivhruWz8ctFdVz9uMcS0xHH7gn9XmQ0
+X-Received: by 2002:a25:7e01:: with SMTP id z1mr24030560ybc.263.1595981072939;
+        Tue, 28 Jul 2020 17:04:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595981072; cv=none;
         d=google.com; s=arc-20160816;
-        b=fZYWwiCxPoVZ6JGOKZ3FmGfbeZ7ZM7qAeTTk8ar/dO6lKzlxwbdhzDPl/5d8Bzmkl8
-         HrPt3N3FhRezgiYI5QBGc+Xqjk3vChuN8yR4AxaJ9hzAGj8VoZi1cJBDTeNqlzMrimyb
-         Rh7G2l8apzcT0J2yWnU1xmIeaGtyCE74dt13skTvZNNxJ0g1vX1QZk1PTGybNpnyioa1
-         PaOgLIYr0HAlSdU6ivKmGlCtnWYVqpxyZdzz2ARHhjPVOm8SjmTCaWehZEjRvYueboFL
-         RvEnVKhUzQtx4SS9VQBgfYySH0qzOrg6FZcHT5N7rKVwRR68If8ygA0NLoeRiukhHW6/
-         x2TA==
+        b=uhEcKEH2jW4JsI8ukfSDijtWNLrcYREybot5Ny/wgX7Tar7oIxaYbcSwLzD06timNK
+         f1BpE2tCnFHeg3UuB91nxx5fYRp2NRqw8kYB3PJSSpX0bxkMloyh2z8+4CXz4OwNPHxN
+         ahv4Ek+zxliAeFmDUDx78br6/V+kNivPZZjtTqxME+KeWR/pYRF8VpOcpHivGzjp0UsM
+         7gf3kQ6+yiGOojgnGLJbVPmdYtIsUV5JPyAbVpohrJzu9tL6G13NcsRhsEsCLo9W77sa
+         eq4JLhqHxd2YbB2iQlR+p72g8L0cIzAz/pbfRzlOpDB3djaR5oWX1VZlSIoZxGxqXnVR
+         BgYg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:in-reply-to:subject:cc:to:from
-         :user-agent:references;
-        bh=/5Y02m8PM33K8rRSpWKQ6HIGIWqx1KW2TEtgxAO1XqQ=;
-        b=Cat6XmvWHoR5sKh4h5rCXhMbrGsjdnKoPiR6viYMuZSLuRxqQd0QUWVe4p1p7+XQgE
-         qkBLTYDmYFRKbKjrtoPToQ5VzdU8pTYA41ARK8qdExD9xJD/XrszRC23k3WoYZ03vjPV
-         OrrEvgvobuHU/R8vMwHepa8uh0qInWeAaCh9qBmRlAa9lJnrzj6ykyiJCJcpWvjZJezq
-         PlXhUVrXmkoq9jcLq+qRkV2ttqOU+XCgcaKkJ4qKNLF0FpfVgGd6Uy0ozE0+2GLdlf9x
-         Rf0pfqSSHcS1AfDqhFE0J2BsH89DZCzZXnLdQy5YehpsyCYDE4BI6ooT1NwYzg2A2lBl
-         +auQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=mMSBBT6V4DhQDoK4cmBE3DWHDtiZcXiDt7eGq/nM6SQ=;
+        b=XfFP886HTsQJ2N+WvDczXVXgmcamojyWKdB0NDea0u/r/7spseBn199N2nOut3ZIdk
+         j5OppyVNwhnwN+SNOovwI+VBhrwg9/6qXtFP2qeMA1yekzMM7hIOYnLpjKbhd3ezocbf
+         M3qreqdZL8NBdfR0rRK6ilpzbsH8acck5r4nJBNbZm6Lg1gWzvTdbqgdP4kAZAzLFjRM
+         cuguh+VsjTug9T9B7ZVcasf3dhcGwcx8lInHuJY1DkvcbxMmin5vHLc3F7ILw5VQljq4
+         mu7OQDbKfr+Rz1Gxx8iC+s3MumgMODictWSggV5vVpLVxLXjWwvheh+vcrIZxrlgkcoo
+         KnqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <bauerman@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id p67si190417pjp.77.2020.07.28.16.04.11
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 28 Jul 2020 16:04:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Qe0dawuk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d196si394454ybc.186.2020.07.28.17.04.32
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 28 Jul 2020 17:04:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0098396.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 06SN2wfO055069;
-	Tue, 28 Jul 2020 19:03:38 -0400
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 32hs1dfnam-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 28 Jul 2020 19:03:38 -0400
-Received: from m0098396.ppops.net (m0098396.ppops.net [127.0.0.1])
-	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06SN2whd055056;
-	Tue, 28 Jul 2020 19:03:38 -0400
-Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com [169.62.189.11])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 32hs1dfna5-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 28 Jul 2020 19:03:38 -0400
-Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
-	by ppma03dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06SMsU3V015338;
-	Tue, 28 Jul 2020 23:03:36 GMT
-Received: from b01cxnp23033.gho.pok.ibm.com (b01cxnp23033.gho.pok.ibm.com [9.57.198.28])
-	by ppma03dal.us.ibm.com with ESMTP id 32gcy74e4h-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 28 Jul 2020 23:03:36 +0000
-Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com [9.57.199.111])
-	by b01cxnp23033.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 06SN3abQ30474616
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 28 Jul 2020 23:03:36 GMT
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 0B533AC062;
-	Tue, 28 Jul 2020 23:03:36 +0000 (GMT)
-Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 403C3AC060;
-	Tue, 28 Jul 2020 23:03:29 +0000 (GMT)
-Received: from morokweng.localdomain (unknown [9.163.54.39])
-	by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTPS;
-	Tue, 28 Jul 2020 23:03:28 +0000 (GMT)
-References: <20200723025657.644724-1-bauerman@linux.ibm.com> <20200723025657.644724-4-bauerman@linux.ibm.com> <20200727152828.133ee76a@bahia.lan>
-User-agent: mu4e 1.2.0; emacs 26.3
-From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-To: Greg Kurz <groug@kaod.org>
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-        qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
-        "Paolo
- Bonzini" <pbonzini@redhat.com>,
-        Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Peter Maydell
- <peter.maydell@linaro.org>,
-        Aleksandar Markovic
- <aleksandar.qemu.devel@gmail.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>,
-        Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>,
-        Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>,
-        Artyom Tarasenko <atar4qemu@gmail.com>,
-        Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
-        "David
- Hildenbrand" <david@redhat.com>,
-        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@redhat.com>,
-        Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: Re: [PATCH v3 3/8] ppc/spapr: Use start-powered-off CPUState property
-In-reply-to: <20200727152828.133ee76a@bahia.lan>
-Date: Tue, 28 Jul 2020 20:03:24 -0300
-Message-ID: <87bljzuts3.fsf@morokweng.localdomain>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Qe0dawuk;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37504 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k0ZaC-0007bg-Ah
+	for alex.bennee@linaro.org; Tue, 28 Jul 2020 20:04:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58656)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1k0Za3-0007bS-Iw; Tue, 28 Jul 2020 20:04:23 -0400
+Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:43122)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1k0Za1-0003PS-Pg; Tue, 28 Jul 2020 20:04:23 -0400
+Received: by mail-il1-x143.google.com with SMTP id y18so9404306ilp.10;
+ Tue, 28 Jul 2020 17:04:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=mMSBBT6V4DhQDoK4cmBE3DWHDtiZcXiDt7eGq/nM6SQ=;
+ b=Qe0dawukf/sxKj/FbNcaYZqmemTUrGnTJ8WgTN6JhmR6x2l8gs6EB4Vm1dyne1XFEB
+ 8RwkFUTQbSVDiWafkpwkoHDpGD7RLQ0pj/GQfss8AqwEoWBwzYQRAjlSMicc7PlvMZQM
+ rwbaGXrW9bKw2uWVLp5qrhaF9I1F+HTALQnIxiMUG5AK6FkCFuRdYsvdXttH9xPMwZJd
+ aCE7SBTZAhbINHxrWaQrqR532UYdvV9oXywkMApn+PCdXO4L5DqmLfuErxHctzKVni8A
+ 7xxNRDm59VoeeJUn9OaxbmGzevq2qDMqFKb8Vljyrzno1klyMZlmP1/Lt/3f+X8zcK3S
+ 6mqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=mMSBBT6V4DhQDoK4cmBE3DWHDtiZcXiDt7eGq/nM6SQ=;
+ b=qPg+D8FgikdZueEX3N+JfALX0MsueRtLXTYBwpCGbtKFV2YXuqRpBPhJAU9CGZYyJT
+ PwHhoUVNsqwBYHKP0Qz/agLgweXkkUnTiMAfwk5nspeC0vCdeFQg5L8uKS3u3RWRLz2T
+ oUnOAe1lKPzZsl9rwZ7DSqCpfCFHhnVYGF7CbEScnltk5y2PB1HeYUC2+aGQUW+chioW
+ WC53S/DDXqk785tAtsdpTjxSWUSW9HDNri4ekGVMnWh2K+RYIN5NMRw+2FUx7wBI/2Cq
+ cyZt8r10b/QERaCXqw5GdgUMdt4VWmqoIWdUofbj0TcNaVPOQ81yH2c6xvZ+wjiyKqIq
+ zd+g==
+X-Gm-Message-State: AOAM5327PNiE9375OCAkdaMFltQkIWVnA9NP0cqAWrY1JZ93FmKjroCI
+ Zad8Moslt5IV4SD5B/rsJujNT3Dg6sTSfuyEOdA=
+X-Received: by 2002:a92:cf50:: with SMTP id c16mr11547180ilr.131.1595981060059; 
+ Tue, 28 Jul 2020 17:04:20 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
- definitions=2020-07-28_17:2020-07-28,2020-07-28 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- priorityscore=1501 suspectscore=0 impostorscore=0 bulkscore=0
- malwarescore=0 mlxscore=0 mlxlogscore=999 phishscore=0 spamscore=0
- clxscore=1015 adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2007280164
-X-TUID: 17oSPCxXwXqA
+References: <20200728103744.6909-1-peter.maydell@linaro.org>
+In-Reply-To: <20200728103744.6909-1-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 28 Jul 2020 16:54:07 -0700
+Message-ID: <CAKmqyKOvvVzu3qGVd=B56wT7oaR+BgYQ=YsiqR4GQRc-bTA3FQ@mail.gmail.com>
+Subject: Re: [PATCH for-5.1? 0/3] Fix AIRCR.SYSRESETREQ for most M-profile
+ boards
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EhvstrrNoZkz
 
-
-Greg Kurz <groug@kaod.org> writes:
-
-> On Wed, 22 Jul 2020 23:56:52 -0300
-> Thiago Jung Bauermann <bauerman@linux.ibm.com> wrote:
+On Tue, Jul 28, 2020 at 3:38 AM Peter Maydell <peter.maydell@linaro.org> wrote:
 >
->> PowerPC sPAPR CPUs start in the halted state, and spapr_reset_vcpu()
->> attempts to implement this by setting CPUState::halted to 1. But that's too
->> late for the case of hotplugged CPUs in a machine configure with 2 or more
->> threads per core.
->> 
->> By then, other parts of QEMU have already caused the vCPU to run in an
->> unitialized state a couple of times. For example, ppc_cpu_reset() calls
->> ppc_tlb_invalidate_all(), which ends up calling async_run_on_cpu(). This
->> kicks the new vCPU while it has CPUState::halted = 0, causing QEMU to issue
->> a KVM_RUN ioctl on the new vCPU before the guest is able to make the
->> start-cpu RTAS call to initialize its register state.
->> 
->> This problem doesn't seem to cause visible issues for regular guests, but
->> on a secure guest running under the Ultravisor it does. The Ultravisor
->> relies on being able to snoop on the start-cpu RTAS call to map vCPUs to
->> guests, and this issue causes it to see a stray vCPU that doesn't belong to
->> any guest.
->> 
->> Fix by setting the start-powered-off CPUState property in
->> spapr_create_vcpu(), which makes cpu_common_reset() initialize
->> CPUState::halted to 1 at an earlier moment.
->> 
->> Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
->> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
->> ---
+> QEMU's NVIC device provides an outbound qemu_irq "SYSRESETREQ" which
+> it signals when the guest sets the SYSRESETREQ bit in the AIRCR
+> register.  This matches the hardware design (where the CPU has a
+> signal of this name and it is up to the SoC to connect that up to an
+> actual reset mechanism), but in QEMU it mostly results in duplicated
+> code in SoC objects and bugs where SoC model implementors forget to
+> wire up the SYSRESETREQ line.
 >
-> Thanks for doing this ! I remember seeing partly initialized CPUs being
-> kicked in the past, which is clearly wrong but I never got time to find
-> a proper fix (especially since it didn't seem to break anything).
+> This patchseries provides a default behaviour for the case where
+> SYSRESETREQ is not actually connected to anything: use
+> qemu_system_reset_request() to perform a system reset. This is a
+> much more plausible default than "do nothing". It allows us to
+> allow us to remove the implementations of SYSRESETREQ handling from
+> the boards which currently hook up a reset function that just
+> does that (stellaris, emcraft-sf2), and also fixes the bugs
+> in these board models which forgot to wire up the signal:
 >
-> Reviewed-by: Greg Kurz <groug@kaod.org>
+>  * microbit
+>  * mps2-an385
+>  * mps2-an505
+>  * mps2-an511
+>  * mps2-an521
+>  * musca-a
+>  * musca-b1
+>  * netduino
+>  * netduinoplus2
+>
+> [I admit that I have not specifically checked for datasheets
+> and errata notes for all these boards to confirm that AIRCR.SYSRESETREQ
+> really does reset the system or to look for more complex
+> reset-control logic... As an example, though, the SSE-200 used in
+> the mps2-an521 and the musca boards has a RESET_MASK register in the
+> system control block that allows a guest to suppress reset requests from
+> one or both CPUs. Since we don't model that register, "always reset"
+> is still closer to reasonable behaviour than "do nothing".]
+>
+> We still allow the board to wire up the signal if it needs to, in case
+> we need to model more complicated reset controller logic (eg if we
+> wanted to get that SSE-200 corner case right in future) or to model
+> buggy SoC hardware which forgot to wire up the line itself. But
+> defaulting to "reset the system" is going to be correct much more
+> often than "do nothing".
+>
+> Patch 1 introduces a new API for "check whether my qemu_irq is
+> actually connected to anything" (the test is trivial but the
+> encapsulation seems worthwhile); patch 2 provides the new default
+> and patch 3 removes the now-unnecessary SYSRESETREQ handlers in
+> board/SoC code.
 
-Thanks for confirming the issue, and for reviewing the code.
+I checked the STM Reference Manual and this matches what they expect.
 
--- 
-Thiago Jung Bauermann
-IBM Linux Technology Center
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+
+Alistair
+
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (3):
+>   include/hw/irq.h: New function qemu_irq_is_connected()
+>   hw/intc/armv7m_nvic: Provide default "reset the system" behaviour for
+>     SYSRESETREQ
+>   msf2-soc, stellaris: Don't wire up SYSRESETREQ
+>
+>  include/hw/arm/armv7m.h |  4 +++-
+>  include/hw/irq.h        | 18 ++++++++++++++++++
+>  hw/arm/msf2-soc.c       | 11 -----------
+>  hw/arm/stellaris.c      | 12 ------------
+>  hw/intc/armv7m_nvic.c   | 17 ++++++++++++++++-
+>  5 files changed, 37 insertions(+), 25 deletions(-)
+>
+> --
+> 2.20.1
+>
+>

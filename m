@@ -1,147 +1,148 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp903758lfy;
-        Tue, 28 Jul 2020 13:02:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwstmDmE63KdbZs5J4eV8hwKmvQxkdUIAIlo5UIP6rf7sr7EY6WgAylfSiRGtS98zKS+ZyG
-X-Received: by 2002:a5b:445:: with SMTP id s5mr45723081ybp.26.1595966568537;
-        Tue, 28 Jul 2020 13:02:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595966568; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1015062lfy;
+        Tue, 28 Jul 2020 16:01:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxcwg1KqKheE7HZ7/YbX7IZwtFAEMWY3abqtXSILc7gpVaojPaMZsd9k+deF76IdoeM672u
+X-Received: by 2002:a5b:78c:: with SMTP id b12mr49103974ybq.8.1595977272121;
+        Tue, 28 Jul 2020 16:01:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595977272; cv=none;
         d=google.com; s=arc-20160816;
-        b=bubTC5UHxG9sbh5tFbZVt+c4CrubcoGk39Z9NSlwLVnwnUU+dEtVm3cYVLSyWRpbny
-         UtmWh4MUV7vxEIrCX/py338fj6v88IN2TlA6dSFu9EYsMQHPBnwfBCnBVtfRAWn7WOn9
-         oQFESn3N9IF8yvitutg2Otp3qvNiJOqlIEnYIDxtQQfvgXfJTobBMKsQKnxNP3dfvl6k
-         CF/dWZqiTVJtEsKEJdUybr1YpoB0lg4KKD0TigwyoZJQFmz2cuuR7eczaqVcCdzWs18j
-         usaBCNDompFa4xwtaUTMiEJr16WAq8UWdaG70O2oXiaPPshpo9KquOsWfqQzOB3rfTEN
-         dGVA==
+        b=UjCP74E8hvx60BGoP+qmPwQ7e+OmPxT65VDcfjYZD8XikJfAzObj0y6l5W0xgkTDg8
+         3B9yzUl9MWc25eCrF6Lk9dgcFZ9FIpFxsQws0P5wvXqCizsrRoRKZnz3rlA+prqOWOsE
+         xkGQ/2+LE/BCY6m2SvTvFpV/hzSCRm1/nCTfzooe7VdL1SM5WgjBMXUW4rpRLtk28Vdv
+         0LTBg4GfdrUBkqcP3zKowCCaByJtFSj2vLl2M1F28/pJ27rNyMdu/YMes2OUedn6ObPW
+         hdjmCtkZIzgpd1174oIvh3uTmXSybwBd7ECFha4b8I1DDAXrwxQI7e3dswXKIEq5v4bH
+         QjqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=usdZRLSd/wT90FBrz10IlG+LjFCiZurQ+ZW3PQa3qOY=;
-        b=IJ+mN/x3zEm+Uh9/tNQwMwuposimhPhfwuZF/TcVP6kN1fVoD82eYcq79NC5yWPLfV
-         lYgPjNd2p+zZMPro/gCMTaOFoU0VlfO7P81RvFP7tDTsKIc3k8Ih1drTl0kub3LF2++W
-         oa7YUAJ5YfC40zlk4yJkGqLRm1swrVDXaVSS2pzIxVHpC8kGbI7Ep59C0QxodgpaitvF
-         dUNSVXVqC9M0SnbrzSNtMAlqP6u58OEUpuQeRRWTEfTZWglwPVNeD9CxM+hvWMVz7y/L
-         qOS4Fi7ew44JwZxqBJENMEoxb/WU7hopz+IiIyw2KgMsUODdxQFA4bE/PSswEfIY509S
-         omzQ==
+        h=content-transfer-encoding:mime-version:message-id:date:in-reply-to
+         :subject:cc:to:from:user-agent:references;
+        bh=QxUwvlXRo4KChU8vkn3+qh9hLt8FtjdiU24PeoobucI=;
+        b=dJritipQXU2+9CsHF6dTFhqKA1Y207Aexyzft+kAaE2AJ/rvJvddZ+TRu/4IklPMWV
+         OCBL+DhCUpsBvt792bCh7loGbsyssOSrAaw4dmV6O6xY+hKiiXtjnQrEyrNWQKCZiybt
+         A1KDiY5tn9DFPS0WSKDqjmxtIdP3JQgbbDImIKLHlyDFmFAsASOqbDIRHc8Iw8LIK43S
+         3CNIUJLaSOvLf6pS+1rJJyacvG1qyUDHn2s6gN/c9W+IZjWHOpT8LSAirZ9gApPglxBm
+         1HV3psl6crtD4uvCSND97EM/oBdWjbPQJrjjfnSsCtVyvGKBmKeuwKd1FN+syk04xOc9
+         g7fg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rkcLPKmW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8si5265704ybw.299.2020.07.28.13.02.48
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jul 2020 13:02:48 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <bauerman@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id o126si260826ybc.46.2020.07.28.16.01.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 28 Jul 2020 16:01:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rkcLPKmW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33270 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k0VoF-00055K-VE
-	for alex.bennee@linaro.org; Tue, 28 Jul 2020 16:02:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41994)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k0Vmc-0003tK-J2
- for qemu-arm@nongnu.org; Tue, 28 Jul 2020 16:01:06 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634]:42407)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k0Vma-00011u-QI
- for qemu-arm@nongnu.org; Tue, 28 Jul 2020 16:01:06 -0400
-Received: by mail-pl1-x634.google.com with SMTP id q17so10524064pls.9
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2020 13:01:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=usdZRLSd/wT90FBrz10IlG+LjFCiZurQ+ZW3PQa3qOY=;
- b=rkcLPKmWFs5ViQV75d0tzHdP521e8kfk071NVAGFykOzy8eTApjNsphTF/I/Ga6gq9
- Up0Ok2nOwnkc5dNHVYuiO60lvcYJ60dfFYeUES4Tu47Abrs6SKxAzgevyik71HiztSfB
- bhc2/p/3QnfgGHYdrvSm/NEzs1HV1DpKu+K7lZOign2L7LltQLEczFupXcKG3bGRRpOt
- 3a7gfOK0RmBqsY0ldLfsaJ/yzeFAk8LcJ2vqRzP3SEkax8dQPcGke09yNAeAa68rL7tL
- DFLztlyHuC+FDe3/oCutdJa5aZkRol9BAjKAd8gVN+8IhYzYpYCrvKOzFE7sC34m5DKM
- 8vTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=usdZRLSd/wT90FBrz10IlG+LjFCiZurQ+ZW3PQa3qOY=;
- b=d9rfGLt0xLz3ey+NtdqUxCq7xERSXz8MbCRYqHagscnzXBkDs+FqnM3wYDgJ9Zn/N0
- aMfzyZrXYgAHwZD9UiknsAIhu19WNCpf27WoQv3qd5Cv4wefyIzEdHLyIBmzXdvsug5v
- QoPtAdC4OsZwJkuPRq84zGDN53Inqr+Zec+jNF3T9zCqL82s2r3V8He074lKhMGgAAr1
- vTeJhoSYQcwyrlPVLF0DArJSrzCYO/2lmCF8HfV7D1s3ovisIZ1reKRg2M0hPf9Af8zK
- ekxVMoV83vJxnG8KNQHG0yYIgTZWUkZdVmaV7KttXwkdALSDNra2nM2i8fnKuFPT7EhV
- XebQ==
-X-Gm-Message-State: AOAM530Fb6ZaNxKLxi0s2fPS9C7HRYnJ+ekaO0hvLLnbiP3P6/G/mnkl
- YHsc4ak5q793gtbRNPd2zZM/zCNp8HQ=
-X-Received: by 2002:a17:90a:f290:: with SMTP id
- fs16mr6024142pjb.35.1595966462719; 
- Tue, 28 Jul 2020 13:01:02 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id t63sm5314091pfb.210.2020.07.28.13.01.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Jul 2020 13:01:01 -0700 (PDT)
-Subject: Re: Differing PAC behavior between Qemu and Arm FVP
-To: Derrick McKee <derrick.mckee@gmail.com>
-References: <c5b4e931-f475-d0ab-70d4-0100cdb55dbc@linaro.org>
- <CAJoBWHxBv8L1nS_rf85kKPeWkq_E3bTvoMqNu1TRZZvYwg7ANQ@mail.gmail.com>
- <CAJoBWHwLX+GUTZoniC-SNjpghY+h2SaN=JjVnOk7Ux7DByR3jA@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <6ef5e106-3d74-d2ff-a9ec-6a93e019855f@linaro.org>
-Date: Tue, 28 Jul 2020 13:00:59 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 06SMVfoJ086740;
+	Tue, 28 Jul 2020 19:00:39 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 32jpw3kb0m-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 28 Jul 2020 19:00:39 -0400
+Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 06SMa2Ku098741;
+	Tue, 28 Jul 2020 19:00:38 -0400
+Received: from ppma01wdc.us.ibm.com (fd.55.37a9.ip4.static.sl-reverse.com [169.55.85.253])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 32jpw3kaym-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 28 Jul 2020 19:00:38 -0400
+Received: from pps.filterd (ppma01wdc.us.ibm.com [127.0.0.1])
+	by ppma01wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 06SMu3uq010609;
+	Tue, 28 Jul 2020 23:00:37 GMT
+Received: from b01cxnp22034.gho.pok.ibm.com (b01cxnp22034.gho.pok.ibm.com [9.57.198.24])
+	by ppma01wdc.us.ibm.com with ESMTP id 32gcycn5q1-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 28 Jul 2020 23:00:37 +0000
+Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com [9.57.199.109])
+	by b01cxnp22034.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 06SN0aNP55378176
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Tue, 28 Jul 2020 23:00:36 GMT
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 8DAF7112063;
+	Tue, 28 Jul 2020 23:00:36 +0000 (GMT)
+Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 0F1F2112061;
+	Tue, 28 Jul 2020 23:00:30 +0000 (GMT)
+Received: from morokweng.localdomain (unknown [9.163.54.39])
+	by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTPS;
+	Tue, 28 Jul 2020 23:00:29 +0000 (GMT)
+References: <20200723025657.644724-1-bauerman@linux.ibm.com> <20200723025657.644724-2-bauerman@linux.ibm.com> <20200723030609.GL5513@umbus.fritz.box> <20200727143656.277500f0@bahia.lan>
+User-agent: mu4e 1.2.0; emacs 26.3
+From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+To: Greg Kurz <groug@kaod.org>
+Cc: David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
+        qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
+        "Paolo
+ Bonzini" <pbonzini@redhat.com>,
+        Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Peter Maydell
+ <peter.maydell@linaro.org>,
+        Aleksandar Markovic
+ <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>,
+        Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+        "David
+ Hildenbrand" <david@redhat.com>,
+        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@redhat.com>,
+        Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: Re: [PATCH v3 1/8] target/arm: Move start-powered-off property to generic CPUState
+In-reply-to: <20200727143656.277500f0@bahia.lan>
+Date: Tue, 28 Jul 2020 20:00:21 -0300
+Message-ID: <87d04futx6.fsf@morokweng.localdomain>
 MIME-Version: 1.0
-In-Reply-To: <CAJoBWHwLX+GUTZoniC-SNjpghY+h2SaN=JjVnOk7Ux7DByR3jA@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x634.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "open list:ARM" <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PGs/2uvHBKKP
-
-On 7/28/20 11:15 AM, Derrick McKee wrote:
-> asm("pacda %[loc], %[mod]"
-> : "=r"(result)
-> : [loc] "r"(addr_to_use), [mod] "r"(modifier)
-> :
->   );
-
-As an aside, this asm statement is buggy.  You need to use a matching
-constraint to force RESULT and ADDR_TO_USE to be in the same register.
-
-Like so:
-
-  [loc] "0"(addr_to_use)
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
+ definitions=2020-07-28_17:2020-07-28,2020-07-28 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 bulkscore=0
+ adultscore=0 lowpriorityscore=0 priorityscore=1501 mlxlogscore=999
+ malwarescore=0 spamscore=0 impostorscore=0 suspectscore=0 clxscore=1015
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2007280156
+X-TUID: X+StAwv09slw
 
 
-r~
+Greg Kurz <groug@kaod.org> writes:
+
+> On Thu, 23 Jul 2020 13:06:09 +1000
+> David Gibson <david@gibson.dropbear.id.au> wrote:
+>
+>> On Wed, Jul 22, 2020 at 11:56:50PM -0300, Thiago Jung Bauermann wrote:
+>> > There are other platforms which also have CPUs that start powered off,=
+ so
+>> > generalize the start-powered-off property so that it can be used by th=
+em.
+>> >=20
+>> > Note that ARMv7MState also has a property of the same name but this pa=
+tch
+>> > doesn't change it because that class isn't a subclass of CPUState so it
+>> > wouldn't be a trivial change.
+>> >=20
+>> > This change should not cause any change in behavior.
+>> >=20
+>> > Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+>> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+>>=20
+>> Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+>>=20
+>
+> Reviewed-by: Greg Kurz <groug@kaod.org>
+
+Thanks!
+
+--=20
+Thiago Jung Bauermann
+IBM Linux Technology Center

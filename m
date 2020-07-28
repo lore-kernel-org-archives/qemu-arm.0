@@ -1,108 +1,110 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp678246lfy;
-        Tue, 28 Jul 2020 08:08:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxztOlKAFHe8PDM0Iegfg8LvQ/9CPTI3dKO8f2Leg6kPjw5W6TOiZuvHEdEAxeIW7TQc6Y7
-X-Received: by 2002:a25:ca83:: with SMTP id a125mr23022438ybg.513.1595948929954;
-        Tue, 28 Jul 2020 08:08:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595948929; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp680008lfy;
+        Tue, 28 Jul 2020 08:10:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxJRtM9hrEF19Xui6PxYgb28or3CbJMAQTCjf9Cdoz/Q9dmYQZGmyWYndOhBJ1J/9Jbqdah
+X-Received: by 2002:a25:3f83:: with SMTP id m125mr11096852yba.324.1595949042172;
+        Tue, 28 Jul 2020 08:10:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595949042; cv=none;
         d=google.com; s=arc-20160816;
-        b=ClqNGFNW5dKk3uoQ5eYd30KUDhXAJCe6hYYtMC4Q5AXVPapz40m9NgabCX2Za0/v+y
-         KF+i0FJ4Ae7QqdJJByoo0Ik/mNlfVLBDhcA7tw/J6iJQvN6gtWx/hFDN79d3aTbLbi7b
-         wJpgVns2dGTyMoRhqBNdrj9uPM5NrtYAoKEgiO4qi99Y2ktfa1xBZfHYQYbzwUCnEYLa
-         Kykf5y86tauR/JuagLn/YPG2Qo8wSLAAk3OVcTE5HKR9lAxb4P9jE7gXd31874UAHXdl
-         cjljWU0BbFOpLXa7inDQmLp/0+A4DtJyiErIcinjX0bs5WTrOlykIKLhR/2Cf2u3t/KC
-         2lpA==
+        b=YhzmNFpya2jETrh6VhJRnwTACm1IJPPvi35c5acTxEM3E6PyMT+L9bXG+PXHyXorfn
+         nFrwo9Pxh9STZ+J5yErsBqQE4mjcJMPui32bG7ztYNudVFU9KSINUrvafDwfLBe3Qh3+
+         V4bhsXRd5WN0330v1EsVKc5YeLEA0QXuxejfnGBrscSKo8iuggsK2nMmIyl9d10iy8Up
+         9NE1TZzsNlr0BbRikC0Z9ihdVUstOJ6srAi5uoocooK/xOGNho4l7T1sqJCpOWm3AT3v
+         LGecmNxedCHytqNMMDkoL6jEbpxIoO41dbhf1H7/B/fTC8CtRP0hqsERM+uC2WTuz9Cr
+         Hoog==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=t2J/dGXSqZTmczEuwos+55juIcoJHUZyz7xpoeeau2M=;
-        b=QBOknL2UYIIr1JtcKIkwaErGzJotpTZpiQR1Rd9gk7Zr88zp0Y8sCjFsrjjJtKNJ4h
-         2kI66Wpm4olIMy7fEJDY3AMKlWHHAUR0su5NzNAYDsa0SKqkCZ9RqLi5yTp8w6iHpOmv
-         H8hkHxc5zAxXPnHf56fIrK4WMZlB77RYXmuzrKs37Sv0RTwZxMPKcxmW+4NiP/un74KQ
-         Ssbi28XkbiE1lAzg0YCgikjB65KuauwjrR9Z7Y2kXCKtztVDptSrICRPcARMn8y0FgkR
-         RjFq68LY70mRR4evEjCu+aKTeFVzn6radNlTvRjvyInF15D8CMHzMHerE1sjjUATOrq4
-         1vkA==
+        bh=ORtXaORAZvQ0FiGFQY6UNSXnMhzRO3u0ST4KF1uT+ig=;
+        b=laesjaistUjvsMqpkEcqUEZsmj11SjF8JYBf7dbyrBCaNl+ntpE2EcfcvSJqCfn8gq
+         F/g5GiYqD9KgkZs823tCH2a61LRdtZ4rfU5Q1LI9iaB5D7/gTokHbipb/R7aviJiwCSc
+         cQfcJ7BlBCXtft2R8VTH0Psuo6osk5CxIxz2+AbtZbZPC1CoWjxr7/7JGq+xXdsbUuIW
+         4f9NgHVo6DksLSA1a0ZhwFvHJaUpzUuTj8lt3I9b15L8e8j7HbfJKt7etxmoym4J+6vg
+         15R0hDhF6KJuL2lgq5Pvq/0JlmzomXbyXlHBPeoxjuMgR5TARsepKky1vBWmF+9ZR9Vv
+         bAzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Jeiqf/67";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GrU1ELXD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 84si4677728ybn.122.2020.07.28.08.08.49
+        by mx.google.com with ESMTPS id q5si13075447ybo.329.2020.07.28.08.10.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jul 2020 08:08:49 -0700 (PDT)
+        Tue, 28 Jul 2020 08:10:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Jeiqf/67";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GrU1ELXD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57502 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37524 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k0RDl-0004gq-AM
-	for alex.bennee@linaro.org; Tue, 28 Jul 2020 11:08:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41362)
+	id 1k0RFZ-0008Io-FQ
+	for alex.bennee@linaro.org; Tue, 28 Jul 2020 11:10:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41646)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k0RDX-0004bn-OE
- for qemu-arm@nongnu.org; Tue, 28 Jul 2020 11:08:36 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:38222
- helo=us-smtp-1.mimecast.com)
+ id 1k0REd-0006e5-F1
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2020 11:09:43 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:35498
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k0RDV-0007YN-AV
- for qemu-arm@nongnu.org; Tue, 28 Jul 2020 11:08:35 -0400
+ id 1k0REb-0007fb-A8
+ for qemu-arm@nongnu.org; Tue, 28 Jul 2020 11:09:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595948912;
+ s=mimecast20190719; t=1595948980;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=t2J/dGXSqZTmczEuwos+55juIcoJHUZyz7xpoeeau2M=;
- b=Jeiqf/67cUVK6N2F+6gzWLIi6uTn+INNhyXqoP1D7tv/4f1Hq/thV9ZYs4A1MQ9T22mo2W
- cypLBCXt8iO9hmg7zNqE47/fTGjcv5IM7Ay0eHZLIDFRf8MSB4r9X3bvlF3+vyQFtNwamV
- WGciH95M7J0t+F6C7Q1v9oTZ4oMgcNc=
+ bh=ORtXaORAZvQ0FiGFQY6UNSXnMhzRO3u0ST4KF1uT+ig=;
+ b=GrU1ELXDj6Advy+Ow8cgewzFYrYKptwJtDqCEDNIFMWqlOztFjl71LR4doyN5l1aa2xf/d
+ 7mm9rJQ1IcjhzLH/qHvX0fx/FQaGo1tLNbr2SLFX999GmIfTLC2VUZba2Rt9Ww7Z/SY4K3
+ ACMUnHfo95+dNC8ocP+akcsMhGL/heE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-310-5zB67anWObKM8nU0D3Qa5Q-1; Tue, 28 Jul 2020 11:08:30 -0400
-X-MC-Unique: 5zB67anWObKM8nU0D3Qa5Q-1
+ us-mta-87-HtzVqnkGMJKeTsVqi83ymA-1; Tue, 28 Jul 2020 11:09:37 -0400
+X-MC-Unique: HtzVqnkGMJKeTsVqi83ymA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CB1E28CE862;
- Tue, 28 Jul 2020 15:08:28 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E7F5258;
+ Tue, 28 Jul 2020 15:09:35 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-203.ams2.redhat.com [10.36.112.203])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D16285C1BD;
- Tue, 28 Jul 2020 15:08:24 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D8DF969337;
+ Tue, 28 Jul 2020 15:09:17 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
-Subject: [PATCH for-5.2 v4 01/11] hw/arm/smmu-common: Factorize some code in
- smmu_ptw_64()
-Date: Tue, 28 Jul 2020 17:08:05 +0200
-Message-Id: <20200728150815.11446-2-eric.auger@redhat.com>
+Subject: [PATCH for-5.2 v4 04/11] hw/arm/smmu: Introduce SMMUTLBEntry for PTW
+ and IOTLB value
+Date: Tue, 28 Jul 2020 17:08:08 +0200
+Message-Id: <20200728150815.11446-5-eric.auger@redhat.com>
 In-Reply-To: <20200728150815.11446-1-eric.auger@redhat.com>
 References: <20200728150815.11446-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/28 10:31:20
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/28 10:31:13
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,11 +122,14 @@ Cc: jean-philippe@linaro.org, robh@kernel.org, robin.murphy@arm.com,
  will@kernel.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jb1LOWIUUxcZ
+X-TUID: 0IlkenXEouID
 
-Page and block PTE decoding can share some code. Let's
-first handle table PTE and factorize some code shared by
-page and block PTEs.
+Introduce a specialized SMMUTLBEntry to store the result of
+the PTW and cache in the IOTLB. This structure extends the
+generic IOMMUTLBEntry struct with the level of the entry and
+the granule size.
+
+Those latter will be useful when implementing range invalidation.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
@@ -132,97 +137,193 @@ Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
 
 v1 -> v2:
-- restore goto error in case get_pte() fails
+- fix 2 indents and typdef
+- added Peter's R-b
 ---
- hw/arm/smmu-common.c | 48 ++++++++++++++++----------------------------
- 1 file changed, 17 insertions(+), 31 deletions(-)
+ include/hw/arm/smmu-common.h | 12 +++++++++---
+ hw/arm/smmu-common.c         | 32 +++++++++++++++++---------------
+ hw/arm/smmuv3.c              | 10 +++++-----
+ 3 files changed, 31 insertions(+), 23 deletions(-)
 
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index 5f9f3535d2..79c2c6486a 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -52,6 +52,12 @@ typedef struct SMMUTransTableInfo {
+     uint8_t granule_sz;        /* granule page shift */
+ } SMMUTransTableInfo;
+ 
++typedef struct SMMUTLBEntry {
++    IOMMUTLBEntry entry;
++    uint8_t level;
++    uint8_t granule;
++} SMMUTLBEntry;
++
+ /*
+  * Generic structure populated by derived SMMU devices
+  * after decoding the configuration information and used as
+@@ -140,7 +146,7 @@ static inline uint16_t smmu_get_sid(SMMUDevice *sdev)
+  * pair, according to @cfg translation config
+  */
+ int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+-             IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info);
++             SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info);
+ 
+ /**
+  * select_tt - compute which translation table shall be used according to
+@@ -153,8 +159,8 @@ IOMMUMemoryRegion *smmu_iommu_mr(SMMUState *s, uint32_t sid);
+ 
+ #define SMMU_IOTLB_MAX_SIZE 256
+ 
+-IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg, hwaddr iova);
+-void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, IOMMUTLBEntry *entry);
++SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg, hwaddr iova);
++void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
+ SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint64_t iova);
+ void smmu_iotlb_inv_all(SMMUState *s);
+ void smmu_iotlb_inv_asid(SMMUState *s, uint16_t asid);
 diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index e13a5f4a7c..a3f9e47398 100644
+index 7dc8541e8b..398e958bb4 100644
 --- a/hw/arm/smmu-common.c
 +++ b/hw/arm/smmu-common.c
-@@ -186,7 +186,7 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
+@@ -64,11 +64,11 @@ SMMUIOTLBKey smmu_get_iotlb_key(uint16_t asid, uint64_t iova)
+     return key;
+ }
+ 
+-IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+-                                 hwaddr iova)
++SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
++                                hwaddr iova)
+ {
+     SMMUIOTLBKey key = smmu_get_iotlb_key(cfg->asid, iova);
+-    IOMMUTLBEntry *entry = g_hash_table_lookup(bs->iotlb, &key);
++    SMMUTLBEntry *entry = g_hash_table_lookup(bs->iotlb, &key);
+ 
+     if (entry) {
+         cfg->iotlb_hits++;
+@@ -86,7 +86,7 @@ IOMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+     return entry;
+ }
+ 
+-void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, IOMMUTLBEntry *entry)
++void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new)
+ {
+     SMMUIOTLBKey *key = g_new0(SMMUIOTLBKey, 1);
+ 
+@@ -94,9 +94,9 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, IOMMUTLBEntry *entry)
+         smmu_iotlb_inv_all(bs);
+     }
+ 
+-    *key = smmu_get_iotlb_key(cfg->asid, entry->iova);
+-    trace_smmu_iotlb_insert(cfg->asid, entry->iova);
+-    g_hash_table_insert(bs->iotlb, key, entry);
++    *key = smmu_get_iotlb_key(cfg->asid, new->entry.iova);
++    trace_smmu_iotlb_insert(cfg->asid, new->entry.iova);
++    g_hash_table_insert(bs->iotlb, key, new);
+ }
+ 
+ inline void smmu_iotlb_inv_all(SMMUState *s)
+@@ -216,7 +216,7 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
+  * @cfg: translation config
+  * @iova: iova to translate
+  * @perm: access type
+- * @tlbe: IOMMUTLBEntry (out)
++ * @tlbe: SMMUTLBEntry (out)
+  * @info: handle to an error info
+  *
+  * Return 0 on success, < 0 on error. In case of error, @info is filled
+@@ -226,7 +226,7 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
+  */
+ static int smmu_ptw_64(SMMUTransCfg *cfg,
+                        dma_addr_t iova, IOMMUAccessFlags perm,
+-                       IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
++                       SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+ {
+     dma_addr_t baseaddr, indexmask;
+     int stage = cfg->stage;
+@@ -246,8 +246,8 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
+     baseaddr = extract64(tt->ttb, 0, 48);
+     baseaddr &= ~indexmask;
+ 
+-    tlbe->iova = iova;
+-    tlbe->addr_mask = (1 << granule_sz) - 1;
++    tlbe->entry.iova = iova;
++    tlbe->entry.addr_mask = (1 << granule_sz) - 1;
+ 
+     while (level <= 3) {
          uint64_t subpage_size = 1ULL << level_shift(level, granule_sz);
-         uint64_t mask = subpage_size - 1;
-         uint32_t offset = iova_level_offset(iova, inputsize, level, granule_sz);
--        uint64_t pte;
-+        uint64_t pte, gpa;
-         dma_addr_t pte_addr = baseaddr + offset * sizeof(pte);
-         uint8_t ap;
- 
-@@ -199,56 +199,42 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
-         if (is_invalid_pte(pte) || is_reserved_pte(pte, level)) {
-             trace_smmu_ptw_invalid_pte(stage, level, baseaddr,
-                                        pte_addr, offset, pte);
--            info->type = SMMU_PTW_ERR_TRANSLATION;
--            goto error;
-+            break;
-         }
- 
--        if (is_page_pte(pte, level)) {
--            uint64_t gpa = get_page_pte_address(pte, granule_sz);
-+        if (is_table_pte(pte, level)) {
-+            ap = PTE_APTABLE(pte);
- 
--            ap = PTE_AP(pte);
-             if (is_permission_fault(ap, perm)) {
-                 info->type = SMMU_PTW_ERR_PERMISSION;
-                 goto error;
-             }
--
--            tlbe->translated_addr = gpa + (iova & mask);
--            tlbe->perm = PTE_AP_TO_PERM(ap);
-+            baseaddr = get_table_pte_address(pte, granule_sz);
-+            level++;
-+            continue;
-+        } else if (is_page_pte(pte, level)) {
-+            gpa = get_page_pte_address(pte, granule_sz);
-             trace_smmu_ptw_page_pte(stage, level, iova,
-                                     baseaddr, pte_addr, pte, gpa);
--            return 0;
--        }
--        if (is_block_pte(pte, level)) {
-+        } else {
-             uint64_t block_size;
--            hwaddr gpa = get_block_pte_address(pte, level, granule_sz,
--                                               &block_size);
--
--            ap = PTE_AP(pte);
--            if (is_permission_fault(ap, perm)) {
--                info->type = SMMU_PTW_ERR_PERMISSION;
--                goto error;
--            }
- 
-+            gpa = get_block_pte_address(pte, level, granule_sz,
-+                                        &block_size);
-             trace_smmu_ptw_block_pte(stage, level, baseaddr,
-                                      pte_addr, pte, iova, gpa,
-                                      block_size >> 20);
--
--            tlbe->translated_addr = gpa + (iova & mask);
--            tlbe->perm = PTE_AP_TO_PERM(ap);
--            return 0;
-         }
--
--        /* table pte */
--        ap = PTE_APTABLE(pte);
--
-+        ap = PTE_AP(pte);
-         if (is_permission_fault(ap, perm)) {
-             info->type = SMMU_PTW_ERR_PERMISSION;
+@@ -298,14 +298,16 @@ static int smmu_ptw_64(SMMUTransCfg *cfg,
              goto error;
          }
--        baseaddr = get_table_pte_address(pte, granule_sz);
--        level++;
--    }
  
-+        tlbe->translated_addr = gpa + (iova & mask);
-+        tlbe->perm = PTE_AP_TO_PERM(ap);
-+        return 0;
-+    }
+-        tlbe->translated_addr = gpa + (iova & mask);
+-        tlbe->perm = PTE_AP_TO_PERM(ap);
++        tlbe->entry.translated_addr = gpa + (iova & mask);
++        tlbe->entry.perm = PTE_AP_TO_PERM(ap);
++        tlbe->level = level;
++        tlbe->granule = granule_sz;
+         return 0;
+     }
      info->type = SMMU_PTW_ERR_TRANSLATION;
  
  error:
+-    tlbe->perm = IOMMU_NONE;
++    tlbe->entry.perm = IOMMU_NONE;
+     return -EINVAL;
+ }
+ 
+@@ -321,7 +323,7 @@ error:
+  * return 0 on success
+  */
+ inline int smmu_ptw(SMMUTransCfg *cfg, dma_addr_t iova, IOMMUAccessFlags perm,
+-             IOMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
++                    SMMUTLBEntry *tlbe, SMMUPTWEventInfo *info)
+ {
+     if (!cfg->aa64) {
+         /*
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index cd2a2e7e14..db74d27add 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -626,7 +626,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+     SMMUTranslationStatus status;
+     SMMUState *bs = ARM_SMMU(s);
+     uint64_t page_mask, aligned_addr;
+-    IOMMUTLBEntry *cached_entry = NULL;
++    SMMUTLBEntry *cached_entry = NULL;
+     SMMUTransTableInfo *tt;
+     SMMUTransCfg *cfg = NULL;
+     IOMMUTLBEntry entry = {
+@@ -676,7 +676,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+ 
+     cached_entry = smmu_iotlb_lookup(bs, cfg, aligned_addr);
+     if (cached_entry) {
+-        if ((flag & IOMMU_WO) && !(cached_entry->perm & IOMMU_WO)) {
++        if ((flag & IOMMU_WO) && !(cached_entry->entry.perm & IOMMU_WO)) {
+             status = SMMU_TRANS_ERROR;
+             if (event.record_trans_faults) {
+                 event.type = SMMU_EVT_F_PERMISSION;
+@@ -689,7 +689,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+         goto epilogue;
+     }
+ 
+-    cached_entry = g_new0(IOMMUTLBEntry, 1);
++    cached_entry = g_new0(SMMUTLBEntry, 1);
+ 
+     if (smmu_ptw(cfg, aligned_addr, flag, cached_entry, &ptw_info)) {
+         g_free(cached_entry);
+@@ -743,9 +743,9 @@ epilogue:
+     switch (status) {
+     case SMMU_TRANS_SUCCESS:
+         entry.perm = flag;
+-        entry.translated_addr = cached_entry->translated_addr +
++        entry.translated_addr = cached_entry->entry.translated_addr +
+                                     (addr & page_mask);
+-        entry.addr_mask = cached_entry->addr_mask;
++        entry.addr_mask = cached_entry->entry.addr_mask;
+         trace_smmuv3_translate_success(mr->parent_obj.name, sid, addr,
+                                        entry.translated_addr, entry.perm);
+         break;
 -- 
 2.21.3
 

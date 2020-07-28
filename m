@@ -1,90 +1,86 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp682118lfy;
-        Tue, 28 Jul 2020 08:13:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy0Kq40y4A3/WCSn6LuL1EBdXcOr4QEnRldO6t7MqnXT4uc5rxeNW4CfL77Tyv/GGz5A6Sx
-X-Received: by 2002:a25:aba2:: with SMTP id v31mr30397008ybi.138.1595949181796;
-        Tue, 28 Jul 2020 08:13:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1595949181; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp682305lfy;
+        Tue, 28 Jul 2020 08:13:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwXobRSyAq1GRr3YGKladoFEoCnRbwLrv7S+6T+5u+sbNwJW16Eh79O4yj28aq8YkvLF5hC
+X-Received: by 2002:a1f:a18f:: with SMTP id k137mr20555372vke.69.1595949192193;
+        Tue, 28 Jul 2020 08:13:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1595949192; cv=none;
         d=google.com; s=arc-20160816;
-        b=DC5aFXyVCMkcvPLInm+hoiffwjyF++uf7EmXgmdNxPbPebV26PhwBQ6nmQrnrneA5I
-         5JUhtVOLGLpfEC/j1FMQq9PBG8S8/no6S0/BETFsO0RPXLImMRWmYEsSmGPz0exxqZcL
-         U+F87vSrW6iBYKrNHc3MR/WRPvlVC8sXUxMlqKNSNblKXMX82omGVCLTg/OGNUnrOL/z
-         FMfc+mZDbXf1sldwrb8ufP/PEDsRhidJvifeg2i4uxkfN1pDx2vgei3MjS12vFGlXUdf
-         NfFUOk7wHYz51wr4zoXLxzWVDwcXhQyk0xAmOooiT7cP18dyczKYBy0TZz7ZtCPPSgs0
-         Y4nQ==
+        b=xkWJL2uyLqw++6N1HlCworZXHWbZcn/WOObxwqY6nDvOASvkc+karDHhph4gNqQs0e
+         eFGSxd7pkDYsg7euRhDOrcxdlKn3upRIJ3HlpKJc3ye79R8oLxW2m33b27u7ZWlbL+s0
+         5ryn1NpWd4h+sNSshOrC2w9VNwIYnwqHhX1AIn0X9cMt4zPREyrikjREV9LFqJ3PXS6f
+         EQJD8FthZLlr5tXdlGOZYV/OZbYqY5NLocLXsrke/+AfPuqrGzFehP5PW4CMJNnSx2vM
+         VUf0+1omFd817e0MnaiXypNsVbTivrt+4qI9qnf944ARrjVz3xqtNhD/e+tVjWrofQc4
+         pLpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=kzkZbHiaAXlpXHNAvFChVDMnSS9mfiTet/N90izk+PI=;
-        b=s2prKpyCTDgsir3rLBFvYxJgledoPMi3vG+FltPxjbDOHjHkYOuSO3DHbxOLYwL4Wg
-         OKUaUazrx6FmWZn+F11Q49uHmcxFbCFStMEntpWq991JnKR7WjT0bxuqIAMXf7G8pUXT
-         iewhFgC/wJIM9l6aB3kfthpKQmZXMArURavUNgEzhQfOs8DYrxs0qPd2CkElY/3lD+AI
-         7XYQB7gi/SV4f/aOyG8VnWI/sqR/oe6T/s4KkjoD5zT1AY7p3j9wk3CZuGzkoLd+EiYG
-         vC1IwXmgIBCfhrTsx7RVf8kpIWJKp6H3Gk9RP4C149JcCzWF4qbOG7/0iHqPWVJCKHPz
-         yZWw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=5ok4OsHYVJSOwQoAqcEDnIMx1zlXpvooFS/7t7HADcE=;
+        b=l0loXtyCzQFwzpyciWlvXIuc08yMrCMJK7oKCsDH+Enll6xHl2xaXWRUNL8dUiV/2c
+         eS6TlsJkuJvUmw27iNLp6SfTjJDl5NB76ZEX819xSq7N9cUDAPAJ48YAuy17eyiLH5+X
+         1hdkasIU1aXrY9zSOIhBE5SSLZsauRBP8VTsX4KSxLfm7DfNKOblt3T7KOM8klHspa9D
+         NsYyPUx9awVDgpY/MOTl69txpPPvyQAIyuXHsbHDg2Q9Ca+WOd1ookZTICtKdFJarlbo
+         ed1tnCiKucCKCV6pP48SuKr781E4skLn86jLssQtihgOZoLpOtCykoaugai5TgHPi+is
+         PZ0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fPIlicee;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Le0Tmudk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m1si13200698ybt.173.2020.07.28.08.13.01
+        by mx.google.com with ESMTPS id g5si1418135vsc.424.2020.07.28.08.13.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 28 Jul 2020 08:13:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 28 Jul 2020 08:13:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fPIlicee;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Le0Tmudk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46896 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46524 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k0RHp-0003yk-5O
-	for alex.bennee@linaro.org; Tue, 28 Jul 2020 11:13:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41992)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k0RHz-0003pO-Dw
+	for alex.bennee@linaro.org; Tue, 28 Jul 2020 11:13:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41736)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k0RFT-0008Rj-Lf
- for qemu-arm@nongnu.org; Tue, 28 Jul 2020 11:10:35 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:43945
+ id 1k0REy-0007PQ-J6
+ for qemu-devel@nongnu.org; Tue, 28 Jul 2020 11:10:04 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:34998
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k0RFS-0007xI-4F
- for qemu-arm@nongnu.org; Tue, 28 Jul 2020 11:10:35 -0400
+ id 1k0REw-0007hN-Ke
+ for qemu-devel@nongnu.org; Tue, 28 Jul 2020 11:10:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1595949033;
+ s=mimecast20190719; t=1595949001;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=kzkZbHiaAXlpXHNAvFChVDMnSS9mfiTet/N90izk+PI=;
- b=fPIliceejnf4wZUj6reSPf6yG+XJX5WLA23pxAPVjMQmbwNbvvfwJpIAlEvdxBq1xHN8+x
- aGc5Pam1GspmD9uzoOl0pAy8TgnTzTZUY408jk03C75n+psPyZwUq/ZPjFYoxyK435YNob
- PX7SG8U32cVXa5A2uKVY/UyHDQcG8D8=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=5ok4OsHYVJSOwQoAqcEDnIMx1zlXpvooFS/7t7HADcE=;
+ b=Le0TmudkIFa/hLLzi/Va2CuyAg/ifsqoPv6PXjUrr6KVJ+YTsh9si1+oQyotDzorbzViS2
+ tfFCpwL2/+eY8w44YW/maMU+2rsx6KnUPFOHGDYm4i6Tok3JAcqVeXwf/n8UmyKxmifLQI
+ vYIOUeiT1XlvcjQAnlCNP4rEJ4+iEpc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-405-iF5EPUm7MAKv6CUSHc9UVw-1; Tue, 28 Jul 2020 11:10:31 -0400
-X-MC-Unique: iF5EPUm7MAKv6CUSHc9UVw-1
+ us-mta-288-uDEH2QnsM0qE21qEZpSbTw-1; Tue, 28 Jul 2020 11:08:26 -0400
+X-MC-Unique: uDEH2QnsM0qE21qEZpSbTw-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A6042100AA28;
- Tue, 28 Jul 2020 15:10:29 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 692E18C5069;
+ Tue, 28 Jul 2020 15:08:24 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-112-203.ams2.redhat.com [10.36.112.203])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8AE085C1BD;
- Tue, 28 Jul 2020 15:10:08 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 94D555C1BD;
+ Tue, 28 Jul 2020 15:08:19 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, peter.maydell@linaro.org, peterx@redhat.com
-Subject: [PATCH for-5.2 v4 08/11] hw/arm/smmuv3: Fix IIDR offset
-Date: Tue, 28 Jul 2020 17:08:12 +0200
-Message-Id: <20200728150815.11446-9-eric.auger@redhat.com>
-In-Reply-To: <20200728150815.11446-1-eric.auger@redhat.com>
-References: <20200728150815.11446-1-eric.auger@redhat.com>
+Subject: [PATCH for-5.2 v4 00/11] SMMUv3.2 Range-based TLB Invalidation Support
+Date: Tue, 28 Jul 2020 17:08:04 +0200
+Message-Id: <20200728150815.11446-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 X-Mimecast-Spam-Score: 0
@@ -101,48 +97,111 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: jean-philippe@linaro.org, robh@kernel.org, robin.murphy@arm.com,
  mst@redhat.com, zhangfei.gao@foxmail.com, shameerali.kolothum.thodi@huawei.com,
  will@kernel.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fzYQN4RlpINq
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /ZvShDkeBk0g
 
-The SMMU IIDR register is at 0x018 offset.
+SMMU3.2 brings the support of range-based TLB invalidation and
+level hint. When this feature is supported, the SMMUv3 driver
+is allowed to send TLB invalidations for a range of IOVAs instead
+of using page based invalidation.
 
-Fixes: 10a83cb9887 ("hw/arm/smmuv3: Skeleton")
-Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/smmuv3-internal.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Implementing this feature in the virtual SMMUv3 device is
+mandated for DPDK on guest use case: DPDK uses hugepage
+buffers and guest sends invalidations for blocks. Without
+this feature, a guest invalidation of a block of 1GB for instance
+translates into a storm of page invalidations. Each of them
+is trapped by the VMM and cascaded downto the physical IOMMU.
+This completely stalls the execution. This integration issue
+was initially reported in [1].
 
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index 5babf72f7d..ef093eaff5 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -63,7 +63,7 @@ REG32(IDR5,                0x14)
- 
- #define SMMU_IDR5_OAS 4
- 
--REG32(IIDR,                0x1c)
-+REG32(IIDR,                0x18)
- REG32(CR0,                 0x20)
-     FIELD(CR0, SMMU_ENABLE,   0, 1)
-     FIELD(CR0, EVENTQEN,      2, 1)
+Now SMMUv3.2 specifies additional parameters to NH_VA and NH_VAA
+stage 1 invalidation commands so we can support those extensions.
+
+Supporting block mappings in the IOTLB look sensible in terms of
+TLB entry consumption. However looking at virtio/vhost device usage,
+without block mapping and without range invalidation (< 5.7 kernels
+it may be less performant. However for recent guest kernels
+supporting range invalidations [2], the performance should be similar.
+
+Best Regards
+
+Eric
+
+This series can be found at:
+https://github.com/eauger/qemu.git
+branch: v5.1.0-rc1-smmuv3-ril-v4
+
+References:
+[1] [RFC v2 4/4] iommu/arm-smmu-v3: add CMD_TLBI_NH_VA_AM command
+for iova range invalidation
+(https://lists.linuxfoundation.org/pipermail/iommu/2017-August/023679.html
+
+[2] 5.7+ kernels featuring
+6a481a95d4c1 iommu/arm-smmu-v3: Add SMMUv3.2 range invalidation support
+
+History:
+
+v3 -> v4:
+- use tg in hash function and directly compare key fields in the
+  equal function
+- don't claim 3.2 as we don't have BBML support yet
+- fixed a bunch of indent issues
+
+v2 -> v3:
+- restore the Jenkins hash function and keep the key as a struct
+- simplify the logic in smmu_hash_remove_by_asid_iova
+- added HAD support
+- expose AIDR (advertise v3.2 support) and fix IIDR offset
+
+v1 -> v2:
+- added "hw/arm/smmu: Introduce smmu_get_iotlb_key()"
+- removed "[PATCH 5/9] hw/arm/smmuv3: Store the starting level in
+  SMMUTransTableInfo"
+- Collected Peter's R-b
+- In this version the key still features TG/LVL.
+- More details in individual history logs
+
+
+Eric Auger (11):
+  hw/arm/smmu-common: Factorize some code in smmu_ptw_64()
+  hw/arm/smmu-common: Add IOTLB helpers
+  hw/arm/smmu: Introduce smmu_get_iotlb_key()
+  hw/arm/smmu: Introduce SMMUTLBEntry for PTW and IOTLB value
+  hw/arm/smmu-common: Manage IOTLB block entries
+  hw/arm/smmuv3: Introduce smmuv3_s1_range_inval() helper
+  hw/arm/smmuv3: Get prepared for range invalidation
+  hw/arm/smmuv3: Fix IIDR offset
+  hw/arm/smmuv3: Let AIDR advertise SMMUv3.0 support
+  hw/arm/smmuv3: Support HAD and advertise SMMUv3.1 support
+  hw/arm/smmuv3: Advertise SMMUv3.2 range invalidation
+
+ hw/arm/smmu-internal.h       |   8 ++
+ hw/arm/smmuv3-internal.h     |  10 +-
+ include/hw/arm/smmu-common.h |  19 +++-
+ include/hw/arm/smmuv3.h      |   1 +
+ hw/arm/smmu-common.c         | 214 ++++++++++++++++++++++++-----------
+ hw/arm/smmuv3.c              | 142 +++++++++++------------
+ hw/arm/trace-events          |  12 +-
+ 7 files changed, 258 insertions(+), 148 deletions(-)
+
 -- 
 2.21.3
 

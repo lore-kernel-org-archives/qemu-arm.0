@@ -1,145 +1,211 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2396688lfy;
-        Thu, 30 Jul 2020 02:45:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxpUhG9C9Vop8QoSh/d6KzYHn/qVk+9F/aaRW0+TziUBMA9afoy+fMoAFRPgV9H2I3F0TFN
-X-Received: by 2002:a25:ab34:: with SMTP id u49mr57073727ybi.203.1596102359733;
-        Thu, 30 Jul 2020 02:45:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596102359; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2450918lfy;
+        Thu, 30 Jul 2020 04:06:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxh/sNyg4xlKh6E/e4L9RqOWjHo52mTBREwzQpRsnqW4fc+cdk6kpG1b1y3M48J/3XRi2pj
+X-Received: by 2002:a25:b42:: with SMTP id 63mr29958082ybl.341.1596107214120;
+        Thu, 30 Jul 2020 04:06:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596107214; cv=none;
         d=google.com; s=arc-20160816;
-        b=A4ZrtMAPoxg19MZH9Jz5I1Ka9X54My+DTR/+DxFVakn4LzX26HWNQw0J4Of1jn7p9T
-         fT+pfmpJXG2X3TqcbYNy4fIxUOU3kC9WZ6GlQ2bmZnyepLSlRYycNFUJd60oHz71gKG1
-         rwJn5qvHT+i39H1s9qUxvmSBeWcXe61Tfb2PZeEAtq/m2VUbjSM1234AhOJvGAtxVZYn
-         P2qt5v59RlaGJAcRdSczLQLdWBm4v2CYk1oBo0SClpi/pQiPg90htnfi75IG/2LsIahK
-         QFaRSDVoHp8EsQXpK6Aa331JrQEyf5ZpSJGuL7O3KdtDpWwcPDHMUmTJNs7hlF1F2GIw
-         ltlA==
+        b=hG6cOITkae7P9mKfVo2vLFYv6gEi9oEipGkqb8je3kfxBk7G7SlJ+ausql2uYl61+t
+         pE4tMPXSbaEFW6VA9p33QDHd2Gw6N7IG0b5IZTK/TEV9cRvfDTz8DH8ZhaTr4uRudYSv
+         XvbcFxsYQCnn/Mh2MK8cIP8zTHAbI5oH4uRGB46aGUmYicnovY564FUb9EyWLus5TrIr
+         b0Pbw/Q8eNJBS5N995qFtd8vHc2TOqMveb0ejJhSRlDM1AH+Cuufbti0xIMkx4jN7aq+
+         eigh1Ti+5+Bv5gz/PNFKFBBQYXN5i2kFHk9bY9XuQP49XF7/LKQUTM4ZcWj/NbU/ex+i
+         a0rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:organization:references
-         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
-        bh=xynJH410Zp5n/uQ+6+57XOtSHVdM21IMUCM7yAo3biE=;
-        b=GOFJa7GF3daGjb5qIlDf8edQzEWQ76aNCE8nHHODkckKFJnQX+RsYk3urf2u+sMoGA
-         Xb/t+RvKeR3B5FyGvYV3IK+v+6Q19VYkzlI9eX2iXf3DK+xtTNatxHHARAVFasPHFJEF
-         R9jepM0g7206hQ0iorHmA+eBfOF6a4rnc6qj0v7nV/15PGn4V1KhjGjbxQkG7OAPjj77
-         uq6s0Mi4vq/9Bc6GiVIqOghDz8ATgQgovvCkSHbVAq4wEvZIm2N+N6i+LhijzYSBm5vo
-         fmXCnmiTq+GOJq0GyL51cK94JU9l4j+AnY1LmIMgv+FFBq2DKXEgIHCnvp5tYdt7JznV
-         8LcA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=vwqD+Czhv6mTzpo2HX6+cQ/cC7MrcIZyKswxU9LhogM=;
+        b=ydQNpQ4aMPlbqPkQv46KLRDY799714/sSHaSo/V83kyrdJVRAdJ1U1FZfkBKIoMvsU
+         DZkJq/BD2Xgza6SN+sYDA48WOKmfC2T/9P2pJIdc+jaaMRP7KdiwQqkqZwRTOP43nvh2
+         jP3KFEOa6BrfZJtea+p1EUv32jnyVY+BkCvwHT0w9RVvKepOHFx+fyNyzxlPSJBJF9S/
+         2WohvaTwXDnti2ZC1Mz75p9SYDWxtlUnFb0R/2ZTzSEg1V1YLOP7Vvktg4CHCCtZTqCE
+         k//TEg/Jl167RAWc+1Dboo9FV4dPU+AOEdBIMc9oTgSeZmwHj1tSzu7jmiHcUaE9t/pk
+         1G/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JfSnLCKn;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <cohuck@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id z13si4618387ybr.271.2020.07.30.02.45.59
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id k1si3874056ybd.62.2020.07.30.04.06.53
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 30 Jul 2020 02:45:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Jul 2020 04:06:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JfSnLCKn;
-       spf=pass (google.com: domain of cohuck@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1596102359;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=xynJH410Zp5n/uQ+6+57XOtSHVdM21IMUCM7yAo3biE=;
-	b=JfSnLCKn2gQY5KvDPXi4I9sr5gUw4AhXRgPxFZRdKc78tCppC1Bh8274KYD+2fzhHsX+AF
-	TnTrFVVnk84NZP72nvMDN10l3Z2tBu4tC8SLvyCBuxSUCxrWrBBpOU+fyFzRqkdWYJc5MS
-	iiOXIPX6dkSLHP4k05Av8bQkpB9xvRU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-432-DvLsdWkUOn-DTSX3n1AG1A-1; Thu, 30 Jul 2020 05:45:55 -0400
-X-MC-Unique: DvLsdWkUOn-DTSX3n1AG1A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3802C1B2C980;
-	Thu, 30 Jul 2020 09:45:52 +0000 (UTC)
-Received: from gondolin (ovpn-112-203.ams2.redhat.com [10.36.112.203])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id AC8785DA76;
-	Thu, 30 Jul 2020 09:45:43 +0000 (UTC)
-Date: Thu, 30 Jul 2020 11:45:41 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
- qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>, "Paolo
- Bonzini" <pbonzini@redhat.com>, Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Peter Maydell
- <peter.maydell@linaro.org>, Aleksandar Markovic
- <aleksandar.qemu.devel@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>, Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>, Alex
- =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, Greg Kurz
- <groug@kaod.org>
-Subject: Re: [RFC PATCH v3 8/8] target/s390x: Use start-powered-off CPUState
- property
-Message-ID: <20200730114541.4dbdd15e.cohuck@redhat.com>
-In-Reply-To: <87a6zjuoru.fsf@morokweng.localdomain>
-References: <20200723025657.644724-1-bauerman@linux.ibm.com>
-	<20200723025657.644724-9-bauerman@linux.ibm.com>
-	<20200727144350.47abd7e7.cohuck@redhat.com>
-	<87a6zjuoru.fsf@morokweng.localdomain>
-Organization: Red Hat GmbH
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:53654 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k16Oj-0004YP-Im
+	for alex.bennee@linaro.org; Thu, 30 Jul 2020 07:06:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57760)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k16No-0003zg-Bx; Thu, 30 Jul 2020 07:05:56 -0400
+Received: from mail-ed1-f65.google.com ([209.85.208.65]:36240)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k16Nm-00027p-JU; Thu, 30 Jul 2020 07:05:56 -0400
+Received: by mail-ed1-f65.google.com with SMTP id c15so9971059edj.3;
+ Thu, 30 Jul 2020 04:05:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=vwqD+Czhv6mTzpo2HX6+cQ/cC7MrcIZyKswxU9LhogM=;
+ b=k79NlUo6l7+HSEQD8OMcZ1oun0ADAxJ0XCj6/WexsfXtdOOZQc3HhVIw2+1hGwPvSM
+ VEoX0U2tqBdBhR1yPgdl3oG5xGaKyui2znKsrmDcUA49scPeDNkXfZgEvRDux/zo+AVe
+ lwYdKFa8G97btpit5XA8lamEiS/xh6SDbuvlI05c/+Fnkh8KgTHtdOlbd22BR+7ZRkC2
+ klVoi6JftxWVE9SJb50sEWi68cZYz7IXW0KlTZzGrNWEy/VZ5vO4Qusn/L0E4YVU0q5l
+ sFORkY7F3QuiIHe696ANOmBbsYP7dsfrvb/nkID0Pt/PaDYRCpjU29dwUyJcZ3WDfWrD
+ Nq2Q==
+X-Gm-Message-State: AOAM533tTx5+baTL4AGurHr7NUTrYa+OAkP9efZkJbIN/ek+q81T/ZkK
+ TBS31nmNL/fx97lUBD4/YoO7SBp7m7vXIBMPZls=
+X-Received: by 2002:a50:d9cb:: with SMTP id x11mr1993173edj.93.1596107152259; 
+ Thu, 30 Jul 2020 04:05:52 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-X-TUID: kvQ4oQ+6hN3g
+References: <20200723025657.644724-1-bauerman@linux.ibm.com>
+ <878sf3uojf.fsf@morokweng.localdomain>
+ <20200730005947.GO84173@umbus.fritz.box>
+In-Reply-To: <20200730005947.GO84173@umbus.fritz.box>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Thu, 30 Jul 2020 13:05:39 +0200
+Message-ID: <CAAdtpL5Mtaf7Xwu74U33eGTCAiFZNNXeCST8COwQeW8S9j8ZVQ@mail.gmail.com>
+Subject: Re: [PATCH v3 0/8] Generalize start-powered-off property from ARM
+To: David Gibson <david@gibson.dropbear.id.au>
+Content-Type: multipart/alternative; boundary="000000000000d57f5505aba6a7ae"
+Received-SPF: pass client-ip=209.85.208.65;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-f65.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 07:05:52
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -8
+X-Spam_score: -0.9
+X-Spam_bar: /
+X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=1,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-devel@nongnu.org,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ Thiago Jung Bauermann <bauerman@linux.ibm.com>, Greg Kurz <groug@kaod.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: eVPZI2bXRAQQ
 
-On Tue, 28 Jul 2020 21:51:33 -0300
-Thiago Jung Bauermann <bauerman@linux.ibm.com> wrote:
+--000000000000d57f5505aba6a7ae
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> Hi,
-> 
-> Cornelia Huck <cohuck@redhat.com> writes:
-> 
-> > On Wed, 22 Jul 2020 23:56:57 -0300
-> > Thiago Jung Bauermann <bauerman@linux.ibm.com> wrote:
-> >  
-> >> Instead of setting CPUState::halted to 1 in s390_cpu_initfn(), use the
-> >> start-powered-off property which makes cpu_common_reset() initialize it
-> >> to 1 in common code.
-> >> 
-> >> Note that this changes behavior by setting cs->halted to 1 on reset, which
-> >> didn't happen before.  
+Le jeu. 30 juil. 2020 03:00, David Gibson <david@gibson.dropbear.id.au> a
+=C3=A9crit :
+
+> On Tue, Jul 28, 2020 at 09:56:36PM -0300, Thiago Jung Bauermann wrote:
 > >
-> > I think that should be fine, as we change the cpu state to STOPPED in
-> > the reset function, which sets halted to 1.  
-> 
-> Nice, thanks for checking.
-> 
-> >> 
-> >> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-> >> ---
-> >>  target/s390x/cpu.c | 2 +-
-> >>  1 file changed, 1 insertion(+), 1 deletion(-)
-> >> 
-> >> NB: I was only able to test that this patch builds. I wasn't able to
-> >> run it.  
+> > Thiago Jung Bauermann <bauerman@linux.ibm.com> writes:
 > >
-> > No noticeable difference under kvm, but running under tcg seems a bit
-> > more sluggish than usual, and I saw some pausing on reboot (after the
-> > bios handover to the kernel). Not sure if it were just flukes on my
-> > laptop, would appreciate if someone else could give it a go.  
+> > > The ARM code has a start-powered-off property in ARMCPU, which is a
+> > > subclass of CPUState. This property causes arm_cpu_reset() to set
+> > > CPUState::halted to 1, signalling that the CPU should start in a halt=
+ed
+> > > state. Other architectures also have code which aim to achieve the sa=
+me
+> > > effect, but without using a property.
+> > >
+> > > The ppc/spapr version has a bug where QEMU does a KVM_RUN on the vcpu
+> > > before cs->halted is set to 1, causing the vcpu to run while it's
+> still in
+> > > an unitialized state (more details in patch 3).
+> >
+> > Since this series fixes a bug is it eligible for 5.1, at least the
+> > patches that were already approved by the appropriate maintainers?
+>
+> Ok by me.
+>
 
-Experimented a bit with it again. There's a pause when switching from
-the bios to the kernel (after the load reset normal has been done, I
-guess), which is always there, but seems to get more noticeable with
-this patch (varying wildly, but seems longer on average.) Hard to pin
-down, and I don't really see a reason why that should happen, as we
-should end up with halted == 1 in any case. Might still be a fluke,
-even though I see it both on my laptop and on an LPAR (when running
-under tcg; not seen under kvm, which is much faster anyway.)
+Maybe just the arm generalization and ppc fix for 5.1, delaying all not
+bugfix to 5.2?
 
-> 
-> I tried today setting up a TCG guest, but didn't have success yet.
-> Will try some more tomorrow.
-> 
 
-I'm also looking a bit at the other s390 folks :)
+> --
+> David Gibson                    | I'll have my music baroque, and my code
+> david AT gibson.dropbear.id.au  | minimalist, thank you.  NOT _the_
+> _other_
+>                                 | _way_ _around_!
+> http://www.ozlabs.org/~dgibson
+>
+
+--000000000000d57f5505aba6a7ae
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D=
+"gmail_attr">Le jeu. 30 juil. 2020 03:00, David Gibson &lt;<a href=3D"mailt=
+o:david@gibson.dropbear.id.au">david@gibson.dropbear.id.au</a>&gt; a =C3=A9=
+crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 =
+0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On Tue, Jul 28, 2020 at=
+ 09:56:36PM -0300, Thiago Jung Bauermann wrote:<br>
+&gt; <br>
+&gt; Thiago Jung Bauermann &lt;<a href=3D"mailto:bauerman@linux.ibm.com" ta=
+rget=3D"_blank" rel=3D"noreferrer">bauerman@linux.ibm.com</a>&gt; writes:<b=
+r>
+&gt; <br>
+&gt; &gt; The ARM code has a start-powered-off property in ARMCPU, which is=
+ a<br>
+&gt; &gt; subclass of CPUState. This property causes arm_cpu_reset() to set=
+<br>
+&gt; &gt; CPUState::halted to 1, signalling that the CPU should start in a =
+halted<br>
+&gt; &gt; state. Other architectures also have code which aim to achieve th=
+e same<br>
+&gt; &gt; effect, but without using a property.<br>
+&gt; &gt;<br>
+&gt; &gt; The ppc/spapr version has a bug where QEMU does a KVM_RUN on the =
+vcpu<br>
+&gt; &gt; before cs-&gt;halted is set to 1, causing the vcpu to run while i=
+t&#39;s still in<br>
+&gt; &gt; an unitialized state (more details in patch 3).<br>
+&gt; <br>
+&gt; Since this series fixes a bug is it eligible for 5.1, at least the<br>
+&gt; patches that were already approved by the appropriate maintainers?<br>
+<br>
+Ok by me.<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=
+=3D"auto">Maybe just the arm generalization and ppc fix for 5.1, delaying a=
+ll not bugfix to 5.2?</div><div dir=3D"auto"><br></div><div dir=3D"auto"><d=
+iv class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:=
+0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+-- <br>
+David Gibson=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 | I&#39;ll have my music baroque, and my code<br>
+david AT <a href=3D"http://gibson.dropbear.id.au" rel=3D"noreferrer norefer=
+rer" target=3D"_blank">gibson.dropbear.id.au</a>=C2=A0 | minimalist, thank =
+you.=C2=A0 NOT _the_ _other_<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | _way_ _around_!<br>
+<a href=3D"http://www.ozlabs.org/~dgibson" rel=3D"noreferrer noreferrer" ta=
+rget=3D"_blank">http://www.ozlabs.org/~dgibson</a><br>
+</blockquote></div></div></div>
+
+--000000000000d57f5505aba6a7ae--

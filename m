@@ -1,148 +1,143 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2533753lfy;
-        Thu, 30 Jul 2020 05:57:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzoObFyQGL60ruxhQP6nzqn0jQ3zpTWq4RAMw32H5FFzlumOSUQa2ExkFWyjMvmC/aqBh+H
-X-Received: by 2002:a25:7908:: with SMTP id u8mr4136396ybc.144.1596113873879;
-        Thu, 30 Jul 2020 05:57:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596113873; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2549841lfy;
+        Thu, 30 Jul 2020 06:15:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxb1Fd39cfW1uvjTeRbUQzJenRxv+QvK6ROh4ycclo8ibDoN3a0ZLKvZS4WLx4wmZbroSk8
+X-Received: by 2002:a25:d7d8:: with SMTP id o207mr40022732ybg.409.1596114949284;
+        Thu, 30 Jul 2020 06:15:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596114949; cv=none;
         d=google.com; s=arc-20160816;
-        b=pXQeQLBz3fqDIgjUQxU6Xr9Y+bGFa2RQZvBVILEJGvpd3ddKxiEHSkwHCIP1LG5/Wp
-         U/qBF8qJgnkK1oPdGkV8biBS8WQP+e6xdwJEe123qLUHMiaxRVLGUpmJf5YjHOC6wuuC
-         22d096Cs3RXmTa+9tCUjogX4n2rXKhVz5yGft5LpcaTOHxO2srN9TuiKo23tbeQjuDbp
-         LPGRjBpaOZIUAk4CflFnKFIQpoeV5MsjHMuPFrxHWPSZgS7Pa2CgmdhAsJ9AG91kyHWE
-         DDOLdSDi5A0Slpxu+j86yIXcMmwHMg8EWrKGlUvz9R/VEFsGCFu7u+vvMJCdAx5XIm1J
-         Nbhw==
+        b=J1PUU3W87+6651Q6E7kWEguV31n8qYtJU7fXnfj7fnaqgp7hjHxJJc1Es2GDpUUgCe
+         09wa9q9/GeDtTevq3xuFcXOM66lF2MO4sLC5kFXr1g7gYGdczl6lRZwNQ9JPmoI62wea
+         7mqtjmpR0eCj5nBpkRxztNQpcCmgCM5XGld/lEoe+yPW72PcPnOfvYfbFZNA8M/MLTs3
+         xPSIu151oHQSQgd7Cqw/bkBLAiDG4Z2X3kggHaWn6Cz07/dMnigqwbexXhE/HAP2IzYr
+         Xa3fwqA8sP3bFjCcBL5sO524mUmiu1E+uMySTbK8RPJzeXJUi9wGsnjy6IyUc/c6RfQA
+         jIiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:references:to:from:subject
-         :dkim-signature;
-        bh=C1G3i+wCf18TEQ2r1EemrQr6jL/9jBSb5FtBTuqzjS8=;
-        b=qJUyHUGN6OPa6ux4jhyhvPQooKLPyNRL3+CLeWGisfM7FiqwiJSPb1ROFIxDIfONkc
-         4ps6tcF/wD3K9nG0oUlqLMKHY1inUAWaENbOjS6AAvU6utw+2DjE0Sd3GaqVBWngvGgz
-         bQRJk79/nErqDhjswPWVZD0ajRjJHnNNq4SNCh3Nj/WsaWFuV47A5JsrzXV8uBvCRUu8
-         P9hAxgrqnZahT0zF/+RUXPQYIu+8KlsD4Fhk9TryUdl+iFm386FmxnQgMQ3DwOvlQDla
-         Ow7OQIBfK4HZy5BvcNw/p6NCPS8m5VmDDL76RdVD3jMi8dspF9LMDg367KSLA8e7mWav
-         Zojw==
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=SeZf0aDOryz8oEIwi7cYGFtK46KvQ1YiUCO/5R0RNio=;
+        b=AJkMwy9Q3TfQKhf5wfqpAivGC0NlmtdcIdO8xk8sW+0LcrTuK/zxIS32A8x5r0+v4Q
+         BcxqrsOFbYG5akTjJ5z7r8fImDEfCFFOsExGZBSigsAmnDV2Lx6yj492DjaWwYLD755k
+         eWBj3mhEm32TtoDGDlp88hSJfhqREUV9CAOZoNVKBoWL8TVVUlffWX3x1uEqGuom8XIT
+         u3ZrJkrSgaHnCb/L+t0J6Wwhg4BGR8a+nl6IzZebJ2QzN1lU+0ci+forTiluvA1f8XE1
+         scKPdZ14rNYreCftSYD14k84fQMDpgWRaAimy/15LB7F1ZRtKDJk6JqCDW0El1zZLf15
+         IVhQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DVQktXk8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dufqvAKW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n127si5330476ybc.92.2020.07.30.05.57.53
+        by mx.google.com with ESMTPS id s207si5122222ybc.164.2020.07.30.06.15.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jul 2020 05:57:53 -0700 (PDT)
+        Thu, 30 Jul 2020 06:15:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DVQktXk8;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=dufqvAKW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57016 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35256 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k1889-0005WR-6n
-	for alex.bennee@linaro.org; Thu, 30 Jul 2020 08:57:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60876)
+	id 1k18PU-0003Y3-EZ
+	for alex.bennee@linaro.org; Thu, 30 Jul 2020 09:15:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38464)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1k187z-0005W0-Mk
- for qemu-arm@nongnu.org; Thu, 30 Jul 2020 08:57:43 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33510
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k18PB-0003WU-UM
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 09:15:29 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:21775
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1k187w-0001s3-Rs
- for qemu-arm@nongnu.org; Thu, 30 Jul 2020 08:57:42 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k18P9-0004kt-NY
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 09:15:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596113859;
+ s=mimecast20190719; t=1596114926;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=C1G3i+wCf18TEQ2r1EemrQr6jL/9jBSb5FtBTuqzjS8=;
- b=DVQktXk8Z+z91Nz6Y0QPLaw4t+2Gd0FIm9pX/76ErRJUHr6vBsVIdb8cjeP8i9I1L7maNH
- A8tBETjO6p7YohvALqGL72T1u4gVs+Bza5CiufCTNkAscqRLUBSOwbiJUh7v+1oVGfpbjM
- DCguLM0K29+3f1MhiR86e8J8kj2Z+BM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-164-gcxHZU-BPEueIeCjXXsnGQ-1; Thu, 30 Jul 2020 08:57:35 -0400
-X-MC-Unique: gcxHZU-BPEueIeCjXXsnGQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0B9261DE4;
- Thu, 30 Jul 2020 12:57:34 +0000 (UTC)
-Received: from [10.36.113.185] (ovpn-113-185.ams2.redhat.com [10.36.113.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DC2C719934;
- Thu, 30 Jul 2020 12:57:27 +0000 (UTC)
+ bh=SeZf0aDOryz8oEIwi7cYGFtK46KvQ1YiUCO/5R0RNio=;
+ b=dufqvAKWy/Cwl6P9z1dr+CM5d4BXohFlCdbWcP3Qk+5b7ZMbp3b72MEH914rD4Kl38TJZz
+ If3aYaAE5jjjo3FyndHko2vbCe0Vh9zYVPxW1SYJ8lK94Yn2D0+VuKq7/lfiyfdvQ98fw7
+ BOo4XLMIcchwmykArIxmRHdzTXtpJIg=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-384-BW4k-y3jOtmBydwhB_Wc_g-1; Thu, 30 Jul 2020 09:15:25 -0400
+X-MC-Unique: BW4k-y3jOtmBydwhB_Wc_g-1
+Received: by mail-wm1-f72.google.com with SMTP id z10so2216574wmi.8
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2020 06:15:24 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=SeZf0aDOryz8oEIwi7cYGFtK46KvQ1YiUCO/5R0RNio=;
+ b=eTvdHPkRCGr2+2X4PSh4i0BWST59fzXR32ffY0JSnMDc4nCysPXqKHjONsTP/tL2P9
+ Se8UGi8zwtCfYUsMuFagPwOg0zs7tvkP58/rh8zHsQAwfYQoVHkQcRe32e5j1i410xyD
+ S+UhxWMr7mlrn66Br6zf2g+zPz2DsTtGcz/b0VeFqHtEJJA++znLGozQFJVLYlZBhP+P
+ R0zcM5F9G+ndZwjVY818evFNslY3C3OtruTygB8oMXOta2Uw06Q4mhxRB2FWkJ+Iap01
+ CDY8xImz9trts5+ekMkfnvWFlt62JPoTpFp+O7KUrx5ZCVMILY822WncwDt4rlNxpOBy
+ 017g==
+X-Gm-Message-State: AOAM532n8jJJ6siDnpWXVCI+dVQvGWFjZBy5nB3rSJLeKzdcMb/Gj/KS
+ UlDnQl7ujUHDlFl1Da2NlraiQej70h41zODTOMTxP8Qbdk3jqQqnqN53Z5hs8wON8XrVp0roy7J
+ aXdcplicVsnA/
+X-Received: by 2002:a1c:ba83:: with SMTP id
+ k125mr13483068wmf.160.1596114923380; 
+ Thu, 30 Jul 2020 06:15:23 -0700 (PDT)
+X-Received: by 2002:a1c:ba83:: with SMTP id
+ k125mr13483051wmf.160.1596114923109; 
+ Thu, 30 Jul 2020 06:15:23 -0700 (PDT)
+Received: from [192.168.1.39] (214.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.214])
+ by smtp.gmail.com with ESMTPSA id z6sm10069322wrs.36.2020.07.30.06.15.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Jul 2020 06:15:22 -0700 (PDT)
 Subject: Re: [PATCH v2 1/2] virtio-mem: Change PRIx32 to PRIXPTR to fix
  compile error.
-From: David Hildenbrand <david@redhat.com>
 To: Kaige Li <likaige@loongson.cn>, "Michael S. Tsirkin" <mst@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
 References: <1596110248-7366-1-git-send-email-likaige@loongson.cn>
- <9bafb053-a6cb-5738-700f-a71cba79ccc8@redhat.com>
-Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat GmbH
-Message-ID: <ca47a89b-15dd-655b-d524-0d39c36b00f5@redhat.com>
-Date: Thu, 30 Jul 2020 14:57:27 +0200
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <601c098c-0f39-92be-8800-99f5fe99399f@redhat.com>
+Date: Thu, 30 Jul 2020 15:15:21 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <9bafb053-a6cb-5738-700f-a71cba79ccc8@redhat.com>
+In-Reply-To: <1596110248-7366-1-git-send-email-likaige@loongson.cn>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=david@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/29 23:51:30
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 03:41:52
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -163,64 +158,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Stefano Garzarella <sgarzare@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Bruce Rogers <brogers@suse.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vpzg4ewTo7o0
+X-TUID: GOQ9l/0FOfjl
 
-On 30.07.20 14:03, David Hildenbrand wrote:
-> On 30.07.20 13:57, Kaige Li wrote:
->> When I compile qemu with such as:
->>
->> git clone https://git.qemu.org/git/qemu.git
->> cd qemu
->> git submodule init
->> git submodule update --recursive
->> ./configure
->> make
->>
->> There is error log:
->>
->> /home/LiKaige/qemu/hw/virtio/virtio-mem.c: In function ‘virtio_mem_set_block_size’:
->> /home/LiKaige/qemu/hw/virtio/virtio-mem.c:756:9: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘uintptr_t’ [-Werror=format=]
->>          error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
->>          ^
->> cc1: all warnings being treated as errors
->> /home/LiKaige/qemu/rules.mak:69: recipe for target 'hw/virtio/virtio-mem.o' failed
->>
->> So, change PRIx32 to PRIXPTR to fix this.
->>
->> Signed-off-by: Kaige Li <likaige@loongson.cn>
->> ---
->>  hw/virtio/virtio-mem.c | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
->> index c12e9f7..3dcaf9a 100644
->> --- a/hw/virtio/virtio-mem.c
->> +++ b/hw/virtio/virtio-mem.c
->> @@ -753,7 +753,7 @@ static void virtio_mem_set_block_size(Object *obj, Visitor *v, const char *name,
->>      }
->>  
->>      if (value < VIRTIO_MEM_MIN_BLOCK_SIZE) {
->> -        error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
->> +        error_setg(errp, "'%s' property has to be at least 0x%" PRIXPTR "\n", name,
->>                     VIRTIO_MEM_MIN_BLOCK_SIZE);
->>          return;
->>      } else if (!is_power_of_2(value)) {
->>
+On 7/30/20 1:57 PM, Kaige Li wrote:
+> When I compile qemu with such as:
 > 
-> That's not what I suggested ... and you should mention the compiler/host
-> architecture used.
+> git clone https://git.qemu.org/git/qemu.git
+> cd qemu
+> git submodule init
+> git submodule update --recursive
+> ./configure
+> make
+
+^ this timeless description is pointless (think at a developer
+who read this in 2 weeks, 3 months, 1 year).
+
 > 
+> There is error log:
+> 
+> /home/LiKaige/qemu/hw/virtio/virtio-mem.c: In function ‘virtio_mem_set_block_size’:
+> /home/LiKaige/qemu/hw/virtio/virtio-mem.c:756:9: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘uintptr_t’ [-Werror=format=]
 
-Sorry, I thought this was a resend from Bruce:
+What compiler are you using? That is the relevant information to
+include.
 
-https://lkml.kernel.org/r/1b00c0e25ec65e113d4c7fa98b1466689f05a986.camel@suse.com
-
--- 
-Thanks,
-
-David / dhildenb
+>          error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
+>          ^
+> cc1: all warnings being treated as errors
+> /home/LiKaige/qemu/rules.mak:69: recipe for target 'hw/virtio/virtio-mem.o' failed
+> 
+> So, change PRIx32 to PRIXPTR to fix this.
+> 
+> Signed-off-by: Kaige Li <likaige@loongson.cn>
+> ---
+>  hw/virtio/virtio-mem.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+> index c12e9f7..3dcaf9a 100644
+> --- a/hw/virtio/virtio-mem.c
+> +++ b/hw/virtio/virtio-mem.c
+> @@ -753,7 +753,7 @@ static void virtio_mem_set_block_size(Object *obj, Visitor *v, const char *name,
+>      }
+>  
+>      if (value < VIRTIO_MEM_MIN_BLOCK_SIZE) {
+> -        error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
+> +        error_setg(errp, "'%s' property has to be at least 0x%" PRIXPTR "\n", name,
+>                     VIRTIO_MEM_MIN_BLOCK_SIZE);
+>          return;
+>      } else if (!is_power_of_2(value)) {
+> 
 

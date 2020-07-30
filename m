@@ -1,87 +1,88 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2493813lfy;
-        Thu, 30 Jul 2020 05:04:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxsN9FAm8upjOjADaQKCulBMqX2n1RvMk1Fo+3JSpNqni8sRuTp5Rq4JLSmdNWM6dmucCAN
-X-Received: by 2002:ac8:1c6c:: with SMTP id j41mr2622335qtk.226.1596110696572;
-        Thu, 30 Jul 2020 05:04:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596110696; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2533753lfy;
+        Thu, 30 Jul 2020 05:57:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzoObFyQGL60ruxhQP6nzqn0jQ3zpTWq4RAMw32H5FFzlumOSUQa2ExkFWyjMvmC/aqBh+H
+X-Received: by 2002:a25:7908:: with SMTP id u8mr4136396ybc.144.1596113873879;
+        Thu, 30 Jul 2020 05:57:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596113873; cv=none;
         d=google.com; s=arc-20160816;
-        b=RPjhi8A6/12THolp1brtvxuTDH6VjCD6Zmef1+AP8m9fBGHMiF29alHCnJS99n5AbZ
-         OrbTDxfzkU1Eqa5LiJBwdR/QbdvhUAagKen1Z9voU6s8FDbnPP7j2wFZKN3DEvzVB2nN
-         HHnbgVO9djrura9SfHNpomLjyLjx7ndb4kcU1gb7am3y/6nwL9KrUwHCPtLKDLl9evQ0
-         E0GQgq6wGUMwh1qmDrxquYZJcu+O3RLk22cUxO4VDe6Ty1qIt3/NDlopY0PqGsCkquVH
-         r67q04cJqsNboI/HR1hKS1/Rf2El/DEh6a522izd/jjMi1xfB6imSeOePqqcAjV5HgaB
-         bI0w==
+        b=pXQeQLBz3fqDIgjUQxU6Xr9Y+bGFa2RQZvBVILEJGvpd3ddKxiEHSkwHCIP1LG5/Wp
+         U/qBF8qJgnkK1oPdGkV8biBS8WQP+e6xdwJEe123qLUHMiaxRVLGUpmJf5YjHOC6wuuC
+         22d096Cs3RXmTa+9tCUjogX4n2rXKhVz5yGft5LpcaTOHxO2srN9TuiKo23tbeQjuDbp
+         LPGRjBpaOZIUAk4CflFnKFIQpoeV5MsjHMuPFrxHWPSZgS7Pa2CgmdhAsJ9AG91kyHWE
+         DDOLdSDi5A0Slpxu+j86yIXcMmwHMg8EWrKGlUvz9R/VEFsGCFu7u+vvMJCdAx5XIm1J
+         Nbhw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:organization:autocrypt:from:references:to:subject
+         :message-id:organization:autocrypt:references:to:from:subject
          :dkim-signature;
-        bh=ra4/vhJJxZGsRQ4pRDM36nDBCqVMFUIpeYErKvGRLNU=;
-        b=iSwaz/JO9y294gWXwBua7U2auvdg+jSISysXjtlm5cLGgVaKRa1ulAMWLzVIx3XHB/
-         OSdDLUfv/ngGNbtv+7HoY9eBtxYHtd6FKqu40OLQk4DaDkpxgroNImqKGZXEXOLXI7sN
-         CJSJ4TsuLdTNdh4RTmcxeX1yt9ken0wzw9ZAQl10qtpnKpQeprxPA8gSMGlOGLWydIxb
-         CfsoiSgN3OIYxxLAxu/G/avuhm7zBVCatwpIAlw+4sVpB509haU3xfgbwrymghIOh64g
-         M8wmEl68WHuyoAs6/QW5pk92T4iY+JAtgigZTJb230Hay/rqL9TRp6WcxODlPdZIGIGX
-         aorA==
+        bh=C1G3i+wCf18TEQ2r1EemrQr6jL/9jBSb5FtBTuqzjS8=;
+        b=qJUyHUGN6OPa6ux4jhyhvPQooKLPyNRL3+CLeWGisfM7FiqwiJSPb1ROFIxDIfONkc
+         4ps6tcF/wD3K9nG0oUlqLMKHY1inUAWaENbOjS6AAvU6utw+2DjE0Sd3GaqVBWngvGgz
+         bQRJk79/nErqDhjswPWVZD0ajRjJHnNNq4SNCh3Nj/WsaWFuV47A5JsrzXV8uBvCRUu8
+         P9hAxgrqnZahT0zF/+RUXPQYIu+8KlsD4Fhk9TryUdl+iFm386FmxnQgMQ3DwOvlQDla
+         Ow7OQIBfK4HZy5BvcNw/p6NCPS8m5VmDDL76RdVD3jMi8dspF9LMDg367KSLA8e7mWav
+         Zojw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CjQP1pNC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DVQktXk8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h8si715698qkl.316.2020.07.30.05.04.56
+        by mx.google.com with ESMTPS id n127si5330476ybc.92.2020.07.30.05.57.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jul 2020 05:04:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 30 Jul 2020 05:57:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CjQP1pNC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DVQktXk8;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35092 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57016 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k17It-00017S-Uc
-	for alex.bennee@linaro.org; Thu, 30 Jul 2020 08:04:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46374)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k1889-0005WR-6n
+	for alex.bennee@linaro.org; Thu, 30 Jul 2020 08:57:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1k17Hd-0008BQ-BK
- for qemu-devel@nongnu.org; Thu, 30 Jul 2020 08:03:37 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:41889
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1k187z-0005W0-Mk
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 08:57:43 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33510
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1k17Hb-0002ID-LU
- for qemu-devel@nongnu.org; Thu, 30 Jul 2020 08:03:36 -0400
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1k187w-0001s3-Rs
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 08:57:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596110615;
+ s=mimecast20190719; t=1596113859;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ra4/vhJJxZGsRQ4pRDM36nDBCqVMFUIpeYErKvGRLNU=;
- b=CjQP1pNCz1c9EzUK0qzY7PGmZ7CqQvcShvw1iBRExosbTdWl1716S/J/K9uNznrNr1xYoL
- T8x8VUXaDUzFWVkEVXSRxyGVPYKbpGIXtqSvn+K841DA6k1xSC3kxyNem3TMvt+Y4KjMzE
- QkyCXWLi1YBfFT+8Zhn5Z63Pjr7u2s4=
+ bh=C1G3i+wCf18TEQ2r1EemrQr6jL/9jBSb5FtBTuqzjS8=;
+ b=DVQktXk8Z+z91Nz6Y0QPLaw4t+2Gd0FIm9pX/76ErRJUHr6vBsVIdb8cjeP8i9I1L7maNH
+ A8tBETjO6p7YohvALqGL72T1u4gVs+Bza5CiufCTNkAscqRLUBSOwbiJUh7v+1oVGfpbjM
+ DCguLM0K29+3f1MhiR86e8J8kj2Z+BM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-257-mpvYNUntOdSU5kkrphQeVg-1; Thu, 30 Jul 2020 08:03:26 -0400
-X-MC-Unique: mpvYNUntOdSU5kkrphQeVg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-164-gcxHZU-BPEueIeCjXXsnGQ-1; Thu, 30 Jul 2020 08:57:35 -0400
+X-MC-Unique: gcxHZU-BPEueIeCjXXsnGQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B3254107BEFF;
- Thu, 30 Jul 2020 12:03:20 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0B9261DE4;
+ Thu, 30 Jul 2020 12:57:34 +0000 (UTC)
 Received: from [10.36.113.185] (ovpn-113-185.ams2.redhat.com [10.36.113.185])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 645F410002CA;
- Thu, 30 Jul 2020 12:03:19 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id DC2C719934;
+ Thu, 30 Jul 2020 12:57:27 +0000 (UTC)
 Subject: Re: [PATCH v2 1/2] virtio-mem: Change PRIx32 to PRIXPTR to fix
  compile error.
+From: David Hildenbrand <david@redhat.com>
 To: Kaige Li <likaige@loongson.cn>, "Michael S. Tsirkin" <mst@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
 References: <1596110248-7366-1-git-send-email-likaige@loongson.cn>
-From: David Hildenbrand <david@redhat.com>
+ <9bafb053-a6cb-5738-700f-a71cba79ccc8@redhat.com>
 Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
  mQINBFXLn5EBEAC+zYvAFJxCBY9Tr1xZgcESmxVNI/0ffzE/ZQOiHJl6mGkmA1R7/uUpiCjJ
  dBrn+lhhOYjjNefFQou6478faXE6o2AhmebqT4KiQoUQFV4R7y1KMEKoSyy8hQaK1umALTdL
@@ -127,21 +128,21 @@ Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
  jPrnvUsUUsjRoRNJjKKA/REq+sAnhkNPPZ/NNMjaZ5b8Tovi8C0tmxiCHaQYqj7G2rgnT0kt
  WNyWQQ==
 Organization: Red Hat GmbH
-Message-ID: <9bafb053-a6cb-5738-700f-a71cba79ccc8@redhat.com>
-Date: Thu, 30 Jul 2020 14:03:18 +0200
+Message-ID: <ca47a89b-15dd-655b-d524-0d39c36b00f5@redhat.com>
+Date: Thu, 30 Jul 2020 14:57:27 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.9.0
 MIME-Version: 1.0
-In-Reply-To: <1596110248-7366-1-git-send-email-likaige@loongson.cn>
+In-Reply-To: <9bafb053-a6cb-5738-700f-a71cba79ccc8@redhat.com>
 Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 03:51:24
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=david@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/29 23:51:30
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -40
 X-Spam_score: -4.1
@@ -149,67 +150,74 @@ X-Spam_bar: ----
 X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zbEd5SdbgYoz
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Stefano Garzarella <sgarzare@redhat.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Bruce Rogers <brogers@suse.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Vpzg4ewTo7o0
 
-On 30.07.20 13:57, Kaige Li wrote:
-> When I compile qemu with such as:
+On 30.07.20 14:03, David Hildenbrand wrote:
+> On 30.07.20 13:57, Kaige Li wrote:
+>> When I compile qemu with such as:
+>>
+>> git clone https://git.qemu.org/git/qemu.git
+>> cd qemu
+>> git submodule init
+>> git submodule update --recursive
+>> ./configure
+>> make
+>>
+>> There is error log:
+>>
+>> /home/LiKaige/qemu/hw/virtio/virtio-mem.c: In function ‘virtio_mem_set_block_size’:
+>> /home/LiKaige/qemu/hw/virtio/virtio-mem.c:756:9: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘uintptr_t’ [-Werror=format=]
+>>          error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
+>>          ^
+>> cc1: all warnings being treated as errors
+>> /home/LiKaige/qemu/rules.mak:69: recipe for target 'hw/virtio/virtio-mem.o' failed
+>>
+>> So, change PRIx32 to PRIXPTR to fix this.
+>>
+>> Signed-off-by: Kaige Li <likaige@loongson.cn>
+>> ---
+>>  hw/virtio/virtio-mem.c | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
+>> index c12e9f7..3dcaf9a 100644
+>> --- a/hw/virtio/virtio-mem.c
+>> +++ b/hw/virtio/virtio-mem.c
+>> @@ -753,7 +753,7 @@ static void virtio_mem_set_block_size(Object *obj, Visitor *v, const char *name,
+>>      }
+>>  
+>>      if (value < VIRTIO_MEM_MIN_BLOCK_SIZE) {
+>> -        error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
+>> +        error_setg(errp, "'%s' property has to be at least 0x%" PRIXPTR "\n", name,
+>>                     VIRTIO_MEM_MIN_BLOCK_SIZE);
+>>          return;
+>>      } else if (!is_power_of_2(value)) {
+>>
 > 
-> git clone https://git.qemu.org/git/qemu.git
-> cd qemu
-> git submodule init
-> git submodule update --recursive
-> ./configure
-> make
-> 
-> There is error log:
-> 
-> /home/LiKaige/qemu/hw/virtio/virtio-mem.c: In function ‘virtio_mem_set_block_size’:
-> /home/LiKaige/qemu/hw/virtio/virtio-mem.c:756:9: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘uintptr_t’ [-Werror=format=]
->          error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
->          ^
-> cc1: all warnings being treated as errors
-> /home/LiKaige/qemu/rules.mak:69: recipe for target 'hw/virtio/virtio-mem.o' failed
-> 
-> So, change PRIx32 to PRIXPTR to fix this.
-> 
-> Signed-off-by: Kaige Li <likaige@loongson.cn>
-> ---
->  hw/virtio/virtio-mem.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
-> index c12e9f7..3dcaf9a 100644
-> --- a/hw/virtio/virtio-mem.c
-> +++ b/hw/virtio/virtio-mem.c
-> @@ -753,7 +753,7 @@ static void virtio_mem_set_block_size(Object *obj, Visitor *v, const char *name,
->      }
->  
->      if (value < VIRTIO_MEM_MIN_BLOCK_SIZE) {
-> -        error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
-> +        error_setg(errp, "'%s' property has to be at least 0x%" PRIXPTR "\n", name,
->                     VIRTIO_MEM_MIN_BLOCK_SIZE);
->          return;
->      } else if (!is_power_of_2(value)) {
+> That's not what I suggested ... and you should mention the compiler/host
+> architecture used.
 > 
 
-That's not what I suggested ... and you should mention the compiler/host
-architecture used.
+Sorry, I thought this was a resend from Bruce:
+
+https://lkml.kernel.org/r/1b00c0e25ec65e113d4c7fa98b1466689f05a986.camel@suse.com
 
 -- 
 Thanks,

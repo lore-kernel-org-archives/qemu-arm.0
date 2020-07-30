@@ -1,108 +1,103 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2859093lfy;
-        Thu, 30 Jul 2020 12:35:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxvgej7+sqmS47yGwpAmglZYYVIgJdx+1UF6IWqL+c3Quj4pQqyxFH817ZH59cZhlQYl8xw
-X-Received: by 2002:a25:da51:: with SMTP id n78mr772551ybf.80.1596137744553;
-        Thu, 30 Jul 2020 12:35:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596137744; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2879505lfy;
+        Thu, 30 Jul 2020 13:06:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwfJV4UEs3wL7qaTS5pB2XlyshJduK/7cJuHhBH1Jpxs4Vb6sB6ErMKjUIjmvzkPTytW/vT
+X-Received: by 2002:a25:da4c:: with SMTP id n73mr914772ybf.306.1596139618075;
+        Thu, 30 Jul 2020 13:06:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596139618; cv=none;
         d=google.com; s=arc-20160816;
-        b=yOWRgtC8Npbtg7ZEDI3aCxtdQf2c9u9LpQF5ut2cQpcMnYcsdNUm/Yinr+08aXoJRh
-         J9aX6lj8kFr9Je4SQaPy7/F7wTu8cQU/agAOQsbrZ3RxYngrGCCsnKbL7MnCp691X2JH
-         m7StDrJL5Wp3EcsiTJYJEdn0FeqzvKgVRdNcZgHGqYDupIL4XSZE+KXP1cF3RZuOqwUz
-         XBKE5+IqFwKqzYr8uKn8T+tSdJ0ZTP3ToCR42slfTY6OXDqrgh4fjeXlysJW7z53k0d4
-         QE8OT4UH8uG8BRaJ3/TNjYnrXxwrtXNG6dapGt77iNUYohgLzJHNE4K37OPhcRv8KmZl
-         Zd0A==
+        b=Z20ubud9bTcK2HPjixwAk8JiKFAxFT2McE59obObdk+ZVZ7HRkhGvchzvFdjCeXRGE
+         VjxYhDJPujX/xbX9pcYVEQdseQOMnlkXpytxPUeO/JM7yNl1ViyQShxRdSYStQIWwYn3
+         7zbC/lZQSSnNmGTCITi1iMhcalcNwtIvbXw5E/lBxrU8Lp1zsjWN9SLnCjAmspJlf9O5
+         4rfSEMCmXvKH+nsSk3cLX66aF04aqCJoos7NowA4LGAmgYeH8rlQZR4pTc6exCfGIhsG
+         LulTEc+OzQ0Mszua/8i5DR+Kez44yRALH/CqWHrlzTUO9AOhd84h7LleSEERFFFEOeFX
+         +2Lw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=6x9JhPsGfgHqyEvcYKNefqz/dAP1WP+OAFZOES+jKAE=;
-        b=bpBaQhEk9mBiKyOeQp9/YlGInTI5wVpqYsguHOeUx8mre4Ixiy5fN0Sn81l9y3o2Lo
-         /tlOIr3X8kQXcm01NbzzoGgzTH7Zmv6pvITXOES1aKs+cxikLtu9TA7S/Lzs1taZEBGI
-         OZT6hR9BwccH7zvOQews8YrwWlmc2r7boNFdbx6da9Ug9ltwmNqD+gOy3gdWISd3HMuA
-         tz5svbDVPRbMT2X2go6vOJnrrRqZ1Z01ba7aTAH6WVQiZEdOKFdms1Hf/+D3pwHAw7Lz
-         1ly+XuryljOnwcaelTr9EFN9BYQuqE2HuFHz8Ee9is+72eQm7gqHhl13V9+Mv/XQzrD9
-         KQdw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=5bRKlD5GyuTbaDl8cqqqG7E28GXFye3WnW+CpzaMM8U=;
+        b=X3ssieF/2tFf3rrbWT0BlWfJTjTZrPezNJICEROlfw4j7NzLGJ6jjPa4ho17Jy1IMA
+         FVRKGNZ7yBW8E8dipnZ+UAPVLSYIQpReew2sigxfRf95mda1xVw67uPgXCHu8jwI590p
+         0YW96vhHXz32VH142s6u54sKw26Yvycf2bsU5EMAcfJ63vl8pwlXhMArlFU+jnltLEH0
+         AdFGQP/YiBtMI9M2tb4LzfhkX7CFd3QEBmqpKYwD6TB6V7l45OEjyIjXNh1Xx3cbsHTz
+         d7fczT7HsyDcSXmd9cG/F06ZPu2mi3gajqzmj4OJuvaNPL6NyWC/jaK6lZESZRT+dUdX
+         GROg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ca9WFQuf;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tKLvqDDe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v64si5423884ybc.490.2020.07.30.12.35.44
+        by mx.google.com with ESMTPS id 128si5243545ybd.260.2020.07.30.13.06.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jul 2020 12:35:44 -0700 (PDT)
+        Thu, 30 Jul 2020 13:06:58 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ca9WFQuf;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=tKLvqDDe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49974 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37058 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k1EL9-0002ua-Sm
-	for alex.bennee@linaro.org; Thu, 30 Jul 2020 15:35:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56440)
+	id 1k1EpN-0005mp-Ha
+	for alex.bennee@linaro.org; Thu, 30 Jul 2020 16:06:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37154)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1k1EKv-0002rT-Oq
- for qemu-arm@nongnu.org; Thu, 30 Jul 2020 15:35:29 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:42266
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1k1EKt-0004XL-Vr
- for qemu-arm@nongnu.org; Thu, 30 Jul 2020 15:35:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596137726;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6x9JhPsGfgHqyEvcYKNefqz/dAP1WP+OAFZOES+jKAE=;
- b=ca9WFQufUrgxWxehmPE2maEJOQc2Tya/rovGz02g8ri56Ma4Irofgj0h/S+jNFgBrcSc55
- Ta0T+YQiYrdBZWVrE6Amyy9TW6hlPG4a7vw+oumdBYFrjrzuxdIG3/V9ng61H9gx3DhS0x
- x0KPlehnIWjs5i6n0iGcHCmx5ku8Zog=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-246-J9lINLiGPnuZL-FUzEiFZQ-1; Thu, 30 Jul 2020 15:35:23 -0400
-X-MC-Unique: J9lINLiGPnuZL-FUzEiFZQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D38C4800473;
- Thu, 30 Jul 2020 19:35:21 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-114-173.ams2.redhat.com
- [10.36.114.173])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D91FC1002393;
- Thu, 30 Jul 2020 19:35:16 +0000 (UTC)
-Subject: Re: [PATCH 2/2] arm/acpi: fix an out of spec _UID for PCI root
-To: "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org
-References: <20200730155755.188845-1-mst@redhat.com>
- <20200730155755.188845-2-mst@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <bcd381a8-d9a2-178c-c25f-4aff26dbe992@redhat.com>
-Date: Thu, 30 Jul 2020 21:35:16 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101
- Firefox/52.0 Thunderbird/52.9.1
+ (Exim 4.90_1) (envelope-from <derrick.mckee@gmail.com>)
+ id 1k1EpF-0005lT-Ta
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 16:06:50 -0400
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c]:46138)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <derrick.mckee@gmail.com>)
+ id 1k1EpD-0001Ah-S6
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 16:06:49 -0400
+Received: by mail-qk1-x72c.google.com with SMTP id d14so26786716qke.13
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2020 13:06:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=5bRKlD5GyuTbaDl8cqqqG7E28GXFye3WnW+CpzaMM8U=;
+ b=tKLvqDDeREf8kS5RTHOob1edb5gJGeO9l8+GsxIUZlneqTyo+/grVKd4gWmDidHqls
+ WXfz7rHZfqWbZK5OgMiJfg/dtj2eCsb3KLGvh1x5br4n8QmRD64pqan96wROltKu8vDc
+ xrsWCTL/Q6ZctKMVIv1Bp4mO1ivgdEBIjOoLpB5sKEuef+CdSEhus+avbR0rYHLgowSy
+ 4MlSvHOleYR7bNwLz2vTBYUHdvWd1MZvTKWk1GRK+9EH+oAMOZnViuGytwol/TU5QBlF
+ jInxIcnCyJpC75Tgzi4NKBM6khmAE2NT9xz4ADDiPl/zrLfIi1rornA0czWdTErZAoVi
+ rpxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=5bRKlD5GyuTbaDl8cqqqG7E28GXFye3WnW+CpzaMM8U=;
+ b=m254KbRammVqWmtBaSilHKANFGIQM8X9uYQXoiFWGn9c/PFWU250rJPfi1YrgHqvC3
+ DsXe/SDLfTLr+sukCdmSOvmf0sWL2s6o3EYFzKJMcQVNsPcJ4pqkUP5lChX1fVgDu8PH
+ 9O5nNdM8GQr7VCn8Y+dYKEsgoB8+v+CC8Njd9nejJkRekW03DFGVzAbNODj7UGWTUP32
+ 1kro/LxqJo+wtus3Y4eXS7rcT4CiK7WqzGr4LmQIrB9QjwTr/6d9SPHr0uq6OC6bIRcJ
+ KZP0+GFax8DUTHznlaGAxEa7C1gpBKpG8dx9i2RafS5xzFy7ImH6DY1SEsge8muydv0v
+ owMQ==
+X-Gm-Message-State: AOAM530uBZJ6VLxe6CYOUnMAu9hsPzTLa0jLVdLbakSgugYVhSz2QA0A
+ Hqda7FZtQjj8gYpXVe8xLwwdjy4Y6FFhL49CUjE=
+X-Received: by 2002:a37:a98c:: with SMTP id s134mr832303qke.397.1596139605439; 
+ Thu, 30 Jul 2020 13:06:45 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200730155755.188845-2-mst@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=lersek@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 03:41:52
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+References: <CAJoBWHzJq-51dBxP8pniQPd7fy7J+jU2gHwZOkn-NRJzc5uNiQ@mail.gmail.com>
+ <CAFEAcA9XmXhp+Crx09k++Ryd3jSL8U36FSMvw6X73sBFEmiofw@mail.gmail.com>
+In-Reply-To: <CAFEAcA9XmXhp+Crx09k++Ryd3jSL8U36FSMvw6X73sBFEmiofw@mail.gmail.com>
+From: Derrick McKee <derrick.mckee@gmail.com>
+Date: Thu, 30 Jul 2020 16:06:33 -0400
+Message-ID: <CAJoBWHypu+nJ4L3fE-tQzr_EWf294THGQkovTrn+j5iQ+b4MyA@mail.gmail.com>
+Subject: Re: Differing PAC behavior between Qemu and Arm FVP
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="00000000000031b74905abae361c"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72c;
+ envelope-from=derrick.mckee@gmail.com; helo=mail-qk1-x72c.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -116,72 +111,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- vit9696 <vit9696@protonmail.com>, Richard Henderson <rth@twiddle.net>
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Kfg6n7pjwFZh
+X-TUID: cREHtoGZkeB2
 
-On 07/30/20 17:58, Michael S. Tsirkin wrote:
-> On ARM/virt machine type QEMU currently reports an incorrect _UID in
-> ACPI.
-> 
-> The particular node in question is the primary PciRoot (PCI0 in ACPI),
-> which gets assigned PCI0 in ACPI UID and 0 in the
-> DevicePath. This is due to the _UID assigned to it by build_dsdt in
-> hw/arm/virt-acpi-build.c Which does not correspond to the primary PCI
-> identifier given by pcibus_num in hw/pci/pci.c
-> 
-> In UEFI v2.8, section "10.4.2 Rules with ACPI _HID and _UID" ends with
-> the paragraph,
-> 
->     Root PCI bridges will use the plug and play ID of PNP0A03, This will
->     be stored in the ACPI Device Path _HID field, or in the Expanded
->     ACPI Device Path _CID field to match the ACPI name space. The _UID
->     in the ACPI Device Path structure must match the _UID in the ACPI
->     name space.
-> 
-> (See especially the last sentence.)
-> 
-> A similar bug has been reported on i386, on that architecture it has
-> been reported to confuse at least macOS which uses ACPI UIDs to build
-> the DevicePath for NVRAM boot options, while OVMF firmware gets them via
-> an internal channel through QEMU.  When UEFI firmware and ACPI have
-> different values, this makes the underlying operating system unable to
-> report its boot option.
-> 
-> Reported-by: vit9696 <vit9696@protonmail.com>
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> ---
-> 
-> Peter can you either ack or merge this one pls?
-> 
->  hw/arm/virt-acpi-build.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-> index 91f0df7b13..0a482ff6f7 100644
-> --- a/hw/arm/virt-acpi-build.c
-> +++ b/hw/arm/virt-acpi-build.c
-> @@ -170,7 +170,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
->      aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
->      aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
->      aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
-> -    aml_append(dev, aml_name_decl("_UID", aml_string("PCI0")));
-> +    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
->      aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Device")));
->      aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
->  
-> 
+--00000000000031b74905abae361c
+Content-Type: text/plain; charset="UTF-8"
 
-Reviewed-by: Laszlo Ersek <lersek@redhat.com>
+Hi Peter,
 
-(Vitaly's full name could be included in the Reported-by here as well,
-arguably.)
+I just got a SIGILL trying to execute a stg instruction with the QEMU
+version later in this thread, but the same instruction works correctly on
+the FVP.  Are you sure that all the MTE functionality is present in the
+master head?
 
-Thanks!
-Laszlo
+On Tue, Jul 28, 2020 at 11:32 AM Peter Maydell <peter.maydell@linaro.org>
+wrote:
 
+> On Tue, 28 Jul 2020 at 16:26, Derrick McKee <derrick.mckee@gmail.com>
+> wrote:
+> >
+> > Hi,
+> >
+> > I think I may have found a behavior different from Qemu's system
+> emulation and Arm's FVP, which is supposed to provide exact hardware
+> behavior.  The Qemu commit I am using is
+> ed67b09529a564d2ceb242a7cb02613bbe0fa3ca from the tgt_arm_mte branch and
+> the FVP is the freely available FVP_Base_RevC-2xAEMv8A from Arm's website.
+>
+> MTE should all be in master now, does the behaviour still reproduce there?
+>
+> thanks
+> -- PMM
+>
+
+
+-- 
+Derrick McKee
+Phone: (703) 957-9362
+Email: derrick.mckee@gmail.com
+
+--00000000000031b74905abae361c
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Peter, <br></div><div><br></div><div>I just got a =
+SIGILL trying to execute a stg instruction with the QEMU version later in t=
+his thread, but the same instruction works correctly on the FVP.=C2=A0 Are =
+you sure that all the MTE functionality is present in the master head?<br><=
+/div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_a=
+ttr">On Tue, Jul 28, 2020 at 11:32 AM Peter Maydell &lt;<a href=3D"mailto:p=
+eter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><=
+blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
+eft:1px solid rgb(204,204,204);padding-left:1ex">On Tue, 28 Jul 2020 at 16:=
+26, Derrick McKee &lt;<a href=3D"mailto:derrick.mckee@gmail.com" target=3D"=
+_blank">derrick.mckee@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Hi,<br>
+&gt;<br>
+&gt; I think I may have found a behavior different from Qemu&#39;s system e=
+mulation and Arm&#39;s FVP, which is supposed to provide exact hardware beh=
+avior.=C2=A0 The Qemu commit I am using is ed67b09529a564d2ceb242a7cb02613b=
+be0fa3ca from the tgt_arm_mte branch and the FVP is the freely available FV=
+P_Base_RevC-2xAEMv8A from Arm&#39;s website.<br>
+<br>
+MTE should all be in master now, does the behaviour still reproduce there?<=
+br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature">Derrick McKee<br>Phone: (703) 957-9362<br>Email: <a href=3D=
+"mailto:derrick.mckee@gmail.com" target=3D"_blank">derrick.mckee@gmail.com<=
+/a><br></div>
+
+--00000000000031b74905abae361c--

@@ -1,152 +1,176 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2184164lfy;
-        Wed, 29 Jul 2020 20:54:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxokrF8pImOMAMbiyfgSaNhB0IgEiuMnyC1JSrRKnv6pIpG+UX+JRLoV763hjA4R8HSXWXl
-X-Received: by 2002:a25:e5c3:: with SMTP id c186mr1664909ybh.332.1596081283073;
-        Wed, 29 Jul 2020 20:54:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596081283; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2355303lfy;
+        Thu, 30 Jul 2020 01:44:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwuNgBq5OZggavyVPbYc2tQMD/jBEYt/d4u7jzx2h2QRPZ+bBiUU9YAWY3N8UtmkWHCztFp
+X-Received: by 2002:a25:61c7:: with SMTP id v190mr2661438ybb.168.1596098689981;
+        Thu, 30 Jul 2020 01:44:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596098689; cv=none;
         d=google.com; s=arc-20160816;
-        b=HeC3VSmhth6g8Th1MlIUG7BCzVxweeomGZNx7LxHChAwEnToTcVz56MQVllsf/JJmo
-         J4TRmv+GvhXVVSuVmPO79XPZC9WsBNr4UoHqpGqRiBET2wCMq0HAlbfvje87Y1oYDQTs
-         fpdRshCRofWQ6LOe06VnYnmY20lGExPba8bFBUjadUP6916SZ/7DjsAvImce1ByZtK3O
-         ewkIKUU2ZoCe/kGcWKZgd0QD/4i6ynPYm/xJScw7GsGGiCxkGfZ0gm8Ks10kcu1yIj7q
-         tnHNNi6dsOiPrLRIek5tiHRJyhqg+SH1c0/sj3dCz+yW6g0cROFhsYh9m9H273Y4BIlA
-         BKug==
+        b=SG10kxFHZgtG3hUzan+bRLWHMDUKodgQzsinK6ioEzcyJoUAjsUG7gSiLCO4wR0QuR
+         SWHl9iJ6klsAQ+W14qsG7CWEEHvTJYw0oVm7JrH2LSBB0E0OHZ7JIfMZZ1rvnyRdvlN1
+         LMvtBOKvn6j4QQJoCf/MzYpGAe0jOUg/8b8eSmjw6zi3T9HKJTiw3EuUt7nfgck3hVTL
+         qYnO3CoLn43NMQ+phWrFPzU7esl1Oh0oBAQUIQ1RpfttNLTO8xeTHPQtyfMUD6hkkZQ3
+         qrKsYKX8n9XA/xCDcP6syvorecKS0grH1pdBePzFrxeFxjmyO13I9jWd0PD+YWA31Z3t
+         Do1A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=4LGIwnujHhSFgJuSRFre4SpzKvWxOaefirJnY0vmDD4=;
-        b=X5OL7I9w5BAGk2SNQR4QmeNZZdowQBPdDd327zhYu85AFGbQ1/8YcTL1P8zYC+74ng
-         bjser0GWvG2rf0hDn1DyfMUrdddt2dxrU5jGYQj/0o2DX4obfSNKARcQZKWzu2J02Du2
-         BIpD6q2vNUqZYzREka0qxteMnHrd5sW1XRAR9hNEoONmeR4g2Kac8yrRpKA9q3xponnJ
-         Q/OPWYaKDbX3JUfu9HmyIK7iXWA6UxeCeaWUWihy4Wj4Zd0k/AWfwpMXr1OxHKHqJKkW
-         ylOHTAYOQGuPptP84kN2/1qhd2OoMGOWl3Qhp+IWqFVse0Os/tmqsPIZhcBxw8QtsOSa
-         BBEg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=Mk3XdEBa9UC5cwSV0q0gojpp0/4NYI0IrnvAqfNaKDQ=;
+        b=ByiZVyPN6gsat1eOzR2Y78O2g3p07L66/I9eYsr/DUNLRStwVbY0nk0nmZloLffOqG
+         JageIfTOyLqhWHz7Hgk5jRCNXAAKtq8ARg7K8zWAOhfpTpQGPkhyiPTYWt5HSzmrGzK8
+         SLSe0ZWEUFSmhEFYScLdb09swDXudO25rUvVI0yJ/1pD//lzne+y/kGv37evU1TIXmx2
+         F4aP7JWOCGSUkRDMBgtrqM5OY+GNsVvgRsO4c4qFTQ+vNZOhdqd384i6mrXfcuvBorjV
+         S5RULmbLzxdHeollZ7iJ0G/NayZH1tQ7f6adz0UEpbRMTU2/qAFXxmrw3DMCnzpz0c7a
+         FXQg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b="i/ekReEC";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n7si4538210ybn.229.2020.07.29.20.54.42
+        by mx.google.com with ESMTPS id k124si4283657ybk.371.2020.07.30.01.44.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 29 Jul 2020 20:54:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 30 Jul 2020 01:44:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38672 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="i/ekReEC";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:41646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k0zeU-0003Dk-Fz
-	for alex.bennee@linaro.org; Wed, 29 Jul 2020 23:54:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40458)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k14BF-0006kO-D9
+	for alex.bennee@linaro.org; Thu, 30 Jul 2020 04:44:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56478)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <likaige@loongson.cn>)
- id 1k0xoH-0004fa-MG; Wed, 29 Jul 2020 21:56:41 -0400
-Received: from mail.loongson.cn ([114.242.206.163]:38548 helo=loongson.cn)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <likaige@loongson.cn>)
- id 1k0xoF-0005ky-E2; Wed, 29 Jul 2020 21:56:41 -0400
-Received: from bogon.localdomain (unknown [113.200.148.30])
- by mail.loongson.cn (Coremail) with SMTP id AQAAf9DxmMTHKCJffFACAA--.233S3;
- Thu, 30 Jul 2020 09:56:27 +0800 (CST)
-From: Kaige Li <likaige@loongson.cn>
-To: David Hildenbrand <david@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH 2/2] target/arm: Fix compile error.
-Date: Thu, 30 Jul 2020 09:56:22 +0800
-Message-Id: <1596074182-4920-2-git-send-email-likaige@loongson.cn>
-X-Mailer: git-send-email 2.1.0
-In-Reply-To: <1596074182-4920-1-git-send-email-likaige@loongson.cn>
-References: <1596074182-4920-1-git-send-email-likaige@loongson.cn>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k14B7-0006jZ-S6
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 04:44:41 -0400
+Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:36971)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k14B6-0008RQ-28
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 04:44:41 -0400
+Received: by mail-oi1-x241.google.com with SMTP id e6so2913641oii.4
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2020 01:44:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=Mk3XdEBa9UC5cwSV0q0gojpp0/4NYI0IrnvAqfNaKDQ=;
+ b=i/ekReECz4IKe77bsIi7croPi+I6TLyVBu7nG3Kil+mfu8vmAMVvzCO0w87pwQpdLs
+ 87+YpU+r6kmHHFVpUhoPhkC/WSeiIn6gr10dmSBk/cz3KtiwDqzS0RVnaqKxyP7uASbG
+ T8ZkcRg6ALzS/QGzsKgmUdHLHcDxUs9SMC4c+oS0d/lt3bdJnwv6hT8sQMOtF1Wz61z6
+ mNdP7ovN1bDwAQkCA3s3cv/cXZCKGN95Ml8nDIlY8tc87NtU/xagOwNL+X2kfm2E+ut+
+ b8vRbNgsvs63kSCWRCSdJ4snz/Qla2x/fa/gWR8PMK793jvQDT+TyR1VvZfv0j450v2J
+ wBng==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Mk3XdEBa9UC5cwSV0q0gojpp0/4NYI0IrnvAqfNaKDQ=;
+ b=mqkK/u6CbEsvPZYT2kRfBqke7Xy90v7GjErPuQjj8iCLXo16vYtwH2/Wu9WrLORAe+
+ RJphcGE/o5tlQL1pfoJm4HCOwe/m/dJD58Q2s+YwycPJ3TR6GRLV36cdlmsjtS8tcZ+z
+ 66oG4qby1VdE/NuMCFyf+nGLvCDi8JBaU+6u+azuTJ26vgoZpjDOk3lgR0TK9YYIUK23
+ 8tRj6Mp8np0iOwQiQwABQRAofBJ4oEABLlyruD6wm1qRLMIPe2u2E73lt9sev2/Qq7xk
+ gct9ANmP2WXH5UODIuAvFMCUBGbNhJdPkwYCn9OIP+KATLClhUOIwB5SdwKszK5V8Fqf
+ VVCg==
+X-Gm-Message-State: AOAM5329CzJ92CKdu4MJdEgngjiJP/BmkKtyDF+tcwtrxiazeMPu+zSV
+ /19Z77qNgsxB/gJGA4jZJ3Kq47gRiu2a8X0vA513pA==
+X-Received: by 2002:aca:48d8:: with SMTP id v207mr3869003oia.48.1596098678301; 
+ Thu, 30 Jul 2020 01:44:38 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf9DxmMTHKCJffFACAA--.233S3
-X-Coremail-Antispam: 1UD129KBjvJXoWxJr1UJFy8uFy3KFWUGr4kZwb_yoW8GF4DpF
- 4xGr9rKr45Xr95G34kCF4kXw1UG3yjkryjya9rtrs3XrsrKr10grsrKr9IkF4jqF4jkw45
- WFWxZ398WrZ5ZaUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUU9C14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
- rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2048vs2IY020E87I2jVAFwI0_Jr4l82xGYIkIc2
- x26xkF7I0E14v26r1I6r4UM28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8wA2z4x0
- Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr0_Gr1UM2
- 8EF7xvwVC2z280aVAFwI0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gr1j6F4U
- JwAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7
- IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4U
- M4x0Y48IcxkI7VAKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwCF04k20xvY0x0EwIxGrw
- CFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE
- 14v26r106r1rMI8E67AF67kF1VAFwI0_JF0_Jw1lIxkGc2Ij64vIr41lIxAIcVC0I7IYx2
- IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Gr0_Cr1lIxAIcVCF04k26cxK
- x2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAFwI
- 0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x0JUyKZAUUUUU=
-X-CM-SenderInfo: 5olntxtjh6z05rqj20fqof0/
-Received-SPF: pass client-ip=114.242.206.163; envelope-from=likaige@loongson.cn;
- helo=loongson.cn
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/29 21:56:29
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+References: <1596074182-4920-1-git-send-email-likaige@loongson.cn>
+ <1596074182-4920-2-git-send-email-likaige@loongson.cn>
+In-Reply-To: <1596074182-4920-2-git-send-email-likaige@loongson.cn>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Jul 2020 09:44:27 +0100
+Message-ID: <CAFEAcA_ZgrkcpwYZD-stZGDDjhTgMOSLx--9KHPnxfbKz58s7g@mail.gmail.com>
+Subject: Re: [PATCH 2/2] target/arm: Fix compile error.
+To: Kaige Li <likaige@loongson.cn>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x241.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 29 Jul 2020 23:53:45 -0400
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kaige Li <likaige@loongson.cn>, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: h39wPv/Xs9kY
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ David Hildenbrand <david@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: vMutdeNf4l64
 
-When I compile qemu with such as:
+On Thu, 30 Jul 2020 at 02:56, Kaige Li <likaige@loongson.cn> wrote:
+>
+> When I compile qemu with such as:
+>
+> git clone https://git.qemu.org/git/qemu.git
+> cd qemu
+> git submodule init
+> git submodule update --recursive
+> ./configure
+> make
+>
+> There is error log:
+>
+> /home/LiKaige/qemu/target/arm/translate-a64.c: In function =E2=80=98disas=
+_ldst=E2=80=99:
+> /home/LiKaige/qemu/target/arm/translate-a64.c:3392:5: error: =E2=80=98fn=
+=E2=80=99 may be used uninitialized in this function [-Werror=3Dmaybe-unini=
+tialized]
+>      fn(cpu_reg(s, rt), clean_addr, tcg_rs, get_mem_index(s),
+>      ^
+> /home/LiKaige/qemu/target/arm/translate-a64.c:3318:22: note: =E2=80=98fn=
+=E2=80=99 was declared here
+>      AtomicThreeOpFn *fn;
+>                       ^
+> cc1: all warnings being treated as errors
+>
+> So, add an initiallization value for fn to fix this.
+>
+> Signed-off-by: Kaige Li <likaige@loongson.cn>
 
-git clone https://git.qemu.org/git/qemu.git
-cd qemu
-git submodule init
-git submodule update --recursive
-./configure
-make
+What compiler version is this ?
 
-There is error log:
+> ---
+>  target/arm/translate-a64.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+> index 8c07649..910a91f 100644
+> --- a/target/arm/translate-a64.c
+> +++ b/target/arm/translate-a64.c
+> @@ -3315,7 +3315,7 @@ static void disas_ldst_atomic(DisasContext *s, uint=
+32_t insn,
+>      bool r =3D extract32(insn, 22, 1);
+>      bool a =3D extract32(insn, 23, 1);
+>      TCGv_i64 tcg_rs, clean_addr;
+> -    AtomicThreeOpFn *fn;
+> +    AtomicThreeOpFn *fn =3D tcg_gen_atomic_fetch_add_i64;
 
-/home/LiKaige/qemu/target/arm/translate-a64.c: In function ‘disas_ldst’:
-/home/LiKaige/qemu/target/arm/translate-a64.c:3392:5: error: ‘fn’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-     fn(cpu_reg(s, rt), clean_addr, tcg_rs, get_mem_index(s),
-     ^
-/home/LiKaige/qemu/target/arm/translate-a64.c:3318:22: note: ‘fn’ was declared here
-     AtomicThreeOpFn *fn;
-                      ^
-cc1: all warnings being treated as errors
+NULL would be a better choice for a "this is never actually used"
+initialiser.
 
-So, add an initiallization value for fn to fix this.
-
-Signed-off-by: Kaige Li <likaige@loongson.cn>
----
- target/arm/translate-a64.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 8c07649..910a91f 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -3315,7 +3315,7 @@ static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
-     bool r = extract32(insn, 22, 1);
-     bool a = extract32(insn, 23, 1);
-     TCGv_i64 tcg_rs, clean_addr;
--    AtomicThreeOpFn *fn;
-+    AtomicThreeOpFn *fn = tcg_gen_atomic_fetch_add_i64;
- 
-     if (is_vector || !dc_isar_feature(aa64_atomics, s)) {
-         unallocated_encoding(s);
--- 
-2.1.0
-
+thanks
+-- PMM

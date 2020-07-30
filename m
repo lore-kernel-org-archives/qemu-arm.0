@@ -1,95 +1,98 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2898486lfy;
-        Thu, 30 Jul 2020 13:34:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxNr0Ed3HYgS2ujdC4iTlWw1dy7zDqJyBtqjHMipazFAGLVwFs+5LCkUzT0HSpMkfXin7Ft
-X-Received: by 2002:a5b:c52:: with SMTP id d18mr1066822ybr.88.1596141254067;
-        Thu, 30 Jul 2020 13:34:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596141254; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2906034lfy;
+        Thu, 30 Jul 2020 13:45:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwO22oA6uT4vkRxetib/snP3BWoCLRWnh4bL4zgQcx16GoAdlBTs0Gwq6gkq6QAlslAoATJ
+X-Received: by 2002:a25:c786:: with SMTP id w128mr1189232ybe.212.1596141951347;
+        Thu, 30 Jul 2020 13:45:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596141951; cv=none;
         d=google.com; s=arc-20160816;
-        b=tBpDKrRuRJ4LLyjIZUFo5QZLpl3CPslYgJkCJWdSG0ZQLV5x+mlpBt4QmhWQ7prr5b
-         iD24a/BKwiO7IiAT27lPgvWYY4tiZPdHJwbovnUt4nNkcwfwr0BvEsItSRUWoZDHpd/r
-         NBiOjH+CW+ZQW0h6bQem9QgCHqSCMCttkhC271hKRU2tPjtpCX7DyIqw9/B+9OgbMYpq
-         Y2FScSKho6/9kiZ9fK5X7DzgsTk0bq+p0cziwL5DyHati+amoKcbn2e1Bqhe45RVMoTY
-         sfVe3zzN2sBUCbQx1/d13XL3HrleN3Jo1p5GY9VIajxHXs1SHfpt9c59GkLhWcSMqv0Z
-         S3vQ==
+        b=mqhRP2aw/STNFVdJ78aKyuMsc+C8I3hTW5ksOnXrE2GR0sreLUPbQ4gX1opza3VCWE
+         a+WGjX+8GGklyp0kqOr79XhUmh+dktK3bp8QjPiQ28xN1n/2ZJ0vx5V34Lq4Gy5jqXQ1
+         maodR28jKyTvyjXScSye9wUHLb19RXjuXEQfbc7oJ19vgp1r113Rj8sVswzR/a7aog9T
+         6pCh0kyG/sq/vY9AZk9N5IAEoiM4o/EaWvkDlwPOnudFUhl/xbtyYGEQerg23AVOEpf8
+         R71mCBGLVno8sfAGGN45OfPtRGt3pXUycIcJHAuGr87b9PkRBZaA+ekYC+ky3lqAe5Vz
+         xhCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=TopSsp2fUc0f/Ix/J3pFrqrf9rKYT2QkqIOI3QpaBww=;
-        b=aYcwR+QuRC/A5dPfCivpT1B1Agt5SDR4uWZXeHJzUHcZ+LLcsrfys/QX6PfSkE+Wlc
-         9VTbIjw8qoi/iS7m+ZmMkGFaeRU56uwY3NDiyL5AyiBI5qhPOEkZ+GVBNeG+vzc6ZSX3
-         UvzP7A6Rlf1tiJGYxPoY5VHjtb3+jexZANdruAnlTKdrJm88LzrUI8ZazCRDHEo8YCQ5
-         cSDoRvDl3k+N2os5JPH7sqtRyFrQV85EbVd8bu+P5shTkiBznJcNBryY5+cw3iaM7W99
-         42hXAr7Ob3suYbkoV6Zfz2CHCAXgS5x6/XpgLZFBORwVVG6+GWRNI8SBv+m+VGlBy1Yi
-         WHYw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=aBkYvXkJmJRapHaYhhDaM6BjCIDlswdRCmfla7GwHYA=;
+        b=vMRPLIkfBj2eXgsBuev/CxLNkasEJS9iUx0ihOtjHyMzeWhZUNr1vAckAzwjOtjzwh
+         nHTjxNntuID1ZYdiNuDZbRZGjdm/vwYnev2LuoKWl4gDtWu3T7LyltJswPvxhdDWm0DI
+         Jaae4WOJE2g6yoW567a/c72xz8BJRclg7EWxi1D63BJTeyYLEJfuL9iyF3QsI5ce7Gx8
+         y5QJbtgrRj4d7Mno7chVaS0EN1FbXJxIVxAlLgwUydJYMNclyn+qd2yalv9rN5zNnq4L
+         ydkxKXOPIiXT8c0KZfzc76P49KY+UdbqKeKdCobQdqOamsptEUaL71cHtTjK+l2niMzh
+         5XnA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CztX77zy;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YqeGcrUK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r186si6010322ybc.113.2020.07.30.13.34.13
+        by mx.google.com with ESMTPS id d129si6923012ybc.158.2020.07.30.13.45.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jul 2020 13:34:14 -0700 (PDT)
+        Thu, 30 Jul 2020 13:45:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=CztX77zy;
+       dkim=fail header.i=@linaro.org header.s=google header.b=YqeGcrUK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52924 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60622 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k1FFl-0006FS-HD
-	for alex.bennee@linaro.org; Thu, 30 Jul 2020 16:34:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43474)
+	id 1k1FR0-0001qI-Mi
+	for alex.bennee@linaro.org; Thu, 30 Jul 2020 16:45:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47240)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k1FFe-0006FI-8d
- for qemu-arm@nongnu.org; Thu, 30 Jul 2020 16:34:06 -0400
-Received: from mail-oi1-x244.google.com ([2607:f8b0:4864:20::244]:45018)
+ id 1k1FQh-0001pR-4Z
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 16:45:31 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:46072)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k1FFc-0004jD-10
- for qemu-arm@nongnu.org; Thu, 30 Jul 2020 16:34:05 -0400
-Received: by mail-oi1-x244.google.com with SMTP id h3so1279449oie.11
- for <qemu-arm@nongnu.org>; Thu, 30 Jul 2020 13:34:03 -0700 (PDT)
+ id 1k1FQe-0006lT-RC
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 16:45:30 -0400
+Received: by mail-oi1-x242.google.com with SMTP id o21so4169400oie.12
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2020 13:45:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=TopSsp2fUc0f/Ix/J3pFrqrf9rKYT2QkqIOI3QpaBww=;
- b=CztX77zyoVY0ugdGySFHiuPuOP8pznYUfyBbkLLs/GmF+bljRgH96xnq28JSsMIAPq
- BI6TXNRCwnnT1ugNsAahnGf5GCzldHlI/qaotBI8VRIJCwKcoV8eGSGxjbnnj0dYAuep
- BXBOda3Eg5aGpXfLoSR16HWLSmS9QwqavM8WxqPjKrgyyoz2/1ztLjIqXHoVz02ZX1BT
- s4qgz0S2SpKWy3mRrMyG89UL1x2d3c6uEMriqCJP2XxgDgGHwftdvn5J9mgKNK0lepD4
- D6nur4c+RtALovcBE77YU/WtLzI1Abf16m8hK99CvtKlVvAXpPLD9Cbuen1S9w5MGRqJ
- eO5w==
+ :cc:content-transfer-encoding;
+ bh=aBkYvXkJmJRapHaYhhDaM6BjCIDlswdRCmfla7GwHYA=;
+ b=YqeGcrUKOCr8MEeMA+/b1iof0fzvvJJGI2h4iuCJiTOHJn6XbV7JzYWArye73dG9K4
+ YGpP9X1gbJ6at4WN48DMuH1g7/18XFb1V9zBFRgXYQsFWrOBQPvc8le7PUJxY/6kB7VF
+ xjFdCbUhJDCck3K7MEvnWmI+YU21v4Dxth+PSzZ/KlJKM6hvKzVip/xqMApoLtVqzxSw
+ uIO7LZpbzs4+c5yzobbT+pyagL58ot7yqABHPPgKEIYZJjgUHWYJVBmxLI65fDCLnFC8
+ WeafOo9qO93CSR5uNw/ItnLzlTn/STRI2Uvkxv6+1ICcG93mY9WbQwwFMSLqAg1XtoC7
+ RN0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=TopSsp2fUc0f/Ix/J3pFrqrf9rKYT2QkqIOI3QpaBww=;
- b=TmOVAu7lQ1OfNBDSVMMWmaB3RfEM4uEsocoGWq4vCcTEC3TEEfkG/VnxgAXEFU5QDA
- yxLhTCh4K6459PlphHTd7n5ggpBKt2DAnDgpUUhBH7aQKEfRryeirVyHx3ek1XaYYhL6
- LzzqiNVv92Ng+R3Xj88wXdzr/PF4yxGuygx2Ga96WUrC+bG6UerpjxUPD/wCETiivLgF
- 85+SNINxgKZLC21swJ7KNugom4l78LXAThnxvzE0CwaVIra9+we26LG7W3Ihk5EA39D9
- 7vqg00B+K7BsBmFV7KjOcvj7u2l6ZoNZ8nebCqH8v80Jdn2VhrT29fZznR7s+qtsTBU3
- z+1A==
-X-Gm-Message-State: AOAM530TmBUbI/vr/sFp0swWZ8AMdhPMDL6E73AIzi29p5IK84xtUdy2
- SZBkH21QJro0a9HDRKB6fJWNUgVe8V0uukSamtHeug==
-X-Received: by 2002:aca:50c4:: with SMTP id e187mr577956oib.146.1596141242626; 
- Thu, 30 Jul 2020 13:34:02 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=aBkYvXkJmJRapHaYhhDaM6BjCIDlswdRCmfla7GwHYA=;
+ b=bMpGoDXeQfCEwiqTf4asSFW7grtgWdeaZEAJO8YT5oPq0lXVaN6sQhZdKVgww9CLfA
+ xUHJ9HZImklfsrvD/ncXtlxgHGdWbXexZOSpTt9xgNILkIYiCIDaG9ljdUg0ntGp3cr5
+ vAMCcaCSfCXjP3Wk3UaYeSaRDKAW6scfZJyHs2ZsfpDOpk8DPUdszriOXhwxqtjTu5By
+ ZKucRn6wq01ScfQLQbb077Bd210gsV6GfqI3dsclcgUEaberaNM5WbI/1tjfGeqTzYb+
+ YB/Vm4wleaRvFa8C3nDdTV73+rGBhY2axQBQ0O6I5GX5XzM0u9fkQRBf9yWrtsZXp8Li
+ w8dw==
+X-Gm-Message-State: AOAM533kwYjCpO8Dt+BvCPSMDUkvXxmBpxL0C48Vq5ZGEwDBVM3YYvw1
+ YqZFuds+cynhsKICzUwJjfkJBmsrIfTIzZZMfDNarQ==
+X-Received: by 2002:aca:50c4:: with SMTP id e187mr601881oib.146.1596141927371; 
+ Thu, 30 Jul 2020 13:45:27 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200730155755.188845-1-mst@redhat.com>
- <20200730155755.188845-2-mst@redhat.com>
-In-Reply-To: <20200730155755.188845-2-mst@redhat.com>
+References: <1596110248-7366-1-git-send-email-likaige@loongson.cn>
+ <1596110248-7366-2-git-send-email-likaige@loongson.cn>
+In-Reply-To: <1596110248-7366-2-git-send-email-likaige@loongson.cn>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Jul 2020 21:33:50 +0100
-Message-ID: <CAFEAcA_Kq3wDbKL_NWTN+DiKQkBGN4yaZ8eZg3J1QYfqU2OKPg@mail.gmail.com>
-Subject: Re: [PATCH 2/2] arm/acpi: fix an out of spec _UID for PCI root
-To: "Michael S. Tsirkin" <mst@redhat.com>
+Date: Thu, 30 Jul 2020 21:45:16 +0100
+Message-ID: <CAFEAcA85xA=T389_M5_vjvm=TPirMqxNDt0za65G2NOfaDHdWA@mail.gmail.com>
+Subject: Re: [PATCH v2 2/2] target/arm: Fix compile error.
+To: Kaige Li <likaige@loongson.cn>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::244;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x244.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -98,7 +101,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,53 +114,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: vit9696 <vit9696@protonmail.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: David Hildenbrand <david@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /uyrD37VM7n7
+X-TUID: 3AuOZtGS2FYR
 
-On Thu, 30 Jul 2020 at 16:58, Michael S. Tsirkin <mst@redhat.com> wrote:
+On Thu, 30 Jul 2020 at 12:58, Kaige Li <likaige@loongson.cn> wrote:
 >
-> On ARM/virt machine type QEMU currently reports an incorrect _UID in
-> ACPI.
+> When I compile qemu with such as:
 >
-> The particular node in question is the primary PciRoot (PCI0 in ACPI),
-> which gets assigned PCI0 in ACPI UID and 0 in the
-> DevicePath. This is due to the _UID assigned to it by build_dsdt in
-> hw/arm/virt-acpi-build.c Which does not correspond to the primary PCI
-> identifier given by pcibus_num in hw/pci/pci.c
+> git clone https://git.qemu.org/git/qemu.git
+> cd qemu
+> git submodule init
+> git submodule update --recursive
+> ./configure
+> make
 >
-> In UEFI v2.8, section "10.4.2 Rules with ACPI _HID and _UID" ends with
-> the paragraph,
+> There is error log:
 >
->     Root PCI bridges will use the plug and play ID of PNP0A03, This will
->     be stored in the ACPI Device Path _HID field, or in the Expanded
->     ACPI Device Path _CID field to match the ACPI name space. The _UID
->     in the ACPI Device Path structure must match the _UID in the ACPI
->     name space.
+> /home/LiKaige/qemu/target/arm/translate-a64.c: In function =E2=80=98disas=
+_ldst=E2=80=99:
+> /home/LiKaige/qemu/target/arm/translate-a64.c:3392:5: error: =E2=80=98fn=
+=E2=80=99 may be used uninitialized in this function [-Werror=3Dmaybe-unini=
+tialized]
+>      fn(cpu_reg(s, rt), clean_addr, tcg_rs, get_mem_index(s),
+>      ^
+> /home/LiKaige/qemu/target/arm/translate-a64.c:3318:22: note: =E2=80=98fn=
+=E2=80=99 was declared here
+>      AtomicThreeOpFn *fn;
+>                       ^
+> cc1: all warnings being treated as errors
 >
-> (See especially the last sentence.)
+> So, add an initiallization value NULL for fn to fix this.
 >
-> A similar bug has been reported on i386, on that architecture it has
-> been reported to confuse at least macOS which uses ACPI UIDs to build
-> the DevicePath for NVRAM boot options, while OVMF firmware gets them via
-> an internal channel through QEMU.  When UEFI firmware and ACPI have
-> different values, this makes the underlying operating system unable to
-> report its boot option.
->
-> Reported-by: vit9696 <vit9696@protonmail.com>
-> Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-> ---
->
-> Peter can you either ack or merge this one pls?
+> Signed-off-by: Kaige Li <likaige@loongson.cn>
 
-Since you have the x86 one to do anyway, I'll let you take
-this one.
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
+Hi; I've taken this patch (but not patch 1 in the series)
+into target-arm.next, with the commit message cleaned up
+to quote the compiler version.
 
 thanks
 -- PMM

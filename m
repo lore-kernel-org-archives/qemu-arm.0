@@ -1,111 +1,189 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2681322lfy;
-        Thu, 30 Jul 2020 08:47:42 -0700 (PDT)
-X-Received: by 2002:a05:6830:1e26:: with SMTP id t6mr2721761otr.342.1596124061893;
-        Thu, 30 Jul 2020 08:47:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596124061; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2692358lfy;
+        Thu, 30 Jul 2020 09:02:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXdw9v9XOK2ZidgAJbF+h+nHXoHuphtTOPjegcf441QvYebR7vgogm/rHHKvdKQdApyvie
+X-Received: by 2002:a25:860d:: with SMTP id y13mr28321407ybk.479.1596124937775;
+        Thu, 30 Jul 2020 09:02:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596124937; cv=none;
         d=google.com; s=arc-20160816;
-        b=QaNgmkqIQrLpCp2StMtCP9YrVfYZdOdi5Yf1CzIw0iWnHVJo+c9qXoq24CphU0+7yQ
-         OWeyw115gJpWviQkdCtGLnBm2QasbAMqSC9VehXmPmorHEDRMvwKzO6jgYd/W6V5USJF
-         BwWUFhIej5gwK3BxeISCAB/KWbbF6HNoxWxoKYiNx16hjgGqkI4CU2nkSEICyWlDhsoW
-         ha9H0vT0XBbdTHa8pQJlQ2DnWMe3hFUxjP9ulCOy/t5IU+zR8ikwxZEpIZNUnRw4RToq
-         kfqblp09cTjvxP9N8cGkB1wVSF+M4OOPWkGnghoHBnkZxxhGBvzs03Ic3KY5ZnNEnQ3D
-         +5Qg==
+        b=wiT3WHlfdyRiYiRNmT/MzRUgtiLvh58Ad3rukZunEMbzSk9VZgoeIw5il12c53HCIm
+         RcGIkSpXKhRzxlScsUnzZAQZP8SHR4O7V1p3ksDKEK7Gxo3RyCCUwOmtKu4IY4BAIaMO
+         /zZAfbRjSs6PYObg/ivfVmRe2FENs+v9eWp0B0ZasnztHeg8uAECjBJtx6+gcPo4GEXm
+         F7XGmjdeT7ZNJj3C6BxCPo+R2efVI1NVdISqNnYHP+aqwPArkHE/5Lw1mhEHeLjcaTsq
+         XXeJzDpuXHx+7eCP4RvUtM9pBW/3jtJV9aQBBG13brjBjcMgMZiU588Zn7NPlm3rmWyr
+         +aTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=7BTKY0AOu7kkJmSYmdz0BsUTmdAuROH9BExYArF4J/4=;
-        b=J0N2exrym31c5vIEwWaaV0V6xtQzWHLfDnwhaqrAfowuzo/M0+FNO8yaH5FHy/ibNk
-         sAis6PIdkeOU774wLV5VRe3CPT14DqbI/clZaDLzHxHjDUoNcxcje1+Rs2Dt/c37KX5p
-         rA2vozjDCgSH+PB3Fvdsem5BjkEgWSsUqWndUo68joNd1s5u2nySjCJttpgxm38PsfZz
-         Jct/ru0cir0/4SX8VZq6Jxa4/AcjHlGc9mxOEX4UhadHh+Rz7YJalDoM2qN33sW/Kjsb
-         0NaZdpBwMsbNh1Vyr2CszXB8EsbRasKJ3s+IjcYTF82NSvfqV29MRQPHEOIS3mvEsJR4
-         tjGQ==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=t9vJ8om9B5hkPXUycSKjtBZ/Wy7eZdvCHEAUsm4nZrw=;
+        b=bi2mR8MblSEQkUhJXERErHLNVa3yyhmsbyXCTZhl25YMu5QZl0YKndHNdOd0SUPHNd
+         k4V0dq6mHxQhnwhqpLAfd6rB3luqdi2jX/vY4Hm+whB4ooA82cGgRjJndPOiOzMfvVg6
+         orB+yCZSu5q2v6EBl+QkIDLU20LEbzxyggPJU2pO5QVkUwugf37/LUgPjwOxsRyeavot
+         LrYzmqEAQieOMMK5NUREbzS742JR4DLgTCdBqJ+LrjNqUzaZXoOG9Nr84oEScRGfFjUi
+         2Fhp/Y4m4TKbkkeS7swamBeqej1VgUwtoWIRAuuLPoh919Lz7m9biMud5NT7z9NlDvaT
+         sLFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nkbJACjE;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id w4sor3624419otk.124.2020.07.30.08.47.41
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NLnarS6Z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id x5si5000941ybg.315.2020.07.30.09.02.17
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Thu, 30 Jul 2020 08:47:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 30 Jul 2020 09:02:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nkbJACjE;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=7BTKY0AOu7kkJmSYmdz0BsUTmdAuROH9BExYArF4J/4=;
-        b=nkbJACjEV6jl3bVdssD5VqWitK4ZYtnf2OAcvzrKwiVQz8y9z/cBnawdco0LEtWeAp
-         fuOggHzAs8QbNdBNoK5ddpG5OQ9BVa633EllrCNxwaMiJjQAiO8lS06c+bKQu6zaFY3a
-         nwk/5Ez/0/wLo52EQCvaD3BrFxXMdBYawa8Buw5PTbbIXX/IkzfUDgbFZlyPD7G6QX+N
-         UCc7/B4/N2E+vs1k4zhOTJzwQ+GmysFPdPKkYtXKVRF7InP6EMx64xrtvOHhKQJ7cbad
-         CcZqbjeaJxjkusAekKyxumYzTXHuxtbp9u7NYShP94pus/XFhjtEd/jDDoH+8XloPBMY
-         1pOA==
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NLnarS6Z;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:46632 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k1B0a-0006US-Sx
+	for alex.bennee@linaro.org; Thu, 30 Jul 2020 12:02:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58610)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1k1AxJ-0002rJ-Uz
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 11:58:53 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:38604
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1k1AxF-0005QT-Mm
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2020 11:58:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1596124727;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=t9vJ8om9B5hkPXUycSKjtBZ/Wy7eZdvCHEAUsm4nZrw=;
+ b=NLnarS6ZKWtfXPo/f9tEa7eIN4TJ2I/DOiY6//smifIyW2CDlcVa2ecbLrRMHQUjR0sC4u
+ 0YvFu2hLXnEzwy4C/D+7+LLsWoM0bJ5vRzlLsZvMVmVj/orriKGsoWVv/uQcshkczp8HEb
+ Bk06CaoTv25Zh/sySt2E/B/582Yv6/0=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-467-Fa0VijDaPpaPRA07aPw3Qw-1; Thu, 30 Jul 2020 11:58:45 -0400
+X-MC-Unique: Fa0VijDaPpaPRA07aPw3Qw-1
+Received: by mail-wm1-f72.google.com with SMTP id z10so2351867wmi.8
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2020 08:58:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=7BTKY0AOu7kkJmSYmdz0BsUTmdAuROH9BExYArF4J/4=;
-        b=e6T65joOAPP2okeb9gyaSPqrCLYm+/bsXatafw+IZj8VLn+HMgbxQIiDzeE8N13ftj
-         2BK6SycQ1QZc18hBuK4Ke+rWc72d177t5A+PwD64ucQtYjsJFgGULGwE+sK+rTwJ6rfQ
-         I1Kj6G4prCgb+AtACb8uiDUR5u0VUf5qeLBuEC5K+aScQEjQ+KWVWauJOAV8j/EI1iDB
-         N87iosDqB4W/rqJWZkuxvSjmr4x3PaC5UGDUVOHG6Q3AsgvuNg9PEkh6FvHBKtz3HUVW
-         NHL90C7tGwHIh8z554Ox0UK8rKOve/Df0SjIP/bPuWSr+F1fKRQN9e1OnAnWhK3hlFPF
-         lWNQ==
-X-Gm-Message-State: AOAM533HCgd+4j12GlZBQRgFn2Izxmm6SZ8KaEqhVB9Vzmd0T7wq3xD5
-	8uXebsqvH0A1pzJbs3yO8YikDfKK7zdoZqLZhVvBjfnx
-X-Google-Smtp-Source: ABdhPJwgxlRXzswcF+FyuB1j4i1ZEdn7pxhjeADXDwCMay1PnLFrOeD8pcQnvru/3a5WYZHlmI1GINWEYQsOngGxSls=
-X-Received: by 2002:a9d:39c2:: with SMTP id y60mr2799632otb.91.1596124061434;
- Thu, 30 Jul 2020 08:47:41 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=t9vJ8om9B5hkPXUycSKjtBZ/Wy7eZdvCHEAUsm4nZrw=;
+ b=Pq40HVeDDQfYRJv/BhFEqjsMnU7/gBCk4+LxMTdkF3bSYjije0VT8E4rRnhAwpplbR
+ L7aCLkRR/SwelmYPk+rjIlJa1eq+SWUJ7Mwgxh4xvzQn2erxP8BkBBHpNR4+uBX38v27
+ wj/M2oERRkY5hWNRnHSLbvUWyjYr8ODm63l134ic0JxNw23qh2K3yAsS1zJVtvzvmxey
+ jpJTkNyG+9BT7rN7u5mif4vg/u4jk81HOiKlakbiEeOK6nWwqFh1gFylS/cRsc2S8+90
+ lYoxKXqVedtZ/+Brj/8shnKKybl0vFJv127VwyQgR+GwDYK0tORT30luSwMmKW8W2u7A
+ 8ErQ==
+X-Gm-Message-State: AOAM531rn5mJgtF167myUjXJmlz+gcVwVKMJQuRC7SDgh8UF5CxoWQ/3
+ vPXVqj//3em/YRzNl1fvM6/ESftvgWeTeeDLx1YnuSt/2Hn7mORxut5tlQt4x1jE1fdgMHopYMu
+ bL/VhuQxFk0Zt
+X-Received: by 2002:adf:8445:: with SMTP id 63mr31327053wrf.375.1596124724838; 
+ Thu, 30 Jul 2020 08:58:44 -0700 (PDT)
+X-Received: by 2002:adf:8445:: with SMTP id 63mr31327032wrf.375.1596124724566; 
+ Thu, 30 Jul 2020 08:58:44 -0700 (PDT)
+Received: from redhat.com (bzq-79-179-105-63.red.bezeqint.net. [79.179.105.63])
+ by smtp.gmail.com with ESMTPSA id s14sm9447543wrv.24.2020.07.30.08.58.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Jul 2020 08:58:43 -0700 (PDT)
+Date: Thu, 30 Jul 2020 11:58:41 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 2/2] arm/acpi: fix an out of spec _UID for PCI root
+Message-ID: <20200730155755.188845-2-mst@redhat.com>
+References: <20200730155755.188845-1-mst@redhat.com>
 MIME-Version: 1.0
-References: <20200723025657.644724-1-bauerman@linux.ibm.com>
-In-Reply-To: <20200723025657.644724-1-bauerman@linux.ibm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Jul 2020 16:47:30 +0100
-Message-ID: <CAFEAcA-VFaZiR58F-zDo6h_Q-U5gU1O3RDnOcuCnwnuqD_JFSg@mail.gmail.com>
-Subject: Re: [PATCH v3 0/8] Generalize start-powered-off property from ARM
-To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Cc: qemu-ppc <qemu-ppc@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	qemu-s390x <qemu-s390x@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
-	David Gibson <david@gibson.dropbear.id.au>, Paolo Bonzini <pbonzini@redhat.com>, 
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>, Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, 
-	Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, 
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>, 
-	Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>, 
-	David Hildenbrand <david@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Greg Kurz <groug@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: OkeJ7vCIXRw/
+In-Reply-To: <20200730155755.188845-1-mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=mst@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 03:59:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, vit9696 <vit9696@protonmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Laszlo Ersek <lersek@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: QmKAR7/CoAM4
 
-On Thu, 23 Jul 2020 at 03:57, Thiago Jung Bauermann
-<bauerman@linux.ibm.com> wrote:
->
-> The ARM code has a start-powered-off property in ARMCPU, which is a
-> subclass of CPUState. This property causes arm_cpu_reset() to set
-> CPUState::halted to 1, signalling that the CPU should start in a halted
-> state. Other architectures also have code which aim to achieve the same
-> effect, but without using a property.
->
-> The ppc/spapr version has a bug where QEMU does a KVM_RUN on the vcpu
-> before cs->halted is set to 1, causing the vcpu to run while it's still in
-> an unitialized state (more details in patch 3).
->
-> Peter Maydell mentioned the ARM start-powered-off property and
-> Eduardo Habkost suggested making it generic, so this patch series does
-> that, for all cases which I was able to find via grep in the code.
+On ARM/virt machine type QEMU currently reports an incorrect _UID in
+ACPI.
 
-Acked-by: Peter Maydell <peter.maydell@linaro.org>
-for the Arm bits if you want to take the bug-fixing parts of
-this series in via some other tree. (I think they've all been
-reviewed.)
+The particular node in question is the primary PciRoot (PCI0 in ACPI),
+which gets assigned PCI0 in ACPI UID and 0 in the
+DevicePath. This is due to the _UID assigned to it by build_dsdt in
+hw/arm/virt-acpi-build.c Which does not correspond to the primary PCI
+identifier given by pcibus_num in hw/pci/pci.c
 
-thanks
--- PMM
+In UEFI v2.8, section "10.4.2 Rules with ACPI _HID and _UID" ends with
+the paragraph,
+
+    Root PCI bridges will use the plug and play ID of PNP0A03, This will
+    be stored in the ACPI Device Path _HID field, or in the Expanded
+    ACPI Device Path _CID field to match the ACPI name space. The _UID
+    in the ACPI Device Path structure must match the _UID in the ACPI
+    name space.
+
+(See especially the last sentence.)
+
+A similar bug has been reported on i386, on that architecture it has
+been reported to confuse at least macOS which uses ACPI UIDs to build
+the DevicePath for NVRAM boot options, while OVMF firmware gets them via
+an internal channel through QEMU.  When UEFI firmware and ACPI have
+different values, this makes the underlying operating system unable to
+report its boot option.
+
+Reported-by: vit9696 <vit9696@protonmail.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+
+Peter can you either ack or merge this one pls?
+
+ hw/arm/virt-acpi-build.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 91f0df7b13..0a482ff6f7 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -170,7 +170,7 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+     aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
+     aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
+     aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
+-    aml_append(dev, aml_name_decl("_UID", aml_string("PCI0")));
++    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+     aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Device")));
+     aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+ 
+-- 
+MST
+

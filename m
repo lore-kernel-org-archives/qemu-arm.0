@@ -1,103 +1,88 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp661282lfy;
-        Tue, 4 Aug 2020 08:54:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz2zcHGn4SmkuSCM5Vwe2nRY+zErQtJBImnEsy9SAUurSZK+sM8kiPx8qW0HWsAYA7DJlr7
-X-Received: by 2002:a25:1943:: with SMTP id 64mr34753684ybz.14.1596556481814;
-        Tue, 04 Aug 2020 08:54:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596556481; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3328286lfy;
+        Fri, 31 Jul 2020 02:07:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZu0dPx9YFLZPqd1T7nKpKMzbGCOeb5Kflo3845cyV2HXZmT/LUw5GeYMl6cuuCB35pJVo
+X-Received: by 2002:a25:9785:: with SMTP id i5mr4465356ybo.255.1596186456319;
+        Fri, 31 Jul 2020 02:07:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596186456; cv=none;
         d=google.com; s=arc-20160816;
-        b=iQ/udkZXh2PR0e3JRO58zV/3fAvxhnsUpGsFrQX/CF9A6dDayHJqiJeFz36n/J8xHS
-         OZxcH5oNFAGhjel6ZSm5P6ce/d+tjbkZ22ffDDr702s4aTaJJdWardEGV+n3FlyavStX
-         lKvTCFMwCnKT8HrsA3NnYNwP6uJT+WWWZK4w8dpvm98lHw2k7qnoQvS4F79VS9914spb
-         rOus2egs7iTrCeAvlX8N6RRWaJdA8t6CDqaGQmEJfi7KM67vZVyQa5517xJ8wQ/u8TfJ
-         j43sCU/cIqZXirTSWqLMfn4Z5t2upL2q+pOJT9gqQT63aAS6G7VoDnLObcjkoWmHwluV
-         /ABw==
+        b=uJM/SYdl5nM6keJ2+gy/98KjogeCXGTbTRAy9J0Pi9I1YJhK6RKiGmK5xj5WqW8mg4
+         m/1jmBL663czA7J9cvOq8pcAmuN1exm4Qg3QEMc7RnY+bJzq1fLCR1iuBtTjLv/2TdrG
+         wuzkeZnchETLtPjyir4lLSeq9iLy6+c4+5orimb/YiNkQjg9KsIu37HpNkCiyyEUBY3Q
+         DUkwv2EC0HJwf6zwMZaSvmMw529l4HJBZp2NdVFXqacLWjcIY66o5Mc2gKFJbHE+ti1d
+         0NIx6DfmIr+xWnE7fQE6YkvbrgcchTgCGoQlIxEjoWNbyd32Ae66bE2socU/WyLZtpnc
+         UXaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=xoK0WiUGhLpGnrJ2vhZq1Alo3LimPJFn34EgjQ1/4EE=;
-        b=xgtmdTD60iF6+uQ3vKfEXBYusRsYP7BB4AmOGQ2/nQ2mzCsvkrIDLBnhc7wz/UpSzn
-         bgbQDaMrnP8U/kUwyC+D/WxBysgriSkoTlBZDtQUwaP9y/NyyR/X/wF9DK31DN2IV8AM
-         DO3j68ECxzYhHUSg3JhNQ3VaDyH5txrhDK+EfFTJNZ4TeSjktxmJ8in8SAt+QYym4hTP
-         4LAPo834XsKOF4AFuNyjIBB3JNkcn7riddImGkDx3dd8j5eMeWDIuhwlCVYOGSxfKHxA
-         9HuzN0JWCgXu0h8W9ZHC/UW/vhKuJb/57s2B5t5+ikwRC3NBai/+xOSydll4Qxo7YPsB
-         fxTQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=IOkpUMfSoaQcaaZ0hjEPryOQrMLu9ZdQGnDtMCo8M+Q=;
+        b=VvAi/I2GYwUr1OByJlVx0E0mSY9RToIwMcySGIuh0u37gzHJxNwPVrYGwrjMXDNOwj
+         8JmrXfZId8A1rs1xloO54XD6vdMYCYyyMLW5NVnM8NK3UWGo0wAKAkY33AWE6lsKxDuI
+         kg5GO+HvJIE6sq8mn8XPIHkY3qEvoKiosvaZBPdML9e/WqIl8hmxadCro+brBbV1crhL
+         aEdbv+GfvyQEcdr9esvcLALRVQ43wMyYUnyx2H8hbGChIksOdNo6UFjGTgvi4oWlSa+z
+         3Ffab8mRnnKWsyF9eDxISEls/nahS8KMidDZ8sRy0Ymn8KvavewWt5C7lEFkNXR698YB
+         0yHA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=n6iEtASl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w6si18121200ybs.77.2020.08.04.08.54.41
+        by mx.google.com with ESMTPS id 203si6854908ybc.231.2020.07.31.02.07.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Aug 2020 08:54:41 -0700 (PDT)
+        Fri, 31 Jul 2020 02:07:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=n6iEtASl;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39994 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60346 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2zGz-0001DE-5s
-	for alex.bennee@linaro.org; Tue, 04 Aug 2020 11:54:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40656)
+	id 1k1R0p-0001uw-NZ
+	for alex.bennee@linaro.org; Fri, 31 Jul 2020 05:07:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38458)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2zGg-0001AZ-8v
- for qemu-arm@nongnu.org; Tue, 04 Aug 2020 11:54:22 -0400
-Received: from mail-oo1-xc44.google.com ([2607:f8b0:4864:20::c44]:44994)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2zGd-0002Wz-CN
- for qemu-arm@nongnu.org; Tue, 04 Aug 2020 11:54:21 -0400
-Received: by mail-oo1-xc44.google.com with SMTP id o36so8093734ooi.11
- for <qemu-arm@nongnu.org>; Tue, 04 Aug 2020 08:54:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=xoK0WiUGhLpGnrJ2vhZq1Alo3LimPJFn34EgjQ1/4EE=;
- b=n6iEtASlM5Znt1jxtgPCEs3pLJevPlrIe7U8LgzS4wvJHu/BiM6rmBcZM42KEiEkrj
- mFVtp21c34ZSYOiM79eYBUv5r4tmezSZo5qbUHSpSyvd27lhCE7YIxDVbTCWAw2Plg2y
- RjxDt1ZAWlZI3MZFI/AiVvwEhXzXCJkd4jVj1AD5J5KIzNAQ5n2ZGKtpyuammh1edyDn
- +Z8++gBURElHbp+j3+I4ZMl2MYU1rHYC4qQ64WPnMuDTCAO4RF23hKcIobRREN8l/5ub
- TXamsE3Pn9EPkU0VDIsmxq6KEkimw9FcnOtmnQgiWgrGFPtayfSbcgBvhzV8z7vxIhpV
- EkTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=xoK0WiUGhLpGnrJ2vhZq1Alo3LimPJFn34EgjQ1/4EE=;
- b=EwSObKzWy4WgDOnwUrVRrvQx0SBz9eIvSqgPSk8Kw0IgHDRevf6Hh/YDlJqN0sX2AX
- IiI4ISENyCnzMIFLE2tDlHiq+YPLNLorFh6b1en8mmO35cGN7LRxyQxect8FvHlyE5e5
- laDXkcp6l7vUV+QpxEPtDAVYgx8TfSI17orJTJ1FkLRJdKk1FaT1479vxhOzSd+FJx4g
- HF+AHn8AA/G8BwGZM+e84bKFASOSydJoJiBzbIeb4xGxNQFtmmFkuycfw+mVZzVXruTZ
- 6NuxuKplbwlvQFf6MDCPsNW3FV9l2LmPgot+AURMfOBftnID/dh6dvSam50axcOmsXwR
- l7wg==
-X-Gm-Message-State: AOAM532LGru3vHaUuhWB7h6hUE3t/MfXeB1eTzDYBLAoF3hdi2ZlLUGJ
- F9gydtV4T/6YHYIbf6ZrbB2IjJxR4UPycNDaXl3BGg==
-X-Received: by 2002:a4a:8dc1:: with SMTP id a1mr19299856ool.69.1596556457357; 
- Tue, 04 Aug 2020 08:54:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <likaige@loongson.cn>)
+ id 1k1R0h-0001ss-6f; Fri, 31 Jul 2020 05:07:27 -0400
+Received: from mail.loongson.cn ([114.242.206.163]:39976 helo=loongson.cn)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <likaige@loongson.cn>)
+ id 1k1R0e-00013E-Qx; Fri, 31 Jul 2020 05:07:26 -0400
+Received: from bogon.localdomain (unknown [113.200.148.30])
+ by mail.loongson.cn (Coremail) with SMTP id AQAAf9Dx6MVC3yNfcvMCAA--.35S2;
+ Fri, 31 Jul 2020 17:07:15 +0800 (CST)
+From: Kaige Li <likaige@loongson.cn>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v3] target/arm: Fix compile error in gcc 4.9.4.
+Date: Fri, 31 Jul 2020 17:07:13 +0800
+Message-Id: <1596186433-17364-1-git-send-email-likaige@loongson.cn>
+X-Mailer: git-send-email 2.1.0
 MIME-Version: 1.0
-References: <20200804002849.30268-1-pcc@google.com>
- <8d966244-acaa-5f69-5148-414fb63871d8@linaro.org>
-In-Reply-To: <8d966244-acaa-5f69-5148-414fb63871d8@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 4 Aug 2020 16:54:06 +0100
-Message-ID: <CAFEAcA8JkDPNqLXx8OUDWDXdH1brkTm=Lv8Pocqkf5sLLi5SeQ@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: Fix decode of LDRA[AB] instructions
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c44;
- envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc44.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAf9Dx6MVC3yNfcvMCAA--.35S2
+X-Coremail-Antispam: 1UD129KBjvdXoW7GFyUJr1kAr4fKr4DKFWUtwb_yoWkKFb_CF
+ 18Wa1kGry5XayIqw4xuw45tr48Krn7XrnF9a4DGa98Ga1kJw4rG3WkX3s7Zrn8Crs7tryr
+ uF4ag34rW3ya9jkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+ 9fnUUIcSsGvfJTRUUUbwAYjsxI4VWkKwAYFVCjjxCrM7AC8VAFwI0_Jr0_Gr1l1xkIjI8I
+ 6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM2
+ 8CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW5JVW7JwA2z4x0Y4vE2Ix0
+ cI8IcVCY1x0267AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwV
+ C2z280aVCY1x0267AKxVW0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC
+ 0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Cr0_Gr
+ 1UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwCF04k20xvY0x0EwIxGrwCF
+ x2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14
+ v26r106r1rMI8E67AF67kF1VAFwI0_Jrv_JF1lIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY
+ 67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2
+ IYs7xG6rWUJVWrZr1UMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAF
+ wI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x07bekskUUUUU=
+X-CM-SenderInfo: 5olntxtjh6z05rqj20fqof0/
+Received-SPF: pass client-ip=114.242.206.163; envelope-from=likaige@loongson.cn;
+ helo=loongson.cn
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/31 05:07:17
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -111,27 +96,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, Peter Collingbourne <pcc@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: egVT3ucoG50h
+X-TUID: uBbwVdruBG/K
 
-On Tue, 4 Aug 2020 at 16:46, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 8/3/20 5:28 PM, Peter Collingbourne wrote:
-> > These instructions use zero as the discriminator, not SP.
-> >
-> > Signed-off-by: Peter Collingbourne <pcc@google.com>
-> > ---
-> > v2:
-> > - fixed commit message
->
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Error log:
 
+/home/LiKaige/qemu/target/arm/translate-a64.c: In function ‘disas_ldst’:
+/home/LiKaige/qemu/target/arm/translate-a64.c:3392:5: error: ‘fn’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+     fn(cpu_reg(s, rt), clean_addr, tcg_rs, get_mem_index(s),
+     ^
+/home/LiKaige/qemu/target/arm/translate-a64.c:3318:22: note: ‘fn’ was declared here
+     AtomicThreeOpFn *fn;
+                      ^
+cc1: all warnings being treated as errors
 
+Add an initiallization value NULL for fn to fix this.
 
-Applied to target-arm.next, thanks.
+Signed-off-by: Kaige Li <likaige@loongson.cn>
+---
+ target/arm/translate-a64.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
--- PMM
+diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
+index 8c07649..c98dfb1 100644
+--- a/target/arm/translate-a64.c
++++ b/target/arm/translate-a64.c
+@@ -3315,7 +3315,7 @@ static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
+     bool r = extract32(insn, 22, 1);
+     bool a = extract32(insn, 23, 1);
+     TCGv_i64 tcg_rs, clean_addr;
+-    AtomicThreeOpFn *fn;
++    AtomicThreeOpFn *fn = NULL;
+ 
+     if (is_vector || !dc_isar_feature(aa64_atomics, s)) {
+         unallocated_encoding(s);
+-- 
+2.1.0
+

@@ -1,89 +1,104 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3328286lfy;
-        Fri, 31 Jul 2020 02:07:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZu0dPx9YFLZPqd1T7nKpKMzbGCOeb5Kflo3845cyV2HXZmT/LUw5GeYMl6cuuCB35pJVo
-X-Received: by 2002:a25:9785:: with SMTP id i5mr4465356ybo.255.1596186456319;
-        Fri, 31 Jul 2020 02:07:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596186456; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3600568lfy;
+        Fri, 31 Jul 2020 07:54:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxWyddixy0ODfMbOoU/L/vKGj0+smhA1H4REjzWOJZ68dNc/OXe+iQZMW1BcU1a0fKVAhdy
+X-Received: by 2002:a25:814a:: with SMTP id j10mr6980664ybm.374.1596207271741;
+        Fri, 31 Jul 2020 07:54:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596207271; cv=none;
         d=google.com; s=arc-20160816;
-        b=uJM/SYdl5nM6keJ2+gy/98KjogeCXGTbTRAy9J0Pi9I1YJhK6RKiGmK5xj5WqW8mg4
-         m/1jmBL663czA7J9cvOq8pcAmuN1exm4Qg3QEMc7RnY+bJzq1fLCR1iuBtTjLv/2TdrG
-         wuzkeZnchETLtPjyir4lLSeq9iLy6+c4+5orimb/YiNkQjg9KsIu37HpNkCiyyEUBY3Q
-         DUkwv2EC0HJwf6zwMZaSvmMw529l4HJBZp2NdVFXqacLWjcIY66o5Mc2gKFJbHE+ti1d
-         0NIx6DfmIr+xWnE7fQE6YkvbrgcchTgCGoQlIxEjoWNbyd32Ae66bE2socU/WyLZtpnc
-         UXaA==
+        b=FkdHBQRjzr7Jfm+YvrDAZ7PSf93cJnGmlQ0AeSFzp/s91IyAGWAcTc9XMh07aN+1KJ
+         V0k91Yrqj8nkbEoj6yLb3nqKclFmEAXFCTcNeXTufrUdcRUrMYpNgmF8DpW3LF3j+zXy
+         u1GDNwgeX9UXkcdue+O11y0UWppDy+3W7uJGfunRbSX6yH354fHiKwyIV86SYaWftDRr
+         StImPJQE9/Id0SQ0DUNB+i8huW2WbF9qS+V5nspy7U1G7PFe/8l3+/Rby8qOzaA3ZbnS
+         WmDm6A6/Uu0mvAm1mZnooqrmyc8CXDi+mn9wp4xrslWladmmckSzE7ZO3N0tv8LkDTIA
+         +IZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=IOkpUMfSoaQcaaZ0hjEPryOQrMLu9ZdQGnDtMCo8M+Q=;
-        b=VvAi/I2GYwUr1OByJlVx0E0mSY9RToIwMcySGIuh0u37gzHJxNwPVrYGwrjMXDNOwj
-         8JmrXfZId8A1rs1xloO54XD6vdMYCYyyMLW5NVnM8NK3UWGo0wAKAkY33AWE6lsKxDuI
-         kg5GO+HvJIE6sq8mn8XPIHkY3qEvoKiosvaZBPdML9e/WqIl8hmxadCro+brBbV1crhL
-         aEdbv+GfvyQEcdr9esvcLALRVQ43wMyYUnyx2H8hbGChIksOdNo6UFjGTgvi4oWlSa+z
-         3Ffab8mRnnKWsyF9eDxISEls/nahS8KMidDZ8sRy0Ymn8KvavewWt5C7lEFkNXR698YB
-         0yHA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=HL8rbpItYh57rQFmhUGenD+1qALQXnHJtL9E29zbp44=;
+        b=N2mzIX8HjOzoTKnkuMS+4mQJNDMeTPoOWXc5wlXn2D8ytTPJcZu8pRKxm2Mkd4NhJ8
+         cUzMJ0Kv420n8+OAFNwBlMki74aWN69AoO4fJV7dxYwDEm6fTdAAXxgOv6VU6mgqJHzn
+         NosfHsy6bbnpjgkIAs2+zK/XWpUj7Hw/bDfhm9k8lqvhy17ZtY7qKnyZUW+8NvtN43V3
+         rVRMGIdjx/7tyHrX89/yjsikCKNWyjfqrqKjJ6Wo/fFRUcaWTfdk6gxQFWOVsLtbYvKN
+         OLTWMARxOJ62THMpaU2NRP4EP6EjSRzPziwWEwaAHWGV2jqT3W9+qOouFy7QSDh6VlbU
+         wfdw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=LO2lyY5c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 203si6854908ybc.231.2020.07.31.02.07.36
+        by mx.google.com with ESMTPS id x3si10761657ybt.216.2020.07.31.07.54.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 31 Jul 2020 02:07:36 -0700 (PDT)
+        Fri, 31 Jul 2020 07:54:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60346 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=LO2lyY5c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59008 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k1R0p-0001uw-NZ
-	for alex.bennee@linaro.org; Fri, 31 Jul 2020 05:07:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38458)
+	id 1k1WQZ-00078z-4K
+	for alex.bennee@linaro.org; Fri, 31 Jul 2020 10:54:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59266)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <likaige@loongson.cn>)
- id 1k1R0h-0001ss-6f; Fri, 31 Jul 2020 05:07:27 -0400
-Received: from mail.loongson.cn ([114.242.206.163]:39976 helo=loongson.cn)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <likaige@loongson.cn>)
- id 1k1R0e-00013E-Qx; Fri, 31 Jul 2020 05:07:26 -0400
-Received: from bogon.localdomain (unknown [113.200.148.30])
- by mail.loongson.cn (Coremail) with SMTP id AQAAf9Dx6MVC3yNfcvMCAA--.35S2;
- Fri, 31 Jul 2020 17:07:15 +0800 (CST)
-From: Kaige Li <likaige@loongson.cn>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v3] target/arm: Fix compile error in gcc 4.9.4.
-Date: Fri, 31 Jul 2020 17:07:13 +0800
-Message-Id: <1596186433-17364-1-git-send-email-likaige@loongson.cn>
-X-Mailer: git-send-email 2.1.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k1WQQ-000785-Iq
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2020 10:54:22 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:37550)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k1WQO-0001eG-2O
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2020 10:54:22 -0400
+Received: by mail-ot1-x344.google.com with SMTP id l26so6283158otj.4
+ for <qemu-arm@nongnu.org>; Fri, 31 Jul 2020 07:54:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=HL8rbpItYh57rQFmhUGenD+1qALQXnHJtL9E29zbp44=;
+ b=LO2lyY5c5TytM2PBSAqntH4qzLGqBjLHvSomlgJF2xLaI9xKl37ZutbrHMFEdog9aH
+ Jn2LWnqBS9EcNnm7ZdOLzaK1VUdY6cCWQ+Trcn3mNYRgwauMBZ+hV4kiMOFxOprFkqkb
+ Pge6KlgupI+TtYxz0qj3DryaqhAJyBaG8jv1bGKQ8qN1LRv37n0qZgRHK+fVwmlVEEio
+ yjPfe0cq4x+OeI5ScjTa/X4zI2yOY+nNGcuTdabKjKMjUvDl0S2KEBpOxUWQ1iAcSVi3
+ N087xRg7yRoxTxhfCyfM2drlufjbGJIVFFkTe/AESVrlLnnyFI674jj+L0sKXstsGecx
+ BFSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=HL8rbpItYh57rQFmhUGenD+1qALQXnHJtL9E29zbp44=;
+ b=MB8q65tH3rgX/DbQdJhtKOKDIkfC8zwsza9q1IAjPCl1fhxLJCEkPmiRaXMWaZqKEb
+ LNC5jE19eKLVRIZV3pvo2eYHbxJ5g5v8dERnMxzk9ay7Jm8bFisG47ct1H0uUH5yzf8m
+ v3/6nEqnjDYdhPeYmFm0zoYn1vBB7SHU+6ZuYDgO1citBt0N9y+fexqBlpMKQGC0/ebo
+ 9w1qxcgJapaoGeHRyNvNQpMg6SrYnbnTNXqfQZN8mPpYL+p+y54E4TTjeHnPsAUIShCk
+ 8FEJpnGTZQFLIsyT9nw2xJhvaNtW/OFHAwcezlmJK6r0z5IGB4cPIpoq40jcMKQtuGhd
+ fIMQ==
+X-Gm-Message-State: AOAM531e1xaWPbauyC/zv+He5IY6ZKriWh5A8ELbdF25UHMxYptC9Gt6
+ giqFbZH3Fhc6/6tiA3k4QaUly9DpZZ7aMH3LcQ24Fw==
+X-Received: by 2002:a9d:5504:: with SMTP id l4mr3087480oth.221.1596207258592; 
+ Fri, 31 Jul 2020 07:54:18 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf9Dx6MVC3yNfcvMCAA--.35S2
-X-Coremail-Antispam: 1UD129KBjvdXoW7GFyUJr1kAr4fKr4DKFWUtwb_yoWkKFb_CF
- 18Wa1kGry5XayIqw4xuw45tr48Krn7XrnF9a4DGa98Ga1kJw4rG3WkX3s7Zrn8Crs7tryr
- uF4ag34rW3ya9jkaLaAFLSUrUUUUUb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUIcSsGvfJTRUUUbwAYjsxI4VWkKwAYFVCjjxCrM7AC8VAFwI0_Jr0_Gr1l1xkIjI8I
- 6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AEw4v_Jr0_Jr4l8cAvFVAK0II2c7xJM2
- 8CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2IY67AKxVW5JVW7JwA2z4x0Y4vE2Ix0
- cI8IcVCY1x0267AKxVW8Jr0_Cr1UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwV
- C2z280aVCY1x0267AKxVW0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC
- 0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAFwI0_Cr0_Gr
- 1UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwCF04k20xvY0x0EwIxGrwCF
- x2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r18MI8I3I0E7480Y4vE14
- v26r106r1rMI8E67AF67kF1VAFwI0_Jrv_JF1lIxkGc2Ij64vIr41lIxAIcVC0I7IYx2IY
- 67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr1lIxAIcVCF04k26cxKx2
- IYs7xG6rWUJVWrZr1UMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvEx4A2jsIEc7CjxVAF
- wI0_Gr0_Gr1UYxBIdaVFxhVjvjDU0xZFpf9x07bekskUUUUU=
-X-CM-SenderInfo: 5olntxtjh6z05rqj20fqof0/
-Received-SPF: pass client-ip=114.242.206.163; envelope-from=likaige@loongson.cn;
- helo=loongson.cn
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/31 05:07:17
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20200711101033.47371-1-drjones@redhat.com>
+ <20200711101033.47371-4-drjones@redhat.com>
+In-Reply-To: <20200711101033.47371-4-drjones@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 31 Jul 2020 15:54:07 +0100
+Message-ID: <CAFEAcA8h+6btvjvx=j5v7Gn12+bros_UgFScKHaWVxh0dmi-Qw@mail.gmail.com>
+Subject: Re: [PATCH 3/3] hw/arm/virt: Implement kvm-steal-time
+To: Andrew Jones <drjones@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,42 +111,125 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uBbwVdruBG/K
+X-TUID: DtAj+MNzMjq5
 
-Error log:
+On Sat, 11 Jul 2020 at 11:10, Andrew Jones <drjones@redhat.com> wrote:
+> We add the kvm-steal-time CPU property and implement it for machvirt.
+> A tiny bit of refactoring was also done to allow pmu and pvtime to
+> use the same vcpu device helper functions.
+>
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
 
-/home/LiKaige/qemu/target/arm/translate-a64.c: In function ‘disas_ldst’:
-/home/LiKaige/qemu/target/arm/translate-a64.c:3392:5: error: ‘fn’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
-     fn(cpu_reg(s, rt), clean_addr, tcg_rs, get_mem_index(s),
-     ^
-/home/LiKaige/qemu/target/arm/translate-a64.c:3318:22: note: ‘fn’ was declared here
-     AtomicThreeOpFn *fn;
-                      ^
-cc1: all warnings being treated as errors
+Hi; I'm forwarding a couple of comments here from Beata,
+(whose secondment with Linaro is coming to an end so she won't
+have access to her Linaro email address to continue the conversation):
 
-Add an initiallization value NULL for fn to fix this.
 
-Signed-off-by: Kaige Li <likaige@loongson.cn>
----
- target/arm/translate-a64.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+>  static void virt_cpu_post_init(VirtMachineState *vms)
+>  {
+> -    bool aarch64, pmu;
+> +    bool aarch64, pmu, steal_time;
+>      CPUState *cpu;
+>
+>      aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
+>      pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
+> +    steal_time = object_property_get_bool(OBJECT(first_cpu),
+> +                                          "kvm-steal-time", NULL);
+>
+>      if (kvm_enabled()) {
+> +        hwaddr pvtime_base = vms->memmap[VIRT_PVTIME].base;
+> +        hwaddr pvtime_size = vms->memmap[VIRT_PVTIME].size;
+> +
+> +        if (steal_time) {
+> +            MemoryRegion *pvtime = g_new(MemoryRegion, 1);
+> +
+> +            memory_region_init_ram(pvtime, NULL, "pvtime", pvtime_size, NULL);
+> +            memory_region_add_subregion(get_system_memory(), pvtime_base,
+> +                                        pvtime);
+> +        }
 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 8c07649..c98dfb1 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -3315,7 +3315,7 @@ static void disas_ldst_atomic(DisasContext *s, uint32_t insn,
-     bool r = extract32(insn, 22, 1);
-     bool a = extract32(insn, 23, 1);
-     TCGv_i64 tcg_rs, clean_addr;
--    AtomicThreeOpFn *fn;
-+    AtomicThreeOpFn *fn = NULL;
- 
-     if (is_vector || !dc_isar_feature(aa64_atomics, s)) {
-         unallocated_encoding(s);
--- 
-2.1.0
+B: I'm not sure whether it wouldn't be useful to have the area
+allocated with size determined by number of VCPUs instead of having
+pre-defined size.
 
+> +        if (vmc->kvm_no_steal_time &&
+> +            object_property_find(cpuobj, "kvm-steal-time", NULL)) {
+> +            object_property_set_bool(cpuobj, false, "kvm-steal-time", NULL);
+> +        }
+> +
+>          if (vmc->no_pmu && object_property_find(cpuobj, "pmu", NULL)) {
+>              object_property_set_bool(cpuobj, "pmu", false, NULL);
+>          }
+> @@ -2528,6 +2558,7 @@ static void virt_machine_5_0_options(MachineClass *mc)
+>      mc->numa_mem_supported = true;
+>      vmc->acpi_expose_flash = true;
+>      mc->auto_enable_numa_with_memdev = false;
+> +    vmc->kvm_no_steal_time = true;
+>  }
+>  DEFINE_VIRT_MACHINE(5, 0)
+>
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index 54bcf17afd35..b5153afedcdf 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -80,6 +80,7 @@ enum {
+>      VIRT_PCDIMM_ACPI,
+>      VIRT_ACPI_GED,
+>      VIRT_NVDIMM_ACPI,
+> +    VIRT_PVTIME,
+>      VIRT_LOWMEMMAP_LAST,
+>  };
+>
+> @@ -126,6 +127,7 @@ typedef struct {
+>      bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
+>      bool kvm_no_adjvtime;
+>      bool acpi_expose_flash;
+> +    bool kvm_no_steal_time;
+
+B: It is slightly confusing : using kvm_no_steal_time vs kvm_steal_time
+
+P: I have to admit I get confused about which sense this flag
+should have. I think the sense of the flags in this struct is
+"the false case is the one that the older virt boards had",
+so original virt didn't have an ITS or a PMU and so we have
+no_its and no_pmu. Similarly here old virt didn't have steal-time
+and so we want a no_ flag (ie the patch is correct). Why
+kvm_no_steal_time rather than no_kvm_steal_time, though ?
+
+>  } VirtMachineClass;
+
+> +void kvm_arm_pvtime_init(CPUState *cs, uint64_t ipa)
+> +{
+> +    struct kvm_device_attr attr = {
+> +        .group = KVM_ARM_VCPU_PVTIME_CTRL,
+> +        .attr = KVM_ARM_VCPU_PVTIME_IPA,
+> +        .addr = (uint64_t)&ipa,
+> +    };
+> +
+> +    if (!ARM_CPU(cs)->kvm_steal_time) {
+> +        return;
+> +    }
+> +    if (!kvm_arm_set_device_attr(cs, &attr, "PVTIME IPA")) {
+> +        error_report("failed to init PVTIME IPA");
+> +        abort();
+> +    }
+> +}
+
+B: I am probably missing smth but .. there is a trigger missing to
+update the stats
+and write them back to pre-allocated guest memory.
+Looking at the kernel code the stats are updated upon pending
+VCPU request :
+in arch/arm64/kvm/arm.c:
+static void check_vcpu_requests(struct kvm_vcpu *vcpu) {
+        ...
+         if (kvm_check_request(KVM_REQ_RECORD_STEAL, vcpu))
+                kvm_update_stolen_time(vcpu);
+}
+
+
+thanks
+-- PMM

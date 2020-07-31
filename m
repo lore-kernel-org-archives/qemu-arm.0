@@ -1,96 +1,105 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3151271lfy;
-        Thu, 30 Jul 2020 20:52:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwozFIC68t6u81rorxFz5I7gkBwXEp6i5hQf1o0eRuwpT/8gPY9iJNjxcXe1sFeYTvk+Y77
-X-Received: by 2002:a25:19c4:: with SMTP id 187mr3563472ybz.70.1596167559917;
-        Thu, 30 Jul 2020 20:52:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596167559; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3337078lfy;
+        Fri, 31 Jul 2020 02:21:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzcNC6LWROk84sJV1jYRuuQc4kMLqGw9j05yPePnyqlIiQWGNVgINYZkkTvGt0QIvBHGraT
+X-Received: by 2002:a25:86ca:: with SMTP id y10mr4529391ybm.275.1596187268630;
+        Fri, 31 Jul 2020 02:21:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596187268; cv=none;
         d=google.com; s=arc-20160816;
-        b=GokegKs7j8tE97LV1z41D9F9PwArvTf+C7/rWoiqc1CKH+PWl0IMy72tv+Iy5W1pDP
-         1rBjWNRMD2toO+XMcVOt9bt/ewdLmXp1OaQME+/pkvMG0okJTPBon081JLo4AsBsQm0h
-         mt6zYiU3ybGDL13uajYguEGcopuOLPVx5GSxQUdVMHhluVP3GU1PDi/Xp/iKc5I+ijIk
-         BEe+KrfICXrwuWM3JR9CLCTI4uNtuEJKfNhxEB7FFeH7JM5PLdGeUBN8urPBODV4g0h6
-         iA0Ij2LdIoYbXthSEjdxWetLe+jvcS9K9tt7K1bJfZ0sPpl9DUhi+ikbnimLTXC9xrDX
-         EMKQ==
+        b=XsLUWIY15/XZTRY9NDMI5//kmxSuylPKnWIAfOyWYUqqBpqiQJTXfGfSPOjVeSCnZZ
+         SmmRi1Sy8Fp+hFCuLRCCrTjPBlEpBV+7KUWGCs9Amg4LraodNWl2s+LsIHKfsyhvtUvA
+         YwlYqKhXnOEB+KIkZ1ZrOWe0JPXRglneOrIMASzPESVzwHFWorNc4W8EJC6Au/nj7pq9
+         srgVBSKGbgPvlPxWcGjBlag2yFYK5Fs01kAz7OdPOWjND97VU00ZwRHV+NkmDahElhnj
+         CRbRBa51ejI9o2E7MXz9r0JUlFqSQOXTcCXm6Q13iBCwf9coCEkQBMClqPWBPuOZrRxl
+         alVw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=KvdRV9p/eN9BMF8I93FnQz5TnzeMb3k9XTpSPRtnXfM=;
-        b=de8ceVl8N1Lf9+IbKDfOSk/bY0IHFtmldpAdk4fYRftObHWUvFUjDDHAqgLksYCkEm
-         mi3/aUFrLPd48t+DTxpSLqSuJqM2KBYoHSyppzPGl0o9Qn1NPxsG3INsryxo0kiR3YtN
-         TZ2Rc3zPva9bph6h7CmcWmYEOOA3Ojh/ZLvs9zrweu0/NR1jsgRdXsyw+Ts7qV35PSFY
-         ESakeL5K5Sv4Oof2ohsHUipSXZa2rKugloCy7aHalY3h2cV2GwOrasgpucfNzx0p6rRe
-         dMFqRv4ztYP5CAMhVWc/xk8IgCcrl3PNAxpaiMW8eOZMqY/B3hu9r04DmmdoQ7yU0Y9n
-         8XoQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=p/bq1ZJ8SLs8bMKBvzOj1go2qGbYrZnb8EtXbiteBAk=;
+        b=POvYcZU6Yf2kbRdvDb2AfYeEKH9Ji3S1RAOVwgmQOeBDznEpaG/II3h4goRQQsoK/b
+         dBKQBNcE39ODOQKImq9f8biapsQr6kt8y7a4D+5ODIJh73/IH0ZYkaswq81QuBcndnGi
+         IdCUjdKJFwpz24re1CRIQbxISUKWsqnSnt2z3wYOMvYnXdqEr7lVxz5WRHxJNe6a6gVd
+         NdfvJO3ih/OK17Bh0U9jlcFfFqD3QZGdB0XMglsWWyV0TH/7++pQFjXgiyGIveJksSFO
+         2HikK707LEejTf0oZ/NOQiklBs2484ybFd+3Ht7TRLSWk2YKMb04nbtkT3Z942O09LlK
+         GgOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=C02GibLj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y124si6176097ybe.458.2020.07.30.20.52.39
+        by mx.google.com with ESMTPS id v197si6579953ybv.56.2020.07.31.02.21.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 30 Jul 2020 20:52:39 -0700 (PDT)
+        Fri, 31 Jul 2020 02:21:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34626 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=C02GibLj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36710 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k1M63-0003mV-BX
-	for alex.bennee@linaro.org; Thu, 30 Jul 2020 23:52:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41006)
+	id 1k1RDw-0004gG-1P
+	for alex.bennee@linaro.org; Fri, 31 Jul 2020 05:21:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <likaige@loongson.cn>)
- id 1k1M5l-0003m6-OF; Thu, 30 Jul 2020 23:52:21 -0400
-Received: from mail.loongson.cn ([114.242.206.163]:34858 helo=loongson.cn)
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <likaige@loongson.cn>)
- id 1k1M5i-0004vt-TA; Thu, 30 Jul 2020 23:52:21 -0400
-Received: from [10.130.0.69] (unknown [113.200.148.30])
- by mail.loongson.cn (Coremail) with SMTP id AQAAf9DxX99ilSNf8dQCAA--.603S3;
- Fri, 31 Jul 2020 11:52:03 +0800 (CST)
-Subject: Re: [PATCH v2 1/2] virtio-mem: Change PRIx32 to PRIXPTR to fix
- compile error.
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, David Hildenbrand <david@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-References: <1596110248-7366-1-git-send-email-likaige@loongson.cn>
- <601c098c-0f39-92be-8800-99f5fe99399f@redhat.com>
-From: Kaige Li <likaige@loongson.cn>
-Message-ID: <10b4681c-a129-3735-0395-7439b7d48742@loongson.cn>
-Date: Fri, 31 Jul 2020 11:52:02 +0800
-User-Agent: Mozilla/5.0 (X11; Linux mips64; rv:45.0) Gecko/20100101
- Thunderbird/45.4.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k1RDn-0004fr-Nc
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2020 05:20:59 -0400
+Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:38000)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k1RDm-0002UR-4Q
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2020 05:20:59 -0400
+Received: by mail-ot1-x344.google.com with SMTP id q9so6513561oth.5
+ for <qemu-arm@nongnu.org>; Fri, 31 Jul 2020 02:20:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=p/bq1ZJ8SLs8bMKBvzOj1go2qGbYrZnb8EtXbiteBAk=;
+ b=C02GibLjlOL82nBjDWyOvyZwfySCAyzA9n8x7f1ih+905rSmdjPodI3yILnbZ7Xa90
+ 9V2VP8s8tI5uXtBRtL1MB9tP2yihn0A5Z+IHqd4emAYWsaLQLlpPefrfFcR7fZnnVNnR
+ OudbXZCbXTzjHvxntsPkC8R4YQb1zBpOA8tFYkuEM3WX9IN+tXyy92rsNj0N/CCeC287
+ ZqwvNH08I3NWTlAYG28+Sui4nrVa7il06lC5OcOSnRXIBqUvh6431tAs2olnRwIvFDGZ
+ G9uR3bxB7DUPRhJ/kNe62tbwfKm7ejJDlJBPswNoipddiyjrgIDWPQcwzaO5P96Jlsjv
+ cPFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=p/bq1ZJ8SLs8bMKBvzOj1go2qGbYrZnb8EtXbiteBAk=;
+ b=syoiFAOno7U+I0CgDLoxACm1q2Q6BopCsq9M4EQE+5+rum5P5bx9KpVoYEBmZzBJ+D
+ eitA+xWv+myskL7RzsHD9w1wQiM9VBJD933x5QjXn26+dMlcSpmA7kSvfX4+9eIxOGPC
+ 6y3s+QFB11SK4L0rFE6S/FSsOATz5gEiJ8UrRg105VdN84F66g3UCOECrHqKN/8GY2cC
+ BJZlQnuQt/1Gnlas84kub8dcHsMHyaf5We2A/MBdJgik4aqrfNl8RKN+K/f4ITUrlpIu
+ iNVsfyd9zpjFSPKPfsamVmtPPztgc0t3LFR5RkS7m1HczQVsVFpfOoLMScSMOPVxw03V
+ RCnQ==
+X-Gm-Message-State: AOAM533O7VCtIRyjez9W8h/VmGXt9ycdzlliYywO+7zYBpIylU0PqGaD
+ BNFDgi0pFeARF4ShhcafTBPsGRqV2dYrUMc27fDh5YjvqMI=
+X-Received: by 2002:a9d:39c2:: with SMTP id y60mr2147241otb.91.1596187256519; 
+ Fri, 31 Jul 2020 02:20:56 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <601c098c-0f39-92be-8800-99f5fe99399f@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf9DxX99ilSNf8dQCAA--.603S3
-X-Coremail-Antispam: 1UD129KBjvJXoW7urW8JrWxGw4rJFW8KF13XFb_yoW8CryDpw
- 4xJ3ZYkw4UJr13Aan2q3WrWa4DCwn3GrnrtF4aqr15WFn8ur92gr4jkr4rWFW3Zr1DZw43
- uryIgryYq3Z8ZaUanT9S1TB71UUUUUUqnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
- 9KBjDU0xBIdaVrnRJUUUkmb7Iv0xC_KF4lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
- 0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
- A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xII
- jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwV
- C2z280aVCY1x0267AKxVWxJr0_GcWle2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xv
- F2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jr0_Jr4lYx0Ex4A2jsIE14v26r4j6F
- 4UMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvEwIxGrwCYjI0SjxkI62AI1cAE67vIY487
- MxAIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr
- 0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUAVWUtwCIc40Y0x0E
- wIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVWUJV
- W8JwCI42IY6xAIw20EY4v20xvaj40_WFyUJVCq3wCI42IY6I8E87Iv67AKxVWUJVW8JwCI
- 42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCTnIWIevJa73UjIFyTuYvjxUcpVbUUUUU
-X-CM-SenderInfo: 5olntxtjh6z05rqj20fqof0/
-Received-SPF: pass client-ip=114.242.206.163; envelope-from=likaige@loongson.cn;
- helo=loongson.cn
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/30 23:52:09
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_PASS=-0.001,
+References: <1596186433-17364-1-git-send-email-likaige@loongson.cn>
+In-Reply-To: <1596186433-17364-1-git-send-email-likaige@loongson.cn>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 31 Jul 2020 10:20:45 +0100
+Message-ID: <CAFEAcA-yTM7=Q0V1_8fSUa7KnsgQawcP=Jnh4J4oCrhFAt3dXg@mail.gmail.com>
+Subject: Re: [PATCH v3] target/arm: Fix compile error in gcc 4.9.4.
+To: Kaige Li <likaige@loongson.cn>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -104,59 +113,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ow0894R8vMeF
+X-TUID: gusfnMML0pE+
 
-
-
-On 07/30/2020 09:15 PM, Philippe Mathieu-Daudé wrote:
-> On 7/30/20 1:57 PM, Kaige Li wrote:
->> When I compile qemu with such as:
->>
->> git clone https://git.qemu.org/git/qemu.git
->> cd qemu
->> git submodule init
->> git submodule update --recursive
->> ./configure
->> make
-> ^ this timeless description is pointless (think at a developer
-> who read this in 2 weeks, 3 months, 1 year).
-Thanks for your suggestions, I will delete it.
+On Fri, 31 Jul 2020 at 10:07, Kaige Li <likaige@loongson.cn> wrote:
 >
->> There is error log:
->>
->> /home/LiKaige/qemu/hw/virtio/virtio-mem.c: In function ‘virtio_mem_set_block_size’:
->> /home/LiKaige/qemu/hw/virtio/virtio-mem.c:756:9: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 7 has type ‘uintptr_t’ [-Werror=format=]
-> What compiler are you using? That is the relevant information to
-> include.
-Gcc version is 4.9.4.
+> Error log:
 >
->>           error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
->>           ^
->> cc1: all warnings being treated as errors
->> /home/LiKaige/qemu/rules.mak:69: recipe for target 'hw/virtio/virtio-mem.o' failed
->>
->> So, change PRIx32 to PRIXPTR to fix this.
->>
->> Signed-off-by: Kaige Li <likaige@loongson.cn>
->> ---
->>   hw/virtio/virtio-mem.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/virtio/virtio-mem.c b/hw/virtio/virtio-mem.c
->> index c12e9f7..3dcaf9a 100644
->> --- a/hw/virtio/virtio-mem.c
->> +++ b/hw/virtio/virtio-mem.c
->> @@ -753,7 +753,7 @@ static void virtio_mem_set_block_size(Object *obj, Visitor *v, const char *name,
->>       }
->>   
->>       if (value < VIRTIO_MEM_MIN_BLOCK_SIZE) {
->> -        error_setg(errp, "'%s' property has to be at least 0x%" PRIx32, name,
->> +        error_setg(errp, "'%s' property has to be at least 0x%" PRIXPTR "\n", name,
->>                      VIRTIO_MEM_MIN_BLOCK_SIZE);
->>           return;
->>       } else if (!is_power_of_2(value)) {
->>
+> /home/LiKaige/qemu/target/arm/translate-a64.c: In function =E2=80=98disas=
+_ldst=E2=80=99:
+> /home/LiKaige/qemu/target/arm/translate-a64.c:3392:5: error: =E2=80=98fn=
+=E2=80=99 may be used uninitialized in this function [-Werror=3Dmaybe-unini=
+tialized]
+>      fn(cpu_reg(s, rt), clean_addr, tcg_rs, get_mem_index(s),
+>      ^
+> /home/LiKaige/qemu/target/arm/translate-a64.c:3318:22: note: =E2=80=98fn=
+=E2=80=99 was declared here
+>      AtomicThreeOpFn *fn;
+>                       ^
+> cc1: all warnings being treated as errors
+>
+> Add an initiallization value NULL for fn to fix this.
 
+As I said, I've already applied this patch to target-arm.next,
+so you don't need to do anything further. It'll get into
+master probably on Monday.
+
+thanks
+-- PMM

@@ -1,105 +1,109 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp384130lfy;
-        Wed, 5 Aug 2020 01:00:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0jdFk3fP0YsanYYd1XSG2w4a3kq78SMfvCbUDoDkubJnzlMAiH3Z2FsL9aBf/nXFSBX+P
-X-Received: by 2002:a25:dd84:: with SMTP id u126mr3305440ybg.269.1596614438896;
-        Wed, 05 Aug 2020 01:00:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596614438; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5936939lfy;
+        Mon, 3 Aug 2020 03:57:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYzDdZA4SUi0dmNbOtZbEHLDgtwwwn6aqZb3z2UpX4gE3OB8wuhOQYPEwvLETSCuoIzPRq
+X-Received: by 2002:a25:824a:: with SMTP id d10mr25189520ybn.260.1596452234319;
+        Mon, 03 Aug 2020 03:57:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596452234; cv=none;
         d=google.com; s=arc-20160816;
-        b=JEyI7KIsxyVK0cV33CfL8J0rbH+lNk9fURIiyE6AN1b8q4wySkFvm8Z4J8k4flWexK
-         R/N+9iHQ1b3UZhhjDLTXAi4yHl7bYTG36EnDdc1YNPlYj6O9A1/qtzhMgSBJm19nyK03
-         8JKIBQkdsHCU29SwsoSaa93k28w6r1Bjd4JKVOOx4SmyYZBA+Us57bgpAcKOZIaTLUE9
-         2xs1CRW/i9PQDgx7yVr8kx4uLjcDbexjjw8TyijcwcLGUwBCmc+spNXpf3/pzkJjSwdw
-         S3e2EhngsaFbSGfyEJ2pUEbiFdqGhKRJPHUrEAB0/IJvsoc7Ftw4Est6ChblNqBipJRn
-         Nmwg==
+        b=jqOwewx3rgfszcbKkrLRH0w3fLjZwtWmAzHeu8i2dhPuC8343Gbfwl9FOIvywzSVcZ
+         TreUnnzNDa5R4imNipZ75ejUwVtLklqu5IEcMWR1GpThZh9HhgX4lKGqd95/XZYemFYR
+         9TsnO8+vHkn9Smz1pMtv5mK+WvACsQYGPQOv/On2F9+Pa3gg1RvQlJ5QBOxNVnzp5O1g
+         QhYa7FA9A0hbXaLu2156PBAA8Vfok+Mdwn+KnErfbRK7MqTHyT87ZXZ27IqImmyYDbHO
+         D0zVcvAj4P2BjTk1jHUlaxrbl20VSIo6z4rQPXgJNRQWig2DBbXJq6OrtT8cgW1zkHzQ
+         Lh/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:user-agent
-         :references:in-reply-to:subject:to:from:date
-         :content-transfer-encoding:mime-version:dkim-signature;
-        bh=1e18AGEJIsl4ALW4u8bTUgMIyBjqw/dCya4HruefDaA=;
-        b=FFLI0kYyn8q4tJfOMncXLYcyp5/3p8+wMAtAFJuxNJAzsfInDj78VdobzQl+3w7CaA
-         pf+Cm6xPcjeDx0rTZpJmg+BppU1cLCSyyZVhQqI4ioDauUoy0uvtgHDiwZMkxCpLm5or
-         PO3ScRdvp8agFYbpmr1XNGtPWTI/sonOlxhutqYrIP89HBQbSEKpVqqCeFgHxthEF1gZ
-         kIWku5j19eQzS66Dk9heqDEamkXk+W0fOSmuv0AdBmy9DWXKk1U8StI2P21toUaW1UuI
-         kY0+zo81uriArDDURN7LvPb5RWxrbKOLI6fpFi4r/qtlmVaKCbZeQpDsGxgVpRlLWhv3
-         uBeQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=FDLL9mpytzeUOW3SyMq5rHzKTExLRt72OxDLspn4Qd8=;
+        b=s50okPDT14mNXK+hyNwgA+C1hX+Cj5bHdi51aa0EluScc33NPGrK7O3rKyQlukrUzk
+         8lmF6kBSJWZvojsmwlZ6s2AQLnzdRUhi+XXIbXPJETmOaj/7FBnOPd+nDgTzqOJlr7oq
+         7Jh0O3EjrpxAYREeQ6X9TWX1NYUi9aTuVdZNmTD0l2xqBaEAsXSN7u9OnOLrAo/CPkKJ
+         kqoUHklNIOD2PxsUsW0tdUw0/0a3fhMpTrer5SmMv6LJYtdJrHmcftbIkDJ2Pd8qIQzv
+         xRuoYzPTMjfgcalG8vvZ2ZS7oq9dWfEL/nJQij5AKndxktOHxTOJ+8M6/6Xr58OR6ICO
+         zWNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="Mh2ls/oc";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vZO2opZ7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o187si1404221ybb.475.2020.08.05.01.00.38
+        by mx.google.com with ESMTPS id c141si2831941ybf.105.2020.08.03.03.57.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Aug 2020 01:00:38 -0700 (PDT)
+        Mon, 03 Aug 2020 03:57:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@kernel.org header.s=default header.b="Mh2ls/oc";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=vZO2opZ7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=kernel.org
-Received: from localhost ([::1]:58680 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:51778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3ELm-0007jY-94
-	for alex.bennee@linaro.org; Wed, 05 Aug 2020 04:00:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41310)
+	id 1k2Y9Z-0002WE-F7
+	for alex.bennee@linaro.org; Mon, 03 Aug 2020 06:57:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39604)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1k3ELa-0007jH-FJ; Wed, 05 Aug 2020 04:00:26 -0400
-Received: from mail.kernel.org ([198.145.29.99]:46502)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maz@kernel.org>)
- id 1k3ELY-00036Z-Bc; Wed, 05 Aug 2020 04:00:26 -0400
-Received: from disco-boy.misterjones.org (disco-boy.misterjones.org
- [51.254.78.96])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mail.kernel.org (Postfix) with ESMTPSA id 215FF21744;
- Wed,  5 Aug 2020 08:00:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=default; t=1596614421;
- bh=Gqqsxt7Wk3H8TLkWtPc7l3IxXOMpV0vFyyx0IQsbOSI=;
- h=Date:From:To:Cc:Subject:In-Reply-To:References:From;
- b=Mh2ls/occ65GwqyP+wOPgMtCeRoo1gXC4JUtlFj1P8iaOWuaunSKv4RtXY2k1ZoaZ
- LbN1vPUydKSD28Q7uxMyIRxF48rNKmUm7m7P/GlfzZTuDrbQSwyZ5w8QywNMpe96UC
- vTbW+2MISCPRHak1hfqBpC/U7V9XHitgEMj0Wm6o=
-Received: from disco-boy.misterjones.org ([51.254.78.96] helo=www.loen.fr)
- by disco-boy.misterjones.org with esmtpsa
- (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128) (Exim 4.92)
- (envelope-from <maz@kernel.org>)
- id 1k3ELT-00HZua-Hp; Wed, 05 Aug 2020 09:00:19 +0100
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k2Y9G-0002VO-Kt; Mon, 03 Aug 2020 06:56:54 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:44594)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k2Y9F-00026h-3Q; Mon, 03 Aug 2020 06:56:54 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id b6so33754109wrs.11;
+ Mon, 03 Aug 2020 03:56:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=FDLL9mpytzeUOW3SyMq5rHzKTExLRt72OxDLspn4Qd8=;
+ b=vZO2opZ7Ag/vrZ7xp4skvsoh/pvfOy1bkcQpcKdket15UCMLdvugufSiCvxGTvRPT0
+ c8O7OmWfVMiT677KcnB0V/Hl2fc53AaR94/eFZu+fU5FT33WD+rNn6r4rxgM2tIMicOb
+ xcZIcQZMUtkgXew80skuHV7l70Ot6mZnewoH30JirOftEQw1Gyr7CAfdA6SNYyVd4zIy
+ rJ/EiLEWQsSmUP3iQd3+Wrx8ZQrupCWOox9W40j3SBNngmiTtUv/nXNSjAt3vNvVaedb
+ IYM0IosYAZ7QZwNys8kuUnHLbKq39oBJGLLIrpF8T9JbYkHh+Fed8VLqLAJvqx7E8IUX
+ TS/g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=FDLL9mpytzeUOW3SyMq5rHzKTExLRt72OxDLspn4Qd8=;
+ b=g7BNDQwt5w7cki/pnOvQHonf+ms1NW+EC95NwTIUlgrQ187V8wVabRa3dUjx2BjvEo
+ PCC51D+cDN1Epng6VGiIqD9ne1Av/kzJlcqURocnTU4e/AT1vTF7Kgt+2B1peeTpVrWO
+ f+64AgpF1+Od1p9eu7EqH0WtOmZbbEbab57nKifjYEcMffKwwQtt4TzlZQlTia4efhZh
+ 8y0y5Ue84jJ+y+KeR0o/Udt3aNmVjRkN6DLVddwTv9szgN7ldwo2t8pTop7iCfIm3fcf
+ nFly70BI+co362j1cDIUy/romcuRJzuHIPv2czNvyH/Q1TMqUSYNvg+IfIjOZcjkDAw6
+ oabw==
+X-Gm-Message-State: AOAM5326zimwxI0hug38jmYKVpOk9Vs6wqG1peIa/k8dkYA4g+tUBe+f
+ qmwqYvKdXKrUlna3p48UvjxM8jm/
+X-Received: by 2002:adf:e845:: with SMTP id d5mr14786871wrn.228.1596452210093; 
+ Mon, 03 Aug 2020 03:56:50 -0700 (PDT)
+Received: from localhost.localdomain (214.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.214])
+ by smtp.gmail.com with ESMTPSA id z11sm23103477wrw.93.2020.08.03.03.56.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 03 Aug 2020 03:56:49 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH-for-5.1? 0/4] hw/arm/xilinx_zynq: Call qdev_connect_clock_in()
+ before DeviceRealize
+Date: Mon,  3 Aug 2020 12:56:43 +0200
+Message-Id: <20200803105647.22223-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII;
- format=flowed
-Content-Transfer-Encoding: 7bit
-Date: Wed, 05 Aug 2020 09:00:19 +0100
-From: Marc Zyngier <maz@kernel.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v2 for-5.1?] target/arm: Fix Rt/Rt2 in ESR_ELx for copro
- traps from AArch32 to 64
-In-Reply-To: <20200804193903.31240-1-peter.maydell@linaro.org>
-References: <20200804193903.31240-1-peter.maydell@linaro.org>
-User-Agent: Roundcube Webmail/1.4.5
-Message-ID: <36f07426e2ed23832f9f6ca968536bb8@kernel.org>
-X-Sender: maz@kernel.org
-X-SA-Exim-Connect-IP: 51.254.78.96
-X-SA-Exim-Rcpt-To: peter.maydell@linaro.org, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, julien@bedrocksystems.com
-X-SA-Exim-Mail-From: maz@kernel.org
-X-SA-Exim-Scanned: No (on disco-boy.misterjones.org);
- SAEximRunCond expanded to false
-Received-SPF: pass client-ip=198.145.29.99; envelope-from=maz@kernel.org;
- helo=mail.kernel.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/05 04:00:21
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -80
-X-Spam_score: -8.1
-X-Spam_bar: --------
-X-Spam_report: (-8.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,52 +116,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Julien Freche <julien@bedrocksystems.com>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: toQVDgKq8GoH
+X-TUID: GqNOxyEX5L4O
 
-Hi Peter,
+This is not a critical issue, but still annoying if you use tracing.
 
-On 2020-08-04 20:39, Peter Maydell wrote:
-> When a coprocessor instruction in an  AArch32 guest traps to AArch32
-> Hyp mode, the syndrome register (HSR) includes Rt and Rt2 fields
-> which are simply copies of the Rt and Rt2 fields from the trapped
-> instruction.  However, if the instruction is trapped from AArch32 to
-> an AArch64 higher exception level, the Rt and Rt2 fields in the
-> syndrome register (ESR_ELx) must be the AArch64 view of the register.
-> This makes a difference if the AArch32 guest was in a mode other than
-> User or System and it was using r13 or r14, or if it was in FIQ mode
-> and using r8-r14.
-> 
-> We don't know at translate time which AArch32 CPU mode we are in, so
-> we leave the values we generate in our prototype syndrome register
-> value at translate time as the raw Rt/Rt2 from the instruction, and
-> instead correct them to the AArch64 view when we find we need to take
-> an exception from AArch32 to AArch64 with one of these syndrome
-> values.
-> 
-> Fixes: https://bugs.launchpad.net/qemu/+bug/1879587
-> Reported-by: Julien Freche <julien@bedrocksystems.com>
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> Changes v1->v2: fixed the register mapping for LR (thanks to
-> Julien for testing v1, diagnosing the bug in it, and suggesting
-> the fix to LR handling)
-> 
-> Marc: Cc'd you just in case you're interested, given that I'd
-> expect running Linux aarch64 KVM in QEMU emulation with a 32-bit
-> guest to hit this bug...
+Maybe it is worth fixing for forks that are based on release tags,
+else consider it 5.2 material.
 
-Thanks for the heads up.
+Anyway we can still discuss if qdev_connect_clock_in() is supposed to
+be callable *after* DeviceRealize.
 
-Funnily enough, KVM had the exact opposite bug until c0f0963464c2
-("arm64: KVM: Fix AArch32 to AArch64 register mapping"), which was
-fixed 5 years ago. We used to actively translate the register numbers
-obtained from ESR_EL2, leading to all kind of bizarre bugs if trapping
-from non USR/SYS modes.
+Philippe Mathieu-Daudé (4):
+  hw/arm/xilinx_zynq: Uninline cadence_uart_create()
+  hw/arm/xilinx_zynq: Call qdev_connect_clock_in() before DeviceRealize
+  hw/qdev-clock: Uninline qdev_connect_clock_in()
+  hw/qdev-clock: Avoid calling qdev_connect_clock_in after DeviceRealize
 
-         M.
+ include/hw/char/cadence_uart.h | 17 -----------------
+ include/hw/qdev-clock.h        |  8 +++-----
+ hw/arm/xilinx_zynq.c           | 24 +++++++++++++++++-------
+ hw/core/qdev-clock.c           |  6 ++++++
+ 4 files changed, 26 insertions(+), 29 deletions(-)
+
 -- 
-Jazz is not dead. It just smells funny...
+2.21.3
+

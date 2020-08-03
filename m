@@ -1,356 +1,215 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp6209965lfy;
-        Mon, 3 Aug 2020 09:50:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxUlq0/YGXKJNZF1DV7yT6mEYKE9vc6hb4X9PmkzlVdbWYk8KNyOlTODk6JjANDpQIE3OP0
-X-Received: by 2002:a25:d253:: with SMTP id j80mr5866854ybg.101.1596473404375;
-        Mon, 03 Aug 2020 09:50:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596473404; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp6307844lfy;
+        Mon, 3 Aug 2020 12:09:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwBNJ2TieOwjxvaFSpYDWd8vnRIN5fdKV/GPN+Cjs5orcy5xXXH1a4jjDEIdWJ3Lm/n1SuK
+X-Received: by 2002:a25:6ad6:: with SMTP id f205mr10285583ybc.220.1596481752899;
+        Mon, 03 Aug 2020 12:09:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596481752; cv=none;
         d=google.com; s=arc-20160816;
-        b=PJW0VwaE5MvOugXRnoQYTVSdef5i4yFeGOssuUEbi8UVZcAiWxT/ddgmKFFJ6PePyg
-         CHF3KBwapp0KsgorLOufy9NF09lxotsJNh2UFqgfrRY34zPiXm7NpYgz1mue3kKczx3l
-         02FkgPNzSldVMZb35ZQNpAjOqwp1rw8TmX8xoXYy4cb4GMC6cyA2zeM34Wih5fuU1ejT
-         MogrMDsTSvRcvBfuHioZPrC0XVKxKWuoqmJpZvJcViO++ha8yMRRIaQhYaoUVSz4igCT
-         VCiXmho622UUCdMcqbkxdSbA5WBn8cj1xyonY/aWIO3+VtXcdt34SRpP15KBRJkl+k4M
-         yUwg==
+        b=p3o45ETGdtMehsyVihxMpIVfDJ7eOp4oRs8uSeF/B6N1QHYQcM0hTKLb4Km38ETrcO
+         /rTu7qTrkL0fyQc9desYfJuU0/8nlsFIebVe6FNQ7ArLFa6EhqXHSzMbuchXL+Xqnt6K
+         eRf+uQOM66fTJRp+f16OE+bgAdorgiIMngrBEEtJa65WrLfGaFOUbJ9KKG98DBVIT8i3
+         wjf/jvTlQtEwUqfZiV8dg9ZBZbLzmMMAUKR/q8OHNNzE9DkozGZyGSlayZWhGPvO4EUi
+         rNQbglOrvcG3MVOa1hYa+bAatAk4dDX5L41vRoFaplpfgELknaMG/G+ACM4zvtwBt+Ms
+         Wd3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=+GaW+fNRmBSUhIsokeJX0HIcwVIfHoIyE+CQVdEFwtM=;
-        b=qbdsB+oDa8J+FrIL3Y1Htzhz6Y6doHvLAtq+GzNbw7AvbieI+wicu98eUjCUqH6zNp
-         yOSMYfcE3527n5rtjNwo4vUJIo20gcp37zjEKEVHGFmJNEgx0ozCT0LIopq0uRSQgXwc
-         JmCtD588guKI62aFUFEZ+jJE9f59boAKHsTkPtLA7qa/GveNu3qBoMMLqhUmNYTTcvJV
-         jmBQGfedRIqnqV6YuaVZz3Gj8OrEg0GfM3XyLciHA4ET3treBfq0OiehSh4Zz/e2XThQ
-         rSJONfvzjWmyLLe5tcLR1wnGDTYUu4i5sx7K/q7zUbClfO8Bfj/9qBaXOjJQbYd10DeC
-         AiAA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=uEr5yyXCGhwQVOZCFVlKuzg8aQu+Pdh2opLh5KDg4A4=;
+        b=AcnNbZ8vK+uawEpZCleTzT2xw87PX3XPSbh5k7dINPxVgBHlPuB/fDprweB9KJP8Mg
+         BsGBDph2z0pdvjy3UHOcE/u2gzCGUIx77Q5OOTlFzGcnS1cnaCaGVv0/kkTwrMII6TVO
+         BZ53sMpnM4aYK/gyiC0sOOe/Y7+ahUwN8/IK+40vvLN9sa8nlZ78u40kzc7okhV4lPrD
+         TdOzgbN+2S3BjRnURfzotIBlux6pTBDo7nkRzLrkv6nGlFCC8hkfJ2BJEbiJvNXElyC7
+         6vPYZSh9xGVNpLjR5xGMLnVwtf1OrhCEBsVrgwiLypLcqBa/ALO3auveEI0j8OzAMR03
+         MkTQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aD6uXced;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mPlKvRM/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l12si22604712ybt.339.2020.08.03.09.50.04
+        by mx.google.com with ESMTPS id j64si3346545ybb.497.2020.08.03.12.09.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Aug 2020 09:50:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Aug 2020 12:09:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aD6uXced;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:40616 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mPlKvRM/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:45484 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2df1-0003Q2-Md
-	for alex.bennee@linaro.org; Mon, 03 Aug 2020 12:50:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51826)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k2fpg-0007WA-8o
+	for alex.bennee@linaro.org; Mon, 03 Aug 2020 15:09:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33456)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1k2dd1-0001AN-3Z; Mon, 03 Aug 2020 12:47:59 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:33570)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k2fpX-0007Un-8B; Mon, 03 Aug 2020 15:09:03 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:41451)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1k2dcz-00081G-7N; Mon, 03 Aug 2020 12:47:58 -0400
-Received: by mail-lj1-x241.google.com with SMTP id v4so30716307ljd.0;
- Mon, 03 Aug 2020 09:47:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k2fpV-0000Mh-Bw; Mon, 03 Aug 2020 15:09:02 -0400
+Received: by mail-wr1-x444.google.com with SMTP id r2so30125872wrs.8;
+ Mon, 03 Aug 2020 12:09:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=+GaW+fNRmBSUhIsokeJX0HIcwVIfHoIyE+CQVdEFwtM=;
- b=aD6uXced+4juhks4ZArh8hyZ4kUsvka8Dhn8zWxwqWrSeXKNJX9HDAm1m+MpsYWInF
- WfUyYIq5qGM7telEuY0PHJdNuQ/HcYTwGKYTHOkXjqNV+nuhlqJqR2f+PITQB/N7WxMM
- fDH2G+m935gesecYL5GcSw90kqTUSa4OPfHVCxZhOZFeAW22JFh9Nnx6YyEAWl7lA8g0
- 0icfh1RzfXFhPF/FZ9evNjdXxqBYYknmYLDpYKJfiktY22S96Kl5XrR75c4paqMvSbjW
- y9ThEFDjo73fgazId0GuXG9GVdDJJYlnUaxZr/f0z9EJRUMl+HZbdtO9rHtN8vfbiSYY
- Hqyg==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=uEr5yyXCGhwQVOZCFVlKuzg8aQu+Pdh2opLh5KDg4A4=;
+ b=mPlKvRM/SVsXiKl7hNMkAuFCZOJCzkalVrxYa9kcMnWvE0RkBSgqvRRk9SwdpADLDl
+ TVNOTp6BYPJTb4JukIM6thVwWpGd/2BTJhQzh8cgdPicBLBRNkLvryuXlEFJBuDBCGjw
+ 7DOkBvzdVckxjV9spS9Alb8+lfZUPzdvnthKd9xxWgnnSHU+WLAeIYQCeHu67Yw7oC/O
+ d5Gcr9IoJl+Mp/3Uma+67eLCDIcuExdlRdH0LqMcWMa/Vx3L6BXOhN4OxBKMiNHMTL0E
+ 3RXa5hbNmUSDgo/RY7pOxqeTe8UGj6773eQIKOXfs3wO42ygualUBeaGhsSmo1JloGhg
+ oEUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=+GaW+fNRmBSUhIsokeJX0HIcwVIfHoIyE+CQVdEFwtM=;
- b=MYS3DbHdcls+Q/AiJpDMQvEeTmUjJglGe0M5THiP312ENygGn9hhHC6EDXzMRiQWZ2
- D7ptRVUR1gmFe9hLW2PPaaKutT9eoGEPicm/yDzlLlcnaKjcXCEpgBFn8ZH4MhIRMeLf
- PAfo83ZGIGdgCx38ab/CTGhBDh86UTZ9BDuScTp5NIw0aS6rvy3qoxf9/DxvO90FOxmk
- G71PYAD36HEEijwGKCnWkVjAdrhfzwFcZvFk6b0IKnXf7Nriz1oAk7Nzz2XZiqaRNP4x
- oX+D8kDLkBlLmUU7bObQXZouyNXE346c9Yq8rywuUdI18QI5eakiF2ghCA5DyRGTVYm1
- 5NLQ==
-X-Gm-Message-State: AOAM533jenrgiVv6Sgf5+B0PkgOuX5ZMjWez520pWTuGEyCsPhzXS8aa
- Oaq4C2Ec5jp9d37F7OPBMijNGmqX
-X-Received: by 2002:a05:651c:88:: with SMTP id 8mr4799339ljq.277.1596473272315; 
- Mon, 03 Aug 2020 09:47:52 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id n3sm4393482ljc.114.2020.08.03.09.47.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Aug 2020 09:47:51 -0700 (PDT)
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v1 1/1] docs/system/arm: Document the Xilinx Versal Virt board
-Date: Mon,  3 Aug 2020 18:47:49 +0200
-Message-Id: <20200803164749.301971-2-edgar.iglesias@gmail.com>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20200803164749.301971-1-edgar.iglesias@gmail.com>
-References: <20200803164749.301971-1-edgar.iglesias@gmail.com>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=uEr5yyXCGhwQVOZCFVlKuzg8aQu+Pdh2opLh5KDg4A4=;
+ b=SYOYXLRzet+e8Yjp14yTFBb/MmSyCWaAHtmsQdlFPFA9+zLMaAXFlwftp7htivxWnZ
+ wS8lbDklH6Zpx8+PdPaq3MhhfZnims340VM2g1YYuD6oMYqpkza4ATCrLsPnGoIM2/fK
+ 1yT02wHASaPQUPoknWAxXRmOxPTf7oVAWtIJTD8KF5E2VSTPNK0vpzDlbje73a1RmXPU
+ zpShYDhFOd1/dUDfq69N/S5XQ0/Es72wSRw4dFllpvUXYOFw3Zjl2OshU/ThzpJXhXeC
+ NrWhOQNXoqM2R5ZO2KiiVhQXpelsRfM5o6co3gCHt54LLQn3NIDnvLTWfZzt1YorYbow
+ 4j/w==
+X-Gm-Message-State: AOAM5321mtvTeaReT6nfFcYpOpwVMg7TPyWFJAiWst9bGQQdIzgZo/Sf
+ /zrkOB71EEG7byHZq5HESQI=
+X-Received: by 2002:a5d:46ce:: with SMTP id g14mr17301111wrs.188.1596481738864; 
+ Mon, 03 Aug 2020 12:08:58 -0700 (PDT)
+Received: from [192.168.1.43] (214.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.214])
+ by smtp.gmail.com with ESMTPSA id 111sm27450514wrc.53.2020.08.03.12.08.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 03 Aug 2020 12:08:57 -0700 (PDT)
+Subject: Re: [PATCH v6 00/13] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC
+ machines
+To: Havard Skinnemoen <hskinnemoen@google.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20200717060258.1602319-1-hskinnemoen@google.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <61366428-ca35-e0b5-cfce-99624747631b@amsat.org>
+Date: Mon, 3 Aug 2020 21:08:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::241;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x241.google.com
+In-Reply-To: <20200717060258.1602319-1-hskinnemoen@google.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FSL_HELO_FAKE=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001,
- WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
- edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
- frasse.iglesias@gmail.com, alistair@alistair23.me, frederic.konrad@adacore.com,
- qemu-arm@nongnu.org, philmd@redhat.com, luc.michel@greensocs.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MyxEikviTO/Z
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: kfting@nuvoton.com, Avi.Fishman@nuvoton.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: nPDHAvtR0OY6
 
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+Hi Havard,
 
-Document the Xilinx Versal Virt board.
+On 7/17/20 8:02 AM, Havard Skinnemoen wrote:
+> I also pushed this and the previous two patchsets to my qemu fork on github.
+> The branches are named npcm7xx-v[1-6].
+> 
+>   https://github.com/hskinnemoen/qemu
+> 
+> This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoCs to boot
+> an OpenBMC image built for quanta-gsj. This includes device models for:
+> 
+>   - Global Configuration Registers
+>   - Clock Control
+>   - Timers
+>   - Fuses
+>   - Memory Controller
+>   - Flash Controller
+> 
+> These modules, along with the existing Cortex A9 CPU cores and built-in
+> peripherals, are integrated into a NPCM730 or NPCM750 SoC, which in turn form
+> the foundation for the quanta-gsj and npcm750-evb machines, respectively. The
+> two SoCs are very similar; the only difference is that NPCM730 is missing some
+> peripherals that NPCM750 has, and which are not considered essential for
+> datacenter use (e.g. graphics controllers). For more information, see
+> 
+> https://www.nuvoton.com/products/cloud-computing/ibmc/
+> 
+> Both quanta-gsj and npcm750-evb correspond to real boards supported by OpenBMC.
+> At the end of the series, qemu can boot an OpenBMC image built for one of these
+> boards with some minor modifications.
+> 
+> The patches in this series were developed by Google and reviewed by Nuvoton. We
+> will be maintaining the machine and peripheral support together.
+> 
+> The data sheet for these SoCs is not generally available. Please let me know if
+> more comments are needed to understand the device behavior.
+> 
+> Changes since v5:
+> 
+>   - Boot ROM included, as a git submodule and a binary blob, and loaded by
+>     default, so the -bios option is usually not necessary anymore.
+>   - Two acceptance tests added (openbmc image boot, and direct kernel boot).
+>   - npcm7xx_load_kernel() moved to SoC code.
+>   - NPCM7XX_TIMER_REF_HZ definition moved to CLK header.
+>   - Comments added clarifying available SPI flash chip selects.
+>   - Error handling adjustments:
+>       - Errors from CPU and GCR realization are propagated through the SoC
+>         since they may be triggered by user-configurable parameters.
+>       - Machine init uses error_fatal instead of error_abort for SoC
+>         realization flash init. This makes error messages more helpful.
+>       - Comments added to indicate whether peripherals may fail to realize.
+>       - Use ERRP_GUARD() instead of Error *err when possible.
+>   - Default CPU type is now set, and attempting to set it to anything else
+>     will fail.
+>   - Format string fixes (use HWADDR_PRIx, etc.)
+>   - Simplified memory size encoding and error checking in npcm7xx_gcr.
+>   - Encapsulate non-obvious pointer subtraction into helper functions in the
+>     FIU and TIMER modules.
+>   - Incorporate review feedback into the FIU module:
+>       - Add select/deselect trace events.
+>       - Use npcm7xx_fiu_{de,}select() consistently.
+>       - Use extract/deposit in more places for consistency.
+>       - Use -Wimplicit-fallthrough compatible fallthrough comments.
+>       - Use qdev_init_gpio_out_named instead of sysbus_init_irq for chip
+>         selects.
+>   - Incorporate review feedback into the TIMER module:
+>       - Assert that we never pause a timer that has already expired, instead of
+>         trying to handle it. This should be safe since QEMU_CLOCK_VIRTUAL is
+>         stopped while this code is running.
+>       - Simplify the switch blocks in the read and write handlers.
+> 
+> I made a change to error out if a flash drive was not specified, but reverted
+> it because it caused make check to fail (qom-test). When specifying a NULL
+> block device, the m25p flash device initializes its in-memory storage with 0xff
+> and doesn't attempt to write anything back. This seems correct to me.
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
----
- docs/system/arm/xlnx-versal-virt.rst | 176 +++++++++++++++++++++++++++
- docs/system/target-arm.rst           |   1 +
- MAINTAINERS                          |   3 +-
- 3 files changed, 179 insertions(+), 1 deletion(-)
- create mode 100644 docs/system/arm/xlnx-versal-virt.rst
+I've been quite busy, now looking back a this series. Do you have a v7
+in preparation or should I keep reviewing it?
 
-diff --git a/docs/system/arm/xlnx-versal-virt.rst b/docs/system/arm/xlnx-versal-virt.rst
-new file mode 100644
-index 0000000000..2602d0f995
---- /dev/null
-+++ b/docs/system/arm/xlnx-versal-virt.rst
-@@ -0,0 +1,176 @@
-+Xilinx Versal Virt (``xlnx-versal-virt``)
-+=========================================
-+
-+Xilinx Versal is a family of heterogeneous multi-core SoCs
-+(System on Chip) that combine traditional hardened CPUs and I/O
-+peripherals in a Processing System (PS) with runtime programmable
-+FPGA logic (PL) and an Artificial Intelligence Engine (AIE).
-+
-+More details here:
-+https://www.xilinx.com/products/silicon-devices/acap/versal.html
-+
-+The family of Versal SoCs share a single architecture but come in
-+different parts with different speed grades, amounts of PL and
-+other differences.
-+
-+The Xilinx Versal Virt board in QEMU is a model of a virtual board
-+(does not exist in reality) with a virtual Versal SoC without I/O
-+limitations. Currently, we support the following cores and devices:
-+
-+Implemented CPU cores:
-+
-+- 2 ACPUs (ARM Cortex-A72)
-+
-+Implemented devices:
-+
-+- Interrupt controller (ARM GICv3)
-+- 2 UARTs (ARM PL011)
-+- An RTC (Versal built-in)
-+- 2 GEMs (Cadence MACB Ethernet MACs)
-+- 8 ADMA (Xilinx zDMA) channels
-+- 2 SD Controllers
-+- OCM (256KB of On Chip Memory)
-+- DDR memory
-+
-+QEMU does not yet model any other devices, including the PL and the AI Engine.
-+
-+Other differences between the hardware and the QEMU model:
-+
-+- QEMU allows the amount of DDR memory provided to be specified with the
-+  ``-m`` argument. If a DTB is provided on the command line then QEMU will
-+  edit it to include suitable entries describing the Versal DDR memory ranges.
-+
-+- QEMU provides 8 virtio-mmio virtio transports; these start at
-+  address ``0xa0000000`` and have IRQs from 111 and upwards.
-+
-+Running
-+"""""""
-+If the user provides an Operating System to be loaded, we expect users
-+to use the ``-kernel`` command line option.
-+
-+Users can load firmware or boot-loaders with the ``-device loader`` options.
-+
-+When loading an OS, QEMU generates a DTB and selects an appropriate address
-+where it gets loaded. This DTB will be passed to the kernel in register x0.
-+
-+If there's no ``-kernel`` option, we generate a DTB and place it at 0x1000
-+for boot-loaders or firmware to pick it up.
-+
-+If users want to provide their own DTB, they can use the ``-dtb`` option.
-+These DTBs will have their memory nodes modified to match QEMU's
-+selected ram_size option before they get passed to the kernel or FW.
-+
-+When loading an OS, we turn on QEMU's PSCI implementation with SMC
-+as the PSCI conduit. When there's no ``-kernel`` option, we assume the user
-+provides EL3 firmware to handle PSCI.
-+
-+A few examples:
-+
-+Direct Linux boot of a generic ARM64 upstream Linux kernel:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-aarch64 -M xlnx-versal-virt -m 2G \
-+      -serial mon:stdio -display none \
-+      -kernel arch/arm64/boot/Image \
-+      -nic user -nic user \
-+      -device virtio-rng-device,bus=virtio-mmio-bus.0 \
-+      -drive if=none,index=0,file=hd0.qcow2,id=hd0,snapshot \
-+      -drive file=qemu_sd.qcow2,if=sd,index=0,snapshot \
-+      -device virtio-blk-device,drive=hd0 -append root=/dev/vda
-+
-+Direct Linux boot of PetaLinux 2019.2:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-aarch64  -M xlnx-versal-virt -m 2G \
-+      -serial mon:stdio -display none \
-+      -kernel petalinux-v2019.2/Image \
-+      -append "rdinit=/sbin/init console=ttyAMA0,115200n8 earlycon=pl011,mmio,0xFF000000,115200n8" \
-+      -net nic,model=cadence_gem,netdev=net0 -netdev user,id=net0 \
-+      -device virtio-rng-device,bus=virtio-mmio-bus.0,rng=rng0 \
-+      -object rng-random,filename=/dev/urandom,id=rng0
-+
-+Boot PetaLinux 2019.2 via ARM Trusted Firmware (2018.3 because the 2019.2
-+version of ATF tries to configure the CCI which we don't model) and U-boot:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-aarch64 -M xlnx-versal-virt -m 2G \
-+      -serial stdio -display none \
-+      -device loader,file=petalinux-v2018.3/bl31.elf,cpu-num=0 \
-+      -device loader,file=petalinux-v2019.2/u-boot.elf \
-+      -device loader,addr=0x20000000,file=petalinux-v2019.2/Image \
-+      -nic user -nic user \
-+      -device virtio-rng-device,bus=virtio-mmio-bus.0,rng=rng0 \
-+      -object rng-random,filename=/dev/urandom,id=rng0
-+
-+Run the following at the U-Boot prompt:
-+
-+.. code-block:: bash
-+
-+  Versal>
-+  fdt addr $fdtcontroladdr
-+  fdt move $fdtcontroladdr 0x40000000
-+  fdt set /timer clock-frequency <0x3dfd240>
-+  setenv bootargs "rdinit=/sbin/init maxcpus=1 console=ttyAMA0,115200n8 earlycon=pl011,mmio,0xFF000000,115200n8"
-+  booti 20000000 - 40000000
-+  fdt addr $fdtcontroladdr
-+
-+Boot Linux as DOM0 on Xen via U-Boot:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-aarch64 -M xlnx-versal-virt -m 4G \
-+      -serial stdio -display none \
-+      -device loader,file=petalinux-v2019.2/u-boot.elf,cpu-num=0 \
-+      -device loader,addr=0x30000000,file=linux/2018-04-24/xen \
-+      -device loader,addr=0x40000000,file=petalinux-v2019.2/Image \
-+      -nic user -nic user \
-+      -device virtio-rng-device,bus=virtio-mmio-bus.0,rng=rng0 \
-+      -object rng-random,filename=/dev/urandom,id=rng0
-+
-+Run the following at the U-Boot prompt:
-+
-+.. code-block:: bash
-+
-+  Versal>
-+  fdt addr $fdtcontroladdr
-+  fdt move $fdtcontroladdr 0x20000000
-+  fdt set /timer clock-frequency <0x3dfd240>
-+  fdt set /chosen xen,xen-bootargs "console=dtuart dtuart=/uart@ff000000 dom0_mem=640M bootscrub=0 maxcpus=1 timer_slop=0"
-+  fdt set /chosen xen,dom0-bootargs "rdinit=/sbin/init clk_ignore_unused console=hvc0 maxcpus=1"
-+  fdt mknode /chosen dom0
-+  fdt set /chosen/dom0 compatible "xen,multiboot-module"
-+  fdt set /chosen/dom0 reg <0x00000000 0x40000000 0x0 0x03100000>
-+  booti 30000000 - 20000000
-+
-+Boot Linux as Dom0 on Xen via ARM Trusted Firmware and U-Boot:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-aarch64 -M xlnx-versal-virt -m 4G \
-+      -serial stdio -display none \
-+      -device loader,file=petalinux-v2018.3/bl31.elf,cpu-num=0 \
-+      -device loader,file=petalinux-v2019.2/u-boot.elf \
-+      -device loader,addr=0x30000000,file=linux/2018-04-24/xen \
-+      -device loader,addr=0x40000000,file=petalinux-v2019.2/Image \
-+      -nic user -nic user \
-+      -device virtio-rng-device,bus=virtio-mmio-bus.0,rng=rng0 \
-+      -object rng-random,filename=/dev/urandom,id=rng0
-+
-+Run the following at the U-Boot prompt:
-+
-+.. code-block:: bash
-+
-+  Versal>
-+  fdt addr $fdtcontroladdr
-+  fdt move $fdtcontroladdr 0x20000000
-+  fdt set /timer clock-frequency <0x3dfd240>
-+  fdt set /chosen xen,xen-bootargs "console=dtuart dtuart=/uart@ff000000 dom0_mem=640M bootscrub=0 maxcpus=1 timer_slop=0"
-+  fdt set /chosen xen,dom0-bootargs "rdinit=/sbin/init clk_ignore_unused console=hvc0 maxcpus=1"
-+  fdt mknode /chosen dom0
-+  fdt set /chosen/dom0 compatible "xen,multiboot-module"
-+  fdt set /chosen/dom0 reg <0x00000000 0x40000000 0x0 0x03100000>
-+  booti 30000000 - 20000000
-+
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index 4c5b0e4aab..afdb37e738 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -93,6 +93,7 @@ undocumented; you can get a complete list by running
-    arm/sx1
-    arm/stellaris
-    arm/virt
-+   arm/xlnx-versal-virt
- 
- Arm CPU features
- ================
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 0886eb3d2b..5a22c8be42 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -894,7 +894,7 @@ F: hw/misc/zynq*
- F: include/hw/misc/zynq*
- X: hw/ssi/xilinx_*
- 
--Xilinx ZynqMP
-+Xilinx ZynqMP and Versal
- M: Alistair Francis <alistair@alistair23.me>
- M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
- M: Peter Maydell <peter.maydell@linaro.org>
-@@ -905,6 +905,7 @@ F: include/hw/*/xlnx*.h
- F: include/hw/ssi/xilinx_spips.h
- F: hw/display/dpcd.c
- F: include/hw/display/dpcd.h
-+F: docs/system/arm/xlnx-versal-virt.rst
- 
- ARM ACPI Subsystem
- M: Shannon Zhao <shannon.zhaosl@gmail.com>
--- 
-2.25.1
+Hopefully v7 would be the one Peter queue for merging once 5.2 window
+opens :)
 
+Regards,
+
+Phil.

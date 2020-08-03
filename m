@@ -1,107 +1,115 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp4389388lfy;
-        Sat, 1 Aug 2020 05:00:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVxTUvbM3WXY0QrWhR8dGj1IrtXTH9By9paQIKVW7cAALOWnCATIAfFJ8gavVljX7k/x1R
-X-Received: by 2002:a25:e045:: with SMTP id x66mr13466197ybg.372.1596283256708;
-        Sat, 01 Aug 2020 05:00:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596283256; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp6133150lfy;
+        Mon, 3 Aug 2020 08:13:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyJCPBxq4yJafZY3Nlruxlzd/JwXK3nMaMf2RstiCgcYGqrwhsOrrpAbdPk7BMN38qXC3uR
+X-Received: by 2002:a25:da4c:: with SMTP id n73mr25893330ybf.306.1596467579685;
+        Mon, 03 Aug 2020 08:12:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596467579; cv=none;
         d=google.com; s=arc-20160816;
-        b=DruVc3WGOGagviJNvPGp+gwnGB3qcZnlf+NCeJ+zkPe6ZkX2rxTDpQpzO1F9lOGmoO
-         6Kx7wE3f5QFiqDmD5QbeSolO/SmFO/krfltREbnGSO4ldPYsy/iRZUvfeIaqJtqG6D6+
-         BtFuvVg0IsalXdMoJlZ+N6rrk0XtAr/E2cTF5zi4rOnqF1MjcLn93nTO4IpTs6L9zyrN
-         2GjJHJ3WMwzqeargQKhwHuxKMd08y9Ddihi+exDB2kDnb9lCZyZkY32YoMZm2lRdHLAm
-         H/dOrc8eji9w6QSATJHmP/tTWatlb4g3cV5bpzdFwVB5fHHid8ciyoZbNqzr/ZZgsVRI
-         Q3cQ==
+        b=tKHCJgoX40dKaDy5VGFYpYyBoeO0EU23Sv75YJqxO08RaXiNAdFWecQVmCIp7u3lYb
+         f2LeV+4ccQrEogIhspnBSreH6WrWs+yGjm05T3J7sbXTomZoajbwS9s8mP3nKZEqLFCL
+         Xi9gO1P5pMVEdQBmuRiZoIgaykogBYpqKqCFUm8VRa5RovP52VElKMQ1JtvMoke4Y59u
+         0gWgEMsdSvwNz9d5VXpZMWfRZNwGt7c2qgUGzVpc+fDXUZpTfTvcqRQMBTsmB2ZyfV5X
+         T0Bbb90MJzjxJQ7k+fBYy7LZA6LyODkvmn49BcZOO9mfV/dOW+naDnXpC/vXlfK7B1cF
+         FuXQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=hrURly2xk2D/FYVjZApiB8Ay4FmZVXkCfdQZJQzIjc8=;
-        b=sCZe7wqjQhvzdNwLxDYSNYOaifsMIPvV6LzcqQVf8tRoKSaHGl75JhzpvS2ZNjnRxz
-         +c+cK3l87Ps6XzA7Oiad3Wk4OBeWUsIW7t6Frttb3Noj03u30QuQqcQV7Jofw61FTWEq
-         87nRH5CxzYd+JpNhyOr/BvaALZHWwHnbr9S9VJEcD5gNcMyKExvxzPRpm8sQvzErUkT6
-         J+WfI32hwsM099mh0ZsEZqh93n/1feLE9P+mR8AQoq/xeWUX7+3xvjsZJx+AQnWSLHq3
-         sCvVZVozQrUVhthdseg1dAVWPZIcZZbHi1rlBlmLaqmfyFt9m2lFdL54t3MqYNd0n4FO
-         niKg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=1e3lSfJs56vgQa17PMAI9CB1G1Wmu+nSqZ4gwDK4N6E=;
+        b=lRM5bLvR4njOlyDuhliT11k2bsMdh0cO1d1XC7dGSroIeXO4/q58ZPhBOjIqa7K1i1
+         B/9vqnXXZQJi+M3Ra5mAydBwWUqPcZSmjUKelYmhVOolIKDL+JmUVg/B21e68NlVzNxT
+         keSe5gQZn6As/1N55/ck9tdTreVaKxfHP05VSyGyc9ggL6wZPyD/xqJhZVa3VgTx2Q1m
+         aH9RH3P/c0OrPYbmwBky/H3Fm/zO/e9rLGFPnR+CYIALYfyzvV/v+5LqZTa5V38UI9RK
+         4MvEOTQTBYtjZx997BGZyYkEqe6auo3cC/9N1OLVgyfQMhQFTw+P3xXi/OF1pM0Apkzw
+         4kYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d1tv9Pzi;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i7Zk8rBx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 1si10732266ybd.439.2020.08.01.05.00.56
+        by mx.google.com with ESMTPS id a12si16845159ybp.210.2020.08.03.08.12.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 01 Aug 2020 05:00:56 -0700 (PDT)
+        Mon, 03 Aug 2020 08:12:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=d1tv9Pzi;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=i7Zk8rBx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47182 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:54628 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k1qC8-0008Ql-2W
-	for alex.bennee@linaro.org; Sat, 01 Aug 2020 08:00:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54392)
+	id 1k2c95-0000Ub-2A
+	for alex.bennee@linaro.org; Mon, 03 Aug 2020 11:12:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k1qBu-0008QK-SQ
- for qemu-arm@nongnu.org; Sat, 01 Aug 2020 08:00:42 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:60588
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k1qBr-0004MW-An
- for qemu-arm@nongnu.org; Sat, 01 Aug 2020 08:00:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596283237;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hrURly2xk2D/FYVjZApiB8Ay4FmZVXkCfdQZJQzIjc8=;
- b=d1tv9PziRifZEBNz4ihQEXlfm+pcOToCd4igFvR/tfvRuhKt6RptCLSnrQLousX7hx41cD
- dNL6kgYKfvd3liU9RDc9kSgTgMXUNpRt/CheicS40qB6PWMhENBDTbTSJ9N2DOA1aV5t4k
- R3q5LbNd36+D5DoT9W+cukyrEzU39rQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-408-LuD7u6sdP1iZaFYUXjeqNg-1; Sat, 01 Aug 2020 08:00:35 -0400
-X-MC-Unique: LuD7u6sdP1iZaFYUXjeqNg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D91F18839E3;
- Sat,  1 Aug 2020 12:00:34 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.194.209])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 056C687E16;
- Sat,  1 Aug 2020 12:00:32 +0000 (UTC)
-Date: Sat, 1 Aug 2020 14:00:30 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 3/3] hw/arm/virt: Implement kvm-steal-time
-Message-ID: <20200801120030.puzdwi4deczjm6gh@kamzik.brq.redhat.com>
-References: <20200711101033.47371-1-drjones@redhat.com>
- <20200711101033.47371-4-drjones@redhat.com>
- <CAFEAcA8h+6btvjvx=j5v7Gn12+bros_UgFScKHaWVxh0dmi-Qw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k2c8x-0000UF-K4; Mon, 03 Aug 2020 11:12:51 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55511)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k2c8v-0002pr-RH; Mon, 03 Aug 2020 11:12:51 -0400
+Received: by mail-wm1-x343.google.com with SMTP id 9so14619092wmj.5;
+ Mon, 03 Aug 2020 08:12:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=1e3lSfJs56vgQa17PMAI9CB1G1Wmu+nSqZ4gwDK4N6E=;
+ b=i7Zk8rBxrmIqw1zybp2tpTqaqnu/nlI6Rq+pVnJ5IEj8fvPPTYTeMfuwnWHeea+4Sg
+ crF3S1+qv8oTqnV2WfTTUSqnO1HgZUcsWJkPBitPvHRw6YOBkOAYAjYMR3eQCze+VZSD
+ 30z9517WxsZCgG6XBxuGArjs7kB48BL10o4soRbM2FweoOn6KZpgl1l99fEGHTL+u8Gr
+ G2jkO9jJf4wOWwKW4l3sU7gCqMeoQFMFQwFcTeSZdH2PqcNxjRK0qKsE6T+YZLkhwiNi
+ s5BhdIPABPFkycfn2myLye49nL+3osenLc/3qWKv/uhzagylF2vYFkC141aVIrUlEggK
+ VWOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=1e3lSfJs56vgQa17PMAI9CB1G1Wmu+nSqZ4gwDK4N6E=;
+ b=r9D7EXQN5Tm35clociTUq8EMrsV58mXzMf7bciymIfAmk1nobUMPOcERkUS1FxBEbQ
+ izP8Ds5w1hHXgwlPR4p87UpJA5hkB29AubVzs1hqShtE9QW7xmpRCVwTbhJ5iNcOlYQ8
+ jiWmyjxnBVceEBgw9tzW3cFK/jxpdZhVwg5UXuTmKxF33Y0qro59sk6+kWeg5cgz2L/9
+ GqiasHBGwNdTlh0LwzG9UmU5EnqE+KBTL1qurbsR+QFe7ePjigP0ArGqZjW9Z067Yp76
+ f3VXF8Ey0RbDkCyD0yF1zi6dfs6LnhsptN15K+7cc42a3Yjcyb9n0THP1z/uDYr9LXA4
+ jZhA==
+X-Gm-Message-State: AOAM5331g2FNeiKY3rrkILd4dfbRnbgtmb6oJNqzhj8rcEzACl/kO1MA
+ Wm5mR0HutmIiWqKXFygMEDo=
+X-Received: by 2002:a1c:6a18:: with SMTP id f24mr428227wmc.94.1596467567921;
+ Mon, 03 Aug 2020 08:12:47 -0700 (PDT)
+Received: from [192.168.1.43] (214.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.214])
+ by smtp.gmail.com with ESMTPSA id t14sm28498625wrg.38.2020.08.03.08.12.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 03 Aug 2020 08:12:47 -0700 (PDT)
+Subject: Re: [PATCH for-5.1] hw/timer/imx_epit: Avoid assertion when CR.SWR is
+ written
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200727154550.3409-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <16de518e-d36f-2b8d-8598-985275524897@amsat.org>
+Date: Mon, 3 Aug 2020 17:12:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8h+6btvjvx=j5v7Gn12+bros_UgFScKHaWVxh0dmi-Qw@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=drjones@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/01 07:11:30
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20200727154550.3409-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,154 +122,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Chubb <peter.chubb@nicta.com.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kpryl+0bswk4
+X-TUID: UeIuy2sojKYg
 
-On Fri, Jul 31, 2020 at 03:54:07PM +0100, Peter Maydell wrote:
-> On Sat, 11 Jul 2020 at 11:10, Andrew Jones <drjones@redhat.com> wrote:
-> > We add the kvm-steal-time CPU property and implement it for machvirt.
-> > A tiny bit of refactoring was also done to allow pmu and pvtime to
-> > use the same vcpu device helper functions.
-> >
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+On 7/27/20 5:45 PM, Peter Maydell wrote:
+> The imx_epit device has a software-controllable reset triggered by
+> setting the SWR bit in the CR register. An error in commit cc2722ec83ad9
+> means that we will end up assert()ing if the guest does this, because
+> the code in imx_epit_write() starts ptimer transactions, and then
+> imx_epit_reset() also starts ptimre transactions, triggering
+> "ptimer_transaction_begin: Assertion `!s->in_transaction' failed".
 > 
-> Hi; I'm forwarding a couple of comments here from Beata,
-> (whose secondment with Linaro is coming to an end so she won't
-> have access to her Linaro email address to continue the conversation):
+> The cleanest way to avoid this double-transaction is to move the
+> start-transaction for the CR write handling down below the check of
+> the SWR bit.
 > 
-> 
-> >  static void virt_cpu_post_init(VirtMachineState *vms)
-> >  {
-> > -    bool aarch64, pmu;
-> > +    bool aarch64, pmu, steal_time;
-> >      CPUState *cpu;
-> >
-> >      aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
-> >      pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
-> > +    steal_time = object_property_get_bool(OBJECT(first_cpu),
-> > +                                          "kvm-steal-time", NULL);
-> >
-> >      if (kvm_enabled()) {
-> > +        hwaddr pvtime_base = vms->memmap[VIRT_PVTIME].base;
-> > +        hwaddr pvtime_size = vms->memmap[VIRT_PVTIME].size;
-> > +
-> > +        if (steal_time) {
-> > +            MemoryRegion *pvtime = g_new(MemoryRegion, 1);
-> > +
-> > +            memory_region_init_ram(pvtime, NULL, "pvtime", pvtime_size, NULL);
-> > +            memory_region_add_subregion(get_system_memory(), pvtime_base,
-> > +                                        pvtime);
-> > +        }
-> 
-> B: I'm not sure whether it wouldn't be useful to have the area
-> allocated with size determined by number of VCPUs instead of having
-> pre-defined size.
+> Fixes: https://bugs.launchpad.net/qemu/+bug/1880424
 
-We can't go smaller than one host-sized page, so this 64k region is the
-smallest we can go. The assert in the next hunk, which was snipped
-out of the reply, ensures that 64k is large enough to cover the maximum
-number of VCPUs that could ever be configured. I don't think there's
-anything else we should do at this time. If the pvtime structure grows,
-or if we increase the maximum number of VCPUs to be larger than 1024,
-then we can revisit this in order to determine when additional 64k pages
-should be allocated.
+Thanks for looking at this.
 
-For now, if it would help, I could extend the comment (which was also
-snipped) to mention that 64k was chosen because it's the maximum host
-page size, and that at least one host-sized page must be allocated for
-this region.
+> Fixes: cc2722ec83ad944505fe
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> I don't have a test image for KZM so this is the minimal
+> obviously-safe change. I'm pretty sure that actually we could
+> add a "break" after the imx_epit_reset() call because all of
+> the work done by the following code is duplicating the ptimer
+> setup done by the reset function. But I'm not really happy making
+> that change without a test image...
 
-> 
-> > +        if (vmc->kvm_no_steal_time &&
-> > +            object_property_find(cpuobj, "kvm-steal-time", NULL)) {
-> > +            object_property_set_bool(cpuobj, false, "kvm-steal-time", NULL);
-> > +        }
-> > +
-> >          if (vmc->no_pmu && object_property_find(cpuobj, "pmu", NULL)) {
-> >              object_property_set_bool(cpuobj, "pmu", false, NULL);
-> >          }
-> > @@ -2528,6 +2558,7 @@ static void virt_machine_5_0_options(MachineClass *mc)
-> >      mc->numa_mem_supported = true;
-> >      vmc->acpi_expose_flash = true;
-> >      mc->auto_enable_numa_with_memdev = false;
-> > +    vmc->kvm_no_steal_time = true;
-> >  }
-> >  DEFINE_VIRT_MACHINE(5, 0)
-> >
-> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> > index 54bcf17afd35..b5153afedcdf 100644
-> > --- a/include/hw/arm/virt.h
-> > +++ b/include/hw/arm/virt.h
-> > @@ -80,6 +80,7 @@ enum {
-> >      VIRT_PCDIMM_ACPI,
-> >      VIRT_ACPI_GED,
-> >      VIRT_NVDIMM_ACPI,
-> > +    VIRT_PVTIME,
-> >      VIRT_LOWMEMMAP_LAST,
-> >  };
-> >
-> > @@ -126,6 +127,7 @@ typedef struct {
-> >      bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
-> >      bool kvm_no_adjvtime;
-> >      bool acpi_expose_flash;
-> > +    bool kvm_no_steal_time;
-> 
-> B: It is slightly confusing : using kvm_no_steal_time vs kvm_steal_time
-> 
-> P: I have to admit I get confused about which sense this flag
-> should have. I think the sense of the flags in this struct is
-> "the false case is the one that the older virt boards had",
-> so original virt didn't have an ITS or a PMU and so we have
-> no_its and no_pmu. Similarly here old virt didn't have steal-time
-> and so we want a no_ flag (ie the patch is correct). Why
-> kvm_no_steal_time rather than no_kvm_steal_time, though ?
+Agreed. I'd add a comment in the code to not forget about this...
 
-Correct. We want the default value of the boolean (false) to mean
-"not disabled", so the boolean must have a negative name in order
-to mean "disabled" when it is true. I'm not opposed to
-no_kvm_steal_time vs. kvm_no_steal_time, since the property name
-is "kvm-steal-time". I think I ended up with the 'kvm' and 'no'
-swapped by copy+pasting kvm_no_adjvtime. However that one is
-appropriately named because the property name is "kvm-no-adjvtime".
-I'll change this for v2.
-
+> ---
+>  hw/timer/imx_epit.c | 9 ++++++---
+>  1 file changed, 6 insertions(+), 3 deletions(-)
 > 
-> >  } VirtMachineClass;
-> 
-> > +void kvm_arm_pvtime_init(CPUState *cs, uint64_t ipa)
-> > +{
-> > +    struct kvm_device_attr attr = {
-> > +        .group = KVM_ARM_VCPU_PVTIME_CTRL,
-> > +        .attr = KVM_ARM_VCPU_PVTIME_IPA,
-> > +        .addr = (uint64_t)&ipa,
-> > +    };
-> > +
-> > +    if (!ARM_CPU(cs)->kvm_steal_time) {
-> > +        return;
-> > +    }
-> > +    if (!kvm_arm_set_device_attr(cs, &attr, "PVTIME IPA")) {
-> > +        error_report("failed to init PVTIME IPA");
-> > +        abort();
-> > +    }
-> > +}
-> 
-> B: I am probably missing smth but .. there is a trigger missing to
-> update the stats
-> and write them back to pre-allocated guest memory.
-> Looking at the kernel code the stats are updated upon pending
-> VCPU request :
-> in arch/arm64/kvm/arm.c:
-> static void check_vcpu_requests(struct kvm_vcpu *vcpu) {
->         ...
->          if (kvm_check_request(KVM_REQ_RECORD_STEAL, vcpu))
->                 kvm_update_stolen_time(vcpu);
-> }
+> diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+> index baf6338e1a6..4f51e6e12da 100644
+> --- a/hw/timer/imx_epit.c
+> +++ b/hw/timer/imx_epit.c
+> @@ -199,15 +199,18 @@ static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
+>  
+>      switch (offset >> 2) {
+>      case 0: /* CR */
+> -        ptimer_transaction_begin(s->timer_cmp);
+> -        ptimer_transaction_begin(s->timer_reload);
+>  
+>          oldcr = s->cr;
+>          s->cr = value & 0x03ffffff;
+>          if (s->cr & CR_SWR) {
+>              /* handle the reset */
+>              imx_epit_reset(DEVICE(s));
 
-kvm_arch_vcpu_load() unconditionally makes that request when pvtime
-is enabled.
+... such:
+               /* break; ??? */
 
-Thanks,
-drew
+Anyway:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> -        } else {
+> +        }
+> +
+> +        ptimer_transaction_begin(s->timer_cmp);
+> +        ptimer_transaction_begin(s->timer_reload);
+> +
+> +        if (!(s->cr & CR_SWR)) {
+>              imx_epit_set_freq(s);
+>          }
+>  
+> 
 

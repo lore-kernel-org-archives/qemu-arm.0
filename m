@@ -1,102 +1,102 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5954174lfy;
-        Mon, 3 Aug 2020 04:20:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx8JryQ3FoeaN6LETnrPYwXIr8WKUT0mW6Oe6uk866vwF0oGkSslEiZN8YKQegY9cSYciNY
-X-Received: by 2002:a25:7708:: with SMTP id s8mr26376370ybc.86.1596453601834;
-        Mon, 03 Aug 2020 04:20:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596453601; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5954813lfy;
+        Mon, 3 Aug 2020 04:21:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwFfLZGDCAohl9/uPDK2pb3ZtuAOHOvd2CMoZf666EnTRt0mRlJRAniT9eVhETB055hxvt/
+X-Received: by 2002:a25:ca0f:: with SMTP id a15mr9581923ybg.256.1596453662704;
+        Mon, 03 Aug 2020 04:21:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596453662; cv=none;
         d=google.com; s=arc-20160816;
-        b=hwzWVjzM5Ux9e2E8iM44EgSKem2IOPhabmJUmgD9T2JFenc56g6Gxp9/MdBZHxAE+a
-         S08sBum+JmqyLsdCEp6E9Xl3+RSocoWTN5Jwm2yRhaZi5nSRn9q206p84H2yG3nzsXYW
-         UjkXl3zK5mhxlE6489FcfI+FydFOfCH4UBHvg8NfRKFsjChywYgvlHoC6hOG5z5+4mD1
-         pKB8dJ9GYTBFCTLkdNa6Bji8+N4TSZw6DjQ+IT7yGQ8KfCov4rsD6pFQvKqRaU256R3n
-         qiK9P12Yl1Dd1TJMfPolIkoQr3kD+Kj9AKriAKw4HC3KX8+7hfS9UKuO5ixHiFaqjD6f
-         nN2g==
+        b=Q0m7YG5INgDjzd/u6HbmysNujfaSce76Kz0R5He7sXgpUCKXahssIiTzrXUOUYJTxO
+         eZlEZgxiaTpkcTkxUF/EOAPgYHlRuoLwd+FK3mgRrLwd28/3iKIqu49/Eaz0eMwXC7N9
+         toV4EvGSNr2VHDkjfuT6/L5lkPTCsQQSTZ4SPh1vQmVWoj+SjMNHtpsne05Z93ZLa3jS
+         QryqH7GB5uzDDA7p3+1M9ZZXdobtEeS1DawxgY+TIcuf9H6wVlTaXY2fYGlAfmMu/40N
+         PxHOF6DBpf6ZWiAoI2JS2RWw0VOQY0aLX428arukMJqYbZS2TX3BgTY98fN7dHIk7nTU
+         OrWQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=BExTigTa/EjWPG8Q5yXKlYgwozNoOz78Qwl9+pJrCfg=;
-        b=0YgWp6WbWgM+DmSb/RB4fUhdpEotCbR2dVdjc8ph97M+zWipfnwhamx2sTgN7mtc2M
-         Q4RpS+ZYRchZ3vy73AXqC6DAeXlSGyzNjFDi1EWReQpMb5lZhFBjL72kg/sQdVhN7z5X
-         le9FRi4k6j6jaAPj0rAvX/9RgQuosu8RLTmJsNmGwUwUs5Vw7k5jta6up44Ehla/ut4+
-         aYpjALq2ILEqoYJCARvC3L4wOUFOrakTwVHOC/HWJ2iMpweV1ldsJUFThEi+CC2lT/Lx
-         7jL5rtEBEpurfAChJl6z3mDHXrfBcBe7u2JrXtkNFj2HdaRXXxOLjgpg4Rtv6n2kCZn1
-         lMTw==
+        bh=WVrz2TM2NyRna3FiFYVkgyDOwt7IGSm5Yz6r2adar/U=;
+        b=oYEQ83I/MfZJoy+PEcc1z0BXhwQNHM+Ckw2pmfkB29PNLwpK+jpBERfV56K362ABop
+         i18zZj26nJkBmB+JaGStJ0zclJvFg5PMJfzQ2YqFTRM1m0ahka1aLjXJ6MdTAarl2R9Y
+         JhuBokP+gP3HEZ/GsxP0xGtfTq2eoWeo/u1M1IC1H0wcgli1GhAnDky2nsN99Us6010b
+         gKZk4Z5pfPbfrKGSbwGlOO2NUbVsftk7il/McNWlpv+mNZcKx63LyTUe5bstZAd5ui1l
+         BTtpqKUZaLKHm+oriiibxoIgWOw6KF+LxDbKKXhh67Rk9NYBtAt5Ya/iEAIDfZ+9W7Sp
+         iAMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WBoyAtyO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NvSGWSoB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u7si14847206ybc.432.2020.08.03.04.20.01
+        by mx.google.com with ESMTPS id s15si14256607ybk.368.2020.08.03.04.21.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Aug 2020 04:20:01 -0700 (PDT)
+        Mon, 03 Aug 2020 04:21:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WBoyAtyO;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NvSGWSoB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46212 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50194 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2YVd-00053v-8Q
-	for alex.bennee@linaro.org; Mon, 03 Aug 2020 07:20:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45962)
+	id 1k2YWc-0006j3-0q
+	for alex.bennee@linaro.org; Mon, 03 Aug 2020 07:21:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2YUf-0003nx-LE
- for qemu-devel@nongnu.org; Mon, 03 Aug 2020 07:19:01 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:51451)
+ id 1k2YUe-0003le-S3
+ for qemu-devel@nongnu.org; Mon, 03 Aug 2020 07:19:00 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37440)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2YUe-0004sy-2B
- for qemu-devel@nongnu.org; Mon, 03 Aug 2020 07:19:01 -0400
-Received: by mail-wm1-x341.google.com with SMTP id p14so14003603wmg.1
- for <qemu-devel@nongnu.org>; Mon, 03 Aug 2020 04:18:59 -0700 (PDT)
+ id 1k2YUc-0004sa-OY
+ for qemu-devel@nongnu.org; Mon, 03 Aug 2020 07:19:00 -0400
+Received: by mail-wr1-x441.google.com with SMTP id y3so33834971wrl.4
+ for <qemu-devel@nongnu.org>; Mon, 03 Aug 2020 04:18:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=BExTigTa/EjWPG8Q5yXKlYgwozNoOz78Qwl9+pJrCfg=;
- b=WBoyAtyOTh/OT8aDzwHkqSda7j0uFDgeCKhjxgTtlEpeZbxvLUsbLS4ctTHI5gwWTo
- NGuaQuFy5gowm1C0EtkhExKsGL2Hi0eAzkuJSMmr9coYxFZVxi5Kuk3HS3YUCUZtslBu
- zQZG/3G3myQeIsQygzVq/ShQNIIwBLBwF65Qwqk60lGGOEYkxXS8TTn0LJChDvdD/vSE
- /rr7N9a6L+maAxcG0qhvy49eVoGcKpS2pbNAI/mBpCOmQ1LzZ3q2uu5bdbdSB3v8icgl
- i2VnmzgUOtLK6Slh8beJSr7JRgIlHnnt6MKJNvwmXen1ujv6c29hdL/Z0/JRDCBSfz6d
- nRrQ==
+ bh=WVrz2TM2NyRna3FiFYVkgyDOwt7IGSm5Yz6r2adar/U=;
+ b=NvSGWSoBLJetqXNdwYo96/W38omvRb+umlpFKea4Mp6gwqduZxaTAxgQvXk7ZhXK9U
+ bbNYVcuiPD3XCz0ZJ7DGXWet3IYrMJnsnSW6Srxu7kSgL/zC90cve0SAVW4Z7vTRQZqJ
+ JEknAhLVKjf2l+vOATB8toQOVRaZzyxprj5QwNMaE1OYFxCiHtBwKQTJssRAzqF/XbFZ
+ MfX0FNESJUTgv9suf2P8vkR/SJImfVDW4ZLvBa1xHirRQlQFWvP+Rkwr58JwXSs2IPNW
+ KZlDJQcryEr/5dKwjSro75pvLRzwZzIITAHw3oxsC/3ysX3slVcZlqjObo+EhpRNbV4M
+ ZvvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=BExTigTa/EjWPG8Q5yXKlYgwozNoOz78Qwl9+pJrCfg=;
- b=Kjb9TUgOJV69AH8UtjX9qNi4UFEmm8jtxjenWe8j0gkVAmRmLzUpat2MhEZyRaQhuM
- tWmhzS2fgDvhHKXBc2P1yP6lDZwotIMWdik+x/0hgGugf/AUeZAy35pVPFN2yAJzCKa+
- YLNRnwyuYQTFOFSXo7TPVfWwJrrtba/Qn/E5HXdoVKsa5v/ULJnF6LrDCVkAINjfPuVF
- j4YMI/SrYSGZAYqb9UI+YGSuoKdKAZ2X/5gmVfWo5IxdcwjUuJnU9WGZYOrL7vhxf8Wt
- wa/Mk4DeiZgi1AjAuNqFjz3j92AHmGZi5e7uWwuYFX47NwfliSnLaa7AFFktZyfFjAOv
- p5JQ==
-X-Gm-Message-State: AOAM530Ncl1RRBXYfuNKMi07zGoW2CM09E3beDdqWBRcLmE9kyxcsoJ1
- C5f8kL9xN1y47hnBPq9pnRMrZg==
-X-Received: by 2002:a1c:720e:: with SMTP id n14mr4470024wmc.152.1596453538475; 
- Mon, 03 Aug 2020 04:18:58 -0700 (PDT)
+ bh=WVrz2TM2NyRna3FiFYVkgyDOwt7IGSm5Yz6r2adar/U=;
+ b=SrTD4cylv53K2gb3V/jaGeyC50yJu4lHhoKFxtCPHjlM7mfYAOnZOrg0K0AZXqJUhu
+ kMPCoNr7oibJ1ecIraYW3QPxRZEpMmcWIuq5l1dYHNBt8K0Goa9ZqOm6ATXknvj64bYa
+ qeVfm7rOtMzX+RT+3bpzBKMPq+Y7KuC2sYxL1nZJOsfBbRHrikeeQboHbhhJsw0cUd/u
+ kLjn3FtoG1X7izB5QWdvjAN9Y2WS5wFqSjtPrFZT+0Ggb4qD5bsIw1L/SyI+JyfaJD1t
+ tDBN7CFcKVNP3Ej8sa5Fd3xPABJB6jxu7jvjvjddU9Pjesfpp0Q0TpxTLCHi3ZIJVzOA
+ vQKA==
+X-Gm-Message-State: AOAM531UTs/ohvZPDCUCg38p0lPgBIfZPRxlukpFZv/nHJrLSkreeu2n
+ TVHE+/5QMX3mYvsdxXplaJfolw==
+X-Received: by 2002:a5d:60c5:: with SMTP id x5mr15026360wrt.67.1596453536941; 
+ Mon, 03 Aug 2020 04:18:56 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g3sm28013170wrb.59.2020.08.03.04.18.57
+ by smtp.gmail.com with ESMTPSA id g3sm28013170wrb.59.2020.08.03.04.18.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Aug 2020 04:18:57 -0700 (PDT)
+ Mon, 03 Aug 2020 04:18:55 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 4/7] target/arm: Tidy up disas_arm_insn()
-Date: Mon,  3 Aug 2020 12:18:46 +0100
-Message-Id: <20200803111849.13368-5-peter.maydell@linaro.org>
+Subject: [PATCH 3/7] target/arm: Convert A32 coprocessor insns to decodetree
+Date: Mon,  3 Aug 2020 12:18:45 +0100
+Message-Id: <20200803111849.13368-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200803111849.13368-1-peter.maydell@linaro.org>
 References: <20200803111849.13368-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -120,56 +120,200 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KkcL6a9D6FwV
+X-TUID: Xp2ubuE0l1v1
 
-The only thing left in the "legacy decoder" is the handling
-of disas_xscale_insn(), and we can simplify the code.
+Convert the A32 coprocessor instructions to decodetree.
+
+Note that this corrects an underdecoding: for the 64-bit access case
+(MRRC/MCRR) we did not check that bits [24:21] were 0b0010, so we
+would incorrectly treat LDC/STC as MRRC/MCRR rather than UNDEFing
+them.
+
+The decodetree versions of these insns assume the coprocessor
+is in the range 0..7 or 14..15. This is architecturally sensible
+(as per the comments) and OK in practice for QEMU because the only
+uses of the ARMCPRegInfo infrastructure we have that aren't
+for coprocessors 14 or 15 are the pxa2xx use of coprocessor 6.
+We add an assertion to the define_one_arm_cp_reg_with_opaque()
+function to catch any accidental future attempts to use it to
+define coprocessor registers for invalid coprocessors.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/translate.c | 26 +++++++++-----------------
- 1 file changed, 9 insertions(+), 17 deletions(-)
+ target/arm/a32.decode  | 19 +++++++++++
+ target/arm/helper.c    | 29 +++++++++++++++++
+ target/arm/translate.c | 74 +++++++++++++++++++++++++++++++++++-------
+ 3 files changed, 111 insertions(+), 11 deletions(-)
 
+diff --git a/target/arm/a32.decode b/target/arm/a32.decode
+index 0bd952c0692..4dfd9139bf3 100644
+--- a/target/arm/a32.decode
++++ b/target/arm/a32.decode
+@@ -47,6 +47,8 @@
+ &bfi             rd rn lsb msb
+ &sat             rd rn satimm imm sh
+ &pkh             rd rn rm imm tb
++&mcr             cp opc1 crn crm opc2 rt
++&mcrr            cp opc1 crm rt rt2
+ 
+ # Data-processing (register)
+ 
+@@ -529,6 +531,23 @@ LDM_a32          ---- 100 b:1 i:1 u:1 w:1 1 rn:4 list:16   &ldst_block
+ B                .... 1010 ........................           @branch
+ BL               .... 1011 ........................           @branch
+ 
++# Coprocessor instructions
++
++# We decode MCR, MCR, MRRC and MCRR only, because for QEMU the
++# other coprocessor instructions always UNDEF.
++# The trans_ functions for these will ignore cp values 8..13 for v7 or
++# earlier, and 0..13 for v8 and later, because those areas of the
++# encoding space may be used for other things, such as VFP or Neon.
++
++@mcr             ---- .... opc1:3 . crn:4 rt:4 cp:4 opc2:3 . crm:4 &mcr
++@mcrr            ---- .... .... rt2:4 rt:4 cp:4 opc1:4 crm:4       &mcrr
++
++MCRR             .... 1100 0100 .... .... .... .... .... @mcrr
++MRRC             .... 1100 0101 .... .... .... .... .... @mcrr
++
++MCR              .... 1110 ... 0 .... .... .... ... 1 .... @mcr
++MRC              .... 1110 ... 1 .... .... .... ... 1 .... @mcr
++
+ # Supervisor call
+ 
+ SVC              ---- 1111 imm:24                             &i
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8ef0fb478f4..b0acc90e075 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -8462,6 +8462,35 @@ void define_one_arm_cp_reg_with_opaque(ARMCPU *cpu,
+     assert((r->state != ARM_CP_STATE_AA32) || (r->opc0 == 0));
+     /* AArch64 regs are all 64 bit so ARM_CP_64BIT is meaningless */
+     assert((r->state != ARM_CP_STATE_AA64) || !(r->type & ARM_CP_64BIT));
++    /*
++     * This API is only for Arm's system coprocessors (14 and 15) or
++     * (M-profile or v7A-and-earlier only) for implementation defined
++     * coprocessors in the range 0..7.  Our decode assumes this, since
++     * 8..13 can be used for other insns including VFP and Neon. See
++     * valid_cp() in translate.c.  Assert here that we haven't tried
++     * to use an invalid coprocessor number.
++     */
++    switch (r->state) {
++    case ARM_CP_STATE_BOTH:
++        /* 0 has a special meaning, but otherwise the same rules as AA32. */
++        if (r->cp == 0) {
++            break;
++        }
++        /* fall through */
++    case ARM_CP_STATE_AA32:
++        if (arm_feature(&cpu->env, ARM_FEATURE_V8) &&
++            !arm_feature(&cpu->env, ARM_FEATURE_M)) {
++            assert(r->cp >= 14 && r->cp <= 15);
++        } else {
++            assert(r->cp < 8 || (r->cp >= 14 && r->cp <= 15));
++        }
++        break;
++    case ARM_CP_STATE_AA64:
++        assert(r->cp == 0 || r->cp == CP_REG_ARM64_SYSREG_CP);
++        break;
++    default:
++        g_assert_not_reached();
++    }
+     /* The AArch64 pseudocode CheckSystemAccess() specifies that op1
+      * encodes a minimum access level for the register. We roll this
+      * runtime check into our general permission check code, so check
 diff --git a/target/arm/translate.c b/target/arm/translate.c
-index b1be4cb9d60..639fe121a2e 100644
+index cfdcf5281d3..b1be4cb9d60 100644
 --- a/target/arm/translate.c
 +++ b/target/arm/translate.c
-@@ -8342,26 +8342,18 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-         return;
-     }
-     /* fall back to legacy decoder */
--
--    switch ((insn >> 24) & 0xf) {
--    case 0xc:
--    case 0xd:
--    case 0xe:
--    {
--        /* First check for coprocessor space used for XScale/iwMMXt insns */
--        int cpnum = (insn >> 8) & 0xf;
--
--        if (arm_dc_feature(s, ARM_FEATURE_XSCALE) && (cpnum < 2)) {
-+    /* TODO: convert xscale/iwmmxt decoder to decodetree ?? */
-+    if (arm_dc_feature(s, ARM_FEATURE_XSCALE)) {
-+        if (((insn & 0x0c000e00) == 0x0c000000)
-+            && ((insn & 0x03000000) != 0x03000000)) {
-+            /* Coprocessor insn, coprocessor 0 or 1 */
-             disas_xscale_insn(s, insn);
--            break;
-+            return;
-         }
--        /* fall through */
--    }
--    default:
--    illegal_op:
--        unallocated_encoding(s);
--        break;
-     }
-+
-+illegal_op:
-+    unallocated_encoding(s);
- }
+@@ -5237,6 +5237,68 @@ static int t16_pop_list(DisasContext *s, int x)
+ #include "decode-t32.inc.c"
+ #include "decode-t16.inc.c"
  
- static bool thumb_insn_is_16bit(DisasContext *s, uint32_t pc, uint32_t insn)
++static bool valid_cp(DisasContext *s, int cp)
++{
++    /*
++     * Return true if this coprocessor field indicates something
++     * that's really a possible coprocessor.
++     * For v7 and earlier, coprocessors 8..15 were reserved for Arm use,
++     * and of those only cp14 and cp15 were used for registers.
++     * cp10 and cp11 were used for VFP and Neon, whose decode is
++     * dealt with elsewhere. With the advent of fp16, cp9 is also
++     * now part of VFP.
++     * For v8A and later, the encoding has been tightened so that
++     * only cp14 and cp15 are valid, and other values aren't considered
++     * to be in the coprocessor-instruction space at all. v8M still
++     * permits coprocessors 0..7.
++     */
++    if (arm_dc_feature(s, ARM_FEATURE_V8) &&
++        !arm_dc_feature(s, ARM_FEATURE_M)) {
++        return cp >= 14;
++    }
++    return cp < 8 || cp >= 14;
++}
++
++static bool trans_MCR(DisasContext *s, arg_MCR *a)
++{
++    if (!valid_cp(s, a->cp)) {
++        return false;
++    }
++    do_coproc_insn(s, a->cp, false, a->opc1, a->crn, a->crm, a->opc2,
++                   false, a->rt, 0);
++    return true;
++}
++
++static bool trans_MRC(DisasContext *s, arg_MRC *a)
++{
++    if (!valid_cp(s, a->cp)) {
++        return false;
++    }
++    do_coproc_insn(s, a->cp, false, a->opc1, a->crn, a->crm, a->opc2,
++                   true, a->rt, 0);
++    return true;
++}
++
++static bool trans_MCRR(DisasContext *s, arg_MCRR *a)
++{
++    if (!valid_cp(s, a->cp)) {
++        return false;
++    }
++    do_coproc_insn(s, a->cp, true, a->opc1, 0, a->crm, 0,
++                   false, a->rt, a->rt2);
++    return true;
++}
++
++static bool trans_MRRC(DisasContext *s, arg_MRRC *a)
++{
++    if (!valid_cp(s, a->cp)) {
++        return false;
++    }
++    do_coproc_insn(s, a->cp, true, a->opc1, 0, a->crm, 0,
++                   true, a->rt, a->rt2);
++    return true;
++}
++
+ /* Helpers to swap operands for reverse-subtract.  */
+ static void gen_rsb(TCGv_i32 dst, TCGv_i32 a, TCGv_i32 b)
+ {
+@@ -8293,17 +8355,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+             disas_xscale_insn(s, insn);
+             break;
+         }
+-
+-        if ((cpnum & 0xe) == 10) {
+-            /* VFP, but failed disas_vfp.  */
+-            goto illegal_op;
+-        }
+-
+-        if (disas_coproc_insn(s, insn)) {
+-            /* Coprocessor.  */
+-            goto illegal_op;
+-        }
+-        break;
++        /* fall through */
+     }
+     default:
+     illegal_op:
 -- 
 2.20.1
 

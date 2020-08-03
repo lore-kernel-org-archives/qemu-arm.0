@@ -1,94 +1,94 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5938066lfy;
-        Mon, 3 Aug 2020 03:58:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwVDIReD/D9EcfkVdRvdi3UYe5krFWs6VEjEa9NVFLmgd9u70vmq+VF39DjGo0RxA00+apI
-X-Received: by 2002:a25:d44e:: with SMTP id m75mr24351390ybf.157.1596452319452;
-        Mon, 03 Aug 2020 03:58:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596452319; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5938876lfy;
+        Mon, 3 Aug 2020 03:59:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw33w7USJtYE1O5W1N1+hKiyMbWWpmc01TleU7bhBpuUHNePG6B+79JuI8rw+R09lP74fMl
+X-Received: by 2002:a5b:3c9:: with SMTP id t9mr26079247ybp.55.1596452388510;
+        Mon, 03 Aug 2020 03:59:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596452388; cv=none;
         d=google.com; s=arc-20160816;
-        b=Nssa+B4sFq0HBkb5/fmpGjjcahlvgEw7tsghflI2b85RE+jQ0DvE+mwT20ULRu421Z
-         bZ1LBNlhbkAQ6AZxBcWcIASSLQuN4MvLTgToGbgjAfegG5j53YSlaIPyzd7Oz6UHf0kP
-         JEZ9EKVF9LP9In/hG3V9fs6uAfxGtyEXwoiDJLpJPi/azpGRZUT1S/T5VOC/iHQZ7W1V
-         xf5+6EdBHW6KRmAXyLYx+jp/vfvar7p5DpcYTRWf5dzzDrdzO8nDLdKCNerENR7ozaJa
-         aO5oJhLbFlWsy0wFj2wG+0No8CUIkotxvmqDUbmkvb2QJdP60yHMZr/lLzGpZghNFIwN
-         ePWA==
+        b=fgqbALaet6NYEXIk12tq5sAsq5II6WpmiMtY5zrwYeEMW46kcliBVR9pvahbh40Ygv
+         e267r0OKbhjf1a195LGCJc3V2VXF09aK6j2CVIAnG03egRZg8ufUzkeqFdSUUh7GbVEM
+         pFGCvC03NpD5hTNoq6dqNNtd3LFTieCdp1Sc5tErrYYelDCA2jzBNvTFaE6wsiwPkfR7
+         T24SMHrLrELQWGOUmTGOGB994UzIQUv0hFUy3nOhLVnPBfc8palmr+44cx2NbOlmeXed
+         +rn6f7hq3DSocjGugNWAqn0lRDG5bPtmQep37IAXW2zsUCOQMg2nTKLDEiVFpnlwySHg
+         Kw7g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=g3DyF6kevoJjleeMCTdWs3EQHtJ+0mrixjxdzUsE41I=;
-        b=i5lL/MHqmI7gFC9sMpsiUyEJMG/X4DfiS1nJCOo5o0IPdDi6lXGYwb3SlNJiVcc6TL
-         T7dwG/A1zOM88nK5Rj+LRqdGkrrGQpVsP1yIoGyYjjdkcHVtd83+Zb4+vWDzVrFDJp3n
-         aKw0JdeXkUjvpqNnxuHu0HdKtz627llCaHtfPsS68TSoBFkloYbwfB4QQ9hSzjE88Za5
-         cVPe2av7cEpe1ISqiFtBkwNIC8jlfBdDf7/zIRk1evaH++jFnAR4vgs3SOuLmtaye0vW
-         TvJSATMNeYlKVpMF2hdhn3rNgZDhmIBVB16mge5gklGADhTg4UmO7tctiaGmm/0Bp/+X
-         nhoQ==
+        bh=XHiU5GmBcdXr23pohS4D4pPIDt+/4V6rIKN0OFbqJDw=;
+        b=YDswCjp9B2863pRsGB4B8l6Aebp5iO1YCo+a7ifa44OEds5JPdZK8PSBmrvMVfH7G3
+         UWMQR2FsDA7Jm5sHailZ1mTgaYEKCWSmehsYuBJFqk0mFLQssSHia8IJfjIjLt1Nt5FR
+         Tje81SMoO38o41jLmpQh+DQqDTBT5bqxGRwvxTTQWCCW15+ew/1nxMh+yBvwAA2+HOJ4
+         xcpjradbqmHZg5a0WnkZ8aOEEQKnLaipoAzh9Xe3SDrzMFCGkdIaSrzqMWXR2p13YF8V
+         YTCjj6bhdXOOEuJjItGnnSXIhnHA25tG9GQi819SXUoIbcuOPDwxzsKNhHpAXHfJrOja
+         vkZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="V/N5clIh";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KkFjxpKU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z19si5101376ybi.349.2020.08.03.03.58.39
+        by mx.google.com with ESMTPS id e67si14749508yba.462.2020.08.03.03.59.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Aug 2020 03:58:39 -0700 (PDT)
+        Mon, 03 Aug 2020 03:59:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="V/N5clIh";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KkFjxpKU;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56834 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34856 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2YAw-0004a7-O0
-	for alex.bennee@linaro.org; Mon, 03 Aug 2020 06:58:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39632)
+	id 1k2YC3-00076f-MB
+	for alex.bennee@linaro.org; Mon, 03 Aug 2020 06:59:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39654)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k2Y9I-0002Vf-OJ; Mon, 03 Aug 2020 06:56:56 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:41697)
+ id 1k2Y9K-0002Wk-SP; Mon, 03 Aug 2020 06:56:59 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335]:50652)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k2Y9H-000271-3f; Mon, 03 Aug 2020 06:56:56 -0400
-Received: by mail-wr1-x441.google.com with SMTP id r2so28687911wrs.8;
- Mon, 03 Aug 2020 03:56:54 -0700 (PDT)
+ id 1k2Y9J-00027R-ES; Mon, 03 Aug 2020 06:56:58 -0400
+Received: by mail-wm1-x335.google.com with SMTP id c80so13926411wme.0;
+ Mon, 03 Aug 2020 03:56:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=g3DyF6kevoJjleeMCTdWs3EQHtJ+0mrixjxdzUsE41I=;
- b=V/N5clIh/9GQ2oVuu4ZfmxUKRHvWV5zfqJmnHJW0O4cQqR2Az4CkEbgxAqSZIXQ9CJ
- oPojMbd7Nx7wdjLZxI0hauMwQz2TbbYOR3DTIsNqDbWFx1QmBktVymFOQGhojZDOPoSV
- nLT3njdKyqDWkKNopRDP9HZ4HlvemtOg8Q3NJClHEcwNuCd23CHlLPiQiFKkM15BRyUA
- oz0LXWDd2T0mCmKsOMqfkkEGTv728Z4zrUWLRKPJqq71WoMYm3DXxdlPxzx/WYZMq6Ty
- iFQ0OvycigAW2F5o8deg+IdB2VZPqh79ge201xforVpJ8zuPaYAI+5XBomeqqxRYeNT5
- vlgQ==
+ bh=XHiU5GmBcdXr23pohS4D4pPIDt+/4V6rIKN0OFbqJDw=;
+ b=KkFjxpKUK0u3KIKvxKYk6uVXB55kQ0Q5bBCKz25HyoB/Wzw/Lv23RsHRiFe/pbVgDT
+ zDNfHU1sCeMKtKmSwixabV4h2vdHRUTW7CbS7THkVN2UI5sJp/r2POpLhwH14K2JDHNC
+ Hpzfc0AMJHjuNvWH2UiX+CjcExK0fSbpKmxRb2rudsM2oAe2i0W8WayXtg4Ik0+EDycf
+ X3uSSMqtzSPtQzoVDT1PrMezuYmSLW7VM/BKnWGCoiBx+wZvxSm1f3UYv9PYRO06Vzgv
+ hgYgijh0Ki/wbopCdwLwAUNuersh5bfoGMnksROGSd9pQ5YtAbqYcCbqaDwD6xAJqoQ8
+ MAXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=g3DyF6kevoJjleeMCTdWs3EQHtJ+0mrixjxdzUsE41I=;
- b=q/AupQFdNAP3ZV5V2TZ00jZHh/e/x9HH6a6l+nmkz+MqkSqLQPLBsHol/Cv6qLZPNK
- qy2jzs+d1LTUQ0CnI5d3/MQkrK/IbiFRkBd7iM1SYiqf8dAytgSUYL6L5YnqFx3QjDYW
- qp7anx3CgyLnXJPFB9EUseArzysUYI/LaM0F23wDA0dw1hC6p9HqeqKQwH45vaK64MA+
- f6TejjdmkIiE91dednUpZN9FwK/uztkNiRcKw02CqzRrDZHgU2wFWFwKesDQob5MMW0S
- V2Qw6vshd+hiXHPWwOBQ53U6p6fia0VHE5eIrxPQDmaSQd9i+tUU8A2RJIdBNvEXEpeG
- GTrQ==
-X-Gm-Message-State: AOAM532pLavVlEhZmPywQKkE6PhkZGMIYVP6027VccB2koB+qPmq6Xqv
- AegV3+WTmgwi2tZjTasJn58Z03hw
-X-Received: by 2002:a5d:6910:: with SMTP id t16mr15577591wru.178.1596452212964; 
- Mon, 03 Aug 2020 03:56:52 -0700 (PDT)
+ bh=XHiU5GmBcdXr23pohS4D4pPIDt+/4V6rIKN0OFbqJDw=;
+ b=evk1VG7ghFbmVB6gRZr9VhQgqpkIYJnb0BuMiWmAxK78hcWW7U75MaIM2fjof197kf
+ dCxm88YlsX/mNhmObQGTlnK5gffjYGRb1P6ZtJRsrgXKHGhI+VKKhsbHgg8HL9xMg/HM
+ yS7Rb5NknlsC3XNVSnMSYj16Kmk7cV6iyrkb5KeOhbPY8SsIpX8JhRDXsI0/WUTidgh8
+ EUKd9ZaFtpgg1OgMQFGaAInhbk8tjj8ModWDRXMrAQQalyEm1TsMlDM2JH2oMiQdFUuE
+ /ou8fkxcS52vg3/nXlhYXHqmUUKA3DzI6w/FW2PJI6gYViuATbokuFjcBW1uoRZ264VI
+ S6Jw==
+X-Gm-Message-State: AOAM530j5wV+tMuMpwcy/82iJ/MQyQezWrgbpir+KKGbbX9DUUV2xrF3
+ FJ9Xe95Fue9gimn41ui7JHDgfeNw
+X-Received: by 2002:a1c:770c:: with SMTP id t12mr16440255wmi.65.1596452215388; 
+ Mon, 03 Aug 2020 03:56:55 -0700 (PDT)
 Received: from localhost.localdomain (214.red-88-21-68.staticip.rima-tde.net.
  [88.21.68.214])
- by smtp.gmail.com with ESMTPSA id z11sm23103477wrw.93.2020.08.03.03.56.51
+ by smtp.gmail.com with ESMTPSA id z11sm23103477wrw.93.2020.08.03.03.56.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Aug 2020 03:56:52 -0700 (PDT)
+ Mon, 03 Aug 2020 03:56:54 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.1? 2/4] hw/arm/xilinx_zynq: Call qdev_connect_clock_in()
- before DeviceRealize
-Date: Mon,  3 Aug 2020 12:56:45 +0200
-Message-Id: <20200803105647.22223-3-f4bug@amsat.org>
+Subject: [PATCH-for-5.1? 4/4] hw/qdev-clock: Avoid calling
+ qdev_connect_clock_in after DeviceRealize
+Date: Mon,  3 Aug 2020 12:56:47 +0200
+Message-Id: <20200803105647.22223-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 In-Reply-To: <20200803105647.22223-1-f4bug@amsat.org>
 References: <20200803105647.22223-1-f4bug@amsat.org>
@@ -96,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x335.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -129,7 +129,7 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GWfRWtUDQBSQ
+X-TUID: jue+6e6XIu9F
 
 Clock canonical name is set in device_set_realized (see the block
 added to hw/core/qdev.c in commit 0e6934f264).
@@ -137,65 +137,39 @@ If we connect a clock after the device is realized, this code is
 not executed. This is currently not a problem as this name is only
 used for trace events, however this disrupt tracing.
 
-Fix by calling qdev_connect_clock_in() before realizing.
+Add a comment to document qdev_connect_clock_in() must be called
+before the device is realized, and assert this condition.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/xilinx_zynq.c | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ include/hw/qdev-clock.h | 2 ++
+ hw/core/qdev-clock.c    | 1 +
+ 2 files changed, 3 insertions(+)
 
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index cf6d9757b5..969ef0727c 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -222,18 +222,18 @@ static void zynq_init(MachineState *machine)
-                           1, 0x0066, 0x0022, 0x0000, 0x0000, 0x0555, 0x2aa,
-                           0);
+diff --git a/include/hw/qdev-clock.h b/include/hw/qdev-clock.h
+index a897f7c9d0..64ca4d266f 100644
+--- a/include/hw/qdev-clock.h
++++ b/include/hw/qdev-clock.h
+@@ -70,6 +70,8 @@ Clock *qdev_get_clock_out(DeviceState *dev, const char *name);
+  *
+  * Set the source clock of input clock @name of device @dev to @source.
+  * @source period update will be propagated to @name clock.
++ *
++ * Must be called before @dev is realized.
+  */
+ void qdev_connect_clock_in(DeviceState *dev, const char *name, Clock *source);
  
--    /* Create slcr, keep a pointer to connect clocks */
--    slcr = qdev_new("xilinx,zynq_slcr");
--    sysbus_realize_and_unref(SYS_BUS_DEVICE(slcr), &error_fatal);
--    sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
--
-     /* Create the main clock source, and feed slcr with it */
-     zynq_machine->ps_clk = CLOCK(object_new(TYPE_CLOCK));
-     object_property_add_child(OBJECT(zynq_machine), "ps_clk",
-                               OBJECT(zynq_machine->ps_clk));
-     object_unref(OBJECT(zynq_machine->ps_clk));
-     clock_set_hz(zynq_machine->ps_clk, PS_CLK_FREQUENCY);
-+
-+    /* Create slcr, keep a pointer to connect clocks */
-+    slcr = qdev_new("xilinx,zynq_slcr");
-     qdev_connect_clock_in(slcr, "ps_clk", zynq_machine->ps_clk);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(slcr), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(slcr), 0, 0xF8000000);
+diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
+index f139b68b88..47ecb5b4fa 100644
+--- a/hw/core/qdev-clock.c
++++ b/hw/core/qdev-clock.c
+@@ -186,5 +186,6 @@ Clock *qdev_alias_clock(DeviceState *dev, const char *name,
  
-     dev = qdev_new(TYPE_A9MPCORE_PRIV);
-     qdev_prop_set_uint32(dev, "num-cpu", 1);
-@@ -257,19 +257,19 @@ static void zynq_init(MachineState *machine)
-     dev = qdev_new(TYPE_CADENCE_UART);
-     busdev = SYS_BUS_DEVICE(dev);
-     qdev_prop_set_chr(dev, "chardev", serial_hd(0));
-+    qdev_connect_clock_in(dev, "refclk",
-+                          qdev_get_clock_out(slcr, "uart0_ref_clk"));
-     sysbus_realize_and_unref(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, 0xE0000000);
-     sysbus_connect_irq(busdev, 0, pic[59 - IRQ_OFFSET]);
--    qdev_connect_clock_in(dev, "refclk",
--                          qdev_get_clock_out(slcr, "uart0_ref_clk"));
-     dev = qdev_new(TYPE_CADENCE_UART);
-     busdev = SYS_BUS_DEVICE(dev);
-     qdev_prop_set_chr(dev, "chardev", serial_hd(1));
-+    qdev_connect_clock_in(dev, "refclk",
-+                          qdev_get_clock_out(slcr, "uart1_ref_clk"));
-     sysbus_realize_and_unref(busdev, &error_fatal);
-     sysbus_mmio_map(busdev, 0, 0xE0001000);
-     sysbus_connect_irq(busdev, 0, pic[82 - IRQ_OFFSET]);
--    qdev_connect_clock_in(dev, "refclk",
--                          qdev_get_clock_out(slcr, "uart1_ref_clk"));
- 
-     sysbus_create_varargs("cadence_ttc", 0xF8001000,
-             pic[42-IRQ_OFFSET], pic[43-IRQ_OFFSET], pic[44-IRQ_OFFSET], NULL);
+ void qdev_connect_clock_in(DeviceState *dev, const char *name, Clock *source)
+ {
++    assert(!dev->realized);
+     clock_set_source(qdev_get_clock_in(dev, name), source);
+ }
 -- 
 2.21.3
 

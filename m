@@ -1,102 +1,99 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5953584lfy;
-        Mon, 3 Aug 2020 04:19:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwiHP9IjbE7l0XXITWZ4DjaPByazlzJ3yi+v5YHsbQB/1rA9JZlCjMii0dAbUSWvevPvJln
-X-Received: by 2002:a5b:947:: with SMTP id x7mr27026658ybq.106.1596453548075;
-        Mon, 03 Aug 2020 04:19:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596453548; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5953735lfy;
+        Mon, 3 Aug 2020 04:19:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw/xyagOXyWIzH6xX1LwDc5giypbemSKXX6RI7Ty9c10dmu8X902x+4kr0D/ic1+goNXV/t
+X-Received: by 2002:a25:ce4a:: with SMTP id x71mr25393324ybe.434.1596453561352;
+        Mon, 03 Aug 2020 04:19:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596453561; cv=none;
         d=google.com; s=arc-20160816;
-        b=bj1T98/2aApq4gE2KCoSXy4VoZC//trir2PFx2OF1KXdjw/VGinue3PEQmiybvj8tj
-         cZV+wyFagOZXzygF7R3R42Te0Y6SwJylBqyn8PjexeVkOmVivzWOUlUCEx4ap27G31/r
-         gEQcVPqKol+3UrXKKVhst816fdrHj7uT3QnpA6+6zhfNMkS6nHcAhFVkF2jkZ14mUB4C
-         VkZkVZr9UsZsH2N3CTJSNf+PPF4GXUr3myqqtXIcLQNQlvcXeYwMmixJccA72ptt7Vgx
-         rPhbJ3szg0tkSwK1p1Plwauydeo/Y7drSa4kg55/ivVlwhXb+UJfBMVl6IhTSTD3WjzH
-         D8HA==
+        b=j3V0qRlOWUlbBFD1uoUzTtRFbX9tzwzJDKl2pLfdAPXTF+tTIWJbVPIFEms8avr5XZ
+         TXG0JycOv0/Iq0yEB8OObgc8GrcZqKQrUAsF9DYaiqtpKjWQhte8aJ8ATuEtdY/TqE91
+         zQQX8dhi7QUKbJGvoStfNk3Pwav/GRHdNhRI0YkBZrqu9tkOKHa/q6/n7NmU43GzRtEp
+         MQ6H9qv6jWVP5+4I3qeoHTAzzeeh2AlovOUCkao6Us/VfzUATeQCj2h94XUWYOtAxD6B
+         b0GsVuh1BRKMDSWYJjBB6EOKZlEddbuIlejVoaTW4uFVkomDZRqIWPlidcCGyIo7twGx
+         mpPg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=GdK1Bc8JNmdYj342FXS0zCz0nM9XuyCr0eFVY1VBs2Q=;
-        b=JLHX3RFLlls8R0E0UoPBmCT6rkn4D6zb9QYppk1GEWvTLGbh3pECDAvdPvGZuulm2D
-         4gVOJRG/X6ftk9D+x3ZmAALgYRAK/ZmHVw9g8j+TRsnkiW95S9uSu4OzZ6MeC+q8nxX+
-         PGsncphTBjmO4wXySEPLLYCrW9Nin+EdXXbcm/vGGTwlblL+PUmVPaWMeGE+MUQ9gI05
-         YPLrxaVCcKXdmJhdNzK8ODoSYkBdfJDFvBBo5pJ4tjsl4N4ke7A1Q+D6mNXEncIyFPyq
-         CdzcfX21cyr+0PYLUsZX8anFBSQqAT9bZnaROjDP3Nsungi9SAeT58jLGPGX5lYrPEjz
-         YLAQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=bnYxoFbHtrkjqYPO/Dt9+mPErfpnn8YVEerPhU9sF5Y=;
+        b=SfmTZrVNBEnVR5lZJi19wlZPsA+QS2cE/IFjfoPul9OrUgKKcnPSzE9sz5UACU/yhu
+         6PTRXejVQRg21NstXRzqDyADJgxar/8UeSBpCWDpVuGMUSYwJUSsQ0AlppJ1kd/obzSZ
+         qKbsXV8zoLx9zRZf86XE/JVNKpeQrVa2hPttn3+DHNpjwntWh+6X0q3Go0rkeYd3UEtB
+         f1IXSgJ+RWQk2CHkl4ErxoY4dVnL90m/WcQpY9Yvd5UQenpdT6xBll3VLA46u/Tax0a1
+         oDO6/VyNc2W0g2grDiKMiVm71y48LONwoNHVS3OCEq6sFsHIYH5svXQNC3NdekjoJ7u3
+         yezg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xLByYNFX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=g1AKw2BP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k23si11795624ybj.389.2020.08.03.04.19.07
+        by mx.google.com with ESMTPS id l11si17052297ybt.476.2020.08.03.04.19.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Aug 2020 04:19:08 -0700 (PDT)
+        Mon, 03 Aug 2020 04:19:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xLByYNFX;
+       dkim=pass header.i=@linaro.org header.s=google header.b=g1AKw2BP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42958 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43722 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2YUl-0003j1-F3
-	for alex.bennee@linaro.org; Mon, 03 Aug 2020 07:19:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45906)
+	id 1k2YUy-00044L-Ny
+	for alex.bennee@linaro.org; Mon, 03 Aug 2020 07:19:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2YUc-0003hf-QY
+ id 1k2YUc-0003hH-Fy
  for qemu-arm@nongnu.org; Mon, 03 Aug 2020 07:18:58 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36062)
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:35068)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2YUb-0004sI-07
+ id 1k2YUZ-0004s0-HE
  for qemu-arm@nongnu.org; Mon, 03 Aug 2020 07:18:58 -0400
-Received: by mail-wm1-x342.google.com with SMTP id 3so15073888wmi.1
- for <qemu-arm@nongnu.org>; Mon, 03 Aug 2020 04:18:56 -0700 (PDT)
+Received: by mail-wm1-x334.google.com with SMTP id 184so15087851wmb.0
+ for <qemu-arm@nongnu.org>; Mon, 03 Aug 2020 04:18:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ h=from:to:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=GdK1Bc8JNmdYj342FXS0zCz0nM9XuyCr0eFVY1VBs2Q=;
- b=xLByYNFXUy8ENf1HBwA0fIR6SHk/p6AI3SIUWqykqtbWlwS+siTiTE4GHVATZjatOw
- ViLTRlu332AUKOc8AmacvfA5XA6HCxwRleEDDn+mHRg8FqaXb51976/139U3jodnvdDb
- iC41aVLb26dkC2nqJpAVAFMOvKtGba0MDADOMw23ClGu/R/5pb7I/MtWtAG0+21Icw3d
- Uqu+lYNli1lP5flBM2SIY4Po3TjrJzuqAT2Efh5UKuG2VvrO+WCnf9bqMqNr9nDMS55a
- YqJPsG4EHeoCLY+mUN93Tti4FoLT1uC2ksumJKkd8eh5Ev1CnWC7eaLwZqcgwQHHp8yb
- g0Pw==
+ bh=bnYxoFbHtrkjqYPO/Dt9+mPErfpnn8YVEerPhU9sF5Y=;
+ b=g1AKw2BPiNsT4JkHx145evksMt2QOhfDkLi4uJBYWO3YBgsWDXsGfoUrBUv9x0nRCe
+ +46eFl0WdGNQ7weyCSZDZm3JLbvnPlZOMXLNEFTIHzBSesY2M4srSXihSymga45BiHMg
+ lqE3eB2AAjgAk04mEyTwx8dASYEphrArsIIIXzUN8yavQ4/peA1FPTEH22tRlUymIny0
+ trWygtZ5F6E/dzJ16dBtYo8g1gxa7shiY+uGCQ4Id4CFH2vl0TikSbg6G61vXTh5UJPc
+ yqo9TD7WA2xr6BxKRngdgZ1CIXF4tHWR6lHHY6IHGqRvdNrvHUzUZN9E3xwas/C271mz
+ 2zrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=GdK1Bc8JNmdYj342FXS0zCz0nM9XuyCr0eFVY1VBs2Q=;
- b=amO8lsluoY16RyJeHp+IDfzaUnOAP4Or5NRHhJPoGJW54EX6Cfyucb4XhrJAZszcKl
- rzYjzUzY/GMpRLpGDU1inueH5pF4MRLpGq8/Lo7YhkhDL8R1lX+h/3ihZTIvLLvMo/vG
- y4KTAru63uhIwu0TMwFrjVPAEMCzkDiK+nEdyqXTfzRMGAIzUbsFHLZWu4teWa8a34kS
- DfmJoqTu2zXOvaRdwPFGm+fFJyf99kD/93tZwOB2OFCiQW+/z8uG52WOZ3cQupXa206d
- GKFAdoMY78k5lnmvZWmoHta89+k0ihQBTSDbnJ3b5lfv8Wy2XxLxcf8bFpaUJ/yRbDUL
- qe6g==
-X-Gm-Message-State: AOAM533M+TPPETeCFYcwo5ugoIzWItFA8OZ4XgTRqix6kjcGJ3I2/DD2
- 54/LhHtLEErasllk+Fe6U1NWA8n6fb6Vlw==
-X-Received: by 2002:a1c:3b89:: with SMTP id i131mr15368269wma.30.1596453534856; 
- Mon, 03 Aug 2020 04:18:54 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=bnYxoFbHtrkjqYPO/Dt9+mPErfpnn8YVEerPhU9sF5Y=;
+ b=SBZ9GzDBD/VqHKaR0Be2ElN7t5/EVOYQXcRBpA1BjEkQ/9p5dr1s2dYnxXNZ6VCZcQ
+ HMwEQntX5UaWxAUQmuwmC1CuTQzscjo7Z/jsu1Y5ZyVNGtjM3hzOOPHYdQrzRGCjAvyO
+ VgYvlHvgs5aikAbIipghwxghO9mNVcEzkn1eC3Ur9hn6yqa4tjsTQVFj9HYFLaGBrNR7
+ btWzqCtR21rke+/fhpLEcbPsemc+ourKYMFA00KvKhF8jbWMR57cSEc+JxIZCIXI3L88
+ zdPNEb8Z3Lb6zOL4d4R++fqUQKnT1am/jzwK4cuvpBXsEu9y1ThCugoAoqzWIDYTUmtN
+ SmWw==
+X-Gm-Message-State: AOAM53212pL8g6P6867Ge5gb0ImoPZgPhRb6+3F5dB9vYon+KswfeiZE
+ oVDPUJzZNEPMYvNLpmcscnY8bUDhjuq45g==
+X-Received: by 2002:a7b:c7c6:: with SMTP id z6mr16362509wmk.17.1596453532526; 
+ Mon, 03 Aug 2020 04:18:52 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g3sm28013170wrb.59.2020.08.03.04.18.53
+ by smtp.gmail.com with ESMTPSA id g3sm28013170wrb.59.2020.08.03.04.18.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Aug 2020 04:18:54 -0700 (PDT)
+ Mon, 03 Aug 2020 04:18:51 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 2/7] target/arm: Separate decode from handling of coproc insns
-Date: Mon,  3 Aug 2020 12:18:44 +0100
-Message-Id: <20200803111849.13368-3-peter.maydell@linaro.org>
+Subject: [PATCH 0/7] target/arm: copro decode cleanup
+Date: Mon,  3 Aug 2020 12:18:42 +0100
+Message-Id: <20200803111849.13368-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200803111849.13368-1-peter.maydell@linaro.org>
-References: <20200803111849.13368-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -105,7 +102,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,150 +117,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YvQiu9uMp37J
+X-TUID: xUgCTgnakfJL
 
-As a prelude to making coproc insns use decodetree, split out the
-part of disas_coproc_insn() which does instruction decoding from the
-part which does the actual work, and make do_coproc_insn() handle the
-UNDEF-on-bad-permissions and similar cases itself rather than
-returning 1 to eventually percolate up to a callsite that calls
-unallocated_encoding() for it.
+This patchset cleans up the handling of copro instructions in
+the A32/T32 decoder, converting the MRC/MCR/MRRC/MCRR insns
+to decodetree.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate.c | 76 ++++++++++++++++++++++++------------------
- 1 file changed, 44 insertions(+), 32 deletions(-)
+The main motivation here was correcting how we do NOCP checks for
+M-profile: the architecture specifies that the NOCP exception when a
+coprocessor is not present or disabled should cover the entire wide
+range of coprocessor-space encodings, and should take precedence over
+UNDEF exceptions.  (This is the opposite of A-profile, where checking
+for a disabled FPU has to happen last.) This is mandatory from
+v8.1M and recommended for v8.0M, but we were having UNDEFs in the
+VFP encodings taking precedence over NOCP. The patchset's solution
+to this is to have a decodetree decoder which matches (a) the
+two or three insns which are defined to not get this NOCP behaviour
+and (b) the area of the encoding space which does need to be NOCP'd
+if the coprocessor is not present, and invoke this before any of
+the other decoding.
 
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index a2765fc60b2..cfdcf5281d3 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -4544,34 +4544,12 @@ void gen_gvec_uaba(unsigned vece, uint32_t rd_ofs, uint32_t rn_ofs,
-     tcg_gen_gvec_3(rd_ofs, rn_ofs, rm_ofs, opr_sz, max_sz, &ops[vece]);
- }
- 
--static int disas_coproc_insn(DisasContext *s, uint32_t insn)
-+static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
-+                           int opc1, int crn, int crm, int opc2,
-+                           bool isread, int rt, int rt2)
- {
--    int cpnum, is64, crn, crm, opc1, opc2, isread, rt, rt2;
-     const ARMCPRegInfo *ri;
- 
--    cpnum = (insn >> 8) & 0xf;
--
--    is64 = (insn & (1 << 25)) == 0;
--    if (!is64 && ((insn & (1 << 4)) == 0)) {
--        /* cdp */
--        return 1;
--    }
--
--    crm = insn & 0xf;
--    if (is64) {
--        crn = 0;
--        opc1 = (insn >> 4) & 0xf;
--        opc2 = 0;
--        rt2 = (insn >> 16) & 0xf;
--    } else {
--        crn = (insn >> 16) & 0xf;
--        opc1 = (insn >> 21) & 7;
--        opc2 = (insn >> 5) & 7;
--        rt2 = 0;
--    }
--    isread = (insn >> 20) & 1;
--    rt = (insn >> 12) & 0xf;
--
-     ri = get_arm_cp_reginfo(s->cp_regs,
-             ENCODE_CP_REG(cpnum, is64, s->ns, crn, crm, opc1, opc2));
-     if (ri) {
-@@ -4579,7 +4557,8 @@ static int disas_coproc_insn(DisasContext *s, uint32_t insn)
- 
-         /* Check access permissions */
-         if (!cp_access_ok(s->current_el, ri, isread)) {
--            return 1;
-+            unallocated_encoding(s);
-+            return;
-         }
- 
-         if (s->hstr_active || ri->accessfn ||
-@@ -4653,14 +4632,15 @@ static int disas_coproc_insn(DisasContext *s, uint32_t insn)
-         /* Handle special cases first */
-         switch (ri->type & ~(ARM_CP_FLAG_MASK & ~ARM_CP_SPECIAL)) {
-         case ARM_CP_NOP:
--            return 0;
-+            return;
-         case ARM_CP_WFI:
-             if (isread) {
--                return 1;
-+                unallocated_encoding(s);
-+                return;
-             }
-             gen_set_pc_im(s, s->base.pc_next);
-             s->base.is_jmp = DISAS_WFI;
--            return 0;
-+            return;
-         default:
-             break;
-         }
-@@ -4720,7 +4700,7 @@ static int disas_coproc_insn(DisasContext *s, uint32_t insn)
-             /* Write */
-             if (ri->type & ARM_CP_CONST) {
-                 /* If not forbidden by access permissions, treat as WI */
--                return 0;
-+                return;
-             }
- 
-             if (is64) {
-@@ -4786,7 +4766,7 @@ static int disas_coproc_insn(DisasContext *s, uint32_t insn)
-             gen_lookup_tb(s);
-         }
- 
--        return 0;
-+        return;
-     }
- 
-     /* Unknown register; this might be a guest error or a QEMU
-@@ -4806,7 +4786,39 @@ static int disas_coproc_insn(DisasContext *s, uint32_t insn)
-                       s->ns ? "non-secure" : "secure");
-     }
- 
--    return 1;
-+    unallocated_encoding(s);
-+    return;
-+}
-+
-+static int disas_coproc_insn(DisasContext *s, uint32_t insn)
-+{
-+    int cpnum, is64, crn, crm, opc1, opc2, isread, rt, rt2;
-+
-+    cpnum = (insn >> 8) & 0xf;
-+
-+    is64 = (insn & (1 << 25)) == 0;
-+    if (!is64 && ((insn & (1 << 4)) == 0)) {
-+        /* cdp */
-+        return 1;
-+    }
-+
-+    crm = insn & 0xf;
-+    if (is64) {
-+        crn = 0;
-+        opc1 = (insn >> 4) & 0xf;
-+        opc2 = 0;
-+        rt2 = (insn >> 16) & 0xf;
-+    } else {
-+        crn = (insn >> 16) & 0xf;
-+        opc1 = (insn >> 21) & 7;
-+        opc2 = (insn >> 5) & 7;
-+        rt2 = 0;
-+    }
-+    isread = (insn >> 20) & 1;
-+    rt = (insn >> 12) & 0xf;
-+
-+    do_coproc_insn(s, cpnum, is64, opc1, crn, crm, opc2, isread, rt, rt2);
-+    return 0;
- }
- 
- /* Decode XScale DSP or iWMMXt insn (in the copro space, cp=0 or 1) */
+The rest is mostly cleanup: we split out the XScale decode handling
+from disas_coproc_insn() and then convert the normal coproc
+insns to decodetree patterns in a32.decode and t32.decode.
+After these patches, the only remaining "legacy decoder" code
+is disas_xscale_insn()/disas_iwmmxt_insn(). The conversion does
+fix a minor underdecoding: we weren't checking that bits [24:21]
+of MRRC/MCRR were 0b0010, so some patterns that should have been
+UNDEFed as LDC/STC were instead treated as MRRC/MCRR.
+
+It's hard to see it ever being worthwhile to convert the
+xscale/iwmmxt decode to decodetree -- we don't have the same
+requirement to be able to add new insn support to it. I
+suppose we could replace checks like 
+ if ((insn & 0x0e000f00) == 0x0c000100)
+in disas_arm_insn() with a single decodetree pattern in
+a32.decode that invoked disas_iwmmxt_insn(), but I dunno that
+that's really any neater...
+
+thanks
+-- PMM
+
+Peter Maydell (7):
+  target/arm: Pull handling of XScale insns out of disas_coproc_insn()
+  target/arm: Separate decode from handling of coproc insns
+  target/arm: Convert A32 coprocessor insns to decodetree
+  target/arm: Tidy up disas_arm_insn()
+  target/arm: Do M-profile NOCP checks early and via decodetree
+  target/arm: Convert T32 coprocessor insns to decodetree
+  target/arm: Remove ARCH macro
+
+ target/arm/a32.decode          |  19 +++
+ target/arm/m-nocp.decode       |  42 ++++++
+ target/arm/t32.decode          |  19 +++
+ target/arm/vfp.decode          |   2 -
+ target/arm/helper.c            |  29 ++++
+ target/arm/translate-vfp.inc.c |  52 +++++--
+ target/arm/translate.c         | 240 +++++++++++++++++----------------
+ target/arm/Makefile.objs       |   6 +
+ 8 files changed, 284 insertions(+), 125 deletions(-)
+ create mode 100644 target/arm/m-nocp.decode
+
 -- 
 2.20.1
 

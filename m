@@ -1,157 +1,58 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp6032986lfy;
-        Mon, 3 Aug 2020 06:10:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJywkRjJxrU0PMEXFy2atl3NjuEHuQXVoLy2DPZkM9dQO7X/hcYlJs0ZGXwi5cPQYk+iPguj
-X-Received: by 2002:a25:7007:: with SMTP id l7mr22072794ybc.85.1596460241728;
-        Mon, 03 Aug 2020 06:10:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596460241; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Fi0dVv+UDvWHKjou3puvfSohyv16+gARO5j4a4wQ2bpy3fa782ruiElEfFpqFYgAMB
-         N4q1Ov3F4+kvTdh73UdgnGO8mqd7ECx8bJhJdq9bx25Zx4z786gDjExTnNIavD8/xB77
-         ParbkqnYuQ+4AP6EXHKUzlLukkGWssG4qqRvInKjog9vREHiCIWFlQ9zsMyB73mXbd0s
-         tl6ud+3J/Gf9gZEmEQezRfarNhvoBcjIH0R+VxeyqN52SRF6D60MBO8KoW1bT6h9Wx/a
-         9kmnapP7PRTQGVCT3w42EQ9smUlCwwOC1WmcnFSIDvg3ZEWJuQtScFnzoeyFQLKjzcrK
-         ccsg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=eCLkG5qkWXpvBdaB3idlwHIh2QxIGVXjsXJOi0ojj8o=;
-        b=BXwdbJeV0jYXPrOWLq75h9KsZzIB2aY5K3m5+Mzic6iWw1liy7DU8goSDLHNNTtvUF
-         2cVRKb4BZ/f+mFMgtsVQFCAqiQqn7l4YBsuCPfUDeKcwSL/OnKWN424ibCy18qcyug/f
-         GldFOePi/ICNSCnvyQDBdnGBr2+UhwUMYnfBFjVDUqNKF8ZLPmC4IxMQQ1BfCnzF6+kC
-         T5wjL5gVEGsgHWzO5mpsu8VUho1wIiivkxQ+nVF1btsdIbLNEhX/zg8gt54H4oZtyKw6
-         +JdIX9cH/kSCObIarVzo/8sSvW/XVw/ZHMGnD18GkIzw7b0oxIjBGtZ1l5KVe7WaFt+1
-         ozzg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FCfDOSff;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j78si11406912ybg.382.2020.08.03.06.10.41
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Aug 2020 06:10:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FCfDOSff;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:51996 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2aEj-00078w-35
-	for alex.bennee@linaro.org; Mon, 03 Aug 2020 09:10:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45082)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k2aEb-00078b-Fw; Mon, 03 Aug 2020 09:10:33 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35527)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k2aEZ-0002CA-TG; Mon, 03 Aug 2020 09:10:33 -0400
-Received: by mail-wm1-x343.google.com with SMTP id 184so15399337wmb.0;
- Mon, 03 Aug 2020 06:10:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=eCLkG5qkWXpvBdaB3idlwHIh2QxIGVXjsXJOi0ojj8o=;
- b=FCfDOSffhAr7u5tudHx1ScjC5vgEWd9iTHW1yGYIw2TK9TT2jiXGupTf9HwN4dhwEH
- yAHzwx6tarYxz7Uc5YNJmzTqvScudeSf95898h+48AsLlVPkgBq/mah/G7oGJ3FYCRhg
- QArXjUKBNfpbC9iNtRjPod9HdgY3Yy79J4GijzBy3oUlHFWhRuKLa7FcpAtzHF4qmJc5
- gTrYRZoAaV0Ldz8l2yG8q6QC+bLOjB/IKfFaDrryWCoLZeJi2w9/08sLA12igUsSFRoJ
- fuzTXFpJCOp8A3JkayiBKNIXigHc/vzcyX4UD6W2P+DLlbBsckJuPwE7dsdRQAsgChv9
- v/zg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=eCLkG5qkWXpvBdaB3idlwHIh2QxIGVXjsXJOi0ojj8o=;
- b=e6bwun+fRQEX2fV1HEvw3B+fSlDpxCkLxpOPE/BHV+5v5vrZlB0zdfBVfXUg8IopOr
- P1vXkZy31ZTAxNKPwgDXq7DM9XfEf1Uvx+QNDAAPGJOZ7cKi1DTxFAUw+uHr4bcV9Xj1
- RgmPO4e2ukFMRZX3aw/o/NDpBHRIpWcdfeDDybu+8/m9wc2YuM1TWASDG14wrSLUMMj2
- FCpCm8JEvyQzWB1nhdZnEvFxvMM4lFt+He9wW4/VqkA3Jaz2Vj77LDI80QNmhTfn/5mG
- YfzerHGNpFxB6M7cB+15MLoUiY7CBEf1DrRiObFpeAeX5HsoApQ9rTpF8mMrHdG2Exa9
- wmTA==
-X-Gm-Message-State: AOAM531RDUtHMQiK94NmxhnGGMsW+QwkrrnezDCP39w9XxtSwWXZAQiD
- DawO5qh6jNBrKkgRNYTb9TWwKiu7
-X-Received: by 2002:a7b:c219:: with SMTP id x25mr53014wmi.101.1596460229670;
- Mon, 03 Aug 2020 06:10:29 -0700 (PDT)
-Received: from [192.168.1.43] (214.red-88-21-68.staticip.rima-tde.net.
- [88.21.68.214])
- by smtp.gmail.com with ESMTPSA id g7sm25066321wrv.82.2020.08.03.06.10.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Aug 2020 06:10:29 -0700 (PDT)
-Subject: Re: [PATCH] target/arm: Delete unused VFP_DREG macros
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id 62sm25172217wrq.31.2020.08.03.06.27.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Aug 2020 06:27:57 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 152C71FF7E;
+	Mon,  3 Aug 2020 14:27:57 +0100 (BST)
 References: <20200803124848.18295-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <956d6416-8c78-05e2-9566-26288d9a7b76@amsat.org>
-Date: Mon, 3 Aug 2020 15:10:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+User-agent: mu4e 1.5.5; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH] target/arm: Delete unused VFP_DREG macros
+In-reply-to: <20200803124848.18295-1-peter.maydell@linaro.org>
+Date: Mon, 03 Aug 2020 14:27:57 +0100
+Message-ID: <873653oo4i.fsf@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20200803124848.18295-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZDZlBx70ZUSG
+Content-Transfer-Encoding: quoted-printable
+X-TUID: VchfKq/ldD0Z
 
-On 8/3/20 2:48 PM, Peter Maydell wrote:
+
+Peter Maydell <peter.maydell@linaro.org> writes:
+
 > As part of the Neon decodetree conversion we removed all
 > the uses of the VFP_DREG macros, but forgot to remove the
 > macro definitions. Do so now.
-> 
+>
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
 > ---
 >  target/arm/translate.c | 15 ---------------
 >  1 file changed, 15 deletions(-)
-> 
+>
 > diff --git a/target/arm/translate.c b/target/arm/translate.c
 > index c39a929b938..27bf6cd8b51 100644
 > --- a/target/arm/translate.c
 > +++ b/target/arm/translate.c
-> @@ -2471,21 +2471,6 @@ static int disas_dsp_insn(DisasContext *s, uint32_t insn)
+> @@ -2471,21 +2471,6 @@ static int disas_dsp_insn(DisasContext *s, uint32_=
+t insn)
 >      return 1;
 >  }
->  
+>=20=20
 > -#define VFP_REG_SHR(x, n) (((n) > 0) ? (x) >> (n) : (x) << -(n))
 > -#define VFP_DREG(reg, insn, bigbit, smallbit) do { \
 > -    if (dc_isar_feature(aa32_simd_r32, s)) { \
-> -        reg = (((insn) >> (bigbit)) & 0x0f) \
+> -        reg =3D (((insn) >> (bigbit)) & 0x0f) \
 > -              | (((insn) >> ((smallbit) - 4)) & 0x10); \
 > -    } else { \
 > -        if (insn & (1 << (smallbit))) \
 > -            return 1; \
-> -        reg = ((insn) >> (bigbit)) & 0x0f; \
+> -        reg =3D ((insn) >> (bigbit)) & 0x0f; \
 > -    }} while (0)
 > -
 > -#define VFP_DREG_D(reg, insn) VFP_DREG(reg, insn, 12, 22)
@@ -161,7 +62,7 @@ On 8/3/20 2:48 PM, Peter Maydell wrote:
 >  static inline bool use_goto_tb(DisasContext *s, target_ulong dest)
 >  {
 >  #ifndef CONFIG_USER_ONLY
-> 
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
+--=20
+Alex Benn=C3=A9e

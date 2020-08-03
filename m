@@ -1,99 +1,102 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5953735lfy;
-        Mon, 3 Aug 2020 04:19:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw/xyagOXyWIzH6xX1LwDc5giypbemSKXX6RI7Ty9c10dmu8X902x+4kr0D/ic1+goNXV/t
-X-Received: by 2002:a25:ce4a:: with SMTP id x71mr25393324ybe.434.1596453561352;
-        Mon, 03 Aug 2020 04:19:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596453561; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5954174lfy;
+        Mon, 3 Aug 2020 04:20:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx8JryQ3FoeaN6LETnrPYwXIr8WKUT0mW6Oe6uk866vwF0oGkSslEiZN8YKQegY9cSYciNY
+X-Received: by 2002:a25:7708:: with SMTP id s8mr26376370ybc.86.1596453601834;
+        Mon, 03 Aug 2020 04:20:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596453601; cv=none;
         d=google.com; s=arc-20160816;
-        b=j3V0qRlOWUlbBFD1uoUzTtRFbX9tzwzJDKl2pLfdAPXTF+tTIWJbVPIFEms8avr5XZ
-         TXG0JycOv0/Iq0yEB8OObgc8GrcZqKQrUAsF9DYaiqtpKjWQhte8aJ8ATuEtdY/TqE91
-         zQQX8dhi7QUKbJGvoStfNk3Pwav/GRHdNhRI0YkBZrqu9tkOKHa/q6/n7NmU43GzRtEp
-         MQ6H9qv6jWVP5+4I3qeoHTAzzeeh2AlovOUCkao6Us/VfzUATeQCj2h94XUWYOtAxD6B
-         b0GsVuh1BRKMDSWYJjBB6EOKZlEddbuIlejVoaTW4uFVkomDZRqIWPlidcCGyIo7twGx
-         mpPg==
+        b=hwzWVjzM5Ux9e2E8iM44EgSKem2IOPhabmJUmgD9T2JFenc56g6Gxp9/MdBZHxAE+a
+         S08sBum+JmqyLsdCEp6E9Xl3+RSocoWTN5Jwm2yRhaZi5nSRn9q206p84H2yG3nzsXYW
+         UjkXl3zK5mhxlE6489FcfI+FydFOfCH4UBHvg8NfRKFsjChywYgvlHoC6hOG5z5+4mD1
+         pKB8dJ9GYTBFCTLkdNa6Bji8+N4TSZw6DjQ+IT7yGQ8KfCov4rsD6pFQvKqRaU256R3n
+         qiK9P12Yl1Dd1TJMfPolIkoQr3kD+Kj9AKriAKw4HC3KX8+7hfS9UKuO5ixHiFaqjD6f
+         nN2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=bnYxoFbHtrkjqYPO/Dt9+mPErfpnn8YVEerPhU9sF5Y=;
-        b=SfmTZrVNBEnVR5lZJi19wlZPsA+QS2cE/IFjfoPul9OrUgKKcnPSzE9sz5UACU/yhu
-         6PTRXejVQRg21NstXRzqDyADJgxar/8UeSBpCWDpVuGMUSYwJUSsQ0AlppJ1kd/obzSZ
-         qKbsXV8zoLx9zRZf86XE/JVNKpeQrVa2hPttn3+DHNpjwntWh+6X0q3Go0rkeYd3UEtB
-         f1IXSgJ+RWQk2CHkl4ErxoY4dVnL90m/WcQpY9Yvd5UQenpdT6xBll3VLA46u/Tax0a1
-         oDO6/VyNc2W0g2grDiKMiVm71y48LONwoNHVS3OCEq6sFsHIYH5svXQNC3NdekjoJ7u3
-         yezg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=BExTigTa/EjWPG8Q5yXKlYgwozNoOz78Qwl9+pJrCfg=;
+        b=0YgWp6WbWgM+DmSb/RB4fUhdpEotCbR2dVdjc8ph97M+zWipfnwhamx2sTgN7mtc2M
+         Q4RpS+ZYRchZ3vy73AXqC6DAeXlSGyzNjFDi1EWReQpMb5lZhFBjL72kg/sQdVhN7z5X
+         le9FRi4k6j6jaAPj0rAvX/9RgQuosu8RLTmJsNmGwUwUs5Vw7k5jta6up44Ehla/ut4+
+         aYpjALq2ILEqoYJCARvC3L4wOUFOrakTwVHOC/HWJ2iMpweV1ldsJUFThEi+CC2lT/Lx
+         7jL5rtEBEpurfAChJl6z3mDHXrfBcBe7u2JrXtkNFj2HdaRXXxOLjgpg4Rtv6n2kCZn1
+         lMTw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g1AKw2BP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WBoyAtyO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l11si17052297ybt.476.2020.08.03.04.19.21
+        by mx.google.com with ESMTPS id u7si14847206ybc.432.2020.08.03.04.20.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Aug 2020 04:19:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Aug 2020 04:20:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=g1AKw2BP;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WBoyAtyO;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43722 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2YUy-00044L-Ny
-	for alex.bennee@linaro.org; Mon, 03 Aug 2020 07:19:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45900)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k2YVd-00053v-8Q
+	for alex.bennee@linaro.org; Mon, 03 Aug 2020 07:20:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2YUc-0003hH-Fy
- for qemu-arm@nongnu.org; Mon, 03 Aug 2020 07:18:58 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:35068)
+ id 1k2YUf-0003nx-LE
+ for qemu-devel@nongnu.org; Mon, 03 Aug 2020 07:19:01 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:51451)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2YUZ-0004s0-HE
- for qemu-arm@nongnu.org; Mon, 03 Aug 2020 07:18:58 -0400
-Received: by mail-wm1-x334.google.com with SMTP id 184so15087851wmb.0
- for <qemu-arm@nongnu.org>; Mon, 03 Aug 2020 04:18:54 -0700 (PDT)
+ id 1k2YUe-0004sy-2B
+ for qemu-devel@nongnu.org; Mon, 03 Aug 2020 07:19:01 -0400
+Received: by mail-wm1-x341.google.com with SMTP id p14so14003603wmg.1
+ for <qemu-devel@nongnu.org>; Mon, 03 Aug 2020 04:18:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=bnYxoFbHtrkjqYPO/Dt9+mPErfpnn8YVEerPhU9sF5Y=;
- b=g1AKw2BPiNsT4JkHx145evksMt2QOhfDkLi4uJBYWO3YBgsWDXsGfoUrBUv9x0nRCe
- +46eFl0WdGNQ7weyCSZDZm3JLbvnPlZOMXLNEFTIHzBSesY2M4srSXihSymga45BiHMg
- lqE3eB2AAjgAk04mEyTwx8dASYEphrArsIIIXzUN8yavQ4/peA1FPTEH22tRlUymIny0
- trWygtZ5F6E/dzJ16dBtYo8g1gxa7shiY+uGCQ4Id4CFH2vl0TikSbg6G61vXTh5UJPc
- yqo9TD7WA2xr6BxKRngdgZ1CIXF4tHWR6lHHY6IHGqRvdNrvHUzUZN9E3xwas/C271mz
- 2zrw==
+ bh=BExTigTa/EjWPG8Q5yXKlYgwozNoOz78Qwl9+pJrCfg=;
+ b=WBoyAtyOTh/OT8aDzwHkqSda7j0uFDgeCKhjxgTtlEpeZbxvLUsbLS4ctTHI5gwWTo
+ NGuaQuFy5gowm1C0EtkhExKsGL2Hi0eAzkuJSMmr9coYxFZVxi5Kuk3HS3YUCUZtslBu
+ zQZG/3G3myQeIsQygzVq/ShQNIIwBLBwF65Qwqk60lGGOEYkxXS8TTn0LJChDvdD/vSE
+ /rr7N9a6L+maAxcG0qhvy49eVoGcKpS2pbNAI/mBpCOmQ1LzZ3q2uu5bdbdSB3v8icgl
+ i2VnmzgUOtLK6Slh8beJSr7JRgIlHnnt6MKJNvwmXen1ujv6c29hdL/Z0/JRDCBSfz6d
+ nRrQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=bnYxoFbHtrkjqYPO/Dt9+mPErfpnn8YVEerPhU9sF5Y=;
- b=SBZ9GzDBD/VqHKaR0Be2ElN7t5/EVOYQXcRBpA1BjEkQ/9p5dr1s2dYnxXNZ6VCZcQ
- HMwEQntX5UaWxAUQmuwmC1CuTQzscjo7Z/jsu1Y5ZyVNGtjM3hzOOPHYdQrzRGCjAvyO
- VgYvlHvgs5aikAbIipghwxghO9mNVcEzkn1eC3Ur9hn6yqa4tjsTQVFj9HYFLaGBrNR7
- btWzqCtR21rke+/fhpLEcbPsemc+ourKYMFA00KvKhF8jbWMR57cSEc+JxIZCIXI3L88
- zdPNEb8Z3Lb6zOL4d4R++fqUQKnT1am/jzwK4cuvpBXsEu9y1ThCugoAoqzWIDYTUmtN
- SmWw==
-X-Gm-Message-State: AOAM53212pL8g6P6867Ge5gb0ImoPZgPhRb6+3F5dB9vYon+KswfeiZE
- oVDPUJzZNEPMYvNLpmcscnY8bUDhjuq45g==
-X-Received: by 2002:a7b:c7c6:: with SMTP id z6mr16362509wmk.17.1596453532526; 
- Mon, 03 Aug 2020 04:18:52 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=BExTigTa/EjWPG8Q5yXKlYgwozNoOz78Qwl9+pJrCfg=;
+ b=Kjb9TUgOJV69AH8UtjX9qNi4UFEmm8jtxjenWe8j0gkVAmRmLzUpat2MhEZyRaQhuM
+ tWmhzS2fgDvhHKXBc2P1yP6lDZwotIMWdik+x/0hgGugf/AUeZAy35pVPFN2yAJzCKa+
+ YLNRnwyuYQTFOFSXo7TPVfWwJrrtba/Qn/E5HXdoVKsa5v/ULJnF6LrDCVkAINjfPuVF
+ j4YMI/SrYSGZAYqb9UI+YGSuoKdKAZ2X/5gmVfWo5IxdcwjUuJnU9WGZYOrL7vhxf8Wt
+ wa/Mk4DeiZgi1AjAuNqFjz3j92AHmGZi5e7uWwuYFX47NwfliSnLaa7AFFktZyfFjAOv
+ p5JQ==
+X-Gm-Message-State: AOAM530Ncl1RRBXYfuNKMi07zGoW2CM09E3beDdqWBRcLmE9kyxcsoJ1
+ C5f8kL9xN1y47hnBPq9pnRMrZg==
+X-Received: by 2002:a1c:720e:: with SMTP id n14mr4470024wmc.152.1596453538475; 
+ Mon, 03 Aug 2020 04:18:58 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g3sm28013170wrb.59.2020.08.03.04.18.51
+ by smtp.gmail.com with ESMTPSA id g3sm28013170wrb.59.2020.08.03.04.18.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Aug 2020 04:18:51 -0700 (PDT)
+ Mon, 03 Aug 2020 04:18:57 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/7] target/arm: copro decode cleanup
-Date: Mon,  3 Aug 2020 12:18:42 +0100
-Message-Id: <20200803111849.13368-1-peter.maydell@linaro.org>
+Subject: [PATCH 4/7] target/arm: Tidy up disas_arm_insn()
+Date: Mon,  3 Aug 2020 12:18:46 +0100
+Message-Id: <20200803111849.13368-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200803111849.13368-1-peter.maydell@linaro.org>
+References: <20200803111849.13368-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -104,80 +107,69 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xUgCTgnakfJL
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KkcL6a9D6FwV
 
-This patchset cleans up the handling of copro instructions in
-the A32/T32 decoder, converting the MRC/MCR/MRRC/MCRR insns
-to decodetree.
+The only thing left in the "legacy decoder" is the handling
+of disas_xscale_insn(), and we can simplify the code.
 
-The main motivation here was correcting how we do NOCP checks for
-M-profile: the architecture specifies that the NOCP exception when a
-coprocessor is not present or disabled should cover the entire wide
-range of coprocessor-space encodings, and should take precedence over
-UNDEF exceptions.  (This is the opposite of A-profile, where checking
-for a disabled FPU has to happen last.) This is mandatory from
-v8.1M and recommended for v8.0M, but we were having UNDEFs in the
-VFP encodings taking precedence over NOCP. The patchset's solution
-to this is to have a decodetree decoder which matches (a) the
-two or three insns which are defined to not get this NOCP behaviour
-and (b) the area of the encoding space which does need to be NOCP'd
-if the coprocessor is not present, and invoke this before any of
-the other decoding.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/translate.c | 26 +++++++++-----------------
+ 1 file changed, 9 insertions(+), 17 deletions(-)
 
-The rest is mostly cleanup: we split out the XScale decode handling
-from disas_coproc_insn() and then convert the normal coproc
-insns to decodetree patterns in a32.decode and t32.decode.
-After these patches, the only remaining "legacy decoder" code
-is disas_xscale_insn()/disas_iwmmxt_insn(). The conversion does
-fix a minor underdecoding: we weren't checking that bits [24:21]
-of MRRC/MCRR were 0b0010, so some patterns that should have been
-UNDEFed as LDC/STC were instead treated as MRRC/MCRR.
-
-It's hard to see it ever being worthwhile to convert the
-xscale/iwmmxt decode to decodetree -- we don't have the same
-requirement to be able to add new insn support to it. I
-suppose we could replace checks like 
- if ((insn & 0x0e000f00) == 0x0c000100)
-in disas_arm_insn() with a single decodetree pattern in
-a32.decode that invoked disas_iwmmxt_insn(), but I dunno that
-that's really any neater...
-
-thanks
--- PMM
-
-Peter Maydell (7):
-  target/arm: Pull handling of XScale insns out of disas_coproc_insn()
-  target/arm: Separate decode from handling of coproc insns
-  target/arm: Convert A32 coprocessor insns to decodetree
-  target/arm: Tidy up disas_arm_insn()
-  target/arm: Do M-profile NOCP checks early and via decodetree
-  target/arm: Convert T32 coprocessor insns to decodetree
-  target/arm: Remove ARCH macro
-
- target/arm/a32.decode          |  19 +++
- target/arm/m-nocp.decode       |  42 ++++++
- target/arm/t32.decode          |  19 +++
- target/arm/vfp.decode          |   2 -
- target/arm/helper.c            |  29 ++++
- target/arm/translate-vfp.inc.c |  52 +++++--
- target/arm/translate.c         | 240 +++++++++++++++++----------------
- target/arm/Makefile.objs       |   6 +
- 8 files changed, 284 insertions(+), 125 deletions(-)
- create mode 100644 target/arm/m-nocp.decode
-
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index b1be4cb9d60..639fe121a2e 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -8342,26 +8342,18 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
+         return;
+     }
+     /* fall back to legacy decoder */
+-
+-    switch ((insn >> 24) & 0xf) {
+-    case 0xc:
+-    case 0xd:
+-    case 0xe:
+-    {
+-        /* First check for coprocessor space used for XScale/iwMMXt insns */
+-        int cpnum = (insn >> 8) & 0xf;
+-
+-        if (arm_dc_feature(s, ARM_FEATURE_XSCALE) && (cpnum < 2)) {
++    /* TODO: convert xscale/iwmmxt decoder to decodetree ?? */
++    if (arm_dc_feature(s, ARM_FEATURE_XSCALE)) {
++        if (((insn & 0x0c000e00) == 0x0c000000)
++            && ((insn & 0x03000000) != 0x03000000)) {
++            /* Coprocessor insn, coprocessor 0 or 1 */
+             disas_xscale_insn(s, insn);
+-            break;
++            return;
+         }
+-        /* fall through */
+-    }
+-    default:
+-    illegal_op:
+-        unallocated_encoding(s);
+-        break;
+     }
++
++illegal_op:
++    unallocated_encoding(s);
+ }
+ 
+ static bool thumb_insn_is_16bit(DisasContext *s, uint32_t pc, uint32_t insn)
 -- 
 2.20.1
 

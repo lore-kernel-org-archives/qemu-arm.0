@@ -1,184 +1,167 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5955746lfy;
-        Mon, 3 Aug 2020 04:22:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyfeN16Oc7CuFsHnz37Texofw10fGFeAsJEdUzxSvH71uxUfLAXsMtE3hZs9RCFoPcJTc7l
-X-Received: by 2002:a25:1455:: with SMTP id 82mr26343029ybu.274.1596453755295;
-        Mon, 03 Aug 2020 04:22:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596453755; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp6032986lfy;
+        Mon, 3 Aug 2020 06:10:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywkRjJxrU0PMEXFy2atl3NjuEHuQXVoLy2DPZkM9dQO7X/hcYlJs0ZGXwi5cPQYk+iPguj
+X-Received: by 2002:a25:7007:: with SMTP id l7mr22072794ybc.85.1596460241728;
+        Mon, 03 Aug 2020 06:10:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596460241; cv=none;
         d=google.com; s=arc-20160816;
-        b=FjuErEmPkhdltOYJAkbS9ymaxMWPpuMtZ6j2AqVwZPk9HEiTuFQaZ3Ey4NXFtJkNbf
-         SuZzlE2E05SgIvUZe2ivfiGlt7h6kM14tcbZG8K2bF9TT6XLgAd2+Nx+FXECQnVI8Xz1
-         AAQ69I9g12LpQGedADS98lKpmyrJCsb/lHUiOz1rMvZ8NVjsSZf7PM9XRjeJ8s3p6s/q
-         t9Yws3ZBhzEWkwolBpkIkMCfLJIv+69WiliHsoBkxRcnT0Szm8bfUKzy/f0NEn0EOnSc
-         fBcvkvdSTxavs0JROKEwgvEzUKYE4B3PWlahXPHYd44y3JZRHeH4qio+dvc7Tuw/fOlB
-         RLLg==
+        b=Fi0dVv+UDvWHKjou3puvfSohyv16+gARO5j4a4wQ2bpy3fa782ruiElEfFpqFYgAMB
+         N4q1Ov3F4+kvTdh73UdgnGO8mqd7ECx8bJhJdq9bx25Zx4z786gDjExTnNIavD8/xB77
+         ParbkqnYuQ+4AP6EXHKUzlLukkGWssG4qqRvInKjog9vREHiCIWFlQ9zsMyB73mXbd0s
+         tl6ud+3J/Gf9gZEmEQezRfarNhvoBcjIH0R+VxeyqN52SRF6D60MBO8KoW1bT6h9Wx/a
+         9kmnapP7PRTQGVCT3w42EQ9smUlCwwOC1WmcnFSIDvg3ZEWJuQtScFnzoeyFQLKjzcrK
+         ccsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=rAgcA7IrGXsmYiY0CiUqcWe2vzUpbrPD30xAx0l2H2U=;
-        b=EqMTNDRys+zlGuq8MXF2huz1xRPd31ZFxje5y260FEOoYZ2uxR/JsHiCIaP4F4fgu6
-         2IOxO8dsoe26xQI9xNjxUkEjOAcXUNIDUWHPuNMlONUdkmB036md7/fAVn52zWKckMeG
-         yEQBlqeGnyco30eaqw6HsF3JVWVFmj15vVI/NrlEHcK6WjwujRfADzZ3EItn6MFwD2Ge
-         wW3RQXDDjjr1Ltx4eC6gf9bTEjCLWcqqMeyuHnPMdq9eLlyhGfK576s/hitYfI1cbrhQ
-         Ti05cyolIf8/9Pr2ZKwPOpZgUYipBo0MfMXHnF9AyUNaphRDpbFLfPZL5SNvnYvNsuWt
-         +phA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=eCLkG5qkWXpvBdaB3idlwHIh2QxIGVXjsXJOi0ojj8o=;
+        b=BXwdbJeV0jYXPrOWLq75h9KsZzIB2aY5K3m5+Mzic6iWw1liy7DU8goSDLHNNTtvUF
+         2cVRKb4BZ/f+mFMgtsVQFCAqiQqn7l4YBsuCPfUDeKcwSL/OnKWN424ibCy18qcyug/f
+         GldFOePi/ICNSCnvyQDBdnGBr2+UhwUMYnfBFjVDUqNKF8ZLPmC4IxMQQ1BfCnzF6+kC
+         T5wjL5gVEGsgHWzO5mpsu8VUho1wIiivkxQ+nVF1btsdIbLNEhX/zg8gt54H4oZtyKw6
+         +JdIX9cH/kSCObIarVzo/8sSvW/XVw/ZHMGnD18GkIzw7b0oxIjBGtZ1l5KVe7WaFt+1
+         ozzg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JSIulD2q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FCfDOSff;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17si14823679ybn.396.2020.08.03.04.22.35
+        by mx.google.com with ESMTPS id j78si11406912ybg.382.2020.08.03.06.10.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Aug 2020 04:22:35 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 03 Aug 2020 06:10:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JSIulD2q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55558 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FCfDOSff;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:51996 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2YY6-0000Rb-Mi
-	for alex.bennee@linaro.org; Mon, 03 Aug 2020 07:22:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46052)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k2aEj-00078w-35
+	for alex.bennee@linaro.org; Mon, 03 Aug 2020 09:10:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45082)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2YUj-0003yT-Rp
- for qemu-devel@nongnu.org; Mon, 03 Aug 2020 07:19:05 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36063)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k2aEb-00078b-Fw; Mon, 03 Aug 2020 09:10:33 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35527)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k2YUi-0004tv-36
- for qemu-devel@nongnu.org; Mon, 03 Aug 2020 07:19:05 -0400
-Received: by mail-wm1-x342.google.com with SMTP id 3so15074186wmi.1
- for <qemu-devel@nongnu.org>; Mon, 03 Aug 2020 04:19:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=rAgcA7IrGXsmYiY0CiUqcWe2vzUpbrPD30xAx0l2H2U=;
- b=JSIulD2qljKdNgpllREzYB2k/aKvmVbgV/Kpo50YetrD/MYDr9Q9dR/KLb99Zkotzq
- wvcTxnvypxdtXNP/M0mlJG2jeXwyhXg78f5+exeRaDxYMD9TfESVYRB10pkOrDzm4O+x
- y0VgVfkfpCXf8jAha0pr6oWkuPeHopGUObKoHPhj6gjUa0nN0EcfYrw+g7hV0EWr3p0W
- PL4wxsS/J7G6g9wS9OBDwlhJvCTy193FZk1vRVmMP+orCgRPxDSUIcEtJAG29AMKPixE
- pLJc087zuYnk1/X/qeeH3w16kyog6mCm0ZlTVhcHX2/b9tVwp0kLsIkXPadU9gSt5tCb
- y5Jw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k2aEZ-0002CA-TG; Mon, 03 Aug 2020 09:10:33 -0400
+Received: by mail-wm1-x343.google.com with SMTP id 184so15399337wmb.0;
+ Mon, 03 Aug 2020 06:10:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=eCLkG5qkWXpvBdaB3idlwHIh2QxIGVXjsXJOi0ojj8o=;
+ b=FCfDOSffhAr7u5tudHx1ScjC5vgEWd9iTHW1yGYIw2TK9TT2jiXGupTf9HwN4dhwEH
+ yAHzwx6tarYxz7Uc5YNJmzTqvScudeSf95898h+48AsLlVPkgBq/mah/G7oGJ3FYCRhg
+ QArXjUKBNfpbC9iNtRjPod9HdgY3Yy79J4GijzBy3oUlHFWhRuKLa7FcpAtzHF4qmJc5
+ gTrYRZoAaV0Ldz8l2yG8q6QC+bLOjB/IKfFaDrryWCoLZeJi2w9/08sLA12igUsSFRoJ
+ fuzTXFpJCOp8A3JkayiBKNIXigHc/vzcyX4UD6W2P+DLlbBsckJuPwE7dsdRQAsgChv9
+ v/zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=rAgcA7IrGXsmYiY0CiUqcWe2vzUpbrPD30xAx0l2H2U=;
- b=BTBo4Xu0GffBBUYgpKsW9mo5ciJ3/AgXaG8C5L6hnH4NcPrvWe4f1VzXs1+pQwr7xD
- z+XBDnudu++SD3ntLTKrNe7s/uM9uVrbuRFpHOwYUERL5+Jj6LZkjj6MNeoj6LzhcmL6
- 3MFdgw/murjeoEo9mIKHZAHzd16uTxLwClVC6EgP653kw0mdvgsoAWY+Pms2cInTt0sp
- xQ+UcIi8YvKVsM5nKs3TpFZfX2ZZTm4c2FDwHGnIWqTxBuepUgSy1H/WXoW0m9EkTWWY
- kBPcPv1lT19tkWPa88khArGCLai8WMQWc04xFU/DmYFjxwC3KnDMjj0QtekI3lCWpsiX
- Iw7g==
-X-Gm-Message-State: AOAM530V6gndu06OuEWA7Km95Broi6cGbldFe5FjWkfmOQuLVTHhhUbz
- tw+Ip4SvMW/NIAcx0VL9H/n9Npnl9e90Cw==
-X-Received: by 2002:a1c:bcd6:: with SMTP id m205mr14913867wmf.47.1596453542606; 
- Mon, 03 Aug 2020 04:19:02 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id g3sm28013170wrb.59.2020.08.03.04.19.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Aug 2020 04:19:01 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 7/7] target/arm: Remove ARCH macro
-Date: Mon,  3 Aug 2020 12:18:49 +0100
-Message-Id: <20200803111849.13368-8-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200803111849.13368-1-peter.maydell@linaro.org>
-References: <20200803111849.13368-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:sender:subject:to:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=eCLkG5qkWXpvBdaB3idlwHIh2QxIGVXjsXJOi0ojj8o=;
+ b=e6bwun+fRQEX2fV1HEvw3B+fSlDpxCkLxpOPE/BHV+5v5vrZlB0zdfBVfXUg8IopOr
+ P1vXkZy31ZTAxNKPwgDXq7DM9XfEf1Uvx+QNDAAPGJOZ7cKi1DTxFAUw+uHr4bcV9Xj1
+ RgmPO4e2ukFMRZX3aw/o/NDpBHRIpWcdfeDDybu+8/m9wc2YuM1TWASDG14wrSLUMMj2
+ FCpCm8JEvyQzWB1nhdZnEvFxvMM4lFt+He9wW4/VqkA3Jaz2Vj77LDI80QNmhTfn/5mG
+ YfzerHGNpFxB6M7cB+15MLoUiY7CBEf1DrRiObFpeAeX5HsoApQ9rTpF8mMrHdG2Exa9
+ wmTA==
+X-Gm-Message-State: AOAM531RDUtHMQiK94NmxhnGGMsW+QwkrrnezDCP39w9XxtSwWXZAQiD
+ DawO5qh6jNBrKkgRNYTb9TWwKiu7
+X-Received: by 2002:a7b:c219:: with SMTP id x25mr53014wmi.101.1596460229670;
+ Mon, 03 Aug 2020 06:10:29 -0700 (PDT)
+Received: from [192.168.1.43] (214.red-88-21-68.staticip.rima-tde.net.
+ [88.21.68.214])
+ by smtp.gmail.com with ESMTPSA id g7sm25066321wrv.82.2020.08.03.06.10.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 03 Aug 2020 06:10:29 -0700 (PDT)
+Subject: Re: [PATCH] target/arm: Delete unused VFP_DREG macros
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200803124848.18295-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <956d6416-8c78-05e2-9566-26288d9a7b76@amsat.org>
+Date: Mon, 3 Aug 2020 15:10:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
+In-Reply-To: <20200803124848.18295-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8UzkXfQBX22L
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZDZlBx70ZUSG
 
-The ARCH() macro was used a lot in the legacy decoder, but
-there are now just two uses of it left. Since a macro which
-expands out to a goto is liable to be confusing when reading
-code, replace the last two uses with a simple open-coded
-qeuivalent.
+On 8/3/20 2:48 PM, Peter Maydell wrote:
+> As part of the Neon decodetree conversion we removed all
+> the uses of the VFP_DREG macros, but forgot to remove the
+> macro definitions. Do so now.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/translate.c | 15 ---------------
+>  1 file changed, 15 deletions(-)
+> 
+> diff --git a/target/arm/translate.c b/target/arm/translate.c
+> index c39a929b938..27bf6cd8b51 100644
+> --- a/target/arm/translate.c
+> +++ b/target/arm/translate.c
+> @@ -2471,21 +2471,6 @@ static int disas_dsp_insn(DisasContext *s, uint32_t insn)
+>      return 1;
+>  }
+>  
+> -#define VFP_REG_SHR(x, n) (((n) > 0) ? (x) >> (n) : (x) << -(n))
+> -#define VFP_DREG(reg, insn, bigbit, smallbit) do { \
+> -    if (dc_isar_feature(aa32_simd_r32, s)) { \
+> -        reg = (((insn) >> (bigbit)) & 0x0f) \
+> -              | (((insn) >> ((smallbit) - 4)) & 0x10); \
+> -    } else { \
+> -        if (insn & (1 << (smallbit))) \
+> -            return 1; \
+> -        reg = ((insn) >> (bigbit)) & 0x0f; \
+> -    }} while (0)
+> -
+> -#define VFP_DREG_D(reg, insn) VFP_DREG(reg, insn, 12, 22)
+> -#define VFP_DREG_N(reg, insn) VFP_DREG(reg, insn, 16,  7)
+> -#define VFP_DREG_M(reg, insn) VFP_DREG(reg, insn,  0,  5)
+> -
+>  static inline bool use_goto_tb(DisasContext *s, target_ulong dest)
+>  {
+>  #ifndef CONFIG_USER_ONLY
+> 
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/translate.c | 14 +++++++++-----
- 1 file changed, 9 insertions(+), 5 deletions(-)
-
-diff --git a/target/arm/translate.c b/target/arm/translate.c
-index 59d6e43611a..37d4985d7e1 100644
---- a/target/arm/translate.c
-+++ b/target/arm/translate.c
-@@ -49,8 +49,6 @@
- #define ENABLE_ARCH_7     arm_dc_feature(s, ARM_FEATURE_V7)
- #define ENABLE_ARCH_8     arm_dc_feature(s, ARM_FEATURE_V8)
- 
--#define ARCH(x) do { if (!ENABLE_ARCH_##x) goto illegal_op; } while(0)
--
- #include "translate.h"
- 
- #if defined(CONFIG_USER_ONLY)
-@@ -7909,7 +7907,7 @@ static bool trans_BLX_i(DisasContext *s, arg_BLX_i *a)
- {
-     TCGv_i32 tmp;
- 
--    /* For A32, ARCH(5) is checked near the start of the uncond block. */
-+    /* For A32, ARM_FEATURE_V5 is checked near the start of the uncond block. */
-     if (s->thumb && (a->imm & 2)) {
-         return false;
-     }
-@@ -8275,7 +8273,10 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-          * choose to UNDEF. In ARMv5 and above the space is used
-          * for miscellaneous unconditional instructions.
-          */
--        ARCH(5);
-+        if (!arm_dc_feature(s, ARM_FEATURE_V5)) {
-+            unallocated_encoding(s);
-+            return;
-+        }
- 
-         /* Unconditional instructions.  */
-         /* TODO: Perhaps merge these into one decodetree output file.  */
-@@ -8400,7 +8401,10 @@ static void disas_thumb2_insn(DisasContext *s, uint32_t insn)
-             goto illegal_op;
-         }
-     } else if ((insn & 0xf800e800) != 0xf000e800)  {
--        ARCH(6T2);
-+        if (!arm_dc_feature(s, ARM_FEATURE_THUMB2)) {
-+            unallocated_encoding(s);
-+            return;
-+        }
-     }
- 
-     if (arm_dc_feature(s, ARM_FEATURE_M)) {
--- 
-2.20.1
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 

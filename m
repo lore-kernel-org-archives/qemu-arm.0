@@ -1,108 +1,105 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp6138957lfy;
-        Mon, 3 Aug 2020 08:19:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0+jZ90rY/wIlhFf0rsQt36ytoarQaDgCvu8uVsB5h0nnQ7S+AjNw3TUdHFPSldoiU81q7
-X-Received: by 2002:a25:e016:: with SMTP id x22mr27739592ybg.9.1596467963899;
-        Mon, 03 Aug 2020 08:19:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596467963; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp6209210lfy;
+        Mon, 3 Aug 2020 09:48:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxOliMFxavplcV3FE03gGjJAYuVzMJmwCCXdEMJwZFpBLhRYHZ1iKSGLs60f71HB2NIOTva
+X-Received: by 2002:a25:9742:: with SMTP id h2mr25453064ybo.430.1596473336685;
+        Mon, 03 Aug 2020 09:48:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596473336; cv=none;
         d=google.com; s=arc-20160816;
-        b=uRcpRD6+/f+SGAyNavpD3D7jNoncTMLeWPaYaqszez+q/S9QKmK1Z/pbHToSuZjPur
-         uxFXgyYCDYJ6nAycsXAfuyq9Ds+FaM1soPp35ZnAB16lqGRPa/qIaD8Y8n2TfDHX9CDc
-         YGXDv4xu/jbRDNcatP/860GcNer0jx/O+VRzMbpy3Z66bd+h0Tj2/oQdmBElEgttjewu
-         qloP/wtyxQxxzfWivGNA98qYiYDVwcRfovqDkKAJ5FGqCfM7DCKomBOafPYwX4MdkKW4
-         yaUd0tQF8Whll8jAWtCdc4gXIeCd7KV0PtXKyge0rskFEtksqG+ZZ8qfODOSu+ImIoLE
-         +Z4g==
+        b=WTVUvbdtR7RK7oxHQ0WRlKqPPf6NiIuoapu/DoqL5CQf0Tjan0VQH+sYVKtk0xCIMt
+         FHp/OlBbX1FbquiEKM64hRqQj2js4zTruLG85HfPT4TBEh93EaK9eqv7yiAq2eY6ytQD
+         sMVgFbTZtYa/k0b/ZRsJHLwZDDnn/BkPfua4GKtcn1EDWRaDE1Vj73qA/HOBPjCpoToi
+         AfmwybLldfs1r9YHIlhnzKmMQa2hC6rWAR/Wrtfov0qGAPavQIoST20Eze8wbbz6Jf+I
+         m7rImhi/KHmuGmnmFf8L0qbS3iLXYF4nLg7DvNOyC1iKNccPW4WwBhd7mq2j/VgvZ1nn
+         ZdRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=7CXGvfSTOUj22+OT1trdS/F+9jmnVW8RVrrIqVkynMA=;
-        b=vi8+AWKY0qvyJW4zbZJNurE2bfVIfH7i5bPSxO+PzNqgOFJcnZZxpkwYxd4HbOkBbm
-         xhM1llKVgI+JGUsXVsH0B5dKA5ys6mYL6k8xHwF0xjnMC9FOzOsoTz7oa6Re3UgAHHlP
-         HJ9u1UiObYckt77aTmuOwlHUC8ke9kc4AXUDNJTVNdlI/7mFRLj1hRXi8xfWf4MlPtCF
-         h/hFv+Mj7qkaqntYvcvYyJ7Xxunnb7NhGTrx1mNKNtZqF1osktOyjEUTwQE0DBXmv5Fp
-         3hHU82ZliTA9wX6egKqSdyxEntdBk7uXNnwijakCAVrbCUG+AHtqduPh65iC9PI/uh2/
-         7BEw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=3fXnroyHhh2ZypZpfGGO1PqM+ePmoBxOOOVQb81ZRiY=;
+        b=TKEAoL/NBYQF/L8Zu0xZiPHZh+Tel+ZAKeVLpUFvuOxEhtlqK7elcozBlVwWu6wSpK
+         xcZmfXs3FMsEFSHKAoJHo4lhb8YKIeQL5ta8w/XAar23P6ihf+JPd8YF2mMJeCSL2dUi
+         pKjHr38GEHk9ACg7XIWVU/FL/IonqB3ygEkjAwK9GWKuPf1IsR9kiCelzix80RcmPL3h
+         AzwQ0UdFpbxom8iubIxmmPEvCi4yO+ZQyxaXX6EmTnI9JnXdCk8kIWbS7reQkLtNTxx+
+         DfUItk1K7DcRkcSk+ZtdbXOVewHdr2yD/MckBu8PfTtPi3HkrPxoX8IGC6+Mtd3fdKqN
+         FPTg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Q2O9/Dhk";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dcC9swZj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r19si13970418ybs.337.2020.08.03.08.19.23
+        by mx.google.com with ESMTPS id s32si17555848ybi.97.2020.08.03.09.48.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Aug 2020 08:19:23 -0700 (PDT)
+        Mon, 03 Aug 2020 09:48:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="Q2O9/Dhk";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dcC9swZj;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38710 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:37686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2cFH-0005px-8I
-	for alex.bennee@linaro.org; Mon, 03 Aug 2020 11:19:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52812)
+	id 1k2ddw-0002DI-1H
+	for alex.bennee@linaro.org; Mon, 03 Aug 2020 12:48:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k2cEP-00050D-ED
- for qemu-devel@nongnu.org; Mon, 03 Aug 2020 11:18:29 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35992
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k2cEN-0003fj-Mc
- for qemu-devel@nongnu.org; Mon, 03 Aug 2020 11:18:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596467906;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=7CXGvfSTOUj22+OT1trdS/F+9jmnVW8RVrrIqVkynMA=;
- b=Q2O9/Dhk5+fPiH/B+8540/xc7C9s0utemooOw85brfp3c/8elsed7Vgc/vlMSTXxO5CySX
- cbGoIWuvp/FOCpAu4WwlBweaJM2Qf8dYp7ASiXthNskbDwiZeEaG6VfwCHd2Q8irHZaDgz
- n8Q4p7CQMX1Sz9ABialn7qFKRoJIZFM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-412-qCK6H_45PEm9J9mTieyrEQ-1; Mon, 03 Aug 2020 11:18:23 -0400
-X-MC-Unique: qCK6H_45PEm9J9mTieyrEQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 63E47101C8AC;
- Mon,  3 Aug 2020 15:18:22 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.193.111])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 515A17176F;
- Mon,  3 Aug 2020 15:18:21 +0000 (UTC)
-Date: Mon, 3 Aug 2020 17:18:18 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 3/3] hw/arm/virt: Implement kvm-steal-time
-Message-ID: <20200803151818.3ejilt5crefdyw6h@kamzik.brq.redhat.com>
-References: <20200711101033.47371-1-drjones@redhat.com>
- <20200711101033.47371-4-drjones@redhat.com>
- <CAFEAcA_GGVyjV_avxAfrRKnF72mxXEEf=J34aq-L8yMnLndigg@mail.gmail.com>
- <20200729144050.pzl4t3pnpt2zg36u@kamzik.brq.redhat.com>
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1k2dd0-00019x-Pk; Mon, 03 Aug 2020 12:47:58 -0400
+Received: from mail-lf1-x144.google.com ([2a00:1450:4864:20::144]:44975)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1k2dcz-000817-7S; Mon, 03 Aug 2020 12:47:58 -0400
+Received: by mail-lf1-x144.google.com with SMTP id x24so3499817lfe.11;
+ Mon, 03 Aug 2020 09:47:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3fXnroyHhh2ZypZpfGGO1PqM+ePmoBxOOOVQb81ZRiY=;
+ b=dcC9swZj8gcPxwofo5tJRqnNuqX9AYxSkseMSxDALCa8JW7eaxaN4pIe1GFLSd6fvf
+ /kTlMS0lzxwPNtGJbsuKNA+KtwiefRI6900T4VU/M8fOrsDha5Wni8Ul34ZUdOHF6PPJ
+ TyG6UuMk/+vKwcYW9vQeyH44rj6SMruAoK89IThKgipd+8j9gcTwZH+6YFgpvRvHhUJ6
+ 4vdU962WT2wnpaS4davFY+gVlvq4o0+mtJpfjARN/U8o/zNHkA65l2f/VfX3ehkvNkfg
+ 7ewHREf2UmzK3yXk3NQqEaPomGnmJT8UM7Y4EkVTEFCjzEY5nnVcJwnLWxGO1raMqFlr
+ mcfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=3fXnroyHhh2ZypZpfGGO1PqM+ePmoBxOOOVQb81ZRiY=;
+ b=RRJ135uZor2Bn/P5HQh3S6ckyF4lnE3GVm5rXPHpw3zzn2ICoQ1pVBwcbPQGLO+9Jj
+ iJRGwjS99Cwnr0QDA+nJdSiSsjpQJk9aTtNbhmMzizJWTDUZiZsEDZbc3A2UvAsZflMZ
+ yRL95/6rjeUwNwH9pQeZc9PaTkJntib/dedK960mqSrzNaDaCmgM/P8g5A8DOv6FJyXr
+ 2iOrLGuIb5e2+SbOeV9iJwpi+oXEJ4zjrMrSpocGLjnceO/Z1YF3zuTMOoEXWl9O+P+L
+ 2LPpGWRdBo8R1+hsakuRUJKgPt9MDoQgjINrw2IN8yKo02pI64f443/Je1H67/C+pUaz
+ 4OIw==
+X-Gm-Message-State: AOAM530WhF+zCzPK7b+0Pl3y2zoinggc0ZAQG1EQ+YaxVpMSXMYuEHPw
+ NiG6zk3GqnMXTnJIkISGs8jIpJ6z
+X-Received: by 2002:a19:7710:: with SMTP id s16mr8957767lfc.162.1596473271168; 
+ Mon, 03 Aug 2020 09:47:51 -0700 (PDT)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id 16sm4396867lju.100.2020.08.03.09.47.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 03 Aug 2020 09:47:50 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v1 0/1] docs/system/arm: Document the Xilinx Versal Virt board
+Date: Mon,  3 Aug 2020 18:47:48 +0200
+Message-Id: <20200803164749.301971-1-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20200729144050.pzl4t3pnpt2zg36u@kamzik.brq.redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=drjones@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/03 01:24:44
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::144;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lf1-x144.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FSL_HELO_FAKE=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,102 +112,37 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Beata Michalska <beata.michalska@linaro.org>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me, frederic.konrad@adacore.com,
+ qemu-arm@nongnu.org, philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lrkt5scS8g/d
+X-TUID: Cj/Mzd5KQN1e
 
-On Wed, Jul 29, 2020 at 04:40:54PM +0200, Andrew Jones wrote:
-> > > +static inline void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp) {}
-> > 
-> > Does this stub need to report an error to the caller via errp,
-> > or is it a "never called but needs to exist to avoid linker errors" ?
-> 
-> The second one, as we can't have kvm_enabled() and !defined(CONFIG_KVM).
-> Hmm, these types of stubs would be more robust to refactoring if we put
-> build bugs in them. I can try to analyze all the stubs in this #else to
-> see which ones should be returning false/error/nothing vs. build bugging.
-> 
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-I couldn't come up with a way to die at compile-time, but I think we
-should be able to use g_assert_not_reached() in these functions. How
-about something like the diff below?
+Hi,
 
-Thanks,
-drew
+This adds some basic documentation for the Xilinx Versal Virt board,
+including a few command-line examples on how to run ARM Trusterd Firmware,
+U-boot, Xen and Linux.
 
+If this looks OK I'll send similar basic documentation for the ZynqMP and
+Zynq.
 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index adb38514bf20..0da00eb6b20c 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -344,16 +344,10 @@ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
- 
- #else
- 
--static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
--{
--    /*
--     * This should never actually be called in the "not KVM" case,
--     * but set up the fields to indicate an error anyway.
--     */
--    cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
--    cpu->host_cpu_probe_failed = true;
--}
--
-+/*
-+ * It's safe to call these functions without KVM support.
-+ * They should either do nothing or return "not supported".
-+ */
- static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
- 
- static inline bool kvm_arm_aarch32_supported(void)
-@@ -371,23 +365,39 @@ static inline bool kvm_arm_sve_supported(void)
-     return false;
- }
- 
-+/*
-+ * These functions should never actually be called without KVM support.
-+ */
-+static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
-+{
-+    g_assert_not_reached();
-+}
-+
- static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
- {
--    return -ENOENT;
-+    g_assert_not_reached();
- }
- 
- static inline int kvm_arm_vgic_probe(void)
- {
--    return 0;
-+    g_assert_not_reached();
- }
- 
--static inline void kvm_arm_pmu_set_irq(CPUState *cs, int irq) {}
--static inline void kvm_arm_pmu_init(CPUState *cs) {}
-+static inline void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
-+{
-+    g_assert_not_reached();
-+}
- 
--static inline void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map) {}
-+static inline void kvm_arm_pmu_init(CPUState *cs)
-+{
-+    g_assert_not_reached();
-+}
-+
-+static inline void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
-+{
-+    g_assert_not_reached();
-+}
- 
--static inline void kvm_arm_get_virtual_time(CPUState *cs) {}
--static inline void kvm_arm_put_virtual_time(CPUState *cs) {}
- #endif
- 
- static inline const char *gic_class_name(void)
+Best regards,
+Edgar
+
+Edgar E. Iglesias (1):
+  docs/system/arm: Document the Xilinx Versal Virt board
+
+ docs/system/arm/xlnx-versal-virt.rst | 176 +++++++++++++++++++++++++++
+ docs/system/target-arm.rst           |   1 +
+ MAINTAINERS                          |   3 +-
+ 3 files changed, 179 insertions(+), 1 deletion(-)
+ create mode 100644 docs/system/arm/xlnx-versal-virt.rst
+
+-- 
+2.25.1
 

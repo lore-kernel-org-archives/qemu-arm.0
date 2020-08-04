@@ -1,109 +1,153 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp824830lfy;
-        Tue, 4 Aug 2020 12:39:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8+0wz9/VeVWSaffJp5rSlxAplYfwTVfRV7otgAjBdj/rBMGCt+yKRB2qLzbU+M2Us2x1W
-X-Received: by 2002:a25:f20d:: with SMTP id i13mr35420638ybe.152.1596569962099;
-        Tue, 04 Aug 2020 12:39:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596569962; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp7856lfy;
+        Tue, 4 Aug 2020 14:12:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxEqoVBL+eF7R+RuFjX9Sa55RSL/ytPc7LM3l+oRLA7/xkjaEoB2z3g7uATzNcd8C7QUnzZ
+X-Received: by 2002:a25:d917:: with SMTP id q23mr34112573ybg.450.1596575550821;
+        Tue, 04 Aug 2020 14:12:30 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1596575550; cv=pass;
         d=google.com; s=arc-20160816;
-        b=Mn4hJ9nrM/siDAZBpDfa4MnrLwxgH+WQTMnOpVPbFzPRtwhad1d3fbKngORKLj6HXw
-         SKCWjBqwnwagfHK+cArPjKLwXZv/rjb+ToG6C7naMx3Vala5hq/wU3+gD6tscBmjr2TF
-         MJewCRbc2NrVWZmL3BC3Cb+9eoVPRZ/XcvJLxZ80L739q5PF7RBxVJtzTluY2DVd0S0D
-         afrUvMILD78Yl+PZcizawAfeygL3AtcbM6ntk03r1dsvJV3aBvpMMwJIehrk23nwpyMc
-         YoX4mnlvc/2I6JLLgY7CYjPchPaLsWgY+5M6fIIGfCFmbGBCaTnIjHtQCJ3XlPD6qiag
-         A8vQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=OtLYlQbP3Pv/vFRw3ZV6gQGVh5azx6q8UpiRSzDs7wur9giEyiDoOxvQLAnoWNtG3j
+         GE21BfmHMbfWYmIwCVAX9u7VaqKgBs3MCAH9QL3X6oD9ebll+59XQLuEC544R6uHuHZT
+         uylBMkWEG8uMuE4u0nOnLQ2g5gR6pxsD7Z3ZFlUhtkw98v/1OzfVeRbiv9fgqo2rc8pY
+         yFFBonJ4XZYc2hlcxCwuPkWf8abbwXCob7n1PKIZoOuFxOHjr7m9+vc8pUk1KwhI84kN
+         NtzDSorF9wQjeEjDJGNNsjyNkEogxYKle4FOw7EU2EQB7wpaprXMIOQ5e+t+R17raOvL
+         ogAg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=HqGbC8FUGCeQi5R5J6OQwzhAXNsqzsV2csRohNKrHYc=;
-        b=TBWvlrsHsNLwmQ0axyYcxrIwJssM9JAHZpFXx4vkdxTFh3NJdel4JvgIvo7zSHeHT4
-         kdNIUiWd+LficQ7V7TvEANesGoWxNSDiz9jeSMxYzcP0tkUdI/cO+Wtc20jtrnrZAzbR
-         41IKEFPL9yA36SocZ0qoJ1ezTMJHMQb1oNBzVVwqE8EMizC03yI+ietDqNOPmk3iC4cD
-         JqcX+dv+8ZobPQTvt3ggQwewWCNGoPy6d9rnbBuPfiC0LeJa0eHCg/e5BOzAHYOM8N+q
-         mAv+yavROIQSQ5C0veejPaOf4JdwVjVjZgsZyzUCVY1zHbVdmrkiwctKZm7716wHg/ni
-         6ASA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T7OmZzjs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
+        bh=36OQRVTBVUDqsmOMnUJiOtlPQvab4lvDarwh9sNW2MQ=;
+        b=rfentTUObk4gNt7Q9PE1TFKD4fU6gvYmfycY9q953nmXhEq6Wg0ZLxYmsONpCvmWo+
+         p6LcyZVGLF5FAfdhZAuXuvPjc178gZGemaGQ/zBJJ193KO4UVEmDka6C4Mb7yEytiMMI
+         XI9ZHuIl1EmVNhCAe5YLqadqqKNciwWsUuJET58A3mpR/9VyGLNDgPsFoBcyrEEFjytV
+         UA85maFhpZFfCim/kJFV15v1W5CA9mDVFoeblR9OIt1Dn+X7mFMArfHa4bXLnfCkxF+B
+         mN4FsTYPMAtbrqi47+c4RyCz/jCD08VLRIUcyOZnOAGBtO5IMTNx3ifJmAAVxW0exznM
+         eE9Q==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=jQH7tfVc;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 7si3653523yba.196.2020.08.04.12.39.21
+        by mx.google.com with ESMTPS id o11si157337ybm.201.2020.08.04.14.12.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Aug 2020 12:39:22 -0700 (PDT)
+        Tue, 04 Aug 2020 14:12:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=T7OmZzjs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54584 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=jQH7tfVc;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38684 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k32mP-0007tD-9a
-	for alex.bennee@linaro.org; Tue, 04 Aug 2020 15:39:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44192)
+	id 1k34EY-0006AW-2j
+	for alex.bennee@linaro.org; Tue, 04 Aug 2020 17:12:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36044)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k32mF-0007sv-Vq
- for qemu-arm@nongnu.org; Tue, 04 Aug 2020 15:39:12 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35641)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k32mC-0008RN-A7
- for qemu-arm@nongnu.org; Tue, 04 Aug 2020 15:39:11 -0400
-Received: by mail-wm1-x343.google.com with SMTP id 184so4064263wmb.0
- for <qemu-arm@nongnu.org>; Tue, 04 Aug 2020 12:39:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=HqGbC8FUGCeQi5R5J6OQwzhAXNsqzsV2csRohNKrHYc=;
- b=T7OmZzjsZOt2UJirFFWl2tuE85uH9Z1J5MLHCIpJYroWA1nXXFm4zS4iNudk7+dL5W
- uXpuFbe1zm8RF9FHAYBsgeHOSvrPv8AJ7mFqzyZYp9vKjex/3zvONSle9h+oBg5RJLom
- XZ9b8co57pSnQ2CVt7yFbTCBvV3c/2Q3KxTjXYLWMD69STwiqOZQ/vgHr/IAre2Af/4Z
- 7IGK3rGf2RJYk7FbxdKavZ02ab4HDlHlSD1f6kDPNM3TYFVymR9Dn1QmdE0GchNHNQ88
- +D3VbGpUQYfN3QUN4IWSqDNmXiJ017EKfDUh6C+Kd9PLP8QT2u3ija0XXhppKa3la54Q
- DUeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=HqGbC8FUGCeQi5R5J6OQwzhAXNsqzsV2csRohNKrHYc=;
- b=HCw49ZL+K/Mrq1H0QGSZEBJz0d66twcUU4X6VeYkGlZziW0zgq0R0mzmuJZTR7zqJh
- zbR2+zlFRD+xKjff7m9v+oST0SQg9HGJUgrC0EdyWCSNBteVo3+5aaD8XYg0wk+XJRrS
- 6ETW0Pqvz+AKv7QnoFjnSrcxFbiWIcGk8dBnv9TfoL2xj2iv5LfLx9c1H8C58Jm0u5qO
- wQeaCmLp7DmExYucv0ajE/P59j4+RIkB5ExzMrFPc+g1yvSORr0a9iphT/gDYRDXqxfr
- jm/Xq+464RbnhoR8e1QhF63/6vb+1PoG9GJ3oeVu1p4gE6rkZO2NawXKT4lmgdamCpQD
- uZww==
-X-Gm-Message-State: AOAM532UuRmoUaWfPUJC3UEHtXOuUhkxirfvfMz3tFgU3PAsqERJw8L1
- ErUqOAC+b9en6WPSeiXrW85mKeNJI1NPtg==
-X-Received: by 2002:a1c:27c1:: with SMTP id n184mr52220wmn.6.1596569945632;
- Tue, 04 Aug 2020 12:39:05 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b203sm6023388wmc.22.2020.08.04.12.39.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 04 Aug 2020 12:39:04 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 for-5.1?] target/arm: Fix Rt/Rt2 in ESR_ELx for copro traps
- from AArch32 to 64
-Date: Tue,  4 Aug 2020 20:39:03 +0100
-Message-Id: <20200804193903.31240-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ (Exim 4.90_1) (envelope-from <fnuv@xilinx.com>)
+ id 1k34EN-00067a-Gn; Tue, 04 Aug 2020 17:12:19 -0400
+Received: from mail-mw2nam10on2055.outbound.protection.outlook.com
+ ([40.107.94.55]:45025 helo=NAM10-MW2-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fnuv@xilinx.com>)
+ id 1k34EI-0002Oh-Vb; Tue, 04 Aug 2020 17:12:19 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=dcTubSmysOq84PaRRliw8eAXau0eCZmR2pNiF6rMZKPVZ+6gKF0ctUW+RRB2qJtpQ4EpAUlmHjrIZwTCp3YGzbctHEekpUcGWg7nu2mdXWjpMpFUTIBJFkmyA3SV9wya7WUDRx9mzB/D7vOmPPcHELZv0aG4Db8m7Qaj7c+04/stmpQhRVhvrL71nUqfxSRf42pZG05M0M6PD1TIuf+DnhR7B+xg17rvAjT54fNiHBZGv59UYENhP789PwbfrPMOQfS+03ZHlTUSdXaFKWpn5fRwxxQdKYoboE8xov39tnQ/Iy5c2O21Br1M9MCScYTQpAW1uytbJYNMXYjmTVkXLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=36OQRVTBVUDqsmOMnUJiOtlPQvab4lvDarwh9sNW2MQ=;
+ b=dlSmM1dRMrDnJBupKoYrU5lvNaHpNJLDIV4wGLbR/YkEVwTKo2fIjqeKnqp9Try9MdSUGNcguPmivovkU3JECavXCcPxX/qGDaT3kTZk+RWsTEWG/j/6jykNDFrCwhXLpr4vM9SrUKr2hHSvSJYiMiWiP6gx7/SntThEXEtQNscRcPq9OgwTNWeba2BXwR/zr5tXR5yXbneMzbgKfzR1M6HQxIgo7NPIdxZH/RjRvwrsCi/rADxpBk4KlYogPyOmUYVLLFti/goXca2jNcphMjmi60hPJG6dI4ryXITkaVidQGiYrvvfbCImMhPFuA+EH5hwKQI0UzGPaxUDuW8zhw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=36OQRVTBVUDqsmOMnUJiOtlPQvab4lvDarwh9sNW2MQ=;
+ b=jQH7tfVcsokDRlJLV2qgoWqOOX3PFQsVcKxm7UB6SRU497496V/NVFowZGGRX/TK2wxtNfa7k8DgWW99HO/2eN6lFebwo9R/VsMdZUVlLszUw1ltplPVrpg/GGVP5Jg2W3Ebn6qAYfLLfjUriNqW6MZ/4+ARlkI9Ue1C4gyRLHs=
+Received: from CY4PR06CA0068.namprd06.prod.outlook.com (2603:10b6:903:13d::30)
+ by CH2PR02MB6999.namprd02.prod.outlook.com (2603:10b6:610:80::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3239.17; Tue, 4 Aug
+ 2020 21:12:11 +0000
+Received: from CY1NAM02FT047.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:903:13d:cafe::60) by CY4PR06CA0068.outlook.office365.com
+ (2603:10b6:903:13d::30) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3239.17 via Frontend
+ Transport; Tue, 4 Aug 2020 21:12:11 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
+ header.d=none;nongnu.org; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ CY1NAM02FT047.mail.protection.outlook.com (10.152.74.177) with Microsoft SMTP
+ Server id 15.20.3239.20 via Frontend Transport; Tue, 4 Aug 2020 21:12:11
+ +0000
+Received: from [149.199.38.66] (port=47005 helo=smtp.xilinx.com)
+ by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
+ (envelope-from <fnu.vikram@xilinx.com>)
+ id 1k34EB-0007xu-0F; Tue, 04 Aug 2020 14:12:07 -0700
+Received: from [127.0.0.1] (helo=localhost)
+ by xsj-pvapsmtp01 with smtp (Exim 4.63)
+ (envelope-from <fnu.vikram@xilinx.com>)
+ id 1k34EF-0008Qe-7E; Tue, 04 Aug 2020 14:12:11 -0700
+Received: from [172.19.2.115] (helo=xsjfnuv50.xilinx.com)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <fnu.vikram@xilinx.com>)
+ id 1k34EA-0008KU-LY; Tue, 04 Aug 2020 14:12:06 -0700
+From: Vikram Garhwal <fnu.vikram@xilinx.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v8 2/4] xlnx-zynqmp: Connect Xilinx ZynqMP CAN controllers
+Date: Tue,  4 Aug 2020 14:11:43 -0700
+Message-Id: <1596575505-163040-3-git-send-email-fnu.vikram@xilinx.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1596575505-163040-1-git-send-email-fnu.vikram@xilinx.com>
+References: <1596575505-163040-1-git-send-email-fnu.vikram@xilinx.com>
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-PublicTrafficType: Email
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-MS-Office365-Filtering-Correlation-Id: 786008cf-6cc7-4513-e215-08d838bb0dd0
+X-MS-TrafficTypeDiagnostic: CH2PR02MB6999:
+X-Microsoft-Antispam-PRVS: <CH2PR02MB6999E192BC5219A2006F9218BC4A0@CH2PR02MB6999.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:114;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: 96vVCZ+5fChVsSbvtLWs2oey7QKmtgkxz77Oi2a0mCD/n5qCO1578yz17TB/fot4BBztz9AbhZICyERZaXpTF56jm7HofRkKSzHHYnzDfqgcXUjYXZ6+Ss/EzXl33XBQpuWrm1JtZn8CGoAurn3p2PcQAoF/lzFWeSZ6o6yQNMrKSlc7PHgLLHHY2QdmEeKopTPojr5PjKCjkaXAOqk374ORM01RShV3qPUmOlOLO05byNNsGj/SCbknHwc0UhZd1AeePXr2uW1UfSB31f24LntwR+iRB2BB6K9S+fnOURr7udwR3Y//Rg6ulbgrKwbqm4yCoH6DofsVHfre4poNZOkq3XIS9lyBGIDRIi/rRgO6qpa7kVi1RP9FdzFu3Qwex0eGT36JppiiJ+NxeFcqhg==
+X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
+ SFTY:;
+ SFS:(396003)(136003)(376002)(346002)(39830400003)(46966005)(70206006)(70586007)(426003)(336012)(26005)(36756003)(82310400002)(4326008)(81166007)(7696005)(356005)(2906002)(47076004)(6916009)(2616005)(186003)(6666004)(316002)(9786002)(478600001)(5660300002)(54906003)(8676002)(8936002);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Aug 2020 21:12:11.4688 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 786008cf-6cc7-4513-e215-08d838bb0dd0
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
+ Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-AuthSource: CY1NAM02FT047.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR02MB6999
+Received-SPF: pass client-ip=40.107.94.55; envelope-from=fnuv@xilinx.com;
+ helo=NAM10-MW2-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/04 17:12:12
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,167 +160,188 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marc Zyngier <maz@kernel.org>, Julien Freche <julien@bedrocksystems.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Vikram Garhwal <fnu.vikram@xilinx.com>,
+ Alistair Francis <alistair@alistair23.me>, francisco.iglesias@xilinx.com,
+ "open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Lp9UHa1wgmoX
+X-TUID: w1uNQJiXeDIL
 
-When a coprocessor instruction in an  AArch32 guest traps to AArch32
-Hyp mode, the syndrome register (HSR) includes Rt and Rt2 fields
-which are simply copies of the Rt and Rt2 fields from the trapped
-instruction.  However, if the instruction is trapped from AArch32 to
-an AArch64 higher exception level, the Rt and Rt2 fields in the
-syndrome register (ESR_ELx) must be the AArch64 view of the register.
-This makes a difference if the AArch32 guest was in a mode other than
-User or System and it was using r13 or r14, or if it was in FIQ mode
-and using r8-r14.
+Connect CAN0 and CAN1 on the ZynqMP.
 
-We don't know at translate time which AArch32 CPU mode we are in, so
-we leave the values we generate in our prototype syndrome register
-value at translate time as the raw Rt/Rt2 from the instruction, and
-instead correct them to the AArch64 view when we find we need to take
-an exception from AArch32 to AArch64 with one of these syndrome
-values.
-
-Fixes: https://bugs.launchpad.net/qemu/+bug/1879587
-Reported-by: Julien Freche <julien@bedrocksystems.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Vikram Garhwal <fnu.vikram@xilinx.com>
 ---
-Changes v1->v2: fixed the register mapping for LR (thanks to
-Julien for testing v1, diagnosing the bug in it, and suggesting
-the fix to LR handling)
+ hw/arm/xlnx-zcu102.c         | 20 ++++++++++++++++++++
+ hw/arm/xlnx-zynqmp.c         | 34 ++++++++++++++++++++++++++++++++++
+ include/hw/arm/xlnx-zynqmp.h |  8 ++++++++
+ 3 files changed, 62 insertions(+)
 
-Marc: Cc'd you just in case you're interested, given that I'd
-expect running Linux aarch64 KVM in QEMU emulation with a 32-bit
-guest to hit this bug...
----
- target/arm/helper.c | 92 ++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 91 insertions(+), 1 deletion(-)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8ef0fb478f4..455c92b8915 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9581,6 +9581,66 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
-     take_aarch32_exception(env, new_mode, mask, offset, addr);
+diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+index 5997262..c3e3420 100644
+--- a/hw/arm/xlnx-zcu102.c
++++ b/hw/arm/xlnx-zcu102.c
+@@ -24,6 +24,7 @@
+ #include "qemu/log.h"
+ #include "sysemu/qtest.h"
+ #include "sysemu/device_tree.h"
++#include "net/can_emu.h"
+ 
+ typedef struct XlnxZCU102 {
+     MachineState parent_obj;
+@@ -33,6 +34,8 @@ typedef struct XlnxZCU102 {
+     bool secure;
+     bool virt;
+ 
++    CanBusState *canbus[XLNX_ZYNQMP_NUM_CAN];
++
+     struct arm_boot_info binfo;
+ } XlnxZCU102;
+ 
+@@ -125,6 +128,14 @@ static void xlnx_zcu102_init(MachineState *machine)
+     object_property_set_bool(OBJECT(&s->soc), "virtualization", s->virt,
+                              &error_fatal);
+ 
++    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
++        gchar *bus_name = g_strdup_printf("canbus%d", i);
++
++        object_property_set_link(OBJECT(&s->soc), bus_name,
++                                 OBJECT(s->canbus[i]), &error_fatal);
++        g_free(bus_name);
++    }
++
+     qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
+ 
+     /* Create and plug in the SD cards */
+@@ -220,6 +231,15 @@ static void xlnx_zcu102_machine_instance_init(Object *obj)
+                                     "Set on/off to enable/disable emulating a "
+                                     "guest CPU which implements the ARM "
+                                     "Virtualization Extensions");
++    object_property_add_link(obj, "xlnx-zcu102.canbus0", TYPE_CAN_BUS,
++                             (Object **)&s->canbus[0],
++                             object_property_allow_set_link,
++                             0);
++
++    object_property_add_link(obj, "xlnx-zcu102.canbus1", TYPE_CAN_BUS,
++                             (Object **)&s->canbus[1],
++                             object_property_allow_set_link,
++                             0);
  }
  
-+static int aarch64_regnum(CPUARMState *env, int aarch32_reg)
-+{
-+    /*
-+     * Return the register number of the AArch64 view of the AArch32
-+     * register @aarch32_reg. The CPUARMState CPSR is assumed to still
-+     * be that of the AArch32 mode the exception came from.
-+     */
-+    int mode = env->uncached_cpsr & CPSR_M;
-+
-+    switch (aarch32_reg) {
-+    case 0 ... 7:
-+        return aarch32_reg;
-+    case 8 ... 12:
-+        return mode == ARM_CPU_MODE_FIQ ? aarch32_reg + 16 : aarch32_reg;
-+    case 13:
-+        switch (mode) {
-+        case ARM_CPU_MODE_USR:
-+        case ARM_CPU_MODE_SYS:
-+            return 13;
-+        case ARM_CPU_MODE_HYP:
-+            return 15;
-+        case ARM_CPU_MODE_IRQ:
-+            return 17;
-+        case ARM_CPU_MODE_SVC:
-+            return 19;
-+        case ARM_CPU_MODE_ABT:
-+            return 21;
-+        case ARM_CPU_MODE_UND:
-+            return 23;
-+        case ARM_CPU_MODE_FIQ:
-+            return 29;
-+        default:
-+            g_assert_not_reached();
-+        }
-+    case 14:
-+        switch (mode) {
-+        case ARM_CPU_MODE_USR:
-+        case ARM_CPU_MODE_SYS:
-+        case ARM_CPU_MODE_HYP:
-+            return 14;
-+        case ARM_CPU_MODE_IRQ:
-+            return 16;
-+        case ARM_CPU_MODE_SVC:
-+            return 18;
-+        case ARM_CPU_MODE_ABT:
-+            return 20;
-+        case ARM_CPU_MODE_UND:
-+            return 22;
-+        case ARM_CPU_MODE_FIQ:
-+            return 30;
-+        default:
-+            g_assert_not_reached();
-+        }
-+    case 15:
-+        return 31;
-+    default:
-+        g_assert_not_reached();
-+    }
-+}
-+
- /* Handle exception entry to a target EL which is using AArch64 */
- static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
- {
-@@ -9591,6 +9651,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-     unsigned int new_mode = aarch64_pstate_mode(new_el, true);
-     unsigned int old_mode;
-     unsigned int cur_el = arm_current_el(env);
-+    int rt;
+ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index c435b9d..adad3e7 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -81,6 +81,14 @@ static const int uart_intr[XLNX_ZYNQMP_NUM_UARTS] = {
+     21, 22,
+ };
  
-     /*
-      * Note that new_el can never be 0.  If cur_el is 0, then
-@@ -9645,7 +9706,8 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-     case EXCP_HVC:
-     case EXCP_HYP_TRAP:
-     case EXCP_SMC:
--        if (syn_get_ec(env->exception.syndrome) == EC_ADVSIMDFPACCESSTRAP) {
-+        switch (syn_get_ec(env->exception.syndrome)) {
-+        case EC_ADVSIMDFPACCESSTRAP:
-             /*
-              * QEMU internal FP/SIMD syndromes from AArch32 include the
-              * TA and coproc fields which are only exposed if the exception
-@@ -9653,6 +9715,34 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
-              * AArch64 format syndrome.
-              */
-             env->exception.syndrome &= ~MAKE_64BIT_MASK(0, 20);
-+            break;
-+        case EC_CP14RTTRAP:
-+        case EC_CP15RTTRAP:
-+        case EC_CP14DTTRAP:
-+            /*
-+             * For a trap on AArch32 MRC/MCR/LDC/STC the Rt field is currently
-+             * the raw register field from the insn; when taking this to
-+             * AArch64 we must convert it to the AArch64 view of the register
-+             * number. Notice that we read a 4-bit AArch32 register number and
-+             * write back a 5-bit AArch64 one.
-+             */
-+            rt = extract32(env->exception.syndrome, 5, 4);
-+            rt = aarch64_regnum(env, rt);
-+            env->exception.syndrome = deposit32(env->exception.syndrome,
-+                                                5, 5, rt);
-+            break;
-+        case EC_CP15RRTTRAP:
-+        case EC_CP14RRTTRAP:
-+            /* Similarly for MRRC/MCRR traps for Rt and Rt2 fields */
-+            rt = extract32(env->exception.syndrome, 5, 4);
-+            rt = aarch64_regnum(env, rt);
-+            env->exception.syndrome = deposit32(env->exception.syndrome,
-+                                                5, 5, rt);
-+            rt = extract32(env->exception.syndrome, 10, 4);
-+            rt = aarch64_regnum(env, rt);
-+            env->exception.syndrome = deposit32(env->exception.syndrome,
-+                                                10, 5, rt);
-+            break;
-         }
-         env->cp15.esr_el[new_el] = env->exception.syndrome;
-         break;
++static const uint64_t can_addr[XLNX_ZYNQMP_NUM_CAN] = {
++    0xFF060000, 0xFF070000,
++};
++
++static const int can_intr[XLNX_ZYNQMP_NUM_CAN] = {
++    23, 24,
++};
++
+ static const uint64_t sdhci_addr[XLNX_ZYNQMP_NUM_SDHCI] = {
+     0xFF160000, 0xFF170000,
+ };
+@@ -243,6 +251,11 @@ static void xlnx_zynqmp_init(Object *obj)
+                                 TYPE_CADENCE_UART);
+     }
+ 
++    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
++        object_initialize_child(obj, "can[*]", &s->can[i],
++                                TYPE_XLNX_ZYNQMP_CAN);
++    }
++
+     object_initialize_child(obj, "sata", &s->sata, TYPE_SYSBUS_AHCI);
+ 
+     for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
+@@ -480,6 +493,23 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+                            gic_spi[uart_intr[i]]);
+     }
+ 
++    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
++        object_property_set_int(OBJECT(&s->can[i]), "ext_clk_freq",
++                                XLNX_ZYNQMP_CAN_REF_CLK, &error_abort);
++
++        object_property_set_link(OBJECT(&s->can[i]), "canbus",
++                                 OBJECT(s->canbus[i]), &error_fatal);
++
++        sysbus_realize(SYS_BUS_DEVICE(&s->can[i]), &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->can[i]), 0, can_addr[i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->can[i]), 0,
++                           gic_spi[can_intr[i]]);
++    }
++
+     object_property_set_int(OBJECT(&s->sata), "num-ports", SATA_NUM_PORTS,
+                             &error_abort);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sata), errp)) {
+@@ -617,6 +647,10 @@ static Property xlnx_zynqmp_props[] = {
+     DEFINE_PROP_BOOL("has_rpu", XlnxZynqMPState, has_rpu, false),
+     DEFINE_PROP_LINK("ddr-ram", XlnxZynqMPState, ddr_ram, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
++    DEFINE_PROP_LINK("canbus0", XlnxZynqMPState, canbus[0], TYPE_CAN_BUS,
++                     CanBusState *),
++    DEFINE_PROP_LINK("canbus1", XlnxZynqMPState, canbus[1], TYPE_CAN_BUS,
++                     CanBusState *),
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index 53076fa..8cada69 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -22,6 +22,7 @@
+ #include "hw/intc/arm_gic.h"
+ #include "hw/net/cadence_gem.h"
+ #include "hw/char/cadence_uart.h"
++#include "hw/net/xlnx-zynqmp-can.h"
+ #include "hw/ide/ahci.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/ssi/xilinx_spips.h"
+@@ -32,6 +33,7 @@
+ #include "hw/rtc/xlnx-zynqmp-rtc.h"
+ #include "hw/cpu/cluster.h"
+ #include "target/arm/cpu.h"
++#include "net/can_emu.h"
+ 
+ #define TYPE_XLNX_ZYNQMP "xlnx,zynqmp"
+ #define XLNX_ZYNQMP(obj) OBJECT_CHECK(XlnxZynqMPState, (obj), \
+@@ -41,6 +43,8 @@
+ #define XLNX_ZYNQMP_NUM_RPU_CPUS 2
+ #define XLNX_ZYNQMP_NUM_GEMS 4
+ #define XLNX_ZYNQMP_NUM_UARTS 2
++#define XLNX_ZYNQMP_NUM_CAN 2
++#define XLNX_ZYNQMP_CAN_REF_CLK (24 * 1000 * 1000)
+ #define XLNX_ZYNQMP_NUM_SDHCI 2
+ #define XLNX_ZYNQMP_NUM_SPIS 2
+ #define XLNX_ZYNQMP_NUM_GDMA_CH 8
+@@ -92,6 +96,7 @@ typedef struct XlnxZynqMPState {
+ 
+     CadenceGEMState gem[XLNX_ZYNQMP_NUM_GEMS];
+     CadenceUARTState uart[XLNX_ZYNQMP_NUM_UARTS];
++    XlnxZynqMPCANState can[XLNX_ZYNQMP_NUM_CAN];
+     SysbusAHCIState sata;
+     SDHCIState sdhci[XLNX_ZYNQMP_NUM_SDHCI];
+     XilinxSPIPS spi[XLNX_ZYNQMP_NUM_SPIS];
+@@ -112,6 +117,9 @@ typedef struct XlnxZynqMPState {
+     bool virt;
+     /* Has the RPU subsystem?  */
+     bool has_rpu;
++
++    /* CAN bus. */
++    CanBusState *canbus[XLNX_ZYNQMP_NUM_CAN];
+ }  XlnxZynqMPState;
+ 
+ #endif
 -- 
-2.20.1
+2.7.4
 

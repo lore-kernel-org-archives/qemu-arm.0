@@ -1,105 +1,109 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp734058lfy;
-        Tue, 4 Aug 2020 10:28:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/M4AdpEAL5yUi8ujEgXdHWcMQql7K2qOv1O21t4mxBKNZb066Gd+ofnyYUvOvsTHTefNE
-X-Received: by 2002:a25:870a:: with SMTP id a10mr36839677ybl.257.1596562111668;
-        Tue, 04 Aug 2020 10:28:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596562111; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp824830lfy;
+        Tue, 4 Aug 2020 12:39:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8+0wz9/VeVWSaffJp5rSlxAplYfwTVfRV7otgAjBdj/rBMGCt+yKRB2qLzbU+M2Us2x1W
+X-Received: by 2002:a25:f20d:: with SMTP id i13mr35420638ybe.152.1596569962099;
+        Tue, 04 Aug 2020 12:39:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596569962; cv=none;
         d=google.com; s=arc-20160816;
-        b=N39MZw0zjRrmAacLmq9hPy0ikFtvtbNl87X1ctasTNMdEb9bKowIbqaELlb0g2g1bC
-         7L48LZgdUfE0GU9JPZcNzuFoxBFpg5mF0tNFV020YfFCJpZC/nJubt2tQRJWneAxIsKK
-         Mbpjc7KQd+jiYL6WBdOA5FVEnn0oqgpUTTJEMi8/7jWL8+dMReNTPqg3pL4Krf/wp0yI
-         yvh71slUG/CEeVSoNKmIRKomlMZ+Wmu5705gU294bPZ8YjAzHOQ1gfW6RdZQ0ZB8nESN
-         KkRf55odCDp7x4Rdf9XCUDDejbr5XTiU1dyrPPWuu97ihcVU8PXdkBcwpxCAYQHW1HYl
-         pktw==
+        b=Mn4hJ9nrM/siDAZBpDfa4MnrLwxgH+WQTMnOpVPbFzPRtwhad1d3fbKngORKLj6HXw
+         SKCWjBqwnwagfHK+cArPjKLwXZv/rjb+ToG6C7naMx3Vala5hq/wU3+gD6tscBmjr2TF
+         MJewCRbc2NrVWZmL3BC3Cb+9eoVPRZ/XcvJLxZ80L739q5PF7RBxVJtzTluY2DVd0S0D
+         afrUvMILD78Yl+PZcizawAfeygL3AtcbM6ntk03r1dsvJV3aBvpMMwJIehrk23nwpyMc
+         YoX4mnlvc/2I6JLLgY7CYjPchPaLsWgY+5M6fIIGfCFmbGBCaTnIjHtQCJ3XlPD6qiag
+         A8vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=Tj9S+jt13dZL2uqzI9eNoiWm4249m0G177wh4qUTsLY=;
-        b=b5VMP7PWxBfkO9zqbXkNGTAqUo8MRgFYO9mnFYYtX2g7OuZe4/xGVRyduK5pSX++L3
-         ysPoptyoaWqkFW3u3Va4NjzIV21u8O7ygApf2fpRZX69fjbCRNPQ0YhIwh47sXYfi2wb
-         2d+Eo74hEdVkxgW9/REdcbUSj1+WC8emTJL9Gb0oVV5v1weiJTMYbJwulEbojmZ3NqXy
-         ipQnzyXe3cyH2FLS3on2a57LF6Pb+p5svMHFBXgrF2IyLFIulxFRahyrsguYI7VBW8SE
-         HbWZOuyB17pYZXiRxPvkCvuwYMYszdI4F7ENFCg1F9zAFvkclfchY92TAy9/H5N/jSan
-         Mj6Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=HqGbC8FUGCeQi5R5J6OQwzhAXNsqzsV2csRohNKrHYc=;
+        b=TBWvlrsHsNLwmQ0axyYcxrIwJssM9JAHZpFXx4vkdxTFh3NJdel4JvgIvo7zSHeHT4
+         kdNIUiWd+LficQ7V7TvEANesGoWxNSDiz9jeSMxYzcP0tkUdI/cO+Wtc20jtrnrZAzbR
+         41IKEFPL9yA36SocZ0qoJ1ezTMJHMQb1oNBzVVwqE8EMizC03yI+ietDqNOPmk3iC4cD
+         JqcX+dv+8ZobPQTvt3ggQwewWCNGoPy6d9rnbBuPfiC0LeJa0eHCg/e5BOzAHYOM8N+q
+         mAv+yavROIQSQ5C0veejPaOf4JdwVjVjZgsZyzUCVY1zHbVdmrkiwctKZm7716wHg/ni
+         6ASA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=UIuApx8B;
+       dkim=fail header.i=@linaro.org header.s=google header.b=T7OmZzjs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x135si8745658ybg.443.2020.08.04.10.28.31
+        by mx.google.com with ESMTPS id 7si3653523yba.196.2020.08.04.12.39.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Aug 2020 10:28:31 -0700 (PDT)
+        Tue, 04 Aug 2020 12:39:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=UIuApx8B;
+       dkim=fail header.i=@linaro.org header.s=google header.b=T7OmZzjs;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:56338 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54584 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k30jn-0003ZM-28
-	for alex.bennee@linaro.org; Tue, 04 Aug 2020 13:28:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40150)
+	id 1k32mP-0007tD-9a
+	for alex.bennee@linaro.org; Tue, 04 Aug 2020 15:39:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44192)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1k30jf-0003Yw-72
- for qemu-arm@nongnu.org; Tue, 04 Aug 2020 13:28:23 -0400
-Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44]:41617)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k32mF-0007sv-Vq
+ for qemu-arm@nongnu.org; Tue, 04 Aug 2020 15:39:12 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:35641)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pcc@google.com>) id 1k30jZ-0000j5-Q8
- for qemu-arm@nongnu.org; Tue, 04 Aug 2020 13:28:22 -0400
-Received: by mail-vk1-xa44.google.com with SMTP id x2so1302926vkd.8
- for <qemu-arm@nongnu.org>; Tue, 04 Aug 2020 10:28:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Tj9S+jt13dZL2uqzI9eNoiWm4249m0G177wh4qUTsLY=;
- b=UIuApx8BVdeKf+fvNvxSiPK2Unzk7r/kZkxr+dBK1A7cWybGTTG2a3Gs5uvOA8mfVE
- vMoEmpHKRF/H1DQYpxMcWbMK8+O1GU7UXL50EvUpmsLmUf15Xw7sRaEH7ptxqGNOxDKJ
- is/VvklXKEQymkUlMeq79ZPFLKrq2gWSfMYX3Nn7hI1/SGwgH3l6KXgpTet7FzkwjCJA
- /aVLt68xKIJQJAWeDbhl6VASmThHqjjUisOZ+xcu/bxNq0070MtNoeMQYeHJO49rVrzh
- TKFRR2FWCZrZ3kcV9jBHZ00PBZaPhyunBFxd3kHsH0/x/aW24OvmvJI7mws2O4XSh5J/
- ZaQw==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k32mC-0008RN-A7
+ for qemu-arm@nongnu.org; Tue, 04 Aug 2020 15:39:11 -0400
+Received: by mail-wm1-x343.google.com with SMTP id 184so4064263wmb.0
+ for <qemu-arm@nongnu.org>; Tue, 04 Aug 2020 12:39:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HqGbC8FUGCeQi5R5J6OQwzhAXNsqzsV2csRohNKrHYc=;
+ b=T7OmZzjsZOt2UJirFFWl2tuE85uH9Z1J5MLHCIpJYroWA1nXXFm4zS4iNudk7+dL5W
+ uXpuFbe1zm8RF9FHAYBsgeHOSvrPv8AJ7mFqzyZYp9vKjex/3zvONSle9h+oBg5RJLom
+ XZ9b8co57pSnQ2CVt7yFbTCBvV3c/2Q3KxTjXYLWMD69STwiqOZQ/vgHr/IAre2Af/4Z
+ 7IGK3rGf2RJYk7FbxdKavZ02ab4HDlHlSD1f6kDPNM3TYFVymR9Dn1QmdE0GchNHNQ88
+ +D3VbGpUQYfN3QUN4IWSqDNmXiJ017EKfDUh6C+Kd9PLP8QT2u3ija0XXhppKa3la54Q
+ DUeA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Tj9S+jt13dZL2uqzI9eNoiWm4249m0G177wh4qUTsLY=;
- b=VffBAq8bSfZqyG+sie+x8UaBob4xGA3hC+o72RyZ4I8YYRnVe5frhaI0RsOWJ7Mg/p
- sHcTUQZVxrxUJ+reGmWX5q9m+a1lg+vXFs/9hnAaJQmgUSB3xKvpukl7JhIun9O5KKGc
- Y3nDYA3bIcC45DUywv+E8IteS5wMnU0RsBcmhYmZp1vj/gMwJ7Zv+/KCNGQyZFrjycYy
- qzmUmeHb4qcIfi+vHCM+6tx/aIL9ixqcyJNPJJet84n6Wlb/HxHt6P6/G4KQCJIWyjTA
- d9483OF39RgL2uyVEnu6bTr3LSqzGrPQTgRPt/NU6lkqbRl4ZIfw2rXu5NlsDblx3Jlo
- ZPtQ==
-X-Gm-Message-State: AOAM531ugfERoP4teOZvPuQ1w014VmhYxGm3LT7jJr0+ndHV7b5GLOgz
- vfomwP7IxY9Sq8+Am18IgSmsdwDso+pYRZ24fIJ3gA==
-X-Received: by 2002:a1f:f8c5:: with SMTP id w188mr8354044vkh.15.1596562096216; 
- Tue, 04 Aug 2020 10:28:16 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HqGbC8FUGCeQi5R5J6OQwzhAXNsqzsV2csRohNKrHYc=;
+ b=HCw49ZL+K/Mrq1H0QGSZEBJz0d66twcUU4X6VeYkGlZziW0zgq0R0mzmuJZTR7zqJh
+ zbR2+zlFRD+xKjff7m9v+oST0SQg9HGJUgrC0EdyWCSNBteVo3+5aaD8XYg0wk+XJRrS
+ 6ETW0Pqvz+AKv7QnoFjnSrcxFbiWIcGk8dBnv9TfoL2xj2iv5LfLx9c1H8C58Jm0u5qO
+ wQeaCmLp7DmExYucv0ajE/P59j4+RIkB5ExzMrFPc+g1yvSORr0a9iphT/gDYRDXqxfr
+ jm/Xq+464RbnhoR8e1QhF63/6vb+1PoG9GJ3oeVu1p4gE6rkZO2NawXKT4lmgdamCpQD
+ uZww==
+X-Gm-Message-State: AOAM532UuRmoUaWfPUJC3UEHtXOuUhkxirfvfMz3tFgU3PAsqERJw8L1
+ ErUqOAC+b9en6WPSeiXrW85mKeNJI1NPtg==
+X-Received: by 2002:a1c:27c1:: with SMTP id n184mr52220wmn.6.1596569945632;
+ Tue, 04 Aug 2020 12:39:05 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id b203sm6023388wmc.22.2020.08.04.12.39.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 Aug 2020 12:39:04 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH v2 for-5.1?] target/arm: Fix Rt/Rt2 in ESR_ELx for copro traps
+ from AArch32 to 64
+Date: Tue,  4 Aug 2020 20:39:03 +0100
+Message-Id: <20200804193903.31240-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20200803222656.63936-1-pcc@google.com>
- <CAMn1gO75w=oaCp2TjhFzr2nrbKhHOP6Q20bnvuuAzgSVe+thMg@mail.gmail.com>
- <1c14ed0a-da1b-a265-d5bd-2dea42764032@linaro.org>
-In-Reply-To: <1c14ed0a-da1b-a265-d5bd-2dea42764032@linaro.org>
-From: Peter Collingbourne <pcc@google.com>
-Date: Tue, 4 Aug 2020 10:28:05 -0700
-Message-ID: <CAMn1gO5nBvra0saJ53zY5fWYo_Jm0LReHmOSyYwsCGXES66fAA@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Fix decode of {LD,ST}RA[AB] instructions
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a44;
- envelope-from=pcc@google.com; helo=mail-vk1-xa44.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -185
-X-Spam_score: -18.6
-X-Spam_bar: ------------------
-X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,32 +116,167 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Marc Zyngier <maz@kernel.org>, Julien Freche <julien@bedrocksystems.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KEyxKZmcb0nO
+X-TUID: Lp9UHa1wgmoX
 
-On Tue, Aug 4, 2020 at 8:41 AM Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 8/3/20 5:21 PM, Peter Collingbourne wrote:
-> > On Mon, Aug 3, 2020 at 3:27 PM Peter Collingbourne <pcc@google.com> wrote:
-> >>
-> >> These instructions use zero as the discriminator, not SP.
-> >
-> > Oh, there is no such thing as STRAA/STRAB. I must have been confused
-> > by the name of the function, disas_ldst_pac. I will send a v2 with a
-> > fixed commit message, and another patch to rename the function to
-> > disas_ld_pac.
->
-> It's called decode_ldst_pac because the Arm ARM section is called "Load/store
-> register (pac)".  Page C4-311 in the F.a revision.
->
-> But yes, there are only loads defined in the section.
+When a coprocessor instruction in an  AArch32 guest traps to AArch32
+Hyp mode, the syndrome register (HSR) includes Rt and Rt2 fields
+which are simply copies of the Rt and Rt2 fields from the trapped
+instruction.  However, if the instruction is trapped from AArch32 to
+an AArch64 higher exception level, the Rt and Rt2 fields in the
+syndrome register (ESR_ELx) must be the AArch64 view of the register.
+This makes a difference if the AArch32 guest was in a mode other than
+User or System and it was using r13 or r14, or if it was in FIQ mode
+and using r8-r14.
 
-I see. Arguably the ARM ARM section is misnamed then. There is a
-sibling section named "Load register (literal)", so there is precedent
-for naming a section after the types of instructions that are actually
-supported. I will send mail to errata@arm.com to see if the section
-can be renamed.
+We don't know at translate time which AArch32 CPU mode we are in, so
+we leave the values we generate in our prototype syndrome register
+value at translate time as the raw Rt/Rt2 from the instruction, and
+instead correct them to the AArch64 view when we find we need to take
+an exception from AArch32 to AArch64 with one of these syndrome
+values.
 
-Peter
+Fixes: https://bugs.launchpad.net/qemu/+bug/1879587
+Reported-by: Julien Freche <julien@bedrocksystems.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+Changes v1->v2: fixed the register mapping for LR (thanks to
+Julien for testing v1, diagnosing the bug in it, and suggesting
+the fix to LR handling)
+
+Marc: Cc'd you just in case you're interested, given that I'd
+expect running Linux aarch64 KVM in QEMU emulation with a 32-bit
+guest to hit this bug...
+---
+ target/arm/helper.c | 92 ++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 91 insertions(+), 1 deletion(-)
+
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 8ef0fb478f4..455c92b8915 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -9581,6 +9581,66 @@ static void arm_cpu_do_interrupt_aarch32(CPUState *cs)
+     take_aarch32_exception(env, new_mode, mask, offset, addr);
+ }
+ 
++static int aarch64_regnum(CPUARMState *env, int aarch32_reg)
++{
++    /*
++     * Return the register number of the AArch64 view of the AArch32
++     * register @aarch32_reg. The CPUARMState CPSR is assumed to still
++     * be that of the AArch32 mode the exception came from.
++     */
++    int mode = env->uncached_cpsr & CPSR_M;
++
++    switch (aarch32_reg) {
++    case 0 ... 7:
++        return aarch32_reg;
++    case 8 ... 12:
++        return mode == ARM_CPU_MODE_FIQ ? aarch32_reg + 16 : aarch32_reg;
++    case 13:
++        switch (mode) {
++        case ARM_CPU_MODE_USR:
++        case ARM_CPU_MODE_SYS:
++            return 13;
++        case ARM_CPU_MODE_HYP:
++            return 15;
++        case ARM_CPU_MODE_IRQ:
++            return 17;
++        case ARM_CPU_MODE_SVC:
++            return 19;
++        case ARM_CPU_MODE_ABT:
++            return 21;
++        case ARM_CPU_MODE_UND:
++            return 23;
++        case ARM_CPU_MODE_FIQ:
++            return 29;
++        default:
++            g_assert_not_reached();
++        }
++    case 14:
++        switch (mode) {
++        case ARM_CPU_MODE_USR:
++        case ARM_CPU_MODE_SYS:
++        case ARM_CPU_MODE_HYP:
++            return 14;
++        case ARM_CPU_MODE_IRQ:
++            return 16;
++        case ARM_CPU_MODE_SVC:
++            return 18;
++        case ARM_CPU_MODE_ABT:
++            return 20;
++        case ARM_CPU_MODE_UND:
++            return 22;
++        case ARM_CPU_MODE_FIQ:
++            return 30;
++        default:
++            g_assert_not_reached();
++        }
++    case 15:
++        return 31;
++    default:
++        g_assert_not_reached();
++    }
++}
++
+ /* Handle exception entry to a target EL which is using AArch64 */
+ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+ {
+@@ -9591,6 +9651,7 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+     unsigned int new_mode = aarch64_pstate_mode(new_el, true);
+     unsigned int old_mode;
+     unsigned int cur_el = arm_current_el(env);
++    int rt;
+ 
+     /*
+      * Note that new_el can never be 0.  If cur_el is 0, then
+@@ -9645,7 +9706,8 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+     case EXCP_HVC:
+     case EXCP_HYP_TRAP:
+     case EXCP_SMC:
+-        if (syn_get_ec(env->exception.syndrome) == EC_ADVSIMDFPACCESSTRAP) {
++        switch (syn_get_ec(env->exception.syndrome)) {
++        case EC_ADVSIMDFPACCESSTRAP:
+             /*
+              * QEMU internal FP/SIMD syndromes from AArch32 include the
+              * TA and coproc fields which are only exposed if the exception
+@@ -9653,6 +9715,34 @@ static void arm_cpu_do_interrupt_aarch64(CPUState *cs)
+              * AArch64 format syndrome.
+              */
+             env->exception.syndrome &= ~MAKE_64BIT_MASK(0, 20);
++            break;
++        case EC_CP14RTTRAP:
++        case EC_CP15RTTRAP:
++        case EC_CP14DTTRAP:
++            /*
++             * For a trap on AArch32 MRC/MCR/LDC/STC the Rt field is currently
++             * the raw register field from the insn; when taking this to
++             * AArch64 we must convert it to the AArch64 view of the register
++             * number. Notice that we read a 4-bit AArch32 register number and
++             * write back a 5-bit AArch64 one.
++             */
++            rt = extract32(env->exception.syndrome, 5, 4);
++            rt = aarch64_regnum(env, rt);
++            env->exception.syndrome = deposit32(env->exception.syndrome,
++                                                5, 5, rt);
++            break;
++        case EC_CP15RRTTRAP:
++        case EC_CP14RRTTRAP:
++            /* Similarly for MRRC/MCRR traps for Rt and Rt2 fields */
++            rt = extract32(env->exception.syndrome, 5, 4);
++            rt = aarch64_regnum(env, rt);
++            env->exception.syndrome = deposit32(env->exception.syndrome,
++                                                5, 5, rt);
++            rt = extract32(env->exception.syndrome, 10, 4);
++            rt = aarch64_regnum(env, rt);
++            env->exception.syndrome = deposit32(env->exception.syndrome,
++                                                10, 5, rt);
++            break;
+         }
+         env->cp15.esr_el[new_el] = env->exception.syndrome;
+         break;
+-- 
+2.20.1
+

@@ -1,150 +1,133 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp53949lfy;
-        Mon, 3 Aug 2020 17:29:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw7P2il0BjQRKCOUqpwVzeR8D4h0ndVnplu02szGIon+3uviYnj3Z9k48x+clY0j/LEsIXr
-X-Received: by 2002:a25:db49:: with SMTP id g70mr26675445ybf.155.1596500948336;
-        Mon, 03 Aug 2020 17:29:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596500948; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp370640lfy;
+        Tue, 4 Aug 2020 02:35:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzU76rhuPRjDKOQGXhP/5UmKkwoC0BZbY80Dv1KORcLI3wXxpkLa9uwvdIovOAgGddyS8kV
+X-Received: by 2002:a25:d253:: with SMTP id j80mr11473139ybg.101.1596533739171;
+        Tue, 04 Aug 2020 02:35:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596533739; cv=none;
         d=google.com; s=arc-20160816;
-        b=X+q9cy8VEPUqnbCtEUVzdL/sNL8TiPcXWhK5WlMUWcZKSW7Fv01dW323QcE4YoT9XA
-         BWpn4vlx2LcGfLw4ZfgSkSR7FuCcvEeeW3XQBuRQivmVe+LYLlQEWFCuJM6pZGNkWlFI
-         xb4TPfIaphqg8oOp9sZF0GdItVBYZXpeezG9GXSrRdqBuj3qUMr5Jqlu9rLQDVm7TIgA
-         W9NXX5PTice8EnRu57T1fEMijRG1/uVk83VTAnz7kQ9oEr7c57f/68rV6DnFnTS0R+Om
-         ibD13+5LpLplulaYJhc4VBjz7bD3+DRtieWU0gGowAQ8Z8MxrLH4N8HvanfCA3AwUQTI
-         5abw==
+        b=y/Zc4m6LfIjLDOOTasklm28eFfL/EN/SkKwPjuZVRMzx8vf8241491sltAhJ+FJiZI
+         S1UZabaj65rm7IO9VFawYbq7952TywQ2DOUdm26/k/3LEu/kgzdlBt0U27z1JxLEjdgt
+         gE1wPJvxiIT4jMg3ZJaxabqb4y1e51UBVHOhbS3P/WVheH//LCdUbLEACBjOp5DN3tsI
+         5fW12EVEH4ID4IiO4XOCoBplCSVjcDink6oYrd8MoaVyvxuMKF8JptUmSEZevBsWrSWr
+         q9cvsw58n6YuFFY6WzrsSoSInLv0gwH6ypYXWqZLgLBlprxfXOb9NgAMstP7QNm7wbZO
+         tCyw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:from:subject:mime-version
-         :message-id:date:dkim-signature;
-        bh=xqQGOC1I8/LJEKXsAn6LIqZnaJheV9poec5ecJcapYc=;
-        b=Eeu7l7B12PUQtuwvDU+YR1dAtgNVPFoIj0MFCXbZYNNU7oB04fSnVVLyEZ6Ao7S+IO
-         C63/5C/GAqQjlCYPB5wkwvEpAeSjPytY1b5vdY26oBdUr75Y3eip+WVFEw5Bk8jOwrHW
-         CROzxmc4GKp7IdtSemo9ifHNg27D80QXesUjSRQFVD39N2WmrlAU3EjuWz2yWlXYezRu
-         FDipyy5Xc/ucP5PnGUXgHZXS9a5lpz8bkaB6Q0vFryDuIZzrJZ5KDA+BcPrgoMFqmg+r
-         +DMzN5hAJFC7vf9LGyoU/Vci1S6IFshXzKi1b8lhtZELrZ7w2gp+cTWX7F2sPZg4gg6x
-         7qPg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=5DUf40pCQbFYHkc1Tbjm8GFzA5xVuUuNQGJWNbYvNNQ=;
+        b=d/toaYyICplbl8/RJCf5tRsW/S5GeO+LMjf2OcWqQAVZpcAJ5V6DXQfQkvjpumMFuE
+         AWhcDlK7M2hRKxUuNh3n6AsxuYtCHNFdT38lorMVvrpoEScW0G5N49qcyGDZW/VSYD9u
+         hUxIxiY4/Xc0zcix4e7PZbw7Py6MczlrmzpVDWBihlt8FsiMK33BSVdDA2NIJW42Rt9a
+         DpwkH5u4WfDiwZutRBKdzTTI1SBxZsCqj0h9O7fn1RSP/7q4CtFGQkJv/L5DHrq+7TQ+
+         RvnnlB9oj1vByuYz4nWVhN35L0E3avySm4xrsx6TmWFdwJI/uQIffuq44aCjToY3bNPr
+         KO+g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=ha8gFfo1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=byNs4VdQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d17si16385126ybn.396.2020.08.03.17.29.08
+        by mx.google.com with ESMTPS id w14si21685159ybt.100.2020.08.04.02.35.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 03 Aug 2020 17:29:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Aug 2020 02:35:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=ha8gFfo1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:47872 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=byNs4VdQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44776 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k2kpH-0002mP-Oo
-	for alex.bennee@linaro.org; Mon, 03 Aug 2020 20:29:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58712)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k2tMA-0003T7-GX
+	for alex.bennee@linaro.org; Tue, 04 Aug 2020 05:35:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50130)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3x6soXwMKCMAviimuumrk.iuswks0-gxstutmt0.uxm@flex--pcc.bounces.google.com>)
- id 1k2kp9-0002lj-0h
- for qemu-arm@nongnu.org; Mon, 03 Aug 2020 20:28:59 -0400
-Received: from mail-qt1-x849.google.com ([2607:f8b0:4864:20::849]:40307)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k2tLC-0002US-Sv
+ for qemu-devel@nongnu.org; Tue, 04 Aug 2020 05:34:38 -0400
+Received: from mail-oo1-xc42.google.com ([2607:f8b0:4864:20::c42]:34468)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3x6soXwMKCMAviimuumrk.iuswks0-gxstutmt0.uxm@flex--pcc.bounces.google.com>)
- id 1k2kp7-0006p2-9y
- for qemu-arm@nongnu.org; Mon, 03 Aug 2020 20:28:58 -0400
-Received: by mail-qt1-x849.google.com with SMTP id r9so28121194qtp.7
- for <qemu-arm@nongnu.org>; Mon, 03 Aug 2020 17:28:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=date:message-id:mime-version:subject:from:to:cc;
- bh=xqQGOC1I8/LJEKXsAn6LIqZnaJheV9poec5ecJcapYc=;
- b=ha8gFfo1JR3XksH6aVZxPAg/K4TUcq5E2q98umkm4HTyTvmaNwBHNuHD/dlY2eeVw6
- jiJ6mnBS/X0sjPekaBOmAdOT85mYJ//nrXDPR7gdRZgYfC0mu+sI+mGSPjH0HhgaX/5H
- OIRMr5qb/Ar3G0cD1Vowuxa89u6MzzZ2kbdDVPiBdDA0ccbCCV9IL9PtgUDyMFiDd5b/
- uGwgq0WvJs9JmdOl6jN0F4ifZqRme/aTTC8qxEJI/h5AucxOTGH31axXzYhc2ZvWhj1R
- K8BGcu5hupPJmnJLyU/Xrg7LjsjSI6TOXbYIp9eaqGbDn+Q7m7QSzAWnmBL3qppHUXEa
- 7xWA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k2tLA-0001no-Cm
+ for qemu-devel@nongnu.org; Tue, 04 Aug 2020 05:34:38 -0400
+Received: by mail-oo1-xc42.google.com with SMTP id k63so5023241oob.1
+ for <qemu-devel@nongnu.org>; Tue, 04 Aug 2020 02:34:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=5DUf40pCQbFYHkc1Tbjm8GFzA5xVuUuNQGJWNbYvNNQ=;
+ b=byNs4VdQTamo4mjc8HwudHHCP2ZNIYvdCUzYaPRJPXVuCobLoRbt/go0jiFzfY8VXG
+ hZw5U5qPKt+D20+2pcT8SM5GbJ8YuOKKBB6YGSmd3GoytiPb+5/dmxGn8dgVhCfondWp
+ hvje1humQM4iFm1YAdWLNpRCd+/BYvku/jmNU0f7SxzwdpXCzyHBvN+v8GUjz+WAjf4c
+ Hfm2uU28538y+Xly+nMg+IXEIw2k1cel4ytxDCqhsagHLsDSjbIqHkIH2OSosHJDy+3s
+ Z8VWg85JYDNiTHJN29HFzi6s9Aljgxb8hv0d2mr1rK4qy1P32lyyWZ/LZP6qyN1JTP+c
+ L8wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:message-id:mime-version:subject:from:to:cc;
- bh=xqQGOC1I8/LJEKXsAn6LIqZnaJheV9poec5ecJcapYc=;
- b=KCxQk1y1mRNTPk3upZFfv6FATiGGfXkeuN/C6Q1KrBjtz/Iu1Db3/FkeH5sIGQvmXq
- pouCuYul6Tmizi0zra8Vddu5IvNZSzZbK2NHy3NIYOYo9YFf/8Mm7IU0AhHuZKvrchQ7
- txBC7ByEDive+c/m8RwbZBFaoMc9oX4UU5G62TIDenmgeFYx6ta5SNNlrAyvz5fdLduK
- dFzGTifB6TQHI9+oFIVOw7V6T2Jv9htuWjPkEyP3lJC9vqqeLkvr4Hh05Z1zf+f5OeDB
- PfoDvXTkA1ezZiT6/HdlUB5bzOQg6dF/jzvl5QcrToBdu3KyvrFS1MkgRoZ+t49+ha9G
- isvQ==
-X-Gm-Message-State: AOAM533ZeNpwKf2EkM3hnF/5S5LcK6zjBjoyQLmJhOkn+4tymFFfbB11
- W+Njxvc6x5RHV4hCYg2HUwmLMt4=
-X-Received: by 2002:a0c:b2d6:: with SMTP id d22mr19104308qvf.209.1596500935249; 
- Mon, 03 Aug 2020 17:28:55 -0700 (PDT)
-Date: Mon,  3 Aug 2020 17:28:49 -0700
-Message-Id: <20200804002849.30268-1-pcc@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.28.0.163.g6104cc2f0b6-goog
-Subject: [PATCH v2] target/arm: Fix decode of LDRA[AB] instructions
-From: Peter Collingbourne <pcc@google.com>
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org
-Cc: Peter Collingbourne <pcc@google.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=5DUf40pCQbFYHkc1Tbjm8GFzA5xVuUuNQGJWNbYvNNQ=;
+ b=UYvXQO8z+Z08+z7wnPi7mao5PYeCAyf+9gs0lUY3lSUrD9mcelHwFz84NjkEGi+mU3
+ EHq+yxNvajNVn8/x88hQ12+3Chu0RwJmxueeNyHnm7h6H8wgG9P32LNwMJynECj4sLOc
+ h+37tAuCwPmAvnzKzf/i0r8/zKj6eqBCVMSqpNo7NhHOSiv81+y3lBCfSOSV4vBQzL1G
+ 9v1rslOAioTdlzTqGmA0uNI45CumnYBIg8g8AQXkpA5wECNCeuJ/sRgZsfu+UXKkJEWK
+ 5mbveN599nQzLpafL3zH7T4I1rI8BvhApt7YT6cBA8VZz3kTAfoHIY/uKcNxR28mj/z8
+ DrxA==
+X-Gm-Message-State: AOAM530cEpLy5B7YLZC5luNzkwBpxNfRAa0vWf/mP9g4qwLgCOCoe9CP
+ mDYPY08ahlaG00hxpiP7pnc1ryW78QdtfYNiULiyTQ==
+X-Received: by 2002:a4a:8dc1:: with SMTP id a1mr17802438ool.69.1596533674960; 
+ Tue, 04 Aug 2020 02:34:34 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200804002712.27733-1-pcc@google.com>
+In-Reply-To: <20200804002712.27733-1-pcc@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 4 Aug 2020 10:34:23 +0100
+Message-ID: <CAFEAcA_TGmk+YMkc=5OF9rarQT_4cwrRBFLZsmkeDSgnmu0P5w@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Rename function disas_ldst_pac to disas_ld_pac
+To: Peter Collingbourne <pcc@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::849;
- envelope-from=3x6soXwMKCMAviimuumrk.iuswks0-gxstutmt0.uxm@flex--pcc.bounces.google.com;
- helo=mail-qt1-x849.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c42;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oo1-xc42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -105
-X-Spam_score: -10.6
-X-Spam_bar: ----------
-X-Spam_report: (-10.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RL1sanJ2YqKh
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: EQRrT63Rqepx
 
-These instructions use zero as the discriminator, not SP.
+On Tue, 4 Aug 2020 at 01:27, Peter Collingbourne <pcc@google.com> wrote:
+>
+> The name disas_ldst_pac is misleading as it implies the existence
+> of authenticating store instructions, so rename it to avoid that
+> implication.
+>
+> Signed-off-by: Peter Collingbourne <pcc@google.com>
 
-Signed-off-by: Peter Collingbourne <pcc@google.com>
----
-v2:
-- fixed commit message
+The use of ldst here matches the name of this group of instructions
+in the Arm ARM (DDI0487F.c page C4-308, "Load/store register (pac)"),
+I think.
 
- target/arm/translate-a64.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 8c0764957c..c996ca1393 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -3429,9 +3429,11 @@ static void disas_ldst_pac(DisasContext *s, uint32_t insn,
- 
-     if (s->pauth_active) {
-         if (use_key_a) {
--            gen_helper_autda(dirty_addr, cpu_env, dirty_addr, cpu_X[31]);
-+            gen_helper_autda(dirty_addr, cpu_env, dirty_addr,
-+                             new_tmp_a64_zero(s));
-         } else {
--            gen_helper_autdb(dirty_addr, cpu_env, dirty_addr, cpu_X[31]);
-+            gen_helper_autdb(dirty_addr, cpu_env, dirty_addr,
-+                             new_tmp_a64_zero(s));
-         }
-     }
- 
--- 
-2.28.0.163.g6104cc2f0b6-goog
-
+thanks
+-- PMM

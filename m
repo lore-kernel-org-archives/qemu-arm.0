@@ -1,199 +1,147 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp859569lfy;
-        Wed, 5 Aug 2020 11:17:12 -0700 (PDT)
-X-Received: by 2002:a17:902:9a41:: with SMTP id x1mr4457346plv.323.1596651432476;
-        Wed, 05 Aug 2020 11:17:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596651432; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp896760lfy;
+        Wed, 5 Aug 2020 12:05:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwr/eHLV5o5hYbbsoh2BuwuovJJIeyyUNBLLDJo9nI3ijtVqkvWzfdRK5QktNBGQhEZHqAu
+X-Received: by 2002:a25:ab91:: with SMTP id v17mr7321284ybi.180.1596654313305;
+        Wed, 05 Aug 2020 12:05:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596654313; cv=none;
         d=google.com; s=arc-20160816;
-        b=A4EQ8mq6O8Yl4NY9petZh2iP+76iZlJ1hfWWvriuFZsaCjBujx5jblZborWpnwwy3c
-         WK/Sjwb/2MzpOCJTgzlTjHj6JWiTydH593/w+h2Tb0X/LnX9FL5jLaBWW/uZXhXRmq6h
-         T0Mp/dnzJE/HoIQdVKWO3/Qu71ooNOYKpsYbKtegN8RdalWxrqvCSaiIXqF/nmWZPJcK
-         dlCmd/xQ5HW5hgUXxSaro0gaoMKdv2cdWOr1kxgqDzhVYhjN9ObhMu5CKDP09gCroqev
-         siRFO0iuZGw3tSkb8QpSY8RQIaej80pYagGqk4G31diAX26YZ5vqvpT/A//a5LEYKlG5
-         8xxA==
+        b=HYH205q+5um+DRxYz2zmKwe2o0axbp/s21qmFYyMAkLnMV5xwhsvCwnh0njAJEcTGS
+         m40rEUo5Ygxk9IQwTppJCD6F75W/eIoPQJls8EMl8XbCKmtY6omlqi9CiuzYleom/XnN
+         Cc3P+vwwaNRUpJx/rlymyOvngHQgb4CrI/Wfm1TLB/ysQlteDyPLcAkPZ2E2mKvlem+P
+         b+fX8QQIIiXhQH+dv2hVaTxWjmpvBLDsvGegjRzg0rxNBtEs00sEm1q6z8bNhpWZnaZd
+         ++3OMLLBn6xOtYFDtIEW3K+b3ABmZPWlFebVa+Hkn0oRu3xLfiaa+m6k57wGd+BF/VKb
+         F0Cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=references:in-reply-to:message-id:date:subject:cc:to:from
-         :dkim-signature;
-        bh=sqXifhGhW3rwKZgyTrB18rperPby0ZelegDudFYBpjk=;
-        b=jFua7KmqNR7epARWxbyDldDbTp9x1BVPvDwEuw6fqKWCsQbQaECtUe01gYpgjHDtM1
-         Q5hxp5QL986QvdzxLbSbeCLNA6LzQ/ANwM1creT8uz1NMTJN2cqpEZBoqJZ9KNmiLdmW
-         d0iGU964lfDV8ZNImEF7PPSR4yih98o4aFjfI7rvrmM6otJFQc7RbDXDDHpnZdVH/qMq
-         tMmBPdrF6EyZnvCInPg2GCMwvqn7XRX7qnT20SQXvp2v/sqBabyE60s+OdnijawMNTx7
-         a5d1NxIaFBxqzP4Ft7LWRT3g4Y+U6S5d2Dn4G3zHMKkJK78P7a1bdpHrR7Wb7M3EDyb5
-         ySzA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=HVkA4GtPY9nHRy8TNBrSpNj+Za8pZISkS+dRzZ7Myaw=;
+        b=Rgf7aM8yo64A7Nb08tnbBdnwc6mLFYdolQMMsawCxpB0uflifk0xgN85/e8n8abq8c
+         kEBTDMvsVofHeh9XoWKCbLK3p2h7s+g3LrwCqoDiD9rjHT+cP475Cd5693/asrGv0OiA
+         EeTb8WmylZsDyvCoghNC2VrLqXGI6F8srqXrKjLUfT7EmgbHdmFwRlZUO05uoZi1xFvW
+         BQhF/iHi/5ZVYz9pVdQNjsW+R6R4pCZhcKKMEAnKSooYxsVIqDlYPwGNHL2gefSJoKre
+         IIJk5EmhE/TxG8x58YAeMYXfsxcjilbbpBoZy36ndByDFknHABGAmZuNIclU4Qm5HD3j
+         +lqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E6OLKc6N;
-       spf=pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=robert.foley@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <robert.foley@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id o44sor3562935pje.1.2020.08.05.11.17.12
+       dkim=fail header.i=@linaro.org header.s=google header.b=xrLUkmyM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id s12si2552625ybm.342.2020.08.05.12.05.13
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 05 Aug 2020 11:17:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 05 Aug 2020 12:05:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=E6OLKc6N;
-       spf=pass (google.com: domain of robert.foley@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=robert.foley@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references;
-        bh=sqXifhGhW3rwKZgyTrB18rperPby0ZelegDudFYBpjk=;
-        b=E6OLKc6NLdUktyGjvvVvhPNt5dAd9K5VQRSXtUcMKl+kVkBqql3YZXUFHfGm9CwV49
-         0BxYt4B/IiLbsZrGOPugnRpO1hjDejeDdnrSqt5ffAnk3LYzDAsCjMI0kqzSeaB4rV1q
-         V67KJyzCvZrxhGdhS/HkAK8xm2GF4NPxaambIFdpjLPltmbU/0WuYQCjWBB5Zsro2YXv
-         j5KKlZ/hQMU4OPIdjCp1fUixfigBWLyfUiS5xwlWJQEYjojhnoYDBn7rmG+BxDvtzu3i
-         wjCD5KujPRw9tULzug78tBoyX79u5g2bBKFj9TiFlXHpb2FLTCN+Fo3Uuj3JxKPZ3jPE
-         4tFA==
+       dkim=fail header.i=@linaro.org header.s=google header.b=xrLUkmyM;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53764 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k3Oiu-00015q-KT
+	for alex.bennee@linaro.org; Wed, 05 Aug 2020 15:05:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60078)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k3OiA-0000WU-8t
+ for qemu-devel@nongnu.org; Wed, 05 Aug 2020 15:04:26 -0400
+Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:46742)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k3Oi8-0003bR-29
+ for qemu-devel@nongnu.org; Wed, 05 Aug 2020 15:04:25 -0400
+Received: by mail-oi1-x242.google.com with SMTP id v13so23934659oiv.13
+ for <qemu-devel@nongnu.org>; Wed, 05 Aug 2020 12:04:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=HVkA4GtPY9nHRy8TNBrSpNj+Za8pZISkS+dRzZ7Myaw=;
+ b=xrLUkmyMWFPWqqosnYzwto6K+QgsyClnxO+MRq8teV8/8VoeKvG0hx//BTbNT4xRJ1
+ vJOVU1a3HCDTDTX+dHzonFZHVGPIobvCAn5+IKkpujGy0AW0NE2j6+NCj0SnyOy+sXk1
+ IGTKrN0KYi4I0eF8DPgoY7arZYpak3NZmmAqv/D3Gz/VoPB7yGuCRSrR2xZynvNEwLJH
+ 7kQjODJxbNZ5kjPOhJ/iwFER53JtIyf9+tn5b7f/qM5z7m/qBG4EobaRJygvDFaouIdS
+ ADDqqB0R4NBzz7FypgfNUDER7w2+k1IkXcjnBI6Jkw4spIDeDYYXSxCj7JvMjzDnVXxe
+ rGTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references;
-        bh=sqXifhGhW3rwKZgyTrB18rperPby0ZelegDudFYBpjk=;
-        b=M7D2KYjNsOgQP0WwXQUaV/yusFQZc3MX7Ljcwra5/texKx5+d7D5ZQ0eIdYga3ozU0
-         jAsYGOcqasuXUMTkNR5hdTw+GYqjd1WRw6tIsf719DuhxER+aFADa/CFAHfQ6yIbYbBg
-         xSriYacF4A9jWTuQ79bE0TkpO6UDmKqmGE129kW2FNL5RHGrNyiKFUJ6u3cPAmfIRfON
-         sR6R5ZxhDTNiIV2e5JXICfgMucZillK/MeaiorpRDhZI+4yjmLgykZTojG1SQwyP1Wa3
-         dPOR62I5YpE87aNxB10oOAgCCc4Vjaw9S4zUVnrScjlq9qvWQBCyGKQCZeO6h7hppDZy
-         wWhw==
-X-Gm-Message-State: AOAM532/MpEomnMUvsi0L1iydxuoguhIbn2FYrs2VNpwIRpfMikEPDcN
-	1IU9HWnwSCC+o9QimWFc3Qr1bgio
-X-Google-Smtp-Source: ABdhPJw8Zx4kakl8T5S0K51cLOjK1lVkwtVj4Y/d4ewFjHh3mHAlt8DrxlBzFrsMeQLjxBlP30n+8Q==
-X-Received: by 2002:a17:90b:46d3:: with SMTP id jx19mr4582194pjb.158.1596651431914;
-        Wed, 05 Aug 2020 11:17:11 -0700 (PDT)
-Return-Path: <robert.foley@linaro.org>
-Received: from Rfoley-MA01.hsd1.ma.comcast.net ([2601:199:4480:60c0:38ab:50b1:ff8a:26ef])
-        by smtp.gmail.com with ESMTPSA id a15sm3670196pfo.185.2020.08.05.11.17.09
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 05 Aug 2020 11:17:11 -0700 (PDT)
-From: Robert Foley <robert.foley@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: alex.bennee@linaro.org,
-	cota@braap.org,
-	pbonzini@redhat.com,
-	peter.puhov@linaro.org,
-	robert.foley@linaro.org,
-	Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH v1 03/21] target/arm: add BQL to do_interrupt and cpu_exec_interrupt
-Date: Wed,  5 Aug 2020 14:12:45 -0400
-Message-Id: <20200805181303.7822-4-robert.foley@linaro.org>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20200805181303.7822-1-robert.foley@linaro.org>
-References: <20200805181303.7822-1-robert.foley@linaro.org>
-X-TUID: ph0mhOS0/otT
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=HVkA4GtPY9nHRy8TNBrSpNj+Za8pZISkS+dRzZ7Myaw=;
+ b=sDJJTvhRYLFFoVXZRq8rt/gZrtw41NKaNLAHXMvLauvIE94OK9QkWCtetbj0WfDnV4
+ u4sEhe1WkgQdgcJucM+U/i1MiF/h26xeiY4w33EH3VNNO0v3t3JFfVwr0hTVrT7sze7W
+ wAEjw/p545kCIhoGywGKC6Jf4MWn/JhfJcDg5DRRw3usJO6bRTZdji4/k6oVQE7ts2aY
+ oT/4YMvN+3D2D6DQwcxAVYkzAlStxEHlzZwoXpIVmhWDaZjrVMfYBkIOXxR2IfxIiuHb
+ U944FxORD8bt5koGnvVpY1BRtRypKNipZsa0j0YU5rcFP8DzeoBv/30NfaIPKUaCkFe+
+ TrIg==
+X-Gm-Message-State: AOAM532/tuStApE3Rnj6LMdVk8+EwzE2+iNfJTEOdCXRZxhZcW0E65e0
+ HLm3EGY+3QTRtMbv3TRenv2DdCZ8Z/dF15D/UTszMw==
+X-Received: by 2002:aca:4a96:: with SMTP id x144mr3975116oia.163.1596654262673; 
+ Wed, 05 Aug 2020 12:04:22 -0700 (PDT)
+MIME-Version: 1.0
+References: <20200723025657.644724-1-bauerman@linux.ibm.com>
+ <878sf3uojf.fsf@morokweng.localdomain>
+ <20200730005947.GO84173@umbus.fritz.box>
+ <CAAdtpL5Mtaf7Xwu74U33eGTCAiFZNNXeCST8COwQeW8S9j8ZVQ@mail.gmail.com>
+ <87a6zh3uyv.fsf@morokweng.localdomain> <874kph58o5.fsf@morokweng.localdomain>
+In-Reply-To: <874kph58o5.fsf@morokweng.localdomain>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 5 Aug 2020 20:04:11 +0100
+Message-ID: <CAFEAcA-Yi754zyxHd+bggjny5vXw=rrs5fm6SZCcxwVUeoTtOg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/8] Generalize start-powered-off property from ARM
+To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
+ envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ David Hildenbrand <david@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Greg Kurz <groug@kaod.org>,
+ Richard Henderson <rth@twiddle.net>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LxZ6yT0zYye2
 
-This is part of a series of changes to remove the implied BQL
-from the common code of cpu_handle_interrupt and
-cpu_handle_exception.  As part of removing the implied BQL
-from the common code, we are pushing the BQL holding
-down into the per-arch implementation functions of
-do_interrupt and cpu_exec_interrupt.
+On Wed, 5 Aug 2020 at 18:01, Thiago Jung Bauermann
+<bauerman@linux.ibm.com> wrote:
+> Any news on this? Is there something I should be doing? I saw -rc3 today
+> but not these patches.
 
-The purpose of this set of changes is to set the groundwork
-so that an arch could move towards removing
-the BQL from the cpu_handle_interrupt/exception paths.
+Sorry, you've missed the bus for 5.1 at this point. I'd assumed
+that the relevant bits of the patchset would go into a PPC pullreq
+if it was important for 5.1.
 
-This approach was suggested by Paolo Bonzini.
-For reference, here are two key posts in the discussion, explaining
-the reasoning/benefits of this approach.
-https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg08731.html
-https://lists.gnu.org/archive/html/qemu-devel/2020-08/msg00044.html
+As I understand it, this isn't a regression from 5.0, right?
 
-Signed-off-by: Robert Foley <robert.foley@linaro.org>
----
- target/arm/cpu.c    | 13 ++++++++++---
- target/arm/helper.c | 17 ++++++++++++++++-
- 2 files changed, 26 insertions(+), 4 deletions(-)
-
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 401832ea95..b8544f0f0a 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -528,12 +528,17 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
- {
-     CPUClass *cc = CPU_GET_CLASS(cs);
-     CPUARMState *env = cs->env_ptr;
--    uint32_t cur_el = arm_current_el(env);
--    bool secure = arm_is_secure(env);
--    uint64_t hcr_el2 = arm_hcr_el2_eff(env);
-+    uint32_t cur_el;
-+    bool secure;
-+    uint64_t hcr_el2;
-     uint32_t target_el;
-     uint32_t excp_idx;
- 
-+    qemu_mutex_lock_iothread();
-+    cur_el = arm_current_el(env);
-+    secure = arm_is_secure(env);
-+    hcr_el2 = arm_hcr_el2_eff(env);
-+
-     /* The prioritization of interrupts is IMPLEMENTATION DEFINED. */
- 
-     if (interrupt_request & CPU_INTERRUPT_FIQ) {
-@@ -568,12 +573,14 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
-             goto found;
-         }
-     }
-+    qemu_mutex_unlock_iothread();
-     return false;
- 
-  found:
-     cs->exception_index = excp_idx;
-     env->exception.target_el = target_el;
-     cc->do_interrupt(cs);
-+    qemu_mutex_unlock_iothread();
-     return true;
- }
- 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c5ea2c25ea..3a22d40598 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -9759,7 +9759,13 @@ void arm_cpu_do_interrupt(CPUState *cs)
- {
-     ARMCPU *cpu = ARM_CPU(cs);
-     CPUARMState *env = &cpu->env;
--    unsigned int new_el = env->exception.target_el;
-+    unsigned int new_el;
-+
-+    bool bql = !qemu_mutex_iothread_locked();
-+    if (bql) {
-+        qemu_mutex_lock_iothread();
-+    }
-+    new_el = env->exception.target_el;
- 
-     assert(!arm_feature(env, ARM_FEATURE_M));
- 
-@@ -9776,6 +9782,9 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     if (arm_is_psci_call(cpu, cs->exception_index)) {
-         arm_handle_psci_call(cpu);
-         qemu_log_mask(CPU_LOG_INT, "...handled as PSCI call\n");
-+        if (bql) {
-+            qemu_mutex_unlock_iothread();
-+        }
-         return;
-     }
- 
-@@ -9787,6 +9796,9 @@ void arm_cpu_do_interrupt(CPUState *cs)
- #ifdef CONFIG_TCG
-     if (cs->exception_index == EXCP_SEMIHOST) {
-         handle_semihosting(cs);
-+        if (bql) {
-+            qemu_mutex_unlock_iothread();
-+        }
-         return;
-     }
- #endif
-@@ -9808,6 +9820,9 @@ void arm_cpu_do_interrupt(CPUState *cs)
-     if (!kvm_enabled()) {
-         cpu_interrupt_request_or(cs, CPU_INTERRUPT_EXITTB);
-     }
-+    if (bql) {
-+        qemu_mutex_unlock_iothread();
-+    }
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--- 
-2.17.1
+thanks
+-- PMM

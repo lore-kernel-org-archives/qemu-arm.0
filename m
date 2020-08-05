@@ -1,94 +1,93 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp568559lfy;
-        Wed, 5 Aug 2020 05:22:32 -0700 (PDT)
-X-Received: by 2002:a1c:a446:: with SMTP id n67mr3008281wme.174.1596630152772;
-        Wed, 05 Aug 2020 05:22:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596630152; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp758559lfy;
+        Wed, 5 Aug 2020 09:13:43 -0700 (PDT)
+X-Received: by 2002:a63:4c48:: with SMTP id m8mr3708205pgl.290.1596644022759;
+        Wed, 05 Aug 2020 09:13:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596644022; cv=none;
         d=google.com; s=arc-20160816;
-        b=tZN3By2X5WEHjB1ooNTMHsDvz5CRNF/qvcGLnEQz1tS0z0RS/O8+Go+VtmE2uVw0vk
-         aXfNBfOSXx0+X+0r0mLZYlAaJ4iLIajSnMa87fLHc2bS27GcuWcora2DODq2gkvAeTJ6
-         SA78+9ovLEi6a/m1vD7UqSofojDbF5nnFIOcWreZubymoWAuLFRNNIPtFUUAIuAGmAdV
-         x9yKOasQrIL5owLDVXeTJSBPPdxVpE5+qCVUoYmqfBc1d004zDNODdfAMgtWNWUJLHp6
-         ta2h80MfqJr5cXePeSxUJwNknqfNmPqD5LlG3B16IR8n+oYFr0zO05L9V58hA7AP7b2K
-         vEGQ==
+        b=dZCg3c0LiUstc2frqJq5M0r94eXncQh9Q4c/ByLAVASvTXhWMtax7vtf9HQc9uo+Tk
+         2lzJRalufv9aLlei+Gbb/FCY1waeQuWGFi+2WjkXq+tzsTeLEKY65BYuny5RxUPQDJ16
+         HN23ul6/fXwx/6huQyqUYLa/XHtNtFKtivLP27wotCkvoA64Ob3+0WQyC/F7MjrA4c78
+         5zs8qijF8piMfFwkHeqI+7C2ej20FBxDGy9AJJOnPziN1PuSvDelN/H2HcS6PwMtfGbG
+         HEYmU6ymaDxeEf1zUfRDbmO44MF+yi/qM3yx+K0ZepHjEYFAX4KK1Ei47fZ48EsNptk9
+         U0EA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:to:subject:sender
+         :user-agent:date:message-id:from:references:to:subject
          :dkim-signature;
-        bh=0txhT8ZGIBN9huhbO+h6pHwiKOp5Nh4JSK8IhwB4GP0=;
-        b=fpfFknesAj2UoZJdVB4rPzuOpXRkOVINqjLPvN+eXcUv5UXF7qVomJGC4M/3ROICQA
-         4Gl3Hr+SsOFKn0x5EkBx72QnNwnTdeFZE4uCA2sOL5o7eiRUaja1aLGQnZn1iV9LhZdD
-         8y0+JxVDJ1lQXSJ3p4v75veUI9VbHJQfsVzc4dJYVJy2A8Yxe6fLiUi98ibwcO/3D6mU
-         0cNRT3P9mvu1FxW80I+vYZaNRXns4AVu41ZKBReK9P96iHwXJwkVsCZbrUIpZuqK/gXf
-         CfR67+r23JeloI4nlb2m5kqR6lxLXq6Hsiu3mToq7pNMhRp8C4riH0ghtjGfWJwOHqyJ
-         aMwA==
+        bh=1znVNOxtsb12P2bEtHCMxakeRtG7wQdoITwFpnpBvOU=;
+        b=YRejcRnkzlIBdgX3SJJffGpkagwpGx+dkkudBlDXCROOiKfgfEtI80v9qq0AajyWBj
+         7touJr5pCB0qksEoQWyOrRxX0WGg0aY2g4wYn3xB9o+mUyn35YgPgAi/7G+dCmhwrPEO
+         9kElKLLlGjEXLliXSeMWaDUQt7DQZrGY439ofJQXs+khZ+NhXUnpsBiIF6CnzcTZpSC2
+         jwJHPb1x8ysxxkY1Io/ClsMNg8UAR09zGJk7Sx3B/iKhEb10tSOrXRZoqhbPVG8eKTUr
+         dSCfx2dwANf5l8F1JVf4tM9gyp9vtAedCLJn48KpYtOTvSpvxBJCvkqkbFmjx9wD42Tw
+         h5Vw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KXdRcA5Z;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id u18sor1170958wmj.16.2020.08.05.05.22.32
+       dkim=pass header.i=@linaro.org header.s=google header.b=bIDfFLsw;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id a5sor3225830pfd.43.2020.08.05.09.13.42
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 05 Aug 2020 05:22:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Wed, 05 Aug 2020 09:13:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=KXdRcA5Z;
-       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dkim=pass header.i=@linaro.org header.s=google header.b=bIDfFLsw;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=sender:subject:to:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=0txhT8ZGIBN9huhbO+h6pHwiKOp5Nh4JSK8IhwB4GP0=;
-        b=KXdRcA5Z1tScW/SbiueOGsWVKNS4QGFFgrKvWIxKsn2zlZub5kop3YHkjui82uD7P+
-         D0Wt5f7Sn+gCAcVVUgxHp5N7Fk8/7nkUdYK2wK1f6ql9eNnsPURMCPWjgBZnHuRkMUW2
-         HZ9CqNFUxerzbmORVVLEzVenfeavxxmiSWRrWVfT6LNu8fnknsm1TI/+Au+//zOFJt94
-         OOXieF1fdifjs4I0G5LtnRF2iZg0b/NS7+HK9vSQYOfA0RIVFj8n5TPhXtnOoF42T3sG
-         6WsVzUSPdMOXuqNnppulBJaP6tfIfMDxbkSMvi9MgKw8+elICimuJaHbQP1NYnWmOUjx
-         8rvA==
+        d=linaro.org; s=google;
+        h=subject:to:references:from:message-id:date:user-agent:mime-version
+         :in-reply-to:content-language:content-transfer-encoding;
+        bh=1znVNOxtsb12P2bEtHCMxakeRtG7wQdoITwFpnpBvOU=;
+        b=bIDfFLswQnXkTCzl4WxLkLYoNk01tjYmsgKg+hKWJ6CO71QWUSC3vR2g1B1/kbFwOt
+         icUCMYfCyoy9IAj1fpnMOjAeuJZG/frO7F4AjCpBmsvi1ilNWkjp37rSWTkbe9c6aUhw
+         kO2RsgU2JxFKGtz8X7UZSRwwZ+jzSfMYYwtpeHSr2O2oIX4zlpEhOj+FhzgwRiqaCw8Y
+         8eEwUmGNY8DTMoE52laz7E5MHMk7lpfwa3zw1p/TA28/q7uOJ5EYwYUhkrGS/UFseHB8
+         Zp4gSpVdwW4NGwDeJUNyx+pz/WiVeBbMCu77604imf+L4cXM1S031vi4oXo0ygy1bITm
+         NP2Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:sender:subject:to:references:from:message-id
-         :date:user-agent:mime-version:in-reply-to:content-language
+        h=x-gm-message-state:subject:to:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=0txhT8ZGIBN9huhbO+h6pHwiKOp5Nh4JSK8IhwB4GP0=;
-        b=R+fYPQmUUJCoRC3g28S+LqMoNslzQJdlNdvKfgAKEz/zqpQTyXll3WmF0WbRu5orHD
-         X9C9zGUlNDP4XhfCuSkr8E3lRIwRFDShJlw0R9atoIi2R523K74tZnj0FYLnAQdoX75g
-         pnQgajDYNd/cdkUG/IM16f2a3bFl3Fp7XjMovlEicSzHo8qwAEKiQeAVHhqEwuiazHa7
-         qIQwXiO0W6yucJtu3PxKc+cv14DuRNGfNt4CooGgKoAoSFXAGwbT02clTgtjwVmeb7/D
-         P+Qk+RQvqE5lJQV0D6S8xDKMsVascLFJ+OZXdiIthicomah/m0Bu9c3Cp3ptmuFHHwbF
-         +RXQ==
-X-Gm-Message-State: AOAM53146PsI/u5ODDBthzqA9GLVjFNG1+/HbzShjk+rinMfErBQvcBh
-	WMrZ7lcIVtMn8igdY39fbeAZraxZ
-X-Google-Smtp-Source: ABdhPJx605f9wtjSqQWt3r35rigzQfYmeSC/DdW2LyjvP5GHIIJNhfVIeCw3msKijwOpxD+uYDw8JQ==
-X-Received: by 2002:a1c:3886:: with SMTP id f128mr3021448wma.121.1596630152110;
-        Wed, 05 Aug 2020 05:22:32 -0700 (PDT)
-Return-Path: <philippe.mathieu.daude@gmail.com>
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net. [81.40.121.121])
-        by smtp.gmail.com with ESMTPSA id o2sm2832799wrh.70.2020.08.05.05.22.30
+        bh=1znVNOxtsb12P2bEtHCMxakeRtG7wQdoITwFpnpBvOU=;
+        b=SNeakk4uEYW/jtYhy5Zn8PtWRu44ctPgfiyuA4UBsynOYgzaGmofA52BQO6DbYTGY2
+         U4AvAUvOI1A7A7JIrhHzAfamYnY0snZH6QutCLunc3naMfsujTcJYR8H8FQEA6UF8Lw7
+         RprVWuVoOC2OUVq2j+9CNWX5oaeFO1xi3C+CcrcpoiZMd9uNdzD6PGqNWLCeEyRQA9B9
+         kytO/dcHkZ3TPGORVn4iOdKLKUUjn6Z+qYzV62rP0nXVlSnVzeBcdmqyKoLHS+OawsIs
+         5edYoPOm2yNx5cA69PybMxIusDIB+y6BpQKJBiSPSeP2U31W8+FuXPUUIvrIcQNCTA/D
+         tEaw==
+X-Gm-Message-State: AOAM531fhPHc9tdnKYx1NkCAIQ07A3JeM2KpbBR+fygJ8WHLOga8g55h
+	nzVjUQrpwtLS7SILd3C2GK+eF5G3+IQHzA==
+X-Google-Smtp-Source: ABdhPJwMWQvGA3ylvmUl+k89rrnweJFTocqWJTZGd5iHAHj36IW95GURc+2plaKMBqxcUg1bcRvNxg==
+X-Received: by 2002:aa7:943a:: with SMTP id y26mr4239817pfo.244.1596644021716;
+        Wed, 05 Aug 2020 09:13:41 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] ([71.212.141.89])
+        by smtp.gmail.com with ESMTPSA id t2sm4324370pfb.123.2020.08.05.09.13.40
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Aug 2020 05:22:31 -0700 (PDT)
-Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+        Wed, 05 Aug 2020 09:13:41 -0700 (PDT)
 Subject: Re: v8.1M cpu emulation and target-arm feature-identification
  strategy
 To: Peter Maydell <peter.maydell@linaro.org>,
  QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <CAFEAcA_6zbOfdVi+Tp18seaEy4don1GurVya+E+QXRGrZ_WVLg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <afeb7479-48b2-3665-2bc5-0f5dae23ea4f@amsat.org>
-Date: Wed, 5 Aug 2020 14:22:30 +0200
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <2c5ed9d8-6d79-1b53-5588-8fb9efebf0fa@linaro.org>
+Date: Wed, 5 Aug 2020 09:13:39 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
 In-Reply-To: <CAFEAcA_6zbOfdVi+Tp18seaEy4don1GurVya+E+QXRGrZ_WVLg@mail.gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-TUID: M2gby0p73VpV
+X-TUID: Nx65Z8Nsu/h9
 
-On 8/5/20 1:08 PM, Peter Maydell wrote:
+On 8/5/20 4:08 AM, Peter Maydell wrote:
 > Mostly recently we've been aiming for QEMU emulation code in
 > target/arm to use ID register fields to determine whether a
 > feature is present or not (the isar_feature_* functions) rather
@@ -106,14 +105,8 @@ On 8/5/20 1:08 PM, Peter Maydell wrote:
 >      to be known to be always present in v8.1M, like low-overhead-branches
 >      (ie ID_ISAR0.CmpBranch >=3)
 
-FWIW finding myself sometime git-grepping 'isar_feature' I'd rather
-choose (2), even if there is no such v8.1M ID register field.
-That said, my end-user preference isn't very important compared to
-the developer/maintainer one.
+I think (2) has the potential to be confusing in odd ways.  If there really is
+no official flag for this, I think we should use (1).
 
-> 
-> Any preferences ?
-> 
-> thanks
-> -- PMM
-> 
+
+r~

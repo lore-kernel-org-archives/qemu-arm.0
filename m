@@ -1,114 +1,103 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp496123lfy;
-        Wed, 5 Aug 2020 03:48:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzR3FvHSa610lOzR58cqxi8hu6jlZmvii6jmAd8Z0BT8p1Vxh/g/oojN/4bhjM+/jHkcj62
-X-Received: by 2002:a25:390:: with SMTP id 138mr4057848ybd.237.1596624488602;
-        Wed, 05 Aug 2020 03:48:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596624488; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp693756lfy;
+        Wed, 5 Aug 2020 08:00:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz4pTbM9MgGInT4/Zq6/IoKsELf+A9VkQ5YIGqtWMUX+x0DyhkT4+hwgPMnn/cmj2Q5CkTt
+X-Received: by 2002:aa7:92d7:: with SMTP id k23mr3472222pfa.295.1596639656794;
+        Wed, 05 Aug 2020 08:00:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596639656; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q0qpo/iNqq33g5Iu/UU2ZBCNXRgYbAehdJh5BGrYq29yWqRRdxtnFjHWhDa73SOa/8
-         vAIeghcmuyw26GqoxHtfzaxjFJip/iIwB3X7Lxzoe7LHF30KIX3qDqVpEMOlOCj6Cxo+
-         WIzMYeAS7va5n+9auCrnKGoNpE7nr7Aj6HCJb0RpHz/O79rTsP8UdostY3rMLwgkzmL2
-         iyPZj2bizR87qeLmXI4YtoifkqU5ONb9pkpzgVgeeoRuRVDt4whSYT5ruLIGDic4hJZ+
-         dUhYPDTY3VPLWPxJ7OW7Tcg9MEiUT40HTjagd7qzBwrROhU1ocGh/M1czHlpalrLMnZC
-         BDPw==
+        b=OfXTZnDrtajspEYYWksN/uYHKlRSlyNXJLoTzitD2IUO+6CE47kvUx12H5ovwULQfm
+         exGhlM1BB9M3tCFaiLSBs+CEpsTrfC1kuXDB244ZB/3beHvE9XmbHTDqRmxMliHv9H/P
+         hERSeN6gEak64m4OrN1xdYQetZzVLzDgOkp2Xbvxpyk/+J1oHVqf35ezZi8N9mjUaPhU
+         KdQopy3rDL3zP8zRUk6BHmoz3pqUgXyLi+19EkWj1W1TlDta2G/bR9k5Z4m+Bipy+hV3
+         OeU6X9hXem6yX6bwhIZVwI7KmbgqlpN7XqjrEBfU5kns70uuCzsqW2hyfmOEu6LADw8d
+         EbvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:user-agent:in-reply-to:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=Tb/xBOOWsw/TomuhbMZ6wUY0aalRGbMJ15padGe0oKA=;
-        b=hpwOyHL8Ujus/WO6c32TIla0yjKU/SyPPAeiK3CXyYju8D1uOXjqrJBfZl/mqvrZsT
-         te4D0iz4dOKn9evw+lVPRC4b3CYkRqcZX8NqzbiLyxWebTYE4Nul8XXSq+xOW1ALATlV
-         KHEdIVdoJQNMCEZXoDwU3pw6Y9WkQsgjU1MEDrcIEhoGXGSa2TzhrGMVimEiXS5qDb1Z
-         PAuN3WGyhC63GECXAQNJr0BQxNShbRGRcKVeIBxjPSrdwOZTeGdmhICdapLXJaDsj8HO
-         6ezzGSJIh+FpQ6X5k5SkdLoaKwEBGwSXfWuQuFSTtJN6cgLq/FU8eX52BinocM7mouDf
-         OhdA==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :subject:to:from:dkim-signature;
+        bh=gmuT+GbWTjKMrklNATbcoPBcPrB4lEmkz6h2lT+MhrI=;
+        b=hC50Sww4zon+ZS9eq4OJOVbALlABa9nzke4bCjqfxaPlQtaR5kAfrRXN374awNVivr
+         5ald8FpHkSLoTzx5Rsk72xt5ZRqHT9Au7E49WENHhh0dsX4QqGIlV3UWxhNn1zfr/NFQ
+         B3tLzxs8TjrBiDmmWQFOOOCr3t192nAbtEqe0wjysDYs/bqTQJGInyquvhIjacIa16G6
+         71AvQeSeoVneSa6wFqWwYCDAQBjA/q5Uc5i0SdnGE0ksy0fTthDRRGx5qbwGdVW+aTh6
+         IK2aGjGp8Zl7HfF8YQ30ijdrV1rM7pQsqB3QCjCmo5ybVX3WAfFDG73f7nBQIJiFbgUh
+         bJ8Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NKU30IAC;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=iQ7sqD78;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x3si1885793ybk.108.2020.08.05.03.48.08
+        by mx.google.com with ESMTPS id l17si1614572plb.109.2020.08.05.08.00.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Aug 2020 03:48:08 -0700 (PDT)
+        Wed, 05 Aug 2020 08:00:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=NKU30IAC;
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=iQ7sqD78;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34034 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Received: from localhost ([::1]:59782 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3Gxr-0007az-WA
-	for alex.bennee@linaro.org; Wed, 05 Aug 2020 06:48:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51716)
+	id 1k3KuT-0006Qb-Us
+	for alex.bennee@linaro.org; Wed, 05 Aug 2020 11:00:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1k3GxV-0007Y5-L8
- for qemu-arm@nongnu.org; Wed, 05 Aug 2020 06:47:45 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:38230
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <dgilbert@redhat.com>)
- id 1k3GxS-0006ze-BQ
- for qemu-arm@nongnu.org; Wed, 05 Aug 2020 06:47:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1596624460;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Tb/xBOOWsw/TomuhbMZ6wUY0aalRGbMJ15padGe0oKA=;
- b=NKU30IACYXyvZTTdnPBaBaX1USnA/aA5rK92S9d73NAV7g78j2N1IoMfnjuvMfBy20FXjh
- hnkTuGF47Jm059kEUGby33Nn6BD5Zj+XN4+gXuveaYr3TYghqaw3KdB9+GIWuWL9Dwul9x
- Tt0nosPmixrpHVvlf1lV7+4IhAebSY0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-508-Z90DuQJHPGaX-0L1sHBVXg-1; Wed, 05 Aug 2020 06:47:39 -0400
-X-MC-Unique: Z90DuQJHPGaX-0L1sHBVXg-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.90_1) (envelope-from <i.kononenko@yadro.com>)
+ id 1k3Kro-0005xb-8u; Wed, 05 Aug 2020 10:58:08 -0400
+Received: from mta-02.yadro.com ([89.207.88.252]:38884 helo=mta-01.yadro.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <i.kononenko@yadro.com>)
+ id 1k3Krm-0004IV-7B; Wed, 05 Aug 2020 10:58:07 -0400
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id 8AA7D4C1AD;
+ Wed,  5 Aug 2020 14:58:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ content-type:content-type:mime-version:x-mailer:message-id:date
+ :date:subject:subject:from:from:received:received:received; s=
+ mta-01; t=1596639480; x=1598453881; bh=WOYV8Dcju5qv3HfKHXNFX+ZY5
+ r8qAa6xXt8iK++1BLw=; b=iQ7sqD78hCxnby69ooje5z/tYFp5Avau4LviPjeDc
+ lxpxBJPKOIfkxCW6BHFYSBCcT2hQW4wk1Ny0TECV5V2ooM33Jcf2UdRWI6QXp+3j
+ 1xrd4SPm6hN+8WLCMxqn5ZbHA/XCm5DwTrnS7HZwp9Kg+5BXcMaf49JYhEwX7uds
+ Yk=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id v2EUduJLtVuQ; Wed,  5 Aug 2020 17:58:00 +0300 (MSK)
+Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com
+ [172.17.10.102])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ECFC8107BEF5;
- Wed,  5 Aug 2020 10:47:35 +0000 (UTC)
-Received: from work-vm (ovpn-114-87.ams2.redhat.com [10.36.114.87])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 19E1260C47;
- Wed,  5 Aug 2020 10:47:25 +0000 (UTC)
-Date: Wed, 5 Aug 2020 11:47:23 +0100
-From: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 02/18] migration/vmstate: Introduce
- vmstate_no_state_to_migrate
-Message-ID: <20200805104723.GC3004@work-vm>
-References: <20200703201911.26573-1-f4bug@amsat.org>
- <20200703201911.26573-3-f4bug@amsat.org>
- <CAFEAcA_fsBtBnzarO4Obd7-5766oSuHzDqRrK48VqgDmH5ip+g@mail.gmail.com>
+ by mta-01.yadro.com (Postfix) with ESMTPS id 2EFC641282;
+ Wed,  5 Aug 2020 17:58:00 +0300 (MSK)
+Received: from ik-ThinkPad-T490.yadro.com (172.17.4.251) by
+ T-EXCH-02.corp.yadro.com (172.17.10.102) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id
+ 15.1.669.32; Wed, 5 Aug 2020 17:58:00 +0300
+From: Igor Kononenko <i.kononenko@yadro.com>
+To: 
+Subject: [PATCH v1] aspeed: include build AT24X EEPROM devices
+Date: Wed, 5 Aug 2020 17:57:49 +0300
+Message-ID: <20200805145749.23929-1-i.kononenko@yadro.com>
+X-Mailer: git-send-email 2.17.1
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA_fsBtBnzarO4Obd7-5766oSuHzDqRrK48VqgDmH5ip+g@mail.gmail.com>
-User-Agent: Mutt/1.14.6 (2020-07-11)
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=dgilbert@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=dgilbert@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/05 00:45:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+X-Originating-IP: [172.17.4.251]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-02.corp.yadro.com (172.17.10.102)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=i.kononenko@yadro.com;
+ helo=mta-01.yadro.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/05 10:58:01
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 05 Aug 2020 11:00:32 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -120,79 +109,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Igor Kononenko <i.kononenko@yadro.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C6a3FIv23nj9
+X-TUID: Pkd1Z4UJ+wMi
 
-* Peter Maydell (peter.maydell@linaro.org) wrote:
-> On Fri, 3 Jul 2020 at 21:19, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
-> >
-> > Introduce a special state to indicate when an object doesn't
-> > have anything in its state to migrate.
-> >
-> > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> > ---
-> >  include/migration/vmstate.h | 1 +
-> >  migration/vmstate.c         | 7 +++++++
-> >  2 files changed, 8 insertions(+)
-> >
-> > diff --git a/include/migration/vmstate.h b/include/migration/vmstate.h
-> > index af7d80cd4e..0922bc8efa 100644
-> > --- a/include/migration/vmstate.h
-> > +++ b/include/migration/vmstate.h
-> > @@ -195,6 +195,7 @@ struct VMStateDescription {
-> >  };
-> >
-> >  extern const VMStateDescription vmstate_dummy; /* Exclusively for linux-user */
-> > +extern const VMStateDescription vmstate_no_state_to_migrate;
-> >
-> >  extern const VMStateInfo vmstate_info_bool;
-> >
-> > diff --git a/migration/vmstate.c b/migration/vmstate.c
-> > index bafa890384..d640cafad3 100644
-> > --- a/migration/vmstate.c
-> > +++ b/migration/vmstate.c
-> > @@ -20,6 +20,13 @@
-> >  #include "trace.h"
-> >  #include "qjson.h"
-> >
-> > +const VMStateDescription vmstate_no_state_to_migrate = {
-> > +    .name = "empty-state",
-> > +    .fields = (VMStateField[]) {
-> > +        VMSTATE_END_OF_LIST()
-> > +    }
-> > +};
-> 
-> Does this definitely not put any data into the migration stream?
-> We don't want to change what's on the wire for machines that
-> use devices that start using this. (If it does by default, it
-> would be easy to make the migration code special case the
-> magic symbol to act like "no vmsd specified").
+Since Yadro, Intel and many other manufactures use ASPEED-based BMCs
+with attached ATMEL AT24X EEPROM devices, the qemu-device AT24C must be
+added to ASPEED_SOC dependencies.
 
-I'd need to test it to be sure, but I think if we added a .needed
-to vmstate_no_state_to_migrate with a function that always returned
-false, then I think the stream would stay unchanged.
+Signed-off-by: Igor Kononenko <i.kononenko@yadro.com>
+Change-Id: Ibf4fb7a3057bd43998c94d44609f402d3f088863
+---
+ hw/arm/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
 
-Dave
-
-> thanks
-> -- PMM
-> 
---
-Dr. David Alan Gilbert / dgilbert@redhat.com / Manchester, UK
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 2de34f0b73..0c6a032190 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -367,6 +367,7 @@ config ASPEED_SOC
+     select IBM_CFFPS
+     select IR35221
+     select APB2OPB_ASPEED
++    select AT24C
+ 
+ config MPS2
+     bool
+-- 
+2.17.1
 

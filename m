@@ -1,129 +1,99 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp798704lfy;
-        Wed, 5 Aug 2020 10:00:53 -0700 (PDT)
-X-Received: by 2002:a17:90a:f8b:: with SMTP id 11mr4255114pjz.29.1596646853452;
-        Wed, 05 Aug 2020 10:00:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596646853; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp894732lfy;
+        Wed, 5 Aug 2020 12:03:02 -0700 (PDT)
+X-Received: by 2002:a05:6830:2091:: with SMTP id y17mr3718116otq.276.1596654182087;
+        Wed, 05 Aug 2020 12:03:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596654182; cv=none;
         d=google.com; s=arc-20160816;
-        b=02/Xxfsf/3Sc8bDb4Px6pXDMHlWQvJcTFOjW4SzYH2jxKNWEHmSqxakf4sEgLPLqxs
-         96YnmQrbaBpcJ+pC2issMTCE1m4BdxR7eFbgzrW8v5sQ0TikX6IzfpZgVIanV8SyqeM6
-         9b14qhTBiep0GWmb3PTrwCLHbWeYWQ3/PKu/5THkxK/JA9c0snTBmg7GVjyA0GnR5RQC
-         0pA2VHpkr08tSqlreRfUjhtbR3zGxZ8XwtQIyI3YCxCtRpsgjdi2O2lvpPapT0Tkkxxs
-         6wLKfs88ijneNuwqqqK9iNgcNa9fm7kKnSgpuZXySnixLqKYPr1HC/jk3IdbZ/0+dVvR
-         NXpg==
+        b=Rt2iyHM2vJ/6mHA8nfO8wO3qzn91yGAX+StuCuWNsSjkkA8vvO7uyZK8qZY7PxWPEH
+         mDADg7zQ2TF4bjTVVdowvqKclwbiqpZQozwVBGpGMnA3mU/FY3z0LQeXWJyunAveUcK0
+         4j4UcsA4vHOzCxdnrx3HGie33Ewxyt+AroEFAXfcUDa2VpTkoFK+9POka9cYmemaa46s
+         tPzs6H7LojfEqr1C1XgHFsPkFb8nO6fFM2GZQTyDFc1KeeYMhEWfa3hRdittyZi4s7wV
+         uGIePr1ZYivgDke7KDBTtMBVet1sb/MxqMdsnU7pDGhfSMHAQpz9HzDJOMW2ivGS0ZP/
+         VYEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=osJ2w+V9cZlk83KQovNCzTBOfhPvNCOTBe1WQBXex7o=;
-        b=aixgAsvRINz1fPefAbYmkvXt3DsYlov22+n3W1SC9bnWYk5IRK0QY9MfBRdt+Co8c2
-         ZjEOXmVvoR0piow8CyU+XxTvZnIHti3fHdx1lKK/NVaoDDZdEJ3zi9gmAhKFSLyaQ76L
-         YoieqP/ubkNMDcMGJDq4OwgjTX8nHV02E+K6LQ3MOQM2mx31WaBvT8AJcDxr0QFz0yGr
-         wXT9Qnz2ucf36tC/Y/IFSVkDzbdyblcy2Qgt6Jt25l4JuWeVgdjEXi+gC8sNsEBTutKS
-         Jdtcm9o4HPNfNrG75O30manlKra7/KeXIFMUQL0ko+Bi5UZArjG3/tOJhaDNf63vZre7
-         TWSQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=iREQpVcvmUgkRTy82rJE18VB38/uIikwuQyiEWDCr0Q=;
+        b=0oCG0vxRAPUxEk8RkVtsY5NL733ir3AmWFeslxklc+yAL316K6xyR6YA1HaM6KbXnP
+         OMR6j7CG9lRBkQuv2wA2k95hKeLcpX+6lIim6cju5ah6e2cKdz+xRbUrWQzZLm64qXNh
+         bXCAxnfgld+RNlbxDDJC3h6Ekx3L9RMGGP/HGUONd4FWEQ8uSpWiaovtLT97eqfDTd2H
+         pyV1r+TEzneM/spoCWcDQDB6/wxIiialx/U8UPebbXjcfFCzlQhHe4OvwmhPI8Iz7mI6
+         9vrZ1CqjtAgSduIwnyqUymRgb7m8GU4+mkszOhlvOSsSKeg6BG7fAOY7bF0oH/ePWf4j
+         m8+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QJWu+y9m;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="yzE93/A+";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
+Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id u187sor3272815pfu.82.2020.08.05.10.00.53
+        by mx.google.com with SMTPS id l190sor2733900oih.94.2020.08.05.12.03.01
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Wed, 05 Aug 2020 10:00:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Wed, 05 Aug 2020 12:03:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=QJWu+y9m;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b="yzE93/A+";
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=osJ2w+V9cZlk83KQovNCzTBOfhPvNCOTBe1WQBXex7o=;
-        b=QJWu+y9m3V7SE1wNRsLdIEHCSbwHUOmovMOGk1xgsWBXwXlPgNp01Ck0/Pp3BF/1rT
-         Rz1Aifm3/6rwqZn2vnRm2nbceCH/lSZqgTJmm6q8sOiRvYFIBiKyqUliTgV9hb6M4atE
-         oAfZQ+1nMnZgGX1fC01D+kM4GaPWR1fxvwhqcX/otcGYmda6FriZLedzij5P8UY3CzjA
-         zceJHJedwakQbyz6+iA7c5gcngg5swvVpRRRakOXKXtiZEijoFUrJVjYIS6WJMxxEtJM
-         fDzgcpFFHPA87G8BHm3GdQ8mIwXs4ZRO7DPTFE3IdVBCzi5c5DBo/DQF8g9ieWNMHdoJ
-         sRSA==
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=iREQpVcvmUgkRTy82rJE18VB38/uIikwuQyiEWDCr0Q=;
+        b=yzE93/A+vvmyc2tni7zWiCCToouuSsHdIXdFpJ0Ed7nwXClToBqE9BFoNhRJikFTs7
+         /FxrmBzPMMqKA3N6Ln/j1XtkD0UEVsPEmL38KQmoQY/uzF3OLOyeSZfz2z2KWx5dNwrd
+         /Nw8jTsGiPB1LTtxRcvHVkaomvniF8Fjva55iEOsSHT39ok0MyJXC/j1iQgXP/qIGxN0
+         rdbJ+jvW5+FZou8n3dMQVtfHTU82RC4KjnVLIp7YqQ8w2P4XrQT5MvQ+zy9+iZ6LT151
+         PEMSrK4MVztLngMVW2n3vc/2EEpt4YYKmBGJnVyDrwQGYHY/Uim8jNo15rrl8Tv6taNq
+         c7EQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=osJ2w+V9cZlk83KQovNCzTBOfhPvNCOTBe1WQBXex7o=;
-        b=BeHEORTNhr9D5qliUOPfEythxbu85AipMNlRLfvjPSN1pdOJz0JzLgo3PFA6Bv6NrM
-         nKCDJ4v5JMPVz0SicBb6Iimk3zsZjQ7QcDSVRwiDfmIgwzKONpf5Nmr6SxQ1okZhUJ4u
-         7XMkLU0dB5CURzc5M7Kk5FD345PE7ERMAdXgw5EG4fxO6IM6uxf7DptXWl5XcukK3Svr
-         tUx3Uw5N3hcyLlC3ZcE5YYOULL/lQXjb3ldaPgqEm5gYm9DzpyzQqGjysn+oQThvR141
-         DU66rL9KQDLA57+VioWM0YRnV+WhJyJ+G5WtyvW3cGeJgULlqviUEJ0BYiU51JBjh+s/
-         SD5Q==
-X-Gm-Message-State: AOAM533qrT4vugxAQ9ValVKuycxieBneOisXlA9/BJn65QStYEt9haxI
-	+aZ7RHnNnl+Bf6c/62/l1Nv1wc43
-X-Google-Smtp-Source: ABdhPJzQJ/EEfJRsmkRFPU+9t4B/n7GFyI6EDFDgoU+ZATPvv8T+BiowXtEPbDo9LUMhJ2p2XFDcgg==
-X-Received: by 2002:a62:1c0f:: with SMTP id c15mr4114148pfc.235.1596646852800;
-        Wed, 05 Aug 2020 10:00:52 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] ([71.212.141.89])
-        by smtp.gmail.com with ESMTPSA id 193sm4022388pfu.169.2020.08.05.10.00.51
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 05 Aug 2020 10:00:52 -0700 (PDT)
-Subject: Re: v8.1M cpu emulation and target-arm feature-identification
- strategy
-To: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=iREQpVcvmUgkRTy82rJE18VB38/uIikwuQyiEWDCr0Q=;
+        b=sK5/yrmtGtYTZP8d5GuwuvXeSpfLo9ZSqa/SB7JP0kRArLoro/JCCLtOt9dhkSi/yN
+         NVRRLWC/mUK2Hsv5yAhwK6R+TM/XRr4qnCfdWZyAWmo2H/7BiTAmtK+3rSQUqvRnu2CR
+         lKJkUwrQtZ6luZVUyDDN/1JkwaOqpM192bR6VyTdbBi7qxvGccpg/XxHW1WIWmmqOLQf
+         sgjhNIJYwxkqz6yXRlKEkKXMQvsASnudXUPb8+CaXMOTvkwFAoP8J7npDKYPo2IP4kx+
+         uJz2W/3F6XNbaoUNVQxELaXxCPZ0/65A+qMX1LZ/lMeeaKzyo1pkc3vMcmlL89wj6Tfi
+         ULoA==
+X-Gm-Message-State: AOAM531BjHK0y6tKnS4ONLPynj3i3eGgtBMzHYn6U6GUC1P8lz1nvPaD
+	q0Z1XIqE9G2gigdc5qc/inbGuE23pyuJuLypVK7AnBXW
+X-Google-Smtp-Source: ABdhPJwkH7R1Fb+tri/6ZRD69nfZsXATUAIIjVHriW/AwHlvHgmDLL8K7vMRfMjZgIsxQPePO1xz6gLTxuH5uSZ1v2Q=
+X-Received: by 2002:aca:5703:: with SMTP id l3mr3727440oib.48.1596654181520;
+ Wed, 05 Aug 2020 12:03:01 -0700 (PDT)
+MIME-Version: 1.0
 References: <CAFEAcA_6zbOfdVi+Tp18seaEy4don1GurVya+E+QXRGrZ_WVLg@mail.gmail.com>
  <2c5ed9d8-6d79-1b53-5588-8fb9efebf0fa@linaro.org> <87tuxhkpo2.fsf@linaro.org>
- <CAFEAcA8+acTg6KoBDW5-7FvnrW=vDMXohWfTAXtTFv6BDqyuRQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <a1e53e0c-fbab-a789-5f07-cfae99b6042a@linaro.org>
-Date: Wed, 5 Aug 2020 10:00:50 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8+acTg6KoBDW5-7FvnrW=vDMXohWfTAXtTFv6BDqyuRQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: 48P39TQdiOND
+ <CAFEAcA8+acTg6KoBDW5-7FvnrW=vDMXohWfTAXtTFv6BDqyuRQ@mail.gmail.com> <a1e53e0c-fbab-a789-5f07-cfae99b6042a@linaro.org>
+In-Reply-To: <a1e53e0c-fbab-a789-5f07-cfae99b6042a@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 5 Aug 2020 20:02:50 +0100
+Message-ID: <CAFEAcA96CBz_h6xzwdRL_Ls2rGjLEKi02uXB6DS2Bp-56Bhe8g@mail.gmail.com>
+Subject: Re: v8.1M cpu emulation and target-arm feature-identification strategy
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: M3p7KYxTZ3nQ
 
-On 8/5/20 9:52 AM, Peter Maydell wrote:
-> On Wed, 5 Aug 2020 at 17:45, Alex Bennée <alex.bennee@linaro.org> wrote:
->> I wouldn't test other feature bits but what stopping us adding:
->>
->>     struct ARMISARegisters {
->>         uint32_t id_isar0;
->>         ...
->>         uint64_t id_aa64dfr1;
->>         /*
->>          * The following are synthetic flags for features not exposed to
->>          * the directly exposed to the guest but needed by QEMU's
->>          * feature detection.
->>          */
->>         bool v81m_lob;
->>     } isar;
-> 
-> Nothing, except we already have a set of synthetic flags, that's
-> what the ARM_FEATURE_* are...
-> 
->> That said we still seem to have a number of ARM_FEATURE flags, are we
->> hoping they all go away eventually?
-> 
-> I think that they're a mixed bag. Some represent cleanups we
-> haven't got round to doing yet (eg ARM_FEATURE_NEON, which would
-> be a fair chunk of work, or ARM_FEATURE_PXN which would be pretty
-> trivial to change to looking at ID_MMFR0.VMSA >=4). Some are
-> features that pre-date the ID feature bit scheme and so might
-> be awkward to convert (eg ARM_FEATURE_XSCALE). One or two
-> we've already converted and just forgot to take out of the
-> enum (eg ARM_FEATURE_CRC)...
+On Wed, 5 Aug 2020 at 18:00, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+> I've always assumed we'd never get rid of all of them.
+>
+> Older ones like XSCALE are obvious, but I don't think there's a clear indicator
+> for V{5,6,7,8} either.
 
-I've always assumed we'd never get rid of all of them.
+MIDR.Architecture lets you distinguish v4/v4T/v5/v5T/v5TE/v5TEJ/v6,
+and there are also some separate per-feature ID register fields for
+things which we currently hang off those ARM_FEATURE_Vx flags.
+In theory all the v7-and-later stuff should have its own ID register
+field...
 
-Older ones like XSCALE are obvious, but I don't think there's a clear indicator
-for V{5,6,7,8} either.
+Regardless, it's hard to see a clear benefit from a hypothetical
+concerted effort to convert all the ARM_FEATURE_* uses to ID
+register checks, though we might choose to convert a few here
+and there if we need to overhaul the code anyway.
 
-
-r~
+thanks
+-- PMM

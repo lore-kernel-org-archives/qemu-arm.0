@@ -1,147 +1,174 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp896760lfy;
-        Wed, 5 Aug 2020 12:05:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwr/eHLV5o5hYbbsoh2BuwuovJJIeyyUNBLLDJo9nI3ijtVqkvWzfdRK5QktNBGQhEZHqAu
-X-Received: by 2002:a25:ab91:: with SMTP id v17mr7321284ybi.180.1596654313305;
-        Wed, 05 Aug 2020 12:05:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596654313; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp956233lfy;
+        Wed, 5 Aug 2020 13:23:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzCDyeQGsQicMGDgWu3/MxkHwRw1pdUQI7bRnf9XLYrxY3yZllDVTcTsjfzT2Qo52tKvTzy
+X-Received: by 2002:a25:80d3:: with SMTP id c19mr7367696ybm.13.1596659019068;
+        Wed, 05 Aug 2020 13:23:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596659019; cv=none;
         d=google.com; s=arc-20160816;
-        b=HYH205q+5um+DRxYz2zmKwe2o0axbp/s21qmFYyMAkLnMV5xwhsvCwnh0njAJEcTGS
-         m40rEUo5Ygxk9IQwTppJCD6F75W/eIoPQJls8EMl8XbCKmtY6omlqi9CiuzYleom/XnN
-         Cc3P+vwwaNRUpJx/rlymyOvngHQgb4CrI/Wfm1TLB/ysQlteDyPLcAkPZ2E2mKvlem+P
-         b+fX8QQIIiXhQH+dv2hVaTxWjmpvBLDsvGegjRzg0rxNBtEs00sEm1q6z8bNhpWZnaZd
-         ++3OMLLBn6xOtYFDtIEW3K+b3ABmZPWlFebVa+Hkn0oRu3xLfiaa+m6k57wGd+BF/VKb
-         F0Cg==
+        b=d1aRRpnMLh8bNKLNjIHr9ioHT6Q0ygGeLVXfEhih2DF+iV48fm6LARbGsEBEjnvEsI
+         Rf9aWlUFZVkZtxFSkl48p17Zn6JEeIuwLsIG9qFHiq/uu+T4ZfLbW2imS3nEYiTrm7Eg
+         TC6kKhcIWJYOmqyVM+6r1jwWxLUIZr1kX+TGWayE57xNitoipI1CsxWGXyllzqGOIuCK
+         AiUv10Nrnv+CR2nK82nwi45ysjxTMV02VdjROYRlPYlNgnep9eRMfOHNZ9XbgnIsOhZV
+         F6Ef3j+hX9V8BzrSXmv7t20iRRmSb7JLemhbtYQVxBiPICqowVx974CfvoZTHHI5PGVa
+         9pQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=HVkA4GtPY9nHRy8TNBrSpNj+Za8pZISkS+dRzZ7Myaw=;
-        b=Rgf7aM8yo64A7Nb08tnbBdnwc6mLFYdolQMMsawCxpB0uflifk0xgN85/e8n8abq8c
-         kEBTDMvsVofHeh9XoWKCbLK3p2h7s+g3LrwCqoDiD9rjHT+cP475Cd5693/asrGv0OiA
-         EeTb8WmylZsDyvCoghNC2VrLqXGI6F8srqXrKjLUfT7EmgbHdmFwRlZUO05uoZi1xFvW
-         BQhF/iHi/5ZVYz9pVdQNjsW+R6R4pCZhcKKMEAnKSooYxsVIqDlYPwGNHL2gefSJoKre
-         IIJk5EmhE/TxG8x58YAeMYXfsxcjilbbpBoZy36ndByDFknHABGAmZuNIclU4Qm5HD3j
-         +lqQ==
+         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
+         :in-reply-to:subject:to:from:user-agent:references;
+        bh=O5VXNLYgBYH1+NJ5nto4HaI1e4tgKKJtIb8gLzPiCMs=;
+        b=zv7kKpmRkUTO9A5qVk/f5s9RDb6FNaEY+rEj7Q+1j4krS/7JSx33+/yyow0vH5LAZs
+         1POVK15DXrZmPpo/sKMNTbnjhVMlsebpLIqYMEoeQWD2RERisrUxMt4TD7620123hPbO
+         hJMP+Hn6u5T9sW7fg/D4qK6MwqrqyJeB9Gypb6KT/h49bEHVq/QrB/7uAu/UT9p1NUaX
+         wQwApAzHnBB5erRUTWF8otnGQ0rd/oE98JIq+TlOp1iRMcy7dlXYu4xmmpTR6WCXqUv8
+         XxmvozzRs4jQEJnS4MznofUsFN7vyqgbYIQfyKWDSFh+/GdyUOG8iWySXAqY2GPkSjvG
+         eXFg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xrLUkmyM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s12si2552625ybm.342.2020.08.05.12.05.13
+        by mx.google.com with ESMTPS id 193si2577505ybn.427.2020.08.05.13.23.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 05 Aug 2020 12:05:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 05 Aug 2020 13:23:39 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=xrLUkmyM;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53764 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from localhost ([::1]:51388 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3Oiu-00015q-KT
-	for alex.bennee@linaro.org; Wed, 05 Aug 2020 15:05:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60078)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k3Pwo-0001yz-FI
+	for alex.bennee@linaro.org; Wed, 05 Aug 2020 16:23:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46128)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k3OiA-0000WU-8t
- for qemu-devel@nongnu.org; Wed, 05 Aug 2020 15:04:26 -0400
-Received: from mail-oi1-x242.google.com ([2607:f8b0:4864:20::242]:46742)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k3Oi8-0003bR-29
- for qemu-devel@nongnu.org; Wed, 05 Aug 2020 15:04:25 -0400
-Received: by mail-oi1-x242.google.com with SMTP id v13so23934659oiv.13
- for <qemu-devel@nongnu.org>; Wed, 05 Aug 2020 12:04:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=HVkA4GtPY9nHRy8TNBrSpNj+Za8pZISkS+dRzZ7Myaw=;
- b=xrLUkmyMWFPWqqosnYzwto6K+QgsyClnxO+MRq8teV8/8VoeKvG0hx//BTbNT4xRJ1
- vJOVU1a3HCDTDTX+dHzonFZHVGPIobvCAn5+IKkpujGy0AW0NE2j6+NCj0SnyOy+sXk1
- IGTKrN0KYi4I0eF8DPgoY7arZYpak3NZmmAqv/D3Gz/VoPB7yGuCRSrR2xZynvNEwLJH
- 7kQjODJxbNZ5kjPOhJ/iwFER53JtIyf9+tn5b7f/qM5z7m/qBG4EobaRJygvDFaouIdS
- ADDqqB0R4NBzz7FypgfNUDER7w2+k1IkXcjnBI6Jkw4spIDeDYYXSxCj7JvMjzDnVXxe
- rGTg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=HVkA4GtPY9nHRy8TNBrSpNj+Za8pZISkS+dRzZ7Myaw=;
- b=sDJJTvhRYLFFoVXZRq8rt/gZrtw41NKaNLAHXMvLauvIE94OK9QkWCtetbj0WfDnV4
- u4sEhe1WkgQdgcJucM+U/i1MiF/h26xeiY4w33EH3VNNO0v3t3JFfVwr0hTVrT7sze7W
- wAEjw/p545kCIhoGywGKC6Jf4MWn/JhfJcDg5DRRw3usJO6bRTZdji4/k6oVQE7ts2aY
- oT/4YMvN+3D2D6DQwcxAVYkzAlStxEHlzZwoXpIVmhWDaZjrVMfYBkIOXxR2IfxIiuHb
- U944FxORD8bt5koGnvVpY1BRtRypKNipZsa0j0YU5rcFP8DzeoBv/30NfaIPKUaCkFe+
- TrIg==
-X-Gm-Message-State: AOAM532/tuStApE3Rnj6LMdVk8+EwzE2+iNfJTEOdCXRZxhZcW0E65e0
- HLm3EGY+3QTRtMbv3TRenv2DdCZ8Z/dF15D/UTszMw==
-X-Received: by 2002:aca:4a96:: with SMTP id x144mr3975116oia.163.1596654262673; 
- Wed, 05 Aug 2020 12:04:22 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <bauerman@linux.ibm.com>)
+ id 1k3Pwg-0001xE-Sk; Wed, 05 Aug 2020 16:23:30 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5]:20924
+ helo=mx0a-001b2d01.pphosted.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <bauerman@linux.ibm.com>)
+ id 1k3Pwf-0003fB-0s; Wed, 05 Aug 2020 16:23:30 -0400
+Received: from pps.filterd (m0098420.ppops.net [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id
+ 075KJF7P111331; Wed, 5 Aug 2020 16:23:02 -0400
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 32r3a3grs9-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 05 Aug 2020 16:23:02 -0400
+Received: from m0098420.ppops.net (m0098420.ppops.net [127.0.0.1])
+ by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 075KJGpE111426;
+ Wed, 5 Aug 2020 16:23:01 -0400
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com
+ [169.47.144.26])
+ by mx0b-001b2d01.pphosted.com with ESMTP id 32r3a3grry-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 05 Aug 2020 16:23:01 -0400
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+ by ppma04wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 075KK5EJ014424;
+ Wed, 5 Aug 2020 20:23:00 GMT
+Received: from b03cxnp08025.gho.boulder.ibm.com
+ (b03cxnp08025.gho.boulder.ibm.com [9.17.130.17])
+ by ppma04wdc.us.ibm.com with ESMTP id 32n019bmqj-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 05 Aug 2020 20:23:00 +0000
+Received: from b03ledav004.gho.boulder.ibm.com
+ (b03ledav004.gho.boulder.ibm.com [9.17.130.235])
+ by b03cxnp08025.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 075KMvbU30474750
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 5 Aug 2020 20:22:57 GMT
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id CE6DC78060;
+ Wed,  5 Aug 2020 20:22:59 +0000 (GMT)
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 52C8C7805E;
+ Wed,  5 Aug 2020 20:22:55 +0000 (GMT)
+Received: from morokweng.localdomain (unknown [9.163.53.138])
+ by b03ledav004.gho.boulder.ibm.com (Postfix) with ESMTPS;
+ Wed,  5 Aug 2020 20:22:54 +0000 (GMT)
 References: <20200723025657.644724-1-bauerman@linux.ibm.com>
  <878sf3uojf.fsf@morokweng.localdomain>
  <20200730005947.GO84173@umbus.fritz.box>
  <CAAdtpL5Mtaf7Xwu74U33eGTCAiFZNNXeCST8COwQeW8S9j8ZVQ@mail.gmail.com>
  <87a6zh3uyv.fsf@morokweng.localdomain> <874kph58o5.fsf@morokweng.localdomain>
-In-Reply-To: <874kph58o5.fsf@morokweng.localdomain>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 5 Aug 2020 20:04:11 +0100
-Message-ID: <CAFEAcA-Yi754zyxHd+bggjny5vXw=rrs5fm6SZCcxwVUeoTtOg@mail.gmail.com>
+ <CAFEAcA-Yi754zyxHd+bggjny5vXw=rrs5fm6SZCcxwVUeoTtOg@mail.gmail.com>
+User-agent: mu4e 1.2.0; emacs 26.3
+From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Subject: Re: [PATCH v3 0/8] Generalize start-powered-off property from ARM
-To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::242;
- envelope-from=peter.maydell@linaro.org; helo=mail-oi1-x242.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-reply-to: <CAFEAcA-Yi754zyxHd+bggjny5vXw=rrs5fm6SZCcxwVUeoTtOg@mail.gmail.com>
+Date: Wed, 05 Aug 2020 17:22:51 -0300
+Message-ID: <8736506dwk.fsf@morokweng.localdomain>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235, 18.0.687
+ definitions=2020-08-05_17:2020-08-03,
+ 2020-08-05 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 malwarescore=0
+ phishscore=0 priorityscore=1501 lowpriorityscore=0 spamscore=0
+ mlxlogscore=920 suspectscore=0 clxscore=1015 impostorscore=0 adultscore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2008050152
+Received-SPF: pass client-ip=148.163.158.5;
+ envelope-from=bauerman@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/05 16:23:26
+X-ACL-Warn: Detected OS   = Linux 3.x [generic]
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
  David Hildenbrand <david@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Cornelia Huck <cohuck@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, QEMU Developers <qemu-devel@nongnu.org>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
  qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
  qemu-ppc <qemu-ppc@nongnu.org>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Greg Kurz <groug@kaod.org>,
  Richard Henderson <rth@twiddle.net>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Aurelien Jarno <aurelien@aurel32.net>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LxZ6yT0zYye2
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9C+FDI7A1Pt9
 
-On Wed, 5 Aug 2020 at 18:01, Thiago Jung Bauermann
-<bauerman@linux.ibm.com> wrote:
-> Any news on this? Is there something I should be doing? I saw -rc3 today
-> but not these patches.
 
-Sorry, you've missed the bus for 5.1 at this point. I'd assumed
-that the relevant bits of the patchset would go into a PPC pullreq
-if it was important for 5.1.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-As I understand it, this isn't a regression from 5.0, right?
+> On Wed, 5 Aug 2020 at 18:01, Thiago Jung Bauermann
+> <bauerman@linux.ibm.com> wrote:
+>> Any news on this? Is there something I should be doing? I saw -rc3 today
+>> but not these patches.
+>
+> Sorry, you've missed the bus for 5.1 at this point. I'd assumed
+> that the relevant bits of the patchset would go into a PPC pullreq
+> if it was important for 5.1.
+>
+> As I understand it, this isn't a regression from 5.0, right?
 
-thanks
--- PMM
+Right, it isn't.
+
+-- 
+Thiago Jung Bauermann
+IBM Linux Technology Center

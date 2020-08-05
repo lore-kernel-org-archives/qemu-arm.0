@@ -1,109 +1,109 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp214373lfy;
-        Tue, 4 Aug 2020 20:05:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzN9RELDxz5khe1WCWSctuKCLqaOq6GOax+GeX7/V4ctLTEK8jh6kdkWNn9HB+eqS4zX9CT
-X-Received: by 2002:a25:2f83:: with SMTP id v125mr1847096ybv.202.1596596715365;
-        Tue, 04 Aug 2020 20:05:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596596715; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp215007lfy;
+        Tue, 4 Aug 2020 20:06:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw8re0dapJqayofluaa25V6VPM+rwSyzGguspw1H800FtZX9iXIT+JHFBmOskvEkUPduEWs
+X-Received: by 2002:a25:df83:: with SMTP id w125mr1670526ybg.112.1596596771519;
+        Tue, 04 Aug 2020 20:06:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596596771; cv=none;
         d=google.com; s=arc-20160816;
-        b=l3NpJbaBk+LO3sKN+N4qFYZ7SbgsDV5IwXwsCl2z89w+q09OJIQyI3fSbvPDX7LtU7
-         /1jnniQAb1nhKNACdvVuyEv9B2kVmC8eYUzVOXPM5zdQmtiPFGj5dCKlVzuY+lzdscZW
-         LsJuvXqNas3IPeGsJ4QzpdllpvOIkQJ4jwrMk0ZO4e5zhFie5gAZGfNhjx/YIZDey7Nm
-         qYK2yvHUALv71g+/HyNn+45eiRWm5cNUplgvgsQVam5rF0buoJhJxUAYnPgO08dgmwX7
-         dR1sx+Ug9evNGZa5Ev/AaUk6AX9ScI/NP28rror5Lgtp7ivIr2NRzuMUy+Iy6KGX1/N3
-         9hpQ==
+        b=hOUquU6CulK/hiy8ockxWRDGtCOcjJVCXTU2N61enhUgrmimqzK2uraRV5bQVhCCaO
+         SZVSdOhWDd8qLHySDWOakHCv5FbjA7IvO9GAF7SOE3GWZjRztsy+iajZepX8o96z3XBj
+         +U73ma29Gtwxv1jhmPxH/9rJrjXHfbmSBi3Lpi0dnxZ/F4je2Y0x0qbqXJnc4+FmG7XH
+         5NLpJFnoxQNY4Cney1RJ6HhPpibnqnUbNt4yA3/GsgXp1Pq15R9dNjxhFN5KDwastFYf
+         qMdB4hcRqYPr+THHJoMTFcKWl8Cr6Q14rYoAHv4yoqSjbvO9V9iPVdD1xtv/MTg3ycx3
+         Pidw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=qSGzqtNfzMq1VerllI7V7AXdUOzzqT6OEtosVIVaLl8=;
-        b=RQ/4goRx6wTiLDzHDY+Z5ts3Ox9DFDILgNT6ALFdHg71i0Nrbn74bt8rP1GjtEz4Rs
-         LRTF1XT9VMJqoneU0HdqEpjr/B9tsI4Dh5TBiKRJpBqExE1EAv0hw1cuSek7lADRTx4c
-         7wm+lr+PBB9KEF0Ysdaz/LgXXvJxa+knb9/xyRsX8OQgEN9TvHGRA1mmN/wPBrFlCbyL
-         peNBV6GcrPOk8U8LQeK8unlEA5WRo0L6VF/skwKlGeA5PpE8hsMrjeu6if1C7O3UNAk5
-         yrHSwoDI3ojF2xiB3Z/CPv3ftClSfOOlhiBM9TxseH2FH4Klrax6gFVGfwNoAPkQjN8k
-         qBKw==
+        bh=BZUaSnUHLF8B/CkOLpByqJ1k6FT4aJ7iz41Ji1YYkYo=;
+        b=oYY7ODAZRFXF4Im+eq2vPVIR+enMGkUeimcJXVtXC1DNFBQKIZPgiHEDHb2cLoWOdU
+         XWnzbqo4seF2AuspqWGebneZt/bpnbHDI9OgaNEtEr6nTOW5CUV5YrFGftWgg4vAHO6S
+         24qSJTjHOXoXjGueoHL/3mC67rYiMzHscF2uptAjyGLzwpAsa61IQF5HAOLffPZR8C08
+         uGYT8nVGr45+ISfsOfK259KBDqRc+IYXzC44nzGsNUCN6JgmN4wX6UU6lFAeW8Ll2J6N
+         S576z4Ro2xpJ3Cfv1gb0qQ9RFi0yHqpHxUxssxO5EwQNR2p5uSBWcYqCMO8I49wCVAXV
+         H/XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HwkIgt6p;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LTTkXEBj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s81si776414ybs.363.2020.08.04.20.05.15
+        by mx.google.com with ESMTPS id j137si818466ybj.253.2020.08.04.20.06.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 04 Aug 2020 20:05:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 04 Aug 2020 20:06:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HwkIgt6p;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=LTTkXEBj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39284 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k39ju-0005hQ-Ox
-	for alex.bennee@linaro.org; Tue, 04 Aug 2020 23:05:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45032)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k39ko-0006O9-Uq
+	for alex.bennee@linaro.org; Tue, 04 Aug 2020 23:06:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k39jD-0005HR-MY
- for qemu-devel@nongnu.org; Tue, 04 Aug 2020 23:04:31 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:37105)
+ id 1k39kh-0006Nd-3Y
+ for qemu-arm@nongnu.org; Tue, 04 Aug 2020 23:06:03 -0400
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:40232)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k39jC-0004lx-2F
- for qemu-devel@nongnu.org; Tue, 04 Aug 2020 23:04:31 -0400
-Received: by mail-pl1-x641.google.com with SMTP id p1so24463946pls.4
- for <qemu-devel@nongnu.org>; Tue, 04 Aug 2020 20:04:29 -0700 (PDT)
+ id 1k39ke-0005OU-9Y
+ for qemu-arm@nongnu.org; Tue, 04 Aug 2020 23:06:02 -0400
+Received: by mail-pl1-x644.google.com with SMTP id u10so14970831plr.7
+ for <qemu-arm@nongnu.org>; Tue, 04 Aug 2020 20:05:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=qSGzqtNfzMq1VerllI7V7AXdUOzzqT6OEtosVIVaLl8=;
- b=HwkIgt6p6SY7f48d9iX83vpXhTBtgFT6QNFtK6Lg+/jK/GkhtNtbqt0ALtSdRbzkKi
- FqxLAuOk6iP1OzU1wtDGqsS0CmxoOaiWBw8H19PIip1vXM/HF9m9UHAPZmeLeDhSpifd
- iNmUy60AHKfhb3XdSBQQKStvA/E+faJzbCYGFA5zM2QPXyreGrW+0bKA4p75uTRRPU2W
- y7MPcsFNnUgFUtzpcA87MvUBWeCw+g8lQzKAyoBGYb33wJzrUgodNQXemhRf1Z8uLO3S
- rKFjiY7xU9UNkW4fzZ7QvdBKFTs17+BMCzMai2nrHIRWeCOFc6JpxNlYEcNTZqSwOTKv
- ddxA==
+ bh=BZUaSnUHLF8B/CkOLpByqJ1k6FT4aJ7iz41Ji1YYkYo=;
+ b=LTTkXEBjmVnyHf3IkrNVCLizAu4Vs+LuJajUwWKpHheMdnLLoLNcNtSfuLl9VJbEjd
+ 3PRIiz19KTiOOO73arvqMgy72YE+XmZKTi7SjyjBO1f9X5Iv3VK+mBOxtArI3gvYTGRx
+ oHJS/IGhsAINX0vGDeQlTHP4I409bxNzK9PoKfsQus+qTArvleKpGvVFdkIKnpyv6T/o
+ VvBmXxaJ4nB1bncfZK6yU/SNyj8GNqZWnpaGMd3LeiWQOBBjfitzK30gIubVGK6pmTg9
+ 03srcwZNZKggx7AF7CGJWAT5UbSvCtNHWeSVXtn7Gmmcq89xtGy2WhU33bITDiMGCh20
+ ItDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=qSGzqtNfzMq1VerllI7V7AXdUOzzqT6OEtosVIVaLl8=;
- b=MFquK02ZBjgDESoMGLMTkxioFDStdRhOoZyRzNQ9s9MS278oxZ0YwVep7+OSgNmzYl
- XSYTDWnhRULmbX77ulgcYPeRffk9SrO6OuOFVi5foeK3fS89ZjX8fbp6d/wPhDnAEE/u
- He67EXfGSHGpxNMVCLeiIbMI77q2SiN93/36mI+xo+Pf4m11cjX+Lfv8ZkpfIDfsODMP
- FU5TNsRkSwxJfNyNC3eFXN75vbfVsx+Q41pPCG3ivvNVleOU3hCZlifJx4M7BV0U2inz
- ifDQ5mDUX/YaAEusP/6p2aZy/dI4B4F1mx2O4n1v+GVxvZ24CX7AxzRNBW4Tp6mf7tCg
- KFXA==
-X-Gm-Message-State: AOAM532xj4NdTzJ5vcQc4k1VatZ521n9yH/Q/qIinqctd2nfql+2JNdP
- Tj5oymjoe3om7ltNVWxngeJBLrqluls=
-X-Received: by 2002:a17:90a:ea82:: with SMTP id
- h2mr1135684pjz.75.1596596667829; 
- Tue, 04 Aug 2020 20:04:27 -0700 (PDT)
+ bh=BZUaSnUHLF8B/CkOLpByqJ1k6FT4aJ7iz41Ji1YYkYo=;
+ b=Fs7HfWCpm2LrdSY700WT3BsJbtE5Ybt6uCGDl5EzqaLi/Cb+FULgEBScMlgryvmOK7
+ fWSvvno578sbPF3+vfofS4b5TpWKZE0pULUbW29843iqrJvk2oQziPXcZ7kbpcIObuSR
+ MBh4FjwUt3GWsPgFcanWQb7qcHxpiu2FHIGPMCtZZyx7eUmSz0XlRlvxPUAnIK1+1i+L
+ zjfdMFALHcnjUvgrnV6AB4Zr8Twnp7gmRGNdrmIR+sbBdFmrrNYRZiESr3Msg5vU7HzG
+ LZuCrReh5drea+P7mTvVaRZbdXwIL7o/RS7LkEoGvAzAF2Am7WP6ItLQc2texDy1Sn5R
+ 7V2w==
+X-Gm-Message-State: AOAM533Cr/zWGokv/qBqQ5awm+NnwJVPHr74Buslj4KrZjohyKN5moKW
+ kMbaopZoNY5MU57bvvPJP1WgZA==
+X-Received: by 2002:a17:902:b089:: with SMTP id
+ p9mr1175316plr.52.1596596757924; 
+ Tue, 04 Aug 2020 20:05:57 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id e20sm693883pjr.28.2020.08.04.20.04.26
+ by smtp.gmail.com with ESMTPSA id h14sm785378pfk.195.2020.08.04.20.05.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Aug 2020 20:04:26 -0700 (PDT)
-Subject: Re: [PATCH 5/7] target/arm: Do M-profile NOCP checks early and via
+ Tue, 04 Aug 2020 20:05:57 -0700 (PDT)
+Subject: Re: [PATCH 6/7] target/arm: Convert T32 coprocessor insns to
  decodetree
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20200803111849.13368-1-peter.maydell@linaro.org>
- <20200803111849.13368-6-peter.maydell@linaro.org>
+ <20200803111849.13368-7-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e5da2812-8d41-9db9-bd2e-2d716c016508@linaro.org>
-Date: Tue, 4 Aug 2020 20:04:24 -0700
+Message-ID: <ade5c2a2-d730-b455-496c-055da6101a0f@linaro.org>
+Date: Tue, 4 Aug 2020 20:05:55 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200803111849.13368-6-peter.maydell@linaro.org>
+In-Reply-To: <20200803111849.13368-7-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -112,57 +112,36 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lbulIkI6E7IL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5i6x+hXu4S+Q
 
 On 8/3/20 4:18 AM, Peter Maydell wrote:
-> For M-profile CPUs, the architecture specifies that the NOCP
-> exception when a coprocessor is not present or disabled should cover
-> the entire wide range of coprocessor-space encodings, and should take
-> precedence over UNDEF exceptions.  (This is the opposite of
-> A-profile, where checking for a disabled FPU has to happen last.)
-> 
-> Implement this with decodetree patterns that cover the specified
-> ranges of the encoding space.  There are a few instructions (VLLDM,
-> VLSTM, and in v8.1 also VSCCLRM) which are in copro-space but must
-> not be NOCP'd: these must be handled also in the new m-nocp.decode so
-> they take precedence.
-> 
-> This is a minor behaviour change: for unallocated insn patterns in
-> the VFP area (cp=10,11) we will now NOCP rather than UNDEF when the
-> FPU is disabled.
-> 
-> As well as giving us the correct architectural behaviour for v8.1M
-> and the recommended behaviour for v8.0M, this refactoring also
-> removes the old NOCP handling from the remains of the 'legacy
-> decoder' in disas_thumb2_insn(), paving the way for cleaning that up.
-> 
-> Since we don't currently have a v8.1M feature bit or any v8.1M CPUs,
-> the minor changes to this logic that we'll need for v8.1M are marked
-> up with TODO comments.
+> Convert the T32 coprocessor instructions to decodetree.
+> As with the A32 conversion, this corrects an underdecoding
+> where we did not check that MRRC/MCRR [24:21] were 0b0010
+> and so treated some kinds of LDC/STC and MRRC/MCRR rather
+> than UNDEFing them.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-
+> ---
+>  target/arm/t32.decode  | 19 +++++++++++++
+>  target/arm/translate.c | 64 ++----------------------------------------
+>  2 files changed, 21 insertions(+), 62 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-> +        /* M-profile handled this earlier, in disas_m_profile_nocp() */
-
-That's not the function name you settled upon.
-
 
 r~

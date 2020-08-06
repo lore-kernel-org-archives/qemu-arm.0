@@ -1,91 +1,92 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2122711lfy;
-        Thu, 6 Aug 2020 16:43:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxi1I0KCfQ54RMCt6WiBUqTZrVyeE6nR+RqpcYDPL/jgiwAgn3X1d+YVqL7POavAqxnlxoZ
-X-Received: by 2002:a25:4b47:: with SMTP id y68mr14898446yba.89.1596757389634;
-        Thu, 06 Aug 2020 16:43:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596757389; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2123962lfy;
+        Thu, 6 Aug 2020 16:45:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyULupXxM0ulv1/rT4NqzEhEWKtKXI/oyom02NO8c/kNvVC7KZ1puOt9Z59LVkEf1k9PK/r
+X-Received: by 2002:a5b:30d:: with SMTP id j13mr15381320ybp.51.1596757532545;
+        Thu, 06 Aug 2020 16:45:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596757532; cv=none;
         d=google.com; s=arc-20160816;
-        b=bokRDVcVl7rojPwT6F0uJ7S7osuZV4qgA7pdHjLWnvL7s/RL9n5B0QF/0NgDv2aevs
-         6jVQVivNbnASIaLNqDZ06LqHFeJclkkFiSJFI+IhkzK7nZr7TU+nAgLDFlKlU8G5V4oI
-         /iwfGsC3pGtrliwB0WbSFQn0Lv3+p8tY6MnxFwel2XQoAABERHO3W8VytZF+koVqARPU
-         0+ilnFfz7LVUEGPrm5H/yaGpokhmJyU2/qm0Ut2i9B4S8aPkggz+VbhJJikhdIdS0N2J
-         8XNcw2DOvCT7jixHD58b09nnysdhGDElSMr6hAkx9icvUQQJ/8cvZLgZrkvrslAaCAPt
-         15kA==
+        b=WhJiqUUA+sLoyCfKoso8FNhId66qWMQcIl+ye4K7WnhXjHzjgsO7NAYQhmGyQ1K/dv
+         p5mpB9IMJHEJR9U50lGKriTj7HDs3Rg/Ud5waw/BKTBZufBP8n9yyGtdFKUQsBZ7cv3o
+         ea05THa9a+uCRJjBNMjFHmqbY1a4wCsVW0HQ9iHY5oJOOthsmX71shILY7kTAeGOUORZ
+         vwk8VN8LIuFsbLHdsr4MvmHMVMTbONg/vPWQ/dx08YS9Sv6+fLSxPsVAEnuAonDyR3B6
+         SJ0/cyl2fXINjkwvanEqnjmlwN/NV2kB4rEuBrtSXb6aiKlBVKA/R9RMNDyi0QKT5+Bm
+         WqZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=thvcS0wbIyIhj6Kw63JRbFWup4f2P2gSCodJj2WyeyA=;
-        b=qnYhcZpo4TXZj3Kbu2V8LMTTqKGAlXU3SkonNwqS+V+8XS/e3wvKqCSzqnlIEimz7y
-         7hMTPPRbjCj8WkRxiO2bgFo0MsEtOwkRtVffm+QdLSuhRK1d55Ea61EwoKBEOMwRRb+0
-         aVidBy6+oZrvB7C+fZbdg3Sl5YlWuSKN9bgPzB0LwyNjp7EdiekzHEX3V6D6tjD+U4Ml
-         AzoTbMmTFLsjjl1hWFw04b4HtE+Y6hGaNNOiZlSvoBz16MDFzB8/brPX/k1AogmKZam7
-         FFurAIu1wQ9bbLEOOrtoJkRz/W+ou2jQxP1TZbrPGDYxlRvnbsUXEcPTpr/NLTlk3pT+
-         eqjQ==
+        bh=0lMd6pa5zpRm0TfN15mIqDfirCjLbolJvbMWzYWKZ40=;
+        b=Bmw6RcCBikInw4QrhvYvYr/36d5Fk66bzJ2WRPeXbH8T+vhdHz6Gn6d+2ePDQf+ABi
+         PV8KPQbOnNIn743Id1wp1B26tRWAN8eBbua0Zlno+8uEAW/RIz6pxNH4gyCdk0ZVpbZI
+         c/VpDfnNuv4A+tjnylugJpNCt3Y6yKlpNWwr36AbRrN9z/PeVaQFIICPxRjVpMZyIChs
+         2MGXcPifgayk7pFT35YboRAHmOLnqK5MyRHgb3kLIM/9rmeIZ0uuxl5THTF13Js1EfJw
+         LoJuqhHaju+Tb5BPgBMbcoYyssEFVKDsq2aaQodGTc0n7OvkeloGVcaYWwa4l5wVn4Z5
+         bfcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=g4KQZD6U;
+       dkim=fail header.i=@jms.id.au header.s=google header.b="deKoK/d2";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n72si6230648ybf.240.2020.08.06.16.43.09
+        by mx.google.com with ESMTPS id a60si5837093ybi.189.2020.08.06.16.45.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 16:43:09 -0700 (PDT)
+        Thu, 06 Aug 2020 16:45:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=g4KQZD6U;
+       dkim=fail header.i=@jms.id.au header.s=google header.b="deKoK/d2";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39218 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40890 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3pXQ-0005XQ-UU
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 19:43:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39408)
+	id 1k3pZj-0006Ld-Mc
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 19:45:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pX4-0005XD-5j; Thu, 06 Aug 2020 19:42:46 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:40631)
+ id 1k3pZM-0006LA-HY; Thu, 06 Aug 2020 19:45:08 -0400
+Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:39854)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pX1-00042R-RY; Thu, 06 Aug 2020 19:42:45 -0400
-Received: by mail-ed1-x542.google.com with SMTP id a14so19423783edx.7;
- Thu, 06 Aug 2020 16:42:42 -0700 (PDT)
+ id 1k3pZK-0004DT-MO; Thu, 06 Aug 2020 19:45:08 -0400
+Received: by mail-ej1-x641.google.com with SMTP id f24so158229ejx.6;
+ Thu, 06 Aug 2020 16:45:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=thvcS0wbIyIhj6Kw63JRbFWup4f2P2gSCodJj2WyeyA=;
- b=g4KQZD6UOLFYlIuTE019C+OSN7G+ThOLn4TbrfXGquF2ZlSVY4rKHb2Rbwc5xrgIfK
- kP4nk/J++tZbikQD2/NUH9oflwBKabFCF/Kuk+VIQ6ktPet7gk73fxnKU5HNvsNY1eXf
- 358/F9Nd5konMuMtfLdef0h5K2bA2x4JH/GzE=
+ bh=0lMd6pa5zpRm0TfN15mIqDfirCjLbolJvbMWzYWKZ40=;
+ b=deKoK/d2O6CY7qllvF0eTQHHH66n3bqhpEdl9uK+E0v2dkRAvbRJ69gb02TrDEPb/J
+ p6LQOVxyTY4KFuQhI1bmwSEa5ZWK2VzvvR/RgTOQMVZi72EjSQf2KHK6ETbm/jZSa+nI
+ xKlh0euOR5dVUe7H/Upu2B24BsadmJ+hxbpZ8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=thvcS0wbIyIhj6Kw63JRbFWup4f2P2gSCodJj2WyeyA=;
- b=OfB24+Q4eX3bbGS7Y/P1mIM0S0tNdkrexWj23I8BZIUm9lZImO6hJ1v6UgnjsL19lI
- KOwo9LfNQ1M2Hbhjxdgnbz7n6Frl+0I05jzAyj4pxuwv8Iu1OH6nUyt0PQ73jHIXUAL3
- 6OB+oUi8cWwP8vhjU/C+sVJqttLJEnSI3pa9duURByli7BcHpx/CVq4E1sWw2Y8H/AnE
- ZzFtVAj3Q14ugBlSUIG9VLkEHUzdy270TC/A/fWkz/zTdwqVJy1p2MulI1K97am4QY0H
- aVWDyfxUJcq7DcLLTqFBQ9WgjKgsgySbha1J/qSdKLM/chEXCJNj12C1T0KgBKKPjGzP
- xscQ==
-X-Gm-Message-State: AOAM5338mnhJ4x5TPzInTVxm532X3W1TaI0Ea//1W7brEReu50pUOmH/
- bcNlzqSqgnNC6IQawphAt67psA9wt0COy9Lf6U0=
-X-Received: by 2002:aa7:dc02:: with SMTP id b2mr6251637edu.260.1596757360998; 
- Thu, 06 Aug 2020 16:42:40 -0700 (PDT)
+ bh=0lMd6pa5zpRm0TfN15mIqDfirCjLbolJvbMWzYWKZ40=;
+ b=mVgHro6nK/9JQf2SITZ/HuCeerFTjKWglY1hnFLM1UeQM+7x0gQbSypGNdvQYtD5mc
+ pD4EpmGZky1mQBVwn8hoa0K9ffmIQdF3haktfiVX94nKFCUhqoORSpMV7DKxHiY7jMlR
+ Z3uWjZApYyjkLVzP4M3p9m1hC6BHmUVSHZrm4Ko9uAgga1DieJKkJQIou7PW/4EDA8rf
+ rUl13ogF2RRMAexeccGE+8wiYusiiqdMeh5RwMxzWCchQ2Lh6HMoG65x1H8ZXPMEsk5e
+ o4GJ+R6eA/aNq5BwnKhr6hOTvC3e0b1D4cKOR1TH8y4H8G4J7Om7aafYnmciRXYTV7Ub
+ Awfg==
+X-Gm-Message-State: AOAM530feB9s4c4TWcYeu3A4XzrXqOmDMVTN2g5WJLPO3xCPFC2gOSka
+ 5quOWmyxhivU13sWFXNWZxdAGSejhW33ficZawo=
+X-Received: by 2002:a17:906:198e:: with SMTP id
+ g14mr6666887ejd.266.1596757504208; 
+ Thu, 06 Aug 2020 16:45:04 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200806132106.747414-1-clg@kaod.org>
- <20200806132106.747414-9-clg@kaod.org>
-In-Reply-To: <20200806132106.747414-9-clg@kaod.org>
+ <20200806132106.747414-10-clg@kaod.org>
+In-Reply-To: <20200806132106.747414-10-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Thu, 6 Aug 2020 23:42:28 +0000
-Message-ID: <CACPK8Xcy-OzbQ4oiLaq96VzROSsmnmSAa0dytRcCVp2ot+mQnw@mail.gmail.com>
-Subject: Re: [PATCH for-5.2 08/19] aspeed/sdhci: Fix reset sequence
+Date: Thu, 6 Aug 2020 23:44:51 +0000
+Message-ID: <CACPK8Xd5b8GT_KPrWaH6_PLh_q-0kq3MG86x-fD_rPJMw+ehNA@mail.gmail.com>
+Subject: Re: [PATCH for-5.2 09/19] ftgmac100: Fix registers that can be read
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=joel.stan@gmail.com; helo=mail-ed1-x542.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::641;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x641.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -109,65 +110,43 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, Eddie James <eajames@linux.ibm.com>,
- QEMU Developers <qemu-devel@nongnu.org>
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Frederic Konrad <konrad.frederic@yahoo.fr>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8fLwUBPvj7pl
+X-TUID: +VelKvOe+k8E
 
 On Thu, 6 Aug 2020 at 13:21, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> BIT(0) of the ASPEED_SDHCI_INFO register is set by SW and polled until
-> the bit is cleared by HW. Add definitions for the default value of
-> this register and fix the reset sequence by clearing the RESET bit.
-
-This is mentioned in the datasheet but I couldn't find if software
-depends on the behaviour. Were you just trying to make the model more
-accurate?
-
->  #define ASPEED_SDHCI_INFO            0x00
-> -#define  ASPEED_SDHCI_INFO_RESET     0x00030000
-> +#define  ASPEED_SDHCI_INFO_SLOT1     (1 << 17)
-> +#define  ASPEED_SDHCI_INFO_SLOT0     (1 << 16)
-> +#define  ASPEED_SDHCI_INFO_RESET     (1 << 0)
->  #define ASPEED_SDHCI_DEBOUNCE        0x04
->  #define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
->  #define ASPEED_SDHCI_BUS             0x08
-> @@ -67,6 +69,9 @@ static void aspeed_sdhci_write(void *opaque, hwaddr add=
-r, uint64_t val,
->      AspeedSDHCIState *sdhci =3D opaque;
+> Receive Ring Base Address Register (RXR_BADR) and the Normal Priority
+> Transmit Receive Ring Base Address Register (NPTXR_BADR) can als be
+> read.
 >
->      switch (addr) {
-> +    case ASPEED_SDHCI_INFO:
-> +        sdhci->regs[TO_REG(addr)] =3D (uint32_t)val & ~ASPEED_SDHCI_INFO=
-_RESET;
+> Cc: Frederic Konrad <konrad.frederic@yahoo.fr>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-I think bits 24 and 25 should be writable too?
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 
-        sdhci->regs[TO_REG(addr)] =3D (uint32_t)val &
-~(ASPEED_SDHCI_INFO_RESET | ASPEED_SDHCI_INFO_SLOT10 |
-ASPEED_SDHCI_INFO_SLOT1);
-
-> +
->      case ASPEED_SDHCI_SDIO_140:
->          sdhci->slots[0].capareg =3D (uint64_t)(uint32_t)val;
->          break;
-> @@ -155,7 +160,8 @@ static void aspeed_sdhci_reset(DeviceState *dev)
->      AspeedSDHCIState *sdhci =3D ASPEED_SDHCI(dev);
+> ---
+>  hw/net/ftgmac100.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 >
->      memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
-> -    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =3D ASPEED_SDHCI_INFO_RESET;
-> +    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =3D
-> +        ASPEED_SDHCI_INFO_SLOT1 | ASPEED_SDHCI_INFO_SLOT0;
-
-If we want to be super strict this is true for the "sd" devices, but
-the "emmc" device in the ast2600 only sets slot0. I don't think this
-distinction is important to model though.
-
->      sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] =3D ASPEED_SDHCI_DEBOUNCE=
-_RESET;
->  }
->
+> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+> index 5f4b26fc5f3c..0348fcf45676 100644
+> --- a/hw/net/ftgmac100.c
+> +++ b/hw/net/ftgmac100.c
+> @@ -669,6 +669,10 @@ static uint64_t ftgmac100_read(void *opaque, hwaddr =
+addr, unsigned size)
+>          return s->math[0];
+>      case FTGMAC100_MATH1:
+>          return s->math[1];
+> +    case FTGMAC100_RXR_BADR:
+> +        return s->rx_ring;
+> +    case FTGMAC100_NPTXR_BADR:
+> +        return s->tx_ring;
+>      case FTGMAC100_ITC:
+>          return s->itc;
+>      case FTGMAC100_DBLAC:
 > --
 > 2.25.4
 >

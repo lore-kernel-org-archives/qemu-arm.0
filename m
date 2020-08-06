@@ -1,99 +1,102 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1499870lfy;
-        Thu, 6 Aug 2020 03:46:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyDyDx0Vhg6524zojhJDL4KUbnskVXcXtSaIFbT3NH4OxYB2CBrve0ijkdHPugbN1HZ5Z3w
-X-Received: by 2002:a25:fc06:: with SMTP id v6mr12581003ybd.478.1596710804170;
-        Thu, 06 Aug 2020 03:46:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596710804; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1500395lfy;
+        Thu, 6 Aug 2020 03:47:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxsnGzQbk5jRGugaRHqpVO9Jv2MkiNDud+XMSbIRLhows+8lS6df6aPcKHiTlnYBUqT3CaN
+X-Received: by 2002:a25:317:: with SMTP id 23mr11179678ybd.297.1596710850098;
+        Thu, 06 Aug 2020 03:47:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596710850; cv=none;
         d=google.com; s=arc-20160816;
-        b=H4jTCe57ZUsleqlVi8tiWCNtRabz9eNw2dX8iJjxPPxUchYiFVuYGgVtXz7L/kS4CX
-         TXRASwpxRaXDsARm6wPrqCb1EEUvYTsxeIQ4SybUURtvDW7aw4CmaVyq/xyOejrKSzDj
-         m+vXyYmttqgJ+kzva06JKtV3hR/d7d88j3mnabSO1ek8C8mQ/4dIP4mXylJwWbHvmuhd
-         mjn8U/kq9PI69at+5/9/UrEdCN2MUwV6TnlUT/fSs4Pl2UiDOA4Bgvz+v5qAYc0o9Gn5
-         A+cBTGsH3TenkLCjqNeyB4XPmZPOeaM8kI8Uf9zlansceevS5T4m4PPJAnctED6YTsTR
-         yhaQ==
+        b=v0C3bsC999dcL9ACiwIoybIOE/yDux+qenOiwBcFOutv3Ne8U0xl6rvN1XhegPdF+X
+         3eEAhVeLMEKjLULQpl1JDY6gcqlFgw5zszXcmoDjtN4VIJV00JiJ2ROFRaDeK6eCMA+I
+         DkkLJpgBhHfQbph46aRC/x9j8hmS6fE/eInBSJMgm11o6MDHTGMG+u0MUbFM2l+q8zDe
+         srUBBXhHpa01lx9WotFE9DZJxZUoNJoD3Obyt5hSAM5haDzG3UpTdHSD/PRc4D9N2SZh
+         VPRf+5ZbK49fiAmqpLxSKg59+Gw3Cvy1YoCG1kfHmj7TX/Y6tAda+hQuzdCSZj+pSgnU
+         W7Eg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=XgfKTN3qrqCoJzqdKSDYPfcqMN4ERFivhSFSxjBulnI=;
-        b=sJkR7vp6hERERAZXLkg4WvozIIMk0dKqB+Ut3Y8mZUeqUTNVJPKg6EmPcbqmn74+EQ
-         3Hb0AGPA2sItmhOD8/sAvhENow7sYlDmEucdiSqJTCFrGISbc9vRaBTgc2N7vNVZ2glE
-         6YeL+7/FjAQWKcODA7PNHriADD8v5KxksGtWMvhHDzDC76VI+K31xqN/pV7W9HuGG9q4
-         995qpN3RcCek6MFNgyPn7CAm2BR0V8zm74xbK/D+3oewn5O1tPuJd0PI6boyykKGkINA
-         durSE/zXMxpKIj/YTsYM+XbZwXvxgYGE42juxR0HJibHHXhsnjNclQgWb1wp0h3vdXFE
-         iwtA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=UFF5f+eJ9S3MOWSlwF3nLC25z1jwDMEdd5QQVZv2OZA=;
+        b=vq25c265OknoCoNiCm/gl3b6WLsTzrEhdpux4wYOs4aeLKV04eXb8v0icB3O1odiLB
+         Di/8dKj1+a6eRMDB/NGWZ8AV9JcnLiAPxYawO4a7lqUWE7HEoRSKaxH3CPp3NAxnyBub
+         tWX4ZlOKnmKZAg4lpGjzRVYTwOnE5nyskDv9giXGyG+/TgJsNuthale6Jwlu51swGLGa
+         pW0NMyb8hd7+Q7+wwi1n45GzscwGFKy9PSknXBOCfODc86FuUrwOY4rrLwg1PNbAwRgN
+         WwSsLaRvndPh15yV9AQkiZ3TSGnDFG78ceg4NvIKy3yvFrVtUFWOUu7Lx410lMXhBirt
+         0TEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lCcKJbU5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WyAihLEv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v82si4846994ybv.161.2020.08.06.03.46.44
+        by mx.google.com with ESMTPS id a5si4634778ybp.156.2020.08.06.03.47.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 03:46:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Aug 2020 03:47:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=lCcKJbU5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=WyAihLEv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50914 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3dQ3-00077O-IH
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 06:46:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39378)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k3dQn-0000NL-DZ
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 06:47:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39468)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k3dON-0005Om-Ev
- for qemu-devel@nongnu.org; Thu, 06 Aug 2020 06:44:59 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36292)
+ id 1k3dOW-0005So-Kg
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2020 06:45:08 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332]:52664)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k3dOL-0007I0-LA
- for qemu-devel@nongnu.org; Thu, 06 Aug 2020 06:44:59 -0400
-Received: by mail-wm1-x342.google.com with SMTP id 3so9208798wmi.1
- for <qemu-devel@nongnu.org>; Thu, 06 Aug 2020 03:44:57 -0700 (PDT)
+ id 1k3dOQ-0007IW-GF
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2020 06:45:08 -0400
+Received: by mail-wm1-x332.google.com with SMTP id x5so8420749wmi.2
+ for <qemu-arm@nongnu.org>; Thu, 06 Aug 2020 03:45:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=XgfKTN3qrqCoJzqdKSDYPfcqMN4ERFivhSFSxjBulnI=;
- b=lCcKJbU5KuhIb6JLh5s8gkFEsvgL//e3Xz8UG4CeSUK/9l6u7pPv/JzdpQc4nLtTuj
- HfOvfHsx8+39yeg5oDaNN4+AcGUjm5eXqpwWujJQnZJlNjL1hMqtt0Q8puoGJmdzx/Fx
- Zw+MAInnwTIkoczMfrSLhQuv72D3VHIpEgmczQCC/iaIYrMXndzGfAASym0ihPJZCp1D
- QsWTsU6vATEqwyPESXRoLeCeiiO6+rOL7GdE/+Rzi5q9wJsSIoIo12S6Ss4a+OokhW53
- keQ2MZ6amcmXBxxPqtLxEGSC7cqVEBWbs60t7IVBgrWZ/atuuSIdhPcWoR3VRp+ZN84c
- q0nQ==
+ bh=UFF5f+eJ9S3MOWSlwF3nLC25z1jwDMEdd5QQVZv2OZA=;
+ b=WyAihLEv0ZTl0tyI2mlk9FZFJ7wWDH3S4Qw3KcoEOYAxo07nlRIOxuXOgZvDmnaVXL
+ gorDr7M1ofsi9VPFTUswEuTgr+TGvgKzNPCff9NdGwqM/UbRe5bxrIfxVIjqwZf4P7pp
+ ZLE1YfMnFg2euqLg2K7rnp4k/wBa5Ytaz8UR681yRUV2oKRJn7zwJZ009pqI4iWXXcDG
+ UjfBnbeCV32B85YoGPtFxneBZwmxoYFOSjZIqWs9Tw+sFkHpAMY6YFKBdIhzGs0kLIht
+ 9xcgANQaG7BZ7eB/roPvgei50c4M0857twdxgVhExLxRVCP4c1XwKUeGaOb/GQbCvsmX
+ ZPRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=XgfKTN3qrqCoJzqdKSDYPfcqMN4ERFivhSFSxjBulnI=;
- b=nEYarh9p3b41kZHLE7PELo2hycuZ5C5hYYTtknWAiOrKTMAJoubI/nD0a990aG7mXP
- 0Bcm/YQARf4sHWvR8F7qBN4MOnNp1Sn1rlEXrJ92KO8wqAGaFMYMphOwyAUV9mUnLSc4
- yGVOCf/9bO2Bc7iiMFgk61kRSfY/RbkgD7uu9ySlJGHirGlPNUpXlG/HyY8fAIS2Nhca
- p6Q7YzWYpLs9kNv4ViljHs/D06ygIiu/A5m8OJQYgw86xd2Lu1Lw42K0l8IWbPQ/X0O0
- 3fIBRKl3JzMAprAfciQYsjXy7Ollfkj7J637SXfE/z49qJsof+4W9pLfqwK6Jj/e9hjk
- YUTg==
-X-Gm-Message-State: AOAM532woAVmMzgY+vfLong8BDKQpWt3WywC2sb1+eGj1ShaK3UGt5d1
- hSBPV3siIaI0CQPt65Vs8XlZ4Q==
-X-Received: by 2002:a7b:ca5a:: with SMTP id m26mr7308262wml.27.1596710695531; 
- Thu, 06 Aug 2020 03:44:55 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=UFF5f+eJ9S3MOWSlwF3nLC25z1jwDMEdd5QQVZv2OZA=;
+ b=MN7480oBmglHxo+ybkgL6vW5V+bttGEdqAjylJC++7VsHGFrc4cywTPXrrlXtnKpo2
+ CMqPgc9mu6uX7Lwbif8xF37HeZ5ZA7WEHrafQ0yAR+MMdIaNSpqpWeIw6H6H7JRTvoSG
+ M7gfE5rHtss3PdcCjfOADNfsryT5xkKE1ra9mBuALoewzYUr03HTBLtoxoLDo+BcHjPs
+ DkygP6qYVOO8FOyuvoegsdDLZLO5zMwDvF19ec53w7T/Oy9c8VJXAi6cF18hZQJBdMmi
+ 2o4vspDhU73UZwVAf7kPtPSKQk4pqzwcvuYJN1zuL5ccnrKjtIE2abkGqlEHdAWKgNa1
+ U2Ig==
+X-Gm-Message-State: AOAM533NfmTnU44oDDmQ01CYbRW/FCMQqZwmLsVOKT+S5IooUCLQrVWC
+ eIeCR1LQneMnOa8LdG3OT3TllBrlIojdrQ==
+X-Received: by 2002:a1c:1d2:: with SMTP id 201mr6917750wmb.132.1596710698919; 
+ Thu, 06 Aug 2020 03:44:58 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id a10sm6042189wrx.15.2020.08.06.03.44.54
+ by smtp.gmail.com with ESMTPSA id a10sm6042189wrx.15.2020.08.06.03.44.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Aug 2020 03:44:54 -0700 (PDT)
+ Thu, 06 Aug 2020 03:44:57 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/4] Refactor get_fpstatus_ptr() ready for AArch32 fp16
-Date: Thu,  6 Aug 2020 11:44:49 +0100
-Message-Id: <20200806104453.30393-1-peter.maydell@linaro.org>
+Subject: [PATCH 2/4] target/arm: Make A32/T32 use new fpstatus_ptr() API
+Date: Thu,  6 Aug 2020 11:44:51 +0100
+Message-Id: <20200806104453.30393-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200806104453.30393-1-peter.maydell@linaro.org>
+References: <20200806104453.30393-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -104,67 +107,388 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bLHm4XIIZW0L
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: niyUgRhEIEAT
 
-This patchset refactors the existing get_fpstatus_ptr() functions,
-and fixes a bug where we weren't getting FZ16 right for AArch32
-VCMLA, VCADD of fp16 types.
+Make A32/T32 code use the new fpstatus_ptr() API:
+ get_fpstatus_ptr(0) -> fpstatus_ptr(FPST_FPCR)
+ get_fpstatus_ptr(1) -> fpstatus_ptr(FPST_STD)
 
-We currently have two versions of get_fpstatus_ptr(), which both take
-an effectively boolean argument:
- * the one for A64 takes "bool is_f16" to distinguish fp16 from other ops
- * the one for A32/T32 takes "int neon" to distinguish Neon from other ops
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/translate-neon.inc.c | 28 ++++++++++-----------
+ target/arm/translate-vfp.inc.c  | 44 ++++++++++++++++-----------------
+ target/arm/translate.c          | 13 ----------
+ 3 files changed, 36 insertions(+), 49 deletions(-)
 
-This is confusing, and to implement ARMv8.2-FP16 the A32/T32 one will
-need to make a four-way distinction between "non-Neon, FP16",
-"non-Neon, single/double", "Neon, FP16" and "Neon, single/double".
-The A64 version will then be a strict subset of the A32/T32 version.
-
-The patchset creates a single fpstatus_ptr() function which takes
-an enum selecting between the 4 possible fpstatus options.
-It then adds the implementation of the "Neon standard FPST for f16".
-Finally, we can then use to fix a bug in the VCMLA/VCADD fp16
-handling where we were using FPST_STD rather than FPST_STD_F16.
-(The difference is that the former will not honour FPSCR.FZ16.)
-
-Based-on: 20200803111849.13368-1-peter.maydell@linaro.org
-("[PATCH 0/7] target/arm: copro decode cleanup)
-but only textually; there are no semantic dependencies to that series.
-
-thanks
--- PMM
-
-Peter Maydell (4):
-  target/arm: Replace A64 get_fpstatus_ptr() with generic fpstatus_ptr()
-  target/arm: Make A32/T32 use new fpstatus_ptr() API
-  target/arm: Implement FPST_STD_F16 fpstatus
-  target/arm: Use correct FPST for VCMLA, VCADD on fp16
-
- target/arm/cpu.h                |  9 +++-
- target/arm/translate-a64.h      |  1 -
- target/arm/translate.h          | 52 +++++++++++++++++++
- target/arm/cpu.c                |  3 ++
- target/arm/translate-a64.c      | 89 +++++++++++++--------------------
- target/arm/translate-neon.inc.c | 28 +++++------
- target/arm/translate-sve.c      | 34 ++++++-------
- target/arm/translate-vfp.inc.c  | 44 ++++++++--------
- target/arm/translate.c          | 13 -----
- target/arm/vfp_helper.c         |  5 ++
- 10 files changed, 156 insertions(+), 122 deletions(-)
-
+diff --git a/target/arm/translate-neon.inc.c b/target/arm/translate-neon.inc.c
+index f6cb9215739..5158dd14ad2 100644
+--- a/target/arm/translate-neon.inc.c
++++ b/target/arm/translate-neon.inc.c
+@@ -181,7 +181,7 @@ static bool trans_VCMLA(DisasContext *s, arg_VCMLA *a)
+     }
+ 
+     opr_sz = (1 + a->q) * 8;
+-    fpst = get_fpstatus_ptr(1);
++    fpst = fpstatus_ptr(FPST_STD);
+     fn_gvec_ptr = a->size ? gen_helper_gvec_fcmlas : gen_helper_gvec_fcmlah;
+     tcg_gen_gvec_3_ptr(vfp_reg_offset(1, a->vd),
+                        vfp_reg_offset(1, a->vn),
+@@ -218,7 +218,7 @@ static bool trans_VCADD(DisasContext *s, arg_VCADD *a)
+     }
+ 
+     opr_sz = (1 + a->q) * 8;
+-    fpst = get_fpstatus_ptr(1);
++    fpst = fpstatus_ptr(FPST_STD);
+     fn_gvec_ptr = a->size ? gen_helper_gvec_fcadds : gen_helper_gvec_fcaddh;
+     tcg_gen_gvec_3_ptr(vfp_reg_offset(1, a->vd),
+                        vfp_reg_offset(1, a->vn),
+@@ -322,7 +322,7 @@ static bool trans_VCMLA_scalar(DisasContext *s, arg_VCMLA_scalar *a)
+     fn_gvec_ptr = (a->size ? gen_helper_gvec_fcmlas_idx
+                    : gen_helper_gvec_fcmlah_idx);
+     opr_sz = (1 + a->q) * 8;
+-    fpst = get_fpstatus_ptr(1);
++    fpst = fpstatus_ptr(FPST_STD);
+     tcg_gen_gvec_3_ptr(vfp_reg_offset(1, a->vd),
+                        vfp_reg_offset(1, a->vn),
+                        vfp_reg_offset(1, a->vm),
+@@ -358,7 +358,7 @@ static bool trans_VDOT_scalar(DisasContext *s, arg_VDOT_scalar *a)
+ 
+     fn_gvec = a->u ? gen_helper_gvec_udot_idx_b : gen_helper_gvec_sdot_idx_b;
+     opr_sz = (1 + a->q) * 8;
+-    fpst = get_fpstatus_ptr(1);
++    fpst = fpstatus_ptr(FPST_STD);
+     tcg_gen_gvec_3_ool(vfp_reg_offset(1, a->vd),
+                        vfp_reg_offset(1, a->vn),
+                        vfp_reg_offset(1, a->rm),
+@@ -1063,7 +1063,7 @@ static bool do_3same_fp(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn,
+         return true;
+     }
+ 
+-    TCGv_ptr fpstatus = get_fpstatus_ptr(1);
++    TCGv_ptr fpstatus = fpstatus_ptr(FPST_STD);
+     for (pass = 0; pass < (a->q ? 4 : 2); pass++) {
+         tmp = neon_load_reg(a->vn, pass);
+         tmp2 = neon_load_reg(a->vm, pass);
+@@ -1091,7 +1091,7 @@ static bool do_3same_fp(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn,
+                                 uint32_t rn_ofs, uint32_t rm_ofs,       \
+                                 uint32_t oprsz, uint32_t maxsz)         \
+     {                                                                   \
+-        TCGv_ptr fpst = get_fpstatus_ptr(1);                            \
++        TCGv_ptr fpst = fpstatus_ptr(FPST_STD);                         \
+         tcg_gen_gvec_3_ptr(rd_ofs, rn_ofs, rm_ofs, fpst,                \
+                            oprsz, maxsz, 0, FUNC);                      \
+         tcg_temp_free_ptr(fpst);                                        \
+@@ -1287,7 +1287,7 @@ static bool do_3same_fp_pair(DisasContext *s, arg_3same *a, VFPGen3OpSPFn *fn)
+      * early. Since Q is 0 there are always just two passes, so instead
+      * of a complicated loop over each pass we just unroll.
+      */
+-    fpstatus = get_fpstatus_ptr(1);
++    fpstatus = fpstatus_ptr(FPST_STD);
+     tmp = neon_load_reg(a->vn, 0);
+     tmp2 = neon_load_reg(a->vn, 1);
+     fn(tmp, tmp, tmp2, fpstatus);
+@@ -1790,7 +1790,7 @@ static bool do_fp_2sh(DisasContext *s, arg_2reg_shift *a,
+         return true;
+     }
+ 
+-    fpstatus = get_fpstatus_ptr(1);
++    fpstatus = fpstatus_ptr(FPST_STD);
+     shiftv = tcg_const_i32(a->shift);
+     for (pass = 0; pass < (a->q ? 4 : 2); pass++) {
+         tmp = neon_load_reg(a->vm, pass);
+@@ -2591,7 +2591,7 @@ static bool trans_VMLS_2sc(DisasContext *s, arg_2scalar *a)
+ #define WRAP_FP_FN(WRAPNAME, FUNC)                              \
+     static void WRAPNAME(TCGv_i32 rd, TCGv_i32 rn, TCGv_i32 rm) \
+     {                                                           \
+-        TCGv_ptr fpstatus = get_fpstatus_ptr(1);                \
++        TCGv_ptr fpstatus = fpstatus_ptr(FPST_STD);             \
+         FUNC(rd, rn, rm, fpstatus);                             \
+         tcg_temp_free_ptr(fpstatus);                            \
+     }
+@@ -3480,7 +3480,7 @@ static bool trans_VCVT_F16_F32(DisasContext *s, arg_2misc *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(true);
++    fpst = fpstatus_ptr(FPST_STD);
+     ahp = get_ahp_flag();
+     tmp = neon_load_reg(a->vm, 0);
+     gen_helper_vfp_fcvt_f32_to_f16(tmp, tmp, fpst, ahp);
+@@ -3528,7 +3528,7 @@ static bool trans_VCVT_F32_F16(DisasContext *s, arg_2misc *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(true);
++    fpst = fpstatus_ptr(FPST_STD);
+     ahp = get_ahp_flag();
+     tmp3 = tcg_temp_new_i32();
+     tmp = neon_load_reg(a->vm, 0);
+@@ -3838,7 +3838,7 @@ static bool do_2misc_fp(DisasContext *s, arg_2misc *a,
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(1);
++    fpst = fpstatus_ptr(FPST_STD);
+     for (pass = 0; pass < (a->q ? 4 : 2); pass++) {
+         TCGv_i32 tmp = neon_load_reg(a->vm, pass);
+         fn(tmp, tmp, fpst);
+@@ -3932,7 +3932,7 @@ static bool do_vrint(DisasContext *s, arg_2misc *a, int rmode)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(1);
++    fpst = fpstatus_ptr(FPST_STD);
+     tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rmode));
+     gen_helper_set_neon_rmode(tcg_rmode, tcg_rmode, cpu_env);
+     for (pass = 0; pass < (a->q ? 4 : 2); pass++) {
+@@ -3993,7 +3993,7 @@ static bool do_vcvt(DisasContext *s, arg_2misc *a, int rmode, bool is_signed)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(1);
++    fpst = fpstatus_ptr(FPST_STD);
+     tcg_shift = tcg_const_i32(0);
+     tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rmode));
+     gen_helper_set_neon_rmode(tcg_rmode, tcg_rmode, cpu_env);
+diff --git a/target/arm/translate-vfp.inc.c b/target/arm/translate-vfp.inc.c
+index 463253de90b..4e0458e4206 100644
+--- a/target/arm/translate-vfp.inc.c
++++ b/target/arm/translate-vfp.inc.c
+@@ -359,7 +359,7 @@ static bool trans_VRINT(DisasContext *s, arg_VRINT *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(0);
++    fpst = fpstatus_ptr(FPST_FPCR);
+ 
+     tcg_rmode = tcg_const_i32(arm_rmode_to_sf(rounding));
+     gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
+@@ -422,7 +422,7 @@ static bool trans_VCVT(DisasContext *s, arg_VCVT *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(0);
++    fpst = fpstatus_ptr(FPST_FPCR);
+ 
+     tcg_shift = tcg_const_i32(0);
+ 
+@@ -1231,7 +1231,7 @@ static bool do_vfp_3op_sp(DisasContext *s, VFPGen3OpSPFn *fn,
+     f0 = tcg_temp_new_i32();
+     f1 = tcg_temp_new_i32();
+     fd = tcg_temp_new_i32();
+-    fpst = get_fpstatus_ptr(0);
++    fpst = fpstatus_ptr(FPST_FPCR);
+ 
+     neon_load_reg32(f0, vn);
+     neon_load_reg32(f1, vm);
+@@ -1314,7 +1314,7 @@ static bool do_vfp_3op_dp(DisasContext *s, VFPGen3OpDPFn *fn,
+     f0 = tcg_temp_new_i64();
+     f1 = tcg_temp_new_i64();
+     fd = tcg_temp_new_i64();
+-    fpst = get_fpstatus_ptr(0);
++    fpst = fpstatus_ptr(FPST_FPCR);
+ 
+     neon_load_reg64(f0, vn);
+     neon_load_reg64(f1, vm);
+@@ -1796,7 +1796,7 @@ static bool do_vfm_sp(DisasContext *s, arg_VFMA_sp *a, bool neg_n, bool neg_d)
+         /* VFNMA, VFNMS */
+         gen_helper_vfp_negs(vd, vd);
+     }
+-    fpst = get_fpstatus_ptr(0);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     gen_helper_vfp_muladds(vd, vn, vm, vd, fpst);
+     neon_store_reg32(vd, a->vd);
+ 
+@@ -1887,7 +1887,7 @@ static bool do_vfm_dp(DisasContext *s, arg_VFMA_dp *a, bool neg_n, bool neg_d)
+         /* VFNMA, VFNMS */
+         gen_helper_vfp_negd(vd, vd);
+     }
+-    fpst = get_fpstatus_ptr(0);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     gen_helper_vfp_muladdd(vd, vn, vm, vd, fpst);
+     neon_store_reg64(vd, a->vd);
+ 
+@@ -2171,7 +2171,7 @@ static bool trans_VCVT_f32_f16(DisasContext *s, arg_VCVT_f32_f16 *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     ahp_mode = get_ahp_flag();
+     tmp = tcg_temp_new_i32();
+     /* The T bit tells us if we want the low or high 16 bits of Vm */
+@@ -2208,7 +2208,7 @@ static bool trans_VCVT_f64_f16(DisasContext *s, arg_VCVT_f64_f16 *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     ahp_mode = get_ahp_flag();
+     tmp = tcg_temp_new_i32();
+     /* The T bit tells us if we want the low or high 16 bits of Vm */
+@@ -2237,7 +2237,7 @@ static bool trans_VCVT_f16_f32(DisasContext *s, arg_VCVT_f16_f32 *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     ahp_mode = get_ahp_flag();
+     tmp = tcg_temp_new_i32();
+ 
+@@ -2274,7 +2274,7 @@ static bool trans_VCVT_f16_f64(DisasContext *s, arg_VCVT_f16_f64 *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     ahp_mode = get_ahp_flag();
+     tmp = tcg_temp_new_i32();
+     vm = tcg_temp_new_i64();
+@@ -2304,7 +2304,7 @@ static bool trans_VRINTR_sp(DisasContext *s, arg_VRINTR_sp *a)
+ 
+     tmp = tcg_temp_new_i32();
+     neon_load_reg32(tmp, a->vm);
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     gen_helper_rints(tmp, tmp, fpst);
+     neon_store_reg32(tmp, a->vd);
+     tcg_temp_free_ptr(fpst);
+@@ -2336,7 +2336,7 @@ static bool trans_VRINTR_dp(DisasContext *s, arg_VRINTR_dp *a)
+ 
+     tmp = tcg_temp_new_i64();
+     neon_load_reg64(tmp, a->vm);
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     gen_helper_rintd(tmp, tmp, fpst);
+     neon_store_reg64(tmp, a->vd);
+     tcg_temp_free_ptr(fpst);
+@@ -2360,7 +2360,7 @@ static bool trans_VRINTZ_sp(DisasContext *s, arg_VRINTZ_sp *a)
+ 
+     tmp = tcg_temp_new_i32();
+     neon_load_reg32(tmp, a->vm);
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     tcg_rmode = tcg_const_i32(float_round_to_zero);
+     gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
+     gen_helper_rints(tmp, tmp, fpst);
+@@ -2397,7 +2397,7 @@ static bool trans_VRINTZ_dp(DisasContext *s, arg_VRINTZ_dp *a)
+ 
+     tmp = tcg_temp_new_i64();
+     neon_load_reg64(tmp, a->vm);
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     tcg_rmode = tcg_const_i32(float_round_to_zero);
+     gen_helper_set_rmode(tcg_rmode, tcg_rmode, fpst);
+     gen_helper_rintd(tmp, tmp, fpst);
+@@ -2424,7 +2424,7 @@ static bool trans_VRINTX_sp(DisasContext *s, arg_VRINTX_sp *a)
+ 
+     tmp = tcg_temp_new_i32();
+     neon_load_reg32(tmp, a->vm);
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     gen_helper_rints_exact(tmp, tmp, fpst);
+     neon_store_reg32(tmp, a->vd);
+     tcg_temp_free_ptr(fpst);
+@@ -2456,7 +2456,7 @@ static bool trans_VRINTX_dp(DisasContext *s, arg_VRINTX_dp *a)
+ 
+     tmp = tcg_temp_new_i64();
+     neon_load_reg64(tmp, a->vm);
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     gen_helper_rintd_exact(tmp, tmp, fpst);
+     neon_store_reg64(tmp, a->vd);
+     tcg_temp_free_ptr(fpst);
+@@ -2535,7 +2535,7 @@ static bool trans_VCVT_int_sp(DisasContext *s, arg_VCVT_int_sp *a)
+ 
+     vm = tcg_temp_new_i32();
+     neon_load_reg32(vm, a->vm);
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     if (a->s) {
+         /* i32 -> f32 */
+         gen_helper_vfp_sitos(vm, vm, fpst);
+@@ -2571,7 +2571,7 @@ static bool trans_VCVT_int_dp(DisasContext *s, arg_VCVT_int_dp *a)
+     vm = tcg_temp_new_i32();
+     vd = tcg_temp_new_i64();
+     neon_load_reg32(vm, a->vm);
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     if (a->s) {
+         /* i32 -> f64 */
+         gen_helper_vfp_sitod(vd, vm, fpst);
+@@ -2637,7 +2637,7 @@ static bool trans_VCVT_fix_sp(DisasContext *s, arg_VCVT_fix_sp *a)
+     vd = tcg_temp_new_i32();
+     neon_load_reg32(vd, a->vd);
+ 
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     shift = tcg_const_i32(frac_bits);
+ 
+     /* Switch on op:U:sx bits */
+@@ -2702,7 +2702,7 @@ static bool trans_VCVT_fix_dp(DisasContext *s, arg_VCVT_fix_dp *a)
+     vd = tcg_temp_new_i64();
+     neon_load_reg64(vd, a->vd);
+ 
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     shift = tcg_const_i32(frac_bits);
+ 
+     /* Switch on op:U:sx bits */
+@@ -2755,7 +2755,7 @@ static bool trans_VCVT_sp_int(DisasContext *s, arg_VCVT_sp_int *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     vm = tcg_temp_new_i32();
+     neon_load_reg32(vm, a->vm);
+ 
+@@ -2797,7 +2797,7 @@ static bool trans_VCVT_dp_int(DisasContext *s, arg_VCVT_dp_int *a)
+         return true;
+     }
+ 
+-    fpst = get_fpstatus_ptr(false);
++    fpst = fpstatus_ptr(FPST_FPCR);
+     vm = tcg_temp_new_i64();
+     vd = tcg_temp_new_i32();
+     neon_load_reg64(vm, a->vm);
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index e1f5357c367..3bce39c953a 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -1094,19 +1094,6 @@ static inline void gen_hlt(DisasContext *s, int imm)
+     unallocated_encoding(s);
+ }
+ 
+-static TCGv_ptr get_fpstatus_ptr(int neon)
+-{
+-    TCGv_ptr statusptr = tcg_temp_new_ptr();
+-    int offset;
+-    if (neon) {
+-        offset = offsetof(CPUARMState, vfp.standard_fp_status);
+-    } else {
+-        offset = offsetof(CPUARMState, vfp.fp_status);
+-    }
+-    tcg_gen_addi_ptr(statusptr, cpu_env, offset);
+-    return statusptr;
+-}
+-
+ static inline long vfp_reg_offset(bool dp, unsigned reg)
+ {
+     if (dp) {
 -- 
 2.20.1
 

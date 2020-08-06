@@ -1,92 +1,92 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2123962lfy;
-        Thu, 6 Aug 2020 16:45:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyULupXxM0ulv1/rT4NqzEhEWKtKXI/oyom02NO8c/kNvVC7KZ1puOt9Z59LVkEf1k9PK/r
-X-Received: by 2002:a5b:30d:: with SMTP id j13mr15381320ybp.51.1596757532545;
-        Thu, 06 Aug 2020 16:45:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596757532; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2126349lfy;
+        Thu, 6 Aug 2020 16:49:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/K/lBZCyg6BZXyijW3+C974h5sd/jPaO8clK6oWhe+eyI5Pyj2XDjc6SnWxOlMo8VS8dG
+X-Received: by 2002:a25:4608:: with SMTP id t8mr17059823yba.164.1596757782205;
+        Thu, 06 Aug 2020 16:49:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596757782; cv=none;
         d=google.com; s=arc-20160816;
-        b=WhJiqUUA+sLoyCfKoso8FNhId66qWMQcIl+ye4K7WnhXjHzjgsO7NAYQhmGyQ1K/dv
-         p5mpB9IMJHEJR9U50lGKriTj7HDs3Rg/Ud5waw/BKTBZufBP8n9yyGtdFKUQsBZ7cv3o
-         ea05THa9a+uCRJjBNMjFHmqbY1a4wCsVW0HQ9iHY5oJOOthsmX71shILY7kTAeGOUORZ
-         vwk8VN8LIuFsbLHdsr4MvmHMVMTbONg/vPWQ/dx08YS9Sv6+fLSxPsVAEnuAonDyR3B6
-         SJ0/cyl2fXINjkwvanEqnjmlwN/NV2kB4rEuBrtSXb6aiKlBVKA/R9RMNDyi0QKT5+Bm
-         WqZw==
+        b=i3pNKjx1WgKybDCenZLHvdyI6cuE/IE8F9856NG6yPew+ZVQOl+YspZT3rneVmfWK+
+         JugX5jWQcYAjuDXpxQ8vUXlOSn8GeKuLYiVRie9VC6qduI8GWtA1mGClrioI1+GWwtka
+         43s5ZECdIOlC8TQKfhLUeQex7acKlRNFSz59sflTATlB6FjWbp1c9FtaVSf4E8NYZ56P
+         CjTv8RFoj55b3NfmUkZavBq//37g68yuW3vxJvbmg4kar3/UQ0ZyvgJd14Je6NuRNL4R
+         RDIY136NmZXbOUfAdhHje+NwFG1G7YqdIrHYxWESEw4d0WGe6Hh01fb70n7mpvl5yQSL
+         tYYw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=0lMd6pa5zpRm0TfN15mIqDfirCjLbolJvbMWzYWKZ40=;
-        b=Bmw6RcCBikInw4QrhvYvYr/36d5Fk66bzJ2WRPeXbH8T+vhdHz6Gn6d+2ePDQf+ABi
-         PV8KPQbOnNIn743Id1wp1B26tRWAN8eBbua0Zlno+8uEAW/RIz6pxNH4gyCdk0ZVpbZI
-         c/VpDfnNuv4A+tjnylugJpNCt3Y6yKlpNWwr36AbRrN9z/PeVaQFIICPxRjVpMZyIChs
-         2MGXcPifgayk7pFT35YboRAHmOLnqK5MyRHgb3kLIM/9rmeIZ0uuxl5THTF13Js1EfJw
-         LoJuqhHaju+Tb5BPgBMbcoYyssEFVKDsq2aaQodGTc0n7OvkeloGVcaYWwa4l5wVn4Z5
-         bfcg==
+        bh=MqG69mo06b8/njU6u2OaiwDXzJPGk81pA8dJpDSpz+A=;
+        b=pCM4SsY1DO9Xrt7SZolgNsqO1U10m3qyK06r8H0VAEnP49h69nPWPAySLJPGRLN94Y
+         rGaJPACVMtwezkeKo6IrlphgEba1sd6Nkph0Ygoov3sZvXebe9Kcya7U6BZ1aaka55zG
+         3fS4E1EsmfaOlcTPwuNvaPh8KR/OXy6ulqkg72jVjBujjTe38e4AOv8cYo+IAnuB/Riv
+         ewrMy0a4pJPqbLE61+eIgkjjXrYH0raukJEc7HMCZ2s9r60Zgu3xcMWYh1dT9uI6mAAq
+         Em2HLe7V9epFwMDG5Dm84YVUItbf2D5y2qb6tkU+8YHVo0+vZt8eSQYzAp6viXBHPhaL
+         Iu6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="deKoK/d2";
+       dkim=fail header.i=@jms.id.au header.s=google header.b=DMZE+cVg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a60si5837093ybi.189.2020.08.06.16.45.32
+        by mx.google.com with ESMTPS id l14si2771726ybt.321.2020.08.06.16.49.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 16:45:32 -0700 (PDT)
+        Thu, 06 Aug 2020 16:49:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="deKoK/d2";
+       dkim=fail header.i=@jms.id.au header.s=google header.b=DMZE+cVg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40890 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44898 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3pZj-0006Ld-Mc
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 19:45:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39900)
+	id 1k3pdl-0008JH-DV
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 19:49:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40658)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pZM-0006LA-HY; Thu, 06 Aug 2020 19:45:08 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:39854)
+ id 1k3pbk-0007Xi-KL; Thu, 06 Aug 2020 19:47:36 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:35231)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pZK-0004DT-MO; Thu, 06 Aug 2020 19:45:08 -0400
-Received: by mail-ej1-x641.google.com with SMTP id f24so158229ejx.6;
- Thu, 06 Aug 2020 16:45:05 -0700 (PDT)
+ id 1k3pbj-0004dM-2G; Thu, 06 Aug 2020 19:47:36 -0400
+Received: by mail-ed1-x542.google.com with SMTP id m20so26908659eds.2;
+ Thu, 06 Aug 2020 16:47:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=0lMd6pa5zpRm0TfN15mIqDfirCjLbolJvbMWzYWKZ40=;
- b=deKoK/d2O6CY7qllvF0eTQHHH66n3bqhpEdl9uK+E0v2dkRAvbRJ69gb02TrDEPb/J
- p6LQOVxyTY4KFuQhI1bmwSEa5ZWK2VzvvR/RgTOQMVZi72EjSQf2KHK6ETbm/jZSa+nI
- xKlh0euOR5dVUe7H/Upu2B24BsadmJ+hxbpZ8=
+ bh=MqG69mo06b8/njU6u2OaiwDXzJPGk81pA8dJpDSpz+A=;
+ b=DMZE+cVgEtdMnT8UC9GCIuGNRcUIy+26FpxBWq9kkj3i4VbbVKw/g4dYWldZqwTFLL
+ y6xFnkiMlhYWnZp+5d1UVBQ8cWiQ+asmlQI33PsdDn9+02380oVgWdjtE3De1W09X5zn
+ qyBrSaOPa7AhjCjmj3/0ZyIlvzJ3bRskDoMFc=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=0lMd6pa5zpRm0TfN15mIqDfirCjLbolJvbMWzYWKZ40=;
- b=mVgHro6nK/9JQf2SITZ/HuCeerFTjKWglY1hnFLM1UeQM+7x0gQbSypGNdvQYtD5mc
- pD4EpmGZky1mQBVwn8hoa0K9ffmIQdF3haktfiVX94nKFCUhqoORSpMV7DKxHiY7jMlR
- Z3uWjZApYyjkLVzP4M3p9m1hC6BHmUVSHZrm4Ko9uAgga1DieJKkJQIou7PW/4EDA8rf
- rUl13ogF2RRMAexeccGE+8wiYusiiqdMeh5RwMxzWCchQ2Lh6HMoG65x1H8ZXPMEsk5e
- o4GJ+R6eA/aNq5BwnKhr6hOTvC3e0b1D4cKOR1TH8y4H8G4J7Om7aafYnmciRXYTV7Ub
- Awfg==
-X-Gm-Message-State: AOAM530feB9s4c4TWcYeu3A4XzrXqOmDMVTN2g5WJLPO3xCPFC2gOSka
- 5quOWmyxhivU13sWFXNWZxdAGSejhW33ficZawo=
-X-Received: by 2002:a17:906:198e:: with SMTP id
- g14mr6666887ejd.266.1596757504208; 
- Thu, 06 Aug 2020 16:45:04 -0700 (PDT)
+ bh=MqG69mo06b8/njU6u2OaiwDXzJPGk81pA8dJpDSpz+A=;
+ b=QO8UyTz5cuP93+Px283IoG2CEhrCuujlX/DIBtoD3ohsyLcrVR5m/pIka0BNEBr+w5
+ F2DDsTGDJ/Qu7MMrSdgyWQ1gWPUhAWsDI0GkuSjFV+Yw4CqQewddHhcvtSBwLltCHBwa
+ D2ZwpjjnCZscComaT2DC8pWUSpYw7laLqbzLKKM9PsFV6BjxVISJ8n3VHCSbe6c67kaR
+ JsP7EytlkulBrH3jn2jD+TKyH0iXhL0qT6lERbG/C2fBUZUsmrb9+6PhcgpkDU4hgtcE
+ 0yeFJekI2Q4gKUAbX3aKRvZ6cUYKJpAzl5oCLyFWHJlGwlDFQEeY8HVbQgE7Z7cf4o09
+ 1H5w==
+X-Gm-Message-State: AOAM531advqPsVMGqx0g2+vgiYrSkRG5eNkBzQw7Cq86de9NkuOAjS4R
+ Z8SDZjn2l9zhqiElMIeUh2GFG1KD1xt3p6Dq5vXtbN/4
+X-Received: by 2002:aa7:d304:: with SMTP id p4mr6072060edq.267.1596757653188; 
+ Thu, 06 Aug 2020 16:47:33 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200806132106.747414-1-clg@kaod.org>
- <20200806132106.747414-10-clg@kaod.org>
-In-Reply-To: <20200806132106.747414-10-clg@kaod.org>
+ <20200806132106.747414-11-clg@kaod.org>
+In-Reply-To: <20200806132106.747414-11-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Thu, 6 Aug 2020 23:44:51 +0000
-Message-ID: <CACPK8Xd5b8GT_KPrWaH6_PLh_q-0kq3MG86x-fD_rPJMw+ehNA@mail.gmail.com>
-Subject: Re: [PATCH for-5.2 09/19] ftgmac100: Fix registers that can be read
+Date: Thu, 6 Aug 2020 23:47:21 +0000
+Message-ID: <CACPK8XdWztzwTfqX5Mkk8wbdrL13nfhw_pTw0R6ra06cOXenBA@mail.gmail.com>
+Subject: Re: [PATCH for-5.2 10/19] ftgmac100: Fix interrupt status "Packet
+ transmitted on ethernet"
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x641.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=joel.stan@gmail.com; helo=mail-ed1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -114,39 +114,50 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  Frederic Konrad <konrad.frederic@yahoo.fr>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +VelKvOe+k8E
+X-TUID: D08R5c53QS7B
 
 On Thu, 6 Aug 2020 at 13:21, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> Receive Ring Base Address Register (RXR_BADR) and the Normal Priority
-> Transmit Receive Ring Base Address Register (NPTXR_BADR) can als be
-> read.
+> The second field of the TX descriptor has a set of flags to choose
+> when the transmit interrupt is raised : after the packet has been sent
+> on the ethernet or after it has been moved into the TX FIFO. But we
+> don't model that today.
+
+Does any software depend on this behaviour? Perhaps mention it in the
+commit message so we remember why we changed it.
+
 >
-> Cc: Frederic Konrad <konrad.frederic@yahoo.fr>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> Simply raise the "Packet transmitted on ethernet" the interrupt status
+> bit as soon as the packet is sent by QEMU.
+
+delete the second 'the'?
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
+>
+> Cc: Frederic Konrad <konrad.frederic@yahoo.fr>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 > ---
->  hw/net/ftgmac100.c | 4 ++++
->  1 file changed, 4 insertions(+)
+>  hw/net/ftgmac100.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
 >
 > diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-> index 5f4b26fc5f3c..0348fcf45676 100644
+> index 0348fcf45676..aa3c05ef9882 100644
 > --- a/hw/net/ftgmac100.c
 > +++ b/hw/net/ftgmac100.c
-> @@ -669,6 +669,10 @@ static uint64_t ftgmac100_read(void *opaque, hwaddr =
-addr, unsigned size)
->          return s->math[0];
->      case FTGMAC100_MATH1:
->          return s->math[1];
-> +    case FTGMAC100_RXR_BADR:
-> +        return s->rx_ring;
-> +    case FTGMAC100_NPTXR_BADR:
-> +        return s->tx_ring;
->      case FTGMAC100_ITC:
->          return s->itc;
->      case FTGMAC100_DBLAC:
+> @@ -547,9 +547,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32=
+_t tx_ring,
+>              qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_siz=
+e);
+>              ptr =3D s->frame;
+>              frame_size =3D 0;
+> -            if (flags & FTGMAC100_TXDES1_TXIC) {
+> -                s->isr |=3D FTGMAC100_INT_XPKT_ETH;
+> -            }
+> +            s->isr |=3D FTGMAC100_INT_XPKT_ETH;
+>          }
+>
+>          if (flags & FTGMAC100_TXDES1_TX2FIC) {
 > --
 > 2.25.4
 >

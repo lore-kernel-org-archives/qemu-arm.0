@@ -1,66 +1,67 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1627626lfy;
-        Thu, 6 Aug 2020 06:21:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyG7LVK/0mum70/e6+ltHU9jjI7N9uaarkpIrvxbB7Cog/BiPz7kKw9koQIUvJs3lZaboJi
-X-Received: by 2002:a25:8491:: with SMTP id v17mr13075531ybk.227.1596720086960;
-        Thu, 06 Aug 2020 06:21:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596720086; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1627773lfy;
+        Thu, 6 Aug 2020 06:21:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfYXY9QVipBTphLs8zVceixAg8tCuXkcrbbD2YPa5hmA2CK10Fsjq60Zf9jmoBD0egHfYx
+X-Received: by 2002:a25:640e:: with SMTP id y14mr11936839ybb.340.1596720096578;
+        Thu, 06 Aug 2020 06:21:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596720096; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ska1udPEm/H9mG8txLi/ZnXxlQsYsr/1JqWlqPE7iVY6C9oUzfvij9CnaJPQoOjdLJ
-         6gpgAhoazSUpz/X9oWpvdm/weRrys9PpcpAMMrKmamiGL+Xzm+5+YkcPJ71d/1/XfKk2
-         GZRNYr+bgT1p0UEBXD7pGO10BYXoG57jILTrpOZHAFb7DRiUTgnF26nAeOCJV9ttCFCg
-         uYap44IDiM7JIa1C/L2FkM2q9pPkeNxmGEC7Rn0VKh4XFV+R7hyNFzNC5vf0l/9HuDVW
-         Id9li8u19tx/xNqA1qHYfAbzIltq0qGbtZmVVr4LVLbCzQju4czpYHsKc5EwCAFjI6c4
-         +jkw==
+        b=XBonvhNX/DYwCsnEWorbo/stpfc2mk/mCPUd7+UAG8Nr0tqOW0qwbq5bpCQr2TGrM5
+         PphuDbrTzMr9qpLpojpx978A/74GlsNU+mfiB7kUV4AVsaaLMY7ZbCNvs/wRFi0S73l8
+         uIBmeqqb0XXBdaT56ADL4GZiHl5njkKqnih1KrXd4wfSe0kHCZcMA4wfoIHCXxaAHIvN
+         /a79NUVL9uhynrze8ZBGmA+FTUyrgFDctlI4O77t8hfvrqb3Td051Pb/GbP3yh+E5fSw
+         zncjYkNGpzQTFAbq/oGxJtRcbH5XsdJRsmXqbQt1N0a8DoOeLXWUL2Cjuo2Lqg3s9dE8
+         17Dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=cnJn0Ue02zTzkKFntgMMDwdBtaBbfgddpsVBrzu2kG4=;
-        b=DO4ZXdOju1ZszJlWB4gQcgTHOcpoyeS/I0XbVddtCDs+nnohbIpRoMq8VaiDI5tJUA
-         8p/A7Cjb5J40nCqPzjDlFYh/eDOu2bNHuoIZ6Yy4aRs/ZAvN0d7gle1JpHouuG4MQx2i
-         gan2Sktodv2IKsCefXP22kOx0UlvrsjQ6qrRET5eaQPwod8tIBBkD3sT7LcruFKSevj9
-         99DSKbFlxU56mcrWqDNRPF4EoLSAa7WMZgAMchyv+/vu8xXwrD8cjUTfbQinquACsplc
-         bj2vfVmPL5TCKmb3xYzduXZ6QwGfbu0UZzsHS0CgWsjHQVrIyM2yCjsn5YOqrcPevVai
-         PUTQ==
+        bh=moFqPjtZkX4DLzoGvw36GwhnvTuBqhiZUiyr8FuZWdY=;
+        b=cpDvrSiUq5LmV/KyWzYygO0pUTDGOLWpz++ySzk13jf0+JPnq0VBazgj+LijTJvvTf
+         sqQLnxWygXN5YPujL9gakoSIfjxGwW9Z5XdpyoI4CVAg59dXUkDmlIwF+v8fje9EGag1
+         WjYALXmrLewTQ4hYwhB7QooFRHe57SeDXMEuuXFrKSp1m1P2QmOAJ6vaVjjlkPVttgZn
+         7GBzT/orrBGNeeQNsANw5OargQvsFl0KOPWN5lHLwviKLCDpcSBmWLkXadJBCUmaA9RG
+         DWk8Y0KYqRq0WF2TBPhGGUO5Y/OSsGrhvDeahFszQjtIYw2LXuM0VEeRq5C+mU0o7xPd
+         RWOw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i141si4702229yba.180.2020.08.06.06.21.26
+        by mx.google.com with ESMTPS id c125si4645962ybb.400.2020.08.06.06.21.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 06:21:26 -0700 (PDT)
+        Thu, 06 Aug 2020 06:21:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48772 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49088 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3fpm-0001Er-8r
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 09:21:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48764)
+	id 1k3fpv-0001Qw-Rf
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 09:21:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48886)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k3fpb-0001EG-Pa; Thu, 06 Aug 2020 09:21:15 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:37045)
+ id 1k3fpf-0001JT-P3; Thu, 06 Aug 2020 09:21:19 -0400
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:48213)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k3fpZ-0000tX-9G; Thu, 06 Aug 2020 09:21:15 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.52])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 041E24DAE2B3;
- Thu,  6 Aug 2020 15:21:10 +0200 (CEST)
+ id 1k3fpa-0000tt-Ex; Thu, 06 Aug 2020 09:21:19 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.1.125])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 0B7FB545F89D;
+ Thu,  6 Aug 2020 15:21:12 +0200 (CEST)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Thu, 6 Aug 2020
- 15:21:09 +0200
+ 15:21:10 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G00550c22927-463b-4e73-a8cb-35790e80fceb,
+ (GARM-103G0050d862c31-b152-4e7f-bf25-1874d3ad7350,
  96EDEDBD7B7627A0205C40E9E2B74F8D513A659B) smtp.auth=clg@kaod.org
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH for-5.2 02/19] m25p80: Add support for mx25l25635f
-Date: Thu, 6 Aug 2020 15:20:49 +0200
-Message-ID: <20200806132106.747414-3-clg@kaod.org>
+Subject: [PATCH for-5.2 05/19] hw/arm/aspeed: Add board model for Supermicro
+ X11 BMC
+Date: Thu, 6 Aug 2020 15:20:52 +0200
+Message-ID: <20200806132106.747414-6-clg@kaod.org>
 X-Mailer: git-send-email 2.25.4
 In-Reply-To: <20200806132106.747414-1-clg@kaod.org>
 References: <20200806132106.747414-1-clg@kaod.org>
@@ -70,14 +71,14 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: ce55ef1c-6170-42a2-a4be-8644554c151f
-X-Ovh-Tracer-Id: 271623353857968934
+X-Ovh-Tracer-GUID: 2d691f75-5c98-480d-a8ed-b9ad3d35caf6
+X-Ovh-Tracer-Id: 271904829506423657
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkedtgdeihecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeiueetjedvgfehkeekjeeiheehfedvtdegtdevfeeihfekieekffdvieelleefkeenucffohhmrghinhepmhgrtghrohhnihigrdgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 09:21:10
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkedtgdeihecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehjeethedutdeitefghfeuvedvleelkeffjedufeeigeejgeehheeulefggeelgfenucffohhmrghinhepshhuphgvrhhmihgtrhhordgtohhmnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 09:21:12
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -97,41 +98,89 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
+ erik-smit <erik.lucas.smit@gmail.com>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z7csD1v0t3y6
+X-TUID: fLZqge6O7djI
 
-The mx25l25635f is an extenstion of the mx25l25635e. It includes QPI
-support, 4-Byte Address Command Set and faster transfers. See this
-document for more details :
+From: erik-smit <erik.lucas.smit@gmail.com>
 
-https://www.macronix.com/Lists/ApplicationNote/Attachments/1892/AN0200V1_MGRT_MX25L25635E_25735E%20to%20MX25L25635F_25735F.pdf
+The BMC Firmware can be downloaded from :
 
-Both devices have the same 3bytes JEDEC ID: 0xc22019. They can be
-distinguished with the QPIID command which is only available on
-mx25l25635f. The mx25l25635f also has a longer JEDEC ID that we can
-use for the model.
+  https://www.supermicro.com/en/products/motherboard/X11SSL-F
 
+Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+[ clg: Modified commit log ]
+Message-Id: <20200715173418.186-1-erik.lucas.smit@gmail.com>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/block/m25p80.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/arm/aspeed.c | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 605ff55c6756..1696ab1f7821 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -218,6 +218,7 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
-     { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
-     { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0) },
-+    { INFO("mx25l25635f", 0xc22019,      0xc200,  64 << 10, 512, 0) },
-     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
-     { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
-     { INFO("mx66u1g45g",  0xc2253b,      0,  64 << 10, 2048, ER_4K | ER_32K) },
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index fcb1a7cd8729..d17a4885a03c 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -57,6 +57,20 @@ struct AspeedMachineState {
+         SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
+         SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
+ 
++/* TODO: Find the actual hardware value */
++#define SUPERMICROX11_BMC_HW_STRAP1 (                                   \
++        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               \
++        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2) |                           \
++        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 \
++        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       \
++        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
++        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                \
++        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1) | \
++        SCU_HW_STRAP_SPI_WIDTH |                                        \
++        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       \
++        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
++
+ /* AST2500 evb hardware value: 0xF100C2E6 */
+ #define AST2500_EVB_HW_STRAP1 ((                                        \
+         AST2500_HW_STRAP1_DEFAULTS |                                    \
+@@ -603,6 +617,23 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
++static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
++                                                        void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Supermicro X11 BMC (ARM926EJ-S)";
++    amc->soc_name  = "ast2400-a1";
++    amc->hw_strap1 = SUPERMICROX11_BMC_HW_STRAP1;
++    amc->fmc_model = "mx25l25635e";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 1;
++    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON;
++    amc->i2c_init  = palmetto_bmc_i2c_init;
++    mc->default_ram_size = 256 * MiB;
++}
++
+ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -731,6 +762,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_palmetto_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
+     }, {
+         .name          = MACHINE_TYPE_NAME("ast2500-evb"),
+         .parent        = TYPE_ASPEED_MACHINE,
 -- 
 2.25.4
 

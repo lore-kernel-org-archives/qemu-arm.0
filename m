@@ -1,93 +1,91 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2112086lfy;
-        Thu, 6 Aug 2020 16:25:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwvqRvmaObpvsCbxiyXXSWtJeEbyJ/NMMHCvS3yTLrarHvxBDhndtuWkb4Fox18ZEvPCDOP
-X-Received: by 2002:a25:a290:: with SMTP id c16mr16991111ybi.406.1596756328487;
-        Thu, 06 Aug 2020 16:25:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596756328; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2122711lfy;
+        Thu, 6 Aug 2020 16:43:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxi1I0KCfQ54RMCt6WiBUqTZrVyeE6nR+RqpcYDPL/jgiwAgn3X1d+YVqL7POavAqxnlxoZ
+X-Received: by 2002:a25:4b47:: with SMTP id y68mr14898446yba.89.1596757389634;
+        Thu, 06 Aug 2020 16:43:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596757389; cv=none;
         d=google.com; s=arc-20160816;
-        b=I+vC+Qr4FxZ+J3t5QaLvD0Y4Izyisveux3TeF4Inj33wAsUHDWJH6baJk5U57gWshS
-         jZ75CtqoX/I7JzjAwLKroqcDmUQAUmEo4SbVKaNDu6eEQMA+hOcfl6gxwuhUULCny8st
-         QlOwvoloMYp+F3/2yh8pQkb6rnq8W2DqG9if/rhuk48CJNKDUNV21NlwTuwKcQkI9Oxp
-         4cStLtEvAOI2huxLKCX6P4Co6TSFeQF6AEJpAEpVMp9thT8gSTklo0sZne4IUzEQvv89
-         3HiQJb1L/BdPqFCymXBbZX9Ia6clm8HTZNJZ0uxp+wUEBrAhadfR315DwWCyWsKrpxVB
-         +wlg==
+        b=bokRDVcVl7rojPwT6F0uJ7S7osuZV4qgA7pdHjLWnvL7s/RL9n5B0QF/0NgDv2aevs
+         6jVQVivNbnASIaLNqDZ06LqHFeJclkkFiSJFI+IhkzK7nZr7TU+nAgLDFlKlU8G5V4oI
+         /iwfGsC3pGtrliwB0WbSFQn0Lv3+p8tY6MnxFwel2XQoAABERHO3W8VytZF+koVqARPU
+         0+ilnFfz7LVUEGPrm5H/yaGpokhmJyU2/qm0Ut2i9B4S8aPkggz+VbhJJikhdIdS0N2J
+         8XNcw2DOvCT7jixHD58b09nnysdhGDElSMr6hAkx9icvUQQJ/8cvZLgZrkvrslAaCAPt
+         15kA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=MUTGZU5HdIlJFfbhklGqoMshRNbMOvtDtynXC898D/U=;
-        b=uxo8Yk5hiIIZS2s4WI/KRrXFvEgmXbTfqxKvOIooXPVZuyKil5BA+WGlLO0NG9EjKr
-         WeYcGin8TircbvtUOYT4tabn9itJRfHLeJhMqjYT3MYwems3ZeMoAAiCXmmcwNYA3Os0
-         QnGQ9lXyozIam3JpiSu+PBspeap1WIwj2BTUwIP5yf8xUzOCN7RU4bJN1Y0ZW3lf/KrX
-         2eTd44wYXibg8Oo1rKhlRcc63DteDKgJzLZIIdxgNYHFGMX9fGvqfGCYur3sLrzACxmf
-         cNkU/TPuZPzkusowrJ47rA/dFecgGSt4ab4ZIwHBYdpiSzlFhAOkDz69lBAwKnLthaAB
-         xUZA==
+        bh=thvcS0wbIyIhj6Kw63JRbFWup4f2P2gSCodJj2WyeyA=;
+        b=qnYhcZpo4TXZj3Kbu2V8LMTTqKGAlXU3SkonNwqS+V+8XS/e3wvKqCSzqnlIEimz7y
+         7hMTPPRbjCj8WkRxiO2bgFo0MsEtOwkRtVffm+QdLSuhRK1d55Ea61EwoKBEOMwRRb+0
+         aVidBy6+oZrvB7C+fZbdg3Sl5YlWuSKN9bgPzB0LwyNjp7EdiekzHEX3V6D6tjD+U4Ml
+         AzoTbMmTFLsjjl1hWFw04b4HtE+Y6hGaNNOiZlSvoBz16MDFzB8/brPX/k1AogmKZam7
+         FFurAIu1wQ9bbLEOOrtoJkRz/W+ou2jQxP1TZbrPGDYxlRvnbsUXEcPTpr/NLTlk3pT+
+         eqjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=g0ofkMoU;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=g4KQZD6U;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 72si5821203ybf.295.2020.08.06.16.25.28
+        by mx.google.com with ESMTPS id n72si6230648ybf.240.2020.08.06.16.43.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 16:25:28 -0700 (PDT)
+        Thu, 06 Aug 2020 16:43:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=g0ofkMoU;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=g4KQZD6U;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55456 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39218 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3pGJ-0007hC-Pe
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 19:25:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36454)
+	id 1k3pXQ-0005XQ-UU
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 19:43:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39408)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pFo-0007bB-GZ; Thu, 06 Aug 2020 19:24:56 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:34632)
+ id 1k3pX4-0005XD-5j; Thu, 06 Aug 2020 19:42:46 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:40631)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pFn-00021y-0f; Thu, 06 Aug 2020 19:24:56 -0400
-Received: by mail-ej1-x643.google.com with SMTP id o23so143048ejr.1;
- Thu, 06 Aug 2020 16:24:54 -0700 (PDT)
+ id 1k3pX1-00042R-RY; Thu, 06 Aug 2020 19:42:45 -0400
+Received: by mail-ed1-x542.google.com with SMTP id a14so19423783edx.7;
+ Thu, 06 Aug 2020 16:42:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=MUTGZU5HdIlJFfbhklGqoMshRNbMOvtDtynXC898D/U=;
- b=g0ofkMoU+k2U/TQgbNumqtpp4RnQmcy3TGhrPOgIrt/1SEIJB53hUfGvdjVVFkIUFj
- uFVITBuUF/kPlj40RbFfMn8wEwuoZJvlrRg0Sk2eWvfFO7jbODSrcea8iOy9GpoPx4oj
- PFFeLWgQGEf337vYt/s4gw72A37OWUfWpKiIc=
+ bh=thvcS0wbIyIhj6Kw63JRbFWup4f2P2gSCodJj2WyeyA=;
+ b=g4KQZD6UOLFYlIuTE019C+OSN7G+ThOLn4TbrfXGquF2ZlSVY4rKHb2Rbwc5xrgIfK
+ kP4nk/J++tZbikQD2/NUH9oflwBKabFCF/Kuk+VIQ6ktPet7gk73fxnKU5HNvsNY1eXf
+ 358/F9Nd5konMuMtfLdef0h5K2bA2x4JH/GzE=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=MUTGZU5HdIlJFfbhklGqoMshRNbMOvtDtynXC898D/U=;
- b=Ilo5Gei2M6QBfBn7MDiAsjg3SiLMy6hbJHSiqJui96N8ciFL6pGeErbx8kKmLU70gn
- uueWtD1E97gxMhjdDsBst0k5xh2Hbg3hSxt8CPElDgeh7pFmyy1tKXXFwlqroCtf6Lvk
- pkC5mpLH22Fz2BqPUqVo1vRTZ8NjEvRqTMCO2PP8KeisSBLsaJ3WoTTXm6QPFHoM/BLt
- Quq73kqtjHUvD+suddCqkzDLWhRt2bdFyI6L0OigbRaG/M5pegA+La5vp0zpRCG9Sebj
- VmBjfYt3oXEaNL+Sar5QArB342YoJW2dPKcBszY9baah5GMg4jx+qpDHNMOGmupzvmWY
- Q2xg==
-X-Gm-Message-State: AOAM533TqWZBzIx61rmWmSs6rDlhi8FzNL4qDZqyQYKmV5phM8fdtOSe
- becd6gu2I1gV13iF2/4OyVtr0TwYp/NOSqCu1ISvcl3M3Tw=
-X-Received: by 2002:a17:906:4ec3:: with SMTP id
- i3mr6551151ejv.215.1596756293170; 
- Thu, 06 Aug 2020 16:24:53 -0700 (PDT)
+ bh=thvcS0wbIyIhj6Kw63JRbFWup4f2P2gSCodJj2WyeyA=;
+ b=OfB24+Q4eX3bbGS7Y/P1mIM0S0tNdkrexWj23I8BZIUm9lZImO6hJ1v6UgnjsL19lI
+ KOwo9LfNQ1M2Hbhjxdgnbz7n6Frl+0I05jzAyj4pxuwv8Iu1OH6nUyt0PQ73jHIXUAL3
+ 6OB+oUi8cWwP8vhjU/C+sVJqttLJEnSI3pa9duURByli7BcHpx/CVq4E1sWw2Y8H/AnE
+ ZzFtVAj3Q14ugBlSUIG9VLkEHUzdy270TC/A/fWkz/zTdwqVJy1p2MulI1K97am4QY0H
+ aVWDyfxUJcq7DcLLTqFBQ9WgjKgsgySbha1J/qSdKLM/chEXCJNj12C1T0KgBKKPjGzP
+ xscQ==
+X-Gm-Message-State: AOAM5338mnhJ4x5TPzInTVxm532X3W1TaI0Ea//1W7brEReu50pUOmH/
+ bcNlzqSqgnNC6IQawphAt67psA9wt0COy9Lf6U0=
+X-Received: by 2002:aa7:dc02:: with SMTP id b2mr6251637edu.260.1596757360998; 
+ Thu, 06 Aug 2020 16:42:40 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200806132106.747414-1-clg@kaod.org>
- <20200806132106.747414-8-clg@kaod.org>
-In-Reply-To: <20200806132106.747414-8-clg@kaod.org>
+ <20200806132106.747414-9-clg@kaod.org>
+In-Reply-To: <20200806132106.747414-9-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Thu, 6 Aug 2020 23:24:40 +0000
-Message-ID: <CACPK8XczhAmOzOYJxN9x3QT5UszYOqqLP-c0UmuM1axzUVo5YQ@mail.gmail.com>
-Subject: Re: [PATCH for-5.2 07/19] aspeed/smc: Fix max_slaves of the legacy
- SMC device
+Date: Thu, 6 Aug 2020 23:42:28 +0000
+Message-ID: <CACPK8Xcy-OzbQ4oiLaq96VzROSsmnmSAa0dytRcCVp2ot+mQnw@mail.gmail.com>
+Subject: Re: [PATCH for-5.2 08/19] aspeed/sdhci: Fix reset sequence
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x643.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=joel.stan@gmail.com; helo=mail-ed1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -111,36 +109,65 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+ qemu-arm <qemu-arm@nongnu.org>, Eddie James <eajames@linux.ibm.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lwYG58WiglCe
+X-TUID: 8fLwUBPvj7pl
 
 On Thu, 6 Aug 2020 at 13:21, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> The legacy controller only has one slave.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> BIT(0) of the ASPEED_SDHCI_INFO register is set by SW and polled until
+> the bit is cleared by HW. Add definitions for the default value of
+> this register and fix the reset sequence by clearing the RESET bit.
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+This is mentioned in the datasheet but I couldn't find if software
+depends on the behaviour. Were you just trying to make the model more
+accurate?
 
-> ---
->  hw/ssi/aspeed_smc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  #define ASPEED_SDHCI_INFO            0x00
+> -#define  ASPEED_SDHCI_INFO_RESET     0x00030000
+> +#define  ASPEED_SDHCI_INFO_SLOT1     (1 << 17)
+> +#define  ASPEED_SDHCI_INFO_SLOT0     (1 << 16)
+> +#define  ASPEED_SDHCI_INFO_RESET     (1 << 0)
+>  #define ASPEED_SDHCI_DEBOUNCE        0x04
+>  #define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
+>  #define ASPEED_SDHCI_BUS             0x08
+> @@ -67,6 +69,9 @@ static void aspeed_sdhci_write(void *opaque, hwaddr add=
+r, uint64_t val,
+>      AspeedSDHCIState *sdhci =3D opaque;
 >
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 0646e0dca72e..8c79a5552f93 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -259,7 +259,7 @@ static const AspeedSMCController controllers[] =3D {
->          .r_timings         =3D R_TIMINGS,
->          .nregs_timings     =3D 1,
->          .conf_enable_w0    =3D CONF_ENABLE_W0,
-> -        .max_slaves        =3D 5,
-> +        .max_slaves        =3D 1,
->          .segments          =3D aspeed_segments_legacy,
->          .flash_window_base =3D ASPEED_SOC_SMC_FLASH_BASE,
->          .flash_window_size =3D 0x6000000,
+>      switch (addr) {
+> +    case ASPEED_SDHCI_INFO:
+> +        sdhci->regs[TO_REG(addr)] =3D (uint32_t)val & ~ASPEED_SDHCI_INFO=
+_RESET;
+
+I think bits 24 and 25 should be writable too?
+
+        sdhci->regs[TO_REG(addr)] =3D (uint32_t)val &
+~(ASPEED_SDHCI_INFO_RESET | ASPEED_SDHCI_INFO_SLOT10 |
+ASPEED_SDHCI_INFO_SLOT1);
+
+> +
+>      case ASPEED_SDHCI_SDIO_140:
+>          sdhci->slots[0].capareg =3D (uint64_t)(uint32_t)val;
+>          break;
+> @@ -155,7 +160,8 @@ static void aspeed_sdhci_reset(DeviceState *dev)
+>      AspeedSDHCIState *sdhci =3D ASPEED_SDHCI(dev);
+>
+>      memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
+> -    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =3D ASPEED_SDHCI_INFO_RESET;
+> +    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =3D
+> +        ASPEED_SDHCI_INFO_SLOT1 | ASPEED_SDHCI_INFO_SLOT0;
+
+If we want to be super strict this is true for the "sd" devices, but
+the "emmc" device in the ast2600 only sets slot0. I don't think this
+distinction is important to model though.
+
+>      sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] =3D ASPEED_SDHCI_DEBOUNCE=
+_RESET;
+>  }
+>
 > --
 > 2.25.4
 >

@@ -1,92 +1,248 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp905995lfy;
-        Wed, 5 Aug 2020 12:17:09 -0700 (PDT)
-X-Received: by 2002:a4a:83d5:: with SMTP id r21mr4304331oog.19.1596655029505;
-        Wed, 05 Aug 2020 12:17:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596655029; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1498909lfy;
+        Thu, 6 Aug 2020 03:45:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytQq7B0dgYLv9ydHBVwN3cueOZuW0KC48X77qqHzQLKDK8E+hjBDDb538UznOYzCqz7owj
+X-Received: by 2002:a25:c60b:: with SMTP id k11mr11044903ybf.482.1596710719736;
+        Thu, 06 Aug 2020 03:45:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596710719; cv=none;
         d=google.com; s=arc-20160816;
-        b=qwC6LjEIkLlNYgvNsMqfwkpjvTVT1JTVUKCLB2ysbFrfXgNg/Ka6UIJjKgyP5h9W0D
-         KAj0ZMxvs0gnuKqYD7/dmjhkTYAGYClMcKuuTTSX5Ju4PgQA7Wj3utyu75slmPtUvqra
-         v67pYtcweoopSgUdnuDr8XzB8lLsJFI8Lgr59N1PFK9dZTwj0u3bL4oZbsxuiZ6LFoQk
-         L88iouWOf8OZCDXEDrsDSb8gOE1MbdZNPpRf2LHlvxjFqA1Gk1bVILG+bX30RVo7qH8B
-         WMAGXO9mb7b54ZNA660Y2bXveEWhLNbjU44g0DasFiQODMLPLc0ZuA3Oks04uvWK909G
-         2IWQ==
+        b=OPB3KQVuqnxeYjvNo+c/7If1KY1FUHpDqus1wx87IXg6eMChXb0cuhynNm4SBkKu+C
+         yDEQC4sQ0uFUcnI5gn7mQhT7fgkrR+Ufh8pTvishLMR1YgZDs4ws+JeLrmjm0Fav/Q0W
+         Fe2MnHfvluU4Z7wg4G+VtWgO5zo6FrtRybMstOcGfeyKrrLNQmjf9v+e7L8EO9rq5yLA
+         mBMifhrXtKH0pH1RMVIdvHhV/oXilr+MXK+79WJdsm2wCoPLlmCtraIrPaq3AjL0NYZt
+         L5+7PEv8NOcMq6IKtQYS+Q2AfUrXSXgU8rwTEGM16hU/MqDP6ilKNLZDV+zvT/Q2EXt7
+         DRDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=8yfgoATuxZMwPlAf0RNN7saocTmnNYrbYTVrbc87Zr4=;
-        b=QVAROZBrE0E0ly6LFZEBnJmkb9WvLcUycEcEP+GL63T+WLIPSo5r79+83f/+Od7uii
-         JB/444XVKAOGZL+LlgQkn3rswhzaFbOh6evhenWCKD9OTj724567FhRJnsrYrU8CnpjG
-         skj343punTZdBhVA3z+iwQBlbne7+QzlOxhlRj+j3t1xqhoyMA36g68oZqmGu8wmeAMi
-         vRSUE0d7sHvNQ/aFg571oklF4D4vjcZPjpxJMhTs7t4o/e6xLOQ32mu2YH5EJsvzTbjd
-         XlPy9m2fKkixPcGA/KG9oXE/wL9QLXOUmvsK9O5ClQBc0pxwSOUKspS3Zvk8hQWseGJ1
-         OH/w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=RHA41MBQAdtJ8xHpnLFhE8L/40GSEPE/TJljdWuXLT4=;
+        b=bVAlUK79MA202WXxNXSctrpWSh4B7lka1Dtu94BGwy2KrjlJ7ApGLy4K+0tSVt7das
+         yZi2V7BUjBGxrOjFAYOzs7d7h9izE84L0ZBedbW2OAM5YOJIUr6RYhbYl5KZlSrStSc1
+         bwAC2GP3j7olYi8mL9yWpejcJg53Bb5g7f0rrILCZEcgaygML0FG8WW02ML+HqDDcuHt
+         B4OiKtxas/+gMh6MTncprd6OEljPRMEua3hJvo+Ovj6cmPiy6QaNMkyCI+B6wVbr02Hb
+         P7E+eHJglYn6XtWiZSDxXzQo2xVqOxZ+Ouy3aitDf4UEWvW+wyHXiiamUiBAzjfh6+8g
+         ORnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nI8k1bnw;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VI6liApF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id g10sor3479979ooe.12.2020.08.05.12.17.09
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id i4si4143406ybt.186.2020.08.06.03.45.19
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Wed, 05 Aug 2020 12:17:09 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 Aug 2020 03:45:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=nI8k1bnw;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=VI6liApF;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=8yfgoATuxZMwPlAf0RNN7saocTmnNYrbYTVrbc87Zr4=;
-        b=nI8k1bnwX/t7qzR8UTyk/YBNG/CHxiB2euA4jxhkw595xqchVhpoEPo25JcLe2BX19
-         oVWtPTC43iAlm2Kiu7TB0ztKYmVUP/kFSf5tnUqv0J3Q4lA+0oJQUaOneAm0YcPF7+6l
-         onYQFHRf4Of4AKbUCAqMnlB/5nhPnmTOsiEmur3Df75eeUOfdwplOn8Z2JgLfrZs/68z
-         NzshZjgGLZZRU/EA8qV1v0Wx/9R/aWe8CuTYjq7MSlNkngLuTgnxV3ujE9F5zYbb/bfX
-         BvjVUL7MOPLAuZwQ7gtV5+QWEq4b0TYCiI9pfemorO0VDf8TnQaTKqXLzNtD1u1wFvEs
-         DOFQ==
+Received: from localhost ([::1]:47172 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k3dOh-0005UY-29
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 06:45:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39452)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k3dOW-0005SI-8v
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2020 06:45:08 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:53027)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k3dOQ-0007Ih-GF
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2020 06:45:07 -0400
+Received: by mail-wm1-x344.google.com with SMTP id x5so8420790wmi.2
+ for <qemu-arm@nongnu.org>; Thu, 06 Aug 2020 03:45:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=RHA41MBQAdtJ8xHpnLFhE8L/40GSEPE/TJljdWuXLT4=;
+ b=VI6liApFjvKSdhPzwoAd7qUP+OKHV72ZEeIo4aIvF6+Bs7RhyETeBCM3ei3N9pmzZF
+ ku+ahaUKlSbe1p0u8DFkMJUNVgws+QYTyGZZ6zvAhoRjRu32pCj7WjyEbM/sfPuorOTe
+ a1ZdIlLAS49eLo5uZdS7Zt7RabM6/w6ULew2hG/d3cdAPogSAdbo1ZUp9+BhvPnS+9q7
+ CITE58bR7nY3fdlZOqYLxd6l9fnTpy7HPIu4d1kdYaRQqs4/wJMcffasvp5CIWTjuKlU
+ PrhVcQdE7R4KmSGpWq4utU5cccNwKxw5ziizOMVJ6CgNq5WmBXexCEbst3TkpePQ+yAC
+ k0SQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=8yfgoATuxZMwPlAf0RNN7saocTmnNYrbYTVrbc87Zr4=;
-        b=lCnaZMp4f7kzp11zTeI5hr9Y3lj2tjRQW7aS7Tm7mFHQvW7YwDApOXg5KA69pXgQW6
-         b/O6e41Ljd4Pxj2/TJvmRT5Ovjr7Zdw71GGQukc5roHCksLUNVfZkq6Q6pKCxGFcfpdX
-         Z2T1IqSq1cgKgS1C6Z1wqYGpk6AMSFPbQoWlHVKRKKUIe0jZp531E8D7yTKPrdQewmJf
-         MO4E5siqpdPOht+cCNr7yduZIWaENovplQl6+gU7Ht2MlqaVn+ak58gcSRoUElu+FZqZ
-         kWleU+SqwnE3brjfgNMsJOP41jEUq70c3PaeggwEr0k4Id5WSF72pg7j63AmQegsuGJk
-         w+zA==
-X-Gm-Message-State: AOAM530fk3cRHGnW6Z9FuwaHaLUzxuInn3bCuvvEXZvfgDk+QeAOkw9b
-	eXQBpn9vBHfCpag0zv7E/DtQOnPX8VK1aCCB/xQIOTjCK3tYeTZs
-X-Google-Smtp-Source: ABdhPJzEcrZOckd/yjLK/krpvvhnjfofcDM2u3g613LDcd/00SIWayI6ABZVTRjZF2Rs/kRkR9Fly136LL6o5+1/K+s=
-X-Received: by 2002:a4a:4c44:: with SMTP id a65mr4315067oob.20.1596655028606;
- Wed, 05 Aug 2020 12:17:08 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAFEAcA_6zbOfdVi+Tp18seaEy4don1GurVya+E+QXRGrZ_WVLg@mail.gmail.com>
- <2c5ed9d8-6d79-1b53-5588-8fb9efebf0fa@linaro.org> <87tuxhkpo2.fsf@linaro.org>
- <CAFEAcA8+acTg6KoBDW5-7FvnrW=vDMXohWfTAXtTFv6BDqyuRQ@mail.gmail.com> <a1e53e0c-fbab-a789-5f07-cfae99b6042a@linaro.org>
-In-Reply-To: <a1e53e0c-fbab-a789-5f07-cfae99b6042a@linaro.org>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=RHA41MBQAdtJ8xHpnLFhE8L/40GSEPE/TJljdWuXLT4=;
+ b=LGu2A4wXoxX339qK9ohm56jKls6vXt9axqZUlTAKyJPBENasaWtH5ybgIVvQH1q9+U
+ GPW+xXLpBqezg2uJrbie1H6rPvqxcYIoXN/FWP62+Y/+iSf5sSGjd8qL7OgUKV9rcEC1
+ 3vp2RJYStwxnY39G9Fw2swhPsb4DmC4Xjv0WnjQ/5nMq2uWTHUpzP3meQupEvtDTK7TT
+ zGzWg8hMOBrd/Ysw+FmFHzO9W2hWdLCW3LARH9qgIA755YAsI8NOdgu2I9ECXgEgpJZj
+ D0qR5NrNM11OalRJOImUI5eu6tWTTRW7atIe/FRhUKrIhn/6MYmLSnR51MKjhl6sfzWc
+ G+ug==
+X-Gm-Message-State: AOAM533Pc+yOtqxmiDtWS9rJuyBrn9KaEWw78hNSRsi1mM++hPPzGEXP
+ vxaKSk+SWaMITBCbXfmM2b0/MfDhr/Ethw==
+X-Received: by 2002:a05:600c:2184:: with SMTP id
+ e4mr7145859wme.24.1596710700256; 
+ Thu, 06 Aug 2020 03:45:00 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id a10sm6042189wrx.15.2020.08.06.03.44.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Aug 2020 03:44:59 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 5 Aug 2020 20:16:57 +0100
-Message-ID: <CAFEAcA9v3QysnfUjbUwTYcVAxkRRwaLWSFOq_negxWR72m3E0A@mail.gmail.com>
-Subject: Re: v8.1M cpu emulation and target-arm feature-identification strategy
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: 2h6acU9qZecU
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 3/4] target/arm: Implement FPST_STD_F16 fpstatus
+Date: Thu,  6 Aug 2020 11:44:52 +0100
+Message-Id: <20200806104453.30393-4-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200806104453.30393-1-peter.maydell@linaro.org>
+References: <20200806104453.30393-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XPCN8+jFPruw
 
-On Wed, 5 Aug 2020 at 18:00, Richard Henderson
-<richard.henderson@linaro.org> wrote:
-> Older ones like XSCALE are obvious
+Architecturally, Neon FP16 operations use the "standard FPSCR" like
+all other Neon operations.  However, this is defined in the Arm ARM
+pseudocode as "a fixed value, except that FZ16 (and AHP) follow the
+FPSCR bits". In QEMU, the softfloat float_status doesn't include
+separate flush-to-zero for FP16 operations, so we must keep separate
+fp_status for "Neon non-FP16" and "Neon fp16" operations, in the
+same way we do already for the non-Neon "fp_status" vs "fp_status_f16".
 
-Looking at the XScale manual we could actually implement
-ARM_FEATURE_XSCALE as (cpu->midr & 0xffff0000 == 0x69050000)
-[Vendor=intel, arch=ARMv5TE], and ARM_FEATURE_IWMMXT as
-(cpu->midr & 0xffffe000 == 0x69054000) [Vendor=intel,
-arch=ARMv5TE, Core Generation=2]... Doesn't really gain
-us much, of course :-)
+Add the extra float_status field to the CPU state structure,
+ensure it is correctly initialized and updated on FPSCR writes,
+and make fpstatus_ptr(FPST_STD_F16) return a pointer to it.
 
-thanks
--- PMM
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.h        | 9 ++++++++-
+ target/arm/translate.h  | 3 ++-
+ target/arm/cpu.c        | 3 +++
+ target/arm/vfp_helper.c | 5 +++++
+ 4 files changed, 18 insertions(+), 2 deletions(-)
+
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9e8ed423ea1..e2b989e3f1a 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -609,6 +609,8 @@ typedef struct CPUARMState {
+          *  fp_status: is the "normal" fp status.
+          *  fp_status_fp16: used for half-precision calculations
+          *  standard_fp_status : the ARM "Standard FPSCR Value"
++         *  standard_fp_status_fp16 : used for half-precision
++         *       calculations with the ARM "Standard FPSCR Value"
+          *
+          * Half-precision operations are governed by a separate
+          * flush-to-zero control bit in FPSCR:FZ16. We pass a separate
+@@ -619,15 +621,20 @@ typedef struct CPUARMState {
+          * Neon) which the architecture defines as controlled by the
+          * standard FPSCR value rather than the FPSCR.
+          *
++         * The "standard FPSCR but for fp16 ops" is needed because
++         * the "standard FPSCR" tracks the FPSCR.FZ16 bit rather than
++         * using a fixed value for it.
++         *
+          * To avoid having to transfer exception bits around, we simply
+          * say that the FPSCR cumulative exception flags are the logical
+-         * OR of the flags in the three fp statuses. This relies on the
++         * OR of the flags in the four fp statuses. This relies on the
+          * only thing which needs to read the exception flags being
+          * an explicit FPSCR read.
+          */
+         float_status fp_status;
+         float_status fp_status_f16;
+         float_status standard_fp_status;
++        float_status standard_fp_status_f16;
+ 
+         /* ZCR_EL[1-3] */
+         uint64_t zcr_el[4];
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index e3680e65479..6d6d4c0f425 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -436,7 +436,8 @@ static inline TCGv_ptr fpstatus_ptr(ARMFPStatusFlavour flavour)
+         offset = offsetof(CPUARMState, vfp.standard_fp_status);
+         break;
+     case FPST_STD_F16:
+-        /* Not yet used or implemented: fall through to assert */
++        offset = offsetof(CPUARMState, vfp.standard_fp_status_f16);
++        break;
+     default:
+         g_assert_not_reached();
+     }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 111579554fb..6b382fcd60e 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -391,12 +391,15 @@ static void arm_cpu_reset(DeviceState *dev)
+     set_flush_to_zero(1, &env->vfp.standard_fp_status);
+     set_flush_inputs_to_zero(1, &env->vfp.standard_fp_status);
+     set_default_nan_mode(1, &env->vfp.standard_fp_status);
++    set_default_nan_mode(1, &env->vfp.standard_fp_status_f16);
+     set_float_detect_tininess(float_tininess_before_rounding,
+                               &env->vfp.fp_status);
+     set_float_detect_tininess(float_tininess_before_rounding,
+                               &env->vfp.standard_fp_status);
+     set_float_detect_tininess(float_tininess_before_rounding,
+                               &env->vfp.fp_status_f16);
++    set_float_detect_tininess(float_tininess_before_rounding,
++                              &env->vfp.standard_fp_status_f16);
+ #ifndef CONFIG_USER_ONLY
+     if (kvm_enabled()) {
+         kvm_arm_reset_vcpu(cpu);
+diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
+index 60dcd4bf145..64266ece620 100644
+--- a/target/arm/vfp_helper.c
++++ b/target/arm/vfp_helper.c
+@@ -93,6 +93,8 @@ static uint32_t vfp_get_fpscr_from_host(CPUARMState *env)
+     /* FZ16 does not generate an input denormal exception.  */
+     i |= (get_float_exception_flags(&env->vfp.fp_status_f16)
+           & ~float_flag_input_denormal);
++    i |= (get_float_exception_flags(&env->vfp.standard_fp_status_f16)
++          & ~float_flag_input_denormal);
+     return vfp_exceptbits_from_host(i);
+ }
+ 
+@@ -124,7 +126,9 @@ static void vfp_set_fpscr_to_host(CPUARMState *env, uint32_t val)
+     if (changed & FPCR_FZ16) {
+         bool ftz_enabled = val & FPCR_FZ16;
+         set_flush_to_zero(ftz_enabled, &env->vfp.fp_status_f16);
++        set_flush_to_zero(ftz_enabled, &env->vfp.standard_fp_status_f16);
+         set_flush_inputs_to_zero(ftz_enabled, &env->vfp.fp_status_f16);
++        set_flush_inputs_to_zero(ftz_enabled, &env->vfp.standard_fp_status_f16);
+     }
+     if (changed & FPCR_FZ) {
+         bool ftz_enabled = val & FPCR_FZ;
+@@ -146,6 +150,7 @@ static void vfp_set_fpscr_to_host(CPUARMState *env, uint32_t val)
+     set_float_exception_flags(i, &env->vfp.fp_status);
+     set_float_exception_flags(0, &env->vfp.fp_status_f16);
+     set_float_exception_flags(0, &env->vfp.standard_fp_status);
++    set_float_exception_flags(0, &env->vfp.standard_fp_status_f16);
+ }
+ 
+ #else
+-- 
+2.20.1
+

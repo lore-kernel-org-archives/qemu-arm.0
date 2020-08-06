@@ -1,93 +1,92 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2111533lfy;
-        Thu, 6 Aug 2020 16:24:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx37zEG488dz+W/EChQsZNxXwPENtvruVmNgwqXpZ9u5haILaLlHexNE5yVNeyigPotBtlL
-X-Received: by 2002:a25:af05:: with SMTP id a5mr15872974ybh.411.1596756269254;
-        Thu, 06 Aug 2020 16:24:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596756269; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2111808lfy;
+        Thu, 6 Aug 2020 16:25:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz3yRbTMZr2IKrFCx53LSgXcXdlEw5KSYWyVN8FUyNsQrsWMZZzgQuCb0VhBa2vC96IPuON
+X-Received: by 2002:a25:d4d2:: with SMTP id m201mr16368258ybf.245.1596756302346;
+        Thu, 06 Aug 2020 16:25:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596756302; cv=none;
         d=google.com; s=arc-20160816;
-        b=E1exsTnVCxVJH+Ka5obAGGztcVhvm//Ar839/sJ0VIkzHY95ha/3lbrV9Rb+QNzSVM
-         LlsrO+2ISPYr3AixIZsICQHVYBTvdCo+OXm8n7F01ZVq5742uOO4lqGBIYP8pfjUBbnG
-         PvqG2+oT0QLjLWQSEXKQ/e85Q9ET6ZZw8eFPCTH2g+qMPbcFWbq7nIRLtpMDHUFEk0bn
-         PMgLE+jFpzsrnMjqIsRlfWZnPuO7QKZtiN9T3BEw/C7kTCY8ZzoJIRWBzoUgjI/iWje1
-         /Np6zt/BdMLp0mly7xfnpmg1J+CyWqBt/qbAAsZF63TNgsQ8lIjg1UGk82/IVLR5w+OM
-         97gA==
+        b=G1wigDlzgJhHpoq9AdzPJMf/ijPHMTx+a7+cz+c2DnhlBTLFAGurV/tOXKsDE6AJDw
+         eqMq4mDNsdot9sezaDUt1aNWIsRY0D72ACIZVAD4EGkqx0aHj9pabMRCFUh6XoV4kI2w
+         K+usSsQYncP14cVE5pNZBY/TnNa9Z7q6k+GzauntqX8RSpUN5G7iBEU9LopmIdfrIxWS
+         bSv1/0L4JsI9rSJVV4ejZO98KvMORxp5z9EiwMcfKyjgcBgxxdLdB9A60yZYvDs+ki7h
+         HbfK0Y3rDuj61T4sbUKFtv5wcuSF6BbatPqJ0wfnaJ3e/qEgwZZqWiTPbgcVsMUEuBsE
+         yY3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=Ns+VUHIhkunqh3gb5/0BaCpY+0iYgc0OmBiyxFo4YW4=;
-        b=VvL5PHRBn7/D4zJLnioU4DK78eYGy/Zo3zWFphBcjHSj2KbMCzFWq2gWJgeCsdcjZy
-         n1WvjWqc6cUba/kRqjzcco+2uIn/kyPRoQtaefdSUf41YFQJvjfzgE5yaLc+Iy6kpUvb
-         hGjwvriQKafLrVeiSHOiECFidc5Fq9KfZjhYqCPZ0ZWh69aYOI/YprFtmBMegrEdU8i1
-         dA1bKIM69xE11omBs5eGc4Ci+zoQQWgOgekYl4kCbWZsSRE6DO/g3NXbumZsAiRT4slp
-         Xt4pXoRgiuem4rqLgPT1XvkNtU1P3F36utJtCm8WqNnsXbsscI9aIuwRnwHd9NsaBusT
-         fyIg==
+        bh=dfzZw2rK2VM8hG7Azfy7HADF2kDjdHPtkiMjK8eRub8=;
+        b=xkMWSlBVI0zEqhDe2wOZgZCjwjG1jlK9P1SIM29VSD07EcPVRYgCf1ZqDaNLKqS36g
+         UgpvwDNEZxq8ZJlVsz+Q4ChmyL7BYYHMoF600Num21E5Zzc8muldsvnrXoayhXYNO7Wo
+         mNw9HG6qS53GFMTgdozQvdN1K8YQUf6Pf6sFha6sHFmR3DhZxBnIRspAMA/NEQGdi3tT
+         zuQRkwdqQlySSw+F+v8mYNxFIEUSiLxBWSHOiExzSyuVUHh6w6x4GLVJEmw9hBEbG0TY
+         3iyOb3rxubu5V3mpz/bgyk28rKab3VAvNB5xNBzKj31SMHno3HuUGg5nHOjHhrnrIr9E
+         9QzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=jQd2fDDz;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=NcTIUuR3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g12si6833001ybk.493.2020.08.06.16.24.28
+        by mx.google.com with ESMTPS id i7si4831826ybq.92.2020.08.06.16.25.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 16:24:29 -0700 (PDT)
+        Thu, 06 Aug 2020 16:25:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=jQd2fDDz;
+       dkim=fail header.i=@jms.id.au header.s=google header.b=NcTIUuR3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:54200 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3pFM-00077Y-EG
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 19:24:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36330)
+	id 1k3pFt-0007PK-I1
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 19:25:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36410)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pEz-00076k-Po; Thu, 06 Aug 2020 19:24:06 -0400
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:44954)
+ id 1k3pFX-0007OO-5b; Thu, 06 Aug 2020 19:24:39 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:37923)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pEx-0001u6-OW; Thu, 06 Aug 2020 19:24:05 -0400
-Received: by mail-ej1-x644.google.com with SMTP id bo3so96111ejb.11;
- Thu, 06 Aug 2020 16:24:02 -0700 (PDT)
+ id 1k3pFV-0001zx-Oe; Thu, 06 Aug 2020 19:24:38 -0400
+Received: by mail-ej1-x642.google.com with SMTP id d6so124260ejr.5;
+ Thu, 06 Aug 2020 16:24:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=Ns+VUHIhkunqh3gb5/0BaCpY+0iYgc0OmBiyxFo4YW4=;
- b=jQd2fDDzYrAKWnVjw6T2imkW6kN9vx4TJ7iEstR7yY5Fe9sQRHyKFT1yx2XWBelFQu
- mnQ/XJMT/S+2p4ff3gS1qZBN1GfRIrfaPNW1atoMWBNy/moegAhzN07/Dp4PiNsFBBVY
- nbWVYpw0NKNJPraTeNOgTUClFwITzOlLlbBP8=
+ bh=dfzZw2rK2VM8hG7Azfy7HADF2kDjdHPtkiMjK8eRub8=;
+ b=NcTIUuR3UR8l8CqksIHI1vGWmbSPFrtUYWhlOy0oK6t039CbgxSSvvT9Kw+J3FAAoh
+ hP+TrIB8R40o4h4EifBteOqcfxwdWcwO1jAtrZcSQJ4NRc7HFlKTrfRo9MN5nPG0Rz9a
+ k17Cl1G3gkc57HavhKQWl+ZyFF+mdik7KgnRk=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=Ns+VUHIhkunqh3gb5/0BaCpY+0iYgc0OmBiyxFo4YW4=;
- b=hZy6EMiu0fKDwLB9ZuTRM4NOIv+rDVGFyH3YUAutEPEGEzr7IPG185vTUc9hz7sZ0g
- yNm2+pqae4JPKsCv7MkVxXl+PhPtJDMWJJChMjwZW0athSbFCnupmv3IsBNdVx5zIRkS
- 88fatbWe6xRZV7n5n7AjZmeTwk14xJ+FHznDOFptaY1y3jL3NaR0rDwunwo4MsliCa46
- VYWC1HysEvwvVBA1INdvu44LPB3GcVUPJImzXbTneuVJzTQMjW7+Z04IceHi8gOEGjg9
- mV7/kbKHGsuY8z94r9pRGzFq7qTDWejTmbyawiTWY4pLrpZiG6ZbSxRWQAzOU/8USFE/
- 7hTw==
-X-Gm-Message-State: AOAM531UwJTzI0zzKYZqWUxgzrjFCs7t4ot78jplHSE6ZncOpFe/fDhE
- KSR2+fTla9V8SOfnjpSBeFDMHcnFSNcXAUxMsCc=
-X-Received: by 2002:a17:906:7790:: with SMTP id
- s16mr7125793ejm.254.1596756240334; 
- Thu, 06 Aug 2020 16:24:00 -0700 (PDT)
+ bh=dfzZw2rK2VM8hG7Azfy7HADF2kDjdHPtkiMjK8eRub8=;
+ b=TC4KfCMO5wP92Jj6QBQwXeMSLs/oJcp7rnmz5P4+3aEEpKIG8QhKOWn5LhSJcii087
+ Ld6IB3NPRduMX5SSlpV3uRjImu40AIC19MPz5LySr7xc64H/VAV1unqCIKmh0LAYsqLQ
+ DIs+49xkYO+jAECFXqyL2YjfDwq+G0m+4JqYOWaW4pmWx6GJaa0JisMNquMqLu3zV81W
+ d+MmEhdkSECb2ox68EB2XrIQagVFw1tyqufd7kMmYKI/ifkHL4y4BnXdIc0X7DZu2XW3
+ yNf3q69yRszljyeMonvoulLQE5WHySfvS5B51m4nVAHKLvQba3DglfT7DzEZKnJWvqix
+ qSeA==
+X-Gm-Message-State: AOAM5334wJKcRl85it/K6bpKYiMKXe3Jy92fdYwDy8FYYT93N/GwNh7m
+ rKT69KGqVThSC6K0/GB+kITK9HJs79t46RgXaoM=
+X-Received: by 2002:a17:906:c187:: with SMTP id
+ g7mr6961093ejz.108.1596756275722; 
+ Thu, 06 Aug 2020 16:24:35 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200806132106.747414-1-clg@kaod.org>
- <20200806132106.747414-6-clg@kaod.org>
-In-Reply-To: <20200806132106.747414-6-clg@kaod.org>
+ <20200806132106.747414-7-clg@kaod.org>
+In-Reply-To: <20200806132106.747414-7-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Thu, 6 Aug 2020 23:23:47 +0000
-Message-ID: <CACPK8Xc2A+FX4tz-mXy0eH8-SkOn3=_9zQ5xzMynMgLYBckAcw@mail.gmail.com>
-Subject: Re: [PATCH for-5.2 05/19] hw/arm/aspeed: Add board model for
- Supermicro X11 BMC
+Date: Thu, 6 Aug 2020 23:24:23 +0000
+Message-ID: <CACPK8XfJ=D1N09jFeF3=FJ1t=DuHqHNE4DUYrL=OVDPkKx=4kg@mail.gmail.com>
+Subject: Re: [PATCH for-5.2 06/19] aspeed/smc: Fix MemoryRegionOps definition
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x644.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=joel.stan@gmail.com; helo=mail-ej1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -111,111 +110,41 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- erik-smit <erik.lucas.smit@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jdtNcmHYjBdr
+X-TUID: LAcyfbbS6b0M
 
-On Thu, 6 Aug 2020 at 13:21, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+On Thu, 6 Aug 2020 at 13:23, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> From: erik-smit <erik.lucas.smit@gmail.com>
+> Unaligned access support is a leftover from the initial commit. There
+> is no such need on this device register mapping. Remove it.
 >
-> The BMC Firmware can be downloaded from :
->
->   https://www.supermicro.com/en/products/motherboard/X11SSL-F
->
-> Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
-> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> [ clg: Modified commit log ]
-> Message-Id: <20200715173418.186-1-erik.lucas.smit@gmail.com>
+> Cc: Michael S. Tsirkin <mst@redhat.com>
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
 > ---
->  hw/arm/aspeed.c | 35 +++++++++++++++++++++++++++++++++++
->  1 file changed, 35 insertions(+)
+>  hw/ssi/aspeed_smc.c | 2 --
+>  1 file changed, 2 deletions(-)
 >
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index fcb1a7cd8729..d17a4885a03c 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -57,6 +57,20 @@ struct AspeedMachineState {
->          SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       =
-\
->          SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
->
-> +/* TODO: Find the actual hardware value */
-
-I've asked some bmc people if they could provide this.
-
-> +#define SUPERMICROX11_BMC_HW_STRAP1 (                                   =
-\
-> +        SCU_AST2400_HW_STRAP_DRAM_SIZE(DRAM_SIZE_128MB) |               =
-\
-> +        SCU_AST2400_HW_STRAP_DRAM_CONFIG(2) |                           =
-\
-> +        SCU_AST2400_HW_STRAP_ACPI_DIS |                                 =
-\
-> +        SCU_AST2400_HW_STRAP_SET_CLK_SOURCE(AST2400_CLK_48M_IN) |       =
-\
-> +        SCU_HW_STRAP_VGA_CLASS_CODE |                                   =
-\
-> +        SCU_HW_STRAP_LPC_RESET_PIN |                                    =
-\
-> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_M_S_EN) |                =
-\
-> +        SCU_AST2400_HW_STRAP_SET_CPU_AHB_RATIO(AST2400_CPU_AHB_RATIO_2_1=
-) | \
-> +        SCU_HW_STRAP_SPI_WIDTH |                                        =
-\
-> +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_16M_DRAM) |                       =
-\
-> +        SCU_AST2400_HW_STRAP_BOOT_MODE(AST2400_SPI_BOOT))
-> +
->  /* AST2500 evb hardware value: 0xF100C2E6 */
->  #define AST2500_EVB_HW_STRAP1 ((                                        =
-\
->          AST2500_HW_STRAP1_DEFAULTS |                                    =
-\
-> @@ -603,6 +617,23 @@ static void aspeed_machine_palmetto_class_init(Objec=
-tClass *oc, void *data)
->          aspeed_soc_num_cpus(amc->soc_name);
+> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> index 4fab1f5f855e..0646e0dca72e 100644
+> --- a/hw/ssi/aspeed_smc.c
+> +++ b/hw/ssi/aspeed_smc.c
+> @@ -1299,10 +1299,8 @@ static const MemoryRegionOps aspeed_smc_ops =3D {
+>      .read =3D aspeed_smc_read,
+>      .write =3D aspeed_smc_write,
+>      .endianness =3D DEVICE_LITTLE_ENDIAN,
+> -    .valid.unaligned =3D true,
 >  };
 >
-> +static void aspeed_machine_supermicrox11_bmc_class_init(ObjectClass *oc,
-> +                                                        void *data)
-> +{
-> +    MachineClass *mc =3D MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->desc       =3D "Supermicro X11 BMC (ARM926EJ-S)";
-> +    amc->soc_name  =3D "ast2400-a1";
-> +    amc->hw_strap1 =3D SUPERMICROX11_BMC_HW_STRAP1;
-> +    amc->fmc_model =3D "mx25l25635e";
-> +    amc->spi_model =3D "mx25l25635e";
-> +    amc->num_cs    =3D 1;
-> +    amc->macs_mask =3D ASPEED_MAC0_ON | ASPEED_MAC1_ON;
-> +    amc->i2c_init  =3D palmetto_bmc_i2c_init;
-> +    mc->default_ram_size =3D 256 * MiB;
-> +}
-> +
->  static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void =
-*data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> @@ -731,6 +762,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
->          .name          =3D MACHINE_TYPE_NAME("palmetto-bmc"),
->          .parent        =3D TYPE_ASPEED_MACHINE,
->          .class_init    =3D aspeed_machine_palmetto_class_init,
-> +    }, {
-> +        .name          =3D MACHINE_TYPE_NAME("supermicrox11-bmc"),
-> +        .parent        =3D TYPE_ASPEED_MACHINE,
-> +        .class_init    =3D aspeed_machine_supermicrox11_bmc_class_init,
->      }, {
->          .name          =3D MACHINE_TYPE_NAME("ast2500-evb"),
->          .parent        =3D TYPE_ASPEED_MACHINE,
+> -
+>  /*
+>   * Initialize the custom address spaces for DMAs
+>   */
 > --
 > 2.25.4
 >

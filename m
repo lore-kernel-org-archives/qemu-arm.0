@@ -1,93 +1,115 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1637475lfy;
-        Thu, 6 Aug 2020 06:31:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJybM2avA00ZbB6Nzw1RW6Wfr+z0gLx2Rkj9mzHxdLl4RpRdZbvnAaomSituKfgyO3YSbNOV
-X-Received: by 2002:a25:aa89:: with SMTP id t9mr13501037ybi.313.1596720718845;
-        Thu, 06 Aug 2020 06:31:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596720718; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1638690lfy;
+        Thu, 6 Aug 2020 06:33:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy8bFXLHA4JnJCA9huWbg6/OlOFAAwtb6G7Fx67aFFKaIaHZolB4IQ8cCSYaLgXUn0O00rO
+X-Received: by 2002:a25:1455:: with SMTP id 82mr13276031ybu.274.1596720794610;
+        Thu, 06 Aug 2020 06:33:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596720794; cv=none;
         d=google.com; s=arc-20160816;
-        b=LdlXO5PqDMKymvuTQ2wYM25yuDUIrotKVjUedUWfHp1DYMkqzMRVzkdBJJtTry4Fw+
-         vHoOzYurPGSAKw7oSk69Ojlxoy9CYzu7C8ndKiW5J5/kF7Q5y7AdBDqLJ6i1/AzdbXSD
-         THDRbto50yxRX58GX1X8co83Tqt8DcMUBPGo/KtxqspVn42szQAPi+dAKUDt26GMerrx
-         kmuB4zh40YA2eSf2z/PfzWk1nQ2jVjr+sJU4+lpMIUcHoxnUEiY4EaHm2UvkrF/Yoc2N
-         0sIWbm816mjFjqkx5Kl7CCFQhrV9ZMf+xAQN62O+4hOe6TMmloEl/plJvqnj6C9F30JO
-         Nn1g==
+        b=ImARCMHoMRs8VZAOq/uCmXVZmJRQbLo7CqOQkYQqP+EKumeNcZqqVTyCQivKLISiqi
+         C+rKfdzHjjNohtnS8lNigqZPK4So4IQCq0aYZBFWYRYztnw2eNNQgWOk1AzRPXl2aXQ1
+         stKQEsi24dTORvXx0Bc+8N4JqrcJsTLcpOCdbwTRXeYjdCX/sI1Akw0xl1qCkJSH7/gn
+         qUklWwkwb82KbDGZW78t+0iKAK713cgCXzCAFz/0AflGuns48rJgQ6fFtwHnUsceHC5x
+         IHzm+Qs2zpT0p1b9x1Es64tYhMoiBc3IVF3mnypj/dPjM0TGHD4fBmBoFU06LZqVji+w
+         VDBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=BMnkuWUkIcuc0dwTECROHiW6nNRsPQZrvRjUgly8S1k=;
-        b=G0gxbpq2b60ZEK2Gkyfxlhd8AyyClsKcwcsgEzcKovPjHRsxCS/6oOmEfZ0HnUJOpT
-         NCjc/k6LcgqLhQuDkqrxbMxmEBNxVJj3YI6PBckOsT55Y14j8p/8IrUy5n6DiXSJJ9zy
-         3VSg6+YjBMv2BFB439vkoTyETgeR7CJoTCOkgJHYctnbIMKMfMRMIsswCm1S7QJEKzPJ
-         vgn+ior6FLbWeRfnKBeLbAKXClLodcrgey2H7N2nSkExi3143QlEy/mHcY3hveMlgjUA
-         987DwAqX3EqgLmfH/nWWpGKVnXMzXDEmQ4CHGLK2LTJEVf/URWXCSWKVTy5HDlJpaIGg
-         Y5Ug==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=9aaer6B+l6r0/2j30kyoaXbrV/oJL88UAt/4vG+WnQg=;
+        b=au6DY/Q95JJ1oTz9w/ayGW0c62q4BeXT2oty9KDi7TF38VhinCoPav3mw3+dCZVPLp
+         5wriBMB3xa65yMV/NczRzEdDYa9ylxbFTo20osBzV/D0jnTvCbgxu2GjVEOFJS8IUgJu
+         xEaFyVbOIDag2B8HQZTNxNqS7siR74AaPSxVdxmh1R/kEOvuEc4WB4F5Hjzm+ntCgcA5
+         Q9YGkeYzgnuvcsw5o3+EzJxfryVY1HNVBo98ET5RPZSX5Aw20nJ4Lr8E0bPHtvqYXRXc
+         KPiw2otiapPi98ckQ4NLBPHqsGooQYutyYrhqLG696d7ZdTfjb07fMk/QIG0+2RnynfG
+         hSSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ukR4yQGB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v26si5129947ybd.311.2020.08.06.06.31.58
+        by mx.google.com with ESMTPS id q4si4256925ybo.416.2020.08.06.06.33.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 06:31:58 -0700 (PDT)
+        Thu, 06 Aug 2020 06:33:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:40040 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ukR4yQGB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:45402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3fzy-0004Y4-6e
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 09:31:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49798)
+	id 1k3g1B-0006k1-OR
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 09:33:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51438)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k3ftB-00008T-DD; Thu, 06 Aug 2020 09:24:58 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:57915)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k3ft8-0001KF-CR; Thu, 06 Aug 2020 09:24:56 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.4.11])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 6719C545FD8B;
- Thu,  6 Aug 2020 15:24:39 +0200 (CEST)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Thu, 6 Aug 2020
- 15:24:38 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G0030afb1f0f-01aa-4101-8f54-416872ade5fd,
- 96EDEDBD7B7627A0205C40E9E2B74F8D513A659B) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH for-5.2 00/19] aspeed: mostly cleanups and some extensions
-To: Peter Maydell <peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k3g0S-0005X4-RX; Thu, 06 Aug 2020 09:32:28 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53270)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k3g0R-0002Iu-38; Thu, 06 Aug 2020 09:32:28 -0400
+Received: by mail-wm1-x343.google.com with SMTP id g8so8867549wmk.3;
+ Thu, 06 Aug 2020 06:32:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=9aaer6B+l6r0/2j30kyoaXbrV/oJL88UAt/4vG+WnQg=;
+ b=ukR4yQGBmgzWl28her50cmlzvRqE9MtjqnIdLyS1eg/2Rez9+IDRwn97SnFD8xEQhX
+ NpbnNozNBI/dBv+0mJYnK6poUOaZfvrIWPTLy2qwZJov6BlaBL7Ddeh0n+DEoDSklOut
+ hwz2IF7LC7y8Mx11PxhRgFxPQ5IgRcMFZgnFMFLf1qdVCZ3e4HLY68ZefbDwNZxg21r6
+ n+PXX9Zsh5rA/kYGWLF7ca68YDeJnYRuIMfnu1uRXS08MFsotrr2ZaEBikFbvD2JjjeP
+ UTAZB324CtNo7EPwbzPVv5BVwMqkpF3bxjcyx6SkBx/8+ZwXInuQ1WdrhjSXqhNktnyj
+ 9dFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9aaer6B+l6r0/2j30kyoaXbrV/oJL88UAt/4vG+WnQg=;
+ b=FeutYJlWWs6fLyYcyG0lYsHvaIe933RPK2vSsncJ9zbL5D1c+rK7i3kG/ch+UU4fFU
+ UOFliI2U5bVIMhX8X26p1YEPUO7jzim/SZ8Gc82AqUphoUmwMw1LPCgPX1oENuKBkZr+
+ R7dWFhcCmmBfYLJz/TLf16e4JT85+t4YRr9JNLl9lyI5TyN8XAeyRtJpvYLRjN/1fSyA
+ YMxJF4zvXLKSvzeGXNXuc3qxr9jLre9AZCuGpdqb17rn+ubCxVylqMar/05MdibiM6Zt
+ 3PQ/yS/00KoOXS/9RsR9jHLPYvwL41I4yb3bvmBIhy+7GHfXWZALpNPgSOvxfhyW3aUC
+ eOUQ==
+X-Gm-Message-State: AOAM53296c47tcDThasLQGsLF/naEQVtIxR6MRVjXZewTn8zAzZwDCOh
+ MwqKM2PBfyctPmKyu7argTE=
+X-Received: by 2002:a1c:49c6:: with SMTP id w189mr7620397wma.97.1596720744960; 
+ Thu, 06 Aug 2020 06:32:24 -0700 (PDT)
+Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id d14sm6664783wre.44.2020.08.06.06.32.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Aug 2020 06:32:24 -0700 (PDT)
+Subject: Re: [PATCH for-5.2 04/19] aspeed/scu: Fix valid access size on AST2400
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20200806132106.747414-1-clg@kaod.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <c5e38163-5ad0-1965-df7e-7543be284135@kaod.org>
-Date: Thu, 6 Aug 2020 15:24:38 +0200
+ <20200806132106.747414-5-clg@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <4a41f234-ab81-d078-0fcd-c1b20fceb1e9@amsat.org>
+Date: Thu, 6 Aug 2020 15:32:23 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200806132106.747414-1-clg@kaod.org>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20200806132106.747414-5-clg@kaod.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 71edc469-bf57-4389-b55b-986c946b188c
-X-Ovh-Tracer-Id: 330733099095919523
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkedtgdeiiecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleelnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgh
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.mo804.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 09:21:12
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -100,66 +122,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, erik-smit <erik.lucas.smit@gmail.com>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FT280Cgdn3Oy
+X-TUID: 0XuKHMHx6dr7
 
 On 8/6/20 3:20 PM, Cédric Le Goater wrote:
-> Hello,
-> 
-> Various fixes improving the support of Aspeed machines.
-> 
-> Thanks,
-> 
-> C.
-> 
-> Cédric Le Goater (16):
->   m25p80: Return the JEDEC ID twice for mx25l25635e
->   m25p80: Add support for mx25l25635f
->   m25p80: Add support for n25q512ax3
->   aspeed/scu: Fix valid access size on AST2400
->   aspeed/smc: Fix MemoryRegionOps definition
->   aspeed/smc: Fix max_slaves of the legacy SMC device
->   aspeed/sdhci: Fix reset sequence
->   ftgmac100: Fix registers that can be read
->   ftgmac100: Fix interrupt status "Packet transmitted on ethernet"
->   ftgmac100: Fix interrupt status "Packet moved to RX FIFO"
->   ftgmac100: Change interrupt status when a DMA error occurs
->   ftgmac100: Check for invalid len and address before doing a DMA
->     transfer
->   ftgmac100: Fix integer overflow in ftgmac100_do_tx()
->   ftgmac100: Improve software reset
->   aspeed/sdmc: Simplify calculation of RAM bits
->   aspeed/smc: Open AHB window of the second chip of the AST2600 FMC
->     controller
-> 
-> Joel Stanley (2):
->   aspeed/sdmc: Perform memory training
->   aspeed/sdmc: Allow writes to unprotected registers
-> 
-> erik-smit (1):
->   hw/arm/aspeed: Add board model for Supermicro X11 BMC
+> The read access size of the SCU registers can be 1/2/4 bytes and write
+> is 4 bytes. Set the min access size to 1 byte to cover both read and
+> write operations on the AST2400 but keep the min access size of the
+> other SoCs to 4 bytes as this is an unusual access size.
 
-Peter,
-
-I saw that you just merged that one. I did some minor changes in 
-the commit log. Nothing very important.
-
-Thanks,
-
-C.
+From your description it seems you need to implement .valid.accepts().
 
 > 
->  include/hw/misc/aspeed_sdmc.h |  13 +++-
->  hw/arm/aspeed.c               |  35 ++++++++++
->  hw/block/m25p80.c             |   4 +-
->  hw/misc/aspeed_scu.c          |   9 +--
->  hw/misc/aspeed_sdmc.c         | 125 +++++++++++++++++++---------------
->  hw/net/ftgmac100.c            |  45 ++++++++----
->  hw/sd/aspeed_sdhci.c          |  10 ++-
->  hw/ssi/aspeed_smc.c           |   6 +-
->  8 files changed, 167 insertions(+), 80 deletions(-)
+> This fixes support for some old firmware doing 2 bytes reads on the
+> AST2400 SoC.
+> 
+> Reported-by: erik-smit <erik.lucas.smit@gmail.com>
+> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> ---
+>  hw/misc/aspeed_scu.c | 7 ++++---
+>  1 file changed, 4 insertions(+), 3 deletions(-)
+> 
+> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> index ec4fef900e27..764222404bef 100644
+> --- a/hw/misc/aspeed_scu.c
+> +++ b/hw/misc/aspeed_scu.c
+> @@ -328,9 +328,10 @@ static const MemoryRegionOps aspeed_ast2400_scu_ops = {
+>      .read = aspeed_scu_read,
+>      .write = aspeed_ast2400_scu_write,
+>      .endianness = DEVICE_LITTLE_ENDIAN,
+> -    .valid.min_access_size = 4,
+> -    .valid.max_access_size = 4,
+> -    .valid.unaligned = false,
+> +    .valid = {
+> +        .min_access_size = 1,
+> +        .max_access_size = 4,
+> +    },
+>  };
+>  
+>  static const MemoryRegionOps aspeed_ast2500_scu_ops = {
 > 
 

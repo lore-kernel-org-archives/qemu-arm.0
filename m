@@ -1,67 +1,66 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1629315lfy;
-        Thu, 6 Aug 2020 06:23:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwCmwUQxA1VXC/oauBRNz3m/3/pG57Mzj/apT1laXAsXL0XqMHzS+EBSevmfJvYJc0h3VqV
-X-Received: by 2002:a5b:44b:: with SMTP id s11mr12338758ybp.342.1596720190277;
-        Thu, 06 Aug 2020 06:23:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596720190; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1629681lfy;
+        Thu, 6 Aug 2020 06:23:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxGP5by1ke8/gg6erm/1dLQrVwKYlSuouYWGXzRv9g50/eGQl/R4V8kBMMJHMVw61YU8TLB
+X-Received: by 2002:a25:80d3:: with SMTP id c19mr12415300ybm.13.1596720218932;
+        Thu, 06 Aug 2020 06:23:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596720218; cv=none;
         d=google.com; s=arc-20160816;
-        b=TULAgfhiIP1qax39M0Tm7fIR+rREPB5h7yUxiAMAd6e+3WiI+GU/iywbDHI9suiXdY
-         IXmpEio3Yt5hvEWrODNh55PXWBUnPqbfVOR14LuUswuZ09uu7nyfUJ1dTrpJbSp5AwcB
-         RRp4+HtzTEWYoxFGcoVW6IoRzVia44MadYQXFGrUJ4RdZDblTq82VVzibRzVP4clfP2L
-         eb87QJc2HwyEtKBGZEKk6UiE1nD4CZn/mrIDv7lqihnFvSzokvSmc5VIqqDSClgVotRS
-         QfNClt9ZPvR9Xx8iVxMZcMR5Z/nE7R3zhgyMcIQftcVVa8lrYCZxW7GVAIaPQ7c7DR2+
-         e/1g==
+        b=mvyW9+g7Dm3ebscVelHOeje2sOZG7nDcL5xbtCTak2X/gMzY1QDKMRzVzu85PEt86Y
+         AIButOT7+5qcJxOr1FCl+AZB3cqsNiJjWRHny9mJY0ixw/qYxxKHCBIvkE0vtF811mPS
+         Un424Jh+pm5EYMNiJeE4z+zIXq4DZXGR46ph6f59wv0AJoCf8CmuooJ3a3ykTpoUf8ol
+         0R9aZqcoEDYqZCEloTkT6g8ik2j3tjAprMmQ+MfwtEtdhRtlSP/nD2ioTR5PPI43s0s1
+         7xVIPdozlCNpJ9IR+q60gIsDtnpxIxXdIclxzwCS22F2PwAsnL9YemOSwcaDK8i7IANA
+         vHHw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=mVx781DjLJ4jZWiL63+R/29rOiqsSNwdjwVTRn/mQmw=;
-        b=oB6elCH2k3BMdtgl1yJ6v51QNoGNByUahseS2VoPRjUs82pY0p8OOzb8Dq8MdINAW5
-         fIsBDMFRhjrdEwiEPs2J42QS2IJpt9/ovehHzKAL8iBDCHweyW3SVpw43CPaGIvO9YoF
-         W7xTUcuJ57I42eYfsZVB5YMrr6ITF/6yYHiXnoaiw7PSUOOaWsK5OGYlF9TZ073s6u4P
-         iBL7FtwqAVCIVDqy2BHwL541UZISVwi4vZ0VUIxEeZ2w7tUS/WhPr9IWktdgRhbp55wz
-         enGazeeV9UeYU2Rle1QnHysC9AZDRnJfMKWKOZAWG5ff7E7SvCY0H7lWtADAQXVw0tf2
-         DWWA==
+        bh=ZDb6YLSMm8CB2CFVQskGS5opdaOTwSRy+PMI7Sj32A0=;
+        b=cIrgbOYr9KSiFBDZiyX3A52bcihRFE/bbRnHEOaCMydt5cQjMMJJhW6UOUapFXliSZ
+         N9ZGH7+5GiPuOk20ZRR4MX3OpMoOy5JPNmsd3LBbAI65sZCnKhzIlDo9t/XYoGFK7BaT
+         Ezl+PJDBmgwGdsC6Tv3YODEAkN6gqSp9i/Gy4aigh8stmDIS0FOc8pHwP7M4UGyLIHYr
+         g7tfhAz4MLqFy1OQLPqi2MTm6cU0TeuNo05fLfrno9vVuiv5WQR1y95DiNL3yLGoNSC0
+         RQ/B3hS+oX0EZ1J3pPo6NwYQLxHcfGHlaU7iSlDUgfzVykOoemrzCjB4IJEAHirde0dg
+         tTug==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t61si4999986ybi.286.2020.08.06.06.23.10
+        by mx.google.com with ESMTPS id r189si4802769ybr.284.2020.08.06.06.23.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 06:23:10 -0700 (PDT)
+        Thu, 06 Aug 2020 06:23:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57066 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60086 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3frR-0004xf-HD
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 09:23:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48772)
+	id 1k3fru-0006A3-8g
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 09:23:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48968)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k3fpc-0001EQ-9b; Thu, 06 Aug 2020 09:21:16 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:41575)
+ id 1k3fpi-0001R2-6v; Thu, 06 Aug 2020 09:21:22 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:59591)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k3fpY-0000tW-L4; Thu, 06 Aug 2020 09:21:16 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.52])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id DCA094DAE2B2;
- Thu,  6 Aug 2020 15:21:09 +0200 (CEST)
+ id 1k3fpe-0000vI-0Y; Thu, 06 Aug 2020 09:21:21 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.26])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 025184DAE2D2;
+ Thu,  6 Aug 2020 15:21:16 +0200 (CEST)
 Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Thu, 6 Aug 2020
- 15:21:08 +0200
+ 15:21:15 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005a4ade73f-82dd-4ad1-9322-703efb26bdf8,
+ (GARM-103G0059b04b038-410e-4e46-9012-a74034209712,
  96EDEDBD7B7627A0205C40E9E2B74F8D513A659B) smtp.auth=clg@kaod.org
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH for-5.2 01/19] m25p80: Return the JEDEC ID twice for
- mx25l25635e
-Date: Thu, 6 Aug 2020 15:20:48 +0200
-Message-ID: <20200806132106.747414-2-clg@kaod.org>
+Subject: [PATCH for-5.2 16/19] aspeed/sdmc: Perform memory training
+Date: Thu, 6 Aug 2020 15:21:03 +0200
+Message-ID: <20200806132106.747414-17-clg@kaod.org>
 X-Mailer: git-send-email 2.25.4
 In-Reply-To: <20200806132106.747414-1-clg@kaod.org>
 References: <20200806132106.747414-1-clg@kaod.org>
@@ -71,11 +70,11 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.103]
 X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 8c7136b9-3ad0-40cd-a52e-a8cbaa954d71
-X-Ovh-Tracer-Id: 271623354419874665
+X-Ovh-Tracer-GUID: dd7b190d-f999-4629-a625-a24f5cbec8b5
+X-Ovh-Tracer-Id: 273312205742967590
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkedtgdeihecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkedtgdeihecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofgjfhggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeehheefgeejiedtffefteejudevjeeufeeugfdtfeeuleeuteevleeihffhgfdtleenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtfeenucevlhhushhtvghrufhiiigvpedunecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
 Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
  helo=smtpout1.mo529.mail-out.ovh.net
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 09:21:10
@@ -98,40 +97,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- erik-smit <erik.lucas.smit@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AL8NspgKX10B
+X-TUID: U/RuVX0fr6xB
 
-The mx25l25635e returns the JEDEC ID twice when issuing a RDID command :
+From: Joel Stanley <joel@jms.id.au>
 
-  [    2.512027] aspeed-smc 1e630000.spi: reading JEDEC ID C2:20:19:C2:20:19
+This allows qemu to run the "normal" power on reset boot path through
+u-boot, where the DDR is trained.
 
-This can break some firmware testing for this condition on the
-supermicrox11-bmc machine.
+An enhancement would be to have the SCU bit stick across qemu reboots,
+but be unset on initial boot.
 
-Reported-by: erik-smit <erik.lucas.smit@gmail.com>
+Proper modelling would be to discard all writes to the phy setting regs
+at offset 0x100 - 0x400 and to model the phy status regs at offset
+0x400.
+
+The status regs model would only need to account for offets 0x00,
+0x50, 0x68 and 0x7c.
+
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+[ clg: checkpatch fixes ]
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/block/m25p80.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/misc/aspeed_sdmc.h | 13 ++++++++++++-
+ hw/misc/aspeed_scu.c          |  2 +-
+ hw/misc/aspeed_sdmc.c         | 19 +++++++++++++++++--
+ 3 files changed, 30 insertions(+), 4 deletions(-)
 
-diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-index 82270884416e..605ff55c6756 100644
---- a/hw/block/m25p80.c
-+++ b/hw/block/m25p80.c
-@@ -217,7 +217,7 @@ static const FlashPartInfo known_devices[] = {
-     { INFO("mx25l6405d",  0xc22017,      0,  64 << 10, 128, 0) },
-     { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
-     { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
--    { INFO("mx25l25635e", 0xc22019,      0,  64 << 10, 512, 0) },
-+    { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0) },
-     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
-     { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
-     { INFO("mx66u1g45g",  0xc2253b,      0,  64 << 10, 2048, ER_4K | ER_32K) },
+diff --git a/include/hw/misc/aspeed_sdmc.h b/include/hw/misc/aspeed_sdmc.h
+index cea1e67fe365..c6226957dd3d 100644
+--- a/include/hw/misc/aspeed_sdmc.h
++++ b/include/hw/misc/aspeed_sdmc.h
+@@ -17,7 +17,18 @@
+ #define TYPE_ASPEED_2500_SDMC TYPE_ASPEED_SDMC "-ast2500"
+ #define TYPE_ASPEED_2600_SDMC TYPE_ASPEED_SDMC "-ast2600"
+ 
+-#define ASPEED_SDMC_NR_REGS (0x174 >> 2)
++/*
++ * SDMC has 174 documented registers. In addition the u-boot device tree
++ * describes the following regions:
++ *  - PHY status regs at offset 0x400, length 0x200
++ *  - PHY setting regs at offset 0x100, length 0x300
++ *
++ * There are two sets of MRS (Mode Registers) configuration in ast2600 memory
++ * system: one is in the SDRAM MC (memory controller) which is used in run
++ * time, and the other is in the DDR-PHY IP which is used during DDR-PHY
++ * training.
++ */
++#define ASPEED_SDMC_NR_REGS (0x500 >> 2)
+ 
+ typedef struct AspeedSDMCState {
+     /*< private >*/
+diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+index 764222404bef..dc6dd87c22f4 100644
+--- a/hw/misc/aspeed_scu.c
++++ b/hw/misc/aspeed_scu.c
+@@ -656,7 +656,7 @@ static const uint32_t ast2600_a1_resets[ASPEED_AST2600_SCU_NR_REGS] = {
+     [AST2600_SYS_RST_CTRL2]     = 0xFFFFFFFC,
+     [AST2600_CLK_STOP_CTRL]     = 0xFFFF7F8A,
+     [AST2600_CLK_STOP_CTRL2]    = 0xFFF0FFF0,
+-    [AST2600_SDRAM_HANDSHAKE]   = 0x00000040,  /* SoC completed DRAM init */
++    [AST2600_SDRAM_HANDSHAKE]   = 0x00000000,
+     [AST2600_HPLL_PARAM]        = 0x1000405F,
+     [AST2600_CHIP_ID0]          = 0x1234ABCD,
+     [AST2600_CHIP_ID1]          = 0x88884444,
+diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+index 855848b7d23a..ff2809a09965 100644
+--- a/hw/misc/aspeed_sdmc.c
++++ b/hw/misc/aspeed_sdmc.c
+@@ -113,7 +113,7 @@ static uint64_t aspeed_sdmc_read(void *opaque, hwaddr addr, unsigned size)
+     if (addr >= ARRAY_SIZE(s->regs)) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Out-of-bounds read at offset 0x%" HWADDR_PRIx "\n",
+-                      __func__, addr);
++                      __func__, addr * 4);
+         return 0;
+     }
+ 
+@@ -206,6 +206,19 @@ static void aspeed_sdmc_reset(DeviceState *dev)
+ 
+     /* Set ram size bit and defaults values */
+     s->regs[R_CONF] = asc->compute_conf(s, 0);
++
++    /*
++     * PHY status:
++     *  - set phy status ok (set bit 1)
++     *  - initial PVT calibration ok (clear bit 3)
++     *  - runtime calibration ok (clear bit 5)
++     */
++    s->regs[0x100] = BIT(1);
++
++    /* PHY eye window: set all as passing */
++    s->regs[0x100 | (0x68 / 4)] = 0xff;
++    s->regs[0x100 | (0x7c / 4)] = 0xff;
++    s->regs[0x100 | (0x50 / 4)] = 0xfffffff;
+ }
+ 
+ static void aspeed_sdmc_get_ram_size(Object *obj, Visitor *v, const char *name,
+@@ -443,7 +456,9 @@ static void aspeed_2600_sdmc_write(AspeedSDMCState *s, uint32_t reg,
+     }
+ 
+     if (reg != R_PROT && s->regs[R_PROT] == PROT_SOFTLOCKED) {
+-        qemu_log_mask(LOG_GUEST_ERROR, "%s: SDMC is locked!\n", __func__);
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: SDMC is locked! (write to MCR%02x blocked)\n",
++                      __func__, reg * 4);
+         return;
+     }
+ 
 -- 
 2.25.4
 

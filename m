@@ -1,313 +1,139 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1956505lfy;
-        Thu, 6 Aug 2020 12:36:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwJzOY9QZEwjzw0BKHGyB07H/B0FaiyS1ABEHRn5uyXGv9n+wbiAwEBGIffjWVmDdVuNCf9
-X-Received: by 2002:a17:906:4aca:: with SMTP id u10mr5878557ejt.320.1596742560055;
-        Thu, 06 Aug 2020 12:36:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596742560; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2020450lfy;
+        Thu, 6 Aug 2020 14:08:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhuabwFr2Ke5c7DBOZZTbCHPHUqH6YjU/vFHQW7ECs+BprcRxiHrr99FeFIfZ4j8ZbOGko
+X-Received: by 2002:a25:59c5:: with SMTP id n188mr15813439ybb.489.1596748123435;
+        Thu, 06 Aug 2020 14:08:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596748123; cv=none;
         d=google.com; s=arc-20160816;
-        b=hRuVMzSttrxJcfvII9HIKQskVcais6SMR7NqcZAQYwF+QAXTQLVVsoyvDhWf1rkNJ0
-         7TIIXDFt9+PLG2G7nlAm3qbqRTHr1ifzR52PyY/Q/CBD3YJGwdYW+5+RoW5zkxtRhgiw
-         dCD6UmHDyzWB8J7MCY+ZoHojUXddFp6PUUQNc92X0IlKqbbBsEWFDlRTxcAiX1qVBMJJ
-         lInzI+SszUEVQaPWOS6cYGh62DoZh2fXggDypwtF+oGq/cH6zj4wlTtE4EaLwc/85v0u
-         Qi817N8LgXN5mIYRXMExoVqJAoA8R0+Y+WnQvfzkP3rbEN4mCe85SofUM3Jp6vgephcQ
-         x0XQ==
+        b=iLhIja07LVniRdPw4y6TnyUCoOzJL1Aewep2f9N9RzkyMAVKWrOxN0cil7ee2zBpLw
+         vSypA7Q6987LZjPtBmgMe+4bhXNXash9RY9waNQxq8Surz2ltfgJfKmNC3KGdJQXc8dQ
+         1MYYIkV6mdRy2I6pK/thIDhZNBgFk9cMnFc3pfsgINKqv6N4G+bp1IbsKtpputTLM6of
+         6XmjQdo2CS7XdqEojYA2CFgH2JWLPng43++OVyL6wVezteNHJg1SCHQ31PUtld64fOBK
+         1bPhBPeIT2yVIkjdL+WZyMJYvLtNhlxsTWxzZDux2s+sWukb5ZW4l5NpmM2UlXIEa7va
+         hDuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-disposition:mime-version:message-id:subject:cc:to:from:date
-         :dkim-signature;
-        bh=61dXXeIZyWh05cG6QSGRLvDM75uMqy1Ob2hy0stJ0MA=;
-        b=fUDFeYB+QbIsaksYgzTlFTjk096nb3jquX/ocX8lJ+/hDWyK93Lc33qe3+nbQmgGkF
-         EphDH7WOrFGuHB7tzFK38HhMK68rXbkj8M3WkbOmBz+eR5duFgAjm4pw3r0T4u2oSROe
-         pXD1RzVA4nVqhmOv189oKR/ZSvWdY7Cd03P2Z5NENWplnLjgqGFKfrBSW6hQpGiXJQBP
-         ULAxRQLaDJMGaltROS5EaI+qR4yMjGEbdwnwMTRr0J6VFZC5Yfi6kKyMS4ygXZYGnA+Q
-         Zxj/NaNEcBUM9ImpHvqctJicc6/6KdDONyRxnIrO5GWhwn0SxTXyHo75oOCvecsbwyGU
-         Ia8w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=NQqHrEQAf0O1U1Tu9OxX2PHBqUeD13E4LA1zBf4f3+w=;
+        b=i3xcwvbEciSBh3M8xAflsuKYlzCgazwvDTOi6FGyI42nKE1AkOwBjdoaouQbJkbOW7
+         XbFTQpalrLioVuUEJz+chgfze8//vjO+avWW4d+mzAaPTC5gfnEcqqi57/yoaa6B+sVa
+         SbaXTXfkoxhPla4n80eT2MR1jCJYohY6aQZGivVPwulFGE+3nI6NCPd7J335M9R4wmch
+         jxg7w9OcfhanetiWB6grsQRMNB/Qt98AWqUHBtxfV5ID0iM/cl5HUT2vNVMTP8FyNvL3
+         YqJ3xW5HMGT5IIXRD7wkaAkC5PzRkcF4HqHqwpaWYz6D1xK8+f7HMPdao0bWrZjYJFUA
+         K8fg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R+J18Z8a;
-       spf=pass (google.com: domain of crosa@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <crosa@redhat.com>
-Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
-        by mx.google.com with ESMTPS id r17si4504454eda.525.2020.08.06.12.35.59
+       dkim=pass header.i=@linaro.org header.s=google header.b="T/L8gJXe";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o186si5594821ybo.358.2020.08.06.14.08.43
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 06 Aug 2020 12:36:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 06 Aug 2020 14:08:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=R+J18Z8a;
-       spf=pass (google.com: domain of crosa@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=crosa@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1596742559;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type;
-	bh=61dXXeIZyWh05cG6QSGRLvDM75uMqy1Ob2hy0stJ0MA=;
-	b=R+J18Z8a3s1U8jChetZ1kvsOrNpU7k+tJqn9tGkEn0q9nAqQhlECeIJ5fwYhzEVwI2scAd
-	nx1r5SJiccdKdPxCcWloSmgwmrvt4jB1jvrJVNh2/PRmOVqguq8BYdpx9ne0L3Tyxeyqmo
-	z5WcftKl205+8c32LoFczrJ3LuklFgg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-419-p2oAekvDM7uNDCV40wZFDA-1; Thu, 06 Aug 2020 15:35:56 -0400
-X-MC-Unique: p2oAekvDM7uNDCV40wZFDA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AB9AF800688;
-	Thu,  6 Aug 2020 19:35:55 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-112-202.rdu2.redhat.com [10.10.112.202])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 0C8B01001B2B;
-	Thu,  6 Aug 2020 19:35:54 +0000 (UTC)
-Date: Thu, 6 Aug 2020 15:35:53 -0400
-From: Cleber Rosa <crosa@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>
-Subject: Acceptance Test BootLinuxAarch64.test_virt_tcg execution times
-Message-ID: <20200806193553.GA1463846@localhost.localdomain>
+       dkim=pass header.i=@linaro.org header.s=google header.b="T/L8gJXe";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38224 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k3n7y-0005Lz-S3
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 17:08:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40774)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1k3n7r-0005Ln-Le
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2020 17:08:35 -0400
+Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:42628)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1k3n7q-0004Hh-3g
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2020 17:08:35 -0400
+Received: by mail-pl1-x643.google.com with SMTP id q17so9993pls.9
+ for <qemu-arm@nongnu.org>; Thu, 06 Aug 2020 14:08:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=NQqHrEQAf0O1U1Tu9OxX2PHBqUeD13E4LA1zBf4f3+w=;
+ b=T/L8gJXeUqHRiryEWxm5EFvd+vBJUPaF+DLEkzMcuB+x9fxvjaCsaCf8ULRDnggfC3
+ F5OzMgh+DTnvla6/xmF2wxuwo3MLl7w7wQRau7wCY5RHnYoz8G7mEIS2gu040T/rTyO7
+ Ar86pWEl7ctLRxB27bE+fcfM7JNhUZHst007iUBopVDpP2Y1suCtj6UH+6O14/O6iZbp
+ uLMneAtOh0opak8I9OW6qvWK2pIgpC7og2uV1xxfG20HVJGA6hN7mUz1Ingf8FlfAiFi
+ okjN6SSMzxBstm9ool3EZORj2+cM3f1oL0AufY7cGK/llRTuQq/YhgPwMrdnMK7BCIiG
+ Aykw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=NQqHrEQAf0O1U1Tu9OxX2PHBqUeD13E4LA1zBf4f3+w=;
+ b=U2s1g7dhcFoymcI2s2Vx9+P0iwkCyjNdq3CIvlfP6UFXTTNcBkPWspXCyo2HlKdn6W
+ XWvs1s0zR4dWmOmGa3mIyGOGX7fY85Ve8FXQMQ9PyOaBgnveadwWkgl1fVFylahQjsia
+ KDrQItIaw+9NGqpUTa4nlaaUlfXE2ZziZl/fI9nvJVcXfoBAVeJ6G8hiRgKrshcMSS58
+ ZIwa5jKJsJCQdGQ8+18IxHlqjOBlc4WNoqAvQt7qsCPWL5Xm5daCEp1+0uGajSCLM72k
+ 7Ms9Xmv+lt2v834WJDoE0/KK+hmUdDvDe+imMTo+56GKuBXlj6pVKhFaBneqWNsnaVed
+ 8ZxQ==
+X-Gm-Message-State: AOAM530UuiqHFIaCqIhdC519AtMKdB3YdGak8x2SyZW2XVcWtTECLhk1
+ u6AC1yhagE/ULmvxjoRavdTz4A==
+X-Received: by 2002:a17:902:7d8b:: with SMTP id
+ a11mr8894886plm.342.1596748111596; 
+ Thu, 06 Aug 2020 14:08:31 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id x20sm8277193pgh.93.2020.08.06.14.08.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Aug 2020 14:08:30 -0700 (PDT)
+Subject: Re: [PATCH 0/4] Refactor get_fpstatus_ptr() ready for AArch32 fp16
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200806104453.30393-1-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <130e85bb-2dfc-b983-bbd0-7f674e169c53@linaro.org>
+Date: Thu, 6 Aug 2020 14:08:28 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="nFreZHaLTZJo0R7j"
-Content-Disposition: inline
-X-TUID: M8p5m6G+qqJ0
+In-Reply-To: <20200806104453.30393-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x643.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fcGqDjQBDues
 
---nFreZHaLTZJo0R7j
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 8/6/20 3:44 AM, Peter Maydell wrote:
+> Peter Maydell (4):
+>   target/arm: Replace A64 get_fpstatus_ptr() with generic fpstatus_ptr()
+>   target/arm: Make A32/T32 use new fpstatus_ptr() API
+>   target/arm: Implement FPST_STD_F16 fpstatus
+>   target/arm: Use correct FPST for VCMLA, VCADD on fp16
 
-TL;DR: This is a followup from an IRC chat about the
-tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg test
-taking many orders of magnitute longer than other acceptance (and even
-similar boot) tests.  I could not find an easy way for this specific
-test (aarch64+tcg) to have a significant execution time improvement.
-The best solution may be to filter out tests that are known to be
-slow, and create a specific "test job" that includes them.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Fisrt, if it's not clear, this specific test runs QEMU with TCG and
-boots a Fedora 31 "cloud image" and waits until the cloud-init agent
-notifies the test that the boot is over.
-
-Out of the four archtiectures tested with the same approach under
-"tests/acceptance/boot_linux.py", aarch64 was special, in the sense
-that many Linux "cloud images" got stuck very late in the boot
-process.  What seemed to be a disk activity within the guest that
-seemed to make the kernel drain its random number sources if my memory
-serves me right.  Giving the machine a RNG device fixed it.  This can
-still be verified Today if you comment the virtio-rng lines in the
-aarch64 test.
-
-So, even with the RNG device and the boot process not getting stuck, a
-lot of the test time is spent with QEMU actively using CPU time
-produced by the guest boot process.  This may or may not be the cause
-for the slowness.
-
-One approach to have a shorter test time, would be to reduce the
-things that happen during the guest boot process.  Choosing a minimal
-guest, such as CirrOS, would be an example of such a solution, but:
-
-* With less things happening during the guest boot, less things
-  get tested within QEMU;
-
-* CirrOS can not make use of the same boot cloud-init configuration
-  and boot verification the test currently uses;
-
-So that leaves other non-minimal Linux "cloud images" as options.  But
-still, the following things are required or nice to have:
-
-* Support for cloud-init;
-
-* Support for as many as possible architectures;
-
-* Wide user base;
-
-* Be thoroughly tested with this "boot_linux.py" test
-
-So in the end, I picked Fedora 31, which was available and behaved
-well for four different architectures with and without KVM. Today, I
-verified if switching distros would provide an "easy fix", but the
-results were negative.  Any ideas on how to improve the test execution
-times are appreciated.
-
-For the record, one of the ways we're trying to improve the overall
-test experience is to allow tests to run in parallel (expected to be
-fully supported on the upcoming version 81.0).
-
-For those interested, these are the numbers I got, and how I tested
-with other distros.  I'm using QEMU e1d322c405 with a vanilla
-configure under a x86_64 Fedora 32 host.
-
-Fedora 31 (baseline):
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-
-  $ make check-venv
-  $ ./tests/venv/bin/avocado run -t arch:aarch64,accel:tcg --keep-tmp on --=
- tests/acceptance/boot_linux.py{,,,,}
-  JOB ID     : 14802f9d5016a44d2937ed7b1fec63b2eaa06e89
-  JOB LOG    : /home/cleber/avocado/job-results/job-2020-08-06T13.19-14802f=
-9/job.log
-   (1/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (153.12 s)
-   (2/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (149.57 s)
-   (3/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (154.45 s)
-   (4/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (148.97 s)
-   (5/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (150.70 s)
-  RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | =
-CANCEL 0
-  JOB TIME   : 757.50 s
-
-Fedora 32:
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-
-1. Tweak version and image hash:
-
----
-diff --git a/tests/acceptance/boot_linux.py b/tests/acceptance/boot_linux.p=
-y
-index 0055dc7cee..44c62bd4a2 100644
---- a/tests/acceptance/boot_linux.py
-+++ b/tests/acceptance/boot_linux.py
-@@ -48,7 +48,7 @@ class BootLinuxBase(Test):
-             image_arch =3D 'ppc64le'
-         try:
-             boot =3D vmimage.get(
--                'fedora', arch=3Dimage_arch, version=3D'31',
-+                'fedora', arch=3Dimage_arch, version=3D'32',
-                 checksum=3Dself.chksum,
-                 algorithm=3D'sha256',
-                 cache_dir=3Dself.cache_dirs[0],
-@@ -160,7 +160,7 @@ class BootLinuxAarch64(BootLinux):
-     :avocado: tags=3Dmachine:gic-version=3D2
-     """
-=20
--    chksum =3D '1e18d9c0cf734940c4b5d5ec592facaed2af0ad0329383d5639c997fdf=
-16fe49'
-+    chksum =3D 'b367755c664a2d7a26955bbfff985855adfa2ca15e908baf15b4b176d6=
-8d3967'
-=20
-     def add_common_args(self):
-         self.vm.add_args('-bios',
----
-
-2. Download the image before the test:
-
-  $ ./tests/venv/bin/avocado vmimage get --distro=3Dfedora --arch aarch64 -=
--distro-version=3D32
-  The image was downloaded:
-  Provider Version Architecture File
-  fedora   32      aarch64      /tmp/data/cache/by_location/7049001631a4b2e=
-abf5766cc110e66d486e09821/Fedora-Cloud-Base-32-1.6.aarch64.qcow2
-
-3. Run the tests:
-
-  $ ./tests/venv/bin/avocado run -t arch:aarch64,accel:tcg --keep-tmp on --=
- tests/acceptance/boot_linux.py{,,,,}
-JOB ID     : 09e740a41dc400f9fcbb9253f613734597fe0efc
-JOB LOG    : /home/cleber/avocado/job-results/job-2020-08-06T13.53-09e740a/=
-job.log
- (1/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS =
-(162.06 s)
- (2/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS =
-(167.78 s)
- (3/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS =
-(166.98 s)
- (4/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS =
-(171.13 s)
- (5/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS =
-(167.43 s)
-RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CA=
-NCEL 0
-JOB TIME   : 836.05 s
-
-Ubuntu 20.04:
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-
-1. Tweak version and image hash:
-
----
-diff --git a/tests/acceptance/boot_linux.py b/tests/acceptance/boot_linux.p=
-y
-index 0055dc7cee..03c0e1bee9 100644
---- a/tests/acceptance/boot_linux.py
-+++ b/tests/acceptance/boot_linux.py
-@@ -48,7 +48,7 @@ class BootLinuxBase(Test):
-             image_arch =3D 'ppc64le'
-         try:
-             boot =3D vmimage.get(
--                'fedora', arch=3Dimage_arch, version=3D'31',
-+                'ubuntu', arch=3Dimage_arch, version=3D'20.04',
-                 checksum=3Dself.chksum,
-                 algorithm=3D'sha256',
-                 cache_dir=3Dself.cache_dirs[0],
-@@ -160,7 +160,7 @@ class BootLinuxAarch64(BootLinux):
-     :avocado: tags=3Dmachine:gic-version=3D2
-     """
-=20
--    chksum =3D '1e18d9c0cf734940c4b5d5ec592facaed2af0ad0329383d5639c997fdf=
-16fe49'
-+    chksum =3D '1d9e50f3381145835b11911adf611f455d674a570814086b7d6581ecc0=
-718770'
-=20
-     def add_common_args(self):
-         self.vm.add_args('-bios',
----
-
-2. Download the image before the test:
-
-  $ ./tests/venv/bin/avocado vmimage get --distro=3Dubuntu --arch aarch64 -=
--distro-version=3D20.04
-  The image was downloaded:
-  Provider Version Architecture File
-  ubuntu   20.04   arm64        /tmp/data/cache/by_location/19db8c6d910a3f2=
-660c4109ffb85d73d43e5cdf2/ubuntu-20.04-server-cloudimg-arm64.img
-
-3. Run the tests:
-
-  $ ./tests/venv/bin/avocado run -t arch:aarch64,accel:tcg --keep-tmp on --=
- tests/acceptance/boot_linux.py{,,,,}
-  JOB ID     : 92a1bdbb5e933e6dff8b882808a191f1de3c2600
-  JOB LOG    : /home/cleber/avocado/job-results/job-2020-08-06T12.13-92a1bd=
-b/job.log
-   (1/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (341.40 s)
-   (2/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (345.82 s)
-   (3/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (335.91 s)
-   (4/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (320.32 s)
-   (5/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PAS=
-S (319.79 s)
-  RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | =
-CANCEL 0
-  JOB TIME   : 1663.92 s
-
---nFreZHaLTZJo0R7j
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEeruW64tGuU1eD+m7ZX6NM6XyCfMFAl8sW5QACgkQZX6NM6Xy
-CfN35xAAgz/pNB7NThCWslIt7+FJyCD0ycg3elcHoOGT9t655yv+zdft5sytmvC0
-SKkHsqxc/OIHWfESJxIPDzHOiBYlhG28Fl2Lnt8SfBBz1r4jWuOqjxkh6vsYkCOW
-obeVkPKK1UFuL+TFp0L0wFkiptpr1ZoMuzJETyCwcdmg/iD0j9nR5+uDfYqCqpU9
-/I6XipbH34xIBMBTyr4bErlF5GUYUgARh/LHZoZA8CLg6HGXrlolNIknP09OP1BT
-P37ET+DfrnOQLylYzhxKF3L2PDwdjq7niZQmaAqESBgqzGJ8N5H57mwglo4I+NVU
-guXurQyif8A/D13WAzE2Rs8AjH3Xvr7pXas7uySbAzcRdvPt9bG5ob4o7WUM4ip9
-I7MaNn8P8pv+ePeyreVd2FEPUcT7BX7OlHLbBuWHzswLJbexV9ChygbXWbIAVCKw
-6VM8NCsOw/msw84khIvSbDRSRaU/YSzG6R+NXaWcsvUVudhWJhffmTqP4a4Xr3kk
-ABEdAuUoJeTL4IIoeFunrLxhNa1zlFq6IlKd+Md3I6VWlMEbvcWcUjoe4TpCY8w9
-GLIOMgNSvWea+yQjBE0w4VzbaGytCFr2H9sQJra/3tJx7RP2KCmfeKfrswSFQnpL
-7bCJ3u/VOfaEo7t3cCwoJh4VueDMAaKxxtW8jQcQdddk5uzYjcM=
-=AIw8
------END PGP SIGNATURE-----
-
---nFreZHaLTZJo0R7j--
+r~

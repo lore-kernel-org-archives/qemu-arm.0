@@ -1,105 +1,102 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1602260lfy;
-        Thu, 6 Aug 2020 05:55:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhzHXg3/V9L+4WT17FVcj5q5YHQgILYqHqklxe7rUjGTXsIBQHNbNdQGDVpxgMkqU1hcWl
-X-Received: by 2002:a25:cbc5:: with SMTP id b188mr11668736ybg.268.1596718539788;
-        Thu, 06 Aug 2020 05:55:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596718539; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1607633lfy;
+        Thu, 6 Aug 2020 06:02:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzLAfWXyZfMeEUlPZun2YzsPFzCTCGzSCUq2XNAxT7xkoCmeaVgsslqBebQwi9bXgeO9ydE
+X-Received: by 2002:a25:cfcc:: with SMTP id f195mr13417624ybg.490.1596718930985;
+        Thu, 06 Aug 2020 06:02:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596718930; cv=none;
         d=google.com; s=arc-20160816;
-        b=bTmnOo3d4VGyDx7/ThZKFjnJdOnrCY8ILumwkM6KBPweV0StQd8WhQ+H49gvUjf2I9
-         +m3uL4GZeOrds/MU38L4SujYI1KAMIOgLuExt1BPYHKwoMkpxaLFXSdcS/AVYeCLCpb/
-         fV0W9prgK0MpyMZZmXFTI5OwNnoZ1ueISsr7shNd8vmjGSAj3uvxrNI7xBFm9dn9mXX7
-         Gt8nPewGZO+6i9NiYWHPnVsHE3tOQM0ANSXB1F4/I2rS+jmyolHcH25KJBx6iQK2j9VA
-         ZpJO60FweyGMwJwJDcOMSc8mP9WSsWgd/1iqpQzlrFoLDWF3LNDLPOd+0vuP5PAehhbd
-         HS6w==
+        b=sGlznnTJIe3Qtkaj22GvM2Pd7Mw1IvlT+6McakbDqPgtPKvMJs8tBfUvR0cUz8fH6l
+         Vzk7u4JBP3VCcl8Fu4BpGoPQ9yJ50RSOyUOdZLn0QSUtvAWxBQL0q/c6XHFhsODNI5Nz
+         jC8yEEZ/ScM4WgtjKTvLL/9PwLDYkG9M6G//iEnraLfAmADk+TWAGMPLYH9WCiM+qyd7
+         HArnxMz3BRrv3Wb89bx3VaPMVTRykhVIhrf+PNSjpEOHgo6749ZA7okZASi5C7ob/I3n
+         wy6E9O6g1K3TQimc81X+++K4VkX2u6ewfie1V9XWY7nzk7n8Fw032t8pTpwAo+JnL77P
+         N4fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=PQju2RyxO1lbrYUXrxcgdWwgDLJPYib9FQfWj5UiMfQ=;
-        b=qokMXUs4pG/jWq3Dsqhq2UjdTjuYQomc2lHe/xq9VxVxyPe1p6WvRC0FWUsfy8gn2N
-         PnDlYOmpwzr16UT1mU8wS/uJm8zDoCXmiM5dDmcFfTB3D3TlAhhSAuts4HaEDNWAblYB
-         Lv05r0XZcJD+PsO4H04gW2Ir9j28dzQCVNJPotzHQIZ0Ps9bjNMHvy7AO17xDkobPUMY
-         30nTwt62czySmkUJXfpajQpLAIgD4nVOODLsgZ3ADnO5aMmeVhLBWWmcMTLw8n4AlRbi
-         zILC3aSJqAFg/8hp1vq4ejC8q4Xoghj2gqjcleRCAiVGG5XMFvB0rSuP0KERfBDhxxXf
-         Ke7A==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:feedback-id:x_cmae_category;
+        bh=Sb1eZxitC6uIv+hlWKLcho2pwg8K9+VTy8F7JfVhUwo=;
+        b=HGmMItclBHUQJ6WPvjbj1k4puF5wIBQkuww+1aC1XYfIRXj4fMPPFI3+djtd6JX/Ig
+         /r/1xt0UXYjIuyVlY/FhqyyIY0W3XC9SPwXtBe5UIQ+cj56h7Uc+e+j4yiM9W6olI83W
+         Ctd9p81Cnsd7SgLk2p0A6wgfQ/hqnyaSEsD3izKLUyXx6fqzTbD47M1VgkgNwmtiKJmO
+         R7fsrnuSntFsdfNpSb0owbzJZ7yZImolTLlIbY68oFRzflgmwNdRPnpBCMILpZ/L7K/g
+         H9Vk0DNJF8rPA6+fI/rRDlz6Ihh5XrSkMdxCwaD6gO8oEUqLSYYXvgsHKhAfnFvMOWSy
+         x/Xw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gay2+h1e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u5si4576057ybm.57.2020.08.06.05.55.39
+        by mx.google.com with ESMTPS id f82si4924629ybf.177.2020.08.06.06.02.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 05:55:39 -0700 (PDT)
+        Thu, 06 Aug 2020 06:02:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=gay2+h1e;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55916 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:36300 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3fQp-0005Bf-5g
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 08:55:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41798)
+	id 1k3fX8-0000as-D9
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 09:02:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42820)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k3fQf-000570-Tv
- for qemu-arm@nongnu.org; Thu, 06 Aug 2020 08:55:29 -0400
-Received: from mail-ot1-x343.google.com ([2607:f8b0:4864:20::343]:39181)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k3fQb-0006Bc-St
- for qemu-arm@nongnu.org; Thu, 06 Aug 2020 08:55:28 -0400
-Received: by mail-ot1-x343.google.com with SMTP id z18so15576698otk.6
- for <qemu-arm@nongnu.org>; Thu, 06 Aug 2020 05:55:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=PQju2RyxO1lbrYUXrxcgdWwgDLJPYib9FQfWj5UiMfQ=;
- b=gay2+h1ehcLHXfNO2lflVOXzNHG+CuQovdf93FLzjb7OrS1zhtwOgixDetKUesmWCO
- fDbekmxZAxTEW2CgaDyMLJRspmqO7VznmGddlN6uMQeA+7vtXS0EmJSwcIH+Q+uuV0tB
- uDff8vJW9XE4ILcvq7qjos+q/lpafHnWo3HFomhcSnU9lKnkhRUD+KTggNWM8OH0jDll
- PIknQxTj/QneIUqPv64bPhY7WdcpHnyuRQl8IYV8rhSQ4Jnz3O79/4r8H8KZegV79QBF
- HuAez9LU9WTE7oo0/80Nv/d6dTliWC8FcTgnnw0BfbIIBACL7/9kin8KzJflXoR432R/
- qiqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=PQju2RyxO1lbrYUXrxcgdWwgDLJPYib9FQfWj5UiMfQ=;
- b=eO0wvoNk2VR053CF+mScRXHmkYz/hTfyD2dmAOAXh2a89HYrUO6YchjrWgNHoPGXxg
- uvTfwInCd0KuAq+DVR2PstWvZCc06SGD/qpAPUfekNJzXMKzgok7h38q5sm/Hn6P3UyU
- VL8Kk8ewXFrjEFGTa3396mbUtUa/210Ja99lLH/PFVgvvZo+/JbBlYztllh38HXzBC19
- 39m9clcG5LfnFTK4J+jzJNgNmcAqzJQCoXIrqrE78Ijh7lqlriirL/GcVztjGMQxliVJ
- mTXLhR25YiGp9UnvftIRvLIB8jpko6DQsvESJ2pBr94mGJyYvOKoo+qyehMyxEk1/h+O
- YbwA==
-X-Gm-Message-State: AOAM530eYjqjqSua/WA6qDnINb+l+6KN3VDC88AdbOoyG3v56yRLmVw2
- MRw/kZZGaAJtno/JXtVOoN0DX79h7dd71n0Lk0oDgA==
-X-Received: by 2002:a9d:39c2:: with SMTP id y60mr7002073otb.91.1596718524844; 
- Thu, 06 Aug 2020 05:55:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <yates@digitalsignallabs.com>)
+ id 1k3fVB-0007lq-3z
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2020 09:00:09 -0400
+Received: from mail.onyx.syn-alias.com ([206.152.134.66]:56302
+ helo=smtp.centurylink.net)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yates@digitalsignallabs.com>)
+ id 1k3fV9-0006cq-Bl
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2020 09:00:08 -0400
+X_CMAE_Category: , ,
+X-CNFS-Analysis: v=2.3 cv=QYkYQfTv c=1 sm=1 tr=0
+ a=+BvlVZVS74/p9mKwrR4qzg==:117 a=+BvlVZVS74/p9mKwrR4qzg==:17
+ a=KGjhK52YXX0A:10 a=IkcTkHD0fZMA:10 a=y4yBn9ojGxQA:10 a=PPsO2EghCewA:10
+ a=eQrCS-SpgXYA:10 a=Ixn1CAxRAAAA:8 a=riSzfaxeulHGD2guDgUA:9
+ a=gHPTvc8h__eXD_09:21 a=N-NUiAowhh9YROm2:21 a=QEXdDO2ut3YA:10
+ a=_0vDLAJOulx5KDpLVjVP:22
+X-CM-Score: 0
+X-Scanned-by: Cloudmark Authority Engine
+Feedback-ID: dfw:ctl:res:onyx
+X-Authed-Username: eWF0ZXNmcmVlZGFyYW5keUBjZW50dXJ5bGluay5uZXQ=
+Authentication-Results: smtp02.onyx.dfw.sync.lan
+ smtp.user=yatesfreedarandy@centurylink.net; auth=pass (LOGIN)
+Received: from [64.98.102.7] ([64.98.102.7:54300]
+ helo=galois.digitalsignallabs.com)
+ by smtp.centurylink.net (envelope-from <yates@digitalsignallabs.com>)
+ (ecelerity 3.6.25.56547 r(Core:3.6.25.0)) with ESMTPA
+ id 55/21-23904-5DEFB2F5; Thu, 06 Aug 2020 09:00:05 -0400
+Received: from localhost.localdomain (fv-nc-f7af8b91e1-234237-1.tingfiber.com
+ [64.98.102.7])
+ by galois.digitalsignallabs.com (Postfix) with ESMTPSA id 554D02E0ED9;
+ Thu,  6 Aug 2020 09:00:04 -0400 (EDT)
+Subject: Re: [PATCH] hw/cpu/a9mpcore: Verify the machine use Cortex-A9 cores
+To: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <20200709152337.15533-1-f4bug@amsat.org>
+ <CAFEAcA_Sbaai_TPMVkGHKGGhfyjc1Mk2Z6pWSVkLcwHLVZVzNg@mail.gmail.com>
+From: Randy Yates <yates@digitalsignallabs.com>
+Message-ID: <7de5e47e-4347-1e0b-6f4b-922d3adea4fe@digitalsignallabs.com>
+Date: Thu, 6 Aug 2020 09:00:04 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <20200728150815.11446-1-eric.auger@redhat.com>
- <CAFEAcA9Dh=cNr95ajznpQHCLQ0REFmjSZCTaygGOZEP8vg3swA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9Dh=cNr95ajznpQHCLQ0REFmjSZCTaygGOZEP8vg3swA@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 6 Aug 2020 13:55:13 +0100
-Message-ID: <CAFEAcA8k--w5yvdhX_Cu_sS=KaUEg0KyirZ4=JG8NdGFKGRweQ@mail.gmail.com>
-Subject: Re: [PATCH for-5.2 v4 00/11] SMMUv3.2 Range-based TLB Invalidation
- Support
-To: Eric Auger <eric.auger@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <CAFEAcA_Sbaai_TPMVkGHKGGhfyjc1Mk2Z6pWSVkLcwHLVZVzNg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+Received-SPF: none client-ip=206.152.134.66;
+ envelope-from=yates@digitalsignallabs.com; helo=smtp.centurylink.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/06 09:00:05
+X-ACL-Warn: Detected OS   = Linux 2.6.x [fuzzy]
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,32 +109,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Jean-Philippe Brucker <jean-philippe@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Robin Murphy <robin.murphy@arm.com>,
- zhangfei.gao@foxmail.com, QEMU Developers <qemu-devel@nongnu.org>,
- Peter Xu <peterx@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- Shameerali Kolothum Thodi <shameerali.kolothum.thodi@huawei.com>,
- Will Deacon <will@kernel.org>, Rob Herring <robh@kernel.org>,
- Eric Auger <eric.auger.pro@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Igor Mitsyanko <i.mitsyanko@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
+ Randy Yates <yates@ieee.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HpLXZK9aXD+K
+X-TUID: C6eHIY0OsAWz
 
-On Thu, 30 Jul 2020 at 14:39, Peter Maydell <peter.maydell@linaro.org> wrote:
+Good! Thank you, Philippe.
+
+--Randy
+
+On 8/6/20 8:54 AM, Peter Maydell wrote:
+> On Thu, 9 Jul 2020 at 16:23, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>> The 'Cortex-A9MPCore internal peripheral' block can only be
+>> used with Cortex A5 and A9 cores. As we don't model the A5
+>> yet, simply check the machine cpu core is a Cortex A9. If
+>> not return an error.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   hw/cpu/a9mpcore.c | 12 +++++++++++-
+>>   1 file changed, 11 insertions(+), 1 deletion(-)
+> Applied to target-arm.next (for 5.2), thanks.
 >
-> On Tue, 28 Jul 2020 at 16:08, Eric Auger <eric.auger@redhat.com> wrote:
-> >
-> > SMMU3.2 brings the support of range-based TLB invalidation and
-> > level hint. When this feature is supported, the SMMUv3 driver
-> > is allowed to send TLB invalidations for a range of IOVAs instead
-> > of using page based invalidation.
-
-> I think this is all reviewed now; I've put it on my list
-> of series to apply to target-arm.next in once 5.1 is out
-> and we reopen the trunk for 5.2.
-
-
-
-Applied to target-arm.next for 5.2, thanks.
-
--- PMM
+> -- PMM

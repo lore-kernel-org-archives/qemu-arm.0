@@ -1,88 +1,89 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2347836lfy;
-        Thu, 6 Aug 2020 23:04:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxgAE6dDe4N4EfVg2qiZl97juxFJZbIB9g4UsiINhg43lQX6iBKUyqdNe3KaOSucvsBLba+
-X-Received: by 2002:a5b:a87:: with SMTP id h7mr14774006ybq.333.1596780273996;
-        Thu, 06 Aug 2020 23:04:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596780273; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2349235lfy;
+        Thu, 6 Aug 2020 23:06:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxV1HMW5d1pWyxSWaV1RG1/9GvtwwLZGPAJqAsezwcjL061ePDY+ZXTUiBeh/Lm0RuCfXPi
+X-Received: by 2002:a5b:bce:: with SMTP id c14mr16238914ybr.189.1596780410034;
+        Thu, 06 Aug 2020 23:06:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596780410; cv=none;
         d=google.com; s=arc-20160816;
-        b=hFBIGKQSHk+p1o92sC1ARsDXOT1lTQ5z+KU+e6CGJgd0CT8dmm4Ovj/+IA9MKZpuhD
-         ssQmb4y1obX9x9uURugfIkbHTW9I1fygdAcoUXg5hWPOWm/NxuESe6Tai6ao8TCwjnif
-         WGC48WfY5nXATvtW1/8zZbk4TYXxQH/+ZguSD3dbqb157YLLkd+mO6YMwowEl5Y+XAvb
-         pDwzg7Jfh3OQuACQTA0ycK92WS8crl5eRIoAsE/iUxzHtX5SR3wx/1MVeRhaJFuPhVBp
-         kRiM+oK4brnO0da49hZcEL1FeZa5bJBXRAPRhl6tw4uBzXU9fKMowKzkBX8iGxGa6ImW
-         qlTQ==
+        b=B6DybRIs1qAPNLFyyNlkjiuNjQ3I2kX6T/QmPYelc/DG1srHIpd82ouvIfVw6OAkI0
+         5IYrbCBFme8um1mWIbfkoyVEeJ7HoMoJoOp+DIQWcH4z3xcb01NDWg5JNR3F4A41O92A
+         mVrwa+2JZoZjyviCB9tbJGJUxq84DKXEnPDow5m9cHKX1Zu4P1NTxuCMMNpNsgrT8fCC
+         vnymgu7wGHH1aHIYw/Y+K800dE7+ZALlHnp+aKIhjureIC5XtMIfA6Ynj7Py4UVBby1T
+         VfdeJxv9Nv2tOVPV2sFgMFaecxmB4pqjRpK1yHb0/c+2Wo9Q6RV7g2fJkT1Rk6NJFJFs
+         pBHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=Ndyz/D50yjpjuZm6zei7BAxDRENdiV6Sdjse/Vb0lNQ=;
-        b=AlijgoCx91/B9Ec89jmK/BR3jLruGAaphq14A4T0vpectuFsqpx64TuH7SHfPgcurs
-         HCndqUBS0PgaN6Qhr6IxLE5LCX18VenVv5HHztEqom9djaqn/QKS4MK5MYz+mtHsBz0e
-         ypOJX/LQnspmNEvu9Q4z7p4Z9CTLTReDx8tIxu8Nw5vDXe5YuUdVw701OcJY63J99pTH
-         +awmbZ5lEwOQTJubA8NiwGGcXYDQU6TbRcXgpNupuSskP2SmnPsVOBbBeCaKoAaWcqm5
-         nK4G4EsiDeTU1CYhbUZCeZG/X+13RXVPkNt5AuSAK1psOlzmbTClI0TEGRndfIiHr5Xy
-         ePkw==
+        bh=eM25OPPudnydVmL7ollOQBqCSC1xOhZ3gIahGMMbvIQ=;
+        b=DO8RvTjgRN1HvmqREGcMIezmUc/0Xwo2vJWeLiQ7lt+EJ94LDGrKScjUPmzsFTlaL4
+         Z6cNPEuXCBi7pNRe4u9VuU58RTaq3E+dSiY/zulXCxWzJmn838KAFEkdFqO61hYky/q9
+         Ip5t+qcUP2ncCXjYvveXOfoHZUZAjDcbgFMQvV8F7xzL1obWu6+VceZTmyuCYLwAJSGH
+         uA+UJ8zhWATRDXZ1LG3Bo18dvrbDK/kkvHxtA5f5LXeOYaC2H/Q+Qg1e2Wp6TQSaW/TY
+         IsaWA3VDN92e+03QJIUYhBOgu2WWt2V8kyXWV/Mppsw0QLHZ551M0ZUkYQs52BFdZyHv
+         Xipg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x196si7414284ybe.173.2020.08.06.23.04.33
+        by mx.google.com with ESMTPS id e125si6599652ybh.69.2020.08.06.23.06.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 23:04:33 -0700 (PDT)
+        Thu, 06 Aug 2020 23:06:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50182 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52640 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3vUX-0007Bn-CE
-	for alex.bennee@linaro.org; Fri, 07 Aug 2020 02:04:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48322)
+	id 1k3vWj-0008LY-DB
+	for alex.bennee@linaro.org; Fri, 07 Aug 2020 02:06:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k3vUL-0007BR-Rd; Fri, 07 Aug 2020 02:04:21 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:59125)
+ id 1k3vWa-0008LO-I6; Fri, 07 Aug 2020 02:06:40 -0400
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:52341)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k3vUJ-0002s4-8m; Fri, 07 Aug 2020 02:04:21 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.179])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 2DA594DEA462;
- Fri,  7 Aug 2020 08:04:14 +0200 (CEST)
-Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ id 1k3vWY-0003Gj-Hh; Fri, 07 Aug 2020 02:06:40 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.139])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 0807D549CC35;
+ Fri,  7 Aug 2020 08:06:36 +0200 (CEST)
+Received: from kaod.org (37.59.142.104) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Fri, 7 Aug 2020
- 08:04:14 +0200
+ 08:06:35 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-99G003e01aa0e3-b7fe-4aed-af8c-7f033ac38043,
+ (GARM-104R00561dd772c-9a9b-4e3c-a3e3-212e93e5c360,
  9C6B65F6CFD3D723D723CC07BEDAC6F805E88D1E) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH for-5.2 08/19] aspeed/sdhci: Fix reset sequence
+Subject: Re: [PATCH for-5.2 10/19] ftgmac100: Fix interrupt status "Packet
+ transmitted on ethernet"
 To: Joel Stanley <joel@jms.id.au>
 References: <20200806132106.747414-1-clg@kaod.org>
- <20200806132106.747414-9-clg@kaod.org>
- <CACPK8Xcy-OzbQ4oiLaq96VzROSsmnmSAa0dytRcCVp2ot+mQnw@mail.gmail.com>
+ <20200806132106.747414-11-clg@kaod.org>
+ <CACPK8XdWztzwTfqX5Mkk8wbdrL13nfhw_pTw0R6ra06cOXenBA@mail.gmail.com>
 From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <5684768c-c14d-5113-f029-f5bb9fbe6c86@kaod.org>
-Date: Fri, 7 Aug 2020 08:04:13 +0200
+Message-ID: <99068335-98a0-c9e5-aacc-e322de8b3a6d@kaod.org>
+Date: Fri, 7 Aug 2020 08:06:34 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <CACPK8Xcy-OzbQ4oiLaq96VzROSsmnmSAa0dytRcCVp2ot+mQnw@mail.gmail.com>
+In-Reply-To: <CACPK8XdWztzwTfqX5Mkk8wbdrL13nfhw_pTw0R6ra06cOXenBA@mail.gmail.com>
 Content-Type: text/plain; charset="utf-8"
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.99]
-X-ClientProxiedBy: DAG3EX2.mxp5.local (172.16.2.22) To DAG4EX1.mxp5.local
+X-Originating-IP: [37.59.142.104]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 07b7b11a-7a08-46fd-a484-abd79837466c
-X-Ovh-Tracer-Id: 17212194825916156710
+X-Ovh-Tracer-GUID: bec082d7-91da-4bce-a277-6c80a8558996
+X-Ovh-Tracer-Id: 17251882800566668070
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkedugddutdeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghu
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/07 02:04:16
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkedugddutdeiucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdegnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehjohgvlhesjhhmshdrihgurdgruh
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/07 01:59:49
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -18
 X-Spam_score: -1.9
@@ -102,112 +103,65 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, Eddie James <eajames@linux.ibm.com>,
- QEMU Developers <qemu-devel@nongnu.org>
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
+ Frederic Konrad <konrad.frederic@yahoo.fr>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BOFPmXguJfWU
+X-TUID: r/i9nP1VSGgX
 
-On 8/7/20 1:42 AM, Joel Stanley wrote:
+On 8/7/20 1:47 AM, Joel Stanley wrote:
 > On Thu, 6 Aug 2020 at 13:21, Cédric Le Goater <clg@kaod.org> wrote:
 >>
->> BIT(0) of the ASPEED_SDHCI_INFO register is set by SW and polled until
->> the bit is cleared by HW. Add definitions for the default value of
->> this register and fix the reset sequence by clearing the RESET bit.
+>> The second field of the TX descriptor has a set of flags to choose
+>> when the transmit interrupt is raised : after the packet has been sent
+>> on the ethernet or after it has been moved into the TX FIFO. But we
+>> don't model that today.
 > 
-> This is mentioned in the datasheet but I couldn't find if software
-> depends on the behaviour. Were you just trying to make the model more
-> accurate?
+> Does any software depend on this behaviour? 
 
-Yes. The AMI FW for the palmetto is requiring this : 
+No. I compared with HW with extra logging.
 
+> Perhaps mention it in the
+> commit message so we remember why we changed it.
 
-U-Boot 1.1.6 (Oct 27 2016 - 10:46:29)
+OK.
+ 
+>> Simply raise the "Packet transmitted on ethernet" the interrupt status
+>> bit as soon as the packet is sent by QEMU.
+> 
+> delete the second 'the'?
 
-DRAM:  446 MiB
-Found SPI Chip Numonyx n25q256 
-Flash: 32 MiB
-MMC:   ast_sd: 0
-Environment Read 1 time
-Net:   ast_eth0
-DRAM ECC disabled
-Hit Esc key to stop autoboot:  0 
-Image to be booted is 1
-conf @ /dev/mtdblock1 Address 20050000
-Found Root File System @ /dev/mtdblock2
-root @ /dev/mtdblock2 Address 20120000
-extlog @ /dev/mtdblock3 Address 20cd0000
-www @ /dev/mtdblock4 Address 20d90000
-Un-Protect Flash Bank # 1
-Booting from Primary side
-Booting from MODULE_PIMAGE ...
-Bootargs = [root=/dev/mtdblock2 ro ip=none console=ttyS4,38400 rootfstype=cramfs bigphysarea=8192 imagebooted=1]
-## Booting image at 20ae0040 ...
-   Image Name:   Linux-2.6.28.10-ami
-   Image Type:   ARM Linux Kernel Image (uncompressed)
-   Data Size:    1943652 Bytes = 1.9 MiB
-   Load Address: 40008000
-   Entry Point:  40008000
-   Verifying Checksum ... OK
-OK
+sure :)
 
-Starting kernel ...
+Thanks,
 
-Uncompressing Linux............................................................................................................................. done, booting the kernel.
-Linux version 2.6.28.10-ami (root@viswa-desk) (gcc version 4.5.1 (Sourcery G++ Lite 2010.09-50) ) #1 Thu Oct 27 10:45:59 EDT 2016
-CPU: ARM926EJ-S [41069265] revision 5 (ARMv5TEJ), cr=00093177
-CPU: VIVT data cache, VIVT instruction cache
-Machine: AST2400EVB
-
-
+C. 
 
 > 
->>  #define ASPEED_SDHCI_INFO            0x00
->> -#define  ASPEED_SDHCI_INFO_RESET     0x00030000
->> +#define  ASPEED_SDHCI_INFO_SLOT1     (1 << 17)
->> +#define  ASPEED_SDHCI_INFO_SLOT0     (1 << 16)
->> +#define  ASPEED_SDHCI_INFO_RESET     (1 << 0)
->>  #define ASPEED_SDHCI_DEBOUNCE        0x04
->>  #define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
->>  #define ASPEED_SDHCI_BUS             0x08
->> @@ -67,6 +69,9 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
->>      AspeedSDHCIState *sdhci = opaque;
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> 
 >>
->>      switch (addr) {
->> +    case ASPEED_SDHCI_INFO:
->> +        sdhci->regs[TO_REG(addr)] = (uint32_t)val & ~ASPEED_SDHCI_INFO_RESET;
-> 
-> I think bits 24 and 25 should be writable too?
-
-ok. I will take a look.
-> 
->         sdhci->regs[TO_REG(addr)] = (uint32_t)val &
-> ~(ASPEED_SDHCI_INFO_RESET | ASPEED_SDHCI_INFO_SLOT10 |
-> ASPEED_SDHCI_INFO_SLOT1);
-> 
->> +
->>      case ASPEED_SDHCI_SDIO_140:
->>          sdhci->slots[0].capareg = (uint64_t)(uint32_t)val;
->>          break;
->> @@ -155,7 +160,8 @@ static void aspeed_sdhci_reset(DeviceState *dev)
->>      AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
+>> Cc: Frederic Konrad <konrad.frederic@yahoo.fr>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>  hw/net/ftgmac100.c | 4 +---
+>>  1 file changed, 1 insertion(+), 3 deletions(-)
 >>
->>      memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
->> -    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = ASPEED_SDHCI_INFO_RESET;
->> +    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =
->> +        ASPEED_SDHCI_INFO_SLOT1 | ASPEED_SDHCI_INFO_SLOT0;
-> 
-> If we want to be super strict this is true for the "sd" devices, but
-> the "emmc" device in the ast2600 only sets slot0. I don't think this
-> distinction is important to model though.
-
-OK. we can add different reset arrays depending on the SoC. 
-
-C.
-
->>      sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] = ASPEED_SDHCI_DEBOUNCE_RESET;
->>  }
+>> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+>> index 0348fcf45676..aa3c05ef9882 100644
+>> --- a/hw/net/ftgmac100.c
+>> +++ b/hw/net/ftgmac100.c
+>> @@ -547,9 +547,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
+>>              qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_size);
+>>              ptr = s->frame;
+>>              frame_size = 0;
+>> -            if (flags & FTGMAC100_TXDES1_TXIC) {
+>> -                s->isr |= FTGMAC100_INT_XPKT_ETH;
+>> -            }
+>> +            s->isr |= FTGMAC100_INT_XPKT_ETH;
+>>          }
 >>
+>>          if (flags & FTGMAC100_TXDES1_TX2FIC) {
 >> --
 >> 2.25.4
 >>

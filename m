@@ -1,93 +1,92 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2141237lfy;
-        Thu, 6 Aug 2020 17:13:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyMYdChXdoHb9aZZeMBMPrDw9dpDB7mBhoZrkHzE9dexhJxoavoy/+b+3HNCB5Z9ChaRGWF
-X-Received: by 2002:a25:6986:: with SMTP id e128mr14950025ybc.199.1596759184679;
-        Thu, 06 Aug 2020 17:13:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596759184; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2141830lfy;
+        Thu, 6 Aug 2020 17:14:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxcZEzDr02HtG/ErUeUxVfLJPeoVbSIFkdhu32rIgPQtgSGnNe7jR0C1nrlTRSJbSppsQ5x
+X-Received: by 2002:a25:e791:: with SMTP id e139mr17349938ybh.67.1596759246661;
+        Thu, 06 Aug 2020 17:14:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596759246; cv=none;
         d=google.com; s=arc-20160816;
-        b=R5ROGZ+RWJK5oNnqEhVJTheHtcURM5eXbKPFpf+a9Ln4zBm3phx+lsk0OpSRi4/A3s
-         TG+dkoqOzIGcWBdIWd1q8mTIB70LDb+TqlJARa/io0C4MoQWcv4boO8zTl/lnrxWUopE
-         LdQekN2ZyQJHAAfpkkL3UVI2erALF41+dvy7gGGKqWXAI9p1X/y4EkntB9gO99FrGS55
-         n+mueX+QuxRb9IdKAOkhsvBzLjuu9s73mdbAg6wbj0sNSgvECjCfZtPKIydJPkzEdqd5
-         L7eHP8nWCFlMHNFevd9I6oCLDjLuQZk/d9riDzXs8PYkd1ieWsfg5Icac2ES5xU/634e
-         xf2Q==
+        b=RllOIVyRLWUh0uFstpta38ArEJYpOUFGKa7A8kuU3MXxIDl4YhoV2JeJ9MdkXg7Is5
+         bpJxCpjLKvcdPwqYV1gSIbbWzN5QblWaMpi5a1aZ7UjC+JcEuXVyG921BB9VfijYxHnG
+         aZaBdyFXF5bSI+C8llFnfO8wOe+GAdsX4++TC7XNfp2VJlhXwTc2hxfTNcFPbqzdUH7b
+         ZeDaHD05UCVvuXMvozLl4UXr58a0bQmseJklHIFY3+O7eQkGPE/6vllTbrzM3fA6QMnG
+         toNRFZmb14wsll8XNR5fBHmNRcWqqr57uAtB/nDUkvjdGi7wFNoU/AUzTEZbjDMmTy49
+         so3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=RdoJ616D1ZAhofYamDE/inbM3292XAH+lYqk5KBRI/k=;
-        b=MKP9VKEXq2aO6j3/KIxU3AyiETF45fCQTfl0JVFnFSqRiZcZJKQB6nQIRfgO1CpVzi
-         GnF96uZUo2eXo2ix7looBrNassZIUWyJ7ANHzyqM+16JgUUc/GdS0AESh0fgyJSBYWAF
-         ZhdKi9P5d9CoeLSc+rYR306Cb5zafo/iuEaAv73zSOCXSoCjc9/3tFRAip7VNUORNxQg
-         Gte8VioDhOlPkLPUybedhwpNdO2H5tCyy3cdkY/VWI/dNLWE/kwcOiuzpu+k5SnlqXi7
-         wN3Acdqo8IS3nP8K9hFvgGdf4AAIW8+wMSNGCHHY2hHMRAP08oaQKl+BTrTHUetbuHqg
-         vBEw==
+        bh=Egw1RCFdj6joX5l5R8CpYFJ3boYu4uDaCD/EFl6gn2M=;
+        b=c6bge4984teLdJpMhOyKHiy1t/62J34qjad+RMjgqLAym95gk39MxkkdDFY16WwcNS
+         z/i2YziMUS61PM3sZJIzOm7f33yUkC4bPxVpEssbl4r1wDYu7RU6weLsc/M+Ms1TsGL4
+         vXos/3xvTcmDudZNO6ZM+bA0WbxjgevAYooD2IQyfBwIGCxSgALCWx/UYa4Vf4rz8Sus
+         XTo9R472RiUtIN9RSHc/GrifKL3TsPqCAld4IQAd0P3idTrel/0YOWlofwZToqZgo/rj
+         5TyYVFcOuCTrkoMDO3mp9SnCKvkK8K66x5VxDFzmiSGRInY4318B71RoARzzG/93oS/I
+         Y52Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="iM3fVM/V";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@jms.id.au header.s=google header.b=YUbTplOw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 132si6327373ybl.412.2020.08.06.17.13.04
+        by mx.google.com with ESMTPS id m4si6201990yba.121.2020.08.06.17.14.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 17:13:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Aug 2020 17:14:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b="iM3fVM/V";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36232 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=YUbTplOw;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:37716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3q0O-0001Fl-0p
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 20:13:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45510)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k3q1N-0001ql-UA
+	for alex.bennee@linaro.org; Thu, 06 Aug 2020 20:14:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45340)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3q05-0001Es-4k; Thu, 06 Aug 2020 20:12:45 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:36285)
+ id 1k3pz1-0000m1-Lt; Thu, 06 Aug 2020 20:11:40 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:44114)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3q02-0007Tx-H1; Thu, 06 Aug 2020 20:12:44 -0400
-Received: by mail-ej1-x643.google.com with SMTP id kq25so220987ejb.3;
- Thu, 06 Aug 2020 17:12:41 -0700 (PDT)
+ id 1k3pyz-0007Pr-QQ; Thu, 06 Aug 2020 20:11:39 -0400
+Received: by mail-ed1-x544.google.com with SMTP id l23so22708431edv.11;
+ Thu, 06 Aug 2020 17:11:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=RdoJ616D1ZAhofYamDE/inbM3292XAH+lYqk5KBRI/k=;
- b=iM3fVM/VZpmBnrNqtY6e7cCQWjRYZ4d5NrxH5+V7vEh4aPpyXQ0AUfmadt9hVT/b+d
- njmbvDjqJasHN2r7ONKkRH6umPWPd5iZE47kCoToeAAO4XW3JItcWtDuHM/WIJ8R6pve
- gY8381F+4Hd3saOd27LdfIYqlHYW8yfgZwW8E=
+ bh=Egw1RCFdj6joX5l5R8CpYFJ3boYu4uDaCD/EFl6gn2M=;
+ b=YUbTplOwt6L/TTav+wd5G9F4R/hQclbFG9M6lst1spfSl3lUTmIa+YNoycqU0QNKxT
+ TVpvK+Vx2s0V5xeUfbL3Ei/r+Q3LWE9NhqTiVXp2RKPjQX5dg4fPXLSuKq9XwM0smaKg
+ LMRSd3UgYFnFUvnIKji10vJ8OIHZ+zQG208CY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=RdoJ616D1ZAhofYamDE/inbM3292XAH+lYqk5KBRI/k=;
- b=mwuvtVZKPrRDn1jvC3lU7cQNb+SGuH/hEcdHU33JLkpd1cLt7D6xuT6Gk227O4bjj+
- wEDyR2TJwbcTkivcBovqP1QTza7TE+29iHporyS483YVMDSWj7ZsO+QNCwgi//NA1uPO
- lQraXsTVfP7os4NtnitvgA4HdiT+zDztnxVX+jB3WtPUMobO3avz19niQXL48HSXuZ+b
- NPF0ufxp6s9mquMgY4LRM6rsBML1GVXzflJG2CQutck+RahBeLgoK04c4bR0R220I5gb
- MoXdMiTPkOuanxfpHi3KhU8BGw5Vcpv/VA51iVpoFC6SVSPLL1WwekOFyEUY8WKf+6d3
- kqOg==
-X-Gm-Message-State: AOAM531a/vgWRaiM07n32jap8BZUDXkWLfzrYXyVp1c3MkI+18Q+JKeC
- xDqsh5rB6NW61TkOqAyikwBVbhugZ8rw1Kq1l5k=
-X-Received: by 2002:a17:906:c187:: with SMTP id
- g7mr7122794ejz.108.1596759160503; 
- Thu, 06 Aug 2020 17:12:40 -0700 (PDT)
+ bh=Egw1RCFdj6joX5l5R8CpYFJ3boYu4uDaCD/EFl6gn2M=;
+ b=pjvjaaVJnRnxFhYrNNBZ9krNwSH8wKJnbEn5A2LInD2JHrNiGcHWneNUFUm6xctD46
+ 751xkjA61k9vngLMBwe4HmC6tRx7koTFPH89dn5nPRJOKeZkPCg6HNGwKRMy8BxGZgom
+ r8UQ4+U1Goj4nbVpUeHlGYDJ5ymJK2VMUgUqPioVQUdMbgRZYACN/FySzFpLufZ9flJW
+ Z803d8fh8Pcvg2grCiPYgNQEtfAiznIHT2aYJuQrWIGLxLfuAamwZ9oUybd7oJRBTOqw
+ 0VHDXfI7QkWOqPsKiSFZHWTpb5/2z4Ck61te1Vxf4AongWaZxSGro2BisvKG+yCQVWhm
+ qr3Q==
+X-Gm-Message-State: AOAM533COiDRWTq23YA22tlx1wY7OF/StFuJXCZo8jnbOfdFf/jyvoSD
+ HLNMHxUXsbZkPiRRqQIhUe2wnSqlGfE5TZo/9+M=
+X-Received: by 2002:aa7:cd07:: with SMTP id b7mr6770722edw.172.1596759095342; 
+ Thu, 06 Aug 2020 17:11:35 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200806132106.747414-1-clg@kaod.org>
- <20200806132106.747414-20-clg@kaod.org>
-In-Reply-To: <20200806132106.747414-20-clg@kaod.org>
+ <20200806132106.747414-19-clg@kaod.org>
+In-Reply-To: <20200806132106.747414-19-clg@kaod.org>
 From: Joel Stanley <joel@jms.id.au>
-Date: Fri, 7 Aug 2020 00:12:27 +0000
-Message-ID: <CACPK8Xc4uGR5OAX=TNmjDdHD7i2mzEkhJVty8tn-Z=g6spBgGw@mail.gmail.com>
-Subject: Re: [PATCH for-5.2 19/19] aspeed/smc: Open AHB window of the second
- chip of the AST2600 FMC controller
+Date: Fri, 7 Aug 2020 00:11:23 +0000
+Message-ID: <CACPK8XfgEgKKdrN4OGv1=pj9wCXbRijL5opxAXnUsBb3m8d=bA@mail.gmail.com>
+Subject: Re: [PATCH for-5.2 18/19] aspeed/sdmc: Simplify calculation of RAM
+ bits
 To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=joel.stan@gmail.com; helo=mail-ej1-x643.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=joel.stan@gmail.com; helo=mail-ed1-x544.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -99,55 +98,155 @@ X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SnmsohEynZ7P
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ngaeW6smUxiC
 
 On Thu, 6 Aug 2020 at 13:21, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> This change works around the HW default values to be able to test the
-> tacoma board with -kernel command line option.
+> Changes in commit 533eb415df2e ("arm/aspeed: actually check RAM size")
+> introduced a 'valid_ram_sizes' array which can be used to compute the
+> associated bit field value encoding the RAM size. The field is simply
+> the index of the array.
 >
 > Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-
-Good fix. This was required for Tacoma when we had both flash chips
-enabled in the device tree, otherwise Linux would fail to probe the
-entire controller leaving it with no rootfs.
 
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 
 > ---
->  hw/ssi/aspeed_smc.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/misc/aspeed_sdmc.c | 79 ++++++++++++++-----------------------------
+>  1 file changed, 25 insertions(+), 54 deletions(-)
 >
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 8c79a5552f93..795784e5f364 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -230,7 +230,7 @@ static void aspeed_smc_reg_to_segment(const AspeedSMC=
-State *s, uint32_t reg,
->
->  static const AspeedSegments aspeed_segments_ast2600_fmc[] =3D {
->      { 0x0, 128 * MiB }, /* start address is readonly */
-> -    { 0x0, 0 }, /* disabled */
-> +    { 128 * MiB, 128 * MiB }, /* default is disabled but needed for -ker=
-nel */
->      { 0x0, 0 }, /* disabled */
+> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+> index 81c73450ab5d..08f856cbda7e 100644
+> --- a/hw/misc/aspeed_sdmc.c
+> +++ b/hw/misc/aspeed_sdmc.c
+> @@ -159,57 +159,6 @@ static const MemoryRegionOps aspeed_sdmc_ops =3D {
+>      .valid.max_access_size =3D 4,
 >  };
 >
+> -static int ast2400_rambits(AspeedSDMCState *s)
+> -{
+> -    switch (s->ram_size >> 20) {
+> -    case 64:
+> -        return ASPEED_SDMC_DRAM_64MB;
+> -    case 128:
+> -        return ASPEED_SDMC_DRAM_128MB;
+> -    case 256:
+> -        return ASPEED_SDMC_DRAM_256MB;
+> -    case 512:
+> -        return ASPEED_SDMC_DRAM_512MB;
+> -    default:
+> -        g_assert_not_reached();
+> -        break;
+> -    }
+> -}
+> -
+> -static int ast2500_rambits(AspeedSDMCState *s)
+> -{
+> -    switch (s->ram_size >> 20) {
+> -    case 128:
+> -        return ASPEED_SDMC_AST2500_128MB;
+> -    case 256:
+> -        return ASPEED_SDMC_AST2500_256MB;
+> -    case 512:
+> -        return ASPEED_SDMC_AST2500_512MB;
+> -    case 1024:
+> -        return ASPEED_SDMC_AST2500_1024MB;
+> -    default:
+> -        g_assert_not_reached();
+> -        break;
+> -    }
+> -}
+> -
+> -static int ast2600_rambits(AspeedSDMCState *s)
+> -{
+> -    switch (s->ram_size >> 20) {
+> -    case 256:
+> -        return ASPEED_SDMC_AST2600_256MB;
+> -    case 512:
+> -        return ASPEED_SDMC_AST2600_512MB;
+> -    case 1024:
+> -        return ASPEED_SDMC_AST2600_1024MB;
+> -    case 2048:
+> -        return ASPEED_SDMC_AST2600_2048MB;
+> -    default:
+> -        g_assert_not_reached();
+> -        break;
+> -    }
+> -}
+> -
+>  static void aspeed_sdmc_reset(DeviceState *dev)
+>  {
+>      AspeedSDMCState *s =3D ASPEED_SDMC(dev);
+> @@ -324,10 +273,32 @@ static const TypeInfo aspeed_sdmc_info =3D {
+>      .abstract   =3D true,
+>  };
+>
+> +static int aspeed_sdmc_get_ram_bits(AspeedSDMCState *s)
+> +{
+> +    AspeedSDMCClass *asc =3D ASPEED_SDMC_GET_CLASS(s);
+> +    int i;
+> +
+> +    /*
+> +     * The bitfield value encoding the RAM size is the index of the
+> +     * possible RAM size array
+> +     */
+> +    for (i =3D 0; asc->valid_ram_sizes[i]; i++) {
+> +        if (s->ram_size =3D=3D asc->valid_ram_sizes[i]) {
+> +            return i;
+> +        }
+> +    }
+> +
+> +    /*
+> +     * Invalid RAM sizes should have been excluded when setting the
+> +     * SoC RAM size.
+> +     */
+> +    g_assert_not_reached();
+> +}
+> +
+>  static uint32_t aspeed_2400_sdmc_compute_conf(AspeedSDMCState *s, uint32=
+_t data)
+>  {
+>      uint32_t fixed_conf =3D ASPEED_SDMC_VGA_COMPAT |
+> -        ASPEED_SDMC_DRAM_SIZE(ast2400_rambits(s));
+> +        ASPEED_SDMC_DRAM_SIZE(aspeed_sdmc_get_ram_bits(s));
+>
+>      /* Make sure readonly bits are kept */
+>      data &=3D ~ASPEED_SDMC_READONLY_MASK;
+> @@ -385,7 +356,7 @@ static uint32_t aspeed_2500_sdmc_compute_conf(AspeedS=
+DMCState *s, uint32_t data)
+>      uint32_t fixed_conf =3D ASPEED_SDMC_HW_VERSION(1) |
+>          ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB) |
+>          ASPEED_SDMC_CACHE_INITIAL_DONE |
+> -        ASPEED_SDMC_DRAM_SIZE(ast2500_rambits(s));
+> +        ASPEED_SDMC_DRAM_SIZE(aspeed_sdmc_get_ram_bits(s));
+>
+>      /* Make sure readonly bits are kept */
+>      data &=3D ~ASPEED_SDMC_AST2500_READONLY_MASK;
+> @@ -451,7 +422,7 @@ static uint32_t aspeed_2600_sdmc_compute_conf(AspeedS=
+DMCState *s, uint32_t data)
+>  {
+>      uint32_t fixed_conf =3D ASPEED_SDMC_HW_VERSION(3) |
+>          ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB) |
+> -        ASPEED_SDMC_DRAM_SIZE(ast2600_rambits(s));
+> +        ASPEED_SDMC_DRAM_SIZE(aspeed_sdmc_get_ram_bits(s));
+>
+>      /* Make sure readonly bits are kept (use ast2500 mask) */
+>      data &=3D ~ASPEED_SDMC_AST2500_READONLY_MASK;
 > --
 > 2.25.4
 >

@@ -1,252 +1,175 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2141830lfy;
-        Thu, 6 Aug 2020 17:14:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxcZEzDr02HtG/ErUeUxVfLJPeoVbSIFkdhu32rIgPQtgSGnNe7jR0C1nrlTRSJbSppsQ5x
-X-Received: by 2002:a25:e791:: with SMTP id e139mr17349938ybh.67.1596759246661;
-        Thu, 06 Aug 2020 17:14:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1596759246; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2344689lfy;
+        Thu, 6 Aug 2020 23:00:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxDNcOH2fiv2ickL1ReKtUK3y9CmR1jwkS69phGAq5FmUiM8jH5RxUPTtEI3y7FOcsnUsAX
+X-Received: by 2002:a25:d709:: with SMTP id o9mr17074749ybg.392.1596780006732;
+        Thu, 06 Aug 2020 23:00:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1596780006; cv=none;
         d=google.com; s=arc-20160816;
-        b=RllOIVyRLWUh0uFstpta38ArEJYpOUFGKa7A8kuU3MXxIDl4YhoV2JeJ9MdkXg7Is5
-         bpJxCpjLKvcdPwqYV1gSIbbWzN5QblWaMpi5a1aZ7UjC+JcEuXVyG921BB9VfijYxHnG
-         aZaBdyFXF5bSI+C8llFnfO8wOe+GAdsX4++TC7XNfp2VJlhXwTc2hxfTNcFPbqzdUH7b
-         ZeDaHD05UCVvuXMvozLl4UXr58a0bQmseJklHIFY3+O7eQkGPE/6vllTbrzM3fA6QMnG
-         toNRFZmb14wsll8XNR5fBHmNRcWqqr57uAtB/nDUkvjdGi7wFNoU/AUzTEZbjDMmTy49
-         so3g==
+        b=OBpjNQbSiLBWxwDz+lyqau1QFVsoB2MFr5/EUhw5+IB5rIpG2rEA9ZYExqM+LdQ1NB
+         OU7hkyUOrbuJnJbyQoQg+egTmkVfry3ujiECjMfbbsVu6vj/nybULJoLIA9lf/XcgVvR
+         x9nG68ti+ku/R6WfWiKkqj9UREjjgEXYE9FFJpBrpk5hMayQo+Mhsc3vOzJCsYQmLpkB
+         oZpKTPhglMj/tnhnXE7yx8buhSVU2fVss8Xgf7tiPPFdByx9AJ33VCTCZxayoBZp+3+u
+         UpJ79zvaFnSmA6KQ31dbN8MNVIYtTNnqipF1/+HUVJvAysNB06Gu7W5Da5K4dyoex94U
+         bOCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Egw1RCFdj6joX5l5R8CpYFJ3boYu4uDaCD/EFl6gn2M=;
-        b=c6bge4984teLdJpMhOyKHiy1t/62J34qjad+RMjgqLAym95gk39MxkkdDFY16WwcNS
-         z/i2YziMUS61PM3sZJIzOm7f33yUkC4bPxVpEssbl4r1wDYu7RU6weLsc/M+Ms1TsGL4
-         vXos/3xvTcmDudZNO6ZM+bA0WbxjgevAYooD2IQyfBwIGCxSgALCWx/UYa4Vf4rz8Sus
-         XTo9R472RiUtIN9RSHc/GrifKL3TsPqCAld4IQAd0P3idTrel/0YOWlofwZToqZgo/rj
-         5TyYVFcOuCTrkoMDO3mp9SnCKvkK8K66x5VxDFzmiSGRInY4318B71RoARzzG/93oS/I
-         Y52Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=8K7nGWLUag+Bky5nqYCDF2FhGvoYqYWaYNHIskWT0xY=;
+        b=hbYNduVz8mSnu1dkZpMwNRbFsFRq5kIGDsgS0XrgUswMIKjRpiTXuCEzoqsptIDcMj
+         y3WGKn0qtgxFfuwgWvXuJfTo4Q9TmvSWeZfPn5DDwnrIRVYJeWDwB6OcjYy4dqwlZNJ1
+         SCIJQnXjPMAUnJ8h/6vVaWOdtmCKiv47oxngCMPmWmOW5kk/stbZk2D5cDsLXEUuCjzd
+         PmG2HbpZqUI/sdmRdG80RpvKxxnKN0hw4Czn8Vu4YCW0Go1LAv5WgLjFnQhDBi4yQPbC
+         4mtjbUmh9jpZjnuAMRtQ07t0ohbesFLoj6nN3WY/Edb+OuV6xutzF98zKOgsLYclo/ik
+         6m5Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=YUbTplOw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m4si6201990yba.121.2020.08.06.17.14.06
+        by mx.google.com with ESMTPS id i11si7307614ybm.423.2020.08.06.23.00.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 06 Aug 2020 17:14:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 06 Aug 2020 23:00:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=YUbTplOw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37716 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:47654 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k3q1N-0001ql-UA
-	for alex.bennee@linaro.org; Thu, 06 Aug 2020 20:14:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45340)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k3vQE-0005s9-3K
+	for alex.bennee@linaro.org; Fri, 07 Aug 2020 02:00:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pz1-0000m1-Lt; Thu, 06 Aug 2020 20:11:40 -0400
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:44114)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1k3pyz-0007Pr-QQ; Thu, 06 Aug 2020 20:11:39 -0400
-Received: by mail-ed1-x544.google.com with SMTP id l23so22708431edv.11;
- Thu, 06 Aug 2020 17:11:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Egw1RCFdj6joX5l5R8CpYFJ3boYu4uDaCD/EFl6gn2M=;
- b=YUbTplOwt6L/TTav+wd5G9F4R/hQclbFG9M6lst1spfSl3lUTmIa+YNoycqU0QNKxT
- TVpvK+Vx2s0V5xeUfbL3Ei/r+Q3LWE9NhqTiVXp2RKPjQX5dg4fPXLSuKq9XwM0smaKg
- LMRSd3UgYFnFUvnIKji10vJ8OIHZ+zQG208CY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Egw1RCFdj6joX5l5R8CpYFJ3boYu4uDaCD/EFl6gn2M=;
- b=pjvjaaVJnRnxFhYrNNBZ9krNwSH8wKJnbEn5A2LInD2JHrNiGcHWneNUFUm6xctD46
- 751xkjA61k9vngLMBwe4HmC6tRx7koTFPH89dn5nPRJOKeZkPCg6HNGwKRMy8BxGZgom
- r8UQ4+U1Goj4nbVpUeHlGYDJ5ymJK2VMUgUqPioVQUdMbgRZYACN/FySzFpLufZ9flJW
- Z803d8fh8Pcvg2grCiPYgNQEtfAiznIHT2aYJuQrWIGLxLfuAamwZ9oUybd7oJRBTOqw
- 0VHDXfI7QkWOqPsKiSFZHWTpb5/2z4Ck61te1Vxf4AongWaZxSGro2BisvKG+yCQVWhm
- qr3Q==
-X-Gm-Message-State: AOAM533COiDRWTq23YA22tlx1wY7OF/StFuJXCZo8jnbOfdFf/jyvoSD
- HLNMHxUXsbZkPiRRqQIhUe2wnSqlGfE5TZo/9+M=
-X-Received: by 2002:aa7:cd07:: with SMTP id b7mr6770722edw.172.1596759095342; 
- Thu, 06 Aug 2020 17:11:35 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1k3vQ4-0005rw-5G; Fri, 07 Aug 2020 01:59:56 -0400
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:58927)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1k3vQ1-0002JT-Q0; Fri, 07 Aug 2020 01:59:55 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.217])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 0988A549C489;
+ Fri,  7 Aug 2020 07:59:44 +0200 (CEST)
+Received: from kaod.org (37.59.142.106) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Fri, 7 Aug 2020
+ 07:59:44 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-106R006991df880-09ce-4179-8efc-5a80c0d05a16,
+ 9C6B65F6CFD3D723D723CC07BEDAC6F805E88D1E) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH for-5.2 02/19] m25p80: Add support for mx25l25635f
+To: Joel Stanley <joel@jms.id.au>
 References: <20200806132106.747414-1-clg@kaod.org>
- <20200806132106.747414-19-clg@kaod.org>
-In-Reply-To: <20200806132106.747414-19-clg@kaod.org>
-From: Joel Stanley <joel@jms.id.au>
-Date: Fri, 7 Aug 2020 00:11:23 +0000
-Message-ID: <CACPK8XfgEgKKdrN4OGv1=pj9wCXbRijL5opxAXnUsBb3m8d=bA@mail.gmail.com>
-Subject: Re: [PATCH for-5.2 18/19] aspeed/sdmc: Simplify calculation of RAM
- bits
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::544;
- envelope-from=joel.stan@gmail.com; helo=mail-ed1-x544.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ <20200806132106.747414-3-clg@kaod.org>
+ <CACPK8XddhjsdTF2tiiuFoDZ9L+LqOSJLydE-YUAqkbGs4OvquA@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <baad9663-5df1-9a90-5cc7-44fda7a18cda@kaod.org>
+Date: Fri, 7 Aug 2020 07:59:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <CACPK8XddhjsdTF2tiiuFoDZ9L+LqOSJLydE-YUAqkbGs4OvquA@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.106]
+X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: f85cd0b8-55bd-48a5-bf45-9614b3140636
+X-Ovh-Tracer-Id: 17136196584775650211
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkedugddutdegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepleduueelkefhudffkedtieefheevgfekhefgudeuheeuledvkeelgfffudeludelnecuffhomhgrihhnpehmrggtrhhonhhigidrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghu
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/07 01:59:49
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
+ URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ngaeW6smUxiC
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 2HjNebTVEzHN
 
-On Thu, 6 Aug 2020 at 13:21, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> Changes in commit 533eb415df2e ("arm/aspeed: actually check RAM size")
-> introduced a 'valid_ram_sizes' array which can be used to compute the
-> associated bit field value encoding the RAM size. The field is simply
-> the index of the array.
->
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
+On 8/7/20 12:55 AM, Joel Stanley wrote:
+> On Thu, 6 Aug 2020 at 13:21, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> The mx25l25635f is an extenstion of the mx25l25635e. It includes QPI
+>> support, 4-Byte Address Command Set and faster transfers. See this
+>> document for more details :
+>>
+>> https://www.macronix.com/Lists/ApplicationNote/Attachments/1892/AN0200V1_MGRT_MX25L25635E_25735E%20to%20MX25L25635F_25735F.pdf
+>>
+>> Both devices have the same 3bytes JEDEC ID: 0xc22019. They can be
+>> distinguished with the QPIID command which is only available on
+>> mx25l25635f. The mx25l25635f also has a longer JEDEC ID that we can
+>> use for the model.
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+> 
+> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> 
+> We don't have support for this one in upstream Linux.
 
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+It's detected by testing the 4BYTE operation capability in the SFDP table
+in mx25l25635_post_bfpt_fixups()
 
-> ---
->  hw/misc/aspeed_sdmc.c | 79 ++++++++++++++-----------------------------
->  1 file changed, 25 insertions(+), 54 deletions(-)
->
-> diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
-> index 81c73450ab5d..08f856cbda7e 100644
-> --- a/hw/misc/aspeed_sdmc.c
-> +++ b/hw/misc/aspeed_sdmc.c
-> @@ -159,57 +159,6 @@ static const MemoryRegionOps aspeed_sdmc_ops =3D {
->      .valid.max_access_size =3D 4,
->  };
->
-> -static int ast2400_rambits(AspeedSDMCState *s)
-> -{
-> -    switch (s->ram_size >> 20) {
-> -    case 64:
-> -        return ASPEED_SDMC_DRAM_64MB;
-> -    case 128:
-> -        return ASPEED_SDMC_DRAM_128MB;
-> -    case 256:
-> -        return ASPEED_SDMC_DRAM_256MB;
-> -    case 512:
-> -        return ASPEED_SDMC_DRAM_512MB;
-> -    default:
-> -        g_assert_not_reached();
-> -        break;
-> -    }
-> -}
-> -
-> -static int ast2500_rambits(AspeedSDMCState *s)
-> -{
-> -    switch (s->ram_size >> 20) {
-> -    case 128:
-> -        return ASPEED_SDMC_AST2500_128MB;
-> -    case 256:
-> -        return ASPEED_SDMC_AST2500_256MB;
-> -    case 512:
-> -        return ASPEED_SDMC_AST2500_512MB;
-> -    case 1024:
-> -        return ASPEED_SDMC_AST2500_1024MB;
-> -    default:
-> -        g_assert_not_reached();
-> -        break;
-> -    }
-> -}
-> -
-> -static int ast2600_rambits(AspeedSDMCState *s)
-> -{
-> -    switch (s->ram_size >> 20) {
-> -    case 256:
-> -        return ASPEED_SDMC_AST2600_256MB;
-> -    case 512:
-> -        return ASPEED_SDMC_AST2600_512MB;
-> -    case 1024:
-> -        return ASPEED_SDMC_AST2600_1024MB;
-> -    case 2048:
-> -        return ASPEED_SDMC_AST2600_2048MB;
-> -    default:
-> -        g_assert_not_reached();
-> -        break;
-> -    }
-> -}
-> -
->  static void aspeed_sdmc_reset(DeviceState *dev)
->  {
->      AspeedSDMCState *s =3D ASPEED_SDMC(dev);
-> @@ -324,10 +273,32 @@ static const TypeInfo aspeed_sdmc_info =3D {
->      .abstract   =3D true,
->  };
->
-> +static int aspeed_sdmc_get_ram_bits(AspeedSDMCState *s)
-> +{
-> +    AspeedSDMCClass *asc =3D ASPEED_SDMC_GET_CLASS(s);
-> +    int i;
-> +
-> +    /*
-> +     * The bitfield value encoding the RAM size is the index of the
-> +     * possible RAM size array
-> +     */
-> +    for (i =3D 0; asc->valid_ram_sizes[i]; i++) {
-> +        if (s->ram_size =3D=3D asc->valid_ram_sizes[i]) {
-> +            return i;
-> +        }
-> +    }
-> +
-> +    /*
-> +     * Invalid RAM sizes should have been excluded when setting the
-> +     * SoC RAM size.
-> +     */
-> +    g_assert_not_reached();
-> +}
-> +
->  static uint32_t aspeed_2400_sdmc_compute_conf(AspeedSDMCState *s, uint32=
-_t data)
->  {
->      uint32_t fixed_conf =3D ASPEED_SDMC_VGA_COMPAT |
-> -        ASPEED_SDMC_DRAM_SIZE(ast2400_rambits(s));
-> +        ASPEED_SDMC_DRAM_SIZE(aspeed_sdmc_get_ram_bits(s));
->
->      /* Make sure readonly bits are kept */
->      data &=3D ~ASPEED_SDMC_READONLY_MASK;
-> @@ -385,7 +356,7 @@ static uint32_t aspeed_2500_sdmc_compute_conf(AspeedS=
-DMCState *s, uint32_t data)
->      uint32_t fixed_conf =3D ASPEED_SDMC_HW_VERSION(1) |
->          ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB) |
->          ASPEED_SDMC_CACHE_INITIAL_DONE |
-> -        ASPEED_SDMC_DRAM_SIZE(ast2500_rambits(s));
-> +        ASPEED_SDMC_DRAM_SIZE(aspeed_sdmc_get_ram_bits(s));
->
->      /* Make sure readonly bits are kept */
->      data &=3D ~ASPEED_SDMC_AST2500_READONLY_MASK;
-> @@ -451,7 +422,7 @@ static uint32_t aspeed_2600_sdmc_compute_conf(AspeedS=
-DMCState *s, uint32_t data)
->  {
->      uint32_t fixed_conf =3D ASPEED_SDMC_HW_VERSION(3) |
->          ASPEED_SDMC_VGA_APERTURE(ASPEED_SDMC_VGA_64MB) |
-> -        ASPEED_SDMC_DRAM_SIZE(ast2600_rambits(s));
-> +        ASPEED_SDMC_DRAM_SIZE(aspeed_sdmc_get_ram_bits(s));
->
->      /* Make sure readonly bits are kept (use ast2500 mask) */
->      data &=3D ~ASPEED_SDMC_AST2500_READONLY_MASK;
-> --
-> 2.25.4
->
+The only system I have access to is a SuperMicro P9 Boston but I can not
+upload a new kernel. However, the FW reports : 
+
+  BMC flash ID: 0xc21920c2
+  jedec_id: 0xc21920c2
+  flash type: MX25L25635F
+  ReadClk=0x32, WriteClk=0x85, EraseClk=0x85
+  [smcfw_spi] cpuclk: 198000000 MHz, RefCLK: 24000000 MHz, AXI-AHB ratio: 2:1
+  platform_flash: MX25L25635F (32768 Kbytes)
+
+
+> It's the one
+> that Alexander tried to get merged by renaming the mysterious
+> mx66l51235l.
+
+Yes. That one behaves a bit more like the mx25l25635e.
+
+Difficult to find a detection pattern. A model for SFDP would help. 
+
+C.
+
+> 
+>> ---
+>>  hw/block/m25p80.c | 1 +
+>>  1 file changed, 1 insertion(+)
+>>
+>> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+>> index 605ff55c6756..1696ab1f7821 100644
+>> --- a/hw/block/m25p80.c
+>> +++ b/hw/block/m25p80.c
+>> @@ -218,6 +218,7 @@ static const FlashPartInfo known_devices[] = {
+>>      { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
+>>      { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
+>>      { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0) },
+>> +    { INFO("mx25l25635f", 0xc22019,      0xc200,  64 << 10, 512, 0) },
+>>      { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+>>      { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+>>      { INFO("mx66u1g45g",  0xc2253b,      0,  64 << 10, 2048, ER_4K | ER_32K) },
+>> --
+>> 2.25.4
+>>
+

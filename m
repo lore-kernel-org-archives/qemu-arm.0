@@ -1,203 +1,152 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp180005lfy;
-        Tue, 11 Aug 2020 00:05:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxJTByslRlFvcAUj5p5RrxR6glmZlLFb945NhB2uWHSx/XeBrtceE2DuF/ZmH0rnIb2jsB4
-X-Received: by 2002:a25:cf97:: with SMTP id f145mr15925497ybg.202.1597129559285;
-        Tue, 11 Aug 2020 00:05:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597129559; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp336572lfy;
+        Tue, 11 Aug 2020 04:04:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzGdrYLTCfjxVzKZeByUmeMP5Gro2ze31YeO13naq+5Vj9UsH30oULM19I6YUp9lp39yyEa
+X-Received: by 2002:a50:9fc9:: with SMTP id c67mr25970724edf.69.1597143893231;
+        Tue, 11 Aug 2020 04:04:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597143893; cv=none;
         d=google.com; s=arc-20160816;
-        b=JT7jQSEnZDyfTOAeQJqvdpJ+chqiFNZS/LadvtoLSk/ZZQVjalHXAn+gwxfpi52Iv+
-         3UQ6Jo0aXAVNQey60dV2sysc896zGEH5+pAzGk3YSJs05YWn/ePTcH5giJHR66eyVVG6
-         D5RsfrAezjhIC0HBVn2/HWaIt011WR5T8P6mF7QxtaroSYeGexaf3E6CDZ+EVnS1DCDE
-         QQcySqtNrW5QtUm0kGzUKCnwkeQ+5lA8hHy22mVP1GwoyD1iWzZ/xke6PBQN3NudlYGQ
-         m2Z0cT0ESWN3ZIeBTSFa8F2efdpVLR0U++2RzCpmdoiqSalk3kFQwBW5V2K72MIAp5vT
-         0qUA==
+        b=GVDybX2QTa3HUvq80HZWGVB3l7HiFjhG65IB57ZyJ16sQek/8t5LxLl/i0bHv7dSU1
+         SyzqdGP6Ic1yfskZTuuSGbPE/ds3Uv5DRTCrTbFBXTVheY/+1uQYYj+E2BuhsWucMvVA
+         3R0ZxmdmuRT3l6MckxLq5E+nlEehUO8ana+HhylU+o0pSjen3PdOnkz97IajtBcvGccy
+         dyDV3+F8chvJzTh9q/mU00I2V8+yG9HCK125yR5Bi2AOa8R6dwxrW2BuOUYXnQ/9nNYf
+         Wivmwh9vuaFmefMFnwbPh66ntJQLpQovx1zM/Wr8jtTxJm0OvjRoEdW1cUa5PmzPmHjD
+         Cycw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=0wMVz68mMGGE49d+Z615jW8MMkioo0JBzWOFteVC9ok=;
-        b=nDZxajBAheIhXFIt6WIZdf35JRNV4HXGYLN1ya3BbxxnC98zzgfy6QDMZtfocFjFA0
-         coPMzRsAqCj0OMi+YgM15qZvX6EuBLL9ijO1S/wZVORtZ99K8FQTGHk23ll3y6l0k9BY
-         UlePFUAliq18TXOBrCTB19mEBwffzPOPixgoXeetwk7iETMxTJcUEYkVAkCKN6dNXbtc
-         DTSHXjHXQEiylL+u1olPWtXjfDJk/y/H75C7d9tCyIy4AGh3d1spdtcGUManOqP/JVUM
-         ei4sO69RO1ki3gVEXqHQP4b1WIQwpYpkiJQ8ZwemtXNwcXCC/1DyfYFGIsydC970DqtT
-         +leQ==
+        h=content-transfer-encoding:mime-version:organization:references
+         :in-reply-to:message-id:subject:cc:to:from:date:dkim-signature;
+        bh=LB0f2MRmQoQo40Yq2DAO9ZoMYhBNsLZuIU/pXNlvtX4=;
+        b=eNDaWwXo/0Q2dYoJJiy1l3r0q+Sa8w93Cv7l3yzWFTU+p8D/ru5DRKqrzS7fxE6lgE
+         eP37ggvnVCyLBf/To9cbZPdBJTk+GlUEJqjNZ8bVt/2CmoicO0x/CPcq41Funxv7eaHQ
+         zb/HujAzHbNH6NGkddHJ0H0PYbcm+AiwOggzMJjTMrxGkkpJgJB/G/VOcKiuCvoyXXck
+         WGSmpRHO4lQ+td92toqKVOkLaNSCgaZQIRLG3gotSUoVV/Rw51VfAMUcDDdTQKQMLmz4
+         DgzOd9dov3aSbTLSuISUAuV5eSQ1WtcDY5H9kxTLgpbc4kqI/TKpHOQ94slloWc1dfP2
+         GqHg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e8si18003499ybb.202.2020.08.11.00.05.59
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yg3bVzDI;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <cohuck@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id v13si12105642edr.516.2020.08.11.04.04.52
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Aug 2020 00:05:59 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 11 Aug 2020 04:04:53 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cohuck@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60764 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k5OMA-0002iJ-Le
-	for alex.bennee@linaro.org; Tue, 11 Aug 2020 03:05:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52074)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k5OM2-0002i2-AR; Tue, 11 Aug 2020 03:05:50 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:54875)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k5OM0-0000J5-6Z; Tue, 11 Aug 2020 03:05:50 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.16.114])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 5B59B55F4896;
- Tue, 11 Aug 2020 09:05:42 +0200 (CEST)
-Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Tue, 11 Aug
- 2020 09:05:41 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G0012edcea11-bf7b-4ef4-8153-29df96bb1c3b,
- 2C2967226A14075CAA5C60435B1EAB2FE94086EE) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH for-5.2 08/19] aspeed/sdhci: Fix reset sequence
-To: Joel Stanley <joel@jms.id.au>
-References: <20200806132106.747414-1-clg@kaod.org>
- <20200806132106.747414-9-clg@kaod.org>
- <CACPK8Xcy-OzbQ4oiLaq96VzROSsmnmSAa0dytRcCVp2ot+mQnw@mail.gmail.com>
- <6ed71987-6247-2098-4e48-9c5d59a74353@kaod.org>
- <CACPK8Xfx+TQezEisV9Tbew7SpoGu0N-tvwNWq+3-t1Y1bA6dXQ@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <2261f934-37b4-6425-ccae-8f53f7c6e7ac@kaod.org>
-Date: Tue, 11 Aug 2020 09:05:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Yg3bVzDI;
+       spf=pass (google.com: domain of cohuck@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=cohuck@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1597143892;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=LB0f2MRmQoQo40Yq2DAO9ZoMYhBNsLZuIU/pXNlvtX4=;
+	b=Yg3bVzDIgTF+ZJEQGl7RAji6neBHp8pQZeyYEn8wyQYrd31+xGn3jGzLjvgDyXZuTXOih7
+	PvACUeGUxK5QSyfs8oPdiZoO06RiBdEhX7LCfaF5sp9AgmLvcWppTT/43tOdsxPn2cEXvD
+	cZ/YKuNyNYi+4ntyMc695IKeOSyiK7k=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-521-i4__DAIrM7uPuV6zPkm9Yw-1; Tue, 11 Aug 2020 07:04:50 -0400
+X-MC-Unique: i4__DAIrM7uPuV6zPkm9Yw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 62654107ACCA;
+	Tue, 11 Aug 2020 11:04:48 +0000 (UTC)
+Received: from gondolin (ovpn-113-33.ams2.redhat.com [10.36.113.33])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 4C40E5F1E9;
+	Tue, 11 Aug 2020 11:04:37 +0000 (UTC)
+Date: Tue, 11 Aug 2020 13:04:34 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+ qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>, "Paolo
+ Bonzini" <pbonzini@redhat.com>, Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Peter Maydell
+ <peter.maydell@linaro.org>, Aleksandar Markovic
+ <aleksandar.qemu.devel@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>, Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>, Alex
+ =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, Greg Kurz
+ <groug@kaod.org>
+Subject: Re: [RFC PATCH v3 8/8] target/s390x: Use start-powered-off CPUState
+ property
+Message-ID: <20200811130434.7388cfa2.cohuck@redhat.com>
+In-Reply-To: <20200730114541.4dbdd15e.cohuck@redhat.com>
+References: <20200723025657.644724-1-bauerman@linux.ibm.com>
+	<20200723025657.644724-9-bauerman@linux.ibm.com>
+	<20200727144350.47abd7e7.cohuck@redhat.com>
+	<87a6zjuoru.fsf@morokweng.localdomain>
+	<20200730114541.4dbdd15e.cohuck@redhat.com>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-In-Reply-To: <CACPK8Xfx+TQezEisV9Tbew7SpoGu0N-tvwNWq+3-t1Y1bA6dXQ@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.97]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: eeed7dde-532b-49c5-92c7-666068a257e3
-X-Ovh-Tracer-Id: 4847562050579237670
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkeelgdduudegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghu
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.mo804.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/11 03:05:43
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, Eddie James <eajames@linux.ibm.com>,
- QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bwcUyM9FPLtz
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TUID: C9aGi+CY5TNi
 
-On 8/11/20 1:20 AM, Joel Stanley wrote:
-> On Mon, 10 Aug 2020 at 17:16, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> On 8/7/20 1:42 AM, Joel Stanley wrote:
->>> On Thu, 6 Aug 2020 at 13:21, Cédric Le Goater <clg@kaod.org> wrote:
->>>>
->>>> BIT(0) of the ASPEED_SDHCI_INFO register is set by SW and polled until
->>>> the bit is cleared by HW. Add definitions for the default value of
->>>> this register and fix the reset sequence by clearing the RESET bit.
->>>
->>> This is mentioned in the datasheet but I couldn't find if software
->>> depends on the behaviour. Were you just trying to make the model more
->>> accurate?
->>>
->>>>  #define ASPEED_SDHCI_INFO            0x00
->>>> -#define  ASPEED_SDHCI_INFO_RESET     0x00030000
->>>> +#define  ASPEED_SDHCI_INFO_SLOT1     (1 << 17)
->>>> +#define  ASPEED_SDHCI_INFO_SLOT0     (1 << 16)
->>>> +#define  ASPEED_SDHCI_INFO_RESET     (1 << 0)
->>>>  #define ASPEED_SDHCI_DEBOUNCE        0x04
->>>>  #define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
->>>>  #define ASPEED_SDHCI_BUS             0x08
->>>> @@ -67,6 +69,9 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
->>>>      AspeedSDHCIState *sdhci = opaque;
->>>>
->>>>      switch (addr) {
->>>> +    case ASPEED_SDHCI_INFO:
->>>> +        sdhci->regs[TO_REG(addr)] = (uint32_t)val & ~ASPEED_SDHCI_INFO_RESET;
->>>
->>> I think bits 24 and 25 should be writable too?
->>>
->>>         sdhci->regs[TO_REG(addr)] = (uint32_t)val &
->>> ~(ASPEED_SDHCI_INFO_RESET | ASPEED_SDHCI_INFO_SLOT10 |
->>> ASPEED_SDHCI_INFO_SLOT1);
->>>
->>>> +
->>>>      case ASPEED_SDHCI_SDIO_140:
->>>>          sdhci->slots[0].capareg = (uint64_t)(uint32_t)val;
->>>>          break;
->>>> @@ -155,7 +160,8 @@ static void aspeed_sdhci_reset(DeviceState *dev)
->>>>      AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
->>>>
->>>>      memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
->>>> -    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = ASPEED_SDHCI_INFO_RESET;
->>>> +    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =
->>>> +        ASPEED_SDHCI_INFO_SLOT1 | ASPEED_SDHCI_INFO_SLOT0;
->>>
->>> If we want to be super strict this is true for the "sd" devices, but
->>> the "emmc" device in the ast2600 only sets slot0. I don't think this
->>> distinction is important to model though.
->>
->> Both slots seems to be activated on all three SoCs. Am I looking at the
->> wrong controller ?
+On Thu, 30 Jul 2020 11:45:41 +0200
+Cornelia Huck <cohuck@redhat.com> wrote:
+
+> On Tue, 28 Jul 2020 21:51:33 -0300
+> Thiago Jung Bauermann <bauerman@linux.ibm.com> wrote:
 > 
-> Yes. the "SD/SDIO Host Controller" have both slots. The "eMMC
-> controller" at 0x1E750000 on the ast2600 has just the one slot.
-
-I forgot that one.
-
-> We have a property for the number of slots, so we could do something like this:
+> > Hi,
+> > 
+> > Cornelia Huck <cohuck@redhat.com> writes:
+> >   
+> > > On Wed, 22 Jul 2020 23:56:57 -0300
+> > > Thiago Jung Bauermann <bauerman@linux.ibm.com> wrote:
+> > >    
+> > >> Instead of setting CPUState::halted to 1 in s390_cpu_initfn(), use the
+> > >> start-powered-off property which makes cpu_common_reset() initialize it
+> > >> to 1 in common code.
+> > >> 
+> > >> Note that this changes behavior by setting cs->halted to 1 on reset, which
+> > >> didn't happen before.    
+> > >
+> > > I think that should be fine, as we change the cpu state to STOPPED in
+> > > the reset function, which sets halted to 1.    
+> > 
+> > Nice, thanks for checking.
+> >   
+> > >> 
+> > >> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+> > >> ---
+> > >>  target/s390x/cpu.c | 2 +-
+> > >>  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >> 
+> > >> NB: I was only able to test that this patch builds. I wasn't able to
+> > >> run it.    
+> > >
+> > > No noticeable difference under kvm, but running under tcg seems a bit
+> > > more sluggish than usual, and I saw some pausing on reboot (after the
+> > > bios handover to the kernel). Not sure if it were just flukes on my
+> > > laptop, would appreciate if someone else could give it a go.    
 > 
-> --- a/hw/sd/aspeed_sdhci.c
-> +++ b/hw/sd/aspeed_sdhci.c
-> @@ -159,12 +159,15 @@ static void aspeed_sdhci_realize(DeviceState
-> *dev, Error **errp)
->  static void aspeed_sdhci_reset(DeviceState *dev)
->  {
->      AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
-> +    uint32_t slots = ASPEED_SDHCI_INFO_SLOT0;
-> 
->      memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
-> 
-> +    if (sdhci->num_slots == 2)
-> +        slots |= ASPEED_SDHCI_INFO_SLOT1;
-> +
+> Experimented a bit with it again. There's a pause when switching from
+> the bios to the kernel (after the load reset normal has been done, I
+> guess), which is always there, but seems to get more noticeable with
+> this patch (varying wildly, but seems longer on average.) Hard to pin
+> down, and I don't really see a reason why that should happen, as we
+> should end up with halted == 1 in any case. Might still be a fluke,
+> even though I see it both on my laptop and on an LPAR (when running
+> under tcg; not seen under kvm, which is much faster anyway.)
 
-I think this is fine. The alternative would be an object class but it
-would be a bit overkill. 
+Tried again, the pause now seems comparable to the pause prior to this
+series. Might depend on the phase of the moon.
 
-Thanks,
+I ran kvm unit tests on it, and it looks good. So, I'm reasonable
+confident that this is fine, really just seems to be a fluke.
 
-C. 
-  
->      /* Same default value on AST2400, AST2500 and AST2600 SoCs */
-> -    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =
-> -        ASPEED_SDHCI_INFO_SLOT1 | ASPEED_SDHCI_INFO_SLOT0;
-> +    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = slots;
->      sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] = ASPEED_SDHCI_DEBOUNCE_RESET;
->  }
-> 
-
+Acked-by: Cornelia Huck <cohuck@redhat.com>

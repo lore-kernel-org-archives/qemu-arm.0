@@ -1,104 +1,104 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5755472lfy;
-        Mon, 10 Aug 2020 17:49:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyG/ssH48GV+PPX04pKrUaBSXhuyEkBbbRdiodJ7hLiBe3EqFwRt1disXK8PUC4R1mh0KX4
-X-Received: by 2002:a25:d102:: with SMTP id i2mr46212215ybg.398.1597106965232;
-        Mon, 10 Aug 2020 17:49:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597106965; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp5756046lfy;
+        Mon, 10 Aug 2020 17:50:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzPGMCNuQbozeYyZyODYe1IhZKYcRDvC6BKEA77QbiqN6vyfsYJNNT24bvf4NPmKWHDhFe0
+X-Received: by 2002:a25:6d44:: with SMTP id i65mr41226792ybc.75.1597107019520;
+        Mon, 10 Aug 2020 17:50:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597107019; cv=none;
         d=google.com; s=arc-20160816;
-        b=OLRLc3c135ZhcauOMDrhPBZYSscRh2m5n8b6RH16t6nQ70oSDhlt/c1HYpXJe0J09K
-         BeJG048Zqfitjap0lp4B69N/4QUePmvO68KxRFNryjgMHTNMSLTON+xsLrt1iGPC5LcL
-         pboAW7HLA9UcxOrKcm8r9HhIVhmgkzwxJoSJXaqG77Ekd3HCDPgpN6FT/x5nRduSRiVT
-         VNjAix+nUn0gbTyNWyJavdj0xzlkyMElD57ItZm8TDak6MEtnwcy0QoMc14gttvtQDGr
-         lFej1y/hFZqObWI9RR8kip6PEq+GRx/cXz2xvRR+5/aAxw2aQq4HkMFudasJWhg91hJl
-         tHgw==
+        b=b+1RyWKiUxNZhcZ6moWwydZqbWedhXjQP78bLEIqzVCQ6yygsxXFIKO2McrSQJEqGg
+         KidyO+B/tooM/Tt0EwfjdHMGhSThrd8W70hMfozYxB+59L1h+rMv/PUJ0ZuWA27Lxhgk
+         4H8rULsEEPNQUkFabioB+0XQdUUGl2vZ8/Tuxp416GrBn962ZQ2gbmB/T+YXzkTAKYi9
+         I4960ImVoYcP8dAfAitfQJBlHWAQcgaozV0J76fMtMBa0D0bqQkLmVTau3AfckSZ9mOr
+         Qkq9FfTygVSlfBLEas/VyFx5F1d85f/csIakoyqQWz8/slUFl8VxkZWL3Cr/YdH6wBwh
+         hkPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
          :from:subject:references:mime-version:message-id:in-reply-to:date
          :dkim-signature;
-        bh=cJ+kY4MqdpbUXLCMTfKhuudli9xfKAZEj3Kh1+n1es4=;
-        b=P3AKL3aEr5lOkbVv4efnXjxSZnyZvcWeb4waVHtnV1MpgMxAE5++KpMFJ1rULmKtEr
-         oFHQtOUcVtEMN6IEELwR4cvnr37WpPzEZcq/9xFWYrcb9w8Vbh2u89FsfA1p1PH9SMGh
-         +gMMVPRQlouZfvdS3LNqeKWVpmxBUdeQNQbuSXDGQY3gt4vGg+QNO47VgVrCCNIQU4Sy
-         xsHcAX1UDW1kCZCYQZxJFwN2yVsbhFKDP7uctngkYjJpRFDerntY4OoLLGMs4aDiAE6y
-         Mc9TfvjeGl59U16x2vaFQADTSb2VbFJgZ3IGJTRaE6ljoaUK8WwNcB/f5uFON/+xWR7h
-         ANbg==
+        bh=4Eootghw41FF5/0naKB9f8ImYTkEQZlCCgu9KyIHMes=;
+        b=xj0LWYKYViZubZjQkKBfAGzAZy2740XDnyufcADMLUNE3//wsjkSM4beKD0JIqzM7i
+         yQIFh2uqXl1m3hU094S5JAawSdRK1CK4TvgD7U3z/GceHuxl+N9KQ7hJmXEBl6vHuXT1
+         keBx1mk2J8ckvIGhJqXVbrLghB7j5g/XFEE5PO5ZizVLKPCkV0mnXGw4SAhX3lIrFrd+
+         5U4wUcLQV6M+YZxvtGO7oiyjBIYJQxK9Q77ANSM2aZyzdX5h/mvpjuLGVJButaO+fBEu
+         pF1ShpTRjQArQyY8SoLAIv8G7Kpy4u+Qjcdtq2KbB5h3jgBwb9mVYZLhtjkNH5gJcPmL
+         DnFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=G9oArRZz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=GMoSPJjD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 135si8586343ybd.363.2020.08.10.17.49.25
+        by mx.google.com with ESMTPS id n187si7353816ybc.376.2020.08.10.17.50.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Aug 2020 17:49:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 10 Aug 2020 17:50:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=G9oArRZz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=GMoSPJjD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:51334 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53552 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k5ITk-0004Pa-I9
-	for alex.bennee@linaro.org; Mon, 10 Aug 2020 20:49:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46854)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k5IUc-0005In-S9
+	for alex.bennee@linaro.org; Mon, 10 Aug 2020 20:50:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3YeoxXwsKCPwlwomrriqsirksskpi.gsquiqy-evqrsrkry.svk@flex--hskinnemoen.bounces.google.com>)
- id 1k5IQv-0007DW-5Q
- for qemu-arm@nongnu.org; Mon, 10 Aug 2020 20:46:29 -0400
-Received: from mail-pl1-x649.google.com ([2607:f8b0:4864:20::649]:53887)
+ <3Z-oxXwsKCgQlwomrriqsirksskpi.gsquiqy-hiziprsrkry.svk@flex--hskinnemoen.bounces.google.com>)
+ id 1k5IR2-0007Rl-D8
+ for qemu-devel@nongnu.org; Mon, 10 Aug 2020 20:46:36 -0400
+Received: from mail-qv1-xf49.google.com ([2607:f8b0:4864:20::f49]:52806)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3YeoxXwsKCPwlwomrriqsirksskpi.gsquiqy-evqrsrkry.svk@flex--hskinnemoen.bounces.google.com>)
- id 1k5IQt-0004i4-AU
- for qemu-arm@nongnu.org; Mon, 10 Aug 2020 20:46:28 -0400
-Received: by mail-pl1-x649.google.com with SMTP id a20so7916576pls.20
- for <qemu-arm@nongnu.org>; Mon, 10 Aug 2020 17:46:26 -0700 (PDT)
+ <3Z-oxXwsKCgQlwomrriqsirksskpi.gsquiqy-hiziprsrkry.svk@flex--hskinnemoen.bounces.google.com>)
+ id 1k5IR0-0004kV-Aj
+ for qemu-devel@nongnu.org; Mon, 10 Aug 2020 20:46:35 -0400
+Received: by mail-qv1-xf49.google.com with SMTP id q12so8476106qvm.19
+ for <qemu-devel@nongnu.org>; Mon, 10 Aug 2020 17:46:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=date:in-reply-to:message-id:mime-version:references:subject:from:to
  :cc:content-transfer-encoding;
- bh=cJ+kY4MqdpbUXLCMTfKhuudli9xfKAZEj3Kh1+n1es4=;
- b=G9oArRZzmpHYXqYueTZtvTbuGTFHLcgwuoDWm1Q7/cktdvNAdUL/PLTh7yFINS0yPj
- RxbNYYLCDeehzoXngMhTT6voZM7tsCwNxN0vm08aeNk1PrIU1Sn/4gN/Mba37lnjVCRY
- lqoTOW9sHFftRWmRjrC9RZwfRBJzmoz18OdOJItjJkukNCKZNK5BgBPPQqW/y1FZ3270
- CcRGZnKcdV4CoS6od2JOOngfEj5LKpRXqmp1gzR3yTMfVTKtHHNpxZY6PagaIiIUOxl0
- Kq8kY0RYRuiMA9iF8dU5rxvPgXQjPnWHDwUh1XJHUkdVrAydmHdEichv7G+VSLvIv0gc
- CmMw==
+ bh=4Eootghw41FF5/0naKB9f8ImYTkEQZlCCgu9KyIHMes=;
+ b=GMoSPJjD9Xt49lXgUfWRQtAxTorMunTCpKR9L/R2BqbO/5eCDW74/exIA6FASdqSc+
+ aAZekkPu+/9+3MIp9ai5c5axLnGoUo19sRRvQAH6KWJLkJa72W9BfvLKbv6fuy28QrZF
+ idEDGGJzpewQoIKLpHPSPbm296x9dNOa86tV5BDsbxpzrFRZ5F94cr14GGaAS8xhsJsv
+ qmadgSU4G/IUs8dRDqEeanZufDcm8gjoMFYn1EYYkgWa8qzd4XpPVLvaJAqhfyaUyz/H
+ 8eUhGxkfli/jLBiO0Pjs6OERNQwluDUT65x1oGYyvEvo6fxaVlmINCLov2CbyMWfae4N
+ WdbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc:content-transfer-encoding;
- bh=cJ+kY4MqdpbUXLCMTfKhuudli9xfKAZEj3Kh1+n1es4=;
- b=R9nHjP6qVRpkDGan/d/cdIn32tLkxy06CQWjuOpByIeyjEkhfpS590pF7ox+JEoaLU
- AfDyrWLxHrKsa/cVql1TzlUXaPLmNN+Ew2o/V7qYueY6HVtHTwQSa75CLB303FNoG5nn
- 7JCAxT3DUJYSH/J6tucoBzfqsc1MVEwZWUL2+ieSaGk1mA6rErnCVGd6ob1QKtFFha+G
- bLC7n0I7JWPGwmjBhcrmZ0InIudvB2AHons/bOvUCDkEUf7qpaxVdyrH1QZKPq0NFfTB
- JA/Lx9oOWgtPj/hquGzkWAhDq3O6/J4lWhgiFX3Q3vdGhN3BN+IQKTFZKxE4qxiNjuFa
- X97w==
-X-Gm-Message-State: AOAM530GO7gghgEa7gSkHvA9zRUvpg4JHVcTZ7rQUUi4Tf5QzKPx332k
- pH6ruCg/kPxm4NkxdZNNjX/opV/kOA9tREQGPQ==
-X-Received: by 2002:a17:90a:f014:: with SMTP id
- bt20mr284070pjb.0.1597106785160; 
- Mon, 10 Aug 2020 17:46:25 -0700 (PDT)
-Date: Tue, 11 Aug 2020 00:46:01 +0000
+ bh=4Eootghw41FF5/0naKB9f8ImYTkEQZlCCgu9KyIHMes=;
+ b=YKkk75MSdZaZq2uYrhgSuzTaSDKCtPMRWiRDxQHXAlp4fRzMf3oTwbpgezlkXNI3DV
+ Bk5YOa1cXSL47pP4L48b1L9Oqj2ypRYVpZUNFtMfXgBQosRfSLWCr/6BiYuhMu49DMQX
+ euc7B9wyJFe2gAad5SONzZNdVL0rTSpbTCb2XlVFZSPuSb6/uksp1V61UPcnnn6EL8WK
+ YK65cwnXPjt0KMe2aS3WBOkoOZvhvYMdoPDsVKbMdeapIX+Ew5RpJycTDxQm3aNmx4hb
+ l2uCcM/7sNCpCragPvaF4sojYTScBDOVtHX172tlJl+hYfxzLirVAIgCkLbhhyMnMk8s
+ 3iXQ==
+X-Gm-Message-State: AOAM533HUJmB1cl0PbvgHOp8mif5ycG/uSmBiGF4em1XXu49eI6V4S9j
+ HeVj3n1Jo0WAomP4wvIwy++tNBeYFdnrBY+GYg==
+X-Received: by 2002:ad4:5849:: with SMTP id de9mr29974528qvb.22.1597106791968; 
+ Mon, 10 Aug 2020 17:46:31 -0700 (PDT)
+Date: Tue, 11 Aug 2020 00:46:05 +0000
 In-Reply-To: <20200811004607.2133149-1-hskinnemoen@google.com>
-Message-Id: <20200811004607.2133149-8-hskinnemoen@google.com>
+Message-Id: <20200811004607.2133149-12-hskinnemoen@google.com>
 Mime-Version: 1.0
 References: <20200811004607.2133149-1-hskinnemoen@google.com>
 X-Mailer: git-send-email 2.28.0.236.gb10cc79966-goog
-Subject: [PATCH v7 07/13] hw/arm: Load -bios image as a boot ROM for npcm7xx
+Subject: [PATCH v7 11/13] hw/arm: Wire up BMC boot flash for npcm750-evb and
+ quanta-gsj
 From: Havard Skinnemoen <hskinnemoen@google.com>
 To: peter.maydell@linaro.org, f4bug@amsat.org, clg@kaod.org, joel@jms.id.au
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
  kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::649;
- envelope-from=3YeoxXwsKCPwlwomrriqsirksskpi.gsquiqy-evqrsrkry.svk@flex--hskinnemoen.bounces.google.com;
- helo=mail-pl1-x649.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f49;
+ envelope-from=3Z-oxXwsKCgQlwomrriqsirksskpi.gsquiqy-hiziprsrkry.svk@flex--hskinnemoen.bounces.google.com;
+ helo=mail-qv1-xf49.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -105
@@ -109,92 +109,89 @@ X-Spam_report: (-10.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e6HE0wv/52XM
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iOljM24WpLX7
 
-If a -bios option is specified on the command line, load the image into
-the internal ROM memory region, which contains the first instructions
-run by the CPU after reset.
+This allows these NPCM7xx-based boards to boot from a flash image, e.g.
+one built with OpenBMC. For example like this:
 
-If -bios is not specified, the vbootrom included with qemu is loaded by
-default.
+IMAGE=3D${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc
+qemu-system-arm -machine quanta-gsj -nographic \
+	-drive file=3D${IMAGE},if=3Dmtd,bus=3D0,unit=3D0,format=3Draw,snapshot=3Do=
+n
 
 Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
 Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
 Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 ---
- hw/arm/npcm7xx_boards.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ hw/arm/npcm7xx_boards.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
 diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-index 0b9dce2b35..26ea97072b 100644
+index 26ea97072b..bd0b822907 100644
 --- a/hw/arm/npcm7xx_boards.c
 +++ b/hw/arm/npcm7xx_boards.c
-@@ -18,12 +18,38 @@
-=20
+@@ -19,6 +19,7 @@
  #include "hw/arm/npcm7xx.h"
  #include "hw/core/cpu.h"
-+#include "hw/loader.h"
+ #include "hw/loader.h"
++#include "hw/qdev-properties.h"
  #include "qapi/error.h"
-+#include "qemu-common.h"
+ #include "qemu-common.h"
  #include "qemu/units.h"
-+#include "sysemu/sysemu.h"
+@@ -50,6 +51,22 @@ static void npcm7xx_load_bootrom(NPCM7xxState *soc)
+     }
+ }
 =20
- #define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7
- #define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff
-=20
-+static const char npcm7xx_default_bootrom[] =3D "npcm7xx_bootrom.bin";
-+
-+static void npcm7xx_load_bootrom(NPCM7xxState *soc)
++static void npcm7xx_connect_flash(NPCM7xxFIUState *fiu, int cs_no,
++                                  const char *flash_type, DriveInfo *dinfo=
+)
 +{
-+    g_autofree char *filename =3D NULL;
-+    int ret;
++    DeviceState *flash;
++    qemu_irq flash_cs;
 +
-+    if (!bios_name) {
-+        bios_name =3D npcm7xx_default_bootrom;
++    flash =3D qdev_new(flash_type);
++    if (dinfo) {
++        qdev_prop_set_drive(flash, "drive", blk_by_legacy_dinfo(dinfo));
 +    }
++    qdev_realize_and_unref(flash, BUS(fiu->spi), &error_fatal);
 +
-+    filename =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
-+    if (!filename) {
-+        error_report("Could not find ROM image '%s'", bios_name);
-+        exit(1);
-+    }
-+    ret =3D load_image_mr(filename, &soc->irom);
-+    if (ret < 0) {
-+        error_report("Failed to load ROM image '%s'", filename);
-+        exit(1);
-+    }
++    flash_cs =3D qdev_get_gpio_in_named(flash, SSI_GPIO_CS, 0);
++    qdev_connect_gpio_out_named(DEVICE(fiu), "cs", cs_no, flash_cs);
 +}
 +
  static void npcm7xx_connect_dram(NPCM7xxState *soc, MemoryRegion *dram)
  {
      memory_region_add_subregion(get_system_memory(), NPCM7XX_DRAM_BA, dram=
 );
-@@ -60,6 +86,7 @@ static void npcm750_evb_init(MachineState *machine)
-     npcm7xx_connect_dram(soc, machine->ram);
+@@ -87,6 +104,7 @@ static void npcm750_evb_init(MachineState *machine)
      qdev_realize(DEVICE(soc), NULL, &error_fatal);
 =20
-+    npcm7xx_load_bootrom(soc);
+     npcm7xx_load_bootrom(soc);
++    npcm7xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0,=
+ 0));
      npcm7xx_load_kernel(machine, soc);
  }
 =20
-@@ -71,6 +98,7 @@ static void quanta_gsj_init(MachineState *machine)
-     npcm7xx_connect_dram(soc, machine->ram);
+@@ -99,6 +117,8 @@ static void quanta_gsj_init(MachineState *machine)
      qdev_realize(DEVICE(soc), NULL, &error_fatal);
 =20
-+    npcm7xx_load_bootrom(soc);
+     npcm7xx_load_bootrom(soc);
++    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx25l25635e",
++                          drive_get(IF_MTD, 0, 0));
      npcm7xx_load_kernel(machine, soc);
  }
 =20

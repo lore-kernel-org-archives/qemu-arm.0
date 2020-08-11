@@ -1,188 +1,205 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp408558lfy;
-        Tue, 11 Aug 2020 05:40:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyABPACdqaD6hNzTVTN/Ng+gEeRvRjB0LE4EhIxSqi/kAs4zzHvDuFsuifuZ09A77fBIzZK
-X-Received: by 2002:a25:5545:: with SMTP id j66mr47325995ybb.232.1597149629689;
-        Tue, 11 Aug 2020 05:40:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597149629; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp623463lfy;
+        Tue, 11 Aug 2020 09:50:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzrjqTu0PRRavrvFHw3VbqbcURW7PZg7XFrQAlSm7KrfO5V0I8b2ZNU/xcdJ5YowA116M2V
+X-Received: by 2002:a25:c6c7:: with SMTP id k190mr21518601ybf.166.1597164623383;
+        Tue, 11 Aug 2020 09:50:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597164623; cv=none;
         d=google.com; s=arc-20160816;
-        b=NG4rZEmWYWVPuTsG0SucGOHt7ilQkXBUzkz9NGbUEd1K7Za52THMwAcEuzYIy/O3xo
-         N71ko8b6Dh+dtcLrEH1n4U0Hei9aqSdmw3+4wlHRIgaiLd0jIIISumWZ2etM9ErW19I3
-         44covXKWLv3rv6rbuwaLQkdqBWVNxGCN0v8ZDSFd6BjOW4AqEcNMnWr0N6ZrbykAUSMl
-         1zc3gavfzFKgDFCacf38PSSZv5FU9yIhfZGKl/lV+OBFGW2MqUcN74fU0chskMBWhAob
-         yiOTdw0sPaq+F1fWyh/z63z4n3t28l+1zdFblgXQoiGfp9hJ4aCvFWLb1j/sWyp4Puoj
-         5Icw==
+        b=1Dbl/AXdys8A1l74THdgBXVxgV1pv/tKKuOabnvX8xqyBUfD8gfnU+AGG8MjOd2T+g
+         3PW+GbnuS/ANnr9AupIC28g4Xqx772fqapOX4lm9C1MB4hgeY1r7IROXOya0LUre8VeW
+         zeiWY+r6dTZyqOtkAtlY+i5dTp/gI5Md47ksAEWpFdwCDZKjTkKYHwHSTETUqTMJlgmy
+         Qao7yRYqlwXyHJenxbm9PgNoT6C4hsNEd5LJaygXGi6CFXfOmgfOta/+u5iRevM1vNYs
+         fdSAKOqyoFROcHThw0In8RknDme+epCbdbDCwI97zft1Mi2laIcD+qTT2LxvIg9Tg3jF
+         zCWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=/p3g6aJdl6zVZze9qpTS8QC6weQ0+lBuua3fUEENZkU=;
-        b=Wx0JdFdLOfzb/YAyiFK2BNY5IKPds8AAVwxnHiqtrZWC7hoBV3F1QNxN24EQ9F1qX2
-         oWyhNMqUnsvNlwo4gvPCEuRO4I6hEGgqEN+Dfwd0mfyFGYYK/mcYXku24iRaTFyZCYER
-         AqiY4MajrLLnBZL6Ww1UChf+7Klxr7DJqyRWxCfgqPHoAwN28GoI/vSvuLmESpTiqzuo
-         SWoTOglVzS8C611EiSMMYA0isdAcyt+DPiKsER1NVKulLrsZEm/QEMjCXIUhYHWmUoQz
-         rCNl935dezA2jkYBEurH//3A3YogEW3OWR/Meabheo5C9IRAy3JIUwzxn17dLtaAQ/aE
-         K/oA==
+        bh=2PzPA2ZMDExgUN38xf0J24vMOrGNObxbKrt9vOHFlUo=;
+        b=nxd1XuMrYNXa4RBtjzcIlSQ+wC1LxpnIA185p0v4oDs96qJdh23InyDQwiW3t4MMrz
+         Pq+Q2lhJYHFhkFWiNUdaqutxRcRE897pQUyTDZ5K2JdEw4/+bN4Ng/S2ETdOlgAPEoip
+         Pt6Dzf+DMWA45hc+OKc5CRyX/ipGoIac7ZHUOh3w6ysCWp15c2u6N9NQDn6rFZdDMJjh
+         jsVEFSo11d5M0nI86XYhwiDWcyBiHSqFmbP1/KafOLqSmHnB8LoNJn+2ynv5qlyjYlw0
+         nsaPtZburw5G4zdNwl10HWOx0pr6zCqX+npkghhMwkGBJJkZxMWQAYrTkLZ/g5z4i4o1
+         R9Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MxdMjHQh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aoSbQNz1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s59si19977033ybi.417.2020.08.11.05.40.29
+        by mx.google.com with ESMTPS id o81si8681980ybc.465.2020.08.11.09.50.23
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Aug 2020 05:40:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 11 Aug 2020 09:50:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=MxdMjHQh;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:35842 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aoSbQNz1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35982 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k5TZt-0007tz-3N
-	for alex.bennee@linaro.org; Tue, 11 Aug 2020 08:40:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39452)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k5XTi-0000Kf-Pd
+	for alex.bennee@linaro.org; Tue, 11 Aug 2020 12:50:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45486)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k5TYx-0007SS-Ry
- for qemu-devel@nongnu.org; Tue, 11 Aug 2020 08:39:31 -0400
-Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:39708)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k5TYv-0006Xo-Tf
- for qemu-devel@nongnu.org; Tue, 11 Aug 2020 08:39:31 -0400
-Received: by mail-ot1-x341.google.com with SMTP id z18so9928626otk.6
- for <qemu-devel@nongnu.org>; Tue, 11 Aug 2020 05:39:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=/p3g6aJdl6zVZze9qpTS8QC6weQ0+lBuua3fUEENZkU=;
- b=MxdMjHQhBps9vVjRJb0zqMVxDVfOWATFaYIjRyI8vj3vgeoOwbRpTqybLgpUCcF0Bg
- cbPyZI88nVbH/6ZWffG5KbqVPggSWdlU6HesCpOQ0lr5a9Tj9d0D8f+9hVGl/ygAKc5l
- vrYih/XpqT2DAOrC7UWH2/ieMFMQ/9yWn6xQpbk0lklgTM7EygNFSewC4PuySlnUVXzE
- GOAVtrlz1oDq4AYtHm8ghagc2Mu1V8h0Uuyy/6rWWfvkMd7vQM+ya5zpCRpo4Nq/4nDX
- mbInUG6e7uG6TTqRJPcSBWuBp8XQQL4tuAeC1/K/hq1zg7ifObToOQ/JrGzkVhdO5VPR
- v6Vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=/p3g6aJdl6zVZze9qpTS8QC6weQ0+lBuua3fUEENZkU=;
- b=Ijhb1sUxiE/iKnBv0iLeJjPItJHAODD8xmdjf74gCUyVZKPzm3ppxgcT0tOXipiwlf
- BotfED4ER5KwjFUAZK4AglRlHgqd0pP5GLGh58XAGH98833wn4wj84UAqMnKTSRVquoO
- jxTRjLI/UwQSRKy01LX1/jJkeVWBjvYaDA+s2gNy7Z491AHuRBae4gWyJeTqg9Ic/Ab1
- 8W9N0CO7e9veeM/2Tv+J3iRtOGUS81oQP0b27mDdqDsbJV3bUMmzP+gMid6Tn4UQ+rD5
- Tqo85ODmUHspNCXDISuK3JH6iJuGX8zptd6A28HhJ+AjCjGCZlscqSP6tas6fgmI7Voh
- qJKA==
-X-Gm-Message-State: AOAM533DWYMhr8A9yVOQoJnjCPsKKidj2tJiTrZxZsgJcrBzjP2qzblc
- lh3DyFRFLl1OuGIo1892Z6Q09ZVPBhOHiHOr55VWqg==
-X-Received: by 2002:a05:6830:1305:: with SMTP id
- p5mr4859956otq.135.1597149568218; 
- Tue, 11 Aug 2020 05:39:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1k5XTT-0000Hh-Cw
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2020 12:50:07 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:49601
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1k5XTQ-0003Ed-4D
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2020 12:50:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1597164603;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=2PzPA2ZMDExgUN38xf0J24vMOrGNObxbKrt9vOHFlUo=;
+ b=aoSbQNz1h4hlSg/iBeJPjE2vPFlMzsUONIEW0XVmPXVv+YiqiTa0C6gD8hAbAp+of/Co2w
+ xqQPCtlZhB3iGtzDQTlG138SrC6mJ9wOnBsWRBZsIt+X9P+DlcSGXuEmoplu9n+zsxaKI5
+ GVHdVgLgFPc1dBDxaO0JLGQDoEIlcYY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-225-2qvoDm5VNQa9CcSlhyiHTw-1; Tue, 11 Aug 2020 12:49:59 -0400
+X-MC-Unique: 2qvoDm5VNQa9CcSlhyiHTw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7785B102C803;
+ Tue, 11 Aug 2020 16:49:58 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.192.99])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 3795610016E8;
+ Tue, 11 Aug 2020 16:49:57 +0000 (UTC)
+Date: Tue, 11 Aug 2020 18:49:54 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Haibo Xu <haibo.xu@linaro.org>
+Subject: Re: [PATCH 7/7] target/arm/cpu: spe: Enable spe to work with host cpu
+Message-ID: <20200811164954.s2sdjzpqpdh2orks@kamzik.brq.redhat.com>
+References: <cover.1596768588.git.haibo.xu@linaro.org>
+ <bf909c1f4904a22be0804cae9fd6f38ba4862563.1596768588.git.haibo.xu@linaro.org>
+ <20200810111640.ykejphmuyirncjwv@kamzik.brq.redhat.com>
+ <CAJc+Z1F_vFdJuy2kZnj0gZSOd_8-=rSfWFHjQSPU5XEKQ2KZkg@mail.gmail.com>
 MIME-Version: 1.0
-References: <20200806132106.747414-1-clg@kaod.org>
- <20200806132106.747414-15-clg@kaod.org>
-In-Reply-To: <20200806132106.747414-15-clg@kaod.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Aug 2020 13:39:17 +0100
-Message-ID: <CAFEAcA_rAre03ATda5rxgear4wsoef2-qD5SyAjunH8QW65W2A@mail.gmail.com>
-Subject: Re: [PATCH for-5.2 14/19] ftgmac100: Fix integer overflow in
- ftgmac100_do_tx()
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
- envelope-from=peter.maydell@linaro.org; helo=mail-ot1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <CAJc+Z1F_vFdJuy2kZnj0gZSOd_8-=rSfWFHjQSPU5XEKQ2KZkg@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/11 10:41:43
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Mauro Matteo Cascella <mcascell@redhat.com>,
- Frederic Konrad <konrad.frederic@yahoo.fr>, Andrew Jeffery <andrew@aj.id.au>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Joel Stanley <joel@jms.id.au>, Ziming Zhang <ezrakiez@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MgSLnCC6uV7X
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ philmd@redhat.com, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3RiW6ipYYe0G
 
-On Thu, 6 Aug 2020 at 14:21, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> When inserting the VLAN tag in packets, memmove() can generate an
-> integer overflow for packets whose length is less than 12 bytes.
->
-> Check length against the size of the ethernet header (14 bytes) to
-> avoid the crash and return FTGMAC100_INT_XPKT_LOST status. This seems
-> like a good modeling choice even if Aspeed does not specify anything
-> in that case.
->
-> Cc: Frederic Konrad <konrad.frederic@yahoo.fr>
-> Cc: Mauro Matteo Cascella <mcascell@redhat.com>
-> Reported-by: Ziming Zhang <ezrakiez@gmail.com>
-> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> ---
->  hw/net/ftgmac100.c | 19 +++++++++++++++----
->  1 file changed, 15 insertions(+), 4 deletions(-)
->
-> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-> index 280aa3d3a1e2..987b843fabc4 100644
-> --- a/hw/net/ftgmac100.c
-> +++ b/hw/net/ftgmac100.c
-> @@ -540,10 +540,21 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint=
-32_t tx_ring,
->                  s->isr |=3D FTGMAC100_INT_XPKT_LOST;
->                  len =3D  sizeof(s->frame) - frame_size - 4;
->              }
-> -            memmove(ptr + 16, ptr + 12, len - 12);
-> -            stw_be_p(ptr + 12, ETH_P_VLAN);
-> -            stw_be_p(ptr + 14, bd.des1);
-> -            len +=3D 4;
-> +
-> +            if (len < sizeof(struct eth_header)) {
-> +                qemu_log_mask(LOG_GUEST_ERROR,
-> +                         "%s: frame too small for VLAN insertion : %d by=
-tes\n",
-> +                         __func__, len);
-> +                s->isr |=3D FTGMAC100_INT_XPKT_LOST;
-> +            } else {
-> +                uint8_t *vlan_hdr =3D ptr + (ETH_ALEN * 2);
-> +                uint8_t *payload =3D vlan_hdr + sizeof(struct vlan_heade=
-r);
-> +
-> +                memmove(payload, vlan_hdr, len - (ETH_ALEN * 2));
-> +                stw_be_p(vlan_hdr, ETH_P_VLAN);
-> +                stw_be_p(vlan_hdr + 2, FTGMAC100_TXDES1_VLANTAG_CI(bd.de=
-s1));
-> +                len +=3D sizeof(struct vlan_header);
-> +            }
->          }
+On Tue, Aug 11, 2020 at 11:15:42AM +0800, Haibo Xu wrote:
+> > > +    if (!cpu->has_spe || !kvm_enabled()) {
+> > > +        unset_feature(env, ARM_FEATURE_SPE);
+> > > +    }
+> >
+> > I don't think this should be necessary.
+> >
+> 
+> Yes, I have tried to remove this check, and the vSPE can still work
+> correctly.
+> But I don't know whether there are some corner cases that trigger an error.
+> The similar logic is added in commit 929e754d5a to enable vPMU support.
 
-If you want to be picky, this will unnecessarily fail for the case of
-a packet that is big enough for the vlan header but which has been
-split up into multiple tx descriptors such that the first one is
-smaller than the size of the eth_header. You could fix that by
-doing the insertion of the vlan tag when you process the TXDES0_LTS
-descriptor rather than when you process the TXDES0_FTS one. (We
-already save the des1 info where the INS_VLANTAG flag is in the
-'flags' variable, so we have that available for the LTS descriptor code.)
+I think the PMU logic needs a cleanup, rather than to be imitated.
 
-thanks
--- PMM
+> 
+> > > +
+> > >      if (!arm_feature(env, ARM_FEATURE_EL2)) {
+> > >          /* Disable the hypervisor feature bits in the processor feature
+> > >           * registers if we don't have EL2. These are id_pfr1[15:12] and
+> > > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> > > index be045ccc5f..4ea58afc1d 100644
+> > > --- a/target/arm/kvm64.c
+> > > +++ b/target/arm/kvm64.c
+> > > @@ -679,6 +679,7 @@ bool
+> kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+> > >      features |= 1ULL << ARM_FEATURE_AARCH64;
+> > >      features |= 1ULL << ARM_FEATURE_PMU;
+> > >      features |= 1ULL << ARM_FEATURE_GENERIC_TIMER;
+> > > +    features |= 1ULL << ARM_FEATURE_SPE;
+> >
+> > No, SPE is not a feature we assume is present in v8.0 CPUs.
+> >
+> 
+> Yes, SPE is an optional feature for v8.2. How about changing to the
+> following logic:
+> 
+> spe_supported = ioctl(fdarray[0], KVM_CHECK_EXTENSION, KVM_CAP_ARM_SPE_V1)
+> > 0;
+> if (spe_supported) {
+>     features |= 1ULL << ARM_FEATURE_SPE;
+> }
+
+Yes, except you need to drop the ARM_FEATURE_SPE define and use the ID
+register bit instead like "sve_supported" does.
+
+> 
+> > >
+> > >      ahcf->features = features;
+> > >
+> > > @@ -826,6 +827,14 @@ int kvm_arch_init_vcpu(CPUState *cs)
+> > >      } else {
+> > >          env->features &= ~(1ULL << ARM_FEATURE_PMU);
+> > >      }
+> > > +    if (!kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_SPE_V1)) {
+> > > +        cpu->has_spe = false;
+> > > +    }
+> > > +    if (cpu->has_spe) {
+> > > +        cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_SPE_V1;
+> > > +    } else {
+> > > +        env->features &= ~(1ULL << ARM_FEATURE_SPE);
+> > > +    }
+> >
+> > The PMU code above this isn't a good pattern to copy. The SVE code below
+> > is better. SVE uses an ID bit and doesn't do the redundant KVM cap check.
+> > It'd be nice to cleanup the PMU code (with a separate patch) and then add
+> > SPE in a better way.
+> >
+> 
+> I noticed that Peter had sent out a mail
+> <https://www.mail-archive.com/qemu-devel@nongnu.org/msg727640.html> to talk
+> about the feature-identification strategy.
+> So shall we adapt it to the vPMU and vSPE feature?
+
+At least SPE. You'll have to double check that it makes sense to do for
+PMU. But, if so, then it should be done with a separate series.
+
+Thanks,
+drew
+

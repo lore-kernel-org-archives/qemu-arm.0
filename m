@@ -1,81 +1,96 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp147560lfy;
-        Mon, 10 Aug 2020 23:09:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypiZklC4+gJ43Z2TjnhispzjcX/FRVtlh4B1b9vi3ulNnwrjSSJGwxcJ6rrQqleiko47Fg
-X-Received: by 2002:a25:4c8:: with SMTP id 191mr43140208ybe.170.1597126155642;
-        Mon, 10 Aug 2020 23:09:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597126155; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp180005lfy;
+        Tue, 11 Aug 2020 00:05:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxJTByslRlFvcAUj5p5RrxR6glmZlLFb945NhB2uWHSx/XeBrtceE2DuF/ZmH0rnIb2jsB4
+X-Received: by 2002:a25:cf97:: with SMTP id f145mr15925497ybg.202.1597129559285;
+        Tue, 11 Aug 2020 00:05:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597129559; cv=none;
         d=google.com; s=arc-20160816;
-        b=KGd7+Xd7k7SvJ4GfbNAwr6m9D+NJl9S+QFkds813pJjlwLThqpbXnJuCw2N2AlIV2o
-         JkHsJzZPa8B6wCCqFK/mkaejDehdpc/9EdHH1qb4N/+7/Jkg1S/68RuzlLV4qcovZnT6
-         YV8pWd+EFWyMgy2dAP8sPIeNi8111XqmHO6QAnI+oalKYkFklz8CBTllX2/9AhOr311x
-         J+5Z8R+DQ95aZPlg2eyegrqq1fFHr7HTxb8GHQ3sLScw/4bnACjZ+vok0uFIuDx0Dtyv
-         F0SuNmINLOKuMyeZgnZMiadsO3AQoaAyG5OSrxH4pFGnXMJ1K0sP+G4W3dqB4CfND/3J
-         PDEg==
+        b=JT7jQSEnZDyfTOAeQJqvdpJ+chqiFNZS/LadvtoLSk/ZZQVjalHXAn+gwxfpi52Iv+
+         3UQ6Jo0aXAVNQey60dV2sysc896zGEH5+pAzGk3YSJs05YWn/ePTcH5giJHR66eyVVG6
+         D5RsfrAezjhIC0HBVn2/HWaIt011WR5T8P6mF7QxtaroSYeGexaf3E6CDZ+EVnS1DCDE
+         QQcySqtNrW5QtUm0kGzUKCnwkeQ+5lA8hHy22mVP1GwoyD1iWzZ/xke6PBQN3NudlYGQ
+         m2Z0cT0ESWN3ZIeBTSFa8F2efdpVLR0U++2RzCpmdoiqSalk3kFQwBW5V2K72MIAp5vT
+         0qUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=R43ICI/1EPQ6tRkh92YtUWHUzIgfB53Zb5n3N2y35bU=;
-        b=rbgrGovvm7B25yCDiLeTAVyewLUPrMrPs1QA50o7iDaOJy37jU+fnFYm6we1zeZ59B
-         9Jpn+VpUs7t1QoIvd0rgyP8ewdbMEZ6Num8iC42Lfry7wH4w5YT9oruAv2B/xQq/6OaO
-         2+DnZKW+5ko/wBsJbCWod5oja6qaJkEs2Ulju2QxhwmnrI3tK5Yxi2mCW2NazRxbnf9q
-         SsNlzXo/Vkbsjeejt+Z576Pbts336amcmOy6aGpqnX8YcnDCmYTjapm26geL3qwAOGLU
-         HI+1K22Bk581vzj95CMCU3sjVcRPbIpQ9T0LKOnvNIZTSvVNZdj25bAllYWYfhn4XVOw
-         VH1w==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=0wMVz68mMGGE49d+Z615jW8MMkioo0JBzWOFteVC9ok=;
+        b=nDZxajBAheIhXFIt6WIZdf35JRNV4HXGYLN1ya3BbxxnC98zzgfy6QDMZtfocFjFA0
+         coPMzRsAqCj0OMi+YgM15qZvX6EuBLL9ijO1S/wZVORtZ99K8FQTGHk23ll3y6l0k9BY
+         UlePFUAliq18TXOBrCTB19mEBwffzPOPixgoXeetwk7iETMxTJcUEYkVAkCKN6dNXbtc
+         DTSHXjHXQEiylL+u1olPWtXjfDJk/y/H75C7d9tCyIy4AGh3d1spdtcGUManOqP/JVUM
+         ei4sO69RO1ki3gVEXqHQP4b1WIQwpYpkiJQ8ZwemtXNwcXCC/1DyfYFGIsydC970DqtT
+         +leQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j9si19477441ybp.170.2020.08.10.23.09.15
+        by mx.google.com with ESMTPS id e8si18003499ybb.202.2020.08.11.00.05.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 10 Aug 2020 23:09:15 -0700 (PDT)
+        Tue, 11 Aug 2020 00:05:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45022 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60764 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k5NTH-00018F-0p
-	for alex.bennee@linaro.org; Tue, 11 Aug 2020 02:09:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42040)
+	id 1k5OMA-0002iJ-Le
+	for alex.bennee@linaro.org; Tue, 11 Aug 2020 03:05:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52074)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhiwei_liu@c-sky.com>)
- id 1k5NT8-00016u-Mm
- for qemu-arm@nongnu.org; Tue, 11 Aug 2020 02:09:06 -0400
-Received: from mail142-33.mail.alibaba.com ([198.11.142.33]:28446)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1k5OM2-0002i2-AR; Tue, 11 Aug 2020 03:05:50 -0400
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:54875)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhiwei_liu@c-sky.com>)
- id 1k5NT5-0002p4-By
- for qemu-arm@nongnu.org; Tue, 11 Aug 2020 02:09:06 -0400
-X-Alimail-AntiSpam: AC=CONTINUE; BC=0.06837587|-1; CH=green;
- DM=|CONTINUE|false|; DS=CONTINUE|ham_alarm|0.565985-0.000114229-0.433901;
- FP=0|0|0|0|0|-1|-1|-1; HT=e01l07440; MF=zhiwei_liu@c-sky.com; NM=1; PH=DU;
- RN=5; RT=5; SR=0; TI=SMTPD_---.IFpw2zh_1597126109; 
-Received: from L-PF1D6DP4-1208.hz.ali.com(mailfrom:zhiwei_liu@c-sky.com
- fp:SMTPD_---.IFpw2zh_1597126109)
- by smtp.aliyun-inc.com(10.147.44.118);
- Tue, 11 Aug 2020 14:08:35 +0800
-From: LIU Zhiwei <zhiwei_liu@c-sky.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH 1/1] target/arm: adjust CPTR_EL2 according to HCR_EL2.E2H
-Date: Tue, 11 Aug 2020 14:07:48 +0800
-Message-Id: <20200811060749.159-1-zhiwei_liu@c-sky.com>
-X-Mailer: git-send-email 2.23.0
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1k5OM0-0000J5-6Z; Tue, 11 Aug 2020 03:05:50 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.114])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 5B59B55F4896;
+ Tue, 11 Aug 2020 09:05:42 +0200 (CEST)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Tue, 11 Aug
+ 2020 09:05:41 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G0012edcea11-bf7b-4ef4-8153-29df96bb1c3b,
+ 2C2967226A14075CAA5C60435B1EAB2FE94086EE) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH for-5.2 08/19] aspeed/sdhci: Fix reset sequence
+To: Joel Stanley <joel@jms.id.au>
+References: <20200806132106.747414-1-clg@kaod.org>
+ <20200806132106.747414-9-clg@kaod.org>
+ <CACPK8Xcy-OzbQ4oiLaq96VzROSsmnmSAa0dytRcCVp2ot+mQnw@mail.gmail.com>
+ <6ed71987-6247-2098-4e48-9c5d59a74353@kaod.org>
+ <CACPK8Xfx+TQezEisV9Tbew7SpoGu0N-tvwNWq+3-t1Y1bA6dXQ@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <2261f934-37b4-6425-ccae-8f53f7c6e7ac@kaod.org>
+Date: Tue, 11 Aug 2020 09:05:40 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <CACPK8Xfx+TQezEisV9Tbew7SpoGu0N-tvwNWq+3-t1Y1bA6dXQ@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=198.11.142.33; envelope-from=zhiwei_liu@c-sky.com;
- helo=mail142-33.mail.alibaba.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/11 02:08:58
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: eeed7dde-532b-49c5-92c7-666068a257e3
+X-Ovh-Tracer-Id: 4847562050579237670
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrkeelgdduudegucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdeljeenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghu
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/11 03:05:43
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -88,96 +103,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, richard.henderson@linaro.org,
- LIU Zhiwei <zhiwei_liu@c-sky.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Eddie James <eajames@linux.ibm.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ODfrZCcSaKZE
+X-TUID: bwcUyM9FPLtz
 
-From DDI0487Fc_armv8_arm.pdf, the CPTR_EL2 has two kinds
-of layouts according to HCR_EL2.E2H.
+On 8/11/20 1:20 AM, Joel Stanley wrote:
+> On Mon, 10 Aug 2020 at 17:16, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> On 8/7/20 1:42 AM, Joel Stanley wrote:
+>>> On Thu, 6 Aug 2020 at 13:21, Cédric Le Goater <clg@kaod.org> wrote:
+>>>>
+>>>> BIT(0) of the ASPEED_SDHCI_INFO register is set by SW and polled until
+>>>> the bit is cleared by HW. Add definitions for the default value of
+>>>> this register and fix the reset sequence by clearing the RESET bit.
+>>>
+>>> This is mentioned in the datasheet but I couldn't find if software
+>>> depends on the behaviour. Were you just trying to make the model more
+>>> accurate?
+>>>
+>>>>  #define ASPEED_SDHCI_INFO            0x00
+>>>> -#define  ASPEED_SDHCI_INFO_RESET     0x00030000
+>>>> +#define  ASPEED_SDHCI_INFO_SLOT1     (1 << 17)
+>>>> +#define  ASPEED_SDHCI_INFO_SLOT0     (1 << 16)
+>>>> +#define  ASPEED_SDHCI_INFO_RESET     (1 << 0)
+>>>>  #define ASPEED_SDHCI_DEBOUNCE        0x04
+>>>>  #define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
+>>>>  #define ASPEED_SDHCI_BUS             0x08
+>>>> @@ -67,6 +69,9 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
+>>>>      AspeedSDHCIState *sdhci = opaque;
+>>>>
+>>>>      switch (addr) {
+>>>> +    case ASPEED_SDHCI_INFO:
+>>>> +        sdhci->regs[TO_REG(addr)] = (uint32_t)val & ~ASPEED_SDHCI_INFO_RESET;
+>>>
+>>> I think bits 24 and 25 should be writable too?
+>>>
+>>>         sdhci->regs[TO_REG(addr)] = (uint32_t)val &
+>>> ~(ASPEED_SDHCI_INFO_RESET | ASPEED_SDHCI_INFO_SLOT10 |
+>>> ASPEED_SDHCI_INFO_SLOT1);
+>>>
+>>>> +
+>>>>      case ASPEED_SDHCI_SDIO_140:
+>>>>          sdhci->slots[0].capareg = (uint64_t)(uint32_t)val;
+>>>>          break;
+>>>> @@ -155,7 +160,8 @@ static void aspeed_sdhci_reset(DeviceState *dev)
+>>>>      AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
+>>>>
+>>>>      memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
+>>>> -    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = ASPEED_SDHCI_INFO_RESET;
+>>>> +    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =
+>>>> +        ASPEED_SDHCI_INFO_SLOT1 | ASPEED_SDHCI_INFO_SLOT0;
+>>>
+>>> If we want to be super strict this is true for the "sd" devices, but
+>>> the "emmc" device in the ast2600 only sets slot0. I don't think this
+>>> distinction is important to model though.
+>>
+>> Both slots seems to be activated on all three SoCs. Am I looking at the
+>> wrong controller ?
+> 
+> Yes. the "SD/SDIO Host Controller" have both slots. The "eMMC
+> controller" at 0x1E750000 on the ast2600 has just the one slot.
 
-When HCR_EL2.E2H is 1, fp_exception_el should refer to
-HCR_EL2.FPEN and sve_exception_el should refer to HCR_EL2.ZEN.
+I forgot that one.
 
-Change-Id: If1c8f88db9fb505c36211ceafbf25e838ed96ec0
-Signed-off-by: LIU Zhiwei <zhiwei_liu@c-sky.com>
----
- target/arm/helper.c | 53 ++++++++++++++++++++++++++++++++++++++-------
- 1 file changed, 45 insertions(+), 8 deletions(-)
+> We have a property for the number of slots, so we could do something like this:
+> 
+> --- a/hw/sd/aspeed_sdhci.c
+> +++ b/hw/sd/aspeed_sdhci.c
+> @@ -159,12 +159,15 @@ static void aspeed_sdhci_realize(DeviceState
+> *dev, Error **errp)
+>  static void aspeed_sdhci_reset(DeviceState *dev)
+>  {
+>      AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
+> +    uint32_t slots = ASPEED_SDHCI_INFO_SLOT0;
+> 
+>      memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
+> 
+> +    if (sdhci->num_slots == 2)
+> +        slots |= ASPEED_SDHCI_INFO_SLOT1;
+> +
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 8ef0fb478f..19b74b25e4 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6116,11 +6116,29 @@ int sve_exception_el(CPUARMState *env, int el)
-      * they will be zero when EL2 is not present.
-      */
-     if (el <= 2 && !arm_is_secure_below_el3(env)) {
--        if (env->cp15.cptr_el[2] & CPTR_TZ) {
--            return 2;
--        }
--        if (env->cp15.cptr_el[2] & CPTR_TFP) {
--            return 0;
-+        if ((arm_hcr_el2_eff(env) & HCR_E2H) == HCR_E2H) {
-+            int zen = extract32(env->cp15.cptr_el[2], 16, 2);
-+            switch (zen) {
-+            case 0:
-+            case 2:
-+                return 2;
-+            case 1:
-+                if ((arm_hcr_el2_eff(env) & HCR_TGE) == HCR_TGE) {
-+                    if (el == 0) {
-+                        return 2;
-+                    }
-+                }
-+                break;
-+            case 3:
-+                break;
-+            }
-+        } else {
-+            if (env->cp15.cptr_el[2] & CPTR_TZ) {
-+                return 2;
-+            }
-+            if (env->cp15.cptr_el[2] & CPTR_TFP) {
-+                return 0;
-+            }
-         }
-     }
- 
-@@ -12492,10 +12510,29 @@ int fp_exception_el(CPUARMState *env, int cur_el)
-      */
- 
-     /* CPTR_EL2 : present in v7VE or v8 */
--    if (cur_el <= 2 && extract32(env->cp15.cptr_el[2], 10, 1)
--        && !arm_is_secure_below_el3(env)) {
-+    if ((cur_el <= 2) && !arm_is_secure_below_el3(env)) {
-         /* Trap FP ops at EL2, NS-EL1 or NS-EL0 to EL2 */
--        return 2;
-+        if ((arm_hcr_el2_eff(env) & HCR_E2H) == HCR_E2H) {
-+            int fpen = extract32(env->cp15.cptr_el[2], 20, 2);
-+            switch (fpen) {
-+            case 0:
-+            case 2:
-+                return 2;
-+            case 1:
-+                if ((arm_hcr_el2_eff(env) & HCR_TGE) == HCR_TGE) {
-+                    if (cur_el == 0) {
-+                        return 2;
-+                    }
-+                }
-+                break;
-+            case 3:
-+                break;
-+            }
-+        } else {
-+            if (extract32(env->cp15.cptr_el[2], 10, 1)) {
-+                return 2;
-+            }
-+        }
-     }
- 
-     /* CPTR_EL3 : present in v8 */
--- 
-2.23.0
+I think this is fine. The alternative would be an object class but it
+would be a bit overkill. 
+
+Thanks,
+
+C. 
+  
+>      /* Same default value on AST2400, AST2500 and AST2600 SoCs */
+> -    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =
+> -        ASPEED_SDHCI_INFO_SLOT1 | ASPEED_SDHCI_INFO_SLOT0;
+> +    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = slots;
+>      sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] = ASPEED_SDHCI_DEBOUNCE_RESET;
+>  }
+> 
 

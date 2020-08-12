@@ -1,177 +1,672 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp615196lfy;
-        Tue, 11 Aug 2020 09:40:20 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxCDG6446yK/Mx/yV0BYXl4LRROQCDXsErXmJMnQdMsT4TV5HQF/zsiQz42+yqNlMneju6y
-X-Received: by 2002:a25:40cb:: with SMTP id n194mr48426391yba.380.1597164020155;
-        Tue, 11 Aug 2020 09:40:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597164020; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1398065lfy;
+        Wed, 12 Aug 2020 05:44:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz1KFFchu6T/TjEMTT9HEPQCr2Lb5PDJJZPSOmy86FTLC2GWBJoOXEx/JNKh1akLEiLv0fI
+X-Received: by 2002:a25:cfcc:: with SMTP id f195mr54541496ybg.390.1597236281668;
+        Wed, 12 Aug 2020 05:44:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597236281; cv=none;
         d=google.com; s=arc-20160816;
-        b=SwUPTNDo/mfI+Vr630lIuSf5Os2nA3/mq+H65nzSKsbYENojJorYUaZOiztw++qyFR
-         1g2MZIoHEuP8XjnhqfxSFBak3x+Hhz01lv5fXHf5bbJmNhb4rVsvhqvII6ffBYXmdiX0
-         buwUTxitEbUZN2AXyuB2xZHh+YcduerKSjinbcoRukeVFa0MMVlIsO9bdLRk4+jLu1nO
-         dlqmHEZGdCan5AhML/2hwZO347B1cw21nJxhVXAHRbCsayDK//cHMd+cuiib95EUja3I
-         TOqI1TY6Ef+pCC2tIs0OMKeh3bGb0WkmuPlhz9EFe3ZPlm68hkbbzwT6eB4MTXzwwlke
-         2zMg==
+        b=cuNtxK9GgJNnPDpmO1u2c5ypvEtZza6Z0e4C94RnKtrGOcrML0s5qTwuDlm8rDbcfV
+         sLwE9RpZSFk4IM2ONPdQXR+TVXzrUgCH7PpstACJsQZVqJl5BIaqDPXcNC5yKm0xudYs
+         Slf305IJVlW46SXv0xIR3zv1OVSDGQ+TWOrC8bWX2VhjRLFKfwzmyrgbFCnpqLa+yd/M
+         Pcl/cOU7i3BVfNlnaZzQAa4SR6VvPu0SUpe8YOvyivZS5dKryYdggJjf1kofqLeMOx8/
+         XN0ROg/n2fZ9oOtKWPh3LtiPy757N7cT3eGThHI8PmLpdSF5vumDa+ZxwmHQMKS+3HdU
+         3l1w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=QUKWicgDbR+X+BhAVZGE26I5tIGZe1Qz8U4lzrU4fuY=;
-        b=rhHxgD9+b6cp2kIiB2Z7Ig+g24ztVw5DNBc/8WsIFqD9JwzSjvwWqSorjRzvHM5dyC
-         GI2mUulEfXXAACBkN8O3mg5/ouX2d5R3vZNMD9WWZBRhoSD36wz6qLOt45XfwPVnAOiq
-         ty24hgHWW0MnlFdXIFdEsKbL9HYtAx4oY5c62AO8Vshq7HfuJXtjieidjYOHk5myXO6u
-         IvIH55O2MoCsQr/F5HIrgAcXCOWkh/AgaV/OscIYdaDCEf5gMDnnTQaBI5IytPFL4ozb
-         ZV4fEEYSidsugFkiexUG3yy4Oi4H3N918ypjhXGJnFXlkAZXWDrcHzVMYMovGNYEMyO4
-         DeFA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=SLcDcsZ3wRT78IqeZRBvSe3SK+fiWRDFcpLbPralw5U=;
+        b=UqmcWA8EF0Lo0KUJuXA7WgOwVZmJCmWmpeifqgvpiIM8fNGYDchGj13GnWA3Q8VhnG
+         KvQCFIUyeNc8zIWZNouplhvJKXo6+w+Kc9HAu0gUXzxmVRCWqUnDtlCXQWgmZ/rk2bO+
+         I8nUMPwv4wTp/1RfhuXJPIval0ujgMYvBeJgJZwd5R87ECe4ieIUg/OU0uQF4JAc5NPy
+         GL4FkoRVaOiCBq8llBlHxGuwa7nslUbnthA1GtbRxk7YSuZ03ZDOOMoTBTrCWd10DeMi
+         2qUuOCqf1HMhB8JDlteEApAjzGPcKmY3MkOSEyWCL/fE3IkajK5PPq3+x0huLzXe7kVp
+         qgzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hJGLstCD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hddHoqa+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p198si18841948yba.131.2020.08.11.09.40.19
+        by mx.google.com with ESMTPS id d74si2143400ybh.58.2020.08.12.05.44.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 11 Aug 2020 09:40:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Aug 2020 05:44:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hJGLstCD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hddHoqa+;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:48726 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51356 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k5XJz-00023U-GC
-	for alex.bennee@linaro.org; Tue, 11 Aug 2020 12:40:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43232)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k5q7V-0005oR-0g
+	for alex.bennee@linaro.org; Wed, 12 Aug 2020 08:44:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k5XJq-00023H-Ap
- for qemu-arm@nongnu.org; Tue, 11 Aug 2020 12:40:10 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:22647
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1k5q4v-00021b-QF
+ for qemu-devel@nongnu.org; Wed, 12 Aug 2020 08:42:01 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:52436
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k5XJn-000246-ML
- for qemu-arm@nongnu.org; Tue, 11 Aug 2020 12:40:09 -0400
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1k5q4r-0005Mt-VM
+ for qemu-devel@nongnu.org; Wed, 12 Aug 2020 08:42:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597164007;
+ s=mimecast20190719; t=1597236116;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QUKWicgDbR+X+BhAVZGE26I5tIGZe1Qz8U4lzrU4fuY=;
- b=hJGLstCDUKi28ufvQMzF/CVnyPD2A6cEXeZHI0juqx9SP7oqsAyIbpZN8duRlpZLB1soqx
- VKWSq6E708Y/o521ptv0EWS6HonZe/w7srLX1wdxwgaHrJcRNF1AufOLfC2Zk4zfiF5nX7
- e/AvmGDPRTcia/1jGZnrzAB6y1xThJo=
+ bh=SLcDcsZ3wRT78IqeZRBvSe3SK+fiWRDFcpLbPralw5U=;
+ b=hddHoqa+0nI379TNQchC05ajLNFuofuKjg45hPxc2kDQzeKneGBF8DcPkZ5yegeNBlh/qi
+ 5ZLOnN844i9ycu4JXlAYdKLeEonF2yY71lu3obbHGJ8/jANexFVmuN3m26WKSvuVKypFxO
+ rPdiLRJGRSJdnG8ZxCOpaO4sNYurkbo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-114-qWWe4mjzNiag5uFp_1EbEw-1; Tue, 11 Aug 2020 12:40:03 -0400
-X-MC-Unique: qWWe4mjzNiag5uFp_1EbEw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-283-prUl_djuMDWTTUV5WMH6UA-1; Wed, 12 Aug 2020 08:41:52 -0400
+X-MC-Unique: prUl_djuMDWTTUV5WMH6UA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1F5048B78A5;
- Tue, 11 Aug 2020 16:38:37 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.99])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8753960E1C;
- Tue, 11 Aug 2020 16:38:35 +0000 (UTC)
-Date: Tue, 11 Aug 2020 18:38:32 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Haibo Xu <haibo.xu@linaro.org>
-Subject: Re: [PATCH 6/7] hw/arm/virt: spe: Add SPE fdt binding for virt machine
-Message-ID: <20200811163832.roxay4uafcyp3sed@kamzik.brq.redhat.com>
-References: <cover.1596768588.git.haibo.xu@linaro.org>
- <1663d06172cffa723e00893837ba04634f061fc8.1596768588.git.haibo.xu@linaro.org>
- <20200810110521.4hodliv4tl64v463@kamzik.brq.redhat.com>
- <CAJc+Z1HDokOuTA4=hzS5KHPU9w3Hm0UV=nJbjnvHEbtTpDY0Ag@mail.gmail.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B821918551A9;
+ Wed, 12 Aug 2020 12:41:51 +0000 (UTC)
+Received: from [10.36.113.93] (ovpn-113-93.ams2.redhat.com [10.36.113.93])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 36E5B5D9D7;
+ Wed, 12 Aug 2020 12:41:50 +0000 (UTC)
+Subject: Re: [PATCH v2 5/5] hw/arm/virt: Implement kvm-steal-time
+To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20200805091640.11134-1-drjones@redhat.com>
+ <20200805091640.11134-6-drjones@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <89849f50-c0f3-6d3a-46c8-245257384df2@redhat.com>
+Date: Wed, 12 Aug 2020 14:41:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <CAJc+Z1HDokOuTA4=hzS5KHPU9w3Hm0UV=nJbjnvHEbtTpDY0Ag@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <20200805091640.11134-6-drjones@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/11 06:40:20
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=207.211.31.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 06:16:38
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- philmd@redhat.com, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3NkZ7oMrMipR
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: AAbJ3mz5dNfG
 
-On Tue, Aug 11, 2020 at 10:38:02AM +0800, Haibo Xu wrote:
-> On Mon, 10 Aug 2020 at 19:05, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > On Fri, Aug 07, 2020 at 08:10:36AM +0000, Haibo Xu wrote:
-> > > Add a virtual SPE device for virt machine while using PPI
-> > > 5 for SPE overflow interrupt number.
-> >
-> > Any reason PPI 5 was selected?
-> >
+Drew,
+
+On 8/5/20 11:16 AM, Andrew Jones wrote:
+> We add the kvm-steal-time CPU property and implement it for machvirt.
+> A tiny bit of refactoring was also done to allow pmu and pvtime to
+> use the same vcpu device helper functions.
 > 
-> No special reason to choose PPI 5. Just re-use the setting in kvmtool.
-
-Please write in the commit message that kvmtool has already selected PPI 5
-for this purpose.
-
-> > > +    fdt_add_spe_nodes(vms);
-> > > +
-> >
-> > You didn't add any compat code, which means all virt machine types are now
-> > getting an SPE FDT node, ACPI table change, and, most importantly, PPI 5
-> > has gone from unallocated to allocated. We definitely need compat code.
-> >
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+> ---
+>  docs/system/arm/cpu-features.rst | 11 +++++
+>  hw/arm/virt.c                    | 43 ++++++++++++++++--
+>  include/hw/arm/virt.h            |  5 +++
+>  target/arm/cpu.c                 | 10 +++++
+>  target/arm/cpu.h                 |  4 ++
+>  target/arm/kvm.c                 | 20 +++++++++
+>  target/arm/kvm32.c               |  5 +++
+>  target/arm/kvm64.c               | 77 +++++++++++++++++++++++++++++---
+>  target/arm/kvm_arm.h             | 30 +++++++++++++
+>  target/arm/monitor.c             |  2 +-
+>  tests/qtest/arm-cpu-features.c   | 25 +++++++++--
+>  11 files changed, 219 insertions(+), 13 deletions(-)
 > 
-> So the 'compat code' here means to only add the SPE node in KVM mode?
-
-No, it means only add it for the 5.2 and later machine types. You'll see
-what I mean when you study the patchset I pointed out, which is also only
-for 5.2 and later machine types.
-
-> > > +        if (switched_level & KVM_ARM_DEV_SPE) {
-> > > +            qemu_set_irq(cpu->spe_interrupt,
-> > > +                         !!(run->s.regs.device_irq_level & KVM_ARM_DEV_SPE));
-> > > +            switched_level &= ~KVM_ARM_DEV_SPE;
-> > > +        }
-> > > +
-> >
-> > Did you test with a userspace irqchip?
+> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+> index 2d5c06cd016b..35196a6b759d 100644
+> --- a/docs/system/arm/cpu-features.rst
+> +++ b/docs/system/arm/cpu-features.rst
+> @@ -200,6 +200,17 @@ the list of KVM VCPU features and their descriptions.
+>                             adjustment, also restoring the legacy (pre-5.0)
+>                             behavior.
+>  
+> +  kvm-steal-time           Since v5.2, kvm-steal-time is enabled by
+> +                           default when KVM is enabled, the feature is
+> +                           supported, and the guest is 64-bit.
+> +
+> +                           When kvm-steal-time is enabled a 64-bit guest
+> +                           can account for time its CPUs were not running
+> +                           due to the host not scheduling the corresponding
+> +                           VCPU threads.  The accounting statistics may
+> +                           influence the guest scheduler behavior and/or be
+> +                           exposed to the guest userspace.
+> +
+>  SVE CPU Properties
+>  ==================
+>  
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index 6797eb397a7a..12efc2f095cb 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -151,6 +151,7 @@ static const MemMapEntry base_memmap[] = {
+>      [VIRT_PCDIMM_ACPI] =        { 0x09070000, MEMORY_HOTPLUG_IO_LEN },
+>      [VIRT_ACPI_GED] =           { 0x09080000, ACPI_GED_EVT_SEL_LEN },
+>      [VIRT_NVDIMM_ACPI] =        { 0x09090000, NVDIMM_ACPI_IO_LEN},
+> +    [VIRT_PVTIME] =             { 0x090a0000, 0x00010000 },
+>      [VIRT_MMIO] =               { 0x0a000000, 0x00000200 },
+>      /* ...repeating for a total of NUM_VIRTIO_TRANSPORTS, each of that size */
+>      [VIRT_PLATFORM_BUS] =       { 0x0c000000, 0x02000000 },
+> @@ -1666,15 +1667,39 @@ static void finalize_gic_version(VirtMachineState *vms)
+>   * virt_cpu_post_init() must be called after the CPUs have
+>   * been realized and the GIC has been created.
+>   */
+> -static void virt_cpu_post_init(VirtMachineState *vms)
+> +static void virt_cpu_post_init(VirtMachineState *vms, int max_cpus,
+> +                               MemoryRegion *sysmem)
+>  {
+> -    bool aarch64, pmu;
+> +    bool aarch64, pmu, steal_time;
+>      CPUState *cpu;
+>  
+>      aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
+>      pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
+> +    steal_time = object_property_get_bool(OBJECT(first_cpu),
+> +                                          "kvm-steal-time", NULL);
+>  
+>      if (kvm_enabled()) {> +        hwaddr pvtime_reg_base = vms->memmap[VIRT_PVTIME].base;
+> +        hwaddr pvtime_reg_size = vms->memmap[VIRT_PVTIME].size;
+> +
+> +        if (steal_time) {
+> +            MemoryRegion *pvtime = g_new(MemoryRegion, 1);
+> +            hwaddr pvtime_size = max_cpus * PVTIME_SIZE_PER_CPU;
+> +
+> +            /* The memory region size must be a multiple of host page size. */
+> +            pvtime_size = REAL_HOST_PAGE_ALIGN(pvtime_size);
+> +
+> +            if (pvtime_size > pvtime_reg_size) {
+> +                error_report("pvtime requires a %ld byte memory region for "
+> +                             "%d CPUs, but only %ld has been reserved",
+> +                             pvtime_size, max_cpus, pvtime_reg_size);
+> +                exit(1);
+> +            }
+> +
+> +            memory_region_init_ram(pvtime, NULL, "pvtime", pvtime_size, NULL);
+> +            memory_region_add_subregion(sysmem, pvtime_reg_base, pvtime);
+> +        }
+> +
+>          CPU_FOREACH(cpu) {
+>              if (pmu) {
+>                  assert(arm_feature(&ARM_CPU(cpu)->env, ARM_FEATURE_PMU));
+> @@ -1683,6 +1708,10 @@ static void virt_cpu_post_init(VirtMachineState *vms)
+>                  }
+>                  kvm_arm_pmu_init(cpu);
+>              }
+> +            if (steal_time) {
+> +                kvm_arm_pvtime_init(cpu, pvtime_reg_base +
+> +                                         cpu->cpu_index * PVTIME_SIZE_PER_CPU);
+> +            }
+>          }
+>      } else {
+>          if (aarch64 && vms->highmem) {
+> @@ -1853,6 +1882,11 @@ static void machvirt_init(MachineState *machine)
+>              object_property_set_bool(cpuobj, "kvm-no-adjvtime", true, NULL);
+>          }
+>  
+> +        if (vmc->no_kvm_steal_time &&
+> +            object_property_find(cpuobj, "kvm-steal-time", NULL)) {
+> +            object_property_set_bool(cpuobj, "kvm-steal-time", false, NULL);
+> +        }
+> +
+>          if (vmc->no_pmu && object_property_find(cpuobj, "pmu", NULL)) {
+>              object_property_set_bool(cpuobj, "pmu", false, NULL);
+>          }
+> @@ -1924,7 +1958,7 @@ static void machvirt_init(MachineState *machine)
+>  
+>      create_gic(vms);
+>  
+> -    virt_cpu_post_init(vms);
+> +    virt_cpu_post_init(vms, possible_cpus->len, sysmem);
+>  
+>      fdt_add_pmu_nodes(vms);
+>  
+> @@ -2566,8 +2600,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
+>  
+>  static void virt_machine_5_1_options(MachineClass *mc)
+>  {
+> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
+> +
+>      virt_machine_5_2_options(mc);
+>      compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
+> +    vmc->no_kvm_steal_time = true;
+>  }
+>  DEFINE_VIRT_MACHINE(5, 1)
+>  
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index dff67e1bef03..5fb43a009f7a 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -53,6 +53,9 @@
+>  
+>  #define PPI(irq) ((irq) + 16)
+>  
+> +/* See Linux kernel arch/arm64/include/asm/pvclock-abi.h */
+> +#define PVTIME_SIZE_PER_CPU 64
+> +
+>  enum {
+>      VIRT_FLASH,
+>      VIRT_MEM,
+> @@ -80,6 +83,7 @@ enum {
+>      VIRT_PCDIMM_ACPI,
+>      VIRT_ACPI_GED,
+>      VIRT_NVDIMM_ACPI,
+> +    VIRT_PVTIME,
+>      VIRT_LOWMEMMAP_LAST,
+>  };
+>  
+> @@ -126,6 +130,7 @@ typedef struct {
+>      bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
+>      bool kvm_no_adjvtime;
+>      bool acpi_expose_flash;
+> +    bool no_kvm_steal_time;
+>  } VirtMachineClass;
+>  
+>  typedef struct {
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 111579554fb9..866d0a9fb146 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1308,6 +1308,16 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
+>              return;
+>          }
+>      }
+> +
+> +    if (kvm_enabled()) {
+> +#ifdef TARGET_AARCH64
+> +        kvm_arm_steal_time_finalize(cpu, &local_err);
+> +        if (local_err != NULL) {
+> +            error_propagate(errp, local_err);
+> +            return;
+> +        }
+> +#endif
+> +    }
+>  }
+>  
+>  static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 9e8ed423ea1d..a4d4cb640c77 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -24,6 +24,7 @@
+>  #include "hw/registerfields.h"
+>  #include "cpu-qom.h"
+>  #include "exec/cpu-defs.h"
+> +#include "qapi/qapi-types-common.h"
+>  
+>  /* ARM processors have a weak memory model */
+>  #define TCG_GUEST_DEFAULT_MO      (0)
+> @@ -859,6 +860,9 @@ struct ARMCPU {
+>      bool kvm_vtime_dirty;
+>      uint64_t kvm_vtime;
+>  
+> +    /* KVM steal time */
+> +    OnOffAuto kvm_steal_time;
+> +
+>      /* Uniprocessor system with MP extensions */
+>      bool mp_is_up;
+>  
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 8bb7318378b5..093a290453f6 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -192,6 +192,18 @@ static void kvm_no_adjvtime_set(Object *obj, bool value, Error **errp)
+>      ARM_CPU(obj)->kvm_adjvtime = !value;
+>  }
+>  
+> +#ifdef TARGET_AARCH64
+> +static bool kvm_steal_time_get(Object *obj, Error **errp)
+> +{
+> +    return ARM_CPU(obj)->kvm_steal_time != ON_OFF_AUTO_OFF;
+> +}
+> +
+> +static void kvm_steal_time_set(Object *obj, bool value, Error **errp)
+> +{
+> +    ARM_CPU(obj)->kvm_steal_time = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
+> +}
+> +#endif
+> +
+>  /* KVM VCPU properties should be prefixed with "kvm-". */
+>  void kvm_arm_add_vcpu_properties(Object *obj)
+>  {
+> @@ -207,6 +219,14 @@ void kvm_arm_add_vcpu_properties(Object *obj)
+>                                          "the virtual counter. VM stopped time "
+>                                          "will be counted.");
+>      }
+> +
+> +#ifdef TARGET_AARCH64
+> +    cpu->kvm_steal_time = ON_OFF_AUTO_AUTO;
+> +    object_property_add_bool(obj, "kvm-steal-time", kvm_steal_time_get,
+> +                             kvm_steal_time_set);
+> +    object_property_set_description(obj, "kvm-steal-time",
+> +                                    "Set off to disable KVM steal time.");
+> +#endif
+>  }
+>  
+>  bool kvm_arm_pmu_supported(void)
+> diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+> index 0af46b41c847..d3f3195077fa 100644
+> --- a/target/arm/kvm32.c
+> +++ b/target/arm/kvm32.c
+> @@ -560,6 +560,11 @@ void kvm_arm_pmu_init(CPUState *cs)
+>      qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+>  }
+>  
+> +void kvm_arm_pvtime_init(CPUState *cs, uint64_t ipa)
+> +{
+> +    qemu_log_mask(LOG_UNIMP, "%s: not implemented\n", __func__);
+> +}
+> +
+>  #define ARM_REG_DFSR  ARM_CP15_REG32(0, 5, 0, 0)
+>  #define ARM_REG_TTBCR ARM_CP15_REG32(0, 2, 0, 2)
+>  /*
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 116923790550..4de1eeb723ac 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -17,6 +17,7 @@
+>  #include <linux/kvm.h>
+>  
+>  #include "qemu-common.h"
+> +#include "qapi/error.h"
+>  #include "cpu.h"
+>  #include "qemu/timer.h"
+>  #include "qemu/error-report.h"
+> @@ -398,19 +399,20 @@ static CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr)
+>      return NULL;
+>  }
+>  
+> -static bool kvm_arm_pmu_set_attr(CPUState *cs, struct kvm_device_attr *attr)
+> +static bool kvm_arm_set_device_attr(CPUState *cs, struct kvm_device_attr *attr,
+> +                                    const char *name)
+>  {
+>      int err;
+>  
+>      err = kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, attr);
+>      if (err != 0) {
+> -        error_report("PMU: KVM_HAS_DEVICE_ATTR: %s", strerror(-err));
+> +        error_report("%s: KVM_HAS_DEVICE_ATTR: %s", name, strerror(-err));
+>          return false;
+>      }
+>  
+>      err = kvm_vcpu_ioctl(cs, KVM_SET_DEVICE_ATTR, attr);
+>      if (err != 0) {
+> -        error_report("PMU: KVM_SET_DEVICE_ATTR: %s", strerror(-err));
+> +        error_report("%s: KVM_SET_DEVICE_ATTR: %s", name, strerror(-err));
+>          return false;
+>      }
+>  
+> @@ -427,7 +429,7 @@ void kvm_arm_pmu_init(CPUState *cs)
+>      if (!ARM_CPU(cs)->has_pmu) {
+>          return;
+>      }
+> -    if (!kvm_arm_pmu_set_attr(cs, &attr)) {
+> +    if (!kvm_arm_set_device_attr(cs, &attr, "PMU")) {
+>          error_report("failed to init PMU");
+>          abort();
+>      }
+> @@ -444,12 +446,29 @@ void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
+>      if (!ARM_CPU(cs)->has_pmu) {
+>          return;
+>      }
+> -    if (!kvm_arm_pmu_set_attr(cs, &attr)) {
+> +    if (!kvm_arm_set_device_attr(cs, &attr, "PMU")) {
+>          error_report("failed to set irq for PMU");
+>          abort();
+>      }
+>  }
+>  
+> +void kvm_arm_pvtime_init(CPUState *cs, uint64_t ipa)
+> +{
+> +    struct kvm_device_attr attr = {
+> +        .group = KVM_ARM_VCPU_PVTIME_CTRL,
+> +        .attr = KVM_ARM_VCPU_PVTIME_IPA,
+> +        .addr = (uint64_t)&ipa,
+> +    };
+> +
+> +    if (ARM_CPU(cs)->kvm_steal_time == ON_OFF_AUTO_OFF) {
+> +        return;
+> +    }
+> +    if (!kvm_arm_set_device_attr(cs, &attr, "PVTIME IPA")) {
+> +        error_report("failed to init PVTIME IPA");
+> +        abort();
+> +    }
+> +}
+> +
+>  static int read_sys_reg32(int fd, uint32_t *pret, uint64_t id)
+>  {
+>      uint64_t ret;
+> @@ -652,6 +671,54 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>      return true;
+>  }
+>  
+> +void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
+> +{
+> +    static bool has_steal_time;
+> +    static bool probed;
+> +    int fdarray[3];
+> +
+> +    if (!probed) {
+> +        probed = true;
+> +        if (kvm_check_extension(kvm_state, KVM_CAP_VCPU_ATTRIBUTES)) {
+> +            if (!kvm_arm_create_scratch_host_vcpu(NULL, fdarray, NULL)) {
+> +                error_report("Failed to create scratch VCPU");
+> +                abort();
+> +            }
+> +
+> +            has_steal_time = kvm_device_check_attr(fdarray[2],
+> +                                                   KVM_ARM_VCPU_PVTIME_CTRL,
+> +                                                   KVM_ARM_VCPU_PVTIME_IPA);
+> +
+> +            kvm_arm_destroy_scratch_host_vcpu(fdarray);
+> +        }
+> +    }
+> +
+> +    if (cpu->kvm_steal_time == ON_OFF_AUTO_AUTO) {
+> +        if (!has_steal_time || !arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+> +            cpu->kvm_steal_time = ON_OFF_AUTO_OFF;
+> +        } else {
+> +            cpu->kvm_steal_time = ON_OFF_AUTO_ON;
+> +        }
+> +    } else if (cpu->kvm_steal_time == ON_OFF_AUTO_ON) {
+> +        if (!has_steal_time) {
+> +            error_setg(errp, "'kvm-steal-time' cannot be enabled "
+> +                             "on this host");
+> +            return;
+> +        } else if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+> +            /*
+> +             * DEN0057A chapter 2 says "This specification only covers
+> +             * systems in which the Execution state of the hypervisor
+> +             * as well as EL1 of virtual machines is AArch64.". And,
+> +             * to ensure that, the smc/hvc calls are only specified as
+> +             * smc64/hvc64.
+> +             */
+> +            error_setg(errp, "'kvm-steal-time' cannot be enabled "
+> +                             "for AArch32 guests");
+> +            return;
+> +        }
+> +    }
+> +}
+> +
+>  bool kvm_arm_aarch32_supported(void)
+>  {
+>      return kvm_check_extension(kvm_state, KVM_CAP_ARM_EL1_32BIT);
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index 0da00eb6b20c..4a8969505967 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -267,6 +267,16 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+>   */
+>  void kvm_arm_add_vcpu_properties(Object *obj);
+>  
+> +/**
+> + * kvm_arm_steal_time_finalize:
+> + * @cpu: ARMCPU for which to finalize kvm-steal-time
+> + * @errp: Pointer to Error* for error propagation
+> + *
+> + * Validate the kvm-steal-time property selection and set its default
+> + * based on KVM support and guest configuration.
+> + */
+> +void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp);
+> +
+>  /**
+>   * kvm_arm_aarch32_supported:
+>   *
+> @@ -340,6 +350,16 @@ int kvm_arm_vgic_probe(void);
+>  
+>  void kvm_arm_pmu_set_irq(CPUState *cs, int irq);
+>  void kvm_arm_pmu_init(CPUState *cs);
+> +
+> +/**
+> + * kvm_arm_pvtime_init:
+> + * @cs: CPUState
+> + * @ipa: Per-vcpu guest physical base address of the pvtime structures
+> + *
+> + * Initializes PVTIME for the VCPU, setting the PVTIME IPA to @ipa.
+> + */
+> +void kvm_arm_pvtime_init(CPUState *cs, uint64_t ipa);
+> +
+>  int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
+>  
+>  #else
+> @@ -393,6 +413,16 @@ static inline void kvm_arm_pmu_init(CPUState *cs)
+>      g_assert_not_reached();
+>  }
+>  
+> +static inline void kvm_arm_pvtime_init(CPUState *cs, uint64_t ipa)
+> +{
+> +    g_assert_not_reached();
+> +}
+> +
+> +static inline void kvm_arm_steal_time_finalize(ARMCPU *cpu, Error **errp)
+> +{
+> +    g_assert_not_reached();
+> +}
+> +
+>  static inline void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
+>  {
+>      g_assert_not_reached();
+> diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> index ba6e01abd037..bd3590604a71 100644
+> --- a/target/arm/monitor.c
+> +++ b/target/arm/monitor.c
+> @@ -103,7 +103,7 @@ static const char *cpu_model_advertised_features[] = {
+>      "sve128", "sve256", "sve384", "sve512",
+>      "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+>      "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+> -    "kvm-no-adjvtime",
+> +    "kvm-no-adjvtime", "kvm-steal-time",
+>      NULL
+>  };
+>  
+> diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+> index f7e062c1891e..91b181f38268 100644
+> --- a/tests/qtest/arm-cpu-features.c
+> +++ b/tests/qtest/arm-cpu-features.c
+> @@ -452,6 +452,7 @@ static void test_query_cpu_model_expansion(const void *data)
+>      assert_set_feature(qts, "max", "pmu", true);
+>  
+>      assert_has_not_feature(qts, "max", "kvm-no-adjvtime");
+> +    assert_has_not_feature(qts, "max", "kvm-steal-time");
+>  
+>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+>          assert_has_feature_enabled(qts, "max", "aarch64");
+> @@ -493,6 +494,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>      assert_set_feature(qts, "host", "kvm-no-adjvtime", false);
+>  
+>      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+> +        bool kvm_supports_steal_time;
+>          bool kvm_supports_sve;
+>          char max_name[8], name[8];
+>          uint32_t max_vq, vq;
+> @@ -500,6 +502,10 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>          QDict *resp;
+>          char *error;
+>  
+> +        assert_error(qts, "cortex-a15",
+> +            "We cannot guarantee the CPU type 'cortex-a15' works "
+> +            "with KVM on this host", NULL);
+> +
+>          assert_has_feature_enabled(qts, "host", "aarch64");
+>  
+>          /* Enabling and disabling pmu should always work. */
+> @@ -507,16 +513,26 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>          assert_set_feature(qts, "host", "pmu", false);
+>          assert_set_feature(qts, "host", "pmu", true);
+>  
+> -        assert_error(qts, "cortex-a15",
+> -            "We cannot guarantee the CPU type 'cortex-a15' works "
+> -            "with KVM on this host", NULL);
+> -
+> +        /*
+> +         * Some features would be enabled by default, but they're disabled
+> +         * because this instance of KVM doesn't support them. Test that the
+> +         * features are present, and, when enabled, issue further tests.
+> +         */
+> +        assert_has_feature(qts, "host", "kvm-steal-time");
+>          assert_has_feature(qts, "host", "sve");
+> +
+>          resp = do_query_no_props(qts, "host");
+> +        kvm_supports_steal_time = resp_get_feature(resp, "kvm-steal-time");
+>          kvm_supports_sve = resp_get_feature(resp, "sve");
+>          vls = resp_get_sve_vls(resp);
+>          qobject_unref(resp);
+>  
+> +        if (kvm_supports_steal_time) {
+> +            /* If we have steal-time then we should be able to toggle it. */
+> +            assert_set_feature(qts, "host", "kvm-steal-time", false);
+> +            assert_set_feature(qts, "host", "kvm-steal-time", true);
+> +        }
+> +
+>          if (kvm_supports_sve) {
+>              g_assert(vls != 0);
+>              max_vq = 64 - __builtin_clzll(vls);
+> @@ -577,6 +593,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+>          assert_has_not_feature(qts, "host", "aarch64");
+>          assert_has_not_feature(qts, "host", "pmu");
+>          assert_has_not_feature(qts, "host", "sve");
+> +        assert_has_not_feature(qts, "host", "kvm-steal-time");
+>      }
+>  
+>      qtest_quit(qts);
 > 
-> No, I just tested with an in-kernel irqchip.
-> Actually, the current kernel vSPE patch doesn't support a userspace irqchip.
-> AFAIK, the userspace irqchip support should be ready in the next
-> kernel patch series
-> which will be sent out for review in the middle of September.
+This looks good to me
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 
-It probably doesn't hurt to do the above hunk already, hoping it will just
-work when it's possible to test, but I generally prefer only adding tested
-code. Maybe this hunk should be a separate patch with a commit message
-explaining that it's untested?
+Thanks
 
-Thanks,
-drew
+Eric
 

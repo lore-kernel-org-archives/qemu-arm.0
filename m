@@ -1,100 +1,100 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1286130lfy;
-        Wed, 12 Aug 2020 03:17:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzm7qp/flrWDKyr+1wo3ksMn/MiC7Xx++Gu5XGG/Vm8QwN8wqBeptXbnncC0IMJtylEla7C
-X-Received: by 2002:a25:9785:: with SMTP id i5mr52103968ybo.255.1597227434773;
-        Wed, 12 Aug 2020 03:17:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597227434; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1286718lfy;
+        Wed, 12 Aug 2020 03:18:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzS3z0YCIvvdZgtQaIOfO4NOH9LF7O4W7YMaW0D2mkzjhpCVZmWPAeYpXrnEyUwHH+UUCit
+X-Received: by 2002:a25:d812:: with SMTP id p18mr42692764ybg.460.1597227486529;
+        Wed, 12 Aug 2020 03:18:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597227486; cv=none;
         d=google.com; s=arc-20160816;
-        b=o6LspK6BbtdBAhU72MBqC8yFg7hMNc1GXhTbDOHVnZA8JwpXLxhmpCowqHj8NWgifR
-         3Y6HBtDHsSP5tQo+uUZGy/08IAwUEfSxoLWe8x8u6a45Lcq3e7RGLEpVSgH9FykbFCCe
-         GpPDnoPbN0bNrpJyhBxXDzCR2NpmSvriB4r9/dKKurwVKtqMPuQ592qfGmOgAC19Sd5/
-         5z5v+WwOzfpD2xBzsJbAaqAhDq+Hqrdgzm38rqXf3siMiJ4ROoLWCnhUciBEb5oXpceJ
-         Ah+DmyD5A/1fPc74R5cgEiLoiCid8b30Ak+r/bybGYP/FxuatD//yI+xv/qlOs5qxoA9
-         2SmQ==
+        b=HTxQ/h7cMdO/0ILaQo3QzjpYswvL+3PGLfV/HdgSbzqoa9999OPiVjLmz4RA/khEiU
+         X8Ll6G9L70L1UbFzF6w3QSIwbPNzR88oxOgUm0pfbg1axMYYJSbg80PFxryEhhplS7zJ
+         9GYYYnGreqC3Mu3BoLPJbOhJhOSkxHo8PeR+CKkwsjOUj0+7wFU9cpEeIdR4E5Baa4V3
+         VOknSBRa0eouo5tcIvK/Wbaz3UX2H1pz8gCxKcf2m4vn1/DYQ2uoer+QRXMM6ecvp+fr
+         sWlU7ACbax5qzKMLkfz57TqRxPok7DzTpBaLY76F+AAjWsXHej3FedWx56IAGkRljSg+
+         EUVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=MnzlaKYNFz3iMfZp5mbtBo4BFRY9OVwtNVkAp9nZtZc=;
-        b=g5FRQyScXG7fHfxcqZGvpeA7asojha4BRjrSft910JcQqtOs1S1pxuDXbSXkmJWfFy
-         A53RF8L64wiH8xaczFPuoPcXyobCpEYWGNiGRypHE2pSqcroNjhM2xQahCGbiUdikB9q
-         LJPY/cN62uE6sf3yHS0VMyoAbwqvLu9QxL6U81aGmndHtp2DjXd3NseHLr9bCbm3QNUD
-         MhwcSazbvGQdilZzAToxrx1cMVuvjD5m0mYkByIeNCQEP2ziYScYvGQVF/3tbfBIBlmc
-         pHL3/Q6d7H/7SnLB6AxX/+4DQ+g6JpFS2nFvn1WVgkUFN9LfDjwP8+WI4nqE3wLy89/o
-         c+Vg==
+        bh=HUI2eX2F8fREXvOyu01ciqIblEGplxdpBlJ23wcYhzk=;
+        b=U0lh7N11GkB3mZ4COVy02NvcUd6PLQ/KmIskdz42qV9O1aPFpwRkRkVmF/tWssPJot
+         237/TvGDM1hvVnQVfAgHFjWoFpiPh8VxuEnWk7Bmx1bSwhzi1kK/LmPZpfJSFVA3h7cx
+         VBwiC3v47P980B251T0VcOC7juZiDt417JCR7XI5pdYhpN70FDKoLohZxdYFBEou1ITJ
+         rXDX2YGjQe1MA7SpRIBeG6ebVNAeUmIBl/YIRLJ2+hZjhaVDr0M3x6WKqxop38zxOfRf
+         h0sBjFhQ9JD41LYgSOWAXGqSPYHeiBAxiNbH96EAUFG6xyFh3TGKnExRJZzLkUYXbPX+
+         DR+w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hgEMec2u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BqNIp6rn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m5si1855053ybc.111.2020.08.12.03.17.14
+        by mx.google.com with ESMTPS id y10si1851227ybm.378.2020.08.12.03.18.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Aug 2020 03:17:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Aug 2020 03:18:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=hgEMec2u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=BqNIp6rn;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51652 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55282 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k5non-0007qn-10
-	for alex.bennee@linaro.org; Wed, 12 Aug 2020 06:17:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53018)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k5npd-0000uA-Sc
+	for alex.bennee@linaro.org; Wed, 12 Aug 2020 06:18:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53080)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k5noM-0007ni-7J
- for qemu-arm@nongnu.org; Wed, 12 Aug 2020 06:16:46 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:43244
+ id 1k5noS-0007zW-Oq
+ for qemu-devel@nongnu.org; Wed, 12 Aug 2020 06:16:52 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:32100
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1k5noK-00031C-Ko
- for qemu-arm@nongnu.org; Wed, 12 Aug 2020 06:16:45 -0400
+ id 1k5noR-00031p-4c
+ for qemu-devel@nongnu.org; Wed, 12 Aug 2020 06:16:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597227404;
+ s=mimecast20190719; t=1597227410;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=MnzlaKYNFz3iMfZp5mbtBo4BFRY9OVwtNVkAp9nZtZc=;
- b=hgEMec2ujuCw46aO15FWMMMrL374Opk3UI7XAoDVIcg4Mxa2obRiOdfl0GaGbgPHxA8XTd
- RJFo7/pl0ptLCVi3jWHrktFas2ft4MTLLut/hTftr3w3+DjBImhdcv5swe6oIEiNgYV4KE
- VSTy/D3YLeP7a5YP8xvMq8+9K6EF7zA=
+ bh=HUI2eX2F8fREXvOyu01ciqIblEGplxdpBlJ23wcYhzk=;
+ b=BqNIp6rnH55oIwmkz3mtr6s+eYrf+XGTffGBAw0Ejx9u9VfkhZEHUsjCvfMZW4JdVeavKc
+ XL5HCzpf7IyM0fhH5UQatan5eZhoD/C/RRQrtPefWs2tsqXYsKZyWoVGGQ/mKjVepwbKFf
+ IK0BUVmbWymHab7eBjPGXCycBgFBILw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-25-ryhu08r7PS6tzJ3S7RR1AQ-1; Wed, 12 Aug 2020 06:16:40 -0400
-X-MC-Unique: ryhu08r7PS6tzJ3S7RR1AQ-1
+ us-mta-471-e7YTDgXHPjOKzG5iOOTAQw-1; Wed, 12 Aug 2020 06:16:46 -0400
+X-MC-Unique: e7YTDgXHPjOKzG5iOOTAQw-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A26558017F4;
- Wed, 12 Aug 2020 10:16:39 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7E5CD106B20A;
+ Wed, 12 Aug 2020 10:16:45 +0000 (UTC)
 Received: from [10.36.113.93] (ovpn-113-93.ams2.redhat.com [10.36.113.93])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A4FC55D6BD;
- Wed, 12 Aug 2020 10:16:38 +0000 (UTC)
-Subject: Re: [PATCH v2 3/5] hw/arm/virt: Move post cpu realize check into its
- own function
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7EE365D6BD;
+ Wed, 12 Aug 2020 10:16:44 +0000 (UTC)
+Subject: Re: [PATCH v2 2/5] target/arm/kvm: Make uncalled stubs explicitly
+ unreachable
 To: Andrew Jones <drjones@redhat.com>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 References: <20200805091640.11134-1-drjones@redhat.com>
- <20200805091640.11134-4-drjones@redhat.com>
+ <20200805091640.11134-3-drjones@redhat.com>
 From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <4b456c14-5eae-aad2-45a2-5e23c5ff47f9@redhat.com>
-Date: Wed, 12 Aug 2020 12:16:37 +0200
+Message-ID: <b26a7bf5-ad7c-9376-78ab-600b7ea9fed8@redhat.com>
+Date: Wed, 12 Aug 2020 12:16:43 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <20200805091640.11134-4-drjones@redhat.com>
+In-Reply-To: <20200805091640.11134-3-drjones@redhat.com>
 Content-Language: en-US
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0.003
+X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 7bit
@@ -108,108 +108,125 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wqc88b4+nE+f
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +nhjWcSSd+gN
 
 Hi Drew,
 
 On 8/5/20 11:16 AM, Andrew Jones wrote:
-> We'll add more to this new function in coming patches so we also
-> state the gic must be created and call it below create_gic().
+> When we compile without KVM support !defined(CONFIG_KVM) we generate
+> stubs for functions that the linker will still encounter. Sometimes
+> these stubs can be executed safely and are placed in paths where they
+> get executed with or without KVM. Other functions should never be
+> called without KVM. Those functions should be guarded by kvm_enabled(),
+> but should also be robust to refactoring mistakes. Putting a
+> g_assert_not_reached() in the function should help. Additionally,
+> the g_assert_not_reached() calls may actually help the linker remove
+> some code.
 > 
-> No functional change intended.
+> We remove the stubs for kvm_arm_get/put_virtual_time(), as they aren't
+> necessary at all - the only caller is in kvm.c
 > 
 > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
 > ---
->  hw/arm/virt.c | 43 +++++++++++++++++++++++++++----------------
->  1 file changed, 27 insertions(+), 16 deletions(-)
+>  target/arm/kvm_arm.h | 44 +++++++++++++++++++++++++++-----------------
+>  1 file changed, 27 insertions(+), 17 deletions(-)
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index acf9bfbeceaf..2cba21fe3ad9 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1672,6 +1672,31 @@ static void finalize_gic_version(VirtMachineState *vms)
->      }
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index adb38514bf20..0da00eb6b20c 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -344,16 +344,10 @@ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
+>  
+>  #else
+>  
+> -static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+> -{
+> -    /*
+> -     * This should never actually be called in the "not KVM" case,
+> -     * but set up the fields to indicate an error anyway.
+> -     */
+> -    cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
+> -    cpu->host_cpu_probe_failed = true;
+> -}
+> -
+> +/*
+> + * It's safe to call these functions without KVM support.
+> + * They should either do nothing or return "not supported".
+> + */
+>  static inline void kvm_arm_add_vcpu_properties(Object *obj) {}
+this one also is guarded by kvm_enabled() in target/arm/cpu.c
+don't you want to add g_assert_not_reached()?
+>  
+>  static inline bool kvm_arm_aarch32_supported(void)
+> @@ -371,23 +365,39 @@ static inline bool kvm_arm_sve_supported(void)
+>      return false;
 >  }
 >  
 > +/*
-> + * virt_cpu_post_init() must be called after the CPUs have
-> + * been realized and the GIC has been created.
+> + * These functions should never actually be called without KVM support.
 > + */
-> +static void virt_cpu_post_init(VirtMachineState *vms)
+> +static inline void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
 > +{
-> +    bool aarch64;
-> +
-> +    aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
-> +
-> +    if (!kvm_enabled()) {
-> +        if (aarch64 && vms->highmem) {
-> +            int requested_pa_size = 64 - clz64(vms->highest_gpa);
-> +            int pamax = arm_pamax(ARM_CPU(first_cpu));
-> +
-> +            if (pamax < requested_pa_size) {
-> +                error_report("VCPU supports less PA bits (%d) than "
-> +                             "requested by the memory map (%d)",
-> +                             pamax, requested_pa_size);
-> +                exit(1);
-> +            }
-> +        }
-> +    }
+> +    g_assert_not_reached();
 > +}
 > +
->  static void machvirt_init(MachineState *machine)
+>  static inline int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
 >  {
->      VirtMachineState *vms = VIRT_MACHINE(machine);
-> @@ -1886,22 +1911,6 @@ static void machvirt_init(MachineState *machine)
->      fdt_add_timer_nodes(vms);
->      fdt_add_cpu_nodes(vms);
+> -    return -ENOENT;
+> +    g_assert_not_reached();
+>  }
 >  
-> -   if (!kvm_enabled()) {
-> -        ARMCPU *cpu = ARM_CPU(first_cpu);
-> -        bool aarch64 = object_property_get_bool(OBJECT(cpu), "aarch64", NULL);
-> -
-> -        if (aarch64 && vms->highmem) {
-> -            int requested_pa_size, pamax = arm_pamax(cpu);
-> -
-> -            requested_pa_size = 64 - clz64(vms->highest_gpa);
-> -            if (pamax < requested_pa_size) {
-> -                error_report("VCPU supports less PA bits (%d) than requested "
-> -                            "by the memory map (%d)", pamax, requested_pa_size);
-> -                exit(1);
-> -            }
-> -        }
-> -    }
-> -
->      memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
->                                  machine->ram);
->      if (machine->device_memory) {
-> @@ -1913,6 +1922,8 @@ static void machvirt_init(MachineState *machine)
+>  static inline int kvm_arm_vgic_probe(void)
+>  {
+> -    return 0;
+> +    g_assert_not_reached();
+>  }
 >  
->      create_gic(vms);
+> -static inline void kvm_arm_pmu_set_irq(CPUState *cs, int irq) {}
+> -static inline void kvm_arm_pmu_init(CPUState *cs) {}
+> +static inline void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
+> +{
+> +    g_assert_not_reached();
+> +}
 >  
-> +    virt_cpu_post_init(vms);
+> -static inline void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map) {}
+> +static inline void kvm_arm_pmu_init(CPUState *cs)
+> +{
+> +    g_assert_not_reached();
+> +}
 > +
->      fdt_add_pmu_nodes(vms);
+> +static inline void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map)
+> +{
+> +    g_assert_not_reached();
+> +}
 >  
->      create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
+> -static inline void kvm_arm_get_virtual_time(CPUState *cs) {}
+> -static inline void kvm_arm_put_virtual_time(CPUState *cs) {}
+>  #endif
+>  
+>  static inline const char *gic_class_name(void)
 > 
+
+Besides,
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+
+Thanks
+
+Eric
 

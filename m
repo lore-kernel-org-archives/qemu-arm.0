@@ -1,110 +1,109 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1299868lfy;
-        Wed, 12 Aug 2020 03:35:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyu9Ig062hgFh8vI9pJ7ZdEHeIGv4anlzdaVOeagqKEYcOmQWy+i436j+s2edKulzBiWF8+
-X-Received: by 2002:a25:854c:: with SMTP id f12mr29536593ybn.130.1597228549614;
-        Wed, 12 Aug 2020 03:35:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597228549; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1325608lfy;
+        Wed, 12 Aug 2020 04:12:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVKqPBg+wFs0L01Xss3Y3rJ0cEoDo41nmQin0Pr7YriPtM9SkJGWvLDMOEtjBNRBdgv5fT
+X-Received: by 2002:a5b:410:: with SMTP id m16mr53779377ybp.309.1597230760193;
+        Wed, 12 Aug 2020 04:12:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597230760; cv=none;
         d=google.com; s=arc-20160816;
-        b=saqfjdreQOO6rZ2KmtRqWYd/8lDJcVQFo7LivlS3QjxNOR8WaJrB38yQZ3idwDpUrc
-         ASETTG3KV8F17MXNXjVUu/hDfnBanczy/4IjKAC/RrOXjtiazKY20Aby7m3sm+KQCDen
-         pWS6NqXAX5I8uMY2ZCAIdQ6gy7Tr88fegCnGrG/TT4xwdSoTDGHHDccx+wz+6BZuVKUZ
-         N9cjOYqo4VG4jVcOI5qbwXuVrlvqrlRV6Q7A1r8A4CwjctuMRTVH0N6PNokYdK4w0B2A
-         SO5P7fYC/+ld2m9m+DX6DDi8uap8QO/x81uk3z7yp2ZfrZMaHBQnhyRUfKCtnO1p3hZk
-         cyhg==
+        b=VjYgkV1+vgkgQ4UVCJrfG4GINZNDAxG19nFDyYhfexWUHEPUgpksafuSU3p3W7+Fub
+         d3EVABZMDp47bTob5NiX2E9BG/Okwi0wbpHCsRZRUCIjDloDUvD5UpOffcyuEp8e3hgq
+         0YZvtpU7t0CLu/zpL/jdgBHjDpfom2em17EJWN2MxpFEX2F/VqEhn444BOM6aVpYrXQH
+         YhfwzAtvsSCR7vz4B+I5YZfnhSnkM4Wh+v42tNibLVghxby/MBCiYgJ9Ost/Dlo0o0fP
+         qcCRIB5xAIfA2h2y8G6UZF92ts5lNtGPcWb+wdHdMQVg+x+fMfAQdz/LKSv+XPp+nap6
+         lyQQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=n6LI9S2Xqy9W3erUgeV4WYm+W6IiPk1y+K2W7dGerZk=;
-        b=DrnrkPCtkwITepqh6AMtp0h+/pNUoi/WDKo3aLncvpm1z2n5+t0UA8HAfuj8DyMh5k
-         fi9I/t/Q2aToxAp3M7eOfMTojy3aXs1JyComoxhl+vk/w8srtOiC4xyThjaE//wDCdUe
-         Ywjupy5VExaNetoAR8rDrX8jTzxokkVx5qgXTrAHYx7oEHaZeiWFWgRezpwJ4dkVZDa1
-         I9lZ1Jy0yuuHbLyZIUWd+6P9JPEPkZBjFU6ykqwN+75Bu/c8979/cI/GOUNmTMTmBjEW
-         gHscObnsBJoEqfHxGVW7Zr9phQq6QP85adMUgLBkwCtPp/QtIwx5J25bOmgSHNpseZhS
-         PKrw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=FhTHvpnUXP1ndPbvcSrcqLf5KiVFTnMie13cYX3/Hjw=;
+        b=VHNIW0DXzhuUNJ7YCjsvxkmy2FHGWP6WGuj1PlrbqD0EfmBnLqOfhvQupc1eTRWCKA
+         hWYulAA6S6QdHveNb9o0/OTNfkQjEez5ER/38vBBSoZlMwjvZErpzQ6T6aj7WmMhGDsI
+         8XrhcXryDwRR/MdxUaGEgNLfWO3zeyMTdrunf6PoqPjAl9BHgxCqEIkiy0ppjDNvb/wt
+         gQRCmgxrGefPMZVXKr/YLlAaDbHOeKtBCXTszcP6z+7EiMhMDRXfSOkYx1MwDNTFGw0X
+         fVOX9p1fBHTIf/Yr9I1J4Q2ZVVkGZ4KVGHzYJMHJet9YzzvZrBczhtxUF4UZfzMnCSBM
+         2ENg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YjlfnfLO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=og42ESaT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l205si1883991ybb.146.2020.08.12.03.35.49
+        by mx.google.com with ESMTPS id d197si2046251ybc.65.2020.08.12.04.12.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Aug 2020 03:35:49 -0700 (PDT)
+        Wed, 12 Aug 2020 04:12:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YjlfnfLO;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=og42ESaT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:46336 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:41204 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k5o6n-00015l-28
-	for alex.bennee@linaro.org; Wed, 12 Aug 2020 06:35:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59006)
+	id 1k5ogR-0004Ho-GQ
+	for alex.bennee@linaro.org; Wed, 12 Aug 2020 07:12:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38410)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k5o6e-00015U-J7
- for qemu-arm@nongnu.org; Wed, 12 Aug 2020 06:35:40 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:29746
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k5o6c-0005Y9-3W
- for qemu-arm@nongnu.org; Wed, 12 Aug 2020 06:35:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597228536;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=n6LI9S2Xqy9W3erUgeV4WYm+W6IiPk1y+K2W7dGerZk=;
- b=YjlfnfLOqoIwV6k/AXA1EaWfjuhZkCMEwlNlP9svSJHz4HMH41an+4xegmMtoZnqtViGdp
- 14geRbI2AaQyuj05DXrwaLgXUA9BEAdDdKgf+looeLNPYc9VbRHgXjPrp6n0XVMiuXudiC
- VY41sDdUkQZcdszYbbIso3tFZMe09oM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-481-k4TAYwcHM42eK_MmTRgpdQ-1; Wed, 12 Aug 2020 06:35:34 -0400
-X-MC-Unique: k4TAYwcHM42eK_MmTRgpdQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 98B7A1876531;
- Wed, 12 Aug 2020 10:35:33 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.193.32])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4A1A21002395;
- Wed, 12 Aug 2020 10:35:29 +0000 (UTC)
-Date: Wed, 12 Aug 2020 12:35:26 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Auger Eric <eric.auger@redhat.com>
-Subject: Re: [PATCH v2 4/5] hw/arm/virt: Move kvm pmu setup to
- virt_cpu_post_init
-Message-ID: <20200812103526.nxzyky4qussutkai@kamzik.brq.redhat.com>
-References: <20200805091640.11134-1-drjones@redhat.com>
- <20200805091640.11134-5-drjones@redhat.com>
- <d6eda3c9-54cb-58fc-46b0-7fcc3409b0d5@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k5ogI-0004Fv-7K; Wed, 12 Aug 2020 07:12:30 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:40926)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k5ogG-0001Uf-L6; Wed, 12 Aug 2020 07:12:29 -0400
+Received: by mail-wm1-x343.google.com with SMTP id k20so1538934wmi.5;
+ Wed, 12 Aug 2020 04:12:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=FhTHvpnUXP1ndPbvcSrcqLf5KiVFTnMie13cYX3/Hjw=;
+ b=og42ESaTyCiuuFEx5ZkMRuQQWcQJblhMCq2/jX5WJdnZdaX9fvDcSkhYDf3xjafvCY
+ KjIVThWTmJXFnZp4d3OYrNc5VCOJEWg7oCqslQokktI1YFveOFTAOI+Pl8CfQp2hQ7rs
+ MoiVHRga/sLpXIPDlNmOSD5MtQSAbQZB9IJnOPdGfZs6wm2wPs8lWi5JinaLztu7xEjT
+ jWRLWwiS6qdgp2uh3fKvddaTnmzjwY8pt9gUKUYtaz74kOqdV8zGUTKbk1+Bwlzxx+oi
+ noUuvQ59WHRoX8G9ehhWZ2/M372cUaPDVs0zQb0KuVbJA+98fcpNGEUjkCCfjV1dXU5U
+ AMqA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=FhTHvpnUXP1ndPbvcSrcqLf5KiVFTnMie13cYX3/Hjw=;
+ b=dxPPuoFnLYA80VacTxPkI6VZpVdJXNg3GwKhclP2T7oXiegWaLP/QIxTmkICLO+cpm
+ aL1E5gCNwlkzX2cwPD9ltFIKV+z4Z5OKh7nXmMD0QgzUBaqKBEbIPBIRb3z462CgcLdN
+ xkdIRDrCkwj78zc9NOSQhkhInRzsWk3dO+TWJsZ++oMXdaTKrZCOPCuVpw1kVzln/Cmf
+ zpYBdPR8pwZq2RMnbB+kukroBcBGPnaYs06KTAiQRKBgjh933GZsORQWP4vCP9VGsfAg
+ iLAeSkIOel4X0US92pWRj6lbTpN6xFtp7KZuRG2HzFAJdGi9WqpoLPkkQJuMKF0PUSpn
+ r1yQ==
+X-Gm-Message-State: AOAM5312WHp2XDQpPwwVuaWj/wRKzgHPu972a4/mHo36WE9B2X3g6iSB
+ PxmZJy5Sdep+ldwI9EaKccWEK8Cz
+X-Received: by 2002:a05:600c:2112:: with SMTP id
+ u18mr7756645wml.7.1597230745649; 
+ Wed, 12 Aug 2020 04:12:25 -0700 (PDT)
+Received: from x1w.redhat.com (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id f63sm3342159wmf.9.2020.08.12.04.12.24
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Aug 2020 04:12:25 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Clarify HCR_EL2 ARMCPRegInfo type
+Date: Wed, 12 Aug 2020 13:12:23 +0200
+Message-Id: <20200812111223.7787-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
-In-Reply-To: <d6eda3c9-54cb-58fc-46b0-7fcc3409b0d5@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 03:52:04
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,108 +116,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SLXHdYyA14f1
+X-TUID: Oq3ojATZ3OhO
 
-On Wed, Aug 12, 2020 at 12:16:31PM +0200, Auger Eric wrote:
-> Hi Drew,
-> On 8/5/20 11:16 AM, Andrew Jones wrote:
-> > Move the KVM PMU setup part of fdt_add_pmu_nodes() to
-> > virt_cpu_post_init(), which is a more appropriate location. Now
-> > fdt_add_pmu_nodes() is also named more appropriately, because it
-> > no longer does anything but fdt node creation.
-> > 
-> > No functional change intended.
-> > 
-> > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > ---
-> >  hw/arm/virt.c | 34 ++++++++++++++++++----------------
-> >  1 file changed, 18 insertions(+), 16 deletions(-)
-> > 
-> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> > index 2cba21fe3ad9..6797eb397a7a 100644
-> > --- a/hw/arm/virt.c
-> > +++ b/hw/arm/virt.c
-> > @@ -521,21 +521,12 @@ static void fdt_add_gic_node(VirtMachineState *vms)
-> >  
-> >  static void fdt_add_pmu_nodes(const VirtMachineState *vms)
-> >  {
-> > -    CPUState *cpu;
-> > -    ARMCPU *armcpu;
-> > +    ARMCPU *armcpu = ARM_CPU(first_cpu);
-> >      uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
-> >  
-> > -    CPU_FOREACH(cpu) {
-> > -        armcpu = ARM_CPU(cpu);
-> > -        if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
-> > -            return;
-> > -        }
-> > -        if (kvm_enabled()) {
-> > -            if (kvm_irqchip_in_kernel()) {
-> > -                kvm_arm_pmu_set_irq(cpu, PPI(VIRTUAL_PMU_IRQ));
-> > -            }
-> > -            kvm_arm_pmu_init(cpu);
-> > -        }
-> > +    if (!arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
-> > +        assert(!object_property_get_bool(OBJECT(armcpu), "pmu", NULL));
-> I don't rget the relevance of the assert. If the PMU is set, isn't is
-> the consequence of arm_set_pmu?
+In commit ce4afed839 ("target/arm: Implement AArch32 HCR and HCR2")
+the HCR_EL2 register has been changed from type NO_RAW (no underlying
+state and does not support raw access for state saving/loading) to
+type CONST (TCG can assume the value to be constant), removing the
+read/write accessors.
+We forgot to remove the previous type ARM_CP_NO_RAW. This is not
+really a problem since the field is overwritten. However it makes
+code review confuse, so remove it.
 
-It's just defensive coding to ensure the property matches the feature
-flag.
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ target/arm/helper.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-> > +        return;
-> >      }
-> >  
-> >      if (vms->gic_version == VIRT_GIC_VERSION_2) {
-> > @@ -544,7 +535,6 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
-> >                               (1 << vms->smp_cpus) - 1);
-> >      }
-> >  
-> > -    armcpu = ARM_CPU(qemu_get_cpu(0));
-> >      qemu_fdt_add_subnode(vms->fdt, "/pmu");
-> >      if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
-> >          const char compat[] = "arm,armv8-pmuv3";
-> > @@ -1678,11 +1668,23 @@ static void finalize_gic_version(VirtMachineState *vms)
-> >   */
-> >  static void virt_cpu_post_init(VirtMachineState *vms)
-> >  {
-> > -    bool aarch64;
-> > +    bool aarch64, pmu;
-> > +    CPUState *cpu;
-> >  
-> >      aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
-> > +    pmu = object_property_get_bool(OBJECT(first_cpu), "pmu", NULL);
-> >  
-> > -    if (!kvm_enabled()) {
-> > +    if (kvm_enabled()) {
-> > +        CPU_FOREACH(cpu) {
-> > +            if (pmu) {
-> > +                assert(arm_feature(&ARM_CPU(cpu)->env, ARM_FEATURE_PMU));
-> same here?
-
-It's the same defensive check. Actually the check in fdt_add_pmu_nodes()
-can definitely be removed, since this check will have already caught
-anything before fdt_add_pmu_nodes() can run. We could probably just
-remove both though.
-
-> > +                if (kvm_irqchip_in_kernel()) {
-> > +                    kvm_arm_pmu_set_irq(cpu, PPI(VIRTUAL_PMU_IRQ));
-> > +                }
-> > +                kvm_arm_pmu_init(cpu);
-> > +            }
-> > +        }
-> > +    } else {
-> >          if (aarch64 && vms->highmem) {
-> >              int requested_pa_size = 64 - clz64(vms->highest_gpa);
-> >              int pamax = arm_pamax(ARM_CPU(first_cpu));
-> > 
-> Thanks
-> 
-> Eric
-
-Thanks,
-drew
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 455c92b891..9aeb8ebfa9 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -5105,7 +5105,6 @@ static const ARMCPRegInfo el3_no_el2_cp_reginfo[] = {
+       .access = PL2_RW,
+       .readfn = arm_cp_read_zero, .writefn = arm_cp_write_ignore },
+     { .name = "HCR_EL2", .state = ARM_CP_STATE_BOTH,
+-      .type = ARM_CP_NO_RAW,
+       .opc0 = 3, .opc1 = 4, .crn = 1, .crm = 1, .opc2 = 0,
+       .access = PL2_RW,
+       .type = ARM_CP_CONST, .resetvalue = 0 },
+-- 
+2.21.3
 

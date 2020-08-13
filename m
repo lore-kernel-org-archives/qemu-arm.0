@@ -1,62 +1,62 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp390823lfy;
-        Thu, 13 Aug 2020 03:36:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxUhc+4dQ3DH2029GLB9iHLjBvg+0xlLKzjsEm+xpT9cOQs9SgY2kl1LdYInbbEf2wPYLmf
-X-Received: by 2002:a25:da02:: with SMTP id n2mr5426837ybf.316.1597315004843;
-        Thu, 13 Aug 2020 03:36:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597315004; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp391174lfy;
+        Thu, 13 Aug 2020 03:37:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz4YIuLcjx2NGmughRR+cA6VxN0sqlAbzFcvfEAmNGs031fu2lMvyZ4B3GGht/D3xvE11kb
+X-Received: by 2002:a5b:411:: with SMTP id m17mr5754762ybp.492.1597315038960;
+        Thu, 13 Aug 2020 03:37:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597315038; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q7LD0HNRIETc5pwE8Yg9fwXVllR/eLZMbH33eNsTKM8LiMKiFca01asdbGk+vvHApA
-         0d9D3TTqlxm2DWyJ1FfsrM+VR5S+3nKUcLinlJr+nFJV3TLS60gB+WLOr3PSXVTvz0jE
-         rNBJLldC0bbQiROG8oEQUb3EndILq0HaerNjDw9vhmZZEzBdJenEtZbm1FI3ytItMcJL
-         J+hvc2aAzXIk576C4DiR7pLoX5QQS7UkMcT/QzSJjdFwAKaXMgjVSRL6Sub0ToHcYcFI
-         EjiAn0jyADNb3cX7Ko+uLJ+GLGgmDZl8nHeTs0IvyzbQdZUC17Vm27JJ+orsNZjO++jX
-         Cbyg==
+        b=QLvSyFF8og+lJdQXZAd4Z41wBQ/XNQO24KQfDAOyZfsxExN7VJcGkydUizM0a7LupO
+         ZLIYQ1WrF3lFMeRNGO4AmtmKEE62CXiAgzgWYlj51bJ/LXmfcggNOAO5+f2zgMcNJQ9J
+         DTrWQVrIvF9OlYoELIIis2C/jj+05oggqK5FzdCe0UN6OJnMDjfeFQ3n97mz2C621fLJ
+         9DkggbmgA1C0wLzutPHXcUzKUtCBqYt5i1EzSMoSAV9maxD42ewlYypjSzD4CCdazzVL
+         We3tGnOjJZVriKxN273d0Zjl38M04WgV7PdZ05HdLIT0AMjj3MIhvEq68Xs7RLM9Ti1x
+         hyAg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:mime-version:references
          :in-reply-to:message-id:date:subject:to:from;
-        bh=zxKlsokqpfzaRulvwa3BdSbljI5i71RwG/NfY/fg3Qk=;
-        b=P3SOvSL7n6yOmWKEycZo6Y9Err2FG7UvAE6CmeiOZgM0UYqybbkboEXYWzNuZjyHFR
-         wHUhSlj05MomzlXEItvJ1UxEB5efBQyUIfjAH9yuL3NfSKa4y6TztDYf/MTE71fOY5A9
-         kYGl16MWbk/q7kn+RBAFtYRmLHb8gBfjjE5g3pYg0Dk6mgqfpraoBjSkpUBMJzPy5rFk
-         4YPB+/Ex9WWvZu++6b502G2tsC38heXlMseUR7N+vMMh1B0+M2AG1zO4fEwPZQ4clKIP
-         0jleqpcWz88+OZyEoTPpZuzjH8buC/+HAvZ8ch8d+Jue1W0Unptqpl3ZbbefcGgfHjQA
-         qDLw==
+        bh=1x8TTwetddITN3bdfRXu5UbySzzkoS1lZqQNWkjRQ3k=;
+        b=e+wWnt0cfqwwhSYhKxdR9QVkYp9+BQXOUNi4cPIQ3tt4Ha3rGSQfMDtUwIS6DIgGn9
+         6FgYbcLpXR/pI0Ws3mUWck7vSyBXyv+ik0N6n31AT0QvqJvC/9yfc+h+wff3KQddkPbr
+         uAvmeT/+8YNWMs6LMUG+SSsB8O+mVj7wjQ4U202XWtNfMvQiJHnHqvDWlTxa/zP/KbvC
+         TBRnZS8Ma/rwCu6Ti9Amf6MZHMIECA4u0/Pwt7UQaWzdV/FjJi5I761F9QysKagJYmnW
+         2MLo6kvYWganHiJ3rTdIrWh/G1AnAtQWNBRPdmJdim344XFHeRTRTsV98URBJNxXksCj
+         a+Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q142si4942548ybg.188.2020.08.13.03.36.44
+        by mx.google.com with ESMTPS id t10si4840054ybl.5.2020.08.13.03.37.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Aug 2020 03:36:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Aug 2020 03:37:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45458 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:49742 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6AbE-0006Mu-3f
-	for alex.bennee@linaro.org; Thu, 13 Aug 2020 06:36:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50048)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k6Abm-00087Y-Ac
+	for alex.bennee@linaro.org; Thu, 13 Aug 2020 06:37:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50070)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k6AXH-0000Ee-29; Thu, 13 Aug 2020 06:32:39 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4186 helo=huawei.com)
+ id 1k6AXI-0000IB-B1; Thu, 13 Aug 2020 06:32:41 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4188 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k6AXE-0006qF-PT; Thu, 13 Aug 2020 06:32:38 -0400
+ id 1k6AXF-0006qZ-HB; Thu, 13 Aug 2020 06:32:40 -0400
 Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 2C3A3952A789AAB8465B;
+ by Forcepoint Email with ESMTP id 378D9D8E5E5DE70B5005;
  Thu, 13 Aug 2020 18:32:32 +0800 (CST)
 Received: from localhost.localdomain (10.175.104.175) by
  DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 13 Aug 2020 18:32:22 +0800
+ 14.3.487.0; Thu, 13 Aug 2020 18:32:23 +0800
 From: Peng Liang <liangpeng10@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [RFC 7/9] target/arm: Add CPU features to query-cpu-model-expansion
-Date: Thu, 13 Aug 2020 18:26:55 +0800
-Message-ID: <20200813102657.2588720-8-liangpeng10@huawei.com>
+Subject: [RFC 9/9] target/arm: Add more CPU features
+Date: Thu, 13 Aug 2020 18:26:57 +0800
+Message-ID: <20200813102657.2588720-10-liangpeng10@huawei.com>
 X-Mailer: git-send-email 2.18.4
 In-Reply-To: <20200813102657.2588720-1-liangpeng10@huawei.com>
 References: <20200813102657.2588720-1-liangpeng10@huawei.com>
@@ -75,120 +75,47 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com,
  zhang.zhanghailiang@huawei.com, mst@redhat.com, cohuck@redhat.com,
  xiexiangyou@huawei.com, Peng Liang <liangpeng10@huawei.com>,
  pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R84/GeOGXiaH
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1W8BiuZxzx3q
 
-Add CPU features to the result of query-cpu-model-expansion so that
-other applications (such as libvirt) can know the supported CPU
-features.
+Add i8mm, bf16, and dgh CPU features for AArch64.
 
 Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 Signed-off-by: Peng Liang <liangpeng10@huawei.com>
 ---
- target/arm/cpu.c     | 41 +++++++++++++++++++++++++++++++++++++++++
- target/arm/cpu.h     |  2 ++
- target/arm/monitor.c |  2 ++
- 3 files changed, 45 insertions(+)
+ target/arm/cpu.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 3fc54cb3a4..0f620e8afe 100644
+index 0f620e8afe..9e2ddbc3ed 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -25,6 +25,8 @@
- #include "qemu/module.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
-+#include "qapi/qmp/qdict.h"
-+#include "qom/qom-qobject.h"
- #include "cpu.h"
- #include "internals.h"
- #include "exec/exec-all.h"
-@@ -1515,6 +1517,45 @@ static const CPUFeatureDep feature_dependencies[] = {
-     },
- };
+@@ -1319,6 +1319,9 @@ static struct CPUFeatureInfo cpu_features[] = {
+     FIELD_INFO(ID_AA64ISAR1, FRINTTS, false, 1, 0, false),
+     FIELD_INFO(ID_AA64ISAR1, SB, false, 1, 0, false),
+     FIELD_INFO(ID_AA64ISAR1, SPECRES, false, 1, 0, false),
++    FIELD_INFO(ID_AA64ISAR1, I8MM, false, 1, 0, false),
++    FIELD_INFO(ID_AA64ISAR1, BF16, false, 1, 0, false),
++    FIELD_INFO(ID_AA64ISAR1, DGH, false, 1, 0, false),
  
-+static char *strtolower(char *src)
-+{
-+    char *start = src;
-+
-+    for (; *src; ++src) {
-+        *src = tolower(*src);
-+    }
-+
-+    return start;
-+}
-+
-+void arm_cpu_features_to_dict(ARMCPU *cpu, QDict *features)
-+{
-+    Object *obj = OBJECT(cpu);
-+    const char *name;
-+    ObjectProperty *prop;
-+    bool is_32bit = !arm_feature(&cpu->env, ARM_FEATURE_AARCH64);
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(cpu_features); ++i) {
-+        if (is_32bit != cpu_features[i].is_32bit) {
-+            continue;
-+        }
-+
-+        name = cpu_features[i].name;
-+        prop = object_property_find(obj, name, NULL);
-+        if (prop) {
-+            QObject *value;
-+            g_autofree char *tmp;
-+
-+            assert(prop->get);
-+            value = object_property_get_qobject(obj, name, &error_abort);
-+            tmp = strtolower(g_strdup(name));
-+
-+            qdict_put_obj(features, tmp, value);
-+        }
-+    }
-+}
-+
- static void arm_cpu_get_bit_prop(Object *obj, Visitor *v, const char *name,
-                                  void *opaque, Error **errp)
- {
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 5d8074d03b..da68b7f8f4 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3933,4 +3933,6 @@ static inline bool isar_feature_any_tts2uxn(const ARMISARegisters *id)
- #define cpu_isar_feature(name, cpu) \
-     ({ ARMCPU *cpu_ = (cpu); isar_feature_##name(&cpu_->isar); })
- 
-+void arm_cpu_features_to_dict(ARMCPU *cpu, QDict *features);
-+
- #endif
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index ba6e01abd0..f8eb29efec 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -225,6 +225,8 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
-         }
-     }
- 
-+    arm_cpu_features_to_dict(ARM_CPU(obj), qdict_out);
-+
-     if (!qdict_size(qdict_out)) {
-         qobject_unref(qdict_out);
-     } else {
+     FIELD_INFO(ID_AA64PFR0, EL0, false, 1, 0, false),
+     FIELD_INFO(ID_AA64PFR0, EL1, false, 1, 0, false),
 -- 
 2.18.4
 

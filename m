@@ -1,353 +1,188 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp31790lfy;
-        Wed, 12 Aug 2020 17:32:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyRfmLiJb/GfVaVF1M4Gr0fnAlvVCHcPi32b/6OpYIxYW0u/Uza+KFB0xn3XPGhm8khQlL+
-X-Received: by 2002:a25:3483:: with SMTP id b125mr3226475yba.8.1597278738699;
-        Wed, 12 Aug 2020 17:32:18 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1597278738; cv=pass;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp64813lfy;
+        Wed, 12 Aug 2020 18:26:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwTLiIUGrAYtC1njVqjfDf5anJy7Dv9+0/xU8r6THW9M3C4hfyss0PGqYYS3oMESV3oyE8/
+X-Received: by 2002:a17:902:eb14:: with SMTP id l20mr1950938plb.6.1597282003340;
+        Wed, 12 Aug 2020 18:26:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597282003; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q1dQwMk36EVm0WABZNivCaqy3ewHMY7yaC+MrSzd357RSBofmgUhLzY6xC+aA84A7G
-         Rz+47e1A+VLiEAg2qnSemc/8xYCKgk6dugBbUtltfkIvTd28SHIH0ZE0kEdZ4PxsBm1G
-         7XnXcW14nwourXqsnHMn4syUt/D7rhVSSK/Yp2yUDA02DPrZswMmCvZ3VRhd7wslggSY
-         8TB0iPgNCBgY1lgdpVo9rFvhDnCyj2qSEX2rN2OszLEqje6EjlJm4SfzkBYZemQIYm96
-         mcHn+wZhQ5/UrHy0In5uGMqz3gXHEXE7MlEymzd/wNPxu4Sx582q5+TaibZUr9FcU0VS
-         4XZA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:references
-         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
-        bh=0CP7QStMptx6r6vsUdYEvkIVVIzvVzLEUr7Hqe15LI4=;
-        b=jdtfJVb/MeEswaGeVZ7aPF15wVy67VcoaiHcWrjjv4UC0AumWDmtfgP7/OUqXbs9hI
-         aF2beUcudFQmdSjDD+0ppd+gkAEUKHLO0pvtPIgr8a0ycXJ5BOWEYDXdz3djMTHwwwAs
-         Br10xXOsEljYbbjsPg6uucP0FWCKD3wPPVri+Aj+qWbKCv0j8Use5f/ulb+JRLb7/Rwx
-         mveLDw3EiWbAQFDGfm2NbxyynhcLhgVamYYjYPEfJhxp84H/TSq9LlC+y3DX/FQs2pAQ
-         o0uRKWqAtJnzbej39U2+NZcGv8ofebfsZprg9stqbncxodr7DLmlXdzlqXYTmhLBuksh
-         k3MQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="dqJC/F8x";
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t6si4430293ybo.46.2020.08.12.17.32.18
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Aug 2020 17:32:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=a1gwg4eJe+fVA6AWmct1D90iGCBfd5ZyZgPRM/WGB20NhIuCf/LE1fWf08a7CSLmEV
+         MbWwbDxw+Ib6djEpiebiI0FzjK+t0gWCzucxIIZnCf5mysXVfoCoGxOQmsC05spIcBa+
+         6tI5Q+A1Coh4lo7QdKJiIawd4yYAdvfcjVfcjJG526j0aFVXQaGYMsDmt3y44/Rt8Wax
+         y8gFcvqHxdCO08u5gIyUKDltp97dhRXz+jLg2KELKiSdF9cOEWlhQL0YLZ2DvP13Usm1
+         2VXbPCsWe/KL9GKDCmz8S8fYWko/2KIQMi/ZfvVpeqnzTgdw3zQ/DdlcG5CagmLFKU4f
+         sIOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:message-id:date:in-reply-to:subject:cc:to:from
+         :user-agent:references:dkim-signature;
+        bh=XbBvcv/BXI/xo+sLNGOGnqDhDL7UZmcnZDoZ0JOdoY4=;
+        b=bCPf/40EKBYyhiy9vFBq9fpWmatmA8jYAJR9YkjGBUz9Xe8IgkRQtT0tAkgBrV9mCa
+         M+F3IrjpadmiHPKyL6ZXRPys+infVIpj4FhT+SQ7cEftYPcHe4hUx7b3MDzcnzX2Hzhp
+         c2jKVDSkBcRC6lFQ1mlYxpIt8In4Ob17J5w3KBtBjyysYgliOMPHADSDXsxvAVPDqtG2
+         UwiBKrov8F+E+ZtfVYu03dCK19HsSsSFxelHpX3voPoht0W6VIvv/7dMN6a62PF8aM20
+         zJSLDYs1LsVVb9ywQYO85A5NjFr1rI6XXN2p8PQBU0VOh8h/asTMELMuzaK1up5S/fPV
+         O0fg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=B5gCS0sa;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <bauerman@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id mu18si2827514pjb.110.2020.08.12.18.26.42
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 12 Aug 2020 18:26:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="dqJC/F8x";
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44058 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k61AH-00033F-Ug
-	for alex.bennee@linaro.org; Wed, 12 Aug 2020 20:32:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57554)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fnuv@xilinx.com>)
- id 1k619j-0002RQ-Rz; Wed, 12 Aug 2020 20:31:44 -0400
-Received: from mail-bn8nam12on2055.outbound.protection.outlook.com
- ([40.107.237.55]:28092 helo=NAM12-BN8-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fnuv@xilinx.com>)
- id 1k619f-0000cx-G9; Wed, 12 Aug 2020 20:31:43 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=hxbaga5CTDaFHw6oCUXYcDSLtpfZVlE1mvGWx42kDGLgsDMIpOPXdSUArAZvGyvzDXUA+BmlkCh2jvuyRE5AExuHgoMBs5OYNjLmUwoJqWRYX5Ne8zo+VOoD9567Zvg6UCzFdDq3HB4nXUwikUQqxG9BdmpGhJFVaJi+4MkfN8n+50M8mjHYD8kyAGZ1iWcmfI9HC5ndp4qWvoxL2qHi/SLu5lBVxPgIidV5WyEB9ocRy3nCSfKB1B+hjCIE8i8mXBK086rRdMTB262LeKBsujE2GRAmRmL0mOQuSIfDg8n5ZQq36K8bn0okWEL4BMWDxVGpG9b8oYlNjtmESVD4eQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0CP7QStMptx6r6vsUdYEvkIVVIzvVzLEUr7Hqe15LI4=;
- b=Wf129M+f+coaXk4mcueiB/AYrhfRSh7dL9jxsRaZGjGtpLIrZvTnQkRRED7K/o6SP5IgZCb/wpa8p/TAAXxQ/xJ2u8VtkSDWI06Z6KDPfuJh+/mVnRtZI7HCB35tO7ZL7gcZ2AMXluTJ9mTvzr4r3nDGCmwPc+0t9Li1UPz8BRdZ8g3pcJUuBu1nOtVste+gOmzimZa+xbTNL+E9ilS8GgBmprBSote2SOaoEZR8TDI8HUyU9DVyomH5JlHu/2G3Fx0/IS7WDjvngP8BrTsgYSXZRsRQtOn3yEsSyXa8O759CyaSpivMVDz4eflZPu89modLMJHqQrlvwGHVIM+zww==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.83) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0CP7QStMptx6r6vsUdYEvkIVVIzvVzLEUr7Hqe15LI4=;
- b=dqJC/F8xLYVESoggiW+6b+2WZRJAOMR0QbAl6XQepnaoK0RumfM2NtZbSNbYUyQqvOtPxTq/f6tOcx9PO8SOp45FCAHdMz9td7Bs0OE3c6GYYq+i2Pm0P2JhoQPDmqqFCMjs1tl8ELbH2VPFM/e02k59dw0UcLDswP00aLgPPSo=
-Received: from DM5PR2201CA0003.namprd22.prod.outlook.com (2603:10b6:4:14::13)
- by MW2PR02MB3787.namprd02.prod.outlook.com (2603:10b6:907:3::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3261.20; Thu, 13 Aug
- 2020 00:31:27 +0000
-Received: from DM3NAM02FT055.eop-nam02.prod.protection.outlook.com
- (2603:10b6:4:14:cafe::bc) by DM5PR2201CA0003.outlook.office365.com
- (2603:10b6:4:14::13) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3283.15 via Frontend
- Transport; Thu, 13 Aug 2020 00:31:27 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
- smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
- header.d=none;nongnu.org; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- DM3NAM02FT055.mail.protection.outlook.com (10.13.5.136) with Microsoft SMTP
- Server id 15.20.3283.16 via Frontend Transport; Thu, 13 Aug 2020 00:31:27
- +0000
-Received: from [149.199.38.66] (port=57218 helo=smtp.xilinx.com)
- by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
- (envelope-from <fnu.vikram@xilinx.com>)
- id 1k619J-0006yf-HA; Wed, 12 Aug 2020 17:31:17 -0700
-Received: from [127.0.0.1] (helo=localhost)
- by xsj-pvapsmtp01 with smtp (Exim 4.63)
- (envelope-from <fnu.vikram@xilinx.com>)
- id 1k619S-00080l-PU; Wed, 12 Aug 2020 17:31:26 -0700
-Received: from xsj-pvapsmtp01 (maildrop.xilinx.com [149.199.38.66])
- by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 07D0VJ4g029526; 
- Wed, 12 Aug 2020 17:31:19 -0700
-Received: from [172.19.2.115] (helo=xsjfnuv50.xilinx.com)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <fnu.vikram@xilinx.com>)
- id 1k619L-0007xR-No; Wed, 12 Aug 2020 17:31:19 -0700
-From: Vikram Garhwal <fnu.vikram@xilinx.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v9 2/4] xlnx-zynqmp: Connect Xilinx ZynqMP CAN controllers
-Date: Wed, 12 Aug 2020 17:31:06 -0700
-Message-Id: <1597278668-339715-3-git-send-email-fnu.vikram@xilinx.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1597278668-339715-1-git-send-email-fnu.vikram@xilinx.com>
-References: <1597278668-339715-1-git-send-email-fnu.vikram@xilinx.com>
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-PublicTrafficType: Email
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=B5gCS0sa;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0187473.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 07D13Jd3107345;
+	Wed, 12 Aug 2020 21:26:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=references : from : to :
+ cc : subject : in-reply-to : date : message-id : mime-version :
+ content-type; s=pp1; bh=XbBvcv/BXI/xo+sLNGOGnqDhDL7UZmcnZDoZ0JOdoY4=;
+ b=B5gCS0sa17EFpNsm8SeOBauANEUe/H+LF0mCRsBEU2wzpH9g6nEHI0+P/kb17xZGv3kQ
+ 0y7nJ6FDUyNGg1Ko/9PpsDmXoerMg0+N20D/r9/jJzVVTM6XC45PoitwH5IKCxg1z33O
+ zh0R35LKkwgPNxtsM6GquN1SdNgSE6bfmczQx9dUN+FxNfckWz6Ouvx8+xE9EG9olkS5
+ VxgpXByAfltpUANGNx6s3EamMiEZ6M0IQtVhyIDn5WxS6Ws9MbPCMTPKmQvGNlCRZOfv
+ bF4W2pkgg4hj/zqkSrtGxE41GHV3/R1gfnYNpcdMLU0/nlZda4Kn9pgabp4CWLqqnRbs fQ== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 32sratccjw-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 12 Aug 2020 21:26:06 -0400
+Received: from m0187473.ppops.net (m0187473.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 07D13OCG107604;
+	Wed, 12 Aug 2020 21:26:04 -0400
+Received: from ppma02dal.us.ibm.com (a.bd.3ea9.ip4.static.sl-reverse.com [169.62.189.10])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 32sratccj3-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 12 Aug 2020 21:26:04 -0400
+Received: from pps.filterd (ppma02dal.us.ibm.com [127.0.0.1])
+	by ppma02dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 07D1BIqt027671;
+	Thu, 13 Aug 2020 01:26:03 GMT
+Received: from b03cxnp08026.gho.boulder.ibm.com (b03cxnp08026.gho.boulder.ibm.com [9.17.130.18])
+	by ppma02dal.us.ibm.com with ESMTP id 32skp9qpvf-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Thu, 13 Aug 2020 01:26:03 +0000
+Received: from b03ledav006.gho.boulder.ibm.com (b03ledav006.gho.boulder.ibm.com [9.17.130.237])
+	by b03cxnp08026.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 07D1PwVT21299708
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Thu, 13 Aug 2020 01:25:58 GMT
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 089BDC6061;
+	Thu, 13 Aug 2020 01:26:02 +0000 (GMT)
+Received: from b03ledav006.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 1A3ABC6055;
+	Thu, 13 Aug 2020 01:25:57 +0000 (GMT)
+Received: from morokweng.localdomain (unknown [9.211.41.173])
+	by b03ledav006.gho.boulder.ibm.com (Postfix) with ESMTPS;
+	Thu, 13 Aug 2020 01:25:56 +0000 (GMT)
+References: <20200723025657.644724-1-bauerman@linux.ibm.com> <20200723025657.644724-9-bauerman@linux.ibm.com> <20200727144350.47abd7e7.cohuck@redhat.com> <87a6zjuoru.fsf@morokweng.localdomain> <20200730114541.4dbdd15e.cohuck@redhat.com> <20200811130434.7388cfa2.cohuck@redhat.com>
+User-agent: mu4e 1.2.0; emacs 26.3
+From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+To: Cornelia Huck <cohuck@redhat.com>
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+        qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+        "Paolo
+ Bonzini" <pbonzini@redhat.com>,
+        Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Peter Maydell
+ <peter.maydell@linaro.org>,
+        Aleksandar Markovic
+ <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>,
+        Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,
+        Artyom Tarasenko <atar4qemu@gmail.com>, Thomas Huth <thuth@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+        =?utf-8?Q?Al?=
+ =?utf-8?Q?ex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Greg Kurz
+ <groug@kaod.org>
+Subject: Re: [RFC PATCH v3 8/8] target/s390x: Use start-powered-off CPUState property
+In-reply-to: <20200811130434.7388cfa2.cohuck@redhat.com>
+Date: Wed, 12 Aug 2020 22:25:54 -0300
+Message-ID: <87a6yzxrod.fsf@morokweng.localdomain>
 MIME-Version: 1.0
 Content-Type: text/plain
-X-MS-Office365-Filtering-Correlation-Id: f143b63c-f6e0-4a8c-29da-08d83f203736
-X-MS-TrafficTypeDiagnostic: MW2PR02MB3787:
-X-Microsoft-Antispam-PRVS: <MW2PR02MB378781CE30873B017B1AF191BC430@MW2PR02MB3787.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:114;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: VVVGQDKA78u19bAhi5CfzFDtw9YgAA7gjJgnfMsCjjP2cgAiBs76R/UtTr6Nir+heYskVL4QEvB5+FvvW8T7Wdz3y5hBCv6gBUeahJCRMCmWF8ocwQaLt723ttNohtBy23BydvUVBzS1Sk65ZXdU97t7xKKSDSGLGKva6QYAN5p7Phw3iH4MS5qrR5vtYWIemHSK/p3810NGJCbeNcGbki4c5Lf612yvjHbtlzfBB23p87kWH3EEk0pbIkAa5MBP635ot5kQFEnfM1TURZRuOH2Rh+Gya/mwqHcjK3Iyr069Tezp2SIRsW/J9zgTFbF/aPg70hsuEEhIugSkVojPeMZD72TfjtuWn8kxcPvuX3PE7MBbFk4lszKpgEv0YOHyJO5QYaoj8MvkPDVJJXmGLA==
-X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
- SFTY:;
- SFS:(39860400002)(396003)(346002)(376002)(136003)(46966005)(5660300002)(70586007)(70206006)(2616005)(316002)(36756003)(2906002)(54906003)(26005)(47076004)(8936002)(6666004)(336012)(356005)(4326008)(478600001)(186003)(7696005)(82310400002)(81166007)(82740400003)(9786002)(8676002)(426003)(6916009);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2020 00:31:27.0685 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: f143b63c-f6e0-4a8c-29da-08d83f203736
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
- Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT055.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW2PR02MB3787
-Received-SPF: pass client-ip=40.107.237.55; envelope-from=fnuv@xilinx.com;
- helo=NAM12-BN8-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 20:31:37
-X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Vikram Garhwal <fnu.vikram@xilinx.com>,
- Alistair Francis <alistair@alistair23.me>, francisco.iglesias@xilinx.com,
- "open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C1K9jYpqIcdd
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
+ definitions=2020-08-12_19:2020-08-11,2020-08-12 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 clxscore=1015 phishscore=0
+ suspectscore=0 priorityscore=1501 impostorscore=0 bulkscore=0 adultscore=0
+ malwarescore=0 spamscore=0 mlxscore=0 lowpriorityscore=0 mlxlogscore=999
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2008130006
+X-TUID: u0Wfj+LaRVrB
 
-Connect CAN0 and CAN1 on the ZynqMP.
 
-Reviewed-by: Francisco Iglesias <francisco.iglesias@xilinx.com>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-Signed-off-by: Vikram Garhwal <fnu.vikram@xilinx.com>
----
- hw/arm/xlnx-zcu102.c         | 20 ++++++++++++++++++++
- hw/arm/xlnx-zynqmp.c         | 34 ++++++++++++++++++++++++++++++++++
- include/hw/arm/xlnx-zynqmp.h |  8 ++++++++
- 3 files changed, 62 insertions(+)
+Cornelia Huck <cohuck@redhat.com> writes:
 
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index 5997262..c3e3420 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -24,6 +24,7 @@
- #include "qemu/log.h"
- #include "sysemu/qtest.h"
- #include "sysemu/device_tree.h"
-+#include "net/can_emu.h"
- 
- typedef struct XlnxZCU102 {
-     MachineState parent_obj;
-@@ -33,6 +34,8 @@ typedef struct XlnxZCU102 {
-     bool secure;
-     bool virt;
- 
-+    CanBusState *canbus[XLNX_ZYNQMP_NUM_CAN];
-+
-     struct arm_boot_info binfo;
- } XlnxZCU102;
- 
-@@ -125,6 +128,14 @@ static void xlnx_zcu102_init(MachineState *machine)
-     object_property_set_bool(OBJECT(&s->soc), "virtualization", s->virt,
-                              &error_fatal);
- 
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
-+        gchar *bus_name = g_strdup_printf("canbus%d", i);
-+
-+        object_property_set_link(OBJECT(&s->soc), bus_name,
-+                                 OBJECT(s->canbus[i]), &error_fatal);
-+        g_free(bus_name);
-+    }
-+
-     qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
- 
-     /* Create and plug in the SD cards */
-@@ -220,6 +231,15 @@ static void xlnx_zcu102_machine_instance_init(Object *obj)
-                                     "Set on/off to enable/disable emulating a "
-                                     "guest CPU which implements the ARM "
-                                     "Virtualization Extensions");
-+    object_property_add_link(obj, "xlnx-zcu102.canbus0", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[0],
-+                             object_property_allow_set_link,
-+                             0);
-+
-+    object_property_add_link(obj, "xlnx-zcu102.canbus1", TYPE_CAN_BUS,
-+                             (Object **)&s->canbus[1],
-+                             object_property_allow_set_link,
-+                             0);
- }
- 
- static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
-diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-index c435b9d..adad3e7 100644
---- a/hw/arm/xlnx-zynqmp.c
-+++ b/hw/arm/xlnx-zynqmp.c
-@@ -81,6 +81,14 @@ static const int uart_intr[XLNX_ZYNQMP_NUM_UARTS] = {
-     21, 22,
- };
- 
-+static const uint64_t can_addr[XLNX_ZYNQMP_NUM_CAN] = {
-+    0xFF060000, 0xFF070000,
-+};
-+
-+static const int can_intr[XLNX_ZYNQMP_NUM_CAN] = {
-+    23, 24,
-+};
-+
- static const uint64_t sdhci_addr[XLNX_ZYNQMP_NUM_SDHCI] = {
-     0xFF160000, 0xFF170000,
- };
-@@ -243,6 +251,11 @@ static void xlnx_zynqmp_init(Object *obj)
-                                 TYPE_CADENCE_UART);
-     }
- 
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
-+        object_initialize_child(obj, "can[*]", &s->can[i],
-+                                TYPE_XLNX_ZYNQMP_CAN);
-+    }
-+
-     object_initialize_child(obj, "sata", &s->sata, TYPE_SYSBUS_AHCI);
- 
-     for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
-@@ -480,6 +493,23 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-                            gic_spi[uart_intr[i]]);
-     }
- 
-+    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
-+        object_property_set_int(OBJECT(&s->can[i]), "ext_clk_freq",
-+                                XLNX_ZYNQMP_CAN_REF_CLK, &error_abort);
-+
-+        object_property_set_link(OBJECT(&s->can[i]), "canbus",
-+                                 OBJECT(s->canbus[i]), &error_fatal);
-+
-+        sysbus_realize(SYS_BUS_DEVICE(&s->can[i]), &err);
-+        if (err) {
-+            error_propagate(errp, err);
-+            return;
-+        }
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->can[i]), 0, can_addr[i]);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->can[i]), 0,
-+                           gic_spi[can_intr[i]]);
-+    }
-+
-     object_property_set_int(OBJECT(&s->sata), "num-ports", SATA_NUM_PORTS,
-                             &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sata), errp)) {
-@@ -617,6 +647,10 @@ static Property xlnx_zynqmp_props[] = {
-     DEFINE_PROP_BOOL("has_rpu", XlnxZynqMPState, has_rpu, false),
-     DEFINE_PROP_LINK("ddr-ram", XlnxZynqMPState, ddr_ram, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-+    DEFINE_PROP_LINK("canbus0", XlnxZynqMPState, canbus[0], TYPE_CAN_BUS,
-+                     CanBusState *),
-+    DEFINE_PROP_LINK("canbus1", XlnxZynqMPState, canbus[1], TYPE_CAN_BUS,
-+                     CanBusState *),
-     DEFINE_PROP_END_OF_LIST()
- };
- 
-diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
-index 53076fa..8cada69 100644
---- a/include/hw/arm/xlnx-zynqmp.h
-+++ b/include/hw/arm/xlnx-zynqmp.h
-@@ -22,6 +22,7 @@
- #include "hw/intc/arm_gic.h"
- #include "hw/net/cadence_gem.h"
- #include "hw/char/cadence_uart.h"
-+#include "hw/net/xlnx-zynqmp-can.h"
- #include "hw/ide/ahci.h"
- #include "hw/sd/sdhci.h"
- #include "hw/ssi/xilinx_spips.h"
-@@ -32,6 +33,7 @@
- #include "hw/rtc/xlnx-zynqmp-rtc.h"
- #include "hw/cpu/cluster.h"
- #include "target/arm/cpu.h"
-+#include "net/can_emu.h"
- 
- #define TYPE_XLNX_ZYNQMP "xlnx,zynqmp"
- #define XLNX_ZYNQMP(obj) OBJECT_CHECK(XlnxZynqMPState, (obj), \
-@@ -41,6 +43,8 @@
- #define XLNX_ZYNQMP_NUM_RPU_CPUS 2
- #define XLNX_ZYNQMP_NUM_GEMS 4
- #define XLNX_ZYNQMP_NUM_UARTS 2
-+#define XLNX_ZYNQMP_NUM_CAN 2
-+#define XLNX_ZYNQMP_CAN_REF_CLK (24 * 1000 * 1000)
- #define XLNX_ZYNQMP_NUM_SDHCI 2
- #define XLNX_ZYNQMP_NUM_SPIS 2
- #define XLNX_ZYNQMP_NUM_GDMA_CH 8
-@@ -92,6 +96,7 @@ typedef struct XlnxZynqMPState {
- 
-     CadenceGEMState gem[XLNX_ZYNQMP_NUM_GEMS];
-     CadenceUARTState uart[XLNX_ZYNQMP_NUM_UARTS];
-+    XlnxZynqMPCANState can[XLNX_ZYNQMP_NUM_CAN];
-     SysbusAHCIState sata;
-     SDHCIState sdhci[XLNX_ZYNQMP_NUM_SDHCI];
-     XilinxSPIPS spi[XLNX_ZYNQMP_NUM_SPIS];
-@@ -112,6 +117,9 @@ typedef struct XlnxZynqMPState {
-     bool virt;
-     /* Has the RPU subsystem?  */
-     bool has_rpu;
-+
-+    /* CAN bus. */
-+    CanBusState *canbus[XLNX_ZYNQMP_NUM_CAN];
- }  XlnxZynqMPState;
- 
- #endif
+> On Thu, 30 Jul 2020 11:45:41 +0200
+> Cornelia Huck <cohuck@redhat.com> wrote:
+>
+>> On Tue, 28 Jul 2020 21:51:33 -0300
+>> Thiago Jung Bauermann <bauerman@linux.ibm.com> wrote:
+>> 
+>> > Hi,
+>> > 
+>> > Cornelia Huck <cohuck@redhat.com> writes:
+>> >   
+>> > > On Wed, 22 Jul 2020 23:56:57 -0300
+>> > > Thiago Jung Bauermann <bauerman@linux.ibm.com> wrote:
+>> > >    
+>> > >> Instead of setting CPUState::halted to 1 in s390_cpu_initfn(), use the
+>> > >> start-powered-off property which makes cpu_common_reset() initialize it
+>> > >> to 1 in common code.
+>> > >> 
+>> > >> Note that this changes behavior by setting cs->halted to 1 on reset, which
+>> > >> didn't happen before.    
+>> > >
+>> > > I think that should be fine, as we change the cpu state to STOPPED in
+>> > > the reset function, which sets halted to 1.    
+>> > 
+>> > Nice, thanks for checking.
+>> >   
+>> > >> 
+>> > >> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+>> > >> ---
+>> > >>  target/s390x/cpu.c | 2 +-
+>> > >>  1 file changed, 1 insertion(+), 1 deletion(-)
+>> > >> 
+>> > >> NB: I was only able to test that this patch builds. I wasn't able to
+>> > >> run it.    
+>> > >
+>> > > No noticeable difference under kvm, but running under tcg seems a bit
+>> > > more sluggish than usual, and I saw some pausing on reboot (after the
+>> > > bios handover to the kernel). Not sure if it were just flukes on my
+>> > > laptop, would appreciate if someone else could give it a go.    
+>> 
+>> Experimented a bit with it again. There's a pause when switching from
+>> the bios to the kernel (after the load reset normal has been done, I
+>> guess), which is always there, but seems to get more noticeable with
+>> this patch (varying wildly, but seems longer on average.) Hard to pin
+>> down, and I don't really see a reason why that should happen, as we
+>> should end up with halted == 1 in any case. Might still be a fluke,
+>> even though I see it both on my laptop and on an LPAR (when running
+>> under tcg; not seen under kvm, which is much faster anyway.)
+>
+> Tried again, the pause now seems comparable to the pause prior to this
+> series. Might depend on the phase of the moon.
+>
+> I ran kvm unit tests on it, and it looks good. So, I'm reasonable
+> confident that this is fine, really just seems to be a fluke.
+>
+> Acked-by: Cornelia Huck <cohuck@redhat.com>
+
+Ah, that's a relief. Thank you very much for looking into this!
+
 -- 
-2.7.4
-
+Thiago Jung Bauermann
+IBM Linux Technology Center

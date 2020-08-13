@@ -1,277 +1,353 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1589802lfy;
-        Wed, 12 Aug 2020 09:27:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7PibUSlMm7pCrG5kUHlVezAEEPLYyjKGEj4DlZEqrIJan7HMHazApshfMrX26YGFVaGNM
-X-Received: by 2002:a25:7007:: with SMTP id l7mr206445ybc.85.1597249654210;
-        Wed, 12 Aug 2020 09:27:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597249654; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp31790lfy;
+        Wed, 12 Aug 2020 17:32:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyRfmLiJb/GfVaVF1M4Gr0fnAlvVCHcPi32b/6OpYIxYW0u/Uza+KFB0xn3XPGhm8khQlL+
+X-Received: by 2002:a25:3483:: with SMTP id b125mr3226475yba.8.1597278738699;
+        Wed, 12 Aug 2020 17:32:18 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1597278738; cv=pass;
         d=google.com; s=arc-20160816;
-        b=qe7liZnQthr4CR3bm1xpGpmWnc0jf23DzKy3L9EMnp+xSzrjUl7p0BHQzKGmNuJZUk
-         yUjoN5rKd5qoKcxj8+fUDoX+SH0OmfZtUIHWLHInL/XjyMylPEf9k0lhWngswtQ3uDH0
-         zM5m80HIB4bEKR98UH7D0J5wRYP5xOvC5CBxNDwlx5jgZkAGxfRx0DD2cXTZAs21RV9Y
-         qYnvkflsMaaXNz6wCzetSAQ0Lp1F37E+xbjFfg+vjoC4Q/cumc3sLKAYVZ8XcJbgToIg
-         fUX/KJyirNnxX933+QVeZEQBfNfNjKWJeeRue2AUWfWumiIWN3nUfv0DP2Vtf3AGBhzP
-         mS2Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=Q1dQwMk36EVm0WABZNivCaqy3ewHMY7yaC+MrSzd357RSBofmgUhLzY6xC+aA84A7G
+         Rz+47e1A+VLiEAg2qnSemc/8xYCKgk6dugBbUtltfkIvTd28SHIH0ZE0kEdZ4PxsBm1G
+         7XnXcW14nwourXqsnHMn4syUt/D7rhVSSK/Yp2yUDA02DPrZswMmCvZ3VRhd7wslggSY
+         8TB0iPgNCBgY1lgdpVo9rFvhDnCyj2qSEX2rN2OszLEqje6EjlJm4SfzkBYZemQIYm96
+         mcHn+wZhQ5/UrHy0In5uGMqz3gXHEXE7MlEymzd/wNPxu4Sx582q5+TaibZUr9FcU0VS
+         4XZA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=XpRlUkQFf6AHIug+gP70NucqP83ene4yqqQ+ezAfHLM=;
-        b=asKdSiE6CVOO/NK505Q7PxI2SxxNLw3rMi85NYWL0dSrsyXaKYsknpKVaqEUDQndz5
-         /bfSiUvNjHrnfQv5/2tDNDDpFXuuRYG1sRT2rL3nDghflcG89a3UTKIEtzjMZk8BQccB
-         892DuS0dcA86Feo/TXwMwZ/j6A3LGznhkNB6M9VYHQzQVQb/4CJ26EA9eNet0hFchDcA
-         q9hzuvSnnVinj8iZ9D0chU2x/T6mBer936RFoUYEgzhbOzeun1HUb34b8Ay3ySoo2ICJ
-         eNMXkS/WcF+z69ysivfmvbMn5Ry8rPH4dEMTUx8G13dwFyQqgisjNSo9FyzoVkkLXGOJ
-         O2SQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IkDa50g+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:mime-version:references
+         :in-reply-to:message-id:date:subject:to:from:dkim-signature;
+        bh=0CP7QStMptx6r6vsUdYEvkIVVIzvVzLEUr7Hqe15LI4=;
+        b=jdtfJVb/MeEswaGeVZ7aPF15wVy67VcoaiHcWrjjv4UC0AumWDmtfgP7/OUqXbs9hI
+         aF2beUcudFQmdSjDD+0ppd+gkAEUKHLO0pvtPIgr8a0ycXJ5BOWEYDXdz3djMTHwwwAs
+         Br10xXOsEljYbbjsPg6uucP0FWCKD3wPPVri+Aj+qWbKCv0j8Use5f/ulb+JRLb7/Rwx
+         mveLDw3EiWbAQFDGfm2NbxyynhcLhgVamYYjYPEfJhxp84H/TSq9LlC+y3DX/FQs2pAQ
+         o0uRKWqAtJnzbej39U2+NZcGv8ofebfsZprg9stqbncxodr7DLmlXdzlqXYTmhLBuksh
+         k3MQ==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="dqJC/F8x";
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16si2681812ybb.239.2020.08.12.09.27.34
+        by mx.google.com with ESMTPS id t6si4430293ybo.46.2020.08.12.17.32.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 12 Aug 2020 09:27:34 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 12 Aug 2020 17:32:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IkDa50g+;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33294 helo=lists1p.gnu.org)
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="dqJC/F8x";
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:44058 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k5tbB-0006tg-KH
-	for alex.bennee@linaro.org; Wed, 12 Aug 2020 12:27:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41748)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k61AH-00033F-Ug
+	for alex.bennee@linaro.org; Wed, 12 Aug 2020 20:32:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57554)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k5taV-0006SF-NT
- for qemu-devel@nongnu.org; Wed, 12 Aug 2020 12:26:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42299)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1k5taS-0002A1-TH
- for qemu-devel@nongnu.org; Wed, 12 Aug 2020 12:26:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597249608;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=XpRlUkQFf6AHIug+gP70NucqP83ene4yqqQ+ezAfHLM=;
- b=IkDa50g+XR3GBoE3/q4ix2JVTmvmWStI8Sqz48zj5GH0C5vkcSApMG6xsdrDSxmlZEreJE
- /eG1xMcag3d7CukY9+cU8gJFJWKr1QpNFfVSoIx3GD/fLM+nHurBAj0BmherW9y4e7Uv77
- qE6go97wdIl4Ha/xX5Rv6e/Cc8e0FxQ=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-515-xoEQs_PEMqmITVw465TGLg-1; Wed, 12 Aug 2020 12:26:42 -0400
-X-MC-Unique: xoEQs_PEMqmITVw465TGLg-1
-Received: by mail-wm1-f71.google.com with SMTP id v8so870191wma.6
- for <qemu-devel@nongnu.org>; Wed, 12 Aug 2020 09:26:41 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=XpRlUkQFf6AHIug+gP70NucqP83ene4yqqQ+ezAfHLM=;
- b=JJ2nDJRk1BMmNb5War5IGftwHSflZvqHbP6CLZ+kjQYk9Bj+d0yUrIKfhU62uJa0nO
- hw8IlGUxx8bPGw6gUYVvaysv+BaMdsZbKwfLU/64BJvJkTA5tXw+fMlNUlL1C3eRZ6/O
- zs0G62hRBafQYm6zqOmDRkk/34Y2tlhbZ7BtI2xq1/tdR61brPlqiHmXioyG7KPPfzAV
- 6qivPJlmEn1tm4TrGtDWLrBBNtYM0PZmJsFyEnutom8Xcz+k8ESSNTPYW4OZAQjcnDcP
- +n3jmTfh2NPXr6kjRNVuUvcLuZQC8Zx1nSbfNvRGFznuVmuhzeae8iaCjVq2okezoPu5
- l3Gw==
-X-Gm-Message-State: AOAM530G8j3k6KYaU5EMsQLszdnVsWzMaS5wRnRPtQ2wTFhSjcWCwyo1
- qGTQdPpQgP660rXn3mWHSvXrjZ6Nk5oDaeC0BxBwiF5K7hj/fLlymcTAmUyCXaV36kVshOGFxp9
- YtqHC3skfvMSWXuc=
-X-Received: by 2002:adf:eb89:: with SMTP id t9mr34511wrn.65.1597249600951;
- Wed, 12 Aug 2020 09:26:40 -0700 (PDT)
-X-Received: by 2002:adf:eb89:: with SMTP id t9mr34491wrn.65.1597249600677;
- Wed, 12 Aug 2020 09:26:40 -0700 (PDT)
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id y145sm4773770wmd.48.2020.08.12.09.26.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 12 Aug 2020 09:26:39 -0700 (PDT)
-Subject: Re: [PULL 3/3] configure: Allow to build tools without pixman
-To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-References: <20200724164258.24886-1-kraxel@redhat.com>
- <20200724164258.24886-4-kraxel@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <f1fbe9b9-575e-b55f-8596-754a82654b5c@redhat.com>
-Date: Wed, 12 Aug 2020 18:26:38 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <fnuv@xilinx.com>)
+ id 1k619j-0002RQ-Rz; Wed, 12 Aug 2020 20:31:44 -0400
+Received: from mail-bn8nam12on2055.outbound.protection.outlook.com
+ ([40.107.237.55]:28092 helo=NAM12-BN8-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fnuv@xilinx.com>)
+ id 1k619f-0000cx-G9; Wed, 12 Aug 2020 20:31:43 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=hxbaga5CTDaFHw6oCUXYcDSLtpfZVlE1mvGWx42kDGLgsDMIpOPXdSUArAZvGyvzDXUA+BmlkCh2jvuyRE5AExuHgoMBs5OYNjLmUwoJqWRYX5Ne8zo+VOoD9567Zvg6UCzFdDq3HB4nXUwikUQqxG9BdmpGhJFVaJi+4MkfN8n+50M8mjHYD8kyAGZ1iWcmfI9HC5ndp4qWvoxL2qHi/SLu5lBVxPgIidV5WyEB9ocRy3nCSfKB1B+hjCIE8i8mXBK086rRdMTB262LeKBsujE2GRAmRmL0mOQuSIfDg8n5ZQq36K8bn0okWEL4BMWDxVGpG9b8oYlNjtmESVD4eQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0CP7QStMptx6r6vsUdYEvkIVVIzvVzLEUr7Hqe15LI4=;
+ b=Wf129M+f+coaXk4mcueiB/AYrhfRSh7dL9jxsRaZGjGtpLIrZvTnQkRRED7K/o6SP5IgZCb/wpa8p/TAAXxQ/xJ2u8VtkSDWI06Z6KDPfuJh+/mVnRtZI7HCB35tO7ZL7gcZ2AMXluTJ9mTvzr4r3nDGCmwPc+0t9Li1UPz8BRdZ8g3pcJUuBu1nOtVste+gOmzimZa+xbTNL+E9ilS8GgBmprBSote2SOaoEZR8TDI8HUyU9DVyomH5JlHu/2G3Fx0/IS7WDjvngP8BrTsgYSXZRsRQtOn3yEsSyXa8O759CyaSpivMVDz4eflZPu89modLMJHqQrlvwGHVIM+zww==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=nongnu.org smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0CP7QStMptx6r6vsUdYEvkIVVIzvVzLEUr7Hqe15LI4=;
+ b=dqJC/F8xLYVESoggiW+6b+2WZRJAOMR0QbAl6XQepnaoK0RumfM2NtZbSNbYUyQqvOtPxTq/f6tOcx9PO8SOp45FCAHdMz9td7Bs0OE3c6GYYq+i2Pm0P2JhoQPDmqqFCMjs1tl8ELbH2VPFM/e02k59dw0UcLDswP00aLgPPSo=
+Received: from DM5PR2201CA0003.namprd22.prod.outlook.com (2603:10b6:4:14::13)
+ by MW2PR02MB3787.namprd02.prod.outlook.com (2603:10b6:907:3::24) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3261.20; Thu, 13 Aug
+ 2020 00:31:27 +0000
+Received: from DM3NAM02FT055.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:4:14:cafe::bc) by DM5PR2201CA0003.outlook.office365.com
+ (2603:10b6:4:14::13) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3283.15 via Frontend
+ Transport; Thu, 13 Aug 2020 00:31:27 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; nongnu.org; dkim=none (message not signed)
+ header.d=none;nongnu.org; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ DM3NAM02FT055.mail.protection.outlook.com (10.13.5.136) with Microsoft SMTP
+ Server id 15.20.3283.16 via Frontend Transport; Thu, 13 Aug 2020 00:31:27
+ +0000
+Received: from [149.199.38.66] (port=57218 helo=smtp.xilinx.com)
+ by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
+ (envelope-from <fnu.vikram@xilinx.com>)
+ id 1k619J-0006yf-HA; Wed, 12 Aug 2020 17:31:17 -0700
+Received: from [127.0.0.1] (helo=localhost)
+ by xsj-pvapsmtp01 with smtp (Exim 4.63)
+ (envelope-from <fnu.vikram@xilinx.com>)
+ id 1k619S-00080l-PU; Wed, 12 Aug 2020 17:31:26 -0700
+Received: from xsj-pvapsmtp01 (maildrop.xilinx.com [149.199.38.66])
+ by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 07D0VJ4g029526; 
+ Wed, 12 Aug 2020 17:31:19 -0700
+Received: from [172.19.2.115] (helo=xsjfnuv50.xilinx.com)
+ by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+ (envelope-from <fnu.vikram@xilinx.com>)
+ id 1k619L-0007xR-No; Wed, 12 Aug 2020 17:31:19 -0700
+From: Vikram Garhwal <fnu.vikram@xilinx.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v9 2/4] xlnx-zynqmp: Connect Xilinx ZynqMP CAN controllers
+Date: Wed, 12 Aug 2020 17:31:06 -0700
+Message-Id: <1597278668-339715-3-git-send-email-fnu.vikram@xilinx.com>
+X-Mailer: git-send-email 2.7.4
+In-Reply-To: <1597278668-339715-1-git-send-email-fnu.vikram@xilinx.com>
+References: <1597278668-339715-1-git-send-email-fnu.vikram@xilinx.com>
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-PublicTrafficType: Email
 MIME-Version: 1.0
-In-Reply-To: <20200724164258.24886-4-kraxel@redhat.com>
-Content-Language: en-US
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 12:26:44
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain
+X-MS-Office365-Filtering-Correlation-Id: f143b63c-f6e0-4a8c-29da-08d83f203736
+X-MS-TrafficTypeDiagnostic: MW2PR02MB3787:
+X-Microsoft-Antispam-PRVS: <MW2PR02MB378781CE30873B017B1AF191BC430@MW2PR02MB3787.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:114;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: VVVGQDKA78u19bAhi5CfzFDtw9YgAA7gjJgnfMsCjjP2cgAiBs76R/UtTr6Nir+heYskVL4QEvB5+FvvW8T7Wdz3y5hBCv6gBUeahJCRMCmWF8ocwQaLt723ttNohtBy23BydvUVBzS1Sk65ZXdU97t7xKKSDSGLGKva6QYAN5p7Phw3iH4MS5qrR5vtYWIemHSK/p3810NGJCbeNcGbki4c5Lf612yvjHbtlzfBB23p87kWH3EEk0pbIkAa5MBP635ot5kQFEnfM1TURZRuOH2Rh+Gya/mwqHcjK3Iyr069Tezp2SIRsW/J9zgTFbF/aPg70hsuEEhIugSkVojPeMZD72TfjtuWn8kxcPvuX3PE7MBbFk4lszKpgEv0YOHyJO5QYaoj8MvkPDVJJXmGLA==
+X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
+ SFTY:;
+ SFS:(39860400002)(396003)(346002)(376002)(136003)(46966005)(5660300002)(70586007)(70206006)(2616005)(316002)(36756003)(2906002)(54906003)(26005)(47076004)(8936002)(6666004)(336012)(356005)(4326008)(478600001)(186003)(7696005)(82310400002)(81166007)(82740400003)(9786002)(8676002)(426003)(6916009);
+ DIR:OUT; SFP:1101; 
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2020 00:31:27.0685 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: f143b63c-f6e0-4a8c-29da-08d83f203736
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
+ Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-AuthSource: DM3NAM02FT055.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW2PR02MB3787
+Received-SPF: pass client-ip=40.107.237.55; envelope-from=fnuv@xilinx.com;
+ helo=NAM12-BN8-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/12 20:31:37
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CmyWf7iFo5zg
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Vikram Garhwal <fnu.vikram@xilinx.com>,
+ Alistair Francis <alistair@alistair23.me>, francisco.iglesias@xilinx.com,
+ "open list:Xilinx ZynqMP" <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: C1K9jYpqIcdd
 
-Hi,
+Connect CAN0 and CAN1 on the ZynqMP.
 
-On 7/24/20 6:42 PM, Gerd Hoffmann wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> If pixman is not installed, it is currently not possible to run:
-> 
->  .../configure  --disable-system --enable-tools
-> 
-> Seems like there was a dependency from one of the required source
-> files to pixman in the past, but since commit 1ac0206b2ae1ffaeec56
-> ("qemu-timer.c: Trim list of included headers"), this dependency
-> should be gone. Thus allow to compile the tools without pixman now.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> Message-id: 20200723141123.14765-1-thuth@redhat.com
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> ---
->  configure | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/configure b/configure
-> index 4bd80ed507aa..2acc4d1465f8 100755
-> --- a/configure
-> +++ b/configure
-> @@ -4065,7 +4065,7 @@ fi
->  ##########################################
->  # pixman support probe
->  
-> -if test "$want_tools" = "no" && test "$softmmu" = "no"; then
-> +if test "$softmmu" = "no"; then
->    pixman_cflags=
->    pixman_libs=
->  elif $pkg_config --atleast-version=0.21.8 pixman-1 > /dev/null 2>&1; then
-> 
+Reviewed-by: Francisco Iglesias <francisco.iglesias@xilinx.com>
+Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
+Signed-off-by: Vikram Garhwal <fnu.vikram@xilinx.com>
+---
+ hw/arm/xlnx-zcu102.c         | 20 ++++++++++++++++++++
+ hw/arm/xlnx-zynqmp.c         | 34 ++++++++++++++++++++++++++++++++++
+ include/hw/arm/xlnx-zynqmp.h |  8 ++++++++
+ 3 files changed, 62 insertions(+)
 
-This commit broke my '--disable-system --disable-user --enable-tools' build:
-
-$ make vhost-user-gpu
-...
-  LINK    vhost-user-gpu
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.o: in function
-`vg_resource_create_2d':
-contrib/vhost-user-gpu/vhost-user-gpu.c:322: undefined reference to
-`pixman_image_create_bits'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.o: in function
-`vg_resource_destroy':
-contrib/vhost-user-gpu/vhost-user-gpu.c:381: undefined reference to
-`pixman_image_unref'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.o: in function
-`vg_transfer_to_host_2d':
-contrib/vhost-user-gpu/vhost-user-gpu.c:538: undefined reference to
-`pixman_image_get_format'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:540: undefined
-reference to `pixman_image_get_stride'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:543: undefined
-reference to `pixman_image_get_width'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:544: undefined
-reference to `pixman_image_get_data'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:556: undefined
-reference to `pixman_image_get_stride'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:557: undefined
-reference to `pixman_image_get_height'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:555: undefined
-reference to `pixman_image_get_data'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.o: in function
-`vg_resource_flush':
-contrib/vhost-user-gpu/vhost-user-gpu.c:693: undefined reference to
-`pixman_region_init_rect'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:705: undefined
-reference to `pixman_region_init'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:706: undefined
-reference to `pixman_region_init_rect'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:709: undefined
-reference to `pixman_region_intersect'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:711: undefined
-reference to `pixman_region_extents'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:731: undefined
-reference to `pixman_image_get_format'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:731: undefined
-reference to `pixman_image_get_format'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:747: undefined
-reference to `pixman_image_get_format'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:747: undefined
-reference to `pixman_image_create_bits'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:753: undefined
-reference to `pixman_image_composite'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:758: undefined
-reference to `pixman_image_unref'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:762: undefined
-reference to `pixman_region_fini'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:763: undefined
-reference to `pixman_region_fini'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:765: undefined
-reference to `pixman_region_fini'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.o: in function
-`update_cursor_data_simple':
-contrib/vhost-user-gpu/vhost-user-gpu.c:863: undefined reference to
-`pixman_image_get_width'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:864: undefined
-reference to `pixman_image_get_height'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:865: undefined
-reference to `pixman_image_get_format'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:865: undefined
-reference to `pixman_image_get_format'
-/usr/bin/ld: contrib/vhost-user-gpu/vhost-user-gpu.c:868: undefined
-reference to `pixman_image_get_data'
-collect2: error: ld returned 1 exit status
-make: *** [Makefile:730: vhost-user-gpu] Error 1
-
-Thanks,
-
-Phil.
+diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+index 5997262..c3e3420 100644
+--- a/hw/arm/xlnx-zcu102.c
++++ b/hw/arm/xlnx-zcu102.c
+@@ -24,6 +24,7 @@
+ #include "qemu/log.h"
+ #include "sysemu/qtest.h"
+ #include "sysemu/device_tree.h"
++#include "net/can_emu.h"
+ 
+ typedef struct XlnxZCU102 {
+     MachineState parent_obj;
+@@ -33,6 +34,8 @@ typedef struct XlnxZCU102 {
+     bool secure;
+     bool virt;
+ 
++    CanBusState *canbus[XLNX_ZYNQMP_NUM_CAN];
++
+     struct arm_boot_info binfo;
+ } XlnxZCU102;
+ 
+@@ -125,6 +128,14 @@ static void xlnx_zcu102_init(MachineState *machine)
+     object_property_set_bool(OBJECT(&s->soc), "virtualization", s->virt,
+                              &error_fatal);
+ 
++    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
++        gchar *bus_name = g_strdup_printf("canbus%d", i);
++
++        object_property_set_link(OBJECT(&s->soc), bus_name,
++                                 OBJECT(s->canbus[i]), &error_fatal);
++        g_free(bus_name);
++    }
++
+     qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
+ 
+     /* Create and plug in the SD cards */
+@@ -220,6 +231,15 @@ static void xlnx_zcu102_machine_instance_init(Object *obj)
+                                     "Set on/off to enable/disable emulating a "
+                                     "guest CPU which implements the ARM "
+                                     "Virtualization Extensions");
++    object_property_add_link(obj, "xlnx-zcu102.canbus0", TYPE_CAN_BUS,
++                             (Object **)&s->canbus[0],
++                             object_property_allow_set_link,
++                             0);
++
++    object_property_add_link(obj, "xlnx-zcu102.canbus1", TYPE_CAN_BUS,
++                             (Object **)&s->canbus[1],
++                             object_property_allow_set_link,
++                             0);
+ }
+ 
+ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
+diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
+index c435b9d..adad3e7 100644
+--- a/hw/arm/xlnx-zynqmp.c
++++ b/hw/arm/xlnx-zynqmp.c
+@@ -81,6 +81,14 @@ static const int uart_intr[XLNX_ZYNQMP_NUM_UARTS] = {
+     21, 22,
+ };
+ 
++static const uint64_t can_addr[XLNX_ZYNQMP_NUM_CAN] = {
++    0xFF060000, 0xFF070000,
++};
++
++static const int can_intr[XLNX_ZYNQMP_NUM_CAN] = {
++    23, 24,
++};
++
+ static const uint64_t sdhci_addr[XLNX_ZYNQMP_NUM_SDHCI] = {
+     0xFF160000, 0xFF170000,
+ };
+@@ -243,6 +251,11 @@ static void xlnx_zynqmp_init(Object *obj)
+                                 TYPE_CADENCE_UART);
+     }
+ 
++    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
++        object_initialize_child(obj, "can[*]", &s->can[i],
++                                TYPE_XLNX_ZYNQMP_CAN);
++    }
++
+     object_initialize_child(obj, "sata", &s->sata, TYPE_SYSBUS_AHCI);
+ 
+     for (i = 0; i < XLNX_ZYNQMP_NUM_SDHCI; i++) {
+@@ -480,6 +493,23 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+                            gic_spi[uart_intr[i]]);
+     }
+ 
++    for (i = 0; i < XLNX_ZYNQMP_NUM_CAN; i++) {
++        object_property_set_int(OBJECT(&s->can[i]), "ext_clk_freq",
++                                XLNX_ZYNQMP_CAN_REF_CLK, &error_abort);
++
++        object_property_set_link(OBJECT(&s->can[i]), "canbus",
++                                 OBJECT(s->canbus[i]), &error_fatal);
++
++        sysbus_realize(SYS_BUS_DEVICE(&s->can[i]), &err);
++        if (err) {
++            error_propagate(errp, err);
++            return;
++        }
++        sysbus_mmio_map(SYS_BUS_DEVICE(&s->can[i]), 0, can_addr[i]);
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->can[i]), 0,
++                           gic_spi[can_intr[i]]);
++    }
++
+     object_property_set_int(OBJECT(&s->sata), "num-ports", SATA_NUM_PORTS,
+                             &error_abort);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sata), errp)) {
+@@ -617,6 +647,10 @@ static Property xlnx_zynqmp_props[] = {
+     DEFINE_PROP_BOOL("has_rpu", XlnxZynqMPState, has_rpu, false),
+     DEFINE_PROP_LINK("ddr-ram", XlnxZynqMPState, ddr_ram, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
++    DEFINE_PROP_LINK("canbus0", XlnxZynqMPState, canbus[0], TYPE_CAN_BUS,
++                     CanBusState *),
++    DEFINE_PROP_LINK("canbus1", XlnxZynqMPState, canbus[1], TYPE_CAN_BUS,
++                     CanBusState *),
+     DEFINE_PROP_END_OF_LIST()
+ };
+ 
+diff --git a/include/hw/arm/xlnx-zynqmp.h b/include/hw/arm/xlnx-zynqmp.h
+index 53076fa..8cada69 100644
+--- a/include/hw/arm/xlnx-zynqmp.h
++++ b/include/hw/arm/xlnx-zynqmp.h
+@@ -22,6 +22,7 @@
+ #include "hw/intc/arm_gic.h"
+ #include "hw/net/cadence_gem.h"
+ #include "hw/char/cadence_uart.h"
++#include "hw/net/xlnx-zynqmp-can.h"
+ #include "hw/ide/ahci.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/ssi/xilinx_spips.h"
+@@ -32,6 +33,7 @@
+ #include "hw/rtc/xlnx-zynqmp-rtc.h"
+ #include "hw/cpu/cluster.h"
+ #include "target/arm/cpu.h"
++#include "net/can_emu.h"
+ 
+ #define TYPE_XLNX_ZYNQMP "xlnx,zynqmp"
+ #define XLNX_ZYNQMP(obj) OBJECT_CHECK(XlnxZynqMPState, (obj), \
+@@ -41,6 +43,8 @@
+ #define XLNX_ZYNQMP_NUM_RPU_CPUS 2
+ #define XLNX_ZYNQMP_NUM_GEMS 4
+ #define XLNX_ZYNQMP_NUM_UARTS 2
++#define XLNX_ZYNQMP_NUM_CAN 2
++#define XLNX_ZYNQMP_CAN_REF_CLK (24 * 1000 * 1000)
+ #define XLNX_ZYNQMP_NUM_SDHCI 2
+ #define XLNX_ZYNQMP_NUM_SPIS 2
+ #define XLNX_ZYNQMP_NUM_GDMA_CH 8
+@@ -92,6 +96,7 @@ typedef struct XlnxZynqMPState {
+ 
+     CadenceGEMState gem[XLNX_ZYNQMP_NUM_GEMS];
+     CadenceUARTState uart[XLNX_ZYNQMP_NUM_UARTS];
++    XlnxZynqMPCANState can[XLNX_ZYNQMP_NUM_CAN];
+     SysbusAHCIState sata;
+     SDHCIState sdhci[XLNX_ZYNQMP_NUM_SDHCI];
+     XilinxSPIPS spi[XLNX_ZYNQMP_NUM_SPIS];
+@@ -112,6 +117,9 @@ typedef struct XlnxZynqMPState {
+     bool virt;
+     /* Has the RPU subsystem?  */
+     bool has_rpu;
++
++    /* CAN bus. */
++    CanBusState *canbus[XLNX_ZYNQMP_NUM_CAN];
+ }  XlnxZynqMPState;
+ 
+ #endif
+-- 
+2.7.4
 

@@ -1,175 +1,171 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp802474lfy;
-        Thu, 13 Aug 2020 12:07:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOFjoJNPZDQ1a5QlAefwAuU6EN/2YDam53clGIeUgILdLBmrT1WHaB4BJGS8q3aQTZWgiC
-X-Received: by 2002:a25:e644:: with SMTP id d65mr9215997ybh.452.1597345675679;
-        Thu, 13 Aug 2020 12:07:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597345675; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp871041lfy;
+        Thu, 13 Aug 2020 13:57:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwrhlyPCA1IC1+X1etZmvMto5z422VG4TbinmSfDYS+fLNJYZ495uUK7PjfSN8nBl7Vn4lk
+X-Received: by 2002:a5b:411:: with SMTP id m17mr9695935ybp.492.1597352222193;
+        Thu, 13 Aug 2020 13:57:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597352222; cv=none;
         d=google.com; s=arc-20160816;
-        b=SF6g/4Q3/7Czn5msxVPpQWdS3knQZeWju62xQmfhXqdMKy9WWv4RJKBGMP2UHZv2ZB
-         QGbsNzzZjoJOYjB63o/vTmME/vnHZejWAjo0jbEyZ/WIhAvx14wllgAjrep/ebzkhK/P
-         Qe9j+dBCT/qmfftCo7sj507BTR18GUyFrPk6merHjMFMBwhfFn3hJ2fNMLrs1r+QdXmu
-         MFxKTmS2tUYJHKYVOb644gvNolksAVCvKvvaVb9FObhSH40XBJ8Q31EjW6I0Vz7khGrK
-         9brBxuZEXYv57fL8aQvLjSGl+VRte/ovdmZU+QqX4SIRSPWEWr9yD3mEzuoXmvlL0QeE
-         J0aw==
+        b=xcQmzpRkSJQxivrX75qx0v+fUfPpnAt3Jy5viVS2FSepIg9w9AamOBvd/KibNqpNUi
+         aZp7n6MsERx7up12/+/DPKn+1V75xVDm70NmaZquQi++8tKD7/eRQHco4MCVKRZiQ0wr
+         6PrFo8pEWJ4BCqS+/OPpZj3FUkw/55OglAribAfRuxoR9Ut3VIBtQPC0k3YG9QJ5DiFO
+         fs6wgY5ZePBz9bXvLN0l8dWwxj2bHOgFYnU42Fa7Mic9zQnGQe7u0pmY3LDRsXv8vVjO
+         YajoMoGTFC9K19A7SAXR/oPVimf+Mo0WDxbr68AabkJU8yNrTS1Cru2tfSwNgis2LLNp
+         WZcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:openpgp:from:references:to:subject:dkim-signature;
-        bh=wIdHwM4GQus7FW0Q9der1IBWqhubCenOY7nipuivsfI=;
-        b=AN1phyTHwuE1CmgKvGjW4Vaq3KZbFxvPSTp7kiLbPpZi2rPJzxwMaF/dgR9c0z9dnO
-         3AD4jtk2jymUkFYhRS++xP5KyS2u0s0iVCXVPoxjk9fwA697YGlXf+KnGIHsX0vfwIw2
-         HJ7OhAcefDate0ouLWKy30Xxbien8Gu5kp7PVKEKlxyfRbjadjX366XWnOzTC/B4NCqd
-         ba14INODxAw9cRxWDZbRoD+A5lJbE8NREXuM+e9n7EEalI9aJmik/jk17NczacA4O4LF
-         JBtW0DMMaSQF1UQyh6VNvoGxD60qGJl2ZuQonQongawjgbJX8z8Xbv/SVaNgY1Qq45/y
-         aIVA==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=9DlQfSwfQPql/XtPjOtP2x2qFbQl3utLpcCKTEXfhNM=;
+        b=UzTSgO8NBBFivUKMQyvaTOHyDRIr2BG5tZdxfnpCw9sQhIXZR2Tky7HkoD4gfpSkvm
+         1sBwGfTtNBKMUS7wZkt6uTg8tVyA+Wlz26zrChTDXRLtvgD35BJDNJXVzqun807da90E
+         ll27VhXyAJsHs6P6wsqtodwz2ymBqrVxtk3lFTml+xQGjpEYKpOl4Y6zuefgW3BDyVwT
+         HuCBqMdAa3nBsbB10RX2XYzFV1D7413oEzE3pOqnJ1/PufsdpLFScddPO6G0cxLY9N+a
+         XOJwZXZa14lTPqFHPgr7Ox08vWCDvxrdwQyp4ve6+I9bBCs+M+PgM8pbd1Ubc1FpmobQ
+         6vhw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hf1mGbaz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b="szfdNpV/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x4si5926949ybq.362.2020.08.13.12.07.55
+        by mx.google.com with ESMTPS id 127si6154882ybc.335.2020.08.13.13.57.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Aug 2020 12:07:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Aug 2020 13:57:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hf1mGbaz;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47778 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b="szfdNpV/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38888 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6IZv-00079A-1X
-	for alex.bennee@linaro.org; Thu, 13 Aug 2020 15:07:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45322)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k6KHV-0001Yb-KV
+	for alex.bennee@linaro.org; Thu, 13 Aug 2020 16:57:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k6IZn-00078x-H5
- for qemu-arm@nongnu.org; Thu, 13 Aug 2020 15:07:47 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23680
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k6IZl-0004oj-56
- for qemu-arm@nongnu.org; Thu, 13 Aug 2020 15:07:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597345663;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:openpgp:openpgp;
- bh=wIdHwM4GQus7FW0Q9der1IBWqhubCenOY7nipuivsfI=;
- b=Hf1mGbaz/6x33BveAPkHNf/nlmfXcwgtUdkWcz9FyQ1KSbEpu2GXiJH2g0G4/PvEtce1zR
- MRqjOyZQxf87b9n6/wlrdo38pZhIwiC/T91PyvakA5jUlXlZR5UZEMayNFf5fflKm2y5Sx
- iEiLNGmEsle6QKcnTwHYisSBuYQ+8ws=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-577-5ANmcTXmMPi5CRifDp66Ig-1; Thu, 13 Aug 2020 15:07:41 -0400
-X-MC-Unique: 5ANmcTXmMPi5CRifDp66Ig-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 323D3800D53;
- Thu, 13 Aug 2020 19:07:40 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-8.ams2.redhat.com [10.36.112.8])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 392B06FDB3;
- Thu, 13 Aug 2020 19:07:28 +0000 (UTC)
-Subject: Re: [PULL 3/3] configure: Allow to build tools without pixman
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-References: <20200724164258.24886-1-kraxel@redhat.com>
- <20200724164258.24886-4-kraxel@redhat.com>
- <f1fbe9b9-575e-b55f-8596-754a82654b5c@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Openpgp: preference=signencrypt
-Message-ID: <2abe330a-37e2-fda6-d531-79fb5805afc7@redhat.com>
-Date: Thu, 13 Aug 2020 21:07:25 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
- Thunderbird/60.9.0
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1k6KGh-00019J-P0
+ for qemu-devel@nongnu.org; Thu, 13 Aug 2020 16:56:11 -0400
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:54332)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1k6KGf-0001IA-Ku
+ for qemu-devel@nongnu.org; Thu, 13 Aug 2020 16:56:11 -0400
+Received: by mail-pj1-x1042.google.com with SMTP id mt12so3345342pjb.4
+ for <qemu-devel@nongnu.org>; Thu, 13 Aug 2020 13:56:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=9DlQfSwfQPql/XtPjOtP2x2qFbQl3utLpcCKTEXfhNM=;
+ b=szfdNpV/I71nmSuxiEcQ3Sre/B7P4LGn5Q5MjnsGgCODu/uSyJgwXd+6GXwL7If+Gf
+ yj6uYWAKsy/EUDF027+HhkUEpSBej3LEh1cAHkL3gPTcppuh+q2vBg6lXpr3YKQYCkEt
+ WksscQSiCcAZhAAZVUpifnMJH+ebGhhqJMRG8bLFp0fAh4cqNSHTwQJYSzPmdEX3yWfn
+ VUvnQPRfQ0pyLcJp1nqoa3mfhXXHb/w9K97EBSAnCo7IOeNQza2KZBux84KfqK2aydH+
+ tNtM+L+E4q1g3bIPq4x/kk3A1SnFkeplAIdbwFaYykOC9/KH4Ho4a//3lvbkgwC96z/D
+ ctoA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9DlQfSwfQPql/XtPjOtP2x2qFbQl3utLpcCKTEXfhNM=;
+ b=Nc9VVAOIiM0uJ/n7gzYruE+IJGO0tkQh+H0Cbwm7/08PyOhoFjEB8dnqBL9T3TmiTy
+ tFp2roT9G2YjTS0sd3TmxSCrs8Hh6PtUEGqnSBWznhkKfTAM4yIvOS5yaOiJCUPGiLkC
+ QQK+Y0GhEuDq1kFS+Blr2Gql6M6BDbvbyon9e7AdFTYtPcSK90l8KxbGs8+ACPxZHq+h
+ Hf3ZTAqrP7BK+z1IydE9oyJtdtIi0pfcZs4FdxjpprgLMjcrPPDsdEKodejwGnhqSEjE
+ euSDPuVzFIv3Vd/YcuLS5GAZAbmJ3T3FlEWIa0uLWfyp6k/I5zhUAl4KVSCXKE0LdjWp
+ 4SUQ==
+X-Gm-Message-State: AOAM530OBjydIJJSdT5138igLSxbQ6WXwwL3mwCO/vIcvbRJ41xm5ITu
+ ZkVBZFblMqfHDgGYDU8mC1XLuQ==
+X-Received: by 2002:a17:90b:3197:: with SMTP id
+ hc23mr6642230pjb.110.1597352167911; 
+ Thu, 13 Aug 2020 13:56:07 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id u15sm6235699pgm.10.2020.08.13.13.56.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 13 Aug 2020 13:56:07 -0700 (PDT)
+Subject: Re: [PATCH 1/1] target/arm: adjust CPTR_EL2 according to HCR_EL2.E2H
+To: LIU Zhiwei <zhiwei_liu@c-sky.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20200811060749.159-1-zhiwei_liu@c-sky.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <23e615df-8e29-6e4c-a1bd-5f8ba414f471@linaro.org>
+Date: Thu, 13 Aug 2020 13:56:03 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <f1fbe9b9-575e-b55f-8596-754a82654b5c@redhat.com>
-Content-Language: en-US
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200811060749.159-1-zhiwei_liu@c-sky.com>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:45:42
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1042.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Rafael Kitover <rkitover@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DiEZx5C6qJcG
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DYN7g2oK+7ew
 
-On 12/08/2020 18.26, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> On 7/24/20 6:42 PM, Gerd Hoffmann wrote:
->> From: Thomas Huth <thuth@redhat.com>
->>
->> If pixman is not installed, it is currently not possible to run:
->>
->>  .../configure  --disable-system --enable-tools
->>
->> Seems like there was a dependency from one of the required source
->> files to pixman in the past, but since commit 1ac0206b2ae1ffaeec56
->> ("qemu-timer.c: Trim list of included headers"), this dependency
->> should be gone. Thus allow to compile the tools without pixman now.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> Message-id: 20200723141123.14765-1-thuth@redhat.com
->> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
->> ---
->>  configure | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/configure b/configure
->> index 4bd80ed507aa..2acc4d1465f8 100755
->> --- a/configure
->> +++ b/configure
->> @@ -4065,7 +4065,7 @@ fi
->>  ##########################################
->>  # pixman support probe
->>  
->> -if test "$want_tools" = "no" && test "$softmmu" = "no"; then
->> +if test "$softmmu" = "no"; then
->>    pixman_cflags=
->>    pixman_libs=
->>  elif $pkg_config --atleast-version=0.21.8 pixman-1 > /dev/null 2>&1; then
->>
-> 
-> This commit broke my '--disable-system --disable-user --enable-tools' build:
-> 
-> $ make vhost-user-gpu
+On 8/10/20 11:07 PM, LIU Zhiwei wrote:
+>      if (el <= 2 && !arm_is_secure_below_el3(env)) {
+> -        if (env->cp15.cptr_el[2] & CPTR_TZ) {
+> -            return 2;
+> -        }
+> -        if (env->cp15.cptr_el[2] & CPTR_TFP) {
+> -            return 0;
+> +        if ((arm_hcr_el2_eff(env) & HCR_E2H) == HCR_E2H) {
+> +            int zen = extract32(env->cp15.cptr_el[2], 16, 2);
+> +            switch (zen) {
+> +            case 0:
+> +            case 2:
+> +                return 2;
+> +            case 1:
+> +                if ((arm_hcr_el2_eff(env) & HCR_TGE) == HCR_TGE) {
 
-Yes, there is already a patch on the list to fix this. Look for:
-"configure: Require pixman for vhost-user-gpu". I hope Gerd can pick it
-up for his next pull request.
+Since the outer if checks that we're in non-secure state, and (by nature of
+sve) we know we're in aarch64 mode, then we don't need to use arm_hcr_el2_eff
+and can just use env->cp15.hcr_el2.
 
- Thomas
+Add a comment
 
+>     /* Since we exclude secure first, we may read HCR_EL2 directly. */
+
+like we do in vae1_tlbmask.
+
+You do not need to write
+
+    if ((x & bit) == bit)
+
+just use
+
+    if (x & bit)
+
+here.
+
+With those changes,
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~

@@ -1,134 +1,175 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp692025lfy;
-        Thu, 13 Aug 2020 09:41:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx3jkkhVQ1WFJpVx7I7osrBAjoK2hAYLFJfxzT44tHgXvNGB2JPIHNwXoCYOhHfP72Bq/LR
-X-Received: by 2002:a25:df4a:: with SMTP id w71mr7543823ybg.458.1597336913160;
-        Thu, 13 Aug 2020 09:41:53 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp802474lfy;
+        Thu, 13 Aug 2020 12:07:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOFjoJNPZDQ1a5QlAefwAuU6EN/2YDam53clGIeUgILdLBmrT1WHaB4BJGS8q3aQTZWgiC
+X-Received: by 2002:a25:e644:: with SMTP id d65mr9215997ybh.452.1597345675679;
+        Thu, 13 Aug 2020 12:07:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597345675; cv=none;
+        d=google.com; s=arc-20160816;
+        b=SF6g/4Q3/7Czn5msxVPpQWdS3knQZeWju62xQmfhXqdMKy9WWv4RJKBGMP2UHZv2ZB
+         QGbsNzzZjoJOYjB63o/vTmME/vnHZejWAjo0jbEyZ/WIhAvx14wllgAjrep/ebzkhK/P
+         Qe9j+dBCT/qmfftCo7sj507BTR18GUyFrPk6merHjMFMBwhfFn3hJ2fNMLrs1r+QdXmu
+         MFxKTmS2tUYJHKYVOb644gvNolksAVCvKvvaVb9FObhSH40XBJ8Q31EjW6I0Vz7khGrK
+         9brBxuZEXYv57fL8aQvLjSGl+VRte/ovdmZU+QqX4SIRSPWEWr9yD3mEzuoXmvlL0QeE
+         J0aw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:openpgp:from:references:to:subject:dkim-signature;
+        bh=wIdHwM4GQus7FW0Q9der1IBWqhubCenOY7nipuivsfI=;
+        b=AN1phyTHwuE1CmgKvGjW4Vaq3KZbFxvPSTp7kiLbPpZi2rPJzxwMaF/dgR9c0z9dnO
+         3AD4jtk2jymUkFYhRS++xP5KyS2u0s0iVCXVPoxjk9fwA697YGlXf+KnGIHsX0vfwIw2
+         HJ7OhAcefDate0ouLWKy30Xxbien8Gu5kp7PVKEKlxyfRbjadjX366XWnOzTC/B4NCqd
+         ba14INODxAw9cRxWDZbRoD+A5lJbE8NREXuM+e9n7EEalI9aJmik/jk17NczacA4O4LF
+         JBtW0DMMaSQF1UQyh6VNvoGxD60qGJl2ZuQonQongawjgbJX8z8Xbv/SVaNgY1Qq45/y
+         aIVA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hf1mGbaz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v1si5301878ybo.214.2020.08.13.09.41.52
+        by mx.google.com with ESMTPS id x4si5926949ybq.362.2020.08.13.12.07.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Aug 2020 09:41:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 13 Aug 2020 12:07:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:41532 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Hf1mGbaz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6GIa-0007s8-FO
-	for alex.bennee@linaro.org; Thu, 13 Aug 2020 12:41:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58128)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k6IZv-00079A-1X
+	for alex.bennee@linaro.org; Thu, 13 Aug 2020 15:07:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45322)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1k6GFq-0002Ch-Gj; Thu, 13 Aug 2020 12:39:02 -0400
-Resent-Date: Thu, 13 Aug 2020 12:39:02 -0400
-Resent-Message-Id: <E1k6GFq-0002Ch-Gj@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21798)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k6IZn-00078x-H5
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2020 15:07:47 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23680
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1k6GFk-0002Uc-Un; Thu, 13 Aug 2020 12:39:02 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1597336721; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=aOHQU7E6uv05GZEqku2TAJ2C6ZnNMXDuqARqtKNtmFh8BohXxOQfBJMB3IuEXzcVY4e0W8P0UZ9lSC+ZJE8TGsd3Wvf6F4lQqkv5cfpxd+FDS1LiQSMZpaImwQN3+udFm/e6/ygStTwUfnOEAlYUXI6/To8Y4tHkpK2TFVCkx1E=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1597336721;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=cEJexteia1ydPDabafGK3z8ADJa7J97Kd+S5lqcUZKY=; 
- b=Q0ykR9tkVI94isyh+2awiLYVdOfxwPR/PUGy+cvfdS5PSrieTiqzEW+8JUseMTFc5O3peHjjk0PELlIHi9RzhKwR0/SA76QNDjiNzMCOvX5iwO8dG1Rd92QBoadTheK9pqsuemJdaMY/AT/D2ESnyeRY7nALgSoQb2KnKn0jibE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1597336718467522.5794212143501;
- Thu, 13 Aug 2020 09:38:38 -0700 (PDT)
-Subject: Re: [RFC 0/9] Support disable/enable CPU features for AArch64
-Message-ID: <159733671752.15736.14773440514228826219@66eaa9a8a123>
-In-Reply-To: <20200813102657.2588720-1-liangpeng10@huawei.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1k6IZl-0004oj-56
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2020 15:07:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1597345663;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:openpgp:openpgp;
+ bh=wIdHwM4GQus7FW0Q9der1IBWqhubCenOY7nipuivsfI=;
+ b=Hf1mGbaz/6x33BveAPkHNf/nlmfXcwgtUdkWcz9FyQ1KSbEpu2GXiJH2g0G4/PvEtce1zR
+ MRqjOyZQxf87b9n6/wlrdo38pZhIwiC/T91PyvakA5jUlXlZR5UZEMayNFf5fflKm2y5Sx
+ iEiLNGmEsle6QKcnTwHYisSBuYQ+8ws=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-577-5ANmcTXmMPi5CRifDp66Ig-1; Thu, 13 Aug 2020 15:07:41 -0400
+X-MC-Unique: 5ANmcTXmMPi5CRifDp66Ig-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 323D3800D53;
+ Thu, 13 Aug 2020 19:07:40 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-8.ams2.redhat.com [10.36.112.8])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 392B06FDB3;
+ Thu, 13 Aug 2020 19:07:28 +0000 (UTC)
+Subject: Re: [PULL 3/3] configure: Allow to build tools without pixman
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
+References: <20200724164258.24886-1-kraxel@redhat.com>
+ <20200724164258.24886-4-kraxel@redhat.com>
+ <f1fbe9b9-575e-b55f-8596-754a82654b5c@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Openpgp: preference=signencrypt
+Message-ID: <2abe330a-37e2-fda6-d531-79fb5805afc7@redhat.com>
+Date: Thu, 13 Aug 2020 21:07:25 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.9.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: liangpeng10@huawei.com
-Date: Thu, 13 Aug 2020 09:38:38 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 10:17:15
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <f1fbe9b9-575e-b55f-8596-754a82654b5c@redhat.com>
+Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:45:42
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, drjones@redhat.com,
- zhang.zhanghailiang@huawei.com, mst@redhat.com, cohuck@redhat.com,
- qemu-devel@nongnu.org, xiexiangyou@huawei.com, liangpeng10@huawei.com,
- qemu-arm@nongnu.org, pbonzini@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: owbddLJnMjgH
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Rafael Kitover <rkitover@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DiEZx5C6qJcG
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDgxMzEwMjY1Ny4yNTg4
-NzIwLTEtbGlhbmdwZW5nMTBAaHVhd2VpLmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQg
-dGhlIGRvY2tlci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0
-aW5nIGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBp
-bnN0YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVT
-VCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcg
-Vj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VO
-Vj0xIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgogIENDICAgICAgYWFy
-Y2g2NC1zb2Z0bW11L3RhcmdldC9hcm0vZ2Ric3R1YjY0Lm8KICBDQyAgICAgIGFhcmNoNjQtc29m
-dG1tdS90YXJnZXQvYXJtL21hY2hpbmUubwovdG1wL3FlbXUtdGVzdC9zcmMvdGFyZ2V0L2FybS9j
-cHUuYzogSW4gZnVuY3Rpb24gJ2FybV9jcHVfc2V0X2JpdF9wcm9wJzoKL3RtcC9xZW11LXRlc3Qv
-c3JjL3RhcmdldC9hcm0vY3B1LmM6MTU4Njo1OiBlcnJvcjogaW1wbGljaXQgZGVjbGFyYXRpb24g
-b2YgZnVuY3Rpb24gJ2t2bV9hcm1fY3B1X2ZlYXR1cmVfc3VwcG9ydGVkJyBbLVdlcnJvcj1pbXBs
-aWNpdC1mdW5jdGlvbi1kZWNsYXJhdGlvbl0KICAgICBpZiAoIWt2bV9hcm1fY3B1X2ZlYXR1cmVf
-c3VwcG9ydGVkKCkpIHsKICAgICBeCi90bXAvcWVtdS10ZXN0L3NyYy90YXJnZXQvYXJtL2NwdS5j
-OjE1ODY6NTogZXJyb3I6IG5lc3RlZCBleHRlcm4gZGVjbGFyYXRpb24gb2YgJ2t2bV9hcm1fY3B1
-X2ZlYXR1cmVfc3VwcG9ydGVkJyBbLVdlcnJvcj1uZXN0ZWQtZXh0ZXJuc10KY2MxOiBhbGwgd2Fy
-bmluZ3MgYmVpbmcgdHJlYXRlZCBhcyBlcnJvcnMKICBDQyAgICAgIGFhcmNoNjQtc29mdG1tdS90
-YXJnZXQvYXJtL2FyY2hfZHVtcC5vCiAgQ0MgICAgICBhYXJjaDY0LXNvZnRtbXUvdGFyZ2V0L2Fy
-bS9tb25pdG9yLm8KICBDQyAgICAgIGFhcmNoNjQtc29mdG1tdS90YXJnZXQvYXJtL2FybS1wb3dl
-cmN0bC5vCm1ha2VbMV06ICoqKiBbdGFyZ2V0L2FybS9jcHUub10gRXJyb3IgMQptYWtlWzFdOiAq
-KiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgogIENDICAgICAgYWFyY2g2NC1zb2Z0
-bW11L3RhcmdldC9hcm0va3ZtLXN0dWIubwptYWtlOiAqKiogW2FhcmNoNjQtc29mdG1tdS9hbGxd
-IEVycm9yIDIKbWFrZTogKioqIFdhaXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4KVHJhY2Vi
-YWNrIChtb3N0IHJlY2VudCBjYWxsIGxhc3QpOgogIEZpbGUgIi4vdGVzdHMvZG9ja2VyL2RvY2tl
-ci5weSIsIGxpbmUgNzA5LCBpbiA8bW9kdWxlPgotLS0KICAgIHJhaXNlIENhbGxlZFByb2Nlc3NF
-cnJvcihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5k
-ICdbJ3N1ZG8nLCAnLW4nLCAnZG9ja2VyJywgJ3J1bicsICctLWxhYmVsJywgJ2NvbS5xZW11Lmlu
-c3RhbmNlLnV1aWQ9NjZjODBjODcyYmY1NGQ1MDg0ZGU1NGZiY2NjNDM1M2MnLCAnLXUnLCAnMTAw
-MScsICctLXNlY3VyaXR5LW9wdCcsICdzZWNjb21wPXVuY29uZmluZWQnLCAnLS1ybScsICctZScs
-ICdUQVJHRVRfTElTVD0nLCAnLWUnLCAnRVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9
-JywgJy1lJywgJ0o9MTQnLCAnLWUnLCAnREVCVUc9JywgJy1lJywgJ1NIT1dfRU5WPTEnLCAnLWUn
-LCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAnLXYnLCAnL2hvbWUvcGF0Y2hldy8uY2Fj
-aGUvcWVtdS1kb2NrZXItY2NhY2hlOi92YXIvdG1wL2NjYWNoZTp6JywgJy12JywgJy92YXIvdG1w
-L3BhdGNoZXctdGVzdGVyLXRtcC14em1fbDlrZi9zcmMvZG9ja2VyLXNyYy4yMDIwLTA4LTEzLTEy
-LjM1LjIzLjU1MTk6L3Zhci90bXAvcWVtdTp6LHJvJywgJ3FlbXUvY2VudG9zNycsICcvdmFyL3Rt
-cC9xZW11L3J1bicsICd0ZXN0LXF1aWNrJ10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVz
-IDIuCmZpbHRlcj0tLWZpbHRlcj1sYWJlbD1jb20ucWVtdS5pbnN0YW5jZS51dWlkPTY2YzgwYzg3
-MmJmNTRkNTA4NGRlNTRmYmNjYzQzNTNjCm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3Ig
-MQptYWtlWzFdOiBMZWF2aW5nIGRpcmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1w
-LXh6bV9sOWtmL3NyYycKbWFrZTogKioqIFtkb2NrZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10g
-RXJyb3IgMgoKcmVhbCAgICAzbTE1LjAwM3MKdXNlciAgICAwbTguOTU5cwoKClRoZSBmdWxsIGxv
-ZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA4MTMxMDI2NTcu
-MjU4ODcyMC0xLWxpYW5ncGVuZzEwQGh1YXdlaS5jb20vdGVzdGluZy5kb2NrZXItcXVpY2tAY2Vu
-dG9zNy8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkg
-UGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNr
-IHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+On 12/08/2020 18.26, Philippe Mathieu-Daudé wrote:
+> Hi,
+> 
+> On 7/24/20 6:42 PM, Gerd Hoffmann wrote:
+>> From: Thomas Huth <thuth@redhat.com>
+>>
+>> If pixman is not installed, it is currently not possible to run:
+>>
+>>  .../configure  --disable-system --enable-tools
+>>
+>> Seems like there was a dependency from one of the required source
+>> files to pixman in the past, but since commit 1ac0206b2ae1ffaeec56
+>> ("qemu-timer.c: Trim list of included headers"), this dependency
+>> should be gone. Thus allow to compile the tools without pixman now.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> Message-id: 20200723141123.14765-1-thuth@redhat.com
+>> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+>> ---
+>>  configure | 2 +-
+>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/configure b/configure
+>> index 4bd80ed507aa..2acc4d1465f8 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -4065,7 +4065,7 @@ fi
+>>  ##########################################
+>>  # pixman support probe
+>>  
+>> -if test "$want_tools" = "no" && test "$softmmu" = "no"; then
+>> +if test "$softmmu" = "no"; then
+>>    pixman_cflags=
+>>    pixman_libs=
+>>  elif $pkg_config --atleast-version=0.21.8 pixman-1 > /dev/null 2>&1; then
+>>
+> 
+> This commit broke my '--disable-system --disable-user --enable-tools' build:
+> 
+> $ make vhost-user-gpu
+
+Yes, there is already a patch on the list to fix this. Look for:
+"configure: Require pixman for vhost-user-gpu". I hope Gerd can pick it
+up for his next pull request.
+
+ Thomas
+

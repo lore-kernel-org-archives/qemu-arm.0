@@ -1,108 +1,108 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp478952lfy;
-        Thu, 13 Aug 2020 05:34:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxQ8UKnT1y7WdpY3OHbgqMUJI0LYuj1zKz6fnrT7OwlEUt8ps6R5o4gRl+5cxm8RbUL6uqA
-X-Received: by 2002:a25:2314:: with SMTP id j20mr6072396ybj.508.1597322075492;
-        Thu, 13 Aug 2020 05:34:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597322075; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp488954lfy;
+        Thu, 13 Aug 2020 05:48:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyzgW4Sd5bioV6QluFLyQQpy05dPTSVw8QR4okfgrZtL53Y5zzM4mVx1X6+LomjaGPKHvh9
+X-Received: by 2002:a25:cc12:: with SMTP id l18mr6465859ybf.224.1597322935776;
+        Thu, 13 Aug 2020 05:48:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597322935; cv=none;
         d=google.com; s=arc-20160816;
-        b=yiKsbPXOSbYqzvJ3RzF6kQimlTM3/rL39uf4lzZODcClHYmbMYIHKIqaWKpJRzzhX0
-         /Q7HgSmcLTvJse5BA1DYZ3JcSX3d/k0gz89tpJsWH5Iq+FfMr25hdSBpW+BuzA109kFf
-         3jpVL/yY3Z83/FW7ha23CBp5w1+vOo9JrPvQe4Tb1KQkCBmEvIn+OVju94DcKeAWAb1R
-         ffSdj/lp2Zo7EYbNgAOIAszyUcZtsCXAPWR6zrn5kWcWUx2+3N2wDRgoAM4QTmFL/eoJ
-         +xyY0LmOUbb/p/DZbaI3o1e/wQ7EkBWSNO+x1oe/WS22oFeg7sDDxHhh/zV2+2zCPoQr
-         aJBA==
+        b=zzUltl43Vph01i/yU6zxsXvbG/tKrHDkDJuK355ZOIaPgz6+TYv3Quuc3PLBJylzA4
+         M5g1d+qX8CGnDzrGjyA0RRqJgVR8Qzt8847XGzquRcbUvaSa9+I0XIaU89kyLWBhVxSP
+         GM5ty0SlXKJvQuyD//P5+kVNKBCawfwgOfyxBI7iP5yvHyncYnOduNB2J8wSbZFaeWeU
+         3AQG6iKBJ58glGy2HHbccfegb6foJHSMMDS9rWSLUq/qYpss+r7WAYzgTsKydsWCZiPF
+         5/DtI6tOLzmflIl6w3GtteXG1Pg2i6eRxy63yE6cn122Ku9kUI9OGBuRPYpT90fiaWhp
+         TWUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=Xgaf2u/F+PS73zDy0hs3tJNuSNcQK2RCOim0shw3iYA=;
-        b=YvOGvfke9/K6g/efn1sGUPLxk3rKl5NbHddEIu14r0Hoxm8OiLIBpNlWBlmGfGLzqs
-         mc/mbPOKi05Mpxz912JNrt/UY/7g3VKptzgkrkgh52J7WadbB49rN3e1FEbTo0jk7NMl
-         u2vrYeSgTTUSmqUUYIutnK0Ptkp7XkpAMXJn5E6v1P/9TogN15AgQ/eZtrTuiUV5sG+T
-         QfYhksi/M7xUtKiKkYts/X/sW9W7rbK27kpmmdmBe3U2E+jCWXKOaa62uwfCunkmJLdE
-         t6RT6ucSTuWE4z9gbi39AkQ/1H23JJrgafiHBz3CQNtmNp9tO4eIkhbCVWS8rQdtTg6J
-         oC3g==
+        bh=FM9teGpkbxNSp+b8JTltoFqizZyG7vE3Yxbzk2QaEZc=;
+        b=JcjojHUNMMuIEVigL2tDTMcJ5BZVm3AYzuLnQXqmQ0CMd/oi4UiONcdG+ST+0UjW46
+         g5XunLJgYeNga0YGiYXRaPTrToAcj03WtazDCG962lGnyVXTmcw0nrSMieJD7OZFe86t
+         NL4rSNPcVjfKFriITPSFr7wnp7SVV84vPZbmPC701u+/PPZWloXoRBrFKhBxekc6865n
+         YTmYCl2GnVakukHFo5u479JP/7ocH1DoOdTr6XZ9rvLeFSOK1xpqvn2PlDRJt3cBXW3E
+         cEdFZ5t2vfnYd300VvaRVZI1Qq46kFiYMACxYhRa7ID8wIHJI+9j/7culeXZITpENKmD
+         3Fng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YBE0OIiE;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OyDdVTtH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 127si5168204ybu.160.2020.08.13.05.34.35
+        by mx.google.com with ESMTPS id d73si5119905ybh.215.2020.08.13.05.48.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 13 Aug 2020 05:34:35 -0700 (PDT)
+        Thu, 13 Aug 2020 05:48:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YBE0OIiE;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OyDdVTtH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:33380 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6CRG-0006fh-OJ
-	for alex.bennee@linaro.org; Thu, 13 Aug 2020 08:34:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47136)
+	id 1k6Cf8-0001z9-Qm
+	for alex.bennee@linaro.org; Thu, 13 Aug 2020 08:48:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k6CRA-0006fa-C0
- for qemu-arm@nongnu.org; Thu, 13 Aug 2020 08:34:28 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:60199
- helo=us-smtp-1.mimecast.com)
+ id 1k6Cex-0001y8-46
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2020 08:48:43 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:46972
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k6CR8-00043M-24
- for qemu-arm@nongnu.org; Thu, 13 Aug 2020 08:34:28 -0400
+ id 1k6Ceu-0005pA-0M
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2020 08:48:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597322065;
+ s=mimecast20190719; t=1597322918;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=Xgaf2u/F+PS73zDy0hs3tJNuSNcQK2RCOim0shw3iYA=;
- b=YBE0OIiE2N6eYN92z3pYKPlVwEPg8YoKv/mspErbQXByvrsV+VzGYXxqxc0rpWlY9iyN7s
- nVJ2DvzKkERqCPhfQeqPI5U40xSoyBE/UDHkoYjhJGk2iMeqB9pc1qZGR8u6gIsiA1k9hG
- ce+vL7fL8YgA4+u8SLl7d/rM8XLFqtk=
+ bh=FM9teGpkbxNSp+b8JTltoFqizZyG7vE3Yxbzk2QaEZc=;
+ b=OyDdVTtHUiqhwPFOyLzk1vLXrRA24cj8nW8o56llUOe6LAemsmKEi7zwb1E9pJSfzXhA/V
+ nhnmSe25G92KtKz9ucQtvqbHNKF09xNdhmNWbLciPgbfPV6DHW2LNr1TCAYWsDKCOalj4b
+ 1U2djTfqS3H9PhB3y2KBfVLg3oXvtIs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-502-QtOTZqCAP5SnAH4eaZ1A7w-1; Thu, 13 Aug 2020 08:34:23 -0400
-X-MC-Unique: QtOTZqCAP5SnAH4eaZ1A7w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-53-QPXyMACzMY6NryYQxKI6vQ-1; Thu, 13 Aug 2020 08:48:34 -0400
+X-MC-Unique: QPXyMACzMY6NryYQxKI6vQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 344EC800050;
- Thu, 13 Aug 2020 12:34:22 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CFCF78064C0;
+ Thu, 13 Aug 2020 12:48:32 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.40.192.72])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 2030160BA7;
- Thu, 13 Aug 2020 12:34:12 +0000 (UTC)
-Date: Thu, 13 Aug 2020 14:34:09 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B4B35648BA;
+ Thu, 13 Aug 2020 12:48:24 +0000 (UTC)
+Date: Thu, 13 Aug 2020 14:48:21 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Peng Liang <liangpeng10@huawei.com>
-Subject: Re: [RFC 3/9] target/arm: register CPU features for property
-Message-ID: <20200813123409.dfsvk5oqvmoedhhe@kamzik.brq.redhat.com>
+Subject: Re: [RFC 5/9] target/arm: introduce CPU feature dependency mechanism
+Message-ID: <20200813124821.psavdkhddg4duar6@kamzik.brq.redhat.com>
 References: <20200813102657.2588720-1-liangpeng10@huawei.com>
- <20200813102657.2588720-4-liangpeng10@huawei.com>
+ <20200813102657.2588720-6-liangpeng10@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200813102657.2588720-4-liangpeng10@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <20200813102657.2588720-6-liangpeng10@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0.003
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=drjones@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 03:44:21
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/13 02:03:30
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,408 +120,28 @@ Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com, mst@redhat.com,
  qemu-arm@nongnu.org, pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hqCffCnwgql1
+X-TUID: G5O8jh6riKHf
 
-On Thu, Aug 13, 2020 at 06:26:51PM +0800, Peng Liang wrote:
-> The Arm architecture specifies a number of ID registers that are
-> characterized as comprising a set of 4-bit ID fields. Each ID field
-> identifies the presence, and possibly the level of support for, a
-> particular feature in an implementation of the architecture. [1]
+On Thu, Aug 13, 2020 at 06:26:53PM +0800, Peng Liang wrote:
+> Some CPU features are dependent on other CPU features.  For example,
+> ID_AA64PFR0_EL1.FP field and ID_AA64PFR0_EL1.AdvSIMD must have the same
+> value, which means FP and ADVSIMD are dependent on each other, FPHP and
+> ADVSIMDHP are dependent on each other.
 > 
-> For most of the ID fields, there is a minimum presence value, equal to
-> or higher than which means the corresponding CPU feature is implemented.
-> Hence, we can use the minimum presence value to determine whether a CPU
-> feature is enabled and enable a CPU feature.
+> This commit introduces a mechanism for CPU feature dependency in
+> AArch64.  We build a directed graph from the CPU feature dependency
+> relationship, each edge from->to means the `to` CPU feature is dependent
+> on the `from` CPU feature.  And we will automatically enable/disable CPU
+> feature according to the directed graph.
 > 
-> To disable a CPU feature, setting the corresponding ID field to 0x0/0xf
-> (for unsigned/signed field) seems as a good idea.  However, it maybe
-> lead to some problems.  For example,  ID_AA64PFR0_EL1.FP is a signed ID
-> field. ID_AA64PFR0_EL1.FP == 0x0 represents the implementation of FP
-> (floating-point) and ID_AA64PFR0_EL1.FP == 0x1 represents the
-> implementation of FPHP (half-precision floating-point).  If
-> ID_AA64PFR0_EL1.FP is set to 0xf when FPHP is disabled (which is also
-> disable FP), guest kernel maybe stuck.  Hence, we add a ni_value (means
-> not-implemented value) to disable a CPU feature safely.
-> 
-> [1] D13.1.3 Principles of the ID scheme for fields in ID registers in
->     DDI.0487
-> 
-> Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
-> Signed-off-by: Peng Liang <liangpeng10@huawei.com>
-> ---
->  target/arm/cpu.c | 343 +++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 343 insertions(+)
-> 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 79d7a6b45c..113cf4a9e7 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1146,6 +1146,348 @@ unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
->        NANOSECONDS_PER_SECOND / cpu->gt_cntfrq_hz : 1;
->  }
->  
-> +/**
-> + * CPUFeatureInfo:
-> + * @reg: The ID register where the ID field is in.
-> + * @name: The name of the CPU feature.
-> + * @length: The bit length of the ID field.
-> + * @shift: The bit shift of the ID field in the ID register.
-> + * @min_value: The minimum value equal to or larger than which means the CPU
-> + *   feature is implemented.
-> + * @ni_value: Not-implemented value. It will be set to the ID field when
-> + *   disabling the CPU feature.  Usually, it's min_value - 1.
-> + * @sign: Whether the ID field is signed.
-> + * @is_32bit: Whether the CPU feature is for 32-bit.
-> + *
-> + * In ARM, a CPU feature is described by an ID field, which is a 4-bit field in
-> + * an ID register.
-> + */
-> +typedef struct CPUFeatureInfo {
-> +    CPUIDReg reg;
-> +    const char *name;
-> +    int length;
-> +    int shift;
-> +    int min_value;
-> +    int ni_value;
-> +    bool sign;
-> +    bool is_32bit;
-> +} CPUFeatureInfo;
-> +
-> +#define FIELD_INFO(id_reg, field, s, min_val, ni_val, is32bit) { \
-> +    .reg = id_reg, \
-> +    .length = R_ ## id_reg ## _ ## field ## _LENGTH, \
-> +    .shift = R_ ## id_reg ## _ ## field ## _SHIFT, \
-> +    .sign = s, \
-> +    .min_value = min_val, \
-> +    .ni_value = ni_val, \
-> +    .name = #field, \
-> +    .is_32bit = is32bit, \
-> +}
-> +
-> +static struct CPUFeatureInfo cpu_features[] = {
-> +    FIELD_INFO(ID_ISAR0, SWAP, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR0, BITCOUNT, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR0, BITFIELD, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR0, CMPBRANCH, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR0, COPROC, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR0, DEBUG, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR0, DIVIDE, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_ISAR1, ENDIAN, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR1, EXCEPT, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR1, EXCEPT_AR, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR1, EXTEND, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR1, IFTHEN, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR1, IMMEDIATE, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR1, INTERWORK, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR1, JAZELLE, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_ISAR2, LOADSTORE, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR2, MEMHINT, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR2, MULTIACCESSINT, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR2, MULT, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR2, MULTS, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR2, MULTU, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR2, PSR_AR, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR2, REVERSAL, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_ISAR3, SATURATE, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR3, SIMD, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR3, SVC, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR3, SYNCHPRIM, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR3, TABBRANCH, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR3, T32COPY, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR3, TRUENOP, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR3, T32EE, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_ISAR4, UNPRIV, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR4, WITHSHIFTS, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR4, WRITEBACK, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR4, SMC, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR4, BARRIER, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR4, SYNCHPRIM_FRAC, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR4, PSR_M, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR4, SWP_FRAC, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_ISAR5, SEVL, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR5, AES, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR5, SHA1, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR5, SHA2, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR5, CRC32, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR5, RDM, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR5, VCMA, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_ISAR6, JSCVT, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR6, DP, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR6, FHM, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR6, SB, false, 1, 0, true),
-> +    FIELD_INFO(ID_ISAR6, SPECRES, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_MMFR3, CMAINTVA, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR3, CMAINTSW, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR3, BPMAINT, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR3, MAINTBCST, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR3, PAN, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR3, COHWALK, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR3, CMEMSZ, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR3, SUPERSEC, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_MMFR4, SPECSEI, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR4, AC2, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR4, XNX, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR4, CNP, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR4, HPDS, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR4, LSM, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR4, CCIDX, false, 1, 0, true),
-> +    FIELD_INFO(ID_MMFR4, EVT, false, 1, 0, true),
-> +
-> +    FIELD_INFO(MVFR0, SIMDREG, false, 1, 0, true),
-> +    FIELD_INFO(MVFR0, FPSP, false, 1, 0, true),
-> +    FIELD_INFO(MVFR0, FPDP, false, 1, 0, true),
-> +    FIELD_INFO(MVFR0, FPTRAP, false, 1, 0, true),
-> +    FIELD_INFO(MVFR0, FPDIVIDE, false, 1, 0, true),
-> +    FIELD_INFO(MVFR0, FPSQRT, false, 1, 0, true),
-> +    FIELD_INFO(MVFR0, FPSHVEC, false, 1, 0, true),
-> +    FIELD_INFO(MVFR0, FPROUND, false, 1, 0, true),
-> +
-> +    FIELD_INFO(MVFR1, FPFTZ, false, 1, 0, true),
-> +    FIELD_INFO(MVFR1, FPDNAN, false, 1, 0, true),
-> +    FIELD_INFO(MVFR1, SIMDLS, false, 1, 0, true),
-> +    FIELD_INFO(MVFR1, SIMDINT, false, 1, 0, true),
-> +    FIELD_INFO(MVFR1, SIMDSP, false, 1, 0, true),
-> +    FIELD_INFO(MVFR1, SIMDHP, false, 1, 0, true),
-> +    FIELD_INFO(MVFR1, FPHP, false, 1, 0, true),
-> +    FIELD_INFO(MVFR1, SIMDFMAC, false, 1, 0, true),
-> +
-> +    FIELD_INFO(MVFR2, SIMDMISC, false, 1, 0, true),
-> +    FIELD_INFO(MVFR2, FPMISC, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_DFR0, COPDBG, false, 1, 0, true),
-> +    FIELD_INFO(ID_DFR0, COPSDBG, false, 1, 0, true),
-> +    FIELD_INFO(ID_DFR0, MMAPDBG, false, 1, 0, true),
-> +    FIELD_INFO(ID_DFR0, COPTRC, false, 1, 0, true),
-> +    FIELD_INFO(ID_DFR0, MMAPTRC, false, 1, 0, true),
-> +    FIELD_INFO(ID_DFR0, MPROFDBG, false, 1, 0, true),
-> +    FIELD_INFO(ID_DFR0, PERFMON, false, 1, 0, true),
-> +    FIELD_INFO(ID_DFR0, TRACEFILT, false, 1, 0, true),
-> +
-> +    FIELD_INFO(ID_AA64ISAR0, AES, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, SHA1, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, SHA2, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, CRC32, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, ATOMIC, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, RDM, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, SHA3, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, SM3, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, SM4, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, DP, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, FHM, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, TS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, TLB, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR0, RNDR, false, 1, 0, false),
-> +
-> +    FIELD_INFO(ID_AA64ISAR1, DPB, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, APA, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, API, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, JSCVT, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, FCMA, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, LRCPC, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, GPA, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, GPI, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, FRINTTS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, SB, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64ISAR1, SPECRES, false, 1, 0, false),
-> +
-> +    FIELD_INFO(ID_AA64PFR0, EL0, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64PFR0, EL1, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64PFR0, EL2, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64PFR0, EL3, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64PFR0, FP, true, 0, 0xf, false),
-> +    FIELD_INFO(ID_AA64PFR0, ADVSIMD, true, 0, 0xf, false),
-> +    FIELD_INFO(ID_AA64PFR0, GIC, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64PFR0, RAS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64PFR0, SVE, false, 1, 0, false),
-> +
-> +    FIELD_INFO(ID_AA64PFR1, BT, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64PFR1, SBSS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64PFR1, MTE, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64PFR1, RAS_FRAC, false, 1, 0, false),
-> +
-> +    FIELD_INFO(ID_AA64MMFR0, PARANGE, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, ASIDBITS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, BIGEND, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, SNSMEM, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, BIGENDEL0, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, TGRAN16, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, TGRAN64, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, TGRAN4, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, TGRAN16_2, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, TGRAN64_2, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, TGRAN4_2, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR0, EXS, false, 1, 0, false),
-> +
-> +    FIELD_INFO(ID_AA64MMFR1, HAFDBS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR1, VMIDBITS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR1, VH, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR1, HPDS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR1, LO, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR1, PAN, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR1, SPECSEI, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR1, XNX, false, 1, 0, false),
-> +
-> +    FIELD_INFO(ID_AA64MMFR2, CNP, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, UAO, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, LSM, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, IESB, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, VARANGE, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, CCIDX, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, NV, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, ST, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, AT, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, IDS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, FWB, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, TTL, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, BBM, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, EVT, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64MMFR2, E0PD, false, 1, 0, false),
-> +
-> +    FIELD_INFO(ID_AA64DFR0, DEBUGVER, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64DFR0, TRACEVER, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64DFR0, PMUVER, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64DFR0, BRPS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64DFR0, WRPS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64DFR0, CTX_CMPS, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64DFR0, PMSVER, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64DFR0, DOUBLELOCK, false, 1, 0, false),
-> +    FIELD_INFO(ID_AA64DFR0, TRACEFILT, false, 1, 0, false),
-> +
-> +    {
-> +        .reg = ID_AA64PFR0, .length = R_ID_AA64PFR0_FP_LENGTH,
-> +        .shift = R_ID_AA64PFR0_FP_SHIFT, .sign = true, .min_value = 1,
-> +        .ni_value = 0, .name = "FPHP", .is_32bit = false,
-> +    },
-> +    {
-> +        .reg = ID_AA64PFR0, .length = R_ID_AA64PFR0_ADVSIMD_LENGTH,
-> +        .shift = R_ID_AA64PFR0_ADVSIMD_SHIFT, .sign = true, .min_value = 1,
-> +        .ni_value = 0, .name = "ADVSIMDHP", .is_32bit = false,
-> +    },
-> +    {
-> +        .reg = ID_AA64ISAR0, .length = R_ID_AA64ISAR0_AES_LENGTH,
-> +        .shift = R_ID_AA64ISAR0_AES_SHIFT, .sign = false, .min_value = 2,
-> +        .ni_value = 1, .name = "PMULL", .is_32bit = false,
-> +    },
-> +    {
-> +        .reg = ID_AA64ISAR0, .length = R_ID_AA64ISAR0_SHA2_LENGTH,
-> +        .shift = R_ID_AA64ISAR0_SHA2_SHIFT, .sign = false, .min_value = 2,
-> +        .ni_value = 1, .name = "SHA512", .is_32bit = false,
-> +    },
-> +    {
-> +        .reg = ID_AA64ISAR0, .length = R_ID_AA64ISAR0_TS_LENGTH,
-> +        .shift = R_ID_AA64ISAR0_TS_SHIFT, .sign = false, .min_value = 2,
-> +        .ni_value = 1, .name = "FLAGM2", .is_32bit = false,
-> +    },
-> +    {
-> +        .reg = ID_AA64ISAR1, .length = R_ID_AA64ISAR1_DPB_LENGTH,
-> +        .shift = R_ID_AA64ISAR1_DPB_SHIFT, .sign = false, .min_value = 2,
-> +        .ni_value = 1, .name = "DCPODP", .is_32bit = false,
-> +    },
-> +    {
-> +        .reg = ID_AA64ISAR1, .length = R_ID_AA64ISAR1_LRCPC_LENGTH,
-> +        .shift = R_ID_AA64ISAR1_LRCPC_SHIFT, .sign = false, .min_value = 2,
-> +        .ni_value = 1, .name = "ILRCPC", .is_32bit = false,
-> +    },
-> +};
-> +
-> +static void arm_cpu_get_bit_prop(Object *obj, Visitor *v, const char *name,
-> +                                 void *opaque, Error **errp)
-> +{
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    CPUFeatureInfo *feat = opaque;
-> +    int field_value = feat->sign ? sextract64(cpu->isar.regs[feat->reg],
-> +                                              feat->shift, feat->length) :
-> +                                   extract64(cpu->isar.regs[feat->reg],
-> +                                             feat->shift, feat->length);
-> +    bool value = field_value >= feat->min_value;
-> +
-> +    visit_type_bool(v, name, &value, errp);
-> +}
-> +
-> +static void arm_cpu_set_bit_prop(Object *obj, Visitor *v, const char *name,
-> +                                 void *opaque, Error **errp)
-> +{
-> +    DeviceState *dev = DEVICE(obj);
-> +    ARMCPU *cpu = ARM_CPU(obj);
-> +    ARMISARegisters *isar = &cpu->isar;
-> +    CPUFeatureInfo *feat = opaque;
-> +    Error *local_err = NULL;
-> +    bool value;
-> +
-> +    if (dev->realized) {
-> +        qdev_prop_set_after_realize(dev, name, errp);
-> +        return;
-> +    }
-> +
-> +    visit_type_bool(v, name, &value, &local_err);
-> +    if (local_err) {
-> +        error_propagate(errp, local_err);
-> +        return;
-> +    }
-> +
-> +    if (value) {
-> +        isar->regs[feat->reg] = deposit64(isar->regs[feat->reg],
-> +                                          feat->shift, feat->length,
-> +                                          feat->min_value);
-> +    } else {
-> +        isar->regs[feat->reg] = deposit64(isar->regs[feat->reg],
-> +                                          feat->shift, feat->length,
-> +                                          feat->ni_value);
-> +    }
-> +}
-> +
-> +static void arm_cpu_register_feature_props(ARMCPU *cpu)
-> +{
-> +    int i;
-> +    int num = sizeof(cpu_features) / sizeof(cpu_features[i]);
-> +    ObjectProperty *op;
-> +    CPUARMState *env = &cpu->env;
-> +
-> +    for (i = 0; i < num; i++) {
-> +        if ((arm_feature(env, ARM_FEATURE_AARCH64) && cpu_features[i].is_32bit)
-> +            || (!arm_feature(env, ARM_FEATURE_AARCH64) &&
-> +                cpu_features[i].is_32bit)) {
-> +            continue;
-> +        }
-> +        op = object_property_find(OBJECT(cpu), cpu_features[i].name, NULL);
-> +        if (!op) {
-> +            error_report("register name %s", cpu_features[i].name);
-> +            object_property_add(OBJECT(cpu), cpu_features[i].name, "bool",
-> +                    arm_cpu_get_bit_prop,
-> +                    arm_cpu_set_bit_prop,
-> +                    NULL, &cpu_features[i]);
+> For example, a, b, and c CPU features are in relationship a->b->c, which
+> means c is dependent on b and b is dependent on a.  If c is enabled by
+> user, then a and b is enabled automatically.  And if a is disabled by
+> user, then b and c is disabled automatically.
 
-So we're adding properties for every CPU feature? How many of these make
-sense for the user to change? What happens when a user selects an invalid
-combination?
+And what if a is mutually exclusive with b? I.e. a and b can both be
+disabled, but only a or b may be enabled.
 
 Thanks,
 drew
-
-> +        }
-> +    }
-> +}
-> +
->  void arm_cpu_post_init(Object *obj)
->  {
->      ARMCPU *cpu = ARM_CPU(obj);
-> @@ -1271,6 +1613,7 @@ void arm_cpu_post_init(Object *obj)
->          }
->      }
->  #endif
-> +    arm_cpu_register_feature_props(cpu);
->  }
->  
->  static void arm_cpu_finalizefn(Object *obj)
-> -- 
-> 2.18.4
-> 
 

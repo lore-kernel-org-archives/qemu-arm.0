@@ -1,99 +1,104 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp417651lfy;
-        Fri, 14 Aug 2020 05:55:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhQlZlGrpUOfXhPnRyvV/MJntKvvv8H2FUxcBx4UMUDOBp0wU8ei8H3JtzEIw9IvzoHKwg
-X-Received: by 2002:a25:dcc4:: with SMTP id y187mr3710091ybe.121.1597409748812;
-        Fri, 14 Aug 2020 05:55:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597409748; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp441418lfy;
+        Fri, 14 Aug 2020 06:23:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyeQoR7DB3PbBlJaaehHXdIvqrw0N5lubx6JuJyybuO82BHWuZmyyGp1ESVpu5HSLR5pLix
+X-Received: by 2002:a25:60d5:: with SMTP id u204mr3649525ybb.44.1597411420608;
+        Fri, 14 Aug 2020 06:23:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597411420; cv=none;
         d=google.com; s=arc-20160816;
-        b=YN4hpoJZ9ac8unHS8jXJGeVdck/8BKKjwedJNJm+BoKKsG6/G3lShgHUAK1/3Jk2n6
-         SIj4cilwzp8XuG/M7hQmIvWoTJl7fmeOeUhrnZz3loro74+a0MHiP3la/5aVewgJNWol
-         2MZ12L+Eg7DOvKF3DLuTJVo8QuPGXgdLB6WV8wQE7dBnvwJsqOKDwQi67d1D1tx4q/rP
-         nWRdbFK5Ue6GJpo37EEWvBMORjwAa4jWV/+iZB7/u9PxG6fxzaA33+vXNzRIvqCQevw0
-         mvIguvTJGxSczUYykwuVWx0zQmQ1cLd6V8Q5f2xuwNfWpDUcU5Rrhg5DVDeVrEKEzapL
-         Dl6Q==
+        b=I1rsGeR1Fi0mHO/sdl8/EN0E0vrKlBvwDXJGtmS6yLGuQOdBim5u1BaiWlgYH2t3Il
+         HNc77eL/A0oJk1Hhr8leWrDxeyySTkxk9E3v3C114QPcCsaQEnH40zS9pSZCwqTXImIY
+         tCgU7OSyJ4NrcosxpCdOv8s/le/C6BNEIhSDQ1X3Q55AhR3JtC8S+PM+fg6c2QuBE1MR
+         UmyG3ACOc/+KWOHpoD5zFqFEoPlTpb19pjVnUKLGQ8kGhLRe4RwivdDrAz71rV5TBYjN
+         EEQm1hkZyvUHrkBGCU7XENluKMs82eTRwz1IYT8YG+0gEd6Sx9d+VjkA/tIxFAhoW/hu
+         qZAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=drA4MKZeTEkxQZdpt6aMuhasPyyZSu+/CHLdXIl6ncE=;
-        b=wvlHMz/Yke1fq3xwfUAkKeqHVqwKP8euq5pZ66wJmJlnXTXi+Dc1tbbgX8bLgvszn7
-         elnG1mcNSIaSEzIUh41lSp+3WpH08DrG6QrH7+43WBf7tWuDosP3PKmYh0cCDSOUMqzq
-         X5gMUfvo+OZMnytqvAvBzDttR5RUpEjpMTfF7AXKZjZNG8tFYumm0RPSEHBldb0zx3tb
-         KFobuP54aB50RrnCCnJuxmyCiO/xoB2DFP7QWYhTGPweDNozCPzpoQ43pGYhLJsEYFk1
-         Awg9zWNHrCtX7Ky0juqOvn40Hd6igs3IVI5aC3xHs4MktNmt/dOgfMxOnGVuHzb+apRL
-         E6FA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ckF2DqXRF898Cr5olz33UXtEKnXaCp8Tdxdp+D4NReU=;
+        b=CDUmJwQGG/ShUKqXdCXekisgYRMdXsUEn508qLFPEKrpR35oUqaH46tULiJHymHpeA
+         uJqROng8IssLeCeoRGSo3FwsPQoWgZQog8shLNO8uAKL+cGnanMoOCcfCmchCJmCHdin
+         TEWMQ840WXZ1NTPQ7McEpSrloVccRnUSuPH3y7qm2qYjby3dk0SO/8MNLTaVItYZ5YvR
+         DYLk+ZNiaHUoBMEmlekkech6+Qyib7h7B0qOy8nOpecux6gy+YwboB6kgr2IA077/Cvz
+         QlWH4PR7Dk+2mTUssnjIT5xfKav0eA9VWwsA+Uli7Wm0BSBMM1Vb7dxFYXDYAqkWn+rG
+         Ul4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XOkGzPxv;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SGDmECnX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l17si7893255ybm.328.2020.08.14.05.55.48
+        by mx.google.com with ESMTPS id j12si7638471ybl.484.2020.08.14.06.23.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Aug 2020 05:55:48 -0700 (PDT)
+        Fri, 14 Aug 2020 06:23:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XOkGzPxv;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SGDmECnX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:42900 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53406 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6ZFM-0007M0-6A
-	for alex.bennee@linaro.org; Fri, 14 Aug 2020 08:55:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41808)
+	id 1k6ZgK-0007u8-07
+	for alex.bennee@linaro.org; Fri, 14 Aug 2020 09:23:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48426)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k6ZFD-0007Ld-Hx; Fri, 14 Aug 2020 08:55:39 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53193)
+ id 1k6ZgC-0007tn-2F; Fri, 14 Aug 2020 09:23:32 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:35284)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k6ZFB-0005ha-Vm; Fri, 14 Aug 2020 08:55:39 -0400
-Received: by mail-wm1-x343.google.com with SMTP id x5so7391546wmi.2;
- Fri, 14 Aug 2020 05:55:37 -0700 (PDT)
+ id 1k6ZgA-0000Vl-IM; Fri, 14 Aug 2020 09:23:31 -0400
+Received: by mail-wr1-x444.google.com with SMTP id f1so8356695wro.2;
+ Fri, 14 Aug 2020 06:23:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=drA4MKZeTEkxQZdpt6aMuhasPyyZSu+/CHLdXIl6ncE=;
- b=XOkGzPxvW4BRG4+tsHIoUL6I9GVeaCaB/Fj27M/Vv1Sf5Zt8FArylFDwuVi6NKamXG
- vZ9NAgmNzqRMHiprA9cZfuydXwrey3XqmcYaMUAOQJzbLa2GIYYoyxlh17SyWetE3z3q
- rVwANaoH4CA/dsvqD3Z6BmLBmj6KObzviB/4VG1OSAkApuRAnhFo1X4JZumKa0xp1d91
- 8B3cLqkHFt3FyE/+ERDEDmm+TRSSK1GLlfuRelLMH2kFRkvXcwcmo9pPXHEMbmnRMiyl
- Mnf7S7tXs6wxebd1OqY2kfaxLU8doHFTqch1hywWPocDdaMALWYrX1bGuB1hoWEvrlZi
- aakw==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ckF2DqXRF898Cr5olz33UXtEKnXaCp8Tdxdp+D4NReU=;
+ b=SGDmECnX8wrYZuZ0Jj2igl2UGhngRT4SbCwQFCAlT4B7+CiWBVDtLNQPV1YCTSGK/W
+ zzzPMMBnQ0zRE6P4JM8Q+qnX1IHbM8mLbcshYI5DULwVh4CL0edd16CWYPuNPQSqp7mK
+ G9rxUZsLHM7LRDjUFqzTxFEDcZw/eTbFbUz6YM0n5/FJAAXNEx0/ia6CIM4ZMdzDLZr2
+ oBxsscVRmFuuyEU5jyz3k8TphIGG7+O0la83LEVR93tMbQG6ZdshMEb28JL2qAuPHiuK
+ b/cd2i/ljM3ZaWNi3cUDSxRI/a9AHgd1liv1+SqImnf9/BQtSzNPLk7yfGjW/f5YLokK
+ Xpug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=drA4MKZeTEkxQZdpt6aMuhasPyyZSu+/CHLdXIl6ncE=;
- b=QYPVKtd5fDmv+fl3D+aj6KJXFJrxfAMXUNXvtETcrF+67dVej9mFTuysUuLyknDiZd
- ImkNV7NFvSVBfGbfQkfEpbeLuFsrIvVwRjJqI7WChqLusZSel+768et4rjevZdjQhvc+
- 9QFmIItwKPJ0ZjYPwZ1NmK3KHpQ4w2qB1dDYdF295cI56fEjPQIhUCFG/dwS9evG0LnA
- 8369I5deCA01SQM+neCqMwZ/IyWsmu4l10b/i3zIkoC9G7Wb3G8sk9bvp7R9oWCIDRu3
- yk0/C0WP61eV7Yt8mxFSjKY7g+yvR0ODuVa/NXIQWP+twYjeWJ1Ec2l0zCZCVg8vaPcF
- 7W4A==
-X-Gm-Message-State: AOAM5307WehhBti23ENugjoY9zwXgN838Davl2egCU+GpeEs7shj+tF/
- 5EirD/WI5CSy+HLHeRLMIE1VS9VwGqk=
-X-Received: by 2002:a1c:96d7:: with SMTP id y206mr2410779wmd.9.1597409735604; 
- Fri, 14 Aug 2020 05:55:35 -0700 (PDT)
-Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ckF2DqXRF898Cr5olz33UXtEKnXaCp8Tdxdp+D4NReU=;
+ b=ZgfDsqffT/nqeWNOZjRw7pg0u4KRto6B9FcptNobLSJf1ce4aTQcIjTssybl/ejPlp
+ UrKKDRWduiEwo4kCfnurybgb7hxb2PT1gUjdVdZS2yZDLHjUfsymiU4fKPX17ICqE/Qz
+ GKkv15T54SNQBCTfrDkr0a9eUIaERFL9scLGGeW7XJlaxW7JMZclnls73FKp4JLqcGKn
+ bAV8sKYat1LIF5+8qcoefTNRquLioNRxdU2aVSfbEUbBtNd/S7dcCyjKy4C6A9Yd6q3A
+ wuFogrUlJLdAUA747NILUEmAqDq0w6OxmlhyVrptDF0jrJkDfu35/tScJvhVScNnj732
+ TbYA==
+X-Gm-Message-State: AOAM530rNin7VQEByDfqEAinKczOA8MpfU4hE9256Ju3MjO0djr/km+6
+ 4YNjCijEK54XCqc7kixf3R7/HwxUe5M=
+X-Received: by 2002:a5d:61c8:: with SMTP id q8mr2650817wrv.160.1597411408027; 
+ Fri, 14 Aug 2020 06:23:28 -0700 (PDT)
+Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id v16sm14593469wmj.14.2020.08.14.05.55.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Aug 2020 05:55:34 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ by smtp.gmail.com with ESMTPSA id g7sm16284338wrv.82.2020.08.14.06.23.27
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 14 Aug 2020 06:23:27 -0700 (PDT)
+Subject: Re: [PATCH] hw/block/nand: Decommission the NAND museum
 To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/musicpal: Use AddressSpace for DMA transfers
-Date: Fri, 14 Aug 2020 14:55:33 +0200
-Message-Id: <20200814125533.4047-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+References: <20200814132118.12450-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <75f7421f-3ea4-ff6c-2c92-0ea9b5b8fdc1@amsat.org>
+Date: Fri, 14 Aug 2020 15:23:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20200814132118.12450-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -115,170 +120,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OPq0plgVh+wk
+X-TUID: Zfnzv8vV3PBr
 
-Allow the device to execute the DMA transfers in a different
-AddressSpace.
+I forgot to Cc qemu-arm@, doing it now since most of the users
+of this are ARM machines.
 
-We keep using the system_memory address space, but via the
-proper dma_memory_access() API.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/arm/musicpal.c | 45 +++++++++++++++++++++++++++++++--------------
- 1 file changed, 31 insertions(+), 14 deletions(-)
-
-diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
-index c3b9780f35..f2f4fc0264 100644
---- a/hw/arm/musicpal.c
-+++ b/hw/arm/musicpal.c
-@@ -30,6 +30,7 @@
- #include "hw/audio/wm8750.h"
- #include "sysemu/block-backend.h"
- #include "sysemu/runstate.h"
-+#include "sysemu/dma.h"
- #include "exec/address-spaces.h"
- #include "ui/pixel_ops.h"
- #include "qemu/cutils.h"
-@@ -163,6 +164,8 @@ typedef struct mv88w8618_eth_state {
- 
-     MemoryRegion iomem;
-     qemu_irq irq;
-+    MemoryRegion *dma_mr;
-+    AddressSpace dma_as;
-     uint32_t smir;
-     uint32_t icr;
-     uint32_t imr;
-@@ -176,19 +179,21 @@ typedef struct mv88w8618_eth_state {
-     NICConf conf;
- } mv88w8618_eth_state;
- 
--static void eth_rx_desc_put(uint32_t addr, mv88w8618_rx_desc *desc)
-+static void eth_rx_desc_put(AddressSpace *dma_as, uint32_t addr,
-+                            mv88w8618_rx_desc *desc)
- {
-     cpu_to_le32s(&desc->cmdstat);
-     cpu_to_le16s(&desc->bytes);
-     cpu_to_le16s(&desc->buffer_size);
-     cpu_to_le32s(&desc->buffer);
-     cpu_to_le32s(&desc->next);
--    cpu_physical_memory_write(addr, desc, sizeof(*desc));
-+    dma_memory_write(dma_as, addr, desc, sizeof(*desc));
- }
- 
--static void eth_rx_desc_get(uint32_t addr, mv88w8618_rx_desc *desc)
-+static void eth_rx_desc_get(AddressSpace *dma_as, uint32_t addr,
-+                            mv88w8618_rx_desc *desc)
- {
--    cpu_physical_memory_read(addr, desc, sizeof(*desc));
-+    dma_memory_read(dma_as, addr, desc, sizeof(*desc));
-     le32_to_cpus(&desc->cmdstat);
-     le16_to_cpus(&desc->bytes);
-     le16_to_cpus(&desc->buffer_size);
-@@ -209,9 +214,9 @@ static ssize_t eth_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-             continue;
-         }
-         do {
--            eth_rx_desc_get(desc_addr, &desc);
-+            eth_rx_desc_get(&s->dma_as, desc_addr, &desc);
-             if ((desc.cmdstat & MP_ETH_RX_OWN) && desc.buffer_size >= size) {
--                cpu_physical_memory_write(desc.buffer + s->vlan_header,
-+                dma_memory_write(&s->dma_as, desc.buffer + s->vlan_header,
-                                           buf, size);
-                 desc.bytes = size + s->vlan_header;
-                 desc.cmdstat &= ~MP_ETH_RX_OWN;
-@@ -221,7 +226,7 @@ static ssize_t eth_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-                 if (s->icr & s->imr) {
-                     qemu_irq_raise(s->irq);
-                 }
--                eth_rx_desc_put(desc_addr, &desc);
-+                eth_rx_desc_put(&s->dma_as, desc_addr, &desc);
-                 return size;
-             }
-             desc_addr = desc.next;
-@@ -230,19 +235,21 @@ static ssize_t eth_receive(NetClientState *nc, const uint8_t *buf, size_t size)
-     return size;
- }
- 
--static void eth_tx_desc_put(uint32_t addr, mv88w8618_tx_desc *desc)
-+static void eth_tx_desc_put(AddressSpace *dma_as, uint32_t addr,
-+                            mv88w8618_tx_desc *desc)
- {
-     cpu_to_le32s(&desc->cmdstat);
-     cpu_to_le16s(&desc->res);
-     cpu_to_le16s(&desc->bytes);
-     cpu_to_le32s(&desc->buffer);
-     cpu_to_le32s(&desc->next);
--    cpu_physical_memory_write(addr, desc, sizeof(*desc));
-+    dma_memory_write(dma_as, addr, desc, sizeof(*desc));
- }
- 
--static void eth_tx_desc_get(uint32_t addr, mv88w8618_tx_desc *desc)
-+static void eth_tx_desc_get(AddressSpace *dma_as, uint32_t addr,
-+                            mv88w8618_tx_desc *desc)
- {
--    cpu_physical_memory_read(addr, desc, sizeof(*desc));
-+    dma_memory_read(dma_as, addr, desc, sizeof(*desc));
-     le32_to_cpus(&desc->cmdstat);
-     le16_to_cpus(&desc->res);
-     le16_to_cpus(&desc->bytes);
-@@ -259,17 +266,17 @@ static void eth_send(mv88w8618_eth_state *s, int queue_index)
-     int len;
- 
-     do {
--        eth_tx_desc_get(desc_addr, &desc);
-+        eth_tx_desc_get(&s->dma_as, desc_addr, &desc);
-         next_desc = desc.next;
-         if (desc.cmdstat & MP_ETH_TX_OWN) {
-             len = desc.bytes;
-             if (len < 2048) {
--                cpu_physical_memory_read(desc.buffer, buf, len);
-+                dma_memory_read(&s->dma_as, desc.buffer, buf, len);
-                 qemu_send_packet(qemu_get_queue(s->nic), buf, len);
-             }
-             desc.cmdstat &= ~MP_ETH_TX_OWN;
-             s->icr |= 1 << (MP_ETH_IRQ_TXLO_BIT - queue_index);
--            eth_tx_desc_put(desc_addr, &desc);
-+            eth_tx_desc_put(&s->dma_as, desc_addr, &desc);
-         }
-         desc_addr = next_desc;
-     } while (desc_addr != s->tx_queue[queue_index]);
-@@ -405,6 +412,12 @@ static void mv88w8618_eth_realize(DeviceState *dev, Error **errp)
- {
-     mv88w8618_eth_state *s = MV88W8618_ETH(dev);
- 
-+    if (!s->dma_mr) {
-+        error_setg(errp, TYPE_MV88W8618_ETH " 'dma-memory' link not set");
-+        return;
-+    }
-+
-+    address_space_init(&s->dma_as, s->dma_mr, "emac-dma");
-     s->nic = qemu_new_nic(&net_mv88w8618_info, &s->conf,
-                           object_get_typename(OBJECT(dev)), dev->id, s);
- }
-@@ -428,6 +441,8 @@ static const VMStateDescription mv88w8618_eth_vmsd = {
- 
- static Property mv88w8618_eth_properties[] = {
-     DEFINE_NIC_PROPERTIES(mv88w8618_eth_state, conf),
-+    DEFINE_PROP_LINK("dma-memory", mv88w8618_eth_state, dma_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-     DEFINE_PROP_END_OF_LIST(),
- };
- 
-@@ -1653,6 +1668,8 @@ static void musicpal_init(MachineState *machine)
-     qemu_check_nic_model(&nd_table[0], "mv88w8618");
-     dev = qdev_new(TYPE_MV88W8618_ETH);
-     qdev_set_nic_properties(dev, &nd_table[0]);
-+    object_property_set_link(OBJECT(dev), "dma-memory",
-+                             OBJECT(get_system_memory()), &error_fatal);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, MP_ETH_BASE);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[MP_ETH_IRQ]);
--- 
-2.21.3
-
+On 8/14/20 3:21 PM, Philippe Mathieu-Daudé wrote:
+> This is the QEMU equivalent of this Linux commit (but 7 years later):
+> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f7025a43a9da2
+> 
+>     The MTD subsystem has its own small museum of ancient NANDs
+>     in a form of the CONFIG_MTD_NAND_MUSEUM_IDS configuration option.
+>     The museum contains stone age NANDs with 256 bytes pages, as well
+>     as iron age NANDs with 512 bytes per page and up to 8MiB page size.
+> 
+>     It is with great sorrow that I inform you that the museum is being
+>     decommissioned. The MTD subsystem is out of budget for Kconfig
+>     options and already has too many of them, and there is a general
+>     kernel trend to simplify the configuration menu.
+> 
+>     We remove the stone age exhibits along with closing the museum,
+>     but some of the iron age ones are transferred to the regular NAND
+>     depot. Namely, only those which have unique device IDs are
+>     transferred, and the ones which have conflicting device IDs are
+>     removed.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/block/nand.c | 13 ++++++-------
+>  1 file changed, 6 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/block/nand.c b/hw/block/nand.c
+> index 654e0cb5d1..7d7ccc9aa4 100644
+> --- a/hw/block/nand.c
+> +++ b/hw/block/nand.c
+> @@ -137,7 +137,7 @@ static void mem_and(uint8_t *dest, const uint8_t *src, size_t n)
+>  # define ADDR_SHIFT		16
+>  # include "nand.c"
+>  
+> -/* Information based on Linux drivers/mtd/nand/nand_ids.c */
+> +/* Information based on Linux drivers/mtd/nand/raw/nand_ids.c */
+>  static const struct {
+>      int size;
+>      int width;
+> @@ -153,15 +153,14 @@ static const struct {
+>      [0xe8] = { 1,	8,	8, 4, 0 },
+>      [0xec] = { 1,	8,	8, 4, 0 },
+>      [0xea] = { 2,	8,	8, 4, 0 },
+> -    [0xd5] = { 4,	8,	9, 4, 0 },
+>      [0xe3] = { 4,	8,	9, 4, 0 },
+>      [0xe5] = { 4,	8,	9, 4, 0 },
+> -    [0xd6] = { 8,	8,	9, 4, 0 },
+>  
+> -    [0x39] = { 8,	8,	9, 4, 0 },
+> -    [0xe6] = { 8,	8,	9, 4, 0 },
+> -    [0x49] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
+> -    [0x59] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
+> +    [0x6b] = { 4,        8,        9, 4, 0 },
+> +    [0xe3] = { 4,        8,        9, 4, 0 },
+> +    [0xe5] = { 4,        8,        9, 4, 0 },
+> +    [0xd6] = { 8,        8,        9, 4, 0 },
+> +    [0xe6] = { 8,        8,        9, 4, 0 },
+>  
+>      [0x33] = { 16,	8,	9, 5, 0 },
+>      [0x73] = { 16,	8,	9, 5, 0 },
+> 

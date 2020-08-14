@@ -1,101 +1,101 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp603830lfy;
-        Fri, 14 Aug 2020 09:45:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzXJGGCZ/Y7TZy0dZlyU3bZB3gpSBZBAPzp9odgBsxF3oWYwxmbtkSgoKSuaIrrdP4CAOEe
-X-Received: by 2002:a25:d44c:: with SMTP id m73mr4572818ybf.486.1597423553901;
-        Fri, 14 Aug 2020 09:45:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597423553; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp607289lfy;
+        Fri, 14 Aug 2020 09:51:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwLfxYoDDzNMXwIRo/B20zMUSE4yoUAHedxy7ZAojr5WjY6z/4RZOBi9zIlwRRMt3YAsGEU
+X-Received: by 2002:a25:1189:: with SMTP id 131mr4690000ybr.364.1597423864181;
+        Fri, 14 Aug 2020 09:51:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597423864; cv=none;
         d=google.com; s=arc-20160816;
-        b=JYvxKL3lZ5whV+ATnP5bjidpWE0ZszfXX27ZUNJKaw3eNpXJcsrn7qyaaZFyKv1S97
-         uffY1It4n7m9CJ3vw3QV5pXJugRWqjezTO8vzAIvIjX3j9Qb96i26G/0ho+gIYB/ZSIv
-         tficdYzuMZO6Dj6jJ2hkfVNbqX5XqYY3ch43NabRkp2t6RHKEEYELhkjgwLSfZ1bhfrc
-         51iBxZcMHW5JE1jrBnMpIsL7H9WmGfWQmVp3lYxw0Ja1LsoUf+rPancyhxyRiDm9eIhG
-         ni3OERFwi9ufpJSboQtK/AgdoIbHXXk6NA/0IPGDsKG49i3syuPAg7lmdHIE4XqUUaRp
-         D6fQ==
+        b=QJKbJBHbZPfSpAzvNvvxkT3fkb0OP5efJTdK+xPB7hHyFWGfE5QnlHLnkm/MVJ50/E
+         yjLIwPRDgTACNwb1jljU6ZGbGrUhPS1ZkljsBTgANyvTGaIFZe6nhFDNHQh6B66teyUu
+         QeahVZ8wjAjvi2YmC5hI5gM3hcEgyAVWribwioTSCjL8sM8xbqUiZM5o87uX7OEbGUkw
+         RjCsWh1OIMqMuaiehs++bG5DO6WGpawFTblknylYZ3NBvvEoBREPLf1pAF9tI/Gv+/py
+         lZeA5Nf9Eg1cPo13V5ius+bSdCp67XyR2jU/By+WPIDuok46jziDnw/8B5jiU+1SycSk
+         Uyfg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=9ASlt84VPNpgMOgTGGDjknhiaN8WnaW8vF8XcV6uIN0=;
-        b=owSDX0++/AXk/Yqr1EzTKE8TOETfuzrg1N9XwbHKXTQQOPiWeQs9DPvIsvpAqpA46y
-         v4WHJdFyIGTtCURn1bWuUGEDuwbGH6Xt6vvRdyc6KHFkWV0/ycOanRgspIEEgX/SI2W/
-         HjapoIjoBUhhrT6R8u7Yp1ojApYEohC6znxV5TCB88OiZh+5kEbF28S4kEJlMFPwsswa
-         9VQBaGuyRLn07wcPqOJXyKC8ZInYL78AR8IpIevuFqI1HjslEUV+osc/B2whXQ+QAqPk
-         rJlYkjeUXDL/zqKB4VVFY1FZ6ovXEHbrzIvgbRQnMYhKGLD2+i0BisulyHTp/8GiRg08
-         oVcw==
+        bh=xWM6KDXnU2haYF7jfdME41V1s1evuLW8hUFzTHSoRXs=;
+        b=N4Vmau6UGk6JiOh/veVNLobHPzUa79UgjY6oI3+CoLbCc0zQ9s6bnVepSNAU/yI6p3
+         pIofQ+UZjdvK4ZXoh+xrsl2KpdnJMV0e3thpD7niEr+BOW2bvRLSK5Oi0DsPXwrgKz+1
+         9DWlhYUrn0fizojb+apEWuO0qm5e+a4xJ3I4u4FUqbKKDrAz33+grfjJETDh+q9A2jnR
+         xTvvBm+Vn6P45ZEznclTAQtGGvX6IVAKWuh+b/eVsFXCyZAFeija3kIwJugBOQ2aJrxT
+         ovvY3W3O1Idxj9yh8FGJHiL8xUj0hqv4XEpYRl/6obCpbjBlEznEQGKMPgr/N/AE1/P5
+         VmjA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mjAqpr6G;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rM65ZrIR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y129si8738554ybe.86.2020.08.14.09.45.53
+        by mx.google.com with ESMTPS id w8si7747401ybw.299.2020.08.14.09.51.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Aug 2020 09:45:53 -0700 (PDT)
+        Fri, 14 Aug 2020 09:51:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mjAqpr6G;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rM65ZrIR;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:54778 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47826 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6cq1-0006Lk-2l
-	for alex.bennee@linaro.org; Fri, 14 Aug 2020 12:45:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47338)
+	id 1k6cv1-0006oh-JU
+	for alex.bennee@linaro.org; Fri, 14 Aug 2020 12:51:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47422)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1k6cm3-0007zj-AO; Fri, 14 Aug 2020 12:41:47 -0400
-Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:52753)
+ id 1k6cmG-000069-Eq; Fri, 14 Aug 2020 12:42:00 -0400
+Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:43075)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1k6cm1-0002iJ-71; Fri, 14 Aug 2020 12:41:46 -0400
-Received: by mail-pj1-x1042.google.com with SMTP id kr4so4665656pjb.2;
- Fri, 14 Aug 2020 09:41:44 -0700 (PDT)
+ id 1k6cmE-0002jp-Rp; Fri, 14 Aug 2020 12:42:00 -0400
+Received: by mail-pg1-x543.google.com with SMTP id d19so4782801pgl.10;
+ Fri, 14 Aug 2020 09:41:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=9ASlt84VPNpgMOgTGGDjknhiaN8WnaW8vF8XcV6uIN0=;
- b=mjAqpr6GUGFAtHvQKyMNQh+Y1xxmukmxKuF/thKgdsL4Uc8Gn6SsNCrmfob3AuClny
- ASgj90YQMx7N7iNoyTrAb8eCCDNzduz6VkzpqZWNQVsv9Ze0sdWGwZVlJe8xjL/GavgS
- KG7Qh+49qws+IB7h91fT0Y+nh3VOR52ZAItSdA0QzphbgrcghetjngfD2FzXZDSyx0Q3
- UzgxG/Yd4LXxk4mwZPb9MPhtcFvhgc2CcI9CmuBvr5fqIdzggKEzMLxVektv808gtb2w
- b62lSwjHnJG/8gpIlOwdGA0K9aZ1o+hn7M/nlmACy3YulesPvZZjV8W/tdmkrPBIaiA7
- ryLg==
+ bh=xWM6KDXnU2haYF7jfdME41V1s1evuLW8hUFzTHSoRXs=;
+ b=rM65ZrIRr7SUkTX++aNO9naidmkz+pllYUoakwS2ewObrlyMN20GcwL6J69OB63fMH
+ fBgEpe9cthP8OiMGeF7U8ckVgt5XAHgJiSBqFD0dkn+L9B2KpvSzZKyqAfMQEK1EARZ1
+ FO0bVZxczgJ+QyIcVusKFnMxTxg+WIVXq/G171ZCM6spYZjsdrrgJzPi0qBdBdAFP1YE
+ C4gzvaDX1DLNkfAedscqbmricsg5jhj92OCFlei5Sc0picJTSq3BaRtcOXa1zH5apec1
+ PB2GXVCK3MYlEPGmnQ6qrsOjOptmDwqZz/F8qomhch3xbW1QCLsS3flWzXFgNoQ0xyZb
+ gRuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references;
- bh=9ASlt84VPNpgMOgTGGDjknhiaN8WnaW8vF8XcV6uIN0=;
- b=IkYAlpnIZVG2ZdBDC3LHytDVbMkvDE8IypPyO1jN/F4S9zPKb9G4G9J7Z3EIinElgQ
- ZoDjY7lqSfFjyDpC/ig5SmvU5hbUVtlCGd1faCAepehTOn3w+DS3XWtRzjL/AfVLE93U
- ricy76C8t2gK32YGbjMaj9LQJ9c1ASSMVOfj0FaxusHTES8IItxlwubmr/m3doCiE4dp
- q6j1OMLxdLHR6FkcKxm1P8/pv6fgFOE6D2l6Dn04ZjTXBg7whxheVZ24deg7jYyxSc1D
- A8W14HO4l4Q69kSWy0AHIMht2arnz9/BPehZaOzYT2ibx6fFRz4rDGH+HH/7PQ4TNi1T
- 0Z6A==
-X-Gm-Message-State: AOAM531KoF3OZS1/JAzfltFR0GWWzor39szX0+YQniUSHxPfYC3QRD/G
- D7ppjK1jkEIDtnoDLGw1ad8=
-X-Received: by 2002:a17:90b:241:: with SMTP id
- fz1mr979491pjb.213.1597423303296; 
- Fri, 14 Aug 2020 09:41:43 -0700 (PDT)
+ bh=xWM6KDXnU2haYF7jfdME41V1s1evuLW8hUFzTHSoRXs=;
+ b=ZshvFwC9QRTI0Boo7zMX9auY69RWq06bZ9tPUNDZ/BJifhXlyFIw7MVMqg5TCMOr6T
+ QXVVc9MgFx4+CryeUfWwX4rpfGZFbPuhvTySOjxrJb9+VqkrLuYHoWiTHk28wuZ2t3Jn
+ klavrLTuBvXdt9UbWghlzRmxSaqmUgi42d+hLsv3OdZGXIyfUPZeQKKL6BsaDxBFwxZK
+ rhN6JZ9xcK+vlBfAEZIzM2AJCLCUFo2rIfm9SHouU1imgpF10FNNg95vUkuk9xv0ruiG
+ nbLE0xZQ7XGBdcU+EgwIZtTV+YCim4StSf030n1b6DP8HoDOFyD7HeoXMaSIL+g9oem2
+ mWRg==
+X-Gm-Message-State: AOAM531g4as0ONTdH9hXNmb/uHIJ+tsh0nwjGppeojy0IJ6KncwnGNrI
+ CuhTmsw6nIfbZoIuAZLrkeQ=
+X-Received: by 2002:a05:6a00:1509:: with SMTP id
+ q9mr2460323pfu.24.1597423317031; 
+ Fri, 14 Aug 2020 09:41:57 -0700 (PDT)
 Received: from pek-vx-bsp2.wrs.com (unknown-146-144.windriver.com.
  [147.11.146.144])
- by smtp.gmail.com with ESMTPSA id 16sm9836332pfi.161.2020.08.14.09.41.39
+ by smtp.gmail.com with ESMTPSA id 16sm9836332pfi.161.2020.08.14.09.41.53
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Fri, 14 Aug 2020 09:41:42 -0700 (PDT)
+ Fri, 14 Aug 2020 09:41:56 -0700 (PDT)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Alistair Francis <Alistair.Francis@wdc.com>,
  Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
  Palmer Dabbelt <palmerdabbelt@google.com>,
  Sagar Karandikar <sagark@eecs.berkeley.edu>, qemu-devel@nongnu.org,
  qemu-riscv@nongnu.org
-Subject: [PATCH 10/18] hw/sd: Add Cadence SDHCI emulation
-Date: Sat, 15 Aug 2020 00:40:48 +0800
-Message-Id: <1597423256-14847-11-git-send-email-bmeng.cn@gmail.com>
+Subject: [PATCH 14/18] hw/net: cadence_gem: Add a new 'phy-addr' property
+Date: Sat, 15 Aug 2020 00:40:52 +0800
+Message-Id: <1597423256-14847-15-git-send-email-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.7.4
 In-Reply-To: <1597423256-14847-1-git-send-email-bmeng.cn@gmail.com>
 References: <1597423256-14847-1-git-send-email-bmeng.cn@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x1042.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pg1-x543.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -117,295 +117,73 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>,
  Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ieckPsGFHgCx
+X-TUID: cn6o+anjTJ+X
 
 From: Bin Meng <bin.meng@windriver.com>
 
-Cadence SD/SDIO/eMMC Host Controller (SD4HC) is an SDHCI compatible
-controller. The SDHCI compatible registers start from offset 0x200,
-which are called Slot Register Set (SRS) in its datasheet.
-
-This creates a Cadence SDHCI model built on top of the existing
-generic SDHCI model. Cadence specific Host Register Set (HRS) is
-implemented to make guest software happy.
+At present the PHY address of the PHY connected to GEM is hard-coded
+to either 23 (BOARD_PHY_ADDRESS) or 0. This might not be the case for
+all boards. Add a new 'phy-addr' property so that board can specify
+the PHY address for each GEM instance.
 
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
 ---
 
- hw/sd/Kconfig                 |   4 ++
- hw/sd/Makefile.objs           |   1 +
- hw/sd/cadence_sdhci.c         | 162 ++++++++++++++++++++++++++++++++++++++++++
- include/hw/sd/cadence_sdhci.h |  65 +++++++++++++++++
- 4 files changed, 232 insertions(+)
- create mode 100644 hw/sd/cadence_sdhci.c
- create mode 100644 include/hw/sd/cadence_sdhci.h
+ hw/net/cadence_gem.c         | 7 +++++--
+ include/hw/net/cadence_gem.h | 2 ++
+ 2 files changed, 7 insertions(+), 2 deletions(-)
 
-diff --git a/hw/sd/Kconfig b/hw/sd/Kconfig
-index c5e1e55..633b9af 100644
---- a/hw/sd/Kconfig
-+++ b/hw/sd/Kconfig
-@@ -19,3 +19,7 @@ config SDHCI_PCI
-     default y if PCI_DEVICES
-     depends on PCI
-     select SDHCI
-+
-+config CADENCE_SDHCI
-+    bool
-+    select SDHCI
-diff --git a/hw/sd/Makefile.objs b/hw/sd/Makefile.objs
-index 0d1df17..4d500a6 100644
---- a/hw/sd/Makefile.objs
-+++ b/hw/sd/Makefile.objs
-@@ -10,3 +10,4 @@ common-obj-$(CONFIG_OMAP) += omap_mmc.o
- common-obj-$(CONFIG_PXA2XX) += pxa2xx_mmci.o
- common-obj-$(CONFIG_RASPI) += bcm2835_sdhost.o
- common-obj-$(CONFIG_ASPEED_SOC) += aspeed_sdhci.o
-+common-obj-$(CONFIG_CADENCE_SDHCI) += cadence_sdhci.o
-diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
-new file mode 100644
-index 0000000..67ffd14
---- /dev/null
-+++ b/hw/sd/cadence_sdhci.c
-@@ -0,0 +1,162 @@
-+/*
-+ * Cadence SDHCI emulation
-+ *
-+ * Copyright (c) 2020 Wind River Systems, Inc.
-+ *
-+ * Author:
-+ *   Bin Meng <bin.meng@windriver.com>
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License as
-+ * published by the Free Software Foundation; either version 2 or
-+ * (at your option) version 3 of the License.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
-+#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "migration/vmstate.h"
-+#include "hw/irq.h"
-+#include "hw/sd/cadence_sdhci.h"
-+#include "sdhci-internal.h"
-+
-+#define TO_REG(addr)    ((addr) / sizeof(uint32_t))
-+
-+static void cadence_sdhci_reset(DeviceState *dev)
-+{
-+    CadenceSDHCIState *sdhci = CADENCE_SDHCI(dev);
-+
-+    memset(sdhci->regs, 0, CADENCE_SDHCI_REG_SIZE);
-+    sdhci->regs[TO_REG(SDHCI_CDNS_HRS00)] = SDHCI_CDNS_HRS00_POR_VAL;
-+}
-+
-+static uint64_t cadence_sdhci_read(void *opaque, hwaddr addr, unsigned int size)
-+{
-+    uint32_t val = 0;
-+    CadenceSDHCIState *sdhci = opaque;
-+
-+    if (addr < CADENCE_SDHCI_REG_SIZE) {
-+        val = sdhci->regs[TO_REG(addr)];
-+    } else {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: Out-of-bounds read at 0x%" HWADDR_PRIx "\n",
-+                      __func__, addr);
-+    }
-+
-+    return (uint64_t)val;
-+}
-+
-+static void cadence_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
-+                                unsigned int size)
-+{
-+    CadenceSDHCIState *sdhci = opaque;
-+    uint32_t val32 = (uint32_t)val;
-+
-+    switch (addr) {
-+    case SDHCI_CDNS_HRS00:
-+        /*
-+         * The only writable bit is SWR (software reset) and it automatically
-+         * clears to zero, so essentially this register remains unchanged.
-+         */
-+        if (val32 & SDHCI_CDNS_HRS00_SWR) {
-+            cadence_sdhci_reset(DEVICE(sdhci));
-+            sdhci_poweron_reset(DEVICE(&sdhci->slot));
-+        }
-+
-+        break;
-+    case SDHCI_CDNS_HRS04:
-+        /*
-+         * Only emulate the ACK bit behavior when read or write transaction
-+         * are requested.
-+         */
-+        if (val32 & (SDHCI_CDNS_HRS04_WR | SDHCI_CDNS_HRS04_RD)) {
-+            val32 |= SDHCI_CDNS_HRS04_ACK;
-+        } else {
-+            val32 &= ~SDHCI_CDNS_HRS04_ACK;
-+        }
-+
-+        sdhci->regs[TO_REG(addr)] = val32;
-+        break;
-+    case SDHCI_CDNS_HRS06:
-+        if (val32 & SDHCI_CDNS_HRS06_TUNE_UP) {
-+            val32 &= ~SDHCI_CDNS_HRS06_TUNE_UP;
-+        }
-+
-+        sdhci->regs[TO_REG(addr)] = val32;
-+        break;
-+    default:
-+        if (addr < CADENCE_SDHCI_REG_SIZE) {
-+            sdhci->regs[TO_REG(addr)] = val32;
-+        } else {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: Out-of-bounds write at 0x%" HWADDR_PRIx "\n",
-+                          __func__, addr);
-+        }
-+    }
-+}
-+
-+static const MemoryRegionOps cadence_sdhci_ops = {
-+    .read = cadence_sdhci_read,
-+    .write = cadence_sdhci_write,
-+    .endianness = DEVICE_NATIVE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    }
-+};
-+
-+static void cadence_sdhci_realize(DeviceState *dev, Error **errp)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    CadenceSDHCIState *sdhci = CADENCE_SDHCI(dev);
-+    SysBusDevice *sbd_slot = SYS_BUS_DEVICE(&sdhci->slot);
-+
-+    memory_region_init_io(&sdhci->iomem, OBJECT(sdhci), &cadence_sdhci_ops,
-+                          sdhci, TYPE_CADENCE_SDHCI, 0x1000);
-+    sysbus_init_mmio(sbd, &sdhci->iomem);
-+
-+    sysbus_realize(sbd_slot, errp);
-+    memory_region_add_subregion(&sdhci->iomem, SDHCI_CDNS_SRS_BASE,
-+                                &sdhci->slot.iomem);
-+}
-+
-+static const VMStateDescription vmstate_cadence_sdhci = {
-+    .name = TYPE_CADENCE_SDHCI,
-+    .version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, CadenceSDHCIState, CADENCE_SDHCI_NUM_REGS),
-+        VMSTATE_END_OF_LIST(),
-+    },
-+};
-+
-+static void cadence_sdhci_class_init(ObjectClass *classp, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(classp);
-+
-+    dc->realize = cadence_sdhci_realize;
-+    dc->reset = cadence_sdhci_reset;
-+    dc->vmsd = &vmstate_cadence_sdhci;
-+}
-+
-+static TypeInfo cadence_sdhci_info = {
-+    .name          = TYPE_CADENCE_SDHCI,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(CadenceSDHCIState),
-+    .class_init    = cadence_sdhci_class_init,
-+};
-+
-+static void cadence_sdhci_register_types(void)
-+{
-+    type_register_static(&cadence_sdhci_info);
-+}
-+
-+type_init(cadence_sdhci_register_types)
-diff --git a/include/hw/sd/cadence_sdhci.h b/include/hw/sd/cadence_sdhci.h
-new file mode 100644
-index 0000000..9ff78a9
---- /dev/null
-+++ b/include/hw/sd/cadence_sdhci.h
-@@ -0,0 +1,65 @@
-+/*
-+ * Cadence SDHCI emulation
-+ *
-+ * Copyright (c) 2020 Wind River Systems, Inc.
-+ *
-+ * Author:
-+ *   Bin Meng <bin.meng@windriver.com>
-+ *
-+ * This program is free software; you can redistribute it and/or
-+ * modify it under the terms of the GNU General Public License as
-+ * published by the Free Software Foundation; either version 2 or
-+ * (at your option) version 3 of the License.
-+ *
-+ * This program is distributed in the hope that it will be useful,
-+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
-+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-+ * GNU General Public License for more details.
-+ *
-+ * You should have received a copy of the GNU General Public License along
-+ * with this program; if not, see <http://www.gnu.org/licenses/>.
-+ */
-+
-+#ifndef CADENCE_SDHCI_H
-+#define CADENCE_SDHCI_H
-+
-+#include "qemu/bitops.h"
-+#include "hw/sd/sdhci.h"
-+
-+/* HRS - Host Register Set (specific to Cadence) */
-+
-+#define SDHCI_CDNS_HRS00                0x00    /* general information */
-+#define SDHCI_CDNS_HRS00_SWR                BIT(0)
-+#define SDHCI_CDNS_HRS00_POR_VAL            0x00010000
-+
-+#define SDHCI_CDNS_HRS04                0x10    /* PHY access port */
-+#define SDHCI_CDNS_HRS04_WR                 BIT(24)
-+#define SDHCI_CDNS_HRS04_RD                 BIT(25)
-+#define SDHCI_CDNS_HRS04_ACK                BIT(26)
-+
-+#define SDHCI_CDNS_HRS06                0x18    /* eMMC control */
-+#define SDHCI_CDNS_HRS06_TUNE_UP            BIT(15)
-+
-+/* SRS - Slot Register Set (SDHCI-compatible) */
-+#define SDHCI_CDNS_SRS_BASE             0x200
-+
-+#define CADENCE_SDHCI_CAPABILITIES 0x01E80080
-+#define CADENCE_SDHCI_REG_SIZE     0x100
-+#define CADENCE_SDHCI_NUM_REGS     (CADENCE_SDHCI_REG_SIZE / sizeof(uint32_t))
-+
-+typedef struct CadenceSDHCIState {
-+    SysBusDevice parent;
-+
-+    MemoryRegion iomem;
-+    qemu_irq irq;
-+
-+    uint32_t regs[CADENCE_SDHCI_NUM_REGS];
-+
-+    SDHCIState slot;
-+} CadenceSDHCIState;
-+
-+#define TYPE_CADENCE_SDHCI  "cadence.sdhci"
-+#define CADENCE_SDHCI(obj)  OBJECT_CHECK(CadenceSDHCIState, (obj), \
-+                                         TYPE_CADENCE_SDHCI)
-+
-+#endif /* CADENCE_SDHCI_H */
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index a93b5c0..9fa03de 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -1446,7 +1446,8 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
+             uint32_t phy_addr, reg_num;
+ 
+             phy_addr = (retval & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
+-            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
++            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0 ||
++                phy_addr == s->phy_addr) {
+                 reg_num = (retval & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
+                 retval &= 0xFFFF0000;
+                 retval |= gem_phy_read(s, reg_num);
+@@ -1569,7 +1570,8 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
+             uint32_t phy_addr, reg_num;
+ 
+             phy_addr = (val & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
+-            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
++            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0 ||
++                phy_addr == s->phy_addr) {
+                 reg_num = (val & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
+                 gem_phy_write(s, reg_num, val);
+             }
+@@ -1682,6 +1684,7 @@ static Property gem_properties[] = {
+     DEFINE_NIC_PROPERTIES(CadenceGEMState, conf),
+     DEFINE_PROP_UINT32("revision", CadenceGEMState, revision,
+                        GEM_MODID_VALUE),
++    DEFINE_PROP_UINT8("phy-addr", CadenceGEMState, phy_addr, 0),
+     DEFINE_PROP_UINT8("num-priority-queues", CadenceGEMState,
+                       num_priority_queues, 1),
+     DEFINE_PROP_UINT8("num-type1-screeners", CadenceGEMState,
+diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.h
+index 54e646f..01c6189 100644
+--- a/include/hw/net/cadence_gem.h
++++ b/include/hw/net/cadence_gem.h
+@@ -73,6 +73,8 @@ typedef struct CadenceGEMState {
+     /* Mask of register bits which are write 1 to clear */
+     uint32_t regs_w1c[CADENCE_GEM_MAXREG];
+ 
++    /* PHY address */
++    uint8_t phy_addr;
+     /* PHY registers backing store */
+     uint16_t phy_regs[32];
+ 
 -- 
 2.7.4
 

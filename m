@@ -1,101 +1,99 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp399247lfy;
-        Fri, 14 Aug 2020 05:29:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw/SYnkgDqvHg1bcoqYktbPyiz0XZGbaXoD1ncK6A6y1sx3KW8i1shyXRYtSGCIOBUZkd8n
-X-Received: by 2002:a25:e06:: with SMTP id 6mr3432836ybo.80.1597408164137;
-        Fri, 14 Aug 2020 05:29:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597408164; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp417651lfy;
+        Fri, 14 Aug 2020 05:55:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwhQlZlGrpUOfXhPnRyvV/MJntKvvv8H2FUxcBx4UMUDOBp0wU8ei8H3JtzEIw9IvzoHKwg
+X-Received: by 2002:a25:dcc4:: with SMTP id y187mr3710091ybe.121.1597409748812;
+        Fri, 14 Aug 2020 05:55:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597409748; cv=none;
         d=google.com; s=arc-20160816;
-        b=vKuqrNhh3uAJvLY1pItl+r8YlXk7gtxR2g/8I19hV3J41N31ALu2/uGsAoh7nRX4MS
-         fPKibMYhpcIBjlfiPHp9CSD+HnuwNSJhB9N2lwd8MPFZ/GUe8uT5ERydSEmqc4yDFRX9
-         f92ruCOvOXSIzPViatOd4R3rUkqVxdioRpFlm0y4Qrr56vLx56SrS66IMlx0tbuGLty9
-         7agKfk0/XS3MDhSzRZoVaJ4kJ9d7YjvgBaH36nKsKxKUL+0k4ogdcz/K7Th+Vn4XmXFc
-         2/UQ5eIPNoL6F1L/1CfZFan1JGLBmCMbDkyHfmxEbCFYvQHPP/WZqe/ECxQ/q9ushypv
-         ZhSA==
+        b=YN4hpoJZ9ac8unHS8jXJGeVdck/8BKKjwedJNJm+BoKKsG6/G3lShgHUAK1/3Jk2n6
+         SIj4cilwzp8XuG/M7hQmIvWoTJl7fmeOeUhrnZz3loro74+a0MHiP3la/5aVewgJNWol
+         2MZ12L+Eg7DOvKF3DLuTJVo8QuPGXgdLB6WV8wQE7dBnvwJsqOKDwQi67d1D1tx4q/rP
+         nWRdbFK5Ue6GJpo37EEWvBMORjwAa4jWV/+iZB7/u9PxG6fxzaA33+vXNzRIvqCQevw0
+         mvIguvTJGxSczUYykwuVWx0zQmQ1cLd6V8Q5f2xuwNfWpDUcU5Rrhg5DVDeVrEKEzapL
+         Dl6Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=HHF8F8C69cxwA1gHUBPBrw8zWVGJfAJ1ev6KdpDclys=;
-        b=WImOUJ+iiiDrEEBRBLcyMEEaHxH9T6B/J7RNfvsjMmGbyzmZrfVFDtbfPQ+LokKCsH
-         crRHGQleS6r1IjBP7kb9srRSIycoTtYDAUKZ5d622Gfb5lTXACREcr3To0iqCxqWhvyN
-         OQVZJanmzkiKV2mkotuT0tOr+2AyKsECA+jAIOdE7KDJSQrr2EscAuKcwDiSCB+QPUl8
-         doRgPhme4XVtgEf8m5668HYtN8ZXdFbQDkXtEX2M/t7dOLuxW+o28NtSJPdj07D2V6t9
-         QO+4kfiqd7kO4aTHhl1vIvxxHXhVe4HwrVPPv6xWTmWIsjVRz0Ax1IuLrebgBuor4im8
-         Ad0w==
+        bh=drA4MKZeTEkxQZdpt6aMuhasPyyZSu+/CHLdXIl6ncE=;
+        b=wvlHMz/Yke1fq3xwfUAkKeqHVqwKP8euq5pZ66wJmJlnXTXi+Dc1tbbgX8bLgvszn7
+         elnG1mcNSIaSEzIUh41lSp+3WpH08DrG6QrH7+43WBf7tWuDosP3PKmYh0cCDSOUMqzq
+         X5gMUfvo+OZMnytqvAvBzDttR5RUpEjpMTfF7AXKZjZNG8tFYumm0RPSEHBldb0zx3tb
+         KFobuP54aB50RrnCCnJuxmyCiO/xoB2DFP7QWYhTGPweDNozCPzpoQ43pGYhLJsEYFk1
+         Awg9zWNHrCtX7Ky0juqOvn40Hd6igs3IVI5aC3xHs4MktNmt/dOgfMxOnGVuHzb+apRL
+         E6FA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rsdDUulb;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XOkGzPxv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y6si8030353ybk.277.2020.08.14.05.29.23
+        by mx.google.com with ESMTPS id l17si7893255ybm.328.2020.08.14.05.55.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Aug 2020 05:29:24 -0700 (PDT)
+        Fri, 14 Aug 2020 05:55:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rsdDUulb;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XOkGzPxv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59462 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42900 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6Ypn-0000jc-FA
-	for alex.bennee@linaro.org; Fri, 14 Aug 2020 08:29:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35598)
+	id 1k6ZFM-0007M0-6A
+	for alex.bennee@linaro.org; Fri, 14 Aug 2020 08:55:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41808)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k6Ypd-0000iz-UG; Fri, 14 Aug 2020 08:29:13 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:52941)
+ id 1k6ZFD-0007Ld-Hx; Fri, 14 Aug 2020 08:55:39 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53193)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k6Ypb-0002L0-Th; Fri, 14 Aug 2020 08:29:13 -0400
-Received: by mail-wm1-x344.google.com with SMTP id x5so7328470wmi.2;
- Fri, 14 Aug 2020 05:29:10 -0700 (PDT)
+ id 1k6ZFB-0005ha-Vm; Fri, 14 Aug 2020 08:55:39 -0400
+Received: by mail-wm1-x343.google.com with SMTP id x5so7391546wmi.2;
+ Fri, 14 Aug 2020 05:55:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=HHF8F8C69cxwA1gHUBPBrw8zWVGJfAJ1ev6KdpDclys=;
- b=rsdDUulbEpb4wsA/IBSZMHuIr/weEFSsewpy5CcQ8QHtxmy5wq2snezbT56hdd5Y+L
- quUAFdzTsAnqVu0h/xpORUWjQ21SVtKY8MNpSyG6fL+VKnaUwMr+ZIUd2Obov8s3rL+T
- T/m7W47eKPv2ZR9dfx+GDZOPZJH9eTrk++FCFnEK2Gj5PE+0Y30r4OpXn0pipqWLISru
- 3dn0nyQwYhymvc4yNN+TsXHrCV+/qmOkdWWvEg615iPXhkFLiCtvqcmvZuUhzAFSm4I3
- +ezoeHx8x0FR9w+xceWPHMpKyk9ONGPfdV7Dm79kguwdOC5NwliVast2sC8rtTXlS0DE
- T3pw==
+ bh=drA4MKZeTEkxQZdpt6aMuhasPyyZSu+/CHLdXIl6ncE=;
+ b=XOkGzPxvW4BRG4+tsHIoUL6I9GVeaCaB/Fj27M/Vv1Sf5Zt8FArylFDwuVi6NKamXG
+ vZ9NAgmNzqRMHiprA9cZfuydXwrey3XqmcYaMUAOQJzbLa2GIYYoyxlh17SyWetE3z3q
+ rVwANaoH4CA/dsvqD3Z6BmLBmj6KObzviB/4VG1OSAkApuRAnhFo1X4JZumKa0xp1d91
+ 8B3cLqkHFt3FyE/+ERDEDmm+TRSSK1GLlfuRelLMH2kFRkvXcwcmo9pPXHEMbmnRMiyl
+ Mnf7S7tXs6wxebd1OqY2kfaxLU8doHFTqch1hywWPocDdaMALWYrX1bGuB1hoWEvrlZi
+ aakw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :mime-version:content-transfer-encoding;
- bh=HHF8F8C69cxwA1gHUBPBrw8zWVGJfAJ1ev6KdpDclys=;
- b=MG2r9pdEZfy2IMmFx60VMF4l9RetHIlRmlvRRCRQR17gG7HXTY4jEqWUY47Ft2YN6Y
- e9kXj9dzg2uI+wI8Jm0+MuT9qrlIyNPO9KjrVOPCuFe6ORO/St1H7SMCeUklhpjQ3soc
- jCApWa9cq8suF4Mk0uMWjgJNUxTcCQTpv27TH4Zr1LJ2IRnAfZktol3U+BnjLRMJHR6H
- V9P7SVUlpJhJJFFP+ctYnDMI62hJljJ1oV1gLbVucDDfReteD9G4O+I1yaMANUi+DbgS
- bZ8+nFma3L7crf/EhQpLDR2Ub1F+uAfwBxKxj7m9OJEcpyh3Lumkv37ugS9wNAugig+U
- +w2Q==
-X-Gm-Message-State: AOAM532zksAnBPknuwxnIjl/JnMP0ry0rjF+8g8LC8SDX3M2rPS7ieNq
- t2xdVZuYLKHTEFH3yLntwbhxDvPWXFY=
-X-Received: by 2002:a05:600c:2055:: with SMTP id
- p21mr2255489wmg.109.1597408149518; 
- Fri, 14 Aug 2020 05:29:09 -0700 (PDT)
+ bh=drA4MKZeTEkxQZdpt6aMuhasPyyZSu+/CHLdXIl6ncE=;
+ b=QYPVKtd5fDmv+fl3D+aj6KJXFJrxfAMXUNXvtETcrF+67dVej9mFTuysUuLyknDiZd
+ ImkNV7NFvSVBfGbfQkfEpbeLuFsrIvVwRjJqI7WChqLusZSel+768et4rjevZdjQhvc+
+ 9QFmIItwKPJ0ZjYPwZ1NmK3KHpQ4w2qB1dDYdF295cI56fEjPQIhUCFG/dwS9evG0LnA
+ 8369I5deCA01SQM+neCqMwZ/IyWsmu4l10b/i3zIkoC9G7Wb3G8sk9bvp7R9oWCIDRu3
+ yk0/C0WP61eV7Yt8mxFSjKY7g+yvR0ODuVa/NXIQWP+twYjeWJ1Ec2l0zCZCVg8vaPcF
+ 7W4A==
+X-Gm-Message-State: AOAM5307WehhBti23ENugjoY9zwXgN838Davl2egCU+GpeEs7shj+tF/
+ 5EirD/WI5CSy+HLHeRLMIE1VS9VwGqk=
+X-Received: by 2002:a1c:96d7:: with SMTP id y206mr2410779wmd.9.1597409735604; 
+ Fri, 14 Aug 2020 05:55:35 -0700 (PDT)
 Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id j4sm14410210wmi.48.2020.08.14.05.29.08
+ by smtp.gmail.com with ESMTPSA id v16sm14593469wmj.14.2020.08.14.05.55.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Aug 2020 05:29:08 -0700 (PDT)
+ Fri, 14 Aug 2020 05:55:34 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/net/allwinner-sun8i-emac: Use AddressSpace for DMA
- transfers
-Date: Fri, 14 Aug 2020 14:29:07 +0200
-Message-Id: <20200814122907.27732-1-f4bug@amsat.org>
+Subject: [PATCH] hw/arm/musicpal: Use AddressSpace for DMA transfers
+Date: Fri, 14 Aug 2020 14:55:33 +0200
+Message-Id: <20200814125533.4047-1-f4bug@amsat.org>
 X-Mailer: git-send-email 2.21.3
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -117,224 +115,170 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sE5lYQAUh4v6
+X-TUID: OPq0plgVh+wk
 
 Allow the device to execute the DMA transfers in a different
 AddressSpace.
 
-The H3 SoC keeps using the system_memory address space,
-but via the proper dma_memory_access() API.
+We keep using the system_memory address space, but via the
+proper dma_memory_access() API.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-Tested with:
-  AVOCADO_ALLOW_LARGE_STORAGE=1 avocado run -t machine:orangepi-pc tests/acceptance/
----
- include/hw/net/allwinner-sun8i-emac.h |  6 ++++
- hw/arm/allwinner-h3.c                 |  2 ++
- hw/net/allwinner-sun8i-emac.c         | 46 +++++++++++++++++----------
- 3 files changed, 38 insertions(+), 16 deletions(-)
+ hw/arm/musicpal.c | 45 +++++++++++++++++++++++++++++++--------------
+ 1 file changed, 31 insertions(+), 14 deletions(-)
 
-diff --git a/include/hw/net/allwinner-sun8i-emac.h b/include/hw/net/allwinner-sun8i-emac.h
-index eda034e96b..dd1d7b96cd 100644
---- a/include/hw/net/allwinner-sun8i-emac.h
-+++ b/include/hw/net/allwinner-sun8i-emac.h
-@@ -49,6 +49,12 @@ typedef struct AwSun8iEmacState {
-     /** Interrupt output signal to notify CPU */
-     qemu_irq     irq;
- 
-+    /** Memory region where DMA transfers are done */
-+    MemoryRegion *dma_mr;
-+
-+    /** Address space used internally for DMA transfers */
-+    AddressSpace dma_as;
-+
-     /** Generic Network Interface Controller (NIC) for networking API */
-     NICState     *nic;
- 
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index ff92ded82c..21a5d759d1 100644
---- a/hw/arm/allwinner-h3.c
-+++ b/hw/arm/allwinner-h3.c
-@@ -363,6 +363,8 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-         qemu_check_nic_model(&nd_table[0], TYPE_AW_SUN8I_EMAC);
-         qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
-     }
-+    object_property_set_link(OBJECT(&s->emac), "dma-memory",
-+                             OBJECT(get_system_memory()), &error_fatal);
-     sysbus_realize(SYS_BUS_DEVICE(&s->emac), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->emac), 0, s->memmap[AW_H3_EMAC]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
-diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c
-index 28637ff4c1..38d328587e 100644
---- a/hw/net/allwinner-sun8i-emac.c
-+++ b/hw/net/allwinner-sun8i-emac.c
-@@ -19,6 +19,7 @@
- 
- #include "qemu/osdep.h"
- #include "qemu/units.h"
-+#include "qapi/error.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
- #include "net/net.h"
-@@ -29,6 +30,7 @@
- #include "net/checksum.h"
- #include "qemu/module.h"
- #include "exec/cpu-common.h"
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index c3b9780f35..f2f4fc0264 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -30,6 +30,7 @@
+ #include "hw/audio/wm8750.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/runstate.h"
 +#include "sysemu/dma.h"
- #include "hw/net/allwinner-sun8i-emac.h"
+ #include "exec/address-spaces.h"
+ #include "ui/pixel_ops.h"
+ #include "qemu/cutils.h"
+@@ -163,6 +164,8 @@ typedef struct mv88w8618_eth_state {
  
- /* EMAC register offsets */
-@@ -337,12 +339,13 @@ static void allwinner_sun8i_emac_update_irq(AwSun8iEmacState *s)
-     qemu_set_irq(s->irq, (s->int_sta & s->int_en) != 0);
+     MemoryRegion iomem;
+     qemu_irq irq;
++    MemoryRegion *dma_mr;
++    AddressSpace dma_as;
+     uint32_t smir;
+     uint32_t icr;
+     uint32_t imr;
+@@ -176,19 +179,21 @@ typedef struct mv88w8618_eth_state {
+     NICConf conf;
+ } mv88w8618_eth_state;
+ 
+-static void eth_rx_desc_put(uint32_t addr, mv88w8618_rx_desc *desc)
++static void eth_rx_desc_put(AddressSpace *dma_as, uint32_t addr,
++                            mv88w8618_rx_desc *desc)
+ {
+     cpu_to_le32s(&desc->cmdstat);
+     cpu_to_le16s(&desc->bytes);
+     cpu_to_le16s(&desc->buffer_size);
+     cpu_to_le32s(&desc->buffer);
+     cpu_to_le32s(&desc->next);
+-    cpu_physical_memory_write(addr, desc, sizeof(*desc));
++    dma_memory_write(dma_as, addr, desc, sizeof(*desc));
  }
  
--static uint32_t allwinner_sun8i_emac_next_desc(FrameDescriptor *desc,
-+static uint32_t allwinner_sun8i_emac_next_desc(AwSun8iEmacState *s,
-+                                               FrameDescriptor *desc,
-                                                size_t min_size)
+-static void eth_rx_desc_get(uint32_t addr, mv88w8618_rx_desc *desc)
++static void eth_rx_desc_get(AddressSpace *dma_as, uint32_t addr,
++                            mv88w8618_rx_desc *desc)
  {
-     uint32_t paddr = desc->next;
- 
--    cpu_physical_memory_read(paddr, desc, sizeof(*desc));
-+    dma_memory_read(&s->dma_as, paddr, desc, sizeof(*desc));
- 
-     if ((desc->status & DESC_STATUS_CTL) &&
-         (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
-@@ -352,7 +355,8 @@ static uint32_t allwinner_sun8i_emac_next_desc(FrameDescriptor *desc,
-     }
- }
- 
--static uint32_t allwinner_sun8i_emac_get_desc(FrameDescriptor *desc,
-+static uint32_t allwinner_sun8i_emac_get_desc(AwSun8iEmacState *s,
-+                                              FrameDescriptor *desc,
-                                               uint32_t start_addr,
-                                               size_t min_size)
- {
-@@ -360,7 +364,7 @@ static uint32_t allwinner_sun8i_emac_get_desc(FrameDescriptor *desc,
- 
-     /* Note that the list is a cycle. Last entry points back to the head. */
-     while (desc_addr != 0) {
--        cpu_physical_memory_read(desc_addr, desc, sizeof(*desc));
-+        dma_memory_read(&s->dma_as, desc_addr, desc, sizeof(*desc));
- 
-         if ((desc->status & DESC_STATUS_CTL) &&
-             (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >= min_size) {
-@@ -379,20 +383,21 @@ static uint32_t allwinner_sun8i_emac_rx_desc(AwSun8iEmacState *s,
-                                              FrameDescriptor *desc,
-                                              size_t min_size)
- {
--    return allwinner_sun8i_emac_get_desc(desc, s->rx_desc_curr, min_size);
-+    return allwinner_sun8i_emac_get_desc(s, desc, s->rx_desc_curr, min_size);
- }
- 
- static uint32_t allwinner_sun8i_emac_tx_desc(AwSun8iEmacState *s,
-                                              FrameDescriptor *desc,
-                                              size_t min_size)
- {
--    return allwinner_sun8i_emac_get_desc(desc, s->tx_desc_head, min_size);
-+    return allwinner_sun8i_emac_get_desc(s, desc, s->tx_desc_head, min_size);
- }
- 
--static void allwinner_sun8i_emac_flush_desc(FrameDescriptor *desc,
-+static void allwinner_sun8i_emac_flush_desc(AwSun8iEmacState *s,
-+                                            FrameDescriptor *desc,
-                                             uint32_t phys_addr)
- {
--    cpu_physical_memory_write(phys_addr, desc, sizeof(*desc));
-+    dma_memory_write(&s->dma_as, phys_addr, desc, sizeof(*desc));
- }
- 
- static bool allwinner_sun8i_emac_can_receive(NetClientState *nc)
-@@ -450,8 +455,8 @@ static ssize_t allwinner_sun8i_emac_receive(NetClientState *nc,
-                             << RX_DESC_STATUS_FRM_LEN_SHIFT;
+-    cpu_physical_memory_read(addr, desc, sizeof(*desc));
++    dma_memory_read(dma_as, addr, desc, sizeof(*desc));
+     le32_to_cpus(&desc->cmdstat);
+     le16_to_cpus(&desc->bytes);
+     le16_to_cpus(&desc->buffer_size);
+@@ -209,9 +214,9 @@ static ssize_t eth_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+             continue;
          }
+         do {
+-            eth_rx_desc_get(desc_addr, &desc);
++            eth_rx_desc_get(&s->dma_as, desc_addr, &desc);
+             if ((desc.cmdstat & MP_ETH_RX_OWN) && desc.buffer_size >= size) {
+-                cpu_physical_memory_write(desc.buffer + s->vlan_header,
++                dma_memory_write(&s->dma_as, desc.buffer + s->vlan_header,
+                                           buf, size);
+                 desc.bytes = size + s->vlan_header;
+                 desc.cmdstat &= ~MP_ETH_RX_OWN;
+@@ -221,7 +226,7 @@ static ssize_t eth_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+                 if (s->icr & s->imr) {
+                     qemu_irq_raise(s->irq);
+                 }
+-                eth_rx_desc_put(desc_addr, &desc);
++                eth_rx_desc_put(&s->dma_as, desc_addr, &desc);
+                 return size;
+             }
+             desc_addr = desc.next;
+@@ -230,19 +235,21 @@ static ssize_t eth_receive(NetClientState *nc, const uint8_t *buf, size_t size)
+     return size;
+ }
  
--        cpu_physical_memory_write(desc.addr, buf, desc_bytes);
--        allwinner_sun8i_emac_flush_desc(&desc, s->rx_desc_curr);
-+        dma_memory_write(&s->dma_as, desc.addr, buf, desc_bytes);
-+        allwinner_sun8i_emac_flush_desc(s, &desc, s->rx_desc_curr);
-         trace_allwinner_sun8i_emac_receive(s->rx_desc_curr, desc.addr,
-                                            desc_bytes);
- 
-@@ -465,7 +470,7 @@ static ssize_t allwinner_sun8i_emac_receive(NetClientState *nc,
-         bytes_left -= desc_bytes;
- 
-         /* Move to the next descriptor */
--        s->rx_desc_curr = allwinner_sun8i_emac_next_desc(&desc, 64);
-+        s->rx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc, 64);
-         if (!s->rx_desc_curr) {
-             /* Not enough buffer space available */
-             s->int_sta |= INT_STA_RX_BUF_UA;
-@@ -501,10 +506,10 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
-             desc.status |= TX_DESC_STATUS_LENGTH_ERR;
-             break;
-         }
--        cpu_physical_memory_read(desc.addr, packet_buf + packet_bytes, bytes);
-+        dma_memory_read(&s->dma_as, desc.addr, packet_buf + packet_bytes, bytes);
-         packet_bytes += bytes;
-         desc.status &= ~DESC_STATUS_CTL;
--        allwinner_sun8i_emac_flush_desc(&desc, s->tx_desc_curr);
-+        allwinner_sun8i_emac_flush_desc(s, &desc, s->tx_desc_curr);
- 
-         /* After the last descriptor, send the packet */
-         if (desc.status2 & TX_DESC_STATUS2_LAST_DESC) {
-@@ -519,7 +524,7 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
-             packet_bytes = 0;
-             transmitted++;
-         }
--        s->tx_desc_curr = allwinner_sun8i_emac_next_desc(&desc, 0);
-+        s->tx_desc_curr = allwinner_sun8i_emac_next_desc(s, &desc, 0);
-     }
- 
-     /* Raise transmit completed interrupt */
-@@ -623,7 +628,7 @@ static uint64_t allwinner_sun8i_emac_read(void *opaque, hwaddr offset,
-         break;
-     case REG_TX_CUR_BUF:        /* Transmit Current Buffer */
-         if (s->tx_desc_curr != 0) {
--            cpu_physical_memory_read(s->tx_desc_curr, &desc, sizeof(desc));
-+            dma_memory_read(&s->dma_as, s->tx_desc_curr, &desc, sizeof(desc));
-             value = desc.addr;
-         } else {
-             value = 0;
-@@ -636,7 +641,7 @@ static uint64_t allwinner_sun8i_emac_read(void *opaque, hwaddr offset,
-         break;
-     case REG_RX_CUR_BUF:        /* Receive Current Buffer */
-         if (s->rx_desc_curr != 0) {
--            cpu_physical_memory_read(s->rx_desc_curr, &desc, sizeof(desc));
-+            dma_memory_read(&s->dma_as, s->rx_desc_curr, &desc, sizeof(desc));
-             value = desc.addr;
-         } else {
-             value = 0;
-@@ -790,6 +795,13 @@ static void allwinner_sun8i_emac_realize(DeviceState *dev, Error **errp)
+-static void eth_tx_desc_put(uint32_t addr, mv88w8618_tx_desc *desc)
++static void eth_tx_desc_put(AddressSpace *dma_as, uint32_t addr,
++                            mv88w8618_tx_desc *desc)
  {
-     AwSun8iEmacState *s = AW_SUN8I_EMAC(dev);
+     cpu_to_le32s(&desc->cmdstat);
+     cpu_to_le16s(&desc->res);
+     cpu_to_le16s(&desc->bytes);
+     cpu_to_le32s(&desc->buffer);
+     cpu_to_le32s(&desc->next);
+-    cpu_physical_memory_write(addr, desc, sizeof(*desc));
++    dma_memory_write(dma_as, addr, desc, sizeof(*desc));
+ }
+ 
+-static void eth_tx_desc_get(uint32_t addr, mv88w8618_tx_desc *desc)
++static void eth_tx_desc_get(AddressSpace *dma_as, uint32_t addr,
++                            mv88w8618_tx_desc *desc)
+ {
+-    cpu_physical_memory_read(addr, desc, sizeof(*desc));
++    dma_memory_read(dma_as, addr, desc, sizeof(*desc));
+     le32_to_cpus(&desc->cmdstat);
+     le16_to_cpus(&desc->res);
+     le16_to_cpus(&desc->bytes);
+@@ -259,17 +266,17 @@ static void eth_send(mv88w8618_eth_state *s, int queue_index)
+     int len;
+ 
+     do {
+-        eth_tx_desc_get(desc_addr, &desc);
++        eth_tx_desc_get(&s->dma_as, desc_addr, &desc);
+         next_desc = desc.next;
+         if (desc.cmdstat & MP_ETH_TX_OWN) {
+             len = desc.bytes;
+             if (len < 2048) {
+-                cpu_physical_memory_read(desc.buffer, buf, len);
++                dma_memory_read(&s->dma_as, desc.buffer, buf, len);
+                 qemu_send_packet(qemu_get_queue(s->nic), buf, len);
+             }
+             desc.cmdstat &= ~MP_ETH_TX_OWN;
+             s->icr |= 1 << (MP_ETH_IRQ_TXLO_BIT - queue_index);
+-            eth_tx_desc_put(desc_addr, &desc);
++            eth_tx_desc_put(&s->dma_as, desc_addr, &desc);
+         }
+         desc_addr = next_desc;
+     } while (desc_addr != s->tx_queue[queue_index]);
+@@ -405,6 +412,12 @@ static void mv88w8618_eth_realize(DeviceState *dev, Error **errp)
+ {
+     mv88w8618_eth_state *s = MV88W8618_ETH(dev);
  
 +    if (!s->dma_mr) {
-+        error_setg(errp, TYPE_AW_SUN8I_EMAC " 'dma-memory' link not set");
++        error_setg(errp, TYPE_MV88W8618_ETH " 'dma-memory' link not set");
 +        return;
 +    }
 +
 +    address_space_init(&s->dma_as, s->dma_mr, "emac-dma");
-+
-     qemu_macaddr_default_if_unset(&s->conf.macaddr);
-     s->nic = qemu_new_nic(&net_allwinner_sun8i_emac_info, &s->conf,
-                            object_get_typename(OBJECT(dev)), dev->id, s);
-@@ -799,6 +811,8 @@ static void allwinner_sun8i_emac_realize(DeviceState *dev, Error **errp)
- static Property allwinner_sun8i_emac_properties[] = {
-     DEFINE_NIC_PROPERTIES(AwSun8iEmacState, conf),
-     DEFINE_PROP_UINT8("phy-addr", AwSun8iEmacState, mii_phy_addr, 0),
-+    DEFINE_PROP_LINK("dma-memory", AwSun8iEmacState, dma_mr,
+     s->nic = qemu_new_nic(&net_mv88w8618_info, &s->conf,
+                           object_get_typename(OBJECT(dev)), dev->id, s);
+ }
+@@ -428,6 +441,8 @@ static const VMStateDescription mv88w8618_eth_vmsd = {
+ 
+ static Property mv88w8618_eth_properties[] = {
+     DEFINE_NIC_PROPERTIES(mv88w8618_eth_state, conf),
++    DEFINE_PROP_LINK("dma-memory", mv88w8618_eth_state, dma_mr,
 +                     TYPE_MEMORY_REGION, MemoryRegion *),
      DEFINE_PROP_END_OF_LIST(),
  };
  
+@@ -1653,6 +1668,8 @@ static void musicpal_init(MachineState *machine)
+     qemu_check_nic_model(&nd_table[0], "mv88w8618");
+     dev = qdev_new(TYPE_MV88W8618_ETH);
+     qdev_set_nic_properties(dev, &nd_table[0]);
++    object_property_set_link(OBJECT(dev), "dma-memory",
++                             OBJECT(get_system_memory()), &error_fatal);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, MP_ETH_BASE);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[MP_ETH_IRQ]);
 -- 
 2.21.3
 

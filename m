@@ -1,289 +1,173 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp335832lfy;
-        Fri, 14 Aug 2020 04:01:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx9wARqbTMSJahd3eRxVgtyf6a/jerJ2gR5XKn2oluP28vKeVXqWTZ+tCIg6SWfpz3nkbay
-X-Received: by 2002:a25:ba4a:: with SMTP id z10mr2737256ybj.414.1597402884686;
-        Fri, 14 Aug 2020 04:01:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597402884; cv=none;
-        d=google.com; s=arc-20160816;
-        b=Ty2vSP+U6Gh70zf8mlcp3wI21h1FMGvsZyocg/YRK69160GPX3gZ4hantdhTRRfaNK
-         J2qmz2pHAyrPzEbYSRcqeMPmERfPiA7micJH+40W7x2KKBVCAMo+r6TMcr0wkyHcIsBD
-         cz8ydbsbIKtjgipbaQXjgpbY8uoy1cwwH5SwFtX7PCLkyLVb4OZ7nex3mJOosWVFeIIX
-         LaQYyw2oftPIjl6JfzgOu/NjcxlQk9uhRsw8SztDVfXB0Xxzg56tEnTn3wzTy0LHdJwx
-         Kqb8x2DPI+KgDG96mhD2ToNlSqmn8ovdhDQZGA7eHMAN1uWa6csCjiogCwjFoKJonxTV
-         NMsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=82YNUrJPpt+U6i+zsZg8jmPLYqtlltwueOh8XQCPKmQ=;
-        b=PztV6YrZditmyHuAFH+wmmlPhBkC+I+Gsmmdj0v96lw1p8slDcB4NwHpatoKm9gtIg
-         T1olqEm09ojQtkRdzZKUHCAY1eRAZtF5wsTaBqAUd+R1NLKH/OBWTmq0gWDPyLSofhms
-         LPHOWxjBmMU5sVvcXMyAQjFKeR/CZNWjgMG+vhH8amcn9k6LMJ10r3ep8+4uakS3rmW/
-         sLGBBsNhvcwMycV1l8FzdgTNjH2MVJJdQDniGdNccYX06Pa3QMKOPuDFb4vSvylzosqk
-         M96MpQccyT8EPgpzF67qfhVqyZDaAzqZjQbFWtN22HcltBxcnmrUspEL1k6DuGxYZMuk
-         O7mw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tn2+V+ND;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp378128lfy;
+        Fri, 14 Aug 2020 05:02:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyV9rbrxptY/oIdFywllxVBuwiAjbjlYGEVby6wm9wqwKwv8hYXZMdwgTlYgigsWCCVb14l
+X-Received: by 2002:a25:ef4e:: with SMTP id w14mr3038135ybm.225.1597406535622;
+        Fri, 14 Aug 2020 05:02:15 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 126si7674230ybk.309.2020.08.14.04.01.24
+        by mx.google.com with ESMTPS id e7si8382003ybp.474.2020.08.14.05.02.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Aug 2020 04:01:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 14 Aug 2020 05:02:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tn2+V+ND;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:50958 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52486 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6XSd-0003J1-VA
-	for alex.bennee@linaro.org; Fri, 14 Aug 2020 07:01:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43382)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k6YPW-0003pl-Qw
+	for alex.bennee@linaro.org; Fri, 14 Aug 2020 08:02:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k6XSK-0003FU-Kd; Fri, 14 Aug 2020 07:01:04 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:46081)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k6XSI-0000Jl-On; Fri, 14 Aug 2020 07:01:04 -0400
-Received: by mail-wr1-x441.google.com with SMTP id f12so7946451wru.13;
- Fri, 14 Aug 2020 04:01:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=82YNUrJPpt+U6i+zsZg8jmPLYqtlltwueOh8XQCPKmQ=;
- b=tn2+V+NDZXCdbxZd3abu7KYFmH185KGG64CmAOqicWcSP9nMEp1Kr/TFIWuFXI2bNt
- hBV7pzS6tppiq+DopWSVbhOFkqT8m71DiscJ57l1OTvaxj7vM7IB3v76CF9pCyA2yFZo
- lxNPA76U3q2q1kOqP5Vy5P2jIM6cqL8pHKkzZ+TYGLI7iizfWltI9okePXw2tfG4bPHu
- gbhFA7VIIhMUlghHiiYd1k7BcDKeHK0tSMBM/SyCR7MB1JnwKqhobOrp0X21r9WhlNN7
- WmKIUi+RyqvDVRhheCQCmT2nkgtsW1FoJIaR/51qT6Ae4L0HrnwqnEDGn4oZtFnaqi4E
- +8mQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=82YNUrJPpt+U6i+zsZg8jmPLYqtlltwueOh8XQCPKmQ=;
- b=Au6F5u3sLEmUPAIBU9Om3KVPETeZAKPyVteZ1T+8BdVD3xuadw6hplhrFYT6HW0mpm
- eXK3vk3UcinT549kvytOqtRGhNXYyCEpRj2U1sZCjU4NSAO42SdNSBLyZZJ2ONJDUmFm
- 7xof3TXQpQ5XO3J9grPxaU38xP1soaco9N+vmUPsd3Vi5/eiwwXwrhQEg5sAInQu9lbs
- lgNv+jKyDAy8GgloXIubuqnoG1yVpYpkBxwtWItaSVL/X8FdXUnoZGvxW+NSpPKHXM0r
- UqwCw+d+UXiokDc4kwiUuermLC3g0x7cnr9v3CZKnLhBc1f8YbMb7Q0+5FqJlLST6sR3
- /dlw==
-X-Gm-Message-State: AOAM533OHPefskSkn8VW3tWUS5LvaRloWdUqzHCqCo40Hvql4HIpRajh
- Iy0ZVUKkygmDSKDghnRpfb6LHBMWmK4=
-X-Received: by 2002:adf:df08:: with SMTP id y8mr2406269wrl.152.1597402859848; 
- Fri, 14 Aug 2020 04:00:59 -0700 (PDT)
-Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id 128sm14154986wmz.43.2020.08.14.04.00.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 14 Aug 2020 04:00:59 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/sd/allwinner-sdhost: Use AddressSpace for DMA transfers
-Date: Fri, 14 Aug 2020 13:00:57 +0200
-Message-Id: <20200814110057.307-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.21.3
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1k6YOb-0003A6-0y; Fri, 14 Aug 2020 08:01:17 -0400
+Resent-Date: Fri, 14 Aug 2020 08:01:17 -0400
+Resent-Message-Id: <E1k6YOb-0003A6-0y@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21748)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1k6YOS-0007aD-Vc; Fri, 14 Aug 2020 08:01:16 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1597406449; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=bCN9eKjorkf4QH4414/VYrvHIblsvt+5gg+1fTqNX1g1uJqsd1cOSZxb7WxsofMF2XZRnGp0W9SX1uI79TZa7SXed7cWc/l7A6RFHLaWSLgqlOicT04qf1CJxV/j8wWeUgXZN1x1dFcyf8aJz3fbUPKhi/Sefg129Cirl4ah47I=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1597406449;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=jZx0l/G7PWzdZUpffWO6vr2Mzt46xMdgX22MzPDzRmo=; 
+ b=OKESl6xtpJ71tNS6UYUCZgtHjj3IUzQmmv1ugjtkfH+y818yVIXyyRBOqGrgUShQF7Vm1ZYTTZ5MbcGTVETlthNvCo5Qlb8BMfYaBhByfunHh/UTgWSFC8aEJU6bTvtbwo13SKH8ICQvs3K+SxPouad55FPRWO6k8ItJ4sR74eg=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1597406445184806.6854110514956;
+ Fri, 14 Aug 2020 05:00:45 -0700 (PDT)
+Subject: Re: [PATCH] hw/sd/allwinner-sdhost: Use AddressSpace for DMA transfers
+Message-ID: <159740644375.3532.5857124494185505383@66eaa9a8a123>
+In-Reply-To: <20200814110057.307-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: f4bug@amsat.org
+Date: Fri, 14 Aug 2020 05:00:45 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/14 08:01:05
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>,
- qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0NKvMpiSlULv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-block@nongnu.org, qemu-devel@nongnu.org,
+ Andrew.Baumann@microsoft.com, f4bug@amsat.org, b.galvani@gmail.com,
+ nieklinnenbank@gmail.com, qemu-arm@nongnu.org, michael@walle.cc,
+ philmd@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6/PrcVrDvgqo
 
-Allow the device to execute the DMA transfers in a different
-AddressSpace.
-
-The A10 and H3 SoC keep using the system_memory address space,
-but via the proper dma_memory_access() API.
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Based-on: <20200814092346.21825-1-f4bug@amsat.org>
-"hw/sd: Use sdbus_read_data/sdbus_write_data for multiple bytes access"
-
-Tested with:
-  AVOCADO_ALLOW_LARGE_STORAGE=1 avocado run -t machine:orangepi-pc -t machine:cubieboard tests/acceptance/
----
- include/hw/sd/allwinner-sdhost.h |  6 ++++++
- hw/arm/allwinner-a10.c           |  2 ++
- hw/arm/allwinner-h3.c            |  2 ++
- hw/sd/allwinner-sdhost.c         | 37 ++++++++++++++++++++++++++------
- 4 files changed, 41 insertions(+), 6 deletions(-)
-
-diff --git a/include/hw/sd/allwinner-sdhost.h b/include/hw/sd/allwinner-sdhost.h
-index d94606a853..839732ebf3 100644
---- a/include/hw/sd/allwinner-sdhost.h
-+++ b/include/hw/sd/allwinner-sdhost.h
-@@ -71,6 +71,12 @@ typedef struct AwSdHostState {
-     /** Interrupt output signal to notify CPU */
-     qemu_irq irq;
- 
-+    /** Memory region where DMA transfers are done */
-+    MemoryRegion *dma_mr;
-+
-+    /** Address space used internally for DMA transfers */
-+    AddressSpace dma_as;
-+
-     /** Number of bytes left in current DMA transfer */
-     uint32_t transfer_cnt;
- 
-diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
-index e258463747..d404f31e02 100644
---- a/hw/arm/allwinner-a10.c
-+++ b/hw/arm/allwinner-a10.c
-@@ -155,6 +155,8 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
-     }
- 
-     /* SD/MMC */
-+    object_property_set_link(OBJECT(&s->mmc0), "dma-memory",
-+                             OBJECT(get_system_memory()), &error_fatal);
-     sysbus_realize(SYS_BUS_DEVICE(&s->mmc0), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc0), 0, AW_A10_MMC0_BASE);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc0), 0, qdev_get_gpio_in(dev, 32));
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-index ff92ded82c..43a8d3dc48 100644
---- a/hw/arm/allwinner-h3.c
-+++ b/hw/arm/allwinner-h3.c
-@@ -349,6 +349,8 @@ static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0, s->memmap[AW_H3_SID]);
- 
-     /* SD/MMC */
-+    object_property_set_link(OBJECT(&s->mmc0), "dma-memory",
-+                             OBJECT(get_system_memory()), &error_fatal);
-     sysbus_realize(SYS_BUS_DEVICE(&s->mmc0), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc0), 0, s->memmap[AW_H3_MMC0]);
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc0), 0,
-diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
-index f9eb92c09e..e82afb75eb 100644
---- a/hw/sd/allwinner-sdhost.c
-+++ b/hw/sd/allwinner-sdhost.c
-@@ -21,7 +21,10 @@
- #include "qemu/log.h"
- #include "qemu/module.h"
- #include "qemu/units.h"
-+#include "qapi/error.h"
- #include "sysemu/blockdev.h"
-+#include "sysemu/dma.h"
-+#include "hw/qdev-properties.h"
- #include "hw/irq.h"
- #include "hw/sd/allwinner-sdhost.h"
- #include "migration/vmstate.h"
-@@ -306,7 +309,7 @@ static uint32_t allwinner_sdhost_process_desc(AwSdHostState *s,
-     uint8_t buf[1024];
- 
-     /* Read descriptor */
--    cpu_physical_memory_read(desc_addr, desc, sizeof(*desc));
-+    dma_memory_read(&s->dma_as, desc_addr, desc, sizeof(*desc));
-     if (desc->size == 0) {
-         desc->size = klass->max_desc_size;
-     } else if (desc->size > klass->max_desc_size) {
-@@ -331,22 +334,24 @@ static uint32_t allwinner_sdhost_process_desc(AwSdHostState *s,
- 
-         /* Write to SD bus */
-         if (is_write) {
--            cpu_physical_memory_read((desc->addr & DESC_SIZE_MASK) + num_done,
--                                      buf, buf_bytes);
-+            dma_memory_read(&s->dma_as,
-+                            (desc->addr & DESC_SIZE_MASK) + num_done,
-+                            buf, buf_bytes);
-             sdbus_write_data(&s->sdbus, buf, buf_bytes);
- 
-         /* Read from SD bus */
-         } else {
-             sdbus_read_data(&s->sdbus, buf, buf_bytes);
--            cpu_physical_memory_write((desc->addr & DESC_SIZE_MASK) + num_done,
--                                       buf, buf_bytes);
-+            dma_memory_write(&s->dma_as,
-+                             (desc->addr & DESC_SIZE_MASK) + num_done,
-+                             buf, buf_bytes);
-         }
-         num_done += buf_bytes;
-     }
- 
-     /* Clear hold flag and flush descriptor */
-     desc->status &= ~DESC_STATUS_HOLD;
--    cpu_physical_memory_write(desc_addr, desc, sizeof(*desc));
-+    dma_memory_write(&s->dma_as, desc_addr, desc, sizeof(*desc));
- 
-     return num_done;
- }
-@@ -721,6 +726,12 @@ static const VMStateDescription vmstate_allwinner_sdhost = {
-     }
- };
- 
-+static Property allwinner_sdhost_properties[] = {
-+    DEFINE_PROP_LINK("dma-memory", AwSdHostState, dma_mr,
-+                     TYPE_MEMORY_REGION, MemoryRegion *),
-+    DEFINE_PROP_END_OF_LIST(),
-+};
-+
- static void allwinner_sdhost_init(Object *obj)
- {
-     AwSdHostState *s = AW_SDHOST(obj);
-@@ -734,6 +745,18 @@ static void allwinner_sdhost_init(Object *obj)
-     sysbus_init_irq(SYS_BUS_DEVICE(s), &s->irq);
- }
- 
-+static void allwinner_sdhost_realize(DeviceState *dev, Error **errp)
-+{
-+    AwSdHostState *s = AW_SDHOST(dev);
-+
-+    if (!s->dma_mr) {
-+        error_setg(errp, TYPE_AW_SDHOST " 'dma-memory' link not set");
-+        return;
-+    }
-+
-+    address_space_init(&s->dma_as, s->dma_mr, "sdhost-dma");
-+}
-+
- static void allwinner_sdhost_reset(DeviceState *dev)
- {
-     AwSdHostState *s = AW_SDHOST(dev);
-@@ -792,6 +815,8 @@ static void allwinner_sdhost_class_init(ObjectClass *klass, void *data)
- 
-     dc->reset = allwinner_sdhost_reset;
-     dc->vmsd = &vmstate_allwinner_sdhost;
-+    dc->realize = allwinner_sdhost_realize;
-+    device_class_set_props(dc, allwinner_sdhost_properties);
- }
- 
- static void allwinner_sdhost_sun4i_class_init(ObjectClass *klass, void *data)
--- 
-2.21.3
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDgxNDExMDA1Ny4zMDct
+MS1mNGJ1Z0BhbXNhdC5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRoZSBkb2NrZXIt
+bWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1hbmRz
+IGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQsIHlv
+dSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQgQkVH
+SU4gPT09CiMhIC9iaW4vYmFzaApleHBvcnQgQVJDSD14ODZfNjQKbWFrZSBkb2NrZXItaW1hZ2Ut
+ZmVkb3JhIFY9MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LW1pbmd3QGZlZG9yYSBK
+PTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKICBDQyAgICAgIGFhcmNoNjQt
+c29mdG1tdS90cmFjZS9nZW5lcmF0ZWQtaGVscGVycy5vCiAgQ0MgICAgICBhYXJjaDY0LXNvZnRt
+bXUvdGFyZ2V0L2FybS90cmFuc2xhdGUtc3ZlLm8KL3RtcC9xZW11LXRlc3Qvc3JjL2h3L2FybS9h
+bGx3aW5uZXItYTEwLmM6IEluIGZ1bmN0aW9uICdhd19hMTBfcmVhbGl6ZSc6Ci90bXAvcWVtdS10
+ZXN0L3NyYy9ody9hcm0vYWxsd2lubmVyLWExMC5jOjE2OTo0ODogZXJyb3I6IHBhc3NpbmcgYXJn
+dW1lbnQgMiBvZiAnb2JqZWN0X3Byb3BlcnR5X3NldF9saW5rJyBmcm9tIGluY29tcGF0aWJsZSBw
+b2ludGVyIHR5cGUgWy1XZXJyb3I9aW5jb21wYXRpYmxlLXBvaW50ZXItdHlwZXNdCiAgMTY5IHwg
+ICAgIG9iamVjdF9wcm9wZXJ0eV9zZXRfbGluayhPQkpFQ1QoJnMtPm1tYzApLCAiZG1hLW1lbW9y
+eSIsCiAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICBefn5+fn5+fn5+fn4KICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIHwKLS0tCi90bXAvcWVtdS10ZXN0L3NyYy9pbmNsdWRlL3FvbS9vYmplY3Qu
+aDoxMjQzOjUyOiBub3RlOiBleHBlY3RlZCAnT2JqZWN0IConIHtha2EgJ3N0cnVjdCBPYmplY3Qg
+Kid9IGJ1dCBhcmd1bWVudCBpcyBvZiB0eXBlICdjb25zdCBjaGFyIConCiAxMjQzIHwgdm9pZCBv
+YmplY3RfcHJvcGVydHlfc2V0X2xpbmsoT2JqZWN0ICpvYmosIE9iamVjdCAqdmFsdWUsCiAgICAg
+IHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH5+fn5+fn5+Xn5+
+fn4KL3RtcC9xZW11LXRlc3Qvc3JjL2luY2x1ZGUvcW9tL29iamVjdC5oOjUwOTo2OiBlcnJvcjog
+cGFzc2luZyBhcmd1bWVudCAzIG9mICdvYmplY3RfcHJvcGVydHlfc2V0X2xpbmsnIGZyb20gaW5j
+b21wYXRpYmxlIHBvaW50ZXIgdHlwZSBbLVdlcnJvcj1pbmNvbXBhdGlibGUtcG9pbnRlci10eXBl
+c10KICA1MDkgfCAgICAgKChPYmplY3QgKikob2JqKSkKICAgICAgfCAgICAgfl5+fn5+fn5+fn5+
+fn5+fn4KICAgICAgfCAgICAgIHwKLS0tCiAgMTcwIHwgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICBPQkpFQ1QoZ2V0X3N5c3RlbV9tZW1vcnkoKSksICZlcnJvcl9mYXRhbCk7CiAgICAgIHwg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICBefn5+fn4KL3RtcC9xZW11LXRlc3Qvc3JjL2lu
+Y2x1ZGUvcW9tL29iamVjdC5oOjEyNDQ6NDM6IG5vdGU6IGV4cGVjdGVkICdjb25zdCBjaGFyICon
+IGJ1dCBhcmd1bWVudCBpcyBvZiB0eXBlICdPYmplY3QgKicge2FrYSAnc3RydWN0IE9iamVjdCAq
+J30KIDEyNDQgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb25zdCBjaGFyICpuYW1l
+LCBFcnJvciAqKmVycnApOwogICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH5+
+fn5+fn5+fn5+fl5+fn4KY2MxOiBhbGwgd2FybmluZ3MgYmVpbmcgdHJlYXRlZCBhcyBlcnJvcnMK
+bWFrZVsxXTogKioqIFsvdG1wL3FlbXUtdGVzdC9zcmMvcnVsZXMubWFrOjY5OiBody9hcm0vYWxs
+d2lubmVyLWExMC5vXSBFcnJvciAxCm1ha2VbMV06ICoqKiBXYWl0aW5nIGZvciB1bmZpbmlzaGVk
+IGpvYnMuLi4uCi90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0vYWxsd2lubmVyLWgzLmM6IEluIGZ1
+bmN0aW9uICdhbGx3aW5uZXJfaDNfcmVhbGl6ZSc6Ci90bXAvcWVtdS10ZXN0L3NyYy9ody9hcm0v
+YWxsd2lubmVyLWgzLmM6MzUyOjQ4OiBlcnJvcjogcGFzc2luZyBhcmd1bWVudCAyIG9mICdvYmpl
+Y3RfcHJvcGVydHlfc2V0X2xpbmsnIGZyb20gaW5jb21wYXRpYmxlIHBvaW50ZXIgdHlwZSBbLVdl
+cnJvcj1pbmNvbXBhdGlibGUtcG9pbnRlci10eXBlc10KICAzNTIgfCAgICAgb2JqZWN0X3Byb3Bl
+cnR5X3NldF9saW5rKE9CSkVDVCgmcy0+bW1jMCksICJkbWEtbWVtb3J5IiwKICAgICAgfCAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF5+fn5+fn5+fn5+fgog
+ICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfAot
+LS0KL3RtcC9xZW11LXRlc3Qvc3JjL2luY2x1ZGUvcW9tL29iamVjdC5oOjEyNDM6NTI6IG5vdGU6
+IGV4cGVjdGVkICdPYmplY3QgKicge2FrYSAnc3RydWN0IE9iamVjdCAqJ30gYnV0IGFyZ3VtZW50
+IGlzIG9mIHR5cGUgJ2NvbnN0IGNoYXIgKicKIDEyNDMgfCB2b2lkIG9iamVjdF9wcm9wZXJ0eV9z
+ZXRfbGluayhPYmplY3QgKm9iaiwgT2JqZWN0ICp2YWx1ZSwKICAgICAgfCAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfn5+fn5+fn5efn5+fgovdG1wL3FlbXUtdGVz
+dC9zcmMvaW5jbHVkZS9xb20vb2JqZWN0Lmg6NTA5OjY6IGVycm9yOiBwYXNzaW5nIGFyZ3VtZW50
+IDMgb2YgJ29iamVjdF9wcm9wZXJ0eV9zZXRfbGluaycgZnJvbSBpbmNvbXBhdGlibGUgcG9pbnRl
+ciB0eXBlIFstV2Vycm9yPWluY29tcGF0aWJsZS1wb2ludGVyLXR5cGVzXQogIDUwOSB8ICAgICAo
+KE9iamVjdCAqKShvYmopKQogICAgICB8ICAgICB+Xn5+fn5+fn5+fn5+fn5+fgogICAgICB8ICAg
+ICAgfAotLS0KICAzNTMgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIE9CSkVDVChnZXRf
+c3lzdGVtX21lbW9yeSgpKSwgJmVycm9yX2ZhdGFsKTsKICAgICAgfCAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgIF5+fn5+fgovdG1wL3FlbXUtdGVzdC9zcmMvaW5jbHVkZS9xb20vb2JqZWN0
+Lmg6MTI0NDo0Mzogbm90ZTogZXhwZWN0ZWQgJ2NvbnN0IGNoYXIgKicgYnV0IGFyZ3VtZW50IGlz
+IG9mIHR5cGUgJ09iamVjdCAqJyB7YWthICdzdHJ1Y3QgT2JqZWN0IConfQogMTI0NCB8ICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnN0IGNoYXIgKm5hbWUsIEVycm9yICoqZXJycCk7
+CiAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfn5+fn5+fn5+fn5+Xn5+fgpj
+YzE6IGFsbCB3YXJuaW5ncyBiZWluZyB0cmVhdGVkIGFzIGVycm9ycwptYWtlWzFdOiAqKiogWy90
+bXAvcWVtdS10ZXN0L3NyYy9ydWxlcy5tYWs6Njk6IGh3L2FybS9hbGx3aW5uZXItaDMub10gRXJy
+b3IgMQptYWtlOiAqKiogW01ha2VmaWxlOjUyNzogYWFyY2g2NC1zb2Z0bW11L2FsbF0gRXJyb3Ig
+MgptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgogIEdFTiAgICAgeDg2
+XzY0LXNvZnRtbXUvcWVtdS1zeXN0ZW0teDg2XzY0LmV4ZQpUcmFjZWJhY2sgKG1vc3QgcmVjZW50
+IGNhbGwgbGFzdCk6Ci0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNt
+ZCkKc3VicHJvY2Vzcy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbics
+ICdkb2NrZXInLCAncnVuJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD05MGNj
+NjFmZGY4YTU0ZGZiODNlMmFlZTc4OGI4MWZlYycsICctdScsICcxMDAzJywgJy0tc2VjdXJpdHkt
+b3B0JywgJ3NlY2NvbXA9dW5jb25maW5lZCcsICctLXJtJywgJy1lJywgJ1RBUkdFVF9MSVNUPScs
+ICctZScsICdFWFRSQV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcs
+ICctZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zh
+ci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRvY2tlci1j
+Y2FjaGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXIt
+dG1wLW85YjFpYmRsL3NyYy9kb2NrZXItc3JjLjIwMjAtMDgtMTQtMDcuNTcuMjcuMzIyMDA6L3Zh
+ci90bXAvcWVtdTp6LHJvJywgJ3FlbXU6ZmVkb3JhJywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rl
+c3QtbWluZ3cnXScgcmV0dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmls
+dGVyPWxhYmVsPWNvbS5xZW11Lmluc3RhbmNlLnV1aWQ9OTBjYzYxZmRmOGE1NGRmYjgzZTJhZWU3
+ODhiODFmZWMKbWFrZVsxXTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZp
+bmcgZGlyZWN0b3J5IGAvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtbzliMWliZGwvc3JjJwpt
+YWtlOiAqKiogW2RvY2tlci1ydW4tdGVzdC1taW5nd0BmZWRvcmFdIEVycm9yIDIKCnJlYWwgICAg
+M20xNy44MzNzCnVzZXIgICAgMG04LjQ2NXMKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0
+Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwODE0MTEwMDU3LjMwNy0xLWY0YnVnQGFtc2F0
+Lm9yZy90ZXN0aW5nLmRvY2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWls
+IGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcv
+XS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=

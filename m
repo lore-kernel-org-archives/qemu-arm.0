@@ -1,156 +1,201 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1375555lfy;
-        Sat, 15 Aug 2020 07:56:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxHiGTAuLy0c2mzaK3AtntIoJ2ms8cr3fGezE2m5T2rycQ8ANt3KXGxNLyKUvc51OZQIqiT
-X-Received: by 2002:a25:b46:: with SMTP id 67mr9740628ybl.46.1597503393202;
-        Sat, 15 Aug 2020 07:56:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597503393; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1380954lfy;
+        Sat, 15 Aug 2020 08:04:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyeNAGyE3Aya4Dt3BssEsxoiGq/yjgtdsvXXcOLmFHRru35n8sEizaHELl5bQ46Uz7IoyEf
+X-Received: by 2002:a5b:70d:: with SMTP id g13mr10302247ybq.160.1597503855727;
+        Sat, 15 Aug 2020 08:04:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597503855; cv=none;
         d=google.com; s=arc-20160816;
-        b=o3fx1+q4V2tMQS59vHU99m+B2MSiudJdk4Dk99UN3uPB+S+TgR60Lhe7i41wx0oVEy
-         2UUV1muExHJ3N3wqs55fCdzopxlxHuOrYk3RAPSo4jzF2DmazuxViMsvafVIk6LI5Vuy
-         3iBC5YjrQIC5fQmsUVomVk+9bHLc1XNvE1kqcd/elBT7moZEOzVfVdEayCxJxWL+XfuL
-         yRMHcFpRJu5P0QPFa5c0oUTlgTw7Hq1/RupWb6DBxO25IIplGf4288v8Pq6xqOhJESh8
-         4YMDg4tf5lqKyc4O4motGQUkGpF+JlGD1W7l9e0iAAe7Yatm2zVB090KdcxwYExju4rP
-         7Frg==
+        b=N9OYArWjz+/eBkieWrvLq9dd351aXJVO7rlI+pyZPeEQY/kZaZL3OmSYatnXpJJTPs
+         /SoUhFJ6WstE+q/xGMtgD0EIwaKT2mH5A5tRfgeQbUamaQ/3UW6jRXjRgiZHYBGm+sTK
+         vH2IeqiOv/Gz1zTBA4kkoar+FDwT4M0nAHeluwbpQwlZiAFWgYfAUPiyl8t43K5f9FTr
+         VbYiP6+QJaNyJT5rWPcxQ/5w9rTknqBR5SGrAr8G3ulEj6H2HugZvmc5E8wuLqqz3SZH
+         0/VEi1TAYaArVA5igstbFfIsZBAGBIgb+PGkZ+MwUDYGZovClNmuC+UmiVSYNbYU6Yw7
+         Wq5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=Tu64X3IloGMdAybGlo5ze2f/3mRcuVk9MKIrHl5rBho=;
-        b=UkRHVADjSeT0pUWuyyT/jRk4201nc+V+Z+nPzr3OsQEqxD4gM9QU1lHNLh1UuYJCjN
-         BM/YXGXdCLRuOYaYhG4abOxy7hm9z1FVOXwenPFla/SJTUtILX6A1u3ITUnN32HdKV8a
-         Kvx81buApCF1ihVaxkiD5D0INUueTOtzJ1jdBq9AxHa7jUWfNaj8qmJgb6clYBRX0ZwE
-         JVnwpgM6Xf+7OR8U20dT6fqvW96jb0o0ZJoj51boy4tKwqqgKyJcDNHGlcPXeDcQgITQ
-         SFj7VrqXYqRutivXE2xigq63LaxDpnFY6owUZCFnISq1krCijCZFl8IG0yR53x8+1gj3
-         Jn5A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=xn08/tCXD2hq75/8vWCwbqv7ZGe+tb9E/jIVsKQ6dH8=;
+        b=viAamiOwwffuHXI0nOlQRDVHsvvGmRnOjh1Ok37IyIHHcOTcpdaj9UccJFLEUAHNSF
+         yNpj+V0cJVu0jxPJKUX/EcClYF4yN+eQQDa+yde80vjo3WxayB4RVoScUiW2KyFPzy89
+         OzRxHqw6h1fcycOShDxhAeL4XW20PQyJO/CJDNG8adLe0jIYeAs92TwwAYfgj0SnPaif
+         fj2TpWAm72mJ3aihSGT/rfrZ0R7eKwTogMOtUcxx6vhsRoL/lQZmT//4AyiNQejscFzf
+         2vmghlgVCK2CPdONuwXk/JVT1T/1j+DO+WZ7XfKKIl7FfPs2ZKjTLpiTirxTjXjwX+0P
+         VGOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AehW8ba5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RSETcpZs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w131si11546313ybe.482.2020.08.15.07.56.33
+        by mx.google.com with ESMTPS id l15si11472117ybq.241.2020.08.15.08.04.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 15 Aug 2020 07:56:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 15 Aug 2020 08:04:15 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AehW8ba5;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42070 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RSETcpZs;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:37778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6xbk-00066N-Ij
-	for alex.bennee@linaro.org; Sat, 15 Aug 2020 10:56:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40994)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k6xjC-0007er-Ve
+	for alex.bennee@linaro.org; Sat, 15 Aug 2020 11:04:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46170)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k6xaN-0004Wq-H6
- for qemu-devel@nongnu.org; Sat, 15 Aug 2020 10:55:07 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:50994
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1k6xaK-0004KO-WA
- for qemu-devel@nongnu.org; Sat, 15 Aug 2020 10:55:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597503303;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Tu64X3IloGMdAybGlo5ze2f/3mRcuVk9MKIrHl5rBho=;
- b=AehW8ba5cOyUnpDFp9wOlT+rsvilW1i1NcX7XAPgCRveE305eWsYKHbGw6ssVD1Ops0sIG
- 4i0/ht4b4qRzRJtgnEI9FYUhAzZgI/w6y647Rfp3UQvf1z35Ej9ysm4mitOxQ3tLdGkpGP
- C47iEe8GxXIJvr9Ce6YogjRjgpneHzo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-222-5r91fLDAPZOgoeOmmDFwQQ-1; Sat, 15 Aug 2020 02:52:00 -0400
-X-MC-Unique: 5r91fLDAPZOgoeOmmDFwQQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45EAC1005530;
- Sat, 15 Aug 2020 06:51:59 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.23])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 69DC7747CE;
- Sat, 15 Aug 2020 06:51:52 +0000 (UTC)
-Date: Sat, 15 Aug 2020 08:51:50 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peng Liang <liangpeng10@huawei.com>
-Subject: Re: [RFC 2/9] target/arm: parse cpu feature related options
-Message-ID: <20200815065150.t54pb7jktueeft42@kamzik.brq.redhat.com>
-References: <20200813102657.2588720-1-liangpeng10@huawei.com>
- <20200813102657.2588720-3-liangpeng10@huawei.com>
- <20200813122113.3esshhhnolqpe6ok@kamzik.brq.redhat.com>
- <047ab475-8735-c684-b0cb-4f44d93b4a0b@huawei.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k6xgN-0003ls-1G; Sat, 15 Aug 2020 11:01:19 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39190)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k6xgL-00065o-Be; Sat, 15 Aug 2020 11:01:18 -0400
+Received: by mail-wm1-x344.google.com with SMTP id g75so10262765wme.4;
+ Sat, 15 Aug 2020 08:01:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=xn08/tCXD2hq75/8vWCwbqv7ZGe+tb9E/jIVsKQ6dH8=;
+ b=RSETcpZsO+BM7Eihox3hFHz7koLZ9oMYTn/CAsNrHc2dD6F8N+LnWSEtuL1QMfkPLg
+ 4LLb4N+F7WgjSvOAy3wN1SBJK4UhJUkw7eVCT3vCD4PGiR5gb3CVz1Ztk2U5d00PLsG6
+ 8ZqQBbGYvRFIkJvdX+2MIo7iMXa12i5KI3BTR898li41lvebvwKeMVgOqgLSyCHlQpqg
+ i5kJefEq9HvQ//UTGN65VT6zzeblEOgpeIW9jewD43pVOduKdT3rBcL6GOeHJEvAJSlV
+ YIfvEMC2FgRHD5OlIaeSc59RGKKUH1P9Y3E713Ku8plgmgy2wdjOH68ZJmLONHzdg7O2
+ RXew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=xn08/tCXD2hq75/8vWCwbqv7ZGe+tb9E/jIVsKQ6dH8=;
+ b=i01hoeBdvQvIBqO76WvjFrGXbSun6d5VmKlgnnbbMDYHDtl6VFCrgM774waw9xOfwQ
+ sTuO/PL40ztj0/fe5ANKO8spY9rpm93PMNJU+8zqcnGe1N1MVm7ZRh6MDK+iQrAPgocm
+ yr0Kf/So9R1U5kGWaUlinWntP1dkwcIvn7hLKNI4L7xjKc26tKZs7RHZdtb6z23Zouqp
+ eT0HQ1tyMLu/etglj6cQO6Z66k8b9m+7arnpVcnC1P8Ig2/+H4RtwTHoci8qxjr5w6GB
+ Kq+uyX/DBhUwtDa0QFx1xB8qOtdDFO2M47YrNhjPuifHys/V6V/o+CrTyXngB/6pxMqH
+ +gOA==
+X-Gm-Message-State: AOAM5304t+jH2sreQ18L2tKLypRPYxto7vToC1FMfF1xkI0/yMBjSnOH
+ +Qbb6V3QRk78ppbnleQubrgVaTzLLgk=
+X-Received: by 2002:a1c:32c3:: with SMTP id y186mr5956407wmy.15.1597482408096; 
+ Sat, 15 Aug 2020 02:06:48 -0700 (PDT)
+Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id t189sm21362506wmf.47.2020.08.15.02.06.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 15 Aug 2020 02:06:47 -0700 (PDT)
+Subject: Re: [PATCH 14/18] hw/net: cadence_gem: Add a new 'phy-addr' property
+To: Bin Meng <bmeng.cn@gmail.com>, Alistair Francis <Alistair.Francis@wdc.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Palmer Dabbelt <palmerdabbelt@google.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, qemu-devel@nongnu.org,
+ qemu-riscv@nongnu.org
+References: <1597423256-14847-1-git-send-email-bmeng.cn@gmail.com>
+ <1597423256-14847-15-git-send-email-bmeng.cn@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e97e1bc4-277d-9fdd-1372-f69d22b4a7e4@amsat.org>
+Date: Sat, 15 Aug 2020 11:06:46 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-In-Reply-To: <047ab475-8735-c684-b0cb-4f44d93b4a0b@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=drjones@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/15 02:52:02
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <1597423256-14847-15-git-send-email-bmeng.cn@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- mst@redhat.com, cohuck@redhat.com, qemu-devel@nongnu.org,
- xiexiangyou 00584000 <xiexiangyou@huawei.com>, qemu-arm@nongnu.org,
- pbonzini@redhat.com, zhukeqian 00502301 <zhukeqian1@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z5RY6G7fwhqq
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: A/5U6I4FSl9D
 
-On Sat, Aug 15, 2020 at 10:19:12AM +0800, Peng Liang wrote:
-> On 8/13/2020 8:21 PM, Andrew Jones wrote:
-> > On Thu, Aug 13, 2020 at 06:26:50PM +0800, Peng Liang wrote:
-> >> The implementation of CPUClass::parse_features only supports CPU
-> >> features in "feature=value" format.  However, libvirt maybe send us a
-> >> CPU feature string in "+feature/-feature" format. 
-> > 
-> > Why would libvirt do that? If we have a boolean feature, then I'd think
-> > libvirt should be capable of sending feature=on/off just as easily as a
-> > +/-feature. Indeed libvirt seems to do the right thing with all the
-> > CPU features we already have: pmu, sve*, ...
-> > 
-> > Thanks,
-> > drew
-> > 
-> > .
-> > 
+On 8/14/20 6:40 PM, Bin Meng wrote:
+> From: Bin Meng <bin.meng@windriver.com>
 > 
-> Libvirt before d47db7b16dd5422c7e487c8c8ee5b181a2f9cd66 ("qemu: command:
-> Support new cpu feature argument syntax") will send +/-feature.  Does QEMU
-> need to support it?  If not, I'll remote it.
+> At present the PHY address of the PHY connected to GEM is hard-coded
+> to either 23 (BOARD_PHY_ADDRESS) or 0. This might not be the case for
+> all boards. Add a new 'phy-addr' property so that board can specify
+> the PHY address for each GEM instance.
+> 
+> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> ---
+> 
+>  hw/net/cadence_gem.c         | 7 +++++--
+>  include/hw/net/cadence_gem.h | 2 ++
+>  2 files changed, 7 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index a93b5c0..9fa03de 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -1446,7 +1446,8 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
+>              uint32_t phy_addr, reg_num;
+>  
+>              phy_addr = (retval & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
+> -            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
+> +            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0 ||
+> +                phy_addr == s->phy_addr) {
+>                  reg_num = (retval & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
+>                  retval &= 0xFFFF0000;
+>                  retval |= gem_phy_read(s, reg_num);
+> @@ -1569,7 +1570,8 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
+>              uint32_t phy_addr, reg_num;
+>  
+>              phy_addr = (val & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
+> -            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
+> +            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0 ||
+> +                phy_addr == s->phy_addr) {
+>                  reg_num = (val & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
+>                  gem_phy_write(s, reg_num, val);
+>              }
+> @@ -1682,6 +1684,7 @@ static Property gem_properties[] = {
+>      DEFINE_NIC_PROPERTIES(CadenceGEMState, conf),
+>      DEFINE_PROP_UINT32("revision", CadenceGEMState, revision,
+>                         GEM_MODID_VALUE),
+> +    DEFINE_PROP_UINT8("phy-addr", CadenceGEMState, phy_addr, 0),
 
-No, we don't need to support pre-2016 libvirt, at least not for ARM CPU
-features, because libvirt didn't start querying QEMU for ARM CPU features
-until just last year.
+This patch would be complete by moving the BOARD_PHY_ADDRESS definition
+to each board using this NIC, and setting the "phy-addr" property to
+this value.
 
-Thanks,
-drew
+>      DEFINE_PROP_UINT8("num-priority-queues", CadenceGEMState,
+>                        num_priority_queues, 1),
+>      DEFINE_PROP_UINT8("num-type1-screeners", CadenceGEMState,
+> diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.h
+> index 54e646f..01c6189 100644
+> --- a/include/hw/net/cadence_gem.h
+> +++ b/include/hw/net/cadence_gem.h
+> @@ -73,6 +73,8 @@ typedef struct CadenceGEMState {
+>      /* Mask of register bits which are write 1 to clear */
+>      uint32_t regs_w1c[CADENCE_GEM_MAXREG];
+>  
+> +    /* PHY address */
+> +    uint8_t phy_addr;
+>      /* PHY registers backing store */
+>      uint16_t phy_regs[32];
+>  
+> 
 

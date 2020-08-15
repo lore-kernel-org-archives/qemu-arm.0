@@ -1,167 +1,156 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp718078lfy;
-        Fri, 14 Aug 2020 12:28:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzxv8vjSDlnhr3GnPcvqLGqVsSeXmWDTVNMe5AJRsdqdT7npoGObHhLWGoaMzpOMvXfltoH
-X-Received: by 2002:a25:ca48:: with SMTP id a69mr5506773ybg.124.1597433319597;
-        Fri, 14 Aug 2020 12:28:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597433319; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1375555lfy;
+        Sat, 15 Aug 2020 07:56:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxHiGTAuLy0c2mzaK3AtntIoJ2ms8cr3fGezE2m5T2rycQ8ANt3KXGxNLyKUvc51OZQIqiT
+X-Received: by 2002:a25:b46:: with SMTP id 67mr9740628ybl.46.1597503393202;
+        Sat, 15 Aug 2020 07:56:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597503393; cv=none;
         d=google.com; s=arc-20160816;
-        b=MCOP1z19lvdwlOkW9g9ZKLxREt5/34SEgYlCJUBQQW+iDz/sdGkYpm4rohZUMbcIxI
-         c3JAL3ZtwInd7qk9JQk1iGjcfXmyqRPvhBoUDrjaC2blnoqSPs0i5HbY/Sl1bubSNUrp
-         vvT3B6HijZ6RliofECJxPlsVAgbsiXB01zWFCVQ2uw7JPzJafpruugMAYOfbJL/SRoop
-         31Qo8JnG8FV0EQWCRQJRn2UUuQ5+DPsrfi6bzuAnwgQGh4YMhuU7ttxGCnEFEGTTLl3q
-         FOp8+knqXT4bDEOAD/XMIOkCXKuQEVA5ujuvdGBj20ZkgisVbo7lu4qk8okC5JOyR0cT
-         FhKQ==
+        b=o3fx1+q4V2tMQS59vHU99m+B2MSiudJdk4Dk99UN3uPB+S+TgR60Lhe7i41wx0oVEy
+         2UUV1muExHJ3N3wqs55fCdzopxlxHuOrYk3RAPSo4jzF2DmazuxViMsvafVIk6LI5Vuy
+         3iBC5YjrQIC5fQmsUVomVk+9bHLc1XNvE1kqcd/elBT7moZEOzVfVdEayCxJxWL+XfuL
+         yRMHcFpRJu5P0QPFa5c0oUTlgTw7Hq1/RupWb6DBxO25IIplGf4288v8Pq6xqOhJESh8
+         4YMDg4tf5lqKyc4O4motGQUkGpF+JlGD1W7l9e0iAAe7Yatm2zVB090KdcxwYExju4rP
+         7Frg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=aCHU/3by+V6bpLNXZLdWi0og0hkOZhifiWdD2LpfZJc=;
-        b=MdXCDOzPQP4I56EPC0H0OYDWvC9ems+oZuQ14RVja29s6qEpOvOgGWiDEDJyE573vd
-         ewS4dS3gkFvFH6ijrqzd0x6prz3ymhWCs5qVjhkAeBPcb+me0hkt0QNsOXix/QQFKCGd
-         iZgrO6I3BYDISIKZJE82SJb03+nK64wtla+nGCxd5J0y3EzhzXA3ZWSPDepBBBGzI7cY
-         0D6hxqMMoVxbtERzfCkRi4eEfataMN7JF/MKYT6lFY9+i+XKmzQ3soZm4oDW397kVNps
-         1Y1pWmYtiNoXR0KcpH4MCLgzGmUif/h9mAch7/aiviJfboFBc8kxSDYgbMZ6U5odPFaA
-         Mu+Q==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=Tu64X3IloGMdAybGlo5ze2f/3mRcuVk9MKIrHl5rBho=;
+        b=UkRHVADjSeT0pUWuyyT/jRk4201nc+V+Z+nPzr3OsQEqxD4gM9QU1lHNLh1UuYJCjN
+         BM/YXGXdCLRuOYaYhG4abOxy7hm9z1FVOXwenPFla/SJTUtILX6A1u3ITUnN32HdKV8a
+         Kvx81buApCF1ihVaxkiD5D0INUueTOtzJ1jdBq9AxHa7jUWfNaj8qmJgb6clYBRX0ZwE
+         JVnwpgM6Xf+7OR8U20dT6fqvW96jb0o0ZJoj51boy4tKwqqgKyJcDNHGlcPXeDcQgITQ
+         SFj7VrqXYqRutivXE2xigq63LaxDpnFY6owUZCFnISq1krCijCZFl8IG0yR53x8+1gj3
+         Jn5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="hNqKc/RH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AehW8ba5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 84si10455285ybs.20.2020.08.14.12.28.39
+        by mx.google.com with ESMTPS id w131si11546313ybe.482.2020.08.15.07.56.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 14 Aug 2020 12:28:39 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 15 Aug 2020 07:56:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="hNqKc/RH";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52814 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AehW8ba5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:42070 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k6fNW-0003RB-Uu
-	for alex.bennee@linaro.org; Fri, 14 Aug 2020 15:28:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53174)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k6xbk-00066N-Ij
+	for alex.bennee@linaro.org; Sat, 15 Aug 2020 10:56:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k6fNP-0003OX-Kv
- for qemu-arm@nongnu.org; Fri, 14 Aug 2020 15:28:31 -0400
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:39404)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k6fNO-000556-1e
- for qemu-arm@nongnu.org; Fri, 14 Aug 2020 15:28:31 -0400
-Received: by mail-pl1-x642.google.com with SMTP id g15so720057plj.6
- for <qemu-arm@nongnu.org>; Fri, 14 Aug 2020 12:28:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=aCHU/3by+V6bpLNXZLdWi0og0hkOZhifiWdD2LpfZJc=;
- b=hNqKc/RHL2RylkfktI4b7CG+2NWfuVeFSGCVg3QiDIFeLWPXVh9vQXSnSLPvAKfOWd
- Fare1V56nrFLyJoaX1OHxUCkDWbF4F9GNjpthqEAQB1XuaBbHbXJisjvczd4/Wz/5x9R
- WGQ8q0f3sXo32OibPkbcFkNKwZ/xC225w+pr73zistVOi5W9N8VB7KNS2sEtlGMf393j
- 4IU3n7XWRxS4nMnwEB08K+D6x3pW1OXDWzxxIQiiX6tcmFM1PtK/jULkNIfcbea+Q5bL
- wWBjyFypidKcl3Ah9owvzAoMionbK9Kn5v8N0neXQYLkYKwCf7xAbwaGl3FwMLyYr2JI
- 4omQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=aCHU/3by+V6bpLNXZLdWi0og0hkOZhifiWdD2LpfZJc=;
- b=AerzE+l3xer8UpM1+x77pbkY0q3gWMALeB/uOeioMkQ5DUvR1r2NDAbykuikt8VSj1
- CAsDzIf+ea387iIgpk+yho9FBBxztfHApBk7ZBZKTjLRGv8Iwd38YUCW8qAPEX3goSDd
- 5hCQPkQvBRILt7QETVedUH+7TTdFq6CmFUO2dV2NhPK9QKw4FB34BCP1d/qa+PfcoiTW
- Yp8RnJtemdSeXIj/LjqLgSkhlK8uHg09c2nOnAbt4elMejMGmUnmJ6ssoUGca/leVrSC
- y2vk7NBm6rwvopKjI6g8rrn82R2OEhTzAJDNMzZqTllD0lghIkf8vVJVhyqDtrVPKQ4m
- OO7w==
-X-Gm-Message-State: AOAM532A2El2CFGLLQofO9VWcrD7HGC5mrJj0o2TjOs5MMhNRusCVf69
- rgxEPxo+DpQDG/7HcMtqH7kSFg==
-X-Received: by 2002:a17:90b:128e:: with SMTP id
- fw14mr3511447pjb.66.1597433308462; 
- Fri, 14 Aug 2020 12:28:28 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id w23sm9038217pgj.5.2020.08.14.12.28.27
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Aug 2020 12:28:27 -0700 (PDT)
-Subject: Re: [PATCH 7/7] target/arm/cpu: spe: Enable spe to work with host cpu
-To: Andrew Jones <drjones@redhat.com>, Haibo Xu <haibo.xu@linaro.org>
-References: <cover.1596768588.git.haibo.xu@linaro.org>
- <bf909c1f4904a22be0804cae9fd6f38ba4862563.1596768588.git.haibo.xu@linaro.org>
- <20200810111640.ykejphmuyirncjwv@kamzik.brq.redhat.com>
- <CAJc+Z1F_vFdJuy2kZnj0gZSOd_8-=rSfWFHjQSPU5XEKQ2KZkg@mail.gmail.com>
- <20200811164954.s2sdjzpqpdh2orks@kamzik.brq.redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <13da2df2-7d90-9512-d1b1-8d7c5f43971c@linaro.org>
-Date: Fri, 14 Aug 2020 12:28:25 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1k6xaN-0004Wq-H6
+ for qemu-devel@nongnu.org; Sat, 15 Aug 2020 10:55:07 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:50994
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1k6xaK-0004KO-WA
+ for qemu-devel@nongnu.org; Sat, 15 Aug 2020 10:55:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1597503303;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Tu64X3IloGMdAybGlo5ze2f/3mRcuVk9MKIrHl5rBho=;
+ b=AehW8ba5cOyUnpDFp9wOlT+rsvilW1i1NcX7XAPgCRveE305eWsYKHbGw6ssVD1Ops0sIG
+ 4i0/ht4b4qRzRJtgnEI9FYUhAzZgI/w6y647Rfp3UQvf1z35Ej9ysm4mitOxQ3tLdGkpGP
+ C47iEe8GxXIJvr9Ce6YogjRjgpneHzo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-222-5r91fLDAPZOgoeOmmDFwQQ-1; Sat, 15 Aug 2020 02:52:00 -0400
+X-MC-Unique: 5r91fLDAPZOgoeOmmDFwQQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45EAC1005530;
+ Sat, 15 Aug 2020 06:51:59 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.192.23])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 69DC7747CE;
+ Sat, 15 Aug 2020 06:51:52 +0000 (UTC)
+Date: Sat, 15 Aug 2020 08:51:50 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Peng Liang <liangpeng10@huawei.com>
+Subject: Re: [RFC 2/9] target/arm: parse cpu feature related options
+Message-ID: <20200815065150.t54pb7jktueeft42@kamzik.brq.redhat.com>
+References: <20200813102657.2588720-1-liangpeng10@huawei.com>
+ <20200813102657.2588720-3-liangpeng10@huawei.com>
+ <20200813122113.3esshhhnolqpe6ok@kamzik.brq.redhat.com>
+ <047ab475-8735-c684-b0cb-4f44d93b4a0b@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200811164954.s2sdjzpqpdh2orks@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <047ab475-8735-c684-b0cb-4f44d93b4a0b@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=drjones@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/15 02:52:02
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- philmd@redhat.com, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OJcrIHA8GB7+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ mst@redhat.com, cohuck@redhat.com, qemu-devel@nongnu.org,
+ xiexiangyou 00584000 <xiexiangyou@huawei.com>, qemu-arm@nongnu.org,
+ pbonzini@redhat.com, zhukeqian 00502301 <zhukeqian1@huawei.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Z5RY6G7fwhqq
 
-On 8/11/20 9:49 AM, Andrew Jones wrote:
-> Yes, except you need to drop the ARM_FEATURE_SPE define and use the ID
-> register bit instead like "sve_supported" does.
+On Sat, Aug 15, 2020 at 10:19:12AM +0800, Peng Liang wrote:
+> On 8/13/2020 8:21 PM, Andrew Jones wrote:
+> > On Thu, Aug 13, 2020 at 06:26:50PM +0800, Peng Liang wrote:
+> >> The implementation of CPUClass::parse_features only supports CPU
+> >> features in "feature=value" format.  However, libvirt maybe send us a
+> >> CPU feature string in "+feature/-feature" format. 
+> > 
+> > Why would libvirt do that? If we have a boolean feature, then I'd think
+> > libvirt should be capable of sending feature=on/off just as easily as a
+> > +/-feature. Indeed libvirt seems to do the right thing with all the
+> > CPU features we already have: pmu, sve*, ...
+> > 
+> > Thanks,
+> > drew
+> > 
+> > .
+> > 
+> 
+> Libvirt before d47db7b16dd5422c7e487c8c8ee5b181a2f9cd66 ("qemu: command:
+> Support new cpu feature argument syntax") will send +/-feature.  Does QEMU
+> need to support it?  If not, I'll remote it.
 
-On a related note, I think we have a latent bug, or at least a mis-feature:
+No, we don't need to support pre-2016 libvirt, at least not for ARM CPU
+features, because libvirt didn't start querying QEMU for ARM CPU features
+until just last year.
 
-    sve_supported = ioctl(fdarray[0], KVM_CHECK_EXTENSION, KVM_CAP_ARM_SVE) > 0;
-...
-    /* Add feature bits that can't appear until after VCPU init. */
-    if (sve_supported) {
-        t = ahcf->isar.id_aa64pfr0;
-        t = FIELD_DP64(t, ID_AA64PFR0, SVE, 1);
-        ahcf->isar.id_aa64pfr0 = t;
-    }
+Thanks,
+drew
 
-
-Should it in fact be
-
-    if (!sve_supported) {
-        t = ahcf->isar.id_aa64pfr0;
-        t = FIELD_DP64(t, ID_AA64PFR0, SVE, 0);
-        ahcf->isar.id_aa64pfr0 = t;
-    }
-
-?
-
-Forcing the value to 1 here is going to be wrong the moment we have an SVE2
-enabled cpu.
-
-Similarly, SPE has more than one "enabled" value for PMSVer.
-
-
-r~

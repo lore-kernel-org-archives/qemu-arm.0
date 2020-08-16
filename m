@@ -1,90 +1,110 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1495785lfy;
-        Sat, 15 Aug 2020 11:10:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFLLRLqvCH7ZHLHOgXIYWHchmas+QHeKUAq4O8yrWsML8t76xNnc1G1jltmp7eii1giX7R
-X-Received: by 2002:a25:ccc3:: with SMTP id l186mr9778633ybf.382.1597515050280;
-        Sat, 15 Aug 2020 11:10:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597515050; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1910636lfy;
+        Sun, 16 Aug 2020 01:30:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz+fQq+bw6A5V0lTQPsya0fRFHE05oWwWhBA21/j7O1xwsbN2UEzLTyWz2oyw7BH8sZm8N5
+X-Received: by 2002:a25:d10d:: with SMTP id i13mr13022672ybg.158.1597566603312;
+        Sun, 16 Aug 2020 01:30:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597566603; cv=none;
         d=google.com; s=arc-20160816;
-        b=FC3Y/2AIuc7cK+ZuiMJ6jU3kCUPHSOPWkB1VJpoBjY1IXiFjBOEnxF/huhaEPoq6Ok
-         HshOtVrtgVObI7cKtKLxO11/hmkP+HPvp8FctKi0XknixhiEVWJWcimv9UhczfcmBE3I
-         9hMhOQNkvBmfZLwBEAQ3EDylioKZit3AU0N/lQQFel6Jb0aern4vW4tzL7jOGOc7GH4P
-         ncYMCgTQES/dX3M2fGGu7ZnIs7Y6VM5L8h9mlblJ+ityJdl3jgb3dVvKN5EX9h4eutWG
-         teZYgOR4haGzs2fyxaEXAREBUCtfs0qCcIpv3SpBlt2eidmKOlkVS2h9ITWOlpgZ5R84
-         C4NQ==
+        b=rhYhECn1YaNqb/+3jU7E0f2xThsLnuBiC2VighWnLy1I9nMvBiQToLdAJpaIEvfWSS
+         CrEOQPp53QAPzXQwtEUPc8j7D+/ZB+f0+ILr/Wg45Mh+EVqujurMDnZ9sg0+NHdkBhtB
+         ryEZ2CWLUsZgw2qYrFPTv9mSMv9HKrZJsa7rtqt/HiHsux/kUfpJGgZ2AL3oEeW07Jks
+         Fwu2wcccevi4BUqMSWOzG1DZ9DNWhyLCTVNmW2NrNHR0rHBO4jua22H6jnXoVss8c10L
+         hN29Cp9VMecTWeAR7AD5+3f8lV0I3xNJiuAkrRaxlyI1GmLmXYa44+22UsrFuWtpChGB
+         NL+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=2nJK8LBEw6/1aWX278vdmE3IL8vdz+ds7qiAW6vCuEA=;
-        b=ugt2ZNFs//eBakQ1Rs98KMTbEM6mBL11c8z0HT0xeo1jTO6FqWZQ+oLzvZjxoXjJNV
-         AB9wbTD5wOw1SD4XBwtmi1Kmx11sGdhFMkzYhNq1mp/ynZbXrkP//eUouL+2+RDDO3ny
-         fQpo06nCET5SBqmWZihAO9YmiAosZSyJkDro7Yqh//oRq+5QCiM5BZDUpfjSG9uvkp3r
-         DPTucv3Th4v7lYGwqcyc5OJ/sUnGw3FzEMHFC2oK3/ol0SnzdLLFooeZ8NlZouAUamPh
-         f3e/wg4f3URJIo1Jot0mJu2lDYBtKThFqs1EhaIQHb63yKbMSFt3ni84kIWmG/gtGcyh
-         XRGw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=IwTz3CD8oLIaiLPD0JEy+kn7ElMHuylHQQFgungqQ9w=;
+        b=aMjfqjpHPCWumPU/K5o4gwToG/8h2wCzjw4+6ESzhQFYd3vsqDx7z/jRBRC6jTlv2x
+         7XKm4dKLc570zPUJyTwu+lMHOpV75mJn+HiaUyRM8kdTl53zELNKEx5dKuvPiRT2Umtr
+         KQfpl6BOs5DvF3NXE2GOYrtuX1Ty08PpDm8+wvxxBBo/qm4YktuQd4g07k6Qw4AZSTyJ
+         V62ss383XA8y+bMT3NarikYrvqhi/AbSM0lGtCP4eenDVCXQXIqSa2qWPX1ZfP1dp1h/
+         XUOrDVmRHXO9jzYNNMFAp+J4uDDwGOnRlO2XrSVs1Iew9HiJUJX9Jn23APCbAqw869mm
+         c9Gw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W8ZXyd0r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o186si11506104ybo.358.2020.08.15.11.10.50
+        by mx.google.com with ESMTPS id d73si14114311ybh.215.2020.08.16.01.30.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 15 Aug 2020 11:10:50 -0700 (PDT)
+        Sun, 16 Aug 2020 01:30:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55050 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=W8ZXyd0r;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48692 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k70dl-0003rz-J1
-	for alex.bennee@linaro.org; Sat, 15 Aug 2020 14:10:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53540)
+	id 1k7E3G-0003IJ-LX
+	for alex.bennee@linaro.org; Sun, 16 Aug 2020 04:30:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54508)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k70dY-0003qF-W5; Sat, 15 Aug 2020 14:10:37 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2101 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1k70dX-0008Fl-8v; Sat, 15 Aug 2020 14:10:36 -0400
-Received: from DGGEMM402-HUB.china.huawei.com (unknown [172.30.72.53])
- by Forcepoint Email with ESMTP id DCACFF626E9E62984702;
- Sat, 15 Aug 2020 10:19:28 +0800 (CST)
-Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
- DGGEMM402-HUB.china.huawei.com (10.3.20.210) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Sat, 15 Aug 2020 10:19:28 +0800
-Received: from [10.174.185.187] (10.174.185.187) by
- dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
- 15.1.1913.5; Sat, 15 Aug 2020 10:19:28 +0800
-Subject: Re: [RFC 5/9] target/arm: introduce CPU feature dependency mechanism
-To: Andrew Jones <drjones@redhat.com>
-References: <20200813102657.2588720-1-liangpeng10@huawei.com>
- <20200813102657.2588720-6-liangpeng10@huawei.com>
- <20200813124821.psavdkhddg4duar6@kamzik.brq.redhat.com>
-From: Peng Liang <liangpeng10@huawei.com>
-Message-ID: <1e7160d1-96e7-7581-cdc9-cb4ad44aca72@huawei.com>
-Date: Sat, 15 Aug 2020 10:19:27 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.1.1
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1k7E34-0003I5-CL; Sun, 16 Aug 2020 04:29:50 -0400
+Received: from mail-yb1-xb43.google.com ([2607:f8b0:4864:20::b43]:43506)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1k7E32-0002Hq-KI; Sun, 16 Aug 2020 04:29:50 -0400
+Received: by mail-yb1-xb43.google.com with SMTP id m200so7673598ybf.10;
+ Sun, 16 Aug 2020 01:29:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=IwTz3CD8oLIaiLPD0JEy+kn7ElMHuylHQQFgungqQ9w=;
+ b=W8ZXyd0rB/uDAE6CgBNFesmDDZ9/xoYRmqN/L/CbezqWmPKk90wI+eCNWCCtrx9rog
+ oJxnuT0cyx4uMWp8dVF77fvfli+5EfNevv9RrzLJoGTZAZADZzAUER1ZHeqPTdUH5V46
+ vujog09Wu6hOobEuMi5Wg7kDJF8I7ZL/YPyViMvBj5jCz/4X7ou17obq6Kc6QkjiFoBi
+ f0uD7ZbQX1ASg2B6rnSpGP0pb7NpEUCX9DgcrhjaGx9PW9FSq21dSuAuqcqB+rBT4Ip0
+ cbLmww3xZlbpaS508dz4yPog4F316eup2O/6+7Mb8fTwYwrNPPDzhh4IuS/ieDG/BVk1
+ IuHQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=IwTz3CD8oLIaiLPD0JEy+kn7ElMHuylHQQFgungqQ9w=;
+ b=pN4cfA2CvgVkaVe0FH+2xpuegpXtufVv9k5ov/6ZpYQl4+JDMtpN9eTzgumS/IpMYn
+ RO8xOyg+W6nhgdocn6qN8a/kSYQ+lgYFANhodrINPQ887TI7d1jbKbQdMqn1Qp8nWnXR
+ uUnOSR5Hp1K4p/GhzEC2/jEeOQROZpBVHriXMK8ojFfwf3zCvnxjpSMv3PTbEmMhIULq
+ z303KqoQ1AZ0JHiSRN4RGb93fC47xTxKlNf8z9+XaHE5JdcNksaUUbGf/KNwRI6u0c60
+ d5pVhw7VGv1Sajs/MzkbM4ZpDFrH7Q7xjpvHKSWQ3LV6ZdOtcQhZDKYDp2UUPRG3hBUG
+ tcoA==
+X-Gm-Message-State: AOAM530aXO59S5ujhEbPIuF/TttAqSH5WF9gthQ+jKGRQ0QWdw066enH
+ U9VApAIHDMUf0pV9Yhx0ObxPfoQ2djMUgRWa6WE=
+X-Received: by 2002:a25:37ca:: with SMTP id
+ e193mr15023634yba.387.1597566586681; 
+ Sun, 16 Aug 2020 01:29:46 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200813124821.psavdkhddg4duar6@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.185.187]
-X-ClientProxiedBy: dggeme706-chm.china.huawei.com (10.1.199.102) To
- dggema765-chm.china.huawei.com (10.1.198.207)
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=liangpeng10@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/15 14:10:31
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_PASS=-0.001,
+References: <1597423256-14847-1-git-send-email-bmeng.cn@gmail.com>
+ <1597423256-14847-15-git-send-email-bmeng.cn@gmail.com>
+ <e97e1bc4-277d-9fdd-1372-f69d22b4a7e4@amsat.org>
+In-Reply-To: <e97e1bc4-277d-9fdd-1372-f69d22b4a7e4@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sun, 16 Aug 2020 16:29:35 +0800
+Message-ID: <CAEUhbmX6O7gGc2+sZFXSve=rBJLZQ5ts2sfWM=OU6k+4j-uryg@mail.gmail.com>
+Subject: Re: [PATCH 14/18] hw/net: cadence_gem: Add a new 'phy-addr' property
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>, 
+ John Linn <john.linn@xilinx.com>, 
+ "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>, 
+ Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
+ Nathan Rossi <nathan@nathanrossi.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b43;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb43.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -98,45 +118,142 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- mst@redhat.com, cohuck@redhat.com, qemu-devel@nongnu.org,
- xiexiangyou 00584000 <xiexiangyou@huawei.com>, qemu-arm@nongnu.org,
- pbonzini@redhat.com, zhukeqian 00502301 <zhukeqian1@huawei.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, Bin Meng <bin.meng@windriver.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e7zhLnoy4h+g
+X-TUID: TWvqnpoSWLsE
 
-On 8/13/2020 8:48 PM, Andrew Jones wrote:
-> On Thu, Aug 13, 2020 at 06:26:53PM +0800, Peng Liang wrote:
->> Some CPU features are dependent on other CPU features.  For example,
->> ID_AA64PFR0_EL1.FP field and ID_AA64PFR0_EL1.AdvSIMD must have the same
->> value, which means FP and ADVSIMD are dependent on each other, FPHP and
->> ADVSIMDHP are dependent on each other.
->>
->> This commit introduces a mechanism for CPU feature dependency in
->> AArch64.  We build a directed graph from the CPU feature dependency
->> relationship, each edge from->to means the `to` CPU feature is dependent
->> on the `from` CPU feature.  And we will automatically enable/disable CPU
->> feature according to the directed graph.
->>
->> For example, a, b, and c CPU features are in relationship a->b->c, which
->> means c is dependent on b and b is dependent on a.  If c is enabled by
->> user, then a and b is enabled automatically.  And if a is disabled by
->> user, then b and c is disabled automatically.
-> 
-> And what if a is mutually exclusive with b? I.e. a and b can both be
-> disabled, but only a or b may be enabled.
-> 
-> Thanks,
-> drew
-> 
-> .
-> 
+On Sat, Aug 15, 2020 at 5:06 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> On 8/14/20 6:40 PM, Bin Meng wrote:
+> > From: Bin Meng <bin.meng@windriver.com>
+> >
+> > At present the PHY address of the PHY connected to GEM is hard-coded
+> > to either 23 (BOARD_PHY_ADDRESS) or 0. This might not be the case for
+> > all boards. Add a new 'phy-addr' property so that board can specify
+> > the PHY address for each GEM instance.
+> >
+> > Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> > ---
+> >
+> >  hw/net/cadence_gem.c         | 7 +++++--
+> >  include/hw/net/cadence_gem.h | 2 ++
+> >  2 files changed, 7 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> > index a93b5c0..9fa03de 100644
+> > --- a/hw/net/cadence_gem.c
+> > +++ b/hw/net/cadence_gem.c
+> > @@ -1446,7 +1446,8 @@ static uint64_t gem_read(void *opaque, hwaddr off=
+set, unsigned size)
+> >              uint32_t phy_addr, reg_num;
+> >
+> >              phy_addr =3D (retval & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_=
+ADDR_SHFT;
+> > -            if (phy_addr =3D=3D BOARD_PHY_ADDRESS || phy_addr =3D=3D 0=
+) {
+> > +            if (phy_addr =3D=3D BOARD_PHY_ADDRESS || phy_addr =3D=3D 0=
+ ||
+> > +                phy_addr =3D=3D s->phy_addr) {
+> >                  reg_num =3D (retval & GEM_PHYMNTNC_REG) >> GEM_PHYMNTN=
+C_REG_SHIFT;
+> >                  retval &=3D 0xFFFF0000;
+> >                  retval |=3D gem_phy_read(s, reg_num);
+> > @@ -1569,7 +1570,8 @@ static void gem_write(void *opaque, hwaddr offset=
+, uint64_t val,
+> >              uint32_t phy_addr, reg_num;
+> >
+> >              phy_addr =3D (val & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADD=
+R_SHFT;
+> > -            if (phy_addr =3D=3D BOARD_PHY_ADDRESS || phy_addr =3D=3D 0=
+) {
+> > +            if (phy_addr =3D=3D BOARD_PHY_ADDRESS || phy_addr =3D=3D 0=
+ ||
+> > +                phy_addr =3D=3D s->phy_addr) {
+> >                  reg_num =3D (val & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_R=
+EG_SHIFT;
+> >                  gem_phy_write(s, reg_num, val);
+> >              }
+> > @@ -1682,6 +1684,7 @@ static Property gem_properties[] =3D {
+> >      DEFINE_NIC_PROPERTIES(CadenceGEMState, conf),
+> >      DEFINE_PROP_UINT32("revision", CadenceGEMState, revision,
+> >                         GEM_MODID_VALUE),
+> > +    DEFINE_PROP_UINT8("phy-addr", CadenceGEMState, phy_addr, 0),
+>
+> This patch would be complete by moving the BOARD_PHY_ADDRESS definition
+> to each board using this NIC, and setting the "phy-addr" property to
+> this value.
 
-Currently, a and b will be both enabled or disabled.  For example, a and b are
-in relationship a->b, which means b is dependent on a.  If -cpu host,a=off,b=on,
-then both a and b are enabled.  If -cpu host,b=on,a=off, then both a and b are
-disabled.  Maybe we should report an error to user in this scenario?
+I actually have no idea which board in QEMU is using this special PHY
+address instead of default 0.
 
-Thanks,
-Peng
+It looks BOARD_PHY_ADDRESS has been there since the initial version of
+the cadence_gem model.
+
+commit e9f186e514a70557d695cadd2c2287ef97737023
+Author: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
+Date:   Mon Mar 5 14:39:12 2012 +1000
+
+    cadence_gem: initial version of device model
+
+    Device model for cadence gem ethernet controller.
+
+    Signed-off-by: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com=
+>
+    Signed-off-by: John Linn <john.linn@xilinx.com>
+    Acked-by: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+    Signed-off-by: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+
+Later PHY address 0 was added via the following commit:
+
+commit 553893736885e4f2dda424bff3e2200e1b6482a5
+Author: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+Date:   Thu Apr 3 23:55:19 2014 -0700
+
+    net: cadence_gem: Make phy respond to broadcast
+
+    Phys must respond to address 0 by specification. Implement.
+
+    Signed-off-by: Nathan Rossi <nathan.rossi@xilinx.com>
+    Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
+    Message-id:
+6f4d53b04ddbfb19895bfb61a595e69f1c08859a.1396594056.git.peter.crosthwaite@x=
+ilinx.com
+    Reviewed-by: Beniamino Galvani <b.galvani@gmail.com>
+    Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+
+I doubt the commit message said that PHYs must respond to address 0. I
+am not aware of such specs. The issue was probably that whatever board
+2nd commit was tested against did not have a PHY at address
+BOARD_PHY_ADDRESS.
+
++ a couple of Xilinx folks to comment.
+
+>
+> >      DEFINE_PROP_UINT8("num-priority-queues", CadenceGEMState,
+> >                        num_priority_queues, 1),
+> >      DEFINE_PROP_UINT8("num-type1-screeners", CadenceGEMState,
+> > diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.=
+h
+> > index 54e646f..01c6189 100644
+> > --- a/include/hw/net/cadence_gem.h
+> > +++ b/include/hw/net/cadence_gem.h
+> > @@ -73,6 +73,8 @@ typedef struct CadenceGEMState {
+> >      /* Mask of register bits which are write 1 to clear */
+> >      uint32_t regs_w1c[CADENCE_GEM_MAXREG];
+> >
+> > +    /* PHY address */
+> > +    uint8_t phy_addr;
+> >      /* PHY registers backing store */
+> >      uint16_t phy_regs[32];
+
+Regards,
+Bin

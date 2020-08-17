@@ -1,284 +1,203 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2187109lfy;
-        Sun, 16 Aug 2020 09:31:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz04dYyjMUOBR0pTmP4mT58dTU26Te9LjAVwbyibsTr/U/2StCaUu91/BUpLnR3N9mCqnb6
-X-Received: by 2002:a25:16d7:: with SMTP id 206mr16024898ybw.402.1597595504952;
-        Sun, 16 Aug 2020 09:31:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597595504; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2562344lfy;
+        Sun, 16 Aug 2020 21:48:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyFe4UGM4re6hm+QE1PShYpaDR6clGKwSiR8MvsTjf9haABVZHi+Mp4yD4XlYFJZN0eJgwn
+X-Received: by 2002:a17:90a:950a:: with SMTP id t10mr11037665pjo.107.1597639709453;
+        Sun, 16 Aug 2020 21:48:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597639709; cv=none;
         d=google.com; s=arc-20160816;
-        b=lIQcVDo3nYxCH6+rJ/Cm++NWIHyFHV5zIcqnZJTmYEkqGrXVxD22JqZqsffa3dn2EA
-         52DNDmwXrGpRk3dASZ5RRLgN5/BtM32vwo36vb9DBkzQIEE2/WgN/d0vge87Mem5n3Ss
-         ghiopFCFb1L0iGTqryZiHvNhMt7KPgwZTsT6UOIZr52g+qSPLrB0xMEYBoeHj1jqwC6H
-         qWiaQyxT5NNXx2T22yrMdLfhJ12rp73ltnbyaZxvDgaMDs1gEPJEPanv756LpM/HOK+n
-         SQ5K+uov0shKp+Stan6pVeZwZO/xNLWZUIOo59XgcEhS5V/SIkMdtNYxfIF0FJtdm6eH
-         pfSw==
+        b=eAHLSzRbdo3mCy4kr2dwXMZMPYRJKJB41SSObNR24rt5sumTj3PwWo1zZEmY8YBFgs
+         j5ESKz96zg8y8fZErr5N0JKmdZG8/I1lEIZaV/1D5FoXc0WENGrEJYc0QfvM3yPkIjLS
+         seBafcYniE3dWX4UIrcNeWSiRwW+olzMOQkZb6OoYLlJhKCf1mZmHRp5sWqMZZXNrw1k
+         dRkliXyHY3f/PEwFVC1tmnK5AJomygCXB5cFZetAc+5qbq6nWmalN7eHq1JfcydNmca6
+         ldZ9tdgkpyZOGWSPgHrs4WookavrP1n4YojRJTjxJ5LSbbtbF+Ei2+wg7NjpSn7x50SC
+         PhSA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=P+YF+pu8frl+VmvrUhoikCYvioSqDUo2f9h3KfJ+e7o=;
-        b=fWxo5gbBUAH8GGQnRWLwb5jOFhw5jz/T9QKWcLB6X33xixDyFU9MgmKC1RnT1QwxxK
-         DnKqFnVYuWKuta3/QeZ3NbiEXk5e0WgmBem+uQO+xPxVgeMpaQso87s3Af9HBb5mvwW4
-         lOYiH3ZiB9A0ScSCQJYN/aoMG9dycvyWhhLvM8z7a9xmdGtg+jmXw/gsjUOhOBsbrBW3
-         BVmULYXVu42X/tyHGrMEulBruwfUyixH7PK1NTz1i6CpwDN60Dihh+s7gCy6h94oyXed
-         V5uhauftpc5jJ6mb9RSSFktnkyLpsh7fw35kFrBjVllakv6pE/s8cW06RKNw7KOkJqxQ
-         2J/Q==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=zUDDh+2d6cVhqKOsy6oefDaLzB4j2HCDFw4g0WcrbqI=;
+        b=w9V/SnwH/ggVkXSzEJD7kcrnKRm5Y0SBgsZAV07pnZJNePg8ZhyOIuBNUn3RnV+lIC
+         csI6pPjZbW5m1Ae2mCxBXRmvuGEaxBLxxP8nUK8sOk5rQkqruL6UlAQq3mrHDrut/Y9y
+         WeGDiIiw701Dyz4hZUW9MCeZmv8OKeB5M5rmC+//linAyt3gGFSPg2iRY7AH7szw0N8I
+         bWJEe1QzEOZTfG4Qd/vsbW6pCKwApIa9lR3RGgeaAdHD6jrqpJC4zMEtYQlHSdQeYMRp
+         QlQdquFzPERXcXcl1QbiZCWwxtEsgaOUr2dS5WUmqCJJYSKbGXZKg6BiGF1/hPhlF5+P
+         cLZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kc0MBooV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 185si2314814ybv.47.2020.08.16.09.31.44
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 16 Aug 2020 09:31:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=EBYRjiq8;
+       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
+Return-Path: <dgibson@ozlabs.org>
+Received: from ozlabs.org (ozlabs.org. [2401:3900:2:1::2])
+        by mx.google.com with ESMTPS id y12si12132439pfp.341.2020.08.16.21.48.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 16 Aug 2020 21:48:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Kc0MBooV;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57572 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k7LZQ-0005oQ-A2
-	for alex.bennee@linaro.org; Sun, 16 Aug 2020 12:31:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37036)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k7LZG-0005o8-Dg; Sun, 16 Aug 2020 12:31:34 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51808)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k7LZE-0002OB-Bl; Sun, 16 Aug 2020 12:31:34 -0400
-Received: by mail-wm1-x344.google.com with SMTP id p14so11420787wmg.1;
- Sun, 16 Aug 2020 09:31:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=P+YF+pu8frl+VmvrUhoikCYvioSqDUo2f9h3KfJ+e7o=;
- b=Kc0MBooVrCC5K/jfE4Ow5Bkaz9v441aqmmufvGbo/pVu/Rf1Q3muewlwzhrWm+/Kmv
- jmFDIJmMvD0k2Z963f8s8zeFMWO40VmrnafyAWsoeNAl4aE05cEnqEonrguM9iq1ui5r
- h0J+j+COYDsl4+LBlTyWc7r3lHHcAtbZuaTbmB6f5jt3wdapGc8eSTzv0LjsmtKcl4k5
- MmEMaZQs3u/y7/c2VcAggwzcbnE/nSmsXbMac8jkcjc8skaLVgMX7yZjuJhAA/53vIWy
- B0ambjP5FjWZfz6s7B0uDU21SaXsYoacLAR+44Ns4Vps36wa7m7m2auseEfnU3ec3Z9S
- heVQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=P+YF+pu8frl+VmvrUhoikCYvioSqDUo2f9h3KfJ+e7o=;
- b=mjfOob9RLHkWU7vPoiqukHS2bFTrtq6e5dyStHCfkxaxIdptK3GV78RC1hZcvs4Lxq
- X2gNPmGc0PkgiG9tCroxv+fSpuWswVfwdgq3l2fg/IfyxCrm+Ow/NOvEvk1mU0ImBxy6
- ZKD7QeoYZ6krdrB3j++tPPEMv8hBQLKs9t2xy8RteUgYjB9MdAycpmRYfxPm9HPqrVAI
- Z8MytR5zVErSyz9Jmy5ZwX22W8ArHHMS6CQn52VA8HKCHgXzTOlF27GAYhpLyoRaeNQ+
- WYTAOi/zwtiEDY/1MVVlomG5VDGv7W1iXp1ZqleVZzG7SYiylkAkPa8MHhHSw3LuZh7f
- 1GZw==
-X-Gm-Message-State: AOAM533M8NJ5AQg36N5nKjgpZFvLF88mACKHhOqS9DtZ+us6VaCB+aX9
- BNahXXnqo/VTubghjSW7Dww=
-X-Received: by 2002:a1c:c1:: with SMTP id 184mr12031290wma.105.1597595490161; 
- Sun, 16 Aug 2020 09:31:30 -0700 (PDT)
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id p15sm26553172wrj.61.2020.08.16.09.31.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 16 Aug 2020 09:31:29 -0700 (PDT)
-Subject: Re: [PATCH 14/18] hw/net: cadence_gem: Add a new 'phy-addr' property
-To: Bin Meng <bmeng.cn@gmail.com>, Nathan Rossi <nathan@nathanrossi.com>
-References: <1597423256-14847-1-git-send-email-bmeng.cn@gmail.com>
- <1597423256-14847-15-git-send-email-bmeng.cn@gmail.com>
- <e97e1bc4-277d-9fdd-1372-f69d22b4a7e4@amsat.org>
- <CAEUhbmX6O7gGc2+sZFXSve=rBJLZQ5ts2sfWM=OU6k+4j-uryg@mail.gmail.com>
- <CA+aJhH1YooxPkaT2xc4o6CjDYLm++6psSc3ZZW-EiAPFCz=PjA@mail.gmail.com>
- <CAEUhbmXQ6yxRMcP_LqaUTQra33iLsbU=vVs0MCaQkMU_ryUAUA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e17abf75-a8db-712d-504a-2177ebca32cf@amsat.org>
-Date: Sun, 16 Aug 2020 18:31:28 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=EBYRjiq8;
+       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 4BVM4R5hHpz9sPC; Mon, 17 Aug 2020 14:48:23 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1597639703;
+	bh=VXX1nkfPf1296LwI59CJofxvm7VBziZ/FvWkzXpbIoI=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=EBYRjiq8fwLudq36WfqbF/K9VG3UqWf/qsByafZxEXN0nCIY4yUBfe7KFno9Cudqy
+	 6sw58jeN0jD8Mq9ULbXKvP37SEZGgl5MDylSmuVI/oCCh0wdR2zah3MkJMcT6Pw4W6
+	 aTfhzQHqOMVlJpjdLxHVe40KifLqVkiY/UqO6jIU=
+Date: Mon, 17 Aug 2020 14:47:30 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+Cc: qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+	David Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
+	qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>,
+	Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v3 0/8] Generalize start-powered-off property from ARM
+Message-ID: <20200817044730.GK12805@yekko.fritz.box>
+References: <20200723025657.644724-1-bauerman@linux.ibm.com>
 MIME-Version: 1.0
-In-Reply-To: <CAEUhbmXQ6yxRMcP_LqaUTQra33iLsbU=vVs0MCaQkMU_ryUAUA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Peter Crosthwaite <peter.crosthwaite@xilinx.com>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Jason Wang <jasowang@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- "Peter A. G. Crosthwaite" <peter.crosthwaite@petalogix.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- Palmer Dabbelt <palmerdabbelt@google.com>, John Linn <john.linn@xilinx.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YRyMWzRlrGWe
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="08ATZu8fEq0x2T3M"
+Content-Disposition: inline
+In-Reply-To: <20200723025657.644724-1-bauerman@linux.ibm.com>
+X-TUID: Fh1rD5mq592Q
 
-On 8/16/20 3:42 PM, Bin Meng wrote:
-> On Sun, Aug 16, 2020 at 8:08 PM Nathan Rossi <nathan@nathanrossi.com> wrote:
->>
->> On Sun, 16 Aug 2020 at 18:29, Bin Meng <bmeng.cn@gmail.com> wrote:
->>>
->>> On Sat, Aug 15, 2020 at 5:06 PM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>>
->>>> On 8/14/20 6:40 PM, Bin Meng wrote:
->>>>> From: Bin Meng <bin.meng@windriver.com>
->>>>>
->>>>> At present the PHY address of the PHY connected to GEM is hard-coded
->>>>> to either 23 (BOARD_PHY_ADDRESS) or 0. This might not be the case for
->>>>> all boards. Add a new 'phy-addr' property so that board can specify
->>>>> the PHY address for each GEM instance.
->>>>>
->>>>> Signed-off-by: Bin Meng <bin.meng@windriver.com>
->>>>> ---
->>>>>
->>>>>  hw/net/cadence_gem.c         | 7 +++++--
->>>>>  include/hw/net/cadence_gem.h | 2 ++
->>>>>  2 files changed, 7 insertions(+), 2 deletions(-)
->>>>>
->>>>> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
->>>>> index a93b5c0..9fa03de 100644
->>>>> --- a/hw/net/cadence_gem.c
->>>>> +++ b/hw/net/cadence_gem.c
->>>>> @@ -1446,7 +1446,8 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
->>>>>              uint32_t phy_addr, reg_num;
->>>>>
->>>>>              phy_addr = (retval & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
->>>>> -            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
->>>>> +            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0 ||
->>>>> +                phy_addr == s->phy_addr) {
->>>>>                  reg_num = (retval & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
->>>>>                  retval &= 0xFFFF0000;
->>>>>                  retval |= gem_phy_read(s, reg_num);
->>>>> @@ -1569,7 +1570,8 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
->>>>>              uint32_t phy_addr, reg_num;
->>>>>
->>>>>              phy_addr = (val & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
->>>>> -            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
->>>>> +            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0 ||
->>>>> +                phy_addr == s->phy_addr) {
->>>>>                  reg_num = (val & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
->>>>>                  gem_phy_write(s, reg_num, val);
->>>>>              }
->>>>> @@ -1682,6 +1684,7 @@ static Property gem_properties[] = {
->>>>>      DEFINE_NIC_PROPERTIES(CadenceGEMState, conf),
->>>>>      DEFINE_PROP_UINT32("revision", CadenceGEMState, revision,
->>>>>                         GEM_MODID_VALUE),
->>>>> +    DEFINE_PROP_UINT8("phy-addr", CadenceGEMState, phy_addr, 0),
->>>>
->>>> This patch would be complete by moving the BOARD_PHY_ADDRESS definition
->>>> to each board using this NIC, and setting the "phy-addr" property to
->>>> this value.
->>>
->>> I actually have no idea which board in QEMU is using this special PHY
->>> address instead of default 0.
->>
->> Given Xilinx's QEMU fork has not used this value for quite some time,
->> I suspect it was only used to match an early chip emulation
->> platform/board.
->>
->> https://github.com/Xilinx/qemu/blame/master/hw/net/cadence_gem.c#L248
->>
->>>
->>> It looks BOARD_PHY_ADDRESS has been there since the initial version of
->>> the cadence_gem model.
->>>
->>> commit e9f186e514a70557d695cadd2c2287ef97737023
->>> Author: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
->>> Date:   Mon Mar 5 14:39:12 2012 +1000
->>>
->>>     cadence_gem: initial version of device model
->>>
->>>     Device model for cadence gem ethernet controller.
->>>
->>>     Signed-off-by: Peter A. G. Crosthwaite <peter.crosthwaite@petalogix.com>
->>>     Signed-off-by: John Linn <john.linn@xilinx.com>
->>>     Acked-by: Edgar E. Iglesias <edgar.iglesias@gmail.com>
->>>     Signed-off-by: Edgar E. Iglesias <edgar.iglesias@gmail.com>
->>>
->>> Later PHY address 0 was added via the following commit:
->>>
->>> commit 553893736885e4f2dda424bff3e2200e1b6482a5
->>> Author: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
->>> Date:   Thu Apr 3 23:55:19 2014 -0700
->>>
->>>     net: cadence_gem: Make phy respond to broadcast
->>>
->>>     Phys must respond to address 0 by specification. Implement.
->>>
->>>     Signed-off-by: Nathan Rossi <nathan.rossi@xilinx.com>
->>>     Signed-off-by: Peter Crosthwaite <peter.crosthwaite@xilinx.com>
->>>     Message-id:
->>> 6f4d53b04ddbfb19895bfb61a595e69f1c08859a.1396594056.git.peter.crosthwaite@xilinx.com
->>>     Reviewed-by: Beniamino Galvani <b.galvani@gmail.com>
->>>     Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>>
->>> I doubt the commit message said that PHYs must respond to address 0. I
->>> am not aware of such specs. The issue was probably that whatever board
->>> 2nd commit was tested against did not have a PHY at address
->>> BOARD_PHY_ADDRESS.
->>
->> It is common for phy devices to support it as a broadcast address. It
->> is also commonly written in Xilinx documentation that it is treated as
->> a broadcast address. e.g. the axi ethernet core
->> (https://www.xilinx.com/support/documentation/ip_documentation/axi_ethernet/v7_0/pg138-axi-ethernet.pdf
->> page 45). But 802.3 does not require it, instead address 0 is only
->> reserved.
->>
->> With this commit the "must" refers to the device specification, in
->> that QEMU is emulating a real phy (though more specifically the phy(s)
->> that were being emulated for Zynq boards) that does respond to address
->> 0 as a broadcast. This change was a trade off in order to make QEMU
->> behave as it would on hardware, such that software using address 0 as
->> broadcast would work correctly.
->>
-> 
-> Thanks Nathan. So is it safe to just remove BOARD_PHY_ADDRESS and set
-> "phy-addr" property default value to 0?
 
-I'd do as following:
+--08ATZu8fEq0x2T3M
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-First patch, introduce "phy-addr" property (default to
-BOARD_PHY_ADDRESS) and remove BOARD_PHY_ADDRESS in code:
+On Wed, Jul 22, 2020 at 11:56:49PM -0300, Thiago Jung Bauermann wrote:
+> The ARM code has a start-powered-off property in ARMCPU, which is a
+> subclass of CPUState. This property causes arm_cpu_reset() to set
+> CPUState::halted to 1, signalling that the CPU should start in a halted
+> state. Other architectures also have code which aim to achieve the same
+> effect, but without using a property.
+>=20
+> The ppc/spapr version has a bug where QEMU does a KVM_RUN on the vcpu
+> before cs->halted is set to 1, causing the vcpu to run while it's still in
+> an unitialized state (more details in patch 3).
+>=20
+> Peter Maydell mentioned the ARM start-powered-off property and
+> Eduardo=A0Habkost suggested making it generic, so this patch series does
+> that, for all cases which I was able to find via grep in the code.
+>=20
+> The only problem is that I was only able to test these changes on a ppc64=
+le
+> pseries KVM guest, so except for patches 2 and 3, all others are only
+> build-tested. Also, my grasp of QOM lifecycle is basically non-existant so
+> please be aware of that when reviewing this series.
+>=20
+> The last patch may be wrong, as pointed out by Eduardo, so I marked it as
+> RFC. It may make sense to drop it.
+>=20
+> Applies cleanly on yesterday's master.
 
-    DEFINE_PROP_UINT8("phy-addr", CadenceGEMState,
-                      phy_addr, BOARD_PHY_ADDRESS),
+This series appears to break the Travis build for a MIPS target:
 
-Second patch set "phy-addr" to BOARD_PHY_ADDRESS in all
-current boards using this PHY and set the default to 0.
+Unexpected error in qdev_prop_set_after_realize() at /home/travis/build/dgi=
+bson/qemu/hw/core/qdev-properties.c:30:
+qemu-system-mips64el: Attempt to set property 'start-powered-off' on anonym=
+ous device (type 'I6400-mips64-cpu') after it was realized
+Broken pipe
+/home/travis/build/dgibson/qemu/tests/qtest/libqtest.c:175: kill_qemu() det=
+ected QEMU death from signal 6 (Aborted) (core dumped)
+Aborted (core dumped)
+ERROR qom-test - too few tests run (expected 8, got 0)
+/home/travis/build/dgibson/qemu/tests/Makefile.include:650: recipe for targ=
+et 'check-qtest-mips64el' failed
 
-Thanks,
+>=20
+> Changes since v2:
+>=20
+> General:
+> - Added Philippe's Reviewed-by to some of the patches.
+>=20
+> Patch "ppc/spapr: Use start-powered-off CPUState property"
+> - Set the CPUState::start_powered_off variable directly rather than using
+>   object_property_set_bool(). Suggested by Philippe.
+>=20
+> Patch "sparc/sun4m: Remove main_cpu_reset()"
+> - New patch. Suggested by Philippe.
+>=20
+> Patch "sparc/sun4m: Use start-powered-off CPUState property"
+> - Remove secondary_cpu_reset(). Suggested by Philippe.
+> - Remove setting of `cs->halted =3D 1` from cpu_devinit(). Suggested by P=
+hilippe.
+>=20
+> Patch "Don't set CPUState::halted in cpu_devinit()"
+> - Squashed into previous patch. Suggested by Philippe.
+>=20
+> Patch "sparc/sun4m: Use one cpu_reset() function for main and secondary C=
+PUs"
+> - Dropped.
+>=20
+> Patch "target/s390x: Use start-powered-off CPUState property"
+> - Set the CPUState::start_powered_off variable directly rather than using
+>   object_property_set_bool(). Suggested by Philippe.
+> - Mention in the commit message Eduardo's observation that before this
+>   patch, the code didn't set cs->halted on reset.
+>=20
+> Thiago Jung Bauermann (8):
+>   target/arm: Move start-powered-off property to generic CPUState
+>   target/arm: Move setting of CPU halted state to generic code
+>   ppc/spapr: Use start-powered-off CPUState property
+>   ppc/e500: Use start-powered-off CPUState property
+>   mips/cps: Use start-powered-off CPUState property
+>   sparc/sun4m: Remove main_cpu_reset()
+>   sparc/sun4m: Use start-powered-off CPUState property
+>   target/s390x: Use start-powered-off CPUState property
+>=20
+>  exec.c                  |  1 +
+>  hw/core/cpu.c           |  2 +-
+>  hw/mips/cps.c           |  6 +++---
+>  hw/ppc/e500.c           | 10 +++++++---
+>  hw/ppc/spapr_cpu_core.c | 10 +++++-----
+>  hw/sparc/sun4m.c        | 28 ++--------------------------
+>  include/hw/core/cpu.h   |  4 ++++
+>  target/arm/cpu.c        |  4 +---
+>  target/arm/cpu.h        |  3 ---
+>  target/arm/kvm32.c      |  2 +-
+>  target/arm/kvm64.c      |  2 +-
+>  target/s390x/cpu.c      |  2 +-
+>  12 files changed, 27 insertions(+), 47 deletions(-)
+>=20
+>=20
 
-Phil.
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-> 
-> Regards,
-> Bin
-> 
+--08ATZu8fEq0x2T3M
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl86C+AACgkQbDjKyiDZ
+s5IasA//UAzW7n1nwIF+zVjma/VBtVTA0QH1jDCDAOAnXO8qXxK1Gq6ElUB4DMZv
+ZwsrjMYNfTChbmj1rioJ6MX5kkgKARceOaYoNFmlvXHOHcu1nzVqLWQAx8ffdOWK
+p6pA/XYhs9SEHh7rhF1I2jhg3L9T9Y4HLjOgn64AjKVBzFHuHZAE+uBBjBryqzPY
+OpztM0/b50Xai/4pfuueY98aGJPDtQ0EOvc6VPqfLUhbepypEKGNEv9mStACGDs5
+X4b8Qz9vxbEmhbh+hgK/vps9/qNX8X7QuGWmI3OB69Yo4jVgn5F/LnB8a6brj4Mf
+8+NA0T8USG1++p7BYfeqqJKGMwIzwXo81nxv6l8eFnnDgotxFL11JVDML+tXnrVu
+KSZAN6uQqQsj1lwglBEN3/t2tHv35r3zLQV67iMbcXU1sO+J6XC/3FfnbldtORuE
+hGVok9kAYb9/KkKnSwLdeE+Nx6XURBtkr2cQuBxk/opDcNn9wF2O9VhjMHpajcc5
+d/MffC6w+riYG066P1BRsBHozJB9EQL0Vinq8d5hKCFm6vizQH0x1ExxG4lkVTLC
+hhANZtS5sZMJD7ycCdeMgtqnLNX+Bv48nQCiYjphja0p3U0Wl8XxQbz9gnmIEp4I
+28Jv+fmowW0/UNVJDJU2NlwRlGSmqr0ctSjKwT9cOPWaKDHIS28=
+=my/u
+-----END PGP SIGNATURE-----
+
+--08ATZu8fEq0x2T3M--

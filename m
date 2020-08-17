@@ -1,157 +1,102 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3096697lfy;
-        Mon, 17 Aug 2020 11:12:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKT6N0sdvQCtHkdyiZROwjRdnC1lcqH/UFIs51yhTa9+KxKKf9d/H4yuBuKGSk0szsX5bV
-X-Received: by 2002:a25:390:: with SMTP id 138mr23407095ybd.237.1597687940867;
-        Mon, 17 Aug 2020 11:12:20 -0700 (PDT)
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3117323lfy;
+        Mon, 17 Aug 2020 11:40:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzJR4in7s7PQvr7dS9Y5OiRwz+ZqTjW9SRDJas5shp7ZmkLSjDc0M2stbSilJrR+Riu1ssM
+X-Received: by 2002:a25:505:: with SMTP id 5mr21946106ybf.98.1597689631464;
+        Mon, 17 Aug 2020 11:40:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597689631; cv=none;
+        d=google.com; s=arc-20160816;
+        b=eA9l0VOfo9xMKYAqouOE0kK3PHr7raUFFjFXj5GCmN1EEa6XTLMawznUQTYZz+yhGG
+         REcEfca5B+Da/W/cdCQtXvye3Fp80DyEyyzIH/X+qJ3xnbEzNkJBfHMMu9Tn2dwmC61r
+         ZTm55OGaLRbuVBUQFneJ9JsO0yKfc71iiG1cobCUalnSkLPAKXtRfIzmYdV5iHIK16PE
+         3PH6tx/6FHeD2OmNRoaG1UNZS8ljtRSZF1jiy38HVOaloeeJNFLx3cOnZ/3JP8D4CTQJ
+         rB64/joG1Iz3UcitPc6hIeE574BgZgw0/Nfnbbj9dSFTo0uyRbEULHw794u+wQ1hJhdk
+         PVCw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=B/hG8QxsiThGggJe9eFxDqjXVsYoZFaQC1mz/Og4tOk=;
+        b=VdhcjfK+dlJuxi3iuLvxguz1cm0HshE5z18v+FVA2t6zMwKs6+zeaS1Du2Y42bKNl/
+         p3UZwrHfrHChmd1qb6c2zC+rITcaY15EVaImwFCydmXAJ+hSyVecBgZfE9Vxzq9MQFRU
+         VxzJq4O8hNArAb0i074wQ/68erzo9HCaG8kq1CELld8EOsUAbpNmAu3N72Z9mI9pGHQX
+         w00c/yX2QFeSTbS5S7aAcDTQvKT/eTX2ndK3GP+UrGJFQsQYMPJ7Wx9ECyD3E7HEIkQh
+         /LiFIF1iGfFyEfqldPuZvpz+2tXrNe3jwhdt3ZlLrFGKD+Y0gDGsu6lsSdyfTBbD/4PW
+         FW9A==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FyZB8bvo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z6si18108878ybn.356.2020.08.17.11.12.20
+        by mx.google.com with ESMTPS id j6si17632525ybt.197.2020.08.17.11.40.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Aug 2020 11:12:20 -0700 (PDT)
+        Mon, 17 Aug 2020 11:40:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@microchip.com header.s=mchp header.b=J8qmMV0l;
-       dkim=fail header.i=@microchiptechnology.onmicrosoft.com header.s=selector2-microchiptechnology-onmicrosoft-com header.b=P4A8T9ZU;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42494 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FyZB8bvo;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:59352 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k7jcK-00084C-8e
-	for alex.bennee@linaro.org; Mon, 17 Aug 2020 14:12:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58380)
+	id 1k7k3a-0000Eb-Ng
+	for alex.bennee@linaro.org; Mon, 17 Aug 2020 14:40:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47052)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Cyril.Jean@microchip.com>)
- id 1k7hJP-00042I-EJ; Mon, 17 Aug 2020 11:44:39 -0400
-Received: from esa5.microchip.iphmx.com ([216.71.150.166]:28461)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Cyril.Jean@microchip.com>)
- id 1k7hJL-0007yL-ST; Mon, 17 Aug 2020 11:44:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=microchip.com; i=@microchip.com; q=dns/txt; s=mchp;
- t=1597679077; x=1629215077;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=fY/wO2Ozjef54xyuAfwsZ5hZzJA2vwy0freNBbHb8uY=;
- b=J8qmMV0lUiiw99HX5bbZ5xy9XCr8UE0GbATNH1jeDzPH3CU1hQPVE9VO
- hMrM2S1feZz6rDtmR5/W2MtlkR1IxH3IPVX3DJDauALXkZ2cLXWsKAGuj
- gTXNMTQH8ZNhsfYs09FJkmwdcdeR0lR5ZmoX3HS5PzgZWOwFyC90b6Agp
- I67CTc0XFA0m2hlONM4GlQXdNwOILKipl4/iM8g+8nXklAwIiaIlj1K30
- o43pSJoaAJCxkAc3x5V0SLudAQgFLSz2BaCHE2uUybul5XQWgEziozDAJ
- 4leXfFgI42hMIiYEdd0MRO/AgHQY8y1H7LUQRLeVnc51hu7K0p2DFFz/R g==;
-IronPort-SDR: Dfb+/7PfrYPWE8ullofDpDULt79A5Du5IpzBhuF5Fwkiu3vPoajfelBuZnBvzL2vctlcupOCO0
- msyxI98du/ah/K8AscpJeMrj54FkXq5lhGo+sccA+oriYXcwe0APfpJ49yhpqEES7Yikev7I0p
- qfQ1g5YgnmOBNPAh/bgyGjkqToQOrC4dt8zsYENporSUgNdZcta/TnA9rTE6QxkcUB1E6c6Kl9
- SAVWQdM8uJbANPVCdKAZJHq4U49VSn631INzVpURdnlxCErpMAs8fk2CIqaM1o/c+G8mOgyeSH
- e5E=
-X-IronPort-AV: E=Sophos;i="5.76,324,1592895600"; d="scan'208";a="87426462"
-Received: from smtpout.microchip.com (HELO email.microchip.com)
- ([198.175.253.82])
- by esa5.microchip.iphmx.com with ESMTP/TLS/AES256-SHA256;
- 17 Aug 2020 08:44:09 -0700
-Received: from chn-vm-ex02.mchp-main.com (10.10.85.144) by
- chn-vm-ex04.mchp-main.com (10.10.85.152) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1979.3; Mon, 17 Aug 2020 08:44:04 -0700
-Received: from NAM12-BN8-obe.outbound.protection.outlook.com (10.10.215.89) by
- email.microchip.com (10.10.87.72) with Microsoft SMTP Server
- (version=TLS1_2, 
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3 via Frontend
- Transport; Mon, 17 Aug 2020 08:43:25 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=NdqvV/j8DYsTEr8QjuQ7jLmcxdY4GBNAI8lPEJA8AHgUohgHLEgnJegUkP03er01NfUCtUqliQfOzkAon/ayjezZHf51uZPpfPBxXjrN+Ot31lln8m2ULGAb7kAgFayC+AUQyJ59Qq6ayR0l+tsrlcTT7bECOznWWTHnUkdXDTNZ/SRWT/sailUM4bVZjHL5d70EAtjD5JCSzw9XRC0+IddKQwpT7WmO94nB22aTDuqZA1oNHnIxLkghAbahGBMZoXSdA2LZiuczMg5D3N8epBYCqWI5NG6kM3vVLBrgkmtINNzYFm50Y1+CNCV/gfN2YuU9mcJPpQxjoy/Xox9fCA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fY/wO2Ozjef54xyuAfwsZ5hZzJA2vwy0freNBbHb8uY=;
- b=HsscoR17vEBQNJk6YWRnKB6qM+CJgL22Gap7RoZWBTvpw+tFZeHQUjf8KRXnmylW/BODa6Px9FZ1FkL1Rtc790gunIGFJQ43LTT2SbkSxfSny6XgIKRVWwhjqg9hzKV8psPSMKz50ZTLP/6e+NbkNL5+ik5w0/bqki7KHyxfJnygeuvxZeVqnlB0XZTw0C59lYipewMwfejvhIIkj55yCf/+fl6qxlBaMlEnn8qspcjyUqn6Tjrkts2Oxpn4+ZILeL9NWW6EwVVhp1PxaxZqXmKnXiYbWd/FtJMcYTEkRSeyV9P3OW+J18wVLLZECXYaB5aGsfGtLB9L8zpq5KqklA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=microchip.com; dmarc=pass action=none
- header.from=microchip.com; dkim=pass header.d=microchip.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=microchiptechnology.onmicrosoft.com;
- s=selector2-microchiptechnology-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fY/wO2Ozjef54xyuAfwsZ5hZzJA2vwy0freNBbHb8uY=;
- b=P4A8T9ZUT5oJ2djJUYQJtrbMYySg/QJ5/4qjZZl+s8q/VHjxa3WG1LQf8ITiYDPnU/VJtKuNgdW8O+txXDzhyAHCbnrrHJ7YC7X7SASfZR5EFzMiTwv3ATy3VAUk5Fxllv9flKmUNZxgqYLufbwuk8C4p60hivVx7fi7TVNXaOg=
-Received: from DM6PR11MB3690.namprd11.prod.outlook.com (2603:10b6:5:13d::32)
- by DM6PR11MB4234.namprd11.prod.outlook.com (2603:10b6:5:1dc::11) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3283.15; Mon, 17 Aug
- 2020 15:44:06 +0000
-Received: from DM6PR11MB3690.namprd11.prod.outlook.com
- ([fe80::e0ca:f0fd:7675:46d7]) by DM6PR11MB3690.namprd11.prod.outlook.com
- ([fe80::e0ca:f0fd:7675:46d7%4]) with mapi id 15.20.3283.027; Mon, 17 Aug 2020
- 15:44:06 +0000
-To: <bmeng.cn@gmail.com>, <anup@brainfault.org>
-CC: <Alistair.Francis@wdc.com>, <kbastian@mail.uni-paderborn.de>,
- <palmerdabbelt@google.com>, <sagark@eecs.berkeley.edu>,
- <qemu-devel@nongnu.org>, <qemu-riscv@nongnu.org>, <peter.maydell@linaro.org>, 
- <alistair@alistair23.me>, <qemu-block@nongnu.org>, <jasowang@redhat.com>,
- <bin.meng@windriver.com>, <pbonzini@redhat.com>, <palmer@dabbelt.com>,
- <qemu-arm@nongnu.org>, <marcandre.lureau@redhat.com>,
- <edgar.iglesias@gmail.com>, <philmd@redhat.com>
-Subject: Re: [PATCH 00/18] hw/riscv: Add Microchip PolarFire SoC Icicle Kit
- board support
-Thread-Topic: [PATCH 00/18] hw/riscv: Add Microchip PolarFire SoC Icicle Kit
- board support
-Thread-Index: AQHWdIGDfQ2ADX3iMkmaUQkzVWiMJKk8cXaA
-Date: Mon, 17 Aug 2020 15:44:06 +0000
-Message-ID: <202949f7-c9d5-4d4d-3ebe-53727f4fa169@microchip.com>
-References: <1597423256-14847-1-git-send-email-bmeng.cn@gmail.com>
- <CAAhSdy2D=TcENAJDja4r6pnhz0LRi-T+A9k3Btrs_EuB4x0e4w@mail.gmail.com>
- <CAEUhbmV5=B5xKhYqMj1MQb61nt5cNUJG1MXT++C1w1YMYTfLCQ@mail.gmail.com>
-In-Reply-To: <CAEUhbmV5=B5xKhYqMj1MQb61nt5cNUJG1MXT++C1w1YMYTfLCQ@mail.gmail.com>
-Accept-Language: en-IE, en-US
-Content-Language: en-IE
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: gmail.com; dkim=none (message not signed)
- header.d=none;gmail.com; dmarc=none action=none header.from=microchip.com;
-x-originating-ip: [86.40.244.225]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 6de0d44a-7bee-41b5-678d-08d842c45fff
-x-ms-traffictypediagnostic: DM6PR11MB4234:
-x-microsoft-antispam-prvs: <DM6PR11MB4234C18D1F2FECE6026623C69E5F0@DM6PR11MB4234.namprd11.prod.outlook.com>
-x-bypassexternaltag: True
-x-ms-oob-tlc-oobclassifiers: OLM:7691;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: cYDCHqdZ1DgnI7ImcDhOO/pBCAY6Rf459Tk2KkFNEBCwgYmtMVDqfUlZFuoewgMo9OfzyAgy7kLlARjgKSeegH+J0pUHSZqBvQ2BlaRf1oofOCjoiGPlaxdAiA9+YLxdGTw3MYpD6gSWF8SijVeLnA2D0J3U6xBzl/5Z+nJlGnYhlEVkPe93g41nGvcNe8PClRWwtAfZc58qpcvfo13ts/ck3h5xoh5omlxDHzAAUWDYFBf+J1b+QI2tXnLtQ+AaoCtJ7JPI6jXIeoYTlhMy1qFrM3s67Oq4WUP1RqwWbb+B7ncYBq7ccGSo1lKMbffg+r6JGuKiIMfRRlbPXYG+IQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM6PR11MB3690.namprd11.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(136003)(376002)(366004)(346002)(396003)(39860400002)(4326008)(6486002)(2906002)(66476007)(36756003)(83380400001)(66946007)(8676002)(66446008)(76116006)(91956017)(66556008)(64756008)(86362001)(31696002)(8936002)(110136005)(54906003)(478600001)(7416002)(5660300002)(71200400001)(53546011)(31686004)(6506007)(26005)(6512007)(186003)(2616005)(316002);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: 9tA2LJhraKa5DIDZIZFjPMu9MqsL0735HYhDfBWmhfJKYZVDjuOXfuEsNlY4g9vEPuFNsS0VmRjE3HnFQEaRucC0qkMLed3w3vXAYTpjGNcyUx/5Bigu9TsI85mXwayvuBtbgClzS9eAMZaOqJk43U9cQ1zWQABofTl5DStxc7REpnpGgIGeiSJXVOPsMJ/PImonRfBsZ/NBJH7jUqattxfyDDr5HvPYOMWNnBKOo7Iw+4bS+RRo524ue6YQEBGNjxczCuCf3rLeln2JcaeHiqdh5wDn6HJkG8hgumpa8eCsA3EdUQdWEIcOpzl+pZaTkkLde6iFzpEJ1g+XmnKcpflknqmWSOqWZLnK1qG9Ms6XVrHffDTyBQyZGodrhodrCgQF3yMwG5+tLJAE1c877SQmF7DTHX1aD2pozDDATyv4IK0inV67f1cuH0l93xKKj+BLUiqhPnfWk0lqzlxmNJApCatHS0zAsmydxsrAmtQZFTavxIx+e3OY1CjWgx85zjDZet/VFKh0jQLYqrXwssrGNCxdau3E8mUlQynqKAv3+w5jIWRw3TNQKYf7DWOH6i1wkCIdDHgV21dqxCj35f4VvRwNckBxGV54bff285h+kbYPyLm0ieUrx0yF1LEoudXu2WXrrNDg2JiRdupU1g==
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <958A811E610D084C802CECCB3487D7A5@namprd11.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1k7k3N-0008TQ-Ig; Mon, 17 Aug 2020 14:40:17 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:46082)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1k7k3L-0005Fz-B0; Mon, 17 Aug 2020 14:40:17 -0400
+Received: by mail-io1-xd42.google.com with SMTP id a5so18547561ioa.13;
+ Mon, 17 Aug 2020 11:40:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=B/hG8QxsiThGggJe9eFxDqjXVsYoZFaQC1mz/Og4tOk=;
+ b=FyZB8bvos628DtwjjnEXkOpeBv0kELtjNe6FJC2C5rhEbPM2/0M7ybjId605Skm5rN
+ 7AzcysqI/sNFAWJ91ZqbBb5eX7AmHbBR6F7HuI3SiSSceg4Dn6wp3kDvOcvR4SA0vcrl
+ aRnUo27+SpKzAjXkmXqDQnkhKriNn5Ct/VTfaVnbTKoC0EF/z83lPP83QNQPMNEX4vEX
+ yA+s4xVnBuCGMaM7s2AahNXaVKtUKxMNx0AjEn5gsD4NuywYJmpcaIzF1RFeE6V5fOj1
+ m0gA4r5brIhrZfj6YTQCqugEk2rbUGuN1wNtc6ejdGKgZBvM38M0XqutM911q2tUKZsp
+ n0aw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=B/hG8QxsiThGggJe9eFxDqjXVsYoZFaQC1mz/Og4tOk=;
+ b=nHGemlnvrZKW6UjQvjjwzBiNzAd/YERwpbvCi8OdKqc7lSM5egP/F8Uv2rfy4BizqU
+ rzsgqqwTXiQfr3gmGDHIphBu/td9o9+taY1pbb4I4ConcKAhMU2cImH3qc8jMf9GzFgs
+ dNBNl8Xs33+HMD++dA1hSTsambs7DFnyGQA+x+XnP3XlhpvZxKynpGyg9TS9D2RFehnE
+ Uca4tYlMx+oAf/wx9X23NPIQtsG1KyP9JjtY+8Nss+c6pBbP03W8mgMdDP1fL6NhqjIS
+ dLVnBjKz/zX0dGL4DQ0VPlLFSc9gEAjoYOo3rJIr0KN8LFt9ufHXT6557rD/hFWIwnIV
+ UBeA==
+X-Gm-Message-State: AOAM532fDSGOgSfMZAZHpSN3ZDs+OGmx0Ud5feu7Py/JpEjtMUZpLGJC
+ JQqYb72fDnp/eizE3O3TZzW9FmGCqI3S4LeeQHY=
+X-Received: by 2002:a5d:8a04:: with SMTP id w4mr13329556iod.15.1597689613232; 
+ Mon, 17 Aug 2020 11:40:13 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DM6PR11MB3690.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6de0d44a-7bee-41b5-678d-08d842c45fff
-X-MS-Exchange-CrossTenant-originalarrivaltime: 17 Aug 2020 15:44:06.3362 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 3f4057f3-b418-4d4e-ba84-d55b4e897d88
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: qfldr/aV9uw3qsfiLgbaHMGSRePzp/hhjE/ewruWIVV2BvNFBL3+UElKJb0Rlau3n1RPsdmTlgvPEIaJaf1/Tn9VF5sF17IdpQCqxUjC5+M=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR11MB4234
-Received-SPF: pass client-ip=216.71.150.166;
- envelope-from=Cyril.Jean@microchip.com; helo=esa5.microchip.iphmx.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/17 11:44:27
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+References: <20200814110057.307-1-f4bug@amsat.org>
+In-Reply-To: <20200814110057.307-1-f4bug@amsat.org>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Mon, 17 Aug 2020 20:40:01 +0200
+Message-ID: <CAPan3Wod8CRZczqw1AGGzGPxwW3KPDhyP0DQ=apTZn6cV9bgrg@mail.gmail.com>
+Subject: Re: [PATCH] hw/sd/allwinner-sdhost: Use AddressSpace for DMA transfers
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: multipart/alternative; boundary="000000000000dbae7c05ad1719fb"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-io1-xd42.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 17 Aug 2020 14:12:07 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -163,41 +108,457 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Qemu-block <qemu-block@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>,
+ qemu-arm <qemu-arm@nongnu.org>, Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: <Cyril.Jean@microchip.com>
-From:  via <qemu-arm@nongnu.org>
-X-TUID: T9wZT3gnQtCq
+X-TUID: gqUDwX/bujDL
 
-SGkgQW51cCwNCg0KT24gOC8xNy8yMCAxMTozMCBBTSwgQmluIE1lbmcgd3JvdGU6DQo+IEVYVEVS
-TkFMIEVNQUlMOiBEbyBub3QgY2xpY2sgbGlua3Mgb3Igb3BlbiBhdHRhY2htZW50cyB1bmxlc3Mg
-eW91IGtub3cgdGhlIGNvbnRlbnQgaXMgc2FmZQ0KPg0KPiBIaSBBbnVwLA0KPg0KPiBPbiBTYXQs
-IEF1ZyAxNSwgMjAyMCBhdCAxOjQ0IEFNIEFudXAgUGF0ZWwgPGFudXBAYnJhaW5mYXVsdC5vcmc+
-IHdyb3RlOg0KPj4gT24gRnJpLCBBdWcgMTQsIDIwMjAgYXQgMTA6MTIgUE0gQmluIE1lbmcgPGJt
-ZW5nLmNuQGdtYWlsLmNvbT4gd3JvdGU6DQo+Pj4gRnJvbTogQmluIE1lbmcgPGJpbi5tZW5nQHdp
-bmRyaXZlci5jb20+DQo+Pj4NCj4+PiBUaGlzIGFkZHMgc3VwcG9ydCBmb3IgTWljcm9jaGlwIFBv
-bGFyRmlyZSBTb0MgSWNpY2xlIEtpdCBib2FyZC4NCj4+PiBUaGUgSWNpY2xlIEtpdCBib2FyZCBp
-bnRlZ3JhdGVzIGEgUG9sYXJGaXJlIFNvQywgd2l0aCBvbmUgU2lGaXZlJ3MNCj4+PiBFNTEgcGx1
-cyBmb3VyIFU1NCBjb3JlcyBhbmQgbWFueSBvbi1jaGlwIHBlcmlwaGVyYWxzIGFuZCBhbiBGUEdB
-Lg0KPj4gTmljZSBXb3JrICEhISBUaGlzIGlzIHZlcnkgaGVscGZ1bC4NCj4gVGhhbmtzIQ0KPg0K
-Pj4gVGhlIE1pY3JvY2hpcCBIU1MgaXMgcXVpdGUgY29udm9sdXRlZC4gSXQgaGFzOg0KPj4gMS4g
-RERSIEluaXQNCj4+IDIuIEJvb3QgZGV2aWNlIHN1cHBvcnQNCj4+IDMuIFNCSSBzdXBwb3J0IHVz
-aW5nIE9wZW5TQkkgYXMgbGlicmFyeQ0KPj4gNC4gU2ltcGxlIFRFRSBzdXBwb3J0DQo+Pg0KPj4g
-SSB0aGluayBwb2ludCAxKSBhbmQgMikgYWJvdmUgc2hvdWxkIGJlIHBhcnQgb2YgVS1Cb290IFNQ
-TC4NCj4+IFRoZSBwb2ludCAzKSBjYW4gYmUgT3BlblNCSSBGV19EWU5BTUlDLg0KPj4NCj4+IExh
-c3RseSxmb3IgcG9pbnQgNCksIHdlIGFyZSB3b3JraW5nIG9uIGEgbmV3IE9wZW5TQkkgZmVhdHVy
-ZSB1c2luZw0KPj4gd2hpY2ggd2UgY2FuIHJ1biBpbmRlcGVuZGVudCBTZWN1cmUgT1MgYW5kIE5v
-bi1TZWN1cmUgT1MgdXNpbmcNCj4+IFUtQm9vdF9TUEwrT3BlblNCSSAoZm9yIGJvdGggU2lGaXZl
-IFVubGVhc2hlZCBhbmQgTWljcm9jaGlwDQo+PiBQb2xhckZpcmUpLg0KPj4NCj4+IERvIHlvdSBo
-YXZlIHBsYW5zIGZvciBhZGRpbmcgVS1Cb290IFNQTCBzdXBwb3J0IGZvciB0aGlzIGJvYXJkID8/
-DQo+ICsgQ3lyaWwgSmVhbiBmcm9tIE1pY3JvY2hpcA0KPg0KPiBJIHdpbGwgaGF2ZSB0byBsZWF2
-ZSB0aGlzIHF1ZXN0aW9uIHRvIEN5cmlsIHRvIGNvbW1lbnQuDQo+DQpJIGN1cnJlbnRseSBkbyBu
-b3QgaGF2ZSBhIHBsYW4gdG8gc3VwcG9ydCBVLUJvb3QgU1BMLiBUaGUgaWRlYSBvZiB0aGUgDQpI
-U1MgaXMgdG8gY29udGFpbiBhbGwgdGhlIHNpbGljb24gc3BlY2lmaWMgaW5pdGlhbGl6YXRpb24g
-YW5kIA0KY29uZmlndXJhdGlvbiBjb2RlIHdpdGhpbiB0aGUgSFNTIGJlZm9yZSBqdW1waW5nIHRv
-IFUtQm9vdCBTLW1vZGUuIEkgDQp3b3VsZCByYXRoZXIga2VlcCBhbGwgdGhpcyB3aXRoaW4gdGhl
-IEhTUyBmb3IgdGhlIHRpbWUgYmVpbmcuIEkgd291bGQgDQp3YWl0IHVudGlsIHdlIHJlYWNoIHBy
-b2R1Y3Rpb24gc2lsaWNvbiBiZWZvcmUgYXR0ZW1wdGluZyB0byBtb3ZlIHRoaXMgdG8gDQpVLUJv
-b3QgU1BMIGFzIHRoZSBIU1MgaXMgbGlrZWx5IHRvIGNvbnRhaW4gc29tZSBvcGFxdWUgc2lsaWNv
-biByZWxhdGVkIA0KY2hhbmdlcyBmb3IgYW5vdGhlciB3aGlsZS4NCg0KDQpSZWdhcmRzLA0KDQpD
-eXJpbC4NCg0K
+--000000000000dbae7c05ad1719fb
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Philippe,
+
+Nice improvement, I didnt know about this API. Makes sense to use it indeed=
+.
+The patch works fine. I tested your patches by applying the previous two
+sets first, and then this one.
+It ran well with the avocado tests and also with the official image
+OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img.
+
+Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+
+Regards,
+Niek
+
+
+
+On Fri, Aug 14, 2020 at 1:01 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
+
+> Allow the device to execute the DMA transfers in a different
+> AddressSpace.
+>
+> The A10 and H3 SoC keep using the system_memory address space,
+> but via the proper dma_memory_access() API.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> Based-on: <20200814092346.21825-1-f4bug@amsat.org>
+> "hw/sd: Use sdbus_read_data/sdbus_write_data for multiple bytes access"
+>
+> Tested with:
+>   AVOCADO_ALLOW_LARGE_STORAGE=3D1 avocado run -t machine:orangepi-pc -t
+> machine:cubieboard tests/acceptance/
+> ---
+>  include/hw/sd/allwinner-sdhost.h |  6 ++++++
+>  hw/arm/allwinner-a10.c           |  2 ++
+>  hw/arm/allwinner-h3.c            |  2 ++
+>  hw/sd/allwinner-sdhost.c         | 37 ++++++++++++++++++++++++++------
+>  4 files changed, 41 insertions(+), 6 deletions(-)
+>
+> diff --git a/include/hw/sd/allwinner-sdhost.h
+> b/include/hw/sd/allwinner-sdhost.h
+> index d94606a853..839732ebf3 100644
+> --- a/include/hw/sd/allwinner-sdhost.h
+> +++ b/include/hw/sd/allwinner-sdhost.h
+> @@ -71,6 +71,12 @@ typedef struct AwSdHostState {
+>      /** Interrupt output signal to notify CPU */
+>      qemu_irq irq;
+>
+> +    /** Memory region where DMA transfers are done */
+> +    MemoryRegion *dma_mr;
+> +
+> +    /** Address space used internally for DMA transfers */
+> +    AddressSpace dma_as;
+> +
+>      /** Number of bytes left in current DMA transfer */
+>      uint32_t transfer_cnt;
+>
+> diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+> index e258463747..d404f31e02 100644
+> --- a/hw/arm/allwinner-a10.c
+> +++ b/hw/arm/allwinner-a10.c
+> @@ -155,6 +155,8 @@ static void aw_a10_realize(DeviceState *dev, Error
+> **errp)
+>      }
+>
+>      /* SD/MMC */
+> +    object_property_set_link(OBJECT(&s->mmc0), "dma-memory",
+> +                             OBJECT(get_system_memory()), &error_fatal);
+>      sysbus_realize(SYS_BUS_DEVICE(&s->mmc0), &error_fatal);
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc0), 0, AW_A10_MMC0_BASE);
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc0), 0, qdev_get_gpio_in(dev=
+,
+> 32));
+> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> index ff92ded82c..43a8d3dc48 100644
+> --- a/hw/arm/allwinner-h3.c
+> +++ b/hw/arm/allwinner-h3.c
+> @@ -349,6 +349,8 @@ static void allwinner_h3_realize(DeviceState *dev,
+> Error **errp)
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0, s->memmap[AW_H3_SID]);
+>
+>      /* SD/MMC */
+> +    object_property_set_link(OBJECT(&s->mmc0), "dma-memory",
+> +                             OBJECT(get_system_memory()), &error_fatal);
+>      sysbus_realize(SYS_BUS_DEVICE(&s->mmc0), &error_fatal);
+>      sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc0), 0, s->memmap[AW_H3_MMC0]);
+>      sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc0), 0,
+> diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+> index f9eb92c09e..e82afb75eb 100644
+> --- a/hw/sd/allwinner-sdhost.c
+> +++ b/hw/sd/allwinner-sdhost.c
+> @@ -21,7 +21,10 @@
+>  #include "qemu/log.h"
+>  #include "qemu/module.h"
+>  #include "qemu/units.h"
+> +#include "qapi/error.h"
+>  #include "sysemu/blockdev.h"
+> +#include "sysemu/dma.h"
+> +#include "hw/qdev-properties.h"
+>  #include "hw/irq.h"
+>  #include "hw/sd/allwinner-sdhost.h"
+>  #include "migration/vmstate.h"
+> @@ -306,7 +309,7 @@ static uint32_t
+> allwinner_sdhost_process_desc(AwSdHostState *s,
+>      uint8_t buf[1024];
+>
+>      /* Read descriptor */
+> -    cpu_physical_memory_read(desc_addr, desc, sizeof(*desc));
+> +    dma_memory_read(&s->dma_as, desc_addr, desc, sizeof(*desc));
+>      if (desc->size =3D=3D 0) {
+>          desc->size =3D klass->max_desc_size;
+>      } else if (desc->size > klass->max_desc_size) {
+> @@ -331,22 +334,24 @@ static uint32_t
+> allwinner_sdhost_process_desc(AwSdHostState *s,
+>
+>          /* Write to SD bus */
+>          if (is_write) {
+> -            cpu_physical_memory_read((desc->addr & DESC_SIZE_MASK) +
+> num_done,
+> -                                      buf, buf_bytes);
+> +            dma_memory_read(&s->dma_as,
+> +                            (desc->addr & DESC_SIZE_MASK) + num_done,
+> +                            buf, buf_bytes);
+>              sdbus_write_data(&s->sdbus, buf, buf_bytes);
+>
+>          /* Read from SD bus */
+>          } else {
+>              sdbus_read_data(&s->sdbus, buf, buf_bytes);
+> -            cpu_physical_memory_write((desc->addr & DESC_SIZE_MASK) +
+> num_done,
+> -                                       buf, buf_bytes);
+> +            dma_memory_write(&s->dma_as,
+> +                             (desc->addr & DESC_SIZE_MASK) + num_done,
+> +                             buf, buf_bytes);
+>          }
+>          num_done +=3D buf_bytes;
+>      }
+>
+>      /* Clear hold flag and flush descriptor */
+>      desc->status &=3D ~DESC_STATUS_HOLD;
+> -    cpu_physical_memory_write(desc_addr, desc, sizeof(*desc));
+> +    dma_memory_write(&s->dma_as, desc_addr, desc, sizeof(*desc));
+>
+>      return num_done;
+>  }
+> @@ -721,6 +726,12 @@ static const VMStateDescription
+> vmstate_allwinner_sdhost =3D {
+>      }
+>  };
+>
+> +static Property allwinner_sdhost_properties[] =3D {
+> +    DEFINE_PROP_LINK("dma-memory", AwSdHostState, dma_mr,
+> +                     TYPE_MEMORY_REGION, MemoryRegion *),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+>  static void allwinner_sdhost_init(Object *obj)
+>  {
+>      AwSdHostState *s =3D AW_SDHOST(obj);
+> @@ -734,6 +745,18 @@ static void allwinner_sdhost_init(Object *obj)
+>      sysbus_init_irq(SYS_BUS_DEVICE(s), &s->irq);
+>  }
+>
+> +static void allwinner_sdhost_realize(DeviceState *dev, Error **errp)
+> +{
+> +    AwSdHostState *s =3D AW_SDHOST(dev);
+> +
+> +    if (!s->dma_mr) {
+> +        error_setg(errp, TYPE_AW_SDHOST " 'dma-memory' link not set");
+> +        return;
+> +    }
+> +
+> +    address_space_init(&s->dma_as, s->dma_mr, "sdhost-dma");
+> +}
+> +
+>  static void allwinner_sdhost_reset(DeviceState *dev)
+>  {
+>      AwSdHostState *s =3D AW_SDHOST(dev);
+> @@ -792,6 +815,8 @@ static void allwinner_sdhost_class_init(ObjectClass
+> *klass, void *data)
+>
+>      dc->reset =3D allwinner_sdhost_reset;
+>      dc->vmsd =3D &vmstate_allwinner_sdhost;
+> +    dc->realize =3D allwinner_sdhost_realize;
+> +    device_class_set_props(dc, allwinner_sdhost_properties);
+>  }
+>
+>  static void allwinner_sdhost_sun4i_class_init(ObjectClass *klass, void
+> *data)
+> --
+> 2.21.3
+>
+>
+
+--=20
+Niek Linnenbank
+
+--000000000000dbae7c05ad1719fb
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div>Nice improvemen=
+t, I didnt know about this API. Makes sense to use it indeed.</div><div>The=
+ patch works fine. I tested your patches by applying the previous two sets =
+first, and then this one.</div><div>It ran well with the avocado tests and =
+also with the official image OrangePi_pc_debian_stretch_server_linux5.3.5_v=
+1.0.img.</div><div><br></div><div>Tested-by: Niek Linnenbank &lt;<a href=3D=
+"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt;</div><di=
+v>Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gmail.c=
+om">nieklinnenbank@gmail.com</a>&gt;</div><div><br></div><div>Regards,</div=
+><div>Niek<br></div><div><br></div><div><br></div></div><br><div class=3D"g=
+mail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, Aug 14, 2020 at 1=
+:01 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f=
+4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex">Allow the device to execute the DMA transfers in a different<=
+br>
+AddressSpace.<br>
+<br>
+The A10 and H3 SoC keep using the system_memory address space,<br>
+but via the proper dma_memory_access() API.<br>
+<br>
+Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
+t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
+---<br>
+Based-on: &lt;<a href=3D"mailto:20200814092346.21825-1-f4bug@amsat.org" tar=
+get=3D"_blank">20200814092346.21825-1-f4bug@amsat.org</a>&gt;<br>
+&quot;hw/sd: Use sdbus_read_data/sdbus_write_data for multiple bytes access=
+&quot;<br>
+<br>
+Tested with:<br>
+=C2=A0 AVOCADO_ALLOW_LARGE_STORAGE=3D1 avocado run -t machine:orangepi-pc -=
+t machine:cubieboard tests/acceptance/<br>
+---<br>
+=C2=A0include/hw/sd/allwinner-sdhost.h |=C2=A0 6 ++++++<br>
+=C2=A0hw/arm/allwinner-a10.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=
+=A0 2 ++<br>
+=C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=
+=A0 2 ++<br>
+=C2=A0hw/sd/allwinner-sdhost.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 37 ++++++=
+++++++++++++++++++++------<br>
+=C2=A04 files changed, 41 insertions(+), 6 deletions(-)<br>
+<br>
+diff --git a/include/hw/sd/allwinner-sdhost.h b/include/hw/sd/allwinner-sdh=
+ost.h<br>
+index d94606a853..839732ebf3 100644<br>
+--- a/include/hw/sd/allwinner-sdhost.h<br>
++++ b/include/hw/sd/allwinner-sdhost.h<br>
+@@ -71,6 +71,12 @@ typedef struct AwSdHostState {<br>
+=C2=A0 =C2=A0 =C2=A0/** Interrupt output signal to notify CPU */<br>
+=C2=A0 =C2=A0 =C2=A0qemu_irq irq;<br>
+<br>
++=C2=A0 =C2=A0 /** Memory region where DMA transfers are done */<br>
++=C2=A0 =C2=A0 MemoryRegion *dma_mr;<br>
++<br>
++=C2=A0 =C2=A0 /** Address space used internally for DMA transfers */<br>
++=C2=A0 =C2=A0 AddressSpace dma_as;<br>
++<br>
+=C2=A0 =C2=A0 =C2=A0/** Number of bytes left in current DMA transfer */<br>
+=C2=A0 =C2=A0 =C2=A0uint32_t transfer_cnt;<br>
+<br>
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c<br>
+index e258463747..d404f31e02 100644<br>
+--- a/hw/arm/allwinner-a10.c<br>
++++ b/hw/arm/allwinner-a10.c<br>
+@@ -155,6 +155,8 @@ static void aw_a10_realize(DeviceState *dev, Error **er=
+rp)<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0/* SD/MMC */<br>
++=C2=A0 =C2=A0 object_property_set_link(OBJECT(&amp;s-&gt;mmc0), &quot;dma-=
+memory&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0OBJECT(get_system_memory()), &amp;error_fata=
+l);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;mmc0), &amp;er=
+ror_fatal);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;mmc0), 0, AW_=
+A10_MMC0_BASE);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;mmc0), 0, =
+qdev_get_gpio_in(dev, 32));<br>
+diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
+index ff92ded82c..43a8d3dc48 100644<br>
+--- a/hw/arm/allwinner-h3.c<br>
++++ b/hw/arm/allwinner-h3.c<br>
+@@ -349,6 +349,8 @@ static void allwinner_h3_realize(DeviceState *dev, Erro=
+r **errp)<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;sid), 0, s-&g=
+t;memmap[AW_H3_SID]);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0/* SD/MMC */<br>
++=C2=A0 =C2=A0 object_property_set_link(OBJECT(&amp;s-&gt;mmc0), &quot;dma-=
+memory&quot;,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0OBJECT(get_system_memory()), &amp;error_fata=
+l);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;mmc0), &amp;er=
+ror_fatal);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;mmc0), 0, s-&=
+gt;memmap[AW_H3_MMC0]);<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;mmc0), 0,<=
+br>
+diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c<br>
+index f9eb92c09e..e82afb75eb 100644<br>
+--- a/hw/sd/allwinner-sdhost.c<br>
++++ b/hw/sd/allwinner-sdhost.c<br>
+@@ -21,7 +21,10 @@<br>
+=C2=A0#include &quot;qemu/log.h&quot;<br>
+=C2=A0#include &quot;qemu/module.h&quot;<br>
+=C2=A0#include &quot;qemu/units.h&quot;<br>
++#include &quot;qapi/error.h&quot;<br>
+=C2=A0#include &quot;sysemu/blockdev.h&quot;<br>
++#include &quot;sysemu/dma.h&quot;<br>
++#include &quot;hw/qdev-properties.h&quot;<br>
+=C2=A0#include &quot;hw/irq.h&quot;<br>
+=C2=A0#include &quot;hw/sd/allwinner-sdhost.h&quot;<br>
+=C2=A0#include &quot;migration/vmstate.h&quot;<br>
+@@ -306,7 +309,7 @@ static uint32_t allwinner_sdhost_process_desc(AwSdHostS=
+tate *s,<br>
+=C2=A0 =C2=A0 =C2=A0uint8_t buf[1024];<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0/* Read descriptor */<br>
+-=C2=A0 =C2=A0 cpu_physical_memory_read(desc_addr, desc, sizeof(*desc));<br=
+>
++=C2=A0 =C2=A0 dma_memory_read(&amp;s-&gt;dma_as, desc_addr, desc, sizeof(*=
+desc));<br>
+=C2=A0 =C2=A0 =C2=A0if (desc-&gt;size =3D=3D 0) {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0desc-&gt;size =3D klass-&gt;max_desc_size=
+;<br>
+=C2=A0 =C2=A0 =C2=A0} else if (desc-&gt;size &gt; klass-&gt;max_desc_size) =
+{<br>
+@@ -331,22 +334,24 @@ static uint32_t allwinner_sdhost_process_desc(AwSdHos=
+tState *s,<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Write to SD bus */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (is_write) {<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_physical_memory_read((desc-&=
+gt;addr &amp; DESC_SIZE_MASK) + num_done,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 buf, buf_bytes)=
+;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dma_memory_read(&amp;s-&gt;dma_a=
+s,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 (desc-&gt;addr &amp; DESC_SIZE_MASK) + num_done,<b=
+r>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 buf, buf_bytes);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sdbus_write_data(&amp;s-&gt=
+;sdbus, buf, buf_bytes);<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Read from SD bus */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0sdbus_read_data(&amp;s-&gt;=
+sdbus, buf, buf_bytes);<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_physical_memory_write((desc-=
+&gt;addr &amp; DESC_SIZE_MASK) + num_done,<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0buf, buf_=
+bytes);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dma_memory_write(&amp;s-&gt;dma_=
+as,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(desc-&gt;addr &amp; DESC_SIZE_MASK) + num_d=
+one,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0buf, buf_bytes);<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0num_done +=3D buf_bytes;<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0/* Clear hold flag and flush descriptor */<br>
+=C2=A0 =C2=A0 =C2=A0desc-&gt;status &amp;=3D ~DESC_STATUS_HOLD;<br>
+-=C2=A0 =C2=A0 cpu_physical_memory_write(desc_addr, desc, sizeof(*desc));<b=
+r>
++=C2=A0 =C2=A0 dma_memory_write(&amp;s-&gt;dma_as, desc_addr, desc, sizeof(=
+*desc));<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0return num_done;<br>
+=C2=A0}<br>
+@@ -721,6 +726,12 @@ static const VMStateDescription vmstate_allwinner_sdho=
+st =3D {<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+=C2=A0};<br>
+<br>
++static Property allwinner_sdhost_properties[] =3D {<br>
++=C2=A0 =C2=A0 DEFINE_PROP_LINK(&quot;dma-memory&quot;, AwSdHostState, dma_=
+mr,<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0TYPE_MEMORY_REGION, MemoryRegion *),<br>
++=C2=A0 =C2=A0 DEFINE_PROP_END_OF_LIST(),<br>
++};<br>
++<br>
+=C2=A0static void allwinner_sdhost_init(Object *obj)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0AwSdHostState *s =3D AW_SDHOST(obj);<br>
+@@ -734,6 +745,18 @@ static void allwinner_sdhost_init(Object *obj)<br>
+=C2=A0 =C2=A0 =C2=A0sysbus_init_irq(SYS_BUS_DEVICE(s), &amp;s-&gt;irq);<br>
+=C2=A0}<br>
+<br>
++static void allwinner_sdhost_realize(DeviceState *dev, Error **errp)<br>
++{<br>
++=C2=A0 =C2=A0 AwSdHostState *s =3D AW_SDHOST(dev);<br>
++<br>
++=C2=A0 =C2=A0 if (!s-&gt;dma_mr) {<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, TYPE_AW_SDHOST &quot; &#39;dm=
+a-memory&#39; link not set&quot;);<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
++=C2=A0 =C2=A0 }<br>
++<br>
++=C2=A0 =C2=A0 address_space_init(&amp;s-&gt;dma_as, s-&gt;dma_mr, &quot;sd=
+host-dma&quot;);<br>
++}<br>
++<br>
+=C2=A0static void allwinner_sdhost_reset(DeviceState *dev)<br>
+=C2=A0{<br>
+=C2=A0 =C2=A0 =C2=A0AwSdHostState *s =3D AW_SDHOST(dev);<br>
+@@ -792,6 +815,8 @@ static void allwinner_sdhost_class_init(ObjectClass *kl=
+ass, void *data)<br>
+<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;reset =3D allwinner_sdhost_reset;<br>
+=C2=A0 =C2=A0 =C2=A0dc-&gt;vmsd =3D &amp;vmstate_allwinner_sdhost;<br>
++=C2=A0 =C2=A0 dc-&gt;realize =3D allwinner_sdhost_realize;<br>
++=C2=A0 =C2=A0 device_class_set_props(dc, allwinner_sdhost_properties);<br>
+=C2=A0}<br>
+<br>
+=C2=A0static void allwinner_sdhost_sun4i_class_init(ObjectClass *klass, voi=
+d *data)<br>
+-- <br>
+2.21.3<br>
+<br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
+mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
+div>
+
+--000000000000dbae7c05ad1719fb--

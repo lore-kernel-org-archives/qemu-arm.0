@@ -1,107 +1,108 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2992569lfy;
-        Mon, 17 Aug 2020 08:46:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy29gxQxbQ3plIP5ikQdostNnd913ainT34ktP8kbkqcs3xJAHhk7JmtQJIooZ/8eB33gja
-X-Received: by 2002:a05:6902:4a9:: with SMTP id r9mr20567544ybs.242.1597679208282;
-        Mon, 17 Aug 2020 08:46:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597679208; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2993755lfy;
+        Mon, 17 Aug 2020 08:48:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXaAk0WrXN+MQgr9jxfRNpPLtqoJu2Aa1v/EluuWaesMi/RwLx5ZG83A4aSmZ5tc0P15Pf
+X-Received: by 2002:a25:2644:: with SMTP id m65mr20969047ybm.94.1597679303140;
+        Mon, 17 Aug 2020 08:48:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597679303; cv=none;
         d=google.com; s=arc-20160816;
-        b=jLiTgqoOklGkAMRIAYCt8NMNvaQWRD9Ym1j1JDCiJ+7XQGp/d4JD+ZHmJKSM5myMsj
-         LZk0Qx5eX5i5nJA+j3kQ9bQZNK9dKvdewrpnwxPwP/eD8UT+gkssCumt1wYidh5fnVIF
-         z+FariGSfhWBqH1YCJxYnv6Y0SbtZ08ukBcEp0yO/KsJE2JttSaWB/q4YhMTLc49PcMb
-         uLmWiRNXojpqnRbc15nvtSIzDEoUAHECopHpIv622Ff92u4Y988tzCb/RTIGPG2j68uM
-         NbSmakJSPihDHPru8Ob4nycaWOMK5pCVSPD33flRnXQOJF5OXoXtP9UHaZnK5cB1hh3w
-         Xb4Q==
+        b=Tpo5zUYuas5zJyBd+z84gbYVqCB4kMyopa81zqgtXOJ7bKTRHnEPIaomcRt56s1+qs
+         2GagMmq5pKK7TBJYEMiPtWBzxg3WL0IQTk2/HGpjyUx9Wd/R4vTTwHzrDjuEaxQdWJ9V
+         R4Qz92WYDYB6roOE5DsiB/u3nKlmkbNeoijtUyp0VGjHCHd+0SpJc/rijTpxeuLb0XDE
+         W51mI8H577UEh/PEsK6uyF8C4PKgAuao2nDD40FkxcTCyYlRyLk6y9st9Y1de5SqIdYx
+         LbXBs5YE5ZAob0EgqAOrTvkbRHuMFKC/rJijtKoOEWCQSAkK/jM5C0wHDzC6aLgJed1F
+         +0Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=cj8XLhIGg9ObYWg/BfwNCAVEba7yGVXC7pfU7/cOItg=;
-        b=tuOnr/w8V4E7bQgscNjeJjIB7qQ4Y2MTiA7DdlXbcRoFjPatMWX8pPbw2m5wNxtnXl
-         sHOn/m12ux+FOkBk24WVqGd7LTax5lvzDg0Yt3w5ZPrG9SjioHnaROrnikYy8LYYfuva
-         BOyHkdyfqjtmJUzRbq19RhEfGv+RsAdSoPG12T4uprDWyGXgmDqqghx4MNASDcPZzuyr
-         SgpZqOdKFDcr9u6Q5Gj/vDAiP9Sm9B/T5IQqyLaMl0S66Z9WeSrLGwWHVxVFWsTeEiKy
-         fJfnPHUtYc6G/lj5VdRh6UDDVV8Et0zuYPx8kLf+85Yt+X9Kh3VDE45ye3V7VgsP5rTu
-         z9KQ==
+        bh=0t5vUMkdNBrHjsJYG3aZF0PJl8ZMZ0nuWbOmx34ihNY=;
+        b=WlT7WjCY1kYTW2xYiqOK70PzlabPYZ7MBxDlPOL/89hTxVasWdLHDKSzswkhtuTCxY
+         09Y1Mpx8OatwBOWLzhYjR0QKMZnRTrodVzuHq/nfC1zazjvnc9uWp3Y5tQdOrmgD7kNn
+         BEqmfwWpVi8Usiptjj+F1gv2C7TaBs5Lbg9inwIgGCiV+Tem5uZlbfdPYtn8jUHSylBr
+         GrrYfe5+O8rFvhiHeik4Qo/wkKEftGWXHH7GsIS8yxsmpQ1NnzwIfnfW78Bzw3IEsa5a
+         ipNv5a/69eASZ6pKksiBChx3/zPjRaPYfyylsCmyXB0+mKEf0SWtixvsK56wZYvKq8vG
+         V0hg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=URSJiDjJ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KzGl3oNo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t16si17727479ybl.50.2020.08.17.08.46.48
+        by mx.google.com with ESMTPS id u6si19033887yba.373.2020.08.17.08.48.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Aug 2020 08:46:48 -0700 (PDT)
+        Mon, 17 Aug 2020 08:48:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=URSJiDjJ;
+       dkim=fail header.i=@linaro.org header.s=google header.b=KzGl3oNo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37434 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45894 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k7hLT-00074j-IY
-	for alex.bennee@linaro.org; Mon, 17 Aug 2020 11:46:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54686)
+	id 1k7hN0-000299-Df
+	for alex.bennee@linaro.org; Mon, 17 Aug 2020 11:48:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54788)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k7h7D-0003EN-4B
- for qemu-devel@nongnu.org; Mon, 17 Aug 2020 11:32:03 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:33733)
+ id 1k7h7l-0004No-L2
+ for qemu-devel@nongnu.org; Mon, 17 Aug 2020 11:32:37 -0400
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:37773)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1k7h7A-0005mZ-3d
- for qemu-devel@nongnu.org; Mon, 17 Aug 2020 11:32:02 -0400
-Received: by mail-pg1-x543.google.com with SMTP id o13so8298515pgf.0
- for <qemu-devel@nongnu.org>; Mon, 17 Aug 2020 08:31:59 -0700 (PDT)
+ id 1k7h7k-0005rI-1N
+ for qemu-devel@nongnu.org; Mon, 17 Aug 2020 11:32:37 -0400
+Received: by mail-pj1-x1042.google.com with SMTP id mw10so7853909pjb.2
+ for <qemu-devel@nongnu.org>; Mon, 17 Aug 2020 08:32:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=cj8XLhIGg9ObYWg/BfwNCAVEba7yGVXC7pfU7/cOItg=;
- b=URSJiDjJn/Jr4kxDxSmQdCmAHWSyXLzvoOaGF80G72T07ML9+tyOzBALuW9RSKEWFY
- 0T2u2bWKTcoY+IhO7yLwlDI5lxkuDE6TXtT0b9OLe3jlO7D7xl2G9j5zpqDegHLhZ5Iu
- ONzmcWUnC+G9JB4ZZ/MriWXjRqVd1lW3qXsCzFQ4RyfsTiTRvioR7KBrvX5nhf+ieKfr
- Abe6Zsry3kNR6z1Ucd+9+NYiVPsAqC0gaGJcUAV8ojApL3+1dQzV68CtIPnaH4qDQ/hO
- CuDthpt3SWtecKXmXac9eCNVBAcDhLHdxHMOUX/Uv2zPLMvs6fwnyMgBjJklKfwbJyT6
- UoBA==
+ bh=0t5vUMkdNBrHjsJYG3aZF0PJl8ZMZ0nuWbOmx34ihNY=;
+ b=KzGl3oNoZeeJKXc/S9rSXhVVWvESyDlMDzl7796o2UZyJWXjGsS2vdY6Y6G4SqH350
+ Am4QY1UO+HTxf3zbJ9YIa7iDTRU4D7K/JaDkUGjjecUKkle6d0TeImi3JbnMAFOkZ5Vu
+ A5yNFGOgXbGiSeEbevW5Ncs2bgrf9gYV5IahaFQT84k4dv2QTvNpMPrDJpx4YpMi7IuX
+ KwchiXKSlXBcuE/tqG71ykxUutIco1g2YhHU//laohQiv23S0jVZs/aRpE1LM8SpNSgF
+ obDyjS9TZlIf1X0U/low/QqmnbHt/lsrXpUbTGcAfG8Lz2CL2Qx6f69gJsNfYuYq+Giv
+ TmCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=cj8XLhIGg9ObYWg/BfwNCAVEba7yGVXC7pfU7/cOItg=;
- b=dQKD7VQwTFrgMjamic9HGHs89E4IUcNy4Pztl1UtB2Vlxd8xKR58/OG9yKH+RVGdYM
- HLy1MmbG94rjfn4GXZoLHAaJKfqWWMbABVFr0SEkH7Fp2+w1k9pHxXJkYiEXOTjM1Qx2
- QPu6Xnv6e7/64AzU6uewSttp6oKHeWDYNjkO0FZUFs1X/d4G7zjAA0xUKMVOa/nwiEYr
- 3OITEKCXdyaJVHpheSyWhCE39p4qEfmRlxPbKMQSaSF9Z8ThWb3D7Edmf7PZVnuVTW9E
- XfbnJONwVVwxGWDxt7IKPHMBCFJhB/hNzyqUhq3ztc4chcnI6fHPyVrLDhPplbv83uQL
- 0Fww==
-X-Gm-Message-State: AOAM5333Utn0tk6ntBBqkGRTLoBw//sFKiNfMud51+3lZ7lvi+9bOfG9
- IZCSMOc2tTz+0vPEVDG2SZ3t/g==
-X-Received: by 2002:aa7:9d0e:: with SMTP id k14mr11670659pfp.162.1597678318306; 
- Mon, 17 Aug 2020 08:31:58 -0700 (PDT)
+ bh=0t5vUMkdNBrHjsJYG3aZF0PJl8ZMZ0nuWbOmx34ihNY=;
+ b=NbipZbaUg+zAdBeUjvnaYcgZ6msNhEAKLEa2bh9R7BnppibqQl6CiRsSwpKfyEtfUv
+ gfSusuE/4kB5nF8cKIkNaiEbaj1or96/yJTOQruaIObwsIEihYgBviEzVdCv0sU0P0J0
+ /rjzPVKL6yd3RZk2jfSSQjtxK40oePC3mpafY7Xhl6PMOZNRArf5ymYrYiTWumExIjSq
+ UON74SA6pc3ODTqgg++9JxCt9553c+Fp6DOUfcUk9n5eHR/i6+w5xwtoy3JfQtx/lUyQ
+ ovyTe+oYlEkQ+/Nd2MHceRMlhG5C+VnEBpI7Lb0d9IRtFQFiOxiRBK9RJ+yGZig8t9Su
+ hYiQ==
+X-Gm-Message-State: AOAM532Jnnl73QuGYciOF9mdIaQWdoaN+MlQxZXxcjXmUY9THIF6V4WN
+ Jn2QtWP4pRfMGRojBdLhP8luGw==
+X-Received: by 2002:a17:902:744c:: with SMTP id
+ e12mr12035055plt.38.1597678354435; 
+ Mon, 17 Aug 2020 08:32:34 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id z5sm20362905pfk.15.2020.08.17.08.31.57
+ by smtp.gmail.com with ESMTPSA id d22sm20554099pfd.42.2020.08.17.08.32.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Aug 2020 08:31:57 -0700 (PDT)
-Subject: Re: [PATCH v1 1/5] target/microblaze: mbar: Transfer dc->rd to
- mbar_imm
+ Mon, 17 Aug 2020 08:32:33 -0700 (PDT)
+Subject: Re: [PATCH v1 2/5] target/microblaze: mbar: Move LOG_DIS to before
+ sleep
 To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
 References: <20200817140144.373403-1-edgar.iglesias@gmail.com>
- <20200817140144.373403-2-edgar.iglesias@gmail.com>
+ <20200817140144.373403-3-edgar.iglesias@gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <71e1514f-96b5-eb59-d306-51d90c00133c@linaro.org>
-Date: Mon, 17 Aug 2020 08:31:55 -0700
+Message-ID: <6740c852-3772-09c8-15fa-967d31aacd86@linaro.org>
+Date: Mon, 17 Aug 2020 08:32:31 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200817140144.373403-2-edgar.iglesias@gmail.com>
+In-Reply-To: <20200817140144.373403-3-edgar.iglesias@gmail.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x543.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1042.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -129,21 +130,20 @@ Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
  qemu-arm@nongnu.org, philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WluqNlOOjSfK
+X-TUID: EXLK9PVxAruG
 
 On 8/17/20 7:01 AM, Edgar E. Iglesias wrote:
 > From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
-> Transfer dc->rd to mbar_imm to improve the readability when
-> comparing to the specs.
-> 
-> No functional change.
+> Move LOG_DIS log to before sleeping handling so that it logs
+> for sleep instructions aswell.
 > 
 > Signed-off-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
 > ---
->  target/microblaze/translate.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+>  target/microblaze/translate.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
+

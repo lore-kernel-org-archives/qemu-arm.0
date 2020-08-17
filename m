@@ -1,94 +1,94 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3119481lfy;
-        Mon, 17 Aug 2020 11:43:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzBno4pnwoVsWeaFGwgGDSc/vfkrxjyxGrYBxGAKoQIsPGZyEsqM5smiT39nc+pFC7Bi/85
-X-Received: by 2002:a5b:48c:: with SMTP id n12mr20077643ybp.310.1597689822109;
-        Mon, 17 Aug 2020 11:43:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597689822; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3137726lfy;
+        Mon, 17 Aug 2020 12:08:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWvy6RWhYfEdxNxDXg7xt0k4RZhuQmFZGQDhgeH21MF9VQj7vaWjHrQ86gtZ7Ljv7nuFpl
+X-Received: by 2002:a25:2e10:: with SMTP id u16mr23295598ybu.17.1597691309564;
+        Mon, 17 Aug 2020 12:08:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597691309; cv=none;
         d=google.com; s=arc-20160816;
-        b=FL6PNv6oIL6qEak/EFJHX9bYzMOI4ozKK0sizYyUwkA0rESqyPXpAqphIYH6im21oH
-         +eTbMWIyx9S1Q/AwqEPwl+SBaUb5grdHK0g+DVkKrVXSO6xH7Q98hLBFheW/u3O3ZJzV
-         hLVnDxJwituxDNmPI77F9JBuJdyECQt9tQqSL2lhY/enMg8UVhCj0Q4UXC9fdAKz3vj6
-         D8BpHkUnRrkLMifKn1uKzDN2fzBqIec7ZwKhD2qAHLHdicqabM+Gzs24pbDLxpiCeQH3
-         bFv1C5dUSZq+vbtzTQ/pTsS5HycXzP37EyRhZPq7i/fmE1nI8XOZyMOt/MyEYTggwRZa
-         f3iw==
+        b=PPxL6Cs7aK+M9z8df1AJZK+zM+LH0mypsM74B/pZgbYjJbvEm5+p4B+owC+7MR10S9
+         LSXJiT0fnpckCl/TTnxxBnuZ+pQJAgaNAIj/qxjgW9YIGBXCD4fH/3b8MeXNPY7i46wH
+         nMCZmca8xpjCsmaKLB7AAdh+vBjcGen1ByCQRj91wfHlRFKWHYkHd2u35dk4jeveDPkX
+         N9xXJGDXkjxu057j/AqJQGM69dk5ErNLmTQOlephtiHkCp8kah4UiZqZ/UJ/VFhlilv+
+         UyB+R7PPFQEYYEuoYcZsz9gTIJtDhNYAAsTzB8tnDo0Z03+OtU+8uKOD1bTlE5U6wjvo
+         pcFw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=GMhR1Gx1rLoumR7zMslWjuPCl1uDGyxb7bYRZ5+7rjs=;
-        b=oX5bGuQbOvXryExpxs9IsBv44nFxrgMxUpVfFIt+QLH/69cExR+LJDap3P3iEkHIUZ
-         pY818H9lMXHlTSdSDzFGAuw6/N+bleJLCTVA9lkjOKnLnadjXovTgCdqgfSO+dRcAG7m
-         qiIvFyDaSR7Fm9FPTMLyl2MqRi/xBEWda5lyG5Tc9N210WAVIx8it59HOZCUK1IYO9ct
-         vRWoxWEOQmYbzXxYSJHp2fQ0Kv6+oC/QBAkQFwSaEy4SgZwa00zmzgeevGDKXaWRlIPX
-         5aOv6xnNcOp6FlYyCDOoV6HG20vgXZW5TBWl5qF9zvcXnzCYkS7b4B6NeIA6qVvxtTAx
-         EqmA==
+        bh=UoQMYDjpm71W1CwHVO8b5sdhifFoNHHgZwlikhmlKgo=;
+        b=YjlSCE4SfDIZwDunnSDZIVW8U8X2qSx4/f0PcwbzikmWObzuB84NhETdsGTOdnFhYP
+         L+chLYGUuL+NJrLnDEmKGAomiSXqsgDO5Kj+TYBxKWFYF2gDI4U6lA74twSJ6lEL9j7h
+         jeUhHdkcgj71OJOGjqs355lvFy3M5sJyyTZox3pyDDcPZBcQ0BgKPEm+ae1lYih5zsn+
+         nTvtwtzI1DG7ZYbqTi/3A8EZMh1+9r2Lw0uaj0RDHtTg5DN4KoQtHjINrJfP3lRHery7
+         qZ9KWrSJKgdqDEmK35oiiUZTAV1Ytn7GfKPnLkKldVtLnnhSN7WUg/irNRNAsQ3sojem
+         QtRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="iah/YAD4";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CSS4ZDvg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z123si19351242ybf.411.2020.08.17.11.43.41
+        by mx.google.com with ESMTPS id k20si18667151ybf.78.2020.08.17.12.08.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 17 Aug 2020 11:43:42 -0700 (PDT)
+        Mon, 17 Aug 2020 12:08:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="iah/YAD4";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CSS4ZDvg;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34210 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49506 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k7k6f-0001no-4k
-	for alex.bennee@linaro.org; Mon, 17 Aug 2020 14:43:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47660)
+	id 1k7kUe-0001ln-R8
+	for alex.bennee@linaro.org; Mon, 17 Aug 2020 15:08:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54352)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1k7k6D-0001eC-0i; Mon, 17 Aug 2020 14:43:13 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:42039)
+ id 1k7kUR-0001lQ-7x; Mon, 17 Aug 2020 15:08:15 -0400
+Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:36423)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1k7k68-0005eV-L0; Mon, 17 Aug 2020 14:43:12 -0400
-Received: by mail-io1-xd42.google.com with SMTP id g13so4382396ioo.9;
- Mon, 17 Aug 2020 11:43:08 -0700 (PDT)
+ id 1k7kUN-0000GO-OE; Mon, 17 Aug 2020 15:08:14 -0400
+Received: by mail-il1-x144.google.com with SMTP id z3so15505838ilh.3;
+ Mon, 17 Aug 2020 12:08:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=GMhR1Gx1rLoumR7zMslWjuPCl1uDGyxb7bYRZ5+7rjs=;
- b=iah/YAD4KMNUBvl0BFrFB6VDTA8lWzaOW3KUZPOHS/E0OWrrwJMX9b5kiahNOrmQ9R
- pFO4yViHCAMKcXKcuBqxo0Kll+6SSdSJlZC8zBnnvfszkUrWt979NzPuPb2mV00lsAZP
- 0Mz51uCDWfTFDE0UjgVFCzwb6DT3fotLnN6z+JSbdLXfY/6GUVr70LiqG1jOV334lSTr
- 08ICeq9yf2XQrm7KEps04A7N79LowWx+Fg25rX5nfHl49jcwOJ9t2c87n6TX55WszGpl
- eKbCIYVX5bmZtBhRH64pMkV7xDu4PQztNuQiXKaotu4/yjCIwQwCvv+qHHo2e1QFnGFf
- otWQ==
+ :cc; bh=UoQMYDjpm71W1CwHVO8b5sdhifFoNHHgZwlikhmlKgo=;
+ b=CSS4ZDvgNcR+8sylxQiuCOLc5tpcgX6flNV32xeZ2jTDcdMZJqngLRH+bjv0YozXk7
+ Qo1vSgUUQRxJkLj4Lzpx33Pg0PFJM7DMCQvVUDPYxAvHp4SjYKYI8MJOQPK6JzIC06+H
+ CeQNgSqmqh/MapRA6WfnDtVNkQRLCDhOVXUBZQgRZOyuMjWrB+cJeDcpwnTe3YKst99a
+ 2bkgzuUIONL/eOizoyyOwWBBwr/euAiy99fwm7Uv+IsMPrzD7gkcp+DK/7VSgEr3aYMF
+ oJnV7X0qy6NDAoGQczo6QBe0GTD+A3NJLKLmyZuwwli/PbkkaGTr+MJ2jfexQTzyZQrR
+ n4eQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=GMhR1Gx1rLoumR7zMslWjuPCl1uDGyxb7bYRZ5+7rjs=;
- b=IitHR2RXM4JhnlB04hFMuAZLUX8u9ZITvDDyXe3mW+2ahLluGPi0BmDJkkYIyGXTfV
- X6tZVXrrfZLszB3Z9RfNr/D9yOd4ez9qMBoMEC75ujKpo6J13mm4C0RIsBTQva6/Bsx0
- y4eZkWkxE32OhKrVdCNxNRagolGkrJ0jE00jAzCMcJysFE5wNSA3eU4nVaLVV+OflZkU
- gZZsewghB3pGfE3DdX/vNvW5hGi4OcSS2hdtSRrv6s03SK+Pb1yg+pxyi6jy8IES5kVj
- UEvwptln/KFx2DAm30YgF0T7yXycRHYgTBAkaWS1ZdUI/j1OwWeYLnh0JZsBqbgH9kJ7
- C+yw==
-X-Gm-Message-State: AOAM532OKwjTMWB5DYY5CPmEYArnBXb9XCNqSgL+m0LLFGCZECmDNfT9
- 23Jv0d0szsIpIuMww4SIOvAw84YzKaA1k3An7n0=
-X-Received: by 2002:a6b:3bd4:: with SMTP id
- i203mr13370799ioa.205.1597689787458; 
- Mon, 17 Aug 2020 11:43:07 -0700 (PDT)
+ bh=UoQMYDjpm71W1CwHVO8b5sdhifFoNHHgZwlikhmlKgo=;
+ b=jkPT0hjNyZfpHmhomMSrs83LqROkSPIJo9ABzIvqbMyQ2Dm66o16TmsN3c2xIEJvL0
+ VFOPLW8cmEOveSBVPHHawHXt2jsPZU7gUkqlKH7feHQBiA1xjiLUXoE7E2vE9UHKcVm8
+ 9fuo1Ra/++fWkPYG7LzcKzwpUkGe+zkBiKCxvvrFZUNLSFZvV6MtB6PmJXpkXzYUMnB9
+ 2bTgfK1S2hfEBZ6kL/mivO1fvsFECJO93FKuZr2wSxUF7qSW6ksEtMKKDqxD9wxQVM9o
+ 1s60HJrlLZE5+qE1CJSaUiBAM38MH9MVlWyE7BdFtJZKWPyKDfrCONYCDGpdFTzCNL3e
+ 2C3A==
+X-Gm-Message-State: AOAM5303UF5ZZuZON7W2O5XjtruAiu5lO9oxrvbsjU5d501GnMKLLovK
+ Cd02JHNvvTuTE9QBt7ATi9SDpKqQwW1DT3y6C/0=
+X-Received: by 2002:a92:8708:: with SMTP id m8mr15431969ild.19.1597691290079; 
+ Mon, 17 Aug 2020 12:08:10 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200814122907.27732-1-f4bug@amsat.org>
-In-Reply-To: <20200814122907.27732-1-f4bug@amsat.org>
+References: <20200813222625.243136-1-ehabkost@redhat.com>
+ <20200813222625.243136-7-ehabkost@redhat.com>
+ <6ff80e86-2499-f1af-787b-e22043756d7e@amsat.org>
+In-Reply-To: <6ff80e86-2499-f1af-787b-e22043756d7e@amsat.org>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 17 Aug 2020 20:42:56 +0200
-Message-ID: <CAPan3WpabibQhV2Mm20JTXsHnGn-4SaM69_RQ6tmX_QDwu_g3g@mail.gmail.com>
-Subject: Re: [PATCH] hw/net/allwinner-sun8i-emac: Use AddressSpace for DMA
- transfers
+Date: Mon, 17 Aug 2020 21:07:58 +0200
+Message-ID: <CAPan3Wq94G7Nd6segi-JnrL6Zbkb-ygeykkL4zbvRv7rCQ8a2g@mail.gmail.com>
+Subject: Re: [PATCH 06/41] allwinner-h3: Rename memmap enum constants
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="0000000000003e29ad05ad1724e9"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-io1-xd42.google.com
+Content-Type: multipart/alternative; boundary="000000000000ce580e05ad177df0"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-il1-x144.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -110,618 +110,1032 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Beniamino Galvani <b.galvani@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowang@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZQr6EpcyKEys
+X-TUID: 3kPaiIb6aYPV
 
---0000000000003e29ad05ad1724e9
+--000000000000ce580e05ad177df0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hi Philippe,
+Hi,
 
-Same as the one for the SD device: I tested it with the avocado tests and
-the official image OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img
-and networking is working good (ran some apt-get commands etc).
+Interesting suggestion Philippe. I modelled the initial code of the H3 SoC
+mostly in-line with the aspeed SoC,
+to let it use commonly applied code structures where possible. And it looks
+like in this series, aspeed_soc.h is also
+getting the same change. I'll see if I can find some time to make a small
+patch to move the enum to the local allwinner-h3.c file like you
+suggested.
 
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-Tested-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+For Eduardo's work, I'm OK with a rename for now to AW_H3_DEV_*. I see it
+is also done like that in aspeed_soc.h and similar files.
+I do have one follow-up question: which value(s) from the enum are actually
+in conflict? Could you add that in the commit message perhaps, for clarity?
+
+With that answered:
+  Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
 Regards,
 Niek
 
-On Fri, Aug 14, 2020 at 2:29 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+On Fri, Aug 14, 2020 at 7:54 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
 g>
 wrote:
 
-> Allow the device to execute the DMA transfers in a different
-> AddressSpace.
+> +Niek as maintainer.
 >
-> The H3 SoC keeps using the system_memory address space,
-> but via the proper dma_memory_access() API.
+> On 8/14/20 12:25 AM, Eduardo Habkost wrote:
+> > Some of the enum constant names conflict with the QOM type check
+> > macros.  This needs to be addressed to allow us to transform the
+> > QOM type check macros into functions generated by
+> > OBJECT_DECLARE_TYPE().
+> >
+> > Rename all the constants to AW_H3_DEV_*, to avoid conflicts.
+> >
+> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> > ---
+> >  include/hw/arm/allwinner-h3.h |  62 ++++++++---------
+> >  hw/arm/allwinner-h3.c         | 124 +++++++++++++++++-----------------
+> >  hw/arm/orangepi.c             |   6 +-
+> >  3 files changed, 96 insertions(+), 96 deletions(-)
+> >
+> > diff --git a/include/hw/arm/allwinner-h3.h
+> b/include/hw/arm/allwinner-h3.h
+> > index 82e4e59216..626139dcb3 100644
+> > --- a/include/hw/arm/allwinner-h3.h
+> > +++ b/include/hw/arm/allwinner-h3.h
+> > @@ -61,37 +61,37 @@
+> >   * @see AwH3State
+> >   */
+> >  enum {
+> > -    AW_H3_SRAM_A1,
+> > -    AW_H3_SRAM_A2,
+> > -    AW_H3_SRAM_C,
+> > -    AW_H3_SYSCTRL,
+> > -    AW_H3_MMC0,
+> > -    AW_H3_SID,
+> > -    AW_H3_EHCI0,
+> > -    AW_H3_OHCI0,
+> > -    AW_H3_EHCI1,
+> > -    AW_H3_OHCI1,
+> > -    AW_H3_EHCI2,
+> > -    AW_H3_OHCI2,
+> > -    AW_H3_EHCI3,
+> > -    AW_H3_OHCI3,
+> > -    AW_H3_CCU,
+> > -    AW_H3_PIT,
+> > -    AW_H3_UART0,
+> > -    AW_H3_UART1,
+> > -    AW_H3_UART2,
+> > -    AW_H3_UART3,
+> > -    AW_H3_EMAC,
+> > -    AW_H3_DRAMCOM,
+> > -    AW_H3_DRAMCTL,
+> > -    AW_H3_DRAMPHY,
+> > -    AW_H3_GIC_DIST,
+> > -    AW_H3_GIC_CPU,
+> > -    AW_H3_GIC_HYP,
+> > -    AW_H3_GIC_VCPU,
+> > -    AW_H3_RTC,
+> > -    AW_H3_CPUCFG,
+> > -    AW_H3_SDRAM
+> > +    AW_H3_DEV_SRAM_A1,
+> > +    AW_H3_DEV_SRAM_A2,
+> > +    AW_H3_DEV_SRAM_C,
+> > +    AW_H3_DEV_SYSCTRL,
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> Tested with:
->   AVOCADO_ALLOW_LARGE_STORAGE=3D1 avocado run -t machine:orangepi-pc
-> tests/acceptance/
-> ---
->  include/hw/net/allwinner-sun8i-emac.h |  6 ++++
->  hw/arm/allwinner-h3.c                 |  2 ++
->  hw/net/allwinner-sun8i-emac.c         | 46 +++++++++++++++++----------
->  3 files changed, 38 insertions(+), 16 deletions(-)
+> My 2 cents:
+> These are not devices, but peripheral blocks or IP cores.
+> Anyway, short change could be to name them E_AW_H3_xxx,
+> but I don't understand why these are exposed. This enum
+> should be locally declared in hw/arm/allwinner-h3.c,
+> and the SoC might provide a get_sdram_base_address()
+> method so the machine can access it.
 >
-> diff --git a/include/hw/net/allwinner-sun8i-emac.h
-> b/include/hw/net/allwinner-sun8i-emac.h
-> index eda034e96b..dd1d7b96cd 100644
-> --- a/include/hw/net/allwinner-sun8i-emac.h
-> +++ b/include/hw/net/allwinner-sun8i-emac.h
-> @@ -49,6 +49,12 @@ typedef struct AwSun8iEmacState {
->      /** Interrupt output signal to notify CPU */
->      qemu_irq     irq;
->
-> +    /** Memory region where DMA transfers are done */
-> +    MemoryRegion *dma_mr;
-> +
-> +    /** Address space used internally for DMA transfers */
-> +    AddressSpace dma_as;
-> +
->      /** Generic Network Interface Controller (NIC) for networking API */
->      NICState     *nic;
->
-> diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
-> index ff92ded82c..21a5d759d1 100644
-> --- a/hw/arm/allwinner-h3.c
-> +++ b/hw/arm/allwinner-h3.c
-> @@ -363,6 +363,8 @@ static void allwinner_h3_realize(DeviceState *dev,
-> Error **errp)
->          qemu_check_nic_model(&nd_table[0], TYPE_AW_SUN8I_EMAC);
->          qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
->      }
-> +    object_property_set_link(OBJECT(&s->emac), "dma-memory",
-> +                             OBJECT(get_system_memory()), &error_fatal);
->      sysbus_realize(SYS_BUS_DEVICE(&s->emac), &error_fatal);
->      sysbus_mmio_map(SYS_BUS_DEVICE(&s->emac), 0, s->memmap[AW_H3_EMAC]);
->      sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
-> diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.=
-c
-> index 28637ff4c1..38d328587e 100644
-> --- a/hw/net/allwinner-sun8i-emac.c
-> +++ b/hw/net/allwinner-sun8i-emac.c
-> @@ -19,6 +19,7 @@
->
->  #include "qemu/osdep.h"
->  #include "qemu/units.h"
-> +#include "qapi/error.h"
->  #include "hw/sysbus.h"
->  #include "migration/vmstate.h"
->  #include "net/net.h"
-> @@ -29,6 +30,7 @@
->  #include "net/checksum.h"
->  #include "qemu/module.h"
->  #include "exec/cpu-common.h"
-> +#include "sysemu/dma.h"
->  #include "hw/net/allwinner-sun8i-emac.h"
->
->  /* EMAC register offsets */
-> @@ -337,12 +339,13 @@ static void
-> allwinner_sun8i_emac_update_irq(AwSun8iEmacState *s)
->      qemu_set_irq(s->irq, (s->int_sta & s->int_en) !=3D 0);
->  }
->
-> -static uint32_t allwinner_sun8i_emac_next_desc(FrameDescriptor *desc,
-> +static uint32_t allwinner_sun8i_emac_next_desc(AwSun8iEmacState *s,
-> +                                               FrameDescriptor *desc,
->                                                 size_t min_size)
->  {
->      uint32_t paddr =3D desc->next;
->
-> -    cpu_physical_memory_read(paddr, desc, sizeof(*desc));
-> +    dma_memory_read(&s->dma_as, paddr, desc, sizeof(*desc));
->
->      if ((desc->status & DESC_STATUS_CTL) &&
->          (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >=3D min_size) {
-> @@ -352,7 +355,8 @@ static uint32_t
-> allwinner_sun8i_emac_next_desc(FrameDescriptor *desc,
->      }
->  }
->
-> -static uint32_t allwinner_sun8i_emac_get_desc(FrameDescriptor *desc,
-> +static uint32_t allwinner_sun8i_emac_get_desc(AwSun8iEmacState *s,
-> +                                              FrameDescriptor *desc,
->                                                uint32_t start_addr,
->                                                size_t min_size)
->  {
-> @@ -360,7 +364,7 @@ static uint32_t
-> allwinner_sun8i_emac_get_desc(FrameDescriptor *desc,
->
->      /* Note that the list is a cycle. Last entry points back to the head=
-.
-> */
->      while (desc_addr !=3D 0) {
-> -        cpu_physical_memory_read(desc_addr, desc, sizeof(*desc));
-> +        dma_memory_read(&s->dma_as, desc_addr, desc, sizeof(*desc));
->
->          if ((desc->status & DESC_STATUS_CTL) &&
->              (desc->status2 & DESC_STATUS2_BUF_SIZE_MASK) >=3D min_size) =
-{
-> @@ -379,20 +383,21 @@ static uint32_t
-> allwinner_sun8i_emac_rx_desc(AwSun8iEmacState *s,
->                                               FrameDescriptor *desc,
->                                               size_t min_size)
->  {
-> -    return allwinner_sun8i_emac_get_desc(desc, s->rx_desc_curr, min_size=
-);
-> +    return allwinner_sun8i_emac_get_desc(s, desc, s->rx_desc_curr,
-> min_size);
->  }
->
->  static uint32_t allwinner_sun8i_emac_tx_desc(AwSun8iEmacState *s,
->                                               FrameDescriptor *desc,
->                                               size_t min_size)
->  {
-> -    return allwinner_sun8i_emac_get_desc(desc, s->tx_desc_head, min_size=
-);
-> +    return allwinner_sun8i_emac_get_desc(s, desc, s->tx_desc_head,
-> min_size);
->  }
->
-> -static void allwinner_sun8i_emac_flush_desc(FrameDescriptor *desc,
-> +static void allwinner_sun8i_emac_flush_desc(AwSun8iEmacState *s,
-> +                                            FrameDescriptor *desc,
->                                              uint32_t phys_addr)
->  {
-> -    cpu_physical_memory_write(phys_addr, desc, sizeof(*desc));
-> +    dma_memory_write(&s->dma_as, phys_addr, desc, sizeof(*desc));
->  }
->
->  static bool allwinner_sun8i_emac_can_receive(NetClientState *nc)
-> @@ -450,8 +455,8 @@ static ssize_t
-> allwinner_sun8i_emac_receive(NetClientState *nc,
->                              << RX_DESC_STATUS_FRM_LEN_SHIFT;
->          }
->
-> -        cpu_physical_memory_write(desc.addr, buf, desc_bytes);
-> -        allwinner_sun8i_emac_flush_desc(&desc, s->rx_desc_curr);
-> +        dma_memory_write(&s->dma_as, desc.addr, buf, desc_bytes);
-> +        allwinner_sun8i_emac_flush_desc(s, &desc, s->rx_desc_curr);
->          trace_allwinner_sun8i_emac_receive(s->rx_desc_curr, desc.addr,
->                                             desc_bytes);
->
-> @@ -465,7 +470,7 @@ static ssize_t
-> allwinner_sun8i_emac_receive(NetClientState *nc,
->          bytes_left -=3D desc_bytes;
->
->          /* Move to the next descriptor */
-> -        s->rx_desc_curr =3D allwinner_sun8i_emac_next_desc(&desc, 64);
-> +        s->rx_desc_curr =3D allwinner_sun8i_emac_next_desc(s, &desc, 64)=
-;
->          if (!s->rx_desc_curr) {
->              /* Not enough buffer space available */
->              s->int_sta |=3D INT_STA_RX_BUF_UA;
-> @@ -501,10 +506,10 @@ static void
-> allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
->              desc.status |=3D TX_DESC_STATUS_LENGTH_ERR;
->              break;
->          }
-> -        cpu_physical_memory_read(desc.addr, packet_buf + packet_bytes,
-> bytes);
-> +        dma_memory_read(&s->dma_as, desc.addr, packet_buf + packet_bytes=
+> > +    AW_H3_DEV_MMC0,
+> > +    AW_H3_DEV_SID,
+> > +    AW_H3_DEV_EHCI0,
+> > +    AW_H3_DEV_OHCI0,
+> > +    AW_H3_DEV_EHCI1,
+> > +    AW_H3_DEV_OHCI1,
+> > +    AW_H3_DEV_EHCI2,
+> > +    AW_H3_DEV_OHCI2,
+> > +    AW_H3_DEV_EHCI3,
+> > +    AW_H3_DEV_OHCI3,
+> > +    AW_H3_DEV_CCU,
+> > +    AW_H3_DEV_PIT,
+> > +    AW_H3_DEV_UART0,
+> > +    AW_H3_DEV_UART1,
+> > +    AW_H3_DEV_UART2,
+> > +    AW_H3_DEV_UART3,
+> > +    AW_H3_DEV_EMAC,
+> > +    AW_H3_DEV_DRAMCOM,
+> > +    AW_H3_DEV_DRAMCTL,
+> > +    AW_H3_DEV_DRAMPHY,
+> > +    AW_H3_DEV_GIC_DIST,
+> > +    AW_H3_DEV_GIC_CPU,
+> > +    AW_H3_DEV_GIC_HYP,
+> > +    AW_H3_DEV_GIC_VCPU,
+> > +    AW_H3_DEV_RTC,
+> > +    AW_H3_DEV_CPUCFG,
+> > +    AW_H3_DEV_SDRAM
+> >  };
+> >
+> >  /** Total number of CPU cores in the H3 SoC */
+> > diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c
+> > index ff92ded82c..341abe6718 100644
+> > --- a/hw/arm/allwinner-h3.c
+> > +++ b/hw/arm/allwinner-h3.c
+> > @@ -35,37 +35,37 @@
+> >
+> >  /* Memory map */
+> >  const hwaddr allwinner_h3_memmap[] =3D {
+> > -    [AW_H3_SRAM_A1]    =3D 0x00000000,
+> > -    [AW_H3_SRAM_A2]    =3D 0x00044000,
+> > -    [AW_H3_SRAM_C]     =3D 0x00010000,
+> > -    [AW_H3_SYSCTRL]    =3D 0x01c00000,
+> > -    [AW_H3_MMC0]       =3D 0x01c0f000,
+> > -    [AW_H3_SID]        =3D 0x01c14000,
+> > -    [AW_H3_EHCI0]      =3D 0x01c1a000,
+> > -    [AW_H3_OHCI0]      =3D 0x01c1a400,
+> > -    [AW_H3_EHCI1]      =3D 0x01c1b000,
+> > -    [AW_H3_OHCI1]      =3D 0x01c1b400,
+> > -    [AW_H3_EHCI2]      =3D 0x01c1c000,
+> > -    [AW_H3_OHCI2]      =3D 0x01c1c400,
+> > -    [AW_H3_EHCI3]      =3D 0x01c1d000,
+> > -    [AW_H3_OHCI3]      =3D 0x01c1d400,
+> > -    [AW_H3_CCU]        =3D 0x01c20000,
+> > -    [AW_H3_PIT]        =3D 0x01c20c00,
+> > -    [AW_H3_UART0]      =3D 0x01c28000,
+> > -    [AW_H3_UART1]      =3D 0x01c28400,
+> > -    [AW_H3_UART2]      =3D 0x01c28800,
+> > -    [AW_H3_UART3]      =3D 0x01c28c00,
+> > -    [AW_H3_EMAC]       =3D 0x01c30000,
+> > -    [AW_H3_DRAMCOM]    =3D 0x01c62000,
+> > -    [AW_H3_DRAMCTL]    =3D 0x01c63000,
+> > -    [AW_H3_DRAMPHY]    =3D 0x01c65000,
+> > -    [AW_H3_GIC_DIST]   =3D 0x01c81000,
+> > -    [AW_H3_GIC_CPU]    =3D 0x01c82000,
+> > -    [AW_H3_GIC_HYP]    =3D 0x01c84000,
+> > -    [AW_H3_GIC_VCPU]   =3D 0x01c86000,
+> > -    [AW_H3_RTC]        =3D 0x01f00000,
+> > -    [AW_H3_CPUCFG]     =3D 0x01f01c00,
+> > -    [AW_H3_SDRAM]      =3D 0x40000000
+> > +    [AW_H3_DEV_SRAM_A1]    =3D 0x00000000,
+> > +    [AW_H3_DEV_SRAM_A2]    =3D 0x00044000,
+> > +    [AW_H3_DEV_SRAM_C]     =3D 0x00010000,
+> > +    [AW_H3_DEV_SYSCTRL]    =3D 0x01c00000,
+> > +    [AW_H3_DEV_MMC0]       =3D 0x01c0f000,
+> > +    [AW_H3_DEV_SID]        =3D 0x01c14000,
+> > +    [AW_H3_DEV_EHCI0]      =3D 0x01c1a000,
+> > +    [AW_H3_DEV_OHCI0]      =3D 0x01c1a400,
+> > +    [AW_H3_DEV_EHCI1]      =3D 0x01c1b000,
+> > +    [AW_H3_DEV_OHCI1]      =3D 0x01c1b400,
+> > +    [AW_H3_DEV_EHCI2]      =3D 0x01c1c000,
+> > +    [AW_H3_DEV_OHCI2]      =3D 0x01c1c400,
+> > +    [AW_H3_DEV_EHCI3]      =3D 0x01c1d000,
+> > +    [AW_H3_DEV_OHCI3]      =3D 0x01c1d400,
+> > +    [AW_H3_DEV_CCU]        =3D 0x01c20000,
+> > +    [AW_H3_DEV_PIT]        =3D 0x01c20c00,
+> > +    [AW_H3_DEV_UART0]      =3D 0x01c28000,
+> > +    [AW_H3_DEV_UART1]      =3D 0x01c28400,
+> > +    [AW_H3_DEV_UART2]      =3D 0x01c28800,
+> > +    [AW_H3_DEV_UART3]      =3D 0x01c28c00,
+> > +    [AW_H3_DEV_EMAC]       =3D 0x01c30000,
+> > +    [AW_H3_DEV_DRAMCOM]    =3D 0x01c62000,
+> > +    [AW_H3_DEV_DRAMCTL]    =3D 0x01c63000,
+> > +    [AW_H3_DEV_DRAMPHY]    =3D 0x01c65000,
+> > +    [AW_H3_DEV_GIC_DIST]   =3D 0x01c81000,
+> > +    [AW_H3_DEV_GIC_CPU]    =3D 0x01c82000,
+> > +    [AW_H3_DEV_GIC_HYP]    =3D 0x01c84000,
+> > +    [AW_H3_DEV_GIC_VCPU]   =3D 0x01c86000,
+> > +    [AW_H3_DEV_RTC]        =3D 0x01f00000,
+> > +    [AW_H3_DEV_CPUCFG]     =3D 0x01f01c00,
+> > +    [AW_H3_DEV_SDRAM]      =3D 0x40000000
+> >  };
+> >
+> >  /* List of unimplemented devices */
+> > @@ -183,7 +183,7 @@ void allwinner_h3_bootrom_setup(AwH3State *s,
+> BlockBackend *blk)
+> >      }
+> >
+> >      rom_add_blob("allwinner-h3.bootrom", buffer, rom_size,
+> > -                  rom_size, s->memmap[AW_H3_SRAM_A1],
+> > +                  rom_size, s->memmap[AW_H3_DEV_SRAM_A1],
+> >                    NULL, NULL, NULL, NULL, false);
+> >  }
+> >
+> > @@ -262,10 +262,10 @@ static void allwinner_h3_realize(DeviceState *dev=
 ,
-> bytes);
->          packet_bytes +=3D bytes;
->          desc.status &=3D ~DESC_STATUS_CTL;
-> -        allwinner_sun8i_emac_flush_desc(&desc, s->tx_desc_curr);
-> +        allwinner_sun8i_emac_flush_desc(s, &desc, s->tx_desc_curr);
->
->          /* After the last descriptor, send the packet */
->          if (desc.status2 & TX_DESC_STATUS2_LAST_DESC) {
-> @@ -519,7 +524,7 @@ static void
-> allwinner_sun8i_emac_transmit(AwSun8iEmacState *s)
->              packet_bytes =3D 0;
->              transmitted++;
->          }
-> -        s->tx_desc_curr =3D allwinner_sun8i_emac_next_desc(&desc, 0);
-> +        s->tx_desc_curr =3D allwinner_sun8i_emac_next_desc(s, &desc, 0);
->      }
->
->      /* Raise transmit completed interrupt */
-> @@ -623,7 +628,7 @@ static uint64_t allwinner_sun8i_emac_read(void
-> *opaque, hwaddr offset,
->          break;
->      case REG_TX_CUR_BUF:        /* Transmit Current Buffer */
->          if (s->tx_desc_curr !=3D 0) {
-> -            cpu_physical_memory_read(s->tx_desc_curr, &desc,
-> sizeof(desc));
-> +            dma_memory_read(&s->dma_as, s->tx_desc_curr, &desc,
-> sizeof(desc));
->              value =3D desc.addr;
->          } else {
->              value =3D 0;
-> @@ -636,7 +641,7 @@ static uint64_t allwinner_sun8i_emac_read(void
-> *opaque, hwaddr offset,
->          break;
->      case REG_RX_CUR_BUF:        /* Receive Current Buffer */
->          if (s->rx_desc_curr !=3D 0) {
-> -            cpu_physical_memory_read(s->rx_desc_curr, &desc,
-> sizeof(desc));
-> +            dma_memory_read(&s->dma_as, s->rx_desc_curr, &desc,
-> sizeof(desc));
->              value =3D desc.addr;
->          } else {
->              value =3D 0;
-> @@ -790,6 +795,13 @@ static void allwinner_sun8i_emac_realize(DeviceState
-> *dev, Error **errp)
->  {
->      AwSun8iEmacState *s =3D AW_SUN8I_EMAC(dev);
->
-> +    if (!s->dma_mr) {
-> +        error_setg(errp, TYPE_AW_SUN8I_EMAC " 'dma-memory' link not set"=
+> Error **errp)
+> >      qdev_prop_set_bit(DEVICE(&s->gic), "has-virtualization-extensions"=
+,
+> true);
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->gic), &error_fatal);
+> >
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0,
+> s->memmap[AW_H3_GIC_DIST]);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1,
+> s->memmap[AW_H3_GIC_CPU]);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2,
+> s->memmap[AW_H3_GIC_HYP]);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3,
+> s->memmap[AW_H3_GIC_VCPU]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 0,
+> s->memmap[AW_H3_DEV_GIC_DIST]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 1,
+> s->memmap[AW_H3_DEV_GIC_CPU]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 2,
+> s->memmap[AW_H3_DEV_GIC_HYP]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gic), 3,
+> s->memmap[AW_H3_DEV_GIC_VCPU]);
+> >
+> >      /*
+> >       * Wire the outputs from each CPU's generic timer and the GICv3
+> > @@ -312,7 +312,7 @@ static void allwinner_h3_realize(DeviceState *dev,
+> Error **errp)
+> >
+> >      /* Timer */
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->timer), &error_fatal);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer), 0, s->memmap[AW_H3_PIT]=
 );
-> +        return;
-> +    }
-> +
-> +    address_space_init(&s->dma_as, s->dma_mr, "emac-dma");
-> +
->      qemu_macaddr_default_if_unset(&s->conf.macaddr);
->      s->nic =3D qemu_new_nic(&net_allwinner_sun8i_emac_info, &s->conf,
->                             object_get_typename(OBJECT(dev)), dev->id, s)=
-;
-> @@ -799,6 +811,8 @@ static void allwinner_sun8i_emac_realize(DeviceState
-> *dev, Error **errp)
->  static Property allwinner_sun8i_emac_properties[] =3D {
->      DEFINE_NIC_PROPERTIES(AwSun8iEmacState, conf),
->      DEFINE_PROP_UINT8("phy-addr", AwSun8iEmacState, mii_phy_addr, 0),
-> +    DEFINE_PROP_LINK("dma-memory", AwSun8iEmacState, dma_mr,
-> +                     TYPE_MEMORY_REGION, MemoryRegion *),
->      DEFINE_PROP_END_OF_LIST(),
->  };
->
-> --
-> 2.21.3
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->timer), 0,
+> s->memmap[AW_H3_DEV_PIT]);
+> >      sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 0,
+> >                         qdev_get_gpio_in(DEVICE(&s->gic),
+> AW_H3_GIC_SPI_TIMER0));
+> >      sysbus_connect_irq(SYS_BUS_DEVICE(&s->timer), 1,
+> > @@ -325,32 +325,32 @@ static void allwinner_h3_realize(DeviceState *dev=
+,
+> Error **errp)
+> >                              32 * KiB, &error_abort);
+> >      memory_region_init_ram(&s->sram_c, OBJECT(dev), "sram C",
+> >                              44 * KiB, &error_abort);
+> > -    memory_region_add_subregion(get_system_memory(),
+> s->memmap[AW_H3_SRAM_A1],
+> > +    memory_region_add_subregion(get_system_memory(),
+> s->memmap[AW_H3_DEV_SRAM_A1],
+> >                                  &s->sram_a1);
+> > -    memory_region_add_subregion(get_system_memory(),
+> s->memmap[AW_H3_SRAM_A2],
+> > +    memory_region_add_subregion(get_system_memory(),
+> s->memmap[AW_H3_DEV_SRAM_A2],
+> >                                  &s->sram_a2);
+> > -    memory_region_add_subregion(get_system_memory(),
+> s->memmap[AW_H3_SRAM_C],
+> > +    memory_region_add_subregion(get_system_memory(),
+> s->memmap[AW_H3_DEV_SRAM_C],
+> >                                  &s->sram_c);
+> >
+> >      /* Clock Control Unit */
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->ccu), &error_fatal);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0, s->memmap[AW_H3_CCU]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ccu), 0,
+> s->memmap[AW_H3_DEV_CCU]);
+> >
+> >      /* System Control */
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->sysctrl), &error_fatal);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysctrl), 0,
+> s->memmap[AW_H3_SYSCTRL]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysctrl), 0,
+> s->memmap[AW_H3_DEV_SYSCTRL]);
+> >
+> >      /* CPU Configuration */
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->cpucfg), &error_fatal);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0,
+> s->memmap[AW_H3_CPUCFG]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->cpucfg), 0,
+> s->memmap[AW_H3_DEV_CPUCFG]);
+> >
+> >      /* Security Identifier */
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->sid), &error_fatal);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0, s->memmap[AW_H3_SID]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sid), 0,
+> s->memmap[AW_H3_DEV_SID]);
+> >
+> >      /* SD/MMC */
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->mmc0), &error_fatal);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc0), 0, s->memmap[AW_H3_MMC0]=
+);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mmc0), 0,
+> s->memmap[AW_H3_DEV_MMC0]);
+> >      sysbus_connect_irq(SYS_BUS_DEVICE(&s->mmc0), 0,
+> >                         qdev_get_gpio_in(DEVICE(&s->gic),
+> AW_H3_GIC_SPI_MMC0));
+> >
+> > @@ -364,63 +364,63 @@ static void allwinner_h3_realize(DeviceState *dev=
+,
+> Error **errp)
+> >          qdev_set_nic_properties(DEVICE(&s->emac), &nd_table[0]);
+> >      }
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->emac), &error_fatal);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->emac), 0, s->memmap[AW_H3_EMAC]=
+);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->emac), 0,
+> s->memmap[AW_H3_DEV_EMAC]);
+> >      sysbus_connect_irq(SYS_BUS_DEVICE(&s->emac), 0,
+> >                         qdev_get_gpio_in(DEVICE(&s->gic),
+> AW_H3_GIC_SPI_EMAC));
+> >
+> >      /* Universal Serial Bus */
+> > -    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI0],
+> > +    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_DEV_EHCI0],
+> >                           qdev_get_gpio_in(DEVICE(&s->gic),
+> >                                            AW_H3_GIC_SPI_EHCI0));
+> > -    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI1],
+> > +    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_DEV_EHCI1],
+> >                           qdev_get_gpio_in(DEVICE(&s->gic),
+> >                                            AW_H3_GIC_SPI_EHCI1));
+> > -    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI2],
+> > +    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_DEV_EHCI2],
+> >                           qdev_get_gpio_in(DEVICE(&s->gic),
+> >                                            AW_H3_GIC_SPI_EHCI2));
+> > -    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_EHCI3],
+> > +    sysbus_create_simple(TYPE_AW_H3_EHCI, s->memmap[AW_H3_DEV_EHCI3],
+> >                           qdev_get_gpio_in(DEVICE(&s->gic),
+> >                                            AW_H3_GIC_SPI_EHCI3));
+> >
+> > -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI0],
+> > +    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_DEV_OHCI0],
+> >                           qdev_get_gpio_in(DEVICE(&s->gic),
+> >                                            AW_H3_GIC_SPI_OHCI0));
+> > -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI1],
+> > +    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_DEV_OHCI1],
+> >                           qdev_get_gpio_in(DEVICE(&s->gic),
+> >                                            AW_H3_GIC_SPI_OHCI1));
+> > -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI2],
+> > +    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_DEV_OHCI2],
+> >                           qdev_get_gpio_in(DEVICE(&s->gic),
+> >                                            AW_H3_GIC_SPI_OHCI2));
+> > -    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_OHCI3],
+> > +    sysbus_create_simple("sysbus-ohci", s->memmap[AW_H3_DEV_OHCI3],
+> >                           qdev_get_gpio_in(DEVICE(&s->gic),
+> >                                            AW_H3_GIC_SPI_OHCI3));
+> >
+> >      /* UART0. For future clocktree API: All UARTS are connected to
+> APB2_CLK. */
+> > -    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART0], 2,
+> > +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART0], 2,
+> >                     qdev_get_gpio_in(DEVICE(&s->gic),
+> AW_H3_GIC_SPI_UART0),
+> >                     115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);
+> >      /* UART1 */
+> > -    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART1], 2,
+> > +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART1], 2,
+> >                     qdev_get_gpio_in(DEVICE(&s->gic),
+> AW_H3_GIC_SPI_UART1),
+> >                     115200, serial_hd(1), DEVICE_NATIVE_ENDIAN);
+> >      /* UART2 */
+> > -    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART2], 2,
+> > +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART2], 2,
+> >                     qdev_get_gpio_in(DEVICE(&s->gic),
+> AW_H3_GIC_SPI_UART2),
+> >                     115200, serial_hd(2), DEVICE_NATIVE_ENDIAN);
+> >      /* UART3 */
+> > -    serial_mm_init(get_system_memory(), s->memmap[AW_H3_UART3], 2,
+> > +    serial_mm_init(get_system_memory(), s->memmap[AW_H3_DEV_UART3], 2,
+> >                     qdev_get_gpio_in(DEVICE(&s->gic),
+> AW_H3_GIC_SPI_UART3),
+> >                     115200, serial_hd(3), DEVICE_NATIVE_ENDIAN);
+> >
+> >      /* DRAMC */
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->dramc), &error_fatal);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 0,
+> s->memmap[AW_H3_DRAMCOM]);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 1,
+> s->memmap[AW_H3_DRAMCTL]);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 2,
+> s->memmap[AW_H3_DRAMPHY]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 0,
+> s->memmap[AW_H3_DEV_DRAMCOM]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 1,
+> s->memmap[AW_H3_DEV_DRAMCTL]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dramc), 2,
+> s->memmap[AW_H3_DEV_DRAMPHY]);
+> >
+> >      /* RTC */
+> >      sysbus_realize(SYS_BUS_DEVICE(&s->rtc), &error_fatal);
+> > -    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0, s->memmap[AW_H3_RTC]);
+> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rtc), 0,
+> s->memmap[AW_H3_DEV_RTC]);
+> >
+> >      /* Unimplemented devices */
+> >      for (i =3D 0; i < ARRAY_SIZE(unimplemented); i++) {
+> > diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+> > index 1679468232..17a568a2b4 100644
+> > --- a/hw/arm/orangepi.c
+> > +++ b/hw/arm/orangepi.c
+> > @@ -79,7 +79,7 @@ static void orangepi_init(MachineState *machine)
+> >      object_property_set_int(OBJECT(&h3->emac), "phy-addr", 1,
+> &error_abort);
+> >
+> >      /* DRAMC */
+> > -    object_property_set_uint(OBJECT(h3), "ram-addr",
+> h3->memmap[AW_H3_SDRAM],
+> > +    object_property_set_uint(OBJECT(h3), "ram-addr",
+> h3->memmap[AW_H3_DEV_SDRAM],
+> >                               &error_abort);
+> >      object_property_set_int(OBJECT(h3), "ram-size", machine->ram_size =
+/
+> MiB,
+> >                              &error_abort);
+> > @@ -98,7 +98,7 @@ static void orangepi_init(MachineState *machine)
+> >      qdev_realize_and_unref(carddev, bus, &error_fatal);
+> >
+> >      /* SDRAM */
+> > -    memory_region_add_subregion(get_system_memory(),
+> h3->memmap[AW_H3_SDRAM],
+> > +    memory_region_add_subregion(get_system_memory(),
+> h3->memmap[AW_H3_DEV_SDRAM],
+> >                                  machine->ram);
+> >
+> >      /* Load target kernel or start using BootROM */
+> > @@ -106,7 +106,7 @@ static void orangepi_init(MachineState *machine)
+> >          /* Use Boot ROM to copy data from SD card to SRAM */
+> >          allwinner_h3_bootrom_setup(h3, blk);
+> >      }
+> > -    orangepi_binfo.loader_start =3D h3->memmap[AW_H3_SDRAM];
+> > +    orangepi_binfo.loader_start =3D h3->memmap[AW_H3_DEV_SDRAM];
+> >      orangepi_binfo.ram_size =3D machine->ram_size;
+> >      arm_load_kernel(ARM_CPU(first_cpu), machine, &orangepi_binfo);
+> >  }
+> >
 >
 >
 
 --=20
 Niek Linnenbank
 
---0000000000003e29ad05ad1724e9
+--000000000000ce580e05ad177df0
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div>Same as the one=
- for the SD device: I tested it with the avocado tests and the official ima=
-ge OrangePi_pc_debian_stretch_server_linux5.3.5_v1.0.img</div><div>and netw=
-orking is working good (ran some apt-get commands etc).</div><div><br></div=
-><div>Reviewed-by: Niek Linnenbank &lt;<a href=3D"mailto:nieklinnenbank@gma=
-il.com">nieklinnenbank@gmail.com</a>&gt;</div><div>Tested-by: Niek Linnenba=
-nk &lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com=
-</a>&gt;</div><div><br></div><div>Regards,</div><div>Niek<br></div></div><b=
-r><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Fri, =
-Aug 14, 2020 at 2:29 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f=
-4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">Allow the device to execute the DMA transf=
-ers in a different<br>
-AddressSpace.<br>
+<div dir=3D"ltr"><div>Hi,</div><div><br></div><div>Interesting suggestion P=
+hilippe. I modelled the initial code of the H3 SoC mostly in-line with the =
+aspeed SoC,</div><div>to let it use commonly applied code structures where =
+possible. And it looks like in this series, aspeed_soc.h is also</div><div>=
+getting the same change. I&#39;ll see if I can find some time to make a sma=
+ll patch to move the enum to the local allwinner-h3.c file like you</div><d=
+iv>suggested.</div><div><br></div><div>For Eduardo&#39;s work, I&#39;m OK w=
+ith a rename for now to AW_H3_DEV_*. I see it is also done like that in asp=
+eed_soc.h and similar files.</div><div><div>I do have one follow-up questio=
+n: which value(s) from the enum are actually in conflict? Could you add tha=
+t in the commit message perhaps, for clarity?<br></div><div><br></div></div=
+>With that answered:<br><div><div><div>=C2=A0 Reviewed-by: Niek Linnenbank =
+&lt;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a=
+>&gt;</div><div><br></div><div>Regards,</div><div>Niek<br></div></div></div=
+></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr"=
+>On Fri, Aug 14, 2020 at 7:54 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D=
+"mailto:f4bug@amsat.org">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquot=
+e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px s=
+olid rgb(204,204,204);padding-left:1ex">+Niek as maintainer.<br>
 <br>
-The H3 SoC keeps using the system_memory address space,<br>
-but via the proper dma_memory_access() API.<br>
-<br>
-Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsa=
-t.org" target=3D"_blank">f4bug@amsat.org</a>&gt;<br>
----<br>
-Tested with:<br>
-=C2=A0 AVOCADO_ALLOW_LARGE_STORAGE=3D1 avocado run -t machine:orangepi-pc t=
-ests/acceptance/<br>
----<br>
-=C2=A0include/hw/net/allwinner-sun8i-emac.h |=C2=A0 6 ++++<br>
-=C2=A0hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0|=C2=A0 2 ++<br>
-=C2=A0hw/net/allwinner-sun8i-emac.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 46 +=
-++++++++++++++++----------<br>
-=C2=A03 files changed, 38 insertions(+), 16 deletions(-)<br>
-<br>
-diff --git a/include/hw/net/allwinner-sun8i-emac.h b/include/hw/net/allwinn=
-er-sun8i-emac.h<br>
-index eda034e96b..dd1d7b96cd 100644<br>
---- a/include/hw/net/allwinner-sun8i-emac.h<br>
-+++ b/include/hw/net/allwinner-sun8i-emac.h<br>
-@@ -49,6 +49,12 @@ typedef struct AwSun8iEmacState {<br>
-=C2=A0 =C2=A0 =C2=A0/** Interrupt output signal to notify CPU */<br>
-=C2=A0 =C2=A0 =C2=A0qemu_irq=C2=A0 =C2=A0 =C2=A0irq;<br>
-<br>
-+=C2=A0 =C2=A0 /** Memory region where DMA transfers are done */<br>
-+=C2=A0 =C2=A0 MemoryRegion *dma_mr;<br>
-+<br>
-+=C2=A0 =C2=A0 /** Address space used internally for DMA transfers */<br>
-+=C2=A0 =C2=A0 AddressSpace dma_as;<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0/** Generic Network Interface Controller (NIC) for netw=
-orking API */<br>
-=C2=A0 =C2=A0 =C2=A0NICState=C2=A0 =C2=A0 =C2=A0*nic;<br>
-<br>
-diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
-index ff92ded82c..21a5d759d1 100644<br>
---- a/hw/arm/allwinner-h3.c<br>
-+++ b/hw/arm/allwinner-h3.c<br>
-@@ -363,6 +363,8 @@ static void allwinner_h3_realize(DeviceState *dev, Erro=
-r **errp)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_check_nic_model(&amp;nd_table[0], TY=
-PE_AW_SUN8I_EMAC);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_set_nic_properties(DEVICE(&amp;s-&gt=
-;emac), &amp;nd_table[0]);<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-+=C2=A0 =C2=A0 object_property_set_link(OBJECT(&amp;s-&gt;emac), &quot;dma-=
-memory&quot;,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0OBJECT(get_system_memory()), &amp;error_fata=
-l);<br>
-=C2=A0 =C2=A0 =C2=A0sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;emac), &amp;er=
-ror_fatal);<br>
-=C2=A0 =C2=A0 =C2=A0sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;emac), 0, s-&=
-gt;memmap[AW_H3_EMAC]);<br>
-=C2=A0 =C2=A0 =C2=A0sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;emac), 0,<=
+On 8/14/20 12:25 AM, Eduardo Habkost wrote:<br>
+&gt; Some of the enum constant names conflict with the QOM type check<br>
+&gt; macros.=C2=A0 This needs to be addressed to allow us to transform the<=
 br>
-diff --git a/hw/net/allwinner-sun8i-emac.c b/hw/net/allwinner-sun8i-emac.c<=
+&gt; QOM type check macros into functions generated by<br>
+&gt; OBJECT_DECLARE_TYPE().<br>
+&gt; <br>
+&gt; Rename all the constants to AW_H3_DEV_*, to avoid conflicts.<br>
+&gt; <br>
+&gt; Signed-off-by: Eduardo Habkost &lt;<a href=3D"mailto:ehabkost@redhat.c=
+om" target=3D"_blank">ehabkost@redhat.com</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 include/hw/arm/allwinner-h3.h |=C2=A0 62 ++++++++---------<br>
+&gt;=C2=A0 hw/arm/allwinner-h3.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 124 +++=
+++++++++++++++-----------------<br>
+&gt;=C2=A0 hw/arm/orangepi.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0|=C2=A0 =C2=A06 +-<br>
+&gt;=C2=A0 3 files changed, 96 insertions(+), 96 deletions(-)<br>
+&gt; <br>
+&gt; diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-=
+h3.h<br>
+&gt; index 82e4e59216..626139dcb3 100644<br>
+&gt; --- a/include/hw/arm/allwinner-h3.h<br>
+&gt; +++ b/include/hw/arm/allwinner-h3.h<br>
+&gt; @@ -61,37 +61,37 @@<br>
+&gt;=C2=A0 =C2=A0* @see AwH3State<br>
+&gt;=C2=A0 =C2=A0*/<br>
+&gt;=C2=A0 enum {<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_SRAM_A1,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_SRAM_A2,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_SRAM_C,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_SYSCTRL,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_MMC0,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_SID,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_EHCI0,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_OHCI0,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_EHCI1,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_OHCI1,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_EHCI2,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_OHCI2,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_EHCI3,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_OHCI3,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_CCU,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_PIT,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_UART0,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_UART1,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_UART2,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_UART3,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_EMAC,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_DRAMCOM,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_DRAMCTL,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_DRAMPHY,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_GIC_DIST,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_GIC_CPU,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_GIC_HYP,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_GIC_VCPU,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_RTC,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_CPUCFG,<br>
+&gt; -=C2=A0 =C2=A0 AW_H3_SDRAM<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_SRAM_A1,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_SRAM_A2,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_SRAM_C,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_SYSCTRL,<br>
+<br>
+My 2 cents:<br>
+These are not devices, but peripheral blocks or IP cores.<br>
+Anyway, short change could be to name them E_AW_H3_xxx,<br>
+but I don&#39;t understand why these are exposed. This enum<br>
+should be locally declared in hw/arm/allwinner-h3.c,<br>
+and the SoC might provide a get_sdram_base_address()<br>
+method so the machine can access it.<br>
+<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_MMC0,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_SID,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_EHCI0,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_OHCI0,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_EHCI1,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_OHCI1,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_EHCI2,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_OHCI2,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_EHCI3,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_OHCI3,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_CCU,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_PIT,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_UART0,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_UART1,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_UART2,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_UART3,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_EMAC,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_DRAMCOM,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_DRAMCTL,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_DRAMPHY,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_GIC_DIST,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_GIC_CPU,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_GIC_HYP,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_GIC_VCPU,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_RTC,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_CPUCFG,<br>
+&gt; +=C2=A0 =C2=A0 AW_H3_DEV_SDRAM<br>
+&gt;=C2=A0 };<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 /** Total number of CPU cores in the H3 SoC */<br>
+&gt; diff --git a/hw/arm/allwinner-h3.c b/hw/arm/allwinner-h3.c<br>
+&gt; index ff92ded82c..341abe6718 100644<br>
+&gt; --- a/hw/arm/allwinner-h3.c<br>
+&gt; +++ b/hw/arm/allwinner-h3.c<br>
+&gt; @@ -35,37 +35,37 @@<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 /* Memory map */<br>
+&gt;=C2=A0 const hwaddr allwinner_h3_memmap[] =3D {<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_SRAM_A1]=C2=A0 =C2=A0 =3D 0x00000000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_SRAM_A2]=C2=A0 =C2=A0 =3D 0x00044000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_SRAM_C]=C2=A0 =C2=A0 =C2=A0=3D 0x00010000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_SYSCTRL]=C2=A0 =C2=A0 =3D 0x01c00000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_MMC0]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 0x01c0f000,<=
 br>
-index 28637ff4c1..38d328587e 100644<br>
---- a/hw/net/allwinner-sun8i-emac.c<br>
-+++ b/hw/net/allwinner-sun8i-emac.c<br>
-@@ -19,6 +19,7 @@<br>
-<br>
-=C2=A0#include &quot;qemu/osdep.h&quot;<br>
-=C2=A0#include &quot;qemu/units.h&quot;<br>
-+#include &quot;qapi/error.h&quot;<br>
-=C2=A0#include &quot;hw/sysbus.h&quot;<br>
-=C2=A0#include &quot;migration/vmstate.h&quot;<br>
-=C2=A0#include &quot;net/net.h&quot;<br>
-@@ -29,6 +30,7 @@<br>
-=C2=A0#include &quot;net/checksum.h&quot;<br>
-=C2=A0#include &quot;qemu/module.h&quot;<br>
-=C2=A0#include &quot;exec/cpu-common.h&quot;<br>
-+#include &quot;sysemu/dma.h&quot;<br>
-=C2=A0#include &quot;hw/net/allwinner-sun8i-emac.h&quot;<br>
-<br>
-=C2=A0/* EMAC register offsets */<br>
-@@ -337,12 +339,13 @@ static void allwinner_sun8i_emac_update_irq(AwSun8iEm=
-acState *s)<br>
-=C2=A0 =C2=A0 =C2=A0qemu_set_irq(s-&gt;irq, (s-&gt;int_sta &amp; s-&gt;int_=
-en) !=3D 0);<br>
-=C2=A0}<br>
-<br>
--static uint32_t allwinner_sun8i_emac_next_desc(FrameDescriptor *desc,<br>
-+static uint32_t allwinner_sun8i_emac_next_desc(AwSun8iEmacState *s,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0FrameDescriptor *desc,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 size_t min_size)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0uint32_t paddr =3D desc-&gt;next;<br>
-<br>
--=C2=A0 =C2=A0 cpu_physical_memory_read(paddr, desc, sizeof(*desc));<br>
-+=C2=A0 =C2=A0 dma_memory_read(&amp;s-&gt;dma_as, paddr, desc, sizeof(*desc=
-));<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0if ((desc-&gt;status &amp; DESC_STATUS_CTL) &amp;&amp;<=
+&gt; -=C2=A0 =C2=A0 [AW_H3_SID]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c14000,<=
 br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(desc-&gt;status2 &amp; DESC_STATUS2_BUF_=
-SIZE_MASK) &gt;=3D min_size) {<br>
-@@ -352,7 +355,8 @@ static uint32_t allwinner_sun8i_emac_next_desc(FrameDes=
-criptor *desc,<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0}<br>
-<br>
--static uint32_t allwinner_sun8i_emac_get_desc(FrameDescriptor *desc,<br>
-+static uint32_t allwinner_sun8i_emac_get_desc(AwSun8iEmacState *s,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 FrameDescriptor *desc,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0uint32_t start_addr,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0size_t min_size)<br>
-=C2=A0{<br>
-@@ -360,7 +364,7 @@ static uint32_t allwinner_sun8i_emac_get_desc(FrameDesc=
-riptor *desc,<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0/* Note that the list is a cycle. Last entry points bac=
-k to the head. */<br>
-=C2=A0 =C2=A0 =C2=A0while (desc_addr !=3D 0) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_physical_memory_read(desc_addr, desc, size=
-of(*desc));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 dma_memory_read(&amp;s-&gt;dma_as, desc_addr, =
-desc, sizeof(*desc));<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if ((desc-&gt;status &amp; DESC_STATUS_CT=
-L) &amp;&amp;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0(desc-&gt;status2 &amp; DES=
-C_STATUS2_BUF_SIZE_MASK) &gt;=3D min_size) {<br>
-@@ -379,20 +383,21 @@ static uint32_t allwinner_sun8i_emac_rx_desc(AwSun8iE=
-macState *s,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 FrameDescriptor *desc,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 size_t min_size)<br>
-=C2=A0{<br>
--=C2=A0 =C2=A0 return allwinner_sun8i_emac_get_desc(desc, s-&gt;rx_desc_cur=
-r, min_size);<br>
-+=C2=A0 =C2=A0 return allwinner_sun8i_emac_get_desc(s, desc, s-&gt;rx_desc_=
-curr, min_size);<br>
-=C2=A0}<br>
-<br>
-=C2=A0static uint32_t allwinner_sun8i_emac_tx_desc(AwSun8iEmacState *s,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 FrameDescriptor *desc,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 size_t min_size)<br>
-=C2=A0{<br>
--=C2=A0 =C2=A0 return allwinner_sun8i_emac_get_desc(desc, s-&gt;tx_desc_hea=
-d, min_size);<br>
-+=C2=A0 =C2=A0 return allwinner_sun8i_emac_get_desc(s, desc, s-&gt;tx_desc_=
-head, min_size);<br>
-=C2=A0}<br>
-<br>
--static void allwinner_sun8i_emac_flush_desc(FrameDescriptor *desc,<br>
-+static void allwinner_sun8i_emac_flush_desc(AwSun8iEmacState *s,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 FrameDescriptor *desc,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0uint32_t phys_addr)<br>
-=C2=A0{<br>
--=C2=A0 =C2=A0 cpu_physical_memory_write(phys_addr, desc, sizeof(*desc));<b=
+&gt; -=C2=A0 =C2=A0 [AW_H3_EHCI0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1a000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_OHCI0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1a400,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_EHCI1]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1b000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_OHCI1]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1b400,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_EHCI2]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1c000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_OHCI2]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1c400,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_EHCI3]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1d000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_OHCI3]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1d400,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_CCU]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c20000,<=
+br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_PIT]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c20c00,<=
+br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_UART0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c28000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_UART1]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c28400,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_UART2]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c28800,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_UART3]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c28c00,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_EMAC]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 0x01c30000,<=
+br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_DRAMCOM]=C2=A0 =C2=A0 =3D 0x01c62000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_DRAMCTL]=C2=A0 =C2=A0 =3D 0x01c63000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_DRAMPHY]=C2=A0 =C2=A0 =3D 0x01c65000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_GIC_DIST]=C2=A0 =C2=A0=3D 0x01c81000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_GIC_CPU]=C2=A0 =C2=A0 =3D 0x01c82000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_GIC_HYP]=C2=A0 =C2=A0 =3D 0x01c84000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_GIC_VCPU]=C2=A0 =C2=A0=3D 0x01c86000,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_RTC]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01f00000,<=
+br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_CPUCFG]=C2=A0 =C2=A0 =C2=A0=3D 0x01f01c00,<br>
+&gt; -=C2=A0 =C2=A0 [AW_H3_SDRAM]=C2=A0 =C2=A0 =C2=A0 =3D 0x40000000<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_SRAM_A1]=C2=A0 =C2=A0 =3D 0x00000000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_SRAM_A2]=C2=A0 =C2=A0 =3D 0x00044000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_SRAM_C]=C2=A0 =C2=A0 =C2=A0=3D 0x00010000,<b=
 r>
-+=C2=A0 =C2=A0 dma_memory_write(&amp;s-&gt;dma_as, phys_addr, desc, sizeof(=
-*desc));<br>
-=C2=A0}<br>
-<br>
-=C2=A0static bool allwinner_sun8i_emac_can_receive(NetClientState *nc)<br>
-@@ -450,8 +455,8 @@ static ssize_t allwinner_sun8i_emac_receive(NetClientSt=
-ate *nc,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&lt;&lt; RX_DESC_STATUS_FRM_LEN_SHIFT;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_physical_memory_write(desc.addr, buf, desc=
-_bytes);<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_sun8i_emac_flush_desc(&amp;desc, s-&=
-gt;rx_desc_curr);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 dma_memory_write(&amp;s-&gt;dma_as, desc.addr,=
- buf, desc_bytes);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_sun8i_emac_flush_desc(s, &amp;desc, =
-s-&gt;rx_desc_curr);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0trace_allwinner_sun8i_emac_receive(s-&gt;=
-rx_desc_curr, desc.addr,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 desc_bytes);<br>
-<br>
-@@ -465,7 +470,7 @@ static ssize_t allwinner_sun8i_emac_receive(NetClientSt=
-ate *nc,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bytes_left -=3D desc_bytes;<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Move to the next descriptor */<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;rx_desc_curr =3D allwinner_sun8i_emac_ne=
-xt_desc(&amp;desc, 64);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;rx_desc_curr =3D allwinner_sun8i_emac_ne=
-xt_desc(s, &amp;desc, 64);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (!s-&gt;rx_desc_curr) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Not enough buffer space =
-available */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0s-&gt;int_sta |=3D INT_STA_=
-RX_BUF_UA;<br>
-@@ -501,10 +506,10 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmac=
-State *s)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0desc.status |=3D TX_DESC_ST=
-ATUS_LENGTH_ERR;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_physical_memory_read(desc.addr, packet_buf=
- + packet_bytes, bytes);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 dma_memory_read(&amp;s-&gt;dma_as, desc.addr, =
-packet_buf + packet_bytes, bytes);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0packet_bytes +=3D bytes;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0desc.status &amp;=3D ~DESC_STATUS_CTL;<br=
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_SYSCTRL]=C2=A0 =C2=A0 =3D 0x01c00000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_MMC0]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 0x01c0f0=
+00,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_SID]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c140=
+00,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_EHCI0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1a000,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_OHCI0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1a400,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_EHCI1]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1b000,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_OHCI1]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1b400,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_EHCI2]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1c000,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_OHCI2]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1c400,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_EHCI3]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1d000,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_OHCI3]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c1d400,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_CCU]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c200=
+00,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_PIT]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01c20c=
+00,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_UART0]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c28000,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_UART1]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c28400,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_UART2]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c28800,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_UART3]=C2=A0 =C2=A0 =C2=A0 =3D 0x01c28c00,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_EMAC]=C2=A0 =C2=A0 =C2=A0 =C2=A0=3D 0x01c300=
+00,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_DRAMCOM]=C2=A0 =C2=A0 =3D 0x01c62000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_DRAMCTL]=C2=A0 =C2=A0 =3D 0x01c63000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_DRAMPHY]=C2=A0 =C2=A0 =3D 0x01c65000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_GIC_DIST]=C2=A0 =C2=A0=3D 0x01c81000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_GIC_CPU]=C2=A0 =C2=A0 =3D 0x01c82000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_GIC_HYP]=C2=A0 =C2=A0 =3D 0x01c84000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_GIC_VCPU]=C2=A0 =C2=A0=3D 0x01c86000,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_RTC]=C2=A0 =C2=A0 =C2=A0 =C2=A0 =3D 0x01f000=
+00,<br>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_CPUCFG]=C2=A0 =C2=A0 =C2=A0=3D 0x01f01c00,<b=
+r>
+&gt; +=C2=A0 =C2=A0 [AW_H3_DEV_SDRAM]=C2=A0 =C2=A0 =C2=A0 =3D 0x40000000<br=
 >
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_sun8i_emac_flush_desc(&amp;desc, s-&=
-gt;tx_desc_curr);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_sun8i_emac_flush_desc(s, &amp;desc, =
-s-&gt;tx_desc_curr);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* After the last descriptor, send the pa=
-cket */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (desc.status2 &amp; TX_DESC_STATUS2_LA=
-ST_DESC) {<br>
-@@ -519,7 +524,7 @@ static void allwinner_sun8i_emac_transmit(AwSun8iEmacSt=
-ate *s)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0packet_bytes =3D 0;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0transmitted++;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;tx_desc_curr =3D allwinner_sun8i_emac_ne=
-xt_desc(&amp;desc, 0);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 s-&gt;tx_desc_curr =3D allwinner_sun8i_emac_ne=
-xt_desc(s, &amp;desc, 0);<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0/* Raise transmit completed interrupt */<br>
-@@ -623,7 +628,7 @@ static uint64_t allwinner_sun8i_emac_read(void *opaque,=
- hwaddr offset,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
-=C2=A0 =C2=A0 =C2=A0case REG_TX_CUR_BUF:=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Tran=
-smit Current Buffer */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (s-&gt;tx_desc_curr !=3D 0) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_physical_memory_read(s-&gt;t=
-x_desc_curr, &amp;desc, sizeof(desc));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dma_memory_read(&amp;s-&gt;dma_a=
-s, s-&gt;tx_desc_curr, &amp;desc, sizeof(desc));<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0value =3D desc.addr;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0value =3D 0;<br>
-@@ -636,7 +641,7 @@ static uint64_t allwinner_sun8i_emac_read(void *opaque,=
- hwaddr offset,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0break;<br>
-=C2=A0 =C2=A0 =C2=A0case REG_RX_CUR_BUF:=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Rece=
-ive Current Buffer */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (s-&gt;rx_desc_curr !=3D 0) {<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 cpu_physical_memory_read(s-&gt;r=
-x_desc_curr, &amp;desc, sizeof(desc));<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 dma_memory_read(&amp;s-&gt;dma_a=
-s, s-&gt;rx_desc_curr, &amp;desc, sizeof(desc));<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0value =3D desc.addr;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0value =3D 0;<br>
-@@ -790,6 +795,13 @@ static void allwinner_sun8i_emac_realize(DeviceState *=
-dev, Error **errp)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0AwSun8iEmacState *s =3D AW_SUN8I_EMAC(dev);<br>
-<br>
-+=C2=A0 =C2=A0 if (!s-&gt;dma_mr) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 error_setg(errp, TYPE_AW_SUN8I_EMAC &quot; &#3=
-9;dma-memory&#39; link not set&quot;);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-+=C2=A0 =C2=A0 }<br>
-+<br>
-+=C2=A0 =C2=A0 address_space_init(&amp;s-&gt;dma_as, s-&gt;dma_mr, &quot;em=
-ac-dma&quot;);<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0qemu_macaddr_default_if_unset(&amp;s-&gt;conf.macaddr);=
-<br>
-=C2=A0 =C2=A0 =C2=A0s-&gt;nic =3D qemu_new_nic(&amp;net_allwinner_sun8i_ema=
-c_info, &amp;s-&gt;conf,<br>
+&gt;=C2=A0 };<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 /* List of unimplemented devices */<br>
+&gt; @@ -183,7 +183,7 @@ void allwinner_h3_bootrom_setup(AwH3State *s, Bloc=
+kBackend *blk)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 rom_add_blob(&quot;allwinner-h3.bootrom&quot;, buf=
+fer, rom_size,<br>
+&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rom_si=
+ze, s-&gt;memmap[AW_H3_SRAM_A1],<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rom_si=
+ze, s-&gt;memmap[AW_H3_DEV_SRAM_A1],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 N=
+ULL, NULL, NULL, NULL, false);<br>
+&gt;=C2=A0 }<br>
+&gt;=C2=A0 <br>
+&gt; @@ -262,10 +262,10 @@ static void allwinner_h3_realize(DeviceState *de=
+v, Error **errp)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 qdev_prop_set_bit(DEVICE(&amp;s-&gt;gic), &quot;ha=
+s-virtualization-extensions&quot;, true);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;gic), &am=
+p;error_fatal);<br>
+&gt;=C2=A0 <br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 0, s-&g=
+t;memmap[AW_H3_GIC_DIST]);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 1, s-&g=
+t;memmap[AW_H3_GIC_CPU]);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 2, s-&g=
+t;memmap[AW_H3_GIC_HYP]);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 3, s-&g=
+t;memmap[AW_H3_GIC_VCPU]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 0, s-&g=
+t;memmap[AW_H3_DEV_GIC_DIST]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 1, s-&g=
+t;memmap[AW_H3_DEV_GIC_CPU]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 2, s-&g=
+t;memmap[AW_H3_DEV_GIC_HYP]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;gic), 3, s-&g=
+t;memmap[AW_H3_DEV_GIC_VCPU]);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /*<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0* Wire the outputs from each CPU&#39;s gener=
+ic timer and the GICv3<br>
+&gt; @@ -312,7 +312,7 @@ static void allwinner_h3_realize(DeviceState *dev,=
+ Error **errp)<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* Timer */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;timer), &=
+amp;error_fatal);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;timer), 0, s-=
+&gt;memmap[AW_H3_PIT]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;timer), 0, s-=
+&gt;memmap[AW_H3_DEV_PIT]);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;timer=
+), 0,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_H3_GIC_SPI_=
+TIMER0));<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;timer=
+), 1,<br>
+&gt; @@ -325,32 +325,32 @@ static void allwinner_h3_realize(DeviceState *de=
+v, Error **errp)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 32 * KiB, &amp;error_abort);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 memory_region_init_ram(&amp;s-&gt;sram_c, OBJECT(d=
+ev), &quot;sram C&quot;,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 44 * KiB, &amp;error_abort);<br>
+&gt; -=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), s-&gt;=
+memmap[AW_H3_SRAM_A1],<br>
+&gt; +=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), s-&gt;=
+memmap[AW_H3_DEV_SRAM_A1],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;s-&gt;sram_a1);<br>
+&gt; -=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), s-&gt;=
+memmap[AW_H3_SRAM_A2],<br>
+&gt; +=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), s-&gt;=
+memmap[AW_H3_DEV_SRAM_A2],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;s-&gt;sram_a2);<br>
+&gt; -=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), s-&gt;=
+memmap[AW_H3_SRAM_C],<br>
+&gt; +=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), s-&gt;=
+memmap[AW_H3_DEV_SRAM_C],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;s-&gt;sram_c);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* Clock Control Unit */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;ccu), &am=
+p;error_fatal);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;ccu), 0, s-&g=
+t;memmap[AW_H3_CCU]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;ccu), 0, s-&g=
+t;memmap[AW_H3_DEV_CCU]);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* System Control */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;sysctrl),=
+ &amp;error_fatal);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;sysctrl), 0, =
+s-&gt;memmap[AW_H3_SYSCTRL]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;sysctrl), 0, =
+s-&gt;memmap[AW_H3_DEV_SYSCTRL]);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* CPU Configuration */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;cpucfg), =
+&amp;error_fatal);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;cpucfg), 0, s=
+-&gt;memmap[AW_H3_CPUCFG]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;cpucfg), 0, s=
+-&gt;memmap[AW_H3_DEV_CPUCFG]);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* Security Identifier */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;sid), &am=
+p;error_fatal);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;sid), 0, s-&g=
+t;memmap[AW_H3_SID]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;sid), 0, s-&g=
+t;memmap[AW_H3_DEV_SID]);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* SD/MMC */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;mmc0), &a=
+mp;error_fatal);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;mmc0), 0, s-&=
+gt;memmap[AW_H3_MMC0]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;mmc0), 0, s-&=
+gt;memmap[AW_H3_DEV_MMC0]);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;mmc0)=
+, 0,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_H3_GIC_SPI_=
+MMC0));<br>
+&gt;=C2=A0 <br>
+&gt; @@ -364,63 +364,63 @@ static void allwinner_h3_realize(DeviceState *de=
+v, Error **errp)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_set_nic_properties(DEVICE(&amp;=
+s-&gt;emac), &amp;nd_table[0]);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;emac), &a=
+mp;error_fatal);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;emac), 0, s-&=
+gt;memmap[AW_H3_EMAC]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;emac), 0, s-&=
+gt;memmap[AW_H3_DEV_EMAC]);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_connect_irq(SYS_BUS_DEVICE(&amp;s-&gt;emac)=
+, 0,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_H3_GIC_SPI_=
+EMAC));<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* Universal Serial Bus */<br>
+&gt; -=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_EHCI0],<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_DEV_EHCI0],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 object_get_typename(OBJECT(dev)), dev-&gt;id, s);<=
-br>
-@@ -799,6 +811,8 @@ static void allwinner_sun8i_emac_realize(DeviceState *d=
-ev, Error **errp)<br>
-=C2=A0static Property allwinner_sun8i_emac_properties[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0DEFINE_NIC_PROPERTIES(AwSun8iEmacState, conf),<br>
-=C2=A0 =C2=A0 =C2=A0DEFINE_PROP_UINT8(&quot;phy-addr&quot;, AwSun8iEmacStat=
-e, mii_phy_addr, 0),<br>
-+=C2=A0 =C2=A0 DEFINE_PROP_LINK(&quot;dma-memory&quot;, AwSun8iEmacState, d=
-ma_mr,<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0TYPE_MEMORY_REGION, MemoryRegion *),<br>
-=C2=A0 =C2=A0 =C2=A0DEFINE_PROP_END_OF_LIST(),<br>
-=C2=A0};<br>
+=A0 =C2=A0 AW_H3_GIC_SPI_EHCI0));<br>
+&gt; -=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_EHCI1],<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_DEV_EHCI1],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 AW_H3_GIC_SPI_EHCI1));<br>
+&gt; -=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_EHCI2],<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_DEV_EHCI2],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 AW_H3_GIC_SPI_EHCI2));<br>
+&gt; -=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_EHCI3],<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(TYPE_AW_H3_EHCI, s-&gt;memmap[AW_H=
+3_DEV_EHCI3],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 AW_H3_GIC_SPI_EHCI3));<br>
+&gt;=C2=A0 <br>
+&gt; -=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_OHCI0],<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_DEV_OHCI0],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 AW_H3_GIC_SPI_OHCI0));<br>
+&gt; -=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_OHCI1],<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_DEV_OHCI1],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 AW_H3_GIC_SPI_OHCI1));<br>
+&gt; -=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_OHCI2],<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_DEV_OHCI2],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 AW_H3_GIC_SPI_OHCI2));<br>
+&gt; -=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_OHCI3],<br>
+&gt; +=C2=A0 =C2=A0 sysbus_create_simple(&quot;sysbus-ohci&quot;, s-&gt;mem=
+map[AW_H3_DEV_OHCI3],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 AW_H3_GIC_SPI_OHCI3));<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* UART0. For future clocktree API: All UARTS are =
+connected to APB2_CLK. */<br>
+&gt; -=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), s-&gt;memmap[AW_H3_=
+UART0], 2,<br>
+&gt; +=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), s-&gt;memmap[AW_H3_=
+DEV_UART0], 2,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_H3_GIC_SPI_UART0),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0115200, serial_hd(0), DEVICE_NATIVE_ENDIAN);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* UART1 */<br>
+&gt; -=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), s-&gt;memmap[AW_H3_=
+UART1], 2,<br>
+&gt; +=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), s-&gt;memmap[AW_H3_=
+DEV_UART1], 2,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_H3_GIC_SPI_UART1),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0115200, serial_hd(1), DEVICE_NATIVE_ENDIAN);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* UART2 */<br>
+&gt; -=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), s-&gt;memmap[AW_H3_=
+UART2], 2,<br>
+&gt; +=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), s-&gt;memmap[AW_H3_=
+DEV_UART2], 2,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_H3_GIC_SPI_UART2),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0115200, serial_hd(2), DEVICE_NATIVE_ENDIAN);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* UART3 */<br>
+&gt; -=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), s-&gt;memmap[AW_H3_=
+UART3], 2,<br>
+&gt; +=C2=A0 =C2=A0 serial_mm_init(get_system_memory(), s-&gt;memmap[AW_H3_=
+DEV_UART3], 2,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0qdev_get_gpio_in(DEVICE(&amp;s-&gt;gic), AW_H3_GIC_SPI_UART3),<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0115200, serial_hd(3), DEVICE_NATIVE_ENDIAN);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* DRAMC */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;dramc), &=
+amp;error_fatal);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;dramc), 0, s-=
+&gt;memmap[AW_H3_DRAMCOM]);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;dramc), 1, s-=
+&gt;memmap[AW_H3_DRAMCTL]);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;dramc), 2, s-=
+&gt;memmap[AW_H3_DRAMPHY]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;dramc), 0, s-=
+&gt;memmap[AW_H3_DEV_DRAMCOM]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;dramc), 1, s-=
+&gt;memmap[AW_H3_DEV_DRAMCTL]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;dramc), 2, s-=
+&gt;memmap[AW_H3_DEV_DRAMPHY]);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* RTC */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_realize(SYS_BUS_DEVICE(&amp;s-&gt;rtc), &am=
+p;error_fatal);<br>
+&gt; -=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;rtc), 0, s-&g=
+t;memmap[AW_H3_RTC]);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(SYS_BUS_DEVICE(&amp;s-&gt;rtc), 0, s-&g=
+t;memmap[AW_H3_DEV_RTC]);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* Unimplemented devices */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 for (i =3D 0; i &lt; ARRAY_SIZE(unimplemented); i+=
++) {<br>
+&gt; diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
+&gt; index 1679468232..17a568a2b4 100644<br>
+&gt; --- a/hw/arm/orangepi.c<br>
+&gt; +++ b/hw/arm/orangepi.c<br>
+&gt; @@ -79,7 +79,7 @@ static void orangepi_init(MachineState *machine)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 object_property_set_int(OBJECT(&amp;h3-&gt;emac), =
+&quot;phy-addr&quot;, 1, &amp;error_abort);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* DRAMC */<br>
+&gt; -=C2=A0 =C2=A0 object_property_set_uint(OBJECT(h3), &quot;ram-addr&quo=
+t;, h3-&gt;memmap[AW_H3_SDRAM],<br>
+&gt; +=C2=A0 =C2=A0 object_property_set_uint(OBJECT(h3), &quot;ram-addr&quo=
+t;, h3-&gt;memmap[AW_H3_DEV_SDRAM],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&amp;error_abort);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 object_property_set_int(OBJECT(h3), &quot;ram-size=
+&quot;, machine-&gt;ram_size / MiB,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &amp;error_abort);<br>
+&gt; @@ -98,7 +98,7 @@ static void orangepi_init(MachineState *machine)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 qdev_realize_and_unref(carddev, bus, &amp;error_fa=
+tal);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* SDRAM */<br>
+&gt; -=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), h3-&gt=
+;memmap[AW_H3_SDRAM],<br>
+&gt; +=C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), h3-&gt=
+;memmap[AW_H3_DEV_SDRAM],<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 machine-&gt;ram);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 /* Load target kernel or start using BootROM */<br=
+>
+&gt; @@ -106,7 +106,7 @@ static void orangepi_init(MachineState *machine)<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Use Boot ROM to copy data from SD=
+ card to SRAM */<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 allwinner_h3_bootrom_setup(h3, blk);=
 <br>
--- <br>
-2.21.3<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; -=C2=A0 =C2=A0 orangepi_binfo.loader_start =3D h3-&gt;memmap[AW_H3_SDR=
+AM];<br>
+&gt; +=C2=A0 =C2=A0 orangepi_binfo.loader_start =3D h3-&gt;memmap[AW_H3_DEV=
+_SDRAM];<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 orangepi_binfo.ram_size =3D machine-&gt;ram_size;<=
+br>
+&gt;=C2=A0 =C2=A0 =C2=A0 arm_load_kernel(ARM_CPU(first_cpu), machine, &amp;=
+orangepi_binfo);<br>
+&gt;=C2=A0 }<br>
+&gt; <br>
 <br>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
 div>
 
---0000000000003e29ad05ad1724e9--
+--000000000000ce580e05ad177df0--

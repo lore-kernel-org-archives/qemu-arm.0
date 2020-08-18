@@ -1,262 +1,222 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3929481lfy;
-        Tue, 18 Aug 2020 08:30:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxVs2T9duokmXFZt3ENh4V6J6IWeUEAuv/mM6GFeelND9SHT5QyRgZhGghmjcNQyW7dtemj
-X-Received: by 2002:a5b:e:: with SMTP id a14mr28914304ybp.91.1597764636454;
-        Tue, 18 Aug 2020 08:30:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597764636; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3929676lfy;
+        Tue, 18 Aug 2020 08:30:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywoo1B+vnj7f0xUtUmljtkBgLoZADfwb+UrEN1yYHSXsrsgrltK2fz5RDYRUWp6HAoYd08
+X-Received: by 2002:a25:3b06:: with SMTP id i6mr28336354yba.270.1597764650893;
+        Tue, 18 Aug 2020 08:30:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597764650; cv=none;
         d=google.com; s=arc-20160816;
-        b=0WER+UkHWlYQex9Ig62v8BwR1kWr5+HE4ixj5a/myT3OQTDZl3iWk+ac55BaLLVBsF
-         3gZftao/S0bZppwO1oe1+iaPJrxPC+B9zWGKsrp8N1CtuWPoj6s9ExnbufJ3/N1J5DT4
-         Qr1OjdiuTBLkUWIdhQT2RCM0KMGXOtGSGyQ/eZZr9qHYBL3K1vWkSXdGJjFiaOuhdcu9
-         SJMCQhKgwAR9cxxfl38O5gB/gfAHfd9fn/2Z37sjlQV5GrbZd/SWyf2zbeGL+o9H/q+U
-         CAXUe9xzSYrXihSpLZJj/ormGJZ/Dub2TS/QLraCQ+xaqXkIpb7dMZJNnfqwM2eyRnoa
-         MeNQ==
+        b=F4LMwVOpLlwRwzcjp3B78IZyyGjomkXjqZgw0W0HYJOHni7Ht79gbpPn94W7EGw9c7
+         SVVAeV6Sq1Rii+ayGepCbTByDvBqnV1wjzSnEEk+RjfNWQvmY0rOZsnLsLZ/CfOuTgQP
+         T/nS3pPIWg8kzUiljl1lRBmt+hkFTU9F11obJBbihV2qXpoz+lH6ARm0oLWPZybM5ms7
+         LEPiECFVs4tGPOcuBh2MHbUVkIYs1/9vof720q1ObYh98GsGXPJ1xHMcoQj0KJKMDNg6
+         ZID7Qx4lhyvFxua7ROCXWEl2x8pylleI9TrtmB1+edqZ2+jYEjKibk/MEJRs8oBPaEaC
+         Li2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :subject:references:in-reply-to:message-id:cc:to:from:date
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=zJJmuKaA5/gqyjnHgzpgshrkmy9T+mAhZrUiqGTiWJw=;
-        b=M8uyyIHenYxtXdf3dZ+/Z5PHjJ6JExmsVgk6myBHKHK//RWr/dTwmVSwIedsQzgEnE
-         zMnhz+mNbiX1kW7TI9PUS9fIwDLNqkPv/xW06lJb76imkfeeX359GWIluoxswr/lEFsP
-         24EC23yR2gAnZ9M9fGAgxGoLK0gaRrqnnkI4lCYKzFbx0BtHmsXy8TcUknDgMPy9GHAm
-         A1/KpbQHsjQwPeZCsiy+FehEqX2XVahUPbsIpNqTfYyMnBRbS5uDaXANuPvbSwNddqYM
-         NA55Vr+wMu+zk8cn2UOBqoau+WtkbRDltwqFlXZUIDiWq0U5B3vsYgamj+0tpx5Q/cOr
-         vQmw==
+        bh=uVeNRqM224/wT/cjolJi+5I426fp5SQFqRKucSZEUf4=;
+        b=y6FrS4MA1Shdy+CLXh+tDvHTRsZU9aZuO5IXdybNstZF6Qo0wvfIojBqZowxg/174M
+         FUmOiQekrcLK2W1oPrNf6c9mTOqqlMLx9Vq/BOPyVAK5TzGf3X5O32O0umrAX/PSucFD
+         9OPBkSMx29hTXbq2beOE2m8Lq5MYs6uhdVlDk/elPWrbpxoS0VfdX8feN6H6KBworJWq
+         7sW2HrQnasyAvTuzKl0KhrNPSHpvMq6cjHeFO2bdQeoecXmh9mft2XLD7hqhHXIW0UzI
+         F73PhPcTAEhhROwNOy9z/nswLtL4AUMXowy4gLZL9OjlgAFoYOrb2dUPtNV9z/CeGwlF
+         0o9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=ST0K5t13;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RaHabO0Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1si20255828ybs.48.2020.08.18.08.30.36
+        by mx.google.com with ESMTPS id 5si21349234yba.67.2020.08.18.08.30.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Aug 2020 08:30:36 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 18 Aug 2020 08:30:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=ST0K5t13;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Received: from localhost ([::1]:38442 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RaHabO0Y;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38144 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k83ZL-0008Bt-Nx
-	for alex.bennee@linaro.org; Tue, 18 Aug 2020 11:30:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42674)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k83Za-00083v-7B
+	for alex.bennee@linaro.org; Tue, 18 Aug 2020 11:30:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39456)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cociuba_mircea@yahoo.com>)
- id 1k82uY-0002n8-34
- for qemu-arm@nongnu.org; Tue, 18 Aug 2020 10:48:26 -0400
-Received: from sonic303-21.consmr.mail.ne1.yahoo.com ([66.163.188.147]:33861)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cociuba_mircea@yahoo.com>)
- id 1k82uV-0004AO-6j
- for qemu-arm@nongnu.org; Tue, 18 Aug 2020 10:48:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1597762100; bh=zJJmuKaA5/gqyjnHgzpgshrkmy9T+mAhZrUiqGTiWJw=;
- h=Date:From:Reply-To:To:Cc:In-Reply-To:References:Subject:From:Subject;
- b=ST0K5t13pP2ZwDBI4cSh1qOOwu4qC32MBAsI/qZUeLW6MIm3OQuiGsqW/ef0A+3Myvt7FVJMCijGVHEDkNsMYccN8lwoXB3Bge6Lxh63LOeV+cf/7sBet2ji/THs63/xcNQ8bP6lfNupYw4K3tyXQ0OO/tPPPd1TUQHg0D8eoZE/e1witsmamfPyEYygHcKQewwm9M5fVTZrB6mJpm72jMkg6QyvBIibtTHBuL77C7jkMTMyOMES9v3uSSxNSu7WqlwVjhWlt8p2XmZWbU3GFjWwWzkawS2DCOnnT1IrdXoUDCIj9d928az3DkUEQLxpWq8zF7hzkQ3r68ioj7tiHA==
-X-YMail-OSG: zt5q6rQVM1k_civAG9jZU5KCIuT9F1lzD.GdNx2UMXMGjk7F4jC4sfpofrwEKHC
- GqXegiImWKV5DEWfwgzSIASFWzm3nR3wW2DS5CQEycBQGXCxs1.xPzf5l.kjOe22JH4pb4UxQuR6
- 1XjtbJX.ZcNGb7Fv9sFS7WHmgLAtDhUIM30Vv.VkXnFowFeM08hVxWeAow8A.O0thwJaX.ameJ4i
- .EhO22TDkYAUgRJiy9FGV_hJa3K5eFgdoOTQt6gRSm_UCrshQUNdCgstlA_4SivyG32qgcHJfBCM
- h3kA_s5U7jg4cN6hlYlAAce5pc0rMBmMSZHPcyklmOb4jvu9wxEBHZkmgq7eJbC6yoyOSk9.YqDZ
- xlFOIAWoniAN23BZCZYzjqJpa4nPoce8xWAKT3Xfrqx8bvn0Yi1qTl76bAyKzF6bsVkpYVyrOAH.
- PYFLQvyem_OFhycbL0oLZJ3IUh1VnfTaaOfGsw7h7hD7BDXtr10l.p6y884Php2..4WJAHlGkOn1
- ks0AodiGqRkCcZ0R1cu_u4ybX_hHlQdLbeY8gvyio.UPE7.uTCrP6Ow2DxK.T_jIKTucgsCG3Xq9
- zWW7wtQ8NG5YBUUFxkO7VUezNaajmCCOCutzFQ4gavIApVguEHQssyxijyJDKCH82Xz0mvdNERxq
- I9L13t2VNDF2R8Nb4FPHjzYpb3DjbzwI5Thwzc8dpar3Vy9Rh5zb2F4nGnORu9hVabKVzkEdalLX
- yVFHyehoSJCqQ_rmtzqNeu1DTBv2K0FRWICwNR64DZXgZLsI2473uKB1D86BuGddgLWpgKaDMaIQ
- KzixCVseM9tVC_3rz3HcmRAwSpeHTsASj2jFzfHYg14zaPxUVvlb7pJR2d39s.cvFOy2Dh0qh02r
- hrQeKP7LKQRXtixT2sSVTtZnklEhuP6Fpd1PwQ.TVDPsocr1qti1Gf8QQatKm1qSZoVmPW7frdLW
- z9O3ifNvT2Ht1KPRDfQSCenN0lDxtNm28Y8xk1GXv9lug_yo4OcLuS_sbZIVTp89ebRrEarBvI2Z
- C1cnnHu4LviKn_GgY4YPi36yLPxP1U7gfT4oLJwAJoQk6IvPhhovQWxW1DnEGMHavC83mli78cFk
- JYHTDYYetGAoGIixoXWYpu5VVBew3szIkjkZl_USrufqxEhdiamFjdDDqSgQxYosfTp22TW4KVbK
- NzUIJRAXa1jpg8CjitoFo40.Hk4vefmTVZDiVnINbMtrbKHHpxZjZ.OAEFZonMgQihfiKiNDLfBc
- bmmZdO18pyXQPjfleKCjmKl1Q8pZY3pCiOnxQwhvwqoIvDiI647PZzH.fFkG8MMmOWErzwb1BUTG
- hJFiLWprsuFyH6_q2knU9TRj2s4gRRzBUXUMYC0X7sD93hdbIEe2TjtewjaF46K4aYZDhSQ.ovKO
- vMRgeB90l8ur0FEHQOyuENw--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic303.consmr.mail.ne1.yahoo.com with HTTP; Tue, 18 Aug 2020 14:48:20 +0000
-Date: Tue, 18 Aug 2020 14:48:15 +0000 (UTC)
-From: Mircea Cociuba <cociuba_mircea@yahoo.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Message-ID: <1359439110.3773430.1597762095933@mail.yahoo.com>
-In-Reply-To: <CAFEAcA85SRv0DUqa5L62WLpbzBeV7Wh91GmyOG3GJrxWpTtXNQ@mail.gmail.com>
-References: <1995755327.3077884.1597670507808.ref@mail.yahoo.com>
- <1995755327.3077884.1597670507808@mail.yahoo.com>
- <CAFEAcA8OAWdW8MS+7Fe-WUt+B7rP1AruUZWuAo9rAgP5P_0udQ@mail.gmail.com>
- <2127347711.3710404.1597756636356@mail.yahoo.com>
- <CAFEAcA89ydoNcWyBxRvdc648ifOD1sS6e-p0pqoiQe6w=bj=wg@mail.gmail.com>
- <1348331683.3733974.1597759332262@mail.yahoo.com>
- <CAFEAcA85SRv0DUqa5L62WLpbzBeV7Wh91GmyOG3GJrxWpTtXNQ@mail.gmail.com>
-Subject: Re: Arm Cortex M4 floating point
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1k82h3-0004ul-IW
+ for qemu-devel@nongnu.org; Tue, 18 Aug 2020 10:34:29 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:29844
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1k82h0-0002U7-QB
+ for qemu-devel@nongnu.org; Tue, 18 Aug 2020 10:34:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1597761265;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=uVeNRqM224/wT/cjolJi+5I426fp5SQFqRKucSZEUf4=;
+ b=RaHabO0YAAlvDrmxbA5gTf9thml4cCflDrDri7/lXP+W8W2e7OlweZi8mb3d99GOt6IU56
+ SDcE2f7LhULIqitHeeTUUmcgz1e3VFE3BlChNgQN9AlSAQH10ar6PcIP0sv2gf3xQ9LkW0
+ ZpdLRhLs3c2AAAzDv58eUy3srXwR2Cg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-375-hmPlAJAIN0a_2xrCdgmijw-1; Tue, 18 Aug 2020 10:34:22 -0400
+X-MC-Unique: hmPlAJAIN0a_2xrCdgmijw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C7B121084C9D;
+ Tue, 18 Aug 2020 14:34:10 +0000 (UTC)
+Received: from localhost (ovpn-114-160.ams2.redhat.com [10.36.114.160])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 40CCE10013C2;
+ Tue, 18 Aug 2020 14:34:10 +0000 (UTC)
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v6 4/7] virtio-scsi: introduce a constant for fixed virtqueues
+Date: Tue, 18 Aug 2020 15:33:45 +0100
+Message-Id: <20200818143348.310613-5-stefanha@redhat.com>
+In-Reply-To: <20200818143348.310613-1-stefanha@redhat.com>
+References: <20200818143348.310613-1-stefanha@redhat.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_3773429_412855621.1597762095932"
-X-Mailer: WebService/1.1.16455 YMailNorrin Mozilla/5.0 (Windows NT 10.0; Win64;
- x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125
- Safari/537.36
-Received-SPF: pass client-ip=66.163.188.147;
- envelope-from=cociuba_mircea@yahoo.com;
- helo=sonic303-21.consmr.mail.ne1.yahoo.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/18 10:48:21
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
+X-Mimecast-Spam-Score: 0.003
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: base64
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/18 06:40:33
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Mircea Cociuba <cociuba_mircea@yahoo.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z1cjAktuYcQN
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Max Reitz <mreitz@redhat.com>,
+ qemu-block@nongnu.org, David Hildenbrand <david@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
+ Pankaj Gupta <pankaj.gupta.linux@gmail.com>, cohuck@redhat.com,
+ Raphael Norwitz <raphael.norwitz@nutanix.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0YQW/WNdTr1/
 
-------=_Part_3773429_412855621.1597762095932
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+VGhlIGV2ZW50IGFuZCBjb250cm9sIHZpcnRxdWV1ZXMgYXJlIGFsd2F5cyBwcmVzZW50LCByZWdh
+cmRsZXNzIG9mIHRoZQptdWx0aS1xdWV1ZSBjb25maWd1cmF0aW9uLiAgRGVmaW5lIGEgY29uc3Rh
+bnQgc28gdGhhdCB2aXJ0cXVldWUgbnVtYmVyCmNhbGN1bGF0aW9ucyBhcmUgZWFzaWVyIHRvIHJl
+YWQuCgpTaWduZWQtb2ZmLWJ5OiBTdGVmYW4gSGFqbm9jemkgPHN0ZWZhbmhhQHJlZGhhdC5jb20+
+ClJldmlld2VkLWJ5OiBDb3JuZWxpYSBIdWNrIDxjb2h1Y2tAcmVkaGF0LmNvbT4KUmV2aWV3ZWQt
+Ynk6IFBhbmthaiBHdXB0YSA8cGFua2FqLmd1cHRhLmxpbnV4QGdtYWlsLmNvbT4KUmV2aWV3ZWQt
+Ynk6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAcmVkaGF0LmNvbT4KUmV2aWV3ZWQt
+Ynk6IFJhcGhhZWwgTm9yd2l0eiA8cmFwaGFlbC5ub3J3aXR6QG51dGFuaXguY29tPgotLS0KIGlu
+Y2x1ZGUvaHcvdmlydGlvL3ZpcnRpby1zY3NpLmggfCAzICsrKwogaHcvc2NzaS92aG9zdC11c2Vy
+LXNjc2kuYyAgICAgICB8IDIgKy0KIGh3L3Njc2kvdmlydGlvLXNjc2kuYyAgICAgICAgICAgfCA3
+ICsrKystLS0KIGh3L3ZpcnRpby92aG9zdC1zY3NpLXBjaS5jICAgICAgfCAzICsrLQogaHcvdmly
+dGlvL3Zob3N0LXVzZXItc2NzaS1wY2kuYyB8IDMgKystCiBody92aXJ0aW8vdmlydGlvLXNjc2kt
+cGNpLmMgICAgIHwgMyArKy0KIDYgZmlsZXMgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNyBk
+ZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9pbmNsdWRlL2h3L3ZpcnRpby92aXJ0aW8tc2NzaS5o
+IGIvaW5jbHVkZS9ody92aXJ0aW8vdmlydGlvLXNjc2kuaAppbmRleCAyNGU3Njg5MDlkLi45ZjI5
+M2JjYjgwIDEwMDY0NAotLS0gYS9pbmNsdWRlL2h3L3ZpcnRpby92aXJ0aW8tc2NzaS5oCisrKyBi
+L2luY2x1ZGUvaHcvdmlydGlvL3ZpcnRpby1zY3NpLmgKQEAgLTM2LDYgKzM2LDkgQEAKICNkZWZp
+bmUgVklSVElPX1NDU0lfTUFYX1RBUkdFVCAgMjU1CiAjZGVmaW5lIFZJUlRJT19TQ1NJX01BWF9M
+VU4gICAgIDE2MzgzCiAKKy8qIE51bWJlciBvZiB2aXJ0cXVldWVzIHRoYXQgYXJlIGFsd2F5cyBw
+cmVzZW50ICovCisjZGVmaW5lIFZJUlRJT19TQ1NJX1ZRX05VTV9GSVhFRCAgICAyCisKIHR5cGVk
+ZWYgc3RydWN0IHZpcnRpb19zY3NpX2NtZF9yZXEgVmlydElPU0NTSUNtZFJlcTsKIHR5cGVkZWYg
+c3RydWN0IHZpcnRpb19zY3NpX2NtZF9yZXNwIFZpcnRJT1NDU0lDbWRSZXNwOwogdHlwZWRlZiBz
+dHJ1Y3QgdmlydGlvX3Njc2lfY3RybF90bWZfcmVxIFZpcnRJT1NDU0lDdHJsVE1GUmVxOwpkaWZm
+IC0tZ2l0IGEvaHcvc2NzaS92aG9zdC11c2VyLXNjc2kuYyBiL2h3L3Njc2kvdmhvc3QtdXNlci1z
+Y3NpLmMKaW5kZXggZjJlNTI0NDM4YS4uYThiODIxNDY2ZiAxMDA2NDQKLS0tIGEvaHcvc2NzaS92
+aG9zdC11c2VyLXNjc2kuYworKysgYi9ody9zY3NpL3Zob3N0LXVzZXItc2NzaS5jCkBAIC0xMTQs
+NyArMTE0LDcgQEAgc3RhdGljIHZvaWQgdmhvc3RfdXNlcl9zY3NpX3JlYWxpemUoRGV2aWNlU3Rh
+dGUgKmRldiwgRXJyb3IgKiplcnJwKQogICAgICAgICBnb3RvIGZyZWVfdmlydGlvOwogICAgIH0K
+IAotICAgIHZzYy0+ZGV2Lm52cXMgPSAyICsgdnMtPmNvbmYubnVtX3F1ZXVlczsKKyAgICB2c2Mt
+PmRldi5udnFzID0gVklSVElPX1NDU0lfVlFfTlVNX0ZJWEVEICsgdnMtPmNvbmYubnVtX3F1ZXVl
+czsKICAgICB2c2MtPmRldi52cXMgPSBnX25ldzAoc3RydWN0IHZob3N0X3ZpcnRxdWV1ZSwgdnNj
+LT5kZXYubnZxcyk7CiAgICAgdnNjLT5kZXYudnFfaW5kZXggPSAwOwogICAgIHZzYy0+ZGV2LmJh
+Y2tlbmRfZmVhdHVyZXMgPSAwOwpkaWZmIC0tZ2l0IGEvaHcvc2NzaS92aXJ0aW8tc2NzaS5jIGIv
+aHcvc2NzaS92aXJ0aW8tc2NzaS5jCmluZGV4IGI0OTc3NTI2OWUuLmVlY2RkMDVhZjUgMTAwNjQ0
+Ci0tLSBhL2h3L3Njc2kvdmlydGlvLXNjc2kuYworKysgYi9ody9zY3NpL3ZpcnRpby1zY3NpLmMK
+QEAgLTE5MSw3ICsxOTEsNyBAQCBzdGF0aWMgdm9pZCB2aXJ0aW9fc2NzaV9zYXZlX3JlcXVlc3Qo
+UUVNVUZpbGUgKmYsIFNDU0lSZXF1ZXN0ICpzcmVxKQogICAgIFZpcnRJT1NDU0lSZXEgKnJlcSA9
+IHNyZXEtPmhiYV9wcml2YXRlOwogICAgIFZpcnRJT1NDU0lDb21tb24gKnZzID0gVklSVElPX1ND
+U0lfQ09NTU9OKHJlcS0+ZGV2KTsKICAgICBWaXJ0SU9EZXZpY2UgKnZkZXYgPSBWSVJUSU9fREVW
+SUNFKHJlcS0+ZGV2KTsKLSAgICB1aW50MzJfdCBuID0gdmlydGlvX2dldF9xdWV1ZV9pbmRleChy
+ZXEtPnZxKSAtIDI7CisgICAgdWludDMyX3QgbiA9IHZpcnRpb19nZXRfcXVldWVfaW5kZXgocmVx
+LT52cSkgLSBWSVJUSU9fU0NTSV9WUV9OVU1fRklYRUQ7CiAKICAgICBhc3NlcnQobiA8IHZzLT5j
+b25mLm51bV9xdWV1ZXMpOwogICAgIHFlbXVfcHV0X2JlMzJzKGYsICZuKTsKQEAgLTg5MiwxMCAr
+ODkyLDExIEBAIHZvaWQgdmlydGlvX3Njc2lfY29tbW9uX3JlYWxpemUoRGV2aWNlU3RhdGUgKmRl
+diwKICAgICAgICAgICAgICAgICBzaXplb2YoVmlydElPU0NTSUNvbmZpZykpOwogCiAgICAgaWYg
+KHMtPmNvbmYubnVtX3F1ZXVlcyA9PSAwIHx8Ci0gICAgICAgICAgICBzLT5jb25mLm51bV9xdWV1
+ZXMgPiBWSVJUSU9fUVVFVUVfTUFYIC0gMikgeworICAgICAgICAgICAgcy0+Y29uZi5udW1fcXVl
+dWVzID4gVklSVElPX1FVRVVFX01BWCAtIFZJUlRJT19TQ1NJX1ZRX05VTV9GSVhFRCkgewogICAg
+ICAgICBlcnJvcl9zZXRnKGVycnAsICJJbnZhbGlkIG51bWJlciBvZiBxdWV1ZXMgKD0gJSIgUFJJ
+dTMyICIpLCAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgIm11c3QgYmUgYSBwb3NpdGl2ZSBp
+bnRlZ2VyIGxlc3MgdGhhbiAlZC4iLAotICAgICAgICAgICAgICAgICAgIHMtPmNvbmYubnVtX3F1
+ZXVlcywgVklSVElPX1FVRVVFX01BWCAtIDIpOworICAgICAgICAgICAgICAgICAgIHMtPmNvbmYu
+bnVtX3F1ZXVlcywKKyAgICAgICAgICAgICAgICAgICBWSVJUSU9fUVVFVUVfTUFYIC0gVklSVElP
+X1NDU0lfVlFfTlVNX0ZJWEVEKTsKICAgICAgICAgdmlydGlvX2NsZWFudXAodmRldik7CiAgICAg
+ICAgIHJldHVybjsKICAgICB9CmRpZmYgLS1naXQgYS9ody92aXJ0aW8vdmhvc3Qtc2NzaS1wY2ku
+YyBiL2h3L3ZpcnRpby92aG9zdC1zY3NpLXBjaS5jCmluZGV4IDA5NWFmMjNmM2YuLjA2ZTgxNGQz
+MGUgMTAwNjQ0Ci0tLSBhL2h3L3ZpcnRpby92aG9zdC1zY3NpLXBjaS5jCisrKyBiL2h3L3ZpcnRp
+by92aG9zdC1zY3NpLXBjaS5jCkBAIC01MCw3ICs1MCw4IEBAIHN0YXRpYyB2b2lkIHZob3N0X3Nj
+c2lfcGNpX3JlYWxpemUoVmlydElPUENJUHJveHkgKnZwY2lfZGV2LCBFcnJvciAqKmVycnApCiAg
+ICAgVmlydElPU0NTSUNvbW1vbiAqdnMgPSBWSVJUSU9fU0NTSV9DT01NT04odmRldik7CiAKICAg
+ICBpZiAodnBjaV9kZXYtPm52ZWN0b3JzID09IERFVl9OVkVDVE9SU19VTlNQRUNJRklFRCkgewot
+ICAgICAgICB2cGNpX2Rldi0+bnZlY3RvcnMgPSB2cy0+Y29uZi5udW1fcXVldWVzICsgMzsKKyAg
+ICAgICAgdnBjaV9kZXYtPm52ZWN0b3JzID0gdnMtPmNvbmYubnVtX3F1ZXVlcyArCisgICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIFZJUlRJT19TQ1NJX1ZRX05VTV9GSVhFRCArIDE7CiAgICAg
+fQogCiAgICAgcWRldl9yZWFsaXplKHZkZXYsIEJVUygmdnBjaV9kZXYtPmJ1cyksIGVycnApOwpk
+aWZmIC0tZ2l0IGEvaHcvdmlydGlvL3Zob3N0LXVzZXItc2NzaS1wY2kuYyBiL2h3L3ZpcnRpby92
+aG9zdC11c2VyLXNjc2ktcGNpLmMKaW5kZXggNDcwNWNkNTRlOC4uYWI2ZGZiNzFhOSAxMDA2NDQK
+LS0tIGEvaHcvdmlydGlvL3Zob3N0LXVzZXItc2NzaS1wY2kuYworKysgYi9ody92aXJ0aW8vdmhv
+c3QtdXNlci1zY3NpLXBjaS5jCkBAIC01Niw3ICs1Niw4IEBAIHN0YXRpYyB2b2lkIHZob3N0X3Vz
+ZXJfc2NzaV9wY2lfcmVhbGl6ZShWaXJ0SU9QQ0lQcm94eSAqdnBjaV9kZXYsIEVycm9yICoqZXJy
+cCkKICAgICBWaXJ0SU9TQ1NJQ29tbW9uICp2cyA9IFZJUlRJT19TQ1NJX0NPTU1PTih2ZGV2KTsK
+IAogICAgIGlmICh2cGNpX2Rldi0+bnZlY3RvcnMgPT0gREVWX05WRUNUT1JTX1VOU1BFQ0lGSUVE
+KSB7Ci0gICAgICAgIHZwY2lfZGV2LT5udmVjdG9ycyA9IHZzLT5jb25mLm51bV9xdWV1ZXMgKyAz
+OworICAgICAgICB2cGNpX2Rldi0+bnZlY3RvcnMgPSB2cy0+Y29uZi5udW1fcXVldWVzICsKKyAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgVklSVElPX1NDU0lfVlFfTlVNX0ZJWEVEICsgMTsK
+ICAgICB9CiAKICAgICBxZGV2X3JlYWxpemUodmRldiwgQlVTKCZ2cGNpX2Rldi0+YnVzKSwgZXJy
+cCk7CmRpZmYgLS1naXQgYS9ody92aXJ0aW8vdmlydGlvLXNjc2ktcGNpLmMgYi9ody92aXJ0aW8v
+dmlydGlvLXNjc2ktcGNpLmMKaW5kZXggYzIzYTEzNDIwMi4uM2ZmOWViN2VmNiAxMDA2NDQKLS0t
+IGEvaHcvdmlydGlvL3ZpcnRpby1zY3NpLXBjaS5jCisrKyBiL2h3L3ZpcnRpby92aXJ0aW8tc2Nz
+aS1wY2kuYwpAQCAtNTEsNyArNTEsOCBAQCBzdGF0aWMgdm9pZCB2aXJ0aW9fc2NzaV9wY2lfcmVh
+bGl6ZShWaXJ0SU9QQ0lQcm94eSAqdnBjaV9kZXYsIEVycm9yICoqZXJycCkKICAgICBjaGFyICpi
+dXNfbmFtZTsKIAogICAgIGlmICh2cGNpX2Rldi0+bnZlY3RvcnMgPT0gREVWX05WRUNUT1JTX1VO
+U1BFQ0lGSUVEKSB7Ci0gICAgICAgIHZwY2lfZGV2LT5udmVjdG9ycyA9IHZzLT5jb25mLm51bV9x
+dWV1ZXMgKyAzOworICAgICAgICB2cGNpX2Rldi0+bnZlY3RvcnMgPSB2cy0+Y29uZi5udW1fcXVl
+dWVzICsKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgVklSVElPX1NDU0lfVlFfTlVNX0ZJ
+WEVEICsgMTsKICAgICB9CiAKICAgICAvKgotLSAKMi4yNi4yCgo=
 
-Thank you very much Peter,I will try this first thing in the morning,
-But before I try this, if the register is memory mapped, the stelaris memor=
-y map has no FPU.Is the FPU always at core level at the same address?
-Br, Mircea
-
-Mircea Cociuba"To be or not to be, that is not a question, it's FF".=20
-
-    On Tuesday, August 18, 2020, 05:16:39 PM GMT+3, Peter Maydell <peter.ma=
-ydell@linaro.org> wrote: =20
-=20
- On Tue, 18 Aug 2020 at 15:02, Mircea Cociuba <cociuba_mircea@yahoo.com> wr=
-ote:
-> gcc params: -Wall -Werror -O2 -nostdlib -nostartfiles -ffreestanding=C2=
-=A0 -mcpu=3Dcortex-m4 -mhard-float -mfpu=3Dvfpv4-d16 (to make sure I have F=
-PU instructions)
->
-> the source code:
->
-> void PUT32 ( unsigned int, unsigned int );
-> #define UART0BASE 0x4000C000
->
-> int notmain ( void )
-> {
->=C2=A0 =C2=A0 unsigned int rx;
->
->
->=C2=A0 =C2=A0 unsigned char s[]=3D"QEMU is not that interesting";
->
->=C2=A0 =C2=A0 //dummy FPU command
->=C2=A0 =C2=A0 asm("vmov s15, r3"); // If you are to remove this, the qemu =
-would print after I type the command continue in gdb, with this line, it sh=
-ows nothing
-
-This looks like you're trying to use the FPU, but you haven't
-enabled it. If you're writing bare metal code then it is
-the job of your guest code to make sure it enables the FPU
-first, exactly as it has to do on real hardware. Check
-the Arm architecture reference manual for the details of
-how to do this (I think the main thing is writing to the
-CPACR to enable the FPU).
-
-Otherwise QEMU will correctly emulate the behaviour you
-get on real h/w if you try to use the FPU when it is disabled:
-the CPU takes an exception.
-
-thanks
--- PMM
- =20
-------=_Part_3773429_412855621.1597762095932
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<html><head></head><body><div class=3D"ydp91f56336yahoo-style-wrap" style=
-=3D"font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px=
-;"><div><div dir=3D"ltr" data-setdir=3D"false"><div><div dir=3D"ltr" style=
-=3D"font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 1=
-6px;">Thank you very much Peter,</div><div dir=3D"ltr" style=3D"font-family=
-: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px;">I will tr=
-y this first thing in the morning,</div><div dir=3D"ltr" style=3D"font-fami=
-ly: Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px;"><br cle=
-ar=3D"none"></div><div dir=3D"ltr" style=3D"font-family: Helvetica Neue, He=
-lvetica, Arial, sans-serif; font-size: 16px;">But before I try this, if the=
- register is memory mapped, the stelaris memory map has no FPU.</div><div d=
-ir=3D"ltr" style=3D"font-family: Helvetica Neue, Helvetica, Arial, sans-ser=
-if; font-size: 16px;">Is the FPU always at core level at the same address?<=
-/div><div dir=3D"ltr" style=3D"font-family: Helvetica Neue, Helvetica, Aria=
-l, sans-serif; font-size: 16px;"><br clear=3D"none"></div><div dir=3D"ltr" =
-style=3D"font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-si=
-ze: 16px;">Br, Mircea</div></div><br></div><div><br></div><div class=3D"ydp=
-91f56336signature"><div class=3D"ydp91f56336yiv5090244957signature" id=3D"y=
-dp91f56336yiv5090244957yui_3_16_0_ym19_1_1484384922228_11432" style=3D"font=
--family:HelveticaNeue,;font-size:14px;"><i id=3D"ydp91f56336yiv5090244957yu=
-i_3_16_0_ym19_1_1484384922228_11431"><font class=3D"ydp91f56336yiv509024495=
-7Apple-style-span" face=3D"'times new roman', 'new york', times, serif" id=
-=3D"ydp91f56336yiv5090244957yui_3_16_0_ym19_1_1484384922228_11430">Mircea C=
-ociuba</font></i></div><div class=3D"ydp91f56336yiv5090244957signature" id=
-=3D"ydp91f56336yiv5090244957yui_3_16_0_ym19_1_1484384922228_11432" style=3D=
-"font-family:HelveticaNeue,;font-size:14px;"><i id=3D"ydp91f56336yiv5090244=
-957yui_3_16_0_ym19_1_1484384922228_11474"><font class=3D"ydp91f56336yiv5090=
-244957Apple-style-span" face=3D"'times new roman', 'new york', times, serif=
-" id=3D"ydp91f56336yiv5090244957yui_3_16_0_ym19_1_1484384922228_11473">"To =
-be or not to be, that is not a question, it's FF".</font></i></div></div></=
-div>
-        <div><br></div><div><br></div>
-       =20
-        </div><div id=3D"ydp587312ddyahoo_quoted_8048507662" class=3D"ydp58=
-7312ddyahoo_quoted">
-            <div style=3D"font-family:'Helvetica Neue', Helvetica, Arial, s=
-ans-serif;font-size:13px;color:#26282a;">
-               =20
-                <div>
-                    On Tuesday, August 18, 2020, 05:16:39 PM GMT+3, Peter M=
-aydell &lt;peter.maydell@linaro.org&gt; wrote:
-                </div>
-                <div><br></div>
-                <div><br></div>
-                <div><div dir=3D"ltr">On Tue, 18 Aug 2020 at 15:02, Mircea =
-Cociuba &lt;<a shape=3D"rect" href=3D"mailto:cociuba_mircea@yahoo.com" rel=
-=3D"nofollow" target=3D"_blank">cociuba_mircea@yahoo.com</a>&gt; wrote:<br =
-clear=3D"none">&gt; gcc params: -Wall -Werror -O2 -nostdlib -nostartfiles -=
-ffreestanding&nbsp; -mcpu=3Dcortex-m4 -mhard-float -mfpu=3Dvfpv4-d16 (to ma=
-ke sure I have FPU instructions)<br clear=3D"none">&gt;<br clear=3D"none">&=
-gt; the source code:<br clear=3D"none">&gt;<br clear=3D"none">&gt; void PUT=
-32 ( unsigned int, unsigned int );<br clear=3D"none">&gt; #define UART0BASE=
- 0x4000C000<br clear=3D"none">&gt;<br clear=3D"none">&gt; int notmain ( voi=
-d )<br clear=3D"none">&gt; {<br clear=3D"none">&gt;&nbsp; &nbsp;  unsigned =
-int rx;<br clear=3D"none">&gt;<br clear=3D"none">&gt;<br clear=3D"none">&gt=
-;&nbsp; &nbsp;  unsigned char s[]=3D"QEMU is not that interesting";<br clea=
-r=3D"none">&gt;<br clear=3D"none">&gt;&nbsp; &nbsp; //dummy FPU command<br =
-clear=3D"none">&gt;&nbsp; &nbsp;  asm("vmov s15, r3"); // If you are to rem=
-ove this, the qemu would print after I type the command continue in gdb, wi=
-th this line, it shows nothing<br clear=3D"none"><br clear=3D"none">This lo=
-oks like you're trying to use the FPU, but you haven't<br clear=3D"none">en=
-abled it. If you're writing bare metal code then it is<br clear=3D"none">th=
-e job of your guest code to make sure it enables the FPU<br clear=3D"none">=
-first, exactly as it has to do on real hardware. Check<br clear=3D"none">th=
-e Arm architecture reference manual for the details of<br clear=3D"none">ho=
-w to do this (I think the main thing is writing to the<br clear=3D"none">CP=
-ACR to enable the FPU).<br clear=3D"none"><br clear=3D"none">Otherwise QEMU=
- will correctly emulate the behaviour you<br clear=3D"none">get on real h/w=
- if you try to use the FPU when it is disabled:<br clear=3D"none">the CPU t=
-akes an exception.<div class=3D"ydp587312ddyqt9845002349" id=3D"ydp587312dd=
-yqtfd99881"><br clear=3D"none"><br clear=3D"none">thanks<br clear=3D"none">=
--- PMM<br clear=3D"none"></div></div></div>
-            </div>
-        </div></body></html>
-------=_Part_3773429_412855621.1597762095932--

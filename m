@@ -1,107 +1,109 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3829599lfy;
-        Tue, 18 Aug 2020 06:28:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzL+oRhRxHGeNck1M2Hgn46FdTeJaJvczEMNM01K/jrmsEw/O+FC0BjIe/zKXhltBO3D1tP
-X-Received: by 2002:a25:d347:: with SMTP id e68mr27653051ybf.123.1597757333654;
-        Tue, 18 Aug 2020 06:28:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597757333; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3849366lfy;
+        Tue, 18 Aug 2020 06:55:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxOacjW2TMdYcGq+5vy+AktkJId0TAci5/ksJBjo1DQfOM8CKq37Nwx/SrfFwjvjmNA9xRc
+X-Received: by 2002:a25:d8c3:: with SMTP id p186mr29520358ybg.50.1597758948557;
+        Tue, 18 Aug 2020 06:55:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597758948; cv=none;
         d=google.com; s=arc-20160816;
-        b=viLC/oV++ObTVaGvAUn6DPDXFX4hqMZOUVxLw0Ww+FvYJHvY5W3oxZEbiHZeR0+KmH
-         tMYva6qb0/t1LLdmKwwzehXT8HPmcOsGwSFHw7yW2XRZMNtDI1yPVt6vxFoBzFaRtuW1
-         SpyMyZYvMLUZBjqHZ0YQx/ZQZqQHBHsOss4+E4u+YhH87yoQNOz99isx7FKurpWK1ODw
-         hv9ts+DDSQRQ9PfoeNGH/odbwGRNo1uFdCrlRCri/fSEg72Mw2ah7Eqx5vq/+tprj2xU
-         1YM3SpzmXNg9YNhs/S9orZzGRumLRYHd9IL+xBzfeVXZV3GJDKwuYdAE9kgZ8oObWLob
-         riMw==
+        b=wTqVlliDOR6tJdshK2wtPrzf9j85htHlCpuo/ewrs2oHERvPIPWmIOH76uimcGWb12
+         YB5gYhuzLzkRAthOmawbMTOJeiKq/LJRGsAlcoIKfxDT0mEQZu2velvuGNad+5oQnAL+
+         Ov+CSp97rgbQw1XBLP/k8p0Rwfprkf3n59M621NmKyUHjPClHc8CHHVsOvMpeK6Wz4jL
+         IsHAHz4dDUdA4kJNGM0eIyh8D7HKEBEGLOatkXqrsZktV1KS540dM+AAkjZynmtoRcM3
+         ZGmMf5KkrwyJESSE/dF287/+amayGSdaejpdlTT9/tLg/n14DpV7MSSK/ZOo0LN1SHaU
+         P28w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=Aj6+N0KacoqNx2hzp4MQKE14dQcqhuZ8hti9MdI+XWk=;
-        b=QMpJfH8+jRXS4m3R1eYWtf4ni1GBQ5WwlGr1zYM3C+OpR97V3cynN0S0U3ept4mXs+
-         4qx3MzSu+B0A5aub/+fDhVULbRgqtJunqDZiHhkF4zLxBy36y/zqg5ewIi1OwERBmVsN
-         k/4zo5BNPgw8zFtX/NhAysDn4SGi9u3CCKgHijBQTNtZs2Wbb6tTKRLBG5T6sscy5Sjy
-         8YasF8GJApGSSLyOYBauQzVRspi9hxq9Jc/AfDd/KFjjYd0C1Rd0miFtvQggO1Aw3Hov
-         HTJZhVBMNb7zHamYCzAmCF4NrRH+EzaIn6Gx8oKRiSiaYdbkar/K69UqPM0ycVGBVoAj
-         tyTA==
+        bh=0Jx9fgh4HAjmM8oiGC/Kx2mJQVPexJyHPpm+nMaUXSU=;
+        b=l/PZi0Zv7xZoK2fYHvoIq7txrMFw2tp8h+LfPI2+FXqvYrHi6uyEy+NqEWb4E4Claf
+         gpZE5DSA7GJsznYAcRi1XtPLdCbUe0/BYnKID1waodayB1sxgzYE/egOGco9dzDm3Hd+
+         TsvQ9mw9Guu3gXzrgsNJCKrmXdNGfq3zw6geevak43lRnF9QXFUScBUvUbbwtBMOoxsZ
+         BxfsKV5MjbTGgVfGcf7tZVbOK7DuTwYkrG5VLzMYWOuK5vR2eedykw3jwsgFg+HXNX4X
+         1DldBSWZ50qIbn/XV0PWMN+aCNbGmBL9KEZ2FHzcrUB16xFXWRYxxCDnIK8cj5IkYCPk
+         Wubg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wtgXJ8to;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@brainfault-org.20150623.gappssmtp.com header.s=20150623 header.b=odhoYXQY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k23si23283662ybj.389.2020.08.18.06.28.53
+        by mx.google.com with ESMTPS id 67si20400869ybo.449.2020.08.18.06.55.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Aug 2020 06:28:53 -0700 (PDT)
+        Tue, 18 Aug 2020 06:55:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=wtgXJ8to;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57010 helo=lists1p.gnu.org)
+       dkim=fail header.i=@brainfault-org.20150623.gappssmtp.com header.s=20150623 header.b=odhoYXQY;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42642 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k81fZ-00019y-3Q
-	for alex.bennee@linaro.org; Tue, 18 Aug 2020 09:28:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49204)
+	id 1k825b-0003Hk-UX
+	for alex.bennee@linaro.org; Tue, 18 Aug 2020 09:55:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k81fS-00019f-Tv
- for qemu-arm@nongnu.org; Tue, 18 Aug 2020 09:28:46 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:38637)
+ (Exim 4.90_1) (envelope-from <anup@brainfault.org>)
+ id 1k825T-0003H7-Rr
+ for qemu-arm@nongnu.org; Tue, 18 Aug 2020 09:55:39 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38451)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k81fR-0001uu-Ds
- for qemu-arm@nongnu.org; Tue, 18 Aug 2020 09:28:46 -0400
-Received: by mail-ej1-x636.google.com with SMTP id d6so22072005ejr.5
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2020 06:28:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <anup@brainfault.org>)
+ id 1k825R-0005Mn-Tm
+ for qemu-arm@nongnu.org; Tue, 18 Aug 2020 09:55:39 -0400
+Received: by mail-wm1-x341.google.com with SMTP id t14so17080876wmi.3
+ for <qemu-arm@nongnu.org>; Tue, 18 Aug 2020 06:55:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=brainfault-org.20150623.gappssmtp.com; s=20150623;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Aj6+N0KacoqNx2hzp4MQKE14dQcqhuZ8hti9MdI+XWk=;
- b=wtgXJ8tossrWGQzwKzGCT3pe/4q0Jc6gx8JTkmvvoAS8ygR/Z1uFtBwihy0iT1i3lK
- rR3YPKOqxaMHEK1pdok38V6blcyA73IZm4KwFuZSWWK2oKHCQ/wX7nKfME7PWp1rx7Lk
- ZqvfbqMV27lH0j+VULqMbHuIohZj/1aHnHwz+947Cv7TkXZVsPWD9gEYz8dViEZetnlG
- 9R9IXlUHm55InpkDhNaIWxtAn3F+q79MV+c8fNs40B1RbpA6KW0dmAFDwItKy5xVtJnW
- vEg2SvOl8g/oHYLQKDFOznjUHTlmD9uMtaeC+esxJzfg5bzs2w2pOkWiOrif0FUIeg6I
- j1fg==
+ :cc; bh=0Jx9fgh4HAjmM8oiGC/Kx2mJQVPexJyHPpm+nMaUXSU=;
+ b=odhoYXQYG9Jrem+qNFG9QZPLTXdlifnah+AiUOzB3YTkVqUEsWTMpUPvJBUI0qn0Hd
+ xQU3OsqAUk0EomZlPPAoWGrGsRNarnjljYuHE7mZi2orv+FLvA+4eey6TfyqNXsVbDEI
+ te7jdUAFG4eVIqyOR4hDmFtHqGJPpCFG1H1F3RG/v2TWefImYrBgeTFP3H2lXPdTSaIl
+ 3XZxsTgq8W+dSBIYicxgNxcADBZqMAQQAglN85Uoko/JkNbsHE6GzXfqpkhTPruZqaU6
+ 89/DEKxHBbUfOTQYGgKnbvWTNlAvk2TB0ZqCrXLvPbqdV432t6DzphgKTG+H2ewfwOYe
+ n7KA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=Aj6+N0KacoqNx2hzp4MQKE14dQcqhuZ8hti9MdI+XWk=;
- b=iYORypbRvso/lXKIBvTqMl/tQSlsO2xh89oW8VWa1aKNYz3jLsUlWzCpT1y6c/UmV8
- 9jpkGCGjkFmDImJyngBXm87i0OJFWvXiW+WA57pAUhhg5Z58UcgCrIW+0M2tKf+Ijh4d
- 4LUjCz0m+RqghtdbKGAOSm1RR1hcDN9S+QXTiB4BLs5PYo1SI63jB4W1UXzk2OsFpSTI
- jmMnyW86up7BBK7vD0Eg7xf08yLcVtToSEqCE7uTk4riEjI7DSTEz+ZNQQBkrNV+ptMA
- tuNheDWwarwz7ick5JSEVNXIUXBVO6sNVcrvd829wxXjbA3CN8bBk6IumDQWowbwDeu+
- rUhw==
-X-Gm-Message-State: AOAM533J8yhVaiETxwoZ+f2hYFwvcAf5J4Z3XncLN1lFOmhNLyt2o1ad
- Uq3RmXPft/UTRgQrijb9cUYyvxDVeGYICMPxeBq4xw==
-X-Received: by 2002:a17:906:b248:: with SMTP id
- ce8mr19496077ejb.85.1597757323445; 
- Tue, 18 Aug 2020 06:28:43 -0700 (PDT)
+ bh=0Jx9fgh4HAjmM8oiGC/Kx2mJQVPexJyHPpm+nMaUXSU=;
+ b=R4AWV89QrLsgh1/6tpdpgh+yM/8jt+lEKVINNLI+1OVOkeXJ4W1rqdPt4IUXoivV5Z
+ BgJRBbKIkm6TDZexJ8Kdbxo0xoD8BxsseTti9bTZwbbae0ul8sB2Qt/du2ePt+Qplpxt
+ F0Et6MLUKWXieodEbeXL6Sg2/00SAb1NUPNzPMLO+rmg1PnNNeej7dSVJ57pyTfDmZyh
+ ok2J0cHNI4e3kbm8mvrpOlEdhi82tqJS621ncxyJZ7YRmmBj8EGusqrX+OH0h4VZTR/c
+ bsw5o4VlZwXbkp4ITDIMTmb2Tep+vlectgEG9zNMVhwfnRtDd5FzLN9ji12dKWHLWxmS
+ HwWQ==
+X-Gm-Message-State: AOAM531gz62RsWxfsChvPHDKV7XmXAZOi/BDWpkamXF1hC0ehNmHDfMw
+ EX5kimbkpjE+8yewFQyYz6siuthxMh3K6ng1MXXWOg==
+X-Received: by 2002:a7b:c4d5:: with SMTP id g21mr25496wmk.185.1597758935937;
+ Tue, 18 Aug 2020 06:55:35 -0700 (PDT)
 MIME-Version: 1.0
-References: <1995755327.3077884.1597670507808.ref@mail.yahoo.com>
- <1995755327.3077884.1597670507808@mail.yahoo.com>
- <CAFEAcA8OAWdW8MS+7Fe-WUt+B7rP1AruUZWuAo9rAgP5P_0udQ@mail.gmail.com>
- <2127347711.3710404.1597756636356@mail.yahoo.com>
-In-Reply-To: <2127347711.3710404.1597756636356@mail.yahoo.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 18 Aug 2020 14:28:32 +0100
-Message-ID: <CAFEAcA89ydoNcWyBxRvdc648ifOD1sS6e-p0pqoiQe6w=bj=wg@mail.gmail.com>
-Subject: Re: Arm Cortex M4 floating point
-To: Mircea Cociuba <cociuba_mircea@yahoo.com>
+References: <1597423256-14847-1-git-send-email-bmeng.cn@gmail.com>
+ <CAAhSdy2D=TcENAJDja4r6pnhz0LRi-T+A9k3Btrs_EuB4x0e4w@mail.gmail.com>
+ <CAEUhbmV5=B5xKhYqMj1MQb61nt5cNUJG1MXT++C1w1YMYTfLCQ@mail.gmail.com>
+ <202949f7-c9d5-4d4d-3ebe-53727f4fa169@microchip.com>
+ <CAKmqyKM3nm0rhxgDvWKWfO+4b23ZLSkHW2TzmcVZ_ZFy4L7MRg@mail.gmail.com>
+ <d3f61c2c-a489-887e-0143-4d9a1e66e6f2@microchip.com>
+ <CAAhSdy32owLO0KytyYsg-zH6JyyfNfGofa4vanqTFJLntPq0=g@mail.gmail.com>
+ <1f17cc4c-83f8-a024-ebef-79e28fab9a32@microchip.com>
+In-Reply-To: <1f17cc4c-83f8-a024-ebef-79e28fab9a32@microchip.com>
+From: Anup Patel <anup@brainfault.org>
+Date: Tue, 18 Aug 2020 19:25:24 +0530
+Message-ID: <CAAhSdy1MTvjfpHZEAs2YVHXdPBaEMQxUNdP_yc7br0C2p9kfng@mail.gmail.com>
+Subject: Re: [PATCH 00/18] hw/riscv: Add Microchip PolarFire SoC Icicle Kit
+ board support
+To: Cyril.Jean@microchip.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: none client-ip=2a00:1450:4864:20::341;
+ envelope-from=anup@brainfault.org; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,35 +116,150 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>, qemu-block@nongnu.org,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, Bin Meng <bin.meng@windriver.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, Alistair Francis <Alistair.Francis@wdc.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair23@gmail.com>,
+ Bin Meng <bmeng.cn@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OOXbLbJ24jRB
+X-TUID: /XihuKURNOVm
 
-On Tue, 18 Aug 2020 at 14:17, Mircea Cociuba <cociuba_mircea@yahoo.com> wrote:
+On Tue, Aug 18, 2020 at 6:39 PM <Cyril.Jean@microchip.com> wrote:
 >
-> Hello, the netduinoplus2 is not part of the machine list in qemu "QEMU emulator version 4.2.0"
-> in which one is it?
-> in the 4.1.0 version release notes it says "ARM: FPU emulation support for Cortex-M CPUs, FPU fixes for Cortex-R5F"
+> On 8/18/20 7:17 AM, Anup Patel wrote:
+> > EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
+> >
+> > On Tue, Aug 18, 2020 at 1:23 AM <Cyril.Jean@microchip.com> wrote:
+> >> On 8/17/20 8:28 PM, Alistair Francis wrote:
+> >>> EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
+> >>>
+> >>> On Mon, Aug 17, 2020 at 11:12 AM via <qemu-devel@nongnu.org> wrote:
+> >>>> Hi Anup,
+> >>>>
+> >>>> On 8/17/20 11:30 AM, Bin Meng wrote:
+> >>>>> EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
+> >>>>>
+> >>>>> Hi Anup,
+> >>>>>
+> >>>>> On Sat, Aug 15, 2020 at 1:44 AM Anup Patel <anup@brainfault.org> wrote:
+> >>>>>> On Fri, Aug 14, 2020 at 10:12 PM Bin Meng <bmeng.cn@gmail.com> wrote:
+> >>>>>>> From: Bin Meng <bin.meng@windriver.com>
+> >>>>>>>
+> >>>>>>> This adds support for Microchip PolarFire SoC Icicle Kit board.
+> >>>>>>> The Icicle Kit board integrates a PolarFire SoC, with one SiFive's
+> >>>>>>> E51 plus four U54 cores and many on-chip peripherals and an FPGA.
+> >>>>>> Nice Work !!! This is very helpful.
+> >>>>> Thanks!
+> >>>>>
+> >>>>>> The Microchip HSS is quite convoluted. It has:
+> >>>>>> 1. DDR Init
+> >>>>>> 2. Boot device support
+> >>>>>> 3. SBI support using OpenSBI as library
+> >>>>>> 4. Simple TEE support
+> >>>>>>
+> >>>>>> I think point 1) and 2) above should be part of U-Boot SPL.
+> >>>>>> The point 3) can be OpenSBI FW_DYNAMIC.
+> >>>>>>
+> >>>>>> Lastly,for point 4), we are working on a new OpenSBI feature using
+> >>>>>> which we can run independent Secure OS and Non-Secure OS using
+> >>>>>> U-Boot_SPL+OpenSBI (for both SiFive Unleashed and Microchip
+> >>>>>> PolarFire).
+> >>>>>>
+> >>>>>> Do you have plans for adding U-Boot SPL support for this board ??
+> >>>>> + Cyril Jean from Microchip
+> >>>>>
+> >>>>> I will have to leave this question to Cyril to comment.
+> >>>>>
+> >>>> I currently do not have a plan to support U-Boot SPL. The idea of the
+> >>>> HSS is to contain all the silicon specific initialization and
+> >>>> configuration code within the HSS before jumping to U-Boot S-mode. I
+> >>>> would rather keep all this within the HSS for the time being. I would
+> >>>> wait until we reach production silicon before attempting to move this to
+> >>>> U-Boot SPL as the HSS is likely to contain some opaque silicon related
+> >>>> changes for another while.
+> >>> That is unfortunate, a lot of work has gone into making the boot flow
+> >>> simple and easy to use.
+> >>>
+> >>> QEMU now includes OpenSBI by default to make it easy for users to boot
+> >>> Linux. The Icicle Kit board is now the most difficult QEMU board to
+> >>> boot Linux on. Not to mention it makes it hard to impossible to
+> >>> support it in standard tool flows such as meta-riscv.
+> >>>
+> >>> Alistair
+> >> If it is such a problem we can add a U-Boot SPL stage and the HSS can be
+> >> treated as standard SoC ROM code.
+> > It's not mandatory for U-Boot SPL to have stable DRAM calibration settings
+> > from the start itself. The initial U-Boot SPL support for most
+> > platforms (accross
+> > architectures) usually include basic working DRAM calibration settings which
+> > is later on updated with separate patches. Also, we don't need all U-Boot
+> > drivers to be upstreamed in one-go as this can be done in phases.
+> >
+> > The advantage we have with PolarFire SoC Icicle board is that we already
+> > have a U-Boot S-mode. and we believe the OpenSBI generic platform will
+> > work fine for PolarFire SoC Icicle board so the only thing missing right now
+> > is the U-Boot SPL support for OpenSource boot-flow.
+> >
+> > It will certainly accelerate open-source development if we have boot-flow
+> > U-Boot_SPL => OpenSBI (FW_DYNAMIC) => U-Boot_S-mode working
+> > on PolarFire SoC Icicle board. Initially, we just need DRAM, SD/eMMC,
+> > and Serial port support for U-Boot SPL and U-Boot S-mode. Later on,
+> > more patches can add ethernet and other booting device drivers to U-Boot.
+> >
+> > Regarding security services of HSS, we are working on a OpenSBI
+> > feature which will allow HSS security services to run as independent
+> > binary in M-mode (not linked to OpenSBI) and OpenSBI FW_DYNAMIC
+> > will be a separate binary acting as a secure monitor.
+> >
+> > Regards,
+> > Anup
 >
-> Now, is there an option to be passed to qemu to get the FPU working?
+> What I have in mind is that the external memory will be up and running
+> by the time we get to U-Boot SPL. In the case of PolarFire SoC the ROM
+> code equivalent brings up the DDR memory interface so we do not need to
+> worry about this as part of U-Boot.
 
-I think from 4.1.0 we mostly implemented the FPU for the benefit
-of the Cortex-M33 model; we enabled it in the M4 but I don't
-know if there are any board models that use it. (You can use
-the M4 in the linux-user mode also).
+Keeping DRAM configuration as part of a separate ROM booting stage prior
+to the U-Boot SPL sounds good to me. This will lead to following boot-flow:
 
-You could either use a newer QEMU version, or see if the QEMU
-you have supports a Cortex-M33 board and if that would be
-suitable for your needs.
+ROM/HSS (M-mode) => U-Boot SPL (M-mode) => OpenSBI (M-mode) => U-Boot S-mode
 
-That said, I think looking at the code that the stellaris
-board will put a Cortex-M4 in the emulated system if you
-use -cpu cortex-m4, though if you do this you are wandering
-into unsupported may-or-may-not-work territory. You don't
-say what actually goes wrong. (In particular, make sure your
-guest code actually enables the FPU via the relevant system
-registers before trying to execute fp instructions.)
+>
+> Sounds to me the component that needs to be upstreamed next is the eMMC
+> support so that it can be used as part of U-Boot SPL. Correct?
 
-thanks
--- PMM
+Maybe as a PHASE1 patch series for PolarFire U-Boot support can
+target the following:
+1. Minimal U-Boot board support for PolarFire IcIcle Board with
+single defconfig to build both U-Boot SPL and U-Boot S-mode
+2. Serial port driver (probably re-use existing driver)
+3. SD and eMMC driver
+
+Supporting SD booting is highly desirable for PHASE1. At least,
+U-Boot SPL, OpenSBI, U-Boot S-mode, and Linux should come
+as separate images from SD card. The ROM/HSS can reside and
+boot from on-board flash/eMMC.
+
+Above is my suggestion based on experience with SiFive Unleashed.
+
+The general idea behind OpenSource boot-flow is to have each
+booting stage as a separate binary so that users can selectively
+upgrade a particular booting stage without re-compiling/re-flashing
+other booting stages.
+
+Various distros and yocto already support building most of the above
+booting stages (U-Boot, OpenSBI, Linux, etc) so we can reuse a lot
+of existing work. Eventually, I am confident we will endup moving
+more stuff from ROM/HSS to U-Boot SPL for ease in maintenance.
+
+Regards,
+Anup

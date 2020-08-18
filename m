@@ -1,108 +1,96 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3929676lfy;
-        Tue, 18 Aug 2020 08:30:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJywoo1B+vnj7f0xUtUmljtkBgLoZADfwb+UrEN1yYHSXsrsgrltK2fz5RDYRUWp6HAoYd08
-X-Received: by 2002:a25:3b06:: with SMTP id i6mr28336354yba.270.1597764650893;
-        Tue, 18 Aug 2020 08:30:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597764650; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3931469lfy;
+        Tue, 18 Aug 2020 08:33:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4McOQIqDaYx+8dMZJ1X2J7iFCUPvS8oC5mDxN8q5fn+APZMK7hkUGx6Dulax/FWOPqiqE
+X-Received: by 2002:a25:6b49:: with SMTP id o9mr26628414ybm.111.1597764779860;
+        Tue, 18 Aug 2020 08:32:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597764779; cv=none;
         d=google.com; s=arc-20160816;
-        b=F4LMwVOpLlwRwzcjp3B78IZyyGjomkXjqZgw0W0HYJOHni7Ht79gbpPn94W7EGw9c7
-         SVVAeV6Sq1Rii+ayGepCbTByDvBqnV1wjzSnEEk+RjfNWQvmY0rOZsnLsLZ/CfOuTgQP
-         T/nS3pPIWg8kzUiljl1lRBmt+hkFTU9F11obJBbihV2qXpoz+lH6ARm0oLWPZybM5ms7
-         LEPiECFVs4tGPOcuBh2MHbUVkIYs1/9vof720q1ObYh98GsGXPJ1xHMcoQj0KJKMDNg6
-         ZID7Qx4lhyvFxua7ROCXWEl2x8pylleI9TrtmB1+edqZ2+jYEjKibk/MEJRs8oBPaEaC
-         Li2g==
+        b=N7u6wf6Iko1VAC8JUJyfDK6j9oaSfvL8DIFUBGQwX6ouxf0YTqx8MPWDIQCVCiprwz
+         cjoKIBCBQ+ROBRghEj7+uzJpxb/rMBNCY8+M0s+pod9nuL8KvXBQIIjAQNFR/xFqYWSH
+         u2qDKssfLJl52EZjHMwErXrY2cw0fwpYsFL0WDdatgDHwPIWyvNJgwFMumz5UTQutfW5
+         xrpha57scTq+8tzyC8U+N7mRu86qlHzRzKY6KGbHtpqGSNg5Rr+bPfoSRa7AJ0HGM0+a
+         cDIbezWG04aXDnSkcGUpqBT7hbabaruLQyIYSWEYYMDV7Zx7IFi8B/wA1eH7nBaDJDUE
+         KqsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=uVeNRqM224/wT/cjolJi+5I426fp5SQFqRKucSZEUf4=;
-        b=y6FrS4MA1Shdy+CLXh+tDvHTRsZU9aZuO5IXdybNstZF6Qo0wvfIojBqZowxg/174M
-         FUmOiQekrcLK2W1oPrNf6c9mTOqqlMLx9Vq/BOPyVAK5TzGf3X5O32O0umrAX/PSucFD
-         9OPBkSMx29hTXbq2beOE2m8Lq5MYs6uhdVlDk/elPWrbpxoS0VfdX8feN6H6KBworJWq
-         7sW2HrQnasyAvTuzKl0KhrNPSHpvMq6cjHeFO2bdQeoecXmh9mft2XLD7hqhHXIW0UzI
-         F73PhPcTAEhhROwNOy9z/nswLtL4AUMXowy4gLZL9OjlgAFoYOrb2dUPtNV9z/CeGwlF
-         0o9A==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=LF/XOmB0c/q0pnMYTjup4nzHSJttMR5w23rzHkWv+jU=;
+        b=GIckLGdYaeWHp9NQMQUCvXw+iZQz58sSQH0VdWCohA14uKtoA7SGOsqRfTq+kiPSzK
+         nXhp1R/7Xn4Qlv8sBlhdl6TuXYDqNxBFv50c3yVZQVWGQF7lsbBp4Z8jKxR6Kj3o6+nQ
+         8TqH6r1WwxM9aKCTPoAJm6L/cGWj3nBn48hh6C2dOD3evWY7pykVAlx9NnurAsXGr0rx
+         +7tOToQ+HhCf0l5rn5PX17iLbeOtCkWAvPD9Sxl86Axa7C38XdFYgaqChP89OgJMAjZc
+         oIVul7y+qWg+HLiIwcuskF95duWqLutXBBbeGDMoC9mBXwwoyYzB3MaVum9NtcGtcsfr
+         WebA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RaHabO0Y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5si21349234yba.67.2020.08.18.08.30.50
+        by mx.google.com with ESMTPS id b193si18619128ybg.31.2020.08.18.08.32.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Aug 2020 08:30:50 -0700 (PDT)
+        Tue, 18 Aug 2020 08:32:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RaHabO0Y;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38144 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45042 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k83Za-00083v-7B
-	for alex.bennee@linaro.org; Tue, 18 Aug 2020 11:30:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39456)
+	id 1k83bf-0002dC-8Y
+	for alex.bennee@linaro.org; Tue, 18 Aug 2020 11:32:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44104)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1k82h3-0004ul-IW
- for qemu-devel@nongnu.org; Tue, 18 Aug 2020 10:34:29 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:29844
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1k82h0-0002U7-QB
- for qemu-devel@nongnu.org; Tue, 18 Aug 2020 10:34:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597761265;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uVeNRqM224/wT/cjolJi+5I426fp5SQFqRKucSZEUf4=;
- b=RaHabO0YAAlvDrmxbA5gTf9thml4cCflDrDri7/lXP+W8W2e7OlweZi8mb3d99GOt6IU56
- SDcE2f7LhULIqitHeeTUUmcgz1e3VFE3BlChNgQN9AlSAQH10ar6PcIP0sv2gf3xQ9LkW0
- ZpdLRhLs3c2AAAzDv58eUy3srXwR2Cg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-375-hmPlAJAIN0a_2xrCdgmijw-1; Tue, 18 Aug 2020 10:34:22 -0400
-X-MC-Unique: hmPlAJAIN0a_2xrCdgmijw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C7B121084C9D;
- Tue, 18 Aug 2020 14:34:10 +0000 (UTC)
-Received: from localhost (ovpn-114-160.ams2.redhat.com [10.36.114.160])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 40CCE10013C2;
- Tue, 18 Aug 2020 14:34:10 +0000 (UTC)
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v6 4/7] virtio-scsi: introduce a constant for fixed virtqueues
-Date: Tue, 18 Aug 2020 15:33:45 +0100
-Message-Id: <20200818143348.310613-5-stefanha@redhat.com>
-In-Reply-To: <20200818143348.310613-1-stefanha@redhat.com>
-References: <20200818143348.310613-1-stefanha@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1k8307-0006zc-EY; Tue, 18 Aug 2020 10:54:11 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:33739)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1k8304-0004lm-PH; Tue, 18 Aug 2020 10:54:11 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.138.118])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 2653451A5A21;
+ Tue, 18 Aug 2020 16:54:04 +0200 (CEST)
+Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Tue, 18 Aug
+ 2020 16:54:03 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-97G0016fd625c3-67b8-4adb-8c8b-dbfd4e1a221c,
+ 5D4690BFF1A8204198846400511E4593F3B91EAC) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH for-5.2 14/19] ftgmac100: Fix integer overflow in
+ ftgmac100_do_tx()
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20200806132106.747414-1-clg@kaod.org>
+ <20200806132106.747414-15-clg@kaod.org>
+ <CAFEAcA_rAre03ATda5rxgear4wsoef2-qD5SyAjunH8QW65W2A@mail.gmail.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <7a6f7515-9a5f-3160-6187-675032ce8c75@kaod.org>
+Date: Tue, 18 Aug 2020 16:54:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0.003
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=stefanha@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/18 06:40:33
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <CAFEAcA_rAre03ATda5rxgear4wsoef2-qD5SyAjunH8QW65W2A@mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.97]
+X-ClientProxiedBy: DAG1EX2.mxp5.local (172.16.2.2) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 1c83fb85-4045-4084-9bc1-a70a9dc7ffbb
+X-Ovh-Tracer-Id: 16972941096381811564
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedruddtiedgjedtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheeutdehgefhvdehtdeuleetgedvfeeukedtfeeihfffffeiuddutdduhffgvedtnecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehpvghtvghrrdhmrgihuggvlhhlsehlihhnrghrohdrohhrgh
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/18 10:54:05
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,108 +103,83 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Max Reitz <mreitz@redhat.com>,
- qemu-block@nongnu.org, David Hildenbrand <david@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Kevin Wolf <kwolf@redhat.com>,
- Pankaj Gupta <pankaj.gupta.linux@gmail.com>, cohuck@redhat.com,
- Raphael Norwitz <raphael.norwitz@nutanix.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Mauro Matteo Cascella <mcascell@redhat.com>,
+ Frederic Konrad <konrad.frederic@yahoo.fr>, Andrew Jeffery <andrew@aj.id.au>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Joel Stanley <joel@jms.id.au>, Ziming Zhang <ezrakiez@gmail.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0YQW/WNdTr1/
+X-TUID: 7/IZiWEHtwld
 
-VGhlIGV2ZW50IGFuZCBjb250cm9sIHZpcnRxdWV1ZXMgYXJlIGFsd2F5cyBwcmVzZW50LCByZWdh
-cmRsZXNzIG9mIHRoZQptdWx0aS1xdWV1ZSBjb25maWd1cmF0aW9uLiAgRGVmaW5lIGEgY29uc3Rh
-bnQgc28gdGhhdCB2aXJ0cXVldWUgbnVtYmVyCmNhbGN1bGF0aW9ucyBhcmUgZWFzaWVyIHRvIHJl
-YWQuCgpTaWduZWQtb2ZmLWJ5OiBTdGVmYW4gSGFqbm9jemkgPHN0ZWZhbmhhQHJlZGhhdC5jb20+
-ClJldmlld2VkLWJ5OiBDb3JuZWxpYSBIdWNrIDxjb2h1Y2tAcmVkaGF0LmNvbT4KUmV2aWV3ZWQt
-Ynk6IFBhbmthaiBHdXB0YSA8cGFua2FqLmd1cHRhLmxpbnV4QGdtYWlsLmNvbT4KUmV2aWV3ZWQt
-Ynk6IFBoaWxpcHBlIE1hdGhpZXUtRGF1ZMOpIDxwaGlsbWRAcmVkaGF0LmNvbT4KUmV2aWV3ZWQt
-Ynk6IFJhcGhhZWwgTm9yd2l0eiA8cmFwaGFlbC5ub3J3aXR6QG51dGFuaXguY29tPgotLS0KIGlu
-Y2x1ZGUvaHcvdmlydGlvL3ZpcnRpby1zY3NpLmggfCAzICsrKwogaHcvc2NzaS92aG9zdC11c2Vy
-LXNjc2kuYyAgICAgICB8IDIgKy0KIGh3L3Njc2kvdmlydGlvLXNjc2kuYyAgICAgICAgICAgfCA3
-ICsrKystLS0KIGh3L3ZpcnRpby92aG9zdC1zY3NpLXBjaS5jICAgICAgfCAzICsrLQogaHcvdmly
-dGlvL3Zob3N0LXVzZXItc2NzaS1wY2kuYyB8IDMgKystCiBody92aXJ0aW8vdmlydGlvLXNjc2kt
-cGNpLmMgICAgIHwgMyArKy0KIDYgZmlsZXMgY2hhbmdlZCwgMTQgaW5zZXJ0aW9ucygrKSwgNyBk
-ZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9pbmNsdWRlL2h3L3ZpcnRpby92aXJ0aW8tc2NzaS5o
-IGIvaW5jbHVkZS9ody92aXJ0aW8vdmlydGlvLXNjc2kuaAppbmRleCAyNGU3Njg5MDlkLi45ZjI5
-M2JjYjgwIDEwMDY0NAotLS0gYS9pbmNsdWRlL2h3L3ZpcnRpby92aXJ0aW8tc2NzaS5oCisrKyBi
-L2luY2x1ZGUvaHcvdmlydGlvL3ZpcnRpby1zY3NpLmgKQEAgLTM2LDYgKzM2LDkgQEAKICNkZWZp
-bmUgVklSVElPX1NDU0lfTUFYX1RBUkdFVCAgMjU1CiAjZGVmaW5lIFZJUlRJT19TQ1NJX01BWF9M
-VU4gICAgIDE2MzgzCiAKKy8qIE51bWJlciBvZiB2aXJ0cXVldWVzIHRoYXQgYXJlIGFsd2F5cyBw
-cmVzZW50ICovCisjZGVmaW5lIFZJUlRJT19TQ1NJX1ZRX05VTV9GSVhFRCAgICAyCisKIHR5cGVk
-ZWYgc3RydWN0IHZpcnRpb19zY3NpX2NtZF9yZXEgVmlydElPU0NTSUNtZFJlcTsKIHR5cGVkZWYg
-c3RydWN0IHZpcnRpb19zY3NpX2NtZF9yZXNwIFZpcnRJT1NDU0lDbWRSZXNwOwogdHlwZWRlZiBz
-dHJ1Y3QgdmlydGlvX3Njc2lfY3RybF90bWZfcmVxIFZpcnRJT1NDU0lDdHJsVE1GUmVxOwpkaWZm
-IC0tZ2l0IGEvaHcvc2NzaS92aG9zdC11c2VyLXNjc2kuYyBiL2h3L3Njc2kvdmhvc3QtdXNlci1z
-Y3NpLmMKaW5kZXggZjJlNTI0NDM4YS4uYThiODIxNDY2ZiAxMDA2NDQKLS0tIGEvaHcvc2NzaS92
-aG9zdC11c2VyLXNjc2kuYworKysgYi9ody9zY3NpL3Zob3N0LXVzZXItc2NzaS5jCkBAIC0xMTQs
-NyArMTE0LDcgQEAgc3RhdGljIHZvaWQgdmhvc3RfdXNlcl9zY3NpX3JlYWxpemUoRGV2aWNlU3Rh
-dGUgKmRldiwgRXJyb3IgKiplcnJwKQogICAgICAgICBnb3RvIGZyZWVfdmlydGlvOwogICAgIH0K
-IAotICAgIHZzYy0+ZGV2Lm52cXMgPSAyICsgdnMtPmNvbmYubnVtX3F1ZXVlczsKKyAgICB2c2Mt
-PmRldi5udnFzID0gVklSVElPX1NDU0lfVlFfTlVNX0ZJWEVEICsgdnMtPmNvbmYubnVtX3F1ZXVl
-czsKICAgICB2c2MtPmRldi52cXMgPSBnX25ldzAoc3RydWN0IHZob3N0X3ZpcnRxdWV1ZSwgdnNj
-LT5kZXYubnZxcyk7CiAgICAgdnNjLT5kZXYudnFfaW5kZXggPSAwOwogICAgIHZzYy0+ZGV2LmJh
-Y2tlbmRfZmVhdHVyZXMgPSAwOwpkaWZmIC0tZ2l0IGEvaHcvc2NzaS92aXJ0aW8tc2NzaS5jIGIv
-aHcvc2NzaS92aXJ0aW8tc2NzaS5jCmluZGV4IGI0OTc3NTI2OWUuLmVlY2RkMDVhZjUgMTAwNjQ0
-Ci0tLSBhL2h3L3Njc2kvdmlydGlvLXNjc2kuYworKysgYi9ody9zY3NpL3ZpcnRpby1zY3NpLmMK
-QEAgLTE5MSw3ICsxOTEsNyBAQCBzdGF0aWMgdm9pZCB2aXJ0aW9fc2NzaV9zYXZlX3JlcXVlc3Qo
-UUVNVUZpbGUgKmYsIFNDU0lSZXF1ZXN0ICpzcmVxKQogICAgIFZpcnRJT1NDU0lSZXEgKnJlcSA9
-IHNyZXEtPmhiYV9wcml2YXRlOwogICAgIFZpcnRJT1NDU0lDb21tb24gKnZzID0gVklSVElPX1ND
-U0lfQ09NTU9OKHJlcS0+ZGV2KTsKICAgICBWaXJ0SU9EZXZpY2UgKnZkZXYgPSBWSVJUSU9fREVW
-SUNFKHJlcS0+ZGV2KTsKLSAgICB1aW50MzJfdCBuID0gdmlydGlvX2dldF9xdWV1ZV9pbmRleChy
-ZXEtPnZxKSAtIDI7CisgICAgdWludDMyX3QgbiA9IHZpcnRpb19nZXRfcXVldWVfaW5kZXgocmVx
-LT52cSkgLSBWSVJUSU9fU0NTSV9WUV9OVU1fRklYRUQ7CiAKICAgICBhc3NlcnQobiA8IHZzLT5j
-b25mLm51bV9xdWV1ZXMpOwogICAgIHFlbXVfcHV0X2JlMzJzKGYsICZuKTsKQEAgLTg5MiwxMCAr
-ODkyLDExIEBAIHZvaWQgdmlydGlvX3Njc2lfY29tbW9uX3JlYWxpemUoRGV2aWNlU3RhdGUgKmRl
-diwKICAgICAgICAgICAgICAgICBzaXplb2YoVmlydElPU0NTSUNvbmZpZykpOwogCiAgICAgaWYg
-KHMtPmNvbmYubnVtX3F1ZXVlcyA9PSAwIHx8Ci0gICAgICAgICAgICBzLT5jb25mLm51bV9xdWV1
-ZXMgPiBWSVJUSU9fUVVFVUVfTUFYIC0gMikgeworICAgICAgICAgICAgcy0+Y29uZi5udW1fcXVl
-dWVzID4gVklSVElPX1FVRVVFX01BWCAtIFZJUlRJT19TQ1NJX1ZRX05VTV9GSVhFRCkgewogICAg
-ICAgICBlcnJvcl9zZXRnKGVycnAsICJJbnZhbGlkIG51bWJlciBvZiBxdWV1ZXMgKD0gJSIgUFJJ
-dTMyICIpLCAiCiAgICAgICAgICAgICAgICAgICAgICAgICAgIm11c3QgYmUgYSBwb3NpdGl2ZSBp
-bnRlZ2VyIGxlc3MgdGhhbiAlZC4iLAotICAgICAgICAgICAgICAgICAgIHMtPmNvbmYubnVtX3F1
-ZXVlcywgVklSVElPX1FVRVVFX01BWCAtIDIpOworICAgICAgICAgICAgICAgICAgIHMtPmNvbmYu
-bnVtX3F1ZXVlcywKKyAgICAgICAgICAgICAgICAgICBWSVJUSU9fUVVFVUVfTUFYIC0gVklSVElP
-X1NDU0lfVlFfTlVNX0ZJWEVEKTsKICAgICAgICAgdmlydGlvX2NsZWFudXAodmRldik7CiAgICAg
-ICAgIHJldHVybjsKICAgICB9CmRpZmYgLS1naXQgYS9ody92aXJ0aW8vdmhvc3Qtc2NzaS1wY2ku
-YyBiL2h3L3ZpcnRpby92aG9zdC1zY3NpLXBjaS5jCmluZGV4IDA5NWFmMjNmM2YuLjA2ZTgxNGQz
-MGUgMTAwNjQ0Ci0tLSBhL2h3L3ZpcnRpby92aG9zdC1zY3NpLXBjaS5jCisrKyBiL2h3L3ZpcnRp
-by92aG9zdC1zY3NpLXBjaS5jCkBAIC01MCw3ICs1MCw4IEBAIHN0YXRpYyB2b2lkIHZob3N0X3Nj
-c2lfcGNpX3JlYWxpemUoVmlydElPUENJUHJveHkgKnZwY2lfZGV2LCBFcnJvciAqKmVycnApCiAg
-ICAgVmlydElPU0NTSUNvbW1vbiAqdnMgPSBWSVJUSU9fU0NTSV9DT01NT04odmRldik7CiAKICAg
-ICBpZiAodnBjaV9kZXYtPm52ZWN0b3JzID09IERFVl9OVkVDVE9SU19VTlNQRUNJRklFRCkgewot
-ICAgICAgICB2cGNpX2Rldi0+bnZlY3RvcnMgPSB2cy0+Y29uZi5udW1fcXVldWVzICsgMzsKKyAg
-ICAgICAgdnBjaV9kZXYtPm52ZWN0b3JzID0gdnMtPmNvbmYubnVtX3F1ZXVlcyArCisgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgIFZJUlRJT19TQ1NJX1ZRX05VTV9GSVhFRCArIDE7CiAgICAg
-fQogCiAgICAgcWRldl9yZWFsaXplKHZkZXYsIEJVUygmdnBjaV9kZXYtPmJ1cyksIGVycnApOwpk
-aWZmIC0tZ2l0IGEvaHcvdmlydGlvL3Zob3N0LXVzZXItc2NzaS1wY2kuYyBiL2h3L3ZpcnRpby92
-aG9zdC11c2VyLXNjc2ktcGNpLmMKaW5kZXggNDcwNWNkNTRlOC4uYWI2ZGZiNzFhOSAxMDA2NDQK
-LS0tIGEvaHcvdmlydGlvL3Zob3N0LXVzZXItc2NzaS1wY2kuYworKysgYi9ody92aXJ0aW8vdmhv
-c3QtdXNlci1zY3NpLXBjaS5jCkBAIC01Niw3ICs1Niw4IEBAIHN0YXRpYyB2b2lkIHZob3N0X3Vz
-ZXJfc2NzaV9wY2lfcmVhbGl6ZShWaXJ0SU9QQ0lQcm94eSAqdnBjaV9kZXYsIEVycm9yICoqZXJy
-cCkKICAgICBWaXJ0SU9TQ1NJQ29tbW9uICp2cyA9IFZJUlRJT19TQ1NJX0NPTU1PTih2ZGV2KTsK
-IAogICAgIGlmICh2cGNpX2Rldi0+bnZlY3RvcnMgPT0gREVWX05WRUNUT1JTX1VOU1BFQ0lGSUVE
-KSB7Ci0gICAgICAgIHZwY2lfZGV2LT5udmVjdG9ycyA9IHZzLT5jb25mLm51bV9xdWV1ZXMgKyAz
-OworICAgICAgICB2cGNpX2Rldi0+bnZlY3RvcnMgPSB2cy0+Y29uZi5udW1fcXVldWVzICsKKyAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgVklSVElPX1NDU0lfVlFfTlVNX0ZJWEVEICsgMTsK
-ICAgICB9CiAKICAgICBxZGV2X3JlYWxpemUodmRldiwgQlVTKCZ2cGNpX2Rldi0+YnVzKSwgZXJy
-cCk7CmRpZmYgLS1naXQgYS9ody92aXJ0aW8vdmlydGlvLXNjc2ktcGNpLmMgYi9ody92aXJ0aW8v
-dmlydGlvLXNjc2ktcGNpLmMKaW5kZXggYzIzYTEzNDIwMi4uM2ZmOWViN2VmNiAxMDA2NDQKLS0t
-IGEvaHcvdmlydGlvL3ZpcnRpby1zY3NpLXBjaS5jCisrKyBiL2h3L3ZpcnRpby92aXJ0aW8tc2Nz
-aS1wY2kuYwpAQCAtNTEsNyArNTEsOCBAQCBzdGF0aWMgdm9pZCB2aXJ0aW9fc2NzaV9wY2lfcmVh
-bGl6ZShWaXJ0SU9QQ0lQcm94eSAqdnBjaV9kZXYsIEVycm9yICoqZXJycCkKICAgICBjaGFyICpi
-dXNfbmFtZTsKIAogICAgIGlmICh2cGNpX2Rldi0+bnZlY3RvcnMgPT0gREVWX05WRUNUT1JTX1VO
-U1BFQ0lGSUVEKSB7Ci0gICAgICAgIHZwY2lfZGV2LT5udmVjdG9ycyA9IHZzLT5jb25mLm51bV9x
-dWV1ZXMgKyAzOworICAgICAgICB2cGNpX2Rldi0+bnZlY3RvcnMgPSB2cy0+Y29uZi5udW1fcXVl
-dWVzICsKKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgVklSVElPX1NDU0lfVlFfTlVNX0ZJ
-WEVEICsgMTsKICAgICB9CiAKICAgICAvKgotLSAKMi4yNi4yCgo=
+On 8/11/20 2:39 PM, Peter Maydell wrote:
+> On Thu, 6 Aug 2020 at 14:21, Cédric Le Goater <clg@kaod.org> wrote:
+>>
+>> When inserting the VLAN tag in packets, memmove() can generate an
+>> integer overflow for packets whose length is less than 12 bytes.
+>>
+>> Check length against the size of the ethernet header (14 bytes) to
+>> avoid the crash and return FTGMAC100_INT_XPKT_LOST status. This seems
+>> like a good modeling choice even if Aspeed does not specify anything
+>> in that case.
+>>
+>> Cc: Frederic Konrad <konrad.frederic@yahoo.fr>
+>> Cc: Mauro Matteo Cascella <mcascell@redhat.com>
+>> Reported-by: Ziming Zhang <ezrakiez@gmail.com>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>  hw/net/ftgmac100.c | 19 +++++++++++++++----
+>>  1 file changed, 15 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+>> index 280aa3d3a1e2..987b843fabc4 100644
+>> --- a/hw/net/ftgmac100.c
+>> +++ b/hw/net/ftgmac100.c
+>> @@ -540,10 +540,21 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
+>>                  s->isr |= FTGMAC100_INT_XPKT_LOST;
+>>                  len =  sizeof(s->frame) - frame_size - 4;
+>>              }
+>> -            memmove(ptr + 16, ptr + 12, len - 12);
+>> -            stw_be_p(ptr + 12, ETH_P_VLAN);
+>> -            stw_be_p(ptr + 14, bd.des1);
+>> -            len += 4;
+>> +
+>> +            if (len < sizeof(struct eth_header)) {
+>> +                qemu_log_mask(LOG_GUEST_ERROR,
+>> +                         "%s: frame too small for VLAN insertion : %d bytes\n",
+>> +                         __func__, len);
+>> +                s->isr |= FTGMAC100_INT_XPKT_LOST;
+>> +            } else {
+>> +                uint8_t *vlan_hdr = ptr + (ETH_ALEN * 2);
+>> +                uint8_t *payload = vlan_hdr + sizeof(struct vlan_header);
+>> +
+>> +                memmove(payload, vlan_hdr, len - (ETH_ALEN * 2));
+>> +                stw_be_p(vlan_hdr, ETH_P_VLAN);
+>> +                stw_be_p(vlan_hdr + 2, FTGMAC100_TXDES1_VLANTAG_CI(bd.des1));
+>> +                len += sizeof(struct vlan_header);
+>> +            }
+>>          }
+> 
+> If you want to be picky, this will unnecessarily fail for the case of
+> a packet that is big enough for the vlan header but which has been
+> split up into multiple tx descriptors such that the first one is
+> smaller than the size of the eth_header. You could fix that by
+> doing the insertion of the vlan tag when you process the TXDES0_LTS
+> descriptor rather than when you process the TXDES0_FTS one. (We
+> already save the des1 info where the INS_VLANTAG flag is in the
+> 'flags' variable, so we have that available for the LTS descriptor code.)
+
+yes. Good idea. The code is cleaner and the driver can even survive 
+a bogus frame.
+
+I will send a new version, without the Tested and Reviewed tags.
+
+To reproduce, I have created a little kernel module tester based 
+on the POC proposed by Ziming, which was for another MAC.
+
+	https://github.com/legoater/ftgmac100-test
+
+Thanks,
+
+C. 
+ 
 

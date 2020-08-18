@@ -1,233 +1,240 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3396486lfy;
-        Mon, 17 Aug 2020 18:44:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzjKqRjzcfHoAM4/aX8+UBiljljP1vEJjelLOayKAzZXZjL9F5rC1IPQitWazagw8OGIULw
-X-Received: by 2002:a17:90a:ce8c:: with SMTP id g12mr13307158pju.23.1597715084297;
-        Mon, 17 Aug 2020 18:44:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597715084; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3457963lfy;
+        Mon, 17 Aug 2020 20:34:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxv4jcg7dkI35+WkQWupF0NliAQn4BKIuTptrg3JGLRyqEiAP2O7R8WcjMp6jqvfM66asw4
+X-Received: by 2002:a17:90a:eb09:: with SMTP id j9mr15820580pjz.192.1597721669067;
+        Mon, 17 Aug 2020 20:34:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597721669; cv=none;
         d=google.com; s=arc-20160816;
-        b=Xv0VjaD4rJ/XdwF7d6Qnd0ROYZELc2pMPvyS21AI/chkTnYAU0XGU0vQkb1ApuX9Ui
-         f57+v1W/jTloNsKGu3OIzCUIxNHprWkm6qEshxgm5yHxsesvfDilOJLIYeGiD6GCcRut
-         Yrevnr+ox+i2AaRW4MVguH14Hm2747ECtt7/S3/b9aWiyuF3NS9+VEeWpgAAXcyhqT+k
-         4EKHhns9sqjjBiSn7taSFk3o/SbiMpa6/Fgfr8rvJwuSHCrNsde478dRDrhz2zItbtER
-         wYTkcezfM77oN/BQvwPsI0mbLIIVtv1tY3W3Ys7GYqXzqkgGyMjfSGhgOd9pYbHeDrbd
-         UBhQ==
+        b=xxD6tuGl00t3ExtIh+vb/DREFb24CFWYX16WafuGN9upmAco3V6n65QhL7S0b9wu24
+         cqGi54bA5BPl/8DHr3Rh74EV4XR2XuNgmhWTgZIOmab0/TTL1WMO1nn5P3BqvAQbfkyj
+         GdAkP/pN/qeKAewfYlRcFNg7H8eNk6HstCfN3B0e4UTclOE4X56mHFUBZmeIxRrCy7fv
+         rZIhq0s5lxzZCLfEQsKIJezXq8ZXZbU3dl8MQ5P2PM+jsxL8QsarK3jBRbopnlLXzLcy
+         haTg8bMpTiwMss5Crh82U04maXhLjOXm7rUC/wOEXZFkYT6jYCuEGaQOQiwyCTsEDKwM
+         +6eA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:in-reply-to
-         :subject:cc:to:from:user-agent:references:dkim-signature;
-        bh=vWgNd0droBgNxocrSnsVRySZHFefJUGvUyzFU0tOJsY=;
-        b=kw76Kcq6ilKxxAG7NuJ/GW7GqFEDiYiSXTuf1jBaVn7rRHvdtR3jl6brCfsHZ6cOn6
-         uPOAiPBAmSflWfV/wOQa0UwdrYJ8nsW7Kc8PKtw1EFWCj+RmZspKuw0URVwzI3MQsKRB
-         wAA8gKUYcZc5iHCwafUD2y0zMO/QIDXjy9JV/4LmvlWUrX9itXyOMgCJMTpQ0ZPxsuW8
-         iIqpCaW/oYSNVs2Q4frBk4dg6AmiOGGLu03i13Zfxe7y9p0rhYbwS5sbiy8RfWISAfbs
-         A8HJ3jh20yUQv/WM5/nSWb9Qpz0pVet/CrMoEw+YaLEWFc4Ir4csHtFmQmi54Avvu+Ak
-         OWIg==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=fFeaEGbXsOXWMrwdRODXZ0MC5AEYl4TrQrgD5WqjGYA=;
+        b=Rk8E12igI9yeTi4KwLqGsVUczZjCc/j93dCnBCIg8XLwsqBmx6BD7CPK5G/wYgJzXa
+         HXrFbKvb8zRMpE9TnUc0YAjBeN4F5sNw2DHU2sI8OC1WNzQEVJPEfaU6TIpW8X27VZBg
+         dkqJDCbZ0iKUSSfcYhHqPSJy7siHneq24kgVRJnOfH0iCpp//PnKWUaBWbQWDjFkow0F
+         PH1ARCqNOKfBilya80MSEMeSMpSrTOc6JcF1055ffCctfo49/303BXPJip3IRapuTpUZ
+         geHB9c4nlXFQ01vlnLxHW8wYkuvulMpPrTLcpY/ljA6lQmK4IV33VyNOCDE4g93z2FD+
+         DRlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dkFrgpa1;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=GWJn1zaJ;
        spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
 Return-Path: <bauerman@linux.ibm.com>
 Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id k4si13112626plt.313.2020.08.17.18.44.44
+        by mx.google.com with ESMTPS id z8si14549675plk.122.2020.08.17.20.34.28
         (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 17 Aug 2020 18:44:44 -0700 (PDT)
+        Mon, 17 Aug 2020 20:34:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=dkFrgpa1;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=GWJn1zaJ;
        spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 07I1VkSe042861;
-	Mon, 17 Aug 2020 21:44:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=references : from : to :
- cc : subject : in-reply-to : date : message-id : mime-version :
- content-type : content-transfer-encoding; s=pp1;
- bh=vWgNd0droBgNxocrSnsVRySZHFefJUGvUyzFU0tOJsY=;
- b=dkFrgpa1+1IuTd+v8sMxc208qemUMQUa+YDWIOTv2hBiFFD133V2qUmCvpUUVvb2ern6
- By7gdUkkE3mnigA9g7Tw5KeV+PuQYjCiCAulXJHseagTAfB5BFkvEQph7prGPVRRFEkX
- TMJfdtvZfIy41eqB0dzNO+vseVDZnCiuEmuROITLzQkCzrehaD7cDhB4BkTPq3Iw7Pkz
- RGynwmjIFuxDKbUdPU8WkfiL9rYP3jnvv9AHb4Qk/a159ZSxOWjfAi4xtmnHfwABMhcB
- L64HLHjIInluHda1r0mJ1CBVGkgPhnKVA75XoaIz28R+t4I83Ih+QqOu9r3EurOdQZSs Tg== 
+Received: from pps.filterd (m0098399.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 07I3Vpiq059308;
+	Mon, 17 Aug 2020 23:33:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
+ : date : message-id : mime-version : content-type :
+ content-transfer-encoding; s=pp1;
+ bh=fFeaEGbXsOXWMrwdRODXZ0MC5AEYl4TrQrgD5WqjGYA=;
+ b=GWJn1zaJrKzd0tNvqqCFidZtmZlQL3chNNpMtZZ0dd4rkx6W8FQVXKLaadOfvnPPjCPB
+ 12zb+UhV6A+vlCdR+Pg9yOB+cpeX4RAJpn+pac2g8DqWLJqzZeGxpDCUIISpJLuBbsJ3
+ dPmXqks7uSwyQWYp0BE9/4RFn0cYVCTjq1Q+VVWPsuO2pVDBpS5b7s6/kxLmREdPUCGG
+ qPzUHBGN8jyNQVprZQgT5m+Xs6W0ZgJ9g6+HAeMDL2Set8reopsndxyUmIl306bppbc7
+ 69viKsdiRghAmrJjLDr89pG0SEOp3kNlO29mlxiCdUcVAt8FKVdKvAdkZt6VDihxEXxV yA== 
 Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 3304tdh0vf-1
+	by mx0a-001b2d01.pphosted.com with ESMTP id 3304r6u7uy-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 17 Aug 2020 21:44:06 -0400
-Received: from m0098410.ppops.net (m0098410.ppops.net [127.0.0.1])
-	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 07I1W4uS043396;
-	Mon, 17 Aug 2020 21:44:05 -0400
-Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com [169.62.189.11])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 3304tdh0uy-1
+	Mon, 17 Aug 2020 23:33:54 -0400
+Received: from m0098399.ppops.net (m0098399.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 07I3XW34063134;
+	Mon, 17 Aug 2020 23:33:53 -0400
+Received: from ppma02wdc.us.ibm.com (aa.5b.37a9.ip4.static.sl-reverse.com [169.55.91.170])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 3304r6u7ud-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Mon, 17 Aug 2020 21:44:05 -0400
-Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
-	by ppma03dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 07I1dQ6E013898;
-	Tue, 18 Aug 2020 01:44:04 GMT
-Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com [9.57.198.26])
-	by ppma03dal.us.ibm.com with ESMTP id 3304cc8fxv-1
+	Mon, 17 Aug 2020 23:33:53 -0400
+Received: from pps.filterd (ppma02wdc.us.ibm.com [127.0.0.1])
+	by ppma02wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 07I3UBaH027184;
+	Tue, 18 Aug 2020 03:33:52 GMT
+Received: from b01cxnp23032.gho.pok.ibm.com (b01cxnp23032.gho.pok.ibm.com [9.57.198.27])
+	by ppma02wdc.us.ibm.com with ESMTP id 3304scgsmb-1
 	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 18 Aug 2020 01:44:04 +0000
-Received: from b01ledav004.gho.pok.ibm.com (b01ledav004.gho.pok.ibm.com [9.57.199.109])
-	by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 07I1i4pJ37224820
+	Tue, 18 Aug 2020 03:33:52 +0000
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com [9.57.199.111])
+	by b01cxnp23032.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 07I3XpWd36438342
 	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Tue, 18 Aug 2020 01:44:04 GMT
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 1C8E3112062;
-	Tue, 18 Aug 2020 01:44:04 +0000 (GMT)
-Received: from b01ledav004.gho.pok.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id B4452112061;
-	Tue, 18 Aug 2020 01:43:57 +0000 (GMT)
-Received: from morokweng.localdomain (unknown [9.211.138.167])
-	by b01ledav004.gho.pok.ibm.com (Postfix) with ESMTPS;
-	Tue, 18 Aug 2020 01:43:57 +0000 (GMT)
-References: <20200723025657.644724-1-bauerman@linux.ibm.com> <20200817044730.GK12805@yekko.fritz.box> <83ebefab-8bdf-2584-53e6-e4fa0f540109@redhat.com> <20200817054306.GL12805@yekko.fritz.box>
-User-agent: mu4e 1.2.0; emacs 26.3
+	Tue, 18 Aug 2020 03:33:51 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 7B299AC059;
+	Tue, 18 Aug 2020 03:33:51 +0000 (GMT)
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 6F66DAC05E;
+	Tue, 18 Aug 2020 03:33:44 +0000 (GMT)
+Received: from morokweng.localdomain.com (unknown [9.211.138.167])
+	by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
+	Tue, 18 Aug 2020 03:33:44 +0000 (GMT)
 From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-To: David Gibson <david@gibson.dropbear.id.au>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-        qemu-ppc@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
-        David
- Hildenbrand <david@redhat.com>, qemu-devel@nongnu.org,
-        Jiaxun Yang
- <jiaxun.yang@flygoat.com>,
-        Aleksandar Markovic
- <aleksandar.qemu.devel@gmail.com>,
-        Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,
-        Thomas Huth <thuth@redhat.com>,
-        Artyom
- Tarasenko <atar4qemu@gmail.com>,
-        Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>,
-        Eduardo Habkost <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
-        qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
-        Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Richard Henderson
- <rth@twiddle.net>,
-        Cornelia Huck <cohuck@redhat.com>,
-        Aurelien Jarno
- <aurelien@aurel32.net>,
-        Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v3 0/8] Generalize start-powered-off property from ARM
-In-reply-to: <20200817054306.GL12805@yekko.fritz.box>
-Date: Mon, 17 Aug 2020 22:43:52 -0300
-Message-ID: <87mu2s7mp3.fsf@morokweng.localdomain>
+To: qemu-ppc@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Greg Kurz <groug@kaod.org>,
+        Thiago Jung Bauermann <bauerman@linux.ibm.com>
+Subject: [PATCH v4 0/8] Generalize start-powered-off property from ARM
+Date: Tue, 18 Aug 2020 00:33:15 -0300
+Message-Id: <20200818033323.336912-1-bauerman@linux.ibm.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
 X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
- definitions=2020-08-17_15:2020-08-17,2020-08-17 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 bulkscore=0 adultscore=0
- priorityscore=1501 phishscore=0 spamscore=0 impostorscore=0 suspectscore=0
- mlxscore=0 clxscore=1015 malwarescore=0 lowpriorityscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
- definitions=main-2008180006
-X-TUID: QN2aSsZ7vbxI
+ definitions=2020-08-18_01:2020-08-17,2020-08-18 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 impostorscore=0
+ lowpriorityscore=0 mlxlogscore=999 spamscore=0 priorityscore=1501
+ malwarescore=0 clxscore=1015 phishscore=0 suspectscore=1 bulkscore=0
+ adultscore=0 mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2008180022
+X-TUID: v7Ooc+xp05Jd
+
+This version tries to fix an issue found by David Gibson when running
+the Travis CI:
+
+Unexpected error in qdev_prop_set_after_realize() at /home/travis/build/dgibson/qemu/hw/core/qdev-properties.c:30:
+qemu-system-mips64el: Attempt to set property 'start-powered-off' on anonymous device (type 'I6400-mips64-cpu') after it was realized
+Broken pipe
+/home/travis/build/dgibson/qemu/tests/qtest/libqtest.c:175: kill_qemu() detected QEMU death from signal 6 (Aborted) (core dumped)
+Aborted (core dumped)
+ERROR qom-test - too few tests run (expected 8, got 0)
+/home/travis/build/dgibson/qemu/tests/Makefile.include:650: recipe for target 'check-qtest-mips64el' failed
+
+Philippe Mathieu-Daudé spotted the problem:
+
+> Good catch. hw/mips/cps.c, hw/ppc/e500.c and hw/sparc/sun4m.c are
+> incorrectly setting the property after the cpu is realized because
+> the cpu is created with cpu_create(). We need to create them with
+> object_initialize_child() and realize them manually with qdev_realize().
+
+But I found very few examples of CPUs initialized with
+object_initialize_child() (e.g., atmega.c, rx62n.c, nrf51_soc.c)
+so instead of using object_initialize_child(), I replaced the call to
+cpu_create() with object_new() and a call to qdev_realize() shortly after
+the  start-powered-off property is set. I thought this would be the more
+prudent change, keeping the code as close to the previous one as possible.
+
+I tried reproducing the Travis CI problem with
+`make docker-test-misc@debian-mips64el-cross` but I didn't succeed, so
+I'm not sure if this version solves the issue.
 
 
-David Gibson <david@gibson.dropbear.id.au> writes:
+Original cover letter bellow, followed by changelog:
 
-> On Mon, Aug 17, 2020 at 07:24:43AM +0200, Philippe Mathieu-Daud=C3=A9 wro=
-te:
->> On 8/17/20 6:47 AM, David Gibson wrote:
->> > On Wed, Jul 22, 2020 at 11:56:49PM -0300, Thiago Jung Bauermann wrote:
->> >> The ARM code has a start-powered-off property in ARMCPU, which is a
->> >> subclass of CPUState. This property causes arm_cpu_reset() to set
->> >> CPUState::halted to 1, signalling that the CPU should start in a halt=
-ed
->> >> state. Other architectures also have code which aim to achieve the sa=
-me
->> >> effect, but without using a property.
->> >>
->> >> The ppc/spapr version has a bug where QEMU does a KVM_RUN on the vcpu
->> >> before cs->halted is set to 1, causing the vcpu to run while it's sti=
-ll in
->> >> an unitialized state (more details in patch 3).
->> >>
->> >> Peter Maydell mentioned the ARM start-powered-off property and
->> >> Eduardo=C3=82 Habkost suggested making it generic, so this patch seri=
-es does
->> >> that, for all cases which I was able to find via grep in the code.
->> >>
->> >> The only problem is that I was only able to test these changes on a p=
-pc64le
->> >> pseries KVM guest, so except for patches 2 and 3, all others are only
->> >> build-tested. Also, my grasp of QOM lifecycle is basically non-exista=
-nt so
->> >> please be aware of that when reviewing this series.
->> >>
->> >> The last patch may be wrong, as pointed out by Eduardo, so I marked i=
-t as
->> >> RFC. It may make sense to drop it.
->> >>
->> >> Applies cleanly on yesterday's master.
->> >
->> > This series appears to break the Travis build for a MIPS target:
->> >
->> > Unexpected error in qdev_prop_set_after_realize() at /home/travis/buil=
-d/dgibson/qemu/hw/core/qdev-properties.c:30:
->> > qemu-system-mips64el: Attempt to set property 'start-powered-off' on a=
-nonymous device (type 'I6400-mips64-cpu') after it was realized
->> > Broken pipe
->> > /home/travis/build/dgibson/qemu/tests/qtest/libqtest.c:175: kill_qemu(=
-) detected QEMU death from signal 6 (Aborted) (core dumped)
->> > Aborted (core dumped)
->> > ERROR qom-test - too few tests run (expected 8, got 0)
->> > /home/travis/build/dgibson/qemu/tests/Makefile.include:650: recipe for=
- target 'check-qtest-mips64el' failed
->>
->> Good catch. hw/mips/cps.c, hw/ppc/e500.c and hw/sparc/sun4m.c are
->> incorrectly setting the property after the cpu is realized because
->> the cpu is created with cpu_create(). We need to create them with
->> object_initialize_child() and realize them manually with qdev_realize().
+The ARM code has a start-powered-off property in ARMCPU, which is a
+subclass of CPUState. This property causes arm_cpu_reset() to set
+CPUState::halted to 1, signalling that the CPU should start in a halted
+state. Other architectures also have code which aim to achieve the same
+effect, but without using a property.
 
-Does it have to be with object_initialize_child()? I found very few
-examples of CPUs initialized with that function (e.g., atmega.c,
-rx62n.c, nrf51_soc.c).
+The ppc/spapr version has a bug where QEMU does a KVM_RUN on the vcpu
+before cs->halted is set to 1, causing the vcpu to run while it's still in
+an unitialized state (more details in patch 3).
 
-A more direct substitute for cpu_create() would be object_new(). I
-provide an example at the end of this email. What do you think?
+Peter Maydell mentioned the ARM start-powered-off property and
+Eduardo Habkost suggested making it generic, so this patch series does
+that, for all cases which I was able to find via grep in the code.
 
-I'm trying to test it with `make=C2=A0docker-test-misc@debian-mips64el-cros=
-s`,
-but still having some trouble with that. Is there another way to
-reproduce this issue?
+The only problem is that I was only able to test these changes on a ppc64le
+pseries KVM guest, so except for patches 2 and 3, all others are only
+build-tested. Also, my grasp of QOM lifecycle is basically non-existant so
+please be aware of that when reviewing this series.
 
-> Thiago, can you fix that up and repost please.
+The last patch may be wrong, as pointed out by Eduardo, so I marked it as
+RFC. It may make sense to drop it.
 
-Ok, I'm working on it.
+Applies cleanly on yesterday's master.
 
---
-Thiago Jung Bauermann
-IBM Linux Technology Center
+Changes since v3:
 
+General:
+- Added David's, Greg's and Cornelia's Reviewed-by and Acked-by to some
+  of the patches.
+- Rebased on top of dgibson/ppc-for-5.2.
 
-diff --git a/hw/mips/cps.c b/hw/mips/cps.c
-index d5b6c78019..be85357dc0 100644
---- a/hw/mips/cps.c
-+++ b/hw/mips/cps.c
-@@ -73,7 +73,9 @@ static void mips_cps_realize(DeviceState *dev, Error **er=
-rp)
-     bool saar_present =3D false;
-=20
-     for (i =3D 0; i < s->num_vp; i++) {
--        cpu =3D MIPS_CPU(cpu_create(s->cpu_type));
-+        Error *err =3D NULL;
-+
-+        cpu =3D MIPS_CPU(object_new(s->cpu_type));
-=20
-         /* Init internal devices */
-         cpu_mips_irq_init_cpu(cpu);
-@@ -90,6 +92,12 @@ static void mips_cps_realize(DeviceState *dev, Error **e=
-rrp)
-         object_property_set_bool(OBJECT(cpu), "start-powered-off", true,
-                                  &error_abort);
-         qemu_register_reset(main_cpu_reset, cpu);
-+
-+        if (!qdev_realize(DEVICE(cpu), NULL, &err)) {
-+            error_report_err(err);
-+            object_unref(OBJECT(cpu));
-+            exit(EXIT_FAILURE);
-+        }
-     }
-=20
-     cpu =3D MIPS_CPU(first_cpu);
+Patch "ppc/e500: Use start-powered-off CPUState property"
+Patch "mips/cps: Use start-powered-off CPUState property"
+Patch "sparc/sun4m: Use start-powered-off CPUState property"
+- Initialize CPU object with object_new() and qdev_realize() instead
+  of cpu_create().
+- Removed Reviewed-by's and Acked-by's from these patches because of
+  these changes.
+
+Changes since v2:
+
+General:
+- Added Philippe's Reviewed-by to some of the patches.
+
+Patch "ppc/spapr: Use start-powered-off CPUState property"
+- Set the CPUState::start_powered_off variable directly rather than using
+  object_property_set_bool(). Suggested by Philippe.
+
+Patch "sparc/sun4m: Remove main_cpu_reset()"
+- New patch. Suggested by Philippe.
+
+Patch "sparc/sun4m: Use start-powered-off CPUState property"
+- Remove secondary_cpu_reset(). Suggested by Philippe.
+- Remove setting of `cs->halted = 1` from cpu_devinit(). Suggested by Philippe.
+
+Patch "Don't set CPUState::halted in cpu_devinit()"
+- Squashed into previous patch. Suggested by Philippe.
+
+Patch "sparc/sun4m: Use one cpu_reset() function for main and secondary CPUs"
+- Dropped.
+
+Patch "target/s390x: Use start-powered-off CPUState property"
+- Set the CPUState::start_powered_off variable directly rather than using
+  object_property_set_bool(). Suggested by Philippe.
+- Mention in the commit message Eduardo's observation that before this
+  patch, the code didn't set cs->halted on reset.
+
+Thiago Jung Bauermann (8):
+  target/arm: Move start-powered-off property to generic CPUState
+  target/arm: Move setting of CPU halted state to generic code
+  ppc/spapr: Use start-powered-off CPUState property
+  ppc/e500: Use start-powered-off CPUState property
+  mips/cps: Use start-powered-off CPUState property
+  sparc/sun4m: Remove main_cpu_reset()
+  sparc/sun4m: Use start-powered-off CPUState property
+  target/s390x: Use start-powered-off CPUState property
+
+ exec.c                  |  1 +
+ hw/core/cpu.c           |  2 +-
+ hw/mips/cps.c           | 16 ++++++++++++----
+ hw/ppc/e500.c           | 19 +++++++++++++++----
+ hw/ppc/spapr_cpu_core.c | 10 +++++-----
+ hw/sparc/sun4m.c        | 37 ++++++++++---------------------------
+ include/hw/core/cpu.h   |  4 ++++
+ target/arm/cpu.c        |  4 +---
+ target/arm/cpu.h        |  3 ---
+ target/arm/kvm32.c      |  2 +-
+ target/arm/kvm64.c      |  2 +-
+ target/s390x/cpu.c      |  2 +-
+ 12 files changed, 52 insertions(+), 50 deletions(-)

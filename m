@@ -1,286 +1,233 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp17445lfy;
-        Tue, 18 Aug 2020 18:35:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzpq4Gdwl6Cj0rCeslRzwDy3oGCJNlkBZxXWjNkA0bxTpz+WxcSujKeepan58Vo2c70G5Gz
-X-Received: by 2002:a25:ab0f:: with SMTP id u15mr31905358ybi.7.1597800901642;
-        Tue, 18 Aug 2020 18:35:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597800901; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp54189lfy;
+        Tue, 18 Aug 2020 19:43:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJynvTIRuZsL2KT8emzFiSC59NzjKqk4evrCxkDp+JY1T3gxZQZ2JElnufQdQfKab+PVWwok
+X-Received: by 2002:a25:5056:: with SMTP id e83mr32063980ybb.507.1597804992130;
+        Tue, 18 Aug 2020 19:43:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597804992; cv=none;
         d=google.com; s=arc-20160816;
-        b=VJaPWW3SVM02nmJX/0HoLtBW3yOHPi4toWgTdmBp5veyoQP+JdyKi6uaZslpVhn/Xq
-         Y+v3QWTAL94BJ017EpJWEhxzZyX5xr3D7/HRNr7u2Ca01DXJyP33kIlE/zy78ClJ4ypu
-         pAutA9AKoLOgYbP9CRhkJTnY5sVKEuNaLYkrq+HkqnJzPZz1KnNOqs1jkU8BW4gxyVGM
-         wemdv+ZgdTakeoLENuiuTzy1evmTdqsahXVPdD19K8h49wQ+X8U1jJ9g87Abf/7okSGr
-         t95mOkLopn+jILX5RzVpm7NbFJJl0o54ipN2Wq2yQAGJ27GTteGXMQ2WZSxZgnqQgBkn
-         pP9A==
+        b=JDsAPqgvAFrJQu+MoJPSFeZOVpRPdl6Ej4CMI0iOQGEKcTTrv203J6Qdi3zW0jc2mg
+         iyqmDAo9vaiueWlo7J3+26YwR+iHOvD52ai1IPRe8dgx0PCUfUlk1itRIgQv9pIdBpAG
+         t12i+ld2C+Yrny8UCUVXgHZ+xD8ZstTIIduPHNg8jJGoIr6bOyQcbDaaGQBuupgkw/O4
+         mVhW8KDLWKZz3VSi1HrCNoa0XU4x8cLQMzrBTf1rhAOSrNz0Daz7qe4JD9mAGpFFNWLg
+         JODjseN8u/OOPd5HHjdsy/sfSmtc39hkEdMjaysj5pJW6Hxy4vCkKUOwwK5zac9gdeBf
+         pMBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=x9v32iJwwCHKnri7jWQl1HJe8M+XkbGwit4e3sHhZBg=;
-        b=06mOm7/1yFHPSKG/1f5FH/yVtQHlTorCGACvI+OZtn2UgsMf507rbFcSUaTRhOz8qS
-         GqxKCJzLjxtAGEiP8PHXeNdjqECw6ER/i/E5NvIQV+X+JRvf8Azz99mwQSnMAhkISX8X
-         imTtTZNUnoTbqDDmK5zKxjDqIeB4sopMa1nlCTvZKApA7eSWFvY1bu0uLOTa7wYKe4VP
-         eIeTMpGoBG2YqefsceF3wHo5veiDYQMfdmaUJfftJdXZABrpoigexY1AzgvIAD0jhWZp
-         ODfy8lsCjLecCmeVCEPCKSf7HoEazBauY7LfY9bkRUgCFs6oqp5xKEQJqgmRlfTUWCgB
-         gguQ==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=MvO/3TaXIaWi0NFqkMYr5QRYsMxBjotQRfyRCmT/j60=;
+        b=DoJO+UskNABNh4qXedPAAed26+PbJCapn4hpvbDFttqi8m1fG4dyIwrE8k51rrYfh8
+         uyyDbk6kOTBC4JPl2FqYCCfJ2Zg3GXO46PvIR9xgnfriH5q2w11TZjgtQ190B79l9Qr7
+         YcxeMx08tlivgiiy3gJN+HdjJ3p7SR1fOg8XpNpstHu2jCzJUJZV1lbTlG541IuGdyGY
+         oS60bDX7yEqerqR8jCGElf0NAdmy6mizGNr9UcXbvo1bpGQnVB1lM9WrbyVx22x3UJ0S
+         TAtXjPXRkveJIrgx3TpFPad6VL6329GmQQHyjEbSkE6e3Ez1ZV7FjOzJ1Mz/QZD3OfgJ
+         Smrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WItehrSJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b129si20890712yba.468.2020.08.18.18.35.01
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 18 Aug 2020 18:35:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=VOYplI9R;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <bauerman@linux.ibm.com>
+Received: from mx0b-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id i82si22093661ybc.480.2020.08.18.19.43.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 18 Aug 2020 19:43:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WItehrSJ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:38296 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8D0H-0006YW-1G
-	for alex.bennee@linaro.org; Tue, 18 Aug 2020 21:35:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35120)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1k8Czb-00061i-8n; Tue, 18 Aug 2020 21:34:19 -0400
-Received: from mail-yb1-xb41.google.com ([2607:f8b0:4864:20::b41]:45300)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1k8CzZ-0002AW-7q; Tue, 18 Aug 2020 21:34:18 -0400
-Received: by mail-yb1-xb41.google.com with SMTP id x2so12429226ybf.12;
- Tue, 18 Aug 2020 18:34:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=x9v32iJwwCHKnri7jWQl1HJe8M+XkbGwit4e3sHhZBg=;
- b=WItehrSJIFcAJnCzr56ZGcipn/MD0pRPKMKwjzbd1tfU61p5k2EcRYoiPXc1G2GCiu
- MZ1UjcHjZI70jVSsiSLBGLNzSfLH06mFhUeHI6OQQr55pKiC7NpD1W9VIXFmQFe9pukf
- 4b8bDKwDlrwd0Fllp/PULgHZleICYuelaGVy+tQD3pOC7wNTytA1Qh1Lx/2vzxfeENHG
- GBvFks/sOSiMbXbFp4lzCbDQ2DoexVneftCwZMXUJffzTC7Lf4eEM6lV9h9nYEiJ5LlC
- AWL5M11HkeIAoj6opr9haSY8DolfqbBvoJmCvkmEyWKs4tKzK618d24E8F146nkqzjz6
- YGNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=x9v32iJwwCHKnri7jWQl1HJe8M+XkbGwit4e3sHhZBg=;
- b=U3rCIZlBg1IarFCjzNpxpCCB+qUB5MVJGf78/c/ZWsp0XftWwsAbfV+3IdhG91Ovje
- 8aYGYSIPQBArdnmgNDJuFRVWimM+OYywBUmQQEc7HxG5G96dTqPL1+31rKNTFV/ToeE4
- eiHVBld6nm81WhPj2tfrlkmb+vLj5bsGVtH5Ef3HeZNLnL1E7BVGLXoaZGXeiMvzqXUu
- 7pfY8nJwwab79cxivmSj7lSEkIC69UwLLosdFyhFJGjPbXnyTSOMxD6MPW8+fTHNc3bH
- 2RMZbL71KGkhYhwly4WM0KzJDU3mzO+mVQVR02vjs47rlfC1GexaxqN0v05XpX8b6dd1
- polQ==
-X-Gm-Message-State: AOAM532vlCiIEaPmHO6/P/LkAAJVxryaZlqd9ApF0ML3gp3KCDB9QrlY
- rVTsdI/3EGYIqxeVQwh4DmAF402MeagX3X3s/T8=
-X-Received: by 2002:a25:f20d:: with SMTP id i13mr30632404ybe.152.1597800854784; 
- Tue, 18 Aug 2020 18:34:14 -0700 (PDT)
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=VOYplI9R;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0098417.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 07J2WhFh001631;
+	Tue, 18 Aug 2020 22:42:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
+ : date : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=MvO/3TaXIaWi0NFqkMYr5QRYsMxBjotQRfyRCmT/j60=;
+ b=VOYplI9RhO5h/W8NWLc9ACFGdbNg+QoP7EAT1TJY+cxKSTc++OmdZU+EZR+SZ4aATLFU
+ 72GlSDjRjFD76c7AhWUwPCzXyw4VZrUW6B3prKNGDjro5swverUzmdTCMWmBXeAHyfY4
+ Rfi0guuyK75Kb9SmC4EFAhBV1sSM/KmmAi5s68p65FrnmTT4apI08mPAfv5Nf+ym8tNe
+ eRaql0Crk1cjZa1Sf6QlvOPDmtJqLOWgDk3PKM/KVSuP6zp+nb69+hX80LuLgwKBBH0i
+ Dc2DlS3jnXIkFL7fkcB+XmX2IrAG1/0h0F/0IJvcfOK70YCRjJqdE8qU1AJcNTxrislh mw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 3304nuxp58-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 18 Aug 2020 22:42:45 -0400
+Received: from m0098417.ppops.net (m0098417.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 07J2Y2S7004669;
+	Tue, 18 Aug 2020 22:42:45 -0400
+Received: from ppma04dal.us.ibm.com (7a.29.35a9.ip4.static.sl-reverse.com [169.53.41.122])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 3304nuxp4u-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 18 Aug 2020 22:42:45 -0400
+Received: from pps.filterd (ppma04dal.us.ibm.com [127.0.0.1])
+	by ppma04dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 07J2fEtK022255;
+	Wed, 19 Aug 2020 02:42:44 GMT
+Received: from b03cxnp08027.gho.boulder.ibm.com (b03cxnp08027.gho.boulder.ibm.com [9.17.130.19])
+	by ppma04dal.us.ibm.com with ESMTP id 3304uqjpj5-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 19 Aug 2020 02:42:44 +0000
+Received: from b03ledav005.gho.boulder.ibm.com (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
+	by b03cxnp08027.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 07J2ge1330474864
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 19 Aug 2020 02:42:40 GMT
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 6DF5DBE056;
+	Wed, 19 Aug 2020 02:42:43 +0000 (GMT)
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 6C3CCBE04F;
+	Wed, 19 Aug 2020 02:42:38 +0000 (GMT)
+Received: from morokweng.localdomain.com (unknown [9.163.41.251])
+	by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTP;
+	Wed, 19 Aug 2020 02:42:38 +0000 (GMT)
+From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+To: qemu-ppc@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
+        David Gibson <david@gibson.dropbear.id.au>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Greg Kurz <groug@kaod.org>,
+        Thiago Jung Bauermann <bauerman@linux.ibm.com>
+Subject: [PATCH v5 1/8] target/arm: Move start-powered-off property to generic CPUState
+Date: Tue, 18 Aug 2020 23:42:13 -0300
+Message-Id: <20200819024220.587612-2-bauerman@linux.ibm.com>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200819024220.587612-1-bauerman@linux.ibm.com>
+References: <20200819024220.587612-1-bauerman@linux.ibm.com>
 MIME-Version: 1.0
-References: <1597423256-14847-1-git-send-email-bmeng.cn@gmail.com>
- <CAAhSdy2D=TcENAJDja4r6pnhz0LRi-T+A9k3Btrs_EuB4x0e4w@mail.gmail.com>
- <CAEUhbmV5=B5xKhYqMj1MQb61nt5cNUJG1MXT++C1w1YMYTfLCQ@mail.gmail.com>
- <202949f7-c9d5-4d4d-3ebe-53727f4fa169@microchip.com>
- <CAKmqyKM3nm0rhxgDvWKWfO+4b23ZLSkHW2TzmcVZ_ZFy4L7MRg@mail.gmail.com>
- <d3f61c2c-a489-887e-0143-4d9a1e66e6f2@microchip.com>
- <CAAhSdy32owLO0KytyYsg-zH6JyyfNfGofa4vanqTFJLntPq0=g@mail.gmail.com>
- <1f17cc4c-83f8-a024-ebef-79e28fab9a32@microchip.com>
- <CAAhSdy1MTvjfpHZEAs2YVHXdPBaEMQxUNdP_yc7br0C2p9kfng@mail.gmail.com>
-In-Reply-To: <CAAhSdy1MTvjfpHZEAs2YVHXdPBaEMQxUNdP_yc7br0C2p9kfng@mail.gmail.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Wed, 19 Aug 2020 09:34:03 +0800
-Message-ID: <CAEUhbmUWcTxv70yuLMXwniGXB6zkadcpB4YTq=8F9UcXRK72+g@mail.gmail.com>
-Subject: Re: [PATCH 00/18] hw/riscv: Add Microchip PolarFire SoC Icicle Kit
- board support
-To: Anup Patel <anup@brainfault.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b41;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb41.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Cyril.Jean@microchip.com,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Bin Meng <bin.meng@windriver.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Alistair Francis <alistair23@gmail.com>,
- qemu-block@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Palmer Dabbelt <palmer@dabbelt.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rIdz6oj7wjjZ
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
+ definitions=2020-08-19_02:2020-08-18,2020-08-19 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 malwarescore=0 suspectscore=1
+ adultscore=0 clxscore=1015 priorityscore=1501 phishscore=0 mlxscore=0
+ mlxlogscore=999 spamscore=0 bulkscore=0 lowpriorityscore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2008190022
+X-TUID: QGDVttVyp4eZ
 
-On Tue, Aug 18, 2020 at 9:55 PM Anup Patel <anup@brainfault.org> wrote:
->
-> On Tue, Aug 18, 2020 at 6:39 PM <Cyril.Jean@microchip.com> wrote:
-> >
-> > On 8/18/20 7:17 AM, Anup Patel wrote:
-> > > EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
-> > >
-> > > On Tue, Aug 18, 2020 at 1:23 AM <Cyril.Jean@microchip.com> wrote:
-> > >> On 8/17/20 8:28 PM, Alistair Francis wrote:
-> > >>> EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
-> > >>>
-> > >>> On Mon, Aug 17, 2020 at 11:12 AM via <qemu-devel@nongnu.org> wrote:
-> > >>>> Hi Anup,
-> > >>>>
-> > >>>> On 8/17/20 11:30 AM, Bin Meng wrote:
-> > >>>>> EXTERNAL EMAIL: Do not click links or open attachments unless you know the content is safe
-> > >>>>>
-> > >>>>> Hi Anup,
-> > >>>>>
-> > >>>>> On Sat, Aug 15, 2020 at 1:44 AM Anup Patel <anup@brainfault.org> wrote:
-> > >>>>>> On Fri, Aug 14, 2020 at 10:12 PM Bin Meng <bmeng.cn@gmail.com> wrote:
-> > >>>>>>> From: Bin Meng <bin.meng@windriver.com>
-> > >>>>>>>
-> > >>>>>>> This adds support for Microchip PolarFire SoC Icicle Kit board.
-> > >>>>>>> The Icicle Kit board integrates a PolarFire SoC, with one SiFive's
-> > >>>>>>> E51 plus four U54 cores and many on-chip peripherals and an FPGA.
-> > >>>>>> Nice Work !!! This is very helpful.
-> > >>>>> Thanks!
-> > >>>>>
-> > >>>>>> The Microchip HSS is quite convoluted. It has:
-> > >>>>>> 1. DDR Init
-> > >>>>>> 2. Boot device support
-> > >>>>>> 3. SBI support using OpenSBI as library
-> > >>>>>> 4. Simple TEE support
-> > >>>>>>
-> > >>>>>> I think point 1) and 2) above should be part of U-Boot SPL.
-> > >>>>>> The point 3) can be OpenSBI FW_DYNAMIC.
-> > >>>>>>
-> > >>>>>> Lastly,for point 4), we are working on a new OpenSBI feature using
-> > >>>>>> which we can run independent Secure OS and Non-Secure OS using
-> > >>>>>> U-Boot_SPL+OpenSBI (for both SiFive Unleashed and Microchip
-> > >>>>>> PolarFire).
-> > >>>>>>
-> > >>>>>> Do you have plans for adding U-Boot SPL support for this board ??
-> > >>>>> + Cyril Jean from Microchip
-> > >>>>>
-> > >>>>> I will have to leave this question to Cyril to comment.
-> > >>>>>
-> > >>>> I currently do not have a plan to support U-Boot SPL. The idea of the
-> > >>>> HSS is to contain all the silicon specific initialization and
-> > >>>> configuration code within the HSS before jumping to U-Boot S-mode. I
-> > >>>> would rather keep all this within the HSS for the time being. I would
-> > >>>> wait until we reach production silicon before attempting to move this to
-> > >>>> U-Boot SPL as the HSS is likely to contain some opaque silicon related
-> > >>>> changes for another while.
-> > >>> That is unfortunate, a lot of work has gone into making the boot flow
-> > >>> simple and easy to use.
-> > >>>
-> > >>> QEMU now includes OpenSBI by default to make it easy for users to boot
-> > >>> Linux. The Icicle Kit board is now the most difficult QEMU board to
-> > >>> boot Linux on. Not to mention it makes it hard to impossible to
-> > >>> support it in standard tool flows such as meta-riscv.
-> > >>>
-> > >>> Alistair
-> > >> If it is such a problem we can add a U-Boot SPL stage and the HSS can be
-> > >> treated as standard SoC ROM code.
-> > > It's not mandatory for U-Boot SPL to have stable DRAM calibration settings
-> > > from the start itself. The initial U-Boot SPL support for most
-> > > platforms (accross
-> > > architectures) usually include basic working DRAM calibration settings which
-> > > is later on updated with separate patches. Also, we don't need all U-Boot
-> > > drivers to be upstreamed in one-go as this can be done in phases.
-> > >
-> > > The advantage we have with PolarFire SoC Icicle board is that we already
-> > > have a U-Boot S-mode. and we believe the OpenSBI generic platform will
-> > > work fine for PolarFire SoC Icicle board so the only thing missing right now
-> > > is the U-Boot SPL support for OpenSource boot-flow.
-> > >
-> > > It will certainly accelerate open-source development if we have boot-flow
-> > > U-Boot_SPL => OpenSBI (FW_DYNAMIC) => U-Boot_S-mode working
-> > > on PolarFire SoC Icicle board. Initially, we just need DRAM, SD/eMMC,
-> > > and Serial port support for U-Boot SPL and U-Boot S-mode. Later on,
-> > > more patches can add ethernet and other booting device drivers to U-Boot.
-> > >
-> > > Regarding security services of HSS, we are working on a OpenSBI
-> > > feature which will allow HSS security services to run as independent
-> > > binary in M-mode (not linked to OpenSBI) and OpenSBI FW_DYNAMIC
-> > > will be a separate binary acting as a secure monitor.
-> > >
-> > > Regards,
-> > > Anup
-> >
-> > What I have in mind is that the external memory will be up and running
-> > by the time we get to U-Boot SPL. In the case of PolarFire SoC the ROM
-> > code equivalent brings up the DDR memory interface so we do not need to
-> > worry about this as part of U-Boot.
->
-> Keeping DRAM configuration as part of a separate ROM booting stage prior
-> to the U-Boot SPL sounds good to me. This will lead to following boot-flow:
->
-> ROM/HSS (M-mode) => U-Boot SPL (M-mode) => OpenSBI (M-mode) => U-Boot S-mode
+There are other platforms which also have CPUs that start powered off, so
+generalize the start-powered-off property so that it can be used by them.
 
-If we want to keep the HSS, meaning that DDR memory is already
-initialized, then there is no need to create an additional step of
-U-Boot SPL phase, because there is no size limitation any more.
+Note that ARMv7MState also has a property of the same name but this patch
+doesn't change it because that class isn't a subclass of CPUState so it
+wouldn't be a trivial change.
 
-Right now, the boot workflow on PolarFire is:
+This change should not cause any change in behavior.
 
-HSS + OpenSBI (as a library) (M-mode) => U-Boot S-mode
+Suggested-by: Eduardo Habkost <ehabkost@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Greg Kurz <groug@kaod.org>
+Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+---
+ exec.c                | 1 +
+ include/hw/core/cpu.h | 4 ++++
+ target/arm/cpu.c      | 5 ++---
+ target/arm/cpu.h      | 3 ---
+ target/arm/kvm32.c    | 2 +-
+ target/arm/kvm64.c    | 2 +-
+ 6 files changed, 9 insertions(+), 8 deletions(-)
 
-It's just not the canonical way because of the HSS and OpenSBI as a library.
-
-A canonical way should be:
-
-U-Boot SPL (M-mode) => OpenSBI dynamic (M-mode) => U-Boot S-mode
-
-So we should be aiming to replace HSS with U-Boot SPL.
-
->
-> >
-> > Sounds to me the component that needs to be upstreamed next is the eMMC
-> > support so that it can be used as part of U-Boot SPL. Correct?
->
-> Maybe as a PHASE1 patch series for PolarFire U-Boot support can
-> target the following:
-> 1. Minimal U-Boot board support for PolarFire IcIcle Board with
-> single defconfig to build both U-Boot SPL and U-Boot S-mode
-> 2. Serial port driver (probably re-use existing driver)
-> 3. SD and eMMC driver
->
-> Supporting SD booting is highly desirable for PHASE1. At least,
-> U-Boot SPL, OpenSBI, U-Boot S-mode, and Linux should come
-> as separate images from SD card. The ROM/HSS can reside and
-> boot from on-board flash/eMMC.
->
-> Above is my suggestion based on experience with SiFive Unleashed.
->
-> The general idea behind OpenSource boot-flow is to have each
-> booting stage as a separate binary so that users can selectively
-> upgrade a particular booting stage without re-compiling/re-flashing
-> other booting stages.
->
-> Various distros and yocto already support building most of the above
-> booting stages (U-Boot, OpenSBI, Linux, etc) so we can reuse a lot
-> of existing work. Eventually, I am confident we will endup moving
-> more stuff from ROM/HSS to U-Boot SPL for ease in maintenance.
-
-Regards,
-Bin
+diff --git a/exec.c b/exec.c
+index 6f381f98e2..82e82fab09 100644
+--- a/exec.c
++++ b/exec.c
+@@ -899,6 +899,7 @@ Property cpu_common_props[] = {
+     DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
+                      MemoryRegion *),
+ #endif
++    DEFINE_PROP_BOOL("start-powered-off", CPUState, start_powered_off, false),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+index 8f145733ce..9fc2696db5 100644
+--- a/include/hw/core/cpu.h
++++ b/include/hw/core/cpu.h
+@@ -374,6 +374,10 @@ struct CPUState {
+     bool created;
+     bool stop;
+     bool stopped;
++
++    /* Should CPU start in powered-off state? */
++    bool start_powered_off;
++
+     bool unplug;
+     bool crash_occurred;
+     bool exit_request;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 111579554f..ec65c7653f 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -174,8 +174,8 @@ static void arm_cpu_reset(DeviceState *dev)
+     env->vfp.xregs[ARM_VFP_MVFR1] = cpu->isar.mvfr1;
+     env->vfp.xregs[ARM_VFP_MVFR2] = cpu->isar.mvfr2;
+ 
+-    cpu->power_state = cpu->start_powered_off ? PSCI_OFF : PSCI_ON;
+-    s->halted = cpu->start_powered_off;
++    cpu->power_state = s->start_powered_off ? PSCI_OFF : PSCI_ON;
++    s->halted = s->start_powered_off;
+ 
+     if (arm_feature(env, ARM_FEATURE_IWMMXT)) {
+         env->iwmmxt.cregs[ARM_IWMMXT_wCID] = 0x69051000 | 'Q';
+@@ -2182,7 +2182,6 @@ static const ARMCPUInfo arm_cpus[] = {
+ };
+ 
+ static Property arm_cpu_properties[] = {
+-    DEFINE_PROP_BOOL("start-powered-off", ARMCPU, start_powered_off, false),
+     DEFINE_PROP_UINT32("psci-conduit", ARMCPU, psci_conduit, 0),
+     DEFINE_PROP_UINT64("midr", ARMCPU, midr, 0),
+     DEFINE_PROP_UINT64("mp-affinity", ARMCPU,
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 9e8ed423ea..a925d26996 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -810,9 +810,6 @@ struct ARMCPU {
+      */
+     uint32_t psci_version;
+ 
+-    /* Should CPU start in PSCI powered-off state? */
+-    bool start_powered_off;
+-
+     /* Current power state, access guarded by BQL */
+     ARMPSCIState power_state;
+ 
+diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
+index 0af46b41c8..1f2b8f8b7a 100644
+--- a/target/arm/kvm32.c
++++ b/target/arm/kvm32.c
+@@ -218,7 +218,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+     /* Determine init features for this CPU */
+     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+-    if (cpu->start_powered_off) {
++    if (cs->start_powered_off) {
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
+     }
+     if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 1169237905..f8a6d905fb 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -775,7 +775,7 @@ int kvm_arch_init_vcpu(CPUState *cs)
+ 
+     /* Determine init features for this CPU */
+     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
+-    if (cpu->start_powered_off) {
++    if (cs->start_powered_off) {
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
+     }
+     if (kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {

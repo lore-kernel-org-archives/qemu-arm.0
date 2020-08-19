@@ -1,83 +1,83 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp68377lfy;
-        Tue, 18 Aug 2020 20:10:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxcbqFtRx7kRDbSVhaU0UtBIvSkh1em215zSbTJMt3MU/Hwg4GWRjkwqzqPK3+y/M/oJHVj
-X-Received: by 2002:a25:86cf:: with SMTP id y15mr12547274ybm.25.1597806603631;
-        Tue, 18 Aug 2020 20:10:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597806603; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp68717lfy;
+        Tue, 18 Aug 2020 20:10:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxHU8W7oaQ0rMpv2hwVS5arEX5D3qHvnlm0zr6DW7dnORL6DoKh7sY3Zw4V5bz9hQ6SQ4Bh
+X-Received: by 2002:a17:906:68da:: with SMTP id y26mr22390552ejr.250.1597806643140;
+        Tue, 18 Aug 2020 20:10:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597806643; cv=none;
         d=google.com; s=arc-20160816;
-        b=KPS1UEGV+Doq6YPVXvEPXqVfo8sTn2ORO7QXsJqQFbPxMZjRW4tUlR7BRgqbNroaH7
-         tZmu+/PScK7pnEehBJhI02VmyMR8+ac7BHN5SVJOQnrPJ9Q3XpWGo/3aC3a/6ibn1msT
-         Q8A116yum1QHJuiR59+jRB7q0/KvX3eO5AyNewgEahNaEBZbZ3n/l2ocP15Rck5g86k7
-         zhAbdY5oAqeE5x/m0qVPMhpfgXeVeDg+VmhLusXaN4HnBxGb3bi8FaAQhNAXbh7fEWQG
-         qPW6XmHDAUwGIUbWGETHbXdzE8HF/xt+7Ipu3pSAeN6uzybNpRSEnpqU/lGtdr/eNklH
-         1sHw==
+        b=DsGYKZOJW0E7RnbInlcFRq92FWdpKK22ulOR1knCA5v72607SaIlfkmiPtcOkoqTBi
+         lVQluDlQSQUCIDAIM1SJ7zgxw61u8SfuhHfpLP+Qgyors0AcBNtOM/Y49SEhytyosHEm
+         kmZBXMsE/B89UxDJkdh4eA3LD9mGrt1+ZQ1LDxaz88UKewQ6jVX4Kpw8D2R9Ae0IfJVE
+         qMg29MhRThWiMed0uPdY+39qkYfNgDbKvJ/5IJl134EPY3b6NALEF0pBBTLs8UdZz2Oa
+         9EVaSzoJMXhXfYcbwj4PhqWmp+EwuG+uYoUEbC70GLiGpTuAlYtYa8v9+pARrl/Ors80
+         UNsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
          :dkim-signature;
-        bh=/YWvTSaszlI35f1vwnHAS3xE4BBN5TDFZdtqdb59rKY=;
-        b=GjXFJx/5XZrMwGu29JWtKNCzsOSVhaBAK8VOjHy6VZAfRrBv85j+jBwiniDAz3YfPM
-         Uz4P3fsVLlsEMaRQEHmP5PZwU5oGTITWUFb4JlpYoz8KA6BlNeivqeK7iWZkE0C4mc/3
-         16VkiFsx/Go4vMv292gR2em33v0MwqxOAhf/ntIKHXIdLBHfL9/BWtgjf7tJ4uWCY1Qp
-         /dv/TmAqkA50TyPi1s7XZvg5GJ6VsS3EPlRtTcjhjOVJ+myzb7b4xDf0e/8mMnRIrmo/
-         PVpOfrbXa+lzyZCGR2SaGj44yR4XnRSKN4kZYW9q3etxmiufxccXFO1oT5DMW6bw8coy
-         Ry/g==
+        bh=eDV5uUrhsmx3ewHduMIUToHqA6h/2kpgtDhNFimy/HM=;
+        b=FUhdOB80+ZWdy0yTl34/Fu358eCM2BPRXM8DrVf3Sb5Ze/XZR8eOZhxeTqqDWfqoAS
+         paifWTuRjSC/dTYDEp3zyW51Yrw4DFTbDMi/B2Ka+UEOPNtYy0vDt23IA6cr5BguebhS
+         QjoJY5BUpiBKcLNStByxMAcN2X14Gw2cWnsmluvAwNyJba/ewBMlU3yQ++6eQJjvKdbR
+         tyO7RIC4VP6aTtUcjfkFrxWUlmcMPiIblY230SIah8uCt9uBE1Nvxu4ZAbRYjODmOVaF
+         ZHVd8cJeZ0YQge2VnUWJF9g65LOwe4pTKbtzRN1Ee3w/8O2llAeQh9+SjCotIq6cvYSF
+         G/GQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NZUQWiGf;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fUmspU31;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id b10si21244444ybq.340.2020.08.18.20.10.03
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id l25si14414717edv.47.2020.08.18.20.10.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 18 Aug 2020 20:10:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        Tue, 18 Aug 2020 20:10:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NZUQWiGf;
-       spf=pass (google.com: domain of philmd@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fUmspU31;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1597806603;
+	s=mimecast20190719; t=1597806642;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=/YWvTSaszlI35f1vwnHAS3xE4BBN5TDFZdtqdb59rKY=;
-	b=NZUQWiGf+entMhZBpvVO23A7NPXj4HH3HBlHx7dbxjwSEwifUCwQHmdqLOyWbYKbJ2MBKw
-	nP4/0HF1fFHRb5OH+obkCTopP6Rp9uocIGFiKWKlobHfWcTtq2Zac/kSWHxjBVAeMy70XN
-	OixbJ1zD9FZF6wqwPxCGajrZqFEtZnk=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-572-lnHuiZxsMH6Lwri39OQLYA-1; Tue, 18 Aug 2020 23:10:01 -0400
-X-MC-Unique: lnHuiZxsMH6Lwri39OQLYA-1
-Received: by mail-wr1-f70.google.com with SMTP id s23so8856335wrb.12
-        for <alex.bennee@linaro.org>; Tue, 18 Aug 2020 20:10:00 -0700 (PDT)
+	bh=eDV5uUrhsmx3ewHduMIUToHqA6h/2kpgtDhNFimy/HM=;
+	b=fUmspU31eS+Rj+bzKwrEFCDGLCTIHEYt4nQlh6sQf22xfM5CJ0pxEwg3eT+cQtnv72n6B3
+	sTgwuEdzYMA6hCDovYqfyzX+3GVEhbZ77ZwR0khyaIbksAaiUUEMJyoqEsWgVWwfrXyx6I
+	HPN5DMhtcdgIuW3uSSShCUcvaQVp19c=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-5-lSJgO6VFPcKr9qwRU6ohDg-1; Tue, 18 Aug 2020 23:10:40 -0400
+X-MC-Unique: lSJgO6VFPcKr9qwRU6ohDg-1
+Received: by mail-wr1-f69.google.com with SMTP id e12so8878636wra.13
+        for <alex.bennee@linaro.org>; Tue, 18 Aug 2020 20:10:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:autocrypt
          :message-id:date:user-agent:mime-version:in-reply-to
          :content-language:content-transfer-encoding;
-        bh=/YWvTSaszlI35f1vwnHAS3xE4BBN5TDFZdtqdb59rKY=;
-        b=dCHRFRUKDKmRzspoqWACrUkjQ8troZVViLu44xXUnQvviOzLX9eGDi/lvaQMsAfNNq
-         smpAlonk4AIEqHfynQ03y20Ri1D+QB15ziaYpj2CdvWXsQ51IxivPmFfhebeX2MimLYT
-         N98fY7FkeEz8GGPP1gbFPpoYIclud5n9az1t/lW+cYosmrZojbgY5CbU5dzyiKgl0A3w
-         yQ1bqth1Aa0Ii9GuRfONTyvEYENpO8xmIwYCtb63S7f86s6Qh9KRdPzQHdm2dhM0YyIV
-         XfDetwRo/ZgVV/mKo+QunhFRh3L6nzPr/UojSjy1paOhcGH2Z8rgcuL6Yc5LmgoaOAYA
-         ki7A==
-X-Gm-Message-State: AOAM5337k3LcBEXOA/d0p00ul4F6DTthE6NAhQTdPF+YSLmtCNB4CqkF
-	r8WMfxU50ggzuMcKmi1YQaBtnRGg/e6nqBklobyIdyenMOVt1C/zjKdYxDMw91FfInrKhz0qtng
-	jfXUabKvirmzqVUGz
-X-Received: by 2002:a1c:c906:: with SMTP id f6mr2818293wmb.5.1597806599762;
-        Tue, 18 Aug 2020 20:09:59 -0700 (PDT)
-X-Received: by 2002:a1c:c906:: with SMTP id f6mr2818280wmb.5.1597806599577;
-        Tue, 18 Aug 2020 20:09:59 -0700 (PDT)
+        bh=eDV5uUrhsmx3ewHduMIUToHqA6h/2kpgtDhNFimy/HM=;
+        b=Hn8D6nZfg11uJT2de+hc1N0Ns42wT+oHDb5R3rgLKgc95Wm5ynVOM5LVVgOEKz4vYq
+         OB60UFrZO04niHQUcH/k7t1O4E7/s8iL7OiNhiRERuG8zWmV7IVBLquH90vh7/HtYKMk
+         elMHsT1ynONYaB75g055tUGWZ0SsrhzapnBFiCbnF/DJH/NcxCpCj1bossIpGM1Drzqb
+         t98q/eWs0yFJaUwK8dpEhzuNQsI2cGCuL/urZ/YkNvRBBieGUVzU1jWNXqi0qNk/fT2Y
+         A1C08+lt87vjue+syXoPGXzHmL1jQZv4WJJYo1ZDUEj2buMdLc7P3DUe4jC413A82RnE
+         5tYA==
+X-Gm-Message-State: AOAM531gIOrAV4P8+3Qh+yN9A02BCHnyvSR3wi5hYSatGCOtG1GnmBYq
+	L+4HQHL2WxTqvy808GwR74mWLdNtreBNZ5L4SmtgjDBJoR4R4em7QKZFSiqsB90uzEYkxZwkCIr
+	865/KWq1XF+ud5Fcr
+X-Received: by 2002:a5d:490c:: with SMTP id x12mr21848575wrq.238.1597806639019;
+        Tue, 18 Aug 2020 20:10:39 -0700 (PDT)
+X-Received: by 2002:a5d:490c:: with SMTP id x12mr21848559wrq.238.1597806638771;
+        Tue, 18 Aug 2020 20:10:38 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net. [81.40.121.121])
-        by smtp.gmail.com with ESMTPSA id k15sm37127010wrp.43.2020.08.18.20.09.57
+        by smtp.gmail.com with ESMTPSA id s19sm43860199wrb.54.2020.08.18.20.10.37
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 18 Aug 2020 20:09:58 -0700 (PDT)
-Subject: Re: [PATCH v5 7/8] sparc/sun4m: Use start-powered-off CPUState
+        Tue, 18 Aug 2020 20:10:38 -0700 (PDT)
+Subject: Re: [PATCH v5 8/8] target/s390x: Use start-powered-off CPUState
  property
 To: Thiago Jung Bauermann <bauerman@linux.ibm.com>, qemu-ppc@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
@@ -95,7 +95,7 @@ Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Greg Kurz <groug@kaod.org>
 References: <20200819024220.587612-1-bauerman@linux.ibm.com>
- <20200819024220.587612-8-bauerman@linux.ibm.com>
+ <20200819024220.587612-9-bauerman@linux.ibm.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Autocrypt: addr=philmd@redhat.com; keydata=
  mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
@@ -120,12 +120,12 @@ Autocrypt: addr=philmd@redhat.com; keydata=
  9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
  RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
  apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <350a0f8f-8db7-2e91-28e3-e114fc05c340@redhat.com>
-Date: Wed, 19 Aug 2020 05:09:56 +0200
+Message-ID: <c3670d3f-3e9c-8477-ac8c-d54c36b1a76d@redhat.com>
+Date: Wed, 19 Aug 2020 05:10:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200819024220.587612-8-bauerman@linux.ibm.com>
+In-Reply-To: <20200819024220.587612-9-bauerman@linux.ibm.com>
 Content-Language: en-US
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
@@ -133,81 +133,36 @@ X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: Jrdbf/hvh/gP
+X-TUID: f0NelD+iUr71
 
 On 8/19/20 4:42 AM, Thiago Jung Bauermann wrote:
-> Instead of setting CPUState::halted to 1 in secondary_cpu_reset(), use the
+> Instead of setting CPUState::halted to 1 in s390_cpu_initfn(), use the
 > start-powered-off property which makes cpu_common_reset() initialize it
 > to 1 in common code.
 > 
-> This makes secondary_cpu_reset() unnecessary, so remove it.
+> Note that this changes behavior by setting cs->halted to 1 on reset, which
+> didn't happen before.
 > 
-> Also remove setting of cs->halted from cpu_devinit(), which seems out of
-> place when compared to similar code in other architectures (e.g.,
-> ppce500_init() in hw/ppc/e500.c).
-> 
-> Finally, change creation of CPU object from cpu_create() to object_new()
-> and qdev_realize_and_unref() because cpu_create() realizes the CPU and it's
-> not possible to set a property after the object is realized.
-> 
-> Suggested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Acked-by: Cornelia Huck <cohuck@redhat.com>
 > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+
 > ---
->  hw/sparc/sun4m.c | 21 +++++----------------
->  1 file changed, 5 insertions(+), 16 deletions(-)
+>  target/s390x/cpu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
-> index 22c51dac8a..1925f415e7 100644
-> --- a/hw/sparc/sun4m.c
-> +++ b/hw/sparc/sun4m.c
-> @@ -218,15 +218,6 @@ static void dummy_cpu_set_irq(void *opaque, int irq, int level)
->  {
->  }
+> diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
+> index 08eb674d22..73d7d6007e 100644
+> --- a/target/s390x/cpu.c
+> +++ b/target/s390x/cpu.c
+> @@ -291,7 +291,7 @@ static void s390_cpu_initfn(Object *obj)
+>      S390CPU *cpu = S390_CPU(obj);
 >  
-> -static void secondary_cpu_reset(void *opaque)
-> -{
-> -    SPARCCPU *cpu = opaque;
-> -    CPUState *cs = CPU(cpu);
-> -
-> -    cpu_reset(cs);
+>      cpu_set_cpustate_pointers(cpu);
 > -    cs->halted = 1;
-> -}
-> -
->  static void cpu_halt_signal(void *opaque, int irq, int level)
->  {
->      if (level && current_cpu) {
-> @@ -810,21 +801,19 @@ static const TypeInfo ram_info = {
->  static void cpu_devinit(const char *cpu_type, unsigned int id,
->                          uint64_t prom_addr, qemu_irq **cpu_irqs)
->  {
-> -    CPUState *cs;
->      SPARCCPU *cpu;
->      CPUSPARCState *env;
->  
-> -    cpu = SPARC_CPU(cpu_create(cpu_type));
-> +    cpu = SPARC_CPU(object_new(cpu_type));
->      env = &cpu->env;
->  
->      cpu_sparc_set_id(env, id);
-> -    if (id != 0) {
-> -        qemu_register_reset(secondary_cpu_reset, cpu);
-> -        cs = CPU(cpu);
-> -        cs->halted = 1;
-> -    }
-> +    object_property_set_bool(OBJECT(cpu), "start-powered-off", id != 0,
-> +                             &error_fatal);
-
-Why not call here:
-
-       qdev_realize_and_unref(DEVICE(cpu), NULL, &error_fatal);
-
-?
-
->      *cpu_irqs = qemu_allocate_irqs(cpu_set_irq, cpu, MAX_PILS);
->      env->prom_addr = prom_addr;
-> +
-> +    qdev_realize_and_unref(DEVICE(cpu), NULL, &error_fatal);
->  }
->  
->  static void dummy_fdc_tc(void *opaque, int irq, int level)
+> +    cs->start_powered_off = true;
+>      cs->exception_index = EXCP_HLT;
+>  #if !defined(CONFIG_USER_ONLY)
+>      object_property_add(obj, "crash-information", "GuestPanicInformation",
 > 

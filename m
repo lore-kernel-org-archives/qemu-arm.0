@@ -1,63 +1,85 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp377120lfy;
-        Wed, 19 Aug 2020 04:46:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCa35WDTdWuJR3QGscHqK1aQa5LHFn8oLcF55lZlstGgIsEHO5euIbQlIYkkAZJd7NMxYW
-X-Received: by 2002:a25:aab1:: with SMTP id t46mr29999955ybi.249.1597837588648;
-        Wed, 19 Aug 2020 04:46:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597837588; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp384257lfy;
+        Wed, 19 Aug 2020 04:58:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzx8zdGWdgFtEU5AUU71Se5h2RwYWrQsX719phgXJ8eakGI5fBXVHMycx813USHUUElnOoK
+X-Received: by 2002:a25:1683:: with SMTP id 125mr30026063ybw.145.1597838334951;
+        Wed, 19 Aug 2020 04:58:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597838334; cv=none;
         d=google.com; s=arc-20160816;
-        b=zuR2REvSP6Lk/QKcWk8ISlxPdUsM/sVMHHD+N7ZsaCDBdWXbwVER19GEmt0HoG8xvm
-         /JoRSzY31Hawv3ngCOh0Zi/s8pf/W0cTILFbtXXWob9Mxo+m8uhXH9a34ybj/hHX2fek
-         cpkNNBHo2yKiHGAm6/nDs7ZZ8GbJm6SFkd1y4jC6QgsAsTrfuH812zPkeqpbsU3etEf/
-         nUZ4HTaXDfyat2xBmEmNUZBbu89zuSyJDD+t/PGO/lxzgatGdd9kyHHBzzJTGJUamyRs
-         uWzZO3vcHwc7to5zt5WZPP8rvWa3tE7C6bGhzZReHhdG7LUm8WsSp+mYJYzHmk/m82XX
-         rEog==
+        b=pDaBvH1CWQY8b0yNS+3nVNn98sevx5BNMyX4mhhafR7yMAgf02Ivd2Jie4VPGYkwc9
+         SLY445PvuYgwlmEhihAXY/endkRV1xJIByTEUWCSTomAik+EFeKLcdjBjwJYJZRRWUOU
+         nXBLRVrJQg8mkeNOZ9DjPONJEwIP0qUccFVuT62MiSdoaJJAHZQLzXy8yWfdrw0MAid/
+         MQ8oT4ngt9m7A+i+xk6v2rnVwyJUv0wFYS16OhSaiVrGGjEoJenpLSwAgcoGHyIvLg3T
+         Rugny+oE5IP8pAb2hI3ODo/sZiE4uHwNKrqnDT/KO1dt0mSEEvH6Owrw7LMzaiU1BpY5
+         /O+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=PsbTF3zRPo60l2eU8a2AAtyCLEVLWJ6EWbQu/vefJQc=;
-        b=07wgzfRgpfDlbvnwbOFI6z1OnNmqfGUIv8hRlDw0cfZWeP2m7ic8oGTWdHuEDup5Rh
-         adcEzEa7ksdJc9XcE3HbQuodcOGd+92aIEs34zooNS6Eb/25mv4yz16drPnBMe13o7SI
-         5UBtQypMEbOEeO8fbzwGFGYRfa/7zolr4uSIdVxl3vrfUGH6ovKVLfltTgT4bKNpPBYw
-         UuysemYHbwodgQZJpazWN31Agj5UwRTl0uCjqJilyQdgPY5Xc13q68kOU/yy/CujzH5d
-         eQDXv99Qn1Q27bBnsKh9a5w1v1zqnt3WasPoJs8DL/o4kNL/HGmF8oyH7dL3tUX9P5Pk
-         SXXQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=kNJC21lPiWCaBSwurUQSg0f5chZ2P6oPnVzPnlAJYBk=;
+        b=WyjgPxRxF6Qwgd/wMRvsQIigvkaHXKfC20OS574oAYxpeFhcjHooQ90Ja/s3QyAylH
+         SZMVl+uQgAQvQW//Gl6a5zY88ykQwatmpiI41dSABLPKlrpB5JcbCbi+QRszsDQsE3Zw
+         eHj61afOybFp3wkWzFCIEpzfVWW2USwVN3otoDYdZEPfWhzEK3ymswnrl5hm4fz3Y5JH
+         OtrCvpNum48a2AWwj84oaCK5Buhd0V+qrZTiQf8SYVtn2lSv5qHIDgboaTR0tx8i8ejp
+         y6xGXDAiPj13Js9vdMB4C7SSXTATwKJ5wMcHMErsxOdKZtxP0FmyIQ74o3obvXZNYKGB
+         d+3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=NtqAdW4G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8si24029231ybo.374.2020.08.19.04.46.28
+        by mx.google.com with ESMTPS id z63si22311655ybz.470.2020.08.19.04.58.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Aug 2020 04:46:28 -0700 (PDT)
+        Wed, 19 Aug 2020 04:58:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55716 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=NtqAdW4G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:39988 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8MY0-0007MQ-0T
-	for alex.bennee@linaro.org; Wed, 19 Aug 2020 07:46:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56076)
+	id 1k8Mk2-0004my-D9
+	for alex.bennee@linaro.org; Wed, 19 Aug 2020 07:58:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60640)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <v.dupaquis@trusted-objects.com>)
- id 1k8MXj-0007LE-5u
- for qemu-arm@nongnu.org; Wed, 19 Aug 2020 07:46:11 -0400
-Received: from mailex.trusted-objects.com
- ([2001:41d0:117:dd00::95ca:f4cc]:48343)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <v.dupaquis@trusted-objects.com>)
- id 1k8MXg-0003Wb-Lk
- for qemu-arm@nongnu.org; Wed, 19 Aug 2020 07:46:10 -0400
-Received: from [IPv6:2a01:e35:2e98:43c0:a15c:94c1:ab75:f0c7]
- (2a01:e35:2e98:43c0:a15c:94c1:ab75:f0c7) by S76918.EX76918.lan
- (2001:41d0:117:dd00::95ca:f4cc) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P521) id 15.1.2044.4; Wed, 19
- Aug 2020 13:40:55 +0200
-Subject: Re: Arm Cortex M4 floating point
-To: Mircea Cociuba <cociuba_mircea@yahoo.com>, Peter Maydell
- <peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k8Mjk-0004l6-Nn
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2020 07:58:36 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633]:41473)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k8Mji-0005RT-VO
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2020 07:58:36 -0400
+Received: by mail-ej1-x633.google.com with SMTP id t10so25945117ejs.8
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2020 04:58:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=kNJC21lPiWCaBSwurUQSg0f5chZ2P6oPnVzPnlAJYBk=;
+ b=NtqAdW4G0Wgb9WsEyG+SdwfQJUnXFaKMMhrkoLcKe0YkA8DfXtRfD+E1E+I85ZW5J7
+ 3v0pGxjkw1T2FgCePejJnIWNr08SlVTcxbqelU2GXFN1Oc7mpCpq97Nb5txw5791Olrl
+ 2cQj2eVb+IzgRwX2JR2/yRX38KvNEz+9mWg4JgXz/2TpuSqPgFFttfsFWAN9i7RiJupA
+ jUxGBe3pBNRhUMqtoo1FgZ7W7yaqTC9J7DdSxqtxYpI/zPqkpzAuQwRlzXblXNyLQA2d
+ qzYowzyOS9ErTmL6+68NjdhMbSfCa7DiHDXDIPK4+Wfo/j7MnC7iE/quPxmNYcp4OdOe
+ /D6Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=kNJC21lPiWCaBSwurUQSg0f5chZ2P6oPnVzPnlAJYBk=;
+ b=a0OpHNoBRCKsS0lBequp6xVRJ3RsZdcQ1KKsskDkTwaPi7l4mzh1Go6MkT4+8wzlvv
+ MvWK4sYdWTO3gXQEqC4pYO/UHdM+pcAlNIQRo6dM+9ElTcRHjEfczOaBsGx3NzpBxHF9
+ aecvfCxzfuAxGj2YvjvsqTRr2T9ghnOsMkWv+mvRdgKMRT5yvxV/dDEFP26ZI8iIrFVD
+ kOu1E0xZZ0BR1/5dua21+9OL9repuz0umu0RwUyZKtYwGgAvL6rTperz8sS8EZ1h+/bk
+ 7wMhaOVT8LcTUbXe9pgwr60zVmu5QvF3XBSWvXtgo6Vas6vNFWtzciC4IAmwQoGp4Snl
+ 0n2Q==
+X-Gm-Message-State: AOAM531kgZUoWGHFV2NQ44T6ut0HETmIw5c1zTkrWPprz/ZqP0pL+OtE
+ mI2hgdAgbIlmGRTzRIZAwCWE4i72Ciqpjr2blJ5H7g==
+X-Received: by 2002:a17:906:2cc2:: with SMTP id
+ r2mr24138075ejr.482.1597838313186; 
+ Wed, 19 Aug 2020 04:58:33 -0700 (PDT)
+MIME-Version: 1.0
 References: <1995755327.3077884.1597670507808.ref@mail.yahoo.com>
  <1995755327.3077884.1597670507808@mail.yahoo.com>
  <CAFEAcA8OAWdW8MS+7Fe-WUt+B7rP1AruUZWuAo9rAgP5P_0udQ@mail.gmail.com>
@@ -66,28 +88,24 @@ References: <1995755327.3077884.1597670507808.ref@mail.yahoo.com>
  <1348331683.3733974.1597759332262@mail.yahoo.com>
  <CAFEAcA85SRv0DUqa5L62WLpbzBeV7Wh91GmyOG3GJrxWpTtXNQ@mail.gmail.com>
  <1227370812.4280844.1597836314970@mail.yahoo.com>
-From: vincent Dupaquis <v.dupaquis@trusted-objects.com>
-Message-ID: <8ac8f14f-0941-9054-ee29-c9694bce09d5@trusted-objects.com>
-Date: Wed, 19 Aug 2020 13:40:54 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
 In-Reply-To: <1227370812.4280844.1597836314970@mail.yahoo.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Content-Language: fr-FR
-X-Originating-IP: [2a01:e35:2e98:43c0:a15c:94c1:ab75:f0c7]
-X-ClientProxiedBy: S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc) To
- S76918.EX76918.lan (2001:41d0:117:dd00::95ca:f4cc)
-Received-SPF: none client-ip=2001:41d0:117:dd00::95ca:f4cc;
- envelope-from=v.dupaquis@trusted-objects.com; helo=mailex.trusted-objects.com
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 19 Aug 2020 12:58:21 +0100
+Message-ID: <CAFEAcA9afVDZO0yd4aOtsUeR8TVc-sfDrdTgiME_1o72NVx3sA@mail.gmail.com>
+Subject: Re: Arm Cortex M4 floating point
+To: Mircea Cociuba <cociuba_mircea@yahoo.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x633.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -103,86 +121,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BxQ/8agtCCoV
+X-TUID: 2+GhuelyqU8n
 
-The core starts in priviledged mode, most probably you should do this at
-startup.
-
-Le 19/08/2020 à 13:25, Mircea Cociuba a écrit :
-> hello, 
+On Wed, 19 Aug 2020 at 12:25, Mircea Cociuba <cociuba_mircea@yahoo.com> wrote:
+>
+> hello,
 > This email will be non qemu related, but close to the original problem.
 >
-> I managed to get the FPU activation sequence to compile, found it on
-> the ARM comunity site:
+> I managed to get the FPU activation sequence to compile, found it on the ARM comunity site:
 >
->     // ARM 100166_0001_00_en S7.3.2
->     __asm("ldr.w r0, =0xE000ED88"); // CPACR
->     __asm("ldr r1, [r0]");
->     __asm("orr r1, r1, 0xF << 20"); // [20:23] enable CP10 and CP11
->     __asm("str r1, [r0]"); 
+>     // ARM 100166_0001_00_en S7.3.2
+>     __asm("ldr.w r0, =0xE000ED88"); // CPACR
+>     __asm("ldr r1, [r0]");
+>     __asm("orr r1, r1, 0xF << 20"); // [20:23] enable CP10 and CP11
+>     __asm("str r1, [r0]");
 >
-> The documentation also specifies that this code must be executed in
-> priviledged mode.
-> There is little to no reference to priviledged mode in the Arm
-> documentation.
-> It briefly specifies that a certain CONTROL register must have a
-> specific bit(nPriv) set to be in privileged mode.
-> Where can I find the description of the is register and memory
-> location? and are there specific instructions that work on it?
->
-> /Mircea Cociuba/
-> /"To be or not to be, that is not a question, it's FF"./
->
->
-> On Tuesday, August 18, 2020, 06:35:33 PM GMT+3, Peter Maydell
-> <peter.maydell@linaro.org> wrote:
->
->
-> On Tue, 18 Aug 2020 at 15:02, Mircea Cociuba <cociuba_mircea@yahoo.com
-> <mailto:cociuba_mircea@yahoo.com>> wrote:
-> > gcc params: -Wall -Werror -O2 -nostdlib -nostartfiles
-> -ffreestanding  -mcpu=cortex-m4 -mhard-float -mfpu=vfpv4-d16 (to make
-> sure I have FPU instructions)
-> >
-> > the source code:
-> >
-> > void PUT32 ( unsigned int, unsigned int );
-> > #define UART0BASE 0x4000C000
-> >
-> > int notmain ( void )
-> > {
-> >    unsigned int rx;
-> >
-> >
-> >    unsigned char s[]="QEMU is not that interesting";
-> >
-> >    //dummy FPU command
-> >    asm("vmov s15, r3"); // If you are to remove this, the qemu would
-> print after I type the command continue in gdb, with this line, it
-> shows nothing
->
-> This looks like you're trying to use the FPU, but you haven't
-> enabled it. If you're writing bare metal code then it is
-> the job of your guest code to make sure it enables the FPU
-> first, exactly as it has to do on real hardware. Check
-> the Arm architecture reference manual for the details of
-> how to do this (I think the main thing is writing to the
-> CPACR to enable the FPU).
->
-> Otherwise QEMU will correctly emulate the behaviour you
-> get on real h/w if you try to use the FPU when it is disabled:
-> the CPU takes an exception.
->
->
-> thanks
-> -- PMM
->
--- 
+> The documentation also specifies that this code must be executed in priviledged mode.
+> There is little to no reference to priviledged mode in the Arm documentation.
+> It briefly specifies that a certain CONTROL register must have a specific bit(nPriv) set to be in privileged mode.
+> Where can I find the description of the is register and memory location? and are there specific instructions that work on it?
 
-*Vincent Dupaquis*
-Software security & Cryptography expert
-06 24 58 17 05
-/Europarc de Pichaury Bâtiment B8 1330 rue Guillibert de la Lauzière
-13290 Aix-en-Provence/
+All this kind of detail is documented in the M-profile
+Architecture Reference Manual (definition of privileged
+mode, what the CONTROL register is, what memory location
+it is at, etc). As Vincent says, execution starts in
+privileged mode anyway, so unless your bare-metal code
+is going to do operating-system like work of switching
+into unprivileged mode to run tasks and then switching
+back again, you don't need to change CONTROL.nPRIV.
 
-www.trusted-objects.com <http://www.trusted-objects.com>
+thanks
+-- PMM

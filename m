@@ -1,107 +1,107 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp602767lfy;
-        Wed, 19 Aug 2020 09:39:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwMWnoGvYtbrh1fd1imbU5uuAl0QQRxQuP4TM/XXzLMhM/unJ0+wFcXbUD6pz5JXfvXxi+u
-X-Received: by 2002:a25:3855:: with SMTP id f82mr34515668yba.301.1597855144785;
-        Wed, 19 Aug 2020 09:39:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597855144; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp603716lfy;
+        Wed, 19 Aug 2020 09:40:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzVOoq52ox+GgugYvMw3tzPjk28Ayep8EZFuR4xJUvdi8VBT4nyEw8SmpFzubcHS6BeMirY
+X-Received: by 2002:a25:3b06:: with SMTP id i6mr35601196yba.270.1597855230260;
+        Wed, 19 Aug 2020 09:40:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597855230; cv=none;
         d=google.com; s=arc-20160816;
-        b=t4Q3KgIteM+i5jUUXmGYXbbdsRq4Jy1woDDlGLPov3cBn/VEsPLVSyW1NlLZjiLOAO
-         ipca7NDUcT6SS35HE1wD/Io7xjfRmQftQn4CT708nu8IPGVOZQfrnb8zPjlxHa88nBmI
-         RRMW6qQnnK04IE55mveJfI2qLSF6P46zR/381QcXOU2rhdnB2rNswufDeskDQwfNr9dx
-         A7GybZ+9UN3EDovPW76Lix/0WzbQg2lxouu18AvhfUiXWws/+iEXMq42HdKZco+XbHVq
-         cH2xxQQNsdgWS3swDCG0WMPY03fLlH1Q23IoH/qnuUNLK9DgIdXN0zd+onf5mJCkbj1t
-         NJZg==
+        b=udi2aabqTSAEH3YEnUnmQQ8DkbqFn4tPbQ2prTsJNdxaSP60Tz4QXo8zFYk6wEIUhb
+         jWhMwB13jhEWHNMrbDmbFcvKjnsUxyvE/4QSfed1yhShQ3j/3EY8qb0tfHusafvbp119
+         f4pgkYuIaMr7nvZ3kWha0vKx8/ofaq1XVYJnnmQzk+z8Cd1AlJMua+PP3EJ37c9+yAGj
+         ZkLfL1HnjzchoucECmuv6goKJjiwBhJKJFYuuA1o5/ebc2hOaN8tghgElL3Au/lZlf17
+         ZTpTi4hQk/szyiuNymQpySprNo3NwymDS3lpjpnNvcfZRfb58VvdK0RZ4oYPtTFulke7
+         2IWw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition
          :content-transfer-encoding:in-reply-to:mime-version:references
          :message-id:subject:to:from:date:dkim-signature;
-        bh=7/CfPbqVwkBQNKsZsmfMjrcuU/QPk8UD5NZ/+SlLU2A=;
-        b=gGV2a5hIXX8X/AQapA+xNKvlnecaYOa5MATNXTH3qqPFdboznqUvLr6TEXcso9FOmB
-         Ne4+PB3DyE6VNM2YOjY/z4hpRHKC7scP6a3sm2Y0j4esqeu1whijrm7iuEso6dObZaXG
-         1sL+/5hcMo3MkC5p5b5y3ez1ai/X63txSPLi0wq5o5umuYIZtaMqBCjLlTVCCVdN+Y/M
-         LQUcAm0HDQ9XN/UZxVGD/m4QYWlxlx5bMLav6TqcW7SiLLRNR4BTYTfv2pWUvppwBkLX
-         cAc8Xuq6ZfDi1etLarme/NskgwHkl/CMD+cONklU5S8A1HzbDhL6/ZHfrNQI5FkJQtaQ
-         l1cg==
+        bh=qvx1PubyBKAzg8T/9vG5A1Kawx1VD1yyunwPD//mz5s=;
+        b=ZZLtd0NHAjR7PCDTjLfOzzOjzpJeA+8tCimeRqmY4iY/Hi0hRHgilxidofcGfgUEC/
+         lcm83fFndN226VlEPjBb5RpKlPasgbQkHzYSyzA4c0PgJFf3HqFdPG5U5eB0B+i65cnr
+         kFTZv+XAAwVepIWseeQNmWIR7ceWSDL9jVfYT8CPoQYN9R1SdvJydXQg4wEGygXE6U+U
+         59ptmB6atNf8vNa/qdmphhk6DedIMtvQXxECnMLCGXUdgMfvhMQ/y0EHSxTCz/txjRzI
+         m0QC/6iFCK0T2JX8hgbLGqoY8S/e5RUZU3fANgzlEwUpGIilK0f/AGivGj9E3kAH62hu
+         oJQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jCVAkbK3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ezWiRTfx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l11si29434305ybt.476.2020.08.19.09.39.04
+        by mx.google.com with ESMTPS id x206si25346833ybg.206.2020.08.19.09.40.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Aug 2020 09:39:04 -0700 (PDT)
+        Wed, 19 Aug 2020 09:40:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jCVAkbK3;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ezWiRTfx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45682 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48356 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8R7A-0004gK-5S
-	for alex.bennee@linaro.org; Wed, 19 Aug 2020 12:39:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56348)
+	id 1k8R8W-0005rV-0t
+	for alex.bennee@linaro.org; Wed, 19 Aug 2020 12:40:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1k8R72-0004fZ-CU
- for qemu-arm@nongnu.org; Wed, 19 Aug 2020 12:38:56 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:21953
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1k8R8H-0005pD-4o
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2020 12:40:14 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33575
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1k8R70-0001z8-SK
- for qemu-arm@nongnu.org; Wed, 19 Aug 2020 12:38:56 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1k8R8E-0002Jk-Sm
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2020 12:40:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597855133;
+ s=mimecast20190719; t=1597855210;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7/CfPbqVwkBQNKsZsmfMjrcuU/QPk8UD5NZ/+SlLU2A=;
- b=jCVAkbK3y6eQtX5LaEg3RcqstZ7E8QGaO8UFvnXcZCVhYqLXovFFwIUrWLrfDm7MVzDrau
- H+/KDhAx8gFV+YqEpsEAILpAsYNNTCypvCJ5rUarUiPqVaIvebjFQ+lO2P6WekTg32MMPq
- pUjauDrPCm/PwTlDx0pzSvq4g2t9Jhc=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-10-Ij39T0b5MzWrhxWmJxM_vA-1; Wed, 19 Aug 2020 12:38:49 -0400
-X-MC-Unique: Ij39T0b5MzWrhxWmJxM_vA-1
-Received: by mail-qt1-f198.google.com with SMTP id m88so17087177qtd.15
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2020 09:38:49 -0700 (PDT)
+ bh=qvx1PubyBKAzg8T/9vG5A1Kawx1VD1yyunwPD//mz5s=;
+ b=ezWiRTfxmNoTodtiNC18ZcPqBmmZUSWfunAEOT0vUp4xHQmUCSAEBz7DwPVR+H7Kf+GCTP
+ 7uLB6ecXCT1DDlstJ5Le4bTqtMWuYPNMg0gNWmtoBX4iSBTOmpV7oxBWs9V2B1ohqNu1Sf
+ tQdXyuRvs2gn9v23FrgT8T7zhelrFnA=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-316-VUd94kDMPJmToO8_600Cjg-1; Wed, 19 Aug 2020 12:40:06 -0400
+X-MC-Unique: VUd94kDMPJmToO8_600Cjg-1
+Received: by mail-qt1-f200.google.com with SMTP id u17so17110634qtq.13
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2020 09:40:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to;
- bh=7/CfPbqVwkBQNKsZsmfMjrcuU/QPk8UD5NZ/+SlLU2A=;
- b=cJOFAAWMELOWcR0Ku+9o8m8oruWq0N7Eh/Bl7KTeYWHbtK3v5nUrdB9lwvHaCMKZl6
- Ux/hkRZ42MTeqyDsBuLQQtLpX0CoxVMU/6fQjr8fz7QXLwEu9v8S7943yb4LmmKEXDTm
- UKXkIKd0DqQVAln/wtVIqZd6rBpnagSWitx72UoReTQorT4/hl74/V8cAF8/Km7e+sNE
- 2nyJHEb71fKlKscOqgRRo6tt2vS0rhs/Qzjn2TJvLp3R685cw8mjpzhi7D8C/2+9uq+r
- BIb5rz66PPQSauDkAKmuelSGcav/C5Lbk9LSkQQxEGQiLWyn+ZGiB1Nn6ZKcwyNwsmx5
- aYcg==
-X-Gm-Message-State: AOAM533c2SUvOBQaEu9kmCGfA7jumIxUnatqTmUWmNNVJUMw/Aprz5tH
- +0KHq9cv9/B0qrdeVRzEj+DkAURjbLa4PWgEmfpsES/byP9X1LrTJo6N9QOBM1ot6J8uLcEErwp
- b6OlqRRoaljCY
-X-Received: by 2002:ae9:ef43:: with SMTP id d64mr23269633qkg.326.1597855129219; 
- Wed, 19 Aug 2020 09:38:49 -0700 (PDT)
-X-Received: by 2002:ae9:ef43:: with SMTP id d64mr23269614qkg.326.1597855128969; 
- Wed, 19 Aug 2020 09:38:48 -0700 (PDT)
+ bh=qvx1PubyBKAzg8T/9vG5A1Kawx1VD1yyunwPD//mz5s=;
+ b=FSShvjRwzaD88FthbNGFEKdKyGghDBElyMdnJQQn/AygdxoynwatLIqEa/z3qripWA
+ rgf224mOtzDqvaYArAS+Bavhd+PrLLdqVE0uQ7VcXg6g8U+UjGIKlBpw1Tk+pNOezQrB
+ AFiAdxDw6qcwQhPBLiF1Q5s6mUfzaqjV0tYGxPJU/9I3AnJrzq/oX7W/4TkC3fPgNxdH
+ /CnMxoobcEw/96LWawLCOAFpbwpOO8rUiW3vNsU2nRY0TGjJzdzY51s0D1wkpWh56MfN
+ 1ay4Y8Q7q7RCilIAcJ1azkXF5twN21jBMLX4dZ7KqhZ6Z2jzZcyEbBg01Bsrjf70HE7K
+ 9NzA==
+X-Gm-Message-State: AOAM530a12T/efK9bKmqbwCz0SzB+pwNQCo0XHqeKEJ7cUYOjnc7kIh+
+ 3SmwDXyHCvb4Ro1D81e0IAVCwN0zRMhn08TOknz2MGyEzthRGkjRRm8DyDiOXKc/56mHjevp+bR
+ 84662VaNGMl3Z
+X-Received: by 2002:ac8:428f:: with SMTP id o15mr21812990qtl.213.1597855205712; 
+ Wed, 19 Aug 2020 09:40:05 -0700 (PDT)
+X-Received: by 2002:ac8:428f:: with SMTP id o15mr21812969qtl.213.1597855205490; 
+ Wed, 19 Aug 2020 09:40:05 -0700 (PDT)
 Received: from xz-x1 (bras-vprn-toroon474qw-lp130-11-70-53-122-15.dsl.bell.ca.
  [70.53.122.15])
- by smtp.gmail.com with ESMTPSA id 2sm24545280qki.46.2020.08.19.09.38.47
+ by smtp.gmail.com with ESMTPSA id f31sm29091534qte.35.2020.08.19.09.40.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2020 09:38:48 -0700 (PDT)
-Date: Wed, 19 Aug 2020 12:38:46 -0400
+ Wed, 19 Aug 2020 09:40:04 -0700 (PDT)
+Date: Wed, 19 Aug 2020 12:40:02 -0400
 From: Peter Xu <peterx@redhat.com>
 To: Eugenio =?utf-8?B?UMOpcmV6?= <eperezma@redhat.com>
-Subject: Re: [RFC v4 1/2] memory: Rename memory_region_notify_one to
- memory_region_notify_one_iommu
-Message-ID: <20200819163846.GA305409@xz-x1>
+Subject: Re: [RFC v4 2/2] memory: Skip bad range assertion if notifier is
+ DEVIOTLB type
+Message-ID: <20200819164002.GB305409@xz-x1>
 References: <20200818130151.31678-1-eperezma@redhat.com>
- <20200818130151.31678-2-eperezma@redhat.com>
+ <20200818130151.31678-3-eperezma@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200818130151.31678-2-eperezma@redhat.com>
+In-Reply-To: <20200818130151.31678-3-eperezma@redhat.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=peterx@redhat.com
 X-Mimecast-Spam-Score: 0.002
@@ -119,7 +119,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -140,17 +140,13 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Yan Zhao <yan.y.zhao@intel.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HqaLjgR9fECL
+X-TUID: qnnEkTDPPdKW
 
-On Tue, Aug 18, 2020 at 03:01:50PM +0200, Eugenio Pérez wrote:
+On Tue, Aug 18, 2020 at 03:01:51PM +0200, Eugenio Pérez wrote:
 > Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
 
-Reviewed-by: Peter Xu <peterx@redhat.com>
-
-It would be good if there's some commit message, though..
-
-Also, I'd slightly prefer memory_region_notify_iommu_one rather than one_iommu,
-but I'm fine with either.
+The changes on the callers of memory_region_notify_one_iommu() seems to be
+still missing (and, to embed the type into the notification process)..
 
 -- 
 Peter Xu

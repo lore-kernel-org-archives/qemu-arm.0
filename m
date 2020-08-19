@@ -1,67 +1,66 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp316211lfy;
-        Wed, 19 Aug 2020 03:15:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyUoeaI0wpMdnobMbzU/MkE0x0YWc6rpvxHWvk0nnMWjiIGkncdFYKHSpXPJmeJzVEeHKSi
-X-Received: by 2002:a5b:60e:: with SMTP id d14mr31116181ybq.210.1597832128730;
-        Wed, 19 Aug 2020 03:15:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597832128; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp316386lfy;
+        Wed, 19 Aug 2020 03:15:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwfb/jWre8GsO4eqwU7IeRQ/B6OnoborwdiVL5ptTjVrkDYSh539fHK99LqcHhdNwZ+LBh+
+X-Received: by 2002:a25:d0c2:: with SMTP id h185mr32345385ybg.73.1597832143193;
+        Wed, 19 Aug 2020 03:15:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597832143; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zlr+umoeqCULypCiwcufp+UabLlas0xmMH0OZ0izDzcS6Xn3K2VQnlUxU4ZiF3RYCt
-         B9Vlt2vUC+SKiHqkCUzCrXrXKOP4rzAJRJbj419qpDz4WE3E/iCmPpQdPWMypUIp9bC/
-         BMpxZrQ5mxiv3uwuorz/j5g5/Ang7R1orjZxyc4TpY37yA/wtUV5C1aMZ+W9E8I5Zex8
-         RB3t/b5yBHehW98n4mWmc7kE+500POicJphMxc7A9P04Sd/xNOcYv/L3IUPyMfJ5C/hk
-         tL5RNf14s0jnDgtohG+eSdzN/Um+Z38rLW+u/eTM5lIe6HveCMyq0p5FAt7o65pUvHve
-         IyLQ==
+        b=v24353TbB7F2CxVmfr0YkTZ+m7qFyK9SeQTr8hL1Astv/msjARlnQ9Q8dGmkc1JjKh
+         SvJv/jHH0aka+L4AHj1Ql2K5inS3RdCeA5kzyF4RZituiVRQLvYKTJBM4pcoCrJFTooB
+         SVa3Mplronv1CrpxIqG7tnCC5RoaChIb067MWKxh4nP47S0nFA2AhEbBmFsN1VRCRrs2
+         FODhMiS/IEO1Td8VKDsNQsE68+KPdkBJy7G0M1hNsJpz6XH9kvudyGBJwL9NqiVYIQXm
+         M1jx63O3mSTt3ogAtvPFLa4bpPU9C7LNHP9tkbSiSjfV1kunOtsdP8742DIYs7Uw/dMe
+         3WKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=cLidXG4AX0Yz/ZNZEpXRPy5xCsOEy4dXJUuzSkxWxLc=;
-        b=yAShbReKI3OO0iPQHuPK0kvAQxmb+TBWiDxc4WeAs/fvdudo/mV9tRN2vVzaxdT4Ex
-         rFk0LGQw5TGa8tdTcnWhwZDHGdq0IZBNpPlchJlCdL1ad+s/VwV3pVwW4q3IsgwmLg6P
-         B4Xjnt5f2S/dbMZdRAcyQy8ESpAKudB3JgZpTTWIX/3pgLmsrpmYoy0FbELhnHB+utr1
-         cxmYBxreyttQt7qNB+UjaOXUjNB/rOvX3INvHZw9qeV9YNzgwAXddYVC6TY43mbqh/3w
-         7tVwbcTt+Cs2Fbnqao76jsm1VqAE3JkgO7sz89LzeK3SPnw40aRhXpJMxR6tpb7GH6nN
-         REJA==
+        bh=lVO7pD3Yzg+LLrm2/4H1RclMnbfhHPys1ssXX9alwws=;
+        b=wW4uQHRdb+aX2ukslCPy8Og9K20uYTSGxVcLt9+TR6N4WlwKTAwLG74JTluRBv95MH
+         SfWXQE0vWvHh9cvHef/vo6lfFGd99r+2/2pxOnC3KeJ6DfOSzMjVS1akd9nSMhIbXDLc
+         ZTzQqp9bcmQLAqKnSwH2US9HS/HKjbrbwbaXZj2Wy5Ij4xhspPelAyROr06kfiIA1sC9
+         f7daRrgqFW8nSHVilp1x0EyfE9hazaRP3XP4KJMcszBXuLSvHXG6Vkj54VtPwLvLg7VM
+         HoNj27UBnoeUlh68T3emzS7i1yLtHtzMjSHWRyDheNVayBBQhG+h2GxHU1oHmjFfdatX
+         +xgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o85si23781174yba.140.2020.08.19.03.15.28
+        by mx.google.com with ESMTPS id 206si24061957ybb.62.2020.08.19.03.15.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Aug 2020 03:15:28 -0700 (PDT)
+        Wed, 19 Aug 2020 03:15:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50486 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51542 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8L7w-0004TT-0e
-	for alex.bennee@linaro.org; Wed, 19 Aug 2020 06:15:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56240)
+	id 1k8L8A-0004w7-Gh
+	for alex.bennee@linaro.org; Wed, 19 Aug 2020 06:15:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k8L2x-0001QM-Et; Wed, 19 Aug 2020 06:10:19 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:39909)
+ id 1k8L2y-0001V2-WA; Wed, 19 Aug 2020 06:10:21 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:45987)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k8L2t-0006Wl-N0; Wed, 19 Aug 2020 06:10:19 -0400
+ id 1k8L2t-0006Wh-TV; Wed, 19 Aug 2020 06:10:20 -0400
 Received: from mxplan5.mail.ovh.net (unknown [10.108.4.188])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 501B351E25C5;
- Wed, 19 Aug 2020 12:10:06 +0200 (CEST)
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id C449051E25C1;
+ Wed, 19 Aug 2020 12:10:05 +0200 (CEST)
 Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Wed, 19 Aug
- 2020 12:10:05 +0200
+ 2020 12:10:04 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-101G0047e21fdb5-55bf-4ba1-9288-1191cd30d10f,
+ (GARM-101G004de31a379-7fbe-403f-a15b-83002b15b158,
  56ABA3BD09B5898CED80C8E013D4E39E9C6048D1) smtp.auth=clg@kaod.org
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 10/21] ftgmac100: Fix interrupt status "Packet transmitted
- on ethernet"
-Date: Wed, 19 Aug 2020 12:09:45 +0200
-Message-ID: <20200819100956.2216690-11-clg@kaod.org>
+Subject: [PATCH v2 08/21] aspeed/sdhci: Fix reset sequence
+Date: Wed, 19 Aug 2020 12:09:43 +0200
+Message-ID: <20200819100956.2216690-9-clg@kaod.org>
 X-Mailer: git-send-email 2.25.4
 In-Reply-To: <20200819100956.2216690-1-clg@kaod.org>
 References: <20200819100956.2216690-1-clg@kaod.org>
@@ -71,8 +70,8 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.101]
 X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 9fc5048e-3ece-4647-a7f0-16f5242f4a47
-X-Ovh-Tracer-Id: 18049864358838111081
+X-Ovh-Tracer-GUID: 126a854d-63d2-4570-8b31-f4e76a8dced8
+X-Ovh-Tracer-Id: 18049301407224138601
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
 X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedruddtkedgvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddunecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
@@ -98,44 +97,67 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Frederic Konrad <konrad.frederic@yahoo.fr>,
- Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+Cc: Andrew Jeffery <andrew@aj.id.au>, Eddie James <eajames@linux.ibm.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: s6m0x+Xl2mMa
+X-TUID: yXoScVry4d3A
 
-The second field of the TX descriptor has a set of flags to choose
-when the transmit interrupt is raised : after the packet has been sent
-on the ethernet or after it has been moved into the TX FIFO. But we
-don't model that today.
+BIT(0) of the ASPEED_SDHCI_INFO register is set by SW and polled until
+the bit is cleared by HW.
 
-Simply raise the "Packet transmitted on ethernet" interrupt status bit
-as soon as the packet is sent by QEMU.
+Use the number of supported slots to define the default value of this
+register (The AST2600 eMMC Controller only has one). Fix the reset
+sequence by clearing automatically the RESET bit.
 
-Cc: Frederic Konrad <konrad.frederic@yahoo.fr>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
+Cc: Eddie James <eajames@linux.ibm.com>
+Fixes: 2bea128c3d0b ("hw/sd/aspeed_sdhci: New device")
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/net/ftgmac100.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ hw/sd/aspeed_sdhci.c | 14 ++++++++++++--
+ 1 file changed, 12 insertions(+), 2 deletions(-)
 
-diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
-index 0348fcf45676..aa3c05ef9882 100644
---- a/hw/net/ftgmac100.c
-+++ b/hw/net/ftgmac100.c
-@@ -547,9 +547,7 @@ static void ftgmac100_do_tx(FTGMAC100State *s, uint32_t tx_ring,
-             qemu_send_packet(qemu_get_queue(s->nic), s->frame, frame_size);
-             ptr = s->frame;
-             frame_size = 0;
--            if (flags & FTGMAC100_TXDES1_TXIC) {
--                s->isr |= FTGMAC100_INT_XPKT_ETH;
--            }
-+            s->isr |= FTGMAC100_INT_XPKT_ETH;
-         }
+diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+index 22cafce0fbdc..4f24b7d2f942 100644
+--- a/hw/sd/aspeed_sdhci.c
++++ b/hw/sd/aspeed_sdhci.c
+@@ -16,7 +16,9 @@
+ #include "hw/qdev-properties.h"
  
-         if (flags & FTGMAC100_TXDES1_TX2FIC) {
+ #define ASPEED_SDHCI_INFO            0x00
+-#define  ASPEED_SDHCI_INFO_RESET     0x00030000
++#define  ASPEED_SDHCI_INFO_SLOT1     (1 << 17)
++#define  ASPEED_SDHCI_INFO_SLOT0     (1 << 16)
++#define  ASPEED_SDHCI_INFO_RESET     (1 << 0)
+ #define ASPEED_SDHCI_DEBOUNCE        0x04
+ #define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
+ #define ASPEED_SDHCI_BUS             0x08
+@@ -67,6 +69,10 @@ static void aspeed_sdhci_write(void *opaque, hwaddr addr, uint64_t val,
+     AspeedSDHCIState *sdhci = opaque;
+ 
+     switch (addr) {
++    case ASPEED_SDHCI_INFO:
++        /* The RESET bit automatically clears. */
++        sdhci->regs[TO_REG(addr)] = (uint32_t)val & ~ASPEED_SDHCI_INFO_RESET;
++        break;
+     case ASPEED_SDHCI_SDIO_140:
+         sdhci->slots[0].capareg = (uint64_t)(uint32_t)val;
+         break;
+@@ -155,7 +161,11 @@ static void aspeed_sdhci_reset(DeviceState *dev)
+     AspeedSDHCIState *sdhci = ASPEED_SDHCI(dev);
+ 
+     memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
+-    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = ASPEED_SDHCI_INFO_RESET;
++
++    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] = ASPEED_SDHCI_INFO_SLOT0;
++    if (sdhci->num_slots == 2) {
++        sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] |= ASPEED_SDHCI_INFO_SLOT1;
++    }
+     sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] = ASPEED_SDHCI_DEBOUNCE_RESET;
+ }
+ 
 -- 
 2.25.4
 

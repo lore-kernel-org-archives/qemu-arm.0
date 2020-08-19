@@ -1,249 +1,157 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp696292lfy;
-        Wed, 19 Aug 2020 11:56:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzEmEkHKQhZG+xfKhHbF3N5dsqTKJsgvN/YI//CKfrItEUNZ9f7O6Rkuj4xet5aczew8tfy
-X-Received: by 2002:a25:d917:: with SMTP id q23mr33622620ybg.450.1597863370629;
-        Wed, 19 Aug 2020 11:56:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597863370; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp884293lfy;
+        Wed, 19 Aug 2020 16:55:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyI9ykO38EzZa1jazecYHDX7Bb2+E1wtSeOrx5yMs2QfIgc9tTkIXJBj7iGMCprZxLkLBJ4
+X-Received: by 2002:a62:5284:: with SMTP id g126mr219838pfb.139.1597881321097;
+        Wed, 19 Aug 2020 16:55:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597881321; cv=none;
         d=google.com; s=arc-20160816;
-        b=OcK8XxgxCYsWvde+xlXp2jpno24MyNxc/3BQjA2pVcB+w6QzqmaAOrhzBAMSyA3h8V
-         ddZ76ffUIkK6hbUj7PQ6C+wQETf2sO8oyooASmfG+aT9eBV77qtOR/Xbxuq67O8hKwV5
-         Wp9zxZrzZbJRaZ5gev9+GOuV0JTMSSBKLVYZvtXq6KPcbv5NW+BjjAL/VaQbhop008MR
-         Cq1FmxTig6J5z8Lmj5etCt8WUiz58UbU6rsRcirQT7Y+J4iMXE6QvM3wrI7R0w61GO5N
-         hqsgi2nqvI//K4ICNNXKYa3ntiEq9Hox9BRY9sdR0NNXesBwqRZQ9bGnAxu0wqGTrGle
-         Kl9A==
+        b=Zs+UEsMEqpQ+CMoqc2uxt1dDM0zN+1yHLTBCqFrJERM96nqOv4W8bSs1R6IL85GmXq
+         3YjWIMMOPMcb1ud2Z4CSDR4EVdtESyu++lzqsQIeQ8Ssvn22cZ3mL7u/uJv7br0ziD5f
+         0E+hUjqfwwrskckVPJ8OK9mWPMCdfc3lgC/iQeT1NIAs7FvxqDS6TPPbdygpmQOJZgXy
+         Cpf5NnMwFhideGjnpY+945MeVddCCyKT/VeHOP9lGxfwRSgkVKIT4wz7awo1jAM3Yb0/
+         QJ/PL/qc6WGZ3Gd6F6nfJqkj3OZP0Ea+Y8wgdKSaIqLe2Ji2cFSZOm2Rbh9SjAu6FitU
+         9YBQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:mime-version
-         :subject:references:in-reply-to:message-id:cc:to:from:date
-         :dkim-signature;
-        bh=pQ1Uo1aefN2Blt4tcdHK70GPdjWRqvNCNtkmaDPmCXg=;
-        b=tgbmfoSGyHCXcKvOfmLAAIDH4BFAO0VO5N/ipjs4iOGc/lsKZkTp8iKOhhHnKW3Y38
-         b+hnuOIaLiPEeow28u5rqD/H0WOsNg3NF4I2Fj0ysQK9YItASwOvTAt/v1Av4IPwn6/z
-         06BL2tTvd56T9hzArLePEpjGRgCxpjNuwPKwACYUzEFE2Dgd7fsM9qmCXmgbdwVmpJcO
-         p9Z/jLEEJVVhdS1YUis1UlPwKmp4I1mqkql9PUWSqx1u9eVdz7KZXI7ZSL9f1A6KpsY9
-         GHLX1tE18k1A52jC0QdNP7YurTkZQVwW/I4wJ8bybqCwxl7P4LthtXMFYDjR5Fils4CY
-         b2VQ==
+        h=content-transfer-encoding:mime-version:message-id:date:in-reply-to
+         :subject:cc:to:from:user-agent:references:dkim-signature;
+        bh=dxMWs2C7MC9gxFY65qAy+eOEpz0SkpryOBNdGmCCfRw=;
+        b=GfKuj+PGGOBD7ttAfdKfK6N/DOaeJuaTsPP1nPgYTxMktvWg1qGSdy031E23M7oMaK
+         PDBf3d3fuLWJ7Jl8VEM7Ngs/qPh5DhA0ahQ9l/FluXLDlko4j3R7oJwGebS9Oo6Qg/O2
+         KEgG4dr00uTk8LEhzic60xxnpBCqznZLFmQGSDyTUHoeyUcYnxiJprgudOkSCSRTsU7n
+         eDdKmXJoEmRwSIcmJcR8b6rAxbzhJrwkV5hPAARB82ZrIlDQFWl8HKukTAcrw1yyDdfL
+         xVkmU7fM/zksOuluNIObkpfGVoh1bJMzeWyiMhZa0DaT0K677/++nn08PIUH1NhjbTYA
+         SLAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=ANjhGL54;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b3si25165513ybr.323.2020.08.19.11.56.10
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Aug 2020 11:56:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=MpkGoZEa;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <bauerman@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id a15si376154pln.337.2020.08.19.16.55.20
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 19 Aug 2020 16:55:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@yahoo.com header.s=s2048 header.b=ANjhGL54;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=yahoo.com
-Received: from localhost ([::1]:54652 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8TFp-0000qj-JJ
-	for alex.bennee@linaro.org; Wed, 19 Aug 2020 14:56:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38472)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cociuba_mircea@yahoo.com>)
- id 1k8TFi-0000qO-SJ
- for qemu-arm@nongnu.org; Wed, 19 Aug 2020 14:56:02 -0400
-Received: from sonic307-9.consmr.mail.ne1.yahoo.com ([66.163.190.32]:46681)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <cociuba_mircea@yahoo.com>)
- id 1k8TFg-0005Ta-JE
- for qemu-arm@nongnu.org; Wed, 19 Aug 2020 14:56:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s2048;
- t=1597863356; bh=pQ1Uo1aefN2Blt4tcdHK70GPdjWRqvNCNtkmaDPmCXg=;
- h=Date:From:Reply-To:To:Cc:In-Reply-To:References:Subject:From:Subject;
- b=ANjhGL54k2I8Cj3bK2s0FXN7CBoEZdaFHFVjdagaCAx7KqKWnIuibAW7FDjMAZoL2QONSaMVh+2LbCmxr8xP3hiJwYXldcFHLdeaEGBNSdyl8K1rKjDGxykb76XPpW9e3qqGx/qA82jTyfCobDp+wIbXCCeWrSKe9s6ZMtjgf0m2ZxcnvL9avpCr71dT1CKPjipwhui609ZVlxknLkCWgyfsfFclx8qjBwYsCr2W18pvCWEcy8HiB/CotO5kzdSJ6b0trlfEKW6ziWz/OsB1n5bqq0ApuI6jG8iea1Pzw4LTGpuJwLmUZkK5YvfV09Ef1emDq6zNR1xwwZzsRaLYrg==
-X-YMail-OSG: VhvKwjkVM1kocxzYjQcNWCXRRy626PfJGqQoDeYpQrZ2hr5d4jn08MHL2ZOrodO
- khZHGh6KYrgqzlqkPgQkJAPPT1xbKOoyi5FH6Dy5oklEBdATZ6.Dy1kK7HpBBGG02LFO1mf_Q.VW
- j6Xlf3QI.8jN3UW9XbgFGj8BxqxeLyKr8qMxr2FcYevpIuV44FdBU.9aUuynw2x3ZcmE.WgFhJTT
- O_sTQm6MIadNV3aUHDf.tVIr9v0jmboGEsoFp0R3HSEMxRUizeCALCpnkIUVn.zIoJflwdI3_ZNo
- K.0CBPibEJ66rFKrHQriv4J53e6bYYhKoLGYrb9its.S5RhP2Um7geufHRDYiA2CEfbiIAMBzKb2
- dhWQBXSGe85y_vBUgdaMWfL65YU4GrXu_7YylJwmwGsKFTgr3fHhpGX_0ss6Xvwnd_m.2qxOtOqg
- 34YfIqOzwU.e80TU9OBWaUwIeQo6Y6l0wG6PSEAefeeKQy.xHuhRAPF0r.nML0wk3EPK7UJw93PM
- LR9ktvYc2cTn3l33SxR09FDuM75h2TyaIL1SWygFSR_bQYRNMV55dmoAWl0BQ4f1LNFIscmuGtD2
- nKYYA2YLuIqXrG4amh9kdqqh7_pg1hRwR5XzjrrZK4cP.hlJsOuZVJE4auKtATsFVqCpFvUtnTq0
- 3TMztvhs77ofNUQzLWMgOo2bn46mlJU5v9FZxce2kaX9WSB47n.nFlcRPnopJtj2JQuD.J0Jj4pg
- ajgO9ZqIIuhED_cN.Nmx5MFXmYVrNOZgSB7g8_95Jg987k20wIN1ad5qz0uMzbh4njbxCSXajIoT
- FA.3_VDQYoZcGbJGGnw4paNDePHP7yRJBe9DiU0QPSBdZoipTzj2MGUgTzMf2nrHoSiNh.Q4PcJ3
- 2kZ9ITE.HCSytYyrX77aHzK940WgpDVfPaPfElXMLOmthpms1ztf85GBlU06HTxbUxbCqGnRcstA
- .VIns0Axru6zKWW_JoRFurerqHTNt2zf7KsBtovo.1FH8mkJPILevKyPtuGYXOHUcIdcdPABV6hP
- ztUt.RhRjZ465MTJjnD60cjVnz7rmL8yrJHFNpbxo45dsGMNLreIYzQl8Om0zy0cPMUnfuOcvpfu
- CNT1T3nKxQn_R6cYqlEYFOE2n3LlOP4d_rjBcXUchMbNq5ieFEa4xyLN3w75hemDhGC_AUsuxb7m
- z0iRm_PCaJk8GSbwxV9PFB1WU5PXQVNb5cCq1qkFTM0cnBSiau63HaOV0JhutnLGdS8dgBUOeSeT
- Vb.qMmOWl1Sb_kZq8y1wJUnCNlBAa_C8qt8qX4uedTD32AOXJ0kpSZeWpOv6qv9geQfKWqBxa36H
- qdFo5Ae9ehKhdbLMjULRzwx82G7u9bByWC1FHRtiKSCna5frhPEr4qABgRmfnXQCnP8myVqpL5KM
- fu28PjyUeXtYdSUX8lw--
-Received: from sonic.gate.mail.ne1.yahoo.com by
- sonic307.consmr.mail.ne1.yahoo.com with HTTP; Wed, 19 Aug 2020 18:55:56 +0000
-Date: Wed, 19 Aug 2020 18:55:51 +0000 (UTC)
-From: Mircea Cociuba <cociuba_mircea@yahoo.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-Message-ID: <1948646316.4529673.1597863351319@mail.yahoo.com>
-In-Reply-To: <CAFEAcA9afVDZO0yd4aOtsUeR8TVc-sfDrdTgiME_1o72NVx3sA@mail.gmail.com>
-References: <1995755327.3077884.1597670507808.ref@mail.yahoo.com>
- <1995755327.3077884.1597670507808@mail.yahoo.com>
- <CAFEAcA8OAWdW8MS+7Fe-WUt+B7rP1AruUZWuAo9rAgP5P_0udQ@mail.gmail.com>
- <2127347711.3710404.1597756636356@mail.yahoo.com>
- <CAFEAcA89ydoNcWyBxRvdc648ifOD1sS6e-p0pqoiQe6w=bj=wg@mail.gmail.com>
- <1348331683.3733974.1597759332262@mail.yahoo.com>
- <CAFEAcA85SRv0DUqa5L62WLpbzBeV7Wh91GmyOG3GJrxWpTtXNQ@mail.gmail.com>
- <1227370812.4280844.1597836314970@mail.yahoo.com>
- <CAFEAcA9afVDZO0yd4aOtsUeR8TVc-sfDrdTgiME_1o72NVx3sA@mail.gmail.com>
-Subject: Re: Arm Cortex M4 floating point
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=MpkGoZEa;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 07JNVqcm093860;
+	Wed, 19 Aug 2020 19:54:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=references : from : to :
+ cc : subject : in-reply-to : date : message-id : mime-version :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=dxMWs2C7MC9gxFY65qAy+eOEpz0SkpryOBNdGmCCfRw=;
+ b=MpkGoZEajrBKfTH7qjxPKFhoEbUhEJBFSQUi/KSk4f+I3+AiaSCTal/AWdD63CXPOvXL
+ du9PLwlNlBDxO11YB/P0JrKE8+3KoBiR/1zkPiKlKx7e/2qbrabG28NM1dY0hzAV+FIk
+ lj5cKj0i03pkTq89lFhi33UOjHgYP4ejIk0IIqf0K8hJ3oAlJba2nqQ3b7SP5T8OlLUn
+ hRA0HRgJ0fDp5HZ3744U69GoWsF+gMZhcRV5CUvVKFgG8YXOpZYTn6xG6VGjbjeqQiyd
+ 5pXtcY5uQTDkwLTZ9QTtyi0znfkeK22n9JxrtZ7y2MZ6SVYf5pM3KXHwn8ITJEPHhWIy ig== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 3313ky3qrp-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 19 Aug 2020 19:54:44 -0400
+Received: from m0098393.ppops.net (m0098393.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 07JNZR7i104948;
+	Wed, 19 Aug 2020 19:54:44 -0400
+Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com [169.47.144.26])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 3313ky3qra-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 19 Aug 2020 19:54:44 -0400
+Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
+	by ppma04wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 07JNef9P023707;
+	Wed, 19 Aug 2020 23:54:43 GMT
+Received: from b03cxnp08028.gho.boulder.ibm.com (b03cxnp08028.gho.boulder.ibm.com [9.17.130.20])
+	by ppma04wdc.us.ibm.com with ESMTP id 3304ueqq10-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 19 Aug 2020 23:54:43 +0000
+Received: from b03ledav005.gho.boulder.ibm.com (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
+	by b03cxnp08028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 07JNsfQl36503818
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 19 Aug 2020 23:54:42 GMT
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id E067BBE053;
+	Wed, 19 Aug 2020 23:54:41 +0000 (GMT)
+Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 8EC12BE056;
+	Wed, 19 Aug 2020 23:54:36 +0000 (GMT)
+Received: from morokweng.localdomain (unknown [9.211.41.171])
+	by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTPS;
+	Wed, 19 Aug 2020 23:54:36 +0000 (GMT)
+References: <20200819164306.625357-1-bauerman@linux.ibm.com> <20200819164306.625357-8-bauerman@linux.ibm.com> <e38d45c9-1505-d596-6c2a-e82f73dc2935@redhat.com>
+User-agent: mu4e 1.2.0; emacs 26.3
+From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
+        qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
+        Paolo
+ Bonzini <pbonzini@redhat.com>,
+        Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Peter Maydell
+ <peter.maydell@linaro.org>,
+        Aleksandar Markovic
+ <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo
+ <aleksandar.rikalo@syrmia.com>,
+        Mark Cave-Ayland
+ <mark.cave-ayland@ilande.co.uk>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
+        David
+ Hildenbrand <david@redhat.com>,
+        Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+        Greg Kurz <groug@kaod.org>, Igor Mammedov
+ <imammedo@redhat.com>
+Subject: Re: [PATCH v6 7/8] sparc/sun4m: Use start-powered-off CPUState property
+In-reply-to: <e38d45c9-1505-d596-6c2a-e82f73dc2935@redhat.com>
+Date: Wed, 19 Aug 2020 20:54:33 -0300
+Message-ID: <87imdedwee.fsf@morokweng.localdomain>
 MIME-Version: 1.0
-Content-Type: multipart/alternative; 
- boundary="----=_Part_4529672_1606691419.1597863351318"
-X-Mailer: WebService/1.1.16455 YMailNorrin Mozilla/5.0 (Windows NT 10.0; Win64;
- x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125
- Safari/537.36
-Received-SPF: pass client-ip=66.163.190.32;
- envelope-from=cociuba_mircea@yahoo.com;
- helo=sonic307-9.consmr.mail.ne1.yahoo.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/19 14:55:56
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Mircea Cociuba <cociuba_mircea@yahoo.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BqYYJK+tdY5d
-
-------=_Part_4529672_1606691419.1597863351318
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
+ definitions=2020-08-19_13:2020-08-19,2020-08-19 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0
+ priorityscore=1501 impostorscore=0 adultscore=0 bulkscore=0 clxscore=1015
+ mlxlogscore=999 malwarescore=0 suspectscore=0 phishscore=0 mlxscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2008190187
+X-TUID: iyszY0U6ppdd
 
-Hello,I managed to get it to work.Thank you all for your support!
-Mircea Cociuba"To be or not to be, that is not a question, it's FF".=20
 
-    On Wednesday, August 19, 2020, 02:58:43 PM GMT+3, Peter Maydell <peter.=
-maydell@linaro.org> wrote: =20
-=20
- On Wed, 19 Aug 2020 at 12:25, Mircea Cociuba <cociuba_mircea@yahoo.com> wr=
-ote:
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+
+> On 8/19/20 6:43 PM, Thiago Jung Bauermann wrote:
+>> Instead of setting CPUState::halted to 1 in secondary_cpu_reset(), use t=
+he
+>> start-powered-off property which makes cpu_common_reset() initialize it
+>> to 1 in common code.
+>>=20
+>> This makes secondary_cpu_reset() unnecessary, so remove it.
+>>=20
+>> Also remove setting of cs->halted from cpu_devinit(), which seems out of
+>> place when compared to similar code in other architectures (e.g.,
+>> ppce500_init() in hw/ppc/e500.c).
+>>=20
+>> Finally, change creation of CPU object from cpu_create() to object_new()
+>> and qdev_realize_and_unref() because cpu_create() realizes the CPU and i=
+t's
+>> not possible to set a property after the object is realized.
+>>=20
+>> Suggested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 >
-> hello,
-> This email will be non qemu related, but close to the original problem.
->
-> I managed to get the FPU activation sequence to compile, found it on the =
-ARM comunity site:
->
->=C2=A0 =C2=A0 // ARM 100166_0001_00_en S7.3.2
->=C2=A0 =C2=A0 __asm("ldr.w r0, =3D0xE000ED88"); // CPACR
->=C2=A0 =C2=A0 __asm("ldr r1, [r0]");
->=C2=A0 =C2=A0 __asm("orr r1, r1, 0xF << 20"); // [20:23] enable CP10 and C=
-P11
->=C2=A0 =C2=A0 __asm("str r1, [r0]");
->
-> The documentation also specifies that this code must be executed in privi=
-ledged mode.
-> There is little to no reference to priviledged mode in the Arm documentat=
-ion.
-> It briefly specifies that a certain CONTROL register must have a specific=
- bit(nPriv) set to be in privileged mode.
-> Where can I find the description of the is register and memory location? =
-and are there specific instructions that work on it?
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-All this kind of detail is documented in the M-profile
-Architecture Reference Manual (definition of privileged
-mode, what the CONTROL register is, what memory location
-it is at, etc). As Vincent says, execution starts in
-privileged mode anyway, so unless your bare-metal code
-is going to do operating-system like work of switching
-into unprivileged mode to run tasks and then switching
-back again, you don't need to change CONTROL.nPRIV.
+Thanks!
 
-thanks
--- PMM
-
- =20
-------=_Part_4529672_1606691419.1597863351318
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-
-<html><head></head><body><div class=3D"ydpa0fe5c7dyahoo-style-wrap" style=
-=3D"font-family:Helvetica Neue, Helvetica, Arial, sans-serif;font-size:16px=
-;"><div><div dir=3D"ltr" data-setdir=3D"false">Hello,</div><div dir=3D"ltr"=
- data-setdir=3D"false">I managed to get it to work.</div><div dir=3D"ltr" d=
-ata-setdir=3D"false">Thank you all for your support!</div><div dir=3D"ltr" =
-data-setdir=3D"false"><br></div><div class=3D"ydpa0fe5c7dsignature"><div cl=
-ass=3D"ydpa0fe5c7dyiv5090244957signature" id=3D"ydpa0fe5c7dyiv5090244957yui=
-_3_16_0_ym19_1_1484384922228_11432" style=3D"font-family:HelveticaNeue,;fon=
-t-size:14px;"><i id=3D"ydpa0fe5c7dyiv5090244957yui_3_16_0_ym19_1_1484384922=
-228_11431"><font class=3D"ydpa0fe5c7dyiv5090244957Apple-style-span" face=3D=
-"'times new roman', 'new york', times, serif" id=3D"ydpa0fe5c7dyiv509024495=
-7yui_3_16_0_ym19_1_1484384922228_11430">Mircea Cociuba</font></i></div><div=
- class=3D"ydpa0fe5c7dyiv5090244957signature" id=3D"ydpa0fe5c7dyiv5090244957=
-yui_3_16_0_ym19_1_1484384922228_11432" style=3D"font-family:HelveticaNeue,;=
-font-size:14px;"><i id=3D"ydpa0fe5c7dyiv5090244957yui_3_16_0_ym19_1_1484384=
-922228_11474"><font class=3D"ydpa0fe5c7dyiv5090244957Apple-style-span" face=
-=3D"'times new roman', 'new york', times, serif" id=3D"ydpa0fe5c7dyiv509024=
-4957yui_3_16_0_ym19_1_1484384922228_11473">"To be or not to be, that is not=
- a question, it's FF".</font></i></div></div></div>
-        <div><br></div><div><br></div>
-       =20
-        </div><div id=3D"ydpd930bb3dyahoo_quoted_8336270322" class=3D"ydpd9=
-30bb3dyahoo_quoted">
-            <div style=3D"font-family:'Helvetica Neue', Helvetica, Arial, s=
-ans-serif;font-size:13px;color:#26282a;">
-               =20
-                <div>
-                    On Wednesday, August 19, 2020, 02:58:43 PM GMT+3, Peter=
- Maydell &lt;peter.maydell@linaro.org&gt; wrote:
-                </div>
-                <div><br></div>
-                <div><br></div>
-                <div><div dir=3D"ltr">On Wed, 19 Aug 2020 at 12:25, Mircea =
-Cociuba &lt;<a shape=3D"rect" href=3D"mailto:cociuba_mircea@yahoo.com" rel=
-=3D"nofollow" target=3D"_blank">cociuba_mircea@yahoo.com</a>&gt; wrote:<br =
-clear=3D"none">&gt;<br clear=3D"none">&gt; hello,<br clear=3D"none">&gt; Th=
-is email will be non qemu related, but close to the original problem.<br cl=
-ear=3D"none">&gt;<br clear=3D"none">&gt; I managed to get the FPU activatio=
-n sequence to compile, found it on the ARM comunity site:<br clear=3D"none"=
->&gt;<br clear=3D"none">&gt;&nbsp; &nbsp;  // ARM 100166_0001_00_en S7.3.2<=
-br clear=3D"none">&gt;&nbsp; &nbsp;  __asm("ldr.w r0, =3D0xE000ED88"); // C=
-PACR<br clear=3D"none">&gt;&nbsp; &nbsp;  __asm("ldr r1, [r0]");<br clear=
-=3D"none">&gt;&nbsp; &nbsp;  __asm("orr r1, r1, 0xF &lt;&lt; 20"); // [20:2=
-3] enable CP10 and CP11<br clear=3D"none">&gt;&nbsp; &nbsp;  __asm("str r1,=
- [r0]");<br clear=3D"none">&gt;<br clear=3D"none">&gt; The documentation al=
-so specifies that this code must be executed in priviledged mode.<br clear=
-=3D"none">&gt; There is little to no reference to priviledged mode in the A=
-rm documentation.<br clear=3D"none">&gt; It briefly specifies that a certai=
-n CONTROL register must have a specific bit(nPriv) set to be in privileged =
-mode.<br clear=3D"none">&gt; Where can I find the description of the is reg=
-ister and memory location? and are there specific instructions that work on=
- it?<br clear=3D"none"><br clear=3D"none">All this kind of detail is docume=
-nted in the M-profile<br clear=3D"none">Architecture Reference Manual (defi=
-nition of privileged<br clear=3D"none">mode, what the CONTROL register is, =
-what memory location<br clear=3D"none">it is at, etc). As Vincent says, exe=
-cution starts in<br clear=3D"none">privileged mode anyway, so unless your b=
-are-metal code<br clear=3D"none">is going to do operating-system like work =
-of switching<br clear=3D"none">into unprivileged mode to run tasks and then=
- switching<br clear=3D"none">back again, you don't need to change CONTROL.n=
-PRIV.<div class=3D"ydpd930bb3dyqt9784379457" id=3D"ydpd930bb3dyqtfd22156"><=
-br clear=3D"none"><br clear=3D"none">thanks<br clear=3D"none">-- PMM<br cle=
-ar=3D"none"><br clear=3D"none"></div></div></div>
-            </div>
-        </div></body></html>
-------=_Part_4529672_1606691419.1597863351318--
+--=20
+Thiago Jung Bauermann
+IBM Linux Technology Center

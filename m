@@ -1,145 +1,194 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp54409lfy;
-        Tue, 18 Aug 2020 19:43:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyNASkeuuu3L5MAPjfFrNj0p3JwLjzkGRFVxd50kcL8oY202RfIy08/MdCWOt6kuJYNjwSk
-X-Received: by 2002:a25:5555:: with SMTP id j82mr33530128ybb.125.1597805023329;
-        Tue, 18 Aug 2020 19:43:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597805023; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp65779lfy;
+        Tue, 18 Aug 2020 20:05:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyAGXvAcpssBOQ5SNWyrSEGLSQCs1ffFgJBH1zvDUKtzRNw/Qm+72VBTd8rhc+cF6q9cH3i
+X-Received: by 2002:a17:906:d9db:: with SMTP id qk27mr22972000ejb.37.1597806318735;
+        Tue, 18 Aug 2020 20:05:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597806318; cv=none;
         d=google.com; s=arc-20160816;
-        b=nKjonb7c3//7ViFMpbX7ZJdD0KiGmX8c5wuKWebNpnEi2CXLBbB87SeFlH40wyJ7oX
-         BpNHx1TR41FA+sQYLL8abjmTCHCKFp4tqdnInn1HXl77xTfax9ICbAsOcRpVg2vGc307
-         ZZJbCZsQOdEKsoEOFunKhlYyH1Pf8jnOfvGKjX3OD81nETLTImWyuIFrR0ZfMcbhVTqH
-         HdrfFpIte7rTVJoGrNGe9X529zhLy33nNpQOlEDz3wCIYQlF+RaP3Vn3zmFe8KOF+hAC
-         69wTjpTnxF86kaol2xJn76tMEr2eBW5Y19L2os/Tk2iOzpMnsI0aDDQXkdDId6TcztCA
-         dEdA==
+        b=j9BqDEol0y1WvDRuG49GBqiJ7UlM03CdWyNDG5nr4ZW7ORbtC0FTvD8hCzbaFVXYgY
+         2gmbs+IY4ffY75hAC3Tt2HfOn71AlGO10lqgPAgDiC7hWclOPRQR4bxNoG1lob93TS1W
+         CWNcNhQJzd+adFgwSx4AkoH+laxyC+IPgInN3RGNnIeR/OMHEATFvECvvlKgB3wAhVKh
+         BcGPWtrtM68mwd/0K3391+8g8/CRPLk/Kl5qsSHbEKlP57tdbIOo6XgHnu+X5tGksdol
+         MymFK42xN8IjGRp/3rKs6ki4k3lcdEOAkdVzoAG3vPIPoIqVe7sKeAqj2GBN4aBpcwbd
+         PO8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ROECkcpI83are7d45wAbKAxpYfn/EVXwsj77lZ8DuL8=;
-        b=038qHCzjOLawXI07b0g2ga36+KQT3HyQvpWFd4vtia52nQVF2k1fNhlDde+hpFZj2g
-         UkN0D0CkrV8MMkBzQr1XksWdQnD1T9T7JZe3+NNuMJ4MK18BGODltZku0Z3fjom/chP6
-         EgTfNJ14eUJSlqefM1L42Rwel4JoXVI1oRlbb+aKmtzFWGHvPyJ0Eeu4OuvW9M/HvVPK
-         GBCtVjdzTGJyd1HBXKEdXCAmuthRWz4r0AO/+1pXndfQzY72kDwGI8NpQSjIjLj+mdtw
-         v7+KVDeQ031xdEIBwD3KeSu8dUBpnqMr6TMQrSRTxMx4uNmecUrj9KfYqEFu0avKBgY+
-         rjXg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
+         :dkim-signature;
+        bh=MWacM+NIVvc3VByuyCmZGI1Q8qi5g5iae7qqbUb/Knk=;
+        b=riPeoc23/HzcvOYQU32wqsVxskEDAMntPxFKltA/NPjiO+Py3M9BDMX/Ifze2B/uVd
+         vmMd1e9rYOA1vxGflIyMXxCnOud68Hc3aouybsTuOUHMvBevYFfiMjcc6Ale+u663d88
+         3R0+KVqDyM+T8gfW9MevhUY9/aK6BDlIxiiRYGGMV6ojygeNXnLNFyERvq5mro0+wC8I
+         7AznURp5cN+nlE0MTtb+FMgxvHYz20yrwk+3MB/f/9ue5y62Y92dot8wlriZtMpxfhqe
+         km4RBSdKaiQQ1j5+qJwYtl6r2sbY6tLrGGlfGYXCtN+LAdkxXsCObAXWdOjwgVUC4ms2
+         SZtw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Y3M3Ld3P;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <bauerman@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
-        by mx.google.com with ESMTPS id x9si30142761ybt.404.2020.08.18.19.43.43
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 18 Aug 2020 19:43:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JTZAdBDx;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id dp16si21182271ejc.17.2020.08.18.20.05.18
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 18 Aug 2020 20:05:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Y3M3Ld3P;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0098414.ppops.net [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 07J2XXCj045928;
-	Tue, 18 Aug 2020 22:43:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=from : to : cc : subject
- : date : message-id : in-reply-to : references : mime-version :
- content-transfer-encoding; s=pp1;
- bh=ROECkcpI83are7d45wAbKAxpYfn/EVXwsj77lZ8DuL8=;
- b=Y3M3Ld3PJlzPuyuxMm+s8hzune/xwJFLUjj+GmTunNagqp8cqa9DlqJsI4brF+Q/AoAC
- elS8HAgOeHe6ziIJLJPF8zkYaXJS3I1OmCSZGREr81wIANurbkdXTtjKWb+wdefDKRti
- 1sZw6bNvxz5pkjOD3MqznfMQv5VMpwflbLWmXk8msGHpJPq4VQSkccwbQku/5VsyNFBc
- +oqFAw9C6UrVu9FwHA8UiI7Y9QNr4L9vsSkYKmzFeM8zdeVvmqJPdtCLHeNoCaRhLITd
- +JLrhLoBPeKRErUI3GJOukpYQnL+1Vl1bzCp0Z0+9O0A0E2nC4mE8uXJQjUcsReLVfJ2 Yg== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 330ucn05r5-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 18 Aug 2020 22:43:24 -0400
-Received: from m0098414.ppops.net (m0098414.ppops.net [127.0.0.1])
-	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 07J2afAa052956;
-	Tue, 18 Aug 2020 22:43:24 -0400
-Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com [169.62.189.11])
-	by mx0b-001b2d01.pphosted.com with ESMTP id 330ucn05qv-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Tue, 18 Aug 2020 22:43:24 -0400
-Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
-	by ppma03dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 07J2bYwa016224;
-	Wed, 19 Aug 2020 02:43:23 GMT
-Received: from b03cxnp08025.gho.boulder.ibm.com (b03cxnp08025.gho.boulder.ibm.com [9.17.130.17])
-	by ppma03dal.us.ibm.com with ESMTP id 3304ccjv51-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Aug 2020 02:43:23 +0000
-Received: from b03ledav005.gho.boulder.ibm.com (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
-	by b03cxnp08025.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 07J2hJBU50659736
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 19 Aug 2020 02:43:19 GMT
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 376E3BE04F;
-	Wed, 19 Aug 2020 02:43:22 +0000 (GMT)
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 00E09BE051;
-	Wed, 19 Aug 2020 02:43:17 +0000 (GMT)
-Received: from morokweng.localdomain.com (unknown [9.163.41.251])
-	by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTP;
-	Wed, 19 Aug 2020 02:43:16 +0000 (GMT)
-From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-To: qemu-ppc@nongnu.org
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=JTZAdBDx;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1597806317;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=MWacM+NIVvc3VByuyCmZGI1Q8qi5g5iae7qqbUb/Knk=;
+	b=JTZAdBDxWVaKRNt0VTWWAUzGiWQFnGuR9HQUagCzaMinBbiZjxa3K9TgYqjOf4MYdsWuP6
+	1AhEti4+SrlMDQumq/2Hw/jEo4KxeAbNVvwU6PPs0KcGhKhEy7Bip4F5C0HiviHx3GFvmg
+	mOUk1XIXGavJLMJlIG1+K7B+qughqL0=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-525-NNO619mTMHWXgMMewIR91w-1; Tue, 18 Aug 2020 23:05:15 -0400
+X-MC-Unique: NNO619mTMHWXgMMewIR91w-1
+Received: by mail-wr1-f72.google.com with SMTP id l14so8874835wrp.9
+        for <alex.bennee@linaro.org>; Tue, 18 Aug 2020 20:05:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=MWacM+NIVvc3VByuyCmZGI1Q8qi5g5iae7qqbUb/Knk=;
+        b=kzmeCNOl2oat2zvMHIUZdP2YXOvxDbe2ornWp31oCrJiMkVnn/rPPnkuod7OG+DHbt
+         c6oXwd+f07MTVlS61xAId/VCvtiGSdTudtv04YQ1Cwr1AtLyICMoUYpKpK9+UEnsQHJP
+         8XhC4GEy0rl9AcyEwszoLR3YseHLwUVGt6/g73UUshtNxgdNjZ+98u1b20UfBlGK0jCq
+         L5iYdc3eXTlm47K2qXe9HGQzdPYfUMYSPrOYXC8jkj8rnkvUX9WWzFCLuzoUaluc0sel
+         EyqLu5VsBFYUV+Y/D6DOG/mDbUY+LSKoJ+5OWgJiaPaB8Mz+k+rj9c3+M+FlhhwT47bv
+         mx/w==
+X-Gm-Message-State: AOAM532zdSFoRZJTRdoeWMLELSZkghaoROqWXfQnD4kTyAYJ98WFPPEc
+	KUSUIjIjm+A0vB54uRXgaRkHrqUDtBzn0NiWlJm7t0sLFSFl3fQNtRmvKLLYkHcTM2Eerj/BKKj
+	uKEUNaUGOgiLnd2Zk
+X-Received: by 2002:a5d:514c:: with SMTP id u12mr23762847wrt.90.1597806314723;
+        Tue, 18 Aug 2020 20:05:14 -0700 (PDT)
+X-Received: by 2002:a5d:514c:: with SMTP id u12mr23762819wrt.90.1597806314480;
+        Tue, 18 Aug 2020 20:05:14 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net. [81.40.121.121])
+        by smtp.gmail.com with ESMTPSA id i6sm35347757wrp.92.2020.08.18.20.05.12
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 18 Aug 2020 20:05:13 -0700 (PDT)
+Subject: Re: [PATCH v5 4/8] ppc/e500: Use start-powered-off CPUState property
+To: Thiago Jung Bauermann <bauerman@linux.ibm.com>, qemu-ppc@nongnu.org
 Cc: qemu-arm@nongnu.org, qemu-s390x@nongnu.org, qemu-devel@nongnu.org,
-        David Gibson <david@gibson.dropbear.id.au>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-        Artyom Tarasenko <atar4qemu@gmail.com>,
-        Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
-        David Hildenbrand <david@redhat.com>,
-        =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-        =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-        Greg Kurz <groug@kaod.org>,
-        Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Subject: [PATCH v5 8/8] target/s390x: Use start-powered-off CPUState property
-Date: Tue, 18 Aug 2020 23:42:20 -0300
-Message-Id: <20200819024220.587612-9-bauerman@linux.ibm.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200819024220.587612-1-bauerman@linux.ibm.com>
+ David Gibson <david@gibson.dropbear.id.au>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Jiaxun Yang
+ <jiaxun.yang@flygoat.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ Greg Kurz <groug@kaod.org>
 References: <20200819024220.587612-1-bauerman@linux.ibm.com>
+ <20200819024220.587612-5-bauerman@linux.ibm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <1d7c519a-d0db-a579-e6d7-26255db07226@redhat.com>
+Date: Wed, 19 Aug 2020 05:05:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <20200819024220.587612-5-bauerman@linux.ibm.com>
+Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.003
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
- definitions=2020-08-18_16:2020-08-18,2020-08-18 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 lowpriorityscore=0
- phishscore=0 priorityscore=1501 adultscore=0 malwarescore=0
- impostorscore=0 suspectscore=1 mlxscore=0 mlxlogscore=999 clxscore=1015
- bulkscore=0 spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2008190017
-X-TUID: H0MNG+fFDuTf
+X-TUID: 39Rme+HBNAgp
 
-Instead of setting CPUState::halted to 1 in s390_cpu_initfn(), use the
-start-powered-off property which makes cpu_common_reset() initialize it
-to 1 in common code.
+On 8/19/20 4:42 AM, Thiago Jung Bauermann wrote:
+> Instead of setting CPUState::halted to 1 in ppce500_cpu_reset_sec(), use
+> the start-powered-off property which makes cpu_common_reset() initialize it
+> to 1 in common code.
+> 
+> Also change creation of CPU object from cpu_create() to object_new() and
+> qdev_realize_and_unref() because cpu_create() realizes the CPU and it's not
+> possible to set a property after the object is realized.
+> 
+> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
 
-Note that this changes behavior by setting cs->halted to 1 on reset, which
-didn't happen before.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Acked-by: Cornelia Huck <cohuck@redhat.com>
-Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
----
- target/s390x/cpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index 08eb674d22..73d7d6007e 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -291,7 +291,7 @@ static void s390_cpu_initfn(Object *obj)
-     S390CPU *cpu = S390_CPU(obj);
- 
-     cpu_set_cpustate_pointers(cpu);
--    cs->halted = 1;
-+    cs->start_powered_off = true;
-     cs->exception_index = EXCP_HLT;
- #if !defined(CONFIG_USER_ONLY)
-     object_property_add(obj, "crash-information", "GuestPanicInformation",
+> ---
+>  hw/ppc/e500.c | 14 ++++++++++----
+>  1 file changed, 10 insertions(+), 4 deletions(-)
+> 
+> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+> index ab9884e315..d7b803ef26 100644
+> --- a/hw/ppc/e500.c
+> +++ b/hw/ppc/e500.c
+> @@ -704,9 +704,6 @@ static void ppce500_cpu_reset_sec(void *opaque)
+>  
+>      cpu_reset(cs);
+>  
+> -    /* Secondary CPU starts in halted state for now. Needs to change when
+> -       implementing non-kernel boot. */
+> -    cs->halted = 1;
+>      cs->exception_index = EXCP_HLT;
+>  }
+>  
+> @@ -865,7 +862,7 @@ void ppce500_init(MachineState *machine)
+>          CPUState *cs;
+>          qemu_irq *input;
+>  
+> -        cpu = POWERPC_CPU(cpu_create(machine->cpu_type));
+> +        cpu = POWERPC_CPU(object_new(machine->cpu_type));
+>          env = &cpu->env;
+>          cs = CPU(cpu);
+>  
+> @@ -897,7 +894,16 @@ void ppce500_init(MachineState *machine)
+>          } else {
+>              /* Secondary CPUs */
+>              qemu_register_reset(ppce500_cpu_reset_sec, cpu);
+> +
+> +            /*
+> +             * Secondary CPU starts in halted state for now. Needs to change
+> +             * when implementing non-kernel boot.
+> +             */
+> +            object_property_set_bool(OBJECT(cs), "start-powered-off", true,
+> +                                     &error_fatal);
+>          }
+> +
+> +        qdev_realize_and_unref(DEVICE(cs), NULL, &error_fatal);
+>      }
+>  
+>      env = firstenv;
+> 

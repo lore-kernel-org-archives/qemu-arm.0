@@ -1,81 +1,83 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp314112lfy;
-        Wed, 19 Aug 2020 03:12:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCj7ozEyjEey6B6I+ofiILFBg0KSVF389DDxbQZxQJc1+d/Hs7RPyk8NWcVKnvOWm5uzU1
-X-Received: by 2002:a25:a88:: with SMTP id 130mr32062312ybk.52.1597831925816;
-        Wed, 19 Aug 2020 03:12:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597831925; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp314132lfy;
+        Wed, 19 Aug 2020 03:12:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJywrHOGZqoiqH6TKwM4VtnKrDH1qL5zruPxDcJ3QcSskBykPokXNtY25Y73WyRnceu8BVDO
+X-Received: by 2002:a25:e791:: with SMTP id e139mr33998148ybh.67.1597831926782;
+        Wed, 19 Aug 2020 03:12:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597831926; cv=none;
         d=google.com; s=arc-20160816;
-        b=k7Cnezu1KF/JwpLkMGVN0hdo31j4K65eRZuAG8v8n5s2f21NmmtjSw7e/e+eWLbuvd
-         qaZo9DYR66zUXSAthXw62Qfn1ygg2coIK+CuJKqtu+ov/DzZZrsoKOE0YRNM4XAyj5mp
-         wmjkMPntcGMz8hr9wVwz1GLxPxEiuGXXl47HiQ17Mc8yQT8DWh5iTQrv3F2ZSUJb921u
-         ekL3WuY6CiWGCagGofVA4YCSq6hFiQfVFNP59uGzvjzzjDM1YioqT2p7ExCCk7CwYPks
-         qk9mT7g8BfkK7vq+9xGmraTVSUhfKhVtI6RdkL2sAoS12MKQspWf4M877qr1tAtI44VP
-         hdMw==
+        b=GkazIlJRcFaOj87Yjer4NWtUTJC1KMy2y+8NArlMQtHBrCSuYgY20usYg3t4Xwv6FC
+         DUVNBLLP3HFD/dIs/laTLPyqzy/NtqUTn42sGRCdPcQ4dcNTa0ddyoZBHo/XbUqUdEDx
+         3IVxmpqIvqxkh0WanG0qMpubmwx0Aj2OouHRPrU2c+W4Bmo1N/SrtTERSe3ozCyvnukI
+         cYM2mb+1vapdSFj0WwmRPs0QI4YaRNE1x3U9fPfYmenQ9bGMHJ6eBxVkRKCoH3SJIn86
+         CDPmpxnHYzJVFgf6AZUZgn5woNRCxapcEK80h3xAjzXyAZKIcHTRs/lYNGhBkSm9t8ks
+         gcrw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=zRJdZYV1vcrefSNEryq0LmWsyM/cxIKs0OFzO2Ok6kM=;
-        b=O0L7wMTlSygfqrYaYmn++fU7wboVtZwACdwZxxF5DmOkgJyENoXQLtFx7w3ms9d5Hh
-         X+/2taRfHUAy9WCxqEh6qfQGvejL9ynB5SigPVAv/R+qykO3QzHxCHYhLAJ6uNCXqLwU
-         UIxcCyGgcu2R2GUlsx3Kei1lxVlxEu3/rnf0NOiuncVJ+63EhmP0YVPn9IbVwVysMVZg
-         9LxswbXnLYwRzIYzxzOXv/pavLfVBknIGmAjxxOvH0yVkXtLCRcJs3alDuuNYdp3iC3a
-         QsKngxtmunxToI+l2HxgSo5+dkYOk8rHrS0TXerriH+9Fph+Hqb+ggFiFF+Z/ze0Oqja
-         oazw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=ExCwQDSl8exmf71vHWPV2kGtUEwr/B0NO0KFYVgfq90=;
+        b=P1AuBEkJ5KLY72YCGx3S/baXTq/qb+bzpI31x7zASbGyqEMNKWbVCofEoMwZ9IeKo8
+         sUK6OMU1psyAHmWlRZCzFf+F3LLFl6KiKHP4nrLtlQBWy08DeggKNyYcTA4U8nuYL7GP
+         McsaX+DQHMKxOsZoLr969XzCTYe9/ujSoY47QKb9FgCF9XFnVAoqbwjq/hWy64w7miMZ
+         cMbb63FHKV34VapIrO+g6BdY4O5egUwOjgNJ4SvBIjZr9bCkAYHwOYz8yWNJalY5ArSy
+         mdDNyNaaElh52EaVoHIZUYay53XB5ah1Z2nVpl21dMUCOivJldYby4ebfUYmeoFRYmkd
+         Z4AQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e10si25536020ybp.15.2020.08.19.03.12.05
+        by mx.google.com with ESMTPS id l6si23632416ybl.274.2020.08.19.03.12.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Aug 2020 03:12:05 -0700 (PDT)
+        Wed, 19 Aug 2020 03:12:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60776 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60884 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8L4f-0005cA-3x
-	for alex.bennee@linaro.org; Wed, 19 Aug 2020 06:12:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56122)
+	id 1k8L4g-0005f7-1S
+	for alex.bennee@linaro.org; Wed, 19 Aug 2020 06:12:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56166)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k8L2t-0001Ea-R6; Wed, 19 Aug 2020 06:10:15 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:52453)
+ id 1k8L2v-0001IG-0e; Wed, 19 Aug 2020 06:10:17 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:58531)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k8L2p-0006Vu-Le; Wed, 19 Aug 2020 06:10:15 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.21])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 259005892825;
- Wed, 19 Aug 2020 12:10:00 +0200 (CEST)
+ id 1k8L2r-0006Xv-FE; Wed, 19 Aug 2020 06:10:16 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.143.167])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id B8EB251E25D7;
+ Wed, 19 Aug 2020 12:10:10 +0200 (CEST)
 Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Wed, 19 Aug
- 2020 12:09:59 +0200
+ 2020 12:10:10 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004f4311396-d5f6-46d7-8dd1-da85e55de9e4,
+ (GARM-101G004a09a97a2-e83e-4435-b211-9e5f5bd58e73,
  56ABA3BD09B5898CED80C8E013D4E39E9C6048D1) smtp.auth=clg@kaod.org
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 00/21] aspeed: cleanups and some extensions
-Date: Wed, 19 Aug 2020 12:09:35 +0200
-Message-ID: <20200819100956.2216690-1-clg@kaod.org>
+Subject: [PATCH v2 17/21] aspeed/sdmc: Allow writes to unprotected registers
+Date: Wed, 19 Aug 2020 12:09:52 +0200
+Message-ID: <20200819100956.2216690-18-clg@kaod.org>
 X-Mailer: git-send-email 2.25.4
+In-Reply-To: <20200819100956.2216690-1-clg@kaod.org>
+References: <20200819100956.2216690-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.101]
 X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: 798ef57d-2ef9-4afe-ad54-50bd85416b71
-X-Ovh-Tracer-Id: 18047894032872344358
+X-Ovh-Tracer-GUID: b435cfb0-7f94-4620-9a61-78e797a7ba37
+X-Ovh-Tracer-Id: 18050990257961012006
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedruddtkedgvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffogggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepuedtieekkeelgfduvdeijeeujefhheefjedtleegtdehteejteduuddtjeefjeeknecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.mo804.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/19 06:10:01
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedruddtkedgvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddunecuvehluhhsthgvrhfuihiivgepgeenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/19 06:10:05
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer
 X-Spam_score_int: -28
 X-Spam_score: -2.9
@@ -100,72 +102,73 @@ Cc: Andrew Jeffery <andrew@aj.id.au>,
  Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TUN2tRXPZn5s
+X-TUID: jVPv+NTkIAxb
 
-Hello,
+From: Joel Stanley <joel@jms.id.au>
 
-This series includes various fixes improving the support of Aspeed
-machines. Extra attention was given to the robustness of the ftgmac100
-model. A small kernel module tester was created for this purpose :
+A subset of registers are not protected by the lock behaviour, so allow
+unconditionally writing to those.
 
-   https://github.com/legoater/ftgmac100-test/
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/misc/aspeed_sdmc.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
-Changes in v2 :
-
- - definitions for some new flash models in m25p80 by Igor
- - All Joel's comments should have been addressed
- - A better fix of the integer overflow in ftgmac100_do_tx suggested
-   by Peter.
-
-
-This needs a couple more reviewed-by before I can send a PR.
-
-Thanks,
-
-C.
-
-Cédric Le Goater (16):
-  m25p80: Return the JEDEC ID twice for mx25l25635e
-  m25p80: Add support for mx25l25635f
-  m25p80: Add support for n25q512ax3
-  aspeed/scu: Fix valid access size on AST2400
-  aspeed/smc: Fix MemoryRegionOps definition
-  aspeed/smc: Fix max_slaves of the legacy SMC device
-  aspeed/sdhci: Fix reset sequence
-  ftgmac100: Fix registers that can be read
-  ftgmac100: Fix interrupt status "Packet transmitted on ethernet"
-  ftgmac100: Fix interrupt status "Packet moved to RX FIFO"
-  ftgmac100: Change interrupt status when a DMA error occurs
-  ftgmac100: Check for invalid len and address before doing a DMA
-    transfer
-  ftgmac100: Fix integer overflow in ftgmac100_do_tx()
-  ftgmac100: Improve software reset
-  aspeed/sdmc: Simplify calculation of RAM bits
-  aspeed/smc: Open AHB window of the second chip of the AST2600 FMC
-    controller
-
-Igor Kononenko (2):
-  arm: aspeed: add strap define `25HZ` of AST2500
-  hw: add a number of SPI-flash's of m25p80 family
-
-Joel Stanley (2):
-  aspeed/sdmc: Perform memory training
-  aspeed/sdmc: Allow writes to unprotected registers
-
-erik-smit (1):
-  hw/arm/aspeed: Add board model for Supermicro X11 BMC
-
- include/hw/misc/aspeed_scu.h  |   1 +
- include/hw/misc/aspeed_sdmc.h |  13 +++-
- hw/arm/aspeed.c               |  35 ++++++++++
- hw/block/m25p80.c             |   6 +-
- hw/misc/aspeed_scu.c          |   9 +--
- hw/misc/aspeed_sdmc.c         | 125 +++++++++++++++++++---------------
- hw/net/ftgmac100.c            |  95 ++++++++++++++++++--------
- hw/sd/aspeed_sdhci.c          |  14 +++-
- hw/ssi/aspeed_smc.c           |   6 +-
- 9 files changed, 209 insertions(+), 95 deletions(-)
-
+diff --git a/hw/misc/aspeed_sdmc.c b/hw/misc/aspeed_sdmc.c
+index ff2809a09965..81c73450ab5d 100644
+--- a/hw/misc/aspeed_sdmc.c
++++ b/hw/misc/aspeed_sdmc.c
+@@ -33,15 +33,28 @@
+ /* Configuration Register */
+ #define R_CONF            (0x04 / 4)
+ 
++/* Interrupt control/status */
++#define R_ISR             (0x50 / 4)
++
+ /* Control/Status Register #1 (ast2500) */
+ #define R_STATUS1         (0x60 / 4)
+ #define   PHY_BUSY_STATE      BIT(0)
+ #define   PHY_PLL_LOCK_STATUS BIT(4)
+ 
++/* Reserved */
++#define R_MCR6C           (0x6c / 4)
++
+ #define R_ECC_TEST_CTRL   (0x70 / 4)
+ #define   ECC_TEST_FINISHED   BIT(12)
+ #define   ECC_TEST_FAIL       BIT(13)
+ 
++#define R_TEST_START_LEN  (0x74 / 4)
++#define R_TEST_FAIL_DQ    (0x78 / 4)
++#define R_TEST_INIT_VAL   (0x7c / 4)
++#define R_DRAM_SW         (0x88 / 4)
++#define R_DRAM_TIME       (0x8c / 4)
++#define R_ECC_ERR_INJECT  (0xb4 / 4)
++
+ /*
+  * Configuration register Ox4 (for Aspeed AST2400 SOC)
+  *
+@@ -449,6 +462,20 @@ static uint32_t aspeed_2600_sdmc_compute_conf(AspeedSDMCState *s, uint32_t data)
+ static void aspeed_2600_sdmc_write(AspeedSDMCState *s, uint32_t reg,
+                                    uint32_t data)
+ {
++    /* Unprotected registers */
++    switch (reg) {
++    case R_ISR:
++    case R_MCR6C:
++    case R_TEST_START_LEN:
++    case R_TEST_FAIL_DQ:
++    case R_TEST_INIT_VAL:
++    case R_DRAM_SW:
++    case R_DRAM_TIME:
++    case R_ECC_ERR_INJECT:
++        s->regs[reg] = data;
++        return;
++    }
++
+     if (s->regs[R_PROT] == PROT_HARDLOCKED) {
+         qemu_log_mask(LOG_GUEST_ERROR, "%s: SDMC is locked until system reset!\n",
+                 __func__);
 -- 
 2.25.4
 

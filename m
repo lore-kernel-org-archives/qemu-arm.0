@@ -1,66 +1,66 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp312949lfy;
-        Wed, 19 Aug 2020 03:10:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx74SVHMo+CUz8hYYmlMt22SO3aLoY8ci02kDHE/PZrYsuBUEi4JpCAMhVZpcrYP+k4vpGd
-X-Received: by 2002:a25:b4c:: with SMTP id 73mr32989167ybl.102.1597831825951;
-        Wed, 19 Aug 2020 03:10:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597831825; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp313622lfy;
+        Wed, 19 Aug 2020 03:11:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyNt7ZRG7OjuHO3Qq2W8BBqP5NuhMFDvr6ZHub4ZvuNbf9D+C0yITiUhC1TsDsBuJc9ecQg
+X-Received: by 2002:a25:1f42:: with SMTP id f63mr36300372ybf.217.1597831879468;
+        Wed, 19 Aug 2020 03:11:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597831879; cv=none;
         d=google.com; s=arc-20160816;
-        b=UgFCx8Z8XB+bvEPkWRhMSX/JWCgNruSrarX0+4ik49Gh6DSBV8JNENC5wCadUtiuV/
-         JbihKWrg1UsQD40fNGB6mui9Ud1dXrysMroDol//Mit+NpetDhbHQmP/i45ZdoFY8oPV
-         tQOzvN6rDB86yzJBAPiI1TRhif6W/s5vQhWmaWP4haqm1EWg30g3W4jsyWStZecpVkeC
-         t3Sq/0nLopGuWwJJd/tgbKxA42ttPfvJJyk0CF6VitriaqJ2XoRMJraYCVUsjvLgQdkr
-         LS7PavIgt6WQW+7YyPu71CBS2RitOyEWNptJChb6+3iOUdf7JbzwWP34a6mhUwF7tWip
-         sKTQ==
+        b=LcHjC+YkFYMezA+2tF0V0zxkb4q+jhMbjaynmien9FgzydA5iEpY9PYk0/KuRMuRu3
+         M8xtzBPcJfycKr9YGEmQ+NvcbSC3PjeAvpJst/6l4Q/pOS+PHIvf2ETLw2AMoMR4EN74
+         4OjDgn2nWOFrg0qKbl+nrC5IcxtkaL4bL9kBex+cK8S4tiHN7F0j0G4YaDaz/KNBfeeY
+         h5q6J0RZgKdhumAP0h9og482c/h3/ngrH9q9ePaU9nWH1e2DLHEJxGCbAPgScYfZQufY
+         l0XZxLCBbwYu0tw4xMRI/OdrttsdR0sLmjy74dNs/CxwRdbnHsh5TUVbsE8IOfL0sW14
+         huoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=WjMVxXpxTXB47d7nADGkzWXBMkgFx5fn4sE0cG5absI=;
-        b=f9kW/cgrl3xQxYYHgvXUDjgyezf9uB6GWBNke8i7bbt9ZE9CYqEo2J7Kxt5C5AcdGW
-         PDbWQLscWEkafjVDXivXChjT/IJa5yX/gJqVbQOG3LeSxEt1BEsfq9ZMGKjI7hbcqCDi
-         WYVVS+1BhWWWFJNTxrbRifZHc0SJeyZNv88cMkANrSghhOX9snZbIYAdFqAMTu70MZr2
-         EGpN70H32rK+wR1W0FPNNAlOTlMMD35CB0rC1bJuYWfQ+5NGleamZhHXOfykwx2WRst6
-         7rAg/19ZHNCwhv85AY7CoOMUIIA8JsdKdbOxe/kyRQjhIsj8IOsdsB8A+uqLmQPOc5hl
-         Dx0w==
+        bh=KAz4Z34bY7GT4A/nBTUunszMFtPy3MVN8IhAZKJDv4Y=;
+        b=tGLOhjEzXTWgi366LHJkCLBuaXBxWbwF+faxwHTsixQu4aFdXv1zVQzYTM9o0d5G0V
+         APwbkjiAXZffSRScQkZKwEEkW9p8QpJAAK6IqtrKDULJ1aab9uVPhl0mL7jNAd0uPS5P
+         QM7iW4EspOoe7oKTttZSLlw+FsuRXieYy1rzehP2JzjnWXSR5LuyufkvnM/2f/C+ZVbU
+         lGCaky6oAzU+IAU5qvRhoDa+4nk7FpA3K9Yx8p4cFgNn9mVKvPLbCOxtWGg/N3flmun1
+         KEUG3ZpvCZHbwjSx1SMpZpkWcki3EyZSjrEoPmktfuQ4VeL2sm5jj8wuq0kD10vKEOQW
+         HJng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x196si24601199ybe.173.2020.08.19.03.10.25
+        by mx.google.com with ESMTPS id 137si2103451ybd.491.2020.08.19.03.11.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Aug 2020 03:10:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 19 Aug 2020 03:11:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50400 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54352 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8L33-0001CP-7j
-	for alex.bennee@linaro.org; Wed, 19 Aug 2020 06:10:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56074)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k8L3u-00032s-PL
+	for alex.bennee@linaro.org; Wed, 19 Aug 2020 06:11:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k8L2r-00019o-Q9; Wed, 19 Aug 2020 06:10:13 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:51321)
+ id 1k8L2s-0001BA-Dn; Wed, 19 Aug 2020 06:10:14 -0400
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:60381)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k8L2p-0006W8-GE; Wed, 19 Aug 2020 06:10:13 -0400
+ id 1k8L2p-0006W1-QX; Wed, 19 Aug 2020 06:10:14 -0400
 Received: from mxplan5.mail.ovh.net (unknown [10.109.156.21])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 1B9825892832;
- Wed, 19 Aug 2020 12:10:03 +0200 (CEST)
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 565DE589282B;
+ Wed, 19 Aug 2020 12:10:02 +0200 (CEST)
 Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Wed, 19 Aug
- 2020 12:10:01 +0200
+ 2020 12:10:00 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-101G004e56e72f8-5a54-4b99-af1a-aa9c0c773d2a,
+ (GARM-101G0045abaeba6-4bcf-47c5-a387-344ded2a8502,
  56ABA3BD09B5898CED80C8E013D4E39E9C6048D1) smtp.auth=clg@kaod.org
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 04/21] aspeed/scu: Fix valid access size on AST2400
-Date: Wed, 19 Aug 2020 12:09:39 +0200
-Message-ID: <20200819100956.2216690-5-clg@kaod.org>
+Subject: [PATCH v2 02/21] m25p80: Add support for mx25l25635f
+Date: Wed, 19 Aug 2020 12:09:37 +0200
+Message-ID: <20200819100956.2216690-3-clg@kaod.org>
 X-Mailer: git-send-email 2.25.4
 In-Reply-To: <20200819100956.2216690-1-clg@kaod.org>
 References: <20200819100956.2216690-1-clg@kaod.org>
@@ -70,11 +70,11 @@ Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.101]
 X-ClientProxiedBy: DAG1EX1.mxp5.local (172.16.2.1) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: c5fc69af-930e-41d9-b349-eefbfe0f35ba
-X-Ovh-Tracer-Id: 18048738460076116841
+X-Ovh-Tracer-GUID: 2374accf-2441-4bb9-ac61-9465794c63f7
+X-Ovh-Tracer-Id: 18048175507049450278
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedruddtkedgvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutddunecuvehluhhsthgvrhfuihiivgepudenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedruddtkedgvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepieeuteejvdfgheekkeejieehheefvddtgedtveefiefhkeeikeffvdeileelfeeknecuffhomhgrihhnpehmrggtrhhonhhigidrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
 Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
  helo=smtpout1.mo804.mail-out.ovh.net
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/19 06:10:01
@@ -83,63 +83,66 @@ X-Spam_score_int: -28
 X-Spam_score: -2.9
 X-Spam_bar: --
 X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org,
- erik-smit <erik.lucas.smit@gmail.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 63t/UDTMgXvh
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>, qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: H1dwQSJMJBvg
 
-The read access size of the SCU registers can be 1/2/4 bytes and write
-is 4 bytes and all Aspeed models would need a .valid.accepts() handler.
+The mx25l25635f is an extenstion of the mx25l25635e. It includes QPI
+support, 4-Byte Address Command Set and faster transfers. See this
+document for more details :
 
-For the moment, set the min access size to 1 byte to cover both read
-and write operations on the AST2400 but keep the min access size of
-the other SoCs to 4 bytes as this is an unusual access size.
+https://www.macronix.com/Lists/ApplicationNote/Attachments/1892/AN0200V1_MGRT_MX25L25635E_25735E%20to%20MX25L25635F_25735F.pdf
 
-This fixes support for some old firmware doing 2 bytes reads on the
-AST2400 SoC.
+Both devices have the same 3bytes JEDEC ID: 0xc22019. They can be
+distinguished with the QPIID command which is only available on
+mx25l25635f and their Serial Flash Discoverable Parameters. However,
+some FW use the JEDEC ID. For instance, on a SuperMicro P9 Boston, the
+BMC FW reports :
 
-Reported-by: erik-smit <erik.lucas.smit@gmail.com>
+  BMC flash ID: 0xc21920c2
+  jedec_id: 0xc21920c2
+  flash type: MX25L25635F
+  ReadClk=0x32, WriteClk=0x85, EraseClk=0x85
+  [smcfw_spi] cpuclk: 198000000 MHz, RefCLK: 24000000 MHz, AXI-AHB ratio: 2:1
+  platform_flash: MX25L25635F (32768 Kbytes)
+
+Define the mx25l25635f with an extended JEDEC ID.
+
 Reviewed-by: Joel Stanley <joel@jms.id.au>
 Signed-off-by: Cédric Le Goater <clg@kaod.org>
 ---
- hw/misc/aspeed_scu.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+ hw/block/m25p80.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index ec4fef900e27..764222404bef 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -328,9 +328,10 @@ static const MemoryRegionOps aspeed_ast2400_scu_ops = {
-     .read = aspeed_scu_read,
-     .write = aspeed_ast2400_scu_write,
-     .endianness = DEVICE_LITTLE_ENDIAN,
--    .valid.min_access_size = 4,
--    .valid.max_access_size = 4,
--    .valid.unaligned = false,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
- };
- 
- static const MemoryRegionOps aspeed_ast2500_scu_ops = {
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 605ff55c6756..1696ab1f7821 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -218,6 +218,7 @@ static const FlashPartInfo known_devices[] = {
+     { INFO("mx25l12805d", 0xc22018,      0,  64 << 10, 256, 0) },
+     { INFO("mx25l12855e", 0xc22618,      0,  64 << 10, 256, 0) },
+     { INFO6("mx25l25635e", 0xc22019,     0xc22019,  64 << 10, 512, 0) },
++    { INFO("mx25l25635f", 0xc22019,      0xc200,  64 << 10, 512, 0) },
+     { INFO("mx25l25655e", 0xc22619,      0,  64 << 10, 512, 0) },
+     { INFO("mx66u51235f", 0xc2253a,      0,  64 << 10, 1024, ER_4K | ER_32K) },
+     { INFO("mx66u1g45g",  0xc2253b,      0,  64 << 10, 2048, ER_4K | ER_32K) },
 -- 
 2.25.4
 

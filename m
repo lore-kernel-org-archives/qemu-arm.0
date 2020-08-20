@@ -1,146 +1,148 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1174501lfy;
-        Thu, 20 Aug 2020 01:56:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwhw9bfTvhthuEy0LEkGKqss1EkEqZuQ+f+E7BadbNdKy9W2kvvLEOuSY+WO6EK7WJRsVYw
-X-Received: by 2002:a25:7809:: with SMTP id t9mr3415930ybc.359.1597913768317;
-        Thu, 20 Aug 2020 01:56:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597913768; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1327304lfy;
+        Thu, 20 Aug 2020 05:54:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxp4Cvdz4is7OsSl/lmQseRaMmRpOamIWCD126YyC+WX9jl+9m5b6jqo23sQOarGC6IsNR2
+X-Received: by 2002:a25:45c3:: with SMTP id s186mr4999879yba.251.1597928084152;
+        Thu, 20 Aug 2020 05:54:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597928084; cv=none;
         d=google.com; s=arc-20160816;
-        b=vlXhlXDIzlS24iuOZ4LQ4TUzhDFqkZbFjEU8lHCc4rLeaLe1OHO/gdqyJX69fSrGX/
-         9t6ZzlahipPiyrKKLk2BRoLwhIqCxg4IhqwVtyy6prnf+kgodvautHqMmGvNyR7U0bvo
-         A2ldGS6tVNBFIrN3nZe1/VuClCwWUF4Pvh602H6I204yD6RZDTnCUdV/JuaNYZiEjFpj
-         pjuqp7wTn4X+tgXFXM1lD6YCiNWZa5hDMAqBi3bfMyMZYwrBwXMgWDtFZgqUCDmhC3eo
-         i8HgDd3ydeZkfFjZ78h6MrmL9OuP9EGFw7GF48BJIHsqLRCia7TcY8i9/kEqibFeCCL9
-         fj/g==
+        b=KHssU8GmOofgYv6T0S0u4mEAkqixEjz6/JPRevexDW8c46JpjgOiLgaOPAuVwo79FW
+         87k5AA2BN5nPHkSW53fW0DApyKHJnBnnWIu5Ldmi08tZWXfjkS8zBJ3oAywpgzG/QyVP
+         Hdia1Z+4d98xkXQiYyWQFa1GrRQ9BPKJZgzaLyElgHVW1Tv048pFbQDlu3qLq6ltQIh2
+         UIkaVIilQW/r5m4eVhwW8nZXTbMCaRlbJSl70UoYRBqp8wUl1K8jzwrVduFGSgyr23xu
+         tqvRQTRGglpABnGGhFZrpIcqq6sN8ruuPrF/TYVapm19l0MNMxzFYfYk6TryKG9lkYIF
+         ko/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=AQVBDah8EuLjQCC3k644t7wKUAg3k/Jomc8EqA920nU=;
-        b=00kd2yuoO+2ac3nHP1qybMvgjN/BBvett02G+jlf4gy78UUlnMyLJuBy5JHH7Korp2
-         zK9aT6Bi4zxjBtQ5PClEJRIaqfeZN1Jg7YVALgcgkgffgX4JGd4NTfLoa7bl1hJezd/m
-         FZ+WqMMnJ9po+s7ytit5oR3rFprw10bgbE+TtA1Ehyc60Q/IxGOjZyiGKoE0MFTx5Mdq
-         2tOz+uMKd7Q3BhuqDR3Sj/6Vha6JF5jW+Zsl1AgkIkq+MslcNUhFCVXkBiwAxzZJVUzV
-         v5H2OoQzKn1DfUqoOHeTmX2FlppNz1S1UzV2jd2Dk0TZE1PAZh0V5G39uAAIPQIj0BYn
-         02fA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=u5PljA5HGgJoQhacENPV2kbekDCEo8Ii1pT/4d+7Uco=;
+        b=Poa1dgBCRXTNX+k3AEGSC55joKR7D0QIgdfRn1iGU9mXRpJOR4X7v79o8PlvpHwBHa
+         9byDA9q5eOE3DYpFmiNdxloemFBkcz1vn8GfzIQlM2TaY+LNYyZoHjtCveUZJm6Yk1Cz
+         9R4y4aLviJxt9v7rjGjXJpMZemtl0jRw/CFZD9WeZIIY9A9Wcohl8glqmB6deLaKZj4K
+         fBJwNiYZ9vbTSvUJ2r3L8+i1BVh3ByZ3GDPFhsju7WHuuYX7hiatQstdpg/4dl2MssZn
+         9g4qrHh1xb16yERl/T1YaTb967GbIFMpSZB4KfE+fCHMUObi6XMY3c6zFqfOUx80H7t+
+         yo/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hPKwkvKY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=toshiba.co.jp
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 81si1506980ybn.182.2020.08.20.01.56.08
+        by mx.google.com with ESMTPS id j20si1913218ybj.55.2020.08.20.05.54.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Aug 2020 01:56:08 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Aug 2020 05:54:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=hPKwkvKY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:59294 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=toshiba.co.jp
+Received: from localhost ([::1]:46062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8gMh-0001nP-No
-	for alex.bennee@linaro.org; Thu, 20 Aug 2020 04:56:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54004)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k8k5b-0001Zy-FW
+	for alex.bennee@linaro.org; Thu, 20 Aug 2020 08:54:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38122)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k8gM6-0001Jc-6j
- for qemu-devel@nongnu.org; Thu, 20 Aug 2020 04:55:30 -0400
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:41835)
+ (Exim 4.90_1) (envelope-from <punit1.agrawal@toshiba.co.jp>)
+ id 1k8cbx-0000yF-4s; Thu, 20 Aug 2020 00:55:37 -0400
+Received: from mo-csw1116.securemx.jp ([210.130.202.158]:54104
+ helo=mo-csw.securemx.jp)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1k8gM4-0007w6-Lu
- for qemu-devel@nongnu.org; Thu, 20 Aug 2020 04:55:29 -0400
-Received: by mail-ej1-x644.google.com with SMTP id t10so1566124ejs.8
- for <qemu-devel@nongnu.org>; Thu, 20 Aug 2020 01:55:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=AQVBDah8EuLjQCC3k644t7wKUAg3k/Jomc8EqA920nU=;
- b=hPKwkvKYv6DtWfICP6xupQIUPHXOQiMn5ozNCwKvUhZlC2IO5xyZr8PK/EJxmL5QNb
- ga1RzZS9LIee0ZikGxj1KW+q6QFCJt+zRnucLB+SEjx2v6Yq8a8FcsXRxtxx/MRQXFy/
- xGcU3FK0Fx369Jm0QF4SQJ8NpFAMCNl6LCReQLcDsKF2Qlrtr+yle8OtTmS4QZwrRIAS
- uQCy8gDX73My5KMLEqYf7r7V7ANMtfPFvKFMgc263azGRoe0eOrUp29TLmqGiqfuIKPb
- +05QzinH9SDNqp3nNAFNBeJ2BYD9UyxiwNn6Y8P5/zjtqHcwPjxzeTwlapkjaEhD/dC/
- dtMw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=AQVBDah8EuLjQCC3k644t7wKUAg3k/Jomc8EqA920nU=;
- b=NrWNrz8/tJu0MyfIwpfSNrhYvVk7sb8O2TP69XEmjxyRVmK1nNPu1KpC5HzgdI97Zi
- Ir/enN6qMyoa3faZM60XPHyaY4lSkQV4mM/FAK1SBhxc40ABcvLT20Zs2VwH1+54myYO
- yoFxn5gwhtEUxdVoyLTBLUWUn4KqWM/K3skIKrjTeKcPX2pS37wUtedBSgI2b277jAQP
- z3lS5zj8QmSIPxo6Sx5s8jWzztpaUEANA5NOS69Y0zY1YzowWSemASI3Pkv1QqwugzQE
- ZDqmvF1fWqYwctzHREfqn1GriI292Gx0kTdrpxh7L/m2LUmllI+HrM5rsAexXzrdctNw
- 0Zwg==
-X-Gm-Message-State: AOAM532X8ZDIiLbvyf92ngVCDX7LZoHVBo9NCV6yAqZ8XdCqECasLFF/
- uPgbUx1W8zxsm+++7nm1DQZ4aeus1AgAOEzLjpQKqQ==
-X-Received: by 2002:a17:906:b814:: with SMTP id
- dv20mr1605795ejb.4.1597913727175; 
- Thu, 20 Aug 2020 01:55:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <punit1.agrawal@toshiba.co.jp>)
+ id 1k8cbr-0005Dr-U7; Thu, 20 Aug 2020 00:55:35 -0400
+Received: by mo-csw.securemx.jp (mx-mo-csw1116) id 07K4tJmI031419;
+ Thu, 20 Aug 2020 13:55:20 +0900
+X-Iguazu-Qid: 2wGrV5ExkTeoSQFQd4
+X-Iguazu-QSIG: v=2; s=0; t=1597899319; q=2wGrV5ExkTeoSQFQd4;
+ m=ZSBeRo0cUaHW2d51aGDT4R82sr7LdQDDf9LhBu8iUOA=
+Received: from imx12.toshiba.co.jp (imx12.toshiba.co.jp [61.202.160.132])
+ by relay.securemx.jp (mx-mr1111) id 07K4tIJC021865;
+ Thu, 20 Aug 2020 13:55:19 +0900
+Received: from enc03.toshiba.co.jp ([106.186.93.13])
+ by imx12.toshiba.co.jp  with ESMTP id 07K4tIEa013070;
+ Thu, 20 Aug 2020 13:55:18 +0900 (JST)
+Received: from hop101.toshiba.co.jp ([133.199.85.107])
+ by enc03.toshiba.co.jp  with ESMTP id 07K4tI1N010320;
+ Thu, 20 Aug 2020 13:55:18 +0900
+From: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
+To: peter.maydell@linaro.org
+Subject: [PATCH] hw/arm/virt: Default to architecture appropriate CPU
+Date: Thu, 20 Aug 2020 13:55:07 +0900
+X-TSB-HOP: ON
+Message-Id: <20200820045507.614288-1-punit1.agrawal@toshiba.co.jp>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-References: <20200820045507.614288-1-punit1.agrawal@toshiba.co.jp>
-In-Reply-To: <20200820045507.614288-1-punit1.agrawal@toshiba.co.jp>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 20 Aug 2020 09:55:16 +0100
-Message-ID: <CAFEAcA-zRAzU_ZRE5Wfc1V9jtnnhNyHEkXF4+t2TFXJ26MKc8A@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/virt: Default to architecture appropriate CPU
-To: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x644.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=210.130.202.158;
+ envelope-from=punit1.agrawal@toshiba.co.jp; helo=mo-csw.securemx.jp
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/20 00:55:23
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H2=-1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Thu, 20 Aug 2020 08:54:36 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q0ik7Eplq6Pk
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Punit Agrawal <punit1.agrawal@toshiba.co.jp>,
+ qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 0cLgBYZp1Bci
 
-On Thu, 20 Aug 2020 at 05:55, Punit Agrawal
-<punit1.agrawal@toshiba.co.jp> wrote:
->
-> The default_cpu_type for the Virt machine is set to "cortex-a15" for
-> both the arm (qemu-system-arm) and aarch64 (qemu-system-aarch64)
-> targets.
->
-> As a result, starting the aarch64 target with "-machine virt" defaults
-> to booting with a Arm v7 cpu which is counter to
-> expectation. Debugging the issue is further hampered by lack of any
-> output from a supplied arm64 firmware as it is now running on the
-> wrong CPU type.
->
-> Fix this by defaulting to the "max" capability CPU for the target
-> architecture. After the patch both the arm and aarch64 qemu default to
-> the equivalent of passing "-cpu max".
+The default_cpu_type for the Virt machine is set to "cortex-a15" for
+both the arm (qemu-system-arm) and aarch64 (qemu-system-aarch64)
+targets.
 
-Hi; this kind of thing has been suggested in the past several times.
-Generally we've taken the view that we prefer:
- * not to make changes that would break pre-existing command lines
- * to maintain the general behaviour that a command line used
-   with qemu-system-arm will also work with qemu-system-aarch64
+As a result, starting the aarch64 target with "-machine virt" defaults
+to booting with a Arm v7 cpu which is counter to
+expectation. Debugging the issue is further hampered by lack of any
+output from a supplied arm64 firmware as it is now running on the
+wrong CPU type.
 
-It is certainly true that these days the default CPU type for
-virt is not what most users want, though.
+Fix this by defaulting to the "max" capability CPU for the target
+architecture. After the patch both the arm and aarch64 qemu default to
+the equivalent of passing "-cpu max".
 
-thanks
--- PMM
+Signed-off-by: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
+---
+Hi Peter,
+
+I spent inordinately long time scratching my head trying to figure out
+why my arm64 VM wasn't booting in TCG mode.
+
+Please consider merging if you don't see any issues with the patch.
+
+Thanks,
+Punit
+
+ hw/arm/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index ecfee362a1..7c5cbdba87 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2424,7 +2424,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->minimum_page_bits = 12;
+     mc->possible_cpu_arch_ids = virt_possible_cpu_arch_ids;
+     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
+-    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("max");
+     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
+     mc->kvm_type = virt_kvm_type;
+     assert(!mc->get_hotplug_handler);
+-- 
+2.28.0
+

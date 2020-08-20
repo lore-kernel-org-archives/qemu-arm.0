@@ -1,152 +1,296 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1342113lfy;
-        Thu, 20 Aug 2020 06:12:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy34Q5PZOP9xLetmJWU1VX/jUOZZ4piYNiSRmLIJ8FY4LNmlVMaKZ+9qhzF8m0JUL0NS0sn
-X-Received: by 2002:a25:da0e:: with SMTP id n14mr4310175ybf.307.1597929123408;
-        Thu, 20 Aug 2020 06:12:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597929123; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1372157lfy;
+        Thu, 20 Aug 2020 06:52:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuOdW7Xa5vsYc+HFzGy5EIvuIYuMqzp4ZRsnsEuaGWh0tvqEb1TjTOHjKi+UR+wORNpW6k
+X-Received: by 2002:a25:5094:: with SMTP id e142mr4728970ybb.99.1597931523481;
+        Thu, 20 Aug 2020 06:52:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597931523; cv=none;
         d=google.com; s=arc-20160816;
-        b=fU0O+VrrXAkZe+ootLfPtGd2JeT7Rh5542Vx4KKgjsoHqS6jpgdNNFd4BVxmN3dHm7
-         nYuRNEbaeHIC+rGkXPAt6bvQ1F9+iZTJmItluGrbdcxzta7Ilh0qndrmMbIyxpuLtrG2
-         wygCpsiypLPrBSV7xiHlyQ7c3/G6YD4MCNfbim+dupmUaR1577SvNoLjGEo9x/llpNFw
-         pPBLG36DoEEnFPNpnpQ26fTlk/MVYKicbz7VxnsrZi3bQjtRzsgokwhm3q7O7/HuE91W
-         7xgmQxeEZv/pTJzhbCDZbOZVbKexH92saPu/2ne/HAsnjLcrXZWB1cQQoqBo3Qszh8WK
-         xSsg==
+        b=DAuS0VWQghb+umu3bk0vOzzhMXbvbGcgyBaj+WrozVbO/tg348TF0ibxmeaUXX19aZ
+         9rCZs2QUAxVRi+Ru0l0H5z1FFZtUgEJxjzDSDHMLbz9TaTgNrrCRqCciPxd575ZDLPtc
+         ebNJvN5H2RAk82Xjg8tz4Vg2p1Dg18aV0PG6POKPnApZ6khp/Hx7ycAqz2I83NazybIa
+         UUTTwC3IYLAzP5vfC75uMsLff4QDJOtmjvtUELRVPjLX5psviVB+2+1Zr84Neaq/lw3q
+         WlRHd9WB6ETvWCQg9x4tdutBHDpqiv4bLtFL+v6nMQ3t7THNdRDkjV8cWNnOiQBVsS7z
+         Owiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=o24q7nEogcRj4IMnZ1uXXN0U56ac22AEmgTqbDO5ecQ=;
-        b=T06HCSofhxHFXNLLg60OP7l0I4aYMGG6akS4OjlERc4htGpjIAVm75bndHxFEsWbIN
-         e32jtDAuldRdp8Cpn7hRabLeH4RA2m5l14Lima8gVDjike0GMiCMjLpFl1VH9e6IE/SC
-         /qoGlhGmLjDUVnnWy5cT5fCNHUa7mbqe0H6+3+VqY8VL/hvQGmHcnBcruB7xzZD+jqi3
-         L4RoUq3lGE5hafGxI3sJfNx7dcfLCdjwlfJ+R1uBBalRqG428vtq7A84+5ERde8vDktG
-         8Fr97pizCfbSTzmwdLdtdS337YrVx6MfKFJpMsugPh/gfncHxHf2zXdGLYluOqsN0iLm
-         /srg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=vYXewd6GjmPAqPohPeYMcDLKpv4ENl+6z1KY0U8cKWI=;
+        b=pK4FbovFUWmRMl5MRYOD6mlL7Sd2744lDCKpP0FAVAFvYuLosqP59Czlnw7U3q8b56
+         Rch7F6U1gcWEM7F06ClFl5reZPC+en4n9bElHojDtRpp0jQmEUnf4DEpi/qGnFG+zGij
+         YlHJfwgDLD5bcQUgKyG9Za/eAr2mvgAGNzAQ0Z9cXxeNA91PtsFSw7BbONdVDruecxzx
+         yRwPJW/oEHbZebbaGi4J08b7HSc87wxskZhKEb0nEc/608tySyvR/lCe5DG0Zk8k2oQN
+         TDthIhsQjaKV+mjUPNx3OW1YlhroRsaPYLzjcX6J/zCpA5EbpK9IjNNqZdHiKy5rdvkj
+         YU2Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IsSGccGW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="q/QaA8FJ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p145si1978355ybg.440.2020.08.20.06.12.03
+        by mx.google.com with ESMTPS id l7si1976712ybk.54.2020.08.20.06.52.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Aug 2020 06:12:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Aug 2020 06:52:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IsSGccGW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43266 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="q/QaA8FJ";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45712 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8kMM-0004kK-PU
-	for alex.bennee@linaro.org; Thu, 20 Aug 2020 09:12:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60470)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k8kz4-00061T-Rt
+	for alex.bennee@linaro.org; Thu, 20 Aug 2020 09:52:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k8kM1-0004Rm-9A; Thu, 20 Aug 2020 09:11:41 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:55077)
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1k8ky8-0005ZO-9U
+ for qemu-devel@nongnu.org; Thu, 20 Aug 2020 09:51:04 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36898)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k8kLz-0007r5-1G; Thu, 20 Aug 2020 09:11:41 -0400
-Received: by mail-wm1-x344.google.com with SMTP id d190so1540260wmd.4;
- Thu, 20 Aug 2020 06:11:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=o24q7nEogcRj4IMnZ1uXXN0U56ac22AEmgTqbDO5ecQ=;
- b=IsSGccGWUXk2ES240BqSmVxzrI4iNYXwBqGJuJpBEQ7B6Y3Bx36Os3rcIXecfRU248
- fIaTPx3S1im5ef54RtlgIQnHT9cCvJAmMYd+sxvihWsrPXsCuzjw59+7UlqxEJ9rEQSV
- Tl1nkUNk4tbtbTdi8Xsab9FvYFc5XkVD698nkdeClfE2lKfN16tZltklHEBNzC0GJMEk
- OHilmxzyNFfV/YPf2fsz0ncqi/GJNh0BLXu19B+yltN1hWzsYjUypBHmpbRwQDpXp0bk
- jxhX6tA5WNfv6ab4dC15EsiN021j/RjTvA+85bLqFqlXW0euOm4qtkcU2I1EnWL9rVKH
- Fe5Q==
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1k8ky4-0004e0-B3
+ for qemu-devel@nongnu.org; Thu, 20 Aug 2020 09:51:03 -0400
+Received: by mail-wr1-x443.google.com with SMTP id y3so2105249wrl.4
+ for <qemu-devel@nongnu.org>; Thu, 20 Aug 2020 06:50:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=vYXewd6GjmPAqPohPeYMcDLKpv4ENl+6z1KY0U8cKWI=;
+ b=q/QaA8FJtXn+2+6b3vtOoKgn15alBYAV6MJS+x649wqRaH5BRy+Eh/Nxh8tzZSTojt
+ AIXK+0V6JjdHHBzIjeqJuR+B9sXjoi6ornBWGbdGx6xf1XfQjF5WQYRD7EpxdAaDJI/S
+ mW3Otm/kgSMoTjdFDLeViVtePl0lDcRmbX5DmKVT6CTdvTAD0GowzJHitZHKk4OYfkwr
+ +SBHbWP/hpftjRtCNWhktpztKWSjsU2NfaXszo3lqotRWQMctXtVHvOR2PDzstwtWZkl
+ 4qraEYxdCdRrI8dPj4U2FBSA2RUMkVJlgeV9pismELTEs9wcRxUkqeFcVr5ceK0oMlGa
+ r2dw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=o24q7nEogcRj4IMnZ1uXXN0U56ac22AEmgTqbDO5ecQ=;
- b=Pd5TE4dDvl58jl/m9EV1agQ4piaKzQuQljgQqsmkdg/5RtGptIhJm5cskIbZgT7/tQ
- YBo4RSdCj+EmuoFDmWqsB4qsnztSV5/ZasR9avjRDxQSrj12teg8I+CzgEuckXWVWMYZ
- pziWXqfaCFqDPM9XDt2vIxL7V8FVNxuigbLobx0Sygzay98lRCHZjE1aTGEqw5xjCFR2
- T6S7yefH49Xyv40/d3wC7G7RswuZkBBIbDMcjfDeOk2oDZmvMxX5B+/f57sU5eQq8vlm
- Aia4ApGmQTW4VKw306Q2SzIzv2fHvFXqIiNp+Fuhx/8bliWN5JAeQTNrGllQj2CI2sxg
- weHQ==
-X-Gm-Message-State: AOAM532Z0hFjiJZ1YgSVYZuqWNheOL4bOS25sEvJvUAx3ssNMfUCgked
- yMtpouKe6QRp4DHEEbfoYPM=
-X-Received: by 2002:a7b:c40a:: with SMTP id k10mr3313355wmi.127.1597929097252; 
- Thu, 20 Aug 2020 06:11:37 -0700 (PDT)
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id l11sm3943430wme.11.2020.08.20.06.11.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Aug 2020 06:11:36 -0700 (PDT)
-Subject: Re: [PATCH v2 04/58] pl110: Rename pl110_version enum values
-To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
-References: <20200820001236.1284548-1-ehabkost@redhat.com>
- <20200820001236.1284548-5-ehabkost@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <cf45b32c-6acd-2bf5-be24-cebd9a0cdb8f@amsat.org>
-Date: Thu, 20 Aug 2020 15:11:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=vYXewd6GjmPAqPohPeYMcDLKpv4ENl+6z1KY0U8cKWI=;
+ b=QHSup/Ypz+sByFGiiL9OjU3DjhONRHewmKrJ/phO8BTK1JzbqNzaT97dfcIhwK/P3b
+ E+yduk4VR0C6Ch44TbfXfQtfKhLTnPPt+CJ335ulGgIx+q2BnHKciTrBB4P3YiGt0brr
+ K+mT1vTq7qKDqH7lwCNMkv/BJ2/TouGDdi33NcOpXP6vkJpXib7s6J7il8uQW3XV1VcB
+ W/7ZRrwtG/IAYzN1blTZ9VB+SyOxXptt5PbDvezU0RIy8y9RA1AawlfB3GjIE8pyffdX
+ IhU219MIqbiV9j9G3pYSoizAKOJZG6hRpvuMgD7nSrb4ZWVez6UgIrS2V9AqDczJkGtJ
+ DSTw==
+X-Gm-Message-State: AOAM530YvhH61+d4nZna2gv+YNtvPspFdtM/fs2g3Dfsy1Od6jbfaj2i
+ BS2+IQ4Jt2nZfchEOHRk40nKYw==
+X-Received: by 2002:adf:f785:: with SMTP id q5mr3316581wrp.298.1597931458546; 
+ Thu, 20 Aug 2020 06:50:58 -0700 (PDT)
+Received: from xora-monster ([2a02:8010:64d6::1d89])
+ by smtp.gmail.com with ESMTPSA id t11sm4071719wrs.66.2020.08.20.06.50.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 Aug 2020 06:50:58 -0700 (PDT)
+Date: Thu, 20 Aug 2020 14:50:56 +0100
+From: Graeme Gregory <graeme@nuviainc.com>
+To: qemu-arm@nongnu.org
+Subject: Re: [PATCH] hw/arm/sbsa-ref.c : Add a fake embedded controller
+Message-ID: <20200820135056.qgageqiaghz2iihx@xora-monster>
+References: <20200820133201.80577-1-graeme@nuviainc.com>
 MIME-Version: 1.0
-In-Reply-To: <20200820001236.1284548-5-ehabkost@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200820133201.80577-1-graeme@nuviainc.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=graeme@nuviainc.com; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BrOry8s1tTDS
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, leif@nuviainc.com, rad@semihalf.com,
+ qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +vgFMRj0d0re
 
-On 8/20/20 2:11 AM, Eduardo Habkost wrote:
-> The PL110 enum value name will conflict with the PL110 type cast
-> checker, when we replace the existing macro with an inline
-> function.  Add a VERSION_ prefix to all pl110_version enum
-> values, to avoid conflicts.
+On Thu, Aug 20, 2020 at 02:32:01PM +0100, Graeme Gregory wrote:
+> A difference between sbsa platform and the virt platform is PSCI is
+> handled by ARM-TF in the sbsa platform. This means that the PSCI code
+> there needs to communicate some of the platform power changes down
+> to the qemu code for things like shutdown/reset control.
 > 
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> ---
-> Changes v1 -> v2:
-> * Fixed typo on commit message
-> * Rename all enum values to VERSION_* (Philippe Mathieu-Daudé)
+> Space has been left to extend the EC if we find other use cases in
+> future where ARM-TF and qemu need to communicate.
 > 
+> Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
 > ---
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
-> ---
->  hw/display/pl110.c | 22 +++++++++++-----------
->  1 file changed, 11 insertions(+), 11 deletions(-)
+>  hw/arm/sbsa-ref.c | 95 +++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 95 insertions(+)
 > 
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index f030a416fd..c8743fc1d0 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -41,6 +41,7 @@
+>  #include "hw/usb.h"
+>  #include "hw/char/pl011.h"
+>  #include "net/net.h"
+> +#include "migration/vmstate.h"
+>  
+>  #define RAMLIMIT_GB 8192
+>  #define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
+> @@ -62,6 +63,7 @@ enum {
+>      SBSA_CPUPERIPHS,
+>      SBSA_GIC_DIST,
+>      SBSA_GIC_REDIST,
+> +    SBSA_SECURE_EC,
+>      SBSA_SMMU,
+>      SBSA_UART,
+>      SBSA_RTC,
+> @@ -98,6 +100,14 @@ typedef struct {
+>  #define SBSA_MACHINE(obj) \
+>      OBJECT_CHECK(SBSAMachineState, (obj), TYPE_SBSA_MACHINE)
+>  
+> +typedef struct {
+> +    SysBusDevice parent_obj;
+> +    MemoryRegion iomem;
+> +} SECUREECState;
+> +
+> +#define TYPE_SECURE_EC      "sbsa-secure-ec"
+> +#define SECURE_EC(obj) OBJECT_CHECK(SECUREECState, (obj), TYPE_SECURE_EC)
+> +
+>  static const MemMapEntry sbsa_ref_memmap[] = {
+>      /* 512M boot ROM */
+>      [SBSA_FLASH] =              {          0, 0x20000000 },
+> @@ -107,6 +117,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
+>      [SBSA_CPUPERIPHS] =         { 0x40000000, 0x00040000 },
+>      [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
+>      [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
+> +    [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
+>      [SBSA_UART] =               { 0x60000000, 0x00001000 },
+>      [SBSA_RTC] =                { 0x60010000, 0x00001000 },
+>      [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
+> @@ -585,6 +596,65 @@ static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+>      return board->fdt;
+>  }
+>  
+> +enum sbsa_secure_ec_powerstates {
+> +    SBSA_SECURE_EC_CMD_NULL,
+> +    SBSA_SECURE_EC_CMD_POWEROFF,
+> +    SBSA_SECURE_EC_CMD_REBOOT,
+> +};
+> +
+> +static uint64_t secure_ec_read(void *opaque, hwaddr offset, unsigned size)
+> +{
+> +    /* No use for this currently */
+> +    return 0;
+> +}
+> +
+> +static void secure_ec_write(void *opaque, hwaddr offset,
+> +                     uint64_t value, unsigned size)
+> +{
+> +    if (offset == 0) { /* PSCI machine power command register */
+> +        switch (value) {
+> +        case SBSA_SECURE_EC_CMD_NULL:
+> +            break;
+> +        case SBSA_SECURE_EC_CMD_POWEROFF:
+> +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+> +            break;
+> +        case SBSA_SECURE_EC_CMD_REBOOT:
+> +            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+> +            break;
+> +        default:
+> +            error_report("sbsa-ref: ERROR Unkown power command");
+> +        }
+> +    } else {
+> +        error_report("sbsa-ref: unknown EC register");
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps secure_ec_ops = {
+> +    .read = secure_ec_read,
+> +    .write = secure_ec_write,
+> +    .endianness = DEVICE_NATIVE_ENDIAN,
+> +};
+> +
+> +static void secure_ec_init(Object *obj)
+> +{
+> +    SECUREECState *s = SECURE_EC(obj);
+> +    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &secure_ec_ops, s, "secure-ec",
+> +                            0x1000);
+> +    sysbus_init_mmio(dev, &s->iomem);
+> +}
+> +
+> +static void create_secure_ec(MemoryRegion *mem)
+> +{
+> +    hwaddr base = sbsa_ref_memmap[SBSA_SECURE_EC].base;
+> +    DeviceState *dev = qdev_create(NULL, TYPE_SECURE_EC);
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+I've just discovered the API change here, I tested in an older tree, but
+Ill wait for other reviews before re-issuing.
+
+Graeme
+
+> +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
+> +
+> +    memory_region_add_subregion(mem, base,
+> +                                sysbus_mmio_get_region(s, 0));
+> +}
+> +
+>  static void sbsa_ref_init(MachineState *machine)
+>  {
+>      unsigned int smp_cpus = machine->smp.cpus;
+> @@ -708,6 +778,8 @@ static void sbsa_ref_init(MachineState *machine)
+>  
+>      create_pcie(sms);
+>  
+> +    create_secure_ec(secure_sysmem);
+> +
+>      sms->bootinfo.ram_size = machine->ram_size;
+>      sms->bootinfo.nb_cpus = smp_cpus;
+>      sms->bootinfo.board_id = -1;
+> @@ -798,8 +870,31 @@ static const TypeInfo sbsa_ref_info = {
+>      .instance_size = sizeof(SBSAMachineState),
+>  };
+>  
+> +static const VMStateDescription vmstate_secure_ec_info = {
+> +    .name = "sbsa-secure-ec",
+> +    .version_id = 0,
+> +    .minimum_version_id = 0,
+> +};
+> +
+> +static void secure_ec_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->vmsd = &vmstate_secure_ec_info;
+> +    dc->user_creatable = false;
+> +}
+> +
+> +static const TypeInfo secure_ec_info = {
+> +    .name          = TYPE_SECURE_EC,
+> +    .parent        = TYPE_SYS_BUS_DEVICE,
+> +    .instance_size = sizeof(SECUREECState),
+> +    .instance_init = secure_ec_init,
+> +    .class_init    = secure_ec_class_init,
+> +};
+> +
+>  static void sbsa_ref_machine_init(void)
+>  {
+> +    type_register_static(&secure_ec_info);
+>      type_register_static(&sbsa_ref_info);
+>  }
+>  
+> -- 
+> 2.25.1
+> 

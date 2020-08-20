@@ -1,106 +1,107 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp901257lfy;
-        Wed, 19 Aug 2020 17:25:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz58LJQVigs6ALTYxxsEmCicTRko/NtJ0eiBxHBqW2r37nKt7pPXln5IbV4HvZWHQvkqUl2
-X-Received: by 2002:a5b:78e:: with SMTP id b14mr1406042ybq.408.1597883130857;
-        Wed, 19 Aug 2020 17:25:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597883130; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp907782lfy;
+        Wed, 19 Aug 2020 17:38:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwqcoo5xzQ5U5Ie/bqAhKMfVAINxBEdP8pugISMT9MHrDN13d3kYOfln9cX6w3vLdeJfJs1
+X-Received: by 2002:a25:2e10:: with SMTP id u16mr1503241ybu.17.1597883919161;
+        Wed, 19 Aug 2020 17:38:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597883919; cv=none;
         d=google.com; s=arc-20160816;
-        b=FQN+311xWCkYQ4liEpk2yK7Mi7wMwpsGXYsS/H0YtkXZeiKkT9GPRRxN5h9p0rxMSR
-         Iv++x/9MyGhZOVfapiN32KtyrcA6v8+ZfVk1YPnamu4oKFoiQXUHs0ryNH12hIXSBq2T
-         D6uxeC3yweDpJbyWTgEtUvI3yt1HMUqOp0aq4GXhOo3ncaDuMl3Y75uZqIkzoLoH8RnJ
-         pULmEz0EtaxpfoW/0u7rMVufnTjZ6kCZZUoto1gVB+RRigd1ZyjqXP7pUadfLExnOaHE
-         vnDfO9LACP0gWX7WK15sfwCZOteEfNNS7/LEH0CHCoZEre+GLYZi0Blc8A+YQLNv0pf1
-         NB2Q==
+        b=Qzpogw98Jbbr2HEWO1TYZW9WEUr+lL1tciJ58S+kQ0kJpFqTck2JpcJQ9ZU2yWetfF
+         fQ+MYLxj6m6BWZc7nZR4h47Fa+F+B69M1M1Sryhik1pkEkS8l06xluJkc6YDU8GzG8XZ
+         7qFvTqB7RhHJqlucGdH4zrWdSxzwpBRSpgTmP1nfQkBXGMkTMZeSqJnlOjGT7wGQE0nI
+         HnDEBNdPQXeBn7iD5QZvt4PtQOzowszOqw+6/9cBpn7PV6U9icyxeSeywMH6Ip+X6LMq
+         XSrxMjr6d3uSoC6xCSaVY5/CSzmKgwiRSZYOQaZ6m+rcJYglWBx9ONBY0rU5NjLiRt5S
+         mIiA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=J9tCVoyUmIYVOFs9haO5RO9mFitn2WGNsiXn7np0OBA=;
-        b=PJCkDD6i1BQhsnUfRRTtBiknlSHB9Nhc8ihuGiWYswV9chOuIimfRdajRM0sgnbw3D
-         1k4bmP1IWtPGD8J9KRtNTXK0EKja/P3yrnfunh7y41/7S1AeO+MG8ggMKw6iMXmnTimC
-         DfOZMrDGH/qC/6JLLo6AfP7CC7lV3Jamu31/ZiGp8crdrmVkL5DbmRL/E1NFa+0VGVG3
-         9LqRHx0xehTDzqH0K7vI+mycCTruT0ZyBam6GdkIotIJj8qEI1hj1bOakJu9g+caeS2k
-         YzOosuQr69s5ByjfRyxcAxblkzDexOU6z0t0CMMqTDmKwEEYtjQoEXVhZJ9qHJAWHOlh
-         9u8w==
+        bh=ZCKCsZjjbkt497a0oIxpTQls4QmY2jUqY0Ge+366AHQ=;
+        b=nBjFnpDxdpgvp2jhUhrMPuyNBm6uXPfBKXsowLhWkfweQOxZKoLY7z+o5Z3nifXarw
+         JjrAb88NT/F0dWb6DNZJPVynF6Lyys91jnztbRSGSccpEacXFJ+T0reuvaeFdFCq2vFf
+         c2oBtgQz36QADyi0MdewWULIKKHdpwoTe+rAlvuJ+JPB1BKw/rYKkILeWD34X3WMlN6E
+         WIB0rHVEF4UE4JM1yyBmg4t9B53rD8B80K2c22VEEzizq19uo6j/QsVKMUVzexW2NeNQ
+         D93ubUm72p4qKcIZgjhHv/hKoW9SPxwZFM6VFM6LBKiO/izOw8RKyVIxobGt61kNBTUf
+         aO+Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LmFLFRWB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hNVidAQv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x2si245632ybs.364.2020.08.19.17.25.30
+        by mx.google.com with ESMTPS id x4si367920ybt.336.2020.08.19.17.38.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Aug 2020 17:25:30 -0700 (PDT)
+        Wed, 19 Aug 2020 17:38:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LmFLFRWB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hNVidAQv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60354 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36712 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8YOY-0001BZ-4y
-	for alex.bennee@linaro.org; Wed, 19 Aug 2020 20:25:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49448)
+	id 1k8YbG-00015f-Fb
+	for alex.bennee@linaro.org; Wed, 19 Aug 2020 20:38:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49782)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1k8YD8-0006J8-Md
- for qemu-devel@nongnu.org; Wed, 19 Aug 2020 20:13:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39020)
+ id 1k8YDk-0007qO-Qy
+ for qemu-devel@nongnu.org; Wed, 19 Aug 2020 20:14:20 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:42671
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1k8YD6-0002OG-PB
- for qemu-devel@nongnu.org; Wed, 19 Aug 2020 20:13:42 -0400
+ id 1k8YDi-0002Tt-AL
+ for qemu-devel@nongnu.org; Wed, 19 Aug 2020 20:14:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597882420;
+ s=mimecast20190719; t=1597882457;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=J9tCVoyUmIYVOFs9haO5RO9mFitn2WGNsiXn7np0OBA=;
- b=LmFLFRWBjCghwVDurF9FVmpa0Y1/3B9UIwtDq2h7RFCgUq/mHRoWpakLkRiLXbeIiXUCrz
- n8MfHbnTUlhctJy45MOurCS/8VdcZ7Lyin7cjggk/Ym638hJU+urdePCtRjG+9Uo4Nw/WF
- 80o/gNL9kLxsK2YhK6zC1x6F2jkwbzM=
+ bh=ZCKCsZjjbkt497a0oIxpTQls4QmY2jUqY0Ge+366AHQ=;
+ b=hNVidAQva7a8xlcMZFdTrprhi4Dq2RoiFuCKpszOkQ923CqRQqBaBWKHKSuU5lgaQfS8ZZ
+ hJynQOMTsjUCGGQFbosjxeBDLqIo/EAPghLLAY15D+GpX3uIOvbizm1/gJgz5TkCSk1NS7
+ 2PCXStxl+2wqSNR/D21H0rCMwOZa4+U=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-287-V0HoQChhMrKdSybJ-YQYqQ-1; Wed, 19 Aug 2020 20:13:38 -0400
-X-MC-Unique: V0HoQChhMrKdSybJ-YQYqQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-370-ESIW8woZOVKtiu3E8QIGmA-1; Wed, 19 Aug 2020 20:14:15 -0400
+X-MC-Unique: ESIW8woZOVKtiu3E8QIGmA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28484100670D;
- Thu, 20 Aug 2020 00:13:37 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9CEE5186A57F;
+ Thu, 20 Aug 2020 00:14:14 +0000 (UTC)
 Received: from localhost (ovpn-117-244.rdu2.redhat.com [10.10.117.244])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DE3C360BEC;
- Thu, 20 Aug 2020 00:13:36 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6326310013C4;
+ Thu, 20 Aug 2020 00:14:14 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 25/58] armsse: Rename QOM macros to avoid conflicts
-Date: Wed, 19 Aug 2020 20:12:03 -0400
-Message-Id: <20200820001236.1284548-26-ehabkost@redhat.com>
+Subject: [PATCH v2 39/58] pxa2xx: Move QOM macros to header
+Date: Wed, 19 Aug 2020 20:12:17 -0400
+Message-Id: <20200820001236.1284548-40-ehabkost@redhat.com>
 In-Reply-To: <20200820001236.1284548-1-ehabkost@redhat.com>
 References: <20200820001236.1284548-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/19 20:12:51
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/18 23:05:17
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -114,158 +115,126 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ "Daniel P. Berrange" <berrange@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t8py6I2xKSAH
+X-TUID: hQcPZz9aUx3x
 
-Rename TYPE_ARMSSE to TYPE_ARM_SSE, and ARMSSE*() type checking
-macros to ARM_SSE*().
-
-This will avoid a future conflict between an ARM_SSE() type
-checking macro and the ARMSSE typedef name.
+This will make future conversion to OBJECT_DECLARE* easier.
 
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
 Changes series v1 -> v2: new patch in series v2
 
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org
 ---
- include/hw/arm/armsse.h | 12 ++++++------
- hw/arm/armsse.c         | 24 ++++++++++++------------
- 2 files changed, 18 insertions(+), 18 deletions(-)
+ include/hw/arm/pxa.h | 13 +++++++++++++
+ hw/arm/pxa2xx.c      |  7 -------
+ hw/pcmcia/pxa2xx.c   |  4 ----
+ hw/sd/pxa2xx_mmci.c  |  3 ---
+ 4 files changed, 13 insertions(+), 14 deletions(-)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 84080c2299..529816286d 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -106,8 +106,8 @@
- #include "hw/core/split-irq.h"
- #include "hw/cpu/cluster.h"
+diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
+index 8843e5f910..f6359fe7c9 100644
+--- a/include/hw/arm/pxa.h
++++ b/include/hw/arm/pxa.h
+@@ -86,7 +86,10 @@ PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
+ void pxa2xx_lcd_vsync_notifier(PXA2xxLCDState *s, qemu_irq handler);
  
--#define TYPE_ARMSSE "arm-sse"
--#define ARMSSE(obj) OBJECT_CHECK(ARMSSE, (obj), TYPE_ARMSSE)
-+#define TYPE_ARM_SSE "arm-sse"
-+#define ARM_SSE(obj) OBJECT_CHECK(ARMSSE, (obj), TYPE_ARM_SSE)
+ /* pxa2xx_mmci.c */
++#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
+ typedef struct PXA2xxMMCIState PXA2xxMMCIState;
++#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
++
+ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+                 hwaddr base,
+                 BlockBackend *blk, qemu_irq irq,
+@@ -95,7 +98,11 @@ void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
+                 qemu_irq coverswitch);
  
- /*
-  * These type names are for specific IoTKit subsystems; other than
-@@ -224,9 +224,9 @@ typedef struct ARMSSEClass {
-     const ARMSSEInfo *info;
- } ARMSSEClass;
+ /* pxa2xx_pcmcia.c */
++#define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
+ typedef struct PXA2xxPCMCIAState PXA2xxPCMCIAState;
++#define PXA2XX_PCMCIA(obj) \
++    OBJECT_CHECK(PXA2xxPCMCIAState, obj, TYPE_PXA2XX_PCMCIA)
++
+ PXA2xxPCMCIAState *pxa2xx_pcmcia_init(MemoryRegion *sysmem,
+                                       hwaddr base);
+ int pxa2xx_pcmcia_attach(void *opaque, PCMCIACardState *card);
+@@ -120,8 +127,14 @@ PXA2xxI2CState *pxa2xx_i2c_init(hwaddr base,
+                 qemu_irq irq, uint32_t page_size);
+ I2CBus *pxa2xx_i2c_bus(PXA2xxI2CState *s);
  
--#define ARMSSE_CLASS(klass) \
--    OBJECT_CLASS_CHECK(ARMSSEClass, (klass), TYPE_ARMSSE)
--#define ARMSSE_GET_CLASS(obj) \
--    OBJECT_GET_CLASS(ARMSSEClass, (obj), TYPE_ARMSSE)
-+#define ARM_SSE_CLASS(klass) \
-+    OBJECT_CLASS_CHECK(ARMSSEClass, (klass), TYPE_ARM_SSE)
-+#define ARM_SSE_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(ARMSSEClass, (obj), TYPE_ARM_SSE)
++#define TYPE_PXA2XX_I2C "pxa2xx_i2c"
+ typedef struct PXA2xxI2SState PXA2xxI2SState;
++#define PXA2XX_I2C(obj) \
++    OBJECT_CHECK(PXA2xxI2CState, (obj), TYPE_PXA2XX_I2C)
++
++#define TYPE_PXA2XX_FIR "pxa2xx-fir"
+ typedef struct PXA2xxFIrState PXA2xxFIrState;
++#define PXA2XX_FIR(obj) OBJECT_CHECK(PXA2xxFIrState, (obj), TYPE_PXA2XX_FIR)
  
- #endif
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index dcbff9bd8f..6264eab16b 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -167,7 +167,7 @@ static void irq_status_forwarder(void *opaque, int n, int level)
+ typedef struct {
+     ARMCPU *cpu;
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index 6203c4cfe0..037d415498 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -1250,10 +1250,6 @@ typedef struct PXA2xxI2CSlaveState {
+     PXA2xxI2CState *host;
+ } PXA2xxI2CSlaveState;
  
- static void nsccfg_handler(void *opaque, int n, int level)
- {
--    ARMSSE *s = ARMSSE(opaque);
-+    ARMSSE *s = ARM_SSE(opaque);
- 
-     s->nsccfg = level;
- }
-@@ -233,8 +233,8 @@ static void armsse_forward_sec_resp_cfg(ARMSSE *s)
- 
- static void armsse_init(Object *obj)
- {
--    ARMSSE *s = ARMSSE(obj);
--    ARMSSEClass *asc = ARMSSE_GET_CLASS(obj);
-+    ARMSSE *s = ARM_SSE(obj);
-+    ARMSSEClass *asc = ARM_SSE_GET_CLASS(obj);
-     const ARMSSEInfo *info = asc->info;
-     int i;
- 
-@@ -391,7 +391,7 @@ static void armsse_exp_irq(void *opaque, int n, int level)
- 
- static void armsse_mpcexp_status(void *opaque, int n, int level)
- {
--    ARMSSE *s = ARMSSE(opaque);
-+    ARMSSE *s = ARM_SSE(opaque);
-     qemu_set_irq(s->mpcexp_status_in[n], level);
+-#define TYPE_PXA2XX_I2C "pxa2xx_i2c"
+-#define PXA2XX_I2C(obj) \
+-    OBJECT_CHECK(PXA2xxI2CState, (obj), TYPE_PXA2XX_I2C)
+-
+ struct PXA2xxI2CState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -1786,9 +1782,6 @@ static PXA2xxI2SState *pxa2xx_i2s_init(MemoryRegion *sysmem,
  }
  
-@@ -401,7 +401,7 @@ static qemu_irq armsse_get_common_irq_in(ARMSSE *s, int irqno)
-      * Return a qemu_irq which can be used to signal IRQ n to
-      * all CPUs in the SSE.
-      */
--    ARMSSEClass *asc = ARMSSE_GET_CLASS(s);
-+    ARMSSEClass *asc = ARM_SSE_GET_CLASS(s);
-     const ARMSSEInfo *info = asc->info;
+ /* PXA Fast Infra-red Communications Port */
+-#define TYPE_PXA2XX_FIR "pxa2xx-fir"
+-#define PXA2XX_FIR(obj) OBJECT_CHECK(PXA2xxFIrState, (obj), TYPE_PXA2XX_FIR)
+-
+ struct PXA2xxFIrState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+diff --git a/hw/pcmcia/pxa2xx.c b/hw/pcmcia/pxa2xx.c
+index 5f4bf22a90..fcca7e571b 100644
+--- a/hw/pcmcia/pxa2xx.c
++++ b/hw/pcmcia/pxa2xx.c
+@@ -18,10 +18,6 @@
+ #include "hw/pcmcia.h"
+ #include "hw/arm/pxa.h"
  
-     assert(irq_is_common[irqno]);
-@@ -428,8 +428,8 @@ static void map_ppu(ARMSSE *s, int ppuidx, const char *name, hwaddr addr)
+-#define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
+-#define PXA2XX_PCMCIA(obj) \
+-    OBJECT_CHECK(PXA2xxPCMCIAState, obj, TYPE_PXA2XX_PCMCIA)
+-
+ struct PXA2xxPCMCIAState {
+     SysBusDevice parent_obj;
  
- static void armsse_realize(DeviceState *dev, Error **errp)
- {
--    ARMSSE *s = ARMSSE(dev);
--    ARMSSEClass *asc = ARMSSE_GET_CLASS(dev);
-+    ARMSSE *s = ARM_SSE(dev);
-+    ARMSSEClass *asc = ARM_SSE_GET_CLASS(dev);
-     const ARMSSEInfo *info = asc->info;
-     int i;
-     MemoryRegion *mr;
-@@ -1114,7 +1114,7 @@ static void armsse_idau_check(IDAUInterface *ii, uint32_t address,
-      * of the address bits. The NSC attribute is guest-adjustable via the
-      * NSCCFG register in the security controller.
-      */
--    ARMSSE *s = ARMSSE(ii);
-+    ARMSSE *s = ARM_SSE(ii);
-     int region = extract32(address, 28, 4);
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index 68bed24480..c400197815 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -22,9 +22,6 @@
+ #include "qemu/module.h"
+ #include "trace.h"
  
-     *ns = !(region & 1);
-@@ -1136,7 +1136,7 @@ static const VMStateDescription armsse_vmstate = {
+-#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
+-#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
+-
+ #define TYPE_PXA2XX_MMCI_BUS "pxa2xx-mmci-bus"
+ #define PXA2XX_MMCI_BUS(obj) OBJECT_CHECK(SDBus, (obj), TYPE_PXA2XX_MMCI_BUS)
  
- static void armsse_reset(DeviceState *dev)
- {
--    ARMSSE *s = ARMSSE(dev);
-+    ARMSSE *s = ARM_SSE(dev);
- 
-     s->nsccfg = 0;
- }
-@@ -1145,7 +1145,7 @@ static void armsse_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     IDAUInterfaceClass *iic = IDAU_INTERFACE_CLASS(klass);
--    ARMSSEClass *asc = ARMSSE_CLASS(klass);
-+    ARMSSEClass *asc = ARM_SSE_CLASS(klass);
-     const ARMSSEInfo *info = data;
- 
-     dc->realize = armsse_realize;
-@@ -1157,7 +1157,7 @@ static void armsse_class_init(ObjectClass *klass, void *data)
- }
- 
- static const TypeInfo armsse_info = {
--    .name = TYPE_ARMSSE,
-+    .name = TYPE_ARM_SSE,
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(ARMSSE),
-     .instance_init = armsse_init,
-@@ -1177,7 +1177,7 @@ static void armsse_register_types(void)
-     for (i = 0; i < ARRAY_SIZE(armsse_variants); i++) {
-         TypeInfo ti = {
-             .name = armsse_variants[i].name,
--            .parent = TYPE_ARMSSE,
-+            .parent = TYPE_ARM_SSE,
-             .class_init = armsse_class_init,
-             .class_data = (void *)&armsse_variants[i],
-         };
 -- 
 2.26.2
 

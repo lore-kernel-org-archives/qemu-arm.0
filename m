@@ -1,126 +1,104 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1657866lfy;
-        Thu, 20 Aug 2020 13:31:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyJkVSnuY7OrsjuE+rVxfgRTtArvAmKvXTgSaBdj/PdrqEDXqQIy+/LoJKjYMbJQR6dKCyI
-X-Received: by 2002:a25:3855:: with SMTP id f82mr7401179yba.301.1597955468298;
-        Thu, 20 Aug 2020 13:31:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597955468; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1708830lfy;
+        Thu, 20 Aug 2020 14:55:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzNK5WaQNcw/JIQZ+i35cUy5GDHR56oYKMXgZb+uIggwfOEuYJ7W4mwH+2iMK+5CugzqH7T
+X-Received: by 2002:a25:e049:: with SMTP id x70mr443090ybg.428.1597960559314;
+        Thu, 20 Aug 2020 14:55:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597960559; cv=none;
         d=google.com; s=arc-20160816;
-        b=l5oYx1RnQyulJsmrLUw05jOd+5BBzxBs0RkWeDdp2O+jbRGIXehGE4f1VT/5UNUeHf
-         z0je8RYOxdqgndatqZWrgZaIJNBOXbNBtu6su6owI8Vmv/a72b/d4NKvtS1eUVoYFkuK
-         zHZllOsgY9BdZDKrAkrSSCvtvmTxHah+6JSZQp6gxxvdxviKBtdwsPr2tMHgITfGu98/
-         daE0NoWCp4Rd89Iqdl0q/6Ux/pI+C8ulz1cDiZP1QlkYYkj3M38ZpeigV/kt86dTXeO+
-         LUHmDrDItoS460rHK00w5gxOZw0AL7iN9D4732cLKsSqlQQBZezWnkRX3bNj5/7NshEu
-         d3AQ==
+        b=kjTMpcj0lbhCo1BxhP2MtIb2tl44V/9A7wiqwFQVY7TB1sufFOFb8KM8X599Zv3qMo
+         236dYZnD6Q9zOHZGxGRjMiPFxIyJ1x7S5y3hungVcFm15tGAEzB6pjhlqZNHt8mtyitz
+         KSfbELMRD1m3257Xd+urtZhmgCBjvMeO7+43iv7hmmXC8jYXfPJ0luW9GvMwS8TUwysD
+         y+8aWAqhriiVaHIY9l3v9muX3jc3ND4VcFlX/36jwlr3BE482HkZ/oozjWu34b330HaJ
+         5rney6tGf+cVdqnLsu4LVWtzEcDRyjVhR5u9pTUNXhbGMBdv6XIAA/08FkB5eJqatbBN
+         IRgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=avKOzD1xqNur7yDwT+dTnw38wAGDWbTeBDODCRqKZIA=;
-        b=dI8MGu4mYqTGqRLOYm/5rTgMX8Lfm3iXOjWAOFi215+aaxX/hheIYn9HENZJTIRpmE
-         X/bm4pbVD05eO0mhDw3zVkEA8dAu9dZBz7hzkZoxq4RxQ2bF+V1lJMtlLNTQJtKvlvhr
-         Q88VXFWo9iBSyhOamBY2HkL9oOgU/PsyVKgv21R0jdCgyoDHBZ20Vp9NQ6Dai+4jvtu3
-         TofkQJ7UrLGTGqMUK35kTRJKdueV9jhSTVBWtFjpSPuJ1iRWiwhPILzmDa0t3KiC+X4P
-         O6aDDKUSxWb8pCYk1DDIWuEU1o7pPENAkJ04qI1MDDSNa4msKfJeURU0UGHgBhW2M/TY
-         /rkg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :mime-version:message-id:subject:to:from:date:dkim-signature;
+        bh=Mua+x27GNP9PoMRmh9desET01GYPNoFzw4YIF8qk/S4=;
+        b=ntaE4vJMyQLfAPCxrLEailZEBO/wHcB+sCwA/AM9FbyT64sppdmCSBVKoIfaGV3tpn
+         iLS+xx58BlGymy2mNlqkQ2qjOqyqnt59eSv1FiQU1XqtFosRHx+4s7aBaRTogW3C4w9Y
+         WDIIycgzDloEGIbc9A1otR3+pcr6K71SuvFaL3MZUWnAyEUgUjkmm/WWaqc6s6Q2zFPw
+         c66AKv7OmBKSdbYjDKjiiW+3nsjfJe2Xx+MAlwX8eZN5cqRJlbJj4GgbjETRYOZiqOPW
+         wKZ4HdtdhinImn5nVTcZZjK3vv+AjxOCl1Axwd4Bon0la9ND8QkcoAY5w8Zro5wzy9zA
+         CWxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=r9Nd+f5o;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EYHnQcA8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k20si2964695ybf.78.2020.08.20.13.31.08
+        by mx.google.com with ESMTPS id l6si2837217ybm.43.2020.08.20.14.55.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Aug 2020 13:31:08 -0700 (PDT)
+        Thu, 20 Aug 2020 14:55:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=r9Nd+f5o;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EYHnQcA8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:56962 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58616 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8rDH-00046k-LX
-	for alex.bennee@linaro.org; Thu, 20 Aug 2020 16:31:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33128)
+	id 1k8sXO-0007jL-M9
+	for alex.bennee@linaro.org; Thu, 20 Aug 2020 17:55:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50366)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1k8rD5-00044B-Ft
- for qemu-arm@nongnu.org; Thu, 20 Aug 2020 16:30:55 -0400
-Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41]:32930)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1k8rCv-0000Ji-UT
- for qemu-arm@nongnu.org; Thu, 20 Aug 2020 16:30:51 -0400
-Received: by mail-vs1-xe41.google.com with SMTP id o184so1796232vsc.0
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2020 13:30:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=avKOzD1xqNur7yDwT+dTnw38wAGDWbTeBDODCRqKZIA=;
- b=r9Nd+f5oDZYrHK6boncyLUpYqSYvESOEPJPQ++GN1x1FZNQzYrUmXBVVFegcRoVmio
- cFhgzKNA4ZaYI7Y9ls4aYdg8KpD+Jzg9VTjVJpwhBQ25Ohlo+ko3SgRzt+oaZnsbCTHq
- Lhiix5ZVYeB909NmRB7vOyr7+QLFZYh0uPSvpo3INejwxuoUYgTqAgV/YqN2bVl14L4L
- vwrh5s7gCR6V+eBozUiKIpfA6ilTzBsUNW8gl/VB1q4mD3iXc6Qq62NxDVc8QUJFnzjV
- PNTnbwsWwHMCYumZa55lqkoGaf72BKALjh0icO9GthFd1faUz1cS5ap965ouoXh9IvGC
- rYBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=avKOzD1xqNur7yDwT+dTnw38wAGDWbTeBDODCRqKZIA=;
- b=neIQu63zPnlyBcy4wuqIMybu3EZrnrCFPG/ctphpF9FFqqZDJd/kJssHU9OOu+v2Hg
- kZf2D5HQ7I0/YedBlsRdmVk326yIgiHLUN2U+623nVPRM+N8AwdvxM8I04xBOLTx8EKW
- gcR2ny9XV0yB4SLYFbsPnX7X58S5oGxmSXdaMj7GoozCC7TDeUuIvU7Su2LLjkcKhHZ1
- IkCmi8Ala9hOl6rH4+ojart7u7dtfKQHkRestiyDe8n4/1sFZXnlt0Yxbxqf5EgP6kfJ
- wK1yQP0Q0xXFsX0eqS6M/D8kiTwbE87wiXoOna+iTwY8AiStQ13iQO4LDUD7chrnJIZ5
- xO7Q==
-X-Gm-Message-State: AOAM53385YOh4sKRC1oI9DXYZprmgBsK6pZtxclr0KbS7ESedXUsGLjd
- +q5HAE8Z2tC4NsHitY5P/zcPBXmWaGGrI+dymy6nsg==
-X-Received: by 2002:a67:cd10:: with SMTP id u16mr436361vsl.152.1597955443489; 
- Thu, 20 Aug 2020 13:30:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1k8sXG-0007iX-Ik
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2020 17:55:50 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23702
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1k8sXD-0001Hg-VZ
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2020 17:55:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1597960546;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type;
+ bh=Mua+x27GNP9PoMRmh9desET01GYPNoFzw4YIF8qk/S4=;
+ b=EYHnQcA8Nu1A4WNhvWAdaOph8Vrd5SoSKKFJUD8vXh2VIe8OHmAuuz8W8Z2sJimtmorFFE
+ s7ZJQEcI8KUEysrfeLmzIaadwGMFb0C0QCk6zrkQ90N/FFdBhjBIoNC2qAy0tvM09snBgm
+ 3ORwDA7DA11tNOct6JB3Q3Zb3ZtyuDg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-247-2pXW9Ak5Nv2rUFhHShv1Ig-1; Thu, 20 Aug 2020 17:55:45 -0400
+X-MC-Unique: 2pXW9Ak5Nv2rUFhHShv1Ig-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 95DEC100CFC0;
+ Thu, 20 Aug 2020 21:55:41 +0000 (UTC)
+Received: from localhost (ovpn-117-244.rdu2.redhat.com [10.10.117.244])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6E30371780;
+ Thu, 20 Aug 2020 21:55:30 +0000 (UTC)
+Date: Thu, 20 Aug 2020 17:55:29 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: "Daniel P. Berrange" <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Suspicious QOM types without instance/class size
+Message-ID: <20200820215529.GH642093@habkost.net>
 MIME-Version: 1.0
-References: <20200811004607.2133149-1-hskinnemoen@google.com>
- <20200811004607.2133149-14-hskinnemoen@google.com>
- <64f8cd56-306e-4961-488b-36c666894a54@amsat.org>
- <CAFQmdRbvSKYJ00tE_79Eh+gW_ge8kEco=1gqFtvMcoJGraozdw@mail.gmail.com>
- <CAFQmdRZCk5Rqb1C2TRCEUMaKmF608g2_Or8mLCTSG03nCQ1Ygg@mail.gmail.com>
- <28a30c64-7cc5-4b4f-2be2-b3d3af511cb1@amsat.org>
- <CAFQmdRYFLUdbs5mj3zHzNN1y+bvQXCrtGhY_iOLVfnydGxM0Jw@mail.gmail.com>
- <6a23375f-64ec-cfdd-10cf-272eef719dd6@amsat.org>
-In-Reply-To: <6a23375f-64ec-cfdd-10cf-272eef719dd6@amsat.org>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Thu, 20 Aug 2020 13:30:31 -0700
-Message-ID: <CAFQmdRY9GSqjW+wcbRzsC6dEB9KMibnxWAp+F6jpmf2_9iBEFw@mail.gmail.com>
-Subject: Re: [PATCH v7 13/13] tests/acceptance: console boot tests for
- quanta-gsj
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>, Cleber Rosa <crosa@redhat.com>, 
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Eric Blake <eblake@redhat.com>, 
- Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>, 
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, 
- "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e41;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe41.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -185
-X-Spam_score: -18.6
-X-Spam_bar: ------------------
-X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/20 17:41:18
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -133,161 +111,48 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Cameron Esfahani <dirty@apple.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Richard Henderson <rth@twiddle.net>, Cornelia Huck <cohuck@redhat.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-ppc@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8TA5WmEKUgie
+X-TUID: J2RjjEGivzrh
 
-On Thu, Aug 20, 2020 at 10:46 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
-rg> wrote:
->
-> On 8/20/20 6:24 PM, Havard Skinnemoen wrote:
-> > On Wed, Aug 19, 2020 at 10:29 PM Philippe Mathieu-Daud=C3=A9 <f4bug@ams=
-at.org> wrote:
-> >>
-> >> +Eric / Richard for compiler optimizations.
-> >>
-> >> On 8/20/20 3:53 AM, Havard Skinnemoen wrote:
-> >>> On Tue, Aug 11, 2020 at 8:26 PM Havard Skinnemoen
-> >>> <hskinnemoen@google.com> wrote:
-> >>>>
-> >>>> On Tue, Aug 11, 2020 at 1:48 AM Philippe Mathieu-Daud=C3=A9 <f4bug@a=
-msat.org> wrote:
-> >>>>> INTERRUPTED: Test interrupted by SIGTERM
-> >>>>> Runner error occurred: Timeout reached
-> >>>>> (240.45 s)
-> >>>>>
-> >>>>> Is that expected?
-> >>>>
-> >>>> I'm not sure why it only happens when running direct kernel boot wit=
-h
-> >>>> unoptimized qemu, but it seems a little happier if I enable a few mo=
-re
-> >>>> peripherals that I have queued up (sd, ehci, ohci and rng), though n=
-ot
-> >>>> enough.
-> >>>>
-> >>>> It still stalls for an awfully long time on "console: Run /init as
-> >>>> init process" though. I'm not sure what it's doing there. With -O2 i=
-t
-> >>>> only takes a couple of seconds to move on.
-> >>>
-> >>> So it turns out that the kernel gets _really_ sluggish when skipping
-> >>> the clock initialization normally done by the boot loader.
-> >>>
-> >>> I changed the reset value of CLKSEL like this:
-> >>>
-> >>> diff --git a/hw/misc/npcm7xx_clk.c b/hw/misc/npcm7xx_clk.c
-> >>> index 21ab4200d1..5e9849410f 100644
-> >>> --- a/hw/misc/npcm7xx_clk.c
-> >>> +++ b/hw/misc/npcm7xx_clk.c
-> >>> @@ -67,7 +67,7 @@ enum NPCM7xxCLKRegisters {
-> >>>   */
-> >>>  static const uint32_t cold_reset_values[NPCM7XX_CLK_NR_REGS] =3D {
-> >>>      [NPCM7XX_CLK_CLKEN1]        =3D 0xffffffff,
-> >>> -    [NPCM7XX_CLK_CLKSEL]        =3D 0x004aaaaa,
-> >>> +    [NPCM7XX_CLK_CLKSEL]        =3D 0x004aaba9,
-> >>>      [NPCM7XX_CLK_CLKDIV1]       =3D 0x5413f855,
-> >>>      [NPCM7XX_CLK_PLLCON0]       =3D 0x00222101 | PLLCON_LOKI,
-> >>>      [NPCM7XX_CLK_PLLCON1]       =3D 0x00202101 | PLLCON_LOKI,
-> >>>
-> >>> which switches the CPU core and UART to run from PLL2 instead of
-> >>> CLKREF (25 MHz).
-> >>>
-> >>> With this change, the test passes without optimization:
-> >>>
-> >>>  (02/19) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test=
-_arm_quanta_gsj_initrd:
-> >>> PASS (39.62 s)
-> >>>
-> >>> It doesn't look like this change hurts booting from the bootrom (IIUC
-> >>> the nuvoton bootblock overwrites CLKSEL anyway), but it's not super
-> >>> clean.
-> >>>
-> >>> Perhaps I should make it conditional on kernel_filename being set? Or
-> >>> would it be better to provide a write_board_setup hook for this?
-> >>
-> >> QEMU prefers to avoid ifdef'ry at all cost. However I find this
-> >> approach acceptable (anyway up to the maintainer):
-> >>
-> >> +static void npcm7xx_clk_cold_reset_fixup(NPCM7xxCLKState *s)
-> >> +{
-> >> +#ifndef __OPTIMIZE__
-> >> +    /*
-> >> +     * When built without optimization, ...
-> >> +     * so run CPU core and UART from PLL2 instead of CLKREF.
-> >> +     */
-> >> +    s->regs[NPCM7XX_CLK_CLKSEL] |=3D 0x103,
-> >> +#endif
-> >> +}
-> >
-> > I think this is actually a problem regardless of optimization level.
-> > Turning optimization off amplifies the problem, but the problem is
-> > still there with optimization on.
->
-> OK, this reminds me few more details about the problem I had with the
-> raspi3 when adding the ClockPowerResetManager block.
-> Found the branch. A bit bitter/sad it was more than 1 year ago.
->
-> So if ARM_FEATURE_GENERIC_TIMER is available, Linux polls the CNTFRQ_EL0
-> register. At that time this register were using a fixed frequency:
->
-> #define ARM_CPU_FREQ 1000000000 /* FIXME: 1 GHz, should be configurable *=
-/
->
-> Xilinx' fork does it this way:
-> https://github.com/Xilinx/qemu/commit/9e939b54e2d
->
-> Now I see Andrew Jeffery fixed that in 96eec6b2b38
-> ("target/arm: Prepare generic timer for per-platform CNTFRQ")
-> adding a 'cntfrq' property, which he then sets in the Aspeed
-> machine in commit 058d095532d ("ast2600: Configure CNTFRQ at 1125MHz").
->
-> Maybe your SoC is simply missing this property?
+While trying to convert TypeInfo declarations to the new
+OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
+where instance_size or class_size is not set, despite having type
+checker macros that use a specific type.
 
-Hmm, it doesn't look like Cortex-A9 has this property...
+The ones with "WARNING" are abstract types (maybe not serious if
+subclasses set the appropriate sizes).  The ones with "ERROR"
+don't seem to be abstract types.
 
-Unexpected error in object_property_find() at
-/usr/local/google/home/hskinnemoen/qemu/upstream/qom/object.c:1254:
-qemu-system-arm: Property '.cntfrq' not found
+WARNING: hw/arm/armsse.c:1159:1: class_size should be set to sizeof(ARMSSEClass)?
+WARNING: hw/audio/hda-codec.c:900:1: instance_size should be set to sizeof(HDAAudioState)?
+ERROR: hw/core/register.c:328:1: instance_size should be set to sizeof(RegisterInfo)?
+WARNING: hw/input/adb.c:310:1: class_size should be set to sizeof(ADBDeviceClass)?
+WARNING: hw/isa/isa-superio.c:181:1: instance_size should be set to sizeof(ISASuperIODevice)?
+WARNING: hw/ppc/pnv_lpc.c:771:1: instance_size should be set to sizeof(PnvLpcController)?
+ERROR: hw/ppc/spapr_drc.c:771:1: instance_size should be set to sizeof(SpaprDrc)?
+WARNING: hw/rtc/m48t59-isa.c:156:1: class_size should be set to sizeof(M48txxISADeviceClass)?
+WARNING: hw/rtc/m48t59.c:691:1: class_size should be set to sizeof(M48txxSysBusDeviceClass)?
+ERROR: hw/s390x/virtio-ccw.c:1237:1: class_size should be set to sizeof(VirtioCcwBusClass)?
+WARNING: hw/ssi/ssi.c:88:1: instance_size should be set to sizeof(SSISlave)?
+ERROR: hw/virtio/virtio-pci.c:2101:1: class_size should be set to sizeof(VirtioPCIBusClass)?
+WARNING: scsi/pr-manager.c:76:1: instance_size should be set to sizeof(PRManager)?
+ERROR: target/i386/hvf/hvf.c:908:1: instance_size should be set to sizeof(HVFState)?
 
-However, I did notice there are a lot of constraints on input
-frequencies to the CPU and various peripherals, and many of these are
-not met by the power-on reset values.
+-- 
+Eduardo
 
-For example, the UART needs a 24 MHz input clock, but there's no way
-to generate this from the default 25 MHz reference clock. However,
-PLL2 is set up to run at 960 MHz by default (as soon as it's locked),
-with a fixed /2 divider. The UART uses a /20 divider by default, so it
-gets a 25 MHz / 20 =3D 1.25 MHz clock with power-on defaults. However,
-switching the source to PLL2 results in 960 MHz / 2 / 20 =3D 24 MHz.
-
-Similarly, the CPU is supposed to run at 800 MHz, but it runs at 25
-MHz with power-on defaults. PLL1 runs at 800 MHz by default, with a
-fixed /2 divider. The boot loader doubles the feedback divider so it
-turns into 1600 MHz / 2 =3D 800 MHz.
-
-Turns out I was wrong above, the patch snippet routes PLL1, not PLL2,
-to the CPU. But it will only result in half the recommended speed, so
-a patch to PLLCON1 is needed as well.
-
-It seems like the cleanest solution would be to add a
-write_board_setup hook to fix up these registers so clocks are within
-normal ranges when bypassing the boot loader. In particular:
-
-  - Switch UART to PLL2 for a 24 MHz input clock.
-  - Set up PLL1 to run at 1600 MHz.
-  - Switch the CPU core to PLL1 / 2 for a 800 MHz input clock.
-
-Does that make sense? It should be just three simple register writes,
-which is doable with hand-edited machine code.
-
-I'll add this as a separate patch (right before the acceptance test)
-so it's clear what's happening.
-
-Unfortunately, I haven't been able to make the flash boot test pass
-without optimization. U-boot seems to have a tiny buffer for the
-command line, so I can only disable two or three systemd services
-before it gets truncated. I might try to create a reduced openbmc
-image instead.
-
-Havard

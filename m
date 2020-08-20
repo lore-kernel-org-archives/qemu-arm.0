@@ -1,305 +1,288 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1379685lfy;
-        Wed, 12 Aug 2020 05:19:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyq0ntH7v5XkgjD6Ku2bkPOnJ7g2gjBD8hTmq0/rN2SiQl+ks5QN1gFC6vuM3Rq7Nexahej
-X-Received: by 2002:a17:906:7f0b:: with SMTP id d11mr32924580ejr.116.1597234792427;
-        Wed, 12 Aug 2020 05:19:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597234792; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1440989lfy;
+        Thu, 20 Aug 2020 08:16:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPGeFyv2y9EbjCqkGTd5VgAjXAgjqY8DmvX0zqHd34vkpM8lH5IffvEDHLPCLxNNOUyQZP
+X-Received: by 2002:a25:db03:: with SMTP id g3mr5367032ybf.373.1597936611030;
+        Thu, 20 Aug 2020 08:16:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597936611; cv=none;
         d=google.com; s=arc-20160816;
-        b=EDAT5zvVCUeqLmP4/8dQkff2qB7nQQN8HXqtgKNKrgcVbt+YDjJRqmXv/EG2iMGcln
-         SnxUznHwOo9282cMv9X22463PiKKcNTCBGB3RRMyRJdl4nbuKaP6eWU6QCA9RJ7MEdTu
-         jlGCxe2OgcnVvrLVnJ2XZdjeKz3pCSswUxDr+OYQPYDoWC1rIMabzn1vnm85eSkemSMJ
-         rWxKUxGvXzeGz8Mo6064Hfu88HDZQVJY5DSV4pUsm16VNLClG7sCBsH0xXjzhuP6wRTF
-         Gtwmvc0Qcyoezr4njO1kvDQgzjEby8uiG63gIuIXBXAxJN8OvJ5alYkQBZlLZAa8lq6f
-         K2yQ==
+        b=IDnDzLTHGmq3BslErSpNLn6DcFZ9sIxShtp6LFzho7JE0SMcxJ6/9/ZZxhnnWgqFsw
+         0jw5KjKOHT+zBs/SGd8CnqERa1f730zCQxolzvd25fu/rkSvGEVR1p31s5zNAb7rarNy
+         dBdRPYdmnxARekm5oXBvrfnZfIfPVI9mJU5bNtpF1RK49LDcBQzZYuNQH3386/EtbhKO
+         FvbmD0wonOTy9e4PbQ69ncytmkfDx7JLekpJY6AxQJum19bYSpw46X3E2GIgZABFebnb
+         IeMDcqqGT9zfYsbJ3poy/ZV2FCuZx8MwAU7bW/AICYoEDT5iU7xLSZR9vq9JVjiAjdMQ
+         LwPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
-         :dkim-signature;
-        bh=989288FbIlvacuy6N/3Yg9uqNHxm/HXXkikvRLzl2jc=;
-        b=AqppmaQxqoMZtCWxZb5yhNniP1+gpgMLouFaSr2SiC+xLXrfZm00KLZkkh3G3h6UL8
-         Eqny2KEaS5T5e8U+g664CkgHbXoCQnDEY7FHsX3tZP/J/7v2Ukay1RJi9GddcvmbkmC/
-         J/MrecvORUjIwvW2ZPdcMjAmsF8JLwD8VVVn970e4i/UV7BqT6q1AKMgXH33Y0sLKA6J
-         lD6qMZ/f56hxev7K4gQpw6WuFGtjbY0Th3DEDSAX652cd6zTTbKRGMGGkNr2hdAWJ93D
-         ZLLHAbi+UU/2RaOftObk7pBBOdzQwANqV7+96hCzyHBtYRZ/nS8+1gB1J7IjQurZeQ8g
-         gJnw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=XB8p7O0jl/F3z0IsjW/SDkKKV1PNjeynh1m5Jyrj5cg=;
+        b=psOaumtTwUKAB20xsSZHDFJsnEPtrLCuoYyNjbfkl027mUER4PAXMkNYibgUk/oYJF
+         XQm/VH/iheTfffOAOjJy7dnb7hdeyoYjcy7oroIG7YVYq0ebwvQedORjcSvNgULfPhoI
+         S0Qvd9mEVftPlgoDpCHH147fLap+c87uDz2IQSAJVHaOzuPbQt1Kp3jA3H/CGVCZOhFd
+         Wv24uhCoJT71Jwgov77lLrSSNmbKZPFwHc545PYGxY/MdPUPTgBAya7rBrJqAR0vqQxl
+         UYJMIlhazW1PXXAutcbFboIu8jjwyobABKXf1ln6xu0gyg3zluOx4yG2XzW9yvZromAI
+         UEYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MO4AQinc;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
-        by mx.google.com with ESMTPS id f20si967196ejx.474.2020.08.12.05.19.52
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="Vl/1FMvN";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id d186si2394084ybd.129.2020.08.20.08.16.50
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 12 Aug 2020 05:19:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 20 Aug 2020 08:16:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MO4AQinc;
-       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1597234791;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=989288FbIlvacuy6N/3Yg9uqNHxm/HXXkikvRLzl2jc=;
-	b=MO4AQincVCeIA0JdrudHbEwYkUlTv25EIPC02mwyY7o7ykep4xBs0keSiSGqZENbyAoAoV
-	Po1cjl1HJBK8RgG6I2qdw411r35SeVJ+0njAZhUY+AwTQLyAuzSCBTdWRbznOdPbIR3a/y
-	g0nNL/nLLDT5BexFuNH2/KfG2tjmRno=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-63-UGPqovNlPmS4fHADMqtpjw-1; Wed, 12 Aug 2020 08:19:48 -0400
-X-MC-Unique: UGPqovNlPmS4fHADMqtpjw-1
-Received: by mail-wm1-f69.google.com with SMTP id h205so836469wmf.0
-        for <alex.bennee@linaro.org>; Wed, 12 Aug 2020 05:19:48 -0700 (PDT)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="Vl/1FMvN";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33118 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k8mJ8-0005d4-A7
+	for alex.bennee@linaro.org; Thu, 20 Aug 2020 11:16:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37502)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1k8kfu-0001RN-67
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2020 09:32:14 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:53961)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1k8kfn-0002EJ-WE
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2020 09:32:13 -0400
+Received: by mail-wm1-x343.google.com with SMTP id u18so1610994wmc.3
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2020 06:32:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XB8p7O0jl/F3z0IsjW/SDkKKV1PNjeynh1m5Jyrj5cg=;
+ b=Vl/1FMvNiLpSqZvF6qlGe3poPI2innOs7lTJQ3o7ZHSNOynB55YOWR8xqddcCWMyaP
+ lXcjwfVl0xGmLyvegg80J2oyaRlqGulPmOpt4jxSmlinPazycDI4j2wWCc8UJ3ar/bFp
+ fipaWAXuM42jGe2BCl/kgzl7Moo7dhmFHQjfVq31fX17i/b6VO6/mQLcKZYaWNavb9+5
+ SYtZYMi9DHLXoj4n/OcRDNMk4xVVY/d1MSR3o363rPFYJvT5CDf25GmUGj3C18N5IMue
+ h4vgnERbOIzm9JrS8B/1o3U4rfmDGeDU5GVYMjV1CIhR7NUBO4xAXR4A57XN2FGyaliK
+ uXsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:autocrypt
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=989288FbIlvacuy6N/3Yg9uqNHxm/HXXkikvRLzl2jc=;
-        b=QiZu8AicctRlL2vIkIFuWqYxq6EUTwJITBwAqXgjCKrI1ws3NvQanIX8yv/WsXTpUf
-         isLtSHYAa+m4xEpAFUDHdC13FsVVoguGzTCivZESf/TFvo4lQvMtjW5Ov9KA6YQUwDBf
-         2J0+bK5juXMTGSjLKoLdGtwrOXyr4kNHPLnKN/pQtymy4TFj7kX/V8H4gXtgfQd/qdcb
-         UZ5YZmO/sngAMdnZ4XRbKi+whctNpeR0q5/sVp3KlYKpR/EXgVKtZK1c5ATcWA2+R6n6
-         47+FtApq9DIFzM8hwnLuRyVNa5R4AZdBaNOTNCB/ywEZoapvYmvaqvS5MPvAqitzhlkc
-         6V2w==
-X-Gm-Message-State: AOAM531SOVabgiIG0mzFLSgod+WSWzbuWpMeoHKhlRpC5MbWia7+KbAk
-	hY/a1ZrUx68f+RIJU8b0+zrbs2Q/7MUY0DTnrY43GLc8a8sqHns+6QGgXbHt8S8g6QwSsJSnbup
-	gMIdK5kKEDgN6CJJu
-X-Received: by 2002:a1c:6707:: with SMTP id b7mr8010375wmc.97.1597234786854;
-        Wed, 12 Aug 2020 05:19:46 -0700 (PDT)
-X-Received: by 2002:a1c:6707:: with SMTP id b7mr8010350wmc.97.1597234786568;
-        Wed, 12 Aug 2020 05:19:46 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net. [81.40.121.121])
-        by smtp.gmail.com with ESMTPSA id u204sm3800016wmg.9.2020.08.12.05.19.45
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 12 Aug 2020 05:19:45 -0700 (PDT)
-Subject: Re: Acceptance Test BootLinuxAarch64.test_virt_tcg execution times
-To: Cleber Rosa <crosa@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20200806193553.GA1463846@localhost.localdomain>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <e1eab172-5f29-dd54-c78a-fc76216fe97c@redhat.com>
-Date: Wed, 12 Aug 2020 14:19:44 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=XB8p7O0jl/F3z0IsjW/SDkKKV1PNjeynh1m5Jyrj5cg=;
+ b=aV9xCx2k9M9phK0Hs1YBz4pVwuMexI+fYQDntAquOgmRxrT5hfiaVjUkPhLxONz+A6
+ kZnfK4NlORIE8pFh3CdMG/e13jz16lugPRUeSgeVS2V6gfVgipJSdAYYvkrVVEosPkRH
+ 8JC3YQFuXFJwUqoWLdXD9J6gX0mf3QtVU0jBUI+/ylrRn173jguPzV0G6DMiAz4zoUCh
+ LP1GWrvazJxba+YeT6auvkZsToDp5HHO4LVw5EPC9S6JmJwoo7otZUnKkTDShBaCxwXp
+ c2bJPg9qp9Hpd+Y5vs7vRA3NjrEQHX25q407nIUCp7inSkzCMLzwYb/UgyxxnqTCT5dQ
+ eI1g==
+X-Gm-Message-State: AOAM5315ipHY0siNo6FNk37DcA+gi1zGYgxkkEOVBwbLHGyBx597kWLe
+ uO2NRpf/KH4PK+Gw+jGAHp+4AnQRsKxzL9JwK4UsINCI74zGZlKUwwQgqakLU9ocXuA9EGnTkE1
+ Z8oVlYBU5UGB7ZtEEvzeieiyRjMvxKBizTd1rh+VKkAN365Sdhinj3K8Sqg94VeK2rSrvSQ==
+X-Received: by 2002:a1c:18e:: with SMTP id 136mr3506889wmb.93.1597930325663;
+ Thu, 20 Aug 2020 06:32:05 -0700 (PDT)
+Received: from localhost.localdomain ([2a02:8010:64d6::1d89])
+ by smtp.gmail.com with ESMTPSA id h13sm4017903wrx.17.2020.08.20.06.32.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 20 Aug 2020 06:32:05 -0700 (PDT)
+From: Graeme Gregory <graeme@nuviainc.com>
+To: qemu-arm@nongnu.org
+Subject: [PATCH] hw/arm/sbsa-ref.c : Add a fake embedded controller
+Date: Thu, 20 Aug 2020 14:32:01 +0100
+Message-Id: <20200820133201.80577-1-graeme@nuviainc.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20200806193553.GA1463846@localhost.localdomain>
-Content-Language: en-US
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=windows-1252
-Content-Transfer-Encoding: 7bit
-X-TUID: +Q6HK1/XXkeY
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=graeme@nuviainc.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 20 Aug 2020 11:15:36 -0400
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Graeme Gregory <graeme@nuviainc.com>, peter.maydell@linaro.org,
+ leif@nuviainc.com, rad@semihalf.com, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hT+C2HivIa28
 
-On 8/6/20 9:35 PM, Cleber Rosa wrote:
-> TL;DR: This is a followup from an IRC chat about the
-> tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg test
-> taking many orders of magnitute longer than other acceptance (and even
-> similar boot) tests.  I could not find an easy way for this specific
-> test (aarch64+tcg) to have a significant execution time improvement.
-> The best solution may be to filter out tests that are known to be
-> slow, and create a specific "test job" that includes them.
-> 
-> Fisrt, if it's not clear, this specific test runs QEMU with TCG and
-> boots a Fedora 31 "cloud image" and waits until the cloud-init agent
-> notifies the test that the boot is over.
-> 
-> Out of the four archtiectures tested with the same approach under
-> "tests/acceptance/boot_linux.py", aarch64 was special, in the sense
-> that many Linux "cloud images" got stuck very late in the boot
-> process.  What seemed to be a disk activity within the guest that
-> seemed to make the kernel drain its random number sources if my memory
-> serves me right.  Giving the machine a RNG device fixed it.  This can
-> still be verified Today if you comment the virtio-rng lines in the
-> aarch64 test.
-> 
-> So, even with the RNG device and the boot process not getting stuck, a
-> lot of the test time is spent with QEMU actively using CPU time
-> produced by the guest boot process.  This may or may not be the cause
-> for the slowness.
+A difference between sbsa platform and the virt platform is PSCI is
+handled by ARM-TF in the sbsa platform. This means that the PSCI code
+there needs to communicate some of the platform power changes down
+to the qemu code for things like shutdown/reset control.
 
-I believe this is related to the issue Richard recently addressed:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg729216.html
+Space has been left to extend the EC if we find other use cases in
+future where ARM-TF and qemu need to communicate.
 
-> 
-> One approach to have a shorter test time, would be to reduce the
-> things that happen during the guest boot process.  Choosing a minimal
-> guest, such as CirrOS, would be an example of such a solution, but:
-> 
-> * With less things happening during the guest boot, less things
->   get tested within QEMU;
-> 
-> * CirrOS can not make use of the same boot cloud-init configuration
->   and boot verification the test currently uses;
-> 
-> So that leaves other non-minimal Linux "cloud images" as options.  But
-> still, the following things are required or nice to have:
-> 
-> * Support for cloud-init;
-> 
-> * Support for as many as possible architectures;
-> 
-> * Wide user base;
-> 
-> * Be thoroughly tested with this "boot_linux.py" test
-> 
-> So in the end, I picked Fedora 31, which was available and behaved
-> well for four different architectures with and without KVM. Today, I
-> verified if switching distros would provide an "easy fix", but the
-> results were negative.  Any ideas on how to improve the test execution
-> times are appreciated.
-> 
-> For the record, one of the ways we're trying to improve the overall
-> test experience is to allow tests to run in parallel (expected to be
-> fully supported on the upcoming version 81.0).
-> 
-> For those interested, these are the numbers I got, and how I tested
-> with other distros.  I'm using QEMU e1d322c405 with a vanilla
-> configure under a x86_64 Fedora 32 host.
-> 
-> Fedora 31 (baseline):
-> ====================
-> 
->   $ make check-venv
->   $ ./tests/venv/bin/avocado run -t arch:aarch64,accel:tcg --keep-tmp on -- tests/acceptance/boot_linux.py{,,,,}
->   JOB ID     : 14802f9d5016a44d2937ed7b1fec63b2eaa06e89
->   JOB LOG    : /home/cleber/avocado/job-results/job-2020-08-06T13.19-14802f9/job.log
->    (1/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (153.12 s)
->    (2/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (149.57 s)
->    (3/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (154.45 s)
->    (4/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (148.97 s)
->    (5/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (150.70 s)
->   RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
->   JOB TIME   : 757.50 s
-> 
-> Fedora 32:
-> ==========
-> 
-> 1. Tweak version and image hash:
-> 
-> ---
-> diff --git a/tests/acceptance/boot_linux.py b/tests/acceptance/boot_linux.py
-> index 0055dc7cee..44c62bd4a2 100644
-> --- a/tests/acceptance/boot_linux.py
-> +++ b/tests/acceptance/boot_linux.py
-> @@ -48,7 +48,7 @@ class BootLinuxBase(Test):
->              image_arch = 'ppc64le'
->          try:
->              boot = vmimage.get(
-> -                'fedora', arch=image_arch, version='31',
-> +                'fedora', arch=image_arch, version='32',
->                  checksum=self.chksum,
->                  algorithm='sha256',
->                  cache_dir=self.cache_dirs[0],
-> @@ -160,7 +160,7 @@ class BootLinuxAarch64(BootLinux):
->      :avocado: tags=machine:gic-version=2
->      """
->  
-> -    chksum = '1e18d9c0cf734940c4b5d5ec592facaed2af0ad0329383d5639c997fdf16fe49'
-> +    chksum = 'b367755c664a2d7a26955bbfff985855adfa2ca15e908baf15b4b176d68d3967'
->  
->      def add_common_args(self):
->          self.vm.add_args('-bios',
-> ---
-> 
-> 2. Download the image before the test:
-> 
->   $ ./tests/venv/bin/avocado vmimage get --distro=fedora --arch aarch64 --distro-version=32
->   The image was downloaded:
->   Provider Version Architecture File
->   fedora   32      aarch64      /tmp/data/cache/by_location/7049001631a4b2eabf5766cc110e66d486e09821/Fedora-Cloud-Base-32-1.6.aarch64.qcow2
-> 
-> 3. Run the tests:
-> 
->   $ ./tests/venv/bin/avocado run -t arch:aarch64,accel:tcg --keep-tmp on -- tests/acceptance/boot_linux.py{,,,,}
-> JOB ID     : 09e740a41dc400f9fcbb9253f613734597fe0efc
-> JOB LOG    : /home/cleber/avocado/job-results/job-2020-08-06T13.53-09e740a/job.log
->  (1/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (162.06 s)
->  (2/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (167.78 s)
->  (3/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (166.98 s)
->  (4/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (171.13 s)
->  (5/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (167.43 s)
-> RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
-> JOB TIME   : 836.05 s
-> 
-> Ubuntu 20.04:
-> =============
-> 
-> 1. Tweak version and image hash:
-> 
-> ---
-> diff --git a/tests/acceptance/boot_linux.py b/tests/acceptance/boot_linux.py
-> index 0055dc7cee..03c0e1bee9 100644
-> --- a/tests/acceptance/boot_linux.py
-> +++ b/tests/acceptance/boot_linux.py
-> @@ -48,7 +48,7 @@ class BootLinuxBase(Test):
->              image_arch = 'ppc64le'
->          try:
->              boot = vmimage.get(
-> -                'fedora', arch=image_arch, version='31',
-> +                'ubuntu', arch=image_arch, version='20.04',
->                  checksum=self.chksum,
->                  algorithm='sha256',
->                  cache_dir=self.cache_dirs[0],
-> @@ -160,7 +160,7 @@ class BootLinuxAarch64(BootLinux):
->      :avocado: tags=machine:gic-version=2
->      """
->  
-> -    chksum = '1e18d9c0cf734940c4b5d5ec592facaed2af0ad0329383d5639c997fdf16fe49'
-> +    chksum = '1d9e50f3381145835b11911adf611f455d674a570814086b7d6581ecc0718770'
->  
->      def add_common_args(self):
->          self.vm.add_args('-bios',
-> ---
-> 
-> 2. Download the image before the test:
-> 
->   $ ./tests/venv/bin/avocado vmimage get --distro=ubuntu --arch aarch64 --distro-version=20.04
->   The image was downloaded:
->   Provider Version Architecture File
->   ubuntu   20.04   arm64        /tmp/data/cache/by_location/19db8c6d910a3f2660c4109ffb85d73d43e5cdf2/ubuntu-20.04-server-cloudimg-arm64.img
-> 
-> 3. Run the tests:
-> 
->   $ ./tests/venv/bin/avocado run -t arch:aarch64,accel:tcg --keep-tmp on -- tests/acceptance/boot_linux.py{,,,,}
->   JOB ID     : 92a1bdbb5e933e6dff8b882808a191f1de3c2600
->   JOB LOG    : /home/cleber/avocado/job-results/job-2020-08-06T12.13-92a1bdb/job.log
->    (1/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (341.40 s)
->    (2/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (345.82 s)
->    (3/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (335.91 s)
->    (4/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (320.32 s)
->    (5/5) tests/acceptance/boot_linux.py:BootLinuxAarch64.test_virt_tcg: PASS (319.79 s)
->   RESULTS    : PASS 5 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
->   JOB TIME   : 1663.92 s
-> 
+Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
+---
+ hw/arm/sbsa-ref.c | 95 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 95 insertions(+)
+
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index f030a416fd..c8743fc1d0 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -41,6 +41,7 @@
+ #include "hw/usb.h"
+ #include "hw/char/pl011.h"
+ #include "net/net.h"
++#include "migration/vmstate.h"
+ 
+ #define RAMLIMIT_GB 8192
+ #define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
+@@ -62,6 +63,7 @@ enum {
+     SBSA_CPUPERIPHS,
+     SBSA_GIC_DIST,
+     SBSA_GIC_REDIST,
++    SBSA_SECURE_EC,
+     SBSA_SMMU,
+     SBSA_UART,
+     SBSA_RTC,
+@@ -98,6 +100,14 @@ typedef struct {
+ #define SBSA_MACHINE(obj) \
+     OBJECT_CHECK(SBSAMachineState, (obj), TYPE_SBSA_MACHINE)
+ 
++typedef struct {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++} SECUREECState;
++
++#define TYPE_SECURE_EC      "sbsa-secure-ec"
++#define SECURE_EC(obj) OBJECT_CHECK(SECUREECState, (obj), TYPE_SECURE_EC)
++
+ static const MemMapEntry sbsa_ref_memmap[] = {
+     /* 512M boot ROM */
+     [SBSA_FLASH] =              {          0, 0x20000000 },
+@@ -107,6 +117,7 @@ static const MemMapEntry sbsa_ref_memmap[] = {
+     [SBSA_CPUPERIPHS] =         { 0x40000000, 0x00040000 },
+     [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
+     [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
++    [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
+     [SBSA_UART] =               { 0x60000000, 0x00001000 },
+     [SBSA_RTC] =                { 0x60010000, 0x00001000 },
+     [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
+@@ -585,6 +596,65 @@ static void *sbsa_ref_dtb(const struct arm_boot_info *binfo, int *fdt_size)
+     return board->fdt;
+ }
+ 
++enum sbsa_secure_ec_powerstates {
++    SBSA_SECURE_EC_CMD_NULL,
++    SBSA_SECURE_EC_CMD_POWEROFF,
++    SBSA_SECURE_EC_CMD_REBOOT,
++};
++
++static uint64_t secure_ec_read(void *opaque, hwaddr offset, unsigned size)
++{
++    /* No use for this currently */
++    return 0;
++}
++
++static void secure_ec_write(void *opaque, hwaddr offset,
++                     uint64_t value, unsigned size)
++{
++    if (offset == 0) { /* PSCI machine power command register */
++        switch (value) {
++        case SBSA_SECURE_EC_CMD_NULL:
++            break;
++        case SBSA_SECURE_EC_CMD_POWEROFF:
++            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
++            break;
++        case SBSA_SECURE_EC_CMD_REBOOT:
++            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
++            break;
++        default:
++            error_report("sbsa-ref: ERROR Unkown power command");
++        }
++    } else {
++        error_report("sbsa-ref: unknown EC register");
++    }
++}
++
++static const MemoryRegionOps secure_ec_ops = {
++    .read = secure_ec_read,
++    .write = secure_ec_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
++};
++
++static void secure_ec_init(Object *obj)
++{
++    SECUREECState *s = SECURE_EC(obj);
++    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
++
++    memory_region_init_io(&s->iomem, obj, &secure_ec_ops, s, "secure-ec",
++                            0x1000);
++    sysbus_init_mmio(dev, &s->iomem);
++}
++
++static void create_secure_ec(MemoryRegion *mem)
++{
++    hwaddr base = sbsa_ref_memmap[SBSA_SECURE_EC].base;
++    DeviceState *dev = qdev_create(NULL, TYPE_SECURE_EC);
++    SysBusDevice *s = SYS_BUS_DEVICE(dev);
++
++    memory_region_add_subregion(mem, base,
++                                sysbus_mmio_get_region(s, 0));
++}
++
+ static void sbsa_ref_init(MachineState *machine)
+ {
+     unsigned int smp_cpus = machine->smp.cpus;
+@@ -708,6 +778,8 @@ static void sbsa_ref_init(MachineState *machine)
+ 
+     create_pcie(sms);
+ 
++    create_secure_ec(secure_sysmem);
++
+     sms->bootinfo.ram_size = machine->ram_size;
+     sms->bootinfo.nb_cpus = smp_cpus;
+     sms->bootinfo.board_id = -1;
+@@ -798,8 +870,31 @@ static const TypeInfo sbsa_ref_info = {
+     .instance_size = sizeof(SBSAMachineState),
+ };
+ 
++static const VMStateDescription vmstate_secure_ec_info = {
++    .name = "sbsa-secure-ec",
++    .version_id = 0,
++    .minimum_version_id = 0,
++};
++
++static void secure_ec_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->vmsd = &vmstate_secure_ec_info;
++    dc->user_creatable = false;
++}
++
++static const TypeInfo secure_ec_info = {
++    .name          = TYPE_SECURE_EC,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(SECUREECState),
++    .instance_init = secure_ec_init,
++    .class_init    = secure_ec_class_init,
++};
++
+ static void sbsa_ref_machine_init(void)
+ {
++    type_register_static(&secure_ec_info);
+     type_register_static(&sbsa_ref_info);
+ }
+ 
+-- 
+2.25.1
+

@@ -1,157 +1,230 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp884293lfy;
-        Wed, 19 Aug 2020 16:55:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyI9ykO38EzZa1jazecYHDX7Bb2+E1wtSeOrx5yMs2QfIgc9tTkIXJBj7iGMCprZxLkLBJ4
-X-Received: by 2002:a62:5284:: with SMTP id g126mr219838pfb.139.1597881321097;
-        Wed, 19 Aug 2020 16:55:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597881321; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp894937lfy;
+        Wed, 19 Aug 2020 17:13:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyy6HDifxf64qcQ2ArptJ3Fsx/IZnwiOH1LNafBNPo3HMy8PYuLJFCz+gPZL7xIq17MlVp6
+X-Received: by 2002:a25:680e:: with SMTP id d14mr1300909ybc.15.1597882383668;
+        Wed, 19 Aug 2020 17:13:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597882383; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zs+UEsMEqpQ+CMoqc2uxt1dDM0zN+1yHLTBCqFrJERM96nqOv4W8bSs1R6IL85GmXq
-         3YjWIMMOPMcb1ud2Z4CSDR4EVdtESyu++lzqsQIeQ8Ssvn22cZ3mL7u/uJv7br0ziD5f
-         0E+hUjqfwwrskckVPJ8OK9mWPMCdfc3lgC/iQeT1NIAs7FvxqDS6TPPbdygpmQOJZgXy
-         Cpf5NnMwFhideGjnpY+945MeVddCCyKT/VeHOP9lGxfwRSgkVKIT4wz7awo1jAM3Yb0/
-         QJ/PL/qc6WGZ3Gd6F6nfJqkj3OZP0Ea+Y8wgdKSaIqLe2Ji2cFSZOm2Rbh9SjAu6FitU
-         9YBQ==
+        b=qVNcL4YCsoWMkbRsKubhUEcszZrjWCa6h8CQfuTiUYR9IAhPls20tpGXwGd+FcBJZu
+         nNk4uWOtPYtDzmKG2f1QEcTmlz9bEQjPh2pY7HfUtUSECtB4b8FB/5KVaEGgVPC+tgAO
+         /WF2kZwP9AOI+agX4nnh0pXsh0I/f5dEST7Sz2/Cr1NTSunH1SIxrzpFu+V9IyqUcpA0
+         wlkg0Hgb6pwJ9rXQldMjHevNdLZI4JrbNA+8Oxd0pjSYrpcGKyqeh2mhHgDXqium4A8E
+         EJKeiEyE6ji09/ns1zkcMTGDsoSKPYuAVDQJ0DnJNv2Vdb2KsuUMUJHUwW6BbcpN6PV5
+         VMNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:in-reply-to
-         :subject:cc:to:from:user-agent:references:dkim-signature;
-        bh=dxMWs2C7MC9gxFY65qAy+eOEpz0SkpryOBNdGmCCfRw=;
-        b=GfKuj+PGGOBD7ttAfdKfK6N/DOaeJuaTsPP1nPgYTxMktvWg1qGSdy031E23M7oMaK
-         PDBf3d3fuLWJ7Jl8VEM7Ngs/qPh5DhA0ahQ9l/FluXLDlko4j3R7oJwGebS9Oo6Qg/O2
-         KEgG4dr00uTk8LEhzic60xxnpBCqznZLFmQGSDyTUHoeyUcYnxiJprgudOkSCSRTsU7n
-         eDdKmXJoEmRwSIcmJcR8b6rAxbzhJrwkV5hPAARB82ZrIlDQFWl8HKukTAcrw1yyDdfL
-         xVkmU7fM/zksOuluNIObkpfGVoh1bJMzeWyiMhZa0DaT0K677/++nn08PIUH1NhjbTYA
-         SLAg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=k/TnqvUgCno7HKezta0XAkL5zem1rmll2vSOVW/9iIk=;
+        b=S8ckl1zlj1sWDuLeOna4PJMgX1Gj1A2V7DQQLLnGJ3cPGQr3LRDv7lCuubQFgNMjJy
+         38CFSZoOhWnt/MvZa/BpwkgNfhCbkJD7zvMrMnRWkK+LaQZpezq1+DX7GLGHC160GGP7
+         czIsFP0PiSR0/RPJVgCkXY0Bd5JGRWC8P7yhbWe8/6mNI2Nj0g81UXUzJcu5d6O4xAbe
+         qWDmmEu5JyxCeg0n2D32/S/5xlYz/Kpj6cS/H4bD2o1l8USiQkzVVou94q9nvyU6tojt
+         XhLLvICqGBwrr88ARmX1dYNqyp+myel2z3Db6t4Vt9Bz5NhhcA7pDRgJXGCDxLG184vl
+         n/aQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=MpkGoZEa;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Return-Path: <bauerman@linux.ibm.com>
-Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
-        by mx.google.com with ESMTPS id a15si376154pln.337.2020.08.19.16.55.20
-        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 19 Aug 2020 16:55:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g95kTryv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id n4si261171yba.211.2020.08.19.17.13.03
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 19 Aug 2020 17:13:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@ibm.com header.s=pp1 header.b=MpkGoZEa;
-       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
-Received: from pps.filterd (m0098393.ppops.net [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 07JNVqcm093860;
-	Wed, 19 Aug 2020 19:54:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=references : from : to :
- cc : subject : in-reply-to : date : message-id : mime-version :
- content-type : content-transfer-encoding; s=pp1;
- bh=dxMWs2C7MC9gxFY65qAy+eOEpz0SkpryOBNdGmCCfRw=;
- b=MpkGoZEajrBKfTH7qjxPKFhoEbUhEJBFSQUi/KSk4f+I3+AiaSCTal/AWdD63CXPOvXL
- du9PLwlNlBDxO11YB/P0JrKE8+3KoBiR/1zkPiKlKx7e/2qbrabG28NM1dY0hzAV+FIk
- lj5cKj0i03pkTq89lFhi33UOjHgYP4ejIk0IIqf0K8hJ3oAlJba2nqQ3b7SP5T8OlLUn
- hRA0HRgJ0fDp5HZ3744U69GoWsF+gMZhcRV5CUvVKFgG8YXOpZYTn6xG6VGjbjeqQiyd
- 5pXtcY5uQTDkwLTZ9QTtyi0znfkeK22n9JxrtZ7y2MZ6SVYf5pM3KXHwn8ITJEPHhWIy ig== 
-Received: from pps.reinject (localhost [127.0.0.1])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 3313ky3qrp-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Aug 2020 19:54:44 -0400
-Received: from m0098393.ppops.net (m0098393.ppops.net [127.0.0.1])
-	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 07JNZR7i104948;
-	Wed, 19 Aug 2020 19:54:44 -0400
-Received: from ppma04wdc.us.ibm.com (1a.90.2fa9.ip4.static.sl-reverse.com [169.47.144.26])
-	by mx0a-001b2d01.pphosted.com with ESMTP id 3313ky3qra-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Aug 2020 19:54:44 -0400
-Received: from pps.filterd (ppma04wdc.us.ibm.com [127.0.0.1])
-	by ppma04wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 07JNef9P023707;
-	Wed, 19 Aug 2020 23:54:43 GMT
-Received: from b03cxnp08028.gho.boulder.ibm.com (b03cxnp08028.gho.boulder.ibm.com [9.17.130.20])
-	by ppma04wdc.us.ibm.com with ESMTP id 3304ueqq10-1
-	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
-	Wed, 19 Aug 2020 23:54:43 +0000
-Received: from b03ledav005.gho.boulder.ibm.com (b03ledav005.gho.boulder.ibm.com [9.17.130.236])
-	by b03cxnp08028.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 07JNsfQl36503818
-	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
-	Wed, 19 Aug 2020 23:54:42 GMT
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id E067BBE053;
-	Wed, 19 Aug 2020 23:54:41 +0000 (GMT)
-Received: from b03ledav005.gho.boulder.ibm.com (unknown [127.0.0.1])
-	by IMSVA (Postfix) with ESMTP id 8EC12BE056;
-	Wed, 19 Aug 2020 23:54:36 +0000 (GMT)
-Received: from morokweng.localdomain (unknown [9.211.41.171])
-	by b03ledav005.gho.boulder.ibm.com (Postfix) with ESMTPS;
-	Wed, 19 Aug 2020 23:54:36 +0000 (GMT)
-References: <20200819164306.625357-1-bauerman@linux.ibm.com> <20200819164306.625357-8-bauerman@linux.ibm.com> <e38d45c9-1505-d596-6c2a-e82f73dc2935@redhat.com>
-User-agent: mu4e 1.2.0; emacs 26.3
-From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-        qemu-devel@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
-        Paolo
- Bonzini <pbonzini@redhat.com>,
-        Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Peter Maydell
- <peter.maydell@linaro.org>,
-        Aleksandar Markovic
- <aleksandar.qemu.devel@gmail.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>,
-        Aleksandar Rikalo
- <aleksandar.rikalo@syrmia.com>,
-        Mark Cave-Ayland
- <mark.cave-ayland@ilande.co.uk>,
-        Artyom Tarasenko <atar4qemu@gmail.com>,
-        Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
-        David
- Hildenbrand <david@redhat.com>,
-        Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
-        Greg Kurz <groug@kaod.org>, Igor Mammedov
- <imammedo@redhat.com>
-Subject: Re: [PATCH v6 7/8] sparc/sun4m: Use start-powered-off CPUState property
-In-reply-to: <e38d45c9-1505-d596-6c2a-e82f73dc2935@redhat.com>
-Date: Wed, 19 Aug 2020 20:54:33 -0300
-Message-ID: <87imdedwee.fsf@morokweng.localdomain>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=g95kTryv;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35806 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k8YCV-0004pj-0c
+	for alex.bennee@linaro.org; Wed, 19 Aug 2020 20:13:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48984)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1k8YCL-0004nA-IN
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2020 20:12:53 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:34107
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1k8YCI-0002Gz-Qf
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2020 20:12:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1597882370;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=k/TnqvUgCno7HKezta0XAkL5zem1rmll2vSOVW/9iIk=;
+ b=g95kTryvUEIM7ykYPmSGOv33sUmBs8PZQLcBMjeYhjb4uFDjeK6T4cZl9F6lWeL5ZCTZUG
+ 3JvH7O9kq+8AtU/bQ9b0QT7tNNN61VSOebn1EqHRH1XuvbUvHRDQptEIpq03jD/uF3CuB2
+ k48DlLweY7d+YNgK8xMm6zjY+EueGKw=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-250-7aDX9aDbO1qgjilema1DzQ-1; Wed, 19 Aug 2020 20:12:46 -0400
+X-MC-Unique: 7aDX9aDbO1qgjilema1DzQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 59BA6186A568;
+ Thu, 20 Aug 2020 00:12:45 +0000 (UTC)
+Received: from localhost (ovpn-117-244.rdu2.redhat.com [10.10.117.244])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D61C616D4B;
+ Thu, 20 Aug 2020 00:12:44 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 04/58] pl110: Rename pl110_version enum values
+Date: Wed, 19 Aug 2020 20:11:42 -0400
+Message-Id: <20200820001236.1284548-5-ehabkost@redhat.com>
+In-Reply-To: <20200820001236.1284548-1-ehabkost@redhat.com>
+References: <20200820001236.1284548-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TM-AS-GCONF: 00
-X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
- definitions=2020-08-19_13:2020-08-19,2020-08-19 signatures=0
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 spamscore=0
- priorityscore=1501 impostorscore=0 adultscore=0 bulkscore=0 clxscore=1015
- mlxlogscore=999 malwarescore=0 suspectscore=0 phishscore=0 mlxscore=0
- lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2006250000 definitions=main-2008190187
-X-TUID: iyszY0U6ppdd
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/19 18:27:43
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: cyMR/tn4lvyd
 
+The PL110 enum value name will conflict with the PL110 type cast
+checker, when we replace the existing macro with an inline
+function.  Add a VERSION_ prefix to all pl110_version enum
+values, to avoid conflicts.
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> writes:
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Changes v1 -> v2:
+* Fixed typo on commit message
+* Rename all enum values to VERSION_* (Philippe Mathieu-Daudé)
 
-> On 8/19/20 6:43 PM, Thiago Jung Bauermann wrote:
->> Instead of setting CPUState::halted to 1 in secondary_cpu_reset(), use t=
-he
->> start-powered-off property which makes cpu_common_reset() initialize it
->> to 1 in common code.
->>=20
->> This makes secondary_cpu_reset() unnecessary, so remove it.
->>=20
->> Also remove setting of cs->halted from cpu_devinit(), which seems out of
->> place when compared to similar code in other architectures (e.g.,
->> ppce500_init() in hw/ppc/e500.c).
->>=20
->> Finally, change creation of CPU object from cpu_create() to object_new()
->> and qdev_realize_and_unref() because cpu_create() realizes the CPU and i=
-t's
->> not possible to set a property after the object is realized.
->>=20
->> Suggested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
->> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+---
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+---
+ hw/display/pl110.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
-Thanks!
+diff --git a/hw/display/pl110.c b/hw/display/pl110.c
+index c2991a28d2..61fefbffb3 100644
+--- a/hw/display/pl110.c
++++ b/hw/display/pl110.c
+@@ -42,9 +42,9 @@ enum pl110_bppmode
+ /* The Versatile/PB uses a slightly modified PL110 controller.  */
+ enum pl110_version
+ {
+-    PL110,
+-    PL110_VERSATILE,
+-    PL111
++    VERSION_PL110,
++    VERSION_PL110_VERSATILE,
++    VERSION_PL111
+ };
+ 
+ #define TYPE_PL110 "pl110"
+@@ -189,7 +189,7 @@ static void pl110_update_display(void *opaque)
+     else
+         bpp_offset = 24;
+ 
+-    if ((s->version != PL111) && (s->bpp == BPP_16)) {
++    if ((s->version != VERSION_PL111) && (s->bpp == BPP_16)) {
+         /* The PL110's native 16 bit mode is 5551; however
+          * most boards with a PL110 implement an external
+          * mux which allows bits to be reshuffled to give
+@@ -372,12 +372,12 @@ static uint64_t pl110_read(void *opaque, hwaddr offset,
+     case 5: /* LCDLPBASE */
+         return s->lpbase;
+     case 6: /* LCDIMSC */
+-        if (s->version != PL110) {
++        if (s->version != VERSION_PL110) {
+             return s->cr;
+         }
+         return s->int_mask;
+     case 7: /* LCDControl */
+-        if (s->version != PL110) {
++        if (s->version != VERSION_PL110) {
+             return s->int_mask;
+         }
+         return s->cr;
+@@ -437,7 +437,7 @@ static void pl110_write(void *opaque, hwaddr offset,
+         s->lpbase = val;
+         break;
+     case 6: /* LCDIMSC */
+-        if (s->version != PL110) {
++        if (s->version != VERSION_PL110) {
+             goto control;
+         }
+     imsc:
+@@ -445,7 +445,7 @@ static void pl110_write(void *opaque, hwaddr offset,
+         pl110_update(s);
+         break;
+     case 7: /* LCDControl */
+-        if (s->version != PL110) {
++        if (s->version != VERSION_PL110) {
+             goto imsc;
+         }
+     control:
+@@ -513,21 +513,21 @@ static void pl110_init(Object *obj)
+ {
+     PL110State *s = PL110(obj);
+ 
+-    s->version = PL110;
++    s->version = VERSION_PL110;
+ }
+ 
+ static void pl110_versatile_init(Object *obj)
+ {
+     PL110State *s = PL110(obj);
+ 
+-    s->version = PL110_VERSATILE;
++    s->version = VERSION_PL110_VERSATILE;
+ }
+ 
+ static void pl111_init(Object *obj)
+ {
+     PL110State *s = PL110(obj);
+ 
+-    s->version = PL111;
++    s->version = VERSION_PL111;
+ }
+ 
+ static void pl110_class_init(ObjectClass *klass, void *data)
+-- 
+2.26.2
 
---=20
-Thiago Jung Bauermann
-IBM Linux Technology Center

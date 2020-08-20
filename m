@@ -1,154 +1,146 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1099958lfy;
-        Wed, 19 Aug 2020 23:42:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxu7ubYapmbk8NWTOmCoZiKqfQfXo48cFadK0lUW418syHIWekpBN5XvxMg50NJWtn+UNRq
-X-Received: by 2002:a05:6902:1026:: with SMTP id x6mr3304833ybt.349.1597905737093;
-        Wed, 19 Aug 2020 23:42:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597905737; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1174501lfy;
+        Thu, 20 Aug 2020 01:56:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwhw9bfTvhthuEy0LEkGKqss1EkEqZuQ+f+E7BadbNdKy9W2kvvLEOuSY+WO6EK7WJRsVYw
+X-Received: by 2002:a25:7809:: with SMTP id t9mr3415930ybc.359.1597913768317;
+        Thu, 20 Aug 2020 01:56:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597913768; cv=none;
         d=google.com; s=arc-20160816;
-        b=WcLS4rgY3gCTttOdYGJzsO4BklCm9ONTfzYShbZdoK/98TyjmYaKvkD6l05iSrAJb9
-         k/wY0dOyXnRYRkUaEAXGm8b5qbvO6XB+7JaAUOKB9BX4ajU1ygHZrwVqcIaxQdNDm6D+
-         8rYOV1xZxmLvMp1cipGPfTz0EhtGtLxe8J3z4s8ipvn8+kmyWk4gsn7jwOeg/MhXqKhR
-         5vgygGLhHKZqKZpZTI/+hhbrSQCbyWKrvh5QWlOq4/O/dnhKymqgIq9ak6TIdOr/y/jf
-         vR4t+YAEtQ/wyEzxW07AA5rG6+y80fxq5GBSQGgfC8wDwYsYeeACFMMGsJcP/xwTL8f2
-         Fr6Q==
+        b=vlXhlXDIzlS24iuOZ4LQ4TUzhDFqkZbFjEU8lHCc4rLeaLe1OHO/gdqyJX69fSrGX/
+         9t6ZzlahipPiyrKKLk2BRoLwhIqCxg4IhqwVtyy6prnf+kgodvautHqMmGvNyR7U0bvo
+         A2ldGS6tVNBFIrN3nZe1/VuClCwWUF4Pvh602H6I204yD6RZDTnCUdV/JuaNYZiEjFpj
+         pjuqp7wTn4X+tgXFXM1lD6YCiNWZa5hDMAqBi3bfMyMZYwrBwXMgWDtFZgqUCDmhC3eo
+         i8HgDd3ydeZkfFjZ78h6MrmL9OuP9EGFw7GF48BJIHsqLRCia7TcY8i9/kEqibFeCCL9
+         fj/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=HnY4SSLqw6q+TImtyzxO/i5V3XvSqEvRovqVJR+l60I=;
-        b=opjFxaypvsDJqHqOQR8RegZmyN9UL1wRh+Uy2sIa4eIfmbZ9NaiWDS7HrceEJsydzS
-         jXZwg19a0FnmkVWb+Mg6i9qLNwi0XaZcXvdJogNW7LCU2iCDri0CD2Kf0kDJAyqz4f0n
-         kuEFERRd+myhZ7LRHvnAF7pmolMgnkCnCiOrzOEdZv3BPxWeTtEZ1VerbTS0lZfHyn5o
-         ijNGxaAT0GXOW3YuEpjHxqoPvNUS++5BWdbcGXv8ZdV7ksGR7MvnwYMKx+NQxgfWVJKv
-         23JWssfjkD+bFS9QumnKF88gM4zu1x9xI+Qq+Up6v1awyS47i4vUP3VaUSz9tacN2RXP
-         LwCA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=AQVBDah8EuLjQCC3k644t7wKUAg3k/Jomc8EqA920nU=;
+        b=00kd2yuoO+2ac3nHP1qybMvgjN/BBvett02G+jlf4gy78UUlnMyLJuBy5JHH7Korp2
+         zK9aT6Bi4zxjBtQ5PClEJRIaqfeZN1Jg7YVALgcgkgffgX4JGd4NTfLoa7bl1hJezd/m
+         FZ+WqMMnJ9po+s7ytit5oR3rFprw10bgbE+TtA1Ehyc60Q/IxGOjZyiGKoE0MFTx5Mdq
+         2tOz+uMKd7Q3BhuqDR3Sj/6Vha6JF5jW+Zsl1AgkIkq+MslcNUhFCVXkBiwAxzZJVUzV
+         v5H2OoQzKn1DfUqoOHeTmX2FlppNz1S1UzV2jd2Dk0TZE1PAZh0V5G39uAAIPQIj0BYn
+         02fA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=hPKwkvKY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p194si1298844yba.137.2020.08.19.23.42.16
+        by mx.google.com with ESMTPS id 81si1506980ybn.182.2020.08.20.01.56.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 19 Aug 2020 23:42:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 20 Aug 2020 01:56:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56298 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=hPKwkvKY;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8eHA-0000wK-GE
-	for alex.bennee@linaro.org; Thu, 20 Aug 2020 02:42:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55620)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k8gMh-0001nP-No
+	for alex.bennee@linaro.org; Thu, 20 Aug 2020 04:56:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54004)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k8eH3-0000ub-5v; Thu, 20 Aug 2020 02:42:09 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:55411)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1k8eH1-00008L-ME; Thu, 20 Aug 2020 02:42:08 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.118])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 5D40F58D9D3C;
- Thu, 20 Aug 2020 08:42:05 +0200 (CEST)
-Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Thu, 20 Aug
- 2020 08:42:04 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-105G00621555f74-d5c7-48d5-b135-63568622732e,
- 02C359FD435C2C4122574921AFFD4D91C9CEEBEA) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v2 10/58] aspeed_timer: Fix ASPEED_TIMER macro definition
-To: Eduardo Habkost <ehabkost@redhat.com>, <qemu-devel@nongnu.org>
-References: <20200820001236.1284548-1-ehabkost@redhat.com>
- <20200820001236.1284548-11-ehabkost@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <56567ff0-65d5-0542-15e8-a054d01bb264@kaod.org>
-Date: Thu, 20 Aug 2020 08:42:03 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k8gM6-0001Jc-6j
+ for qemu-devel@nongnu.org; Thu, 20 Aug 2020 04:55:30 -0400
+Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:41835)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k8gM4-0007w6-Lu
+ for qemu-devel@nongnu.org; Thu, 20 Aug 2020 04:55:29 -0400
+Received: by mail-ej1-x644.google.com with SMTP id t10so1566124ejs.8
+ for <qemu-devel@nongnu.org>; Thu, 20 Aug 2020 01:55:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=AQVBDah8EuLjQCC3k644t7wKUAg3k/Jomc8EqA920nU=;
+ b=hPKwkvKYv6DtWfICP6xupQIUPHXOQiMn5ozNCwKvUhZlC2IO5xyZr8PK/EJxmL5QNb
+ ga1RzZS9LIee0ZikGxj1KW+q6QFCJt+zRnucLB+SEjx2v6Yq8a8FcsXRxtxx/MRQXFy/
+ xGcU3FK0Fx369Jm0QF4SQJ8NpFAMCNl6LCReQLcDsKF2Qlrtr+yle8OtTmS4QZwrRIAS
+ uQCy8gDX73My5KMLEqYf7r7V7ANMtfPFvKFMgc263azGRoe0eOrUp29TLmqGiqfuIKPb
+ +05QzinH9SDNqp3nNAFNBeJ2BYD9UyxiwNn6Y8P5/zjtqHcwPjxzeTwlapkjaEhD/dC/
+ dtMw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=AQVBDah8EuLjQCC3k644t7wKUAg3k/Jomc8EqA920nU=;
+ b=NrWNrz8/tJu0MyfIwpfSNrhYvVk7sb8O2TP69XEmjxyRVmK1nNPu1KpC5HzgdI97Zi
+ Ir/enN6qMyoa3faZM60XPHyaY4lSkQV4mM/FAK1SBhxc40ABcvLT20Zs2VwH1+54myYO
+ yoFxn5gwhtEUxdVoyLTBLUWUn4KqWM/K3skIKrjTeKcPX2pS37wUtedBSgI2b277jAQP
+ z3lS5zj8QmSIPxo6Sx5s8jWzztpaUEANA5NOS69Y0zY1YzowWSemASI3Pkv1QqwugzQE
+ ZDqmvF1fWqYwctzHREfqn1GriI292Gx0kTdrpxh7L/m2LUmllI+HrM5rsAexXzrdctNw
+ 0Zwg==
+X-Gm-Message-State: AOAM532X8ZDIiLbvyf92ngVCDX7LZoHVBo9NCV6yAqZ8XdCqECasLFF/
+ uPgbUx1W8zxsm+++7nm1DQZ4aeus1AgAOEzLjpQKqQ==
+X-Received: by 2002:a17:906:b814:: with SMTP id
+ dv20mr1605795ejb.4.1597913727175; 
+ Thu, 20 Aug 2020 01:55:27 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200820001236.1284548-11-ehabkost@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.105]
-X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 99b3238d-5211-4961-b792-f630648c7203
-X-Ovh-Tracer-Id: 1962725014723791663
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedruddtledgkeekucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdehnecuvehluhhsthgvrhfuihiivgepudenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegvhhgrsghkohhsthesrhgvughhrghtrdgtohhm
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.mo804.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/20 02:41:12
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20200820045507.614288-1-punit1.agrawal@toshiba.co.jp>
+In-Reply-To: <20200820045507.614288-1-punit1.agrawal@toshiba.co.jp>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 20 Aug 2020 09:55:16 +0100
+Message-ID: <CAFEAcA-zRAzU_ZRE5Wfc1V9jtnnhNyHEkXF4+t2TFXJ26MKc8A@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/virt: Default to architecture appropriate CPU
+To: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::644;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x644.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0JcA3pwEaz/B
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: q0ik7Eplq6Pk
 
-On 8/20/20 2:11 AM, Eduardo Habkost wrote:
-> The macro definition had an extra semicolon.  This was never
-> noticed because the macro was only being used where it didn't
-> make a difference.
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+On Thu, 20 Aug 2020 at 05:55, Punit Agrawal
+<punit1.agrawal@toshiba.co.jp> wrote:
+>
+> The default_cpu_type for the Virt machine is set to "cortex-a15" for
+> both the arm (qemu-system-arm) and aarch64 (qemu-system-aarch64)
+> targets.
+>
+> As a result, starting the aarch64 target with "-machine virt" defaults
+> to booting with a Arm v7 cpu which is counter to
+> expectation. Debugging the issue is further hampered by lack of any
+> output from a supplied arm64 firmware as it is now running on the
+> wrong CPU type.
+>
+> Fix this by defaulting to the "max" capability CPU for the target
+> architecture. After the patch both the arm and aarch64 qemu default to
+> the equivalent of passing "-cpu max".
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Hi; this kind of thing has been suggested in the past several times.
+Generally we've taken the view that we prefer:
+ * not to make changes that would break pre-existing command lines
+ * to maintain the general behaviour that a command line used
+   with qemu-system-arm will also work with qemu-system-aarch64
 
-Thanks,
+It is certainly true that these days the default CPU type for
+virt is not what most users want, though.
 
-C.
-
-> ---
-> Changes v1 -> v2: none
-> 
-> ---
-> Cc: "Cédric Le Goater" <clg@kaod.org>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Andrew Jeffery <andrew@aj.id.au>
-> Cc: Joel Stanley <joel@jms.id.au>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
-> ---
->  include/hw/timer/aspeed_timer.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/timer/aspeed_timer.h b/include/hw/timer/aspeed_timer.h
-> index 948329893c..d7c7d8ad28 100644
-> --- a/include/hw/timer/aspeed_timer.h
-> +++ b/include/hw/timer/aspeed_timer.h
-> @@ -26,7 +26,7 @@
->  #include "hw/misc/aspeed_scu.h"
->  
->  #define ASPEED_TIMER(obj) \
-> -    OBJECT_CHECK(AspeedTimerCtrlState, (obj), TYPE_ASPEED_TIMER);
-> +    OBJECT_CHECK(AspeedTimerCtrlState, (obj), TYPE_ASPEED_TIMER)
->  #define TYPE_ASPEED_TIMER "aspeed.timer"
->  #define TYPE_ASPEED_2400_TIMER TYPE_ASPEED_TIMER "-ast2400"
->  #define TYPE_ASPEED_2500_TIMER TYPE_ASPEED_TIMER "-ast2500"
-> 
-
+thanks
+-- PMM

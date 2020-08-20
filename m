@@ -1,108 +1,110 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1412044lfy;
-        Thu, 20 Aug 2020 07:40:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwA4rfdMJsiq0bt+G6nMdxY/Dd89QY0vtBGI47Ikp0rcIsvKE0PeSLb0fS8qD/TmUhTA8YP
-X-Received: by 2002:a25:dcc4:: with SMTP id y187mr5500141ybe.121.1597934459299;
-        Thu, 20 Aug 2020 07:40:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597934459; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1413240lfy;
+        Thu, 20 Aug 2020 07:42:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxSt5FTYpPYQeBwC78DmI81FDfRQTAgWWWPytxMiC0URzjz6lqpMKEG2ooSSHJbLZP8FAMc
+X-Received: by 2002:a25:b44d:: with SMTP id c13mr4999079ybg.375.1597934564876;
+        Thu, 20 Aug 2020 07:42:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597934564; cv=none;
         d=google.com; s=arc-20160816;
-        b=sEuhTDuWqn6tyqKi2Gf7eIKoSL935xcvd86jUTMijs8x+q3QXo0WqiFZfxa9EEXcej
-         Zmp09vnAhYaRIUp2j0C0qpmUDvh8Mz50CiqFa/Y6bJvkh82Nbk4ToZLBHWJYwKStayJq
-         KE0l+Du+F/BIeH3Ih1N/TP0bQOe//NCx5a2LPcCOzcR/O1daUrb2Xo4fjqfB30xR3ivf
-         c9DjUBI93JGJdIraB6i2BnrgEsCHSkpqVLBS0kD0WJjIt33aLuD2SHWIiXEWkoJNT0iW
-         oxUXnnTaFUi1W7S+RSOCLf3dXK493bD2Rfrf0JzdObt/WZBgfcJWPk1WZadzKH+VvbZ8
-         8u7A==
+        b=z4frcB9U3lwcAJzKfeOoA1duM3jcD+FZkvRIUo5Y2LcQ+CzZTkx6BsCieYQIU9b9c4
+         uqqpiVNCnyRXuFiQrMw2OXbvEb2WaAfpAk5b/OI3Kfd+1ZN7J67/PvpsG8EgNeF6Mf4f
+         xZoSHaEjlHdcOjw3nIz0+vkuzrhO9kowJLXetKT+CTegYdzkQPNccXJKKLxllAZ1OtXz
+         GxndQqYvE29Per4mG78RBorjflB57TE5KMTYhHga1t3Z6tvJlmjfXi/azDjno9tJXvax
+         qhPNgFJmA7zAjIku+B7Ui7X1vpY4bB/4enr93fUHyp2B3iYUbI2lBvXLufWsqCN1LAxu
+         hJMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=ubmh6JJeG9ZHNklT5zqcj/VSz0pM2xSLjwj2JQNHoMY=;
-        b=km3vdx/PvNwvvRZBmnsbDQk289Mnwk6JFseJSsFP25oNL3GGYN+fcYu1qFihKicNa2
-         FNAEFdL5NcfCJHwyXSIYHCuRQ2L6XBlwwrFuC/LB1ixvBMNafuhf6IRt2Y2PI36VnPMN
-         53A+WAvKl+ODrGIOz85q+ByARes0SRUptUHOH5tiv3zsw1CcZB2L+smkaJutI4BGM2n9
-         DpdtNwG+WkXSYJaufPq9VG0jGniKTCmH7IgedLSBCoIZHNhpCSykbyjyc+ItmkOEP0ZQ
-         7xMqzSA0e9UUtMu3VsmpS5CTBmZR9H/viFRHOHxrf0jxJF5caH/zqACrJEtkQ9O0Tm1E
-         xDBQ==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=H3oR1PqFhdcDNFbBPdmkDEblkNOPsgQeBUmabLslgYA=;
+        b=ux7P3pC5PTz+2pkWaA/GymR8CrMUSMSa2cETH+txTg2ZbVUAP3TwYKJRse/0QQ/JWK
+         QU4do/5KC+jQa2VdrC+I5qPsrUJRWyj0qCWvEOPJ2XaTZmT9wOnYCwXlrg0/3KBr1sg7
+         yzziXYu1cnAABvtGiwBc9dzJmhEy42C68dqAnRnAw011g3VpOoGH5gbUDQgb/Cj87W5l
+         wOygnIi2JzKLssqL6T9hVMHAf2DhkQ3xwLZ7Cu9JufNBuzVLNAsEDz6qNJp+NEIndNHv
+         L/O3VplJfXm1T93Au3H6t9QwCWm3s9TzE4DmLLHgdXEbKufcLGn8tmxmRwDA7mdh3k5a
+         NEpw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="QZ3rUj/4";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=htw7tgU1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k23si2547115ybj.389.2020.08.20.07.40.59
+        by mx.google.com with ESMTPS id i67si2441098ybb.71.2020.08.20.07.42.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Aug 2020 07:40:59 -0700 (PDT)
+        Thu, 20 Aug 2020 07:42:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="QZ3rUj/4";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=htw7tgU1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38456 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43464 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8lkQ-0003tA-Lb
-	for alex.bennee@linaro.org; Thu, 20 Aug 2020 10:40:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55656)
+	id 1k8lm8-00060A-4z
+	for alex.bennee@linaro.org; Thu, 20 Aug 2020 10:42:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k8lkJ-0003sv-J9
- for qemu-arm@nongnu.org; Thu, 20 Aug 2020 10:40:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:20603)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1k8llz-0005xa-S9
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2020 10:42:35 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:54714
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k8lkH-0002Xf-FI
- for qemu-arm@nongnu.org; Thu, 20 Aug 2020 10:40:51 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1k8llw-0002kD-E9
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2020 10:42:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597934448;
+ s=mimecast20190719; t=1597934551;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ubmh6JJeG9ZHNklT5zqcj/VSz0pM2xSLjwj2JQNHoMY=;
- b=QZ3rUj/4QTSXntZzl1A93+as59UV85WIPpSdNXo4d3Rixa3RBOFnOCX3Nw1t/RSkKhwMx/
- sMpfwk6WjxRrqUDCag+pWjgjZxy3z8EoTI8pVchmmW8lbiHkBDXTQXTcP5FF7bZ+Q13bYk
- uhr9unr6L9R3BrQ+l5IOy8bpkWQIEcM=
+ bh=H3oR1PqFhdcDNFbBPdmkDEblkNOPsgQeBUmabLslgYA=;
+ b=htw7tgU1OcNaDONFkK1jtCcAGVkOz8tPzDhYwgZpMe90IxHFz8BGtlFaBqE0ykevs6uZ+y
+ tC5k4H4t7Tc/ZY9/BahomLaHEQOwLNUqWGk682KibRdI+57r8yxljhUH/UPpCIu668GB50
+ lDD8qMpB8wUB11QyP/gO+bS1iMBDRqM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-2-zOafsm9YPS67rawurpGWQw-1; Thu, 20 Aug 2020 10:40:46 -0400
-X-MC-Unique: zOafsm9YPS67rawurpGWQw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-493-hx57Md3aOcWhRXAKtsFkaw-1; Thu, 20 Aug 2020 10:42:29 -0400
+X-MC-Unique: hx57Md3aOcWhRXAKtsFkaw-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9E74A193F572;
- Thu, 20 Aug 2020 14:40:44 +0000 (UTC)
-Received: from gondolin (ovpn-112-251.ams2.redhat.com [10.36.112.251])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DB45E60C87;
- Thu, 20 Aug 2020 14:40:34 +0000 (UTC)
-Date: Thu, 20 Aug 2020 16:40:32 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7941A1007380;
+ Thu, 20 Aug 2020 14:42:27 +0000 (UTC)
+Received: from localhost (unknown [10.43.2.114])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id EB72F16E27;
+ Thu, 20 Aug 2020 14:42:17 +0000 (UTC)
+Date: Thu, 20 Aug 2020 16:42:16 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
 Subject: Re: [PULL 3/3] hw: add compat machines for 5.2
-Message-ID: <20200820164032.5a443e3a.cohuck@redhat.com>
+Message-ID: <20200820164216.1510cddd@redhat.com>
 In-Reply-To: <20200820163508.5c2fce23@redhat.com>
 References: <20200819152258.703874-1-ehabkost@redhat.com>
  <20200819152258.703874-4-ehabkost@redhat.com>
  <20200820163508.5c2fce23@redhat.com>
-Organization: Red Hat GmbH
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
-X-Mimecast-Spam-Score: 0.001
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/20 09:00:23
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/20 08:28:03
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,17 +119,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  "Daniel P. =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, David Hildenbrand <david@redhat.com>,
- qemu-s390x@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Andrew Jones <drjones@redhat.com>,
- qemu-devel@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, Greg Kurz <groug@kaod.org>,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
+ David Hildenbrand <david@redhat.com>, qemu-ppc@nongnu.org,
+ Richard Henderson <rth@twiddle.net>, Cornelia Huck <cohuck@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
+ Andrew Jones <drjones@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
+ qemu-arm@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Greg Kurz <groug@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: K6H2HkAvfatr
+X-TUID: lZPFrXp5KXrK
 
 On Thu, 20 Aug 2020 16:35:08 +0200
 Igor Mammedov <imammedo@redhat.com> wrote:
@@ -147,12 +149,234 @@ Igor Mammedov <imammedo@redhat.com> wrote:
 > > Acked-by: Thomas Huth <thuth@redhat.com>
 > > Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 > > Message-Id: <20200819144016.281156-1-cohuck@redhat.com>
-                 ^^^^^^^^^^^^^^
-
 > > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>  
 > 
 > Is this the latest version of the patch?
 > It doesn't apply cleanly on top of the current master.
+Sorry for noise,
+it was messed up tree on my side,
+after clean checkout it applies fine.
 
-Again? I re-spun it yesterday against then-current master.
+> 
+> > ---
+> >  include/hw/boards.h        |  3 +++
+> >  include/hw/i386/pc.h       |  3 +++
+> >  hw/arm/virt.c              |  9 ++++++++-
+> >  hw/core/machine.c          |  3 +++
+> >  hw/i386/pc.c               |  3 +++
+> >  hw/i386/pc_piix.c          | 14 +++++++++++++-
+> >  hw/i386/pc_q35.c           | 13 ++++++++++++-
+> >  hw/ppc/spapr.c             | 15 +++++++++++++--
+> >  hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
+> >  9 files changed, 71 insertions(+), 6 deletions(-)
+> > 
+> > diff --git a/include/hw/boards.h b/include/hw/boards.h
+> > index 426ce5f625..bc5b82ad20 100644
+> > --- a/include/hw/boards.h
+> > +++ b/include/hw/boards.h
+> > @@ -319,6 +319,9 @@ struct MachineState {
+> >      } \
+> >      type_init(machine_initfn##_register_types)
+> >  
+> > +extern GlobalProperty hw_compat_5_1[];
+> > +extern const size_t hw_compat_5_1_len;
+> > +
+> >  extern GlobalProperty hw_compat_5_0[];
+> >  extern const size_t hw_compat_5_0_len;
+> >  
+> > diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+> > index 3d7ed3a55e..fe52e165b2 100644
+> > --- a/include/hw/i386/pc.h
+> > +++ b/include/hw/i386/pc.h
+> > @@ -193,6 +193,9 @@ void pc_system_firmware_init(PCMachineState *pcms, MemoryRegion *rom_memory);
+> >  void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
+> >                         const CPUArchIdList *apic_ids, GArray *entry);
+> >  
+> > +extern GlobalProperty pc_compat_5_1[];
+> > +extern const size_t pc_compat_5_1_len;
+> > +
+> >  extern GlobalProperty pc_compat_5_0[];
+> >  extern const size_t pc_compat_5_0_len;
+> >  
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index ecfee362a1..acf9bfbece 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -2546,10 +2546,17 @@ static void machvirt_machine_init(void)
+> >  }
+> >  type_init(machvirt_machine_init);
+> >  
+> > +static void virt_machine_5_2_options(MachineClass *mc)
+> > +{
+> > +}
+> > +DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
+> > +
+> >  static void virt_machine_5_1_options(MachineClass *mc)
+> >  {
+> > +    virt_machine_5_2_options(mc);
+> > +    compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
+> >  }
+> > -DEFINE_VIRT_MACHINE_AS_LATEST(5, 1)
+> > +DEFINE_VIRT_MACHINE(5, 1)
+> >  
+> >  static void virt_machine_5_0_options(MachineClass *mc)
+> >  {
+> > diff --git a/hw/core/machine.c b/hw/core/machine.c
+> > index 8d1a90c6cf..cf5f2dfaeb 100644
+> > --- a/hw/core/machine.c
+> > +++ b/hw/core/machine.c
+> > @@ -28,6 +28,9 @@
+> >  #include "hw/mem/nvdimm.h"
+> >  #include "migration/vmstate.h"
+> >  
+> > +GlobalProperty hw_compat_5_1[] = {};
+> > +const size_t hw_compat_5_1_len = G_N_ELEMENTS(hw_compat_5_1);
+> > +
+> >  GlobalProperty hw_compat_5_0[] = {
+> >      { "pci-host-bridge", "x-config-reg-migration-enabled", "off" },
+> >      { "virtio-balloon-device", "page-poison", "false" },
+> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> > index 47c5ca3e34..9aa813949c 100644
+> > --- a/hw/i386/pc.c
+> > +++ b/hw/i386/pc.c
+> > @@ -97,6 +97,9 @@
+> >  #include "fw_cfg.h"
+> >  #include "trace.h"
+> >  
+> > +GlobalProperty pc_compat_5_1[] = {};
+> > +const size_t pc_compat_5_1_len = G_N_ELEMENTS(pc_compat_5_1);
+> > +
+> >  GlobalProperty pc_compat_5_0[] = {
+> >  };
+> >  const size_t pc_compat_5_0_len = G_N_ELEMENTS(pc_compat_5_0);
+> > diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> > index b789e83f9a..c5ba70ca17 100644
+> > --- a/hw/i386/pc_piix.c
+> > +++ b/hw/i386/pc_piix.c
+> > @@ -426,7 +426,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+> >      machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+> >  }
+> >  
+> > -static void pc_i440fx_5_1_machine_options(MachineClass *m)
+> > +static void pc_i440fx_5_2_machine_options(MachineClass *m)
+> >  {
+> >      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+> >      pc_i440fx_machine_options(m);
+> > @@ -435,6 +435,18 @@ static void pc_i440fx_5_1_machine_options(MachineClass *m)
+> >      pcmc->default_cpu_version = 1;
+> >  }
+> >  
+> > +DEFINE_I440FX_MACHINE(v5_2, "pc-i440fx-5.2", NULL,
+> > +                      pc_i440fx_5_2_machine_options);
+> > +
+> > +static void pc_i440fx_5_1_machine_options(MachineClass *m)
+> > +{
+> > +    pc_i440fx_5_2_machine_options(m);
+> > +    m->alias = NULL;
+> > +    m->is_default = false;
+> > +    compat_props_add(m->compat_props, hw_compat_5_1, hw_compat_5_1_len);
+> > +    compat_props_add(m->compat_props, pc_compat_5_1, pc_compat_5_1_len);
+> > +}
+> > +
+> >  DEFINE_I440FX_MACHINE(v5_1, "pc-i440fx-5.1", NULL,
+> >                        pc_i440fx_5_1_machine_options);
+> >  
+> > diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> > index a3e607a544..0cb9c18cd4 100644
+> > --- a/hw/i386/pc_q35.c
+> > +++ b/hw/i386/pc_q35.c
+> > @@ -353,7 +353,7 @@ static void pc_q35_machine_options(MachineClass *m)
+> >      m->max_cpus = 288;
+> >  }
+> >  
+> > -static void pc_q35_5_1_machine_options(MachineClass *m)
+> > +static void pc_q35_5_2_machine_options(MachineClass *m)
+> >  {
+> >      PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
+> >      pc_q35_machine_options(m);
+> > @@ -361,6 +361,17 @@ static void pc_q35_5_1_machine_options(MachineClass *m)
+> >      pcmc->default_cpu_version = 1;
+> >  }
+> >  
+> > +DEFINE_Q35_MACHINE(v5_2, "pc-q35-5.2", NULL,
+> > +                   pc_q35_5_2_machine_options);
+> > +
+> > +static void pc_q35_5_1_machine_options(MachineClass *m)
+> > +{
+> > +    pc_q35_5_2_machine_options(m);
+> > +    m->alias = NULL;
+> > +    compat_props_add(m->compat_props, hw_compat_5_1, hw_compat_5_1_len);
+> > +    compat_props_add(m->compat_props, pc_compat_5_1, pc_compat_5_1_len);
+> > +}
+> > +
+> >  DEFINE_Q35_MACHINE(v5_1, "pc-q35-5.1", NULL,
+> >                     pc_q35_5_1_machine_options);
+> >  
+> > diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
+> > index 0ae293ec94..1c8d0981b3 100644
+> > --- a/hw/ppc/spapr.c
+> > +++ b/hw/ppc/spapr.c
+> > @@ -4579,15 +4579,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
+> >      }                                                                \
+> >      type_init(spapr_machine_register_##suffix)
+> >  
+> > +/*
+> > + * pseries-5.2
+> > + */
+> > +static void spapr_machine_5_2_class_options(MachineClass *mc)
+> > +{
+> > +    /* Defaults for the latest behaviour inherited from the base class */
+> > +}
+> > +
+> > +DEFINE_SPAPR_MACHINE(5_2, "5.2", true);
+> > +
+> >  /*
+> >   * pseries-5.1
+> >   */
+> >  static void spapr_machine_5_1_class_options(MachineClass *mc)
+> >  {
+> > -    /* Defaults for the latest behaviour inherited from the base class */
+> > +    spapr_machine_5_2_class_options(mc);
+> > +    compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
+> >  }
+> >  
+> > -DEFINE_SPAPR_MACHINE(5_1, "5.1", true);
+> > +DEFINE_SPAPR_MACHINE(5_1, "5.1", false);
+> >  
+> >  /*
+> >   * pseries-5.0
+> > diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
+> > index e72c61d2ea..f4ea6a9545 100644
+> > --- a/hw/s390x/s390-virtio-ccw.c
+> > +++ b/hw/s390x/s390-virtio-ccw.c
+> > @@ -801,14 +801,26 @@ bool css_migration_enabled(void)
+> >      }                                                                         \
+> >      type_init(ccw_machine_register_##suffix)
+> >  
+> > +static void ccw_machine_5_2_instance_options(MachineState *machine)
+> > +{
+> > +}
+> > +
+> > +static void ccw_machine_5_2_class_options(MachineClass *mc)
+> > +{
+> > +}
+> > +DEFINE_CCW_MACHINE(5_2, "5.2", true);
+> > +
+> >  static void ccw_machine_5_1_instance_options(MachineState *machine)
+> >  {
+> > +    ccw_machine_5_2_instance_options(machine);
+> >  }
+> >  
+> >  static void ccw_machine_5_1_class_options(MachineClass *mc)
+> >  {
+> > +    ccw_machine_5_2_class_options(mc);
+> > +    compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
+> >  }
+> > -DEFINE_CCW_MACHINE(5_1, "5.1", true);
+> > +DEFINE_CCW_MACHINE(5_1, "5.1", false);
+> >  
+> >  static void ccw_machine_5_0_instance_options(MachineState *machine)
+> >  {  
+> 
+> 
 

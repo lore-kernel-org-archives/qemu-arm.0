@@ -1,244 +1,185 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp941805lfy;
-        Wed, 19 Aug 2020 18:43:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxfERmCuq4svED8SZwnOufxD6tl6b/BICFNniDVTDavPrmSG7ecuM/pj8mB32QYU7HeQyD2
-X-Received: by 2002:a17:90a:1f8c:: with SMTP id x12mr561272pja.186.1597887782287;
-        Wed, 19 Aug 2020 18:43:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597887782; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp946793lfy;
+        Wed, 19 Aug 2020 18:53:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyt655k47TPiG2hrM1ec4ZXivcs9geoaXur+hhtFastUDNsHJDY4ydRmTF7XEYBn/6Sm5bL
+X-Received: by 2002:a25:328e:: with SMTP id y136mr1661666yby.281.1597888405854;
+        Wed, 19 Aug 2020 18:53:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597888405; cv=none;
         d=google.com; s=arc-20160816;
-        b=R8Sc2l3H1ZuA9IcC6XORPPqjUsUS80+ikEEUtfRKAIMjeA16GTDgSkWy6mr2aUaMBg
-         esDOyqvXY6XSnYuvOs4/03NpMD6jtdWb1VWNNU6C5eEOSn81yzb0VNrDb/AnN/r+Qebr
-         toxkoEVc/+dSuncDhhJaY1IdOLPLyWWvku3CY6yf1+v7EIPPpeuXxcRwmUYqVieuU9bQ
-         VrBjMomM6CAVK+yFnr2VhC4lozBcIBEt93u6O3PTaYhIftLMfE+kCZ9eWITmarlPg5Hd
-         5LkpLzoRbwCFodWHiN98UXNLm9gMejdxAGo6+BukFw1v+BnFt17oyCP5HWf2+q69zU1Y
-         860w==
+        b=yQlxszXdQ4Z/un3Mq+SwazZaKwatYR9D1WtNEs9dCT6tcbGfMPpSiLGzY14ZqPOG0O
+         pRDOHe02DM5BqTy+OMnVDoSvsRotoz55km4h+ry19mObFSi1eNSFZaPzm4wfsoFDq2Bc
+         TtU1wqTCzriS1CpsbP1/MY3lKZ+t6NGEZyAI6pq9DLSXH24c53eYOaBzH/8KHcTztqXF
+         yZRlSvm09y4rW9hYVqn26cNFtFQzDzr/WdKc3jOkGnUPao3aUboFAmkY++X0udYBXuAN
+         xY6DSk9ji6/VBpn+qQTB6CeqHKPeOovbnFgTnGUD99n1TlKI9VEy+88/cR03Nc9cI6Oq
+         rh8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=6H4YyXh2+zAW5m8OF8xiftYLRCehzczJkgnFJpv9UqI=;
-        b=lCROP62v/xT/Gobc72GJS+dZlHyrJo0ExeasMCvtwvoxl1/n/OM4mZpoCIO2RjQc8T
-         ybh4XLl6L71oNR1lmS8x8JmG+LSO1IY9lCfLy5pfC1P4PdfLgj7Jq1ucQcaeoMRaMRv6
-         6Su6gBxII6/K4SRwOtVD68oV6pqh2Q8J6rgmSK1wFh2VOSQzNX1+iGfozVyiljhyThnU
-         JpRokDA5P8qGYbKhOsoA683by+0t1RGIOkGrevOPW0dRNEwQl8gatGe9DYdmjJq9yqUa
-         F334MIPmoJ15DuLcaD+/nfTz41es9x/Yd+1Bt3NLoU54R5wZqyWmb5RkTfcuE39LCKX5
-         OUtA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=5fY6uLENvIP8/O+yKASXa5VJ8j7ZSDVEkteHFxVGL1s=;
+        b=jysxrN3eJmqHI34uUsSWLxRrw1Ef3uNF/263GJBw+l61Ra+bOFYKuxd3nYhSeuXF1Q
+         povuXpNYqzjLlAyJpscCTynHJzgn0GIferb2ovGPrVgug5vYwPy/vS0rrXR+TIf6b20X
+         X1/djwPYcHhE8WFlWc/AAdYV9TK/lmNcaAIMJou2NrALTRt6P+w7loQVKBptf4SP7GaI
+         UplU8StOTMrATlgL76OZY+J03g6IWucPvnICpMPagLF/S1P86sCzStk0idYiBWq7LR/F
+         FY8fbduO82hECVy3tbQqlaDR8aRcpRDEERx81ot3894MWfp4eNQuLGAt4O107YiJM+w6
+         9UKg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=n2yrrZou;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Return-Path: <dgibson@ozlabs.org>
-Received: from ozlabs.org (bilbo.ozlabs.org. [2401:3900:2:1::2])
-        by mx.google.com with ESMTPS id n2si429945pgp.171.2020.08.19.18.43.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 19 Aug 2020 18:43:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
+       dkim=pass header.i=@google.com header.s=20161025 header.b=wSXEA457;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id a36si652060ybi.17.2020.08.19.18.53.25
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 19 Aug 2020 18:53:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=n2yrrZou;
-       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
-Received: by ozlabs.org (Postfix, from userid 1007)
-	id 4BX6q543bwz9sTR; Thu, 20 Aug 2020 11:42:57 +1000 (AEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-	d=gibson.dropbear.id.au; s=201602; t=1597887777;
-	bh=iuIpG/F8UrzE4lEermCKFopXr2gJt10aW1SE2pBmWe4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=n2yrrZouE29lyrigx+mk7CFoZ/CrGdn3UszPT6VeXrObvFIzLwgBwqJAkbPdlBZ3S
-	 EolxzTlzOf6oaakKDlEQqSgvrQPFRA45vVvqZME78OZqfkxWN+Ww36KNt1+5Rmf2uY
-	 SiNDDAOu7Q5qa24DVjwII9MiISeuQP79qZ4yVp9c=
-Date: Thu, 20 Aug 2020 11:42:38 +1000
-From: David Gibson <david@gibson.dropbear.id.au>
-To: Thiago Jung Bauermann <bauerman@linux.ibm.com>
-Cc: qemu-ppc@nongnu.org, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
-	qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Artyom Tarasenko <atar4qemu@gmail.com>,
-	Cornelia Huck <cohuck@redhat.com>, Thomas Huth <thuth@redhat.com>,
-	David Hildenbrand <david@redhat.com>,
-	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
-	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
-	Greg Kurz <groug@kaod.org>, Igor Mammedov <imammedo@redhat.com>
-Subject: Re: [PATCH v6 0/8] Generalize start-powered-off property from ARM
-Message-ID: <20200820014238.GI271315@yekko.fritz.box>
-References: <20200819164306.625357-1-bauerman@linux.ibm.com>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=wSXEA457;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:46484 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k8Zld-0002HM-9G
+	for alex.bennee@linaro.org; Wed, 19 Aug 2020 21:53:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37796)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1k8ZlV-0002Fi-O2
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2020 21:53:17 -0400
+Received: from mail-vs1-xe42.google.com ([2607:f8b0:4864:20::e42]:41892)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1k8ZlT-0004wR-3z
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2020 21:53:17 -0400
+Received: by mail-vs1-xe42.google.com with SMTP id y8so348296vsq.8
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2020 18:53:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=5fY6uLENvIP8/O+yKASXa5VJ8j7ZSDVEkteHFxVGL1s=;
+ b=wSXEA457EIkl+roCtRKkpd5BMbWUrS0lIfL4L4HsrhJQmkFwslBvB42Tfutci54nDn
+ 1hCnYEqg50EBptOdeBNeJOuh7Sul/pW9uroKUYP3TyFMd5LEUQm/Nkm8d/NWKZpAi3xr
+ GfWjrQ1nl2qlY7fPcq7t/6KFUc/6osBaOMlbUiAikTjEZv4JsNCUxpXvBXHm31VK2grw
+ ioYyfACdQNrUl8veuxxcbbd+PDawU40bonKJb6BsGVTa4/toGh8VUCujEhcGOWxj4WV8
+ FFW+qtZ8NWuvLhxofhLfE4CN9TFZtD8XyAViteHDHjdIdzSMwAcokKRsILrBNPInmcGM
+ QTMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=5fY6uLENvIP8/O+yKASXa5VJ8j7ZSDVEkteHFxVGL1s=;
+ b=rHUw0CTqM8n2yH9E00ro5LtnsO2xg+0YuhVkKZ+IzQT7wYWF2IQXdVXIwaSFjqbL+N
+ XJeu0iL/SIXP5M1bDjbsYpGg4CqLWrjvqzqP9bOP7ciCPducT2PeSzpmi/o37NXr8TeF
+ aKGPEoFvLzOTu00bI12Uv2OIsEx7ZZnYbxf/vp/FGSRkC/PJygctehNCbTIsNcMYBeyk
+ oXFsl/2vNBiyMr/HAFMLEA0sbRKx4hN21Zb78KM0NzidcHHtf5gpN9D8X5607a+TKvEa
+ BxJvwYq2RzRqI371f0g36vCvMqzxOhHNciZldj84unzejz8MZ5O0UzlaobTM79guzLwK
+ E2Pg==
+X-Gm-Message-State: AOAM533Gh6a9lY6EchtnzlvmaDUv5vwPcEcImUak58gN81OSkhrkDgGQ
+ XxE+2JeUFyBdD7QowwoBILQoWl56uyR62o+yOOdnSg==
+X-Received: by 2002:a67:7d50:: with SMTP id y77mr665080vsc.207.1597888392435; 
+ Wed, 19 Aug 2020 18:53:12 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
-	protocol="application/pgp-signature"; boundary="MFZs98Tklfu0WsCO"
-Content-Disposition: inline
-In-Reply-To: <20200819164306.625357-1-bauerman@linux.ibm.com>
-X-TUID: NJpqygyhhWM3
-
-
---MFZs98Tklfu0WsCO
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+References: <20200811004607.2133149-1-hskinnemoen@google.com>
+ <20200811004607.2133149-14-hskinnemoen@google.com>
+ <64f8cd56-306e-4961-488b-36c666894a54@amsat.org>
+ <CAFQmdRbvSKYJ00tE_79Eh+gW_ge8kEco=1gqFtvMcoJGraozdw@mail.gmail.com>
+In-Reply-To: <CAFQmdRbvSKYJ00tE_79Eh+gW_ge8kEco=1gqFtvMcoJGraozdw@mail.gmail.com>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Wed, 19 Aug 2020 18:53:01 -0700
+Message-ID: <CAFQmdRZCk5Rqb1C2TRCEUMaKmF608g2_Or8mLCTSG03nCQ1Ygg@mail.gmail.com>
+Subject: Re: [PATCH v7 13/13] tests/acceptance: console boot tests for
+ quanta-gsj
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Joel Stanley <joel@jms.id.au>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
+ CS20 KFTing <kfting@nuvoton.com>, Cleber Rosa <crosa@redhat.com>, 
+ Wainer dos Santos Moschetta <wainersm@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e42;
+ envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe42.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -185
+X-Spam_score: -18.6
+X-Spam_bar: ------------------
+X-Spam_report: (-18.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8S6NREOfh4O8
 
-On Wed, Aug 19, 2020 at 01:42:58PM -0300, Thiago Jung Bauermann wrote:
-> This version has one small fix in patch 7, and adds Philippe's Reviewed-b=
-ys.
->=20
-> Applies cleanly on dgibson/ppc-for-5.2.
->=20
-> Original cover letter below, followed by changelog:
->=20
->=20
-> The ARM code has a start-powered-off property in ARMCPU, which is a
-> subclass of CPUState. This property causes arm_cpu_reset() to set
-> CPUState::halted to 1, signalling that the CPU should start in a halted
-> state. Other architectures also have code which aim to achieve the same
-> effect, but without using a property.
->=20
-> The ppc/spapr version has a bug where QEMU does a KVM_RUN on the vcpu
-> before cs->halted is set to 1, causing the vcpu to run while it's still in
-> an unitialized state (more details in patch 3).
->=20
-> Peter Maydell mentioned the ARM start-powered-off property and
-> Eduardo=A0Habkost suggested making it generic, so this patch series does
-> that, for all cases which I was able to find via grep in the code.
->=20
-> The only problem is that I was only able to test these changes on a ppc64=
-le
-> pseries KVM guest, so except for patches 2 and 3, all others are only
-> build-tested. Also, my grasp of QOM lifecycle is basically non-existant so
-> please be aware of that when reviewing this series.
->=20
-> The last patch may be wrong, as pointed out by Eduardo, so I marked it as
-> RFC. It may make sense to drop it.
+On Tue, Aug 11, 2020 at 8:26 PM Havard Skinnemoen
+<hskinnemoen@google.com> wrote:
+>
+> On Tue, Aug 11, 2020 at 1:48 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
+org> wrote:
+> > INTERRUPTED: Test interrupted by SIGTERM
+> > Runner error occurred: Timeout reached
+> > (240.45 s)
+> >
+> > Is that expected?
+>
+> I'm not sure why it only happens when running direct kernel boot with
+> unoptimized qemu, but it seems a little happier if I enable a few more
+> peripherals that I have queued up (sd, ehci, ohci and rng), though not
+> enough.
+>
+> It still stalls for an awfully long time on "console: Run /init as
+> init process" though. I'm not sure what it's doing there. With -O2 it
+> only takes a couple of seconds to move on.
 
-Applied to ppc-for-5.2.
+So it turns out that the kernel gets _really_ sluggish when skipping
+the clock initialization normally done by the boot loader.
 
->=20
-> Changes since v5:
->=20
-> Patch "ppc/e500: Use start-powered-off CPUState property"
-> Patch "mips/cps: Use start-powered-off CPUState property"
-> Patch "sparc/sun4m: Remove main_cpu_reset()"
-> Patch "target/s390x: Use start-powered-off CPUState property"
-> - Added Philippe's Reviewed-by.
->=20
-> Patch "sparc/sun4m: Use start-powered-off CPUState property"
-> - Move call to qdev_realize_and_unref() right after object_property_set_b=
-ool(),
->   as suggested by Philippe.
->=20
-> Changes since v4:
->=20
-> Patch "ppc/e500: Use start-powered-off CPUState property"
-> Patch "sparc/sun4m: Use start-powered-off CPUState property"
-> - Use qdev_realize_and_unref() instead of qdev_realize(), as suggested
->   by=A0Igor.
-> - Pass &error_fatal to qdev_realize_and_unref() instead of manually
->   reporting the error and exiting QEMU, as suggested by Philippe.
-> - Changed object_property_set_bool() to use &error_fatal instead of
->   &error_abort.
->=20
-> Patch "mips/cps: Use start-powered-off CPUState property"
-> - Use qdev_realize_and_unref() instead of qdev_realize(), as suggested
->   by=A0Igor.
-> - Use existing errp argument to propagate error back to the caller, as
->   suggested by Philippe.
-> - Changed object_property_set_bool() to use existing errp argument to
->   propagate error back to the caller instead of using &error_abort.
->=20
-> Changes since v3:
->=20
-> General:
-> - Added David's, Greg's and Cornelia's Reviewed-by and Acked-by to some
->   of the patches.
-> - Rebased on top of dgibson/ppc-for-5.2.
->=20
-> Patch "ppc/e500: Use start-powered-off CPUState property"
-> Patch "mips/cps: Use start-powered-off CPUState property"
-> Patch "sparc/sun4m: Use start-powered-off CPUState property"
-> - Initialize CPU object with object_new() and qdev_realize() instead
->   of cpu_create().
-> - Removed Reviewed-by's and Acked-by's from these patches because of
->   these changes.
->=20
-> Changes since v2:
->=20
-> General:
-> - Added Philippe's Reviewed-by to some of the patches.
->=20
-> Patch "ppc/spapr: Use start-powered-off CPUState property"
-> - Set the CPUState::start_powered_off variable directly rather than using
->   object_property_set_bool(). Suggested by Philippe.
->=20
-> Patch "sparc/sun4m: Remove main_cpu_reset()"
-> - New patch. Suggested by Philippe.
->=20
-> Patch "sparc/sun4m: Use start-powered-off CPUState property"
-> - Remove secondary_cpu_reset(). Suggested by Philippe.
-> - Remove setting of `cs->halted =3D 1` from cpu_devinit(). Suggested by P=
-hilippe.
->=20
-> Patch "Don't set CPUState::halted in cpu_devinit()"
-> - Squashed into previous patch. Suggested by Philippe.
->=20
-> Patch "sparc/sun4m: Use one cpu_reset() function for main and secondary C=
-PUs"
-> - Dropped.
->=20
-> Patch "target/s390x: Use start-powered-off CPUState property"
-> - Set the CPUState::start_powered_off variable directly rather than using
->   object_property_set_bool(). Suggested by Philippe.
-> - Mention in the commit message Eduardo's observation that before this
->   patch, the code didn't set cs->halted on reset.
->=20
-> Thiago Jung Bauermann (8):
->   target/arm: Move start-powered-off property to generic CPUState
->   target/arm: Move setting of CPU halted state to generic code
->   ppc/spapr: Use start-powered-off CPUState property
->   ppc/e500: Use start-powered-off CPUState property
->   mips/cps: Use start-powered-off CPUState property
->   sparc/sun4m: Remove main_cpu_reset()
->   sparc/sun4m: Use start-powered-off CPUState property
->   target/s390x: Use start-powered-off CPUState property
->=20
->  exec.c                  |  1 +
->  hw/core/cpu.c           |  2 +-
->  hw/mips/cps.c           | 14 ++++++++++----
->  hw/ppc/e500.c           | 14 ++++++++++----
->  hw/ppc/spapr_cpu_core.c | 10 +++++-----
->  hw/sparc/sun4m.c        | 31 ++++---------------------------
->  include/hw/core/cpu.h   |  4 ++++
->  target/arm/cpu.c        |  4 +---
->  target/arm/cpu.h        |  3 ---
->  target/arm/kvm32.c      |  2 +-
->  target/arm/kvm64.c      |  2 +-
->  target/s390x/cpu.c      |  2 +-
->  12 files changed, 39 insertions(+), 50 deletions(-)
->=20
+I changed the reset value of CLKSEL like this:
 
---=20
-David Gibson			| I'll have my music baroque, and my code
-david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
-				| _way_ _around_!
-http://www.ozlabs.org/~dgibson
+diff --git a/hw/misc/npcm7xx_clk.c b/hw/misc/npcm7xx_clk.c
+index 21ab4200d1..5e9849410f 100644
+--- a/hw/misc/npcm7xx_clk.c
++++ b/hw/misc/npcm7xx_clk.c
+@@ -67,7 +67,7 @@ enum NPCM7xxCLKRegisters {
+  */
+ static const uint32_t cold_reset_values[NPCM7XX_CLK_NR_REGS] =3D {
+     [NPCM7XX_CLK_CLKEN1]        =3D 0xffffffff,
+-    [NPCM7XX_CLK_CLKSEL]        =3D 0x004aaaaa,
++    [NPCM7XX_CLK_CLKSEL]        =3D 0x004aaba9,
+     [NPCM7XX_CLK_CLKDIV1]       =3D 0x5413f855,
+     [NPCM7XX_CLK_PLLCON0]       =3D 0x00222101 | PLLCON_LOKI,
+     [NPCM7XX_CLK_PLLCON1]       =3D 0x00202101 | PLLCON_LOKI,
 
---MFZs98Tklfu0WsCO
-Content-Type: application/pgp-signature; name="signature.asc"
+which switches the CPU core and UART to run from PLL2 instead of
+CLKREF (25 MHz).
 
------BEGIN PGP SIGNATURE-----
+With this change, the test passes without optimization:
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl891Q4ACgkQbDjKyiDZ
-s5Ln+Q//ej17/yk3foCu19l8rVPvvPIR6cf0KzAFa0NjildGpMbU3VJ8MMBSoMrP
-HVFfD66xgPXEFhsmv+0DmQxOds2eAFLREnvRslNCee/RK1tHjiJ3S9lxrmFJN24V
-NHMJwx/1iitfNGX5MYaXTC68goiP6YHAwiHsgOzhIHGDHqc9Ue+mYQk9whaHnZY4
-vzOMIgnlJ2+B1+MkNBm0IlVu0FCJGVdpm7zsTOM3Lr/9PZV43BmUb2ItytrBnruM
-CRrLahXRHUAyibpiTG6t+dhiB1iZlq/tNlozN26JZVYXNe5OLpy+gnu/0Hp/+38Y
-rVa0k9aMT3MH6wnJavlqB+jaqvNvKtdqKzq8obMzZ1HZbZnWo4gV/7J/I9uSA4wx
-1S4J4Oe2AwcISH1KrMeSm7UdL6zywT9ZrheCyzGifFBOqR96IWpeUjdPk+QsJ/W7
-MyayVlUWg0dZpMmpagSW0D+9yc6r0e/OGQ8CeKByl1Wx8am0uHdnax7mL63RWXvl
-q3oMZ/M04gP0YI+SKAa6hL699K8Ms/nqGSzg6QqQLMqP5LlufnRDetlFTsa27j6I
-0Cd4+CEMeFnEcGRPelgKq9iynjexfe0vR1AdGW1/n51EsJv54G70GQ70RPG/RSUI
-Z/7zt76NMvIpDL3RNASXrjpwlj8oPwBzM3ftj1PR40zcxD4SpsY=
-=fFNL
------END PGP SIGNATURE-----
+ (02/19) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_q=
+uanta_gsj_initrd:
+PASS (39.62 s)
 
---MFZs98Tklfu0WsCO--
+It doesn't look like this change hurts booting from the bootrom (IIUC
+the nuvoton bootblock overwrites CLKSEL anyway), but it's not super
+clean.
+
+Perhaps I should make it conditional on kernel_filename being set? Or
+would it be better to provide a write_board_setup hook for this?

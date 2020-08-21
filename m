@@ -1,107 +1,113 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp122073lfy;
-        Fri, 21 Aug 2020 02:44:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw3eSPukSJ/xkb9Aym7cQVEFS+Hn/boHAPrtL1L/whxxvSfaRDnd/O2lmDtDhsQRqKRYNPw
-X-Received: by 2002:a25:5555:: with SMTP id j82mr2720770ybb.125.1598003080092;
-        Fri, 21 Aug 2020 02:44:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598003080; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp196442lfy;
+        Fri, 21 Aug 2020 04:33:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6GLYo5GEkqnHRX7N6o9lZeEWJDT62H6UaQzTITeLjUEs3XgFyGUGnmHnn4dXxWA3uTWm1
+X-Received: by 2002:a25:414:: with SMTP id 20mr3074245ybe.97.1598009602807;
+        Fri, 21 Aug 2020 04:33:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598009602; cv=none;
         d=google.com; s=arc-20160816;
-        b=Tih4+wI93KGPVAReib16CU7S4eQrd1vCH3pt8xoDcyrw4UZuGXh7yzZ/MTbTcpskQl
-         Sp/Va6f2hS/PqmsifxSMZjPt/qtIFNtNYd76Iik36BveRHKG9e+476JNKhhpHDvF7cis
-         A9Ncoyb2nQFFAsqe82LeprI+qBO6yu+TULQ2XDztQMtEpE9q0wGoOF+YgOBPi8ulAgJd
-         hjpfultP4edsXtMYYyxGLK9QSJOhPtWYzpWWd7R0dH6/UtEd2OxUCELELUvWQgbyRvLZ
-         szXcRl8BI09bAKPKRV/XcSHe900WpXA0S+Yidgv0VFIUdBYrrIBft2WADRbkGjiMNVke
-         4cyg==
+        b=tXxtMLJ8ugbScMzJ7uEmtDPBvzRBKui7CflKkmLdOXSeDgxdmM+EERwlwIVMlFIWn6
+         5UE/dhYSP3u2nFEW1wq9OI4u4YB3uj6CmKJw5eEVOejjjQwPy/hmWTJkyxtbfDGN8Y/H
+         JmBJmEwWAr93jnemu7NlKMMa9j+nuoEvV5aXe5k6tKaX+PJ0lz7LS8/+JlWBqZFHZX+Y
+         7in+MN+ICidAKM9bQV0Az9IUYuNJBg57dgwRO7IAHwjKDUaJXrGO2YVQiUG4Oa8klrmj
+         HLtX/hfXqA9UMYCZvqrStqwM3EJGw3fR9h8/j6McxHPfY1+NlB4Xynab5De7+Ba0Y+VK
+         bhpQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:organization:references:in-reply-to:message-id:subject
-         :to:from:date:dkim-signature;
-        bh=uHy0z3ZL/SsHPSphFKR0keUToPqePKam/fhbrnF0v4c=;
-        b=zhuMY5LW/2rbQNSBwxxhP5ScaK7VIAStMZjdgTlhKSdrSqciyme1vlFUxpjKXonAFH
-         lqPvlSTB8lyNc9eVFnRidbBGvQsq2ZIqXv6JM5MAthxztQAnxEG9sTl+btLPx8q/0gDA
-         HSUbTFfLI+tgtMacvglqkTm2p4gb1+Gu3SVmb0WNhi5A+ZjWdm+RBo0/S/GGJm33BIj7
-         9uz+gO2lE79FjrlVdWCJkKJd5VK9quCdZcBOsrxikB5ZJMYpatku482V6n5rNyHg5Xl1
-         BfAZ2PB2DgOtOFItb6ANzT/q3hYCEehA58WEx0F26ZVob+LFEjA0OMSUaMr7uX8Ay1NL
-         evgQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=gTUXUYJh9r4NpY0TQpnZlz7xsFLACmEn8LbRCqPweZg=;
+        b=zt6rAWYxaU7FCbLNrUpmwRduTP21eXEAN+Ex+C8cHAbx0WJOZMUmD2JVlq9QtSBIm0
+         zTOD+xEVRaGDtyZZhUfAjC6BlMMVBCWJNw8QCc0kmP4mn3zq8lkio9/ZBsmJWPTwKNTu
+         QTN+cSmVsDTBv2n2qk8c8N9gwiitWLwOPze1zxRzFHwCiNi7MGRgDaypkjkKQMFneQGS
+         5vQ6xlaqgwPsQPJZSDo0S9VAPmgMTKmXQfx+QBsWPC5c1ReNwAYfAclhiWUZP4JrY663
+         hzX7oXqi+SKQCPiihW+QncUuX7F2ZEwv5TW6rhfFTLWMVFu/PfjecWYe96MiK/AFyiWR
+         oAIg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UcGK2qBt;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M50H4+1w;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b129si1802558yba.468.2020.08.21.02.44.39
+        by mx.google.com with ESMTPS id r189si2005359ybc.256.2020.08.21.04.33.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 02:44:40 -0700 (PDT)
+        Fri, 21 Aug 2020 04:33:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UcGK2qBt;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M50H4+1w;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60390 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:44920 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k93bD-0007J1-G6
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 05:44:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51540)
+	id 1k95IQ-0001mq-5b
+	for alex.bennee@linaro.org; Fri, 21 Aug 2020 07:33:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37098)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k93aZ-0006lo-Ar
- for qemu-devel@nongnu.org; Fri, 21 Aug 2020 05:43:59 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:30874
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1k93aX-00058S-4u
- for qemu-devel@nongnu.org; Fri, 21 Aug 2020 05:43:59 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598003035;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uHy0z3ZL/SsHPSphFKR0keUToPqePKam/fhbrnF0v4c=;
- b=UcGK2qBtPOojZ5G3GDNIdHPUi4z7j6N1U4V8sgXu+OP41HYtEJNbfTDV0LFStcWx2GgMYG
- GkItCNFpUUqdnOddOtSO929aVmOonepgRhhKBZFK3XRBj5MrM/9Rz5F7v18VFUzaUrGL4n
- Cr+OTTnCVtluSFEIRw1rpArFUlGo+qQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-285-Po89n_JiMiyJCbaFdb3_DQ-1; Fri, 21 Aug 2020 05:43:53 -0400
-X-MC-Unique: Po89n_JiMiyJCbaFdb3_DQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 22EC681F02C;
- Fri, 21 Aug 2020 09:43:51 +0000 (UTC)
-Received: from gondolin (ovpn-113-4.ams2.redhat.com [10.36.113.4])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 30F6C10013C2;
- Fri, 21 Aug 2020 09:43:38 +0000 (UTC)
-Date: Fri, 21 Aug 2020 11:43:35 +0200
-From: Cornelia Huck <cohuck@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: Suspicious QOM types without instance/class size
-Message-ID: <20200821114335.2b100333.cohuck@redhat.com>
-In-Reply-To: <20200820215529.GH642093@habkost.net>
-References: <20200820215529.GH642093@habkost.net>
-Organization: Red Hat GmbH
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k94aE-0007jy-Pp; Fri, 21 Aug 2020 06:47:42 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:32854)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k94aD-0004iA-1z; Fri, 21 Aug 2020 06:47:42 -0400
+Received: by mail-wr1-x444.google.com with SMTP id p20so1535892wrf.0;
+ Fri, 21 Aug 2020 03:47:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=gTUXUYJh9r4NpY0TQpnZlz7xsFLACmEn8LbRCqPweZg=;
+ b=M50H4+1wCfZUO/nLeJXh/oW1ntMenEGD5KwbAGlbcRdmvQW/dtj3bv2UQRxUXYrcMf
+ XCLmPe546BmU6MXVm9WNHZx4varVQkxfl+68IDxmNzUhVsQrrqsyA2H1/twsxOzTIDvJ
+ HcRbTQ8Pr7fV9p3+m2rLKw8xJFj/noIn/FqwWqgkVG+wLJVMMoGyfZUtD/wVEcIdJQNk
+ 31jMQpi6KDkqAsWjC3+rOtLNOkoScZCJ5qN4IuMimeKdOzhcInhxRzLMnOOz47pfck7G
+ 5xQov1A9iRtTcnEbDfZpHNbztwKMn6Y2OtZ4nslUfCIRtJB20RCHSKZUyHw5L4/7O+w1
+ NINg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=gTUXUYJh9r4NpY0TQpnZlz7xsFLACmEn8LbRCqPweZg=;
+ b=Zj4C3NiOo/s+jF9I/058zvs0E7Dn07Pl4Yv1Uah88GHvyRYp6C7xn3nSYnzJK1Gwqp
+ LHW61un3PMTxXYqzr0f0S/Aj2khRRHs4TBFn9lMizAZeiLLqmhoCmvgA1is6WIcK4sUP
+ 8dAVmLrhDWIgDGlz8TxlJLI7ymjxOToo82/kNZyCLqH8UwzaNo5dm1jmak6l2hYz4BY+
+ 86MVu9JqC+ZWKig6KYtAYsiB0ukHV3I3ladLI/0QkQWIBpsn96ZrXZBbudUI9mdzcV5T
+ EsY38GU48zSJjm9P6jum8In3jX0QhgqKaCxQ0EiDIvxyHlSA4X7jUfK+hDaps8MApAZg
+ 101A==
+X-Gm-Message-State: AOAM530fMf6c1/MGFnOH5TwcmXZ8qbga//7y9rCOKd8cTYYOR5UE3HWW
+ N/w5b2dqxvr/cVjx/NiRDGY=
+X-Received: by 2002:adf:e84d:: with SMTP id d13mr2161132wrn.126.1598006857111; 
+ Fri, 21 Aug 2020 03:47:37 -0700 (PDT)
+Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id 202sm4758012wmb.10.2020.08.21.03.47.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 21 Aug 2020 03:47:36 -0700 (PDT)
+Subject: Re: [PATCH] hw/arm/sbsa-ref: fix typo breaking PCIe IRQs
+To: Graeme Gregory <graeme@nuviainc.com>, qemu-arm@nongnu.org
+References: <20200821083853.356490-1-graeme@nuviainc.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e90ca59f-91ea-aa6a-94b7-f0bf9160b2f8@amsat.org>
+Date: Fri, 21 Aug 2020 12:47:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
-X-Mimecast-Spam-Score: 0.001
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/21 05:15:56
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20200821083853.356490-1-graeme@nuviainc.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,45 +120,39 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Cameron Esfahani <dirty@apple.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>,
- Richard Henderson <rth@twiddle.net>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: peter.maydell@linaro.org, leif@nuviainc.com, rad@semihalf.com,
+ qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lsClrYbfRCmp
+X-TUID: joWKhy0NNdxX
 
-On Thu, 20 Aug 2020 17:55:29 -0400
-Eduardo Habkost <ehabkost@redhat.com> wrote:
-
-> While trying to convert TypeInfo declarations to the new
-> OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
-> where instance_size or class_size is not set, despite having type
-> checker macros that use a specific type.
+On 8/21/20 10:38 AM, Graeme Gregory wrote:
+> Fixing a typo in a previous patch that translated an "i" to a 1
+> and therefore breaking the allocation of PCIe interrupts. This was
+> discovered when virtio-net-pci devices ceased to function correctly.
 > 
-> The ones with "WARNING" are abstract types (maybe not serious if
-> subclasses set the appropriate sizes).  The ones with "ERROR"
-> don't seem to be abstract types.
+> Fixes: 48ba18e6d3f3 ("hw/arm/sbsa-ref: Simplify by moving the gic in the machine state")
+> Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
+> ---
+>  hw/arm/sbsa-ref.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> ERROR: hw/s390x/virtio-ccw.c:1237:1: class_size should be set to sizeof(VirtioCcwBusClass)?
-> ERROR: hw/virtio/virtio-pci.c:2101:1: class_size should be set to sizeof(VirtioPCIBusClass)?
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index 570faac6e2..48c7cea291 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -565,7 +565,7 @@ static void create_pcie(SBSAMachineState *sms)
+>  
+>      for (i = 0; i < GPEX_NUM_IRQS; i++) {
+>          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+> -                           qdev_get_gpio_in(sms->gic, irq + 1));
+> +                           qdev_get_gpio_in(sms->gic, irq + i));
 
-VirtioCcwBusClass and VirtioPCIBusClass are both simple typedefs of
-VirtioBusClass (it's likely that I copied the ccw definition from the
-pci one). virtio-mmio instead uses VirtioBusClass directly in its
-checker macros.
+Oops...
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-I don't see a real reason for the typedefs, maybe ccw and pci should
-use the mmio approach as well?
+>          gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
+>      }
+>  
+> 
 

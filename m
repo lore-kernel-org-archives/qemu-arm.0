@@ -1,159 +1,163 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp430475lfy;
-        Fri, 21 Aug 2020 09:19:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwbeEIQ0MbwxeWM8xicy9JCBg+qMMulAu2FBTbj9rfODK8kqpCqhc6dQTLaZxu6C3qpg3E8
-X-Received: by 2002:a25:d10d:: with SMTP id i13mr4379045ybg.158.1598026742812;
-        Fri, 21 Aug 2020 09:19:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598026742; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp440514lfy;
+        Fri, 21 Aug 2020 09:30:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxlqX1T2RSmTBX97ttK8EcgYmEsS8vws800uIWsxTanKVC4Ox0ESaOZeZoyPZn0xi9MsIRp
+X-Received: by 2002:a25:3ce:: with SMTP id 197mr4745428ybd.493.1598027449060;
+        Fri, 21 Aug 2020 09:30:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598027449; cv=none;
         d=google.com; s=arc-20160816;
-        b=07rkr84Lf5kZMGvEdvWPLyMs2/ypAiYLYInpVgO38Qb+EF2e4ZrsaBqgzZMBtLUAyr
-         cTAsTIJBGJsJltso1S1O/y282yqiTAynO5zQmELoYsCGgcxmJxQv3XeHWdblH9miasch
-         yTL2O5/4X+esuio5zIyOnGAqQoHSEeY63u2NtHGX8VJx1hhv8vu/g1EGxKjxrGBh2uTa
-         wK+l++Vdoti6c0xrTXoF0zeZ0jWNLh/QTV/8HzltwieXVlrW3pDBKWOD9DU/8t5Y7Wr5
-         vayoLPguLnhgKlmoxVxc7kb0UeaDrGE9XW35ChwrZ3SPcbcDDbm+Qf/wldOfVie5Q97f
-         z1aw==
+        b=GeJagYuE1iPyQrxzb04FqPyPZ4qhc7yANceIKFsp/CYV9CqUT/+Wu7pha5bq+aMBbm
+         VZjVnLeHtUumnZ1ghA1Ie6phHYi9Z7O3vA+NSaeGbuNCxcoY0S3tqzhn2RKa7ahjJ643
+         YGiwNk+0KH6rgsTfW/28ELcNmqhBOlKcZ9/ok5VS17oOpCdEZ8D4PPTwVfI2Gbe3wMvN
+         +ENtBlmENDXTsLKj6sQhuv5QiyGkN7x6XZ7NtAFmSPc5YHJd3j4tPQcCAwZmXg54+gab
+         b0GWB29d5k7Lz990bNwD/WUPmgDhPyC7vfx0v8nj2v58HK+w7uDdg+P0B0mtYc8d3/1l
+         0+4Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=qLDh8XVkGea4uB8QZaVh8OdtptdFsOpXTmCURYKOR4c=;
-        b=oPMXf3RUM0Yqiq++W5f8lPqfP2hsZthH4t+a0ayyOJkK0Depwfn0GSpFr7j8oYgwuA
-         VBBPd8CfuYQKEYhbiirZD250zM8l1naQv1iMjVpbMCJimUzRyseBXNxQK6IoHKZjAUCN
-         B2jTIN5lkhgCV5ITEIdcF0p31jre877T3aJdXxEzX3NcLahQ0bWGlyh8/NHRjVC5Lbep
-         5pGBDL01G09EYrq2V4RhvW3DrS3cCbHGWZecY1QLUcILB78dxepPx1mpsJeBd3geb4D3
-         mXEtJSMlUMCjgchohf8O0aRyrca/0CKIIEj69jQnOjFn3lEZ9lMMo5UvZpr4CNFSScy1
-         Xq8A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=HWqwkfbMIQKiQpdnbw24fCwXZALtGYStinOFhF15nP8=;
+        b=itOBY2mSJkg/G71fcTTGKjURNK27N2QYT1TL7NN8r9jT2tm7B7RBBXv8xiua1cQByI
+         mlBMatQ1cXU+GRxX04HotZXbb6OesxejijO/BDaqCFqD5mR5+5Q4qWAFDq9aG3a9JPuc
+         DGdq0ZHFlaGDntSXvArK09XfnZ6HGtUt2DtWwDUXKuQRVOnLqb35DRBgJYwrnd9ij9Zn
+         n+aTNxAvvS/SrUu0TQGQaku7kRPFhNQWoaA55JuGT5v7J6aEbIhYjtFFW0m0Fe0ZqvF/
+         w3pBUt929S91N8PthDdwF8F87T48A6dXqnlnBTcXA32DbrNGAir/J9yhvofWA5le5HR3
+         m0jQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MkZ6C6tl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=XFdOZ22V;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k81si2636182ybk.192.2020.08.21.09.19.02
+        by mx.google.com with ESMTPS id o133si2430609yba.292.2020.08.21.09.30.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 09:19:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Aug 2020 09:30:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MkZ6C6tl;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:59074 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=XFdOZ22V;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57270 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k99ks-0004OW-6c
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 12:19:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57312)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k99wG-0007u7-4D
+	for alex.bennee@linaro.org; Fri, 21 Aug 2020 12:30:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59650)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1k99jR-00037s-SF; Fri, 21 Aug 2020 12:17:33 -0400
-Received: from mail-io1-xd44.google.com ([2607:f8b0:4864:20::d44]:43684)
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1k99vw-0007tV-Qn
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2020 12:30:29 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:41251)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1k99jQ-0005Fo-7n; Fri, 21 Aug 2020 12:17:33 -0400
-Received: by mail-io1-xd44.google.com with SMTP id s1so2242876iot.10;
- Fri, 21 Aug 2020 09:17:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=qLDh8XVkGea4uB8QZaVh8OdtptdFsOpXTmCURYKOR4c=;
- b=MkZ6C6tlpWVaXIjZc3xxDr90IDZWLEVcxoHcejXrHLfu9ITj74F+Ok/10ahQWY5U98
- NsF4cYYwEvMiqdiCap3nOCEtCaL+UjDTlOCjTyAiDCBlpoLjisNSRELo37+BrT4v3mIu
- oiHQPPcC/tWolo+VRWjXLI2Lt1jZIH0hejbGPRwojsqtURmzaccWTbAmLlyIhARULPqM
- IkDCNxA0r5bD6vIzWXHFXD5PvjViwIBoy/K34XA6BdDPpsK+9GwSRAAtgrZFwsd+FLcG
- FKlNtKtlXEBx/g346Sw1m2D2/0U8J2L9mO/KO+ZqWhjelxFUZidoD8RsZrNZehLhYNid
- Dmdg==
+ (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
+ id 1k99vt-0006mR-6B
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2020 12:30:28 -0400
+Received: by mail-ed1-x542.google.com with SMTP id w17so1929121edt.8
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2020 09:30:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HWqwkfbMIQKiQpdnbw24fCwXZALtGYStinOFhF15nP8=;
+ b=XFdOZ22VxsBhg14LK341LWAWJFSzlpQ8+eIX3hdz5+t+Ex3H4pdMkor7u673g960dr
+ KSx1BzhsRhapEEpxR8qcRbfKQUbCt6eg+Gzp2hZjxwTnj6aJklYtS5KTYHItVuA0dqO9
+ PnqsAdQ5twwiv9UhpwsajdcDLCYXpyYtr5juPaoxjbVblEOGxgk2qqKDZ/fd6yhqBQGy
+ fo15iBSD+627jp3oMTXvESGkIv2pR7pQUmQwqUR7paJpOLLe6TAHvbkPNY0Qu3ucfPzh
+ HIgXmHP8V76g2GIJjQrTXwBucXGPUeL7E5wKDp/ptZwJFdopuqU0QWfDQ+qE0npTZ54c
+ rb1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=qLDh8XVkGea4uB8QZaVh8OdtptdFsOpXTmCURYKOR4c=;
- b=SLfLNQoSsFc7H7hkJvworWIT8BKdUBJZTe2i9zonaXqS+USKCtOWSKKt9akYV9MsnL
- BclvdYIDRxh9LW7ph8B3hRZv1t3PQjiweRaeOqt9F2XghXFYwYkEeStrmOckMBG/ffNG
- due64CltIvmkouQYDSGif0PpgJvDh8aHmjUv50qrEDl4OOiiEwveUyVlvC16x93IeyTx
- IiWDBOMKbh0IsfXri01R8kSf96OcV+hllbr3QqtWa8ZTHQPTeS/J2PRDlwiq+APUESa0
- s50hpMjTvOT5VFSKqeX0cIsGmrxwhokQTbDNa3Lsm3vGH3DvHSy9wrVMnGYmkDqZy122
- nnRg==
-X-Gm-Message-State: AOAM5319gFsOH8/pvEcowRVpqGpf5SwLIfrJzlrOO/i2lVxNAOVuLd3L
- D1M+bpI4Gil9OyDUahJ0WiGgRYXfv2Oy3yk4wHA=
-X-Received: by 2002:a05:6638:248e:: with SMTP id
- x14mr3156151jat.135.1598026649601; 
- Fri, 21 Aug 2020 09:17:29 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=HWqwkfbMIQKiQpdnbw24fCwXZALtGYStinOFhF15nP8=;
+ b=WJcW6mdNqe/bbJqJzmR/nTbRU77jjK1lyjsjaxuePZMtWWUcc1+3a5fOJBHGldJWr+
+ gUsVFrHN5m4uKfhNh5unEKd7ZRdGwN4H+9D2xWNWJ//uJBQW9KOFdzvu1+gcl7Pw1/bS
+ unHvBY0d0347zZvzG49cgBPFXSNaVVCZeYKMS0+1iqIFPuABU56DxeFKEENrxNgnsG11
+ BVSeGJqFRTh13Ssu9/fuV/03ANqv9sF6NjePoMZNm/pWr32qHHGA9ZdWpG4f44RBmWBi
+ UGubBJzm60GH9XLDjmOSZmivECdg5/+c5KynN9sFkiSc6Y+nHd3EGJxwaR1jESfdJET9
+ GEKg==
+X-Gm-Message-State: AOAM533TlUz41xJYdrKp3riSrCedHIYqbtSZKWsNcHbDjC2z3AXRnrEh
+ L2TsJXjTQqzfz/wA8vSAlh8TLpDIx6BIl0mv
+X-Received: by 2002:aa7:c70b:: with SMTP id i11mr3566222edq.272.1598027422929; 
+ Fri, 21 Aug 2020 09:30:22 -0700 (PDT)
+Received: from localhost.localdomain
+ ([2001:1715:4e26:a7e0:116c:c27a:3e7f:5eaf])
+ by smtp.gmail.com with ESMTPSA id dk28sm1398030edb.90.2020.08.21.09.30.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Aug 2020 09:30:22 -0700 (PDT)
+From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 0/5] virtio-iommu: Built-in topology and x86 support
+Date: Fri, 21 Aug 2020 18:28:34 +0200
+Message-Id: <20200821162839.3182051-1-jean-philippe@linaro.org>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-References: <20200820215529.GH642093@habkost.net>
-In-Reply-To: <20200820215529.GH642093@habkost.net>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 21 Aug 2020 09:06:51 -0700
-Message-ID: <CAKmqyKO2z3XMeA9-_hMp0ebdSG03db5FtmbUk3uF-rA9Qi1FaA@mail.gmail.com>
-Subject: Re: Suspicious QOM types without instance/class size
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d44;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd44.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=jean-philippe@linaro.org; helo=mail-ed1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Gerd Hoffmann <kraxel@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Cameron Esfahani <dirty@apple.com>,
- qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Richard Henderson <rth@twiddle.net>,
- "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>,
- "open list:New World" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 72Ly7zQnTwjZ
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
+ eric.auger@redhat.com, Jean-Philippe Brucker <jean-philippe@linaro.org>,
+ marcel.apfelbaum@gmail.com, pbonzini@redhat.com, rth@twiddle.net
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kEDBahRcR3rl
 
-On Thu, Aug 20, 2020 at 2:56 PM Eduardo Habkost <ehabkost@redhat.com> wrote:
->
-> While trying to convert TypeInfo declarations to the new
-> OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
-> where instance_size or class_size is not set, despite having type
-> checker macros that use a specific type.
->
-> The ones with "WARNING" are abstract types (maybe not serious if
-> subclasses set the appropriate sizes).  The ones with "ERROR"
-> don't seem to be abstract types.
->
+Add a topology description to the virtio-iommu config space, allowing to
+create a virtio-iommu device on platforms without device-tree. Our
+long-term plan is to add an ACPI table that describes this topology, but
+it will take a while to ratify. This built-in topology is needed anyway
+for platforms that don't use either DT or ACPI (e.g. microvm) and can be
+used as a temporary boot method for ACPI platforms as well.
 
-> ERROR: hw/core/register.c:328:1: instance_size should be set to sizeof(RegisterInfo)?
+Patch 1 looks unrelated, but is required to boot with a firmware on x86.
+As previously discussed on this list:
+https://lore.kernel.org/qemu-devel/aa5fa9e6-6efd-e1a3-96c6-d02ba8eab4c8@redhat.com/
 
-I'll send a patch out for this one today.
+This work depends on the proposed spec change for virtio-iommu (v2):
+https://lists.oasis-open.org/archives/virtio-dev/202008/msg00067.html
 
-If you are fixing all of these as part of a series I'm also happy to
-just let you do that.
+And the Linux implementation (v3):
+https://lore.kernel.org/linux-iommu/20200821131540.2801801-1-jean-philippe@linaro.org/
 
-Alistair
+Eric Auger (1):
+  hw/i386/pc: Add support for virtio-iommu-pci
 
->
-> --
-> Eduardo
->
->
+Jean-Philippe Brucker (4):
+  virtio-iommu: Default to bypass during boot
+  linux headers: Import virtio-iommu header from Linux
+  virtio-iommu: Declare topology in config space
+  hw/arm/virt: Remove device-tree restriction on virtio-iommu
+
+ include/hw/virtio/virtio-iommu.h              |  4 ++
+ include/standard-headers/linux/virtio_iommu.h | 44 +++++++++++++
+ hw/arm/virt.c                                 | 10 +--
+ hw/i386/pc.c                                  |  9 ++-
+ hw/virtio/virtio-iommu-pci.c                  |  2 -
+ hw/virtio/virtio-iommu.c                      | 62 ++++++++++++++++---
+ hw/virtio/trace-events                        |  4 +-
+ 7 files changed, 115 insertions(+), 20 deletions(-)
+
+-- 
+2.28.0
+

@@ -1,94 +1,94 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp487248lfy;
-        Fri, 21 Aug 2020 10:31:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxoeosOdBKd3mMiXM7cNzkBF1TAst8Lcce2IU5iRelEArVve/Kdb1XIDUdiQwkwhdvOIKzP
-X-Received: by 2002:a25:5856:: with SMTP id m83mr5124767ybb.325.1598031118548;
-        Fri, 21 Aug 2020 10:31:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598031118; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp487581lfy;
+        Fri, 21 Aug 2020 10:32:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxbkeV+pi31DuSz4/IjzO12cfI+A1s9ucCLZcr3eXPq766MsU4v0QwBmawTD6qzH8YCUfXF
+X-Received: by 2002:a25:3789:: with SMTP id e131mr5397123yba.406.1598031142428;
+        Fri, 21 Aug 2020 10:32:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598031142; cv=none;
         d=google.com; s=arc-20160816;
-        b=aya95Ncju+Oh+niHfVHcoYu+FyC/ejwNkmN0+CrjjTuye2h290T5pgY0PelBuN4r46
-         378Q3XpQWHLKVR1l1Ja/RHiV7fI6PC67prYcE66x2KJxJxRxqtcZDP5P34l5W5tCXg3G
-         ygr3BH3VN+kbAQtr/SUPYfd1oKKh7OWxfkYZxqlYO1Cj4M7Sm6MwyseCPCHVqxycfgss
-         NLPw2tX2g9Hs8IsVzsJvlm1THvl4fMsLvFypPoQgSxtRKYby+Lz3BadUde8m+V+8tEgz
-         8j4MtR0jEhT8qqaC3iADtXqdKyeHnAL++fyTXJTtvPZ5X6ublLSUE6QGLVzt7Do5290g
-         3wrw==
+        b=KS8UjQEWe4ZWnC4MykdyJrJy1/A1ihPmvULLEO5lLVAOv+nfMtd7UGUzTomGvhzx3t
+         YaeRb+Z1D+Qd85K4Xn5uVkd4KZGHZ02upvZKdWlygyz5imUz7dROw4xWuMjbHlXXz71q
+         /L07b7RYqVicwH+kYxgV8WdhY3zKwg6EOqCgb6ATT6sC9gXGoV7mHf4Z1T12Mc0hitc5
+         0GgxclbSumpwRp30+SXxmRv7eDDpyUsNG3HgB7EFw8LcuT7hTPND7lDnYaujQFZv5d6/
+         f/7LQXks8u4BelN2QgKfyKmxG+LFNOSXLXa+PGi0M0El0a70iqPunZY636gsRhph7WPs
+         YzcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=l6Svpz1zFgu3rW3hNJEs7xxdWfxftjayMdaBJY3QTHs=;
-        b=Jbvx/VUoaT7CLzOeHX4ir6doNaA/8sAR1VLAWyjFOGRG1FZ7HFCqgJU+vBGVPWvjHC
-         THIXr82D+hbVoa4O+ngcE40a2+jCGEFu51Fq+jorW45u291V7U/eSVRyLiPXIMcim/3x
-         v+kOAKxvYs4zVwaJvbcUHTIRaKW0uI3cS0ub4ecDSsaZ6k4pqfHX1nBD557EPsVQxGtt
-         5U9mIODlQ9ZWuddZN6mXuPzBbeWYSoL7+Yay4iNvrC/aHIEHISXiNZ27mbkJHYC9aF/E
-         4pSvxNH2X03xpHDcWVd191RDRYBaldqofpSHKtGCN8sm7Cf1cfMr4kfkEyBcezsLLPvL
-         PQZw==
+        bh=7MDjqCYoGN9RsgmgtLGjf6jZggXntu+eUZw2U4ch4n0=;
+        b=cc831b/ym72nmmAYy6Hwmf/6bb87InxaD26VzfvLTrU2ehx+WoYClm4oC87AYed/Nr
+         BPE2x0eKJyQaxpUgBIcFprKubvnBXQI+Gj3v3zmRrQro5Izw9Xcfkf05npykWcLaWnML
+         8ifi/aVcCQPKdiwYfkxJBTNh8Kzw5flWWhgIV0UqsHQ3jnrz5PaBcwGPRjekegEBynaO
+         3WE0V7iE1LrVU1phakQbd1zhJ3Lb20XWcJSkP6zCOrEZ7urtS1G/ZTu037BX8qUcjOem
+         bo3LbkbrPmaszWKkqonxtSv19GWKqL+fQhWt4M2oxHdoSW/1XLUMnyeU7Ez3E0PpK1vW
+         KzsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="b/bdVI6B";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MW7F0ENT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s91si2806009ybi.418.2020.08.21.10.31.58
+        by mx.google.com with ESMTPS id r186si2855140ybc.113.2020.08.21.10.32.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 10:31:58 -0700 (PDT)
+        Fri, 21 Aug 2020 10:32:22 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="b/bdVI6B";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=MW7F0ENT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:48822 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49912 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k9AtR-0005Gp-VA
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 13:31:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57606)
+	id 1k9Atp-0005iM-Lh
+	for alex.bennee@linaro.org; Fri, 21 Aug 2020 13:32:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57602)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9ArX-0001vT-Bx; Fri, 21 Aug 2020 13:29:59 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d]:40002)
+ id 1k9ArX-0001uO-6e; Fri, 21 Aug 2020 13:29:59 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:38062)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9ArV-0001H4-14; Fri, 21 Aug 2020 13:29:58 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id k20so2553034wmi.5;
- Fri, 21 Aug 2020 10:29:56 -0700 (PDT)
+ id 1k9ArU-0001Gw-CF; Fri, 21 Aug 2020 13:29:58 -0400
+Received: by mail-wr1-x431.google.com with SMTP id w13so2335082wrk.5;
+ Fri, 21 Aug 2020 10:29:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=l6Svpz1zFgu3rW3hNJEs7xxdWfxftjayMdaBJY3QTHs=;
- b=b/bdVI6BmoT9zR6l2THzuwd6jo381NwqczDg7GfTuRvYrwWr4j5s6PDlgurFxwAKu1
- h4KX5KuoOe6CCGkTryy4UDrKPAQPvWCtYmHw9IYCFNJRzfornJce1HMfnjus9us2YM+q
- KBAHWqZVwQ98C5bzfLk+sGlTyXg0T0nNB6czmQV2ygH08Y/07D+bp0KezGBpnXNHDIwS
- nFvaCRwKoio/AFFyMbBltmLC4BiKkUQzNMfFY+tS9xlIXP1NfF6oOVb1/VYNaYdV2X1/
- rVyZzxTUobirV1SStB+YoaJg48PfQfYbJSoU7FNW7YdbG4TwLeM5J0Da2WhisOQu0Btr
- Avtg==
+ bh=7MDjqCYoGN9RsgmgtLGjf6jZggXntu+eUZw2U4ch4n0=;
+ b=MW7F0ENTmRAsnb35u56Sy4I7+q5C1nGvAV68vJlxQAT2lLQcSrTDTLzTCMcDgxs84p
+ wcd2WW24QQpd6254CONOUocMG3gt0ymPzcvfhGOwpIOBZpx9cxmBShRBrblh1ltCLFSv
+ PhVTJxWDQyqja2yuhfN04Z3/7xwFve2UsI9NgFqluRF5TCTZ3EjBXLj+HOraG4Ezeswj
+ QBjXkf3DWSnhIwIgkVYCzur/0f+eNMGthxmNpMj/n7Dl+KhY09WrCG9YBApxqDlkrMTu
+ RaOL+Nje3k+k8ilR1kfSAnghsH7x+oajKFOdVhuvIVBWNs8xTCwu0NRrjhF666fhHIt+
+ peHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=l6Svpz1zFgu3rW3hNJEs7xxdWfxftjayMdaBJY3QTHs=;
- b=SQXxrk6dYAdejlIMRFYrSY+4au400bb9GG7Dh7whOVmE4xaNFoFyjKjtKMPY/x+Zbw
- /TuozJYjc1aFkkULwAktAc6Ir/49Kb6cBdoNJsqKPPBSglIJ+xEYUVx6/oIMijFyzziM
- d1AtTnFqPLvlG4cWtRd078Ty6UWn8FNJt21r/VRef1LpBW1dp24IlQgXT1ukEtYSrzkr
- nvFmDv7BPTXEzFr20/BKn53YDz9ydGd5lGHiEjOaTsaaa3oVL6yuhw/vEmAXMX5ebWxl
- BpYIQu2dcjdtvif2Hf/uGhGQw9eDlEJD+nGmA0+XbCqRCx9vYxOEcJn4NaA7hBvb67LI
- ykxg==
-X-Gm-Message-State: AOAM532V0f466mDNUikHfUUxQx3viHn0VsMXVX67q0y9HXDad7grJhrA
- cBXmyCNo963Cw0al+U+EAwAOEvv8DXU=
-X-Received: by 2002:a7b:c40b:: with SMTP id k11mr4208451wmi.19.1598030994911; 
- Fri, 21 Aug 2020 10:29:54 -0700 (PDT)
+ bh=7MDjqCYoGN9RsgmgtLGjf6jZggXntu+eUZw2U4ch4n0=;
+ b=ddSX3nzSU97/CB3QmVRGJcAEoGu99z1qjcb73jMFk/TIy4mZipm9Uq8mebMB/1UDHx
+ dj9J7y6Iqf1yqLcF/Qpydm62XJcBk7UTqs66cTa3ScL8YiteXMccpFxXxdZqJ4jnlh2o
+ VBW0o/ToHhF+3pUYLNRaxmV/3CSB5cLddAjnqAwVS3oBlsMdMyZQUjwCTzh030hnClXs
+ NvzIcrr533rnjBU3s3Yexx52VKCQ5qIXcWu24OuaeqMkIIDeFRT0LxmVYM10qsM3nylO
+ SnEBppTbuVDyLh2XRiM6VsCWmcaxKdb/JVdT4AZzPtVip/iJhucXpy8f2O/VFzY/caFe
+ Cslw==
+X-Gm-Message-State: AOAM530UGvsYVZWKUwpA9gNXeN1uO9d9Kx+TjD9vHqJOdRQ+UsUBCXuP
+ GLU3O2DtpCdI7CIOW2N8ifXXUtIg8CQ=
+X-Received: by 2002:adf:ab57:: with SMTP id r23mr1834762wrc.386.1598030993404; 
+ Fri, 21 Aug 2020 10:29:53 -0700 (PDT)
 Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id 32sm5315471wrn.86.2020.08.21.10.29.53
+ by smtp.gmail.com with ESMTPSA id 32sm5315471wrn.86.2020.08.21.10.29.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Aug 2020 10:29:54 -0700 (PDT)
+ Fri, 21 Aug 2020 10:29:52 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PULL 23/23] hw/sd: Correct the maximum size of a Standard Capacity
- SD Memory Card
-Date: Fri, 21 Aug 2020 19:29:16 +0200
-Message-Id: <20200821172916.1260954-24-f4bug@amsat.org>
+Subject: [PULL 22/23] hw/sd: Fix incorrect populated function switch status
+ data structure
+Date: Fri, 21 Aug 2020 19:29:15 +0200
+Message-Id: <20200821172916.1260954-23-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200821172916.1260954-1-f4bug@amsat.org>
 References: <20200821172916.1260954-1-f4bug@amsat.org>
@@ -96,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -129,54 +129,47 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
  qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: grXfjTcHxivZ
+X-TUID: EpIYGqRhJ4e1
 
 From: Bin Meng <bin.meng@windriver.com>
 
-Per the SD spec, Standard Capacity SD Memory Card (SDSC) supports
-capacity up to and including 2 GiB.
+At present the function switch status data structure bit [399:376]
+are wrongly pupulated. These 3 bytes encode function switch status
+for the 6 function groups, with 4 bits per group, starting from
+function group 6 at bit 399, then followed by function group 5 at
+bit 395, and so on.
 
-Fixes: 2d7adea4fe ("hw/sd: Support SDHC size cards")
+However the codes mistakenly fills in the function group 1 status
+at bit 399. This fixes the code logic.
+
+Fixes: a1bb27b1e9 ("SD card emulation (initial implementation)")
 Signed-off-by: Bin Meng <bin.meng@windriver.com>
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Tested-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Message-Id: <1598021136-49525-2-git-send-email-bmeng.cn@gmail.com>
+Message-Id: <1598021136-49525-1-git-send-email-bmeng.cn@gmail.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/sd/sd.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ hw/sd/sd.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 805e21fc883..483c4f17204 100644
+index 7c9d956f113..805e21fc883 100644
 --- a/hw/sd/sd.c
 +++ b/hw/sd/sd.c
-@@ -51,6 +51,8 @@
- 
- //#define DEBUG_SD 1
- 
-+#define SDSC_MAX_CAPACITY   (2 * GiB)
+@@ -807,11 +807,12 @@ static void sd_function_switch(SDState *sd, uint32_t arg)
+     sd->data[11] = 0x43;
+     sd->data[12] = 0x80;	/* Supported group 1 functions */
+     sd->data[13] = 0x03;
 +
- typedef enum {
-     sd_r0 = 0,    /* no response */
-     sd_r1,        /* normal response command */
-@@ -314,7 +316,7 @@ static void sd_ocr_powerup(void *opaque)
-     /* card power-up OK */
-     sd->ocr = FIELD_DP32(sd->ocr, OCR, CARD_POWER_UP, 1);
- 
--    if (sd->size > 1 * GiB) {
-+    if (sd->size > SDSC_MAX_CAPACITY) {
-         sd->ocr = FIELD_DP32(sd->ocr, OCR, CARD_CAPACITY, 1);
+     for (i = 0; i < 6; i ++) {
+         new_func = (arg >> (i * 4)) & 0x0f;
+         if (mode && new_func != 0x0f)
+             sd->function_group[i] = new_func;
+-        sd->data[14 + (i >> 1)] = new_func << ((i * 4) & 4);
++        sd->data[16 - (i >> 1)] |= new_func << ((i % 2) * 4);
      }
- }
-@@ -386,7 +388,7 @@ static void sd_set_csd(SDState *sd, uint64_t size)
-     uint32_t sectsize = (1 << (SECTOR_SHIFT + 1)) - 1;
-     uint32_t wpsize = (1 << (WPGROUP_SHIFT + 1)) - 1;
- 
--    if (size <= 1 * GiB) { /* Standard Capacity SD */
-+    if (size <= SDSC_MAX_CAPACITY) { /* Standard Capacity SD */
-         sd->csd[0] = 0x00;	/* CSD structure */
-         sd->csd[1] = 0x26;	/* Data read access-time-1 */
-         sd->csd[2] = 0x00;	/* Data read access-time-2 */
+     memset(&sd->data[17], 0, 47);
+     stw_be_p(sd->data + 64, sd_crc16(sd->data, 64));
 -- 
 2.26.2
 

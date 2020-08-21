@@ -1,193 +1,198 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp197709lfy;
-        Fri, 21 Aug 2020 04:35:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6XayS015D8De9R7p0XVhSSlbjQxzGEzITuQwPFEnL6dC+KQ0bv7F7jrSUs8ve71pROJVo
-X-Received: by 2002:a05:6902:1026:: with SMTP id x6mr3405348ybt.349.1598009714573;
-        Fri, 21 Aug 2020 04:35:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598009714; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp199690lfy;
+        Fri, 21 Aug 2020 04:38:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzsaLxxzSYXVCZLZyycfFW2Aas0XOByTibqD7ZbY4fP8QhvYHZukJSX+tqXzQfm3AG8kAcT
+X-Received: by 2002:a25:6b4e:: with SMTP id o14mr2915042ybm.506.1598009892801;
+        Fri, 21 Aug 2020 04:38:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598009892; cv=none;
         d=google.com; s=arc-20160816;
-        b=NXTIiCMC4wBqlPgUhbeK7JTFt1c2ARdB8C+ip4cTjA0X7KUBpY5tqKO/47l4aFXcXh
-         V44Ppl0McApiobqOuDk1U6HyWWQmCr8ldd8Ik08+jusZcaTpBdXD3XnOI0VAGAgVU+4P
-         CslrRIa4lOuSSWVgI1G85y9pm1+Rl7G/V06ymioV0V0JDW4vc54ngToa1uyCD1yEG2u4
-         Rg9xEjSp1yG8o5DYSFGXTepBsjlPomeKQ5s0ZtrfFKlKA25adgJtQw5IGsjP1Wcxap9+
-         57P6mCF68GcLul7tSNYv0z9//8Z0//uTGt38h+WkR6k8yudDt6UWczNVVdkp54VYWmiN
-         ZRFA==
+        b=f9CDm1w221GkLsUpqy0jORke6W0QB98+1O2nLba7dahUSAPLMVq31739GPTx7PU9UK
+         xbLGGkBfvwe0u9g72/NkXpQmFtCRgzehjsIiIKDjYDbiw93GGlUydHaFptrx+terVgyG
+         vgaGvkysIWj8GkoeMIMVQOKJ/i96zTHkAWaAnbB4LD3yZLC327mZixo5ISr8AeaoY7xY
+         CSVv24NbECg1WT+8S6nYTrhZbP2fYmXnz0btZvYRMWJUuYcsdLsNUEgz9p2Jfgxhiy8O
+         jmP/I7kVeVtlYI84RIZ2tJSMASH9cU0l2wBplNGqNk7Gg+xGZ7JunGfUMNRf3DMEyVUM
+         o/8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=z9Bbo63JPP1RS0+BjeGn5HifSLvIYNgoTQUnrZc/YeY=;
-        b=A2VZtDICXDQ0gcEHt76FSAaCOPJZHkgHrFMP+tXuZLQ70XVyj9ztYvhICitFqhl15i
-         /V+sAvtlvIeq4TtH3LjHCPexaixPI0i8ENdfCBGpjOnYygbaGNZ2qSPErfyyZywdJpqq
-         W9/3mcuwQXH7RfumTgOZayEgLMnZ8hwwFZlOGTzVGqT33LM3xd5mTkLbezv0z/EBIcT/
-         X4Vq5A76+Pbk9LQF6KCquwcPQTktiuZue4lS3WgTcnaqXUC8wvVIwPNngfUIY9MXThAh
-         qkLzpJyXYGp4sK2UNXJKPdF1WH4kp65JxYQ6QJwLZ8M5Kyo2nJn/81uzK4hC5iJvqTMd
-         1lqw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=BqyZ7CAmD63t7T22Vj5I6SXpsad92zDeG6KVd4AtduU=;
+        b=vA+pQUUHqgVfc6HHQW3dhRMgEesJo5Hyizq+T9+isiT6kVFcp11xINtQLv0Rz6iaSq
+         qRpQwG5pUIq90qYrsYm7f95bGXRG5WOYQj9TQ/o98jQ0Ig+M3pivy+nQ0/xbvSdqcf8A
+         2YEhlF2JkEeDTWz2KR6hsJ85lUA8JLOykJiS5CtAXYnk+iBdh+1bVHcse+quCjH2bXaX
+         eKW65fm+NX/Eu1q1BhzajstbPcx92Pb46iwa+tNZGoBwGAOujPMJEFSjL5SqQeR2m3GU
+         pL5IM0vrCagK+ajrv5SoMgL8A//uIQ29T21Jrg+X3x0OpC4DdYZpYuBRzOI41B1BwmW8
+         dybw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=MNbyrsFr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t6SJI0Ef;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k13si2282407ybk.164.2020.08.21.04.35.14
+        by mx.google.com with ESMTPS id v74si2002840ybv.181.2020.08.21.04.38.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 04:35:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Aug 2020 04:38:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=MNbyrsFr;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
-Received: from localhost ([::1]:58324 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=t6SJI0Ef;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:43838 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k95KD-0007Ds-V1
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 07:35:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38314)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k95N5-0004Ot-R2
+	for alex.bennee@linaro.org; Fri, 21 Aug 2020 07:38:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40006)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1k94gR-00043f-6K; Fri, 21 Aug 2020 06:54:07 -0400
-Received: from mta-02.yadro.com ([89.207.88.252]:57210 helo=mta-01.yadro.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
- id 1k94gK-0005II-U5; Fri, 21 Aug 2020 06:54:06 -0400
-Received: from localhost (unknown [127.0.0.1])
- by mta-01.yadro.com (Postfix) with ESMTP id 23706574ED;
- Fri, 21 Aug 2020 10:53:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
- in-reply-to:content-disposition:content-type:content-type
- :mime-version:references:message-id:subject:subject:from:from
- :date:date:received:received:received; s=mta-01; t=1598007235;
- x=1599821636; bh=aDNQCIk4AbizCxvc3FytHfG88CXeatRS0JwlmnDZoHs=; b=
- MNbyrsFr49PxjVn0azynTz0LtCXzOsncJaDtYNMCoWaMNNaVCRvHPdUcWKI0QVU+
- A6PkaenRzP8XIwO/jWnpq/0zxh7Gg5uuy/aC9569bjjJWFRzTAPgs3i0c8IS93JZ
- dHfaZhV2pJYVfYWL/nbiczQic1cvhkLVx+o8Z9reyAg=
-X-Virus-Scanned: amavisd-new at yadro.com
-Received: from mta-01.yadro.com ([127.0.0.1])
- by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id p9pgP2Uiji3Y; Fri, 21 Aug 2020 13:53:55 +0300 (MSK)
-Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com
- [172.17.10.102])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
- (No client certificate requested)
- by mta-01.yadro.com (Postfix) with ESMTPS id DC9BA52195;
- Fri, 21 Aug 2020 13:53:53 +0300 (MSK)
-Received: from localhost (172.17.204.212) by T-EXCH-02.corp.yadro.com
- (172.17.10.102) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Fri, 21
- Aug 2020 13:53:53 +0300
-Date: Fri, 21 Aug 2020 13:53:52 +0300
-From: Roman Bolshakov <r.bolshakov@yadro.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: Suspicious QOM types without instance/class size
-Message-ID: <20200821105352.GA89922@SPB-NB-133.local>
-References: <20200820215529.GH642093@habkost.net>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k94p6-0005Nk-LP; Fri, 21 Aug 2020 07:03:04 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:53623)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k94p4-0006SC-S1; Fri, 21 Aug 2020 07:03:04 -0400
+Received: by mail-wm1-x341.google.com with SMTP id u18so1427862wmc.3;
+ Fri, 21 Aug 2020 04:03:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=BqyZ7CAmD63t7T22Vj5I6SXpsad92zDeG6KVd4AtduU=;
+ b=t6SJI0Ef5qaWA2of06HMPP4Sc7bzs4aAFbjUzdxS6r5JCARQBnPXVVD3ttKZq/4gZl
+ saKIAQN2hbTl/Hs9FEc0Z4rolXTYWyjLDkPhqCOeRi5eHhoVz1qYg2wwVGymz2yZIlv9
+ ZKRCuYvfEO9S4qA+sJLfyPJ2x8JmFjq2tznr5oK2LdEIP0RVm2seOIzazSaP2+T3UUYe
+ pw12/CHTosKVlITXHVG0Zc17XlM8BacoXM81VRZlEnLTRIZcDDQTyAUdamNhQ/v2sY4e
+ o9LPrXMHv/x/5xWEMzVmz4A9p2TBkgbZNGr5SzK1vOt7+NdZ2cg38ih9/vCp7+B87/4W
+ yeeQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=BqyZ7CAmD63t7T22Vj5I6SXpsad92zDeG6KVd4AtduU=;
+ b=L9o0wIxcHs/F2kcmGj4VxFiq8NLtcW8kQI06EfyJBP5tiMNpGjDTTbVYtUPKUrFYY9
+ eafyZntRXFc99Jzt83IY9r4DrMsYeig05xlfXx99FDZaLAlV2nrvcfcbhy1OHPt5it3y
+ JGSqV+wEeOZQ1C+t7l62qhjjglbI00fQ6qxP2if6sbQDzQ1xbflSeWzYQxeNhUAuL7F5
+ 9OvIbxoKh9ts5Bkl/OJ+Nwd/+MrNFJnyLr3XIvfG3Fu5+kFNghZxJnfh1attq1Sd9U7/
+ RqcHufpPvJR4XjbjqV2PklrhyUeLw4RoZeEZWs+mkLhAyqPs28QMUGgqLEA8YhOKENAy
+ K/vA==
+X-Gm-Message-State: AOAM533ACGLormLtiIRvL9zsVQh3UWX3wrwOhCYfA75Y9uhdXyvTRl9G
+ MxH516qVmv2qeOad+G+AFyY=
+X-Received: by 2002:a7b:c5d0:: with SMTP id n16mr3138037wmk.7.1598007781188;
+ Fri, 21 Aug 2020 04:03:01 -0700 (PDT)
+Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id d21sm4613628wmd.41.2020.08.21.04.02.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 21 Aug 2020 04:03:00 -0700 (PDT)
+Subject: Re: [PATCH v1 0/2] pc-bios: petalogix: Re-generate DTB and add DTS
+ files
+To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org
+References: <20200820194342.1292611-1-edgar.iglesias@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <59239d83-7d52-897a-95cd-5916531461b3@amsat.org>
+Date: Fri, 21 Aug 2020 13:02:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20200820215529.GH642093@habkost.net>
-X-Originating-IP: [172.17.204.212]
-X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
- T-EXCH-02.corp.yadro.com (172.17.10.102)
-Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
- helo=mta-01.yadro.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/21 06:53:56
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20200820194342.1292611-1-edgar.iglesias@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Cameron Esfahani <dirty@apple.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Richard Henderson <rth@twiddle.net>,
- "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5ZKM2pNC07n/
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
+ luc.michel@greensocs.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hZLePhrozIIl
 
-On Thu, Aug 20, 2020 at 05:55:29PM -0400, Eduardo Habkost wrote:
-> While trying to convert TypeInfo declarations to the new
-> OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
-> where instance_size or class_size is not set, despite having type
-> checker macros that use a specific type.
+Hi Edgar,
+
+On 8/20/20 9:43 PM, Edgar E. Iglesias wrote:
+> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 > 
-> The ones with "WARNING" are abstract types (maybe not serious if
-> subclasses set the appropriate sizes).  The ones with "ERROR"
-> don't seem to be abstract types.
+> This adds missing device-tree source files for the petalogix boards
+> with recompiled DTBs.
+> 
+> Cheers,
+> Edgar
+> 
+> Edgar E. Iglesias (2):
+>   microblaze: petalogix-ml605: Add device-tree source
+>   microblaze: petalogix-s3adsp1800: Add device-tree source
+> 
+>  pc-bios/petalogix-ml605.dtb      | Bin 9982 -> 9882 bytes
+>  pc-bios/petalogix-ml605.dts      | 350 +++++++++++++++++++++++++++++++
+>  pc-bios/petalogix-s3adsp1800.dtb | Bin 8259 -> 8161 bytes
+>  pc-bios/petalogix-s3adsp1800.dts | 282 +++++++++++++++++++++++++
+>  4 files changed, 632 insertions(+)
+>  create mode 100644 pc-bios/petalogix-ml605.dts
+>  create mode 100644 pc-bios/petalogix-s3adsp1800.dts
 > 
 
-> ERROR: target/i386/hvf/hvf.c:908:1: instance_size should be set to sizeof(HVFState)?
+I suppose the test_microblaze_s3adsp1800() test in
+tests/acceptance/boot_linux_console.py has the dtb embedded after the
+kernel.
 
-Hi Eduardo,
+Do you mind adding another test explicitly using this dtb?
+That would cover any further changes in these files.
 
-How do you get the error?
+Also, can you add a test for the kc705 EVB (and previous)
+boards as you suggested here?
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg605124.html
 
-Given your changes, instance size should really be sizeof(HVFState).
+I already added a test for the cris/etraxfs board, will send
+it soon. Well you might wait for it and use it as template too.
 
-BTW, the object definition for hvf seems different from KVM (and perhaps
-wrong?), e.g. HVFState is allocated within init_machine handler and then
-assigned to a global variable:
+Anyway,
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-static int hvf_accel_init(MachineState *ms)
-{
-    int x;
-    hv_return_t ret;
-    HVFState *s;
-
-    ret = hv_vm_create(HV_VM_DEFAULT);
-    assert_hvf_ok(ret);
-
-    s = g_new0(HVFState, 1);
- 
-    s->num_slots = 32;
-    for (x = 0; x < s->num_slots; ++x) {
-        s->slots[x].size = 0;
-        s->slots[x].slot_id = x;
-    }
-  
-    hvf_state = s;
-    cpu_interrupt_handler = hvf_handle_interrupt;
-    memory_listener_register(&hvf_memory_listener, &address_space_memory);
-    return 0;
-}
-
-static void hvf_accel_class_init(ObjectClass *oc, void *data)
-{
-    AccelClass *ac = ACCEL_CLASS(oc);
-    ac->name = "HVF";
-    ac->init_machine = hvf_accel_init;
-    ac->allowed = &hvf_allowed;
-}
-
-static const TypeInfo hvf_accel_type = {
-    .name = TYPE_HVF_ACCEL,
-    .parent = TYPE_ACCEL,
-    .class_init = hvf_accel_class_init,
-};
-
-Thanks,
-Roman

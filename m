@@ -1,94 +1,93 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp488813lfy;
-        Fri, 21 Aug 2020 10:33:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyBusf9gR83j5YCR8eVAL6wH0q1lDE/RDCOJd0pqdXilOXrJRrz/SiwO2ihM+4KTsYkwHKz
-X-Received: by 2002:a25:ccc3:: with SMTP id l186mr4632459ybf.382.1598031236159;
-        Fri, 21 Aug 2020 10:33:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598031236; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp489669lfy;
+        Fri, 21 Aug 2020 10:34:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxIB2stCZ/ax3F5pLWEaq6iL4Clr4aopsrJSud+EqS1OfCjM7ymykdfEJJ1YzB2qGKHDk1h
+X-Received: by 2002:a25:bdd3:: with SMTP id g19mr5451402ybk.338.1598031292833;
+        Fri, 21 Aug 2020 10:34:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598031292; cv=none;
         d=google.com; s=arc-20160816;
-        b=yNwFNxuDFCyZGB/ruv6UQLR8vBHb2GeAicsqh42gTQtArvKlX0v9DSqbh1VOpJvVId
-         4O+Cs4AzyfV3NrAMQ4lCwJugqrpoNY8IZtDJMAYpdI+SwlSEYJjDpsF575q5+J4G9UEo
-         FSs3lPDZiR9H81+vb5BBrBm5PY8rTNcJlmlTZBmPWETYp+80B43DwYESVQ4Gj32INHrK
-         5yItSQPZf86OU0MtE1CsopKir4aF3IbMRIi2JEi1wVD+y+2laC4r6hiCCPIv5GWaLHPl
-         1GXCNF24LKnZWzhipt8rFBts++zsXFlILN/9Qw6DdRpPkZcSFSBk1IsemZE8Udcb7e79
-         3tQw==
+        b=mxT9hUORiBlu6FJQ7IgVGiHB93PsJfh7KDkqAVp6+y37BzALWSOLJNOdqAvfPTgYe6
+         iVCKZtVs29yHSnFtG+9A1GuzCa4BzaOZkbhhytsg3bvL0f38NIiM8bDFE10AFpc+0XnY
+         6+lpPyF+Y65aKtTCZ0hNmgWPKeawgAXFA5ND0heYX1XzEQNgeCXPGMc/z+ClW5vExJpo
+         aiKvpy940QBAegvokwXqiJ5R1ZiAFp29CRMFMYiNBTAN5KY30qdaC3pr/nXLsPllCE7Y
+         yRICaTmAAjyDwJGaCpdDS7rAohAZpr7Nh6iXJPFMq3+2kq2KxgcnOsKaFBdjyUOrlx/0
+         zn+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=C3Tm4+Z7Q6QefXOq9EkMkmgI6/oXsxZYry3NIouzDNA=;
-        b=XS4O5TqEbXfQhANqezw88MLQmvx6nBD434FTyh9bjb7b7gY7ukmQo4MEP0R2in8ka5
-         mNPPVTJiEk2Q/hQwrT0P59T7iiHm31yW/0OfUA4eMS93XCkHKogUWCkfllhUWUdLjYze
-         oWO4JbdoIFFv1Ey537bOegXlhFWVVBuF5jIxKP0mNRG6+XS+hfqED/zX5vCR89Mg2qFt
-         pj9c/g0XNf4ctOxDHK0ZYtFiyFmjQM2FkW5943WQpAIdyWXq862n9Do4ETPuBbJFMUx0
-         rGP1QgB8KPfrD0ttgfEwhkt9phc04kfVXRztKUidrlpiZvkFRAAMF90uyPblnyNwpmsk
-         jOmQ==
+        bh=FL3RGx9So1PYwbmJZxkxf3xii197YkK6iJeT4N72p9Y=;
+        b=nL7gQ3U0nsx/Huij9sm0FTR8dsXfsm9fFrn1C3Rhn1YyRiIsq6t+14yjsJQfKk5ObN
+         womhKAtXbtFu2OEHRqvaTwxpMOOnitfBgTaXYBkhBO7swllITIiZ1pUP6bHeBukyXMdB
+         cEGkDP8cKNBIDtaMCw50ax1NaCX+EJ8VsvgcnycCV0c8ExAesaKHUNbySgAVCBbvxJHr
+         mxaVNIieYR1LbnpNJkENKx2nZyDL38cduDBwjpGwzOEPFqREz6xXCVTf7BGtvQeCrYw5
+         W4AOImYZqHWLW4KrdtCsfWCJtoagJ1p5SyXUqUNvmrqCQtHTTLAV7OIyf9E8/hf75AFS
+         EBEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rLO4jrHJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oLcG7w90;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j188si2938923ybj.477.2020.08.21.10.33.55
+        by mx.google.com with ESMTPS id t3si2640536ybt.290.2020.08.21.10.34.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 10:33:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Aug 2020 10:34:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rLO4jrHJ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=oLcG7w90;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57356 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33450 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k9AvL-0000JN-IG
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 13:33:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57230)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k9AwG-00024s-69
+	for alex.bennee@linaro.org; Fri, 21 Aug 2020 13:34:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57276)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9Ar4-0001C5-KI; Fri, 21 Aug 2020 13:29:30 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:36102)
+ id 1k9Ar9-0001QU-07; Fri, 21 Aug 2020 13:29:35 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51367)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9Ar2-0001A6-Ro; Fri, 21 Aug 2020 13:29:30 -0400
-Received: by mail-wr1-x443.google.com with SMTP id 88so2661226wrh.3;
- Fri, 21 Aug 2020 10:29:27 -0700 (PDT)
+ id 1k9Ar7-0001C7-9Y; Fri, 21 Aug 2020 13:29:34 -0400
+Received: by mail-wm1-x344.google.com with SMTP id p14so2654141wmg.1;
+ Fri, 21 Aug 2020 10:29:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=C3Tm4+Z7Q6QefXOq9EkMkmgI6/oXsxZYry3NIouzDNA=;
- b=rLO4jrHJsWAFfmg2Z8Errv0TBHcSlFqQUtEQ+SGmWS0RACjrZmLF8co5n0IPMVJ582
- 6HErzaj5pb9jgvDqc+0e9f9iAUFbX399xrEvEnBJhmp791LxnsQ7YNbz0gADaDPpcIpr
- QIGmi+7JOjPID0AoIjxoDFYqgRfNbV0Ks8OZel74Y/8etDACe8GmyMAVIlFrpKKkUKui
- hOHIu5RicTPQkirjNQ6U86btgXHsn1RyQusuTpvNCUbzk1QCxRhPe/RIcb1oTHcH2hFx
- IwKYXIePsmSmadBtKzo6/WR8kjAilqcnFh9pxS63wYhhBxqeh7HOZd4umtxQeJGH5piJ
- kl4Q==
+ bh=FL3RGx9So1PYwbmJZxkxf3xii197YkK6iJeT4N72p9Y=;
+ b=oLcG7w90YGFmB9a2Vm9a/Yw5jIUcEzd5Nsng1cl0rlJ3x/iwTDhABGLHLsrbLw7wYu
+ MpOcDbg1xxQWmHcySiGu3B0GENJfa9MK6Rh4lqO6AA+5vFO2ik+yCS1y32hpbl45qcTl
+ bEnT0HM4TTYyG6Nt8Gz2qFipQQ9vRVhgUTHm3d+eggnTBYLmfy+KJmKiK4e+Z3H23jQs
+ TNOx050PCZPcSeXJb3fv1hyjrJb7n1VN/TgahsTbgXlKCiUmyu+sXIiychVco1Axs+Mj
+ BB6gZuZid0ZJtPBJGOqa8SCNaMBdyhDpu460D5v/q2MTE9+5hB74T+dANsMWaFNg6o0q
+ yjUg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=C3Tm4+Z7Q6QefXOq9EkMkmgI6/oXsxZYry3NIouzDNA=;
- b=E4AZcf0Kr4EA5byAtUtZiFFJxKgUR2EECtm1Lkc4TjxHdTbE8e5K5xXBozBhG0+Z9m
- 3KDUq+aHjQRSv0FUICALEhKQSRkFU8DWZ/WEr1ArVFdeLWt4s77IpUk8ZuJoRmfSJBv/
- LGcY6YXXO6PA7eGsBLGouHX2SFJAAy0NpG10ij46zL5pyeRoKtpnhoMAYqcJsmdq1+JN
- FCtA42nRODRQBew2qSiBl8JMLRW3FR3V5fyOe4ORuZ1IHl2brd989aRr4qZgfIOWe5aC
- ZeusMJi5hB0fKcY1a9Ewv62zFgHd1bKIxNEnS5D1JAInHloO5G+vEKcLlH/TJen+eo2R
- NKCw==
-X-Gm-Message-State: AOAM531/RtJrS12QYzyy9tQxy1K1PqWwDaPuAxO/vmwQEFQGz4uM+Kdf
- E5Y8pIfaBr3Ah0mZtfPtMKl+OAzVams=
-X-Received: by 2002:adf:a1c6:: with SMTP id v6mr3610233wrv.197.1598030966515; 
- Fri, 21 Aug 2020 10:29:26 -0700 (PDT)
+ bh=FL3RGx9So1PYwbmJZxkxf3xii197YkK6iJeT4N72p9Y=;
+ b=FpJH7eNSDtub4iriUqTt7DYB1dRR+ZK4y0/JxNg3OeIyEt2dmyuSO3wvwrqc0VVyzf
+ DHH+q/36moez6AxXTblta7GKRU/Dd9aSUr5Lb8m83l7umyOEr5ErU4LPSKs9aNkCnFSX
+ 9NaJGPJMJwKgpITf9vUVgRtzUWe9Sti23gjPFxgh0Yo17ZEwfF+qgJ1uBViLbemHpwxi
+ fdUt6eQ6m7ivyPpu/EpETqqKU1Dr2R1MV5A2I993f58ciUjmlOanwc5y+hF2rNfgXVD0
+ bBG3W53D+RG+vgqi2dvmg6d5VzxXBnKeyM63R5szpQf1NZpk6gSpRkUal+ZXgIj9A8hs
+ FcKA==
+X-Gm-Message-State: AOAM530NU8c08jtnKs4RbzYYJ+A+2I+Eb4Jt/pDeVOq9/5+eGiQeDkcm
+ RegFyOK16zlBpRPeai44rGocAViSRZ8=
+X-Received: by 2002:a7b:c7d6:: with SMTP id z22mr327094wmk.186.1598030970826; 
+ Fri, 21 Aug 2020 10:29:30 -0700 (PDT)
 Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id 32sm5315471wrn.86.2020.08.21.10.29.25
+ by smtp.gmail.com with ESMTPSA id 32sm5315471wrn.86.2020.08.21.10.29.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Aug 2020 10:29:25 -0700 (PDT)
+ Fri, 21 Aug 2020 10:29:30 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PULL 05/23] hw/sd/milkymist: Do not create SD card within the SD
- host controller
-Date: Fri, 21 Aug 2020 19:28:58 +0200
-Message-Id: <20200821172916.1260954-6-f4bug@amsat.org>
+Subject: [PULL 08/23] hw/sd/pl181: Add TODO to use Fifo32 API
+Date: Fri, 21 Aug 2020 19:29:01 +0200
+Message-Id: <20200821172916.1260954-9-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200821172916.1260954-1-f4bug@amsat.org>
 References: <20200821172916.1260954-1-f4bug@amsat.org>
@@ -96,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -106,176 +105,51 @@ X-Spam_bar: /
 X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
  DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
  HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_BLOCKED=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>,
- qemu-arm@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
- Andrzej Zaborowski <balrogg@gmail.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9br9C77ngi/L
+ qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /xO18hHFpYPc
 
-SD/MMC host controllers provide a SD Bus to plug SD cards,
-but don't come with SD card plugged in :) Let the machine/board
-model create and plug the SD cards when required.
+Add TODO to use Fifo32 API from "qemu/fifo32.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-Id: <20200705211016.15241-5-f4bug@amsat.org>
+Acked-by: Peter Maydell <peter.maydell@linaro.org>
+Message-Id: <20200705204630.4133-4-f4bug@amsat.org>
 ---
- hw/lm32/milkymist.c       | 13 +++++++++
- hw/sd/milkymist-memcard.c | 55 +++++++++++++++++++++++----------------
- 2 files changed, 45 insertions(+), 23 deletions(-)
+ hw/sd/pl181.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/lm32/milkymist.c b/hw/lm32/milkymist.c
-index 469e3c43225..9f8fe9fef15 100644
---- a/hw/lm32/milkymist.c
-+++ b/hw/lm32/milkymist.c
-@@ -34,6 +34,7 @@
- #include "elf.h"
- #include "milkymist-hw.h"
- #include "hw/display/milkymist_tmu2.h"
-+#include "hw/sd/sd.h"
- #include "lm32.h"
- #include "exec/address-spaces.h"
- #include "qemu/cutils.h"
-@@ -83,11 +84,23 @@ static void main_cpu_reset(void *opaque)
- static DeviceState *milkymist_memcard_create(hwaddr base)
- {
-     DeviceState *dev;
-+    DriveInfo *dinfo;
- 
-     dev = qdev_new("milkymist-memcard");
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
- 
-+    dinfo = drive_get_next(IF_SD);
-+    if (dinfo) {
-+        DeviceState *card;
-+
-+        card = qdev_new(TYPE_SD_CARD);
-+        qdev_prop_set_drive_err(card, "drive", blk_by_legacy_dinfo(dinfo),
-+                                &error_fatal);
-+        qdev_realize_and_unref(card, qdev_get_child_bus(dev, "sd-bus"),
-+                               &error_fatal);
-+    }
-+
-     return dev;
- }
- 
-diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
-index 747c5c6136b..e9f5db5e22d 100644
---- a/hw/sd/milkymist-memcard.c
-+++ b/hw/sd/milkymist-memcard.c
-@@ -66,6 +66,8 @@ enum {
- #define MILKYMIST_MEMCARD(obj) \
-     OBJECT_CHECK(MilkymistMemcardState, (obj), TYPE_MILKYMIST_MEMCARD)
- 
-+#define TYPE_MILKYMIST_SDBUS "milkymist-sdbus"
-+
- struct MilkymistMemcardState {
-     SysBusDevice parent_obj;
- 
-@@ -253,6 +255,19 @@ static void milkymist_memcard_reset(DeviceState *d)
-     }
- }
- 
-+static void milkymist_memcard_set_readonly(DeviceState *dev, bool level)
-+{
-+    qemu_log_mask(LOG_UNIMP,
-+                  "milkymist_memcard: read-only mode not supported\n");
-+}
-+
-+static void milkymist_memcard_set_inserted(DeviceState *dev, bool level)
-+{
-+    MilkymistMemcardState *s = MILKYMIST_MEMCARD(dev);
-+
-+    s->enabled = !!level;
-+}
-+
- static void milkymist_memcard_init(Object *obj)
- {
-     MilkymistMemcardState *s = MILKYMIST_MEMCARD(obj);
-@@ -266,27 +281,6 @@ static void milkymist_memcard_init(Object *obj)
-                         DEVICE(obj), "sd-bus");
- }
- 
--static void milkymist_memcard_realize(DeviceState *dev, Error **errp)
--{
--    MilkymistMemcardState *s = MILKYMIST_MEMCARD(dev);
--    DeviceState *carddev;
--    BlockBackend *blk;
--    DriveInfo *dinfo;
--    Error *err = NULL;
--
--    /* Create and plug in the sd card */
--    /* FIXME use a qdev drive property instead of drive_get_next() */
--    dinfo = drive_get_next(IF_SD);
--    blk = dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
--    carddev = qdev_new(TYPE_SD_CARD);
--    qdev_prop_set_drive(carddev, "drive", blk);
--    if (!qdev_realize_and_unref(carddev, BUS(&s->sdbus), &err)) {
--        error_propagate_prepend(errp, err, "failed to init SD card");
--        return;
--    }
--    s->enabled = blk && blk_is_inserted(blk);
--}
--
- static const VMStateDescription vmstate_milkymist_memcard = {
-     .name = "milkymist-memcard",
-     .version_id = 1,
-@@ -308,10 +302,9 @@ static void milkymist_memcard_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
--    dc->realize = milkymist_memcard_realize;
-     dc->reset = milkymist_memcard_reset;
-     dc->vmsd = &vmstate_milkymist_memcard;
--    /* Reason: init() method uses drive_get_next() */
-+    /* Reason: output IRQs should be wired up */
-     dc->user_creatable = false;
- }
- 
-@@ -323,9 +316,25 @@ static const TypeInfo milkymist_memcard_info = {
-     .class_init    = milkymist_memcard_class_init,
- };
- 
-+static void milkymist_sdbus_class_init(ObjectClass *klass, void *data)
-+{
-+    SDBusClass *sbc = SD_BUS_CLASS(klass);
-+
-+    sbc->set_inserted = milkymist_memcard_set_inserted;
-+    sbc->set_readonly = milkymist_memcard_set_readonly;
-+}
-+
-+static const TypeInfo milkymist_sdbus_info = {
-+    .name = TYPE_MILKYMIST_SDBUS,
-+    .parent = TYPE_SD_BUS,
-+    .instance_size = sizeof(SDBus),
-+    .class_init = milkymist_sdbus_class_init,
-+};
-+
- static void milkymist_memcard_register_types(void)
- {
-     type_register_static(&milkymist_memcard_info);
-+    type_register_static(&milkymist_sdbus_info);
- }
- 
- type_init(milkymist_memcard_register_types)
+diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+index 3fc2cdd71a1..86219c851d3 100644
+--- a/hw/sd/pl181.c
++++ b/hw/sd/pl181.c
+@@ -57,7 +57,7 @@ typedef struct PL181State {
+        http://www.arm.linux.org.uk/developer/patches/viewpatch.php?id=4446/1
+      */
+     int32_t linux_hack;
+-    uint32_t fifo[PL181_FIFO_LEN];
++    uint32_t fifo[PL181_FIFO_LEN]; /* TODO use Fifo32 */
+     qemu_irq irq[2];
+     /* GPIO outputs for 'card is readonly' and 'card inserted' */
+     qemu_irq cardstatus[2];
 -- 
 2.26.2
 

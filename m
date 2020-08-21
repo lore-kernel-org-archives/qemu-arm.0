@@ -1,111 +1,108 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp491407lfy;
-        Fri, 21 Aug 2020 10:36:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxw4R8RwjcZ8J0iWqzsFkvPwj6Ify9Gej3u5wQpr+oAQKMWA7a/t5fhDMIEUZZYypdgF+wM
-X-Received: by 2002:a25:aaf3:: with SMTP id t106mr4927058ybi.56.1598031413141;
-        Fri, 21 Aug 2020 10:36:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598031413; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp491529lfy;
+        Fri, 21 Aug 2020 10:37:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4sGdPhQOzKZTvbU3yWy9h9O9BbuUsOn1aArbQqiGaD3jAea6Il6CXnKfF6pa+/yKoztDr
+X-Received: by 2002:a25:e0b:: with SMTP id 11mr4822930ybo.201.1598031422217;
+        Fri, 21 Aug 2020 10:37:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598031422; cv=none;
         d=google.com; s=arc-20160816;
-        b=YNGjicepjVWrQvyTCLMi845Wh2nuRnvCQgJ7B8u2UT4GvKQbMuic1cqt0q7fUAa69i
-         PJHhqDD3b5XFY0iS854NI4lJoaWS96BnXRzNr7zvBwmJzIPA9OIuz6udT4nmTCtuNRMN
-         pVPE+fOPk7ofi+qEXZOnYnZwTF+3LSgi3YwwfZCzLVtpUS7eIxjoxovmKxwL2A1yPIw0
-         b9aa+3jG204kPBzR9tb0wfcfHEEp0MqU4h8wdMHj/rtK//qfuoyvaOewxYuROofLQL2j
-         m5BASe5g5W5i3TV7xqP7LcpgSXh3QgR5hbfPFDAJKEspdo1gq8YSgQdIbN2DSqgtqxSP
-         0FUA==
+        b=MHdVWTl4x9JgatmiPtk7crG8oHUF09zj1KGRkdb325hTZB5PfAbsAMeB1E9ys6s2+z
+         rhiP2EUSeYgUHx/+Ym7Yndoosw5eWf9ujPVIVMjYxU2Sko7oIP04SsEVonjAZUaY0kTJ
+         yA2VnPXZuCoG0JnnPZlIcxGWtUL1pYK47qJaHjv7jfIK3Nnm7oR9gkl6fIS5imlwr64g
+         1UA0awYtlHFpqsbcnqF3GqdQytX4n0tYrsAjtoYR8yJ+9958OTGDaTO1fSA1I+rhQpK9
+         91cnIhPqyjdI5fTvoybfrUJ/qAQI8oZHT++C4z9OildO/CzQ7TTnyoCBvwBQIiK9RnIU
+         yMGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=slnS/GfxccZ/mD5eYQpI17Cum8OBadJc/KQdBJcV6Z4=;
-        b=ht/JGbNgcg+jfnnxXEjP6ZolDVOwr+3PAFrLrUy0W514ZQ3g8lSgVr8sp1PC6Boi4v
-         Mh49lKpywYfwiqaMwHADaQKV2waPVWnIV8Y/uolr+TtgAAN6x0mZfrpt7Nm1+q//J57P
-         GqFf2dsug+vZDHYwmFVGYLXkKzem2KMkbYddjiIAH5bAU34w4Wl/wSxB2QgvwgKML8AK
-         NHex4wqlkon2IWnhgajnfKUFEXz4oWopiuskOGKjYNHP5Zn5NqxnIfn0duvF5tlrtHDT
-         clFZgLahnCe50TxKLTQQbWFyylih07qYMWNtiTQiGUByg53zSd0ZqgzY715g+58nQsw+
-         U1+g==
+        bh=b4Xxm8p6lEZCoBxrAS8NOpJ/hwlUtUBCvYH8v2IUDTk=;
+        b=t8HSZyrxM0HBQo55Hx0CyUTNCyZg8Jxd6po8X4YAPTuiqTo0lKzQI144rte5Wqo9ti
+         bLWX2seHkcOJ3ck+knXpiSUbK49NkkZ30DmdlSQp5AftsmWrUdHr1cavA5oRgDuhJmxO
+         mItTIe+9mgnsg4yUQljFWNVuyneNCdVug6cPLgxY5MUHDWdW4kFcMbtnqcIxWW+LKh+7
+         YZhDewtZNMF/WtQIxOZl1e/pts52xeMopGLhTRZef9Jph3KX4yXoACFiyIzWT0xO6Qp8
+         rLntUJ3RNg+QMkkSS6fI9VhlUd70WwCENs2wsDYcUW9qdQMC/NHzpA5wTVLMCei6ReeF
+         /Gkw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SdhJIdyZ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iLhyi117;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p194si2880324yba.137.2020.08.21.10.36.52
+        by mx.google.com with ESMTPS id v71si2898779ybi.413.2020.08.21.10.37.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 10:36:53 -0700 (PDT)
+        Fri, 21 Aug 2020 10:37:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=SdhJIdyZ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=iLhyi117;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46206 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47250 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k9AyC-0007KV-Fu
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 13:36:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57430)
+	id 1k9AyL-0007kX-Ip
+	for alex.bennee@linaro.org; Fri, 21 Aug 2020 13:37:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9ArL-0001h1-GD; Fri, 21 Aug 2020 13:29:47 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a]:44716)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9ArI-0001E4-Py; Fri, 21 Aug 2020 13:29:47 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id c15so2627108wrs.11;
- Fri, 21 Aug 2020 10:29:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=slnS/GfxccZ/mD5eYQpI17Cum8OBadJc/KQdBJcV6Z4=;
- b=SdhJIdyZbJfQAuEFNAWAe5NO/u6ToD7rXzZJsmCfiNKZ8/+kki6Gz2GVLGcUh7CwPz
- vByRGycfCJTK6t6u96KgnZ+89fqcgzR/i/HvF7EHWzpboNvwh+zMF0E2Eb9BXL6b6kce
- gTbe9NtaCSj3yPzXPOwh5SH72VVUAvqD+Vgd7LGXeDh9j/u+6l3/3D9JnviQK9zXHJpq
- ywNOgdiHECIhIPyJna1P5zMID3M+qsPFk3O9nQqLM3c7bAVfBljsm3Ljiiguplk7Z09q
- NpXr2VDPJHcAOHmCkBeQFGPIWQyteuVvErahIbaAtThyjM4jWgR6Zo8b01ABtrmxFHVT
- 9Cnw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=slnS/GfxccZ/mD5eYQpI17Cum8OBadJc/KQdBJcV6Z4=;
- b=FwBtgwWTjQ5tqjD1kO85xpTsXi0l8U5NxQLzaqAKT+MqpLyxnZwCqVyi73WYZMmCLU
- oD1etMOJD7K2p6Lj1/Wr2fI05cToN24i1D+BZ2oV7H9G9djm3AxalBBs/y8DjYMaVYT6
- EGsnhS3YUfXDaquu1ijf4JsXY9KW0xjPkOrcdscclN3iEST/Vjob5EEMd8X0+1ah5fET
- NIWhl4xPPnkSE7vqKn4HqZCq2pDvS2H1EMCmGN7w9nbMZ2K8JHPujjKs2M5+2PsJcIy2
- aj5xyhjWeaoD1ZibnJF+pXRInGnkgMn/gCOLPyvzCY5IzNGKxg6a338p0B6aiPqakvtS
- ZaCA==
-X-Gm-Message-State: AOAM530mO2a+LYXSXppMP2D8amRec5GKIIvoRv7kydx9lSAN3pt4xMjy
- DEfCQUbR9UEWhIUOr4UrS99Z+M8j9bM=
-X-Received: by 2002:a5d:4e02:: with SMTP id p2mr3687252wrt.399.1598030982364; 
- Fri, 21 Aug 2020 10:29:42 -0700 (PDT)
-Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id 32sm5315471wrn.86.2020.08.21.10.29.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Aug 2020 10:29:41 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PULL 15/23] hw/sd: Rename read/write_data() as read/write_byte()
-Date: Fri, 21 Aug 2020 19:29:08 +0200
-Message-Id: <20200821172916.1260954-16-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200821172916.1260954-1-f4bug@amsat.org>
-References: <20200821172916.1260954-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1k9ArN-0001ig-4o
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2020 13:29:49 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:54508
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1k9ArK-0001Eb-MY
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2020 13:29:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598030985;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=b4Xxm8p6lEZCoBxrAS8NOpJ/hwlUtUBCvYH8v2IUDTk=;
+ b=iLhyi1178xtCFKBtxjWpXKUo10VNCZhUQ0Uxuv9sCwqOkvyOVQ72eS4iwqS6tdFWcOjGr2
+ ShIKXVonEz2uqd+RcsQsP7hL9S8cV/Sr5SEzf0o/vrOmc2hBMgO0250rQbO6cnjVSfYQld
+ yjLzOcqlGyIcBmqWKxQ0wUzMitiLT4I=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-296-LbqOqPDuNp2NFh-tep-Z1A-1; Fri, 21 Aug 2020 13:29:41 -0400
+X-MC-Unique: LbqOqPDuNp2NFh-tep-Z1A-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6239480F055;
+ Fri, 21 Aug 2020 17:29:38 +0000 (UTC)
+Received: from localhost (unknown [10.10.67.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C81B17AECB;
+ Fri, 21 Aug 2020 17:29:27 +0000 (UTC)
+Date: Fri, 21 Aug 2020 13:29:27 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Roman Bolshakov <r.bolshakov@yadro.com>
+Subject: Re: Suspicious QOM types without instance/class size
+Message-ID: <20200821172927.GJ642093@habkost.net>
+References: <20200820215529.GH642093@habkost.net>
+ <20200821105352.GA89922@SPB-NB-133.local>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42a.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20200821105352.GA89922@SPB-NB-133.local>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/21 01:00:15
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -40
+X-Spam_score: -4.1
+X-Spam_bar: ----
+X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,199 +115,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>,
- qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Cameron Esfahani <dirty@apple.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Richard Henderson <rth@twiddle.net>,
+ "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1UVfkdg0attC
+X-TUID: Kx5ZCUzo72QF
 
-The read/write_data() methods write do a single byte access
-on the data line of a SD card. Rename them as read/write_byte().
-Add some documentation (not in "hw/sd/sdcard_legacy.h" which we
-are going to remove soon).
+On Fri, Aug 21, 2020 at 01:53:52PM +0300, Roman Bolshakov wrote:
+> On Thu, Aug 20, 2020 at 05:55:29PM -0400, Eduardo Habkost wrote:
+> > While trying to convert TypeInfo declarations to the new
+> > OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
+> > where instance_size or class_size is not set, despite having type
+> > checker macros that use a specific type.
+> > 
+> > The ones with "WARNING" are abstract types (maybe not serious if
+> > subclasses set the appropriate sizes).  The ones with "ERROR"
+> > don't seem to be abstract types.
+> > 
+> 
+> > ERROR: target/i386/hvf/hvf.c:908:1: instance_size should be set to sizeof(HVFState)?
+> 
+> Hi Eduardo,
+> 
+> How do you get the error?
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <20200814092346.21825-2-f4bug@amsat.org>
----
- include/hw/sd/sd.h            | 19 +++++++++++++++++--
- include/hw/sd/sdcard_legacy.h |  4 ++--
- hw/sd/core.c                  |  4 ++--
- hw/sd/omap_mmc.c              |  8 ++++----
- hw/sd/sd.c                    | 16 ++++++++--------
- 5 files changed, 33 insertions(+), 18 deletions(-)
+My script looks for corresponding type checking macros, and check
+if instance_size is set to sizeof(T) with the right type from the
+type checking macro.
 
-diff --git a/include/hw/sd/sd.h b/include/hw/sd/sd.h
-index 8767ab817c1..b58b5a19afe 100644
---- a/include/hw/sd/sd.h
-+++ b/include/hw/sd/sd.h
-@@ -104,8 +104,23 @@ typedef struct {
-     /*< public >*/
- 
-     int (*do_command)(SDState *sd, SDRequest *req, uint8_t *response);
--    void (*write_data)(SDState *sd, uint8_t value);
--    uint8_t (*read_data)(SDState *sd);
-+    /**
-+     * Write a byte to a SD card.
-+     * @sd: card
-+     * @value: byte to write
-+     *
-+     * Write a byte on the data lines of a SD card.
-+     */
-+    void (*write_byte)(SDState *sd, uint8_t value);
-+    /**
-+     * Read a byte from a SD card.
-+     * @sd: card
-+     *
-+     * Read a byte from the data lines of a SD card.
-+     *
-+     * Return: byte value read
-+     */
-+    uint8_t (*read_byte)(SDState *sd);
-     bool (*data_ready)(SDState *sd);
-     void (*set_voltage)(SDState *sd, uint16_t millivolts);
-     uint8_t (*get_dat_lines)(SDState *sd);
-diff --git a/include/hw/sd/sdcard_legacy.h b/include/hw/sd/sdcard_legacy.h
-index 8681f8089ba..0dc38895551 100644
---- a/include/hw/sd/sdcard_legacy.h
-+++ b/include/hw/sd/sdcard_legacy.h
-@@ -34,8 +34,8 @@
- /* Legacy functions to be used only by non-qdevified callers */
- SDState *sd_init(BlockBackend *blk, bool is_spi);
- int sd_do_command(SDState *card, SDRequest *request, uint8_t *response);
--void sd_write_data(SDState *card, uint8_t value);
--uint8_t sd_read_data(SDState *card);
-+void sd_write_byte(SDState *card, uint8_t value);
-+uint8_t sd_read_byte(SDState *card);
- void sd_set_cb(SDState *card, qemu_irq readonly, qemu_irq insert);
- 
- /* sd_enable should not be used -- it is only used on the nseries boards,
-diff --git a/hw/sd/core.c b/hw/sd/core.c
-index abec48bccb8..79d96576ead 100644
---- a/hw/sd/core.c
-+++ b/hw/sd/core.c
-@@ -110,7 +110,7 @@ void sdbus_write_data(SDBus *sdbus, uint8_t value)
-     if (card) {
-         SDCardClass *sc = SD_CARD_GET_CLASS(card);
- 
--        sc->write_data(card, value);
-+        sc->write_byte(card, value);
-     }
- }
- 
-@@ -122,7 +122,7 @@ uint8_t sdbus_read_data(SDBus *sdbus)
-     if (card) {
-         SDCardClass *sc = SD_CARD_GET_CLASS(card);
- 
--        value = sc->read_data(card);
-+        value = sc->read_byte(card);
-     }
-     trace_sdbus_read(sdbus_name(sdbus), value);
- 
-diff --git a/hw/sd/omap_mmc.c b/hw/sd/omap_mmc.c
-index 7d33c59226a..1f946908fe1 100644
---- a/hw/sd/omap_mmc.c
-+++ b/hw/sd/omap_mmc.c
-@@ -232,10 +232,10 @@ static void omap_mmc_transfer(struct omap_mmc_s *host)
-             if (host->fifo_len > host->af_level)
-                 break;
- 
--            value = sd_read_data(host->card);
-+            value = sd_read_byte(host->card);
-             host->fifo[(host->fifo_start + host->fifo_len) & 31] = value;
-             if (-- host->blen_counter) {
--                value = sd_read_data(host->card);
-+                value = sd_read_byte(host->card);
-                 host->fifo[(host->fifo_start + host->fifo_len) & 31] |=
-                         value << 8;
-                 host->blen_counter --;
-@@ -247,10 +247,10 @@ static void omap_mmc_transfer(struct omap_mmc_s *host)
-                 break;
- 
-             value = host->fifo[host->fifo_start] & 0xff;
--            sd_write_data(host->card, value);
-+            sd_write_byte(host->card, value);
-             if (-- host->blen_counter) {
-                 value = host->fifo[host->fifo_start] >> 8;
--                sd_write_data(host->card, value);
-+                sd_write_byte(host->card, value);
-                 host->blen_counter --;
-             }
- 
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index 5c6f5c94f3d..7c9d956f113 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -1809,7 +1809,7 @@ static void sd_blk_write(SDState *sd, uint64_t addr, uint32_t len)
- #define APP_READ_BLOCK(a, len)	memset(sd->data, 0xec, len)
- #define APP_WRITE_BLOCK(a, len)
- 
--void sd_write_data(SDState *sd, uint8_t value)
-+void sd_write_byte(SDState *sd, uint8_t value)
- {
-     int i;
- 
-@@ -1818,7 +1818,7 @@ void sd_write_data(SDState *sd, uint8_t value)
- 
-     if (sd->state != sd_receivingdata_state) {
-         qemu_log_mask(LOG_GUEST_ERROR,
--                      "sd_write_data: not in Receiving-Data state\n");
-+                      "%s: not in Receiving-Data state\n", __func__);
-         return;
-     }
- 
-@@ -1940,7 +1940,7 @@ void sd_write_data(SDState *sd, uint8_t value)
-         break;
- 
-     default:
--        qemu_log_mask(LOG_GUEST_ERROR, "sd_write_data: unknown command\n");
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: unknown command\n", __func__);
-         break;
-     }
- }
-@@ -1959,7 +1959,7 @@ static const uint8_t sd_tuning_block_pattern[SD_TUNING_BLOCK_SIZE] = {
-     0xbb, 0xff, 0xf7, 0xff,         0xf7, 0x7f, 0x7b, 0xde,
- };
- 
--uint8_t sd_read_data(SDState *sd)
-+uint8_t sd_read_byte(SDState *sd)
- {
-     /* TODO: Append CRCs */
-     uint8_t ret;
-@@ -1970,7 +1970,7 @@ uint8_t sd_read_data(SDState *sd)
- 
-     if (sd->state != sd_sendingdata_state) {
-         qemu_log_mask(LOG_GUEST_ERROR,
--                      "sd_read_data: not in Sending-Data state\n");
-+                      "%s: not in Sending-Data state\n", __func__);
-         return 0x00;
-     }
- 
-@@ -2076,7 +2076,7 @@ uint8_t sd_read_data(SDState *sd)
-         break;
- 
-     default:
--        qemu_log_mask(LOG_GUEST_ERROR, "sd_read_data: unknown command\n");
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: unknown command\n", __func__);
-         return 0x00;
-     }
- 
-@@ -2192,8 +2192,8 @@ static void sd_class_init(ObjectClass *klass, void *data)
-     sc->get_dat_lines = sd_get_dat_lines;
-     sc->get_cmd_line = sd_get_cmd_line;
-     sc->do_command = sd_do_command;
--    sc->write_data = sd_write_data;
--    sc->read_data = sd_read_data;
-+    sc->write_byte = sd_write_byte;
-+    sc->read_byte = sd_read_byte;
-     sc->data_ready = sd_data_ready;
-     sc->enable = sd_enable;
-     sc->get_inserted = sd_get_inserted;
+The code is here:
+https://github.com/ehabkost/qemu-hacks/blob/920b2c521ad2a29fa663256854e24ed2059ba9cd/scripts/codeconverter/codeconverter/qom_type_info.py#L136
+
+
+> 
+> Given your changes, instance size should really be sizeof(HVFState).
+> 
+
+The changes I've made shouldn't make any difference (if there's
+an issue, it is there before or after my series).
+
+> BTW, the object definition for hvf seems different from KVM (and perhaps
+> wrong?), e.g. HVFState is allocated within init_machine handler and then
+> assigned to a global variable:
+
+Interesting.  It looks like hvf_state is _not_ the actual QOM
+object instance.  The actual TYPE_HVF_ACCEL instance is created
+by do_configure_accelerator().  That would explain why the lack
+of instance_init never caused any problems.
+
+Luckily, no code ever used the HVF_STATE macro.  If
+HVF_STATE(hvf_state) got called, it would crash because of
+uninitialized object instance data.  If HVF_STATE(machine->accel)
+got called, it would return an invalid HVFState pointer (not
+hvf_state).
+
+I believe the simplest short term solution here is to just delete
+the HVF_STATE macro and HVFState::parent field.  We can worry
+about actually moving hvf_state to the machine->accel QOM object
+later.
+
+> 
+> static int hvf_accel_init(MachineState *ms)
+> {
+>     int x;
+>     hv_return_t ret;
+>     HVFState *s;
+> 
+>     ret = hv_vm_create(HV_VM_DEFAULT);
+>     assert_hvf_ok(ret);
+> 
+>     s = g_new0(HVFState, 1);
+>  
+>     s->num_slots = 32;
+>     for (x = 0; x < s->num_slots; ++x) {
+>         s->slots[x].size = 0;
+>         s->slots[x].slot_id = x;
+>     }
+>   
+>     hvf_state = s;
+>     cpu_interrupt_handler = hvf_handle_interrupt;
+>     memory_listener_register(&hvf_memory_listener, &address_space_memory);
+>     return 0;
+> }
+> 
+> static void hvf_accel_class_init(ObjectClass *oc, void *data)
+> {
+>     AccelClass *ac = ACCEL_CLASS(oc);
+>     ac->name = "HVF";
+>     ac->init_machine = hvf_accel_init;
+>     ac->allowed = &hvf_allowed;
+> }
+> 
+> static const TypeInfo hvf_accel_type = {
+>     .name = TYPE_HVF_ACCEL,
+>     .parent = TYPE_ACCEL,
+>     .class_init = hvf_accel_class_init,
+> };
+> 
+> Thanks,
+> Roman
+> 
+
 -- 
-2.26.2
+Eduardo
 

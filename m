@@ -1,158 +1,193 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp196442lfy;
-        Fri, 21 Aug 2020 04:33:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw6GLYo5GEkqnHRX7N6o9lZeEWJDT62H6UaQzTITeLjUEs3XgFyGUGnmHnn4dXxWA3uTWm1
-X-Received: by 2002:a25:414:: with SMTP id 20mr3074245ybe.97.1598009602807;
-        Fri, 21 Aug 2020 04:33:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598009602; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp197709lfy;
+        Fri, 21 Aug 2020 04:35:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz6XayS015D8De9R7p0XVhSSlbjQxzGEzITuQwPFEnL6dC+KQ0bv7F7jrSUs8ve71pROJVo
+X-Received: by 2002:a05:6902:1026:: with SMTP id x6mr3405348ybt.349.1598009714573;
+        Fri, 21 Aug 2020 04:35:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598009714; cv=none;
         d=google.com; s=arc-20160816;
-        b=tXxtMLJ8ugbScMzJ7uEmtDPBvzRBKui7CflKkmLdOXSeDgxdmM+EERwlwIVMlFIWn6
-         5UE/dhYSP3u2nFEW1wq9OI4u4YB3uj6CmKJw5eEVOejjjQwPy/hmWTJkyxtbfDGN8Y/H
-         JmBJmEwWAr93jnemu7NlKMMa9j+nuoEvV5aXe5k6tKaX+PJ0lz7LS8/+JlWBqZFHZX+Y
-         7in+MN+ICidAKM9bQV0Az9IUYuNJBg57dgwRO7IAHwjKDUaJXrGO2YVQiUG4Oa8klrmj
-         HLtX/hfXqA9UMYCZvqrStqwM3EJGw3fR9h8/j6McxHPfY1+NlB4Xynab5De7+Ba0Y+VK
-         bhpQ==
+        b=NXTIiCMC4wBqlPgUhbeK7JTFt1c2ARdB8C+ip4cTjA0X7KUBpY5tqKO/47l4aFXcXh
+         V44Ppl0McApiobqOuDk1U6HyWWQmCr8ldd8Ik08+jusZcaTpBdXD3XnOI0VAGAgVU+4P
+         CslrRIa4lOuSSWVgI1G85y9pm1+Rl7G/V06ymioV0V0JDW4vc54ngToa1uyCD1yEG2u4
+         Rg9xEjSp1yG8o5DYSFGXTepBsjlPomeKQ5s0ZtrfFKlKA25adgJtQw5IGsjP1Wcxap9+
+         57P6mCF68GcLul7tSNYv0z9//8Z0//uTGt38h+WkR6k8yudDt6UWczNVVdkp54VYWmiN
+         ZRFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=gTUXUYJh9r4NpY0TQpnZlz7xsFLACmEn8LbRCqPweZg=;
-        b=zt6rAWYxaU7FCbLNrUpmwRduTP21eXEAN+Ex+C8cHAbx0WJOZMUmD2JVlq9QtSBIm0
-         zTOD+xEVRaGDtyZZhUfAjC6BlMMVBCWJNw8QCc0kmP4mn3zq8lkio9/ZBsmJWPTwKNTu
-         QTN+cSmVsDTBv2n2qk8c8N9gwiitWLwOPze1zxRzFHwCiNi7MGRgDaypkjkKQMFneQGS
-         5vQ6xlaqgwPsQPJZSDo0S9VAPmgMTKmXQfx+QBsWPC5c1ReNwAYfAclhiWUZP4JrY663
-         hzX7oXqi+SKQCPiihW+QncUuX7F2ZEwv5TW6rhfFTLWMVFu/PfjecWYe96MiK/AFyiWR
-         oAIg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=z9Bbo63JPP1RS0+BjeGn5HifSLvIYNgoTQUnrZc/YeY=;
+        b=A2VZtDICXDQ0gcEHt76FSAaCOPJZHkgHrFMP+tXuZLQ70XVyj9ztYvhICitFqhl15i
+         /V+sAvtlvIeq4TtH3LjHCPexaixPI0i8ENdfCBGpjOnYygbaGNZ2qSPErfyyZywdJpqq
+         W9/3mcuwQXH7RfumTgOZayEgLMnZ8hwwFZlOGTzVGqT33LM3xd5mTkLbezv0z/EBIcT/
+         X4Vq5A76+Pbk9LQF6KCquwcPQTktiuZue4lS3WgTcnaqXUC8wvVIwPNngfUIY9MXThAh
+         qkLzpJyXYGp4sK2UNXJKPdF1WH4kp65JxYQ6QJwLZ8M5Kyo2nJn/81uzK4hC5iJvqTMd
+         1lqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M50H4+1w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=MNbyrsFr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r189si2005359ybc.256.2020.08.21.04.33.22
+        by mx.google.com with ESMTPS id k13si2282407ybk.164.2020.08.21.04.35.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 04:33:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Aug 2020 04:35:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=M50H4+1w;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44920 helo=lists1p.gnu.org)
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b=MNbyrsFr;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Received: from localhost ([::1]:58324 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k95IQ-0001mq-5b
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 07:33:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37098)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k95KD-0007Ds-V1
+	for alex.bennee@linaro.org; Fri, 21 Aug 2020 07:35:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38314)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k94aE-0007jy-Pp; Fri, 21 Aug 2020 06:47:42 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:32854)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k94aD-0004iA-1z; Fri, 21 Aug 2020 06:47:42 -0400
-Received: by mail-wr1-x444.google.com with SMTP id p20so1535892wrf.0;
- Fri, 21 Aug 2020 03:47:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=gTUXUYJh9r4NpY0TQpnZlz7xsFLACmEn8LbRCqPweZg=;
- b=M50H4+1wCfZUO/nLeJXh/oW1ntMenEGD5KwbAGlbcRdmvQW/dtj3bv2UQRxUXYrcMf
- XCLmPe546BmU6MXVm9WNHZx4varVQkxfl+68IDxmNzUhVsQrrqsyA2H1/twsxOzTIDvJ
- HcRbTQ8Pr7fV9p3+m2rLKw8xJFj/noIn/FqwWqgkVG+wLJVMMoGyfZUtD/wVEcIdJQNk
- 31jMQpi6KDkqAsWjC3+rOtLNOkoScZCJ5qN4IuMimeKdOzhcInhxRzLMnOOz47pfck7G
- 5xQov1A9iRtTcnEbDfZpHNbztwKMn6Y2OtZ4nslUfCIRtJB20RCHSKZUyHw5L4/7O+w1
- NINg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gTUXUYJh9r4NpY0TQpnZlz7xsFLACmEn8LbRCqPweZg=;
- b=Zj4C3NiOo/s+jF9I/058zvs0E7Dn07Pl4Yv1Uah88GHvyRYp6C7xn3nSYnzJK1Gwqp
- LHW61un3PMTxXYqzr0f0S/Aj2khRRHs4TBFn9lMizAZeiLLqmhoCmvgA1is6WIcK4sUP
- 8dAVmLrhDWIgDGlz8TxlJLI7ymjxOToo82/kNZyCLqH8UwzaNo5dm1jmak6l2hYz4BY+
- 86MVu9JqC+ZWKig6KYtAYsiB0ukHV3I3ladLI/0QkQWIBpsn96ZrXZBbudUI9mdzcV5T
- EsY38GU48zSJjm9P6jum8In3jX0QhgqKaCxQ0EiDIvxyHlSA4X7jUfK+hDaps8MApAZg
- 101A==
-X-Gm-Message-State: AOAM530fMf6c1/MGFnOH5TwcmXZ8qbga//7y9rCOKd8cTYYOR5UE3HWW
- N/w5b2dqxvr/cVjx/NiRDGY=
-X-Received: by 2002:adf:e84d:: with SMTP id d13mr2161132wrn.126.1598006857111; 
- Fri, 21 Aug 2020 03:47:37 -0700 (PDT)
-Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id 202sm4758012wmb.10.2020.08.21.03.47.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Aug 2020 03:47:36 -0700 (PDT)
-Subject: Re: [PATCH] hw/arm/sbsa-ref: fix typo breaking PCIe IRQs
-To: Graeme Gregory <graeme@nuviainc.com>, qemu-arm@nongnu.org
-References: <20200821083853.356490-1-graeme@nuviainc.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <e90ca59f-91ea-aa6a-94b7-f0bf9160b2f8@amsat.org>
-Date: Fri, 21 Aug 2020 12:47:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1k94gR-00043f-6K; Fri, 21 Aug 2020 06:54:07 -0400
+Received: from mta-02.yadro.com ([89.207.88.252]:57210 helo=mta-01.yadro.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1k94gK-0005II-U5; Fri, 21 Aug 2020 06:54:06 -0400
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id 23706574ED;
+ Fri, 21 Aug 2020 10:53:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-disposition:content-type:content-type
+ :mime-version:references:message-id:subject:subject:from:from
+ :date:date:received:received:received; s=mta-01; t=1598007235;
+ x=1599821636; bh=aDNQCIk4AbizCxvc3FytHfG88CXeatRS0JwlmnDZoHs=; b=
+ MNbyrsFr49PxjVn0azynTz0LtCXzOsncJaDtYNMCoWaMNNaVCRvHPdUcWKI0QVU+
+ A6PkaenRzP8XIwO/jWnpq/0zxh7Gg5uuy/aC9569bjjJWFRzTAPgs3i0c8IS93JZ
+ dHfaZhV2pJYVfYWL/nbiczQic1cvhkLVx+o8Z9reyAg=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id p9pgP2Uiji3Y; Fri, 21 Aug 2020 13:53:55 +0300 (MSK)
+Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com
+ [172.17.10.102])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mta-01.yadro.com (Postfix) with ESMTPS id DC9BA52195;
+ Fri, 21 Aug 2020 13:53:53 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-02.corp.yadro.com
+ (172.17.10.102) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Fri, 21
+ Aug 2020 13:53:53 +0300
+Date: Fri, 21 Aug 2020 13:53:52 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: Suspicious QOM types without instance/class size
+Message-ID: <20200821105352.GA89922@SPB-NB-133.local>
+References: <20200820215529.GH642093@habkost.net>
 MIME-Version: 1.0
-In-Reply-To: <20200821083853.356490-1-graeme@nuviainc.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20200820215529.GH642093@habkost.net>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-02.corp.yadro.com (172.17.10.102)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/21 06:53:56
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, URIBL_BLOCKED=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, leif@nuviainc.com, rad@semihalf.com,
- qemu-devel@nongnu.org
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: joWKhy0NNdxX
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Cameron Esfahani <dirty@apple.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Richard Henderson <rth@twiddle.net>,
+ "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5ZKM2pNC07n/
 
-On 8/21/20 10:38 AM, Graeme Gregory wrote:
-> Fixing a typo in a previous patch that translated an "i" to a 1
-> and therefore breaking the allocation of PCIe interrupts. This was
-> discovered when virtio-net-pci devices ceased to function correctly.
+On Thu, Aug 20, 2020 at 05:55:29PM -0400, Eduardo Habkost wrote:
+> While trying to convert TypeInfo declarations to the new
+> OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
+> where instance_size or class_size is not set, despite having type
+> checker macros that use a specific type.
 > 
-> Fixes: 48ba18e6d3f3 ("hw/arm/sbsa-ref: Simplify by moving the gic in the machine state")
-> Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
-> ---
->  hw/arm/sbsa-ref.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index 570faac6e2..48c7cea291 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -565,7 +565,7 @@ static void create_pcie(SBSAMachineState *sms)
->  
->      for (i = 0; i < GPEX_NUM_IRQS; i++) {
->          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-> -                           qdev_get_gpio_in(sms->gic, irq + 1));
-> +                           qdev_get_gpio_in(sms->gic, irq + i));
-
-Oops...
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
->          gpex_set_irq_num(GPEX_HOST(dev), i, irq + i);
->      }
->  
+> The ones with "WARNING" are abstract types (maybe not serious if
+> subclasses set the appropriate sizes).  The ones with "ERROR"
+> don't seem to be abstract types.
 > 
 
+> ERROR: target/i386/hvf/hvf.c:908:1: instance_size should be set to sizeof(HVFState)?
+
+Hi Eduardo,
+
+How do you get the error?
+
+Given your changes, instance size should really be sizeof(HVFState).
+
+BTW, the object definition for hvf seems different from KVM (and perhaps
+wrong?), e.g. HVFState is allocated within init_machine handler and then
+assigned to a global variable:
+
+static int hvf_accel_init(MachineState *ms)
+{
+    int x;
+    hv_return_t ret;
+    HVFState *s;
+
+    ret = hv_vm_create(HV_VM_DEFAULT);
+    assert_hvf_ok(ret);
+
+    s = g_new0(HVFState, 1);
+ 
+    s->num_slots = 32;
+    for (x = 0; x < s->num_slots; ++x) {
+        s->slots[x].size = 0;
+        s->slots[x].slot_id = x;
+    }
+  
+    hvf_state = s;
+    cpu_interrupt_handler = hvf_handle_interrupt;
+    memory_listener_register(&hvf_memory_listener, &address_space_memory);
+    return 0;
+}
+
+static void hvf_accel_class_init(ObjectClass *oc, void *data)
+{
+    AccelClass *ac = ACCEL_CLASS(oc);
+    ac->name = "HVF";
+    ac->init_machine = hvf_accel_init;
+    ac->allowed = &hvf_allowed;
+}
+
+static const TypeInfo hvf_accel_type = {
+    .name = TYPE_HVF_ACCEL,
+    .parent = TYPE_ACCEL,
+    .class_init = hvf_accel_class_init,
+};
+
+Thanks,
+Roman

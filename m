@@ -1,150 +1,145 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp201729lfy;
-        Fri, 21 Aug 2020 04:41:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzSv+JhAiBwXtvqqyfTwK0sj9Lw3u0f00NrA6pCQPZ6dEBpWc/hLkDam23SzZqXOQ0IY9dI
-X-Received: by 2002:a25:7ec5:: with SMTP id z188mr3244392ybc.57.1598010081867;
-        Fri, 21 Aug 2020 04:41:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598010081; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp301645lfy;
+        Fri, 21 Aug 2020 06:49:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHBgUHVnPlacjQPr8F/Lt6OPqBp1xCMA800Tl/Ohau5DmyWWTno7gneqL1ph666FaWG92u
+X-Received: by 2002:a25:7141:: with SMTP id m62mr3603407ybc.443.1598017768102;
+        Fri, 21 Aug 2020 06:49:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598017768; cv=none;
         d=google.com; s=arc-20160816;
-        b=Eppgcg0zDUngOOmHIfxn7Qyxwam+8Ti2dyo7tGr+7VqVb6uj92QEN6s2G+Ng7uebuK
-         nJChs7wTbCoXVUtIyeFB+wUsMhxFUYo7RA+4/BnhhOJjKfUj2xjzS8K/SnaIwVn8ZOXe
-         nz+3qb9uPMquAWtIiK3Jpn26ErYpgY5S2XgkdtQgThPrldhH9x/PKciN8SMFZv5YB8TO
-         94pKNEy3R7DDEKB8bzazZQCrGY/0i/LZizDg5loioVE320qwWdnx+6VurR4rYlxgMBi2
-         Y31BpzB76Clh0E0ylJpiEftlEN9LVKjpvEQ142w8mkyV0X9eBn5+lZ69jLGS+P0SZ6jp
-         6nRg==
+        b=Lime70rzeRGQzxYnQh2wz0Ls/Wtlc0lM4Iqk0+Kbt4wHWzeeaD8swpLvx5VdUT/jpl
+         PZfGbitTf+TSyAhMWz3wjq6dyS3m85K0OSA4Ekvln2Hc0WnOtXLl1dYzBVHqk4tz36tG
+         +ItVHOtPNIyf7umqS0aEbnS/pDUsNkyKxW2GRIi5R19qdpD4YisRFG+dS9Qk+82OUOzz
+         t/iW/+3cFQX+wnjFAl7+WjQ0RudDxzU782xD51u9cREZKMnZkv+UAqZ3kir6D4tBLltq
+         0kJhNOWrEWSNTqbf/+JgRmDygvTHB7qbVTy85H4p9N+rRP3tGODM8qjl99dCrMYkA+Hq
+         RHew==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=MB2U+/7um/HkCx0cImuwf5fXVXkU50hae+/WHXp2ULc=;
-        b=kZ0ZJGCx0LgF1bvYP9GfSqBW+iax6/XWxqrh0OMmOqWvRN1Zfg4q1l0FRd084MSOCT
-         VPd6mBDiixzVcdteVRPoFRHJ2VUWfMJ/ZpdHHqPVDdhzGuCedR2gRqrHrXCLekT1yqnw
-         IX8uVsAd3kYqlU0dtmSkqzStK0LXzihV+BS0/cik1eBtyBR/bTDLrmGUq9lEjeJvN6YW
-         eZgzp2Rc3sCZWuO8oEhOgki6KRdpP/tAYGAIvB38KHRHrukaGwZH2J5Y7PE7FNpnvt0Z
-         E5qkfAjeisTGCcYZB9LxtgOIENW6LR0iaxncy59BEE/WWqM9Cr8B/ARY1RQ4y2MHprSk
-         bVKA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=YhvmB0oJ/6Gg0BgGuIKOUJsssCe/tsIiz9iE5rmnzNw=;
+        b=rWy9SuEL4wavnao1S+dlGY9R16NGy6z4c4GIve7gpgSphn2hZSmkcypnqPXk6efdEl
+         m0I6WtXsxm7Nx26Dz6Vf8NaoS0AG7JcSgIpRn/eWXxIAUEk5m7nL54HmuZ8/lfSLjEhr
+         ttk0ySBo7rbtvsJkJHKKbGe/g1P81CnkSUerAGxICScUrox/1763sP+75cvTdZb+qJUB
+         VbH5ibdpAWV+LwL09a1nNlCb1ROGpYt/qAj/wODLO7CgGfEl9vIXqBur2EBmwY/XONk3
+         YivnOIHV6ynDx3xQ1Ys6j9Zcbem2RBkTU2lpnDeeZysV1jPeQyHoaVIs0qhhXtkDnG5F
+         49/g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=LiXSNBk9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lZQz+65W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 206si2009801ybb.62.2020.08.21.04.41.21
+        by mx.google.com with ESMTPS id x5si2414436ybg.315.2020.08.21.06.49.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 04:41:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Aug 2020 06:49:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=LiXSNBk9;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56150 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=lZQz+65W;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:34484 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k95Q9-00014l-2B
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 07:41:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41548)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k97Q7-0003M4-Gc
+	for alex.bennee@linaro.org; Fri, 21 Aug 2020 09:49:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49884)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1k94wl-0001G2-Tq
- for qemu-devel@nongnu.org; Fri, 21 Aug 2020 07:10:59 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:34070)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k97Py-0003IZ-2Z; Fri, 21 Aug 2020 09:49:18 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43263)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1k94wj-0007Xl-DI
- for qemu-devel@nongnu.org; Fri, 21 Aug 2020 07:10:59 -0400
-Received: by mail-wr1-x444.google.com with SMTP id f7so1593449wrw.1
- for <qemu-devel@nongnu.org>; Fri, 21 Aug 2020 04:10:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=MB2U+/7um/HkCx0cImuwf5fXVXkU50hae+/WHXp2ULc=;
- b=LiXSNBk9IXl5OJ6rApMhTG7vdDO4N1JKyApHlNgiCXQhYP51S7mncn9WAbMCmRQcWq
- nu9c9KxeNewUbeb57IL8JQESl+8uI2dhFw+lhprL5PDDHD2ObxJYsG91b0VOdF/zb/bc
- OOFDe5NpJ9hRqvDZ/RV/3FZy67w/ywQJbrfbKeBj/B672rX5WYaApGTtBlqH5gCMeI/n
- oUlcoK5Dj54hkPc8g94916meFHgYGmvnoYZow5ivmQ07wk+eOJaRMKI7sl9I5ZYivDqT
- J2Yh8xEFMOxHRs1wiR6vKd8pKTsXv8GFp/ZFrklx4NZCwmJIFRXWVHUvQR07CIFkBfsX
- ZiaA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k97Pv-0001u4-5P; Fri, 21 Aug 2020 09:49:17 -0400
+Received: by mail-wr1-x441.google.com with SMTP id a15so1985506wrh.10;
+ Fri, 21 Aug 2020 06:49:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=YhvmB0oJ/6Gg0BgGuIKOUJsssCe/tsIiz9iE5rmnzNw=;
+ b=lZQz+65WURfuMrUlHnF03GIs0vhRPtvMTUuF51X8q7p1mWw/gwOvUmjK1Nr3mi9FQf
+ 0Tnb5i8uFJO1OACffut0eEtdPMJpSooiDLOQaIU4Lm9ynA4gfDxQpTMV7Rbku1O6autE
+ jTcMFN+MJ10T00MzBeIa/EchBI7Hqi9UhDESLNQRjlFHmgDF/bFP/2IPYsC18BlMQKq4
+ vqWDnQQHLAwZfEhvCoz7kTmKX02h932u+UNYdjMEzkEbLjLLl4doGfhOiHq5lnZvznMb
+ udh+0RAM19xZCTrZf1DDg+uudUWg253mQ6FeRfHWwepCs19rqlRE27h8RY+sr375yWPR
+ Xyiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=MB2U+/7um/HkCx0cImuwf5fXVXkU50hae+/WHXp2ULc=;
- b=npk2jEoR3H5uCiDwoOoFojM8r7X/K4BpFmYp73A815grJ8WTZZINnjTAntri9p2gUm
- 43udCYV12hcVt/zIC0BPyiuntGrF4nS+WWLNkJucsfKBGZLuZGdHcWtgxFZDpnpi80iW
- gHAYy1S2XK61W56l3kd557SiRTy78EVcJ+5EwZVVUlGskIN/ChJiKGJOWhGfXLJ0har0
- /x8McvhtUbyuWCjxnZgq2lilKYlCSj5D/+gDVyyJbdYTKGAluzkch5ngA8Z6JkY/cpaz
- qb9PrASyyDSrIcWdYqfJyuxRQPGmCByDPM2H8ZQxQu8CK625Giyl49m6JBF98MLePulM
- EkZQ==
-X-Gm-Message-State: AOAM530FNd39ByIRsWrkCXvTF0DahMW0O6gM4tJfo1dAmGdzSbBnCloA
- m8xxlDA8Wy8+90WgEE6iLY88WQ==
-X-Received: by 2002:adf:e94a:: with SMTP id m10mr2428280wrn.249.1598008255456; 
- Fri, 21 Aug 2020 04:10:55 -0700 (PDT)
-Received: from vanye ([2001:470:1f09:12f0:b26e:bfff:fea9:f1b8])
- by smtp.gmail.com with ESMTPSA id t8sm4548681wmt.35.2020.08.21.04.10.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Aug 2020 04:10:55 -0700 (PDT)
-Date: Fri, 21 Aug 2020 12:10:53 +0100
-From: Leif Lindholm <leif@nuviainc.com>
-To: Graeme Gregory <graeme@nuviainc.com>
-Subject: Re: hw/arm/sbsa-ref.c : Add a fake embedded controller
-Message-ID: <20200821111053.GJ1191@vanye>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=YhvmB0oJ/6Gg0BgGuIKOUJsssCe/tsIiz9iE5rmnzNw=;
+ b=HiCWus3ujp0ZLpjIRV1haWeOANZl/8AkAPoo9T68LPQxbLWz2e6TdQ4aqyx+YMp+4+
+ 1IRJKCrZvIb2YHwgdbqMm9CAWx2Fqf/o6ZMggLOdxQd09Z6zhNXkexFTJoLHLF5rhzbX
+ eDlBj+cF+k4wl5oa/0Bd+4OR6m7AOVv1bVy/T1l0ZNXOst6lPspnr7y2+X/ki/RB0hJl
+ 3Qttzio38W9jYXtmr5wXiEjU6fCACGjj/CU9+PK6bfeXXy+oBYsxpiUcRDiHS+LfQu2E
+ a2GI85cUztzUlkmCWI6fWvZkeWzFYRVnh7T1e7ufduxA3455SMD4vkkvBDFN7eWTfo6g
+ 4Ttw==
+X-Gm-Message-State: AOAM532u+5SeMAEPY61kPHbh6YKw7l/7Apd6BMxyC01CH/gFB39yiHcV
+ MIsGpNZN9PKH6D4qwoJeqdqTWR52rrc=
+X-Received: by 2002:a5d:630b:: with SMTP id i11mr2983367wru.95.1598017753141; 
+ Fri, 21 Aug 2020 06:49:13 -0700 (PDT)
+Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id h14sm5474648wml.30.2020.08.21.06.49.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 21 Aug 2020 06:49:12 -0700 (PDT)
+Subject: Re: [PATCH] hw/arm/sbsa-ref.c : Add a fake embedded controller
+To: Graeme Gregory <graeme@nuviainc.com>, qemu-arm@nongnu.org
 References: <20200820133201.80577-1-graeme@nuviainc.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6dd097d4-bae0-d629-7f4c-398f74f9a0e9@amsat.org>
+Date: Fri, 21 Aug 2020 15:49:11 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
 In-Reply-To: <20200820133201.80577-1-graeme@nuviainc.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=leif@nuviainc.com; helo=mail-wr1-x444.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- rad@semihalf.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7FjCxvDTmtWS
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, leif@nuviainc.com, qemu-devel@nongnu.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, rad@semihalf.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: OFK7FBk3SdCo
 
-On Thu, Aug 20, 2020 at 14:32:01 +0100, Graeme Gregory wrote:
+On 8/20/20 3:32 PM, Graeme Gregory wrote:
 > A difference between sbsa platform and the virt platform is PSCI is
 > handled by ARM-TF in the sbsa platform. This means that the PSCI code
 > there needs to communicate some of the platform power changes down
 > to the qemu code for things like shutdown/reset control.
+
+No need to explicit 'fake' in patch subject, almost all emulated
+devices are fake.
+
 > 
 > Space has been left to extend the EC if we find other use cases in
 > future where ARM-TF and qemu need to communicate.
 > 
 > Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
-
-I can confirm that with the qdev_create->qdev_new fixup, the model can
-now reset or shut down through software control. Verified from UEFI
-Shell with upstream edk2-platforms and upstream + 1 patch
-trusted-firmware-a.
-
-So with that fix:
-Tested-by: Leif Lindholm <leif@nuviainc.com>
-Reviewed-by: Leif Lindholm <leif@nuviainc.com>
-
-Thanks!
-
-/
-    Leif
-
 > ---
 >  hw/arm/sbsa-ref.c | 95 +++++++++++++++++++++++++++++++++++++++++++++++
 >  1 file changed, 95 insertions(+)
@@ -249,6 +244,10 @@ Thanks!
 > +{
 > +    hwaddr base = sbsa_ref_memmap[SBSA_SECURE_EC].base;
 > +    DeviceState *dev = qdev_create(NULL, TYPE_SECURE_EC);
+
+This API has been removed in 2194abd6231 ("qdev: qdev_create(),
+qdev_try_create() are now unused, drop"), can you rebase please?
+
 > +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
 > +
 > +    memory_region_add_subregion(mem, base,
@@ -275,6 +274,15 @@ Thanks!
 > +    .name = "sbsa-secure-ec",
 > +    .version_id = 0,
 > +    .minimum_version_id = 0,
+
+I'm think you need to initialize that, but VMStateDescription
+is not my cup of tea, so better wait for confirmation by someone
+more confident with it.
+
+    .fields = (VMStateField[]) {
+        VMSTATE_END_OF_LIST()
+    }
+
 > +};
 > +
 > +static void secure_ec_class_init(ObjectClass *klass, void *data)
@@ -299,6 +307,5 @@ Thanks!
 >      type_register_static(&sbsa_ref_info);
 >  }
 >  
-> -- 
-> 2.25.1
 > 
+

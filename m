@@ -1,104 +1,90 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1708830lfy;
-        Thu, 20 Aug 2020 14:55:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzNK5WaQNcw/JIQZ+i35cUy5GDHR56oYKMXgZb+uIggwfOEuYJ7W4mwH+2iMK+5CugzqH7T
-X-Received: by 2002:a25:e049:: with SMTP id x70mr443090ybg.428.1597960559314;
-        Thu, 20 Aug 2020 14:55:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1597960559; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1827388lfy;
+        Thu, 20 Aug 2020 18:09:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzOR0eRFJJLcrG3Y1EOGvY8xZTzAmc5NoZ6zbMdzAmhPR/3197MAI2NLCk7XbawyVHW/XXP
+X-Received: by 2002:a25:da82:: with SMTP id n124mr632178ybf.366.1597972165865;
+        Thu, 20 Aug 2020 18:09:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1597972165; cv=none;
         d=google.com; s=arc-20160816;
-        b=kjTMpcj0lbhCo1BxhP2MtIb2tl44V/9A7wiqwFQVY7TB1sufFOFb8KM8X599Zv3qMo
-         236dYZnD6Q9zOHZGxGRjMiPFxIyJ1x7S5y3hungVcFm15tGAEzB6pjhlqZNHt8mtyitz
-         KSfbELMRD1m3257Xd+urtZhmgCBjvMeO7+43iv7hmmXC8jYXfPJ0luW9GvMwS8TUwysD
-         y+8aWAqhriiVaHIY9l3v9muX3jc3ND4VcFlX/36jwlr3BE482HkZ/oozjWu34b330HaJ
-         5rney6tGf+cVdqnLsu4LVWtzEcDRyjVhR5u9pTUNXhbGMBdv6XIAA/08FkB5eJqatbBN
-         IRgg==
+        b=dAmQzUjxPjJ41hmfGakIFLsyHX3wTd5LHCsMUQnKdxH/gT2XOfO6ySmT9U4BdULG/R
+         3I08P9tTnBzy9XHvSdYK/PY5H07ncF6cHtjwxYHSuqhPX8FHS63yttbxZ5Y9XyOE0F0N
+         YZTmKT4sNLli0JALtceDQ2v9cLkzCAvH2CxABL3GsO6dqKFBO7KqI5OkwzLVt20jY2nY
+         6lB4ra5idINoiIOuQMJfPPvJes75oRksc1buNfkpv7HgfDcq3MuQ5nvX7bgCLoiFQ9lV
+         PTbixOEZI6MQkT4rIX6fiNEMF9ETP4jvAtuHvTOMXGcbq3FGF8YmUyka9S6Sj2JrwEAt
+         o06Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :mime-version:message-id:subject:to:from:date:dkim-signature;
-        bh=Mua+x27GNP9PoMRmh9desET01GYPNoFzw4YIF8qk/S4=;
-        b=ntaE4vJMyQLfAPCxrLEailZEBO/wHcB+sCwA/AM9FbyT64sppdmCSBVKoIfaGV3tpn
-         iLS+xx58BlGymy2mNlqkQ2qjOqyqnt59eSv1FiQU1XqtFosRHx+4s7aBaRTogW3C4w9Y
-         WDIIycgzDloEGIbc9A1otR3+pcr6K71SuvFaL3MZUWnAyEUgUjkmm/WWaqc6s6Q2zFPw
-         c66AKv7OmBKSdbYjDKjiiW+3nsjfJe2Xx+MAlwX8eZN5cqRJlbJj4GgbjETRYOZiqOPW
-         wKZ4HdtdhinImn5nVTcZZjK3vv+AjxOCl1Axwd4Bon0la9ND8QkcoAY5w8Zro5wzy9zA
-         CWxw==
+         :list-unsubscribe:list-id:precedence:mime-version:user-agent
+         :message-id:in-reply-to:date:references:subject:to:from;
+        bh=k1BTQ9RJq8hACHvavP/ms0lqNLk38qYSLWNV9FxdZJc=;
+        b=papVlJ8+nk4sdvvZqp3S64je/68Wa+MHYOXFm7/Q06qekVWQIM+oXr/5wueRlMl2d7
+         UmBSkmITh67V5OIgNhSNHqDtEftWkTQaPg3V6SUESFia9fMfdaGPhb9yQRIkiThITZN9
+         zO/pwkeoCOBwNlF86F2rmyesbERAiA47FIgCzn7wpLrEOef4HdoZOWTxUbEbkmkUgHnh
+         b46nVFVHwj9/Vk9Of1gmyXYZFkQkDLV699Ha/loA/CRhDy9ZVcjlFk7JPwMfIfAXzda5
+         cWAwGC8PtqoQIuuBpj/v7hoKTl2eHucAmzl7O1LB0zTAu8Gfvc//ZDoTQMlBSinzJs+E
+         xrng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EYHnQcA8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=toshiba.co.jp
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l6si2837217ybm.43.2020.08.20.14.55.59
+        by mx.google.com with ESMTPS id x2si397073ybt.235.2020.08.20.18.09.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 20 Aug 2020 14:55:59 -0700 (PDT)
+        Thu, 20 Aug 2020 18:09:25 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EYHnQcA8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58616 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=toshiba.co.jp
+Received: from localhost ([::1]:44178 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k8sXO-0007jL-M9
-	for alex.bennee@linaro.org; Thu, 20 Aug 2020 17:55:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50366)
+	id 1k8vYb-0006Fr-2j
+	for alex.bennee@linaro.org; Thu, 20 Aug 2020 21:09:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35348)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1k8sXG-0007iX-Ik
- for qemu-arm@nongnu.org; Thu, 20 Aug 2020 17:55:50 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:23702
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1k8sXD-0001Hg-VZ
- for qemu-arm@nongnu.org; Thu, 20 Aug 2020 17:55:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1597960546;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type;
- bh=Mua+x27GNP9PoMRmh9desET01GYPNoFzw4YIF8qk/S4=;
- b=EYHnQcA8Nu1A4WNhvWAdaOph8Vrd5SoSKKFJUD8vXh2VIe8OHmAuuz8W8Z2sJimtmorFFE
- s7ZJQEcI8KUEysrfeLmzIaadwGMFb0C0QCk6zrkQ90N/FFdBhjBIoNC2qAy0tvM09snBgm
- 3ORwDA7DA11tNOct6JB3Q3Zb3ZtyuDg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-247-2pXW9Ak5Nv2rUFhHShv1Ig-1; Thu, 20 Aug 2020 17:55:45 -0400
-X-MC-Unique: 2pXW9Ak5Nv2rUFhHShv1Ig-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 95DEC100CFC0;
- Thu, 20 Aug 2020 21:55:41 +0000 (UTC)
-Received: from localhost (ovpn-117-244.rdu2.redhat.com [10.10.117.244])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6E30371780;
- Thu, 20 Aug 2020 21:55:30 +0000 (UTC)
-Date: Thu, 20 Aug 2020 17:55:29 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: "Daniel P. Berrange" <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Suspicious QOM types without instance/class size
-Message-ID: <20200820215529.GH642093@habkost.net>
+ (Exim 4.90_1) (envelope-from <punit1.agrawal@toshiba.co.jp>)
+ id 1k8vYS-0006Dw-5V; Thu, 20 Aug 2020 21:09:18 -0400
+Received: from mo-csw1516.securemx.jp ([210.130.202.155]:46018
+ helo=mo-csw.securemx.jp)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <punit1.agrawal@toshiba.co.jp>)
+ id 1k8vYK-0007hE-Lx; Thu, 20 Aug 2020 21:09:14 -0400
+Received: by mo-csw.securemx.jp (mx-mo-csw1516) id 07L18wbB022933;
+ Fri, 21 Aug 2020 10:08:58 +0900
+X-Iguazu-Qid: 34tMSeeoSoqueZbKi2
+X-Iguazu-QSIG: v=2; s=0; t=1597972138; q=34tMSeeoSoqueZbKi2;
+ m=VQLcjwad1ae08W7GaurJKe9kyqqe4/aidO6vRvI15Jc=
+Received: from imx2.toshiba.co.jp (imx2.toshiba.co.jp [106.186.93.51])
+ by relay.securemx.jp (mx-mr1513) id 07L18vvW032589;
+ Fri, 21 Aug 2020 10:08:57 +0900
+Received: from enc01.localdomain ([106.186.93.100])
+ by imx2.toshiba.co.jp  with ESMTP id 07L18vN3023378;
+ Fri, 21 Aug 2020 10:08:57 +0900 (JST)
+Received: from hop001.toshiba.co.jp ([133.199.164.63])
+ by enc01.localdomain  with ESMTP id 07L18v6X031918;
+ Fri, 21 Aug 2020 10:08:57 +0900
+From: Punit Agrawal <punit1.agrawal@toshiba.co.jp>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/arm/virt: Default to architecture appropriate CPU
+References: <20200820045507.614288-1-punit1.agrawal@toshiba.co.jp>
+ <CAFEAcA-zRAzU_ZRE5Wfc1V9jtnnhNyHEkXF4+t2TFXJ26MKc8A@mail.gmail.com>
+Date: Fri, 21 Aug 2020 10:08:56 +0900
+In-Reply-To: <CAFEAcA-zRAzU_ZRE5Wfc1V9jtnnhNyHEkXF4+t2TFXJ26MKc8A@mail.gmail.com>
+ (Peter Maydell's message of "Thu, 20 Aug 2020 09:55:16 +0100")
+X-TSB-HOP: ON
+Message-ID: <87h7swyfdj.fsf@kokedama.swc.toshiba.co.jp>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/20 17:41:18
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain
+Received-SPF: pass client-ip=210.130.202.155;
+ envelope-from=punit1.agrawal@toshiba.co.jp; helo=mo-csw.securemx.jp
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/20 21:09:01
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -111,48 +97,52 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- David Hildenbrand <david@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Cameron Esfahani <dirty@apple.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Richard Henderson <rth@twiddle.net>, Cornelia Huck <cohuck@redhat.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-ppc@nongnu.org
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J2RjjEGivzrh
+X-TUID: MdHpvMrr0nmu
 
-While trying to convert TypeInfo declarations to the new
-OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
-where instance_size or class_size is not set, despite having type
-checker macros that use a specific type.
+Hi Peter,
 
-The ones with "WARNING" are abstract types (maybe not serious if
-subclasses set the appropriate sizes).  The ones with "ERROR"
-don't seem to be abstract types.
+Thanks for the quick feedback and the background. 
 
-WARNING: hw/arm/armsse.c:1159:1: class_size should be set to sizeof(ARMSSEClass)?
-WARNING: hw/audio/hda-codec.c:900:1: instance_size should be set to sizeof(HDAAudioState)?
-ERROR: hw/core/register.c:328:1: instance_size should be set to sizeof(RegisterInfo)?
-WARNING: hw/input/adb.c:310:1: class_size should be set to sizeof(ADBDeviceClass)?
-WARNING: hw/isa/isa-superio.c:181:1: instance_size should be set to sizeof(ISASuperIODevice)?
-WARNING: hw/ppc/pnv_lpc.c:771:1: instance_size should be set to sizeof(PnvLpcController)?
-ERROR: hw/ppc/spapr_drc.c:771:1: instance_size should be set to sizeof(SpaprDrc)?
-WARNING: hw/rtc/m48t59-isa.c:156:1: class_size should be set to sizeof(M48txxISADeviceClass)?
-WARNING: hw/rtc/m48t59.c:691:1: class_size should be set to sizeof(M48txxSysBusDeviceClass)?
-ERROR: hw/s390x/virtio-ccw.c:1237:1: class_size should be set to sizeof(VirtioCcwBusClass)?
-WARNING: hw/ssi/ssi.c:88:1: instance_size should be set to sizeof(SSISlave)?
-ERROR: hw/virtio/virtio-pci.c:2101:1: class_size should be set to sizeof(VirtioPCIBusClass)?
-WARNING: scsi/pr-manager.c:76:1: instance_size should be set to sizeof(PRManager)?
-ERROR: target/i386/hvf/hvf.c:908:1: instance_size should be set to sizeof(HVFState)?
+Peter Maydell <peter.maydell@linaro.org> writes:
 
--- 
-Eduardo
+> On Thu, 20 Aug 2020 at 05:55, Punit Agrawal
+> <punit1.agrawal@toshiba.co.jp> wrote:
+>>
+>> The default_cpu_type for the Virt machine is set to "cortex-a15" for
+>> both the arm (qemu-system-arm) and aarch64 (qemu-system-aarch64)
+>> targets.
+>>
+>> As a result, starting the aarch64 target with "-machine virt" defaults
+>> to booting with a Arm v7 cpu which is counter to
+>> expectation. Debugging the issue is further hampered by lack of any
+>> output from a supplied arm64 firmware as it is now running on the
+>> wrong CPU type.
+>>
+>> Fix this by defaulting to the "max" capability CPU for the target
+>> architecture. After the patch both the arm and aarch64 qemu default to
+>> the equivalent of passing "-cpu max".
+>
+> Hi; this kind of thing has been suggested in the past several times.
+> Generally we've taken the view that we prefer:
+>  * not to make changes that would break pre-existing command lines
+>  * to maintain the general behaviour that a command line used
+>    with qemu-system-arm will also work with qemu-system-aarch64
 
+It did feel like too low hanging a fruit to not have been looked into
+before. Generally the above makes sense - though defaulting
+qemu-system-aarch64 to start with a 32bit cpu is stretching the above
+view too far I think.
+
+> It is certainly true that these days the default CPU type for
+> virt is not what most users want, though.
+
+I do understand it's a balancing act when it comes to changing user
+visible options. But it's worth revisiting the choice if most users
+would prefer otherwise.
+
+Thanks,
+
+Punit

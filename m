@@ -1,179 +1,211 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp443679lfy;
-        Fri, 21 Aug 2020 09:34:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz7fUpdUYeHZGEfnEXMMChkW6n7dQKBJjAkQEFabrGjxylijzqbSH3XwAB7XWPhYFd1+hOf
-X-Received: by 2002:ab0:14c8:: with SMTP id f8mr2145626uae.23.1598027693768;
-        Fri, 21 Aug 2020 09:34:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598027693; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp485318lfy;
+        Fri, 21 Aug 2020 10:29:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzPgSLcZRCyTFwLVpQFvocDtzxxqSfgea6cW5FroK4f/xhzyvEBKvtJ2/2OIYfIEIi7JypN
+X-Received: by 2002:a25:df41:: with SMTP id w62mr4850470ybg.117.1598030974934;
+        Fri, 21 Aug 2020 10:29:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598030974; cv=none;
         d=google.com; s=arc-20160816;
-        b=CjFHsB6q/kwaezbuF4vqPlpYyNWyUn4OXlc0JWVlspSSlUxr4xInnq22Cm/dk3NP1k
-         /iyYL+2xOILnnC2GbJyASRml18AwiyABuVcG/lq9WVKOdx5Y4LvlWX9lYxdl4ztShUPB
-         fPYn2+Js8VWl+bX/5WYP7ryXZX/7LSb5QCFmp5MbxKY6r5O1g2LcSxzr6WcErIk2g2ML
-         V3m/p8QlxunvEEZnjXdGJkE5ulLus844en5kmSkYOjXPWLaWAu+VD1q7L7jzGnbvMlmP
-         Ydt4c4eIjIat1OpwDTHTzdlcaXLZCkOuN/C5252bd24AH1BcJdv+UMkmsyt2WwGEHG9Z
-         vMng==
+        b=T4HkvlaV8jlz3pdmcQUUckOUEqhTA/lwiXz8dngYZhJOdJ1XLHJ8zC/EqSJX4PT9f2
+         qStrhO4mI9LRT7TT/aZSvWpHU8f7d2AXEgigSJC0HXDlU3znDpuaizXrhBBU1p5oxiH1
+         a09TsjIfKRZOplk/TxAaXRejrJkUO67j1yobQsREVeGMgeSotrpjj2D4RRLnEcT9cQi5
+         /Ro7RnyFwsV/Hpje1nW+NXHbZlGrTsI20AyvfftXGMmexHZLd9IRuYw5oYO5zu7fQkFy
+         EYppP6kkBmCAJEC/j0Bd9M3aWvoVjt6NBkgmGHTe6oCR2ypgODuo0A5u8QsbPZ2itvIS
+         Vq+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=2+K4uxN0kyhXy6kN+ijSa8qFKCUtC4za1XiAKyb7Tws=;
-        b=Iqrkr2eWrYf6wSOvyQJ0sL17HjcYVPv9KGGnd6ZXWisHsCBTAc8faOZ2zFxJSMSnkb
-         a6kcEfCwvdjOxKDyPNTnnGq6H7BdBiUkMqu9Hd9jqGpqpk7IP468fsvNJNJA0dcEQuLD
-         MR+WZvKFsexyEcB9gUs5JAx0L7ADsON/DNJDOjnWFXzVQvyS1cR8MzNNlnVrESwTAD5Z
-         dpmKZZWaNIPN0+STlTk2Ri1XQ3iESECtK+VJ9YgDN8DkUqa3RvLH1y1hCesP+TqFa/+0
-         yvcuM55xdM8m/Spq0Ohl1gVKX8n9NvHeUpiWHeoQWxQTKurA2VlCurTYODcdJuQkSeo4
-         TVmQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=8UmPEBqHrjvPs/KBLPT0a1bzj7Klv5TNoMNfuKZPiIs=;
+        b=MIzgUDFkeFOmPcPAaIqiLu0DE0szEHz7fr67vF+TDc2+EfTrr1bGNZtrkGtaYy9C5F
+         6vhInyjpC5+Sd04/wEytY1f41HqL6WX2StWjtkTVtMFZ0TxS868d04F4p0OUawrnjf8i
+         /DDX/dLFHPATl7h6hhhbouM0UuExWZugC35CJNJ0g94e3KYmAllvh5jVYVDHydofeZ5w
+         mnZYl1MdBi1YH0sDaV4gDtgmAMTVnAz/+hgsPzTJRcOWmeqYltcGzIKoZIgnJhM9T5Gj
+         ot0pgLs77Le1TCC31G0ynYHE++UIafkuzkvYRLJVOfhbA+RVTj/l4Ty8EDvw3qhU5L6m
+         zypw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=abinKzoj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sOpsBlDq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d10si556479vsk.369.2020.08.21.09.34.53
+        by mx.google.com with ESMTPS id r2si2949861ybk.87.2020.08.21.10.29.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 09:34:53 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 21 Aug 2020 10:29:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=abinKzoj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42422 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=sOpsBlDq;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:39240 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k9A0D-0005kw-4A
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 12:34:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59728)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1k9Ar8-0000xT-5J
+	for alex.bennee@linaro.org; Fri, 21 Aug 2020 13:29:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57136)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1k99w1-0007w6-LP
- for qemu-devel@nongnu.org; Fri, 21 Aug 2020 12:30:33 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:41121)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k9Aqx-0000wt-QL; Fri, 21 Aug 2020 13:29:23 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429]:36648)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jean-philippe@linaro.org>)
- id 1k99vw-0006og-U6
- for qemu-devel@nongnu.org; Fri, 21 Aug 2020 12:30:33 -0400
-Received: by mail-ej1-x641.google.com with SMTP id t10so2996474ejs.8
- for <qemu-devel@nongnu.org>; Fri, 21 Aug 2020 09:30:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=2+K4uxN0kyhXy6kN+ijSa8qFKCUtC4za1XiAKyb7Tws=;
- b=abinKzoj5alQRqRp3d9/Y8vcOnoqK1So6bFU7ki3PlKlt1uvNdKbCPdngAzKsy+y5W
- OiHVOyZwhIeMR2BcuDAYXgAk1APbs4CV2S2fPd2D0+YlQDbzD+AVHl1Q+usVPUibVRQz
- 5RVjIt8AbuNJIv5DrBzz9ScYlA8i0Xa9wXdALwwG/0LGLXznK0Nwbl3Luk7tfG4dvBaq
- eGUs4kBH/Lgaoagre6TlxJQ85DG9o65B+tuQovOEobP4vja1JlZkys8FrODbhoVAo25i
- ZN5HzeYw5T1hKUXYIBBScrItkssCoWKu1V0E8N3hmRJbqhfFByZ8xDOivB0exQ0srG6U
- 0AOQ==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1k9Aqw-00018o-6j; Fri, 21 Aug 2020 13:29:23 -0400
+Received: by mail-wr1-x429.google.com with SMTP id 88so2660855wrh.3;
+ Fri, 21 Aug 2020 10:29:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=8UmPEBqHrjvPs/KBLPT0a1bzj7Klv5TNoMNfuKZPiIs=;
+ b=sOpsBlDqQGsQ/wTlUDCIX9W2uara5u8JoHg+Rxjn0lmOZyHLuWoy/k/053E/ZkD4OP
+ EtrcK6qqNfPwy+8L2mkL5X7vNVef7q1bDe2aCk2EfmH1XaXDcLSaS6g0NxQ95plIDTE3
+ YbO4YpzKDo3hw1sFYyyfOk5QGm+QF0Xvinbv6Ul+8EBKxls1YjbKV1NO5Zu2anlZgJ+5
+ 0xkfUAm1iCO9S+zylZjvx0MVmwVg9vykLbiPP8e0k7NbaVJTd7Ig7D9GuOytK17rsfn/
+ GpMWFsUDsX9wTUJLjNmoNSP3gvcgttl3boxA0XpgMINvDfSNI9cs++L6yWC5PUNjC9p4
+ v0Cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=2+K4uxN0kyhXy6kN+ijSa8qFKCUtC4za1XiAKyb7Tws=;
- b=OmUnTDEATtjW9RnB5Ro5FVYlvIFdyyLhGhndV7M/K7mtIBBScQe0E3NVm/hCpny4Iy
- CT0N0Bx61Tv6nF0RibnPWW5jz4+nydIlcjioeZj1Rub8q/B1Jsnx2PYb49ZMNv+C1d0F
- OgU/I6kauqgr5gtlIx1t6+1GZdcDNzkiBMsrNfep/TQBC01CgxqcMD5lDecC5a3R6i6o
- Fkdpprc+VuxuaBFQAks13GM9MvCZ55cnU4L4815s/2SQg/zt0F9Ui6VM176JpQmFgIcE
- FoFiQNduvK7RrZGWi8f781eu3tPr3eZ9NDCvUnqfyHGg7TKoyS5NTIs2LbXiuiPWtnow
- jGug==
-X-Gm-Message-State: AOAM5329AqxjCQ6i1fOHO3vXOuBEVPsHxQTvRWkPVok/xcLmsMTiY9h3
- RGaRFvEAjR5FkIWLW+XiMoGqHQ==
-X-Received: by 2002:a17:907:7292:: with SMTP id
- dt18mr3849992ejc.512.1598027427415; 
- Fri, 21 Aug 2020 09:30:27 -0700 (PDT)
-Received: from localhost.localdomain
- ([2001:1715:4e26:a7e0:116c:c27a:3e7f:5eaf])
- by smtp.gmail.com with ESMTPSA id dk28sm1398030edb.90.2020.08.21.09.30.26
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=8UmPEBqHrjvPs/KBLPT0a1bzj7Klv5TNoMNfuKZPiIs=;
+ b=ob/GpG8L/OtNmifhpWuYbTVAp8zHDktZ+RdkiTFtw0Y+fKT8Tci5Olq+gydOzsCBqD
+ e0jCCwqrqz/vnvLUirFZQb9kG3y8HNZBVtVRWe+horEjYQFSSuwt4opJv3hNWCo/iga0
+ inHUCnZJRAs79mabu3hA94ebgwK56scrhoDyAAJo1Y+5xb638HxS01I75SSUoIhhZ4Aw
+ E9ljN1isXBxLmCP6uAr5i7xCnaoV6h6EDr+YAcVeKTcMRUOHOmvJ7IXHMFlm/pyHz/HN
+ skqnMkuHAW7RDEQwtHFtuuKnZ8tkLzuZJzjxI5qCKrlMucBqpnnQuJev1l3QZPtybiSp
+ ZY6g==
+X-Gm-Message-State: AOAM533jATec+bIMzM8lMOYgTHUqFsPh/kuiWRSxlebnR0Q6DKK/YGc/
+ U9MhNR3QNZG2LO57jG+LOxxVm/nFWcA=
+X-Received: by 2002:adf:bc4b:: with SMTP id a11mr3412280wrh.381.1598030959115; 
+ Fri, 21 Aug 2020 10:29:19 -0700 (PDT)
+Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
+ [81.40.121.121])
+ by smtp.gmail.com with ESMTPSA id 32sm5315471wrn.86.2020.08.21.10.29.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Aug 2020 09:30:26 -0700 (PDT)
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 4/5] hw/arm/virt: Remove device-tree restriction on
- virtio-iommu
-Date: Fri, 21 Aug 2020 18:28:38 +0200
-Message-Id: <20200821162839.3182051-5-jean-philippe@linaro.org>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20200821162839.3182051-1-jean-philippe@linaro.org>
-References: <20200821162839.3182051-1-jean-philippe@linaro.org>
+ Fri, 21 Aug 2020 10:29:18 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PULL 00/23] SD/MMC patches for 2020-08-21
+Date: Fri, 21 Aug 2020 19:28:53 +0200
+Message-Id: <20200821172916.1260954-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=jean-philippe@linaro.org; helo=mail-ej1-x641.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x429.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: 0
+X-Spam_score: 0.0
+X-Spam_bar: /
+X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, ehabkost@redhat.com, mst@redhat.com,
- eric.auger@redhat.com, Jean-Philippe Brucker <jean-philippe@linaro.org>,
- pbonzini@redhat.com, rth@twiddle.net
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZwSQ0dT35UJi
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>,
+ qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Qg6IWFFrgXhd
 
-Now that the virtio-iommu has a built-in topology mechanism, it can be
-used without a device tree. Remove the restriction on !ACPI or
-!firmware.
+The following changes since commit d6f83a72a7db94a3ede9f5cc4fb39f9c8e89f954:
 
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
----
- hw/arm/virt.c                | 10 ++--------
- hw/virtio/virtio-iommu-pci.c |  2 --
- 2 files changed, 2 insertions(+), 10 deletions(-)
+  Merge remote-tracking branch 'remotes/philmd-gitlab/tags/acceptance-testing=
+-20200812' into staging (2020-08-21 14:51:43 +0100)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ecfee362a18..2742c28054a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2358,16 +2358,10 @@ static HotplugHandler *virt_machine_get_hotplug_handler(MachineState *machine,
-                                                         DeviceState *dev)
- {
-     if (object_dynamic_cast(OBJECT(dev), TYPE_SYS_BUS_DEVICE) ||
--       (object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM))) {
-+        object_dynamic_cast(OBJECT(dev), TYPE_PC_DIMM) ||
-+        object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
-         return HOTPLUG_HANDLER(machine);
-     }
--    if (object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_IOMMU_PCI)) {
--        VirtMachineState *vms = VIRT_MACHINE(machine);
--
--        if (!vms->bootinfo.firmware_loaded || !virt_is_acpi_enabled(vms)) {
--            return HOTPLUG_HANDLER(machine);
--        }
--    }
-     return NULL;
- }
- 
-diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
-index ba62d60a0a0..240e85e6363 100644
---- a/hw/virtio/virtio-iommu-pci.c
-+++ b/hw/virtio/virtio-iommu-pci.c
-@@ -54,8 +54,6 @@ static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
-         error_append_hint(errp,
-                           "Check your machine implements a hotplug handler "
-                           "for the virtio-iommu-pci device\n");
--        error_append_hint(errp, "Check the guest is booted without FW or with "
--                          "-no-acpi\n");
-         return;
-     }
-     for (int i = 0; i < s->nb_reserved_regions; i++) {
--- 
-2.28.0
+are available in the Git repository at:
+
+  https://gitlab.com/philmd/qemu.git tags/sd-next-20200821
+
+for you to fetch changes up to 6d2d4069c47e23b9e3913f9c8204fd0edcb99fb3:
+
+  hw/sd: Correct the maximum size of a Standard Capacity SD Memory Card (2020=
+-08-21 16:49:22 +0200)
+
+----------------------------------------------------------------
+SD/MMC patches
+
+- Convert legacy SD host controller to the SDBus API
+- Move legacy API to a separate "sdcard_legacy.h" header
+- Introduce methods to access multiple bytes on SDBus data lines
+- Fix 'switch function' group location
+- Fix SDSC maximum card size (2GB)
+
+CI jobs result:
+  https://gitlab.com/philmd/qemu/-/pipelines/180605963
+----------------------------------------------------------------
+
+Alistair Francis (1):
+  hw/sd/pl181: Replace fprintf(stderr, "*\n") with error_report()
+
+Bin Meng (2):
+  hw/sd: Fix incorrect populated function switch status data structure
+  hw/sd: Correct the maximum size of a Standard Capacity SD Memory Card
+
+Philippe Mathieu-Daud=C3=A9 (20):
+  hw/sd/pxa2xx_mmci: Do not create SD card within the SD host controller
+  hw/sd/pxa2xx_mmci: Trivial simplification
+  hw/lm32/milkymist: Un-inline milkymist_memcard_create()
+  hw/sd/milkymist: Create the SDBus at init()
+  hw/sd/milkymist: Do not create SD card within the SD host controller
+  hw/sd/pl181: Rename pl181_send_command() as pl181_do_command()
+  hw/sd/pl181: Add TODO to use Fifo32 API
+  hw/sd/pl181: Use named GPIOs
+  hw/sd/pl181: Expose a SDBus and connect the SDCard to it
+  hw/sd/pl181: Do not create SD card within the SD host controller
+  hw/sd/pl181: Replace disabled fprintf()s by trace events
+  hw/sd/sdcard: Make sd_data_ready() static
+  hw/sd: Move sdcard legacy API to 'hw/sd/sdcard_legacy.h'
+  hw/sd: Rename read/write_data() as read/write_byte()
+  hw/sd: Rename sdbus_write_data() as sdbus_write_byte()
+  hw/sd: Rename sdbus_read_data() as sdbus_read_byte()
+  hw/sd: Add sdbus_write_data() to write multiples bytes on the data
+    line
+  hw/sd: Use sdbus_write_data() instead of sdbus_write_byte when
+    possible
+  hw/sd: Add sdbus_read_data() to read multiples bytes on the data line
+  hw/sd: Use sdbus_read_data() instead of sdbus_read_byte() when
+    possible
+
+ hw/lm32/milkymist-hw.h        |  11 ----
+ include/hw/arm/pxa.h          |   3 +-
+ include/hw/sd/sd.h            |  73 +++++++++++++++-------
+ include/hw/sd/sdcard_legacy.h |  50 +++++++++++++++
+ hw/arm/integratorcp.c         |  17 +++++-
+ hw/arm/pxa2xx.c               |  39 +++++++++---
+ hw/arm/realview.c             |  16 ++++-
+ hw/arm/versatilepb.c          |  26 +++++++-
+ hw/arm/vexpress.c             |  15 ++++-
+ hw/lm32/milkymist.c           |  24 ++++++++
+ hw/sd/allwinner-sdhost.c      |  24 +++-----
+ hw/sd/bcm2835_sdhost.c        |   4 +-
+ hw/sd/core.c                  |  38 ++++++++++--
+ hw/sd/milkymist-memcard.c     |  71 ++++++++++++----------
+ hw/sd/omap_mmc.c              |  10 +--
+ hw/sd/pl181.c                 | 111 +++++++++++++++++++---------------
+ hw/sd/pxa2xx_mmci.c           |  19 ++----
+ hw/sd/sd.c                    |  28 +++++----
+ hw/sd/sdhci.c                 |  46 ++++----------
+ hw/sd/ssi-sd.c                |   2 +-
+ hw/sd/trace-events            |  10 +++
+ 21 files changed, 415 insertions(+), 222 deletions(-)
+ create mode 100644 include/hw/sd/sdcard_legacy.h
+
+--=20
+2.26.2
 

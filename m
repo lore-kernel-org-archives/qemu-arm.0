@@ -1,177 +1,158 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp631820lfy;
-        Fri, 21 Aug 2020 14:02:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwURg/UbP5MAt17F6aBcIga88kcZQBemigiTFEFcYdmJ3d0uMaK7rwuSAHvf/6voiejq2Ei
-X-Received: by 2002:a25:4288:: with SMTP id p130mr6065749yba.288.1598043743144;
-        Fri, 21 Aug 2020 14:02:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598043743; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp992791lfy;
+        Sat, 22 Aug 2020 01:59:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzubq19liHtPuwyhw+l6Adt18LO9nRhq+0f6qKRE/EIvO8meFBrrv6LhqTaiN5cefzdQr9Z
+X-Received: by 2002:adf:f48d:: with SMTP id l13mr6036027wro.43.1598086799623;
+        Sat, 22 Aug 2020 01:59:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598086799; cv=none;
         d=google.com; s=arc-20160816;
-        b=UQ6mDgm7PuLF++Q3lhwSLoR7nwRakPS76lCmegYDZ6mj3xs74gqENu0p/3K6CS6e/b
-         OFvhiv0WQJctjxzMU9QpvzMuX25KdkpaMpobr3p6Q8/7a00tIG7moWrRscv+Dm0wakpn
-         dH0q0KTEP86bFvAB1CNgdkhvJzYF14KuQ+Q5ShiO5IHRvOYSipAPu+M1YJKuiJwQ2D6v
-         CaR/X1MKomAXvYToIiizirvhH/aEAnPigTrW7ROpYSEt/63RC0ujsoInhD4Nx7/c33Nd
-         vN+W3M/tu2HoyuYrk7jfVMsd1siEixYXJjNIdfvSG3gYpUpnf4uxSIyTKGEvu+JOaxXo
-         KxCw==
+        b=t3Z9tXgi2nM5s0seRYM9GtN+s7mkfFJqUwSIZnmuyH6aiUYB1jcSRDPMG2IPfIVGnB
+         qmJhwdC3B2bFRppwTmyJCtBUObF5oI3TWX/W9OcB1tad19sY0BPyJYH4nRXP01Ij1qbn
+         CdxovsXVUb4R01kCRKmLgwUuNjQeRpTreRIs2mlpa/FAmxoh78/AhFaSC6TFFGwef/TT
+         f/LqZPoI7LWhT4rx303t9GESD96B4EgGqpUQjtQAcB+kyl8D58Wi4mnKJ5EPfGvGuN13
+         jPmxM6cA3++OdOgQjYoV5ahzMP4C1LbPPygq0nn5NsbnyJS6iGcR99GITcL9le2qv1VR
+         /Tgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=yNmzfv+4UyB84wVM5gjFI//fDsw9DEZmIhAPE5UYKV8=;
-        b=a5tZrQ7p/CDQRb7Uzj8HBDEXlTmekzNbYCTBTjUGhDfCxhdBRyfqZbIpml2IcxOdoO
-         QvY6o4VY5ylzzM4kmDVLDiwJGUd96rsoejeZ08b/kHndDHs1Lv6c0bWAbTvgkUIKopOr
-         kV7KxGAq7eMLDxI6jT66NbYGUDb0JWAHUigorBGv0KxbP12YAuNuLTYdh9ih2lIvSgqu
-         Ew9aVEJRvJLXLTeQxAhOG+PTNrFxgPNaWrQu1z0dNtQ/2NerkaZAxOCBadAWOdnZNHn7
-         WdLtulhCifzO3KLXU2aXUknW9mXXqHZPZxxHPtZD3RzaXdQesGFC6eKqaNxzzrURsqVv
-         +esg==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=gW1foIRhNCGj007PHy4veDAOgbnpayN24bwrcFIipvo=;
+        b=dFVUAgfnteTAhB4JVqQCY3xgfHdXGMdQPGWxBAZnlqkeA9CJB8OwqnmMKZNDncAIDz
+         wGQ/igZol4kVIY/Z7X5yZZD2non4wHsQlywXMbPl+g8azbP3ESvq5YwCEgox+LH/gV2Z
+         FDyEfQLfpFMz5NJkX3Jz3aRnER8Q8CaNt6Jsm2chrHQQ/m0tndZiHYPgZdKoxdNFrvLh
+         Avl2s5rr0CAjL14fjoBkQAtbMdXymGd68j+Eu0GyX4RQmfGTRO5hASEApx7l9ncmHNCE
+         WjgqxFRC3YTAnzL6x2ZS9toxA0S40ihrus1QcpBRr2GcmnfbG0jJ3efY5lpTjkVOXhNn
+         Pbzw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=borR4o7Q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8si2798649ybk.467.2020.08.21.14.02.22
-        for <alex.bennee@linaro.org>
+       spf=pass (google.com: domain of clg@kaod.org designates 79.137.123.220 as permitted sender) smtp.mailfrom=clg@kaod.org
+Return-Path: <clg@kaod.org>
+Received: from smtpout1.mo804.mail-out.ovh.net (smtpout1.mo804.mail-out.ovh.net. [79.137.123.220])
+        by mx.google.com with ESMTPS id x4si4177326wmc.154.2020.08.22.01.59.59
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 21 Aug 2020 14:02:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 22 Aug 2020 01:59:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of clg@kaod.org designates 79.137.123.220 as permitted sender) client-ip=79.137.123.220;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=borR4o7Q;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45088 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k9EB4-000708-A0
-	for alex.bennee@linaro.org; Fri, 21 Aug 2020 17:02:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51060)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1k9EAq-0006z9-OY
- for qemu-arm@nongnu.org; Fri, 21 Aug 2020 17:02:08 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:21920
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1k9EAn-0002iT-Cz
- for qemu-arm@nongnu.org; Fri, 21 Aug 2020 17:02:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598043723;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=yNmzfv+4UyB84wVM5gjFI//fDsw9DEZmIhAPE5UYKV8=;
- b=borR4o7QANxHiU0+S6OSLZUE+qzo7sfNUASNotFDDVTIupLFWPwJhwDlkBneHp8BAp06TJ
- EDE4wj3xHuCQ4fFB0wltmaS31xmVO6SHloEAY9teBaz8GOAtJu8xCcG+/GHJxfUzIO6UC8
- AqnzX2uplcu27sK3cTg7tUej3aLTbJw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-103-4-m3lWeROvujlpYIE9fhog-1; Fri, 21 Aug 2020 17:02:01 -0400
-X-MC-Unique: 4-m3lWeROvujlpYIE9fhog-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D3EC681CAFB;
- Fri, 21 Aug 2020 21:01:58 +0000 (UTC)
-Received: from localhost (unknown [10.10.67.254])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A8B5F7AED1;
- Fri, 21 Aug 2020 21:01:49 +0000 (UTC)
-Date: Fri, 21 Aug 2020 17:01:49 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Cornelia Huck <cohuck@redhat.com>
-Subject: Re: Suspicious QOM types without instance/class size
-Message-ID: <20200821210149.GN642093@habkost.net>
-References: <20200820215529.GH642093@habkost.net>
- <20200821114335.2b100333.cohuck@redhat.com>
+       spf=pass (google.com: domain of clg@kaod.org designates 79.137.123.220 as permitted sender) smtp.mailfrom=clg@kaod.org
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.2])
+	by mo804.mail-out.ovh.net (Postfix) with ESMTPS id BA3BC59932F3;
+	Sat, 22 Aug 2020 10:59:57 +0200 (CEST)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1979.3; Sat, 22 Aug
+ 2020 10:59:56 +0200
+Authentication-Results: garm.ovh; auth=pass (GARM-99G0039f398cef-ed1d-4c8c-9689-b06051627c32,
+                    3BE414691F1E901D170BBC22D222B03988F0DEFC) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH v6 4/8] ppc/e500: Use start-powered-off CPUState property
+To: Thiago Jung Bauermann <bauerman@linux.ibm.com>, <qemu-ppc@nongnu.org>
+CC: Peter Maydell <peter.maydell@linaro.org>, David Hildenbrand
+	<david@redhat.com>, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	<qemu-devel@nongnu.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>, Aleksandar
+ Markovic <aleksandar.qemu.devel@gmail.com>, Thomas Huth <thuth@redhat.com>,
+	David Gibson <david@gibson.dropbear.id.au>,
+	=?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>, Artyom Tarasenko
+	<atar4qemu@gmail.com>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
+	<qemu-s390x@nongnu.org>, <qemu-arm@nongnu.org>, Paolo Bonzini
+	<pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>, Cornelia Huck <cohuck@redhat.com>, Igor
+ Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+References: <20200819164306.625357-1-bauerman@linux.ibm.com>
+ <20200819164306.625357-5-bauerman@linux.ibm.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <3dd050ad-147e-c365-883a-3384130b0d2f@kaod.org>
+Date: Sat, 22 Aug 2020 10:59:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200821114335.2b100333.cohuck@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/21 05:15:56
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, Cameron Esfahani <dirty@apple.com>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Richard Henderson <rth@twiddle.net>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Roman Bolshakov <r.bolshakov@yadro.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IhXlrKSFTjCp
+In-Reply-To: <20200819164306.625357-5-bauerman@linux.ibm.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG5EX1.mxp5.local (172.16.2.41) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: dad23c6b-c7fe-4bcf-8773-6c35175e3896
+X-Ovh-Tracer-Id: 16036473850654722969
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedruddugedguddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepghhrohhugheskhgrohgurdhorhhg
+X-TUID: S2CcoUQr9xvv
 
-On Fri, Aug 21, 2020 at 11:43:35AM +0200, Cornelia Huck wrote:
-> On Thu, 20 Aug 2020 17:55:29 -0400
-> Eduardo Habkost <ehabkost@redhat.com> wrote:
+Hello,
+
+On 8/19/20 6:43 PM, Thiago Jung Bauermann wrote:
+> Instead of setting CPUState::halted to 1 in ppce500_cpu_reset_sec(), use
+> the start-powered-off property which makes cpu_common_reset() initialize it
+> to 1 in common code.
 > 
-> > While trying to convert TypeInfo declarations to the new
-> > OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
-> > where instance_size or class_size is not set, despite having type
-> > checker macros that use a specific type.
-> > 
-> > The ones with "WARNING" are abstract types (maybe not serious if
-> > subclasses set the appropriate sizes).  The ones with "ERROR"
-> > don't seem to be abstract types.
-> > 
-> > ERROR: hw/s390x/virtio-ccw.c:1237:1: class_size should be set to sizeof(VirtioCcwBusClass)?
-> > ERROR: hw/virtio/virtio-pci.c:2101:1: class_size should be set to sizeof(VirtioPCIBusClass)?
+> Also change creation of CPU object from cpu_create() to object_new() and
+> qdev_realize_and_unref() because cpu_create() realizes the CPU and it's not
+> possible to set a property after the object is realized.
 > 
-> VirtioCcwBusClass and VirtioPCIBusClass are both simple typedefs of
-> VirtioBusClass (it's likely that I copied the ccw definition from the
-> pci one). virtio-mmio instead uses VirtioBusClass directly in its
-> checker macros.
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+
+
+This is breaking make check : 
+
+    tests/qtest/libqtest.c:175: kill_qemu() detected QEMU death from signal 11 (Segmentation fault) (core dumped)
+    ERROR boot-serial-test - too few tests run (expected 7, got 0)
+    make: *** [/home/legoater/work/qemu/qemu-powernv-5.2.git/tests/Makefile.include:650: check-qtest-ppc64] Error 1
+    make: *** Waiting for unfinished jobs....
+    
+    
+    gdb --args build/ppc64-softmmu/qemu-system-ppc64  -display none   -M ppce500
+    ...
+    Thread 1 "qemu-system-ppc" received signal SIGSEGV, Segmentation fault.
+    0x000055555596ebf2 in ppce500_init (machine=0x5555567aa6e0)
+        at /home/legoater/work/qemu/qemu-powernv-5.2.git/hw/ppc/e500.c:880
+    880	        irqs[i].irq[OPENPIC_OUTPUT_INT] = input[PPCE500_INPUT_INT];
+ 
+    
+    AFAIUI, 'input is not initialized since the CPU is not yet realized.
+
+    C.
+
+> ---
+>  hw/ppc/e500.c | 14 ++++++++++----
+>  1 file changed, 10 insertions(+), 4 deletions(-)
 > 
-> I don't see a real reason for the typedefs, maybe ccw and pci should
-> use the mmio approach as well?
-
-I think it's OK to keep the typedefs if the code is consistent
-(i.e. we set instance_size and class_size just in case the
-typedefs are replaced by a real struct one day).
-
-I'm not sure about the TYPE_VIRTIO_MMIO_BUS approach.  If the
-code just needs VirtioBusState or VirtioBusClass pointers, it can
-already use the VIRTIO_BUS* macros.
-
-The OBJECT_DECLARE_TYPE macro Daniel sent expects each QOM type
-to have a separate struct being defined, which isn't true in many
-cases.  I'm considering removing the "typedef struct Foo Foo"
-lines from OBJECT_DECLARE_TYPE(), to make initial conversion
-easier.
-
--- 
-Eduardo
-
+> diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+> index ab9884e315..d7b803ef26 100644
+> --- a/hw/ppc/e500.c
+> +++ b/hw/ppc/e500.c
+> @@ -704,9 +704,6 @@ static void ppce500_cpu_reset_sec(void *opaque)
+> 
+>      cpu_reset(cs);
+> 
+> -    /* Secondary CPU starts in halted state for now. Needs to change when
+> -       implementing non-kernel boot. */
+> -    cs->halted = 1;
+>      cs->exception_index = EXCP_HLT;
+>  }
+> 
+> @@ -865,7 +862,7 @@ void ppce500_init(MachineState *machine)
+>          CPUState *cs;
+>          qemu_irq *input;
+> 
+> -        cpu = POWERPC_CPU(cpu_create(machine->cpu_type));
+> +        cpu = POWERPC_CPU(object_new(machine->cpu_type));
+>          env = &cpu->env;
+>          cs = CPU(cpu);
+> 
+> @@ -897,7 +894,16 @@ void ppce500_init(MachineState *machine)
+>          } else {
+>              /* Secondary CPUs */
+>              qemu_register_reset(ppce500_cpu_reset_sec, cpu);
+> +
+> +            /*
+> +             * Secondary CPU starts in halted state for now. Needs to change
+> +             * when implementing non-kernel boot.
+> +             */
+> +            object_property_set_bool(OBJECT(cs), "start-powered-off", true,
+> +                                     &error_fatal);
+>          }
+> +
+> +        qdev_realize_and_unref(DEVICE(cs), NULL, &error_fatal);
+>      }
+> 
+>      env = firstenv;
+> 

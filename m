@@ -1,129 +1,105 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1351954lfy;
-        Sat, 22 Aug 2020 13:03:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxOus6EX66jlSIQdiP1BlPBcLq7yaBvY4bwOCCkxsDUcgdulBkJjrwf19n8SJnTTV83Vdis
-X-Received: by 2002:a25:ca83:: with SMTP id a125mr12163425ybg.513.1598126622081;
-        Sat, 22 Aug 2020 13:03:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598126622; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1356753lfy;
+        Sat, 22 Aug 2020 13:12:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyC8j9vOGia4l3CrP/OlD6N8P4PuhDxAPJJtN5JLgOHAoEC9JDRMECmnPglsiO5HQcD6qIj
+X-Received: by 2002:a25:9904:: with SMTP id z4mr11938063ybn.150.1598127124435;
+        Sat, 22 Aug 2020 13:12:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598127124; cv=none;
         d=google.com; s=arc-20160816;
-        b=QisSVCBHAd1fZY6j7w+4CDb44pAdGQjssJDt+HVx7D+Mnxleu1Lr9BCioeM+q3gJnK
-         kWC2Ug0YXq1jE6QMKhF2KAMwGQaSvdGT2V+V4HcQS8mzYPXxVa9LJWW8iP3+GS5Yf58i
-         aDu/aHjzJZDwMW3hnHSbYVyzKlCEVHEcG060DMKn6nxYkTrW9uRCKgdfeVopEzm81bbx
-         ZZBCZKRqmnJBuklAkiCrpMw2v4p6l5Sf4j8rprIwMNqNXKwGI274Os/wn77Gzlp5+IHk
-         zpf6HwVxpTzL+PPbN67HfnAH1IpvvLa+JMPo7psHxvZ/bPUfRZRUwkHF5IugvdjoMFve
-         o41Q==
+        b=xmnylnYXEmBFv3zwNalpW3lReCjliRY4NqZWYW6GCwnW7p16n6Vpq/2InOGwu/h3A+
+         jJ0xtHnlH7u4BwoptLOuaNEjD+MTLMrDhT17OrU/j4VsqHg6PCjdxinrxMxhhb7AAY5e
+         8i8fjmfAhUHBvMuEi0HbEa0mJiQrHl1PUj+XMIu6qJdsprsEaEYtjKTtaWXgNJnvsYjs
+         uW2v2m1KQmePWZYJj0dbCotjnQPw/bcs9Wm6AbcOVPXiBimfVq4sxEIMQ5nW3X0lnhLa
+         RAJFms2fLIbAejgOYZ8mscwPDIcdKXwa77dMnlT0eqyMmyresIvMPpAzeLeLIHYvhefT
+         p3Wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:references:to:from:subject:dkim-signature;
-        bh=sJqv+FwTffMj5XMMGgeLKsQ3tfGnrbmCMmBufJzCkjM=;
-        b=nkRvc8qs/qd+FFs5jnOWZCPRBVm8HEugMnmKPfGD4J78jCf00KTFcIVSQDjF81OAdT
-         9Sq7IfppeSFwQPY+BKbs+Jrl8RfUKft7rUGErxGrHeFjMH7dbb3VwVybjRVbzru22Wvm
-         lQmn1+6kO17bDIv2oPnjaMy0R+p4t1t40vZpJXJEBfC2z7OFwhVzOBF2kMdP0IBF0zSH
-         2Ke9bfJ7pmmmUCScBiJMv9VlG4uCcsYhFlSwbHXkZxsWzUyy7EHvesraxg8NpUHXS1OJ
-         RnEoKXduE1FMqiDmZ6T/rkiASvxxpeKAvPByqIf4j5vyqdeAg+mub77BXI04ePA5lB6U
-         jSJw==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=FGrHTi+rXKQ8gTjyG+Q9tPRB04Bdg9e5XS9XpP1Ub18=;
+        b=et70H1xwm3zI5IEifqQsebikqCpnN0VtjCqQk8XfGilWhlo2zi74xFE8cjSjHivrT/
+         lIqu82ZiTZPuMA0iaBg2mB/+xDDR95/ahTMmxmMOip3FAaY5t2Wm2OcokbhI/190iphL
+         uBd8oMs8r+w2Xs1tj8qSnxg3m0K0mVTlfoiaMRShPWU6VeZoT9WAth6tcHcqtv6/QmNT
+         Ojs5D0oC+xkJ8tKuvFIDUH0XOk7uWkh7scoNeE3s7TxUn9BJVmgw9NfrVZYKy6WVp0Kv
+         NPETgyCmfH3lhDBfQAoOvdy8CARj/MPTNWW3hDbZ6sel2CQgJClZMSfVf83Kqhieo9DV
+         q1RQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BPuGpfIN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Gp7jP+y4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k37si7206190ybj.178.2020.08.22.13.03.41
+        by mx.google.com with ESMTPS id 200si6342987ybe.193.2020.08.22.13.12.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 22 Aug 2020 13:03:42 -0700 (PDT)
+        Sat, 22 Aug 2020 13:12:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=BPuGpfIN;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Gp7jP+y4;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56084 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:32904 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k9Zjp-0005l2-Er
-	for alex.bennee@linaro.org; Sat, 22 Aug 2020 16:03:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35560)
+	id 1k9Zrv-0008TD-Re
+	for alex.bennee@linaro.org; Sat, 22 Aug 2020 16:12:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36922)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9Zjg-0005ik-Ml; Sat, 22 Aug 2020 16:03:32 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:40250)
+ id 1k9Zrp-0008Sv-8d; Sat, 22 Aug 2020 16:11:57 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a]:50274)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9Zjf-0002dA-1q; Sat, 22 Aug 2020 16:03:32 -0400
-Received: by mail-wr1-x444.google.com with SMTP id l2so4968816wrc.7;
- Sat, 22 Aug 2020 13:03:30 -0700 (PDT)
+ id 1k9Zrn-0003f4-Q0; Sat, 22 Aug 2020 16:11:56 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id t2so4646127wma.0;
+ Sat, 22 Aug 2020 13:11:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=sJqv+FwTffMj5XMMGgeLKsQ3tfGnrbmCMmBufJzCkjM=;
- b=BPuGpfINsq17FzaSrqTd8rowx0qtD2RtlACKNfJnfL92bjsUvw8UKwYYqQcMs3Smwf
- 4OuDezqoxBenLWlWho/FKRIBmXsSbQDrkgjE2b1l0Nr6OX7XDE+iEODbI6Xp5CRrnakO
- avJaSM4YZL0wA0VijFxyhEOvnNtB2sU8NHVfrKMHmdpPBAbowL+w3IbcczSoaruUvQ2B
- vLIjDJHbA0s5c+i4Ha8EZ/rTWctQdUxWK2gLSByT+8PBVwbMSoe5NmM78cNcpwtKpy79
- KVMB6YdRDuiuVQ3MQ8bpRbqvVyqv3fZTEkmk0AM1nN9oxb48V2AHEOJz+rd+pD0bJHVA
- Gliw==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=FGrHTi+rXKQ8gTjyG+Q9tPRB04Bdg9e5XS9XpP1Ub18=;
+ b=Gp7jP+y40ARESv4g481WL3tfsxGIBJawXsXeuTCivbM/3HumnrbTi2DsYkj1P3MTvM
+ yjMcnG4rare9dfomG9ayLL1xKiJcRZrhPpK9myzo3jxcMqjHHxVjqTEkelL0jv3whcri
+ V0xXeXpcWXccPYLc1dWeeIu/QDx5xkBRCSCz53ex+v8/kqrSSO/JjUvGkAh0OdNnvT0U
+ fsLNkWJjRV14CMEvNfDDtD96qK1PEZBmS13AIUDkAXGtdCSvrqw2L8MOgMb478tj1R4S
+ QKtrJV1I2wzam6T9A10y9sHP+tF0BjRLYjZrdG2aAQRFqjLFQrh9eaXLHYP7y6C2eXYZ
+ cL8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=sJqv+FwTffMj5XMMGgeLKsQ3tfGnrbmCMmBufJzCkjM=;
- b=E+71w8hbWQV0xjDSDllhHTHlod+pztMwxQ2Hg1C6rKucyRQyqJ7Hzr5Y7MfqMhavhS
- a+UTC7n416wevEl5EUsoOjibqHNhyt18P3qn0OZOC6y8J+XL0jvRqMaiQTS9zIcEnVWb
- yibFbRArJM38P1e6yGUxgNuNaXpL+lPBH4J/YI9uMvuX6js5U5zXMXom4sc0P0NcZXB2
- sQy2sPSzO1dh+Mn6NTAP5wjDLUqJxFLPucmOzFk5uCX+ya3dLR7MoIXQwKUdSVljbHwj
- X4CslWIxVQhlOYAw9s2Khk/pHyk2cuh+ydBGSprpUbaAPBcYOG3FhkbbPhNJ1eDN0wbR
- F8WQ==
-X-Gm-Message-State: AOAM5314Frva6Xh2y+3pk7INLZ2ff4sl4ubd6ata2kfZhdDV5m02PmJS
- +1d+0eFU86N4jLXszY2ju/k=
-X-Received: by 2002:adf:e845:: with SMTP id d5mr8319115wrn.228.1598126609102; 
- Sat, 22 Aug 2020 13:03:29 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=FGrHTi+rXKQ8gTjyG+Q9tPRB04Bdg9e5XS9XpP1Ub18=;
+ b=JVkJTGjx5Xh2C1CWn4VMogd2fVAfuFzy2LS+lA2iCzdVi1LHZsCKT18NUQyJZI6l4A
+ JwlhPhHYoGiTcS24Be8oYDpAonLqIJbjtTZR+p88a64DbGmgfrgnd0kBbs3CdD4QUftP
+ pdiF5we1F24pe/KJWsNOfGhNigJxEOU10lXxZvyUytuvIwukMP59HTDBH21VxMU9Bp6X
+ NGoyeyAnZ++3BDLk1/Nas85n8AdAwaqokxiOt4LPFnJuUfaXSIyEsrZkhwsLUQvTaNbK
+ jQ5K6KbRv3YrG1VFyl0ZyUkajJQKlyEHxOiK2fo75W5XnRD8G6bcREVOamiFWDVMB2gJ
+ iQJQ==
+X-Gm-Message-State: AOAM533ybim/AYVCh6YwfVAA038mDLeRrFU9qs93T4QjZ+4eaw9g5KOB
+ mLGjxIzQIKwmzy5nTxjP299OMloOshk=
+X-Received: by 2002:a7b:cb47:: with SMTP id v7mr8611027wmj.36.1598127114019;
+ Sat, 22 Aug 2020 13:11:54 -0700 (PDT)
 Received: from [192.168.1.36] (121.red-81-40-121.staticip.rima-tde.net.
  [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id k13sm13579529wmj.14.2020.08.22.13.03.28
+ by smtp.gmail.com with ESMTPSA id o66sm14847831wmb.27.2020.08.22.13.11.52
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 22 Aug 2020 13:03:28 -0700 (PDT)
-Subject: Re: [PATCH] hw/block/nand: Decommission the NAND museum
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+ Sat, 22 Aug 2020 13:11:53 -0700 (PDT)
+Subject: Re: [PATCH-for-5.1? 0/4] hw/arm/xilinx_zynq: Call
+ qdev_connect_clock_in() before DeviceRealize
 To: qemu-devel@nongnu.org
-References: <20200814132118.12450-1-f4bug@amsat.org>
- <75f7421f-3ea4-ff6c-2c92-0ea9b5b8fdc1@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <60cf8562-d0fc-7a3e-4988-a983394a5927@amsat.org>
-Date: Sat, 22 Aug 2020 22:03:27 +0200
+References: <20200803105647.22223-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <1876dc76-567b-fe59-852a-d5a429b7a131@amsat.org>
+Date: Sat, 22 Aug 2020 22:11:52 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <75f7421f-3ea4-ff6c-2c92-0ea9b5b8fdc1@amsat.org>
+In-Reply-To: <20200803105647.22223-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: 0
@@ -145,76 +121,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cLjQIC0HH6Ls
+X-TUID: VtjXEi+USz7m
 
-ping?
+ping now that 5.2 is opened :)
 
-On 8/14/20 3:23 PM, Philippe Mathieu-Daudé wrote:
-> I forgot to Cc qemu-arm@, doing it now since most of the users
-> of this are ARM machines.
+On 8/3/20 12:56 PM, Philippe Mathieu-Daudé wrote:
+> This is not a critical issue, but still annoying if you use tracing.
 > 
-> On 8/14/20 3:21 PM, Philippe Mathieu-Daudé wrote:
->> This is the QEMU equivalent of this Linux commit (but 7 years later):
->> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f7025a43a9da2
->>
->>     The MTD subsystem has its own small museum of ancient NANDs
->>     in a form of the CONFIG_MTD_NAND_MUSEUM_IDS configuration option.
->>     The museum contains stone age NANDs with 256 bytes pages, as well
->>     as iron age NANDs with 512 bytes per page and up to 8MiB page size.
->>
->>     It is with great sorrow that I inform you that the museum is being
->>     decommissioned. The MTD subsystem is out of budget for Kconfig
->>     options and already has too many of them, and there is a general
->>     kernel trend to simplify the configuration menu.
->>
->>     We remove the stone age exhibits along with closing the museum,
->>     but some of the iron age ones are transferred to the regular NAND
->>     depot. Namely, only those which have unique device IDs are
->>     transferred, and the ones which have conflicting device IDs are
->>     removed.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  hw/block/nand.c | 13 ++++++-------
->>  1 file changed, 6 insertions(+), 7 deletions(-)
->>
->> diff --git a/hw/block/nand.c b/hw/block/nand.c
->> index 654e0cb5d1..7d7ccc9aa4 100644
->> --- a/hw/block/nand.c
->> +++ b/hw/block/nand.c
->> @@ -137,7 +137,7 @@ static void mem_and(uint8_t *dest, const uint8_t *src, size_t n)
->>  # define ADDR_SHIFT		16
->>  # include "nand.c"
->>  
->> -/* Information based on Linux drivers/mtd/nand/nand_ids.c */
->> +/* Information based on Linux drivers/mtd/nand/raw/nand_ids.c */
->>  static const struct {
->>      int size;
->>      int width;
->> @@ -153,15 +153,14 @@ static const struct {
->>      [0xe8] = { 1,	8,	8, 4, 0 },
->>      [0xec] = { 1,	8,	8, 4, 0 },
->>      [0xea] = { 2,	8,	8, 4, 0 },
->> -    [0xd5] = { 4,	8,	9, 4, 0 },
->>      [0xe3] = { 4,	8,	9, 4, 0 },
->>      [0xe5] = { 4,	8,	9, 4, 0 },
->> -    [0xd6] = { 8,	8,	9, 4, 0 },
->>  
->> -    [0x39] = { 8,	8,	9, 4, 0 },
->> -    [0xe6] = { 8,	8,	9, 4, 0 },
->> -    [0x49] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
->> -    [0x59] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
->> +    [0x6b] = { 4,        8,        9, 4, 0 },
->> +    [0xe3] = { 4,        8,        9, 4, 0 },
->> +    [0xe5] = { 4,        8,        9, 4, 0 },
->> +    [0xd6] = { 8,        8,        9, 4, 0 },
->> +    [0xe6] = { 8,        8,        9, 4, 0 },
->>  
->>      [0x33] = { 16,	8,	9, 5, 0 },
->>      [0x73] = { 16,	8,	9, 5, 0 },
->>
+> Maybe it is worth fixing for forks that are based on release tags,
+> else consider it 5.2 material.
+> 
+> Anyway we can still discuss if qdev_connect_clock_in() is supposed to
+> be callable *after* DeviceRealize.
+> 
+> Philippe Mathieu-Daudé (4):
+>   hw/arm/xilinx_zynq: Uninline cadence_uart_create()
+>   hw/arm/xilinx_zynq: Call qdev_connect_clock_in() before DeviceRealize
+>   hw/qdev-clock: Uninline qdev_connect_clock_in()
+>   hw/qdev-clock: Avoid calling qdev_connect_clock_in after DeviceRealize
+> 
+>  include/hw/char/cadence_uart.h | 17 -----------------
+>  include/hw/qdev-clock.h        |  8 +++-----
+>  hw/arm/xilinx_zynq.c           | 24 +++++++++++++++++-------
+>  hw/core/qdev-clock.c           |  6 ++++++
+>  4 files changed, 26 insertions(+), 29 deletions(-)
 > 

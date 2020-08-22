@@ -1,111 +1,107 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1298838lfy;
-        Sat, 22 Aug 2020 11:11:00 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzcd/pX9vpgrBETufZxRJN3VDUD/Rftxo8U2BpjWrXSRiRttPjL8jpUekoz6/IY1G2V1iJr
-X-Received: by 2002:a25:7283:: with SMTP id n125mr10269490ybc.28.1598119860321;
-        Sat, 22 Aug 2020 11:11:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598119860; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1320797lfy;
+        Sat, 22 Aug 2020 11:57:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzuV4I+ueMFgraVj7We3do4zc+3FYHtnqzMPeCowIW+zzWJRk5voIkU/fS/Qsk6Lzf5DNb9
+X-Received: by 2002:a25:c8a:: with SMTP id 132mr10706561ybm.444.1598122647197;
+        Sat, 22 Aug 2020 11:57:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598122647; cv=none;
         d=google.com; s=arc-20160816;
-        b=JEnBikgAEQwXezqZq2HJ561A6dXYOQPMbd0tbuRD1CuhqCNzo5gFsARMouUxX6QqFX
-         ru3oQnc2lCrdVSf9sSypgfLafi6xTp8u/5Akg7wPcyxi9GtLMuiuu3X8ryGkKk2Qm60w
-         xjT5vM6ppEJpk7RSM/mWi2WUadv9jllzXgutRSbeYUmyI+Vf/Utq8nzw9FvFgLopPD7u
-         znnXK0hrDUXsRjUeIlvStzmQx252oSZLmuiWmXG+7sxJun6aVXwxxdFzsADYgD+QA8IM
-         wxltKyplzx6exloXb2wa8VPQRlXm8XTZFjeKV4toAQ/VdE6onvUPR8d+a5FsIahSj7EF
-         YTCg==
+        b=iw9QKiuE1kzWLDmYIvAfNcZaYuiP7oM5Jg3Y6h/dhQGbSreUoAwBU8iidHF6PwfzcP
+         LIUvMwvmdQahgrEoyStxV5CyNcMdvpwhPa4ddWIVJ+xvkP9ySysBLnwmeZENS4ldqNjK
+         MitjBDH7tAWS80Ex1xMt4DLEddY2HPhgfWeZQUUqq4ywbtbPGhd5Jsy/uC/79vl/LpoE
+         3eDN3B5PPtDGktrJd9Yp0HanScdAc1DBVU3KPxEYkInDxayfgG+fFA+Gi06PXpd01Dtc
+         It4sAdyYNRCvMBaf8tBy2aYZjXitfCUJ0WWE0ni3Zc0V2LlwVfdp46AVdRH7CovZXefF
+         cAEA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=x+8JWtN3sZgMYgY5lTuOwjZoF/npzERcdc45xzdTzrg=;
-        b=PhZAz02N5NlpzcqpVdiTuk68cuwtFnPLzyollq6dWUrS+DbKsHZIVeUZshYeLEGwLN
-         3iWQk8hPUE8jKNgg6sykWS1uwP/FOoZF70UGSJrPaYnoMlElMdNRksuzOIMWQj2YwldW
-         xava6Ih5eeIkMJkwYk7gGxKPCSnQmRc9snStarvpFr1DIgStkxze6QrTx3J0kdgnvcqH
-         /xQfq9f8weVlAx4j6dgzei5pljf7aTfvwLhsLNWxQG1oJUBWCckRReVZu1GzavjYl9ia
-         Rk/DOb4buUJN+/jVPQMcnMXuRiSk8p2WwW82CU2b4GmlQzmdsTFkwVLnLlQjtXNeuwWQ
-         WYtg==
+        bh=S6bN9SOOP41St22mnwX3zHKrUpSPUchk0IYPJ8vxJio=;
+        b=Ik5SUA3UNzUAxE41BVilbUBi1UGlmufcMFyR5TkqcE0W93+DBx8hbeIoCnGKMMsjNj
+         cGTMrQ1eaQJCMxL2zyXc3EmCytqC3A5FGgi9JLa05dcMo65YNFRgkJVgJJMr0etWX7aw
+         RJCH2LUq6Gm+HHDIzOAiwRc+fYW5NBecVvHQ7YMkUpTfxmVJYPrwxewIF3WN3Qa5bQ45
+         UkMtBXpspmm3EU/sc621xbclBsFR/URp3RkK4jSn6yj09CxWmMXx08SS7ZM9CX8S8gtk
+         0qnEcZQuzfFIQwKWDoLvbJCyuzoG1I/EGp/O7llhgM3tNGf81YJ5aAGkEFQe8kW/io03
+         daog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uH07j2BN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ATsl1nFk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e23si6054544ybh.324.2020.08.22.11.11.00
+        by mx.google.com with ESMTPS id s46si5436810ybe.497.2020.08.22.11.57.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 22 Aug 2020 11:11:00 -0700 (PDT)
+        Sat, 22 Aug 2020 11:57:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uH07j2BN;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ATsl1nFk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59676 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57296 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k9Xyl-0007xj-M3
-	for alex.bennee@linaro.org; Sat, 22 Aug 2020 14:10:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47428)
+	id 1k9Yhi-00067S-IU
+	for alex.bennee@linaro.org; Sat, 22 Aug 2020 14:57:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54506)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9Xxo-0006Jr-1P; Sat, 22 Aug 2020 14:10:00 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:44547)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k9Yha-00066t-F8
+ for qemu-arm@nongnu.org; Sat, 22 Aug 2020 14:57:18 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:41061)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1k9Xxm-0007bC-DN; Sat, 22 Aug 2020 14:09:59 -0400
-Received: by mail-wr1-x444.google.com with SMTP id c15so4788090wrs.11;
- Sat, 22 Aug 2020 11:09:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=x+8JWtN3sZgMYgY5lTuOwjZoF/npzERcdc45xzdTzrg=;
- b=uH07j2BNVo6I8qEQK6TibF1OJeeKpre4MprFO3ipTxbUJi3/qBAEKFZF3si+6wuI3e
- ybT1EPS27JV/Tjt/Vap2iXaypCF6tXt4LYHgFYKUuA+tUp1mWmcO4nEceRsEx9O6kykS
- z9A7w48KmtD1lClRHKPe/n6qAaqGhBKaQw0DNV+JCyfPdki5Bv+M4gEzwB4FzlItZVNz
- 7Epz9n8oIQlVMgA42qrlauiEmYjN/3pdE1aBzTReLoNjeTGzq/4ujgxwHsC/YqgMhnxi
- sAwR6j+yxi6ZuL89pRPVBsukB+9Sl2dkR951Wm/6YArJD4X0UeyRoSNnX7K2bp8YVvI/
- 9ZEA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1k9YhY-0004Gd-MT
+ for qemu-arm@nongnu.org; Sat, 22 Aug 2020 14:57:18 -0400
+Received: by mail-ej1-x630.google.com with SMTP id t10so6763138ejs.8
+ for <qemu-arm@nongnu.org>; Sat, 22 Aug 2020 11:57:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=S6bN9SOOP41St22mnwX3zHKrUpSPUchk0IYPJ8vxJio=;
+ b=ATsl1nFk/zG9tIkJ8byLZiNkFx/SjDMnOM9camh+RWp8J0Jqo0pBX4GD8cWbQ/RQUl
+ QB+jmOzcO5HiflMXgmY/kLc5zYp5FQ0xd5XKi+6+k1dXQe5bDoUs79ksnv1S47uWUT/h
+ o76vYzasIsczlYtQe6gKrsMSxraqQDZduFCy8CYT6528IcSC4ZSeWRu81e/Z76fz/Rpi
+ saNrk9Z6kCFXNT7fX7kIFjVq0AVf9Jz25iLFMb+U0KLZ5PHThFg1sY1go/UPgwF7fKZK
+ icH1FMRib794o/lVUXT+NRssvp9q6u998KXTmseMvw6rTe1ELQKou/WaqZ/FnW3ejmhd
+ s2Jg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=x+8JWtN3sZgMYgY5lTuOwjZoF/npzERcdc45xzdTzrg=;
- b=GQUdU1YMTHvai6DWWkWu3+mMdGeOVkBo8IPDPf5yvYnlvPDy6tT4CXKLjvKlch11Pe
- efMCdna9SeoHou7ujrv3d+0X8ktYZQ9IMc/pr2O9FaUINFKg27NZENIP+v6ogjikl2f7
- jfGOyUuvv0O+cok+TFdO/W2BJgrdRXUgTTlW/LN6r2Su7ntClp4da8QczGYqf/4z3xe6
- PD3buOEmvAyhdsqOMa9/P0xlTH56KLB4xBgiqkCOKqOWkeZjgouUA8ZARlKmohL0B8su
- DsFcOo4C44jpwYF7GDdpCJEP/jyQtPsXHVV3sxjbd77A9WnchuiMbCvg8wtUxMRFWVGZ
- vh4w==
-X-Gm-Message-State: AOAM531It/Qhtgm0OMX73ETabJau5AM9yIpLcL83l1I3xANq3FYeGt+A
- Ha3bJXERZhz755ya9lMAzQaIJuoHWYQ=
-X-Received: by 2002:a5d:480b:: with SMTP id l11mr7537457wrq.85.1598119795372; 
- Sat, 22 Aug 2020 11:09:55 -0700 (PDT)
-Received: from localhost.localdomain (121.red-81-40-121.staticip.rima-tde.net.
- [81.40.121.121])
- by smtp.gmail.com with ESMTPSA id 126sm13713876wme.42.2020.08.22.11.09.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 22 Aug 2020 11:09:54 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 1/2] util/hexdump: Convert to take a void pointer argument
-Date: Sat, 22 Aug 2020 20:09:49 +0200
-Message-Id: <20200822180950.1343963-2-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200822180950.1343963-1-f4bug@amsat.org>
-References: <20200822180950.1343963-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=S6bN9SOOP41St22mnwX3zHKrUpSPUchk0IYPJ8vxJio=;
+ b=QJ6pkMm65+L5UU4GQN45x0+3xM0KuSipN6aKcZDulH3kemFj4Vz3sGBVun78rtO2lD
+ QWTPJ7gxvSUOUKYjqPKdFNQJzEWwsXFeyA5GPcR23u59kx1ueTs49CcG67pRe6Ww2iWh
+ auRfbngmrzV5M3NNTEm3V4P0U5JXI78yh4wg617VoXwTR2pDorQC72UleXUxBYqapNKw
+ laE4AQM4OSXP34dlOOEhDh5yXhg4dNWAJOxlAvHOdI4aBl6DnDMn510LsbVwgfEBHLpu
+ CVvFNDfktR4MPgz4P7vNDzfH/3u44LobxkfYbDuUE5KQdzqL0zJc3O7cbiAvBbMc0kNX
+ 4elA==
+X-Gm-Message-State: AOAM530Z4XDYMvKtAsNDOiwOcZZUyWChOYh4dN5D20L8MNtqtSeRM/xK
+ +EWD2EqpYo4PJeShjQXNI+SlvZdVjrOW7SQKbmwl9g==
+X-Received: by 2002:a17:906:68da:: with SMTP id
+ y26mr8195213ejr.250.1598122634866; 
+ Sat, 22 Aug 2020 11:57:14 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+References: <20200819152258.703874-1-ehabkost@redhat.com>
+In-Reply-To: <20200819152258.703874-1-ehabkost@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 22 Aug 2020 19:57:03 +0100
+Message-ID: <CAFEAcA-YyaH8iGAvA5bni_ioMpycv6x3A57LCKX-6CsL0O+dqg@mail.gmail.com>
+Subject: Re: [PULL 0/3] Machine queue 2020-08-19
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x630.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: 0
-X-Spam_score: 0.0
-X-Spam_bar: /
-X-Spam_report: (0.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=1, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=1, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,173 +114,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Li Zhijian <lizhijian@cn.fujitsu.com>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Zhang Chen <chen.zhang@intel.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+Cc: Thomas Huth <thuth@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, Markus Armbruster <armbru@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ qemu-s390x <qemu-s390x@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Eric Blake <eblake@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dU2U6uonWY3H
+X-TUID: MFslLeUqG0uH
 
-Most uses of qemu_hexdump() do not take an array of char
-as input, forcing use of cast. Since we can use this
-helper to dump any kind of buffer, use a pointer to void
-argument instead.
+On Wed, 19 Aug 2020 at 16:23, Eduardo Habkost <ehabkost@redhat.com> wrote:
+>
+> The following changes since commit 672b2f2695891b6d818bddc3ce0df964c76279=
+69:
+>
+>   Open 5.2 development tree (2020-08-18 13:44:04 +0100)
+>
+> are available in the Git repository at:
+>
+>   git://github.com/ehabkost/qemu.git tags/machine-next-pull-request
+>
+> for you to fetch changes up to 3ff3c5d31740484b0e19007843094483fb393e80:
+>
+>   hw: add compat machines for 5.2 (2020-08-19 10:45:48 -0400)
+>
+> ----------------------------------------------------------------
+> Machine queue 2020-08-19
+>
+> Regular post-release changes:
+> * hw: add compat machines for 5.2 (Cornelia Huck)
+>
+> Features:
+> * qmp: Expose MachineClass::default_ram_id
+>   (Michal Privoznik)
+>
+> Cleanups:
+> * qdev: Document qdev_prop_set_drive_err() return value
+>   (Philippe Mathieu-Daud=C3=A9)
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Since v1:
-- renamed argument 'bufptr' (Peter Maydell)
----
- include/qemu-common.h    |  3 ++-
- hw/dma/xlnx_dpdma.c      |  2 +-
- hw/net/fsl_etsec/etsec.c |  2 +-
- hw/sd/sd.c               |  2 +-
- hw/usb/redirect.c        |  2 +-
- net/colo-compare.c       | 12 ++++++------
- net/net.c                |  2 +-
- util/hexdump.c           |  4 +++-
- 8 files changed, 16 insertions(+), 13 deletions(-)
 
-diff --git a/include/qemu-common.h b/include/qemu-common.h
-index bb9496bd80f..6834883822f 100644
---- a/include/qemu-common.h
-+++ b/include/qemu-common.h
-@@ -138,7 +138,8 @@ int os_parse_cmd_args(int index, const char *optarg);
-  * Hexdump a buffer to a file. An optional string prefix is added to every line
-  */
- 
--void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size);
-+void qemu_hexdump(const void *bufptr, FILE *fp,
-+                  const char *prefix, size_t size);
- 
- /*
-  * helper to parse debug environment variables
-diff --git a/hw/dma/xlnx_dpdma.c b/hw/dma/xlnx_dpdma.c
-index b40c897de2c..d75a8069426 100644
---- a/hw/dma/xlnx_dpdma.c
-+++ b/hw/dma/xlnx_dpdma.c
-@@ -388,7 +388,7 @@ static void xlnx_dpdma_dump_descriptor(DPDMADescriptor *desc)
- {
-     if (DEBUG_DPDMA) {
-         qemu_log("DUMP DESCRIPTOR:\n");
--        qemu_hexdump((char *)desc, stdout, "", sizeof(DPDMADescriptor));
-+        qemu_hexdump(desc, stdout, "", sizeof(DPDMADescriptor));
-     }
- }
- 
-diff --git a/hw/net/fsl_etsec/etsec.c b/hw/net/fsl_etsec/etsec.c
-index 7035cf4eb97..c817a28decd 100644
---- a/hw/net/fsl_etsec/etsec.c
-+++ b/hw/net/fsl_etsec/etsec.c
-@@ -357,7 +357,7 @@ static ssize_t etsec_receive(NetClientState *nc,
- 
- #if defined(HEX_DUMP)
-     fprintf(stderr, "%s receive size:%zd\n", nc->name, size);
--    qemu_hexdump((void *)buf, stderr, "", size);
-+    qemu_hexdump(buf, stderr, "", size);
- #endif
-     /* Flush is unnecessary as are already in receiving path */
-     etsec->need_flush = false;
-diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-index fad9cf1ee7a..190e4cf1232 100644
---- a/hw/sd/sd.c
-+++ b/hw/sd/sd.c
-@@ -1781,7 +1781,7 @@ send_response:
-     }
- 
- #ifdef DEBUG_SD
--    qemu_hexdump((const char *)response, stderr, "Response", rsplen);
-+    qemu_hexdump(response, stderr, "Response", rsplen);
- #endif
- 
-     return rsplen;
-diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index 417a60a2e68..09edb0d81c0 100644
---- a/hw/usb/redirect.c
-+++ b/hw/usb/redirect.c
-@@ -240,7 +240,7 @@ static void usbredir_log_data(USBRedirDevice *dev, const char *desc,
-     if (dev->debug < usbredirparser_debug_data) {
-         return;
-     }
--    qemu_hexdump((char *)data, stderr, desc, len);
-+    qemu_hexdump(data, stderr, desc, len);
- }
- 
- /*
-diff --git a/net/colo-compare.c b/net/colo-compare.c
-index 2c20de1537d..550272b3baa 100644
---- a/net/colo-compare.c
-+++ b/net/colo-compare.c
-@@ -494,9 +494,9 @@ sec:
-         g_queue_push_head(&conn->secondary_list, spkt);
- 
-         if (trace_event_get_state_backends(TRACE_COLO_COMPARE_MISCOMPARE)) {
--            qemu_hexdump((char *)ppkt->data, stderr,
-+            qemu_hexdump(ppkt->data, stderr,
-                         "colo-compare ppkt", ppkt->size);
--            qemu_hexdump((char *)spkt->data, stderr,
-+            qemu_hexdump(spkt->data, stderr,
-                         "colo-compare spkt", spkt->size);
-         }
- 
-@@ -535,9 +535,9 @@ static int colo_packet_compare_udp(Packet *spkt, Packet *ppkt)
-         trace_colo_compare_udp_miscompare("primary pkt size", ppkt->size);
-         trace_colo_compare_udp_miscompare("Secondary pkt size", spkt->size);
-         if (trace_event_get_state_backends(TRACE_COLO_COMPARE_MISCOMPARE)) {
--            qemu_hexdump((char *)ppkt->data, stderr, "colo-compare pri pkt",
-+            qemu_hexdump(ppkt->data, stderr, "colo-compare pri pkt",
-                          ppkt->size);
--            qemu_hexdump((char *)spkt->data, stderr, "colo-compare sec pkt",
-+            qemu_hexdump(spkt->data, stderr, "colo-compare sec pkt",
-                          spkt->size);
-         }
-         return -1;
-@@ -578,9 +578,9 @@ static int colo_packet_compare_icmp(Packet *spkt, Packet *ppkt)
-         trace_colo_compare_icmp_miscompare("Secondary pkt size",
-                                            spkt->size);
-         if (trace_event_get_state_backends(TRACE_COLO_COMPARE_MISCOMPARE)) {
--            qemu_hexdump((char *)ppkt->data, stderr, "colo-compare pri pkt",
-+            qemu_hexdump(ppkt->data, stderr, "colo-compare pri pkt",
-                          ppkt->size);
--            qemu_hexdump((char *)spkt->data, stderr, "colo-compare sec pkt",
-+            qemu_hexdump(spkt->data, stderr, "colo-compare sec pkt",
-                          spkt->size);
-         }
-         return -1;
-diff --git a/net/net.c b/net/net.c
-index bbaedb3c7a6..f3e5d533fd7 100644
---- a/net/net.c
-+++ b/net/net.c
-@@ -636,7 +636,7 @@ static ssize_t qemu_send_packet_async_with_flags(NetClientState *sender,
- 
- #ifdef DEBUG_NET
-     printf("qemu_send_packet_async:\n");
--    qemu_hexdump((const char *)buf, stdout, "net", size);
-+    qemu_hexdump(buf, stdout, "net", size);
- #endif
- 
-     if (sender->link_down || !sender->peer) {
-diff --git a/util/hexdump.c b/util/hexdump.c
-index f879ff0ad6b..053f05d4160 100644
---- a/util/hexdump.c
-+++ b/util/hexdump.c
-@@ -16,8 +16,10 @@
- #include "qemu/osdep.h"
- #include "qemu-common.h"
- 
--void qemu_hexdump(const char *buf, FILE *fp, const char *prefix, size_t size)
-+void qemu_hexdump(const void *bufptr, FILE *fp,
-+                  const char *prefix, size_t size)
- {
-+    const char *buf = bufptr;
-     unsigned int b, len, i, c;
- 
-     for (b = 0; b < size; b += 16) {
--- 
-2.26.2
+Applied, thanks.
 
+Please update the changelog at https://wiki.qemu.org/ChangeLog/5.2
+for any user-visible changes.
+
+-- PMM

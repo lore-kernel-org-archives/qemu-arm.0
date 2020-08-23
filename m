@@ -1,306 +1,155 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1516773lfy;
-        Sat, 22 Aug 2020 19:11:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxsp3HcnR8iMcNHh2cBDUlDcFXHI0B8jES72A4VgV3beno8aSUE/QI9p2QZLtJrsEeOcmDw
-X-Received: by 2002:a25:500b:: with SMTP id e11mr48743ybb.261.1598148698564;
-        Sat, 22 Aug 2020 19:11:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598148698; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp1651542lfy;
+        Sun, 23 Aug 2020 00:26:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzVHphH4HZ/bxq5yH+8lHqWgH4g4B8Oz120pF8rbVWE5+Np9FsA/7u5R4qVzflIi+MaehNP
+X-Received: by 2002:a63:fa09:: with SMTP id y9mr248503pgh.0.1598167574017;
+        Sun, 23 Aug 2020 00:26:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598167574; cv=none;
         d=google.com; s=arc-20160816;
-        b=nCv8Qu8t/ovWSa/Qx0//Z8UyynoFExx8E4P2G5U8u9b/NJ6BKtlwQjN6J6mMGNec3Q
-         hfaWBVnxCLgHVbP8dsBc8FBHgEWZcGsFN58HNgllG1ZqojMJVbxxjV4l6cpj/bXgZ8mX
-         w+ghDydTbl+KvuhVs3p5OBcdkZj0o1V36yyfuzOrJC8/iYx9Y8FSnLCey5uGlQGJF862
-         bHAB/yrEa+CwiL0rp/APeMsMEBuBqMA9aEm9sN+QecZ3JS2fHm1ce7t89ymZCwfM29dy
-         6eDba3TdfKgbk00ca5V+w9JIMkBhJMt/eK2iEtsqcGSvWTjkOmIr4JRNR5QdeNPdo4ap
-         kQsg==
+        b=u/PjQHos0jqi2tyP24utVr9atzuy3uEWRYwyRSe9fFdhLIL7MtmWnFm/EesQqVB7nP
+         u2KrruOgaHPqrMQO1n5UaLqNQ562X54AuHtqHtVeZ6iAaTX3Alz3Bm9z5i5lY5b+y8tg
+         T6WQc85Bvpuhce+ilFePyGaflNl1hbJXjNIG9HOIAWK0Jgi12Pwt2F+GKa40CYPgYXYc
+         0+0DEvIqI9Af4ewEV20H2mqZtc7hpJrfj/6LxufD2CQyeMTAzgdvFSm4rEeaOqfZIeV+
+         OGfsx9c3F2bW6oez06TPIaNj/wdd9kPzw6/BJiHJuZ8EVY5eIpjiEQ0N5cH/FFW5jF5y
+         kNbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=L/Mqf6ffkZV9bihn+BYi5T0+5mxfVaHb4V7xXtjXYEo=;
-        b=Anzdkn+HT4nZaQobEpoCbGtje5knP9wUQJxvBN8sl6pzCvLufewi6E/JFqXyUjFu14
-         w8yG68kGsjjP7RB2E+1kG/nbF+BzrWV7oZZukh+iAhTGxXEW3RVPTJnxCUXLkJUgCMWh
-         KJ4RxVN7AL/uYFskcIvKvodAOU0MmVgA+27B5hZ2L4K2dTwtaMVjVjbBR2MRuz0/+cMA
-         XfWTB1RS0k6h0BAbEYQGB0fsN/70bK/BWEMaavcZoVRdOSpEK9k2M9mHfs506hHS1nlZ
-         tev5synZHiBZLRFjU6upjyb4K7tJpI/xzaEh3fkur9DFOj8x3AK0P3yEmgCiyL1j5qJX
-         NVJw==
+        h=in-reply-to:content-disposition:mime-version:references:message-id
+         :subject:cc:to:from:date:dkim-signature;
+        bh=VdaqAflI/QK71EtT3AEENUAdnXv+gcfCusvWkXAgB10=;
+        b=g4vO0qaI3cYpudoLad32QAm/3eY+xMju0n4EA1nDaPO/AK69AouIO8PB2C6Vzyg+oq
+         YySin5uYlAUMjOhxT9+ojKtvVOjEGkuCz/pxOkbJ7teFXx459VRdghQGcUPhttFNki4K
+         7ppuQ3/U7GnqC4UsGdNXBb1/Sgkv91tPaC7+KK0YXptmLC71Wf29Utq05Y7uZqzqBVz1
+         ljJdc9P0E/S4uZn5oRd3PRQAsCNcDpah3YbtmkCcHtEcInrAuPMtf1V5uAZWTaCCqxcj
+         1mjmiCUwibraoMQNpXLQaSwRITv6zB9WbPu+t5yvIeeUW0yN5ryFAxNBL5ZoynzQRbLN
+         2YqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VDUMEggI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n67si7959995ybc.317.2020.08.22.19.11.38
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 22 Aug 2020 19:11:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=YwX7zGAF;
+       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
+Return-Path: <dgibson@ozlabs.org>
+Received: from ozlabs.org (bilbo.ozlabs.org. [2401:3900:2:1::2])
+        by mx.google.com with ESMTPS id j4si5482939pgq.351.2020.08.23.00.26.12
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 23 Aug 2020 00:26:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) client-ip=2401:3900:2:1::2;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VDUMEggI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:53672 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1k9fTt-0006u1-Vi
-	for alex.bennee@linaro.org; Sat, 22 Aug 2020 22:11:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55778)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
- id 1k9fTB-0006Ph-7y; Sat, 22 Aug 2020 22:10:53 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:39640)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <raphael.s.norwitz@gmail.com>)
- id 1k9fT9-0005pZ-62; Sat, 22 Aug 2020 22:10:52 -0400
-Received: by mail-ot1-x342.google.com with SMTP id z18so4576994otk.6;
- Sat, 22 Aug 2020 19:10:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=L/Mqf6ffkZV9bihn+BYi5T0+5mxfVaHb4V7xXtjXYEo=;
- b=VDUMEggIeHLaaduH2rkjNrZEB0AXP8TfvU5Gq9tMvjtxB/lvdmS9Ujh3cipK1cDbkE
- kUs7aSX0lVE3erojXnIW+ruJ6IOrP0wNIH5kBhqE4vPxX5hYv77dcM74CJxKg+Vbxhce
- 8jcFok93qHAck267G2bd4Az9CqYKVevndTEe2s3w6d3B5Hq8XrlDI0Z2kY/L+nnc3hCt
- 7529FL27VULmpAxq59v+QMGdH64m/IzVs8jbPW3MaYzmaDmN0A5clMEkEXVLKywRnpYq
- Le6YBvjU+vifn9lCfym16yzyHfE+bcApVqSP54WtkpCOt4ixnri3Jfe+LaDU3HmXPuXw
- 79xQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=L/Mqf6ffkZV9bihn+BYi5T0+5mxfVaHb4V7xXtjXYEo=;
- b=hdjZ4N3TaC9xlhrO9gTM/VloWKVwzZ+Pp7B8iULrEogjR1CbiyysP/AEbCAYAMtwlX
- QylFUW91ByC9RWkdScoMcJx+XcwvaevVgajgYt+1kY9NzX3WaPI1jWUyHcqinhUUdQxL
- IYYy+4rJOcKFSXhVx3AfK02/rR9ZQUiRLI5i4l1fRAsbcKhiU3exW9s+8uXsHzJ96F3V
- C+mR9nYfV2ddnNruHpBPpvfbeRSsZrnE64XdGtBA4K3dSOd2EOnk66eDOGBaKdFYpEj6
- ehIQiKYRxqLgs8rnJ7Kh6lPt9mFqIV1pdtdHQwx9muH5EB/ZeO4wP1vg1KyPW8MpGlDo
- nmUA==
-X-Gm-Message-State: AOAM5321GJk4B9HT7puv1V3yeWxWzel13ePDgdVCm7YwuAfsmXSMpmVG
- p3UYxvGCb0Q/3hLySdk8N0JCMvbN9wtdAOMlqS0=
-X-Received: by 2002:a9d:5914:: with SMTP id t20mr34810oth.337.1598148647711;
- Sat, 22 Aug 2020 19:10:47 -0700 (PDT)
+       dkim=pass header.i=@gibson.dropbear.id.au header.s=201602 header.b=YwX7zGAF;
+       spf=pass (google.com: domain of dgibson@ozlabs.org designates 2401:3900:2:1::2 as permitted sender) smtp.mailfrom=dgibson@ozlabs.org
+Received: by ozlabs.org (Postfix, from userid 1007)
+	id 4BZ6Hk23MLz9sTS; Sun, 23 Aug 2020 17:26:10 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=gibson.dropbear.id.au; s=201602; t=1598167570;
+	bh=Taygr7WHvI0fOQO8fF+eIY5bJ5dGP6vegjaZBDNI5kQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=YwX7zGAFtOHIOWrc9ix926pnUGQbn5c3qdWMdOeCgFRJd87wrYjiOWX0dvTgz2hdy
+	 CZCA9Ora8hKddwruiAA7agU+JznMuIY61fVJJqg7vsarPm/+a6hLeeB0PyoBQlBFGj
+	 DHfsOAEFI88DHyrckNTKVkYRw+N6SH5MvOWVpPCU=
+Date: Sun, 23 Aug 2020 17:14:13 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
+Cc: Thiago Jung Bauermann <bauerman@linux.ibm.com>, qemu-ppc@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	David Hildenbrand <david@redhat.com>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+	Artyom Tarasenko <atar4qemu@gmail.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Eduardo Habkost <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
+	qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
+	Richard Henderson <rth@twiddle.net>,
+	Cornelia Huck <cohuck@redhat.com>,
+	Igor Mammedov <imammedo@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [PATCH v6 4/8] ppc/e500: Use start-powered-off CPUState property
+Message-ID: <20200823071413.GB4734@yekko.fritz.box>
+References: <20200819164306.625357-1-bauerman@linux.ibm.com>
+ <20200819164306.625357-5-bauerman@linux.ibm.com>
+ <3dd050ad-147e-c365-883a-3384130b0d2f@kaod.org>
 MIME-Version: 1.0
-References: <20200818143348.310613-1-stefanha@redhat.com>
- <20200818143348.310613-6-stefanha@redhat.com>
-In-Reply-To: <20200818143348.310613-6-stefanha@redhat.com>
-From: Raphael Norwitz <raphael.s.norwitz@gmail.com>
-Date: Sat, 22 Aug 2020 22:10:36 -0400
-Message-ID: <CAFubqFun8c7BGZXGZSK=gEX4mVt-rypd04R94ceT+2r7fVJL2A@mail.gmail.com>
-Subject: Re: [PATCH v6 5/7] virtio-scsi-pci: default num_queues to -smp N
-To: Stefan Hajnoczi <stefanha@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=raphael.s.norwitz@gmail.com; helo=mail-ot1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, cohuck@redhat.com,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-block@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- David Hildenbrand <david@redhat.com>, QEMU <qemu-devel@nongnu.org>,
- Max Reitz <mreitz@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>, qemu-s390x@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Raphael Norwitz <raphael.norwitz@nutanix.com>,
- Pankaj Gupta <pankaj.gupta.linux@gmail.com>, Kevin Wolf <kwolf@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: r45hyr8T/AtB
+Content-Type: multipart/signed; micalg=pgp-sha256;
+	protocol="application/pgp-signature"; boundary="MfFXiAuoTsnnDAfZ"
+Content-Disposition: inline
+In-Reply-To: <3dd050ad-147e-c365-883a-3384130b0d2f@kaod.org>
+X-TUID: LEsUYNE0XfJh
 
-On Tue, Aug 18, 2020 at 11:32 AM Stefan Hajnoczi <stefanha@redhat.com> wrote:
->
-> Automatically size the number of virtio-scsi-pci, vhost-scsi-pci, and
-> vhost-user-scsi-pci request virtqueues to match the number of vCPUs.
-> Other transports continue to default to 1 request virtqueue.
->
-> A 1:1 virtqueue:vCPU mapping ensures that completion interrupts are
-> handled on the same vCPU that submitted the request.  No IPI is
-> necessary to complete an I/O request and performance is improved.  The
-> maximum number of MSI-X vectors and virtqueues limit are respected.
->
-> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Reviewed-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+--MfFXiAuoTsnnDAfZ
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> ---
->  include/hw/virtio/virtio-scsi.h |  2 ++
->  hw/core/machine.c               |  3 +++
->  hw/scsi/vhost-scsi.c            |  3 ++-
->  hw/scsi/vhost-user-scsi.c       |  3 ++-
->  hw/scsi/virtio-scsi.c           |  6 +++++-
->  hw/virtio/vhost-scsi-pci.c      | 10 +++++++---
->  hw/virtio/vhost-user-scsi-pci.c | 10 +++++++---
->  hw/virtio/virtio-scsi-pci.c     | 10 +++++++---
->  8 files changed, 35 insertions(+), 12 deletions(-)
->
-> diff --git a/include/hw/virtio/virtio-scsi.h b/include/hw/virtio/virtio-scsi.h
-> index 9f293bcb80..c0b8e4dd7e 100644
-> --- a/include/hw/virtio/virtio-scsi.h
-> +++ b/include/hw/virtio/virtio-scsi.h
-> @@ -39,6 +39,8 @@
->  /* Number of virtqueues that are always present */
->  #define VIRTIO_SCSI_VQ_NUM_FIXED    2
->
-> +#define VIRTIO_SCSI_AUTO_NUM_QUEUES UINT32_MAX
-> +
->  typedef struct virtio_scsi_cmd_req VirtIOSCSICmdReq;
->  typedef struct virtio_scsi_cmd_resp VirtIOSCSICmdResp;
->  typedef struct virtio_scsi_ctrl_tmf_req VirtIOSCSICtrlTMFReq;
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index a6f7e4e8d7..9ee2aa0f7b 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -29,6 +29,9 @@
->  #include "migration/vmstate.h"
->
->  GlobalProperty hw_compat_5_1[] = {
-> +    { "vhost-scsi", "num_queues", "1"},
-> +    { "vhost-user-scsi", "num_queues", "1"},
-> +    { "virtio-scsi-device", "num_queues", "1"},
->  };
->  const size_t hw_compat_5_1_len = G_N_ELEMENTS(hw_compat_5_1);
->
-> diff --git a/hw/scsi/vhost-scsi.c b/hw/scsi/vhost-scsi.c
-> index 13b05af29b..a83ffeefc8 100644
-> --- a/hw/scsi/vhost-scsi.c
-> +++ b/hw/scsi/vhost-scsi.c
-> @@ -270,7 +270,8 @@ static Property vhost_scsi_properties[] = {
->      DEFINE_PROP_STRING("vhostfd", VirtIOSCSICommon, conf.vhostfd),
->      DEFINE_PROP_STRING("wwpn", VirtIOSCSICommon, conf.wwpn),
->      DEFINE_PROP_UINT32("boot_tpgt", VirtIOSCSICommon, conf.boot_tpgt, 0),
-> -    DEFINE_PROP_UINT32("num_queues", VirtIOSCSICommon, conf.num_queues, 1),
-> +    DEFINE_PROP_UINT32("num_queues", VirtIOSCSICommon, conf.num_queues,
-> +                       VIRTIO_SCSI_AUTO_NUM_QUEUES),
->      DEFINE_PROP_UINT32("virtqueue_size", VirtIOSCSICommon, conf.virtqueue_size,
->                         128),
->      DEFINE_PROP_BOOL("seg_max_adjust", VirtIOSCSICommon, conf.seg_max_adjust,
-> diff --git a/hw/scsi/vhost-user-scsi.c b/hw/scsi/vhost-user-scsi.c
-> index a8b821466f..7c0631656c 100644
-> --- a/hw/scsi/vhost-user-scsi.c
-> +++ b/hw/scsi/vhost-user-scsi.c
-> @@ -162,7 +162,8 @@ static void vhost_user_scsi_unrealize(DeviceState *dev)
->  static Property vhost_user_scsi_properties[] = {
->      DEFINE_PROP_CHR("chardev", VirtIOSCSICommon, conf.chardev),
->      DEFINE_PROP_UINT32("boot_tpgt", VirtIOSCSICommon, conf.boot_tpgt, 0),
-> -    DEFINE_PROP_UINT32("num_queues", VirtIOSCSICommon, conf.num_queues, 1),
-> +    DEFINE_PROP_UINT32("num_queues", VirtIOSCSICommon, conf.num_queues,
-> +                       VIRTIO_SCSI_AUTO_NUM_QUEUES),
->      DEFINE_PROP_UINT32("virtqueue_size", VirtIOSCSICommon, conf.virtqueue_size,
->                         128),
->      DEFINE_PROP_UINT32("max_sectors", VirtIOSCSICommon, conf.max_sectors,
-> diff --git a/hw/scsi/virtio-scsi.c b/hw/scsi/virtio-scsi.c
-> index eecdd05af5..3a71ea7097 100644
-> --- a/hw/scsi/virtio-scsi.c
-> +++ b/hw/scsi/virtio-scsi.c
-> @@ -891,6 +891,9 @@ void virtio_scsi_common_realize(DeviceState *dev,
->      virtio_init(vdev, "virtio-scsi", VIRTIO_ID_SCSI,
->                  sizeof(VirtIOSCSIConfig));
->
-> +    if (s->conf.num_queues == VIRTIO_SCSI_AUTO_NUM_QUEUES) {
-> +        s->conf.num_queues = 1;
-> +    }
->      if (s->conf.num_queues == 0 ||
->              s->conf.num_queues > VIRTIO_QUEUE_MAX - VIRTIO_SCSI_VQ_NUM_FIXED) {
->          error_setg(errp, "Invalid number of queues (= %" PRIu32 "), "
-> @@ -964,7 +967,8 @@ static void virtio_scsi_device_unrealize(DeviceState *dev)
->  }
->
->  static Property virtio_scsi_properties[] = {
-> -    DEFINE_PROP_UINT32("num_queues", VirtIOSCSI, parent_obj.conf.num_queues, 1),
-> +    DEFINE_PROP_UINT32("num_queues", VirtIOSCSI, parent_obj.conf.num_queues,
-> +                       VIRTIO_SCSI_AUTO_NUM_QUEUES),
->      DEFINE_PROP_UINT32("virtqueue_size", VirtIOSCSI,
->                                           parent_obj.conf.virtqueue_size, 256),
->      DEFINE_PROP_BOOL("seg_max_adjust", VirtIOSCSI,
-> diff --git a/hw/virtio/vhost-scsi-pci.c b/hw/virtio/vhost-scsi-pci.c
-> index 06e814d30e..a6bb0dc60d 100644
-> --- a/hw/virtio/vhost-scsi-pci.c
-> +++ b/hw/virtio/vhost-scsi-pci.c
-> @@ -47,11 +47,15 @@ static void vhost_scsi_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
->  {
->      VHostSCSIPCI *dev = VHOST_SCSI_PCI(vpci_dev);
->      DeviceState *vdev = DEVICE(&dev->vdev);
-> -    VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(vdev);
-> +    VirtIOSCSIConf *conf = &dev->vdev.parent_obj.parent_obj.conf;
-> +
-> +    if (conf->num_queues == VIRTIO_SCSI_AUTO_NUM_QUEUES) {
-> +        conf->num_queues =
-> +            virtio_pci_optimal_num_queues(VIRTIO_SCSI_VQ_NUM_FIXED);
-> +    }
->
->      if (vpci_dev->nvectors == DEV_NVECTORS_UNSPECIFIED) {
-> -        vpci_dev->nvectors = vs->conf.num_queues +
-> -                             VIRTIO_SCSI_VQ_NUM_FIXED + 1;
-> +        vpci_dev->nvectors = conf->num_queues + VIRTIO_SCSI_VQ_NUM_FIXED + 1;
->      }
->
->      qdev_realize(vdev, BUS(&vpci_dev->bus), errp);
-> diff --git a/hw/virtio/vhost-user-scsi-pci.c b/hw/virtio/vhost-user-scsi-pci.c
-> index ab6dfb71a9..25e97ca54e 100644
-> --- a/hw/virtio/vhost-user-scsi-pci.c
-> +++ b/hw/virtio/vhost-user-scsi-pci.c
-> @@ -53,11 +53,15 @@ static void vhost_user_scsi_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
->  {
->      VHostUserSCSIPCI *dev = VHOST_USER_SCSI_PCI(vpci_dev);
->      DeviceState *vdev = DEVICE(&dev->vdev);
-> -    VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(vdev);
-> +    VirtIOSCSIConf *conf = &dev->vdev.parent_obj.parent_obj.conf;
-> +
-> +    if (conf->num_queues == VIRTIO_SCSI_AUTO_NUM_QUEUES) {
-> +        conf->num_queues =
-> +            virtio_pci_optimal_num_queues(VIRTIO_SCSI_VQ_NUM_FIXED);
-> +    }
->
->      if (vpci_dev->nvectors == DEV_NVECTORS_UNSPECIFIED) {
-> -        vpci_dev->nvectors = vs->conf.num_queues +
-> -                             VIRTIO_SCSI_VQ_NUM_FIXED + 1;
-> +        vpci_dev->nvectors = conf->num_queues + VIRTIO_SCSI_VQ_NUM_FIXED + 1;
->      }
->
->      qdev_realize(vdev, BUS(&vpci_dev->bus), errp);
-> diff --git a/hw/virtio/virtio-scsi-pci.c b/hw/virtio/virtio-scsi-pci.c
-> index 3ff9eb7ef6..fa4b3bfb50 100644
-> --- a/hw/virtio/virtio-scsi-pci.c
-> +++ b/hw/virtio/virtio-scsi-pci.c
-> @@ -46,13 +46,17 @@ static void virtio_scsi_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
->  {
->      VirtIOSCSIPCI *dev = VIRTIO_SCSI_PCI(vpci_dev);
->      DeviceState *vdev = DEVICE(&dev->vdev);
-> -    VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(vdev);
->      DeviceState *proxy = DEVICE(vpci_dev);
-> +    VirtIOSCSIConf *conf = &dev->vdev.parent_obj.conf;
->      char *bus_name;
->
-> +    if (conf->num_queues == VIRTIO_SCSI_AUTO_NUM_QUEUES) {
-> +        conf->num_queues =
-> +            virtio_pci_optimal_num_queues(VIRTIO_SCSI_VQ_NUM_FIXED);
-> +    }
-> +
->      if (vpci_dev->nvectors == DEV_NVECTORS_UNSPECIFIED) {
-> -        vpci_dev->nvectors = vs->conf.num_queues +
-> -                             VIRTIO_SCSI_VQ_NUM_FIXED + 1;
-> +        vpci_dev->nvectors = conf->num_queues + VIRTIO_SCSI_VQ_NUM_FIXED + 1;
->      }
->
->      /*
-> --
-> 2.26.2
->
+On Sat, Aug 22, 2020 at 10:59:56AM +0200, C=E9dric Le Goater wrote:
+> Hello,
+>=20
+> On 8/19/20 6:43 PM, Thiago Jung Bauermann wrote:
+> > Instead of setting CPUState::halted to 1 in ppce500_cpu_reset_sec(), use
+> > the start-powered-off property which makes cpu_common_reset() initializ=
+e it
+> > to 1 in common code.
+> >=20
+> > Also change creation of CPU object from cpu_create() to object_new() and
+> > qdev_realize_and_unref() because cpu_create() realizes the CPU and it's=
+ not
+> > possible to set a property after the object is realized.
+> >=20
+> > Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
+> > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+>=20
+>=20
+> This is breaking make check :=20
+>=20
+>     tests/qtest/libqtest.c:175: kill_qemu() detected QEMU death from sign=
+al 11 (Segmentation fault) (core dumped)
+>     ERROR boot-serial-test - too few tests run (expected 7, got 0)
+>     make: *** [/home/legoater/work/qemu/qemu-powernv-5.2.git/tests/Makefi=
+le.include:650: check-qtest-ppc64] Error 1
+>     make: *** Waiting for unfinished jobs....
+>    =20
+>    =20
+>     gdb --args build/ppc64-softmmu/qemu-system-ppc64  -display none   -M =
+ppce500
+>     ...
+>     Thread 1 "qemu-system-ppc" received signal SIGSEGV, Segmentation faul=
+t.
+>     0x000055555596ebf2 in ppce500_init (machine=3D0x5555567aa6e0)
+>         at /home/legoater/work/qemu/qemu-powernv-5.2.git/hw/ppc/e500.c:880
+>     880	        irqs[i].irq[OPENPIC_OUTPUT_INT] =3D input[PPCE500_INPUT_I=
+NT];
+> =20
+>    =20
+>     AFAIUI, 'input is not initialized since the CPU is not yet
+>     realized.
+
+Sigh.  For future reference, Thiago, running an all-targets make check
+is pretty much a minimum bar to test before posting.
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--MfFXiAuoTsnnDAfZ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl9CF0MACgkQbDjKyiDZ
+s5JTLQ/+Lg+3IJI8SUhL6CEBtvG7ocdZkQGhlKeJMIYI8+9KZgB+2F491dDeX8zj
+VVGvwzaLB9o3TmYM9ZXy+/Z8OTm+qgpboHcgMF/BpUaYuB+/besDJ8Q/hWEEaNbw
+i/Xh750DWFNjtDMfsBK7uv8jkElOzUv/bpt4OVyouZvd1EDPCZH2BsRJjeew4R+s
+q/JL/S2xTVA5Yr5oCCdA8YQAECNOnbSxUzA+EZX9jNvNrxMUntGoayKLdrRF4O4P
+KAOxn+le+rSthd9iHBUadk5Rb9Fe1Z2oQ1JObQj07YOtu+fpwC+KkVGyrTeiMpUp
+qxvs61GivAxloCC545mxoGdqOGtHteNN3UKU25fJG5QYekLh3+Cy3LlAuoqMoJ8n
+2qBZRIDKCrHEzxFS1CN5wtPSNno+0PCMvhGhqaIP648DS++kxM1gON1eFgHm6HPb
+xZc8E3cVHou2pzvBRYZ3fyfhL74zAIxa0VAInWIQcz+Ni/SwqJ3BYaCRMRvw/rT7
+wa2ZnnrHtX1wzaDXdyDYkQ6HktysOVv61imR8v2kjaDdA9uPqSU/kVO4HVhPwPRQ
+TTurBkvpKA/PNQZbM2qIOFMYbfS0NKsyBVeVvKlW8ssEBaIPU5d//lJ4shLK1C/P
+VR3lrkM82/VKP+cxuTGdc7X1kOHZIjSrYGt4gZvC/vfCbXFLOUk=
+=iifx
+-----END PGP SIGNATURE-----
+
+--MfFXiAuoTsnnDAfZ--

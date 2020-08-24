@@ -1,125 +1,121 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2703390lfy;
-        Mon, 24 Aug 2020 09:47:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw6/fL9WrQSEphUZlZM7V2C2Hd4ogwTEtqIlwz6yl79J3+EL+6RGm/mpRGR+jWVBpkecaLa
-X-Received: by 2002:a25:d285:: with SMTP id j127mr8383875ybg.505.1598287637864;
-        Mon, 24 Aug 2020 09:47:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598287637; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2717956lfy;
+        Mon, 24 Aug 2020 10:07:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzt2PHc688Cp7c2B93EW2pGJKTFEjnY6c/bSbyZbkB8t0lnw8dGMeQD2pWzdpvy8A17hmk/
+X-Received: by 2002:a25:e83:: with SMTP id 125mr9500063ybo.376.1598288819901;
+        Mon, 24 Aug 2020 10:06:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598288819; cv=none;
         d=google.com; s=arc-20160816;
-        b=kb9SdJ61IQc5AMtYnlpfKGh0hvqyTx9lgQINoWJKZQ6iRrLziAV59PhDxkNNClBIN4
-         14vbJ7deSQK3fKDVBIeJT4tWqHXOfpSZk+n/sbze3n/9Y+69RQM0ONRK5ZtgbOHAbkGs
-         0wF7jfuHMua57GWjVSVIqRIW8tX0+c9Ne8qSnbFNV8bdd8/W1/lbVb8E3+SDA/O/0suu
-         xp07YVgYcr8rBZqe+GyaiWL9g/PckAGSCDEJcK2vdIWnH+eWV/jyfpN+IDLgUcSRPGB/
-         Bys2Rk/soI4wiHZP4KFYrVE9NQlab9yiT6KNCGlgE7rjfhguvVRJ6kH/oRy3NWP0CnJN
-         0HkA==
+        b=MX3x3VIfqpBVOLrC8kHXQLWnEn6EqHU2eYtkG33Go4zSRTLZ2gvF3asyls+DJOVIAG
+         oToAF6+z34V/r226oJt4G9HuvHPMOCI/710vNmJ4H7dOVOuGVpfBryq9As680kwBkhHs
+         brPrrq3GA9oYB8FhFnwI3zXGkWkrHNbRO5tncn88NdoYiyrhtxdjYUCeU7npPkWD2VYQ
+         +KNbA9h25FqF10KvEKYjzi2TkkdEMECC1ikRfo32q48yVHjiCTHJaeteWL3/E3zjgaH2
+         xvk9gFEqwKOVT1YHMViR4TuXKJRG2YCsps3VBkWuf9KXLhBCipRMksZev+EEnEIw0TYd
+         lRvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=V1XzbNWeNpDcedTyqVpwbUo6zXZYGCvIVa0hYb0Avi8=;
-        b=YryM/8NNlljC9WvItVM9xr0++8Pbyw0drfDBOiku2stltcBDIY3Ufdev/guR+t2Hx9
-         YXZ8adXMzG4BljmwpV1+mGtbm792CLHTIQwIlrevVwzgjaQXrv0izkoFipyv3WPHfs0h
-         0lxX42d90gdP4loyh+5HL6jjjvi9rMMXLySrI7CGV4cpfSt256KVPY2kW6C0IYMPnWAq
-         j9vK+fjYVqZNp+54w/tzVooKg7Qeq1HPsNkbprAiKm/Ehw+IpdwIm7IG/Q1jWcL7U51t
-         iW0qLS0aRwsIejVtEeGy6bCHogK0u3y5nrk5ScPgcRprtV4P3nTRH/+nb/4LVgQKg0K/
-         OqhQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=CDh/D5GRiksCG7zEpAQwiIMF5S+CM4RvijU2uHWSHkg=;
+        b=BaXGl5NFrGchOzS90WL8u2Eq/8vrP09Ub5VdNslTrch8g/lpRKAfCLBliMkPtk5/t+
+         0qnTNv7G8blKfGd/mJkKZP7CoEe0GwNSviLsH5fMmSVmOkncjWI9w7Jj5H62WpP9xjss
+         /HPXALWTvPnzK/Fml+G9LDlDrgBqtfFvQuF7ibLOBgPnnSUMAHQhwrNNlHIWRbFd2pJu
+         sBP2CpM71fy6pmowW6a9WHKFR3ia2wEeBBOpNMvcUVO49bv4LYknKtXDHAFi3JGW+6GL
+         7WHLmpwI0QjawncH/HcH8aT/ZcDFxJusOnk6KxSSorlIe9DiTi2YcVLROJ2NDklvWV+B
+         aquw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VxOBsEVA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b="Cn/ER3b0";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i204si11854732ybi.326.2020.08.24.09.47.17
+        by mx.google.com with ESMTPS id s59si11862287ybi.417.2020.08.24.10.06.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Aug 2020 09:47:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Aug 2020 10:06:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VxOBsEVA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57722 helo=lists1p.gnu.org)
+       dkim=pass header.i=@yadro.com header.s=mta-01 header.b="Cn/ER3b0";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=yadro.com
+Received: from localhost ([::1]:35826 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAFcr-000591-6L
-	for alex.bennee@linaro.org; Mon, 24 Aug 2020 12:47:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59904)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kAFvv-0003oy-85
+	for alex.bennee@linaro.org; Mon, 24 Aug 2020 13:06:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37292)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAFbk-0004Fd-8p
- for qemu-devel@nongnu.org; Mon, 24 Aug 2020 12:46:08 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25071
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAFbg-0000Tb-J6
- for qemu-devel@nongnu.org; Mon, 24 Aug 2020 12:46:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598287562;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=V1XzbNWeNpDcedTyqVpwbUo6zXZYGCvIVa0hYb0Avi8=;
- b=VxOBsEVA2cRI1Wk/WAGjRvtC4hed4Rm00ijyWWo4XMlk+80q/2knJYGLJpg3+etRhLNdCM
- vu7Ak+eq8VQQ/O3tI/BUdgLNpiNcc2DPMGld+jKHYqQFqvbtklFwvMwyEylUzdH2PvPVU7
- BKXjOOUV8j3ZHPkF8y69U/CNoFQeRUc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-94-HSmc7CefNX2U691luYbQRQ-1; Mon, 24 Aug 2020 12:45:59 -0400
-X-MC-Unique: HSmc7CefNX2U691luYbQRQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1kAFvm-0003mf-3i; Mon, 24 Aug 2020 13:06:50 -0400
+Received: from mta-02.yadro.com ([89.207.88.252]:56234 helo=mta-01.yadro.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <r.bolshakov@yadro.com>)
+ id 1kAFvj-0003y3-VH; Mon, 24 Aug 2020 13:06:49 -0400
+Received: from localhost (unknown [127.0.0.1])
+ by mta-01.yadro.com (Postfix) with ESMTP id CAB915750B;
+ Mon, 24 Aug 2020 17:06:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=yadro.com; h=
+ in-reply-to:content-disposition:content-type:content-type
+ :mime-version:references:message-id:subject:subject:from:from
+ :date:date:received:received:received; s=mta-01; t=1598288803;
+ x=1600103204; bh=XnIQ3IrKntfHqllpAEx8wYdHdkAHLXNxtXCg2Go/cbM=; b=
+ Cn/ER3b0PPRwNmK5p5/3SZ5jly8Ls7u+hjNV+T3j10g/LTswWaM9pHhBTTRIHbSX
+ 2YKXsR7Ochu4IGMWVLEojiYdAecbOKu4SuOI6vredrnrxpoXXDE/KYWOgiTmDUiH
+ mi/Koq7o6pTmxZoMsJD9r7iTr4DWyDVJjOFAXC5bhsg=
+X-Virus-Scanned: amavisd-new at yadro.com
+Received: from mta-01.yadro.com ([127.0.0.1])
+ by localhost (mta-01.yadro.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id 86PRyNSHABWU; Mon, 24 Aug 2020 20:06:43 +0300 (MSK)
+Received: from T-EXCH-02.corp.yadro.com (t-exch-02.corp.yadro.com
+ [172.17.10.102])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 70D911052BB4;
- Mon, 24 Aug 2020 16:45:56 +0000 (UTC)
-Received: from localhost (unknown [10.10.67.254])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 973A3756B3;
- Mon, 24 Aug 2020 16:45:54 +0000 (UTC)
-Date: Mon, 24 Aug 2020 12:45:52 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Roman Bolshakov <r.bolshakov@yadro.com>
+ by mta-01.yadro.com (Postfix) with ESMTPS id 4D4F2527D2;
+ Mon, 24 Aug 2020 20:06:43 +0300 (MSK)
+Received: from localhost (172.17.204.212) by T-EXCH-02.corp.yadro.com
+ (172.17.10.102) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384) id 15.1.669.32; Mon, 24
+ Aug 2020 20:06:43 +0300
+Date: Mon, 24 Aug 2020 20:06:42 +0300
+From: Roman Bolshakov <r.bolshakov@yadro.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
 Subject: Re: Suspicious QOM types without instance/class size
-Message-ID: <20200824164552.GP642093@habkost.net>
+Message-ID: <20200824170642.GB41106@SPB-NB-133.local>
 References: <20200820215529.GH642093@habkost.net>
  <20200821105352.GA89922@SPB-NB-133.local>
  <20200821172927.GJ642093@habkost.net>
  <20200821174802.GK642093@habkost.net>
  <20200824164134.GA41106@SPB-NB-133.local>
+ <20200824164552.GP642093@habkost.net>
 MIME-Version: 1.0
-In-Reply-To: <20200824164134.GA41106@SPB-NB-133.local>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0.003
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="us-ascii"
 Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 03:41:06
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20200824164552.GP642093@habkost.net>
+X-Originating-IP: [172.17.204.212]
+X-ClientProxiedBy: T-EXCH-01.corp.yadro.com (172.17.10.101) To
+ T-EXCH-02.corp.yadro.com (172.17.10.102)
+Received-SPF: pass client-ip=89.207.88.252; envelope-from=r.bolshakov@yadro.com;
+ helo=mta-01.yadro.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 12:41:38
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
@@ -134,126 +130,60 @@ Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>,
  "Daniel P. Berrange" <berrange@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2dUuyrMwggZ2
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PcYNx+Ydo9bf
 
-On Mon, Aug 24, 2020 at 07:41:34PM +0300, Roman Bolshakov wrote:
-> On Fri, Aug 21, 2020 at 01:48:02PM -0400, Eduardo Habkost wrote:
-> > On Fri, Aug 21, 2020 at 01:29:38PM -0400, Eduardo Habkost wrote:
-> > > On Fri, Aug 21, 2020 at 01:53:52PM +0300, Roman Bolshakov wrote:
-> > > > On Thu, Aug 20, 2020 at 05:55:29PM -0400, Eduardo Habkost wrote:
-> > > > > While trying to convert TypeInfo declarations to the new
-> > > > > OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
-> > > > > where instance_size or class_size is not set, despite having type
-> > > > > checker macros that use a specific type.
-> > > > > 
-> > > > > The ones with "WARNING" are abstract types (maybe not serious if
-> > > > > subclasses set the appropriate sizes).  The ones with "ERROR"
-> > > > > don't seem to be abstract types.
-> > > > > 
-> > > > 
-> > > > > ERROR: target/i386/hvf/hvf.c:908:1: instance_size should be set to sizeof(HVFState)?
-> > > > 
-> > > 
-> > > > BTW, the object definition for hvf seems different from KVM (and perhaps
-> > > > wrong?), e.g. HVFState is allocated within init_machine handler and then
-> > > > assigned to a global variable:
-> > > 
-> > > Interesting.  It looks like hvf_state is _not_ the actual QOM
-> > > object instance.  The actual TYPE_HVF_ACCEL instance is created
-> > > by do_configure_accelerator().  That would explain why the lack
-> > > of instance_init never caused any problems.
-> > > 
-> > > Luckily, no code ever used the HVF_STATE macro.  If
-> > > HVF_STATE(hvf_state) got called, it would crash because of
-> > > uninitialized object instance data.  If HVF_STATE(machine->accel)
-> > > got called, it would return an invalid HVFState pointer (not
-> > > hvf_state).
-> > > 
-> > > I believe the simplest short term solution here is to just delete
-> > > the HVF_STATE macro and HVFState::parent field.  We can worry
-> > > about actually moving hvf_state to the machine->accel QOM object
-> > > later.
+On Mon, Aug 24, 2020 at 12:45:52PM -0400, Eduardo Habkost wrote:
+> On Mon, Aug 24, 2020 at 07:41:34PM +0300, Roman Bolshakov wrote:
+> > On Fri, Aug 21, 2020 at 01:48:02PM -0400, Eduardo Habkost wrote:
+> > > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> > > ---
+> > > diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+> > > index d81f569aed..81d1662d06 100644
+> > > --- a/target/i386/hvf/hvf.c
+> > > +++ b/target/i386/hvf/hvf.c
+> > > @@ -878,13 +878,11 @@ static int hvf_accel_init(MachineState *ms)
+> > >  {
+> > >      int x;
+> > >      hv_return_t ret;
+> > > -    HVFState *s;
+> > > +    HVFState *s = HVF_STATE(ms->accelerator);
 > > 
-> > Actually, it might be easier to do the full QOM conversion in a
-> > single patch instead of deleting the incomplete code.
+> > The file also needs definition of MachineState:
+> > #include "hw/boards.h"
 > > 
+> > >  
+> > >      ret = hv_vm_create(HV_VM_DEFAULT);
+> > >      assert_hvf_ok(ret);
+> > >  
+> > > -    s = g_new0(HVFState, 1);
+> > > - 
+> > >      s->num_slots = 32;
+> > >      for (x = 0; x < s->num_slots; ++x) {
+> > >          s->slots[x].size = 0;
+> > > @@ -908,6 +906,7 @@ static void hvf_accel_class_init(ObjectClass *oc, void *data)
+> > >  static const TypeInfo hvf_accel_type = {
+> > >      .name = TYPE_HVF_ACCEL,
+> > >      .parent = TYPE_ACCEL,
+> > > +    .instance_size = sizeof(HVFState),
+> > >      .class_init = hvf_accel_class_init,
+> > >  };
+> > >  
+> > >  
 > 
-> I agree full QOM conversion is better, perhaps we can later move
-> certains bits to accel/hvf.c like it's done for kvm/tcg/qtest.
+> However, the hvf patch above shouldn't require it.  You should be
+> able to apply and test it on top of qemu.git master.
 > 
-> > Can you check if the following patch works?  I don't have a host
-> > where I can test it.
-> > 
-> 
-> Sure, thanks :)
-> 
-> > Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
-> > ---
-> > diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-> > index d81f569aed..81d1662d06 100644
-> > --- a/target/i386/hvf/hvf.c
-> > +++ b/target/i386/hvf/hvf.c
-> > @@ -878,13 +878,11 @@ static int hvf_accel_init(MachineState *ms)
-> >  {
-> >      int x;
-> >      hv_return_t ret;
-> > -    HVFState *s;
-> > +    HVFState *s = HVF_STATE(ms->accelerator);
-> 
-> The file also needs definition of MachineState:
-> #include "hw/boards.h"
-> 
-> >  
-> >      ret = hv_vm_create(HV_VM_DEFAULT);
-> >      assert_hvf_ok(ret);
-> >  
-> > -    s = g_new0(HVFState, 1);
-> > - 
-> >      s->num_slots = 32;
-> >      for (x = 0; x < s->num_slots; ++x) {
-> >          s->slots[x].size = 0;
-> > @@ -908,6 +906,7 @@ static void hvf_accel_class_init(ObjectClass *oc, void *data)
-> >  static const TypeInfo hvf_accel_type = {
-> >      .name = TYPE_HVF_ACCEL,
-> >      .parent = TYPE_ACCEL,
-> > +    .instance_size = sizeof(HVFState),
-> >      .class_init = hvf_accel_class_init,
-> >  };
-> >  
-> >  
-> 
-> Unfortunately it fails to start (even without the HVF patch):
-> ERROR:../qom/object.c:314:type_initialize: assertion failed: (parent->class_size <= ti->class_size)
-> Bail out! ERROR:../qom/object.c:314:type_initialize: assertion failed: (parent->class_size <= ti->class_size)
-[...]
-> It doesn't seem related to HVF QOM changes 🤔
-> 
-> Bisected it to:
-> 
-> b717702de21461138ac0e1d6775da0bd0482c013 is the first bad commit
-> commit b717702de21461138ac0e1d6775da0bd0482c013
-> Author: Daniel P. Berrangé <berrange@redhat.com>
-> Date:   Wed Aug 19 20:12:35 2020 -0400
-> 
->     crypto: use QOM macros for declaration/definition of secret types
-> 
->     This introduces the use of the OBJECT_DEFINE and OBJECT_DECLARE macro
->     families in the secret types, in order to eliminate boilerplate code.
-> 
->     Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
->     Message-Id: <20200723181410.3145233-4-berrange@redhat.com>
->     [ehabkost: rebase, update to pass additional arguments to macro]
->     Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
->     Message-Id: <20200820001236.1284548-58-ehabkost@redhat.com>
 
-Oh, that's a bug in my QOM series.  Thanks for debugging it!  I
-will fix it in v3.
+Yeah, that's correct, thanks.
 
-However, the hvf patch above shouldn't require it.  You should be
-able to apply and test it on top of qemu.git master.
+With the include fix for hw/boards.h, the patch works:
+Reviewed-By: Roman Bolshakov <r.bolshakov@yadro.com>
+Tested-By: Roman Bolshakov <r.bolshakov@yadro.com>
 
--- 
-Eduardo
+BTW, am I expected to see the accel in "info qtree" (or qom-tree)? It's
+not there for a reason.
 
+Regards,
+Roman

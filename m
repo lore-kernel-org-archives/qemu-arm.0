@@ -1,111 +1,100 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2454810lfy;
-        Mon, 24 Aug 2020 03:50:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxS2/KwMiwOI4iipPlsPVqLCjqfLk+CCuVeVfdvM11yn4r10AJbc+d3rMR6Yv7y9pQ3rWQ1
-X-Received: by 2002:a25:c791:: with SMTP id w139mr6459460ybe.345.1598266231989;
-        Mon, 24 Aug 2020 03:50:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598266231; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2538942lfy;
+        Mon, 24 Aug 2020 06:01:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxHFFzmOFiVlcDLjVqfPI5NOqxasp4uYcYeZ4c70G2ABzQrl6jWY50Ldcevrh+bpGPuc4p6
+X-Received: by 2002:a25:ad4e:: with SMTP id l14mr7403146ybe.322.1598274100519;
+        Mon, 24 Aug 2020 06:01:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598274100; cv=none;
         d=google.com; s=arc-20160816;
-        b=Q9rouHvETvHJ03UN13kSbxfPSKtTrSWF6CakYgwiKvfLSHEubr3dcA57HJ797qXV2C
-         s39smitcaqqq7fU7zuS5OZbMvzC+Iel+U+FE1NlZxO4w31w51UJLkiazdgMxoGaEIjD7
-         xLZ63Mz/e8T4ZTeVehyXS6tgWCIjSnzHbbCxjVt3oZG+47GjQJHmtHc6WIrWmlvPRt2N
-         dn7PToGSYT+q9Bj2s6zyIM3CCE0gLSMTeVq5ZcLvUECxBv7bR3+SkDle0zvSP0tNA3fZ
-         541oaSLrT60jN3Ebn/iC2AImjrcfGCWZg93ZffxN1c5A+ceuFvN1RhhSVEieEisXLQTG
-         O87A==
+        b=GGOdHuMp/HJaw21g/R0/o+rei8XEqSbo5M+ZjZGXMj/puHv+xqchEPiSEhS2DnxhTM
+         aiFtimw8fgUS3e9MRjTwQcSOyGL4GGCY1Rz9yz3zf7k/bYzJrt65SNdzJiSuxgr7FlHK
+         NFC1e1NPt7CKqllUtEmgH8VHpf5YTncnG22kwZjrFfs50FFnEFwQs7++XOjqnuruHxSW
+         zJQ1XCmt/SiT2hZN70zHRbn3NF4wMNdFjQaohLhZeQ2Ccxs7hYv13hPx6FTboIxWGLWj
+         L4k4uQ1ro/dNCqA1v7dRVmBqTogwrWWmXc/dhrG2I0VFzheB6s0dEDf+IMxWpU/BfSc8
+         1pLw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
          :dkim-signature;
-        bh=eIIssfzSqH4QPm17XRgwhAA0VNgowwwIIZ9QyQ8HVHA=;
-        b=PqC0TizpyY19b2/wcTmRqhResEsleqMKItYA97af6seWfSub+1aY8Q9i+NUzVeuqZQ
-         xKoGRC/vTUueZUpPaO+cie3I7DL6OPUDDoWNGHOjwsNcT6VDYyYU2pAeOp/cxSH7i8df
-         NB9Rg7gpewOWRcPm8Ehbk9qjlbjLGyiUM2kAuu269GsF7PBCjwEpdhVJSHSS9llm0E+u
-         oSTKjUMpjSWx/FGfP5siR99QOI42be38+piIEjSu4vTU59WuWUYoAF0rHlUEkRcED8mD
-         4dUxsxGPA7K1EflsilR6n/vCL6obygJYm6qLCFFxy1dqh7nh7OKotxrMTLRo67xco5XN
-         Q16g==
+        bh=esL1dkHZinACs22qmxIaFrjRQ3jGjWpeBvTqQ19GGJ8=;
+        b=Qf84tmpommUzQV4nnM/EtcYgNUiX+wMHXfCsMEY5NIzzm18ZydXlJppUy1+nfK3Mdh
+         gn4pWTzyotPJEj9sYdP/slnAG4XpYMxJACVMGavN8VawQ/WSnZbDi9iy8lc84UCpjwte
+         Yl4ZQfFiF1hGmrgFIv9oKjsE3Y84X6ShQAWB4ErREO8XYeW2AEMa7ln3PB9ENhmBNE0G
+         dg8SDlQDJ/qXe3zM1DHH2A3WyE/u6RyEgpTX444lG20EV6NbiQF0cZxhZ9bXvssOHBGM
+         eN87vJ10/KGGRbuPsN/I6g3NhabowdIOSA/5a9t9sFb2+41oIm87lRSR/FlCselYXjm/
+         0W2g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dl3aGSO8;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EnmzFm9O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n126si11116233yba.429.2020.08.24.03.50.31
+        by mx.google.com with ESMTPS id b3si10666841yba.271.2020.08.24.06.01.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Aug 2020 03:50:31 -0700 (PDT)
+        Mon, 24 Aug 2020 06:01:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dl3aGSO8;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EnmzFm9O;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47314 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46728 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAA3b-0008Hg-B7
-	for alex.bennee@linaro.org; Mon, 24 Aug 2020 06:50:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36332)
+	id 1kAC6V-00037r-TJ
+	for alex.bennee@linaro.org; Mon, 24 Aug 2020 09:01:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44966)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kAA1c-0005H8-PY
- for qemu-arm@nongnu.org; Mon, 24 Aug 2020 06:48:29 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:51550
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kAC6L-00037h-AM
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2020 09:01:30 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:56323
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kAA1b-0004L1-EF
- for qemu-arm@nongnu.org; Mon, 24 Aug 2020 06:48:28 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kAC6J-0006tR-37
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2020 09:01:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598266106;
+ s=mimecast20190719; t=1598274086;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eIIssfzSqH4QPm17XRgwhAA0VNgowwwIIZ9QyQ8HVHA=;
- b=dl3aGSO8Zx9OMQzAdnoqWqhG5CcXl5sJyUglc54ZaIEYR2H3vKR+sjrf6XtmYEmtkGnDwN
- NLvZeNTh+BJQ+ikWgtmgguGf2mY977RwxEfHWZRUjnxhG11HSQ7ojj9uwLGMGa6x0FBAjB
- jhHkhuAMc/QqKnwx9VS2kfIivNDjmds=
+ to:to:cc:cc:content-type:content-type;
+ bh=esL1dkHZinACs22qmxIaFrjRQ3jGjWpeBvTqQ19GGJ8=;
+ b=EnmzFm9OUHBNJ+m5CEhRtwtZF5HIwIeSVj8L5lvk1+D0ZBpGEMfew/Fddp1DvxoIbnQRBX
+ kTLuBz+F7cRxR0NyZ8PctgJHVNsXE6gyLlJy3QU1RKTN7sujllACCN6zS1gsK1i1YJWO9s
+ rS6L6ALqHEAKR7jchpfTZL57N+iuzm8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-486-Vfj3Z9HuOlWlWrczM8QB6Q-1; Mon, 24 Aug 2020 06:48:23 -0400
-X-MC-Unique: Vfj3Z9HuOlWlWrczM8QB6Q-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-44-WEYbk-JXNlGKI9cGCSlJOA-1; Mon, 24 Aug 2020 09:01:18 -0400
+X-MC-Unique: WEYbk-JXNlGKI9cGCSlJOA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2952180F057;
- Mon, 24 Aug 2020 10:48:22 +0000 (UTC)
-Received: from eperezma.remote.csb (ovpn-112-176.ams2.redhat.com
- [10.36.112.176])
- by smtp.corp.redhat.com (Postfix) with ESMTP id EF09660FC2;
- Mon, 24 Aug 2020 10:48:18 +0000 (UTC)
-From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
-To: Peter Xu <peterx@redhat.com>,
-	qemu-devel@nongnu.org
-Subject: [RFC v5 3/3] intel_iommu: Do not notify regular iotlb to device-iotlb
- notifiers
-Date: Mon, 24 Aug 2020 12:47:38 +0200
-Message-Id: <20200824104738.20664-4-eperezma@redhat.com>
-In-Reply-To: <20200824104738.20664-1-eperezma@redhat.com>
-References: <20200824104738.20664-1-eperezma@redhat.com>
-MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 91C8380F043;
+ Mon, 24 Aug 2020 13:01:17 +0000 (UTC)
+Received: from thuth.com (ovpn-114-8.ams2.redhat.com [10.36.114.8])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 514FF5D9E4;
+ Mon, 24 Aug 2020 13:01:16 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] disas/libvixl: Fix fall-through annotation for GCC >= 7
+Date: Mon, 24 Aug 2020 15:01:14 +0200
+Message-Id: <20200824130114.41368-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0.002
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=eperezma@redhat.com;
+Content-Type: text/plain; charset=US-ASCII
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=thuth@redhat.com;
  helo=us-smtp-1.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 06:40:32
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,44 +107,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Yan Zhao <yan.y.zhao@intel.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Jason Wang <jasowang@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- Avi Kivity <avi@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DJTxFdATHmrj
+X-TUID: B6jVAYzsBcbs
 
-This improves performance in case of netperf with vhost-net:
-* TCP_STREAM: From 1374.81Mbit/s to 1845Mbit/s (37%)
-* TCP_RR: From 6559.36 trans/s to 7916.29/s (21%)
-* UDP_RR: From 6705.39 trans/s to 8199.39/s (22%)
-* UDP_STREAM: No change observed (not significant 0.1% improvement)
+For compiling with -Wimplicit-fallthrough we need to fix the
+fallthrough annotations in the libvixl code. This is based on
+the following upstream vixl commit by Martyn Capewell:
 
-Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+ https://git.linaro.org/arm/vixl.git/commit/?id=de326f850f736c3a337
+
+ "GCC 7 enables switch/case fallthrough checking, but this fails in
+  VIXL, because the annotation we use is Clang specific.
+
+  Also, fix a missing annotation in the disassembler."
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/i386/intel_iommu.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ disas/libvixl/vixl/a64/disasm-a64.cc | 4 ++++
+ disas/libvixl/vixl/globals.h         | 6 ++++--
+ 2 files changed, 8 insertions(+), 2 deletions(-)
 
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 2ad6b9d796..d539a9f281 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -1959,6 +1959,12 @@ static void vtd_iotlb_domain_invalidate(IntelIOMMUState *s, uint16_t domain_id)
-     vtd_iommu_unlock(s);
- 
-     QLIST_FOREACH(vtd_as, &s->vtd_as_with_notifiers, next) {
-+        if (vtd_as->iommu.iommu_notify_flags & IOMMU_NOTIFIER_DEVIOTLB) {
-+            /* If IOMMU memory region is DEVICE IOTLB type, it does not make
-+             * sense to send regular IOMMU notifications. */
-+            continue;
+diff --git a/disas/libvixl/vixl/a64/disasm-a64.cc b/disas/libvixl/vixl/a64/disasm-a64.cc
+index 7a58a5c087..f34d1d68da 100644
+--- a/disas/libvixl/vixl/a64/disasm-a64.cc
++++ b/disas/libvixl/vixl/a64/disasm-a64.cc
+@@ -2985,6 +2985,10 @@ int Disassembler::SubstituteImmediateField(const Instruction* instr,
+           }
+           return 3;
+         }
++        default: {
++          VIXL_UNIMPLEMENTED();
++          return 0;
 +        }
-+
-         if (!vtd_dev_to_context_entry(s, pci_bus_num(vtd_as->bus),
-                                       vtd_as->devfn, &ce) &&
-             domain_id == vtd_get_domain_id(s, &ce)) {
+       }
+     }
+     case 'C': {  // ICondB - Immediate Conditional Branch.
+diff --git a/disas/libvixl/vixl/globals.h b/disas/libvixl/vixl/globals.h
+index 61dc9f7f7e..7099aa599f 100644
+--- a/disas/libvixl/vixl/globals.h
++++ b/disas/libvixl/vixl/globals.h
+@@ -108,10 +108,12 @@ inline void USE(T1, T2, T3, T4) {}
+   #define __has_warning(x)  0
+ #endif
+ 
+-// Note: This option is only available for Clang. And will only be enabled for
+-// C++11(201103L).
++// Fallthrough annotation for Clang and C++11(201103L).
+ #if __has_warning("-Wimplicit-fallthrough") && __cplusplus >= 201103L
+   #define VIXL_FALLTHROUGH() [[clang::fallthrough]] //NOLINT
++// Fallthrough annotation for GCC >= 7.
++#elif __GNUC__ >= 7
++  #define VIXL_FALLTHROUGH() __attribute__((fallthrough))
+ #else
+   #define VIXL_FALLTHROUGH() do {} while (0)
+ #endif
 -- 
-2.18.1
+2.18.2
 

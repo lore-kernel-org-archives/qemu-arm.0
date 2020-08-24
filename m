@@ -1,106 +1,109 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2441871lfy;
-        Mon, 24 Aug 2020 03:26:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw/VWdikwmdvH46gzH3Wj8e7iD6GSSe7ixIqRnDeam2JPTQawTH+sW8+EQ+eKIWeO6LC+5D
-X-Received: by 2002:a25:dace:: with SMTP id n197mr5858872ybf.168.1598264763632;
-        Mon, 24 Aug 2020 03:26:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598264763; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2449405lfy;
+        Mon, 24 Aug 2020 03:40:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwEaKK1LvOBYjyR2f+9oEPbrEFlEgxQNIVA8Zl1B+65g4ctcVPORPQ4m+Sg/d+tlaX/gSdP
+X-Received: by 2002:a25:7141:: with SMTP id m62mr6444539ybc.443.1598265649013;
+        Mon, 24 Aug 2020 03:40:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598265649; cv=none;
         d=google.com; s=arc-20160816;
-        b=thqDu7G1SD1K9M6/BxaO8bzhCFg7IhgvF0GAHnCOMxQge2rHNDSSZ5T5yn4Q7RxBR/
-         Ef/riQTI7yQ2fPBR/SQrQZWQETeV6wHJnadi0XWpiNFdjke0WpTYQ4y4J7STBFV2IeiJ
-         86D03BB7gAbhrPmV9f32PXW0W36y5mk8JwBx9ghUtpsRdjZ/1V1m71Tzuzp2nwTcSt+K
-         6zCsFYo9QqolXuAtaNy/8PQxaCyhUCeQcug1hmLL+GFyTFdSbi4FfbWG37IXCQ3RBnqH
-         B5aFFugnIlfDsSPkxRCU2lDoZLc+F0mX52AM9NsYTmzz3k11FOJhN5ITso2sG19bhUpF
-         99JQ==
+        b=XBS9w9BhWZj53KqzrVSA2TJKT8xwFcsEZ/GHTHAM9Yi458+qsw6N/LtGUKlOYUk9Kw
+         NndHomhmVOT5L7uZ7p/vIg/92ySrsBXHXhOwAJ1kjD23znR4nwtd0kZ/HEWNIPOz7/x+
+         nd5IBzLe1TAUa36ep/uB08ewj8m7JcacCa6NiOtmEW4zS1f3aRsAg2dsL7BSuHFxvILh
+         XggkLjtnI5yBiz6yo/wrGxKDbjdOmDyK7ywzzEjV2cugqOcdvCV1sWU3r5G2XPbxWP3l
+         8IYgcUGgbL8+5vq8Lslmq6QCnOP0pTYlyMSeQWy+/UOSZNOnvg7ZjpRMJ62MZy1isca1
+         qD6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=9VA6CK0oVuKVsJVc1s37mSVw9n5Ea9i/APdynWDUg48=;
-        b=ed0TntxZ29AHkBWQ+5fthlIn1ccOcVrTJV0IDO3MyGP97kGkFxLpniG4oQ6zo+iOAu
-         FxiWtBpUvY95yYU8FyEMVxNtl/jNRkEKbMFjq5k07iDBfsRIpqmVKX12Nr/U5MWouzHz
-         1xTryN8yFIiP0v1O7ZtVPcZ9IZdbm1SjrEYAabKyJbcgb02HIVck/BiUQ7WIATQDLL0L
-         9e7KFwet1BuLACsX/hT6P7F/M7XxN+yKg6jXiXMlKml3WekDMZDPcksY9xAXGi0j8xGn
-         QD+TdLWX6rukFeEvLTFKuAU/SpC+mrUvDEzn1uWyC3gpIiAu75oGZXazk2rmgbRt/GSb
-         cgBA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:organization:references:in-reply-to:message-id:subject
+         :to:from:date:dkim-signature;
+        bh=+A6evpVCSTHV2YZ0pMLFCQA13iVdE/2LLf4WyYOz8hs=;
+        b=jFBnfnY6+g2SnjDUthPQfIJYxl0/LDgCtglBA/cl5nSReFVbDGQ28UygfTPEphvlc4
+         ZgMNZT54aOXM9xaBjHbPiH3RUWggOe3dpoWbsSijAdku2cmb/yC3fmIKUW1F7qWL9F3y
+         otsWYZlwXgkpdiMWo353YfjDsYRzj/s32iilINMeWAGqJM8VRX5/Z8NitQ1AS6jWP5NX
+         iE8JN0K/CClQchvoz+Tujxe94SUzcsALZ8yIPzvWtZ+MmGrx1lWSuAxX5CSRKpB/dm9a
+         Ax3ikF+nuvzcEkDrzcjm5/0yTEgqQfTMs/K5HUHgoczJi9VtzuuSBVLwiOduFmYCy9FB
+         2wpA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WZXugnuX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BHr2VFtC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f5si10865186ybj.412.2020.08.24.03.26.03
+        by mx.google.com with ESMTPS id h22si11187377ybg.35.2020.08.24.03.40.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Aug 2020 03:26:03 -0700 (PDT)
+        Mon, 24 Aug 2020 03:40:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=WZXugnuX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BHr2VFtC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56036 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34020 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kA9fv-0007DM-1x
-	for alex.bennee@linaro.org; Mon, 24 Aug 2020 06:26:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57936)
+	id 1kA9uC-0002Jd-Bf
+	for alex.bennee@linaro.org; Mon, 24 Aug 2020 06:40:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33822)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kA9fn-0007Ci-BQ
- for qemu-arm@nongnu.org; Mon, 24 Aug 2020 06:25:55 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:37631)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kA9fl-0001aN-0W
- for qemu-arm@nongnu.org; Mon, 24 Aug 2020 06:25:54 -0400
-Received: by mail-ej1-x629.google.com with SMTP id dp2so5898698ejc.4
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2020 03:25:52 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=9VA6CK0oVuKVsJVc1s37mSVw9n5Ea9i/APdynWDUg48=;
- b=WZXugnuXcmve8CyRxHBqUkpkKdQXf+/Rqd0lmwumh8GtoAC+JY1/1C3pA5L5TKHeDU
- FSURdxq/DoOVWOAI5LTdgUgoIkR3TUrvhF1Rvka2e7DUZEAg9iKU9dzjWKsEAvFShqjm
- gvjRWcnsjVgOSV71t8gT5X22aUDclB5qNR6eVCzyTE3PQaOvDWXjLqfkgm8qOx9OHbmN
- WiDDVyNkvG9yjUBY3M/bGeQQtuX81BqSnHYWGXERV6gyP0vJFecCPbF+2B5QGsklTa0w
- PkQZwExgQvUdo2LvPqpS1rnlQ/o/pbYuUNzSBPvpkqGcJXV7VpcKIPAxQZIwSAS5YS0K
- fv0A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=9VA6CK0oVuKVsJVc1s37mSVw9n5Ea9i/APdynWDUg48=;
- b=TG34/DqQJOxR3aOideuL358Mb50bi1JEurBWpGn29mk18v+CYklo0d5ZKimGmxS/Zw
- p4S+m2U2HXh2XfeVo+ScCN3Bxzkn0XX2/3HwFL7XZQCwta8gBYyuDkrXmuDulUa8leE6
- t3MoUT+zM6Y/WRJUZpfsyCA3tM9NeS1zjHyESbuKUhway5tk4chMftj/ywxUi81mNOLR
- 2BAUKKGQCVDFDZyw6tkkBdNUJQCW5/FrinLz1a2WY/iah33tuD/BgDVKQyoWmxW406Dx
- k2o9F+Y3jgAgEpYFHHd2hkOKY7Z69LMnfcRQ+cCK7rw86jJH4tagfYXv0CvX4wRwqVzD
- JexQ==
-X-Gm-Message-State: AOAM531yLnT/eg8KN/LqAQ0hfEK3nCMTqZ2NNLMTON67W9QRDYVl6UiT
- LX10pMasYW0j+9+DyMtqkDCEETXRM4yn8GNGzacQww==
-X-Received: by 2002:a17:906:59b:: with SMTP id 27mr5138235ejn.56.1598264751246; 
- Mon, 24 Aug 2020 03:25:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kA9u1-0002EX-AY
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2020 06:40:37 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:26464
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1kA9tz-00038a-KB
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2020 06:40:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598265632;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+A6evpVCSTHV2YZ0pMLFCQA13iVdE/2LLf4WyYOz8hs=;
+ b=BHr2VFtC0ZY4Z7FYNRUoXW5VjA2JJzh5c4ANoync7EASzEjEXIUJFXVjU4T4HMuwRScIHd
+ tykeepU0rI++bXpkbpr5LhVgNL5zzPFY9A+tLmvdu0MpMD2rvqIUTJUjdXs7aOuBFT5agn
+ bb1fXSBnVn27yQ1mrKlasxH7SurqAM0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-558-UjK6q6imNueuhC6OobWDVg-1; Mon, 24 Aug 2020 06:40:29 -0400
+X-MC-Unique: UjK6q6imNueuhC6OobWDVg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2F42818A225D;
+ Mon, 24 Aug 2020 10:40:26 +0000 (UTC)
+Received: from gondolin (ovpn-113-235.ams2.redhat.com [10.36.113.235])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AEA437D87C;
+ Mon, 24 Aug 2020 10:40:09 +0000 (UTC)
+Date: Mon, 24 Aug 2020 12:40:06 +0200
+From: Cornelia Huck <cohuck@redhat.com>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: Suspicious QOM types without instance/class size
+Message-ID: <20200824124006.3cfbdddd.cohuck@redhat.com>
+In-Reply-To: <20200821210149.GN642093@habkost.net>
+References: <20200820215529.GH642093@habkost.net>
+ <20200821114335.2b100333.cohuck@redhat.com>
+ <20200821210149.GN642093@habkost.net>
+Organization: Red Hat GmbH
 MIME-Version: 1.0
-References: <554074341.6540650.1598262327794.ref@mail.yahoo.com>
- <554074341.6540650.1598262327794@mail.yahoo.com>
- <CAFEAcA_5a7aGpGMtVxjYjVnnDJNzXkQJwDW-846+TeNjTrAs_g@mail.gmail.com>
- <316503436.6530715.1598263341117@mail.yahoo.com>
-In-Reply-To: <316503436.6530715.1598263341117@mail.yahoo.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Aug 2020 11:25:40 +0100
-Message-ID: <CAFEAcA_3yUToiV_iXERz4MMtrQFwmmBzRMZ4KzttA0pS9srvVA@mail.gmail.com>
-Subject: Re: [QEMU]send key event from monitor
-To: Mircea Cociuba <cociuba_mircea@yahoo.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=cohuck@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 03:41:06
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,39 +116,77 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Qemu-arm <qemu-arm@nongnu.org>
+Cc: Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ David Hildenbrand <david@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ =?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ David Gibson <david@gibson.dropbear.id.au>, Thomas Huth <thuth@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, Cameron Esfahani <dirty@apple.com>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@kaod.org>,
+ Richard Henderson <rth@twiddle.net>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Roman Bolshakov <r.bolshakov@yadro.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z8EfEN06J/W8
+X-TUID: tXx2HtO/H+/w
 
-On Mon, 24 Aug 2020 at 11:02, Mircea Cociuba <cociuba_mircea@yahoo.com> wrote:
-> I get that, I also think that is the problem.
-> How come the current console works then?
+On Fri, 21 Aug 2020 17:01:49 -0400
+Eduardo Habkost <ehabkost@redhat.com> wrote:
 
-That's because your command line will (presumably; you don't
-say what it is) be configuring QEMU to say "connect the
-current stdin/stdout to this UART". You can alternatively
-configure it to connect the UART to a TCP port, or to
-display in the GUI window, or various other options (see the
-docs about configuring 'chardev' backends, which is what the UART
-emulation connects to:
-https://www.qemu.org/docs/master/system/invocation.html#hxtool-6 )
+> On Fri, Aug 21, 2020 at 11:43:35AM +0200, Cornelia Huck wrote:
+> > On Thu, 20 Aug 2020 17:55:29 -0400
+> > Eduardo Habkost <ehabkost@redhat.com> wrote:
+> >   
+> > > While trying to convert TypeInfo declarations to the new
+> > > OBJECT_DECLARE* macros, I've stumbled on a few suspicious cases
+> > > where instance_size or class_size is not set, despite having type
+> > > checker macros that use a specific type.
+> > > 
+> > > The ones with "WARNING" are abstract types (maybe not serious if
+> > > subclasses set the appropriate sizes).  The ones with "ERROR"
+> > > don't seem to be abstract types.
+> > > 
+> > > ERROR: hw/s390x/virtio-ccw.c:1237:1: class_size should be set to sizeof(VirtioCcwBusClass)?
+> > > ERROR: hw/virtio/virtio-pci.c:2101:1: class_size should be set to sizeof(VirtioPCIBusClass)?  
+> > 
+> > VirtioCcwBusClass and VirtioPCIBusClass are both simple typedefs of
+> > VirtioBusClass (it's likely that I copied the ccw definition from the
+> > pci one). virtio-mmio instead uses VirtioBusClass directly in its
+> > checker macros.
+> > 
+> > I don't see a real reason for the typedefs, maybe ccw and pci should
+> > use the mmio approach as well?  
+> 
+> I think it's OK to keep the typedefs if the code is consistent
+> (i.e. we set instance_size and class_size just in case the
+> typedefs are replaced by a real struct one day).
 
-> I mean, thinking about it makes sense that qemu "sees" something to send to the bare-metal program, how to do it from the monitor?
+AFAIU, VirtioBusClass is providing functionality needed for all virtio
+buses, and they should not need to add anything on top. We can however
+try to make it safe, as it is only a line of code for both pci and ccw.
 
-There isn't any support in the monitor for sending characters to
-a chardev, I'm afraid (except for the special case of sending a
-'break' event with "chardev-send-break"). Usually people who want
-to automate sending things to a UART just set it up so the
-chardev backend is a TCP socket or a file descriptor or similar
-which the automation can then read/write. (Obviously this then
-means you don't have the human-can-interact-with-it-too behaviour,
-unless you put something on the other end of the socket/fd that
-will multiplex human and automated input.) If you really need
-to have something you can interact with from the monitor prompt
-in particular then maybe the 'ringbuf' chardev backend and the
-ringbuf_read/ringbuf_write monitor commands will be useful, but
-I've never used them myself.
+> 
+> I'm not sure about the TYPE_VIRTIO_MMIO_BUS approach.  If the
+> code just needs VirtioBusState or VirtioBusClass pointers, it can
+> already use the VIRTIO_BUS* macros.
 
-thanks
--- PMM
+We could go ahead and ditch the bus-specific macros if there's no real
+need for it. At least, I don't see a real need for *Class. OTOH, having
+types and macros defined everywhere makes it more symmetric.
+
+> 
+> The OBJECT_DECLARE_TYPE macro Daniel sent expects each QOM type
+> to have a separate struct being defined, which isn't true in many
+> cases.  I'm considering removing the "typedef struct Foo Foo"
+> lines from OBJECT_DECLARE_TYPE(), to make initial conversion
+> easier.
+
+Would be interesting to figure out the individual reasons why there's
+no separate struct, just to make sure we're not operating from wrong
+assumptions.
+

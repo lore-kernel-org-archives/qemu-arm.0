@@ -1,104 +1,125 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2645839lfy;
-        Mon, 24 Aug 2020 08:21:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0nLuxkXvYa2xwI7hQ0OwtiHrqskFQuC3Wba2NK2yw5U4rCW9TRYs9ZpOtpUj0OsktE4gS
-X-Received: by 2002:a25:d209:: with SMTP id j9mr8409183ybg.205.1598282485759;
-        Mon, 24 Aug 2020 08:21:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598282485; cv=none;
+Received: by 2002:a0c:f381:0:0:0:0:0 with SMTP id i1csp4188669qvk;
+        Mon, 24 Aug 2020 09:21:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxKjG1Nv68XG3dN94lCJbUnrtJwnWnXc2iK54cUHbLY7+tb+FSbWAYvy94fQHChJdmejaW3
+X-Received: by 2002:a25:f304:: with SMTP id c4mr7615737ybs.209.1598286064749;
+        Mon, 24 Aug 2020 09:21:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598286064; cv=none;
         d=google.com; s=arc-20160816;
-        b=qsZYCX55ENDX6LUdKAG7i63VhQc+7Po2AgS9sFceUezKBAZKQyX/a/jqP0CZDHf6gQ
-         1qSfneETEdQbXBTt+RwwMGDKC7wU8WZoBHkbyRCp0tcVoko2C7Bu+N7FQsyQKt83+Gds
-         bWzUKECbDKagXamtFMR6QSG+VBPSgX3oXRV7+hy1bBxqsCbqV21tQOM/OYcA0DBOKk5t
-         kSkrLECjhvmhFVdqWwkaP2ZGEEZubY1jZXOlFP/O5CIu9T8mUdI11yipPQ+SN3bfofyg
-         pIzYCloJRTwchz1LwEY829Dz+uIcIEETTTFvZUmWKxntyYarArvnGfDT5UOsS2nkr3XH
-         bjWA==
+        b=WmmXRI1zUr6rfsdpu6WvQ9+CX+YFbrCwdZAUuFlYuxyHzd8H3St8GkT8n8W84STCCN
+         3tLkZvm1NTVNoGmIZwAxes7WQEukeIQzhyzBFDbp7TN4veGWQ1f43hZ68ylmoPkZclyW
+         neS5fThJoke8Hjr3Wr0ogFcWQe1vg43VuGjKrk6r8rqm2moqVkCquAww9W7hSAPE9Cjh
+         Jgfn14Qrv27782pCrE3aLCsub3OdJckHxSvOAbCY5DfcoyPPN8Qc3tpZy9EexX2qKgCs
+         40fJifLcOHPALB9bGCEsBEyxtaPGjviGpB7BGfQ0Ds0WcFpZd8QZehKy/adnHHps7uEV
+         u3Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=2DSY9LxI4LrHoalgSGkJ/BeHmNyn6l8uUx13JEKQeXo=;
-        b=pXQV7DSl1oNjCnrLm1yZr6QKu2CtLWs361AXipkBgIBY6SiI7phnQ6J9svlWNTeB2p
-         JanSJXL6BG8k0Yt0H7A2NNBtsjpoM3d57V5uOPEqZIIK45bnX57X/rWzPDSX7TNnDn2k
-         CnhRE1KhD/RvkAhsNtyyu8fKKvGc6SrY/tTC47FQ3GV61PHIkdfvx8NhAYV8DEm8O7dj
-         QFf1DAekCJZIMTyQOLlmA+1spRhqNoNfVDTbRlVx5VE2yNhaRvZo+TxpkHJ7R3NwUlu7
-         d7rfPJu3iOP6AuKtqTXPTR5VyB+hf2eobSnOBiWpyybL/E8qzW0y8bfaCd/9UjZ1uLLq
-         qFdQ==
+         :list-unsubscribe:list-id:precedence:content-disposition
+         :content-transfer-encoding:in-reply-to:mime-version:references
+         :message-id:subject:to:from:date:dkim-signature;
+        bh=EZPqO0i9nwV9cKVEOUZrqTFf+kRqEfBSBGBt9p29VPU=;
+        b=bg2izJ7hvy8cTFTfV+8CG7f9LgO5xDaoHv3WxOXrg7DSYZInjVySwPTuDbPoJvpsGp
+         w+uvhhGaINnsvvKBsdpp6WxJbDISPZep+gkyDA4hEwQN92Q4kh9GcSTZQrVpDQH+xHch
+         91xAeTjC70rp/pSRNNeMXMdaP9fcVsIGSPpCgVX66Odx24sICg5jkFZolujIWTzMHn5b
+         lVb5X5cPePUl4RFdI0xlY45HqhmveILx3ZPUvRB3hno4NLYg0CHJRTiyAgetxe91HXUb
+         tddN9XbSxtrf07RSImNXDL8/BEeFfR1PJ+AbP+sp0OcTQRZMrAM5Ck7eUwO7bvCyj9OC
+         pdNQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UPvTI3u7;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A031VXBu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b129si12034548yba.468.2020.08.24.08.21.25
+        by mx.google.com with ESMTPS id a7si12006502ybh.172.2020.08.24.09.21.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Aug 2020 08:21:25 -0700 (PDT)
+        Mon, 24 Aug 2020 09:21:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=UPvTI3u7;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=A031VXBu;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:37696 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:35912 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAEHl-0001jH-15
-	for alex.bennee@linaro.org; Mon, 24 Aug 2020 11:21:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33606)
+	id 1kAFDU-0007qm-7d
+	for alex.bennee@linaro.org; Mon, 24 Aug 2020 12:21:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52238)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kAEHd-0001j3-Bd
- for qemu-arm@nongnu.org; Mon, 24 Aug 2020 11:21:17 -0400
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:34182)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kAEHb-0003AG-NK
- for qemu-arm@nongnu.org; Mon, 24 Aug 2020 11:21:17 -0400
-Received: by mail-ed1-x543.google.com with SMTP id bs17so8424725edb.1
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2020 08:21:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=2DSY9LxI4LrHoalgSGkJ/BeHmNyn6l8uUx13JEKQeXo=;
- b=UPvTI3u7/i1W+EhMEA00UDVpQkAPFiSh3sIOnJFy4gsSF79iiSD+1HrE5iRiljjaN6
- NLZAbCqXSwF0+MxdNkw1fnkj07MrxicUzuLkzdJ9NFxtQnp9y+K6CLyaSctFm2NGCiK5
- Y+vqYak+rOLPJdvWSLcyt5jB1hkh10pPAij6y9Q/ypgfmdDmI9ZMMEMlwjoxhMCLmEmr
- 5BTWB4qKSIjqqKVtXrlVXajt9Jgt62tmOjbQHLiysF7P19H1heEau+OL1W6/Azh1quWR
- 7PwslStyFoOda6Hs2K0S4ZMJgET1LjInmIlctnubseBDvbtvOgGChJ4hsiKZhAlKbbfw
- nxcA==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1kAFDL-0007ou-GI
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2020 12:20:55 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:54249
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1kAFDJ-0004f1-Tz
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2020 12:20:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598286052;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EZPqO0i9nwV9cKVEOUZrqTFf+kRqEfBSBGBt9p29VPU=;
+ b=A031VXBuPqfmFc5XSYFyhmDsRteFCj6/fULWdklZCPhYdpnouLw/bdqfjMjzrXOBKcLihh
+ L+5eiwuKM98qIcuC6SRzg0UQLM0hDW0ewHIxAFCNQl34KUQ+YuM/QckB+fF3Am8WiyhFjq
+ nKvg5uwlHNYaseBfx4vPFIcqbsoJEcs=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-343-e5S-JYE8MI6p5y2V52A7NA-1; Mon, 24 Aug 2020 12:20:48 -0400
+X-MC-Unique: e5S-JYE8MI6p5y2V52A7NA-1
+Received: by mail-qt1-f199.google.com with SMTP id q6so2570040qtn.15
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2020 09:20:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=2DSY9LxI4LrHoalgSGkJ/BeHmNyn6l8uUx13JEKQeXo=;
- b=PaPaVt3GXbHAJ83lip9a183W66DNVjkn3ZZ4XtkZxy5zcWW7uMaNwrwoXpLyFx17ZY
- gEme9Jcqb3hLUDb8GfvhfFf3gXj5d1ccJuUir85tMt61QvI43w1PXwalzC6aG79YM9AU
- rrrOGmzAWYgYOw19Y086B4k7fqLsATid0eFn3V4u3EhH1g3n083U06fJanMcYs2hV5KT
- uxOKPzTuhUZHRxbJXEbnq3+5zCgu1KJGyjd9fX4DUwnfMFbGPJTAYzQa92Vca9LLSjFT
- sYET/xH6bJkOHJ8WRUJMI+NsRJLUkpL4MvEIpEWGc97+0NkqcQrW6aaYAv0BCUfrCZG/
- 6lRg==
-X-Gm-Message-State: AOAM530NL5zY2wlzXQ/kLhbHVGzMFIYMcpss9dRVqH6/k43uwiAKJQsA
- dJZpzDDvTrIstY0g58k7WRCFJDJA7hY3+z9IXyoFXw==
-X-Received: by 2002:a50:da44:: with SMTP id a4mr6048556edk.36.1598282471979;
- Mon, 24 Aug 2020 08:21:11 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=EZPqO0i9nwV9cKVEOUZrqTFf+kRqEfBSBGBt9p29VPU=;
+ b=Ta3QMY49LJ4DMzRYCKJyvvQrgfBV/fCRgLosGW2I3NQmr69kwrWq1xE2NLiWCIriN4
+ aiVLYkyhhxRDuXc2GIRk20kJX7lkDA16FveIA4emftoBB2Gx62EDPmH9MSUbusEcD3kA
+ UXy6HQJ1a9EtooqDk2xAwffafsI+Ltowe3q14G1QsoIC5PsCJibkp2N9Tb+2p3r93s4+
+ Fdsiq7B8Z3CLz8H70CDaLqczK1LEmgqaNGyTACcQHHobvXzbm0vrCC+TfSer7lGKpXLT
+ OsxJGFr/q1IynnbHBru4HCuHxSmH6BS2rMvHyIJImR4MRH4c+fb5/b1yEP2XJQNU4Lo5
+ T7WA==
+X-Gm-Message-State: AOAM530izCV130sb58vhDjy/YUGxPy39JvnTyel2G2L3brj0IkCNZCiV
+ XbdMISPoQSIafkUVF2ThqhrghjW6UByklgtgAzGnLL3SqbdxfiaAU3yOwK8iQhKI7FWRrjerSVn
+ 0wBhdocrK1F6h
+X-Received: by 2002:a05:6214:1709:: with SMTP id
+ db9mr5617591qvb.142.1598286044395; 
+ Mon, 24 Aug 2020 09:20:44 -0700 (PDT)
+X-Received: by 2002:a05:6214:1709:: with SMTP id
+ db9mr5617562qvb.142.1598286044064; 
+ Mon, 24 Aug 2020 09:20:44 -0700 (PDT)
+Received: from xz-x1 (bras-vprn-toroon474qw-lp130-11-70-53-122-15.dsl.bell.ca.
+ [70.53.122.15])
+ by smtp.gmail.com with ESMTPSA id j72sm9555088qke.20.2020.08.24.09.20.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Aug 2020 09:20:42 -0700 (PDT)
+Date: Mon, 24 Aug 2020 12:20:45 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Eugenio =?utf-8?B?UMOpcmV6?= <eperezma@redhat.com>
+Subject: Re: [RFC v5 3/3] intel_iommu: Do not notify regular iotlb to
+ device-iotlb notifiers
+Message-ID: <20200824162045.GA6424@xz-x1>
+References: <20200824104738.20664-1-eperezma@redhat.com>
+ <20200824104738.20664-4-eperezma@redhat.com>
 MIME-Version: 1.0
-References: <20200812111223.7787-1-f4bug@amsat.org>
-In-Reply-To: <20200812111223.7787-1-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Aug 2020 16:21:00 +0100
-Message-ID: <CAFEAcA-mgTYGEaHPHe1Dx3aUcvXgNNuSFoSURyJzCijenxS_vw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Clarify HCR_EL2 ARMCPRegInfo type
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::543;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x543.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+In-Reply-To: <20200824104738.20664-4-eperezma@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=peterx@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/24 05:21:34
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -113,33 +134,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, Luc Michel <luc.michel@greensocs.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Yan Zhao <yan.y.zhao@intel.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ Avi Kivity <avi@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +otBUkb081qv
+X-TUID: U2+hYk7gPImL
 
-On Wed, 12 Aug 2020 at 12:12, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> In commit ce4afed839 ("target/arm: Implement AArch32 HCR and HCR2")
-> the HCR_EL2 register has been changed from type NO_RAW (no underlying
-> state and does not support raw access for state saving/loading) to
-> type CONST (TCG can assume the value to be constant), removing the
-> read/write accessors.
-> We forgot to remove the previous type ARM_CP_NO_RAW. This is not
-> really a problem since the field is overwritten. However it makes
-> code review confuse, so remove it.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+On Mon, Aug 24, 2020 at 12:47:38PM +0200, Eugenio Pérez wrote:
+> This improves performance in case of netperf with vhost-net:
+> * TCP_STREAM: From 1374.81Mbit/s to 1845Mbit/s (37%)
+> * TCP_RR: From 6559.36 trans/s to 7916.29/s (21%)
+> * UDP_RR: From 6705.39 trans/s to 8199.39/s (22%)
+> * UDP_STREAM: No change observed (not significant 0.1% improvement)
+
+Good to know that we can get such a perf boost by removing the extra
+invalidations!
+
+> 
+> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
 > ---
->  target/arm/helper.c | 1 -
->  1 file changed, 1 deletion(-)
+>  hw/i386/intel_iommu.c | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index 2ad6b9d796..d539a9f281 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -1959,6 +1959,12 @@ static void vtd_iotlb_domain_invalidate(IntelIOMMUState *s, uint16_t domain_id)
+>      vtd_iommu_unlock(s);
+>  
+>      QLIST_FOREACH(vtd_as, &s->vtd_as_with_notifiers, next) {
+> +        if (vtd_as->iommu.iommu_notify_flags & IOMMU_NOTIFIER_DEVIOTLB) {
+> +            /* If IOMMU memory region is DEVICE IOTLB type, it does not make
+> +             * sense to send regular IOMMU notifications. */
+> +            continue;
+> +        }
 
+Though here IMHO a cleaner approach (rather than checking explicitly against
+DEVIOTLB flag) is to add a notification type into IOMMUTLBEntry.
 
+Then for domain invalidation, the caller is responsible to pass the type
+IOMMU_NOTIFIER_UNMAP into the type field. memory_region_notify_iommu_one() will
+automatically skip the message if not registerd by the notifier.
 
-Applied to target-arm.next, thanks.
+Also, it would be nice to have this new type before or when introducing the
+DEVIOTLB message, otherwise the DEVIOTLB patch can be still slightly confusing
+by itself when notified as UNMAP.
 
--- PMM
+So here's some patch layout I'm thinking:
+
+  - patch 1: rename function, we can keep it
+
+  - patch 2: introduce "type" for IOMMUTLBEntry, so far we only have MAP/UNMAP.
+    Modify all callers of memory_region_notify_iommu*() to fill in the type
+    correctly into IOMMUTLBEntry with map/unmap.  Won't hurt if we still keep
+    filling in UNMAP even for DEVIOTLB since that's after all the same old
+    behavior.
+
+  - patch 3: introduce DEVIOTLB, switch the type field of dev-iotlb
+    notifications to the new type and let vhost registers only to that.
+
+  - patch 4: at last, fix the assertion since we've got the DEVIOTLB messages.
+
+Would this be slightly cleaner?
+
+Thanks,
+
+-- 
+Peter Xu
+

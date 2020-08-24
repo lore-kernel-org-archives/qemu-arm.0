@@ -1,99 +1,102 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2606933lfy;
-        Mon, 24 Aug 2020 07:31:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxWiqrLyKyeeFhmNVdylC7gZAtTabzcySGoP178KEQcwM2Xf+eT8M/f/Smo/FvujXg7VEP3
-X-Received: by 2002:a5b:308:: with SMTP id j8mr7430229ybp.185.1598279471340;
-        Mon, 24 Aug 2020 07:31:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598279471; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2607110lfy;
+        Mon, 24 Aug 2020 07:31:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw07jKf8/Gu0yPRpan4LyzEWCuNGeQuDPVn42ED7hVDNzQXxFMiZdHCn3hYotSfjXGcMbGp
+X-Received: by 2002:a25:bdd3:: with SMTP id g19mr8188550ybk.338.1598279483085;
+        Mon, 24 Aug 2020 07:31:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598279483; cv=none;
         d=google.com; s=arc-20160816;
-        b=TLcCDyjApzBM0O1DvzuyGyp0hDyuwsWJorx4bvVhOXyOksXOjJ6uaeSwSH8gWdohuH
-         yQ06u5flVCFMkBGp0Q0hbAFLoodBZhIXR2qXXGQhZLBcdrdTsdmvn9fg8lRyF4p6M/sz
-         bn/Q6/RtHmcQ8gMlRRacrSOW+uyb1wGGusc+4HhC2y6b8d4HgwGxobPTKxLZe6zKCgZB
-         0OYg/Vwe6ScOJQreuVPPgvpi0kFbmq0jtYzIsRQIAtX6BEVn/h5kk2R4JRPNvIum40oM
-         N8qtV8xLGhAvqw6mtsMIPM8CERUe+o1B1eIzxmMVIMBIX2+qCKtkPT8TOQWzc0vq6UVk
-         Ie3A==
+        b=SXTGjZaVGvlwAApLmLsng+Lmgd/QJeQ7SOudj4Lg7tXW5tSRjtEb5afPnyEWBSppyq
+         btsKveLxDfs5kck+F/G0668QRW7I0+6uO6g5HS2Sqnu9G1+GqhEjWPBghvhn33UDkNe7
+         Focyg2Ry2N/i9vZplAIAsjQ4ByzAFbfiP/wxKrOp5pPTrilFIdjU9Vj9hI8gzSNTyCT/
+         BdzDJaEGUZtTQ6Gyrd+DIKX79Gl1hJzmTfECpMEHT2nAfMfAPpX41/g8YdHbj8l66wtF
+         o99cCptUCVYHJSF2zExNE4wB7kMt2m3HsJyNTFLNdyxq7sLTdGTClS3v4/Qh+gdeb4T+
+         zc6g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=NHUufnyxKdqWA9jlUAJvMBRPiSTfhinIWCD6n38nQJw=;
-        b=GELjE3ktzeSzRQfFnpBS9Vjr1rzLQijPevRnM2BBetZ289YqGHP+bS7ucpH4au2FaW
-         NjkjKcePCprF96sAiEBUxkUaxpPdVx2liUIvT8PmwsGzi0X8Fh65y4ho4yIKoKMzzw5i
-         MKfr8XzG0AW723uVyNxmBzv3wgaBHfzQgIv8oooIA3jrqSaGz1snqVBTOS8GtOOrGXMo
-         kkhrYVHE5NelS2dlODc93nRVtBy2EwyMu0iWQ3AmccaZoW5xrcU4A07uDUx+OJw+tMAW
-         0hUZCM0F7J46MzaISy818c2Abe2qGIcj4Dlr0PMmGCg2DlODRG5TajDXIJ6ExoU3YVw9
-         s0ow==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=bJjPsrivssu5AFGU0GHe8QW+4C7NJ4zaWEp8nyO14bs=;
+        b=ynfh3xYZaSKjds7mOmPYXwbLGpzGikfVcM6cEkHNHe68/x9O9uTrfx71rmd82fHqSc
+         5SHVGCIqrYJhKRCCe3p3wSuEikZnkiwdqh24936oB2SQzQ5jyvMJysI5VQmBvNHaosFa
+         GTsyzWDKy1hGbWDdQ/7KQw5jU5RI9Y4kq1GFHZtMn5B3JOkq/AZWkCZ+135RW71U+DGF
+         q3nPuUldWb8XbhfA0dtq5TaNX7BCqHlD2R5yWc2iyJO8GDpvezltydt1h3jcznDF1jl6
+         k0dRq+euGd5nSYeMq6yf87iNoDPCafKj/ckgAHvNYY3vRz40tPW2cerT8TpINJwyTyJd
+         xIWA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N0Da1v34;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NUteb7xf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w141si12055782ybg.104.2020.08.24.07.31.11
+        by mx.google.com with ESMTPS id n188si11915767ybn.138.2020.08.24.07.31.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Aug 2020 07:31:11 -0700 (PDT)
+        Mon, 24 Aug 2020 07:31:23 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N0Da1v34;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NUteb7xf;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43254 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43392 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kADV8-0001VG-HD
-	for alex.bennee@linaro.org; Mon, 24 Aug 2020 10:31:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42896)
+	id 1kADVK-0001Yg-Fg
+	for alex.bennee@linaro.org; Mon, 24 Aug 2020 10:31:22 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42926)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kADTg-00081h-Il
- for qemu-devel@nongnu.org; Mon, 24 Aug 2020 10:29:40 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:43064)
+ id 1kADTh-00081w-CN
+ for qemu-devel@nongnu.org; Mon, 24 Aug 2020 10:29:41 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:40782)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kADTe-0002eb-PE
- for qemu-devel@nongnu.org; Mon, 24 Aug 2020 10:29:40 -0400
-Received: by mail-wr1-x431.google.com with SMTP id a15so8898394wrh.10
- for <qemu-devel@nongnu.org>; Mon, 24 Aug 2020 07:29:38 -0700 (PDT)
+ id 1kADTf-0002es-J4
+ for qemu-devel@nongnu.org; Mon, 24 Aug 2020 10:29:41 -0400
+Received: by mail-wr1-x441.google.com with SMTP id l2so8915591wrc.7
+ for <qemu-devel@nongnu.org>; Mon, 24 Aug 2020 07:29:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=NHUufnyxKdqWA9jlUAJvMBRPiSTfhinIWCD6n38nQJw=;
- b=N0Da1v34vjCpKLAG2ERU2lDTX6c4dcpCTijWBLQzZ5h+jLWUNidP5D0vxrGoAPg8/z
- ShQjTgcwQ68hvQu3Kq1qDUNvITH+Uq0Z5cydP7AphY1cbJg4oHheyUU6x1q4teDcpPrX
- DIG3zX3rpzT7CbJQSrwb/z80tO8kiVOLXcskmC+YVbt5kNPG43QP2vK2xmIZqpuSm5/J
- 3Yl1m8pVM6b8VkGoZmqb2/u6/uXPQbtEJF/Ud5qD3JxifaJSeDykqUz3Ryml5Z4NSaZM
- 2V4ucN/z6Kmo4fXv22aQvGH1CzfDFmE3i2K5t/5zWjBT7UFECrBpwPvTE5w9nfoEKVfQ
- 8+JQ==
+ bh=bJjPsrivssu5AFGU0GHe8QW+4C7NJ4zaWEp8nyO14bs=;
+ b=NUteb7xfBsXChWoGpvfQK34P1MGve0qQWzExVnDuouDw0Sxsh9vlvzu72ujN5p49Kt
+ v4ktEkMpG6O4xcj8nOQpw5YIC83LWG4QhcZKgdyhG0HzbtqvthA8TC0qaRttxJvjx/Vl
+ UDi5Y2Jy5er/EsU0n9gK1J/bmgdigzkbSf563G3OZT15aFBOuw56pWdJtrJWYiEmdgQb
+ 5NyhN+TB7mxt5VszFscF3TTf7vzs7ZTQTGq2IweGM30cDFdXNVhxodNiak7x/Qt0v2kM
+ EMpCE7coDVEKXgXg/RFqcFWgEdnq6dE29KdkYVAp4pb1b4gV51e+OfDRDYzml+g2M+S6
+ a6sA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=NHUufnyxKdqWA9jlUAJvMBRPiSTfhinIWCD6n38nQJw=;
- b=J/vhdVtH81Mm8sgb/vBKptd+USQ2jPN7R1dDndIcsEzx5b5aav1a8J95K4sNBZDaUa
- plOOGMVGovjOMTxvBsuS87zDWWBpOmi3+lVLwJpIdBayGj+MP8qlf+TcoiZmVrIiqB6u
- bb7nK+ZVGRe2fbZ2gkhJohDbPyHIEAfzM7YuFq6tWuVyeZgRfEOOZalRWPpnQRnA5Bve
- SCVRm/C2m+GjaLRCAhxbDz+VPyZilXZmVUgpYVe5ioSa01CYMA047pC5OREMOCXFpTEM
- /P8oqthuQ+67faWh5bCponRR07cqlAz4BldgrKI2bZXhisN8hzGttNrUeYu2qqfePZ0D
- XcNg==
-X-Gm-Message-State: AOAM532GqQODDhueovtPeUpYDfgF64izh7gI882h9ZHQAlAbHqXAp7Ix
- g+ilkw3mTakmg1CY3uQzfcyRnah68hBHM6cQ
-X-Received: by 2002:a5d:6646:: with SMTP id f6mr6106190wrw.155.1598279376934; 
- Mon, 24 Aug 2020 07:29:36 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=bJjPsrivssu5AFGU0GHe8QW+4C7NJ4zaWEp8nyO14bs=;
+ b=rcNEwNhQDSOefrnnhPYe3SJJ7uw1ivc8Z0DUu/ljPoK+JzPlEK7nO0HxVA3b3+fucB
+ TD2q4O6SPK3h7coOi78t7qxzrR7MdAl0ageUKxbtVMZpuDL2ACjBacHRkFWo4lYwcNdw
+ pxAwe6GAA4emleNOGH/GK/FpwFDR95/3X2MLh5hZDxFgdUTtuC3F/r9ijpwt18FCLdVX
+ LOTpN77DzFvxgHb6EvPE+MGD6GPhVS9BpsaPmaEQ54Qat0D6PF3F13F9WGmckrLxLg+V
+ mCaMA1uEKOA9ybYVOu21nrSzwuqjrO9BsGMz9HETimR9p39EruCM4HIYADrD7Iw0pXUF
+ /T7Q==
+X-Gm-Message-State: AOAM532l0e2HND2TETPTPIOsk+hmBtjJU1Z4SjQnWWrmfyr82mT10KNa
+ CJTgMQnZ53wceHgbRBixQ+fJyg==
+X-Received: by 2002:a5d:4746:: with SMTP id o6mr6497149wrs.410.1598279378153; 
+ Mon, 24 Aug 2020 07:29:38 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id b14sm24499091wrj.93.2020.08.24.07.29.35
+ by smtp.gmail.com with ESMTPSA id b14sm24499091wrj.93.2020.08.24.07.29.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Aug 2020 07:29:36 -0700 (PDT)
+ Mon, 24 Aug 2020 07:29:37 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 00/22] target/arm: Implement fp16 for AArch32 VFP
-Date: Mon, 24 Aug 2020 15:29:12 +0100
-Message-Id: <20200824142934.20850-1-peter.maydell@linaro.org>
+Subject: [PATCH 01/22] target/arm: Remove local definitions of float constants
+Date: Mon, 24 Aug 2020 15:29:13 +0100
+Message-Id: <20200824142934.20850-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200824142934.20850-1-peter.maydell@linaro.org>
+References: <20200824142934.20850-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -117,59 +120,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wO8Dfqxyk4W/
+X-TUID: MiKTE9RiJXzX
 
-This patchset implements fp16 support for AArch32 VFP.
-I've included the final "turn it on in -cpu max" patch for
-convenience for testing, but we shouldn't commit that until
-we've also added AArch32 Neon fp16 support. (I have a patchset
-for that in progress, but I still have a handful of insns still to
-convert; I figured I'd send this lot out for review rather than
-waiting and sending a 50-patch set that covered VFP and Neon.)
+In several places the target/arm code defines local float constants
+for 2, 3 and 1.5, which are also provided by include/fpu/softfloat.h.
+Remove the unnecessary local duplicate versions.
 
-I'll send out the risu patch that adds patterns for fp16
-insns in a moment.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper-a64.c    | 11 -----------
+ target/arm/translate-sve.c |  4 ----
+ target/arm/vfp_helper.c    |  4 ----
+ 3 files changed, 19 deletions(-)
 
-thanks
--- PMM
-
-Peter Maydell (22):
-  target/arm: Remove local definitions of float constants
-  target/arm: Use correct ID register check for aa32_fp16_arith
-  target/arm: Implement VFP fp16 for VFP_BINOP operations
-  target/arm: Implement VFP fp16 VMLA, VMLS, VNMLS, VNMLA, VNMUL
-  target/arm: Macroify trans functions for VFMA, VFMS, VFNMA, VFNMS
-  target/arm: Implement VFP fp16 for fused-multiply-add
-  target/arm: Macroify uses of do_vfp_2op_sp() and do_vfp_2op_dp()
-  target/arm: Implement VFP fp16 for VABS, VNEG, VSQRT
-  target/arm: Implement VFP fp16 for VMOV immediate
-  target/arm: Implement VFP fp16 VCMP
-  target/arm: Implement VFP fp16 VLDR and VSTR
-  target/arm: Implement VFP fp16 VCVT between float and integer
-  target/arm: Make VFP_CONV_FIX macros take separate float type and
-    float size
-  target/arm: Use macros instead of open-coding fp16 conversion helpers
-  target/arm: Implement VFP fp16 VCVT between float and fixed-point
-  target/arm: Implement VFP vp16 VCVT-with-specified-rounding-mode
-  target/arm: Implement VFP fp16 VSEL
-  target/arm: Implement VFP fp16 VRINT*
-  target/arm: Implement new VFP fp16 insn VINS
-  target/arm: Implement new VFP fp16 insn VMOVX
-  target/arm: Implement VFP fp16 VMOV between gp and halfprec registers
-  target/arm: Enable FP16 in '-cpu max'
-
- target/arm/cpu.h               |   7 +-
- target/arm/helper.h            |  22 +
- target/arm/vfp-uncond.decode   |  27 +-
- target/arm/vfp.decode          |  34 +-
- target/arm/cpu.c               |   3 +-
- target/arm/cpu64.c             |  10 +-
- target/arm/helper-a64.c        |  11 -
- target/arm/translate-sve.c     |   4 -
- target/arm/vfp_helper.c        | 198 ++++----
- target/arm/translate-vfp.c.inc | 810 +++++++++++++++++++++++++++++----
- 10 files changed, 894 insertions(+), 232 deletions(-)
-
+diff --git a/target/arm/helper-a64.c b/target/arm/helper-a64.c
+index 8682630ff6c..030821489b3 100644
+--- a/target/arm/helper-a64.c
++++ b/target/arm/helper-a64.c
+@@ -234,17 +234,6 @@ uint64_t HELPER(neon_cgt_f64)(float64 a, float64 b, void *fpstp)
+  * versions, these do a fully fused multiply-add or
+  * multiply-add-and-halve.
+  */
+-#define float16_two make_float16(0x4000)
+-#define float16_three make_float16(0x4200)
+-#define float16_one_point_five make_float16(0x3e00)
+-
+-#define float32_two make_float32(0x40000000)
+-#define float32_three make_float32(0x40400000)
+-#define float32_one_point_five make_float32(0x3fc00000)
+-
+-#define float64_two make_float64(0x4000000000000000ULL)
+-#define float64_three make_float64(0x4008000000000000ULL)
+-#define float64_one_point_five make_float64(0x3FF8000000000000ULL)
+ 
+ uint32_t HELPER(recpsf_f16)(uint32_t a, uint32_t b, void *fpstp)
+ {
+diff --git a/target/arm/translate-sve.c b/target/arm/translate-sve.c
+index d97cb37d83f..1e2bcf840e7 100644
+--- a/target/arm/translate-sve.c
++++ b/target/arm/translate-sve.c
+@@ -3872,10 +3872,6 @@ static bool trans_##NAME##_zpzi(DisasContext *s, arg_rpri_esz *a)         \
+     return true;                                                          \
+ }
+ 
+-#define float16_two  make_float16(0x4000)
+-#define float32_two  make_float32(0x40000000)
+-#define float64_two  make_float64(0x4000000000000000ULL)
+-
+ DO_FP_IMM(FADD, fadds, half, one)
+ DO_FP_IMM(FSUB, fsubs, half, one)
+ DO_FP_IMM(FMUL, fmuls, half, two)
+diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
+index 64266ece620..02ab8d7f2d8 100644
+--- a/target/arm/vfp_helper.c
++++ b/target/arm/vfp_helper.c
+@@ -582,10 +582,6 @@ uint32_t HELPER(vfp_fcvt_f64_to_f16)(float64 a, void *fpstp, uint32_t ahp_mode)
+     return r;
+ }
+ 
+-#define float32_two make_float32(0x40000000)
+-#define float32_three make_float32(0x40400000)
+-#define float32_one_point_five make_float32(0x3fc00000)
+-
+ float32 HELPER(recps_f32)(CPUARMState *env, float32 a, float32 b)
+ {
+     float_status *s = &env->vfp.standard_fp_status;
 -- 
 2.20.1
 

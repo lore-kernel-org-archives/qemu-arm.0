@@ -1,172 +1,184 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2926344lfy;
-        Mon, 24 Aug 2020 15:33:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOHHZkjhrCfSCvy4VUDnmVKtQpibcEXCr920A755f3RowAAqzIEPILBDt3gnC7BkPJn+qA
-X-Received: by 2002:a25:bbc2:: with SMTP id c2mr10364523ybk.174.1598308434303;
-        Mon, 24 Aug 2020 15:33:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598308434; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2961365lfy;
+        Mon, 24 Aug 2020 16:34:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxAMs0Y3FycLktcbHEbLyna2cBJAcUifGacTW2mXMJHcb/dIQ/ABbhk2x5vCzOROhKbEkN/
+X-Received: by 2002:a63:4246:: with SMTP id p67mr4830323pga.110.1598312077879;
+        Mon, 24 Aug 2020 16:34:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598312077; cv=none;
         d=google.com; s=arc-20160816;
-        b=wLqxMGpM1R+8T/a7sUYq79ZeKbuuqG9rS1g+467Yth0BEOZWYBPLPDzuuMcOcdnTha
-         C/q/epb06IaTSQrwVnkD2R+1KaRbyXdlHtDZ44v7DjAvLau0MHsXUUEX3XdqLZ/B1UOw
-         bwt7gNnF90sm+cD4PqHhkV1qKp7d+d2cOjStK0w2YC2t6/w51wQ3VF7mcX4hDitR73j4
-         OqkRLPFEO7g5ALyAXuT3gS6EFR+MUC+5zEe6AYhqNiaD7DJT1+e0rn5ix1eBw2ZYsLzp
-         67dQuhh5dmXPnbMWDFwApYfNemYa4GitnsJ0fxNI+Vv+AK23ClHVep/BOI/qdqGP2Otw
-         7TGQ==
+        b=yWpEWARypDrC8vJ0evY0q9wHAOI/6DuXyKqweAMCwb6kD+0O0JygmH2ONMS2psovDT
+         ZR/zMp5MfJlECR3GYbjZqc7yu1PvibWEukF7Drzcwg2E4MvDGB07chRd52Z9qLX5OyW3
+         yV/CjUdBDJmYMkoCkCQpZT4GvhcUOAYb4aPUVpUek3e1Pnz/Z9eWRGtqxGfS2Xg1bWzI
+         EQmcwKq87WNzCPJOMHKBxw8bNzFAivqX+tw5WHzHhLgoitQ644dmYS1STrf7OdqENNfu
+         yqbfZddeyeRPHZ6KHIVn8u82RBrkQYj3yYQU7krxqWWpFPCGoUzsMZ0El1PX57jBUEly
+         vJ2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=6jhFcywO6Y8wq+zavJ0ww+xgsP8QGx5ARX43YJfFEg8=;
-        b=Nlszr1gvtafzSJ+P0q7wJVic9h8HCrf9fYp2RADT/vIePdRc0N03E6h3qWz2vsiF6n
-         5tjGD92wO2H+Z3c6tFz/glZ4gdRkKkrL3jcuj10tYaBtLJCY/wVzC1tKwQCzblQ41yfO
-         d6VZdX1g19nPURgdiivK1AP/O5KDqwqW/CP9mkwUba0ZYtyuMc3ZzA4zo7mvuim0npKb
-         p9+DaZwO2ACjvcOrhSwps3UAy/FBCQke+7NOH2Ay8pHRT7Yun/DAmkUGrM08j/kPHvze
-         QXq412UaD4tsjoH2kL0EWqD4TDNAYgKhgb39dPipcpDWFmaSERdPzUvem3wWU2WsVXgN
-         N7Tw==
+        h=content-transfer-encoding:mime-version:message-id:date:in-reply-to
+         :subject:cc:to:from:user-agent:references:dkim-signature;
+        bh=S8zw6Bgkz6PFEXBgnOpPvo7u9/SeY9sINEI+jQAWj0U=;
+        b=Lidc5PCH1zrV3UKEGAPy9JiboE+y59687p49EmYtrjB/D38x5t+JnSsUcPaSwggbf1
+         jCmczdFyc9H+OVJglEaDu3DnMMWT2p0SPgG+XV5W7sM9X1vuSPgJ8wdAF/05ybpMGXqG
+         5ZuQUGovqoPHeUQG7hq5M8qPhNgidGW72Gt/qc4RFGkqkbgEXR2kYKY6RomHIrNh5VJH
+         +gg8Cf7t+URk53L5TmrQc7tpMGvxXXV8/C75aYUk3vUCIfdAmjNZpBUg07jsMNeaE97c
+         aggGuJAB1L08wE/1Rd1iW0bDQhbNl0yDujdSAWcm8YqsKEf0sn1o3UG6DgoTBxSL8ejI
+         0y9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PWTVQjo8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e128si13018489ybf.298.2020.08.24.15.33.54
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Aug 2020 15:33:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=RglZzcjF;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <bauerman@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0a-001b2d01.pphosted.com. [148.163.156.1])
+        by mx.google.com with ESMTPS id x136si8943279pfc.38.2020.08.24.16.34.37
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 24 Aug 2020 16:34:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) client-ip=148.163.156.1;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PWTVQjo8;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46866 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAL2H-0007YB-Kj
-	for alex.bennee@linaro.org; Mon, 24 Aug 2020 18:33:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55638)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kAL0K-0005Rc-5A; Mon, 24 Aug 2020 18:31:52 -0400
-Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:34958)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kAL0I-0003cT-8k; Mon, 24 Aug 2020 18:31:51 -0400
-Received: by mail-il1-x142.google.com with SMTP id q14so8753976ilm.2;
- Mon, 24 Aug 2020 15:31:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=6jhFcywO6Y8wq+zavJ0ww+xgsP8QGx5ARX43YJfFEg8=;
- b=PWTVQjo8JS5hJJXTGXcruPf8jjMrKL75jlMnFZVN/YcqkzkEa3mu7MLCwsMOZsaQdy
- y6q0LEMTMdW6/ow9+qy7ildRTuNoXQQkGvTCNPc88rzbk+CImxAPNvvjSp5TZmDsqc8T
- exmXJmujwN7bftkIq6bUisEmdkdGE5ls0e4lnwps1ViNrgQS80C0Muxsh9eOEKf7EDj9
- 4PVhxxIn2zQocoLwqYr8z5rQGUjLMn6ATaCw9HZ8uxa05zjpziuPQgekBWHCVj7ZQlZs
- Xa9LbhGZ61p2GvyIlwPXQTkYxa2XaPuGzkuFCX1RPquSS5dTqRZdHtbosI1q09jPz2Dn
- qh+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=6jhFcywO6Y8wq+zavJ0ww+xgsP8QGx5ARX43YJfFEg8=;
- b=S27ZY7d/br/HSspnKe865au7F3Z7rXJOMeRQSXEV02jrBzbb7pV6MLJL1X3F3Vxfos
- 0wyftO0FIRZmIT8ZeJLkekFOkiq4L1JWScFIGRc78UX9nvn0fslpM68igu8AbaVOfi0a
- 1kQojm4ffUFqApq/j9oJRo+U0y0cnrsecEEQqs5QcIXeliUnlnoLk5Y20LLhJ09ImRHs
- K347Xz5DfJ92MUytgk4CpPU6i2Oc2IWhC7pmN3tf3ayy7n2NxuJ7ArB9wm4jJDGmtaVT
- xoCaG6y+tNvSENKT2JWwaDXWWhMkovN24Pca9YAM+SKwWf2ommxBh3fb61b5gY/YREvA
- vwqQ==
-X-Gm-Message-State: AOAM530kFjt4wuufFJrSkvUk91AmGimBCiWhJ2J1G5ktoaPTZEwy52xr
- ZvCsTbZ9jZjavhwJ4bhxEwWwA8vbfooQjqmgQLQ=
-X-Received: by 2002:a92:9117:: with SMTP id t23mr7220673ild.177.1598308308419; 
- Mon, 24 Aug 2020 15:31:48 -0700 (PDT)
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=RglZzcjF;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.156.1 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 07ONWif3144045;
+	Mon, 24 Aug 2020 19:33:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=references : from : to :
+ cc : subject : in-reply-to : date : message-id : mime-version :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=S8zw6Bgkz6PFEXBgnOpPvo7u9/SeY9sINEI+jQAWj0U=;
+ b=RglZzcjFN+6K8pm7GwSAH0rmXeet+wQlA4KfrfLEE21uk92Gvz2sby7YZcycTaPEuEtK
+ BTeFG9MBGc5cq1dHV2Klmle9DuT5tQOYa5N8HocLk5Nwspbu4o3OS3SyCjpxHDo256s7
+ 0sxETHZN4xOnKfyD4HuKoV0pnbHNJ8UbFojBjzkLvWwVYJmA2OwycAeffJbVluqIFM+M
+ c0NONiTuLBKY3fSHaQ2l/BhZ6WYRyHTajqQC07QjphIWopS7gdipfXT+fE4CWokP77Zx
+ UjXTvOhQZg/kTrhMHXQaN1Air+fTreLzXjyrck/yIwj6y8qA7Nf5njq3g60h/G9j1wTV kw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 334p541pw6-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 24 Aug 2020 19:33:53 -0400
+Received: from m0098410.ppops.net (m0098410.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 07ONXr7C146785;
+	Mon, 24 Aug 2020 19:33:53 -0400
+Received: from ppma01dal.us.ibm.com (83.d6.3fa9.ip4.static.sl-reverse.com [169.63.214.131])
+	by mx0a-001b2d01.pphosted.com with ESMTP id 334p541pve-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 24 Aug 2020 19:33:53 -0400
+Received: from pps.filterd (ppma01dal.us.ibm.com [127.0.0.1])
+	by ppma01dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 07ONQwl7028200;
+	Mon, 24 Aug 2020 23:33:52 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com [9.57.198.26])
+	by ppma01dal.us.ibm.com with ESMTP id 332utt2dey-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Mon, 24 Aug 2020 23:33:52 +0000
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com [9.57.199.111])
+	by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 07ONXpNL15139440
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Mon, 24 Aug 2020 23:33:51 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 59195AC05B;
+	Mon, 24 Aug 2020 23:33:51 +0000 (GMT)
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 50225AC059;
+	Mon, 24 Aug 2020 23:33:44 +0000 (GMT)
+Received: from morokweng.localdomain (unknown [9.163.25.204])
+	by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTPS;
+	Mon, 24 Aug 2020 23:33:43 +0000 (GMT)
+References: <20200819164306.625357-1-bauerman@linux.ibm.com> <20200819164306.625357-5-bauerman@linux.ibm.com> <3dd050ad-147e-c365-883a-3384130b0d2f@kaod.org> <20200823071413.GB4734@yekko.fritz.box>
+User-agent: mu4e 1.2.0; emacs 26.3
+From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+To: David Gibson <david@gibson.dropbear.id.au>
+Cc: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>, qemu-ppc@nongnu.org,
+        Peter Maydell <peter.maydell@linaro.org>,
+        David Hildenbrand
+ <david@redhat.com>,
+        Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+        qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar
+ Markovic <aleksandar.qemu.devel@gmail.com>,
+        Thomas Huth
+ <thuth@redhat.com>,
+        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@redhat.com>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Aleksandar
+ Rikalo <aleksandar.rikalo@syrmia.com>,
+        Eduardo Habkost
+ <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
+        qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Richard Henderson
+ <rth@twiddle.net>,
+        Cornelia Huck <cohuck@redhat.com>,
+        Igor Mammedov
+ <imammedo@redhat.com>,
+        Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [PATCH v6 4/8] ppc/e500: Use start-powered-off CPUState property
+In-reply-to: <20200823071413.GB4734@yekko.fritz.box>
+Date: Mon, 24 Aug 2020 20:33:41 -0300
+Message-ID: <87h7sr4o16.fsf@morokweng.localdomain>
 MIME-Version: 1.0
-References: <20200824215936.2961951-1-ehabkost@redhat.com>
- <20200824215936.2961951-5-ehabkost@redhat.com>
-In-Reply-To: <20200824215936.2961951-5-ehabkost@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Mon, 24 Aug 2020 15:21:07 -0700
-Message-ID: <CAKmqyKMeO96oAoKWFqV-TtN8HGnnfGKaNu4j4gE4HWcFuxgZBA@mail.gmail.com>
-Subject: Re: [PATCH 4/6] xilinx_axienet: Use typedef name for instance_size
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x142.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BX7T334VTYyC
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
+ definitions=2020-08-24_12:2020-08-24,2020-08-24 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 adultscore=0 impostorscore=0
+ lowpriorityscore=0 suspectscore=0 spamscore=0 phishscore=0 bulkscore=0
+ mlxlogscore=999 malwarescore=0 priorityscore=1501 mlxscore=0 clxscore=1015
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2008240180
+X-TUID: eD7cCeyKeHH1
 
-On Mon, Aug 24, 2020 at 3:02 PM Eduardo Habkost <ehabkost@redhat.com> wrote:
->
-> This makes the code consistent with the rest of QOM code in QEMU,
-> and will make automated conversion to type declaration macros
-> simpler.
->
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+David Gibson <david@gibson.dropbear.id.au> writes:
 
-Alistair
+> On Sat, Aug 22, 2020 at 10:59:56AM +0200, C=C3=A9dric Le Goater wrote:
+>> Hello,
+>>=20
+>> On 8/19/20 6:43 PM, Thiago Jung Bauermann wrote:
+>> > Instead of setting CPUState::halted to 1 in ppce500_cpu_reset_sec(), u=
+se
+>> > the start-powered-off property which makes cpu_common_reset() initiali=
+ze it
+>> > to 1 in common code.
+>> >=20
+>> > Also change creation of CPU object from cpu_create() to object_new() a=
+nd
+>> > qdev_realize_and_unref() because cpu_create() realizes the CPU and it'=
+s not
+>> > possible to set a property after the object is realized.
+>> >=20
+>> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+>> > Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+>>=20
+>>=20
+>> This is breaking make check :=20
+>>=20
+>>     tests/qtest/libqtest.c:175: kill_qemu() detected QEMU death from sig=
+nal 11 (Segmentation fault) (core dumped)
+>>     ERROR boot-serial-test - too few tests run (expected 7, got 0)
+>>     make: *** [/home/legoater/work/qemu/qemu-powernv-5.2.git/tests/Makef=
+ile.include:650: check-qtest-ppc64] Error 1
+>>     make: *** Waiting for unfinished jobs....
+>>=20=20=20=20=20
+>>=20=20=20=20=20
+>>     gdb --args build/ppc64-softmmu/qemu-system-ppc64  -display none   -M=
+ ppce500
+>>     ...
+>>     Thread 1 "qemu-system-ppc" received signal SIGSEGV, Segmentation fau=
+lt.
+>>     0x000055555596ebf2 in ppce500_init (machine=3D0x5555567aa6e0)
+>>         at /home/legoater/work/qemu/qemu-powernv-5.2.git/hw/ppc/e500.c:8=
+80
+>>     880	        irqs[i].irq[OPENPIC_OUTPUT_INT] =3D input[PPCE500_INPUT_=
+INT];
+>>=20=20
+>>=20=20=20=20=20
+>>     AFAIUI, 'input is not initialized since the CPU is not yet
+>>     realized.
+>
+> Sigh.  For future reference, Thiago, running an all-targets make check
+> is pretty much a minimum bar to test before posting.
 
-> ---
-> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: Jason Wang <jasowang@redhat.com>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
-> ---
->  hw/net/xilinx_axienet.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/net/xilinx_axienet.c b/hw/net/xilinx_axienet.c
-> index 1e48eb70c9..ceb4652938 100644
-> --- a/hw/net/xilinx_axienet.c
-> +++ b/hw/net/xilinx_axienet.c
-> @@ -1069,7 +1069,7 @@ static const TypeInfo xilinx_enet_info = {
->  static const TypeInfo xilinx_enet_data_stream_info = {
->      .name          = TYPE_XILINX_AXI_ENET_DATA_STREAM,
->      .parent        = TYPE_OBJECT,
-> -    .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
-> +    .instance_size = sizeof(XilinxAXIEnetStreamSlave),
->      .class_init    = xilinx_enet_data_stream_class_init,
->      .interfaces = (InterfaceInfo[]) {
->              { TYPE_STREAM_SLAVE },
-> @@ -1080,7 +1080,7 @@ static const TypeInfo xilinx_enet_data_stream_info = {
->  static const TypeInfo xilinx_enet_control_stream_info = {
->      .name          = TYPE_XILINX_AXI_ENET_CONTROL_STREAM,
->      .parent        = TYPE_OBJECT,
-> -    .instance_size = sizeof(struct XilinxAXIEnetStreamSlave),
-> +    .instance_size = sizeof(XilinxAXIEnetStreamSlave),
->      .class_init    = xilinx_enet_control_stream_class_init,
->      .interfaces = (InterfaceInfo[]) {
->              { TYPE_STREAM_SLAVE },
-> --
-> 2.26.2
->
->
+Sorry for the breakage. I'm working on it.
+
+--=20
+Thiago Jung Bauermann
+IBM Linux Technology Center

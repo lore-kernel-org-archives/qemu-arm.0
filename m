@@ -1,102 +1,99 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2988510lfy;
-        Mon, 24 Aug 2020 17:22:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7OZ+IRAKIxS7P6VUxSjyt2jAzBLlFJSDT60ZYqWYnUr7mStcOzMs5ggYbYYD33kGifdxg
-X-Received: by 2002:a25:4288:: with SMTP id p130mr10715473yba.288.1598314960670;
-        Mon, 24 Aug 2020 17:22:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598314960; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp2988612lfy;
+        Mon, 24 Aug 2020 17:22:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVRa4cZnuBXJYX6RZ1FSJ9k+GGXIQnAYSzjzYMLfVhE6KeFVjfpt8RJUgmvC77+nQxSuCp
+X-Received: by 2002:a25:5784:: with SMTP id l126mr11497461ybb.29.1598314972448;
+        Mon, 24 Aug 2020 17:22:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598314972; cv=none;
         d=google.com; s=arc-20160816;
-        b=OZTPvE9u17yMJNOGbg533VXGv1FxKNTCgKgSgIMrtER2bzT13BElyg5kOhlxbQxi7m
-         xcIhenCm9Uo5ju+dZCu+YMqtWbLuuSLyuF2OcEErCGuDrYEBOKpK7UmmHCbWRNeXZfsS
-         5v3X78RvyhdTBVGsxUrUYlZcPgK62GqlKIGsGlGzSR2lv+UzWwiHDGyj1xTukcH0tnGV
-         iZBwUHgtdyQj3WR5vNRNDjFFaUl1N1VGKqTrebDXVhCaZDS6h6/tSoG4m0f5CbJI7jsV
-         0EviHN3urohRDuf1jBxLPog/esttzpWa/yoliWndqSfTzLzjeEm8cOp5WrhZCNCnnv39
-         WVHQ==
+        b=DukoH39aisO92LQ/kPY8l932wcaBCx1H6m3gNTLcGghOlHBbvCfxotYTOGy+D0Jn4V
+         dkMSbPES4THyflMuq/fDy0LQY9ZJ9gnIoAnXVLzsu5bmxng6nfbzzfl6v17PkozZgVvl
+         PRLS+D6aA+VlXGZFOxJ3RZ3Pn4+VFt8OolOWUN6+LEXKii5FUuIzoin7rye9/HjJIGR8
+         5JkrQGfrZxIBaFXcS7h4XDDEWy9uQb41nC1OQJKDIJLPFDgxW9Y/WqPqmaYoM1cjqIzW
+         b0UGYyvQK5rgHxGFxNgwEVNOTxoMwZpAz24QDfGC1guqDEOK5FFQIYf6LRFPZ5HZeqBG
+         nGfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence
-         :content-transfer-encoding:cc:to:subject:references:mime-version
-         :message-id:in-reply-to:date:dkim-signature;
-        bh=6eVxEPiI7t6I3JgtVPWz38hP0zfRd4fzJ+hFmyoviss=;
-        b=Ra0rMpZW6x3ttafJ9GjKsrskKG4BW4K9xsQ5i7Tqo9GzSiKtaIMCOeFova3t7JVTEm
-         PH2qhF4wkgezli7jPxPh6lghr6QLYfrFvY+NDr+xKMrl7MfotntnHwm/GGhTHBCpbmQu
-         WmI/0hLk4nVZZMoXruiVpukEbsq+xVfxy6HAOPYHHFQgR8bshIyE/SkBPqo2Fzzy2EPA
-         9QVy18VZBreWptfUw4YrpCHn/SCmN3ZxUYKGFQJBBtDfrYJg1qEYYAH+QNGprbSBSaAY
-         DDZ48MHY6g7qefl//g6Dr4vRIcNwtQCTvLOfDA5SzQYz+OwPA4cHTyt62854abRIqyrn
-         oEhw==
+         :list-archive:list-unsubscribe:list-id:precedence:cc:to:subject
+         :references:mime-version:message-id:in-reply-to:date:dkim-signature;
+        bh=uYevUGfZIkhvqGlY6GhgrWEQ7RdmB99+oEnNEV3tBGs=;
+        b=O1+rJ9QnMYLlTOYeSUyicUI7MKTQv8blTgrwPy3rwVTmjwQiDc+4Dbnk0tl4/ix6lq
+         SGyCZhDcwhkKTwjEAqbh3ul68+GleNcJXSry0QVi1Tmv7UV4/7/kMO8Xd8VEjvUGP+r0
+         0PFAv4oL5R0TIYZU9EzEx+Khdgs9dmIYx1pG5LsABFPPjE/ZpXiFYMGklfmgeKLovapw
+         IXi39uj6ogltTslsA+cWHg4SdYJmjoTgX44BGxQGf783/z7GZzO43ADXGEgGI++7/EIf
+         jGqq8IdBfzkoP0p1010LlsJX+AF8YLYyJcO8Yv5bGNT4ttJcJ16QbSJfuimJDRrkh2ON
+         nftA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=BSOD3ErF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@google.com header.s=20161025 header.b=rTFujelO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c204si12043919ybf.366.2020.08.24.17.22.40
+        by mx.google.com with ESMTPS id l15si13667763ybq.241.2020.08.24.17.22.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Aug 2020 17:22:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Aug 2020 17:22:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=BSOD3ErF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46462 helo=lists1p.gnu.org)
+       dkim=fail header.i=@google.com header.s=20161025 header.b=rTFujelO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48448 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAMjY-0004xq-28
-	for alex.bennee@linaro.org; Mon, 24 Aug 2020 20:22:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45464)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kAMjj-0005lL-PY
+	for alex.bennee@linaro.org; Mon, 24 Aug 2020 20:22:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45266)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3qVhEXwsKCmwRcUSXXOWYOXQYYQVO.MYWaOWe-NOfOVXYXQXe.YbQ@flex--hskinnemoen.bounces.google.com>)
- id 1kAMes-0004VR-UH
- for qemu-devel@nongnu.org; Mon, 24 Aug 2020 20:17:50 -0400
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049]:57368)
+ <3nVhEXwsKCGAFQIGLLCKMCLEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--hskinnemoen.bounces.google.com>)
+ id 1kAMef-00049b-Ib
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2020 20:17:37 -0400
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a]:41553)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3qVhEXwsKCmwRcUSXXOWYOXQYYQVO.MYWaOWe-NOfOVXYXQXe.YbQ@flex--hskinnemoen.bounces.google.com>)
- id 1kAMeq-00069p-91
- for qemu-devel@nongnu.org; Mon, 24 Aug 2020 20:17:50 -0400
-Received: by mail-pj1-x1049.google.com with SMTP id mu14so428419pjb.7
- for <qemu-devel@nongnu.org>; Mon, 24 Aug 2020 17:17:46 -0700 (PDT)
+ <3nVhEXwsKCGAFQIGLLCKMCLEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--hskinnemoen.bounces.google.com>)
+ id 1kAMed-00067v-BR
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2020 20:17:37 -0400
+Received: by mail-pf1-x44a.google.com with SMTP id x2so4527382pfd.8
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2020 17:17:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc:content-transfer-encoding;
- bh=6eVxEPiI7t6I3JgtVPWz38hP0zfRd4fzJ+hFmyoviss=;
- b=BSOD3ErFS6kdwVi5lqh68vd3Zlv1IYLjYhCl8XMa6tDXzAiLe6ACTbxHgBh82PIeLc
- q19b1BSJIhvc6z4aRUdWKsbh6QrIILLYwhxvF4V0tcvBPbcH0q7h9QfXrPEb7xFTaUGC
- Kq/JrOTBPo6ps9KlN9bxmkPCPYmzw/qoiKyyVNU6fBWovOr7/Li2TdwiXlzJy77YQRSw
- vzBGjW7j0wqL65W//TGX5r8/TpZ/BswPvBJjSBj2/sh49y6+dRYHoBnJKA9beuBxBN9e
- /ZuKrYN2qAKu2D7z9UWfSROS08KD4DCP4KyFMW5xCvTRW34bTo5APL8i7u7h6o/75L6v
- Z5lw==
+ :from:to:cc; bh=uYevUGfZIkhvqGlY6GhgrWEQ7RdmB99+oEnNEV3tBGs=;
+ b=rTFujelO8n3UIY+fUEawiRZWIni7QZwK/68yUCs56OA02Ge16a0PWpDtVpM+gdt/Xy
+ vxFQAMZNKmIyz0RzHj8AJsk47zhuTPZxgP15Rq54jp4sZpj1xUXpkgdYghhe7kNPlQ7o
+ zhpD777cTeDpKMIgFU+MixeiHDTExLzHU4IjXlA7u+LANgQlndc61VovXP0V1g4q0Zqo
+ gYSKVutTrsjaFGhbwhfK2RAipXxFPZry9v73SkbrKWpLg42gzr+GgcMxCD/l1yaq7SgE
+ RYJ5cnMMHFiT9AyFdcDHIJ0j8UYvTye4ymnMU8GkI2SraUCqFGucFwVP5izAfqXCMg7+
+ 9EfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
- :references:subject:from:to:cc:content-transfer-encoding;
- bh=6eVxEPiI7t6I3JgtVPWz38hP0zfRd4fzJ+hFmyoviss=;
- b=gzdiW7MjW4NenRtTPY4lTjgjSxAmGctSdzUlwpZ3RiKJQKHPsvw3eZvXC0PcHG7RPF
- 6tH7U7URMVupxDY0CKN9sjnSsImeD3SbcKZECtE2HH7lRH0+Df3fV3qcmagospy7JzDq
- sp34ELrkqgO+0oP3QwRlphTJhLmPcNJpiJACykvnuEFaqDZdZ9YalsnhWkUNVnLgTV3S
- G87OPraJHj3NyNgDa3og0B6FYSuqiTenp2yVD5Bqclm9Gy/3wVQhMqy0kVdHmjXdJGsP
- xMJtDk3NUjMddlZCciKt4iKL5gjzjCod6rD+FMCfxGkvZsB1JRxEyGePRIIs3ZwdO5RB
- F/GQ==
-X-Gm-Message-State: AOAM5321JmrDuY/cceWxwWiRXUmFX07x/UWVrJhXlUPrqwMaD/rS6TNK
- 8VMociqocR0y525fOPlTrU8b0rr8c99ZFsqnAA==
+ :references:subject:from:to:cc;
+ bh=uYevUGfZIkhvqGlY6GhgrWEQ7RdmB99+oEnNEV3tBGs=;
+ b=a1LNtlEH1PrV7KbbKJWggAHWdT/nCunqR1cmRk+u69pvbeQINOL/QGuY7tHiP8sZ3w
+ nSzscmDU7tUexbEfwCwgBFrqEjAT65888DbZ2sw4V17wp7y+wPAIPZwdBwxScHsRlyPu
+ PMJ71GspdHATK6y1e1h7VUz1l/GqDsAsTU6bIpB/EcsUnZSvsKI58DuXvPDi6L3dNuF8
+ I+gArG4J9pAv+Wsskc6PAoOrq5OQmUf9AhuBSfDTRT+qamHLcJZwLE5pfelwDDyEObEk
+ qv+P5d/Bi626s33n9YkU/8brTIC7srDSD5r649/QIdN8bKkhlcLgst2WZsj3kp705sn2
+ wK4Q==
+X-Gm-Message-State: AOAM530JpYOqLxDh51dBkm2TWdZdw0Sr0okixZL60Cj4G+cqC3k9eRXU
+ JOwvkF0Z0FBAsayTWjxNWtlrBAnnXc//g6+QuQ==
 X-Received: from skybert.c.googlers.com ([fda3:e722:ac3:10:24:72f4:c0a8:3107])
- (user=hskinnemoen job=sendgmr) by 2002:a62:ed1a:: with SMTP id
- u26mr5991919pfh.121.1598314665854; Mon, 24 Aug 2020 17:17:45 -0700 (PDT)
-Date: Mon, 24 Aug 2020 17:17:10 -0700
+ (user=hskinnemoen job=sendgmr) by 2002:a17:902:d905:: with SMTP id
+ c5mr5493386plz.34.1598314653278;
+ Mon, 24 Aug 2020 17:17:33 -0700 (PDT)
+Date: Mon, 24 Aug 2020 17:17:03 -0700
 In-Reply-To: <20200825001711.1340443-1-hskinnemoen@google.com>
-Message-Id: <20200825001711.1340443-14-hskinnemoen@google.com>
+Message-Id: <20200825001711.1340443-7-hskinnemoen@google.com>
 Mime-Version: 1.0
 References: <20200825001711.1340443-1-hskinnemoen@google.com>
 X-Mailer: git-send-email 2.28.0.297.g1956fa8f8d-goog
-Subject: [PATCH v8 13/14] docs/system: Add Nuvoton machine documentation
+Subject: [PATCH v8 06/14] roms: Add virtual Boot ROM for NPCM7xx SoCs
 To: peter.maydell@linaro.org, f4bug@amsat.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
- kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>, 
- "=?UTF-8?q?C=C3=A9dric=20Le=20Goater?=" <clg@kaod.org>
+ kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3qVhEXwsKCmwRcUSXXOWYOXQYYQVO.MYWaOWe-NOfOVXYXQXe.YbQ@flex--hskinnemoen.bounces.google.com;
- helo=mail-pj1-x1049.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=3nVhEXwsKCGAFQIGLLCKMCLEMMEJC.AMKOCKS-8PKLMLELS.MPE@flex--hskinnemoen.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -95
@@ -105,151 +102,153 @@ X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_PDS_OTHER_BAD_TLD=0.01,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to: Havard Skinnemoen <hskinnemoen@google.com>
-From: Havard Skinnemoen via <qemu-devel@nongnu.org>
-X-TUID: 5VaGNLZPWtm7
+From: Havard Skinnemoen via <qemu-arm@nongnu.org>
+X-TUID: +OzyCPKZnxYe
 
-Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+This is a minimalistic boot ROM written specifically for use with QEMU.
+It supports loading the second-stage loader from SPI flash into RAM, SMP
+boot, and not much else.
+
 Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 ---
- docs/system/arm/nuvoton.rst | 90 +++++++++++++++++++++++++++++++++++++
- docs/system/target-arm.rst  |  1 +
- 2 files changed, 91 insertions(+)
- create mode 100644 docs/system/arm/nuvoton.rst
+ Makefile                    |   1 +
+ .gitmodules                 |   3 +++
+ MAINTAINERS                 |   2 ++
+ pc-bios/README              |   6 ++++++
+ pc-bios/npcm7xx_bootrom.bin | Bin 0 -> 768 bytes
+ roms/Makefile               |   7 +++++++
+ roms/vbootrom               |   1 +
+ 7 files changed, 20 insertions(+)
+ create mode 100644 pc-bios/npcm7xx_bootrom.bin
+ create mode 160000 roms/vbootrom
 
-diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
+diff --git a/Makefile b/Makefile
+index 81794d5c34..08e9af3793 100644
+--- a/Makefile
++++ b/Makefile
+@@ -246,6 +246,7 @@ s390-ccw.img s390-netboot.img \
+ slof.bin skiboot.lid \
+ palcode-clipper \
+ u-boot.e500 u-boot-sam460-20100605.bin \
++npcm7xx_bootrom.bin \
+ qemu_vga.ndrv \
+ edk2-licenses.txt \
+ hppa-firmware.img \
+diff --git a/.gitmodules b/.gitmodules
+index ce979398a8..9ffb9f3f4f 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -61,3 +61,6 @@
+ [submodule "meson"]
+ 	path = meson
+ 	url = https://github.com/mesonbuild/meson/
++[submodule "roms/vbootrom"]
++	path = roms/vbootrom
++	url = https://github.com/google/vbootrom.git
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 3f72250630..d71afedc20 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -756,6 +756,8 @@ L: qemu-arm@nongnu.org
+ S: Supported
+ F: hw/*/npcm7xx*
+ F: include/hw/*/npcm7xx*
++F: pc-bios/npcm7xx_bootrom.bin
++F: roms/vbootrom
+ 
+ nSeries
+ M: Andrzej Zaborowski <balrogg@gmail.com>
+diff --git a/pc-bios/README b/pc-bios/README
+index fa8b58b797..4d6297fca7 100644
+--- a/pc-bios/README
++++ b/pc-bios/README
+@@ -71,3 +71,9 @@
+   ("Simplified BSD License" or "FreeBSD License", SPDX: BSD-2-Clause). OpenSBI
+   source code also contains code reused from other projects desribed here:
+   https://github.com/riscv/opensbi/blob/master/ThirdPartyNotices.md.
++
++- npcm7xx_bootrom.bin is a simplified, free (Apache 2.0) boot ROM for Nuvoton
++  NPCM7xx BMC devices. It currently implements the bare minimum to load, parse,
++  initialize and run boot images stored in SPI flash, but may grow more
++  features over time as needed. The source code is available at:
++  https://github.com/google/vbootrom
+diff --git a/pc-bios/npcm7xx_bootrom.bin b/pc-bios/npcm7xx_bootrom.bin
 new file mode 100644
-index 0000000000..36bf901122
+index 0000000000000000000000000000000000000000..38f89d1b97b0c2e133af2a9fbed0521be132065b
+GIT binary patch
+literal 768
+zcmd5)JxClu6n-<aczPbVhZYusb8wKx;7TklHfmuZdYT9pDRLwd1p_t-DFpWpyA+8(
+zwKtZg3J4a0aCM3_X(ZL&4g;46VVk5e$K;z;L99|b@aE%v^S$rQ8)h(Vm@cB9IYc+2
+z2SHd4^NwTIGE%w>9S05p1#kf90Sj5Z(jG8}+)IZIp~iXK=T&)dL`%d-q*8aR#mq{7
+z9`=6;Dr(H0ACe72R5x?!)^86Qj-X%{+!K9iZNA@*wkBAV&iZ(l^I9?!Gz=S2I_*1d
+zr+tTQDHjvyzKnw(hu00yX`u!Fv<!~XVcX?@kr#<B0(gGU?$W{gSsQa}CF^8Cfzp2X
+z@P}yDV-bci(K9XL$FU!som2C`c)?Uc&294s^}Wzumap{hg1X^jN|V25M5tQZ=<9lN
+z%(zKz#t-qCwHKb;HygOCpvCNL_4@1tXV1YGf^XUE_$zr{g8zWh-6gz-teI(eibtxo
+z?0OZI4%rU0741PgUD`2xq@H|*4=+Rs?%N)Ox5G+q>C;DilBe_YlkeSUVHA-crNk+k
+jtiF_MudA<CB(}8|fqYwCf3re&=&@_s761P#-ID$TwgmBa
+
+literal 0
+HcmV?d00001
+
+diff --git a/roms/Makefile b/roms/Makefile
+index 5d9f15b677..7405d67326 100644
+--- a/roms/Makefile
++++ b/roms/Makefile
+@@ -34,6 +34,7 @@ find-cross-gcc = $(firstword $(wildcard $(patsubst %ld,%gcc,$(call find-cross-ld
+ # finally strip off path + toolname so we get the prefix
+ find-cross-prefix = $(subst gcc,,$(notdir $(call find-cross-gcc,$(1))))
+ 
++arm_cross_prefix := $(call find-cross-prefix,arm)
+ powerpc64_cross_prefix := $(call find-cross-prefix,powerpc64)
+ powerpc_cross_prefix := $(call find-cross-prefix,powerpc)
+ x86_64_cross_prefix := $(call find-cross-prefix,x86_64)
+@@ -63,6 +64,7 @@ default help:
+ 	@echo "  skiboot            -- update skiboot.lid"
+ 	@echo "  u-boot.e500        -- update u-boot.e500"
+ 	@echo "  u-boot.sam460      -- update u-boot.sam460"
++	@echo "  npcm7xx_bootrom    -- update vbootrom for npcm7xx"
+ 	@echo "  efi                -- update UEFI (edk2) platform firmware"
+ 	@echo "  opensbi32-generic  -- update OpenSBI for 32-bit generic machine"
+ 	@echo "  opensbi64-generic  -- update OpenSBI for 64-bit generic machine"
+@@ -186,6 +188,10 @@ bios-microvm:
+ 	$(MAKE) -C qboot
+ 	cp qboot/bios.bin ../pc-bios/bios-microvm.bin
+ 
++npcm7xx_bootrom:
++	$(MAKE) -C vbootrom CROSS_COMPILE=$(arm_cross_prefix)
++	cp vbootrom/npcm7xx_bootrom.bin ../pc-bios/npcm7xx_bootrom.bin
++
+ clean:
+ 	rm -rf seabios/.config seabios/out seabios/builds
+ 	$(MAKE) -C sgabios clean
+@@ -199,3 +205,4 @@ clean:
+ 	$(MAKE) -f Makefile.edk2 clean
+ 	$(MAKE) -C opensbi clean
+ 	$(MAKE) -C qboot clean
++	$(MAKE) -C vbootrom clean
+diff --git a/roms/vbootrom b/roms/vbootrom
+new file mode 160000
+index 0000000000..0c37a43527
 --- /dev/null
-+++ b/docs/system/arm/nuvoton.rst
-@@ -0,0 +1,90 @@
-+Nuvoton iBMC boards (``npcm750-evb``, ``quanta-gsj``)
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
-=3D=3D=3D=3D
-+
-+The `Nuvoton iBMC`_ chips (NPCM7xx) are a family of ARM-based SoCs that ar=
-e
-+designed to be used as Baseboard Management Controllers (BMCs) in various
-+servers. They all feature one or two ARM Cortex A9 CPU cores, as well as a=
-n
-+assortment of peripherals targeted for either Enterprise or Data Center /
-+Hyperscale applications. The former is a superset of the latter, so NPCM75=
-0 has
-+all the peripherals of NPCM730 and more.
-+
-+.. _Nuvoton iBMC: https://www.nuvoton.com/products/cloud-computing/ibmc/
-+
-+The NPCM750 SoC has two Cortex A9 cores and is targeted for the Enterprise
-+segment. The following machines are based on this chip :
-+
-+- ``npcm750-evb``       Nuvoton NPCM750 Evaluation board
-+
-+The NPCM730 SoC has two Cortex A9 cores and is targeted for Data Center an=
-d
-+Hyperscale applications. The following machines are based on this chip :
-+
-+- ``quanta-gsj``        Quanta GSJ server BMC
-+
-+There are also two more SoCs, NPCM710 and NPCM705, which are single-core
-+variants of NPCM750 and NPCM730, respectively. These are currently not
-+supported by QEMU.
-+
-+Supported devices
-+-----------------
-+
-+ * SMP (Dual Core Cortex-A9)
-+ * Cortex-A9MPCore built-in peripherals: SCU, GIC, Global Timer, Private T=
-imer
-+   and Watchdog.
-+ * SRAM, ROM and DRAM mappings
-+ * System Global Control Registers (GCR)
-+ * Clock and reset controller (CLK)
-+ * Timer controller (TIM)
-+ * Serial ports (16550-based)
-+ * DDR4 memory controller (dummy interface indicating memory training is d=
-one)
-+ * OTP controllers (no protection features)
-+ * Flash Interface Unit (FIU; no protection features)
-+
-+Missing devices
-+---------------
-+
-+ * GPIO controller
-+ * LPC/eSPI host-to-BMC interface, including
-+
-+   * Keyboard and mouse controller interface (KBCI)
-+   * Keyboard Controller Style (KCS) channels
-+   * BIOS POST code FIFO
-+   * System Wake-up Control (SWC)
-+   * Shared memory (SHM)
-+   * eSPI slave interface
-+
-+ * Ethernet controllers (GMAC and EMC)
-+ * USB host (USBH)
-+ * USB device (USBD)
-+ * SMBus controller (SMBF)
-+ * Peripheral SPI controller (PSPI)
-+ * Analog to Digital Converter (ADC)
-+ * SD/MMC host
-+ * Random Number Generator (RNG)
-+ * PECI interface
-+ * Pulse Width Modulation (PWM)
-+ * Tachometer
-+ * PCI and PCIe root complex and bridges
-+ * VDM and MCTP support
-+ * Serial I/O expansion
-+ * LPC/eSPI host
-+ * Coprocessor
-+ * Graphics
-+ * Video capture
-+ * Encoding compression engine
-+ * Security features
-+
-+Boot options
-+------------
-+
-+The Nuvoton machines can boot from an OpenBMC firmware image, or directly =
-into
-+a kernel using the ``-kernel`` option. OpenBMC images for `quanta-gsj` and
-+possibly others can be downloaded from the OpenPOWER jenkins :
-+
-+   https://openpower.xyz/
-+
-+The firmware image should be attached as an MTD drive. Example :
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-arm -machine quanta-gsj -nographic \
-+      -drive file=3Dimage-bmc,if=3Dmtd,bus=3D0,unit=3D0,format=3Draw
-diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
-index afdb37e738..fdcf25c237 100644
---- a/docs/system/target-arm.rst
-+++ b/docs/system/target-arm.rst
-@@ -86,6 +86,7 @@ undocumented; you can get a complete list by running
-    arm/musicpal
-    arm/gumstix
-    arm/nseries
-+   arm/nuvoton
-    arm/orangepi
-    arm/palm
-    arm/xscale
---=20
++++ b/roms/vbootrom
+@@ -0,0 +1 @@
++Subproject commit 0c37a43527f0ee2b9584e7fb2fdc805e902635ac
+-- 
 2.28.0.297.g1956fa8f8d-goog
 

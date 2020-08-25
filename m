@@ -1,106 +1,108 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp137020lfc;
-        Tue, 25 Aug 2020 12:50:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7jP71l/i7qmZ9IDdGx356xOh7bnxqIX+2iPUWgSd8bs3kfmtyNjEZtQNZRsscsg6T6y3a
-X-Received: by 2002:a25:7a42:: with SMTP id v63mr15976055ybc.4.1598385059505;
-        Tue, 25 Aug 2020 12:50:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598385059; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp138265lfc;
+        Tue, 25 Aug 2020 12:53:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJynbVExVxMg60ei3kXoYNFILEB/6ROfW0Ur/bfV2ewlxXlADwO+6LpAJJsiwhSsSlo5RtvB
+X-Received: by 2002:a25:8812:: with SMTP id c18mr17521639ybl.330.1598385194423;
+        Tue, 25 Aug 2020 12:53:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598385194; cv=none;
         d=google.com; s=arc-20160816;
-        b=wGgWrCK1yIl4EdmwHq1b3h4w22zyWF8a90juvcol5UXUd+9TNsOT8PlQ1IWfBdqXGr
-         m6gcdtu+rZNpoOJsF+HWxFQU8CBIoGIcpv5PI9Iizb7dpjH4cmTOSKwDcw2+bf6aKg86
-         TmDtNK4YHKSKPknh6LoCDJXZp3IjVHKV7BoFDeth21e7NLHdeNXmLQqiAvBw9DDjlL6/
-         gazelRQjIQrnd0SRqtfzXrqdHEz9BKOP3ZUpr0PC1v2Dkdfq5bgFidt90ZRvaDl59Euf
-         5wIpFRapyIeNd3BWxpnKYwDzAf2stSxkOGYXdWDjKX3OqAGL+/xKlbUPvn60h+v7lNQu
-         A39g==
+        b=XhEjQ8ra5SP8Y203rEMYiZtMHsOjQe3q/vFYRZkJYW+kRfaFfC8DXKwqjalTxF/TLN
+         Wme1NPuSBtH3v1YNd8Q91R+Q2gm+dK1FwFUNX9qBFKrwERSuiZeMARSuhc8sgp8zJvN8
+         qGm2oLTu3VtC8+yiz9Ti8SDJdWNy3/tkifFjfEqJOL4VSzQm9NQOrCG5cekc+/EyDFaF
+         22K8NjcNRRGNSQnF7T5g0jWOAczGQ2yV537pyVov+lI3NWYAI53h0w3prFR1uGAvV3DZ
+         X4hekCMzn1//BjF6+7XY+VT6xAGe8dva/0W1671POaShTCSeyMqgycSc/2sUUddt4gFy
+         PjcA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=N5iC3NayyESUg8c1+x1J95OctO9j2TLPOhxaSknsN88=;
-        b=mM29UQiBtW3gUX9kjhkn+iHYWGXrJ5uJ7+G2DPLdF+ibbM8xHHrr3d0l+ZcuHB7+Be
-         QdKtar60k1BW8ujX/vLgb1Lz0GlXis/vnARAvL2HOCIgq9h4/DGlClJDpZe92R/J4rnK
-         upUAbQaQ2eGwqqexVWllpLzKBQrw2Ld6dRwHcS4BeQ3cHHBatkyY6PHDkivx4mzeY5D6
-         CtxdQ0G1BvrpQux8G6oFg13V9yFzkMCbflz22qWzYXf8HVpfpl8yojoootMgSu/QTPUI
-         BmtZC06KgNxVknwI19Cq9C1jdyzPWlab80komYfchxy+th5LefJ05NxVNN4XFXcdOhsT
-         DHrg==
+        bh=50GQ3zLoG3fJzfMgn8rxx1xmjkUpFLb6p1DIS1Q5Ens=;
+        b=V7mWh7Lx3b/yJi3ffK+jhaU8nRGQ8lo1bC9wVkLQ8vWEZmvQynz0By/3uTqIXOAsOE
+         y3852uJJ5yvPC/ffUGqU7RXVH02hfhjn+veweBzjafkn2ic9PVuuq4KXTOanj3SocUom
+         LpcYblDwcACqWzZ1j6II7HTYg0qdCPcGTU5tp2gzkwoIQ/IVwT4mPyvYNiom9riClqde
+         OrgZa9sQHmn4rzb+hFCDMMBFNLDLDgmYGmE816H7+L4Nmt0i1EonL5Vdxf6wiwHLFJfp
+         uNy+VJBoNtgKLhnvo/D6gZJdEcnJP4T8Iq+nV2sFZ85v2YnkdhK9nfvygP7RMfojn7u+
+         gqEA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MMcYI4el;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=V7nBPcbo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l4si15250613ybc.52.2020.08.25.12.50.59
+        by mx.google.com with ESMTPS id v190si15758891ybv.175.2020.08.25.12.53.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Aug 2020 12:50:59 -0700 (PDT)
+        Tue, 25 Aug 2020 12:53:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MMcYI4el;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=V7nBPcbo;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39872 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAeyA-0001o8-SD
-	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:50:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40986)
+	id 1kAf0L-0005ZT-OG
+	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:53:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41396)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAeY7-0004XC-2c
- for qemu-devel@nongnu.org; Tue, 25 Aug 2020 15:24:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:57595)
+ id 1kAeZ9-0006f9-Ds
+ for qemu-devel@nongnu.org; Tue, 25 Aug 2020 15:25:07 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:38962
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAeY3-0006Qw-Lg
- for qemu-devel@nongnu.org; Tue, 25 Aug 2020 15:24:02 -0400
+ id 1kAeZ5-0006XP-P4
+ for qemu-devel@nongnu.org; Tue, 25 Aug 2020 15:25:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598383438;
+ s=mimecast20190719; t=1598383502;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=N5iC3NayyESUg8c1+x1J95OctO9j2TLPOhxaSknsN88=;
- b=MMcYI4elFOjNRcQ+e5D/Oqgd6YxnxrewbtzvsOosI/9zyTdxqJf97q0BXAZMZR1pCQmLGj
- WHa6glUHcr9p/n3TnunshAgwahj27CEbh2GqYO4AgcCjTV0LauluXWl8NXw6RUR+2GCr8f
- JVLYo1og646k6XX678m07JyEXidwZ8M=
+ bh=50GQ3zLoG3fJzfMgn8rxx1xmjkUpFLb6p1DIS1Q5Ens=;
+ b=V7nBPcboRvYe/Lemk4/Qu50mXcLrvAn41MQ2di9V3w3igOc+KeWUY53jVEapcvtuSwtB/G
+ KDSnKxtmLmjSK7MUnlVK8R8Tco0XX5yST1giFs9/+0JvqeBaUrhOUOpzLk4dSiPOmey6dY
+ 3VuPr1ykxlVUyzkTkNmS4bm8RL2TAys=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-264-rMI6QtF-MiOt-wt5N6RRaA-1; Tue, 25 Aug 2020 15:23:56 -0400
-X-MC-Unique: rMI6QtF-MiOt-wt5N6RRaA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-89-TKU7SJ4JN1qmOy881oKPCQ-1; Tue, 25 Aug 2020 15:25:01 -0400
+X-MC-Unique: TKU7SJ4JN1qmOy881oKPCQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9561C10066FF;
- Tue, 25 Aug 2020 19:23:55 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7C9A21DDE0;
+ Tue, 25 Aug 2020 19:24:59 +0000 (UTC)
 Received: from localhost (unknown [10.10.67.254])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 64E9F5D9D3;
- Tue, 25 Aug 2020 19:23:52 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A53BF709C4;
+ Tue, 25 Aug 2020 19:24:56 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 63/74] [automated] Use TYPE_INFO macro (pass 2)
-Date: Tue, 25 Aug 2020 15:20:59 -0400
-Message-Id: <20200825192110.3528606-64-ehabkost@redhat.com>
+Subject: [PATCH v3 68/74] [semi-automated] Use DECLARE_*CHECKER* when possible
+ (--force mode)
+Date: Tue, 25 Aug 2020 15:21:04 -0400
+Message-Id: <20200825192110.3528606-69-ehabkost@redhat.com>
 In-Reply-To: <20200825192110.3528606-1-ehabkost@redhat.com>
 References: <20200825192110.3528606-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 06:38:59
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 15:21:30
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.958,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -115,214 +117,281 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>, Corey Minyard <minyard@acm.org>,
- Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+ "Daniel P. Berrange" <berrange@redhat.com>, qemu-block@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +zhmzhU0Kjkk
+X-TUID: rAlT95bUu+fy
 
-Generated using:
-  $ ./scripts/codeconverter/converter.py -i --passes=2 \
-    --pattern=TypeRegisterCall,TypeInitMacro $(git grep -l TypeInfo -- '*.[ch]')
+Separate run of the TypeCheckMacro converter using the --force
+flag, for the cases where typedefs weren't found in the same
+header nor in typedefs.h.
 
-One notable difference is that files declaring multiple types
-will now have multiple separate __construtor__ functions
-declared, instead of one for all types.
+Generated initially using:
 
+ $ ./scripts/codeconverter/converter.py --force -i \
+   --pattern=TypeCheckMacro $(git grep -l '' -- '*.[ch]')
+
+Then each case was manually reviewed, and a comment was added
+indicating what's unusual about those type checking
+macros/functions.  Despite not following the usual pattern, the
+changes in this patch were found to be safe.
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
-Changes series v2 -> v3: this is a new patch added in series v3
+Changes v2 -> v3: none
 
-Script was re-run after the rebase, and after being changed to
-accept spaces in "type_init (...)" and "type_register_static
-(...)" lines.
-
-This is being submitted as a separate patch to make review
-easier, but it can be squashed into the previous patch once it
-gets reviewed.
+Changes v1 -> v2:
+* Most of the old changes in this patch are now being handled by
+  the regular TypeCheckMacro patch (without --force mode)
+* Added comments added explaining why these unusual changes
+  remain
 
 ---
-Cc: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Corey Minyard <minyard@acm.org>
-Cc: Michael Walle <michael@walle.cc>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Beniamino Galvani <b.galvani@gmail.com>
+Cc: Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: "Philippe Mathieu-Daudé" <philmd@redhat.com>
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
 Cc: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
+Cc: qemu-block@nongnu.org
+Cc: qemu-ppc@nongnu.org
 ---
- hw/audio/ac97.c           | 2 +-
- hw/audio/adlib.c          | 2 +-
- hw/audio/cs4231a.c        | 2 +-
- hw/audio/es1370.c         | 2 +-
- hw/audio/gus.c            | 2 +-
- hw/audio/sb16.c           | 2 +-
- hw/ipmi/ipmi_bmc_extern.c | 6 +-----
- hw/sd/milkymist-memcard.c | 8 ++------
- hw/sd/pl181.c             | 8 ++------
- 9 files changed, 11 insertions(+), 23 deletions(-)
+ include/hw/intc/arm_gic.h       | 9 +++------
+ include/hw/intc/arm_gicv3.h     | 8 +++-----
+ include/hw/ppc/xics_spapr.h     | 4 +++-
+ include/hw/virtio/virtio-mmio.h | 9 +++------
+ hw/intc/apic.c                  | 5 +++--
+ hw/intc/arm_gic_kvm.c           | 9 +++------
+ hw/intc/arm_gicv3_its_kvm.c     | 8 +++-----
+ hw/intc/arm_gicv3_kvm.c         | 9 +++------
+ hw/sd/allwinner-sdhost.c        | 5 +++--
+ hw/sd/bcm2835_sdhost.c          | 5 +++--
+ hw/sd/pxa2xx_mmci.c             | 4 +++-
+ hw/sd/sdhci.c                   | 4 +++-
+ 12 files changed, 36 insertions(+), 43 deletions(-)
 
-diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
-index 38522cf0ba..96683b188c 100644
---- a/hw/audio/ac97.c
-+++ b/hw/audio/ac97.c
-@@ -1426,10 +1426,10 @@ static const TypeInfo ac97_info = {
-         { },
-     },
- };
-+TYPE_INFO(ac97_info)
+diff --git a/include/hw/intc/arm_gic.h b/include/hw/intc/arm_gic.h
+index 704ef2b751..116ccbb5a9 100644
+--- a/include/hw/intc/arm_gic.h
++++ b/include/hw/intc/arm_gic.h
+@@ -74,12 +74,9 @@
  
- static void ac97_register_types (void)
- {
--    type_register_static (&ac97_info);
-     deprecated_register_soundhw("ac97", "Intel 82801AA AC97 Audio",
-                                 0, TYPE_AC97);
- }
-diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
-index 65dff5b6fc..671f99a2e1 100644
---- a/hw/audio/adlib.c
-+++ b/hw/audio/adlib.c
-@@ -318,10 +318,10 @@ static const TypeInfo adlib_info = {
-     .instance_size = sizeof (AdlibState),
-     .class_init    = adlib_class_initfn,
- };
-+TYPE_INFO(adlib_info)
+ #define TYPE_ARM_GIC "arm_gic"
+ typedef struct ARMGICClass ARMGICClass;
+-#define ARM_GIC(obj) \
+-     OBJECT_CHECK(GICState, (obj), TYPE_ARM_GIC)
+-#define ARM_GIC_CLASS(klass) \
+-     OBJECT_CLASS_CHECK(ARMGICClass, (klass), TYPE_ARM_GIC)
+-#define ARM_GIC_GET_CLASS(obj) \
+-     OBJECT_GET_CLASS(ARMGICClass, (obj), TYPE_ARM_GIC)
++/* This is reusing the GICState typedef from TYPE_ARM_GIC_COMMON */
++DECLARE_OBJ_CHECKERS(GICState, ARMGICClass,
++                     ARM_GIC, TYPE_ARM_GIC)
  
- static void adlib_register_types (void)
- {
--    type_register_static (&adlib_info);
-     deprecated_register_soundhw("adlib", ADLIB_DESC, 1, TYPE_ADLIB);
- }
+ struct ARMGICClass {
+     /*< private >*/
+diff --git a/include/hw/intc/arm_gicv3.h b/include/hw/intc/arm_gicv3.h
+index 58e9131a33..a81a6ae7ec 100644
+--- a/include/hw/intc/arm_gicv3.h
++++ b/include/hw/intc/arm_gicv3.h
+@@ -17,11 +17,9 @@
  
-diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
-index 59705a8d47..176a96ffb3 100644
---- a/hw/audio/cs4231a.c
-+++ b/hw/audio/cs4231a.c
-@@ -710,10 +710,10 @@ static const TypeInfo cs4231a_info = {
-     .instance_init = cs4231a_initfn,
-     .class_init    = cs4231a_class_initfn,
- };
-+TYPE_INFO(cs4231a_info)
+ #define TYPE_ARM_GICV3 "arm-gicv3"
+ typedef struct ARMGICv3Class ARMGICv3Class;
+-#define ARM_GICV3(obj) OBJECT_CHECK(GICv3State, (obj), TYPE_ARM_GICV3)
+-#define ARM_GICV3_CLASS(klass) \
+-     OBJECT_CLASS_CHECK(ARMGICv3Class, (klass), TYPE_ARM_GICV3)
+-#define ARM_GICV3_GET_CLASS(obj) \
+-     OBJECT_GET_CLASS(ARMGICv3Class, (obj), TYPE_ARM_GICV3)
++/* This is reusing the GICState typedef from TYPE_ARM_GICV3_COMMON */
++DECLARE_OBJ_CHECKERS(GICv3State, ARMGICv3Class,
++                     ARM_GICV3, TYPE_ARM_GICV3)
  
- static void cs4231a_register_types (void)
- {
--    type_register_static (&cs4231a_info);
-     deprecated_register_soundhw("cs4231a", "CS4231A", 1, TYPE_CS4231A);
- }
+ struct ARMGICv3Class {
+     /*< private >*/
+diff --git a/include/hw/ppc/xics_spapr.h b/include/hw/ppc/xics_spapr.h
+index 09e428de4e..0b8182e40b 100644
+--- a/include/hw/ppc/xics_spapr.h
++++ b/include/hw/ppc/xics_spapr.h
+@@ -31,7 +31,9 @@
+ #include "qom/object.h"
  
-diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
-index 4255463a49..8c924946bd 100644
---- a/hw/audio/es1370.c
-+++ b/hw/audio/es1370.c
-@@ -918,10 +918,10 @@ static const TypeInfo es1370_info = {
-         { },
-     },
- };
-+TYPE_INFO(es1370_info)
+ #define TYPE_ICS_SPAPR "ics-spapr"
+-#define ICS_SPAPR(obj) OBJECT_CHECK(ICSState, (obj), TYPE_ICS_SPAPR)
++/* This is reusing the ICSState typedef from TYPE_ICS */
++DECLARE_INSTANCE_CHECKER(ICSState, ICS_SPAPR,
++                         TYPE_ICS_SPAPR)
  
- static void es1370_register_types (void)
- {
--    type_register_static (&es1370_info);
-     deprecated_register_soundhw("es1370", "ENSONIQ AudioPCI ES1370",
-                                 0, TYPE_ES1370);
- }
-diff --git a/hw/audio/gus.c b/hw/audio/gus.c
-index 7e4a8cadad..3f2733d168 100644
---- a/hw/audio/gus.c
-+++ b/hw/audio/gus.c
-@@ -312,10 +312,10 @@ static const TypeInfo gus_info = {
-     .instance_size = sizeof (GUSState),
-     .class_init    = gus_class_initfn,
- };
-+TYPE_INFO(gus_info)
+ int xics_kvm_connect(SpaprInterruptController *intc, uint32_t nr_servers,
+                      Error **errp);
+diff --git a/include/hw/virtio/virtio-mmio.h b/include/hw/virtio/virtio-mmio.h
+index dca651fd14..6a1c2c20d4 100644
+--- a/include/hw/virtio/virtio-mmio.h
++++ b/include/hw/virtio/virtio-mmio.h
+@@ -28,12 +28,9 @@
+ /* QOM macros */
+ /* virtio-mmio-bus */
+ #define TYPE_VIRTIO_MMIO_BUS "virtio-mmio-bus"
+-#define VIRTIO_MMIO_BUS(obj) \
+-        OBJECT_CHECK(VirtioBusState, (obj), TYPE_VIRTIO_MMIO_BUS)
+-#define VIRTIO_MMIO_BUS_GET_CLASS(obj) \
+-        OBJECT_GET_CLASS(VirtioBusClass, (obj), TYPE_VIRTIO_MMIO_BUS)
+-#define VIRTIO_MMIO_BUS_CLASS(klass) \
+-        OBJECT_CLASS_CHECK(VirtioBusClass, (klass), TYPE_VIRTIO_MMIO_BUS)
++/* This is reusing the VirtioBusState typedef from TYPE_VIRTIO_BUS */
++DECLARE_OBJ_CHECKERS(VirtioBusState, VirtioBusClass,
++                     VIRTIO_MMIO_BUS, TYPE_VIRTIO_MMIO_BUS)
  
- static void gus_register_types (void)
- {
--    type_register_static (&gus_info);
-     deprecated_register_soundhw("gus", "Gravis Ultrasound GF1", 1, TYPE_GUS);
- }
+ /* virtio-mmio */
+ #define TYPE_VIRTIO_MMIO "virtio-mmio"
+diff --git a/hw/intc/apic.c b/hw/intc/apic.c
+index afbb653497..dadbfd9a75 100644
+--- a/hw/intc/apic.c
++++ b/hw/intc/apic.c
+@@ -40,8 +40,9 @@
+ static APICCommonState *local_apics[MAX_APICS + 1];
  
-diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
-index 2d9e50f99b..79984de7b9 100644
---- a/hw/audio/sb16.c
-+++ b/hw/audio/sb16.c
-@@ -1443,10 +1443,10 @@ static const TypeInfo sb16_info = {
-     .instance_init = sb16_initfn,
-     .class_init    = sb16_class_initfn,
- };
-+TYPE_INFO(sb16_info)
+ #define TYPE_APIC "apic"
+-#define APIC(obj) \
+-    OBJECT_CHECK(APICCommonState, (obj), TYPE_APIC)
++/*This is reusing the APICCommonState typedef from APIC_COMMON */
++DECLARE_INSTANCE_CHECKER(APICCommonState, APIC,
++                         TYPE_APIC)
  
- static void sb16_register_types (void)
- {
--    type_register_static (&sb16_info);
-     deprecated_register_soundhw("sb16", "Creative Sound Blaster 16",
-                                 1, TYPE_SB16);
- }
-diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
-index f9a13e0a44..0d3dff02c4 100644
---- a/hw/ipmi/ipmi_bmc_extern.c
-+++ b/hw/ipmi/ipmi_bmc_extern.c
-@@ -539,10 +539,6 @@ static const TypeInfo ipmi_bmc_extern_type = {
-     .instance_finalize = ipmi_bmc_extern_finalize,
-     .class_init    = ipmi_bmc_extern_class_init,
-  };
-+TYPE_INFO(ipmi_bmc_extern_type)
+ static void apic_set_irq(APICCommonState *s, int vector_num, int trigger_mode);
+ static void apic_update_irq(APICCommonState *s);
+diff --git a/hw/intc/arm_gic_kvm.c b/hw/intc/arm_gic_kvm.c
+index 8bc90aa65d..28a1fb9a0d 100644
+--- a/hw/intc/arm_gic_kvm.c
++++ b/hw/intc/arm_gic_kvm.c
+@@ -33,12 +33,9 @@
  
--static void ipmi_bmc_extern_register_types(void)
--{
--    type_register_static(&ipmi_bmc_extern_type);
--}
+ #define TYPE_KVM_ARM_GIC "kvm-arm-gic"
+ typedef struct KVMARMGICClass KVMARMGICClass;
+-#define KVM_ARM_GIC(obj) \
+-     OBJECT_CHECK(GICState, (obj), TYPE_KVM_ARM_GIC)
+-#define KVM_ARM_GIC_CLASS(klass) \
+-     OBJECT_CLASS_CHECK(KVMARMGICClass, (klass), TYPE_KVM_ARM_GIC)
+-#define KVM_ARM_GIC_GET_CLASS(obj) \
+-     OBJECT_GET_CLASS(KVMARMGICClass, (obj), TYPE_KVM_ARM_GIC)
++/* This is reusing the GICState typedef from ARM_GIC_COMMON */
++DECLARE_OBJ_CHECKERS(GICState, KVMARMGICClass,
++                     KVM_ARM_GIC, TYPE_KVM_ARM_GIC)
  
--type_init(ipmi_bmc_extern_register_types)
-diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
-index be89a93876..76f6ae9d23 100644
---- a/hw/sd/milkymist-memcard.c
-+++ b/hw/sd/milkymist-memcard.c
-@@ -311,6 +311,7 @@ static const TypeInfo milkymist_memcard_info = {
-     .instance_init = milkymist_memcard_init,
-     .class_init    = milkymist_memcard_class_init,
- };
-+TYPE_INFO(milkymist_memcard_info)
+ struct KVMARMGICClass {
+     ARMGICCommonClass parent_class;
+diff --git a/hw/intc/arm_gicv3_its_kvm.c b/hw/intc/arm_gicv3_its_kvm.c
+index 198be30cf5..96850ac414 100644
+--- a/hw/intc/arm_gicv3_its_kvm.c
++++ b/hw/intc/arm_gicv3_its_kvm.c
+@@ -31,11 +31,9 @@
  
- static void milkymist_sdbus_class_init(ObjectClass *klass, void *data)
- {
-@@ -326,11 +327,6 @@ static const TypeInfo milkymist_sdbus_info = {
-     .instance_size = sizeof(SDBus),
-     .class_init = milkymist_sdbus_class_init,
- };
-+TYPE_INFO(milkymist_sdbus_info)
+ #define TYPE_KVM_ARM_ITS "arm-its-kvm"
+ typedef struct KVMARMITSClass KVMARMITSClass;
+-#define KVM_ARM_ITS(obj) OBJECT_CHECK(GICv3ITSState, (obj), TYPE_KVM_ARM_ITS)
+-#define KVM_ARM_ITS_CLASS(klass) \
+-     OBJECT_CLASS_CHECK(KVMARMITSClass, (klass), TYPE_KVM_ARM_ITS)
+-#define KVM_ARM_ITS_GET_CLASS(obj) \
+-     OBJECT_GET_CLASS(KVMARMITSClass, (obj), TYPE_KVM_ARM_ITS)
++/* This is reusing the GICv3ITSState typedef from ARM_GICV3_ITS_COMMON */
++DECLARE_OBJ_CHECKERS(GICv3ITSState, KVMARMITSClass,
++                     KVM_ARM_ITS, TYPE_KVM_ARM_ITS)
  
--static void milkymist_memcard_register_types(void)
--{
--    type_register_static(&milkymist_memcard_info);
--    type_register_static(&milkymist_sdbus_info);
--}
+ struct KVMARMITSClass {
+     GICv3ITSCommonClass parent_class;
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 87092795e6..ab1b3e39ed 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -43,12 +43,9 @@
  
--type_init(milkymist_memcard_register_types)
-diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
-index 579d68ad83..5153959b1d 100644
---- a/hw/sd/pl181.c
-+++ b/hw/sd/pl181.c
-@@ -526,6 +526,7 @@ static const TypeInfo pl181_info = {
-     .instance_init = pl181_init,
-     .class_init    = pl181_class_init,
- };
-+TYPE_INFO(pl181_info)
+ #define TYPE_KVM_ARM_GICV3 "kvm-arm-gicv3"
+ typedef struct KVMARMGICv3Class KVMARMGICv3Class;
+-#define KVM_ARM_GICV3(obj) \
+-     OBJECT_CHECK(GICv3State, (obj), TYPE_KVM_ARM_GICV3)
+-#define KVM_ARM_GICV3_CLASS(klass) \
+-     OBJECT_CLASS_CHECK(KVMARMGICv3Class, (klass), TYPE_KVM_ARM_GICV3)
+-#define KVM_ARM_GICV3_GET_CLASS(obj) \
+-     OBJECT_GET_CLASS(KVMARMGICv3Class, (obj), TYPE_KVM_ARM_GICV3)
++/* This is reusing the GICv3State typedef from ARM_GICV3_ITS_COMMON */
++DECLARE_OBJ_CHECKERS(GICv3State, KVMARMGICv3Class,
++                     KVM_ARM_GICV3, TYPE_KVM_ARM_GICV3)
  
- static void pl181_bus_class_init(ObjectClass *klass, void *data)
- {
-@@ -541,11 +542,6 @@ static const TypeInfo pl181_bus_info = {
-     .instance_size = sizeof(SDBus),
-     .class_init = pl181_bus_class_init,
- };
-+TYPE_INFO(pl181_bus_info)
+ #define   KVM_DEV_ARM_VGIC_SYSREG(op0, op1, crn, crm, op2)         \
+                              (ARM64_SYS_REG_SHIFT_MASK(op0, OP0) | \
+diff --git a/hw/sd/allwinner-sdhost.c b/hw/sd/allwinner-sdhost.c
+index c8dae27083..795e7e89eb 100644
+--- a/hw/sd/allwinner-sdhost.c
++++ b/hw/sd/allwinner-sdhost.c
+@@ -29,8 +29,9 @@
+ #include "qom/object.h"
  
--static void pl181_register_types(void)
--{
--    type_register_static(&pl181_info);
--    type_register_static(&pl181_bus_info);
--}
+ #define TYPE_AW_SDHOST_BUS "allwinner-sdhost-bus"
+-#define AW_SDHOST_BUS(obj) \
+-    OBJECT_CHECK(SDBus, (obj), TYPE_AW_SDHOST_BUS)
++/* This is reusing the SDBus typedef from SD_BUS */
++DECLARE_INSTANCE_CHECKER(SDBus, AW_SDHOST_BUS,
++                         TYPE_AW_SDHOST_BUS)
  
--type_init(pl181_register_types)
+ /* SD Host register offsets */
+ enum {
+diff --git a/hw/sd/bcm2835_sdhost.c b/hw/sd/bcm2835_sdhost.c
+index bcf9e27e76..1e9f6ddfa0 100644
+--- a/hw/sd/bcm2835_sdhost.c
++++ b/hw/sd/bcm2835_sdhost.c
+@@ -22,8 +22,9 @@
+ #include "qom/object.h"
+ 
+ #define TYPE_BCM2835_SDHOST_BUS "bcm2835-sdhost-bus"
+-#define BCM2835_SDHOST_BUS(obj) \
+-    OBJECT_CHECK(SDBus, (obj), TYPE_BCM2835_SDHOST_BUS)
++/* This is reusing the SDBus typedef from SD_BUS */
++DECLARE_INSTANCE_CHECKER(SDBus, BCM2835_SDHOST_BUS,
++                         TYPE_BCM2835_SDHOST_BUS)
+ 
+ #define SDCMD  0x00 /* Command to SD card              - 16 R/W */
+ #define SDARG  0x04 /* Argument to SD card             - 32 R/W */
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index 4ef76290c6..0a9d8a72d7 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -24,7 +24,9 @@
+ #include "qom/object.h"
+ 
+ #define TYPE_PXA2XX_MMCI_BUS "pxa2xx-mmci-bus"
+-#define PXA2XX_MMCI_BUS(obj) OBJECT_CHECK(SDBus, (obj), TYPE_PXA2XX_MMCI_BUS)
++/* This is reusing the SDBus typedef from SD_BUS */
++DECLARE_INSTANCE_CHECKER(SDBus, PXA2XX_MMCI_BUS,
++                         TYPE_PXA2XX_MMCI_BUS)
+ 
+ struct PXA2xxMMCIState {
+     SysBusDevice parent_obj;
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index b7d91e7598..118e7533df 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -40,7 +40,9 @@
+ #include "qom/object.h"
+ 
+ #define TYPE_SDHCI_BUS "sdhci-bus"
+-#define SDHCI_BUS(obj) OBJECT_CHECK(SDBus, (obj), TYPE_SDHCI_BUS)
++/* This is reusing the SDBus typedef from SD_BUS */
++DECLARE_INSTANCE_CHECKER(SDBus, SDHCI_BUS,
++                         TYPE_SDHCI_BUS)
+ 
+ #define MASKED_WRITE(reg, mask, val)  (reg = (reg & (mask)) | (val))
+ 
 -- 
 2.26.2
 

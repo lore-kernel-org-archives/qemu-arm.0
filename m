@@ -1,93 +1,109 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3203432lfy;
-        Tue, 25 Aug 2020 00:20:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzPTwxV66j/y/3HBYjBqEws4M51jp1SrrTDCKJONVu13WQWYyRwdUXMsBBi1M3I9bIUGWRQ
-X-Received: by 2002:a25:dc85:: with SMTP id y127mr12714603ybe.462.1598340039384;
-        Tue, 25 Aug 2020 00:20:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598340039; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3297237lfy;
+        Tue, 25 Aug 2020 03:08:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjz3M8vmwvVnuOZL8sRVvq3oVCEhiIs4R8FLjDoHOj+5NDjKQ7aLg1r3Xjon7q9SHk9n72
+X-Received: by 2002:a25:d347:: with SMTP id e68mr13533707ybf.123.1598350093114;
+        Tue, 25 Aug 2020 03:08:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598350093; cv=none;
         d=google.com; s=arc-20160816;
-        b=VTCdVYGlMc7iYS+AbiOuNKqWCYvXKcRAjD3NApd0+lavsNzB+xbDuwO1xKXRs3boq4
-         8GB3H4iZXxNFay4rQHJBmMpR0w1cNhPLJC5kal0qH+H7TCVx+Iq9B0jyu3VLKoevQwwz
-         jCQ7lVvOyd/rq0uTj1lymRrahAdAxJ2bI65LGiGTH+CSqStPkja5I4eBFQgHxD5YNc5C
-         qLZjbZJEsXOPF3Ze6G6UaGPlmhwPHaggd0V1gqswW8TE0e4u9++rNGQF6PGJ2uSVw5uw
-         chqQ/86fEsp2lNR8n8wxBuOUJcFVwq3q4C1kk5lBGX0IqSOiR/WkRWEjatFm5RdF4BXz
-         gRGA==
+        b=uKYdFYEhZgn/7L7e/PYs0SY1U8jfRPEP2eJRBbMMHHQVyrsGBnjWBMRp5jSinnA514
+         nz8hmIJUeKoGRgKvY1rRosShugyXWC5oMhmy1hw/8yBNBh5PIbz9udSiWenkCjxC51OO
+         N2JJ39AeUxcZ8VX5o+yUF1JoEbXV5Zwyg+tZD+eiHv78x/OaD9ba7+GfsDviuV7Mq2Me
+         W4qADuctpqj6rYi4Amo/129OcR8H86aTeW46/n2cWmsOwcXOtxC9BH4VsLZK2vdFHoK0
+         qEUUZ0GErYyjrTcNuZtI1bSfE4Sl2p/G1WqZEuT66j0/91XQyiZyYdVXeg2yiZ/RYI/u
+         boWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=TE2EDhKYOZBySxtWJPUKle5oFOWKL1BGpJeY4xunblI=;
-        b=GkybS+2aO5YGsOIWD4X9KmCTNx9WCwsS3n5dX9q4fJn5B9KEUy6Qc46aS6/JclFFR1
-         w+086yMA2+26ySlEElZyK8wREd3css+Q7Z+ysEYYjO0wcp6/CNwlQAqu+juHsg+J3s7h
-         vzHrliljo9DTJAHis4C8fM33Hzzpy+SqgJirYz1id55fssBB+fJeu3nnQrFLGOedcbHw
-         nHsR2Iy/Wlrv8JWJefFEP5brofZjSrRzfK4bHQh2i2rk29nV6rASA2bYqoxA9MVtXqDg
-         SDruP6xAJmCODXLM4fprsCEx4K6NHz3ithWEUlnaBe1qhay87dTGRQLx7V74uqEYPFzj
-         lakA==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=tckjd+QUu/Bv2pA5Uamz22Rt64XOK+nD0dwnQuEvkmU=;
+        b=brrTD4+XzB92V5T9sjXap6KqvorNSzAeFJiwsmksXnch3t3F4GlKdYtFrvRjg6wS76
+         R7GLhfdgDZpzwAF6HU70nxHhp8nq+lsZJnLsAIPFLoVPQxNbFC+EOQ5LpPlivROGBCyz
+         FhhuAARXw87RrKYF4B0OuACjZkqbN/ISKShYTu4f+p7kjY0UDaHs8LIQjyHd28HOc3Jg
+         cl99n0KTozwcSfV6tzVDsBKu80EmReE/5+oXCXQACpaL3QHzfHXBwJSTK18o5JBgxV4a
+         bociQyaI+J1oPLFgyP85jbMiscgEkKi1PdpMAPw5EnYd4A2U592FaSUQAu/Ul7m1ndaR
+         ENFw==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=H+1jNWzE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v1si13352668ybo.214.2020.08.25.00.20.39
+        by mx.google.com with ESMTPS id g20si14846383ybe.153.2020.08.25.03.08.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Aug 2020 00:20:39 -0700 (PDT)
+        Tue, 25 Aug 2020 03:08:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=H+1jNWzE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43790 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60604 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kATG2-00036k-Py
-	for alex.bennee@linaro.org; Tue, 25 Aug 2020 03:20:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46270)
+	id 1kAVsC-00072s-HS
+	for alex.bennee@linaro.org; Tue, 25 Aug 2020 06:08:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kATFi-00036K-QN; Tue, 25 Aug 2020 03:20:18 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:34931)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kATFg-0000OM-Cs; Tue, 25 Aug 2020 03:20:18 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.1.97])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id ABB7153BA8A6;
- Tue, 25 Aug 2020 09:20:04 +0200 (CEST)
-Received: from kaod.org (37.59.142.101) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Tue, 25 Aug
- 2020 09:20:03 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-101G0042c929d5f-dbac-4368-bcac-a9b3146f5f02,
- 1B83AABA3ADBE1952DEB3404AC7FA9E3DEF307C0) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH v2 00/21] aspeed: cleanups and some extensions
-To: Joel Stanley <joel@jms.id.au>
-References: <20200819100956.2216690-1-clg@kaod.org>
- <CACPK8XcHq6uhg87LO0Kyeqxky0+avTkvshgssRuNz6pcpyQi=Q@mail.gmail.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <1c86b601-6ac1-1bd4-18d9-cef5b3c4fc8b@kaod.org>
-Date: Tue, 25 Aug 2020 09:20:03 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1kAVs4-00072V-OQ
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 06:08:04 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40438)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1kAVs2-0003AV-GZ
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 06:08:04 -0400
+Received: by mail-wm1-x344.google.com with SMTP id k20so1555943wmi.5
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2020 03:08:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=tckjd+QUu/Bv2pA5Uamz22Rt64XOK+nD0dwnQuEvkmU=;
+ b=H+1jNWzEreU1N+Ff12Q4HgwFBm/eHj+lwULnF3muv5UpK98uYM1nhUflWpYEk38RYs
+ sdocDZN7dp8mzs/zDtY5J2KJ0uGyUbMy8IUq6j/Y+ZMkgZDgDuGZzGI8dqIMMFNnjDxv
+ AjHIwkEdFnXyq+1GkpyI988MyaMJjVgKAb63k1ZjS8diLxs6tQIEk9YJcOl7FhJbZ620
+ moTELh1uaKehEJsGrnyF0oV/xFK2usUnl21wWpP/SSJ3C4O8+13d48lFcz/VIlUd4mGX
+ CM5oZ4AvnGPBQS1kKgoA6d9GywuR0u90+PBIqHN5cjYRNOREvWc8by4nB4kMgu6/jaeL
+ PDDw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=tckjd+QUu/Bv2pA5Uamz22Rt64XOK+nD0dwnQuEvkmU=;
+ b=kcUylBM9/obC/gBWz2np8yvlPqG0/9srZhZ18jrBwhGAB2vgD/mwHSnacmnAHwerm4
+ V9Oog/x3T5/OR0x857QBPgTYuHIDMoqfBnwPTEgIbl5xjmj2Zq1ZwdKv/OyacTs1l0o4
+ uvhWFHktHhHavHxyA4Lx4yMp6bcUl1xXqkJFUrZvx9rBBZEpfAZhUqkEZjqox4gl+Mn8
+ 4Cx+gZihdoQcIfR6XZkUHkgSRrfQDE16rTfdCMq69jt4zLqelVfFvNDehUw8Z1RcMw36
+ UQkJgcUvqwLc7W4fpRimhOcIwGof8CKV2dP0TYc3oS7XEDGA9H/r1Wb/HFRltxXv+a9l
+ tSBA==
+X-Gm-Message-State: AOAM531mVo8rZisiF2RoQXLz4ytCGFhwipTv4kjVGYo8vgJdvrE0V8xI
+ ge9NfQYsen0ikBv1vBQZpjM74g==
+X-Received: by 2002:a1c:bac1:: with SMTP id k184mr1394300wmf.10.1598350080468; 
+ Tue, 25 Aug 2020 03:08:00 -0700 (PDT)
+Received: from xora-monster ([2a02:8010:64d6::1d89])
+ by smtp.gmail.com with ESMTPSA id v16sm4971206wmj.14.2020.08.25.03.07.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Aug 2020 03:07:59 -0700 (PDT)
+Date: Tue, 25 Aug 2020 11:07:57 +0100
+From: Graeme Gregory <graeme@nuviainc.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [EXTERNAL] Re: [PATCH] hw/arm/sbsa-ref.c : Add a fake embedded
+ controller
+Message-ID: <20200825100757.r54ba26kmavntqrb@xora-monster>
+References: <20200820133201.80577-1-graeme@nuviainc.com>
+ <CAFEAcA_9WRk0Dr97wpDHacsjy2qpmBBq=kp6hOQTvUOvpWF0zw@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <CACPK8XcHq6uhg87LO0Kyeqxky0+avTkvshgssRuNz6pcpyQi=Q@mail.gmail.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.101]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: fcd5b932-9145-4c80-ab42-feee8123d8f3
-X-Ovh-Tracer-Id: 13520931982033390499
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudduledguddujecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeeuteeufedvieevffdufffgheefgffhvefhvdehkedtgedvhfekteeffedufeehffenucffohhmrghinhepghhithhhuhgsrdgtohhmpdhmrghkvghfihhlvgdrnhhinhhjrgenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddruddtudenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtohepjhhovghlsehjmhhsrdhiugdrrghu
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 03:20:05
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.25,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAFEAcA_9WRk0Dr97wpDHacsjy2qpmBBq=kp6hOQTvUOvpWF0zw@mail.gmail.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=graeme@nuviainc.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -101,109 +117,186 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Leif Lindholm <leif@nuviainc.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, rad@semihalf.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WIT+wBGpSMLp
+X-TUID: yDvTwFYWfcZ/
 
-On 8/25/20 8:01 AM, Joel Stanley wrote:
-> On Wed, 19 Aug 2020 at 10:10, Cédric Le Goater <clg@kaod.org> wrote:
->>
->> Hello,
->>
->> This series includes various fixes improving the support of Aspeed
->> machines. Extra attention was given to the robustness of the ftgmac100
->> model. A small kernel module tester was created for this purpose :
->>
->>    https://github.com/legoater/ftgmac100-test/
+On Mon, Aug 24, 2020 at 03:59:38PM +0100, Peter Maydell wrote:
+> On Thu, 20 Aug 2020 at 14:32, Graeme Gregory <graeme@nuviainc.com> wrote:
+> >
+> > A difference between sbsa platform and the virt platform is PSCI is
+> > handled by ARM-TF in the sbsa platform. This means that the PSCI code
+> > there needs to communicate some of the platform power changes down
+> > to the qemu code for things like shutdown/reset control.
+> >
+> > Space has been left to extend the EC if we find other use cases in
+> > future where ARM-TF and qemu need to communicate.
+> >
+> > Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
+> > ---
+> >  hw/arm/sbsa-ref.c | 95 +++++++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 95 insertions(+)
+> >
+> > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> > index f030a416fd..c8743fc1d0 100644
+> > --- a/hw/arm/sbsa-ref.c
+> > +++ b/hw/arm/sbsa-ref.c
+> > @@ -41,6 +41,7 @@
+> >  #include "hw/usb.h"
+> >  #include "hw/char/pl011.h"
+> >  #include "net/net.h"
+> > +#include "migration/vmstate.h"
+> >
+> >  #define RAMLIMIT_GB 8192
+> >  #define RAMLIMIT_BYTES (RAMLIMIT_GB * GiB)
+> > @@ -62,6 +63,7 @@ enum {
+> >      SBSA_CPUPERIPHS,
+> >      SBSA_GIC_DIST,
+> >      SBSA_GIC_REDIST,
+> > +    SBSA_SECURE_EC,
+> >      SBSA_SMMU,
+> >      SBSA_UART,
+> >      SBSA_RTC,
+> > @@ -98,6 +100,14 @@ typedef struct {
+> >  #define SBSA_MACHINE(obj) \
+> >      OBJECT_CHECK(SBSAMachineState, (obj), TYPE_SBSA_MACHINE)
+> >
+> > +typedef struct {
+> > +    SysBusDevice parent_obj;
+> > +    MemoryRegion iomem;
+> > +} SECUREECState;
 > 
-> I gave this a test and it successfully broke the machine for me
-> without your fixes.
+> Could you put the definition of the device in its own .c file,
+> please (hw/misc/ seems like the right place). We generally
+> prefer to keep the board and individual device models
+> separate. (Some older code in the tree still has devices
+> lurking in source files, but new stuff generally follows
+> the rules.)
+> 
+Yes, certainly!
 
-The network stack is busted. yes. Sometimes it survives or does a reset.
+> > +enum sbsa_secure_ec_powerstates {
+> > +    SBSA_SECURE_EC_CMD_NULL,
+> > +    SBSA_SECURE_EC_CMD_POWEROFF,
+> > +    SBSA_SECURE_EC_CMD_REBOOT,
+> 
+> The last two are clear enough, but what's a null power state for?
+> 
+My personal dislike of sending 0 to hardware as its harder to spot
+when using scopes/logic analyzers. I can remove it if you wish and
+explicitly number the states.
 
-HW always survives which is surprising.
+> > +static uint64_t secure_ec_read(void *opaque, hwaddr offset, unsigned size)
+> > +{
+> > +    /* No use for this currently */
+> > +    return 0;
+> > +}
+> > +
+> > +static void secure_ec_write(void *opaque, hwaddr offset,
+> > +                     uint64_t value, unsigned size)
+> > +{
+> > +    if (offset == 0) { /* PSCI machine power command register */
+> > +        switch (value) {
+> > +        case SBSA_SECURE_EC_CMD_NULL:
+> > +            break;
+> > +        case SBSA_SECURE_EC_CMD_POWEROFF:
+> > +            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+> > +            break;
+> > +        case SBSA_SECURE_EC_CMD_REBOOT:
+> > +            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+> > +            break;
+> > +        default:
+> > +            error_report("sbsa-ref: ERROR Unkown power command");
+> 
+> "unknown".
+> 
+> We prefer qemu_log_mask(LOG_GUEST_ERROR, ...) for logging this
+> kind of "guest code did something wrong" situation.
+> (you could also do that for attempting to read this w/o register
+> if you liked).
+> 
+Excellent that is much better, Ill make that change.
 
-Thanks, 
+> > +        }
+> > +    } else {
+> > +        error_report("sbsa-ref: unknown EC register");
+> 
+> similarly here
+> 
+> > +    }
+> > +}
+> > +
+> > +static const MemoryRegionOps secure_ec_ops = {
+> > +    .read = secure_ec_read,
+> > +    .write = secure_ec_write,
+> > +    .endianness = DEVICE_NATIVE_ENDIAN,
+> 
+> Consider explicitly specifying the permitted access size
+> by setting .valid.min_access_size and .valid.max_access_size
+> (restricting guests to only doing 32-bit writes will make
+> life easier when you come to add registers later...)
+> 
+That was my original intent so i will do this.
 
-C.
+> > +};
+> > +
+> > +static void secure_ec_init(Object *obj)
+> > +{
+> > +    SECUREECState *s = SECURE_EC(obj);
+> > +    SysBusDevice *dev = SYS_BUS_DEVICE(obj);
+> > +
+> > +    memory_region_init_io(&s->iomem, obj, &secure_ec_ops, s, "secure-ec",
+> > +                            0x1000);
+> 
+> Minor indent error here.
+> 
+Will fix, just FYI checkpatch does not pick this up currently.
 
-> I tried to test this series but the new build system stopped me from
-> being able to complete a build. It failed with:
+> > +    sysbus_init_mmio(dev, &s->iomem);
+> > +}
+> > +
+> > +static void create_secure_ec(MemoryRegion *mem)
+> > +{
+> > +    hwaddr base = sbsa_ref_memmap[SBSA_SECURE_EC].base;
+> > +    DeviceState *dev = qdev_create(NULL, TYPE_SECURE_EC);
+> > +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
+> > +
+> > +    memory_region_add_subregion(mem, base,
+> > +                                sysbus_mmio_get_region(s, 0));
+> > +}
+> > +
+> >  static void sbsa_ref_init(MachineState *machine)
+> >  {
+> >      unsigned int smp_cpus = machine->smp.cpus;
+> > @@ -708,6 +778,8 @@ static void sbsa_ref_init(MachineState *machine)
+> >
+> >      create_pcie(sms);
+> >
+> > +    create_secure_ec(secure_sysmem);
+> > +
+> >      sms->bootinfo.ram_size = machine->ram_size;
+> >      sms->bootinfo.nb_cpus = smp_cpus;
+> >      sms->bootinfo.board_id = -1;
+> > @@ -798,8 +870,31 @@ static const TypeInfo sbsa_ref_info = {
+> >      .instance_size = sizeof(SBSAMachineState),
+> >  };
+> >
+> > +static const VMStateDescription vmstate_secure_ec_info = {
+> > +    .name = "sbsa-secure-ec",
+> > +    .version_id = 0,
+> > +    .minimum_version_id = 0,
+> > +};
 > 
-> Found ninjatool-1.8 at qemu/upstream/build/ninjatool
-> ./ninjatool -t ninja2make --omit clean dist uninstall < build.ninja >
-> Makefile.ninja
-> /bin/sh: build.ninja: No such file or directory
+> If you don't have any internal state in a device (as in
+> this case), then you don't need to set dc->vmsd at all.
+> Just have a comment in the class init saying
+>     /* No vmstate or reset required: device has no internal state */
 > 
-> :(
-> 
->>
->> Changes in v2 :
->>
->>  - definitions for some new flash models in m25p80 by Igor
->>  - All Joel's comments should have been addressed
->>  - A better fix of the integer overflow in ftgmac100_do_tx suggested
->>    by Peter.
->>
->>
->> This needs a couple more reviewed-by before I can send a PR.
-> 
-> I have read through all the patches and I have no objections.
-> 
-> Cheers,
-> 
-> Joel
-> 
->>
->> Thanks,
->>
->> C.
->>
->> Cédric Le Goater (16):
->>   m25p80: Return the JEDEC ID twice for mx25l25635e
->>   m25p80: Add support for mx25l25635f
->>   m25p80: Add support for n25q512ax3
->>   aspeed/scu: Fix valid access size on AST2400
->>   aspeed/smc: Fix MemoryRegionOps definition
->>   aspeed/smc: Fix max_slaves of the legacy SMC device
->>   aspeed/sdhci: Fix reset sequence
->>   ftgmac100: Fix registers that can be read
->>   ftgmac100: Fix interrupt status "Packet transmitted on ethernet"
->>   ftgmac100: Fix interrupt status "Packet moved to RX FIFO"
->>   ftgmac100: Change interrupt status when a DMA error occurs
->>   ftgmac100: Check for invalid len and address before doing a DMA
->>     transfer
->>   ftgmac100: Fix integer overflow in ftgmac100_do_tx()
->>   ftgmac100: Improve software reset
->>   aspeed/sdmc: Simplify calculation of RAM bits
->>   aspeed/smc: Open AHB window of the second chip of the AST2600 FMC
->>     controller
->>
->> Igor Kononenko (2):
->>   arm: aspeed: add strap define `25HZ` of AST2500
->>   hw: add a number of SPI-flash's of m25p80 family
->>
->> Joel Stanley (2):
->>   aspeed/sdmc: Perform memory training
->>   aspeed/sdmc: Allow writes to unprotected registers
->>
->> erik-smit (1):
->>   hw/arm/aspeed: Add board model for Supermicro X11 BMC
->>
->>  include/hw/misc/aspeed_scu.h  |   1 +
->>  include/hw/misc/aspeed_sdmc.h |  13 +++-
->>  hw/arm/aspeed.c               |  35 ++++++++++
->>  hw/block/m25p80.c             |   6 +-
->>  hw/misc/aspeed_scu.c          |   9 +--
->>  hw/misc/aspeed_sdmc.c         | 125 +++++++++++++++++++---------------
->>  hw/net/ftgmac100.c            |  95 ++++++++++++++++++--------
->>  hw/sd/aspeed_sdhci.c          |  14 +++-
->>  hw/ssi/aspeed_smc.c           |   6 +-
->>  9 files changed, 209 insertions(+), 95 deletions(-)
->>
->> --
->> 2.25.4
->>
+Thanks, that is cleaner, Ill do this.
+
+Thanks for the review, Ill get right on v2.
+
+Graeme
 

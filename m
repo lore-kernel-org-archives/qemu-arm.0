@@ -1,105 +1,110 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3493942lfy;
-        Tue, 25 Aug 2020 07:37:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzzEn8WLAo4v64A/QyU0MfB9XI34hztUNACSxbJ/qchldc6Nw2VCdd3o3m9o0JxyZ8M8+uM
-X-Received: by 2002:a25:bcce:: with SMTP id l14mr15786520ybm.467.1598366274049;
-        Tue, 25 Aug 2020 07:37:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598366274; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3527958lfy;
+        Tue, 25 Aug 2020 08:18:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJznoY9WVV+vaCH9mtT1qfajD7JZeSQjVj+nI/NtXXjNF7J7e6JfKq31S0HKldDHc6xwlIHo
+X-Received: by 2002:a67:2787:: with SMTP id n129mr6056286vsn.219.1598368724310;
+        Tue, 25 Aug 2020 08:18:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598368724; cv=none;
         d=google.com; s=arc-20160816;
-        b=RDRHuoMSkkLyodX7Q0Z3tjcw5BL4IwOghnJUZ/b0CTQXjvheoz1c70BnB1CUdmJWJw
-         xuR6zjlvKDmSpA89lKfgiTN+/XzFDiD4JN0ckC3EEwo3LzYQrhv3+iRvVeNgRu/2ktTt
-         PB7Ikm48GXpqmmLv+oZsgyotBeQJ6arrwOilc+gZkY2tG77548fIFgme+yVH4lN0c4D3
-         XqPJFz96PW8mteX7jRJS52q8n+pb/wUWbiNTK3mjYKEhK1SoQ2wJZDOkSzrIZmjfhpbM
-         2bLwCbVEagJL41HmQWcu5rHFa7PS0whc62JtmBwciauQHk11cLyWiuzHJl2l9M53+r29
-         ZYSA==
+        b=XBOtz8X38qhLugwdiItNOxEShI7BgM5Is64QF2lRl06bIMe8N0G74Nz8aN4IdIwDfF
+         n3c+8ERsezxjc1hfDURebPf3icHPaXp0RA3mFRs+xlecF4MkbCEzDEwBXnfuwJ4OKosg
+         tbNpLxsvdjcbz7mCekIZv9hOwGcB0lK4UEsvgKlqLBhzagfYR8kuc9D2HfQBUxjLSR26
+         IN2Wwax9slmotWViPKEfOtnheFYaGTGEWnO//e0kWxABBDSFTJe0D5PaDdIRJSU8Cac/
+         DfGp0d83wxJZTD9ipM22eocftSXB84EG2nQqhs9VRAyUYNbQuVvjyb/HWzEMVV9d7/c+
+         un1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Lw6Pxd03BF3GKZkDED5dFIfpW7t361Uyoul6qaBpfak=;
-        b=xCEj6AZ7jMYQQTkU3shFXubCkry0dj50QoDoNulbcCozFOs8f09x5iEmLb0pguH82l
-         yTRAHlSggLVmOx6s99mOLrHHyu1bG0buxxQPNeUD/5X41hF9wNnJWMqdR7inlv0N413L
-         suRAF1WaJkTIXt3Ug97RkvqDLpUpcccOSj1lzsVV5NogZ3wrB7O1tNhG33A6419YRGdB
-         O/2xlux5NX7sXDXwj324mcgOQeiqpm+YRpxDvTihyi0xCSC6JvcaHpeQH7Hw0CztiyL4
-         hoiqHBuCwERHhKbD4ElO6c6uZCDJexbCxd88nWHHXQlb/TzwZWMc+aTbq2Fm3P/p3O8e
-         epYQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=GD8vABY/m9QvuX/7MfAI9rjpW0f+q+G1T72CQzvCM8o=;
+        b=VEC2C75jV7MhT0fkbSMZAwizzGxX5cakwd3fCRm/D85KahqV2gJDKNHlZMVj8FF6X9
+         V2paqyqCXIhAWXMciN4mNd4Zen+LAbBSbvsYfka26J+3yLEwCEG5fd69N4r+0YWogRhO
+         Rw9RPIp+clTDs7CKQCsfPLIeAghVF3PeSWmJjVhj9JitFj57f0YYCJQllLHKSUkB/DYO
+         GNS1uLhPWfaIEp6rZyKVr6Y8XXWTMR6ab7A2h02W8QwfAzFSoYt+QfioRI9k3GLg3b2C
+         ogrghxtpZbaP+4gVSea+PThR5KY7mGkncqs6jBnXpfOBCXIgsnYDb/vE3iMl59kD1+4O
+         2iKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YAkxpcJ0;
+       dkim=fail header.i=@linaro.org header.s=google header.b=urgY6okH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 133si13291245ybl.42.2020.08.25.07.37.53
+        by mx.google.com with ESMTPS id n9si2245505uad.77.2020.08.25.08.18.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Aug 2020 07:37:54 -0700 (PDT)
+        Tue, 25 Aug 2020 08:18:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YAkxpcJ0;
+       dkim=fail header.i=@linaro.org header.s=google header.b=urgY6okH;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:44914 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53636 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAa5B-0006tr-Fh
-	for alex.bennee@linaro.org; Tue, 25 Aug 2020 10:37:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41016)
+	id 1kAaih-0006qC-MN
+	for alex.bennee@linaro.org; Tue, 25 Aug 2020 11:18:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59342)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
- id 1kAa54-0006tC-E3; Tue, 25 Aug 2020 10:37:46 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:46584)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kAaiS-0006pe-Ck
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 11:18:28 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:40916)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <erik.lucas.smit@gmail.com>)
- id 1kAa52-00068I-E7; Tue, 25 Aug 2020 10:37:46 -0400
-Received: by mail-ot1-x342.google.com with SMTP id f42so5444863otf.13;
- Tue, 25 Aug 2020 07:37:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kAaiP-0005Nx-Ux
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 11:18:27 -0400
+Received: by mail-ed1-x542.google.com with SMTP id v8so1752790edl.7
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2020 08:18:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Lw6Pxd03BF3GKZkDED5dFIfpW7t361Uyoul6qaBpfak=;
- b=YAkxpcJ0GhsIJthpiprBM+4q7ZjFcPvP8FucY4JHQzPrJeHbhvSOjBAt9a0wahnJeP
- fKMyTVW1Snb1olfHRV3f5HHhRy96uQodmd/xibWvSxKaiPuA/gJpQOAv5+08oFWRvfS2
- QcFAFpluQU2lyw0YnsTVgjeqBp+PvdpoLctpQZDV9oAxcA0lVDTlDaaa2yBSI+QYop9Z
- u8UXNDEbhz0FHZhfe/LZV7Bd7TrP+553j3cyMWdVl5LAZOSxeOEnwjuzOJ11MwgwZK4j
- gFgLnkwN7WT3XYf69WM5SETVywoil4l8w8b2kH0CwtnEIKw/zKtQOhOXAGuiPqcWO+sG
- 0K5Q==
+ :cc:content-transfer-encoding;
+ bh=GD8vABY/m9QvuX/7MfAI9rjpW0f+q+G1T72CQzvCM8o=;
+ b=urgY6okHsz2cfxzlbzzCT+Bw93aKTAZ0X3EBVvqULrDq1WiqGUCwzbBoyaaYPE+dLG
+ FU5vMaxEaHYrPyum2wrOm82SMpl3+3wlvw0UI1SOuWbVhG2nE5zQOcSmeAcTNjn1Rn6n
+ hwoqjKnVuP7bRJ0K0RxXBXFG40sEJFcYkSQaniwNX67+mHXuldztVeCAXNL7BiUzToTU
+ HxIdlgseSurPztsWr1lvQpl8HBmPFy3Yx8NKLsESIKdk4FpYABCyO6Wxsi1bUo6nLnjR
+ 6OiyftW5SyhEtSvddDs/LBy+YNZeSXDRtflNKyVwtJs5OezWDXKbEhw1oIGHLV5NSfPA
+ L4Eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Lw6Pxd03BF3GKZkDED5dFIfpW7t361Uyoul6qaBpfak=;
- b=DdTHU7/AQKhJzECRhWQqXxjoK0h2+W4nMR6fFCMtoMictgPzbDOf++GIFBLvQ7AOBZ
- NLkCvSwTwYW60bOIjyo0/L04qbWiYIPZafH6nz2NUDRDHa2yPnMGXjd2TpN8qexvrPcj
- yc27XkGPTk/qA6e/YwQnevJCi1IAky12sSnX+z8Afq2U1qxNTj3bR3IyVrewHkiH0DqZ
- sMAkrgddxikc2oQAM+GtwoVEgbEYJ/Ubb091Fp5Ir8AgxpLbWUiQM9YmFmbzWHPxRIEf
- jOTxiI1h75N1hqslrkRAXs7RDDh78ZbVGCxoqtAfxfV56kJmNQsTPYrn4cJYnGeNxHr0
- y7Gg==
-X-Gm-Message-State: AOAM530BMmNv2k4Tsop33qdLcP1r48GPGyUTaEA3rRQpQFDPBNbvztZe
- 47FgUTSEjWE2UBTNMOX7lYz/yRE9sRXrJgNXBMU=
-X-Received: by 2002:a05:6830:2143:: with SMTP id
- r3mr7349255otd.78.1598366262520; 
- Tue, 25 Aug 2020 07:37:42 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=GD8vABY/m9QvuX/7MfAI9rjpW0f+q+G1T72CQzvCM8o=;
+ b=Mke62O/YF1lzOQVBB/WJWmaUfOfb0iBdUNMA+kGpQMQ2woU1yKZWytgrdh24VsVQ6j
+ FMPfr9lNVaHpSFGIJMN908VjwFA63bRZDsefrEtxcJ99zFsILT6qXGZkGJ+IbwWzzK6e
+ Ya4ndYNmceaTsXGaJaz1P+7hkyuiBbIIErYvGya/DSPnL0vFFqFgLWwExuo4qnrZmRRV
+ L6offYfvD58Z8i99Tp9AZNI4jQLcwOMn7XSBwERFHL4vqZOf5TlQVhewbMAkqwbDAyUO
+ apNlHnc0El0YwCozD713eVG9O+PAAf5UYEBgYmNAjM983ySdWDBTAmm1O3qw5qMWYtLT
+ VDWw==
+X-Gm-Message-State: AOAM532dSCisYCwvaHqGAOlBnUGTQFNMP9642yDVoDNwwig58rcjhqSk
+ 8ZjZwg9pL/NvOiwypBtIieZ6i+xNSItbaAlx02p7JQ==
+X-Received: by 2002:a50:8f45:: with SMTP id 63mr11051082edy.52.1598368704299; 
+ Tue, 25 Aug 2020 08:18:24 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200819100956.2216690-1-clg@kaod.org>
  <20200819100956.2216690-6-clg@kaod.org>
  <CAFEAcA_GwY5qqLFYcttobLRnt_b=HoMNHMXEZrDHyRZJ4mjGug@mail.gmail.com>
-In-Reply-To: <CAFEAcA_GwY5qqLFYcttobLRnt_b=HoMNHMXEZrDHyRZJ4mjGug@mail.gmail.com>
-From: Erik Smit <erik.lucas.smit@gmail.com>
-Date: Tue, 25 Aug 2020 16:37:31 +0200
-Message-ID: <CA+MHfou4eE3wYCMv4ojLSnnUeffKy73V6FhpaBC551bsfkqa+A@mail.gmail.com>
+ <CA+MHfou4eE3wYCMv4ojLSnnUeffKy73V6FhpaBC551bsfkqa+A@mail.gmail.com>
+In-Reply-To: <CA+MHfou4eE3wYCMv4ojLSnnUeffKy73V6FhpaBC551bsfkqa+A@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 25 Aug 2020 16:18:13 +0100
+Message-ID: <CAFEAcA9e=wbzXD8-Fim7JE4etNc0kmB5_Uuh7=q3tUa0vmk__w@mail.gmail.com>
 Subject: Re: [PATCH v2 05/21] hw/arm/aspeed: Add board model for Supermicro
  X11 BMC
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="0000000000004c719e05adb4a5e9"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=erik.lucas.smit@gmail.com; helo=mail-ot1-x342.google.com
+To: Erik Smit <erik.lucas.smit@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_FILL_THIS_FORM_SHORT=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,68 +123,32 @@ Cc: Andrew Jeffery <andrew@aj.id.au>, QEMU Developers <qemu-devel@nongnu.org>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C73Ab0oBW9zG
+X-TUID: 2mzv3k4Yxi08
 
---0000000000004c719e05adb4a5e9
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Tue, Aug 25, 2020, 4:33 PM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Wed, 19 Aug 2020 at 11:10, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
-> >
-> > From: erik-smit <erik.lucas.smit@gmail.com>
-> >
-> > The BMC Firmware can be downloaded from :
-> >
-> >   https://www.supermicro.com/en/products/motherboard/X11SSL-F
-> >
-> > Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
+On Tue, 25 Aug 2020 at 15:37, Erik Smit <erik.lucas.smit@gmail.com> wrote:
+> On Tue, Aug 25, 2020, 4:33 PM Peter Maydell <peter.maydell@linaro.org> wr=
+ote:
+>>
+>> On Wed, 19 Aug 2020 at 11:10, C=C3=A9dric Le Goater <clg@kaod.org> wrote=
+:
+>> >
+>> > From: erik-smit <erik.lucas.smit@gmail.com>
+>> >
+>> > The BMC Firmware can be downloaded from :
+>> >
+>> >   https://www.supermicro.com/en/products/motherboard/X11SSL-F
+>> >
+>> > Signed-off-by: erik-smit <erik.lucas.smit@gmail.com>
+>>
+>> Should the name in the From and Signed-off-by: here be
+>> "Erik Smit" rather than "erik-smit" ?
 >
-> Should the name in the From and Signed-off-by: here be
-> "Erik Smit" rather than "erik-smit" ?
->
+> I don't know if it matters. I'm fine with either.
 
-I don't know if it matters. I'm fine with either.
+It's supposed to be "your real name" (ie not a pseudonym,
+email address or username); obviously for some people that
+really is a single word or all-lower-case, but I usually
+check because separate-words-with-caps is the more common.
 
---=20
-Erik Smit
-
->
-
---0000000000004c719e05adb4a5e9
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Tue, Aug 25, 2020, 4:33 PM Peter Maydell &lt;<a hre=
-f=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wrot=
-e:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bo=
-rder-left:1px #ccc solid;padding-left:1ex">On Wed, 19 Aug 2020 at 11:10, C=
-=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.org" target=3D"_blank" =
-rel=3D"noreferrer">clg@kaod.org</a>&gt; wrote:<br>
-&gt;<br>
-&gt; From: erik-smit &lt;<a href=3D"mailto:erik.lucas.smit@gmail.com" targe=
-t=3D"_blank" rel=3D"noreferrer">erik.lucas.smit@gmail.com</a>&gt;<br>
-&gt;<br>
-&gt; The BMC Firmware can be downloaded from :<br>
-&gt;<br>
-&gt;=C2=A0 =C2=A0<a href=3D"https://www.supermicro.com/en/products/motherbo=
-ard/X11SSL-F" rel=3D"noreferrer noreferrer" target=3D"_blank">https://www.s=
-upermicro.com/en/products/motherboard/X11SSL-F</a><br>
-&gt;<br>
-&gt; Signed-off-by: erik-smit &lt;<a href=3D"mailto:erik.lucas.smit@gmail.c=
-om" target=3D"_blank" rel=3D"noreferrer">erik.lucas.smit@gmail.com</a>&gt;<=
-br>
-<br>
-Should the name in the From and Signed-off-by: here be<br>
-&quot;Erik Smit&quot; rather than &quot;erik-smit&quot; ?<br></blockquote><=
-/div></div><div dir=3D"auto"><br></div><div dir=3D"auto">I don&#39;t know i=
-f it matters. I&#39;m fine with either.</div><div dir=3D"auto"><br></div><d=
-iv dir=3D"auto">--=C2=A0</div><div dir=3D"auto">Erik Smit</div><div dir=3D"=
-auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D=
-"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
-</blockquote></div></div></div>
-
---0000000000004c719e05adb4a5e9--
+thanks
+-- PMM

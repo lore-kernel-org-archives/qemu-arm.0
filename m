@@ -1,117 +1,108 @@
-Received: by 2002:a0c:f381:0:0:0:0:0 with SMTP id i1csp5099764qvk;
-        Tue, 25 Aug 2020 12:41:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxVIJveD6/pSSiEkNEuZwRcsW+BtSJK0JfX1mNQ04FKP88oWS/QFn+NCKRSz6WMUtl66J6w
-X-Received: by 2002:a25:c791:: with SMTP id w139mr16182682ybe.345.1598384315212;
-        Tue, 25 Aug 2020 12:38:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598384315; cv=none;
+Received: by 2002:a0c:f381:0:0:0:0:0 with SMTP id i1csp5099903qvk;
+        Tue, 25 Aug 2020 12:41:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwn6qeXYA1in21vlEJtGHavdC8fH7IgQHMf1qVdWgM7ea2KZ93ufyaQL4KgQb0TmIMigyWN
+X-Received: by 2002:a25:d785:: with SMTP id o127mr16291551ybg.378.1598384353934;
+        Tue, 25 Aug 2020 12:39:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598384353; cv=none;
         d=google.com; s=arc-20160816;
-        b=SGhbyhxylGnyhAhVuC+bfiqTDfCP3ZZ24Qi/mefh/O4WRtPIp/pFbDLGBw6iU118mQ
-         La32iN3m4BSBvex1FH+aS4jZ7JR8wBXKQyUFWDr88MF43mFREJbnjeaCt/rsMgKfawn8
-         V9s1kV0Hv5azcfNoWYgs5Tnbv/PtlckjxpaKd3CV3HRRoyVBJHGBlJuLmlnHFJmFpQ5a
-         JvuK6QNtIn5Bg6rhEaU7AsFhnL4fcCgQc+4WMhcztGCCGyO4qLpKeVXzckmmkWXxpZfE
-         sJCeq2gF4EokLS0a8KOn9Y57TVPxCUzlF656zEZ4VKoK1+AaXwmHi+jr02WW6fI9L0Ke
-         499A==
+        b=ARYqnzgMakEcxVnE3Hh6D2S8Zto+XmqM6YqQfIUPlid7kYzAOpE/NeqZf5yj8i52Hb
+         33LtHzI+aN3N+HwB2NffV8i1MmZ4gnzxGUm46YgNyC3HaydPEhHvXirZOvmQQg5K3csL
+         NUFYQ6fMQ/8GnN0zA4I7JVNtGdNWk1lurEhV33bvVq6k3tPlIQKnECgBbQ/2N/D5dp1z
+         aDTBj1icOxoHfyUjihDOsLJSrGX59lKvW6vq6wPWVHmX2NKYjhEjTUCYmla5gmjs98ks
+         eQivCTujw9xq5Pm4LmRufbsPZCJUki6JYrKdri8u3dQoyNuHggZj7WFiv/4SaNxB2znE
+         ++aA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=gwUMg//wgrjXwTQ9kMa/PPluoqP399CBrBsdMzkVKAE=;
-        b=Gt4fISKAdZDyLNmNqPm0f9MbXiYQMV6oPdCbIsUV/sCsPxVByg8vUCxmjKo8mQwk8/
-         IkHcZ/ZwrmU9zJ+h1DnCZA7KTcY5pEXQi/Nc6RJk8hoRvo78EnpZd1AzsL/Z8K22kl0f
-         YEBOa1xNYo6ZTgPFqzjSaa5ujmZu9H18vNbubNr3xknPn8JqI+/H3WQ2btQpds3gktst
-         RBTeWMrr5MJ8Ld/WxPr94TqKJ1rLrR82/YP3e+4pM2hJ/wW7ja2MA/S85NHSKzosDVRM
-         G0dqkf2Yq0CTUSSPg9PgSoki9FjEYlIY0KG/4BpOzT3f/7k4KzWxMa3RZHweaKjZIH3Y
-         AP0g==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=v8qERUAxboTRUwmKdOmtOW95P1o1K/BX9a9uT0sKpV4=;
+        b=om8TJ2+T8kLugmh6BZU+1bFFY7LTmT1K0cLySASu/Gk2rr8nx0ksjxZGSPZHrH+ON8
+         89cW46bhGBzDMen7x3WmJ5DOehrcxv+1AlIkazxcV2SxXGt6L/c3VPIDg+lVqLfVQxP0
+         FdnFgm0MSywVoXuqk6v0QFgvF+FurhZnuj0/iZ97nyA5/+usUrOU1IRwRHEpR6cUpIiw
+         +lgP9a5sTMG36RfC1WIM083UAgNpYMaRK0sbquBhYSHEzlTnZRC4gpHfWOX6wjy1G9Fs
+         QeF6jhltF6Zwk+CP7V8zti1fzM9JOjI1qWT00DKuFbZy4TGjTEV/xqefgvj96CtscVWN
+         LC2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JTmkS1Hx;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VyfTxFgG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h21si17560806ybj.392.2020.08.25.12.38.35
+        by mx.google.com with ESMTPS id h63si15315545ybg.488.2020.08.25.12.39.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Aug 2020 12:38:35 -0700 (PDT)
+        Tue, 25 Aug 2020 12:39:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JTmkS1Hx;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VyfTxFgG;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58372 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:32936 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAemA-0000Az-Lr
-	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:38:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40882)
+	id 1kAemm-0001KI-Jo
+	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:39:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40288)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kAeXt-00041r-K3
- for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:23:49 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:37253)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kAeXs-0006PK-1g
- for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:23:49 -0400
-Received: by mail-pf1-x443.google.com with SMTP id x143so11779pfc.4
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2020 12:23:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=gwUMg//wgrjXwTQ9kMa/PPluoqP399CBrBsdMzkVKAE=;
- b=JTmkS1Hx9tNj1TOyhiG8OQK/izPhFW9XeKztqLWhP6r8lsoWf+XkVVKNEgK9CP4750
- SYwQdp94GhW12AFh5rPvKk+98B3aQsLVdXmvdtMckE/dLesSdLOIMqr8SXk4tXOjxF/v
- hInaMda2gJBdMldA1j8S8rPpktv8KiBY7zw0Nb6JFUuEwoMbtBw6FQLWTd9in2tAbQYA
- bWETLy8c6g3C4S6F8p4pdFiIoZXvaEleHqFnPXw25WC+cvUzvhaBRHnFfVrmaLYTbFk0
- /OY2g2SQJj5wHNgwNh89dkMZT1hoqj2qxL5y+XgXi1y0rsHCdlfuzP+qOK6jExsFxco/
- b3OA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=gwUMg//wgrjXwTQ9kMa/PPluoqP399CBrBsdMzkVKAE=;
- b=TVAo4kUTQdWI4QMGvpWImOtnqLT5PVAaBwwBhT/WhvAJSlc+JdZgFtJYGSDnYmRery
- Dkgy8GN/EdHnaWxDWtqGcOkSWRFsmErDTiHU5gakcmMwpJzmk4yVfu6OhJuXEcubaSY4
- 0V73XpUxVCeDCbnKXHAIi+g7wKJ5k7xurUz6tFOXIlE3qFhQi2+BCzdkmGQC42vrbM4i
- eIaiKhO/ELHZ7ixb1/YdR2nGJMHvgx7Ft9TGhDn1KesBhN+qNjSX9NEZKOMkOZCof+51
- 8TiCtVyJtSe2Ly/jpmFLybpI2BU+VEK9bpXpVBQrKWUxKrLFl6JM5DtixJL70YKOoysd
- 8zdQ==
-X-Gm-Message-State: AOAM530176s8f9xtIxHvzf3QjaY9fKF3K5eotzQUTGMN5O9QJakEEwrk
- RRoC57yBSai9JMVdNDjBOAAC+Q==
-X-Received: by 2002:a63:1262:: with SMTP id 34mr7963859pgs.37.1598383426160;
- Tue, 25 Aug 2020 12:23:46 -0700 (PDT)
-Received: from [192.168.81.79]
- (h216-228-167-147.bendor.dedicated.static.tds.net. [216.228.167.147])
- by smtp.gmail.com with ESMTPSA id p11sm3343pfn.109.2020.08.25.12.23.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Aug 2020 12:23:45 -0700 (PDT)
-Subject: Re: [PATCH 19/22] target/arm: Implement new VFP fp16 insn VINS
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200824142934.20850-1-peter.maydell@linaro.org>
- <20200824142934.20850-20-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <863f1d23-1002-ca2b-60fe-2f6e4721ff33@linaro.org>
-Date: Tue, 25 Aug 2020 12:23:43 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kAeWr-0001Ar-5I
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:22:45 -0400
+Received: from us-smtp-2.mimecast.com ([205.139.110.61]:42159
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kAeWp-0006H5-Ct
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:22:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598383362;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=v8qERUAxboTRUwmKdOmtOW95P1o1K/BX9a9uT0sKpV4=;
+ b=VyfTxFgGh9O9lGunVbm2awLnH+BNX3kY0ZaATG4EsRnIZiXi/Dk4q1H/C6h5PkFUYQbKjx
+ sv36Bl5apS0tJHLsD7LIZ5reOPNvBGc+d1l/H5lndOSswHUlxb4EhPDdsAgcYbNw6b8h5P
+ gw6sGX7cFfjSweBKdgfpqOjquf6R5Is=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-540-BXEUAYmiMGSDAyo6MMjfng-1; Tue, 25 Aug 2020 15:22:41 -0400
+X-MC-Unique: BXEUAYmiMGSDAyo6MMjfng-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0F1A85B67B;
+ Tue, 25 Aug 2020 19:22:39 +0000 (UTC)
+Received: from localhost (unknown [10.10.67.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9A5DA1002D4D;
+ Tue, 25 Aug 2020 19:22:39 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 39/74] pxa2xx: Move QOM macros to header
+Date: Tue, 25 Aug 2020 15:20:35 -0400
+Message-Id: <20200825192110.3528606-40-ehabkost@redhat.com>
+In-Reply-To: <20200825192110.3528606-1-ehabkost@redhat.com>
+References: <20200825192110.3528606-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200824142934.20850-20-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.602,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 01:35:36
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.958,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,22 +115,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: maZkTnqNUczo
+X-TUID: tljJwQp/kjQx
 
-On 8/24/20 7:29 AM, Peter Maydell wrote:
-> The fp16 extension includes a new instruction VINS, which copies the
-> lower 16 bits of a 32-bit source VFP register into the upper 16 bits
-> of the destination.  Implement it.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/vfp-uncond.decode   |  3 +++
->  target/arm/translate-vfp.c.inc | 28 ++++++++++++++++++++++++++++
->  2 files changed, 31 insertions(+)
+This will make future conversion to OBJECT_DECLARE* easier.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Changes v2 -> v3: none
 
+Changes series v1 -> v2: new patch in series v2
 
-r~
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+---
+ include/hw/arm/pxa.h | 13 +++++++++++++
+ hw/arm/pxa2xx.c      |  7 -------
+ hw/pcmcia/pxa2xx.c   |  4 ----
+ hw/sd/pxa2xx_mmci.c  |  3 ---
+ 4 files changed, 13 insertions(+), 14 deletions(-)
+
+diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
+index d99b6192da..09c1336071 100644
+--- a/include/hw/arm/pxa.h
++++ b/include/hw/arm/pxa.h
+@@ -86,7 +86,10 @@ PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
+ void pxa2xx_lcd_vsync_notifier(PXA2xxLCDState *s, qemu_irq handler);
+ 
+ /* pxa2xx_mmci.c */
++#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
+ typedef struct PXA2xxMMCIState PXA2xxMMCIState;
++#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
++
+ PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
+                 hwaddr base,
+                 qemu_irq irq, qemu_irq rx_dma, qemu_irq tx_dma);
+@@ -94,7 +97,11 @@ void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
+                 qemu_irq coverswitch);
+ 
+ /* pxa2xx_pcmcia.c */
++#define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
+ typedef struct PXA2xxPCMCIAState PXA2xxPCMCIAState;
++#define PXA2XX_PCMCIA(obj) \
++    OBJECT_CHECK(PXA2xxPCMCIAState, obj, TYPE_PXA2XX_PCMCIA)
++
+ PXA2xxPCMCIAState *pxa2xx_pcmcia_init(MemoryRegion *sysmem,
+                                       hwaddr base);
+ int pxa2xx_pcmcia_attach(void *opaque, PCMCIACardState *card);
+@@ -119,8 +126,14 @@ PXA2xxI2CState *pxa2xx_i2c_init(hwaddr base,
+                 qemu_irq irq, uint32_t page_size);
+ I2CBus *pxa2xx_i2c_bus(PXA2xxI2CState *s);
+ 
++#define TYPE_PXA2XX_I2C "pxa2xx_i2c"
+ typedef struct PXA2xxI2SState PXA2xxI2SState;
++#define PXA2XX_I2C(obj) \
++    OBJECT_CHECK(PXA2xxI2CState, (obj), TYPE_PXA2XX_I2C)
++
++#define TYPE_PXA2XX_FIR "pxa2xx-fir"
+ typedef struct PXA2xxFIrState PXA2xxFIrState;
++#define PXA2XX_FIR(obj) OBJECT_CHECK(PXA2xxFIrState, (obj), TYPE_PXA2XX_FIR)
+ 
+ typedef struct {
+     ARMCPU *cpu;
+diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
+index 20fa201dd5..76975d17a4 100644
+--- a/hw/arm/pxa2xx.c
++++ b/hw/arm/pxa2xx.c
+@@ -1251,10 +1251,6 @@ typedef struct PXA2xxI2CSlaveState {
+     PXA2xxI2CState *host;
+ } PXA2xxI2CSlaveState;
+ 
+-#define TYPE_PXA2XX_I2C "pxa2xx_i2c"
+-#define PXA2XX_I2C(obj) \
+-    OBJECT_CHECK(PXA2xxI2CState, (obj), TYPE_PXA2XX_I2C)
+-
+ struct PXA2xxI2CState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -1787,9 +1783,6 @@ static PXA2xxI2SState *pxa2xx_i2s_init(MemoryRegion *sysmem,
+ }
+ 
+ /* PXA Fast Infra-red Communications Port */
+-#define TYPE_PXA2XX_FIR "pxa2xx-fir"
+-#define PXA2XX_FIR(obj) OBJECT_CHECK(PXA2xxFIrState, (obj), TYPE_PXA2XX_FIR)
+-
+ struct PXA2xxFIrState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+diff --git a/hw/pcmcia/pxa2xx.c b/hw/pcmcia/pxa2xx.c
+index 5f4bf22a90..fcca7e571b 100644
+--- a/hw/pcmcia/pxa2xx.c
++++ b/hw/pcmcia/pxa2xx.c
+@@ -18,10 +18,6 @@
+ #include "hw/pcmcia.h"
+ #include "hw/arm/pxa.h"
+ 
+-#define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
+-#define PXA2XX_PCMCIA(obj) \
+-    OBJECT_CHECK(PXA2xxPCMCIAState, obj, TYPE_PXA2XX_PCMCIA)
+-
+ struct PXA2xxPCMCIAState {
+     SysBusDevice parent_obj;
+ 
+diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
+index 04f0a98f81..3a47b380dd 100644
+--- a/hw/sd/pxa2xx_mmci.c
++++ b/hw/sd/pxa2xx_mmci.c
+@@ -22,9 +22,6 @@
+ #include "qemu/module.h"
+ #include "trace.h"
+ 
+-#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
+-#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
+-
+ #define TYPE_PXA2XX_MMCI_BUS "pxa2xx-mmci-bus"
+ #define PXA2XX_MMCI_BUS(obj) OBJECT_CHECK(SDBus, (obj), TYPE_PXA2XX_MMCI_BUS)
+ 
+-- 
+2.26.2
+

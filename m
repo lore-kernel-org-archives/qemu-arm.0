@@ -1,108 +1,108 @@
-Received: by 2002:a0c:f381:0:0:0:0:0 with SMTP id i1csp5099903qvk;
-        Tue, 25 Aug 2020 12:41:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwn6qeXYA1in21vlEJtGHavdC8fH7IgQHMf1qVdWgM7ea2KZ93ufyaQL4KgQb0TmIMigyWN
-X-Received: by 2002:a25:d785:: with SMTP id o127mr16291551ybg.378.1598384353934;
-        Tue, 25 Aug 2020 12:39:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598384353; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp131509lfc;
+        Tue, 25 Aug 2020 12:42:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy8zJzAoKrEYNfbPUzU3Te4tEP2w5oB5yJH8gAGpNGX06tRsYiOlKI1ymfmj0tmbm7E9SnK
+X-Received: by 2002:a25:348c:: with SMTP id b134mr16209373yba.494.1598384467671;
+        Tue, 25 Aug 2020 12:41:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598384467; cv=none;
         d=google.com; s=arc-20160816;
-        b=ARYqnzgMakEcxVnE3Hh6D2S8Zto+XmqM6YqQfIUPlid7kYzAOpE/NeqZf5yj8i52Hb
-         33LtHzI+aN3N+HwB2NffV8i1MmZ4gnzxGUm46YgNyC3HaydPEhHvXirZOvmQQg5K3csL
-         NUFYQ6fMQ/8GnN0zA4I7JVNtGdNWk1lurEhV33bvVq6k3tPlIQKnECgBbQ/2N/D5dp1z
-         aDTBj1icOxoHfyUjihDOsLJSrGX59lKvW6vq6wPWVHmX2NKYjhEjTUCYmla5gmjs98ks
-         eQivCTujw9xq5Pm4LmRufbsPZCJUki6JYrKdri8u3dQoyNuHggZj7WFiv/4SaNxB2znE
-         ++aA==
+        b=CX9WOFEEwV37OZUAu73E1vIwnsVLL9D05HX/Q/WeIqk3rQy02eFGchABALzM8jkHnZ
+         kSb8ROQsfh0n3WzFWW5aH803Dwgva1znSvj6oN72yxib9BHc3ra1txo7/2xccqQT1uvX
+         aTJzaGEn/bfcY2RpS8DSksI7txTp6M52eBpb5e3IA8I8sbzyyCfdTjgVBTm7slqeTWIs
+         73qzJHW9Dnthb7IEM3bu4n6XxgQRR40iQZMHKKAWq0RbWm7oN5dJT9OQZZia3rnvxe9f
+         ZdpjAYVT0Ondrtgy4F7kvnTSj5YEVyirFv/IqSp7uHJ4h1PEZzPkUo6v0OP/lfYcKfcA
+         E0WQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=v8qERUAxboTRUwmKdOmtOW95P1o1K/BX9a9uT0sKpV4=;
-        b=om8TJ2+T8kLugmh6BZU+1bFFY7LTmT1K0cLySASu/Gk2rr8nx0ksjxZGSPZHrH+ON8
-         89cW46bhGBzDMen7x3WmJ5DOehrcxv+1AlIkazxcV2SxXGt6L/c3VPIDg+lVqLfVQxP0
-         FdnFgm0MSywVoXuqk6v0QFgvF+FurhZnuj0/iZ97nyA5/+usUrOU1IRwRHEpR6cUpIiw
-         +lgP9a5sTMG36RfC1WIM083UAgNpYMaRK0sbquBhYSHEzlTnZRC4gpHfWOX6wjy1G9Fs
-         QeF6jhltF6Zwk+CP7V8zti1fzM9JOjI1qWT00DKuFbZy4TGjTEV/xqefgvj96CtscVWN
-         LC2A==
+        bh=UbwByfgjkAlI66puvl1t93XFLm462cmXMGwuy5iz4Gw=;
+        b=Zp7I4a9BhzO06Kpjgenu0HB5nbP8l+iIjHLEsoLZlQchVGOalGFia51mkGXTdw0yWz
+         Sfaw/0ZDTPK+6N3JLeN/yvGua1RpTgaOeVuH/5SyK9gt7au8OABxMKFKy5Hdz/BBHcOG
+         yCaW7cYNRxMw+MF8Ju9LYzGTH6qFUBgMveHBu0Jg9Lw0rG6KHAeFeqIdX8PnacrsVL5R
+         VTmbYsuAKOElHdf/aI5CSigK0YLRtgZYfP6KgQMARPm8XrbsS29rJj9MoFbn8Sn2/lCM
+         aLfgiok7+tgmwiZLA0KUbUu9jHXiOz2mMFeWJf+zSbqQshxl5Uz2XTzOe29iIA13HixX
+         9EdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VyfTxFgG;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F1LOhReE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h63si15315545ybg.488.2020.08.25.12.39.13
+        by mx.google.com with ESMTPS id c126si15133141yba.27.2020.08.25.12.41.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Aug 2020 12:39:13 -0700 (PDT)
+        Tue, 25 Aug 2020 12:41:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VyfTxFgG;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F1LOhReE;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:32936 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44188 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAemm-0001KI-Jo
-	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:39:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40288)
+	id 1kAeod-0005uB-58
+	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:41:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40424)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAeWr-0001Ar-5I
- for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:22:45 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:42159
- helo=us-smtp-delivery-1.mimecast.com)
+ id 1kAeX2-0001gH-CJ
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:22:56 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:53558
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAeWp-0006H5-Ct
- for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:22:44 -0400
+ id 1kAeX0-0006Ii-SN
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:22:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598383362;
+ s=mimecast20190719; t=1598383374;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=v8qERUAxboTRUwmKdOmtOW95P1o1K/BX9a9uT0sKpV4=;
- b=VyfTxFgGh9O9lGunVbm2awLnH+BNX3kY0ZaATG4EsRnIZiXi/Dk4q1H/C6h5PkFUYQbKjx
- sv36Bl5apS0tJHLsD7LIZ5reOPNvBGc+d1l/H5lndOSswHUlxb4EhPDdsAgcYbNw6b8h5P
- gw6sGX7cFfjSweBKdgfpqOjquf6R5Is=
+ bh=UbwByfgjkAlI66puvl1t93XFLm462cmXMGwuy5iz4Gw=;
+ b=F1LOhReE0UtrE7B6KmogkvAvYsxiQx1FZ1X3CQ54aKFfo6l3JrxM3m5uWTYzpkbk7k6JtP
+ ZL7d6xef/BSnho4wDXpJ8jcAwQkeOFC/UUeU07U1b/UW2/o0RLgW7/0jmoWJCg8WEU4Akh
+ cCFmw6Et54hFquI/RlDooT/ZVxIQ6bM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-540-BXEUAYmiMGSDAyo6MMjfng-1; Tue, 25 Aug 2020 15:22:41 -0400
-X-MC-Unique: BXEUAYmiMGSDAyo6MMjfng-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
+ us-mta-20-kizZn4sUO322dAYZ0AT8gA-1; Tue, 25 Aug 2020 15:22:50 -0400
+X-MC-Unique: kizZn4sUO322dAYZ0AT8gA-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D0F1A85B67B;
- Tue, 25 Aug 2020 19:22:39 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 442521074640;
+ Tue, 25 Aug 2020 19:22:49 +0000 (UTC)
 Received: from localhost (unknown [10.10.67.254])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9A5DA1002D4D;
- Tue, 25 Aug 2020 19:22:39 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C3BA419C4F;
+ Tue, 25 Aug 2020 19:22:48 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 39/74] pxa2xx: Move QOM macros to header
-Date: Tue, 25 Aug 2020 15:20:35 -0400
-Message-Id: <20200825192110.3528606-40-ehabkost@redhat.com>
+Subject: [PATCH v3 44/74] imx_ccm: Rename IMX_GET_CLASS macro
+Date: Tue, 25 Aug 2020 15:20:40 -0400
+Message-Id: <20200825192110.3528606-45-ehabkost@redhat.com>
 In-Reply-To: <20200825192110.3528606-1-ehabkost@redhat.com>
 References: <20200825192110.3528606-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 01:35:36
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 10:39:45
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.958,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,127 +118,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
  "Daniel P. Berrange" <berrange@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>
+ Peter Chubb <peter.chubb@nicta.com.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tljJwQp/kjQx
+X-TUID: xOOymV3JYh56
+
+Rename it to IMX_CCM_GET_CLASS to be consistent with the existing
+IMX_CCM and IXM_CCM_CLASS macro.
 
 This will make future conversion to OBJECT_DECLARE* easier.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
-Changes v2 -> v3: none
+Changes series v2 -> v3: new patch added to series v3
 
-Changes series v1 -> v2: new patch in series v2
-
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
+---
+Cc: Peter Chubb <peter.chubb@nicta.com.au>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org
 ---
- include/hw/arm/pxa.h | 13 +++++++++++++
- hw/arm/pxa2xx.c      |  7 -------
- hw/pcmcia/pxa2xx.c   |  4 ----
- hw/sd/pxa2xx_mmci.c  |  3 ---
- 4 files changed, 13 insertions(+), 14 deletions(-)
+ include/hw/misc/imx_ccm.h | 2 +-
+ hw/misc/imx_ccm.c         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/arm/pxa.h b/include/hw/arm/pxa.h
-index d99b6192da..09c1336071 100644
---- a/include/hw/arm/pxa.h
-+++ b/include/hw/arm/pxa.h
-@@ -86,7 +86,10 @@ PXA2xxLCDState *pxa2xx_lcdc_init(MemoryRegion *sysmem,
- void pxa2xx_lcd_vsync_notifier(PXA2xxLCDState *s, qemu_irq handler);
+diff --git a/include/hw/misc/imx_ccm.h b/include/hw/misc/imx_ccm.h
+index 33cbc09952..efdc451eb0 100644
+--- a/include/hw/misc/imx_ccm.h
++++ b/include/hw/misc/imx_ccm.h
+@@ -31,7 +31,7 @@
+      OBJECT_CHECK(IMXCCMState, (obj), TYPE_IMX_CCM)
+ #define IMX_CCM_CLASS(klass) \
+      OBJECT_CLASS_CHECK(IMXCCMClass, (klass), TYPE_IMX_CCM)
+-#define IMX_GET_CLASS(obj) \
++#define IMX_CCM_GET_CLASS(obj) \
+      OBJECT_GET_CLASS(IMXCCMClass, (obj), TYPE_IMX_CCM)
  
- /* pxa2xx_mmci.c */
-+#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
- typedef struct PXA2xxMMCIState PXA2xxMMCIState;
-+#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
-+
- PXA2xxMMCIState *pxa2xx_mmci_init(MemoryRegion *sysmem,
-                 hwaddr base,
-                 qemu_irq irq, qemu_irq rx_dma, qemu_irq tx_dma);
-@@ -94,7 +97,11 @@ void pxa2xx_mmci_handlers(PXA2xxMMCIState *s, qemu_irq readonly,
-                 qemu_irq coverswitch);
+ typedef struct IMXCCMState {
+diff --git a/hw/misc/imx_ccm.c b/hw/misc/imx_ccm.c
+index 2f81b0ad73..52882071d3 100644
+--- a/hw/misc/imx_ccm.c
++++ b/hw/misc/imx_ccm.c
+@@ -32,7 +32,7 @@
+ uint32_t imx_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
+ {
+     uint32_t freq = 0;
+-    IMXCCMClass *klass = IMX_GET_CLASS(dev);
++    IMXCCMClass *klass = IMX_CCM_GET_CLASS(dev);
  
- /* pxa2xx_pcmcia.c */
-+#define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
- typedef struct PXA2xxPCMCIAState PXA2xxPCMCIAState;
-+#define PXA2XX_PCMCIA(obj) \
-+    OBJECT_CHECK(PXA2xxPCMCIAState, obj, TYPE_PXA2XX_PCMCIA)
-+
- PXA2xxPCMCIAState *pxa2xx_pcmcia_init(MemoryRegion *sysmem,
-                                       hwaddr base);
- int pxa2xx_pcmcia_attach(void *opaque, PCMCIACardState *card);
-@@ -119,8 +126,14 @@ PXA2xxI2CState *pxa2xx_i2c_init(hwaddr base,
-                 qemu_irq irq, uint32_t page_size);
- I2CBus *pxa2xx_i2c_bus(PXA2xxI2CState *s);
- 
-+#define TYPE_PXA2XX_I2C "pxa2xx_i2c"
- typedef struct PXA2xxI2SState PXA2xxI2SState;
-+#define PXA2XX_I2C(obj) \
-+    OBJECT_CHECK(PXA2xxI2CState, (obj), TYPE_PXA2XX_I2C)
-+
-+#define TYPE_PXA2XX_FIR "pxa2xx-fir"
- typedef struct PXA2xxFIrState PXA2xxFIrState;
-+#define PXA2XX_FIR(obj) OBJECT_CHECK(PXA2xxFIrState, (obj), TYPE_PXA2XX_FIR)
- 
- typedef struct {
-     ARMCPU *cpu;
-diff --git a/hw/arm/pxa2xx.c b/hw/arm/pxa2xx.c
-index 20fa201dd5..76975d17a4 100644
---- a/hw/arm/pxa2xx.c
-+++ b/hw/arm/pxa2xx.c
-@@ -1251,10 +1251,6 @@ typedef struct PXA2xxI2CSlaveState {
-     PXA2xxI2CState *host;
- } PXA2xxI2CSlaveState;
- 
--#define TYPE_PXA2XX_I2C "pxa2xx_i2c"
--#define PXA2XX_I2C(obj) \
--    OBJECT_CHECK(PXA2xxI2CState, (obj), TYPE_PXA2XX_I2C)
--
- struct PXA2xxI2CState {
-     /*< private >*/
-     SysBusDevice parent_obj;
-@@ -1787,9 +1783,6 @@ static PXA2xxI2SState *pxa2xx_i2s_init(MemoryRegion *sysmem,
- }
- 
- /* PXA Fast Infra-red Communications Port */
--#define TYPE_PXA2XX_FIR "pxa2xx-fir"
--#define PXA2XX_FIR(obj) OBJECT_CHECK(PXA2xxFIrState, (obj), TYPE_PXA2XX_FIR)
--
- struct PXA2xxFIrState {
-     /*< private >*/
-     SysBusDevice parent_obj;
-diff --git a/hw/pcmcia/pxa2xx.c b/hw/pcmcia/pxa2xx.c
-index 5f4bf22a90..fcca7e571b 100644
---- a/hw/pcmcia/pxa2xx.c
-+++ b/hw/pcmcia/pxa2xx.c
-@@ -18,10 +18,6 @@
- #include "hw/pcmcia.h"
- #include "hw/arm/pxa.h"
- 
--#define TYPE_PXA2XX_PCMCIA "pxa2xx-pcmcia"
--#define PXA2XX_PCMCIA(obj) \
--    OBJECT_CHECK(PXA2xxPCMCIAState, obj, TYPE_PXA2XX_PCMCIA)
--
- struct PXA2xxPCMCIAState {
-     SysBusDevice parent_obj;
- 
-diff --git a/hw/sd/pxa2xx_mmci.c b/hw/sd/pxa2xx_mmci.c
-index 04f0a98f81..3a47b380dd 100644
---- a/hw/sd/pxa2xx_mmci.c
-+++ b/hw/sd/pxa2xx_mmci.c
-@@ -22,9 +22,6 @@
- #include "qemu/module.h"
- #include "trace.h"
- 
--#define TYPE_PXA2XX_MMCI "pxa2xx-mmci"
--#define PXA2XX_MMCI(obj) OBJECT_CHECK(PXA2xxMMCIState, (obj), TYPE_PXA2XX_MMCI)
--
- #define TYPE_PXA2XX_MMCI_BUS "pxa2xx-mmci-bus"
- #define PXA2XX_MMCI_BUS(obj) OBJECT_CHECK(SDBus, (obj), TYPE_PXA2XX_MMCI_BUS)
- 
+     if (klass->get_clock_frequency) {
+         freq = klass->get_clock_frequency(dev, clock);
 -- 
 2.26.2
 

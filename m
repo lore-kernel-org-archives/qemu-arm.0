@@ -1,118 +1,107 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp135723lfc;
-        Tue, 25 Aug 2020 12:48:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJztnWbiojC7z36s5VdwPTyN5BIJGo2JmpOvSkKhikn+HNq63PNsrED4lsjvyJ4Jt3zSpias
-X-Received: by 2002:a25:b4c:: with SMTP id 73mr16239150ybl.102.1598384934292;
-        Tue, 25 Aug 2020 12:48:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598384934; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp137020lfc;
+        Tue, 25 Aug 2020 12:50:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx7jP71l/i7qmZ9IDdGx356xOh7bnxqIX+2iPUWgSd8bs3kfmtyNjEZtQNZRsscsg6T6y3a
+X-Received: by 2002:a25:7a42:: with SMTP id v63mr15976055ybc.4.1598385059505;
+        Tue, 25 Aug 2020 12:50:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598385059; cv=none;
         d=google.com; s=arc-20160816;
-        b=e+DbEVfcK6iSlXAInDtxGlh7ReYvESJ4evZMe3nMq9ACw+u9YDmHQEQhpKLaHc0EP0
-         aG/Lh+D6rk9vTfJuw4rFjir69qbXUL7hcy+Hg/S2GSWRbjGtl9SRQWtqVX021MDwZA7o
-         RmX1TDnUWQrzMvI9/LEqZLHEMiI1bG0YMgNA9PAkbf1Tn+aip4tEcxkGBlU6OnWaUMzM
-         1bfDjx521/0mxr6zmRbZrvirGE8Fgzyu4J8lMVOe9Vdgnzm8ASYl/amDSDu0F3UALCeV
-         40JFjv/SBPwSbBQSI76ePglY8mqWDm6KayBcwMhefCaRi/f8oKsYqWDSmZ3fgQ4db7V1
-         yFrQ==
+        b=wGgWrCK1yIl4EdmwHq1b3h4w22zyWF8a90juvcol5UXUd+9TNsOT8PlQ1IWfBdqXGr
+         m6gcdtu+rZNpoOJsF+HWxFQU8CBIoGIcpv5PI9Iizb7dpjH4cmTOSKwDcw2+bf6aKg86
+         TmDtNK4YHKSKPknh6LoCDJXZp3IjVHKV7BoFDeth21e7NLHdeNXmLQqiAvBw9DDjlL6/
+         gazelRQjIQrnd0SRqtfzXrqdHEz9BKOP3ZUpr0PC1v2Dkdfq5bgFidt90ZRvaDl59Euf
+         5wIpFRapyIeNd3BWxpnKYwDzAf2stSxkOGYXdWDjKX3OqAGL+/xKlbUPvn60h+v7lNQu
+         A39g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=w7+EdLOxHGbkMm10CGWFvzLy4NVAUtmc3MD806ii9MA=;
-        b=KzCv5S2FVbR7x+tvSL0Tex6kLSUFVNfxRC4S7pnpeYHHOQTwRQLIAT82IUKrZ2fGwo
-         DhfKyajLEse8sydhz7hJGpXkQHmVkXGdHekSHHCr2hI2VGqDH7IEuoYtqxlmUTDoe/LM
-         ulWrSFAwr4M0AmppOSbQX731PtW9bAgY8qdJynnfwGFrA49fQmHg9JWsuqlTCloZss6K
-         5XiqnhiUEDjRfhWnqgz2n3AhNSfSMXQC1kFlIkRwMZbDFBHRHp6zx93Cp0pRVgekA69M
-         ukzBoeV0ZJR5UDCVmTIYRV92pdj8RtCuzRDVVuQ8C25N4Eb6h5ubk68+nSege0yGioZi
-         E1WA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=N5iC3NayyESUg8c1+x1J95OctO9j2TLPOhxaSknsN88=;
+        b=mM29UQiBtW3gUX9kjhkn+iHYWGXrJ5uJ7+G2DPLdF+ibbM8xHHrr3d0l+ZcuHB7+Be
+         QdKtar60k1BW8ujX/vLgb1Lz0GlXis/vnARAvL2HOCIgq9h4/DGlClJDpZe92R/J4rnK
+         upUAbQaQ2eGwqqexVWllpLzKBQrw2Ld6dRwHcS4BeQ3cHHBatkyY6PHDkivx4mzeY5D6
+         CtxdQ0G1BvrpQux8G6oFg13V9yFzkMCbflz22qWzYXf8HVpfpl8yojoootMgSu/QTPUI
+         BmtZC06KgNxVknwI19Cq9C1jdyzPWlab80komYfchxy+th5LefJ05NxVNN4XFXcdOhsT
+         DHrg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GstEVyK2;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MMcYI4el;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1si14871607ybs.48.2020.08.25.12.48.54
+        by mx.google.com with ESMTPS id l4si15250613ybc.52.2020.08.25.12.50.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Aug 2020 12:48:54 -0700 (PDT)
+        Tue, 25 Aug 2020 12:50:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GstEVyK2;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MMcYI4el;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58018 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39872 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAew9-0005zW-Mi
-	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:48:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43038)
+	id 1kAeyA-0001o8-SD
+	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:50:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kAeeg-0000fP-U0
- for qemu-devel@nongnu.org; Tue, 25 Aug 2020 15:30:50 -0400
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:34255)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kAeef-0007MG-43
- for qemu-devel@nongnu.org; Tue, 25 Aug 2020 15:30:50 -0400
-Received: by mail-pf1-x443.google.com with SMTP id m71so8136621pfd.1
- for <qemu-devel@nongnu.org>; Tue, 25 Aug 2020 12:30:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=w7+EdLOxHGbkMm10CGWFvzLy4NVAUtmc3MD806ii9MA=;
- b=GstEVyK2mj3OWhC+5gYBtNBeGTnxA/T6VXJDnFBYnkqMshFrMP4JbNTVcEF/hmg+zW
- fbU8lZjdr7gSAYsMES0YV6vy8/kEboj/D9QrOiB00hINdPJfxzGmjPvjrOwUFNr50eDL
- GacfhUyAFW3+bSyVEBalmw+Pr0osp3hl9UVKW+nkpFlVBeiKq9TFU2P7l1LsykSYukrL
- mGm//r05bzJOH2iS/1eGyWkgger1H1Lt37OA5AzZSSb7+MX5ciUp3NwoFh3dmRi3ASP8
- /h0CE6UnMocjpdgDTtmpUdscf2Bi9maJiYeUCQEouTAANBiRK5N7IDY3vsLyjLKeqN7r
- Ea9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=w7+EdLOxHGbkMm10CGWFvzLy4NVAUtmc3MD806ii9MA=;
- b=aRlIVer2B3uTKH/51ck3Y458hcE4lZd1rHfjaeh8V/1wpd7HZoZUIMVNCCOqt3Lhhg
- lMFvKVKFKhIh5cSsHZW+p7tqKo/rGxjgE3yIaOqQPH/p51oYHLJ2QAG3n40k8I+mZHUj
- TQMYEejMzB4rZSmr2d6wEB3CBmZRHNOnzbai5sKna/2oLoB1C8vaROaQSvyFgYa6u+Cy
- 6RCeNHusfuCNDmesBe8+UGIE4Ri3WPWDI+5cXLLqh/lG+WrIje/jesbYz5eMonc/pNKD
- v+5QCxCXpaiY8kCAWQF6Sjg9MJm9FcnBJnuV987wqvF6x5WLDSQgN9jfVxkQQkKSP0t7
- 78VA==
-X-Gm-Message-State: AOAM531ISuWbsjEPXAlWNQPFucjKmmxHMEX7orOIJTazCo1p7xsjvi5J
- i5YU/0ZTJbDYie6dzWztxop6SJ3ciOi0+A==
-X-Received: by 2002:a05:6a00:90:: with SMTP id
- c16mr9311495pfj.200.1598383847264; 
- Tue, 25 Aug 2020 12:30:47 -0700 (PDT)
-Received: from [192.168.81.79]
- (h216-228-167-147.bendor.dedicated.static.tds.net. [216.228.167.147])
- by smtp.gmail.com with ESMTPSA id d128sm27038pfa.24.2020.08.25.12.30.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Aug 2020 12:30:46 -0700 (PDT)
-Subject: Re: [PATCH 22/22] target/arm: Enable FP16 in '-cpu max'
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200824142934.20850-1-peter.maydell@linaro.org>
- <20200824142934.20850-23-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <c922abe6-ddd8-5110-31a0-560f96c312dc@linaro.org>
-Date: Tue, 25 Aug 2020 12:30:44 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kAeY7-0004XC-2c
+ for qemu-devel@nongnu.org; Tue, 25 Aug 2020 15:24:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:57595)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kAeY3-0006Qw-Lg
+ for qemu-devel@nongnu.org; Tue, 25 Aug 2020 15:24:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598383438;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=N5iC3NayyESUg8c1+x1J95OctO9j2TLPOhxaSknsN88=;
+ b=MMcYI4elFOjNRcQ+e5D/Oqgd6YxnxrewbtzvsOosI/9zyTdxqJf97q0BXAZMZR1pCQmLGj
+ WHa6glUHcr9p/n3TnunshAgwahj27CEbh2GqYO4AgcCjTV0LauluXWl8NXw6RUR+2GCr8f
+ JVLYo1og646k6XX678m07JyEXidwZ8M=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-264-rMI6QtF-MiOt-wt5N6RRaA-1; Tue, 25 Aug 2020 15:23:56 -0400
+X-MC-Unique: rMI6QtF-MiOt-wt5N6RRaA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9561C10066FF;
+ Tue, 25 Aug 2020 19:23:55 +0000 (UTC)
+Received: from localhost (unknown [10.10.67.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 64E9F5D9D3;
+ Tue, 25 Aug 2020 19:23:52 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 63/74] [automated] Use TYPE_INFO macro (pass 2)
+Date: Tue, 25 Aug 2020 15:20:59 -0400
+Message-Id: <20200825192110.3528606-64-ehabkost@redhat.com>
+In-Reply-To: <20200825192110.3528606-1-ehabkost@redhat.com>
+References: <20200825192110.3528606-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200824142934.20850-23-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.602,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 06:38:59
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.958,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,23 +114,215 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>, Corey Minyard <minyard@acm.org>,
+ Michael Walle <michael@walle.cc>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nJ0eegn/gDBp
+X-TUID: +zhmzhU0Kjkk
 
-On 8/24/20 7:29 AM, Peter Maydell wrote:
-> Set the MVFR1 ID register FPHP and SIMDHP fields to indicate
-> that our "-cpu max" has v8.2-FP16.
-> 
-> TODO: this patch needs to go at the end of the series.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/cpu.c   |  3 ++-
->  target/arm/cpu64.c | 10 ++++------
->  2 files changed, 6 insertions(+), 7 deletions(-)
+Generated using:
+  $ ./scripts/codeconverter/converter.py -i --passes=2 \
+    --pattern=TypeRegisterCall,TypeInitMacro $(git grep -l TypeInfo -- '*.[ch]')
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+One notable difference is that files declaring multiple types
+will now have multiple separate __construtor__ functions
+declared, instead of one for all types.
 
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Changes series v2 -> v3: this is a new patch added in series v3
 
-r~
+Script was re-run after the rebase, and after being changed to
+accept spaces in "type_init (...)" and "type_register_static
+(...)" lines.
+
+This is being submitted as a separate patch to make review
+easier, but it can be squashed into the previous patch once it
+gets reviewed.
+
+---
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Corey Minyard <minyard@acm.org>
+Cc: Michael Walle <michael@walle.cc>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+---
+ hw/audio/ac97.c           | 2 +-
+ hw/audio/adlib.c          | 2 +-
+ hw/audio/cs4231a.c        | 2 +-
+ hw/audio/es1370.c         | 2 +-
+ hw/audio/gus.c            | 2 +-
+ hw/audio/sb16.c           | 2 +-
+ hw/ipmi/ipmi_bmc_extern.c | 6 +-----
+ hw/sd/milkymist-memcard.c | 8 ++------
+ hw/sd/pl181.c             | 8 ++------
+ 9 files changed, 11 insertions(+), 23 deletions(-)
+
+diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
+index 38522cf0ba..96683b188c 100644
+--- a/hw/audio/ac97.c
++++ b/hw/audio/ac97.c
+@@ -1426,10 +1426,10 @@ static const TypeInfo ac97_info = {
+         { },
+     },
+ };
++TYPE_INFO(ac97_info)
+ 
+ static void ac97_register_types (void)
+ {
+-    type_register_static (&ac97_info);
+     deprecated_register_soundhw("ac97", "Intel 82801AA AC97 Audio",
+                                 0, TYPE_AC97);
+ }
+diff --git a/hw/audio/adlib.c b/hw/audio/adlib.c
+index 65dff5b6fc..671f99a2e1 100644
+--- a/hw/audio/adlib.c
++++ b/hw/audio/adlib.c
+@@ -318,10 +318,10 @@ static const TypeInfo adlib_info = {
+     .instance_size = sizeof (AdlibState),
+     .class_init    = adlib_class_initfn,
+ };
++TYPE_INFO(adlib_info)
+ 
+ static void adlib_register_types (void)
+ {
+-    type_register_static (&adlib_info);
+     deprecated_register_soundhw("adlib", ADLIB_DESC, 1, TYPE_ADLIB);
+ }
+ 
+diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
+index 59705a8d47..176a96ffb3 100644
+--- a/hw/audio/cs4231a.c
++++ b/hw/audio/cs4231a.c
+@@ -710,10 +710,10 @@ static const TypeInfo cs4231a_info = {
+     .instance_init = cs4231a_initfn,
+     .class_init    = cs4231a_class_initfn,
+ };
++TYPE_INFO(cs4231a_info)
+ 
+ static void cs4231a_register_types (void)
+ {
+-    type_register_static (&cs4231a_info);
+     deprecated_register_soundhw("cs4231a", "CS4231A", 1, TYPE_CS4231A);
+ }
+ 
+diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
+index 4255463a49..8c924946bd 100644
+--- a/hw/audio/es1370.c
++++ b/hw/audio/es1370.c
+@@ -918,10 +918,10 @@ static const TypeInfo es1370_info = {
+         { },
+     },
+ };
++TYPE_INFO(es1370_info)
+ 
+ static void es1370_register_types (void)
+ {
+-    type_register_static (&es1370_info);
+     deprecated_register_soundhw("es1370", "ENSONIQ AudioPCI ES1370",
+                                 0, TYPE_ES1370);
+ }
+diff --git a/hw/audio/gus.c b/hw/audio/gus.c
+index 7e4a8cadad..3f2733d168 100644
+--- a/hw/audio/gus.c
++++ b/hw/audio/gus.c
+@@ -312,10 +312,10 @@ static const TypeInfo gus_info = {
+     .instance_size = sizeof (GUSState),
+     .class_init    = gus_class_initfn,
+ };
++TYPE_INFO(gus_info)
+ 
+ static void gus_register_types (void)
+ {
+-    type_register_static (&gus_info);
+     deprecated_register_soundhw("gus", "Gravis Ultrasound GF1", 1, TYPE_GUS);
+ }
+ 
+diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
+index 2d9e50f99b..79984de7b9 100644
+--- a/hw/audio/sb16.c
++++ b/hw/audio/sb16.c
+@@ -1443,10 +1443,10 @@ static const TypeInfo sb16_info = {
+     .instance_init = sb16_initfn,
+     .class_init    = sb16_class_initfn,
+ };
++TYPE_INFO(sb16_info)
+ 
+ static void sb16_register_types (void)
+ {
+-    type_register_static (&sb16_info);
+     deprecated_register_soundhw("sb16", "Creative Sound Blaster 16",
+                                 1, TYPE_SB16);
+ }
+diff --git a/hw/ipmi/ipmi_bmc_extern.c b/hw/ipmi/ipmi_bmc_extern.c
+index f9a13e0a44..0d3dff02c4 100644
+--- a/hw/ipmi/ipmi_bmc_extern.c
++++ b/hw/ipmi/ipmi_bmc_extern.c
+@@ -539,10 +539,6 @@ static const TypeInfo ipmi_bmc_extern_type = {
+     .instance_finalize = ipmi_bmc_extern_finalize,
+     .class_init    = ipmi_bmc_extern_class_init,
+  };
++TYPE_INFO(ipmi_bmc_extern_type)
+ 
+-static void ipmi_bmc_extern_register_types(void)
+-{
+-    type_register_static(&ipmi_bmc_extern_type);
+-}
+ 
+-type_init(ipmi_bmc_extern_register_types)
+diff --git a/hw/sd/milkymist-memcard.c b/hw/sd/milkymist-memcard.c
+index be89a93876..76f6ae9d23 100644
+--- a/hw/sd/milkymist-memcard.c
++++ b/hw/sd/milkymist-memcard.c
+@@ -311,6 +311,7 @@ static const TypeInfo milkymist_memcard_info = {
+     .instance_init = milkymist_memcard_init,
+     .class_init    = milkymist_memcard_class_init,
+ };
++TYPE_INFO(milkymist_memcard_info)
+ 
+ static void milkymist_sdbus_class_init(ObjectClass *klass, void *data)
+ {
+@@ -326,11 +327,6 @@ static const TypeInfo milkymist_sdbus_info = {
+     .instance_size = sizeof(SDBus),
+     .class_init = milkymist_sdbus_class_init,
+ };
++TYPE_INFO(milkymist_sdbus_info)
+ 
+-static void milkymist_memcard_register_types(void)
+-{
+-    type_register_static(&milkymist_memcard_info);
+-    type_register_static(&milkymist_sdbus_info);
+-}
+ 
+-type_init(milkymist_memcard_register_types)
+diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+index 579d68ad83..5153959b1d 100644
+--- a/hw/sd/pl181.c
++++ b/hw/sd/pl181.c
+@@ -526,6 +526,7 @@ static const TypeInfo pl181_info = {
+     .instance_init = pl181_init,
+     .class_init    = pl181_class_init,
+ };
++TYPE_INFO(pl181_info)
+ 
+ static void pl181_bus_class_init(ObjectClass *klass, void *data)
+ {
+@@ -541,11 +542,6 @@ static const TypeInfo pl181_bus_info = {
+     .instance_size = sizeof(SDBus),
+     .class_init = pl181_bus_class_init,
+ };
++TYPE_INFO(pl181_bus_info)
+ 
+-static void pl181_register_types(void)
+-{
+-    type_register_static(&pl181_info);
+-    type_register_static(&pl181_bus_info);
+-}
+ 
+-type_init(pl181_register_types)
+-- 
+2.26.2
+

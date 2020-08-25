@@ -1,137 +1,182 @@
-Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3157160lfy;
-        Mon, 24 Aug 2020 22:51:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyIJGqxo7FuzLl5gIxN3kvkKQ3vjN//LkcvbGJ30R1O1eEIfM50wGtllVxZundPhxZHRvPV
-X-Received: by 2002:a25:328e:: with SMTP id y136mr11841317yby.281.1598334686873;
-        Mon, 24 Aug 2020 22:51:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598334686; cv=none;
+Received: by 2002:ac2:4841:0:0:0:0:0 with SMTP id 1csp3159735lfy;
+        Mon, 24 Aug 2020 22:57:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykVRnjP3Cw4CoohM3Jq0rEkm15FldCiwT2OqEaC03CR17vZZu+SWKgKb1pHjwzhG43dCnB
+X-Received: by 2002:a25:950:: with SMTP id u16mr12734973ybm.86.1598335050791;
+        Mon, 24 Aug 2020 22:57:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598335050; cv=none;
         d=google.com; s=arc-20160816;
-        b=bTK5n5jtyrVbbu54JDyFOb5SalmBQFYCk5FGUzgwxwGBDuoaOszCA+FOSHosVW4N+t
-         mttuh+AwnLS3PizKLPlZnKrNfuSiOKLzY0QFq9f+z855VSftQ1ABreyEKKt++/6Ut0+H
-         92yuWevMUCA5CtPo657YladxTUJMXX+Qaan/hFiTLbTemQiCE9cXrmlxbfXulXwUauPg
-         jTCt4IO85FUp6Vmr9pjtCDM46tWsrohFq1YR1knEHL+9OVRgQPNKASoX1WQUzimnhPn+
-         oeLwuZogjRDinRqR2AHmIeCeQ5nkMDn6hgrDWmrL605gurSZ9ndknjV46Uswh6P02SfM
-         74+w==
+        b=z6qFVTgTC3dB2s0YvGBC16PMzQAtt8I2lmcGEWU4K4jsL5y15qkdxAX1W+uijDhNHO
+         0xM65zgKvW9HVWw3tUJlkToAVBj6B31b8i5BB0z9yN/nWBxLJPke1GpHha6Ecfen0OrK
+         zwGCl9KTMBfXYpQ4s7dm9bvh82E/NUjZamQfB29W1SwYNi7Vmyuoh8ftwPiYb3F8r+8g
+         RZCmzKrBO3Xt4ce2wm1+U2svFVNqypbV2s05Ohemm9USgHhNSYQkrDmXPfzjR95pGnkh
+         OgVRjyRs8Qi/hm65Kq7H4McKWXvKu0MV31LNbN1MSyhbWXbaBB2j+w8wj9mFfeurX7me
+         tfdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=5ccRjVKuwYMcflsMajXtDQ1h/Iw/3YpycJlS3w9onxc=;
-        b=YPFpy+t34uZwdQvBB9goJtNUVqOuPR7wBrG92gdQp1j7w9YfyXfFvI+iJeoXDnCvcJ
-         68TNKe1UcE+5+6pKI5kql4V5d/4iKvNCzN2cAtesX+Zz0ihCuF//au74mfmG/8UCuOlA
-         6r2DVyIsgvhWn0Nfv/Lu6ZIBqaYUwaEd0K5DzM6pv3UTjHKZpmQDWkdY9OI1z3kBaxWm
-         3NVIJw+FMt+0DCqhDpbBLQ8239sZjG3DGJCqD6oieLoICZLVs1LR+sUO3f/bQiSz/05K
-         yEkqstdmqewbW8qFOvxlzSwvbYOUkVwcF0+efP2uoCCb4l0nCa4sU4jnZeDzc8z2Stqe
-         QJWQ==
+        bh=/aD9qkx3dItPYsJa84Gx5bqxbnbVUVWagU8sXmDR4hQ=;
+        b=ZUUdbyORY4t696RZ4mW8n+6JdTm3QeInzxDSE16vQCAauX92vpCyGY1U3wM2M85XVK
+         +60fDUrrJIw/0hZCg/yKI7xtAtaU3JBpmmyIw4LMETcVZOfhkGPlER/rnQtfNujSRLZC
+         oPjZUQbjpcgxs4PX/zk+MRj8I+aQfStfuC7wjdiuJjwm0If+b8nZCt0xu9p/eKk+mYfD
+         y4rsGTjFz8vrtJJVIJItr4ybAkndeK5a9Ahylp8rKGyE4UjUbdVJJTxtJrMQQkYYd9qo
+         83rfYnlT7MdNO7uYTjKbI4hOjoV6IFyY9CZkfID+LvMYmHKsfKdaBxy+RO+qdpdVaqBY
+         7eIQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AEldW8Dj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@jms.id.au header.s=google header.b=lj2t+wLX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l7si13307328ybk.54.2020.08.24.22.51.26
+        by mx.google.com with ESMTPS id 6si13863534ybl.150.2020.08.24.22.57.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 24 Aug 2020 22:51:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 24 Aug 2020 22:57:30 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AEldW8Dj;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42548 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=lj2t+wLX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48004 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kARri-0007Zt-2B
-	for alex.bennee@linaro.org; Tue, 25 Aug 2020 01:51:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59658)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kARxa-0001zH-3q
+	for alex.bennee@linaro.org; Tue, 25 Aug 2020 01:57:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kARr3-00078L-HJ
- for qemu-devel@nongnu.org; Tue, 25 Aug 2020 01:50:45 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:20150
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kARr1-0007zx-K8
- for qemu-devel@nongnu.org; Tue, 25 Aug 2020 01:50:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598334642;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=5ccRjVKuwYMcflsMajXtDQ1h/Iw/3YpycJlS3w9onxc=;
- b=AEldW8DjYZ1ai4k+JYGz+9tAhXgCiyukitgtu52ghq4qowi70i2sF7XxCpbNf4+SHxNFlC
- d41tTRD71DGQA9mr83MjnQ2zYLd2R4wFR5gpWixSXycQRpn6HIhnCIFxSfFxKyi41o33G1
- j1611BV9NVY2cxCWTVz0vliN4vr5HNw=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-187-Myr9DzcKPJqcGIA0Udd9zQ-1; Tue, 25 Aug 2020 01:50:40 -0400
-X-MC-Unique: Myr9DzcKPJqcGIA0Udd9zQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 0AC001074665;
- Tue, 25 Aug 2020 05:50:39 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-54.ams2.redhat.com
- [10.36.112.54])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5282D7E33D;
- Tue, 25 Aug 2020 05:50:33 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 75DAC1753B; Tue, 25 Aug 2020 07:50:32 +0200 (CEST)
-Date: Tue, 25 Aug 2020 07:50:32 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [PATCH 6/6] virtio-vga: Use typedef name for instance_size
-Message-ID: <20200825055032.kyxqleo6lxzvbkru@sirius.home.kraxel.org>
-References: <20200824215936.2961951-1-ehabkost@redhat.com>
- <20200824215936.2961951-7-ehabkost@redhat.com>
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1kARxC-0001yb-28; Tue, 25 Aug 2020 01:57:06 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:33919)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1kARx8-0000JG-Sj; Tue, 25 Aug 2020 01:57:05 -0400
+Received: by mail-ed1-x544.google.com with SMTP id bs17so10147057edb.1;
+ Mon, 24 Aug 2020 22:57:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=/aD9qkx3dItPYsJa84Gx5bqxbnbVUVWagU8sXmDR4hQ=;
+ b=lj2t+wLXySqKB8Ug4msLqUENDCJYbiAIoXr17RVJZ/aHPdFbp9T0ZvPQDyYrH6aewU
+ dfIGxQ6yu3HC3TGMsGT3PLvyrJv+ROeT+Ad0VvnoT3bwh+7ozj7aBytwGSukCr/2nzHt
+ vZk3FvqXVPf+HtcZDZs3vFa3ppgqkC6eBnogI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=/aD9qkx3dItPYsJa84Gx5bqxbnbVUVWagU8sXmDR4hQ=;
+ b=cM/AkDOUFJPp1OJhmnq6MIQ+LvIFZbmDdWYPvznTgav1HBcG/J3FmnwM2a2FVdT/6L
+ gbj5LfleBjdF6NdURbR3w+DnLC5ZhIUB/cQN/YLRqGFCWpyMbpW+MBvo4IUx+bS3gtuF
+ 6+YJiIE5DJfRmxTCtEhpc7anVkxsGsYa2MG1nsQirMZP8M2oK3h1D1VsVjFYsy+NQmWS
+ SMMAK7X3XK8FF4tAZ0jiQRD8NdPRN/3ONVPuseDuUULO43tksKrrTgNvkebaZnbBrIuT
+ VNq0MUtbU6ZrD22G0KEaYuXYjC0Z/BCtrTscY0IlXNLeFS+3Dj0bbcTSWlnAl6s6SF4k
+ DHnQ==
+X-Gm-Message-State: AOAM531zB2/cHb4EgJqtjiKIsYS5Oo3WgMmm5lt5vcg2enhEYWYR3flg
+ Okx/o2EwkeGo1DwvV1TKnlMJ44iyRebqVYvuRCE=
+X-Received: by 2002:a50:f403:: with SMTP id r3mr7540875edm.260.1598335020522; 
+ Mon, 24 Aug 2020 22:57:00 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200824215936.2961951-7-ehabkost@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0.001
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=kraxel@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 01:37:44
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.956,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20200819100956.2216690-1-clg@kaod.org>
+ <20200819100956.2216690-9-clg@kaod.org>
+In-Reply-To: <20200819100956.2216690-9-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Tue, 25 Aug 2020 05:56:47 +0000
+Message-ID: <CACPK8Xep5-nUqDFwd_HbG9OjV+vrwS1t_WgPsJJQoh9HHeSf+Q@mail.gmail.com>
+Subject: Re: [PATCH v2 08/21] aspeed/sdhci: Fix reset sequence
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=joel.stan@gmail.com; helo=mail-ed1-x544.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AZ8C3Z+swpx/
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Eddie James <eajames@linux.ibm.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6oPhd/EUV+Jb
 
-On Mon, Aug 24, 2020 at 05:59:36PM -0400, Eduardo Habkost wrote:
-> This makes the code consistent with the rest of QOM code in QEMU,
-> and will make automated conversion to type declaration macros
-> simpler.
-> 
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+On Wed, 19 Aug 2020 at 10:10, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> BIT(0) of the ASPEED_SDHCI_INFO register is set by SW and polled until
+> the bit is cleared by HW.
+>
+> Use the number of supported slots to define the default value of this
+> register (The AST2600 eMMC Controller only has one). Fix the reset
+> sequence by clearing automatically the RESET bit.
+>
+> Cc: Eddie James <eajames@linux.ibm.com>
+> Fixes: 2bea128c3d0b ("hw/sd/aspeed_sdhci: New device")
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
-Reviewed-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 
+> ---
+>  hw/sd/aspeed_sdhci.c | 14 ++++++++++++--
+>  1 file changed, 12 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/sd/aspeed_sdhci.c b/hw/sd/aspeed_sdhci.c
+> index 22cafce0fbdc..4f24b7d2f942 100644
+> --- a/hw/sd/aspeed_sdhci.c
+> +++ b/hw/sd/aspeed_sdhci.c
+> @@ -16,7 +16,9 @@
+>  #include "hw/qdev-properties.h"
+>
+>  #define ASPEED_SDHCI_INFO            0x00
+> -#define  ASPEED_SDHCI_INFO_RESET     0x00030000
+> +#define  ASPEED_SDHCI_INFO_SLOT1     (1 << 17)
+> +#define  ASPEED_SDHCI_INFO_SLOT0     (1 << 16)
+> +#define  ASPEED_SDHCI_INFO_RESET     (1 << 0)
+>  #define ASPEED_SDHCI_DEBOUNCE        0x04
+>  #define  ASPEED_SDHCI_DEBOUNCE_RESET 0x00000005
+>  #define ASPEED_SDHCI_BUS             0x08
+> @@ -67,6 +69,10 @@ static void aspeed_sdhci_write(void *opaque, hwaddr ad=
+dr, uint64_t val,
+>      AspeedSDHCIState *sdhci =3D opaque;
+>
+>      switch (addr) {
+> +    case ASPEED_SDHCI_INFO:
+> +        /* The RESET bit automatically clears. */
+> +        sdhci->regs[TO_REG(addr)] =3D (uint32_t)val & ~ASPEED_SDHCI_INFO=
+_RESET;
+> +        break;
+>      case ASPEED_SDHCI_SDIO_140:
+>          sdhci->slots[0].capareg =3D (uint64_t)(uint32_t)val;
+>          break;
+> @@ -155,7 +161,11 @@ static void aspeed_sdhci_reset(DeviceState *dev)
+>      AspeedSDHCIState *sdhci =3D ASPEED_SDHCI(dev);
+>
+>      memset(sdhci->regs, 0, ASPEED_SDHCI_REG_SIZE);
+> -    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =3D ASPEED_SDHCI_INFO_RESET;
+> +
+> +    sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] =3D ASPEED_SDHCI_INFO_SLOT0;
+> +    if (sdhci->num_slots =3D=3D 2) {
+> +        sdhci->regs[TO_REG(ASPEED_SDHCI_INFO)] |=3D ASPEED_SDHCI_INFO_SL=
+OT1;
+> +    }
+>      sdhci->regs[TO_REG(ASPEED_SDHCI_DEBOUNCE)] =3D ASPEED_SDHCI_DEBOUNCE=
+_RESET;
+>  }
+>
+> --
+> 2.25.4
+>

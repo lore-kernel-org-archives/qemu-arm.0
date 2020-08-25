@@ -1,118 +1,109 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp140134lfc;
-        Tue, 25 Aug 2020 12:56:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyntpP079FTjO6RcmSWOrsk8xVMZLCaWnz/WJkcBxn+8KFYRrJFhMAVhxoQc1owqAwuj2/9
-X-Received: by 2002:a25:5887:: with SMTP id m129mr18278601ybb.11.1598385388536;
-        Tue, 25 Aug 2020 12:56:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598385388; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp140654lfc;
+        Tue, 25 Aug 2020 12:57:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx7NQZhBaV09ZjzdKJ0JMr/3UOPfjAA5XPR9TZuUXcEH0D0H6v1YbSZadC1HIscB0JX6nIi
+X-Received: by 2002:a25:3b4a:: with SMTP id i71mr15534102yba.464.1598385449593;
+        Tue, 25 Aug 2020 12:57:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598385449; cv=none;
         d=google.com; s=arc-20160816;
-        b=qMCMeUOUq/mlIRGh5zeMTNdSd3CX7a7qaSDfEThpmNFa0SP95PMe6yPiESGDxuHE05
-         bpKiH5wn3GYnbCEJPNfvJ5QALA8r4LOPO0D5Vda8jXkmhHcNrP7PPRfWILPzOJlZg/qh
-         WLnK6aIqdg9XEVmpaZfQ4tf3+FWw+fGgHTeLDWR/x/HP5Zy9LhbVCilCQxYOCEDORjX3
-         vMSe7do+BUdihNQ6KGxFhWIR0rz89sgWbbRKbshMcgDdm7OuFE8RhlnXte5dZBJvY3r9
-         2cLVxyfZaRrgUbIsOzCcE2cBAQshadhSGJiF5Gjy67WL4WAsKaaIetnciz9WYYuuXw3j
-         Mcfw==
+        b=W0Jo2HiWxXsQCF+2P22WUrAb0EU2iM+UU67EaVKFzTpNZIqepeeLm4jQNEWS6LKiFD
+         eH/NF2KGHOWPCklXlX6MDHlerxtodQlRuO84Csh7s/zOZQvqDRXZDeidd9O/wliv9P81
+         YsJNp5hSfNpOvnfmSU508GSaZjwdIIFEvIhBhufCJ135GzOp2YUzqXr2+yNO36xoFt9+
+         0K77bgDOczys9gXFuMcCn5legzAjosLhKmRZ/2jgFXS79qdn9bFO4iSN5mNExwXwrHra
+         MG0qltP097E29pbBdfLYJ8K0mUFWzvy+yW4tUKq3kd27esSAtRPjqIzrIGewS34zL3oI
+         8S6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Vl2wvYes1LVzVyAGXqUfvKxadFKaJVw4GEr+AwGhehk=;
-        b=uyaLR7sxfGKxeyP1Rp9j9SPR7qcgIDEyVCVr9THp5xvcLAcpVLSnrKFS8EyB39PFr7
-         xpy0akg1f3NVKNeXIzznwKv4fOESD25RDwX2UJnJMa3gZHx0pF3GRtVj4NeGuZsDD25o
-         zrE10RtX/WDEA12JhBGDVfnfz4UfjYelVoGEHrCEYkNcYlgcVDDdgRQfHyru3j/1BmkW
-         XYjkeQMt2Mfdhhen/i3ztB8tCZawC14VG9pkeQUtlMrTCCmQBjr0YqvUhc5CXT1b+PxH
-         8m1mhJMth79dhdAl0h5gVyKs3Dt2fWflwHhTPai6j+CHrp14GVVl4ZTcZhWpL7e0yVep
-         elgg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=1vUeoQMpRkZ1cz6/zMtCDWq4pPz3rwt5G1Oe91kF9bo=;
+        b=Hw9OZVTSb6JmB60Q77CJMug286jz4SC7rxtCLqepv1T5uYlS8W6D4kVKjb+sBf4wEZ
+         sFywEolgrEm3/kufO5stmP19UQEA+Fde2r/8xmNFUAtw8OpI+LBdAKAgehSAeNs0eBVY
+         FWTCnaYW/WJLJ6sIbjGgApthujz+Gq4oETEe6YiCnYTSCECJ54eZPHLXNuRe7aNsL7wr
+         uUlMu9W+oO03s4Ru+59Za5vvWdrV6GD3KhE6fQjI20qcxTKB8GbBk3XOzu97ZK+9Ge5q
+         mNeiyBzTMe1VoKGxvpUe2MKaHMoe0MeknUOsuJWC4Sr5ZZ7loEI6okQG3+tyupnOhahZ
+         vg9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=St77CbLP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eqiTRhku;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l7si14605629ybf.409.2020.08.25.12.56.28
+        by mx.google.com with ESMTPS id x3si19856861ybt.216.2020.08.25.12.57.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Aug 2020 12:56:28 -0700 (PDT)
+        Tue, 25 Aug 2020 12:57:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=St77CbLP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eqiTRhku;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58472 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34410 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAf3T-0001EB-WC
-	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:56:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41734)
+	id 1kAf4S-0002ub-VE
+	for alex.bennee@linaro.org; Tue, 25 Aug 2020 15:57:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kAeZa-000772-8W
- for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:25:35 -0400
-Received: from mail-pg1-x543.google.com ([2607:f8b0:4864:20::543]:37319)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kAeZX-0006hK-R1
- for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:25:33 -0400
-Received: by mail-pg1-x543.google.com with SMTP id g33so7513383pgb.4
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2020 12:25:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=Vl2wvYes1LVzVyAGXqUfvKxadFKaJVw4GEr+AwGhehk=;
- b=St77CbLP/7u1ai3nL9pCBygPa2vg9b23xe+a5BZzbOU05NhLPg9hJowouViXdZVTP1
- N69hNfLy+6Qy6+1D/kakb4Qz0/t7jKHls3aLg88FFsGzjsx062g0Uh6YmMmwD234pqjn
- zVnpHpeEjT7Q6ChDG76XDoHvJVXiTTWMSZfEtKrE9v2/PJeA39loVgzbFSYgRLMRKugK
- vYITXkmgUXG/nuT7KV0cisjRJ+cSsXN+KfR46+yYggJFAVEZo4UYMcs0ETq7RSq6I2Uv
- Fv0Pz2DBwtjBcTDiesf3FHmT9tHuPZDyY/EuMXd2JlgvFKoobYwroJGea0jAgaUtIoFK
- oFFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Vl2wvYes1LVzVyAGXqUfvKxadFKaJVw4GEr+AwGhehk=;
- b=RABtLmyk1sos6EkIEWZ6eH6UGWd47uAeYhGWsHOx9C6cC6GjeDvyh27XCKClDqLnaN
- niuXIJ4vvAyWZ4BMLiiYfCbPG5/KHTmRpig3Q4F0m/pubcyrh2H5Yd8Mc7ql+eWhaIMU
- rhYSlmgaewiTN5wv8ZQiBYPNqHacIc7kdFhOV3XzCfry3BfalDxgWCYw/vtBObChQjc2
- IG3w/+gKAfxCW4FM897YHZ/okDXtH2COb1eK84jkjZhUrPc2qYllYIRIMZmFKehPp0rb
- Bxzx2t1pUDDUttrN0r+2qVum76EvtuaJARptq0Xx7faDxlxN/H6Rvt6/KmjHxJCqOl8U
- Q3nw==
-X-Gm-Message-State: AOAM533We4opk0EZAk8trkj0n52kkQHSBDRk1n63yCKp40ApFeoLKK/A
- fMDukP7rU7gb0sbuwtzg5wNYaw==
-X-Received: by 2002:a17:902:c3d3:: with SMTP id
- j19mr9339443plj.62.1598383530149; 
- Tue, 25 Aug 2020 12:25:30 -0700 (PDT)
-Received: from [192.168.81.79]
- (h216-228-167-147.bendor.dedicated.static.tds.net. [216.228.167.147])
- by smtp.gmail.com with ESMTPSA id e16sm19685pfd.17.2020.08.25.12.25.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Aug 2020 12:25:29 -0700 (PDT)
-Subject: Re: [PATCH 20/22] target/arm: Implement new VFP fp16 insn VMOVX
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200824142934.20850-1-peter.maydell@linaro.org>
- <20200824142934.20850-21-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <fd00def9-8fd7-6259-ff4c-44d65664f3d5@linaro.org>
-Date: Tue, 25 Aug 2020 12:25:27 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kAeYa-000578-GM
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:24:32 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:47555
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kAeYX-0006Ue-O6
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2020 15:24:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598383469;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1vUeoQMpRkZ1cz6/zMtCDWq4pPz3rwt5G1Oe91kF9bo=;
+ b=eqiTRhkuxskZwXGlllXRyHab2H1UbbUInfa7Tr9adkZzNEbJZBJOc+DUcRyJ72NXP5/cbf
+ fX/XxqoHYqDx+qwOaJrZQ29PEleOhZca9gWCtytaf50JJvtQFkPERLRASnUU98EzT08zAj
+ qZqbcKBMGcj0vCt9z5uom/flueDKw9Y=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-500-Qu8P4QitP0Wvw0daqhuhXg-1; Tue, 25 Aug 2020 15:24:27 -0400
+X-MC-Unique: Qu8P4QitP0Wvw0daqhuhXg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 92DF51DDFC;
+ Tue, 25 Aug 2020 19:24:25 +0000 (UTC)
+Received: from localhost (unknown [10.10.67.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 31CD8709C4;
+ Tue, 25 Aug 2020 19:24:25 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 65/74] [automated] Move QOM typedefs and add missing
+ includes (pass 2)
+Date: Tue, 25 Aug 2020 15:21:01 -0400
+Message-Id: <20200825192110.3528606-66-ehabkost@redhat.com>
+In-Reply-To: <20200825192110.3528606-1-ehabkost@redhat.com>
+References: <20200825192110.3528606-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200824142934.20850-21-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::543;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x543.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -46
-X-Spam_score: -4.7
-X-Spam_bar: ----
-X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.602,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 10:39:45
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.958,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,23 +116,610 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Juan Quintela <quintela@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zvz7BAHH3GKO
+X-TUID: q8JOnPgRSa94
 
-On 8/24/20 7:29 AM, Peter Maydell wrote:
-> The fp16 extension includes a new instruction VMOVX, which copies the
-> upper 16 bits of a 32-bit source VFP register into the lower 16
-> bits of the destination and zeroes the high half of the destination.
-> Implement it.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  target/arm/vfp-uncond.decode   |  3 +++
->  target/arm/translate-vfp.c.inc | 25 +++++++++++++++++++++++++
->  2 files changed, 28 insertions(+)
+Some typedefs and macros are defined after the type check macros.
+This makes it difficult to automatically replace their
+definitions with OBJECT_DECLARE_TYPE.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Patch generated using:
 
+ $ ./scripts/codeconverter/converter.py -i \
+   --pattern=QOMStructTypedefSplit $(git grep -l '' -- '*.[ch]')
 
-r~
+which will split "typdef struct { ... } TypedefName"
+declarations.
+
+Followed by:
+
+ $ ./scripts/codeconverter/converter.py -i --pattern=MoveSymbols \
+    $(git grep -l '' -- '*.[ch]')
+
+which will:
+- move the typedefs and #defines above the type check macros
+- add missing #include "qom/object.h" lines if necessary
+
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Changes series v2 -> v3: this is a new patch added in series v3
+
+The script was re-run after rebase and after additional patches
+were added to this series.
+
+This is being submitted as a separate patch to make review
+easier, but it can be squashed into the previous patch once it
+gets reviewed.
+
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+
+---
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Laurent Vivier <laurent@vivier.eu>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: "Cédric Le Goater" <clg@kaod.org>
+Cc: Juan Quintela <quintela@redhat.com>
+Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org
+---
+ include/hw/block/swim.h    |  6 ++++--
+ include/hw/display/macfb.h | 18 ++++++++++-------
+ include/hw/ppc/xive.h      | 41 +++++++++++++++++++++++---------------
+ include/hw/rdma/rdma.h     |  5 +++--
+ migration/migration.h      |  6 ++++--
+ target/rx/cpu-qom.h        |  6 ++++--
+ hw/arm/integratorcp.c      | 16 +++++++++------
+ hw/arm/versatilepb.c       |  6 ++++--
+ hw/arm/vexpress.c          | 11 ++++++----
+ hw/sd/pl181.c              |  6 ++++--
+ 10 files changed, 76 insertions(+), 45 deletions(-)
+
+diff --git a/include/hw/block/swim.h b/include/hw/block/swim.h
+index 9d8b65c561..f013d634f7 100644
+--- a/include/hw/block/swim.h
++++ b/include/hw/block/swim.h
+@@ -13,6 +13,7 @@
+ 
+ #include "qemu/osdep.h"
+ #include "hw/sysbus.h"
++#include "qom/object.h"
+ 
+ #define SWIM_MAX_FD            2
+ 
+@@ -67,10 +68,11 @@ struct SWIMCtrl {
+ };
+ 
+ #define TYPE_SWIM "swim"
++typedef struct Swim Swim;
+ #define SWIM(obj) OBJECT_CHECK(Swim, (obj), TYPE_SWIM)
+ 
+-typedef struct Swim {
++struct Swim {
+     SysBusDevice parent_obj;
+     SWIMCtrl     ctrl;
+-} Swim;
++};
+ #endif
+diff --git a/include/hw/display/macfb.h b/include/hw/display/macfb.h
+index 347871b623..d330ee9823 100644
+--- a/include/hw/display/macfb.h
++++ b/include/hw/display/macfb.h
+@@ -16,6 +16,7 @@
+ #include "qemu/osdep.h"
+ #include "exec/memory.h"
+ #include "ui/console.h"
++#include "qom/object.h"
+ 
+ typedef struct MacfbState {
+     MemoryRegion mem_vram;
+@@ -31,34 +32,37 @@ typedef struct MacfbState {
+ } MacfbState;
+ 
+ #define TYPE_MACFB "sysbus-macfb"
++typedef struct MacfbSysBusState MacfbSysBusState;
+ #define MACFB(obj) \
+     OBJECT_CHECK(MacfbSysBusState, (obj), TYPE_MACFB)
+ 
+-typedef struct {
++struct MacfbSysBusState {
+     SysBusDevice busdev;
+ 
+     MacfbState macfb;
+-} MacfbSysBusState;
++};
+ 
++#define TYPE_NUBUS_MACFB "nubus-macfb"
++typedef struct MacfbNubusDeviceClass MacfbNubusDeviceClass;
++typedef struct MacfbNubusState MacfbNubusState;
+ #define NUBUS_MACFB_CLASS(class) \
+     OBJECT_CLASS_CHECK(MacfbNubusDeviceClass, (class), TYPE_NUBUS_MACFB)
+ #define NUBUS_MACFB_GET_CLASS(obj) \
+     OBJECT_GET_CLASS(MacfbNubusDeviceClass, (obj), TYPE_NUBUS_MACFB)
+ 
+-typedef struct MacfbNubusDeviceClass {
++struct MacfbNubusDeviceClass {
+     DeviceClass parent_class;
+ 
+     DeviceRealize parent_realize;
+-} MacfbNubusDeviceClass;
++};
+ 
+-#define TYPE_NUBUS_MACFB "nubus-macfb"
+ #define NUBUS_MACFB(obj) \
+     OBJECT_CHECK(MacfbNubusState, (obj), TYPE_NUBUS_MACFB)
+ 
+-typedef struct {
++struct MacfbNubusState {
+     NubusDevice busdev;
+ 
+     MacfbState macfb;
+-} MacfbNubusState;
++};
+ 
+ #endif
+diff --git a/include/hw/ppc/xive.h b/include/hw/ppc/xive.h
+index 2c42ae92d2..8ef9af1969 100644
+--- a/include/hw/ppc/xive.h
++++ b/include/hw/ppc/xive.h
+@@ -143,6 +143,7 @@
+ #include "sysemu/kvm.h"
+ #include "hw/sysbus.h"
+ #include "hw/ppc/xive_regs.h"
++#include "qom/object.h"
+ 
+ /*
+  * XIVE Notifier (Interface between Source and Router)
+@@ -153,21 +154,23 @@ typedef struct XiveNotifier XiveNotifier;
+ #define TYPE_XIVE_NOTIFIER "xive-notifier"
+ #define XIVE_NOTIFIER(obj)                                     \
+     INTERFACE_CHECK(XiveNotifier, (obj), TYPE_XIVE_NOTIFIER)
++typedef struct XiveNotifierClass XiveNotifierClass;
+ #define XIVE_NOTIFIER_CLASS(klass)                                     \
+     OBJECT_CLASS_CHECK(XiveNotifierClass, (klass), TYPE_XIVE_NOTIFIER)
+ #define XIVE_NOTIFIER_GET_CLASS(obj)                                   \
+     OBJECT_GET_CLASS(XiveNotifierClass, (obj), TYPE_XIVE_NOTIFIER)
+ 
+-typedef struct XiveNotifierClass {
++struct XiveNotifierClass {
+     InterfaceClass parent;
+     void (*notify)(XiveNotifier *xn, uint32_t lisn);
+-} XiveNotifierClass;
++};
+ 
+ /*
+  * XIVE Interrupt Source
+  */
+ 
+ #define TYPE_XIVE_SOURCE "xive-source"
++typedef struct XiveSource XiveSource;
+ #define XIVE_SOURCE(obj) OBJECT_CHECK(XiveSource, (obj), TYPE_XIVE_SOURCE)
+ 
+ /*
+@@ -177,7 +180,7 @@ typedef struct XiveNotifierClass {
+ #define XIVE_SRC_H_INT_ESB     0x1 /* ESB managed with hcall H_INT_ESB */
+ #define XIVE_SRC_STORE_EOI     0x2 /* Store EOI supported */
+ 
+-typedef struct XiveSource {
++struct XiveSource {
+     DeviceState parent;
+ 
+     /* IRQs */
+@@ -198,7 +201,7 @@ typedef struct XiveSource {
+     MemoryRegion    esb_mmio_kvm;
+ 
+     XiveNotifier    *xive;
+-} XiveSource;
++};
+ 
+ /*
+  * ESB MMIO setting. Can be one page, for both source triggering and
+@@ -304,6 +307,7 @@ void xive_source_set_irq(void *opaque, int srcno, int val);
+  */
+ 
+ #define TYPE_XIVE_TCTX "xive-tctx"
++typedef struct XiveTCTX XiveTCTX;
+ #define XIVE_TCTX(obj) OBJECT_CHECK(XiveTCTX, (obj), TYPE_XIVE_TCTX)
+ 
+ /*
+@@ -319,7 +323,7 @@ void xive_source_set_irq(void *opaque, int srcno, int val);
+ 
+ typedef struct XivePresenter XivePresenter;
+ 
+-typedef struct XiveTCTX {
++struct XiveTCTX {
+     DeviceState parent_obj;
+ 
+     CPUState    *cs;
+@@ -329,20 +333,22 @@ typedef struct XiveTCTX {
+     uint8_t     regs[XIVE_TM_RING_COUNT * XIVE_TM_RING_SIZE];
+ 
+     XivePresenter *xptr;
+-} XiveTCTX;
++};
+ 
+ /*
+  * XIVE Router
+  */
+ typedef struct XiveFabric XiveFabric;
+ 
+-typedef struct XiveRouter {
++struct XiveRouter {
+     SysBusDevice    parent;
+ 
+     XiveFabric *xfb;
+-} XiveRouter;
++};
++typedef struct XiveRouter XiveRouter;
+ 
+ #define TYPE_XIVE_ROUTER "xive-router"
++typedef struct XiveRouterClass XiveRouterClass;
+ #define XIVE_ROUTER(obj)                                \
+     OBJECT_CHECK(XiveRouter, (obj), TYPE_XIVE_ROUTER)
+ #define XIVE_ROUTER_CLASS(klass)                                        \
+@@ -350,7 +356,7 @@ typedef struct XiveRouter {
+ #define XIVE_ROUTER_GET_CLASS(obj)                              \
+     OBJECT_GET_CLASS(XiveRouterClass, (obj), TYPE_XIVE_ROUTER)
+ 
+-typedef struct XiveRouterClass {
++struct XiveRouterClass {
+     SysBusDeviceClass parent;
+ 
+     /* XIVE table accessors */
+@@ -365,7 +371,7 @@ typedef struct XiveRouterClass {
+     int (*write_nvt)(XiveRouter *xrtr, uint8_t nvt_blk, uint32_t nvt_idx,
+                      XiveNVT *nvt, uint8_t word_number);
+     uint8_t (*get_block_id)(XiveRouter *xrtr);
+-} XiveRouterClass;
++};
+ 
+ int xive_router_get_eas(XiveRouter *xrtr, uint8_t eas_blk, uint32_t eas_idx,
+                         XiveEAS *eas);
+@@ -391,19 +397,20 @@ typedef struct XiveTCTXMatch {
+ #define TYPE_XIVE_PRESENTER "xive-presenter"
+ #define XIVE_PRESENTER(obj)                                     \
+     INTERFACE_CHECK(XivePresenter, (obj), TYPE_XIVE_PRESENTER)
++typedef struct XivePresenterClass XivePresenterClass;
+ #define XIVE_PRESENTER_CLASS(klass)                                     \
+     OBJECT_CLASS_CHECK(XivePresenterClass, (klass), TYPE_XIVE_PRESENTER)
+ #define XIVE_PRESENTER_GET_CLASS(obj)                                   \
+     OBJECT_GET_CLASS(XivePresenterClass, (obj), TYPE_XIVE_PRESENTER)
+ 
+-typedef struct XivePresenterClass {
++struct XivePresenterClass {
+     InterfaceClass parent;
+     int (*match_nvt)(XivePresenter *xptr, uint8_t format,
+                      uint8_t nvt_blk, uint32_t nvt_idx,
+                      bool cam_ignore, uint8_t priority,
+                      uint32_t logic_serv, XiveTCTXMatch *match);
+     bool (*in_kernel)(const XivePresenter *xptr);
+-} XivePresenterClass;
++};
+ 
+ int xive_presenter_tctx_match(XivePresenter *xptr, XiveTCTX *tctx,
+                               uint8_t format,
+@@ -417,28 +424,30 @@ int xive_presenter_tctx_match(XivePresenter *xptr, XiveTCTX *tctx,
+ #define TYPE_XIVE_FABRIC "xive-fabric"
+ #define XIVE_FABRIC(obj)                                     \
+     INTERFACE_CHECK(XiveFabric, (obj), TYPE_XIVE_FABRIC)
++typedef struct XiveFabricClass XiveFabricClass;
+ #define XIVE_FABRIC_CLASS(klass)                                     \
+     OBJECT_CLASS_CHECK(XiveFabricClass, (klass), TYPE_XIVE_FABRIC)
+ #define XIVE_FABRIC_GET_CLASS(obj)                                   \
+     OBJECT_GET_CLASS(XiveFabricClass, (obj), TYPE_XIVE_FABRIC)
+ 
+-typedef struct XiveFabricClass {
++struct XiveFabricClass {
+     InterfaceClass parent;
+     int (*match_nvt)(XiveFabric *xfb, uint8_t format,
+                      uint8_t nvt_blk, uint32_t nvt_idx,
+                      bool cam_ignore, uint8_t priority,
+                      uint32_t logic_serv, XiveTCTXMatch *match);
+-} XiveFabricClass;
++};
+ 
+ /*
+  * XIVE END ESBs
+  */
+ 
+ #define TYPE_XIVE_END_SOURCE "xive-end-source"
++typedef struct XiveENDSource XiveENDSource;
+ #define XIVE_END_SOURCE(obj) \
+     OBJECT_CHECK(XiveENDSource, (obj), TYPE_XIVE_END_SOURCE)
+ 
+-typedef struct XiveENDSource {
++struct XiveENDSource {
+     DeviceState parent;
+ 
+     uint32_t        nr_ends;
+@@ -448,7 +457,7 @@ typedef struct XiveENDSource {
+     MemoryRegion    esb_mmio;
+ 
+     XiveRouter      *xrtr;
+-} XiveENDSource;
++};
+ 
+ /*
+  * For legacy compatibility, the exceptions define up to 256 different
+diff --git a/include/hw/rdma/rdma.h b/include/hw/rdma/rdma.h
+index fd3d70103d..aef82e58db 100644
+--- a/include/hw/rdma/rdma.h
++++ b/include/hw/rdma/rdma.h
+@@ -19,6 +19,7 @@
+ 
+ #define INTERFACE_RDMA_PROVIDER "rdma"
+ 
++typedef struct RdmaProviderClass RdmaProviderClass;
+ #define RDMA_PROVIDER_CLASS(klass) \
+     OBJECT_CLASS_CHECK(RdmaProviderClass, (klass), \
+                        INTERFACE_RDMA_PROVIDER)
+@@ -31,10 +32,10 @@
+ 
+ typedef struct RdmaProvider RdmaProvider;
+ 
+-typedef struct RdmaProviderClass {
++struct RdmaProviderClass {
+     InterfaceClass parent;
+ 
+     void (*print_statistics)(Monitor *mon, RdmaProvider *obj);
+-} RdmaProviderClass;
++};
+ 
+ #endif
+diff --git a/migration/migration.h b/migration/migration.h
+index ae497bd45a..4103e549bb 100644
+--- a/migration/migration.h
++++ b/migration/migration.h
+@@ -21,6 +21,7 @@
+ #include "qemu/coroutine_int.h"
+ #include "io/channel.h"
+ #include "net/announce.h"
++#include "qom/object.h"
+ 
+ struct PostcopyBlocktimeContext;
+ 
+@@ -114,6 +115,7 @@ void fill_destination_postcopy_migration_info(MigrationInfo *info);
+ 
+ #define TYPE_MIGRATION "migration"
+ 
++typedef struct MigrationClass MigrationClass;
+ #define MIGRATION_OBJ_CLASS(klass) \
+     OBJECT_CLASS_CHECK(MigrationClass, (klass), TYPE_MIGRATION)
+ #define MIGRATION_OBJ(obj) \
+@@ -121,10 +123,10 @@ void fill_destination_postcopy_migration_info(MigrationInfo *info);
+ #define MIGRATION_OBJ_GET_CLASS(obj) \
+     OBJECT_GET_CLASS(MigrationClass, (obj), TYPE_MIGRATION)
+ 
+-typedef struct MigrationClass {
++struct MigrationClass {
+     /*< private >*/
+     DeviceClass parent_class;
+-} MigrationClass;
++};
+ 
+ struct MigrationState
+ {
+diff --git a/target/rx/cpu-qom.h b/target/rx/cpu-qom.h
+index 9054762326..dd96469e04 100644
+--- a/target/rx/cpu-qom.h
++++ b/target/rx/cpu-qom.h
+@@ -20,12 +20,14 @@
+ #define RX_CPU_QOM_H
+ 
+ #include "hw/core/cpu.h"
++#include "qom/object.h"
+ 
+ #define TYPE_RX_CPU "rx-cpu"
+ 
+ #define TYPE_RX62N_CPU RX_CPU_TYPE_NAME("rx62n")
+ 
+ typedef struct RXCPU RXCPU;
++typedef struct RXCPUClass RXCPUClass;
+ #define RX_CPU_CLASS(klass) \
+     OBJECT_CLASS_CHECK(RXCPUClass, (klass), TYPE_RX_CPU)
+ #define RX_CPU(obj) \
+@@ -40,14 +42,14 @@ typedef struct RXCPU RXCPU;
+  *
+  * A RX CPU model.
+  */
+-typedef struct RXCPUClass {
++struct RXCPUClass {
+     /*< private >*/
+     CPUClass parent_class;
+     /*< public >*/
+ 
+     DeviceRealize parent_realize;
+     DeviceReset parent_reset;
+-} RXCPUClass;
++};
+ 
+ #define CPUArchState struct CPURXState
+ 
+diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
+index 2329cb0f4c..16c575c341 100644
+--- a/hw/arm/integratorcp.c
++++ b/hw/arm/integratorcp.c
+@@ -26,12 +26,14 @@
+ #include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "hw/sd/sd.h"
++#include "qom/object.h"
+ 
+ #define TYPE_INTEGRATOR_CM "integrator_core"
++typedef struct IntegratorCMState IntegratorCMState;
+ #define INTEGRATOR_CM(obj) \
+     OBJECT_CHECK(IntegratorCMState, (obj), TYPE_INTEGRATOR_CM)
+ 
+-typedef struct IntegratorCMState {
++struct IntegratorCMState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+     /*< public >*/
+@@ -51,7 +53,7 @@ typedef struct IntegratorCMState {
+     uint32_t int_level;
+     uint32_t irq_enabled;
+     uint32_t fiq_enabled;
+-} IntegratorCMState;
++};
+ 
+ static uint8_t integrator_spd[128] = {
+    128, 8, 4, 11, 9, 1, 64, 0,  2, 0xa0, 0xa0, 0, 0, 8, 0, 1,
+@@ -326,10 +328,11 @@ static void integratorcm_realize(DeviceState *d, Error **errp)
+ /* Primary interrupt controller.  */
+ 
+ #define TYPE_INTEGRATOR_PIC "integrator_pic"
++typedef struct icp_pic_state icp_pic_state;
+ #define INTEGRATOR_PIC(obj) \
+    OBJECT_CHECK(icp_pic_state, (obj), TYPE_INTEGRATOR_PIC)
+ 
+-typedef struct icp_pic_state {
++struct icp_pic_state {
+     /*< private >*/
+     SysBusDevice parent_obj;
+     /*< public >*/
+@@ -340,7 +343,7 @@ typedef struct icp_pic_state {
+     uint32_t fiq_enabled;
+     qemu_irq parent_irq;
+     qemu_irq parent_fiq;
+-} icp_pic_state;
++};
+ 
+ static const VMStateDescription vmstate_icp_pic = {
+     .name = "icp_pic",
+@@ -465,10 +468,11 @@ static void icp_pic_init(Object *obj)
+ /* CP control registers.  */
+ 
+ #define TYPE_ICP_CONTROL_REGS "icp-ctrl-regs"
++typedef struct ICPCtrlRegsState ICPCtrlRegsState;
+ #define ICP_CONTROL_REGS(obj) \
+     OBJECT_CHECK(ICPCtrlRegsState, (obj), TYPE_ICP_CONTROL_REGS)
+ 
+-typedef struct ICPCtrlRegsState {
++struct ICPCtrlRegsState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+     /*< public >*/
+@@ -477,7 +481,7 @@ typedef struct ICPCtrlRegsState {
+ 
+     qemu_irq mmc_irq;
+     uint32_t intreg_state;
+-} ICPCtrlRegsState;
++};
+ 
+ #define ICP_GPIO_MMC_WPROT      "mmc-wprot"
+ #define ICP_GPIO_MMC_CARDIN     "mmc-cardin"
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index 312a8d3c4b..091ad34ac3 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -26,6 +26,7 @@
+ #include "qemu/error-report.h"
+ #include "hw/char/pl011.h"
+ #include "hw/sd/sd.h"
++#include "qom/object.h"
+ 
+ #define VERSATILE_FLASH_ADDR 0x34000000
+ #define VERSATILE_FLASH_SIZE (64 * 1024 * 1024)
+@@ -34,10 +35,11 @@
+ /* Primary interrupt controller.  */
+ 
+ #define TYPE_VERSATILE_PB_SIC "versatilepb_sic"
++typedef struct vpb_sic_state vpb_sic_state;
+ #define VERSATILE_PB_SIC(obj) \
+     OBJECT_CHECK(vpb_sic_state, (obj), TYPE_VERSATILE_PB_SIC)
+ 
+-typedef struct vpb_sic_state {
++struct vpb_sic_state {
+     SysBusDevice parent_obj;
+ 
+     MemoryRegion iomem;
+@@ -46,7 +48,7 @@ typedef struct vpb_sic_state {
+     uint32_t pic_enable;
+     qemu_irq parent[32];
+     int irq;
+-} vpb_sic_state;
++};
+ 
+ static const VMStateDescription vmstate_vpb_sic = {
+     .name = "versatilepb_sic",
+diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
+index 4a71c9fa6e..17fceb160f 100644
+--- a/hw/arm/vexpress.c
++++ b/hw/arm/vexpress.c
+@@ -44,6 +44,7 @@
+ #include "hw/cpu/a15mpcore.h"
+ #include "hw/i2c/arm_sbcon_i2c.h"
+ #include "hw/sd/sd.h"
++#include "qom/object.h"
+ 
+ #define VEXPRESS_BOARD_ID 0x8e0
+ #define VEXPRESS_FLASH_SIZE (64 * 1024 * 1024)
+@@ -166,16 +167,18 @@ static hwaddr motherboard_aseries_map[] = {
+ 
+ typedef struct VEDBoardInfo VEDBoardInfo;
+ 
+-typedef struct {
++struct VexpressMachineClass {
+     MachineClass parent;
+     VEDBoardInfo *daughterboard;
+-} VexpressMachineClass;
++};
++typedef struct VexpressMachineClass VexpressMachineClass;
+ 
+-typedef struct {
++struct VexpressMachineState {
+     MachineState parent;
+     bool secure;
+     bool virt;
+-} VexpressMachineState;
++};
++typedef struct VexpressMachineState VexpressMachineState;
+ 
+ #define TYPE_VEXPRESS_MACHINE   "vexpress"
+ #define TYPE_VEXPRESS_A9_MACHINE   MACHINE_TYPE_NAME("vexpress-a9")
+diff --git a/hw/sd/pl181.c b/hw/sd/pl181.c
+index 5153959b1d..f44817c654 100644
+--- a/hw/sd/pl181.c
++++ b/hw/sd/pl181.c
+@@ -18,15 +18,17 @@
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "trace.h"
++#include "qom/object.h"
+ 
+ #define PL181_FIFO_LEN 16
+ 
+ #define TYPE_PL181 "pl181"
++typedef struct PL181State PL181State;
+ #define PL181(obj) OBJECT_CHECK(PL181State, (obj), TYPE_PL181)
+ 
+ #define TYPE_PL181_BUS "pl181-bus"
+ 
+-typedef struct PL181State {
++struct PL181State {
+     SysBusDevice parent_obj;
+ 
+     MemoryRegion iomem;
+@@ -56,7 +58,7 @@ typedef struct PL181State {
+     /* GPIO outputs for 'card is readonly' and 'card inserted' */
+     qemu_irq card_readonly;
+     qemu_irq card_inserted;
+-} PL181State;
++};
+ 
+ static const VMStateDescription vmstate_pl181 = {
+     .name = "pl181",
+-- 
+2.26.2
+

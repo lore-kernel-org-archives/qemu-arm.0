@@ -1,88 +1,88 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp642360lfc;
-        Wed, 26 Aug 2020 03:54:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwoC7IcvBaHhmqGzBQSw5SHWjY+sJ+FeW7F0LZUOyOAm1jstCKIHuULhk7lzL8gh4t+fNqe
-X-Received: by 2002:a25:3f83:: with SMTP id m125mr19838086yba.324.1598439262864;
-        Wed, 26 Aug 2020 03:54:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598439262; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp642418lfc;
+        Wed, 26 Aug 2020 03:54:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz3xUuDGkKmLMUhD9Q7O/2R2Pz+4Kw3eqQaf5CdzvJAcNF8yAXXhDf48MEiEQwr/SAQW3O2
+X-Received: by 2002:a25:dc4b:: with SMTP id y72mr19692609ybe.197.1598439269620;
+        Wed, 26 Aug 2020 03:54:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598439269; cv=none;
         d=google.com; s=arc-20160816;
-        b=CT1NCwJN0GTeEyAYAwoDTBnPuZZzsoc/vIfLvbiZf+OiOLT9SEkHZmeGJLXka4aQDs
-         6RB5Psfnmvf29/NF3e2hqLUVtofyuJiSJen/EJvg3I15TR59ncACuSYpB9lGGHRMaUKK
-         EBWCieMCLcKavgvcdWVmfIsigWp/N54p8AtN0HltPVqLc4XGzFdwq0A+xLy60cBoGNPl
-         wMI5L8Imwuu5UZtu1YtbPqR8l0iSPRoQqdlvovFKczOIisAYnZCrC7ndT7RGJVvo5oEI
-         ry5oobIJfFOUnklVooYCmg5Hp7sgZNcV5BOTe/szifLXVR8i1TaQUCRcGPZRdB7NcEqr
-         ZVEQ==
+        b=pn2uOKqqD5g7UgDXaNzYg9NP6IRf1BBAKLguXL5LltWDosBxukE1ESh1neQRKlepsS
+         XEG7PuB3TTuxToWIZUNTvnrjIWcVQ3X3fYzIVnrKTJyu2RGqT8VsMBexGvv6fScCzDEp
+         Ju8Io6Ml10zo0cKvFtRIIhAgpw4z5PwuI04S6ew7h4JoJW1g75zCwf7J+qFCOt2Je68q
+         Plr5BjRl+PqEZnD+WnlzWcMal4CD0EwsFO633gusVh4ZBEjNe3RETwW8217/c/kDRJIg
+         QKSzvDY8DqrUMsz36XTjePJz+Ga9sT8u4nvd0fkKSPZ6k4zPIHXGWntmaFM+lT2158DP
+         Nx8g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=weYslzUVJLl87DZKqYmD4AiiQEzxi3Q5a5q5Zh55/vU=;
-        b=Vi8Oa2IGhc6nxLj3dip/lGYI3Xk/tq8zVwW9mWdbDXcvQ2/nEEccKuh9jPOAVe1A5S
-         bMH4uLOd9Idnx4p4E8/ocGE4guyKKgdxtlm72P/ogHbEVDO+kcZKkXG0bOKWLa8A832Y
-         1Z0QbcnryCOvWbg9IOD5OTP9MJJqIYCX2PJelXILfS7YIZaPXH6sU0hBN9wrTdGQBwjl
-         Cqi/EOzpbqOGvgZXAnr2n5/Lddu8EJNvPhbAYeoYmhTuLf138RN6XGVD2ZbEWezfRxIi
-         LXIrdEr5guAlJEMLw9bT0MB5o+ADDQpWagVUhGCjPhjM3hmQIY6qeD5FavTtPaimCgiV
-         P7zQ==
+        bh=UkYL9KVk7MaTpe38CYuaqLGodBOYtyIMV7ea93Hbp6A=;
+        b=waSCjfQOOPq8Wb7Dc/zvTEARfqLNKi0f45jW21kZVa2grLW2kLri6ebIbgPsZgNmJz
+         oLALeX87eLz7kD/FYHDl7kdpeTp5dWMa8jWKDZdlJqfPUSpiVlRDtTKSmD9ON1GBWt8S
+         I9Q1WGvXCvgJqJYGuAd+LO/jpXb4HcSTse7/144z5imXFqqLPTybOJq43AFn4S/uymOA
+         3PjV822wdhgwkrtrM8qfTrvO8dwketYvmhuAEAGhJFEUuI4rSng9iTkaXjtHhcSqrlA0
+         ZLebFF/1sqlUnfuRegzpJzV/I+fei84DVMD8HoVI1MnsWIjTJFUQHulYMi3UoBEXI2Xi
+         8n3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WjpSPTk8;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pnam+vw1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r126si1914407ybf.329.2020.08.26.03.54.22
+        by mx.google.com with ESMTPS id y6si1945921ybk.277.2020.08.26.03.54.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Aug 2020 03:54:22 -0700 (PDT)
+        Wed, 26 Aug 2020 03:54:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WjpSPTk8;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Pnam+vw1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58716 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59472 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAt4Q-0007YB-9m
-	for alex.bennee@linaro.org; Wed, 26 Aug 2020 06:54:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44078)
+	id 1kAt4W-0007qk-UT
+	for alex.bennee@linaro.org; Wed, 26 Aug 2020 06:54:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44008)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3I-0005h2-Bg
- for qemu-devel@nongnu.org; Wed, 26 Aug 2020 06:53:12 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:57867
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3H-0005fb-3l
+ for qemu-devel@nongnu.org; Wed, 26 Aug 2020 06:53:11 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35442
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3F-0001Vl-Lc
- for qemu-devel@nongnu.org; Wed, 26 Aug 2020 06:53:12 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3D-0001V9-QU
+ for qemu-devel@nongnu.org; Wed, 26 Aug 2020 06:53:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598439189;
+ s=mimecast20190719; t=1598439186;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=weYslzUVJLl87DZKqYmD4AiiQEzxi3Q5a5q5Zh55/vU=;
- b=WjpSPTk8fV7YOSCv05XmYriUkN1TtRLMSZEpyfe/PqUcJ33o458dq7byxo7cLDF5QTNKEJ
- xjNFh9HghPXIz30JAB+DJyCNsmapP1GxTlqxeVTy8uoY7sZtpiidsriifrWJDCBen1KBTb
- /huY0mn+7C6zShNDeSwf+TcYxapmaLo=
+ bh=UkYL9KVk7MaTpe38CYuaqLGodBOYtyIMV7ea93Hbp6A=;
+ b=Pnam+vw1wn8DOcvdHWSbEooyb4/8Is4rhGt7Qlau4X3q0gPOtV6aD8NbIiNEtURXicL04M
+ Frx16Qcvm1o0zgVyKMFXlDNF2d6AJWc7GN7tTmKSSuuQti2JVhuwjShfB2usWzrPpzpjVh
+ i/1w/6+H95NcG+gkSiW55xQhU4AFlPo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-263-lh-a5QAPMDeu_qIzoySBfw-1; Wed, 26 Aug 2020 06:53:07 -0400
-X-MC-Unique: lh-a5QAPMDeu_qIzoySBfw-1
+ us-mta-36-v25E9bTgPgmREZLlbmaSvg-1; Wed, 26 Aug 2020 06:53:05 -0400
+X-MC-Unique: v25E9bTgPgmREZLlbmaSvg-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
  [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ED911186A577;
- Wed, 26 Aug 2020 10:53:05 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D3AE010066FE;
+ Wed, 26 Aug 2020 10:53:03 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-54.ams2.redhat.com
  [10.36.112.54])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 94BCF1972A;
- Wed, 26 Aug 2020 10:53:05 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1556B1992F;
+ Wed, 26 Aug 2020 10:52:55 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 4F010991; Wed, 26 Aug 2020 12:52:54 +0200 (CEST)
+ id 22C1F9D78; Wed, 26 Aug 2020 12:52:54 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v6 05/20] acpi: ged: add x86 device variant.
-Date: Wed, 26 Aug 2020 12:52:39 +0200
-Message-Id: <20200826105254.28496-6-kraxel@redhat.com>
+Subject: [PATCH v6 01/20] microvm: name qboot binary qboot.rom
+Date: Wed, 26 Aug 2020 12:52:35 +0200
+Message-Id: <20200826105254.28496-2-kraxel@redhat.com>
 In-Reply-To: <20200826105254.28496-1-kraxel@redhat.com>
 References: <20200826105254.28496-1-kraxel@redhat.com>
 MIME-Version: 1.0
@@ -93,17 +93,17 @@ X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 03:16:15
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 01:10:45
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.958,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,89 +125,69 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S04PXweM1PHj
+X-TUID: 7kL9pJpKOgKR
 
-Set AcpiDeviceIfClass->madt_cpu,
-otherwise identical to TYPE_ACPI_GED.
+qboot isn't a bios and shouldnt be named that way.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- include/hw/acpi/generic_event_device.h |  4 +++
- hw/i386/generic_event_device_x86.c     | 36 ++++++++++++++++++++++++++
- hw/i386/meson.build                    |  1 +
- 3 files changed, 41 insertions(+)
- create mode 100644 hw/i386/generic_event_device_x86.c
+ hw/i386/microvm.c                       |   4 ++--
+ pc-bios/{bios-microvm.bin => qboot.rom} | Bin
+ roms/Makefile                           |   6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+ rename pc-bios/{bios-microvm.bin => qboot.rom} (100%)
 
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index 4533cddb486c..bd79cfff2b6a 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -69,6 +69,10 @@
- #define ACPI_GED(obj) \
-     OBJECT_CHECK(AcpiGedState, (obj), TYPE_ACPI_GED)
+diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
+index 81d0888930d1..b1dc7e49c159 100644
+--- a/hw/i386/microvm.c
++++ b/hw/i386/microvm.c
+@@ -47,7 +47,7 @@
+ #include "kvm_i386.h"
+ #include "hw/xen/start_info.h"
  
-+#define TYPE_ACPI_GED_X86 "acpi-ged-x86"
-+#define ACPI_GED_X86(obj) \
-+    OBJECT_CHECK(AcpiGedX86State, (obj), TYPE_ACPI_GED_X86)
-+
- #define ACPI_GED_EVT_SEL_OFFSET    0x0
- #define ACPI_GED_EVT_SEL_LEN       0x4
+-#define MICROVM_BIOS_FILENAME "bios-microvm.bin"
++#define MICROVM_QBOOT_FILENAME "qboot.rom"
  
-diff --git a/hw/i386/generic_event_device_x86.c b/hw/i386/generic_event_device_x86.c
-new file mode 100644
-index 000000000000..e26fb02a2ef6
---- /dev/null
-+++ b/hw/i386/generic_event_device_x86.c
-@@ -0,0 +1,36 @@
-+/*
-+ * x86 variant of the generic event device for hw reduced acpi
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2 or later, as published by the Free Software Foundation.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/acpi/generic_event_device.h"
-+#include "hw/i386/pc.h"
-+
-+static void acpi_ged_x86_class_init(ObjectClass *class, void *data)
-+{
-+    AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_CLASS(class);
-+
-+    adevc->madt_cpu = pc_madt_cpu_entry;
-+}
-+
-+static const TypeInfo acpi_ged_x86_info = {
-+    .name          = TYPE_ACPI_GED_X86,
-+    .parent        = TYPE_ACPI_GED,
-+    .class_init    = acpi_ged_x86_class_init,
-+    .interfaces = (InterfaceInfo[]) {
-+        { TYPE_HOTPLUG_HANDLER },
-+        { TYPE_ACPI_DEVICE_IF },
-+        { }
-+    }
-+};
-+
-+static void acpi_ged_x86_register_types(void)
-+{
-+    type_register_static(&acpi_ged_x86_info);
-+}
-+
-+type_init(acpi_ged_x86_register_types)
-diff --git a/hw/i386/meson.build b/hw/i386/meson.build
-index 63918fbe22f9..1a7d1a685d77 100644
---- a/hw/i386/meson.build
-+++ b/hw/i386/meson.build
-@@ -18,6 +18,7 @@ i386_ss.add(when: 'CONFIG_VMPORT', if_true: files('vmport.c'))
- i386_ss.add(when: 'CONFIG_VTD', if_true: files('intel_iommu.c'))
+ static void microvm_set_rtc(MicrovmMachineState *mms, ISADevice *s)
+ {
+@@ -158,7 +158,7 @@ static void microvm_devices_init(MicrovmMachineState *mms)
+     }
  
- i386_ss.add(when: 'CONFIG_ACPI', if_true: files('acpi-common.c'))
-+i386_ss.add(when: 'CONFIG_ACPI_HW_REDUCED', if_true: files('generic_event_device_x86.c'))
- i386_ss.add(when: 'CONFIG_PC', if_true: files(
-   'pc.c',
-   'pc_sysfw.c',
+     if (bios_name == NULL) {
+-        bios_name = MICROVM_BIOS_FILENAME;
++        bios_name = MICROVM_QBOOT_FILENAME;
+     }
+     x86_bios_rom_init(get_system_memory(), true);
+ }
+diff --git a/pc-bios/bios-microvm.bin b/pc-bios/qboot.rom
+similarity index 100%
+rename from pc-bios/bios-microvm.bin
+rename to pc-bios/qboot.rom
+diff --git a/roms/Makefile b/roms/Makefile
+index 5d9f15b6777f..2673a39f9dc2 100644
+--- a/roms/Makefile
++++ b/roms/Makefile
+@@ -66,7 +66,7 @@ default help:
+ 	@echo "  efi                -- update UEFI (edk2) platform firmware"
+ 	@echo "  opensbi32-generic  -- update OpenSBI for 32-bit generic machine"
+ 	@echo "  opensbi64-generic  -- update OpenSBI for 64-bit generic machine"
+-	@echo "  bios-microvm       -- update bios-microvm.bin (qboot)"
++	@echo "  qboot              -- update qboot"
+ 	@echo "  clean              -- delete the files generated by the previous" \
+ 	                              "build targets"
+ 
+@@ -182,9 +182,9 @@ opensbi64-generic:
+ 	cp opensbi/build/platform/generic/firmware/fw_dynamic.bin ../pc-bios/opensbi-riscv64-generic-fw_dynamic.bin
+ 	cp opensbi/build/platform/generic/firmware/fw_dynamic.elf ../pc-bios/opensbi-riscv64-generic-fw_dynamic.elf
+ 
+-bios-microvm:
++qboot:
+ 	$(MAKE) -C qboot
+-	cp qboot/bios.bin ../pc-bios/bios-microvm.bin
++	cp qboot/bios.bin ../pc-bios/qboot.rom
+ 
+ clean:
+ 	rm -rf seabios/.config seabios/out seabios/builds
 -- 
 2.27.0
 

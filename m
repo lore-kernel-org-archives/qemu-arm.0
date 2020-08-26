@@ -1,88 +1,89 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp817086lfc;
-        Wed, 26 Aug 2020 07:42:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyScEdeJyyCeKum43zvjY21aUPjTdvgfIE2+eDld2f6Wcu6FVKeXKXLgesVKx9u9IWTLJBJ
-X-Received: by 2002:a25:846:: with SMTP id 67mr21333836ybi.474.1598452956358;
-        Wed, 26 Aug 2020 07:42:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598452956; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp817295lfc;
+        Wed, 26 Aug 2020 07:42:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwgJtqJh+d1wrD6fWOfYUcA6EZkH4fuylyTAtKSZ6rx7y9369/LS11x7579vwjvJU/De7OY
+X-Received: by 2002:a25:d78c:: with SMTP id o134mr20701949ybg.167.1598452974279;
+        Wed, 26 Aug 2020 07:42:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598452974; cv=none;
         d=google.com; s=arc-20160816;
-        b=cAdItEfiPJrjujYO85rOgUlUbltCqh7nLIxge4Wq62mQkt3ZJX/YuwyQAKOfql+O5+
-         1tymKkBlo/yFL/+q9yjDQuvKnAHHfmS+ueENdntscDxPb8K6XHMcRZ9XvL1UnNoSiLkE
-         92K9s903mjV47v2otDArUW2zhJT1tPpqb6WWnnj7IrT5cVVE5RQVwwNdrANWU6FxXHIR
-         6s5ImXQzL3sz9W2NpmaSPnVOiQuFnOkgI/ytiZ5qpjtxDDQzJ5iRCwwvCYy/es1udgFm
-         KMAWPGNYz1rh7Ru23C/4Ltoq5Pr54tRwQiV657EGORQPMPNXUTvH8tC3r9zjBZy+EByr
-         yRKg==
+        b=H2QlCbA9sFHHcgwIvmDsMBq6hMz+BtUUr01wuBLny+HU6J1/TObADZ+CFrmOqU6N51
+         xWgluipJByp4vUUXkYoohwzc/o1NPoS/c68jY22nBkUfOx2syh733BdXSW5uHtCERvcN
+         tXN0SoLkAuvELPkW5cSseHpgRtxiduyaeazVmCQix079GSOGmi3Wv/Nsbm2kh279MSa+
+         2SThKcGL9P0VSlIGMOuXHFUe7/NM07sgQ/1KeLyLHj0sLP8ne3P/yGwXZccLaJsB0888
+         WJ/zSvdPyrSmLjh+8UU/KOZER6tDnU/SCxG//illSSkpwv2NNHuFAj25YUCLniv5AqVv
+         jiWA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=2hgdZ+naDMWgqFeSjxulVyKtD+hCWh1JF39OFUlGgMw=;
-        b=EqaCqzZxRHdmb4vGRcA5daWU1520ufHSOBzDd/j2PxhwWyugzkVLSwm1XHNvC9DI9y
-         au6pb9fC6/C1vMUxV3fuRl8j2aTHSycsbzuRKZqdPGnZNfEbCl4KwVFxgrpP3GvcBiGa
-         lAWH/9ydaQZgdYCMp+KHXdUAtw0bXgJU7I177obR9qRL7Z1GdWNV9RyxwgYlaK+f3o/H
-         OA5r0iCik7r6w6xapNtSThXvF9MsRwtxmd4GvRnbWVoQRinHGWZBVAjkzE90OhaHrN4f
-         p5KvqXa0n1r1psuX5ICxqBrbNsokoiIKY+HhCfYJW9x0aJuPYZkJstDY+HrVHDDovRbt
-         z/mw==
+        bh=37E0YMA1qPtt1oyY6xJg1GUok8EqO/yvBOiRrB4VVfQ=;
+        b=KJfQ53wPGNtk1REi+rKJGWrcidF1aTsiVWJ01Q6ijGta+UOg4bu/vfdcNbaMV9zfJD
+         io03BGL5dtMkKy8hktDoyzjCYYRF/ZimOnu92dfsRkeFlx0yCCXgMxtTSpjtZWHQxOEz
+         Akzd1lWGTyN1RB0/HgNmRJKMqjrODbYxhQ8Jht4UpWl1+dHlmH/fXH264r73pzR27XqI
+         caF2cGSMtJX9F8BOmYXLU+FSlOBoacvUjWiW5Q6OqjdRsfNF087PEWDi28nGfyCSxaRC
+         T0IXdnuNSfImC6gIVC70ibZv1nO1SQA/RcIp1m7Qh3axEMEk2C3VFT11T2Dn5lgXxjg7
+         5ZVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XDDfd3cG;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=afjQQ7vq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o4si2346495ybk.453.2020.08.26.07.42.36
+        by mx.google.com with ESMTPS id v27si2455522ybd.373.2020.08.26.07.42.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Aug 2020 07:42:36 -0700 (PDT)
+        Wed, 26 Aug 2020 07:42:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=XDDfd3cG;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=afjQQ7vq;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39514 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAwdH-0006pz-Bo
-	for alex.bennee@linaro.org; Wed, 26 Aug 2020 10:42:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46592)
+	id 1kAwdZ-0007dh-GG
+	for alex.bennee@linaro.org; Wed, 26 Aug 2020 10:42:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kAwZQ-00073h-QT
- for qemu-devel@nongnu.org; Wed, 26 Aug 2020 10:38:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42022)
+ id 1kAwb0-0002Ra-EU
+ for qemu-devel@nongnu.org; Wed, 26 Aug 2020 10:40:14 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:34595
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kAwZP-0006IK-3J
- for qemu-devel@nongnu.org; Wed, 26 Aug 2020 10:38:36 -0400
+ id 1kAwaw-0006Vl-Vr
+ for qemu-devel@nongnu.org; Wed, 26 Aug 2020 10:40:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598452714;
+ s=mimecast20190719; t=1598452810;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2hgdZ+naDMWgqFeSjxulVyKtD+hCWh1JF39OFUlGgMw=;
- b=XDDfd3cGuyG7DfJq50SPk3+pV4QMMqeuI8U/JVr9gCCXR7nMqnbHoly0T3jQcqhA0/Ax2I
- fS2+5lyii1yFzYXt6OpZz2n+oxG1d0Q/3vM/a0DVwKTt4H3Jjsv2VAGY07Vq/1TltmTxOr
- 118rLUbqrivDHC8p6x79JbqEOvnWnys=
+ bh=37E0YMA1qPtt1oyY6xJg1GUok8EqO/yvBOiRrB4VVfQ=;
+ b=afjQQ7vqKNNWCs4/aBsYyvddBMlVPmkOeRgLslNly6b3rurraU7RiJw17hbND89SnkqugS
+ BI5TsIoXRhr0d5mGxIQOhw5scVIJOnGiOnR151vwQd5vm+xGjBWNEGS2a8TL5LVzHDSEiN
+ bIUpUir+giIuT17uALQTOhXWIblgpEY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-405-PQ4CSqT9NFKB9k62_SzH6A-1; Wed, 26 Aug 2020 10:38:33 -0400
-X-MC-Unique: PQ4CSqT9NFKB9k62_SzH6A-1
+ us-mta-332-5R-aLHvMPNC-ipKTzLrgoA-1; Wed, 26 Aug 2020 10:40:08 -0400
+X-MC-Unique: 5R-aLHvMPNC-ipKTzLrgoA-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B6FE8797C3;
- Wed, 26 Aug 2020 14:38:31 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 25EC21006485;
+ Wed, 26 Aug 2020 14:40:02 +0000 (UTC)
 Received: from eperezma.remote.csb (ovpn-115-59.ams2.redhat.com [10.36.115.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6459C76E00;
- Wed, 26 Aug 2020 14:38:18 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id D38657D9A4;
+ Wed, 26 Aug 2020 14:39:57 +0000 (UTC)
 From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
 To: qemu-devel@nongnu.org,
 	Peter Xu <peterx@redhat.com>
-Subject: [RFC v6 07/13] intel_iommu: Mark IOMMUTLBEntry of page notification
- as IOMMU_IOTLB_UNMAP type
-Date: Wed, 26 Aug 2020 16:36:45 +0200
-Message-Id: <20200826143651.7915-8-eperezma@redhat.com>
+Subject: [RFC v6 12/13] intel_iommu: Do not notify regular iotlb to
+ device-iotlb notifiers
+Date: Wed, 26 Aug 2020 16:36:50 +0200
+Message-Id: <20200826143651.7915-13-eperezma@redhat.com>
 In-Reply-To: <20200826143651.7915-1-eperezma@redhat.com>
 References: <20200625191651.5817-1-eperezma@redhat.com>
  <20200826143651.7915-1-eperezma@redhat.com>
@@ -94,17 +95,17 @@ X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 23:30:47
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=eperezma@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 01:10:45
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -128,41 +129,36 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aSjnsPHGuo/h
+X-TUID: IZVqHtSwFQpC
+
+This improves performance in case of netperf with vhost-net:
+* TCP_STREAM: From 9049.59Mbit/s to 9049.59Mbit/s (13%)
+* TCP_RR: From 8464.73 trans/s to 8932.703333 trans/s (5.5%)
+* UDP_RR: From 8562.08 trans/s to 9005.62/s (5.1%)
+* UDP_STREAM: No change observed (insignificant 0.1% improvement)
 
 Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
 ---
- hw/i386/intel_iommu.c | 3 +++
- 1 file changed, 3 insertions(+)
+ hw/i386/intel_iommu.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
 diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 2ad6b9d796..ed83e496b8 100644
+index ddb828da1f..7620a1abbf 100644
 --- a/hw/i386/intel_iommu.c
 +++ b/hw/i386/intel_iommu.c
-@@ -1999,6 +1999,7 @@ static void vtd_iotlb_page_invalidate_notify(IntelIOMMUState *s,
-                     .translated_addr = 0,
-                     .addr_mask = size - 1,
-                     .perm = IOMMU_NONE,
-+                    .type = IOMMU_IOTLB_UNMAP,
-                 };
-                 memory_region_notify_iommu(&vtd_as->iommu, 0, entry);
-             }
-@@ -2465,6 +2466,7 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
-     entry.iova = addr;
-     entry.perm = IOMMU_NONE;
-     entry.translated_addr = 0;
-+    entry.type = IOMMU_IOTLB_UNMAP;
-     memory_region_notify_iommu(&vtd_dev_as->iommu, 0, entry);
+@@ -1960,6 +1960,12 @@ static void vtd_iotlb_domain_invalidate(IntelIOMMUState *s, uint16_t domain_id)
+     vtd_iommu_unlock(s);
  
- done:
-@@ -3497,6 +3499,7 @@ static void vtd_address_space_unmap(VTDAddressSpace *as, IOMMUNotifier *n)
-         entry.perm = IOMMU_NONE;
-         /* This field is meaningless for unmap */
-         entry.translated_addr = 0;
-+        entry.type = IOMMU_NOTIFIER_UNMAP;
- 
-         memory_region_notify_iommu_one(n, &entry);
- 
+     QLIST_FOREACH(vtd_as, &s->vtd_as_with_notifiers, next) {
++        if (vtd_as->iommu.iommu_notify_flags & IOMMU_NOTIFIER_DEVIOTLB) {
++            /* If IOMMU memory region is DEVICE IOTLB type, it does not make
++             * sense to send regular IOMMU notifications. */
++            continue;
++        }
++
+         if (!vtd_dev_to_context_entry(s, pci_bus_num(vtd_as->bus),
+                                       vtd_as->devfn, &ce) &&
+             domain_id == vtd_get_domain_id(s, &ce)) {
 -- 
 2.18.1
 

@@ -1,245 +1,153 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp919093lfc;
-        Wed, 26 Aug 2020 09:52:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyNbSCmrMpOtltHScd6CtTddErwf8T8re71nxoS8YIow9u559SF0gGiSFOLG3Qv17oxGUXM
-X-Received: by 2002:a25:c8a:: with SMTP id 132mr22144425ybm.444.1598460772253;
-        Wed, 26 Aug 2020 09:52:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598460772; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp932291lfc;
+        Wed, 26 Aug 2020 10:10:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4F0ZrNA9rWWO1GlL/q06cUfpYHimYVI/pcKP4l0NFqKjFMsFAole5PquVNxiXhbi5QyPZ
+X-Received: by 2002:a25:25cc:: with SMTP id l195mr22832829ybl.383.1598461824395;
+        Wed, 26 Aug 2020 10:10:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598461824; cv=none;
         d=google.com; s=arc-20160816;
-        b=Idm0QNPEjcLxn9ySRk69Dq+AUyfN61toSKfgCK2VEvGHAFPhE5R3D3VugFbyMJ83y8
-         +Pn7SHJSi+v72NyMjueKMZCferOdr5tEUE77o8mA+DQ/sa4RX3N7+WTaQgnXSCS7h1uS
-         q+dqzRurpptEj7BZw+/Hp3oVYQ6pTBBYxeQpastHC1J4nTMDFEZY5IaVl+0lO3a+QLfP
-         Qc9BLQxnzhpVIzYZGi5yiUmxJdtpM3LjyPg2d9G9dU4+JQsYAeSt0B0QSdF+Qncy3EID
-         IRIZXj4Qc3Zja7C+lE+ZD3gFN21sSSPE92EswuKpl4+2A79Dq8ZzgPXRda7WroAPbqER
-         qosw==
+        b=mCg/t7KrPHvrGn+/7AMoAJCXXCPjcclm1VbmldFnjg4437JIhYcwVYukMEuxhhAHZv
+         lS8GdBVrH46qX0rkrwTZDlgVhlFg3gVPFP6f/SXKwBDXygxT9z5S1YjySdn+8gRMN7Vv
+         9OthhDlnFJ6PyuLTWDIk72GiAzeaeOHbuoszaBRSxRpb5nwBlf64oSB5Ell3Tf51tprs
+         DadYxCIsUlZ1GT3XSYpd+RLLbUXlcWvPP8aLEJ+f0YKq7XzdO8xNox9DTtg/DfPkRrY4
+         Z6yeQE4h8sKca38Zef6+SxDwuaGXsAR9j4Nlk6pCoECKUTCUnVFlaHO3Ofib76JirUY8
+         gY9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:to:subject
-         :message-id:date:from:in-reply-to:references:mime-version
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=zuNk7v+IEG1NX946w4US+NnSDslhmTRg4grXH/qysdU=;
-        b=vog49cwDoDBrLax6R2EaaC6dJOoeVuWhja008kmZwbNSgHFMcdehc4GeuWdio3vx46
-         HCVCLkcgJh7nGDxEEQQCJT6DzWuGrprfwZYXph+WuQtpmny9Dgb0ayMNRpPh5IErjKP9
-         EI4coM2PgJFkmEwnhAGENzGu6EEiW9QJj4RGP0tmDa7w5H+6MmmEcRLdheHvLVTZCjm0
-         mzh+uOJQnR5EyauV6d54OfDxsI7Bs6gcOfdNrnL0K9NT+mwru7igRLS86xIiXXUqvkUE
-         B9ThU/a1yo2ao9VKOc40gFQzJ4S4VhwQt9i4XYtm0qT324eLQiuWLt/acfZi0UHntou+
-         rVGw==
+        bh=FCOsXPEYR2aVJvi/mI6+SbgUYfGIrRkYX7xydn5IxnE=;
+        b=uzpK0cWFM0aPVNPpEmqxgUJ+ml2aW+Z/M0OHAPKrzunYVZhBKVsVjakGscid7K6fOt
+         6ZB0JTojwBuyB/RUiVc4kK0ZsXlv/YXHI+e8OGcoc7+sF0wKNOgQVimQCZmCNOeWEOEI
+         H6+J9kwkJPgIudDji1UcipxCiXQ9Xmk9e6kz38C9jNqsDQFoiP6+ni3KVPuyYUpNPIF9
+         iMJIpK2q0uYLJ77MmrDCHNz5vOX67vb2CokuuCE/ZucTkJWHRZlDh/gFCh1sjUDz4twP
+         ZBYwHIwg1UYklS+h/xNASKSf3r50B1KxDYOLPgDA/IWkZjMN4GwbBSuHnjLC1HOdGtLD
+         wMUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RoUrXREz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=huKP5UIg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y7si983685ybo.293.2020.08.26.09.52.51
+        by mx.google.com with ESMTPS id a2si2759381ybi.478.2020.08.26.10.10.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Aug 2020 09:52:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 26 Aug 2020 10:10:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RoUrXREz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:35220 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=huKP5UIg;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45110 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAyfL-0007qr-F9
-	for alex.bennee@linaro.org; Wed, 26 Aug 2020 12:52:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56488)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kAywJ-0004tN-GV
+	for alex.bennee@linaro.org; Wed, 26 Aug 2020 13:10:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33608)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kAyeb-00077H-MQ; Wed, 26 Aug 2020 12:52:05 -0400
-Received: from mail-lj1-x241.google.com ([2a00:1450:4864:20::241]:42108)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1kAyeZ-0002am-LK; Wed, 26 Aug 2020 12:52:05 -0400
-Received: by mail-lj1-x241.google.com with SMTP id t6so3141207ljk.9;
- Wed, 26 Aug 2020 09:52:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:reply-to:from:date:message-id
- :subject:to:cc;
- bh=zuNk7v+IEG1NX946w4US+NnSDslhmTRg4grXH/qysdU=;
- b=RoUrXREz1IAhYdIoE3vYJyfanZuzTqBHkOMfhc8I9YPEW3N87Fj4+VGFSy7EJrXSy2
- rjG9N0mb+/Ke3iMJDopKx7JVtcsfUpjp/1kVyKlxOTdYdY0SIpk4Bu8V1iwKlsYxlCx+
- lU+y9RQk8aib7IFRW98MyU+ViTd8/0SGdfMBXZvKUYHj2nV1dY6za7Xs9Kn7WRqXBlKT
- 6mcSl2odua88EaLfTVrky1kaiEYpNED70BOdNZM4jnszr9m6FM095uvkpIZQSEaQecW9
- ZwqcSr5YKZl1hX1neo8QMsqvuWFLOGESXwKj3yYcTrZ1nB1xciINi8R3wNka53geWELM
- oTug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
- :from:date:message-id:subject:to:cc;
- bh=zuNk7v+IEG1NX946w4US+NnSDslhmTRg4grXH/qysdU=;
- b=TFhqeRZx3cA66x/TCX3O756FmbaSWqE4L45wDfJ/acuzXcSyE4BvctgSKCBj9MZ8JU
- rrnF/bYb7tTL9OKdtCfglyfOTwLVvTdErbtCaWW9tE/J3v0XD8JQ3r/d241Aiv4UvUMn
- YT87KbcQQBKwdXp0jYjC0qUW5u4+Eryp4HQENtudqhNRecA4/ePR3QMKzWFUobv+S4JB
- gcWNUT4PqXFJz+nLnbC8lbbQM22ceWX8RmoYzY2gfMoVkOwo4jKU7YEmHhl73jcIsqEm
- HOaXveIylXIITAzy+pzx1IBfvmPIdYxx0sGDx7vkZ2Sy6XrQzeGTF7n+HtI5wI3uHM89
- OLAg==
-X-Gm-Message-State: AOAM533jsqTtcu+Q+YMroOFjTvtY9jCqKZFC2RADTPSfb4IGAXjeyqMf
- LXggSuPbBUlNR+ooXwJwv6IEfVkyH3KtEHyOQqU=
-X-Received: by 2002:a2e:7315:: with SMTP id o21mr938830ljc.120.1598460720926; 
- Wed, 26 Aug 2020 09:52:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kAywA-0004tA-I1
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2020 13:10:14 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:35807
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kAyw8-0005AV-8z
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2020 13:10:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598461810;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=FCOsXPEYR2aVJvi/mI6+SbgUYfGIrRkYX7xydn5IxnE=;
+ b=huKP5UIgf0806cJ57nVPZkHSf/jMNHfUBDyNa3Xv1A0YZwsKLbvTjKVC44/ChrcLicrX5A
+ bPE5WBYZOyROyjhq+Sxz7op/cGBj5suCFwQiaNlDn3mAHPaefs2XY/yPYzsOUVfxt9IWW1
+ nnURSVkE72XVxpJus76DPzSZU2GWWkU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-258-y7i3AGy_Mpm4jEZfuTg2tQ-1; Wed, 26 Aug 2020 13:10:08 -0400
+X-MC-Unique: y7i3AGy_Mpm4jEZfuTg2tQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ABD73393B5;
+ Wed, 26 Aug 2020 17:10:07 +0000 (UTC)
+Received: from localhost (unknown [10.10.67.254])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6F9925D9E4;
+ Wed, 26 Aug 2020 17:10:07 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 1/4] tosa-ssp: No need to override instance_size
+Date: Wed, 26 Aug 2020 13:10:02 -0400
+Message-Id: <20200826171005.4055015-2-ehabkost@redhat.com>
+In-Reply-To: <20200826171005.4055015-1-ehabkost@redhat.com>
+References: <20200826171005.4055015-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-References: <20200625191651.5817-1-eperezma@redhat.com>
- <20200826143651.7915-1-eperezma@redhat.com>
- <20200826143651.7915-13-eperezma@redhat.com>
-In-Reply-To: <20200826143651.7915-13-eperezma@redhat.com>
-From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
-Date: Thu, 27 Aug 2020 00:51:48 +0800
-Message-ID: <CAE2XoE9kFuavzHzTWvCony77iHk1_+kjrYj-budDVTdgKfTeaQ@mail.gmail.com>
-Subject: Re: [RFC v6 12/13] intel_iommu: Do not notify regular iotlb to
- device-iotlb notifiers
-To: =?UTF-8?Q?Eugenio_P=C3=A9rez?= <eperezma@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000755af905adcaa32b"
-Received-SPF: pass client-ip=2a00:1450:4864:20::241;
- envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x241.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0.0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 06:53:09
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Jason Wang <jasowang@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-level <qemu-devel@nongnu.org>,
- Peter Xu <peterx@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jlwx2zPGBAJN
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: uLJaMpoqlGkF
 
---000000000000755af905adcaa32b
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+TYPE_SSI_SLAVE already sets instance_size=sizeof(SSISlave),
+there's no need to override it.
 
-On Wed, Aug 26, 2020 at 10:42 PM Eugenio P=C3=A9rez <eperezma@redhat.com> w=
-rote:
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Cc: Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+Cc: qemu-devel@nongnu.org
+---
+ hw/arm/tosa.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-> This improves performance in case of netperf with vhost-net:
-> * TCP_STREAM: From 9049.59Mbit/s to 9049.59Mbit/s (13%)
->
-What's improvement ? they are the same
+diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+index e29566f7b3..2c5a8a50a1 100644
+--- a/hw/arm/tosa.c
++++ b/hw/arm/tosa.c
+@@ -311,7 +311,6 @@ static void tosa_ssp_class_init(ObjectClass *klass, void *data)
+ static const TypeInfo tosa_ssp_info = {
+     .name          = "tosa-ssp",
+     .parent        = TYPE_SSI_SLAVE,
+-    .instance_size = sizeof(SSISlave),
+     .class_init    = tosa_ssp_class_init,
+ };
+ 
+-- 
+2.26.2
 
-
-> * TCP_RR: From 8464.73 trans/s to 8932.703333 trans/s (5.5%)
-> * UDP_RR: From 8562.08 trans/s to 9005.62/s (5.1%)
-> * UDP_STREAM: No change observed (insignificant 0.1% improvement)
->
-> Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
-> ---
->  hw/i386/intel_iommu.c | 6 ++++++
->  1 file changed, 6 insertions(+)
->
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index ddb828da1f..7620a1abbf 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -1960,6 +1960,12 @@ static void
-> vtd_iotlb_domain_invalidate(IntelIOMMUState *s, uint16_t domain_id)
->      vtd_iommu_unlock(s);
->
->      QLIST_FOREACH(vtd_as, &s->vtd_as_with_notifiers, next) {
-> +        if (vtd_as->iommu.iommu_notify_flags & IOMMU_NOTIFIER_DEVIOTLB) =
-{
-> +            /* If IOMMU memory region is DEVICE IOTLB type, it does not
-> make
-> +             * sense to send regular IOMMU notifications. */
-> +            continue;
-> +        }
-> +
->          if (!vtd_dev_to_context_entry(s, pci_bus_num(vtd_as->bus),
->                                        vtd_as->devfn, &ce) &&
->              domain_id =3D=3D vtd_get_domain_id(s, &ce)) {
-> --
-> 2.18.1
->
->
->
-
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
-
---000000000000755af905adcaa32b
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Wed, Aug 26, 2020 at 10:42 PM Euge=
-nio P=C3=A9rez &lt;<a href=3D"mailto:eperezma@redhat.com">eperezma@redhat.c=
-om</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
-n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-">This improves performance in case of netperf with vhost-net:<br>
-* TCP_STREAM: From 9049.59Mbit/s to 9049.59Mbit/s (13%)<br></blockquote><di=
-v>What&#39;s improvement ? they are the same</div><div>=C2=A0</div><blockqu=
-ote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px=
- solid rgb(204,204,204);padding-left:1ex">
-* TCP_RR: From 8464.73 trans/s to 8932.703333 trans/s (5.5%)<br>
-* UDP_RR: From 8562.08 trans/s to 9005.62/s (5.1%)<br>
-* UDP_STREAM: No change observed (insignificant 0.1% improvement)<br>
-<br>
-Signed-off-by: Eugenio P=C3=A9rez &lt;<a href=3D"mailto:eperezma@redhat.com=
-" target=3D"_blank">eperezma@redhat.com</a>&gt;<br>
----<br>
-=C2=A0hw/i386/intel_iommu.c | 6 ++++++<br>
-=C2=A01 file changed, 6 insertions(+)<br>
-<br>
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c<br>
-index ddb828da1f..7620a1abbf 100644<br>
---- a/hw/i386/intel_iommu.c<br>
-+++ b/hw/i386/intel_iommu.c<br>
-@@ -1960,6 +1960,12 @@ static void vtd_iotlb_domain_invalidate(IntelIOMMUSt=
-ate *s, uint16_t domain_id)<br>
-=C2=A0 =C2=A0 =C2=A0vtd_iommu_unlock(s);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0QLIST_FOREACH(vtd_as, &amp;s-&gt;vtd_as_with_notifiers,=
- next) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (vtd_as-&gt;iommu.iommu_notify_flags &amp; =
-IOMMU_NOTIFIER_DEVIOTLB) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 /* If IOMMU memory region is DEV=
-ICE IOTLB type, it does not make<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0* sense to send regular IO=
-MMU notifications. */<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 continue;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (!vtd_dev_to_context_entry(s, pci_bus_=
-num(vtd_as-&gt;bus),<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0vtd_as-&g=
-t;devfn, &amp;ce) &amp;&amp;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0domain_id =3D=3D vtd_get_do=
-main_id(s, &amp;ce)) {<br>
--- <br>
-2.18.1<br>
-<br>
-<br>
-</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
- class=3D"gmail_signature">=C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =E6=AD=A4=E8=
-=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=
-=A0 sincerely,<br>Yonggang Luo<br></div></div>
-
---000000000000755af905adcaa32b--

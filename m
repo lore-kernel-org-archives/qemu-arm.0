@@ -1,125 +1,276 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp373955lfc;
-        Tue, 25 Aug 2020 19:43:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw88HETQHrVeNC5R7FUyXVzX73w3a+ihg3jvOWsZ0pvHvAkiJ8/jIARigTcq5KEPVU8rycK
-X-Received: by 2002:a25:7341:: with SMTP id o62mr20430131ybc.305.1598409787438;
-        Tue, 25 Aug 2020 19:43:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598409787; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp388171lfc;
+        Tue, 25 Aug 2020 20:10:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8Db3mC637BEMqb/8YGCFaYicOIrUzHTzVK8Vh5gF7Hq2WrezN8yAPOcZUnV2SLjvpMb3l
+X-Received: by 2002:a25:c0c7:: with SMTP id c190mr18883193ybf.34.1598411412156;
+        Tue, 25 Aug 2020 20:10:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598411412; cv=none;
         d=google.com; s=arc-20160816;
-        b=PfFEKA2rF87jTc0LmzV509olHJgtsb3MkAuW6kzz+t0nzoR6/ZnfbOO16RfyVOp1JK
-         7AxB7vyX9j1dF+CIvC2oIfDqoTFtVjtoampb4QvSxuUYd7BjNQCSI1Vkc8Nq9jlUQuB/
-         VgHO6yc5e34CA+KO1JLxmm56aa6QjwzF9ZW9G1NQ1SbXdlwYTKNKUdRBqVfrY/0kDVPU
-         sT2RCkBO447jgixkF1fvjWdkLYOYr4HUFGt5fycuW1IpQCaJtByqsOBOY9P4f6YrvGA6
-         eg7gR3NfoyDfZ0mxn9dr9832WW1TNaqLqeukFCz3NgAAvCKDIUXYvSfxZ8xLZLbVUOQx
-         AN1Q==
+        b=Vw1kGqTy7Otasu7FNicBh94le4Z8jHC7TXHR1BmsWRcP1C3ysH9wb0G2hUMGjXrCFK
+         28jAgebryUxy9qTJJ2aVo/ye2/kGjOWrDJ71+nd9EJj+kx/JL5fXV2i2X/CMHf4V+xPd
+         ACMiwo7nKPmrOBx4AW0vTWgNB4oYIfnA4yhMc09xKNtH4Q+fSmymO9RHvcKO1Feo9Vir
+         lP+90uiHsOOpbWhmqUdun5l8ONCMVcItWJaCl6tl49Sm/N4lF2QEryJ+djFrd7nIBx+v
+         DGS2Kl9TQ+g9duKNU/58TNXUuPWaiPKMc/6lGBKuBnd8nB3RiaGHph+YF8vsg9j4PEy9
+         S/mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=GjwJKAsc8pRUTjH3+/EQ9yqAqW4rv35sdL4HYtEj7xo=;
-        b=zqUo8ImQqEyLMMEW7QgitTi7nZqmaVe5dsbjX6bAetDLZXReYaWWnKuN5sDCTMGmrF
-         LHTFHmdWv7hcXxmx/SnXbDOJw6Zr7KMwV7JavinPdgVhNV9yKCoT9fgtYRdpjIW6low+
-         nN4Gk3l5iuR0pcEa/B+X81+Kb60iNhDjUahW+IQv7OtL381O69mBsCNXwDMJD2huD9jy
-         WsSWzOwH/XLrf2iTwwUPdUjtdkrhWxW+2eRogQNImLIc7uR7ccTqQ0leGjGkYrDeAlQd
-         8VN3hkx62mlIhHc9cCA3Y+zjKwiE0/WwYewsm4xcOJW7URxSdxxZiNYrGwnqvdB0nMFC
-         Zxyw==
+        h=content-transfer-encoding:mime-version:message-id:date:in-reply-to
+         :subject:cc:from:user-agent:references:dkim-signature;
+        bh=Vt/YvypQ2/JgOMomfmLJ69idML1qVW8CKn8qjuI79ms=;
+        b=NQlF4WjJyWXnMKdVm/2uaSm67Nxkrqa6NSvVZ3Kyfd9XMLKj8xjFwuBTH6zmhXQLJi
+         uEjcfOJmopzkWtLp23tRxBwodKR2GiyLmwTltDJ5BxAOyl7qVhpUbre9Cm3awa+g7VIj
+         uToHvMGMeY4MdAi5Wuq89PoImWSn/JGTjZr9xOeinzJ2RlJeGnYPpX0oyVM/QFS83AY9
+         hOm7dWnG5LZtbwMGGKtB9FV4hS/6ZSHGBYEvLpzR8h2Nue+DIKlgL104hDrRawhcj97V
+         wRXorMd0yaLncFZ2yrkhGX6wKmPbyg+AzrhJ10rcZypoHztSRUkTSPJ1IvqRbf32N7Oc
+         3eUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w192si868188ybg.487.2020.08.25.19.43.07
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Aug 2020 19:43:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Mnpc3Fc5;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <bauerman@linux.ibm.com>
+Received: from mx0a-001b2d01.pphosted.com (mx0b-001b2d01.pphosted.com. [148.163.158.5])
+        by mx.google.com with ESMTPS id 81si891445ybn.182.2020.08.25.20.10.11
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 25 Aug 2020 20:10:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) client-ip=148.163.158.5;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:45328 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAlP0-0006JF-Qc
-	for alex.bennee@linaro.org; Tue, 25 Aug 2020 22:43:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52816)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAlOs-0006Id-Pw; Tue, 25 Aug 2020 22:42:58 -0400
-Received: from szxga02-in.huawei.com ([45.249.212.188]:2533 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
- id 1kAlOq-00033w-9R; Tue, 25 Aug 2020 22:42:58 -0400
-Received: from DGGEMM401-HUB.china.huawei.com (unknown [172.30.72.57])
- by Forcepoint Email with ESMTP id D6A79902BBDB066998AC;
- Wed, 26 Aug 2020 10:42:45 +0800 (CST)
-Received: from DGGEMM422-HUB.china.huawei.com (10.1.198.39) by
- DGGEMM401-HUB.china.huawei.com (10.3.20.209) with Microsoft SMTP Server (TLS)
- id 14.3.487.0; Wed, 26 Aug 2020 10:42:45 +0800
-Received: from DGGEMM511-MBX.china.huawei.com ([169.254.1.141]) by
- dggemm422-hub.china.huawei.com ([10.1.198.39]) with mapi id 14.03.0487.000;
- Wed, 26 Aug 2020 10:42:37 +0800
-From: "Chenqun (kuhn)" <kuhn.chenqun@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: RE: [PATCH v2 03/10] target/arm/translate-a64:Remove dead
- assignment in handle_scalar_simd_shli()
-Thread-Topic: [PATCH v2 03/10] target/arm/translate-a64:Remove dead
- assignment in handle_scalar_simd_shli()
-Thread-Index: AQHWetKHlCk5CuE1o0+ZVVgokc3Y46lIPU0AgAFxfxA=
-Date: Wed, 26 Aug 2020 02:42:37 +0000
-Message-ID: <7412CDE03601674DA8197E2EBD8937E83B8E2491@dggemm511-mbx.china.huawei.com>
-References: <20200825112447.126308-1-kuhn.chenqun@huawei.com>
- <20200825112447.126308-4-kuhn.chenqun@huawei.com>
- <CAFEAcA9mbQmGRNqJC7FmV8gBi3XOuMmYRVhWmczZPTuTW9tfVw@mail.gmail.com>
-In-Reply-To: <CAFEAcA9mbQmGRNqJC7FmV8gBi3XOuMmYRVhWmczZPTuTW9tfVw@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.174.187.50]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=Mnpc3Fc5;
+       spf=pass (google.com: domain of bauerman@linux.ibm.com designates 148.163.158.5 as permitted sender) smtp.mailfrom=bauerman@linux.ibm.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: from pps.filterd (m0098419.ppops.net [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 07Q31YgO148367;
+	Tue, 25 Aug 2020 23:09:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=references : from : cc :
+ subject : in-reply-to : date : message-id : mime-version : content-type :
+ content-transfer-encoding; s=pp1;
+ bh=Vt/YvypQ2/JgOMomfmLJ69idML1qVW8CKn8qjuI79ms=;
+ b=Mnpc3Fc5G3JEflTqRuc55rARHtbKu5yARozSzuQIKVYFuVvwI8uLBtqIMUrSxYEH4eWc
+ QcDTWT0UtZWHiYuSKlpjlWpI1K70NqQ7z4AICdaLfxMJVP2aG1LzjC5bnR4fj4P8cgBA
+ fZRYKBDsRBNB02T15133Vy58+5sMnHwMWo4qh3qDHfbQYEmjP1EQRNRfjnKi4Da7W6hV
+ 74ApyVryGF5+KrZmdwVbuwaHRDJODDTDoDztxMa+VpUeNKzV7UtU7FgIqOW4F1vQBSdt
+ y+N/yEG+dGDF4imZAYSHe+pPBF8Hz4i3xcw5TYyzqRtATI2BdCt/OYISNfjRBKNQ9cGp pA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 335exwrtq2-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 25 Aug 2020 23:09:47 -0400
+Received: from m0098419.ppops.net (m0098419.ppops.net [127.0.0.1])
+	by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 07Q33IG7156830;
+	Tue, 25 Aug 2020 23:09:47 -0400
+Received: from ppma03dal.us.ibm.com (b.bd.3ea9.ip4.static.sl-reverse.com [169.62.189.11])
+	by mx0b-001b2d01.pphosted.com with ESMTP id 335exwrtpt-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Tue, 25 Aug 2020 23:09:47 -0400
+Received: from pps.filterd (ppma03dal.us.ibm.com [127.0.0.1])
+	by ppma03dal.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 07Q37g0K025429;
+	Wed, 26 Aug 2020 03:09:46 GMT
+Received: from b03cxnp07029.gho.boulder.ibm.com (b03cxnp07029.gho.boulder.ibm.com [9.17.130.16])
+	by ppma03dal.us.ibm.com with ESMTP id 332uttp0xp-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+	Wed, 26 Aug 2020 03:09:46 +0000
+Received: from b03ledav004.gho.boulder.ibm.com (b03ledav004.gho.boulder.ibm.com [9.17.130.235])
+	by b03cxnp07029.gho.boulder.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 07Q39jPG1376920
+	(version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+	Wed, 26 Aug 2020 03:09:45 GMT
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 6ADC37805F;
+	Wed, 26 Aug 2020 03:09:45 +0000 (GMT)
+Received: from b03ledav004.gho.boulder.ibm.com (unknown [127.0.0.1])
+	by IMSVA (Postfix) with ESMTP id 7E9E77805E;
+	Wed, 26 Aug 2020 03:09:40 +0000 (GMT)
+Received: from morokweng.localdomain (unknown [9.163.48.38])
+	by b03ledav004.gho.boulder.ibm.com (Postfix) with ESMTPS;
+	Wed, 26 Aug 2020 03:09:40 +0000 (GMT)
+References: <20200819164306.625357-1-bauerman@linux.ibm.com> <20200819164306.625357-7-bauerman@linux.ibm.com>
+User-agent: mu4e 1.4.10; emacs 26.3
+From: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+        David Hildenbrand
+ <david@redhat.com>, qemu-devel@nongnu.org,
+        Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,
+        Aleksandar Markovic
+ <aleksandar.qemu.devel@gmail.com>,
+        Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,
+        Thomas Huth <thuth@redhat.com>,
+        David Gibson
+ <david@gibson.dropbear.id.au>,
+        Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@redhat.com>,
+        Artyom Tarasenko <atar4qemu@gmail.com>,
+        Aleksandar
+ Rikalo <aleksandar.rikalo@syrmia.com>,
+        Eduardo Habkost
+ <ehabkost@redhat.com>, Greg Kurz <groug@kaod.org>,
+        qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Alex
+ =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+        Richard Henderson
+ <rth@twiddle.net>,
+        Cornelia Huck <cohuck@redhat.com>,
+        Igor Mammedov
+ <imammedo@redhat.com>,
+        Aurelien Jarno <aurelien@aurel32.net>, qemu-ppc@nongnu.org
+Subject: Re: [PATCH v6 6/8] sparc/sun4m: Remove main_cpu_reset()
+In-reply-to: <20200819164306.625357-7-bauerman@linux.ibm.com>
+Date: Wed, 26 Aug 2020 00:09:37 -0300
+Message-ID: <87y2m29k7i.fsf@morokweng.localdomain>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.188;
- envelope-from=kuhn.chenqun@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 22:42:46
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Pannengyuan <pannengyuan@huawei.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Euler Robot <euler.robot@huawei.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Nw7PENOwpSAF
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
+ definitions=2020-08-25_11:2020-08-25,2020-08-26 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 lowpriorityscore=0
+ phishscore=0 spamscore=0 malwarescore=0 mlxlogscore=999 clxscore=1015
+ suspectscore=0 bulkscore=0 adultscore=0 priorityscore=1501 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2006250000
+ definitions=main-2008260018
+X-TUID: 4wWmS7cTnvQl
 
-PiBPbiBUdWUsIDI1IEF1ZyAyMDIwIGF0IDEyOjI2LCBDaGVuIFF1biA8a3Vobi5jaGVucXVuQGh1
-YXdlaS5jb20+IHdyb3RlOg0KPiA+DQo+ID4gQ2xhbmcgc3RhdGljIGNvZGUgYW5hbHl6ZXIgc2hv
-dyB3YXJuaW5nOg0KPiA+IHRhcmdldC9hcm0vdHJhbnNsYXRlLWE2NC5jOjg2MzU6MTQ6IHdhcm5p
-bmc6IFZhbHVlIHN0b3JlZCB0byAndGNnX3JuJw0KPiA+IGR1cmluZyBpdHMgIGluaXRpYWxpemF0
-aW9uIGlzIG5ldmVyIHJlYWQNCj4gPiAgICAgVENHdl9pNjQgdGNnX3JuID0gbmV3X3RtcF9hNjQo
-cyk7DQo+ID4gICAgICAgICAgICAgIF5+fn5+fiAgIH5+fn5+fn5+fn5+fn5+DQo+ID4gdGFyZ2V0
-L2FybS90cmFuc2xhdGUtYTY0LmM6ODYzNjoxNDogd2FybmluZzogVmFsdWUgc3RvcmVkIHRvICd0
-Y2dfcmQnDQo+ID4gZHVyaW5nIGl0cyAgaW5pdGlhbGl6YXRpb24gaXMgbmV2ZXIgcmVhZA0KPiA+
-ICAgICBUQ0d2X2k2NCB0Y2dfcmQgPSBuZXdfdG1wX2E2NChzKTsNCj4gPiAgICAgICAgICAgICAg
-Xn5+fn5+ICAgfn5+fn5+fn5+fn5+fn4NCj4gPg0KPiA+IFRoZXJlIGlzIGEgbWVtb3J5IGxlYWsg
-Zm9yIHRoZSB2YXJpYWJsZSBuZXdfdG1wX2E2NCAicyIuDQo+IA0KPiBUaGVyZSBpcyBub3QsIGJl
-Y2F1c2UgVENHIHRlbXBzIGFsbG9jYXRlZCB2aWEgbmV3X3RtcF9hNjQoKSBhcmUgYWxsIGZyZWVk
-IHZpYQ0KPiBmcmVlX3RtcF9hNjQoKSBhdCB0aGUgZW5kIG9mIGRpc2FzX2E2NF9pbnNuKCkuDQo+
-IA0KT0ssIEknbGwgZGVsZXRlIHRoYXQgZGVzY3JpcHRpb24gbGF0ZXIuDQoNClRoYW5rcywNCkNo
-ZW5RdW4NCg==
+
+Thiago Jung Bauermann <bauerman@linux.ibm.com> writes:
+
+> We rely on cpu_common_reset() to set cs->halted to 0, so main_cpu_reset()
+> is pointless.
+>
+> Suggested-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+> Signed-off-by: Thiago Jung Bauermann <bauerman@linux.ibm.com>
+> ---
+>  hw/sparc/sun4m.c | 13 +------------
+>  1 file changed, 1 insertion(+), 12 deletions(-)
+>
+> diff --git a/hw/sparc/sun4m.c b/hw/sparc/sun4m.c
+> index cf7dfa4af5..22c51dac8a 100644
+> --- a/hw/sparc/sun4m.c
+> +++ b/hw/sparc/sun4m.c
+> @@ -218,15 +218,6 @@ static void dummy_cpu_set_irq(void *opaque, int irq,=
+ int level)
+>  {
+>  }
+>=20=20
+> -static void main_cpu_reset(void *opaque)
+> -{
+> -    SPARCCPU *cpu =3D opaque;
+> -    CPUState *cs =3D CPU(cpu);
+> -
+> -    cpu_reset(cs);
+> -    cs->halted =3D 0;
+> -}
+> -
+>  static void secondary_cpu_reset(void *opaque)
+>  {
+>      SPARCCPU *cpu =3D opaque;
+> @@ -827,9 +818,7 @@ static void cpu_devinit(const char *cpu_type, unsigne=
+d int id,
+>      env =3D &cpu->env;
+>=20=20
+>      cpu_sparc_set_id(env, id);
+> -    if (id =3D=3D 0) {
+> -        qemu_register_reset(main_cpu_reset, cpu);
+> -    } else {
+> +    if (id !=3D 0) {
+>          qemu_register_reset(secondary_cpu_reset, cpu);
+>          cs =3D CPU(cpu);
+>          cs->halted =3D 1;
+
+Surprisingly, this patch also causes a make check failure:
+
+$ make && make check-qtest
+  GEN     docs/index.html
+  CC      qga/main.o
+  CC      qemu-nbd.o
+  CC      qemu-storage-daemon.o
+  CC      monitor/qmp-cmds-control.o
+  CC      qemu-img.o
+  CC      qemu-io.o
+  CC      sparc-softmmu/hw/sparc/sun4m.o
+  CC      sparc-softmmu/softmmu/vl.o
+  LINK    qemu-ga
+  LINK    qemu-nbd
+  LINK    qemu-storage-daemon
+  LINK    qemu-img
+  LINK    sparc-softmmu/qemu-system-sparc
+  LINK    qemu-io
+  TEST    check-qtest-sparc: tests/qtest/prom-env-test
+Broken pipe
+/home/bauermann/trabalho/src/qemu/tests/qtest/libqtest.c:175: kill_qemu() d=
+etected QEMU death from signal 11 (Segmentation fault) (core dumped)
+ERROR prom-env-test - too few tests run (expected 3, got 0)
+make: *** [/home/bauermann/trabalho/src/qemu/tests/Makefile.include:650: ch=
+eck-qtest-sparc] Fehler 1
+
+Here's what I got from the core file:
+
+$ gdb sparc-softmmu/qemu-system-sparc core.645493
+Reading symbols from sparc-softmmu/qemu-system-sparc...
+[New LWP 645497]
+[New LWP 645496]
+[New LWP 645493]
+[New LWP 645495]
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib64/libthread_db.so.1".
+Core was generated by `sparc-softmmu/qemu-system-sparc -qtest unix:/tmp/qte=
+st-645490.sock -qtest-log /'.
+Program terminated with signal SIGSEGV, Segmentation fault.
+#0  0x0000000000000000 in ?? ()
+[Current thread is 1 (Thread 0x7f713ce60700 (LWP 645497))]
+(gdb) bt
+#0  0x0000000000000000 in  ()
+#1  0x0000557b3d6155c5 in helper_compute_psr (env=3Denv@entry=3D0x557b3f444=
+030) at /home/bauermann/trabalho/src/qemu/target/sparc/cc_helper.c:459
+#2  0x0000557b3d6156e9 in cpu_get_psr (env=3Denv@entry=3D0x557b3f444030) at=
+ /home/bauermann/trabalho/src/qemu/target/sparc/win_helper.c:56
+#3  0x0000557b3d61779c in sparc_cpu_do_interrupt (cs=3D0x557b3f43b7f0) at /=
+home/bauermann/trabalho/src/qemu/target/sparc/int32_helper.c:76
+#4  0x0000557b3d5e29a6 in cpu_handle_exception (ret=3D<synthetic pointer>, =
+cpu=3D0x557b3f43b7f0) at /home/bauermann/trabalho/src/qemu/accel/tcg/cpu-ex=
+ec.c:504
+#5  cpu_exec (cpu=3Dcpu@entry=3D0x557b3f43b7f0) at /home/bauermann/trabalho=
+/src/qemu/accel/tcg/cpu-exec.c:729
+#6  0x0000557b3d5f6c85 in tcg_cpu_exec (cpu=3D<optimized out>) at /home/bau=
+ermann/trabalho/src/qemu/softmmu/cpus.c:1356
+#7  qemu_tcg_rr_cpu_thread_fn (arg=3Darg@entry=3D0x557b3f43b7f0) at /home/b=
+auermann/trabalho/src/qemu/softmmu/cpus.c:1458
+#8  0x0000557b3d81e919 in qemu_thread_start (args=3D0x7f713ce5e930) at /hom=
+e/bauermann/trabalho/src/qemu/util/qemu-thread-posix.c:521
+#9  0x00007f717dc6b432 in start_thread () at /lib64/libpthread.so.0
+#10 0x00007f717db99913 in clone () at /lib64/libc.so.6
+(gdb) up
+#1  0x0000557b3d6155c5 in helper_compute_psr (env=3Denv@entry=3D0x557b3f444=
+030) at /home/bauermann/trabalho/src/qemu/target/sparc/cc_helper.c:459
+459         new_psr =3D icc_table[CC_OP].compute_all(env);
+(gdb) list
+454
+455     void helper_compute_psr(CPUSPARCState *env)
+456     {
+457         uint32_t new_psr;
+458
+459         new_psr =3D icc_table[CC_OP].compute_all(env);
+460         env->psr =3D new_psr;
+461     #ifdef TARGET_SPARC64
+462         new_psr =3D xcc_table[CC_OP].compute_all(env);
+463         env->xcc =3D new_psr;
+
+CC_OP is:
+
+#define CC_OP  (env->cc_op)
+
+So:
+
+(gdb) p env->cc_op
+$1 =3D 0
+
+0 is CC_OP_DYNAMIC, but the icc_table definition says:
+
+static const CCTable icc_table[CC_OP_NB] =3D {
+    /* CC_OP_DYNAMIC should never happen */
+
+I don't know what is going on. So I will change this patch to keep
+main_cpu_reset() but drop the line which sets cs->halted to 0 (which
+does pass make check).
+
+--=20
+Thiago Jung Bauermann
+IBM Linux Technology Center

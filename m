@@ -1,108 +1,108 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp932291lfc;
-        Wed, 26 Aug 2020 10:10:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4F0ZrNA9rWWO1GlL/q06cUfpYHimYVI/pcKP4l0NFqKjFMsFAole5PquVNxiXhbi5QyPZ
-X-Received: by 2002:a25:25cc:: with SMTP id l195mr22832829ybl.383.1598461824395;
-        Wed, 26 Aug 2020 10:10:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598461824; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp954502lfc;
+        Wed, 26 Aug 2020 10:42:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwMPOA8epKP0+fsmM0ZQH1wAvqkmiz4SLpRJS9C9uEVPhi4ZL2hAKlDAhxoUbErAHt7BFDq
+X-Received: by 2002:a25:7453:: with SMTP id p80mr22769242ybc.441.1598463779458;
+        Wed, 26 Aug 2020 10:42:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598463779; cv=none;
         d=google.com; s=arc-20160816;
-        b=mCg/t7KrPHvrGn+/7AMoAJCXXCPjcclm1VbmldFnjg4437JIhYcwVYukMEuxhhAHZv
-         lS8GdBVrH46qX0rkrwTZDlgVhlFg3gVPFP6f/SXKwBDXygxT9z5S1YjySdn+8gRMN7Vv
-         9OthhDlnFJ6PyuLTWDIk72GiAzeaeOHbuoszaBRSxRpb5nwBlf64oSB5Ell3Tf51tprs
-         DadYxCIsUlZ1GT3XSYpd+RLLbUXlcWvPP8aLEJ+f0YKq7XzdO8xNox9DTtg/DfPkRrY4
-         Z6yeQE4h8sKca38Zef6+SxDwuaGXsAR9j4Nlk6pCoECKUTCUnVFlaHO3Ofib76JirUY8
-         gY9Q==
+        b=D2j1SOrzmlxB/yaoBYa7COzHVsoCBZYPzPY4v91/oyfUOWEJW8xlOKnCZ38OP3yiuT
+         YL9liO91ZJJ4qmZzzRSZntyhonpn7W0wrnplppWapFE6M0MU55+xjpImAxeGiOmlymQD
+         SRijMGXYduyVGKWaC77T5C1QFh/ErmtTInkdjP2TUzdaiWepckTRfrNuZWWrsGp4EnB9
+         98lai7TyvGyEpPAojvQ4MJ1X68ka5S8CbLlTtxe31XBLCeAqf+YdbqWdEQa1eU/Ej1eh
+         M9d90tIeg9IC9HuWfj4uCo5X0qwUhLcpjNdy/NwnE+egheOdXcLkreiRSuz5MbkAI57V
+         ggwg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=FCOsXPEYR2aVJvi/mI6+SbgUYfGIrRkYX7xydn5IxnE=;
-        b=uzpK0cWFM0aPVNPpEmqxgUJ+ml2aW+Z/M0OHAPKrzunYVZhBKVsVjakGscid7K6fOt
-         6ZB0JTojwBuyB/RUiVc4kK0ZsXlv/YXHI+e8OGcoc7+sF0wKNOgQVimQCZmCNOeWEOEI
-         H6+J9kwkJPgIudDji1UcipxCiXQ9Xmk9e6kz38C9jNqsDQFoiP6+ni3KVPuyYUpNPIF9
-         iMJIpK2q0uYLJ77MmrDCHNz5vOX67vb2CokuuCE/ZucTkJWHRZlDh/gFCh1sjUDz4twP
-         ZBYwHIwg1UYklS+h/xNASKSf3r50B1KxDYOLPgDA/IWkZjMN4GwbBSuHnjLC1HOdGtLD
-         wMUA==
+        bh=3qb9iRO/PwSV9NFhKNd1ED2pxLCZVEdGyUkv49j5+x4=;
+        b=I3RXKA8HEbH/klHGWNNi/kTurInuUHI7zH8T03sncnKAPcNKCRYJVmBHFTXqgzHWNX
+         UJHTFjTeRosf7pYDTucqlXGDFtBIk8kiKrv0fuwDWa53ApJ6ebTpwgBKuI6JRDohGxLe
+         Cc1ixkKCHD9w2c7IjqcvIq/FCYA14QJoS/w6RpFbZOOlJTFoeVsIghaffPYTag5kuMYW
+         joKnSzq3H/fjxKSMlM0ERqdixWwGIJWSK973JpbOhO7fVshw4+mtrAUd2bAvvaFoyIVh
+         WHBDhyJnlW1UvCynnJ0z2e/OgBldEM7SqL5+z4B394kVr/9Cu0N59KTVll6TNjbaLLuQ
+         KGXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=huKP5UIg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=WsH0N28S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a2si2759381ybi.478.2020.08.26.10.10.24
+        by mx.google.com with ESMTPS id r1si2561417ybp.130.2020.08.26.10.42.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Aug 2020 10:10:24 -0700 (PDT)
+        Wed, 26 Aug 2020 10:42:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=huKP5UIg;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45110 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=WsH0N28S;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48486 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAywJ-0004tN-GV
-	for alex.bennee@linaro.org; Wed, 26 Aug 2020 13:10:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33608)
+	id 1kAzRq-0002pA-R9
+	for alex.bennee@linaro.org; Wed, 26 Aug 2020 13:42:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42418)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAywA-0004tA-I1
- for qemu-arm@nongnu.org; Wed, 26 Aug 2020 13:10:14 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:35807
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAyw8-0005AV-8z
- for qemu-arm@nongnu.org; Wed, 26 Aug 2020 13:10:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598461810;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=FCOsXPEYR2aVJvi/mI6+SbgUYfGIrRkYX7xydn5IxnE=;
- b=huKP5UIgf0806cJ57nVPZkHSf/jMNHfUBDyNa3Xv1A0YZwsKLbvTjKVC44/ChrcLicrX5A
- bPE5WBYZOyROyjhq+Sxz7op/cGBj5suCFwQiaNlDn3mAHPaefs2XY/yPYzsOUVfxt9IWW1
- nnURSVkE72XVxpJus76DPzSZU2GWWkU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-258-y7i3AGy_Mpm4jEZfuTg2tQ-1; Wed, 26 Aug 2020 13:10:08 -0400
-X-MC-Unique: y7i3AGy_Mpm4jEZfuTg2tQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id ABD73393B5;
- Wed, 26 Aug 2020 17:10:07 +0000 (UTC)
-Received: from localhost (unknown [10.10.67.254])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6F9925D9E4;
- Wed, 26 Aug 2020 17:10:07 +0000 (UTC)
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 1/4] tosa-ssp: No need to override instance_size
-Date: Wed, 26 Aug 2020 13:10:02 -0400
-Message-Id: <20200826171005.4055015-2-ehabkost@redhat.com>
-In-Reply-To: <20200826171005.4055015-1-ehabkost@redhat.com>
-References: <20200826171005.4055015-1-ehabkost@redhat.com>
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1kAzRd-0002oB-U5
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2020 13:42:46 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:46489)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1kAzRb-0001LX-Aw
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2020 13:42:45 -0400
+Received: by mail-wr1-x443.google.com with SMTP id r15so2656914wrp.13
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2020 10:42:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to;
+ bh=3qb9iRO/PwSV9NFhKNd1ED2pxLCZVEdGyUkv49j5+x4=;
+ b=WsH0N28SkEPk9DBooqvPuEz1x0Luu8vrvJgiaMhFOL7xrREyyERULBQ9c/OSZfzbn5
+ FZkET/gJCqNJbX5FQULCdNyCNv6CI0Hni701heMycDK+aZ7I1coSie3OmGdemoS64B/M
+ YyeiEBGKn9R9Q0WK/GJp5QYjA6SJu3LnXZTdNf01sq6pDFIeRnM8hyAWpvj0NOd5c+Dp
+ yXWwt1GnovU1ogkyxWtJleEev0c2KfP/wzlr+HvBPVIRr83glm4Vau+zJ6qtFKZ2t8om
+ WHLph7OK1cFMe6y7t8VaeB4lHRKHyEnoQav0EVbm6oBsAccyo5mzBWj2y1H1txiDE6dw
+ 5ASQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=3qb9iRO/PwSV9NFhKNd1ED2pxLCZVEdGyUkv49j5+x4=;
+ b=UXuWs66znQGOmwqPGX3bSDA6oia1TKqLyEp2ptWSmO8zHtbv91Z0ElQJc23o9IB8kL
+ xxQ4IBX2nlhE3VTpYBgHzqhSzOccn1BP7oVAtVHn1aXatZmrMHwUOn8ZDVNIreQPq0sB
+ VjQzXpJyFMdzqWEQwtmcQf7U4I0UU1O0HzY+T+kQYn2nhzz0GoQzzcTtfS3qFKo0cxrb
+ I/pn3wHDLSrFceznJRCT1A399UFSpgAEKKtgVx5EKBWrkX3dbx4TgRlFu3bNcPkWfPIz
+ rEd6uGdQ4qO/CLnrTojL7Nb9Warveiskm9pkhpKuAHGqKRHgl5g1dKox4P0IN2g3GkJd
+ 5kdw==
+X-Gm-Message-State: AOAM532b+NEtwCuw7Gq1HkhoQwFqJiebskUAEAr0nUXLSz7rFzCIhFSp
+ wDZ+VeyzkrOpq8B3mGrVCl1LXQ==
+X-Received: by 2002:adf:ec4d:: with SMTP id w13mr11678817wrn.60.1598463761421; 
+ Wed, 26 Aug 2020 10:42:41 -0700 (PDT)
+Received: from xora-monster ([2a02:8010:64d6::1d89])
+ by smtp.gmail.com with ESMTPSA id j5sm8587452wma.45.2020.08.26.10.42.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 26 Aug 2020 10:42:40 -0700 (PDT)
+Date: Wed, 26 Aug 2020 18:42:39 +0100
+From: Graeme Gregory <graeme@nuviainc.com>
+To: Leif Lindholm <leif@nuviainc.com>
+Subject: Re: [PATCH] hw/arm/sbsa-ref: add "reg" property to DT cpu nodes
+Message-ID: <20200826174239.us5etrvktv7m77sa@xora-monster>
+References: <20200825165217.7379-1-leif@nuviainc.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0.0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 06:53:09
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20200825165217.7379-1-leif@nuviainc.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=graeme@nuviainc.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,39 +115,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Andrzej Zaborowski <balrogg@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Radoslaw Biernacki <rad@semihalf.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uLJaMpoqlGkF
+X-TUID: aIyBX1WKAqhI
 
-TYPE_SSI_SLAVE already sets instance_size=sizeof(SSISlave),
-there's no need to override it.
+On Tue, Aug 25, 2020 at 05:52:17PM +0100, Leif Lindholm wrote:
+> The sbsa-ref platform uses a minimal device tree to pass amount of memory
+> as well as number of cpus to the firmware. However, when dumping that
+> minimal dtb (with -M sbsa-virt,dumpdtb=<file>), the resulting blob
+> generates a warning when decompiled by dtc due to lack of reg property.
+> 
+> Add a simple reg property per cpu, representing a 64-bit MPIDR_EL1.
+> 
+> Signed-off-by: Leif Lindholm <leif@nuviainc.com>
+> ---
+>  hw/arm/sbsa-ref.c | 16 ++++++++++++++++
+>  1 file changed, 16 insertions(+)
+> 
+> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> index f030a416fd..167c57a08b 100644
+> --- a/hw/arm/sbsa-ref.c
+> +++ b/hw/arm/sbsa-ref.c
+> @@ -183,7 +183,22 @@ static void create_fdt(SBSAMachineState *sms)
+>          g_free(matrix);
+>      }
+>  
+> +    /*
+> +     * From Documentation/devicetree/bindings/arm/cpus.yaml
+> +     *  On ARM v8 64-bit systems this property is required
+> +     *    and matches the MPIDR_EL1 register affinity bits.
+> +     *
+> +     *    * If cpus node's #address-cells property is set to 2
+> +     *
+> +     *      The first reg cell bits [7:0] must be set to
+> +     *      bits [39:32] of MPIDR_EL1.
+> +     *
+> +     *      The second reg cell bits [23:0] must be set to
+> +     *      bits [23:0] of MPIDR_EL1.
+> +     */
+>      qemu_fdt_add_subnode(sms->fdt, "/cpus");
+> +    qemu_fdt_setprop_cell(sms->fdt, "/cpus", "#address-cells", 2);
+> +    qemu_fdt_setprop_cell(sms->fdt, "/cpus", "#size-cells", 0x0);
+>  
+>      for (cpu = sms->smp_cpus - 1; cpu >= 0; cpu--) {
+>          char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
+> @@ -191,6 +206,7 @@ static void create_fdt(SBSAMachineState *sms)
+>          CPUState *cs = CPU(armcpu);
+>  
+>          qemu_fdt_add_subnode(sms->fdt, nodename);
+> +        qemu_fdt_setprop_u64(sms->fdt, nodename, "reg", cpu);
 
-Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
----
-Cc: Andrzej Zaborowski <balrogg@gmail.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
-Cc: qemu-devel@nongnu.org
----
- hw/arm/tosa.c | 1 -
- 1 file changed, 1 deletion(-)
+To obey the statement earlier shouldnt this be taken from the mp_affinity
+variable in armcpu?
 
-diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-index e29566f7b3..2c5a8a50a1 100644
---- a/hw/arm/tosa.c
-+++ b/hw/arm/tosa.c
-@@ -311,7 +311,6 @@ static void tosa_ssp_class_init(ObjectClass *klass, void *data)
- static const TypeInfo tosa_ssp_info = {
-     .name          = "tosa-ssp",
-     .parent        = TYPE_SSI_SLAVE,
--    .instance_size = sizeof(SSISlave),
-     .class_init    = tosa_ssp_class_init,
- };
- 
--- 
-2.26.2
+Graeme
 
+>  
+>          if (ms->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
+>              qemu_fdt_setprop_cell(sms->fdt, nodename, "numa-node-id",
+> -- 
+> 2.20.1
+> 

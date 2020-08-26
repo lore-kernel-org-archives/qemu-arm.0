@@ -1,109 +1,108 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp644451lfc;
-        Wed, 26 Aug 2020 03:58:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhBHbBIEYBjp6I5Vt5z5vvBoAXFQ0/iDiuXSSruVUnnJ7FVFRRkIY/ckAvAzPmjLK/TSW4
-X-Received: by 2002:a25:6e54:: with SMTP id j81mr19722657ybc.194.1598439503306;
-        Wed, 26 Aug 2020 03:58:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598439503; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp644646lfc;
+        Wed, 26 Aug 2020 03:58:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz0mBpF3OG7r44F8ykgR321aOXMy23BWkrdPdVP5aKSDABHLNnEzxYmG4HJq4sfJJj1A/PR
+X-Received: by 2002:a25:5384:: with SMTP id h126mr21739259ybb.445.1598439524157;
+        Wed, 26 Aug 2020 03:58:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598439524; cv=none;
         d=google.com; s=arc-20160816;
-        b=KzGKPzDeeEQD4SbrHzNwQMKDICLCbECK+XI9hI9UzPBtS/ML2zFNjTShQR0MbNxhAq
-         Nx9unKpXNw8elhN3+sFhy79eFR3rnR0rMVbfE+TDDvkPzA69wt1tqbAJf0/Exm8Sm6uL
-         2jdJ1hocT2zBksDUQDumCoaBrT68ACFFynhq/m5hiEOil25JmDedsglJ+8s8YMpooDoe
-         +q2WOxaXbzDca4BOVKJSxD3Rz5nox0LZ6xahDg2OUKIectdiAHYXBN1SuBzdvwNymZa9
-         054I7KfRmL0/ceJVXf9H6/f5y6Jt2Py0BBPWFhqp6K6BWZC8JLBMFTOrFWAeMmeDaG6C
-         wCwA==
+        b=n1RDMWLeHzD6di0Ax6/+/OdoG+XnpZ12Cy5S101doxF4MDA+3ScXZLBd2ZUpq+GhE2
+         eroz+Fc0/A/vxBhyif9SHunCMJnJQJTHLgFJrPeeByWY4pRjJh4f2YjELhIaY4W8JCPb
+         imfb8teT72MkP/KKIS49Ba2ojnM2tfRczEfUrrofZtV8rnWVAuBW5QoaQZLvzkowU1ZU
+         /TtaG9oNSaE2zdqmzpF6d7/Sbx+Dilq8bCCsHoC0kqZsmUtE5pyHUkhpe4+OhyEzVw9g
+         +t1BdiOeCkByvTRtVSKNuRZcRGwmxP1FPBPBt2NfznJokTpY9vjgT+tzhCOebOApTJXz
+         xZKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=+RoT3UHwL3C3aiK+dtyg81KyFCt1RZ6yhy/ND3g2/ps=;
-        b=s70dYZClDxZ2w3xzgB1Ylw+020mPafYgvLQVGE6U0Ak+oRnXo27sIH5Riao3HA54bn
-         VlSMpbPKmOCO33b1H2sj7jJ68WpQm1CISbVYdR3DVvlZo0/5N0S3StbokyIYk8yvkAix
-         UeH3PncMKe7ETHUrRWkeQZXoWikTGwj2PBPqi5oWiY5FjRQcE93mix4AUhKPnDZic4Rw
-         NwVmRYYUThV3z9CZIbk9wxRmWW8nTw6Lt6HlUvJd5TGn8fMhTL5yI5Ee1+ExQlVATUw/
-         1k6t2rIvTcy/ixeF7d47YU7bsRsbn8C3rv40YmdWw2jcDCys+4/irJVfhxyaOu8fYFQv
-         YRoQ==
+        bh=q4xqrjBt9+K0AYOcFO9PWCCV/shKCcI1emzHoZPL8Jc=;
+        b=tbl/2auoUcyRh2E4rwI2wBS240/P1pR61njNuyPXi5BuOJwONsoR2Mm57XC3QZoIxs
+         Fk8YsV1Ngg8TSplVl2kK/B3TevgTxEI+leZ1CAHp7GBAngM+ziUB2EhO8aaERkr80sGF
+         Phxafh05gX3691t0an7Q3bNrWgohTb2kMh7k+RtZkC8mQ3x0/TobLVWjVSVKCH/N3VsT
+         ZrJLVPwZt1Cr88iO4BWzxHwDLYFS+JTzkwEAvqYK2iDG6XGEVZzwkr4lhKeY8U8gGJGW
+         NVlsGcRCG9QXcyoi+uJ9jq4BFf0qBWEt8Rskcy3iqowi3IU7I19KoTiJ9DtUefUPIPQb
+         NFuA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hezL1dNk;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hf02Nbbv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y15si2056977ybk.319.2020.08.26.03.58.23
+        by mx.google.com with ESMTPS id n1si1854495ybo.80.2020.08.26.03.58.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Aug 2020 03:58:23 -0700 (PDT)
+        Wed, 26 Aug 2020 03:58:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hezL1dNk;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hf02Nbbv;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53100 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54160 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAt8I-0008Dv-Lt
-	for alex.bennee@linaro.org; Wed, 26 Aug 2020 06:58:22 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44374)
+	id 1kAt8d-0000C3-GC
+	for alex.bennee@linaro.org; Wed, 26 Aug 2020 06:58:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3V-0006GZ-B2
- for qemu-arm@nongnu.org; Wed, 26 Aug 2020 06:53:25 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:33461
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3X-0006Me-ER
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2020 06:53:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:31206)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3J-0001Y5-Dm
- for qemu-arm@nongnu.org; Wed, 26 Aug 2020 06:53:24 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3O-0001Z2-8H
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2020 06:53:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598439192;
+ s=mimecast20190719; t=1598439197;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+RoT3UHwL3C3aiK+dtyg81KyFCt1RZ6yhy/ND3g2/ps=;
- b=hezL1dNk6ATG0Op5e1UKyblt7uSZLZEw1DqMdG9iNXt1ZeuTIdblffNe/M2cU4brDmkcL1
- 6g1yesVWp0g7EevhTXd4mXlXvxQMvJ9yZTgjtkSvrtNgHXxxJlcObz4xFwrQqGfclSQ6vE
- XVVoNh6zDJ3QwDvFS/nJnVnTFumiDWY=
+ bh=q4xqrjBt9+K0AYOcFO9PWCCV/shKCcI1emzHoZPL8Jc=;
+ b=hf02NbbvdgMsvD2EaDekotpdPFe/l1HJQZq8TVXEBjy3gEMETPRShQsBDUGw2Qkpj5Y+5e
+ yu9/jOOr2hKKVoGp+wBkpNd/0usYx1ZNdXEAHFAij7w/HOaQRsxqx8PZL/u/alGg5Rd5L2
+ dlP6uAFtQAgLGNeDaZUChXg3l6Ej3Ko=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-206-RRdoey3WNem19gyBUqYnLQ-1; Wed, 26 Aug 2020 06:53:09 -0400
-X-MC-Unique: RRdoey3WNem19gyBUqYnLQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-546-ua8EHp59N3yQDupojUcfxg-1; Wed, 26 Aug 2020 06:53:15 -0400
+X-MC-Unique: ua8EHp59N3yQDupojUcfxg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D8C531074646;
- Wed, 26 Aug 2020 10:53:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 33428807337;
+ Wed, 26 Aug 2020 10:53:14 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-54.ams2.redhat.com
  [10.36.112.54])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7F6B25D9E4;
- Wed, 26 Aug 2020 10:53:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A54965C1A3;
+ Wed, 26 Aug 2020 10:53:05 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 0635031FC7; Wed, 26 Aug 2020 12:52:55 +0200 (CEST)
+ id 81DFB204AD; Wed, 26 Aug 2020 12:52:54 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v6 20/20] tests/acpi: update expected data files for microvm
-Date: Wed, 26 Aug 2020 12:52:54 +0200
-Message-Id: <20200826105254.28496-21-kraxel@redhat.com>
+Subject: [PATCH v6 09/20] microvm/acpi: add acpi_dsdt_add_virtio() for x86
+Date: Wed, 26 Aug 2020 12:52:43 +0200
+Message-Id: <20200826105254.28496-10-kraxel@redhat.com>
 In-Reply-To: <20200826105254.28496-1-kraxel@redhat.com>
 References: <20200826105254.28496-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 01:10:45
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 06:53:10
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.958,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,61 +125,98 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zw2ikxxnbqLI
+X-TUID: lwJ1+RfYRGq9
 
-Also clear tests/qtest/bios-tables-test-allowed-diff.h
+Makes x86 linux kernel find virtio-mmio devices automatically.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Sergio Lopez <slp@redhat.com>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h |   3 ---
- tests/data/acpi/microvm/APIC                | Bin 0 -> 70 bytes
- tests/data/acpi/microvm/DSDT                | Bin 0 -> 365 bytes
- tests/data/acpi/microvm/FACP                | Bin 0 -> 268 bytes
- 4 files changed, 3 deletions(-)
+ hw/i386/acpi-microvm.c | 52 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 97c3fa621b7f..dfb8523c8bf4 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,4 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/microvm/APIC",
--"tests/data/acpi/microvm/DSDT",
--"tests/data/acpi/microvm/FACP",
-diff --git a/tests/data/acpi/microvm/APIC b/tests/data/acpi/microvm/APIC
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..7472c7e830b6c7139720e93dd544d4441556661d 100644
-GIT binary patch
-literal 70
-zcmZ<^@N{-#U|?Xp?&R<65v<@85#a0y6k`O6f!H9Lf#JbFFwFr}2jnsGfW!{`1CcCj
-H|A7Jk<Z=uF
-
-literal 0
-HcmV?d00001
-
-diff --git a/tests/data/acpi/microvm/DSDT b/tests/data/acpi/microvm/DSDT
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..b43f427a222a933d3f34aceab6224a2c6115c365 100644
-GIT binary patch
-literal 365
-zcmX9(%SyvQ6upy2n@pNIKA<QF#Sf5arMONe(=?DaG1G?-VTyaft+=UO6kPiQ{RBV7
-z&*`dor`gOs_nbMLa}$-!-w1&98W&=s`tfrq66BBqgUw{=rB<=7xA)_f7<+n>CE=5t
-zE;#2y@U)soH1M>j)Okp0N|?)B()oaTI~2uqaQfeg{#@eeMV8=e3}=mj(J&<k`(T52
-z$G~{<Rw@(SghZmuI3GM<2s%R)5Sg4V4Zd4o6Cc~5X(KC{LI+@fq)z=6m{mw6^ZwPX
-zmdm;SZkF|){d}&e1=QM=t170OdV6g^6IRYjF1Tp2ut@AIEB@GM`K&7N+EF9YHntEE
-jUShi3(B94m0^Q#uSOD0Iklv{mV=rh>BYn|!sEgD;a<EMS
-
-literal 0
-HcmV?d00001
-
-diff --git a/tests/data/acpi/microvm/FACP b/tests/data/acpi/microvm/FACP
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..0ba5795d622349e1521138e4123544637b4ab9af 100644
-GIT binary patch
-literal 268
-zcmZ>BbPnKQWME*ebMklg2v%^42yk`-iUEZfKx`0ARlp*^z`()4z{IrRAIMxMsv1tD
-QVL<yCp!S2@!U$yp0N^VO0RR91
-
-literal 0
-HcmV?d00001
-
+diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
+index 06ef33949f5f..b9ce3768b263 100644
+--- a/hw/i386/acpi-microvm.c
++++ b/hw/i386/acpi-microvm.c
+@@ -21,6 +21,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#include "qemu/cutils.h"
+ #include "qapi/error.h"
+ 
+ #include "exec/memory.h"
+@@ -32,10 +33,60 @@
+ #include "hw/boards.h"
+ #include "hw/i386/fw_cfg.h"
+ #include "hw/i386/microvm.h"
++#include "hw/virtio/virtio-mmio.h"
+ 
+ #include "acpi-common.h"
+ #include "acpi-microvm.h"
+ 
++static void acpi_dsdt_add_virtio(Aml *scope,
++                                 MicrovmMachineState *mms)
++{
++    gchar *separator;
++    long int index;
++    BusState *bus;
++    BusChild *kid;
++
++    bus = sysbus_get_default();
++    QTAILQ_FOREACH(kid, &bus->children, sibling) {
++        DeviceState *dev = kid->child;
++        Object *obj = object_dynamic_cast(OBJECT(dev), TYPE_VIRTIO_MMIO);
++
++        if (obj) {
++            VirtIOMMIOProxy *mmio = VIRTIO_MMIO(obj);
++            VirtioBusState *mmio_virtio_bus = &mmio->bus;
++            BusState *mmio_bus = &mmio_virtio_bus->parent_obj;
++
++            if (QTAILQ_EMPTY(&mmio_bus->children)) {
++                continue;
++            }
++            separator = g_strrstr(mmio_bus->name, ".");
++            if (!separator) {
++                continue;
++            }
++            if (qemu_strtol(separator + 1, NULL, 10, &index) != 0) {
++                continue;
++            }
++
++            uint32_t irq = mms->virtio_irq_base + index;
++            hwaddr base = VIRTIO_MMIO_BASE + index * 512;
++            hwaddr size = 512;
++
++            Aml *dev = aml_device("VR%02u", (unsigned)index);
++            aml_append(dev, aml_name_decl("_HID", aml_string("LNRO0005")));
++            aml_append(dev, aml_name_decl("_UID", aml_int(index)));
++            aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
++
++            Aml *crs = aml_resource_template();
++            aml_append(crs, aml_memory32_fixed(base, size, AML_READ_WRITE));
++            aml_append(crs,
++                       aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
++                                     AML_EXCLUSIVE, &irq, 1));
++            aml_append(dev, aml_name_decl("_CRS", crs));
++            aml_append(scope, dev);
++        }
++    }
++}
++
+ static void
+ build_dsdt_microvm(GArray *table_data, BIOSLinker *linker,
+                    MicrovmMachineState *mms)
+@@ -60,6 +111,7 @@ build_dsdt_microvm(GArray *table_data, BIOSLinker *linker,
+     build_ged_aml(sb_scope, GED_DEVICE, HOTPLUG_HANDLER(mms->acpi_dev),
+                   GED_MMIO_IRQ, AML_SYSTEM_MEMORY, GED_MMIO_BASE);
+     acpi_dsdt_add_power_button(sb_scope);
++    acpi_dsdt_add_virtio(sb_scope, mms);
+     aml_append(dsdt, sb_scope);
+ 
+     /* ACPI 5.0: Table 7-209 System State Package */
 -- 
 2.27.0
 

@@ -1,109 +1,108 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp647783lfc;
-        Wed, 26 Aug 2020 04:03:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzEHjrDMamxyHKEU+QBAp2S5xcaNk/1AI1mP30Qtx4dj7AveZwg+lqyVJYwxRw4ow4s4wfg
-X-Received: by 2002:a25:3288:: with SMTP id y130mr20899754yby.163.1598439786748;
-        Wed, 26 Aug 2020 04:03:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598439786; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp648483lfc;
+        Wed, 26 Aug 2020 04:03:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyaheAvfG7rYK3iDTj0ddKlZtNVB5tZQKbcHua8Ex58QCeK/A5kQNs9dI3MlTZu8alJaXrI
+X-Received: by 2002:a25:d048:: with SMTP id h69mr19787988ybg.228.1598439836682;
+        Wed, 26 Aug 2020 04:03:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598439836; cv=none;
         d=google.com; s=arc-20160816;
-        b=s4eFj2LYdBsN0zZ21xreLuCOmb38BIUmNuXipDLJXWg5jgJWbtMTyR7msZysbVHeMq
-         /4Tey9xjCOK2trjjAUTf00C7N01ebSYPOkcDICglwVzen4l3xlTEf/ezz9vGXrdBNnTB
-         BQ3SvFOcfH3SIEPupTfh+LLqcSxHOrVLE2a4TIhnr18B0dwFBSLrc5dht32m69AvY/H7
-         e1SndcEw40Bk2USQ+c7Vgg2jzX6kpUlP5SpRDrsSHIf1VvR3KinoE3N/iNqt27PR+Kp1
-         NyHlyb2gVBGgvMRCBsSTSDGYpAezC8Hq1iTjzRXDLJIx5SXHpI3A1Ml/n94tR0OepZU2
-         WMbQ==
+        b=tcvzUe8Nkrgu6VrFtviPZr9gjzbexqbHiZl6gqKZ4BzJUItN8t6B+OYtBGzz3TgYlH
+         +drGh8svgqHD87J9lWOWvJHLY72Os1wWq8uALk99rXoSLfhFdCpFYbTKbtHUAS0fyzax
+         Yjp4kaOmHw9RxzXjy2bfqSIWFMasWWXLtOotIm5BbkKRH6KpfOnnS0ZqKy2cDQO8qz1T
+         Y4X+pd/4je7LlSpghx0MuMtNPi5xCkZl13Ml3gxkO/wo9fPKveTIEGFhchx7teuRNOU9
+         iMYUSQjuhTJEbkEm/mlhBkgl1jprS6VLDoPWO8qdWokvR2F0eGqRq8h+tuRwUdaSOquq
+         6+EQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=VccdRDt/OOUh+VjMdeFNXfU+oG7X7hdWfyAsRzdc3xc=;
-        b=hF0tobVfAlioQcJb7oxPU0BkfQkBHFlyY+Ihy8yooCEsK0o5yqSg0Lai2a6wWJTVXW
-         8/XIl8dGYR3jyrj48lRkhDem7DciHtu5gYh9abeVDCB7VO5rDufJ49iB3Ss5CD1J8wFG
-         ziDXMoB6f4opPXTunbHBCdLZOyDDUVMX0twHMBxUnzFZhQoi+T9dh5K/gxH+ODhpsMsg
-         XRLjuZa+cX7R93ykHXnbjiPTYEqtvJi3LQMbDSda6IQU82aTfVdNq3XhZfqxdiJMXECJ
-         7GIh5WeAqB/p7pZKsXvyoD+qR23oZdVYGm+80qRuF64UGMEgkJVtT7S90s/rrTZZkp8u
-         GalQ==
+        bh=5T0S3K7DR+N412mzxYocEzhcrc4zt/n0JW3uWBy062s=;
+        b=UK2J/Rr0adzGCv+v1YKCED4A3nsR6ayJRLlGjvuxFYSoqn0dmq0D/eZbn2meXCPnr/
+         yArCWrco3UR+cz1YDdhnzDBKEpZI2LBUlwRStQwstUsYVjDiM5ELMGg4X3F3NY3sb/1G
+         igWr30dLQ1oFyO96JxSi4+b5jUCeBfGcGHE2IFPgf5uDkpGgR0rKUJa0VrbCi3ZymUmr
+         s14B6CFJOirsi+nOw/cHXoe4+6ZpcJqtHHNHef7d4SdIQylztVZq4SvS1E0dK5mi0Agy
+         z00Eftd78mJXZbLUxfHyqY3Up3QDqC7km6jElf1V696BLeSMAFVkIYduZ16rWuYzxDNs
+         qMLg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sh+Gn5Ua;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ifB4kExh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k13si1987368ybk.164.2020.08.26.04.03.06
+        by mx.google.com with ESMTPS id i18si1964134yba.39.2020.08.26.04.03.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Aug 2020 04:03:06 -0700 (PDT)
+        Wed, 26 Aug 2020 04:03:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sh+Gn5Ua;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ifB4kExh;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42402 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48088 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAtCs-000734-3Q
-	for alex.bennee@linaro.org; Wed, 26 Aug 2020 07:03:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44446)
+	id 1kAtDg-0000s5-0z
+	for alex.bennee@linaro.org; Wed, 26 Aug 2020 07:03:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44492)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3Y-0006Os-8R
- for qemu-devel@nongnu.org; Wed, 26 Aug 2020 06:53:28 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:35584
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3a-0006VY-F6
+ for qemu-devel@nongnu.org; Wed, 26 Aug 2020 06:53:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:46576)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3O-0001Z8-Le
- for qemu-devel@nongnu.org; Wed, 26 Aug 2020 06:53:27 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kAt3P-0001ZR-M7
+ for qemu-devel@nongnu.org; Wed, 26 Aug 2020 06:53:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598439197;
+ s=mimecast20190719; t=1598439198;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=VccdRDt/OOUh+VjMdeFNXfU+oG7X7hdWfyAsRzdc3xc=;
- b=Sh+Gn5UaT86Zrmbuoln7mEMuSuWtQYE9eyCw3GxCxXsS+PbzTnaxER28dKbvDYyNg1I/nH
- xKHYm4x5HN3FTZI/wLdauvZ5H69UAizuLqBy/jTskG9UQd+5x3iLHApm0IR496lF3fvkbw
- gL0zd1rajYhe4OigZzanIJGSlVc/b/c=
+ bh=5T0S3K7DR+N412mzxYocEzhcrc4zt/n0JW3uWBy062s=;
+ b=ifB4kExhQDAdyVfKAmH6zvq6SDIrnM+/LaLJwvFWU+5z4ZZkdufQQDUnFLIHnbcwGDbTj/
+ lnHFf72LqtuDT+2rEl0fYKwBzyk5bxZfg2ovj8WCo6bHmK73r8qfMFXKOs6vOsHwGWePRS
+ 0svdBEkgoTj0wB69M4bTV1Dj9JFAkK4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-414-HSNbF3iePhuDkSULxQIrZQ-1; Wed, 26 Aug 2020 06:53:16 -0400
-X-MC-Unique: HSNbF3iePhuDkSULxQIrZQ-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
+ us-mta-317-d-5vkJTbMo2HMu8L-Zk28w-1; Wed, 26 Aug 2020 06:53:17 -0400
+X-MC-Unique: d-5vkJTbMo2HMu8L-Zk28w-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 329261074648;
- Wed, 26 Aug 2020 10:53:15 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3EA3118686D0;
+ Wed, 26 Aug 2020 10:53:16 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-54.ams2.redhat.com
  [10.36.112.54])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 7A7816111F;
- Wed, 26 Aug 2020 10:53:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9C0811002D47;
+ Wed, 26 Aug 2020 10:53:06 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id E86C531FC5; Wed, 26 Aug 2020 12:52:54 +0200 (CEST)
+ id A825A31F93; Wed, 26 Aug 2020 12:52:54 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v6 18/20] tests/acpi: allow override blkdev
-Date: Wed, 26 Aug 2020 12:52:52 +0200
-Message-Id: <20200826105254.28496-19-kraxel@redhat.com>
+Subject: [PATCH v6 13/20] x86: constify x86_machine_is_*_enabled
+Date: Wed, 26 Aug 2020 12:52:47 +0200
+Message-Id: <20200826105254.28496-14-kraxel@redhat.com>
 In-Reply-To: <20200826105254.28496-1-kraxel@redhat.com>
 References: <20200826105254.28496-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0.0
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 01:10:45
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 23:30:47
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.958,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,41 +124,51 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RPBYREMQsyGh
-
-microvm needs virtio-blk instead of ide.
+X-TUID: JPNN538eJUvi
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- tests/qtest/bios-tables-test.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ include/hw/i386/x86.h | 4 ++--
+ hw/i386/x86.c         | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
-index d25ff354921f..058ba3886659 100644
---- a/tests/qtest/bios-tables-test.c
-+++ b/tests/qtest/bios-tables-test.c
-@@ -72,6 +72,7 @@ typedef struct {
-     const char *variant;
-     const char *uefi_fl1;
-     const char *uefi_fl2;
-+    const char *blkdev;
-     const char *cd;
-     const uint64_t ram_start;
-     const uint64_t scan_len;
-@@ -635,9 +636,10 @@ static void test_acpi_one(const char *params, test_data *data)
-         args = g_strdup_printf("-machine %s,kernel-irqchip=off %s -accel tcg "
-             "-net none -display none %s "
-             "-drive id=hd0,if=none,file=%s,format=raw "
--            "-device ide-hd,drive=hd0 ",
-+            "-device %s,drive=hd0 ",
-              data->machine, data->tcg_only ? "" : "-accel kvm",
--             params ? params : "", disk);
-+             params ? params : "", disk,
-+             data->blkdev ?: "ide-hd");
-     }
+diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
+index b79f24e28545..a350ea3609f5 100644
+--- a/include/hw/i386/x86.h
++++ b/include/hw/i386/x86.h
+@@ -110,8 +110,8 @@ void x86_load_linux(X86MachineState *x86ms,
+                     bool pvh_enabled,
+                     bool linuxboot_dma_enabled);
  
-     data->qts = qtest_init(args);
+-bool x86_machine_is_smm_enabled(X86MachineState *x86ms);
+-bool x86_machine_is_acpi_enabled(X86MachineState *x86ms);
++bool x86_machine_is_smm_enabled(const X86MachineState *x86ms);
++bool x86_machine_is_acpi_enabled(const X86MachineState *x86ms);
+ 
+ /* Global System Interrupts */
+ 
+diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+index cf384b974318..31a82885d735 100644
+--- a/hw/i386/x86.c
++++ b/hw/i386/x86.c
+@@ -845,7 +845,7 @@ void x86_bios_rom_init(MemoryRegion *rom_memory, bool isapc_ram_fw)
+                                 bios);
+ }
+ 
+-bool x86_machine_is_smm_enabled(X86MachineState *x86ms)
++bool x86_machine_is_smm_enabled(const X86MachineState *x86ms)
+ {
+     bool smm_available = false;
+ 
+@@ -887,7 +887,7 @@ static void x86_machine_set_smm(Object *obj, Visitor *v, const char *name,
+     visit_type_OnOffAuto(v, name, &x86ms->smm, errp);
+ }
+ 
+-bool x86_machine_is_acpi_enabled(X86MachineState *x86ms)
++bool x86_machine_is_acpi_enabled(const X86MachineState *x86ms)
+ {
+     if (x86ms->acpi == ON_OFF_AUTO_OFF) {
+         return false;
 -- 
 2.27.0
 

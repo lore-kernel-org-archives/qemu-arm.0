@@ -1,115 +1,175 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp479980lfc;
-        Tue, 25 Aug 2020 23:09:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx1QiGPlNB/RUy5oLhCU75iGrpXnS/qbRu/LYv+RTPcAe1yD83sLWrJ1WcItp3Lm0kHKi00
-X-Received: by 2002:a25:6d04:: with SMTP id i4mr18307743ybc.283.1598422177146;
-        Tue, 25 Aug 2020 23:09:37 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i207si1389255yba.227.2020.08.25.23.09.36
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 25 Aug 2020 23:09:37 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp541498lfc;
+        Wed, 26 Aug 2020 01:02:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWOC5v591TzQQIJbZ3rDa970aU2Hfww24v6s/OjEArfAFigS8noUOl8mHS6049OVZnesku
+X-Received: by 2002:a17:906:ce24:: with SMTP id sd4mr14238860ejb.480.1598428945359;
+        Wed, 26 Aug 2020 01:02:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598428945; cv=none;
+        d=google.com; s=arc-20160816;
+        b=NVIAlm2xw8EqNXY7WIceSvosK4VkdieK3he05B9TN58PPU050U00CxRauVj+vfWTWU
+         iYbgEY3jrXq8Kv/A2tL4uIESPCAQFlDD8OzbzUd7PtsodTogZaJ7UcF699hNm78psybW
+         A6M3dVPMqO81CNMInKDB0CBcytszN757btRfhlmdqJTjDkzkUKmGP88gRDuyWGElaUhP
+         p8lk6wMNg3OEUUHjBAJHvn3/DRylDUJSOBmOSVkd+Z4v1utDjjxQJWevWpTwtlKa9vmS
+         Cx8xn30K0u9S0C2DhHGCy08rFU7DIW2pHwUQV8hHCNGpu/s6/Scu31HgVe/tsEH6snQZ
+         7icw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :message-id:date:reply-to:user-agent:references:in-reply-to:subject
+         :cc:to:from:dkim-signature;
+        bh=G+cLFL8yEdkBH3yow4+6ZbZvxrDo8zepFhkkyNnP2kg=;
+        b=NqRAQv8PtV+CtBq8j9mtFP0af+RVdF4Yedt/lYXRu+Bhwy2FOR7NRj+38NxMIKZUPf
+         Gn3QlgXg8Puw0vtF5VZN81ESikiBhmI838pvcpDBKWMXtlYNHlNTUf/bdcS7vyCzqflG
+         VNwYtN4O5cXFEfY8ms6zvji0YsRsb1hyXMxrXU95xDc3K0d8WGmvE2UA3wbywkXICsS3
+         I+kIExnpjS/RCxqHLIE7zleIWoDYuxyrtMOCUaDyqaXTNY55/3aUyvtdYihhbGxBwdHr
+         I8NgC5GbUBsFvc1qNAXw+jCXQJauJgNe5sYBAt+lD6mTYRk/Eg7Q3oeCL9vnHL23n98V
+         enFg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OHWxYkgp;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id i27si1029048eja.627.2020.08.26.01.02.25;
+        Wed, 26 Aug 2020 01:02:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38854 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAocq-0007To-IQ
-	for alex.bennee@linaro.org; Wed, 26 Aug 2020 02:09:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34366)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kAoch-0007Rb-Og; Wed, 26 Aug 2020 02:09:27 -0400
-Resent-Date: Wed, 26 Aug 2020 02:09:27 -0400
-Resent-Message-Id: <E1kAoch-0007Rb-Og@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21353)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kAocd-0007Rl-Gi; Wed, 26 Aug 2020 02:09:27 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1598422033; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=AMAuYM0bY7BoLxOqNyUD5U5W4Md/FZcJUmjTusjzoPctQmSZxO6MCNCHHnLozxjTD6afk5C8yGq/NQ+qQa8szHMao5F9cydSRrSAb8jpYbTqON9NXDRw8AMYE4MxnMRiBJkaiVgZZmyDvSfdsZmN1O17LW/5sRkhKwnUoV3BfNY=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1598422033;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=Mkw0Espv1W9A1fvTXS0GtYgfMxDCNqMD663iR6Xrajs=; 
- b=L72/H55bSpdNGtgSX+B4JbSaw5kDpNusyVf8Y2jBockJ2UnKyOC30+HEGhSYOwPcjDXNt8Dr/853QtYB4ClhoCxp29uFXEq0M64UF80I09cz0gQuh6gW75GgTQhWFP08VlnKR2iTMRbBGoJWzL8kZUu5OTetBH4ayX7hRTqVaFE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1598422030634388.40134953587085;
- Tue, 25 Aug 2020 23:07:10 -0700 (PDT)
-Subject: Re: [PATCH] disas/libvixl: Fix fall-through annotation for GCC >= 7
-Message-ID: <159842202999.420.7038258941573202105@66eaa9a8a123>
-In-Reply-To: <20200824130114.41368-1-thuth@redhat.com>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=OHWxYkgp;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726698AbgHZICX (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 26 Aug 2020 04:02:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45062 "EHLO
+        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1726016AbgHZICW (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Wed, 26 Aug 2020 04:02:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1598428940;
+        h=from:from:reply-to:reply-to:subject:subject:date:date:
+         message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+         content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=G+cLFL8yEdkBH3yow4+6ZbZvxrDo8zepFhkkyNnP2kg=;
+        b=OHWxYkgpnOlWnkFU6hQHGgVupgCOdosoESlZJwPML1de7TO7ZCnktXNqebtSH2iXKdhv9W
+        BkNOTF0Szc3C4C3/JYdLKpETxG1bn10AHegN8xBzGlcTzi4GB3M5m1n2q1C1TkHvJG1Irq
+        RDBNib9GYSTIj8djCrCGtYIZ3gtyH8E=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-47-WAY9MylIMe6iuvDJuap5mA-1; Wed, 26 Aug 2020 04:02:19 -0400
+X-MC-Unique: WAY9MylIMe6iuvDJuap5mA-1
+Received: by mail-wm1-f72.google.com with SMTP id z25so462509wmk.4
+        for <kvm@vger.kernel.org>; Wed, 26 Aug 2020 01:02:19 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:in-reply-to:references
+         :user-agent:reply-to:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=G+cLFL8yEdkBH3yow4+6ZbZvxrDo8zepFhkkyNnP2kg=;
+        b=n7Iq/Vi4i89yzZv2UaFajWJQpt9OoCMcwgHzdxwUN2aJo+ljvC4/P/6SIqKXN+tbmv
+         YQnpprMX+VAET9LSbCcHwAdk92X/tRrnNx+ZiL3R7b7Ls2r5yNXakKCFhPjQrrVBrfMn
+         ml6ddRIRCTgK7yYBXLFzV0e0ZnrLDIv7bfE1ee92MKOomR9g13LAHiQE3QwkKPXGkxhV
+         jephNMqGAdFxhKvgwCRhg3a1PaTbvvwu5GQM/3F2m/+LSgls3tjgKZtGXUs47/ucGnrT
+         mrCgI2F+rPHmpgw1k3dpScAXdo7zPwONhgq7LgE7nlOh7b62xR07DDbu1fO+9Bcndfxf
+         BmMQ==
+X-Gm-Message-State: AOAM533xUVz8PxMv+kzVtCx0KEKI4T4jnFamhRJj4MyGUWlazkBH0le/
+        3O2m4eNFm9DTCpoS4R0HFTcOL9rJ/24o4o0Aifis/mwtx4rx45393kOBze4mSLQC9IYyTN1vHZG
+        vLpwzFuJSUCW5
+X-Received: by 2002:adf:b1cf:: with SMTP id r15mr15309316wra.118.1598428937431;
+        Wed, 26 Aug 2020 01:02:17 -0700 (PDT)
+X-Received: by 2002:adf:b1cf:: with SMTP id r15mr15309298wra.118.1598428937244;
+        Wed, 26 Aug 2020 01:02:17 -0700 (PDT)
+Received: from localhost (trasno.trasno.org. [83.165.45.250])
+        by smtp.gmail.com with ESMTPSA id o2sm3715968wrj.21.2020.08.26.01.02.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Aug 2020 01:02:16 -0700 (PDT)
+From:   Juan Quintela <quintela@redhat.com>
+To:     Eduardo Habkost <ehabkost@redhat.com>
+Cc:     qemu-devel@nongnu.org, kvm@vger.kernel.org,
+        xen-devel@lists.xenproject.org, qemu-block@nongnu.org,
+        qemu-arm@nongnu.org, qemu-riscv@nongnu.org, qemu-s390x@nongnu.org,
+        qemu-ppc@nongnu.org, haxm-team@intel.com
+Subject: Re: [PATCH v3 62/74] [automated] Use TYPE_INFO macro
+In-Reply-To: <20200825192110.3528606-63-ehabkost@redhat.com> (Eduardo
+        Habkost's message of "Tue, 25 Aug 2020 15:20:58 -0400")
+References: <20200825192110.3528606-1-ehabkost@redhat.com>
+        <20200825192110.3528606-63-ehabkost@redhat.com>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/26.3 (gnu/linux)
+Reply-To: quintela@redhat.com
+Date:   Wed, 26 Aug 2020 10:02:15 +0200
+Message-ID: <87y2m1ygvs.fsf@secure.mitica>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: thuth@redhat.com
-Date: Tue, 25 Aug 2020 23:07:10 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 02:09:19
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, richard.henderson@linaro.org,
- qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: URs5P48eiT2d
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 4oB19JydrlQR
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDgyNDEzMDExNC40MTM2
-OC0xLXRodXRoQHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgc2VlbXMgdG8gaGF2ZSBz
-b21lIGNvZGluZyBzdHlsZSBwcm9ibGVtcy4gU2VlIG91dHB1dCBiZWxvdyBmb3IKbW9yZSBpbmZv
-cm1hdGlvbjoKClR5cGU6IHNlcmllcwpNZXNzYWdlLWlkOiAyMDIwMDgyNDEzMDExNC40MTM2OC0x
-LXRodXRoQHJlZGhhdC5jb20KU3ViamVjdDogW1BBVENIXSBkaXNhcy9saWJ2aXhsOiBGaXggZmFs
-bC10aHJvdWdoIGFubm90YXRpb24gZm9yIEdDQyA+PSA3Cgo9PT0gVEVTVCBTQ1JJUFQgQkVHSU4g
-PT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9kZXYvbnVsbCB8fCBleGl0IDAK
-Z2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApnaXQgY29uZmlnIC0tbG9jYWwg
-ZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYuYWxnb3JpdGhtIGhpc3Rv
-Z3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNrIGJhc2UuLgo9PT0gVEVTVCBT
-Q1JJUFQgRU5EID09PQoKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hldy1wcm9qZWN0L3Fl
-bXUKICogW25ldyB0YWddICAgICAgICAgcGF0Y2hldy8yMDIwMDgyNDEzMDExNC40MTM2OC0xLXRo
-dXRoQHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDIwMDgyNDEzMDExNC40MTM2OC0xLXRodXRoQHJl
-ZGhhdC5jb20KU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwplYjhlZDYzIGRpc2FzL2xp
-YnZpeGw6IEZpeCBmYWxsLXRocm91Z2ggYW5ub3RhdGlvbiBmb3IgR0NDID49IDcKCj09PSBPVVRQ
-VVQgQkVHSU4gPT09CkVSUk9SOiBkbyBub3QgdXNlIEM5OSAvLyBjb21tZW50cwojNDY6IEZJTEU6
-IGRpc2FzL2xpYnZpeGwvdml4bC9nbG9iYWxzLmg6MTExOgorLy8gRmFsbHRocm91Z2ggYW5ub3Rh
-dGlvbiBmb3IgQ2xhbmcgYW5kIEMrKzExKDIwMTEwM0wpLgoKRVJST1I6IGRvIG5vdCB1c2UgQzk5
-IC8vIGNvbW1lbnRzCiM0OTogRklMRTogZGlzYXMvbGlidml4bC92aXhsL2dsb2JhbHMuaDoxMTQ6
-CisvLyBGYWxsdGhyb3VnaCBhbm5vdGF0aW9uIGZvciBHQ0MgPj0gNy4KCnRvdGFsOiAyIGVycm9y
-cywgMCB3YXJuaW5ncywgMjQgbGluZXMgY2hlY2tlZAoKQ29tbWl0IGViOGVkNjNjMGNjMyAoZGlz
-YXMvbGlidml4bDogRml4IGZhbGwtdGhyb3VnaCBhbm5vdGF0aW9uIGZvciBHQ0MgPj0gNykgaGFz
-IHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwph
-cmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hF
-Q0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQg
-ZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDov
-L3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA4MjQxMzAxMTQuNDEzNjgtMS10aHV0aEByZWRoYXQuY29t
-L3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1
-dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2Vu
-ZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+Eduardo Habkost <ehabkost@redhat.com> wrote:
+> Generated using:
+>   $ ./scripts/codeconverter/converter.py -i --passes=3D2 \
+>     --pattern=3DTypeRegisterCall,TypeInitMacro $(git grep -l TypeInfo -- =
+'*.[ch]')
+>
+> One notable difference is that files declaring multiple types
+> will now have multiple separate __construtor__ functions
+> declared, instead of one for all types.
+>
+> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> ---
+> Changes v2 -> v3:
+> * Removed hunks due to rebase conflicts:
+>   hw/sd/milkymist-memcard.c hw/sd/pl181.c
+> * Reviewed-by line from Daniel was kept, as no additional hunks
+>   are introduced in this version
+>
+> Changes v1 -> v2:
+> * Add note about multiple constructor functions to commit message
+>   (suggested by Daniel)
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+
+[ I removed CC'd people, -ETOOMANYRECIPIENTS]
+
+....
+
+> diff --git a/migration/migration.c b/migration/migration.c
+> index dbd4afa1e8..561e2ae697 100644
+> --- a/migration/migration.c
+> +++ b/migration/migration.c
+> @@ -3844,10 +3844,6 @@ static const TypeInfo migration_type =3D {
+>      .instance_init =3D migration_instance_init,
+>      .instance_finalize =3D migration_instance_finalize,
+>  };
+> +TYPE_INFO(migration_type)
+>=20=20
+> -static void register_migration_types(void)
+> -{
+> -    type_register_static(&migration_type);
+> -}
+>=20=20
+> -type_init(register_migration_types);
+> diff --git a/migration/rdma.c b/migration/rdma.c
+> index bea6532813..15ad985d26 100644
+> --- a/migration/rdma.c
+> +++ b/migration/rdma.c
+> @@ -3942,13 +3942,9 @@ static const TypeInfo qio_channel_rdma_info =3D {
+>      .instance_finalize =3D qio_channel_rdma_finalize,
+>      .class_init =3D qio_channel_rdma_class_init,
+>  };
+> +TYPE_INFO(qio_channel_rdma_info)
+>=20=20
+> -static void qio_channel_rdma_register_types(void)
+> -{
+> -    type_register_static(&qio_channel_rdma_info);
+> -}
+>=20=20
+> -type_init(qio_channel_rdma_register_types);
+>=20=20
+>  static QEMUFile *qemu_fopen_rdma(RDMAContext *rdma, const char *mode)
+>  {
+
+For the migration bits.
+
+Reviewed-by: Juan Quintela <quintela@redhat.com>

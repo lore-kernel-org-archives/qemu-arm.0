@@ -1,95 +1,99 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp972665lfc;
-        Wed, 26 Aug 2020 11:10:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwu4t4z2RDDwde0I8vc5Eq1RRD6+ZuAaLEUQK6LnqCUYB4M/upF9k0URzu8f1f0abyOEgn+
-X-Received: by 2002:ab0:108:: with SMTP id 8mr9917215uak.25.1598465426149;
-        Wed, 26 Aug 2020 11:10:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598465426; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp995991lfc;
+        Wed, 26 Aug 2020 11:46:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwE6SS8LbwoT8GbnZVH8pnBJf9G9c5PIf6l8GpxgNC2RAIL7sFNyZO91RdpQMsJ/XlFUNi1
+X-Received: by 2002:a25:d946:: with SMTP id q67mr20958331ybg.517.1598467573996;
+        Wed, 26 Aug 2020 11:46:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598467573; cv=none;
         d=google.com; s=arc-20160816;
-        b=Lx72fd01cB8c1F+yNgQt69TOzWhSt7K+EQeWDv9w01YfMZYS8fXXux/cB7U8Eb7Z/b
-         Asfz0VxT8gyPHtEXMqARuEMlhrKtM5N7NfAmJ4PKJIYs+h8FqJT7mpRkKBbjChJG4b74
-         U/KGYciGH4uvT+50WsfHjzSrI7CeWLCH2GB2PU12BVJKcjAvO5IsdMoTuBXdmyyW6fO4
-         FS5VGkCK3w2q4Ec9amECx5+Zajn1x0nO3ujQKZdNx4zD5S0PFePhmFMFfeBz3zbxupoG
-         rRhe/w/LtQrqUVZt/fZnU9c2BthJZxIdmvzGp3m1ULYVLfWbcg+eloTB8hee1vd+peiq
-         HrnQ==
+        b=dWhqNLVQKkq5g2AMse65jCkaz2Bv7iAugzyF7Dkdbi9Yn/JLgEHVHz579Wvey3cjf5
+         0LvU7XJ5gYBYZpMlaUKJ/OsFqbbE0L3kHef34LNiQNhIRdhklsSHJe1pbbY+IR3KcyGT
+         zDPF+AJBI7rnJE1RgUH3dRqThCIFZdVL7j37JPtKp7I/vC2UQl7tdKx4r344OsjnXCHN
+         ULKS0jyrwQJvGxrhU7dVaBZfw2QSr9gOjADKxO35DgBK0tyZs/DnOahW8cS5F67e/rui
+         7MiiqRkZuRK50he+pCpIKFYaFvjLoW0MqeiXHBwXh2FsNGHgDbENxBLq1Xfw6XN9WxJE
+         FrXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=PiApvT1sTiwwUhR3nn4DVseSe1rzlHNor0YuHEpkx1A=;
-        b=YCHq+uXw6raZ9Ra5sc29hsp33wISZ1dgg0vqVZQoZDrfglGoi/Q4G77FQIgXcsIo7d
-         TRR1r+UHGPatdTqpuWvwEYqbX9Tl8SkCieZFNTA8CQRqyJ2zie9Oy81QWzQNZuGeNn0p
-         G/afKUi/2Uu8bGm5If0DWDAGGaOTyM78gVWUXBMeHHhIKVPYFz6cV0JDCJ4KLMusbkyv
-         a+PaiEbqAj567KhjCbhWWe/N3ZhGki0DzENnj29+Fe1dySuOhU5rOYb26R5ePHPn+jKH
-         OcCW2ku8mCQVxMcHNAz+pBSIDDC80ZU2ndZOCN3op9gMArZ/ylrgo9vWZ10XDgQq9NhY
-         yFIg==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=y0AtWIo8alYJiY/FLZwzYZl0OrbSPCX7EXsnnh5DKcE=;
+        b=EXLZ+4dRsfizk/l4W+/7KacA9K+zlNHFZ9vwjNoxMxnCvG5sUnrWH1dmuNUMPMfcdV
+         OFRbdcLcwKi4Ln8K6xnklQS36kSNDU5XsTnc4t2BLjWsRdlfYfZ9kDue1Ug/onCG4mjv
+         M3ExYx5W7EEXBuMZQHgiIT/Xl713wdpoEhiHzWh6eE1iGR9nBxJSsuMQMDOPLCWhenvD
+         n6JwzRHIYpu2NsgqWe4WOCTba8+nuql8nYFE9Pw7M4CvUbybeS458HOqAvG8z6fWVNck
+         27jR3X4Rgyaha/eUAJc9DiGEhI3PyA9e9zPaZ+oa5fzxvZbzU3BSg8cAejHlXbPENsyC
+         Kb0A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UsphT6Pc;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vyotej88;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r17si565576vsi.45.2020.08.26.11.10.25
+        by mx.google.com with ESMTPS id l7si2716584ybk.54.2020.08.26.11.46.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Aug 2020 11:10:26 -0700 (PDT)
+        Wed, 26 Aug 2020 11:46:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UsphT6Pc;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vyotej88;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38830 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:43148 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kAzsP-0003cg-9i
-	for alex.bennee@linaro.org; Wed, 26 Aug 2020 14:10:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51170)
+	id 1kB0R3-0002Bj-BS
+	for alex.bennee@linaro.org; Wed, 26 Aug 2020 14:46:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59430)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAzsH-0003c2-Jd
- for qemu-arm@nongnu.org; Wed, 26 Aug 2020 14:10:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:43291)
+ id 1kB0On-0007IT-0a
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2020 14:43:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:30159)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kAzsF-0005HG-3W
- for qemu-arm@nongnu.org; Wed, 26 Aug 2020 14:10:17 -0400
+ id 1kB0Ol-0001F9-BY
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2020 14:43:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598465414;
+ s=mimecast20190719; t=1598467430;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=PiApvT1sTiwwUhR3nn4DVseSe1rzlHNor0YuHEpkx1A=;
- b=UsphT6Pclaj0ybo7g7RP3k1vFNIp0TUBAKqVj0BOrF3f7jUKHicDwN7PxHbQgPV3q0jnUK
- 1o0fDFhTodPVeeyCs3cpUdxDc4Uigb/FvUUVXCA9n1iZrr3UwsdknPVkW7QViTybxFTlAf
- EoCxi5qfHM9Wc2qHf2XWOQsfdi7GjJs=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=y0AtWIo8alYJiY/FLZwzYZl0OrbSPCX7EXsnnh5DKcE=;
+ b=Vyotej88EVf6GD0gyApdfBfPCZaEBCCwnJd77nV0+5tCybdQOHylyzJAvBELcDhWreZgHz
+ n1fCFAgCQs8z1nQtAXWNaVxjrzQ0AtlolOYcrG8sTfNh1oY4R1GSlVnqlZqC5WYLm2P49A
+ 7N8IRlrqy/EcNyquXUgO1TdS8scHA5w=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-435-wWgFRKcxNuaxoPWIhxloQQ-1; Wed, 26 Aug 2020 14:10:09 -0400
-X-MC-Unique: wWgFRKcxNuaxoPWIhxloQQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-520-n02tqyIyNXCnn7e-76trxA-1; Wed, 26 Aug 2020 14:43:48 -0400
+X-MC-Unique: n02tqyIyNXCnn7e-76trxA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 659C210ABDDC;
- Wed, 26 Aug 2020 18:10:08 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 278D310ABDC3;
+ Wed, 26 Aug 2020 18:43:47 +0000 (UTC)
 Received: from localhost (unknown [10.10.67.254])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 25C535C1DA;
- Wed, 26 Aug 2020 18:10:07 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A323360C13;
+ Wed, 26 Aug 2020 18:43:46 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH] armsse: Define ARMSSEClass correctly
-Date: Wed, 26 Aug 2020 14:10:06 -0400
-Message-Id: <20200826181006.4097163-1-ehabkost@redhat.com>
+Subject: [PATCH 5/8] xlnx-zcu102: Use TYPE_ZCU102_MACHINE constant
+Date: Wed, 26 Aug 2020 14:43:31 -0400
+Message-Id: <20200826184334.4120620-6-ehabkost@redhat.com>
+In-Reply-To: <20200826184334.4120620-1-ehabkost@redhat.com>
+References: <20200826184334.4120620-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/25 23:30:47
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/26 14:05:19
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -110,65 +114,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A/ICD6278pjd
+X-TUID: ZdSLNScOJ03L
 
-TYPE_ARM_SSE is a TYPE_SYS_BUS_DEVICE subclass, but
-ARMSSEClass::parent_class is declared as DeviceClass.
-
-It never caused any problems by pure luck:
-
-We were not setting class_size for TYPE_ARM_SSE, so class_size of
-TYPE_SYS_BUS_DEVICE was being used (sizeof(SysBusDeviceClass)).
-This made the system allocate enough memory for TYPE_ARM_SSE
-devices even though ARMSSEClass was too small for a sysbus
-device.
-
-Additionally, the ARMSSEClass::info field ended up at the same
-offset as SysBusDeviceClass::explicit_ofw_unit_address.  This
-would make sysbus_get_fw_dev_path() crash for the device.
-Luckily, sysbus_get_fw_dev_path() never gets called for
-TYPE_ARM_SSE devices, because qdev_get_fw_dev_path() is only used
-by the boot device code, and TYPE_ARM_SSE devices don't appear at
-the fw_boot_order list.
+This will make future conversion to use OBJECT_DECLARE* easier.
 
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
+Cc: Alistair Francis <alistair@alistair23.me>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-arm@nongnu.org
 Cc: qemu-devel@nongnu.org
 ---
- include/hw/arm/armsse.h | 2 +-
- hw/arm/armsse.c         | 1 +
- 2 files changed, 2 insertions(+), 1 deletion(-)
+ hw/arm/xlnx-zcu102.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 84080c2299..b10173beab 100644
---- a/include/hw/arm/armsse.h
-+++ b/include/hw/arm/armsse.h
-@@ -220,7 +220,7 @@ typedef struct ARMSSE {
- typedef struct ARMSSEInfo ARMSSEInfo;
+diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+index 5997262459..672d9d4bd1 100644
+--- a/hw/arm/xlnx-zcu102.c
++++ b/hw/arm/xlnx-zcu102.c
+@@ -238,7 +238,7 @@ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
+ }
  
- typedef struct ARMSSEClass {
--    DeviceClass parent_class;
-+    SysBusDeviceClass parent_class;
-     const ARMSSEInfo *info;
- } ARMSSEClass;
- 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index dcbff9bd8f..6381bbd94d 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -1160,6 +1160,7 @@ static const TypeInfo armsse_info = {
-     .name = TYPE_ARMSSE,
-     .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(ARMSSE),
-+    .class_size = sizeof(ARMSSEClass),
-     .instance_init = armsse_init,
-     .abstract = true,
-     .interfaces = (InterfaceInfo[]) {
+ static const TypeInfo xlnx_zcu102_machine_init_typeinfo = {
+-    .name       = MACHINE_TYPE_NAME("xlnx-zcu102"),
++    .name       = TYPE_ZCU102_MACHINE,
+     .parent     = TYPE_MACHINE,
+     .class_init = xlnx_zcu102_machine_class_init,
+     .instance_init = xlnx_zcu102_machine_instance_init,
 -- 
 2.26.2
 

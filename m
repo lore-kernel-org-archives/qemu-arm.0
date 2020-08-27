@@ -1,106 +1,107 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp632984lfc;
-        Thu, 27 Aug 2020 07:55:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZ3I5+xlJwQPPPz1jL2ZCSzO8c9kqe7PJwyqDk8wepMKlzSav5e7t31748YrgV9KW+3yJX
-X-Received: by 2002:a25:6c8a:: with SMTP id h132mr31106949ybc.68.1598540108788;
-        Thu, 27 Aug 2020 07:55:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598540108; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp633826lfc;
+        Thu, 27 Aug 2020 07:56:15 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyzZvYmk+XDppeGtpZ8q4p4DRjqOpnVAiiwNxdHE7I5SVYuHeCcatAyIMTOiDg9enuPlQ8r
+X-Received: by 2002:a25:cbd6:: with SMTP id b205mr31291705ybg.137.1598540174576;
+        Thu, 27 Aug 2020 07:56:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598540174; cv=none;
         d=google.com; s=arc-20160816;
-        b=TdmgxTWB70+/1xa8wcpwN1XJbYhvJ+/IvlY/YiQFcGbUeugP9buSXtvjchCoqgGnyr
-         yBf+6j3XzlYfQl0gG1w97JWnEaq1wGJf8MnXxZGT7DAAs1BqYpm62zyOTN5RYKsCvXpw
-         5+3/Um72TRjCGq3RVqQhqn1F6vOkiXeczH9aemzfqScehrXqNn5eWDxzCMfn13TGuvc2
-         lD2rEa+c2sCzVjzZv62BqpSJQAY/P+6FcSAoIpL+BSp9OW7O/k9Li15uIh7rHqirCJn2
-         /03li1qm2y4jCtAEKYZ7IgzCAc5RK7FQHm4oL/GfoBeCeB1YlxfxjzbIPRVSSgbztDr8
-         S7Mw==
+        b=YGZgZtzno+3jTmZEZY85mYNrdf2WRRrmVGXa3PnXNm6Yi/0BH8acm3CBK5XXiCgPQo
+         L3/JgnN66Ui6BiSWuNPvBG0ibP8n7qAe2czWFb5UStcYnfwkfZhgduiNRhzezOHCOYQf
+         Ie8Kw6PFnaXxXuvMAK9sorLbXsSK1BB2CWhsvGv8CcvssDQOyT38RGoPUJ/9ROpyYhjS
+         0/+DO3ScULISI+qYwT0L8wSkkwfPJthrW4bJpdKxb/xNPuLo13LW3W1uG2NzQrrefpuA
+         1NqP92p2UKUm186wQ2EX5PDX67DSXirQA/3/T1dXzBFROcg4FYoIG4UzUQUv/vu1SjTM
+         ZbqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=D9/R73BWfZi/CtyR7Oh57gnhCqX3f5GCX1vEIwtpzCU=;
-        b=rOX9x8PlAo4FEVi3k+SROvNwNGYv76/eQVRnqhxL7p1IV5hAl0zgJAz22fl6KL6tnG
-         vN3x+sCG+TyN41nXT0caMAc2UFqwNPF873lsWikMhHoBwp5uqhAt2LAknbIHB/JnO6L8
-         gTaWsMf48PIUthjbFPLtc78yV+i7EviNOZplNqEiqNo0AsLQnUM4Abs5O1A2BLlItBjU
-         7/sx9mTdrFY/hwosYcEdLtAb5P18+po2sxBWaI8ASxSVIqLKhKlJY4Drhv+Z8WbimT7C
-         DVjzYGkR+0HvgVVI1EJgBqa1GtOVFPTlwP/A5YnlwosyUagAQ9Wy0qtI/p4Sre9t9fJs
-         LzUQ==
+        bh=RnrfKeRZ8e9U01Le3p/kSMvC5YfufnAiq567iqPDCA8=;
+        b=KnDa16O0nd5gehgIZhBjapxM5jE3cIXsH38D+/Dse22If93aBq4Ien8S12T6cP0RCN
+         P817SLGcY4yby7yMyG/XQKF15I0FTNlozsuUmfmzFyvNdZDGZfJVI4MsK1ZPzgW2k0hX
+         bBoUYSxPGNzOC8OjBJCfv/QDfBbblgYH7mdhi6WUyHltQ7QRPmOp7HZhynY3ek7B+3Do
+         7R0y+RThxm97H1AzK7fFlDRrU9Uh9RFD0Gtnd+ntSauUh9oyv0y6StKGYT+q6v+daxLu
+         F0Eys3Ad5Ih/X2rcrtuDOWkampWzbi8DXTOZADUzJ3Q0Ud8+YB9RzLAXzJtnfdj/dRLi
+         tgSA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L1h01xoJ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ag/uEx6e";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14si3005571ybq.296.2020.08.27.07.55.08
+        by mx.google.com with ESMTPS id l5si3403412ybt.3.2020.08.27.07.56.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Aug 2020 07:55:08 -0700 (PDT)
+        Thu, 27 Aug 2020 07:56:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L1h01xoJ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ag/uEx6e";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57730 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kBJIy-0003GT-6I
-	for alex.bennee@linaro.org; Thu, 27 Aug 2020 10:55:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42782)
+	id 1kBJK1-00059I-QG
+	for alex.bennee@linaro.org; Thu, 27 Aug 2020 10:56:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43110)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJIo-0003Cr-VP
- for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:54:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46885)
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJJt-000574-C9
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:56:05 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:42241
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJIn-0008HQ-3O
- for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:54:58 -0400
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJJr-00008f-RJ
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:56:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598540096;
+ s=mimecast20190719; t=1598540163;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=D9/R73BWfZi/CtyR7Oh57gnhCqX3f5GCX1vEIwtpzCU=;
- b=L1h01xoJOf8NzS74Z4UmxpuY2AWn/W9Mf4ysVVKzc/rrWI2VaoJAkDu3Ik4LsTJh8zmu7j
- SjEL3etEr11Pj4oEE8qEcXIlo4Hx6AAGvzdPvecTK3jMoOhEkVNeClGvoPIQ0ArGR7PFQD
- mIW3QFnaQYs8pcEP+VIZdmDsOmwkvLE=
+ bh=RnrfKeRZ8e9U01Le3p/kSMvC5YfufnAiq567iqPDCA8=;
+ b=ag/uEx6eGzGNII+aqx6cYRBSYRG4hZaxlSVEsY2ZollB2bLaxIguCsUtkH2laSpG0dUTS/
+ DYP9el40aDleypEb2OrmyXPby3CGX3TKdRBXaDGARbs1DTTJnoIkh+7KLCUb2SEu+MBLQd
+ XG5k9XkbYcpBzUADPTFfIVdZcaBeVZg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-8-dU9JR7UBPR6qlyZk_btHbQ-1; Thu, 27 Aug 2020 10:54:53 -0400
-X-MC-Unique: dU9JR7UBPR6qlyZk_btHbQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-341-OE9fojpVNbaR0LzqJMNqMg-1; Thu, 27 Aug 2020 10:55:59 -0400
+X-MC-Unique: OE9fojpVNbaR0LzqJMNqMg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 369928010C7;
- Thu, 27 Aug 2020 14:54:52 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7622DF6C03;
+ Thu, 27 Aug 2020 14:55:57 +0000 (UTC)
 Received: from localhost (ovpn-113-131.rdu2.redhat.com [10.10.113.131])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E4B2519936;
- Thu, 27 Aug 2020 14:54:45 +0000 (UTC)
-Date: Thu, 27 Aug 2020 16:54:45 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C3E6C1055A60;
+ Thu, 27 Aug 2020 14:55:50 +0000 (UTC)
+Date: Thu, 27 Aug 2020 16:55:49 +0200
 From: Sergio Lopez <slp@redhat.com>
 To: Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH v6 16/20] microvm: wire up hotplug
-Message-ID: <20200827145445.w7asyudbbpeoqugv@mhamilton>
+Subject: Re: [PATCH v6 18/20] tests/acpi: allow override blkdev
+Message-ID: <20200827145549.yxevoxlcj44aqxlj@mhamilton>
 References: <20200826105254.28496-1-kraxel@redhat.com>
- <20200826105254.28496-17-kraxel@redhat.com>
+ <20200826105254.28496-19-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200826105254.28496-17-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <20200826105254.28496-19-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=slp@redhat.com
-X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Spam-Score: 0.0
 X-Mimecast-Originator: redhat.com
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="mu2vaf7vpmh5oc4y"
+ protocol="application/pgp-signature"; boundary="g3hkxlwvgijsjsfz"
 Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=slp@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:54:02
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=slp@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:56:52
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,131 +123,76 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 08Y0M9C0+uTT
+X-TUID: y+cbhpyJrDU3
 
---mu2vaf7vpmh5oc4y
+--g3hkxlwvgijsjsfz
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Aug 26, 2020 at 12:52:50PM +0200, Gerd Hoffmann wrote:
-> The cpu hotplug code handles the initialization of coldplugged cpus
-> too, so it is needed even in case cpu hotplug is not supported.
->=20
-> Wire cpu hotplug up for microvm.
-> Without this we get a broken MADT table.
+On Wed, Aug 26, 2020 at 12:52:52PM +0200, Gerd Hoffmann wrote:
+> microvm needs virtio-blk instead of ide.
 >=20
 > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  hw/i386/microvm.c | 42 ++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 42 insertions(+)
+>  tests/qtest/bios-tables-test.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 
 Reviewed-by: Sergio Lopez <slp@redhat.com>
 
 
-> diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-> index 9df15354ce0f..8de8ca864963 100644
-> --- a/hw/i386/microvm.c
-> +++ b/hw/i386/microvm.c
-> @@ -320,6 +320,39 @@ static void microvm_fix_kernel_cmdline(MachineState =
-*machine)
->      g_free(cmdline);
->  }
+> diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-tes=
+t.c
+> index d25ff354921f..058ba3886659 100644
+> --- a/tests/qtest/bios-tables-test.c
+> +++ b/tests/qtest/bios-tables-test.c
+> @@ -72,6 +72,7 @@ typedef struct {
+>      const char *variant;
+>      const char *uefi_fl1;
+>      const char *uefi_fl2;
+> +    const char *blkdev;
+>      const char *cd;
+>      const uint64_t ram_start;
+>      const uint64_t scan_len;
+> @@ -635,9 +636,10 @@ static void test_acpi_one(const char *params, test_d=
+ata *data)
+>          args =3D g_strdup_printf("-machine %s,kernel-irqchip=3Doff %s -a=
+ccel tcg "
+>              "-net none -display none %s "
+>              "-drive id=3Dhd0,if=3Dnone,file=3D%s,format=3Draw "
+> -            "-device ide-hd,drive=3Dhd0 ",
+> +            "-device %s,drive=3Dhd0 ",
+>               data->machine, data->tcg_only ? "" : "-accel kvm",
+> -             params ? params : "", disk);
+> +             params ? params : "", disk,
+> +             data->blkdev ?: "ide-hd");
+>      }
 > =20
-> +static void microvm_device_pre_plug_cb(HotplugHandler *hotplug_dev,
-> +                                       DeviceState *dev, Error **errp)
-> +{
-> +    x86_cpu_pre_plug(hotplug_dev, dev, errp);
-> +}
-> +
-> +static void microvm_device_plug_cb(HotplugHandler *hotplug_dev,
-> +                                   DeviceState *dev, Error **errp)
-> +{
-> +    x86_cpu_plug(hotplug_dev, dev, errp);
-> +}
-> +
-> +static void microvm_device_unplug_request_cb(HotplugHandler *hotplug_dev=
-,
-> +                                             DeviceState *dev, Error **e=
-rrp)
-> +{
-> +    error_setg(errp, "unplug not supported by microvm");
-> +}
-> +
-> +static void microvm_device_unplug_cb(HotplugHandler *hotplug_dev,
-> +                                     DeviceState *dev, Error **errp)
-> +{
-> +    error_setg(errp, "unplug not supported by microvm");
-> +}
-> +
-> +static HotplugHandler *microvm_get_hotplug_handler(MachineState *machine=
-,
-> +                                                   DeviceState *dev)
-> +{
-> +    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
-> +        return HOTPLUG_HANDLER(machine);
-> +    }
-> +    return NULL;
-> +}
-> +
->  static void microvm_machine_state_init(MachineState *machine)
->  {
->      MicrovmMachineState *mms =3D MICROVM_MACHINE(machine);
-> @@ -503,6 +536,7 @@ static void microvm_machine_initfn(Object *obj)
->  static void microvm_class_init(ObjectClass *oc, void *data)
->  {
->      MachineClass *mc =3D MACHINE_CLASS(oc);
-> +    HotplugHandlerClass *hc =3D HOTPLUG_HANDLER_CLASS(oc);
-> =20
->      mc->init =3D microvm_machine_state_init;
-> =20
-> @@ -524,6 +558,13 @@ static void microvm_class_init(ObjectClass *oc, void=
- *data)
->      /* Machine class handlers */
->      mc->reset =3D microvm_machine_reset;
-> =20
-> +    /* hotplug (for cpu coldplug) */
-> +    mc->get_hotplug_handler =3D microvm_get_hotplug_handler;
-> +    hc->pre_plug =3D microvm_device_pre_plug_cb;
-> +    hc->plug =3D microvm_device_plug_cb;
-> +    hc->unplug_request =3D microvm_device_unplug_request_cb;
-> +    hc->unplug =3D microvm_device_unplug_cb;
-> +
->      object_class_property_add(oc, MICROVM_MACHINE_PIC, "OnOffAuto",
->                                microvm_machine_get_pic,
->                                microvm_machine_set_pic,
-> @@ -573,6 +614,7 @@ static const TypeInfo microvm_machine_info =3D {
->      .class_size    =3D sizeof(MicrovmMachineClass),
->      .class_init    =3D microvm_class_init,
->      .interfaces =3D (InterfaceInfo[]) {
-> +         { TYPE_HOTPLUG_HANDLER },
->           { }
->      },
->  };
+>      data->qts =3D qtest_init(args);
 > --=20
 > 2.27.0
 >=20
 
---mu2vaf7vpmh5oc4y
+--g3hkxlwvgijsjsfz
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9HyTQACgkQ9GknjS8M
-AjVVXBAApARyub6ewNJhebabpb9BF2MJjdiqmXg/b0VJE+34821IyA1qfqcxuh04
-H1BeD0+0z0IYOMgC8FImffQHqNdvMuJJh695gK+GcnPzUndWMZq9gI1jhuNUiP7n
-lKRHpUZja5U7DyQuQU0C7OnXlYSne4FdF7yLlGYSlrT7t8SwmJRyMiqZTRlMojRA
-QIjwjS2LRR14mDHfHl5DTQUg2Vb8+T/wziCocWyFb+qQAqvepbr2+Q6ycFrqXYsL
-3N16mnhejAn/0/eMClYqwuSx3MPWN0x4JVHyxLokY5P1KGIguCbfsTlbF2xYq8Fr
-ryixOJSSHhsyESfRYwN5OIbealOlcieOEMiq4sB4ntUWqvP4vnEtEcRvZmj+u5X4
-uoD64LqIl3+ahBp62Zv3fq8nhdu5ajAPb3JzoTlFiH9CRZH9qD7V+WEzJHNKOIBM
-js2I4xR/UBDYnUbAop4yMOay/sbhM+BB+BCFp8A2IIW76LDdGpeI7AqAis8zoNO8
-Yr9kn50wEyb6P1hc4PDg5x/1xZ2nUiTd6thXSsZkrGT7BE1JzjUYUIza4w3fW8HK
-fPsrAXgKyVaz6eL9VoQU4q/pMFBs+z3+cUgXzlgfclVHEv1NqpaBr8RzQa/LnZGs
-NeFaAW6OZPCuHV0khq2Jf9QUbcdIPRpMI3Z6VHuAUymOw5BOLXM=
-=FhXu
+iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9HyXQACgkQ9GknjS8M
+AjVddw/9HDhRHAT3Xld+mKjH5KyYmNM1IQpnF0y0BFxcPc2YmQIcPbtgnl3Sm8+a
+QWp5jlvcR3AkX2oRyiOowqvcDD0GbuBUABmUeu2C/4yzU59GFiaDwAg/8IYfYOjm
+lw46Kq5JVE5g0NGyoERBYeTo9tV6W4E7e4Zr29RRzD3FcdxM8oAVh3z/AMClu/mr
+HxEjr6INIT4x+8u2e/5RalxHRv+zOdz3QPbAiwWEzX6UhDW0WY0eh20T9Ob62a4r
+vMqXQWYfE9O4nfPcRxxVZLAwo9BPkBkb3Sa+yHZ3QFvKbHaMnqyKPhj1CaKLyJAr
+ZJv6+zTjgK5aWQQmcG/ZAQ9mXCKpVBJ2ET17JNnTmKymJPlW3BvcTDqJREzZTL96
+3hh9cMegu81wIFwkmv3TrPIZQkvHu5Lra7S7e9HnMvFXVCoteD/XBSLN9An26t4B
+AB8b9jtSSt2EYvte1IsWNy2xjcMildAi9mMCX9aSf8DBtMBLSrPtIhFUPLOY+u8P
+SdzKxrAd/EokGIJyFUDbxFsZnU4H+dgUCPkDi7kFgwANaN+ohNJv+MDNrvcqwOh6
+ln+t2JyEhcEdoRiUM5V+9ziYA9ztyN4cZsPxGwSRI9qaK41f2VvHMWMoN8Z/lFdx
+xJ2Df4GNdcWJvBbL1uSHTVSzycXp9ZFUYzTdWDxSoOhMyNucLXE=
+=wZOk
 -----END PGP SIGNATURE-----
 
---mu2vaf7vpmh5oc4y--
+--g3hkxlwvgijsjsfz--
 

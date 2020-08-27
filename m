@@ -1,105 +1,121 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp154448lfc;
-        Wed, 26 Aug 2020 18:33:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzno5OZholYtSQsIzNeidVag3q2dnYKja3qeKpIOZejk+OmYKkG7vUC/Mg/WEjFDbl1Kbwz
-X-Received: by 2002:a25:4608:: with SMTP id t8mr26664095yba.164.1598492037841;
-        Wed, 26 Aug 2020 18:33:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598492037; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp295803lfc;
+        Wed, 26 Aug 2020 23:12:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2eqY/V3HCQKS5LYNLhxfXf2cSKVmrUjl0vY7nV5Blv5CNa9/05Q4VenAIN9ODjq6Kmshd
+X-Received: by 2002:a25:9cc7:: with SMTP id z7mr2368245ybo.387.1598508761224;
+        Wed, 26 Aug 2020 23:12:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598508761; cv=none;
         d=google.com; s=arc-20160816;
-        b=BNTlckRnO1Puwrsmp/H33N/u8u30nNKcBaPHrAOk5u01yU+ACzY3CH5Av2tdo/vLKk
-         8mpju/prpG5v8xbFhsfmzeI/tiE8GnL+3zdjerPxcWxffAGucSbJCxlYi5cwX1iyAXHk
-         +vyE2odBQQj6yn2oTNRGLYw3ZVpEBTYzCNWilyk5px4P0eF1SvveijoSY4D0zXqb3C76
-         1BBk3KcmbfH01ATUarNtHMYIXcG2t3WtXB6nqubuDoTixBZfvClUwtQl9+5mfgIr59xh
-         c+GSOoQoVqZ10iZdqJTG0Vz7fr2bvUSfko8z7j4IuEpVTxsbXbshRS1fPGNMJnVyBwW2
-         2WfQ==
+        b=HNv0wwwZH1wyEYTSIQhV8N10Oucpzc0vBYDLeNEJCAP51gWsXfryok8SCMU20cUQ3K
+         T55ohz4/hYqTKuKi6LAshds/SpI14z5o1MErmCdYrZYGto+URJsUCqIHNNzoVoXmqsNC
+         3xdYYIahXOffrnCrFLTqqq0hyQp8wYC4MjcgpCvC6xYb9WFedpd6AYdRfvKl95An4dg0
+         TvJiAK4wx3d0AW7yE16y5SfuL0+K5EaUjRq60eQoEaaw1wGoA65513mY2FBa7FIRN/RA
+         sXn3bBb+SDSzj5Q3TTKc+B1bE+vzPyVS+cdDTx7Ld4s5Q/GDgjBchQVsQEWjps83uFdl
+         LTsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=m+U2MTwdMoG9PqKsjSFaUQ6xkrv2vLd0zliD/g3ABBU=;
-        b=W8g3xoy6bA85WPBDcNTQXhvTwPzYrQq/ZavbdhJBEh3PLucrRr35Rt4XdR4bumaS4a
-         +PgAilGS4o7CbZXEaSRwMBMpcpJUfJI3NrrROjPDxWAoBACs1q/cUB3OoqK4OlQSW9qK
-         F1k37t++R6KAsMRZoZEY5+cZG/YqX0XljyWHncP//ZLC9Kx3OZQMKeQyVN1xlO31QFSK
-         +YPZrdadVDMgW5Dlgfabz6KMG0kOXf4whM3hR8dkHy5If6eM+HDkj6rl9RVT7OVuiawj
-         1LsYYZeP9qaSUvPhG2LTlPlcxmxKtD7ivmjwzm5v/+TZMv9j6CRl/FU/JS9h983Upjgq
-         QJpA==
+        bh=3/rlhBOVazI3yJbEIvNcqi9aYG1HHyOm095VFtPDuwk=;
+        b=FhnShakqM2egVJODFZ8O07hg5bqJji5+H14rpny6yGEjY+bk9Wn52JLHTFG6eSt5ZT
+         ZNbsrSN6pfcATRUtbefGEB6/m77LvnzkzPPubfZQyk51WMOTL7G6jiMtNguNxeeKTF4U
+         CCnbPdLgVWeV6ihj+ac+SzS1/WDDVQ9WaEmoCs6u6/mQGDz63bQ1F+vnVpdx1NUWfBke
+         HUlFeh49JtemVedlomp2GrOVR06jKBKj/dsgrTob22mq5vaYCsNvpxiaFT0gFlk/rMYx
+         F84Yd0LvS0xyDr6vloc5RxPy0vMGcuA6aT+8fENkD+nTQdYkPrmcAG8TeCmpyI0qR75W
+         hY4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iquvxkF6;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M7eZSDLi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n187si827098ybc.376.2020.08.26.18.33.57
+        by mx.google.com with ESMTPS id l5si1850547ybt.3.2020.08.26.23.12.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 26 Aug 2020 18:33:57 -0700 (PDT)
+        Wed, 26 Aug 2020 23:12:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iquvxkF6;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M7eZSDLi;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:34078 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48940 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kB6nd-0001wP-7h
-	for alex.bennee@linaro.org; Wed, 26 Aug 2020 21:33:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52466)
+	id 1kBB9M-0005zQ-21
+	for alex.bennee@linaro.org; Thu, 27 Aug 2020 02:12:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46456)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kB6mT-0000GS-NW; Wed, 26 Aug 2020 21:32:45 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:33536)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kB6mR-0006o2-W0; Wed, 26 Aug 2020 21:32:45 -0400
-Received: by mail-ot1-x344.google.com with SMTP id t7so3164596otp.0;
- Wed, 26 Aug 2020 18:32:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=m+U2MTwdMoG9PqKsjSFaUQ6xkrv2vLd0zliD/g3ABBU=;
- b=iquvxkF6uad3UVn56aWg+9oY1aZWOe/Qa60naVHz/iw/P2c5XZNrGQ0UGlBtJGhTxo
- KP/NZO2kBSNK0qH93dA5ScdbFfTW1oGSPKPfIQSbfwaAtaWuGIpmI3BhnVjuuiCvQoBC
- /SnA36AY9QAtwfpwuB1F1O2Q+qd+hXBWnid0dQvYE1nE8B5N3Uk2oATKvDXyJjYgcLIB
- WD0IR4hJqzMfpcinWx/bEaHh1PGt9iSvqYnR5u/v0/ZYDlzgD317V/uTFE5IEvMsyB3g
- 9nGTtkzelv9ahGVN88zGytNiIjxTG1Q+JcVZjorT1xSiRYNQ2HVQTy8auI3bD/S6i6tz
- CVKw==
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1kBB9A-0005zJ-6t
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2020 02:12:28 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:47171
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1kBB98-0005M7-KE
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2020 02:12:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598508745;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3/rlhBOVazI3yJbEIvNcqi9aYG1HHyOm095VFtPDuwk=;
+ b=M7eZSDLilwQO4FnzWnsQUyZXXhvB3g5XUARMZCH287HN2Hu6GIZSbQvGyiU2PMHSd6hZQs
+ UAZJgXXgjvp6KrtimTSV3oQLaAFbOYwUjvqKdq+yzZ4vb4tvbyl3WWKeVzH9Pzs4UHNqRn
+ yl6UoIuXfLMZUPMG6+m3VeT5tponm70=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-549--htiM1rJPAykbuPXWYVBPA-1; Thu, 27 Aug 2020 02:12:23 -0400
+X-MC-Unique: -htiM1rJPAykbuPXWYVBPA-1
+Received: by mail-qv1-f72.google.com with SMTP id z10so3569616qvm.0
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2020 23:12:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=m+U2MTwdMoG9PqKsjSFaUQ6xkrv2vLd0zliD/g3ABBU=;
- b=IIGOmukwNdZuypGxWYo/MvN4qlNFuXANrtpDPQU4d53AErvCkwfosJGpXAtwWnEHnq
- olNjVRjHr/P47uOvwjtc5ULwIALt1/aZyaO7j0Jy8lGOLOKFDA+/5MH6IAlv1LYIelYh
- 5aJtGCzn3pZudHTYTAAcDkfWWKBB/+8X++9ExQJmG5P5DSDjTKltK1jrTJKGM0065k99
- lY0SMNxYBJRtn8aw4pCy7dF0EUaS179ipUDvNpUS3IXrBRPiDtMzTuT/9PsCahGKGTaq
- 6W3SuzHILpNLcXOQAEZMjQNU00PiRihMyvWKAGDnrIjXwATfijM/kUv92VldONNfz9Iy
- pxRQ==
-X-Gm-Message-State: AOAM5322iklmxFiUe1YqUn000ORd1e+5K6FqA8qVv7YpbnEa8GT/+EJH
- hh+GS42hKVS2yMXXr4a8xscYRlKT0KbRw7yDIFY=
-X-Received: by 2002:a9d:4699:: with SMTP id z25mr8315286ote.353.1598491962341; 
- Wed, 26 Aug 2020 18:32:42 -0700 (PDT)
+ bh=3/rlhBOVazI3yJbEIvNcqi9aYG1HHyOm095VFtPDuwk=;
+ b=gUa4HkNbjn+HO3pvWjlFi7DfA8y1hEvwTrRibRu9UJox0Gqtm1iyPDW4/D1qu7mlvi
+ EF8IBk0M/ENwfTFHYW2ccpqxySyR2ZbLbWXshAtlhf/zaaujuxxyvmZZtWshd11XBUc1
+ JGpVHhvqbb4eL+F3lUxtlkKamPbvaSFawhXP131/O5WqhlsasKIfzPv+a0ezjwUQIWWu
+ dkPjal80xuxoBOzfjUTO9oJVG0KkC5TGtgf77qbnDgjk8VcyxDFpwkG/J2Z4kZlzd3Qf
+ b+2oFAYidT2iH0bZYdZIpa3/iL5Dc3Tg4MBXLNVIYpXhwwkT4TK9kGSub/NeIVrp94nB
+ yf+g==
+X-Gm-Message-State: AOAM5306VqbDbk5uXq93uiJjz+pCEu49Ym9yU1CLdNnBDfcCjLsXiaqc
+ EH0fZXslr9Uss92tPueao0q9tJyqadXzm/W3zvfw4XHAQBAAY24oKxewd+YPXQ8Njnhuqv/zetO
+ UGC8FNlgVGpIXNdumgcYRTNsCuqh5
+X-Received: by 2002:a37:3d4:: with SMTP id 203mr6952861qkd.497.1598508743249; 
+ Wed, 26 Aug 2020 23:12:23 -0700 (PDT)
+X-Received: by 2002:a37:3d4:: with SMTP id 203mr6952843qkd.497.1598508742982; 
+ Wed, 26 Aug 2020 23:12:22 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200826184334.4120620-1-ehabkost@redhat.com>
- <20200826184334.4120620-7-ehabkost@redhat.com>
-In-Reply-To: <20200826184334.4120620-7-ehabkost@redhat.com>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Thu, 27 Aug 2020 09:32:06 +0800
-Message-ID: <CAKXe6S+nFmcCz+iyOuHJm+0=_CjXcDOrJhb0v8B97Ufa03jucw@mail.gmail.com>
-Subject: Re: [PATCH 6/8] tosa: Use TYPE_TOSA_MISC_GPIO constant
-To: Eduardo Habkost <ehabkost@redhat.com>
+References: <20200625191651.5817-1-eperezma@redhat.com>
+ <20200826143651.7915-1-eperezma@redhat.com>
+ <20200826143651.7915-3-eperezma@redhat.com> <20200826154215.GE8235@xz-x1>
+In-Reply-To: <20200826154215.GE8235@xz-x1>
+From: Eugenio Perez Martin <eperezma@redhat.com>
+Date: Thu, 27 Aug 2020 08:11:47 +0200
+Message-ID: <CAJaqyWeRzV9k_PS0=1uuK5--5RZB6XcVf6ZmxG-R5cF+ydXgaw@mail.gmail.com>
+Subject: Re: [RFC v6 02/13] memory: Add IOMMUTLBNotificationType to
+ IOMMUTLBEntry
+To: Peter Xu <peterx@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=liq3ea@gmail.com; helo=mail-ot1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=eperezma@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 00:53:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,45 +128,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Qemu Developers <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ Avi Kivity <avi@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bT3JKCLrXmPH
+X-TUID: ZupET4teMBM+
 
-Eduardo Habkost <ehabkost@redhat.com> =E4=BA=8E2020=E5=B9=B48=E6=9C=8827=E6=
-=97=A5=E5=91=A8=E5=9B=9B =E4=B8=8A=E5=8D=882:50=E5=86=99=E9=81=93=EF=BC=9A
+On Wed, Aug 26, 2020 at 5:42 PM Peter Xu <peterx@redhat.com> wrote:
 >
-> This will make future conversion to use OBJECT_DECLARE* easier.
+> On Wed, Aug 26, 2020 at 04:36:40PM +0200, Eugenio P=C3=A9rez wrote:
+> > This way we can tell between MAPs and UNMAP, and potentially avoid to
+> > send them to a notifier that does not require them.
+> >
+> > Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
+> > ---
+> >  include/exec/memory.h | 17 ++++++++++++-----
+> >  1 file changed, 12 insertions(+), 5 deletions(-)
+> >
+> > diff --git a/include/exec/memory.h b/include/exec/memory.h
+> > index 22c5f564d1..f6d91c54aa 100644
+> > --- a/include/exec/memory.h
+> > +++ b/include/exec/memory.h
+> > @@ -59,6 +59,12 @@ struct ReservedRegion {
+> >
+> >  typedef struct IOMMUTLBEntry IOMMUTLBEntry;
+> >
+> > +typedef enum {
+> > +    IOMMU_IOTLB_NONE  =3D 0,
+> > +    IOMMU_IOTLB_UNMAP =3D 1,
+> > +    IOMMU_IOTLB_MAP   =3D 2,
+> > +} IOMMUTLBNotificationType;
 >
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+> Can we directly use IOMMUNotifierFlag as the type rather than introducing=
+ a
+> similar enumeration?  Thanks,
+>
 
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
+Right, I think it's simpler your way.
 
-> ---
-> Cc: Andrzej Zaborowski <balrogg@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
-> ---
->  hw/arm/tosa.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-> index e29566f7b3..90eef1f14d 100644
-> --- a/hw/arm/tosa.c
-> +++ b/hw/arm/tosa.c
-> @@ -316,7 +316,7 @@ static const TypeInfo tosa_ssp_info =3D {
->  };
->
->  static const TypeInfo tosa_misc_gpio_info =3D {
-> -    .name          =3D "tosa-misc-gpio",
-> +    .name          =3D TYPE_TOSA_MISC_GPIO,
->      .parent        =3D TYPE_SYS_BUS_DEVICE,
->      .instance_size =3D sizeof(TosaMiscGPIOState),
->      .instance_init =3D tosa_misc_gpio_init,
+Thanks!
+
 > --
-> 2.26.2
+> Peter Xu
 >
->
+

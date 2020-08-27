@@ -1,183 +1,138 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp366865lfc;
-        Thu, 27 Aug 2020 01:27:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz2qiups2kzToYSlWhh8zxiEQMRniWCfnv4cErRae4TLlLkbS1l7PIGyHCI6RwCzWVM9gTd
-X-Received: by 2002:a5b:308:: with SMTP id j8mr25427964ybp.185.1598516862523;
-        Thu, 27 Aug 2020 01:27:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598516862; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp391084lfc;
+        Thu, 27 Aug 2020 02:11:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy9lD+9u6XsATTml81OQ3fXuqi6tH/qAkfU+9PJn8um2KBvMx7tmNfjqVbpDGyUrfX6bjpj
+X-Received: by 2002:a25:c094:: with SMTP id c142mr30146140ybf.477.1598519519739;
+        Thu, 27 Aug 2020 02:11:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598519519; cv=none;
         d=google.com; s=arc-20160816;
-        b=DGGBPfun9rWCk8RfkyB5+ipeA2vvSR60nDkBnWD0yCl22sm8DDj27E4UgP56O7kJCH
-         2JLRQaAB36F+nA6aK6mVeoF/T1rU3OjdUMTFSFekJhlbUQQ+7PxAAN24aLHVX5qy8C+z
-         DLAVqs6w+v8243JY+ttpz4ILrBfjQvnyUYudez1DPtXj5aEPiFZjbtCr/pMhTqN88zvt
-         ePoKSA0tf7UJyRQDyOlPPiT34FpK8BNsGWr5WIl0/5wrtzPwq2YOfkTl6aBSaALtoevd
-         0GIdth0KmdqFEH1F7UArHpCOecp884z5AU8AVQNe/1sqLrByG9PMRnfQIGeoph4sP5MM
-         8fIQ==
+        b=osBmrnT+jseJoyv/GhBKg9tnBgEmeOz0f7EWX4Zo7PZ9Y7DIdb0m8LHpiA8Tx9Cr8M
+         xD232YhvBYdmaOLlzjtxya3FgWmrL7wxbKJVR2SLslTpT+3Ljb8RuUdnB9/eizOZOxN1
+         bbQrvArQqxcfoyqwk8Vby32C901ws48HrlGJwRe679MLN6Gbgzf0E2STOdVYSf4Z3ncZ
+         fmRUhpSUcmJHK99WFIKxhpMfc3KHi0RakYyUbevYs1kzuJ+CfGFlIrDUEtWm8XsJVbwb
+         ORMkV2hMiyV45AURJTUwTxFviipef3r/8yEWXps5KgLKyLq/Sshm1hpjqepqQ+GX0Ubq
+         UC1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=Xeh2/hVP2VgcI3vgKBeANnUuhh1sdg2a9myA7Aq1mpw=;
-        b=Rr0hVulApTuX/7j8Dz8pUjENibkDhB1p0U1roI1AXOYsar5AlmW9To/PjoRYIryxd8
-         Xkewmjmmzu68gkpfQn1FqagNAfjQJcVvnHgnc6DLBbLSSKe5smyStYfNlgWxEFu3TyCB
-         X6x9AnP3pHHJSmvk1tr9a9rAgGm3wKFgT3CgTn2ECgyxjtUpwcyDuv543sFMrtkp1qR4
-         lqE7kotAExKVuIs9zmTJeJlp0CV45+V+BN9wvm1jSuURy5/EXHxwv/0/+VOFyoUpQy4i
-         Xt6stjWR9gQYdnvb1koViusmsW51D/Xk4oorrQxEs35ZhkOXXl/NRvuuWI2k38g5xDKh
-         BhEg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from;
+        bh=OEDw5e/cIWmf9GMcbuaVN7pvh9SDCkZcoe1NSn206B0=;
+        b=TT9nayEZ9c1gWCUtAs4kgbAEx3m3t/BLA/tEM6OP1RfsN2RKK67T7IPtbWWsyAJ8ks
+         iryQ7K2cl2zk4LJPRwcyERxNqS7ArdPckhXTWrjamFE6g9K6NIO6/SlMNsdUNMbvrYed
+         QqzvYjvsFMFHBvOvtucrvjf+3ra46Wjj6evYJ8kAS+PtIHGMPPTA9YXnFaLN6Z/9PxcT
+         QHmDg3iHTG5Fzl3coAiRjZDpIw3uNDCvvfSlWXNp/zfvw1LF3CTqs2ggXi7HhLNZJ+el
+         WLXruRcSIo9QadIhwivOGZiYiPhrGhYzGHHuWQ/SNz14lSkmnZKQdUpjQO9i7gI4udQH
+         zidg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J0HA9GVk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o81si1938507ybc.465.2020.08.27.01.27.42
+        by mx.google.com with ESMTPS id y129si1831594ybc.244.2020.08.27.02.11.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Aug 2020 01:27:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 27 Aug 2020 02:11:59 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J0HA9GVk;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47504 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57420 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kBDG1-0000cb-Uv
-	for alex.bennee@linaro.org; Thu, 27 Aug 2020 04:27:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44290)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kBDws-0001fi-V5
+	for alex.bennee@linaro.org; Thu, 27 Aug 2020 05:11:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54420)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBDFF-00085k-ME
- for qemu-devel@nongnu.org; Thu, 27 Aug 2020 04:26:53 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:55457
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBDFE-0004j0-7j
- for qemu-devel@nongnu.org; Thu, 27 Aug 2020 04:26:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598516811;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Xeh2/hVP2VgcI3vgKBeANnUuhh1sdg2a9myA7Aq1mpw=;
- b=J0HA9GVkR4wp6/NSzMk2RXhFmtBUehyTbjPS3RXzz3VYRerylAkuY3c/nFaLI4f55qHPjg
- 4TWp4n6pLErNwoD+ypVjdEG3nFnuvnEILgRMoyFUUmOrdbz1LNQyIMwlguwk5B9uhGcbCi
- 1xnStz3AAXpaeWyl7Q2fSY1r89LIqvs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-315-7T8LL7X0PB2_ewSju-sYwA-1; Thu, 27 Aug 2020 04:26:47 -0400
-X-MC-Unique: 7T8LL7X0PB2_ewSju-sYwA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF1B2800050;
- Thu, 27 Aug 2020 08:26:45 +0000 (UTC)
-Received: from localhost (ovpn-113-131.rdu2.redhat.com [10.10.113.131])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 794D67A40C;
- Thu, 27 Aug 2020 08:26:39 +0000 (UTC)
-Date: Thu, 27 Aug 2020 10:26:38 +0200
-From: Sergio Lopez <slp@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH v6 12/20] microvm/acpi: disable virtio-mmio cmdline hack
-Message-ID: <20200827082638.jl2ygnk3devjulsi@mhamilton>
-References: <20200826105254.28496-1-kraxel@redhat.com>
- <20200826105254.28496-13-kraxel@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kBDwf-0001ec-S6; Thu, 27 Aug 2020 05:11:45 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:36913)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kBDwd-0001zh-P5; Thu, 27 Aug 2020 05:11:45 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.44])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id A4EBB54810DF;
+ Thu, 27 Aug 2020 11:11:32 +0200 (CEST)
+Received: from kaod.org (37.59.142.99) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 27 Aug
+ 2020 11:11:31 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-99G003cc3eeee9-ec49-4800-98bd-d7db1c7de948,
+ 618CF37EF0508A6B3BD090B4D8B11E595DDBE7AA) smtp.auth=clg@kaod.org
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH 0/2] m25p80: Add SFDP support
+Date: Thu, 27 Aug 2020 11:11:28 +0200
+Message-ID: <20200827091130.3525790-1-clg@kaod.org>
+X-Mailer: git-send-email 2.25.4
 MIME-Version: 1.0
-In-Reply-To: <20200826105254.28496-13-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=slp@redhat.com
-X-Mimecast-Spam-Score: 0.001
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="4okk6qkbwxpuwlg4"
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=slp@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 00:53:04
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-Originating-IP: [37.59.142.99]
+X-ClientProxiedBy: DAG7EX2.mxp5.local (172.16.2.62) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: b1c3040f-a86a-4037-a15d-f3ab95d91762
+X-Ovh-Tracer-Id: 8702080382252256108
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedruddvgedguddvucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffogggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepfedvuedtvdeikeekuefhkedujeejgffggffhtefglefgveevfeeghfdvgedtleevnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelleenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 05:11:34
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ekw1Ynwm99KR
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Francisco Iglesias <frasse.iglesias@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: a4eMmIWx3Z7H
 
---4okk6qkbwxpuwlg4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Hello,
 
-On Wed, Aug 26, 2020 at 12:52:46PM +0200, Gerd Hoffmann wrote:
-> ... in case we are using ACPI.
->=20
-> Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-> ---
->  hw/i386/microvm.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+JEDEC STANDARD JESD216 for Serial Flash Discovery Parameters (SFDP)
+provides a mean to describe the features of a serial flash device
+using a set of internal parameter tables. Support in Linux has been
+added some time ago and the spi-nor driver is using it more often
+to detect the flash settings and even flash models.
 
-Reviewed-by: Sergio Lopez <slp@redhat.com>
+This is the initial framework for the RDSFDP command giving access to
+a private SFDP area under the flash and one example for the n25q256a
+to check this is a good approach.
 
-> diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-> index 54510a03f754..04209eb38fbe 100644
-> --- a/hw/i386/microvm.c
-> +++ b/hw/i386/microvm.c
-> @@ -343,7 +343,8 @@ static void microvm_machine_reset(MachineState *machi=
-ne)
->      CPUState *cs;
->      X86CPU *cpu;
-> =20
-> -    if (machine->kernel_filename !=3D NULL &&
-> +    if (!x86_machine_is_acpi_enabled(X86_MACHINE(machine)) &&
-> +        machine->kernel_filename !=3D NULL &&
->          mms->auto_kernel_cmdline && !mms->kernel_cmdline_fixed) {
->          microvm_fix_kernel_cmdline(machine);
->          mms->kernel_cmdline_fixed =3D true;
-> --=20
-> 2.27.0
->=20
+Thanks,
 
---4okk6qkbwxpuwlg4
-Content-Type: application/pgp-signature; name="signature.asc"
+C.
 
------BEGIN PGP SIGNATURE-----
+Cédric Le Goater (2):
+  m25p80: Add basic support for the SFDP command
+  m25p80: Add the n25q256a SFDP table
 
-iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9Hbj0ACgkQ9GknjS8M
-AjWU2xAAuAzE6H8prRzONn4rfTmfyoLsrOTZkSZYD5knA7LC9xirg7k8z+Tit4wO
-YWwtww+BrkAgKBYfwp1rMb1fXa6ge3uVesK/MMCzQ+UjNc1P0vNgWbJgqXthr1Tx
-0mbDHfpg2nxaPFS3Y677tcTPS9/8BTwUjSfyiCDJ4bibUcXdypXRnslthfCPv7G+
-9OPZpDHMRqwz1p7WleTlvfovZZ/EdS5XnX78ZJhDHX/BBPxEcM+2oH6a4HOkBuAs
-7n+4c6f6929a3DdFOiJKndw2/pNdHRht4L9fYnSAk4Z38XVUAR9fj/FlgHNgYBsJ
-f6a3Ge6pezlyLFm/p9gx250uRp53j5JfniE7QcNjvE0JvJdJY0BC3Dmkgkw44QVd
-UC+DkxxpUT+yA+U4QFmmXx+v9towVxj6pAgFvk6OIYpAgZj8+uFPBY6foj65z8rg
-+4p/PxWxZ6BsCgZaJfZDfVYQiL37/+Dog0QBt02MLJdfaRSwXU3vG03ShRAK5UsT
-klPnpyhdMgIH7frJ2nfm4pJquM5GdZEkXQWPxTqHxLac9jGyiFi9fd+M+h2vT86z
-TuI/TgoMlsOT2XUO5qFeOX0D4vaHSOy/R/QBpKWsEIDuGQG0tv+HXo2EvU37oR8+
-5Hxfz6GM3gZUF/1B1pcSQhVduVMq0wVFZaBxjeQ0kkPL4/NO8tc=
-=rrC8
------END PGP SIGNATURE-----
+ hw/block/m25p80_sfdp.h | 17 +++++++++++++++
+ hw/block/m25p80.c      | 39 +++++++++++++++++++++++++++++++--
+ hw/block/m25p80_sfdp.c | 49 ++++++++++++++++++++++++++++++++++++++++++
+ hw/block/Makefile.objs |  2 +-
+ hw/block/trace-events  |  1 +
+ 5 files changed, 105 insertions(+), 3 deletions(-)
+ create mode 100644 hw/block/m25p80_sfdp.h
+ create mode 100644 hw/block/m25p80_sfdp.c
 
---4okk6qkbwxpuwlg4--
+-- 
+2.25.4
 

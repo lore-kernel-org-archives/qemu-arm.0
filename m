@@ -1,99 +1,99 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp366533lfc;
-        Thu, 27 Aug 2020 01:27:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJycLnH6qcS8nlgm8AuIYd5x5EPO0Rh0MOBT5l/txnhJZOExAmQD9OvxDDKrJpEWXVI6ZNLq
-X-Received: by 2002:a25:3a81:: with SMTP id h123mr25030157yba.427.1598516823971;
-        Thu, 27 Aug 2020 01:27:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598516823; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp366865lfc;
+        Thu, 27 Aug 2020 01:27:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2qiups2kzToYSlWhh8zxiEQMRniWCfnv4cErRae4TLlLkbS1l7PIGyHCI6RwCzWVM9gTd
+X-Received: by 2002:a5b:308:: with SMTP id j8mr25427964ybp.185.1598516862523;
+        Thu, 27 Aug 2020 01:27:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598516862; cv=none;
         d=google.com; s=arc-20160816;
-        b=dGA4v5TLnu4Ay85IO6oJKxfUzHYm4Ptg2ZVNfgjS0SN606ShFnAptoyl3KpeTTq790
-         XQBpRKzwXj4QOA4YIHZSJR6SkOWMy1YPCPikC2oPGFrOBS/Mm+hryfY02BxFrVgwqnH8
-         eFCcSqiXcNqtXR15U+I07vghDRL7PKrJqqdUwu6tzOW8TD+2wofqApvXu5bQUZR1qnHs
-         WonawsgjTJ6DoZglyBK71cyfJq+agz+FAVvaFyP/4wIURw7mS4EM7WD8wDqY3mrM1DZO
-         ydlvgHgU7XGfYYqMNI2OQWrtmrQGyTOTYphlZQ8YC2coQZFfZRBK/TALdlGVyKMc0GLJ
-         jthg==
+        b=DGGBPfun9rWCk8RfkyB5+ipeA2vvSR60nDkBnWD0yCl22sm8DDj27E4UgP56O7kJCH
+         2JLRQaAB36F+nA6aK6mVeoF/T1rU3OjdUMTFSFekJhlbUQQ+7PxAAN24aLHVX5qy8C+z
+         DLAVqs6w+v8243JY+ttpz4ILrBfjQvnyUYudez1DPtXj5aEPiFZjbtCr/pMhTqN88zvt
+         ePoKSA0tf7UJyRQDyOlPPiT34FpK8BNsGWr5WIl0/5wrtzPwq2YOfkTl6aBSaALtoevd
+         0GIdth0KmdqFEH1F7UArHpCOecp884z5AU8AVQNe/1sqLrByG9PMRnfQIGeoph4sP5MM
+         8fIQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=ebWfJswIZKotNnZgY8inNGIuWi9/+2r8ZSZoxlfzwCE=;
-        b=nWsRrbYx40DRgfZN18AIrvpyEpyEFwRRe/Pc/0YmjEbjgz7HeqHjNVSCJbPEuxzWls
-         4va4bHVDMm8AryKjn07snhfiWo9XhA3f1zx0OtSYMSTASEimrb//PgonR6ZSfkEr097E
-         LydpcAP4WBN/iiW55Ryeu00sYyOYRjA0UW83EoPMkHIpPqmk2xyFfUKIq71IlUmv6qHk
-         iripf+NIyABnlEudZHcHkQOO6WaVdyiKZsFWTrMskbhPy7z+xiUmipNiMQXpxlpz1dsA
-         7UEtDYxhuT/8zQvV8k9iBA0gDVRMHiCqb5MQW/tLBzSVy5zQqEqLdaKPCdyiHJh/gCym
-         zmkw==
+        bh=Xeh2/hVP2VgcI3vgKBeANnUuhh1sdg2a9myA7Aq1mpw=;
+        b=Rr0hVulApTuX/7j8Dz8pUjENibkDhB1p0U1roI1AXOYsar5AlmW9To/PjoRYIryxd8
+         Xkewmjmmzu68gkpfQn1FqagNAfjQJcVvnHgnc6DLBbLSSKe5smyStYfNlgWxEFu3TyCB
+         X6x9AnP3pHHJSmvk1tr9a9rAgGm3wKFgT3CgTn2ECgyxjtUpwcyDuv543sFMrtkp1qR4
+         lqE7kotAExKVuIs9zmTJeJlp0CV45+V+BN9wvm1jSuURy5/EXHxwv/0/+VOFyoUpQy4i
+         Xt6stjWR9gQYdnvb1koViusmsW51D/Xk4oorrQxEs35ZhkOXXl/NRvuuWI2k38g5xDKh
+         BhEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gCZwXCPP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J0HA9GVk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 133si1438751ybl.42.2020.08.27.01.27.03
+        by mx.google.com with ESMTPS id o81si1938507ybc.465.2020.08.27.01.27.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Aug 2020 01:27:03 -0700 (PDT)
+        Thu, 27 Aug 2020 01:27:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=gCZwXCPP;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J0HA9GVk;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44840 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47504 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kBDFP-0007yD-9h
-	for alex.bennee@linaro.org; Thu, 27 Aug 2020 04:27:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44096)
+	id 1kBDG1-0000cb-Uv
+	for alex.bennee@linaro.org; Thu, 27 Aug 2020 04:27:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44290)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBDEM-0007XR-PA
- for qemu-devel@nongnu.org; Thu, 27 Aug 2020 04:25:58 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:58953
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBDFF-00085k-ME
+ for qemu-devel@nongnu.org; Thu, 27 Aug 2020 04:26:53 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:55457
  helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBDEL-0004fa-9H
- for qemu-devel@nongnu.org; Thu, 27 Aug 2020 04:25:58 -0400
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBDFE-0004j0-7j
+ for qemu-devel@nongnu.org; Thu, 27 Aug 2020 04:26:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598516756;
+ s=mimecast20190719; t=1598516811;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=ebWfJswIZKotNnZgY8inNGIuWi9/+2r8ZSZoxlfzwCE=;
- b=gCZwXCPPqQmZbmpEv7+7Zo7igqcKSN6uJEiwdemQMGewLZ3+8wcuoV9CXkqHTtxSZb4s9w
- FAPTM9WngBOE+2z8vM+NLSvwma/fTgYsH/og9muj9TNDLWWUdA2Q/j3Pv5a5vE1adcORj/
- VImuyw0ozNa3mySdgvkYvdBl1F7mUW4=
+ bh=Xeh2/hVP2VgcI3vgKBeANnUuhh1sdg2a9myA7Aq1mpw=;
+ b=J0HA9GVkR4wp6/NSzMk2RXhFmtBUehyTbjPS3RXzz3VYRerylAkuY3c/nFaLI4f55qHPjg
+ 4TWp4n6pLErNwoD+ypVjdEG3nFnuvnEILgRMoyFUUmOrdbz1LNQyIMwlguwk5B9uhGcbCi
+ 1xnStz3AAXpaeWyl7Q2fSY1r89LIqvs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-566-PLR7xmtjOsW_PzH03pZyow-1; Thu, 27 Aug 2020 04:25:51 -0400
-X-MC-Unique: PLR7xmtjOsW_PzH03pZyow-1
+ us-mta-315-7T8LL7X0PB2_ewSju-sYwA-1; Thu, 27 Aug 2020 04:26:47 -0400
+X-MC-Unique: 7T8LL7X0PB2_ewSju-sYwA-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EC045185FD97;
- Thu, 27 Aug 2020 08:25:49 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id EF1B2800050;
+ Thu, 27 Aug 2020 08:26:45 +0000 (UTC)
 Received: from localhost (ovpn-113-131.rdu2.redhat.com [10.10.113.131])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D142F7A40C;
- Thu, 27 Aug 2020 08:25:42 +0000 (UTC)
-Date: Thu, 27 Aug 2020 10:25:38 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 794D67A40C;
+ Thu, 27 Aug 2020 08:26:39 +0000 (UTC)
+Date: Thu, 27 Aug 2020 10:26:38 +0200
 From: Sergio Lopez <slp@redhat.com>
 To: Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH v6 01/20] microvm: name qboot binary qboot.rom
-Message-ID: <20200827082538.tabz2zazyknnllrk@mhamilton>
+Subject: Re: [PATCH v6 12/20] microvm/acpi: disable virtio-mmio cmdline hack
+Message-ID: <20200827082638.jl2ygnk3devjulsi@mhamilton>
 References: <20200826105254.28496-1-kraxel@redhat.com>
- <20200826105254.28496-2-kraxel@redhat.com>
+ <20200826105254.28496-13-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200826105254.28496-2-kraxel@redhat.com>
+In-Reply-To: <20200826105254.28496-13-kraxel@redhat.com>
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=slp@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="7dgw27ilqxnjy6fp"
+ protocol="application/pgp-signature"; boundary="4okk6qkbwxpuwlg4"
 Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=slp@redhat.com;
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=slp@redhat.com;
  helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 00:42:41
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 00:53:04
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -122,106 +122,62 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BDIMBC0D8CQI
+X-TUID: Ekw1Ynwm99KR
 
---7dgw27ilqxnjy6fp
+--4okk6qkbwxpuwlg4
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Aug 26, 2020 at 12:52:35PM +0200, Gerd Hoffmann wrote:
-> qboot isn't a bios and shouldnt be named that way.
+On Wed, Aug 26, 2020 at 12:52:46PM +0200, Gerd Hoffmann wrote:
+> ... in case we are using ACPI.
 >=20
 > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  hw/i386/microvm.c                       |   4 ++--
->  pc-bios/{bios-microvm.bin =3D> qboot.rom} | Bin
->  roms/Makefile                           |   6 +++---
->  3 files changed, 5 insertions(+), 5 deletions(-)
->  rename pc-bios/{bios-microvm.bin =3D> qboot.rom} (100%)
+>  hw/i386/microvm.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 
 Reviewed-by: Sergio Lopez <slp@redhat.com>
 
 > diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-> index 81d0888930d1..b1dc7e49c159 100644
+> index 54510a03f754..04209eb38fbe 100644
 > --- a/hw/i386/microvm.c
 > +++ b/hw/i386/microvm.c
-> @@ -47,7 +47,7 @@
->  #include "kvm_i386.h"
->  #include "hw/xen/start_info.h"
+> @@ -343,7 +343,8 @@ static void microvm_machine_reset(MachineState *machi=
+ne)
+>      CPUState *cs;
+>      X86CPU *cpu;
 > =20
-> -#define MICROVM_BIOS_FILENAME "bios-microvm.bin"
-> +#define MICROVM_QBOOT_FILENAME "qboot.rom"
-> =20
->  static void microvm_set_rtc(MicrovmMachineState *mms, ISADevice *s)
->  {
-> @@ -158,7 +158,7 @@ static void microvm_devices_init(MicrovmMachineState =
-*mms)
->      }
-> =20
->      if (bios_name =3D=3D NULL) {
-> -        bios_name =3D MICROVM_BIOS_FILENAME;
-> +        bios_name =3D MICROVM_QBOOT_FILENAME;
->      }
->      x86_bios_rom_init(get_system_memory(), true);
->  }
-> diff --git a/pc-bios/bios-microvm.bin b/pc-bios/qboot.rom
-> similarity index 100%
-> rename from pc-bios/bios-microvm.bin
-> rename to pc-bios/qboot.rom
-> diff --git a/roms/Makefile b/roms/Makefile
-> index 5d9f15b6777f..2673a39f9dc2 100644
-> --- a/roms/Makefile
-> +++ b/roms/Makefile
-> @@ -66,7 +66,7 @@ default help:
->  =09@echo "  efi                -- update UEFI (edk2) platform firmware"
->  =09@echo "  opensbi32-generic  -- update OpenSBI for 32-bit generic mach=
-ine"
->  =09@echo "  opensbi64-generic  -- update OpenSBI for 64-bit generic mach=
-ine"
-> -=09@echo "  bios-microvm       -- update bios-microvm.bin (qboot)"
-> +=09@echo "  qboot              -- update qboot"
->  =09@echo "  clean              -- delete the files generated by the prev=
-ious" \
->  =09                              "build targets"
-> =20
-> @@ -182,9 +182,9 @@ opensbi64-generic:
->  =09cp opensbi/build/platform/generic/firmware/fw_dynamic.bin ../pc-bios/=
-opensbi-riscv64-generic-fw_dynamic.bin
->  =09cp opensbi/build/platform/generic/firmware/fw_dynamic.elf ../pc-bios/=
-opensbi-riscv64-generic-fw_dynamic.elf
-> =20
-> -bios-microvm:
-> +qboot:
->  =09$(MAKE) -C qboot
-> -=09cp qboot/bios.bin ../pc-bios/bios-microvm.bin
-> +=09cp qboot/bios.bin ../pc-bios/qboot.rom
-> =20
->  clean:
->  =09rm -rf seabios/.config seabios/out seabios/builds
+> -    if (machine->kernel_filename !=3D NULL &&
+> +    if (!x86_machine_is_acpi_enabled(X86_MACHINE(machine)) &&
+> +        machine->kernel_filename !=3D NULL &&
+>          mms->auto_kernel_cmdline && !mms->kernel_cmdline_fixed) {
+>          microvm_fix_kernel_cmdline(machine);
+>          mms->kernel_cmdline_fixed =3D true;
 > --=20
 > 2.27.0
 >=20
 
---7dgw27ilqxnjy6fp
+--4okk6qkbwxpuwlg4
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9HbgEACgkQ9GknjS8M
-AjUIHhAAmc77boSSZdJuk5WQXX+bhDDpCZ6QlrDu2cp06OD0CYr5MbbvDxxMXn8e
-xbDv++NzpCHZczBMrPnWVq0zbTD72ygZp6NeurktT3udqK1eTfngdyvRd7GuG03k
-45rVohlL1BHT+oJWg4FzBQfYjLE/U2SUR/egP530KWs3UgQAvCI+TrbkZ4alG1xW
-CHVH8MiqFHsl9bzRklpJcNAbJ4WBt6tNaHmJvU7QqclSzG00bHEIRUUDf+zLYpLf
-zID29JDmmkg2Ax0XOYPt4xzi9vJFEzWHsAOBkF+pfG0Hed5w7d/CSZ+ftnJdzF0n
-hcnOdTdKgsuDFLGLfiTjLPgDaWcwE9hpkVDS+uQMHWBiUFrOp8AJqknnwrISgghV
-ccJU/2lVbPbHQhs3Zu300TV2KiplsZLdc62hVcFU/e89TmvSdpWxz26Tqie3Uu+K
-OYSLpnuTAx5oH2wCeRwTL5ZrlpnMWA7aO4Tues4JTRayKL/uBZuNw/wEDCNGB8IY
-qxBMu86yc0Y4Ikgzu03D8LxS3muVv/rvXcuqTkWWroLwYDKolXUvEPmfeBnIzF7X
-X3kZ2EFr225tl79TYr8pjl4MK/GimU41cw3+EtMTOj1pBJjf++1fyYSp6rBRT86S
-JG79/CV13VSSDYz3bCWMsA/GctewGA+szcpjaoVLoz/5mwU2pvk=
-=Rdrh
+iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9Hbj0ACgkQ9GknjS8M
+AjWU2xAAuAzE6H8prRzONn4rfTmfyoLsrOTZkSZYD5knA7LC9xirg7k8z+Tit4wO
+YWwtww+BrkAgKBYfwp1rMb1fXa6ge3uVesK/MMCzQ+UjNc1P0vNgWbJgqXthr1Tx
+0mbDHfpg2nxaPFS3Y677tcTPS9/8BTwUjSfyiCDJ4bibUcXdypXRnslthfCPv7G+
+9OPZpDHMRqwz1p7WleTlvfovZZ/EdS5XnX78ZJhDHX/BBPxEcM+2oH6a4HOkBuAs
+7n+4c6f6929a3DdFOiJKndw2/pNdHRht4L9fYnSAk4Z38XVUAR9fj/FlgHNgYBsJ
+f6a3Ge6pezlyLFm/p9gx250uRp53j5JfniE7QcNjvE0JvJdJY0BC3Dmkgkw44QVd
+UC+DkxxpUT+yA+U4QFmmXx+v9towVxj6pAgFvk6OIYpAgZj8+uFPBY6foj65z8rg
++4p/PxWxZ6BsCgZaJfZDfVYQiL37/+Dog0QBt02MLJdfaRSwXU3vG03ShRAK5UsT
+klPnpyhdMgIH7frJ2nfm4pJquM5GdZEkXQWPxTqHxLac9jGyiFi9fd+M+h2vT86z
+TuI/TgoMlsOT2XUO5qFeOX0D4vaHSOy/R/QBpKWsEIDuGQG0tv+HXo2EvU37oR8+
+5Hxfz6GM3gZUF/1B1pcSQhVduVMq0wVFZaBxjeQ0kkPL4/NO8tc=
+=rrC8
 -----END PGP SIGNATURE-----
 
---7dgw27ilqxnjy6fp--
+--4okk6qkbwxpuwlg4--
 

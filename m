@@ -1,107 +1,106 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp630798lfc;
-        Thu, 27 Aug 2020 07:51:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzbpgUo9RzBtoGr0/5QfDIKEw7D1xaCtKzZcCTzZ6in16YYmD/Ys91DLSVFLHumRBh049mb
-X-Received: by 2002:a25:c0c3:: with SMTP id c186mr27192255ybf.343.1598539918909;
-        Thu, 27 Aug 2020 07:51:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598539918; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp632591lfc;
+        Thu, 27 Aug 2020 07:54:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyPIeZQBYALZqXZMX8b1aiu5MdYL4hClXpm0cFgdvwosiAobP6BF07rXHVipRMP7vvhxod+
+X-Received: by 2002:a25:d08a:: with SMTP id h132mr28031497ybg.368.1598540076060;
+        Thu, 27 Aug 2020 07:54:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598540076; cv=none;
         d=google.com; s=arc-20160816;
-        b=OOZbCrxxsfjZ++2p2UrzBRHyLIAOUHUsuZqDpf3iITEmTjKrPy656f4ydVgMz1BjLo
-         c3AhKjxitHD+WGqxxMo8z5VEDQY89sBy8SnoWG5T1UDmHKeUy2GiuiB5PcBeJFaJmBLw
-         4SpLk8xwu3djOzuFYOt1/DyYHzJy6al1RNwl1RIFycUwiuvjuLW/e3RXKiHrHItbuSGw
-         iWUdCFlnFkquPmsdN/WPKi4avhk0NXm5LgDct5O5OAevB0Mvwd+QWxgGJ4f/0ihueKxW
-         1aidQQIyz+ipuyLnw6E/tsdHryNzFUeajzWLV1mcFshxwqWmomlSSX6Ecy3KGLsEF9dX
-         2eHw==
+        b=fNkwjl1cO3XhlNGHj+2pYfjQUqm9OYroqzRlOoItaEEIMgswKUod2XRS7wRLQHRbSB
+         vruOW3l/t/P5pD2NiTXPgJzddBOKUl/KqWmF7It4860+UZeS3Y7+NxLeVmD0sLlV76P0
+         OeIdfDGuwDrk3ojfHooQgyCCDV4lcIanxvy2R2HthlVXzBE/2hgm40H+dzuBh0Oy6qVo
+         q6owHL32d4+mgZg/w+foDOQtKnq0ravWCgirsj0E8pKqRCzkNbdjzuMLGa4jNwwEH/zm
+         hmPYG5cxYpYJNiw3MndmZURDFLQ1KuUh90P4BIFCpQcIVIZHXdST2eKEpIA1l3UW3yzo
+         dpJQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=7Ys+PD66NqdKBQlJEKE/KdW1OfBO9g2gJM89aNgxtYs=;
-        b=endgGPqIqhKv2uU2IHJ0Zm8OL3hzKgDN4nG2OYbBTTyy/tM99sNc4q7BKcryjHk7DZ
-         1TIVGsDAo4ono98kCYq24zht0ioi25NRFbp6YwUSzml0zreYcxQS7Sw03dK7sbVXhABz
-         OjLC3dDa18EzV79b9U2qXmqbci0Wamt4q6bC94Jql8+UO6ITMBYQ18z4aMrfKoyMEA4E
-         fReNmljcQFDbUScq8HonGlmqzRlkwHlvHAXWtJxmIMQa8CIe8pWjri9rZLJ6sm5vc0TX
-         aa+C1OzmaOTREmJdUZn85AVVvOvxVGKpQMzmSL0+sTyJEYWHFnnayl8H/u3mIJYQElSG
-         82TA==
+        bh=hulzSRTtOv3ETP7tY5V3fQYPmAn/sJswJpFi9qH5rxQ=;
+        b=ikvb8wa2VUQVu/2vf1WwiJtzSLFngQtmz0jnhgaVARkxmYg2Yl1tEnwbFqFsALPr+m
+         /u0PjZ7Lymjyb1Bs7CU1AVSf8UAD0VY1SyFdmx/em1tAF19O8CKuGkMQhNaw8LBP53zU
+         CQ81VAhHLHCHivAWklttZK8JZ/PjPE1sToe/DfzGKZordGww76w/LRvqfziAy18IkyF8
+         8E5KQWypG2SE5+d0iY9OeUmkLr7JN3JI69bE56ozzdYi13OFA3fMXySZiMO7ec1qjn4k
+         +N4TwXauwDBFbu/IeoJh7Eo7LrF2+0BZzbdIwx4xwiR81olLQVZQhGll4i4esjnTCueg
+         ps4g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="LM/gjcc2";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZSAdbbCe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 127si2328533ybc.335.2020.08.27.07.51.57
+        by mx.google.com with ESMTPS id 198si2426712ybf.12.2020.08.27.07.54.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Aug 2020 07:51:58 -0700 (PDT)
+        Thu, 27 Aug 2020 07:54:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="LM/gjcc2";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZSAdbbCe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50244 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55228 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kBJFs-0000BD-Pj
-	for alex.bennee@linaro.org; Thu, 27 Aug 2020 10:51:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41630)
+	id 1kBJIR-0002I2-Co
+	for alex.bennee@linaro.org; Thu, 27 Aug 2020 10:54:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42632)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJFb-0008F1-GK
- for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:51:39 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:28792
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJIJ-0002Fs-2n
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:54:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29540)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJFZ-0007sR-4B
- for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:51:39 -0400
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJIG-0008Ej-Sk
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:54:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598539896;
+ s=mimecast20190719; t=1598540063;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=7Ys+PD66NqdKBQlJEKE/KdW1OfBO9g2gJM89aNgxtYs=;
- b=LM/gjcc2uyl2H83kqz4wxkuZgAApzIGIhVoH5AEdLqeNUJ3yXtYNAEmktdWJSWGn1wRhiW
- uWz0VhHACB5715K0F9W1hxwB8BkCoz17611AXMPOIrtkeBe12VxiDYpa2v5Q9DOvGZlfr/
- +geQlHY4nu0StrC9Ie9CQ/RKpbE4CbQ=
+ bh=hulzSRTtOv3ETP7tY5V3fQYPmAn/sJswJpFi9qH5rxQ=;
+ b=ZSAdbbCe4fcp2VAlAoOw3HEPOSyN0xaTzBIxFlNS7qxwoP7zwDbEYzPybHB4XrDyDBNATD
+ qKROXBlZKL5DH8BUEwYvChLw0fNnJ+V06Qj+P61YRIyB5e4u7oBVrok0aeZvgNebbYE/eE
+ jVOEi5QSEKU6Yz8I9wH5hwifriuNlM0=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-379-iaOfQldjPQGRhYLJok1fAQ-1; Thu, 27 Aug 2020 10:51:33 -0400
-X-MC-Unique: iaOfQldjPQGRhYLJok1fAQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-77-XbcKLPfBOAexr7oEbpJkxQ-1; Thu, 27 Aug 2020 10:54:19 -0400
+X-MC-Unique: XbcKLPfBOAexr7oEbpJkxQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1128D100CEEA;
- Thu, 27 Aug 2020 14:51:31 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 46D8C18BA282;
+ Thu, 27 Aug 2020 14:54:18 +0000 (UTC)
 Received: from localhost (ovpn-113-131.rdu2.redhat.com [10.10.113.131])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 586BC6147D;
- Thu, 27 Aug 2020 14:51:02 +0000 (UTC)
-Date: Thu, 27 Aug 2020 16:51:02 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F41785D9F1;
+ Thu, 27 Aug 2020 14:54:12 +0000 (UTC)
+Date: Thu, 27 Aug 2020 16:54:11 +0200
 From: Sergio Lopez <slp@redhat.com>
 To: Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH v6 14/20] x86: move acpi_dev from pc/microvm
-Message-ID: <20200827145102.nxzgmfumncqkbkuy@mhamilton>
+Subject: Re: [PATCH v6 11/20] microvm/acpi: use seabios with acpi=on
+Message-ID: <20200827145411.uptnlveyo4v7lekj@mhamilton>
 References: <20200826105254.28496-1-kraxel@redhat.com>
- <20200826105254.28496-15-kraxel@redhat.com>
+ <20200826105254.28496-12-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200826105254.28496-15-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <20200826105254.28496-12-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=slp@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="n34ibbgtml4aydsc"
+ protocol="application/pgp-signature"; boundary="53pjgifjc2w2eu3r"
 Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=slp@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:56:52
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=slp@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:10:07
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,364 +122,72 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: b98Jb2L9E3p6
+X-TUID: jCfY9ntGCt18
 
---n34ibbgtml4aydsc
+--53pjgifjc2w2eu3r
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Aug 26, 2020 at 12:52:48PM +0200, Gerd Hoffmann wrote:
-> Both pc and microvm machine types have a acpi_dev field.
-> Move it to the common base type.
+On Wed, Aug 26, 2020 at 12:52:45PM +0200, Gerd Hoffmann wrote:
+> With acpi=3Doff continue to use qboot.
 >=20
 > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+> Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  include/hw/i386/microvm.h |  1 -
->  include/hw/i386/pc.h      |  1 -
->  include/hw/i386/x86.h     |  1 +
->  hw/i386/acpi-build.c      |  2 +-
->  hw/i386/acpi-microvm.c    |  5 +++--
->  hw/i386/microvm.c         | 10 ++++++----
->  hw/i386/pc.c              | 34 +++++++++++++++++++---------------
->  hw/i386/pc_piix.c         |  2 +-
->  hw/i386/pc_q35.c          |  2 +-
->  9 files changed, 32 insertions(+), 26 deletions(-)
+>  hw/i386/microvm.c | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
 
 Reviewed-by: Sergio Lopez <slp@redhat.com>
 
 
-> diff --git a/include/hw/i386/microvm.h b/include/hw/i386/microvm.h
-> index b6e0d4395af7..b8ec99aeb051 100644
-> --- a/include/hw/i386/microvm.h
-> +++ b/include/hw/i386/microvm.h
-> @@ -66,7 +66,6 @@ typedef struct {
->      bool kernel_cmdline_fixed;
->      Notifier machine_done;
->      Notifier powerdown_req;
-> -    AcpiDeviceIf *acpi_dev;
->  } MicrovmMachineState;
-> =20
->  #define TYPE_MICROVM_MACHINE   MACHINE_TYPE_NAME("microvm")
-> diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-> index fe52e165b27c..0f7da2329b0f 100644
-> --- a/include/hw/i386/pc.h
-> +++ b/include/hw/i386/pc.h
-> @@ -29,7 +29,6 @@ struct PCMachineState {
->      Notifier machine_done;
-> =20
->      /* Pointers to devices and objects: */
-> -    HotplugHandler *acpi_dev;
->      PCIBus *bus;
->      I2CBus *smbus;
->      PFlashCFI01 *flash[2];
-> diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
-> index a350ea3609f5..de74c831c3ab 100644
-> --- a/include/hw/i386/x86.h
-> +++ b/include/hw/i386/x86.h
-> @@ -50,6 +50,7 @@ typedef struct {
->      FWCfgState *fw_cfg;
->      qemu_irq *gsi;
->      GMappedFile *initrd_mapped_file;
-> +    HotplugHandler *acpi_dev;
-> =20
->      /* RAM information (sizes, addresses, configuration): */
->      ram_addr_t below_4g_mem_size, above_4g_mem_size;
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index b7bcbbbb2a35..c356cc71fe08 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -2431,7 +2431,7 @@ void acpi_build(AcpiBuildTables *tables, MachineSta=
-te *machine)
-> =20
->      acpi_add_table(table_offsets, tables_blob);
->      acpi_build_madt(tables_blob, tables->linker, x86ms,
-> -                    ACPI_DEVICE_IF(pcms->acpi_dev), true);
-> +                    ACPI_DEVICE_IF(x86ms->acpi_dev), true);
-> =20
->      vmgenid_dev =3D find_vmgenid_dev();
->      if (vmgenid_dev) {
-> diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
-> index b9ce3768b263..df39c5d3bd90 100644
-> --- a/hw/i386/acpi-microvm.c
-> +++ b/hw/i386/acpi-microvm.c
-> @@ -108,7 +108,7 @@ build_dsdt_microvm(GArray *table_data, BIOSLinker *li=
-nker,
->      sb_scope =3D aml_scope("_SB");
->      fw_cfg_add_acpi_dsdt(sb_scope, x86ms->fw_cfg);
->      isa_build_aml(ISA_BUS(isabus), sb_scope);
-> -    build_ged_aml(sb_scope, GED_DEVICE, HOTPLUG_HANDLER(mms->acpi_dev),
-> +    build_ged_aml(sb_scope, GED_DEVICE, x86ms->acpi_dev,
->                    GED_MMIO_IRQ, AML_SYSTEM_MEMORY, GED_MMIO_BASE);
->      acpi_dsdt_add_power_button(sb_scope);
->      acpi_dsdt_add_virtio(sb_scope, mms);
-> @@ -136,6 +136,7 @@ static void acpi_build_microvm(AcpiBuildTables *table=
-s,
->                                 MicrovmMachineState *mms)
->  {
->      MachineState *machine =3D MACHINE(mms);
-> +    X86MachineState *x86ms =3D X86_MACHINE(mms);
->      GArray *table_offsets;
->      GArray *tables_blob =3D tables->table_data;
->      unsigned dsdt, xsdt;
-> @@ -183,7 +184,7 @@ static void acpi_build_microvm(AcpiBuildTables *table=
-s,
-> =20
->      acpi_add_table(table_offsets, tables_blob);
->      acpi_build_madt(tables_blob, tables->linker, X86_MACHINE(machine),
-> -                    mms->acpi_dev, false);
-> +                    ACPI_DEVICE_IF(x86ms->acpi_dev), false);
-> =20
->      xsdt =3D tables_blob->len;
->      build_xsdt(tables_blob, tables->linker, table_offsets, NULL, NULL);
 > diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-> index 04209eb38fbe..9df15354ce0f 100644
+> index ca0c9983f137..54510a03f754 100644
 > --- a/hw/i386/microvm.c
 > +++ b/hw/i386/microvm.c
-> @@ -143,7 +143,7 @@ static void microvm_devices_init(MicrovmMachineState =
+> @@ -52,6 +52,7 @@
+>  #include "hw/xen/start_info.h"
+> =20
+>  #define MICROVM_QBOOT_FILENAME "qboot.rom"
+> +#define MICROVM_BIOS_FILENAME  "bios-microvm.bin"
+> =20
+>  static void microvm_set_rtc(MicrovmMachineState *mms, ISADevice *s)
+>  {
+> @@ -174,7 +175,9 @@ static void microvm_devices_init(MicrovmMachineState =
 *mms)
->          sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
->                             x86ms->gsi[GED_MMIO_IRQ]);
->          sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-> -        mms->acpi_dev =3D ACPI_DEVICE_IF(dev);
-> +        x86ms->acpi_dev =3D HOTPLUG_HANDLER(dev);
 >      }
 > =20
->      if (mms->pic =3D=3D ON_OFF_AUTO_ON || mms->pic =3D=3D ON_OFF_AUTO_AU=
-TO) {
-> @@ -469,11 +469,13 @@ static void microvm_powerdown_req(Notifier *notifie=
-r, void *data)
->  {
->      MicrovmMachineState *mms =3D container_of(notifier, MicrovmMachineSt=
-ate,
->                                              powerdown_req);
-> +    X86MachineState *x86ms =3D X86_MACHINE(mms);
-> =20
-> -    if (mms->acpi_dev) {
-> -        Object *obj =3D OBJECT(mms->acpi_dev);
-> +    if (x86ms->acpi_dev) {
-> +        Object *obj =3D OBJECT(x86ms->acpi_dev);
->          AcpiDeviceIfClass *adevc =3D ACPI_DEVICE_IF_GET_CLASS(obj);
-> -        adevc->send_event(mms->acpi_dev, ACPI_POWER_DOWN_STATUS);
-> +        adevc->send_event(ACPI_DEVICE_IF(x86ms->acpi_dev),
-> +                          ACPI_POWER_DOWN_STATUS);
+>      if (bios_name =3D=3D NULL) {
+> -        bios_name =3D MICROVM_QBOOT_FILENAME;
+> +        bios_name =3D x86_machine_is_acpi_enabled(x86ms)
+> +            ? MICROVM_BIOS_FILENAME
+> +            : MICROVM_QBOOT_FILENAME;
 >      }
+>      x86_bios_rom_init(get_system_memory(), true);
 >  }
-> =20
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index 5d8d5ef8b373..0bd6dbbd7bf6 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1274,6 +1274,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotp=
-lug_dev, DeviceState *dev,
->                                 Error **errp)
->  {
->      const PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> +    const X86MachineState *x86ms =3D X86_MACHINE(hotplug_dev);
->      const PCMachineClass *pcmc =3D PC_MACHINE_GET_CLASS(pcms);
->      const MachineState *ms =3D MACHINE(hotplug_dev);
->      const bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIM=
-M);
-> @@ -1285,7 +1286,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotp=
-lug_dev, DeviceState *dev,
->       * but pcms->acpi_dev is still created. Check !acpi_enabled in
->       * addition to cover this case.
->       */
-> -    if (!pcms->acpi_dev || !x86_machine_is_acpi_enabled(X86_MACHINE(pcms=
-))) {
-> +    if (!x86ms->acpi_dev || !x86_machine_is_acpi_enabled(x86ms)) {
->          error_setg(errp,
->                     "memory hotplug is not enabled: missing acpi device o=
-r acpi disabled");
->          return;
-> @@ -1296,7 +1297,7 @@ static void pc_memory_pre_plug(HotplugHandler *hotp=
-lug_dev, DeviceState *dev,
->          return;
->      }
-> =20
-> -    hotplug_handler_pre_plug(pcms->acpi_dev, dev, &local_err);
-> +    hotplug_handler_pre_plug(x86ms->acpi_dev, dev, &local_err);
->      if (local_err) {
->          error_propagate(errp, local_err);
->          return;
-> @@ -1311,6 +1312,7 @@ static void pc_memory_plug(HotplugHandler *hotplug_=
-dev,
->  {
->      Error *local_err =3D NULL;
->      PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> +    X86MachineState *x86ms =3D X86_MACHINE(hotplug_dev);
->      MachineState *ms =3D MACHINE(hotplug_dev);
->      bool is_nvdimm =3D object_dynamic_cast(OBJECT(dev), TYPE_NVDIMM);
-> =20
-> @@ -1323,7 +1325,7 @@ static void pc_memory_plug(HotplugHandler *hotplug_=
-dev,
->          nvdimm_plug(ms->nvdimms_state);
->      }
-> =20
-> -    hotplug_handler_plug(HOTPLUG_HANDLER(pcms->acpi_dev), dev, &error_ab=
-ort);
-> +    hotplug_handler_plug(x86ms->acpi_dev, dev, &error_abort);
->  out:
->      error_propagate(errp, local_err);
->  }
-> @@ -1331,14 +1333,14 @@ out:
->  static void pc_memory_unplug_request(HotplugHandler *hotplug_dev,
->                                       DeviceState *dev, Error **errp)
->  {
-> -    PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> +    X86MachineState *x86ms =3D X86_MACHINE(hotplug_dev);
-> =20
->      /*
->       * When -no-acpi is used with Q35 machine type, no ACPI is built,
->       * but pcms->acpi_dev is still created. Check !acpi_enabled in
->       * addition to cover this case.
->       */
-> -    if (!pcms->acpi_dev || !x86_machine_is_acpi_enabled(X86_MACHINE(pcms=
-))) {
-> +    if (!x86ms->acpi_dev || !x86_machine_is_acpi_enabled(x86ms)) {
->          error_setg(errp,
->                     "memory hotplug is not enabled: missing acpi device o=
-r acpi disabled");
->          return;
-> @@ -1349,7 +1351,7 @@ static void pc_memory_unplug_request(HotplugHandler=
- *hotplug_dev,
->          return;
->      }
-> =20
-> -    hotplug_handler_unplug_request(HOTPLUG_HANDLER(pcms->acpi_dev), dev,
-> +    hotplug_handler_unplug_request(x86ms->acpi_dev, dev,
->                                     errp);
->  }
-> =20
-> @@ -1357,9 +1359,10 @@ static void pc_memory_unplug(HotplugHandler *hotpl=
-ug_dev,
->                               DeviceState *dev, Error **errp)
->  {
->      PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> +    X86MachineState *x86ms =3D X86_MACHINE(hotplug_dev);
->      Error *local_err =3D NULL;
-> =20
-> -    hotplug_handler_unplug(HOTPLUG_HANDLER(pcms->acpi_dev), dev, &local_=
-err);
-> +    hotplug_handler_unplug(x86ms->acpi_dev, dev, &local_err);
->      if (local_err) {
->          goto out;
->      }
-> @@ -1403,10 +1406,10 @@ static void pc_cpu_plug(HotplugHandler *hotplug_d=
-ev,
->      Error *local_err =3D NULL;
->      X86CPU *cpu =3D X86_CPU(dev);
->      PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> -    X86MachineState *x86ms =3D X86_MACHINE(pcms);
-> +    X86MachineState *x86ms =3D X86_MACHINE(hotplug_dev);
-> =20
-> -    if (pcms->acpi_dev) {
-> -        hotplug_handler_plug(HOTPLUG_HANDLER(pcms->acpi_dev), dev, &loca=
-l_err);
-> +    if (x86ms->acpi_dev) {
-> +        hotplug_handler_plug(x86ms->acpi_dev, dev, &local_err);
->          if (local_err) {
->              goto out;
->          }
-> @@ -1432,8 +1435,9 @@ static void pc_cpu_unplug_request_cb(HotplugHandler=
- *hotplug_dev,
->      int idx =3D -1;
->      X86CPU *cpu =3D X86_CPU(dev);
->      PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> +    X86MachineState *x86ms =3D X86_MACHINE(hotplug_dev);
-> =20
-> -    if (!pcms->acpi_dev) {
-> +    if (!x86ms->acpi_dev) {
->          error_setg(errp, "CPU hot unplug not supported without ACPI");
->          return;
->      }
-> @@ -1445,7 +1449,7 @@ static void pc_cpu_unplug_request_cb(HotplugHandler=
- *hotplug_dev,
->          return;
->      }
-> =20
-> -    hotplug_handler_unplug_request(HOTPLUG_HANDLER(pcms->acpi_dev), dev,
-> +    hotplug_handler_unplug_request(x86ms->acpi_dev, dev,
->                                     errp);
->  }
-> =20
-> @@ -1456,9 +1460,9 @@ static void pc_cpu_unplug_cb(HotplugHandler *hotplu=
-g_dev,
->      Error *local_err =3D NULL;
->      X86CPU *cpu =3D X86_CPU(dev);
->      PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> -    X86MachineState *x86ms =3D X86_MACHINE(pcms);
-> +    X86MachineState *x86ms =3D X86_MACHINE(hotplug_dev);
-> =20
-> -    hotplug_handler_unplug(HOTPLUG_HANDLER(pcms->acpi_dev), dev, &local_=
-err);
-> +    hotplug_handler_unplug(x86ms->acpi_dev, dev, &local_err);
->      if (local_err) {
->          goto out;
->      }
-> @@ -1487,7 +1491,7 @@ static void pc_cpu_pre_plug(HotplugHandler *hotplug=
-_dev,
->      CPUX86State *env =3D &cpu->env;
->      MachineState *ms =3D MACHINE(hotplug_dev);
->      PCMachineState *pcms =3D PC_MACHINE(hotplug_dev);
-> -    X86MachineState *x86ms =3D X86_MACHINE(pcms);
-> +    X86MachineState *x86ms =3D X86_MACHINE(hotplug_dev);
->      unsigned int smp_cores =3D ms->smp.cores;
->      unsigned int smp_threads =3D ms->smp.threads;
->      X86CPUTopoInfo topo_info;
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index 32b1453e6a82..759b4a97facb 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -293,7 +293,7 @@ static void pc_init1(MachineState *machine,
-> =20
->          object_property_add_link(OBJECT(machine), PC_MACHINE_ACPI_DEVICE=
-_PROP,
->                                   TYPE_HOTPLUG_HANDLER,
-> -                                 (Object **)&pcms->acpi_dev,
-> +                                 (Object **)&x86ms->acpi_dev,
->                                   object_property_allow_set_link,
->                                   OBJ_PROP_LINK_STRONG);
->          object_property_set_link(OBJECT(machine), PC_MACHINE_ACPI_DEVICE=
-_PROP,
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 0cb9c18cd44d..622d0397172a 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -240,7 +240,7 @@ static void pc_q35_init(MachineState *machine)
-> =20
->      object_property_add_link(OBJECT(machine), PC_MACHINE_ACPI_DEVICE_PRO=
-P,
->                               TYPE_HOTPLUG_HANDLER,
-> -                             (Object **)&pcms->acpi_dev,
-> +                             (Object **)&x86ms->acpi_dev,
->                               object_property_allow_set_link,
->                               OBJ_PROP_LINK_STRONG);
->      object_property_set_link(OBJECT(machine), PC_MACHINE_ACPI_DEVICE_PRO=
-P,
 > --=20
 > 2.27.0
 >=20
 
---n34ibbgtml4aydsc
+--53pjgifjc2w2eu3r
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9HyFUACgkQ9GknjS8M
-AjVxUxAAg0RAfJBXOutCmj060ruba2qez8yHLdRFzA7AcFyBB6V5ZCy9tajfcmIa
-7AkFpEgZIAEqLcBBX5JZ92n+FIaMybtskNuH6BpzuGQDy4k/bK8nwl3z/pfObsYD
-8RS2Yx/vPM6Lw/lceKPMLuRex3Ym+xevwA2pkyHpoWBr8Dp8crMjNl4AITAJLVbq
-WV0YEFxCSUAe7SMeYYXehPZmahRlDnKOLh+qI//EBBll6ZMfqQsnqQmnDX+8xpws
-NEWcgEikAFeerHNQe7gG+kSGlq8l1OmZ8n59JZ/w/hvIDADzLVDSMTBeHuvfMx8o
-6GaLu6BoSUEPxCcuH23JPU5S90uNdnN3Qw6s5Xq37pfr1wR5zJpJQw/lRqgDh7AS
-FFMiSYoSQ2otD3lT+TQYp2Tjm3Vr6cH7QwqWhIebBHEJZifr9kQovCHjMmVb1PZZ
-zgI2RM3Pnapno9vmkGfmgcz6YAdjG259Lfrym+sSbVvpDS6XVxMK+lY7TUy5zpze
-QTxHKMmtLLJH+GCGM/sqDWh7nNbxAvaknJGOAQqU/G58PgKQF61D7HOsVW4bSjFO
-gN3NlHmimn8RNm6bBuY3F7yDB+jE1JKOEp6hY2QhtJYmkF/Qi1YOjpD1KKxIIyVa
-WQYSdRFRCGk1Pqv53xmDcxqMpWH/CCdSThR3Fjq5nQU1l9emB80=
-=mCl3
+iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9HyRIACgkQ9GknjS8M
+AjX1KxAAnOEoeB0aqyCUoyzjz3ZigyRQ5fzH9cRBhqYIKyt9yEOwP5+BHp2pjYVh
+X/CyJusfnnPD0pyRhAVu0QlEYl9EIEPf2aO2RAchaxDFpSGMSNcziP6ViG9k2ipr
+l8D2CVyFW0spbcJL3fDXPSkEEo9W+vFlsmB68WM1FoTF/MMnaRmFEr+aQnFI16SI
+tqAax8WwC/FIlotlvprL8iaViHH+ziWnDdzP0rSHsBHd5TbAvbUS6f5Y4yi0wEBy
+aZYEE6xm037/k65F1s+agKq4RHpJ80ARuZA0z5wTXpL9/y8P1SM06bDwleSIWzoF
+IUJw8reFujMW0mF4PiH8QlrV4Pp9sokG1AZFfO9Jhnp2o8xXphLRBAAcMqogZN+l
+BUQzTdsZPXW8vpdgB8x8n5YRKc/5aAPj1qNZy6gha1Azq66SNodQjk0PaQ58OkKY
+kUQ03SlUx7OoCOOr8Wy/0RZf+4TR1qEiyzHnYTSLqktnH3R4BysXV2cb9cLZpE7S
+x8knBEpcDCCC5u6Ig1H/6Uw2HANbrV0kbJZ93N+IY/mmAnkhJo4fe+KAaO1Zaeci
+Nt+7jHiFqPQoZOmA1G6ADf2rweWb8hY1BlMs0618X2Yp586Ji8GpianEjfuhdaAG
+wXt/oXRAAJEhyWRyA30PpgOz/KACxw3RgugtZOuZ/qoYoNw5uP4=
+=PI1W
 -----END PGP SIGNATURE-----
 
---n34ibbgtml4aydsc--
+--53pjgifjc2w2eu3r--
 

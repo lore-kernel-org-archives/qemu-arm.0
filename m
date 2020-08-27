@@ -1,98 +1,98 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp632591lfc;
-        Thu, 27 Aug 2020 07:54:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyPIeZQBYALZqXZMX8b1aiu5MdYL4hClXpm0cFgdvwosiAobP6BF07rXHVipRMP7vvhxod+
-X-Received: by 2002:a25:d08a:: with SMTP id h132mr28031497ybg.368.1598540076060;
-        Thu, 27 Aug 2020 07:54:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598540076; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp632984lfc;
+        Thu, 27 Aug 2020 07:55:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzZ3I5+xlJwQPPPz1jL2ZCSzO8c9kqe7PJwyqDk8wepMKlzSav5e7t31748YrgV9KW+3yJX
+X-Received: by 2002:a25:6c8a:: with SMTP id h132mr31106949ybc.68.1598540108788;
+        Thu, 27 Aug 2020 07:55:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598540108; cv=none;
         d=google.com; s=arc-20160816;
-        b=fNkwjl1cO3XhlNGHj+2pYfjQUqm9OYroqzRlOoItaEEIMgswKUod2XRS7wRLQHRbSB
-         vruOW3l/t/P5pD2NiTXPgJzddBOKUl/KqWmF7It4860+UZeS3Y7+NxLeVmD0sLlV76P0
-         OeIdfDGuwDrk3ojfHooQgyCCDV4lcIanxvy2R2HthlVXzBE/2hgm40H+dzuBh0Oy6qVo
-         q6owHL32d4+mgZg/w+foDOQtKnq0ravWCgirsj0E8pKqRCzkNbdjzuMLGa4jNwwEH/zm
-         hmPYG5cxYpYJNiw3MndmZURDFLQ1KuUh90P4BIFCpQcIVIZHXdST2eKEpIA1l3UW3yzo
-         dpJQ==
+        b=TdmgxTWB70+/1xa8wcpwN1XJbYhvJ+/IvlY/YiQFcGbUeugP9buSXtvjchCoqgGnyr
+         yBf+6j3XzlYfQl0gG1w97JWnEaq1wGJf8MnXxZGT7DAAs1BqYpm62zyOTN5RYKsCvXpw
+         5+3/Um72TRjCGq3RVqQhqn1F6vOkiXeczH9aemzfqScehrXqNn5eWDxzCMfn13TGuvc2
+         lD2rEa+c2sCzVjzZv62BqpSJQAY/P+6FcSAoIpL+BSp9OW7O/k9Li15uIh7rHqirCJn2
+         /03li1qm2y4jCtAEKYZ7IgzCAc5RK7FQHm4oL/GfoBeCeB1YlxfxjzbIPRVSSgbztDr8
+         S7Mw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=hulzSRTtOv3ETP7tY5V3fQYPmAn/sJswJpFi9qH5rxQ=;
-        b=ikvb8wa2VUQVu/2vf1WwiJtzSLFngQtmz0jnhgaVARkxmYg2Yl1tEnwbFqFsALPr+m
-         /u0PjZ7Lymjyb1Bs7CU1AVSf8UAD0VY1SyFdmx/em1tAF19O8CKuGkMQhNaw8LBP53zU
-         CQ81VAhHLHCHivAWklttZK8JZ/PjPE1sToe/DfzGKZordGww76w/LRvqfziAy18IkyF8
-         8E5KQWypG2SE5+d0iY9OeUmkLr7JN3JI69bE56ozzdYi13OFA3fMXySZiMO7ec1qjn4k
-         +N4TwXauwDBFbu/IeoJh7Eo7LrF2+0BZzbdIwx4xwiR81olLQVZQhGll4i4esjnTCueg
-         ps4g==
+        bh=D9/R73BWfZi/CtyR7Oh57gnhCqX3f5GCX1vEIwtpzCU=;
+        b=rOX9x8PlAo4FEVi3k+SROvNwNGYv76/eQVRnqhxL7p1IV5hAl0zgJAz22fl6KL6tnG
+         vN3x+sCG+TyN41nXT0caMAc2UFqwNPF873lsWikMhHoBwp5uqhAt2LAknbIHB/JnO6L8
+         gTaWsMf48PIUthjbFPLtc78yV+i7EviNOZplNqEiqNo0AsLQnUM4Abs5O1A2BLlItBjU
+         7/sx9mTdrFY/hwosYcEdLtAb5P18+po2sxBWaI8ASxSVIqLKhKlJY4Drhv+Z8WbimT7C
+         DVjzYGkR+0HvgVVI1EJgBqa1GtOVFPTlwP/A5YnlwosyUagAQ9Wy0qtI/p4Sre9t9fJs
+         LzUQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZSAdbbCe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L1h01xoJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 198si2426712ybf.12.2020.08.27.07.54.35
+        by mx.google.com with ESMTPS id e14si3005571ybq.296.2020.08.27.07.55.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 27 Aug 2020 07:54:36 -0700 (PDT)
+        Thu, 27 Aug 2020 07:55:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ZSAdbbCe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L1h01xoJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55228 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57730 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kBJIR-0002I2-Co
-	for alex.bennee@linaro.org; Thu, 27 Aug 2020 10:54:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42632)
+	id 1kBJIy-0003GT-6I
+	for alex.bennee@linaro.org; Thu, 27 Aug 2020 10:55:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42782)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJIJ-0002Fs-2n
- for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:54:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29540)
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJIo-0003Cr-VP
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:54:58 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:46885)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJIG-0008Ej-Sk
- for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:54:26 -0400
+ (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBJIn-0008HQ-3O
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2020 10:54:58 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598540063;
+ s=mimecast20190719; t=1598540096;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=hulzSRTtOv3ETP7tY5V3fQYPmAn/sJswJpFi9qH5rxQ=;
- b=ZSAdbbCe4fcp2VAlAoOw3HEPOSyN0xaTzBIxFlNS7qxwoP7zwDbEYzPybHB4XrDyDBNATD
- qKROXBlZKL5DH8BUEwYvChLw0fNnJ+V06Qj+P61YRIyB5e4u7oBVrok0aeZvgNebbYE/eE
- jVOEi5QSEKU6Yz8I9wH5hwifriuNlM0=
+ bh=D9/R73BWfZi/CtyR7Oh57gnhCqX3f5GCX1vEIwtpzCU=;
+ b=L1h01xoJOf8NzS74Z4UmxpuY2AWn/W9Mf4ysVVKzc/rrWI2VaoJAkDu3Ik4LsTJh8zmu7j
+ SjEL3etEr11Pj4oEE8qEcXIlo4Hx6AAGvzdPvecTK3jMoOhEkVNeClGvoPIQ0ArGR7PFQD
+ mIW3QFnaQYs8pcEP+VIZdmDsOmwkvLE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-77-XbcKLPfBOAexr7oEbpJkxQ-1; Thu, 27 Aug 2020 10:54:19 -0400
-X-MC-Unique: XbcKLPfBOAexr7oEbpJkxQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-8-dU9JR7UBPR6qlyZk_btHbQ-1; Thu, 27 Aug 2020 10:54:53 -0400
+X-MC-Unique: dU9JR7UBPR6qlyZk_btHbQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
+ [10.5.11.23])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 46D8C18BA282;
- Thu, 27 Aug 2020 14:54:18 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 369928010C7;
+ Thu, 27 Aug 2020 14:54:52 +0000 (UTC)
 Received: from localhost (ovpn-113-131.rdu2.redhat.com [10.10.113.131])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F41785D9F1;
- Thu, 27 Aug 2020 14:54:12 +0000 (UTC)
-Date: Thu, 27 Aug 2020 16:54:11 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E4B2519936;
+ Thu, 27 Aug 2020 14:54:45 +0000 (UTC)
+Date: Thu, 27 Aug 2020 16:54:45 +0200
 From: Sergio Lopez <slp@redhat.com>
 To: Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH v6 11/20] microvm/acpi: use seabios with acpi=on
-Message-ID: <20200827145411.uptnlveyo4v7lekj@mhamilton>
+Subject: Re: [PATCH v6 16/20] microvm: wire up hotplug
+Message-ID: <20200827145445.w7asyudbbpeoqugv@mhamilton>
 References: <20200826105254.28496-1-kraxel@redhat.com>
- <20200826105254.28496-12-kraxel@redhat.com>
+ <20200826105254.28496-17-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20200826105254.28496-12-kraxel@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <20200826105254.28496-17-kraxel@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=slp@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="53pjgifjc2w2eu3r"
+ protocol="application/pgp-signature"; boundary="mu2vaf7vpmh5oc4y"
 Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=slp@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=slp@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:10:07
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/27 02:54:02
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -100,7 +100,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,72 +122,131 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jCfY9ntGCt18
+X-TUID: 08Y0M9C0+uTT
 
---53pjgifjc2w2eu3r
+--mu2vaf7vpmh5oc4y
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, Aug 26, 2020 at 12:52:45PM +0200, Gerd Hoffmann wrote:
-> With acpi=3Doff continue to use qboot.
+On Wed, Aug 26, 2020 at 12:52:50PM +0200, Gerd Hoffmann wrote:
+> The cpu hotplug code handles the initialization of coldplugged cpus
+> too, so it is needed even in case cpu hotplug is not supported.
+>=20
+> Wire cpu hotplug up for microvm.
+> Without this we get a broken MADT table.
 >=20
 > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 > Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > ---
->  hw/i386/microvm.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+>  hw/i386/microvm.c | 42 ++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 42 insertions(+)
 
 Reviewed-by: Sergio Lopez <slp@redhat.com>
 
 
 > diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-> index ca0c9983f137..54510a03f754 100644
+> index 9df15354ce0f..8de8ca864963 100644
 > --- a/hw/i386/microvm.c
 > +++ b/hw/i386/microvm.c
-> @@ -52,6 +52,7 @@
->  #include "hw/xen/start_info.h"
-> =20
->  #define MICROVM_QBOOT_FILENAME "qboot.rom"
-> +#define MICROVM_BIOS_FILENAME  "bios-microvm.bin"
-> =20
->  static void microvm_set_rtc(MicrovmMachineState *mms, ISADevice *s)
->  {
-> @@ -174,7 +175,9 @@ static void microvm_devices_init(MicrovmMachineState =
-*mms)
->      }
-> =20
->      if (bios_name =3D=3D NULL) {
-> -        bios_name =3D MICROVM_QBOOT_FILENAME;
-> +        bios_name =3D x86_machine_is_acpi_enabled(x86ms)
-> +            ? MICROVM_BIOS_FILENAME
-> +            : MICROVM_QBOOT_FILENAME;
->      }
->      x86_bios_rom_init(get_system_memory(), true);
+> @@ -320,6 +320,39 @@ static void microvm_fix_kernel_cmdline(MachineState =
+*machine)
+>      g_free(cmdline);
 >  }
+> =20
+> +static void microvm_device_pre_plug_cb(HotplugHandler *hotplug_dev,
+> +                                       DeviceState *dev, Error **errp)
+> +{
+> +    x86_cpu_pre_plug(hotplug_dev, dev, errp);
+> +}
+> +
+> +static void microvm_device_plug_cb(HotplugHandler *hotplug_dev,
+> +                                   DeviceState *dev, Error **errp)
+> +{
+> +    x86_cpu_plug(hotplug_dev, dev, errp);
+> +}
+> +
+> +static void microvm_device_unplug_request_cb(HotplugHandler *hotplug_dev=
+,
+> +                                             DeviceState *dev, Error **e=
+rrp)
+> +{
+> +    error_setg(errp, "unplug not supported by microvm");
+> +}
+> +
+> +static void microvm_device_unplug_cb(HotplugHandler *hotplug_dev,
+> +                                     DeviceState *dev, Error **errp)
+> +{
+> +    error_setg(errp, "unplug not supported by microvm");
+> +}
+> +
+> +static HotplugHandler *microvm_get_hotplug_handler(MachineState *machine=
+,
+> +                                                   DeviceState *dev)
+> +{
+> +    if (object_dynamic_cast(OBJECT(dev), TYPE_CPU)) {
+> +        return HOTPLUG_HANDLER(machine);
+> +    }
+> +    return NULL;
+> +}
+> +
+>  static void microvm_machine_state_init(MachineState *machine)
+>  {
+>      MicrovmMachineState *mms =3D MICROVM_MACHINE(machine);
+> @@ -503,6 +536,7 @@ static void microvm_machine_initfn(Object *obj)
+>  static void microvm_class_init(ObjectClass *oc, void *data)
+>  {
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+> +    HotplugHandlerClass *hc =3D HOTPLUG_HANDLER_CLASS(oc);
+> =20
+>      mc->init =3D microvm_machine_state_init;
+> =20
+> @@ -524,6 +558,13 @@ static void microvm_class_init(ObjectClass *oc, void=
+ *data)
+>      /* Machine class handlers */
+>      mc->reset =3D microvm_machine_reset;
+> =20
+> +    /* hotplug (for cpu coldplug) */
+> +    mc->get_hotplug_handler =3D microvm_get_hotplug_handler;
+> +    hc->pre_plug =3D microvm_device_pre_plug_cb;
+> +    hc->plug =3D microvm_device_plug_cb;
+> +    hc->unplug_request =3D microvm_device_unplug_request_cb;
+> +    hc->unplug =3D microvm_device_unplug_cb;
+> +
+>      object_class_property_add(oc, MICROVM_MACHINE_PIC, "OnOffAuto",
+>                                microvm_machine_get_pic,
+>                                microvm_machine_set_pic,
+> @@ -573,6 +614,7 @@ static const TypeInfo microvm_machine_info =3D {
+>      .class_size    =3D sizeof(MicrovmMachineClass),
+>      .class_init    =3D microvm_class_init,
+>      .interfaces =3D (InterfaceInfo[]) {
+> +         { TYPE_HOTPLUG_HANDLER },
+>           { }
+>      },
+>  };
 > --=20
 > 2.27.0
 >=20
 
---53pjgifjc2w2eu3r
+--mu2vaf7vpmh5oc4y
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9HyRIACgkQ9GknjS8M
-AjX1KxAAnOEoeB0aqyCUoyzjz3ZigyRQ5fzH9cRBhqYIKyt9yEOwP5+BHp2pjYVh
-X/CyJusfnnPD0pyRhAVu0QlEYl9EIEPf2aO2RAchaxDFpSGMSNcziP6ViG9k2ipr
-l8D2CVyFW0spbcJL3fDXPSkEEo9W+vFlsmB68WM1FoTF/MMnaRmFEr+aQnFI16SI
-tqAax8WwC/FIlotlvprL8iaViHH+ziWnDdzP0rSHsBHd5TbAvbUS6f5Y4yi0wEBy
-aZYEE6xm037/k65F1s+agKq4RHpJ80ARuZA0z5wTXpL9/y8P1SM06bDwleSIWzoF
-IUJw8reFujMW0mF4PiH8QlrV4Pp9sokG1AZFfO9Jhnp2o8xXphLRBAAcMqogZN+l
-BUQzTdsZPXW8vpdgB8x8n5YRKc/5aAPj1qNZy6gha1Azq66SNodQjk0PaQ58OkKY
-kUQ03SlUx7OoCOOr8Wy/0RZf+4TR1qEiyzHnYTSLqktnH3R4BysXV2cb9cLZpE7S
-x8knBEpcDCCC5u6Ig1H/6Uw2HANbrV0kbJZ93N+IY/mmAnkhJo4fe+KAaO1Zaeci
-Nt+7jHiFqPQoZOmA1G6ADf2rweWb8hY1BlMs0618X2Yp586Ji8GpianEjfuhdaAG
-wXt/oXRAAJEhyWRyA30PpgOz/KACxw3RgugtZOuZ/qoYoNw5uP4=
-=PI1W
+iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9HyTQACgkQ9GknjS8M
+AjVVXBAApARyub6ewNJhebabpb9BF2MJjdiqmXg/b0VJE+34821IyA1qfqcxuh04
+H1BeD0+0z0IYOMgC8FImffQHqNdvMuJJh695gK+GcnPzUndWMZq9gI1jhuNUiP7n
+lKRHpUZja5U7DyQuQU0C7OnXlYSne4FdF7yLlGYSlrT7t8SwmJRyMiqZTRlMojRA
+QIjwjS2LRR14mDHfHl5DTQUg2Vb8+T/wziCocWyFb+qQAqvepbr2+Q6ycFrqXYsL
+3N16mnhejAn/0/eMClYqwuSx3MPWN0x4JVHyxLokY5P1KGIguCbfsTlbF2xYq8Fr
+ryixOJSSHhsyESfRYwN5OIbealOlcieOEMiq4sB4ntUWqvP4vnEtEcRvZmj+u5X4
+uoD64LqIl3+ahBp62Zv3fq8nhdu5ajAPb3JzoTlFiH9CRZH9qD7V+WEzJHNKOIBM
+js2I4xR/UBDYnUbAop4yMOay/sbhM+BB+BCFp8A2IIW76LDdGpeI7AqAis8zoNO8
+Yr9kn50wEyb6P1hc4PDg5x/1xZ2nUiTd6thXSsZkrGT7BE1JzjUYUIza4w3fW8HK
+fPsrAXgKyVaz6eL9VoQU4q/pMFBs+z3+cUgXzlgfclVHEv1NqpaBr8RzQa/LnZGs
+NeFaAW6OZPCuHV0khq2Jf9QUbcdIPRpMI3Z6VHuAUymOw5BOLXM=
+=FhXu
 -----END PGP SIGNATURE-----
 
---53pjgifjc2w2eu3r--
+--mu2vaf7vpmh5oc4y--
 

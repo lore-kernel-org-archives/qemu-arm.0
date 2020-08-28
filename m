@@ -1,107 +1,118 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp1804746lfc;
-        Fri, 28 Aug 2020 14:41:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzgsi5mCQb1yVBdu2BNQiIxTrzG66ylLRA7y/eO5AVatEcU4d7R6GlKI5VM1+4juW8NPiBh
-X-Received: by 2002:a25:6b4e:: with SMTP id o14mr5034017ybm.506.1598650889961;
-        Fri, 28 Aug 2020 14:41:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598650889; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp1842980lfc;
+        Fri, 28 Aug 2020 15:53:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRtGW03rZd5zFX5iNjwnNGQ5pYRF5XHw0bHnJyfGD4+h2ZK7tkryZrR+43mM3QHtw4xK9M
+X-Received: by 2002:a25:3b4a:: with SMTP id i71mr5311963yba.464.1598655215142;
+        Fri, 28 Aug 2020 15:53:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598655215; cv=none;
         d=google.com; s=arc-20160816;
-        b=iUJ+ZhvIV+7vVoSTvEyNJf71HCK+l5ZX39OmVo0K1NbNZtRfSSjkZh9omKu6YB3tfg
-         Y2rmZgfrlcjNYSX4wR8K8VjyYPSBAMZ+tPUPr46XmWZQuqssIChdDjtMzVdBN2w4ryOV
-         KKLZEGHFJldJ/nJNS/xgUA7Q/InGOtGI7V4PT88gcdIex92ljGkrm0JRDghP/5MKQhEE
-         gSXLXZKZxAvxfY6rDr73lyKwnGXefZTBUHoo1Ccj/460ygvQzylnLw7O7tq9nq6S9UTE
-         lD/EZszZZtciRtWofMULPA9kbWi5RL3mip2sBEse0hhBkCxqa14W0SrZVKwblQC1YBnD
-         RVJA==
+        b=M/1qd1OC5dnlJ3dNu3Hkz0p5dgdOr7ShFIPjHRJu6eONeBtRPFnP0XIgQY1t/o/Iu+
+         KjSTT6oCVntULwi319jqtN4iWBBS2U+V25BsTIpwureFLgoh4lH0PnZwL2b5IXMGpw2F
+         utd7IVd13P7Bw6t0FLYKAaTPH6sqc+Ycars78dOTeg50V3594ZtP6sUkSXadxswV14K4
+         K0EQ0XvufIGERcFopFkcVp53dQ5UMPAeeA9EPHwEGTsOQ7jmJV06jXQ0rDrIUNNYQgEy
+         S7jAjzuFZilheKCRCpCbeLW5Y6dz/2fBf6zawNxW59ZW2BXTcWMWi4I/5PNl3kIPNFD3
+         lcvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=WAAqBab0dsaOmEhirldciEMZEwkJuEViOintycNFPAM=;
-        b=BRVgrgxiWiTf4owVKihcMGnLDZ6F+Zf/aGBV61dHTh/jTWer74FIha2jsTOWL1jK0M
-         4cH5RgwCJGmtZ/JmbZEVKPUClVTDYtqiuUwTMNOApyXcNWZYse9WjWHZcj6dF6bKOOQl
-         AaBz/v6SQhlRoSsK8smuWwslQq1IDSatpnUCHJbW1L3VyiVJtESHEDkqctvMkUMyUZiY
-         JSV+si9u9QOofYTxG+qDKAvST0/+EqN4oPzf09cTZY+6cbF3CbsIGlavT3fYErOVj6KD
-         JWpJqy9SJtUnlrw17Om5ck0EJ9Ut63FBsm0Ffac2FrZs6tFuhcRtnCkgbhYCJahOLncu
-         LqnA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=qZMBGY1sYFrOWoXC23RgfrMfKmeOv0aCQr6EtuQHPUo=;
+        b=ZZ2M+hTPdxGOQpaB4bPgKY1P0uAl35fkK2Trw2Btu3kcp2Ls7Or1nhYaTqiqUvN1bx
+         5cy/Ub+rG+LMMoxJDPRW52sw7Y2NQSXluzw6Up7aPn5cMen59MS6vK4ClNtkp1JZ/evZ
+         /SBJfPkoaj+kYi7Jv17qrRzBe3lcg9I9HZOZoasSLz+SVTf0IudGKfuENnldo41kIFFR
+         DR0ChaTgQ9yb8eI3I7LrUmMnV8lQhezCP/jY9CmQH21e8niOeOpSuR202daHiQSLAcak
+         J5G9cuSoTxMMiajYt2/vJghjqgxNLluPKbHhqrHfLARzZKo9R0H6k/WAB+fqSfrlMoHV
+         H3gQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N9yLLRLg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G0POt68J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x20si530853ybd.409.2020.08.28.14.41.29
+        by mx.google.com with ESMTPS id 124si583581ybz.22.2020.08.28.15.53.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Aug 2020 14:41:29 -0700 (PDT)
+        Fri, 28 Aug 2020 15:53:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=N9yLLRLg;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G0POt68J;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54392 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kBm7l-0004CA-CQ
-	for alex.bennee@linaro.org; Fri, 28 Aug 2020 17:41:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38316)
+	id 1kBnFW-0006dd-H0
+	for alex.bennee@linaro.org; Fri, 28 Aug 2020 18:53:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48648)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kBm71-0003TX-Bk
- for qemu-arm@nongnu.org; Fri, 28 Aug 2020 17:40:43 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:44101)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kBnFO-0006cv-2B
+ for qemu-arm@nongnu.org; Fri, 28 Aug 2020 18:53:26 -0400
+Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:33587)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kBm6z-0003Ih-3O
- for qemu-arm@nongnu.org; Fri, 28 Aug 2020 17:40:42 -0400
-Received: by mail-ej1-x641.google.com with SMTP id bo3so960144ejb.11
- for <qemu-arm@nongnu.org>; Fri, 28 Aug 2020 14:40:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kBnFL-0002mm-Ql
+ for qemu-arm@nongnu.org; Fri, 28 Aug 2020 18:53:25 -0400
+Received: by mail-pg1-x544.google.com with SMTP id o13so1124220pgf.0
+ for <qemu-arm@nongnu.org>; Fri, 28 Aug 2020 15:53:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WAAqBab0dsaOmEhirldciEMZEwkJuEViOintycNFPAM=;
- b=N9yLLRLggf0d37kPNyOcqRtC6aabQpbRQJAKop/MHxZWLyuIwsQe1Kkr5gNuuUz+Ay
- Rz4hpMQyTVOl+Fs3ezqSIaT9NNlaE+1f3Ke72kck3s8G7whNlaJTKxBzJnytQ3AGZhSg
- ojUc0MixGAQoVBz/b9TLQGMfci8SZGvB4pq7XMWca2cIBKp7ZG5XncBL3WRMxGh8XSpY
- EqiaIlWvqwhv/D5apwAbMPtzdP8Qs+mXaKEDn+XUxen/sw5ZLnMlgq4hVRuGnAPRjUJ5
- eAgMGSmBjhx1t3TUH9Iv7hnTkRjGzvCeWLSX7FJ1rzr8Gqt5Tor+ONO3xbnq2cDG+wRH
- vgOg==
+ h=subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=qZMBGY1sYFrOWoXC23RgfrMfKmeOv0aCQr6EtuQHPUo=;
+ b=G0POt68Ji8gQlonMjJWKCKTD5LmlzCTuh34V1n71xEvxgT1C9Z3Ilgwn1wqL/uI7xO
+ 4OPHbiGUEggPbJ1AE+7j8NU67cFgJMnGHMICAbsWPAszp81gfrk2GmZ4QkUDRAiheUJU
+ do0D+MERfSr3IYWZa2dSa1yztzdq9N2wL2vC9iir6XC5UagTSA/w+z7Dc6vrYNHVr2Ts
+ EUdg+qGsQKyNPlAiWcpo6WZvYN9IW3yFVNzUf00sbQ6GgSHTPladFzFuv62EnT7o7Oy0
+ iFqI6mE+5yH3oJ+tD3ZD4uCfK2D1wczb2pRzAHDdGSL6wElD8uSVbR6RRKeUkCZIygRE
+ TopQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=WAAqBab0dsaOmEhirldciEMZEwkJuEViOintycNFPAM=;
- b=sPleyRqIXT4+3ZxcO2XaIycim7D+TrWBOSltn/nO/OnoTv1Ufyr9fJV64XB/cEvksp
- jIxKbq7I6xMXCuUvtEykQ2YpN4PRSW/wnMqy0vJEPSXbtj7mhm4iI3NIxuVL2Zn44XTL
- eyhL+ED7nZ3OsFFLuYe4WaZeBvRZZyUqAxvWSvwyXCRJ6GARcY4tmajuz9qPZ4LmiIGq
- FaEtfGE5PZj1py9wg/l10HfLR55Evcr6YBIgzcl3l92bQM+gaeT9xIdbLEyRdtP/QTvC
- hfU8/nlUeSdEEj1uJJtWnNgSW1+jalCuMvX5vOiRRSTjywenivl2+edGf6RCdL/6q6KL
- UM4Q==
-X-Gm-Message-State: AOAM5315dd+BLFOuECNPMQxoOt6Nx7RlGFLzejVSeMw/uU7bcKIyyBNq
- 7J7kJkzHvLGEQ51RJX+Sa2wyMzy3k4//OQU2qZLl5w==
-X-Received: by 2002:a17:906:f28b:: with SMTP id
- gu11mr717177ejb.407.1598650839367; 
- Fri, 28 Aug 2020 14:40:39 -0700 (PDT)
-MIME-Version: 1.0
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=qZMBGY1sYFrOWoXC23RgfrMfKmeOv0aCQr6EtuQHPUo=;
+ b=SSlC1CL+n6/Yr7prHSUzMogaveUim4RicmC/Ycc+x0UKYQwhZcT6nuZNmHSlrvNb4/
+ bDJb1dFfV26fsrJDuzsG1XXO0+RYc5nRS633Y30xBAZFbZRayYRXphICEqi8qU9pnYSo
+ nzlBj4jq8VZbWNL7kTb0Qp4BxMG1Jq8sst0xd3mJozsjkpSU9B/hx0DQWVPHPmqtwqxY
+ rhPKWgYNA2Mp9MHF3rgiHwnETJ4C8FK5mgwTA5MNRXEkXCcOwKRqi2uz5vEF3gIJkpdW
+ V6oHmqvZVE/ZCuLnCCUttlHv8iXpD5OPRWgyCGKOn/+8G5pxgNKRZjaHn+HTIzYnFaJt
+ U02w==
+X-Gm-Message-State: AOAM5316jhEDbhKIC8n+QGu0Hxx93Vb4EXeDULYOzUngfKx5SWQqiRA8
+ c5kog3ba0WZwdKCBa42TXbER2g==
+X-Received: by 2002:a65:6897:: with SMTP id e23mr721892pgt.103.1598655201523; 
+ Fri, 28 Aug 2020 15:53:21 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id y7sm338105pjm.3.2020.08.28.15.53.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 28 Aug 2020 15:53:20 -0700 (PDT)
+Subject: Re: [PATCH v2 24/45] target/arm: Implement fp16 for Neon VRECPE,
+ VRSQRTE using gvec
+To: Peter Maydell <peter.maydell@linaro.org>
 References: <20200828183354.27913-1-peter.maydell@linaro.org>
  <20200828183354.27913-25-peter.maydell@linaro.org>
  <55675521-a61c-186c-599f-7373e9165184@linaro.org>
-In-Reply-To: <55675521-a61c-186c-599f-7373e9165184@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 28 Aug 2020 22:40:28 +0100
-Message-ID: <CAFEAcA87JLog+Ly5wvRi2bOvwDvFVL5mjpnkeB3h+pckbnNMmQ@mail.gmail.com>
-Subject: Re: [PATCH v2 24/45] target/arm: Implement fp16 for Neon VRECPE,
- VRSQRTE using gvec
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x641.google.com
+ <CAFEAcA87JLog+Ly5wvRi2bOvwDvFVL5mjpnkeB3h+pckbnNMmQ@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <2007993d-9f64-dca5-5fd9-510c87cd8e86@linaro.org>
+Date: Fri, 28 Aug 2020 15:53:18 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA87JLog+Ly5wvRi2bOvwDvFVL5mjpnkeB3h+pckbnNMmQ@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x544.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.809,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,79 +128,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ESHwhEqoTXG9
+X-TUID: /N1zaEJwLAH9
 
-On Fri, 28 Aug 2020 at 21:10, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 8/28/20 11:33 AM, Peter Maydell wrote:
-> > We already have gvec helpers for floating point VRECPE and
-> > VRQSRTE, so convert the Neon decoder to use them and
-> > add the fp16 support.
-> >
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >  target/arm/translate-neon.c.inc | 29 +++++++++++++++++++++++++++--
-> >  1 file changed, 27 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/target/arm/translate-neon.c.inc b/target/arm/translate-neon.c.inc
-> > index 9d0959517fa..872f093a1fc 100644
-> > --- a/target/arm/translate-neon.c.inc
-> > +++ b/target/arm/translate-neon.c.inc
-> > @@ -3857,13 +3857,38 @@ static bool do_2misc_fp(DisasContext *s, arg_2misc *a,
-> >          return do_2misc_fp(s, a, FUNC);                         \
-> >      }
-> >
-> > -DO_2MISC_FP(VRECPE_F, gen_helper_recpe_f32)
-> > -DO_2MISC_FP(VRSQRTE_F, gen_helper_rsqrte_f32)
-> >  DO_2MISC_FP(VCVT_FS, gen_helper_vfp_sitos)
-> >  DO_2MISC_FP(VCVT_FU, gen_helper_vfp_uitos)
-> >  DO_2MISC_FP(VCVT_SF, gen_helper_vfp_tosizs)
-> >  DO_2MISC_FP(VCVT_UF, gen_helper_vfp_touizs)
-> >
-> > +#define DO_2MISC_FP_VEC(INSN, HFUNC, SFUNC)                             \
-> > +    static void gen_##INSN(unsigned vece, uint32_t rd_ofs,              \
-> > +                           uint32_t rm_ofs,                             \
-> > +                           uint32_t oprsz, uint32_t maxsz)              \
-> > +    {                                                                   \
-> > +        static gen_helper_gvec_2_ptr * const fns[4] = {                 \
-> > +            NULL, HFUNC, SFUNC, NULL,                                   \
-> > +        };                                                              \
-> > +        TCGv_ptr fpst;                                                  \
-> > +        fpst = fpstatus_ptr(vece == 1 ? FPST_STD_F16 : FPST_STD);       \
->
-> Perhaps clearer with MO_16 instead of 1.
+On 8/28/20 2:40 PM, Peter Maydell wrote:
+> The other approach would be to standardize on "the decodetree pattern
+> always converts the size to the data-type size, regardless of how
+> it's encoded in the insn fields", and then you could check against
+> MO_16 here. Would that be better ?
 
-OK (matches what we've mostly used elsewhere when selecting the
-argument to fpstatus_ptr()).
+That might be clearer, yes.  Otherwise it's hard to tell what "size" means
+without looking at the manual for each instance.
 
-> > +        tcg_gen_gvec_2_ptr(rd_ofs, rm_ofs, fpst, oprsz, maxsz, 0,       \
-> > +                           fns[vece]);                                  \
-> > +        tcg_temp_free_ptr(fpst);                                        \
-> > +    }                                                                   \
-> > +    static bool trans_##INSN(DisasContext *s, arg_2misc *a)             \
-> > +    {                                                                   \
-> > +        if (a->size == 0 ||                                             \
-> > +            (a->size == 1 && !dc_isar_feature(aa32_fp16_arith, s)))     \
-> > +        {                                                               \
->
-> Likewise
 
-Here I'm not so sure -- the thing you'd be cross-checking the size
-against is the Arm ARM, which uses '01' and '10' (or '1' and '0', depending
-on the insn), since it's the raw size field from the insn we're
-looking at, not the data-type size. They happen to be the same values
-for this insn, but aren't for all insns. (VADD (fp) and the other
-@3same_fp patterns are examples of the other encoding.)
-
-The other approach would be to standardize on "the decodetree pattern
-always converts the size to the data-type size, regardless of how
-it's encoded in the insn fields", and then you could check against
-MO_16 here. Would that be better ?
-
-> , and the { is on the wrong line.
-
-Will fix.
-
-thanks
--- PMM
+r~

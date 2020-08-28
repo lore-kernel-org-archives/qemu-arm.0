@@ -1,102 +1,102 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp1693802lfc;
-        Fri, 28 Aug 2020 11:43:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVrLDSaMlpQQ7FPT2rWxJvCHtOT+NiDycq9mn7W2numXYBr+NNvKsJ6TKvIKnA+8vwnya3
-X-Received: by 2002:a25:db11:: with SMTP id g17mr4537564ybf.37.1598640237604;
-        Fri, 28 Aug 2020 11:43:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598640237; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp1693868lfc;
+        Fri, 28 Aug 2020 11:44:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx71bq+n0eVQenbrrZh98cOqjfMBVdyu90MG83Mo+0SGz1B5ipsvXJ83SwrMKWx0jOmC426
+X-Received: by 2002:a25:df02:: with SMTP id w2mr4067658ybg.189.1598640245943;
+        Fri, 28 Aug 2020 11:44:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598640245; cv=none;
         d=google.com; s=arc-20160816;
-        b=yFsHzxk4TqXC3wVJU54BA710CaUsCtsmuhokNyBdeqsv/00KZ/gmORXC5dR3QKGdiq
-         sDRASh4YaclI2NFzbnaWCkwltlwc+H/1BKQvQwxQ0BUq7DTyFkRmXbouWmLJpLwsCrmy
-         5eJ/gGT2HldCqDCRgK5G+vrxauoouhZj2E7VWaC1wkoEQoYxKWjNofmRhVFuK4p+Q2/F
-         et6VU/BKyk+wpFxx0ebkixRjYQEDBZcxubse0+OZbWXDWhEUFYH0/wHIHdQB7xDkfSsf
-         NLUL/U1DC9HtSU1Q2i3eT4MSTFzhZwkgsaBXT75weJ8fD9aVuL5uEyaALcbmUVPxK3sF
-         W52A==
+        b=cSR2M79VAk7LSXmlqU5iZgckLTj+bgq6iYyhVhUh6jC7gGGrZBR5Ptyxeg1hKLchwH
+         NV1rfHL0Vw9i0LJRBwx+J4I56gVgSIRvbeuZbcGWqI0ovEYjx03VFQQh0d5J8yDbHTJP
+         KzfsdyScxGV4W81X5AsmF4VpdOMz2YehjdbXxtQlO0QZ0AhHv/RjrYarntog7cTN0LRp
+         7OLMi2XSgffP6My9F01m/SV4IZW5jfo7UHtNrxwkdgCkJIOUbSmOlVNg3Z+BbIDo5FFH
+         UPROBUTzJFah2g5tFNS8vBQIEWJEKoKiLfzoyBqdkZ+NZB9dUnrj5AofgiQMVUq/0V3+
+         IutQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xRS9Xs/A7cPVwavP2/d7CO6TOTh4dxr4Fh4pdaLz/eQ=;
-        b=bYi13jepvzw6ODN6FGX9c5QxYSfAvHFuf12rv/Z82f1oEIaDaaqd0ekhlNyZNnt2m+
-         kwEqAHVHeQTxEH+Tjaccuvsw3vkG9Q/3c/lzoQKLmQhXLpr85Idu4v6AxV+mMy0FqHmp
-         h/PDoq+Zml2BDOC9QTrn+nbTXCFt1bnOsdGr0o/CLrEayuBLIWkRko40waIkK2zAxLoh
-         UC9wAW4pqTLV2Qb3FV4yIMllGmJXmn25S5AT9XwCgRHx/dYAxor84cOsbjbGoYLhM6dk
-         naotNvnEHOjGNigqD+0duy5DHaABsYfZz8kUnifvcmm2XUvWLELHsMquPW+7iRL363Q7
-         lRgg==
+        bh=/Ki0FEJAVncOeHF2Ucul7Zf8qvOQrPlrcF6S9f2G/rs=;
+        b=dXYxAH6BaP/9TTmgXAMQLRfZVr3n3xvZCuGZ2mqYnN30LfV3BwYpKpnXeyzBR1++qC
+         4ZcfNUYVpD27LRGsF6p1YLwDway49jpmMNS4/oJ3Uig7x/ZLgOeo8K7ge700i4tQcKPU
+         4JzUqLIDGOeOciiERrqarodRpM0OhuynHQrfWJEyx8CPGCWJ/R7dnZ5CWbI+I4WLFjzg
+         7MaamHvOb2zn5+140hL1fLksOQF9LPWr+rHmVjM9Jfczu0jg4H1e3N/pquoZQMAkFYk5
+         sKD/jW4Rnp579gsV4SgaGZvUXv8X3cxAyYWJBM5iA5dHDu6PXGlKkBRPLTX7npg8jpTu
+         RjXg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A8HfjYAZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=m09jRW4T;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l131si88357ybf.213.2020.08.28.11.43.57
+        by mx.google.com with ESMTPS id d79si106159ybc.11.2020.08.28.11.44.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Aug 2020 11:43:57 -0700 (PDT)
+        Fri, 28 Aug 2020 11:44:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=A8HfjYAZ;
+       dkim=pass header.i=@linaro.org header.s=google header.b=m09jRW4T;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39126 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40050 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kBjLw-0008UQ-Uw
-	for alex.bennee@linaro.org; Fri, 28 Aug 2020 14:43:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59040)
+	id 1kBjM5-0000QG-7c
+	for alex.bennee@linaro.org; Fri, 28 Aug 2020 14:44:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kBjCn-0002ha-D7
- for qemu-devel@nongnu.org; Fri, 28 Aug 2020 14:34:29 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:38679)
+ id 1kBjCl-0002cy-Iz
+ for qemu-devel@nongnu.org; Fri, 28 Aug 2020 14:34:27 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:34600)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kBjCi-00060w-QP
- for qemu-devel@nongnu.org; Fri, 28 Aug 2020 14:34:28 -0400
-Received: by mail-wm1-x342.google.com with SMTP id t14so114711wmi.3
- for <qemu-devel@nongnu.org>; Fri, 28 Aug 2020 11:34:24 -0700 (PDT)
+ id 1kBjCf-0005zf-9N
+ for qemu-devel@nongnu.org; Fri, 28 Aug 2020 14:34:27 -0400
+Received: by mail-wr1-x444.google.com with SMTP id f7so80045wrw.1
+ for <qemu-devel@nongnu.org>; Fri, 28 Aug 2020 11:34:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=xRS9Xs/A7cPVwavP2/d7CO6TOTh4dxr4Fh4pdaLz/eQ=;
- b=A8HfjYAZwLPq0tRJ5qS8TzXe1/JhbJHag5h1dm2XNuM7VjCHSnFOIgjy1ehFf3+pvg
- RQhd8DekjEFX2I9k/97I+d6nkusgG+mSY+p68Eo/H5OwUn8qHVZQSom6XurqQwLhAQkg
- /lKBMDOu+GNpsRWWTjSNhqQrbVhKa3f5P9TaIaTBpQZaOtA0ibLroXfU7uuJLPHV3NWY
- m4CGt7v0CXrwtFLSkTzg7Yb8KR4mkP4c70yK+3o3D5fn7TAlkngLmVQ6b0G1D7XHyUgx
- G7aLhRPr0cR4jOTwPaz1uTCrk9ma3FT8Y5ZBnfA6QQIkIGu50RobUT8CDMA3A263XgLr
- TmtA==
+ bh=/Ki0FEJAVncOeHF2Ucul7Zf8qvOQrPlrcF6S9f2G/rs=;
+ b=m09jRW4Tv6kgufoV4Nw2hxTquxtjIxwXe66OwEXY91E7HxUjADOf4iFtSOr29YtTpO
+ KqUUxRb4x7XYqo33sYJKqbIS2FrPm0FOJ8oLFn8FaijLZq7ObRt1/bxk6iHrCULTeBHz
+ O7+U2nku5qHPZIr4X3eWmIVN6Pxtg4b1pnuOXjyL5kTUJaOVCb3rzSENjJQbmIb3i4G+
+ urV/rp+HozCv4ZMCMgXj0cGvTB17Kox7Nu5F8inu+FKBraUSX+vtyV8s46z1xYvGCgOf
+ sxvZOaYt+zehdwpu46yH5rVtn7IpG5HhkVyWZa/84i3xQ1XD8fHnDy4e38Zh2FzDF5+8
+ PRPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xRS9Xs/A7cPVwavP2/d7CO6TOTh4dxr4Fh4pdaLz/eQ=;
- b=I0CGUXWioQYtG1XcjNp8cd28vJwJJjDhxQPgSKw8C6RTcGBl2kfapKrD25/8kElpUo
- yjTPOlW98A06mgNiwQ3cNqgfUcofBc+7Zxp73yglKw7MXuxfL8UjxbTg0EK64e567GAc
- Zb2e4yZXqLmXn6cRb8H/2rC3V0iVNb6hbGPczS9iPKJN1uba5jEuheUhvoCWT7Vx/cim
- 0hx+nMDXDdMwstMcscqRGrjXk9bTEp2qCw48QaH1DjtMw+cWNjvL26Mmt5Lqx4GADsPn
- blfgr2zNbf6lSHajC1NJNPKMznoKCKYIzM2AkhC7rAXCB9BmqFZGSygfOK8fte9s2bji
- SuUg==
-X-Gm-Message-State: AOAM531ufjvLs7fyTZugx4Quvt9Yb5LvZa2dbWtvAjPwdxEA+ltSnptq
- Enn/Tep9QrTQ3x4riLeogl+H/A==
-X-Received: by 2002:a7b:c925:: with SMTP id h5mr52680wml.28.1598639663462;
- Fri, 28 Aug 2020 11:34:23 -0700 (PDT)
+ bh=/Ki0FEJAVncOeHF2Ucul7Zf8qvOQrPlrcF6S9f2G/rs=;
+ b=q+AscMW96QBu5lDRHrhHaUMf+XtQB+1saigjgVcsSHv0YyFBhSul29HAPzSKf79Q29
+ vw83xipKAcdALF+q1L6w4JL2nLK0rotwYboAZl5C4Gaz/yiqe8dw3F18ZfoE9rjAtJcd
+ Zb2Bfy9VG3kOlGdXH4uc/pWeC/raqeQ+wiAS4aHWTl3BOde6aZMyD0vp0unMn0NQkcg0
+ 7zWSXVOOE7iw/QQdbJLlwywqLie7r9MeEqZc5PCpwieLlw0GrwSU/kAUYBkVN1S9f7Jo
+ JmiZ3SvsO6gAirMG6gkQqyYE2tZVggroqRerHquBtx63eBZW475oy08ZnSbGkx+hJ67b
+ p2PA==
+X-Gm-Message-State: AOAM531aXw+AVh6eRaZmJIlGPUe4l1fbYY2dFdJJe2MHrxSVo3f2ue3X
+ ONdKADLZiyFmLzlrLjFLK3donYxJ0Qhdsu6R
+X-Received: by 2002:a5d:68d1:: with SMTP id p17mr257757wrw.378.1598639659872; 
+ Fri, 28 Aug 2020 11:34:19 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id s20sm356251wmh.21.2020.08.28.11.34.22
+ by smtp.gmail.com with ESMTPSA id s20sm356251wmh.21.2020.08.28.11.34.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Aug 2020 11:34:22 -0700 (PDT)
+ Fri, 28 Aug 2020 11:34:19 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 22/45] fpu: Add float16 comparison functions
-Date: Fri, 28 Aug 2020 19:33:31 +0100
-Message-Id: <20200828183354.27913-23-peter.maydell@linaro.org>
+Subject: [PATCH v2 19/45] target/arm: Implement new VFP fp16 insn VINS
+Date: Fri, 28 Aug 2020 19:33:28 +0100
+Message-Id: <20200828183354.27913-20-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200828183354.27913-1-peter.maydell@linaro.org>
 References: <20200828183354.27913-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -120,81 +120,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 279jX267Tb7e
+X-TUID: XC9sryBVnBZy
 
-Add comparison functions for float16 to match the existing float32
-and float64 ones:
-
- float16_eq()
- float16_le()
- float16_lt()
- float16_unordered()
- float16_eq_quiet()
- float16_le_quiet()
- float16_lt_quiet()
- float16_unordered_quiet()
-
-These are all just convenience wrappers around float16_compare() and
-float16_compare_quiet().  We will want these for AArch23 fp16
-support.
+The fp16 extension includes a new instruction VINS, which copies the
+lower 16 bits of a 32-bit source VFP register into the upper 16 bits
+of the destination.  Implement it.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/fpu/softfloat.h | 41 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
+ target/arm/vfp-uncond.decode   |  3 +++
+ target/arm/translate-vfp.c.inc | 28 ++++++++++++++++++++++++++++
+ 2 files changed, 31 insertions(+)
 
-diff --git a/include/fpu/softfloat.h b/include/fpu/softfloat.h
-index 659218b5c78..573fce99bc6 100644
---- a/include/fpu/softfloat.h
-+++ b/include/fpu/softfloat.h
-@@ -285,6 +285,47 @@ static inline float16 float16_set_sign(float16 a, int sign)
-     return make_float16((float16_val(a) & 0x7fff) | (sign << 15));
- }
+diff --git a/target/arm/vfp-uncond.decode b/target/arm/vfp-uncond.decode
+index 9615544623a..39dc8f6373a 100644
+--- a/target/arm/vfp-uncond.decode
++++ b/target/arm/vfp-uncond.decode
+@@ -74,3 +74,6 @@ VCVT        1111 1110 1.11 11 rm:2 .... 1010 op:1 1.0 .... \
+             vm=%vm_sp vd=%vd_sp sz=2
+ VCVT        1111 1110 1.11 11 rm:2 .... 1011 op:1 1.0 .... \
+             vm=%vm_dp vd=%vd_sp sz=3
++
++VINS        1111 1110 1.11 0000 .... 1010 11 . 0 .... \
++            vd=%vd_sp vm=%vm_sp
+diff --git a/target/arm/translate-vfp.c.inc b/target/arm/translate-vfp.c.inc
+index 7ce044fa896..bda3dd25136 100644
+--- a/target/arm/translate-vfp.c.inc
++++ b/target/arm/translate-vfp.c.inc
+@@ -3454,3 +3454,31 @@ static bool trans_NOCP(DisasContext *s, arg_NOCP *a)
  
-+static inline bool float16_eq(float16 a, float16 b, float_status *s)
-+{
-+    return float16_compare(a, b, s) == float_relation_equal;
-+}
+     return false;
+ }
 +
-+static inline bool float16_le(float16 a, float16 b, float_status *s)
++static bool trans_VINS(DisasContext *s, arg_VINS *a)
 +{
-+    return float16_compare(a, b, s) <= float_relation_equal;
-+}
++    TCGv_i32 rd, rm;
 +
-+static inline bool float16_lt(float16 a, float16 b, float_status *s)
-+{
-+    return float16_compare(a, b, s) < float_relation_equal;
-+}
++    if (!dc_isar_feature(aa32_fp16_arith, s)) {
++        return false;
++    }
 +
-+static inline bool float16_unordered(float16 a, float16 b, float_status *s)
-+{
-+    return float16_compare(a, b, s) == float_relation_unordered;
-+}
++    if (s->vec_len != 0 || s->vec_stride != 0) {
++        return false;
++    }
 +
-+static inline bool float16_eq_quiet(float16 a, float16 b, float_status *s)
-+{
-+    return float16_compare_quiet(a, b, s) == float_relation_equal;
-+}
++    if (!vfp_access_check(s)) {
++        return true;
++    }
 +
-+static inline bool float16_le_quiet(float16 a, float16 b, float_status *s)
-+{
-+    return float16_compare_quiet(a, b, s) <= float_relation_equal;
++    /* Insert low half of Vm into high half of Vd */
++    rm = tcg_temp_new_i32();
++    rd = tcg_temp_new_i32();
++    neon_load_reg32(rm, a->vm);
++    neon_load_reg32(rd, a->vd);
++    tcg_gen_deposit_i32(rd, rd, rm, 16, 16);
++    neon_store_reg32(rd, a->vd);
++    tcg_temp_free_i32(rm);
++    tcg_temp_free_i32(rd);
++    return true;
 +}
-+
-+static inline bool float16_lt_quiet(float16 a, float16 b, float_status *s)
-+{
-+    return float16_compare_quiet(a, b, s) < float_relation_equal;
-+}
-+
-+static inline bool float16_unordered_quiet(float16 a, float16 b,
-+                                           float_status *s)
-+{
-+    return float16_compare_quiet(a, b, s) == float_relation_unordered;
-+}
-+
- #define float16_zero make_float16(0)
- #define float16_half make_float16(0x3800)
- #define float16_one make_float16(0x3c00)
 -- 
 2.20.1
 

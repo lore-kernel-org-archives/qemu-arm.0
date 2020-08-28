@@ -1,109 +1,105 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp1351992lfc;
-        Fri, 28 Aug 2020 03:57:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypTCM9g2xPP32FVHtLdTbyfGETM9d22e6r2F12rWlPbpU5hcQl0LOe7PjcpinRXfQlQI6M
-X-Received: by 2002:a25:d0cb:: with SMTP id h194mr1655297ybg.187.1598612263857;
-        Fri, 28 Aug 2020 03:57:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598612263; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp1380190lfc;
+        Fri, 28 Aug 2020 04:39:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwS6vHoU+DW6AUO7OxTqnlwgeDljuh2Lf2yb7b5FFT23yMznf2jdPjA2/fX3JCZhT7oFUBJ
+X-Received: by 2002:a5b:1c4:: with SMTP id f4mr1853927ybp.48.1598614789397;
+        Fri, 28 Aug 2020 04:39:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598614789; cv=none;
         d=google.com; s=arc-20160816;
-        b=IakxHHSiWdSFgos6LWbivHzEU+OkjUDKHlK+Sj1Wsc8yirpEufuvCQ20JiqUmod+jy
-         Ezr+roBsbuxPSwCL71ogSekmVRk2Zz7dp8SPPFJQz1cUf3yBmNOdg1M64e2Ey7j+MUZV
-         MaaNikj96M21e1+wRrbXZtPxIqlUF4mYFHmgqs+bgondgUK/FpVE5zyOecA022c4RTNB
-         2f7XiLs/rAfB1HwoH/5i9n9iCHcwWZzGj4jZmUY+2rvT6Vpk8gsZdKdMcr3vuhmNJyMJ
-         xREL5c2Q4ICHmmVQonoUAk0E6QQbMmn8f6wcx/Ebujls6Dnc/FJh4AftAdbokfzJcLkR
-         PJxQ==
+        b=ufqle5TTWiT7gwWvz1WebHBlqG+o23/zxhkK5vfpPmTJp5ayaCGFLW1oU+Lovi8mKn
+         I0Vh8vLlaLcoJNnKqr73j0oLzJ/WGrMOkYCOE9FtCgA9H4zbied8ZxOAMlH8sp+xb7K7
+         AqEnUjXithMM5w0X4utSV80lS0Pcdnmeo2h/FNtqD2Yb/RBCMZ79B/YxDtTn8Lpz9D8p
+         lN5xPyYQ2c7M56Fy4cWpYSvDOhSO/H1gd4gNlIVSNf3QwY3751h3EAHocwk5Z1A6cYXn
+         ZkJ6JSNBo+8XKgZ0YA8CT6hO/l/ZAEIxxQWPf9l0DZLN91XbjsDO4t9cHG5XGK+1Lc+u
+         Qs3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=KGFkJMsMkXgG1rFHqJifH5Lw5fq7ifY1o1i4v9gpWJA=;
-        b=xSZUblwReeZULA6qdkOLVj4WdVX5B0gQJ2xdK3QnNg2jHR4pytf9aOXSaMWlONIp4a
-         +az9b+B6BKyBGTuMhKqUv8YDZTdujR/XROtOE0qiJq3J+Zv/gRHSHNeoFEraNmsYBtCH
-         wkTQyVwPAQAf6RUTHsK23cHi9vWWcRLhVekj8DPnpFzqwSGW9bZjO+JcFfl5XR8bp7pV
-         ar0RK2BiIU85Pfje1de+yFixpQtOl+qDwXjSMpNNCd0CxJ6wUvp0qydhb1y6Fqa2CJ1R
-         00XSSDcxCt4CClMLVmd20/uDGm18LEy4rT/EADTiWXy7IXEIdUo+9HNIIUcWyGYG1WDK
-         ETxA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=1liowIeh8qRn8OyOxyKrs4dtyG7Kz6toJuQh/KfzfqE=;
+        b=ofdyCAoynsamyWh/ZyAOMBGgILQ7alrtf3GfjYSFVIs9FfixrqMpK7t2maOgYxppD1
+         dbf+LaAubDdwpOAvHaxURiUB/uScanolR35KjFp+ADZrDJVLbLO3X5Mo5ZD18B7PYrzb
+         AKEClWp2QneNc/9K9qEDk8pmDCokb6SDkqdGGjiyWbxRhWOxFkUY/yjOIi/Disc23FS/
+         8UISBIiYiDWlDiLwSLWwVXNV82qvGeEU6IsQ04Lgn5gUhqpyIoxlE+C7BVH7lwuyvd4i
+         MpH0Zq6+j24mbntL8J46DxfcGLqCCLiTaUeKy3U78nkwuiQYbQwy9R2EiSSe4Ag1MZ/b
+         PF8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PcJbJkFE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FE9RbhQz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m77si674679ybm.486.2020.08.28.03.57.43
+        by mx.google.com with ESMTPS id v82si604599ybv.408.2020.08.28.04.39.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 28 Aug 2020 03:57:43 -0700 (PDT)
+        Fri, 28 Aug 2020 04:39:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PcJbJkFE;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FE9RbhQz;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52578 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55674 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kBc4l-00076V-8S
-	for alex.bennee@linaro.org; Fri, 28 Aug 2020 06:57:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37106)
+	id 1kBcjU-0000QM-N9
+	for alex.bennee@linaro.org; Fri, 28 Aug 2020 07:39:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBc4d-00074m-Lx
- for qemu-arm@nongnu.org; Fri, 28 Aug 2020 06:57:35 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:39471
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <slp@redhat.com>) id 1kBc4b-0007X9-27
- for qemu-arm@nongnu.org; Fri, 28 Aug 2020 06:57:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598612251;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=KGFkJMsMkXgG1rFHqJifH5Lw5fq7ifY1o1i4v9gpWJA=;
- b=PcJbJkFEjFEykLyrvhrWkoXzgB/zjRHuxHQbLN43Bu8zn6gEf92mEYdGpygHg8ibDevHTz
- iIntrG7suqM0UBS7LperQj21G5Ma1BJrkZ61Sxlkd35Hm5nJr74aa+WsBZM3XeFH/XDYk/
- cRepMpvH3lvxvVQTZMUgGwV3bv3zKKs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-25-mIehgT4ZNfO_889Y984V9w-1; Fri, 28 Aug 2020 06:57:27 -0400
-X-MC-Unique: mIehgT4ZNfO_889Y984V9w-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9B3CE189E617;
- Fri, 28 Aug 2020 10:57:26 +0000 (UTC)
-Received: from localhost (ovpn-113-65.rdu2.redhat.com [10.10.113.65])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 60D5519C59;
- Fri, 28 Aug 2020 10:57:20 +0000 (UTC)
-Date: Fri, 28 Aug 2020 12:57:19 +0200
-From: Sergio Lopez <slp@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Subject: Re: [PATCH v6 03/20] seabios: add bios-microvm.bin binary
-Message-ID: <20200828105719.tax5x5youqm3laki@mhamilton>
-References: <20200826105254.28496-1-kraxel@redhat.com>
- <20200826105254.28496-4-kraxel@redhat.com>
- <20200827144854.vz7yhakvks5xoh63@mhamilton>
- <20200828050232.jykyjztkwaplkhsu@sirius.home.kraxel.org>
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1kBcjK-0000Pa-6R; Fri, 28 Aug 2020 07:39:38 -0400
+Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:41967)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
+ id 1kBcjI-0004Pt-NK; Fri, 28 Aug 2020 07:39:37 -0400
+Received: by mail-lj1-x243.google.com with SMTP id f26so923076ljc.8;
+ Fri, 28 Aug 2020 04:39:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1liowIeh8qRn8OyOxyKrs4dtyG7Kz6toJuQh/KfzfqE=;
+ b=FE9RbhQz5ZBTryzyZnUeq8PruNmt0QGjrkBdOqvUR+znd1emFK0lcrOvcaU740aSEz
+ AgVWOQw4wnUGVU9XuDQG+QbbiQctO4bjigMbFEWkrpSlGeLeWGdPTDSJfubRUjxK7s55
+ I+wd32EVKqI8G1lTjWtvlioe/N20v7TPrKxP+Honuk7znwYQ0w/JmdgrShRx/Yp17UbB
+ vNzC8M9I2B7AGTdYl4n0vf8u1yPcoQ2Rxh6/erM79T58O6CEoAdY8S3a/VBQVN9+rsSf
+ NH7bGyh99QDcsZQJJ6FKlODF1Ek8OzkGvgVh740JvaHq0Z2rIgZD/OU+Y6EYcT0rDwbl
+ jTYw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=1liowIeh8qRn8OyOxyKrs4dtyG7Kz6toJuQh/KfzfqE=;
+ b=GEgKmV81p2h7kqZqQCF0rvC/2PaEwYmDlgoI4IEu4tPv6NV02FUjk7XQYSodkFA/A4
+ PuWC8T8PVri/bDF81hqG51jwDW1hJWiyYXiT+FrnXbaENUt2BXfPBPsK27OiKiYRQieG
+ FQWDWrfZhKRG7feDfrtWzNsrzPlswFUQudzy/QebYBz1Z2oXGy7kXWhoHMihLSyyiykP
+ MTkLovRWij9/eJfW4v9H2PIn9egPHA/zhazSU2t4lHnUMB+fQW72B1sB7aGXd2Tx95J+
+ 7bAmxTSyNeAFkckITPS1Emt82yCrUp7sKSgASQzKLtIigdlS+y/PemQlNSmxlVOYB+K3
+ VrkA==
+X-Gm-Message-State: AOAM530KR99fz7RtixsiR0qOqQy5tnzR/9sxw8JnZE3AfWtz0zkBqWzX
+ NvSb0e1cjzMV8wResB3wnumCwMhQNAg=
+X-Received: by 2002:a2e:a58a:: with SMTP id m10mr642845ljp.247.1598614772368; 
+ Fri, 28 Aug 2020 04:39:32 -0700 (PDT)
+Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
+ by smtp.gmail.com with ESMTPSA id k4sm151927ljc.50.2020.08.28.04.39.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 28 Aug 2020 04:39:31 -0700 (PDT)
+From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v1 0/2] target/microblaze: Improve bus fault handling
+Date: Fri, 28 Aug 2020 13:39:29 +0200
+Message-Id: <20200828113931.3252489-1-edgar.iglesias@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20200828050232.jykyjztkwaplkhsu@sirius.home.kraxel.org>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=slp@redhat.com
-X-Mimecast-Spam-Score: 0.0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="hy4kckpuz6zyuzbt"
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=slp@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/28 01:02:42
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::243;
+ envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x243.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: 13
+X-Spam_score: 1.3
+X-Spam_bar: +
+X-Spam_report: (1.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FSL_HELO_FAKE=3.425, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,76 +112,32 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- qemu-devel@nongnu.org, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>
+Cc: figlesia@xilinx.com, peter.maydell@linaro.org, sstabellini@kernel.org,
+ edgar.iglesias@xilinx.com, sai.pavan.boddu@xilinx.com,
+ frasse.iglesias@gmail.com, alistair@alistair23.me,
+ richard.henderson@linaro.org, frederic.konrad@adacore.com, qemu-arm@nongnu.org,
+ philmd@redhat.com, luc.michel@greensocs.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X/FiT5t6MXka
+X-TUID: zjfpy76Rtu3e
 
---hy4kckpuz6zyuzbt
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
 
-On Fri, Aug 28, 2020 at 07:02:32AM +0200, Gerd Hoffmann wrote:
-> On Thu, Aug 27, 2020 at 04:48:54PM +0200, Sergio Lopez wrote:
-> > On Wed, Aug 26, 2020 at 12:52:37PM +0200, Gerd Hoffmann wrote:
-> > > Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-> > > ---
-> > >  pc-bios/bios-microvm.bin | Bin 0 -> 131072 bytes
-> > >  1 file changed, 0 insertions(+), 0 deletions(-)
-> > >  create mode 100644 pc-bios/bios-microvm.bin
-> >=20
-> > Without reproducible builds (which we should probably consider having
-> > for everything inside "pc-bios", but that's outside the scope of this
-> > series), this one is hard to debug.
->=20
-> We have roms/Makefile for firmware builds.  "make -C roms bios" will
-> build seabios binaries (you need the seabios submodule initialized for
-> this).
->=20
-> And, yes, seabios builds are reproducible.  If you build with the same
-> compiler (rhel-7 gcc 4.8.5) you should end up with the same binary.
+Richards recent MicroBlaze patches exposed a bug in
+the MB ports bus fault handling. If the core is not
+setup for exceptions, we clobber the CPU state when
+preparing to raise one. This fixes the bug.
 
-Which version exactly? I'm still getting a different binary with this
-one:
+Best regards,
+Edgar
 
-gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-39)
-Copyright (C) 2015 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+Edgar E. Iglesias (2):
+  target/microblaze: Use CPU properties to conditionalize bus exceptions
+  target/microblaze: Improve transaction failure handling
 
-Thanks,
-Sergio.
+ target/microblaze/op_helper.c | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
 
-> take care,
->   Gerd
->=20
-
---hy4kckpuz6zyuzbt
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCAAdFiEEvtX891EthoCRQuii9GknjS8MAjUFAl9I4wwACgkQ9GknjS8M
-AjX+GA/9FbR5yv9bgiHVjZqxpx00M/rdK2JzzT3wCYh4VYaZRk+j2PnFtVFfXIMA
-IRp0Pg6iyqD1JnDzEeEuPEbAxpG+UG0OYCiGgRWfTKA4Jjgea51wV0MCvE/piWwC
-kzgZcDtj8mjmCLapOMWUL1A6UuCfZCWyK6kP7L8+7dZxvqjDEPpFMrFJb0idQkW6
-TDqKqCigb2PaAhzKpZgxv3MT3KG2JYBpeKj0VUcXviwRrObjJlGevI+7V4vyCFUT
-naS3rdQY2y0YBHS5FudaVd0ZVTOzeET0wNDvHS/4zBpjU0UvTMLD/rR3zlbu+3/O
-dDKWgNDZVoOPls0S2+utRPbSUndktJk6FGeODwbA32V4XIvZ/XcMjJ0j7OJacqny
-wBN5wetJxq8szHoMo+5XVENrQ/hpTHGoZMgTOpclwibOQSKL/eFh4dIOHNMrnVoA
-Dm+OgYUXfySeRQ9mAQ+APM4B6FgWGI/7Sfz04XTbFEwP4RUMBUmoME3jaOTp8tRV
-nCfZD0x4AoeGYoIF1kFcgE+KHpEeg6p3QjfVNzmIiRzwmY6L/1CB6hbRoW3lCw6a
-PnEtNDivgeiYIV2M9Vbrdos6DLsjPT95VR6pKS0+PuV9ffrwQ0zKV0o44eVpqIx5
-Bf5bHCitprhI/yOkewcTvpLgBCHnuKWMTFLs5kirDPqMlUBcG9A=
-=7fZP
------END PGP SIGNATURE-----
-
---hy4kckpuz6zyuzbt--
+-- 
+2.25.1
 

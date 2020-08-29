@@ -1,108 +1,112 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp2337955lfc;
-        Sat, 29 Aug 2020 08:22:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxK2DPuBQK0bt9C7ZSpQi4CVwyAzRb4O/vYhBi0fUu2klUdH8XpqcOoAPjIfhyw0HtlWyOg
-X-Received: by 2002:a25:bcce:: with SMTP id l14mr9859057ybm.467.1598714539445;
-        Sat, 29 Aug 2020 08:22:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598714539; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp2338074lfc;
+        Sat, 29 Aug 2020 08:22:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwOaoYzd/GrkCEj+HGPH5YU3b+RDZ4DRlifUQma72Jo61gmEWoeVMgqqGnGlwKbEcTkyQx4
+X-Received: by 2002:a25:8149:: with SMTP id j9mr9703790ybm.214.1598714552273;
+        Sat, 29 Aug 2020 08:22:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598714552; cv=none;
         d=google.com; s=arc-20160816;
-        b=NEODVxzvxbE0Fn9EW5QAjetKpHvAsfglwUKRBHyXxaLjUtEQfBhyPouz6h62wOYTCk
-         rx/pbzYJI7eTZBt9QisDltji8oDkB2w7HT58iHk68q4z+6XsREjKS8zj9Vj27LOXDEjh
-         czbBCxyOGyccRMaJLd1N2FI4y7pnDA8it0PN4FE7zfgmWtxEdVwF+hs1dJVUal7y4S2v
-         uSOterJOehHNhLzOKzXokc/uXrsAIRmbL5aiM+QS9UhrT5si4REWO5kucQ7MAeZaBIwo
-         wZlxH0LT92vJA5h7uYFR/miQImvnghZ1lNQzi2rVa/08mIlArDwm4lIFPTmyQWnEuv9t
-         EUkg==
+        b=aZa/DnZptY7aW3G/TV4MKN0mvjtFZmZlIqyin9bpZ9+hocjJRw6cyAtbYcnNiEF80O
+         gBHVT9O06mFisUXjzR8M6testsuvYxEXF7B5+nxyyzR7OWtatGEPcyn4DJiixrLeR8p8
+         VGOHOMXBtNAzt8bagOGdyB/xF35kR1RsMA9Jhx3ZQtKUsEB0uhWrEAoSLZz4XMJmlOfU
+         V0eqo7Zolod55cfERc/E6koBmqSH5Q9aT7WIYMnwUHiUYqt4Rz35TnePYjsgLKMYoScV
+         iEYNksSYq74185+wMOnBEJEJ8vEe/J2NJuSFIN5OH0H99buXzMMpcHCsmOYM3pyHtn4H
+         B5Ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=XSd6UA9oGJXgO/Kcn28mrye1Vbs4EU3WILT/MQkdqmw=;
-        b=0koyjhcRtsX7j9mpL0Z4INhDVBP0FjNnOn9fFCudyMyE/OGirAt/31XCCY1j6IdPxE
-         aLOH6uwuRMeBVdPHag8WvwUTLkBIEW+u1dSxir3zQmLfVcxmU9jHXoRWV1nB0bgmcpsn
-         dnopq2YKSMMH8tQtRumMhsvdyB2VKnsFGy1kLtyWV+SCORi7wkzUXvuuNbBZGdqjfSqO
-         rORVUf3B5mAamD1HER3MRyt0B42bySl/B3D3ZG2r3pFCMfv7q795GrzGuBK4Oy/pXYCz
-         j9pPn2IY4kS4B0wBmGtBuKT3Ypv+ZjiNlcXW2/NvI+MbyHcS93CJvyf2p3GWL+K9qWxY
-         +u4Q==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=KsoHPe0fo4kmuIZOpXevYhG1xyEG71KI6rwlL1Gqtac=;
+        b=gCntH3BKNU9+94wMzqPdoC2xx6qu06FpOMmcXdMLdSXDsQYCEMttFHPq9o6YJFkz7H
+         tqXxmLfwwqmy7aK8Mf85jnnviAhF9foV/IU+9khzMxBO7AeOF6aDv7yFiZeUMdVoJv0P
+         e/0IsB/I22qwfW1AuxMOFkkgqD1Zoqbo3WAxCNL1qeonEV6HG5KnCdFvanHrqiEZCXoM
+         kTCR80GjY5NsKxWNfi7a3ibiH+NHDiW2ojEb3qWmLymTAY01pEZ582ThGoY11a28IN6A
+         R/QCJ5KywkU+YSjsaFcNVEKPcDDyBlheFqRr8A5SdD/uKYpNOxJmN4SjYS95zALk0Peb
+         jQNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iRPM103u;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NXVbaxea;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 77si2276898ybc.208.2020.08.29.08.22.19
+        by mx.google.com with ESMTPS id 8si2372955ybo.374.2020.08.29.08.22.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 29 Aug 2020 08:22:19 -0700 (PDT)
+        Sat, 29 Aug 2020 08:22:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=iRPM103u;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NXVbaxea;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:46100 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:47454 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kC2gM-0007h4-Qz
-	for alex.bennee@linaro.org; Sat, 29 Aug 2020 11:22:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44624)
+	id 1kC2gZ-0008EA-JY
+	for alex.bennee@linaro.org; Sat, 29 Aug 2020 11:22:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45344)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kC2d0-00018t-Kl; Sat, 29 Aug 2020 11:18:51 -0400
-Received: from mail-ot1-x342.google.com ([2607:f8b0:4864:20::342]:46343)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kC2cz-0005E1-32; Sat, 29 Aug 2020 11:18:50 -0400
-Received: by mail-ot1-x342.google.com with SMTP id j3so1758504otk.13;
- Sat, 29 Aug 2020 08:18:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=XSd6UA9oGJXgO/Kcn28mrye1Vbs4EU3WILT/MQkdqmw=;
- b=iRPM103u4ZZKHaEFmDRJvt+VAJIsRj9fNeEZGzCBpYoBz+d4HF+5AThuaNOf2Jcfqn
- EzkCbCUjw8Kb+XEWJ0j3+xF2jnYUlxMQpxzh2hFy9nBOehtFxWSmzRfjaXP72aijCxdl
- FcStNKlHNkOHkJ9F+OOeGodMY+rF/wwGXV9G12tdPRHstKXx2fnYSlOq1xDWIxpx3Ilf
- c137FI9SFXqX7LWBiPdoRBiu1LRx3ecKZRGXpFdfZVh2nim0GijCzXBCKKgs3KGUzVaG
- y1OjyeRrUF5SplLXGCL8B5+wFZDBM6qSj6dkeFlfVCBNeuQ5koUWhcUAXztBMI46bGIe
- ZFhg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=XSd6UA9oGJXgO/Kcn28mrye1Vbs4EU3WILT/MQkdqmw=;
- b=qyRnVqbNhYdhumThil8DTtQI+52SgCzgeVT0aXDN5BlaX6ScUp5exGGDM1bVxN0j4z
- lKsHmc9OM+uh4nfefmtF3w9MV0wbTnaL0azoJvKcvNkGEHsdp3Fm0ELSb5LhI8lAvCTP
- 3Sga9bsDfNNmxtwxYAI6r7WEBdhom1ezMGRRxWbcM/lnp9Ipk8JKC3h+LMzzObp9kFxz
- GLc+dXHMSVxCmO+WU53sA7TOlsVGFRixs+scvaygPNraYDP73TcTJsWIcZ6ITpYRKBff
- tdJ8EZj9RnZ90/gyrUo/zUW+gp9iTaMbMCn+gp/U8NCYiJKz6zimp16EWLyOOPNG2VYV
- DUqw==
-X-Gm-Message-State: AOAM5333Oou7/KtZUiaPJ31tEBS8CgI92XYGYfnBg+unMKmw5ixCYXEF
- 41rn3M1iYozjbqM41HgFaeg=
-X-Received: by 2002:a9d:4b01:: with SMTP id q1mr2311635otf.15.1598714327353;
- Sat, 29 Aug 2020 08:18:47 -0700 (PDT)
-Received: from pek-vx-bsp2.wrs.com (unknown-146-144.windriver.com.
- [147.11.146.144])
- by smtp.gmail.com with ESMTPSA id f50sm58181otf.47.2020.08.29.08.18.43
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Sat, 29 Aug 2020 08:18:46 -0700 (PDT)
-From: Bin Meng <bmeng.cn@gmail.com>
-To: Alistair Francis <Alistair.Francis@wdc.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Palmer Dabbelt <palmerdabbelt@google.com>, qemu-devel@nongnu.org,
- qemu-riscv@nongnu.org
-Subject: [PATCH v2 11/16] hw/net: cadence_gem: Add a new 'phy-addr' property
-Date: Sat, 29 Aug 2020 23:17:35 +0800
-Message-Id: <1598714261-8320-12-git-send-email-bmeng.cn@gmail.com>
-X-Mailer: git-send-email 2.7.4
-In-Reply-To: <1598714261-8320-1-git-send-email-bmeng.cn@gmail.com>
-References: <1598714261-8320-1-git-send-email-bmeng.cn@gmail.com>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::342;
- envelope-from=bmeng.cn@gmail.com; helo=mail-ot1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kC2gA-0007RD-65
+ for qemu-arm@nongnu.org; Sat, 29 Aug 2020 11:22:06 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:46596
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kC2g7-0005fu-6S
+ for qemu-arm@nongnu.org; Sat, 29 Aug 2020 11:22:05 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1598714521;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KsoHPe0fo4kmuIZOpXevYhG1xyEG71KI6rwlL1Gqtac=;
+ b=NXVbaxeay9Pp7SIMoZXfSxSiaF4jEM3W1/Thj4GH8eNom3GGiYCsajD7wtUJkXfAsgkpS3
+ +iHx/rvYJaj2noteyWeb4cGe/Bm/+S1oQOtVpU7s/Ab6ZTUkPaJZZlbRYh+1FxnAQRpJxo
+ Ja3x3O+UbObIGe3SEVoF0KsyC1onnTU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-102-B9mG1uoxPgS6ntTnljdy1A-1; Sat, 29 Aug 2020 11:21:59 -0400
+X-MC-Unique: B9mG1uoxPgS6ntTnljdy1A-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E196B802B6A;
+ Sat, 29 Aug 2020 15:21:57 +0000 (UTC)
+Received: from [10.36.112.112] (ovpn-112-112.ams2.redhat.com [10.36.112.112])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 43D895D9D2;
+ Sat, 29 Aug 2020 15:21:56 +0000 (UTC)
+Subject: Re: [PATCH 6/7] hw/arm/virt: spe: Add SPE fdt binding for virt machine
+To: Haibo Xu <haibo.xu@linaro.org>, peter.maydell@linaro.org
+References: <cover.1596768588.git.haibo.xu@linaro.org>
+ <1663d06172cffa723e00893837ba04634f061fc8.1596768588.git.haibo.xu@linaro.org>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <4e6b3ee2-7f81-7c72-c4a9-0e8d330215ab@redhat.com>
+Date: Sat, 29 Aug 2020 17:21:54 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
+MIME-Version: 1.0
+In-Reply-To: <1663d06172cffa723e00893837ba04634f061fc8.1596768588.git.haibo.xu@linaro.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=205.139.110.120;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/29 11:22:01
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.959,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.809, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,74 +119,188 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>,
- Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org
+Cc: drjones@redhat.com, qemu-arm@nongnu.org, philmd@redhat.com,
+ qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OnCEkhGezO7m
+X-TUID: 7qnchpgj+nlq
 
-From: Bin Meng <bin.meng@windriver.com>
+Hi Haibo,
 
-At present the PHY address of the PHY connected to GEM is hard-coded
-to either 23 (BOARD_PHY_ADDRESS) or 0. This might not be the case for
-all boards. Add a new 'phy-addr' property so that board can specify
-the PHY address for each GEM instance.
+On 8/7/20 10:10 AM, Haibo Xu wrote:
+> Add a virtual SPE device for virt machine while using PPI 
+> 5 for SPE overflow interrupt number.
+> 
+> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+> ---
+>  hw/arm/virt-acpi-build.c    |  3 +++ 
+>  hw/arm/virt.c               | 42 +++++++++++++++++++++++++++++++++++++
+>  include/hw/acpi/acpi-defs.h |  1 + 
+>  include/hw/arm/virt.h       |  1 + 
+>  target/arm/cpu.c            |  2 ++
+>  target/arm/cpu.h            |  2 ++
+>  target/arm/kvm.c            |  6 ++++++
+>  7 files changed, 57 insertions(+)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 91f0df7b13..5073ba22a5 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -666,6 +666,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>          if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+>              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+>          }
+> +        if (arm_feature(&armcpu->env, ARM_FEATURE_SPE)) {
+> +            gicc->spe_interrupt = cpu_to_le32(PPI(VIRTUAL_SPE_IRQ));
+> +        }
+>          if (vms->virt) {
+>              gicc->vgic_interrupt = cpu_to_le32(PPI(ARCH_GIC_MAINT_IRQ));
+>          }
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index ecfee362a1..c40819705d 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -555,6 +555,42 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+>      }
+>  }
+> 
+> +static void fdt_add_spe_nodes(const VirtMachineState *vms)
+> +{
+> +    CPUState *cpu;
+> +    ARMCPU *armcpu;
+> +    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+> +
+> +    CPU_FOREACH(cpu) {
+> +        armcpu = ARM_CPU(cpu);
+> +        if (!arm_feature(&armcpu->env, ARM_FEATURE_SPE)) {
+> +            return;
+> +        }
+> +        if (kvm_enabled()) {
+> +            if (kvm_irqchip_in_kernel()) {
+> +                kvm_arm_spe_set_irq(cpu, PPI(VIRTUAL_SPE_IRQ));
+> +            }
+> +            kvm_arm_spe_init(cpu);
+> +        }
+> +    }
+> +
+> +    if (vms->gic_version == VIRT_GIC_VERSION_2) {
+> +        irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
+> +                             GIC_FDT_IRQ_PPI_CPU_WIDTH,
+> +                             (1 << vms->smp_cpus) - 1);
+> +    }
+> +
+> +    armcpu = ARM_CPU(qemu_get_cpu(0));
+> +    qemu_fdt_add_subnode(vms->fdt, "/spe");
+> +    if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
+> +        const char compat[] = "arm,statistical-profiling-extension-v1";
+> +        qemu_fdt_setprop(vms->fdt, "/spe", "compatible",
+> +                         compat, sizeof(compat));
+> +        qemu_fdt_setprop_cells(vms->fdt, "/spe", "interrupts",
+> +                               GIC_FDT_IRQ_TYPE_PPI, VIRTUAL_SPE_IRQ, irqflags);
+> +    }
+> +}
+> +
+>  static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+>  {
+>      DeviceState *dev;
+> @@ -727,6 +763,10 @@ static void create_gic(VirtMachineState *vms)
+>                                      qdev_get_gpio_in(vms->gic, ppibase
+>                                                       + VIRTUAL_PMU_IRQ));
+> 
+> +        qdev_connect_gpio_out_named(cpudev, "spe-interrupt", 0,
+> +                                    qdev_get_gpio_in(vms->gic, ppibase
+> +                                                     + VIRTUAL_SPE_IRQ));
+> +
+>          sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
+>          sysbus_connect_irq(gicbusdev, i + smp_cpus,
+>                             qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
+> @@ -1915,6 +1955,8 @@ static void machvirt_init(MachineState *machine)
+> 
+>      fdt_add_pmu_nodes(vms);
+> 
+> +    fdt_add_spe_nodes(vms);
+> +
+>      create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
+> 
+>      if (vms->secure) {
+> diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> index 38a42f409a..56a7f38ae4 100644
+> --- a/include/hw/acpi/acpi-defs.h
+> +++ b/include/hw/acpi/acpi-defs.h
+> @@ -302,6 +302,7 @@ struct AcpiMadtGenericCpuInterface {
+>      uint32_t vgic_interrupt;
+>      uint64_t gicr_base_address;
+>      uint64_t arm_mpidr;
+> +    uint16_t spe_interrupt; /* ACPI 6.3 */
+This does not work for me.
+You miss 2 uint8_t fields inbetween arm_mpdir and spe_interrupt:
+Processor Power Efficiency Class and Reserved.
 
-Signed-off-by: Bin Meng <bin.meng@windriver.com>
+At the moment arm_spe_acpi_register_device() silently fails on guest
+side since
+gicc->header.length < ACPI_MADT_GICC_SPE
 
----
+Thanks
 
-Changes in v2:
-- change "phy-addr" default value to BOARD_PHY_ADDRESS
+Eric
 
- include/hw/net/cadence_gem.h | 2 ++
- hw/net/cadence_gem.c         | 5 +++--
- 2 files changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.h
-index 54e646f..01c6189 100644
---- a/include/hw/net/cadence_gem.h
-+++ b/include/hw/net/cadence_gem.h
-@@ -73,6 +73,8 @@ typedef struct CadenceGEMState {
-     /* Mask of register bits which are write 1 to clear */
-     uint32_t regs_w1c[CADENCE_GEM_MAXREG];
- 
-+    /* PHY address */
-+    uint8_t phy_addr;
-     /* PHY registers backing store */
-     uint16_t phy_regs[32];
- 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index a93b5c0..d80096b 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -1446,7 +1446,7 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
-             uint32_t phy_addr, reg_num;
- 
-             phy_addr = (retval & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
--            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
-+            if (phy_addr == s->phy_addr || phy_addr == 0) {
-                 reg_num = (retval & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
-                 retval &= 0xFFFF0000;
-                 retval |= gem_phy_read(s, reg_num);
-@@ -1569,7 +1569,7 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
-             uint32_t phy_addr, reg_num;
- 
-             phy_addr = (val & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
--            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
-+            if (phy_addr == s->phy_addr || phy_addr == 0) {
-                 reg_num = (val & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
-                 gem_phy_write(s, reg_num, val);
-             }
-@@ -1682,6 +1682,7 @@ static Property gem_properties[] = {
-     DEFINE_NIC_PROPERTIES(CadenceGEMState, conf),
-     DEFINE_PROP_UINT32("revision", CadenceGEMState, revision,
-                        GEM_MODID_VALUE),
-+    DEFINE_PROP_UINT8("phy-addr", CadenceGEMState, phy_addr, BOARD_PHY_ADDRESS),
-     DEFINE_PROP_UINT8("num-priority-queues", CadenceGEMState,
-                       num_priority_queues, 1),
-     DEFINE_PROP_UINT8("num-type1-screeners", CadenceGEMState,
--- 
-2.7.4
+>  } QEMU_PACKED;
+> 
+>  typedef struct AcpiMadtGenericCpuInterface AcpiMadtGenericCpuInterface;
+> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> index dff67e1bef..56c83224d2 100644
+> --- a/include/hw/arm/virt.h
+> +++ b/include/hw/arm/virt.h
+> @@ -49,6 +49,7 @@
+>  #define ARCH_TIMER_NS_EL1_IRQ 14
+>  #define ARCH_TIMER_NS_EL2_IRQ 10
+> 
+> +#define VIRTUAL_SPE_IRQ 5
+>  #define VIRTUAL_PMU_IRQ 7
+> 
+>  #define PPI(irq) ((irq) + 16)
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 40768b4d19..67ab0089fd 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1038,6 +1038,8 @@ static void arm_cpu_initfn(Object *obj)
+>                               "gicv3-maintenance-interrupt", 1);
+>      qdev_init_gpio_out_named(DEVICE(cpu), &cpu->pmu_interrupt,
+>                               "pmu-interrupt", 1);
+> +    qdev_init_gpio_out_named(DEVICE(cpu), &cpu->spe_interrupt,
+> +                             "spe-interrupt", 1);
+>  #endif
+> 
+>      /* DTB consumers generally don't in fact care what the 'compatible'
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index fe0ac14386..4bf8591df8 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -790,6 +790,8 @@ struct ARMCPU {
+>      qemu_irq gicv3_maintenance_interrupt;
+>      /* GPIO output for the PMU interrupt */
+>      qemu_irq pmu_interrupt;
+> +    /* GPIO output for the SPE interrupt */
+> +    qemu_irq spe_interrupt;
+> 
+>      /* MemoryRegion to use for secure physical accesses */
+>      MemoryRegion *secure_memory;
+> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> index 58f991e890..ecafdda364 100644
+> --- a/target/arm/kvm.c
+> +++ b/target/arm/kvm.c
+> @@ -820,6 +820,12 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
+>              switched_level &= ~KVM_ARM_DEV_PMU;
+>          }
+> 
+> +        if (switched_level & KVM_ARM_DEV_SPE) {
+> +            qemu_set_irq(cpu->spe_interrupt,
+> +                         !!(run->s.regs.device_irq_level & KVM_ARM_DEV_SPE));
+> +            switched_level &= ~KVM_ARM_DEV_SPE;
+> +        }
+> +
+>          if (switched_level) {
+>              qemu_log_mask(LOG_UNIMP, "%s: unhandled in-kernel device IRQ %x\n",
+>                            __func__, switched_level);
+> 
 

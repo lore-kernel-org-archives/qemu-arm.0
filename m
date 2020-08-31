@@ -1,151 +1,302 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4038814lfc;
-        Mon, 31 Aug 2020 15:11:52 -0700 (PDT)
-X-Received: by 2002:a05:6a00:16c2:: with SMTP id l2mr2941159pfc.112.1598911912661;
-        Mon, 31 Aug 2020 15:11:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598911912; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4096383lfc;
+        Mon, 31 Aug 2020 16:44:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwgN8dn9nkHcUhpNTya5h9WmFttGhNRxdA7egFXm+vsqujDrNium+AT0vaRMF3IEHfYBZrj
+X-Received: by 2002:a25:7c01:: with SMTP id x1mr5629327ybc.357.1598917482328;
+        Mon, 31 Aug 2020 16:44:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598917482; cv=none;
         d=google.com; s=arc-20160816;
-        b=A1OKazWYbnud8231mR5/9Ik08mOQOXACPo6D1V+gKP1TQKWcCmFpgWzjproxQbNIK3
-         ALiAtGvFuSf11Rc6284e0qt8cNQ9hIfyDYCv3Xsc4WvjqrtkM2eaBLPDLSAIeMYzqZ4o
-         59D09p00ybdymnyEpsBUh0IJxGp5F8IV9nVIY96AnrCzO94JlvSckkYv161y1T6tJG8+
-         uAaB7NTRRfBSLOY2i5xHJK0T560ZHc54fCdj4urMzg4IQvyj0p16V5p/PRWTJyECBqAU
-         TBikMKZZjD6bM4dUA1DmO55UH77atX0YNrDApvKRvbC7Xg/RgF8o/aDjUGNjJTrHh70Y
-         fkWQ==
+        b=nDjyt9R7wl45dKnVQdDf4pOwT6Wj2gB33g64JlnX/+KBQfFoE24ocauwQ5Rz8H1l9H
+         MO0EvaDYf6lJ6h9nQt95Zw+xP7ZWtYqvlxGL0qp9isn8Xe9B2adO1+M3b3lNRCLjP0W7
+         6XjfU9s6PLZcdLoGDZcsa6T3Q97mPKYR6WIt5iI5dEeZWCZuJCvdHP+qlRwyy4+fDeVA
+         cSAy2MggFp24X2Ja8yhK5UwUVzRb2g38NNBLDoMZkP/3FMJoJNcLov/VPU2Ba1UpP4FE
+         ApW8c8N+k4n3XxB6LcA7Ji4hKQ4i7ZKM/wUBlVTtdW8QyvUK1n4DYH8y3USR43X2JCG8
+         hvJw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=PH2RCbNEIaLhQ86NxGfy7qBIeGRthZo3i/8Dmi3lax0=;
-        b=rVMJZ1mdSu5tLy/oAVBaGsCnqfSd6jtmO3ld7UYwcVW5kd++PT65q9BXCvcZVOku+z
-         +aNjKhI+Z6jdNOP3hZrSgmAcZjUPckzHq7ie7FzlpT23s132lk7SQx7MEZNGHbabb1JG
-         NqwrOKd8CyObufwYfxvJU6LSHU0PU/QjdXwuU4rVKjKWux6NnbTEOs72t5oE6l2MkFRW
-         BkfGwLuvM7052577wpTmJexFTEfFX6apcTSThj2w0Mfw4mPBWFyYkVlafPlf7M7jz1sa
-         gFjPdDf2n7cYiGFt314IDhw9fcLkyMGBdYjjWJS3JKYnsLvF0iLG1eSbzHJD9v0sjQhJ
-         c6+w==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version;
+        bh=Cv6omRegAey/8dBtaOUKEmVJo5RANXjdsu6UrezM83s=;
+        b=jLLaZu2A2GSDcmAMbhYhWyASR0UbZrCx6sCDE61toVU2bluKrecUDk2a8lgIQhKk/T
+         c6cpWEYNRf4/H0vWr6Q1/e3Py6ycp1mEIqZsGRAXRVTJAzDJEf74GK7e+edTBPBSwqcN
+         tkA71bq7d4zQd5cT3BkQyYRf2k7lhYt8NaGDs3B/DYpYZGXq8rQkvhMVNhMed1gKGlp8
+         PFkNddcajnsqDC0h5EPBhApDUn9vSMK3XUY4wGFcBBaRUtMTX/jEG/yUceeaxvdu6XcU
+         /PcZldb8KorWV6U5wJgNuGYoNmdBGLXfUY7SNUMxy6+ukxKEc1ALcktmLj15YC06tyX5
+         D1RA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KvnRRUTn;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id f20sor3458974plr.48.2020.08.31.15.11.52
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id m185si9537680ybb.377.2020.08.31.16.44.42
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 31 Aug 2020 15:11:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Mon, 31 Aug 2020 16:44:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KvnRRUTn;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=PH2RCbNEIaLhQ86NxGfy7qBIeGRthZo3i/8Dmi3lax0=;
-        b=KvnRRUTnd/5QvDOn6OMc5rfq5gF7hJSDAC4DssiiKpDawFgv/IjxYfzaPuueMJK1dw
-         cRuaY+H1utJG+L/oyhWvZsyShv7WMEwK4lmKw8QJ9+W3hiMwbLyKYyDNNQr1yG1B5a3q
-         7FNPxs88Eq0Glz9weNy0J+E5x+/YXFGQTPh8pNdqr3BIk+Ydtzvuv1+t1GDLpOVquovq
-         +bSwMx8jTqfXHDZzbG/E5FCqsweQrUSLyGoD+GDpCyzDB0kQVlsM82yJdOwOa8Zly+Uq
-         /TasIU9Q7OvkxqPUSW5e09fkeJOH/cysg9SH79ptf530yVeiuMnFRDfOztoGf5x9EVAj
-         7fjQ==
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:44748 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kCtTd-0004y9-LV
+	for alex.bennee@linaro.org; Mon, 31 Aug 2020 19:44:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48376)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kCtTW-0004x3-44; Mon, 31 Aug 2020 19:44:34 -0400
+Received: from mail-ej1-f67.google.com ([209.85.218.67]:32836)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kCtTU-0000yA-7b; Mon, 31 Aug 2020 19:44:33 -0400
+Received: by mail-ej1-f67.google.com with SMTP id h4so9230152ejj.0;
+ Mon, 31 Aug 2020 16:44:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=PH2RCbNEIaLhQ86NxGfy7qBIeGRthZo3i/8Dmi3lax0=;
-        b=qZuSIW6X5NVT8XXNkPnKBDBIl/TqatINAncpNEP/7bXMO3EbSBKhqxvsVtpnlUFxS4
-         G7LQO9n0UqPZlk/9V7bta+qqoeZwzIZbCy2eX4stlP6hai0yvz1J80+R0ALoSJsbD/rk
-         O/F+yxe+HMZTM801ptHmmf0yEchdC/snVJ4DOISFVWd2HL0ugS8mY4AeB8f93kRNloQF
-         xPd3oXCq9X1+egMSmduf7C3S74lc9hWAVHViESeZ86iZzSO5+YNbgctQvKl7btykHmIA
-         t6kfs0N/TGhpmjpCjMoRBwRRm6vZr3WhavLy+fFj5JXaN/DIkeFRG7R8nyiAtRhfPVtu
-         toQQ==
-X-Gm-Message-State: AOAM531lgjmiQCLkOq5KQTX8NBSCpcY3UkLKQpMBfn823nwnDge7vO5s
-	NXGFoaDU7jOeGu18tKH9OfKVOe26
-X-Google-Smtp-Source: ABdhPJyHeAhyq90Hw33BP93AMzx+wEo1MdvVb9FmV0StgvoewtulFfAzNG2O4KMOTxThoXtAhLT44g==
-X-Received: by 2002:a17:902:6ac9:: with SMTP id i9mr2726606plt.128.1598911912064;
-        Mon, 31 Aug 2020 15:11:52 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] ([71.212.141.89])
-        by smtp.gmail.com with ESMTPSA id 2sm590033pjg.32.2020.08.31.15.11.49
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 31 Aug 2020 15:11:50 -0700 (PDT)
-Subject: Re: [PATCH v2 7/7] target: Push BQL on ->cpu_exec_interrupt down into
- per-arch implementation
-To: Robert Foley <robert.foley@linaro.org>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>, Cornelia Huck <cohuck@redhat.com>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Max Filippov <jcmvbkbc@gmail.com>,
- Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Guan Xuetao <gxt@mprc.pku.edu.cn>, Eduardo Habkost <ehabkost@redhat.com>,
- Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "open list:S390 TCG CPUs" <qemu-s390x@nongnu.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- Michael Rolnik <mrolnik@gmail.com>, pbonzini@redhat.com,
- Stafford Horne <shorne@gmail.com>, alex.bennee@linaro.org,
- David Gibson <david@gibson.dropbear.id.au>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
- Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
- peter.puhov@linaro.org, Aurelien Jarno <aurelien@aurel32.net>
-References: <20200819182856.4893-1-robert.foley@linaro.org>
- <20200819182856.4893-8-robert.foley@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <42dc8454-9835-fc52-a7e2-73835672f3f9@linaro.org>
-Date: Mon, 31 Aug 2020 15:11:48 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Cv6omRegAey/8dBtaOUKEmVJo5RANXjdsu6UrezM83s=;
+ b=qfPZgDCNaUD4llVXS2ltbkAm7peXMLxG0NHk4lg+JdpqnMRcfASwr564oY5NOp9d/o
+ cy6sP8ksShYOqmK7kr2i7BPDqh1aFzMlfVyZ7YEfrxtBqJmef7AKtTWMZJ5yc1o1ztvf
+ vAdCOAsU6vlOIvHkeOkLKTZnOWVDZ1UT3CUg6sj4I+yigDXx4keL4+KWUFqSOzvxRbT0
+ 8E6hbJhWQNLKi8/OZIG6HjrDg1loI53UjMeH04pmNUijkxGHC84alACyZ3L+/PK/FkdQ
+ 4Jf0Blt2vqs+g668zQbLxo87h8nnYRSWLi+ayNq2rvfZX9tUtB99fBaSUxhresW2R3aG
+ x7YA==
+X-Gm-Message-State: AOAM530frzwQzFldN6yrn4YKB2tz7KR7G++2md9PyKvsEcnu220E1jqb
+ Q6R6dEZZvuIs6T7Cncsvi8Kv8hAgnpjFSZgZFhA=
+X-Received: by 2002:a17:907:728e:: with SMTP id
+ dt14mr3156309ejc.4.1598917470364; 
+ Mon, 31 Aug 2020 16:44:30 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200819182856.4893-8-robert.foley@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: Bz3qqZkdDKFf
+References: <20200819182856.4893-1-robert.foley@linaro.org>
+ <20200819182856.4893-3-robert.foley@linaro.org>
+ <439e8b14-adc1-b7ea-edaa-d11069863007@linaro.org>
+ <e324f958-8c9e-ebe1-e624-7eec610fe5aa@linaro.org>
+In-Reply-To: <e324f958-8c9e-ebe1-e624-7eec610fe5aa@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Date: Tue, 1 Sep 2020 01:44:17 +0200
+Message-ID: <CAAdtpL6hA0jQmivGrG7g9z4tbU8JhoW9zzhPgfh566r75XeZfg@mail.gmail.com>
+Subject: Re: [PATCH v2 2/7] target/arm: add ARMCPUClass->do_interrupt_locked
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000d8aa8e05ae34fb5e"
+Received-SPF: pass client-ip=209.85.218.67;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-f67.google.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 17:15:43
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.puhov@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Robert Foley <robert.foley@linaro.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KxKA6WCLLVR3
 
-On 8/19/20 11:28 AM, Robert Foley wrote:
-> diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-> index 499a8bdc5e..c4e54baa6f 100644
-> --- a/accel/tcg/cpu-exec.c
-> +++ b/accel/tcg/cpu-exec.c
-> @@ -599,7 +599,6 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
->             True when it is, and we should restart on a new TB,
->             and via longjmp via cpu_loop_exit.  */
->          else {
-> -            qemu_mutex_lock_iothread();
->              if (cc->cpu_exec_interrupt(cpu, interrupt_request)) {
->                  replay_interrupt();
->                  /*
-> @@ -614,7 +613,6 @@ static inline bool cpu_handle_interrupt(CPUState *cpu,
->              /* The target hook may have updated the 'cpu->interrupt_request';
->               * reload the 'interrupt_request' value */
->              interrupt_request = cpu_interrupt_request(cpu);
-> -            qemu_mutex_unlock_iothread();
->          }
->          if (interrupt_request & CPU_INTERRUPT_EXITTB) {
->              cpu_reset_interrupt(cpu, CPU_INTERRUPT_EXITTB);
+--000000000000d8aa8e05ae34fb5e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I think you need a change to patch 5, because this patch reduces the scope
-further, around cpu_interrupt_request, etc.
+Le mar. 1 sept. 2020 00:02, Richard Henderson <richard.henderson@linaro.org=
+>
+a =C3=A9crit :
 
-I think patch 5 should have
+> On 8/31/20 2:18 PM, Richard Henderson wrote:
+> > On 8/19/20 11:28 AM, Robert Foley wrote:
+> >> Adding ->do_interrupt_locked to ARMCPUClass is preparation for
+> >> pushing the BQL down into the per-arch implementation of ->do_interrup=
+t.
+> >>
+> >> This is needed since ARM's *_cpu_exec_interrupt calls to *_do_interrup=
+t.
+> >> With the push down of the BQL into *_cpu_exec_interrupt and
+> >> *_do_interrupt, *_cpu_exec_interrupt will call to ->do_interrupt
+> >> with lock held.  Since ->do_interrupt also has the lock, we need a way
+> >> to allow cpu_exec_interrupt to call do_interrupt with lock held.
+> >> This patch solves this issue of *_cpu_exec_interrupt needing
+> >> to call do_interrupt with lock held.
+> >>
+> >> This patch is part of a series of transitions to move the
+> >> BQL down into the do_interrupt per arch functions.  This set of
+> >> transitions is needed to maintain bisectability.
+> >>
+> >> This approach was suggested by Paolo Bonzini.
+> >> For reference, here are two key posts in the discussion, explaining
+> >> the reasoning/benefits of this approach.
+> >> https://lists.gnu.org/archive/html/qemu-devel/2020-08/msg00784.html
+> >> https://lists.gnu.org/archive/html/qemu-devel/2020-08/msg01517.html
+> >> https://lists.gnu.org/archive/html/qemu-devel/2020-07/msg08731.html
+> >> https://lists.gnu.org/archive/html/qemu-devel/2020-08/msg00044.html
+> >>
+> >> Signed-off-by: Robert Foley <robert.foley@linaro.org>
+> >> ---
+> >>  target/arm/cpu-qom.h | 3 +++
+> >>  target/arm/cpu.c     | 5 +++--
+> >>  target/arm/cpu_tcg.c | 5 +++--
+> >>  3 files changed, 9 insertions(+), 4 deletions(-)
+> >
+> > Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>
+> I take it back.  These two cc->do_interrupt calls can be replaced with
+> direct
+> calls.
+>
+> > #ifndef CONFIG_USER_ONLY
+> >     cc->do_interrupt =3D arm_v7m_cpu_do_interrupt;
+> > #endif
+> >
+> >     cc->cpu_exec_interrupt =3D arm_v7m_cpu_exec_interrupt;
+>
+> If we are in arm_v7m_cpu_exec_interrupt we will always call
+> arm_v7m_cpu_do_interrupt.
+>
+> I think the mismatch of #ifdef, which implies a different destination is
+> possible, is a bug -- cc->do_interrupt is not otherwise assigned and in
+> fact
+> would be NULL.
+>
+> I suspect that some of these slots themselves should be ifdefed, so that =
+we
+> cannot assign to them when they are unused.  That would help keep the
+> ifdefs in
+> the cpu init functions in sync.
+>
 
-+    bool success;
-+    qemu_mutex_lock_iothread();
-+    success = cc->cpu_exec_interrupt(cpu, interrupt_request);
-+    qemu_mutex_unlok_iothread();
-+    if (success) {
--    if (cc->cpu_exec_interrupt(cpu, interrupt_request)) {
-
-That way this patch maintains the scope of the lock.
+I tried to do this once but this breaks sizeof(CPUState) archived in
+libqemu.a vs linking softmmu / user.
+IIRC Peter explained why we can't do that. I'll search the post tomorrow.
 
 
-r~
+> This same condition is *not* true for cris -- there is no
+> crisv10_cpu_exec_interrupt -- so you do need the new do_interrupt_locked
+> field
+> there.
+>
+>
+> r~
+>
+>
+
+--000000000000d8aa8e05ae34fb5e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">Le mar. 1 sept. 2020 00:02, Richard Henderson &lt;<a h=
+ref=3D"mailto:richard.henderson@linaro.org">richard.henderson@linaro.org</a=
+>&gt; a =C3=A9crit=C2=A0:<br></div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">On 8/31/=
+20 2:18 PM, Richard Henderson wrote:<br>
+&gt; On 8/19/20 11:28 AM, Robert Foley wrote:<br>
+&gt;&gt; Adding -&gt;do_interrupt_locked to ARMCPUClass is preparation for<=
+br>
+&gt;&gt; pushing the BQL down into the per-arch implementation of -&gt;do_i=
+nterrupt.<br>
+&gt;&gt;<br>
+&gt;&gt; This is needed since ARM&#39;s *_cpu_exec_interrupt calls to *_do_=
+interrupt.<br>
+&gt;&gt; With the push down of the BQL into *_cpu_exec_interrupt and<br>
+&gt;&gt; *_do_interrupt, *_cpu_exec_interrupt will call to -&gt;do_interrup=
+t<br>
+&gt;&gt; with lock held.=C2=A0 Since -&gt;do_interrupt also has the lock, w=
+e need a way<br>
+&gt;&gt; to allow cpu_exec_interrupt to call do_interrupt with lock held.<b=
+r>
+&gt;&gt; This patch solves this issue of *_cpu_exec_interrupt needing<br>
+&gt;&gt; to call do_interrupt with lock held.<br>
+&gt;&gt;<br>
+&gt;&gt; This patch is part of a series of transitions to move the<br>
+&gt;&gt; BQL down into the do_interrupt per arch functions.=C2=A0 This set =
+of<br>
+&gt;&gt; transitions is needed to maintain bisectability.<br>
+&gt;&gt;<br>
+&gt;&gt; This approach was suggested by Paolo Bonzini.<br>
+&gt;&gt; For reference, here are two key posts in the discussion, explainin=
+g<br>
+&gt;&gt; the reasoning/benefits of this approach.<br>
+&gt;&gt; <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-08/m=
+sg00784.html" rel=3D"noreferrer noreferrer" target=3D"_blank">https://lists=
+.gnu.org/archive/html/qemu-devel/2020-08/msg00784.html</a><br>
+&gt;&gt; <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-08/m=
+sg01517.html" rel=3D"noreferrer noreferrer" target=3D"_blank">https://lists=
+.gnu.org/archive/html/qemu-devel/2020-08/msg01517.html</a><br>
+&gt;&gt; <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-07/m=
+sg08731.html" rel=3D"noreferrer noreferrer" target=3D"_blank">https://lists=
+.gnu.org/archive/html/qemu-devel/2020-07/msg08731.html</a><br>
+&gt;&gt; <a href=3D"https://lists.gnu.org/archive/html/qemu-devel/2020-08/m=
+sg00044.html" rel=3D"noreferrer noreferrer" target=3D"_blank">https://lists=
+.gnu.org/archive/html/qemu-devel/2020-08/msg00044.html</a><br>
+&gt;&gt;<br>
+&gt;&gt; Signed-off-by: Robert Foley &lt;<a href=3D"mailto:robert.foley@lin=
+aro.org" target=3D"_blank" rel=3D"noreferrer">robert.foley@linaro.org</a>&g=
+t;<br>
+&gt;&gt; ---<br>
+&gt;&gt;=C2=A0 target/arm/cpu-qom.h | 3 +++<br>
+&gt;&gt;=C2=A0 target/arm/cpu.c=C2=A0 =C2=A0 =C2=A0| 5 +++--<br>
+&gt;&gt;=C2=A0 target/arm/cpu_tcg.c | 5 +++--<br>
+&gt;&gt;=C2=A0 3 files changed, 9 insertions(+), 4 deletions(-)<br>
+&gt; <br>
+&gt; Reviewed-by: Richard Henderson &lt;<a href=3D"mailto:richard.henderson=
+@linaro.org" target=3D"_blank" rel=3D"noreferrer">richard.henderson@linaro.=
+org</a>&gt;<br>
+<br>
+I take it back.=C2=A0 These two cc-&gt;do_interrupt calls can be replaced w=
+ith direct<br>
+calls.<br>
+<br>
+&gt; #ifndef CONFIG_USER_ONLY<br>
+&gt;=C2=A0 =C2=A0 =C2=A0cc-&gt;do_interrupt =3D arm_v7m_cpu_do_interrupt;<b=
+r>
+&gt; #endif<br>
+&gt; <br>
+&gt;=C2=A0 =C2=A0 =C2=A0cc-&gt;cpu_exec_interrupt =3D arm_v7m_cpu_exec_inte=
+rrupt;<br>
+<br>
+If we are in arm_v7m_cpu_exec_interrupt we will always call<br>
+arm_v7m_cpu_do_interrupt.<br>
+<br>
+I think the mismatch of #ifdef, which implies a different destination is<br=
+>
+possible, is a bug -- cc-&gt;do_interrupt is not otherwise assigned and in =
+fact<br>
+would be NULL.<br>
+<br>
+I suspect that some of these slots themselves should be ifdefed, so that we=
+<br>
+cannot assign to them when they are unused.=C2=A0 That would help keep the =
+ifdefs in<br>
+the cpu init functions in sync.<br></blockquote></div></div><div dir=3D"aut=
+o"><br></div><div dir=3D"auto">I tried to do this once but this breaks size=
+of(CPUState) archived in libqemu.a vs linking softmmu / user.</div><div dir=
+=3D"auto">IIRC Peter explained why we can&#39;t do that. I&#39;ll search th=
+e post tomorrow.=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto"><=
+div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin=
+:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+<br>
+This same condition is *not* true for cris -- there is no<br>
+crisv10_cpu_exec_interrupt -- so you do need the new do_interrupt_locked fi=
+eld<br>
+there.<br>
+<br>
+<br>
+r~<br>
+<br>
+</blockquote></div></div></div>
+
+--000000000000d8aa8e05ae34fb5e--

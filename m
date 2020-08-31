@@ -1,140 +1,183 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3544085lfc;
-        Mon, 31 Aug 2020 02:47:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwb/0B8UZhrHcO1K37p1lZzkFPYyfSd21H4EoVKQZeLWE/Joeh8cLdx15gTgk/ldtU/6Ox6
-X-Received: by 2002:a5b:78e:: with SMTP id b14mr1103360ybq.408.1598867222277;
-        Mon, 31 Aug 2020 02:47:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598867222; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3577705lfc;
+        Mon, 31 Aug 2020 03:46:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkJOWwo2N/KOeGIiaLn3DD0fYw7uX3h3umcpuev4cH89J18ryXZcOW7BMesWTsz94nXig9
+X-Received: by 2002:a25:ad4e:: with SMTP id l14mr1310267ybe.322.1598870818920;
+        Mon, 31 Aug 2020 03:46:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598870818; cv=none;
         d=google.com; s=arc-20160816;
-        b=O08HeC7MSmAPHoee28NxVptT1Vd79QfESJ/dJjfsFtqn5DA7e/tLl/dZJrT0l19OGR
-         om7M2S/yzivwJfyTjkneA8oj2bSlv7tbhReZ7cDZTKbJDsWvyPr6sECtkj0TljojWONE
-         aL1fX6eu0p8Ul4MSRh1X++r2MUtqLa66LM+4QJq/Rx2jSxPHAU9YkL506LRKC9WG68LH
-         I+2ykKBSq9uQGez+RAcpaP2rwEWvu1rUpasY6xPhPJjHtvROHQoW5tnqiyoMqva4+95G
-         ngh8UwMRItd7KFKqEh+kMPYcFtHZUiLHXt13VBq/1NcBuiibRNuY9QNGYU92SEFS9nb/
-         OU9w==
+        b=qrF6q62nX5Uq/6fua/f596mGRDpr6MO1DYWultirloosrCF2E+6ddLUzL/mJRJSNSm
+         ySNLUG/l7sHArx4TKO3HhNHk86fdnzdiD+oM9aOxlY8JTLkBBd4cLS9oi1g1dnRqt0Ju
+         AKUE7mQPoQRpoZK+57p8XRlIbPVj2uiX199XhDqWuKyVwQBzZtaxVj3Wx7AhMt6UT7TM
+         A8lLSm5TLOWop8v4F+tUQ1D/b0pR6eNfzXLkkaJftXkx0d05dAypI6Pw47q5KblMxFAX
+         fp/nFmFiV//oAYYNhSaIu6ZRcpXyeQFkZ7ennF0fwTbytGgYml8+ItevSIvPx/WHxwxx
+         QVQg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=vYB2FEH1N2f7+55VSYjp4zjHg0CA9j0jUizcsCUhrPU=;
-        b=tUSuJ4J+T8ji9L5KHR5+lCZZCEay7ToN5iwBhnbeoJwGQT4YduOdEf6Lwzbo21nt/c
-         WFFI/ScZT8UTvBWrgeJEmbyH9OBnvps8cJ62dQO+wZ8+wGMUoDsTZCu3aCF2P9SbCzcO
-         0GKznI+O9W9RougpJnlEPrvgGdEz8bwsNjftZZZHpTRzV1IHYqUiQf8SKr4rI6DkTms4
-         Mde2qMgNciZafQCoAVxloyszQUZ9+R2d0Y2xf//yKEw73RP/HvjgNWZxoh+/cGiKpgqg
-         1WRdvHmN0ckcFGQIqG4yIrU2sOE8OMfP4Jj8xSCTnrFVzheTjaM2qBO/YuAuW26Ky9UY
-         ezzQ==
+        bh=WggWi+voPbZe+Rd1hOnadW9OVt+clz+6b359Lf5wcUA=;
+        b=tOOMqhsRBl7/Yvq41bX3HFwNtaGzxh2tQDHM7WqZxo2c5JJhNi7FFuB3wvDrPLR9ki
+         srGjDsWw12ZJ7xt5y0Q9RZu7lReodzkJRPVpoPkKnxfiGyHUicn+F9d9dQJXbPGAlEt0
+         mMTWaAuXQUOAamIo3VrslnEmEBbWYF6ed+FXUGpkQlK3maUoHUkU63VOSCLhE3LE+Et2
+         wg5ab0CVWkAyB1ofEeHiMsJH3CjmFHlWLaua7Hh2c58yzMzzirkzYAgvcMk0owHN9pOH
+         +HDm17QENjEJa5TTXDAWmKbm9E3nVDR7W5LxAf3QTuiniqiCT1YHz3E+9nqiN/zjwYFT
+         fEKw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Dria3KjN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ds5ZJDU+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w192si7977454ybg.487.2020.08.31.02.47.02
+        by mx.google.com with ESMTPS id x194si6000645ybg.155.2020.08.31.03.46.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Aug 2020 02:47:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 31 Aug 2020 03:46:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Dria3KjN;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ds5ZJDU+;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:41158 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38394 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kCgOz-0004vN-Lz
-	for alex.bennee@linaro.org; Mon, 31 Aug 2020 05:47:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59892)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kChL0-00034a-Ag
+	for alex.bennee@linaro.org; Mon, 31 Aug 2020 06:46:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42960)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kCgOH-0004Sp-VX
- for qemu-devel@nongnu.org; Mon, 31 Aug 2020 05:46:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:24514)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kChKn-00033z-UK
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2020 06:46:45 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:30272
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kCgOF-0007UL-Ig
- for qemu-devel@nongnu.org; Mon, 31 Aug 2020 05:46:17 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kChKk-0006D4-D9
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2020 06:46:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598867173;
+ s=mimecast20190719; t=1598870800;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=vYB2FEH1N2f7+55VSYjp4zjHg0CA9j0jUizcsCUhrPU=;
- b=Dria3KjNV0wFjo/ON2sgNwcFOSnnfN8L+/L1g2bJ8AjELEZKJtuMkDpQ/qt4v+QvHK4IPq
- jKL4/Wv27DAl5eNct8vEmLKAhV65JkAmmB9ewZazPi+gVnJiWWDKkb1ErxrwPpK5m8gEcr
- VjtlKmhF6ygXi9/3NOliOu0Ad9kIvls=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-232-RQUPk-fsNJCdcjxlLWq39A-1; Mon, 31 Aug 2020 05:46:12 -0400
-X-MC-Unique: RQUPk-fsNJCdcjxlLWq39A-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DDABC10066FA;
- Mon, 31 Aug 2020 09:46:10 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-54.ams2.redhat.com
- [10.36.112.54])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F0D669F54;
- Mon, 31 Aug 2020 09:46:04 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 12956991; Mon, 31 Aug 2020 11:46:04 +0200 (CEST)
-Date: Mon, 31 Aug 2020 11:46:04 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Igor Mammedov <imammedo@redhat.com>
-Subject: Re: [PATCH v6 19/20] tests/acpi: add microvm test
-Message-ID: <20200831094604.2fcrcrjzvfbw2jes@sirius.home.kraxel.org>
-References: <20200826105254.28496-1-kraxel@redhat.com>
- <20200826105254.28496-20-kraxel@redhat.com>
- <20200831094322.38b0d571@redhat.com>
+ bh=WggWi+voPbZe+Rd1hOnadW9OVt+clz+6b359Lf5wcUA=;
+ b=ds5ZJDU+9RZKtjLd13iXCz6lIfnaPRiGlaw6RynzNIgBob1eUeQxehgtV5VwJi2g2buPaq
+ bXAsnFucBPk8oJwezEucU2oLMv1+lvnc6ga4gmilkskkUQ9/FnMVe/VVluYCWccqsLcr2l
+ qlWoQuCyvmVUQgvV9V5h6bfvvSF3TvA=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-8-3U3tsTdJOoelQ4ee9aAJAw-1; Mon, 31 Aug 2020 06:46:38 -0400
+X-MC-Unique: 3U3tsTdJOoelQ4ee9aAJAw-1
+Received: by mail-wr1-f69.google.com with SMTP id g3so3059371wrx.1
+ for <qemu-arm@nongnu.org>; Mon, 31 Aug 2020 03:46:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to;
+ bh=WggWi+voPbZe+Rd1hOnadW9OVt+clz+6b359Lf5wcUA=;
+ b=pb4pPvTwkVjEbvfPvSGYqyrdYJmKhWzWeaXG3+wtNO0uRP+cb3M4YWtudpgwGgEjr/
+ D3N18PEbk4D9BcWqEyS8w2EN48FTIJWmLSdSY5JE1NbtTrYgt7U4RBrKk/mFyeP7J6Pl
+ Idg+MiUwVtePvYRm77pRJDxPUXZS69ej1KLMFkg6wj19zqvoqgCjUhLMLsXQbZKC7E2c
+ 7kqOoSN7pNqcxmx+Cs4vCphqhTcmsUm1ig9G300DDE0DKoqLE344/UatjhTUtBv6tGDu
+ +vFy3lOxn+08p6FyTXnVDSVzUsTiQQbFpODaZd48jTvgwkYu8jXH0mo2gFlaDU1CTt8j
+ T9Qg==
+X-Gm-Message-State: AOAM531VJA1OfZWP1E5oWJHQbk/qiZCH4LRhI8nCModWSqSrmIgABu7d
+ 8deAvxiPPiyjmB8YwssBTixwSpPgLuhKATLyck+GHnn/0Gl8QPwM5d6P9Eu1F0emLpqRlw5Mnla
+ w+fJTncvqGe/4
+X-Received: by 2002:adf:a1d6:: with SMTP id v22mr1095687wrv.185.1598870797155; 
+ Mon, 31 Aug 2020 03:46:37 -0700 (PDT)
+X-Received: by 2002:adf:a1d6:: with SMTP id v22mr1095658wrv.185.1598870796956; 
+ Mon, 31 Aug 2020 03:46:36 -0700 (PDT)
+Received: from redhat.com (bzq-109-66-64-75.red.bezeqint.net. [109.66.64.75])
+ by smtp.gmail.com with ESMTPSA id
+ q8sm11607586wrx.79.2020.08.31.03.46.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 31 Aug 2020 03:46:36 -0700 (PDT)
+Date: Mon, 31 Aug 2020 06:46:32 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Subject: Re: [PATCH 01/11] hw/arm/virt-acpi-build:Remove dead assignment in
+ build_madt()
+Message-ID: <20200831064614-mutt-send-email-mst@kernel.org>
+References: <20200813073712.4001404-1-kuhn.chenqun@huawei.com>
+ <20200813073712.4001404-2-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200831094322.38b0d571@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+In-Reply-To: <20200813073712.4001404-2-kuhn.chenqun@huawei.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0.001
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
+X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 03:02:42
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=mst@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 02:13:08
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, zhang.zhanghailiang@huawei.com,
+ qemu-trivial@nongnu.org, pannengyuan@huawei.com, qemu-devel@nongnu.org,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R1gvPwaiMTPI
+ Euler Robot <euler.robot@huawei.com>, Igor Mammedov <imammedo@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: azeRmjX2oFEF
 
-  Hi,
+On Thu, Aug 13, 2020 at 03:37:02PM +0800, Chen Qun wrote:
+> Clang static code analyzer show warning:
+> hw/arm/virt-acpi-build.c:641:5: warning: Value stored to 'madt' is never read
+>     madt = acpi_data_push(table_data, sizeof *madt);
+>     ^      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 
-> > +    test_acpi_one(" -machine microvm,acpi=on,rtc=off",
-> I'm just curious, why rtc is off?
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-Just want to have it set explicitly in the testcase instead of depending
-on the default.  The rtc is listed in the dsdt if present so the switch
-has an effect on the expected dsdt content.
+feel free to merge through the trivial tree.
 
-take care,
-  Gerd
+> ---
+> Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: qemu-arm@nongnu.org
+> ---
+>  hw/arm/virt-acpi-build.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+> 
+> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> index 91f0df7b13..f830f9b779 100644
+> --- a/hw/arm/virt-acpi-build.c
+> +++ b/hw/arm/virt-acpi-build.c
+> @@ -633,12 +633,11 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+>      int madt_start = table_data->len;
+>      const MemMapEntry *memmap = vms->memmap;
+>      const int *irqmap = vms->irqmap;
+> -    AcpiMultipleApicTable *madt;
+>      AcpiMadtGenericDistributor *gicd;
+>      AcpiMadtGenericMsiFrame *gic_msi;
+>      int i;
+>  
+> -    madt = acpi_data_push(table_data, sizeof *madt);
+> +    acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
+>  
+>      gicd = acpi_data_push(table_data, sizeof *gicd);
+>      gicd->type = ACPI_APIC_GENERIC_DISTRIBUTOR;
+> -- 
+> 2.23.0
 

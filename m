@@ -1,155 +1,202 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp2343418lfc;
-        Sat, 29 Aug 2020 08:32:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxVsm0UCHqNeJr5fAxMNwXlWmK4BQdE2XAI7CGhZEXzQra8l3+/K4wu/3xHety5ytUgGSGf
-X-Received: by 2002:a25:1f44:: with SMTP id f65mr9746257ybf.438.1598715139716;
-        Sat, 29 Aug 2020 08:32:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598715139; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3613031lfc;
+        Mon, 31 Aug 2020 04:44:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzdExs1EBxqI5qz6wlFcfgUQNwdP8yZofYQG4BdSHBLD85qQNDXFjNnT2IQXHLvBuF6tpyZ
+X-Received: by 2002:a37:6543:: with SMTP id z64mr298831qkb.278.1598874261122;
+        Mon, 31 Aug 2020 04:44:21 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1598874261; cv=pass;
         d=google.com; s=arc-20160816;
-        b=aG8KHahZRdpcoYh+UAi03mHNxgSUatHxP4bNQQ8gU+8kbbvNCRLIjgGFKDuFLwex+m
-         uCZZ5P/7Z5QQconYnXioLTWCVzw1vDruiufzOVNO9A6z7Jbr5B94BtQR0CVNnsGFJl3R
-         xOGSuTtNRWwWK9z9tvXkEjNnHXZ5XC9cDCageptIR0orzAXFZWdCg1K14gwqEta8NlAo
-         8rHWUxPRm6R40VNSRqPVnPRWw1/5b+P8ov15OLOQFz0HkK7gk4+Lto5nk3PUaCbwpDwt
-         yQzFxpousjQOPyGWlFN0KnDa+8SlDpU7x5ds/rDDEYK+xEpeUDstSZRxMdLQV9VxdYrf
-         cMOw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=LoXLQrNGyodtKsVDD9sShhB0cDIIOHi66BBk8i6u1N4=;
-        b=GaHer1fn+iwpmDILBOrl9wDFySuGdccgSVSMphYC+3e1xzm6wa2iW+jtJrxfg1JPH+
-         SNBlBaodfdp/MV0HzoRx9Qqphy6YigTMI/RrFfp5njX7RudZ9nI1WvRrG2QmlFrPoNfC
-         lmmlsm+GYBFIvtE+xivmKBmD7/NsvMqsVE37TcP8WwdBdTF9CyLIGw3D4GoxHCdoyJ0R
-         Ymxp63TL3DuhmpCQW52icqsnYJ6dvyK6P62miZlqinoO/U5RSX8yX1yx+OQQdGK14imX
-         Q5VLTC1L9y5Z01nAja/RVhEf7+A8lFXpOvL5S8UOJ0Sa+GbHZnfMCT18j/I3vGlglj0o
-         fAQw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YzG+lKYT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e65si707542ybf.322.2020.08.29.08.32.19
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 29 Aug 2020 08:32:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        b=fPpx3Gt/U+/esL+NHrwDDOyJuc6JrUAJQIIOSKtpwAtUC5UqCuPzpwIhBQdMfbMCht
+         2en8rb4ECTVRQQDX1DbBpS+BlraBrbTypdEzrgX4tK9E4Q0hKrEOh3JTopV5i3kxdqcr
+         ZhIbXwLzPOz+Pl5pVS61+Ie9kE+vDqf3tsOxWbmZf9N2X+Vwjcj+pR1serOIReVq/jzD
+         rHlZilxNgRj64IPS6GHyQOhUhp+rBT8T3gfz7Sq4j6UIdOw8/5iLa+c266BfCsD35DXh
+         7JcZfDPZnjGCcYQa+AMgGQMERqfts94k2KOP2K2B6tgDL8l4EjsjxOZnvg/KrfWrEPMD
+         K5hA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:message-id:date:subject:cc:to:from:dkim-signature;
+        bh=0L4fSaWp/YTjTjtlz7chvvBXzPfp/Kpr1Nr+1CyUOzc=;
+        b=fb2UAs/mpZ8VC0A3fLfxqB3sDKYH0qpfgLW1S2c3+0fCnbJQtrnsMPyAaTZrxZQRBg
+         RRcmyBMwJNaeh0aGc1ypUZ+5luhvm0dO20hcC5BLo2roqbd72RZvdihbXVHDk49jM2AP
+         hWE83nV+2wAEdzeeqS+tBteczl9a+oPzbv2BbncV5InZpKvBfy+G6ZRpKrtKFoFZvEKg
+         78P4SVuXfeoRSBxdatvJQYIF0CIAzWw8tE7IO5YNfXmrhSEUSf2mRFS/abhKKf/OVrwD
+         fn5bZ/kyWoWj5gDJWSB5xn7pTffHJPBmLfWrjqL5MIVm43ZVYjHIg4Mj22AqBQTT3Ut8
+         0glw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=I4bPaM18;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of saipava@xilinx.com designates 40.107.236.67 as permitted sender) smtp.mailfrom=saipava@xilinx.com
+Return-Path: <saipava@xilinx.com>
+Received: from NAM11-BN8-obe.outbound.protection.outlook.com (mail-bn8nam11on2067.outbound.protection.outlook.com. [40.107.236.67])
+        by mx.google.com with ESMTPS id l4si412016qvo.25.2020.08.31.04.44.20
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 31 Aug 2020 04:44:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of saipava@xilinx.com designates 40.107.236.67 as permitted sender) client-ip=40.107.236.67;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=YzG+lKYT;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43072 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kC2q3-0001Ss-3I
-	for alex.bennee@linaro.org; Sat, 29 Aug 2020 11:32:19 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46374)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kC2oJ-0000XI-HI
- for qemu-devel@nongnu.org; Sat, 29 Aug 2020 11:30:31 -0400
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:38982)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kC2oG-0006gC-TJ
- for qemu-devel@nongnu.org; Sat, 29 Aug 2020 11:30:31 -0400
-Received: by mail-pf1-x444.google.com with SMTP id u128so2192767pfb.6
- for <qemu-devel@nongnu.org>; Sat, 29 Aug 2020 08:30:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LoXLQrNGyodtKsVDD9sShhB0cDIIOHi66BBk8i6u1N4=;
- b=YzG+lKYT1ukFvHNqylk4mn1N3gFu1uM3y0KOgLJ0Hg5NHEVj9LctuXp96y4NNZcVX1
- oDKZNwxiRHo9T5LE+CAgROQUWp5lGSxrhPRucz2LWfKRqDU4OVP+MDTtq6S1NNy5x7bx
- ymZ2LaZYgdgCKh122iUxnMQhXWRNeV0s0Z1UfJEENs6JPqr3hz0YtIJR4hu12IGaIu5g
- C4xdI9ShicdMXfapWg6FJibCJJw5DPatW2ks6XcOU41CVGQzRewzk1VxO9Jeq/6Kg1lv
- KYhmx9eUikae/5dEDZqgU7qMMo+Ker2rC7HaTTezWhfVB0yjssvRaLtXpkfUm0XkciSD
- 0Z1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=LoXLQrNGyodtKsVDD9sShhB0cDIIOHi66BBk8i6u1N4=;
- b=O/1M0rzRq/5g+VwhgLpNK+pX6AZgQCzUej7UEby1HRkpeqPAmDpDV9SLucOWIyadMh
- PM6DjKcJmiHaWTYBAXksng0GaV3B54hMC/TtniAA6bcICfTvfZPlQduw1Wj2XoPgxerE
- I/3UwwE+YDDSZw/ZMJsa6HsedWEAg2+RNQ012X1CHGhvpfcdA93uW7guxfK1Zpn9mMvp
- KbaBApI3CMitp1DByfLslDKwHxsnQh1gcKBSisOG1oZga7nw4J4Tuw6/kLWwp3UcIBxZ
- gL8gwdnm73KW0sn6LpEMe8xN208KTGhMkY7HNMOfIVZYhL+uN64ZWCSYfOqxBYkQ8kPV
- zZOA==
-X-Gm-Message-State: AOAM531Ky9pK0CqWERR/L4De80IuGoWTH/BrdjK/5hQo+Hm2gzgsIyBS
- VyFnVfbnLaVcLCqo8LuE6VAzBqSS/nIdXQ==
-X-Received: by 2002:a63:4746:: with SMTP id w6mr711576pgk.412.1598715026961;
- Sat, 29 Aug 2020 08:30:26 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id go12sm2321768pjb.2.2020.08.29.08.30.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 29 Aug 2020 08:30:26 -0700 (PDT)
-Subject: Re: [PATCH v2 24/45] target/arm: Implement fp16 for Neon VRECPE,
- VRSQRTE using gvec
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20200828183354.27913-1-peter.maydell@linaro.org>
- <20200828183354.27913-25-peter.maydell@linaro.org>
- <55675521-a61c-186c-599f-7373e9165184@linaro.org>
- <CAFEAcA87JLog+Ly5wvRi2bOvwDvFVL5mjpnkeB3h+pckbnNMmQ@mail.gmail.com>
- <2007993d-9f64-dca5-5fd9-510c87cd8e86@linaro.org>
- <CAFEAcA8cEF4s8E5k=eKs8u3hRqWKDgSwe5yA+c+uVXnCt4ixBg@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <01264b55-59d0-f03e-e675-7edad0988ab6@linaro.org>
-Date: Sat, 29 Aug 2020 08:30:24 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=I4bPaM18;
+       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
+       spf=pass (google.com: domain of saipava@xilinx.com designates 40.107.236.67 as permitted sender) smtp.mailfrom=saipava@xilinx.com
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=M5XVx+54IcDgO1i4LvZt2AS+8NlTUW50bGz3YdmSv7L3se3dc8Mu5pFI9WuHYIfDDF8Vtf5P4qOLiy3PfW4paWm3OGFZCpzl0bGq5Ux5qhliaObe47v8QmfZxwC9miTKISWjtZZuCI1JHtkl1LoXzk8Cjp+RsDhP1RZWIXqYkpkvZ2q72GyYbnmdgTlngAjtKqhUk6kcwT3N0rqyEOAtLz10DtvQNKa6lbD7iJz5EZvgjZTrVXESEGpqeabK3ClJaJjW0eUuafcvPU7GC5mi6PvvJv3yXKEc7pYmWpxPzIsdgJhu4imqEdLeFb+9GnPeJzIypTa56yp0DKJdE/Jpbg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0L4fSaWp/YTjTjtlz7chvvBXzPfp/Kpr1Nr+1CyUOzc=;
+ b=hEuTfwS823ND6vUngWnPJUpGugnHE6/ue9+g+zi7tlEit7wHsL38L5dEs7euJ6suhhYX8PdllRwV1lC5Gbi8ikP3hAqtexsnZxzEv2mU1kDajRzaKaE+E019+urOC8Z+ISYWvxGlV/3p6TJCuqaJtptsWqLwS8ZBLw2+2l6QJ477/OxK2SUExjMY0NDa/HHauJ4USeu4FA3kjgPN2V/CQojfSRmazITYOsC01uPqIWVFwjzUnwzNx5QTtIVAQb3fbJDvZdu6HuD6j1J562OwQoESBiqp3M9VFmhcLPMHKMqDVjZN+dwB28joA2b1DvG7pntcJnRkTkM1edsMUrwkRQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 149.199.60.83) smtp.rcpttodomain=redhat.com smtp.mailfrom=xilinx.com;
+ dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
+ not signed); arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0L4fSaWp/YTjTjtlz7chvvBXzPfp/Kpr1Nr+1CyUOzc=;
+ b=I4bPaM18yjf53+sBut9bNcVWwfyUjsuIXcOMk+thvOsMKelONfxzIp/HK2D227XMyGcZVWFnFbEIJM75hemfpAZoOn7iI0f7mlTK66WgtFhPM6WPJEDzmp1fwQYyii9Q9LxGQPV2m0uM52BqXDUg1kBMV7+QbpS0U67QRw/ZmxY=
+Received: from MN2PR05CA0036.namprd05.prod.outlook.com (2603:10b6:208:c0::49)
+ by BYAPR02MB4933.namprd02.prod.outlook.com (2603:10b6:a03:44::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3326.19; Mon, 31 Aug
+ 2020 11:44:19 +0000
+Received: from BL2NAM02FT060.eop-nam02.prod.protection.outlook.com
+ (2603:10b6:208:c0:cafe::c3) by MN2PR05CA0036.outlook.office365.com
+ (2603:10b6:208:c0::49) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3348.5 via Frontend
+ Transport; Mon, 31 Aug 2020 11:44:19 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
+ smtp.mailfrom=xilinx.com; redhat.com; dkim=none (message not signed)
+ header.d=none;redhat.com; dmarc=bestguesspass action=none
+ header.from=xilinx.com;
+Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
+ 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
+ client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
+Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
+ BL2NAM02FT060.mail.protection.outlook.com (10.152.76.124) with Microsoft SMTP
+ Server id 15.20.3326.19 via Frontend Transport; Mon, 31 Aug 2020 11:44:18
+ +0000
+Return-Path: sai.pavan.boddu@xilinx.com
+Received: from [149.199.38.66] (port=60942 helo=smtp.xilinx.com)
+	by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
+	(envelope-from <sai.pavan.boddu@xilinx.com>)
+	id 1kCiES-00031a-Rr; Mon, 31 Aug 2020 04:44:16 -0700
+Received: from [127.0.0.1] (helo=xsj-smtp-dlp1.xlnx.xilinx.com)
+	by smtp.xilinx.com with esmtp (Exim 4.63)
+	(envelope-from <sai.pavan.boddu@xilinx.com>)
+	id 1kCiEU-0004Ms-I5; Mon, 31 Aug 2020 04:44:18 -0700
+Received: from xsj-pvapsmtp01 (smtp-fallback.xilinx.com [149.199.38.66] (may be forged))
+	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 07VBiHFK001892;
+	Mon, 31 Aug 2020 04:44:17 -0700
+Received: from [10.140.6.35] (helo=xhdsaipava40.xilinx.com)
+	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
+	(envelope-from <saipava@xhdsaipava40.xilinx.com>)
+	id 1kCiET-0004MM-8t; Mon, 31 Aug 2020 04:44:17 -0700
+Received: by xhdsaipava40.xilinx.com (Postfix, from userid 14131)
+	id 5D89D13C051A; Mon, 31 Aug 2020 17:18:44 +0530 (IST)
+From: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+To: Peter Maydell <peter.maydell@linaro.org>,
+        Richard Henderson <richard.henderson@linaro.org>,
+        =?UTF-8?q?=27Philippe=20Mathieu-Daud=C3=A9=27?= <philmd@redhat.com>,
+        Andrew Jones <drjones@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+        =?UTF-8?q?=27Alex=20Benn=C3=A9e=27?= <alex.bennee@linaro.org>,
+        Eric Auger <eric.auger@redhat.com>,
+        "'Edgar E . Iglesias'" <edgar.iglesias@xilinx.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, sai.pavan.boddu@xilinx.com
+Subject: [PATCH] target/arm: Configure number of pmu counters
+Date: Mon, 31 Aug 2020 17:18:42 +0530
+Message-Id: <1598874522-5186-1-git-send-email-sai.pavan.boddu@xilinx.com>
+X-Mailer: git-send-email 2.7.4
+X-RCIS-Action: ALLOW
+X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
+X-TM-AS-User-Approved-Sender: Yes;Yes
+X-EOPAttributedMessage: 0
+X-MS-Office365-Filtering-HT: Tenant
+X-MS-PublicTrafficType: Email
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8cEF4s8E5k=eKs8u3hRqWKDgSwe5yA+c+uVXnCt4ixBg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -28
-X-Spam_score: -2.9
-X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.809,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6kXqtFidCiNW
+Content-Type: text/plain
+X-MS-Office365-Filtering-Correlation-Id: d18d1460-2b75-4686-5ce6-08d84da33225
+X-MS-TrafficTypeDiagnostic: BYAPR02MB4933:
+X-Microsoft-Antispam-PRVS:
+	<BYAPR02MB4933B6E82C8B4197BE179CD6CA510@BYAPR02MB4933.namprd02.prod.outlook.com>
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info:
+	cA/wWCmE5Y1TE71E5fD2IFtXXLzxLDwLc4sMkDu+hTJFHQdSxYQ2OM8oePQedfQb62xLR6gcruMWoGLQR9Py1dvMO0koVywcOuDjiyVOktRD+EMHJW0i8EigP4KA7Jx7riuCdtKqZ8dj/gSNMGhD+oJLoZeACHWJzkpv/Ijj82bwTWdK0hpBvEfCZwKEBzMz5ATjD64ILCheilQ1Rjh/AB5eahsYjBBXbOC5pc99lq5QUIk9IhrHn/3LuTHjswAu9RJx+5wAiLoVMUgxv0MclBcHlhmYg1IkwdQ9qyRoADN7M8cIao3aS+WoBz3fg4Xd0kJQO29ji+UtsilFBYD7BGkDS2EOUBEznFjEB9ky5JQXjtGUZvYP7aIIpQX9yFKx4Ldx0kJU4833RCrmroGesY+PkwDYZkKQTJnEMDYS+Os=
+X-Forefront-Antispam-Report:
+	CIP:149.199.60.83;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:xsj-pvapsmtpgw01;PTR:unknown-60-83.xilinx.com;CAT:NONE;SFS:(396003)(136003)(376002)(346002)(39860400002)(46966005)(5660300002)(26005)(186003)(70586007)(70206006)(336012)(36756003)(426003)(2616005)(82310400002)(42186006)(8676002)(83380400001)(107886003)(6266002)(478600001)(356005)(2906002)(47076004)(6636002)(81166007)(110136005)(8936002)(82740400003)(316002)(4326008)(42866002);DIR:OUT;SFP:1101;
+X-OriginatorOrg: xilinx.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Aug 2020 11:44:18.9132
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d18d1460-2b75-4686-5ce6-08d84da33225
+X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;Ip=[149.199.60.83];Helo=[xsj-pvapsmtpgw01]
+X-MS-Exchange-CrossTenant-AuthSource:
+	BL2NAM02FT060.eop-nam02.prod.protection.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB4933
+X-TUID: Lf6nrYJdaBcj
 
-On 8/29/20 6:53 AM, Peter Maydell wrote:
-> On Fri, 28 Aug 2020 at 23:53, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> On 8/28/20 2:40 PM, Peter Maydell wrote:
->>> The other approach would be to standardize on "the decodetree pattern
->>> always converts the size to the data-type size, regardless of how
->>> it's encoded in the insn fields", and then you could check against
->>> MO_16 here. Would that be better ?
->>
->> That might be clearer, yes.  Otherwise it's hard to tell what "size" means
->> without looking at the manual for each instance.
-> 
-> Do you mind if I do that as a separate patchset after this one?
-> I feel that will be easier than trying to weave the change into
-> this series...
+Default the pmu counters to 4 and configure it a 6 for a53 cores.
 
-Yes, certainly.
+Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+---
+ target/arm/cpu.c    | 3 +++
+ target/arm/cpu.h    | 3 +++
+ target/arm/cpu64.c  | 1 +
+ target/arm/helper.c | 2 +-
+ 4 files changed, 8 insertions(+), 1 deletion(-)
 
-
-r~
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 6b382fc..805a692 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1051,6 +1051,9 @@ static void arm_cpu_initfn(Object *obj)
+     cpu->psci_version = 1; /* By default assume PSCI v0.1 */
+     cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
+ 
++    /* set number of pmu counters to 4 */
++    cpu->pmcrn = 4;
++
+     if (tcg_enabled()) {
+         cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
+     }
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index ac857bd..3b47ba8 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -879,6 +879,9 @@ struct ARMCPU {
+      */
+     int32_t core_count;
+ 
++    /* Number of pmu counters */
++    uint8_t pmcrn;
++
+     /* The instance init functions for implementation-specific subclasses
+      * set these fields to specify the implementation-dependent values of
+      * various constant registers and reset values of non-constant
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index dd69618..76c879a 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -190,6 +190,7 @@ static void aarch64_a53_initfn(Object *obj)
+     cpu->gic_vpribits = 5;
+     cpu->gic_vprebits = 5;
+     define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
++    cpu->pmcrn = 6;
+ }
+ 
+ static void aarch64_a72_initfn(Object *obj)
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 44d6666..4afbefb 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6534,7 +6534,7 @@ static void define_pmu_regs(ARMCPU *cpu)
+      * field as main ID register, and we implement four counters in
+      * addition to the cycle count register.
+      */
+-    unsigned int i, pmcrn = 4;
++    unsigned int i, pmcrn = cpu->pmcrn;
+     ARMCPRegInfo pmcr = {
+         .name = "PMCR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 0,
+         .access = PL0_RW,
+-- 
+2.7.4

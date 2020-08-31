@@ -1,108 +1,109 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4002336lfc;
-        Mon, 31 Aug 2020 14:10:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyYgeM/RdM5txbE638u9sMZu6H5xI6gAYRp6v7lHWtRgLb13Pl87jcP/5twtiJ3kBUH8bas
-X-Received: by 2002:a25:b5cc:: with SMTP id d12mr5102361ybg.190.1598908247855;
-        Mon, 31 Aug 2020 14:10:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598908247; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4003226lfc;
+        Mon, 31 Aug 2020 14:12:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxkWanWrk3C/6ANTlRTqt47CM+1/ZluP8hIjXmfORlrME2fbopAXiq21kaRPmHS8u2qt3UR
+X-Received: by 2002:a25:9d89:: with SMTP id v9mr4841981ybp.108.1598908327473;
+        Mon, 31 Aug 2020 14:12:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598908327; cv=none;
         d=google.com; s=arc-20160816;
-        b=RqcmfJ+iMZ5M1cxb+JdLS0cDmTuh2R7s+aqNtDTGTkAsOCiLCWdQINBHuN3OZh20NM
-         nmp/QhAiZnZ4UZvIOj75OGcaxeeSwc40ualzHG1Dd7DsSf8BO65ZkzOhK3d53VscWEnR
-         iFuolnYNIKhibf2HskgJ4McJZlwrk5dj7DHBlnQE0v7cPc8NMO679oDs6sRS2jUR1vUU
-         CZ4tCC0nJdsuJeCOUE3ESKOPfehgkTs6scydzHuGYsMEKtTpHGbh+lgTqP7vw9JPQTfA
-         pDVSRdo/KENk/sod9jIjRvxzA1VWogzQQyKGF6WMkid0HsDy5dRXKGEbMLVT99dxrJv5
-         0gDg==
+        b=zYvxCiNYdHgjN2YHE02sJ6hxLGaQgXBSkO5HSPJTJXi1vG+bqrQVBD0nin7LAlPaD/
+         Ggjunv5h4Co151N1HdJuGyrKNZL1TwoDT94zH67NnqxkmdWNuioHzuK5PjrcClb7ndKL
+         idY+c5EMSsE0gaStV9uwlfkwqxHZoGtWWmMzsobr5PjBOD887iAJ3/XRP07PWwkTL5Dd
+         qV4nmPnNDEc0Pruy0w8g2QHIV37hVAFuyEA89+8iLvDe4FFu8Z7YjKcJknBbD9rq4na6
+         y/iWOwvyRiNbluO4p1BnTIvr01lAzbFzPPjLCe5DaoDgKainJscM79CKiTdRdf9ZJu7Z
+         TUuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Wbzi430Kpadf0ivRBdvVfzRyP76PlwJUtCXjcSq46Ns=;
-        b=ZF9LDRJdf6O+6wRk6b4Z7cUW+41ME8wazqNRr99qLnjGXSuFGztZmjvLRu4nrHzOZg
-         m/Y39mqYPipaiwM0/fpS7riR/qoYoOd/umJmUpenm8ybt5uel6zRT6Cmv4jCFarCONks
-         3JvgjscIm25ZJGF/rcn4TFR22I6J3lSUuitUnJ4H+Uf2AVA1XP4vK6Syw4y6XsMfk067
-         A3FuUmHDyyZBQ+Ji2astXsRX6OzTD0qQG46W+ehnIXFsX9itU1LlhtwxkCR4PFmtAQ0T
-         qWt+187NO5MFDZ/ncqKxeer+AgLIkNjSO8IE3Omdsv6LNEOhdeXGiRK8ChV07O6lEKt/
-         rqEA==
+        bh=Drboy62O1LBCh7uah3AZ0Zl6FneOi0JiDtImU/qB8Yk=;
+        b=N41K/B9SxDeGQv62XouX1nSFAY0wK1yEs5IZL+DMaZGZC1jSnMl/H63RhkSnvfem4G
+         ciNGhTU05iMCPpEeEzaoyVCpUoxfNlEELZoxRA3rwuHFEdTOI/8apdyOouLsXJwqDlvo
+         U3lY/hhVYEqjc8rT3/0uUUgaaSrknqaiIlu8hgpYIpDHYCavw+QQJ+JmkJXHtaFZ9jGO
+         rjSrJgbW7HfRhrWrxd0rF1MvOPmBKzTF1iGsEl/DaY9hfsEGVvt5gEl9hZph+KlQiaTn
+         SkGWBelWge107ZCc11DuA4PuDaYQkRzqiCGbVm1YVDcOQ0TLdQ25lTIAinDnKbB4AivR
+         MygQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LX6Jxs+e;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mq0LffGK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 133si8043592ybe.226.2020.08.31.14.10.47
+        by mx.google.com with ESMTPS id a2si8930534ybi.478.2020.08.31.14.12.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Aug 2020 14:10:47 -0700 (PDT)
+        Mon, 31 Aug 2020 14:12:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LX6Jxs+e;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mq0LffGK;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44858 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50586 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kCr4g-0000FU-Oz
-	for alex.bennee@linaro.org; Mon, 31 Aug 2020 17:10:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45362)
+	id 1kCr5y-0002Xq-Q8
+	for alex.bennee@linaro.org; Mon, 31 Aug 2020 17:12:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44928)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kCr3i-0006uE-Qx
- for qemu-arm@nongnu.org; Mon, 31 Aug 2020 17:09:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44314)
+ id 1kCr2l-00058u-2W
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2020 17:08:47 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:31940
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kCr3f-0000JJ-Gp
- for qemu-arm@nongnu.org; Mon, 31 Aug 2020 17:09:46 -0400
+ id 1kCr2i-0000BF-Gy
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2020 17:08:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598908182;
+ s=mimecast20190719; t=1598908123;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Wbzi430Kpadf0ivRBdvVfzRyP76PlwJUtCXjcSq46Ns=;
- b=LX6Jxs+e/Hq/iAQhpsnZHI5TZ4JRQG7ueBdmbevCNHtaFk5LFFikPfxE3A6ZJFsUizvj06
- 2EQfI/iBIxQENj4hWvhEANYEef0TJfsRqo1R6ECc+cCQNAaVcPQ2/DS6qfKtnhKlVaTc/q
- qUX4mCoo8vnnd11wP3XiXSCe8rnoot8=
+ bh=Drboy62O1LBCh7uah3AZ0Zl6FneOi0JiDtImU/qB8Yk=;
+ b=Mq0LffGKfDeGXiJ6EJIUoIEUyEzs+DwrkiYgeMrKyMEwu54Mo2Ui7s22BqtxhzUspRy3e4
+ Az/z781C1DeH5i3l8YW15d2pwiic28um2KJX6aOj7PPIosrINbDT3dKWQVDZuLgtp2zRPR
+ l2QcQQtDKj9uDCIuuRhtV5IeVdKsdlM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-161-OhSkuY7nNgKFd-eGMJyAFg-1; Mon, 31 Aug 2020 17:09:40 -0400
-X-MC-Unique: OhSkuY7nNgKFd-eGMJyAFg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-451-MH3ZqCvYNoSPf-v-uik8Iw-1; Mon, 31 Aug 2020 17:08:39 -0400
+X-MC-Unique: MH3ZqCvYNoSPf-v-uik8Iw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3F881801AB2;
- Mon, 31 Aug 2020 21:09:39 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C73971074644;
+ Mon, 31 Aug 2020 21:08:37 +0000 (UTC)
 Received: from localhost (ovpn-66-226.rdu2.redhat.com [10.10.66.226])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0D8BF16E27;
- Mon, 31 Aug 2020 21:09:38 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9CE055D9D3;
+ Mon, 31 Aug 2020 21:08:34 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 17/18] [automated] Use OBJECT_DECLARE_TYPE where possible
- (pass 3)
-Date: Mon, 31 Aug 2020 17:07:39 -0400
-Message-Id: <20200831210740.126168-18-ehabkost@redhat.com>
+Subject: [PATCH v4 10/18] [automated] Move QOM typedefs and add missing
+ includes (pass 3)
+Date: Mon, 31 Aug 2020 17:07:32 -0400
+Message-Id: <20200831210740.126168-11-ehabkost@redhat.com>
 In-Reply-To: <20200831210740.126168-1-ehabkost@redhat.com>
 References: <20200831210740.126168-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 15:34:32
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 03:06:35
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,20 +116,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>, qemu-riscv@nongnu.org,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Helge Deller <deller@gmx.de>, Raphael Norwitz <raphael.norwitz@nutanix.com>,
+ qemu-arm@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AF+nomEr1q46
+X-TUID: UX54XN9d6Oal
 
-Replace DECLARE_OBJ_CHECKERS with OBJECT_DECLARE_TYPE where the
-typedefs can be safely removed.
+Some typedefs and macros are defined after the type check macros.
+This makes it difficult to automatically replace their
+definitions with OBJECT_DECLARE_TYPE.
 
-Generated running:
+Patch generated using:
 
-$ ./scripts/codeconverter/converter.py -i \
-  --pattern=DeclareObjCheckers $(git grep -l '' -- '*.[ch]')
+ $ ./scripts/codeconverter/converter.py -i \
+   --pattern=QOMStructTypedefSplit $(git grep -l '' -- '*.[ch]')
+
+which will split "typdef struct { ... } TypedefName"
+declarations.
+
+Followed by:
+
+ $ ./scripts/codeconverter/converter.py -i --pattern=MoveSymbols \
+    $(git grep -l '' -- '*.[ch]')
+
+which will:
+- move the typedefs and #defines above the type check macros
+- add missing #include "qom/object.h" lines if necessary
 
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
@@ -140,30 +160,164 @@ This is being submitted as a separate patch to make review
 easier, but it can be squashed into the previous patch once it
 gets reviewed.
 ---
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: Helge Deller <deller@gmx.de>
 Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
+Cc: Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Alistair Francis <Alistair.Francis@wdc.com>
+Cc: Sagar Karandikar <sagark@eecs.berkeley.edu>
+Cc: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>
+Cc: Raphael Norwitz <raphael.norwitz@nutanix.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
 Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Cc: qemu-riscv@nongnu.org
 ---
- include/hw/arm/armsse.h | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ include/hw/arm/armsse.h            | 11 +++++++----
+ include/hw/riscv/spike.h           |  6 ++++--
+ include/hw/virtio/vhost-user-blk.h |  6 ++++--
+ hw/hppa/lasi.c                     |  6 ++++--
+ 4 files changed, 19 insertions(+), 10 deletions(-)
 
 diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-index 452cbb5793..b844ef6bc0 100644
+index 347b977ae5..e5788e9d3c 100644
 --- a/include/hw/arm/armsse.h
 +++ b/include/hw/arm/armsse.h
-@@ -108,10 +108,8 @@
- #include "qom/object.h"
+@@ -105,8 +105,11 @@
+ #include "hw/or-irq.h"
+ #include "hw/core/split-irq.h"
+ #include "hw/cpu/cluster.h"
++#include "qom/object.h"
  
  #define TYPE_ARM_SSE "arm-sse"
--typedef struct ARMSSE ARMSSE;
--typedef struct ARMSSEClass ARMSSEClass;
--DECLARE_OBJ_CHECKERS(ARMSSE, ARMSSEClass,
--                     ARM_SSE, TYPE_ARM_SSE)
-+OBJECT_DECLARE_TYPE(ARMSSE, ARMSSEClass,
-+                    arm_sse, ARM_SSE)
++typedef struct ARMSSE ARMSSE;
++typedef struct ARMSSEClass ARMSSEClass;
+ #define ARM_SSE(obj) OBJECT_CHECK(ARMSSE, (obj), TYPE_ARM_SSE)
  
  /*
-  * These type names are for specific IoTKit subsystems; other than
+@@ -140,7 +143,7 @@
+ #define RAM3_PPU 6
+ #define NUM_PPUS 7
+ 
+-typedef struct ARMSSE {
++struct ARMSSE {
+     /*< private >*/
+     SysBusDevice parent_obj;
+ 
+@@ -215,14 +218,14 @@ typedef struct ARMSSE {
+     uint32_t init_svtor;
+     bool cpu_fpu[SSE_MAX_CPUS];
+     bool cpu_dsp[SSE_MAX_CPUS];
+-} ARMSSE;
++};
+ 
+ typedef struct ARMSSEInfo ARMSSEInfo;
+ 
+-typedef struct ARMSSEClass {
++struct ARMSSEClass {
+     SysBusDeviceClass parent_class;
+     const ARMSSEInfo *info;
+-} ARMSSEClass;
++};
+ 
+ #define ARM_SSE_CLASS(klass) \
+     OBJECT_CLASS_CHECK(ARMSSEClass, (klass), TYPE_ARM_SSE)
+diff --git a/include/hw/riscv/spike.h b/include/hw/riscv/spike.h
+index b0a18a9c94..121396d07a 100644
+--- a/include/hw/riscv/spike.h
++++ b/include/hw/riscv/spike.h
+@@ -21,15 +21,17 @@
+ 
+ #include "hw/riscv/riscv_hart.h"
+ #include "hw/sysbus.h"
++#include "qom/object.h"
+ 
+ #define SPIKE_CPUS_MAX 8
+ #define SPIKE_SOCKETS_MAX 8
+ 
+ #define TYPE_SPIKE_MACHINE MACHINE_TYPE_NAME("spike")
++typedef struct SpikeState SpikeState;
+ #define SPIKE_MACHINE(obj) \
+     OBJECT_CHECK(SpikeState, (obj), TYPE_SPIKE_MACHINE)
+ 
+-typedef struct {
++struct SpikeState {
+     /*< private >*/
+     MachineState parent;
+ 
+@@ -37,7 +39,7 @@ typedef struct {
+     RISCVHartArrayState soc[SPIKE_SOCKETS_MAX];
+     void *fdt;
+     int fdt_size;
+-} SpikeState;
++};
+ 
+ enum {
+     SPIKE_MROM,
+diff --git a/include/hw/virtio/vhost-user-blk.h b/include/hw/virtio/vhost-user-blk.h
+index 292d17147c..9d38877907 100644
+--- a/include/hw/virtio/vhost-user-blk.h
++++ b/include/hw/virtio/vhost-user-blk.h
+@@ -20,14 +20,16 @@
+ #include "chardev/char-fe.h"
+ #include "hw/virtio/vhost.h"
+ #include "hw/virtio/vhost-user.h"
++#include "qom/object.h"
+ 
+ #define TYPE_VHOST_USER_BLK "vhost-user-blk"
++typedef struct VHostUserBlk VHostUserBlk;
+ #define VHOST_USER_BLK(obj) \
+         OBJECT_CHECK(VHostUserBlk, (obj), TYPE_VHOST_USER_BLK)
+ 
+ #define VHOST_USER_BLK_AUTO_NUM_QUEUES UINT16_MAX
+ 
+-typedef struct VHostUserBlk {
++struct VHostUserBlk {
+     VirtIODevice parent_obj;
+     CharBackend chardev;
+     int32_t bootindex;
+@@ -41,6 +43,6 @@ typedef struct VHostUserBlk {
+     struct vhost_virtqueue *vhost_vqs;
+     VirtQueue **virtqs;
+     bool connected;
+-} VHostUserBlk;
++};
+ 
+ #endif
+diff --git a/hw/hppa/lasi.c b/hw/hppa/lasi.c
+index 194aa3e619..1acb9ce631 100644
+--- a/hw/hppa/lasi.c
++++ b/hw/hppa/lasi.c
+@@ -26,6 +26,7 @@
+ #include "hw/input/lasips2.h"
+ #include "exec/address-spaces.h"
+ #include "migration/vmstate.h"
++#include "qom/object.h"
+ 
+ #define TYPE_LASI_CHIP "lasi-chip"
+ 
+@@ -52,10 +53,11 @@
+ #define ICR_BUS_ERROR_BIT  LASI_BIT(8)  /* bit 8 in ICR */
+ #define ICR_TOC_BIT        LASI_BIT(1)  /* bit 1 in ICR */
+ 
++typedef struct LasiState LasiState;
+ #define LASI_CHIP(obj) \
+     OBJECT_CHECK(LasiState, (obj), TYPE_LASI_CHIP)
+ 
+-typedef struct LasiState {
++struct LasiState {
+     PCIHostState parent_obj;
+ 
+     uint32_t irr;
+@@ -70,7 +72,7 @@ typedef struct LasiState {
+     time_t rtc_ref;
+ 
+     MemoryRegion this_mem;
+-} LasiState;
++};
+ 
+ static bool lasi_chip_mem_valid(void *opaque, hwaddr addr,
+                                 unsigned size, bool is_write,
 -- 
 2.26.2
 

@@ -1,109 +1,105 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3244930lfc;
-        Sun, 30 Aug 2020 16:36:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxINAfnUOB+j4yY3QOBdrXfxNNrPa0aIQqK7JfTEhEo/Bl9pJFXrbBBrAlzQZM9bbTqHQ7m
-X-Received: by 2002:a25:7146:: with SMTP id m67mr9946578ybc.362.1598830567982;
-        Sun, 30 Aug 2020 16:36:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598830567; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3444182lfc;
+        Sun, 30 Aug 2020 23:27:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzLkx8vKaSkh+3NYZ9YJQqrgcInh8yYRaBOWxtEd94YHtumb37UTuP2n4PJypLJVCopu8WI
+X-Received: by 2002:a25:2e10:: with SMTP id u16mr257277ybu.17.1598855279197;
+        Sun, 30 Aug 2020 23:27:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598855279; cv=none;
         d=google.com; s=arc-20160816;
-        b=LMUNviKzI7ImizwOH/j4gq9/Hhc2Rg0Xr2xqgVHm2NnsyMl1y1d/pJSuNcbJkjG0G4
-         LeRNU2UELMhDHAyaMEe4HdgzHxXZ7J4rvDB2UqtLLjvGTop7ft6D9XtyBOuSbKQh8NJl
-         qFYCllDrub9hoeMS3ziGL9IjY5ygHMJHAeqYcaWMdOYWLvv1JL3ooKWYukMQvNAx5due
-         Z/styLMaG7ol9WxorBSdzrtvQDKtzIQNS4lYWtlvKg5ZqpAaVVDApwdup+X6f9NjaS59
-         63mklbESr8RTL8j6KlSLb0eH/Y2ailSuNRTD+280nBm5KSYkL9Pmtr7cT4f5uwg6OweJ
-         5mNQ==
+        b=M7Hl8uIKnDIATIc5SUWwYDBXd1ergBzZESod3BDb1UP0yX/kottSM9ZTLt4IXytFq9
+         sRtaMbmbFaW3obkP7+AeldUEUCL0ivys04BHYifd3PBi2HTtTql/J1vpzQOQ+T7+90ho
+         6v1TKzL3uTf+LtQCiePTlg81WTe20B4PgjbmHMVw1XG0lOpaFUHUoGH8SYrbUH6jrK7S
+         9v8XB+v6Por2aLRtaV2ZM/kFK/hF8LqNBGjZYSOcJGrVOfh+oJRqIs3AjVny1dzTP6eb
+         Pej8TGhKraL9t1I0un2FsGeXLlYSVjAJYT4YwGwZB8yT5oNOMUUx1E90YdzsO5Iw6IOA
+         y5dQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=RASHodX0lMfHYt83QbTf2ezLNOxfAhKMutmXcqjpFuQ=;
-        b=Ji95jowYxUW1e9ZYOvfTA4QcUJlslpiHU1z9CPTGqRNgdEmUs/GLNSVuvoNm4eISWi
-         vFIvrzdL1RxKCmUUr8L7FqT9pFjWdgtAn+qxcQYXEakbGxHwNuYRokCs4YUEWByMdDDf
-         8T83xVmJAnETc6/zMpJ7VHggw2CWsgJbdYGR9hD8Y3OBVSfqCbdFSWAYXon4Qyi2wzdf
-         EWreorhV0HzEZHafgLlHoPIBqeujP60bm4AMW+D6AVRJrg1JBcv6U+95iut6su7kUciX
-         1KxrRAjLQN7ZSy6ED9X1wad6gh2D7DS4pipwyFNtwrnM2zT1Fn8LpCZZCXh+hMLNntu0
-         y03Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=IFbepArYBYiEtT18n8i3X49y/Ch7pBYSVm7oj4RrqyY=;
+        b=OiRyJ/+pV9YkhyPXuzvCeY2/5wZj3sVK0Q1j2hhM+JmyaAAocO5TfomBuxNNpQeDDV
+         znuh8uKmAqf7pKTJglnOrfgWL7zkEKWbX8JjjZCfPnX/hL3aJDy7uel4F902+91S1Rqp
+         dJD/SKTXFc06NnZGR6uz5fc0OhVljQfjH5MDeWz4kSD62GEGa6lfWehljYXAYVBnw7LF
+         Fst1yvq5GwGRrtOhKIBQi/JoZ9E/hObdmOZLXFWvIQkU7cPl2NbQKvXGSc5pI0eTDPgb
+         m676+CukW926UeUvxZ0z8Ft3DvPVWTFmNj4lkGCTxwme8hfzQKDjmofYTOGJJr+DdmbZ
+         CFBA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=j8RBtorq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@linaro.org header.s=google header.b=qzdgAFPx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y17si5930973ybj.49.2020.08.30.16.36.07
+        by mx.google.com with ESMTPS id d1si4670396ybe.473.2020.08.30.23.27.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 30 Aug 2020 16:36:07 -0700 (PDT)
+        Sun, 30 Aug 2020 23:27:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=j8RBtorq;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:49126 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=qzdgAFPx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:36114 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kCWrn-0001In-DW
-	for alex.bennee@linaro.org; Sun, 30 Aug 2020 19:36:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43476)
+	id 1kCdIM-0006kO-IQ
+	for alex.bennee@linaro.org; Mon, 31 Aug 2020 02:27:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kCWrf-0001IB-GI
- for qemu-arm@nongnu.org; Sun, 30 Aug 2020 19:35:59 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:37555)
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1kCdIE-0006kB-UU
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2020 02:27:50 -0400
+Received: from mail-io1-xd41.google.com ([2607:f8b0:4864:20::d41]:36768)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kCWrc-0005dw-Re
- for qemu-arm@nongnu.org; Sun, 30 Aug 2020 19:35:59 -0400
-Received: by mail-wm1-x344.google.com with SMTP id x9so3734101wmi.2
- for <qemu-arm@nongnu.org>; Sun, 30 Aug 2020 16:35:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=RASHodX0lMfHYt83QbTf2ezLNOxfAhKMutmXcqjpFuQ=;
- b=j8RBtorqaVEsLOmNgpW3EzUGHsToCN3xfe46gSDMurZJGFNEg18k0GvZKdOoScuO0k
- zlYrwS0pah7kXPLGqgfPBRxHOJGPX3hbhsI3IsaXdMIBVLnNEv98mTUVFnReYcAAxGPs
- sMg/fgdjTuC5L4ZV/psfBJMxu1gMdqqaZwLDPxgr1QUuEQZ1by7JTpF3LXNIgls9bR52
- fbo1mee/ZsECNW5HqyQcko3TlbS/htkuGhXweyfG8AEFHcNh24jV/7Uzha0LIsCp77WY
- 2j0lJeqJ5X2rWl35Ys3SW/QIPjgsfGETi4kpiHBODBy2jWGW/fLNKVxR38vIVBxqD2wL
- Tfhw==
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1kCdIC-0008O9-GP
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2020 02:27:50 -0400
+Received: by mail-io1-xd41.google.com with SMTP id d190so3807751iof.3
+ for <qemu-arm@nongnu.org>; Sun, 30 Aug 2020 23:27:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IFbepArYBYiEtT18n8i3X49y/Ch7pBYSVm7oj4RrqyY=;
+ b=qzdgAFPxGsNa2O+LVKL4mUf7OhicqG0Dbvf24bPn6o1xTvQedXEcippVK4OnIb1X1a
+ IgbLc++5+UqcW10jGhfhCqnYtyCxFJAH7eB1QuCQThx1Uu0MHS6Udlf98i4F5Gpw2E0B
+ 6EqEaWrS4k9OvPiYOTEs5nJqdtKZxlhlH2qoFmK/8Aw1wH/e/KQtnJmQwbwn6LD3/jZ8
+ N7M7oQsSn+WMyvalI7pCKSCpfLpBgdCeTsrf+X0yGLsnNdWoE+QKQ5lzREbu+8CiY9CU
+ YoEnZraO4ekQ7Wcg3vR1JlxW734hpStWA4sJy6/Htl+Bo+PB0PC53mCmkLQCy70c6DqZ
+ tUpQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=RASHodX0lMfHYt83QbTf2ezLNOxfAhKMutmXcqjpFuQ=;
- b=C6bfbo7jAkzUJaTbpNoxbrZKCe1wgCEio6Q09cdSjPsIw+qnrRDh9pjOPb9AdRYjal
- MuTK12SmHbHRDtv6uxRM4R0iGAMjOCqzdsoDFONYX/5dyfDPU8+ZiQ4fvn3WexT6YGMx
- bS6GZImbIMdI2XcIimJV77OL93tVSKDhxXeT8EXrUq6RefN2cw9uMh1SqKFhQsli6m21
- 4dJs4wuyHc/WxMM0pvTKfwN+XzqjQ0q784XmJwLWRQ3Qg5o6CU7SMdjxfrR+J51v0kA5
- CqLUeGLwb8KnAtQlITA0Ng0RZ0qz5OGKVtwFEuto3AASW7rBH1k5nYyTNuA4uCpDrU2H
- M3Sg==
-X-Gm-Message-State: AOAM532tqwfhZzjsgwqHmlPI12PRDtZxjwqWRbtNpPMY7R/OVH9759su
- hwwYXwZgvllMlbgNYVylrgzfTw==
-X-Received: by 2002:a1c:4d12:: with SMTP id o18mr342678wmh.177.1598830555254; 
- Sun, 30 Aug 2020 16:35:55 -0700 (PDT)
-Received: from vanye ([2001:470:1f09:12f0:b26e:bfff:fea9:f1b8])
- by smtp.gmail.com with ESMTPSA id z6sm9218591wml.41.2020.08.30.16.35.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 30 Aug 2020 16:35:54 -0700 (PDT)
-Date: Mon, 31 Aug 2020 00:35:52 +0100
-From: Leif Lindholm <leif@nuviainc.com>
-To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: [PATCH v2 00/16] hw/riscv: Add Microchip PolarFire SoC Icicle
- Kit board support
-Message-ID: <20200830233552.GG20124@vanye>
-References: <1598714261-8320-1-git-send-email-bmeng.cn@gmail.com>
- <20200830125659.GD20124@vanye>
- <CAEUhbmVYpSVE+C+KyEa2Ono5p-SLtC1vE=YwE_3FJK6POEJCCg@mail.gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IFbepArYBYiEtT18n8i3X49y/Ch7pBYSVm7oj4RrqyY=;
+ b=FEBwDhSSMlAG48kFLHyAQhCIiEvtQNlzK+77NYMuioR7K3U8K3NQ2uaczXQ+416sh3
+ 53r7rU3YXD7APo/1NXIT96hF7tdHklV+IvtblIkcxOXIYoyDmyBH+UbPSLqwiamLuiNv
+ 6GwUNbmajUnEJTPpcAxhNVeiv7MIa9gb8U4JEAg8RCrR3vTiblEzhgWgaUcule8mb6x9
+ Kp/SbV7k8XlQlj1uMXuakk7XRy6fPohjctws6LN0m1MBKLh/zNmOm2AEoiI5Pq9fdmV6
+ vyob/x5icAUtJmu1XOFH4QneSOGfiYMh6CtigNWX8Kqh+e8hPH75plyGYP73Cx7ow4he
+ f9vg==
+X-Gm-Message-State: AOAM533Nd3U7d7bWqUl4XKI33iC0heSivlHaWrcLXyAR5DIxl6Hnry4h
+ vb+XCnDnRp7kqUdrtct79X2NuM3hBtfkWfTw8JVv
+X-Received: by 2002:a05:6602:2fcf:: with SMTP id
+ v15mr176646iow.78.1598855266658; 
+ Sun, 30 Aug 2020 23:27:46 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAEUhbmVYpSVE+C+KyEa2Ono5p-SLtC1vE=YwE_3FJK6POEJCCg@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=leif@nuviainc.com; helo=mail-wm1-x344.google.com
+References: <cover.1596768588.git.haibo.xu@linaro.org>
+ <1663d06172cffa723e00893837ba04634f061fc8.1596768588.git.haibo.xu@linaro.org>
+ <4e6b3ee2-7f81-7c72-c4a9-0e8d330215ab@redhat.com>
+In-Reply-To: <4e6b3ee2-7f81-7c72-c4a9-0e8d330215ab@redhat.com>
+From: Haibo Xu <haibo.xu@linaro.org>
+Date: Mon, 31 Aug 2020 14:27:35 +0800
+Message-ID: <CAJc+Z1G3BpX-5HDqFkFhXJOK9_bq_zw5hp6LqGR=oeSvGJcfDw@mail.gmail.com>
+Subject: Re: [PATCH 6/7] hw/arm/virt: spe: Add SPE fdt binding for virt machine
+To: Auger Eric <eric.auger@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d41;
+ envelope-from=haibo.xu@linaro.org; helo=mail-io1-xd41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -117,68 +113,193 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Bin Meng <bin.meng@windriver.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
+ qemu-arm@nongnu.org, philmd@redhat.com, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Jx98PywuZI1d
+X-TUID: d/roA0MB1fZK
 
-On Mon, Aug 31, 2020 at 06:15:52 +0800, Bin Meng wrote:
-> Hi Leif,
-> 
-> > > The following perepherals are emulated:
-> > > - SiFive CLINT
-> > > - SiFive PLIC
-> > > - PolarFire SoC Multi-Mode UART
-> > > - SiFive PDMA
-> > > - Cadence eMMC/SDHCI controller
-> > > - Cadence Gigabit Ethernet MAC
-> > >
-> > > The BIOS image used by this machine is hss.bin, aka Hart Software
-> > > Services, which can be built from:
-> > > https://github.com/polarfire-soc/hart-software-services
+On Sat, 29 Aug 2020 at 23:22, Auger Eric <eric.auger@redhat.com> wrote:
+>
+> Hi Haibo,
+>
+> On 8/7/20 10:10 AM, Haibo Xu wrote:
+> > Add a virtual SPE device for virt machine while using PPI
+> > 5 for SPE overflow interrupt number.
 > >
-> > Are there any version requirements, or additional qemu patches, that
-> > need to be taken into account. Should I expect to see output on stdio?
-> 
-> Thanks for trying!
-> 
-> Did you apply the patch to skip the DDR memory initialization
-> mentioned in this page?
-> https://wiki.qemu.org/Documentation/Platforms/RISCV#Microchip_PolarFire_SoC_Icicle_Kit
+> > Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+> > ---
+> >  hw/arm/virt-acpi-build.c    |  3 +++
+> >  hw/arm/virt.c               | 42 +++++++++++++++++++++++++++++++++++++
+> >  include/hw/acpi/acpi-defs.h |  1 +
+> >  include/hw/arm/virt.h       |  1 +
+> >  target/arm/cpu.c            |  2 ++
+> >  target/arm/cpu.h            |  2 ++
+> >  target/arm/kvm.c            |  6 ++++++
+> >  7 files changed, 57 insertions(+)
+> >
+> > diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+> > index 91f0df7b13..5073ba22a5 100644
+> > --- a/hw/arm/virt-acpi-build.c
+> > +++ b/hw/arm/virt-acpi-build.c
+> > @@ -666,6 +666,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+> >          if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+> >              gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+> >          }
+> > +        if (arm_feature(&armcpu->env, ARM_FEATURE_SPE)) {
+> > +            gicc->spe_interrupt = cpu_to_le32(PPI(VIRTUAL_SPE_IRQ));
+> > +        }
+> >          if (vms->virt) {
+> >              gicc->vgic_interrupt = cpu_to_le32(PPI(ARCH_GIC_MAINT_IRQ));
+> >          }
+> > diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> > index ecfee362a1..c40819705d 100644
+> > --- a/hw/arm/virt.c
+> > +++ b/hw/arm/virt.c
+> > @@ -555,6 +555,42 @@ static void fdt_add_pmu_nodes(const VirtMachineState *vms)
+> >      }
+> >  }
+> >
+> > +static void fdt_add_spe_nodes(const VirtMachineState *vms)
+> > +{
+> > +    CPUState *cpu;
+> > +    ARMCPU *armcpu;
+> > +    uint32_t irqflags = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+> > +
+> > +    CPU_FOREACH(cpu) {
+> > +        armcpu = ARM_CPU(cpu);
+> > +        if (!arm_feature(&armcpu->env, ARM_FEATURE_SPE)) {
+> > +            return;
+> > +        }
+> > +        if (kvm_enabled()) {
+> > +            if (kvm_irqchip_in_kernel()) {
+> > +                kvm_arm_spe_set_irq(cpu, PPI(VIRTUAL_SPE_IRQ));
+> > +            }
+> > +            kvm_arm_spe_init(cpu);
+> > +        }
+> > +    }
+> > +
+> > +    if (vms->gic_version == VIRT_GIC_VERSION_2) {
+> > +        irqflags = deposit32(irqflags, GIC_FDT_IRQ_PPI_CPU_START,
+> > +                             GIC_FDT_IRQ_PPI_CPU_WIDTH,
+> > +                             (1 << vms->smp_cpus) - 1);
+> > +    }
+> > +
+> > +    armcpu = ARM_CPU(qemu_get_cpu(0));
+> > +    qemu_fdt_add_subnode(vms->fdt, "/spe");
+> > +    if (arm_feature(&armcpu->env, ARM_FEATURE_V8)) {
+> > +        const char compat[] = "arm,statistical-profiling-extension-v1";
+> > +        qemu_fdt_setprop(vms->fdt, "/spe", "compatible",
+> > +                         compat, sizeof(compat));
+> > +        qemu_fdt_setprop_cells(vms->fdt, "/spe", "interrupts",
+> > +                               GIC_FDT_IRQ_TYPE_PPI, VIRTUAL_SPE_IRQ, irqflags);
+> > +    }
+> > +}
+> > +
+> >  static inline DeviceState *create_acpi_ged(VirtMachineState *vms)
+> >  {
+> >      DeviceState *dev;
+> > @@ -727,6 +763,10 @@ static void create_gic(VirtMachineState *vms)
+> >                                      qdev_get_gpio_in(vms->gic, ppibase
+> >                                                       + VIRTUAL_PMU_IRQ));
+> >
+> > +        qdev_connect_gpio_out_named(cpudev, "spe-interrupt", 0,
+> > +                                    qdev_get_gpio_in(vms->gic, ppibase
+> > +                                                     + VIRTUAL_SPE_IRQ));
+> > +
+> >          sysbus_connect_irq(gicbusdev, i, qdev_get_gpio_in(cpudev, ARM_CPU_IRQ));
+> >          sysbus_connect_irq(gicbusdev, i + smp_cpus,
+> >                             qdev_get_gpio_in(cpudev, ARM_CPU_FIQ));
+> > @@ -1915,6 +1955,8 @@ static void machvirt_init(MachineState *machine)
+> >
+> >      fdt_add_pmu_nodes(vms);
+> >
+> > +    fdt_add_spe_nodes(vms);
+> > +
+> >      create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
+> >
+> >      if (vms->secure) {
+> > diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+> > index 38a42f409a..56a7f38ae4 100644
+> > --- a/include/hw/acpi/acpi-defs.h
+> > +++ b/include/hw/acpi/acpi-defs.h
+> > @@ -302,6 +302,7 @@ struct AcpiMadtGenericCpuInterface {
+> >      uint32_t vgic_interrupt;
+> >      uint64_t gicr_base_address;
+> >      uint64_t arm_mpidr;
+> > +    uint16_t spe_interrupt; /* ACPI 6.3 */
+> This does not work for me.
+> You miss 2 uint8_t fields inbetween arm_mpdir and spe_interrupt:
+> Processor Power Efficiency Class and Reserved.
+>
+> At the moment arm_spe_acpi_register_device() silently fails on guest
+> side since
+> gicc->header.length < ACPI_MADT_GICC_SPE
+>
+> Thanks
+>
+> Eric
+>
 
-I did, but in honesty only after I sent the previous email :)
-(Since it made no difference, I didn't bother following up.)
+Thanks for pointing out this. I will fix it in the next version.
 
-> > I tried to build hss 3faaaaf8ce0d, using
-> > https://github.com/riscv/riscv-gnu-toolchain (7f1f4ab5b0e0), which
-> > ends up being a gcc 10.1. That caused me to raise
-> > https://github.com/polarfire-soc/hart-software-services/issues/2.
-> 
-> Yes, GCC 10 does not build is a known issue. Currently I am using GCC
-> 9 to build HSS.
-
-Right, I can confirm that with commit 93f82dc18e1d riscv-gnu-toolchain
-(the last before changing to gcc 10.1), I generate a 9.2.0 gcc that
-builds a hss.bin that boots successfully with the minimal command line
-
-qemu-system-riscv64 -M microchip-icicle-kit -smp 5 -bios hss.bin \
-  -display none -serial stdio
-
-Thanks!
-
-(I haven't looked any further than the hss.bin yet, but I'm now
-unblocked to do so.)
-
-Best Regards,
-
-Leif
+> >  } QEMU_PACKED;
+> >
+> >  typedef struct AcpiMadtGenericCpuInterface AcpiMadtGenericCpuInterface;
+> > diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+> > index dff67e1bef..56c83224d2 100644
+> > --- a/include/hw/arm/virt.h
+> > +++ b/include/hw/arm/virt.h
+> > @@ -49,6 +49,7 @@
+> >  #define ARCH_TIMER_NS_EL1_IRQ 14
+> >  #define ARCH_TIMER_NS_EL2_IRQ 10
+> >
+> > +#define VIRTUAL_SPE_IRQ 5
+> >  #define VIRTUAL_PMU_IRQ 7
+> >
+> >  #define PPI(irq) ((irq) + 16)
+> > diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> > index 40768b4d19..67ab0089fd 100644
+> > --- a/target/arm/cpu.c
+> > +++ b/target/arm/cpu.c
+> > @@ -1038,6 +1038,8 @@ static void arm_cpu_initfn(Object *obj)
+> >                               "gicv3-maintenance-interrupt", 1);
+> >      qdev_init_gpio_out_named(DEVICE(cpu), &cpu->pmu_interrupt,
+> >                               "pmu-interrupt", 1);
+> > +    qdev_init_gpio_out_named(DEVICE(cpu), &cpu->spe_interrupt,
+> > +                             "spe-interrupt", 1);
+> >  #endif
+> >
+> >      /* DTB consumers generally don't in fact care what the 'compatible'
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index fe0ac14386..4bf8591df8 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -790,6 +790,8 @@ struct ARMCPU {
+> >      qemu_irq gicv3_maintenance_interrupt;
+> >      /* GPIO output for the PMU interrupt */
+> >      qemu_irq pmu_interrupt;
+> > +    /* GPIO output for the SPE interrupt */
+> > +    qemu_irq spe_interrupt;
+> >
+> >      /* MemoryRegion to use for secure physical accesses */
+> >      MemoryRegion *secure_memory;
+> > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+> > index 58f991e890..ecafdda364 100644
+> > --- a/target/arm/kvm.c
+> > +++ b/target/arm/kvm.c
+> > @@ -820,6 +820,12 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
+> >              switched_level &= ~KVM_ARM_DEV_PMU;
+> >          }
+> >
+> > +        if (switched_level & KVM_ARM_DEV_SPE) {
+> > +            qemu_set_irq(cpu->spe_interrupt,
+> > +                         !!(run->s.regs.device_irq_level & KVM_ARM_DEV_SPE));
+> > +            switched_level &= ~KVM_ARM_DEV_SPE;
+> > +        }
+> > +
+> >          if (switched_level) {
+> >              qemu_log_mask(LOG_UNIMP, "%s: unhandled in-kernel device IRQ %x\n",
+> >                            __func__, switched_level);
+> >
+>

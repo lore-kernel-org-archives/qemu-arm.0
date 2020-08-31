@@ -1,348 +1,171 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4016294lfc;
-        Mon, 31 Aug 2020 14:33:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxCHBIyhUyjafHD6Kgd/6Tz67DKvhxRk6xcuE8Pan65xBxYm8zxQBX7ScmLGAwLcR+4AChH
-X-Received: by 2002:a25:dcc4:: with SMTP id y187mr5395114ybe.121.1598909608798;
-        Mon, 31 Aug 2020 14:33:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598909608; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4018796lfc;
+        Mon, 31 Aug 2020 14:37:39 -0700 (PDT)
+X-Received: by 2002:a17:902:bcc3:: with SMTP id o3mr2482600pls.241.1598909858936;
+        Mon, 31 Aug 2020 14:37:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598909858; cv=none;
         d=google.com; s=arc-20160816;
-        b=iVff0sJ/+EnpbWOGXsOIVVuCa4ZqlGRGn6HUjxMSc/LhM45XDbl/Zz/r2DkJHrFl6p
-         m0rhJ/NZ2FhjEBgWTxAb2+OmPQjzkY+TrWI8S1+cn+N0vekUGR2CZ1AIp0iEodwEyGCt
-         zGT7seSZ1Gtp8uNokgWZ5cq1+iOLJJjcPHHSYvCHA5yJXIh6KtaxMLIDc7vvLXdANWeV
-         BpM6JAJVclyvlPkIfmKFmcsPGZfH/omfXhzoDe8qhZmVrY/Ty6KgXFV1446L7E1wqO54
-         lfAfaboSCKFHl+8/YtosE3tWd6+4LAMIGTI2FQv+YbbE+yTeN2qvvrPBBJSUvvSWUYhm
-         ClAw==
+        b=egt/18h/hWO9C2JNDPB8MQ2UYFefhk6yD/MM1gG5jj3pVfszG+pDhX2BFKU+vhauIy
+         WBcaIzG4cPcVdbhd5VfMPriTP5XizdVLPfmY3iaNw+qnc0wXd4hQeB56Fws3aHFDeJYj
+         IUuclyRtp8zw6tvB4PLnvQT7r+S1CECP8qv7grGBetXB+vMRIgvmf85Ul56GBHkeUNIS
+         7Z/NglbYfhfPI1DPPU1b16Luat3MIYLxWvJ0GXX95jgpUD7AMyyfJ2cbkYXG1/0WqsmJ
+         ecSBMGEC8xEviUtxuJiuPAJO4FmD5rIigzYiSGXNp2WiNxY8we//abFBCebPrAhsM2T1
+         OUbA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version;
-        bh=F2QmUjKxgknkTpjif27qNU+W0a1swYhjYlyfFRQE5ps=;
-        b=KDtzk8K7mkMPsz/c2RQbSC8scrfIm8CC3T+0oxkZLqiiwPFWBd9jjnU88aWtFBgpyH
-         l0vR2Sl/VUDnWkbhAsYN4Al4xIYd7zfPQLd0HyiI8y30wm94ovHYc+/MNaaIL0hrO9xI
-         ZhT7wOfmj+MqHEyCKtqTg64hhr0g0+fs5spwNTaVdJvEBIWhXT5I5AwxYCr4PXR/mC8V
-         qhKHRP9utXo0xJTfJR9uAldojuVsgN2peXrSDYf3kXd8MZErlzGGnhYvoOxQbjm/dGUF
-         OGg6CHPqaGVk6fNjMN+YJts488v0TgmNY0GExVigIBytZ+WeAsPtCcQDhforfqGWikh0
-         zlZQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=aF1TYW9+DmXTOxP0rCa7SthEkQoCWC6+zXjV5LlvHMQ=;
+        b=owN8VF7Udsyc9mEAxZt6HEzHBUpsOB88XGYNwUrc7n1OcVhMczmHWFCHYzCZ5qHaCE
+         U9Fr6q00vl6D9xI+Mabms5boePY/YTpIjN2B/fcGNr0MycEYjkCJbEXBctZ0sA7ZVkOP
+         7qVXwepB27vEbVrtwzSOPeQeXsCQezk0kczEuu2XlArshiiyEVe1+YtGtUk49qTmb2Y3
+         K3Kmkq0RFVeS13MxtBeOU1kak49GzD/nBu9AxW8WQj74oGVJJ+dVLJFUWBmli4JAsOvL
+         dgj71PNefoTiGpWAWGWrXDPtECGtbd3i87amQB8LcZujqEJAYtx0R2kdOJ9e3e1YjIjx
+         U00A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l17si8146478ybm.328.2020.08.31.14.33.28
+       dkim=pass header.i=@linaro.org header.s=google header.b=x9nepgtx;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id i124sor3426567pfc.89.2020.08.31.14.37.38
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Aug 2020 14:33:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Mon, 31 Aug 2020 14:37:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34288 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kCrQe-0006qF-4B
-	for alex.bennee@linaro.org; Mon, 31 Aug 2020 17:33:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47570)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kCrDg-0004Sl-HX; Mon, 31 Aug 2020 17:20:04 -0400
-Received: from mail-qv1-f65.google.com ([209.85.219.65]:40178)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kCrDe-0001Yr-1U; Mon, 31 Aug 2020 17:20:04 -0400
-Received: by mail-qv1-f65.google.com with SMTP id s15so3336906qvv.7;
- Mon, 31 Aug 2020 14:20:01 -0700 (PDT)
+       dkim=pass header.i=@linaro.org header.s=google header.b=x9nepgtx;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=aF1TYW9+DmXTOxP0rCa7SthEkQoCWC6+zXjV5LlvHMQ=;
+        b=x9nepgtxkHBfFxTs3l5K+WI7B4/dG6sa5gTKjEPEGKA1i5vT6JzRQJaSdCrvAj2qcj
+         l4AgJLy+SFSEe6+fHkBRVCvjtfGQ74mPaSBEjO6Ch6+EmgbmHf6htxPuY2j6nJalxYn5
+         HTw1NQ6UG+mo4m0s7Z3oUNl6YTjT2/nS3VdjRu1iYp0Aiqmq6J+YstIkF0HbaZTkoIst
+         WJiO3EuBHTYr4TFqufi+VQ1i6tKkPobaZKkzV+v+JsjyoV45ByZGhAKD8j0kOrW+rHZN
+         TJz99ZJ9Bb/z1O8MMzb+2SrIRiUduIdIQIvB1EcEhMN0vEFe0ZLFyxYMi+GjW10eBvjV
+         4F9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=F2QmUjKxgknkTpjif27qNU+W0a1swYhjYlyfFRQE5ps=;
- b=UDMuFGn5LZI/xK+itCBMwDrJV45cBvPnS5pWtkfXA4/TSHfEH7w6AJegj+NFo9qG8H
- l/oEFH8a5ngg/5Q47x7lZ6VUlRipwfKGOKBkXv+fbnf352XsFdhsVXMTZGLxyEAg9zgp
- uCy3yCGpFnfNgun7CHLexhjUXoIFFUCtgfhHdJ/TyEVXzayJzb2N0DB57puUkoOWCs9z
- qyaVw2OOachbpmesxHAVJNpQQuKWko61iPG7VdhB6VhKYVfDD3Hagdlc03qDaVGxtlHx
- 3YjLM6HIgHUaxi93W40SkRW9vDyzUs9qVF8N+BMJH4bdW/Cwa4eRlp3Ss3Vi6k9/T5M4
- SB3w==
-X-Gm-Message-State: AOAM531SVd31oKgeIMiREI8FVIx7X5f8ilg+evOTtr4sQxPO6ODLERRo
- tHZ2YCCfLSN3ppZ+H0PDJwtphagdBCipI9d2MaA=
-X-Received: by 2002:a0c:f493:: with SMTP id i19mr3017469qvm.84.1598908800880; 
- Mon, 31 Aug 2020 14:20:00 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=aF1TYW9+DmXTOxP0rCa7SthEkQoCWC6+zXjV5LlvHMQ=;
+        b=c/9I4ulbuvpFJbXiYgXOqdm3HDJ6mCLVzYJOxzcv8LZHlFGRE0vZp1HQ94MKSZOLsz
+         4Otz+Ae4JpPIDQopvICaok1ACjYKwJ/xrtPZf3kqJnNIGvOvh7Y5uZTdzbhYNxkbA+zE
+         3ui5Dfa3v+OUcfA7BSItz7J/OiR3XAOYcIIWXobJwZUFvhwoULTTJnMgUuRnA4e+hxUw
+         ZvDe4bEnArCQzuUEdm4ksGVMa2LchfHxcqTvLykhKC/KRfd9FIZu05hKQNTX8XB2brFR
+         25HCUo5r5z+Hh7DEMMTX4T9Jye7/33+mF6/XHpMrAyLl0ZDWKJoKLOUrwPBvlmz8v1C9
+         6z/Q==
+X-Gm-Message-State: AOAM531/kbaYomntte9ugBZVnHjYbUghoW14Cnjn7HulVxSl1bGqZlnT
+	gxvlSfRP61cPcKbcpMMOLbnaUCeJ
+X-Google-Smtp-Source: ABdhPJzY9pX9FAI2tHfXc+NCEv0qzRv6gNhJkv6mav6Bw3GJSowl8ysxOYGftSt9JXFwE7ENfBsMbg==
+X-Received: by 2002:aa7:9556:: with SMTP id w22mr2885120pfq.245.1598909858396;
+        Mon, 31 Aug 2020 14:37:38 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from [192.168.1.11] ([71.212.141.89])
+        by smtp.gmail.com with ESMTPSA id c1sm7936988pfi.136.2020.08.31.14.37.36
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 31 Aug 2020 14:37:37 -0700 (PDT)
+Subject: Re: [PATCH v2 4/7] target: Push BQL on ->do_interrupt down into
+ per-arch implementation
+To: Robert Foley <robert.foley@linaro.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sarah Harris <S.E.Harris@kent.ac.uk>, Cornelia Huck <cohuck@redhat.com>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Guan Xuetao <gxt@mprc.pku.edu.cn>, Eduardo Habkost <ehabkost@redhat.com>,
+ Marek Vasut <marex@denx.de>, Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ Richard Henderson <rth@twiddle.net>, Artyom Tarasenko <atar4qemu@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "open list:S390 general arch..." <qemu-s390x@nongnu.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ Michael Rolnik <mrolnik@gmail.com>, pbonzini@redhat.com,
+ Stafford Horne <shorne@gmail.com>, alex.bennee@linaro.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Chris Wulff <crwulff@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Michael Walle <michael@walle.cc>, Palmer Dabbelt <palmer@dabbelt.com>,
+ peter.puhov@linaro.org, Aurelien Jarno <aurelien@aurel32.net>
+References: <20200819182856.4893-1-robert.foley@linaro.org>
+ <20200819182856.4893-5-robert.foley@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <047fe2b3-c51b-1840-8b93-f747684abea0@linaro.org>
+Date: Mon, 31 Aug 2020 14:37:34 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <20200827124335.30586-1-leif@nuviainc.com>
-In-Reply-To: <20200827124335.30586-1-leif@nuviainc.com>
-From: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Date: Mon, 31 Aug 2020 22:41:41 +0200
-Message-ID: <CAAdtpL6LAa9h2sBNN9v=3kvwqOabd4KwE4CksPAwK6ERYw0C5g@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/arm/sbsa-ref: add "reg" property to DT cpu nodes
-To: Leif Lindholm <leif@nuviainc.com>
-Content-Type: multipart/alternative; boundary="0000000000001ad54305ae32f72e"
-Received-SPF: pass client-ip=209.85.219.65;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-qv1-f65.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/08/31 17:15:47
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Graeme Gregory <graeme@nuviainc.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Tanmay Jagdale <tanmay.jagdale@linaro.org>,
- Radoslaw Biernacki <rad@semihalf.com>, qemu-devel@nongnu.org,
- qemu-arm <qemu-arm@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XwhvrODiSc0n
+In-Reply-To: <20200819182856.4893-5-robert.foley@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TUID: YJQaQQdWCGZu
 
---0000000000001ad54305ae32f72e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 8/19/20 11:28 AM, Robert Foley wrote:
+> avr is another exception.  avr, arm and cris all had a similar
+> case where their *_cpu_exec_interrupt was calling to
+> the CPUClass ->do_interrupt.  This causes an issue when we push
+> the lock down since ->do_interrupt will try to acquire the BQL, but
+> the calling context already has it.
 
-Le jeu. 27 ao=C3=BBt 2020 14:45, Leif Lindholm <leif@nuviainc.com> a =C3=A9=
-crit :
+Alpha is in this lest as well, correct?
 
-> The sbsa-ref platform uses a minimal device tree to pass amount of memory
-> as well as number of cpus to the firmware. However, when dumping that
-> minimal dtb (with -M sbsa-virt,dumpdtb=3D<file>), the resulting blob
-> generates a warning when decompiled by dtc due to lack of reg property.
->
-> Add a simple reg property per cpu, representing a 64-bit MPIDR_EL1.
->
-> This also ends up being cleaner than having the firmware calculating its
-> own IDs for generating APCI.
->
-> Signed-off-by: Leif Lindholm <leif@nuviainc.com>
->
-
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-
----
->
-> As per Graeme's feedback, properly represent the MPIDR topology info
-> in the reg property rather than just counting cores (and update the
-> commit message on why this is useful).
-> I'm using the local helper function sbsa_ref_cpu_mp_affinity() for this,
-> and moving it up somewhat rather than adding a forward declaration.
->
->  hw/arm/sbsa-ref.c | 29 +++++++++++++++++++++++------
->  1 file changed, 23 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index f030a416fd..3e65ded9a0 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -138,6 +138,12 @@ static const int sbsa_ref_irqmap[] =3D {
->      [SBSA_EHCI] =3D 11,
->  };
->
-> +static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+> diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
+> index 4c6753df34..be29bdd530 100644
+> --- a/target/alpha/cpu.h
+> +++ b/target/alpha/cpu.h
+> @@ -276,7 +276,7 @@ struct AlphaCPU {
+>  extern const VMStateDescription vmstate_alpha_cpu;
+>  #endif
+>  
+> -void alpha_cpu_do_interrupt_locked(CPUState *cpu);
+> +void alpha_cpu_do_interrupt(CPUState *cpu);
+>  bool alpha_cpu_exec_interrupt(CPUState *cpu, int int_req);
+>  void alpha_cpu_dump_state(CPUState *cs, FILE *f, int flags);
+>  hwaddr alpha_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+> diff --git a/target/alpha/helper.c b/target/alpha/helper.c
+> index ff9a2a7765..e497dd269e 100644
+> --- a/target/alpha/helper.c
+> +++ b/target/alpha/helper.c
+> @@ -295,7 +295,7 @@ bool alpha_cpu_tlb_fill(CPUState *cs, vaddr addr, int size,
+>  }
+>  #endif /* USER_ONLY */
+>  
+> -void alpha_cpu_do_interrupt_locked(CPUState *cs)
+> +static void alpha_cpu_do_interrupt_locked(CPUState *cs)
+>  {
+>      AlphaCPU *cpu = ALPHA_CPU(cs);
+>      CPUAlphaState *env = &cpu->env;
+> @@ -407,6 +407,13 @@ void alpha_cpu_do_interrupt_locked(CPUState *cs)
+>  #endif /* !USER_ONLY */
+>  }
+>  
+> +void alpha_cpu_do_interrupt(CPUState *cs)
 > +{
-> +    uint8_t clustersz =3D ARM_DEFAULT_CPUS_PER_CLUSTER;
-> +    return arm_cpu_mp_affinity(idx, clustersz);
+> +    qemu_mutex_lock_iothread();
+> +    alpha_cpu_do_interrupt_locked(cs);
+> +    qemu_mutex_unlock_iothread();
 > +}
 > +
->  /*
->   * Firmware on this machine only uses ACPI table to load OS, these limit=
-ed
->   * device tree nodes are just to let firmware know the info which varies
-> from
-> @@ -183,14 +189,31 @@ static void create_fdt(SBSAMachineState *sms)
->          g_free(matrix);
->      }
->
-> +    /*
-> +     * From Documentation/devicetree/bindings/arm/cpus.yaml
-> +     *  On ARM v8 64-bit systems this property is required
-> +     *    and matches the MPIDR_EL1 register affinity bits.
-> +     *
-> +     *    * If cpus node's #address-cells property is set to 2
-> +     *
-> +     *      The first reg cell bits [7:0] must be set to
-> +     *      bits [39:32] of MPIDR_EL1.
-> +     *
-> +     *      The second reg cell bits [23:0] must be set to
-> +     *      bits [23:0] of MPIDR_EL1.
-> +     */
->      qemu_fdt_add_subnode(sms->fdt, "/cpus");
-> +    qemu_fdt_setprop_cell(sms->fdt, "/cpus", "#address-cells", 2);
-> +    qemu_fdt_setprop_cell(sms->fdt, "/cpus", "#size-cells", 0x0);
->
->      for (cpu =3D sms->smp_cpus - 1; cpu >=3D 0; cpu--) {
->          char *nodename =3D g_strdup_printf("/cpus/cpu@%d", cpu);
->          ARMCPU *armcpu =3D ARM_CPU(qemu_get_cpu(cpu));
->          CPUState *cs =3D CPU(armcpu);
-> +        uint64_t mpidr =3D sbsa_ref_cpu_mp_affinity(sms, cpu);
->
->          qemu_fdt_add_subnode(sms->fdt, nodename);
-> +        qemu_fdt_setprop_u64(sms->fdt, nodename, "reg", mpidr);
->
->          if (ms->possible_cpus->cpus[cs->cpu_index].props.has_node_id) {
->              qemu_fdt_setprop_cell(sms->fdt, nodename, "numa-node-id",
-> @@ -717,12 +740,6 @@ static void sbsa_ref_init(MachineState *machine)
->      arm_load_kernel(ARM_CPU(first_cpu), machine, &sms->bootinfo);
->  }
->
-> -static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
-> -{
-> -    uint8_t clustersz =3D ARM_DEFAULT_CPUS_PER_CLUSTER;
-> -    return arm_cpu_mp_affinity(idx, clustersz);
-> -}
-> -
->  static const CPUArchIdList *sbsa_ref_possible_cpu_arch_ids(MachineState
-> *ms)
+>  bool alpha_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
 >  {
->      unsigned int max_cpus =3D ms->smp.max_cpus;
-> --
-> 2.20.1
->
->
->
+>      AlphaCPU *cpu = ALPHA_CPU(cs);
 
---0000000000001ad54305ae32f72e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This rename should have been done in patch 1, as with all others.
+Moreover, this leaves a bug in alpha_cpu_exec_interrupt in that it should be
+calling alpha_cpu_do_interrupt_locked.
 
-<div dir=3D"auto"><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" clas=
-s=3D"gmail_attr">Le jeu. 27 ao=C3=BBt 2020 14:45, Leif Lindholm &lt;<a href=
-=3D"mailto:leif@nuviainc.com">leif@nuviainc.com</a>&gt; a =C3=A9crit=C2=A0:=
-<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bord=
-er-left:1px #ccc solid;padding-left:1ex">The sbsa-ref platform uses a minim=
-al device tree to pass amount of memory<br>
-as well as number of cpus to the firmware. However, when dumping that<br>
-minimal dtb (with -M sbsa-virt,dumpdtb=3D&lt;file&gt;), the resulting blob<=
-br>
-generates a warning when decompiled by dtc due to lack of reg property.<br>
-<br>
-Add a simple reg property per cpu, representing a 64-bit MPIDR_EL1.<br>
-<br>
-This also ends up being cleaner than having the firmware calculating its<br=
->
-own IDs for generating APCI.<br>
-<br>
-Signed-off-by: Leif Lindholm &lt;<a href=3D"mailto:leif@nuviainc.com" targe=
-t=3D"_blank" rel=3D"noreferrer">leif@nuviainc.com</a>&gt;<br></blockquote><=
-/div></div><div dir=3D"auto"><br></div><div dir=3D"auto"><span style=3D"fon=
-t-family:sans-serif;font-size:13.696px">Reviewed-by: Philippe Mathieu-Daud=
-=C3=A9 &lt;</span><a href=3D"mailto:f4bug@amsat.org" style=3D"text-decorati=
-on:none;color:rgb(66,133,244);font-family:sans-serif;font-size:13.696px">f4=
-bug@amsat.org</a><span style=3D"font-family:sans-serif;font-size:13.696px">=
-&gt;</span><br></div><div dir=3D"auto"><br></div><div dir=3D"auto"><div cla=
-ss=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 =
-.8ex;border-left:1px #ccc solid;padding-left:1ex">
----<br>
-<br>
-As per Graeme&#39;s feedback, properly represent the MPIDR topology info<br=
->
-in the reg property rather than just counting cores (and update the<br>
-commit message on why this is useful).<br>
-I&#39;m using the local helper function sbsa_ref_cpu_mp_affinity() for this=
-,<br>
-and moving it up somewhat rather than adding a forward declaration.<br>
-<br>
-=C2=A0hw/arm/sbsa-ref.c | 29 +++++++++++++++++++++++------<br>
-=C2=A01 file changed, 23 insertions(+), 6 deletions(-)<br>
-<br>
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c<br>
-index f030a416fd..3e65ded9a0 100644<br>
---- a/hw/arm/sbsa-ref.c<br>
-+++ b/hw/arm/sbsa-ref.c<br>
-@@ -138,6 +138,12 @@ static const int sbsa_ref_irqmap[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0[SBSA_EHCI] =3D 11,<br>
-=C2=A0};<br>
-<br>
-+static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)<b=
-r>
-+{<br>
-+=C2=A0 =C2=A0 uint8_t clustersz =3D ARM_DEFAULT_CPUS_PER_CLUSTER;<br>
-+=C2=A0 =C2=A0 return arm_cpu_mp_affinity(idx, clustersz);<br>
-+}<br>
-+<br>
-=C2=A0/*<br>
-=C2=A0 * Firmware on this machine only uses ACPI table to load OS, these li=
-mited<br>
-=C2=A0 * device tree nodes are just to let firmware know the info which var=
-ies from<br>
-@@ -183,14 +189,31 @@ static void create_fdt(SBSAMachineState *sms)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0g_free(matrix);<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-<br>
-+=C2=A0 =C2=A0 /*<br>
-+=C2=A0 =C2=A0 =C2=A0* From Documentation/devicetree/bindings/arm/cpus.yaml=
-<br>
-+=C2=A0 =C2=A0 =C2=A0*=C2=A0 On ARM v8 64-bit systems this property is requ=
-ired<br>
-+=C2=A0 =C2=A0 =C2=A0*=C2=A0 =C2=A0 and matches the MPIDR_EL1 register affi=
-nity bits.<br>
-+=C2=A0 =C2=A0 =C2=A0*<br>
-+=C2=A0 =C2=A0 =C2=A0*=C2=A0 =C2=A0 * If cpus node&#39;s #address-cells pro=
-perty is set to 2<br>
-+=C2=A0 =C2=A0 =C2=A0*<br>
-+=C2=A0 =C2=A0 =C2=A0*=C2=A0 =C2=A0 =C2=A0 The first reg cell bits [7:0] mu=
-st be set to<br>
-+=C2=A0 =C2=A0 =C2=A0*=C2=A0 =C2=A0 =C2=A0 bits [39:32] of MPIDR_EL1.<br>
-+=C2=A0 =C2=A0 =C2=A0*<br>
-+=C2=A0 =C2=A0 =C2=A0*=C2=A0 =C2=A0 =C2=A0 The second reg cell bits [23:0] =
-must be set to<br>
-+=C2=A0 =C2=A0 =C2=A0*=C2=A0 =C2=A0 =C2=A0 bits [23:0] of MPIDR_EL1.<br>
-+=C2=A0 =C2=A0 =C2=A0*/<br>
-=C2=A0 =C2=A0 =C2=A0qemu_fdt_add_subnode(sms-&gt;fdt, &quot;/cpus&quot;);<b=
-r>
-+=C2=A0 =C2=A0 qemu_fdt_setprop_cell(sms-&gt;fdt, &quot;/cpus&quot;, &quot;=
-#address-cells&quot;, 2);<br>
-+=C2=A0 =C2=A0 qemu_fdt_setprop_cell(sms-&gt;fdt, &quot;/cpus&quot;, &quot;=
-#size-cells&quot;, 0x0);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0for (cpu =3D sms-&gt;smp_cpus - 1; cpu &gt;=3D 0; cpu--=
-) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0char *nodename =3D g_strdup_printf(&quot;=
-/cpus/cpu@%d&quot;, cpu);<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ARMCPU *armcpu =3D ARM_CPU(qemu_get_cpu(c=
-pu));<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0CPUState *cs =3D CPU(armcpu);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 uint64_t mpidr =3D sbsa_ref_cpu_mp_affinity(sm=
-s, cpu);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_fdt_add_subnode(sms-&gt;fdt, nodenam=
-e);<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 qemu_fdt_setprop_u64(sms-&gt;fdt, nodename, &q=
-uot;reg&quot;, mpidr);<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0if (ms-&gt;possible_cpus-&gt;cpus[cs-&gt;=
-cpu_index].props.has_node_id) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0qemu_fdt_setprop_cell(sms-&=
-gt;fdt, nodename, &quot;numa-node-id&quot;,<br>
-@@ -717,12 +740,6 @@ static void sbsa_ref_init(MachineState *machine)<br>
-=C2=A0 =C2=A0 =C2=A0arm_load_kernel(ARM_CPU(first_cpu), machine, &amp;sms-&=
-gt;bootinfo);<br>
-=C2=A0}<br>
-<br>
--static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)<b=
-r>
--{<br>
--=C2=A0 =C2=A0 uint8_t clustersz =3D ARM_DEFAULT_CPUS_PER_CLUSTER;<br>
--=C2=A0 =C2=A0 return arm_cpu_mp_affinity(idx, clustersz);<br>
--}<br>
--<br>
-=C2=A0static const CPUArchIdList *sbsa_ref_possible_cpu_arch_ids(MachineSta=
-te *ms)<br>
-=C2=A0{<br>
-=C2=A0 =C2=A0 =C2=A0unsigned int max_cpus =3D ms-&gt;smp.max_cpus;<br>
--- <br>
-2.20.1<br>
-<br>
-<br>
-</blockquote></div></div></div>
+That seems to be the only instance of this mistake.
 
---0000000000001ad54305ae32f72e--
+
+r~

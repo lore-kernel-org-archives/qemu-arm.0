@@ -1,162 +1,148 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4945233lfc;
-        Tue, 1 Sep 2020 14:14:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwE7tHYyLghs/gZ7hqr6X4zsVnZ5fa6wo0HRt9MLy1jgaSYsT6jzOekAa3h3c2vX8M7RE6Y
-X-Received: by 2002:a25:d98c:: with SMTP id q134mr5253535ybg.73.1598994898824;
-        Tue, 01 Sep 2020 14:14:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598994898; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4462711lfc;
+        Tue, 1 Sep 2020 03:41:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxencxLdJVJCyzSy5Y5nKUwVe2QqdnjGCuLXqrHBRKUNBRY5wvdoaWUxXZN0ekgC/Ukl5pU
+X-Received: by 2002:a25:c345:: with SMTP id t66mr1823538ybf.218.1598956860844;
+        Tue, 01 Sep 2020 03:41:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598956860; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ie8WK8/tSdYJBTY7ML/UqVCl1NO6BqoecOKzzJ4aPy8vYTG2MnxXjGpj3O9IqC8n4+
-         VcphFJCBPLlR3dG+HKvQ8mxo4sIk+bw4TTDEg/xE25D86agtZpFq+WL527PSwwcWeKMN
-         RTRCst8uoOq+IrY6JlH13QeDNO97jPR0KLkQI2cQPjC4cRcBpAq4St9TCWg2xvntV3Pj
-         j9ysOzM+dtBqzJv+63SNTEuJCpArPhH2GYB8KduJ6Un+jX1dUBPo44fNL3DGF2nVX0yJ
-         UifLSV9hxr4aKCpbm3Ovwh7nEp1Xah5WwZtVQjA/BCrcV+KbNZq0DQHry+L2gLZNnPtD
-         Edxw==
+        b=l6cYAAfMlzkBGJuuaDD1mz/ApIcbqAziWdQI7J/EnYPW3P8Giaky3GXR/egWgmZ8ia
+         P/LHfNiOA/i+1gKRrGOi+x1pzhRTKszCuwuTWqXPOqetUUM/wPdmujKviEDZznLGs1ab
+         INERPvSJjMyXWaR1UdrZE9yG4FQTE5sSEih570haODLC/WhoeN7UEIimdq8GVvwfvQNo
+         gHWnsMYJIFxC+xfKioPpJfm3e9i4wgBdp/B1yKWce+zFr3KvEYKdyuqrOyw7aHiBCQyo
+         YtdqYHiFsn7ELtBpugWvRjFOJrM96tNNT+LMdlkprJTgnRNK6VD9r/fk9F8BHBvatAh4
+         QyLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=oMzSUbuaS0SLP3V0nKz6raRAbmrCMnOI9nSqqBp6t90=;
-        b=J+Vxg3eGuBO9hi5cRdYRGvWB9lE0T0i7TPNDAnnooHu4SheQvP2aRnUEXdDKMcsiKB
-         BZj2YOB81FsbZrOCh6SfGvs+CGsIf8826di/lJ+hA6zWa4mWnApCOxxK4fdZp2t67DBf
-         qWzoXUQaWKfHM4OgQhkN8Xms8BrEuM5aBpZRlWSZek9kUnS27vwGYpvkLx1F81GvjPwx
-         4Ph3Vc42wKMA2H75PGMvqO08zfcENwdjdmpCaJ4x2vkif9172aq9F2zTnHSMTVpEJZ9F
-         dvwOxkcb+/DmHoS3tezYNzwtl38Qj0nbi8V0gQXAtVrXuSfQxwbu0SyJIz3a5sAqOBlv
-         Dt5g==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=AS9iE5jICxt728QvQddccBLJxmpLmZSe3J8QH1ar4ec=;
+        b=N/xKyPhStY+NdBeCs8l+51hvgtx8tvg1rT9HajJ6v1tZ6ZduKJWWXYzn0LVCRlgPLq
+         y5eTVFZ6QR5tMs/FhuZyHB4OAc2/naFlVHuCtpyehNXwpzqHmUwfOp14XOXRjq+o9vOw
+         k+U/2atsVSMWY8mZYgzVL+BgevLoeJXRh9oi/hJEirG5lctXUJ8sKMdg9ECRaUfyF0lw
+         YOWQGPLdET2DD34FFgXGluQWB8OtkNjK5ueIzLMiXjSRwSJ8qoUokjQhR64DJZDKj1NE
+         uW2XE7NE4TAtsqNqrMioxn4+6a2beo4udyN9QCJKsBBUCj2jSsIgNMKjGv5HXcNnPPDz
+         HwHQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="DTk/XWws";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pWbeLGIU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x4si2119397ybt.336.2020.09.01.14.14.58
+        by mx.google.com with ESMTPS id s4si695862ybq.70.2020.09.01.03.41.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Sep 2020 14:14:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Sep 2020 03:41:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="DTk/XWws";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38604 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pWbeLGIU;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:58618 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDDcI-0002DA-8D
-	for alex.bennee@linaro.org; Tue, 01 Sep 2020 17:14:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53470)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kD3im-0004We-5C
+	for alex.bennee@linaro.org; Tue, 01 Sep 2020 06:41:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57058)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1kDDbV-0001lD-T8
- for qemu-devel@nongnu.org; Tue, 01 Sep 2020 17:14:09 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:28407
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1kDDbQ-0001bL-NB
- for qemu-devel@nongnu.org; Tue, 01 Sep 2020 17:14:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1598994843;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oMzSUbuaS0SLP3V0nKz6raRAbmrCMnOI9nSqqBp6t90=;
- b=DTk/XWwsqiDJLwZWlzBs3kNKtsFnBPq5j0Sq9i34WT7aPHCac0OxdaL18Q6AGzixmOQOj2
- gNSKeorEOAd6kwxsScW9cxsgA9GEBEFlC1EJo9CC8i2kIiq+qpsT622r/ZnKFadLleQEIv
- Uvb2FTM1t3eMklkVanmrPcE33QMmePg=
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-389-wy8CUikGOwu1IVF1Z0klkw-1; Tue, 01 Sep 2020 17:14:01 -0400
-X-MC-Unique: wy8CUikGOwu1IVF1Z0klkw-1
-Received: by mail-qk1-f200.google.com with SMTP id g6so1864657qko.21
- for <qemu-devel@nongnu.org>; Tue, 01 Sep 2020 14:14:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kD3ic-0004VC-NG; Tue, 01 Sep 2020 06:40:50 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:40848)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kD3ib-0001rU-8i; Tue, 01 Sep 2020 06:40:50 -0400
+Received: by mail-wm1-x343.google.com with SMTP id v4so659720wmj.5;
+ Tue, 01 Sep 2020 03:40:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=AS9iE5jICxt728QvQddccBLJxmpLmZSe3J8QH1ar4ec=;
+ b=pWbeLGIUG6DEWzohVYh0R3MPCT/wYTFQff8wIJt3ANIJTFzgkRIqJC76+yYfXX0DRK
+ ap7/sLZ/97/yXBAfeUbeNHqICanWYLTYZFr17HHBGcspdXfa0XD6mR6sDw+mgE9811Xc
+ Ol29xXEj1U1lAGw+xO59p/bQYP5N7tPaKgDz6ZiZ/OV6oBVC9e3cStMJKRrZaDhicctI
+ k9/Ll0ktPxTtAIVp2pXE8sD2OoV1KWAAn7dP72jlpSpgLkKUDafpph0nnjIR517RSsdY
+ 6RkCeaE2eYMBYDr3QT7lU9DHBf7W9hMfF0LkV0ui3R3rBF8q1/GwmeTkvXa7tQGBztip
+ VhFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=oMzSUbuaS0SLP3V0nKz6raRAbmrCMnOI9nSqqBp6t90=;
- b=oSBHLxia0wM2L2PGzNs1BNkvrHoyVmsxDuSkXqpnbz4C4jTMpvUBZiZ3f1PIvMRhbf
- /k3j9ueYtiySfZmpGTcojhtgdrufOAwIX0XDZhsQcj63X05fXjQkad4MLuODmCfmSjjJ
- HwiIh3urBidvwMdzDno/MeXzva4IvKwnAaHaXCgiieu37tWCLYW4og5TkCKjrmLr5r59
- xSOWEV0WBt0QEtxxoAziYXImvPAbtmKf36PkZnZLiFRG9v8cWu43EQicSmBN4/jT+tWg
- F8DMSWaW+yaul9TGSMR+ywttxtdqeJn1ckjwjN89E4OOJpBQCPF25RaPpma/s6QJZ+UV
- EIdw==
-X-Gm-Message-State: AOAM531L5GBhiAzF4tQOK+QJkEglgSiocaTreukF6iJngM/DKeBgIxGc
- UFHuWIt6FhV6azW855PqjIgC2YeS+S0ZgdCH9VxdkLjRIlffJ3awvk9yWthv0t33MGrzocriKkD
- +gz3f5rfsplo+AhU=
-X-Received: by 2002:ac8:f57:: with SMTP id l23mr3890625qtk.166.1598994840997; 
- Tue, 01 Sep 2020 14:14:00 -0700 (PDT)
-X-Received: by 2002:ac8:f57:: with SMTP id l23mr3890592qtk.166.1598994840761; 
- Tue, 01 Sep 2020 14:14:00 -0700 (PDT)
-Received: from xz-x1 (bras-vprn-toroon474qw-lp130-11-70-53-122-15.dsl.bell.ca.
- [70.53.122.15])
- by smtp.gmail.com with ESMTPSA id b199sm3148134qkg.116.2020.09.01.14.13.58
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=AS9iE5jICxt728QvQddccBLJxmpLmZSe3J8QH1ar4ec=;
+ b=ImbQdPNQtQ5pApZMlW2Gym4w/JNp5NNYJXoSheaVQf/rDF9le72Dzhgzb+W9iTHvG9
+ WKs5Tck2xD5p+NtpOdbUHbFMKJKFs5BfTV5wwrSMYuNK4QNikAxkU156fAtpdqgkaURV
+ VwDvqq/oqF+Y6HN80rxTLptFzZqBYaK5FwycBbXUKAwRkCTK2hIYGEpQ075cC0vHaqxd
+ NBMzzZ/15eKGN9eVW7cbZREr03v05HTyXg+Xay10e3Yv5kf7joPNwIZLuWEzbhuGZALe
+ CNiiN0wfH51pCh2djtMOvY1VB0n6Uwo+qLbGZKtfA3M3uSkGpGxdVvqJibexAnaRa+x2
+ kkIw==
+X-Gm-Message-State: AOAM531sn+BqZj2X8M4b+L5+qno1f05d9Pje2r+AYfMnVq1SW6XSOuTd
+ tq8u+KHZrtCzLgDrl8l2cOmce11vJMo=
+X-Received: by 2002:a1c:4187:: with SMTP id o129mr1107714wma.113.1598956846547; 
+ Tue, 01 Sep 2020 03:40:46 -0700 (PDT)
+Received: from localhost.localdomain (50.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.50])
+ by smtp.gmail.com with ESMTPSA id o9sm1541461wrw.58.2020.09.01.03.40.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Sep 2020 14:13:59 -0700 (PDT)
-Date: Tue, 1 Sep 2020 17:13:57 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Eugenio =?utf-8?B?UMOpcmV6?= <eperezma@redhat.com>
-Subject: Re: [RFC v8 0/5] memory: Delete assertion in
- memory_region_unregister_iommu_notifier
-Message-ID: <20200901211357.GH3053@xz-x1>
-References: <20200901142608.24481-1-eperezma@redhat.com>
+ Tue, 01 Sep 2020 03:40:45 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/5] hw: Replace some impossible checks by assertions
+Date: Tue,  1 Sep 2020 12:40:38 +0200
+Message-Id: <20200901104043.91383-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200901142608.24481-1-eperezma@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=peterx@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 02:08:15
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Juan Quintela <quintela@redhat.com>,
- qemu-devel@nongnu.org, Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
- =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TDqOFeYyThvs
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: KuKphjM6SGQT
 
-On Tue, Sep 01, 2020 at 04:26:03PM +0200, Eugenio Pérez wrote:
-> I am able to hit this assertion when a Red Hat 7 guest virtio_net device
-> raises an "Invalidation" of all the TLB entries. This happens in the
-> guest's startup if 'intel_iommu=on' argument is passed to the guest
-> kernel and right IOMMU/ATS devices are declared in qemu's command line.
+Trivial patches removing unreachable code.
 
-Thanks for working on this, Eugenio!  Sorry to let the original one-liner patch
-grow into a patchset... :)
+Philippe Mathieu-Daudé (5):
+  hw/gpio/max7310: Remove impossible check
+  hw/mips/fuloong2e: Convert pointless error message to an assert()
+  hw/ppc/ppc4xx_pci: Use ARRAY_SIZE() instead of magic value
+  hw/ppc/ppc4xx_pci: Replace pointless warning by assert()
+  hw/isa/isa-bus: Replace hw_error() by assert()
 
-I think it at least looks very good to me in general, besides another trivial
-comment on patch 4.
+ hw/gpio/max7310.c   | 4 ----
+ hw/isa/isa-bus.c    | 9 ++-------
+ hw/mips/fuloong2e.c | 5 +----
+ hw/ppc/ppc4xx_pci.c | 8 +++-----
+ 4 files changed, 6 insertions(+), 20 deletions(-)
 
 -- 
-Peter Xu
+2.26.2
 

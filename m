@@ -1,103 +1,99 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4162211lfc;
-        Mon, 31 Aug 2020 18:40:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxYZdkzp0E/94YcMfp/cSurXrXUjJJr7sFylCKPqvEcwhl9QatbDuXRS+6pzh5Ex1IlLz1a
-X-Received: by 2002:a25:b186:: with SMTP id h6mr5961883ybj.24.1598924440682;
-        Mon, 31 Aug 2020 18:40:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598924440; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4163153lfc;
+        Mon, 31 Aug 2020 18:42:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxHpO8Bjo03eY5I2qRt4Xjtu0MYk9f7xjopYu2zRCv55+CQqS+m9ZYBxxlLYSv+IaQExlA8
+X-Received: by 2002:a5b:cca:: with SMTP id e10mr6241478ybr.360.1598924552347;
+        Mon, 31 Aug 2020 18:42:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598924552; cv=none;
         d=google.com; s=arc-20160816;
-        b=XEC3yzgYGBYmUOHmovG62EbLWIY7nEd0kA8G5+21k1/O+nUdONCefZBF5cKYXHwjmv
-         2nc/yhEd8ylThFlDvE3ra4PaBVUE3Ad001ZklFsFarD/uGWRLe06GcqVKexLcu+/cjwA
-         B9FXo6MC/sHqOc1bwC0Ub1fG2fOTBdnpGBwC7cikkyBESECJebYNCzN3umMtONqbA19s
-         ZwXdg3JumR4+Su0SUtTJ6JFBzSJZdSGbIgRtGaIKfnG+sSbu+hfiLIGi8MVwW+tzKRCT
-         bs9N9JSmObCEVIzF4VLG+jJCJ3fE2l9FVlFI47wyDDcwykJtTPhf/SH7GSAihWS6M2iZ
-         ezRg==
+        b=AnwQt1++UmV/Uh5kXrSfddPN+Du0fFbEdsvrZmZYMWlE1iUpeAAIFWESDDtVCfmukh
+         4M6Dg7ZMS0XegtKp8gZeomZW1obhhmDTZW6ZT/O2w1JOTdTtwYK9cMhUIBaCO7n1kBhz
+         SZFYDw81InkwgLiq3nSl4JiQvECF7yjyK9+EPMcL8MbiAbFgfDI/TrfdSeN9Qjnlaz78
+         EBt8cua6zyl8HeY59NWVbOYUY6EqyRC31HzBoBXeZDJfy1nysxA7qoLRVp8LEnXPJ64x
+         DvqrYznVEYXHKvnnXK+HDvBvhxoRaZfWiGC2dR+hyOHpCpymXyKFMZSsezvIqBiFFiZa
+         fj7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=wQPHkilrQMomooaP59G9Mj9MFPTLkFKqNxNAUzMzLLQ=;
-        b=Sh2ptHoB4lvtukWZm3hah0pTp5jeSMspVLNuBvGTtuDzcEorv9CikYs5IZxYBh6dJP
-         ueA2/r3pzBjPm+7FqCmKZBLzmlySB3I7u/hQC67g0kdH8NiGS5KxpXTLbqy/BSWFztlI
-         /1T1ugDx6TO56YAtkp4sCie4iidl+Rwyl4VOFRTT3DNEEiML4AGPY9s9FV3SdEeOOzTB
-         viXIFPfBlpc/xKCA+Nz3D04XOce79kiUJ48EbgwnOBszIt0xD40BKh4RA0RJsRuYQBPZ
-         PIhDWX7+0//CpjoOgni2lA+iQdXUYnB1xdoHcn7zYp6FUuODBHJKucsE8AdD+5ptnlHV
-         B2rg==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=s7gyqfg/Mi9mPR4bB0JcRJ4ClLRdi+PkKjofPJk7llE=;
+        b=BUv8qgNJgXG5AFxjJSDfnFfNP9FhCstvGB3d4NsGCzWdvbAJZRRIe7+MctfxhbJby2
+         p7KOyRv+ihDAMRI54SDsNQT2QHneZviD8vBLJz9rJLCLSxDrPmAifEEDGA00w01A7bfY
+         kcCAfQPmsQz85mD48CpuP9mzvZUadJAGveSyu6d5wwa9TT48JYZpt+6SumK5ppPQafFT
+         v5T4bZUBDftAWPbQoKtPZvKIc3B3WcTIUojCl5SRmRCH5lKNed8lv3j6zLdOO7iPMmu+
+         rIRgJspwgoFpV75k5WYwkAMHNLYFka8SgjBzlyXYvl88MDGrYNWHnkhi+OVnYwXHdyaq
+         qT9w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FJLu19Td;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pKSZkXCj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18si12563429ybc.313.2020.08.31.18.40.40
+        by mx.google.com with ESMTPS id k9si9128779ybf.433.2020.08.31.18.42.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 31 Aug 2020 18:40:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 31 Aug 2020 18:42:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=FJLu19Td;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pKSZkXCj;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:51666 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kCvHs-0003tf-0z
-	for alex.bennee@linaro.org; Mon, 31 Aug 2020 21:40:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40796)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kCvJf-0006Sz-MH
+	for alex.bennee@linaro.org; Mon, 31 Aug 2020 21:42:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40972)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kCvHh-0003qx-Kt; Mon, 31 Aug 2020 21:40:29 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:55723)
+ id 1kCvII-000555-EX; Mon, 31 Aug 2020 21:41:06 -0400
+Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:41095)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kCvHf-0005UN-Go; Mon, 31 Aug 2020 21:40:29 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id 2so869496pjx.5;
- Mon, 31 Aug 2020 18:40:26 -0700 (PDT)
+ id 1kCvIG-0005cg-Nn; Mon, 31 Aug 2020 21:41:06 -0400
+Received: by mail-pf1-x443.google.com with SMTP id t9so1733953pfq.8;
+ Mon, 31 Aug 2020 18:41:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wQPHkilrQMomooaP59G9Mj9MFPTLkFKqNxNAUzMzLLQ=;
- b=FJLu19TdNxkNdrY2bQ2PnClhkGo/DTGn9wtJwrXRp88oletXjX250ORXLGNdv/z1k4
- pBRMl0FfCS5AAS+mZChW70iOJvTaXEIhEbGnatTL/Ay/vmP6KDrYvHbi6zClpUcgNDos
- Cteh1t74jmUVf5Nct+4BsOI1fBrAe+zfxy58FTrsoNcXjGCtUj5JzE+BZFPrTt77dahO
- cKrawI6OTBwRoheuEv31/oT3/gGsxayf1aGiTJu43GJdrLrxszsH280a1YMSbO2PIWMo
- iDH1+jtXuFERUf8fg0jykrcMJ+MS/8EdF4t0eex5x35dDAOexxSIKswq/lTsg0Cfjcjh
- vENg==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references;
+ bh=s7gyqfg/Mi9mPR4bB0JcRJ4ClLRdi+PkKjofPJk7llE=;
+ b=pKSZkXCjTOZSK48zWZ/MQNfc6q/yQ4dpOodq7VqXftkCHfEsiTxRd5ZcuQLnjZPUXK
+ 9ika8/rm40xEjhRTTNF5tQzp+c+TMeetoDgpj5XGtAGTTsqPXx5npFwsvFW9bT9zjgHA
+ THdvtNN/Blsj8EVD5iYLBoUy2EtlcYEBBiAIzbaJhwy5368Z75F4KmSdbb4gT8pHrwCX
+ eIU6GtFxh5LbR4w+3JOjvjh4f6rQupke+I4ylXsTMm7ncvuLIE2Yd1FIC4wfNIiVXegj
+ xXMYN4xLLbodt1lPPZ+y1KDOvUk5DgAMmkXSyuuAFKWXsUFw/iQT+VZREHSwPwqRxgcL
+ Jpbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wQPHkilrQMomooaP59G9Mj9MFPTLkFKqNxNAUzMzLLQ=;
- b=sObikaPm6PYHvzioaQvSWV/zp+RhRV94Q9fQA6S3LRa/MlMV7fkEtQBaIRgLIfdE1p
- tPeniN910g2CkJ8cQOxBsx8ncw+WbtUv+28s63WWoQpr67RERQ7MdNJQi1sVbGpM6RVB
- +SkXu9nFD+NbKnvWnRevFN7T1kyU1CX9MqTk8yJU01eP9VGR6T+ffQ4PgLxqyUf0ZxK+
- bndyTFHUF1IxvklYwjQ9Xv/5QaCK02hjhMcWOFGHbrky1TuR4gPPVkiUbKqOZ0GOVFV1
- FFSW+XmU/S+sAw2eP69D66WXNrcipTOW3I4OvFaX+p56bwa3yqJKC3UFUsDiBq4MRjps
- pWRQ==
-X-Gm-Message-State: AOAM531+j2gQ3e+lvoUgBqAv/p1e18P4+Okc8Rr2vpVgccqJVaLC6zhm
- AyFbh3Nz2gryspASb1kFSXs=
-X-Received: by 2002:a17:902:bc87:: with SMTP id
- bb7mr3331774plb.146.1598924424998; 
- Mon, 31 Aug 2020 18:40:24 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references;
+ bh=s7gyqfg/Mi9mPR4bB0JcRJ4ClLRdi+PkKjofPJk7llE=;
+ b=k4y6cS7CZYQpYgIH1fxxT4XVBJKlqSVkDFD6Fyv8bBh5hcB8fHySAjtlQhCUl31ePs
+ ZmKaKstDmtf4BSyB6qq5BM6sbUnUNGtri3x++4+rS4TRKWNh95uKRTwIPdd1mp7USXfj
+ OKKTXlfHMIhTSvtMmysYSZFComldYjBNce020UX9J2nX8uARIfFZYBetGCOsP8+33I4S
+ bovRxdMPdpnMc6qKwmKsIV06RTYVAxk4ToPavl3/C0GLiKo1vQCXkOGMtxyYaRWDdunM
+ tqZb4vTN4nrgmm4rCogA9DgRYBkfCu8reMt7RhdT5WMR36Zb/OlgFkm+FJNRCcrLnPsF
+ QYwA==
+X-Gm-Message-State: AOAM5337qWNttu/RBZgUAZsdmhkLtSMdsgp0+pfPBtuBQgwWwtmb7C2w
+ 77XTMdgPpYIy2jQeqtp9jwE=
+X-Received: by 2002:a62:33c2:: with SMTP id z185mr3671034pfz.242.1598924462944; 
+ Mon, 31 Aug 2020 18:41:02 -0700 (PDT)
 Received: from pek-vx-bsp2.wrs.com (unknown-146-144.windriver.com.
  [147.11.146.144])
- by smtp.gmail.com with ESMTPSA id l13sm8887520pgq.33.2020.08.31.18.40.20
+ by smtp.gmail.com with ESMTPSA id l13sm8887520pgq.33.2020.08.31.18.40.59
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 31 Aug 2020 18:40:24 -0700 (PDT)
+ Mon, 31 Aug 2020 18:41:02 -0700 (PDT)
 From: Bin Meng <bmeng.cn@gmail.com>
 To: Alistair Francis <Alistair.Francis@wdc.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Palmer Dabbelt <palmerdabbelt@google.com>, qemu-devel@nongnu.org,
  qemu-riscv@nongnu.org
-Subject: [PATCH v3 00/16] hw/riscv: Add Microchip PolarFire SoC Icicle Kit
- board support
-Date: Tue,  1 Sep 2020 09:38:55 +0800
-Message-Id: <1598924352-89526-1-git-send-email-bmeng.cn@gmail.com>
+Subject: [PATCH v3 11/16] hw/net: cadence_gem: Add a new 'phy-addr' property
+Date: Tue,  1 Sep 2020 09:39:06 +0800
+Message-Id: <1598924352-89526-12-git-send-email-bmeng.cn@gmail.com>
 X-Mailer: git-send-email 2.7.4
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
- envelope-from=bmeng.cn@gmail.com; helo=mail-pj1-x1043.google.com
+In-Reply-To: <1598924352-89526-1-git-send-email-bmeng.cn@gmail.com>
+References: <1598924352-89526-1-git-send-email-bmeng.cn@gmail.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-pf1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -108,176 +104,88 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Jason Wang <jasowang@redhat.com>, Bin Meng <bin.meng@windriver.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FrBb0bf8tiIi
+ Alistair Francis <alistair@alistair23.me>, Jason Wang <jasowang@redhat.com>,
+ Bin Meng <bin.meng@windriver.com>, qemu-arm@nongnu.org,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Bw0L4cvm4R1z
 
 From: Bin Meng <bin.meng@windriver.com>
 
-This adds support for Microchip PolarFire SoC Icicle Kit board.
-The Icicle Kit board integrates a PolarFire SoC, with one SiFive's
-E51 plus four U54 cores and many on-chip peripherals and an FPGA.
+At present the PHY address of the PHY connected to GEM is hard-coded
+to either 23 (BOARD_PHY_ADDRESS) or 0. This might not be the case for
+all boards. Add a new 'phy-addr' property so that board can specify
+the PHY address for each GEM instance.
 
-For more details about Microchip PolarFire SoC, please see:
-https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga
+Signed-off-by: Bin Meng <bin.meng@windriver.com>
 
-The Icicle Kit board information can be found here:
-https://www.microsemi.com/existing-parts/parts/152514
+---
 
-Unlike SiFive FU540, the RISC-V core resect vector is at 0x20220000.
-The RISC-V CPU and HART codes has been updated to set the core's
-reset vector based on a configurable property from machine codes.
-
-The following perepherals are created as an unimplemented device:
-
-- Bus Error Uint 0/1/2/3/4
-- L2 cache controller
-- SYSREG
-- MPUCFG
-- IOSCBCFG
-- GPIO
-
-The following perepherals are emulated:
-- SiFive CLINT
-- SiFive PLIC
-- PolarFire SoC Multi-Mode UART
-- SiFive PDMA
-- Cadence eMMC/SDHCI controller
-- Cadence Gigabit Ethernet MAC
-
-The BIOS image used by this machine is hss.bin, aka Hart Software
-Services, which can be built from:
-https://github.com/polarfire-soc/hart-software-services
-
-To launch this machine:
-$ qemu-system-riscv64 -M microchip-icicle-kit -smp 5 \
-    -bios path/to/hss.bin -sd path/to/sdcard.img \
-    -nic tap,ifname=tap,script=no,model=cadence_gem \
-    -display none -serial stdio \
-    -chardev socket,id=serial1,path=serial1.sock,server,wait \
-    -serial chardev:serial1
-
-The memory is set to 1 GiB by default to match the hardware.
-A sanity check on ram size is performed in the machine init routine
-to prompt user to increase the RAM size to > 1 GiB when less than
-1 GiB ram is detected.
-
-HSS output is on the first serial port (stdio) and U-Boot/Linux
-outputs on the 2nd serial port. OpenSBI outputs on a random serial
-port due to the lottery mechanism used during the multi-core boot.
-
-Please check the QEMU WiKi page for the target specific information:
-https://wiki.qemu.org/Documentation/Platforms/RISCV#Microchip_PolarFire_SoC_Icicle_Kit
-
-Changes in v3:
-- rebase on qemu/master
-- change MCHP_PFSOC_DMA to SIFIVE_PDMA
-- use the correct (Object *) to set the 'phy-addr' in xlnx-zynqmp.c
+(no changes since v2)
 
 Changes in v2:
-- change to update hw/char/meson.build
-- add impl.min_access_size and impl.max_access_size as part of
-  MemoryRegionOps and remove the allignment check
-- change to update hw/sd/meson.build
-- change the name to "generic-sdhci" when calling object_initialize_child()
-- add a container MR to simplify out-of-bounds access checks
-- do not initialize TYPE_SYSBUS_SDHCI in the SoC instance_init(),
-  instead move that to the cadence_sdhci model
-- do not access generic-sdhci's state directly,
-  instead move that to the cadence_sdhci model
-- change to update hw/dma/meson.build
-- rename the file names to sifive_pdma.[c|h]
-- update irq number to 8 per the SiFive FU540 manual
-- fix the register offset for channel 1/2/3 in the read/write ops
-- connect 8 IRQs to the PLIC
 - change "phy-addr" default value to BOARD_PHY_ADDRESS
 
-Bin Meng (16):
-  target/riscv: cpu: Add a new 'resetvec' property
-  hw/riscv: hart: Add a new 'resetvec' property
-  target/riscv: cpu: Set reset vector based on the configured property
-    value
-  hw/riscv: Initial support for Microchip PolarFire SoC Icicle Kit board
-  hw/char: Add Microchip PolarFire SoC MMUART emulation
-  hw/riscv: microchip_pfsoc: Connect 5 MMUARTs
-  hw/sd: Add Cadence SDHCI emulation
-  hw/riscv: microchip_pfsoc: Connect a Cadence SDHCI controller and an
-    SD card
-  hw/dma: Add SiFive platform DMA controller emulation
-  hw/riscv: microchip_pfsoc: Connect a DMA controller
-  hw/net: cadence_gem: Add a new 'phy-addr' property
-  hw/arm: xlnx: Set all boards' GEM 'phy-addr' property value to 23
-  hw/riscv: microchip_pfsoc: Connect 2 Cadence GEMs
-  hw/riscv: microchip_pfsoc: Hook GPIO controllers
-  hw/riscv: clint: Avoid using hard-coded timebase frequency
-  hw/riscv: sifive_u: Connect a DMA controller
+ include/hw/net/cadence_gem.h | 2 ++
+ hw/net/cadence_gem.c         | 5 +++--
+ 2 files changed, 5 insertions(+), 2 deletions(-)
 
- default-configs/riscv64-softmmu.mak |   1 +
- include/hw/char/mchp_pfsoc_mmuart.h |  61 +++++
- include/hw/dma/sifive_pdma.h        |  57 +++++
- include/hw/net/cadence_gem.h        |   2 +
- include/hw/riscv/microchip_pfsoc.h  | 133 +++++++++++
- include/hw/riscv/riscv_hart.h       |   1 +
- include/hw/riscv/sifive_clint.h     |   4 +-
- include/hw/riscv/sifive_u.h         |  11 +
- include/hw/sd/cadence_sdhci.h       |  47 ++++
- target/riscv/cpu.h                  |   7 +-
- hw/arm/xilinx_zynq.c                |   1 +
- hw/arm/xlnx-versal.c                |   1 +
- hw/arm/xlnx-zynqmp.c                |   2 +
- hw/char/mchp_pfsoc_mmuart.c         |  86 +++++++
- hw/dma/sifive_pdma.c                | 313 ++++++++++++++++++++++++++
- hw/net/cadence_gem.c                |   7 +-
- hw/riscv/microchip_pfsoc.c          | 437 ++++++++++++++++++++++++++++++++++++
- hw/riscv/opentitan.c                |   1 +
- hw/riscv/riscv_hart.c               |   3 +
- hw/riscv/sifive_clint.c             |  26 ++-
- hw/riscv/sifive_e.c                 |   4 +-
- hw/riscv/sifive_u.c                 |  35 ++-
- hw/riscv/spike.c                    |   3 +-
- hw/riscv/virt.c                     |   3 +-
- hw/sd/cadence_sdhci.c               | 193 ++++++++++++++++
- target/riscv/cpu.c                  |   8 +-
- target/riscv/cpu_helper.c           |   4 +-
- target/riscv/csr.c                  |   4 +-
- MAINTAINERS                         |   9 +
- hw/char/Kconfig                     |   3 +
- hw/char/meson.build                 |   1 +
- hw/dma/Kconfig                      |   3 +
- hw/dma/meson.build                  |   1 +
- hw/riscv/Kconfig                    |  10 +
- hw/riscv/meson.build                |   1 +
- hw/sd/Kconfig                       |   4 +
- hw/sd/meson.build                   |   1 +
- 37 files changed, 1459 insertions(+), 29 deletions(-)
- create mode 100644 include/hw/char/mchp_pfsoc_mmuart.h
- create mode 100644 include/hw/dma/sifive_pdma.h
- create mode 100644 include/hw/riscv/microchip_pfsoc.h
- create mode 100644 include/hw/sd/cadence_sdhci.h
- create mode 100644 hw/char/mchp_pfsoc_mmuart.c
- create mode 100644 hw/dma/sifive_pdma.c
- create mode 100644 hw/riscv/microchip_pfsoc.c
- create mode 100644 hw/sd/cadence_sdhci.c
-
+diff --git a/include/hw/net/cadence_gem.h b/include/hw/net/cadence_gem.h
+index 54e646f..01c6189 100644
+--- a/include/hw/net/cadence_gem.h
++++ b/include/hw/net/cadence_gem.h
+@@ -73,6 +73,8 @@ typedef struct CadenceGEMState {
+     /* Mask of register bits which are write 1 to clear */
+     uint32_t regs_w1c[CADENCE_GEM_MAXREG];
+ 
++    /* PHY address */
++    uint8_t phy_addr;
+     /* PHY registers backing store */
+     uint16_t phy_regs[32];
+ 
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index a93b5c0..d80096b 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -1446,7 +1446,7 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
+             uint32_t phy_addr, reg_num;
+ 
+             phy_addr = (retval & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
+-            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
++            if (phy_addr == s->phy_addr || phy_addr == 0) {
+                 reg_num = (retval & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
+                 retval &= 0xFFFF0000;
+                 retval |= gem_phy_read(s, reg_num);
+@@ -1569,7 +1569,7 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
+             uint32_t phy_addr, reg_num;
+ 
+             phy_addr = (val & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
+-            if (phy_addr == BOARD_PHY_ADDRESS || phy_addr == 0) {
++            if (phy_addr == s->phy_addr || phy_addr == 0) {
+                 reg_num = (val & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
+                 gem_phy_write(s, reg_num, val);
+             }
+@@ -1682,6 +1682,7 @@ static Property gem_properties[] = {
+     DEFINE_NIC_PROPERTIES(CadenceGEMState, conf),
+     DEFINE_PROP_UINT32("revision", CadenceGEMState, revision,
+                        GEM_MODID_VALUE),
++    DEFINE_PROP_UINT8("phy-addr", CadenceGEMState, phy_addr, BOARD_PHY_ADDRESS),
+     DEFINE_PROP_UINT8("num-priority-queues", CadenceGEMState,
+                       num_priority_queues, 1),
+     DEFINE_PROP_UINT8("num-type1-screeners", CadenceGEMState,
 -- 
 2.7.4
 

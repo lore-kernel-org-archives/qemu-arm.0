@@ -1,61 +1,61 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4434389lfc;
-        Tue, 1 Sep 2020 02:58:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwqB1/InpYy6exOxQ6IgjPM4+mmDJAQhmLuicW1omLn3KRiPYKFfRKsxP5Px5ZjJxy/1aex
-X-Received: by 2002:a05:6902:4a7:: with SMTP id r7mr1448356ybs.482.1598954306056;
-        Tue, 01 Sep 2020 02:58:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598954306; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4435028lfc;
+        Tue, 1 Sep 2020 02:59:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwhyKGnR2v/eXE99OEYW+KOqAPOWhVW+KXyQhEKlX75h6cy6MjIwU1mwoH78FD0vbrkz0u1
+X-Received: by 2002:a25:7283:: with SMTP id n125mr1491205ybc.28.1598954370202;
+        Tue, 01 Sep 2020 02:59:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598954370; cv=none;
         d=google.com; s=arc-20160816;
-        b=LZRZvxYsK4X5w+oD8zAaEMbkSYz22+BM2QxDDzArVQJMwqmRd7AIjEJf9ZYYW2PrLn
-         qoLcoBXksEZNFbvGIYBZNyj1luB0aeRq7YOQJBry65Puje8MEL2tr598Q5gydjy8fefi
-         Sl5mCEv4AROwEYEB7+e8jpQDIi/gLqzL1571F4XihN2agNFxk0t5cB6DGVSs73TN7VJ+
-         8oafbHvzs34ivOSeGX6pbwLZ7YQ3bBB6qltpfwmfjRpUOnISu49sDf660E5TsIa1SHpb
-         gkuKD8WMb9zQs8av9sRRqSPNituHBam24/6xH6jcn5bVDTHx826cuoQDMWuW3sCPZv2n
-         MvYg==
+        b=qyOcoAVEmxk9UnZEPh5H8235CVWwD5klb6CA2jvLWoeW0nps6oI+fEf6JYF8lLXp0W
+         JsMuSmg+8TrZ6yB7+JPC+xvdxgSkJd8WeZfmDIb7nZpFHK86eZUB7Xoo8+PcqdLoMzjE
+         FRwrfcWWOot/C5mjugYfy9+/tbFt25RZgrcFFEqnNRjAjN4NZ3ANqL9VLn277/isM02U
+         ZHOl0r+LrQrRuJok7Kq3upqbplM9+OpEV+mCUDE/Vouc+445veB7FDN7YqZJ8yrUsgko
+         rGArco2nafMR2YW15Rx/CGX0yPIW9zE7ZGrWuBGSNtx4eKmt/td+5i+eh/fBi3aIYGyj
+         wIUw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject;
-        bh=NT2fp/CffvR0n6RU0gvN26SpoA+SloynmBkcav3aCvA=;
-        b=NlkDZkwSC5C6dsWPkcX/oUuzqL/ETqSUfsDGOrZVkW5375f7b4jVmTCZP94yeWKbig
-         iJJ0bn0/s03s1pfk53dnGsTMAFHgMNlS0BXGe/57KqralfyTw61IDC8MClzY9vkYrJxh
-         sYdra52IZUpfyGZO9wIh0/keeL2jAEUyrONzqd0fMUzwinHJOI3lR6QckmE5i3IxVeXS
-         OvbDTEljQUB7q3waQPHCPU7DOYmqrByepzPvmjStx3ZA2ErvhtNIkXeKeVfq4aQK7Dkg
-         kR3EzvP5XNOdNG6GHMbyj/PzaoF2r0JJDftqpm/NfFvsE5V2ulXJCI0q7MOcQf8CKKXD
-         IwXQ==
+        bh=tNDA7JWGVmqnKiH3hQGkpJ8CMFkSXkNyE0WXlkL064E=;
+        b=QdTrbKZRkmYN2IBTc9BIvefzVD4JU7jtAD68r9944aNoqCyhzgz4tj0vx+llPDtpSy
+         OmnN4n6Ds5IM9wuzu9VOlM9BWyTNFRUMmOGfYMQ+asrIO7hzK9UBIxEWHvDfS+DockkK
+         rWE44gfSnkxlN/UZ11CoVOavX8DKE2R4Cz0MsUbStZKCsoXeEqda8gqYsdmPAea+URZj
+         CcAAfL+2tzygaE5elx1XIBwCAPuehj4rru91W71EahXJ3p/c/H9zyA1z8Xxvt6JSHkLj
+         Wyqbk10ka+DwR7sMr3qv5e5YIp11zDqByzO7sydvx1kn7+c5Ke5Pqvk9P2JrbLHVqlZh
+         0/4A==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h20si821373ybk.459.2020.09.01.02.58.25
+        by mx.google.com with ESMTPS id y64si699046ybe.324.2020.09.01.02.59.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Sep 2020 02:58:26 -0700 (PDT)
+        Tue, 01 Sep 2020 02:59:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36232 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43562 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kD33Z-0001ee-An
-	for alex.bennee@linaro.org; Tue, 01 Sep 2020 05:58:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44876)
+	id 1kD34b-0004ck-Is
+	for alex.bennee@linaro.org; Tue, 01 Sep 2020 05:59:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45032)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD32S-00084a-9t; Tue, 01 Sep 2020 05:57:16 -0400
-Received: from mout.kundenserver.de ([212.227.17.24]:47147)
+ id 1kD33D-0001Re-AE; Tue, 01 Sep 2020 05:58:03 -0400
+Received: from mout.kundenserver.de ([212.227.17.24]:47069)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kD32Q-0004Ab-H1; Tue, 01 Sep 2020 05:57:16 -0400
+ id 1kD33B-0004FJ-Dj; Tue, 01 Sep 2020 05:58:02 -0400
 Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MVuXT-1k3X1Y22QX-00RmTy; Tue, 01 Sep 2020 11:56:57 +0200
-Subject: Re: [PATCH v3 03/10] target/arm/translate-a64:Remove dead assignment
- in handle_scalar_simd_shli()
+ (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MoNu2-1kxOLy2VU8-00op6x; Tue, 01 Sep 2020 11:57:54 +0200
+Subject: Re: [PATCH v3 04/10] target/arm/translate-a64:Remove redundant
+ statement in disas_simd_two_reg_misc_fp16()
 To: Chen Qun <kuhn.chenqun@huawei.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
 References: <20200827110311.164316-1-kuhn.chenqun@huawei.com>
- <20200827110311.164316-4-kuhn.chenqun@huawei.com>
+ <20200827110311.164316-5-kuhn.chenqun@huawei.com>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -99,32 +99,32 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <b3496af4-be3d-2433-1398-9b54f328b58f@vivier.eu>
-Date: Tue, 1 Sep 2020 11:56:55 +0200
+Message-ID: <b4135c25-4158-ebe8-4199-b2b9669c5209@vivier.eu>
+Date: Tue, 1 Sep 2020 11:57:53 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200827110311.164316-4-kuhn.chenqun@huawei.com>
+In-Reply-To: <20200827110311.164316-5-kuhn.chenqun@huawei.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:n1tsVbBS9naJHpYVwkBGjvYUpBmzHQjQFbcHinQYpMt8r07cOz9
- kk/GaQyQ56QoxgfYZTDw0wNxsLr2NbQclSdI8oikQlUPL4ek+EnN7tYRg2nmq945FEDTFxS
- BSSSdxTMgskYExCDu29whb1IfhUEY5653ksLWSBUUZeZgoRlDfYI+yiWsFXsfEr0U7gXGmb
- qVm8Y7MgXhp46IOwmflVg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:epHZaP5W5zA=:CAGHQsF/NE8wiRaCA1tpO6
- DExkPbmNDGrk6GjKeOj84cFqnCSH1/WvdQP+DWCCkOTj84veV+4+llzTM6MKQ0NsgGZ0d1XFB
- Vz3dsk2HC2qR6BuWH4uTLmHYaO9h64jYi23LmmUM8mnb/Z2qM5GYfdqTp8Jt6MlswS206MZ0d
- SHS8R1Ag3RXFRC73nvQyRzhZ9d7p5/pCtKkPfFgWSJk9KqTel9+64QDA5rZaqmPLp9xhrp1c8
- gYLiGRKzefj+rSuSNeV7k79LSijjqPIgwGMQBZtjfCdvGcznYu76zCQEB8WcyWawgIzD5XtBQ
- dwL/gf9PfjL2Scq1J6W8hxSGIn2+fUfgtpCADZRrh1n9H+qS3CR2EeDJ2Lgu8XXV6/ZSWUX81
- Cbu5TpWzyIgye7zfwO2QmFsp5wEFJuzYX4TEC/ocnB2Fl/74vgFe511TOkt0AySZDtwlblHPc
- 2cvxOiRaEbLxnZDYVruaFBj3QzhSyVaQ5E5g8IlF748Y2gwkOs3Wzenr6VOQQ01bbcz+9s6FJ
- Z73Syi1Bn91U/f9WtqL6FHecGkMO075yGzQtdDGF7kGKy1hXvtuU9tYqHGya+Zx5ea3bKq81u
- OLQfVKz04y0yj1G0s6Inb2PTuTulK1Hm7LPfP1P921RQ3WzzAEb40ON8bLEakK46bu8IzgdXb
- W7sNfI+MTuiURwgSz6IHJY8989OIHrA/qDj09TjHVaE8FNnYO6OoZOlLudCtn2CJNP0sZvKnR
- nNIfMbxvC5s2s10Guwo9eABVgQfsdsHjWfcScU07FGVheETJ9LRW2T5E9oEzZTlocLp6ny3Tv
- eXX9zfBJmlTsrEnBPOndV1dDtI55kVcO4Z/reyl2IOR1Pi702qbn6flaS874+X8PgUhmuMi
+X-Provags-ID: V03:K1:HijNUrbLIJSVgO0hHbHN0j4hlj6U5z/NaZPZcc58Jx8wIFdyT3r
+ DA+aFjjdWDzfiOTSHfqnzs2rKfJ42Yhmuxn9/EFkSs/XivaL1oS8W5TA2CkvGCLcZcYkjAx
+ 3pOx4bJ68LNNtz0m4yYSge6CdT1tJmJIEY1fgwk9awI4ZEj86KSFsGcOtbAz+J56PbCGkKw
+ W1I4ORoZd2XhnGEBthP+Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:zpQCU3r4ZNU=:tT1t7s6AWT0AYqx/QKgVRW
+ 3KeT8qLQYYOZCzjumloy9R1+phhOpnDEC7VaIOAdjRTWwtsEivMRopdblWx/Q0NcJcLasWaGg
+ Q/9lmGbaizfvR6xE2G/C+FXPHUlxWHMy5YCwgW0iyNaHWbDQn97na5PvxxyRefQfAQIQssjdz
+ 9pMi2JTmhEVI5oxb8PM7Z2YC4vh+wZAY8ND2s76NzFB9jWR5MtsgMAhasVe2+/0/+0qw7iZD3
+ kv+8HIcegfQDZ4a8JfDGcdmfjHG1UDUiYDyZfVT4QTEPewp2E7v87Fx8DA+Iy2wMJR+oCBWCn
+ 3w4u8IFt+9rOA0DfvMVNkyP0m2/q7SuDGXL/AGOwofS2SsZGr9F9/8oRa442EMjTMY+MweEar
+ NA9R69vT5To5E2Vh2uzl4hZLBXWdgf4OITQwoz8k9g9v1fmgRj6WzHVWdpwf1zW88a1l/Qr35
+ QygDqULlWQHRhUFHnV5f2zsfiLYgseZcnoYQf6jZV1qJTuOaSqFVi/SFnZFaaHGlOhuzmusN8
+ yAqxVryasGFzTRphndD43lRb0S9aZAvdWKalWXYtaiZ1GhIVeybMn8KJJZh8/hL3EtmiCrSa9
+ NXVrLDjP7DP/RiT5W95StncaEUYz87jevyjxRq/9XPRl1wETHapdIGUxOx41Dslj1RN/bWL2z
+ /FreOZmYrrDA+DSF45vcBIE7BalCIPP5D9gilWrBe1XChTTI9PUFqlhoXxzx90vObZdVDzbHN
+ kUBvpLhljXJ+T+B9g3OV4pi7jAn+7ANqJ8ffq7kWgCIyCbKBfgZHw0D0fZyU1vbzgL66ouW/a
+ X87/DXsmGeYi5UOJUG9UmLewvfSWZRb1DEoesj+JFW+jjmOCcRSHQxS/tU9of5pnqMnis/g
 Received-SPF: none client-ip=212.227.17.24; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 05:47:22
@@ -152,18 +152,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Euler Robot <euler.robot@huawei.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vlHVmZkOG5P9
+X-TUID: oz7EVP4fp+1X
 
 Le 27/08/2020 à 13:03, Chen Qun a écrit :
 > Clang static code analyzer show warning:
-> target/arm/translate-a64.c:8635:14: warning: Value stored to 'tcg_rn' during its
->  initialization is never read
->     TCGv_i64 tcg_rn = new_tmp_a64(s);
->              ^~~~~~   ~~~~~~~~~~~~~~
-> target/arm/translate-a64.c:8636:14: warning: Value stored to 'tcg_rd' during its
->  initialization is never read
->     TCGv_i64 tcg_rd = new_tmp_a64(s);
->              ^~~~~~   ~~~~~~~~~~~~~~
+> target/arm/translate-a64.c:13007:5: warning: Value stored to 'rd' is never read
+>     rd = extract32(insn, 0, 5);
+>     ^    ~~~~~~~~~~~~~~~~~~~~~
+> target/arm/translate-a64.c:13008:5: warning: Value stored to 'rn' is never read
+>     rn = extract32(insn, 5, 5);
+>     ^    ~~~~~~~~~~~~~~~~~~~~~
 > 
 > Reported-by: Euler Robot <euler.robot@huawei.com>
 > Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
@@ -171,28 +169,24 @@ Le 27/08/2020 à 13:03, Chen Qun a écrit :
 > ---
 > Cc: Peter Maydell <peter.maydell@linaro.org>
 > Cc: qemu-arm@nongnu.org
-> 
-> v2->v3:According to Peter's review, the variable 's' does not have a memleak,
-> so deleted the description about memleak.
 > ---
->  target/arm/translate-a64.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  target/arm/translate-a64.c | 3 ---
+>  1 file changed, 3 deletions(-)
 > 
 > diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-> index 534c3ff5f3..c83bb85e4e 100644
+> index c83bb85e4e..47cce160d8 100644
 > --- a/target/arm/translate-a64.c
 > +++ b/target/arm/translate-a64.c
-> @@ -8632,8 +8632,8 @@ static void handle_scalar_simd_shli(DisasContext *s, bool insert,
->      int size = 32 - clz32(immh) - 1;
->      int immhb = immh << 3 | immb;
->      int shift = immhb - (8 << size);
-> -    TCGv_i64 tcg_rn = new_tmp_a64(s);
-> -    TCGv_i64 tcg_rd = new_tmp_a64(s);
-> +    TCGv_i64 tcg_rn;
-> +    TCGv_i64 tcg_rd;
+> @@ -13016,9 +13016,6 @@ static void disas_simd_two_reg_misc_fp16(DisasContext *s, uint32_t insn)
+>      fpop = deposit32(opcode, 5, 1, a);
+>      fpop = deposit32(fpop, 6, 1, u);
 >  
->      if (!extract32(immh, 3, 1)) {
->          unallocated_encoding(s);
+> -    rd = extract32(insn, 0, 5);
+> -    rn = extract32(insn, 5, 5);
+> -
+>      switch (fpop) {
+>      case 0x1d: /* SCVTF */
+>      case 0x5d: /* UCVTF */
 > 
 
 Applied to my trivial-patches branch.

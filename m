@@ -1,202 +1,170 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3613031lfc;
-        Mon, 31 Aug 2020 04:44:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzdExs1EBxqI5qz6wlFcfgUQNwdP8yZofYQG4BdSHBLD85qQNDXFjNnT2IQXHLvBuF6tpyZ
-X-Received: by 2002:a37:6543:: with SMTP id z64mr298831qkb.278.1598874261122;
-        Mon, 31 Aug 2020 04:44:21 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1598874261; cv=pass;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4462910lfc;
+        Tue, 1 Sep 2020 03:41:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjZGQvlHX8ZPmqHEW0AuGbyMYJ9SiEI2nQreBqFV7g8rjWH/J2ho4vEqMAQSSCZBowDfGB
+X-Received: by 2002:a25:4b47:: with SMTP id y68mr1530237yba.89.1598956877162;
+        Tue, 01 Sep 2020 03:41:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598956877; cv=none;
         d=google.com; s=arc-20160816;
-        b=fPpx3Gt/U+/esL+NHrwDDOyJuc6JrUAJQIIOSKtpwAtUC5UqCuPzpwIhBQdMfbMCht
-         2en8rb4ECTVRQQDX1DbBpS+BlraBrbTypdEzrgX4tK9E4Q0hKrEOh3JTopV5i3kxdqcr
-         ZhIbXwLzPOz+Pl5pVS61+Ie9kE+vDqf3tsOxWbmZf9N2X+Vwjcj+pR1serOIReVq/jzD
-         rHlZilxNgRj64IPS6GHyQOhUhp+rBT8T3gfz7Sq4j6UIdOw8/5iLa+c266BfCsD35DXh
-         7JcZfDPZnjGCcYQa+AMgGQMERqfts94k2KOP2K2B6tgDL8l4EjsjxOZnvg/KrfWrEPMD
-         K5hA==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:subject:cc:to:from:dkim-signature;
-        bh=0L4fSaWp/YTjTjtlz7chvvBXzPfp/Kpr1Nr+1CyUOzc=;
-        b=fb2UAs/mpZ8VC0A3fLfxqB3sDKYH0qpfgLW1S2c3+0fCnbJQtrnsMPyAaTZrxZQRBg
-         RRcmyBMwJNaeh0aGc1ypUZ+5luhvm0dO20hcC5BLo2roqbd72RZvdihbXVHDk49jM2AP
-         hWE83nV+2wAEdzeeqS+tBteczl9a+oPzbv2BbncV5InZpKvBfy+G6ZRpKrtKFoFZvEKg
-         78P4SVuXfeoRSBxdatvJQYIF0CIAzWw8tE7IO5YNfXmrhSEUSf2mRFS/abhKKf/OVrwD
-         fn5bZ/kyWoWj5gDJWSB5xn7pTffHJPBmLfWrjqL5MIVm43ZVYjHIg4Mj22AqBQTT3Ut8
-         0glw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=I4bPaM18;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of saipava@xilinx.com designates 40.107.236.67 as permitted sender) smtp.mailfrom=saipava@xilinx.com
-Return-Path: <saipava@xilinx.com>
-Received: from NAM11-BN8-obe.outbound.protection.outlook.com (mail-bn8nam11on2067.outbound.protection.outlook.com. [40.107.236.67])
-        by mx.google.com with ESMTPS id l4si412016qvo.25.2020.08.31.04.44.20
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Mon, 31 Aug 2020 04:44:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of saipava@xilinx.com designates 40.107.236.67 as permitted sender) client-ip=40.107.236.67;
+        b=N5K2dG2O5f6TNLUV6gH1n+v9aymQw0azMqFH+eENLWE0RcKADA3W7+AWqYXhfEUeQB
+         4EeniqaZAXLuEidp5gsAJ2iTxmueKISYCzW7TcCJna3hZo3cg+ygRhOT5NK+Ufgd4suQ
+         yxd4ByIQOVCHcqoNJdS/70KFWX0aTpbxcl9CVpgAqvFHjOTCkH3W29em7mxYql+jI50k
+         kIgvQ49pvUfzhJYb4PCE0JdUANZnSTkRkwhcHKyvhT5DobGArjJXKFQLxhCM39eWLvyj
+         gyCC3VsmkJJF1miR7LQFsvoyS4Sa2amzcADyBaZNSgNUYYueU6JIi88kArzvbnZUAPn3
+         UeTw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=os2g75NZJynKLqxUCLFQR7EXSgQAqSybj5K1q1ubV4c=;
+        b=mSTWktAhWBEJ4h6lxsjt9kSWbxvn5X6gHL60tvB2k6lWtqjSnNhcrKhsd4JUP7e79D
+         hTs6W5QgLZgj1gzD+IwEJ7Lpuiefu8kCunRDX7TJ6pI61GBhgAVaXwPnkPxFzG52E9Hk
+         gat0ulY53S0I7YZFRJxQ9YJ7zc3Fxm+dETSDjzml1G9GnbhJ4rSleRzYOp0zPgn2etC6
+         IPi84mgCJYTIYsL1nrF4B8lpPAYeWTPaZ1B5A/rIA1F4oEdd+fiN3gW2U7t/t4mf2wTI
+         BmmeaDTYVJDAAto2DMBQpB9FCcQAO3bo5kBLwJH9Ug2vXU1oPp6lEUoHJ5ExRyrHWflL
+         yNwg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q7oDLRCB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 184si629719ybl.349.2020.09.01.03.41.17
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 01 Sep 2020 03:41:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b=I4bPaM18;
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of saipava@xilinx.com designates 40.107.236.67 as permitted sender) smtp.mailfrom=saipava@xilinx.com
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=M5XVx+54IcDgO1i4LvZt2AS+8NlTUW50bGz3YdmSv7L3se3dc8Mu5pFI9WuHYIfDDF8Vtf5P4qOLiy3PfW4paWm3OGFZCpzl0bGq5Ux5qhliaObe47v8QmfZxwC9miTKISWjtZZuCI1JHtkl1LoXzk8Cjp+RsDhP1RZWIXqYkpkvZ2q72GyYbnmdgTlngAjtKqhUk6kcwT3N0rqyEOAtLz10DtvQNKa6lbD7iJz5EZvgjZTrVXESEGpqeabK3ClJaJjW0eUuafcvPU7GC5mi6PvvJv3yXKEc7pYmWpxPzIsdgJhu4imqEdLeFb+9GnPeJzIypTa56yp0DKJdE/Jpbg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0L4fSaWp/YTjTjtlz7chvvBXzPfp/Kpr1Nr+1CyUOzc=;
- b=hEuTfwS823ND6vUngWnPJUpGugnHE6/ue9+g+zi7tlEit7wHsL38L5dEs7euJ6suhhYX8PdllRwV1lC5Gbi8ikP3hAqtexsnZxzEv2mU1kDajRzaKaE+E019+urOC8Z+ISYWvxGlV/3p6TJCuqaJtptsWqLwS8ZBLw2+2l6QJ477/OxK2SUExjMY0NDa/HHauJ4USeu4FA3kjgPN2V/CQojfSRmazITYOsC01uPqIWVFwjzUnwzNx5QTtIVAQb3fbJDvZdu6HuD6j1J562OwQoESBiqp3M9VFmhcLPMHKMqDVjZN+dwB28joA2b1DvG7pntcJnRkTkM1edsMUrwkRQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.83) smtp.rcpttodomain=redhat.com smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=0L4fSaWp/YTjTjtlz7chvvBXzPfp/Kpr1Nr+1CyUOzc=;
- b=I4bPaM18yjf53+sBut9bNcVWwfyUjsuIXcOMk+thvOsMKelONfxzIp/HK2D227XMyGcZVWFnFbEIJM75hemfpAZoOn7iI0f7mlTK66WgtFhPM6WPJEDzmp1fwQYyii9Q9LxGQPV2m0uM52BqXDUg1kBMV7+QbpS0U67QRw/ZmxY=
-Received: from MN2PR05CA0036.namprd05.prod.outlook.com (2603:10b6:208:c0::49)
- by BYAPR02MB4933.namprd02.prod.outlook.com (2603:10b6:a03:44::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3326.19; Mon, 31 Aug
- 2020 11:44:19 +0000
-Received: from BL2NAM02FT060.eop-nam02.prod.protection.outlook.com
- (2603:10b6:208:c0:cafe::c3) by MN2PR05CA0036.outlook.office365.com
- (2603:10b6:208:c0::49) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3348.5 via Frontend
- Transport; Mon, 31 Aug 2020 11:44:19 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
- smtp.mailfrom=xilinx.com; redhat.com; dkim=none (message not signed)
- header.d=none;redhat.com; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- BL2NAM02FT060.mail.protection.outlook.com (10.152.76.124) with Microsoft SMTP
- Server id 15.20.3326.19 via Frontend Transport; Mon, 31 Aug 2020 11:44:18
- +0000
-Return-Path: sai.pavan.boddu@xilinx.com
-Received: from [149.199.38.66] (port=60942 helo=smtp.xilinx.com)
-	by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
-	(envelope-from <sai.pavan.boddu@xilinx.com>)
-	id 1kCiES-00031a-Rr; Mon, 31 Aug 2020 04:44:16 -0700
-Received: from [127.0.0.1] (helo=xsj-smtp-dlp1.xlnx.xilinx.com)
-	by smtp.xilinx.com with esmtp (Exim 4.63)
-	(envelope-from <sai.pavan.boddu@xilinx.com>)
-	id 1kCiEU-0004Ms-I5; Mon, 31 Aug 2020 04:44:18 -0700
-Received: from xsj-pvapsmtp01 (smtp-fallback.xilinx.com [149.199.38.66] (may be forged))
-	by xsj-smtp-dlp1.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 07VBiHFK001892;
-	Mon, 31 Aug 2020 04:44:17 -0700
-Received: from [10.140.6.35] (helo=xhdsaipava40.xilinx.com)
-	by xsj-pvapsmtp01 with esmtp (Exim 4.63)
-	(envelope-from <saipava@xhdsaipava40.xilinx.com>)
-	id 1kCiET-0004MM-8t; Mon, 31 Aug 2020 04:44:17 -0700
-Received: by xhdsaipava40.xilinx.com (Postfix, from userid 14131)
-	id 5D89D13C051A; Mon, 31 Aug 2020 17:18:44 +0530 (IST)
-From: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-        Richard Henderson <richard.henderson@linaro.org>,
-        =?UTF-8?q?=27Philippe=20Mathieu-Daud=C3=A9=27?= <philmd@redhat.com>,
-        Andrew Jones <drjones@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
-        =?UTF-8?q?=27Alex=20Benn=C3=A9e=27?= <alex.bennee@linaro.org>,
-        Eric Auger <eric.auger@redhat.com>,
-        "'Edgar E . Iglesias'" <edgar.iglesias@xilinx.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, sai.pavan.boddu@xilinx.com
-Subject: [PATCH] target/arm: Configure number of pmu counters
-Date: Mon, 31 Aug 2020 17:18:42 +0530
-Message-Id: <1598874522-5186-1-git-send-email-sai.pavan.boddu@xilinx.com>
-X-Mailer: git-send-email 2.7.4
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-PublicTrafficType: Email
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=q7oDLRCB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:60456 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kD3j2-0005QU-Fd
+	for alex.bennee@linaro.org; Tue, 01 Sep 2020 06:41:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57074)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kD3ie-0004WO-7S; Tue, 01 Sep 2020 06:40:52 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:33963)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kD3ic-0001rs-QE; Tue, 01 Sep 2020 06:40:51 -0400
+Received: by mail-wm1-x344.google.com with SMTP id c19so676043wmd.1;
+ Tue, 01 Sep 2020 03:40:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=os2g75NZJynKLqxUCLFQR7EXSgQAqSybj5K1q1ubV4c=;
+ b=q7oDLRCBSQlEals5F8HOqPCDlbI33XdKStZTwZUOsfdz9JxRIj0zVYF5hbA4OsrKT9
+ bUOVVyDVwkp0kji5QextZq+x5++t3LfpgoHzw+Kx/oZlQOYBDZQ7TbnR2Jg332Ly25Ws
+ 4vG75strPSdKZjSBvxseUYdO56XKA51JEI8A1UqDqEzmZCzdcFNJataFqIeOk3g8TSkY
+ QVOdss3R6D5Xke0+qVKRKtJLC1fcMf73d9xRhb1I1lPFykTIqsl58rRafyLVtB2Ba7JG
+ lzx5YYaCalh003u9BQKzFo9TifRZwnT2xNAf8GHnaCjC1whFyjFq2EFK1TWPwT39ChOf
+ XKcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=os2g75NZJynKLqxUCLFQR7EXSgQAqSybj5K1q1ubV4c=;
+ b=GqicHqD4U5oxeBCSDNlYikXCKuwbtm2tXcN2ITlZc862+rAgb2LvgnvVViR/UPJN35
+ 675lBhc8PfUwUu/eM6xKbg9fsN4Z2MXVyr1QhsbxhooLtvTvLh40fhndrbD2muT3eyrs
+ Az03Ppdqo7Ezf+O9boR//CUSJbhAk3V2D182j3rBQbDVysAiMnqjFcmU3oNFSiUACUTs
+ 64XgbGu53gKMgH2gmnwb0LYlgMJMdztZf8kaSuY3IlzkG2HDUbU+eZjNGeDVM3azZLzm
+ g7Qzz3w/YZ5lhCC0QS+CLU8EAKK9LkcUYPdwALSfzfxWbc/bfSfuE58xRbimrkiLl+BN
+ EKHA==
+X-Gm-Message-State: AOAM532Bp4d5MbGwMkqnYQp+e1jD+6Pkxp+23BpnYrYmx0mef93avHL9
+ 8cGTNljFi1j+yk9NYY5vl3XZZUeUV5A=
+X-Received: by 2002:a1c:c256:: with SMTP id s83mr1152559wmf.93.1598956848137; 
+ Tue, 01 Sep 2020 03:40:48 -0700 (PDT)
+Received: from localhost.localdomain (50.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.50])
+ by smtp.gmail.com with ESMTPSA id o9sm1541461wrw.58.2020.09.01.03.40.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 01 Sep 2020 03:40:47 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 1/5] hw/gpio/max7310: Remove impossible check
+Date: Tue,  1 Sep 2020 12:40:39 +0200
+Message-Id: <20200901104043.91383-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200901104043.91383-1-f4bug@amsat.org>
+References: <20200901104043.91383-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-MS-Office365-Filtering-Correlation-Id: d18d1460-2b75-4686-5ce6-08d84da33225
-X-MS-TrafficTypeDiagnostic: BYAPR02MB4933:
-X-Microsoft-Antispam-PRVS:
-	<BYAPR02MB4933B6E82C8B4197BE179CD6CA510@BYAPR02MB4933.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:6108;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info:
-	cA/wWCmE5Y1TE71E5fD2IFtXXLzxLDwLc4sMkDu+hTJFHQdSxYQ2OM8oePQedfQb62xLR6gcruMWoGLQR9Py1dvMO0koVywcOuDjiyVOktRD+EMHJW0i8EigP4KA7Jx7riuCdtKqZ8dj/gSNMGhD+oJLoZeACHWJzkpv/Ijj82bwTWdK0hpBvEfCZwKEBzMz5ATjD64ILCheilQ1Rjh/AB5eahsYjBBXbOC5pc99lq5QUIk9IhrHn/3LuTHjswAu9RJx+5wAiLoVMUgxv0MclBcHlhmYg1IkwdQ9qyRoADN7M8cIao3aS+WoBz3fg4Xd0kJQO29ji+UtsilFBYD7BGkDS2EOUBEznFjEB9ky5JQXjtGUZvYP7aIIpQX9yFKx4Ldx0kJU4833RCrmroGesY+PkwDYZkKQTJnEMDYS+Os=
-X-Forefront-Antispam-Report:
-	CIP:149.199.60.83;CTRY:US;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:xsj-pvapsmtpgw01;PTR:unknown-60-83.xilinx.com;CAT:NONE;SFS:(396003)(136003)(376002)(346002)(39860400002)(46966005)(5660300002)(26005)(186003)(70586007)(70206006)(336012)(36756003)(426003)(2616005)(82310400002)(42186006)(8676002)(83380400001)(107886003)(6266002)(478600001)(356005)(2906002)(47076004)(6636002)(81166007)(110136005)(8936002)(82740400003)(316002)(4326008)(42866002);DIR:OUT;SFP:1101;
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 31 Aug 2020 11:44:18.9132
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: d18d1460-2b75-4686-5ce6-08d84da33225
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c;Ip=[149.199.60.83];Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-AuthSource:
-	BL2NAM02FT060.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB4933
-X-TUID: Lf6nrYJdaBcj
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dF8lXgDHPchG
 
-Default the pmu counters to 4 and configure it a 6 for a53 cores.
+The max7310_gpio_set() handler is static and only used by
+qdev_init_gpio_in, initialized with 8 IRQs. The 'line'
+argument can not be out of the [0-8[ range.
+Remove the dead code.
 
-Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/arm/cpu.c    | 3 +++
- target/arm/cpu.h    | 3 +++
- target/arm/cpu64.c  | 1 +
- target/arm/helper.c | 2 +-
- 4 files changed, 8 insertions(+), 1 deletion(-)
+ hw/gpio/max7310.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 6b382fc..805a692 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1051,6 +1051,9 @@ static void arm_cpu_initfn(Object *obj)
-     cpu->psci_version = 1; /* By default assume PSCI v0.1 */
-     cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
+diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
+index bebb4030d27..7f5de189acf 100644
+--- a/hw/gpio/max7310.c
++++ b/hw/gpio/max7310.c
+@@ -8,9 +8,7 @@
+  */
  
-+    /* set number of pmu counters to 4 */
-+    cpu->pmcrn = 4;
-+
-     if (tcg_enabled()) {
-         cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
-     }
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index ac857bd..3b47ba8 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -879,6 +879,9 @@ struct ARMCPU {
-      */
-     int32_t core_count;
+ #include "qemu/osdep.h"
+-#include "hw/hw.h"
+ #include "hw/i2c/i2c.h"
+-#include "hw/hw.h"
+ #include "hw/irq.h"
+ #include "migration/vmstate.h"
+ #include "qemu/module.h"
+@@ -176,8 +174,6 @@ static const VMStateDescription vmstate_max7310 = {
+ static void max7310_gpio_set(void *opaque, int line, int level)
+ {
+     MAX7310State *s = (MAX7310State *) opaque;
+-    if (line >= ARRAY_SIZE(s->handler) || line  < 0)
+-        hw_error("bad GPIO line");
  
-+    /* Number of pmu counters */
-+    uint8_t pmcrn;
-+
-     /* The instance init functions for implementation-specific subclasses
-      * set these fields to specify the implementation-dependent values of
-      * various constant registers and reset values of non-constant
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index dd69618..76c879a 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -190,6 +190,7 @@ static void aarch64_a53_initfn(Object *obj)
-     cpu->gic_vpribits = 5;
-     cpu->gic_vprebits = 5;
-     define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
-+    cpu->pmcrn = 6;
- }
- 
- static void aarch64_a72_initfn(Object *obj)
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 44d6666..4afbefb 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6534,7 +6534,7 @@ static void define_pmu_regs(ARMCPU *cpu)
-      * field as main ID register, and we implement four counters in
-      * addition to the cycle count register.
-      */
--    unsigned int i, pmcrn = 4;
-+    unsigned int i, pmcrn = cpu->pmcrn;
-     ARMCPRegInfo pmcr = {
-         .name = "PMCR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 0,
-         .access = PL0_RW,
+     if (level)
+         s->level |= s->direction & (1 << line);
 -- 
-2.7.4
+2.26.2
+

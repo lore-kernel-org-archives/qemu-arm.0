@@ -1,106 +1,104 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4466941lfc;
-        Tue, 1 Sep 2020 03:47:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw4D9RIVQuUgwvEjVUtbo3T89XXHav8r7+4CiDLGMKlhWbpDXk5NnFULXgT754dGbqVgAYg
-X-Received: by 2002:a25:2f4d:: with SMTP id v74mr1652853ybv.401.1598957276759;
-        Tue, 01 Sep 2020 03:47:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598957276; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4501746lfc;
+        Tue, 1 Sep 2020 04:38:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwliWGUIVoTNuwHPaOkcrpZ9uhVtL1SCEmK86dU/p2lF4+/CqUcJPAVOsJt1lpto6rdSMEU
+X-Received: by 2002:a25:e0c2:: with SMTP id x185mr2082743ybg.6.1598960282512;
+        Tue, 01 Sep 2020 04:38:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598960282; cv=none;
         d=google.com; s=arc-20160816;
-        b=JvEp4En+C1vTKGXXfVuLk/qMSH3ZPUDbgM9uK9zdznc91nqdvBR6kfouLceb4GmqX5
-         lEtJzgyIXiGOVhdmICTLHMSOroCk7A5qT5yAZJhJYLhT3glVXJHzM6RHbMbeB/eiz++c
-         woVknJQA+f4Q0ec+JwZ/2vvPOYisI6FeTZui4dRH/+Ay+37cJBTtrOPmezx2TezaCWIM
-         yiOeXJPzSkQYpcSX6MNfXvlpGDD4Kee+Wu+BjUlMzmmqSLWlOEzXiR2ldake1j2a0hUy
-         r/Qv/uQC2zRu2BPQzubuJG9jeyhN0GdrVQu+Eg+U7qPYj9BNFtz0R04iB7jbYBjDed9I
-         wB7Q==
+        b=VFLQzNLy0aTdeNiejP7ateYX4iKVawLonCkYA1B4j3lD/qmQegNhVpK3udV4cZzfjn
+         pKgWxmSPnJg2b0XS42MlSs4noHmQ6CvOuI8CCXiv/Qda1DglPg0euA6S6xnuI9DNIoQv
+         4jSAoAatbAiVvi6QSCnbaJP1W+9um0jtaauwhQWBl7cjqyc7HOUT8EgAoc0Qo8KEpVIf
+         718ZPrVK/oiMkqyPjHMc6vQSSmibH9BdQSvYTxDlwxrxiKWawirhzzbK+J8NxdruNA7q
+         TuUOI0vVlouH/jNdRksJNtMEJnvbnKosTC71/K70vTSvuV0uFeKmpeSAZtzjZW2bDqoq
+         A8pA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=iy3sccm8fjT+ATmdM2Je1CTkkwV+/bf6H9/Ajo8YwfA=;
-        b=FwhNZokvAvRwWqDyeQWqMiwizkLL8y4lNxEH8BNkYlJ6JWkWZ39lLCJ6yLkQOXjp9k
-         gLUHgVncK0kv597/DmMg4UDHQBPPQHSiguA6rzTBhPIv9HPiG2idw3IX8+Pgb3KNLx9X
-         6sAQXWMurRIoo/1X48SMRmsm/FEgvkN6cR6Kssw5x0rxRu5cJ5S8hjrZLkudECSNXKO7
-         s0Q0+d4wU0r06T1HjX4cmYwDDBL6KPb4t/yNH+DHSjT73UtqUveoD/97taJSk3sHYm88
-         Y6RF6DrvuG2SqIUxZl1e8DLIxlu+eoU/3UHsFBoZiPn5n5zOfmVBrPL2st1MyXn+WLim
-         QvMQ==
+        bh=o2JlYt9+6tex0MC6RXfdEMWMgM7eYzK624p0Sgpz2z4=;
+        b=npS+L0g+Y5PNJn6rpwf0BF7+Hhk4U4uqVvgt94F1K/XzIAmiNRNo/O9xPugofk09Ji
+         mRpdiKdPxRYU6Yb/sZoIFirZwhSSBW9px8lAnyTqawODDmSOp8TiJUePu9nRTVaXzf0K
+         iptEdpJ2W5WSf+Xj98ZElbx68dISk70DwFICiThmZDdYU+ZcXurxwgCHyq3jXNVGAO+f
+         0FyJflPoRb8P658W6jIyVmrwAR14IDc68hBznpenfdMcHYLG23KHb4PPjYE9G1+zsdMn
+         RfgkTfCVhCAn8BJ2llEjgNQ45nnKQAc+Rl5t7atMw5RMxeoPeFyHMXT1ArSNi5OgXda8
+         Ht1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=og2TzfK6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tXmGWzZ9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y15si708243yby.495.2020.09.01.03.47.56
+        by mx.google.com with ESMTPS id r197si946596ybc.430.2020.09.01.04.38.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Sep 2020 03:47:56 -0700 (PDT)
+        Tue, 01 Sep 2020 04:38:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=og2TzfK6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tXmGWzZ9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57876 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kD3pU-0007th-5o
-	for alex.bennee@linaro.org; Tue, 01 Sep 2020 06:47:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57656)
+	id 1kD4bx-0005Lo-UP
+	for alex.bennee@linaro.org; Tue, 01 Sep 2020 07:38:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43448)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kD3kq-0000hR-K3
- for qemu-devel@nongnu.org; Tue, 01 Sep 2020 06:43:08 -0400
-Received: from mail-ej1-x641.google.com ([2a00:1450:4864:20::641]:43799)
+ (Exim 4.90_1) (envelope-from <zltjiangshi@gmail.com>)
+ id 1kD4ax-0004Z6-75; Tue, 01 Sep 2020 07:36:59 -0400
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142]:37445)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kD3ko-00026W-DM
- for qemu-devel@nongnu.org; Tue, 01 Sep 2020 06:43:08 -0400
-Received: by mail-ej1-x641.google.com with SMTP id m22so909459eje.10
- for <qemu-devel@nongnu.org>; Tue, 01 Sep 2020 03:43:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <zltjiangshi@gmail.com>)
+ id 1kD4av-0000jU-Ds; Tue, 01 Sep 2020 07:36:58 -0400
+Received: by mail-lf1-x142.google.com with SMTP id z19so316127lfr.4;
+ Tue, 01 Sep 2020 04:36:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=iy3sccm8fjT+ATmdM2Je1CTkkwV+/bf6H9/Ajo8YwfA=;
- b=og2TzfK65fHU42vGC3jsBcBg4QfctnbvBSA7OtgtzoqtnMWdla4tlk47bD/DF50h8f
- 4dp9mmSiRsMFSwBe2TIA8El1H6qlPucy28aYSsmcZinaL005ep0PZJ2AGwgU0f0HVETB
- rHqc9hydK9iBK88K/VGkw9XCmksh/i4hmHIJc6/605m6bc+kn9T7yNc/kdjl8lVd8B5n
- CupEH9eMn5pzwpSw6mw/6gEkjcz/by6aP0xGeYYr97UkE7E2e0xlrRZCiAM9WLoze3PK
- +J0BmfBJH2p6fbVAi1S4kmnh816ienf/r07DRvfHK3i4S1CyviTGPNsnMxpT3DFnfG7x
- KFoQ==
+ bh=o2JlYt9+6tex0MC6RXfdEMWMgM7eYzK624p0Sgpz2z4=;
+ b=tXmGWzZ9QhqdYs+6Jf7SiZdQ0484pFkix+AdCywb75wBw5WE+eG6RYO4Gbei3KzXgo
+ N9sRy3NY8a+HfcUF0f7DNAHIIuwwtzr899y9HuirklPEFdKwgXYdJAtN0ZHDZZrfglA2
+ DkbmspzCvrKIGcuzDPB5UIRB+xED4vKLqS/QbbZxPobvTNrYgMU5uCJzinjCLb0y6ayM
+ i/mlVKFILY9uR4Ma4cMkkfvpOxyNiPdQg5pOrd9w9++XED3k1iNDo7SEuai7icw3IW8v
+ B57uOz3KuZPLGBN0/t6W393F37Rw/CR4cYfmfkqIZPTAw1zmIEeiGJn9RynatYiCoJtv
+ 4MRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=iy3sccm8fjT+ATmdM2Je1CTkkwV+/bf6H9/Ajo8YwfA=;
- b=jgG1Nepu4nvv4GE4r8bsrs2ZqT9cgZVf1KEYZQIEUb+lwdhnLyEjuX72ZbcP5013Zd
- i3LRsR1eTKoM9pAYW8No9wU46N/7Q4xpjUyZej/vvHHmwGuovdqa+njBEFrpEJRlQyni
- XdYF3SchaCwXgKg7WyyUkC8MKQzj5XLFx0iol2WH4xXFwIYhfGy0LjtiQb1Ug9eOdpUx
- yzbrvygldvVxyTnNQSZljUZ8y2aEtllXBgibFiB8ai1eMpTOc9OnsjA4kTzZnCblhNWg
- 7dosdXUuQEi4R4vAfhTjxasF3TunoDWwcxpR8wRaGC3K3bX51LIMBdveF7yivEhKjW9J
- 4oyA==
-X-Gm-Message-State: AOAM532V1dsN3Jh+0Lx/0AcsezloZ7REnpQ/+6wbYyRBypol6vzcDVzY
- nrfRYqmmLQyFfycLkSA2HOVuPB4TM7ImmS8Rqf8vrg==
-X-Received: by 2002:a17:906:71c9:: with SMTP id
- i9mr884602ejk.250.1598956984999; 
- Tue, 01 Sep 2020 03:43:04 -0700 (PDT)
+ bh=o2JlYt9+6tex0MC6RXfdEMWMgM7eYzK624p0Sgpz2z4=;
+ b=dlhpTa88G2j3F9Q8+Gg8mf5OjlgU5xA3Of6o7jKKrxHfcbw3PpGb2KmoiAHKkvGbyT
+ TSLB1PvEjU4/eEV8m9Mm0yOiVtSEGSJj4kIE0XBiApNRYOHYJHPLpxg+jjVjCLY9s1o9
+ L/YVajV9iyeRidz9FTD5MhsNHkZnI2HhLXR6EyF0bArFRFyrSNisTci3lsME5fhQ7GHS
+ 2HwldO6EMQrOyNmmCapUi6IbrIZsTCnyl0/mEsczS0ZEsGs/XOppYwAomdhBbJEBQnix
+ rTOSiI11gjS4EyvVHV5xWAz/1Qt5g8m0WmoD5qYX/NQeQKceMr7NWiqddrTrOXeCek2H
+ TYAQ==
+X-Gm-Message-State: AOAM5332HTARxKHbcmKypxw9ELd2NqHYer/msIRvcvadDIej4H1Zjm8z
+ zxWP39IJGsTeGcLuPJ0FyqWKctQ1LJ7XoCBpq5Y=
+X-Received: by 2002:ac2:4576:: with SMTP id k22mr383115lfm.55.1598960212793;
+ Tue, 01 Sep 2020 04:36:52 -0700 (PDT)
 MIME-Version: 1.0
 References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-2-f4bug@amsat.org>
-In-Reply-To: <20200901104043.91383-2-f4bug@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 1 Sep 2020 11:42:53 +0100
-Message-ID: <CAFEAcA8fcBZpQcZuS7SgOxpAcMRMjOPrG0bJcKSTsxFMitHfzA@mail.gmail.com>
-Subject: Re: [PATCH 1/5] hw/gpio/max7310: Remove impossible check
+ <20200901104043.91383-3-f4bug@amsat.org>
+In-Reply-To: <20200901104043.91383-3-f4bug@amsat.org>
+From: chen huacai <zltjiangshi@gmail.com>
+Date: Tue, 1 Sep 2020 19:36:41 +0800
+Message-ID: <CABDp7VpVpyAyQVBadt088qPZirdNDZ6nrSJAVVN8pv2-aAKeZQ@mail.gmail.com>
+Subject: Re: [PATCH 2/5] hw/mips/fuloong2e: Convert pointless error message to
+ an assert()
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::641;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x641.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::142;
+ envelope-from=zltjiangshi@gmail.com; helo=mail-lf1-x142.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -115,52 +113,55 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
+ qemu-level <qemu-devel@nongnu.org>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
- Huacai Chen <chenhc@lemote.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Aurelien Jarno <aurelien@aurel32.net>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ewoh3RLkpKxc
+X-TUID: ouLW+esRC2A2
 
-On Tue, 1 Sep 2020 at 11:40, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> =
-wrote:
+Reviewed-by: Huacai Chen <chenhc@lemote.com>
+
+On Tue, Sep 1, 2020 at 6:41 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
 >
-> The max7310_gpio_set() handler is static and only used by
-> qdev_init_gpio_in, initialized with 8 IRQs. The 'line'
-> argument can not be out of the [0-8[ range.
-> Remove the dead code.
+> Displaying "vt82c686b_init error" doesn't give any hint about why
+> this call failed. As this message targets developers and not users,
+> replace the pointless error message by a call to assert() which
+> will provide more useful information.
 >
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 > ---
->  hw/gpio/max7310.c | 4 ----
->  1 file changed, 4 deletions(-)
+>  hw/mips/fuloong2e.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 >
-> diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
-> index bebb4030d27..7f5de189acf 100644
-> --- a/hw/gpio/max7310.c
-> +++ b/hw/gpio/max7310.c
-> @@ -8,9 +8,7 @@
->   */
+> diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
+> index 8ca31e5162c..f28609976bf 100644
+> --- a/hw/mips/fuloong2e.c
+> +++ b/hw/mips/fuloong2e.c
+> @@ -240,10 +240,7 @@ static void vt82c686b_southbridge_init(PCIBus *pci_b=
+us, int slot, qemu_irq intc,
+>      PCIDevice *dev;
 >
->  #include "qemu/osdep.h"
-> -#include "hw/hw.h"
->  #include "hw/i2c/i2c.h"
-> -#include "hw/hw.h"
->  #include "hw/irq.h"
->  #include "migration/vmstate.h"
->  #include "qemu/module.h"
-> @@ -176,8 +174,6 @@ static const VMStateDescription vmstate_max7310 =3D {
->  static void max7310_gpio_set(void *opaque, int line, int level)
->  {
->      MAX7310State *s =3D (MAX7310State *) opaque;
-> -    if (line >=3D ARRAY_SIZE(s->handler) || line  < 0)
-> -        hw_error("bad GPIO line");
+>      isa_bus =3D vt82c686b_isa_init(pci_bus, PCI_DEVFN(slot, 0));
+> -    if (!isa_bus) {
+> -        fprintf(stderr, "vt82c686b_init error\n");
+> -        exit(1);
+> -    }
+> +    assert(isa_bus);
+>      *p_isa_bus =3D isa_bus;
+>      /* Interrupt controller */
+>      /* The 8259 -> IP5  */
+> --
+> 2.26.2
+>
+>
 
-I think it would be reasonable to retain this one as an assert.
 
--- PMM
+--=20
+Huacai Chen

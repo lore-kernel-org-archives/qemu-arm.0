@@ -1,197 +1,316 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4672889lfc;
-        Tue, 1 Sep 2020 08:10:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJywhLDcHmK7BKoBGgXb7H/Cav+crQqPuYSkWwnYGs3rHFBPuLosKIL1i9uUkQcV3io/xUJY
-X-Received: by 2002:ab0:63cb:: with SMTP id i11mr1712970uap.66.1598973046893;
-        Tue, 01 Sep 2020 08:10:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598973046; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4700130lfc;
+        Tue, 1 Sep 2020 08:42:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw22fxhOqt0ZkGEHetN7fRZRGqwUgPE9NxvmuwHsSmluVsjqTv+BSd/bYOmLwBzcA8UCbFT
+X-Received: by 2002:a5b:d08:: with SMTP id y8mr4063724ybp.476.1598974963911;
+        Tue, 01 Sep 2020 08:42:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1598974963; cv=none;
         d=google.com; s=arc-20160816;
-        b=mRTWSDk8xUmWply92DaVq9FiZZ9ehH0dnQ+sHfZdsIucagVBB2k336AAlmzFF8USTx
-         trVfho4YtFULCMIUvBIjtf/cH4tlw+saUIYLYK3PegAE7947sHxs4QBgabxGSUEfalUl
-         AHKTUEGTOPiia2Kduc3ZVIAeYYcETRBd6hn+4YlXSHMQA17qm5Wc5iO3+bapN1+Q+DRq
-         M5H+mv0mm30IC1gQKQAP9ck2Ci2ml5iGw/nyRcwmvUW0f5QMOfJrL4c4CKUR0Lq3Pyju
-         cW4aVKqEd5KL8VQehB03mke7BkSyzlTPIl5G0TZZbUZyZRcGyVOPmjwhwqRJMfih683I
-         xLiQ==
+        b=w/gOCRIdAorUpTS+26AuFO9okGMnSWNtrnxjIwpFULR6uTPr/wSi67Oi2RG08Qh9DF
+         QvjTJ36Vt+KaoagHtl9e2eR0u4S6a4NhjBjjZFaXfy90lnTYSLaMAHsEFatAKSd/9BJ3
+         ltQBk7gg6MY00yo5zxja3noY2v5fG/Evn/gN+1hGpuvXHnBRhpGSpVD3gR+yg+MWL8fd
+         0oYWW70SxYOGD6xxngoxO4ka8B3ifV8tshtYeo4/Pv6ti/9mBF+bJLj4P4eOS1gy6/Sd
+         KUJ0cVV8YU531IPZUwEWgqtVL7Ap2i9lOHJFXwGljqdMaMfIiBhSV5Ou2qnGQwsTb9OY
+         bErQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=euJaN/gf4+eh8HEs7Y0AxRG4hxPSo1ZS1DUgn6b7SL8=;
-        b=fVDlkAYf80g+ZMI9uVV93I0anLSGKNBO+zN7MhnZ8u8USrFTo01RNIjcD4TEharX7T
-         DMYNlREUjVOcqUhdGt/Rds/3jd5fzjcD5vKMBW5eibU+jKo2b98bIseUDG9xKAa9OqDI
-         e4QhByzEjI7qrXbc3v/qK+Cf0ovkPVwVPN0GfK74BwumbQ18UFCwYLOPjBQdzetfIzrT
-         qN6FBP5DaCv+4KC0ui6zM5QhWlU3haYh9g2qkDUWCcZM0K7SbLcLtjapjLmyhvFAc90F
-         1tUB1Jnk+u4D/BHDuXzZbphcTjgSIT4bXc0gq8e0cyj6Jah6OR0lGgm4HK8B1GgnxVU+
-         b6Mg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=VAIQnaQKsq2rqEDMS1nCcgMEGi4ds70SKsFipuIdrBA=;
+        b=a+2EimDBUcgc8Y6oTAw9hHeAqTo/xwJ7qQ4ooTXt189XpagSkUVwjFQTMNOzUwWbh+
+         XPBQXXSvEN4Sce8L6sW2YIt2gM4OABlwvUUbSVAW41AlXGn2mbOXT/tBB3jV/7m8OInv
+         uHEFSUbiOCXD+Rgs8sf8PjB6EKr7xGBROpj1owcDTvd1ApcGBoRsFKuiMdwQPIYJvIli
+         rY0KR1BngnsdNJm1Qu6WZaScTHpigSJY+IYi3NsZ5JXGgPwCdgNubyv4375ZxpcZXa2H
+         tprGKWOGUiUpT8IgGB9g5FpVOSG9XZkgCsOXk3tqSdsLoz+RtyltwkKF/OxNsTzICSnt
+         5qJg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uxs7mjyL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13si491518vkl.39.2020.09.01.08.10.46
+        by mx.google.com with ESMTPS id k12si1744615ybt.204.2020.09.01.08.42.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Sep 2020 08:10:46 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 01 Sep 2020 08:42:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uxs7mjyL;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43752 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40132 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kD7vq-0004t7-58
-	for alex.bennee@linaro.org; Tue, 01 Sep 2020 11:10:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36728)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kD8Ql-0003J5-BB
+	for alex.bennee@linaro.org; Tue, 01 Sep 2020 11:42:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49436)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kD7T9-0004DD-Mp; Tue, 01 Sep 2020 10:41:07 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37110)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kD7T8-0008Rc-9U; Tue, 01 Sep 2020 10:41:07 -0400
-Received: by mail-wm1-x343.google.com with SMTP id a9so1414041wmm.2;
- Tue, 01 Sep 2020 07:41:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=euJaN/gf4+eh8HEs7Y0AxRG4hxPSo1ZS1DUgn6b7SL8=;
- b=uxs7mjyLDJPlzC1SMB1NsAN4AjZFqJecdwaXbvbY58lmcKhoNUuSwUCxzaSQW+INOR
- HOVE/xby/QdhADWlOvZv0IGm8bcgzLAL9ONLecKOXwawuKihItXER8nXo9yM3OZIO/nL
- +w8oqVwf+iQmuTLdubMGdHbaUQ5rwEJQj6fQMYkhvCl7my/INSdNvFBNbIcJvfzZCwy1
- Y5TBrFNhPGIkzqYJQsPuaZ1ePMlNISVjzNrd5b++Q+RzN+NrpKVcl2tdQZ7kbvfrsSfw
- M4sve7a55NdZlvOiBqHLg83/apAfpHMHwq7P1bbZwDCEeONKXP7kQq7Z55d5L/4pVt2G
- fmPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=euJaN/gf4+eh8HEs7Y0AxRG4hxPSo1ZS1DUgn6b7SL8=;
- b=oq3df9gX8vqZz1IlD39MIKjRE7PjUn9xcF8maYONcVSzLo8RtTF7jWP7xuDCm0oVYE
- 0ahmR89e9zsS/wW15Y5bZu/1aeRwjyFYLU+vrU0AF1//peC7mynGEuvdpp/KYn4ahdmo
- O1uWKDO3V54Q6iHRXZvmQrIRxftCC095qRkXo2Ms7H6ideEpgR5tmdB71iBdNkCsD86S
- 1rhHyTBvBAp4AQPbd14FP5k9bLm59L5RdmueU/2Lu+pS0ZE60lNVM/oNe+X0eG8eVoI5
- +qUf5tAHnLdxerj4gX+l7ksv5gpZjXRZDGtLzGIaQtqfO3UlMqOZZSUdty14gnnTeXen
- wnkg==
-X-Gm-Message-State: AOAM531a+TagHXSlEKD9vjAWY05HlHmCZiTM7t9VqZt1XHoCNJrxz9mI
- 1ABlNBfQh9Gydi5WRBfoLRfTCWo/2w4=
-X-Received: by 2002:a1c:105:: with SMTP id 5mr2227939wmb.83.1598971264123;
- Tue, 01 Sep 2020 07:41:04 -0700 (PDT)
-Received: from localhost.localdomain (50.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.50])
- by smtp.gmail.com with ESMTPSA id a82sm2213204wmc.45.2020.09.01.07.41.02
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Sep 2020 07:41:03 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 1/4] hw/misc/a9scu: Do not allow invalid CPU count
-Date: Tue,  1 Sep 2020 16:40:57 +0200
-Message-Id: <20200901144100.116742-2-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200901144100.116742-1-f4bug@amsat.org>
-References: <20200901144100.116742-1-f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kD87c-0000DU-8y; Tue, 01 Sep 2020 11:22:56 -0400
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:52711)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kD87Z-0006pa-OD; Tue, 01 Sep 2020 11:22:55 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.4.102])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 79AE15CD8B20;
+ Tue,  1 Sep 2020 17:22:49 +0200 (CEST)
+Received: from kaod.org (37.59.142.105) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Tue, 1 Sep 2020
+ 17:22:48 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-105G0069242b285-85de-407e-95a5-f3cc2276aada,
+ 38EE1E9FF4E34D4C85F4190D418CEE501B878519) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH 1/2] m25p80: Add basic support for the SFDP command
+To: Francisco Iglesias <frasse.iglesias@gmail.com>
+References: <20200827091130.3525790-1-clg@kaod.org>
+ <20200827091130.3525790-2-clg@kaod.org>
+ <20200901133606.tytctenwwbnzlgl4@fralle-msi>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <76571443-8408-4fe9-9a7d-77059b44b792@kaod.org>
+Date: Tue, 1 Sep 2020 17:22:47 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20200901133606.tytctenwwbnzlgl4@fralle-msi>
 Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Originating-IP: [37.59.142.105]
+X-ClientProxiedBy: DAG9EX2.mxp5.local (172.16.2.82) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: dab219aa-2790-4689-9c7a-0dd21cadf68b
+X-Ovh-Tracer-Id: 7442479862205025129
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudefjedgkeelucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehfrhgrshhsvgdrihhglhgvshhirghssehgmhgrihhlrdgtohhm
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 11:22:50
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -39
+X-Spam_score: -4.0
+X-Spam_bar: ----
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.13,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sHex5jyA4J3E
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BBg3jPuCFI0i
 
-Per the datasheet (DDI0407 r2p0):
+On 9/1/20 3:36 PM, Francisco Iglesias wrote:
+> Hi Cedric,
+> 
+> On [2020 Aug 27] Thu 11:11:29, Cédric Le Goater wrote:
+>> JEDEC STANDARD JESD216 for Serial Flash Discovery Parameters (SFDP)
+>> provides a mean to describe the features of a serial flash device
+>> using a set of internal parameter tables.
+>>
+>> This is the initial framework for the RDSFDP command giving access to
+>> a private SFDP area under the flash. This area now needs to be
+>> populated with the flash device characteristics, using a new 'sfdp'
+>> pointer under FlashPartInfo.
+>>
+>> Signed-off-by: Cédric Le Goater <clg@kaod.org>
+>> ---
+>>  hw/block/m25p80_sfdp.h | 15 +++++++++++++++
+>>  hw/block/m25p80.c      | 33 +++++++++++++++++++++++++++++++++
+>>  hw/block/trace-events  |  1 +
+>>  3 files changed, 49 insertions(+)
+>>  create mode 100644 hw/block/m25p80_sfdp.h
+>>
+>> diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+>> new file mode 100644
+>> index 000000000000..b75fd0b0c13f
+>> --- /dev/null
+>> +++ b/hw/block/m25p80_sfdp.h
+>> @@ -0,0 +1,15 @@
+>> +/*
+>> + * M25P80 SFDP
+>> + *
+>> + * Copyright (c) 2020, IBM Corporation.
+>> + *
+>> + * This code is licensed under the GPL version 2 or later. See the
+>> + * COPYING file in the top-level directory.
+>> + */
+>> +
+>> +#ifndef HW_M25P80_SFDP_H
+>> +#define HW_M25P80_SFDP_H
+>> +
+>> +#define M25P80_SFDP_AREA_SIZE 0x100
+>> +
+>> +#endif
+>> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+>> index 82270884416e..32925589ec7a 100644
+>> --- a/hw/block/m25p80.c
+>> +++ b/hw/block/m25p80.c
+>> @@ -33,6 +33,7 @@
+>>  #include "qemu/error-report.h"
+>>  #include "qapi/error.h"
+>>  #include "trace.h"
+>> +#include "m25p80_sfdp.h"
+>>  
+>>  /* Fields for FlashPartInfo->flags */
+>>  
+>> @@ -72,6 +73,7 @@ typedef struct FlashPartInfo {
+>>       * This field inform how many die is in the chip.
+>>       */
+>>      uint8_t die_cnt;
+>> +    const uint8_t *sfdp;
+>>  } FlashPartInfo;
+>>  
+>>  /* adapted from linux */
+>> @@ -333,6 +335,7 @@ typedef enum {
+>>      BULK_ERASE = 0xc7,
+>>      READ_FSR = 0x70,
+>>      RDCR = 0x15,
+>> +    RDSFDP = 0x5a,
+>>  
+>>      READ = 0x03,
+>>      READ4 = 0x13,
+>> @@ -398,6 +401,7 @@ typedef enum {
+>>      STATE_COLLECTING_DATA,
+>>      STATE_COLLECTING_VAR_LEN_DATA,
+>>      STATE_READING_DATA,
+>> +    STATE_READING_SFDP,
+>>  } CMDState;
+>>  
+>>  typedef enum {
+>> @@ -619,6 +623,8 @@ static inline int get_addr_length(Flash *s)
+>>      }
+>>  
+>>     switch (s->cmd_in_progress) {
+>> +   case RDSFDP:
+>> +       return 3;
+>>     case PP4:
+>>     case PP4_4:
+>>     case QPP_4:
+>> @@ -744,6 +750,17 @@ static void complete_collecting_data(Flash *s)
+>>                            " by device\n");
+>>          }
+>>          break;
+>> +
+>> +    case RDSFDP:
+>> +        if (s->cur_addr < M25P80_SFDP_AREA_SIZE) {
+> 
+> Is perhaps M25P80_SFDP_AREA_SIZE a limit for the micron flashes in patch
+> 2 (and not sfdp)? 
 
-  "The SCU connects one to four Cortex-A9 processors to
-   the memory system through the AXI interfaces."
+No. It's a common limit of the chips available on the systems I have 
+access to. Nothing is said in the specs on a maximum size and only 
+one table is required. But, theoretically, we have a 24bits address 
+space.  
 
-Change the instance_init() handler to a device_realize()
-one so we can verify the property is in range, and return
-an error to the caller if not.
+> An option might be to change .sfdp to a '.sfdp_read' function decoding 
+> the address internally (for the micron flashes it could just return the 
+> array value in case the address is less than M25P80_SFDP_AREA_SIZE 
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/misc/a9scu.c | 18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
+Yes. This is one way to make the SFDP table size depend on the chip 
+model. 
 
-diff --git a/hw/misc/a9scu.c b/hw/misc/a9scu.c
-index 324371a1c00..915f127761e 100644
---- a/hw/misc/a9scu.c
-+++ b/hw/misc/a9scu.c
-@@ -12,8 +12,11 @@
- #include "hw/misc/a9scu.h"
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
-+#include "qapi/error.h"
- #include "qemu/module.h"
- 
-+#define A9_SCU_CPU_MAX  4
-+
- static uint64_t a9_scu_read(void *opaque, hwaddr offset,
-                             unsigned size)
- {
-@@ -105,12 +108,17 @@ static void a9_scu_reset(DeviceState *dev)
-     s->control = 0;
- }
- 
--static void a9_scu_init(Object *obj)
-+static void a9_scu_realize(DeviceState *dev, Error **errp)
- {
--    A9SCUState *s = A9_SCU(obj);
--    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    A9SCUState *s = A9_SCU(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
- 
--    memory_region_init_io(&s->iomem, obj, &a9_scu_ops, s,
-+    if (!s->num_cpu || s->num_cpu > A9_SCU_CPU_MAX) {
-+        error_setg(errp, "Illegal CPU count: %u", s->num_cpu);
-+        return;
-+    }
-+
-+    memory_region_init_io(&s->iomem, OBJECT(s), &a9_scu_ops, s,
-                           "a9-scu", 0x100);
-     sysbus_init_mmio(sbd, &s->iomem);
- }
-@@ -138,13 +146,13 @@ static void a9_scu_class_init(ObjectClass *klass, void *data)
-     device_class_set_props(dc, a9_scu_properties);
-     dc->vmsd = &vmstate_a9_scu;
-     dc->reset = a9_scu_reset;
-+    dc->realize = a9_scu_realize;
- }
- 
- static const TypeInfo a9_scu_info = {
-     .name          = TYPE_A9_SCU,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(A9SCUState),
--    .instance_init = a9_scu_init,
-     .class_init    = a9_scu_class_init,
- };
- 
--- 
-2.26.2
+> or 0xFF else). 
+
+Some flash seems to wrap around when the max size is reached. See 
+the mx25l25635e in my git tree. But I have only read 0x100 bytes.
+
+> It might become easier
+> to add flashes containing parameter tables in higher addresses (the
+> function could then decode the address into a specific table/area).
+
+yes. Something like that.
+
+>> +            s->state = STATE_READING_SFDP;
+>> +        } else {
+>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>> +                          "M25P80: Invalid SFDP address %#" PRIx32 "\n",
+>> +                          s->cur_addr);
+>> +        }
+>> +        break;
+>> +
+>>      default:
+>>          break;
+>>      }
+>> @@ -1160,6 +1177,16 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+>>      case RSTQIO:
+>>          s->quad_enable = false;
+>>          break;
+>> +    case RDSFDP:
+>> +        if (s->pi->sfdp) {
+>> +            s->needed_bytes = get_addr_length(s) + 1 ; /* SFDP addr + dummy */
+> 
+> Should above be changed to:
+> 
+> s->needed_bytes = get_addr_length(s) + 8;  /* SFDP addr + dummy */
+
+oops. I have been lucky. I need to change the Aspeed SMC snooping 
+routine to compute the number of dummies for the RDSFDP command.
+
+> (I think it might fail else when the flashes are operating in 2 lines and
+> 4 lines and are generating 8 dummy cycles for the RDSFDP)
+
+The specs say that the requirement are independent of the I/O mode.
+
+    4.5 Instruction Input Modes
+    
+    The Read SFDP instruction can be used with device supported modes
+    of (1-1-1), (2-2-2), or (4-4-4), but the opcode (0x5A), address
+    (24 bits), eight dummy clocks (8 wait states), and 50 MHz
+    requirements remain the same.
+
+Thanks,
+
+C. 
+
+
+> Best regards,
+> Francisco Iglesias
+> 
+>> +            s->pos = 0;
+>> +            s->len = 0;
+>> +            s->state = STATE_COLLECTING_DATA;
+>> +            break;
+>> +        }
+>> +        /* Fallthrough */
+>> +
+>>      default:
+>>          s->pos = 0;
+>>          s->len = 1;
+>> @@ -1256,6 +1283,12 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
+>>              }
+>>          }
+>>          break;
+>> +    case STATE_READING_SFDP:
+>> +        assert(s->pi->sfdp);
+>> +        r = s->pi->sfdp[s->cur_addr];
+>> +        trace_m25p80_read_sfdp(s, s->cur_addr, (uint8_t)r);
+>> +        s->cur_addr = (s->cur_addr + 1) & (M25P80_SFDP_AREA_SIZE - 1);
+>> +        break;
+>>  
+>>      default:
+>>      case STATE_IDLE:
+>> diff --git a/hw/block/trace-events b/hw/block/trace-events
+>> index 958fcc5508d1..53d377ca2b46 100644
+>> --- a/hw/block/trace-events
+>> +++ b/hw/block/trace-events
+>> @@ -152,5 +152,6 @@ m25p80_page_program(void *s, uint32_t addr, uint8_t tx) "[%p] page program cur_a
+>>  m25p80_transfer(void *s, uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "[%p] Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
+>>  m25p80_read_byte(void *s, uint32_t addr, uint8_t v) "[%p] Read byte 0x%"PRIx32"=0x%"PRIx8
+>>  m25p80_read_data(void *s, uint32_t pos, uint8_t v) "[%p] Read data 0x%"PRIx32"=0x%"PRIx8
+>> +m25p80_read_sfdp(void *s, uint32_t addr, uint8_t v) "[%p] Read SFDP 0x%"PRIx32"=0x%"PRIx8
+>>  m25p80_binding(void *s) "[%p] Binding to IF_MTD drive"
+>>  m25p80_binding_no_bdrv(void *s) "[%p] No BDRV - binding to RAM"
+>> -- 
+>> 2.25.4
+>>
 

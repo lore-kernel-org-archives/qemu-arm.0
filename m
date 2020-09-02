@@ -1,198 +1,182 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp410089lfc;
-        Wed, 2 Sep 2020 03:33:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+19a1f84BikuW+KA4kjBJ+Z5zswOgEzu6k0t8ZSyGxBnNP5j3Znc2ELvUGa471gz2AfpV
-X-Received: by 2002:a25:37d6:: with SMTP id e205mr9516924yba.446.1599042798871;
-        Wed, 02 Sep 2020 03:33:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599042798; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp413886lfc;
+        Wed, 2 Sep 2020 03:39:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXXK9J8dXc+cqxP7yluH+cOVaR3y6FjkAiiWnku4lqPJrbBVmXjes/n86+g7GaHENQIc1P
+X-Received: by 2002:a25:6555:: with SMTP id z82mr10281185ybb.472.1599043178691;
+        Wed, 02 Sep 2020 03:39:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599043178; cv=none;
         d=google.com; s=arc-20160816;
-        b=W8fpPfdueJRcaUNGszCkrDsv/9brVk0c9f2Kgg4XRrj1xOOPFjuq9Cxj2GRlngAHL5
-         4L4NKGJMIuwjfELz/e+VUt9dAhbOsZwP4Q08unEUqk7dJN/Iq7vco/hLrAHR5m9S5IV4
-         qun69/H/Gu6ga4P3c5dSq5xGtqO40WnH19948buBZfA8H/lgM8FIt4Kur7mNq1Lu9vJX
-         rXIM6uUkY1QmUFw1w1VRz8nwSyC/1JLnJFIlpgw7bjTQQi0ei4v/4LmJ7yCzImvf3W/U
-         QfoHST9LxDsNu+BGXFdeECCMG/W+Xxp/HXlLcgOCSMTYweju59mW3SsAD6j5GIq+NXpd
-         /JGw==
+        b=QLe0hvnB1ODItR6+IC3YnxkNH6RaqDXc9kpZpKDVnXKMDQjnUYcAmKdbIkqa7hTQYx
+         OpNL2p89WuNIu2aAX17mUZjnkgKVltHFBrH8IV+TX6fbxV9AXYPIfmu3O1+9qU8zq/SU
+         qRaMOQOyCcH1B3F/LivzfY+F0s+oy4pcPgJn0YfC0IaONDMofh2hhnTWxem+x3fLjPiP
+         eoW26LCYm6sAo9vQlQTm8OwCDy2ca6dLDCDZ0ioUBr/gTPUXz/52G1XU/M7pHFDigxB8
+         sXF+J+jJ4kkC4w3jR7lDJwB1f467ElgwEtQ1HgsVqaJa1Kdmwg7MTqdLLEnAJ2ZUGVGo
+         r/mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=R9ykzupfu4NoXws0CerMJptVJaOeEsZ+5sF0spxcLyM=;
-        b=zx++ues6s6IZe3EHTnxulyL1AhDNAj3E5B9XtA+YTJNNWdDLaUfXIQ8nt3ZrSq20U1
-         py3oR4LpAUHhcoqh7BQ6824gZ7Qge0sEUAsfG8myLAM+kyTny+zrS/J3lPwwplYUcX9J
-         8xNbQnYrNPOlk0lmWHf0WT6ipR2DijB4gDDa5TPvSj7okuSTc+ZZvI3S9j/0R0xAPQj2
-         NeNsosNPOit8qJczfxWJR2UwgP/pghBbFstQ0J9z+5FSg1mEqv/ltOP0qYyprsQ6f8vV
-         mEivGm7FjuoWiiM/T8oQxVX5damZoMDRKQWy6B0BFh0DLZD+t5Vsmg47JA1pkbZcb9zW
-         xxxg==
+        bh=LZoje0olfdNdCixpAqZ2V9m62xwQLJSBTx+PPTzrT5c=;
+        b=WKBlmMh+DbCDYALX8uQ+2tGuyCfWJpgWT1MKYWC5qU+4a77/XMwAAAt3X5o+yZuFeQ
+         5kHY7DOZ9ZPr7B8mnn8HeiWnRiCsVRVUuc8j9sOx2Om0+QpDxRxjAdAyDSZMEkWnRTNQ
+         6UZ9lEYZmrMAYBp3yI5i8ledkfJyTfO/KEk6R8SeAgu3Qx7iHm8glE3DlAgbZWfTmaJ7
+         g3yiXGAISJSramliNAJX7kNKOvCdlkXkiHwXD7NsN+l3+4xIWVSTFE60t8lWzTkP21oe
+         2uxUo7N8XaQpUdzKsAJM2lYtHcXI0b9f2fVpLqr6xsvH5j/b5Kqczv2xXKsFxXQwxWyb
+         bynw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CGNQiH10;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eLbm1H3l;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x194si4066643ybg.155.2020.09.02.03.33.18
+        by mx.google.com with ESMTPS id 132si2843687ybd.436.2020.09.02.03.39.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Sep 2020 03:33:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Sep 2020 03:39:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CGNQiH10;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eLbm1H3l;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60572 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39880 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDQ4s-0003Ms-5w
-	for alex.bennee@linaro.org; Wed, 02 Sep 2020 06:33:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54092)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kDQB0-0006so-3w
+	for alex.bennee@linaro.org; Wed, 02 Sep 2020 06:39:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kDQ3o-0001h6-9h
- for qemu-arm@nongnu.org; Wed, 02 Sep 2020 06:32:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:25622)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kDQAB-0006LD-Q1
+ for qemu-devel@nongnu.org; Wed, 02 Sep 2020 06:38:47 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:27831
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kDQ3g-0004p2-3v
- for qemu-arm@nongnu.org; Wed, 02 Sep 2020 06:32:11 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kDQAA-0005in-4W
+ for qemu-devel@nongnu.org; Wed, 02 Sep 2020 06:38:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599042722;
+ s=mimecast20190719; t=1599043125;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=R9ykzupfu4NoXws0CerMJptVJaOeEsZ+5sF0spxcLyM=;
- b=CGNQiH10+adU5lbrMX/yAffwLRY6Bm3wT+A451USPUX1TPH4P7m8PQcM86Nb+/3ftrqZ23
- L96FkFtydEIMCXWnY+M4AEPBxzZBYTBJwxRYZcAREEigBxzUv5gsm6QvTxZNYha3V+pG+a
- ihXQd+QCGZe7yDHpxhBXou85ZpU3Brg=
+ bh=LZoje0olfdNdCixpAqZ2V9m62xwQLJSBTx+PPTzrT5c=;
+ b=eLbm1H3lzw5L76l/BND6dn/3AAFbE/rPKcuH0gv/d3IGkbCTrCC1hF/ONcPJrUiroua4iq
+ VDT3FxbrLMe/nP1pDZ7WR1o7x2or0GJxKzADyhB7hsqTAV/W3ky82m2wo7XE5nwoQd9Jsr
+ QHeGvjRgGBjIGY8C6/zXY6WafqwOv/w=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-388-1F7Ax41RPi25nUlbhnc1yQ-1; Wed, 02 Sep 2020 06:32:01 -0400
-X-MC-Unique: 1F7Ax41RPi25nUlbhnc1yQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-349-6yW6MfhFMJqnL8O_Dko32g-1; Wed, 02 Sep 2020 06:38:42 -0400
+X-MC-Unique: 6yW6MfhFMJqnL8O_Dko32g-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C5F31801FDE;
- Wed,  2 Sep 2020 10:31:59 +0000 (UTC)
-Received: from [10.36.112.51] (ovpn-112-51.ams2.redhat.com [10.36.112.51])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B16AB5D9CC;
- Wed,  2 Sep 2020 10:31:47 +0000 (UTC)
-Subject: Re: [RFC v8 3/5] memory: Add IOMMU_DEVIOTLB_UNMAP
- IOMMUTLBNotificationType
-To: =?UTF-8?Q?Eugenio_P=c3=a9rez?= <eperezma@redhat.com>,
- Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org
-References: <20200901142608.24481-1-eperezma@redhat.com>
- <20200901142608.24481-4-eperezma@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <58783cf8-ef7f-1481-8c5e-acd76a8b752f@redhat.com>
-Date: Wed, 2 Sep 2020 12:31:46 +0200
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D6075801ADE;
+ Wed,  2 Sep 2020 10:38:40 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-129.ams2.redhat.com [10.36.112.129])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4B4441002D5D;
+ Wed,  2 Sep 2020 10:38:33 +0000 (UTC)
+Subject: Re: Cirrus CI for msys2 are working now, but still buiding failed
+To: luoyonggang@gmail.com, qemu-level <qemu-devel@nongnu.org>
+References: <CAE2XoE_SkH-2dNULFAZNiRNRNP=OncwCy=xrDk0J3bzS1Th=tg@mail.gmail.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <c61f6420-ffdb-b2b1-44ec-60b8a55f9c8a@redhat.com>
+Date: Wed, 2 Sep 2020 12:38:32 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200901142608.24481-4-eperezma@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+In-Reply-To: <CAE2XoE_SkH-2dNULFAZNiRNRNP=OncwCy=xrDk0J3bzS1Th=tg@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0.002
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 02:42:29
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=thuth@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 02:07:24
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
 X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.13, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-2.13, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eCdnit+EJu1W
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: "Daniel P. Berrange" <berrange@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: UzIHDC7jqJlR
 
-Hi Eugenio,
-
-On 9/1/20 4:26 PM, Eugenio Pérez wrote:
-> Adapt intel and vhost to use this new notification type
-I think you should explain in the commit message what is the benefice to
-introduce this new event type.
+On 01/09/2020 22.47, 罗勇刚(Yonggang Luo) wrote:
+> https://cirrus-ci.com/task/6375504892657664
 > 
-> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
-> ---
->  hw/i386/intel_iommu.c | 2 +-
->  hw/virtio/vhost.c     | 2 +-
->  include/exec/memory.h | 2 ++
->  3 files changed, 4 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index 0c4aef5cb5..cdddb089e7 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -2468,7 +2468,7 @@ static bool vtd_process_device_iotlb_desc(IntelIOMMUState *s,
->          sz = VTD_PAGE_SIZE;
->      }
->  
-> -    event.type = IOMMU_NOTIFIER_UNMAP;
-> +    event.type = IOMMU_NOTIFIER_DEVIOTLB;
-If this is used only for device IOTLB cache invalidation, shouldn't this
-be named IOMMU_NOTIFIER_DEVIOTLB_UNMAP to be consistent with the rest?
->      event.entry.target_as = &vtd_dev_as->as;
->      event.entry.addr_mask = sz - 1;
->      event.entry.iova = addr;
-> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-> index 1a1384e7a6..6ca168b47e 100644
-> --- a/hw/virtio/vhost.c
-> +++ b/hw/virtio/vhost.c
-> @@ -729,7 +729,7 @@ static void vhost_iommu_region_add(MemoryListener *listener,
->      iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr,
->                                                     MEMTXATTRS_UNSPECIFIED);
->      iommu_notifier_init(&iommu->n, vhost_iommu_unmap_notify,
-> -                        IOMMU_NOTIFIER_UNMAP,
-> +                        IOMMU_NOTIFIER_DEVIOTLB,
->                          section->offset_within_region,
->                          int128_get64(end),
->                          iommu_idx);
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index 8a56707169..215e23973d 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -87,6 +87,8 @@ typedef enum {
->      IOMMU_NOTIFIER_UNMAP = 0x1,
->      /* Notify entry changes (newly created entries) */
->      IOMMU_NOTIFIER_MAP = 0x2,
-> +    /* Notify changes on device IOTLB entries */
-> +    IOMMU_NOTIFIER_DEVIOTLB = 0x04,
->  } IOMMUNotifierFlag;
->  
->  #define IOMMU_NOTIFIER_ALL (IOMMU_NOTIFIER_MAP | IOMMU_NOTIFIER_UNMAP)
-shouldn't we rename this one??
+> failed with:
+> ```
 > 
+> Compiling C object libqemu-s390x-softmmu.fa.p/meson-generated_.._trace_generated-helpers.c.obj
+> Compiling C object libqemu-s390x-softmmu.fa.p/meson-generated_.._qapi_qapi-events.c.obj
+> Compiling C object libqemu-s390x-softmmu.fa.p/meson-generated_.._qapi_qapi-emit-events.c.obj
+> Linking static target libblock.fa
+> Linking target qemu-system-aarch64.exe
+> Linking target qemu-system-aarch64w.exe
+> Linking target qemu-system-alpha.exe
+> Linking target qemu-system-alphaw.exe
+> Linking target qemu-system-arm.exe
+> Linking target qemu-system-armw.exe
+> Linking target qemu-system-avr.exe
+> Linking target qemu-system-avrw.exe
+> C:/tools/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lfdt
+> C:/tools/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lfdt
+> C:/tools/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lfdt
+> C:/tools/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lfdt
+> collect2.exe: error: ld returned 1 exit status
+> collect2.exe: error: ld returned 1 exit status
+> collect2.exe: error: ld returned 1 exit status
+> collect2.exe: error: ld returned 1 exit status
+> make: *** [Makefile.ninja:2258: qemu-system-avr.exe] Error 1
+> make: *** Waiting for unfinished jobs....
+> make: *** [Makefile.ninja:1970: qemu-system-alpha.exe] Error 1
+> make: *** [Makefile.ninja:2260: qemu-system-avrw.exe] Error 1
+> make: *** [Makefile.ninja:1972: qemu-system-alphaw.exe] Error 1
+> C:/tools/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lfdt
+> C:/tools/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lfdt
+> C:/tools/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lfdt
+> C:/tools/msys64/mingw64/bin/../lib/gcc/x86_64-w64-mingw32/10.2.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lfdt
+> collect2.exe: error: ld returned 1 exit status
+> collect2.exe: error: ld returned 1 exit status
+> make: *** [Makefile.ninja:2184: qemu-system-armw.exe] Error 1
+> make: *** [Makefile.ninja:2182: qemu-system-arm.exe] Error 1
+> collect2.exe: error: ld returned 1 exit status
+> make: *** [Makefile.ninja:1875: qemu-system-aarch64.exe] Error 1
+> collect2.exe: error: ld returned 1 exit status
+> make: *** [Makefile.ninja:1877: qemu-system-aarch64w.exe] Error 1
 
-Thanks
+Wow, that looks quite promising already! But I wonder why the build
+system is trying to link libfdt to targets like qemu-system-avr that do
+not need it?
+And for the targets that need fdt, it should use the dtc submodule... I
+can see in the log that the dtc submodule is checked out, but it does
+not seem to be compiled ? As a test, could you please try to run
+"configure" with "--disable-fdt" there?
 
-Eric
+ Thomas
 

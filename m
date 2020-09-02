@@ -1,78 +1,80 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp372109lfc;
-        Wed, 2 Sep 2020 02:31:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz1ro+dl2hg37RlVCMTI3XNRYs6ZlqAgxiljpejsvHAQnWeNGl+gEEkaWAVuWUDMVP6Q6rN
-X-Received: by 2002:a25:41d5:: with SMTP id o204mr9188992yba.284.1599039085431;
-        Wed, 02 Sep 2020 02:31:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599039085; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp372924lfc;
+        Wed, 2 Sep 2020 02:32:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJye4bNk0PRvQjTaqKIo2GgoyD+l/e1G+eZcpUPOYmak/rLtwU+MN6Q558Ic8050RCuETyZT
+X-Received: by 2002:a25:8b09:: with SMTP id i9mr9380095ybl.149.1599039162885;
+        Wed, 02 Sep 2020 02:32:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599039162; cv=none;
         d=google.com; s=arc-20160816;
-        b=c/Jj7OvpOONYq+iGHMbSZ/Fuz00Cgv61PVuWhiZOM7IZHIPaK7IyF+9yJSTOy0BKeC
-         qX+Hp1IhsraiyCZMei9zedBNoEqE8pNIAVJHzJBAOh11W3J97a/x8aOaocWnT5Pma+xa
-         qUBhHYslmSI+o8wCR6yTGVnDRtu8M0dnk+4RPuezJnlpTimcMVnvvHlleMOlHiwBi2wv
-         4Y0TdMfoSe37myXpZX14EuXD6lS5dE8Srs2VYjK9TO0nwXtoKuIQuueIpwzQ9qfXCGY9
-         J2qGYm7qadGYH/pDaH9iKv6XevqiUZjRKLyRA/6ZCqDYolI8Bze2qwpnmwia3TkOuBen
-         VGQA==
+        b=qCP2kTA8l0YK85OOd5TjG1IOc/iZn6cc5nOK+pbkOEP5oOJet56gub6NwTyPKC/fSc
+         sVPMZmokpI7i32KXNONAohdp3RdOzw3ZgWXtsCEGtd5sQts5MtQi/ePmQO7OGKabreyc
+         l5boEtASSL0H5QF56cqy4PljNApjhrV7aY7O1gaGhsLuq+RjRPAt3uZdKP5JR+KZomCJ
+         dUzbac8iDgAWLD7RwNP8VJZeosSMpUiwVScPzLD3FboMeNQ8VSrNZaKUTc01PEX80kDU
+         c6+dAFxYyoB66jSdQMTlbcaAEWpX/FlSX9guIt430RQnxeTyACRC7707Q462VizSdIl+
+         kQRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=d2cMVDmXZy+W5P3CQFRppvbOMV4QeU1JVy8/yejFVGI=;
-        b=n80auD+54ly/TZYlRkJm5REBX+RKxY0LnTrT44lP7IVPZbwy7QiIsDXsZVcDb6M+kE
-         kDKZa3MZI35OhfdHP58+LUliE3XKXr79iWj3QYHOazA4bp+gICaZxyn3ZOlWoPsW5Ryu
-         ThwglPoLC6LjrmX8imYkFBUCGwWniBnDZ7edxA4nH7mVhncmZu1Ki96goUmYZiRbXAj6
-         R492aQPo/wockyrjcqGUNsIi0etvVRBDYuUuOaj+Gsg3Dl6ePM7rL2vU/GZzzvS34gOC
-         SR7isZR/T280sRy4yMwj6B8B1iHIoZXHRRJ8GI4iEc96V2KB+ODW399oir/TvxUATdPi
-         QdIw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=AuUKAhZly/hKg2GPZizbVNJO5GGgymZvF/3tpyM7Z4Y=;
+        b=b9UXxApxd7sZ8xQ+lDOqUiRp+6yGQIk7qcODAwPIcBGndgGkkfLmm3py0tz6q4ovs1
+         3D4TsPncUuRWQJZ7duTyFvdkdEbx22aCqUasdcyRc5lUdwzPOzf+KYYl7NfFrL7PObg1
+         QE/c/hZLSmiZKeQ4EsRnz6lmdbAZdOYQCvfy5+xSo+EEol4abUkjhpTYNdH5QnZUJYXn
+         7zAG7koiypfL4x/5skfp5hVqnawnTu5OiKja4+8MbSjNBoaD72faFnaen8ki7V9tz23N
+         OMk0nWp9R4eRZoAHhTlelW5JoCdXyAvcMIP6Qw0Y/1Obxv8S3RvrKQvmroLn2BnLCQJQ
+         kX7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l64si3805747ybf.125.2020.09.02.02.31.25
+        by mx.google.com with ESMTPS id 8si3541413ybq.230.2020.09.02.02.32.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Sep 2020 02:31:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 02 Sep 2020 02:32:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50986 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54286 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDP6y-0001Cp-N5
-	for alex.bennee@linaro.org; Wed, 02 Sep 2020 05:31:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35856)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kDP8E-0002gB-5b
+	for alex.bennee@linaro.org; Wed, 02 Sep 2020 05:32:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35894)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kDP6p-0001CS-A2; Wed, 02 Sep 2020 05:31:15 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:59703)
+ id 1kDP6q-0001D5-Rq; Wed, 02 Sep 2020 05:31:16 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:55573)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kDP6n-0004Y4-2L; Wed, 02 Sep 2020 05:31:15 -0400
+ id 1kDP6n-0004Y0-66; Wed, 02 Sep 2020 05:31:16 -0400
 Received: from mxplan5.mail.ovh.net (unknown [10.109.146.15])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 31AF65690864;
- Wed,  2 Sep 2020 11:31:11 +0200 (CEST)
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 3AF1F569084C;
+ Wed,  2 Sep 2020 11:31:09 +0200 (CEST)
 Received: from kaod.org (37.59.142.96) by DAG4EX1.mxp5.local (172.16.2.31)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Wed, 2 Sep 2020
  11:31:08 +0200
 Authentication-Results: garm.ovh; auth=pass
- (GARM-96R00196c8ea03-4d38-4637-bb58-d16659134f27,
+ (GARM-96R00137cd3f96-bc07-4543-92b3-004c09c6ed27,
  725C0B02AD5EA5A9EE23B5614217EC25792C566F) smtp.auth=clg@kaod.org
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
 To: <qemu-devel@nongnu.org>
-Subject: [PATCH v2 0/9] 5p80: Add SFDP support
-Date: Wed, 2 Sep 2020 11:30:58 +0200
-Message-ID: <20200902093107.608000-1-clg@kaod.org>
+Subject: [PATCH v2 1/9] m25p80: Add basic support for the SFDP command
+Date: Wed, 2 Sep 2020 11:30:59 +0200
+Message-ID: <20200902093107.608000-2-clg@kaod.org>
 X-Mailer: git-send-email 2.25.4
+In-Reply-To: <20200902093107.608000-1-clg@kaod.org>
+References: <20200902093107.608000-1-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
 X-Originating-IP: [37.59.142.96]
 X-ClientProxiedBy: DAG8EX2.mxp5.local (172.16.2.72) To DAG4EX1.mxp5.local
  (172.16.2.31)
-X-Ovh-Tracer-GUID: f948d42f-70fc-437a-bf36-a2807c3049c2
-X-Ovh-Tracer-Id: 7375770292615547756
+X-Ovh-Tracer-GUID: 66f5641e-89e3-4a05-aaf8-87ee4a367aba
+X-Ovh-Tracer-Id: 7375770290790828908
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudefledgudejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffogggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepuedtieekkeelgfduvdeijeeujefhheefjedtleegtdehteejteduuddtjeefjeeknecuffhomhgrihhnpehgihhthhhusgdrtghomhenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeinecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudefledgudejucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhephffvufffkffojghfgggtgfhisehtkeertdertdejnecuhfhrohhmpeevrogurhhitgcunfgvucfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepheehfeegjeeitdfffeetjeduveejueefuefgtdefueelueetveeliefhhffgtdelnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrdelieenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhhouggvpehsmhhtphdqohhuthdphhgvlhhopehmgihplhgrnhehrdhmrghilhdrohhvhhdrnhgvthdpihhnvghtpedtrddtrddtrddtpdhmrghilhhfrhhomheptghlgheskhgrohgurdhorhhgpdhrtghpthhtoheptghlgheskhgrohgurdhorhhg
 Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
  helo=smtpout1.mo529.mail-out.ovh.net
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 04:50:35
@@ -84,77 +86,179 @@ X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
  RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  Francisco Iglesias <frasse.iglesias@gmail.com>,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org,
  Joel Stanley <joel@jms.id.au>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Nd2jyirlX9PL
-
-Hello,
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 4D1V1N5vJF1c
 
 JEDEC STANDARD JESD216 for Serial Flash Discovery Parameters (SFDP)
 provides a mean to describe the features of a serial flash device
-using a set of internal parameter tables. Support in Linux has been
-added some time ago and the spi-nor driver is using it more often
-to detect the flash settings and even flash models.
+using a set of internal parameter tables.
 
 This is the initial framework for the RDSFDP command giving access to
-a private SFDP area under the flash.
+a private SFDP area under the flash. This area now needs to be
+populated with the flash device characteristics, using a new
+'sfdp_read' handler under FlashPartInfo.
 
-The patches available here :
-
-  https://github.com/legoater/qemu/commits/aspeed-5.2
-
-Thanks,
-
-C.
-
-Changes in v2:
-
- - fixed dummy value
- - replaced  'sfdp' table by a 'sfdp_read' handler
- - more SFDP tables
- - fixed Aspeed SMC support
- - introduced mx25l25635f chip model for test under Linux.
-
-Cédric Le Goater (9):
-  m25p80: Add basic support for the SFDP command
-  m25p80: Add the n25q256a SFDP table
-  m25p80: Add the mx25l25635e SFPD table
-  m25p80: Add the mx25l25635f SFPD table
-  m25p80: Add the mx66l1g45g SFDP table
-  m25p80: Add the w25q256 SFPD table
-  m25p80: Add the w25q512jv SFPD table
-  arm/aspeed: Replace mx25l25635e chip model
-  aspeed/smc: Add support for RDSFDP command
-
- hw/block/m25p80_sfdp.h      |  27 ++++
- include/hw/ssi/aspeed_smc.h |   1 +
- hw/arm/aspeed.c             |   6 +-
- hw/block/m25p80.c           |  47 +++++-
- hw/block/m25p80_sfdp.c      | 296 ++++++++++++++++++++++++++++++++++++
- hw/ssi/aspeed_smc.c         |  21 ++-
- MAINTAINERS                 |   2 +-
- hw/block/meson.build        |   1 +
- hw/block/trace-events       |   1 +
- 9 files changed, 385 insertions(+), 17 deletions(-)
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
+---
+ hw/block/m25p80_sfdp.h | 18 ++++++++++++++++++
+ hw/block/m25p80.c      | 27 +++++++++++++++++++++++++++
+ MAINTAINERS            |  2 +-
+ hw/block/trace-events  |  1 +
+ 4 files changed, 47 insertions(+), 1 deletion(-)
  create mode 100644 hw/block/m25p80_sfdp.h
- create mode 100644 hw/block/m25p80_sfdp.c
 
+diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+new file mode 100644
+index 000000000000..230b07ef3308
+--- /dev/null
++++ b/hw/block/m25p80_sfdp.h
+@@ -0,0 +1,18 @@
++/*
++ * M25P80 SFDP
++ *
++ * Copyright (c) 2020, IBM Corporation.
++ *
++ * This code is licensed under the GPL version 2 or later. See the
++ * COPYING file in the top-level directory.
++ */
++
++#ifndef HW_M25P80_SFDP_H
++#define HW_M25P80_SFDP_H
++
++/*
++ * SFDP area has a 3 bytes address space.
++ */
++#define M25P80_SFDP_MAX_SIZE  (1 << 24)
++
++#endif
+diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+index 15824450cd10..4d6133b3594e 100644
+--- a/hw/block/m25p80.c
++++ b/hw/block/m25p80.c
+@@ -33,6 +33,7 @@
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "trace.h"
++#include "m25p80_sfdp.h"
+ 
+ /* Fields for FlashPartInfo->flags */
+ 
+@@ -72,6 +73,7 @@ typedef struct FlashPartInfo {
+      * This field inform how many die is in the chip.
+      */
+     uint8_t die_cnt;
++    uint8_t (*sfdp_read)(uint32_t sfdp_addr);
+ } FlashPartInfo;
+ 
+ /* adapted from linux */
+@@ -336,6 +338,7 @@ typedef enum {
+     BULK_ERASE = 0xc7,
+     READ_FSR = 0x70,
+     RDCR = 0x15,
++    RDSFDP = 0x5a,
+ 
+     READ = 0x03,
+     READ4 = 0x13,
+@@ -401,6 +404,7 @@ typedef enum {
+     STATE_COLLECTING_DATA,
+     STATE_COLLECTING_VAR_LEN_DATA,
+     STATE_READING_DATA,
++    STATE_READING_SFDP,
+ } CMDState;
+ 
+ typedef enum {
+@@ -622,6 +626,8 @@ static inline int get_addr_length(Flash *s)
+     }
+ 
+    switch (s->cmd_in_progress) {
++   case RDSFDP:
++       return 3;
+    case PP4:
+    case PP4_4:
+    case QPP_4:
+@@ -747,6 +753,11 @@ static void complete_collecting_data(Flash *s)
+                           " by device\n");
+         }
+         break;
++
++    case RDSFDP:
++        s->state = STATE_READING_SFDP;
++        break;
++
+     default:
+         break;
+     }
+@@ -1163,6 +1174,16 @@ static void decode_new_cmd(Flash *s, uint32_t value)
+     case RSTQIO:
+         s->quad_enable = false;
+         break;
++    case RDSFDP:
++        if (s->pi->sfdp_read) {
++            s->needed_bytes = get_addr_length(s) + 8 ; /* SFDP addr + dummy */
++            s->pos = 0;
++            s->len = 0;
++            s->state = STATE_COLLECTING_DATA;
++            break;
++        }
++        /* Fallthrough */
++
+     default:
+         s->pos = 0;
+         s->len = 1;
+@@ -1259,6 +1280,12 @@ static uint32_t m25p80_transfer8(SSISlave *ss, uint32_t tx)
+             }
+         }
+         break;
++    case STATE_READING_SFDP:
++        assert(s->pi->sfdp_read);
++        r = s->pi->sfdp_read(s->cur_addr);
++        trace_m25p80_read_sfdp(s, s->cur_addr, (uint8_t)r);
++        s->cur_addr = (s->cur_addr + 1) & (M25P80_SFDP_MAX_SIZE - 1);
++        break;
+ 
+     default:
+     case STATE_IDLE:
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 5a22c8be4296..dc8769b8303e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1669,7 +1669,7 @@ SSI
+ M: Alistair Francis <alistair@alistair23.me>
+ S: Maintained
+ F: hw/ssi/*
+-F: hw/block/m25p80.c
++F: hw/block/m25p80*
+ F: include/hw/ssi/ssi.h
+ X: hw/ssi/xilinx_*
+ F: tests/qtest/m25p80-test.c
+diff --git a/hw/block/trace-events b/hw/block/trace-events
+index 958fcc5508d1..53d377ca2b46 100644
+--- a/hw/block/trace-events
++++ b/hw/block/trace-events
+@@ -152,5 +152,6 @@ m25p80_page_program(void *s, uint32_t addr, uint8_t tx) "[%p] page program cur_a
+ m25p80_transfer(void *s, uint8_t state, uint32_t len, uint8_t needed, uint32_t pos, uint32_t cur_addr, uint8_t t) "[%p] Transfer state 0x%"PRIx8" len 0x%"PRIx32" needed 0x%"PRIx8" pos 0x%"PRIx32" addr 0x%"PRIx32" tx 0x%"PRIx8
+ m25p80_read_byte(void *s, uint32_t addr, uint8_t v) "[%p] Read byte 0x%"PRIx32"=0x%"PRIx8
+ m25p80_read_data(void *s, uint32_t pos, uint8_t v) "[%p] Read data 0x%"PRIx32"=0x%"PRIx8
++m25p80_read_sfdp(void *s, uint32_t addr, uint8_t v) "[%p] Read SFDP 0x%"PRIx32"=0x%"PRIx8
+ m25p80_binding(void *s) "[%p] Binding to IF_MTD drive"
+ m25p80_binding_no_bdrv(void *s) "[%p] No BDRV - binding to RAM"
 -- 
 2.25.4
 

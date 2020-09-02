@@ -1,115 +1,140 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp356585lfc;
-        Wed, 2 Sep 2020 02:05:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzB8lKEiqyjyXWoiS+NpIyruzqQthqe866jhJz6aa3Pd7g5vrc+GQJIeor4gnomEYPHNmU6
-X-Received: by 2002:a25:acd0:: with SMTP id x16mr8498674ybd.268.1599037536079;
-        Wed, 02 Sep 2020 02:05:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599037536; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp362810lfc;
+        Wed, 2 Sep 2020 02:15:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzo1TV3iNUf0uzrqv4m5GYOfVTIAGlYK4Fjk5g0q4Z8d1A/OUNxQFcjegVJIdCOXfuQactZ
+X-Received: by 2002:a25:dc4b:: with SMTP id y72mr8453285ybe.197.1599038151705;
+        Wed, 02 Sep 2020 02:15:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599038151; cv=none;
         d=google.com; s=arc-20160816;
-        b=pZlXVnEAfQXC8iuo8WEv4dXt2QIz3ZbnxEVTYp4lDNN51ljbJRbta1l7xC+OG2jd8I
-         GM53GxyPcOr/4FZwTx1t4LUf8msUcMsq2gKbHWQE1WBHXS5lIbYAZEJKHpN+YA0nGPqo
-         8Gcr5xxAaiT6ixOfNfdBKzC6W3/gsZX+oK6eR/cGVSPYzoCoq1K8+7AWROU8p8+/tcoj
-         etf63V/GChYExVYfSSHyTKEI2X6LhG21bSGm/o8zTtC4hzv26W0Hbs3apWsyGtmquhDA
-         S9KUuXUGr7tNnYOnsvpd0fm3TGcUloG3Fh8lQAas3iQVVgDqy3l8GLU3uqMZWRjqoXnS
-         reFg==
+        b=HtUlFJFTmxBt3j/tT7rRKAZEnxV6/pd4MwHqZUG067lmaLhOf3YTrA3NiVpnmDfpVD
+         eEpyOiQ8/nqAApFTIz3o75XGhNTkqXX3R/ajJ60aQNwIb1wRDUIBW2TTQQlTr8XjGMj8
+         uuxw5LfDSobptbZmc/cWSWRWaZO++lbv8iPRFK/97YoETII6t4CK4ZfXfmUJM1mXpB0F
+         Cxk4w5bHJ4+pJ+FZblyR34nLAA9TNjwtedaf4wXIjdDc9rYsTHq2XzuAeBqkpHDMyhLF
+         nqdn7ZhQipLrPTrbwW1bjxdxUIfqbjoOHT7dLfs0pGCHGPyshiM5w74VR6gweAx4drNa
+         q8NA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=axE/fs2aZuurUhl2Q5ehpYdYBvUCAyYy+9CW8OCvSyo=;
-        b=o5meuIJgJjLVr7dJ2L7TP2LDj9yhvbJYHnWgJh4oDviZLgAKaS1tg7/5SDfYolUOb9
-         C5ibVMPMRjKCn0bhjpByLEcmsupP4liB+XoLe6HGYvUx1Im4RhZQFrzPua1EGQz7w4ws
-         g5RScDtIdAZyoXgln2G8oODjHxx5TmvRhNr8ZxHEkjAElAVOxZMp40aXHtMY6jxIyMl9
-         RlGjNYDecQX1diJE6o61LdDS0Q4+oElRrLEhFFBZqnVjTmCHDKsKoeqIugFernLSdsPN
-         /Lbfk4VCO0S88TGT0KlJXjp3rp8ZgAexQ/Gq0Ti0jQgH7+TioEZCEMoZWGSh3XBin0MT
-         N/Jg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject;
+        bh=ZIpxWkB4YHDnw0zUgiS9VBR4X6RQS2L/AYHDi9neQAM=;
+        b=VF/dzVgnnnYuz4VbXb24y2vV1PG1Y3adQ8hpd5taOje+65RxeRzQ1skEmftGxNeMLz
+         LHTA7HhNlLfxnOjuldZUGy7+mp9WMQUNq/AkU1v/0GcXeyz5nwTwJxt744NvRc+Kxw2E
+         Zi5d6MYb0l58XYaOiEx+FUxq39fTECJb/elEaWZfLXuDZzBnmIaaLca1AGU3mdGMl2si
+         hg7jIMILGC4odNtpLm2UQGFKtHksmtz60vKgAp9tBkVohjuoo2FlUst0d2G/Ssi1I1tD
+         W1E3cH8J06BR8GuyzbyvpiKtKc9DSwF1N+ZEvnq1Y+Tvamn2Nlkmei1/wSy4K5QmWXBP
+         iaXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F6Bdl5uO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k5si3637904ybd.21.2020.09.02.02.05.35
+        by mx.google.com with ESMTPS id y6si3933093ybk.277.2020.09.02.02.15.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Sep 2020 02:05:36 -0700 (PDT)
+        Wed, 02 Sep 2020 02:15:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=F6Bdl5uO;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52186 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38772 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDOhz-0004Xs-CN
-	for alex.bennee@linaro.org; Wed, 02 Sep 2020 05:05:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58062)
+	id 1kDOrv-00031M-2d
+	for alex.bennee@linaro.org; Wed, 02 Sep 2020 05:15:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60394)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kDOhm-0004Ws-N9
- for qemu-arm@nongnu.org; Wed, 02 Sep 2020 05:05:22 -0400
-Received: from us-smtp-1.mimecast.com ([205.139.110.61]:25900
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kDOhk-00013P-1l
- for qemu-arm@nongnu.org; Wed, 02 Sep 2020 05:05:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599037518;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=axE/fs2aZuurUhl2Q5ehpYdYBvUCAyYy+9CW8OCvSyo=;
- b=F6Bdl5uOvSswOQmCxY0jUv8+MvDpOWt0R/dW0BuSj6OgZRDM8BetBxxKe9IiazVfTf94yS
- Ep09vHQ4MKJpSu+lzFz26RzZrI1RsCG1Z/rva+DK18ZSOYGEC9aOs2J/ZpqmKFXSdcD5Az
- COsllIxmKI4ZUYdIQY+eNcX6HVFzHms=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-302-7i1HXHRHM_CbVFWVS7GtvA-1; Wed, 02 Sep 2020 05:05:16 -0400
-X-MC-Unique: 7i1HXHRHM_CbVFWVS7GtvA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 89A5118B9ED1;
- Wed,  2 Sep 2020 09:05:14 +0000 (UTC)
-Received: from [10.36.112.51] (ovpn-112-51.ams2.redhat.com [10.36.112.51])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C5B105C1C4;
- Wed,  2 Sep 2020 09:04:56 +0000 (UTC)
-Subject: Re: [RFC v8 1/5] memory: Rename memory_region_notify_one to
- memory_region_notify_iommu_one
-To: =?UTF-8?Q?Eugenio_P=c3=a9rez?= <eperezma@redhat.com>,
- Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org
-References: <20200901142608.24481-1-eperezma@redhat.com>
- <20200901142608.24481-2-eperezma@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <b3471660-74c6-b0d2-c08a-d21919a92347@redhat.com>
-Date: Wed, 2 Sep 2020 11:04:55 +0200
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kDOrk-0002xZ-AO; Wed, 02 Sep 2020 05:15:40 -0400
+Received: from mout.kundenserver.de ([217.72.192.75]:45741)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kDOri-0002X8-FO; Wed, 02 Sep 2020 05:15:40 -0400
+Received: from [192.168.100.1] ([82.252.135.186]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MDyoU-1kL4ML1aNA-00A0la; Wed, 02 Sep 2020 11:15:33 +0200
+Subject: Re: [PATCH 1/2] hw/gpio/omap_gpio: Replace fprintf() by
+ qemu_log_mask(GUEST_ERROR)
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200901104234.92159-1-f4bug@amsat.org>
+ <20200901104234.92159-2-f4bug@amsat.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <87f7de77-65b1-104b-cd5d-2af1959dfb20@vivier.eu>
+Date: Wed, 2 Sep 2020 11:15:32 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200901142608.24481-2-eperezma@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200901104234.92159-2-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=205.139.110.61;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 03:24:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
+X-Provags-ID: V03:K1:AKYZv1SGgqyMcQQEWbIGuOKENgiLzATWAU9nGngsWpeSVMC1ins
+ K2GsX4xfrw8GaxDtD3kQJce/K0kqBZx/FuaT0skmKIJw+hc2q9BRlUyJ1WSVYIJZFlCprOi
+ crDx9GcgnGn6fp7IwIw537bzEWPVWDL3P0Z+kyHH+jCw67fjUoO71kEc1Zm0HBmt2pg8QXd
+ QXu5HcneymGRudKI8yCIA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:E9yFTkOSL0E=:2vzb/1xVJK0XPNWWhDyQAO
+ oa1wrTSWG3rYMqNUmTdYcKrjgnPy4G8URaKVLf/s4GlYQvdDF3G9HhBTNMVr/PX8IFvHF4LE1
+ PptPyvTmVHusR8pB3VxNdXEaCUQs3hn6VoH4Rc0DznIBmZLksjE9ZZYiHOPlscKn4+/f6ITe3
+ VtEj9q5t0md2rk4+kE7mmXkVgdwZohtSKYTVMKBnsahwck1DNS2kuhwjOdi2wMdKmnO5g0Hte
+ ynyTZGPhNeYJmHW0U9Rky8g6elXx81I1+fu/l73qHJWJ3kyom0UgClAoxGh53RQFwUOzbtHSe
+ 0lpKyYZAQ0RGq12uftyNnU4+sb4AZ9LlTMKFUNHnBXlYqPuzb3dv1AqBK1LrL6rD/afacBa4S
+ A5U9rPM1yl9+0hyzIhAupCir1z7xQP4F2+fBL6IkoH1Wssl6a6b4h4Ep/PPaJBaP8kpcc+UE5
+ QbJSdLpAUzdvfUKVOAfRSDB/QoBL+onubK4Vyay3GbrQtS3YcVt2MPMkWh8rfGZp+BGmzeo8d
+ +cSWzXoFcFeTEDMbMExuYcTeTJSVyP05w4s1JAdK41bGmhTTVY0BAwWJs4NYU4ne1eqamzDKp
+ oGkEJsQ0L15aw7pNNfHzUes2VipBWxdBRpzeFbeeCbiPeW6B5s0gKIdDeBkjmd1iYvkOySV4G
+ EzW01nSUCmazKhyrSmRg0u3ynLMStLmJ/lvCITOd9P1+OJHovbiD/OolPZvaF95ZeJKIFMsMH
+ x1Fa2YowKWSg7k7/I6Vj4Ig/9pAXocodV+x+nOgauu341FR+ENjepNRIGRi8eyjTY96r1DjRl
+ 72D3BmQrlqLCvw9PCOakqqqJPMh4zzBhtjmYEno1CBFolyDFm+PS1mk7yJ9xFrQvCxiCX+Q
+Received-SPF: none client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 05:15:36
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -39
+X-Spam_score: -4.0
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.13, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.13,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,141 +147,37 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gNjqK4VEnlKs
+X-TUID: 9RMXjixiCi7+
 
-Hi Eugenio,
-
-On 9/1/20 4:26 PM, Eugenio Pérez wrote:
-> Previous name didn't reflect the iommu operation.
+Le 01/09/2020 à 12:42, Philippe Mathieu-Daudé a écrit :
+> Replace fprintf() by qemu_log_mask(LOG_GUEST_ERROR).
 > 
-> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Thanks
-
-Eric
-
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/arm/smmu-common.c  | 2 +-
->  hw/arm/smmuv3.c       | 2 +-
->  hw/i386/intel_iommu.c | 4 ++--
->  include/exec/memory.h | 6 +++---
->  softmmu/memory.c      | 6 +++---
->  5 files changed, 10 insertions(+), 10 deletions(-)
+>  hw/gpio/omap_gpio.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-> index 3838db1395..88d2c454f0 100644
-> --- a/hw/arm/smmu-common.c
-> +++ b/hw/arm/smmu-common.c
-> @@ -472,7 +472,7 @@ static void smmu_unmap_notifier_range(IOMMUNotifier *n)
->      entry.perm = IOMMU_NONE;
->      entry.addr_mask = n->end - n->start;
+> diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
+> index f662c4cb958..e25084b40c9 100644
+> --- a/hw/gpio/omap_gpio.c
+> +++ b/hw/gpio/omap_gpio.c
+> @@ -392,8 +392,10 @@ static void omap2_gpio_module_write(void *opaque, hwaddr addr,
+>          break;
 >  
-> -    memory_region_notify_one(n, &entry);
-> +    memory_region_notify_iommu_one(n, &entry);
->  }
->  
->  /* Unmap all notifiers attached to @mr */
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 0122700e72..0a893ae918 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -827,7 +827,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
->      entry.addr_mask = num_pages * (1 << granule) - 1;
->      entry.perm = IOMMU_NONE;
->  
-> -    memory_region_notify_one(n, &entry);
-> +    memory_region_notify_iommu_one(n, &entry);
->  }
->  
->  /* invalidate an asid/iova range tuple in all mr's */
-> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> index 5284bb68b6..2ad6b9d796 100644
-> --- a/hw/i386/intel_iommu.c
-> +++ b/hw/i386/intel_iommu.c
-> @@ -3498,7 +3498,7 @@ static void vtd_address_space_unmap(VTDAddressSpace *as, IOMMUNotifier *n)
->          /* This field is meaningless for unmap */
->          entry.translated_addr = 0;
->  
-> -        memory_region_notify_one(n, &entry);
-> +        memory_region_notify_iommu_one(n, &entry);
->  
->          start += mask;
->          remain -= mask;
-> @@ -3536,7 +3536,7 @@ static void vtd_address_space_refresh_all(IntelIOMMUState *s)
->  
->  static int vtd_replay_hook(IOMMUTLBEntry *entry, void *private)
->  {
-> -    memory_region_notify_one((IOMMUNotifier *)private, entry);
-> +    memory_region_notify_iommu_one((IOMMUNotifier *)private, entry);
->      return 0;
->  }
->  
-> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> index 0cfe987ab4..22c5f564d1 100644
-> --- a/include/exec/memory.h
-> +++ b/include/exec/memory.h
-> @@ -226,7 +226,7 @@ enum IOMMUMemoryRegionAttr {
->   * The IOMMU implementation must use the IOMMU notifier infrastructure
->   * to report whenever mappings are changed, by calling
->   * memory_region_notify_iommu() (or, if necessary, by calling
-> - * memory_region_notify_one() for each registered notifier).
-> + * memory_region_notify_iommu_one() for each registered notifier).
->   *
->   * Conceptually an IOMMU provides a mapping from input address
->   * to an output TLB entry. If the IOMMU is aware of memory transaction
-> @@ -1274,7 +1274,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
->                                  IOMMUTLBEntry entry);
->  
->  /**
-> - * memory_region_notify_one: notify a change in an IOMMU translation
-> + * memory_region_notify_iommu_one: notify a change in an IOMMU translation
->   *                           entry to a single notifier
->   *
->   * This works just like memory_region_notify_iommu(), but it only
-> @@ -1285,7 +1285,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
->   *         replaces all old entries for the same virtual I/O address range.
->   *         Deleted entries have .@perm == 0.
->   */
-> -void memory_region_notify_one(IOMMUNotifier *notifier,
-> +void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
->                                IOMMUTLBEntry *entry);
->  
->  /**
-> diff --git a/softmmu/memory.c b/softmmu/memory.c
-> index 70b93104e8..961c25b42f 100644
-> --- a/softmmu/memory.c
-> +++ b/softmmu/memory.c
-> @@ -1890,8 +1890,8 @@ void memory_region_unregister_iommu_notifier(MemoryRegion *mr,
->      memory_region_update_iommu_notify_flags(iommu_mr, NULL);
->  }
->  
-> -void memory_region_notify_one(IOMMUNotifier *notifier,
-> -                              IOMMUTLBEntry *entry)
-> +void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
-> +                                    IOMMUTLBEntry *entry)
->  {
->      IOMMUNotifierFlag request_flags;
->      hwaddr entry_end = entry->iova + entry->addr_mask;
-> @@ -1927,7 +1927,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
->  
->      IOMMU_NOTIFIER_FOREACH(iommu_notifier, iommu_mr) {
->          if (iommu_notifier->iommu_idx == iommu_idx) {
-> -            memory_region_notify_one(iommu_notifier, &entry);
-> +            memory_region_notify_iommu_one(iommu_notifier, &entry);
->          }
->      }
->  }
+>      case 0x10:	/* GPIO_SYSCONFIG */
+> -        if (((value >> 3) & 3) == 3)
+> -            fprintf(stderr, "%s: bad IDLEMODE value\n", __func__);
+> +        if (((value >> 3) & 3) == 3) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "%s: Illegal IDLEMODE value: 3\n", __func__);
+> +        }
+>          if (value & 2)
+>              omap2_gpio_module_reset(s);
+>          s->config[0] = value & 0x1d;
 > 
 
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>

@@ -1,173 +1,171 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp4540416lfc;
-        Tue, 1 Sep 2020 05:30:34 -0700 (PDT)
-X-Received: by 2002:a2e:545:: with SMTP id 66mr482437ljf.469.1598963433777;
-        Tue, 01 Sep 2020 05:30:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1598963433; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp109194lfc;
+        Tue, 1 Sep 2020 18:20:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJytNwsVVdIjBN6p32axsx7Ulvp9cLW4VVYmfh56PYHbm3VmYJcdJ2RcMlycaBoyPMyF0ojq
+X-Received: by 2002:a25:8b89:: with SMTP id j9mr7354598ybl.457.1599009622535;
+        Tue, 01 Sep 2020 18:20:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599009622; cv=none;
         d=google.com; s=arc-20160816;
-        b=fDW/O36lBqwyfro9X9kwBCiu+G7w40qkFfPDbuZEGsJyBoqLRFUxeyT107bheZsXw+
-         Lk61v7aQ0jblkdftoCnIrKlAhHJD6nTMRyCyM375ra7gD94cZ15U3Y3yF47M1Xq/9uQr
-         4psQeMkQXgZy8ZjANZpKOhCuqxSluu07YJc/o5ccPZWCqkAPQBiB9hXJHnTckNHteeUT
-         OOFmHAwZ0Q5B9vq1JzuuMgPb7lTi2pbWY8tYtpMGu8pED6gV9c/F7YcAEj9jN+Pc3QUr
-         hh9hJhWMIHm3cEkx1Y1YkrPzn21ZLBBsoA1PzzH3gUUDIYiucvHwwby80jduIRxxHzzo
-         XzuQ==
+        b=QtijAmpF7DgUzahfKIUpHXfRUt2s/g9zJqWPrKv3XQMDcUl6ZORIZMIB0+UUjbcxff
+         u4bUUcS0ruJb3BSXRg1Hg6je2lTETanqdS+GZyAWhLvGQ1xyp3NmX3Lkl13+GXtnsmJz
+         Z9Ld1PQgV37K1a3ENIOY+mHEcwvEuwJJzRDRfuAKPtaFe0SkXgxagEsaMbbEFq1RHry+
+         lXqL1xEs0ueLQmJgYsvxjfXosu+PY5YdWu5KxT9RybvA0JHo3mx6Zd3c0FK6/nJzhSgx
+         JhlguG0aZNU+cIwKUyd1xxaoMWbNQXMikDfTFDXFKuV87DDGHWc2SBRTdkHix8ZWzfAv
+         9KCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=in-reply-to:content-disposition:mime-version:references:message-id
-         :subject:cc:to:from:date:dkim-signature;
-        bh=VeCtmxpyBD1wTUB21dJqQwaQwI0C9E+xzkYIKwce00Q=;
-        b=JTGjgaUeT19I7YvGnWvVDH5F/mTfnL4Oo4ZPUnws0jb8maPAqVtu7EHu73eZIg08NS
-         zsDe1azE84JU0mGDgsrA341XmL2XdZ6xgDX6ZZXAVrcXqYvM+AZ8VuaKgwA61cE8/FNN
-         rWaJNqvQZwwDUQbKVPpg9zuQlh7HeX4kTR9mw1Gl2OfiZXlF16jV5//YyHXWvfH8QNcT
-         uGNMQwrM0DjEVt6bJhuIDUaaNEWy8oAh9dKcNwTlPQEgk6177f+SdpZ62+DEG7LRKPwX
-         dKfTR7XkJBy++kBN/1mwQ3eV/jf3gMgs9EehlBCvtaJSdBO4yVZR5fQ2UXAQUvA26D5N
-         0AmA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=t9fzNhoudZcvS5xaO/nVHi0O9+vXnAifByNIpePJ+lk=;
+        b=VIM0I3RtaSiLCvVMj1Z3UnDIA9kltoUr59NO7mURWCg0v83eV1DjHxBCMgiUfzGjAh
+         2ou0aNyJLPaB5ZZkG9ZKJgDHA1sN9hgM0hyVgHeFdPEKKiZfCZKssjN9CAcTDpA3C33X
+         qVjGGJNGTerhhFa3wdQgA/MLHWMdvdKvWoKxSefmg8/m87qucfNH7IkqVvd3MKMf2RAF
+         9vsxsNGU0mlPInrYxeGKxUDaQrNCNoDt/ClNcBl0XVGTaAfcrdXZR2A+88yXhruYZU5j
+         tG+HdvfYvHcQ/K7Mf9JuBwrgNX/ZL7l8MYCpswaX3D1YcJjcpd+EUMmd9l7fqoxJpfRd
+         oyOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hMZPpvWs;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id k4sor558977ljg.1.2020.09.01.05.30.33
-        (Google Transport Security);
-        Tue, 01 Sep 2020 05:30:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=YzUo+KFQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o80si2650629ybc.69.2020.09.01.18.20.22
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 01 Sep 2020 18:20:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=hMZPpvWs;
-       spf=pass (google.com: domain of edgar.iglesias@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=edgar.iglesias@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=date:from:to:cc:subject:message-id:references:mime-version
-         :content-disposition:in-reply-to;
-        bh=VeCtmxpyBD1wTUB21dJqQwaQwI0C9E+xzkYIKwce00Q=;
-        b=hMZPpvWsxablVEvok4y2WH2cHKr5K+bzrh0CPeb5M9iYlesk4J5xtnrM/B38cDpJ0r
-         hmadmWkxe9VVtVYVLKUcNux9eZwuhmASJgDCLZswDZrSvLqveDqm5zkfz/ylW9AN+0Tg
-         ivqsxDi/UDvVjep5w0AURkmZCIAj87s1uLJJLvBzMBCYjCJ1x3YFG6D/9zB4k+5l0wYG
-         PJGg/7iRx5NxsCHS/mvQioU/Cw5M6ODUuf6BjlUV61//t5Hy5374A72EXXFmfqeLx54v
-         etux0Pws6TW3Rc1PFhS/4XmQQes/g6fW0HpHcM0uxl1LF4OUW8LX9a2Tv7Pg/ATFFBAQ
-         zMAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:date:from:to:cc:subject:message-id:references
-         :mime-version:content-disposition:in-reply-to;
-        bh=VeCtmxpyBD1wTUB21dJqQwaQwI0C9E+xzkYIKwce00Q=;
-        b=Q3lXDsHf1TS+IyjWjZTbYY3J5Vy7roFLsNR2LHpf/LydLS9CvvE0HfH6RppqBbs1Z3
-         Z7a+fFpzEwl9AmstxISMAJfMnMwlY3l2ltaun4zLykbfwfhtpeK5nTDkhnnUu8Xj31LH
-         /EsqaM8EBKX0ii0EGmwS9jSrNWbL8LrK//uueRhWocF1eCiIPU/Zo4+1sQR843Uo9DPd
-         JgEDqHKrdcVFT6JSMX0ljGAhyEUEedcJ0JZ0/jbJ14s4wzhaG6cY+0BA0YgmoymjE1Va
-         ZvYG2dcCXODKLG/q4DS6L2ikKYkxEaFaUb4mmXKDIF4EJVhRYxoYSHwB6R0SBAZ5ulnQ
-         Rlsw==
-X-Gm-Message-State: AOAM532MdxawLwB4YJ3pujIE7ULbm5/IbFKaNTxU3jXsIvXP7+hMpv2v
-	FWqAWNbU2f0t4OvHDDcYXt5XvySgHQpOzg==
-X-Google-Smtp-Source: ABdhPJylqv1ezUaaqJkC1saUZmUSZjB0OIx1qVbd34Nt57ckzIuZZ6oByAubGci4orkK3hzwhGowmg==
-X-Received: by 2002:a2e:9810:: with SMTP id a16mr425270ljj.157.1598963433336;
-        Tue, 01 Sep 2020 05:30:33 -0700 (PDT)
-Return-Path: <edgar.iglesias@gmail.com>
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
-        by smtp.gmail.com with ESMTPSA id d17sm245811ljl.133.2020.09.01.05.30.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 01 Sep 2020 05:30:32 -0700 (PDT)
-Date: Tue, 1 Sep 2020 14:30:30 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	Richard Henderson <richard.henderson@linaro.org>,
-	'Philippe =?iso-8859-1?Q?Mathieu-Daud=E9'?= <philmd@redhat.com>,
-	Andrew Jones <drjones@redhat.com>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	'Alex =?iso-8859-1?Q?Benn=E9e'?= <alex.bennee@linaro.org>,
-	Eric Auger <eric.auger@redhat.com>,
-	"'Edgar E . Iglesias'" <edgar.iglesias@xilinx.com>,
-	qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH] target/arm: Configure number of pmu counters
-Message-ID: <20200901123030.GV2954729@toto>
-References: <1598874522-5186-1-git-send-email-sai.pavan.boddu@xilinx.com>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=YzUo+KFQ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:42482 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kDHRl-0000K2-U0
+	for alex.bennee@linaro.org; Tue, 01 Sep 2020 21:20:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45552)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kDHRb-0000Ic-QC; Tue, 01 Sep 2020 21:20:11 -0400
+Received: from ozlabs.org ([203.11.71.1]:45701)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kDHRZ-00033y-9g; Tue, 01 Sep 2020 21:20:11 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4Bh5hg4WR6z9sVB; Wed,  2 Sep 2020 11:20:03 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1599009603;
+ bh=2cYAGQ2lNa6gMCGD9qDWp1XaH9iLwnixTvAlsiyhYhc=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=YzUo+KFQJzudPzGE6ztsrWURVDJYCf62L8nOfMIOPWpJl59y2JrRaR8Cs8xwrodHx
+ D1iEGe10M0KNFKvaKsNUxrW9PeDb0AbTnwhW0aULG6KD3ye4dR5JMuD58qv15MZ7YH
+ v2kaVRc5VITOqTqlMID2bs5oTa/BhfmhF7OdB150=
+Date: Wed, 2 Sep 2020 11:17:08 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 4/5] hw/ppc/ppc4xx_pci: Replace pointless warning by
+ assert()
+Message-ID: <20200902011708.GE1897@yekko.fritz.box>
+References: <20200901104043.91383-1-f4bug@amsat.org>
+ <20200901104043.91383-5-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="Q8BnQc91gJZX4vDc"
 Content-Disposition: inline
-In-Reply-To: <1598874522-5186-1-git-send-email-sai.pavan.boddu@xilinx.com>
-X-TUID: ijvYXKMpXMrA
+In-Reply-To: <20200901104043.91383-5-f4bug@amsat.org>
+Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/01 21:20:04
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Z/QqudgWQJFU
 
-On Mon, Aug 31, 2020 at 05:18:42PM +0530, Sai Pavan Boddu wrote:
-> Default the pmu counters to 4 and configure it a 6 for a53 cores.
 
-Your commit message looks like it needs a little rewording.
+--Q8BnQc91gJZX4vDc
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-I would probably split this into two patches, one that adds pmcrn
-and another that modifies the A53.
+On Tue, Sep 01, 2020 at 12:40:42PM +0200, Philippe Mathieu-Daud=E9 wrote:
+> We call pci_register_root_bus() to register 4 IRQs with the
+> ppc4xx_pci_set_irq() handler. As it can only be called with
+> values in the [0-4[ range, replace the pointless warning by
+> an assert().
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-> 
-> Signed-off-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->  target/arm/cpu.c    | 3 +++
->  target/arm/cpu.h    | 3 +++
->  target/arm/cpu64.c  | 1 +
->  target/arm/helper.c | 2 +-
->  4 files changed, 8 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 6b382fc..805a692 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -1051,6 +1051,9 @@ static void arm_cpu_initfn(Object *obj)
->      cpu->psci_version = 1; /* By default assume PSCI v0.1 */
->      cpu->kvm_target = QEMU_KVM_ARM_TARGET_NONE;
->  
-> +    /* set number of pmu counters to 4 */
-
-/* Set default number of PMU counters */
-
-That way if the default changes you don't need to edit both code and comment.
-
-With those changes:
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@xilinx.com>
-
-
-
-> +    cpu->pmcrn = 4;
-> +
->      if (tcg_enabled()) {
->          cpu->psci_version = 2; /* TCG implements PSCI 0.2 */
->      }
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index ac857bd..3b47ba8 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -879,6 +879,9 @@ struct ARMCPU {
->       */
->      int32_t core_count;
->  
-> +    /* Number of pmu counters */
-> +    uint8_t pmcrn;
-> +
->      /* The instance init functions for implementation-specific subclasses
->       * set these fields to specify the implementation-dependent values of
->       * various constant registers and reset values of non-constant
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index dd69618..76c879a 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -190,6 +190,7 @@ static void aarch64_a53_initfn(Object *obj)
->      cpu->gic_vpribits = 5;
->      cpu->gic_vprebits = 5;
->      define_arm_cp_regs(cpu, cortex_a72_a57_a53_cp_reginfo);
-> +    cpu->pmcrn = 6;
+>  hw/ppc/ppc4xx_pci.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+>=20
+> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
+> index cd3f192a138..503ef46b39a 100644
+> --- a/hw/ppc/ppc4xx_pci.c
+> +++ b/hw/ppc/ppc4xx_pci.c
+> @@ -256,10 +256,7 @@ static void ppc4xx_pci_set_irq(void *opaque, int irq=
+_num, int level)
+>      qemu_irq *pci_irqs =3D opaque;
+> =20
+>      trace_ppc4xx_pci_set_irq(irq_num);
+> -    if (irq_num < 0) {
+> -        fprintf(stderr, "%s: PCI irq %d\n", __func__, irq_num);
+> -        return;
+> -    }
+> +    assert(irq_num >=3D 0);
+>      qemu_set_irq(pci_irqs[irq_num], level);
 >  }
->  
->  static void aarch64_a72_initfn(Object *obj)
-> diff --git a/target/arm/helper.c b/target/arm/helper.c
-> index 44d6666..4afbefb 100644
-> --- a/target/arm/helper.c
-> +++ b/target/arm/helper.c
-> @@ -6534,7 +6534,7 @@ static void define_pmu_regs(ARMCPU *cpu)
->       * field as main ID register, and we implement four counters in
->       * addition to the cycle count register.
->       */
-> -    unsigned int i, pmcrn = 4;
-> +    unsigned int i, pmcrn = cpu->pmcrn;
->      ARMCPRegInfo pmcr = {
->          .name = "PMCR", .cp = 15, .crn = 9, .crm = 12, .opc1 = 0, .opc2 = 0,
->          .access = PL0_RW,
-> -- 
-> 2.7.4
-> 
-> 
+> =20
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--Q8BnQc91gJZX4vDc
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl9O8pQACgkQbDjKyiDZ
+s5KJww/8DJKc+Z8Cyw/JmqNHIWsPxtWYOpEure+y3N/0w8qmxlWWupDbGGgynPqe
+Ry2eZR7tEMap4X7qGOUGxvv4MvIVlqqOIrgWXnWgXWK+C2KR9qJm/rXuH0U4wuqr
+L9h2kKAN1ppF1UBAVjZSf9BFA7XiLnWwJqDZC22ad4jJkztWnwVifoQa1E1J6Uy0
+4WfG3yRfk5ESsN/HBn+mi2UdV7iv3bm8aQUA7mFMPT1r/V7u816z0i/u/mPPRRBL
+WSUPOYiucE+kSAxL2QNHNFgQ8ZxqE9QBhiF+qxu8ZVwwbhYjI0AoC5jGkhVcSAU0
+XCa2AkpPC9YM1Z6LyEsXbE8BorUZGZ321ZaR3DQFFhZlHITzzyUjauGE6dTbk65l
+/J3+yg2GNVMQmjg+8ANmPd/vQtcgsCl27qZjVRudlJXxGJu9zR0nAMMo2XAWlMUq
+shAxQge4LFK/zd4YoM9l9RJl47tpkAp+ZP8BloVyKGGqVeIOU6zN4zdkOQ4b2wLJ
+txvdfts+Alx5k1myRawpJRkE8ypuy9cVTk8ADdLxR6Cq/CHRq0teSKoD31+q1y2S
+ryVDy3lgUeaSyQqHV6MXVvVjM5F3aG3sa/nWko1QHtlNC0c0u/S4Buz3gnKDQ921
++eNNmFTt5tGtx7G3tq3OVBgZLv9Pjn6op3DGnXwp3JTnCczaDT0=
+=A0Tt
+-----END PGP SIGNATURE-----
+
+--Q8BnQc91gJZX4vDc--

@@ -1,113 +1,104 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp578655lfc;
-        Wed, 2 Sep 2020 07:25:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzpTOUx/pe0za7M0u4qnmVFcPwFlMrWkgdEBJSOJlqY2jXseT8+j1712X6/zSXCtZdNFFRx
-X-Received: by 2002:a25:bad1:: with SMTP id a17mr11414945ybk.387.1599056722566;
-        Wed, 02 Sep 2020 07:25:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599056722; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp612585lfc;
+        Wed, 2 Sep 2020 08:07:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw2dAB6t2VenmNhAQuSo9tthYbLmxn8bSLtQAcQ11WZhUeC7kBEZgUyShIveAUsjJAb0ONu
+X-Received: by 2002:a25:7cc2:: with SMTP id x185mr10457653ybc.9.1599059237905;
+        Wed, 02 Sep 2020 08:07:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599059237; cv=none;
         d=google.com; s=arc-20160816;
-        b=CDZeHC3OGpxnqbAbsyiYid44fo2fD9KB7qanVGnrsJHylkFd9KV5FDiUCM3eNlspwa
-         RIzwF+ksWjX6BgJC3lQnket0MSdZI1hBFeeoUVZaBU1hLLbXiwiufr7cCXjj4rbJCbBV
-         z2TdEgAVZxsL0JT73YZLifF70x8j0L6DyEe373VYuluZTTQRYWQQ3mARmdcIr1BfwMD+
-         K5DeyxNoc6d3yZlAI9W4RgzSz+DkHRU5eBOQSTDyYpBs+Q41GnLrQ8sktHJS+3earZ6N
-         yNudMCGlKJWKfGQLmjgtwGcz5pkJzmuWGueRKWxt+S+NB4MTA69BQCcFuV16iBU5I8Qd
-         z1FA==
+        b=M3SCwEAbQ18kRQaRQQ1XeA+gMa+li7+NnACjqMNCPjABiCb9MT0CiuS7QELVGRjQCB
+         zDPiYnwMWr26aUPdTcHm5qDcihlwVF+zf+cX/gRIUUC7jqWBbfTHyFtH3XIL7Oe+3cZx
+         KU7dBYExN73ZIOULvwMHPj3QntUkPDoKF9VCK5gbLIpTkVMWi+G9Ck7MKtnbf6KLhMMB
+         E+zNKvUtybiLJ5/+8eGC8lzt9tAXvU/2yLTGhr/cDufRKzQzDwEnrz+geh3a3C4X+aoP
+         nyuJtiVpv6L5vmThnva2PiUH8vCKW75DtEZvq3MZmLNdk3zQP0X/SBoQ+jM8x36wfAVH
+         F6dA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=srPJxBQvic1I9KpO2J4WOMdwUY/cW/rd9HKCOJ/i41s=;
-        b=cL9aIVrZt9GtgJtEI1k7jidERPbZkB5vz4sPdFbYVp9vRG21d8kGLV1FNu5VI3RrFk
-         Fulb6vk8HOjUQ5BchfBylxNey6AO/rbO8Di3JQvxSUTu0KVhhmVPKdy/PnLnTxlNLxPz
-         oKYs53fG6s1YaUG9UaL3ctwm4B78sh2ofmU7xhbMew1BnT0vcxLIgJ4fvsZxQ0UtIbIY
-         1icy6SyK0/gJkXaSTuKy0ziTqDV2m13VEdSEgpZ/7CkxPAPR74qTn6FX77+Oz6ObZtfz
-         UOyuK0IJbG3qujAxM1G1g0KNhRey+iOkmX4BWe19QokoCd0W92hC8XNg2TOIV/vxc/1Y
-         ZfNA==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:to:subject
+         :message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=b3fydVeY70p8Gf0MqcBHOOQQAGd/OZmf28vfIDMCJes=;
+        b=fzYL/OVFXvwr/paVW9ZtmdW8qdUeVnUxVynq97Ie7knqjxAMqxaINoqt14ALlcF92T
+         YJ2O0U7M4Cjjf2uxnUAXItwfsNFE1sBPuAQEpjMqiDK4yp2If40lDdHHuhDk0GSl9MUj
+         sRwPoSALe/YVK753dciWOGqut6q04wFoN1LqmpCseG5tdsV05QQHpWMM/DjBaTu4mt/h
+         HdQNFbEGUOZzWjo26rmkbyeGNG9hiijQUCQPpoyPFuG0xpN4RHJKjtvfXXuyOvoUBmes
+         vkcpB3qIdGTUyWQHDm9Itw0/OmBtk/eeENctPzC+pXiV8pwWU8BXSYeWmidKQkshiWiV
+         tGgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IqNb1A2R;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="kHc/tEoz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 62si4346578ybe.220.2020.09.02.07.25.22
+        by mx.google.com with ESMTPS id z39si4621854ybh.463.2020.09.02.08.07.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Sep 2020 07:25:22 -0700 (PDT)
+        Wed, 02 Sep 2020 08:07:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IqNb1A2R;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="kHc/tEoz";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55022 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:48052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDThR-0007DX-V8
-	for alex.bennee@linaro.org; Wed, 02 Sep 2020 10:25:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59452)
+	id 1kDUM1-0006ol-8y
+	for alex.bennee@linaro.org; Wed, 02 Sep 2020 11:07:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41842)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kDThJ-0007D5-KI
- for qemu-arm@nongnu.org; Wed, 02 Sep 2020 10:25:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:36127)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kDThH-00016I-Aj
- for qemu-arm@nongnu.org; Wed, 02 Sep 2020 10:25:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599056709;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=srPJxBQvic1I9KpO2J4WOMdwUY/cW/rd9HKCOJ/i41s=;
- b=IqNb1A2R6cpGnPzuFogvKmDaKjgHRR2AL5O19HlUljlIjgjVR7gSH7Bp7fkWlLrm1UA4GI
- RiKFHObnWee6TLgJdyywUfGgm3/p/nh9ZDIlbGLT+7U9vo0j2FrFA4Xoi9INtHpmSb4s0b
- j53bfSc5uM6/xnbNt8TiLk4Meu02SPg=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-42-oC0BXBgJOaizbZ3iHDNtqQ-1; Wed, 02 Sep 2020 10:25:08 -0400
-X-MC-Unique: oC0BXBgJOaizbZ3iHDNtqQ-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id CE1EA801AE6;
- Wed,  2 Sep 2020 14:25:05 +0000 (UTC)
-Received: from [10.36.112.51] (ovpn-112-51.ams2.redhat.com [10.36.112.51])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 7C26E19C59;
- Wed,  2 Sep 2020 14:24:52 +0000 (UTC)
-Subject: Re: [RFC v8 5/5] memory: Skip bad range assertion if notifier is
- DEVIOTLB type
-To: =?UTF-8?Q?Eugenio_P=c3=a9rez?= <eperezma@redhat.com>,
- Peter Xu <peterx@redhat.com>, qemu-devel@nongnu.org
-References: <20200901142608.24481-1-eperezma@redhat.com>
- <20200901142608.24481-6-eperezma@redhat.com>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <44d9e8a5-79fa-11c8-9ec1-4c3d76929408@redhat.com>
-Date: Wed, 2 Sep 2020 16:24:50 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kDULr-0006no-Ac; Wed, 02 Sep 2020 11:07:07 -0400
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229]:44334)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1kDULp-0007N0-1y; Wed, 02 Sep 2020 11:07:06 -0400
+Received: by mail-lj1-x229.google.com with SMTP id b19so6313581lji.11;
+ Wed, 02 Sep 2020 08:07:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:reply-to:from:date:message-id
+ :subject:to:cc;
+ bh=b3fydVeY70p8Gf0MqcBHOOQQAGd/OZmf28vfIDMCJes=;
+ b=kHc/tEozLX/7aPMsd8abkhiRiOZ1azoCPXNFRC9PfexVzy02hmWLR0lhcS1bUmcw8w
+ lmNXwrVoMSpbOv77wDMpguabEgv8tIfFmEyLWPoLGRjEDqnyGZoojPBy+eFMb288qCJ2
+ ZFjhY3Fhf2WzkQPvTZeJLU6FxvLEuhD51nW4pYe9GEXfy613qphKb8a4o6DcQoGG0mBQ
+ VYrK+vvaX9hLn+Jjxa/C/uhb5tYdqUMM+hUugVRZUl9AIYQgI6D7lSWnao4guRmGUlcD
+ bVXtpyZHWEeAaTdcZMwmeVSfGVTYr20x4LUsJdMXvsJuHXpC8U5k6Wot530kTI17n0GX
+ 2o0Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:reply-to
+ :from:date:message-id:subject:to:cc;
+ bh=b3fydVeY70p8Gf0MqcBHOOQQAGd/OZmf28vfIDMCJes=;
+ b=PlhcOy2UbTY9uj4XFv1CJo4TOctlKydtdt3Je2zWMrq5Sf6kCB1UBEga/fX1TF117Z
+ oSXU38M3A8/Nb9dq02if81vnF6YfOIARFuRcoY7U4jPwnulwWLDvC11PItDpD2LinK9B
+ Y/aAe7ExR0l+BzQb59KRZNBC6NE5n2nFgBqvaqoJ0rdNJ4RFVlyOuQBMmTJuWrvF0dOr
+ pCq3gzVSMTP5oLbKTC89t7ePxK+Cu65iY/pVIOZQmehkVg6N7wdsUj6kcj/G7MdnHVB4
+ dA/fpF0nwOiTDWFQknLf0KxYGqVygiqpBeKBps4jOkpNPv8fWRbHAcybg0KStuoUleaK
+ b3Dg==
+X-Gm-Message-State: AOAM53365d3tlupx2hs1LblxjFMIb5ArQW4lzufeXr5RoW2vgqOd8s7N
+ bCs4BV7NgEFT0nDDJby3KN6r2+yqaScUMwF5zM8=
+X-Received: by 2002:a2e:8084:: with SMTP id i4mr3735751ljg.447.1599059221398; 
+ Wed, 02 Sep 2020 08:07:01 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200901142608.24481-6-eperezma@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
-Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 02:42:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+References: <CAE2XoE_SkH-2dNULFAZNiRNRNP=OncwCy=xrDk0J3bzS1Th=tg@mail.gmail.com>
+ <c61f6420-ffdb-b2b1-44ec-60b8a55f9c8a@redhat.com>
+ <ac9ee76a-bc7f-0715-4324-d33c2fb2bb66@redhat.com>
+In-Reply-To: <ac9ee76a-bc7f-0715-4324-d33c2fb2bb66@redhat.com>
+From: =?UTF-8?B?572X5YuH5YiaKFlvbmdnYW5nIEx1byk=?= <luoyonggang@gmail.com>
+Date: Wed, 2 Sep 2020 23:06:49 +0800
+Message-ID: <CAE2XoE-uu35tMOu=OHjhOnv5jHxegv+3vdKaU2Ue16=6E1Wt9w@mail.gmail.com>
+Subject: Re: Cirrus CI for msys2 are working now, but still buiding failed
+To: Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: multipart/alternative; boundary="000000000000ddcbee05ae55fcc7"
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=luoyonggang@gmail.com; helo=mail-lj1-x229.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.324, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,65 +112,189 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Juan Quintela <quintela@redhat.com>,
- qemu-arm@nongnu.org, =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Avi Kivity <avi@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+Reply-To: luoyonggang@gmail.com
+Cc: Thomas Huth <thuth@redhat.com>, "Daniel P. Berrange" <berrange@redhat.com>,
+ qemu-level <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-ppc@nongnu.org" <qemu-ppc@nongnu.org>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xduY7d1D/lYX
+X-TUID: Kk/dZSHY5I01
 
-Hi Eugenio,
+--000000000000ddcbee05ae55fcc7
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-On 9/1/20 4:26 PM, Eugenio Pérez wrote:
-> Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
-Please could you explain in the commit message why you need to remove
-the assert()? I know you described the assert() in the cover letter but
-the commit msg is the one that remains.
-> ---
->  softmmu/memory.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
-> 
-> diff --git a/softmmu/memory.c b/softmmu/memory.c
-> index 09b3443eac..3ee99b4dc0 100644
-> --- a/softmmu/memory.c
-> +++ b/softmmu/memory.c
-> @@ -1895,6 +1895,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
->  {
->      IOMMUTLBEntry *entry = &event->entry;
->      hwaddr entry_end = entry->iova + entry->addr_mask;
-> +    IOMMUTLBEntry tmp = *entry;
->  
->      /*
->       * Skip the notification if the notification does not overlap
-> @@ -1904,10 +1905,18 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
->          return;
->      }
->  
-> -    assert(entry->iova >= notifier->start && entry_end <= notifier->end);
-> +    if (notifier->notifier_flags & IOMMU_NOTIFIER_DEVIOTLB) {
-> +        /* Crop (iova, addr_mask) to range */
-> +        tmp.iova = MAX(tmp.iova, notifier->start);
-> +        tmp.addr_mask = MIN(entry_end, notifier->end) - tmp.iova;
-> +        /* Confirm no underflow */
-> +        assert(MIN(entry_end, notifier->end) >= tmp.iova);
-> +    } else {
-> +        assert(entry->iova >= notifier->start && entry_end <= notifier->end);
-> +    }
->  
->      if (event->type & notifier->notifier_flags) {
-> -        notifier->notify(notifier, entry);
-> +        notifier->notify(notifier, &tmp);
->      }
->  }
->  
-> 
-Thanks
+I've already making CI green match the cross version, and the fix is not
+just about -L, but also need to move the git submodule update to the end of
+the file
 
-Eric
+On Wed, Sep 2, 2020 at 7:41 PM Paolo Bonzini <pbonzini@redhat.com> wrote:
 
+> On 02/09/20 12:38, Thomas Huth wrote:
+> > Wow, that looks quite promising already! But I wonder why the build
+> > system is trying to link libfdt to targets like qemu-system-avr that do
+> > not need it?
+> > And for the targets that need fdt, it should use the dtc submodule... I
+> > can see in the log that the dtc submodule is checked out, but it does
+> > not seem to be compiled ? As a test, could you please try to run
+> > "configure" with "--disable-fdt" there?
+>
+> Mark and Yonggang have reported an issue where the linker gets
+> an msys path like -L/e/qemu/dtc but it wants -LE:/qemu/dtc instead.
+> But fortunately we can just use -Ldtc instead, which would be a patch lik=
+e
+>
+> diff --git a/configure b/configure
+> index 56ceca2f68..34e81a7b60 100755
+> --- a/configure
+> +++ b/configure
+> @@ -943,7 +943,7 @@ Linux)
+>    linux=3D"yes"
+>    linux_user=3D"yes"
+>    kvm=3D"yes"
+> -  QEMU_INCLUDES=3D"-isystem ${source_path}/linux-headers
+> -I$PWD/linux-headers $QEMU_INCLUDES"
+> +  QEMU_INCLUDES=3D"-isystem ${source_path}/linux-headers -Ilinux-headers
+> $QEMU_INCLUDES"
+>    libudev=3D"yes"
+>  ;;
+>  esac
+> @@ -4259,7 +4259,7 @@ EOF
+>                symlink "$source_path/dtc/Makefile" "dtc/Makefile"
+>            fi
+>            fdt_cflags=3D"-I${source_path}/dtc/libfdt"
+> -          fdt_ldflags=3D"-L$PWD/dtc/libfdt"
+> +          fdt_ldflags=3D"-Ldtc/libfdt"
+>            fdt_libs=3D"$fdt_libs"
+>        elif test "$fdt" =3D "yes" ; then
+>            # Not a git build & no libfdt found, prompt for system install
+> @@ -5244,7 +5244,7 @@ case "$capstone" in
+>      else
+>        LIBCAPSTONE=3Dlibcapstone.a
+>      fi
+> -    capstone_libs=3D"-L$PWD/capstone -lcapstone"
+> +    capstone_libs=3D"-Lcapstone -lcapstone"
+>      capstone_cflags=3D"-I${source_path}/capstone/include"
+>      ;;
+>
+> @@ -6244,8 +6244,8 @@ case "$slirp" in
+>        git_submodules=3D"${git_submodules} slirp"
+>      fi
+>      mkdir -p slirp
+> -    slirp_cflags=3D"-I${source_path}/slirp/src -I$PWD/slirp/src"
+> -    slirp_libs=3D"-L$PWD/slirp -lslirp"
+> +    slirp_cflags=3D"-I${source_path}/slirp/src -Islirp/src"
+> +    slirp_libs=3D"-Lslirp -lslirp"
+>      if test "$mingw32" =3D "yes" ; then
+>        slirp_libs=3D"$slirp_libs -lws2_32 -liphlpapi"
+>      fi
+>
+> Paolo
+>
+>
+
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
+
+--000000000000ddcbee05ae55fcc7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">I&#39;ve already making CI green match the cross version, =
+and the fix is not just about -L, but also need to move the git submodule u=
+pdate to the end of the file</div><br><div class=3D"gmail_quote"><div dir=
+=3D"ltr" class=3D"gmail_attr">On Wed, Sep 2, 2020 at 7:41 PM Paolo Bonzini =
+&lt;<a href=3D"mailto:pbonzini@redhat.com">pbonzini@redhat.com</a>&gt; wrot=
+e:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On 02/09/20 1=
+2:38, Thomas Huth wrote:<br>
+&gt; Wow, that looks quite promising already! But I wonder why the build<br=
+>
+&gt; system is trying to link libfdt to targets like qemu-system-avr that d=
+o<br>
+&gt; not need it?<br>
+&gt; And for the targets that need fdt, it should use the dtc submodule... =
+I<br>
+&gt; can see in the log that the dtc submodule is checked out, but it does<=
+br>
+&gt; not seem to be compiled ? As a test, could you please try to run<br>
+&gt; &quot;configure&quot; with &quot;--disable-fdt&quot; there?<br>
+<br>
+Mark and Yonggang have reported an issue where the linker gets<br>
+an msys path like -L/e/qemu/dtc but it wants -LE:/qemu/dtc instead.<br>
+But fortunately we can just use -Ldtc instead, which would be a patch like<=
+br>
+<br>
+diff --git a/configure b/configure<br>
+index 56ceca2f68..34e81a7b60 100755<br>
+--- a/configure<br>
++++ b/configure<br>
+@@ -943,7 +943,7 @@ Linux)<br>
+=C2=A0 =C2=A0linux=3D&quot;yes&quot;<br>
+=C2=A0 =C2=A0linux_user=3D&quot;yes&quot;<br>
+=C2=A0 =C2=A0kvm=3D&quot;yes&quot;<br>
+-=C2=A0 QEMU_INCLUDES=3D&quot;-isystem ${source_path}/linux-headers -I$PWD/=
+linux-headers $QEMU_INCLUDES&quot;<br>
++=C2=A0 QEMU_INCLUDES=3D&quot;-isystem ${source_path}/linux-headers -Ilinux=
+-headers $QEMU_INCLUDES&quot;<br>
+=C2=A0 =C2=A0libudev=3D&quot;yes&quot;<br>
+=C2=A0;;<br>
+=C2=A0esac<br>
+@@ -4259,7 +4259,7 @@ EOF<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0symlink &quot;$sourc=
+e_path/dtc/Makefile&quot; &quot;dtc/Makefile&quot;<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0fi<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0fdt_cflags=3D&quot;-I${source_path=
+}/dtc/libfdt&quot;<br>
+-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 fdt_ldflags=3D&quot;-L$PWD/dtc/libfdt&q=
+uot;<br>
++=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 fdt_ldflags=3D&quot;-Ldtc/libfdt&quot;<=
+br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0fdt_libs=3D&quot;$fdt_libs&quot;<b=
+r>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0elif test &quot;$fdt&quot; =3D &quot;yes&quot; ;=
+ then<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0# Not a git build &amp; no libfdt =
+found, prompt for system install<br>
+@@ -5244,7 +5244,7 @@ case &quot;$capstone&quot; in<br>
+=C2=A0 =C2=A0 =C2=A0else<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0LIBCAPSTONE=3Dlibcapstone.a<br>
+=C2=A0 =C2=A0 =C2=A0fi<br>
+-=C2=A0 =C2=A0 capstone_libs=3D&quot;-L$PWD/capstone -lcapstone&quot;<br>
++=C2=A0 =C2=A0 capstone_libs=3D&quot;-Lcapstone -lcapstone&quot;<br>
+=C2=A0 =C2=A0 =C2=A0capstone_cflags=3D&quot;-I${source_path}/capstone/inclu=
+de&quot;<br>
+=C2=A0 =C2=A0 =C2=A0;;<br>
+<br>
+@@ -6244,8 +6244,8 @@ case &quot;$slirp&quot; in<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0git_submodules=3D&quot;${git_submodules} slirp&q=
+uot;<br>
+=C2=A0 =C2=A0 =C2=A0fi<br>
+=C2=A0 =C2=A0 =C2=A0mkdir -p slirp<br>
+-=C2=A0 =C2=A0 slirp_cflags=3D&quot;-I${source_path}/slirp/src -I$PWD/slirp=
+/src&quot;<br>
+-=C2=A0 =C2=A0 slirp_libs=3D&quot;-L$PWD/slirp -lslirp&quot;<br>
++=C2=A0 =C2=A0 slirp_cflags=3D&quot;-I${source_path}/slirp/src -Islirp/src&=
+quot;<br>
++=C2=A0 =C2=A0 slirp_libs=3D&quot;-Lslirp -lslirp&quot;<br>
+=C2=A0 =C2=A0 =C2=A0if test &quot;$mingw32&quot; =3D &quot;yes&quot; ; then=
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0slirp_libs=3D&quot;$slirp_libs -lws2_32 -liphlpa=
+pi&quot;<br>
+=C2=A0 =C2=A0 =C2=A0fi<br>
+<br>
+Paolo<br>
+<br>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+ class=3D"gmail_signature">=C2=A0 =C2=A0 =C2=A0 =C2=A0=C2=A0 =E6=AD=A4=E8=
+=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=
+=A0 sincerely,<br>Yonggang Luo<br></div>
+
+--000000000000ddcbee05ae55fcc7--

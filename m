@@ -1,143 +1,283 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp547339lfc;
-        Wed, 2 Sep 2020 06:49:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwZNdYXTGaB65K8PlEoDSscQjYbb2EHJ1doQ1j0BlkHQDRS3c4l35q6Qjwhe0P3l0VVGbf6
-X-Received: by 2002:a25:d258:: with SMTP id j85mr10426936ybg.523.1599054597868;
-        Wed, 02 Sep 2020 06:49:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599054597; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp934751lfc;
+        Wed, 2 Sep 2020 15:45:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzqcGKaTV+Zi0pY9H+tWyJiVbup4LKdoyFf2mheWXKSoWWLOiU6UGKoSA4MFem2b+ZwdSR9
+X-Received: by 2002:a17:906:d181:: with SMTP id c1mr339974ejz.181.1599086755370;
+        Wed, 02 Sep 2020 15:45:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599086755; cv=none;
         d=google.com; s=arc-20160816;
-        b=0GFuFkatZOVFNbCjWdNxOyb/aduCRgmLR1ecRhUGUUtUTiRCSRSaRJ+SPaUCbp6Ls8
-         VLZpQ8MA4JFgFuaptiOS457i57M8SePZhdkUv591kYc+vS1jtZCFibSvIREcr7ehfkWb
-         p/ZZAUTycQbN+z0p9mM2Uchwd+VrfZ9nv28Ey/3rYcJq4SsyWM7K80BCjgsfR+BdLW1B
-         b210aatpG/OXiJ47NXQz0VAQCOr+ge8AUPD0JkvWtJ7x7uSOVDoq61gxmVQYC2vxZ4ti
-         0ZXjVEpIDkeeQk1M2J5aArdCmxyojXu+g38lJuvTVygIZ1+nIQPW0sFWlK2HpOkiXXR3
-         HyYg==
+        b=q025M2WsHHlX8wg5YS+la3BNHrlwUmDH/LUvuQgo5/BIW7aIoGnh+465eGPNxQUvYA
+         nP6nDlsRoo44JcIiLA8EHNs6582Fq/T3J8G+7IAsH+sf7SYqBXHUZNHJ8DRdcB4T0vM9
+         SrqUDq6egX3wN/rjdMjdjt89lLw5CjQbRCZ79/Z01UO7vmqG3qY2/HmHEB2zUvRiKXeL
+         vLR07q9l7VVJpNG/oh083SsHbTCC9Qyy/VEOcZTRIjdA3fStswJFutBaNP7vPgNntNQ6
+         0/mL4+xbS74UDvTk5CoXjjsXYkB7CVVmZVS5Uk9w/LU1znmuXMj1cjc37kTswQiakaNL
+         /u3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=1LdkGkR52EGBm4iAd5x+Ux+35QJsNYEqBl1R1F6g2os=;
-        b=Il4walORW3pvHyTggLAJSpZFyHhso0LKPnvGicnGWff5Go74tagDcLM5YdPuTag4Be
-         onuoPO8Vcw8g+hy0RiaHcHuHdtVrhehsHv2JmaQQo3k2G/+5Ev3MMvahG/OQbCPUio/z
-         5XETFZXBGHejTpvGCHzOAdDkKaBT4YbU4411fNvPSFrcVysikaHm45j99E+eGS9D/Xsk
-         2tQ0a15R/AaSctuswzqUXs1KtrTEI5SEC28y8TgkjrLGrg/TLOfPr3XY7hRu8heX/dVu
-         dfkhg3tT4TK/j7H4CkzQfV6K/Tl9XDHEsUi0dzNyOt/dRnNXVkkiBYyRXH9QldiXxNua
-         U+pA==
+        h=list-id:precedence:sender:content-transfer-encoding:mime-version
+         :references:in-reply-to:message-id:date:subject:cc:to:from
+         :dkim-signature;
+        bh=/ktoQfh7Azf87EbiJtqzsLJ4A8BhkUu1bCw5VGpaiJo=;
+        b=VD2MjAwfUT5bd1H/2f2mT1g85W7Z3Cb+e4H190RcOg0+BxOBzbzpPPjJW1YI9nP0sA
+         YlLnpMCH3gMTNJgsn2bxq0uslq8J6ndyE62OAP6xyRhSFPWVsZL0JKV3aDQ3L+7zhxot
+         8wzIItgDKP2Lv7wVQCPzAjeSUknKVcXCcjN9hpoH97ylcguTxezoFQrcnuo9ItNRSmHg
+         pTC0WGj0nBUhjK2Aly/CMbmaCwBkhbUxvr5+Kn84DHjancSx5AgadQ1teXiw1k1O01CW
+         88+2Z9NaixAa0ctpL86PcsL0QHR+iEd5skOWiuhZcTYGP8rY6mOtIaJJ88SZuFRZ4Hfs
+         MacQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dRzLbJxz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q2si4184082ybp.59.2020.09.02.06.49.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 02 Sep 2020 06:49:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aVbTwAk/";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id cw20si458091edb.141.2020.09.02.15.45.55;
+        Wed, 02 Sep 2020 15:45:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=dRzLbJxz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:54052 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDT9B-00008q-Aa
-	for alex.bennee@linaro.org; Wed, 02 Sep 2020 09:49:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50344)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDT8T-00086E-OT; Wed, 02 Sep 2020 09:49:13 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:34883)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDT8S-000511-5d; Wed, 02 Sep 2020 09:49:13 -0400
-Received: by mail-wr1-x431.google.com with SMTP id e16so5328069wrm.2;
- Wed, 02 Sep 2020 06:49:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=1LdkGkR52EGBm4iAd5x+Ux+35QJsNYEqBl1R1F6g2os=;
- b=dRzLbJxzs4QSESaxKGbPmSyjL0U6r01gReFOipzVy35aO9HxvFpoRJ3REMmr5IJsOx
- 7JyqogRC/UX+UUSMK9O8L36AeZAx7bm6MJj+4rkCz7UlEgYKauTu8ZkLndCLuYLTnKA9
- tS8tLKDCFieuQW6gtj+SNatktnmLFG3YYyQVVzDTU0zlI7vhJXHXKI668IWdqQJeOo4D
- 4cCho3h1NqUMf/p47LYDY7kjJmkfyCS0AZ3ZQgP6E+kXFTFynWLnQ/3Xkw+XQl4q1YE8
- vV3okMmwOnTLhGig4hqMH8M8T3Z8EZNhRp14ssNdBho+gO3P5bXDMHbRjH/8OX8x3CfE
- JDiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=1LdkGkR52EGBm4iAd5x+Ux+35QJsNYEqBl1R1F6g2os=;
- b=lRMASISlgqeWji0pkLTAD2ZAZPglFAiox8qgi3jiWW87nQaZ5n6gpfQkWc1ouZtbQR
- Qe1mREEU8zKYeSRT7OxNyGllYWf+LY4DB6KfLD/fM6FYW0J9edDMKeXkKFusjo8STzNq
- dFu++Xrje8s/6J8+r6YrjmMlyzJT5A/a64z/8hY7O0OEwr13ONDR/6cukfsgJ0Ht9ekC
- dkqfCUKtLNKZj6BQEgG36TKy30UsdMUrF8F+ar1r6h/kP33MtZQSygUAyhT4CKvhVqM2
- X9vCWNgKCG5OBWhuqycQBfWW0bzOJSUg15aF2D9efPJ46/WQIjcP+mlBvqN25ZHX6RQP
- BmWA==
-X-Gm-Message-State: AOAM533qSc4QYYetq+cdmoiDOX804auzVZgRojEy74D1fps6VwesmRrB
- Tv3MuJaGKhS3ruzF1jhMMzqZ3vbZWW4=
-X-Received: by 2002:a5d:4645:: with SMTP id j5mr934384wrs.388.1599054549443;
- Wed, 02 Sep 2020 06:49:09 -0700 (PDT)
-Received: from [192.168.1.36] (50.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.50])
- by smtp.gmail.com with ESMTPSA id h5sm7562528wrt.31.2020.09.02.06.49.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Sep 2020 06:49:08 -0700 (PDT)
-Subject: Re: flash programmer support in arm targets
-To: Ronald Steinke <rsteinke@twistedpair.cc>, qemu-arm@nongnu.org,
- qemu-devel <qemu-devel@nongnu.org>
-References: <CACUpvubY7qTh7Tg5euFSqB+b3V8eU62f3kU8qdMuRLFV1UgtCA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <4cb93951-770a-f64f-fffc-4ab1c8e8ff7f@amsat.org>
-Date: Wed, 2 Sep 2020 15:49:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aVbTwAk/";
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726674AbgIBWpw (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Wed, 2 Sep 2020 18:45:52 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:23576 "EHLO
+        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
+        by vger.kernel.org with ESMTP id S1726247AbgIBWpu (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Wed, 2 Sep 2020 18:45:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1599086748;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=/ktoQfh7Azf87EbiJtqzsLJ4A8BhkUu1bCw5VGpaiJo=;
+        b=aVbTwAk/CwQksDiyZlh2Im4hz47ttKXzRjvGxJqlsetcDAmRvEdzylTnJ+UHkgw/BvE7Fn
+        48LPDQGbSVM8xDJJJrhKLv0v55rIMYq9+j4rRMmhzphZj8Dtdy/SbwIsJQGKDqpo+sVTyS
+        eZqMwTz2N1hpaobZ4VLWe1NekkAMzMg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-55-6bGZtU9WP1elzVL8WdI9kw-1; Wed, 02 Sep 2020 18:45:46 -0400
+X-MC-Unique: 6bGZtU9WP1elzVL8WdI9kw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9B59118A2251;
+        Wed,  2 Sep 2020 22:45:44 +0000 (UTC)
+Received: from localhost (ovpn-66-226.rdu2.redhat.com [10.10.66.226])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id E8AC65D9CC;
+        Wed,  2 Sep 2020 22:45:43 +0000 (UTC)
+From:   Eduardo Habkost <ehabkost@redhat.com>
+To:     qemu-devel@nongnu.org
+Cc:     berrange@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Marcelo Tosatti <mtosatti@redhat.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Huacai Chen <chenhc@lemote.com>,
+        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        David Gibson <david@gibson.dropbear.id.au>,
+        kvm@vger.kernel.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
+Subject: [PATCH 59/63] kvm: Rename KVM_STATE to KVM_ACCEL
+Date:   Wed,  2 Sep 2020 18:43:07 -0400
+Message-Id: <20200902224311.1321159-60-ehabkost@redhat.com>
+In-Reply-To: <20200902224311.1321159-1-ehabkost@redhat.com>
+References: <20200902224311.1321159-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <CACUpvubY7qTh7Tg5euFSqB+b3V8eU62f3kU8qdMuRLFV1UgtCA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, NICE_REPLY_A=-0.324,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: OYBVytRi7TQd
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Sender: kvm-owner@vger.kernel.org
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: ro/Ftudsa+Px
 
-Hi Ronald,
+Make the type checking macro name consistent with the TYPE_*
+constant.
 
-On 9/2/20 3:30 PM, Ronald Steinke wrote:
-> Are there arm targets that have hardware support for the internal flash
-> programmer registers (e.g. FMD/FMA/FMC in lm3s6965)?
+Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+---
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Marcelo Tosatti <mtosatti@redhat.com>
+Cc: Richard Henderson <rth@twiddle.net>
+Cc: Eduardo Habkost <ehabkost@redhat.com>
+Cc: Huacai Chen <chenhc@lemote.com>
+Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
+Cc: Aurelien Jarno <aurelien@aurel32.net>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>
+Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Cc: David Gibson <david@gibson.dropbear.id.au>
+Cc: kvm@vger.kernel.org
+Cc: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Cc: qemu-ppc@nongnu.org
+---
+ include/sysemu/kvm.h |  2 +-
+ accel/kvm/kvm-all.c  | 18 +++++++++---------
+ target/arm/kvm.c     |  2 +-
+ target/i386/kvm.c    |  2 +-
+ target/mips/kvm.c    |  2 +-
+ target/ppc/kvm.c     |  4 ++--
+ 6 files changed, 15 insertions(+), 15 deletions(-)
 
-No, the flash controller of the Stellaris LM3S6965 is not
-implemented.
-Note that it is very simple (2 operations, 6 registers + 1 set
-of protected bits), thus easy to implement and test. You can
-have a look at hw/block/nand.c to have an idea how to start.
-
-Regards,
-
-Phil.
+diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
+index 5bbea53883..89c422e1e7 100644
+--- a/include/sysemu/kvm.h
++++ b/include/sysemu/kvm.h
+@@ -204,7 +204,7 @@ struct KVMState;
+ 
+ #define TYPE_KVM_ACCEL ACCEL_CLASS_NAME("kvm")
+ typedef struct KVMState KVMState;
+-DECLARE_INSTANCE_CHECKER(KVMState, KVM_STATE,
++DECLARE_INSTANCE_CHECKER(KVMState, KVM_ACCEL,
+                          TYPE_KVM_ACCEL)
+ 
+ extern KVMState *kvm_state;
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index 63ef6af9a1..bdf63ca3a3 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -214,7 +214,7 @@ void kvm_resample_fd_notify(int gsi)
+ 
+ int kvm_get_max_memslots(void)
+ {
+-    KVMState *s = KVM_STATE(current_accel());
++    KVMState *s = KVM_ACCEL(current_accel());
+ 
+     return s->nr_slots;
+ }
+@@ -256,7 +256,7 @@ static KVMSlot *kvm_get_free_slot(KVMMemoryListener *kml)
+ 
+ bool kvm_has_free_slot(MachineState *ms)
+ {
+-    KVMState *s = KVM_STATE(ms->accelerator);
++    KVMState *s = KVM_ACCEL(ms->accelerator);
+     bool result;
+     KVMMemoryListener *kml = &s->memory_listener;
+ 
+@@ -1970,7 +1970,7 @@ static int kvm_max_vcpu_id(KVMState *s)
+ 
+ bool kvm_vcpu_id_is_valid(int vcpu_id)
+ {
+-    KVMState *s = KVM_STATE(current_accel());
++    KVMState *s = KVM_ACCEL(current_accel());
+     return vcpu_id >= 0 && vcpu_id < kvm_max_vcpu_id(s);
+ }
+ 
+@@ -1996,7 +1996,7 @@ static int kvm_init(MachineState *ms)
+     const char *kvm_type;
+     uint64_t dirty_log_manual_caps;
+ 
+-    s = KVM_STATE(ms->accelerator);
++    s = KVM_ACCEL(ms->accelerator);
+ 
+     /*
+      * On systems where the kernel can support different base page
+@@ -3084,7 +3084,7 @@ int kvm_get_one_reg(CPUState *cs, uint64_t id, void *target)
+ static bool kvm_accel_has_memory(MachineState *ms, AddressSpace *as,
+                                  hwaddr start_addr, hwaddr size)
+ {
+-    KVMState *kvm = KVM_STATE(ms->accelerator);
++    KVMState *kvm = KVM_ACCEL(ms->accelerator);
+     int i;
+ 
+     for (i = 0; i < kvm->nr_as; ++i) {
+@@ -3102,7 +3102,7 @@ static void kvm_get_kvm_shadow_mem(Object *obj, Visitor *v,
+                                    const char *name, void *opaque,
+                                    Error **errp)
+ {
+-    KVMState *s = KVM_STATE(obj);
++    KVMState *s = KVM_ACCEL(obj);
+     int64_t value = s->kvm_shadow_mem;
+ 
+     visit_type_int(v, name, &value, errp);
+@@ -3112,7 +3112,7 @@ static void kvm_set_kvm_shadow_mem(Object *obj, Visitor *v,
+                                    const char *name, void *opaque,
+                                    Error **errp)
+ {
+-    KVMState *s = KVM_STATE(obj);
++    KVMState *s = KVM_ACCEL(obj);
+     int64_t value;
+ 
+     if (!visit_type_int(v, name, &value, errp)) {
+@@ -3126,7 +3126,7 @@ static void kvm_set_kernel_irqchip(Object *obj, Visitor *v,
+                                    const char *name, void *opaque,
+                                    Error **errp)
+ {
+-    KVMState *s = KVM_STATE(obj);
++    KVMState *s = KVM_ACCEL(obj);
+     OnOffSplit mode;
+ 
+     if (!visit_type_OnOffSplit(v, name, &mode, errp)) {
+@@ -3173,7 +3173,7 @@ bool kvm_kernel_irqchip_split(void)
+ 
+ static void kvm_accel_instance_init(Object *obj)
+ {
+-    KVMState *s = KVM_STATE(obj);
++    KVMState *s = KVM_ACCEL(obj);
+ 
+     s->kvm_shadow_mem = -1;
+     s->kernel_irqchip_allowed = true;
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 8bb7318378..55583075f3 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -216,7 +216,7 @@ bool kvm_arm_pmu_supported(void)
+ 
+ int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+ {
+-    KVMState *s = KVM_STATE(ms->accelerator);
++    KVMState *s = KVM_ACCEL(ms->accelerator);
+     int ret;
+ 
+     ret = kvm_check_extension(s, KVM_CAP_ARM_VM_IPA_SIZE);
+diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+index 205b68bc0c..2949c5f048 100644
+--- a/target/i386/kvm.c
++++ b/target/i386/kvm.c
+@@ -155,7 +155,7 @@ bool kvm_allows_irq0_override(void)
+ 
+ static bool kvm_x2apic_api_set_flags(uint64_t flags)
+ {
+-    KVMState *s = KVM_STATE(current_accel());
++    KVMState *s = KVM_ACCEL(current_accel());
+ 
+     return !kvm_vm_enable_cap(s, KVM_CAP_X2APIC_API, 0, flags);
+ }
+diff --git a/target/mips/kvm.c b/target/mips/kvm.c
+index 72637a1e02..30f9c0349a 100644
+--- a/target/mips/kvm.c
++++ b/target/mips/kvm.c
+@@ -1277,7 +1277,7 @@ int mips_kvm_type(MachineState *machine, const char *vm_type)
+ {
+ #if defined(KVM_CAP_MIPS_VZ) || defined(KVM_CAP_MIPS_TE)
+     int r;
+-    KVMState *s = KVM_STATE(machine->accelerator);
++    KVMState *s = KVM_ACCEL(machine->accelerator);
+ #endif
+ 
+ #if defined(KVM_CAP_MIPS_VZ)
+diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
+index d85ba8ffe0..e446637137 100644
+--- a/target/ppc/kvm.c
++++ b/target/ppc/kvm.c
+@@ -263,7 +263,7 @@ static void kvm_get_smmu_info(struct kvm_ppc_smmu_info *info, Error **errp)
+ 
+ struct ppc_radix_page_info *kvm_get_radix_page_info(void)
+ {
+-    KVMState *s = KVM_STATE(current_accel());
++    KVMState *s = KVM_ACCEL(current_accel());
+     struct ppc_radix_page_info *radix_page_info;
+     struct kvm_ppc_rmmu_info rmmu_info;
+     int i;
+@@ -2943,7 +2943,7 @@ void kvmppc_svm_off(Error **errp)
+         return;
+     }
+ 
+-    rc = kvm_vm_ioctl(KVM_STATE(current_accel()), KVM_PPC_SVM_OFF);
++    rc = kvm_vm_ioctl(KVM_ACCEL(current_accel()), KVM_PPC_SVM_OFF);
+     if (rc && rc != -ENOTTY) {
+         error_setg_errno(errp, -rc, "KVM_PPC_SVM_OFF ioctl failed");
+     }
+-- 
+2.26.2

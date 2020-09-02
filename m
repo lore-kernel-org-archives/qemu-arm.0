@@ -1,283 +1,237 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp934751lfc;
-        Wed, 2 Sep 2020 15:45:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzqcGKaTV+Zi0pY9H+tWyJiVbup4LKdoyFf2mheWXKSoWWLOiU6UGKoSA4MFem2b+ZwdSR9
-X-Received: by 2002:a17:906:d181:: with SMTP id c1mr339974ejz.181.1599086755370;
-        Wed, 02 Sep 2020 15:45:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599086755; cv=none;
+Received: by 2002:a19:8587:0:0:0:0:0 with SMTP id h129csp3405lfd;
+        Wed, 2 Sep 2020 15:53:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwcrsH2/NDRAaNNkHegtPGM6yBYB+/j0Phea6DyXWxSUHwKVAct1hVB81YCoSR13ohs0fSj
+X-Received: by 2002:a25:6885:: with SMTP id d127mr12916909ybc.27.1599087208899;
+        Wed, 02 Sep 2020 15:53:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599087208; cv=none;
         d=google.com; s=arc-20160816;
-        b=q025M2WsHHlX8wg5YS+la3BNHrlwUmDH/LUvuQgo5/BIW7aIoGnh+465eGPNxQUvYA
-         nP6nDlsRoo44JcIiLA8EHNs6582Fq/T3J8G+7IAsH+sf7SYqBXHUZNHJ8DRdcB4T0vM9
-         SrqUDq6egX3wN/rjdMjdjt89lLw5CjQbRCZ79/Z01UO7vmqG3qY2/HmHEB2zUvRiKXeL
-         vLR07q9l7VVJpNG/oh083SsHbTCC9Qyy/VEOcZTRIjdA3fStswJFutBaNP7vPgNntNQ6
-         0/mL4+xbS74UDvTk5CoXjjsXYkB7CVVmZVS5Uk9w/LU1znmuXMj1cjc37kTswQiakaNL
-         /u3A==
+        b=xS50Hq6eOreeFOPjLrTDLM2Zf2mjYUmC4q4uNVCDjGNSmtRG/E1we5zqk0ijPdL4nz
+         i/C1gUw8T75VvMi+wFFsIffVEfrp47PiQPMYASmX36YYC4uNz68RP1eJq6xxYZ0fFShm
+         x9GZlRgN/YrMCNrxg7KazVs9b5K9SPHAG/cyNh6t70qHspWIZZ+RHp0PX+oXb9Y3lvEa
+         KMGnFLvOciGjADAY7L3HACpZYskRYvsqewXvQseAH7+5rfnQPMeWeXVj2KMQs8fgWPMP
+         GUwD8NvcbtimsWtW5FMopjRw3iJJ9apwSEsPChSReu3r4Bj1Wy0cGnYuVq3aY+lth/MU
+         dfQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding:mime-version
-         :references:in-reply-to:message-id:date:subject:cc:to:from
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=/ktoQfh7Azf87EbiJtqzsLJ4A8BhkUu1bCw5VGpaiJo=;
-        b=VD2MjAwfUT5bd1H/2f2mT1g85W7Z3Cb+e4H190RcOg0+BxOBzbzpPPjJW1YI9nP0sA
-         YlLnpMCH3gMTNJgsn2bxq0uslq8J6ndyE62OAP6xyRhSFPWVsZL0JKV3aDQ3L+7zhxot
-         8wzIItgDKP2Lv7wVQCPzAjeSUknKVcXCcjN9hpoH97ylcguTxezoFQrcnuo9ItNRSmHg
-         pTC0WGj0nBUhjK2Aly/CMbmaCwBkhbUxvr5+Kn84DHjancSx5AgadQ1teXiw1k1O01CW
-         88+2Z9NaixAa0ctpL86PcsL0QHR+iEd5skOWiuhZcTYGP8rY6mOtIaJJ88SZuFRZ4Hfs
-         MacQ==
+        bh=2timywTLyViFpE3A6e1YsrsQIxAx0L1qUWJsoBnIaW4=;
+        b=Wz3YjMkKpihPD79kbdLH+TME/eurEzH1fKktXWxG24nOPtjS9ZNigIg5cbyhaczF69
+         /WcUnZGud8QDia+5ZViLEYDQp/Mg1JOAX7kvgwWSUvztUz2tRW3Vv/npo0G6/qRzApuS
+         5d7cWM1RrlQ3So9IBUoVDluayDQL5lCGspGCU7mo606Q7nUgy7T8aar4uO+6lmE+P9CJ
+         b3f6RbsjH7kvOHuhN3u7W8C4ko05G6Ez3QDqf+j2ZdZ5DegUdI28SUTDv+uSaa6dImBH
+         MnVoKCkhfDteUo2iaonISxL0QXL8qA7ryXO4RRVn5tw3Y9JnZnnSZluER5UXh7+UaZIF
+         kImA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aVbTwAk/";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id cw20si458091edb.141.2020.09.02.15.45.55;
-        Wed, 02 Sep 2020 15:45:55 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fiprUwfV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id j3si969773ybh.200.2020.09.02.15.53.23
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 02 Sep 2020 15:53:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="aVbTwAk/";
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726674AbgIBWpw (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Wed, 2 Sep 2020 18:45:52 -0400
-Received: from us-smtp-2.mimecast.com ([207.211.31.81]:23576 "EHLO
-        us-smtp-delivery-1.mimecast.com" rhost-flags-OK-OK-OK-FAIL)
-        by vger.kernel.org with ESMTP id S1726247AbgIBWpu (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Wed, 2 Sep 2020 18:45:50 -0400
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fiprUwfV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58002 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kDbd5-0004HI-2q
+	for alex.bennee@linaro.org; Wed, 02 Sep 2020 18:53:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35154)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kDbUa-0003EN-AX
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2020 18:44:36 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42744)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kDbUY-0008P3-A1
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2020 18:44:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1599086748;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=/ktoQfh7Azf87EbiJtqzsLJ4A8BhkUu1bCw5VGpaiJo=;
-        b=aVbTwAk/CwQksDiyZlh2Im4hz47ttKXzRjvGxJqlsetcDAmRvEdzylTnJ+UHkgw/BvE7Fn
-        48LPDQGbSVM8xDJJJrhKLv0v55rIMYq9+j4rRMmhzphZj8Dtdy/SbwIsJQGKDqpo+sVTyS
-        eZqMwTz2N1hpaobZ4VLWe1NekkAMzMg=
+ s=mimecast20190719; t=1599086673;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=2timywTLyViFpE3A6e1YsrsQIxAx0L1qUWJsoBnIaW4=;
+ b=fiprUwfViqekaHPDkyhx7vGqIV+he/xsz8wXUDBMykAMxmLjoR8EH2NKARWvUnD3yCy0d/
+ K8OEne69g3auQQwceUt7sDd6fkpM0IhNCUn5lzuHuS3XhOFM/Eue1Z87vvNhTNzoDYWKp8
+ R8JSkQGSaNP19lGLdNPYDqDrPmiZQSc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-55-6bGZtU9WP1elzVL8WdI9kw-1; Wed, 02 Sep 2020 18:45:46 -0400
-X-MC-Unique: 6bGZtU9WP1elzVL8WdI9kw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-        (No client certificate requested)
-        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9B59118A2251;
-        Wed,  2 Sep 2020 22:45:44 +0000 (UTC)
+ us-mta-495-yDu-LXBmMOGuLv4FfxIJ2g-1; Wed, 02 Sep 2020 18:44:32 -0400
+X-MC-Unique: yDu-LXBmMOGuLv4FfxIJ2g-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BBD5F1DE00;
+ Wed,  2 Sep 2020 22:44:30 +0000 (UTC)
 Received: from localhost (ovpn-66-226.rdu2.redhat.com [10.10.66.226])
-        by smtp.corp.redhat.com (Postfix) with ESMTP id E8AC65D9CC;
-        Wed,  2 Sep 2020 22:45:43 +0000 (UTC)
-From:   Eduardo Habkost <ehabkost@redhat.com>
-To:     qemu-devel@nongnu.org
-Cc:     berrange@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Huacai Chen <chenhc@lemote.com>,
-        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-        Aurelien Jarno <aurelien@aurel32.net>,
-        Jiaxun Yang <jiaxun.yang@flygoat.com>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        David Gibson <david@gibson.dropbear.id.au>,
-        kvm@vger.kernel.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org
-Subject: [PATCH 59/63] kvm: Rename KVM_STATE to KVM_ACCEL
-Date:   Wed,  2 Sep 2020 18:43:07 -0400
-Message-Id: <20200902224311.1321159-60-ehabkost@redhat.com>
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F37751002D40;
+ Wed,  2 Sep 2020 22:44:24 +0000 (UTC)
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 23/63] ramfb: Rename TYPE_RAMFB_DEVICE to TYPE_RAMFB
+Date: Wed,  2 Sep 2020 18:42:31 -0400
+Message-Id: <20200902224311.1321159-24-ehabkost@redhat.com>
 In-Reply-To: <20200902224311.1321159-1-ehabkost@redhat.com>
 References: <20200902224311.1321159-1-ehabkost@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: ro/Ftudsa+Px
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/02 17:54:06
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, berrange@redhat.com,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: MzM1DvOTMxZR
 
-Make the type checking macro name consistent with the TYPE_*
-constant.
+This will make the type name constant consistent with the name of
+the type checking macro.
 
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
-Cc: Paolo Bonzini <pbonzini@redhat.com>
 Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: Marcelo Tosatti <mtosatti@redhat.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 Cc: Richard Henderson <rth@twiddle.net>
 Cc: Eduardo Habkost <ehabkost@redhat.com>
-Cc: Huacai Chen <chenhc@lemote.com>
-Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>
-Cc: Aurelien Jarno <aurelien@aurel32.net>
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>
-Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Cc: David Gibson <david@gibson.dropbear.id.au>
-Cc: kvm@vger.kernel.org
-Cc: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Cc: qemu-arm@nongnu.org
-Cc: qemu-ppc@nongnu.org
+Cc: qemu-devel@nongnu.org
 ---
- include/sysemu/kvm.h |  2 +-
- accel/kvm/kvm-all.c  | 18 +++++++++---------
- target/arm/kvm.c     |  2 +-
- target/i386/kvm.c    |  2 +-
- target/mips/kvm.c    |  2 +-
- target/ppc/kvm.c     |  4 ++--
- 6 files changed, 15 insertions(+), 15 deletions(-)
+ include/hw/display/ramfb.h    | 2 +-
+ hw/arm/sysbus-fdt.c           | 2 +-
+ hw/arm/virt.c                 | 2 +-
+ hw/display/ramfb-standalone.c | 4 ++--
+ hw/i386/pc_piix.c             | 2 +-
+ hw/i386/pc_q35.c              | 2 +-
+ 6 files changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/include/sysemu/kvm.h b/include/sysemu/kvm.h
-index 5bbea53883..89c422e1e7 100644
---- a/include/sysemu/kvm.h
-+++ b/include/sysemu/kvm.h
-@@ -204,7 +204,7 @@ struct KVMState;
+diff --git a/include/hw/display/ramfb.h b/include/hw/display/ramfb.h
+index b33a2c467b..c4b0150c88 100644
+--- a/include/hw/display/ramfb.h
++++ b/include/hw/display/ramfb.h
+@@ -7,6 +7,6 @@ void ramfb_display_update(QemuConsole *con, RAMFBState *s);
+ RAMFBState *ramfb_setup(Error **errp);
  
- #define TYPE_KVM_ACCEL ACCEL_CLASS_NAME("kvm")
- typedef struct KVMState KVMState;
--DECLARE_INSTANCE_CHECKER(KVMState, KVM_STATE,
-+DECLARE_INSTANCE_CHECKER(KVMState, KVM_ACCEL,
-                          TYPE_KVM_ACCEL)
+ /* ramfb-standalone.c */
+-#define TYPE_RAMFB_DEVICE "ramfb"
++#define TYPE_RAMFB "ramfb"
  
- extern KVMState *kvm_state;
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index 63ef6af9a1..bdf63ca3a3 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -214,7 +214,7 @@ void kvm_resample_fd_notify(int gsi)
- 
- int kvm_get_max_memslots(void)
- {
--    KVMState *s = KVM_STATE(current_accel());
-+    KVMState *s = KVM_ACCEL(current_accel());
- 
-     return s->nr_slots;
- }
-@@ -256,7 +256,7 @@ static KVMSlot *kvm_get_free_slot(KVMMemoryListener *kml)
- 
- bool kvm_has_free_slot(MachineState *ms)
- {
--    KVMState *s = KVM_STATE(ms->accelerator);
-+    KVMState *s = KVM_ACCEL(ms->accelerator);
-     bool result;
-     KVMMemoryListener *kml = &s->memory_listener;
- 
-@@ -1970,7 +1970,7 @@ static int kvm_max_vcpu_id(KVMState *s)
- 
- bool kvm_vcpu_id_is_valid(int vcpu_id)
- {
--    KVMState *s = KVM_STATE(current_accel());
-+    KVMState *s = KVM_ACCEL(current_accel());
-     return vcpu_id >= 0 && vcpu_id < kvm_max_vcpu_id(s);
- }
- 
-@@ -1996,7 +1996,7 @@ static int kvm_init(MachineState *ms)
-     const char *kvm_type;
-     uint64_t dirty_log_manual_caps;
- 
--    s = KVM_STATE(ms->accelerator);
-+    s = KVM_ACCEL(ms->accelerator);
- 
-     /*
-      * On systems where the kernel can support different base page
-@@ -3084,7 +3084,7 @@ int kvm_get_one_reg(CPUState *cs, uint64_t id, void *target)
- static bool kvm_accel_has_memory(MachineState *ms, AddressSpace *as,
-                                  hwaddr start_addr, hwaddr size)
- {
--    KVMState *kvm = KVM_STATE(ms->accelerator);
-+    KVMState *kvm = KVM_ACCEL(ms->accelerator);
-     int i;
- 
-     for (i = 0; i < kvm->nr_as; ++i) {
-@@ -3102,7 +3102,7 @@ static void kvm_get_kvm_shadow_mem(Object *obj, Visitor *v,
-                                    const char *name, void *opaque,
-                                    Error **errp)
- {
--    KVMState *s = KVM_STATE(obj);
-+    KVMState *s = KVM_ACCEL(obj);
-     int64_t value = s->kvm_shadow_mem;
- 
-     visit_type_int(v, name, &value, errp);
-@@ -3112,7 +3112,7 @@ static void kvm_set_kvm_shadow_mem(Object *obj, Visitor *v,
-                                    const char *name, void *opaque,
-                                    Error **errp)
- {
--    KVMState *s = KVM_STATE(obj);
-+    KVMState *s = KVM_ACCEL(obj);
-     int64_t value;
- 
-     if (!visit_type_int(v, name, &value, errp)) {
-@@ -3126,7 +3126,7 @@ static void kvm_set_kernel_irqchip(Object *obj, Visitor *v,
-                                    const char *name, void *opaque,
-                                    Error **errp)
- {
--    KVMState *s = KVM_STATE(obj);
-+    KVMState *s = KVM_ACCEL(obj);
-     OnOffSplit mode;
- 
-     if (!visit_type_OnOffSplit(v, name, &mode, errp)) {
-@@ -3173,7 +3173,7 @@ bool kvm_kernel_irqchip_split(void)
- 
- static void kvm_accel_instance_init(Object *obj)
- {
--    KVMState *s = KVM_STATE(obj);
-+    KVMState *s = KVM_ACCEL(obj);
- 
-     s->kvm_shadow_mem = -1;
-     s->kernel_irqchip_allowed = true;
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 8bb7318378..55583075f3 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -216,7 +216,7 @@ bool kvm_arm_pmu_supported(void)
- 
- int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
- {
--    KVMState *s = KVM_STATE(ms->accelerator);
-+    KVMState *s = KVM_ACCEL(ms->accelerator);
-     int ret;
- 
-     ret = kvm_check_extension(s, KVM_CAP_ARM_VM_IPA_SIZE);
-diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-index 205b68bc0c..2949c5f048 100644
---- a/target/i386/kvm.c
-+++ b/target/i386/kvm.c
-@@ -155,7 +155,7 @@ bool kvm_allows_irq0_override(void)
- 
- static bool kvm_x2apic_api_set_flags(uint64_t flags)
- {
--    KVMState *s = KVM_STATE(current_accel());
-+    KVMState *s = KVM_ACCEL(current_accel());
- 
-     return !kvm_vm_enable_cap(s, KVM_CAP_X2APIC_API, 0, flags);
- }
-diff --git a/target/mips/kvm.c b/target/mips/kvm.c
-index 72637a1e02..30f9c0349a 100644
---- a/target/mips/kvm.c
-+++ b/target/mips/kvm.c
-@@ -1277,7 +1277,7 @@ int mips_kvm_type(MachineState *machine, const char *vm_type)
- {
- #if defined(KVM_CAP_MIPS_VZ) || defined(KVM_CAP_MIPS_TE)
-     int r;
--    KVMState *s = KVM_STATE(machine->accelerator);
-+    KVMState *s = KVM_ACCEL(machine->accelerator);
+ #endif /* RAMFB_H */
+diff --git a/hw/arm/sysbus-fdt.c b/hw/arm/sysbus-fdt.c
+index 6b6906f4cf..e8baa118a6 100644
+--- a/hw/arm/sysbus-fdt.c
++++ b/hw/arm/sysbus-fdt.c
+@@ -489,7 +489,7 @@ static const BindingEntry bindings[] = {
+     VFIO_PLATFORM_BINDING("amd,xgbe-seattle-v1a", add_amd_xgbe_fdt_node),
  #endif
+     TYPE_BINDING(TYPE_TPM_TIS_SYSBUS, add_tpm_tis_fdt_node),
+-    TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
++    TYPE_BINDING(TYPE_RAMFB, no_fdt_node),
+     TYPE_BINDING("", NULL), /* last element */
+ };
  
- #if defined(KVM_CAP_MIPS_VZ)
-diff --git a/target/ppc/kvm.c b/target/ppc/kvm.c
-index d85ba8ffe0..e446637137 100644
---- a/target/ppc/kvm.c
-+++ b/target/ppc/kvm.c
-@@ -263,7 +263,7 @@ static void kvm_get_smmu_info(struct kvm_ppc_smmu_info *info, Error **errp)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index acf9bfbece..bf81b5a373 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -2414,7 +2414,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+     mc->max_cpus = 512;
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_CALXEDA_XGMAC);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_AMD_XGBE);
+-    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB_DEVICE);
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_RAMFB);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_VFIO_PLATFORM);
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+     mc->block_default_type = IF_VIRTIO;
+diff --git a/hw/display/ramfb-standalone.c b/hw/display/ramfb-standalone.c
+index 8c0094397f..a86730393b 100644
+--- a/hw/display/ramfb-standalone.c
++++ b/hw/display/ramfb-standalone.c
+@@ -9,7 +9,7 @@
  
- struct ppc_radix_page_info *kvm_get_radix_page_info(void)
- {
--    KVMState *s = KVM_STATE(current_accel());
-+    KVMState *s = KVM_ACCEL(current_accel());
-     struct ppc_radix_page_info *radix_page_info;
-     struct kvm_ppc_rmmu_info rmmu_info;
-     int i;
-@@ -2943,7 +2943,7 @@ void kvmppc_svm_off(Error **errp)
-         return;
-     }
+ typedef struct RAMFBStandaloneState RAMFBStandaloneState;
+ DECLARE_INSTANCE_CHECKER(RAMFBStandaloneState, RAMFB,
+-                         TYPE_RAMFB_DEVICE)
++                         TYPE_RAMFB)
  
--    rc = kvm_vm_ioctl(KVM_STATE(current_accel()), KVM_PPC_SVM_OFF);
-+    rc = kvm_vm_ioctl(KVM_ACCEL(current_accel()), KVM_PPC_SVM_OFF);
-     if (rc && rc != -ENOTTY) {
-         error_setg_errno(errp, -rc, "KVM_PPC_SVM_OFF ioctl failed");
-     }
+ struct RAMFBStandaloneState {
+     SysBusDevice parent_obj;
+@@ -51,7 +51,7 @@ static void ramfb_class_initfn(ObjectClass *klass, void *data)
+ }
+ 
+ static const TypeInfo ramfb_info = {
+-    .name          = TYPE_RAMFB_DEVICE,
++    .name          = TYPE_RAMFB,
+     .parent        = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(RAMFBStandaloneState),
+     .class_init    = ramfb_class_initfn,
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 32b1453e6a..7ac4e65820 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -422,7 +422,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
+     m->desc = "Standard PC (i440FX + PIIX, 1996)";
+     m->default_machine_opts = "firmware=bios-256k.bin";
+     m->default_display = "std";
+-    machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
++    machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+ }
+ 
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 0cb9c18cd4..dd2223b659 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -348,7 +348,7 @@ static void pc_q35_machine_options(MachineClass *m)
+     m->no_floppy = 1;
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_AMD_IOMMU_DEVICE);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_INTEL_IOMMU_DEVICE);
+-    machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB_DEVICE);
++    machine_class_allow_dynamic_sysbus_dev(m, TYPE_RAMFB);
+     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
+     m->max_cpus = 288;
+ }
 -- 
 2.26.2
+

@@ -1,105 +1,86 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp77496lfc;
-        Tue, 1 Sep 2020 17:28:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwqw5foHN658VVI0WA+FZ4SDDwzWdnCublJbfiO2kLfvhCuh2svq+HjPO9c/9F9PdWLccl3
-X-Received: by 2002:a25:7a42:: with SMTP id v63mr6357088ybc.4.1599006484323;
-        Tue, 01 Sep 2020 17:28:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599006484; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp106284lfc;
+        Tue, 1 Sep 2020 18:15:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwbgP7Zoz5Cmdjbm1lECcveKh9Y52/EOfCOkjQ39934ntmCgGKnf1OSf9U5HMr+F2DyplGt
+X-Received: by 2002:a25:6f85:: with SMTP id k127mr6681369ybc.12.1599009313138;
+        Tue, 01 Sep 2020 18:15:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599009313; cv=none;
         d=google.com; s=arc-20160816;
-        b=ZfomF/1hM/HWq/4+FoRZqwihLQwLYjsvZ8XEJ7HiPsnHd8OnTvTLa1WvOOVpq6egaD
-         3Kr/m2E8a/fMzaxsaGvxbhThzxD/fHWMNG0birq5+IZuvqCv/QlHGZpxdauEu5yfWky4
-         YH3nn5/WtI+5noOuf3xy0/vDIAOP2fd61xHcP5yNUoIAWdKdxuCCTqK9vojT72nWDfrZ
-         25LiC8rsUjfVs+o8uExGjsm+Hxh9aGoVJDOyDROzUqbpqa85cqre+GIG/xukdvTu4x44
-         S2fDqMPmv1mnbYk/3svho5usrlspTZdUdok0OzMnKiWTm8KwYFRE4Svmh9Zmt3UyWd4J
-         V5tA==
+        b=j+6HUisuW40lsTRpIgx9+eoudlc/YdYjFiI52X11fKktP5PjzYXcH+K9WzNZu/FOMV
+         nNoGAlHf7uGYQAvrOB9sAYYTHPvYvvvrR24RdZ1mB5i2N9V8C9K7oskm1LmYniEL5RjB
+         KETgVbBAamis8bNc+8yYZvbwPvnWqZYa+f9BG29LEH0bGTy7AtHZT1IvRCc12zuAnLI/
+         4kct3ZpoRYlE4fEtUcx7kv0ojkpm7/ajf4eDaWavCofGlVGxZgSKsHIA4Ibm527sWJ+/
+         xT0/MkfiJ2RqGxWLz8rV0Vbf+pTLMgyHbM9NTvN/4x9kV4reewPKAJowUh+Vnau1Uogf
+         Medg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=4yZmY4JrwkiUpPsnpRTr8Z+/EcrZRkCeAtuP7/h77VA=;
-        b=BaPhPt6f2UDjFzo0fJ47u9LEtWvYbJznjSzK5liIN3HdyHBZX4wm17eMmrsOzHWO+P
-         zzr4+2X1vaPltZitHxWa2O0dlJUAs3MpRPVSdde2YVQn0jUkdwEGRwP5hXPqgdEWpqQb
-         5dS3NBpqiYPV9OAdjEFKyp5EHJWHge3KSf3evtLnbeofByxVos2tOWZaF8o+Tei94NY7
-         aPr9Kvol0pd83+wi9cLJj7NdIKmY3wMR7D3pQCDnv2P01s4HeKI5M0WU1nmPAV9bIo6o
-         RY4fqgcV+gO2hbM73WRMHmN7s/dJrRXHWGNlxvVLWpreYG6qZObyRLYKfCfgDfR+rUAs
-         ojeg==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=3Mmhd+7hNAcZLAyZkXPEjgYLXB2VYPhZTzKh4HBs/fo=;
+        b=0V9FhYhz5Iw/zYsQa7dEr/6KE3kzY18CGzHLXFEN8e7bUU6yu/psIUejSQEwDXyKQg
+         kazUCjX6emnrlXl1p7cyEgatdtPDZQ7lYsaHa8gFrqthQEMOI8AnK2k1p0D8wlBUfgC9
+         klXmQ678UFbit0ObRgDeE9KUoDGS9BGtMQs+h+5kkS8kE/SQgYFpGjn+h9I32FMzmHnC
+         MXXGyKBdzhFmMw7K5mrkCN346U1oE9R5DQhgnofyLFTQb0MbHwVBQipV8pDmMPSmyihN
+         OTbHtPQNocyO2HIVdcNCbISJRl7G3Spcxvv3pLaq1WjdlRGV5whC0oxY/TiapE+QXFRT
+         7Zfw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="H/9TKfkp";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=mKZDE4dZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 198si2565566ybe.410.2020.09.01.17.28.04
+        by mx.google.com with ESMTPS id 62si2606033ybe.220.2020.09.01.18.15.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 01 Sep 2020 17:28:04 -0700 (PDT)
+        Tue, 01 Sep 2020 18:15:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="H/9TKfkp";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58328 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=mKZDE4dZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38994 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDGd9-00073K-NB
-	for alex.bennee@linaro.org; Tue, 01 Sep 2020 20:28:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34986)
+	id 1kDHMm-0006zu-H4
+	for alex.bennee@linaro.org; Tue, 01 Sep 2020 21:15:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kDGcv-000732-78; Tue, 01 Sep 2020 20:27:49 -0400
-Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:34623)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kDGcr-0005U6-Tg; Tue, 01 Sep 2020 20:27:48 -0400
-Received: by mail-io1-xd42.google.com with SMTP id m17so2151724ioo.1;
- Tue, 01 Sep 2020 17:27:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4yZmY4JrwkiUpPsnpRTr8Z+/EcrZRkCeAtuP7/h77VA=;
- b=H/9TKfkpmoOH7pAk+Q4IJHyrLSvGFtPPCQ7pnd5vYh28HtHjlz3oG8rupZh6dZRcwv
- y2pmVH/vEM1wNeINHCSiAU9/O+ub7WYBYcurqxaTqkft1X9l5LB4+Av/JbRX1uLh1IT/
- GklLacDX5vI4lascQfwSr8+NL95+H8etQ48605r7QI2iDl74xeyMCcDA6jRVmc/rUPry
- QSkqXpmCeqMGoHZwHn5Vgir7Gmk5XVis+VpuTyUfv+hguXOvvItDHFmuTpMa159j1lDG
- yj5vhwIaK0jm0PcfLV/BaLWqll9d7MQtK0WwnV1CbLltWkhtJlcKUj4ZsuH+lkLWhL3N
- rc4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4yZmY4JrwkiUpPsnpRTr8Z+/EcrZRkCeAtuP7/h77VA=;
- b=qmpRLw2nd8kbmuQDMriBuUnOIJihLZZJb4lwn96LzN1RkeTKw4d6xUwA5DIuF1nNJO
- USc9xAScOkVwrarEGN0fNouJDQ0MmF1xypc/wrK4kh37OCUfPQN/rxTmGbNPpAOIVUXN
- Vn4/9QajNASC9nN3IfbvdDZ+pIyPqVqzniWDgZcWqJ5b60fl8tWkoamKXU52Dz/pPNCw
- WgCLB0pk7MSmQpZVg6lE8ZuXwsn+lwlYuDHild2MsylDAHuIw/l2P/6hGVwepmLq/qaG
- xpsmB9tVIHhgfJkkXegWbYsHeX5sgKwUaTYZ/0nfrbUq4F+PbwSrtSeG0DhQL58fkVHt
- dZBA==
-X-Gm-Message-State: AOAM533Bxpcp70dXtZ1Wz644mdMu3dLNxtlg55vuuoLvVWKs+eya+LJD
- pvttw7ze1jr5G+/m8+xj8bYE4SNaK6LgQIaX8j0=
-X-Received: by 2002:a05:6602:2f88:: with SMTP id
- u8mr1383715iow.175.1599006464204; 
- Tue, 01 Sep 2020 17:27:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kDHMa-0006z7-Uz; Tue, 01 Sep 2020 21:15:00 -0400
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:34845 helo=ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kDHMX-0002MD-EU; Tue, 01 Sep 2020 21:15:00 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4Bh5ZV071Rz9sTv; Wed,  2 Sep 2020 11:14:41 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1599009282;
+ bh=YgxRl/AYk/8OvoO8rmceCM283PU3TgQ0shXOXy8nqEY=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=mKZDE4dZOMKDNeGcePNMoS0gg4VO5YCD9kM3ayvvks8vIsX1Lza2cKkSlVcNwAbIS
+ 8IklqqafPGX0OYlZzwaEU10rIfB4VU0hvfqCLk5RYfmgJhhuc5a/FA1GETJ5+TdZF+
+ 4+ynqQmxAhlJvG/FRmmVBtz2yCPFl1ZmSlBnGEYg=
+Date: Wed, 2 Sep 2020 10:37:32 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eugenio =?iso-8859-1?Q?P=E9rez?= <eperezma@redhat.com>
+Subject: Re: [RFC v8 1/5] memory: Rename memory_region_notify_one to
+ memory_region_notify_iommu_one
+Message-ID: <20200902003732.GC1897@yekko.fritz.box>
+References: <20200901142608.24481-1-eperezma@redhat.com>
+ <20200901142608.24481-2-eperezma@redhat.com>
 MIME-Version: 1.0
-References: <1598924352-89526-1-git-send-email-bmeng.cn@gmail.com>
- <1598924352-89526-13-git-send-email-bmeng.cn@gmail.com>
-In-Reply-To: <1598924352-89526-13-git-send-email-bmeng.cn@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 1 Sep 2020 17:16:50 -0700
-Message-ID: <CAKmqyKPrC9bQKF_2zy89f+M8vS6NoJ5axJDdm5AypfiCDe8Fog@mail.gmail.com>
-Subject: Re: [PATCH v3 12/16] hw/arm: xlnx: Set all boards' GEM 'phy-addr'
- property value to 23
-To: Bin Meng <bmeng.cn@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
- envelope-from=alistair23@gmail.com; helo=mail-io1-xd42.google.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="Bu8it7iiRSEf40bY"
+Content-Disposition: inline
+In-Reply-To: <20200901142608.24481-2-eperezma@redhat.com>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -113,114 +94,177 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>, Bin Meng <bin.meng@windriver.com>,
- Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <Alistair.Francis@wdc.com>
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
+ Avi Kivity <avi@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9H4hJQUnRcao
+X-TUID: mwkVv8huHG47
 
-On Mon, Aug 31, 2020 at 6:50 PM Bin Meng <bmeng.cn@gmail.com> wrote:
->
-> From: Bin Meng <bin.meng@windriver.com>
->
-> When cadence_gem model was created for Xilinx boards, the PHY address
-> was hard-coded to 23 in the GEM model. Now that we have introduced a
-> property we can use that to tell GEM model what our PHY address is.
-> Change all boards' GEM 'phy-addr' property value to 23, and set the
-> PHY address default value to 0 in the GEM model.
->
-> Signed-off-by: Bin Meng <bin.meng@windriver.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+--Bu8it7iiRSEf40bY
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Alistair
+On Tue, Sep 01, 2020 at 04:26:04PM +0200, Eugenio P=E9rez wrote:
+> Previous name didn't reflect the iommu operation.
+>=20
+> Signed-off-by: Eugenio P=E9rez <eperezma@redhat.com>
 
->
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+
 > ---
->
-> Changes in v3:
-> - use the correct (Object *) to set the 'phy-addr' in xlnx-zynqmp.c
->
->  hw/arm/xilinx_zynq.c | 1 +
->  hw/arm/xlnx-versal.c | 1 +
->  hw/arm/xlnx-zynqmp.c | 2 ++
->  hw/net/cadence_gem.c | 6 +++---
->  4 files changed, 7 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-> index 969ef07..9ffcc56 100644
-> --- a/hw/arm/xilinx_zynq.c
-> +++ b/hw/arm/xilinx_zynq.c
-> @@ -119,6 +119,7 @@ static void gem_init(NICInfo *nd, uint32_t base, qemu_irq irq)
->          qemu_check_nic_model(nd, TYPE_CADENCE_GEM);
->          qdev_set_nic_properties(dev, nd);
+>  hw/arm/smmu-common.c  | 2 +-
+>  hw/arm/smmuv3.c       | 2 +-
+>  hw/i386/intel_iommu.c | 4 ++--
+>  include/exec/memory.h | 6 +++---
+>  softmmu/memory.c      | 6 +++---
+>  5 files changed, 10 insertions(+), 10 deletions(-)
+>=20
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index 3838db1395..88d2c454f0 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -472,7 +472,7 @@ static void smmu_unmap_notifier_range(IOMMUNotifier *=
+n)
+>      entry.perm =3D IOMMU_NONE;
+>      entry.addr_mask =3D n->end - n->start;
+> =20
+> -    memory_region_notify_one(n, &entry);
+> +    memory_region_notify_iommu_one(n, &entry);
+>  }
+> =20
+>  /* Unmap all notifiers attached to @mr */
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index 0122700e72..0a893ae918 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -827,7 +827,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>      entry.addr_mask =3D num_pages * (1 << granule) - 1;
+>      entry.perm =3D IOMMU_NONE;
+> =20
+> -    memory_region_notify_one(n, &entry);
+> +    memory_region_notify_iommu_one(n, &entry);
+>  }
+> =20
+>  /* invalidate an asid/iova range tuple in all mr's */
+> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> index 5284bb68b6..2ad6b9d796 100644
+> --- a/hw/i386/intel_iommu.c
+> +++ b/hw/i386/intel_iommu.c
+> @@ -3498,7 +3498,7 @@ static void vtd_address_space_unmap(VTDAddressSpace=
+ *as, IOMMUNotifier *n)
+>          /* This field is meaningless for unmap */
+>          entry.translated_addr =3D 0;
+> =20
+> -        memory_region_notify_one(n, &entry);
+> +        memory_region_notify_iommu_one(n, &entry);
+> =20
+>          start +=3D mask;
+>          remain -=3D mask;
+> @@ -3536,7 +3536,7 @@ static void vtd_address_space_refresh_all(IntelIOMM=
+UState *s)
+> =20
+>  static int vtd_replay_hook(IOMMUTLBEntry *entry, void *private)
+>  {
+> -    memory_region_notify_one((IOMMUNotifier *)private, entry);
+> +    memory_region_notify_iommu_one((IOMMUNotifier *)private, entry);
+>      return 0;
+>  }
+> =20
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index 0cfe987ab4..22c5f564d1 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -226,7 +226,7 @@ enum IOMMUMemoryRegionAttr {
+>   * The IOMMU implementation must use the IOMMU notifier infrastructure
+>   * to report whenever mappings are changed, by calling
+>   * memory_region_notify_iommu() (or, if necessary, by calling
+> - * memory_region_notify_one() for each registered notifier).
+> + * memory_region_notify_iommu_one() for each registered notifier).
+>   *
+>   * Conceptually an IOMMU provides a mapping from input address
+>   * to an output TLB entry. If the IOMMU is aware of memory transaction
+> @@ -1274,7 +1274,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *=
+iommu_mr,
+>                                  IOMMUTLBEntry entry);
+> =20
+>  /**
+> - * memory_region_notify_one: notify a change in an IOMMU translation
+> + * memory_region_notify_iommu_one: notify a change in an IOMMU translati=
+on
+>   *                           entry to a single notifier
+>   *
+>   * This works just like memory_region_notify_iommu(), but it only
+> @@ -1285,7 +1285,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *=
+iommu_mr,
+>   *         replaces all old entries for the same virtual I/O address ran=
+ge.
+>   *         Deleted entries have .@perm =3D=3D 0.
+>   */
+> -void memory_region_notify_one(IOMMUNotifier *notifier,
+> +void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+>                                IOMMUTLBEntry *entry);
+> =20
+>  /**
+> diff --git a/softmmu/memory.c b/softmmu/memory.c
+> index 70b93104e8..961c25b42f 100644
+> --- a/softmmu/memory.c
+> +++ b/softmmu/memory.c
+> @@ -1890,8 +1890,8 @@ void memory_region_unregister_iommu_notifier(Memory=
+Region *mr,
+>      memory_region_update_iommu_notify_flags(iommu_mr, NULL);
+>  }
+> =20
+> -void memory_region_notify_one(IOMMUNotifier *notifier,
+> -                              IOMMUTLBEntry *entry)
+> +void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+> +                                    IOMMUTLBEntry *entry)
+>  {
+>      IOMMUNotifierFlag request_flags;
+>      hwaddr entry_end =3D entry->iova + entry->addr_mask;
+> @@ -1927,7 +1927,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *=
+iommu_mr,
+> =20
+>      IOMMU_NOTIFIER_FOREACH(iommu_notifier, iommu_mr) {
+>          if (iommu_notifier->iommu_idx =3D=3D iommu_idx) {
+> -            memory_region_notify_one(iommu_notifier, &entry);
+> +            memory_region_notify_iommu_one(iommu_notifier, &entry);
+>          }
 >      }
-> +    object_property_set_int(OBJECT(dev), "phy-addr", 23, &error_abort);
->      s = SYS_BUS_DEVICE(dev);
->      sysbus_realize_and_unref(s, &error_fatal);
->      sysbus_mmio_map(s, 0, base);
-> diff --git a/hw/arm/xlnx-versal.c b/hw/arm/xlnx-versal.c
-> index e3aa4bd..12ba6c4 100644
-> --- a/hw/arm/xlnx-versal.c
-> +++ b/hw/arm/xlnx-versal.c
-> @@ -165,6 +165,7 @@ static void versal_create_gems(Versal *s, qemu_irq *pic)
->              qemu_check_nic_model(nd, "cadence_gem");
->              qdev_set_nic_properties(dev, nd);
->          }
-> +        object_property_set_int(OBJECT(dev), "phy-addr", 23, &error_abort);
->          object_property_set_int(OBJECT(dev), "num-priority-queues", 2,
->                                  &error_abort);
->          object_property_set_link(OBJECT(dev), "dma", OBJECT(&s->mr_ps),
-> diff --git a/hw/arm/xlnx-zynqmp.c b/hw/arm/xlnx-zynqmp.c
-> index c435b9d..7885bb1 100644
-> --- a/hw/arm/xlnx-zynqmp.c
-> +++ b/hw/arm/xlnx-zynqmp.c
-> @@ -460,6 +460,8 @@ static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
->          }
->          object_property_set_int(OBJECT(&s->gem[i]), "revision", GEM_REVISION,
->                                  &error_abort);
-> +        object_property_set_int(OBJECT(&s->gem[i]), "phy-addr", 23,
-> +                                &error_abort);
->          object_property_set_int(OBJECT(&s->gem[i]), "num-priority-queues", 2,
->                                  &error_abort);
->          if (!sysbus_realize(SYS_BUS_DEVICE(&s->gem[i]), errp)) {
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index d80096b..7a53469 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -250,7 +250,7 @@
->  #define GEM_PHYMNTNC_REG_SHIFT 18
->
->  /* Marvell PHY definitions */
-> -#define BOARD_PHY_ADDRESS    23 /* PHY address we will emulate a device at */
-> +#define BOARD_PHY_ADDRESS    0 /* PHY address we will emulate a device at */
->
->  #define PHY_REG_CONTROL      0
->  #define PHY_REG_STATUS       1
-> @@ -1446,7 +1446,7 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
->              uint32_t phy_addr, reg_num;
->
->              phy_addr = (retval & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
-> -            if (phy_addr == s->phy_addr || phy_addr == 0) {
-> +            if (phy_addr == s->phy_addr) {
->                  reg_num = (retval & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
->                  retval &= 0xFFFF0000;
->                  retval |= gem_phy_read(s, reg_num);
-> @@ -1569,7 +1569,7 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
->              uint32_t phy_addr, reg_num;
->
->              phy_addr = (val & GEM_PHYMNTNC_ADDR) >> GEM_PHYMNTNC_ADDR_SHFT;
-> -            if (phy_addr == s->phy_addr || phy_addr == 0) {
-> +            if (phy_addr == s->phy_addr) {
->                  reg_num = (val & GEM_PHYMNTNC_REG) >> GEM_PHYMNTNC_REG_SHIFT;
->                  gem_phy_write(s, reg_num, val);
->              }
-> --
-> 2.7.4
->
->
+>  }
+
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
+
+--Bu8it7iiRSEf40bY
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl9O6UoACgkQbDjKyiDZ
+s5Lc6RAAv4Xd0TWg2QyC/Sdc+4vmh3zrTWUpBabGPowVSr8JDouC+payLRR18dmM
+nfWkyYIIqBUYGpLaiA/M6KE2X+5FbK3J+s4h1zW6RlBf+zCep2VQ5Krbzk7uOnrB
+xBFuK2bKNLMl4ewE8WwFYyiaiJguEyz6GMpr5UIKKI9jv76SrYLMfGcFuYw374Uu
+/8eR6F3C9Ila5Mzz+ylzHp+pRPuXEY8sux3/dC+ktx9uyy9z23mCZgTRCBDKqbXD
+i2p0u6QHj36hc9SxMwoL0Vt694kdn3+LsTweDnN56w6znPvjmZiLoKJVMTfZLQ60
+nJwqwgHFyqCFGz66nAzRNJukdHygkNtmFnJaHYXIm/a3BS8jH3Q93GDpgTXsqntS
+3q3AYniDAFkCfg/KsGvHdJ1xvyosl3y7Pf3tmKot5D7FnZrs/wVC8zGSgqkJtZIn
+eC9PEvuet9WkTc+I+Ib4KC770Alw334PCPLNWnbFtJe57qiwb2W2S8HqcmQgO+uy
+vFCdn0NRZ4gwTq1NqAab6uIenj81I30Dz0vISBnRvOlUWRgJACiGXNSgOjPOj3Ia
+DFOQvYIwYDHQYorJeLYzGSFlVt7IEw7uZ+i41oNY2RO4HK6vM66PG+seu19w4M2S
+ZoCc0QuBL2lMBNm4oPaLTZ9OCu6l846EzlwY9sPwfc6iQNWKVqE=
+=9iok
+-----END PGP SIGNATURE-----
+
+--Bu8it7iiRSEf40bY--

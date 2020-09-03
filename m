@@ -1,110 +1,108 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp580552lfc;
-        Thu, 3 Sep 2020 07:24:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx3q7lu3H7xgMbkeC1fB4twziyC+GANNjn1Mdw7s81FWkXW2wW68glLgBU5diMDvmB07opz
-X-Received: by 2002:a25:8b89:: with SMTP id j9mr3129588ybl.31.1599143066655;
-        Thu, 03 Sep 2020 07:24:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599143066; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp596268lfc;
+        Thu, 3 Sep 2020 07:44:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwu2NyQEl5yLjV67RdpghRTnCTxoMDilIXnI8vvFy+YAdiIbg3ssWyvzlV+Wi6hsycf+ql/
+X-Received: by 2002:a25:824a:: with SMTP id d10mr3328526ybn.260.1599144281204;
+        Thu, 03 Sep 2020 07:44:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599144281; cv=none;
         d=google.com; s=arc-20160816;
-        b=FU59vTnm2oKTuVY9PHd01OtZWKIOQbWuI//q9nYmc42thQUtrvP/oZK8OFS3UQpdZC
-         2gQ5UkpeWODeIeOQI2eylUoLxqiYQIovnZfWYZYUcKSxBHpBJWlvXo8KnX34V+VLThod
-         Uu7/ZgZ0F0wJEIXvK9DSPZ/Plf+KMRqxp60bdpJGYZBynvTuuQql9e5QBOZt2hL6IlzA
-         qBofqzjeH7bCae4jNQ0vvlIk1Uq4ya/fuXTqJfLu+VT9rCVv5XLt55XSzQICpB9Iry3d
-         bS1tkBki9XjGoAYRWycSnFsOA0T+MdnDy8mgAQinaOT19YEgnY+A+6OmJZXtVIi7Kp+F
-         1fbw==
+        b=AGPO3avrU/D2SdXHmV316eJL/H9wthsf/37FOTfBg4ULx4sMzO2zbiaswL/1gG2B6c
+         yFJZlFY7xQo8GWDRT6pKVtgromTqdVsZycHzGvEGlt1eyXnlVMkO076ZOY+0ZTotTgyW
+         ibg2lZIfEOdwdCegmjZDd+W9Kkg07tY4xgjfhVnalOTOswCmBHEDrtoFX+NeZYTqrz4e
+         AMkBa4FTywxb05lMTN3YCupTao1AnZJ41hH0LnoVLMTxgT1QP9oDIHt2LGdS10nFy9/H
+         D9QNcQnBXo5hZQ5zz2haMPgCYJlbTr7WMHnBXGbUuBkWzJgqeU0ywqQSbR092108+ur/
+         +yBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=1Pxtu2TSawMuPOEKskQiWWu2+rEYKtX4Wt8sb23KmNs=;
-        b=U7uz2XtLvzVJ8P8eK1Ms6Hat8Ep01Eag6U9qUzU1kwUeuMeS3b0x3VezIyJDTP9vMe
-         WO3I2YQu0+joOPo7iLcNi1N9cA55elE1kiWRIpdjQXdSGAy/Lylu4PyRdpp5tcRELIe5
-         /4EjFvEAmP6HdK8xECZ0x5nbAKPd5+JKCOu2EueK+lWXOVxBGiruNInhjcvX+9k9SmNS
-         2Pbyfv3Fi88NbArWAs/XPe/SSAjkfXtTy/o5I0x0/CNB2XgHs3KNWOXMDRQfFWyJU485
-         3nkC2ItelU0vlA54ToFbZY60rBtWct4XSTadX9cfxZeWdCmYZkJab8/RD9s53cTQ1oFP
-         b4HA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=Rr+JVKyDamSf0xBTUVSv5bImqBYLa2yDIIfkheqLG6Y=;
+        b=X152IuZCRfnjRN8KXPEmr+57wCUUFP9pDJ0VbSVh7TDz2G3G3XFXhIU7XLSYDpfZiC
+         CEFrdQS2ImUf6YsX2Rjclo7obkr/0hlAtZgSuj4JPQVZw2CMkUD2kyDuSOtex4K9Np5D
+         Xu0Op08aKZUOdFjpdkXwpCJNf8CeKQOS/cyhtN9XYGp3Ubi1Q8ujQaliTsTid88YsOVt
+         X2XyMDShNdfMLB3UumogrHLxoAbW7B1/zluRyfShie0P+Fze6/cvhu61G7D2fSjop20V
+         +nYsNSTljnf6RKtDO77Eo2Uo9ybyZWp9/EaWRrXR66dAUIvg2asqPm4q0TxsGlIzYnqe
+         divw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B0VhFD5r;
+       dkim=pass header.i=@linaro.org header.s=google header.b="OrXUZh7/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l186si3769111ybc.441.2020.09.03.07.24.26
+        by mx.google.com with ESMTPS id c187si2718724yba.355.2020.09.03.07.44.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 07:24:26 -0700 (PDT)
+        Thu, 03 Sep 2020 07:44:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=B0VhFD5r;
+       dkim=pass header.i=@linaro.org header.s=google header.b="OrXUZh7/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:37076 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:56742 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDqA5-00049Z-Vm
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 10:24:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59874)
+	id 1kDqTg-0006Il-J6
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 10:44:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37028)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1kDq9x-000493-Km; Thu, 03 Sep 2020 10:24:17 -0400
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:42217)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kDqTY-0006Gd-15
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 10:44:32 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:43161)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1kDq9v-0007Dr-MG; Thu, 03 Sep 2020 10:24:17 -0400
-Received: by mail-lj1-x242.google.com with SMTP id k25so3909848ljg.9;
- Thu, 03 Sep 2020 07:24:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=1Pxtu2TSawMuPOEKskQiWWu2+rEYKtX4Wt8sb23KmNs=;
- b=B0VhFD5rvL278QYwv1PAM54Nljg7nwMnD+vW5QETtSJIbvUre//dJHnyZjx7OGUCLH
- BiltzmNJFnImRHm+jzTje06vr5lthl+LnCjdykhFbQo+YHQeJejsHjZZScizFD7HDwlg
- sOagTlG+rK/suT33MFljV61Dhe+CoiAf/y65fScnKw4wY45lOzIbQK9Auru9T2vK2JEx
- coZe5tavqwfaBMguKkcAI084wRMcpFr8BSQ5Xc9i4BRpIZSijXoAX8uaMZn4g1hIB+wp
- d5dtot6DFGOZ5tXqw4rWh/O/R67PNvimU6VANTFGyOkQzFC18uxc5pPi8YSOeVeRvA9m
- g2ww==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kDqTW-0001WZ-00
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 10:44:31 -0400
+Received: by mail-wr1-x443.google.com with SMTP id k15so3501291wrn.10
+ for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 07:44:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Rr+JVKyDamSf0xBTUVSv5bImqBYLa2yDIIfkheqLG6Y=;
+ b=OrXUZh7/O1gy1jYEFfJW1KL+f26VkUM1Ol2OtT7BEy4ouDH0mBIkzQghrYe3+QhIzg
+ HnK5VExGhKDRiP5nqWfiM19+/ATy/mZYxiaDIL+yt9WxiCnbeM/Q2BC+cFzcRw5Wh7f/
+ mZ9P5z4UqsS6slLkGV5Wydli/qOWpVm1JbCL9r8p0kh/mGBzl3jCMeBZ8e9KITDTNhXu
+ DGUKOclaYkI20gtBE/E3JrKfcqA6RmYUkOBD3wr4AZl6877r0OjdrtmC1kShXWxO4ySR
+ MSQToQCXZuvWOvwqQHmD2SGh3uYoEs9PGvjhUWm6XfV7PH1F5B2WCoIk6T8GqfnnYUuJ
+ SQbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=1Pxtu2TSawMuPOEKskQiWWu2+rEYKtX4Wt8sb23KmNs=;
- b=HML+VaioaXDULFrO6+H/TeMiycFqOQdKs/aFCSFhd/i1fNdIHHsCphYpJAqg4/4wn/
- By/IKdhtjOTtr2MjxGulLb1e9fVIYpdZ2AByuRsjZjn5U3RfYqc34CSnNA7ZzDoNYUIb
- r0J+FbsxVbJS090+Ft1XiQAnm91Zjp4LBXiIOdnmuQWKY9E0z7YelvoMIaqt0UwNPzHB
- +POJqcAbDs9g2UV+oJ9QXIv5suVauHASjtDbji6HEA7TME2pnoJ6UJVnEjYeHPvDCPwl
- 7iQdN2FGVRYo/39BHVNPObbukXsmb03NiQiE2+zbCuq0eMr+Q3RJiznkQ1iNoN7YKFmo
- KgIg==
-X-Gm-Message-State: AOAM531BBj0cl2wWBStVY6ZX+ANQ+anBGYgP0QNky2Jdx2KmeLChGebi
- 3S/+7CqBNeeCvny92RmpWgA=
-X-Received: by 2002:a2e:3a19:: with SMTP id h25mr1379166lja.398.1599143052266; 
- Thu, 03 Sep 2020 07:24:12 -0700 (PDT)
-Received: from gmail.com (81-231-232-130-no39.tbcn.telia.com. [81.231.232.130])
- by smtp.gmail.com with ESMTPSA id 25sm630112lji.130.2020.09.03.07.24.11
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Rr+JVKyDamSf0xBTUVSv5bImqBYLa2yDIIfkheqLG6Y=;
+ b=Kft2rxfA1oUhhPcFi6d6dcjkdRnCN1jLNrCInR5pOXjUeKMuHI4VF5aD33zPGMH+6b
+ OuW1I0o8xauqITniKNvNUEolsMo9OpQt9GjinnO+DOBJ4/fQABk2/nKBrpFj0zJIShHI
+ 4uACWcQS/rI9Qq0q7jaBGGN6fYQ8G/iCixbEBABrU4idv1n3rb2OJKEwBrrrJzfn+cO/
+ hCFq9MYkN8Rj5jG/NjPE9KLChy1X4rHVUoepQQ+85B3PghiJqzx2r1exJJhF4a1/Syx9
+ oi2u1vPPw8plTtdkh5TjSkSkGlqIXbT+qgHQ/pT71Z3ojqEi6wVi0Ga+3J4VbrTds7cv
+ b3dg==
+X-Gm-Message-State: AOAM530mY5wrBZjIF2T7l+aKhzDKSQ16cxRwSnS614PUac4erbo5yGZq
+ U9i4sdiUleuzVEZTzRRgrYkWZvE6SwRtS1SX
+X-Received: by 2002:adf:fc43:: with SMTP id e3mr2746747wrs.28.1599144268324;
+ Thu, 03 Sep 2020 07:44:28 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id o2sm5369091wrh.70.2020.09.03.07.44.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Sep 2020 07:24:11 -0700 (PDT)
-Date: Thu, 3 Sep 2020 16:24:10 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [RFC PATCH 00/12] hw: Forbid DMA write accesses to MMIO regions
-Message-ID: <20200903142410.GX2954729@toto>
-References: <20200903110831.353476-1-philmd@redhat.com>
- <658fdd16-33da-af3a-6d8d-f7ea1253f061@redhat.com>
- <CAFEAcA8aOzq8UQwKiyuvJokBT9ui6JWxzf=T8=r13Vuu6+_kkQ@mail.gmail.com>
+ Thu, 03 Sep 2020 07:44:26 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] hw/arm/mps2: New board model mps2-386
+Date: Thu,  3 Sep 2020 15:44:25 +0100
+Message-Id: <20200903144425.11060-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA8aOzq8UQwKiyuvJokBT9ui6JWxzf=T8=r13Vuu6+_kkQ@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::242;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-lj1-x242.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,76 +115,138 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Robert Foley <robert.foley@linaro.org>,
- "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
- Qemu-block <qemu-block@nongnu.org>, Li Qiang <liq3ea@163.com>,
- Laszlo Ersek <lersek@redhat.com>, "Emilio G . Cota" <cota@braap.org>,
- Peter Chubb <peter.chubb@nicta.com.au>, Joel Stanley <joel@jms.id.au>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Richard Henderson <rth@twiddle.net>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Tony Nguyen <tony.nguyen@bt.com>,
- Prasad J Pandit <pjp@fedoraproject.org>, Alexander Bulekov <alxndr@bu.edu>,
- Andrew Jeffery <andrew@aj.id.au>, Klaus Jensen <k.jensen@samsung.com>,
- Emanuele Giuseppe Esposito <e.emanuelegiuseppe@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>
+Cc: Kumar Gala <kumar.gala@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FOHAzKSvPnL8
+X-TUID: Q0prNBhc5Mcx
 
-On Thu, Sep 03, 2020 at 02:58:19PM +0100, Peter Maydell wrote:
-> On Thu, 3 Sep 2020 at 14:37, Laszlo Ersek <lersek@redhat.com> wrote:
-> > Peter mentions an approach at the end of
-> > <https://bugs.launchpad.net/qemu/+bug/1886362/comments/5> that I believe
-> > to understand, but -- according to him -- it seems too much work.
-> 
-> It also would only be effective for MMIO, not for qemu_irq lines...
-> 
-> > I don't think such chains work unto arbitrary depths on physical
-> > hardware either.
-> 
-> Real hardware by and large doesn't get designed with this kind
-> of DMA-to-self as a consideration either, but unfortunately it's
-> not really very useful as a model to base QEMU's behaviour on:
-> 
->  (1) real hardware is usually massively parallel, so the logic
->   that handles incoming MMIO is decoupled anyway from logic
->   that does outgoing DMA. (Arguably the "do all DMA in a
->   bottom-half" idea is kind of following the hardware design.)
->   Similarly simple "raise this outbound signal" logic just
->   works as an instantaneous action that causes the device on
->   the other end to change its state/do something parallel,
->   whereas for QEMU we need to actually call some code in the
->   device on the other end and so we serialize this stuff,
->   sandwiching a bit of "device B code" in the middle of a
->   run of "device A code". So a lot more of this stuff "just
->   happens to work" on h/w than we get with QEMU.
->  (2) if software running on real h/w does do something silly with
->   programming a device to DMA to itself then the worst case is
->   generally that they manage to wedge that device (or the whole
->   machine, if you're really unlucky), in which case the response
->   is "don't do that then". There isn't the same "guest code
->   can escape the VM" security boundary that QEMU needs to guard
->   against [*].
-> 
-> [*] I do wonder about hardware-device-passthrough setups; I
-> don't think I would care to pass through an arbitrary device
-> to an untrusted guest...
+Implement a model of the MPS2 with the AN386 firmware. This is
+essentially identical to the AN385 firmware, but it has a
+Cortex-M4 rather than a Cortex-M3.
 
-Hmm, I guess it would make sense to have a configurable option in KVM
-to isolate passthrough devices so they only can DMA to guest RAM...
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ hw/arm/mps2.c | 30 +++++++++++++++++++++++++++---
+ 1 file changed, 27 insertions(+), 3 deletions(-)
 
-Cheers,
-Edgar
+diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+index 9f12934ca8f..559b297e788 100644
+--- a/hw/arm/mps2.c
++++ b/hw/arm/mps2.c
+@@ -15,6 +15,7 @@
+  * as seen by the guest depend significantly on the FPGA image.
+  * We model the following FPGA images:
+  *  "mps2-an385" -- Cortex-M3 as documented in ARM Application Note AN385
++ *  "mps2-an386" -- Cortex-M4 as documented in ARM Application Note AN386
+  *  "mps2-an511" -- Cortex-M3 'DesignStart' as documented in AN511
+  *
+  * Links to the TRM for the board itself and to the various Application
+@@ -47,6 +48,7 @@
+ 
+ typedef enum MPS2FPGAType {
+     FPGA_AN385,
++    FPGA_AN386,
+     FPGA_AN511,
+ } MPS2FPGAType;
+ 
+@@ -79,6 +81,7 @@ typedef struct {
+ 
+ #define TYPE_MPS2_MACHINE "mps2"
+ #define TYPE_MPS2_AN385_MACHINE MACHINE_TYPE_NAME("mps2-an385")
++#define TYPE_MPS2_AN386_MACHINE MACHINE_TYPE_NAME("mps2-an386")
+ #define TYPE_MPS2_AN511_MACHINE MACHINE_TYPE_NAME("mps2-an511")
+ 
+ #define MPS2_MACHINE(obj)                                       \
+@@ -142,7 +145,7 @@ static void mps2_common_init(MachineState *machine)
+      *
+      * Common to both boards:
+      *  0x21000000..0x21ffffff : PSRAM (16MB)
+-     * AN385 only:
++     * AN385/AN386 only:
+      *  0x00000000 .. 0x003fffff : ZBT SSRAM1
+      *  0x00400000 .. 0x007fffff : mirror of ZBT SSRAM1
+      *  0x20000000 .. 0x203fffff : ZBT SSRAM 2&3
+@@ -157,7 +160,7 @@ static void mps2_common_init(MachineState *machine)
+      *  0x20000000 .. 0x2001ffff : SRAM
+      *  0x20400000 .. 0x207fffff : ZBT SSRAM 2&3
+      *
+-     * The AN385 has a feature where the lowest 16K can be mapped
++     * The AN385/AN386 has a feature where the lowest 16K can be mapped
+      * either to the bottom of the ZBT SSRAM1 or to the block RAM.
+      * This is of no use for QEMU so we don't implement it (as if
+      * zbt_boot_ctrl is always zero).
+@@ -166,6 +169,7 @@ static void mps2_common_init(MachineState *machine)
+ 
+     switch (mmc->fpga_type) {
+     case FPGA_AN385:
++    case FPGA_AN386:
+         make_ram(&mms->ssram1, "mps.ssram1", 0x0, 0x400000);
+         make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", &mms->ssram1, 0x400000);
+         make_ram(&mms->ssram23, "mps.ssram23", 0x20000000, 0x400000);
+@@ -193,6 +197,7 @@ static void mps2_common_init(MachineState *machine)
+     armv7m = DEVICE(&mms->armv7m);
+     switch (mmc->fpga_type) {
+     case FPGA_AN385:
++    case FPGA_AN386:
+         qdev_prop_set_uint32(armv7m, "num-irq", 32);
+         break;
+     case FPGA_AN511:
+@@ -229,6 +234,7 @@ static void mps2_common_init(MachineState *machine)
+ 
+     switch (mmc->fpga_type) {
+     case FPGA_AN385:
++    case FPGA_AN386:
+     {
+         /* The overflow IRQs for UARTs 0, 1 and 2 are ORed together.
+          * Overflow for UARTs 4 and 5 doesn't trigger any interrupt.
+@@ -380,7 +386,7 @@ static void mps2_common_init(MachineState *machine)
+      */
+     lan9118_init(&nd_table[0], 0x40200000,
+                  qdev_get_gpio_in(armv7m,
+-                                  mmc->fpga_type == FPGA_AN385 ? 13 : 47));
++                                  mmc->fpga_type == FPGA_AN511 ? 47 : 13));
+ 
+     system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
+ 
+@@ -409,6 +415,17 @@ static void mps2_an385_class_init(ObjectClass *oc, void *data)
+     mmc->scc_id = 0x41043850;
+ }
+ 
++static void mps2_an386_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    MPS2MachineClass *mmc = MPS2_MACHINE_CLASS(oc);
++
++    mc->desc = "ARM MPS2 with AN386 FPGA image for Cortex-M4";
++    mmc->fpga_type = FPGA_AN386;
++    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
++    mmc->scc_id = 0x41043860;
++}
++
+ static void mps2_an511_class_init(ObjectClass *oc, void *data)
+ {
+     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -435,6 +452,12 @@ static const TypeInfo mps2_an385_info = {
+     .class_init = mps2_an385_class_init,
+ };
+ 
++static const TypeInfo mps2_an386_info = {
++    .name = TYPE_MPS2_AN386_MACHINE,
++    .parent = TYPE_MPS2_MACHINE,
++    .class_init = mps2_an386_class_init,
++};
++
+ static const TypeInfo mps2_an511_info = {
+     .name = TYPE_MPS2_AN511_MACHINE,
+     .parent = TYPE_MPS2_MACHINE,
+@@ -445,6 +468,7 @@ static void mps2_machine_init(void)
+ {
+     type_register_static(&mps2_info);
+     type_register_static(&mps2_an385_info);
++    type_register_static(&mps2_an386_info);
+     type_register_static(&mps2_an511_info);
+ }
+ 
+-- 
+2.20.1
+

@@ -1,103 +1,103 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp537598lfc;
-        Thu, 3 Sep 2020 06:33:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyV86eOxxozq2DO5tP7z8dSGXsQYVH8WtSrlgSLjeWrwddlKVb/3reBxkxI0RKkLVV1f1LR
-X-Received: by 2002:a25:d9c4:: with SMTP id q187mr2461585ybg.519.1599140007417;
-        Thu, 03 Sep 2020 06:33:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599140007; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp538320lfc;
+        Thu, 3 Sep 2020 06:34:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwwj+wxlME04CPgEebXu1IJZUhmixyLSdFXfcyPpbxD4gIQ7O/jaCApYiKuSOLFZhQC5Dqa
+X-Received: by 2002:a25:cc02:: with SMTP id l2mr2715668ybf.308.1599140058097;
+        Thu, 03 Sep 2020 06:34:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599140058; cv=none;
         d=google.com; s=arc-20160816;
-        b=FtX6KTjEP5+wy/21vTM0F6s6k4Y8JkcEqLi+Co0LHDjFw2alB7LCbDp7OdoyNAu2Fn
-         B7ytPZBvKzENVGUOTd2LSvYMhJ35J9u/ZpO9SGQl2Be+aHp7CftfRsvUtlooCYnX+qgf
-         OBIqWqdmsJ0ybYDGhkjmXQ/JM8YWrdsuztYAWIQHkuwwJENxvgzQ252NwFFuQTb3Fj+O
-         aDN5iDwaoQjsvNbUTn+Os67JD4+nRskVFBx78Wrj2PVHKkK8sp6MVgFNvBuKf1OPqTEy
-         6QL/R5hw94cvbbY4UAGwDBLnVgVA7l2/z95aYn7zOx3wlV3wevXFOFwUk8sIf8cd0QPU
-         /PVA==
+        b=GRYonv1mFOwY6ELibxnTVZPIbGR+gJnyjW4rVlGGB0/hacixRUC+WQV535qKfnVJHm
+         oBvRnB5FkeNmU4eglct3eYp9pOKgrwposBMHlry5xA7QUBI3mrKLaSOk1KR/w4lKX58R
+         ugqlGzO8iu3yuZuxZeuapCtIE/39Cq25aBQi6FLRJCWtiXUfQk/R2GLfE9rqmcUMOPiX
+         0GK1C/P8wBJ1p7k0VJAxcE9RIKlvCELfdSYFmHS+/sXwRX2vRQ+U5Q7dYWRJNoS7t2uC
+         seI0owxNiwPcD9lAhJnhUvUCuiAokMUzIBjisRNuxsToAsymieuWZyJcNeFh52TKu8Jf
+         ZpGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZSYYIuhZbs62/xiGmWlQgE9F1UvNn4/kf3VtqXYNpHc=;
-        b=OwoQ34xhWCn5B+uYSNxBSc+EvmTN7oNMUcpbNfdq7zY3S7o13TnHEzcJPFOtH6ifdA
-         08O0hOEqNeiQcQc96Pz11y0ibWQBHqBaLKFGKTPBlG7Ay3VcIplyGVcvcGnIV6ZfvpqP
-         oQuajZF0uphn4ZCQdkzZblTNLZzw6rP2AC91vlSYRgy/mD8z45b69BRxbS2ctxlpOAtu
-         e+XxU7lJoBUIdX39pEL9qwFehOJLh2RieX0Sy67UvOAoAUvYkT/FPrI+D7MskaiQRxku
-         R97YW9F5F1bND9GGuh7g3TQI795Yy1UQiCf3p2KmXvJw46IfmFS0nlS14x0NZ0khzPq0
-         +WhQ==
+        bh=4YiQdBJ1hxjT11XkjIFT4NIt+VV3HO6udxhsJSHRVWc=;
+        b=oz5NEXMjAe8AlmDOrpIBumz1Kqt3brfdjJttH4KDx8AJo1Ph38pfrU/4be3UOm+c/t
+         Gcp5uUCSJ2gCshvOEhP/kJj9T5yi9hWqyXePZp861wd+NlQ//K+1VJYLkswTJ8GFmiFA
+         SiATI/4M/TbHm4dBFDx/OFmJ/kJChNev7tpWlFzLlmPdEkj3xoJJ9BFYON6U32v3icaq
+         LUva88ZjYGg8oZ1BQNyocK6NLR+CtX11oLqWBYxoU2wC19Cs1mPrEDyRppSgc21Fd//E
+         Pbnr57kMm+steDgdoXMPwqtlMfpCGNdEaWRCXCqGnpauibhLTXuqfV8wXftSHp8hBvZe
+         W58Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UqBVKU3Q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=d5CTtmeB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a16si289517ybp.430.2020.09.03.06.33.27
+        by mx.google.com with ESMTPS id d82si3189249ybd.421.2020.09.03.06.34.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 06:33:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Sep 2020 06:34:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UqBVKU3Q;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=d5CTtmeB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39260 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDpMk-0000Uq-Lg
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 09:33:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44042)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kDpNZ-0002Q7-BQ
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 09:34:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kDpLc-0007HN-Df
- for qemu-devel@nongnu.org; Thu, 03 Sep 2020 09:32:16 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:52242)
+ id 1kDpLf-0007K0-6I
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 09:32:19 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37311)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kDpLa-0007uw-JO
- for qemu-devel@nongnu.org; Thu, 03 Sep 2020 09:32:16 -0400
-Received: by mail-wm1-x344.google.com with SMTP id q9so2914019wmj.2
- for <qemu-devel@nongnu.org>; Thu, 03 Sep 2020 06:32:14 -0700 (PDT)
+ id 1kDpLb-0007vA-Vg
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 09:32:18 -0400
+Received: by mail-wm1-x343.google.com with SMTP id a9so2916971wmm.2
+ for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 06:32:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ZSYYIuhZbs62/xiGmWlQgE9F1UvNn4/kf3VtqXYNpHc=;
- b=UqBVKU3QuGzw82p38DBkf96SOkOr7tAHsCrbHXlhxw0W8awZc4egS2jlm15/4bC65/
- RBQtXRsqafTdc7kkF6U/NeWy0/3XIwYEHcGn2UEhSxg3s2YIxNx67VSP7rFqF3SWsWFJ
- NA+atITgFxqEnDExUHFb/Loxgn36txZWEBKgZoYwjdURXouF8QrOGlY6Rh4X9QKvEh2j
- U/KzEts/FRe9sKBUgfpCWaPN6uGF6YaAER0wDvwvraxeGS1SOru9yVP31B3lRU6fe0u6
- Li6VBLIG3H7Q7aGJWqKm0Jt/jj1ZP4daktsMTQIcUMDlKdVH5CNY/81ecg/ghJCzTjWb
- TUlg==
+ bh=4YiQdBJ1hxjT11XkjIFT4NIt+VV3HO6udxhsJSHRVWc=;
+ b=d5CTtmeBhsM8Eb973i6HmTNgAWS6GnlU5KMxXj5CURQoQExfQ46o7C+fGa4Bue8OQI
+ Y10y3Dl9fNJyIcouNOFVNBhc4l8+esPAPanQnhREHPtgO+exuvNyIhBkujZtpHRV3/jq
+ 7kMr6Wf2kBlQL5kL+HtbXhS3MkdAKDTUDvu9uzRxwr85x42kP7pTbjD/JwiwVXjQ8q9B
+ IhNw4sTZ6RfFZgp3gciwpnCgNuhTaRThOl1FkTPjSI0tA7OCuCRdfUr4oewmgaKz+o1U
+ dF4a5XZENpoG2yFowUUKaR1/bRC4gfQZFjCGTmeNc2zM92/xCQfJ4ESXlEMbZX9DBQ2V
+ 9kww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZSYYIuhZbs62/xiGmWlQgE9F1UvNn4/kf3VtqXYNpHc=;
- b=K/o3kmx433oRWZzKvC0WeJVY3arIn+i7UqBGYfUpU/rIGhebVoQhBTB89Hf4SwtxPT
- PhOOYlZjRau6jYdDnByQn7FD1UxnuMspFsWUwn95yFhAEQmoG84g4T28Nz3BN5EfaIuR
- BkjNYoxEl0P/O+TlUxEMtNz5cJ2Q+kcuF4rd1hkhDeme54xQkuGHmfrguemyTsIH9pjL
- DggIAjyOg+qDPMcOUq4l0bNtZoRvluE4Ep7c6yxevdE87N+C25+z7yJMj8i+alSOlFRD
- hkUWStAI82VVAn5WuzijYzgebue2DEpT+p8VlIqEMQJ/WL4/mMPRdRfTNeHNcDBaRTKu
- MQHA==
-X-Gm-Message-State: AOAM530FY+AfS2Lx338qUPjTeywYRPsJILg56ilYQmSa6o1j6B3JVR7j
- f4EJcurStk1hVrf9vOO4nVE4cg==
-X-Received: by 2002:a7b:c3da:: with SMTP id t26mr2435537wmj.23.1599139933162; 
- Thu, 03 Sep 2020 06:32:13 -0700 (PDT)
+ bh=4YiQdBJ1hxjT11XkjIFT4NIt+VV3HO6udxhsJSHRVWc=;
+ b=mAeIJIi36mRoSwzXEHudCF+FVJC5lpiZckX6iP8gqVXr+6E+A4IhVGHxV1SvtLIrqS
+ f/Z3MGS1WFjgd0Iz4lAXn4ZXaow2i2vRwZAQe0RTZ+VNGNEkWluJNFPv8taFRM0FJ7cg
+ JYKgh+yaIoYXlzkZll2/eTr/e6AaOLRo3wREGCIchjIl9+X45Kd7/wwv+J6F3snPQPLQ
+ rlAO7wL+9/PCiJB4c7JnVxzsUgJQjjwtPs2teszk11RvodW0AdBB6XN8Ubj347/ZFXzL
+ IQ4ksJT6jC7Z3jZqP9fkvZvYNU7VhzPCf7sU4HgPIDSzADlZ3IG9bOwzN+hyrJdEoOpv
+ iN/w==
+X-Gm-Message-State: AOAM5330f1PMvZg6DJ1smH6aXgxumfRyB0ZtblIomrz/F2FVcKgY1IlF
+ +VwwgG8VuEljGOULisr2EvQiShXM5ggE14M3
+X-Received: by 2002:a7b:c401:: with SMTP id k1mr2517484wmi.18.1599139934297;
+ Thu, 03 Sep 2020 06:32:14 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id k24sm4301988wmj.19.2020.09.03.06.32.12
+ by smtp.gmail.com with ESMTPSA id k24sm4301988wmj.19.2020.09.03.06.32.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Sep 2020 06:32:12 -0700 (PDT)
+ Thu, 03 Sep 2020 06:32:13 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 1/3] target/arm: Convert Neon 3-same-fp size field to MO_* in
+Subject: [PATCH 2/3] target/arm: Convert Neon VCVT fp size field to MO_* in
  decode
-Date: Thu,  3 Sep 2020 14:32:07 +0100
-Message-Id: <20200903133209.5141-2-peter.maydell@linaro.org>
+Date: Thu,  3 Sep 2020 14:32:08 +0100
+Message-Id: <20200903133209.5141-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20200903133209.5141-1-peter.maydell@linaro.org>
 References: <20200903133209.5141-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -106,103 +106,54 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oYREk3z6pQYB
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hogBOE8oDe+D
 
-In the Neon instructions, some instruction formats have a 2-bit size
-field which corresponds exactly to QEMU's MO_8/16/32/64.  However the
-floating-point insns in the 3-same group have a 1-bit size field
-which is "0 for 32-bit float and 1 for 16-bit float".  Currently we
-pass these values directly through to trans_ functions, which means
-that when reading a particular trans_ function you need to know if
-that insn uses a 2-bit size or a 1-bit size.
-
-Move the handling of the 1-bit size to the decodetree file, so that
-all these insns consistently pass a size to the trans_ function which
-is an MO_8/16/32/64 value.
-
-In this commit we switch over the insns using the 3same_fp and
-3same_fp_q0 formats.
+Convert the insns using the 2reg_vcvt and 2reg_vcvt_f16 formats
+to pass the size through to the trans function as a MO_* value
+rather than the '0==f32, 1==f16' used in the fp 3-same encodings.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-I wanted to call the field %3same_fp_size, but decodetree
-doesn't seem to allow a field starting with a digit, even
-though it does allow a format that starts with a digit.
-So it's %fp_3same_size...
----
- target/arm/neon-dp.decode       | 15 ++++++++++-----
- target/arm/translate-neon.c.inc | 16 +++++++++++-----
- 2 files changed, 21 insertions(+), 10 deletions(-)
+ target/arm/neon-dp.decode       | 3 +--
+ target/arm/translate-neon.c.inc | 4 ++--
+ 2 files changed, 3 insertions(+), 4 deletions(-)
 
 diff --git a/target/arm/neon-dp.decode b/target/arm/neon-dp.decode
-index 1e9e8592917..f453833396f 100644
+index f453833396f..d7da2e7db3c 100644
 --- a/target/arm/neon-dp.decode
 +++ b/target/arm/neon-dp.decode
-@@ -45,11 +45,16 @@
- @3same_q0        .... ... . . . size:2 .... .... .... . 0 . . .... \
-                  &3same vm=%vm_dp vn=%vn_dp vd=%vd_dp q=0
+@@ -256,9 +256,8 @@ VMINNM_fp_3s     1111 001 1 0 . 1 . .... .... 1111 ... 1 .... @3same_fp
+ @2reg_shll_b     .... ... . . . 001 shift:3  .... .... 0 . . . .... \
+                  &2reg_shift vm=%vm_dp vd=%vd_dp size=0 q=0
  
--# For FP insns the high bit of 'size' is used as part of opcode decode
--@3same_fp        .... ... . . . . size:1 .... .... .... . q:1 . . .... \
--                 &3same vm=%vm_dp vn=%vn_dp vd=%vd_dp
--@3same_fp_q0     .... ... . . . . size:1 .... .... .... . 0 . . .... \
--                 &3same vm=%vm_dp vn=%vn_dp vd=%vd_dp q=0
-+# For FP insns the high bit of 'size' is used as part of opcode decode,
-+# and the 'size' bit is 0 for 32-bit float and 1 for 16-bit float.
-+# This converts this encoding to the same MO_8/16/32/64 values that the
-+# integer neon insns use.
-+%fp_3same_size   20:1 !function=neon_3same_fp_size
-+
-+@3same_fp        .... ... . . . . . .... .... .... . q:1 . . .... \
-+                 &3same vm=%vm_dp vn=%vn_dp vd=%vd_dp size=%fp_3same_size
-+@3same_fp_q0     .... ... . . . . . .... .... .... . 0 . . .... \
-+                 &3same vm=%vm_dp vn=%vn_dp vd=%vd_dp q=0 size=%fp_3same_size
+-# We use size=0 for fp32 and size=1 for fp16 to match the 3-same encodings.
+ @2reg_vcvt       .... ... . . . 1 ..... .... .... . q:1 . . .... \
+-                 &2reg_shift vm=%vm_dp vd=%vd_dp size=0 shift=%neon_rshift_i5
++                 &2reg_shift vm=%vm_dp vd=%vd_dp size=2 shift=%neon_rshift_i5
+ @2reg_vcvt_f16   .... ... . . . 11 .... .... .... . q:1 . . .... \
+                  &2reg_shift vm=%vm_dp vd=%vd_dp size=1 shift=%neon_rshift_i4
  
- VHADD_S_3s       1111 001 0 0 . .. .... .... 0000 . . . 0 .... @3same
- VHADD_U_3s       1111 001 1 0 . .. .... .... 0000 . . . 0 .... @3same
 diff --git a/target/arm/translate-neon.c.inc b/target/arm/translate-neon.c.inc
-index 2d4926316a4..255c1cf8a2a 100644
+index 255c1cf8a2a..213c1c2174a 100644
 --- a/target/arm/translate-neon.c.inc
 +++ b/target/arm/translate-neon.c.inc
-@@ -49,6 +49,12 @@ static inline int rsub_8(DisasContext *s, int x)
-     return 8 - x;
- }
- 
-+static inline int neon_3same_fp_size(DisasContext *s, int x)
-+{
-+    /* Convert 0==fp32, 1==fp16 into a MO_* value */
-+    return MO_32 - x;
-+}
-+
- /* Include the generated Neon decoder */
- #include "decode-neon-dp.c.inc"
- #include "decode-neon-ls.c.inc"
-@@ -1049,7 +1055,7 @@ DO_3SAME_VQDMULH(VQRDMULH, qrdmulh)
-     WRAP_FP_GVEC(gen_##INSN##_fp16_3s, FPST_STD_F16, HFUNC)             \
-     static bool trans_##INSN##_fp_3s(DisasContext *s, arg_3same *a)     \
-     {                                                                   \
--        if (a->size != 0) {                                             \
-+        if (a->size == MO_16) {                                         \
-             if (!dc_isar_feature(aa32_fp16_arith, s)) {                 \
-                 return false;                                           \
-             }                                                           \
-@@ -1088,7 +1094,7 @@ static bool trans_VMAXNM_fp_3s(DisasContext *s, arg_3same *a)
+@@ -1626,7 +1626,7 @@ static bool do_fp_2sh(DisasContext *s, arg_2reg_shift *a,
          return false;
      }
  
@@ -211,33 +162,15 @@ index 2d4926316a4..255c1cf8a2a 100644
          if (!dc_isar_feature(aa32_fp16_arith, s)) {
              return false;
          }
-@@ -1103,7 +1109,7 @@ static bool trans_VMINNM_fp_3s(DisasContext *s, arg_3same *a)
-         return false;
+@@ -1646,7 +1646,7 @@ static bool do_fp_2sh(DisasContext *s, arg_2reg_shift *a,
+         return true;
      }
  
--    if (a->size != 0) {
-+    if (a->size == MO_16) {
-         if (!dc_isar_feature(aa32_fp16_arith, s)) {
-             return false;
-         }
-@@ -1135,7 +1141,7 @@ static bool do_3same_fp_pair(DisasContext *s, arg_3same *a,
-     assert(a->q == 0); /* enforced by decode patterns */
- 
- 
--    fpstatus = fpstatus_ptr(a->size != 0 ? FPST_STD_F16 : FPST_STD);
-+    fpstatus = fpstatus_ptr(a->size == MO_16 ? FPST_STD_F16 : FPST_STD);
-     tcg_gen_gvec_3_ptr(vfp_reg_offset(1, a->vd),
-                        vfp_reg_offset(1, a->vn),
-                        vfp_reg_offset(1, a->vm),
-@@ -1152,7 +1158,7 @@ static bool do_3same_fp_pair(DisasContext *s, arg_3same *a,
- #define DO_3S_FP_PAIR(INSN,FUNC)                                    \
-     static bool trans_##INSN##_fp_3s(DisasContext *s, arg_3same *a) \
-     {                                                               \
--        if (a->size != 0) {                                         \
-+        if (a->size == MO_16) {                                     \
-             if (!dc_isar_feature(aa32_fp16_arith, s)) {             \
-                 return false;                                       \
-             }                                                       \
+-    fpst = fpstatus_ptr(a->size ? FPST_STD_F16 : FPST_STD);
++    fpst = fpstatus_ptr(a->size == MO_16 ? FPST_STD_F16 : FPST_STD);
+     tcg_gen_gvec_2_ptr(rd_ofs, rm_ofs, fpst, vec_size, vec_size, a->shift, fn);
+     tcg_temp_free_ptr(fpst);
+     return true;
 -- 
 2.20.1
 

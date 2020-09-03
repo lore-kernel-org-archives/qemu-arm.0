@@ -1,113 +1,132 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp727491lfc;
-        Thu, 3 Sep 2020 10:31:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwiE9fY2xJOshV3O1nrtZ9B9KozC9YUa+HlmQ2Jj0hT8dq1TuRnOpBjWUVa8jRBp97vVUZ8
-X-Received: by 2002:a25:a366:: with SMTP id d93mr4084037ybi.415.1599154282106;
-        Thu, 03 Sep 2020 10:31:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599154282; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp743182lfc;
+        Thu, 3 Sep 2020 10:54:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz9cUI3JGL3G2dVGUOu4sJq+tVSp15dfjHuZCm3oAf23He+wJfGqqJbS4xrgKprUioweCab
+X-Received: by 2002:a25:d5:: with SMTP id 204mr4536435yba.101.1599155679108;
+        Thu, 03 Sep 2020 10:54:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599155679; cv=none;
         d=google.com; s=arc-20160816;
-        b=gnUoPR0+nOtgyegHoDCOPImBB1sL9fYeDtXBxAW/zzT7kI8Sa7IiK5UWT1lFdxHE8I
-         +WLZtbTkYJNOKHzU64h3LWctdW8lK1SLFJjF66//QrQpt0J0dZh3Iu5zoKna919sw3HF
-         F/l4blViPV1+s3mfA8hYwIptl1QFXopzKmS8grcpLtjlkUlLEkJQM0VgSIxZODfXG4GG
-         /J/GYEpP/oAEotVSncmSHUjW2zIjzJjBBgoQnkBYRIQGir0rgltivpougFcRlj7WykjO
-         9PTi73VBfBCiMI2jUBcK4nYM3tNVLhCwiaicCDdN3oaUCTB1NTpns8KC33RPBMNznwr9
-         PHDA==
+        b=Rfw3VCUvB/0q209pJYSDyCrkfgzS7jvpiseDD60viAYoJAO/BYlx7QOlOtKoaCrmJz
+         v/CyMailn2kWQY/IuuLKrp6dNwTIQvOl/d4IhOXbH1l6NAzKFR2I09QddShUKFSYyC4/
+         S7LsGRP7PFoVVeQK03nlJ+RH6WayvstxiDd0OyVkY2WwVN/QbYjQlkYk46ClzV57aKCi
+         10vMdx+EHs4yur15O20CPdIDjkMOTLo54bpaXkXZF4lnNzU5/l6VF4+C7q0OULoa6eb6
+         I1GLy1Zw8SWdiGKaKYMTWndq6KZ2/A4Og145gwYRsYgqds1mFqUx66aPjId0s/FP0tHO
+         2Krg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=6z5cEfqbH1n61y/Qo9klXj1n02roLHb+s1zVQcoUGeE=;
-        b=Qng/xel8EJYPE3P5Zsn+5thZtcfMDWkfVC9yKjjmczIMhm9X62A3t9Ecc01G4VrYF7
-         Rw2iV/rg/AJvpMUhdzY2jKoAw72ixHeH9iM/UKcUfvvJpPCphY/34Pq0IJ8dcC/pNauA
-         GDpo9LrZmT+ZABCoVJm0kgmeYcc/RpCeOgu7XbSEHzNf/bG89PaIXk0HPE3vobl7eULh
-         lf345Urp2QP0NO3exK60l4nVQbbXq6WbjH7KkWn1xOEcov8t7al73Flmo0eF92DQBq16
-         25Z5e2IhkRV7FMn9MUd1rc7qWsxLgnsY1BdVlp5XKaLFywsP06oGewlURGLPDY4BNLcB
-         aENA==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=7asdxu6IhGX/9UW+F2HS8qy4901LeNHb0a8VtCxONAg=;
+        b=AoDL5l0NF3xM32FxE/YkilZAyMbPR6srqWK60j47sTU/NH1P7QSS3MT+qCGXT0Q5J9
+         q/y++VjGo6ZcU12crmgcbaEcmxDY1i293B4DsJKpV2TFZPkibcwgsjJmoxnRlr+wI8QI
+         LwaWaHoYrTwomocAv1JUqV6Ul9kLFJd06MlUoVzvhXkeTwiyxbzqLegLEBKb30MgUi+M
+         1d9UYJ/Z6ljY11RIMsVtZ0fRZq1RYRIVi7o2Vp0GNhQPpl5XyJWXp7EZUuhf/GqnlpsQ
+         MGriQ1F8f6XweWyp3+fSJ0+lEsGzWTFmpueSM5mbtem9x765QTGLtUOqVuELlws9IzGX
+         dzSw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="kuEn4HI/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Z9v0/F5Y";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s16si3700223ybk.72.2020.09.03.10.31.21
+        by mx.google.com with ESMTPS id 127si3167689ybl.380.2020.09.03.10.54.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 10:31:22 -0700 (PDT)
+        Thu, 03 Sep 2020 10:54:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="kuEn4HI/";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Z9v0/F5Y";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:35676 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59568 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDt4z-0005LK-H7
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 13:31:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55492)
+	id 1kDtRW-0000Kc-HN
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 13:54:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34072)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDt1x-0000p4-M9; Thu, 03 Sep 2020 13:28:13 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38756)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDt1w-0002VJ-7U; Thu, 03 Sep 2020 13:28:13 -0400
-Received: by mail-wr1-x444.google.com with SMTP id g4so4099168wrs.5;
- Thu, 03 Sep 2020 10:28:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=6z5cEfqbH1n61y/Qo9klXj1n02roLHb+s1zVQcoUGeE=;
- b=kuEn4HI/eIiIw6lgZwTJh9saJTpX75BsdeT4+L6VGY4SQe3RxZpgLMzlc7gJQrzuzL
- TTtdmBN9rxC64ys1T1eNBs1Nk4BXYzOKx+Xv//Qswigi61/dYTSdQnpiiraggeYlnHOQ
- Be1A3udTVluN9FHg8lBTnq2+m3syyzpJI7G7K3P0SX6sB5b7a4g3Jq2oscSSwAv9OjbP
- VeGBhkkKqz+YNr0mVi1ChCilGRZyx3LGJn7H4ayNgovsMZLVDJPeGpZqlCrUfW5I7pF5
- mrXj0MEhhgGQH5SaI25xQnH80PJhvP8AzxvCqpn9rHNzDn4yyb8XkrtZLDoUC1gataQA
- 78aA==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kDtQc-0007wv-OY
+ for qemu-devel@nongnu.org; Thu, 03 Sep 2020 13:53:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:53823)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kDtQa-0006FI-MY
+ for qemu-devel@nongnu.org; Thu, 03 Sep 2020 13:53:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599155619;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7asdxu6IhGX/9UW+F2HS8qy4901LeNHb0a8VtCxONAg=;
+ b=Z9v0/F5Y9qH8aWjfeeo0H55DBmNfXzsQVnxfn0RHW2lrMpZbr6OYkNe0uT0cpr6zQpRI/V
+ dbyk8vToiPzvQji5icDCqVt+QjnPAEu/+Sx7p71rQISdX6JI90QqumrBFoYJ8uNmQGp4SO
+ RmhyWppgpFheuVTUDSqa+ARu57oOoQ8=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-555-c4L8ZBsHO-az4vfrwSKFbw-1; Thu, 03 Sep 2020 13:53:37 -0400
+X-MC-Unique: c4L8ZBsHO-az4vfrwSKFbw-1
+Received: by mail-wr1-f70.google.com with SMTP id a12so1348385wrg.13
+ for <qemu-devel@nongnu.org>; Thu, 03 Sep 2020 10:53:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=6z5cEfqbH1n61y/Qo9klXj1n02roLHb+s1zVQcoUGeE=;
- b=DYIqJE23wEicBn+erWMe5xfcTDVnpRugqneZgnKZb1KrUYR+YpOVuxMgKXnemfw1+6
- lz7n/QsQ3vnIHs3pmet9IyIQFMCNCMGue9vnimiupdEGkhE/jKNyPSKxMKBcRBwjspIF
- yjS70BMDT6ttJ+5mElGEPxFGlfQdtN5ZAHBMamlplId6vAr6kGlb1qxBA0dMD2WxxPcO
- q40Oss1g48uXXVihTHIhyURN9egLv487yk7Hn/8s0JuNgTmWfRGg4DnbMg0Db+LO9Mjj
- K3dkrqQQJ4q+tBk8Y8e0vPYHTNsiFGnRcTvVP0C2kZrzBzoz+/zhyxuQpfKvKhQmV+C0
- Ymjg==
-X-Gm-Message-State: AOAM5336vwsFDs0EDHuv/YGaYW/bxt//HnjLll87Qo8SQec0IyF+FhZp
- JfilHnMKfElds75mi/Xty3zl6O3zpPc=
-X-Received: by 2002:a5d:61c2:: with SMTP id q2mr3849942wrv.25.1599154090147;
- Thu, 03 Sep 2020 10:28:10 -0700 (PDT)
-Received: from localhost.localdomain (50.red-83-52-54.dynamicip.rima-tde.net.
- [83.52.54.50])
- by smtp.gmail.com with ESMTPSA id b2sm5325802wmh.47.2020.09.03.10.28.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Sep 2020 10:28:09 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 1/4] hw/sd/sdhci: Stop multiple transfers when block count is
- cleared
-Date: Thu,  3 Sep 2020 19:28:03 +0200
-Message-Id: <20200903172806.489710-2-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200903172806.489710-1-f4bug@amsat.org>
-References: <20200903172806.489710-1-f4bug@amsat.org>
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=7asdxu6IhGX/9UW+F2HS8qy4901LeNHb0a8VtCxONAg=;
+ b=F+JQMbQQnXY1icqG0CQI+inYIO6qye9z9cw6EwGONgXysgceQb5Xo5hyrVR49zvxPB
+ HWLzYdekVucBV6wnKOzPC5uWzC3N2w1TNWyrTqHYfPJm5OX2vzG6p9aa/sPbrH1E7Yd8
+ A58hVSd7kZtp/nTPVM6hiBFXun11TSCW/oROfeAAHOAZKIMnPJEIXnga8lj4R5LD7b06
+ j89yN/CW0KNrHqYMX/A7rHgov3RxlgGsxJT9XQDUifnxbtYrASYynny/Eav1/H2+mh2A
+ YZPr+XjPLwZa8fX0/obTF8waOLxNyzX3cJh0hZYXmjPKM2gmAXcQ/rEs/RZFuD/lScmX
+ tL2g==
+X-Gm-Message-State: AOAM531U1qKTZhHobkS0nqiMBXD3JVjY63f73R4FCkIWWzu4kCEhjkmH
+ 9rcaNl5I1NzUkAvF2wJPFxMGwYRsLHxgE0sw9kMexc/70fgU/LAu2GPDSdVuSunuFPEqqP98s10
+ Me9CrGfOkUs0c6yQ=
+X-Received: by 2002:adf:c182:: with SMTP id x2mr3655746wre.400.1599155616611; 
+ Thu, 03 Sep 2020 10:53:36 -0700 (PDT)
+X-Received: by 2002:adf:c182:: with SMTP id x2mr3655704wre.400.1599155616326; 
+ Thu, 03 Sep 2020 10:53:36 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:197c:daa0:48d1:20b2?
+ ([2001:b07:6468:f312:197c:daa0:48d1:20b2])
+ by smtp.gmail.com with ESMTPSA id v7sm5630559wmj.28.2020.09.03.10.53.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 03 Sep 2020 10:53:35 -0700 (PDT)
+Subject: Re: [RFC PATCH 00/12] hw: Forbid DMA write accesses to MMIO regions
+To: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+References: <20200903110831.353476-1-philmd@redhat.com>
+ <658fdd16-33da-af3a-6d8d-f7ea1253f061@redhat.com>
+ <CAFEAcA8aOzq8UQwKiyuvJokBT9ui6JWxzf=T8=r13Vuu6+_kkQ@mail.gmail.com>
+ <20200903142410.GX2954729@toto>
+ <d030f14b-5b1d-6028-8fdd-5dbc25abdf74@redhat.com>
+ <20200903155023.GC14249@toto>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <9105d1fb-8064-076f-9408-ba94c889b765@redhat.com>
+Date: Thu, 3 Sep 2020 19:53:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+In-Reply-To: <20200903155023.GC14249@toto>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 7bit
+Content-Language: en-US
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/03 01:47:17
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-2.403, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,51 +139,54 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Prasad J Pandit <pjp@fedoraproject.org>, qemu-block@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
- Ruhr-University <bugs-syssec@rub.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
+ Li Qiang <liq3ea@163.com>, "Emilio G . Cota" <cota@braap.org>,
+ Joel Stanley <joel@jms.id.au>, Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Robert Foley <robert.foley@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Tony Nguyen <tony.nguyen@bt.com>,
+ Prasad J Pandit <pjp@fedoraproject.org>, Alexander Bulekov <alxndr@bu.edu>,
+ Andrew Jeffery <andrew@aj.id.au>, Laszlo Ersek <lersek@redhat.com>,
+ Emanuele Giuseppe Esposito <e.emanuelegiuseppe@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Klaus Jensen <k.jensen@samsung.com>, Peter Chubb <peter.chubb@nicta.com.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5smoe/FLAMiM
+X-TUID: GbV/xcdxrJLr
 
-Clearing BlockCount stops multiple transfers.
+On 03/09/20 17:50, Edgar E. Iglesias wrote:
+>>> Hmm, I guess it would make sense to have a configurable option in KVM
+>>> to isolate passthrough devices so they only can DMA to guest RAM...
+>>
+>> Passthrough devices are always protected by the IOMMU, anything else
+>> would be obviously insane^H^H^Hecure. :)
+> 
+> Really? To always do that blindly seems wrong.
+> 
+> I'm refering to the passthrough device not being able to reach registers
+> of other passthrough devices within the same guest.
 
-See "SD Host Controller Simplified Specification Version 2.00":
+Ah okay; sorry, I misunderstood.  That makes more sense now!
 
-- 2.2.3. Block Count Register (Offset 006h)
-- Table 2-8 : Determination of Transfer Type
+Multiple devices are put in the same IOMMU "container" (page table
+basically), and that takes care of reaching registers of other
+passthrough devices.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- hw/sd/sdhci.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+Paolo
 
-diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index ecbf84e9d3f..703357e94a7 100644
---- a/hw/sd/sdhci.c
-+++ b/hw/sd/sdhci.c
-@@ -728,6 +728,12 @@ static void sdhci_do_adma(SDHCIState *s)
-     ADMADescr dscr = {};
-     int i;
- 
-+    if (s->trnmod & SDHC_TRNS_BLK_CNT_EN && !s->blkcnt) {
-+        /* Stop Multiple Transfer */
-+        sdhci_end_transfer(s);
-+        return;
-+    }
-+
-     for (i = 0; i < SDHC_ADMA_DESCS_PER_DELAY; ++i) {
-         s->admaerr &= ~SDHC_ADMAERR_LENGTH_MISMATCH;
- 
-@@ -753,7 +759,6 @@ static void sdhci_do_adma(SDHCIState *s)
- 
-         switch (dscr.attr & SDHC_ADMA_ATTR_ACT_MASK) {
-         case SDHC_ADMA_ATTR_ACT_TRAN:  /* data transfer */
--
-             if (s->trnmod & SDHC_TRNS_READ) {
-                 while (length) {
-                     if (s->data_count == 0) {
--- 
-2.26.2
+> Obviously the IOMMU should be setup so that passthrough devices don't reach\
+> other guests or the host.
 

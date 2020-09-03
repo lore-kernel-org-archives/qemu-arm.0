@@ -1,108 +1,108 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp678217lfc;
-        Thu, 3 Sep 2020 09:25:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzrdal7cfiVX4PllHNzbBjJYQD61ShpENmAIC8gcZmePLDOc6RxQ2P6iS1gRMPi6JqHRgAe
-X-Received: by 2002:a25:b946:: with SMTP id s6mr3713343ybm.266.1599150335553;
-        Thu, 03 Sep 2020 09:25:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599150335; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp679748lfc;
+        Thu, 3 Sep 2020 09:27:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyVsQRXPW9n8gOiUHkqFFh6YubXf8dVqea5SGVgVRkfR3auhX9ds4w3W62FTRzU/Q8xF6Y3
+X-Received: by 2002:a25:260d:: with SMTP id m13mr4039361ybm.45.1599150461480;
+        Thu, 03 Sep 2020 09:27:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599150461; cv=none;
         d=google.com; s=arc-20160816;
-        b=PZux3sHNWuIuH216OxJDJw9DlFL7Z0pMAGDtlXozAXP7jCJPTd2Pa51/xXUXJ3ULrP
-         9OgeYAItB07MdmEmAFLKkJ/a8aZhhgcRRrrUp5N/0NdvXQ/XK6HTXhUqO8igHXjnbAOU
-         bHWL2VzDRgtPOw7lat4v6YXKXYkv48awrVEuR048SSlGaidPC6P4nFPqawqQD5qAtdku
-         dX9Zoq4ZvAwUf/l8LqueoePAOwMG+sJpdG5MelzmsCc0lOTHLw8blV+Ga2ZrbZnKaXNz
-         7n38hcVtutNfDqDQlxFF9cz5GsWa2TE8NLMCENkUGs0BpNvO4KspKMhF1qbrKVOKrESC
-         zspg==
+        b=p4eZplJzb936VzEsUbK7YV/Fv1PouCBZViB06D7OcHC4KJpXoXKWX2T7HbjGS8OPJ2
+         wZ7sZVZWbSZGIkAtIlgJdsjGf1rxffsktoVJVsd3REkuVr3vHlA931fJxbiY5Gc8oLEL
+         UNHL8S+CU2t0/P0+r6r85iPtKDeBS+MxwfQVfszIRpjYrMp+HUvnAYLD73XFuylooMoY
+         /wAW9CwYT2pROkOr+xDFfI20gKTXm/V7tbRqwBfoI2dav8gqRXanGKxvVm2uPKPHSq2i
+         m9rJV6KMRFXjsInAFM2/F6P+rdP2qiFduhZWppDmAoRW8aFKjchyfa9GgLPdhtVpuHBq
+         O0+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=d55bjfYXbIsQpM11ZH3ArJgmncniHoUsc9n8g/hvS9w=;
-        b=LCmnfcfju9g9ZbKHRpeykT9yxi7YJ0zGVn7BfJm93tDhb5mPMspbOrxctOIP7d/UeA
-         5pkKIqWhR+rXWc81YPRBdpEC0atTYUWZ1COsFXeRyzaJbUPVpq/hH5l/NiW7T19JUuBW
-         iPi2AOWWDZM+rCxyC0BsqQsX5BKkkH2aL6rkovYVco7xmTYjn7V/4MUnma6FDQuYTCk0
-         nMsrwRC+kffXcdoa2PNrMYn2PmiQiGI6SumznvyQIe9WB25oSseJKNvIdZCD8rEUMFni
-         Gt1yjBKUF4uIxhvrc/kU7KclIbqXHVk8atjia2cco1jFiBtINknyPLpWkaila4QSoHn/
-         /lLg==
+        bh=lGt5WOoKaqmjrp/JJYW9gqO+hdcusqmlblBLiycqA9w=;
+        b=vtHALIwWGRblo1G3encs78x22K4Y15PkcO5rX06D/F0CYk3pqPblEs2UltYQCPt9LM
+         dmQKzxWTNe00BfVHNFOtYWfGAfQejvgmI03jqntH+rPPc598e3iQq8vSbRlFMAmREqMH
+         7nsNJ+Q+apjSs2so8O+mrVlWdMR8qc18ZPuW/8+mXiCo0FqhYeuEgvXSild6Q4vrVBGO
+         4eiBK67E2PVSSxLQlWpml1kWxGmpOgltbot0E3ZLJCx2FsSaKDTIk+Dv9pqJe+Twynty
+         jh9dfrzKf9bRXxazQ4RgEpKoTu7WClU/tG6PzzNlamChOVZTCks1+7fV1KpOBWf91CMT
+         LLCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GrsvskKe;
+       dkim=pass header.i=@linaro.org header.s=google header.b="BY09/5/E";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e1si3499469ybn.135.2020.09.03.09.25.35
+        by mx.google.com with ESMTPS id o187si3200559yba.66.2020.09.03.09.27.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 09:25:35 -0700 (PDT)
+        Thu, 03 Sep 2020 09:27:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=GrsvskKe;
+       dkim=pass header.i=@linaro.org header.s=google header.b="BY09/5/E";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42254 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47526 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDs3K-0004o2-Vb
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 12:25:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39884)
+	id 1kDs5M-00074h-Rf
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 12:27:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40364)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kDs3B-0004m6-HL
- for qemu-arm@nongnu.org; Thu, 03 Sep 2020 12:25:25 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:38977)
+ id 1kDs5F-00073T-FY
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 12:27:33 -0400
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:35201)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kDs38-0001sL-Cg
- for qemu-arm@nongnu.org; Thu, 03 Sep 2020 12:25:25 -0400
-Received: by mail-pg1-x542.google.com with SMTP id v15so2544306pgh.6
- for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 09:25:21 -0700 (PDT)
+ id 1kDs5C-0002FS-PP
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 12:27:33 -0400
+Received: by mail-pg1-x541.google.com with SMTP id g29so2563595pgl.2
+ for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 09:27:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=d55bjfYXbIsQpM11ZH3ArJgmncniHoUsc9n8g/hvS9w=;
- b=GrsvskKegSWpkZmawPLF6i9hwKpDysPHBPo50N/Mb6qU5go/tEB6im10njk8YzvFBd
- BYZYmAXxZydDY1ohw64zNd31eekMxEdim/XbDSUJ0gRYhTx9shdiLspVZuzO+ult3aUa
- CGq3Lr61hcO85/1WVKj34InXQImqMrSAbmGSiPPcaMC2cY+DjktfR0P4cn7DTBsVylJb
- QcaHhNJyz69MvVUNvIP7SMJy3znK5trMR3KSN/pkKd/JEwGaaGnJIzv6RbCM3PyLOSCj
- EpUMyVgkMLUlBxLP+El3iANjmIIVhHbB841VIbcmwRBsOquez7Rs+g1J02MK5tV5PGbz
- V2oA==
+ bh=lGt5WOoKaqmjrp/JJYW9gqO+hdcusqmlblBLiycqA9w=;
+ b=BY09/5/EfOH2wqOzTo6adnbimslBEQ41P8mGuPllBYl8QO/HcwQkqNyaLLmF/GiYDr
+ HY7syDuNbZsnLdBH8SudqsHxsiyFxOTogb+Crpi4IEtxZ5oCzevHsOrRa7ZIUWmcl68g
+ gFUsp1RNifxYE9KtxzqBiirBIBZOaEfT+NRbBxfGCEthwG2xAhG14KxMxGTjRPIRPQ8V
+ 6CxiF1P6srxWJ/jEK025EtlIpYnywQwVShhsv1YsNT1FgsmSF/utROvQcC9nSHtzs/DK
+ ltmcxjmwqlWZtZIhsibUYDVzRXtjH+aPX9ws21BPK1KCd+Ju0t8mxRJNQcpI8+VDfnwG
+ iJeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=d55bjfYXbIsQpM11ZH3ArJgmncniHoUsc9n8g/hvS9w=;
- b=EPrhkHzKyCvVXjXve/UloIuEfzA/kckw42+ACwAyTi6PBddB3w1YSMEdcr0dTDe8Ho
- qwqWFbWa0plocnyW3Kmxa7f8OxaWm/tkHI1FrXrOHuK1U5vjPavM4vFvmBOBI9JMiPi7
- mm385so0odEXQHyhLvHniun/MUKg1YRU/4ZmF0VdrEnw5jxpfuBCswwzUNybnOw6BWAZ
- 8I9NcvKYCWyrc8LNqRTcjf4qgWd8KOD+jOmeFLCUmQafaNJfCwWdsEKtfmc5yGX/0Ltr
- wCPljWOCBAhrYIuJ5b4kyD7MvgeLsI4MbgA72UF0msB3PFrlOq8AYb987t5teIu4xleH
- 2nLw==
-X-Gm-Message-State: AOAM531H0ehitNwa4JWb45DePNbFtDRRYV4vKTV2zS5Z+9Vc+FUb0ioC
- kd6Zxg1Mk7vekHH+udEL7gLTIw==
-X-Received: by 2002:a63:3d41:: with SMTP id k62mr3438216pga.87.1599150320475; 
- Thu, 03 Sep 2020 09:25:20 -0700 (PDT)
+ bh=lGt5WOoKaqmjrp/JJYW9gqO+hdcusqmlblBLiycqA9w=;
+ b=ZkG7C0NUsKxRBkxRvyU8CldvQF889d28x8pePWGPJ2w1ATqCaTRGW9OSdisW5xIsNk
+ KtGJDgYOPMPAVRt0qrLR06TnM9iW6Xp571wy6JVsDYoFd1qQzOCY1o2FyBKlEZ90aUwG
+ D+JFNComs6Uf9xmnL9Y303Sb3aK+Y7MB24L0VlEsevF+cu/PqjesIIz8MDAHCrA570Sx
+ RVRzgqyEPlY/AoXuBbfg/Iv8ksFDxrK8YaMvin1Iuic8T/SwUWuWUM+5c9XSBeURUEqZ
+ DyTrwclMVkLp2zJSe6fY8PBF6SFdnsRBAn61Kuws9ltx56N4LbSiMRnaZhd8BOOqMPQi
+ pBKg==
+X-Gm-Message-State: AOAM531PX1YIez8iZMiaLxUNDGMRlq74hbIDatVt5yetNXjMGESuWQmV
+ ldQ20drOsm3TcXPeBjtYDLj53Q==
+X-Received: by 2002:a62:e404:: with SMTP id r4mr4431189pfh.213.1599150449467; 
+ Thu, 03 Sep 2020 09:27:29 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id q71sm3132304pja.9.2020.09.03.09.25.19
+ by smtp.gmail.com with ESMTPSA id e18sm3233290pgr.53.2020.09.03.09.27.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Sep 2020 09:25:19 -0700 (PDT)
-Subject: Re: [PATCH 1/3] target/arm: Convert Neon 3-same-fp size field to MO_*
+ Thu, 03 Sep 2020 09:27:28 -0700 (PDT)
+Subject: Re: [PATCH 2/3] target/arm: Convert Neon VCVT fp size field to MO_*
  in decode
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20200903133209.5141-1-peter.maydell@linaro.org>
- <20200903133209.5141-2-peter.maydell@linaro.org>
+ <20200903133209.5141-3-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <d4329a97-d20b-f47a-ddca-cc42cb190ee7@linaro.org>
-Date: Thu, 3 Sep 2020 09:25:17 -0700
+Message-ID: <4302c192-fe8d-679a-aa7b-08c604bbbc13@linaro.org>
+Date: Thu, 3 Sep 2020 09:27:26 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200903133209.5141-2-peter.maydell@linaro.org>
+In-Reply-To: <20200903133209.5141-3-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x542.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x541.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -44
@@ -126,37 +126,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cJrgNY0mlp+4
+X-TUID: 1mjVC2Va90SW
 
 On 9/3/20 6:32 AM, Peter Maydell wrote:
-> In the Neon instructions, some instruction formats have a 2-bit size
-> field which corresponds exactly to QEMU's MO_8/16/32/64.  However the
-> floating-point insns in the 3-same group have a 1-bit size field
-> which is "0 for 32-bit float and 1 for 16-bit float".  Currently we
-> pass these values directly through to trans_ functions, which means
-> that when reading a particular trans_ function you need to know if
-> that insn uses a 2-bit size or a 1-bit size.
-> 
-> Move the handling of the 1-bit size to the decodetree file, so that
-> all these insns consistently pass a size to the trans_ function which
-> is an MO_8/16/32/64 value.
-> 
-> In this commit we switch over the insns using the 3same_fp and
-> 3same_fp_q0 formats.
+> Convert the insns using the 2reg_vcvt and 2reg_vcvt_f16 formats
+> to pass the size through to the trans function as a MO_* value
+> rather than the '0==f32, 1==f16' used in the fp 3-same encodings.
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  target/arm/neon-dp.decode       | 3 +--
+>  target/arm/translate-neon.c.inc | 4 ++--
+>  2 files changed, 3 insertions(+), 4 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-> ---
-> I wanted to call the field %3same_fp_size, but decodetree
-> doesn't seem to allow a field starting with a digit, even
-> though it does allow a format that starts with a digit.
-> So it's %fp_3same_size...
-
-Odd.  All of the names get prefixed, so we don't have a problem of a digit
-beginning a C identifier...  I can look at fixing this if you want.
-
 
 r~

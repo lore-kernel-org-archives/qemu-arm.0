@@ -1,233 +1,159 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp823563lfc;
-        Thu, 3 Sep 2020 12:47:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJynTNKKO2Ft1S16YCw3Qz6KvUqVzXG0cE3D2fAB5PzoL7rt8rSk2IvnE6kyJa4dEjur1wnR
-X-Received: by 2002:a25:3556:: with SMTP id c83mr5028512yba.412.1599162461852;
-        Thu, 03 Sep 2020 12:47:41 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1599162461; cv=pass;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp848305lfc;
+        Thu, 3 Sep 2020 13:21:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzYRZcJM9lSPA4HY7vmsjdNqBCTxiNJSaj3i6DNk3urB9dt8155ChDpcfHjFKd6OXlZGAbR
+X-Received: by 2002:a25:f807:: with SMTP id u7mr5422431ybd.291.1599164484356;
+        Thu, 03 Sep 2020 13:21:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599164484; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yew5j1vf7IU7InQF8J0wFVK3J7+gmquawEKyiqGEv+TKZU65xcKrYaS7PIbZXttEUB
-         ubqSn7ub5lEe1s97FgWzVG7pfbYTUkn0K9mWgiwq9tjv5PBXOn+VJ2zGFMjX+9KkedYB
-         /ZOFQ/ad0k5MS+UL+aHz9ZC1Gkhai0DNPiNf45NT9YkzMkJa/kV1hqRq7+3X4G9U35Y3
-         z3VVzRXwhxM+xb+92uW7grxCRGTOkXUQnl1lX/vZMnsgPsRAe6JxqjqgL80T9S2HQRiG
-         K96EfPB532k9sWq7l5omCFOLTgxLIKRabR1yNJCDxy+LyJfJDUGD35dEOSb2eaDT74kf
-         7jLw==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=dKSb1gyDqaOCWIRXsQi+TrhyLbaZX4T85nYGO5lxHZ0UDDNjRK3HJZqEDCWg0TOJD9
+         Ae77oPk2NXSIx+K1pIJstYTeeo/ovdrb68buwJuEYyjOTcl5L9e2a0jJc1E8ABOj6NeM
+         ULKTEn18vOjdzqujuAvuM1absLWmuwsxtfpdr/C6sHrc6osA2ydxkjYWg0mbIHgvGsaU
+         mUvs03WDW7biagzDLWsnD+MPmb8i48/vKZUfShdq2j630Ewr6PqMphZ8/p6GWS44ORCv
+         W34z60bVkvyXr4FDQliTX1VNheAnwRLlTZtkfrHC/kIrxXnnCsv5fh3gzTuCKLLEulww
+         1dnA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=nI+4pNLAIOlb9AHbHxv15EWBM4H1fJKDHI9gck2x/CE=;
-        b=cFJtTJktrgjGRmfMcboO+0IVMafYOxP0RYAktIO+PPhfHxt47BRjW+xlfM7bZQNZak
-         x0lTLhGiHF/SgdiQXbxtNLfkyYv6Y8MhBGWWeYR3f0Jf+jCeirT/TOErpCiWB6juBuDq
-         q1xyWpOxIB0CqjPCsrnAml0o0hmKFc2IFSFdQbdVyxLFUwbotlwNtamAk1qOQz6+Wpxo
-         rCgEbwVkQntLdXcj9tgELps/sD2gSlwgjSuA7soz/F30F/sFWv3SG8fNnqJCNW5PzYt8
-         ph7LvsmtPefgm6xGsf1Ljm93EJ0S1Oi8uky2ftr0qyeRBPyCjAlnL2YjlaiyyaQI84Uh
-         kIlQ==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="faX/qhry";
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=iMf7PrtIvi+uTaRRjwphBu6nmGC3imxNmq1uK0cxKrA=;
+        b=KM9vknYK62V1M7pMOcpFiaIFhFfjjhVGGZUKaO88pEJAdL/ecXqlaxJ86yUX1pj7rk
+         f4zxwYHPlk4KzC9E7YKxBYrA0HI5T/j1jwdYvqbdMAI2oDxRP4R11BjVhuF9fpl9Mg18
+         e4qnyXIkim6zHYBnW7UJLdJbaQINuNIsBBdZZzQ2k9dZYEUinFxSqf85LYliLXyHL597
+         to0XrXyRK1Zkicl4FzLRIZY+s7Crq0UCBfNbEVZcp1fsWwO3WPDedvQltLOvuoPBatxw
+         Ui1m9xI5xWsu6NW/lq/lc+qTqvKVUXq6yplCZ1KGapXyf4Zg/k85Y5Am0ft2+4Xb9cTs
+         XPEA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@linaro.org header.s=google header.b="OZl/kgeh";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17si1036940ybr.306.2020.09.03.12.47.41
+        by mx.google.com with ESMTPS id x36si3932342ybh.121.2020.09.03.13.21.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 12:47:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Sep 2020 13:21:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@xilinx.onmicrosoft.com header.s=selector2-xilinx-onmicrosoft-com header.b="faX/qhry";
-       arc=pass (i=1 spf=pass spfdomain=xilinx.com);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47242 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b="OZl/kgeh";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45486 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDvCv-0000bK-9I
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 15:47:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33008)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kDvjX-0006A2-Mb
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 16:21:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41308)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1kDvC0-0008Qt-Rm; Thu, 03 Sep 2020 15:46:44 -0400
-Received: from mail-bn7nam10on2055.outbound.protection.outlook.com
- ([40.107.92.55]:57680 helo=NAM10-BN7-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar@xilinx.com>)
- id 1kDvBy-0003db-8E; Thu, 03 Sep 2020 15:46:43 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dVoOObFd3xn7dlUcDQheRTfj+kTby8xXg0jQLbzVBMoxqpoFJblt/qhjeymVaQwmCoc4gFh8tMg5GGkdAInYNIFCRlV2lnALbRDUkVzVAph2HXSa3g/BkxfYXqPs1kYEjcQE5o8AdBFx48KVezs0ODWraUYs03sAPr9l14VpxwceOb0NSq/hcqzAgfKyV5pxJri4L8JMeg9yip5u+VToDqLHW7ba/WC9mTDVLEXP7UbTfU+VsHgAPl0vpyrKfyWSIgxDiIGZ6mEvEbzeprE7UEQAWGYX934rDDV9opukP/B8M1615jk3CPCjVS8jIvzJglp2kDgi21p9gK1FQM/7Sw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nI+4pNLAIOlb9AHbHxv15EWBM4H1fJKDHI9gck2x/CE=;
- b=m+PxlgP+AOHXCCegJviM6Wa1e8pi9+si2UBwi+ua8hqy8PLIE/X3wP7gPyAjJIkyuL2lbs4GEouhQV42fkmQ0T/b45B+WsQuH2ZOvQ+pQv7SIo2GXoxjLB85ipyXqlvfBiMIEzWljoHF2miCwxm8MX42Ljaze+Q2LPzIb0FgmzAZtF8tTAbTETv9CeT/9XPKnbFEjpxW0IQ/PypfPop4C+iT3zytqdoH9WyvG0gjeX+vIS9RMkWfUDBkdJWcUJ/Uz24gCsQkvcLSoAtYrbQ9aDwXb+fKb7WGO4R8dC3hqdtdxsK4YuNnYf0L9DHBTIlV6+vnWdAVQwC2kdPR76ntdA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 149.199.60.83) smtp.rcpttodomain=twiddle.net smtp.mailfrom=xilinx.com;
- dmarc=bestguesspass action=none header.from=xilinx.com; dkim=none (message
- not signed); arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=xilinx.onmicrosoft.com; s=selector2-xilinx-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=nI+4pNLAIOlb9AHbHxv15EWBM4H1fJKDHI9gck2x/CE=;
- b=faX/qhryhnOQXns/ifek+4farfGvrIcUpwrOkFpcRmMiPpKNTXJxXNLDxzHzu47U/kkz0vQ0E5huTsX+LWEMowfZKi0i7BhBKvXiuwUh1ubCUXCU7QFjFC/6/FYMEcZx3nLG5CJOU02yr9zysJoNlnhtvkLa5jOXSp94ASIWF9c=
-Received: from MN2PR11CA0005.namprd11.prod.outlook.com (2603:10b6:208:23b::10)
- by BYAPR02MB5656.namprd02.prod.outlook.com (2603:10b6:a03:96::14)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3348.15; Thu, 3 Sep
- 2020 19:46:37 +0000
-Received: from BL2NAM02FT055.eop-nam02.prod.protection.outlook.com
- (2603:10b6:208:23b:cafe::5a) by MN2PR11CA0005.outlook.office365.com
- (2603:10b6:208:23b::10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3348.15 via Frontend
- Transport; Thu, 3 Sep 2020 19:46:36 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 149.199.60.83)
- smtp.mailfrom=xilinx.com; twiddle.net; dkim=none (message not signed)
- header.d=none;twiddle.net; dmarc=bestguesspass action=none
- header.from=xilinx.com;
-Received-SPF: Pass (protection.outlook.com: domain of xilinx.com designates
- 149.199.60.83 as permitted sender) receiver=protection.outlook.com;
- client-ip=149.199.60.83; helo=xsj-pvapsmtpgw01;
-Received: from xsj-pvapsmtpgw01 (149.199.60.83) by
- BL2NAM02FT055.mail.protection.outlook.com (10.152.77.126) with Microsoft SMTP
- Server id 15.20.3326.19 via Frontend Transport; Thu, 3 Sep 2020 19:46:36
- +0000
-Received: from [149.199.38.66] (port=50797 helo=smtp.xilinx.com)
- by xsj-pvapsmtpgw01 with esmtp (Exim 4.90)
- (envelope-from <edgar@xilinx.com>)
- id 1kDvBl-0004OS-Hs; Thu, 03 Sep 2020 12:46:29 -0700
-Received: from [127.0.0.1] (helo=xsj-smtp-dlp2.xlnx.xilinx.com)
- by smtp.xilinx.com with esmtp (Exim 4.63)
- (envelope-from <edgar@xilinx.com>)
- id 1kDvBr-0005Up-9f; Thu, 03 Sep 2020 12:46:35 -0700
-Received: from xsj-pvapsmtp01 (smtp-fallback.xilinx.com [149.199.38.66] (may
- be forged))
- by xsj-smtp-dlp2.xlnx.xilinx.com (8.13.8/8.13.1) with ESMTP id 083JkXB5027745; 
- Thu, 3 Sep 2020 12:46:33 -0700
-Received: from [10.71.116.235] (helo=localhost)
- by xsj-pvapsmtp01 with esmtp (Exim 4.63)
- (envelope-from <edgar@xilinx.com>)
- id 1kDvBp-0005Uj-18; Thu, 03 Sep 2020 12:46:33 -0700
-Date: Thu, 3 Sep 2020 21:46:29 +0200
-From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [RFC PATCH 00/12] hw: Forbid DMA write accesses to MMIO regions
-Message-ID: <20200903194629.GH14249@toto>
-References: <20200903110831.353476-1-philmd@redhat.com>
- <658fdd16-33da-af3a-6d8d-f7ea1253f061@redhat.com>
- <CAFEAcA8aOzq8UQwKiyuvJokBT9ui6JWxzf=T8=r13Vuu6+_kkQ@mail.gmail.com>
- <20200903142410.GX2954729@toto>
- <d030f14b-5b1d-6028-8fdd-5dbc25abdf74@redhat.com>
- <20200903155023.GC14249@toto>
- <9105d1fb-8064-076f-9408-ba94c889b765@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kDvj4-00069j-Cs
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 16:20:54 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:36091)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kDvj2-00084e-Jq
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 16:20:53 -0400
+Received: by mail-wm1-x341.google.com with SMTP id z9so4126251wmk.1
+ for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 13:20:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=iMf7PrtIvi+uTaRRjwphBu6nmGC3imxNmq1uK0cxKrA=;
+ b=OZl/kgehL8aVAhLxdcIUVooRvRiqWFsnQWtwOxAxC/ZJcNYL0S/hXps/zWYg3jG78X
+ i2KkS0a4x90Iy5XfKXZnxxonw93bwFbo0KRHINYlefWrySh1rSGCUCtlVySzj4rz+tJO
+ XT7YtFpJKb5alarKSrhBCmGayReJ7InJp2NLF9/ryXOM4hD+rLOIggfQI638LfMEXQHF
+ wQqmU4MsY3CXVmu6htTtzz+2mGoJNO/yWYzmGt7t4zYmduIrrzYVTSYedXmsT2kMjMeK
+ zKbTDyriD2NWcGbiCtzc+plHKK1yd5ji4QbgCa8Pwsn1popIkEV7MBjKcjD8KnbbFaRM
+ THZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=iMf7PrtIvi+uTaRRjwphBu6nmGC3imxNmq1uK0cxKrA=;
+ b=TmbKGLbv8Zz0+mzhFwC6ol27oM2DvbBnbF36YaHh7PcdUgberqcO/anwPJXsMg80Ya
+ 351NEG6+P7/etz+qt3GIC0VPYb3EtbbFy+sOBVX7wO9tDGmAUCy//BUDr15q4aofUb2H
+ md9anxz9K0uyKWq6rGi9+5RBGfUiCYnixYnkaJAAKyUq8bZ3VwQWKUs6VHksUUwJxw5T
+ JILfRkCAMFB6HmbOf9R7Dd42ARET1HlSNPrLbhzj35hWfSnClYnLkReuOGM9a3n6cgUa
+ ABRGpsfLkgbP00Hrg7bYXgFnfB78QzIrJD0Ld5wQh9lmNHauosNmjB8qvLbL72Y6Hnin
+ +0hA==
+X-Gm-Message-State: AOAM5301a8oNHgHp3Qep4brQTeuMISkW3nhS9T29fwHCiVkxM9ftDaA8
+ 25d1JYXMtxJHFWUzMSke4LYTDvmy0tWsHVfU
+X-Received: by 2002:a05:600c:2146:: with SMTP id
+ v6mr4076180wml.159.1599164450958; 
+ Thu, 03 Sep 2020 13:20:50 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id p14sm7285023wrg.96.2020.09.03.13.20.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 03 Sep 2020 13:20:50 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH v2 0/3] target/arm: New boards mps2-an386, mps2-an500
+Date: Thu,  3 Sep 2020 21:20:45 +0100
+Message-Id: <20200903202048.15370-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9105d1fb-8064-076f-9408-ba94c889b765@redhat.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-X-RCIS-Action: ALLOW
-X-TM-AS-Product-Ver: IMSS-7.1.0.1224-8.2.0.1013-23620.005
-X-TM-AS-User-Approved-Sender: Yes;Yes
-X-EOPAttributedMessage: 0
-X-MS-Office365-Filtering-HT: Tenant
-X-MS-PublicTrafficType: Email
-X-MS-Office365-Filtering-Correlation-Id: aafa8737-169e-4c84-945f-08d85042115f
-X-MS-TrafficTypeDiagnostic: BYAPR02MB5656:
-X-Microsoft-Antispam-PRVS: <BYAPR02MB56564E4E66DB14608167AAABC22C0@BYAPR02MB5656.namprd02.prod.outlook.com>
-X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
-X-MS-Oob-TLC-OOBClassifiers: OLM:10000;
-X-MS-Exchange-SenderADCheck: 1
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: aXp8lrAWeaY+evJnQsjxbcM79iR9BDPTFfn9pu219Lf8z/fWUdPkF0ZLobM9MsgeXfPa0ckoG4JPS5fGtXMtwt8n2ifO1zGBjzRO0qRgMeeaxSGGxlX/eDYDLFOlkjRrg3xXOlCMSCux1R4RiWegMF0ftUmEhvlVLeDue3Abl5faaKlza+Ol2OFEXf81Gm8nD/7nG3Zr8s3bFYFnr2EmBXWFuFNSP+8pYxZMFsr0/ZqcHiHiR9fU/joZTRwA5B5ntcvApNmfnxUe2aYs8bwcjCFE8Q2xXhDe5N801kEV1Nv0KuY0QRN57ltfCWI+45CwJNXSDBiX2oGjrCe4qrO3AHb7n3GLNxc7p4VqkO+fFaDnzozb9NLgVrBsgW0Oe112omIfsqzuCVtaU2/9HHMOGnM4j88PoRMPtwDWlvEL1u8=
-X-Forefront-Antispam-Report: CIP:149.199.60.83; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:xsj-pvapsmtpgw01; PTR:unknown-60-83.xilinx.com; CAT:NONE;
- SFS:(7916004)(39860400002)(136003)(376002)(346002)(396003)(46966005)(426003)(82310400003)(8936002)(7416002)(478600001)(336012)(6666004)(9686003)(7406005)(33656002)(54906003)(5660300002)(186003)(47076004)(53546011)(70586007)(70206006)(83380400001)(1076003)(316002)(81166007)(82740400003)(8676002)(2906002)(9786002)(33716001)(356005)(6916009)(4326008)(26005)(42866002);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: xilinx.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2020 19:46:36.2015 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: aafa8737-169e-4c84-945f-08d85042115f
-X-MS-Exchange-CrossTenant-Id: 657af505-d5df-48d0-8300-c31994686c5c
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=657af505-d5df-48d0-8300-c31994686c5c; Ip=[149.199.60.83];
- Helo=[xsj-pvapsmtpgw01]
-X-MS-Exchange-CrossTenant-AuthSource: BL2NAM02FT055.eop-nam02.prod.protection.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BYAPR02MB5656
-Received-SPF: pass client-ip=40.107.92.55; envelope-from=edgar@xilinx.com;
- helo=NAM10-BN7-obe.outbound.protection.outlook.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/03 15:46:39
-X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Qemu-block <qemu-block@nongnu.org>,
- Li Qiang <liq3ea@163.com>, "Emilio G . Cota" <cota@braap.org>,
- Joel Stanley <joel@jms.id.au>, Richard Henderson <rth@twiddle.net>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>,
- Robert Foley <robert.foley@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kumar Gala <kumar.gala@linaro.org>,
  Richard Henderson <richard.henderson@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Jan Kiszka <jan.kiszka@web.de>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Tony Nguyen <tony.nguyen@bt.com>,
- Prasad J Pandit <pjp@fedoraproject.org>, Alexander Bulekov <alxndr@bu.edu>,
- Andrew Jeffery <andrew@aj.id.au>, Laszlo Ersek <lersek@redhat.com>,
- Emanuele Giuseppe Esposito <e.emanuelegiuseppe@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc <qemu-ppc@nongnu.org>,
- Klaus Jensen <k.jensen@samsung.com>, Peter Chubb <peter.chubb@nicta.com.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZvHZgduIiVpP
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: d5CRc6tY3P2X
 
-On Thu, Sep 03, 2020 at 07:53:33PM +0200, Paolo Bonzini wrote:
-> On 03/09/20 17:50, Edgar E. Iglesias wrote:
-> >>> Hmm, I guess it would make sense to have a configurable option in KVM
-> >>> to isolate passthrough devices so they only can DMA to guest RAM...
-> >>
-> >> Passthrough devices are always protected by the IOMMU, anything else
-> >> would be obviously insane^H^H^Hecure. :)
-> > 
-> > Really? To always do that blindly seems wrong.
-> > 
-> > I'm refering to the passthrough device not being able to reach registers
-> > of other passthrough devices within the same guest.
-> 
-> Ah okay; sorry, I misunderstood.  That makes more sense now!
-> 
-> Multiple devices are put in the same IOMMU "container" (page table
-> basically), and that takes care of reaching registers of other
-> passthrough devices.
+This series adds two new board models in the mps2 family.
+The AN386 is identical to the AN385 but with a Cortex-M4.
+The AN500 is a Cortex-M7 image which is almost the same as
+the AN385 but has a few minor differences, most notably the
+base address of the PSRAM and of the ethernet controller.
 
-Thanks, yes, that's a sane default. What I was trying to say before is that
-it may make sense to allow the user to "harden" the setup by selectivly
-putting certain passthrough devs on a separate group that can *only*
-DMA access guest RAM (not other device regs).
+The AN500 is interesting because we don't currently have any
+boards in-tree which use the Cortex-M7.
 
-Some devs need access to other device's regs but many passthrough devs don't
-need DMA access to anything else but RAM (e.g an Ethernet MAC).
+Changes since v1:
+ * patch 1 now also updates the docs to mention the new board
+ * new patch 2 defines the mps2-an500 board
+ * new patch 3 makes some minor cleanup to the docs for these boards
 
-That could mitigate the damage caused by wild DMA pointers...
+Richard, Philippe: I kept your reviewed-by tags on patch 1
+because the only change was the trivial docs addition and
+there were no code changes.
 
-Cheers,
-Edgar
+thanks
+-- PMM
+
+Peter Maydell (3):
+  hw/arm/mps2: New board model mps2-an386
+  hw/arm/mps2: New board model mps2-an500
+  docs/system/arm/mps2.rst: Make board list consistent
+
+ docs/system/arm/mps2.rst | 20 +++++----
+ hw/arm/mps2.c            | 97 ++++++++++++++++++++++++++++++++++------
+ 2 files changed, 95 insertions(+), 22 deletions(-)
+
+-- 
+2.20.1
+

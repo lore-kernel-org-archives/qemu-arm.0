@@ -1,98 +1,103 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp725921lfc;
-        Thu, 3 Sep 2020 10:29:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwIWJbSHZIXxSHijiUxYv7P4mZrLjWocMa5Nepvr4TLzzRFjkgdM6AdIa5J07atLA3Lk9ob
-X-Received: by 2002:a25:c694:: with SMTP id k142mr2118809ybf.124.1599154147541;
-        Thu, 03 Sep 2020 10:29:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599154147; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp725939lfc;
+        Thu, 3 Sep 2020 10:29:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzdIVonQExJgimFHzC0T0zTqFLlvPVdFjCEQXFN3QdWfuBWvSsKhOVey713OEK+4LCoRi41
+X-Received: by 2002:a25:71d4:: with SMTP id m203mr4091625ybc.363.1599154149706;
+        Thu, 03 Sep 2020 10:29:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599154149; cv=none;
         d=google.com; s=arc-20160816;
-        b=adm7xugT2h5PeXyJlIhiKyo4gob07m9FPtJUyHygiA3OTMlP4t1sb9tQfrDmBTP/Sv
-         n2suhsHNjUqDdsCMCUiHtHHb3tXZ3XNxnHw7d3CSinFJaPdwzQAUKJxvRo/u1QjwOYmR
-         Pakj0rvg/WVMJmZijFeP4WHOmBQ9q1qMvg2g0wnl7N1gNaYvBhIhIkuaeyx18qqYUIeX
-         0d1bj0EtO8yyNCFTUDG3us7lE3fLEKRrW8GoWqmqENAAEVbT1S6gTB6vgVi+M0WhW67Q
-         ZlM1/k1aTi6PHQiWbqKSdJhBrKEZd+KqIUAWS7yuLCrotm+qQLQQhsZLES/RCJVqY61R
-         hl/Q==
+        b=OdEV9JaUSA+d+p8ejuHMnf3qEs7FpExqIef7UfENLmYIrdu/ZvDAoHlalz2J/TLW4j
+         bhmNv+tqy/C3sPR16tNnN57XKk0DAh1+mDyBdHhYr0kVQiBkWllDqvHLUcg8uzB8tryc
+         N2Baj3cBHa9f40v1dSPVZB5g1cEEB3S4iLLYbIUkkA1eQgpGvA7BL+oRRyrQxRrk/bV7
+         Fh5RWP9zPI+BZBrOr8A4R7pXBXHcx957SKI/+g6NHqPEbCmP8qezSojXpqeRZVs/yA+S
+         ZWsgd9gVTW22vkhzkkwNUw94yTTSjlvJ8B5KWGfdkALvYZNQYFgbMDh3MpdZ9zgX5Y84
+         W8/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=MaYvDpYA/q1gHW4bD3RmC39zVROC6oAwV/mFF935mOk=;
-        b=A1iEECGpihUwd6jSc+VdPwcSouU8bzQ+l7+8Bweu0eVt1328QSe4gVOgPBOmBbeI4H
-         IrlglkhOOrfRL6EOwCpDti49kCfZxFAiIJAX4Lt/i49uxhaPtZUHA1qLBILUB67m6vt7
-         QD5312lEGpiJ1n/TuXVDl2BhDqo5mm7cO7Ad6qU1faDltaCsAYHx7zovD7v2TffZVV+k
-         5+qPph7pWpcz8iFj4Y2LLMxnb24lPnYo2+/loRYdqHPs38RizHO0Dv5UJJyLXki+rH0N
-         dbPryTBAMfrnq9MqOWTRNlB3DyEVaGJffwje4YeWYc1NdFmyyjnAkenajUBo7/+FzqHW
-         q6Ug==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=91f5lKKcpgYukroYyk+ZgX5AZVtjLWpe85jPZGy47cQ=;
+        b=sJUj98yvdNx3IbyWUTxuSvc/WNPjZXhNgvSukCTdiS52gTypVxLCcrpWhCZyRGP1+G
+         PfDSCtWJT7JbZvCGXTrS8FMlLS9VJoPgwPro+ieDi9CQjKMI8+yLjxo0pbaxAGrUqieD
+         I/wx5TNjyHxFL1Db0HzAkUTsBr3TIxQO6xOD3OVJlqhNYndrBbs8b1dNzyRVJOcLeTWb
+         Bdut7AV5RC91PFwmi3WkRUMxNqT+pXNNJF2tippTjs+vyrbBNbx8FhzNwUweez+qYL7j
+         ks6EI1kDifJGtOH769GQN80WOxSRX94qohajdDjkf5k8HpEvngTLdrOyY8qMlJMHWwi5
+         D/Gg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A4R1ADeV;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LyC+W766;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 84si4310602ybs.20.2020.09.03.10.29.07
+        by mx.google.com with ESMTPS id r135si3783746ybc.10.2020.09.03.10.29.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 10:29:07 -0700 (PDT)
+        Thu, 03 Sep 2020 10:29:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=A4R1ADeV;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LyC+W766;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57012 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57244 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDt2o-0002Pc-Uh
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 13:29:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55490)
+	id 1kDt2r-0002Vu-3j
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 13:29:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55540)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDt1x-0000p2-Gy; Thu, 03 Sep 2020 13:28:13 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:42742)
+ id 1kDt20-0000v2-Vh; Thu, 03 Sep 2020 13:28:16 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52779)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDt1v-0002V5-KF; Thu, 03 Sep 2020 13:28:13 -0400
-Received: by mail-wr1-x444.google.com with SMTP id c18so4068752wrm.9;
- Thu, 03 Sep 2020 10:28:10 -0700 (PDT)
+ id 1kDt1z-0002Vw-Be; Thu, 03 Sep 2020 13:28:16 -0400
+Received: by mail-wm1-x341.google.com with SMTP id q9so3682039wmj.2;
+ Thu, 03 Sep 2020 10:28:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=MaYvDpYA/q1gHW4bD3RmC39zVROC6oAwV/mFF935mOk=;
- b=A4R1ADeVqpDDM6cYNxZfbffyJcUga2yXAfFk0JhtGCPzRjJ22uVpFCfE8zDbQ3ETc9
- NMGjg1P0ZrPRfiYybGTYrdYUTXBvIe+0+9biwOgVJg9nV0lyU+LuqZxBg3BD2sNllryU
- kP6rhep2jcEEajTQfvJcqyKoHzqszqdHLTQBDJuWDazruJX6IubE8Q2CURdfpWbScIol
- 22rFQRJ+VhftqKc1HJMN6YLZv9A/cdldlTrmez4w4Jtx9KoAb3P30srdFww2At8+Gbpz
- 6ks5dSrD3cEGOuFmHgljCsCQh9nQe1VXyNqVaE5aFHYjq9xtPgJxchEs5Or1JQOJvQXS
- uhrQ==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=91f5lKKcpgYukroYyk+ZgX5AZVtjLWpe85jPZGy47cQ=;
+ b=LyC+W766N/SwxeuWQWdZT0GanuQ0dc5ctaDpI91uj2h7ZqfZa7yANoCBSVdqndSr68
+ S6zx4CtfamtXLOxPkLiMmCxtbcEEvSXqLBTE2fDIpXWXBR/6grDvpUHTLMZuOSo1jBET
+ uYqLawQbCL4xH5ZFvWifVnQqE3d1ZHzqhe2v6WPJOZb0lzpmYb12xucEREg69PFPE9MH
+ SnC4DVAH8pUlkl6Tr1QGKqTib/mj1fwYIuVnMHIlY5uSyQfc9+LfG/VPOM6nczxWGCxa
+ bq1PlXmWZJ3hKzaql7SvzgVrHRgIfO1IbNKLPGXAfMxFW6tB7x4XG174loooTZrKfyo9
+ zXow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=MaYvDpYA/q1gHW4bD3RmC39zVROC6oAwV/mFF935mOk=;
- b=InIjcoCI9OpwlbrqdusRKWlawAiYn2l5gSkMsEjRfQbVr0T1gX2/yLELsd0JnLkTKf
- ZZqhlFQhPDRy95dzf5mJ3FewfK9SJMXf+AC1ZEzO/K7rjalKlAXsujsJzUemI/fmJDrU
- T7Pwp5JblckPsRQ2X7rxv3j9A5/RjH2MmPyyfzgPZ/iYW8CIZuCicAVjl5D1jBEjQlJ0
- qT1I1j6OWfCEcRSDO4IYYUGddGprxeUXFRdPyVZMuIh+huUZp1Im6cLT3l7BZbzBZgdk
- v/oCCVViPY/UIYbJfJwT615ntIgj55b/K0/ePNAFkHlCP3vVJcVtbUUlBlwJG50Onco6
- rfdw==
-X-Gm-Message-State: AOAM530hoXu2jqvgsu0syBlOUjmuJYuNQcoCgaZ9KniHoWnaLck2JMtP
- PN4no/1Q//7HE/bN5eM7uASxd2KNVsI=
-X-Received: by 2002:adf:f011:: with SMTP id j17mr3376770wro.335.1599154088909; 
- Thu, 03 Sep 2020 10:28:08 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=91f5lKKcpgYukroYyk+ZgX5AZVtjLWpe85jPZGy47cQ=;
+ b=JBA8TNHtpjFiC6AAu18xghJull1m+1E58bqG3DJqKLnrg275/Aj1UrQRqZLnvQd3CY
+ JHmJVROlWqbjQSFBSx5I9A8cFBESHcjKQLQN1Hl2inwnPyMjSExkt2pjEpwLBwLHyjBa
+ b6Hyyt9yMCWYUsfkFmsH73BJrC38TrAHTx4lilXDReHI6vczFiyz2LKTbAYi3yteK75B
+ VX6/ndav5fm5Ztn7EXY0OanhdaFOTj2NcEXr3DVtibSU8wXWstUQAtoSBPsYJuu4Rvca
+ hNBWlVO50zyo4v01h7qv/HSvBVlkhxZvwbmldT1m4goN5oTpDdL/WcTharmWHCjLageD
+ CC+Q==
+X-Gm-Message-State: AOAM533XKw2tD3ceqJ/Qp9lQShHUJkVSHNYI4QUi9UP3hNCnzt0WKTC/
+ KAPP0V+X9lulA098BAdb8RavuAFaK0w=
+X-Received: by 2002:a1c:6a08:: with SMTP id f8mr1779631wmc.151.1599154092897; 
+ Thu, 03 Sep 2020 10:28:12 -0700 (PDT)
 Received: from localhost.localdomain (50.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.50])
- by smtp.gmail.com with ESMTPSA id b2sm5325802wmh.47.2020.09.03.10.28.07
+ by smtp.gmail.com with ESMTPSA id b2sm5325802wmh.47.2020.09.03.10.28.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Sep 2020 10:28:07 -0700 (PDT)
+ Thu, 03 Sep 2020 10:28:12 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 0/4] hw/sd/sdhci: Strengthen multiple DMA transfers
-Date: Thu,  3 Sep 2020 19:28:02 +0200
-Message-Id: <20200903172806.489710-1-f4bug@amsat.org>
+Subject: [PATCH 3/4] hw/sd/sdhci: Let sdhci_update_irq() return if IRQ was
+ delivered
+Date: Thu,  3 Sep 2020 19:28:05 +0200
+Message-Id: <20200903172806.489710-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200903172806.489710-1-f4bug@amsat.org>
+References: <20200903172806.489710-1-f4bug@amsat.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -121,24 +126,34 @@ Cc: Prasad J Pandit <pjp@fedoraproject.org>, qemu-block@nongnu.org,
  Ruhr-University <bugs-syssec@rub.de>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Kj9Q5s8WaEZ6
+X-TUID: iTHPgBSS3U+v
 
-Still trying to fix the bugs reported by Aleksander...
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/sd/sdhci.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
-- Do not send 0 block count
-- Reduce DMA to MMIO re-entrancy by yielding when pending IRQ
-
-Based-on: <20200901140411.112150-1-f4bug@amsat.org>
-
-Philippe Mathieu-Daudé (4):
-  hw/sd/sdhci: Stop multiple transfers when block count is cleared
-  hw/sd/sdhci: Resume pending DMA transfers on MMIO accesses
-  hw/sd/sdhci: Let sdhci_update_irq() return if IRQ was delivered
-  hw/sd/sdhci: Yield if interrupt delivered during multiple transfer
-
- hw/sd/sdhci.c | 35 +++++++++++++++++++++++++++++++----
- 1 file changed, 31 insertions(+), 4 deletions(-)
-
+diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
+index 2b197631870..06cb098036c 100644
+--- a/hw/sd/sdhci.c
++++ b/hw/sd/sdhci.c
+@@ -215,9 +215,14 @@ static uint8_t sdhci_slotint(SDHCIState *s)
+          ((s->norintsts & SDHC_NIS_REMOVE) && (s->wakcon & SDHC_WKUP_ON_RMV));
+ }
+ 
+-static inline void sdhci_update_irq(SDHCIState *s)
++/* Return true if IRQ was pending and delivered */
++static bool sdhci_update_irq(SDHCIState *s)
+ {
+-    qemu_set_irq(s->irq, sdhci_slotint(s));
++    bool pending = sdhci_slotint(s);
++
++    qemu_set_irq(s->irq, pending);
++
++    return pending;
+ }
+ 
+ static void sdhci_raise_insertion_irq(void *opaque)
 -- 
 2.26.2
 

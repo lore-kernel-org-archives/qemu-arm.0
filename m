@@ -1,122 +1,130 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp482521lfc;
-        Thu, 3 Sep 2020 05:22:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyCDM/yFiIQ8oHELFO/FhYihyQ+vCTWbOtD9HEbfjtkYidzplEnjbRxofgikcYrXc/xBjsm
-X-Received: by 2002:a25:5384:: with SMTP id h126mr2390222ybb.445.1599135732208;
-        Thu, 03 Sep 2020 05:22:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599135732; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp485630lfc;
+        Thu, 3 Sep 2020 05:26:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzpOmEwiQ7lE9EjOw7pvNi/uymVWkj+1QyAcGpf+ny8SuY4j21Oc+vD+ndubewqHWflFUV9
+X-Received: by 2002:a25:1fd5:: with SMTP id f204mr2488317ybf.236.1599136012454;
+        Thu, 03 Sep 2020 05:26:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599136012; cv=none;
         d=google.com; s=arc-20160816;
-        b=woz566LWlkBm0hyLXD8T3MEaBLHBPWFreHq9ucj3nJOd/vzIV3UGdKFZGrT3L+Kt11
-         3zV08/PnTCg2C0cD/2mklndZwVmmtwxXx/Olw2kGgDksAbgPovg9+SkbZQP2MXGkCksU
-         Dn9samjOY+QhaErzQ/TbwVjJZ9gdh5gI1aCpCWEYEKsuPpZfGi9r414kZLwFPu6iqC5x
-         lcq13fbeaEo4zsbOkDstnNnA163DNvDlqPww+sOOsrp0OgLGYAbwWQ2DpKQx5Q5TXDse
-         SwWqz9QxRmK24DZoSuGUqmRZqJL3FQGxn9zrK5DI2l3P5UUjv7kzRWtXqj7DekmuE1XT
-         TjTw==
+        b=dkMtLZXkBZPYmwFLeuO7492lfllTb1NkxtlxlqgvNM5+9U4TxalhYGXlhOyalQki3k
+         tSnxt0npboMIU893lfUwetoTxx+N8hvSndAuzVDJ2nglzIr7uNCPFBNayswJRYQoy2pY
+         OFRVOljEBkHSKqeRdUE1n3AYouvna8fBgXHJ6EZx+3mS83CHn7jE+AwEgx+IAErUJPkl
+         fmheQU/WtozkAEzlL2IjE7yV9Sgd8E5QTiOuoabcEFTFniRee6L5LjSfbPTNZnigYorR
+         vXnqUOaCeRfa/En5QW+8+i6rRewNKncDsm4GosX36ZRWK6LR9Ux799iFzwkxNcviJQmp
+         jWfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=bL4+RLZNPtPowLWyZzqifgoTNmE/onbJQ3rg0Lg+lfI=;
-        b=Y0NwmvDGtea1vPL9PPLanX4rG+uwVb9atNVKwL6TPMcMJHKVK7ukR0sDad1V9P6qKp
-         LcsvckiCioYQYsFauS+ZV+fA3e/l0iPUBcx4+GRFouZDFGbObDoDc9fQp5kgo8mfkk1+
-         49EQbQDDPwFAXm5LaGJE/VdqPv+IQdkahBHy//8fLnJ7zKy8FtxG4yjXGTAmGDtcO7Yk
-         zaYcOL4prTtkt/5Ub42yM1B7Vgcj5ZEBU12Y5LzuQTeNIq17RhES6H+Q2LApQj0jTZTh
-         JnBrmhjtbiAYCKBU9ricwrQL5RXEjOa/Ivp28r+sDnIn06JZFRVhQcSX60iMSAX6rPqg
-         4jRA==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=UomRoFy3iVqdBdFlSJivlh63ysnacNH4u5rhTJV7rTI=;
+        b=k7hwFww4ywoc4sr4+/lrU1ZRgv3Ey7Rtq27c0Q9Lrm7IjlcGyPb1AJEQiEzahEyIGf
+         eHJzb8UW10KCMtbJT6pTpfAftEvrXLVh/007WjVAifj7nUXne/vmqJoLq/MsaMILFAVq
+         AsiGlH0HLgg6uaoEV0Wku0sTwys5/AxdXkvoXdlWwun/TdUrgbNs+U6lWaIe+eql/CqO
+         WR+0pbol40ry1cozZmlIFf5nO5yJitnSxib2v3MHa12rRRiC09Ydt2P3XkeOV0ONk0tU
+         c4VrnfKPWEEXeJc7vc974yCVnOYA5qCqSt3/67/b7ok6l6pjv3dpjVgGLHVjO4q7gQDu
+         zMcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ee1Krm27;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JHR8RlO9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l65si3565376ybf.282.2020.09.03.05.22.12
+        by mx.google.com with ESMTPS id v185si2825262ybv.256.2020.09.03.05.26.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 05:22:12 -0700 (PDT)
+        Thu, 03 Sep 2020 05:26:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ee1Krm27;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JHR8RlO9;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57598 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41118 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDoFn-0000PS-Hm
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 08:22:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51670)
+	id 1kDoKJ-0005hR-QE
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 08:26:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52754)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kDoFf-0000P3-ET
- for qemu-arm@nongnu.org; Thu, 03 Sep 2020 08:22:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:29918)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kDoKA-0005gM-SQ
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 08:26:42 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:54363
+ helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kDoFd-0006yG-8E
- for qemu-arm@nongnu.org; Thu, 03 Sep 2020 08:22:02 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kDoK8-0007ew-3v
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 08:26:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599135720;
+ s=mimecast20190719; t=1599135999;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bL4+RLZNPtPowLWyZzqifgoTNmE/onbJQ3rg0Lg+lfI=;
- b=Ee1Krm27kH+hj7HoOOq+LddTmTQ3wfD+S0C9Jg6hbrZ2G1z7p3BaR/WT5fgo5oH4z1YZo9
- b8e8dsr2WXbjqBFq1Tc6mRoeQo227HYLTeOJev1sNs9+fSvlYSW/iATAok0eXzvy+F2wLh
- VER3/HJHNCtixlWHJ44rptSBv+BgdhY=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-159-ygBF9nWgOTm0PkSIc_pciw-1; Thu, 03 Sep 2020 08:21:57 -0400
-X-MC-Unique: ygBF9nWgOTm0PkSIc_pciw-1
-Received: by mail-qt1-f199.google.com with SMTP id g10so1977522qtr.19
- for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 05:21:57 -0700 (PDT)
+ bh=UomRoFy3iVqdBdFlSJivlh63ysnacNH4u5rhTJV7rTI=;
+ b=JHR8RlO9KtfOA5vxip9vW0HRX1AnbWvMGz3jZuBR2LB66tIOFemoYBDKMNuKVLeLD/ePJv
+ yj6eqTucL5mh+xily25VZVrTRmj/vAZhM/3CaxrPWQg8G5NTlb+UyBNbGeY/Mvs2adWaJ3
+ 3PbDTD71P6F8j73YYYHxnc8hShHFF+8=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-281--WA3fhq6PjKt-AhwkNhzag-1; Thu, 03 Sep 2020 08:26:38 -0400
+X-MC-Unique: -WA3fhq6PjKt-AhwkNhzag-1
+Received: by mail-wr1-f69.google.com with SMTP id l17so1014272wrw.11
+ for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 05:26:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=bL4+RLZNPtPowLWyZzqifgoTNmE/onbJQ3rg0Lg+lfI=;
- b=IGgrmF7uGVYRq5+7IozRdCgUKRXUcyB8SgbF2alUyinZnaywX+7+41FPmG0bL8h9Q9
- zNLE5laV0fY8bDkza8SDc5iHEHgMFD8I3SeDqt4cbB73nPT/mHHFGVXtAxobwRtgmEX0
- zmwMAuFwXci12hWJsMwH4g5fMmqvrIt3MPg2JOSI9MuaBDtSr0ODFOoHEeS2jd4pQGdB
- d2vM5QBRhP0GA3+FARXI66yXZF8B7RsIvbDlMal+4uzt2vXUenvw5H/DjxaaSNtanNp6
- kwkkW0G11H1CGeFVxizmH9c7BF1r4t93CPm46cG/fz2H789jL//acfl+OTBi3/vWgBXq
- V0sA==
-X-Gm-Message-State: AOAM532jqAUGEWb7JGQpftdN9gJ2SwgcoTGPlf0OnMF2yqddoNxibZFI
- uJO6XqOa+DSN4e//aBFkTkwIJEm26OjmxIjXuwoa2T+M3//9nKfwxsqNyED1sqrpz/JXe6vmM/v
- +oU/Pt0e++FaXFKOknt9VuCVWscvd
-X-Received: by 2002:ac8:7551:: with SMTP id b17mr3023341qtr.27.1599135716855; 
- Thu, 03 Sep 2020 05:21:56 -0700 (PDT)
-X-Received: by 2002:ac8:7551:: with SMTP id b17mr3023315qtr.27.1599135716608; 
- Thu, 03 Sep 2020 05:21:56 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=UomRoFy3iVqdBdFlSJivlh63ysnacNH4u5rhTJV7rTI=;
+ b=AyX8ojd7Ip/UsEoLizmI0SmkX6YUWJ/e3z3iNX4y1f0D0U7A6m4GQMrDlYYLqockcE
+ tVCnJh+DJ+vJuaTn9vguMuGz8gnjExbDRH34Sh8KXcnVMjWmZqS1b1dyr/nblZRNt2RL
+ 1mZEiVf09IWchpk3Y5s1DX5t+7w0mmKZjDuwKYAmDfThCTM87xPjjgqKDXF1UpMCQb30
+ iCm+4UaK8erdLbAH/XAe16t4PHVrVAg++X1Pbe33pwWT7WGfYoXrcPzQ6eSYtuNQAe8u
+ +4MKSBKJiLrmogTbcf5qiI+xvEyOXftXcAN5qos4+babSn18GSA18dazjdczrqNAjbX+
+ 8gEg==
+X-Gm-Message-State: AOAM530QEAmmcL3y72+OqD8dWXUrJczFt5wNTvOtAJeRrm2EFPHraQR8
+ g34dym9T0DF7co5UkLfTrtTdHLA1cJ6TrKitB9v3JN0GZTyV+sHSVyPyJ1nVFB+ZVp3m08VUqgi
+ GHx2rFOB3NkmM
+X-Received: by 2002:a7b:c14d:: with SMTP id z13mr2246914wmi.107.1599135996854; 
+ Thu, 03 Sep 2020 05:26:36 -0700 (PDT)
+X-Received: by 2002:a7b:c14d:: with SMTP id z13mr2246854wmi.107.1599135996555; 
+ Thu, 03 Sep 2020 05:26:36 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:197c:daa0:48d1:20b2?
+ ([2001:b07:6468:f312:197c:daa0:48d1:20b2])
+ by smtp.gmail.com with ESMTPSA id l15sm4344741wrt.81.2020.09.03.05.26.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 03 Sep 2020 05:26:35 -0700 (PDT)
+Subject: Re: [RFC PATCH 11/12] hw/pci: Only allow PCI slave devices to write
+ to direct memory
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20200903110831.353476-1-philmd@redhat.com>
+ <20200903110831.353476-12-philmd@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <7e4fd726-07e9-dc09-d66b-5692dd51820f@redhat.com>
+Date: Thu, 3 Sep 2020 14:26:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <20200901142608.24481-1-eperezma@redhat.com>
- <20200901142608.24481-4-eperezma@redhat.com>
- <58783cf8-ef7f-1481-8c5e-acd76a8b752f@redhat.com>
- <CAJaqyWeTruYQGz5CedQW3ogMNO_B77QFRYW-+M_e-pemjvoobg@mail.gmail.com>
- <99c1436d-7701-e7d9-ec3a-c47566aa1ce2@redhat.com>
-In-Reply-To: <99c1436d-7701-e7d9-ec3a-c47566aa1ce2@redhat.com>
-From: Eugenio Perez Martin <eperezma@redhat.com>
-Date: Thu, 3 Sep 2020 14:21:19 +0200
-Message-ID: <CAJaqyWefuJEAzLhnyyH=2tLQw90BqT9r53-HWGno29rUNXLnhg@mail.gmail.com>
-Subject: Re: [RFC v8 3/5] memory: Add IOMMU_DEVIOTLB_UNMAP
- IOMMUTLBNotificationType
-To: Auger Eric <eric.auger@redhat.com>
+In-Reply-To: <20200903110831.353476-12-philmd@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0.002
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/03 01:47:17
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/03 00:24:51
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-2.403, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,118 +138,45 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-level <qemu-devel@nongnu.org>,
- Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Peter Xu <peterx@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, qemu-block@nongnu.org,
+ Li Qiang <liq3ea@163.com>, "Emilio G . Cota" <cota@braap.org>,
+ Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <rth@twiddle.net>, Laszlo Ersek <lersek@redhat.com>,
+ Robert Foley <robert.foley@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>, John Snow <jsnow@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Tony Nguyen <tony.nguyen@bt.com>,
+ Prasad J Pandit <pjp@fedoraproject.org>, Alexander Bulekov <alxndr@bu.edu>,
+ Andrew Jeffery <andrew@aj.id.au>, Klaus Jensen <k.jensen@samsung.com>,
+ Emanuele Giuseppe Esposito <e.emanuelegiuseppe@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: f5sk1dh9mvCK
+X-TUID: 3poQCT4Vwrg2
 
-On Thu, Sep 3, 2020 at 1:06 PM Auger Eric <eric.auger@redhat.com> wrote:
->
-> Hi Eugenio,
-> On 9/3/20 12:13 PM, Eugenio Perez Martin wrote:
-> > Hi Eric,
-> >
-> > On Wed, Sep 2, 2020 at 12:32 PM Auger Eric <eric.auger@redhat.com> wrot=
-e:
-> >>
-> >> Hi Eugenio,
-> >>
-> >> On 9/1/20 4:26 PM, Eugenio P=C3=A9rez wrote:
-> >>> Adapt intel and vhost to use this new notification type
-> >> I think you should explain in the commit message what is the benefice =
-to
-> >> introduce this new event type.
-> >
-> > Will do, thanks!
-> >
-> >>>
-> >>> Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
-> >>> ---
-> >>>  hw/i386/intel_iommu.c | 2 +-
-> >>>  hw/virtio/vhost.c     | 2 +-
-> >>>  include/exec/memory.h | 2 ++
-> >>>  3 files changed, 4 insertions(+), 2 deletions(-)
-> >>>
-> >>> diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> >>> index 0c4aef5cb5..cdddb089e7 100644
-> >>> --- a/hw/i386/intel_iommu.c
-> >>> +++ b/hw/i386/intel_iommu.c
-> >>> @@ -2468,7 +2468,7 @@ static bool vtd_process_device_iotlb_desc(Intel=
-IOMMUState *s,
-> >>>          sz =3D VTD_PAGE_SIZE;
-> >>>      }
-> >>>
-> >>> -    event.type =3D IOMMU_NOTIFIER_UNMAP;
-> >>> +    event.type =3D IOMMU_NOTIFIER_DEVIOTLB;
-> >> If this is used only for device IOTLB cache invalidation, shouldn't th=
-is
-> >> be named IOMMU_NOTIFIER_DEVIOTLB_UNMAP to be consistent with the rest?
-> >>>      event.entry.target_as =3D &vtd_dev_as->as;
-> >>>      event.entry.addr_mask =3D sz - 1;
-> >>>      event.entry.iova =3D addr;
-> >>> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-> >>> index 1a1384e7a6..6ca168b47e 100644
-> >>> --- a/hw/virtio/vhost.c
-> >>> +++ b/hw/virtio/vhost.c
-> >>> @@ -729,7 +729,7 @@ static void vhost_iommu_region_add(MemoryListener=
- *listener,
-> >>>      iommu_idx =3D memory_region_iommu_attrs_to_index(iommu_mr,
-> >>>                                                     MEMTXATTRS_UNSPEC=
-IFIED);
-> >>>      iommu_notifier_init(&iommu->n, vhost_iommu_unmap_notify,
-> >>> -                        IOMMU_NOTIFIER_UNMAP,
-> >>> +                        IOMMU_NOTIFIER_DEVIOTLB,
-> >>>                          section->offset_within_region,
-> >>>                          int128_get64(end),
-> >>>                          iommu_idx);
-> >>> diff --git a/include/exec/memory.h b/include/exec/memory.h
-> >>> index 8a56707169..215e23973d 100644
-> >>> --- a/include/exec/memory.h
-> >>> +++ b/include/exec/memory.h
-> >>> @@ -87,6 +87,8 @@ typedef enum {
-> >>>      IOMMU_NOTIFIER_UNMAP =3D 0x1,
-> >>>      /* Notify entry changes (newly created entries) */
-> >>>      IOMMU_NOTIFIER_MAP =3D 0x2,
-> >>> +    /* Notify changes on device IOTLB entries */
-> >>> +    IOMMU_NOTIFIER_DEVIOTLB =3D 0x04,
-> >>>  } IOMMUNotifierFlag;
-> >>>
-> >>>  #define IOMMU_NOTIFIER_ALL (IOMMU_NOTIFIER_MAP | IOMMU_NOTIFIER_UNMA=
-P)
-> >> shouldn't we rename this one??
-> >>>
-> >>
-> >
-> > Agree, but I'm not sure about the right name. IOMMU_NOTIFIER_ALL_ROOT?
-> > IOMMU_NOTIFIER_ALL_REGULAR?
-> I would rather name it IOMMU_NOTIFIER_IOTLB_EVENTS versus
-> IOMMU_NOTIFIER_DEVIOTLB_EVENTS? This is the cache type that differs,
-> isn't it?
->
+On 03/09/20 13:08, Philippe Mathieu-Daudé wrote:
+> Do not allow PCI slaves to write to indirect memory
+> regions such MMIO.
+> 
+> This fixes LP#1886362 and LP#1888606.
 
-Ok will propose it.
+What is a "PCI slave"?  Which devices would still be allowed to write?
 
-Thanks!
+I'm worried that there are cases of MMIO reads that would be broken.
+They are certainly niche these days, but they should still work; the
+most "famous" one is perhaps the old BASIC
 
-> Thanks
->
-> Eric
-> >
-> > Thanks!
-> >
-> >> Thanks
-> >>
-> >> Eric
-> >>
-> >
-> >
->
+   DEF SEG=&HB800
+   BLOAD "picture.pic", 0
+
+Paolo
 

@@ -1,210 +1,224 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3760948lfc;
-        Mon, 7 Sep 2020 06:41:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJydOyeM+2/bJ4SDOpaNAF4w4+aNDz4Cvn60EadQEpB+nQkXC6Uql1+JXrAKLHJ9H2q66cpT
-X-Received: by 2002:a5b:ac5:: with SMTP id a5mr13742836ybr.392.1599486101865;
-        Mon, 07 Sep 2020 06:41:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599486101; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp394643lfc;
+        Thu, 3 Sep 2020 03:14:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJysizNDOjVjkeluwiUIKEYNGGs5j7Sp0z0+zQhSobNC9RRdZYYZXhxW/sOwV1sFOtlK0H47
+X-Received: by 2002:a25:6808:: with SMTP id d8mr1704676ybc.265.1599128092916;
+        Thu, 03 Sep 2020 03:14:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599128092; cv=none;
         d=google.com; s=arc-20160816;
-        b=TCQ6Z4nrwGWsaClKDGhDsX5c6uEcYkHITzXdt1ZsoFO0PGyYyb2FTpzPs4nnx409Yk
-         F4GyEzVsOi6sA9QS0yvXndWOdqfGp9XbXnutIilODzlmCjYT+vKxJWhyVUQZWAYMrLKS
-         tT1PRf9KOOy+BlPYHd/A5//Pc6LDveawCEUxy4fEUF/vAdbEEHLyxbvFtG38hUpZDEfb
-         Ts5FJRPQqdwl1u9COUbym4i4DTDGizRYhsYL88CaJdMtHNRgjKQOg+zy/tbfmQpyxXZj
-         QrvzfKvaApuqAXVS+5IuFlTCF82DEgKMKdhTL19FJv+ee+sYzmOwLtXpJvOh+h6Fxz1T
-         z3QQ==
+        b=qBSDBsLhcuF6Zp2Ob8xmIu93eWPJBVjatfiWQsWl6xyniDKmWCugTXHqEXAvVYu14g
+         AhnYHp7NoguAFOJ5uFUn/RzhZE7KsFTsaQsoMa0MFjNPKz/UVTICIW25yH34RLkPi/7t
+         uIULkrJ+125UohK4/XmPMwg4YTU1eQ4alizh51ZHE6LwlejDNAy/VyLmEIq7s9VlZtlb
+         fMUFihK1eVcrghTPDBwF9MjiLo9VeH6lfpVH8O+a+KWdlt/vD4RlY0wuDUcMxowgFiZT
+         QZnO9UWI73AQYCbHSqVRo0twXLeh+k9HPlPo2b7B7+qIo+0yGl4EM8LhGUjh6sQq2kZn
+         YHAQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=mQz7J+ZjXCYnfaZAO7LPzDyU8dwXICb9lwINT022HTQ=;
-        b=dA08VZLZbizAHqUS3TPPcd5Y6kQSqkWN+v78OZu6SGayBmst0az1vQR507hv3ULI5M
-         HRhzPo6Li5am8lbiMdKxHBBz2OzGCOiFzh5i5fsry62Dl4NtOJdqg8hZflfCIcQXEZ6J
-         ITQTZtMSMZZsaPVZa2G22UEXVVhvzdCgWzd3QgNmPy+xapvZaH6GcUmMQfZD/wQuVZDd
-         l3S8rgN9q3sJ+ji1An+rhRTV8wCnNL6qnnev+dCaqCiYzbVbEdZRu8gBXlozDPS7S6/t
-         vHxNfToZQb3lvq+zyTTwnGaP+jp1afS2SCNb2TSEGZKDfItVy+6Gy7qRDHrb4qPo8jdt
-         UheA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=6kL2CH6UwWqRslXBpITScixS5axdiZInfiwVOoQvCfg=;
+        b=Bm06c6M8wi734QBSnf1m7NRRm95RnKO/TAHVhIuBfoNhKimCCycqY5xr4G8pYHovKH
+         ty7JueKbynUfElY4IIRbEN2Ip7xrQw0AIoX4uFr6kOC/pg6yrEGBZvZh3olq+EcHfyFi
+         p2xCOtUX/d0TtF6IX3Do9W6N7u/zJGqnnaQRvHsMGYiLKnbsR0zrgh7HckD+oaGu4eLo
+         p1854A9agXS/wisYvW8VVXbdf7P+x+BiAGv8zAI3DkkFS+gcLpq24JipkXHiAKSxJeH9
+         hlJ4Qtbe36Sxr5JgPH+5nSaagk+kp3yZuome+HZq3/ldgRhUnahVJo45jk9JMfWze9Xd
+         6C9Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jGYu9R86;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VeEQ84+K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o79si8595552yba.346.2020.09.07.06.41.41
+        by mx.google.com with ESMTPS id k5si2513280ybd.21.2020.09.03.03.14.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Sep 2020 06:41:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Sep 2020 03:14:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=jGYu9R86;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38888 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VeEQ84+K;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:54404 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFHOv-00059W-Al
-	for alex.bennee@linaro.org; Mon, 07 Sep 2020 09:41:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37516)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kDmGa-0003eu-8c
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 06:14:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kFHO1-0004cF-HU; Mon, 07 Sep 2020 09:40:45 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:43565)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kFHNz-0001V1-Lg; Mon, 07 Sep 2020 09:40:45 -0400
-Received: by mail-ej1-x643.google.com with SMTP id o8so5077238ejb.10;
- Mon, 07 Sep 2020 06:40:42 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mQz7J+ZjXCYnfaZAO7LPzDyU8dwXICb9lwINT022HTQ=;
- b=jGYu9R861cbjwppNeub8GtlIk7hr7h61DKDgYPAk+UF9IL5CoFoR4c08GoAYH3FA+/
- cuBJR1QHthcVhoGVPwoUTS7xzQqT38DwONsIqgIttebRRF07cd5LaKcawcixebzOu2hu
- E81iE5eXaMJsBv5s490pBwjh2RXvgoj2uOLRz1pvWVJfjsE8Hj6YnZggqZywJOAwp+Tn
- hGMFREH02Ujhv6ZFQzegBGVLc8/wS9KQTRsDU/hymSdFYRSEauGKYZCA77gEsYJXHat+
- FyB/m/rqxTqZhPnUxQogISooubWY0zY3NuGgGjzHwsImh1/ChbN5jkdpnBngbffdKlB/
- r9zg==
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1kDmGM-0003RI-Pd
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 06:14:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:45917)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1kDmGJ-0006R2-Q9
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2020 06:14:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599128073;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6kL2CH6UwWqRslXBpITScixS5axdiZInfiwVOoQvCfg=;
+ b=VeEQ84+KA6mUlVfH0AdBfmdil0AePxoDxhTU73wed+6lvU+ceyy4Nrm2KJ2O0QUdQWM8z+
+ qAJBtY6dJwD7sRELdDjDfZR9rZrK8ffxcCqxr+PlY+KyEejNSPPjS0jws1eb+blbjlep/F
+ 9xMf34qLks/Z3SFNFzvSFBhi7I/bGcg=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-108-q8QXyw4gMO-lOVT8hWaNhA-1; Thu, 03 Sep 2020 06:14:30 -0400
+X-MC-Unique: q8QXyw4gMO-lOVT8hWaNhA-1
+Received: by mail-qt1-f199.google.com with SMTP id e11so1770792qth.21
+ for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 03:14:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mQz7J+ZjXCYnfaZAO7LPzDyU8dwXICb9lwINT022HTQ=;
- b=hGa8Bfrc96DmtqfUGDn5Wj2b2hacMdA2PRfhaml8AnPYrXrpNXnmI2nvx9YM5Cb5bz
- HaJ0Wqe16ZFtOZ69zPwoUJ2aD9Sd6E/Awh4j48GU0YvLyBFzlamIJtwgQ2TUMH0MdfLE
- J3lpY5VzDvgaqZaZqOQmdaXo1opIL7eWytkP4JWTZ3+swtar/rMGDdtkX/TVNbPJF8x1
- 2v4nJF1G9Ki9hCfxvpfEI9bhJSRaYY4WBI4FEQTfj4Ulfyy40DD7HDlQRbJ8IyTRIQbX
- LMZZSCGreXXlTEwWHt1QLIrJhkItBanT3a3wa+pLNAx8JhoC9W12Fk7okkzJ29wbGMCH
- emoA==
-X-Gm-Message-State: AOAM5301QM802yG2jQzaD+8K7zqHPiET7qfEswqc4roI+TNV4L3fpZEE
- 6I//0mhT3/PFIogd9FvsYTM=
-X-Received: by 2002:a17:906:2c44:: with SMTP id
- f4mr21355732ejh.52.1599486041953; 
- Mon, 07 Sep 2020 06:40:41 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id k8sm12875827ejz.60.2020.09.07.06.40.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 07 Sep 2020 06:40:40 -0700 (PDT)
-Subject: Re: [PATCH v8 02/14] hw/misc: Add NPCM7xx Clock Controller device
- model
-To: Havard Skinnemoen <hskinnemoen@google.com>
-References: <20200825001711.1340443-1-hskinnemoen@google.com>
- <20200825001711.1340443-3-hskinnemoen@google.com>
- <e6187a7b-afc0-425a-de91-ea4818f7f876@amsat.org>
- <CAFQmdRbirDn4ao-B0UHHn-QFKfdeRzBR1dXTmUx_WZikfSB1tg@mail.gmail.com>
- <CAFQmdRbSgVTGgN2MV98wfxWSicrtokUCKKBU2knvVrimn2FWxA@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <8bd0d21c-d511-d814-da27-92114c47cfcc@amsat.org>
-Date: Mon, 7 Sep 2020 15:40:39 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=6kL2CH6UwWqRslXBpITScixS5axdiZInfiwVOoQvCfg=;
+ b=UiFrYbaEZ3JqKku1wF2xzgHPPlz6bcz8WVc/uBsG27GsbYCFKoEHNP00f/iLbeZEoJ
+ XT6x0XkvgEEcUyaiYj5HXCS8tTucaWrpKASITIr00eH47GidSm6K3YcoMv1R0ByCtxn2
+ ycmwl9mPiHXWi6VtTysgoL7IrQnsn3AkZGmPTnGquk3D9cshkeO9LTw/Zq5GgDyCQS0D
+ f+Xaawed0tYfHnIQuP/ECSC5ZoSCoCirPz3PZbYNVdcMFRr4kzUhgVsNKLkA/njlGxGh
+ XFFWYmjGrQTR1eGajNoQ7NkBgJswu+0fOPiVVMqzMnI7FLoZz8Qh/YNhXfRBdyOX7iQY
+ FpVA==
+X-Gm-Message-State: AOAM532ewZ0TIULX7/4bLEYP+gKfVkg4qFlmUE3MyYyOaM+6W3LJVNs6
+ 9v96ZtLOKLqLdCm9KvnE7KV+dpWrtQGfmmSoCrLEi3VBuhcDTppK55qEn8/F0ERBETs8PP7xaFm
+ TPP4DbfJ33nNwcDvg8WWIE5KDNM9p
+X-Received: by 2002:a05:620a:b1a:: with SMTP id
+ t26mr2281953qkg.353.1599128069995; 
+ Thu, 03 Sep 2020 03:14:29 -0700 (PDT)
+X-Received: by 2002:a05:620a:b1a:: with SMTP id
+ t26mr2281934qkg.353.1599128069745; 
+ Thu, 03 Sep 2020 03:14:29 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFQmdRbSgVTGgN2MV98wfxWSicrtokUCKKBU2knvVrimn2FWxA@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x643.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.825,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20200901142608.24481-1-eperezma@redhat.com>
+ <20200901142608.24481-4-eperezma@redhat.com>
+ <58783cf8-ef7f-1481-8c5e-acd76a8b752f@redhat.com>
+In-Reply-To: <58783cf8-ef7f-1481-8c5e-acd76a8b752f@redhat.com>
+From: Eugenio Perez Martin <eperezma@redhat.com>
+Date: Thu, 3 Sep 2020 12:13:53 +0200
+Message-ID: <CAJaqyWeTruYQGz5CedQW3ogMNO_B77QFRYW-+M_e-pemjvoobg@mail.gmail.com>
+Subject: Re: [RFC v8 3/5] memory: Add IOMMU_DEVIOTLB_UNMAP
+ IOMMUTLBNotificationType
+To: Auger Eric <eric.auger@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eperezma@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/03 04:23:54
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- QEMU Developers <qemu-devel@nongnu.org>, CS20 KFTing <kfting@nuvoton.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- qemu-arm <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y5NHNAPti3l1
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, qemu-level <qemu-devel@nongnu.org>,
+ Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PyjgxJvX4eNY
 
-On 9/5/20 12:38 AM, Havard Skinnemoen wrote:
-> On Fri, Sep 4, 2020 at 3:02 PM Havard Skinnemoen <hskinnemoen@google.com> wrote:
->>
->> On Fri, Sep 4, 2020 at 2:32 AM Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>>
->>> On 8/25/20 2:16 AM, Havard Skinnemoen via wrote:
->>>> Enough functionality to boot the Linux kernel has been implemented. This
->>>> includes:
->>>>
->>>>   - Correct power-on reset values so the various clock rates can be
->>>>     accurately calculated.
->>>>   - Clock enables stick around when written.
->>>>
->>>> In addition, a best effort attempt to implement SECCNT and CNTR25M was
->>>> made even though I don't think the kernel needs them.
->>>>
->>>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
->>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
->>>> Reviewed-by: Cédric Le Goater <clg@kaod.org>
->>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->>>> ---
-[...]
->>>> +static void npcm7xx_clk_write(void *opaque, hwaddr offset,
->>>> +                              uint64_t v, unsigned size)
->>>> +{
->>>> +    uint32_t reg = offset / sizeof(uint32_t);
->>>> +    NPCM7xxCLKState *s = opaque;
->>>> +    uint32_t value = v;
->>>> +
->>>> +    trace_npcm7xx_clk_write(offset, value);
->>>> +
->>>> +    if (reg >= NPCM7XX_CLK_NR_REGS) {
->>>> +        qemu_log_mask(LOG_GUEST_ERROR,
->>>> +                      "%s: offset 0x%04" HWADDR_PRIx " out of range\n",
->>>> +                      __func__, offset);
->>>> +        return;
->>>> +    }
->>>> +
->>>> +    switch (reg) {
->>>> +    case NPCM7XX_CLK_SWRSTR:
->>>> +        qemu_log_mask(LOG_UNIMP, "%s: SW reset not implemented: 0x%02x\n",
->>>> +                      __func__, value);
->>>
->>> Isn't this sufficient?
->>>
->>>            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
->>
->> It's not quite that easy; this register holds 4 bits, each of which
->> maps to a separate register which defines the modules to reset. It's
->> not that hard, but a little more than I'd like to add to the series at
->> this point. I'll send a followup patch once the initial series is in.
-> 
-> Actually, I'm not sure if this would have any effect on being able to
-> reboot. Running with -d unimp shows:
-> 
-> reboot: Restarting system
-> npcm7xx_timer_write: WTCR write not implemented: 0x00000083
-> Reboot failed -- System halted
-> 
-> So we need to implement watchdog support, which is something we were
-> planning to do fairly soon.
+Hi Eric,
 
-Well this seems a guest implementation decision to prefer
-wait the watchdog to kick (hard reset?) rather than doing
-a soft reset.
+On Wed, Sep 2, 2020 at 12:32 PM Auger Eric <eric.auger@redhat.com> wrote:
+>
+> Hi Eugenio,
+>
+> On 9/1/20 4:26 PM, Eugenio P=C3=A9rez wrote:
+> > Adapt intel and vhost to use this new notification type
+> I think you should explain in the commit message what is the benefice to
+> introduce this new event type.
 
-Two different issues IMO. Anyway this is certainly not
-blocking your series to get merged.
+Will do, thanks!
 
-Regards,
+> >
+> > Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
+> > ---
+> >  hw/i386/intel_iommu.c | 2 +-
+> >  hw/virtio/vhost.c     | 2 +-
+> >  include/exec/memory.h | 2 ++
+> >  3 files changed, 4 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+> > index 0c4aef5cb5..cdddb089e7 100644
+> > --- a/hw/i386/intel_iommu.c
+> > +++ b/hw/i386/intel_iommu.c
+> > @@ -2468,7 +2468,7 @@ static bool vtd_process_device_iotlb_desc(IntelIO=
+MMUState *s,
+> >          sz =3D VTD_PAGE_SIZE;
+> >      }
+> >
+> > -    event.type =3D IOMMU_NOTIFIER_UNMAP;
+> > +    event.type =3D IOMMU_NOTIFIER_DEVIOTLB;
+> If this is used only for device IOTLB cache invalidation, shouldn't this
+> be named IOMMU_NOTIFIER_DEVIOTLB_UNMAP to be consistent with the rest?
+> >      event.entry.target_as =3D &vtd_dev_as->as;
+> >      event.entry.addr_mask =3D sz - 1;
+> >      event.entry.iova =3D addr;
+> > diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+> > index 1a1384e7a6..6ca168b47e 100644
+> > --- a/hw/virtio/vhost.c
+> > +++ b/hw/virtio/vhost.c
+> > @@ -729,7 +729,7 @@ static void vhost_iommu_region_add(MemoryListener *=
+listener,
+> >      iommu_idx =3D memory_region_iommu_attrs_to_index(iommu_mr,
+> >                                                     MEMTXATTRS_UNSPECIF=
+IED);
+> >      iommu_notifier_init(&iommu->n, vhost_iommu_unmap_notify,
+> > -                        IOMMU_NOTIFIER_UNMAP,
+> > +                        IOMMU_NOTIFIER_DEVIOTLB,
+> >                          section->offset_within_region,
+> >                          int128_get64(end),
+> >                          iommu_idx);
+> > diff --git a/include/exec/memory.h b/include/exec/memory.h
+> > index 8a56707169..215e23973d 100644
+> > --- a/include/exec/memory.h
+> > +++ b/include/exec/memory.h
+> > @@ -87,6 +87,8 @@ typedef enum {
+> >      IOMMU_NOTIFIER_UNMAP =3D 0x1,
+> >      /* Notify entry changes (newly created entries) */
+> >      IOMMU_NOTIFIER_MAP =3D 0x2,
+> > +    /* Notify changes on device IOTLB entries */
+> > +    IOMMU_NOTIFIER_DEVIOTLB =3D 0x04,
+> >  } IOMMUNotifierFlag;
+> >
+> >  #define IOMMU_NOTIFIER_ALL (IOMMU_NOTIFIER_MAP | IOMMU_NOTIFIER_UNMAP)
+> shouldn't we rename this one??
+> >
+>
 
-Phil.
+Agree, but I'm not sure about the right name. IOMMU_NOTIFIER_ALL_ROOT?
+IOMMU_NOTIFIER_ALL_REGULAR?
+
+Thanks!
+
+> Thanks
+>
+> Eric
+>
+

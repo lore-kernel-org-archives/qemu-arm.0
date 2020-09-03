@@ -1,94 +1,93 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp725939lfc;
-        Thu, 3 Sep 2020 10:29:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzdIVonQExJgimFHzC0T0zTqFLlvPVdFjCEQXFN3QdWfuBWvSsKhOVey713OEK+4LCoRi41
-X-Received: by 2002:a25:71d4:: with SMTP id m203mr4091625ybc.363.1599154149706;
-        Thu, 03 Sep 2020 10:29:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599154149; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp726017lfc;
+        Thu, 3 Sep 2020 10:29:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw4C0T+x+s3aglHnKTlvj5k2i1qxh9hmLkIHSlrU4+XoBjjHvKPB/09uP7VlMNOshhN5VD8
+X-Received: by 2002:a25:640e:: with SMTP id y14mr3863153ybb.340.1599154157356;
+        Thu, 03 Sep 2020 10:29:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599154157; cv=none;
         d=google.com; s=arc-20160816;
-        b=OdEV9JaUSA+d+p8ejuHMnf3qEs7FpExqIef7UfENLmYIrdu/ZvDAoHlalz2J/TLW4j
-         bhmNv+tqy/C3sPR16tNnN57XKk0DAh1+mDyBdHhYr0kVQiBkWllDqvHLUcg8uzB8tryc
-         N2Baj3cBHa9f40v1dSPVZB5g1cEEB3S4iLLYbIUkkA1eQgpGvA7BL+oRRyrQxRrk/bV7
-         Fh5RWP9zPI+BZBrOr8A4R7pXBXHcx957SKI/+g6NHqPEbCmP8qezSojXpqeRZVs/yA+S
-         ZWsgd9gVTW22vkhzkkwNUw94yTTSjlvJ8B5KWGfdkALvYZNQYFgbMDh3MpdZ9zgX5Y84
-         W8/g==
+        b=eLrrmV2yGAeFNyt42ySI0ky+/wA9YrYjEcclaqV921+4XeVpn7+4E6o5zKD/p4WcZg
+         U/DcMAtRBCTj7AsdPKFIuOhbi6RiVeFrH8m6SC5twKm9O9aOqGs0g2Dsx6T83EFyoYiW
+         NT51OjAMo0wDutvK3hj7Y1yGRTPb5FMzLkGf5YGASvpMyNSGGoOHLfdAPotb66rptmRM
+         vK7N3nTz0Bo/3GdETIh9P3lpoU0zQLEsvB2zJ4JPcnE0b8BuM93O4lkgbiS3JReoJhTS
+         Lq148AKUGoaZTnwVsijhuyyajFHBVm8t8PvafqYLJziEPSxjiuNT6W2QbOlWACoQhQp0
+         ZVmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=91f5lKKcpgYukroYyk+ZgX5AZVtjLWpe85jPZGy47cQ=;
-        b=sJUj98yvdNx3IbyWUTxuSvc/WNPjZXhNgvSukCTdiS52gTypVxLCcrpWhCZyRGP1+G
-         PfDSCtWJT7JbZvCGXTrS8FMlLS9VJoPgwPro+ieDi9CQjKMI8+yLjxo0pbaxAGrUqieD
-         I/wx5TNjyHxFL1Db0HzAkUTsBr3TIxQO6xOD3OVJlqhNYndrBbs8b1dNzyRVJOcLeTWb
-         Bdut7AV5RC91PFwmi3WkRUMxNqT+pXNNJF2tippTjs+vyrbBNbx8FhzNwUweez+qYL7j
-         ks6EI1kDifJGtOH769GQN80WOxSRX94qohajdDjkf5k8HpEvngTLdrOyY8qMlJMHWwi5
-         D/Gg==
+        bh=oW6XvxZuE1zKD54bo18SFHuDRJFc1R7THevACoTqgkM=;
+        b=JWeDaDCtQgF+4W1cXh9LqhDp6STVRrLY0+GeIkFTWOBTIZdiiu0ZlXTGqEc5XQqdEm
+         DnNCP3YdGBv8RKJBsp4YOQtO76CmI0vSpUD2U3LmUI3/2dQwQXctD4AV+SFBGvExfVNR
+         Mg0JejR7Cpg/PDP7P/osCptmO76tepSNPYaFv5TG/3o9vO089v3eqyVfxoT4v7UrY1P5
+         oSQxUT4rhV5gF6oce3Mbh1MpO9Dmo6YKR6bbwnQcMHZpXzOPrbpQ29GesugsSSexx7z/
+         JYSncBCiPxNSZRGGlYkjYvDetUAi5o7791xw7WKt4OAqy5HAbd/0/YAXiZYPSMd4XU5W
+         Orvw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LyC+W766;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UclCLAR7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r135si3783746ybc.10.2020.09.03.10.29.09
+        by mx.google.com with ESMTPS id s6si3351517ybe.61.2020.09.03.10.29.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 10:29:09 -0700 (PDT)
+        Thu, 03 Sep 2020 10:29:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LyC+W766;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UclCLAR7;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57244 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDt2r-0002Vu-3j
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 13:29:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55540)
+	id 1kDt2y-0002gG-Po
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 13:29:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55512)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDt20-0000v2-Vh; Thu, 03 Sep 2020 13:28:16 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52779)
+ id 1kDt1z-0000s8-Oa; Thu, 03 Sep 2020 13:28:15 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:34248)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kDt1z-0002Vw-Be; Thu, 03 Sep 2020 13:28:16 -0400
-Received: by mail-wm1-x341.google.com with SMTP id q9so3682039wmj.2;
- Thu, 03 Sep 2020 10:28:14 -0700 (PDT)
+ id 1kDt1y-0002Vb-29; Thu, 03 Sep 2020 13:28:15 -0400
+Received: by mail-wr1-x442.google.com with SMTP id t10so4135320wrv.1;
+ Thu, 03 Sep 2020 10:28:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=91f5lKKcpgYukroYyk+ZgX5AZVtjLWpe85jPZGy47cQ=;
- b=LyC+W766N/SwxeuWQWdZT0GanuQ0dc5ctaDpI91uj2h7ZqfZa7yANoCBSVdqndSr68
- S6zx4CtfamtXLOxPkLiMmCxtbcEEvSXqLBTE2fDIpXWXBR/6grDvpUHTLMZuOSo1jBET
- uYqLawQbCL4xH5ZFvWifVnQqE3d1ZHzqhe2v6WPJOZb0lzpmYb12xucEREg69PFPE9MH
- SnC4DVAH8pUlkl6Tr1QGKqTib/mj1fwYIuVnMHIlY5uSyQfc9+LfG/VPOM6nczxWGCxa
- bq1PlXmWZJ3hKzaql7SvzgVrHRgIfO1IbNKLPGXAfMxFW6tB7x4XG174loooTZrKfyo9
- zXow==
+ bh=oW6XvxZuE1zKD54bo18SFHuDRJFc1R7THevACoTqgkM=;
+ b=UclCLAR7ukADVGhNA2HNAojA6SmIcNm9cl64vWhssP/TJgxEjb/Dre40PT6j1zRVJz
+ b1jmNs+ajxvVpK/B3+M3YnDLeo2oN4W3O0NX5uLJSPXLrkd4Dn3JFAassBF2smNIs2N7
+ M+7Ne82EAHw7vtlwNfPC0kpMng65TwEpbMO4OtrcqOr0WBmBcsD9A/KsOW0sJ1t977bF
+ KtWvXBN+hMHkBZBqVx2yCLzV6OFSgAGg5M07rJqBybgVM6ftJ/y2RfR0qML2XJUsapRj
+ y6BUD74UFJJUHcuCeQhaPwMrhU2lOjf8VpWo6bkRwCO+ESTLbBA93f18yIT3Vz19tgW9
+ 7eWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=91f5lKKcpgYukroYyk+ZgX5AZVtjLWpe85jPZGy47cQ=;
- b=JBA8TNHtpjFiC6AAu18xghJull1m+1E58bqG3DJqKLnrg275/Aj1UrQRqZLnvQd3CY
- JHmJVROlWqbjQSFBSx5I9A8cFBESHcjKQLQN1Hl2inwnPyMjSExkt2pjEpwLBwLHyjBa
- b6Hyyt9yMCWYUsfkFmsH73BJrC38TrAHTx4lilXDReHI6vczFiyz2LKTbAYi3yteK75B
- VX6/ndav5fm5Ztn7EXY0OanhdaFOTj2NcEXr3DVtibSU8wXWstUQAtoSBPsYJuu4Rvca
- hNBWlVO50zyo4v01h7qv/HSvBVlkhxZvwbmldT1m4goN5oTpDdL/WcTharmWHCjLageD
- CC+Q==
-X-Gm-Message-State: AOAM533XKw2tD3ceqJ/Qp9lQShHUJkVSHNYI4QUi9UP3hNCnzt0WKTC/
- KAPP0V+X9lulA098BAdb8RavuAFaK0w=
-X-Received: by 2002:a1c:6a08:: with SMTP id f8mr1779631wmc.151.1599154092897; 
- Thu, 03 Sep 2020 10:28:12 -0700 (PDT)
+ bh=oW6XvxZuE1zKD54bo18SFHuDRJFc1R7THevACoTqgkM=;
+ b=j0ggyhR8PqknYO3k2jZzjO5wkA21n7cW+xLqyTdrwyWbqRaki2grzsL/SYkoz5jiIi
+ Vf4wTKs91zUnYh6Pox8im8hbhtKDs/H7D3LtDcj7nuGiD8epxOLWmxhtSF52G56uhEsL
+ MvlwIJtwb/t9CVrF4JOt2xhwli2qb+kGYGc3n+HoPsQwC1VZJpb1hGYrz9xY5IPftYq1
+ D1IKKmKSioDDS6lLanGI+SNFT1HpvG1vZbx6D+iqA4vcKcTT57zybkcm+nJVHi/mfFWF
+ qEocUnmvQE+DS9bxlZhJ3fEBu7LWoqLeUOjKOAwrbDASImaMoZMMg486sGjClxOGe6vh
+ +b/g==
+X-Gm-Message-State: AOAM532KlCVapeUG+cw6ucRwOBmbnBmFnoTF/J2Bg8GXWF88In24haSs
+ 5SxYNQncVovxBFPMI9xs72RJE5bTFes=
+X-Received: by 2002:adf:8445:: with SMTP id 63mr3451049wrf.375.1599154091708; 
+ Thu, 03 Sep 2020 10:28:11 -0700 (PDT)
 Received: from localhost.localdomain (50.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.50])
- by smtp.gmail.com with ESMTPSA id b2sm5325802wmh.47.2020.09.03.10.28.11
+ by smtp.gmail.com with ESMTPSA id b2sm5325802wmh.47.2020.09.03.10.28.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Sep 2020 10:28:12 -0700 (PDT)
+ Thu, 03 Sep 2020 10:28:10 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 3/4] hw/sd/sdhci: Let sdhci_update_irq() return if IRQ was
- delivered
-Date: Thu,  3 Sep 2020 19:28:05 +0200
-Message-Id: <20200903172806.489710-4-f4bug@amsat.org>
+Subject: [PATCH 2/4] hw/sd/sdhci: Resume pending DMA transfers on MMIO accesses
+Date: Thu,  3 Sep 2020 19:28:04 +0200
+Message-Id: <20200903172806.489710-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200903172806.489710-1-f4bug@amsat.org>
 References: <20200903172806.489710-1-f4bug@amsat.org>
@@ -96,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -16
@@ -126,34 +125,53 @@ Cc: Prasad J Pandit <pjp@fedoraproject.org>, qemu-block@nongnu.org,
  Ruhr-University <bugs-syssec@rub.de>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iTHPgBSS3U+v
+X-TUID: WddGxLGhkvMF
+
+If we have pending DMA requests scheduled, process them first.
+So far we don't need to implement a bottom half to process them.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/sd/sdhci.c | 9 +++++++--
- 1 file changed, 7 insertions(+), 2 deletions(-)
+ hw/sd/sdhci.c | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-index 2b197631870..06cb098036c 100644
+index 703357e94a7..2b197631870 100644
 --- a/hw/sd/sdhci.c
 +++ b/hw/sd/sdhci.c
-@@ -215,9 +215,14 @@ static uint8_t sdhci_slotint(SDHCIState *s)
-          ((s->norintsts & SDHC_NIS_REMOVE) && (s->wakcon & SDHC_WKUP_ON_RMV));
+@@ -945,11 +945,21 @@ sdhci_buff_access_is_sequential(SDHCIState *s, unsigned byte_num)
+     return true;
  }
  
--static inline void sdhci_update_irq(SDHCIState *s)
-+/* Return true if IRQ was pending and delivered */
-+static bool sdhci_update_irq(SDHCIState *s)
++static void sdhci_resume_pending_transfer(SDHCIState *s)
++{
++    timer_del(s->transfer_timer);
++    sdhci_data_transfer(s);
++}
++
+ static uint64_t sdhci_read(void *opaque, hwaddr offset, unsigned size)
  {
--    qemu_set_irq(s->irq, sdhci_slotint(s));
-+    bool pending = sdhci_slotint(s);
-+
-+    qemu_set_irq(s->irq, pending);
-+
-+    return pending;
- }
+     SDHCIState *s = (SDHCIState *)opaque;
+     uint32_t ret = 0;
  
- static void sdhci_raise_insertion_irq(void *opaque)
++    if (timer_pending(s->transfer_timer)) {
++        sdhci_resume_pending_transfer(s);
++    }
++
+     switch (offset & ~0x3) {
+     case SDHC_SYSAD:
+         ret = s->sdmasysad;
+@@ -1093,6 +1103,10 @@ sdhci_write(void *opaque, hwaddr offset, uint64_t val, unsigned size)
+     uint32_t value = val;
+     value <<= shift;
+ 
++    if (timer_pending(s->transfer_timer)) {
++        sdhci_resume_pending_transfer(s);
++    }
++
+     switch (offset & ~0x3) {
+     case SDHC_SYSAD:
+         s->sdmasysad = (s->sdmasysad & mask) | value;
 -- 
 2.26.2
 

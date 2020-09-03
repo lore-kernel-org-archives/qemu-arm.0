@@ -1,143 +1,144 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp431614lfc;
-        Thu, 3 Sep 2020 04:11:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwLkdqa54CkbJBoe5AIJYAkKoFu46rN77QpdJWk2HpbPeTozEmCXwHywB6rrD9hTxmFowPG
-X-Received: by 2002:a25:9b88:: with SMTP id v8mr1995216ybo.96.1599131485182;
-        Thu, 03 Sep 2020 04:11:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599131485; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp431815lfc;
+        Thu, 3 Sep 2020 04:11:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyCMXusUsmTYjuTBPfgOcbremY/6QeJN7SfUebz9aR7QKEgdBB/RtEIJpwwkbs0bEXLiddd
+X-Received: by 2002:a25:586:: with SMTP id 128mr1891888ybf.484.1599131501196;
+        Thu, 03 Sep 2020 04:11:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599131501; cv=none;
         d=google.com; s=arc-20160816;
-        b=wagbMY04dGRxioaIZjiRVcoYbW3oeHXZS9mhmPtir/iMOBPVDlRG2xmSVXuohM3gNS
-         z0QrPY2bw+PQwAF1MtQ0Xn1Hz7U/Jf3waaFPaHMRZZoun3avxmr+qAfshag8/fnrpKQX
-         ZpND0h9Zk6/b/f5KamLnWQ34nwwncxf872IXkhvTX+Ea6WsHuDHOQd0noZFxpSaoD9O0
-         UtKcDsmxch7sIoH06+3OXQ+w9i3HQys8U+iYcckBis4YPWQ0wG3iB8heeJfiNuuNWHMW
-         +QSMJwP7d+igfMfJnZNfj8tM2TDJqf4amYnugklVuLr+JoWObmyC4DLh3SYfjHvxXBT8
-         8IWw==
+        b=Zte9cZp1TsyBJM/eXNk8yYShMk50I4q+8OcOpqzxlJ0sTxppLtesIvQ4tJgX/9Z9IF
+         fnRcNpat4mysGs8q6VBQ/eZ4D13YoJ31gEKxp3RvlHRjDp/eF0DrsRxeT5zUd70JARvV
+         7KvbPaX+HnqDbcVxUcF3zqdZ5sg4X0zzZbi9336LIHPcwkjAqGjszsSvKzRl69N1x+a2
+         ldrv++64NLBfc3pt5a/ioTLTYtsPLVR3ZOh+SgzTjXh7E+f4ojZbt0ooD0f/JGKom32c
+         DTBmZlLkTlq5g/Fgsb3B8wnY06WgZ+5QFH2MZr+VqwmmOmYK4ef4rh/Hh4bW7z8nzrpd
+         6pzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=QoQLqcCGXTEq/TAmIUw2m4awB0M5QrT2MRC6GDSSjNM=;
-        b=ydnoQ/+eik0cyank769ksxQ/ZwzFJ6743WZSr4E8h4GwFSzFzVom4IlobEQygHbYj2
-         s1Xa5JeG/Wyf6XQglUyvC+6T80cJDB4ppTrPfl9rNbhmQ51B5NaUCfCJSctCKdHS1myT
-         akd8kWrO0LNRhqVhttmIdYC7PO++56Mc+fIXMcVB9m2mNsvkYbQ/n7YElkk1AyUBuqK1
-         I4B6HcSSSRIqpuUECEYulYYhheL9tLfjavmHmBj5l2ZshYjhOd5wSSzyZ6XkONCXC+IL
-         lX3tY0hljDPR7n83/jRkjr0af9jSYC6iK4+as5ZY60CtAKe6A2QA7shufwk7+FYYj6FY
-         R8Ow==
+        bh=6vKwxcBB1Jm47jSnzS0OZNKGx56lCbflcLgkBcmGpYU=;
+        b=CN3sshMOtt/Q7J2Rp31kLN5DzGB2U/sHbD0HzCeHDkqetW2to0aIf+KmYdSmRiSdqr
+         pB+HNN37a4xG7HxBQbkY4GaeaPyaizsPXAUus4ACyTxW525GaLiF7vXi2gvr7FeqrXbf
+         kNno1Y8qQ6+lwNcIoihkBqVlBr08t3e/9gMiz43L3eu70m6+xdvf64Apw2MTfhGHrPHs
+         HLX+8MtoVlJ+4CW2X+DTpVapcQtOoqdk/2dyAM0J+Cl7HvfnC4VvLlqmhS942sjXQgyd
+         7om3XbyvkHglf14ObkWtvXGxGa9wbVgxXqmlsn+v2A0jihBo9HIfWPF9mJI1dIqwrkxF
+         kRmw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ivRY8BgZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=c7CutQ7a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h65si2635931ybb.159.2020.09.03.04.11.25
+        by mx.google.com with ESMTPS id h6si2671120ybj.471.2020.09.03.04.11.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 04:11:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 03 Sep 2020 04:11:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ivRY8BgZ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=c7CutQ7a;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43354 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43578 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDn9I-0004ow-Fw
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 07:11:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34232)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kDn9Y-0004ud-Gc
+	for alex.bennee@linaro.org; Thu, 03 Sep 2020 07:11:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kDn7R-0000ue-Os
- for qemu-arm@nongnu.org; Thu, 03 Sep 2020 07:09:29 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:44197
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kDn7f-0001BD-J7
+ for qemu-devel@nongnu.org; Thu, 03 Sep 2020 07:09:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:22503)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kDn7P-0005wS-Ux
- for qemu-arm@nongnu.org; Thu, 03 Sep 2020 07:09:29 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kDn7c-0005yI-Tu
+ for qemu-devel@nongnu.org; Thu, 03 Sep 2020 07:09:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599131367;
+ s=mimecast20190719; t=1599131379;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QoQLqcCGXTEq/TAmIUw2m4awB0M5QrT2MRC6GDSSjNM=;
- b=ivRY8BgZ+ti9tJmlZ67Wli1N7as/5EAOtR0woudnf7uy4Cx8/g1COXeAjehJReyhERMUVC
- Zw2pH4CyfBZ2+OG+p9obuFzRaRq1E0S253swZNeP8WoVbaU9vaNfyfi5OUIJuLc6FK6drL
- bOiIHs44T1DUZyoWh3VUcBY+vJ/CHxI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-91-ZBzMWD-YN0in5cpvgu2oNw-1; Thu, 03 Sep 2020 07:09:26 -0400
-X-MC-Unique: ZBzMWD-YN0in5cpvgu2oNw-1
-Received: by mail-wr1-f72.google.com with SMTP id m7so935214wrb.20
- for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 04:09:25 -0700 (PDT)
+ bh=6vKwxcBB1Jm47jSnzS0OZNKGx56lCbflcLgkBcmGpYU=;
+ b=c7CutQ7aLjyLcx3mrx4DS914Wtbj5iihfz3Gj1bBraM2YQPEVjxo7sTICrxCKLv5C1A21u
+ gM4SJLpnkJ2WpyfBuX0eLojWX/hHv3MFRAk//mMV23h6dgUFMZKkflie8VUCdE0jFF0dW2
+ CWTok/+kdQQ8b+3cEOT12nrKn9lnY4Y=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-329-QeZ5Dz04MTWAAWsqxhSaFQ-1; Thu, 03 Sep 2020 07:09:38 -0400
+X-MC-Unique: QeZ5Dz04MTWAAWsqxhSaFQ-1
+Received: by mail-wm1-f70.google.com with SMTP id z1so856948wmk.1
+ for <qemu-devel@nongnu.org>; Thu, 03 Sep 2020 04:09:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=QoQLqcCGXTEq/TAmIUw2m4awB0M5QrT2MRC6GDSSjNM=;
- b=CEvNhVpc0Ij7K1sl3FKpoeCYB2M1pmoVFES1M072hkMt2w+s93lGkq0s0BXWMj5eHk
- zf8+TIHCqxdVBAUwvnwvQSOQi4rvHUxVT+Vt2gOIdzMCDVbWJ1B2B0v6QfUTJ8GMRvZr
- C/MRIpks6vXvLKE7dPQsPf2U+9r2CLxWcqTuDhpgV0FGUWYiRmdBBCJmT9GZrwxhiPDH
- SCmWYzBiP2tH7C6QQpE/Y+2a9bFCROkRz6vvbdhmtmTKjiEZu6stup7THFAK3ahqKCn2
- lCiurd3W+TbPx5plxdC27a7XZx6hREB0u8bV0PNyPQUDnNQZT558u/h0UoeZDnRAycYT
- Lxyw==
-X-Gm-Message-State: AOAM531etBejghp8DHc57h6d6y2lukgGFTWlzRDWHmE4Mrzi1nZlQ7Ym
- xEpTK2K7jrvTub72UPj2nj4pWDv22IHVd54W3wpIezu6jrOS2IkPWpIkC4+tZCNV7DbfHip0bmF
- j2RVvuoaW8avc
-X-Received: by 2002:a1c:96c5:: with SMTP id y188mr2031721wmd.72.1599131364950; 
- Thu, 03 Sep 2020 04:09:24 -0700 (PDT)
-X-Received: by 2002:a1c:96c5:: with SMTP id y188mr2031677wmd.72.1599131364785; 
- Thu, 03 Sep 2020 04:09:24 -0700 (PDT)
+ bh=6vKwxcBB1Jm47jSnzS0OZNKGx56lCbflcLgkBcmGpYU=;
+ b=nGpIhgm6/fJ9UUSMWCq8yppCpKbXSPn/7yNk3NhOYJ9Tnf8q5nZ9OdTmkaoe9mO4mW
+ Xhf2CBm/CrQCS6+8H3aQBrx10DtrMMbYNFUryLRfs2+R34KnqFa8MymbllhewqJ+yuh8
+ tmlAb5A4k//zdzT64DcVoFEE3Na5fNVxrMdu+kfQjapMMHzkw7N8ncsrr/tKD7HVEeVq
+ K53atsPC0kw6Ob6PesGE744gX0XeGvnbvcMqviDvxX3RFmZmA3f2GGYQQ7snPZVbTjxR
+ EAVy3oGATn6MlUOteLoHXE8Qxzoh7n16iGIYkUpsX+qER6P5Xy+Wlb7L175wIAuHxAAX
+ fgNA==
+X-Gm-Message-State: AOAM532R2qM3IiD41/3gQHcBLRp7RZ4shpZEoifcR9aQsRXfI30mvhRN
+ af1fekSau/Lhdm/JEvvUAA3vgkIVzyASLbdXee64oWosAvqOVLjuzNY6OTl19G98t4sRTTQaViP
+ /pkUjoOfBxe9a8sM=
+X-Received: by 2002:adf:f7d0:: with SMTP id a16mr1759235wrq.381.1599131377060; 
+ Thu, 03 Sep 2020 04:09:37 -0700 (PDT)
+X-Received: by 2002:adf:f7d0:: with SMTP id a16mr1759190wrq.381.1599131376857; 
+ Thu, 03 Sep 2020 04:09:36 -0700 (PDT)
 Received: from localhost.localdomain (50.red-83-52-54.dynamicip.rima-tde.net.
  [83.52.54.50])
- by smtp.gmail.com with ESMTPSA id h6sm3675054wmb.22.2020.09.03.04.09.22
+ by smtp.gmail.com with ESMTPSA id h6sm3675958wmb.22.2020.09.03.04.09.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Sep 2020 04:09:24 -0700 (PDT)
+ Thu, 03 Sep 2020 04:09:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 08/12] docs/devel/loads-stores: Add regexp for DMA functions
-Date: Thu,  3 Sep 2020 13:08:27 +0200
-Message-Id: <20200903110831.353476-9-philmd@redhat.com>
+Subject: [RFC PATCH 10/12] exec/memattrs: Introduce MemTxAttrs::direct_access
+ field
+Date: Thu,  3 Sep 2020 13:08:29 +0200
+Message-Id: <20200903110831.353476-11-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200903110831.353476-1-philmd@redhat.com>
 References: <20200903110831.353476-1-philmd@redhat.com>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8;
 	text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=philmd@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/03 00:24:51
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/03 01:47:17
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
  "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, qemu-block@nongnu.org,
  Li Qiang <liq3ea@163.com>, "Emilio G . Cota" <cota@braap.org>,
  Peter Chubb <peter.chubb@nicta.com.au>, Joel Stanley <joel@jms.id.au>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Richard Henderson <rth@twiddle.net>, Laszlo Ersek <lersek@redhat.com>,
  Robert Foley <robert.foley@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
@@ -154,28 +155,82 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
  Klaus Jensen <k.jensen@samsung.com>, Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TDuZZfl2kB6j
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: PuiSVVpw7+77
+
+Add the 'direct_access' bit to the memory attributes to restrict
+bus master access to ROM/RAM.
+Have read/write accessors return MEMTX_BUS_ERROR if an access is
+restricted and the region is not ROM/RAM ('direct').
+Add corresponding trace events.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- docs/devel/loads-stores.rst | 2 ++
- 1 file changed, 2 insertions(+)
+ include/exec/memattrs.h | 3 +++
+ exec.c                  | 8 ++++++++
+ trace-events            | 1 +
+ 3 files changed, 12 insertions(+)
 
-diff --git a/docs/devel/loads-stores.rst b/docs/devel/loads-stores.rst
-index 9a944ef1af6..5b20f907e4d 100644
---- a/docs/devel/loads-stores.rst
-+++ b/docs/devel/loads-stores.rst
-@@ -477,6 +477,8 @@ make sure our existing code is doing things correctly.
+diff --git a/include/exec/memattrs.h b/include/exec/memattrs.h
+index 95f2d20d55b..c27cf639a96 100644
+--- a/include/exec/memattrs.h
++++ b/include/exec/memattrs.h
+@@ -35,6 +35,8 @@ typedef struct MemTxAttrs {
+     unsigned int secure:1;
+     /* Memory access is usermode (unprivileged) */
+     unsigned int user:1;
++    /* Bus master restricted to ROM/RAM slaves */
++    unsigned int direct_access:1;
+     /* Requester ID (for MSI for example) */
+     unsigned int requester_id:16;
+     /* Invert endianness for this page */
+@@ -66,6 +68,7 @@ typedef struct MemTxAttrs {
+ #define MEMTX_OK 0
+ #define MEMTX_ERROR             (1U << 0) /* device returned an error */
+ #define MEMTX_DECODE_ERROR      (1U << 1) /* nothing at that address */
++#define MEMTX_BUS_ERROR         (1U << 2) /* bus returned an error */
+ typedef uint32_t MemTxResult;
  
- Regexes for git grep
-  - ``\<dma_memory_\(read\|write\|rw\)\>``
-+ - ``\<ldu\?[bwlq]\(_[bl]e\)\?_dma\>``
-+ - ``\<st[bwlq]\(_[bl]e\)\?_dma\>``
+ #endif
+diff --git a/exec.c b/exec.c
+index 7683afb6a8e..e6185eb04de 100644
+--- a/exec.c
++++ b/exec.c
+@@ -3213,6 +3213,10 @@ static MemTxResult flatview_write(FlatView *fv, hwaddr addr, MemTxAttrs attrs,
  
- ``pci_dma_*`` and ``{ld,st}*_pci_dma``
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     l = len;
+     mr = flatview_translate(fv, addr, &addr1, &l, true, attrs);
++    if (attrs.direct_access && !memory_access_is_direct(mr, true)) {
++        trace_memory_access_illegal(true, addr, len, mr->name);
++        return MEMTX_BUS_ERROR;
++    }
+     result = flatview_write_continue(fv, addr, attrs, buf, len,
+                                      addr1, l, mr);
+ 
+@@ -3275,6 +3279,10 @@ static MemTxResult flatview_read(FlatView *fv, hwaddr addr,
+ 
+     l = len;
+     mr = flatview_translate(fv, addr, &addr1, &l, false, attrs);
++    if (attrs.direct_access && !memory_access_is_direct(mr, false)) {
++        trace_memory_access_illegal(false, addr, len, mr->name);
++        return MEMTX_BUS_ERROR;
++    }
+     return flatview_read_continue(fv, addr, attrs, buf, len,
+                                   addr1, l, mr);
+ }
+diff --git a/trace-events b/trace-events
+index 42107ebc697..931896735b1 100644
+--- a/trace-events
++++ b/trace-events
+@@ -54,6 +54,7 @@ find_ram_offset_loop(uint64_t size, uint64_t candidate, uint64_t offset, uint64_
+ ram_block_discard_range(const char *rbname, void *hva, size_t length, bool need_madvise, bool need_fallocate, int ret) "%s@%p + 0x%zx: madvise: %d fallocate: %d ret: %d"
+ memory_notdirty_write_access(uint64_t vaddr, uint64_t ram_addr, unsigned size) "0x%" PRIx64 " ram_addr 0x%" PRIx64 " size %u"
+ memory_notdirty_set_dirty(uint64_t vaddr) "0x%" PRIx64
++memory_access_illegal(bool is_write, uint64_t addr, uint64_t len, const char *mr_name) "is_write:%u addr:0x%08" PRIx64 " size:0x%04" PRIx64 " region:'%s'"
+ 
+ # memory.c
+ memory_region_ops_read(int cpu_index, void *mr, uint64_t addr, uint64_t value, unsigned size) "cpu %d mr %p addr 0x%"PRIx64" value 0x%"PRIx64" size %u"
 -- 
 2.26.2
 

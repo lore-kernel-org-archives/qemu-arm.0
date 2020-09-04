@@ -1,99 +1,102 @@
-Received: by 2002:a0c:f381:0:0:0:0:0 with SMTP id i1csp2329573qvk;
-        Fri, 4 Sep 2020 08:42:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJztPp7VrMZvQnHu2jknliSYdSgJmymO2UCjw3KdPytUcS3m6oK6FS0plCYRTDil1M4RG8nd
-X-Received: by 2002:a25:e0d5:: with SMTP id x204mr11272396ybg.57.1599234134559;
-        Fri, 04 Sep 2020 08:42:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599234134; cv=none;
+Received: by 2002:a0c:f381:0:0:0:0:0 with SMTP id i1csp2329617qvk;
+        Fri, 4 Sep 2020 08:42:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwV2SZ47+SIm+ZD5FA+9nbXCml+RjwB4qda+7StGMwC1EqR/lvAaL10cuCnEmEmSPjMIgaP
+X-Received: by 2002:a5b:30b:: with SMTP id j11mr11082958ybp.483.1599234139695;
+        Fri, 04 Sep 2020 08:42:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599234139; cv=none;
         d=google.com; s=arc-20160816;
-        b=0ZqIBuj/FEccE72ZhvEKICCYQXf+ej82N4ijCt/lA94LM/toflBk4rwwwafDBTieIF
-         S8X7N6FnHlWsemBET1OOE7M7YdKET3mg+tfsAEAIeQN8tCDdLsnLjoSQy64AfmSONb0/
-         rIqRWFHQ6nN5Wb6f4q/pBIcWgd3GwMOiMOMriGjJiImOU1OpTn1xKbJYd+tICCHxqKpZ
-         HoAZaAf1xILGO8qUFZgec05KVliG1RCZKhK0VI4qLCkI2HsCx1nF+nN01AAwVmIPnlib
-         amhw1xXsKjnAjILi7O0qBt+puo0BpPgXQKJxCXblfibltdomtcqx2EFNQrroSdsg3une
-         2F8Q==
+        b=c7sIy9dCCRb4EjMjPmQZMI2bcJW9IK1cC602R6YaQv/kMULBOFQvFZ+grcvuiWy3zA
+         3ii2nmlwPxeT/N5Jk+U5NRkmuF+5F9EcEzNNc+WxGfJFoSCXOizMHO78uebE4aiY1A9w
+         mtoYxZE4VtrC+mTkXavZ6+0B49ckVUH0fZmK9o28lvgLP7Q8DB8verK/4zLhvZ13ntX9
+         UORXzFtI1kwX3o2eRyqnUGS+cvUpSWkm2V4kDtuvj0PQWRl+OkntylLJh0gx6GEga8D/
+         vyp/EmH9LhBQ77QyE8DVpOAtOEaWOvFERX5JRwfoIvmrOStO77F9IrRxEhkB2lg1uwCL
+         uHzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=ijN8C9uYRScuOtrUptbu5atVjFcf+AwMoQAbhDGOgh4=;
-        b=HS1pqckwIrO4bYh2JYShMwKdu501fIIG3kDQouyiYfHTPh2xCNnb3qHQU08P8QuB/V
-         f+UWnaCgIztbFno5gSafLya/bCJcGZkRGa4/eA9ZOPGT0TVeYRJ7uzGazQa5L3Tq19rz
-         sG35bl3pn3KKT0IsCBsSZ5DNMlYXMxOTUcI+88Ns1mLaxDTg9IuwZgKtEKKQKhy+vRMs
-         g+7WvIGpMN2uCUaDb9BdMRkfZwo2mqY75kqLRJAOQrhCzUMqLulsJK9t5NiNjKKJy9Y5
-         aj4xUOmNd8M0JRSaswUFOUr9DQj5NURmGPzJbwkQOY++4z/xMy48M5L5JQrHfTCICu4X
-         0zZQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=z19lhYlJYs3eXeWM3NbccxsHJZHVss+dp0q20xSXXDY=;
+        b=qeYQw9DU96VL7Fhju/cMZkS6e94vLI3Ko0IV7kiKmC/WtNCyQL5HDzD0MGT/DoiUGg
+         x3xDfv7k052pJwp0Rz8jRMzhZJhF24Z/sBmQe4XtjB2e5F6C2hnC74dXfasQrwRKZllF
+         L8GPKdJRJ+Yt92qDfTJbiqFa417Zvo9Yq9JguMPNUthYMJuAF8BCCm02kuAdVmQhhjmA
+         zLVIrGJA2+foIIM6qAUSn7kdkRJu5TZUSX9ebvxTgFgSxoxi/IPGgfyCt6f/Gxk6Prv6
+         sHsSIq+MTPvwMNVSqyPbOlYSGmk0Bsx8EuI80VcRaIulmaPFC2XA6GkfeM0ovg7uPTJM
+         n9Ng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jcAflwNm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YxgOmX8Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l25si7455491ybj.387.2020.09.04.08.42.14
+        by mx.google.com with ESMTPS id f66si6422298ybf.369.2020.09.04.08.42.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Sep 2020 08:42:14 -0700 (PDT)
+        Fri, 04 Sep 2020 08:42:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jcAflwNm;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YxgOmX8Z;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60042 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60358 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kEDqw-0005Ji-2X
-	for alex.bennee@linaro.org; Fri, 04 Sep 2020 11:42:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53882)
+	id 1kEDr1-0005U7-5X
+	for alex.bennee@linaro.org; Fri, 04 Sep 2020 11:42:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53950)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kEDqk-0005I6-Cv
- for qemu-arm@nongnu.org; Fri, 04 Sep 2020 11:42:02 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:33883)
+ id 1kEDqo-0005Oa-6H
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2020 11:42:09 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:42597)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kEDqi-0006vm-Sy
- for qemu-arm@nongnu.org; Fri, 04 Sep 2020 11:42:02 -0400
-Received: by mail-wm1-x341.google.com with SMTP id c19so7770186wmd.1
- for <qemu-arm@nongnu.org>; Fri, 04 Sep 2020 08:42:00 -0700 (PDT)
+ id 1kEDql-0006xV-Cj
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2020 11:42:05 -0400
+Received: by mail-wr1-x431.google.com with SMTP id c18so7169849wrm.9
+ for <qemu-arm@nongnu.org>; Fri, 04 Sep 2020 08:42:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
  :content-transfer-encoding;
- bh=ijN8C9uYRScuOtrUptbu5atVjFcf+AwMoQAbhDGOgh4=;
- b=jcAflwNmVZ5Z45l/259WzmZ4HAmPVLnoGp3Gh9y06vAkWAkeX37goO6UkyWF6Fz3qk
- du+ycr++JLmX5UWxi0xwHZALYnGZBXTDFn0F/imhevaRMWijlSV76IJHb/L5Fa3mf6DS
- 9RHnfYcc4OxBS7OPaTPbeCZs4FV4NFF6BNLFbMRa96v4Hr8e+0xv+/04y6rOWvOLpaSb
- Alw7QJlixYS3kQt+s8pKbiIuKW6hcu4UOtNPDHinesEg//cjOx2lzYDJ31GX+jzYUTG/
- uv08Q15+/PeP2QUJMaKBuW987kbT+hN3n/S/AJ7ziVRq7YkhsXwevAUvQkzI4CfH3ffe
- 6U/Q==
+ bh=z19lhYlJYs3eXeWM3NbccxsHJZHVss+dp0q20xSXXDY=;
+ b=YxgOmX8ZVr/3DHqOeT3KNB+DUh5oLVm88qVZ6PxDi47rqFjx0oQ+YL0CMAITEPAJZm
+ BOZRZEAJh9DEuxkkL3DVPxAbmdb7XQ4PW9NaGQAKiG7/iq/Xx4ix6KHxMjiTW2W2S5Rh
+ VlpcbpVijUQGyNwhDrBHc0kUi0Jnz5NMNgZK23l7i4ZqbhrYLH7e7YnjF4TQJ7J1QO4p
+ Am4+DY5z8xJatVrxBFGKUJJiU+BCLVeS2J4mw0KNiaI5D0BXpl33hquR5NgbUeHrDRcW
+ sA5UNtYDLbnywGc/kyw0wg42Aa72YJeVOXyWXdoTOMOx6tQrJVSzkztHN0zfnUIHHsD+
+ xJvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=ijN8C9uYRScuOtrUptbu5atVjFcf+AwMoQAbhDGOgh4=;
- b=pfQzUcYZacqHATzZSTKaNoLXYRCsb8gF9mKbIOSxS0daUoe8Lg1CI/D66CH8jZAd3w
- T2HCK6PRdLEieCBhXLC2wH/qGQ4hgP0YA1csEMclgkpvXyp/koV+IgaerhXAWOyokhBT
- zgxppenT/tuwsO01PlxT2Zd/AnCDcaceYhNrg+PVW1jdKeaNeTnKk/PsZ5ApTfXmc/fi
- m2cvqxB4NLQGNjqZQfOk7EMLO6mA84ENdqZjfedaF9hXjrGxAwlY5cCEITCXyIgTYuWN
- gJpDqzbDBFq74PLjIuBAYpx/pJxosQ/BPJoJMZeGkLFtT4nLkFgWjSaHoHoj7XCOMqBs
- Tq8g==
-X-Gm-Message-State: AOAM5309uaxe6uMNyryd07Pi55NNgLnj41EbXPV8aDjY/MNKJD7IEkqk
- T38+viziMp593ZRcYF2xDruPONQreznO51Hz
-X-Received: by 2002:a1c:105:: with SMTP id 5mr8676359wmb.83.1599234118890;
- Fri, 04 Sep 2020 08:41:58 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=z19lhYlJYs3eXeWM3NbccxsHJZHVss+dp0q20xSXXDY=;
+ b=BwNY4qkrtuEl3sESXBWjMWzzSRi2WCUPfrqvoRsPYodI/toBiYE5ms++lk+OrlQIda
+ R9EwbX+WXq3gKnPf2d9D+Glj1g+9kBd458xWE1EMdSu+MNbiQmyAuIQBcuaP5539FpTF
+ CXU0ll7gIWQUHJ3hXF3Gr8WiT47Cqx5gcOu67WvnRSCL4HbrtYmyu7BIS74jkqjsBtlS
+ bGZGS/Q7VifLmWAIdwnMJvWNfE2uZoOKa1SFARnbWLwIh1MVCg5fscgNBv4pBBUCfPLG
+ 5+LO20RjhLrTmn+Yl+kdJ8TSfQin3fqvHSH5bE/VkKfP5yLsckbD9C1ma1o4wKU4jjeC
+ At/w==
+X-Gm-Message-State: AOAM532V3WxMxivJXjwHc4/woJ9rULBUDu2yowCvrYuTdDmdZGnI7C2M
+ V4BXYGWEH9ioOTmDLUWj4xILC/4XLi1zRcgK
+X-Received: by 2002:a5d:634d:: with SMTP id b13mr8481271wrw.324.1599234121257; 
+ Fri, 04 Sep 2020 08:42:01 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id f14sm12723743wrv.72.2020.09.04.08.41.57
+ by smtp.gmail.com with ESMTPSA id f14sm12723743wrv.72.2020.09.04.08.42.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Sep 2020 08:41:58 -0700 (PDT)
+ Fri, 04 Sep 2020 08:42:00 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 0/2] Remove KVM support for 32-bit Arm hosts
-Date: Fri,  4 Sep 2020 16:41:54 +0100
-Message-Id: <20200904154156.31943-1-peter.maydell@linaro.org>
+Subject: [PATCH 2/2] target/arm: Remove no-longer-reachable 32-bit KVM code
+Date: Fri,  4 Sep 2020 16:41:56 +0100
+Message-Id: <20200904154156.31943-3-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200904154156.31943-1-peter.maydell@linaro.org>
+References: <20200904154156.31943-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x341.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -117,38 +120,237 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vv5ID/DUNlg5
+X-TUID: SzptePStfqyW
 
-This patchset drops the support for KVM on 32-bit Arm hosts,
-which we deprecated for the 5.0 release.
+Now that 32-bit KVM host support is gone, KVM can never
+be enabled unless CONFIG_AARCH64 is true, and some code
+paths are no longer reachable and can be deleted.
 
-To repeat the rationale from the deprecation note: the Linux
-kernel dropped support for 32-bit Arm KVM hosts in 5.7.
-    
-Running 32-bit guests on a 64-bit Arm host remains supported.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/kvm-consts.h |   7 ---
+ target/arm/kvm_arm.h    |   6 ---
+ target/arm/cpu.c        | 100 ++++++++++++++++++----------------------
+ target/arm/kvm.c        |   7 ---
+ 4 files changed, 46 insertions(+), 74 deletions(-)
 
-I split this into two patches, one which does the
-fundamental removal of the kvm32.c code, and one which
-tidies up some now-unreachable bits of code or #ifdeffery.
-
-thanks
--- PMM
-
-Peter Maydell (2):
-  target/arm: Remove KVM support for 32-bit Arm hosts
-  target/arm: Remove no-longer-reachable 32-bit KVM code
-
- docs/system/deprecated.rst |  16 +-
- configure                  |   2 +-
- target/arm/kvm-consts.h    |   7 -
- target/arm/kvm_arm.h       |   6 -
- target/arm/cpu.c           | 100 +++----
- target/arm/kvm.c           |   7 -
- target/arm/kvm32.c         | 595 -------------------------------------
- target/arm/meson.build     |   5 +-
- 8 files changed, 56 insertions(+), 682 deletions(-)
- delete mode 100644 target/arm/kvm32.c
-
+diff --git a/target/arm/kvm-consts.h b/target/arm/kvm-consts.h
+index aad28258a36..580f1c1fee0 100644
+--- a/target/arm/kvm-consts.h
++++ b/target/arm/kvm-consts.h
+@@ -136,16 +136,11 @@ MISMATCH_CHECK(QEMU_PSCI_RET_DISABLED, PSCI_RET_DISABLED);
+  */
+ #define QEMU_KVM_ARM_TARGET_NONE UINT_MAX
+ 
+-#ifdef TARGET_AARCH64
+ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_AEM_V8, KVM_ARM_TARGET_AEM_V8);
+ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_FOUNDATION_V8, KVM_ARM_TARGET_FOUNDATION_V8);
+ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A57, KVM_ARM_TARGET_CORTEX_A57);
+ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_XGENE_POTENZA, KVM_ARM_TARGET_XGENE_POTENZA);
+ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A53, KVM_ARM_TARGET_CORTEX_A53);
+-#else
+-MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A15, KVM_ARM_TARGET_CORTEX_A15);
+-MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A7, KVM_ARM_TARGET_CORTEX_A7);
+-#endif
+ 
+ #define CP_REG_ARM64                   0x6000000000000000ULL
+ #define CP_REG_ARM_COPROC_MASK         0x000000000FFF0000
+@@ -165,7 +160,6 @@ MISMATCH_CHECK(QEMU_KVM_ARM_TARGET_CORTEX_A7, KVM_ARM_TARGET_CORTEX_A7);
+ /* No kernel define but it's useful to QEMU */
+ #define CP_REG_ARM64_SYSREG_CP (CP_REG_ARM64_SYSREG >> CP_REG_ARM_COPROC_SHIFT)
+ 
+-#ifdef TARGET_AARCH64
+ MISMATCH_CHECK(CP_REG_ARM64, KVM_REG_ARM64);
+ MISMATCH_CHECK(CP_REG_ARM_COPROC_MASK, KVM_REG_ARM_COPROC_MASK);
+ MISMATCH_CHECK(CP_REG_ARM_COPROC_SHIFT, KVM_REG_ARM_COPROC_SHIFT);
+@@ -180,7 +174,6 @@ MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_MASK, KVM_REG_ARM64_SYSREG_CRM_MASK);
+ MISMATCH_CHECK(CP_REG_ARM64_SYSREG_CRM_SHIFT, KVM_REG_ARM64_SYSREG_CRM_SHIFT);
+ MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_MASK, KVM_REG_ARM64_SYSREG_OP2_MASK);
+ MISMATCH_CHECK(CP_REG_ARM64_SYSREG_OP2_SHIFT, KVM_REG_ARM64_SYSREG_OP2_SHIFT);
+-#endif
+ 
+ #undef MISMATCH_CHECK
+ 
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index adb38514bf2..bc178eeb84c 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -406,13 +406,7 @@ static inline const char *gic_class_name(void)
+ static inline const char *gicv3_class_name(void)
+ {
+     if (kvm_irqchip_in_kernel()) {
+-#ifdef TARGET_AARCH64
+         return "kvm-arm-gicv3";
+-#else
+-        error_report("KVM GICv3 acceleration is not supported on this "
+-                     "platform");
+-        exit(1);
+-#endif
+     } else {
+         if (kvm_enabled()) {
+             error_report("Userspace GICv3 is not supported with KVM");
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index c179e0752da..cb1fa2a35c3 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -2099,72 +2099,68 @@ static void cortex_a15_initfn(Object *obj)
+ }
+ 
+ #ifndef TARGET_AARCH64
+-/* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
+- * otherwise, a CPU with as many features enabled as our emulation supports.
++/*
++ * -cpu max: a CPU with as many features enabled as our emulation supports.
+  * The version of '-cpu max' for qemu-system-aarch64 is defined in cpu64.c;
+- * this only needs to handle 32 bits.
++ * this only needs to handle 32 bits, and need not care about KVM.
+  */
+ static void arm_max_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+ 
+-    if (kvm_enabled()) {
+-        kvm_arm_set_cpu_features_from_host(cpu);
+-    } else {
+-        cortex_a15_initfn(obj);
++    cortex_a15_initfn(obj);
+ 
+-        /* old-style VFP short-vector support */
+-        cpu->isar.mvfr0 = FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
++    /* old-style VFP short-vector support */
++    cpu->isar.mvfr0 = FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
+ 
+ #ifdef CONFIG_USER_ONLY
+-        /* We don't set these in system emulation mode for the moment,
+-         * since we don't correctly set (all of) the ID registers to
+-         * advertise them.
+-         */
+-        set_feature(&cpu->env, ARM_FEATURE_V8);
+-        {
+-            uint32_t t;
++    /* We don't set these in system emulation mode for the moment,
++     * since we don't correctly set (all of) the ID registers to
++     * advertise them.
++     */
++    set_feature(&cpu->env, ARM_FEATURE_V8);
++    {
++        uint32_t t;
+ 
+-            t = cpu->isar.id_isar5;
+-            t = FIELD_DP32(t, ID_ISAR5, AES, 2);
+-            t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);
+-            t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);
+-            t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
+-            t = FIELD_DP32(t, ID_ISAR5, RDM, 1);
+-            t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);
+-            cpu->isar.id_isar5 = t;
++        t = cpu->isar.id_isar5;
++        t = FIELD_DP32(t, ID_ISAR5, AES, 2);
++        t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);
++        t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);
++        t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
++        t = FIELD_DP32(t, ID_ISAR5, RDM, 1);
++        t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);
++        cpu->isar.id_isar5 = t;
+ 
+-            t = cpu->isar.id_isar6;
+-            t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);
+-            t = FIELD_DP32(t, ID_ISAR6, DP, 1);
+-            t = FIELD_DP32(t, ID_ISAR6, FHM, 1);
+-            t = FIELD_DP32(t, ID_ISAR6, SB, 1);
+-            t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);
+-            cpu->isar.id_isar6 = t;
++        t = cpu->isar.id_isar6;
++        t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);
++        t = FIELD_DP32(t, ID_ISAR6, DP, 1);
++        t = FIELD_DP32(t, ID_ISAR6, FHM, 1);
++        t = FIELD_DP32(t, ID_ISAR6, SB, 1);
++        t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);
++        cpu->isar.id_isar6 = t;
+ 
+-            t = cpu->isar.mvfr1;
+-            t = FIELD_DP32(t, MVFR1, FPHP, 3);     /* v8.2-FP16 */
+-            t = FIELD_DP32(t, MVFR1, SIMDHP, 2);   /* v8.2-FP16 */
+-            cpu->isar.mvfr1 = t;
++        t = cpu->isar.mvfr1;
++        t = FIELD_DP32(t, MVFR1, FPHP, 3);     /* v8.2-FP16 */
++        t = FIELD_DP32(t, MVFR1, SIMDHP, 2);   /* v8.2-FP16 */
++        cpu->isar.mvfr1 = t;
+ 
+-            t = cpu->isar.mvfr2;
+-            t = FIELD_DP32(t, MVFR2, SIMDMISC, 3); /* SIMD MaxNum */
+-            t = FIELD_DP32(t, MVFR2, FPMISC, 4);   /* FP MaxNum */
+-            cpu->isar.mvfr2 = t;
++        t = cpu->isar.mvfr2;
++        t = FIELD_DP32(t, MVFR2, SIMDMISC, 3); /* SIMD MaxNum */
++        t = FIELD_DP32(t, MVFR2, FPMISC, 4);   /* FP MaxNum */
++        cpu->isar.mvfr2 = t;
+ 
+-            t = cpu->isar.id_mmfr3;
+-            t = FIELD_DP32(t, ID_MMFR3, PAN, 2); /* ATS1E1 */
+-            cpu->isar.id_mmfr3 = t;
++        t = cpu->isar.id_mmfr3;
++        t = FIELD_DP32(t, ID_MMFR3, PAN, 2); /* ATS1E1 */
++        cpu->isar.id_mmfr3 = t;
+ 
+-            t = cpu->isar.id_mmfr4;
+-            t = FIELD_DP32(t, ID_MMFR4, HPDS, 1); /* AA32HPD */
+-            t = FIELD_DP32(t, ID_MMFR4, AC2, 1); /* ACTLR2, HACTLR2 */
+-            t = FIELD_DP32(t, ID_MMFR4, CNP, 1); /* TTCNP */
+-            t = FIELD_DP32(t, ID_MMFR4, XNX, 1); /* TTS2UXN */
+-            cpu->isar.id_mmfr4 = t;
+-        }
+-#endif
++        t = cpu->isar.id_mmfr4;
++        t = FIELD_DP32(t, ID_MMFR4, HPDS, 1); /* AA32HPD */
++        t = FIELD_DP32(t, ID_MMFR4, AC2, 1); /* ACTLR2, HACTLR2 */
++        t = FIELD_DP32(t, ID_MMFR4, CNP, 1); /* TTCNP */
++        t = FIELD_DP32(t, ID_MMFR4, XNX, 1); /* TTS2UXN */
++        cpu->isar.id_mmfr4 = t;
+     }
++#endif
+ }
+ #endif
+ 
+@@ -2269,11 +2265,7 @@ static void arm_host_initfn(Object *obj)
+ 
+ static const TypeInfo host_arm_cpu_type_info = {
+     .name = TYPE_ARM_HOST_CPU,
+-#ifdef TARGET_AARCH64
+     .parent = TYPE_AARCH64_CPU,
+-#else
+-    .parent = TYPE_ARM_CPU,
+-#endif
+     .instance_init = arm_host_initfn,
+ };
+ 
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index 8bb7318378b..2eae73315d6 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -918,22 +918,15 @@ int kvm_arch_process_async_events(CPUState *cs)
+     return 0;
+ }
+ 
+-/* The #ifdef protections are until 32bit headers are imported and can
+- * be removed once both 32 and 64 bit reach feature parity.
+- */
+ void kvm_arch_update_guest_debug(CPUState *cs, struct kvm_guest_debug *dbg)
+ {
+-#ifdef KVM_GUESTDBG_USE_SW_BP
+     if (kvm_sw_breakpoints_active(cs)) {
+         dbg->control |= KVM_GUESTDBG_ENABLE | KVM_GUESTDBG_USE_SW_BP;
+     }
+-#endif
+-#ifdef KVM_GUESTDBG_USE_HW
+     if (kvm_arm_hw_debug_active(cs)) {
+         dbg->control |= KVM_GUESTDBG_ENABLE | KVM_GUESTDBG_USE_HW;
+         kvm_arm_copy_hw_debug_data(&dbg->arch);
+     }
+-#endif
+ }
+ 
+ void kvm_arch_init_irq_routing(KVMState *s)
 -- 
 2.20.1
 

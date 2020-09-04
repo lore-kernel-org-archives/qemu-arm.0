@@ -1,224 +1,385 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp394643lfc;
-        Thu, 3 Sep 2020 03:14:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysizNDOjVjkeluwiUIKEYNGGs5j7Sp0z0+zQhSobNC9RRdZYYZXhxW/sOwV1sFOtlK0H47
-X-Received: by 2002:a25:6808:: with SMTP id d8mr1704676ybc.265.1599128092916;
-        Thu, 03 Sep 2020 03:14:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599128092; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp1454337lfc;
+        Fri, 4 Sep 2020 06:39:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4dQbGWL/KLDF36LMPdzekT7Y/R5dOlZgh+dtozWJKROGTe1IJiuqn07TPHAU7UlCr2qhH
+X-Received: by 2002:a25:e683:: with SMTP id d125mr9811186ybh.1.1599226756022;
+        Fri, 04 Sep 2020 06:39:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599226756; cv=none;
         d=google.com; s=arc-20160816;
-        b=qBSDBsLhcuF6Zp2Ob8xmIu93eWPJBVjatfiWQsWl6xyniDKmWCugTXHqEXAvVYu14g
-         AhnYHp7NoguAFOJ5uFUn/RzhZE7KsFTsaQsoMa0MFjNPKz/UVTICIW25yH34RLkPi/7t
-         uIULkrJ+125UohK4/XmPMwg4YTU1eQ4alizh51ZHE6LwlejDNAy/VyLmEIq7s9VlZtlb
-         fMUFihK1eVcrghTPDBwF9MjiLo9VeH6lfpVH8O+a+KWdlt/vD4RlY0wuDUcMxowgFiZT
-         QZnO9UWI73AQYCbHSqVRo0twXLeh+k9HPlPo2b7B7+qIo+0yGl4EM8LhGUjh6sQq2kZn
-         YHAQ==
+        b=hGxAOthZexVM4R6HPGtFT8HP2SH7HWrnU/4VWgC2p2i2+6VPhUl+4zqYC8N/a71Bk3
+         eDsVT0lobW51SqdaXFXOBGBDOv+uVMawWj49Cg4+sSN3K/fHY4IeJ9rOJT2jzJgkMBO8
+         nSCtQjBJZay25gRv1bkMqGCFk0jOfIdZfz8npwIbcRFcrN3Wp8eo0dLXcP/8histDDSk
+         VLz/dy0TSXUowKoHx0+/NYzNaMMWmJMRHBYxTxtZtgX5QyaPM5G+36ulwLyjWnr4Yrtp
+         5bDiKjvP8n0fSgcKQXy+ffP15zKMidIs+xON/B9nVkYb40h6WRbJ2/Tdi9of95A7ChAp
+         NvYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=6kL2CH6UwWqRslXBpITScixS5axdiZInfiwVOoQvCfg=;
-        b=Bm06c6M8wi734QBSnf1m7NRRm95RnKO/TAHVhIuBfoNhKimCCycqY5xr4G8pYHovKH
-         ty7JueKbynUfElY4IIRbEN2Ip7xrQw0AIoX4uFr6kOC/pg6yrEGBZvZh3olq+EcHfyFi
-         p2xCOtUX/d0TtF6IX3Do9W6N7u/zJGqnnaQRvHsMGYiLKnbsR0zrgh7HckD+oaGu4eLo
-         p1854A9agXS/wisYvW8VVXbdf7P+x+BiAGv8zAI3DkkFS+gcLpq24JipkXHiAKSxJeH9
-         hlJ4Qtbe36Sxr5JgPH+5nSaagk+kp3yZuome+HZq3/ldgRhUnahVJo45jk9JMfWze9Xd
-         6C9Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=wI/gZYNNHO4qNnNvw2+UfOSiVnE0suxgS9Pn5AphWVI=;
+        b=aO/Iq9MBJZgQXJtoLftjVvWOb9PO2g+1OmGdq4wX+oXaE/xx3SmrrFB5MrrgHnBch5
+         P4MRUf5IE/kWjeMONsnzFGsvQoA/wE1BVHVGirPnA8ltrTygT/H2ySZkP4WyDT22UXKV
+         VVTAbJZQKZaCbHVMK9QksZ/WK1HJ2eE9vtyu7zydyhVw8sr1GE2tZCNExoqe87iL2KPe
+         LZfo2j66wQvsLMz5LPOuCI2bh3w2DrmRpxvcODa3tJxUjEKo4gKFI12kYMlEsjXzkilM
+         xXn6IakDQAaiJbImlL02AFmoWWwUs9B6HediWpazMkHiugh5oG9UQK+1UWwJRRis6LHJ
+         rlog==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VeEQ84+K;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gMaGGa1K;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k5si2513280ybd.21.2020.09.03.03.14.52
+        by mx.google.com with ESMTPS id m185si6499403ybb.377.2020.09.04.06.39.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 03 Sep 2020 03:14:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 04 Sep 2020 06:39:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VeEQ84+K;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54404 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=gMaGGa1K;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:36610 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kDmGa-0003eu-8c
-	for alex.bennee@linaro.org; Thu, 03 Sep 2020 06:14:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48706)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kEBvv-0001tO-CN
+	for alex.bennee@linaro.org; Fri, 04 Sep 2020 09:39:15 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50248)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kDmGM-0003RI-Pd
- for qemu-arm@nongnu.org; Thu, 03 Sep 2020 06:14:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:45917)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kDmGJ-0006R2-Q9
- for qemu-arm@nongnu.org; Thu, 03 Sep 2020 06:14:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599128073;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6kL2CH6UwWqRslXBpITScixS5axdiZInfiwVOoQvCfg=;
- b=VeEQ84+KA6mUlVfH0AdBfmdil0AePxoDxhTU73wed+6lvU+ceyy4Nrm2KJ2O0QUdQWM8z+
- qAJBtY6dJwD7sRELdDjDfZR9rZrK8ffxcCqxr+PlY+KyEejNSPPjS0jws1eb+blbjlep/F
- 9xMf34qLks/Z3SFNFzvSFBhi7I/bGcg=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-108-q8QXyw4gMO-lOVT8hWaNhA-1; Thu, 03 Sep 2020 06:14:30 -0400
-X-MC-Unique: q8QXyw4gMO-lOVT8hWaNhA-1
-Received: by mail-qt1-f199.google.com with SMTP id e11so1770792qth.21
- for <qemu-arm@nongnu.org>; Thu, 03 Sep 2020 03:14:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kEBur-0000NT-Ui; Fri, 04 Sep 2020 09:38:10 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:37228)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kEBup-0005FH-BL; Fri, 04 Sep 2020 09:38:09 -0400
+Received: by mail-wr1-x442.google.com with SMTP id z4so6797218wrr.4;
+ Fri, 04 Sep 2020 06:38:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=wI/gZYNNHO4qNnNvw2+UfOSiVnE0suxgS9Pn5AphWVI=;
+ b=gMaGGa1KTL8c/HeK9We1+eMSwsoYv+6kqtBDNctSOir9mcaTWBBjmrAweoFU0O3ewx
+ QCnB2QjC2rEhm5bIDHwRcKeGA2ZtiNL5NCtpF9/RWkN9pwdZh75iwZuG4E6OLOKHLGKE
+ Th1INrF0lG6+4ykV9o6TgARAGuZaMLPuQBgSqeJZByb2Pz71dE6PmetaT8iO0czJd3NN
+ jUMUqJaEQArfxBQooNEpSlSjbSQenyQUu0szQyzVQmY+eFG8jpOj6fdxCJs4yo9O4d/W
+ imjRzXadVz8hH1E4YjEuDKKr8X6jWUGASxhZM2Wd1g2JZxQOkuyFLrjHBX7dAYfwLGS9
+ ZwgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=6kL2CH6UwWqRslXBpITScixS5axdiZInfiwVOoQvCfg=;
- b=UiFrYbaEZ3JqKku1wF2xzgHPPlz6bcz8WVc/uBsG27GsbYCFKoEHNP00f/iLbeZEoJ
- XT6x0XkvgEEcUyaiYj5HXCS8tTucaWrpKASITIr00eH47GidSm6K3YcoMv1R0ByCtxn2
- ycmwl9mPiHXWi6VtTysgoL7IrQnsn3AkZGmPTnGquk3D9cshkeO9LTw/Zq5GgDyCQS0D
- f+Xaawed0tYfHnIQuP/ECSC5ZoSCoCirPz3PZbYNVdcMFRr4kzUhgVsNKLkA/njlGxGh
- XFFWYmjGrQTR1eGajNoQ7NkBgJswu+0fOPiVVMqzMnI7FLoZz8Qh/YNhXfRBdyOX7iQY
- FpVA==
-X-Gm-Message-State: AOAM532ewZ0TIULX7/4bLEYP+gKfVkg4qFlmUE3MyYyOaM+6W3LJVNs6
- 9v96ZtLOKLqLdCm9KvnE7KV+dpWrtQGfmmSoCrLEi3VBuhcDTppK55qEn8/F0ERBETs8PP7xaFm
- TPP4DbfJ33nNwcDvg8WWIE5KDNM9p
-X-Received: by 2002:a05:620a:b1a:: with SMTP id
- t26mr2281953qkg.353.1599128069995; 
- Thu, 03 Sep 2020 03:14:29 -0700 (PDT)
-X-Received: by 2002:a05:620a:b1a:: with SMTP id
- t26mr2281934qkg.353.1599128069745; 
- Thu, 03 Sep 2020 03:14:29 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wI/gZYNNHO4qNnNvw2+UfOSiVnE0suxgS9Pn5AphWVI=;
+ b=CdT4kRsXgochI7i8PxM7yD39PEeI27Vmh9G8czojtcSdquEy0DeglN8bAmh2IOuw9P
+ yJwREk8Y0wL5iQ1IpPzGnc+ND7zA26yTyKxgqjxabQo6INkWPztB4RWjQ7xZDKf2ooNY
+ f5LktLnT1gHg0vpthz4y+d4nv2fQ9TS2NralRjLlR4t6s0d4kGjWCmSPnayH1Gzrnz3d
+ nttms+CcJM5BAY6Vm85tZKgF0pI9w2sPlaAD95Z6emMTS/zNKO3zCt2iLN+mVKy9n5hl
+ GoGjttuogFwqbU9UJ6qqtKzcMAJMs7OwxeCvZwBkzienymqvLl8H+CarEFFaR+04lMeH
+ O4gg==
+X-Gm-Message-State: AOAM530Y8ft1DuTxl4+0yKfoyhXVRw/pRVt0us5xJzQbTNUg/q3Hj3GB
+ oWTCEqsLk0RyvB3Vh6PuAw4=
+X-Received: by 2002:adf:c58c:: with SMTP id m12mr7443595wrg.88.1599226685124; 
+ Fri, 04 Sep 2020 06:38:05 -0700 (PDT)
+Received: from [192.168.1.36] (50.red-83-52-54.dynamicip.rima-tde.net.
+ [83.52.54.50])
+ by smtp.gmail.com with ESMTPSA id n16sm12217231wrj.25.2020.09.04.06.38.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 04 Sep 2020 06:38:04 -0700 (PDT)
+Subject: Re: [PATCH v2 2/3] hw/arm/mps2: New board model mps2-an500
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20200903202048.15370-1-peter.maydell@linaro.org>
+ <20200903202048.15370-3-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <29d7a1aa-7289-dabb-db3a-7bc5324d297f@amsat.org>
+Date: Fri, 4 Sep 2020 15:38:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <20200901142608.24481-1-eperezma@redhat.com>
- <20200901142608.24481-4-eperezma@redhat.com>
- <58783cf8-ef7f-1481-8c5e-acd76a8b752f@redhat.com>
-In-Reply-To: <58783cf8-ef7f-1481-8c5e-acd76a8b752f@redhat.com>
-From: Eugenio Perez Martin <eperezma@redhat.com>
-Date: Thu, 3 Sep 2020 12:13:53 +0200
-Message-ID: <CAJaqyWeTruYQGz5CedQW3ogMNO_B77QFRYW-+M_e-pemjvoobg@mail.gmail.com>
-Subject: Re: [RFC v8 3/5] memory: Add IOMMU_DEVIOTLB_UNMAP
- IOMMUTLBNotificationType
-To: Auger Eric <eric.auger@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/03 04:23:54
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20200903202048.15370-3-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.001, NICE_REPLY_A=-0.107,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-level <qemu-devel@nongnu.org>,
- Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PyjgxJvX4eNY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Kumar Gala <kumar.gala@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: VsuYKdFwxYT8
 
-Hi Eric,
+On 9/3/20 10:20 PM, Peter Maydell wrote:
+> Implement a model of the MPS2 with the AN500 firmware. This is
+> similar to the AN385, with the following differences:
+>  * Cortex-M7 CPU
+>  * PSRAM is at 0x6000_0000
+>  * Ethernet is at 0xa000_0000
+>  * No zbt_boot_ctrl remapping of the low 16K
+>    (but QEMU doesn't implement this anyway)
+>  * no "block RAM" at 0x01000000
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> The AN500 also defines some behaviour for CFG_REG[2567] in
+> the SCC (QEMU hw/misc/mps2-scc.c) but none of it is anything
+> QEMU can conveniently support so I have left that code as-is
+> (a guest accessing those registers will hit the LOG_GUEST_ERROR
+> case for "bad offset").
+> 
+> Tested with a buildroot image created using the instructions at:
+>  https://community.arm.com/developer/tools-software/oss-platforms/w/docs/578/running-uclinux-on-the-arm-mps2-platform
+> and the "arm_mps2_CM7fpga" defconfig; QEMU commandline is
+>  qemu-system-arm -M mps2-an500 -serial stdio -display none -kernel boot.axf -device loader,file=linux.axf
 
-On Wed, Sep 2, 2020 at 12:32 PM Auger Eric <eric.auger@redhat.com> wrote:
->
-> Hi Eugenio,
->
-> On 9/1/20 4:26 PM, Eugenio P=C3=A9rez wrote:
-> > Adapt intel and vhost to use this new notification type
-> I think you should explain in the commit message what is the benefice to
-> introduce this new event type.
+Maybe worth adding in the commit description.
 
-Will do, thanks!
+Ideally we should add an acceptance test...
 
-> >
-> > Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
-> > ---
-> >  hw/i386/intel_iommu.c | 2 +-
-> >  hw/virtio/vhost.c     | 2 +-
-> >  include/exec/memory.h | 2 ++
-> >  3 files changed, 4 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-> > index 0c4aef5cb5..cdddb089e7 100644
-> > --- a/hw/i386/intel_iommu.c
-> > +++ b/hw/i386/intel_iommu.c
-> > @@ -2468,7 +2468,7 @@ static bool vtd_process_device_iotlb_desc(IntelIO=
-MMUState *s,
-> >          sz =3D VTD_PAGE_SIZE;
-> >      }
-> >
-> > -    event.type =3D IOMMU_NOTIFIER_UNMAP;
-> > +    event.type =3D IOMMU_NOTIFIER_DEVIOTLB;
-> If this is used only for device IOTLB cache invalidation, shouldn't this
-> be named IOMMU_NOTIFIER_DEVIOTLB_UNMAP to be consistent with the rest?
-> >      event.entry.target_as =3D &vtd_dev_as->as;
-> >      event.entry.addr_mask =3D sz - 1;
-> >      event.entry.iova =3D addr;
-> > diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-> > index 1a1384e7a6..6ca168b47e 100644
-> > --- a/hw/virtio/vhost.c
-> > +++ b/hw/virtio/vhost.c
-> > @@ -729,7 +729,7 @@ static void vhost_iommu_region_add(MemoryListener *=
-listener,
-> >      iommu_idx =3D memory_region_iommu_attrs_to_index(iommu_mr,
-> >                                                     MEMTXATTRS_UNSPECIF=
-IED);
-> >      iommu_notifier_init(&iommu->n, vhost_iommu_unmap_notify,
-> > -                        IOMMU_NOTIFIER_UNMAP,
-> > +                        IOMMU_NOTIFIER_DEVIOTLB,
-> >                          section->offset_within_region,
-> >                          int128_get64(end),
-> >                          iommu_idx);
-> > diff --git a/include/exec/memory.h b/include/exec/memory.h
-> > index 8a56707169..215e23973d 100644
-> > --- a/include/exec/memory.h
-> > +++ b/include/exec/memory.h
-> > @@ -87,6 +87,8 @@ typedef enum {
-> >      IOMMU_NOTIFIER_UNMAP =3D 0x1,
-> >      /* Notify entry changes (newly created entries) */
-> >      IOMMU_NOTIFIER_MAP =3D 0x2,
-> > +    /* Notify changes on device IOTLB entries */
-> > +    IOMMU_NOTIFIER_DEVIOTLB =3D 0x04,
-> >  } IOMMUNotifierFlag;
-> >
-> >  #define IOMMU_NOTIFIER_ALL (IOMMU_NOTIFIER_MAP | IOMMU_NOTIFIER_UNMAP)
-> shouldn't we rename this one??
-> >
->
+> ---
+>  docs/system/arm/mps2.rst |  6 ++--
+>  hw/arm/mps2.c            | 71 ++++++++++++++++++++++++++++++++--------
+>  2 files changed, 62 insertions(+), 15 deletions(-)
+> 
+> diff --git a/docs/system/arm/mps2.rst b/docs/system/arm/mps2.rst
+> index e680a4ceb71..7f2e9c8d52e 100644
+> --- a/docs/system/arm/mps2.rst
+> +++ b/docs/system/arm/mps2.rst
+> @@ -1,5 +1,5 @@
+> -Arm MPS2 boards (``mps2-an385``, ``mps2-an386``, ``mps2-an505``, ``mps2-an511``, ``mps2-an521``)
+> -================================================================================================
+> +Arm MPS2 boards (``mps2-an385``, ``mps2-an386``, ``mps2-an500``, ``mps2-an505``, ``mps2-an511``, ``mps2-an521``)
+> +================================================================================================================
+>  
+>  These board models all use Arm M-profile CPUs.
+>  
+> @@ -14,6 +14,8 @@ QEMU models the following FPGA images:
+>    Cortex-M3 as documented in ARM Application Note AN385
+>  ``mps2-an386``
+>    Cortex-M4 as documented in ARM Application Note AN386
+> +``mps2-an500``
+> +  Cortex-M7 as documented in ARM Application Note AN500
+>  ``mps2-an511``
+>    Cortex-M3 'DesignStart' as documented in AN511
+>  ``mps2-an505``
+> diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
+> index 559b297e788..d17fd7a7cb5 100644
+> --- a/hw/arm/mps2.c
+> +++ b/hw/arm/mps2.c
+> @@ -16,6 +16,7 @@
+>   * We model the following FPGA images:
+>   *  "mps2-an385" -- Cortex-M3 as documented in ARM Application Note AN385
+>   *  "mps2-an386" -- Cortex-M4 as documented in ARM Application Note AN386
+> + *  "mps2-an500" -- Cortex-M7 as documented in ARM Application Note AN500
+>   *  "mps2-an511" -- Cortex-M3 'DesignStart' as documented in AN511
+>   *
+>   * Links to the TRM for the board itself and to the various Application
+> @@ -49,6 +50,7 @@
+>  typedef enum MPS2FPGAType {
+>      FPGA_AN385,
+>      FPGA_AN386,
+> +    FPGA_AN500,
+>      FPGA_AN511,
+>  } MPS2FPGAType;
+>  
+> @@ -56,6 +58,9 @@ typedef struct {
+>      MachineClass parent;
+>      MPS2FPGAType fpga_type;
+>      uint32_t scc_id;
+> +    bool has_block_ram;
+> +    hwaddr ethernet_base;
+> +    hwaddr psram_base;
+>  } MPS2MachineClass;
+>  
+>  typedef struct {
+> @@ -82,6 +87,7 @@ typedef struct {
+>  #define TYPE_MPS2_MACHINE "mps2"
+>  #define TYPE_MPS2_AN385_MACHINE MACHINE_TYPE_NAME("mps2-an385")
+>  #define TYPE_MPS2_AN386_MACHINE MACHINE_TYPE_NAME("mps2-an386")
+> +#define TYPE_MPS2_AN500_MACHINE MACHINE_TYPE_NAME("mps2-an500")
+>  #define TYPE_MPS2_AN511_MACHINE MACHINE_TYPE_NAME("mps2-an511")
+>  
+>  #define MPS2_MACHINE(obj)                                       \
+> @@ -143,13 +149,14 @@ static void mps2_common_init(MachineState *machine)
+>       * tradeoffs. For QEMU they're all just RAM, though. We arbitrarily
+>       * call the 16MB our "system memory", as it's the largest lump.
+>       *
+> -     * Common to both boards:
+> -     *  0x21000000..0x21ffffff : PSRAM (16MB)
+> +     * AN385/AN386/AN511:
+> +     *  0x21000000 .. 0x21ffffff : PSRAM (16MB)
 
-Agree, but I'm not sure about the right name. IOMMU_NOTIFIER_ALL_ROOT?
-IOMMU_NOTIFIER_ALL_REGULAR?
+^ Actually this belong to the previous patch.
 
-Thanks!
+> -     * AN385/AN386 only:
+> +     * AN385/AN386/AN500:
+>       *  0x00000000 .. 0x003fffff : ZBT SSRAM1
+>       *  0x00400000 .. 0x007fffff : mirror of ZBT SSRAM1
+>       *  0x20000000 .. 0x203fffff : ZBT SSRAM 2&3
+>       *  0x20400000 .. 0x207fffff : mirror of ZBT SSRAM 2&3
+> +     * AN385/AN386 only:
 
-> Thanks
->
-> Eric
->
+Ditto?
 
+Otherwise:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+>       *  0x01000000 .. 0x01003fff : block RAM (16K)
+>       *  0x01004000 .. 0x01007fff : mirror of above
+>       *  0x01008000 .. 0x0100bfff : mirror of above
+> @@ -159,22 +166,17 @@ static void mps2_common_init(MachineState *machine)
+>       *  0x00400000 .. 0x007fffff : ZBT SSRAM1
+>       *  0x20000000 .. 0x2001ffff : SRAM
+>       *  0x20400000 .. 0x207fffff : ZBT SSRAM 2&3
+> +     * AN500 only:
+> +     *  0x60000000 .. 0x60ffffff : PSRAM (16MB)
+>       *
+>       * The AN385/AN386 has a feature where the lowest 16K can be mapped
+>       * either to the bottom of the ZBT SSRAM1 or to the block RAM.
+>       * This is of no use for QEMU so we don't implement it (as if
+>       * zbt_boot_ctrl is always zero).
+>       */
+> -    memory_region_add_subregion(system_memory, 0x21000000, machine->ram);
+> +    memory_region_add_subregion(system_memory, mmc->psram_base, machine->ram);
+>  
+> -    switch (mmc->fpga_type) {
+> -    case FPGA_AN385:
+> -    case FPGA_AN386:
+> -        make_ram(&mms->ssram1, "mps.ssram1", 0x0, 0x400000);
+> -        make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", &mms->ssram1, 0x400000);
+> -        make_ram(&mms->ssram23, "mps.ssram23", 0x20000000, 0x400000);
+> -        make_ram_alias(&mms->ssram23_m, "mps.ssram23_m",
+> -                       &mms->ssram23, 0x20400000);
+> +    if (mmc->has_block_ram) {
+>          make_ram(&mms->blockram, "mps.blockram", 0x01000000, 0x4000);
+>          make_ram_alias(&mms->blockram_m1, "mps.blockram_m1",
+>                         &mms->blockram, 0x01004000);
+> @@ -182,6 +184,17 @@ static void mps2_common_init(MachineState *machine)
+>                         &mms->blockram, 0x01008000);
+>          make_ram_alias(&mms->blockram_m3, "mps.blockram_m3",
+>                         &mms->blockram, 0x0100c000);
+> +    }
+> +
+> +    switch (mmc->fpga_type) {
+> +    case FPGA_AN385:
+> +    case FPGA_AN386:
+> +    case FPGA_AN500:
+> +        make_ram(&mms->ssram1, "mps.ssram1", 0x0, 0x400000);
+> +        make_ram_alias(&mms->ssram1_m, "mps.ssram1_m", &mms->ssram1, 0x400000);
+> +        make_ram(&mms->ssram23, "mps.ssram23", 0x20000000, 0x400000);
+> +        make_ram_alias(&mms->ssram23_m, "mps.ssram23_m",
+> +                       &mms->ssram23, 0x20400000);
+>          break;
+>      case FPGA_AN511:
+>          make_ram(&mms->blockram, "mps.blockram", 0x0, 0x40000);
+> @@ -198,6 +211,7 @@ static void mps2_common_init(MachineState *machine)
+>      switch (mmc->fpga_type) {
+>      case FPGA_AN385:
+>      case FPGA_AN386:
+> +    case FPGA_AN500:
+>          qdev_prop_set_uint32(armv7m, "num-irq", 32);
+>          break;
+>      case FPGA_AN511:
+> @@ -235,6 +249,7 @@ static void mps2_common_init(MachineState *machine)
+>      switch (mmc->fpga_type) {
+>      case FPGA_AN385:
+>      case FPGA_AN386:
+> +    case FPGA_AN500:
+>      {
+>          /* The overflow IRQs for UARTs 0, 1 and 2 are ORed together.
+>           * Overflow for UARTs 4 and 5 doesn't trigger any interrupt.
+> @@ -384,7 +399,7 @@ static void mps2_common_init(MachineState *machine)
+>      /* In hardware this is a LAN9220; the LAN9118 is software compatible
+>       * except that it doesn't support the checksum-offload feature.
+>       */
+> -    lan9118_init(&nd_table[0], 0x40200000,
+> +    lan9118_init(&nd_table[0], mmc->ethernet_base,
+>                   qdev_get_gpio_in(armv7m,
+>                                    mmc->fpga_type == FPGA_AN511 ? 47 : 13));
+>  
+> @@ -413,6 +428,9 @@ static void mps2_an385_class_init(ObjectClass *oc, void *data)
+>      mmc->fpga_type = FPGA_AN385;
+>      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
+>      mmc->scc_id = 0x41043850;
+> +    mmc->psram_base = 0x21000000;
+> +    mmc->ethernet_base = 0x40200000;
+> +    mmc->has_block_ram = true;
+>  }
+>  
+>  static void mps2_an386_class_init(ObjectClass *oc, void *data)
+> @@ -424,6 +442,23 @@ static void mps2_an386_class_init(ObjectClass *oc, void *data)
+>      mmc->fpga_type = FPGA_AN386;
+>      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m4");
+>      mmc->scc_id = 0x41043860;
+> +    mmc->psram_base = 0x21000000;
+> +    mmc->ethernet_base = 0x40200000;
+> +    mmc->has_block_ram = true;
+> +}
+> +
+> +static void mps2_an500_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +    MPS2MachineClass *mmc = MPS2_MACHINE_CLASS(oc);
+> +
+> +    mc->desc = "ARM MPS2 with AN500 FPGA image for Cortex-M7";
+> +    mmc->fpga_type = FPGA_AN500;
+> +    mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m7");
+> +    mmc->scc_id = 0x41045000;
+> +    mmc->psram_base = 0x60000000;
+> +    mmc->ethernet_base = 0xa0000000;
+> +    mmc->has_block_ram = false;
+>  }
+>  
+>  static void mps2_an511_class_init(ObjectClass *oc, void *data)
+> @@ -435,6 +470,9 @@ static void mps2_an511_class_init(ObjectClass *oc, void *data)
+>      mmc->fpga_type = FPGA_AN511;
+>      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-m3");
+>      mmc->scc_id = 0x41045110;
+> +    mmc->psram_base = 0x21000000;
+> +    mmc->ethernet_base = 0x40200000;
+> +    mmc->has_block_ram = false;
+>  }
+>  
+>  static const TypeInfo mps2_info = {
+> @@ -458,6 +496,12 @@ static const TypeInfo mps2_an386_info = {
+>      .class_init = mps2_an386_class_init,
+>  };
+>  
+> +static const TypeInfo mps2_an500_info = {
+> +    .name = TYPE_MPS2_AN500_MACHINE,
+> +    .parent = TYPE_MPS2_MACHINE,
+> +    .class_init = mps2_an500_class_init,
+> +};
+> +
+>  static const TypeInfo mps2_an511_info = {
+>      .name = TYPE_MPS2_AN511_MACHINE,
+>      .parent = TYPE_MPS2_MACHINE,
+> @@ -469,6 +513,7 @@ static void mps2_machine_init(void)
+>      type_register_static(&mps2_info);
+>      type_register_static(&mps2_an385_info);
+>      type_register_static(&mps2_an386_info);
+> +    type_register_static(&mps2_an500_info);
+>      type_register_static(&mps2_an511_info);
+>  }
+>  
+> 

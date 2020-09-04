@@ -1,115 +1,68 @@
-Received: by 2002:a0c:f381:0:0:0:0:0 with SMTP id i1csp2338879qvk;
-        Fri, 4 Sep 2020 08:55:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxYmmn4QNu1ooB3VgoCoxfSaDxQiG+FI8k4/y0qG2tnRCnFWsmcdTFdOpDsXtwFtZRRJ8qe
-X-Received: by 2002:a25:404b:: with SMTP id n72mr1955086yba.523.1599234955244;
-        Fri, 04 Sep 2020 08:55:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599234955; cv=none;
-        d=google.com; s=arc-20160816;
-        b=a3EW5F9rIEF1v1hH/HZuzi1IuLTYPyjluAebKLRBdAZ9kyutymVWqTfpuHrk38mR4d
-         sywSh40v75fmF/SYAi1znWnGFHr9GtLXZQCgwunCeIE20cwT3m6prh4wIBPjPTCYAzTL
-         idKyr7gvE552MlM1609n9euH13XD0iuHxAwzt81wPJ0UTx2lifsycMxHRc6TRXy4jxbQ
-         LbZZ1lx/kSiTtR6qMRW0TD5TUUVyDCdY/34R5/L6u7BPFGKO1VLwY5irAUZNwJW3z+40
-         hG1gJOf2dJry1Gpbt/Jzwpi1Fyc71NT8ULxY8pgBgq1T+rC/moNs8NzekmYDtOtNwB2j
-         /oTg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=THJZW21FF74Vq1VvI0l1acAlfjvztbbRt1pw9mIYjeE=;
-        b=bTx50t0crH1BjxNL0kThkkmXhV8QCCE1q97o1vh0lxWbgxpnW111qdzWNXRC9UUG5q
-         AfRWLBZ/KszzlhlDgCwe8yKCApVtUJzVeWOiHkvv0PBJEVUDPBtw9iwHDiBt9vwKBpnj
-         dwjBP7ckCqRg+A/slIQ7Q+YuvfmyFI+j3yncqf2JWAMjC5jcaQl+Uu7kxEPp/bxv/zQr
-         jrXCpLZjywp+tIdrhQJqOWNNb4B9MzOz8dopVbWRXrrjSpg7ND7ffSYovkNKISWI0HAU
-         fqUnHjvD80rvjDdTrD5xtTU4Gwab7+Gge/gi3PkiwTDjMIybGUGF87YxVm73oGZsepr/
-         EZog==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KmY+x1TI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:a0c:f381:0:0:0:0:0 with SMTP id i1csp2339015qvk;
+        Fri, 4 Sep 2020 08:56:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzWaGXb6u9tczeLwqrDKfg14PtZ6MIzEbKOvtwHY2sKoKan4OdFbS+cQW7stPga24fQymAE
+X-Received: by 2002:a25:d816:: with SMTP id p22mr8659048ybg.69.1599234969323;
+        Fri, 04 Sep 2020 08:56:09 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w67si6289899ybc.303.2020.09.04.08.55.55
+        by mx.google.com with ESMTPS id a12si6312051ybk.64.2020.09.04.08.56.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 04 Sep 2020 08:55:55 -0700 (PDT)
+        Fri, 04 Sep 2020 08:56:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KmY+x1TI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57940 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:59040 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kEE4A-0003wO-Kd
-	for alex.bennee@linaro.org; Fri, 04 Sep 2020 11:55:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57434)
+	id 1kEE4O-0004O1-Px
+	for alex.bennee@linaro.org; Fri, 04 Sep 2020 11:56:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kEDyk-00027i-UM
- for qemu-arm@nongnu.org; Fri, 04 Sep 2020 11:50:18 -0400
-Received: from mail-pj1-x1041.google.com ([2607:f8b0:4864:20::1041]:34078)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kEDyi-0008Qe-Mw
- for qemu-arm@nongnu.org; Fri, 04 Sep 2020 11:50:18 -0400
-Received: by mail-pj1-x1041.google.com with SMTP id n3so5354237pjq.1
- for <qemu-arm@nongnu.org>; Fri, 04 Sep 2020 08:50:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=THJZW21FF74Vq1VvI0l1acAlfjvztbbRt1pw9mIYjeE=;
- b=KmY+x1TI1ccqeNhLDsK8mrDrmpiIE8Lk7BgM+apCzHbapjYs9UXkw3EwnK7NsqjIiO
- AVAgbSmBQcSvJDQocs13Bz9/OtTHOtrs9jrZpp6/GS2AQ4ov00dz3/fAk/lfjZooQmzW
- KCWJpbPY1fDm5gQjbqfASsraFGo7x5stWFJrzfAErZZi7y+ZuXKzfRsDQp65cPlZdLrA
- EzdSn0S+Spx3D29BshuZxPbDOg2QuuoMLRkV/Dp5VS4ZPv/jWypD2Osz5my7wn4hSmVA
- iaYbTwf59+l8r8qMiHUf1zmR9Vfpqur7FaPdE7Olgy3sq14s+IGd7TZiVoycoHyuhOnu
- jxZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=THJZW21FF74Vq1VvI0l1acAlfjvztbbRt1pw9mIYjeE=;
- b=oBMi8jk2f4h6C5VSEGRL8FAOoDvV8/KCUD2L5vY49S81+QCh2BlX6zPBs3AAtlvTmc
- yxz/6PL4x/6E6lC/SBKkmIhr1KCkeTGJCL13my+d6kun3e1CJiU7gy0TuMGQ4Ch+8NU7
- WA2hCijhzdYBqm+H7BGsZ7sGZzX/oreZ/c78wIyJAqEA6VeMwEF9VrkZ2pUEgI2smW5E
- e1O1IkYswaJ6btGRsSKFZXX70fq7tXs8VxyqM0b69xx2Zb1r6LG7ysCh7QBuUn+WNoRe
- uQiO1+B6F3ZDX0brOk8rAWyhmiNgWOWHrlNTb0ZiE7F5W44wPSlO8DfmnzZDDYhtBCZJ
- ydMw==
-X-Gm-Message-State: AOAM530r0VZ3+gPyDpx1kc8aq9wvPaa5eQ606vQiTXfCt3hfrNmXlBXh
- +AJkYoJsqah+cBHK/TdEEO6Idg==
-X-Received: by 2002:a17:90a:530c:: with SMTP id
- x12mr7844355pjh.223.1599234614913; 
- Fri, 04 Sep 2020 08:50:14 -0700 (PDT)
-Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id n2sm7149574pfe.208.2020.09.04.08.50.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 04 Sep 2020 08:50:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kEE0S-0004y9-0m; Fri, 04 Sep 2020 11:52:04 -0400
+Resent-Date: Fri, 04 Sep 2020 11:52:04 -0400
+Resent-Message-Id: <E1kEE0S-0004y9-0m@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21734)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kEE0P-0000Lt-5M; Fri, 04 Sep 2020 11:52:03 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1599234706; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=E7mn2do12OKrzqFG3Y5MeVTJz+Fph2EJRqKd5F0ZirctnqDpAsM74cVKANdkJmAZgIzm2h4ICvzOh4tSkLuxcXWF7SjGRQqa0/e9bniPIrOX/75RsKVWiEBDUYulLwTM+MnXCaZaNamE0+7QD8OiWX3FRd6aouOfpwFvp96jpJs=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1599234706;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=aQFzRdKfvklqCiL0xJn6VfosVRda5Fk74hJJBdu1xfE=; 
+ b=m5e3vTJVbUOkB+64Bhsg1xKtaFUUDRk66zhEqC0SpM6M+Tqvn9QlzyHQ4t/u3/vWeVX8gE4KnrQLpUJISq8veJr0rY9dKELj2uIRdVzWriIHQyyZkFlgEowMn5QDPt/YkGd+sopaMS3A0TzhccGa0EnfJd1YNvFh8RZF4HqxN6o=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1599234704401778.4948040787881;
+ Fri, 4 Sep 2020 08:51:44 -0700 (PDT)
 Subject: Re: [PATCH 0/2] Remove KVM support for 32-bit Arm hosts
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20200904154156.31943-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e8ad0832-8891-6398-7b9e-d844b4f6eaa1@linaro.org>
-Date: Fri, 4 Sep 2020 08:50:12 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
+Message-ID: <159923470338.11986.13453143358471338264@66eaa9a8a123>
 In-Reply-To: <20200904154156.31943-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1041;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1041.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.107,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: peter.maydell@linaro.org
+Date: Fri, 4 Sep 2020 08:51:44 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/04 11:51:56
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,15 +76,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: T30Fsm9HCoIr
+X-TUID: gaohnZS0kyTv
 
-On 9/4/20 8:41 AM, Peter Maydell wrote:
-> Peter Maydell (2):
->   target/arm: Remove KVM support for 32-bit Arm hosts
->   target/arm: Remove no-longer-reachable 32-bit KVM code
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-r~
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkwNDE1NDE1Ni4zMTk0
+My0xLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQg
+YnVpbGQgdGVzdCBvbiBGcmVlQlNEIGhvc3QuIFBsZWFzZSBmaW5kIHRoZSBkZXRhaWxzIGJlbG93
+LgoKPT09IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAojIFRlc3Rpbmcgc2NyaXB0
+IHdpbGwgYmUgaW52b2tlZCB1bmRlciB0aGUgZ2l0IGNoZWNrb3V0IHdpdGgKIyBIRUFEIHBvaW50
+aW5nIHRvIGEgY29tbWl0IHRoYXQgaGFzIHRoZSBwYXRjaGVzIGFwcGxpZWQgb24gdG9wIG9mICJi
+YXNlIgojIGJyYW5jaAppZiBxZW11LXN5c3RlbS14ODZfNjQgLS1oZWxwID4vZGV2L251bGwgMj4m
+MTsgdGhlbgogIFFFTVU9cWVtdS1zeXN0ZW0teDg2XzY0CmVsaWYgL3Vzci9saWJleGVjL3FlbXUt
+a3ZtIC0taGVscCA+L2Rldi9udWxsIDI+JjE7IHRoZW4KICBRRU1VPS91c3IvbGliZXhlYy9xZW11
+LWt2bQplbHNlCiAgZXhpdCAxCmZpCm1ha2Ugdm0tYnVpbGQtZnJlZWJzZCBKPTIxIFFFTVU9JFFF
+TVUKZXhpdCAwCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgoKCgpUaGUgZnVsbCBsb2cgaXMgYXZh
+aWxhYmxlIGF0Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwOTA0MTU0MTU2LjMxOTQzLTEt
+cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnL3Rlc3RpbmcuRnJlZUJTRC8/dHlwZT1tZXNzYWdlLgot
+LS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRj
+aGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVk
+aGF0LmNvbQ==

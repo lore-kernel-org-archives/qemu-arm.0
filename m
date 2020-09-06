@@ -1,109 +1,108 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp2731856lfc;
-        Sat, 5 Sep 2020 20:46:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzeeuvUJAzdsfDJrTWHETBGzUG0wryEABOs9NzXZGkZSn5K1yUHmL8YuMVvTxWQ/A+lYVY8
-X-Received: by 2002:a5b:14f:: with SMTP id c15mr3032520ybp.90.1599363964069;
-        Sat, 05 Sep 2020 20:46:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599363964; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp2732043lfc;
+        Sat, 5 Sep 2020 20:46:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxMpc8ptsMSHizSqWq6qXTomcPDRHYejpIbSTSUPfyupSeVzE1R5Jy9aiK9K+WuRHpPAkhC
+X-Received: by 2002:a25:dc4b:: with SMTP id y72mr19475708ybe.197.1599363992854;
+        Sat, 05 Sep 2020 20:46:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599363992; cv=none;
         d=google.com; s=arc-20160816;
-        b=qQsVAvMkU2FaJD2S02EoF2D8RJDVfdRx2bzZbvhrZ7M/BvDuFs8m9/5IjxSz7XP+x4
-         GgxnVtaBp59QeLAWHUzR86mCci4ZbjINoT44dAYcyhytft5RYh4qN7yIa3kPvCjbAekp
-         cTOAEvCEQkgWPDGALPf/sr0dU+XSCsNXcjgUY2d3HLjZVLKRYyLmQp4ao/Q2Z6RIAmwX
-         I8JwsMqr3gzVkBKCSKLnps216mMcuYaTZ8UVGpeCHl6qJ0ww2/MZ+2IUZDHMVNNcVWaj
-         zsjxmifXNe32h0u6fywp9WcvL64dRiTMUCiP9pFEq9kVUVmtvHVWDitODOT3i/YOTuvv
-         QFvg==
+        b=jtRlaU2GXNdF3mY6rZ8F8yneuyt0ApFjp8WkvIE/Er5CJWLy6dRBObG9BOlvPo3FWz
+         B6q0A3kIL6e13lUjMJ2nubh0LUHpzx6fEfW44JiwA79uXIUW0qBJ1koXzWCbLvlTqvPh
+         cCdRJbDqtuKQnTlQ7zLx7A3ht49UMKXYXfyAq5cuMgSETwnrUAEHcR3XtT3oWZxson57
+         zPtydVZNbItehMmjQItSbLNyUr+bhxKtcux3IZT34GAWmRxGLwRg6jBabep0EWaZTQ9s
+         MZBp7rGchmg/aUfzsbFM/HVlcKR+mEyP6/FiBP35/4TaZCzyDL/RVXbURGyBvUhBaPlN
+         IwNw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=t2VnuRpgNp/JrCV+HPg0YJnBxE1cK2hkQDvKZ7hGxfI=;
-        b=K78dv3w6ESbkE0SxfIv7Jqb+JRATLwopcdNdoDaFeO0JQvLuZ5+Ik0yUKwhJacHmc/
-         BwvNXsAbZ6lZPbdmRwWmTolQolsHPzjC0kyZ9b1KgrG7bZdz6jvR+rSyPEDRp3fMlwpn
-         cMFv+Cg8wTJLgx3lqdm6jsO4XKtUoVwZSq9FE2VR1pPXpHCulreoF+qAsNzHC6pBjiMb
-         8NXZ7+ovZWsRx3nEUOgA2o9CNi1hqTr82e3b0OOAHTKkFP+Elgu9jYs4Pkn7GYRFn8wY
-         9UZHbwXiV7vvWR7sdMMTLRBCgGS8ujgUqjID5de6gYzZkBZOzX91A6DunCTxFdSOP5Pk
-         8ETQ==
+        bh=sqV4CD4eex60oNmdNWf1e1AwXEdP6cBcia6Vzz+jO5E=;
+        b=W/XO0+EJKLf7+ncMlbSfdXX1Nvm2s9Il5I9ondlhk5gFAMrjKmwVFURN0vrEwdKwB6
+         bzDCzchyo5FMdmrFo9ULCFASF159vlwWM/JQ5iAdwZ88GHD4YXoJ2e7BkWf6kb8uRmQr
+         xVQIdnRWp2qwsxvlWUQKmeYz2IMNHESuRq2w/9VQCCDxyn7zS1r7ca5lmYXCvN5gO1/e
+         aQzPX5st3kDn3kzBDzLLfnLExJx2Idh/hzwNXM7bfau6cqed/BDs3FdkpA/oTHcQJWqx
+         hx/bGnLxTGUmwo5xN73FLGQHIWYp75o/z5TlAxZXk5W63rMtLiU3lk/vnQjFL0L21Zdp
+         WgGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qXqlIx8m;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=QVo+gufD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 5si11122698ybl.146.2020.09.05.20.46.03
+        by mx.google.com with ESMTPS id r16si11759347ybm.187.2020.09.05.20.46.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 05 Sep 2020 20:46:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 05 Sep 2020 20:46:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qXqlIx8m;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=QVo+gufD;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33890 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36074 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kElcx-0006AK-EG
-	for alex.bennee@linaro.org; Sat, 05 Sep 2020 23:46:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46116)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kEldQ-00073J-8a
+	for alex.bennee@linaro.org; Sat, 05 Sep 2020 23:46:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45986)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kElcn-00067W-VR
- for qemu-arm@nongnu.org; Sat, 05 Sep 2020 23:45:53 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:41047)
+ id 1kElcc-0005kf-0u
+ for qemu-devel@nongnu.org; Sat, 05 Sep 2020 23:45:42 -0400
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:45953)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kElck-0003Yl-W5
- for qemu-arm@nongnu.org; Sat, 05 Sep 2020 23:45:53 -0400
-Received: by mail-pl1-x641.google.com with SMTP id m15so1818751pls.8
- for <qemu-arm@nongnu.org>; Sat, 05 Sep 2020 20:45:50 -0700 (PDT)
+ id 1kElca-0003TP-4a
+ for qemu-devel@nongnu.org; Sat, 05 Sep 2020 23:45:41 -0400
+Received: by mail-pl1-x644.google.com with SMTP id bh1so2907856plb.12
+ for <qemu-devel@nongnu.org>; Sat, 05 Sep 2020 20:45:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=t2VnuRpgNp/JrCV+HPg0YJnBxE1cK2hkQDvKZ7hGxfI=;
- b=qXqlIx8m2fGiZiZp/aJ3cCrMKdMVDosOHIWk2+vzObOwEmRI+dz+AmtMp4GbJRHt6B
- yaNMMKrmpQprkuue+ZSsFI3pfgpvrqoHzB2GtzKVLEXizuDR0vviTzWTEce8/HFd4SHQ
- QkxLui1Ode1cw3ga9zxtXlG2AtiSHYuzoUWmTvVSiEjIc3J0arQ2A6JXGEMMyL3rlyKU
- ufh1AQxbuU2H07Ajf0/TdZUorTeH38eGZDDNBtahM414E4eLuuzGg00sfYNPOvcEWpsO
- 1yS4xmx8zf50IEFyOdZMshc7RG1r/WU2St4AhVUh2ULfwqXX7jvIjZqSFTzUMy6CCDjT
- 4BVg==
+ bh=sqV4CD4eex60oNmdNWf1e1AwXEdP6cBcia6Vzz+jO5E=;
+ b=QVo+gufDG2jzGWRcdXAGVaO5SXsQMtipPj1Ao4UXveAVaoRHkv6938p2sVVajcBdTi
+ mZqoDkpdWWjjpf8uVvMLHq0LikLyEdtiAVGZ3+cf7nf2vOyY+z8bwOYQYv0+jd2xuCB1
+ yqYLWptjwM7vIBYTQm/FyzpW4i8PUIZmRj7Quodjn1Amd3LGmv9vekfyT9n2rE/PeW+I
+ dXTyH/S6ijyqLdakWHh7B+AMXdAWknUFRockSVE7KEgX/+twr7tLq5H52cLou3N6wfMh
+ O84BbhArIKOL/Ge/1NfjpS5ZRhABJye3ztiq6qLeCcuBboXwjUB99HCjnxuQZwGbRgyv
+ Lbfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=t2VnuRpgNp/JrCV+HPg0YJnBxE1cK2hkQDvKZ7hGxfI=;
- b=gvM8xbSKevK3valG7dVkK5TGYrbg46dSvd/acQAgf3Ltrx5DcYflLm34GEj1z6iDYY
- 0U5s21ZL1NI6gAoGeqXZ6uU6VEGn54pPd490WRmPTzjrxmsprJMp/4j1nZ6T+dXfb8R2
- w5e4abHLXLuNHhkipU60pPSmwkRznHhoMRL/ZZc+JcWP7nPQbqA8sK0iwzJULhFPS7ly
- tYuMhAcpqSxormRTLpM60TbQBiBQN4dqA4mswe7kw7qOAZVWuil2+1DSDj2TszWG7FfE
- LLij2qc+3oRdh5Kxuw2H1NOCHsOPvuLw7xFKl5scN7waY+dmSjfUFNzFBj7YwKhWIsqA
- l5BA==
-X-Gm-Message-State: AOAM531gAMSt+/B9JwcSJ4NhnD/WWjGsYoweC+m9k0UdbMoNSZgmShur
- xi46f+lm5S14By1f3vaydDTYTw==
-X-Received: by 2002:a17:902:a9c2:: with SMTP id
- b2mr14583057plr.56.1599363949849; 
- Sat, 05 Sep 2020 20:45:49 -0700 (PDT)
+ bh=sqV4CD4eex60oNmdNWf1e1AwXEdP6cBcia6Vzz+jO5E=;
+ b=rx0AbSARD1hA2uiJkBOo022n2ER0XNqIzAAcKTFUWNosTNCrrXDt0ZqrL04UkpUlw+
+ h6x6WqJWSlAoPO7IVbD/MWw60TgT2rQWqby4MO+zt8uZoIxx1E+UZcTjbDb4x6aKVmo/
+ B/XQjFL+fOAmdXZ/q81MGn5BKbipGitNfXjcTxamijw+0mATQiNHv2GO60Z64a/UXNSK
+ YFdjQFrTvAx4hG+wm3g6ioc7JEyHVjZXlxeSGKMB0A8WTJIEn6CENNyFgQ33LkC71ECO
+ zpckhr4Y/4yXp2OFWCVL3d98bLOf4l8R+PFwMZZjDx75Gh/Z118XKWaQ3KKb8PTlKhgp
+ oaZw==
+X-Gm-Message-State: AOAM533PBv0KGjlHOuC8ZFG5Xfs805wQkQszF2byxy9lJ9+BztIelXog
+ CTDjk6v3s9H3KbSrTuvYIvbtdw==
+X-Received: by 2002:a17:90a:b387:: with SMTP id
+ e7mr15257956pjr.228.1599363938641; 
+ Sat, 05 Sep 2020 20:45:38 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id w6sm8812245pgr.82.2020.09.05.20.45.48
+ by smtp.gmail.com with ESMTPSA id mp3sm8652571pjb.33.2020.09.05.20.45.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 05 Sep 2020 20:45:49 -0700 (PDT)
-Subject: Re: [PATCH 02/13] docs/devel/loads-stores: Add regexp for DMA
- functions
+ Sat, 05 Sep 2020 20:45:37 -0700 (PDT)
+Subject: Re: [PATCH 01/13] pci: pass along the return value of dma_memory_rw
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
 References: <20200904154439.643272-1-philmd@redhat.com>
- <20200904154439.643272-3-philmd@redhat.com>
+ <20200904154439.643272-2-philmd@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <bf52d63d-047e-42ac-5336-829ae3e9028c@linaro.org>
-Date: Sat, 5 Sep 2020 20:45:46 -0700
+Message-ID: <f4bf011d-18c2-21a7-8e6a-0ad554a52dba@linaro.org>
+Date: Sat, 5 Sep 2020 20:45:35 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200904154439.643272-3-philmd@redhat.com>
+In-Reply-To: <20200904154439.643272-2-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -21
@@ -114,40 +113,56 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
  Joel Stanley <joel@jms.id.au>, Richard Henderson <rth@twiddle.net>,
  Laszlo Ersek <lersek@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
  Alistair Francis <alistair@alistair23.me>,
  Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
  qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Keith Busch <kbusch@kernel.org>, John Snow <jsnow@redhat.com>,
  David Gibson <david@gibson.dropbear.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Klaus Jensen <k.jensen@samsung.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
  Peter Chubb <peter.chubb@nicta.com.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tiHwXsBj+wXj
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: F6NExJjJ0N+V
 
 On 9/4/20 8:44 AM, Philippe Mathieu-Daudé wrote:
+> From: Klaus Jensen <k.jensen@samsung.com>
+> 
+> Some might actually care about the return value of dma_memory_rw. So
+> let us pass it along instead of ignoring it.
+> 
+> There are no existing users of the return value, so this patch should be
+> safe.
+> 
+> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> Acked-by: Keith Busch <kbusch@kernel.org>
+> Message-Id: <20191011070141.188713-2-its@irrelevant.dk>
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  docs/devel/loads-stores.rst | 2 ++
->  1 file changed, 2 insertions(+)
+>  include/hw/pci/pci.h | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

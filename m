@@ -1,113 +1,110 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3886047lfc;
-        Mon, 7 Sep 2020 09:38:35 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwHBsg6BLpVz51AdMgecenqS/1ARsvUt/FJ9Py8ysK+BV5SiO7XQUJJBIdfrC+5YXx/wD8R
-X-Received: by 2002:a25:ab2f:: with SMTP id u44mr28314806ybi.318.1599496714872;
-        Mon, 07 Sep 2020 09:38:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599496714; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3918348lfc;
+        Mon, 7 Sep 2020 10:28:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz5A7cPp8/vTvHgnh4+VoGw7LSQtuch030AvHKrirE0KwjAc5JjCKbTScQuRbE3moNSu+gm
+X-Received: by 2002:a25:bcc4:: with SMTP id l4mr9465525ybm.120.1599499717502;
+        Mon, 07 Sep 2020 10:28:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599499717; cv=none;
         d=google.com; s=arc-20160816;
-        b=t2o7c3kMrq0m+Yd2MkxAzf/mi8bsBODBTY9xfOnH9/MFOIFNSS/Wsv/rQPOqzNLzmg
-         9s+h4fSSOFsIgmMzcQR0cU99iFzD8ZVy2OXWc/XYUv3OHbgTUk0ik+hwWnDuc/IxO2y+
-         ADwPiaFGTYSROG7t+UNTimY5yi7qKopVHQqB+xgFUuBorWYksc5L21tQ9p2482zf+Svo
-         +OvGXO5FEp9lWF75Yf6dU3c6P6Qt9vraV/ruK7SMHTxgdrof6hF8Sc2mnlyhEDLdO5z/
-         RN/eG7LXWZ1RG09Ww7O2QMtrhxfsmssdUs2iT8gNURkHXgu07mZmEE40xhnJMxlv991+
-         DL8w==
+        b=uxmuKm6YtDDqWPeALBT5Go60XH5Zxh5PumHFh6MC9E5+dog4m67QKY8JQMLI6FV3OT
+         nS8glLbuLI/uBqBxQatT10zumoYzJFvdUzaPVw6Ntuw3yMu0WMUH7b735hst67bYI6IZ
+         RMn7DrVxxoBJ9jwc3sWTptT4K0iYrjA9pb6UuFDc6rDi/CodCOFNebwcUOOhwrtr8HnW
+         Y7lKnENsmiezdDbBTbI/EM19QhJMsRKlNnYlgsa5enF7Q1xzqKT7JQE4uBOlzVcPjysX
+         NkbSeFNsnhN2e85R8xW3KoGJmZujYBtRYe9L+i8VrTxVxABpXIdA0Cy1MwtU3ncoUQG9
+         RPtw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=jBgL1iKIvz4jH+dRa8U6fT1B6oJw6/SF3dkJ8j+0tYI=;
-        b=gwXkeJkHud6TNS1WSf7/N1oWMM3vYW8qa8hKeRM9yfywAiA8CsSu5hFZgMfBE0a0Q7
-         MO5h0jsSR3nNfnRDrvPivXbYZF6c1WF7s5YPbJ6QX9AHsKq/YOrWqO0UjTQXydd3NzMS
-         lw22N84ZumHbnqnXOLE7GcKLzh3rzQov/kwA82lwrtY8Ntn/A9xeG4Vj6NL2+iP65HAW
-         Ic+iqCCD+CPQKuGcqL8/CJA7vbUdVC3SnU99/Nj+9dOcne/godVWgZO5Za7InGsHsoQu
-         WWrG0IfWn/2N4a3pX7XMPDOwzP4jN9bczKZHOQApgOtIzMnyDwn5XezPt3b63W5x3360
-         gm0g==
+         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
+         :content-disposition:mime-version:references:message-id:subject:to
+         :from:date:dkim-signature;
+        bh=yQpxWJo6HMty7kK9sWL6SsmMoyOUcPaxRFTi1QGQOgM=;
+        b=UwlxHAE0S2wRf0A+pRX7o3MdA9818aDaIqTewpN+KBNqy7P2eiSCCZqSktjQ+m6VBE
+         WZPIEkIqPA+VgYKE+cjyNUsfy6hhRNcMSv7ByVi2rjovm7kBgR2AX3wnkKCExOi1vg5O
+         +1Gz3J0GZQriH3cGfm+YidH1SHHFKaa+gR+ucwy9GPNieSUiaKheFbCFy4oiw7cqdFy9
+         exkvnYVVciFanq9WAdOmV7dl8zDIJppbcT5uWI/M1V6pHtg0NgrKlP622qEhcInnpnVC
+         eBAcMCP3T3Wk82RowvTui0DkTRRFJp27Rm4oSU/xr40WD90Y3+msaOEZAjw/lTvPDHia
+         4w7w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NGwwOK8a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=p6fWqe11;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x4si15029174ybe.193.2020.09.07.09.38.34
+        by mx.google.com with ESMTPS id f14si15022236ybg.476.2020.09.07.10.28.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Sep 2020 09:38:34 -0700 (PDT)
+        Mon, 07 Sep 2020 10:28:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NGwwOK8a;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41236 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=p6fWqe11;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33226 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFKA6-0000Ed-9u
-	for alex.bennee@linaro.org; Mon, 07 Sep 2020 12:38:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47882)
+	id 1kFKwW-0007Qy-SY
+	for alex.bennee@linaro.org; Mon, 07 Sep 2020 13:28:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58638)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kFK4v-0008M9-8v; Mon, 07 Sep 2020 12:33:13 -0400
-Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:38566)
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kFKvM-0006XK-PM
+ for qemu-devel@nongnu.org; Mon, 07 Sep 2020 13:27:24 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:42277)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kFK4t-0007dB-DR; Mon, 07 Sep 2020 12:33:12 -0400
-Received: by mail-ed1-x544.google.com with SMTP id c8so13318869edv.5;
- Mon, 07 Sep 2020 09:33:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jBgL1iKIvz4jH+dRa8U6fT1B6oJw6/SF3dkJ8j+0tYI=;
- b=NGwwOK8a+fHGjLxYQTX0miQrbkb8sWxiahi18i6/0l6gF2OCge51BPuralxFjDtOwG
- WCR670KtplUUFKsjcCQr8P1sU9i7rgyNA5lEb+6IT9gi6Dj+I2Tx350khN+lPnGT+9jm
- C3oI9QO/O1+Ly8LcPWfLjnwig/6OuLuH0aKntPyUxpIY9q2Fssck494TxIb9sPAyt+Ov
- sOTMz4y2wWmUh6W3mLJH4TujsmMJTDU8b8GqG5wEuVteNt1JAtP6rTk9P3yTnvqbd2cj
- WsDaiEDYYWivElWw5n4lmyvTcSlCVkPvEGNJ4GUxVgPa3Qhu4QrajWR5xmGR7XFNses5
- sPWg==
+ (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kFKvK-00063e-Im
+ for qemu-devel@nongnu.org; Mon, 07 Sep 2020 13:27:24 -0400
+Received: by mail-wr1-x442.google.com with SMTP id c18so16510858wrm.9
+ for <qemu-devel@nongnu.org>; Mon, 07 Sep 2020 10:27:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:in-reply-to:user-agent;
+ bh=yQpxWJo6HMty7kK9sWL6SsmMoyOUcPaxRFTi1QGQOgM=;
+ b=p6fWqe1160ZCygq9NAkQvIg+oGQQbj5RAZxEmnVYHnLiUWa28+gkAN/p1HVbwyP47E
+ qHoUMD0KwDlEVqE+lAQgh5Y4op2kPvpVUsTZQxZ5bVc4RaaddtwjLyQ53SUrNG6aWS0o
+ qgaA7w3kdkKQahH1FHSiAzZwkZAa5XCmAde0zPfyp389uMDM07jhxn46/6gKKVg+BBJp
+ gyg8TVWFWNbHPxW8cymz24qKF5zbYBv/WgLMDmKB0gA4Q2haF1uKfwgQTs1d5YtzUM/9
+ W3dM5V0mEe5AtpfvgbOHmnTMcff6Can+B8WuBKl/ibvj+JcM1wiF1lwnd67GgMR/SuUR
+ xVNg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=jBgL1iKIvz4jH+dRa8U6fT1B6oJw6/SF3dkJ8j+0tYI=;
- b=VR4EnWhribgHkMo4j+6jYUHUKFkVthRjAfQxVNZ6V7Jx2DJeQK05SYSY1SApP54RV6
- +yxylMpOfTd7ctxAeq7TK3zC3/o27rSRXVfazD3XzywuR24hwcC+CknOH+djDmE9T3AO
- xL1+kaHAf259cZmjCHway7Q3Zh5Xk6FezTxDMtiPwL/jf2uTesKO0K6J6SJVMXeADzQO
- pKEOoc2kzUPmjKYMN5xdrr2Lte9DxVaFt53AiQis/lH57N5Is2GZ6Wok+b7icbT2GD6g
- 3RMX8fQjeYVgAYb2uUz4xXsL0gAptFAw4BYmPZTVJuQcUQioxtC219kCpETPe7qVTS3r
- EVPQ==
-X-Gm-Message-State: AOAM530lzsbHSSApmjtKqKRn1hX6NQPt3Yfo/E/Ef4UwHpXOE+hQ8deI
- nTieUgxVSIdaX5kLf5LwGvDdnb41g5c=
-X-Received: by 2002:a05:6402:b68:: with SMTP id
- cb8mr4902112edb.350.1599496389494; 
- Mon, 07 Sep 2020 09:33:09 -0700 (PDT)
-Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id u13sm15700199ejn.82.2020.09.07.09.33.08
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:in-reply-to:user-agent;
+ bh=yQpxWJo6HMty7kK9sWL6SsmMoyOUcPaxRFTi1QGQOgM=;
+ b=c9hHvbrSgBwqtqpQnLhKXu62PVJC5oaQmOfSDTUqs5mE0SHZbD5ZMAN1LDG1jMc8M2
+ CulzMKpjYoFKNbRhzX1xc25qyq0+Sq7shMbxGJhg3IZD0euHSBPE1xBKDFQwu0m7ZF8X
+ l9w92baf/s9+xssTElY3yxziQK8GQyGXzjQDU5+U2A9Psjg0nSEAGczBAmkCEk+maX9T
+ XlD5bqxnJ+tsV9looFSuT85TKdn0sVRLw82TonfN/pWDztpa2NBEzYNf5/Xp/B+E9L7+
+ EChGyU8xXfWxpduM9q52WHTb4Sadl48DccfFgZj8dQD31sJgY9di2djiWraegR/gmE9U
+ +blQ==
+X-Gm-Message-State: AOAM531BYTqXTpLg2W4pjaIuTCY0qZgHjPu0DnV2fJg6PU4wdBsUOli+
+ B9BTTQSHnVfOmaqldY78z9J9dQ==
+X-Received: by 2002:adf:e9c7:: with SMTP id l7mr8364772wrn.93.1599499640516;
+ Mon, 07 Sep 2020 10:27:20 -0700 (PDT)
+Received: from vanye ([2001:470:1f09:12f0:b26e:bfff:fea9:f1b8])
+ by smtp.gmail.com with ESMTPSA id t4sm8908638wrr.26.2020.09.07.10.27.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2020 09:33:08 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v4 6/8] hw/misc/mps2-scc: Use the LED device
-Date: Mon,  7 Sep 2020 18:32:55 +0200
-Message-Id: <20200907163257.46527-7-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200907163257.46527-1-f4bug@amsat.org>
-References: <20200907163257.46527-1-f4bug@amsat.org>
+ Mon, 07 Sep 2020 10:27:20 -0700 (PDT)
+Date: Mon, 7 Sep 2020 18:27:12 +0100
+From: Leif Lindholm <leif@nuviainc.com>
+To: Bin Meng <bmeng.cn@gmail.com>
+Subject: Re: [PATCH v3 00/16] hw/riscv: Add Microchip PolarFire SoC Icicle
+ Kit board support
+Message-ID: <20200907172712.GB5623@vanye>
+References: <1598924352-89526-1-git-send-email-bmeng.cn@gmail.com>
+ <20200906010811.GA1546@vanye>
+ <CAEUhbmVfSPwO5CHO2G5Vd5fA6NA4dRCp-e_KGJhSO7nYAPmi1w@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::544;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x544.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAEUhbmVfSPwO5CHO2G5Vd5fA6NA4dRCp-e_KGJhSO7nYAPmi1w@mail.gmail.com>
+User-Agent: Mutt/1.10.1 (2018-07-13)
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=leif@nuviainc.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,149 +117,129 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Joaquin de Andres <me@xcancerberox.com.ar>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Luc Michel <luc.michel@greensocs.com>, Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>, Bin Meng <bin.meng@windriver.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oO++FQOqagwP
+X-TUID: EfdGTEg/G927
 
-Per the 'ARM MPS2 and MPS2+ FPGA Prototyping Boards Technical
-Reference Manual' (100112_0200_07_en):
+On Mon, Sep 07, 2020 at 18:24:06 +0800, Bin Meng wrote:
+> Hi Leif,
+> 
+> 
+> On Sun, Sep 6, 2020 at 9:08 AM Leif Lindholm <leif@nuviainc.com> wrote:
+> >
+> > On Tue, Sep 01, 2020 at 09:38:55 +0800, Bin Meng wrote:
+> > > From: Bin Meng <bin.meng@windriver.com>
+> > >
+> > > This adds support for Microchip PolarFire SoC Icicle Kit board.
+> > > The Icicle Kit board integrates a PolarFire SoC, with one SiFive's
+> > > E51 plus four U54 cores and many on-chip peripherals and an FPGA.
+> > >
+> > > For more details about Microchip PolarFire SoC, please see:
+> > > https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga
+> > >
+> > > The Icicle Kit board information can be found here:
+> > > https://www.microsemi.com/existing-parts/parts/152514
+> > >
+> > > Unlike SiFive FU540, the RISC-V core resect vector is at 0x20220000.
+> > > The RISC-V CPU and HART codes has been updated to set the core's
+> > > reset vector based on a configurable property from machine codes.
+> > >
+> > > The following perepherals are created as an unimplemented device:
+> > >
+> > > - Bus Error Uint 0/1/2/3/4
+> > > - L2 cache controller
+> > > - SYSREG
+> > > - MPUCFG
+> > > - IOSCBCFG
+> > > - GPIO
+> > >
+> > > The following perepherals are emulated:
+> > > - SiFive CLINT
+> > > - SiFive PLIC
+> > > - PolarFire SoC Multi-Mode UART
+> > > - SiFive PDMA
+> > > - Cadence eMMC/SDHCI controller
+> > > - Cadence Gigabit Ethernet MAC
+> > >
+> > > The BIOS image used by this machine is hss.bin, aka Hart Software
+> > > Services, which can be built from:
+> > > https://github.com/polarfire-soc/hart-software-services
+> > >
+> > > To launch this machine:
+> > > $ qemu-system-riscv64 -M microchip-icicle-kit -smp 5 \
+> > >     -bios path/to/hss.bin -sd path/to/sdcard.img \
+> > >     -nic tap,ifname=tap,script=no,model=cadence_gem \
+> > >     -display none -serial stdio \
+> > >     -chardev socket,id=serial1,path=serial1.sock,server,wait \
+> > >     -serial chardev:serial1
+> >
+> > I finally got around to building the sd image from
+> > https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk,
+> > and I can successfully boot to prompt using that, and the (hacked)
+> > hss.bin I verified previously - also with this v3.
+> >
+> 
+> Good to know!
+> 
+> > However, unless I add the "-nic user,model=cadence_gem \" shown in
+> > https://wiki.qemu.org/Documentation/Platforms/RISCV#Microchip_PolarFire_SoC_Icicle_Kit
+> > but not here, I do not have functioning networking. (It is not obvious
+> > to me why this is needed.)
+> >
+> 
+> Sorry I don't understand what the issue is?
 
-  2.1  Overview of the MPS2 and MPS2+ hardware
+The instructions in this cover letter does not contain the line
+  "-nic user,model=cadence_gem \"
 
-       The MPS2 and MPS2+ FPGA Prototyping Boards contain the
-       following components and interfaces:
+The instruction in the wiki does.
+The instruction in the wiki works, the instruction in the cover letter
+does not.
 
-       * User switches and user LEDs:
+It is not clear to me why both lines are needed.
 
-         - Two green LEDs and two push buttons that connect to
-           the FPGA.
-         - Eight green LEDs and one 8-way dip switch that connect
-           to the MCC.
+> > > The memory is set to 1 GiB by default to match the hardware.
+> >
+> > Which hardware is this?
+> > https://www.crowdsupply.com/microchip/polarfire-soc-icicle-kit lists
+> > 2GiB.
+> 
+> It's this same board. But I believe the crowdsupply webpage has the
+> wrong information. The board I got only has 1GB memory.
 
-Add the 8 LEDs connected to the MCC.
+The diagram on https://www.microsemi.com/existing-parts/parts/152514
+also says 2GB. Do you have any channel to Microchip to clarify this?
 
-This remplaces the 'mps2_scc_leds' trace events by the generic
-'led_set_intensity' event.
+> > > A sanity check on ram size is performed in the machine init routine
+> > > to prompt user to increase the RAM size to > 1 GiB when less than
+> > > 1 GiB ram is detected.
+> >
+> > There is currently no visible effect in firmware from setting memory size to >
+> > 1GiB (hss says 1GB, u-boot says 1GB, Linux sees 1GB).
+> > Are there any plans to address this in future versions?
+> 
+> HSS is using hardcoded 1GB memory size and that's why in QEMU the
+> minimum required memory size is 1GB. Setting less than 1GB size blocks
+> HSS to load the 2nd stage bootloader U-Boot into the memory. Both
+> U-Boot and Linux DTS files set the memory size to 1GB, so that's why
+> both of them see only 1GB. Setting memory >1G does not affect U-Boot
+> and Linux though. You can however manually edit the U-Boot and Linux
+> DTS files to have a large RAM size to match QEMU -m option.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-https://youtu.be/l9kD70uPchk?t=288
----
- include/hw/misc/mps2-scc.h |  2 ++
- hw/misc/mps2-scc.c         | 25 ++++++++++++++-----------
- hw/misc/Kconfig            |  1 +
- hw/misc/trace-events       |  1 -
- 4 files changed, 17 insertions(+), 12 deletions(-)
+Understood, thanks.
 
-diff --git a/include/hw/misc/mps2-scc.h b/include/hw/misc/mps2-scc.h
-index 7045473788b..8542f384227 100644
---- a/include/hw/misc/mps2-scc.h
-+++ b/include/hw/misc/mps2-scc.h
-@@ -13,6 +13,7 @@
- #define MPS2_SCC_H
- 
- #include "hw/sysbus.h"
-+#include "hw/misc/led.h"
- 
- #define TYPE_MPS2_SCC "mps2-scc"
- #define MPS2_SCC(obj) OBJECT_CHECK(MPS2SCC, (obj), TYPE_MPS2_SCC)
-@@ -25,6 +26,7 @@ typedef struct {
- 
-     /*< public >*/
-     MemoryRegion iomem;
-+    LEDState *led[8];
- 
-     uint32_t cfg0;
-     uint32_t cfg1;
-diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
-index 9d0909e7b35..745505b849d 100644
---- a/hw/misc/mps2-scc.c
-+++ b/hw/misc/mps2-scc.c
-@@ -20,11 +20,13 @@
- #include "qemu/osdep.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "qemu/bitops.h"
- #include "trace.h"
- #include "hw/sysbus.h"
- #include "migration/vmstate.h"
- #include "hw/registerfields.h"
- #include "hw/misc/mps2-scc.h"
-+#include "hw/misc/led.h"
- #include "hw/qdev-properties.h"
- 
- REG32(CFG0, 0)
-@@ -152,18 +154,10 @@ static void mps2_scc_write(void *opaque, hwaddr offset, uint64_t value,
-         s->cfg0 = value;
-         break;
-     case A_CFG1:
--        /* CFG1 bits [7:0] control the board LEDs. We don't currently have
--         * a mechanism for displaying this graphically, so use a trace event.
--         */
--        trace_mps2_scc_leds(value & 0x80 ? '*' : '.',
--                            value & 0x40 ? '*' : '.',
--                            value & 0x20 ? '*' : '.',
--                            value & 0x10 ? '*' : '.',
--                            value & 0x08 ? '*' : '.',
--                            value & 0x04 ? '*' : '.',
--                            value & 0x02 ? '*' : '.',
--                            value & 0x01 ? '*' : '.');
-         s->cfg1 = value;
-+        for (size_t i = 0; i < ARRAY_SIZE(s->led); i++) {
-+            led_set_state(s->led[i], extract32(value, i, 1));
-+        }
-         break;
-     case A_CFGDATA_OUT:
-         s->cfgdata_out = value;
-@@ -245,10 +239,19 @@ static void mps2_scc_init(Object *obj)
- 
-     memory_region_init_io(&s->iomem, obj, &mps2_scc_ops, s, "mps2-scc", 0x1000);
-     sysbus_init_mmio(sbd, &s->iomem);
-+
- }
- 
- static void mps2_scc_realize(DeviceState *dev, Error **errp)
- {
-+    MPS2SCC *s = MPS2_SCC(dev);
-+
-+    for (size_t i = 0; i < ARRAY_SIZE(s->led); i++) {
-+        char *name = g_strdup_printf("SCC LED%zu", i);
-+        s->led[i] = led_create_simple(OBJECT(dev), GPIO_POLARITY_ACTIVE_HIGH,
-+                                      LED_COLOR_GREEN, name);
-+        g_free(name);
-+    }
- }
- 
- static const VMStateDescription mps2_scc_vmstate = {
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 0cecad45aad..7557a3e7b46 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -97,6 +97,7 @@ config MPS2_FPGAIO
- 
- config MPS2_SCC
-     bool
-+    select LED
- 
- config TZ_MPC
-     bool
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 43b9e0cf250..a620a358feb 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -85,7 +85,6 @@ aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64
- mps2_scc_read(uint64_t offset, uint64_t data, unsigned size) "MPS2 SCC read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- mps2_scc_write(uint64_t offset, uint64_t data, unsigned size) "MPS2 SCC write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- mps2_scc_reset(void) "MPS2 SCC: reset"
--mps2_scc_leds(char led7, char led6, char led5, char led4, char led3, char led2, char led1, char led0) "MPS2 SCC LEDs: %c%c%c%c%c%c%c%c"
- mps2_scc_cfg_write(unsigned function, unsigned device, uint32_t value) "MPS2 SCC config write: function %d device %d data 0x%" PRIx32
- mps2_scc_cfg_read(unsigned function, unsigned device, uint32_t value) "MPS2 SCC config read: function %d device %d data 0x%" PRIx32
- 
--- 
-2.26.2
+Best Regards,
 
+Leif

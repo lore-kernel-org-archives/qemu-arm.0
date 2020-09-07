@@ -1,381 +1,227 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3361314lfc;
-        Sun, 6 Sep 2020 18:20:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzi4E12sOWFZCMZ5WkG9GJMiZqwvtFpWUmC4SV7XKQ1g4G0iH7j2hnLMkI25aN3EWjqw3UV
-X-Received: by 2002:a25:1e88:: with SMTP id e130mr15629075ybe.278.1599441624639;
-        Sun, 06 Sep 2020 18:20:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599441624; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3399977lfc;
+        Sun, 6 Sep 2020 19:46:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyaWdieENmOOzJuKPZWMPpJgrxjWA068Y+EEM6/JXxdi1IY+uNzt7Kg78veXDVceCTpNaP9
+X-Received: by 2002:a25:824a:: with SMTP id d10mr25674293ybn.260.1599446794464;
+        Sun, 06 Sep 2020 19:46:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599446794; cv=none;
         d=google.com; s=arc-20160816;
-        b=oneBnLMeAqkFAPBywnDG9E+NemUc5Q1+7AzkOjnZWBgavn/bjydsBI+rqH/Qjqg9zs
-         MAh1IcxUupSwH0Ov7Gq3IH00GrDkYpjwqQ4GtNwJNCvlf08fTCrjK/ZRl3z5bC2jh0hY
-         GZM/JAcm/XqTw37bqSKDq04G+57A0kvmUNzBeN0HKke0X61c40iwYP9M9U6EJ1RR5xpN
-         DtLQ6zBnMn+styVtYSS+djbSg2aeUe1WccIGwod6Of6cyXBpKxg8B4yxwlcFlP/3QR1c
-         gyyMv4/WGyWwJLOpvx7O1lmfVQE3458FjO/EAJLq/2uWC00dvQYnAd52pl6jMJvH6ne6
-         tPZw==
+        b=Vj3mOFcqiZ+KBWZSY5alVeQ1zovjgDpPlmFbCsYCPGNspyJztcwWReEkkLSlwPA3p5
+         yL3m+kfFMn4kBK+Iu8OAouOScSTBnFTFjt64Xvsapb5lA87zlhGHMkIRDxvWMMf+h1aL
+         7JxETHzswMYCQwtMIl2yVZ3FWPKThBXgZHniGIxUnE+bD7xC8S9wjw5j3Crxc/pPe+ee
+         TuFG2hM9yzjfg0K4NjkIwbvEeLDTeHiuHQuApPIHouOSmf1tfXW4xRwk579IbB+wfFV0
+         oDwCtYih2kOrlx6hP2E4mW5EkOzgtMU2WRmMHPLh41Cyt2yRwxsQFwUJcC8wxNNaaGzS
+         /3Mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=Pgm7guJikuCtm948Ra9ie/IRNBNn0RwaFbloQ4gY1QE=;
-        b=x8ZdInqHuaMQZYSJWb7KgEgKM8H4ZwbvbJAWEIYFFW7esTdVXIgIEGJ1yA2ZngRSau
-         4C7JrKSZTR7Qd0SfFqFKmKXVpe9u1RX5dmQK8gsqHoh7uey4EDg/PiarjUR4d/POnBSU
-         ZR+KAkfr9y6YZR9bHyzd4XHTDgcqyORz/AR9ot3B3gbCI8Pjp5spSw0XofFs/VFxAVzd
-         DmAKEK6cZgdv4kZdc200tCEm6rTwb76y0fA8v3KrEDrbju5bZxmciFol+DmAfMFMTYGf
-         5NYjjY2yLoC2W7PLMuZ2qeSk3nvTqGgZm+QF5P1NrXjGE65fMdJOiiJ0knSyfG0Aeatc
-         yyHg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:references:to:from:subject:dkim-signature;
+        bh=GEsiPUweD3E8ZtSnAf1DCytZpo9eEVbaGtaY9vX+oQw=;
+        b=BtiLcigvbiM08ffwlxTb987HxHjNWGFV0oD07ULPztzDOTABHheQqQ6xM3v4yoaIk5
+         M+g9CzMS9rnZ7XnbfZUggFbaVdNoFa+SCGoHNZyCtug0NzD3bMlTqAkWAyMgRf0PnuAh
+         VFhND+U/TAogJqaS4PyF8/Xuu8laSHw+UPHJxX/003R4C0nYp7HNYPVAe8Sc03wxLXgn
+         NIPf5ta7hivcFXA0JHUM54dkPBy/2S3tD94b/pLolgtprds3uylwWgIzHwljHgjH3ViU
+         Cln3jXfvzkkNePTfSIKiHjaCcwrLl9w81FlRN6XWd0BosVUxt0EJRY70p5BK9LL/BpV3
+         xIag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hSvN4hHO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pneENjmJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c19si3781622ybj.18.2020.09.06.18.20.24
+        by mx.google.com with ESMTPS id y137si12109710ybe.192.2020.09.06.19.46.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 06 Sep 2020 18:20:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 06 Sep 2020 19:46:34 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hSvN4hHO;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:42732 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=pneENjmJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:52386 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kF5pX-00041w-W6
-	for alex.bennee@linaro.org; Sun, 06 Sep 2020 21:20:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54932)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kF7Av-00038r-SF
+	for alex.bennee@linaro.org; Sun, 06 Sep 2020 22:46:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38276)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kF5o8-000251-BM; Sun, 06 Sep 2020 21:18:56 -0400
-Received: from mail-oo1-xc42.google.com ([2607:f8b0:4864:20::c42]:34871)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kF7Ad-0002yU-QS; Sun, 06 Sep 2020 22:46:15 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54156)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
- id 1kF5o5-0003SK-3G; Sun, 06 Sep 2020 21:18:56 -0400
-Received: by mail-oo1-xc42.google.com with SMTP id k13so2956187oor.2;
- Sun, 06 Sep 2020 18:18:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kF7Ab-0005o3-Kl; Sun, 06 Sep 2020 22:46:15 -0400
+Received: by mail-wm1-x343.google.com with SMTP id x23so2997244wmi.3;
+ Sun, 06 Sep 2020 19:46:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=Pgm7guJikuCtm948Ra9ie/IRNBNn0RwaFbloQ4gY1QE=;
- b=hSvN4hHOW1Wth1svXvpZedWiG/Cx/1EZvdZ9UU1wHIYSS0M+hJ8gPX+Ba29ivcdGOt
- alqcrmX4HJlcivSDFcEjkGg7bvXMdQ34mGbpspnRHTIujxnO87m9RF9S52Ymfg/SqA/T
- ySpi2/Z23qNtqFIultsxz3fO0OyOZSK6DU6EuXQg7BktZ5h30vl2NeqKngCMC1999ZBo
- EL/0btVOug6kRiOkRrhdcQi06fgwrOMcOQcLFED6TC49N70aximDJ0Hz8hyGboP/AsYt
- HJxcyW2WVIPSkfSq2qN+SDra5H/mvyq7yYZJrSVFVCwCXpyKHPAmhauQTqLnGqo6Iu+l
- pn8g==
+ h=sender:subject:from:to:cc:references:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=GEsiPUweD3E8ZtSnAf1DCytZpo9eEVbaGtaY9vX+oQw=;
+ b=pneENjmJYGoNkdm4YdPOtLCbgK6KI4RJUj/HnK4g8xis9WHviCnyf42gpd4yp8EpVO
+ OniJ1X4LLEZi06cGPPzqbgOvYv7TMNUf6petKgfP+ujSQoBaVtYSC7GSiLvyIM3vIzcU
+ BdhFla4HyDrgDAYxOmiK9yQJ8QRdXOCMLOrRg0tyJdDQyHlAI+sxSR9GGQUVKO2oElHQ
+ N9A9fHkRrftPPJABc+cejzfAmqIS52QHtPX/8ut9NE+iMss/anM/lkJIvPs3MqOx4FCK
+ fto2VpeAozG5CAX3rsI5zPAiZ7Jj88gofEDw56vSV8OJTGLVcII0SpczsU6P+eeimo1r
+ /DoQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=Pgm7guJikuCtm948Ra9ie/IRNBNn0RwaFbloQ4gY1QE=;
- b=t4EheI0aK48Xa4nR5OYvUzyM/nDHNEHizuVrdszpO2///KxOzydSmNXRvcDbIZhDgT
- HyPOqwLv8B8M00lkeo7va92m+8F4NoG7Hfwx/dyd0yRZnI37NNCSCMxkQvg3lQiw2PT+
- veMehA+VStK2LHsmL77Zrz8ZaOVDoGMGI0npfeWPaCxZIfyOiWarqKAYLGGp8BN4cjfy
- 9CVACf+5gwAztzhHAcK45QUq0zMMWF5QqdZHxp+vaEFQno3AarkESOa2vznmJ2G/BdcV
- LFDUPFL52sqTMwaFvgfUlKUjJYFLQJWc8lNS/R88dELu0OVr1AiX8l7pzsO4LAsXyAC5
- XfzA==
-X-Gm-Message-State: AOAM53335C1C7LVUiyrvMeC2grMtoVlKh99r110+mkda67Ll1CoNUB+V
- I6rsdS/5eKHB59Kehsg5bSy/9eKCFmXO/FHlg70=
-X-Received: by 2002:a4a:4201:: with SMTP id h1mr13380530ooj.1.1599441531035;
- Sun, 06 Sep 2020 18:18:51 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=GEsiPUweD3E8ZtSnAf1DCytZpo9eEVbaGtaY9vX+oQw=;
+ b=Tg0Nhx19rzSFIqgJHKBAyXIKJ2BDaefsW0FNPjykOIc6WPL1xRORwytZ+zyZ4Z2wNt
+ bOLU7I3rB7zsr2LcYVTkF6DMPDrakObbR7gJM43VRsJFSokc+f8VgAJx+bre0bSxe8jO
+ KRbb2eDwBbTVRKy4xLHLVbCQYjfbhzCJET9W3HZtaLHSQq+mZDcM8/QVWNRq34R223+Q
+ YXo4rTIT8TSiSBDta7M8nq7/DH6SbLnrFwtpeX4a8ak73mooa/C/R0ZV3d27musx83AN
+ +vw4jcqLCKl1+x0jr2Rqr7IIJo5rWJpeBLTJZlIy9PGh8J3d/iIBg8Y40Hunmna8+1oQ
+ dchA==
+X-Gm-Message-State: AOAM532xcqs9pO0o64mASNSvQIN5rFIf3hNAHb7sQo9ITGSIlcPHt/Fz
+ mOhpDLhNMbNw8MSFn1Lmkbw=
+X-Received: by 2002:a7b:c38f:: with SMTP id s15mr17702127wmj.16.1599446770735; 
+ Sun, 06 Sep 2020 19:46:10 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id e18sm29705302wra.36.2020.09.06.19.46.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 06 Sep 2020 19:46:09 -0700 (PDT)
+Subject: Re: [PATCH] hw/block/nand: Decommission the NAND museum
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+References: <20200814132118.12450-1-f4bug@amsat.org>
+ <75f7421f-3ea4-ff6c-2c92-0ea9b5b8fdc1@amsat.org>
+ <60cf8562-d0fc-7a3e-4988-a983394a5927@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <c549f61d-fff9-542a-c30a-ec7558b1c37c@amsat.org>
+Date: Mon, 7 Sep 2020 04:46:09 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <20200904154439.643272-1-philmd@redhat.com>
- <20200904154439.643272-14-philmd@redhat.com>
-In-Reply-To: <20200904154439.643272-14-philmd@redhat.com>
-From: Li Qiang <liq3ea@gmail.com>
-Date: Mon, 7 Sep 2020 09:18:14 +0800
-Message-ID: <CAKXe6SLqsDC7EfMjwu519HxsUC49zU=oXGyC-R_Z1YerZNtNLA@mail.gmail.com>
-Subject: Re: [PATCH 13/13] dma: Let dma_memory_map() take MemTxAttrs argument
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c42;
- envelope-from=liq3ea@gmail.com; helo=mail-oo1-xc42.google.com
+In-Reply-To: <60cf8562-d0fc-7a3e-4988-a983394a5927@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-2.69,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Qemu Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-block@nongnu.org,
- Peter Chubb <peter.chubb@nicta.com.au>, Joel Stanley <joel@jms.id.au>,
- Richard Henderson <rth@twiddle.net>, Laszlo Ersek <lersek@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HKT3tzqjH2ft
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>, qemu-block@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Jlb+PVZqQIBu
 
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =E4=BA=8E2020=E5=B9=B49=E6=
-=9C=884=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=8811:52=E5=86=99=E9=81=
-=93=EF=BC=9A
->
-> Let devices specify transaction attributes when calling
-> dma_memory_map().
->
-> Patch created mechanically using spatch with this script:
->
->   @@
->   expression E1, E2, E3, E4;
->   @@
->   - dma_memory_map(E1, E2, E3, E4)
->   + dma_memory_map(E1, E2, E3, E4, MEMTXATTRS_UNSPECIFIED)
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+ping^2
 
-Reviewed-by: Li Qiang <liq3ea@gmail.com>
-
-> ---
->  include/hw/pci/pci.h    | 3 ++-
->  include/sysemu/dma.h    | 5 +++--
->  dma-helpers.c           | 3 ++-
->  hw/display/virtio-gpu.c | 8 ++++++--
->  hw/hyperv/vmbus.c       | 8 +++++---
->  hw/ide/ahci.c           | 9 ++++++---
->  hw/usb/libhw.c          | 3 ++-
->  hw/virtio/virtio.c      | 6 ++++--
->  8 files changed, 30 insertions(+), 15 deletions(-)
->
-> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
-> index 0c3217e019c..a221dfb3b08 100644
-> --- a/include/hw/pci/pci.h
-> +++ b/include/hw/pci/pci.h
-> @@ -831,7 +831,8 @@ static inline void *pci_dma_map(PCIDevice *dev, dma_a=
-ddr_t addr,
->  {
->      void *buf;
->
-> -    buf =3D dma_memory_map(pci_get_address_space(dev), addr, plen, dir);
-> +    buf =3D dma_memory_map(pci_get_address_space(dev), addr, plen, dir,
-> +                         MEMTXATTRS_UNSPECIFIED);
->      return buf;
->  }
->
-> diff --git a/include/sysemu/dma.h b/include/sysemu/dma.h
-> index b9cb9c8944b..bb8b0a059f5 100644
-> --- a/include/sysemu/dma.h
-> +++ b/include/sysemu/dma.h
-> @@ -203,16 +203,17 @@ MemTxResult dma_memory_set(AddressSpace *as, dma_ad=
-dr_t addr,
->   * @addr: address within that address space
->   * @len: pointer to length of buffer; updated on return
->   * @dir: indicates the transfer direction
-> + * @attrs: memory attributes
->   */
->  static inline void *dma_memory_map(AddressSpace *as,
->                                     dma_addr_t addr, dma_addr_t *len,
-> -                                   DMADirection dir)
-> +                                   DMADirection dir, MemTxAttrs attrs)
->  {
->      hwaddr xlen =3D *len;
->      void *p;
->
->      p =3D address_space_map(as, addr, &xlen, dir =3D=3D DMA_DIRECTION_FR=
-OM_DEVICE,
-> -                          MEMTXATTRS_UNSPECIFIED);
-> +                          attrs);
->      *len =3D xlen;
->      return p;
->  }
-> diff --git a/dma-helpers.c b/dma-helpers.c
-> index 6c3b2200f16..0507a6f95b9 100644
-> --- a/dma-helpers.c
-> +++ b/dma-helpers.c
-> @@ -143,7 +143,8 @@ static void dma_blk_cb(void *opaque, int ret)
->      while (dbs->sg_cur_index < dbs->sg->nsg) {
->          cur_addr =3D dbs->sg->sg[dbs->sg_cur_index].base + dbs->sg_cur_b=
-yte;
->          cur_len =3D dbs->sg->sg[dbs->sg_cur_index].len - dbs->sg_cur_byt=
-e;
-> -        mem =3D dma_memory_map(dbs->sg->as, cur_addr, &cur_len, dbs->dir=
-);
-> +        mem =3D dma_memory_map(dbs->sg->as, cur_addr, &cur_len, dbs->dir=
-,
-> +                             MEMTXATTRS_UNSPECIFIED);
->          /*
->           * Make reads deterministic in icount mode. Windows sometimes is=
-sues
->           * disk read requests with overlapping SGs. It leads
-> diff --git a/hw/display/virtio-gpu.c b/hw/display/virtio-gpu.c
-> index 5f0dd7c1500..be7f5cdee46 100644
-> --- a/hw/display/virtio-gpu.c
-> +++ b/hw/display/virtio-gpu.c
-> @@ -648,7 +648,9 @@ int virtio_gpu_create_mapping_iov(VirtIOGPU *g,
->          hwaddr len =3D l;
->          (*iov)[i].iov_len =3D l;
->          (*iov)[i].iov_base =3D dma_memory_map(VIRTIO_DEVICE(g)->dma_as,
-> -                                            a, &len, DMA_DIRECTION_TO_DE=
-VICE);
-> +                                            a, &len,
-> +                                            DMA_DIRECTION_TO_DEVICE,
-> +                                            MEMTXATTRS_UNSPECIFIED);
->          if (addr) {
->              (*addr)[i] =3D a;
->          }
-> @@ -1049,7 +1051,9 @@ static int virtio_gpu_load(QEMUFile *f, void *opaqu=
-e, size_t size,
->              hwaddr len =3D res->iov[i].iov_len;
->              res->iov[i].iov_base =3D
->                  dma_memory_map(VIRTIO_DEVICE(g)->dma_as,
-> -                               res->addrs[i], &len, DMA_DIRECTION_TO_DEV=
-ICE);
-> +                               res->addrs[i], &len,
-> +                               DMA_DIRECTION_TO_DEVICE,
-> +                               MEMTXATTRS_UNSPECIFIED);
->
->              if (!res->iov[i].iov_base || len !=3D res->iov[i].iov_len) {
->                  /* Clean up the half-a-mapping we just created... */
-> diff --git a/hw/hyperv/vmbus.c b/hw/hyperv/vmbus.c
-> index 75af6b83dde..56621d72e5b 100644
-> --- a/hw/hyperv/vmbus.c
-> +++ b/hw/hyperv/vmbus.c
-> @@ -372,7 +372,8 @@ static ssize_t gpadl_iter_io(GpadlIter *iter, void *b=
-uf, uint32_t len)
->
->              maddr =3D (iter->gpadl->gfns[idx] << TARGET_PAGE_BITS) | off=
-_in_page;
->
-> -            iter->map =3D dma_memory_map(iter->as, maddr, &mlen, iter->d=
-ir);
-> +            iter->map =3D dma_memory_map(iter->as, maddr, &mlen, iter->d=
-ir,
-> +                                       MEMTXATTRS_UNSPECIFIED);
->              if (mlen !=3D pgleft) {
->                  dma_memory_unmap(iter->as, iter->map, mlen, iter->dir, 0=
-);
->                  iter->map =3D NULL;
-> @@ -488,7 +489,8 @@ int vmbus_map_sgl(VMBusChanReq *req, DMADirection dir=
-, struct iovec *iov,
->                  goto err;
->              }
->
-> -            iov[ret_cnt].iov_base =3D dma_memory_map(sgl->as, a, &l, dir=
-);
-> +            iov[ret_cnt].iov_base =3D dma_memory_map(sgl->as, a, &l, dir=
-,
-> +                                                   MEMTXATTRS_UNSPECIFIE=
-D);
->              if (!l) {
->                  ret =3D -EFAULT;
->                  goto err;
-> @@ -564,7 +566,7 @@ static vmbus_ring_buffer *ringbuf_map_hdr(VMBusRingBu=
-fCommon *ringbuf)
->      dma_addr_t mlen =3D sizeof(*rb);
->
->      rb =3D dma_memory_map(ringbuf->as, ringbuf->rb_addr, &mlen,
-> -                        DMA_DIRECTION_FROM_DEVICE);
-> +                        DMA_DIRECTION_FROM_DEVICE, MEMTXATTRS_UNSPECIFIE=
-D);
->      if (mlen !=3D sizeof(*rb)) {
->          dma_memory_unmap(ringbuf->as, rb, mlen,
->                           DMA_DIRECTION_FROM_DEVICE, 0);
-> diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
-> index b696c6291a3..fe1a4e2b1a2 100644
-> --- a/hw/ide/ahci.c
-> +++ b/hw/ide/ahci.c
-> @@ -249,7 +249,8 @@ static void map_page(AddressSpace *as, uint8_t **ptr,=
- uint64_t addr,
->          dma_memory_unmap(as, *ptr, len, DMA_DIRECTION_FROM_DEVICE, len);
->      }
->
-> -    *ptr =3D dma_memory_map(as, addr, &len, DMA_DIRECTION_FROM_DEVICE);
-> +    *ptr =3D dma_memory_map(as, addr, &len, DMA_DIRECTION_FROM_DEVICE,
-> +                          MEMTXATTRS_UNSPECIFIED);
->      if (len < wanted) {
->          dma_memory_unmap(as, *ptr, len, DMA_DIRECTION_FROM_DEVICE, len);
->          *ptr =3D NULL;
-> @@ -938,7 +939,8 @@ static int ahci_populate_sglist(AHCIDevice *ad, QEMUS=
-GList *sglist,
->
->      /* map PRDT */
->      if (!(prdt =3D dma_memory_map(ad->hba->as, prdt_addr, &prdt_len,
-> -                                DMA_DIRECTION_TO_DEVICE))){
-> +                                DMA_DIRECTION_TO_DEVICE,
-> +                                MEMTXATTRS_UNSPECIFIED))) {
->          trace_ahci_populate_sglist_no_map(ad->hba, ad->port_no);
->          return -1;
->      }
-> @@ -1299,7 +1301,8 @@ static int handle_cmd(AHCIState *s, int port, uint8=
-_t slot)
->      tbl_addr =3D le64_to_cpu(cmd->tbl_addr);
->      cmd_len =3D 0x80;
->      cmd_fis =3D dma_memory_map(s->as, tbl_addr, &cmd_len,
-> -                             DMA_DIRECTION_FROM_DEVICE);
-> +                             DMA_DIRECTION_FROM_DEVICE,
-> +                             MEMTXATTRS_UNSPECIFIED);
->      if (!cmd_fis) {
->          trace_handle_cmd_badfis(s, port);
->          return -1;
-> diff --git a/hw/usb/libhw.c b/hw/usb/libhw.c
-> index 9c33a1640f7..f350eae443d 100644
-> --- a/hw/usb/libhw.c
-> +++ b/hw/usb/libhw.c
-> @@ -36,7 +36,8 @@ int usb_packet_map(USBPacket *p, QEMUSGList *sgl)
->
->          while (len) {
->              dma_addr_t xlen =3D len;
-> -            mem =3D dma_memory_map(sgl->as, base, &xlen, dir);
-> +            mem =3D dma_memory_map(sgl->as, base, &xlen, dir,
-> +                                 MEMTXATTRS_UNSPECIFIED);
->              if (!mem) {
->                  goto err;
->              }
-> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-> index e9830252176..c951131ba39 100644
-> --- a/hw/virtio/virtio.c
-> +++ b/hw/virtio/virtio.c
-> @@ -1320,7 +1320,8 @@ static bool virtqueue_map_desc(VirtIODevice *vdev, =
-unsigned int *p_num_sg,
->          iov[num_sg].iov_base =3D dma_memory_map(vdev->dma_as, pa, &len,
->                                                is_write ?
->                                                DMA_DIRECTION_FROM_DEVICE =
-:
-> -                                              DMA_DIRECTION_TO_DEVICE);
-> +                                              DMA_DIRECTION_TO_DEVICE,
-> +                                              MEMTXATTRS_UNSPECIFIED);
->          if (!iov[num_sg].iov_base) {
->              virtio_error(vdev, "virtio: bogus descriptor or out of resou=
-rces");
->              goto out;
-> @@ -1369,7 +1370,8 @@ static void virtqueue_map_iovec(VirtIODevice *vdev,=
- struct iovec *sg,
->          sg[i].iov_base =3D dma_memory_map(vdev->dma_as,
->                                          addr[i], &len, is_write ?
->                                          DMA_DIRECTION_FROM_DEVICE :
-> -                                        DMA_DIRECTION_TO_DEVICE);
-> +                                        DMA_DIRECTION_TO_DEVICE,
-> +                                        MEMTXATTRS_UNSPECIFIED);
->          if (!sg[i].iov_base) {
->              error_report("virtio: error trying to map MMIO memory");
->              exit(1);
-> --
-> 2.26.2
->
->
+On 8/22/20 10:03 PM, Philippe Mathieu-Daudé wrote:
+> ping?
+> 
+> On 8/14/20 3:23 PM, Philippe Mathieu-Daudé wrote:
+>> I forgot to Cc qemu-arm@, doing it now since most of the users
+>> of this are ARM machines.
+>>
+>> On 8/14/20 3:21 PM, Philippe Mathieu-Daudé wrote:
+>>> This is the QEMU equivalent of this Linux commit (but 7 years later):
+>>> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f7025a43a9da2
+>>>
+>>>     The MTD subsystem has its own small museum of ancient NANDs
+>>>     in a form of the CONFIG_MTD_NAND_MUSEUM_IDS configuration option.
+>>>     The museum contains stone age NANDs with 256 bytes pages, as well
+>>>     as iron age NANDs with 512 bytes per page and up to 8MiB page size.
+>>>
+>>>     It is with great sorrow that I inform you that the museum is being
+>>>     decommissioned. The MTD subsystem is out of budget for Kconfig
+>>>     options and already has too many of them, and there is a general
+>>>     kernel trend to simplify the configuration menu.
+>>>
+>>>     We remove the stone age exhibits along with closing the museum,
+>>>     but some of the iron age ones are transferred to the regular NAND
+>>>     depot. Namely, only those which have unique device IDs are
+>>>     transferred, and the ones which have conflicting device IDs are
+>>>     removed.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> ---
+>>>  hw/block/nand.c | 13 ++++++-------
+>>>  1 file changed, 6 insertions(+), 7 deletions(-)
+>>>
+>>> diff --git a/hw/block/nand.c b/hw/block/nand.c
+>>> index 654e0cb5d1..7d7ccc9aa4 100644
+>>> --- a/hw/block/nand.c
+>>> +++ b/hw/block/nand.c
+>>> @@ -137,7 +137,7 @@ static void mem_and(uint8_t *dest, const uint8_t *src, size_t n)
+>>>  # define ADDR_SHIFT		16
+>>>  # include "nand.c"
+>>>  
+>>> -/* Information based on Linux drivers/mtd/nand/nand_ids.c */
+>>> +/* Information based on Linux drivers/mtd/nand/raw/nand_ids.c */
+>>>  static const struct {
+>>>      int size;
+>>>      int width;
+>>> @@ -153,15 +153,14 @@ static const struct {
+>>>      [0xe8] = { 1,	8,	8, 4, 0 },
+>>>      [0xec] = { 1,	8,	8, 4, 0 },
+>>>      [0xea] = { 2,	8,	8, 4, 0 },
+>>> -    [0xd5] = { 4,	8,	9, 4, 0 },
+>>>      [0xe3] = { 4,	8,	9, 4, 0 },
+>>>      [0xe5] = { 4,	8,	9, 4, 0 },
+>>> -    [0xd6] = { 8,	8,	9, 4, 0 },
+>>>  
+>>> -    [0x39] = { 8,	8,	9, 4, 0 },
+>>> -    [0xe6] = { 8,	8,	9, 4, 0 },
+>>> -    [0x49] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
+>>> -    [0x59] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
+>>> +    [0x6b] = { 4,        8,        9, 4, 0 },
+>>> +    [0xe3] = { 4,        8,        9, 4, 0 },
+>>> +    [0xe5] = { 4,        8,        9, 4, 0 },
+>>> +    [0xd6] = { 8,        8,        9, 4, 0 },
+>>> +    [0xe6] = { 8,        8,        9, 4, 0 },
+>>>  
+>>>      [0x33] = { 16,	8,	9, 5, 0 },
+>>>      [0x73] = { 16,	8,	9, 5, 0 },
+>>>
+>>
+> 

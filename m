@@ -1,92 +1,104 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp2828983lfc;
-        Sun, 6 Sep 2020 00:35:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxn39gi0ZQaeHNIJh/mEaL3D91ZKIsr+ro52pfuZ+F01xiPMBNEBNo4l2GSoWp9C4b/K7TM
-X-Received: by 2002:a25:3244:: with SMTP id y65mr19732909yby.81.1599377733853;
-        Sun, 06 Sep 2020 00:35:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599377733; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3351270lfc;
+        Sun, 6 Sep 2020 18:01:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzvd2UOflmU8LQZBs7CSR7XXiJMskaPzhUQ0BjClTLJ9IEHWpp6H382gzoY9a/JaNmt24cT
+X-Received: by 2002:a25:b122:: with SMTP id g34mr25229222ybj.196.1599440505898;
+        Sun, 06 Sep 2020 18:01:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599440505; cv=none;
         d=google.com; s=arc-20160816;
-        b=WGBasVIi3W2P35uvT8IdaDeGLRxwwGdhFyLVYbSDIO8omBmZa3w3ynk6J3rczvt876
-         jhGigYyc/g47P4DYjrZC+0pAuxiJMuBm7A9CnXd6XITAwEpXhxUyQZGuMxklDsTjE6uw
-         WnSCZWQ5K/SYZ1v0gEo+8sSYP6LVY0FTLmzZcFJ1khaUqwGmty7htGMd/MmRNawWywrf
-         ZnqGSbc3N8c2dyfxTPHLdS5Raq0sn919fNqgq80aDs75DpMwCRha0FvphI59cDTttfjX
-         66OhrPjy6c0FSfIw5oSrrSVB6Ib73F7DaRVxU3mja3z6nYLn85P8hkD9iYbuTO4yNaCA
-         7NYA==
+        b=ie+njK5vHD2sYZqGJmXuPoXit45oES2kgj95SlXVPHyWZHVk4Tnmcl1BWO+fhZfLpD
+         sqt0nqD/zeZUDdeV8uj+0aLf7zSu0/mkJKbYxQLT8NGhAA7TXxmjLo/ZgBLq6fCA4isZ
+         BhxH+gytzhEwEY3Ev9DwzKjxc8sc5Fvcwr6q6FiMZo/W3ifSmWnxNg9eW3PxaXW3tNYf
+         Knf+hPd1clEI6VzNZlW7KkHw1olRMtwew/Lkq9WftLL0C11GIVX6S5bdibnmIt2/qku5
+         dNl/fA0VydbviTznCXiiWzv9LqF7h1l7mXx+j9vAwJAZRT32uOC7owe3OSzC5EswGl3F
+         woXw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=jsmswKONk0OSXxGpWrHnRCGDkJoqBrf3nC/NwI5gDzY=;
-        b=zwmX7o/w8r4/y0UFOxN4Lcpt0KZEvVb3QOYL92CTVs3kj7Hghz+n0x+7m1V7ZytXwR
-         BzvZflJ1Co5jOITZnu6K8QD5ylMA2jSWsnsaeug8aKQJHYaxZOKwIdgmS6tBoYIo8w0V
-         Ea/fd3M/Ykwv/a2MFM5ZLbzqLyPkjB8zVfcDCfdFJU1XKkhU9ehq6rEW176pl/O4S8w8
-         tiOBj+xtfUYlWoEZQ8koB5AoHD7lXg6RMsiwNP4XsCYlRwo2hWjanTxyC3KSHY/xa4Ut
-         W/onwoZPPvXpS4lvNjGDfJj5YwIVzk2aTXTU0/GQnRbGhgacHYlyGDtyrfLNf5pY1s1p
-         05OQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=vmLZIdUf1AENjpfh6DNQdv7YRpXdDJb7Kqoes9fdsfk=;
+        b=SZPaiAMTFDfzNPCy9UdscD6wcBttM1w7x7zOpW7q7hmeeQBio35oLUj+qMgKBMnkj0
+         3X7Xi01N3b48CpkOwKyNTY1dOTTkiU1Ww6O9YqHndydFt5Aq3eBX2MhUQ9EC5AQxUTE3
+         y8LGAJTuZGQwTUgEwpXfw3tboLZFl4x8oGLqm8wPibFHX1sfGYMddEemoyKCaU4F/3+a
+         AydTmty8IhuyDKiAL1s/wHwlm9V5Z2Y2hYSEhJVw6E6YiQBhe6qM9PJJFeMkzDOeS7Sy
+         ZisViqD4JsMDm8hTcrcLUy3vIzIe221EjMLPBP+uEGX84JcoO3S7Tyyqjxax4D6uxaO+
+         d7DQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OTWrBZHt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p188si11956012ybg.28.2020.09.06.00.35.33
+        by mx.google.com with ESMTPS id p203si14974886ybg.152.2020.09.06.18.01.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 06 Sep 2020 00:35:33 -0700 (PDT)
+        Sun, 06 Sep 2020 18:01:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36630 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OTWrBZHt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:55498 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kEpD3-0002xp-83
-	for alex.bennee@linaro.org; Sun, 06 Sep 2020 03:35:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45438)
+	id 1kF5XV-00020G-97
+	for alex.bennee@linaro.org; Sun, 06 Sep 2020 21:01:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kEpCu-0002x9-Pj; Sun, 06 Sep 2020 03:35:24 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:51845)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kEpCs-0001ER-Sm; Sun, 06 Sep 2020 03:35:24 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.167])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id A40665E6C1C1;
- Sun,  6 Sep 2020 09:35:10 +0200 (CEST)
-Received: from kaod.org (37.59.142.97) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Sun, 6 Sep 2020
- 09:35:09 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G002a7556670-9a2c-40a1-b5d5-b52daa0b74eb,
- F0DF53881C1DD6DF86E1DD74DB2F83E9981A8108) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH] hw/arm/aspeed: Map the UART5 device unconditionally
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- <qemu-devel@nongnu.org>
-References: <20200905212415.760452-1-f4bug@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <728e4345-123a-ba17-2c07-e3c8dc847dd9@kaod.org>
-Date: Sun, 6 Sep 2020 09:35:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kF5XD-0001lq-1M; Sun, 06 Sep 2020 21:01:27 -0400
+Received: from mail-ot1-x341.google.com ([2607:f8b0:4864:20::341]:41169)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <liq3ea@gmail.com>)
+ id 1kF5XB-0001en-4q; Sun, 06 Sep 2020 21:01:26 -0400
+Received: by mail-ot1-x341.google.com with SMTP id a65so10982817otc.8;
+ Sun, 06 Sep 2020 18:01:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=vmLZIdUf1AENjpfh6DNQdv7YRpXdDJb7Kqoes9fdsfk=;
+ b=OTWrBZHtmK2ktZ7dnOizo864WES68BEAJh5N2akbVb/+SM2r8vfXR6tpjDe8kTI3go
+ nNQ0iM9nQLXBM//dJV9GOuc4nLD090+9aZ//evqAGymJpnFWxOJmLg++i0BEIiBEzHKi
+ eShubw3urwfs+y1Zc0nNjDWyaD8ras8bTCeEsXJp8htvuouZhfHwSocC1o15bUQs8QPL
+ 6iPhia95Lr4WejvqI0RpS1dgetWsU3X5bJb567iurxKdez73/uIQGhMHbe6X37n7wGFP
+ qoe5EPk7Y3VKeS5bVWNT41a8H43eEqiXZVLyCmhW785vI/c7sU5dOwWx083ZmnK6fxuC
+ HECQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=vmLZIdUf1AENjpfh6DNQdv7YRpXdDJb7Kqoes9fdsfk=;
+ b=Us7nlEaMTEBHkAvak9N0FHJZsjAeTi0KNmFd8WHxcjLDQDba5weFU14ow34SlN6B9I
+ owzESX/fVcw5dZM+WmiA3HoAmJv5tWwAEHpFs7eCroasQLLZKS4CoRKmn5TQ+ebLHhDF
+ AEw+K/UVP0XV/sXdBPcxG8Pycv0ns4f1zJIYmWvm2B2dZ3gLZqBWiiElMryJSo7/+iJ+
+ yvfvcZlfXKJdxV+eiKsgHaZhAQLmDoht+Va4l4IW3Uxys1eHZg9MKeIMinvs1jCWwUHC
+ 114ekCDfRO4vIMi3qrkaY10gwrJDp93zdxsf6EpSo3iByQ2sC7ZIWi0G9sNFOLiuH7EE
+ dNIA==
+X-Gm-Message-State: AOAM5311Pz4Nk+eQbMZbbGDenDteg+tiC+dLVAowIlEsPBnMslatlWOT
+ kpdKke1z2HiRWuDpNynnPAvvOCkS/ztl9mKGj7k=
+X-Received: by 2002:a05:6830:2302:: with SMTP id
+ u2mr12439988ote.181.1599440482465; 
+ Sun, 06 Sep 2020 18:01:22 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200905212415.760452-1-f4bug@amsat.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.97]
-X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 262a8904-e070-41da-8cd0-7cb8076143fa
-X-Ovh-Tracer-Id: 10461298984657324838
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudegiedguddujecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleejnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehfgegsuhhgsegrmhhsrghtrdhorhhg
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.mo804.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/06 03:35:11
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+References: <20200904154439.643272-1-philmd@redhat.com>
+ <20200904154439.643272-2-philmd@redhat.com>
+In-Reply-To: <20200904154439.643272-2-philmd@redhat.com>
+From: Li Qiang <liq3ea@gmail.com>
+Date: Mon, 7 Sep 2020 09:00:46 +0800
+Message-ID: <CAKXe6SLa6045REp+TyXVn3dYWrruromuW17e29Vkf841yW2hWQ@mail.gmail.com>
+Subject: Re: [PATCH 01/13] pci: pass along the return value of dma_memory_rw
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::341;
+ envelope-from=liq3ea@gmail.com; helo=mail-ot1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.107,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -101,62 +113,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Qemu Developers <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
+ Peter Chubb <peter.chubb@nicta.com.au>, Joel Stanley <joel@jms.id.au>,
+ Richard Henderson <rth@twiddle.net>, Laszlo Ersek <lersek@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Keith Busch <kbusch@kernel.org>, John Snow <jsnow@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Andrew Jeffery <andrew@aj.id.au>,
+ Klaus Jensen <k.jensen@samsung.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dCXbcnMkXP8U
+X-TUID: RejYCSAr1XLR
 
-On 9/5/20 11:24 PM, Philippe Mathieu-Daudé wrote:
-> The UART5 is present on the machine regardless there is a
-> character device connected to it. Map it unconditionally.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> =E4=BA=8E2020=E5=B9=B49=E6=
+=9C=884=E6=97=A5=E5=91=A8=E4=BA=94 =E4=B8=8B=E5=8D=8811:47=E5=86=99=E9=81=
+=93=EF=BC=9A
+>
+> From: Klaus Jensen <k.jensen@samsung.com>
+>
+> Some might actually care about the return value of dma_memory_rw. So
+> let us pass it along instead of ignoring it.
+>
+> There are no existing users of the return value, so this patch should be
+> safe.
+>
+> Signed-off-by: Klaus Jensen <k.jensen@samsung.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+> Acked-by: Keith Busch <kbusch@kernel.org>
+> Message-Id: <20191011070141.188713-2-its@irrelevant.dk>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Li Qiang <liq3ea@gmail.com>
 
 > ---
->  hw/arm/aspeed_ast2600.c | 8 +++-----
->  hw/arm/aspeed_soc.c     | 8 +++-----
->  2 files changed, 6 insertions(+), 10 deletions(-)
-> 
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index 9d95e421435..1450bde7cf2 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -325,11 +325,9 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->      }
->  
->      /* UART - attach an 8250 to the IO space as our UART5 */
-> -    if (serial_hd(0)) {
-> -        qemu_irq uart5 = aspeed_soc_get_irq(s, ASPEED_DEV_UART5);
-> -        serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
-> -                       uart5, 38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-> -    }
-> +    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
-> +                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
-> +                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
->  
->      /* I2C */
->      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
-> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
-> index 35be126db6f..7eefd54ac07 100644
-> --- a/hw/arm/aspeed_soc.c
-> +++ b/hw/arm/aspeed_soc.c
-> @@ -283,11 +283,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->      }
->  
->      /* UART - attach an 8250 to the IO space as our UART5 */
-> -    if (serial_hd(0)) {
-> -        qemu_irq uart5 = aspeed_soc_get_irq(s, ASPEED_DEV_UART5);
-> -        serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
-> -                       uart5, 38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
-> -    }
-> +    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
-> +                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
-> +                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
->  
->      /* I2C */
->      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
-> 
-
+>  include/hw/pci/pci.h | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+> index 4ca7258b5b7..896cef9ad47 100644
+> --- a/include/hw/pci/pci.h
+> +++ b/include/hw/pci/pci.h
+> @@ -788,8 +788,7 @@ static inline AddressSpace *pci_get_address_space(PCI=
+Device *dev)
+>  static inline int pci_dma_rw(PCIDevice *dev, dma_addr_t addr,
+>                               void *buf, dma_addr_t len, DMADirection dir=
+)
+>  {
+> -    dma_memory_rw(pci_get_address_space(dev), addr, buf, len, dir);
+> -    return 0;
+> +    return dma_memory_rw(pci_get_address_space(dev), addr, buf, len, dir=
+);
+>  }
+>
+>  static inline int pci_dma_read(PCIDevice *dev, dma_addr_t addr,
+> --
+> 2.26.2
+>
+>

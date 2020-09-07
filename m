@@ -1,861 +1,214 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3445432lfc;
-        Sun, 6 Sep 2020 21:20:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyoA2O2hQxJujQvw6D8v45KeD2Q8fvrJLx0UIt1STwdwOconQhFE/67wvRYEE2O3wSVb+aU
-X-Received: by 2002:a25:d18b:: with SMTP id i133mr24164124ybg.136.1599452440115;
-        Sun, 06 Sep 2020 21:20:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599452440; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3546113lfc;
+        Mon, 7 Sep 2020 00:52:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz09tcQUF7NZ4uC/WucnNYNrwLnjRMrvAQWVzjkgGyQlwGf0n8/ly2BlhdILaM3eIzdYVYQ
+X-Received: by 2002:a50:8881:: with SMTP id d1mr20469492edd.306.1599465136781;
+        Mon, 07 Sep 2020 00:52:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599465136; cv=none;
         d=google.com; s=arc-20160816;
-        b=fkPQezU8Ej1FyOty2ezrfVbIRL4xuG1zCEgdQvlMfplAmagG5l8gL1FRLhJcP+RBgf
-         FmyY7FPmp+fNywWH1R0CdtTTHYrzNzs4uI6vLr8ZB7FG7w4onmRnhWoSc/zEo8txwb+6
-         4NZc8TLjsjZS6XyQL5oJU8BrUDJOe4Yd14vBDy5Beg2qnB9QbxD/4M6cn9ljJ5FaHcjo
-         lX4cPnK+K0yEv0/VKZkbENwEZueqH01bXfeceBYZQaj9hUV2rUreSsFnsjZVgE7pPPcq
-         /tTZXDqG62JrtEdOpjyeSPrrQtgY0vHm9aTOuqjFdxSP6rKkZEoY1kDLWJg8ZYZppjO/
-         vNaw==
+        b=LqOXSTmDrCAg8yBoO7mv2t/iGvWl1kP1wXk9jPLw2dQDFU8zy4uVV/3qiKhnj+83jX
+         e7HDST0XuP8TgSUqxhPtPNgwd3Ko0gnrvau/9RbHPbRYT0Fv6+suKyyEe8lNZa6qW9WI
+         tj8vBVyINFPsEHBXN1dg/gPCfkDa+We8WmjcO4wMXzOEgbBXCsPlm1RsNTeHKn8jfnxH
+         NuqkatdfIKX9jQGpZmHFKpCnKDto0rt3ahXcxu0Nxs6ant+GQyK+D1aUPl1+0BX9rFYo
+         QdaS0mkPJZ1c5mjCHdgnQ9XZA4aXEetwump6dDUCk2HcIl20h5YBZ16xvNlmSaky2Yqb
+         RRBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=SYOSV6EDVuNoeQYVbP20eu/S3uD6NVkPPfw/7luLoEM=;
-        b=OYyuD/y8KLth7RmW6vYCWJ/1zfOsq5a/8na/yDlahdC8pxrf0PmJB0kaiTXwBhRn5w
-         cKQr3tWdTR2Y2no+3MBtODsd5SZG6GSO7dSXaoD4c1fTQXxbccVTegn2hTSicC3fh4S6
-         1YIlfENFgvB+wSs3OUzbAZK+xda02LKrturkkJV83BpqxZVh36swjfl9jtchOcU11JfI
-         0QreUHV+Y65fq1QVbThmxofkNEH8Vc5qw4YexlHxZVuKtD5bLJpXtywF8rcW+ULoqrQV
-         EeDeSB/Slq4TeMQ6kW9RhjwxUmCCxZL61Q3pi/Rp23w1nHZhTG0zuG5+5rOvD8qRN7qe
-         FBag==
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
+         :dkim-signature;
+        bh=+wSsF8eTINKgZSHvd5ZHdV6zTMB/1j30M/WThtSZOeA=;
+        b=i7NsPkj5bVSbwza9etkHza1K2B7eR4crsyJUJRw1GrQywGsFu6uQfyw+PmEKddkq1Y
+         ij1ilwTMIcLANcK5TwlqTLRrVM/f8RqU7O8LyHw5LM1tm0dAq5XfOjcJdTNH4lcprek+
+         oeO4urG+GwA/Yrq6svR+7yxK/hUTFbDm9nIvZ4df63N0AXj/1JJSPnnr6HdlAkm83R8c
+         LbZr/Zt8DGmIydy6cPAvawtIAHM2bL0fVH+76QNyd9Sx1sGY56rsUEAmXuU6lrKSQ3ih
+         G01kVDgTKctbe7NiEH8YSXzalIRh1wWzGx3kffBkOqq9WCyopTjN1r1bwIEycuHKbC/J
+         mmjw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KPZPoCUo;
-       spf=pass (google.com: domain of crosa@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aWOsnkAc;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <crosa@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id 84si17255042ybs.20.2020.09.06.21.20.39
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id dd3si783245ejb.499.2020.09.07.00.52.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sun, 06 Sep 2020 21:20:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of crosa@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        Mon, 07 Sep 2020 00:52:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=KPZPoCUo;
-       spf=pass (google.com: domain of crosa@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=crosa@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aWOsnkAc;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1599452439;
+	s=mimecast20190719; t=1599465135;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=SYOSV6EDVuNoeQYVbP20eu/S3uD6NVkPPfw/7luLoEM=;
-	b=KPZPoCUo84SkSvv8vopQoZ7aQo+N2LBXkRQTRR+MhtKlkkkXUqz/tcBwwnOCwXNx2SjkVv
-	vxqwyKuakVwiIqS0PR7qter+nPlr8makZ2nBld7dorQiA/2G0cw2ErfD4R77V70QFlulxh
-	SoTXbp5UpmFL5eLrtot6SBeliU7tpmI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-184-cm4HiJu3O3WCZkIx-_VY-g-1; Mon, 07 Sep 2020 00:20:31 -0400
-X-MC-Unique: cm4HiJu3O3WCZkIx-_VY-g-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3E41318BE160;
-	Mon,  7 Sep 2020 04:20:29 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-120-166.rdu2.redhat.com [10.10.120.166])
-	by smtp.corp.redhat.com (Postfix) with ESMTPS id 62C301002D49;
-	Mon,  7 Sep 2020 04:20:23 +0000 (UTC)
-From: Cleber Rosa <crosa@redhat.com>
-To: qemu-devel@nongnu.org
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=+wSsF8eTINKgZSHvd5ZHdV6zTMB/1j30M/WThtSZOeA=;
+	b=aWOsnkAckm9la6EhkI7sVJMa3SGWHvyZZjCT+Qg4PWTqMwMtAQG0u8jrsmvt1t+vivvmkJ
+	EE1vV0IHPdiaKRX6DNpOTTdtJH8t09R5MdLUaM6w1fGoxBe1XfiO/cuAbA4R92p9qnyqBz
+	NDq739/oypcH2Z471mRkarbrdLZrkEQ=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-515-JpOOdo2AOrKu6ilPgYDoVg-1; Mon, 07 Sep 2020 03:52:07 -0400
+X-MC-Unique: JpOOdo2AOrKu6ilPgYDoVg-1
+Received: by mail-wm1-f70.google.com with SMTP id l26so2554529wmg.7
+        for <alex.bennee@linaro.org>; Mon, 07 Sep 2020 00:52:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=+wSsF8eTINKgZSHvd5ZHdV6zTMB/1j30M/WThtSZOeA=;
+        b=YaS1yRLe5btpr+HdrUMMJdAIR4Mm/Bag8UlCsZBOhEMzD4qPf5+Em4X0KmN1XbAPLL
+         bM7Z3u7gQ4VRIP60Gz1YqaGv8RYzkgUTcU+ijZa2DgJw5ALFFXA1qV94Ehggc3quxqj2
+         ypK9zfYA9tAbSJ0AQ4OQdVbxJPjWL6krZoXS2J2JApS+dwcdPypEVOk4YICXWU9zsQhV
+         Ergwb3Glc3OTOoffreNMUVvbOlxOcXy7ykre2iS+r/Ri8T1l6fJuRH2bKa/6CuaUI8JN
+         qVUEtgI9xE53vxfMx6nQSXFmKqJaGGhVeuP7V1tDZMx8qb+0ZRPcEAqQGLgFNtXMOjQq
+         KjLQ==
+X-Gm-Message-State: AOAM531NggiLmD+YpNbAr4/yEDIH/HAqiqzzWrKqeq+MV0zqVdGxuBQo
+	ObexSovF16rh9WRnNDhKqyz1djUFXhFvsdtrql0PDqudkkJfJGn1dn0URLY7POM7E4FgvTIs00q
+	eCflCnPqCmzK+ozlD
+X-Received: by 2002:a7b:c958:: with SMTP id i24mr20133967wml.50.1599465126185;
+        Mon, 07 Sep 2020 00:52:06 -0700 (PDT)
+X-Received: by 2002:a7b:c958:: with SMTP id i24mr20133951wml.50.1599465125934;
+        Mon, 07 Sep 2020 00:52:05 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.65])
+        by smtp.gmail.com with ESMTPSA id p3sm6329146wmm.40.2020.09.07.00.52.03
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 07 Sep 2020 00:52:05 -0700 (PDT)
+Subject: Re: [PATCH 2/4] boot linux test: update arm bionic URL
+To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
 Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-	Fabien Chouteau <chouteau@adacore.com>,
-	Antony Pavlov <antonynpavlov@gmail.com>,
-	Cleber Rosa <crosa@redhat.com>,
-	Yoshinori Sato <ysato@users.sourceforge.jp>,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Andrzej Zaborowski <balrogg@gmail.com>,
-	Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
-	Aurelien Jarno <aurelien@aurel32.net>,
-	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-	Beraldo Leal <bleal@redhat.com>,
-	KONRAD Frederic <frederic.konrad@adacore.com>,
-	Wainer dos Santos Moschetta <wainersm@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Michael Rolnik <mrolnik@gmail.com>,
-	Willian Rampazzo <wrampazz@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Sarah Harris <S.E.Harris@kent.ac.uk>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-ppc@nongnu.org,
-	qemu-arm@nongnu.org,
-	=?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
-	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 4/4] Acceptance tests: cancel tests on missing assets
-Date: Mon,  7 Sep 2020 00:20:00 -0400
-Message-Id: <20200907042000.415931-5-crosa@redhat.com>
-In-Reply-To: <20200907042000.415931-1-crosa@redhat.com>
+ Fabien Chouteau <chouteau@adacore.com>,
+ Antony Pavlov <antonynpavlov@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Eduardo Habkost <ehabkost@redhat.com>, Andrzej Zaborowski
+ <balrogg@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Beraldo Leal <bleal@redhat.com>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Michael Rolnik <mrolnik@gmail.com>, Willian Rampazzo <wrampazz@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, Sarah Harris <S.E.Harris@kent.ac.uk>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20200907042000.415931-1-crosa@redhat.com>
+ <20200907042000.415931-3-crosa@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <261b05da-0546-23fb-3e01-df0d17c0a825@redhat.com>
+Date: Mon, 7 Sep 2020 09:52:03 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+In-Reply-To: <20200907042000.415931-3-crosa@redhat.com>
 Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
-X-Mimecast-Spam-Score: 0.001
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
-X-TUID: m1WLUM/+v9qO
+Content-Language: en-US
+X-TUID: vvkvUCSXEYfl
 
-Asset files used on the acceptance tests (kernel, initrd images)
-unfortunately are not guaranteed to always be available at the same
-location.
+Hi Cleber,
 
-Let's cancel (kind of like a skip) the test, when the asset is
-missing.  This should prevent false positives, when failure are not
-caused by changes in QEMU itself.
+On 9/7/20 6:19 AM, Cleber Rosa wrote:
+> Which uses an xz compressed file, which has builtin support for
+> decompression on avocado.utils.archive.
 
-Reference: https://avocado-framework.readthedocs.io/en/81.0/api/test/avocado.html#avocado.Test.fetch_asset
-Signed-off-by: Cleber Rosa <crosa@redhat.com>
----
- tests/acceptance/boot_linux_console.py       | 102 ++++++++++++-------
- tests/acceptance/linux_initrd.py             |   6 +-
- tests/acceptance/linux_ssh_mips_malta.py     |   6 +-
- tests/acceptance/machine_arm_canona1100.py   |   3 +-
- tests/acceptance/machine_arm_integratorcp.py |   9 +-
- tests/acceptance/machine_arm_n8x0.py         |   3 +-
- tests/acceptance/machine_avr6.py             |   3 +-
- tests/acceptance/machine_m68k_nextcube.py    |   3 +-
- tests/acceptance/machine_mips_malta.py       |   6 +-
- tests/acceptance/machine_rx_gdbsim.py        |   9 +-
- tests/acceptance/machine_sparc64_sun4u.py    |   3 +-
- tests/acceptance/machine_sparc_leon3.py      |   3 +-
- tests/acceptance/ppc_prep_40p.py             |   8 +-
- tests/acceptance/replay_kernel.py            |  43 +++++---
- 14 files changed, 138 insertions(+), 69 deletions(-)
+This line doesn't make sense without the patch subject
+prepended "Update arm bionic URL". To make commit
+descriptions coherent, please copy the subject.
 
-diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
-index c75c512c8b..c3c6ccac7c 100644
---- a/tests/acceptance/boot_linux_console.py
-+++ b/tests/acceptance/boot_linux_console.py
-@@ -99,7 +99,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '/linux/releases/29/Everything/x86_64/os/images/pxeboot'
-                       '/vmlinuz')
-         kernel_hash = '23bebd2680757891cf7adedb033532163a792495'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console()
-         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + 'console=ttyS0'
-@@ -119,7 +120,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                    '20130217T032700Z/pool/main/l/linux-2.6/'
-                    'linux-image-2.6.32-5-4kc-malta_2.6.32-48_mips.deb')
-         deb_hash = 'a8cfc28ad8f45f54811fc6cf74fc43ffcfe0ba04'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinux-2.6.32-5-4kc-malta')
- 
-@@ -151,7 +153,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                    '20130217T032700Z/pool/main/l/linux-2.6/'
-                    'linux-image-2.6.32-5-5kc-malta_2.6.32-48_mipsel.deb')
-         deb_hash = '1aaec92083bf22fda31e0d27fa8d9a388e5fc3d5'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinux-2.6.32-5-5kc-malta')
- 
-@@ -173,14 +176,16 @@ class BootLinuxConsole(LinuxKernelTest):
-                    '20160601T041800Z/pool/main/l/linux/'
-                    'linux-image-4.5.0-2-4kc-malta_4.5.5-1_mips.deb')
-         deb_hash = 'a3c84f3e88b54e06107d65a410d1d1e8e0f340f8'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinux-4.5.0-2-4kc-malta')
-         initrd_url = ('https://github.com/groeck/linux-build-test/raw/'
-                       '8584a59ed9e5eb5ee7ca91f6d74bbb06619205b8/rootfs/'
-                       'mips/rootfs.cpio.gz')
-         initrd_hash = 'bf806e17009360a866bf537f6de66590de349a99'
--        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
-+        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash,
-+                                          cancel_on_missing=True)
-         initrd_path = self.workdir + "rootfs.cpio"
-         archive.gzip_uncompress(initrd_path_gz, initrd_path)
- 
-@@ -215,13 +220,15 @@ class BootLinuxConsole(LinuxKernelTest):
-                       'raw/9ad2df38/mips/malta/mips64el/'
-                       'vmlinux-3.19.3.mtoman.20150408')
-         kernel_hash = '00d1d268fb9f7d8beda1de6bebcc46e884d71754'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
-         initrd_url = ('https://github.com/groeck/linux-build-test/'
-                       'raw/8584a59e/rootfs/'
-                       'mipsel64/rootfs.mipsel64r1.cpio.gz')
-         initrd_hash = '1dbb8a396e916847325284dbe2151167'
-         initrd_path_gz = self.fetch_asset(initrd_url, algorithm='md5',
--                                          asset_hash=initrd_hash)
-+                                          asset_hash=initrd_hash,
-+                                          cancel_on_missing=True)
-         initrd_path = self.workdir + "rootfs.cpio"
-         archive.gzip_uncompress(initrd_path_gz, initrd_path)
- 
-@@ -247,7 +254,8 @@ class BootLinuxConsole(LinuxKernelTest):
-         self.vm.wait()
- 
-     def do_test_mips_malta32el_nanomips(self, kernel_url, kernel_hash):
--        kernel_path_xz = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path_xz = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                          cancel_on_missing=True)
-         kernel_path = self.workdir + "kernel"
-         with lzma.open(kernel_path_xz, 'rb') as f_in:
-             with open(kernel_path, 'wb') as f_out:
-@@ -310,7 +318,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
-                       '/vmlinuz')
-         kernel_hash = '8c73e469fc6ea06a58dc83a628fc695b693b8493'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console()
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-@@ -334,11 +343,13 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '20101020ubuntu543.15/images/')
-         kernel_url = images_url + 'netboot/ubuntu-installer/arm64/linux'
-         kernel_hash = '5bfc54cf7ed8157d93f6e5b0241e727b6dc22c50'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         initrd_url = images_url + 'netboot/ubuntu-installer/arm64/initrd.gz'
-         initrd_hash = 'd385d3e88d53e2004c5d43cbe668b458a094f772'
--        initrd_path = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
-+        initrd_path = self.fetch_asset(initrd_url, asset_hash=initrd_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console()
-         self.vm.add_args('-m', '2G',
-@@ -356,7 +367,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '/linux/releases/29/Everything/armhfp/os/images/pxeboot'
-                       '/vmlinuz')
-         kernel_hash = 'e9826d741b4fb04cadba8d4824d1ed3b7fb8b4d4'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console()
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-@@ -378,12 +390,14 @@ class BootLinuxConsole(LinuxKernelTest):
-                      'Subbaraya-Sundeep/qemu-test-binaries/'
-                      'fe371d32e50ca682391e1e70ab98c2942aeffb01/u-boot')
-         uboot_hash = 'cbb8cbab970f594bf6523b9855be209c08374ae2'
--        uboot_path = self.fetch_asset(uboot_url, asset_hash=uboot_hash)
-+        uboot_path = self.fetch_asset(uboot_url, asset_hash=uboot_hash,
-+                                      cancel_on_missing=True)
-         spi_url = ('https://raw.githubusercontent.com/'
-                    'Subbaraya-Sundeep/qemu-test-binaries/'
-                    'fe371d32e50ca682391e1e70ab98c2942aeffb01/spi.bin')
-         spi_hash = '65523a1835949b6f4553be96dec1b6a38fb05501'
--        spi_path = self.fetch_asset(spi_url, asset_hash=spi_hash)
-+        spi_path = self.fetch_asset(spi_url, asset_hash=spi_hash,
-+                                    cancel_on_missing=True)
- 
-         self.vm.set_console()
-         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE
-@@ -412,7 +426,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                    'pool/main/r/raspberrypi-firmware/'
-                    'raspberrypi-kernel_1.20190215-1_armhf.deb')
-         deb_hash = 'cd284220b32128c5084037553db3c482426f3972'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path, '/boot/kernel7.img')
-         dtb_path = self.extract_from_deb(deb_path, '/boot/bcm2709-rpi-2-b.dtb')
- 
-@@ -448,7 +463,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                    '20190928T224601Z/pool/main/l/linux/'
-                    'linux-image-4.19.0-6-armmp_4.19.67-2+deb10u1_armhf.deb')
-         deb_hash = 'fa9df4a0d38936cb50084838f2cb933f570d7d82'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinuz-4.19.0-6-armmp')
-         dtb_path = '/usr/lib/linux-image-4.19.0-6-armmp/exynos4210-smdkv310.dtb'
-@@ -458,7 +474,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
-                       'arm/rootfs-armv5.cpio.gz')
-         initrd_hash = '2b50f1873e113523967806f4da2afe385462ff9b'
--        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
-+        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash,
-+                                          cancel_on_missing=True)
-         initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
-         archive.gzip_uncompress(initrd_path_gz, initrd_path)
- 
-@@ -487,7 +504,8 @@ class BootLinuxConsole(LinuxKernelTest):
-         deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.8.0-sunxi/'
-                    'linux-image-dev-sunxi_20.08_armhf.deb')
-         deb_hash = 'ae553a9f7d43b18abfa8f3e64bf2d31878b9be89'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinuz-5.8.0-sunxi')
-         dtb_path = '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
-@@ -496,7 +514,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
-                       'arm/rootfs-armv5.cpio.gz')
-         initrd_hash = '2b50f1873e113523967806f4da2afe385462ff9b'
--        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
-+        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash,
-+                                          cancel_on_missing=True)
-         initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
-         archive.gzip_uncompress(initrd_path_gz, initrd_path)
- 
-@@ -527,7 +546,8 @@ class BootLinuxConsole(LinuxKernelTest):
-         deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.8.0-sunxi/'
-                    'linux-image-dev-sunxi_20.08_armhf.deb')
-         deb_hash = 'ae553a9f7d43b18abfa8f3e64bf2d31878b9be89'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinuz-5.8.0-sunxi')
-         dtb_path = '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
-@@ -536,7 +556,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
-                       'arm/rootfs-armv5.ext2.gz')
-         rootfs_hash = '093e89d2b4d982234bf528bc9fb2f2f17a9d1f93'
--        rootfs_path_gz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
-+        rootfs_path_gz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash,
-+                                          cancel_on_missing=True)
-         rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
-         archive.gzip_uncompress(rootfs_path_gz, rootfs_path)
- 
-@@ -570,7 +591,8 @@ class BootLinuxConsole(LinuxKernelTest):
-         deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.8.0-sunxi/'
-                    'linux-image-dev-sunxi_20.08_armhf.deb')
-         deb_hash = 'ae553a9f7d43b18abfa8f3e64bf2d31878b9be89'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinuz-5.8.0-sunxi')
-         dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
-@@ -595,7 +617,8 @@ class BootLinuxConsole(LinuxKernelTest):
-         deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.8.0-sunxi/'
-                    'linux-image-dev-sunxi_20.08_armhf.deb')
-         deb_hash = 'ae553a9f7d43b18abfa8f3e64bf2d31878b9be89'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinuz-5.8.0-sunxi')
-         dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
-@@ -604,7 +627,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
-                       'arm/rootfs-armv7a.cpio.gz')
-         initrd_hash = '604b2e45cdf35045846b8bbfbf2129b1891bdc9c'
--        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
-+        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash,
-+                                          cancel_on_missing=True)
-         initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
-         archive.gzip_uncompress(initrd_path_gz, initrd_path)
- 
-@@ -638,7 +662,8 @@ class BootLinuxConsole(LinuxKernelTest):
-         deb_url = ('https://apt.armbian.com/pool/main/l/linux-5.8.0-sunxi/'
-                    'linux-image-dev-sunxi_20.08_armhf.deb')
-         deb_hash = 'ae553a9f7d43b18abfa8f3e64bf2d31878b9be89'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinuz-5.8.0-sunxi')
-         dtb_path = '/usr/lib/linux-image-dev-sunxi/sun8i-h3-orangepi-pc.dtb'
-@@ -646,7 +671,8 @@ class BootLinuxConsole(LinuxKernelTest):
-         rootfs_url = ('http://storage.kernelci.org/images/rootfs/buildroot/'
-                       'kci-2019.02/armel/base/rootfs.ext2.xz')
-         rootfs_hash = '692510cb625efda31640d1de0a8d60e26040f061'
--        rootfs_path_xz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash)
-+        rootfs_path_xz = self.fetch_asset(rootfs_url, asset_hash=rootfs_hash,
-+                                          cancel_on_missing=True)
-         rootfs_path = os.path.join(self.workdir, 'rootfs.cpio')
-         archive.lzma_uncompress(rootfs_path_xz, rootfs_path)
-         image_pow2ceil_expand(rootfs_path)
-@@ -693,7 +719,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                      'Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz')
-         image_hash = 'b4d6775f5673486329e45a0586bf06b6dbe792199fd182ac6b9c7bb6c7d3e6dd'
-         image_path_xz = self.fetch_asset(image_url, asset_hash=image_hash,
--                                         algorithm='sha256')
-+                                         algorithm='sha256',
-+                                         cancel_on_missing=True)
-         image_path = archive.extract(image_path_xz, self.workdir)
-         image_pow2ceil_expand(image_path)
- 
-@@ -734,7 +761,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                    '20200108T145233Z/pool/main/u/u-boot/'
-                    'u-boot-sunxi_2020.01%2Bdfsg-1_armhf.deb')
-         deb_hash = 'f67f404a80753ca3d1258f13e38f2b060e13db99'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         # We use the common OrangePi PC 'plus' build of U-Boot for our secondary
-         # program loader (SPL). We will then set the path to the more specific
-         # OrangePi "PC" device tree blob with 'setenv fdtfile' in U-Boot prompt,
-@@ -744,7 +772,8 @@ class BootLinuxConsole(LinuxKernelTest):
-         image_url = ('https://cdn.netbsd.org/pub/NetBSD/NetBSD-9.0/'
-                      'evbarm-earmv7hf/binary/gzimg/armv7.img.gz')
-         image_hash = '2babb29d36d8360adcb39c09e31060945259917a'
--        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash)
-+        image_path_gz = self.fetch_asset(image_url, asset_hash=image_hash,
-+                                         cancel_on_missing=True)
-         image_path = os.path.join(self.workdir, 'armv7.img')
-         archive.gzip_uncompress(image_path_gz, image_path)
-         image_pow2ceil_expand(image_path)
-@@ -796,7 +825,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '/fedora-secondary/releases/29/Everything/s390x/os/images'
-                       '/kernel.img')
-         kernel_hash = 'e8e8439103ef8053418ef062644ffd46a7919313'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console()
-         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + 'console=sclp0'
-@@ -815,7 +845,8 @@ class BootLinuxConsole(LinuxKernelTest):
-         kernel_url = ('http://archive.debian.org/debian/dists/lenny/main/'
-                       'installer-alpha/20090123lenny10/images/cdrom/vmlinuz')
-         kernel_hash = '3a943149335529e2ed3e74d0d787b85fb5671ba3'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         uncompressed_kernel = archive.uncompress(kernel_path, self.workdir)
- 
-@@ -837,7 +868,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                       '/fedora-secondary/releases/29/Everything/ppc64le/os'
-                       '/ppc/ppc64/vmlinuz')
-         kernel_hash = '3fe04abfc852b66653b8c3c897a59a689270bc77'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console()
-         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + 'console=hvc0'
-@@ -856,7 +888,8 @@ class BootLinuxConsole(LinuxKernelTest):
-                    '/20191021T083923Z/pool-m68k/main'
-                    '/l/linux/kernel-image-5.3.0-1-m68k-di_5.3.7-1_m68k.udeb')
-         deb_hash = '044954bb9be4160a3ce81f8bc1b5e856b75cccd1'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinux-5.3.0-1-m68k')
- 
-@@ -874,7 +907,8 @@ class BootLinuxConsole(LinuxKernelTest):
-     def do_test_advcal_2018(self, day, tar_hash, kernel_name, console=0):
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day' + day + '.tar.xz')
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         archive.extract(file_path, self.workdir)
-         self.vm.set_console(console_index=console)
-         self.vm.add_args('-kernel',
-diff --git a/tests/acceptance/linux_initrd.py b/tests/acceptance/linux_initrd.py
-index a249e2f14a..d5e8e90cf9 100644
---- a/tests/acceptance/linux_initrd.py
-+++ b/tests/acceptance/linux_initrd.py
-@@ -36,7 +36,8 @@ class LinuxInitrd(Test):
-         kernel_url = ('https://archives.fedoraproject.org/pub/archive/fedora/li'
-                       'nux/releases/18/Fedora/x86_64/os/images/pxeboot/vmlinuz')
-         kernel_hash = '41464f68efe42b9991250bed86c7081d2ccdbb21'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
-         max_size = 2 * (1024 ** 3) - 1
- 
-         with tempfile.NamedTemporaryFile() as initrd:
-@@ -63,7 +64,8 @@ class LinuxInitrd(Test):
-                       '/linux/releases/28/Everything/x86_64/os/images/pxeboot/'
-                       'vmlinuz')
-         kernel_hash = '238e083e114c48200f80d889f7e32eeb2793e02a'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
-         max_size = 2 * (1024 ** 3) + 1
- 
-         with tempfile.NamedTemporaryFile() as initrd:
-diff --git a/tests/acceptance/linux_ssh_mips_malta.py b/tests/acceptance/linux_ssh_mips_malta.py
-index 25c5c5f741..e866a0b74e 100644
---- a/tests/acceptance/linux_ssh_mips_malta.py
-+++ b/tests/acceptance/linux_ssh_mips_malta.py
-@@ -111,7 +111,8 @@ class LinuxSSH(Test):
- 
-     def boot_debian_wheezy_image_and_ssh_login(self, endianess, kernel_path):
-         image_url, image_hash = self.get_image_info(endianess)
--        image_path = self.fetch_asset(image_url, asset_hash=image_hash)
-+        image_path = self.fetch_asset(image_url, asset_hash=image_hash,
-+                                      cancel_on_missing=True)
- 
-         self.vm.set_console()
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE
-@@ -204,7 +205,8 @@ class LinuxSSH(Test):
-     def check_mips_malta(self, uname_m, endianess):
-         wordsize = 64 if '64' in uname_m else 32
-         kernel_url, kernel_hash = self.get_kernel_info(endianess, wordsize)
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
-         self.boot_debian_wheezy_image_and_ssh_login(endianess, kernel_path)
- 
-         stdout, _ = self.ssh_command('uname -a')
-diff --git a/tests/acceptance/machine_arm_canona1100.py b/tests/acceptance/machine_arm_canona1100.py
-index 0e5c43dbcf..dbf9d5a945 100644
---- a/tests/acceptance/machine_arm_canona1100.py
-+++ b/tests/acceptance/machine_arm_canona1100.py
-@@ -26,7 +26,8 @@ class CanonA1100Machine(Test):
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day18.tar.xz')
-         tar_hash = '068b5fc4242b29381acee94713509f8a876e9db6'
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash
-+                                     cancel_on_missing=True)
-         archive.extract(file_path, self.workdir)
-         self.vm.set_console()
-         self.vm.add_args('-bios',
-diff --git a/tests/acceptance/machine_arm_integratorcp.py b/tests/acceptance/machine_arm_integratorcp.py
-index 49c8ebff78..e795e95550 100644
---- a/tests/acceptance/machine_arm_integratorcp.py
-+++ b/tests/acceptance/machine_arm_integratorcp.py
-@@ -37,12 +37,14 @@ class IntegratorMachine(Test):
-         kernel_url = ('https://github.com/zayac/qemu-arm/raw/master/'
-                       'arm-test/kernel/zImage.integrator')
-         kernel_hash = '0d7adba893c503267c946a3cbdc63b4b54f25468'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         initrd_url = ('https://github.com/zayac/qemu-arm/raw/master/'
-                       'arm-test/kernel/arm_root.img')
-         initrd_hash = 'b51e4154285bf784e017a37586428332d8c7bd8b'
--        initrd_path = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
-+        initrd_path = self.fetch_asset(initrd_url, asset_hash=initrd_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console()
-         self.vm.add_args('-kernel', kernel_path,
-@@ -76,7 +78,8 @@ class IntegratorMachine(Test):
-         tuxlogo_url = ('https://github.com/torvalds/linux/raw/v2.6.12/'
-                        'drivers/video/logo/logo_linux_vga16.ppm')
-         tuxlogo_hash = '3991c2ddbd1ddaecda7601f8aafbcf5b02dc86af'
--        tuxlogo_path = self.fetch_asset(tuxlogo_url, asset_hash=tuxlogo_hash)
-+        tuxlogo_path = self.fetch_asset(tuxlogo_url, asset_hash=tuxlogo_hash,
-+                                        cancel_on_missing=True)
- 
-         self.boot_integratorcp()
-         framebuffer_ready = 'Console: switching to colour frame buffer device'
-diff --git a/tests/acceptance/machine_arm_n8x0.py b/tests/acceptance/machine_arm_n8x0.py
-index e5741f2d8d..eed54a93e9 100644
---- a/tests/acceptance/machine_arm_n8x0.py
-+++ b/tests/acceptance/machine_arm_n8x0.py
-@@ -24,7 +24,8 @@ class N8x0Machine(Test):
-                       'meego-arm-n8x0-1.0.80.20100712.1431-'
-                       'vmlinuz-2.6.35~rc4-129.1-n8x0')
-         kernel_hash = 'e9d5ab8d7548923a0061b6fbf601465e479ed269'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console(console_index=1)
-         self.vm.add_args('-kernel', kernel_path,
-diff --git a/tests/acceptance/machine_avr6.py b/tests/acceptance/machine_avr6.py
-index 6baf4e9c7f..e1388eb665 100644
---- a/tests/acceptance/machine_avr6.py
-+++ b/tests/acceptance/machine_avr6.py
-@@ -37,7 +37,8 @@ class AVR6Machine(Test):
-                    '/raw/36c3e67b8755dcf/free-rtos/Demo'
-                    '/AVR_ATMega2560_GCC/demo.elf')
-         rom_hash = '7eb521f511ca8f2622e0a3c5e8dd686efbb911d4'
--        rom_path = self.fetch_asset(rom_url, asset_hash=rom_hash)
-+        rom_path = self.fetch_asset(rom_url, asset_hash=rom_hash,
-+                                    cancel_on_missing=True)
- 
-         self.vm.add_args('-bios', rom_path)
-         self.vm.add_args('-nographic')
-diff --git a/tests/acceptance/machine_m68k_nextcube.py b/tests/acceptance/machine_m68k_nextcube.py
-index 32cf571f94..f0ff7143fe 100644
---- a/tests/acceptance/machine_m68k_nextcube.py
-+++ b/tests/acceptance/machine_m68k_nextcube.py
-@@ -55,7 +55,8 @@ class NextCubeMachine(Test):
-         rom_url = ('http://www.nextcomputers.org/NeXTfiles/Software/ROM_Files/'
-                    '68040_Non-Turbo_Chipset/Rev_2.5_v66.BIN')
-         rom_hash = 'b3534796abae238a0111299fc406a9349f7fee24'
--        rom_path = self.fetch_asset(rom_url, asset_hash=rom_hash)
-+        rom_path = self.fetch_asset(rom_url, asset_hash=rom_hash,
-+                                    cancel_on_missing=True)
- 
-         self.vm.add_args('-bios', rom_path)
-         self.vm.launch()
-diff --git a/tests/acceptance/machine_mips_malta.py b/tests/acceptance/machine_mips_malta.py
-index 7c9a4ee4d2..347c4f8198 100644
---- a/tests/acceptance/machine_mips_malta.py
-+++ b/tests/acceptance/machine_mips_malta.py
-@@ -49,14 +49,16 @@ class MaltaMachineFramebuffer(Test):
-                       'a5966ca4b5/mips/malta/mips64el/'
-                       'vmlinux-4.7.0-rc1.I6400.gz')
-         kernel_hash = '096f50c377ec5072e6a366943324622c312045f6'
--        kernel_path_gz = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path_gz = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                          cancel_on_missing=True)
-         kernel_path = self.workdir + "vmlinux"
-         archive.gzip_uncompress(kernel_path_gz, kernel_path)
- 
-         tuxlogo_url = ('https://github.com/torvalds/linux/raw/v2.6.12/'
-                        'drivers/video/logo/logo_linux_vga16.ppm')
-         tuxlogo_hash = '3991c2ddbd1ddaecda7601f8aafbcf5b02dc86af'
--        tuxlogo_path = self.fetch_asset(tuxlogo_url, asset_hash=tuxlogo_hash)
-+        tuxlogo_path = self.fetch_asset(tuxlogo_url, asset_hash=tuxlogo_hash,
-+                                        cancel_on_missing=True)
- 
-         self.vm.set_console()
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-diff --git a/tests/acceptance/machine_rx_gdbsim.py b/tests/acceptance/machine_rx_gdbsim.py
-index 0c72506028..f876a3ec89 100644
---- a/tests/acceptance/machine_rx_gdbsim.py
-+++ b/tests/acceptance/machine_rx_gdbsim.py
-@@ -32,7 +32,8 @@ class RxGdbSimMachine(Test):
-         """
-         uboot_url = ('https://acc.dl.osdn.jp/users/23/23888/u-boot.bin.gz')
-         uboot_hash = '9b78dbd43b40b2526848c0b1ce9de02c24f4dcdb'
--        uboot_path = self.fetch_asset(uboot_url, asset_hash=uboot_hash)
-+        uboot_path = self.fetch_asset(uboot_url, asset_hash=uboot_hash,
-+                                      cancel_on_missing=True)
-         uboot_path = archive.uncompress(uboot_path, self.workdir)
- 
-         self.vm.set_console()
-@@ -56,10 +57,12 @@ class RxGdbSimMachine(Test):
-         """
-         dtb_url = ('https://acc.dl.osdn.jp/users/23/23887/rx-virt.dtb')
-         dtb_hash = '7b4e4e2c71905da44e86ce47adee2210b026ac18'
--        dtb_path = self.fetch_asset(dtb_url, asset_hash=dtb_hash)
-+        dtb_path = self.fetch_asset(dtb_url, asset_hash=dtb_hash,
-+                                    cancel_on_missing=True)
-         kernel_url = ('http://acc.dl.osdn.jp/users/23/23845/zImage')
-         kernel_hash = '39a81067f8d72faad90866ddfefa19165d68fc99'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console()
-         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + 'earlycon'
-diff --git a/tests/acceptance/machine_sparc64_sun4u.py b/tests/acceptance/machine_sparc64_sun4u.py
-index 458165500e..26e8cfd545 100644
---- a/tests/acceptance/machine_sparc64_sun4u.py
-+++ b/tests/acceptance/machine_sparc64_sun4u.py
-@@ -27,7 +27,8 @@ class Sun4uMachine(LinuxKernelTest):
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day23.tar.xz')
-         tar_hash = '142db83cd974ffadc4f75c8a5cad5bcc5722c240'
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         archive.extract(file_path, self.workdir)
-         self.vm.set_console()
-         self.vm.add_args('-kernel', self.workdir + '/day23/vmlinux',
-diff --git a/tests/acceptance/machine_sparc_leon3.py b/tests/acceptance/machine_sparc_leon3.py
-index 2405cd7a0d..c6228d95a7 100644
---- a/tests/acceptance/machine_sparc_leon3.py
-+++ b/tests/acceptance/machine_sparc_leon3.py
-@@ -26,7 +26,8 @@ class Leon3Machine(Test):
-         kernel_url = ('http://www.helenos.org/releases/'
-                       'HelenOS-0.6.0-sparc32-leon3.bin')
-         kernel_hash = 'a88c9cfdb8430c66650e5290a08765f9bf049a30'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         self.vm.set_console()
-         self.vm.add_args('-kernel', kernel_path)
-diff --git a/tests/acceptance/ppc_prep_40p.py b/tests/acceptance/ppc_prep_40p.py
-index 1515561249..edb7765cb6 100644
---- a/tests/acceptance/ppc_prep_40p.py
-+++ b/tests/acceptance/ppc_prep_40p.py
-@@ -34,11 +34,13 @@ class IbmPrep40pMachine(Test):
-                     'ftp.software.ibm.com/rs6000/firmware/'
-                     '7020-40p/P12H0456.IMG')
-         bios_hash = '1775face4e6dc27f3a6ed955ef6eb331bf817f03'
--        bios_path = self.fetch_asset(bios_url, asset_hash=bios_hash)
-+        bios_path = self.fetch_asset(bios_url, asset_hash=bios_hash,
-+                                     cancel_on_missing=True)
-         drive_url = ('https://cdn.netbsd.org/pub/NetBSD/NetBSD-archive/'
-                      'NetBSD-4.0/prep/installation/floppy/generic_com0.fs')
-         drive_hash = 'dbcfc09912e71bd5f0d82c7c1ee43082fb596ceb'
--        drive_path = self.fetch_asset(drive_url, asset_hash=drive_hash)
-+        drive_path = self.fetch_asset(drive_url, asset_hash=drive_hash,
-+                                      cancel_on_missing=True)
- 
-         self.vm.set_console()
-         self.vm.add_args('-bios', bios_path,
-@@ -71,7 +73,7 @@ class IbmPrep40pMachine(Test):
-                      'NetBSD-7.1.2-prep.iso')
-         drive_hash = 'ac6fa2707d888b36d6fa64de6e7fe48e'
-         drive_path = self.fetch_asset(drive_url, asset_hash=drive_hash,
--                                      algorithm='md5')
-+                                      algorithm='md5', cancel_on_missing=True)
-         self.vm.set_console()
-         self.vm.add_args('-cdrom', drive_path,
-                          '-boot', 'd')
-diff --git a/tests/acceptance/replay_kernel.py b/tests/acceptance/replay_kernel.py
-index 80a460814f..e0c9c19c92 100644
---- a/tests/acceptance/replay_kernel.py
-+++ b/tests/acceptance/replay_kernel.py
-@@ -83,7 +83,8 @@ class ReplayKernel(LinuxKernelTest):
-                       '/linux/releases/29/Everything/x86_64/os/images/pxeboot'
-                       '/vmlinuz')
-         kernel_hash = '23bebd2680757891cf7adedb033532163a792495'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + 'console=ttyS0'
-         console_pattern = 'VFS: Cannot open root device'
-@@ -100,7 +101,8 @@ class ReplayKernel(LinuxKernelTest):
-                       '/linux/releases/29/Everything/aarch64/os/images/pxeboot'
-                       '/vmlinuz')
-         kernel_hash = '8c73e469fc6ea06a58dc83a628fc695b693b8493'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-                                'console=ttyAMA0')
-@@ -118,7 +120,8 @@ class ReplayKernel(LinuxKernelTest):
-                       '/linux/releases/29/Everything/armhfp/os/images/pxeboot'
-                       '/vmlinuz')
-         kernel_hash = 'e9826d741b4fb04cadba8d4824d1ed3b7fb8b4d4'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
-                                'console=ttyAMA0')
-@@ -136,6 +139,7 @@ class ReplayKernel(LinuxKernelTest):
-                    'linux-image-dev-sunxi_20.08_armhf.deb')
-         deb_hash = 'ae553a9f7d43b18abfa8f3e64bf2d31878b9be89'
-         deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinuz-5.8.0-sunxi')
-         dtb_path = '/usr/lib/linux-image-dev-sunxi/sun4i-a10-cubieboard.dtb'
-@@ -144,7 +148,8 @@ class ReplayKernel(LinuxKernelTest):
-                       '2eb0a73b5d5a28df3170c546ddaaa9757e1e0848/rootfs/'
-                       'arm/rootfs-armv5.cpio.gz')
-         initrd_hash = '2b50f1873e113523967806f4da2afe385462ff9b'
--        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash)
-+        initrd_path_gz = self.fetch_asset(initrd_url, asset_hash=initrd_hash,
-+                                          cancel_on_missing=True)
-         initrd_path = os.path.join(self.workdir, 'rootfs.cpio')
-         archive.gzip_uncompress(initrd_path_gz, initrd_path)
- 
-@@ -167,7 +172,8 @@ class ReplayKernel(LinuxKernelTest):
-                       '/fedora-secondary/releases/29/Everything/ppc64le/os'
-                       '/ppc/ppc64/vmlinuz')
-         kernel_hash = '3fe04abfc852b66653b8c3c897a59a689270bc77'
--        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
-+        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash,
-+                                       cancel_on_missing=True)
- 
-         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + 'console=hvc0'
-         # icount is not good enough for PPC64 for complete boot yet
-@@ -183,7 +189,8 @@ class ReplayKernel(LinuxKernelTest):
-                    '/20191021T083923Z/pool-m68k/main'
-                    '/l/linux/kernel-image-5.3.0-1-m68k-di_5.3.7-1_m68k.udeb')
-         deb_hash = '044954bb9be4160a3ce81f8bc1b5e856b75cccd1'
--        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash)
-+        deb_path = self.fetch_asset(deb_url, asset_hash=deb_hash,
-+                                    cancel_on_missing=True)
-         kernel_path = self.extract_from_deb(deb_path,
-                                             '/boot/vmlinux-5.3.0-1-m68k')
- 
-@@ -213,7 +220,8 @@ class ReplayKernel(LinuxKernelTest):
-         tar_hash = '32b7677ce8b6f1471fb0059865f451169934245b'
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day16.tar.xz')
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         dtb_path = self.workdir + '/day16/vexpress-v2p-ca9.dtb'
-         self.do_test_advcal_2018(file_path, 'winter.zImage',
-                                  args=('-dtb', dtb_path))
-@@ -226,7 +234,8 @@ class ReplayKernel(LinuxKernelTest):
-         tar_hash = 'ac688fd00561a2b6ce1359f9ff6aa2b98c9a570c'
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day07.tar.xz')
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         self.do_test_advcal_2018(file_path, 'sanity-clause.elf')
- 
-     def test_microblaze_s3adsp1800(self):
-@@ -237,7 +246,8 @@ class ReplayKernel(LinuxKernelTest):
-         tar_hash = '08bf3e3bfb6b6c7ce1e54ab65d54e189f2caf13f'
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day17.tar.xz')
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         self.do_test_advcal_2018(file_path, 'ballerina.bin')
- 
-     def test_ppc64_e500(self):
-@@ -249,7 +259,8 @@ class ReplayKernel(LinuxKernelTest):
-         tar_hash = '6951d86d644b302898da2fd701739c9406527fe1'
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day19.tar.xz')
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         self.do_test_advcal_2018(file_path, 'uImage', ('-cpu', 'e5500'))
- 
-     def test_ppc_g3beige(self):
-@@ -260,7 +271,8 @@ class ReplayKernel(LinuxKernelTest):
-         tar_hash = 'e0b872a5eb8fdc5bed19bd43ffe863900ebcedfc'
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day15.tar.xz')
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         self.do_test_advcal_2018(file_path, 'invaders.elf',
-                                  args=('-M', 'graphics=off'))
- 
-@@ -272,7 +284,8 @@ class ReplayKernel(LinuxKernelTest):
-         tar_hash = 'e0b872a5eb8fdc5bed19bd43ffe863900ebcedfc'
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day15.tar.xz')
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         self.do_test_advcal_2018(file_path, 'invaders.elf',
-                                  args=('-M', 'graphics=off'))
- 
-@@ -284,7 +297,8 @@ class ReplayKernel(LinuxKernelTest):
-         tar_hash = 'b18550d5d61c7615d989a06edace051017726a9f'
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day11.tar.xz')
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         self.do_test_advcal_2018(file_path, 'zImage.elf')
- 
-     def test_xtensa_lx60(self):
-@@ -296,6 +310,7 @@ class ReplayKernel(LinuxKernelTest):
-         tar_hash = '49e88d9933742f0164b60839886c9739cb7a0d34'
-         tar_url = ('https://www.qemu-advent-calendar.org'
-                    '/2018/download/day02.tar.xz')
--        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash)
-+        file_path = self.fetch_asset(tar_url, asset_hash=tar_hash,
-+                                     cancel_on_missing=True)
-         self.do_test_advcal_2018(file_path, 'santas-sleigh-ride.elf',
-                                  args=('-cpu', 'dc233c'))
--- 
-2.25.4
+Not all email clients display email subject right
+before the email content.
+
+> So the check for P7ZIP can be
+> dropped, and extraction logic simplified.
+> 
+> Signed-off-by: Cleber Rosa <crosa@redhat.com>
+> ---
+>  tests/acceptance/boot_linux_console.py | 20 ++++++--------------
+>  1 file changed, 6 insertions(+), 14 deletions(-)
+> 
+> diff --git a/tests/acceptance/boot_linux_console.py b/tests/acceptance/boot_linux_console.py
+> index 751b47b8fd..c75c512c8b 100644
+> --- a/tests/acceptance/boot_linux_console.py
+> +++ b/tests/acceptance/boot_linux_console.py
+> @@ -22,12 +22,6 @@ from avocado.utils import process
+>  from avocado.utils import archive
+>  from avocado.utils.path import find_command, CmdNotFoundError
+>  
+> -P7ZIP_AVAILABLE = True
+> -try:
+> -    find_command('7z')
+> -except CmdNotFoundError:
+> -    P7ZIP_AVAILABLE = False
+> -
+>  """
+>  Round up to next power of 2
+>  """
+> @@ -687,7 +681,6 @@ class BootLinuxConsole(LinuxKernelTest):
+>          self.vm.wait()
+>  
+>      @skipUnless(os.getenv('AVOCADO_ALLOW_LARGE_STORAGE'), 'storage limited')
+> -    @skipUnless(P7ZIP_AVAILABLE, '7z not installed')
+>      def test_arm_orangepi_bionic(self):
+>          """
+>          :avocado: tags=arch:arm
+> @@ -695,14 +688,13 @@ class BootLinuxConsole(LinuxKernelTest):
+>          :avocado: tags=device:sd
+>          """
+>  
+> -        # This test download a 196MB compressed image and expand it to 1GB
+> +        # This test download a 275MB compressed image and expand it to 1.1GB
+>          image_url = ('https://dl.armbian.com/orangepipc/archive/'
+> -                     'Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.7z')
+> -        image_hash = '196a8ffb72b0123d92cea4a070894813d305c71e'
+> -        image_path_7z = self.fetch_asset(image_url, asset_hash=image_hash)
+> -        image_name = 'Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.img'
+> -        image_path = os.path.join(self.workdir, image_name)
+> -        process.run("7z e -o%s %s" % (self.workdir, image_path_7z))
+> +                     'Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz')
+> +        image_hash = 'b4d6775f5673486329e45a0586bf06b6dbe792199fd182ac6b9c7bb6c7d3e6dd'
+> +        image_path_xz = self.fetch_asset(image_url, asset_hash=image_hash,
+> +                                         algorithm='sha256')
+> +        image_path = archive.extract(image_path_xz, self.workdir)
+>          image_pow2ceil_expand(image_path)
+
+Nack, this is not the same test. You might be lucky it test the
+same things, but this is not what the developer tested.
+This is not how acceptance tests are supposed to work IMHO.
+
+>  
+>          self.vm.set_console()
+> 

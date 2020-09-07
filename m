@@ -1,223 +1,186 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3628931lfc;
-        Mon, 7 Sep 2020 03:24:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyYUi+fodfhqSESiMUOxAuMEDJFrX/EtVjtZVAMhbxWx+ZLdnN9uvVK0NYcZ2jixxuehGPj
-X-Received: by 2002:a25:aca3:: with SMTP id x35mr25071520ybi.3.1599474272147;
-        Mon, 07 Sep 2020 03:24:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599474272; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3631626lfc;
+        Mon, 7 Sep 2020 03:29:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwokzHghg4s+TzSmYv/HWsfutSi3somg8qBwt7a/9bm3jRBPwltSYG8kYmZONM971oV+gTj
+X-Received: by 2002:a25:bbcf:: with SMTP id c15mr26224361ybk.127.1599474572879;
+        Mon, 07 Sep 2020 03:29:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599474572; cv=none;
         d=google.com; s=arc-20160816;
-        b=GfygWH+LIaBn5atJQjY//9ui+fSqBjUOCcbB05DXrlBRoMmG21xJTEJ0J7y1X4i/cU
-         Gv2F2Zoxl5Yi5yxl4MsPm6xxgJLK1GZAyUogzDnVyTgmU/NdBRYmqkupfWaw+zvSmgAS
-         AoRh/m3uw5OdTmVOvf/C5WRdckkfjUQ7nRqAWTKeMutaI+pB6skYd+D/1lOyTe5TMn3O
-         RgraS4nhoxHQOiuIMWjR/PyPgAFDlnF4zixaKIHcr+DTTS6ScYBBPPORIPYsn1L7BJWd
-         gdzeHuAY9iQZdK8jqcP+OivKOQbgaJoCSlnDtpjOST/SvHRgpKojWlHPodGEr3I7GvQP
-         LXHg==
+        b=f9NvWy2hFnXpAYDLeEYRwOgvS9FlRU4axvM7WqpcfF8OMF+R0Gdqhx0GrF4SGWko/N
+         TZ8jjpIsJW4jU6cAbnI8O2bJi9k3ZdZJ5VWqGlt2LNfhiI0AjkOw7orabBTWirvV6OBd
+         40WskOF04PTt23DDuI27dsVV7VvwlhPAFupUpk7TY6MxOmEhqsHmGWFfciKtWJwfXXGK
+         uSURTfwmGiX+rWe+N139/+NWSueRSnwvwyq38EJjtok8ytKod2FF8DApPvjFtzKJwWZ4
+         4/iBFr3uM1yW5Cb0tJuGZnyce6GvDYYQpcRgltzREdf/aRn7HQLc7NWZ3svgUvBped8C
+         h/vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=+tWDOOsjdkNUtA6oKk1HUkDL7Sde311gZREuKt9c2PE=;
-        b=U2JbhZ2ngEZ7aYDTkVX6MnjMFRTtAMapVRQPOOcNXrCcSRpnRUW1F97l6LTWojonvu
-         XxTd95jXWPsDO6saX9W/K+t0NKvfsB20BCVOAmnlJfb06TaDfehp8Rtsn5tAh0+X3+Bw
-         nreE6fjtoC4jrpZfx/CllepJT+AGH2ziPIa9gAB+dcSr5XUBjoNx8HXdLiEihkYbvsaU
-         +oGARcHA/6LJp+UvOKj5rPJ6r8TM3GJh5m6m0FMulV48XTFf6u0KubuWqY9M5VtNIOSz
-         0GcO/OSDoDIqF06uW5CwUJyPXtWIv+w+G3Gw7w1bLVnOPnL7fcH4LFDR7PkcNtfpx5hw
-         39Aw==
+        h=content-disposition:content-transfer-encoding:user-agent
+         :in-reply-to:mime-version:references:reply-to:message-id:subject:cc
+         :to:from:date:dkim-signature;
+        bh=IPMsWu19jw+gz3DeeiNb5IfYY/YJ8LVqkvkIJJotT+o=;
+        b=nHk7mbPumClaxvEq6CUNb+Ipg0jeZVEwyBFvYQ9+tU61HAhGwj5hzr5FXt4/Nq5VOK
+         +TePa4a55lu9omTnK+m0rEBiMaKlZtADsFKsljxn40wQAijKvWW+AhHiCzfZn0KXwBUU
+         R+xLkRN9qrQ0x8ItbzCOZaEL3YSUfSU6znOoheQeXs2OszqorvsbmELsN3NbYKINrHoM
+         s8NSW0D88Crvedx3bTLhid9+sSD8XyLy/Q2j6lBPIpg4eGKDq81lhGlKmV87ePWqogUb
+         WVDyAm+7ub1SOIntl0pzBARBOUGqCb5XjcW5rZBUaJB+/M5BbZR0iqN005N/vy/4uqY3
+         jJ1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=osBjK2qd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h36si15949137ybi.132.2020.09.07.03.24.31
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EipS1oPH;
+       spf=pass (google.com: domain of berrange@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <berrange@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
+        by mx.google.com with ESMTPS id 124si14144985ybz.22.2020.09.07.03.29.32
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Sep 2020 03:24:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 07 Sep 2020 03:29:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of berrange@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=osBjK2qd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:33718 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFEK7-00049G-Hp
-	for alex.bennee@linaro.org; Mon, 07 Sep 2020 06:24:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49370)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kFEJx-00042G-3P; Mon, 07 Sep 2020 06:24:21 -0400
-Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42]:34140)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kFEJv-0002K3-5j; Mon, 07 Sep 2020 06:24:20 -0400
-Received: by mail-yb1-xb42.google.com with SMTP id u6so9093714ybf.1;
- Mon, 07 Sep 2020 03:24:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=+tWDOOsjdkNUtA6oKk1HUkDL7Sde311gZREuKt9c2PE=;
- b=osBjK2qdGWemDOHmSepH7A/dPh3hf/g5Pxzyn0uznvnUD+lJIrY9KV6J4Pw6mbEZuR
- 1HiHvRrvuyp+uFZFJW9tg7NUUq42r35SmKioZ0fSRzFD7wFXRgNdHngIBrASbiCBwW2b
- vkBQDNdH2psn4sxj5iXUFR4tVPAf11IG3pQ8xyJ7AoMonRszeBIigWjNB81VMx0RZmJf
- 1mZCz/AmgSCbpMOAW3d9oNiISdYkBQxtfmXLOgji/Rte/kqEoISFHgHSjYlh1m8ECGIf
- XYZi9oAkgOey9AEWYGJwEGR2Y65gq7Agii+QmXrU2v+1FNAkuDkaewBNzEApDYcwdawN
- EtMA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=+tWDOOsjdkNUtA6oKk1HUkDL7Sde311gZREuKt9c2PE=;
- b=BCrMcLR3dyTXFTjAziAyslhLPjDKynaYuRhtof5PU98nTpJr50kp3UQproRDzHP2ve
- ZvCJ1uHgbS0EQcGdD7KhchShz22TfE7U4P6cn5rELNdb1Cs0I55sCa7FwAV7b82p7gHe
- dheE7pQt3InOKWc9MdwX+2x+ZYSJDrFeGVOwwcOLqf58Q1da1Jz4OaqayWlVuK1+kWOK
- Lf074kJqrqfcsBiPgyx5ysBMDgSfd6FLf7vK2D4E3ADu5FcXYH2KCwDaRNdj7IjQj4oY
- 6O/DcadnJQDPcRUJvU2nDSqOj1c2FN2gAoxaq62stMD1KfQBb4yWL47nEsT/saIW1FbC
- dTlQ==
-X-Gm-Message-State: AOAM533IY2OOmOC0ZXNgNwDG4/UwpI17U19VCo6i3rTFpukCNU45MA7o
- BtsQRV1nSXv4qdnXUJtg/7OTOGU46rO4HdVJsc8=
-X-Received: by 2002:a25:cfd2:: with SMTP id f201mr5091035ybg.122.1599474256814; 
- Mon, 07 Sep 2020 03:24:16 -0700 (PDT)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EipS1oPH;
+       spf=pass (google.com: domain of berrange@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=berrange@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1599474572;
+	h=from:from:reply-to:reply-to:subject:subject:date:date:
+	 message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+	 content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=IPMsWu19jw+gz3DeeiNb5IfYY/YJ8LVqkvkIJJotT+o=;
+	b=EipS1oPHINaRTPFh0Qrk5hykNKJYGuz1JLlGMDZtWHNO1YNh5pAY/EJ9Cvl2MhuUVp2TbD
+	NSCXBvzaBVVv5FrtEkkRhWi6+0eJI3yGWPN8c+o3UCwLnLCDTcogdpS8dO8d90eJj4Ks2p
+	q1DfDaWUfch2L25u25J7w7KPx5oW7ic=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-40-iMEVlKMFMTGnZofQoRqlZA-1; Mon, 07 Sep 2020 06:29:06 -0400
+X-MC-Unique: iMEVlKMFMTGnZofQoRqlZA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com [10.5.11.12])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BF6991007B09;
+	Mon,  7 Sep 2020 10:29:03 +0000 (UTC)
+Received: from redhat.com (ovpn-114-70.ams2.redhat.com [10.36.114.70])
+	by smtp.corp.redhat.com (Postfix) with ESMTPS id C23F460C84;
+	Mon,  7 Sep 2020 10:28:52 +0000 (UTC)
+Date: Mon, 7 Sep 2020 11:28:49 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Sarah Harris <S.E.Harris@kent.ac.uk>,
+	Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+	Thomas Huth <thuth@redhat.com>,
+	Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	KONRAD Frederic <frederic.konrad@adacore.com>,
+	Willian Rampazzo <wrampazz@redhat.com>,
+	Yoshinori Sato <ysato@users.sourceforge.jp>,
+	Wainer dos Santos Moschetta <wainersm@redhat.com>,
+	Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+	=?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+	Antony Pavlov <antonynpavlov@gmail.com>,
+	Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Fabien Chouteau <chouteau@adacore.com>, qemu-arm@nongnu.org,
+	Michael Rolnik <mrolnik@gmail.com>,
+	Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+	Beraldo Leal <bleal@redhat.com>, qemu-ppc@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Aurelien Jarno <aurelien@aurel32.net>
+Subject: Re: [PATCH 1/4] Acceptance tests: use an available kernel image
+ package for arm
+Message-ID: <20200907102849.GE810755@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20200907042000.415931-1-crosa@redhat.com>
+ <20200907042000.415931-2-crosa@redhat.com>
+ <001385a1-92eb-d311-88b5-8e1e7f6f1f48@redhat.com>
+ <20200907093930.GD810755@redhat.com>
+ <34814b29-a47a-efd3-971b-520bc5ac6309@redhat.com>
 MIME-Version: 1.0
-References: <1598924352-89526-1-git-send-email-bmeng.cn@gmail.com>
- <20200906010811.GA1546@vanye>
-In-Reply-To: <20200906010811.GA1546@vanye>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Mon, 7 Sep 2020 18:24:06 +0800
-Message-ID: <CAEUhbmVfSPwO5CHO2G5Vd5fA6NA4dRCp-e_KGJhSO7nYAPmi1w@mail.gmail.com>
-Subject: Re: [PATCH v3 00/16] hw/riscv: Add Microchip PolarFire SoC Icicle Kit
- board support
-To: Leif Lindholm <leif@nuviainc.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b42;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb42.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Bin Meng <bin.meng@windriver.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UzH8SZMigY/l
+In-Reply-To: <34814b29-a47a-efd3-971b-520bc5ac6309@redhat.com>
+User-Agent: Mutt/1.14.6 (2020-07-11)
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Content-Disposition: inline
+X-TUID: 553wQBT+lg67
 
-Hi Leif,
+On Mon, Sep 07, 2020 at 11:59:18AM +0200, Philippe Mathieu-Daudé wrote:
+> On 9/7/20 11:39 AM, Daniel P. Berrangé wrote:
+> > On Mon, Sep 07, 2020 at 10:06:13AM +0200, Philippe Mathieu-Daudé wrote:
+> >> [Cc'ing Daniel who usually have good ideas for that
+> >> kind if project-wide problem]
+> >>
+> >> On 9/7/20 6:19 AM, Cleber Rosa wrote:
+> >>> Which means a newer kernel version.  Expected output was changed
+> >>> to match the new kernel too.
+> >>
+> >> Nack.
+> >>
+> >> Acceptance tests are not to test the latest Linux kernel,
+> >> they aim to assert a specific kernel tested by some developer
+> >> still works while QEMU evolves.
+> >> QEMU doesn't have to adapt to the latest kernel;
+> >> QEMU should keep boot an old kernel.
+> >>
+> >> Testing new kernels is good, you are adding coverage. But
+> >> this break the acceptance testing contract "keep testing
+> >> the same thing over time".
+> >>
+> >> The problem you are trying to fix is the "where to keep
+> >> assets from public locations where they are being removed?"
+> >> one. Two years ago [*] you suggested to use some storage on
+> >> the avocado-project.org:
+> >>
+> >>   For Avocado-VT, there are the JeOS images[1], which we
+> >>   keep on a test "assets" directory.  We have a lot of
+> >>   storage/bandwidth availability, so it can be used for
+> >>   other assets proven to be necessary for tests.
+> >>
+> >>   As long as distribution rights and licensing are not
+> >>   issues, we can definitely use the same server for kernels,
+> >>   u-boot images and what not.
+> >>
+> >>   [1] - https://avocado-project.org/data/assets/
+> > 
+> > If I look at stuff under that directory I see a bunch of "Jeos" qcow2
+> > images, and zero information about the corresponding source for the
+> > images, nor any information about the licenses of software included.
+> > IOW what is stored their right now does not appear to comply with the
+> > GPL licensing requirements for providing full and corresponding source.
+> > 
+> >> It is time to have QEMU assets managed the same way.
+> > 
+> > I'd rather we didn't do anything relying on binary blobs with no
+> > info about how they were built. Pointing to the 3rd party download
+> > URLs was the easy way to ensure we don't have to worry about licensing
+> > problems.
+> 
+> I tried to be very strict including the recipe about how to rebuild
+> and description of the source (for licensing) in each commits (Alex
+> Bennée once said Debian/Fedora based was OK):
 
+..snip...
 
-On Sun, Sep 6, 2020 at 9:08 AM Leif Lindholm <leif@nuviainc.com> wrote:
->
-> On Tue, Sep 01, 2020 at 09:38:55 +0800, Bin Meng wrote:
-> > From: Bin Meng <bin.meng@windriver.com>
-> >
-> > This adds support for Microchip PolarFire SoC Icicle Kit board.
-> > The Icicle Kit board integrates a PolarFire SoC, with one SiFive's
-> > E51 plus four U54 cores and many on-chip peripherals and an FPGA.
-> >
-> > For more details about Microchip PolarFire SoC, please see:
-> > https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga
-> >
-> > The Icicle Kit board information can be found here:
-> > https://www.microsemi.com/existing-parts/parts/152514
-> >
-> > Unlike SiFive FU540, the RISC-V core resect vector is at 0x20220000.
-> > The RISC-V CPU and HART codes has been updated to set the core's
-> > reset vector based on a configurable property from machine codes.
-> >
-> > The following perepherals are created as an unimplemented device:
-> >
-> > - Bus Error Uint 0/1/2/3/4
-> > - L2 cache controller
-> > - SYSREG
-> > - MPUCFG
-> > - IOSCBCFG
-> > - GPIO
-> >
-> > The following perepherals are emulated:
-> > - SiFive CLINT
-> > - SiFive PLIC
-> > - PolarFire SoC Multi-Mode UART
-> > - SiFive PDMA
-> > - Cadence eMMC/SDHCI controller
-> > - Cadence Gigabit Ethernet MAC
-> >
-> > The BIOS image used by this machine is hss.bin, aka Hart Software
-> > Services, which can be built from:
-> > https://github.com/polarfire-soc/hart-software-services
-> >
-> > To launch this machine:
-> > $ qemu-system-riscv64 -M microchip-icicle-kit -smp 5 \
-> >     -bios path/to/hss.bin -sd path/to/sdcard.img \
-> >     -nic tap,ifname=tap,script=no,model=cadence_gem \
-> >     -display none -serial stdio \
-> >     -chardev socket,id=serial1,path=serial1.sock,server,wait \
-> >     -serial chardev:serial1
->
-> I finally got around to building the sd image from
-> https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk,
-> and I can successfully boot to prompt using that, and the (hacked)
-> hss.bin I verified previously - also with this v3.
->
+Well that looks better than what is done for the JEOS images currently
+on avocado-project.org, as I can't tell what distro those came from
+at all.
 
-Good to know!
+If we're hosting images built by some 3rd party, and we intend to rely
+on the 3rd party to satisfy source availability, then we need to be sure
+that the 3rd party is themselves still distributing the same images.
 
-> However, unless I add the "-nic user,model=cadence_gem \" shown in
-> https://wiki.qemu.org/Documentation/Platforms/RISCV#Microchip_PolarFire_SoC_Icicle_Kit
-> but not here, I do not have functioning networking. (It is not obvious
-> to me why this is needed.)
->
-
-Sorry I don't understand what the issue is?
-
-> > The memory is set to 1 GiB by default to match the hardware.
->
-> Which hardware is this?
-> https://www.crowdsupply.com/microchip/polarfire-soc-icicle-kit lists
-> 2GiB.
-
-It's this same board. But I believe the crowdsupply webpage has the
-wrong information. The board I got only has 1GB memory.
-
->
-> > A sanity check on ram size is performed in the machine init routine
-> > to prompt user to increase the RAM size to > 1 GiB when less than
-> > 1 GiB ram is detected.
->
-> There is currently no visible effect in firmware from setting memory size to >
-> 1GiB (hss says 1GB, u-boot says 1GB, Linux sees 1GB).
-> Are there any plans to address this in future versions?
->
-
-HSS is using hardcoded 1GB memory size and that's why in QEMU the
-minimum required memory size is 1GB. Setting less than 1GB size blocks
-HSS to load the 2nd stage bootloader U-Boot into the memory. Both
-U-Boot and Linux DTS files set the memory size to 1GB, so that's why
-both of them see only 1GB. Setting memory >1G does not affect U-Boot
-and Linux though. You can however manually edit the U-Boot and Linux
-DTS files to have a large RAM size to match QEMU -m option.
+IIUC, from Cleber's commit here the original images we're pointing to
+are now 404s. If the URLs moved, we just need to update to fix the URLs
+to point the new location. If the content was entirely removed though,
+we shouldn't mirror it ourselves, because we can't rely on the original
+vendor to be providing the source at that point.
 
 Regards,
-Bin
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|

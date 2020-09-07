@@ -1,82 +1,92 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3794lfq;
-        Mon, 7 Sep 2020 12:58:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxdp5ZfhNyEF97Jk9wMNV168wvjbn/bVqFgi6zm+9+64sL+YoRDSp5ydiTbwz9LAWlJplbd
-X-Received: by 2002:a25:d10c:: with SMTP id i12mr28478699ybg.254.1599508733679;
-        Mon, 07 Sep 2020 12:58:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599508733; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp6618lfq;
+        Mon, 7 Sep 2020 13:03:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyRikr4+T0dNMbArAOIrGtz5OkRIuEbIoOUnwN/skIgs95T38b0uX1Q2k7krmGvruIyXsh4
+X-Received: by 2002:a25:6555:: with SMTP id z82mr32565828ybb.472.1599509001184;
+        Mon, 07 Sep 2020 13:03:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599509001; cv=none;
         d=google.com; s=arc-20160816;
-        b=OtDDesojJFZZoG0CN1WHrg0cMxOJWa293yxFJlSeXnXxvc4sGPaRTD+/RDG04INPGS
-         bF5oBpZlLQlDWzrZcgvNgq8b5WylwC330yinqyZmcCqXfZw7RaLXxH4+dHMCkAJi0G4o
-         84+P7XQurYazoCpctFUt0QJoCbklTPfc+8JhU+Pdo85xEGsolXz4AMBqsAtNfuShw7yq
-         PRVrzENNo6OXSlIJqnABvkycsXnHy826uVuyFQ6gmO8Od6w3r1xZ0AnT4y7006ARz4Ew
-         11wpSrl6halahI2wIrxJiqh9+KMgyfzUEDYYI9UA1ySeWt4M/VEOS23X3+UmJeUZyJEL
-         3+7g==
+        b=Qs+iXPoCO3srZms+py0wAFaUq5d+kJUvRvlROtjtwxUKmkgrnVaZh/U0+snVlrbKLV
+         PGiM9H20JUSl0zHc1gFAlsihZpDaRqxa0jgHazaKUtVLK1xvIzUte84ES45GoByFEeri
+         e8iHSQlou/tuIr44OE79Ezl2Sn2NE6WCj4ckifDJEF6hq1IK+eIiniM7tm4uBSwnQ3jY
+         KcrTjlj2njuehI17VrqePgFTyQ9SK3hr2HLf7B7wdpBHGTXZSpNbK+h9j5GNH8XKUF9K
+         iXAb3ErR7ZcXUTuP7vynEWQIdhodKlsFX1Zkvwyc59d/ajoW3/Eh+jLSWNL7WixsXQR4
+         Ew+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date;
-        bh=rVe7k09tyJYYIuK0upoRAG89tL2lp3iOkWNyn9Mcfyc=;
-        b=GqWbNJZPA+23WzDhljtuxD656zc1TLhd0drJw/siV2NV+mqnSBKb66jIc+9pqTyQWq
-         vWurEYfXE6qjjHjczVHLsfLW4GidqVjfWmSDT0csq8WjmY97OIdgOrXOloun5ooqkRkj
-         iAksoR/sEYnnUkBpyxipEhuO9gsqd+BMvgpN234iFLuGzfhUJe+xifCWNJlIBlXIZS6w
-         IM3q8B9WYnhfWMDbVo/w5WuipjhpO+9Qiatc4aHTaGXUzHhvI3u0uBfTmZrjJfHuk/G7
-         Pyuv2PFGK4dmNpfjd4OaXr1hyyMziLQBEr6Ezrg1y/e25r8J/hefxPsuWYeqNaK56ca4
-         jh+Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=DPk0bO248uFw7H9Kh6cvLnYv7h9OzeFbdhJow0esSnQ=;
+        b=CyLnnt6X/leNLcBjxB/AqURAS3FD+52lIaA52kMrURLpSCTETpS41ibjKVDHOD9fT5
+         Wixw8/bNxlG7YoweHS3fNCtzJ5hn9/ir7hFXbSDS8S6n6rIzoU4NU4lCvB8uU6prnqkW
+         /P/lsjZf1pueVdJ6jtV4D/RGP+YAC0+pwQO73NzIKgTqnNrZQ05129eguM4zoj3RHuKP
+         Xx/5aOY1JHNPvW2GPhVFw6XJPE0CGA/1gQpNIQB8kOIfhDBVd17+d34ptIGp0VbCUtkK
+         FHOObHrLI8TQbyjd4DAzDT1XvcdQThwTv2ld03eQbFg+LoaNoS58kCJTnRCKM1LcuqVs
+         WJ1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=fjz76fbr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3si14891008ybb.352.2020.09.07.12.58.53
+        by mx.google.com with ESMTPS id s197si11103291ybc.2.2020.09.07.13.03.20
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Sep 2020 12:58:53 -0700 (PDT)
+        Mon, 07 Sep 2020 13:03:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
+       dkim=pass header.i=@greensocs.com header.s=mail header.b=fjz76fbr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51298 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33748 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFNHx-00072M-1l
-	for alex.bennee@linaro.org; Mon, 07 Sep 2020 15:58:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60452)
+	id 1kFNMG-0003FX-Dz
+	for alex.bennee@linaro.org; Mon, 07 Sep 2020 16:03:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33084)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1kFNHp-00071J-5L; Mon, 07 Sep 2020 15:58:45 -0400
-Received: from relay64.bu.edu ([128.197.228.104]:42110)
+ (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
+ id 1kFNLp-0003Cz-8J; Mon, 07 Sep 2020 16:02:53 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:47986)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>)
- id 1kFNHl-0007ae-PV; Mon, 07 Sep 2020 15:58:44 -0400
-X-Envelope-From: alxndr@bu.edu
-X-BU-AUTH: mozz.bu.edu [128.197.127.33]
-Received: from BU-AUTH (localhost.localdomain [127.0.0.1]) (authenticated
- bits=0)
- by relay64.bu.edu (8.14.3/8.14.3) with ESMTP id 087JvR1i016633
- (version=TLSv1/SSLv3 cipher=AES256-GCM-SHA384 bits=256 verify=NO);
- Mon, 7 Sep 2020 15:57:31 -0400
-Date: Mon, 7 Sep 2020 15:57:27 -0400
-From: Alexander Bulekov <alxndr@bu.edu>
-To: Havard Skinnemoen <hskinnemoen@google.com>
-Subject: Re: [PATCH v8 08/14] hw/nvram: NPCM7xx OTP device model
-Message-ID: <20200907195727.xlz2lztpss4wm6lr@mozz.bu.edu>
-References: <20200825001711.1340443-1-hskinnemoen@google.com>
- <20200825001711.1340443-9-hskinnemoen@google.com>
- <20200907194711.gqvtntqab2yt5gco@mozz.bu.edu>
+ (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
+ id 1kFNLl-00088x-UF; Mon, 07 Sep 2020 16:02:52 -0400
+Received: from [172.17.10.18] (unknown [172.17.10.18])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 6ED1E21C31;
+ Mon,  7 Sep 2020 20:02:44 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1599508964;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DPk0bO248uFw7H9Kh6cvLnYv7h9OzeFbdhJow0esSnQ=;
+ b=fjz76fbruAbtymJ5ke4rAkNEmfzchRP0yuFvGOpgpv0sVP559j5Rw5HzzXHF8K5rX/CVC8
+ nBKeAm5r3QGA7bRNiqL8a2Q+HMfB6qUmtep8xhXl0fiFrJ9SYbo2tDNwjgGbe7nXv4lQj8
+ zst9h+Pen9m+VO+6mTT+O57MGIJquq4=
+Subject: Re: [PATCH v4 1/8] hw/misc/led: Add a LED device
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200907163257.46527-1-f4bug@amsat.org>
+ <20200907163257.46527-2-f4bug@amsat.org>
+From: Luc Michel <luc.michel@greensocs.com>
+Message-ID: <451e8d25-ecb5-c3e2-64aa-8582f2f47a25@greensocs.com>
+Date: Mon, 7 Sep 2020 22:03:34 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+In-Reply-To: <20200907163257.46527-2-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200907194711.gqvtntqab2yt5gco@mozz.bu.edu>
-Received-SPF: pass client-ip=128.197.228.104; envelope-from=alxndr@bu.edu;
- helo=relay64.bu.edu
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/07 15:47:43
-X-ACL-Warn: Detected OS   = Linux 2.6.x
-X-Spam_score_int: -31
-X-Spam_score: -3.2
+Received-SPF: pass client-ip=5.135.226.135;
+ envelope-from=luc.michel@greensocs.com; helo=beetle.greensocs.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/07 16:02:46
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -38
+X-Spam_score: -3.9
 X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, HK_RANDOM_ENVFROM=0.001,
- HK_RANDOM_FROM=0.999, RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.825,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -89,689 +99,344 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, f4bug@amsat.org, qemu-devel@nongnu.org,
- kfting@nuvoton.com, qemu-arm@nongnu.org, Avi.Fishman@nuvoton.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Joaquin de Andres <me@xcancerberox.com.ar>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: agP3wkrPgywl
+X-TUID: 9KRn6V5ru4TK
 
-On 200907 1547, Alexander Bulekov wrote:
-> On 200824 1717, Havard Skinnemoen via wrote:
-> > This supports reading and writing OTP fuses and keys. Only fuse reading
-> > has been tested. Protection is not implemented.
-> > 
-> > Reviewed-by: Avi Fishman <avi.fishman@nuvoton.com>
-> > Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
-> > ---
-> >  include/hw/arm/npcm7xx.h       |   3 +
-> >  include/hw/nvram/npcm7xx_otp.h |  79 ++++++
-> >  hw/arm/npcm7xx.c               |  29 +++
-> >  hw/nvram/npcm7xx_otp.c         | 439 +++++++++++++++++++++++++++++++++
-> >  hw/nvram/meson.build           |   1 +
-> >  5 files changed, 551 insertions(+)
-> >  create mode 100644 include/hw/nvram/npcm7xx_otp.h
-> >  create mode 100644 hw/nvram/npcm7xx_otp.c
-> > 
-> > diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-> > index ba7495869d..5816a07a72 100644
-> > --- a/include/hw/arm/npcm7xx.h
-> > +++ b/include/hw/arm/npcm7xx.h
-> > @@ -20,6 +20,7 @@
-> >  #include "hw/cpu/a9mpcore.h"
-> >  #include "hw/misc/npcm7xx_clk.h"
-> >  #include "hw/misc/npcm7xx_gcr.h"
-> > +#include "hw/nvram/npcm7xx_otp.h"
-> >  #include "hw/timer/npcm7xx_timer.h"
-> >  #include "target/arm/cpu.h"
-> >  
-> > @@ -68,6 +69,8 @@ typedef struct NPCM7xxState {
-> >      NPCM7xxGCRState     gcr;
-> >      NPCM7xxCLKState     clk;
-> >      NPCM7xxTimerCtrlState tim[3];
-> > +    NPCM7xxOTPState     key_storage;
-> > +    NPCM7xxOTPState     fuse_array;
-> >  } NPCM7xxState;
-> >  
-> >  #define TYPE_NPCM7XX    "npcm7xx"
-> > diff --git a/include/hw/nvram/npcm7xx_otp.h b/include/hw/nvram/npcm7xx_otp.h
-> > new file mode 100644
-> > index 0000000000..156bbd151a
-> > --- /dev/null
-> > +++ b/include/hw/nvram/npcm7xx_otp.h
-> > @@ -0,0 +1,79 @@
-> > +/*
-> > + * Nuvoton NPCM7xx OTP (Fuse Array) Interface
-> > + *
-> > + * Copyright 2020 Google LLC
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify it
-> > + * under the terms of the GNU General Public License as published by the
-> > + * Free Software Foundation; either version 2 of the License, or
-> > + * (at your option) any later version.
-> > + *
-> > + * This program is distributed in the hope that it will be useful, but WITHOUT
-> > + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> > + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-> > + * for more details.
-> > + */
-> > +#ifndef NPCM7XX_OTP_H
-> > +#define NPCM7XX_OTP_H
-> > +
-> > +#include "exec/memory.h"
-> > +#include "hw/sysbus.h"
-> > +
-> > +/* Each OTP module holds 8192 bits of one-time programmable storage */
-> > +#define NPCM7XX_OTP_ARRAY_BITS (8192)
-> > +#define NPCM7XX_OTP_ARRAY_BYTES (NPCM7XX_OTP_ARRAY_BITS / BITS_PER_BYTE)
-> > +
-> > +/* Fuse array offsets */
-> > +#define NPCM7XX_FUSE_FUSTRAP (0)
-> > +#define NPCM7XX_FUSE_CP_FUSTRAP (12)
-> > +#define NPCM7XX_FUSE_DAC_CALIB (16)
-> > +#define NPCM7XX_FUSE_ADC_CALIB (24)
-> > +#define NPCM7XX_FUSE_DERIVATIVE (64)
-> > +#define NPCM7XX_FUSE_TEST_SIG (72)
-> > +#define NPCM7XX_FUSE_DIE_LOCATION (74)
-> > +#define NPCM7XX_FUSE_GP1 (80)
-> > +#define NPCM7XX_FUSE_GP2 (128)
-> > +
-> > +/*
-> > + * Number of registers in our device state structure. Don't change this without
-> > + * incrementing the version_id in the vmstate.
-> > + */
-> > +#define NPCM7XX_OTP_NR_REGS (0x18 / sizeof(uint32_t))
-> > +
-> > +/**
-> > + * struct NPCM7xxOTPState - Device state for one OTP module.
-> > + * @parent: System bus device.
-> > + * @mmio: Memory region through which registers are accessed.
-> > + * @regs: Register contents.
-> > + * @array: OTP storage array.
-> > + */
-> > +typedef struct NPCM7xxOTPState {
-> > +    SysBusDevice parent;
-> > +
-> > +    MemoryRegion mmio;
-> > +    uint32_t regs[NPCM7XX_OTP_NR_REGS];
-> > +    uint8_t array[NPCM7XX_OTP_ARRAY_BYTES];
-> > +} NPCM7xxOTPState;
-> > +
-> > +#define TYPE_NPCM7XX_OTP "npcm7xx-otp"
-> > +#define NPCM7XX_OTP(obj) OBJECT_CHECK(NPCM7xxOTPState, (obj), TYPE_NPCM7XX_OTP)
-> > +
-> > +#define TYPE_NPCM7XX_KEY_STORAGE "npcm7xx-key-storage"
-> > +#define TYPE_NPCM7XX_FUSE_ARRAY "npcm7xx-fuse-array"
-> > +
-> > +typedef struct NPCM7xxOTPClass NPCM7xxOTPClass;
-> > +
-> > +/**
-> > + * npcm7xx_otp_array_write - ECC encode and write data to OTP array.
-> > + * @s: OTP module.
-> > + * @data: Data to be encoded and written.
-> > + * @offset: Offset of first byte to be written in the OTP array.
-> > + * @len: Number of bytes before ECC encoding.
-> > + *
-> > + * Each nibble of data is encoded into a byte, so the number of bytes written
-> > + * to the array will be @len * 2.
-> > + */
-> > +extern void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void *data,
-> > +                                    unsigned int offset, unsigned int len);
-> > +
-> > +#endif /* NPCM7XX_OTP_H */
-> > diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-> > index 9669ac5fa0..9166002598 100644
-> > --- a/hw/arm/npcm7xx.c
-> > +++ b/hw/arm/npcm7xx.c
-> > @@ -34,6 +34,10 @@
-> >  #define NPCM7XX_MMIO_BA         (0x80000000)
-> >  #define NPCM7XX_MMIO_SZ         (0x7ffd0000)
-> >  
-> > +/* OTP key storage and fuse strap array */
-> > +#define NPCM7XX_OTP1_BA         (0xf0189000)
-> > +#define NPCM7XX_OTP2_BA         (0xf018a000)
-> > +
-> >  /* Core system modules. */
-> >  #define NPCM7XX_L2C_BA          (0xf03fc000)
-> >  #define NPCM7XX_CPUP_BA         (0xf03fe000)
-> > @@ -144,6 +148,20 @@ void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc)
-> >      arm_load_kernel(&soc->cpu[0], machine, &npcm7xx_binfo);
-> >  }
-> >  
-> > +static void npcm7xx_init_fuses(NPCM7xxState *s)
-> > +{
-> > +    NPCM7xxClass *nc = NPCM7XX_GET_CLASS(s);
-> > +    uint32_t value;
-> > +
-> > +    /*
-> > +     * The initial mask of disabled modules indicates the chip derivative (e.g.
-> > +     * NPCM750 or NPCM730).
-> > +     */
-> > +    value = tswap32(nc->disabled_modules);
-> > +    npcm7xx_otp_array_write(&s->fuse_array, &value, NPCM7XX_FUSE_DERIVATIVE,
-> > +                            sizeof(value));
-> > +}
-> > +
-> >  static qemu_irq npcm7xx_irq(NPCM7xxState *s, int n)
-> >  {
-> >      return qdev_get_gpio_in(DEVICE(&s->a9mpcore), n);
-> > @@ -164,6 +182,10 @@ static void npcm7xx_init(Object *obj)
-> >      object_property_add_alias(obj, "power-on-straps", OBJECT(&s->gcr),
-> >                                "power-on-straps");
-> >      object_initialize_child(obj, "clk", &s->clk, TYPE_NPCM7XX_CLK);
-> > +    object_initialize_child(obj, "otp1", &s->key_storage,
-> > +                            TYPE_NPCM7XX_KEY_STORAGE);
-> > +    object_initialize_child(obj, "otp2", &s->fuse_array,
-> > +                            TYPE_NPCM7XX_FUSE_ARRAY);
-> >  
-> >      for (i = 0; i < ARRAY_SIZE(s->tim); i++) {
-> >          object_initialize_child(obj, "tim[*]", &s->tim[i], TYPE_NPCM7XX_TIMER);
-> > @@ -232,6 +254,13 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-> >      sysbus_realize(SYS_BUS_DEVICE(&s->clk), &error_abort);
-> >      sysbus_mmio_map(SYS_BUS_DEVICE(&s->clk), 0, NPCM7XX_CLK_BA);
-> >  
-> > +    /* OTP key storage and fuse strap array. Cannot fail. */
-> > +    sysbus_realize(SYS_BUS_DEVICE(&s->key_storage), &error_abort);
-> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->key_storage), 0, NPCM7XX_OTP1_BA);
-> > +    sysbus_realize(SYS_BUS_DEVICE(&s->fuse_array), &error_abort);
-> > +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->fuse_array), 0, NPCM7XX_OTP2_BA);
-> > +    npcm7xx_init_fuses(s);
-> > +
-> >      /* Timer Modules (TIM). Cannot fail. */
-> >      QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_tim_addr) != ARRAY_SIZE(s->tim));
-> >      for (i = 0; i < ARRAY_SIZE(s->tim); i++) {
-> > diff --git a/hw/nvram/npcm7xx_otp.c b/hw/nvram/npcm7xx_otp.c
-> > new file mode 100644
-> > index 0000000000..ba4188ada8
-> > --- /dev/null
-> > +++ b/hw/nvram/npcm7xx_otp.c
-> > @@ -0,0 +1,439 @@
-> > +/*
-> > + * Nuvoton NPCM7xx OTP (Fuse Array) Interface
-> > + *
-> > + * Copyright 2020 Google LLC
-> > + *
-> > + * This program is free software; you can redistribute it and/or modify it
-> > + * under the terms of the GNU General Public License as published by the
-> > + * Free Software Foundation; either version 2 of the License, or
-> > + * (at your option) any later version.
-> > + *
-> > + * This program is distributed in the hope that it will be useful, but WITHOUT
-> > + * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-> > + * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-> > + * for more details.
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +
-> > +#include "hw/nvram/npcm7xx_otp.h"
-> > +#include "migration/vmstate.h"
-> > +#include "qapi/error.h"
-> > +#include "qemu/bitops.h"
-> > +#include "qemu/log.h"
-> > +#include "qemu/module.h"
-> > +#include "qemu/units.h"
-> > +
-> > +/* Each module has 4 KiB of register space. Only a fraction of it is used. */
-> > +#define NPCM7XX_OTP_REGS_SIZE (4 * KiB)
-> > +
-> > +/* 32-bit register indices. */
-> > +typedef enum NPCM7xxOTPRegister {
-> > +    NPCM7XX_OTP_FST,
-> > +    NPCM7XX_OTP_FADDR,
-> > +    NPCM7XX_OTP_FDATA,
-> > +    NPCM7XX_OTP_FCFG,
-> > +    /* Offset 0x10 is FKEYIND in OTP1, FUSTRAP in OTP2 */
-> > +    NPCM7XX_OTP_FKEYIND = 0x0010 / sizeof(uint32_t),
-> > +    NPCM7XX_OTP_FUSTRAP = 0x0010 / sizeof(uint32_t),
-> > +    NPCM7XX_OTP_FCTL,
-> > +    NPCM7XX_OTP_REGS_END,
-> > +} NPCM7xxOTPRegister;
-> > +
-> > +/* Register field definitions. */
-> > +#define FST_RIEN BIT(2)
-> > +#define FST_RDST BIT(1)
-> > +#define FST_RDY BIT(0)
-> > +#define FST_RO_MASK (FST_RDST | FST_RDY)
-> > +
-> > +#define FADDR_BYTEADDR(rv) extract32((rv), 0, 10)
-> > +#define FADDR_BITPOS(rv) extract32((rv), 10, 3)
-> > +
-> > +#define FDATA_CLEAR 0x00000001
-> > +
-> > +#define FCFG_FDIS BIT(31)
-> > +#define FCFG_FCFGLK_MASK 0x00ff0000
-> > +
-> > +#define FCTL_PROG_CMD1 0x00000001
-> > +#define FCTL_PROG_CMD2 0xbf79e5d0
-> > +#define FCTL_READ_CMD 0x00000002
-> > +
-> > +/**
-> > + * struct NPCM7xxOTPClass - OTP module class.
-> > + * @parent: System bus device class.
-> > + * @mmio_ops: MMIO register operations for this type of module.
-> > + *
-> > + * The two OTP modules (key-storage and fuse-array) have slightly different
-> > + * behavior, so we give them different MMIO register operations.
-> > + */
-> > +struct NPCM7xxOTPClass {
-> > +    SysBusDeviceClass parent;
-> > +
-> > +    const MemoryRegionOps *mmio_ops;
-> > +};
-> > +
-> > +#define NPCM7XX_OTP_CLASS(klass) \
-> > +    OBJECT_CLASS_CHECK(NPCM7xxOTPClass, (klass), TYPE_NPCM7XX_OTP)
-> > +#define NPCM7XX_OTP_GET_CLASS(obj) \
-> > +    OBJECT_GET_CLASS(NPCM7xxOTPClass, (obj), TYPE_NPCM7XX_OTP)
-> > +
-> > +static uint8_t ecc_encode_nibble(uint8_t n)
-> > +{
-> > +    uint8_t result = n;
-> > +
-> > +    result |= (((n >> 0) & 1) ^ ((n >> 1) & 1)) << 4;
-> > +    result |= (((n >> 2) & 1) ^ ((n >> 3) & 1)) << 5;
-> > +    result |= (((n >> 0) & 1) ^ ((n >> 2) & 1)) << 6;
-> > +    result |= (((n >> 1) & 1) ^ ((n >> 3) & 1)) << 7;
-> > +
-> > +    return result;
-> > +}
-> > +
-> > +void npcm7xx_otp_array_write(NPCM7xxOTPState *s, const void *data,
-> > +                             unsigned int offset, unsigned int len)
-> > +{
-> > +    const uint8_t *src = data;
-> > +    uint8_t *dst = &s->array[offset];
-> > +
-> > +    while (len-- > 0) {
-> > +        uint8_t c = *src++;
-> > +
-> > +        *dst++ = ecc_encode_nibble(extract8(c, 0, 4));
-> > +        *dst++ = ecc_encode_nibble(extract8(c, 4, 4));
-> > +    }
-> > +}
-> > +
-> > +/* Common register read handler for both OTP classes. */
-> > +static uint64_t npcm7xx_otp_read(NPCM7xxOTPState *s, NPCM7xxOTPRegister reg)
-> > +{
-> > +    uint32_t value = 0;
-> > +
-> > +    switch (reg) {
-> > +    case NPCM7XX_OTP_FST:
-> > +    case NPCM7XX_OTP_FADDR:
-> > +    case NPCM7XX_OTP_FDATA:
-> > +    case NPCM7XX_OTP_FCFG:
-> > +        value = s->regs[reg];
-> > +        break;
-> > +
-> > +    case NPCM7XX_OTP_FCTL:
-> > +        qemu_log_mask(LOG_GUEST_ERROR,
-> > +                      "%s: read from write-only FCTL register\n",
-> > +                      DEVICE(s)->canonical_path);
-> > +        break;
-> > +
-> > +    default:
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: read from invalid offset 0x%zx\n",
-> > +                      DEVICE(s)->canonical_path, reg * sizeof(uint32_t));
-> > +        break;
-> > +    }
-> > +
-> > +    return value;
-> > +}
-> > +
-> > +/* Read a byte from the OTP array into the data register. */
-> > +static void npcm7xx_otp_read_array(NPCM7xxOTPState *s)
-> > +{
-> > +    uint32_t faddr = s->regs[NPCM7XX_OTP_FADDR];
-> > +
-> > +    s->regs[NPCM7XX_OTP_FDATA] = s->array[FADDR_BYTEADDR(faddr)];
-> > +    s->regs[NPCM7XX_OTP_FST] |= FST_RDST | FST_RDY;
-> > +}
-> > +
-> > +/* Program a byte from the data register into the OTP array. */
-> > +static void npcm7xx_otp_program_array(NPCM7xxOTPState *s)
-> > +{
-> > +    uint32_t faddr = s->regs[NPCM7XX_OTP_FADDR];
-> > +
-> > +    /* Bits can only go 0->1, never 1->0. */
-> > +    s->array[FADDR_BYTEADDR(faddr)] |= (1U << FADDR_BITPOS(faddr));
-> > +    s->regs[NPCM7XX_OTP_FST] |= FST_RDST | FST_RDY;
-> > +}
-> > +
-> > +/* Compute the next value of the FCFG register. */
-> > +static uint32_t npcm7xx_otp_compute_fcfg(uint32_t cur_value, uint32_t new_value)
-> > +{
-> > +    uint32_t lock_mask;
-> > +    uint32_t value;
-> > +
-> > +    /*
-> > +     * FCFGLK holds sticky bits 16..23, indicating which bits in FPRGLK (8..15)
-> > +     * and FRDLK (0..7) that are read-only.
-> > +     */
-> > +    lock_mask = (cur_value & FCFG_FCFGLK_MASK) >> 8;
-> > +    lock_mask |= lock_mask >> 8;
-> > +    /* FDIS and FCFGLK bits are sticky (write 1 to set; can't clear). */
-> > +    value = cur_value & (FCFG_FDIS | FCFG_FCFGLK_MASK);
-> > +    /* Preserve read-only bits in FPRGLK and FRDLK */
-> > +    value |= cur_value & lock_mask;
-> > +    /* Set all bits that aren't read-only. */
-> > +    value |= new_value & ~lock_mask;
-> > +
-> > +    return value;
-> > +}
-> > +
-> > +/* Common register write handler for both OTP classes. */
-> > +static void npcm7xx_otp_write(NPCM7xxOTPState *s, NPCM7xxOTPRegister reg,
-> > +                              uint32_t value)
-> > +{
-> > +    switch (reg) {
-> > +    case NPCM7XX_OTP_FST:
-> > +        /* RDST is cleared by writing 1 to it. */
-> > +        if (value & FST_RDST) {
-> > +            s->regs[NPCM7XX_OTP_FST] &= ~FST_RDST;
-> > +        }
-> > +        /* Preserve read-only and write-one-to-clear bits */
-> > +        value &= ~FST_RO_MASK;
-> > +        value |= s->regs[NPCM7XX_OTP_FST] & FST_RO_MASK;
-> > +        break;
-> > +
-> > +    case NPCM7XX_OTP_FADDR:
-> > +        break;
-> > +
-> > +    case NPCM7XX_OTP_FDATA:
-> > +        /*
-> > +         * This register is cleared by writing a magic value to it; no other
-> > +         * values can be written.
-> > +         */
-> > +        if (value == FDATA_CLEAR) {
-> > +            value = 0;
-> > +        } else {
-> > +            value = s->regs[NPCM7XX_OTP_FDATA];
-> > +        }
-> > +        break;
-> > +
-> > +    case NPCM7XX_OTP_FCFG:
-> > +        value = npcm7xx_otp_compute_fcfg(s->regs[NPCM7XX_OTP_FCFG], value);
-> > +        break;
-> > +
-> > +    case NPCM7XX_OTP_FCTL:
-> > +        switch (value) {
-> > +        case FCTL_READ_CMD:
-> > +            npcm7xx_otp_read_array(s);
-> > +            break;
-> > +
-> > +        case FCTL_PROG_CMD1:
-> > +            /*
-> > +             * Programming requires writing two separate magic values to this
-> > +             * register; this is the first one. Just store it so it can be
-> > +             * verified later when the second magic value is received.
-> > +             */
-> > +            break;
-> > +
-> > +        case FCTL_PROG_CMD2:
-> > +            /*
-> > +             * Only initiate programming if we received the first half of the
-> > +             * command immediately before this one.
-> > +             */
-> > +            if (s->regs[NPCM7XX_OTP_FCTL] == FCTL_PROG_CMD1) {
-> > +                npcm7xx_otp_program_array(s);
-> > +            }
-> > +            break;
-> > +
-> > +        default:
-> > +            qemu_log_mask(LOG_GUEST_ERROR,
-> > +                          "%s: unrecognized FCNTL value 0x%" PRIx32 "\n",
-> > +                          DEVICE(s)->canonical_path, value);
-> > +            break;
-> > +        }
-> > +        if (value != FCTL_PROG_CMD1) {
-> > +            value = 0;
-> > +        }
-> > +        break;
-> > +
-> > +    default:
-> > +        qemu_log_mask(LOG_GUEST_ERROR, "%s: write to invalid offset 0x%zx\n",
-> > +                      DEVICE(s)->canonical_path, reg * sizeof(uint32_t));
-> > +        return;
-> > +    }
-> > +
-> > +    s->regs[reg] = value;
-> > +}
-> > +
-> > +/* Register read handler specific to the fuse array OTP module. */
-> > +static uint64_t npcm7xx_fuse_array_read(void *opaque, hwaddr addr,
-> > +                                        unsigned int size)
-> > +{
-> > +    NPCM7xxOTPRegister reg = addr / sizeof(uint32_t);
-> > +    NPCM7xxOTPState *s = opaque;
-> > +    uint32_t value;
-> > +
-> > +    /*
-> > +     * Only the Fuse Strap register needs special handling; all other registers
-> > +     * work the same way for both kinds of OTP modules.
-> > +     */
-> > +    if (reg != NPCM7XX_OTP_FUSTRAP) {
-> > +        value = npcm7xx_otp_read(s, reg);
-> > +    } else {
-> > +        /* FUSTRAP is stored as three copies in the OTP array. */
-> > +        uint32_t fustrap[3];
-> > +
-> > +        memcpy(fustrap, &s->array[0], sizeof(fustrap));
-> > +
-> > +        /* Determine value by a majority vote on each bit. */
-> > +        value = (fustrap[0] & fustrap[1]) | (fustrap[0] & fustrap[2]) |
-> > +                (fustrap[1] & fustrap[2]);
-> > +    }
-> > +
-> > +    return value;
-> > +}
-> > +
-> > +/* Register write handler specific to the fuse array OTP module. */
-> > +static void npcm7xx_fuse_array_write(void *opaque, hwaddr addr, uint64_t v,
-> > +                                     unsigned int size)
-> > +{
-> > +    NPCM7xxOTPRegister reg = addr / sizeof(uint32_t);
-> > +    NPCM7xxOTPState *s = opaque;
-> > +
-> > +    /*
-> > +     * The Fuse Strap register is read-only. Other registers are handled by
-> > +     * common code.
-> > +     */
-> > +    if (reg != NPCM7XX_OTP_FUSTRAP) {
-> > +        npcm7xx_otp_write(s, reg, v);
-> > +    }
-> > +}
-> > +
-> > +static const MemoryRegionOps npcm7xx_fuse_array_ops = {
-> > +    .read       = npcm7xx_fuse_array_read,
-> > +    .write      = npcm7xx_fuse_array_write,
-> > +    .endianness = DEVICE_LITTLE_ENDIAN,
-> > +    .valid      = {
-> > +        .min_access_size        = 4,
-> > +        .max_access_size        = 4,
-> > +        .unaligned              = false,
-> > +    },
-> > +};
-> > +
-> > +/* Register read handler specific to the key storage OTP module. */
-> > +static uint64_t npcm7xx_key_storage_read(void *opaque, hwaddr addr,
-> > +                                         unsigned int size)
-> > +{
-> > +    NPCM7xxOTPRegister reg = addr / sizeof(uint32_t);
-> > +    NPCM7xxOTPState *s = opaque;
-> > +
-> > +    /*
-> > +     * Only the Fuse Key Index register needs special handling; all other
-> > +     * registers work the same way for both kinds of OTP modules.
-> > +     */
-> > +    if (reg != NPCM7XX_OTP_FKEYIND) {
-> > +        return npcm7xx_otp_read(s, reg);
-> > +    }
-> > +
-> > +    qemu_log_mask(LOG_UNIMP, "%s: FKEYIND is not implemented\n", __func__);
-> > +
-> > +    return s->regs[NPCM7XX_OTP_FKEYIND];
-> > +}
-> > +
-> > +/* Register write handler specific to the key storage OTP module. */
-> > +static void npcm7xx_key_storage_write(void *opaque, hwaddr addr, uint64_t v,
-> > +                                      unsigned int size)
-> > +{
-> > +    NPCM7xxOTPRegister reg = addr / sizeof(uint32_t);
-> > +    NPCM7xxOTPState *s = opaque;
-> > +
-> > +    /*
-> > +     * Only the Fuse Key Index register needs special handling; all other
-> > +     * registers work the same way for both kinds of OTP modules.
-> > +     */
-> > +    if (reg != NPCM7XX_OTP_FKEYIND) {
-> > +        npcm7xx_otp_write(s, reg, v);
-> > +        return;
-> > +    }
-> > +
-> > +    qemu_log_mask(LOG_UNIMP, "%s: FKEYIND is not implemented\n", __func__);
-> > +
-> > +    s->regs[NPCM7XX_OTP_FKEYIND] = v;
-> > +}
-> > +
-> > +static const MemoryRegionOps npcm7xx_key_storage_ops = {
-> > +    .read       = npcm7xx_key_storage_read,
-> > +    .write      = npcm7xx_key_storage_write,
-> > +    .endianness = DEVICE_LITTLE_ENDIAN,
-> > +    .valid      = {
-> > +        .min_access_size        = 4,
-> > +        .max_access_size        = 4,
-> > +        .unaligned              = false,
-> > +    },
-> > +};
-> > +
-> > +static void npcm7xx_otp_enter_reset(Object *obj, ResetType type)
-> > +{
-> > +    NPCM7xxOTPState *s = NPCM7XX_OTP(obj);
-> > +
-> > +    memset(s->regs, 0, sizeof(s->regs));
-> > +
-> > +    s->regs[NPCM7XX_OTP_FST] = 0x00000001;
-> > +    s->regs[NPCM7XX_OTP_FCFG] = 0x20000000;
-> > +}
-> > +
-> > +static void npcm7xx_otp_realize(DeviceState *dev, Error **errp)
-> > +{
-> > +    NPCM7xxOTPClass *oc = NPCM7XX_OTP_GET_CLASS(dev);
-> > +    NPCM7xxOTPState *s = NPCM7XX_OTP(dev);
-> > +    SysBusDevice *sbd = &s->parent;
-> > +
-> > +    memset(s->array, 0, sizeof(s->array));
-> > +
-> > +    memory_region_init_io(&s->mmio, OBJECT(s), oc->mmio_ops, s, "regs",
-> > +                          NPCM7XX_OTP_REGS_SIZE);
-> > +    sysbus_init_mmio(sbd, &s->mmio);
-> > +}
-> > +
-> > +static const VMStateDescription vmstate_npcm7xx_otp = {
-> > +    .name = "npcm7xx-otp",
-> > +    .version_id = 0,
-> > +    .minimum_version_id = 0,
-> > +    .fields = (VMStateField[]) {
-> > +        VMSTATE_UINT32_ARRAY(regs, NPCM7xxOTPState, NPCM7XX_OTP_NR_REGS),
-> > +        VMSTATE_UINT8_ARRAY(array, NPCM7xxOTPState, NPCM7XX_OTP_ARRAY_BYTES),
-> > +        VMSTATE_END_OF_LIST(),
-> > +    },
-> > +};
-> > +
-> > +static void npcm7xx_otp_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    ResettableClass *rc = RESETTABLE_CLASS(klass);
-> > +    DeviceClass *dc = DEVICE_CLASS(klass);
-> > +
-> > +    QEMU_BUILD_BUG_ON(NPCM7XX_OTP_REGS_END > NPCM7XX_OTP_NR_REGS);
-> > +
-> > +    dc->realize = npcm7xx_otp_realize;
-> > +    dc->vmsd = &vmstate_npcm7xx_otp;
-> > +    rc->phases.enter = npcm7xx_otp_enter_reset;
-> > +}
-> > +
-> > +static void npcm7xx_key_storage_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    NPCM7xxOTPClass *oc = NPCM7XX_OTP_CLASS(klass);
-> > +
-> > +    oc->mmio_ops = &npcm7xx_key_storage_ops;
-> > +}
-> 
-> Hello,
-> With this series applied, when I build with --enable-sanitizers and run
-> ./qemu-system-arm:
-> 
-> ==373753==ERROR: AddressSanitizer: heap-buffer-overflow on address 0x61000000b400 at pc 0x557496abbefc bp 0x7ffdd5851210 sp 0x7ffdd5851208
-> WRITE of size 8 at 0x61000000b400 thread T0
->     #0 0x557496abbefb in npcm7xx_key_storage_class_init /../hw/nvram/npcm7xx_otp.c:410:18
->     #1 0x5574998a8780 in type_initialize /../qom/object.c:362:9
->     #2 0x5574998a9bef in object_class_foreach_tramp /../qom/object.c:1030:5
->     #3 0x7fc26b427b2f in g_hash_table_foreach (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x3eb2f)
->     #4 0x5574998a9a41 in object_class_foreach /../qom/object.c:1052:5
->     #5 0x5574998ab28a in object_class_get_list /../qom/object.c:1109:5
->     #6 0x557498e6f8e1 in select_machine /../softmmu/vl.c:2438:24
->     #7 0x557498e5a921 in qemu_init /../softmmu/vl.c:3842:21
->     #8 0x557495b181d7 in main /../softmmu/main.c:49:5
->     #9 0x7fc269e7dcc9 in __libc_start_main csu/../csu/libc-start.c:308:16
->     #10 0x557495a6d9b9 in _start (/qemu-system-arm+0x35959b9)
-> 
-> 0x61000000b400 is located 0 bytes to the right of 192-byte region [0x61000000b340,0x61000000b400)
-> allocated by thread T0 here:
->     #0 0x557495ae6272 in calloc (/qemu-system-arm+0x360e272)
->     #1 0x7fc26b43f210 in g_malloc0 (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x56210)
->     #2 0x5574998a9bef in object_class_foreach_tramp /../qom/object.c:1030:5
->     #3 0x7fc26b427b2f in g_hash_table_foreach (/usr/lib/x86_64-linux-gnu/libglib-2.0.so.0+0x3eb2f)
-> 
-> SUMMARY: AddressSanitizer: heap-buffer-overflow /../hw/nvram/npcm7xx_otp.c:410:18 in npcm7xx_key_storage_class_init
-> 
-> -Alex
-> 
-> > +
-> > +static void npcm7xx_fuse_array_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    NPCM7xxOTPClass *oc = NPCM7XX_OTP_CLASS(klass);
-> > +
-> > +    oc->mmio_ops = &npcm7xx_fuse_array_ops;
-> > +}
-> > +
-> > +static const TypeInfo npcm7xx_otp_types[] = {
-> > +    {
-> > +        .name = TYPE_NPCM7XX_OTP,
-> > +        .parent = TYPE_SYS_BUS_DEVICE,
-> > +        .instance_size = sizeof(NPCM7xxOTPState),
-Adding this fixes it for me:
-             .class_size = sizeof(NPCM7xxOTPClass),
+Hi Philippe,
 
--Alex
-> > +        .class_init = npcm7xx_otp_class_init,
-> > +        .abstract = true,
-> > +    },
-> > +    {
-> > +        .name = TYPE_NPCM7XX_KEY_STORAGE,
-> > +        .parent = TYPE_NPCM7XX_OTP,
-> > +        .class_init = npcm7xx_key_storage_class_init,
-> > +    },
-> > +    {
-> > +        .name = TYPE_NPCM7XX_FUSE_ARRAY,
-> > +        .parent = TYPE_NPCM7XX_OTP,
-> > +        .class_init = npcm7xx_fuse_array_class_init,
-> > +    },
-> > +};
-> > +DEFINE_TYPES(npcm7xx_otp_types);
-> > diff --git a/hw/nvram/meson.build b/hw/nvram/meson.build
-> > index ba214558ac..1f2ed013b2 100644
-> > --- a/hw/nvram/meson.build
-> > +++ b/hw/nvram/meson.build
-> > @@ -4,6 +4,7 @@ softmmu_ss.add(when: 'CONFIG_DS1225Y', if_true: files('ds1225y.c'))
-> >  softmmu_ss.add(when: 'CONFIG_NMC93XX_EEPROM', if_true: files('eeprom93xx.c'))
-> >  softmmu_ss.add(when: 'CONFIG_AT24C', if_true: files('eeprom_at24c.c'))
-> >  softmmu_ss.add(when: 'CONFIG_MAC_NVRAM', if_true: files('mac_nvram.c'))
-> > +softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_otp.c'))
-> >  softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_nvm.c'))
-> >  
-> >  specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_nvram.c'))
-> > -- 
-> > 2.28.0.297.g1956fa8f8d-goog
-> > 
-> > 
+On 9/7/20 6:32 PM, Philippe Mathieu-Daudé wrote:
+> Add a LED device which can be connected to a GPIO output.
+> They can also be dimmed with PWM devices. For now we do
+> not implement the dimmed mode, but in preparation of a
+> future implementation, we start using the LED intensity.
+> 
+> LEDs are limited to a fixed set of colors.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   include/hw/misc/led.h |  84 +++++++++++++++++++++++++
+>   hw/misc/led.c         | 142 ++++++++++++++++++++++++++++++++++++++++++
+>   MAINTAINERS           |   6 ++
+>   hw/misc/Kconfig       |   3 +
+>   hw/misc/meson.build   |   1 +
+>   hw/misc/trace-events  |   3 +
+>   6 files changed, 239 insertions(+)
+>   create mode 100644 include/hw/misc/led.h
+>   create mode 100644 hw/misc/led.c
+> 
+> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+> new file mode 100644
+> index 00000000000..1aaabbebafc
+> --- /dev/null
+> +++ b/include/hw/misc/led.h
+> @@ -0,0 +1,84 @@
+> +/*
+> + * QEMU single LED device
+> + *
+> + * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +#ifndef HW_MISC_LED_H
+> +#define HW_MISC_LED_H
+> +
+> +#include "hw/qdev-core.h"
+> +
+> +#define TYPE_LED "led"
+> +#define LED(obj) OBJECT_CHECK(LEDState, (obj), TYPE_LED)
+> +
+> +/**
+> + * LEDColor: Color of a LED
+> + *
+> + * This set is restricted to physically available LED colors.
+> + *
+> + * LED colors from 'Table 1. Product performance of LUXEON Rebel Color
+> + * Line' of the 'DS68 LUXEON Rebel Color Line' datasheet available at:
+> + * https://www.lumileds.com/products/color-leds/luxeon-rebel-color/
+> + */
+> +typedef enum {          /* Coarse wavelength range */
+> +    LED_COLOR_VIOLET,   /* 425 nm */
+> +    LED_COLOR_BLUE,     /* 475 nm */
+> +    LED_COLOR_CYAN,     /* 500 nm */
+> +    LED_COLOR_GREEN,    /* 535 nm */
+> +    LED_COLOR_AMBER,    /* 590 nm */
+> +    LED_COLOR_ORANGE,   /* 615 nm */
+> +    LED_COLOR_RED,      /* 630 nm */
+> +} LEDColor;
+> +
+> +typedef struct LEDState {
+> +    /* Private */
+> +    DeviceState parent_obj;
+> +    /* Public */
+> +
+> +    uint8_t intensity_percent;
+> +
+> +    /* Properties */
+> +    char *description;
+> +    char *color;
+> +} LEDState;
+> +
+> +/**
+> + * led_set_intensity: set the intensity of a LED device
+> + * @s: the LED object
+> + * @intensity: intensity as percentage in range 0 to 100.
+@intensity_percent
+
+> + */
+> +void led_set_intensity(LEDState *s, unsigned intensity_percent);
+> +
+> +/**
+> + * led_get_intensity:
+> + * @s: the LED object
+> + *
+> + * Returns: The LED intensity as percentage in range 0 to 100.
+> + */
+> +unsigned led_get_intensity(LEDState *s);
+> +
+> +/**
+> + * led_set_intensity: set the state of a LED device
+led_set_state
+
+> + * @s: the LED object
+> + * @is_on: boolean indicating whether the LED is emitting
+@is_emitting
+
+> + *
+> + * This utility is meant for LED connected to GPIO.
+> + */
+> +void led_set_state(LEDState *s, bool is_emitting);
+> +
+> +/**
+> + * led_create_simple: Create and realize a LED device
+> + * @parent: the parent object
+@parentobj
+
+> + * @color: color of the LED
+> + * @description: description of the LED (optional)
+> + *
+> + * Create the device state structure, initialize it, and
+> + * drop the reference to it (the device is realized).
+> + */
+> +LEDState *led_create_simple(Object *parentobj,
+> +                            LEDColor color,
+> +                            const char *description);
+> +
+> +#endif /* HW_MISC_LED_H */
+> diff --git a/hw/misc/led.c b/hw/misc/led.c
+> new file mode 100644
+> index 00000000000..f2140739b68
+> --- /dev/null
+> +++ b/hw/misc/led.c
+> @@ -0,0 +1,142 @@
+> +/*
+> + * QEMU single LED device
+> + *
+> + * Copyright (C) 2020 Philippe Mathieu-Daudé <f4bug@amsat.org>
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "migration/vmstate.h"
+> +#include "hw/qdev-properties.h"
+> +#include "hw/misc/led.h"
+> +#include "trace.h"
+> +
+> +#define LED_INTENSITY_PERCENT_MAX   100
+> +
+> +static const char *led_color_name[] = {
+> +    [LED_COLOR_VIOLET]  = "violet",
+> +    [LED_COLOR_BLUE]    = "blue",
+> +    [LED_COLOR_CYAN]    = "cyan",
+> +    [LED_COLOR_GREEN]   = "green",
+> +    [LED_COLOR_AMBER]   = "amber",
+> +    [LED_COLOR_ORANGE]  = "orange",
+> +    [LED_COLOR_RED]     = "red",
+> +};
+> +
+> +static bool led_color_name_is_valid(const char *color_name)
+> +{
+> +    for (size_t i = 0; i < ARRAY_SIZE(led_color_name); i++) {
+> +        if (led_color_name[i] && strcmp(color_name, led_color_name[i]) == 0) {
+
+Why are you checking led_color_name[i] here?
+
+Otherwise, seems good to me.
+
+Reviewed-by: Luc Michel <luc.michel@greensocs.com>
+
+> +            return true;
+> +        }
+> +    }
+> +    return false;
+> +}
+> +
+> +void led_set_intensity(LEDState *s, unsigned intensity_percent)
+> +{
+> +    if (intensity_percent > LED_INTENSITY_PERCENT_MAX) {
+> +        intensity_percent = LED_INTENSITY_PERCENT_MAX;
+> +    }
+> +    trace_led_set_intensity(s->description, s->color, intensity_percent);
+> +    s->intensity_percent = intensity_percent;
+> +}
+> +
+> +unsigned led_get_intensity(LEDState *s)
+> +{
+> +    return s->intensity_percent;
+> +}
+> +
+> +void led_set_state(LEDState *s, bool is_emitting)
+> +{
+> +    led_set_intensity(s, is_emitting ? LED_INTENSITY_PERCENT_MAX : 0);
+> +}
+> +
+> +static void led_reset(DeviceState *dev)
+> +{
+> +    LEDState *s = LED(dev);
+> +
+> +    led_set_state(s, false);
+> +}
+> +
+> +static const VMStateDescription vmstate_led = {
+> +    .name = TYPE_LED,
+> +    .version_id = 1,
+> +    .minimum_version_id = 1,
+> +    .fields = (VMStateField[]) {
+> +        VMSTATE_UINT8(intensity_percent, LEDState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void led_realize(DeviceState *dev, Error **errp)
+> +{
+> +    LEDState *s = LED(dev);
+> +
+> +    if (s->color == NULL) {
+> +        error_setg(errp, "property 'color' not specified");
+> +        return;
+> +    } else if (!led_color_name_is_valid(s->color)) {
+> +        error_setg(errp, "property 'color' invalid or not supported");
+> +        return;
+> +    }
+> +    if (s->description == NULL) {
+> +        s->description = g_strdup("n/a");
+> +    }
+> +}
+> +
+> +static Property led_properties[] = {
+> +    DEFINE_PROP_STRING("color", LEDState, color),
+> +    DEFINE_PROP_STRING("description", LEDState, description),
+> +    DEFINE_PROP_END_OF_LIST(),
+> +};
+> +
+> +static void led_class_init(ObjectClass *klass, void *data)
+> +{
+> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+> +    dc->desc = "LED";
+> +    dc->vmsd = &vmstate_led;
+> +    dc->reset = led_reset;
+> +    dc->realize = led_realize;
+> +    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
+> +    device_class_set_props(dc, led_properties);
+> +}
+> +
+> +static const TypeInfo led_info = {
+> +    .name = TYPE_LED,
+> +    .parent = TYPE_DEVICE,
+> +    .instance_size = sizeof(LEDState),
+> +    .class_init = led_class_init
+> +};
+> +
+> +static void led_register_types(void)
+> +{
+> +    type_register_static(&led_info);
+> +}
+> +
+> +type_init(led_register_types)
+> +
+> +LEDState *led_create_simple(Object *parentobj,
+> +                            LEDColor color,
+> +                            const char *description)
+> +{
+> +    g_autofree char *name = NULL;
+> +    DeviceState *dev;
+> +
+> +    dev = qdev_new(TYPE_LED);
+> +    qdev_prop_set_string(dev, "color", led_color_name[color]);
+> +    if (!description) {
+> +        static unsigned undescribed_led_id;
+> +        name = g_strdup_printf("undescribed-led-#%u", undescribed_led_id++);
+> +    } else {
+> +        qdev_prop_set_string(dev, "description", description);
+> +        name = g_ascii_strdown(description, -1);
+> +        name = g_strdelimit(name, " #", '-');
+> +    }
+> +    object_property_add_child(parentobj, name, OBJECT(dev));
+> +    qdev_realize_and_unref(dev, NULL, &error_fatal);
+> +
+> +    return LED(dev);
+> +}
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index b233da2a737..d040846b868 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1951,6 +1951,12 @@ F: docs/specs/vmgenid.txt
+>   F: tests/qtest/vmgenid-test.c
+>   F: stubs/vmgenid.c
+>   
+> +LED
+> +M: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> +S: Maintained
+> +F: include/hw/misc/led.h
+> +F: hw/misc/led.c
+> +
+>   Unimplemented device
+>   M: Peter Maydell <peter.maydell@linaro.org>
+>   R: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index 92c397ca07a..5c151fa3a83 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -126,6 +126,9 @@ config AUX
+>   config UNIMP
+>       bool
+>   
+> +config LED
+> +    bool
+> +
+>   config MAC_VIA
+>       bool
+>       select MOS6522
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index e1576b81cf9..26f6dd037dc 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -11,6 +11,7 @@ softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
+>   softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
+>   softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+>   softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
+> +softmmu_ss.add(when: 'CONFIG_LED', if_true: files('led.c'))
+>   
+>   # ARM devices
+>   softmmu_ss.add(when: 'CONFIG_PL310', if_true: files('arm_l2x0.c'))
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index 066752aa900..76c9ddb54fe 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -214,6 +214,9 @@ via1_adb_poll(uint8_t data, const char *vadbint, int status, int index, int size
+>   grlib_ahb_pnp_read(uint64_t addr, uint32_t value) "AHB PnP read addr:0x%03"PRIx64" data:0x%08x"
+>   grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx64" data:0x%08x"
+>   
+> +# led.c
+> +led_set_intensity(const char *color, const char *desc, uint8_t intensity_percent) "LED desc:'%s' color:%s intensity: %u%%"
+> +
+>   # pca9552.c
+>   pca955x_gpio_status(const char *description, const char *buf) "%s GPIOs 0-15 [%s]"
+>   pca955x_gpio_change(const char *description, unsigned id, unsigned prev_state, unsigned current_state) "%s GPIO id:%u status: %u -> %u"
+> 

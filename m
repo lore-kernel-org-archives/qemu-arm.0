@@ -1,110 +1,118 @@
-Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3918348lfc;
-        Mon, 7 Sep 2020 10:28:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz5A7cPp8/vTvHgnh4+VoGw7LSQtuch030AvHKrirE0KwjAc5JjCKbTScQuRbE3moNSu+gm
-X-Received: by 2002:a25:bcc4:: with SMTP id l4mr9465525ybm.120.1599499717502;
-        Mon, 07 Sep 2020 10:28:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599499717; cv=none;
+Received: by 2002:a19:ad09:0:0:0:0:0 with SMTP id t9csp3935768lfc;
+        Mon, 7 Sep 2020 10:59:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0igtk838U/LBQfdkic88EA9RR9SbOzne1gfis9foqDHgcmU/7ZH1fDqO6EjlWUMvxTzbT
+X-Received: by 2002:a25:3416:: with SMTP id b22mr25764771yba.361.1599501575734;
+        Mon, 07 Sep 2020 10:59:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599501575; cv=none;
         d=google.com; s=arc-20160816;
-        b=uxmuKm6YtDDqWPeALBT5Go60XH5Zxh5PumHFh6MC9E5+dog4m67QKY8JQMLI6FV3OT
-         nS8glLbuLI/uBqBxQatT10zumoYzJFvdUzaPVw6Ntuw3yMu0WMUH7b735hst67bYI6IZ
-         RMn7DrVxxoBJ9jwc3sWTptT4K0iYrjA9pb6UuFDc6rDi/CodCOFNebwcUOOhwrtr8HnW
-         Y7lKnENsmiezdDbBTbI/EM19QhJMsRKlNnYlgsa5enF7Q1xzqKT7JQE4uBOlzVcPjysX
-         NkbSeFNsnhN2e85R8xW3KoGJmZujYBtRYe9L+i8VrTxVxABpXIdA0Cy1MwtU3ncoUQG9
-         RPtw==
+        b=MQB3imKLESu+LRlk11SPZEerfeFpWWwq0P3Z9JmhcT73wkVRMpyYgS6ysilQbpg6Vp
+         //5cJkyoMnbmYi0Oh40WA82HljGpjnmTp8KVfPMTFtGEeY4GCoYA/OzC+BOhG/9dhS3l
+         KeShQN9sAEKAhBIf/kJI+mR64htisW6CJZjUGBj53mSh8nGpwpquxmkbGltsAWIqVuuv
+         c+2/imUtmYCtPZ9Ib+vhOlGFK3SxFkd+k7jVXoE/yiKtUMYYmIw+o3Hgd/BQIfBWYmkM
+         w8dPdD/8OGrbDgYWZw3NgFiYy49+MoyOytT/Y2pwBze+vQheG538vmEXzk9+jEoRz5fd
+         +Jqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-disposition:mime-version:references:message-id:subject:to
-         :from:date:dkim-signature;
-        bh=yQpxWJo6HMty7kK9sWL6SsmMoyOUcPaxRFTi1QGQOgM=;
-        b=UwlxHAE0S2wRf0A+pRX7o3MdA9818aDaIqTewpN+KBNqy7P2eiSCCZqSktjQ+m6VBE
-         WZPIEkIqPA+VgYKE+cjyNUsfy6hhRNcMSv7ByVi2rjovm7kBgR2AX3wnkKCExOi1vg5O
-         +1Gz3J0GZQriH3cGfm+YidH1SHHFKaa+gR+ucwy9GPNieSUiaKheFbCFy4oiw7cqdFy9
-         exkvnYVVciFanq9WAdOmV7dl8zDIJppbcT5uWI/M1V6pHtg0NgrKlP622qEhcInnpnVC
-         eBAcMCP3T3Wk82RowvTui0DkTRRFJp27Rm4oSU/xr40WD90Y3+msaOEZAjw/lTvPDHia
-         4w7w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=j0UWUFPjLM4MnSQ8H+/sP1y/6evos5PJniyN7PnSmZE=;
+        b=dsm37xfqY+UI9B4lzK6Ne+vvMg+/rFrG/nk9+LwqipftfW8iGl8/FAJUN/75MpX9sl
+         4xzWPWkmwjOBumTGjToIjCSLfv1PhXbV32Tvh0MGOZZpkHu57uDHDJAu0CZRWcD2sicC
+         o55soNDLqpN2a6Gbj4Jtd1iJ5fHwN2YDQEiprLWik3Qn1p59bv8//fwNYtvzZdxQXPxB
+         I1L/x33Z4KtC1P7wD5bG4t0+hgboGMzRCMIJwBTa5oRC5sO6eBN0DoM2fJLKyjycyrJF
+         oe2XLrKqw6SPIRb1Kyn026Kq2V6ld5hz/KyIebLpKi33TuTZGiJ6faQd5A2H5bUAiamS
+         V3Bw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=p6fWqe11;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=pass header.i=@google.com header.s=20161025 header.b=B2qr5LfJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14si15022236ybg.476.2020.09.07.10.28.37
+        by mx.google.com with ESMTPS id u11si4343285ybc.403.2020.09.07.10.59.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Sep 2020 10:28:37 -0700 (PDT)
+        Mon, 07 Sep 2020 10:59:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=p6fWqe11;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33226 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=B2qr5LfJ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:40850 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFKwW-0007Qy-SY
-	for alex.bennee@linaro.org; Mon, 07 Sep 2020 13:28:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58638)
+	id 1kFLQV-0001Kt-4x
+	for alex.bennee@linaro.org; Mon, 07 Sep 2020 13:59:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37048)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kFKvM-0006XK-PM
- for qemu-devel@nongnu.org; Mon, 07 Sep 2020 13:27:24 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:42277)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1kFLPt-0000u8-Nx
+ for qemu-devel@nongnu.org; Mon, 07 Sep 2020 13:58:57 -0400
+Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44]:46823)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <leif@nuviainc.com>) id 1kFKvK-00063e-Im
- for qemu-devel@nongnu.org; Mon, 07 Sep 2020 13:27:24 -0400
-Received: by mail-wr1-x442.google.com with SMTP id c18so16510858wrm.9
- for <qemu-devel@nongnu.org>; Mon, 07 Sep 2020 10:27:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to:user-agent;
- bh=yQpxWJo6HMty7kK9sWL6SsmMoyOUcPaxRFTi1QGQOgM=;
- b=p6fWqe1160ZCygq9NAkQvIg+oGQQbj5RAZxEmnVYHnLiUWa28+gkAN/p1HVbwyP47E
- qHoUMD0KwDlEVqE+lAQgh5Y4op2kPvpVUsTZQxZ5bVc4RaaddtwjLyQ53SUrNG6aWS0o
- qgaA7w3kdkKQahH1FHSiAzZwkZAa5XCmAde0zPfyp389uMDM07jhxn46/6gKKVg+BBJp
- gyg8TVWFWNbHPxW8cymz24qKF5zbYBv/WgLMDmKB0gA4Q2haF1uKfwgQTs1d5YtzUM/9
- W3dM5V0mEe5AtpfvgbOHmnTMcff6Can+B8WuBKl/ibvj+JcM1wiF1lwnd67GgMR/SuUR
- xVNg==
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1kFLPr-0001WM-LG
+ for qemu-devel@nongnu.org; Mon, 07 Sep 2020 13:58:57 -0400
+Received: by mail-vk1-xa44.google.com with SMTP id d2so978352vkd.13
+ for <qemu-devel@nongnu.org>; Mon, 07 Sep 2020 10:58:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=j0UWUFPjLM4MnSQ8H+/sP1y/6evos5PJniyN7PnSmZE=;
+ b=B2qr5LfJw22k/9xQLMxCwVV7hq2QWicDtT04aJ7DdxF3auIPvZHSy/Xlno3QEFAeQO
+ dTstwj/bC+u0I78Q4hpQHtOgTJxYaD1bWXCGejqUAxmYMMeXJloCRkv9CWykzOXwJ6Ps
+ 1U+pERQbA7dyj0M8ZQsdh+URoHoZ506kdHG/oVW5HlBWYu5Hi6slUYbkFl5Xa/R7EwCO
+ c6Ceahe6zDJIQDpqwKwm1oqacxtjj2QAm0e30PW/czXYomg7tcIM4c9e8eGHlwf8trhE
+ hW1GMWlUwh61cp4cZTODKXimHeVhnFvKNiTAyJz1XBqWtcsO4UIez499qL0TpmQ9qOzQ
+ reow==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to:user-agent;
- bh=yQpxWJo6HMty7kK9sWL6SsmMoyOUcPaxRFTi1QGQOgM=;
- b=c9hHvbrSgBwqtqpQnLhKXu62PVJC5oaQmOfSDTUqs5mE0SHZbD5ZMAN1LDG1jMc8M2
- CulzMKpjYoFKNbRhzX1xc25qyq0+Sq7shMbxGJhg3IZD0euHSBPE1xBKDFQwu0m7ZF8X
- l9w92baf/s9+xssTElY3yxziQK8GQyGXzjQDU5+U2A9Psjg0nSEAGczBAmkCEk+maX9T
- XlD5bqxnJ+tsV9looFSuT85TKdn0sVRLw82TonfN/pWDztpa2NBEzYNf5/Xp/B+E9L7+
- EChGyU8xXfWxpduM9q52WHTb4Sadl48DccfFgZj8dQD31sJgY9di2djiWraegR/gmE9U
- +blQ==
-X-Gm-Message-State: AOAM531BYTqXTpLg2W4pjaIuTCY0qZgHjPu0DnV2fJg6PU4wdBsUOli+
- B9BTTQSHnVfOmaqldY78z9J9dQ==
-X-Received: by 2002:adf:e9c7:: with SMTP id l7mr8364772wrn.93.1599499640516;
- Mon, 07 Sep 2020 10:27:20 -0700 (PDT)
-Received: from vanye ([2001:470:1f09:12f0:b26e:bfff:fea9:f1b8])
- by smtp.gmail.com with ESMTPSA id t4sm8908638wrr.26.2020.09.07.10.27.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2020 10:27:20 -0700 (PDT)
-Date: Mon, 7 Sep 2020 18:27:12 +0100
-From: Leif Lindholm <leif@nuviainc.com>
-To: Bin Meng <bmeng.cn@gmail.com>
-Subject: Re: [PATCH v3 00/16] hw/riscv: Add Microchip PolarFire SoC Icicle
- Kit board support
-Message-ID: <20200907172712.GB5623@vanye>
-References: <1598924352-89526-1-git-send-email-bmeng.cn@gmail.com>
- <20200906010811.GA1546@vanye>
- <CAEUhbmVfSPwO5CHO2G5Vd5fA6NA4dRCp-e_KGJhSO7nYAPmi1w@mail.gmail.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=j0UWUFPjLM4MnSQ8H+/sP1y/6evos5PJniyN7PnSmZE=;
+ b=nBAEq25F5xQGAsUGXHI4wkvbB+kC8ZvIX8P0pz3G4c7or53GYXn5CYLKdJA2qgs64E
+ 6YDbmUpPIQlCbOTDKv/tWpukdRmVwIVWdh8+xurMcEY8pTBXPF6r1MdK6qDqBF92M7nh
+ FQbFo+K84w/qraHbvJyRgBM1sWw8cMrW15+XbrVNqyEgLmeuzX9sPOZAE3Ga6nBr97jg
+ Oyuzs3TlFi/EJFoSArZkg9V3pCEXHThEi74ClMxXMXM6ognY82yaJRJuvEp8pz2ltOI+
+ dkTX4FJM0Y415xeSeVGz927+g5Uibr8pUIkSZX8rS/LP7huvknK8fjd93sucYkqeehTI
+ vnow==
+X-Gm-Message-State: AOAM5337VguEf7MUb+qCfJtmZxgh126rR6VNQfjgaVjUUdVcoWN3qkgf
+ o3oaA0jPgs/JMKQrY7k8HVqKt6/OcYaVQrHADkXKAA==
+X-Received: by 2002:a1f:3612:: with SMTP id d18mr13193103vka.21.1599501533159; 
+ Mon, 07 Sep 2020 10:58:53 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAEUhbmVfSPwO5CHO2G5Vd5fA6NA4dRCp-e_KGJhSO7nYAPmi1w@mail.gmail.com>
-User-Agent: Mutt/1.10.1 (2018-07-13)
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=leif@nuviainc.com; helo=mail-wr1-x442.google.com
+References: <20200825001711.1340443-1-hskinnemoen@google.com>
+ <20200825001711.1340443-3-hskinnemoen@google.com>
+ <e6187a7b-afc0-425a-de91-ea4818f7f876@amsat.org>
+ <CAFQmdRbirDn4ao-B0UHHn-QFKfdeRzBR1dXTmUx_WZikfSB1tg@mail.gmail.com>
+ <CAFQmdRbSgVTGgN2MV98wfxWSicrtokUCKKBU2knvVrimn2FWxA@mail.gmail.com>
+ <8bd0d21c-d511-d814-da27-92114c47cfcc@amsat.org>
+In-Reply-To: <8bd0d21c-d511-d814-da27-92114c47cfcc@amsat.org>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Mon, 7 Sep 2020 10:58:41 -0700
+Message-ID: <CAFQmdRZSP8F1=pLEdt5CM-qVvUWMo+Ap4yWGN96WzUshxikBqQ@mail.gmail.com>
+Subject: Re: [PATCH v8 02/14] hw/misc: Add NPCM7xx Clock Controller device
+ model
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
+ CS20 KFTing <kfting@nuvoton.com>, Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a44;
+ envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa44.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,129 +125,98 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Bin Meng <bin.meng@windriver.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EfdGTEg/G927
+X-TUID: PKqzI7va5cE8
 
-On Mon, Sep 07, 2020 at 18:24:06 +0800, Bin Meng wrote:
-> Hi Leif,
-> 
-> 
-> On Sun, Sep 6, 2020 at 9:08 AM Leif Lindholm <leif@nuviainc.com> wrote:
+On Mon, Sep 7, 2020 at 6:40 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org=
+> wrote:
+>
+> On 9/5/20 12:38 AM, Havard Skinnemoen wrote:
+> > On Fri, Sep 4, 2020 at 3:02 PM Havard Skinnemoen <hskinnemoen@google.co=
+m> wrote:
+> >>
+> >> On Fri, Sep 4, 2020 at 2:32 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsa=
+t.org> wrote:
+> >>>
+> >>> On 8/25/20 2:16 AM, Havard Skinnemoen via wrote:
+> >>>> Enough functionality to boot the Linux kernel has been implemented. =
+This
+> >>>> includes:
+> >>>>
+> >>>>   - Correct power-on reset values so the various clock rates can be
+> >>>>     accurately calculated.
+> >>>>   - Clock enables stick around when written.
+> >>>>
+> >>>> In addition, a best effort attempt to implement SECCNT and CNTR25M w=
+as
+> >>>> made even though I don't think the kernel needs them.
+> >>>>
+> >>>> Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> >>>> Reviewed-by: Joel Stanley <joel@jms.id.au>
+> >>>> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> >>>> Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+> >>>> ---
+> [...]
+> >>>> +static void npcm7xx_clk_write(void *opaque, hwaddr offset,
+> >>>> +                              uint64_t v, unsigned size)
+> >>>> +{
+> >>>> +    uint32_t reg =3D offset / sizeof(uint32_t);
+> >>>> +    NPCM7xxCLKState *s =3D opaque;
+> >>>> +    uint32_t value =3D v;
+> >>>> +
+> >>>> +    trace_npcm7xx_clk_write(offset, value);
+> >>>> +
+> >>>> +    if (reg >=3D NPCM7XX_CLK_NR_REGS) {
+> >>>> +        qemu_log_mask(LOG_GUEST_ERROR,
+> >>>> +                      "%s: offset 0x%04" HWADDR_PRIx " out of range=
+\n",
+> >>>> +                      __func__, offset);
+> >>>> +        return;
+> >>>> +    }
+> >>>> +
+> >>>> +    switch (reg) {
+> >>>> +    case NPCM7XX_CLK_SWRSTR:
+> >>>> +        qemu_log_mask(LOG_UNIMP, "%s: SW reset not implemented: 0x%=
+02x\n",
+> >>>> +                      __func__, value);
+> >>>
+> >>> Isn't this sufficient?
+> >>>
+> >>>            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+> >>
+> >> It's not quite that easy; this register holds 4 bits, each of which
+> >> maps to a separate register which defines the modules to reset. It's
+> >> not that hard, but a little more than I'd like to add to the series at
+> >> this point. I'll send a followup patch once the initial series is in.
 > >
-> > On Tue, Sep 01, 2020 at 09:38:55 +0800, Bin Meng wrote:
-> > > From: Bin Meng <bin.meng@windriver.com>
-> > >
-> > > This adds support for Microchip PolarFire SoC Icicle Kit board.
-> > > The Icicle Kit board integrates a PolarFire SoC, with one SiFive's
-> > > E51 plus four U54 cores and many on-chip peripherals and an FPGA.
-> > >
-> > > For more details about Microchip PolarFire SoC, please see:
-> > > https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga
-> > >
-> > > The Icicle Kit board information can be found here:
-> > > https://www.microsemi.com/existing-parts/parts/152514
-> > >
-> > > Unlike SiFive FU540, the RISC-V core resect vector is at 0x20220000.
-> > > The RISC-V CPU and HART codes has been updated to set the core's
-> > > reset vector based on a configurable property from machine codes.
-> > >
-> > > The following perepherals are created as an unimplemented device:
-> > >
-> > > - Bus Error Uint 0/1/2/3/4
-> > > - L2 cache controller
-> > > - SYSREG
-> > > - MPUCFG
-> > > - IOSCBCFG
-> > > - GPIO
-> > >
-> > > The following perepherals are emulated:
-> > > - SiFive CLINT
-> > > - SiFive PLIC
-> > > - PolarFire SoC Multi-Mode UART
-> > > - SiFive PDMA
-> > > - Cadence eMMC/SDHCI controller
-> > > - Cadence Gigabit Ethernet MAC
-> > >
-> > > The BIOS image used by this machine is hss.bin, aka Hart Software
-> > > Services, which can be built from:
-> > > https://github.com/polarfire-soc/hart-software-services
-> > >
-> > > To launch this machine:
-> > > $ qemu-system-riscv64 -M microchip-icicle-kit -smp 5 \
-> > >     -bios path/to/hss.bin -sd path/to/sdcard.img \
-> > >     -nic tap,ifname=tap,script=no,model=cadence_gem \
-> > >     -display none -serial stdio \
-> > >     -chardev socket,id=serial1,path=serial1.sock,server,wait \
-> > >     -serial chardev:serial1
+> > Actually, I'm not sure if this would have any effect on being able to
+> > reboot. Running with -d unimp shows:
 > >
-> > I finally got around to building the sd image from
-> > https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk,
-> > and I can successfully boot to prompt using that, and the (hacked)
-> > hss.bin I verified previously - also with this v3.
+> > reboot: Restarting system
+> > npcm7xx_timer_write: WTCR write not implemented: 0x00000083
+> > Reboot failed -- System halted
 > >
-> 
-> Good to know!
-> 
-> > However, unless I add the "-nic user,model=cadence_gem \" shown in
-> > https://wiki.qemu.org/Documentation/Platforms/RISCV#Microchip_PolarFire_SoC_Icicle_Kit
-> > but not here, I do not have functioning networking. (It is not obvious
-> > to me why this is needed.)
-> >
-> 
-> Sorry I don't understand what the issue is?
+> > So we need to implement watchdog support, which is something we were
+> > planning to do fairly soon.
+>
+> Well this seems a guest implementation decision to prefer
+> wait the watchdog to kick (hard reset?) rather than doing
+> a soft reset.
+>
+> Two different issues IMO. Anyway this is certainly not
+> blocking your series to get merged.
 
-The instructions in this cover letter does not contain the line
-  "-nic user,model=cadence_gem \"
+I agree, we need to implement both. I just wanted to note that
+implementing SWRST alone may not be enough to make reboots work with
+the current image. The SW reset registers are actually very similar to
+the WD reset registers, so implementing WD reset should make it almost
+trivial to add SW reset as well.
 
-The instruction in the wiki does.
-The instruction in the wiki works, the instruction in the cover letter
-does not.
+It looks like the kernel has a driver that can use SW reset to reboot,
+but the DT is missing a property needed to set up the restart handler.
 
-It is not clear to me why both lines are needed.
+https://elixir.bootlin.com/linux/v5.8.7/source/drivers/reset/reset-npcm.c#L=
+269
 
-> > > The memory is set to 1 GiB by default to match the hardware.
-> >
-> > Which hardware is this?
-> > https://www.crowdsupply.com/microchip/polarfire-soc-icicle-kit lists
-> > 2GiB.
-> 
-> It's this same board. But I believe the crowdsupply webpage has the
-> wrong information. The board I got only has 1GB memory.
-
-The diagram on https://www.microsemi.com/existing-parts/parts/152514
-also says 2GB. Do you have any channel to Microchip to clarify this?
-
-> > > A sanity check on ram size is performed in the machine init routine
-> > > to prompt user to increase the RAM size to > 1 GiB when less than
-> > > 1 GiB ram is detected.
-> >
-> > There is currently no visible effect in firmware from setting memory size to >
-> > 1GiB (hss says 1GB, u-boot says 1GB, Linux sees 1GB).
-> > Are there any plans to address this in future versions?
-> 
-> HSS is using hardcoded 1GB memory size and that's why in QEMU the
-> minimum required memory size is 1GB. Setting less than 1GB size blocks
-> HSS to load the 2nd stage bootloader U-Boot into the memory. Both
-> U-Boot and Linux DTS files set the memory size to 1GB, so that's why
-> both of them see only 1GB. Setting memory >1G does not affect U-Boot
-> and Linux though. You can however manually edit the U-Boot and Linux
-> DTS files to have a large RAM size to match QEMU -m option.
-
-Understood, thanks.
-
-Best Regards,
-
-Leif
+Havard

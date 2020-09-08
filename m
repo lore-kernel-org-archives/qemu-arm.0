@@ -1,104 +1,104 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp393162lfq;
-        Tue, 8 Sep 2020 01:13:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwSZtWpTXtq+CpCu9gsFvJ6BCEfJMgNXoX1dZQJWg+NnQQpTpstIndUStJbB4qSEree7SUp
-X-Received: by 2002:a25:3fc7:: with SMTP id m190mr26316008yba.450.1599552839706;
-        Tue, 08 Sep 2020 01:13:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599552839; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp393268lfq;
+        Tue, 8 Sep 2020 01:14:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxRzu1J6ztqTXCsN4QhUpHcKO+QmH/tUmXU5IJ1xRJHKuscSmdkPrZt7I7aeAY3HWluPQw/
+X-Received: by 2002:a25:cf54:: with SMTP id f81mr34481128ybg.227.1599552848182;
+        Tue, 08 Sep 2020 01:14:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599552848; cv=none;
         d=google.com; s=arc-20160816;
-        b=oYZ8foNpv6pgeuYH4K3RzrPpgrUuulvBLCJf+BEc8XdbAdHOtNJeHu3/PtF5bQ1Zmc
-         vb5MKKA1TflQcv7ezknOp3rr521vkK4nPhy0Jeugj33zPUfJ/uy9SRBiOWiN/w3PHiOx
-         Egj2ZAPK+jbOI8c7BgzD3jbvxeXnYiBzGavPxd50ahoKBYZUG3B3e6kqhhRoo4vUANPo
-         xiYSc/ZS9yO4vd4BOFqJhYXQpNyD3YPcfLTur6RWokgPIcRTxnP+2gTFi6sgalMdr1qM
-         jj5wXt5ifzLLro3+1bCg2RY+ABhF1RfVl8cK8a6JUXIMVt3ADEtmhkAgAK9DxvpnMFLn
-         ZooA==
+        b=MNjk/Wx4oknUmlsTaldqO4FSQ0mkZ24xRr9DPQvDMl91IUuTpmBGp+eLezK2wTbUZq
+         ATpY7tgI2ELZDyUJW4rmuE728vm/73/TvdN4GcRAwNOFmG04mZxnu8LvNzwVwC9dKxmq
+         1kTIfwp4D41qlMurfTIZOqWbBhqOVVzAVsSIv8l/bnCek4nKLiX1xonUDb+eDt267/nm
+         mBlF+vTlg/nccLhz0fBMQTCln8qqF3DqquVsZQR0doC5ifXa2Iu4wNRwsZ0oB0QUZ4ut
+         2CwxFY2iM8oeJQs98CNDSR4jwTv82qpYzaRuX5068YvMxrNelrRg0GgP6A+CVY46ocWa
+         aYhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=NODmkJ7zv3Ze8nSAAv5Nj47e1RMWaOU9HVwH97SKsQI=;
-        b=VOW1IoH7xp+0QMX9T5vzNepVDKavViDhneKYws6vs5LTEnLZ3hSFhRzxFN5f0/dXlk
-         DWX9gXgr08Rrh4/m2vRR2BzGOVw2M7fUWDDPry3WmKWn3xHagWWNnXQ66B3QLGDzcZ3E
-         NzQwJ9MdhKD6E7ENcMwswuXybVTFp0sGFTzoZ8L3yMTIhuopzlpTWM0D7Hglv4YsYRrB
-         1XdvlBiGPDDjbQYS2kv7LOYCqfJo/+f7KU8PnhoIm21W+Gbkyp2UQWACBvVC+23phFfb
-         ndLAZKbHVx/pMCha5mCSc3NfppNiI6FLzte8yRy5c4YZujR6n1ov64GOw0hNi65ZWMeV
-         kP0Q==
+        bh=bjXqJB5fZDovb5keozBFqhrjyKCJ3LE/1kjYNOFtg8s=;
+        b=QOL1OhIslB9TjSFoKxt/r04ZRtjvjk3L/rwQ7CWIyD/8MXOI+IpNTVU12cAevu7F/Z
+         Bx/Nv0elQxwufwWLieDXRjT5JpbTRCGxICaSrNLEn/TLj2tbZgUDdlkoCNiSgZmRIfcy
+         wMJM3PLuUjQAwK3UVO3GTPRiZLAqLsL/xs1SiJrxLZj0vJvhP+VnytzWIqMqFoPT0Agc
+         fGxaUefG6SDb+cEtwCFmiz1HWS8agfZAoF1ayNHhK/m5p6sTamWxEowlL66QpyMx8AOS
+         HiNgPoSfbL3dbl8J9Z6wz2h75H8d7QRUV8KLrv/hHWhQZ5E4PB6YmKi3pvafgYAA1bUD
+         kXGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vJ8gJHor;
+       dkim=fail header.i=@linaro.org header.s=google header.b=lsduiPeW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l4si18174470ybc.52.2020.09.08.01.13.59
+        by mx.google.com with ESMTPS id f17si18429293ybg.348.2020.09.08.01.14.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Sep 2020 01:13:59 -0700 (PDT)
+        Tue, 08 Sep 2020 01:14:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=vJ8gJHor;
+       dkim=fail header.i=@linaro.org header.s=google header.b=lsduiPeW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50822 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51860 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFYlL-0005cd-1C
-	for alex.bennee@linaro.org; Tue, 08 Sep 2020 04:13:59 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58284)
+	id 1kFYlT-00064h-HD
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 04:14:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kFYlA-0005Zo-3o
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:13:48 -0400
-Received: from mail-pg1-x544.google.com ([2607:f8b0:4864:20::544]:37050)
+ id 1kFYlD-0005if-JC
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:13:51 -0400
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:37048)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kFYl8-0000Qn-1k
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:13:47 -0400
-Received: by mail-pg1-x544.google.com with SMTP id 5so9511804pgl.4
- for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 01:13:45 -0700 (PDT)
+ id 1kFYlB-0000Rj-KM
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:13:51 -0400
+Received: by mail-pg1-x541.google.com with SMTP id 5so9511906pgl.4
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 01:13:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=NODmkJ7zv3Ze8nSAAv5Nj47e1RMWaOU9HVwH97SKsQI=;
- b=vJ8gJHor/P+Jl1BmkcHCpjIjT1JCsWa6RcvfIElzkZQMD3ubbmjT/n4HZwlmsc0Xfg
- WZ7W5PqRbzbppkxmUx5FGpPFmOo/le/LfovbCExJ/KZZb1+3Oe6rnMU4jFgKOoOz+16M
- afDRw36jeZOE7ot9hJBxsZKXf5HBp1DeBmcDM1sUJvKboUpteuu4Wv+1rm3eJtg3WlOo
- 4zSYvpKY8QKbZlFF9utJce6omxNc2nR0jsI0Gb/LDmHVHGmStvtbHHA2orgC+UB/19dS
- gyjlh7/omwadkmQbqlsG5QM2n5klBJtQhsjwDpblHY4dtWrlyEpL81GgnwZrvD3jWHq3
- qYWg==
+ bh=bjXqJB5fZDovb5keozBFqhrjyKCJ3LE/1kjYNOFtg8s=;
+ b=lsduiPeW2KAAqBLIvyI/8FZJf9DdqV11oODQYW+mHmktQWlrq8JKQhBNqHOYftlV8h
+ kXnXOB4iC+DAgzeakNlWC4mNsxowb3AjsLhw7SoVQJLykH3p+XSU1EE7DnAEgZ2v2p1X
+ ekkD+zYHj1MiH5pEojjHtb4uT+E64xMw7Ntu4A3PH9GBAkrFbIVm4tKz7m5UUO2PU5af
+ P/1yJq0WITCZQ9wSs2lqC0gSjozPi7bDCHT49gJPophxYlo9LQdEcLLQDrA73F7HYFkH
+ bxh7JFNVg+Xim7DSmlptXBxIEGjWo8q70Ds6gbW0/vxky7gsUI7f5Uzralry/LBmvac0
+ hyMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=NODmkJ7zv3Ze8nSAAv5Nj47e1RMWaOU9HVwH97SKsQI=;
- b=Rd1hnSfes2b3VS0pdZ+GaODXoujIHY47YFLJ7378cZklpOi/00yNXxBGzS21NeCmVD
- 9p5kDHFY50kznmCWMSXwcCG9kX/2hCExyZJg/IhrOzjluOdd9OPn6mJmI1KgBBSaNCHt
- jSGRMK2LqaeFKONHX1p75/YbC8SYBr9VVFxWB5XKJIO1uqAYaPosgNynDHMXkJFQ/VzN
- 3DOU5Voy19jQhHrgBL3AMlLuicPwgR8qmQlLAPVPdaVaNCd+GcX4ygqIZIXozdX71aTj
- Du4EQief3d1vIvAGz1p4GMreG8/Acbzj/BG89ZY/IeLJJmxXETVsQ6LIluGfO2hTzPnD
- D4og==
-X-Gm-Message-State: AOAM533FYXh+bSZ9axq8TK0uM8ltjNOZUHSrtC2YQgcpQwWUS+iVlKox
- xvSdQJjTGyaI2MXOfUXYfopE
-X-Received: by 2002:a17:902:8bc2:b029:d0:cbe1:e709 with SMTP id
- r2-20020a1709028bc2b02900d0cbe1e709mr98104plo.23.1599552824822; 
- Tue, 08 Sep 2020 01:13:44 -0700 (PDT)
+ bh=bjXqJB5fZDovb5keozBFqhrjyKCJ3LE/1kjYNOFtg8s=;
+ b=o45VGGCtkXxpEk9K0aqyVM5q3Gny+hqbUVwBMw3O/Wjf9KSx4i5ZJFO6S/il/xHMks
+ cfyQMBKoxhJwDvOeRedgWGM60wCL5RgsjJ/cI3XWBIR5CKdYlqD3JVd/ZlhSrojZVDJ2
+ Jvf0e0UZExQi+tymozXTK6ml1MpVhXeg+1B1ckMitungz/zXXE02EjIADF7wIbh2Vt9G
+ GcNecoWRLSzZig8ahvh3bY/kAwMnUB4u2aR2xt4eigrPwDOiToUTh9ZhOeWcc9wcngpC
+ z6dtjnCrJHbRL+pT1rbwLXKw3iIamzXrKQR0pwjWBOoTDYv70VAwUk+AiX7GW21AwK4r
+ yu7Q==
+X-Gm-Message-State: AOAM531Qo0gRVf7/7vkgL9P/vSdlkaRXZxmeXHysoASTQDDKkJAp4zu5
+ 3zA8A0EhOWbRR5s1fhRxMAZt
+X-Received: by 2002:a17:902:465:b029:d0:89f1:9e2a with SMTP id
+ 92-20020a1709020465b02900d089f19e2amr21643144ple.6.1599552828430; 
+ Tue, 08 Sep 2020 01:13:48 -0700 (PDT)
 Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id m190sm16934788pfm.184.2020.09.08.01.13.43
+ by smtp.gmail.com with ESMTPSA id m190sm16934788pfm.184.2020.09.08.01.13.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2020 01:13:44 -0700 (PDT)
+ Tue, 08 Sep 2020 01:13:48 -0700 (PDT)
 From: Haibo Xu <haibo.xu@linaro.org>
 To: drjones@redhat.com,
 	richard.henderson@linaro.org
-Subject: [PATCH v2 02/12] target/arm/kvm: spe: Add helper to detect SPE when
- using KVM
-Date: Tue,  8 Sep 2020 08:13:20 +0000
-Message-Id: <e4a8f10ed4e3379994b7e260ad6ef715512289d4.1599549462.git.haibo.xu@linaro.org>
+Subject: [PATCH v2 05/12] target/arm/kvm: spe: Unify device attr operation
+ helper
+Date: Tue,  8 Sep 2020 08:13:23 +0000
+Message-Id: <45eecae26272efc7a09837573cd5278296b58dc5.1599549462.git.haibo.xu@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1599549462.git.haibo.xu@linaro.org>
 References: <cover.1599549462.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::544;
- envelope-from=haibo.xu@linaro.org; helo=mail-pg1-x544.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
+ envelope-from=haibo.xu@linaro.org; helo=mail-pg1-x541.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -124,62 +124,64 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
  qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FufhdfV5exuK
+X-TUID: ysZahl7rVLaO
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+From: Andrew Jones <drjones@redhat.com>
+
+Rename kvm_arm_pmu_set_attr() to kvm_arm_set_device_attr(),
+So both the vPMU and vSPE device can share the same API.
+
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- target/arm/kvm.c     |  5 +++++
- target/arm/kvm_arm.h | 13 +++++++++++++
- 2 files changed, 18 insertions(+)
+ target/arm/kvm64.c | 11 ++++++-----
+ 1 file changed, 6 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 8bb7318378..58f991e890 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -214,6 +214,11 @@ bool kvm_arm_pmu_supported(void)
-     return kvm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3);
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index ef1e960285..8ffd31ffdf 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -397,19 +397,20 @@ static CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr)
+     return NULL;
  }
  
-+bool kvm_arm_spe_supported(void)
-+{
-+    return kvm_check_extension(kvm_state, KVM_CAP_ARM_SPE_V1);
-+}
-+
- int kvm_arm_get_max_vm_ipa_size(MachineState *ms)
+-static bool kvm_arm_pmu_set_attr(CPUState *cs, struct kvm_device_attr *attr)
++static bool kvm_arm_set_device_attr(CPUState *cs, struct kvm_device_attr *attr,
++                                    const char *name)
  {
-     KVMState *s = KVM_STATE(ms->accelerator);
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index adb38514bf..f79655674e 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -283,6 +283,14 @@ bool kvm_arm_aarch32_supported(void);
-  */
- bool kvm_arm_pmu_supported(void);
+     int err;
  
-+/**
-+ * kvm_arm_spe_supported:
-+ *
-+ * Returns: true if the KVM VCPU can enable its SPE
-+ * and false otherwise.
-+ */
-+bool kvm_arm_spe_supported(void);
-+
- /**
-  * kvm_arm_sve_supported:
-  *
-@@ -366,6 +374,11 @@ static inline bool kvm_arm_pmu_supported(void)
-     return false;
- }
+     err = kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, attr);
+     if (err != 0) {
+-        error_report("PMU: KVM_HAS_DEVICE_ATTR: %s", strerror(-err));
++        error_report("%s: KVM_HAS_DEVICE_ATTR: %s", name, strerror(-err));
+         return false;
+     }
  
-+static inline bool kvm_arm_spe_supported(void)
-+{
-+    return false;
-+}
-+
- static inline bool kvm_arm_sve_supported(void)
- {
-     return false;
+     err = kvm_vcpu_ioctl(cs, KVM_SET_DEVICE_ATTR, attr);
+     if (err != 0) {
+-        error_report("PMU: KVM_SET_DEVICE_ATTR: %s", strerror(-err));
++        error_report("%s: KVM_SET_DEVICE_ATTR: %s", name, strerror(-err));
+         return false;
+     }
+ 
+@@ -426,7 +427,7 @@ void kvm_arm_pmu_init(CPUState *cs)
+     if (!ARM_CPU(cs)->has_pmu) {
+         return;
+     }
+-    if (!kvm_arm_pmu_set_attr(cs, &attr)) {
++    if (!kvm_arm_set_device_attr(cs, &attr, "PMU")) {
+         error_report("failed to init PMU");
+         abort();
+     }
+@@ -443,7 +444,7 @@ void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
+     if (!ARM_CPU(cs)->has_pmu) {
+         return;
+     }
+-    if (!kvm_arm_pmu_set_attr(cs, &attr)) {
++    if (!kvm_arm_set_device_attr(cs, &attr, "PMU")) {
+         error_report("failed to set irq for PMU");
+         abort();
+     }
 -- 
 2.17.1
 

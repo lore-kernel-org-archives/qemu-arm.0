@@ -1,246 +1,246 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp381123lfq;
-        Tue, 8 Sep 2020 00:54:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxzuFSUfp2gh7gAfaPZsdTj2Ujoz0EL7DrxMqG19ZVIq8z7e+nPLnaEsA0whkgalYl+pIp9
-X-Received: by 2002:a25:4546:: with SMTP id s67mr31641968yba.88.1599551697657;
-        Tue, 08 Sep 2020 00:54:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599551697; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp393140lfq;
+        Tue, 8 Sep 2020 01:13:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyBgBaSP9jmip9PJKT/m1Ksia8SSU3cQbzp/fOwelUGj0HcCz8TNIkoVnOx2Aey/vUOGzjH
+X-Received: by 2002:a25:ef43:: with SMTP id w3mr28577295ybm.230.1599552838246;
+        Tue, 08 Sep 2020 01:13:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599552838; cv=none;
         d=google.com; s=arc-20160816;
-        b=Cs7oSgecyDiQr1MzrLDDDZ/qI/zQAwJ02T2kl3a8cF61WlPX14jGmA1h5S2yIrjQoW
-         NmUr0ttUtEDIFNcPyBXt4QrUESz9G5pPi93Bnm0PTkvWzr/wS+NpzmQ2+TcFcahnMsmu
-         Sa/jIUOGn20Q0TuE1v53pgnIfIqwZUxatcliOc4GKdXdCnNCck8izLH9ENFW1Owg2ER3
-         UbgPCLAhAKPIGwwF5BZNuBR1aaaCatUVb7fkOqtdAyighb0hocksSoMtqfNLeg8bFk3Z
-         IQEniSSmMPRs07LrymN4fdrYBZOmNoWNZN02F5JtcOikMYoLpi9VNYysTszaABzcEdEI
-         wFWg==
+        b=amtNH/EtW684taug0tLv9JTVmq+z0fjXgLGCPTGqbgNzhgMXSRt0DVcuFgy4AmKpWs
+         /VazTQ63AsAdlM1ysMRNzxph5844B1DaqjD7Fscx96za77DG3Yb976DhJMjwYJJGixTj
+         qAdctaVz7lCXlUdb2RrMo+mLy0nyDhisuQUyWhdbv2+eSbmMv9PpGRb8h7HUpr9XG/H1
+         VCk99blFcCmRECxjH4CFuJk6kb1p+4HYOAiDA3TSx8lr6mjJhUNSC1cvLCtFgZqFCkAe
+         gY4eD0lQU1BwwLhxuNS99s8r5FJA4owv80a3NxsUKdy7epTCS5jLAEOop200XEZ4YxID
+         Cgrg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:user-agent:message-id:in-reply-to:date:references
-         :subject:to:from:dkim-signature;
-        bh=SPgfs/vw/hl5ABwcayG2BGaNk7AT4iznmA5rCj/73Ng=;
-        b=O7T8NL/G03MujCkAC+kbl7er9fkVRxTTZLBdXBjVpK9kEP9UuoKDYFGwck2v90KtvA
-         e+0KDcXG0KP9yOI3QMnKLLLOHqQ9S0YAYU5M5UzrlesgC1whR0++gmmDNikCJVBs4Not
-         PpDSmrWTT7FmTLCB9kz4EZ18fQoZgxf462cM3kbi3lvF3WXtU6bHulkOi2DdCHhMqh0F
-         2cuQ9+NaKY89+mB+03hQv8sXJCDGqXY9KkVm6YEjyYvLj+lnZT0I9/9k6AR2QUvgxyfO
-         hBZsfiqwNHUIwgNto+co+vpObEuo6u40HbuhsLl7Bp7N4X0RgGm5iuTfF4UZCU1tM6SQ
-         8u0Q==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=Dme5wOJZvNDhKpDBEi74Ima5Rw3hvZ52vtZKHURP4rY=;
+        b=f3+zEBJmTJzGjzZ5KiSq9Vuz0e8HOgEtN4SdVApN2SQ2BydySjUGH1C6DkgMETAU7i
+         HbbzCCZgtHBf7SvTCQp62u19if6S7VTQvrzK5eXFiCqc5i14ojj5TLCKvScstKW/zwj1
+         D8sTa9g/eAt4GAO69COASwg9d8rf4Dnj1M+tHh4bW1q7G++Ji4Q1Kj9b8P1PSHuSJ4zP
+         dCKoVcwzHNJGW++gyHdAceUEUBVsuQQJgIzXasRftJ/3FXNE4ASl6vd5De82vzzSVSVA
+         g52Md261SYyzacR/yav1A23O92BEexw2nnHzpfdm4NczXGc4QpInEkFJFMJLjDBxc1i9
+         gjjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M3tbeitr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=mOXtCU3s;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o79si11105440yba.346.2020.09.08.00.54.57
+        by mx.google.com with ESMTPS id v81si18211321ybv.32.2020.09.08.01.13.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Sep 2020 00:54:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Sep 2020 01:13:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M3tbeitr;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53702 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=mOXtCU3s;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFYSu-0002QB-Vr
-	for alex.bennee@linaro.org; Tue, 08 Sep 2020 03:54:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53892)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kFYlJ-0005Zq-Ir
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 04:13:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58238)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kFYSJ-0001xq-63
- for qemu-devel@nongnu.org; Tue, 08 Sep 2020 03:54:19 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:60264
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kFYSH-0006Ug-Dn
- for qemu-devel@nongnu.org; Tue, 08 Sep 2020 03:54:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599551656;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SPgfs/vw/hl5ABwcayG2BGaNk7AT4iznmA5rCj/73Ng=;
- b=M3tbeitr5ba+TA/E8T+SgmR+t+T/mcOhpNRAP8vY/3uU+OEQ1iXGcGjMIPetOev0CaiQwH
- P9ShCWJy1RnOyb8FM4hWi9mSMG/qaH4p6/tmtyKuW8pL3kA2ce4IvHgFPMax4ZJWY5VTRW
- d/MZuyfHBdHDOiKc/kmHpXFnz8rhDhs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-527-YhSODPN6PTKxPswxiV-0Zg-1; Tue, 08 Sep 2020 03:54:14 -0400
-X-MC-Unique: YhSODPN6PTKxPswxiV-0Zg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BD2521074642;
- Tue,  8 Sep 2020 07:54:12 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-113-68.ams2.redhat.com
- [10.36.113.68])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A500F82460;
- Tue,  8 Sep 2020 07:54:11 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 0BC1A1132B59; Tue,  8 Sep 2020 09:54:10 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [RFC PATCH v4 8/8] hw/arm/tosa: Make TYPE_TOSA_MISC_GPIO a
- plain QDev
-References: <20200907163257.46527-1-f4bug@amsat.org>
- <20200907163257.46527-9-f4bug@amsat.org>
-Date: Tue, 08 Sep 2020 09:54:09 +0200
-In-Reply-To: <20200907163257.46527-9-f4bug@amsat.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 7 Sep 2020 18:32:57
- +0200")
-Message-ID: <87h7s8g0v2.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1kFYl9-0005ZR-0e
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:13:47 -0400
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535]:44510)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
+ id 1kFYl6-0000Q9-Mg
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:13:46 -0400
+Received: by mail-pg1-x535.google.com with SMTP id 7so9494983pgm.11
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 01:13:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Dme5wOJZvNDhKpDBEi74Ima5Rw3hvZ52vtZKHURP4rY=;
+ b=mOXtCU3sfQYCyaYDEF3467iwanb/BnVVUkjRgJ2724aFN2GTTwczcMKw67aiTpzQ5/
+ UI9Zu7/cn5g/T3L2mfmcXHDtUG/PxYN0b5ZBq7lnY525LRfVnNNDV2KZK4mWrXcY2bZT
+ w2pzcBAxnL3OQIai+9TnuGN7CPNx6BkKHW1/0oqanZrxnkOyLReCyvoEtan2NYyfxPiV
+ WiMsjPiRsnRrfH6+q7KxYQ/TED3CDomAXsmWt3twbjY9LrCJTmBe8EwCskedRmMtD7TE
+ vKFH90buBGcoZ3Bl2NvCnbyhVIF3WGo+NrmnGXijgPMrXRk6U7S1pRujWt/DDlbLeqYB
+ lqIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=Dme5wOJZvNDhKpDBEi74Ima5Rw3hvZ52vtZKHURP4rY=;
+ b=JJZ/N/TvxBG9YoN/988hPQT+Q5G92R4hN8lYiCd238TKRIPv5+t7VrGiiIRZQCj5io
+ 77lIFQ9jSdyCEdmhL7KNxugVX2AoN7rLJalnDdXAcWW8E1s2rxHHAsZv4qXdcZxb9kxF
+ +iWqLZ8AWUq85J7PXLcNL4syFxZEahnFy+zz1FQvhNqfQ0Gcb/i6jwJn0QU5fXdzwAG+
+ GBtEWEq7Rpl0g8zD25eTLxMo6zbi5WETggNsT8/iAgPMPLi1aGNHreGwvC/YozqCgzPS
+ Ec1wpYqGQdkSG/M/yBqjAibCdbfuchuWAX+YejuEjehcbp8ZGxL3KyM0Wp8PWfe6YsFV
+ NlBA==
+X-Gm-Message-State: AOAM5336dQNc4bWFgPDn8RohyQML+kt8sBzKkRCL1Bt2VSOdwoBOos1l
+ pHMRJorzmyp7GfC0tCTm0oRh
+X-Received: by 2002:a17:902:b108:b029:d0:cbe1:e770 with SMTP id
+ q8-20020a170902b108b02900d0cbe1e770mr102286plr.23.1599552822378; 
+ Tue, 08 Sep 2020 01:13:42 -0700 (PDT)
+Received: from localhost.localdomain ([147.75.106.138])
+ by smtp.gmail.com with ESMTPSA id m190sm16934788pfm.184.2020.09.08.01.13.41
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 08 Sep 2020 01:13:41 -0700 (PDT)
+From: Haibo Xu <haibo.xu@linaro.org>
+To: drjones@redhat.com,
+	richard.henderson@linaro.org
+Subject: [PATCH v2 00/12] target/arm: Add vSPE support to KVM guest
+Date: Tue,  8 Sep 2020 08:13:18 +0000
+Message-Id: <cover.1599549462.git.haibo.xu@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 00:33:58
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=haibo.xu@linaro.org; helo=mail-pg1-x535.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.1,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Joaquin de Andres <me@xcancerberox.com.ar>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
- Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SSK2pL6oFNwj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
+ qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Qo6nkWX0D0Hw
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+v2:
+  - Rebased on Andrew's patches[3]
+  - Added compat codes to enable vSPE only for the 5.2 and 
+    later machine types [Andrew]
+  - Changed to use the ID register bit to identify the spe
+    feature [Andrew/Richard]
+  - Added the missing field in AcpiMadtGenericCpuInterface
+    definition [Auger]
+  - Split the un-tested userspace irqchip support for vSPE
+    into a separate patch [Andrew]
+  - Added doc and qtest for vSPE [Andrew]
 
-> TYPE_TOSA_MISC_GPIO doesn't need to be a SysBus device,
-> make it a plain QDev.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> RFC because having to pass MachineState and call
-> object_property_add_child() simply makes things more
-> complex... but it seems to cleaner QOM design.
+Many thanks to Andrew, Richard, Philippe and Auger for their comments. 
 
-Well, what devices really *need* to be sysbus devices?
+This series add support for SPE(Statistical Profiling Extension)[1]
+in KVM guest. It's based on Andrew Murray's kernel KVM patches V2[2],
+and has been tested to ensure that guest can use SPE with valid data.
+E.g.
 
-The question is trivial for "real" buses, such as PCI, USB, and so
-forth: a device is a FOO device when it plugs into a FOO bus.
+In host:
+$ ./qemu-system-aarch64 \
+        -cpu host -M virt,accel=kvm,gic-version=3 -nographic -m 2048M \
+        -kernel ./Image-new \
+        -initrd /boot/initrd.img-5.6.0-rc2+ \
+        -append "root=/dev/vda rw console=ttyAMA0" -nodefaults -serial stdio\
+        -drive if=none,file=./xenial.rootfs.ext4,id=hd0,format=raw \
+        -device virtio-blk-device,drive=hd0  \
 
-Sysbus is quite unlike these "real" buses.  It exists because qdev
-initially *required* qdevs to plug into a qbus, so we made up a qbus for
-the devices that don't plug into any of our "real" buses[1].
+In guest:
+$ perf record -e arm_spe/ts_enable=1,pa_enable=1,pct_enable=1/ \
+        dd if=/dev/zero of=/dev/null count=1000
+$ perf report --dump-raw-trace > spe_buf.txt
 
-I figure all sysbus devices could be coded as bus-less devices today.
-So the answer to "what devices really *need* to be sysbus devices?" is
-"none".
+The spe_buf.txt should contain similar data as below:
 
-I think a more useful question is what devices *should* be coded as
-sysbus devices vs. bus-less devices.
+. ... ARM SPE data: size 135944 bytes
+.  00000000:  b0 f4 d3 29 10 00 80 ff a0                      PC 0xff80001029d3f4 el1 ns=1
+.  00000009:  99 0b 00                                        LAT 11 ISSUE
+.  0000000c:  98 0d 00                                        LAT 13 TOT
+.  0000000f:  52 16 00                                        EV RETIRED L1D-ACCESS TLB-ACCESS
+.  00000012:  49 00                                           LD
+.  00000014:  b2 d0 40 d8 70 00 00 ff 00                      VA 0xff000070d840d0
+.  0000001d:  9a 01 00                                        LAT 1 XLAT
+.  00000020:  00 00 00                                        PAD
+.  00000023:  71 a5 1f b3 20 14 00 00 00                      TS 86447955877
+.  0000002c:  b0 7c f9 29 10 00 80 ff a0                      PC 0xff80001029f97c el1 ns=1
+.  00000035:  99 02 00                                        LAT 2 ISSUE
+.  00000038:  98 03 00                                        LAT 3 TOT
+.  0000003b:  52 02 00                                        EV RETIRED
+.  0000003e:  48 00                                           INSN-OTHER
+.  00000040:  00 00 00                                        PAD
+.  00000043:  71 ef 1f b3 20 14 00 00 00                      TS 86447955951
+.  0000004c:  b0 f0 e9 29 10 00 80 ff a0                      PC 0xff80001029e9f0 el1 ns=1
+.  00000055:  99 02 00                                        LAT 2 ISSUE
+.  00000058:  98 03 00                                        LAT 3 TOT
+.  0000005b:  52 02 00                                        EV RETIRED
 
-Sysbus is more than just a dummy qbus.  It's a software interface that
-provides useful stuff.  To use it, the device needs to be a
-SysBusDevice.  This leads to a partial answer: if the device profits
-from stuff we provide only to SysBusDevices, it should be one.
+If you want to disable the vSPE support, you can use the 'spe=off' cpu
+property:
 
-Perhaps the useful stuff could be separated from SysBusDevice.  Then
-this partial answer evaporates.
+./qemu-system-aarch64 \
+        -cpu host,spe=off -M virt,accel=kvm,gic-version=3 -nographic -m 2048M \
+        -kernel ./Image-new \
+        -initrd /boot/initrd.img-5.6.0-rc2+ \
+        -append "root=/dev/vda rw console=ttyAMA0" -nodefaults -serial stdio\
+        -drive if=none,file=./xenial.rootfs.ext4,id=hd0,format=raw \
+        -device virtio-blk-device,drive=hd0  \
 
-There is just one instance of TYPE_SYSTEM_BUS[2].  This leads to another
-partial answer: if the device can be part of another device, it should
-not be a SysBusDevice.
+Note:
+(1) Since the kernel patches are still under review, some of the macros
+    in the header files may be changed after merging. We may need to
+    update them accordingly. To be specific, if you want to have a try
+    on this patch series, you needs to replace on the kernel 5.5-rc2 based
+    series, and do minor changes:
 
-Sysbus also enables "dynamic" sysbus devices.  Shoehorning them into
-SysBusDevice may have been a mistake.
+    -#define KVM_CAP_ARM_SPE_V1 179
+    +#define KVM_CAP_ARM_SPE_V1 184
 
-> Cc: Markus Armbruster <armbru@redhat.com>
+(2) These patches only add vSPE support in KVM mode, for TCG mode, I'm
+    not sure whether we need to support it.
+(3) Just followed the 'sve' property, we only allow this feature to be
+    removed from CPUs which enable it by default when the host cpu support it.
 
-Cc: QOM maintainers for actual QOM expertise :)
+[1]https://community.arm.com/developer/ip-products/processors/b/processors-ip-blog/
+   posts/statistical-profiling-extension-for-armv8-a
+[2]https://www.spinics.net/lists/arm-kernel/msg776228.html
+[3]https://www.mail-archive.com/qemu-devel@nongnu.org/msg727588.html
 
+Haibo Xu (12):
+  update Linux headers with new vSPE macros
+  target/arm/kvm: spe: Add helper to detect SPE when using KVM
+  target/arm/cpu: spe: Add an option to turn on/off vSPE support
+  target/arm: spe: Only enable SPE from 5.2 compat machines.
+  target/arm/kvm: spe: Unify device attr operation helper
+  target/arm/kvm: spe: Add device init and set_irq operations
+  hw/arm/virt: Move post cpu realize check into its own function
+  hw/arm/virt: Move kvm pmu setup to virt_cpu_post_init
+  hw/arm/virt: spe: Add SPE fdt binding for virt machine
+  target/arm/cpu: spe: Enable spe to work with host cpu
+  target/arm/kvm: spe: Enable userspace irqchip support.
+  target/arm: spe: Add corresponding doc and test.
 
-[1] sysbus.h describes itself as "Devices attached directly to the main
-system bus".  I think that's an (unconscious?) attempt to rationalize
-away its peculiar role.
+ docs/system/arm/cpu-features.rst |  20 ++++++
+ hw/arm/virt-acpi-build.c         |   3 +
+ hw/arm/virt.c                    | 116 +++++++++++++++++++++++--------
+ include/hw/acpi/acpi-defs.h      |   3 +
+ include/hw/arm/virt.h            |   2 +
+ linux-headers/asm-arm64/kvm.h    |   4 ++
+ linux-headers/linux/kvm.h        |   2 +
+ target/arm/cpu.c                 |  11 +++
+ target/arm/cpu.h                 |  17 +++++
+ target/arm/cpu64.c               |  57 +++++++++++++++
+ target/arm/kvm.c                 |  10 +++
+ target/arm/kvm64.c               |  56 +++++++++++++--
+ target/arm/kvm_arm.h             |  18 +++++
+ target/arm/monitor.c             |   2 +-
+ tests/qtest/arm-cpu-features.c   |   9 +++
+ 15 files changed, 294 insertions(+), 36 deletions(-)
 
-[2] Exception: TYPE_MACIO_BUS (used by g3beige and mac99) is a subtype
-of TYPE_SYSTEM_BUS.
-
-
-> ---
->  hw/arm/tosa.c | 13 ++++++++-----
->  1 file changed, 8 insertions(+), 5 deletions(-)
->
-> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-> index f23651fd775..524d5fcd10b 100644
-> --- a/hw/arm/tosa.c
-> +++ b/hw/arm/tosa.c
-> @@ -79,7 +79,7 @@ static void tosa_microdrive_attach(PXA2xxState *cpu)
->      OBJECT_CHECK(TosaMiscGPIOState, (obj), TYPE_TOSA_MISC_GPIO)
-> =20
->  typedef struct TosaMiscGPIOState {
-> -    SysBusDevice parent_obj;
-> +    DeviceState parent_obj;
->  } TosaMiscGPIOState;
-> =20
->  static void tosa_reset(void *opaque, int line, int level)
-> @@ -96,7 +96,7 @@ static void tosa_misc_gpio_init(Object *obj)
->      qdev_init_gpio_in_named(dev, tosa_reset, "reset", 1);
->  }
-> =20
-> -static void tosa_gpio_setup(PXA2xxState *cpu,
-> +static void tosa_gpio_setup(MachineState *machine, PXA2xxState *cpu,
->                  DeviceState *scp0,
->                  DeviceState *scp1,
->                  TC6393xbState *tmio)
-> @@ -104,7 +104,10 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
->      DeviceState *misc_gpio;
->      LEDState *led[4];
-> =20
-> -    misc_gpio =3D sysbus_create_simple(TYPE_TOSA_MISC_GPIO, -1, NULL);
-> +    misc_gpio =3D qdev_new(TYPE_TOSA_MISC_GPIO);
-> +    object_property_add_child(OBJECT(machine), "pcb-container",
-> +                              OBJECT(misc_gpio));
-> +    qdev_realize_and_unref(misc_gpio, NULL, &error_fatal);
-> =20
->      /* MMC/SD host */
->      pxa2xx_mmci_handlers(cpu->mmc,
-> @@ -253,7 +256,7 @@ static void tosa_init(MachineState *machine)
->      scp0 =3D sysbus_create_simple("scoop", 0x08800000, NULL);
->      scp1 =3D sysbus_create_simple("scoop", 0x14800040, NULL);
-> =20
-> -    tosa_gpio_setup(mpu, scp0, scp1, tmio);
-> +    tosa_gpio_setup(machine, mpu, scp0, scp1, tmio);
-> =20
->      tosa_microdrive_attach(mpu);
-> =20
-> @@ -307,7 +310,7 @@ static const TypeInfo tosa_ssp_info =3D {
-> =20
->  static const TypeInfo tosa_misc_gpio_info =3D {
->      .name          =3D TYPE_TOSA_MISC_GPIO,
-> -    .parent        =3D TYPE_SYS_BUS_DEVICE,
-> +    .parent        =3D TYPE_DEVICE,
->      .instance_size =3D sizeof(TosaMiscGPIOState),
->      .instance_init =3D tosa_misc_gpio_init,
->      /*
+-- 
+2.17.1
 

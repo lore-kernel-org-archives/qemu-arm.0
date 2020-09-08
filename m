@@ -1,101 +1,101 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp490954lfq;
-        Tue, 8 Sep 2020 03:52:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwC5j0E8xnVK6DmjLn0PeGzIIJn3V/sDC55Be/pabkehf+tZsMdeNNjGdAtC+y4g4DAyrSe
-X-Received: by 2002:a25:c2c7:: with SMTP id s190mr32559417ybf.161.1599562373425;
-        Tue, 08 Sep 2020 03:52:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599562373; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp493415lfq;
+        Tue, 8 Sep 2020 03:56:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwy7WNya8a3mjejFDat2Fuc2uAmQYaXT/k0qP4tpwesgMOt04ycJtHt7uaY5q+kIpcWPcGZ
+X-Received: by 2002:a25:d304:: with SMTP id e4mr33261269ybf.226.1599562608737;
+        Tue, 08 Sep 2020 03:56:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599562608; cv=none;
         d=google.com; s=arc-20160816;
-        b=CZ/qlzmOdK+s72MCDIlMZk5jDz50clyQmYiA2cQ0DsgWd29sNbR3MGd2ElKoZWIKJ+
-         DdJTIDbQZnHdyDNniO8YPYaW1tYtGYr6+7wJbLBS1Pp8BtYrzWjigGsNO8PAo+M7cTZ0
-         fdhpjknKyk553UGjyPDXrBS183KIqxIo2jVrTkrwQpvD2ufpI1R1aM258NCYHPQgknsZ
-         nDfFL4yVWRRqSoQWIXUsUXb2EOUF95D9VqtyBYFWfANBp/zJDdwg4K8DhF0z8PLgtoRv
-         InM7uYgVRkbKfiYcd8sGIDvsqwZTmRVUKsykuFzVjGeO4T/8cyjEp4NBI1/u7idwuNr3
-         bgpw==
+        b=adw2uMzLIRZzQoFCwkbaB8HXnX7sM9KjdaJx/SpeFUwZIdv4wi8MPfD6s53+dAnXcJ
+         ZP5Ov4FO0o+2/0+/Of8maF+xmK3eSdo4joki44Hl+V5KBjMEFJH5pkc7o1emtXTWSLYD
+         6vcW3NNoWOjPjS7o29OBgNFebi3ZQf0C2GbC+HkDvmzzub5xMbSxSXcZigy/Urpvudg6
+         GkSplPXcymSiS+C3FXboTbkIBCFoC4zFaiBeILWtfduGeCIraSGdxqBSNmKtGoXnIvRE
+         7YePyFn9McGye8ooZP61lVioWSeZo1pMSIezjFWzaSkPAI0XmAFiteDMcEFFKdxT+PNQ
+         BvHg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=mQrCMpTrpm2Ph1NxZysYlWZwHihjh/8Y/i1cDZu2xgo=;
-        b=MdVrjZJXan6Kcu4fkjLYvflREv09/pBzpfebHOvJmRtXSqR7yy5fbWa1B0HqfQz0qn
-         gWIOTUPTY/jZp8u0eFDhafBHRBGfXYwYnMIxjyj+5dbpU244Phw0F7RlTukq8bYw5YfP
-         HgBCrU/PDxJ6zoQrqoi3K8RTOK0XU1+Bt+Guv8M3e7XPel/ocY4238G3Bo6sbcwHAbaZ
-         Y1ZVjOMoFEVV7Xj+aUPOR5VkdQd0hy3MgfJ3o0v3ZlSYhvBF8e3aq6mmzLTUygw+aLEQ
-         3gkS3wCDekSfkD18g06ZZcKdlwEhPzFlCF7IPID8us0PHGLtSs0If1iMahO6zrk0909h
-         T9yQ==
+        bh=GIbNL/nVH5BNe+CWhBWkidXimhE+y5MW5kJvjNQ4FpI=;
+        b=DqYdbVI8P2hN5O/u1WXhvub21JdwWZA6WwNKsjV6Irc6NMmieEz0zN0FNw+5cXUfMC
+         tm7COz7dFVsbthiGJMoIT+4q/N8bMF5UWgotn8eJp3jcrWdSCoEk8iP9hp+IB1lZO+vf
+         6LYwYwoZ/jZQe1TwsfRXFYAd+IJEREZ5ycRg9V1E8OsEh6NNgtHrHY64sE9EjdpRXBTN
+         MGUCb0KA44RAUh2Yaf1sfrL1LBNyXP66B4joTwbU2MVYpCiyGHcw0hia5J/psK7kfMM2
+         Jiv/muDClQ9X2/5et6eoN54HyRHh0/Yf0kR/XKeYP6CSbLX1gMP7S3kJGIAycGVUdY3o
+         QUFA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OESOpDBl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CyVQorHr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g5si17361330ybf.188.2020.09.08.03.52.53
+        by mx.google.com with ESMTPS id s3si6335388ybq.178.2020.09.08.03.56.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Sep 2020 03:52:53 -0700 (PDT)
+        Tue, 08 Sep 2020 03:56:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OESOpDBl;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CyVQorHr;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54096 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34358 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFbF6-0002j8-SX
-	for alex.bennee@linaro.org; Tue, 08 Sep 2020 06:52:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38864)
+	id 1kFbIu-0006ad-5g
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 06:56:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39838)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kFbEw-0002gz-Fd
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 06:52:42 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:36946
+ id 1kFbIm-0006ZI-Oe
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 06:56:40 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:35343
  helo=us-smtp-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kFbEu-0003oB-Te
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 06:52:42 -0400
+ id 1kFbIl-0004St-5e
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 06:56:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599562359;
+ s=mimecast20190719; t=1599562598;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=mQrCMpTrpm2Ph1NxZysYlWZwHihjh/8Y/i1cDZu2xgo=;
- b=OESOpDBlG3A9Gt+uzYlZBtkOmXDH1e7C0U38wYFZq6UgNNU4MO3+2t8uGLd7/NkluGtOaq
- cXGrv/z2GjW9sIgiFuj1kzpbQHL6WofaenIXPmEtI2L8QDSWergzNVV5YElPm3XMwoL+Iw
- Ct9Go5Lhg4eGlcRG9g0ggccn9D7yWRs=
+ bh=GIbNL/nVH5BNe+CWhBWkidXimhE+y5MW5kJvjNQ4FpI=;
+ b=CyVQorHrUBajeHaqzLqRBcNt0pA/e7hlRmf4PFfLkK1GcM4n/1Wh1icZ8udu8yLPQBJPZQ
+ XGaDkDea6BpJbI4PmJPkh94W2Ss9FpfkMMFPpJmFrbVsnVaXiRZVLY+0xLN1e8AUMu3riZ
+ hyWv53hWjrnMivgYifCk+WAmRjwz2k8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-174-C7H542CsPuyyuuZNfxfdeQ-1; Tue, 08 Sep 2020 06:52:36 -0400
-X-MC-Unique: C7H542CsPuyyuuZNfxfdeQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-293-Uoa5l87BOjOghEpUzOdnbA-1; Tue, 08 Sep 2020 06:56:37 -0400
+X-MC-Unique: Uoa5l87BOjOghEpUzOdnbA-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3F92F8797E1;
- Tue,  8 Sep 2020 10:52:35 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AA977AF200;
+ Tue,  8 Sep 2020 10:56:35 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.40.192.171])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 91DF25C1BB;
- Tue,  8 Sep 2020 10:52:33 +0000 (UTC)
-Date: Tue, 8 Sep 2020 12:52:30 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0A52C82461;
+ Tue,  8 Sep 2020 10:56:33 +0000 (UTC)
+Date: Tue, 8 Sep 2020 12:56:31 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Haibo Xu <haibo.xu@linaro.org>
-Subject: Re: [PATCH v2 04/12] target/arm: spe: Only enable SPE from 5.2
- compat machines.
-Message-ID: <20200908105230.4c4ddlvspfjknftr@kamzik.brq.redhat.com>
+Subject: Re: [PATCH v2 05/12] target/arm/kvm: spe: Unify device attr
+ operation helper
+Message-ID: <20200908105631.etggiu56l65ohlyq@kamzik.brq.redhat.com>
 References: <cover.1599549462.git.haibo.xu@linaro.org>
- <7ed8b1ff7a61132c6520f87213c61784ab0c331b.1599549462.git.haibo.xu@linaro.org>
+ <45eecae26272efc7a09837573cd5278296b58dc5.1599549462.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <7ed8b1ff7a61132c6520f87213c61784ab0c331b.1599549462.git.haibo.xu@linaro.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <45eecae26272efc7a09837573cd5278296b58dc5.1599549462.git.haibo.xu@linaro.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=drjones@redhat.com;
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=drjones@redhat.com;
  helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 02:10:53
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 00:33:58
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -103,7 +103,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,61 +116,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: philmd@redhat.com, qemu-arm@nongnu.org, richard.henderson@linaro.org,
- qemu-devel@nongnu.org, peter.maydell@linaro.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, richard.henderson@linaro.org,
+ qemu-devel@nongnu.org, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jDzOehPCibRK
+X-TUID: snkxeVl5NTW3
 
-On Tue, Sep 08, 2020 at 08:13:22AM +0000, Haibo Xu wrote:
-> Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
-> ---
->  hw/arm/virt.c         | 7 +++++++
->  include/hw/arm/virt.h | 1 +
->  2 files changed, 8 insertions(+)
+On Tue, Sep 08, 2020 at 08:13:23AM +0000, Haibo Xu wrote:
+> From: Andrew Jones <drjones@redhat.com>
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index acf9bfbece..3f6d26c531 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1830,6 +1830,10 @@ static void machvirt_init(MachineState *machine)
->              object_property_set_bool(cpuobj, "pmu", false, NULL);
->          }
->  
-> +        if (vmc->no_spe && object_property_find(cpuobj, "spe", NULL)) {
-> +            object_property_set_bool(cpuobj, "spe", false, NULL);
-> +        }
-> +
->          if (object_property_find(cpuobj, "reset-cbar", NULL)) {
->              object_property_set_int(cpuobj, "reset-cbar",
->                                      vms->memmap[VIRT_CPUPERIPHS].base,
-> @@ -2553,8 +2557,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
->  
->  static void virt_machine_5_1_options(MachineClass *mc)
->  {
-> +    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-> +
->      virt_machine_5_2_options(mc);
->      compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
-> +    vmc->no_spe = true;
+> Rename kvm_arm_pmu_set_attr() to kvm_arm_set_device_attr(),
+> So both the vPMU and vSPE device can share the same API.
+> 
+> Signed-off-by: Andrew Jones <drjones@redhat.com>
+
+Looks like a faithful port of what I posted as a hunk of another patch, so
+I'll accept the authorship. Please also add you s-b though.
+
+Thanks,
+drew
+
+> ---
+>  target/arm/kvm64.c | 11 ++++++-----
+>  1 file changed, 6 insertions(+), 5 deletions(-)
+> 
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index ef1e960285..8ffd31ffdf 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -397,19 +397,20 @@ static CPUWatchpoint *find_hw_watchpoint(CPUState *cpu, target_ulong addr)
+>      return NULL;
 >  }
->  DEFINE_VIRT_MACHINE(5, 1)
 >  
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index dff67e1bef..72c269aaa5 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -126,6 +126,7 @@ typedef struct {
->      bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
->      bool kvm_no_adjvtime;
->      bool acpi_expose_flash;
-> +    bool no_spe;
->  } VirtMachineClass;
+> -static bool kvm_arm_pmu_set_attr(CPUState *cs, struct kvm_device_attr *attr)
+> +static bool kvm_arm_set_device_attr(CPUState *cs, struct kvm_device_attr *attr,
+> +                                    const char *name)
+>  {
+>      int err;
 >  
->  typedef struct {
+>      err = kvm_vcpu_ioctl(cs, KVM_HAS_DEVICE_ATTR, attr);
+>      if (err != 0) {
+> -        error_report("PMU: KVM_HAS_DEVICE_ATTR: %s", strerror(-err));
+> +        error_report("%s: KVM_HAS_DEVICE_ATTR: %s", name, strerror(-err));
+>          return false;
+>      }
+>  
+>      err = kvm_vcpu_ioctl(cs, KVM_SET_DEVICE_ATTR, attr);
+>      if (err != 0) {
+> -        error_report("PMU: KVM_SET_DEVICE_ATTR: %s", strerror(-err));
+> +        error_report("%s: KVM_SET_DEVICE_ATTR: %s", name, strerror(-err));
+>          return false;
+>      }
+>  
+> @@ -426,7 +427,7 @@ void kvm_arm_pmu_init(CPUState *cs)
+>      if (!ARM_CPU(cs)->has_pmu) {
+>          return;
+>      }
+> -    if (!kvm_arm_pmu_set_attr(cs, &attr)) {
+> +    if (!kvm_arm_set_device_attr(cs, &attr, "PMU")) {
+>          error_report("failed to init PMU");
+>          abort();
+>      }
+> @@ -443,7 +444,7 @@ void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
+>      if (!ARM_CPU(cs)->has_pmu) {
+>          return;
+>      }
+> -    if (!kvm_arm_pmu_set_attr(cs, &attr)) {
+> +    if (!kvm_arm_set_device_attr(cs, &attr, "PMU")) {
+>          error_report("failed to set irq for PMU");
+>          abort();
+>      }
 > -- 
 > 2.17.1
->
-
-Reviewed-by: Andrew Jones <drjones@redhat.com> 
+> 
+> 
 

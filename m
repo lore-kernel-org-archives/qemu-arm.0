@@ -1,104 +1,103 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp394918lfq;
-        Tue, 8 Sep 2020 01:16:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxpUs/VswHIzTA2W3rd/EPAJQymRbcKS/HC67FQiLscH4//+NCIB3sBlo3fqIOwn/WwWs3S
-X-Received: by 2002:a25:2394:: with SMTP id j142mr23184030ybj.115.1599552993896;
-        Tue, 08 Sep 2020 01:16:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599552993; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp395485lfq;
+        Tue, 8 Sep 2020 01:17:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/QkcRnlBmJwWmb0/T8qH/hmYMlRtiAHuRnU+Tfu9/ttmAHAr1P3Jk3ekFcviUA5fzW7gr
+X-Received: by 2002:a25:3201:: with SMTP id y1mr22149488yby.213.1599553047218;
+        Tue, 08 Sep 2020 01:17:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599553047; cv=none;
         d=google.com; s=arc-20160816;
-        b=OXv6eb8P0CFR9RWAShhabNXs1tJpAhkNMVaEorMIIb7EOGTyHWysVDbvo6PaozBM6a
-         8yZlck+avOdoHrfvUWJ/kC6S2uG9tNttxTiYh5ztztUeCRRsrqQsSyPYRtUEQ2VQMI97
-         yrAuiKMtFZZxOkSFqB5TIl9wsTCa+R8P5WsdMpbsv0aVdsyvqhGyaIB3t9Dh1J6aDOsw
-         OiVpkTB++WXQZT6u9aJ3HbHsfpRCRX9rpZDLZNzYAZak1aNJWxdKUhjRHzs7MEpYUekw
-         KsfuHGT66BGb1XBWAxdf2NO9l+5M1Crxfjy2Itd23EuRTuo2Rnq+FRBmQFr7ti5kXf5J
-         7vJw==
+        b=i7+YwnSIgcfe1VQRQrW3vtA6XOunmZQRRhaJhKpTdRAKNfrlcVev273XhFg5ayTDJm
+         UZpuMC3CkplItAfAzeffZVuAowhrQFMrHlaJ9XO/rV0jtBvq8+14OJsNWBTNEBQnKVLS
+         UCC9yK9hxiX3MCdQR8Sng5tG8otxscyvOAjxHdvCFfjzWQp/CJgHhn9GAkX2RJrIfSmM
+         wjqPtk3ij0FNG6RSzr5008ikCJpY3AjMZaWMXicJx4CpOYriZiw9u4tQAQeVCapOi78K
+         /3TbA2f/gXBCWpoRw4NI5E/VLNYNJrfjKdAKlYsvkMzmWulQTt1NHv0S/EcZYs5hzY5x
+         XGbg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=sSfBFaYDNM91Wy+aR//OSZgCQwJ7nAz+b7+r07t012o=;
-        b=o0Ot9hYmNK/llQ2D0V35068Hlv/io2TSCFrgaiQv+TGus1r2cBXlmYxLmq3ZwhoQ0q
-         PvIU31GdprDttEWbJtW9jjx9QKDe2ExgJcI/9y/kwFBFSQsXeQFFhkfuZRYhjiE2/rIs
-         t8baygToLlhAEeYgHyPsu75TwuTjPjZCAzHtCNbvRD8f44q/84G5DD/OuLTTX7pX1rUe
-         wC2gQh4qN2E8c+v5G/o1ZWhtsxYrkbnESvRdI0x79oERotxcpofnsrRIAloVtRVV1mOy
-         W9v6ocax2FHKy8dXphOuoWALB28FvXTlQc2VJkjiA+Z/GLWZroky6n4a6ZuhLX2VgTKb
-         2mhQ==
+        bh=zq8jUh6rr55C3iWlgIX0sFstenVLmlXQeyrdeGeUxsU=;
+        b=xZtaW1N/57GO4E06O0zZRJMx0IgJS4vnvaJPdgp0GV15DRQMjY8DsDSTiGi8xSY7IL
+         HS9Al0f/mg9P2by8loXjbcxlvA6oXXj9CVSdQASARvHz+EycBAzxCXJRzPSSZPsurv41
+         XgETwD500x4YjV/JEq4c0t2atdsCGeA0dIQfaGlbfEMLu2fTafwLgBngWuhc7GHQ0mQ3
+         +2S0QXuSZaz/aWDnIv6EZbS2x/jUjQNmiVCIyHCZZdrW/fr+uc92IqTbUhRMuoN0jPSM
+         qJq+r69x6mSK6uO6LHMrt4OubzNPr+GobxzXiUn+5SSJ7DLzrdMoz57BwzLCSvULbipq
+         KcvQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qbQZsJ6C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=QfFfk0Hu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d38si19734530ybi.51.2020.09.08.01.16.33
+        by mx.google.com with ESMTPS id k22si14183788ybk.444.2020.09.08.01.17.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Sep 2020 01:16:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Sep 2020 01:17:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=qbQZsJ6C;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=QfFfk0Hu;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36220 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40820 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFYnp-0002kH-8k
-	for alex.bennee@linaro.org; Tue, 08 Sep 2020 04:16:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58370)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kFYog-0004bK-Jc
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 04:17:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kFYlD-0005j5-PC
- for qemu-devel@nongnu.org; Tue, 08 Sep 2020 04:13:51 -0400
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:39099)
+ id 1kFYlN-0006B4-O3
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:14:01 -0400
+Received: from mail-pj1-x1042.google.com ([2607:f8b0:4864:20::1042]:37292)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kFYl9-0000R2-Cd
- for qemu-devel@nongnu.org; Tue, 08 Sep 2020 04:13:51 -0400
-Received: by mail-pg1-x542.google.com with SMTP id v15so9508291pgh.6
- for <qemu-devel@nongnu.org>; Tue, 08 Sep 2020 01:13:46 -0700 (PDT)
+ id 1kFYlL-0000VM-Uo
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:14:01 -0400
+Received: by mail-pj1-x1042.google.com with SMTP id kk9so5266081pjb.2
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 01:13:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=sSfBFaYDNM91Wy+aR//OSZgCQwJ7nAz+b7+r07t012o=;
- b=qbQZsJ6CF8jpwRRRounCQp5bL88YG0Br0PMNnQ/UvzZgAQEQPAkdgp3MXCVMn7SZOB
- 7levT9Y6Qbb5tD2xMCJmr4nv9iNl6QhxxT4w0tWFjdb1Lfo7VxWowR+K9I707xX25TW6
- bZFoN04bcRKuQ4sYFyFPbhc/d2YcnydUmQIdR74hv/nGVVJ7GqDJXkqR4LMBlf8g0R7t
- +jvvIl1ZEjq7W6Rk3MMdmwwKGvZ/nVG4qQkglGWbYmSiydsnBxE+YRnZPBqKjefLmR8e
- 5uFxj/esmZKg3XMSiooAZg3GkSXKZ2zdqz5Mu2oj4S9cqqW2UaATx7hWpIWUFLY8cVdD
- Kitw==
+ bh=zq8jUh6rr55C3iWlgIX0sFstenVLmlXQeyrdeGeUxsU=;
+ b=QfFfk0HucHpO/x5Jc0DCHPv1/TNxgbR0bKs0thQNWDve3EYX38Od2x6m0shvaVR3lm
+ 9IPFIl3SxZp1ttV76d2ZXNjFdLiO58rjGbORvuCAE5b8JZncIo2sVSmId5z8POfV1aH9
+ mup4t48Yh6gCUidgmvJr7xt+opOUkEC8neR7IcPYhlSxfw1GOLIR7Gp6yRjKDAcniPay
+ xPVMotf6YWG9sZvVyZXOEoAn8d2z5K75Fz7Y3iWfEOpVtYORH/cpPhYzETIDxnh7WFgj
+ 1BJ4jDdOBjd04i05OZ6LPLc+Y4Bq4tgN+lMr5GatQcVaVRxbQooWukUPSyU8MGGUsmWB
+ AS3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=sSfBFaYDNM91Wy+aR//OSZgCQwJ7nAz+b7+r07t012o=;
- b=aT7birlQOxTos1F/SqSckayU88Gpw5yYc7LQa5wJURo3bXr8p/HtPQAijevWJR+PdJ
- cxdaNb8A54xnb5iu0Xi5nkobokbYy8J+M7S15jb/Z9xNGzZNq6DHEEYSC4jY9Kl01n3u
- ZeiXF8s6n3cNdLp9/15nKdSY0+1WGffL/TUSvKbrEEI2wfF8CW9WC0h1J8dtRXbH3o6Z
- 5HA3gF/Nm08Hje/qSbTGgFmF6C+VZQIwixIPkFlwsjEz8zTEc6oGUF7fbYF4bNn2Q5tv
- /rVJ91lQPY2tN/KD2t5L30dfotD/DuT3DbMGiV5sA65FFBHi2zhaBb0p1QSZPXNh289I
- ht/g==
-X-Gm-Message-State: AOAM5328Y0NzsjaTfKrSSpzTx7VsXe6vGgYh8TSxJsqSsXnhynJyvAG4
- TZbteidj6GMvl9DjTU5huSEql8nI//6gjTY=
-X-Received: by 2002:a62:7c82:0:b029:13c:1611:66b9 with SMTP id
- x124-20020a627c820000b029013c161166b9mr22028120pfc.4.1599552826033; 
- Tue, 08 Sep 2020 01:13:46 -0700 (PDT)
+ bh=zq8jUh6rr55C3iWlgIX0sFstenVLmlXQeyrdeGeUxsU=;
+ b=e77glLRoKQVtA3bnBWDtm2j8wWJFlaIkhWCu2hNqRnZmFuM7L7uaDdFUQzQeDtjNiz
+ GZKXl7mgS4CUA5pk0fhTMMCkM1+FWeU3zByZloz2yVsIJWoNUGg2NMUWVbfspLRt2nQL
+ UzpT4vFr1JywqN/v4FJQrLYpmznefnZByU+qWxbPtKNA12vT+DaHFfnsbuRU0QFZ3Rpl
+ sm+kwXtIMA33YeBp45o3d5Pgt6iMjJxr0w07ATJam1oKgVGXTWofscgnZJP8WZvOB8EB
+ 4SduE6Vfsu2J4IfG5430kp+wL8crvyepU24bso/PNOaaJREpf95D1d9CNzGFkWhDHN/C
+ jr2Q==
+X-Gm-Message-State: AOAM531zk7wPtqkb4oMnLfBaMftMqHON0x9ymlHPG/yKZpUmvWzMRJ7U
+ LhaglCdZPSF6SMh4y1SsVFkf
+X-Received: by 2002:a17:90b:1212:: with SMTP id
+ gl18mr2103309pjb.138.1599552837216; 
+ Tue, 08 Sep 2020 01:13:57 -0700 (PDT)
 Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id m190sm16934788pfm.184.2020.09.08.01.13.45
+ by smtp.gmail.com with ESMTPSA id m190sm16934788pfm.184.2020.09.08.01.13.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2020 01:13:45 -0700 (PDT)
+ Tue, 08 Sep 2020 01:13:56 -0700 (PDT)
 From: Haibo Xu <haibo.xu@linaro.org>
 To: drjones@redhat.com,
 	richard.henderson@linaro.org
-Subject: [PATCH v2 03/12] target/arm/cpu: spe: Add an option to turn on/off
- vSPE support
-Date: Tue,  8 Sep 2020 08:13:21 +0000
-Message-Id: <77b57f43d4fa6319cfa666d6c77e39ec76c44d88.1599549462.git.haibo.xu@linaro.org>
+Subject: [PATCH v2 12/12] target/arm: spe: Add corresponding doc and test.
+Date: Tue,  8 Sep 2020 08:13:30 +0000
+Message-Id: <f85b67a841ad86f461c7dc0c8f5f8b1e5d490da5.1599549462.git.haibo.xu@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1599549462.git.haibo.xu@linaro.org>
 References: <cover.1599549462.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=haibo.xu@linaro.org; helo=mail-pg1-x542.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1042;
+ envelope-from=haibo.xu@linaro.org; helo=mail-pj1-x1042.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -107,170 +106,113 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
  qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X7lNXNJXVh48
-
-Adds a spe=[on/off] option to enable/disable vSPE support in
-guest vCPU.
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kPfeauXFXqEZ
 
 Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 ---
- target/arm/cpu.c   |  6 ++++++
- target/arm/cpu.h   | 13 ++++++++++++
- target/arm/cpu64.c | 52 ++++++++++++++++++++++++++++++++++++++++++++++
- 3 files changed, 71 insertions(+)
+ docs/system/arm/cpu-features.rst | 20 ++++++++++++++++++++
+ target/arm/monitor.c             |  2 +-
+ tests/qtest/arm-cpu-features.c   |  9 +++++++++
+ 3 files changed, 30 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index c179e0752d..f211958eaa 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1310,6 +1310,12 @@ void arm_cpu_finalize_features(ARMCPU *cpu, Error **errp)
-             error_propagate(errp, local_err);
-             return;
+diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+index 2d5c06cd01..5b81b9a560 100644
+--- a/docs/system/arm/cpu-features.rst
++++ b/docs/system/arm/cpu-features.rst
+@@ -344,3 +344,23 @@ verbose command lines.  However, the recommended way to select vector
+ lengths is to explicitly enable each desired length.  Therefore only
+ example's (1), (4), and (6) exhibit recommended uses of the properties.
+ 
++SPE CPU Property
++==================
++
++The SPE CPU property `spe` is used to enable or disable the SPE feature,
++just as the `pmu` CPU property completely enables or disables the PMU.
++
++Currently, this property is only available with KVM mode, and is enabled
++by default if KVM support it. When KVM is enabled, if the host does not
++support SPE, then an error is generated when attempting to enable it.
++
++Following are 2 examples to use this property:
++
++  1) Disable SPE::
++
++     $ qemu-system-aarch64 -M virt,accel=kvm -cpu max,spe=off
++
++  2) Implicitly enable it with the `host` CPU type if host cpu
++     support it::
++
++     $ qemu-system-aarch64 -M virt,accel=kvm -cpu host
+diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+index ba6e01abd0..1b8f08988a 100644
+--- a/target/arm/monitor.c
++++ b/target/arm/monitor.c
+@@ -99,7 +99,7 @@ QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
+  * then the order that considers those dependencies must be used.
+  */
+ static const char *cpu_model_advertised_features[] = {
+-    "aarch64", "pmu", "sve",
++    "aarch64", "pmu", "spe", "sve",
+     "sve128", "sve256", "sve384", "sve512",
+     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+index 77b5e30a9c..4d393fb2e2 100644
+--- a/tests/qtest/arm-cpu-features.c
++++ b/tests/qtest/arm-cpu-features.c
+@@ -494,6 +494,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+ 
+     if (g_str_equal(qtest_get_arch(), "aarch64")) {
+         bool kvm_supports_sve;
++        bool kvm_supports_spe;
+         char max_name[8], name[8];
+         uint32_t max_vq, vq;
+         uint64_t vls;
+@@ -512,8 +513,10 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+             "with KVM on this host", NULL);
+ 
+         assert_has_feature(qts, "host", "sve");
++        assert_has_feature(qts, "host", "spe");
+         resp = do_query_no_props(qts, "host");
+         kvm_supports_sve = resp_get_feature(resp, "sve");
++        kvm_supports_spe = resp_get_feature(resp, "spe");
+         vls = resp_get_sve_vls(resp);
+         qobject_unref(resp);
+ 
+@@ -573,10 +576,16 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+         } else {
+             g_assert(vls == 0);
          }
 +
-+        arm_cpu_spe_finalize(cpu, &local_err);
-+        if (local_err != NULL) {
-+            error_propagate(errp, local_err);
-+            return;
++        if (kvm_supports_spe) {
++                assert_set_feature(qts, "host", "spe", false);
++                assert_set_feature(qts, "host", "spe", true);
 +        }
+     } else {
+         assert_has_not_feature(qts, "host", "aarch64");
+         assert_has_not_feature(qts, "host", "pmu");
+         assert_has_not_feature(qts, "host", "sve");
++        assert_has_not_feature(qts, "host", "spe");
      }
- }
  
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index a1c7d8ebae..baf2bbcee8 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -24,6 +24,7 @@
- #include "hw/registerfields.h"
- #include "cpu-qom.h"
- #include "exec/cpu-defs.h"
-+#include "qapi/qapi-types-common.h"
- 
- /* ARM processors have a weak memory model */
- #define TCG_GUEST_DEFAULT_MO      (0)
-@@ -196,9 +197,11 @@ typedef struct {
- #ifdef TARGET_AARCH64
- # define ARM_MAX_VQ    16
- void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp);
-+void arm_cpu_spe_finalize(ARMCPU *cpu, Error **errp);
- #else
- # define ARM_MAX_VQ    1
- static inline void arm_cpu_sve_finalize(ARMCPU *cpu, Error **errp) { }
-+static inline void arm_cpu_spe_finalize(ARMCPU *cpu, Error **errp) { }
- #endif
- 
- typedef struct ARMVectorReg {
-@@ -829,6 +832,8 @@ struct ARMCPU {
-     bool has_el3;
-     /* CPU has PMU (Performance Monitor Unit) */
-     bool has_pmu;
-+    /* CPU has SPE (Statistical Profiling Extension) */
-+    OnOffAuto has_spe;
-     /* CPU has VFP */
-     bool has_vfp;
-     /* CPU has Neon */
-@@ -3869,6 +3874,14 @@ static inline bool isar_feature_aa64_pmu_8_4(const ARMISARegisters *id)
-         FIELD_EX64(id->id_aa64dfr0, ID_AA64DFR0, PMUVER) != 0xf;
- }
- 
-+/*
-+ * Currently we don't differentiate between the ARMv8.2-SPE and ARMv8.3-SPE.
-+ */
-+static inline bool isar_feature_aa64_spe(const ARMISARegisters *id)
-+{
-+    return FIELD_EX64(id->id_aa64dfr0, ID_AA64DFR0, PMSVER) != 0;
-+}
-+
- static inline bool isar_feature_aa64_rcpc_8_3(const ARMISARegisters *id)
- {
-     return FIELD_EX64(id->id_aa64isar1, ID_AA64ISAR1, LRCPC) != 0;
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 3c2b3d9599..4997c4a3c0 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -572,6 +572,55 @@ void aarch64_add_sve_properties(Object *obj)
-     }
- }
- 
-+void arm_cpu_spe_finalize(ARMCPU *cpu, Error **errp)
-+{
-+    uint64_t t;
-+    uint32_t value = 0;
-+
-+    if (cpu->has_spe == ON_OFF_AUTO_AUTO) {
-+        if (kvm_enabled() && kvm_arm_spe_supported()) {
-+            cpu->has_spe = ON_OFF_AUTO_ON;
-+        } else {
-+            cpu->has_spe = ON_OFF_AUTO_OFF;
-+        }
-+    } else if (cpu->has_spe == ON_OFF_AUTO_ON) {
-+        if (!kvm_enabled() || !kvm_arm_spe_supported()) {
-+            error_setg(errp, "'spe' cannot be enabled on this host");
-+            return;
-+        }
-+    }
-+
-+    /*
-+     * According to the ARM ARM, the ID_AA64DFR0[PMSVER] currently
-+     * support 3 values:
-+     *
-+     * 0b0000: SPE not implemented
-+     * 0b0001: ARMv8.2-SPE implemented
-+     * 0b0010: ARMv8.3-SPE implemented
-+     *
-+     * But the kernel KVM API didn't expose all these 3 values, and
-+     * we can only get whether the SPE feature is supported or not.
-+     * So here we just set the PMSVER to 1 if this feature was supported.
-+     */
-+    if (cpu->has_spe == ON_OFF_AUTO_ON) {
-+        value = 1;
-+    }
-+
-+    t = cpu->isar.id_aa64dfr0;
-+    t = FIELD_DP64(t, ID_AA64DFR0, PMSVER, value);
-+    cpu->isar.id_aa64dfr0 = t;
-+}
-+
-+static bool arm_spe_get(Object *obj, Error **errp)
-+{
-+    return ARM_CPU(obj)->has_spe != ON_OFF_AUTO_OFF;
-+}
-+
-+static void arm_spe_set(Object *obj, bool value, Error **errp)
-+{
-+    ARM_CPU(obj)->has_spe = value ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
-+}
-+
- /* -cpu max: if KVM is enabled, like -cpu host (best possible with this host);
-  * otherwise, a CPU with as many features enabled as our emulation supports.
-  * The version of '-cpu max' for qemu-system-arm is defined in cpu.c;
-@@ -721,6 +770,9 @@ static void aarch64_max_initfn(Object *obj)
-     aarch64_add_sve_properties(obj);
-     object_property_add(obj, "sve-max-vq", "uint32", cpu_max_get_sve_max_vq,
-                         cpu_max_set_sve_max_vq, NULL, NULL);
-+
-+    cpu->has_spe = ON_OFF_AUTO_AUTO;
-+    object_property_add_bool(obj, "spe", arm_spe_get, arm_spe_set);
- }
- 
- static const ARMCPUInfo aarch64_cpus[] = {
+     qtest_quit(qts);
 -- 
 2.17.1
 

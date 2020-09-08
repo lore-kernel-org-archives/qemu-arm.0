@@ -1,141 +1,151 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp771003lfq;
-        Tue, 8 Sep 2020 09:59:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwpQ+8CzM/J76C+xl2kI4/IbIhn6ko1BJPq38B3WOha4jDtnIiGtvtnj3WWPlUAojmqn3ZH
-X-Received: by 2002:a25:4145:: with SMTP id o66mr756842yba.499.1599584398262;
-        Tue, 08 Sep 2020 09:59:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599584398; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp834311lfq;
+        Tue, 8 Sep 2020 11:24:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzmd1yZsPLX2niWbbfmS3GBwVC1fwU8zXayYLaQ2tNsKKi6m3oKnOXvmvle7fP8xY3awxA
+X-Received: by 2002:a25:c87:: with SMTP id 129mr190507ybm.241.1599589492992;
+        Tue, 08 Sep 2020 11:24:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599589492; cv=none;
         d=google.com; s=arc-20160816;
-        b=NuvfdlDEQeswItI7YQCRP+M2bpYs/RzOVQ3CGp+rIXbLomailtBaqvQU5rG0OUuijj
-         f25kMNE80n5x4Xe7yJ5wDEdDjXxbCeLi+wVWRpsKVqFcy14FIurKPxG0gpRadBl6UJc5
-         1joT6kT1eLym5GQESLn1kCMpGl7sooKowkgQ+VRqN1XbRbZxb3nGyNRbQX+H6lZbTUBG
-         vgzr4i+S6ZT5AwAN5RT1mKZyjxswDKgelVF0xklRV+Xem/TRFOli+w1LrCXO6JKKAR7o
-         smxpDBTI7D3msv4FlcjlyNI/fekbdt64rjdN9RFffShpbcpF985liWvEHqsSX7L6G83g
-         xLeA==
+        b=mFOFG1+Jtx45+sGdob30LvwShciuxKtgCSSWpLfJjRCIDw2mSzpL5mss3VO2Gl0HhZ
+         tsSrHJP98udo9sRB4f0jNXI1Kq91b1ZMIBYkzN65HtJ0hi2c5QW70wn/xNOm5/NGuckH
+         KnjpigzPs6Oi3St9Na59ryJETnLnXRkrriqZUsry24gjsw3V0I+EXoXCxXG1U/UxK+9K
+         x5WY3e0rCJ9RUrGpGNPPivAd6vRssJm8UkcgbbM3NHWyQ3XaqKV9utBrqz7Ygvdl3szE
+         ECAHeqHuw0fx5MgEfHl25eMa/MSYve5EZF2Y/rKjI+GxB403+pcziUJAEYXZYnALPbbM
+         erMQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:references:to:from:subject:dkim-signature;
-        bh=nSBgklw4wGsNqIPp9QVuYHwaBYmm3hYIFyQRgN8Vg10=;
-        b=AK/Lj7EQzTt/G8DVXSFIiSShzwcPrf08FsP+WS4pvppEmIuij/dlIA3yFfsERNMUQC
-         AtnjiiongH2S0w9Wp9sIwLq5k4STwCaTAfUXBd/X5WXvc036k/2JjSyYKL8bO8ql99t9
-         3FhsSvja7Zz5t0glXQbNZWwmi6LZamfU4wsRKQyHPGHRltDgd5jp1MH6+mxJ8Y97pm+H
-         nap2ELDSByG2bojK306hComlb+HyrnP1pBa485L2J8voAwKGkE1cRfhELQNoeobx5l1y
-         Ac2rZ2T7KvUsu2qsxzNrCXR/KkqQUY9VW2zN8/HBoLadn6skELRnuBXjVd2bjNQ73on7
-         32Jg==
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject:dkim-signature;
+        bh=j/cmPbRIq1rjarD6Gg3MFpxG71LKybNJQBlGBLQ5drw=;
+        b=XGqQ3Nc2BE+kp10Iak5k68ntvctGZMmbdkzUJO9cmdT6XKBc3xB+swE+ZEuxQ0e+7J
+         0rnM/Pg4JgEVqLuVl/fd+vudsbag+U/6+DPRfzvwrvWYwwK893aiu44EJ4g0r6AjFU72
+         +7k+WIq/a9pHHnOyICDLJUwzeU9ONjV6T2PwVAdHXiWha09D+SrhgDEMfY03eXYgmvd9
+         IMN2sRK0fAy72AJoIgLbF77mUCg9O2rB3R/Nhnyx5DzJ3ut8TnkNb8Mb3d2DkwZyf21A
+         P88gzidymomzSsxdI+HCAK+sxLVaBnFpIIkeEnETyyLiwqdnE4SWYyy//EyTteuWMUCZ
+         bdPQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XuXyzkLi;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PhzwQXH5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d192si17858355ybf.426.2020.09.08.09.59.58
+        by mx.google.com with ESMTPS id 136si174162ybe.375.2020.09.08.11.24.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Sep 2020 09:59:58 -0700 (PDT)
+        Tue, 08 Sep 2020 11:24:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XuXyzkLi;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PhzwQXH5;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:54314 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51772 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFgyL-0006LD-KF
-	for alex.bennee@linaro.org; Tue, 08 Sep 2020 12:59:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55298)
+	id 1kFiIW-0006X8-5t
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 14:24:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kFgxP-0004pQ-Ak; Tue, 08 Sep 2020 12:58:59 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36619)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kFgxM-0004kU-ED; Tue, 08 Sep 2020 12:58:59 -0400
-Received: by mail-wm1-x342.google.com with SMTP id z9so77284wmk.1;
- Tue, 08 Sep 2020 09:58:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=nSBgklw4wGsNqIPp9QVuYHwaBYmm3hYIFyQRgN8Vg10=;
- b=XuXyzkLiZBNi35JspGu2X6khC1gmJ5vzWL8NDw+UvO4yJB/GZ9MZoPkh+VXLD+jrEX
- hwdTIRg/wcZwQAkZ7RGHCMO6gA9Mm3vX7UV4nCoc5/1FqVpyLeuzAt7Afz2SSvd/ev3j
- HXImYJp+1XEQ63tFpTdwpCchB/OD3R40lGLjTFiL74d0xSJyuvE3QBp4Z+EbESkQIFTY
- LFx2vPMGHBIEJ7cdoPHMdwJLdLJsI0Bg4jOnACkjIicNW+xD3TuxwWt2h6buwLyIbHJR
- I3qGK59g/4zhNIXkXiOkiktgJQTLMu64sknIPi33w5yMl5JCZr82mr45qcMzFE/zr2rh
- Demg==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFiIQ-0006Wv-G8
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 14:24:46 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:54378
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFiIN-0007mM-B5
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 14:24:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599589482;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=j/cmPbRIq1rjarD6Gg3MFpxG71LKybNJQBlGBLQ5drw=;
+ b=PhzwQXH580FwitIP9JqRaaI8yC908wv52/In+3ES1tnzDGCxrWI+6YGnd2JPqHmviAQxAp
+ SVpX6EbyvI5y+hOIzM4535CGy4x5RXXH5pLtYSV/9IN9slcdA1w2kdlcl4prG2kKTSImtA
+ 4uFiO41imDJLG6okT4ShjN3CIs9QgGM=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-414-lWzfPyaWMAezKbVqeLiq5g-1; Tue, 08 Sep 2020 14:24:40 -0400
+X-MC-Unique: lWzfPyaWMAezKbVqeLiq5g-1
+Received: by mail-wm1-f70.google.com with SMTP id m25so78534wmi.0
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 11:24:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
+ h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=nSBgklw4wGsNqIPp9QVuYHwaBYmm3hYIFyQRgN8Vg10=;
- b=AePngDTG3zs9RHqRCHGxXMbow+6r6GrT2hs9peilXHiFtZqRyiWR12Z28K/HoU39r/
- dGZH/MKRZaA56L1ulIaT63Seiz8uDnYRnmlNxShodwqF9AeQIDixLYVgwmiJ+rXIK51Q
- oz8qiqOLEEvi64dLcHRdBrYnWlt1Vn8oKtmXEBCsBQ1Ex4t9i1DKhafR5bi3qtQrcx88
- BVKzphmd43OvlNhcLZm9sWGMcXmTt4aq51RrjdJ3yYJ+mfjrlMDrwH7NJbnkCWMax1Vo
- vvUmPZjS9ZHXVU3gz0cvBXY0Z8b5a+BTBt4Fm7IlkSdqZGtLOBF3ncIlwwZTf/jpOJZn
- 9oKQ==
-X-Gm-Message-State: AOAM532yPxt19ayF9BE/c9ssDtE8fSrJ3yhDFRwxAltQzx8OrhZeASod
- EP6yVVUXLLML5akbhBGsKEE=
-X-Received: by 2002:a1c:2742:: with SMTP id n63mr93768wmn.24.1599584334244;
- Tue, 08 Sep 2020 09:58:54 -0700 (PDT)
+ bh=j/cmPbRIq1rjarD6Gg3MFpxG71LKybNJQBlGBLQ5drw=;
+ b=GK47sRzxgl0k+oMRYEe+9gAp0+XTFq8rNArMNzP7HDLTg7OCSz6UQhSEua9yIwTLF6
+ o7tTtmTCZc2uAuOQjwdd4AlG2XGmImSLzql5g6tBueiEjZ4SPkLWQpBt4PAu0KcuGW49
+ It880dvlAxZ1BM+kySpNXnv9skRDGeYw4+UqywZK7SZOFB5ll86EU4kVu0p0E+Q8cyJT
+ 1RtKLDNiQw/ocSyosKBFSvmx3xXI6uXbjNrcyCUxBXHrafvdTcPl7b3N/A9G6mgH58AS
+ Eq2Upb/5mT4fRvXeSfj4g1XOIENcJxR1OAWNMo9p76w112WXSjZ6XY0ZeNgjYyUlbGZR
+ UbzA==
+X-Gm-Message-State: AOAM532AIJSmoXFpyICN9lwC+SA7iUlevce+mSromQnPPynDOrQlhRKK
+ 4NLG9xD8zWuTzHfyyanNM/z8j1+l4MRLU9oK8nImJQamQqgch0J+aS9fKyEUct85ye7iLkqCpqi
+ kFOtjPp6/O3mA
+X-Received: by 2002:a1c:1b8f:: with SMTP id b137mr384581wmb.151.1599589479133; 
+ Tue, 08 Sep 2020 11:24:39 -0700 (PDT)
+X-Received: by 2002:a1c:1b8f:: with SMTP id b137mr384543wmb.151.1599589478884; 
+ Tue, 08 Sep 2020 11:24:38 -0700 (PDT)
 Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id l10sm60762wru.59.2020.09.08.09.58.53
+ by smtp.gmail.com with ESMTPSA id f126sm293837wmf.13.2020.09.08.11.24.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Sep 2020 09:58:53 -0700 (PDT)
-Subject: Re: [PATCH v8 00/14] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC
- machines
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Alexander Bulekov <alxndr@bu.edu>,
- Havard Skinnemoen <hskinnemoen@google.com>
-References: <20200825001711.1340443-1-hskinnemoen@google.com>
- <20200908150224.pkuyhpmw33xqhmjn@mozz.bu.edu>
- <d88bc6ae-e07e-700f-d3cc-c093d2d44594@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <bfb442b4-9700-5591-eeef-00bc6675c89f@amsat.org>
-Date: Tue, 8 Sep 2020 18:58:52 +0200
+ Tue, 08 Sep 2020 11:24:36 -0700 (PDT)
+Subject: Re: [PATCH 1/5] hw/smbios: support loading OEM strings values from a
+ file
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20200908165438.1008942-1-berrange@redhat.com>
+ <20200908165438.1008942-2-berrange@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <cd82e5fe-28d9-39c3-871d-1a538fc1e55b@redhat.com>
+Date: Tue, 8 Sep 2020 20:24:35 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <d88bc6ae-e07e-700f-d3cc-c093d2d44594@amsat.org>
+In-Reply-To: <20200908165438.1008942-2-berrange@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -30
-X-Spam_score: -3.1
+Content-Language: en-US
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 01:08:25
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -36
+X-Spam_score: -3.7
 X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-1.626,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.626, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -149,326 +159,130 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- kfting@nuvoton.com, Avi.Fishman@nuvoton.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Laszlo Ersek <lersek@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4ZZGz07XtOlX
+X-TUID: 6VRJ8AlFpOAR
 
-On 9/8/20 5:52 PM, Philippe Mathieu-Daudé wrote:
-> On 9/8/20 5:02 PM, Alexander Bulekov wrote:
->> Hi Havard,
->> I fuzzed the npcm750-evb machine until I hit over 85% coverage over all
->> the new npcm.*\.c files. The only thing I found specific to the new
->> code, so far:
->>
->> cat << EOF | ./qemu-system-arm -machine npcm750-evb -m 128M -qtest stdio 
->> write 0xf0009040 0x4 0xc4c4c4c4
->> write 0xf0009040 0x4 0x4
->> EOF
-> 
-> This is an odd test because with -qtest the timer is not running,
-> so this can not really happen on real hw.
-> 
-> The fix is:
-> 
-> -    g_assert(t->remaining_ns > 0);
-> +    g_assert(qtest_enabled() || t->remaining_ns > 0);
+Hi Daniel,
 
-Alex corrected me on IRC, qtest is irrelevant here.
-The problem is he disables the timer twice.
+On 9/8/20 6:54 PM, Daniel P. Berrangé wrote:
+> Some applications want to pass quite large values for the OEM strings
+> entries. Rather than having huge strings on the command line, it would
+> be better to load them from a file, as supported with -fw_cfg.
+> 
+> This introduces the "valuefile" parameter allowing for:
+> 
+>   $ echo -n "thisthing" > mydata.txt
+>   $ qemu-system-x86_64 \
+>     -smbios type=11,value=something \
+>     -smbios type=11,valuefile=mydata.txt \
+>     -smbios type=11,value=somemore \
+>     ...other args...
+> 
+> Now in the guest
+> 
+> $ dmidecide -t 11
+> Getting SMBIOS data from sysfs.
+> SMBIOS 2.8 present.
+> 
+> Handle 0x0E00, DMI type 11, 5 bytes
+> OEM Strings
+> 	String 1: something
+> 	String 2: thisthing
+> 	String 3: somemore
+> 
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>  hw/smbios/smbios.c | 72 +++++++++++++++++++++++++++++++++++++---------
+>  1 file changed, 59 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+> index 7cc950b41c..8450fad285 100644
+> --- a/hw/smbios/smbios.c
+> +++ b/hw/smbios/smbios.c
+> @@ -110,7 +110,7 @@ static struct {
+>  
+>  static struct {
+>      size_t nvalues;
+> -    const char **values;
+> +    char **values;
+>  } type11;
+>  
+>  static struct {
+> @@ -314,6 +314,11 @@ static const QemuOptDesc qemu_smbios_type11_opts[] = {
+>          .type = QEMU_OPT_STRING,
+>          .help = "OEM string data",
+>      },
+> +    {
+> +        .name = "path",
+> +        .type = QEMU_OPT_STRING,
+> +        .help = "OEM string data from file",
+> +    },
+>  };
+>  
+>  static const QemuOptDesc qemu_smbios_type17_opts[] = {
+> @@ -641,6 +646,8 @@ static void smbios_build_type_11_table(void)
+>  
+>      for (i = 0; i < type11.nvalues; i++) {
+>          SMBIOS_TABLE_SET_STR_LIST(11, type11.values[i]);
+> +        g_free(type11.values[i]);
+> +        type11.values[i] = NULL;
+>      }
+>  
+>      SMBIOS_BUILD_TABLE_POST;
+> @@ -940,9 +947,8 @@ static void save_opt(const char **dest, QemuOpts *opts, const char *name)
+>  
+>  
+>  struct opt_list {
+> -    const char *name;
+>      size_t *ndest;
+> -    const char ***dest;
+> +    char ***dest;
+>  };
+>  
+>  static int save_opt_one(void *opaque,
+> @@ -951,23 +957,61 @@ static int save_opt_one(void *opaque,
+>  {
+>      struct opt_list *opt = opaque;
+>  
+> -    if (!g_str_equal(name, opt->name)) {
+> -        return 0;
+> +    if (g_str_equal(name, "path")) {
+> +        g_autoptr(GByteArray) data = g_byte_array_new();
+> +        g_autofree char *buf = g_new(char, 4096);
+> +        ssize_t ret;
+> +        int fd = qemu_open(value, O_RDONLY);
 
-So maybe something like:
+While not use g_file_get_contents()?
 
- static void npcm7xx_timer_pause(NPCM7xxTimer *t)
- {
-     int64_t now;
+> +        if (fd < 0) {
+> +            error_setg(errp, "Unable to open %s: %s", value, strerror(errno));
+> +            return -1;
+> +        }
+> +
+> +        while (1) {
+> +            ret = read(fd, buf, 4096);
+> +            if (ret == 0) {
+> +                break;
+> +            }
+> +            if (ret < 0) {
+> +                error_setg(errp, "Unable to read from %s: %s",
+> +                           value, strerror(errno));
+> +                return -1;
+> +            }
+> +            if (memchr(buf, '\0', ret)) {
+> +                error_setg(errp, "NUL in OEM strings value in %s", value);
+> +                return -1;
+> +            }
+> +            g_byte_array_append(data, (guint8 *)buf, ret);
+> +        }
+> +
+> +        close(fd);
+[...]
 
-+    if (!timer_pending(&t->qtimer)) {
-+        return;
-+    }
-     timer_del(&t->qtimer);
-     now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-     t->remaining_ns = t->expires_ns - now;
-     g_assert(t->remaining_ns > 0);
- }
-
-> 
->>
->> ERROR:../hw/timer/npcm7xx_timer.c:160:npcm7xx_timer_pause: assertion failed: (t->remaining_ns > 0)
->> Bail out! ERROR:../hw/timer/npcm7xx_timer.c:160:npcm7xx_timer_pause: assertion failed: (t->remaining_ns > 0)
->> Aborted
->>
->> I'm doing the same for the quanta-gsj machine, but I'm not sure whether
->> it will cover more code, so I'm happy to leave a:
->>
->> Tested-by: Alexander Bulekov <alxndr@bu.edu>
->>
->> for the patches that add new virtual-device code (1-5, 7-12 ?)
->> -Alex
-> 
-> Very nice from you for testing running the fuzzer!
-> 
-> Regards,
-> 
-> Phil.
-> 
->>
->>
->> On 200824 1716, Havard Skinnemoen via wrote:
->>> I also pushed this and the previous patchsets to my qemu fork on github.
->>> The branches are named npcm7xx-v[1-8].
->>>
->>>   https://github.com/hskinnemoen/qemu
->>>
->>> This patch series models enough of the Nuvoton NPCM730 and NPCM750 SoCs to boot
->>> an OpenBMC image built for quanta-gsj. This includes device models for:
->>>
->>>   - Global Configuration Registers
->>>   - Clock Control
->>>   - Timers
->>>   - Fuses
->>>   - Memory Controller
->>>   - Flash Controller
->>>
->>> These modules, along with the existing Cortex A9 CPU cores and built-in
->>> peripherals, are integrated into a NPCM730 or NPCM750 SoC, which in turn form
->>> the foundation for the quanta-gsj and npcm750-evb machines, respectively. The
->>> two SoCs are very similar; the only difference is that NPCM730 is missing some
->>> peripherals that NPCM750 has, and which are not considered essential for
->>> datacenter use (e.g. graphics controllers). For more information, see
->>>
->>> https://www.nuvoton.com/products/cloud-computing/ibmc/
->>>
->>> Both quanta-gsj and npcm750-evb correspond to real boards supported by OpenBMC.
->>> At the end of the series, qemu can boot an OpenBMC image built for one of these
->>> boards with some minor modifications.
->>>
->>> The patches in this series were developed by Google and reviewed by Nuvoton. We
->>> will be maintaining the machine and peripheral support together.
->>>
->>> The data sheet for these SoCs is not generally available. Please let me know if
->>> more comments are needed to understand the device behavior.
->>>
->>> Changes since v7:
->>>
->>>   - Move register enums to .c files throughout, leaving a single
->>>     NPCM7XX_FOO_NR_REGS definition behind in the .h file. A QEMU_BUILD_BUG_ON
->>>     should alert anyone accidentally expanding the register enum that they need
->>>     to update the corresponding NR_REGS define, which in turn has a comment
->>>     reminding them to update the vmstate version_id as well.
->>>   - Skip loading the bootrom if a kernel filename is provided by the user.
->>>   - New patch adding a board setup stub to tweak clocks before booting directly
->>>     into the kernel.
->>>   - Add stuff to meson files instead of Makefiles.
->>>   - Try to disable the slowest drivers and services to speed up the flash boot
->>>     acceptance test a bit. This is somewhat based on the following
->>>     systemd-analyze blame report:
->>>     https://gist.github.com/hskinnemoen/475cb0676530cd2cebaa1754cf16ca97
->>>
->>> Changes since v6:
->>>
->>>   - Use size_to_str to report DRAM sizes in npcm7xx_gcr.
->>>   - Simplify the interrupt logic in npcm7xx_timer.
->>>   - Update global bios_name instead of temporary.
->>>   - Add npcm7xx_bootrom to MAINTAINERS and pc-bios/README.
->>>   - Use a predefined name for the gsj boot image in the acceptance test.
->>>
->>> Changes since v5:
->>>
->>>   - Boot ROM included, as a git submodule and a binary blob, and loaded by
->>>     default, so the -bios option is usually not necessary anymore.
->>>   - Two acceptance tests added (openbmc image boot, and direct kernel boot).
->>>   - npcm7xx_load_kernel() moved to SoC code.
->>>   - NPCM7XX_TIMER_REF_HZ definition moved to CLK header.
->>>   - Comments added clarifying available SPI flash chip selects.
->>>   - Error handling adjustments:
->>>       - Errors from CPU and GCR realization are propagated through the SoC
->>>         since they may be triggered by user-configurable parameters.
->>>       - Machine init uses error_fatal instead of error_abort for SoC
->>>         realization flash init. This makes error messages more helpful.
->>>       - Comments added to indicate whether peripherals may fail to realize.
->>>       - Use ERRP_GUARD() instead of Error *err when possible.
->>>   - Default CPU type is now set, and attempting to set it to anything else
->>>     will fail.
->>>   - Format string fixes (use HWADDR_PRIx, etc.)
->>>   - Simplified memory size encoding and error checking in npcm7xx_gcr.
->>>   - Encapsulate non-obvious pointer subtraction into helper functions in the
->>>     FIU and TIMER modules.
->>>   - Incorporate review feedback into the FIU module:
->>>       - Add select/deselect trace events.
->>>       - Use npcm7xx_fiu_{de,}select() consistently.
->>>       - Use extract/deposit in more places for consistency.
->>>       - Use -Wimplicit-fallthrough compatible fallthrough comments.
->>>       - Use qdev_init_gpio_out_named instead of sysbus_init_irq for chip
->>>         selects.
->>>   - Incorporate review feedback into the TIMER module:
->>>       - Assert that we never pause a timer that has already expired, instead of
->>>         trying to handle it. This should be safe since QEMU_CLOCK_VIRTUAL is
->>>         stopped while this code is running.
->>>       - Simplify the switch blocks in the read and write handlers.
->>>
->>> I made a change to error out if a flash drive was not specified, but reverted
->>> it because it caused make check to fail (qom-test). When specifying a NULL
->>> block device, the m25p flash device initializes its in-memory storage with 0xff
->>> and doesn't attempt to write anything back. This seems correct to me.
->>>
->>> Changes since v4:
->>>
->>>   - OTP cleanups suggested by Philippe Mathieu-Daudé.
->>>       - Added fuse array definitions based on public Nuvoton bootblock code.
->>>       - Moved class structure to .c file since it's only used internally.
->>>       - Readability improvements.
->>>   - Split the first patch and folded parts of it into three other patches so
->>>     that CONFIG_NPCM7XX is only enabled after the initial NPCM7xx machine
->>>     support is added.
->>>   - DRAM init moved to machine init code.
->>>   - Consistently use lower-case hex literals.
->>>   - Switched to fine-grained unimplemented devices, based on public bootblock
->>>     source code. Added a tiny SRAM that got left out previously.
->>>   - Simplified error handling in npcm7xx_realize() since the board code will
->>>     abort anyway, and SoCs are not hot-pluggable.
->>>
->>> Changes since v3:
->>>
->>>   - License headers are now GPL v2-or-later throughout.
->>>   - Added vmstate throughout (except the memory controller, which doesn't
->>>     really have any state worth saving). Successfully booted a gsj image
->>>     with two stop/savevm/quit/loadvm cycles along the way.
->>>       - JFFS2 really doesn't like it if I let qemu keep running after savevm,
->>>         and then jump back in time with loadvm. I assume this is expected.
->>>   - Fixed an error API violation in npcm7xx_realize, removed pointless error
->>>     check after object_property_set_link().
->>>   - Switched the OTP device to use an embedded array instead of a g_malloc0'd
->>>     one because I couldn't figure out how to set up vmstate for the latter.
->>>
->>> Changes since v2:
->>>
->>>   - Simplified the MAINTAINERS entry.
->>>   - Added link to OpenPOWER jenkins for gsj BMC images.
->>>   - Reverted the smpboot change, back to byte swapping.
->>>   - Adapted to upstream API changes:
->>>       - sysbus_init_child_obj -> object_initialize_child
->>>       - object_property_set_bool -> qdev_realize / sysbus_realize
->>>       - ssi_create_slave_no_init -> qdev_new
->>>       - qdev_init_nofail -> qdev_realize_and_unref
->>>       - ssi_auto_connect_slaves removed
->>>   - Moved Boot ROM loading from soc to machine init.
->>>   - Plumbed power-on-straps property from GCR to the machine init code so it
->>>     can be properly initialized. Turns out npcm750 memory init doesn't work
->>>     without this. npcm730 is fine either way, though I'm not sure why.
->>>   - Reworked the flash init code so it looks more like aspeed (i.e. the flash
->>>     device gets added even if there's no drive).
->>>
->>> Changes since v1 (requested by reviewers):
->>>
->>>   - Clarify the source of CLK reset values.
->>>   - Made smpboot a constant byte array, eliinated byte swapping.
->>>   - NPCM7xxState now stores an array of ARMCPUs, not pointers to ARMCPUs.
->>>   - Clarify why EL3 is disabled.
->>>   - Introduce NPCM7XX_NUM_IRQ constant.
->>>   - Set the number of CPUs according to SoC variant, and disallow command line
->>>     overrides (i.e. you can no longer override the number of CPUs with the -smp
->>>     parameter). This is trying to follow the spirit of
->>>     https://patchwork.kernel.org/patch/11595407/.
->>>   - Switch register operations to DEVICE_LITTLE_ENDIAN throughout.
->>>   - Machine documentation added (new patch).
->>>
->>> Changes since v1 to support flash booting:
->>>
->>>   - GCR reset value changes to get past memory initialization when booting
->>>     from flash (patches 2 and 5):
->>>       - INTCR2 now indicates that the DDR controller is initialized.
->>>       - INTCR3 is initialized according to DDR memory size. A realize()
->>> 	method was implemented to achieve this.
->>>   - Refactor the machine initialization a bit to make it easier to drop in
->>>     machine-specific flash initialization (patch 6).
->>>   - Extend the series with additional patches to enable booting from flash:
->>>       - Boot ROM (through the -bios option).
->>>       - OTP (fuse) controller.
->>>       - Memory Controller stub (just enough to skip memory training).
->>>       - Flash controller.
->>>       - Board-specific flash initialization.
->>>
->>> Thanks for reviewing,
->>>
->>> Havard
->>>
->>> Havard Skinnemoen (14):
->>>   hw/misc: Add NPCM7xx System Global Control Registers device model
->>>   hw/misc: Add NPCM7xx Clock Controller device model
->>>   hw/timer: Add NPCM7xx Timer device model
->>>   hw/arm: Add NPCM730 and NPCM750 SoC models
->>>   hw/arm: Add two NPCM7xx-based machines
->>>   roms: Add virtual Boot ROM for NPCM7xx SoCs
->>>   hw/arm: Load -bios image as a boot ROM for npcm7xx
->>>   hw/nvram: NPCM7xx OTP device model
->>>   hw/mem: Stubbed out NPCM7xx Memory Controller model
->>>   hw/ssi: NPCM7xx Flash Interface Unit device model
->>>   hw/arm: Wire up BMC boot flash for npcm750-evb and quanta-gsj
->>>   hw/arm/npcm7xx: add board setup stub for CPU and UART clocks
->>>   docs/system: Add Nuvoton machine documentation
->>>   tests/acceptance: console boot tests for quanta-gsj
->>>
->>>  docs/system/arm/nuvoton.rst            |  90 ++++
->>>  docs/system/target-arm.rst             |   1 +
->>>  Makefile                               |   1 +
->>>  default-configs/arm-softmmu.mak        |   1 +
->>>  include/hw/arm/npcm7xx.h               | 112 +++++
->>>  include/hw/mem/npcm7xx_mc.h            |  36 ++
->>>  include/hw/misc/npcm7xx_clk.h          |  48 +++
->>>  include/hw/misc/npcm7xx_gcr.h          |  43 ++
->>>  include/hw/nvram/npcm7xx_otp.h         |  79 ++++
->>>  include/hw/ssi/npcm7xx_fiu.h           |  73 ++++
->>>  include/hw/timer/npcm7xx_timer.h       |  78 ++++
->>>  hw/arm/npcm7xx.c                       | 532 +++++++++++++++++++++++
->>>  hw/arm/npcm7xx_boards.c                | 197 +++++++++
->>>  hw/mem/npcm7xx_mc.c                    |  84 ++++
->>>  hw/misc/npcm7xx_clk.c                  | 266 ++++++++++++
->>>  hw/misc/npcm7xx_gcr.c                  | 269 ++++++++++++
->>>  hw/nvram/npcm7xx_otp.c                 | 439 +++++++++++++++++++
->>>  hw/ssi/npcm7xx_fiu.c                   | 572 +++++++++++++++++++++++++
->>>  hw/timer/npcm7xx_timer.c               | 509 ++++++++++++++++++++++
->>>  .gitmodules                            |   3 +
->>>  MAINTAINERS                            |  10 +
->>>  hw/arm/Kconfig                         |   9 +
->>>  hw/arm/meson.build                     |   1 +
->>>  hw/mem/meson.build                     |   1 +
->>>  hw/misc/meson.build                    |   4 +
->>>  hw/misc/trace-events                   |   8 +
->>>  hw/nvram/meson.build                   |   1 +
->>>  hw/ssi/meson.build                     |   1 +
->>>  hw/ssi/trace-events                    |  11 +
->>>  hw/timer/meson.build                   |   1 +
->>>  hw/timer/trace-events                  |   5 +
->>>  pc-bios/README                         |   6 +
->>>  pc-bios/npcm7xx_bootrom.bin            | Bin 0 -> 768 bytes
->>>  roms/Makefile                          |   7 +
->>>  roms/vbootrom                          |   1 +
->>>  tests/acceptance/boot_linux_console.py |  83 ++++
->>>  36 files changed, 3582 insertions(+)
->>>  create mode 100644 docs/system/arm/nuvoton.rst
->>>  create mode 100644 include/hw/arm/npcm7xx.h
->>>  create mode 100644 include/hw/mem/npcm7xx_mc.h
->>>  create mode 100644 include/hw/misc/npcm7xx_clk.h
->>>  create mode 100644 include/hw/misc/npcm7xx_gcr.h
->>>  create mode 100644 include/hw/nvram/npcm7xx_otp.h
->>>  create mode 100644 include/hw/ssi/npcm7xx_fiu.h
->>>  create mode 100644 include/hw/timer/npcm7xx_timer.h
->>>  create mode 100644 hw/arm/npcm7xx.c
->>>  create mode 100644 hw/arm/npcm7xx_boards.c
->>>  create mode 100644 hw/mem/npcm7xx_mc.c
->>>  create mode 100644 hw/misc/npcm7xx_clk.c
->>>  create mode 100644 hw/misc/npcm7xx_gcr.c
->>>  create mode 100644 hw/nvram/npcm7xx_otp.c
->>>  create mode 100644 hw/ssi/npcm7xx_fiu.c
->>>  create mode 100644 hw/timer/npcm7xx_timer.c
->>>  create mode 100644 pc-bios/npcm7xx_bootrom.bin
->>>  create mode 160000 roms/vbootrom
->>>
->>> -- 
->>> 2.28.0.297.g1956fa8f8d-goog
->>>
->>>
->>
-> 

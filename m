@@ -1,103 +1,103 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp393310lfq;
-        Tue, 8 Sep 2020 01:14:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxDpDy9jCYKvhNjqa1an7zO6PwVq4CNLv0y+SMpV82KkdcXK3nhGQZfxmWrlcpCp8Xe35tw
-X-Received: by 2002:a25:3f83:: with SMTP id m125mr31780003yba.324.1599552851292;
-        Tue, 08 Sep 2020 01:14:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599552851; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp394139lfq;
+        Tue, 8 Sep 2020 01:15:24 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxNEb3puW8v61mrYyzusLi3lqLiYraHjHvig2Y8huoT1j42My5mxs6FHh5mHTS6yXLuFyDI
+X-Received: by 2002:a25:dace:: with SMTP id n197mr12965367ybf.351.1599552924245;
+        Tue, 08 Sep 2020 01:15:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599552924; cv=none;
         d=google.com; s=arc-20160816;
-        b=pfaqjELf6DLNrPzq62p5dCfXANwlRGTBukU3+k4VxM2bTXQsFfHQqRAyLdISSJsZ+Q
-         UUYhTzEfALvD2Wly7U1xV+zXMQFZ4Hc7klC2oN06TKszdjCRyvWSVWaqXN5iH8H1l9DU
-         6f2GsfDh2s69sfcGxxQ2q3WnRmerWLJDVo382pD3Hkiplgg0aRa+h6MlyeJieAx1Qx21
-         qm2Gpu8i62WcmEFi9Xlki37UmXrdvnZU1pNZLc54CzTdgLPLUcHpxM8P4KnVTpoaNABk
-         enC063LV8hm4n5/3s7GgEp7txPHQq2LLT5Sf4lJF27/Fj3iejH+GJzhdljpn22klTXE+
-         0pLg==
+        b=TLjTuIkdhVTe4Is6gu9Z5w6aWQxSClmcN0OPgYQEwXOc3l79ltfVEoor4mMWX2hgiR
+         MrvSlmEYUheWSFGHxHWi+BtQ1pj48eFIBVyIf0+kFq5sm0FTI00LsAxMt82oLm/wWJZy
+         dpdlNHQbZnVpzJkFTv9bKem/hGjqAFnUNtty/ta6vRtHqYZu5ELJ2QI8kszXyGX4iYAs
+         EDaH2TVGOIyp6wPAmaJk7+Zc8GzzCuRiTkvWNH2jsp2X9RLguSg61PlYS3kKGSq7IyuB
+         dQOC75HozhkMsJFZubyJNjjMmDgGDWiS3+0OcTwyY9tao/xQIIHPMUAvA5OhSTDBrIIl
+         BWbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=vE/7atJFFNMf4U1vrclSfvdzLU1YHOKY7LV5LqTlxi8=;
-        b=VYoLVs83Gfo2tORytcUqoQK16Nl8AswHhphDtG6IYvD5k/4z1hDMu8VqhoaF7TfbGm
-         oKAq1b+TZydMv6VUtL+3Gil1oJC+FHX2vQDta9NWNT7io9ZXlDhiB6ud388dPLvDw7+S
-         GQlci2UYKAOnsy4PY6k6WcsOLs4rS8mKfVQ7Wx5LquXKhHaia3bVzhRdB9GvcKXtPHwl
-         ZtzA2YODn3CJEED54Dsf4kBwrjbHBn0GbdeZBaFj4tMC0hr1v2XxlBdcWyoT+NAQYdA8
-         GjUJfMZpCDcfIybJfjod/CPkWgl5+d7jfvxNXVUt/IefHTe2ozfPS7Kb6igwESigxLPR
-         Yp5w==
+        bh=hvtYY966srnK5wG0YbtFj+vFvT8ZWyaFHw3B2vowdgs=;
+        b=KImLpjWthUIdXVO7jOubcNYHk/4LSK81lPwaJopPcAMeS1Y3S/SLVbn0PCCmqsB8Zn
+         vDddTNSyzhKZ16+wINpYhajJan4OhAGAwJ+0ghORSaKgvZxZIrCtZjYICFffA1Uae1dk
+         uJh0s1DN4Mz1zMG/odu/klFMgeM8tI6b51Z8lMVXq8v8IOliTqhuEWd5hxbApJRV7d6C
+         ma4I1UeecOixBqU6gpaS7K0Njk34USCqr45jtnUe/h4PxlZ4edHn+5bj6/EICXG9Dm43
+         PSI3O80ZYRIOREI/IhctTS6R4oGMX1e0+rir7o2867SvaYayjdi4bKDhaBnlr4aBuRFE
+         9Ktw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Vocityjn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=UN562Vwk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x31si22075222ybd.297.2020.09.08.01.14.11
+        by mx.google.com with ESMTPS id l186si16569174ybl.251.2020.09.08.01.15.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Sep 2020 01:14:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Sep 2020 01:15:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Vocityjn;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=UN562Vwk;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:52266 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57144 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFYlW-0006FT-Ji
-	for alex.bennee@linaro.org; Tue, 08 Sep 2020 04:14:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58358)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kFYmh-0008Bz-Hm
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 04:15:23 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58430)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kFYlD-0005hq-8l
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:13:51 -0400
-Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d]:35158)
+ id 1kFYlG-0005pe-9V
+ for qemu-devel@nongnu.org; Tue, 08 Sep 2020 04:13:54 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:33471)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kFYlA-0000RM-GX
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 04:13:50 -0400
-Received: by mail-pf1-x42d.google.com with SMTP id o68so10336495pfg.2
- for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 01:13:48 -0700 (PDT)
+ id 1kFYlE-0000SG-8i
+ for qemu-devel@nongnu.org; Tue, 08 Sep 2020 04:13:53 -0400
+Received: by mail-pf1-x441.google.com with SMTP id c196so4851282pfc.0
+ for <qemu-devel@nongnu.org>; Tue, 08 Sep 2020 01:13:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=vE/7atJFFNMf4U1vrclSfvdzLU1YHOKY7LV5LqTlxi8=;
- b=VocityjnqEGnIw5Y2AYa4Mi3SdhHy79dxnKzkUvZOM3vl7gT5anhbUd7cycj60/iE0
- 6f2hlHJShVjmzBv+n3TXzmCqSVFvW8Ws85vsg7NF7wBIAFsScW6WmZDXxG5++h6jeYD5
- PVvv10jusCN39YEBm2w9NRUyB0d4FhFxwCn0249CoBRNN5+Iy3Xr3VcDA8mAg8MFzUfs
- Ofn1W4F1TvYngP2zQAAATdHYm9gTw4hEkAG6GFoGyOu+Y5+9q89WKfbjf8ugQzNYzuOQ
- ZPBLcvk9KeVMxZaykqJ+/0DEMNhKE0BRwGaQrXmTDCHwIsR14gRiHf6GfOA/wLQJtaVj
- T8hQ==
+ bh=hvtYY966srnK5wG0YbtFj+vFvT8ZWyaFHw3B2vowdgs=;
+ b=UN562VwkN4m/so7koho/gMRFletaKtsYpQDYr/Qs5O5VIF+hkVHSdTs9F48prIClND
+ sqf8/ep/mt/JXaDfjzVN2Ma2/VLYxpuVKA/MM9poc3mBXgA0PE4vLIMAXp16L38J8Yjm
+ bsfe8kXLAF0W3fgXrZ/lDYrJbdDWmskVc995fL1Lkp21hXLXAbVzKPp7al8HN201fUCT
+ GiXZ2s6oU0ba+3OaKthBjfzJcvk2viX2FPGJ6V2MAnqBdhyS2s98ypgsFjm/4XXYCGly
+ FChbXpw0rcdZwIoAFAliYoCjht4A8P9cOrcyJAJh+b7sFwqR+dsQJAd2MkVjyGVJJp7v
+ IWkg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=vE/7atJFFNMf4U1vrclSfvdzLU1YHOKY7LV5LqTlxi8=;
- b=c6w/rYbaZuV9Lb36yTWs4nWuxnFeknA+JiAbfkowbW7jouy+gA9Ikkh40doQkjEelb
- Nb6ulPjdAAMFIRDdieT4rixQd3FNOGXAwhkw6jtFFTI3QUMhq7IcKtgwLVF4XgKFyVEX
- gwwJlGP3jxjZfLZfttyMyOv5Gq2UtiFTUY+iK+aIAy3W5bYr1UW+ztyOPpjdfdAXbtRf
- 0dGiR0u4d/kGkaEKJSW93pn/enkN8MCitwZKxwhM+RBK+Lm4k8TcP+p9YINykvZRAw8E
- TELLAsJoK3XzYSwsMxu90fvWW+JUvPNr/42T1dUroemaMQS0D+aDl8qUwU9ipfEFLtRN
- Vxpw==
-X-Gm-Message-State: AOAM533BKYZt/5ejPhxYV1EBqUAu5qeqF1XFSF1fJyhdd75g60nsHc3a
- 8DpL8h7LJkHHuEVTW1VfeOak
-X-Received: by 2002:a63:d409:: with SMTP id a9mr18751991pgh.312.1599552827222; 
- Tue, 08 Sep 2020 01:13:47 -0700 (PDT)
+ bh=hvtYY966srnK5wG0YbtFj+vFvT8ZWyaFHw3B2vowdgs=;
+ b=jKVzaYdP6w0H6aoTEhpZTOuFiBzlNRsruL86qaFG4y1ravViAlNJPknd+umIihSIS5
+ VpUAKVXANB5ZlakrMjQXuYzfBJLWpkQQkBJfgxNFaXqdAmcXzd1IDagi9Pd5EbHfpx6h
+ Ei3pdzqgI9SeodTSt/Xs8LQYbWP9Le8kPaAlZNkVI2ivAxq5+XJFbgZ5Uq77s2HgPeGR
+ 4uO/3sgfIJPTcqohlYgAkUjnx2Uvx4+aI9xGnwXwe16xnXcNk1mH1zbRlUNw8Mjpilrj
+ RNXF/gJqrx0LsTGM8ad/7zm1tu5G9tBxzE2AvLXfu6h3K6hQkXdxA/kpbf4oDFZ6PpTG
+ Y04g==
+X-Gm-Message-State: AOAM531bmpx7cEXTdhL3U/LcjKPv8fQqRCjb1eCU3WwR/g58ptbakuvS
+ GMe+SgR2k9FUhvR35SLbOLhf
+X-Received: by 2002:a63:3841:: with SMTP id h1mr18425109pgn.38.1599552830846; 
+ Tue, 08 Sep 2020 01:13:50 -0700 (PDT)
 Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id m190sm16934788pfm.184.2020.09.08.01.13.46
+ by smtp.gmail.com with ESMTPSA id m190sm16934788pfm.184.2020.09.08.01.13.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2020 01:13:46 -0700 (PDT)
+ Tue, 08 Sep 2020 01:13:50 -0700 (PDT)
 From: Haibo Xu <haibo.xu@linaro.org>
 To: drjones@redhat.com,
 	richard.henderson@linaro.org
-Subject: [PATCH v2 04/12] target/arm: spe: Only enable SPE from 5.2 compat
- machines.
-Date: Tue,  8 Sep 2020 08:13:22 +0000
-Message-Id: <7ed8b1ff7a61132c6520f87213c61784ab0c331b.1599549462.git.haibo.xu@linaro.org>
+Subject: [PATCH v2 07/12] hw/arm/virt: Move post cpu realize check into its
+ own function
+Date: Tue,  8 Sep 2020 08:13:25 +0000
+Message-Id: <04a3f2e202d9e84cefa431101eaf4c7e0cbd1a0d.1599549462.git.haibo.xu@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1599549462.git.haibo.xu@linaro.org>
 References: <cover.1599549462.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
- envelope-from=haibo.xu@linaro.org; helo=mail-pf1-x42d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
+ envelope-from=haibo.xu@linaro.org; helo=mail-pf1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -106,70 +106,100 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
  qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: d24K2XaJmQYt
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +N6qJSNWignB
 
-Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
+From: Andrew Jones <drjones@redhat.com>
+
+We'll add more to this new function in coming patches so we also
+state the gic must be created and call it below create_gic().
+
+No functional change intended.
+
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/arm/virt.c         | 7 +++++++
- include/hw/arm/virt.h | 1 +
- 2 files changed, 8 insertions(+)
+ hw/arm/virt.c | 38 ++++++++++++++++++++++----------------
+ 1 file changed, 22 insertions(+), 16 deletions(-)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index acf9bfbece..3f6d26c531 100644
+index 3f6d26c531..2ffcb073af 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -1830,6 +1830,10 @@ static void machvirt_init(MachineState *machine)
-             object_property_set_bool(cpuobj, "pmu", false, NULL);
-         }
- 
-+        if (vmc->no_spe && object_property_find(cpuobj, "spe", NULL)) {
-+            object_property_set_bool(cpuobj, "spe", false, NULL);
-+        }
-+
-         if (object_property_find(cpuobj, "reset-cbar", NULL)) {
-             object_property_set_int(cpuobj, "reset-cbar",
-                                     vms->memmap[VIRT_CPUPERIPHS].base,
-@@ -2553,8 +2557,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
- 
- static void virt_machine_5_1_options(MachineClass *mc)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
-+
-     virt_machine_5_2_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
-+    vmc->no_spe = true;
+@@ -1672,6 +1672,26 @@ static void finalize_gic_version(VirtMachineState *vms)
+     }
  }
- DEFINE_VIRT_MACHINE(5, 1)
  
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index dff67e1bef..72c269aaa5 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -126,6 +126,7 @@ typedef struct {
-     bool no_ged;   /* Machines < 4.2 has no support for ACPI GED device */
-     bool kvm_no_adjvtime;
-     bool acpi_expose_flash;
-+    bool no_spe;
- } VirtMachineClass;
++static void virt_cpu_post_init(VirtMachineState *vms)
++{
++    bool aarch64;
++
++    aarch64 = object_property_get_bool(OBJECT(first_cpu), "aarch64", NULL);
++
++    if (!kvm_enabled()) {
++        if (aarch64 && vms->highmem) {
++            int requested_pa_size = 64 - clz64(vms->highest_gpa);
++            int pamax = arm_pamax(ARM_CPU(first_cpu));
++
++            if (pamax < requested_pa_size) {
++                error_report("VCPU supports less PA bits (%d) than requested "
++                            "by the memory map (%d)", pamax, requested_pa_size);
++                exit(1);
++            }
++        }
++     }
++}
++
+ static void machvirt_init(MachineState *machine)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(machine);
+@@ -1890,22 +1910,6 @@ static void machvirt_init(MachineState *machine)
+     fdt_add_timer_nodes(vms);
+     fdt_add_cpu_nodes(vms);
  
- typedef struct {
+-   if (!kvm_enabled()) {
+-        ARMCPU *cpu = ARM_CPU(first_cpu);
+-        bool aarch64 = object_property_get_bool(OBJECT(cpu), "aarch64", NULL);
+-
+-        if (aarch64 && vms->highmem) {
+-            int requested_pa_size, pamax = arm_pamax(cpu);
+-
+-            requested_pa_size = 64 - clz64(vms->highest_gpa);
+-            if (pamax < requested_pa_size) {
+-                error_report("VCPU supports less PA bits (%d) than requested "
+-                            "by the memory map (%d)", pamax, requested_pa_size);
+-                exit(1);
+-            }
+-        }
+-    }
+-
+     memory_region_add_subregion(sysmem, vms->memmap[VIRT_MEM].base,
+                                 machine->ram);
+     if (machine->device_memory) {
+@@ -1917,6 +1921,8 @@ static void machvirt_init(MachineState *machine)
+ 
+     create_gic(vms);
+ 
++    virt_cpu_post_init(vms);
++
+     fdt_add_pmu_nodes(vms);
+ 
+     create_uart(vms, VIRT_UART, sysmem, serial_hd(0));
 -- 
 2.17.1
 

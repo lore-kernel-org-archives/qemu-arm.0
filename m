@@ -1,250 +1,246 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp172930lfq;
-        Mon, 7 Sep 2020 18:15:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxPKzNWSZEFZNCSSYVRLuqDPS4KUqo0EFLlqdRIWOv8JVoZ/Y0glzftMN9Bp7G9w/i8VQSh
-X-Received: by 2002:a25:640e:: with SMTP id y14mr28585540ybb.340.1599527732772;
-        Mon, 07 Sep 2020 18:15:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599527732; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp381123lfq;
+        Tue, 8 Sep 2020 00:54:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxzuFSUfp2gh7gAfaPZsdTj2Ujoz0EL7DrxMqG19ZVIq8z7e+nPLnaEsA0whkgalYl+pIp9
+X-Received: by 2002:a25:4546:: with SMTP id s67mr31641968yba.88.1599551697657;
+        Tue, 08 Sep 2020 00:54:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599551697; cv=none;
         d=google.com; s=arc-20160816;
-        b=l3jtBJLRJB0anY0H5bgp46IXe3RIks4q5Z02hnxuSj6iDOMhVfAWeWv6C/5Eqr/8yG
-         NoXngMfOKIjOok9jvOAXQlZuj1wvRZxZKe3unQW3sNDeFI1s4YWo+FtnkFR8iPebqpgH
-         qh2mhYFKh3975QananyX+ytvUKdwlBH7Wx4WxjO6OJ9oUoPuuLcMvIFCc4hxjcOiG6kr
-         MnwGmOPuDUvEK+12/2ki7q4VBm7ceIvE51ThtDnMBm6dyWn682J0nO/hDfwM/Zp5j5GF
-         Vpft6GWoPbfZapXoJTUgSzbljBYKzrRSxvo5RejlhX5EW6V3kbvLgNyoZj8izxNXe/0o
-         MTWw==
+        b=Cs7oSgecyDiQr1MzrLDDDZ/qI/zQAwJ02T2kl3a8cF61WlPX14jGmA1h5S2yIrjQoW
+         NmUr0ttUtEDIFNcPyBXt4QrUESz9G5pPi93Bnm0PTkvWzr/wS+NpzmQ2+TcFcahnMsmu
+         Sa/jIUOGn20Q0TuE1v53pgnIfIqwZUxatcliOc4GKdXdCnNCck8izLH9ENFW1Owg2ER3
+         UbgPCLAhAKPIGwwF5BZNuBR1aaaCatUVb7fkOqtdAyighb0hocksSoMtqfNLeg8bFk3Z
+         IQEniSSmMPRs07LrymN4fdrYBZOmNoWNZN02F5JtcOikMYoLpi9VNYysTszaABzcEdEI
+         wFWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=yPs5YLC70p5QSmybgq2Sak3iR/Nzc1tQVixWfqaEljU=;
-        b=jLOKHmxC5R2k6wTjH7peak336UIhrc4g1V4DTbYr9ymQ8DCQeQzp8NEclY+Hq9mJJ1
-         s4wymPnlxge1EbiJ6U6PpFrjZOocRdnpLdM1uxi3mFG0HthpQaaYwa4kei59egHG4UVf
-         YOqQaG9CkJC68wlqF3tBcxbrtrDlhRwK8q9wcbF90VUKS4UBiVxU+8phXceg6dr1vVsY
-         nbGpSFam7dPV/z9eNDAfs34kZATOpnB4I7nDnCjqzmV3+JIvzuaNt7TMFeYm9lHyhXKi
-         U0KkUHr1G+hMIpKhAW60JCqFb6mbDryIHwN9WwRjX7O8elY/QvQa5HRiqUuae0pzn5IZ
-         a5UA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:user-agent:message-id:in-reply-to:date:references
+         :subject:to:from:dkim-signature;
+        bh=SPgfs/vw/hl5ABwcayG2BGaNk7AT4iznmA5rCj/73Ng=;
+        b=O7T8NL/G03MujCkAC+kbl7er9fkVRxTTZLBdXBjVpK9kEP9UuoKDYFGwck2v90KtvA
+         e+0KDcXG0KP9yOI3QMnKLLLOHqQ9S0YAYU5M5UzrlesgC1whR0++gmmDNikCJVBs4Not
+         PpDSmrWTT7FmTLCB9kz4EZ18fQoZgxf462cM3kbi3lvF3WXtU6bHulkOi2DdCHhMqh0F
+         2cuQ9+NaKY89+mB+03hQv8sXJCDGqXY9KkVm6YEjyYvLj+lnZT0I9/9k6AR2QUvgxyfO
+         hBZsfiqwNHUIwgNto+co+vpObEuo6u40HbuhsLl7Bp7N4X0RgGm5iuTfF4UZCU1tM6SQ
+         8u0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DNbWV4ZK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M3tbeitr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t5si280573ybq.206.2020.09.07.18.15.32
+        by mx.google.com with ESMTPS id o79si11105440yba.346.2020.09.08.00.54.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 07 Sep 2020 18:15:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Sep 2020 00:54:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DNbWV4ZK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55630 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=M3tbeitr;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:53702 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFSEO-00075K-4p
-	for alex.bennee@linaro.org; Mon, 07 Sep 2020 21:15:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57406)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kFYSu-0002QB-Vr
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 03:54:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53892)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kFSED-000731-Oh; Mon, 07 Sep 2020 21:15:21 -0400
-Received: from mail-yb1-xb41.google.com ([2607:f8b0:4864:20::b41]:34815)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kFSEB-0002qi-JQ; Mon, 07 Sep 2020 21:15:21 -0400
-Received: by mail-yb1-xb41.google.com with SMTP id u6so10295833ybf.1;
- Mon, 07 Sep 2020 18:15:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yPs5YLC70p5QSmybgq2Sak3iR/Nzc1tQVixWfqaEljU=;
- b=DNbWV4ZK72o0NqLiF2INvTEemQe5Rw7mpLrs6wKxlkN3SiGQEoA8w5sTgZ6eiKBpUf
- 9tu7kbt7N5358u9KCJR+D9iiSFpFGx75dq+seOQxmcVEu5Y6s/Wo7RKCIAwBMbEHhd4P
- JjsR+hsYHII3J+0x94PjgRvhy3if80ZoJLaNp8jceY1LkbrIgkAXxekSBOfhNY/T0USk
- G2d3jCncpKhioAT7UnhW0k+d9EnX2rHvwxJZfepj+/vsKpshDKZJXtugHDMGg3HCPgjl
- P7EIDHDAbr59d+/4aB4KcLYKErGsRUrVXM9wgvOVLPrD1UY0c7egcjIgghineMGwk8gP
- 6Tmw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=yPs5YLC70p5QSmybgq2Sak3iR/Nzc1tQVixWfqaEljU=;
- b=MToDIjLQheR0qSRnGTl5diovyID2/+Sz5Qce6ebCX3wxeMbZTKWX1oerUqH6j52uRZ
- S2mmQj2omLu1cpoKa4I+KaiA2fKdu+MuFDYym9NhOZFQfaQmI8mwywQExfJZXp7BL6fH
- HUN1pqCiLkiB9wHggS0Ftm0yF9KroJBa3pp37gnd3K58BqSCR0ZiA1vgDuqjTgNKxDdI
- ZRe3KtI5Xm9fiIwpBWm9JD9N0I8u9z0vsx85MjCGBwCFLhymnPUD1/wBAmHQI1rzoJLP
- hvdEpQdmn68J5ILKOZ3PBh0/MhOIN09Bq25qcEqkINd+E7DeXAQ581+o6FFhpPDFvzaK
- NjDg==
-X-Gm-Message-State: AOAM531YkqLFSffDNd9DZtiXVQ3gDwaZYUqv/hUeU2uSBB0CPoN143HS
- DQH+xKfOyd0sWl8dRikMCrcCK7bfIFWjWpGbOB0=
-X-Received: by 2002:a25:f20d:: with SMTP id i13mr30463671ybe.152.1599527717173; 
- Mon, 07 Sep 2020 18:15:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kFYSJ-0001xq-63
+ for qemu-devel@nongnu.org; Tue, 08 Sep 2020 03:54:19 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:60264
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kFYSH-0006Ug-Dn
+ for qemu-devel@nongnu.org; Tue, 08 Sep 2020 03:54:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599551656;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SPgfs/vw/hl5ABwcayG2BGaNk7AT4iznmA5rCj/73Ng=;
+ b=M3tbeitr5ba+TA/E8T+SgmR+t+T/mcOhpNRAP8vY/3uU+OEQ1iXGcGjMIPetOev0CaiQwH
+ P9ShCWJy1RnOyb8FM4hWi9mSMG/qaH4p6/tmtyKuW8pL3kA2ce4IvHgFPMax4ZJWY5VTRW
+ d/MZuyfHBdHDOiKc/kmHpXFnz8rhDhs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-527-YhSODPN6PTKxPswxiV-0Zg-1; Tue, 08 Sep 2020 03:54:14 -0400
+X-MC-Unique: YhSODPN6PTKxPswxiV-0Zg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BD2521074642;
+ Tue,  8 Sep 2020 07:54:12 +0000 (UTC)
+Received: from blackfin.pond.sub.org (ovpn-113-68.ams2.redhat.com
+ [10.36.113.68])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A500F82460;
+ Tue,  8 Sep 2020 07:54:11 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 0BC1A1132B59; Tue,  8 Sep 2020 09:54:10 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [RFC PATCH v4 8/8] hw/arm/tosa: Make TYPE_TOSA_MISC_GPIO a
+ plain QDev
+References: <20200907163257.46527-1-f4bug@amsat.org>
+ <20200907163257.46527-9-f4bug@amsat.org>
+Date: Tue, 08 Sep 2020 09:54:09 +0200
+In-Reply-To: <20200907163257.46527-9-f4bug@amsat.org> ("Philippe
+ =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 7 Sep 2020 18:32:57
+ +0200")
+Message-ID: <87h7s8g0v2.fsf@dusky.pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
 MIME-Version: 1.0
-References: <1598924352-89526-1-git-send-email-bmeng.cn@gmail.com>
- <20200906010811.GA1546@vanye>
- <CAEUhbmVfSPwO5CHO2G5Vd5fA6NA4dRCp-e_KGJhSO7nYAPmi1w@mail.gmail.com>
- <20200907172712.GB5623@vanye>
-In-Reply-To: <20200907172712.GB5623@vanye>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Tue, 8 Sep 2020 09:15:05 +0800
-Message-ID: <CAEUhbmXdLgPZWJkv9PrzZPaZrH5kPJjp0gDqvrzKABxiDbVzkw@mail.gmail.com>
-Subject: Re: [PATCH v3 00/16] hw/riscv: Add Microchip PolarFire SoC Icicle Kit
- board support
-To: Leif Lindholm <leif@nuviainc.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b41;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb41.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=207.211.31.120; envelope-from=armbru@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 00:33:58
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.1,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>, Bin Meng <bin.meng@windriver.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Jason Wang <jasowang@redhat.com>, Palmer Dabbelt <palmerdabbelt@google.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>,
- qemu-arm <qemu-arm@nongnu.org>, Alistair Francis <Alistair.Francis@wdc.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vAw+5A1TRY8+
+ =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ Joaquin de Andres <me@xcancerberox.com.ar>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SSK2pL6oFNwj
 
-Hi Leif,
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
 
-On Tue, Sep 8, 2020 at 1:27 AM Leif Lindholm <leif@nuviainc.com> wrote:
+> TYPE_TOSA_MISC_GPIO doesn't need to be a SysBus device,
+> make it a plain QDev.
 >
-> On Mon, Sep 07, 2020 at 18:24:06 +0800, Bin Meng wrote:
-> > Hi Leif,
-> >
-> >
-> > On Sun, Sep 6, 2020 at 9:08 AM Leif Lindholm <leif@nuviainc.com> wrote:
-> > >
-> > > On Tue, Sep 01, 2020 at 09:38:55 +0800, Bin Meng wrote:
-> > > > From: Bin Meng <bin.meng@windriver.com>
-> > > >
-> > > > This adds support for Microchip PolarFire SoC Icicle Kit board.
-> > > > The Icicle Kit board integrates a PolarFire SoC, with one SiFive's
-> > > > E51 plus four U54 cores and many on-chip peripherals and an FPGA.
-> > > >
-> > > > For more details about Microchip PolarFire SoC, please see:
-> > > > https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga
-> > > >
-> > > > The Icicle Kit board information can be found here:
-> > > > https://www.microsemi.com/existing-parts/parts/152514
-> > > >
-> > > > Unlike SiFive FU540, the RISC-V core resect vector is at 0x20220000.
-> > > > The RISC-V CPU and HART codes has been updated to set the core's
-> > > > reset vector based on a configurable property from machine codes.
-> > > >
-> > > > The following perepherals are created as an unimplemented device:
-> > > >
-> > > > - Bus Error Uint 0/1/2/3/4
-> > > > - L2 cache controller
-> > > > - SYSREG
-> > > > - MPUCFG
-> > > > - IOSCBCFG
-> > > > - GPIO
-> > > >
-> > > > The following perepherals are emulated:
-> > > > - SiFive CLINT
-> > > > - SiFive PLIC
-> > > > - PolarFire SoC Multi-Mode UART
-> > > > - SiFive PDMA
-> > > > - Cadence eMMC/SDHCI controller
-> > > > - Cadence Gigabit Ethernet MAC
-> > > >
-> > > > The BIOS image used by this machine is hss.bin, aka Hart Software
-> > > > Services, which can be built from:
-> > > > https://github.com/polarfire-soc/hart-software-services
-> > > >
-> > > > To launch this machine:
-> > > > $ qemu-system-riscv64 -M microchip-icicle-kit -smp 5 \
-> > > >     -bios path/to/hss.bin -sd path/to/sdcard.img \
-> > > >     -nic tap,ifname=tap,script=no,model=cadence_gem \
-> > > >     -display none -serial stdio \
-> > > >     -chardev socket,id=serial1,path=serial1.sock,server,wait \
-> > > >     -serial chardev:serial1
-> > >
-> > > I finally got around to building the sd image from
-> > > https://github.com/polarfire-soc/polarfire-soc-buildroot-sdk,
-> > > and I can successfully boot to prompt using that, and the (hacked)
-> > > hss.bin I verified previously - also with this v3.
-> > >
-> >
-> > Good to know!
-> >
-> > > However, unless I add the "-nic user,model=cadence_gem \" shown in
-> > > https://wiki.qemu.org/Documentation/Platforms/RISCV#Microchip_PolarFire_SoC_Icicle_Kit
-> > > but not here, I do not have functioning networking. (It is not obvious
-> > > to me why this is needed.)
-> > >
-> >
-> > Sorry I don't understand what the issue is?
->
-> The instructions in this cover letter does not contain the line
->   "-nic user,model=cadence_gem \"
->
-> The instruction in the wiki does.
-> The instruction in the wiki works, the instruction in the cover letter
-> does not.
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+> RFC because having to pass MachineState and call
+> object_property_add_child() simply makes things more
+> complex... but it seems to cleaner QOM design.
 
-Ah, OK. So please follow the Wiki docs.
+Well, what devices really *need* to be sysbus devices?
 
->
-> It is not clear to me why both lines are needed.
->
-> > > > The memory is set to 1 GiB by default to match the hardware.
-> > >
-> > > Which hardware is this?
-> > > https://www.crowdsupply.com/microchip/polarfire-soc-icicle-kit lists
-> > > 2GiB.
-> >
-> > It's this same board. But I believe the crowdsupply webpage has the
-> > wrong information. The board I got only has 1GB memory.
->
-> The diagram on https://www.microsemi.com/existing-parts/parts/152514
-> also says 2GB. Do you have any channel to Microchip to clarify this?
+The question is trivial for "real" buses, such as PCI, USB, and so
+forth: a device is a FOO device when it plugs into a FOO bus.
 
-I suspect future version boards might ship 2GB memory. Right now as
-you can see from both U-Boot and Linux device tree files, it's only
-1GB.
+Sysbus is quite unlike these "real" buses.  It exists because qdev
+initially *required* qdevs to plug into a qbus, so we made up a qbus for
+the devices that don't plug into any of our "real" buses[1].
 
->
-> > > > A sanity check on ram size is performed in the machine init routine
-> > > > to prompt user to increase the RAM size to > 1 GiB when less than
-> > > > 1 GiB ram is detected.
-> > >
-> > > There is currently no visible effect in firmware from setting memory size to >
-> > > 1GiB (hss says 1GB, u-boot says 1GB, Linux sees 1GB).
-> > > Are there any plans to address this in future versions?
-> >
-> > HSS is using hardcoded 1GB memory size and that's why in QEMU the
-> > minimum required memory size is 1GB. Setting less than 1GB size blocks
-> > HSS to load the 2nd stage bootloader U-Boot into the memory. Both
-> > U-Boot and Linux DTS files set the memory size to 1GB, so that's why
-> > both of them see only 1GB. Setting memory >1G does not affect U-Boot
-> > and Linux though. You can however manually edit the U-Boot and Linux
-> > DTS files to have a large RAM size to match QEMU -m option.
->
-> Understood, thanks.
+I figure all sysbus devices could be coded as bus-less devices today.
+So the answer to "what devices really *need* to be sysbus devices?" is
+"none".
 
-Regards,
-Bin
+I think a more useful question is what devices *should* be coded as
+sysbus devices vs. bus-less devices.
+
+Sysbus is more than just a dummy qbus.  It's a software interface that
+provides useful stuff.  To use it, the device needs to be a
+SysBusDevice.  This leads to a partial answer: if the device profits
+from stuff we provide only to SysBusDevices, it should be one.
+
+Perhaps the useful stuff could be separated from SysBusDevice.  Then
+this partial answer evaporates.
+
+There is just one instance of TYPE_SYSTEM_BUS[2].  This leads to another
+partial answer: if the device can be part of another device, it should
+not be a SysBusDevice.
+
+Sysbus also enables "dynamic" sysbus devices.  Shoehorning them into
+SysBusDevice may have been a mistake.
+
+> Cc: Markus Armbruster <armbru@redhat.com>
+
+Cc: QOM maintainers for actual QOM expertise :)
+
+
+[1] sysbus.h describes itself as "Devices attached directly to the main
+system bus".  I think that's an (unconscious?) attempt to rationalize
+away its peculiar role.
+
+[2] Exception: TYPE_MACIO_BUS (used by g3beige and mac99) is a subtype
+of TYPE_SYSTEM_BUS.
+
+
+> ---
+>  hw/arm/tosa.c | 13 ++++++++-----
+>  1 file changed, 8 insertions(+), 5 deletions(-)
+>
+> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+> index f23651fd775..524d5fcd10b 100644
+> --- a/hw/arm/tosa.c
+> +++ b/hw/arm/tosa.c
+> @@ -79,7 +79,7 @@ static void tosa_microdrive_attach(PXA2xxState *cpu)
+>      OBJECT_CHECK(TosaMiscGPIOState, (obj), TYPE_TOSA_MISC_GPIO)
+> =20
+>  typedef struct TosaMiscGPIOState {
+> -    SysBusDevice parent_obj;
+> +    DeviceState parent_obj;
+>  } TosaMiscGPIOState;
+> =20
+>  static void tosa_reset(void *opaque, int line, int level)
+> @@ -96,7 +96,7 @@ static void tosa_misc_gpio_init(Object *obj)
+>      qdev_init_gpio_in_named(dev, tosa_reset, "reset", 1);
+>  }
+> =20
+> -static void tosa_gpio_setup(PXA2xxState *cpu,
+> +static void tosa_gpio_setup(MachineState *machine, PXA2xxState *cpu,
+>                  DeviceState *scp0,
+>                  DeviceState *scp1,
+>                  TC6393xbState *tmio)
+> @@ -104,7 +104,10 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
+>      DeviceState *misc_gpio;
+>      LEDState *led[4];
+> =20
+> -    misc_gpio =3D sysbus_create_simple(TYPE_TOSA_MISC_GPIO, -1, NULL);
+> +    misc_gpio =3D qdev_new(TYPE_TOSA_MISC_GPIO);
+> +    object_property_add_child(OBJECT(machine), "pcb-container",
+> +                              OBJECT(misc_gpio));
+> +    qdev_realize_and_unref(misc_gpio, NULL, &error_fatal);
+> =20
+>      /* MMC/SD host */
+>      pxa2xx_mmci_handlers(cpu->mmc,
+> @@ -253,7 +256,7 @@ static void tosa_init(MachineState *machine)
+>      scp0 =3D sysbus_create_simple("scoop", 0x08800000, NULL);
+>      scp1 =3D sysbus_create_simple("scoop", 0x14800040, NULL);
+> =20
+> -    tosa_gpio_setup(mpu, scp0, scp1, tmio);
+> +    tosa_gpio_setup(machine, mpu, scp0, scp1, tmio);
+> =20
+>      tosa_microdrive_attach(mpu);
+> =20
+> @@ -307,7 +310,7 @@ static const TypeInfo tosa_ssp_info =3D {
+> =20
+>  static const TypeInfo tosa_misc_gpio_info =3D {
+>      .name          =3D TYPE_TOSA_MISC_GPIO,
+> -    .parent        =3D TYPE_SYS_BUS_DEVICE,
+> +    .parent        =3D TYPE_DEVICE,
+>      .instance_size =3D sizeof(TosaMiscGPIOState),
+>      .instance_init =3D tosa_misc_gpio_init,
+>      /*
+

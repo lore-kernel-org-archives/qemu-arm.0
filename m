@@ -1,101 +1,102 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp836356lfq;
-        Tue, 8 Sep 2020 11:27:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw7XA4nm+QFn4FJfXCWztjQKoJcUa4SHCZGsWLMbcgDWp1N4pR+/+T+Z+irozOOSli9xFU7
-X-Received: by 2002:a5b:508:: with SMTP id o8mr267264ybp.43.1599589663926;
-        Tue, 08 Sep 2020 11:27:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599589663; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp838005lfq;
+        Tue, 8 Sep 2020 11:30:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzIPlQa4NCDEXo++XdH0xkw5bzXi2/yqGnVPv+0uoXwVebLoY6BbzZOJSrSw/iPWlVsf2Vi
+X-Received: by 2002:a25:5106:: with SMTP id f6mr229356ybb.335.1599589800784;
+        Tue, 08 Sep 2020 11:30:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599589800; cv=none;
         d=google.com; s=arc-20160816;
-        b=eHk34l7YbRJ3HoVvYtGJuW4TNBGsniLqWalKHewrYaS6gN7DXi+pIrD8ewWbMpmwh3
-         NaJI604XJFue8ig7gWroFNscNaiSPwS4kB8ep8Ecbk7fCvM0WvAND/AzNkfVY8KO8MSr
-         a/tKV+BhGv1htmzrbjdfa1hNLdDx0tpveExAfMAyb94N+EBHak5Rnf59X8o/rpaaINUL
-         pDhTxBGIBuP1Ts1d29dD6lqzg55/mIwRVEOpgFaOA4TPNyqBlme/TDprhz2YkHY8Y0PG
-         LqMFRGncCNOWqyRWqNRMtLipOCuhKlYJ0vB0H8C3yfyYrIFeZF70P3jU+XOOkjsUFhiA
-         fm8w==
+        b=rNN7EFKU8n8/x5HeZle5nxdlq54qoCmsb60H3w53jcGDMB27CzyrT5q1X6rdO7vB0y
+         tNI8nAGdapGy0gkeVBRv3khb01hlfxJG6NiUaEXjR6MqisAwbZ7zid/3eVrmOB8/Ev4k
+         7nI09x+xHIsl88n6NQP+Ei2x2a6Sau6dTBN1Z3RVjXzIQH/c/2rAHgeRhIJp7I8XOrcl
+         dh2gmC94tYkXLRfEmyl5QCIi1lcUX2UUxXtQzJApPIo3fbNj3YwgBMYJOX1LQJc+hIEs
+         WDdd6V9gj5bg0OUfOTmo72n0bcHcqlINvlrUA/Vhv+eofZlyhuulBUT3HXFgRxWxh0lX
+         HN3w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-language
          :content-transfer-encoding:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=WRvVLQJhsHvqw3G4z8XPOKNBU+EPByxW5Sy45vFTuaI=;
-        b=EYSR20XUGQxhMdz3xRCuVTdqBUCKH+Na1qEzkdLE2ppfqihmUYLIR2iibeE3a19ID3
-         tlZLgDfxKqYKvSQU3OtJFG2BJbuKwSud+RdJpgBzok8urZ+7IRHA+YYqEUshnnYVmmpk
-         MwTLwPhJcbhZPCLss8D1h8QJq69wRgyG/N5e2BSe/s7PSz0lnhSV3DPUgBPPOnrB9ACP
-         4ItIyX4hwwYNfTT5+mn7KR/vpYHcKWnAAFG2xf6VTLh1pud0T3ozA89Qtj3eWDu7/CSb
-         eJlz5lsF7PYd8BnLsrlpB/5E9EhdKR1MM6tHL7iBhcAnwEY8AHiGHhgUr9UPpMRLtMIP
-         t+Tw==
+        bh=zcQDwEDAfJy2VvKVHY8NiipUKgWBECsQb13TEVuPqdA=;
+        b=wV5MRCudEvZ5hxtc2/P1VoM6fRU6gQRQ2A22YP528FS48YQRaelH+q/AxUIOZ6ftp/
+         XpoC7LPW+PMdWc/7RCBNvJVj0ZiJwLSq0JekQ/a306scoQQjNMMcmjzSypJb30+w5xRF
+         nzYsywwt+vB7+MxwY0CBeSRvVdWJQNkuO7hNvaymMTaRqFNPR7DZ7TrFHE34FsTPKi6R
+         WUhViu8b2Und94T+TbU1A4xUOsAEVuFyGuUgKwvT6tb7Eg++nqkygxCxZdATHp+E6YfW
+         GxlBMSKp18+/dVGOSuvRNjR6B9bQyR2r/eCVR3SDt3LoaNzxBKL4pa/XeAlHauAv9d/y
+         fXEg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vx98RWtn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ivdneXPf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b11si112620ybn.128.2020.09.08.11.27.43
+        by mx.google.com with ESMTPS id k12si258905ybt.204.2020.09.08.11.30.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Sep 2020 11:27:43 -0700 (PDT)
+        Tue, 08 Sep 2020 11:30:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Vx98RWtn;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ivdneXPf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58708 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:33076 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFiLH-00017p-B8
-	for alex.bennee@linaro.org; Tue, 08 Sep 2020 14:27:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49830)
+	id 1kFiNU-0002NJ-5n
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 14:30:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50206)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFiLA-00017Z-Ej
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 14:27:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:56260)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFiNL-0002MO-GM
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 14:29:51 -0400
+Received: from us-smtp-2.mimecast.com ([207.211.31.81]:28801
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFiL8-0008Ol-G7
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 14:27:36 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kFiNJ-00005k-JC
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 14:29:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599589653;
+ s=mimecast20190719; t=1599589788;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=WRvVLQJhsHvqw3G4z8XPOKNBU+EPByxW5Sy45vFTuaI=;
- b=Vx98RWtnBT7jkBzmFO8Wv0w0JoPbA6DwgbE0eizMfD9jwvt+S+RBPH9r6Ag1SDDLDY3tbD
- cPgK1/k4QBKWbCNwT/cGcwq6ZSNJ4QZiEOCdR/XL+FY5r6+xySpUqooteXUH1lPHs4kach
- C0+TvgtX4/KUHyxbGdmIgaHOLXasqsY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-343-fdge9-zrNEGYqvh3r-C4_Q-1; Tue, 08 Sep 2020 14:27:18 -0400
-X-MC-Unique: fdge9-zrNEGYqvh3r-C4_Q-1
-Received: by mail-wm1-f70.google.com with SMTP id m25so80968wmi.0
- for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 11:27:17 -0700 (PDT)
+ bh=zcQDwEDAfJy2VvKVHY8NiipUKgWBECsQb13TEVuPqdA=;
+ b=ivdneXPfCydF+lyhUCEMiLqEzIR9Z7O3V+3xxhf7xhrLNE14uY2gm7BhAqsvcZYWfN8tjC
+ Ufmwz7jxPbJtDJ1osfxRLK/TJXAazCFmkDn7H0u2jeDjiyDFhEkAsnwHBfq1weEU6Vkmqv
+ D/y760T7jUxhLrbHBluJFRdGgTY73CA=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-181-XXh8-gMOMnyqVqQhCYq6ww-1; Tue, 08 Sep 2020 14:29:47 -0400
+X-MC-Unique: XXh8-gMOMnyqVqQhCYq6ww-1
+Received: by mail-wm1-f69.google.com with SMTP id x6so81675wmi.1
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 11:29:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:cc:references:from:autocrypt
  :message-id:date:user-agent:mime-version:in-reply-to
  :content-language:content-transfer-encoding;
- bh=WRvVLQJhsHvqw3G4z8XPOKNBU+EPByxW5Sy45vFTuaI=;
- b=rNamnLFeQxfaHXFOw2EsQUzJINZLpOR6arcOcB53I7xU8tCsvkfJpuT0GQAaaeCHbj
- vLvlRAiLwNO+FsyRezsrmillqgxrFLSaTHdL4zq1UVHcmYV01wxdzrnMEHxQ9qeU4PEL
- U1DkWBkxL8jKBCdgxOFAZhmNv0TzmuC6ifWaTztrj9HSfsHRwAngGZWXy8VfwXPIt+vi
- yk2Dp0Hpv/s9FLqm5MqkFbzbH76PbCvxUgxGpdl6NVL4+u0HrOW5zawEWtJ++Oo62YSS
- vVFYST12nVOWoI8NmOTp4mdf4y5E7GXzu+BOFIXZaJgyKV6nS1Nqpi4y+ie3rLRgiEcs
- CKfg==
-X-Gm-Message-State: AOAM530lsgWj0R9YKy+eaIiwEiGuuS2J6P9Hmc/aLrgyZiuLgwR9Oi0t
- Q1rRwlJILddTXJ1JyyHHDngbl8KOfsZyiQWSMns2LCMlNEXUr2NdwsUU9BduQ4PJpxj4+gaO9jW
- UCEzgfDodC32C
-X-Received: by 2002:a1c:6487:: with SMTP id y129mr436357wmb.90.1599589636495; 
- Tue, 08 Sep 2020 11:27:16 -0700 (PDT)
-X-Received: by 2002:a1c:6487:: with SMTP id y129mr436344wmb.90.1599589636275; 
- Tue, 08 Sep 2020 11:27:16 -0700 (PDT)
+ bh=zcQDwEDAfJy2VvKVHY8NiipUKgWBECsQb13TEVuPqdA=;
+ b=bMpVmY6rjezLMuJ4dJanEurei3eI3M8w31iA84MPBsTTL/oBsm8dfaTJO8RquD4u5y
+ Aos2Cqo03nN9MzV+WgAOYqcU+oha/w5FM/7xVJFnYB1Sy+0CTZysqxngIGuVO7gV6r7W
+ LXxnsdmGOOe8tyG22YQrPoHeCGZznVT6Mlc1kW4hN25Skro7kwVJMaF9U5gEk1l175Xr
+ zB5hojJc5TDEGXvkucXm8ZQnlQNuHU48+DDohtWIUbMfr4im9RD5wjQPmfvDXNyQ3Pp+
+ iVuGxv5JryQViaVlCQziFynFN8qdL4kmn4iIG2+lsiI4VP57c97biHox5vgUYDS30hNW
+ s3FA==
+X-Gm-Message-State: AOAM532l2VCb696IDxtJ2R0xfiPBHvCgcsMAG06ugKeVGhldOa4WImRR
+ 30QXB5D0rR6dzMvMisUigrB7cdf4O9oUkkgQesRSjAt8PkcYYL3fFtErMP2gWrcCN9IunTHXQWc
+ p+cqZRzcS6pAo
+X-Received: by 2002:adf:d845:: with SMTP id k5mr837236wrl.285.1599589785906;
+ Tue, 08 Sep 2020 11:29:45 -0700 (PDT)
+X-Received: by 2002:adf:d845:: with SMTP id k5mr837204wrl.285.1599589785642;
+ Tue, 08 Sep 2020 11:29:45 -0700 (PDT)
 Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id t202sm334698wmt.14.2020.09.08.11.27.14
+ by smtp.gmail.com with ESMTPSA id l10sm299332wmh.27.2020.09.08.11.29.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Sep 2020 11:27:15 -0700 (PDT)
-Subject: Re: [PATCH 3/5] qemu-options: document SMBIOS type 11 settings
+ Tue, 08 Sep 2020 11:29:45 -0700 (PDT)
+Subject: Re: [PATCH 4/5] hw/smbios: use qapi for SMBIOS entry point type enum
 To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
 References: <20200908165438.1008942-1-berrange@redhat.com>
- <20200908165438.1008942-4-berrange@redhat.com>
+ <20200908165438.1008942-5-berrange@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Autocrypt: addr=philmd@redhat.com; keydata=
  mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
@@ -120,12 +121,12 @@ Autocrypt: addr=philmd@redhat.com; keydata=
  9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
  RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
  apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <dfe8532c-abfc-57f6-d760-be2e3ce15b0e@redhat.com>
-Date: Tue, 8 Sep 2020 20:27:14 +0200
+Message-ID: <d450186c-f0e6-19e8-fd27-99ef70b06d47@redhat.com>
+Date: Tue, 8 Sep 2020 20:29:43 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200908165438.1008942-4-berrange@redhat.com>
+In-Reply-To: <20200908165438.1008942-5-berrange@redhat.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0.002
@@ -133,18 +134,17 @@ X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: 8bit
 Content-Language: en-US
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 02:10:54
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 03:00:34
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -24
-X-Spam_score: -2.5
-X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.626, NUMERIC_HTTP_ADDR=1.242, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, WEIRD_PORT=0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-1.626, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -159,80 +159,168 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Laszlo Ersek <lersek@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e9dg9hGqSO5K
+X-TUID: bmA/7hy6HXUZ
 
 On 9/8/20 6:54 PM, Daniel P. Berrangé wrote:
+> This refactoring prepares for exposing the SMBIOS entry point type as a
+> machine property on x86.
+> 
 > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>  hw/arm/virt.c                |  2 +-
+>  hw/i386/pc_piix.c            |  2 +-
+>  hw/i386/pc_q35.c             |  2 +-
+>  hw/smbios/smbios.c           |  9 +++++----
+>  include/hw/firmware/smbios.h |  9 ++-------
+>  qapi/machine.json            | 12 ++++++++++++
+>  6 files changed, 22 insertions(+), 14 deletions(-)
+> 
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index acf9bfbece..fd32b10f75 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1450,7 +1450,7 @@ static void virt_build_smbios(VirtMachineState *vms)
+>  
+>      smbios_set_defaults("QEMU", product,
+>                          vmc->smbios_old_sys_ver ? "1.0" : mc->name, false,
+> -                        true, SMBIOS_ENTRY_POINT_30);
+> +                        true, SMBIOS_ENTRY_POINT_TYPE_3_0);
+>  
+>      smbios_get_tables(MACHINE(vms), NULL, 0, &smbios_tables, &smbios_tables_len,
+>                        &smbios_anchor, &smbios_anchor_len);
+> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> index 32b1453e6a..1c5bc6ae6e 100644
+> --- a/hw/i386/pc_piix.c
+> +++ b/hw/i386/pc_piix.c
+> @@ -179,7 +179,7 @@ static void pc_init1(MachineState *machine,
+>          smbios_set_defaults("QEMU", "Standard PC (i440FX + PIIX, 1996)",
+>                              mc->name, pcmc->smbios_legacy_mode,
+>                              pcmc->smbios_uuid_encoded,
+> -                            SMBIOS_ENTRY_POINT_21);
+> +                            SMBIOS_ENTRY_POINT_TYPE_2_1);
+>      }
+>  
+>      /* allocate ram and load rom/bios */
+> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> index 0cb9c18cd4..cc202407c7 100644
+> --- a/hw/i386/pc_q35.c
+> +++ b/hw/i386/pc_q35.c
+> @@ -204,7 +204,7 @@ static void pc_q35_init(MachineState *machine)
+>          smbios_set_defaults("QEMU", "Standard PC (Q35 + ICH9, 2009)",
+>                              mc->name, pcmc->smbios_legacy_mode,
+>                              pcmc->smbios_uuid_encoded,
+> -                            SMBIOS_ENTRY_POINT_21);
+> +                            SMBIOS_ENTRY_POINT_TYPE_2_1);
+>      }
+>  
+>      /* allocate ram and load rom/bios */
+> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+> index 3c87be6c91..c99c9b01ae 100644
+> --- a/hw/smbios/smbios.c
+> +++ b/hw/smbios/smbios.c
+> @@ -61,7 +61,7 @@ uint8_t *smbios_tables;
+>  size_t smbios_tables_len;
+>  unsigned smbios_table_max;
+>  unsigned smbios_table_cnt;
+> -static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_21;
+> +static SmbiosEntryPointType smbios_ep_type = SMBIOS_ENTRY_POINT_TYPE_2_1;
+>  
+>  static SmbiosEntryPoint ep;
+>  
+> @@ -383,7 +383,7 @@ static void smbios_validate_table(MachineState *ms)
+>          exit(1);
+>      }
+>  
+> -    if (smbios_ep_type == SMBIOS_ENTRY_POINT_21 &&
+> +    if (smbios_ep_type == SMBIOS_ENTRY_POINT_TYPE_2_1 &&
+>          smbios_tables_len > SMBIOS_21_MAX_TABLES_LEN) {
+>          error_report("SMBIOS 2.1 table length %zu exceeds %d",
+>                       smbios_tables_len, SMBIOS_21_MAX_TABLES_LEN);
+> @@ -831,7 +831,7 @@ void smbios_set_defaults(const char *manufacturer, const char *product,
+>  static void smbios_entry_point_setup(void)
+>  {
+>      switch (smbios_ep_type) {
+> -    case SMBIOS_ENTRY_POINT_21:
+> +    case SMBIOS_ENTRY_POINT_TYPE_2_1:
+>          memcpy(ep.ep21.anchor_string, "_SM_", 4);
+>          memcpy(ep.ep21.intermediate_anchor_string, "_DMI_", 5);
+>          ep.ep21.length = sizeof(struct smbios_21_entry_point);
+> @@ -854,7 +854,7 @@ static void smbios_entry_point_setup(void)
+>          ep.ep21.structure_table_address = cpu_to_le32(0);
+>  
+>          break;
+> -    case SMBIOS_ENTRY_POINT_30:
+> +    case SMBIOS_ENTRY_POINT_TYPE_3_0:
+>          memcpy(ep.ep30.anchor_string, "_SM3_", 5);
+>          ep.ep30.length = sizeof(struct smbios_30_entry_point);
+>          ep.ep30.entry_point_revision = 1;
+> @@ -939,6 +939,7 @@ void smbios_get_tables(MachineState *ms,
+>      *tables = smbios_tables;
+>      *tables_len = smbios_tables_len;
+>      *anchor = (uint8_t *)&ep;
+> +    g_printerr("Total len %zu\n", smbios_tables_len);
 
+This seems to belong to patch 2 of this series:
+"hw/smbios: report error if table size is too large"
+
+Otherwise:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-> ---
->  qemu-options.hx | 41 +++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 41 insertions(+)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index b0f020594e..0cd231b164 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -2296,6 +2296,8 @@ DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,
->      "-smbios type=4[,sock_pfx=str][,manufacturer=str][,version=str][,serial=str]\n"
->      "              [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]\n"
->      "                specify SMBIOS type 4 fields\n"
-> +    "-smbios type=11[,value=str][,path=filename]\n"
-> +    "                specify SMBIOS type 11 fields\n"
->      "-smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]\n"
->      "               [,asset=str][,part=str][,speed=%d]\n"
->      "                specify SMBIOS type 17 fields\n",
-> @@ -2319,6 +2321,45 @@ SRST
->  ``-smbios type=4[,sock_pfx=str][,manufacturer=str][,version=str][,serial=str][,asset=str][,part=str]``
->      Specify SMBIOS type 4 fields
 >  
-> +``-smbios type=11[,value=str][,path=filename]``
-> +    Specify SMBIOS type 11 fields inline
+>      /* calculate length based on anchor string */
+>      if (!strncmp((char *)&ep, "_SM_", 4)) {
+> diff --git a/include/hw/firmware/smbios.h b/include/hw/firmware/smbios.h
+> index 02a0ced0a0..cb1299ad7a 100644
+> --- a/include/hw/firmware/smbios.h
+> +++ b/include/hw/firmware/smbios.h
+> @@ -1,6 +1,8 @@
+>  #ifndef QEMU_SMBIOS_H
+>  #define QEMU_SMBIOS_H
+>  
+> +#include "qapi/qapi-types-machine.h"
 > +
-> +    This argument can be repeated multiple times, and values are added in the order they are parsed.
-> +    Applications intending to use OEM strings data are encouraged to use their application name as
-> +    a prefix for the value string. This facilitates passing information for multiple applications
-> +    concurrently.
+>  /*
+>   * SMBIOS Support
+>   *
+> @@ -23,13 +25,6 @@ struct smbios_phys_mem_area {
+>      uint64_t length;
+>  };
+>  
+> -/*
+> - * SMBIOS spec defined tables
+> - */
+> -typedef enum SmbiosEntryPointType {
+> -    SMBIOS_ENTRY_POINT_21,
+> -    SMBIOS_ENTRY_POINT_30,
+> -} SmbiosEntryPointType;
+>  
+>  /* SMBIOS Entry Point
+>   * There are two types of entry points defined in the SMBIOS specification
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index abc6fd0477..a58cf2694f 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -937,3 +937,15 @@
+>    'data': 'NumaOptions',
+>    'allow-preconfig': true
+>  }
 > +
-> +    The ``value=str`` syntax provides the string data inline, while the ``path=filename`` syntax
-> +    loads data from a file on disk. Note that the file is not permitted to contain any NUL bytes.
-> +
-> +    Both the ``value`` and ``path`` options can be repeated multiple times and will be added to
-> +    the SMBIOS table in the order in which they appear.
-> +
-> +    Note that on the x86 architecture, the total size of all SMBIOS tables is limited to 65535
-> +    bytes. Thus the OEM strings data is not suitable for passing large amounts of data into the
-> +    guest. Instead it should be used as a indicator to inform the guest where to locate the real
-> +    data set, for example, by specifying the serial ID of a block device.
-> +
-> +    An example passing three strings is
-> +
-> +    .. parsed-literal::
-> +
-> +        -smbios type=11,value=cloud-init:ds=nocloud-net;s=http://10.10.0.1:8000/,\\
-> +                        value=anaconda:method=http://dl.fedoraproject.org/pub/fedora/linux/releases/25/x86_64/os,\\
-> +                        path=/some/file/with/oemstringsdata.txt
-> +
-> +    In the guest OS this is visible with the ``dmidecode`` command
-> +
-> +     .. parsed-literal::
-> +
-> +         $ dmidecode -t 11
-> +         Handle 0x0E00, DMI type 11, 5 bytes
-> +         OEM Strings
-> +              String 1: cloud-init:ds=nocloud-net;s=http://10.10.0.1:8000/
-> +              String 2: anaconda:method=http://dl.fedoraproject.org/pub/fedora/linux/releases/25/x86_64/os
-> +              String 3: myapp:some extra data
-> +
-> +
->  ``-smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str][,asset=str][,part=str][,speed=%d]``
->      Specify SMBIOS type 17 fields
->  ERST
+> +##
+> +# @SmbiosEntryPointType:
+> +#
+> +# @2_1: SMBIOS version 2.1
+> +#
+> +# @3_0: SMBIOS version 3.0
+> +#
+> +# Since: 5.2
+> +##
+> +{ 'enum': 'SmbiosEntryPointType',
+> +  'data': [ '2_1', '3_0' ] }
 > 
 

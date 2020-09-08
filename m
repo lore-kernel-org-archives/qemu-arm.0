@@ -1,83 +1,84 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp896131lfq;
-        Tue, 8 Sep 2020 12:55:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxNZX2TraRTfhNpdQHZTA00vDrOWNf2SS7oveOTZTWhhVSRRlivyxTBApcrLA7LTq1x07Ss
-X-Received: by 2002:a5b:3d2:: with SMTP id t18mr689664ybp.333.1599594912628;
-        Tue, 08 Sep 2020 12:55:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599594912; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp914412lfq;
+        Tue, 8 Sep 2020 13:21:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzvJOjxGdSkJaicZdKWK02JmW0Vm7078Vr1KczJL+AEyiv0kk51elk3EMbf4zubOeGN52FU
+X-Received: by 2002:a05:6402:78b:: with SMTP id d11mr806990edy.341.1599596487724;
+        Tue, 08 Sep 2020 13:21:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599596487; cv=none;
         d=google.com; s=arc-20160816;
-        b=fIjS7eWC0nEkXrL7abHY8p0sMu8FsaV1Z+B6LqeM9LPJ6+5tvroYjUkWALCDtNQuif
-         YCIgBWrCRI7x3GVCRZFWdk5qoA2gGAhYPGifBd1MUlWasnuz0Wq/qHpAUE77oUtndnTV
-         9zKVsYil64aQ0hpLoeryTxf6QEKncBMqFyUY/MTRlXWQGQY8IeUr1hVtY66LQOD0LqdK
-         KYcRRmCgXrKu0BL75QWca14kH9YxGeWAAwH1heWIpmu5IDNGUMAS3oS2YCzOvvhO/54l
-         QjekQi3S0gsuCU8v680wz/iPNEf5BE/qkS/kcPBRWYZRvU5gYqsbre1OCz9MHyo91f/S
-         yWQg==
+        b=chDnA/uAFVIxiddHVTBXJTJy3Ry/HihL3ppp00MH2iidd3k3Ad+HpPb3NCrhFX3p82
+         uhZQANXTUXZ6mXDoaTxKj2bEfjZkVukpy7+sLOP6duzH+ddcT8yUipo+18GYutLnj2uU
+         Vhfdxrapj4mpclogGhtjkpXzSfV3u6RdaVng4jdg40ZiQzdjHXKvRgNyBw5ZpIwOdSQk
+         8yPl33TTQLqsbywNWbhm0B+AgR0eOFB/H5oq1Rr4+nu+4wcGRrzeyEGI3Ldg5GRo3sO7
+         SU6D+6SZYXmISBGB9XUYhySRiWQWL+e/7KgSrElg54MMrTNcUVEaMTnzi0pn+vzZPmZu
+         G1BA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-language:content-transfer-encoding:in-reply-to:mime-version
          :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
          :dkim-signature;
-        bh=LK+eNEA0rNcsZ3UKbTcJ4LEvVJ3ijGeAYxPUTjYndnk=;
-        b=trLMxTOJ6xg4H+/OBZ0GvAq0fDhxY4mEl0cg+63POm+G4OhQz75g2Ak4IbDb/uWn4L
-         Gkp7yPNPBa2iaY4wqEtEg1pyCxt0N03JLGPH4IraihuHArDFTu6GQPFT0k2i0rpJuFYV
-         L8ATQ7ikTGpRejyx6S1f7oGZyOHSdCIqZG7CI/5O3XgXCmX3jjpi7oT/ezboplRAgBTs
-         sFtvpmSt0pd3lv6+lMFbbACK/l4xcy0tSayc2VVXT9WAELr9uikybVoB2quMetN+rBDn
-         1+c165VNwAIuF8gRhiX4wxV1Hqk8CWYJpn0w/VH+L5xsdY9grnc1VVu6z2qDANNsj4wS
-         2IFQ==
+        bh=fFxASpuTWlbPCKH4Wz3K+JpJTmD5oLonMUjycGG2aXE=;
+        b=gwUJfasRLN4BiBUdNoOqWwDVI5TuefPBgNkvHKBe7KN8zxzTRYH3KqG/Etb3LBCHef
+         P9f2+ZFxaOBv2dnUVX1/FFiyk8eOjk6zIYpfY45/f46v5KVfPCv3mDr15v5GKSCUf8QT
+         tQjp4iM4X5FdN/T4aqC6KL4jwC6pbfn3+5nVP7AsjhOax4dZ1Ctc4xdr7fhkFaRRXXVC
+         8RYL6MOC6Z7BytgYeCBH3Nt0HaUoczTcy6LuMNN4UqD10BfB/fMMU0Llf5YLcyAIhOc1
+         0+h5C1gK93rdA9nIyUz2lfBuzYlEiOR5l3kQzZKhPqCcV4RGX8Z+jUekfMPLzLnNTO6U
+         57ag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PlLisMwz;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UYRqyrwu;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id v7si374776ybm.244.2020.09.08.12.55.12
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id ck10si84474ejb.167.2020.09.08.13.21.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Sep 2020 12:55:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        Tue, 08 Sep 2020 13:21:27 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PlLisMwz;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UYRqyrwu;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1599594912;
+	s=mimecast20190719; t=1599596486;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=LK+eNEA0rNcsZ3UKbTcJ4LEvVJ3ijGeAYxPUTjYndnk=;
-	b=PlLisMwzO9raOp3lYJ17yiRcHZbgf0hiC4qwLCwzeQLX7sF0p/T3KtqXa8JlGXpcbIdjg8
-	klyEo/Mi5BfR3w002FQc62+2Z1ydgdsJeaHTDh+sQuT+L34VKzN4eAZpQl3V7fvuOhlfxJ
-	D/rvdlKXuDGKGMFw1DTNLqXnBt0tuyo=
+	bh=fFxASpuTWlbPCKH4Wz3K+JpJTmD5oLonMUjycGG2aXE=;
+	b=UYRqyrwuAMJfF1NDCzyMeOMtMBukC4ARgb6pffqq+2RMwwscD+ichH7TOabaywk+MFyAAj
+	GzfdJqOLmU6JmjmKWOl0HZyKuTxiUgGjSWhmVkf3oCLvpeyq+7qrGVlCEpYZCt5tEpIQva
+	jZVwkBewTYuyWC6uNDVNaXcErm6cWdA=
 Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
  [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-388-j6Z1gUntN2eZEkQ8VAEEjQ-1; Tue, 08 Sep 2020 15:55:09 -0400
-X-MC-Unique: j6Z1gUntN2eZEkQ8VAEEjQ-1
-Received: by mail-wr1-f72.google.com with SMTP id f18so20062wrv.19
-        for <alex.bennee@linaro.org>; Tue, 08 Sep 2020 12:55:08 -0700 (PDT)
+ us-mta-251-HXywtoPkPsCuHIAz-kJMlA-1; Tue, 08 Sep 2020 16:21:25 -0400
+X-MC-Unique: HXywtoPkPsCuHIAz-kJMlA-1
+Received: by mail-wr1-f72.google.com with SMTP id 33so45692wrk.12
+        for <alex.bennee@linaro.org>; Tue, 08 Sep 2020 13:21:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:autocrypt
          :message-id:date:user-agent:mime-version:in-reply-to
          :content-language:content-transfer-encoding;
-        bh=LK+eNEA0rNcsZ3UKbTcJ4LEvVJ3ijGeAYxPUTjYndnk=;
-        b=M4YRWOSBQYBbmthjLyQMKMapqZUT8/zncB39BCdlhq4UBENOUUew4skGlNZutOXPVb
-         2TUto/IYzRY6PUVIeUzR69lMWdaT7LPhwPeIp0o3Lnw55hbghkAw+sQ9OfehqlGOIwcT
-         D+o/77hAu3vtdeNZSwVHVwfOVjuIYWUI8Oz3vlSTbYlOvKM+CcMKe0RgPhALQvFpId5r
-         9X/phNei3gnz5beI46+PBsYQITsVuwZ8XdElr08/SK+hCvk8/GwgBPRKUVtsmt90tOg6
-         1qzyx2JFKeizCOLtHB/DxQipX/qRJKHOuSKsABtN2hGmv8mslwnz5nykfutV6QNrpiPO
-         oF1g==
-X-Gm-Message-State: AOAM533K+1ATqDh+aaNGGOgpQVROJk9fnRfBkIHsTIZpyw6HxE3wdrvf
-	kog7PLGrXyGO7u/pB5MiH3evv5klYRunGdMs3etkmRjGOnoJFQQpPS3VJJS41gwOYZ3QG6L+SQ3
-	IuTaf8DyZiTGUG1by
-X-Received: by 2002:a5d:4152:: with SMTP id c18mr125719wrq.277.1599594907392;
-        Tue, 08 Sep 2020 12:55:07 -0700 (PDT)
-X-Received: by 2002:a5d:4152:: with SMTP id c18mr125679wrq.277.1599594907090;
-        Tue, 08 Sep 2020 12:55:07 -0700 (PDT)
+        bh=fFxASpuTWlbPCKH4Wz3K+JpJTmD5oLonMUjycGG2aXE=;
+        b=O1zHRpPrrS8OZGdNVdIRA09Gf6aQT6rsf5oooLiyvPE/Es/SPf10vbgkiHfXevqkeI
+         8Q/kVfpRADGbxCvuMJ/T+Dn4+n8+hWXgwn9ZEnbUIxMaQkSxSIT48diwPnKwg17yAdFo
+         qB0Tw7WxGBvbN3zJcSaPHeIL5U9ZORAHo6EnO9T/xKUOBSag/4CF56VtqkW4IQBKpnSc
+         MUxsOFIkn4V4GDeYYqMFzSmXi06bKSNANdkxx4HYBrDsZ6q/bZMNO/LVVRA4dB47mEm+
+         HKdiICURBvUDlaCrhNsYOOGkgMf0wuA7v8wHqE4fwotYyAGVCbtPzKGmnpvspjUI5vL+
+         4lZw==
+X-Gm-Message-State: AOAM53326c8aquLrcN2i5WHcRw52ZTPdUTLHfeo5Rolz99avvmYyQCSS
+	4czMZxuenug0dPCAAO584/KbIByDtxFhwHw/6ETGvmqNBMQum3gCqILRK9DMPy8z5CTBnNOSP5Z
+	/jQNYV/uoFwN94FU9
+X-Received: by 2002:a5d:5273:: with SMTP id l19mr408448wrc.64.1599596483639;
+        Tue, 08 Sep 2020 13:21:23 -0700 (PDT)
+X-Received: by 2002:a5d:5273:: with SMTP id l19mr408421wrc.64.1599596483484;
+        Tue, 08 Sep 2020 13:21:23 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.65])
-        by smtp.gmail.com with ESMTPSA id z19sm581829wmi.3.2020.09.08.12.55.04
+        by smtp.gmail.com with ESMTPSA id r13sm732783wrj.83.2020.09.08.13.21.21
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 08 Sep 2020 12:55:06 -0700 (PDT)
-Subject: Re: [PATCH 3/4] tests: bump avocado version
+        Tue, 08 Sep 2020 13:21:22 -0700 (PDT)
+Subject: Re: [PATCH 0/4] Acceptance Tests: update assets location and cancel
+ tests if missing
 To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
 Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
  Fabien Chouteau <chouteau@adacore.com>,
@@ -97,12 +98,8 @@ Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
  <pbonzini@redhat.com>, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Pavel Dovgalyuk <Pavel.Dovgaluk@gmail.com>,
- Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>,
- Willian Rampazzo <willianr@redhat.com>
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
 References: <20200907042000.415931-1-crosa@redhat.com>
- <20200907042000.415931-4-crosa@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 Autocrypt: addr=philmd@redhat.com; keydata=
  mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
@@ -127,64 +124,44 @@ Autocrypt: addr=philmd@redhat.com; keydata=
  9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
  RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
  apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <f92090b8-d401-1f99-cb3a-32ddebc7951a@redhat.com>
-Date: Tue, 8 Sep 2020 21:55:03 +0200
+Message-ID: <14ade196-172b-58b5-f036-4fef01f66ab7@redhat.com>
+Date: Tue, 8 Sep 2020 22:21:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200907042000.415931-4-crosa@redhat.com>
+In-Reply-To: <20200907042000.415931-1-crosa@redhat.com>
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Content-Language: en-US
-X-TUID: 9NUEKdJQPgEC
+X-TUID: t2/JsvSDVH3S
+
+Hi Cleber,
 
 On 9/7/20 6:19 AM, Cleber Rosa wrote:
-> From: Pavel Dovgalyuk <Pavel.Dovgaluk@gmail.com>
+> This updates a couple of asset locations, because their locations on
+> their origin distributions are not permanently stable.
 > 
-> Reverse debugging test uses gdb remote client of avocado framework.
-> This client was fixed since the currently used version 76.
-> Therefore this patch bumps the version to 81 and fixes command
-> line version compatibility issue.
+> To minimize the inconvenciente caused by test and job failures in the
+> future, an option is enabled that will cancel (AKA skip) tests early
+> when those assets are not available.
 > 
-> Signed-off-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-> Message-Id: <159903462803.28509.16851113546106095750.stgit@pasha-ThinkPad-X280>
-> Reviewed-by: Willian Rampazzo <willianr@redhat.com>
-> Reviewed-by: Cleber Rosa <crosa@redhat.com>
-> Tested-by: Cleber Rosa <crosa@redhat.com>
-> ---
->  tests/Makefile.include | 2 +-
->  tests/requirements.txt | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+> Cleber Rosa (3):
+>   Acceptance tests: use an available kernel image package for arm
+>   boot linux test: update arm bionic URL
+>   Acceptance tests: cancel tests on missing assets
 > 
-> diff --git a/tests/Makefile.include b/tests/Makefile.include
-> index 9ac8f5b86a..0687c8bcda 100644
-> --- a/tests/Makefile.include
-> +++ b/tests/Makefile.include
-> @@ -517,7 +517,7 @@ check-acceptance: check-venv $(TESTS_RESULTS_DIR) get-vm-images
->              --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
->              --filter-by-tags-include-empty --filter-by-tags-include-empty-key \
->              $(AVOCADO_TAGS) \
-> -            $(if $(GITLAB_CI),,--failfast=on) tests/acceptance, \
-> +            $(if $(GITLAB_CI),,--failfast) tests/acceptance, \
->              "AVOCADO", "tests/acceptance")
->  
->  # Consolidated targets
-> diff --git a/tests/requirements.txt b/tests/requirements.txt
-> index f9c84b4ba1..036691c922 100644
-> --- a/tests/requirements.txt
-> +++ b/tests/requirements.txt
-> @@ -1,5 +1,5 @@
->  # Add Python module requirements, one per line, to be installed
->  # in the tests/venv Python virtual environment. For more info,
->  # refer to: https://pip.pypa.io/en/stable/user_guide/#id1
-> -avocado-framework==76.0
-> +avocado-framework==81.0
->  pycdlib==1.9.0
-> 
+> Pavel Dovgaluk (1):
+>   tests: bump avocado version
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+I value your patches but I prefer to consider them as
+new tests added, and not tests fixed (as discussed elsewhere
+in this series). Therefore I'll post another simpler approach
+until the discussion gets a consensus.
+
+Regards,
+
+Phil.

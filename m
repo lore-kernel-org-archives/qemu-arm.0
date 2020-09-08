@@ -1,240 +1,213 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp547600lfq;
-        Tue, 8 Sep 2020 05:13:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJykjCGjTRfwSwYCkB1SvOxVUTWLUjBDa1tKI7t3ZyuqH05usaSD6/b+BbUlTkYyCDQczC5B
-X-Received: by 2002:a25:285:: with SMTP id 127mr7735166ybc.339.1599567195622;
-        Tue, 08 Sep 2020 05:13:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599567195; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp547678lfq;
+        Tue, 8 Sep 2020 05:13:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyNVPyOA1sQgp2biiofhvTFcWPFkKPsswOxfzzBBz8APYJhYPMPb4AxnxYRcTARJQUdMOIa
+X-Received: by 2002:a25:8512:: with SMTP id w18mr8778944ybk.432.1599567201336;
+        Tue, 08 Sep 2020 05:13:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599567201; cv=none;
         d=google.com; s=arc-20160816;
-        b=QfvfJfgaF9Ujkkr3r3h2YLYAD/1kbfWlLCV2EwEDbiGtuyFmLjwe5MHr48pzwozud1
-         55azTejUVXOED3tlXF0Tt2rk2Xlur1wY6gqgQtO24afRNvL8XIMEr0WkDROZF6OsSLzM
-         BN/ZM7PDtJsqqJOgay9S53cHlSqNo1zMTOpKSJN40yTTZSsS0ezCQjtgsT2P3u8enpA/
-         WF8cc0InsICXRLH4ne49FreyLFqY8bwoko8YHfQvsNLwu69J9k9eDdXVxq9Huio0J016
-         Lyge2VpUsw1Xb2dWWYU+pcBmVBhIpClK+1jgn1OWGnBG7BwV/880krAWkE3wVwBOLwaG
-         0Fog==
+        b=V2ftcaoo27uS0/C4JVfnQC88byi4F6W2fG5Nz4wSO11b6Vl6tcrMKHkIaA/jGzQI/u
+         rrPglamakhwDRGKQSfUpmbZet9xBlJP0d6RXBduzTiNlIb4GYJwkZpw6ybQdb8l9LgyD
+         mJNbK/E7D15fOBvAXeMsnHiN+TKC32UNrtYZHfSSJya6XXxdPpqmGXNiV2JXvgX5bVng
+         Nv7MJfCEH3NdqZwX81uXX3uqHxxlg0JVnzqybHTjFHvGttXKlR720z3ibBSFNHkTIvkg
+         VJs8oXfYge8/yyY2y+IDOi0OxrXX6cdj0NMTCzRrhN3TEMtjrzjeyS5LtKzIa7RlHYgA
+         ReqA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=NXXcWWbzMCzc0xaSFv2vWi3xTnGSIlRAL4OHuWAqac8=;
-        b=XUScVBqY6aCcmQo12lomQxq1LJ31s/YphXVg4yVTjhplo5/0ZlQKTZUB5PdHkF4iEL
-         LaskwoWX6ZjY6j7TLYDohrAGVtU2LnDJE14TP8JaAkFzLBZM1Xz+DQoCDFjsgmXdVPpR
-         Wm/dejbB090PPziV8eE+0zigcrHRfCntY6sOsSaRtlzP+B/1njeuVqMKeJYHbOZZudTb
-         o7nFue07TKAK7mBNHBQdiz4T3xYmsmMYONvYqo13aKrzmLHBmWz0uzaFODbLcjt19Oby
-         TCZWjJHyyHSbRBSSHoYKlOkh6hArnRUVLaMsYSTBTAAX29T2QTcLuIUjze84zDd/tKTq
-         LInA==
+        bh=weYslzUVJLl87DZKqYmD4AiiQEzxi3Q5a5q5Zh55/vU=;
+        b=kOXe3ZQ/wlTPWUHUgJJnRN3yKPuEkxsAhcqa/XsnWiqYoY9uLDp5DdHxyZuLOOn7Nt
+         qVNGnf934Btqw8UsMvLJAZyv670690bqROOTQKUTsHCNnICfk7mu1aozXFnKRVJY3rzO
+         WY95TvfYT3A7vq8huuZ4hbRoC7N/XtfZIgj+Uz+t10281814K82UUVuNmJ5WUHJXWl4E
+         NuJiqwZJyACUMpxi92SnLzwelkoe3HNCu0andRouiOCdqn+TClabc3dddG+HVq+yQbyn
+         /eHQX+NHq7dWGFEh4Dis4mycKLvRMcyj6wFN5chHQx2pHr5r14kiXq3HGrLG3nbudbg9
+         9EZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="bjQFU//r";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IlEPn4hD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h94si24410074ybi.99.2020.09.08.05.13.15
+        by mx.google.com with ESMTPS id 63si3222104ybs.257.2020.09.08.05.13.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Sep 2020 05:13:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 08 Sep 2020 05:13:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="bjQFU//r";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IlEPn4hD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52356 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54230 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFcUs-0003Nu-UB
-	for alex.bennee@linaro.org; Tue, 08 Sep 2020 08:13:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57520)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kFcUy-00047V-JY
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 08:13:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57680)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kFcSy-0000uL-1u
- for qemu-devel@nongnu.org; Tue, 08 Sep 2020 08:11:16 -0400
-Received: from us-smtp-2.mimecast.com ([205.139.110.61]:39377
- helo=us-smtp-delivery-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kFcT7-00011z-7j
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 08:11:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:24771)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kFcSn-0005eW-6b
- for qemu-devel@nongnu.org; Tue, 08 Sep 2020 08:11:13 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kFcSo-0005f5-MD
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 08:11:23 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1599567064;
+ s=mimecast20190719; t=1599567066;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NXXcWWbzMCzc0xaSFv2vWi3xTnGSIlRAL4OHuWAqac8=;
- b=bjQFU//roJYKo8WWNP7VLiTXPoU2DgHYKpDKjsIhSRkqFngpBuHHO+Eg+9JkRUb5kkjpW3
- lnpXw7RfZl6iZFYXrpX8IUB0Eaic3OoQVXsARlAKaE75po+kQHXpeYldzflDcEVj3xkNqv
- 0kr4r3fvVCsIgG2fZQYVomFMLqowK9E=
+ bh=weYslzUVJLl87DZKqYmD4AiiQEzxi3Q5a5q5Zh55/vU=;
+ b=IlEPn4hDQjy0VHqd/L3ORKRKRuOgEyVWSdQdjhOiWtjwyd+ZOcjP6KnhmUklLP5sNXfBXb
+ rmvytGxFP/sMei8nVepcxZp+52Tt+z1ztZSKMLHaqN3xtpmvrHVl4bXK9HxnaQo9WRDkNq
+ YVHgGBYY0Ghm11piQ+w2qvNZko3Dvlc=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-252-XDCQFu2_NwaqwXfAVLGPAA-1; Tue, 08 Sep 2020 08:11:02 -0400
-X-MC-Unique: XDCQFu2_NwaqwXfAVLGPAA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-439-fbQ83TDvMq6i7AxHN5y5pg-1; Tue, 08 Sep 2020 08:11:04 -0400
+X-MC-Unique: fbQ83TDvMq6i7AxHN5y5pg-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3E84E10BBED2;
- Tue,  8 Sep 2020 12:11:01 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2D54712CCE4;
+ Tue,  8 Sep 2020 12:11:03 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
  [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8EDAB5C26B;
- Tue,  8 Sep 2020 12:10:51 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BD8725D9EF;
+ Tue,  8 Sep 2020 12:11:02 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 98BDC45B2; Tue,  8 Sep 2020 14:10:50 +0200 (CEST)
+ id A57831FCEE; Tue,  8 Sep 2020 14:10:50 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v7 04/21] acpi: ged: add control regs
-Date: Tue,  8 Sep 2020 14:10:33 +0200
-Message-Id: <20200908121050.1162-5-kraxel@redhat.com>
+Subject: [PATCH v7 05/21] acpi: ged: add x86 device variant.
+Date: Tue,  8 Sep 2020 14:10:34 +0200
+Message-Id: <20200908121050.1162-6-kraxel@redhat.com>
 In-Reply-To: <20200908121050.1162-1-kraxel@redhat.com>
 References: <20200908121050.1162-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0.001
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.61; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 01:08:25
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/08 02:10:54
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
  qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +xj78G5KveSN
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: riUf/Ns4ksRv
 
-Add control regs (sleep, reset) for hw-reduced acpi.
+Set AcpiDeviceIfClass->madt_cpu,
+otherwise identical to TYPE_ACPI_GED.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 ---
- include/hw/acpi/generic_event_device.h | 12 +++++++
- hw/acpi/generic_event_device.c         | 44 ++++++++++++++++++++++++++
- 2 files changed, 56 insertions(+)
+ include/hw/acpi/generic_event_device.h |  4 +++
+ hw/i386/generic_event_device_x86.c     | 36 ++++++++++++++++++++++++++
+ hw/i386/meson.build                    |  1 +
+ 3 files changed, 41 insertions(+)
+ create mode 100644 hw/i386/generic_event_device_x86.c
 
 diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index 90a9180db572..4533cddb486c 100644
+index 4533cddb486c..bd79cfff2b6a 100644
 --- a/include/hw/acpi/generic_event_device.h
 +++ b/include/hw/acpi/generic_event_device.h
-@@ -72,6 +72,17 @@
+@@ -69,6 +69,10 @@
+ #define ACPI_GED(obj) \
+     OBJECT_CHECK(AcpiGedState, (obj), TYPE_ACPI_GED)
+ 
++#define TYPE_ACPI_GED_X86 "acpi-ged-x86"
++#define ACPI_GED_X86(obj) \
++    OBJECT_CHECK(AcpiGedX86State, (obj), TYPE_ACPI_GED_X86)
++
  #define ACPI_GED_EVT_SEL_OFFSET    0x0
  #define ACPI_GED_EVT_SEL_LEN       0x4
  
-+#define ACPI_GED_REG_SLEEP_CTL     0x00
-+#define ACPI_GED_REG_SLEEP_STS     0x01
-+#define ACPI_GED_REG_RESET         0x02
-+#define ACPI_GED_REG_COUNT         0x03
+diff --git a/hw/i386/generic_event_device_x86.c b/hw/i386/generic_event_device_x86.c
+new file mode 100644
+index 000000000000..e26fb02a2ef6
+--- /dev/null
++++ b/hw/i386/generic_event_device_x86.c
+@@ -0,0 +1,36 @@
++/*
++ * x86 variant of the generic event device for hw reduced acpi
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU General Public License,
++ * version 2 or later, as published by the Free Software Foundation.
++ */
 +
-+/* ACPI_GED_REG_RESET value for reset*/
-+#define ACPI_GED_RESET_VALUE       0x42
++#include "qemu/osdep.h"
++#include "hw/acpi/generic_event_device.h"
++#include "hw/i386/pc.h"
 +
-+/* ACPI_GED_REG_SLEEP_CTL.SLP_TYP value for S5 (aka poweroff) */
-+#define ACPI_GED_SLP_TYP_S5        0x05
-+
- #define GED_DEVICE      "GED"
- #define AML_GED_EVT_REG "EREG"
- #define AML_GED_EVT_SEL "ESEL"
-@@ -87,6 +98,7 @@
- 
- typedef struct GEDState {
-     MemoryRegion evt;
-+    MemoryRegion regs;
-     uint32_t     sel;
- } GEDState;
- 
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index b8abdefa1c77..491df80a5cc7 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -20,6 +20,7 @@
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "qemu/error-report.h"
-+#include "sysemu/runstate.h"
- 
- static const uint32_t ged_supported_events[] = {
-     ACPI_GED_MEM_HOTPLUG_EVT,
-@@ -176,6 +177,45 @@ static const MemoryRegionOps ged_evt_ops = {
-     },
- };
- 
-+static uint64_t ged_regs_read(void *opaque, hwaddr addr, unsigned size)
++static void acpi_ged_x86_class_init(ObjectClass *class, void *data)
 +{
-+    return 0;
++    AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_CLASS(class);
++
++    adevc->madt_cpu = pc_madt_cpu_entry;
 +}
 +
-+static void ged_regs_write(void *opaque, hwaddr addr, uint64_t data,
-+                           unsigned int size)
-+{
-+    bool slp_en;
-+    int slp_typ;
-+
-+    switch (addr) {
-+    case ACPI_GED_REG_SLEEP_CTL:
-+        slp_typ = (data >> 2) & 0x07;
-+        slp_en  = (data >> 5) & 0x01;
-+        if (slp_en && slp_typ == 5) {
-+            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+        }
-+        return;
-+    case ACPI_GED_REG_SLEEP_STS:
-+        return;
-+    case ACPI_GED_REG_RESET:
-+        if (data == ACPI_GED_RESET_VALUE) {
-+            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+        }
-+        return;
++static const TypeInfo acpi_ged_x86_info = {
++    .name          = TYPE_ACPI_GED_X86,
++    .parent        = TYPE_ACPI_GED,
++    .class_init    = acpi_ged_x86_class_init,
++    .interfaces = (InterfaceInfo[]) {
++        { TYPE_HOTPLUG_HANDLER },
++        { TYPE_ACPI_DEVICE_IF },
++        { }
 +    }
-+}
-+
-+static const MemoryRegionOps ged_regs_ops = {
-+    .read = ged_regs_read,
-+    .write = ged_regs_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 1,
-+    },
 +};
 +
- static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-                                     DeviceState *dev, Error **errp)
- {
-@@ -332,6 +372,10 @@ static void acpi_ged_initfn(Object *obj)
-      sysbus_init_mmio(sbd, &s->container_memhp);
-      acpi_memory_hotplug_init(&s->container_memhp, OBJECT(dev),
-                               &s->memhp_state, 0);
++static void acpi_ged_x86_register_types(void)
++{
++    type_register_static(&acpi_ged_x86_info);
++}
 +
-+    memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
-+                          TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
-+    sysbus_init_mmio(sbd, &ged_st->regs);
- }
++type_init(acpi_ged_x86_register_types)
+diff --git a/hw/i386/meson.build b/hw/i386/meson.build
+index 63918fbe22f9..1a7d1a685d77 100644
+--- a/hw/i386/meson.build
++++ b/hw/i386/meson.build
+@@ -18,6 +18,7 @@ i386_ss.add(when: 'CONFIG_VMPORT', if_true: files('vmport.c'))
+ i386_ss.add(when: 'CONFIG_VTD', if_true: files('intel_iommu.c'))
  
- static void acpi_ged_class_init(ObjectClass *class, void *data)
+ i386_ss.add(when: 'CONFIG_ACPI', if_true: files('acpi-common.c'))
++i386_ss.add(when: 'CONFIG_ACPI_HW_REDUCED', if_true: files('generic_event_device_x86.c'))
+ i386_ss.add(when: 'CONFIG_PC', if_true: files(
+   'pc.c',
+   'pc_sysfw.c',
 -- 
 2.27.0
 

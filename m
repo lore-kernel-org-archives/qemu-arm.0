@@ -1,167 +1,195 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp914412lfq;
-        Tue, 8 Sep 2020 13:21:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzvJOjxGdSkJaicZdKWK02JmW0Vm7078Vr1KczJL+AEyiv0kk51elk3EMbf4zubOeGN52FU
-X-Received: by 2002:a05:6402:78b:: with SMTP id d11mr806990edy.341.1599596487724;
-        Tue, 08 Sep 2020 13:21:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599596487; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp422156lfq;
+        Wed, 9 Sep 2020 06:24:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJww/CpSSA+/qzCKnDSpeb9pBEHDgHAsdjj7Ib2ZNoMOFtV68kmkRJdCfCFFwmpAOaboKDSg
+X-Received: by 2002:a25:2c51:: with SMTP id s78mr5571693ybs.436.1599657851936;
+        Wed, 09 Sep 2020 06:24:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599657851; cv=none;
         d=google.com; s=arc-20160816;
-        b=chDnA/uAFVIxiddHVTBXJTJy3Ry/HihL3ppp00MH2iidd3k3Ad+HpPb3NCrhFX3p82
-         uhZQANXTUXZ6mXDoaTxKj2bEfjZkVukpy7+sLOP6duzH+ddcT8yUipo+18GYutLnj2uU
-         Vhfdxrapj4mpclogGhtjkpXzSfV3u6RdaVng4jdg40ZiQzdjHXKvRgNyBw5ZpIwOdSQk
-         8yPl33TTQLqsbywNWbhm0B+AgR0eOFB/H5oq1Rr4+nu+4wcGRrzeyEGI3Ldg5GRo3sO7
-         SU6D+6SZYXmISBGB9XUYhySRiWQWL+e/7KgSrElg54MMrTNcUVEaMTnzi0pn+vzZPmZu
-         G1BA==
+        b=jZkii5A527CPOR6vSGDH9L2QiF5brv5OPb4r7qNVzhGbKgkKV5Nredh1UKI6wbdJxZ
+         Qb3wbu1uK5U1OV0AUhj+eDXSoRlu2ctuLD8wF754H878nENw1QdGWeNbqZSbXHlTQHya
+         UsY4tTjNJjEsUpw8PIJ7mIJMdL2GZMH24SLYxVz8k18zefYNpCO4d66ciruxljfyfYpx
+         pUEIur2sdx1l+J1GC+286UcS3Fq3epws7ERYnVsNXfRDTpqyFImsWjI7pvIGQ42RJ+l9
+         6sQYoUF98TpvCeil1cKy0YFimVJAKlQvPxTpBzV2Z6gC6YGMyZHmXUgQe6doUlJsXNRz
+         TINw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-language:content-transfer-encoding:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
-         :dkim-signature;
-        bh=fFxASpuTWlbPCKH4Wz3K+JpJTmD5oLonMUjycGG2aXE=;
-        b=gwUJfasRLN4BiBUdNoOqWwDVI5TuefPBgNkvHKBe7KN8zxzTRYH3KqG/Etb3LBCHef
-         P9f2+ZFxaOBv2dnUVX1/FFiyk8eOjk6zIYpfY45/f46v5KVfPCv3mDr15v5GKSCUf8QT
-         tQjp4iM4X5FdN/T4aqC6KL4jwC6pbfn3+5nVP7AsjhOax4dZ1Ctc4xdr7fhkFaRRXXVC
-         8RYL6MOC6Z7BytgYeCBH3Nt0HaUoczTcy6LuMNN4UqD10BfB/fMMU0Llf5YLcyAIhOc1
-         0+h5C1gK93rdA9nIyUz2lfBuzYlEiOR5l3kQzZKhPqCcV4RGX8Z+jUekfMPLzLnNTO6U
-         57ag==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject;
+        bh=i95CUnIFk5ShaC7AS4wa6yoV7Caj2HnnFbkLat3yHnw=;
+        b=ZNw8PaEyJ14+20qL6jvOoo72tOhAbxeO2FdDlsbDeneH3ln+/JCjJf4+gHtzWLqx6y
+         ViPcc5Ti6Q+RvldpFBx+3ST7miWrfmr1CVJ7XjTxDIQcDx3IUgghCGwUPS6DSo01fmlK
+         E4mxg9X3l5/qRmu3H1yPdcSDJVzXa2PUnMO1zQBlbsrQmY7wJKXyar0Se8M5nEuAGvHr
+         hPIBrhEmfEZQ08FZYdURy9oC4OtXhHV/90EJkT17vcmj3Fh6zAw5lhy2MpOPil2aoFFJ
+         Zqb/3L9UeCW0I43lAh7vIa69dy5LrNSr9MccyIb5QHK4ycA8YiFxD3vHEutUHGh38HHR
+         Ct2A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UYRqyrwu;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id ck10si84474ejb.167.2020.09.08.13.21.27
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 129si2536803ybn.205.2020.09.09.06.24.11
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 08 Sep 2020 13:21:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 09 Sep 2020 06:24:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=UYRqyrwu;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1599596486;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
-	bh=fFxASpuTWlbPCKH4Wz3K+JpJTmD5oLonMUjycGG2aXE=;
-	b=UYRqyrwuAMJfF1NDCzyMeOMtMBukC4ARgb6pffqq+2RMwwscD+ichH7TOabaywk+MFyAAj
-	GzfdJqOLmU6JmjmKWOl0HZyKuTxiUgGjSWhmVkf3oCLvpeyq+7qrGVlCEpYZCt5tEpIQva
-	jZVwkBewTYuyWC6uNDVNaXcErm6cWdA=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-251-HXywtoPkPsCuHIAz-kJMlA-1; Tue, 08 Sep 2020 16:21:25 -0400
-X-MC-Unique: HXywtoPkPsCuHIAz-kJMlA-1
-Received: by mail-wr1-f72.google.com with SMTP id 33so45692wrk.12
-        for <alex.bennee@linaro.org>; Tue, 08 Sep 2020 13:21:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:autocrypt
-         :message-id:date:user-agent:mime-version:in-reply-to
-         :content-language:content-transfer-encoding;
-        bh=fFxASpuTWlbPCKH4Wz3K+JpJTmD5oLonMUjycGG2aXE=;
-        b=O1zHRpPrrS8OZGdNVdIRA09Gf6aQT6rsf5oooLiyvPE/Es/SPf10vbgkiHfXevqkeI
-         8Q/kVfpRADGbxCvuMJ/T+Dn4+n8+hWXgwn9ZEnbUIxMaQkSxSIT48diwPnKwg17yAdFo
-         qB0Tw7WxGBvbN3zJcSaPHeIL5U9ZORAHo6EnO9T/xKUOBSag/4CF56VtqkW4IQBKpnSc
-         MUxsOFIkn4V4GDeYYqMFzSmXi06bKSNANdkxx4HYBrDsZ6q/bZMNO/LVVRA4dB47mEm+
-         HKdiICURBvUDlaCrhNsYOOGkgMf0wuA7v8wHqE4fwotYyAGVCbtPzKGmnpvspjUI5vL+
-         4lZw==
-X-Gm-Message-State: AOAM53326c8aquLrcN2i5WHcRw52ZTPdUTLHfeo5Rolz99avvmYyQCSS
-	4czMZxuenug0dPCAAO584/KbIByDtxFhwHw/6ETGvmqNBMQum3gCqILRK9DMPy8z5CTBnNOSP5Z
-	/jQNYV/uoFwN94FU9
-X-Received: by 2002:a5d:5273:: with SMTP id l19mr408448wrc.64.1599596483639;
-        Tue, 08 Sep 2020 13:21:23 -0700 (PDT)
-X-Received: by 2002:a5d:5273:: with SMTP id l19mr408421wrc.64.1599596483484;
-        Tue, 08 Sep 2020 13:21:23 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.65])
-        by smtp.gmail.com with ESMTPSA id r13sm732783wrj.83.2020.09.08.13.21.21
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 08 Sep 2020 13:21:22 -0700 (PDT)
-Subject: Re: [PATCH 0/4] Acceptance Tests: update assets location and cancel
- tests if missing
-To: Cleber Rosa <crosa@redhat.com>, qemu-devel@nongnu.org
-Cc: Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- Antony Pavlov <antonynpavlov@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Eduardo Habkost <ehabkost@redhat.com>, Andrzej Zaborowski
- <balrogg@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Beraldo Leal <bleal@redhat.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Michael Rolnik <mrolnik@gmail.com>, Willian Rampazzo <wrampazz@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Sarah Harris <S.E.Harris@kent.ac.uk>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20200907042000.415931-1-crosa@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <14ade196-172b-58b5-f036-4fef01f66ab7@redhat.com>
-Date: Tue, 8 Sep 2020 22:21:20 +0200
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48460 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kG055-0002Pb-9w
+	for alex.bennee@linaro.org; Wed, 09 Sep 2020 09:24:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32792)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kG04j-0002OL-TA; Wed, 09 Sep 2020 09:23:49 -0400
+Received: from mout.kundenserver.de ([212.227.126.134]:35373)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kG04h-0004Xv-SO; Wed, 09 Sep 2020 09:23:49 -0400
+Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MzkK9-1kTFaY2xjF-00vfPx; Wed, 09 Sep 2020 15:23:11 +0200
+Subject: Re: [PATCH 2/5] hw/mips/fuloong2e: Convert pointless error message to
+ an assert()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200901104043.91383-1-f4bug@amsat.org>
+ <20200901104043.91383-3-f4bug@amsat.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <330cc9c9-6726-39a1-91e3-af563166e5df@vivier.eu>
+Date: Wed, 9 Sep 2020 15:23:07 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200907042000.415931-1-crosa@redhat.com>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0.001
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200901104043.91383-3-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: 7bit
-Content-Language: en-US
-X-TUID: t2/JsvSDVH3S
+Content-Language: fr
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:EJX20WXKnTpl0o6mA+qeWLk6MJRTGTKPrY6ylg5e6DC4Dti/YCB
+ rfVAcUA0i1jzIlhSHZ9cI83px+FpL/7jpd7Q7wd/1jsuIVslnpL1y/SRB8y3yMTFPLF8+zu
+ xwVf5rEJJrqE/LlkwGJA0wUp1E1WLBDzqacyqmFE3dEgxMQqYslmTXFnS3/f4zSdOHsXeGF
+ 34vxthjNfmnvCdh+uvPvA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:UVqxuDkqEqg=:3i9298fTe5zAQnryX43X5z
+ gV7ZiMmzYQry/m575NeWumJCF4Cnde0g/n7ecyYTAMB6+v65RxRRpx/dgkpig4ugWsH0+/ioL
+ WA+BggV04zjDswkdxtnAwMgHNnOQYvKCFGck/cMBySRPXE8WrUGRNLpgdmvMoaPs+tszpRlQc
+ 1HXSqjObRz0X8tZYtAWD5xCeUISL+ANTPHOPcjLQZEqsS9Cq49eIe8JBFQXXY5BPOu1AS2SGo
+ 1JTCzP9VGpw4r/Eh84wK+owf1roDYdEMvQss14A7u+t/Sz/ldjyvJn4U6hKnL+IU1utxrA17u
+ FpxN456AzysyODCfUrlWRTkLDgKU26sQ51ssrDy9b0WqHkXcKxyJbzB1Py72zPKMoMu1myms5
+ NQLiwI2Emf8DOkC4Ebl0jORrUU4lKiC5nyKuG7LhixH/+70oC56dO9nGUDBU6m0Xc4oOpxyfS
+ OUAV6GAsON2qVe2/79B0LkJxIGy3Ej4BsQHBhNbPXhmmAvNZNfreI4xDiQZ3knA0QXo8a5yza
+ y4vY6LpOPfdKuQ+/4thoFPsi06CTndTYpcjdfelKBbJx8nTvYKWlSUUd1B8V7SGhLvncDDA5n
+ JNAUBis3hZmYMnpqbFVWcPiUwHFvcFRWSHhV84qvWGYluLXBS3B0BJO2a0BEBr43556FrmiHm
+ e7KEWKoWmQX3a0b+3dMj7N1KUQt3ml6TX5IlbFsaG8QTnx9q5BqsP1lWDgTcNPUgasjacEveA
+ VV11o4g9ASTD6/nKgKVOULrpt78q5eFMaeappDmsLnVwPlPkRGYkG3Bl01O4hqw316y7i1lHl
+ U7kXWr/Hntlue6R4xdxpK6XcOf0Y4hORIQWxYrNYK3n6xhUUKWydut7AyMJ8zHUeVoRKf02
+Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:23:43
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -54
+X-Spam_score: -5.5
+X-Spam_bar: -----
+X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.576,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
+ Andrzej Zaborowski <balrogg@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ David Gibson <david@gibson.dropbear.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: i9NdkTcrAAmF
 
-Hi Cleber,
-
-On 9/7/20 6:19 AM, Cleber Rosa wrote:
-> This updates a couple of asset locations, because their locations on
-> their origin distributions are not permanently stable.
+Le 01/09/2020 à 12:40, Philippe Mathieu-Daudé a écrit :
+> Displaying "vt82c686b_init error" doesn't give any hint about why
+> this call failed. As this message targets developers and not users,
+> replace the pointless error message by a call to assert() which
+> will provide more useful information.
 > 
-> To minimize the inconvenciente caused by test and job failures in the
-> future, an option is enabled that will cancel (AKA skip) tests early
-> when those assets are not available.
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/mips/fuloong2e.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
 > 
-> Cleber Rosa (3):
->   Acceptance tests: use an available kernel image package for arm
->   boot linux test: update arm bionic URL
->   Acceptance tests: cancel tests on missing assets
+> diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
+> index 8ca31e5162c..f28609976bf 100644
+> --- a/hw/mips/fuloong2e.c
+> +++ b/hw/mips/fuloong2e.c
+> @@ -240,10 +240,7 @@ static void vt82c686b_southbridge_init(PCIBus *pci_bus, int slot, qemu_irq intc,
+>      PCIDevice *dev;
+>  
+>      isa_bus = vt82c686b_isa_init(pci_bus, PCI_DEVFN(slot, 0));
+> -    if (!isa_bus) {
+> -        fprintf(stderr, "vt82c686b_init error\n");
+> -        exit(1);
+> -    }
+> +    assert(isa_bus);
+>      *p_isa_bus = isa_bus;
+>      /* Interrupt controller */
+>      /* The 8259 -> IP5  */
 > 
-> Pavel Dovgaluk (1):
->   tests: bump avocado version
 
-I value your patches but I prefer to consider them as
-new tests added, and not tests fixed (as discussed elsewhere
-in this series). Therefore I'll post another simpler approach
-until the discussion gets a consensus.
+Applied to my trivial-patches branch.
 
-Regards,
+Thanks,
+Laurent
 
-Phil.

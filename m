@@ -1,109 +1,111 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp252410lfq;
-        Wed, 9 Sep 2020 02:14:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyQAgSCpbYASe79CIbgs7XVdGKfx2NS6SCnetoLMvihNT79yQzck9TXQGwDzn/ESj4eHVah
-X-Received: by 2002:a25:ab2e:: with SMTP id u43mr4690073ybi.302.1599642854488;
-        Wed, 09 Sep 2020 02:14:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599642854; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp264814lfq;
+        Wed, 9 Sep 2020 02:34:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy67XB7mWd5jQyqBJcR2vAPcUgsfNNlOp3Fgv+F4B2auErXuwIKFEZjFjwc+zBMth/FRNrv
+X-Received: by 2002:a25:1c4:: with SMTP id 187mr3959107ybb.481.1599644095497;
+        Wed, 09 Sep 2020 02:34:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599644095; cv=none;
         d=google.com; s=arc-20160816;
-        b=WRGVohd41DMyyMwWWzdXZ0PiIn1Ss05FuQgDSmGylVxpHyAd9aD5EwkVyoLOrZpmAM
-         VZZ2pMxU4ToyKrH3ev6Ojvw+5qyuUJgUfSB4wMgvi9EUr6xlEc++EmeLBDw9u2YreZ8W
-         N9QhM3f6gxPDmNrL/TdeYZUt9x3CYPJq/ySO4hxtvB8svv1/edZGLEdggPS9wJfeHcOZ
-         G7t2jBBgA0ND3VdwsTYPAzc6ucbLoveB3zLh8hM5FPjYU8T7nsMhkXPujjmTCc4kiRnu
-         Px/Y+MIx/qKGKG0lGhVHDYVK90N0xP1SLi/czcGEWxB3l7vM+bneNPRafUSKI0biOSxJ
-         +9Ew==
+        b=WSHxxJB6bQGz4hJ1IgqS/unxS7KPPKX7IKr4m1MakGX5uaUvy2YhLzgAsKfj9QhKtr
+         8RyNKRy02aA4WvCokDhe5uFq3rQ0r3NnGQL0rmOJdCLazJ1KNXoth9ydjwwFCvrno8sR
+         rgi87B+EvZkHFgujx8IwuDJlyXaiQCJwwJNBGEIh3wIOMe5XPXhyL22K8z8TLPsoOiQE
+         CAA9z4kFDqMbOE1/+Es9BhfdqFUj9viiHJ9P1UR+d+Gu89kUWIClysCDq3UM4doLBjoe
+         A5Qk0H4x9t0bDy5wraVf/zEASximh1tQ/nd91gNiU+bo7aZH0Bm0OqvpxU3tt1L/d2QO
+         djOA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=Ft3F3PRm3THMqbpuiEV3MHtv0PAFRe8qhKl/kQomtjA=;
-        b=t+hMadHhNJT+fIAPgAAewJWECk0diUgUO1G88PjCD6apJ3XiNegHDJ5tM+F21p8HFs
-         F/QdODGw0MM8MB9Gm4SMw2d1twU9ZCf1xhq/YIGslEGJtJtDEtE0gnJ4mynEi4TCEmaP
-         5zHHBa9bwg0+PUcTCorMvdWKVymJDH9AiWtwNCCJyvagKTNB45x1AZ7xVcx9ALgQCota
-         N06Mmx+zIbrlu8RNXPy088yhKnfidTg2K8dTz3fIKGqtOy/Kw55uSPviyOVuWAVzY1yC
-         ht8nev1eUzDni8whIUNhjNiARVlceZwKMFBfyL7KQ4T4+jUEMP3rmMmVMfvrl8Noljp1
-         fxbQ==
+        bh=uy7ouSRZrCqIK2d64Twf7tkOpwiPj82LipvPt9O1uDA=;
+        b=qxVMf/qpYlCdhlGZVPKbUWfHq5Lez3+JB5lu/pPEHms6/lcIM57faRBGvawI5zYdL4
+         m5ks9ga8CV19RNP8qnzhQ1OMhmtWu2hAJLSea4FGPU+HLqbaQYfnwN85TEjGwdrmWj2I
+         k49PxjsTLd91DsDRM3LqUXYe9HeMgZuF0Vaj+j6cjLOa1/oMbcnENhhcs9EmE9DT1sza
+         aA37H2VA7w35FzQCHwXwbBCGGVSOqUY0pLEV15TX6/hGRXh9sAfms5rIXo4IA9ARQ9N7
+         XJHoz45/VBdlaRhgamZ38aj0ul0z9ry+TCJAGZAPma1kbfCGJw7TJMD+nboOoI1SPNYd
+         eBpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h3zeFddq;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FWnUkUMP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 63si2170422yba.290.2020.09.09.02.14.14
+        by mx.google.com with ESMTPS id e76si2316180ybb.54.2020.09.09.02.34.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Sep 2020 02:14:14 -0700 (PDT)
+        Wed, 09 Sep 2020 02:34:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=h3zeFddq;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FWnUkUMP;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60818 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:40732 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFwBB-0001Bz-Ud
-	for alex.bennee@linaro.org; Wed, 09 Sep 2020 05:14:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50096)
+	id 1kFwVC-00068b-TG
+	for alex.bennee@linaro.org; Wed, 09 Sep 2020 05:34:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54278)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1kFw9R-0006fs-ET; Wed, 09 Sep 2020 05:12:25 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:33471)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
- id 1kFw9P-0003Sk-Vw; Wed, 09 Sep 2020 05:12:25 -0400
-Received: by mail-wm1-x343.google.com with SMTP id e11so1379507wme.0;
- Wed, 09 Sep 2020 02:12:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=Ft3F3PRm3THMqbpuiEV3MHtv0PAFRe8qhKl/kQomtjA=;
- b=h3zeFddq371Ur2seXtQphd0iafKVILvB3iVrppVPQFjuqhR+gZrZPIKph2GQiiylUH
- XIwHFC3tDkrb/BKSKOduH7vcowMLG+fxUFiCgabxinuwGNhjLYfRScxlZryyE7qX4qYL
- kSNmPi+piEHJX+JeWpMZlfw3YRzkf5T0n92y7xmOp7x6/X1VpYry9+84ZPJDR4QQH/jQ
- 7qFpRJnyAGwB70ViIoOL4z95TMsKL+zFcc3a+TjcHBBQxXM5QNb2J4+85z2vv+9ayM8W
- LqQYEB43PJ9VVBsDQVXi0b/ZZZGlDTyzM8iaEbNW3bz0gl/WzyFSnlG/AEg3peAhEmUB
- pejw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=Ft3F3PRm3THMqbpuiEV3MHtv0PAFRe8qhKl/kQomtjA=;
- b=fVwPaOGK0cQVUVWh97eeYB4RSw8O+5jP2wRxBxRr5VrAe7pBEh0NEP1lZHWnLv5twn
- h50F77H21VZo2TfBv1szkdznf+BGyLRmT/FQNHk6GjNOCMMwnog/jKrQCAPM4jajkavt
- jeO1sIKwMs0g2WYr8hTpKc5LxyTaTWV7nxUxa+QlcRIo3PnnUqfS6o6ascNtOliNTpQ9
- wK/w3GQfhOM2isWcB2Aodl1jX/UcALG5SIoQnoXdV9NwgJQ4U5Xl900H2fpsrmZRpV5d
- eD/Ecuskxy9c3R4HISxWQSfd4OKstS0l3blft3wNVVldYeb1BDfe+0HkNazbJ9OFupN2
- A+jA==
-X-Gm-Message-State: AOAM533FiuffcAsFKU0OwigYEfCYmNjJAEXepLNpuLYAlZXH9RPZdit3
- trtYGq7+dEqkgUPbqHgqNho=
-X-Received: by 2002:a1c:6a08:: with SMTP id f8mr2641445wmc.151.1599642741284; 
- Wed, 09 Sep 2020 02:12:21 -0700 (PDT)
-Received: from localhost ([51.15.41.238])
- by smtp.gmail.com with ESMTPSA id m3sm3490439wme.31.2020.09.09.02.12.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 09 Sep 2020 02:12:20 -0700 (PDT)
-Date: Tue, 8 Sep 2020 15:37:25 +0100
-From: Stefan Hajnoczi <stefanha@gmail.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [RFC PATCH 00/12] hw: Forbid DMA write accesses to MMIO regions
-Message-ID: <20200908143725.GD7154@stefanha-x1.localdomain>
-References: <20200903110831.353476-1-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kFwV5-00068M-HI
+ for qemu-arm@nongnu.org; Wed, 09 Sep 2020 05:34:47 -0400
+Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:44860
+ helo=us-smtp-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kFwV3-0005yx-MG
+ for qemu-arm@nongnu.org; Wed, 09 Sep 2020 05:34:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1599644084;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=uy7ouSRZrCqIK2d64Twf7tkOpwiPj82LipvPt9O1uDA=;
+ b=FWnUkUMPTJEtOSTvvpKFUwq08oOgIM7etgCKQoT4Y/8iS/mJvyE8nvCCjesvi9o51oGcBz
+ ehzqkM+DzyZROoxFXeHaz5rPa8z+QV1t7zYd/l3FZ9hjXU8yYrmHVNbkh2O2/CxHw4ivBz
+ 0X0SzpecDSNz61NJEbkAQmPnWDLHTLg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-300-wiTG1aiVMMqwcGvJqqEBYg-1; Wed, 09 Sep 2020 05:34:41 -0400
+X-MC-Unique: wiTG1aiVMMqwcGvJqqEBYg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1417B80EF8A;
+ Wed,  9 Sep 2020 09:34:40 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.192.171])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 89B6E3A40;
+ Wed,  9 Sep 2020 09:34:38 +0000 (UTC)
+Date: Wed, 9 Sep 2020 11:34:35 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Haibo Xu <haibo.xu@linaro.org>
+Subject: Re: [PATCH v2 09/12] hw/arm/virt: spe: Add SPE fdt binding for virt
+ machine
+Message-ID: <20200909093435.txd7bkt6n3z7tm4u@kamzik.brq.redhat.com>
+References: <cover.1599549462.git.haibo.xu@linaro.org>
+ <c6ac607d2cd253de6a990538edfde7f86066f04f.1599549462.git.haibo.xu@linaro.org>
+ <20200908111625.2wzzn7jh5wt4nnmu@kamzik.brq.redhat.com>
+ <CAJc+Z1GCmf5fEjifa84O6jmfd6WCih1jT07AXb7vWFC7=sXfrA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="u65IjBhB3TIa72Vp"
+In-Reply-To: <CAJc+Z1GCmf5fEjifa84O6jmfd6WCih1jT07AXb7vWFC7=sXfrA@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20200903110831.353476-1-philmd@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=stefanha@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_12_24=1.049,
+Received-SPF: pass client-ip=205.139.110.120; envelope-from=drjones@redhat.com;
+ helo=us-smtp-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 03:13:17
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,63 +118,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Peter Xu <peterx@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, qemu-block@nongnu.org,
- Li Qiang <liq3ea@163.com>, "Emilio G . Cota" <cota@braap.org>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Laszlo Ersek <lersek@redhat.com>,
- Robert Foley <robert.foley@linaro.org>,
- Alistair Francis <alistair@alistair23.me>,
- Richard Henderson <richard.henderson@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm@nongnu.org, Peter Chubb <peter.chubb@nicta.com.au>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
- Stefan Hajnoczi <stefanha@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Tony Nguyen <tony.nguyen@bt.com>,
- Prasad J Pandit <pjp@fedoraproject.org>, Alexander Bulekov <alxndr@bu.edu>,
- Andrew Jeffery <andrew@aj.id.au>, Klaus Jensen <k.jensen@samsung.com>,
- Emanuele Giuseppe Esposito <e.emanuelegiuseppe@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
- Jan Kiszka <jan.kiszka@web.de>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sIvDCeRdrfOR
+X-TUID: 3JCrH/x1FQj6
 
+On Wed, Sep 09, 2020 at 03:51:14PM +0800, Haibo Xu wrote:
+> > > +
+> > > +            if (spe) {
+> > > +                assert(ARM_CPU(cpu)->has_spe == ON_OFF_AUTO_ON);
+> > > +                if (kvm_irqchip_in_kernel()) {
+> > > +                    kvm_arm_spe_set_irq(cpu, PPI(VIRTUAL_SPE_IRQ));
+> > > +                }
+> > > +                kvm_arm_spe_init(cpu);
+> >
+> > A later patch introduces userspace irqchip support. Should we avoid
+> > allowing it until then to avoid breaking bisection?
+> >
+> 
+> Yes, it's possible to break the bisection. To avoid it I think we can
+> move the above codes
+> block to a separate patch after adding the userspace irqchip support,
+> Or, just put the userspace
+> irqchip support patch before this patch. What's your opinion?
+>
 
---u65IjBhB3TIa72Vp
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+This patch ca forbid SPE without kernel irqchip. Then the patch that adds
+userspace irqchip support would also remove the restriction.
 
-On Thu, Sep 03, 2020 at 01:08:19PM +0200, Philippe Mathieu-Daud=E9 wrote:
-> The main patch is:
-> "exec/memattrs: Introduce MemTxAttrs::direct_access field".
-> This way we can restrict accesses to ROM/RAM by setting the
-> 'direct_access' field. Illegal accesses return MEMTX_BUS_ERROR.
+Thanks,
+drew 
 
-QEMU needs to simulate the behavior of real hardware. What is the
-behavior of real hardware?
-
-Stefan
-
---u65IjBhB3TIa72Vp
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl9XlyUACgkQnKSrs4Gr
-c8hm+Af/bAR/vQDQ3YPrHCBH7S0Tk3kYVaMaPicOdDQpuULJ+vJ7QQs8+Uh3GEDJ
-QS3tNNfDKibYG1mUY4+nKUz6cU/9YbfFVIhTSIlLS8Rpt5lT3dFNkGYTTWvBkey/
-qLiYGeniyVMR3WLVAMXvrlmhsdqdvvE6avkPob5ZHQDs6f5b64n1r409PEoGWsoo
-Wr+UPifHdPC4XSLx59BFcj9lYRKx+QqARj1VDK3GJ6451xZ6FnGwJJyGgtc1I5HS
-8mv08mKnGeHyCGIGKIN9tRSZgbkgHJxWTohHRNZMEz8GxI/o0uxlL/0sk4a5cJAL
-sres8UZegMhMOj6NL3FiQ3XWrkkTOw==
-=Pxw8
------END PGP SIGNATURE-----
-
---u65IjBhB3TIa72Vp--

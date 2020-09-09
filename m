@@ -1,98 +1,96 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp55518lfq;
-        Tue, 8 Sep 2020 20:12:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxjvgVZea+jIKFNJT8/IwK5pzMstSAYP8xFvIKSkNM9JJ/xB/9BhtDvjcgA+qcmbW0kzblZ
-X-Received: by 2002:a25:5855:: with SMTP id m82mr2952794ybb.329.1599621148491;
-        Tue, 08 Sep 2020 20:12:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599621148; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp59807lfq;
+        Tue, 8 Sep 2020 20:20:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwV1Rs8uJN061L6gPoJSFXkUxy9kTLdIG/W8rVSs5TDHk+WxXmPs7DgY49iRiyncmI64NOH
+X-Received: by 2002:a25:69cb:: with SMTP id e194mr2965473ybc.251.1599621618695;
+        Tue, 08 Sep 2020 20:20:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599621618; cv=none;
         d=google.com; s=arc-20160816;
-        b=a0PtmoEcu8Oq9v5FwMKSfDNR97+MWlTdEo22FsvPsm7avyPQpxf1Cu3ppWzHvWbRUn
-         ezFqvLRtRPH3FFyhGh83RN05vOQarD8NrTjw63l02mpEibo4tAa0ImogAHM2eFD06Zn2
-         xomePlu3Yc8rbNFACEITZ+0H1SIkPVXvjCeMn70TBv5CWBDcBa4vvPTbJh5VtRnny8By
-         Tb/0DbYzPunQMlxaPCXB7DuDds6k4KbToVOJQRjNsaHdtuVPcSgLbBoWehU1iG1phFZe
-         2oTSC3PSaaHlw9PasVxs+DluFb2B0axjcLZKRjX4WSJ+tcMWBcaF7UAIIua0sB9cSGkN
-         n4Fw==
+        b=vWxLwoI0jDJSDupOIvChO8WKksVXrWKPzVEL+EGPsPQSgmP54vRaWo/+L4wozoFyop
+         wIaZS4QUdVZl760qiMqmsGAaZyFTyYxV5bf76hPwmbB2c+K22hr150IThO8tec2yCxvl
+         G079JnJM/oaX5Nn+TZih7e3LryaEJcFfRut4CWL0FZ7Rt9xLRPPv5SINqpLacTVjHlF6
+         iShyL7vyMkr2b0rakqGDr7tD6sieIrFRRleZPl/EPmfpHIC/UllLr3rg9fzF0xcfdmpQ
+         VDfpv//VZ4lWIJ2ZkNUE3E5va6nOCGEKRXhevsqkMn6e5NLuSPW0PrDIXUpUdijglsnt
+         s9vA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=yletO5DQ3uAqjd/u7Mgx8CUZLUxS9FAu0MROdwszHrY=;
-        b=S7Bo2z/gmSKZXjuWJTf01ovwPvnGd3VvKrehPbpV8J2CUkNUtJU9KDGp6cpVQyL98N
-         n3hgDEHDlzC+lpWAYpVWc2GoHh1JVcNWmC216EHIDK4LLlv3XDWiMnayE75h+BjEbBh3
-         PUTtJVv4agYNHbfwPIJHTSjU7KbfjvC4LFuwLBjvFf0Rf7e8EF4C8lrcddQ0GsvVJJJf
-         t60UjxFrpJ5BJQUG8h3+QcIUn2BI9Tj4+S9YBJn4BnIKByNkK9Jt3m2GBqD5EFJpPHvw
-         VDcPto2BaIbkZux+pZX1XCUC3habTvrxb3YTsgaxrJEW3sydgpKkXoXmqoLCxPtUv+yT
-         A/1w==
+        bh=2zPQO5AQ4HhpoQb9HMnUh3AE8e9auFs4KQT3/apDvk8=;
+        b=JpRpDWOphHS7xHXNfzRXIYihVC1GkOtnRnnpp2jmWlDfJorp5SOGg7wM+kFPZe8xNG
+         rkBMpwvTEl0dFCy6wg/HTQWJeFjMAZB0J18bNVfQlCg5u4s4kWPKSkMQkpptBEBUTT0h
+         LMKJ5dkXxboe7NpTltNIoQNyWsKTabMW8V62PHrn5Tu+H93DFHUXmd17F1qIVMz5fzWp
+         hgxaasol04q09KO9S3ExZamwqj6uS3+Zs1laFmgsfVels4Vamtr2+KWjjYjT3VdpSU/V
+         pES+//nU7xA9U0ODLaNV+bkXpVWZPw2CTBN0HR8De+mNxycoCduFxVxh8AAB8LZ4e5S1
+         hDcQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oq+cS0qa;
+       dkim=fail header.i=@linaro.org header.s=google header.b=lvASdAnw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e14si1485377ybq.296.2020.09.08.20.12.28
+        by mx.google.com with ESMTPS id t4si1461957ybi.422.2020.09.08.20.20.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 08 Sep 2020 20:12:28 -0700 (PDT)
+        Tue, 08 Sep 2020 20:20:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=oq+cS0qa;
+       dkim=fail header.i=@linaro.org header.s=google header.b=lvASdAnw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36646 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39318 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kFqX5-0001Bv-UY
-	for alex.bennee@linaro.org; Tue, 08 Sep 2020 23:12:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36414)
+	id 1kFqeg-0002rH-1x
+	for alex.bennee@linaro.org; Tue, 08 Sep 2020 23:20:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37328)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kFqWy-0001BT-Ca
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 23:12:20 -0400
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:35450)
+ id 1kFqeW-0002pF-RP
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 23:20:08 -0400
+Received: from mail-io1-xd42.google.com ([2607:f8b0:4864:20::d42]:36084)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kFqWw-0004wt-MS
- for qemu-arm@nongnu.org; Tue, 08 Sep 2020 23:12:20 -0400
-Received: by mail-io1-xd43.google.com with SMTP id r9so1666333ioa.2
- for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 20:12:18 -0700 (PDT)
+ id 1kFqeU-0007RQ-Au
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2020 23:20:08 -0400
+Received: by mail-io1-xd42.google.com with SMTP id d190so1675442iof.3
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2020 20:20:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=yletO5DQ3uAqjd/u7Mgx8CUZLUxS9FAu0MROdwszHrY=;
- b=oq+cS0qao9CRcs7q/yMYo/4ExcoSQbtfSQQke8OBjD47vUSgKP75cZ3inYwGl03Ive
- 2QvZOTalWiU3UcwWSIyuzFaTx9g81PM+1JONJLDRHPe4gS7bU+j+xf1mltWBxeLVU36/
- WbNj878UEDJo9w50G7B/jPyEeN5MmAQfehPfBHxitvnHVJhnU3zr10/2nCFAwSlMjYev
- GnWbivNvxvmnHzyuu4G5xi9/tXz46JWDSnhc/LuUzok+FnrKvx6QbGiNLu25fXGWmuda
- c43tWqn3/M3zmZeer+YhZlicwoUBgfxfYsnlj7KXB+H695h30s7iV5Uip48wOniJ5VG+
- Kfuw==
+ :cc; bh=2zPQO5AQ4HhpoQb9HMnUh3AE8e9auFs4KQT3/apDvk8=;
+ b=lvASdAnwR2B5iT72Rf7oF6AnFcPOB4qjnQurOEZoDYv3p6HnDwGnqkgLvRnMKOhP/N
+ DtokjzoIWqVXNCbuN9GQafobifMNwSFUrranFobEDMeMVxTXIdG1iudePTI4h3W8ZA8J
+ rDXzB3fDvdjbP4ekuVS/QEg8c39hmVTzplaDT4qDO6L1mzuJ/rM1zEPd/4fFAf8DlLma
+ 2t8k/NZlnvY7BAs5bYgGo0GcSRVJN+PtANcb9POeum7NrCPlXf1+qxv2bENHPoLVJe9Q
+ ovhtMMnljYyZnE4L9f8Hd/XnuLSpMfGXeTrqvmqdvVtiHb4t9wURfShvaC2o4Bvght2V
+ nCrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=yletO5DQ3uAqjd/u7Mgx8CUZLUxS9FAu0MROdwszHrY=;
- b=JQes/EONx592L2QqvOeUIV0b8MNGVv+2+Bz1m8pxTxq6bLHOk1X9QsVYhdReUzomQO
- s58OsSwK/iAANIoecNvFgY3yeJbVZjZn0MAwccrI9NY6AA8yyH3ACNIr9zjuCUnEzUYv
- Xnt07FgIWGaCVfA29I+YfQS4PkgmV01WgyQEQQW0VqMT3HecKq0xZ98dujM+X21zVVWJ
- xdK0OweK2YOLBHmbNqztX40fGe6m+pww655gIAhLFdzS5ClHpWlliNvR6QgJtuFHZy8C
- prfuEXJDAQssTxDqi5TZylSF1Il6XyjnW58NPb9kDUe54BI0Noq+jDu0tpk6EM/qViw2
- Q0DA==
-X-Gm-Message-State: AOAM533YiexJF0DkrUAyT9YBlDuZpOxZ/OrmS8DcO4ChZQGJ8ozK346o
- E/duGVAoPuqiZd2IIDkCzPjx/PFz/tjjzpnyjfoC
-X-Received: by 2002:a05:6602:2201:: with SMTP id
- n1mr1731696ion.35.1599621137242; 
- Tue, 08 Sep 2020 20:12:17 -0700 (PDT)
+ bh=2zPQO5AQ4HhpoQb9HMnUh3AE8e9auFs4KQT3/apDvk8=;
+ b=fY96WYimic+L8PwLHIXzrG9J/URQEcaJDXR/1IqnxBwb9vSOGCtfsi+GY573c9XJH6
+ V85sHRf3fbN2lg9lr4sXdXHfw7933+a+JQY73WqdGh/Yjwz3wmA4adWTc2+y7Tdzb6xn
+ wOtkmTbZsn7JqjwYmIS4iyyJONmi1M/pPmmZsibMDOPgaYOsIb3k6vKVouCrJBKYuGVF
+ vSrwz92DLtCcbmILn7cBXMUYQkduYu1ozeIt1z81qE2jxvXtFCxOMV2+RObm89xfJXcF
+ Ngp+BLDKenlZXOjUviLXcOkCFUI/hIk7BrpL7+jIiV1zm3iRBV6Pb/bFOfPv1PeFgUPH
+ YP6g==
+X-Gm-Message-State: AOAM533Wl8SeC8lLDyxlFYKSbAwkxyIIYXcArap6+GlmGU8rDl/LunbU
+ 61hUQcZ2vNszzyzsy/B5bV5vRj9eUEIQIyOicS3k
+X-Received: by 2002:a02:4b07:: with SMTP id q7mr2263949jaa.84.1599621604974;
+ Tue, 08 Sep 2020 20:20:04 -0700 (PDT)
 MIME-Version: 1.0
 References: <cover.1599549462.git.haibo.xu@linaro.org>
- <6aaa406b824d0c427acbc3f3abfbbe841f3bb93c.1599549462.git.haibo.xu@linaro.org>
- <20200908113458.2fdhbs7lpw63fvnv@kamzik.brq.redhat.com>
-In-Reply-To: <20200908113458.2fdhbs7lpw63fvnv@kamzik.brq.redhat.com>
+ <f85b67a841ad86f461c7dc0c8f5f8b1e5d490da5.1599549462.git.haibo.xu@linaro.org>
+ <20200908114149.tdkns7qwwchsmnbi@kamzik.brq.redhat.com>
+In-Reply-To: <20200908114149.tdkns7qwwchsmnbi@kamzik.brq.redhat.com>
 From: Haibo Xu <haibo.xu@linaro.org>
-Date: Wed, 9 Sep 2020 11:12:06 +0800
-Message-ID: <CAJc+Z1EoJH3KXE65LESOU_ZRcn9zdY8hbTsye8ZaM+e==s103g@mail.gmail.com>
-Subject: Re: [PATCH v2 11/12] target/arm/kvm: spe: Enable userspace irqchip
- support.
+Date: Wed, 9 Sep 2020 11:19:54 +0800
+Message-ID: <CAJc+Z1Fqc4wTXE56naZ0s7eQGjV1_23C6Qa=n9_8euyZgUioUA@mail.gmail.com>
+Subject: Re: [PATCH v2 12/12] target/arm: spe: Add corresponding doc and test.
 To: Andrew Jones <drjones@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
- envelope-from=haibo.xu@linaro.org; helo=mail-io1-xd43.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d42;
+ envelope-from=haibo.xu@linaro.org; helo=mail-io1-xd42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -101,7 +99,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,57 +117,119 @@ Cc: philmd@redhat.com, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: L/92kmawnXKN
+X-TUID: dCeK5Odl2Gmu
 
-On Tue, 8 Sep 2020 at 19:35, Andrew Jones <drjones@redhat.com> wrote:
+On Tue, 8 Sep 2020 at 19:41, Andrew Jones <drjones@redhat.com> wrote:
 >
-> On Tue, Sep 08, 2020 at 08:13:29AM +0000, Haibo Xu wrote:
-> > Since the current kernel patches haven't enabled the
-> > userspace irqchip support, this patch is not verified yet!
-> >
+> On Tue, Sep 08, 2020 at 08:13:30AM +0000, Haibo Xu wrote:
 > > Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 > > ---
-> >  linux-headers/linux/kvm.h | 1 +
-> >  target/arm/kvm.c          | 5 +++++
-> >  2 files changed, 6 insertions(+)
+> >  docs/system/arm/cpu-features.rst | 20 ++++++++++++++++++++
+> >  target/arm/monitor.c             |  2 +-
+> >  tests/qtest/arm-cpu-features.c   |  9 +++++++++
+> >  3 files changed, 30 insertions(+), 1 deletion(-)
 > >
-> > diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-> > index 8840cbb01c..35ef0ae842 100644
-> > --- a/linux-headers/linux/kvm.h
-> > +++ b/linux-headers/linux/kvm.h
-> > @@ -1672,6 +1672,7 @@ struct kvm_assigned_msix_entry {
-> >  #define KVM_ARM_DEV_EL1_VTIMER               (1 << 0)
-> >  #define KVM_ARM_DEV_EL1_PTIMER               (1 << 1)
-> >  #define KVM_ARM_DEV_PMU                      (1 << 2)
-> > +#define KVM_ARM_DEV_SPE                      (1 << 3)
+> > diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
+> > index 2d5c06cd01..5b81b9a560 100644
+> > --- a/docs/system/arm/cpu-features.rst
+> > +++ b/docs/system/arm/cpu-features.rst
+> > @@ -344,3 +344,23 @@ verbose command lines.  However, the recommended way to select vector
+> >  lengths is to explicitly enable each desired length.  Therefore only
+> >  example's (1), (4), and (6) exhibit recommended uses of the properties.
+> >
+> > +SPE CPU Property
+> > +==================
 >
-> kernel header changes should be separate patches
+> Too many '='
+>
+> > +
+> > +The SPE CPU property `spe` is used to enable or disable the SPE feature,
+> > +just as the `pmu` CPU property completely enables or disables the PMU.
+> > +
+> > +Currently, this property is only available with KVM mode, and is enabled
+> > +by default if KVM support it. When KVM is enabled, if the host does not
+> > +support SPE, then an error is generated when attempting to enable it.
+> > +
+> > +Following are 2 examples to use this property:
+> > +
+> > +  1) Disable SPE::
+> > +
+> > +     $ qemu-system-aarch64 -M virt,accel=kvm -cpu max,spe=off
+> > +
+> > +  2) Implicitly enable it with the `host` CPU type if host cpu
+> > +     support it::
+>
+> if the host CPU supports it
+>
+>
+> Actually, I'm not sure we need to document this feature. We didn't bother
+> documenting pauth, since there wasn't anything special about it and
+> there's nothing special about this feature either.
 >
 
-Will move this line to patch 01 in v3.
+Yes, there is no special treatment for this feature, and it just
+follows the syntax
+of other vCPU features. Will remove this doc in v3.
+Anyway, thanks so much for the review!
 
-Thanks,
+Regards,
 Haibo
 
+> > +
+> > +     $ qemu-system-aarch64 -M virt,accel=kvm -cpu host
+> > diff --git a/target/arm/monitor.c b/target/arm/monitor.c
+> > index ba6e01abd0..1b8f08988a 100644
+> > --- a/target/arm/monitor.c
+> > +++ b/target/arm/monitor.c
+> > @@ -99,7 +99,7 @@ QEMU_BUILD_BUG_ON(ARM_MAX_VQ > 16);
+> >   * then the order that considers those dependencies must be used.
+> >   */
+> >  static const char *cpu_model_advertised_features[] = {
+> > -    "aarch64", "pmu", "sve",
+> > +    "aarch64", "pmu", "spe", "sve",
+> >      "sve128", "sve256", "sve384", "sve512",
+> >      "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
+> >      "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
+> > diff --git a/tests/qtest/arm-cpu-features.c b/tests/qtest/arm-cpu-features.c
+> > index 77b5e30a9c..4d393fb2e2 100644
+> > --- a/tests/qtest/arm-cpu-features.c
+> > +++ b/tests/qtest/arm-cpu-features.c
+> > @@ -494,6 +494,7 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
 > >
-> >  struct kvm_hyperv_eventfd {
-> >       __u32 conn_id;
-> > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> > index 58f991e890..7950ff1d83 100644
-> > --- a/target/arm/kvm.c
-> > +++ b/target/arm/kvm.c
-> > @@ -820,6 +820,11 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
-> >              switched_level &= ~KVM_ARM_DEV_PMU;
+> >      if (g_str_equal(qtest_get_arch(), "aarch64")) {
+> >          bool kvm_supports_sve;
+> > +        bool kvm_supports_spe;
+> >          char max_name[8], name[8];
+> >          uint32_t max_vq, vq;
+> >          uint64_t vls;
+> > @@ -512,8 +513,10 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+> >              "with KVM on this host", NULL);
+> >
+> >          assert_has_feature(qts, "host", "sve");
+> > +        assert_has_feature(qts, "host", "spe");
+> >          resp = do_query_no_props(qts, "host");
+> >          kvm_supports_sve = resp_get_feature(resp, "sve");
+> > +        kvm_supports_spe = resp_get_feature(resp, "spe");
+> >          vls = resp_get_sve_vls(resp);
+> >          qobject_unref(resp);
+> >
+> > @@ -573,10 +576,16 @@ static void test_query_cpu_model_expansion_kvm(const void *data)
+> >          } else {
+> >              g_assert(vls == 0);
 > >          }
-> >
-> > +        if (switched_level & KVM_ARM_DEV_SPE) {
-> > +            qemu_set_irq(cpu->spe_interrupt,
-> > +                         !!(run->s.regs.device_irq_level & KVM_ARM_DEV_SPE));
-> > +            switched_level &= ~KVM_ARM_DEV_SPE;
+> > +
+> > +        if (kvm_supports_spe) {
+> > +                assert_set_feature(qts, "host", "spe", false);
+> > +                assert_set_feature(qts, "host", "spe", true);
 > > +        }
-> >          if (switched_level) {
-> >              qemu_log_mask(LOG_UNIMP, "%s: unhandled in-kernel device IRQ %x\n",
-> >                            __func__, switched_level);
+> >      } else {
+> >          assert_has_not_feature(qts, "host", "aarch64");
+> >          assert_has_not_feature(qts, "host", "pmu");
+> >          assert_has_not_feature(qts, "host", "sve");
+> > +        assert_has_not_feature(qts, "host", "spe");
+> >      }
+> >
+> >      qtest_quit(qts);
 > > --
 > > 2.17.1
 > >

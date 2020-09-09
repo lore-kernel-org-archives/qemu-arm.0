@@ -1,61 +1,60 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp422156lfq;
-        Wed, 9 Sep 2020 06:24:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJww/CpSSA+/qzCKnDSpeb9pBEHDgHAsdjj7Ib2ZNoMOFtV68kmkRJdCfCFFwmpAOaboKDSg
-X-Received: by 2002:a25:2c51:: with SMTP id s78mr5571693ybs.436.1599657851936;
-        Wed, 09 Sep 2020 06:24:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599657851; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp424911lfq;
+        Wed, 9 Sep 2020 06:27:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx+/Cs7lj/Kbk2DSn7llrIl4Mv6KXG0c13kI9in1TBYJ8yAmxkcBT+BfjUFcd6zkPQ+mU/x
+X-Received: by 2002:a25:238d:: with SMTP id j135mr5795681ybj.206.1599658070497;
+        Wed, 09 Sep 2020 06:27:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599658070; cv=none;
         d=google.com; s=arc-20160816;
-        b=jZkii5A527CPOR6vSGDH9L2QiF5brv5OPb4r7qNVzhGbKgkKV5Nredh1UKI6wbdJxZ
-         Qb3wbu1uK5U1OV0AUhj+eDXSoRlu2ctuLD8wF754H878nENw1QdGWeNbqZSbXHlTQHya
-         UsY4tTjNJjEsUpw8PIJ7mIJMdL2GZMH24SLYxVz8k18zefYNpCO4d66ciruxljfyfYpx
-         pUEIur2sdx1l+J1GC+286UcS3Fq3epws7ERYnVsNXfRDTpqyFImsWjI7pvIGQ42RJ+l9
-         6sQYoUF98TpvCeil1cKy0YFimVJAKlQvPxTpBzV2Z6gC6YGMyZHmXUgQe6doUlJsXNRz
-         TINw==
+        b=OKnM2Ah7e5BIe+ifSefnhF9llLPboNRmUKAAkypPCL0SAL8XQp7rbDoL4SuP+HGGsw
+         Dse8O24ArKGaI7m4YKIlT79yM+Tjq2+sB3vtYY1M3XVdT1hUrAzYlOODR+hxBdXVh+x8
+         VOmyxLclzX7eULBM+cMIxdep9kgRWWuAIymSauKIYwD1IKIZR59ghi3YrF12vASPE0qF
+         wlEJRBZ+01IPWxJcaoEDwwKAgV16YVuMEM+3XqmAok7vOrG4vya+Y/qCJ/n3SEUNJX0I
+         Lysh8ZdnVfiqDjWSA7efE53L7n0pRXUi70w4oVpBcuT6S/HORptlfV3g0hh7vpnxR+4J
+         e5vw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject;
-        bh=i95CUnIFk5ShaC7AS4wa6yoV7Caj2HnnFbkLat3yHnw=;
-        b=ZNw8PaEyJ14+20qL6jvOoo72tOhAbxeO2FdDlsbDeneH3ln+/JCjJf4+gHtzWLqx6y
-         ViPcc5Ti6Q+RvldpFBx+3ST7miWrfmr1CVJ7XjTxDIQcDx3IUgghCGwUPS6DSo01fmlK
-         E4mxg9X3l5/qRmu3H1yPdcSDJVzXa2PUnMO1zQBlbsrQmY7wJKXyar0Se8M5nEuAGvHr
-         hPIBrhEmfEZQ08FZYdURy9oC4OtXhHV/90EJkT17vcmj3Fh6zAw5lhy2MpOPil2aoFFJ
-         Zqb/3L9UeCW0I43lAh7vIa69dy5LrNSr9MccyIb5QHK4ycA8YiFxD3vHEutUHGh38HHR
-         Ct2A==
+        bh=dGMjFct5zDgbHjF0XiuKodVmT6rjd+Xa7OCDWbgMUBo=;
+        b=Dl1epFg4JFhOzPWirP2rn/4ORelSbJtyy/oSbrNl5Kf1GbHcEdn7x2Xpdz1rgt7wMn
+         bknaQDFlcQoQIt28GoR1gZSZC1/bvSXiXlJTGCoE5vEHQPsh4PaGOqkpkgfMTolNkoj0
+         WsC2+DwE8VuQFmDh+thy2ur2OR8/tuUI4TeEo22dXrZZan9sK9lDmFvvTrUTE1lMejJy
+         yBHG+NLWyxOM3gZLLeP3WLcPEA6s+uIruJ0QZChhnWHQwKpHTvceaOeKNeWcPN+B9Shf
+         HFEAGb1PrHR0EqQLpCmhaLbnjxJbHkLZPATPZiApy9KXLm99vHoGsU0mY8GtNuEI1gPz
+         33Kw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 129si2536803ybn.205.2020.09.09.06.24.11
+        by mx.google.com with ESMTPS id v7si2620363ybm.244.2020.09.09.06.27.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Sep 2020 06:24:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 09 Sep 2020 06:27:50 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:48460 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:33218 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kG055-0002Pb-9w
-	for alex.bennee@linaro.org; Wed, 09 Sep 2020 09:24:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32792)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kG08b-00089Y-TB
+	for alex.bennee@linaro.org; Wed, 09 Sep 2020 09:27:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33506)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG04j-0002OL-TA; Wed, 09 Sep 2020 09:23:49 -0400
-Received: from mout.kundenserver.de ([212.227.126.134]:35373)
+ id 1kG07N-0006jZ-OJ; Wed, 09 Sep 2020 09:26:33 -0400
+Received: from mout.kundenserver.de ([212.227.126.187]:37899)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG04h-0004Xv-SO; Wed, 09 Sep 2020 09:23:49 -0400
+ id 1kG07K-00051N-Pd; Wed, 09 Sep 2020 09:26:33 -0400
 Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MzkK9-1kTFaY2xjF-00vfPx; Wed, 09 Sep 2020 15:23:11 +0200
-Subject: Re: [PATCH 2/5] hw/mips/fuloong2e: Convert pointless error message to
- an assert()
+ (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MkHhB-1kvycc0ozR-00kjvB; Wed, 09 Sep 2020 15:26:03 +0200
+Subject: Re: [PATCH 5/5] hw/isa/isa-bus: Replace hw_error() by assert()
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-3-f4bug@amsat.org>
+ <20200901104043.91383-6-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -99,35 +98,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <330cc9c9-6726-39a1-91e3-af563166e5df@vivier.eu>
-Date: Wed, 9 Sep 2020 15:23:07 +0200
+Message-ID: <acb7e804-6244-1db1-4332-42e538cc6051@vivier.eu>
+Date: Wed, 9 Sep 2020 15:25:57 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200901104043.91383-3-f4bug@amsat.org>
+In-Reply-To: <20200901104043.91383-6-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:EJX20WXKnTpl0o6mA+qeWLk6MJRTGTKPrY6ylg5e6DC4Dti/YCB
- rfVAcUA0i1jzIlhSHZ9cI83px+FpL/7jpd7Q7wd/1jsuIVslnpL1y/SRB8y3yMTFPLF8+zu
- xwVf5rEJJrqE/LlkwGJA0wUp1E1WLBDzqacyqmFE3dEgxMQqYslmTXFnS3/f4zSdOHsXeGF
- 34vxthjNfmnvCdh+uvPvA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:UVqxuDkqEqg=:3i9298fTe5zAQnryX43X5z
- gV7ZiMmzYQry/m575NeWumJCF4Cnde0g/n7ecyYTAMB6+v65RxRRpx/dgkpig4ugWsH0+/ioL
- WA+BggV04zjDswkdxtnAwMgHNnOQYvKCFGck/cMBySRPXE8WrUGRNLpgdmvMoaPs+tszpRlQc
- 1HXSqjObRz0X8tZYtAWD5xCeUISL+ANTPHOPcjLQZEqsS9Cq49eIe8JBFQXXY5BPOu1AS2SGo
- 1JTCzP9VGpw4r/Eh84wK+owf1roDYdEMvQss14A7u+t/Sz/ldjyvJn4U6hKnL+IU1utxrA17u
- FpxN456AzysyODCfUrlWRTkLDgKU26sQ51ssrDy9b0WqHkXcKxyJbzB1Py72zPKMoMu1myms5
- NQLiwI2Emf8DOkC4Ebl0jORrUU4lKiC5nyKuG7LhixH/+70oC56dO9nGUDBU6m0Xc4oOpxyfS
- OUAV6GAsON2qVe2/79B0LkJxIGy3Ej4BsQHBhNbPXhmmAvNZNfreI4xDiQZ3knA0QXo8a5yza
- y4vY6LpOPfdKuQ+/4thoFPsi06CTndTYpcjdfelKBbJx8nTvYKWlSUUd1B8V7SGhLvncDDA5n
- JNAUBis3hZmYMnpqbFVWcPiUwHFvcFRWSHhV84qvWGYluLXBS3B0BJO2a0BEBr43556FrmiHm
- e7KEWKoWmQX3a0b+3dMj7N1KUQt3ml6TX5IlbFsaG8QTnx9q5BqsP1lWDgTcNPUgasjacEveA
- VV11o4g9ASTD6/nKgKVOULrpt78q5eFMaeappDmsLnVwPlPkRGYkG3Bl01O4hqw316y7i1lHl
- U7kXWr/Hntlue6R4xdxpK6XcOf0Y4hORIQWxYrNYK3n6xhUUKWydut7AyMJ8zHUeVoRKf02
-Received-SPF: none client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:BSwa64N3/5Uk2GR3Mbn0uw61aITbdeMocYtHtOCdi3+8WrkW8g0
+ f3OqN5t312lRq9vv8RAMCbRKbZfr9+Ha9GfDimyqS/Oa/MPpbyWwXFfykYLAkL0BUBfq4Zh
+ fiGpTIAQ/2uJRdsgfp1yEGjoX89Hlve8ELje+72/dLyDBMHLBufBJuAEUMwflvE1YKuDmcH
+ n3HyLRrwnVxTxZzelikAg==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:ZLAkdfIqjXk=:lpRNIzXz/meXfjMHtN1e4i
+ UP9RIxFumtsCxxrRxMPeDLqYPwrXCXJrKtswiIxWP15a+g/xXS7BAZePsmL2PVdPRNbdUd0JP
+ 41wThlRLal1xqT5Pv56M6Mq6vKn3qX4tJBa3p+sGfZARCr0SK4Dyr9ghZiydT8U5Kn5xIazwB
+ Zs1fPMqz3LowVNDRajedfyFILHSNdVQFk5RshKR0GvfrjhJc5M1tsKULLp2NSLMnUJyTPP+xx
+ DaeAk9s2/fMlsNcvq9pd87XidVNVoPlOia2QY3OYvgGSmThozITJWSPPNJq0Q35QzFf/XfOdR
+ VA4GDCLSkaK+p7IfoQAnnzdrPZ/AY73QcjiFoyRwOWTMbhZGZ49nRg73gJG0vvaZnLap22Eow
+ hKl30BbC1OkRwWQKYpfrH5d5MZ999sRsIuVEdlLQ2rBO8T1iZvJ4bP7+N/hueSSWyripSbiNs
+ 7bryAJ5S3svi6gOYjQlaDxvSxsQ4x4vbTP4QvMSXTlm09OZfzf4fHgWpUdd3PI0gJZ+AUAsjE
+ RcvqXOHvGBTjVn+UMPN8j96F5Ir84VLoAMZXsoKc7qgZYsT1wqkKhC3e8c1hO1JhWJeYzktv/
+ EVkAcjCZ5TGLKixKi4Gkfd/DobnfrVY3v5t0r3uqBYG5lJCWiK0F8HzkjpuuH0hqYq45JHuy/
+ oBhc4gsNoEOrRUrs12jKu4EOuVKXBYtbfwU3nCZxuqy6wgt+FZmFWMumnuKIQiW2lry5yMjeL
+ 9mAjtNrFH+6WR4o+aElAJf5jVLfsVeMuz5l4I3+Vk132i0k2MXi9+Bm6SXUpCoZf61o0K6N2Z
+ 5RRFT4I/GKcp6H1xIjM02+zzqmt7f+Wt/W4WG86McvW/kQLnr81fY8MBaemUPLjgifIIugG
+Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:23:43
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:26:28
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -54
 X-Spam_score: -5.5
@@ -136,56 +135,73 @@ X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.576,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
- Andrzej Zaborowski <balrogg@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
  qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  Aurelien Jarno <aurelien@aurel32.net>,
  David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: i9NdkTcrAAmF
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: dG+c/x3wQcGa
 
 Le 01/09/2020 à 12:40, Philippe Mathieu-Daudé a écrit :
-> Displaying "vt82c686b_init error" doesn't give any hint about why
-> this call failed. As this message targets developers and not users,
-> replace the pointless error message by a call to assert() which
-> will provide more useful information.
+> As we can never have more than ISA_NUM_IRQS (16) ISA IRQs,
+> replace the not very interesting hw_error() call by an
+> assert() which is more useful to debug condition that can
+> not happen.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/mips/fuloong2e.c | 5 +----
->  1 file changed, 1 insertion(+), 4 deletions(-)
+>  hw/isa/isa-bus.c | 9 ++-------
+>  1 file changed, 2 insertions(+), 7 deletions(-)
 > 
-> diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
-> index 8ca31e5162c..f28609976bf 100644
-> --- a/hw/mips/fuloong2e.c
-> +++ b/hw/mips/fuloong2e.c
-> @@ -240,10 +240,7 @@ static void vt82c686b_southbridge_init(PCIBus *pci_bus, int slot, qemu_irq intc,
->      PCIDevice *dev;
->  
->      isa_bus = vt82c686b_isa_init(pci_bus, PCI_DEVFN(slot, 0));
-> -    if (!isa_bus) {
-> -        fprintf(stderr, "vt82c686b_init error\n");
-> -        exit(1);
+> diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
+> index 58fde178f92..10bb7ffa43a 100644
+> --- a/hw/isa/isa-bus.c
+> +++ b/hw/isa/isa-bus.c
+> @@ -21,7 +21,6 @@
+>  #include "qemu/error-report.h"
+>  #include "qemu/module.h"
+>  #include "qapi/error.h"
+> -#include "hw/hw.h"
+>  #include "monitor/monitor.h"
+>  #include "hw/sysbus.h"
+>  #include "sysemu/sysemu.h"
+> @@ -85,18 +84,14 @@ void isa_bus_irqs(ISABus *bus, qemu_irq *irqs)
+>  qemu_irq isa_get_irq(ISADevice *dev, unsigned isairq)
+>  {
+>      assert(!dev || ISA_BUS(qdev_get_parent_bus(DEVICE(dev))) == isabus);
+> -    if (isairq >= ISA_NUM_IRQS) {
+> -        hw_error("isa irq %d invalid", isairq);
 > -    }
-> +    assert(isa_bus);
->      *p_isa_bus = isa_bus;
->      /* Interrupt controller */
->      /* The 8259 -> IP5  */
+> +    assert(isairq < ISA_NUM_IRQS);
+>      return isabus->irqs[isairq];
+>  }
+>  
+>  void isa_init_irq(ISADevice *dev, qemu_irq *p, unsigned isairq)
+>  {
+>      assert(dev->nirqs < ARRAY_SIZE(dev->isairq));
+> -    if (isairq >= ISA_NUM_IRQS) {
+> -        hw_error("isa irq %d invalid", isairq);
+> -    }
+> +    assert(isairq < ISA_NUM_IRQS);
+>      dev->isairq[dev->nirqs] = isairq;
+>      *p = isa_get_irq(dev, isairq);
+>      dev->nirqs++;
 > 
 
 Applied to my trivial-patches branch.

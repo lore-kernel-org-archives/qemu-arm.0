@@ -1,61 +1,61 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp425214lfq;
-        Wed, 9 Sep 2020 06:28:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrDWVD4mGsbakw/ARfZPHh6KUvBr0fYdK4pqDwAz10m0qDRcOmuuN20XnZJgs8RARaaH4O
-X-Received: by 2002:a25:e643:: with SMTP id d64mr5446269ybh.431.1599658095113;
-        Wed, 09 Sep 2020 06:28:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599658095; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp427502lfq;
+        Wed, 9 Sep 2020 06:31:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwXjim0DO8gR+WFaPrAvipaKw73txzq3bqrd85RaQPer7FmcErwioeOyd9ti091bQlAVm2q
+X-Received: by 2002:ab0:35e9:: with SMTP id w9mr563051uau.48.1599658263540;
+        Wed, 09 Sep 2020 06:31:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599658263; cv=none;
         d=google.com; s=arc-20160816;
-        b=KmFhRdDcG52KN2NsnxLt0KUHgjEygZHxLlGk6l7hCa8wZJgO4hQ+DsEt01FQhw3G5R
-         NC/8wf0e9eoCiCKTtUU4jt0EBdM5i8lGHN0cJqYWC355exg06aPWi84uoI6Ba8dk3JgD
-         +y/9RsFldhNymyM5CWOWHYaWm26CMjiS+blBpDPeWsM7YX26v8BWxFOTiGVi+BJn/VyU
-         WfgBM/LDnrrBmu0bv9JsD7x6E7utb4tGLoh38+S3eLPfG2ZP5FJk2H8YNHlWS+Ujz3eg
-         +oc4fRa7o+P5HG/vs7pTwPtbL+D+T4MPS3LtgC/VRhbK8iMu8DvlQ7SbIElT1pIBtUnh
-         fkhw==
+        b=d4I/lGAbNSEYWLciQwmcA+FKZHrhmU9+QgLpW4xygtxp44dQQ5c6qb82OFjRDgR5oC
+         KeI+gbMTDEIX+M0cspwcL68WUG0RqCPEf/olh9l6NK/bXlvob1NOe77OEPbGV4dUNENa
+         eAafOfNoOIOco4q61ryNvg9bYXVEn+s6Fe0S3JDC23Y2eGZ59wvRmg7PtnHyuk2weNtT
+         /ycU/W62dEDhgIpJnJ/NszFD+5hBQhAGlit6CdR0cFhjNvsq6JMCf4q+aI2RNzevscjo
+         0Oc9ux/sOmpyDe+jpV9+DasVP0xz0SKhFHRJkbtm/4PS4goSghc3NYgH1JfzAKaJgg7a
+         5I/A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:autocrypt:from:references:to:subject;
-        bh=CBd7w63em36P7k5lC+e8MSTjn/PHq+fPqCMKQFiWDuc=;
-        b=Y3MQ8clU05CWrIl/AfXaEp8MdDBewwS0nTV1nlfJKrg8uzrf0BmCwRlnXFEYPn5Yph
-         PHKxlGO79o5uhQC2mXvf1nkxTMvXXCkGoxy8EpMr64I7SBZjA99D9LiYkJ8iQjd21d4E
-         wp0qZ+GBs2FMUR4snEE2SDTnQGjKpoUbjpbkJ3OoPd0K4DLrL+leryseUrsqE3mv3juT
-         0dkrRDvNWpF+uZYszBwAF0NMPq2pmedUPN4TKgjmKhkkVTvq/hFk0pZKYMSnrMUYFcVn
-         UNHM2QHt74bQ25MavuvMLDLIfMeyYbE6htkSuFcJbfljVxTiV56jfTijsPrkbm6zNLjn
-         2ktA==
+        bh=JO8I5Z2O7lWl+zLfeYBj6zlWum4Z2FzeZ21v6YWTZIc=;
+        b=XmZZpTijBSgLx+1vcK8BFlP4JSnuNBu3UsA2bki/UmAwPpqCV+XIg/QzCFxO/pV6yY
+         /yV2kwkCAdXny8X3EaJGHUonrV/9Bf5UTG1VbcOra+n/L0DgDHU6Q0gj9xh1zvcENrO4
+         EqKfhiunIVPsDYP0w3/CNhk/PwfFEy9IJi4DFiRYHNraxkK8V9lCTPgtCcCjGCkToxgT
+         tRKSCBcsj42WtMtHYqTYW42C60da6zFJ0nxNVHRvnQrY9tmbWbYS3F0g0dpPly8gkpvm
+         uUity8xwP2yORVyuv74ylyOrPGd/nCJR5LrvMyinqHlwL3yswmPxsgI8EXkKQOqkwb/I
+         jClg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x19si2915131ybs.274.2020.09.09.06.28.14
+        by mx.google.com with ESMTPS id h5si300930vso.42.2020.09.09.06.31.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Sep 2020 06:28:15 -0700 (PDT)
+        Wed, 09 Sep 2020 06:31:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34972 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41946 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kG090-0000Ww-DQ
-	for alex.bennee@linaro.org; Wed, 09 Sep 2020 09:28:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33892)
+	id 1kG0Bi-0003of-Pb
+	for alex.bennee@linaro.org; Wed, 09 Sep 2020 09:31:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34400)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG08q-0000T1-5Y; Wed, 09 Sep 2020 09:28:04 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:60355)
+ id 1kG0BZ-0003nh-Ma; Wed, 09 Sep 2020 09:30:53 -0400
+Received: from mout.kundenserver.de ([212.227.126.131]:52795)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG08l-0005B3-Lc; Wed, 09 Sep 2020 09:28:03 -0400
+ id 1kG0BX-0005dL-SK; Wed, 09 Sep 2020 09:30:53 -0400
 Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
- (mreue009 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1N4z2a-1khKfP1ynU-010vsV; Wed, 09 Sep 2020 15:27:55 +0200
-Subject: Re: [PATCH 1/2] hw/gpio/omap_gpio: Replace fprintf() by
- qemu_log_mask(GUEST_ERROR)
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MNwXA-1jri2h3ADY-00OG8a; Wed, 09 Sep 2020 15:30:47 +0200
+Subject: Re: [PATCH 2/2] hw/gpio/max7310: Replace disabled printf() by
+ qemu_log_mask(UNIMP)
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200901104234.92159-1-f4bug@amsat.org>
- <20200901104234.92159-2-f4bug@amsat.org>
+ <20200901104234.92159-3-f4bug@amsat.org>
 From: Laurent Vivier <laurent@vivier.eu>
 Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  mQINBFYFJhkBEAC2me7w2+RizYOKZM+vZCx69GTewOwqzHrrHSG07MUAxJ6AY29/+HYf6EY2
@@ -99,35 +99,35 @@ Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
  OpKgu3nD0ahBDqANU/ZmNNarBJEwvM2vfusmNnWm3QMIwxNuJghRyuFfx694Im1js0ZY3LEU
  JGSHFG4ZynA+ZFUPA6Xf0wHeJOxGKCGIyeKORsteIqgnkINW9fnKJw2pgk8qHkwVc3Vu+wGS
  ZiJK0xFusPQehjWTHn9WjMG1zvQ5TQQHxau/2FkP45+nRPco6vVFQe8JmgtRF8WFJA==
-Message-ID: <3bbc47c7-168a-317f-60d4-cb6a74db1d22@vivier.eu>
-Date: Wed, 9 Sep 2020 15:27:54 +0200
+Message-ID: <be971075-e3c6-627a-e330-256a3342e3cb@vivier.eu>
+Date: Wed, 9 Sep 2020 15:30:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200901104234.92159-2-f4bug@amsat.org>
+In-Reply-To: <20200901104234.92159-3-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:24XJ9qIlRo8xVggyzfpbikZIyXTmtuzcpwr3EepvMqEhiqChwDO
- aBRYxJh8xooT1RFERvnyw1I8lQ090CcJMU84z2E1K2qKDRMzshvGseVI8mhtDsnulYq9mtW
- kUEC9CUJfM0nSBqEFAqcjHyPDs2mFvwdTooHi8g/0psnAjk9KGsCccjvRyxyClM8dr1uDHP
- Z29WlYQR4pLJxMm8yCh2Q==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:gLXtg0/hDg4=:AMYN7fWLayPDPUcAcXm3lf
- kkM+JIsMzRP2iRXYPVKWj3PsZz7yyzv906UNsG5kC1+5GIk8FiAsYNlQhNPaOTSVmHP6LPpDd
- V1sVI8UK3OXR4O1b3nIRrCcFlMJ9to7pdS6eNhzoS6bHEFAClQq1DH68SbryPHpTHTCMZ4541
- GuBp1xqBH4GxCOP6jHYewfwqrq7t6Gh1VIsHD1wXOWqDBcrrkqCvus4MjjSWe2L4F11MfVD4C
- Ig6czPBHoGAxyUyEwEy0gKBHv53GA8884gc8irEQfDQeoQ+ZPtAgZokEmok4H6ofQbUv50l39
- eaGhjAf7U4VKtxOxI3wDwB95JN8E9v3OSWCkMbXgEtxs6Sm/kvrb+5P6J4mimbQeh9pzwMMMb
- YLtgdNgdWetLRO7VX6AQrMNr81Mhs4PxVanxz0TyOke5aZm8tDrXWnBX90LumyM522jVlbtZJ
- j26AD07gWzkmjbG2Ce0vw4/jVcEH8JspPXroMUIHD+n/YIhsiC0P0xPW6gePnObreM6f0jl1i
- aAzsim0ewdGQaCa4lxXywBUFRDmW+QdPqVqoR2cyYa8aEwZ/0glsB+/893hGWVf2vhTPf9aqx
- nvrwsjZHGNKqAzBVLGhrElXwMRnFe8DjSd9RQTTplvFJw4CPxMP6CRW8d0DViYyxGRaXGt7HA
- CtPX6AtPQ5TyshgeeQUxvVfkGKUYB/BowLZ1eEnkIge/ODh7uF6Kcckpb9K7KxVgnkksiBaaW
- 4dvr5ik5MwSOFt3Ao+Rywy8VolPZQrKiPP6F1KFHZxvFQQCpPgnnomQLMIBV0sEKaOM2sC59M
- /viKnJGlAVPg7yQnDlJO427Fe8udn3zqjLijVRU0317FZa9THYzdZ7G8YMkgpUfLAUrsqVe
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
+X-Provags-ID: V03:K1:f30uoKL3byF7T+7ybgEjjlErwyvlXNo1LHlZCuRj+cx3QIB1A/C
+ T1BKgJttLdPqJzwx/gVNwxMnxUITmuq42TSecD6v2exlZGOByQSFfHTOg5DnZ6oh3Hkj2F9
+ wJrQfqrawbaaRVDbGcoIRMHyATZKQC1mAmEvwZjSWcvORdNErWpqVwHgwgFefAOfBq3He4y
+ QQzqfok1TKLRo2ra4+NTQ==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:wvFvDnsiVE8=:QZhKIzB2qDu0Y+cB57K8Vp
+ nEyslDAHPPEJmpEBlJmyeCLJMtOZ3unWes07ErMfINvg2xFRXPjoTzZ0tObpLvo2Nl8/zD3SA
+ YKrT1xX8Ebsgpy9qiaqjv4fQRaaqYS3CS7sinTFD9RdSkAGfLsRezAOxeAYcRtgHOJ42GBaOF
+ mKK+JsO/CDGwB+XL2JFi2hPwhMeOQafEjICzPEeUaIeb8QbO6K/ucU9fLjNjkawzHFfmoe6fq
+ VGLB/pUOaXXRVQ67M6+cAer85UKvoFKUzY/KFJbkzbzUGEsaIhEaaipEZRr3KgrxriBpnvB0S
+ WzOtQYjVt+JtzvhiQHZFaJ/zU+p7jkAauYA2vvKFz3HFS55mNIHcHWOTaWguJ/3pZgyHkrAbw
+ MLmEWUilo8I5vvp9aJ7/YeblAjx3b41S+Xl0aeHmhtjMxsCuEypIPJNyZ6+8zRA7QDd+923C7
+ /JReix25rT8B2nBeXK3L5et6T+63e/f6HvWvStIt7mVHAOVLzX+837BJqyeweZJRZOOfR3r9e
+ jfFVlQspXfbcRsVhSd86NWvQrxoEj8WppJi/FapMrGu9pSCS9vqdYQk2qaRABEB5JDP2lXKlJ
+ U46twBBPUt8MEIixi8WP3WQ5ESuGYtLAkqZEZgnc7UHHNiqKuVJ22VzRJni6BcTPrYQsv+lSV
+ FBg6GWM5qR1bNZ3Jx0mGfGJUlxi/RBa2Ap1NW/+hkhqhjVFWTh1W0lpuDCQPwa1bH8j+co8Xp
+ PIssm/MtzwPOEyoB0pAPT/sB91kWGM5uOJqOjqgvulnJjbAdZ1jKaYUnJvEJoX2h4SLqBYGdo
+ oHsvDQ+yQYujbitJ+Up1zeJAvnLQlo1B7Va82I3cvGT//mGMMm8TAoTmXLvc0mib6VA5Tfh
+Received-SPF: none client-ip=212.227.126.131; envelope-from=laurent@vivier.eu;
  helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:26:28
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:27:00
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -54
 X-Spam_score: -5.5
@@ -151,33 +151,52 @@ Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Andrzej Zaborowski <balrogg@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MaEdSlWkDFno
+X-TUID: 1go0ejGt+KYP
 
 Le 01/09/2020 à 12:42, Philippe Mathieu-Daudé a écrit :
-> Replace fprintf() by qemu_log_mask(LOG_GUEST_ERROR).
+> Replace disabled printf() by qemu_log_mask(UNIMP).
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > ---
->  hw/gpio/omap_gpio.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
+>  hw/gpio/max7310.c | 11 +++++------
+>  1 file changed, 5 insertions(+), 6 deletions(-)
 > 
-> diff --git a/hw/gpio/omap_gpio.c b/hw/gpio/omap_gpio.c
-> index f662c4cb958..e25084b40c9 100644
-> --- a/hw/gpio/omap_gpio.c
-> +++ b/hw/gpio/omap_gpio.c
-> @@ -392,8 +392,10 @@ static void omap2_gpio_module_write(void *opaque, hwaddr addr,
->          break;
+> diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
+> index 7f5de189acf..c58a1996418 100644
+> --- a/hw/gpio/max7310.c
+> +++ b/hw/gpio/max7310.c
+> @@ -11,6 +11,7 @@
+>  #include "hw/i2c/i2c.h"
+>  #include "hw/irq.h"
+>  #include "migration/vmstate.h"
+> +#include "qemu/log.h"
+>  #include "qemu/module.h"
 >  
->      case 0x10:	/* GPIO_SYSCONFIG */
-> -        if (((value >> 3) & 3) == 3)
-> -            fprintf(stderr, "%s: bad IDLEMODE value\n", __func__);
-> +        if (((value >> 3) & 3) == 3) {
-> +            qemu_log_mask(LOG_GUEST_ERROR,
-> +                          "%s: Illegal IDLEMODE value: 3\n", __func__);
-> +        }
->          if (value & 2)
->              omap2_gpio_module_reset(s);
->          s->config[0] = value & 0x1d;
+>  #define TYPE_MAX7310 "max7310"
+> @@ -69,9 +70,8 @@ static uint8_t max7310_rx(I2CSlave *i2c)
+>          return 0xff;
+>  
+>      default:
+> -#ifdef VERBOSE
+> -        printf("%s: unknown register %02x\n", __func__, s->command);
+> -#endif
+> +        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
+> +                      __func__, s->command);
+>          break;
+>      }
+>      return 0xff;
+> @@ -123,9 +123,8 @@ static int max7310_tx(I2CSlave *i2c, uint8_t data)
+>      case 0x00:	/* Input port - ignore writes */
+>          break;
+>      default:
+> -#ifdef VERBOSE
+> -        printf("%s: unknown register %02x\n", __func__, s->command);
+> -#endif
+> +        qemu_log_mask(LOG_UNIMP, "%s: Unsupported register 0x02%" PRIx8 "\n",
+> +                      __func__, s->command);
+>          return 1;
+>      }
+>  
 > 
 
 Applied to my trivial-patches branch.

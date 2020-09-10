@@ -1,94 +1,103 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1451590lfq;
-        Thu, 10 Sep 2020 09:17:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyVPdfQScVqq0RWMnLTkW3UdwUaV5Aip1ORL0s91QTVzADBa5JDQeJVDNwAV1xBgxyBsBPN
-X-Received: by 2002:a25:730c:: with SMTP id o12mr14589341ybc.512.1599754668095;
-        Thu, 10 Sep 2020 09:17:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599754668; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1514461lfq;
+        Thu, 10 Sep 2020 10:39:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFXHEJvA/jmhRzEbJICIpn2B5/CSBTsHvoEx0eGj154wChJLhliQVCzM5ETnmuS+2SjLCO
+X-Received: by 2002:a25:2d59:: with SMTP id s25mr13744452ybe.317.1599759558552;
+        Thu, 10 Sep 2020 10:39:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599759558; cv=none;
         d=google.com; s=arc-20160816;
-        b=aMSlUz2/piUBaScsWINFILKMLbeodvtmqzgRk4ujnEFMTfsPnCCUaiOdnUpK5uLrGE
-         4iuDlLzXrXNHHBFgz3rnSE1vceXGSWjHRtMpxtt19MWCPdZhtHyFLxUSA+KTa0kefEfM
-         qd3zsjuw5btIHLEjhWBp/IlcTKfi7OztBZ5BnbERCJb8MYSRLp7aMuKa2hyKy+zAkDL/
-         NstVyrEs5PF50neo/VfNZhijr2gSXvxUxix5Xec7CcM9BSfGAZ8P4NlPQ0gXxnlnPgk1
-         dPP4VyNVSRQ9DL2Qo8+lrxDDkTLEO0ZVuO54kQ4pcPRwcj9/valsK0vmZHvzEFlLgb9W
-         iEDw==
+        b=nMTyKItrL1qFRC/SOiMka8sCK+JT+z3yGfx2Gtg4WBfNSbMa2dboeoRrHiM5GTVSdz
+         beHrHUQVElMLRtf60uStTmQrNawyeHOh150poCbqBa06Sl+EtVTQfnuqtNxUrpjW1IJM
+         gAohqRWsfEYu4DAQZqt5jDAet3Hzu+K4ltI9H87CFt+BqUdeLIeuF/l66+HSd2VphQHV
+         KNsqAenZxwICWoHxprRBINKtr+Y7412MEZDReRusglapCStd8v/9ldw6AUC37iNuljJg
+         G114j5b5/FU8kjIvaVSs4WSSZcnfw1Eve+vojZ06kT/ucRq6dw+fT5rt7uEGvvfmmyMk
+         ywqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=d1zXZOEgjCvDqH4TQTfV6VGTaNJ2HtR22eSSv5aQpQI=;
-        b=wEP3F6rAAORN22QK3fCjtzqtJ0UO4YnfC9llLJvF78uIFN6nKkNFaVvf/5EoibDuk9
-         mkv0BJ3fCefwJXpYHTCJVRJ28YXwja2L41IWzMeJtCD21ibl4/BR/0Q2FwneEKAmBJ1r
-         PCpKp0RBsvwqmAECtNQj9k/sjM5IsFaSrkYQMEMK4wZPLSt4n5oPMszyKdtBgRcDjVTf
-         Jw58SogJ5zQqd+1JkZsaxkj3bVh64ncImqgVA+x4jLqCo6qaE5zu5fqJX7d1D/w+LHtm
-         2xeWQOmnDnT2+t+dUTUVCIWuSOR9yAYkIXhaeJIeZPpRHVW+r+rBeOY/dBQMixUVwygj
-         BCUw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=yrb435SyHhRGm1EucboctVOMgvMxS5WyjB6BP+Kvcd0=;
+        b=xty5skcVzNmPkMLihVJQqwDi4uCFcDR7p7vQseEt/wOPuFE34E4o37Fl1Ak+bFPBB2
+         VpbWvLiaQ2ewjXSg4hxo7/Vl4/keSAGBHfj2Bepc3d+lYoQeIgiL2CsSMkvcjAa4+mih
+         GDBU/GLT+is+S4+POSXeE/4GNk9Rl/pWxkNMwWo7CxpIhjTE0wFHaiOJ+UoGt7WZbSUS
+         YDe+foWWUMKQ1w6dU+U2NL6597UdeIB8w9uwml82zkm1R/enEO2Wa2yA9xTrX89QWJms
+         ADCOeAAsQ6HGdFo+dadXhiolMAp46l+4Enhj0YB0zbC+1PtqCVkzKK0uJaBz6uZqpTca
+         Bx7Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ey9ydOUe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aRJZoQEC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l194si5420271ybf.176.2020.09.10.09.17.47
+        by mx.google.com with ESMTPS id k4si6518628ybf.6.2020.09.10.10.39.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Sep 2020 09:17:48 -0700 (PDT)
+        Thu, 10 Sep 2020 10:39:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ey9ydOUe;
+       dkim=pass header.i=@linaro.org header.s=google header.b=aRJZoQEC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58118 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:35716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGPGd-0001D9-Fn
-	for alex.bennee@linaro.org; Thu, 10 Sep 2020 12:17:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53724)
+	id 1kGQXV-0003uU-Sw
+	for alex.bennee@linaro.org; Thu, 10 Sep 2020 13:39:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44514)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kGPGP-0001BN-J9
- for qemu-arm@nongnu.org; Thu, 10 Sep 2020 12:17:33 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531]:41474)
+ id 1kGQXL-0003sx-FA
+ for qemu-arm@nongnu.org; Thu, 10 Sep 2020 13:39:07 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38285)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kGPGM-00079y-PY
- for qemu-arm@nongnu.org; Thu, 10 Sep 2020 12:17:33 -0400
-Received: by mail-ed1-x531.google.com with SMTP id ay8so6884696edb.8
- for <qemu-arm@nongnu.org>; Thu, 10 Sep 2020 09:17:30 -0700 (PDT)
+ id 1kGQXH-0002nK-Em
+ for qemu-arm@nongnu.org; Thu, 10 Sep 2020 13:39:06 -0400
+Received: by mail-wr1-x444.google.com with SMTP id g4so7728251wrs.5
+ for <qemu-arm@nongnu.org>; Thu, 10 Sep 2020 10:39:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=d1zXZOEgjCvDqH4TQTfV6VGTaNJ2HtR22eSSv5aQpQI=;
- b=ey9ydOUeMz6AnjSZymN2hY/+r4tmd0diLawBfjwdFXVYz3anLyOdzd2kSRhqC63nTX
- SaCSr0qklDWHfwyvyi036fQ6G9atqBFN+PNEvvo/+lSKYONNa0VmB1gkqGhbljztujE1
- RvEL+k7RieKlVcT7+g6AxWO/mSn5N9xsobPOAh4ThxXDXgqJPTw+eQ3pdBzuE+mqTIBy
- /7l3fZijyWfTs6HGZEPb3BO4k4FL9GEuOKuNfbIyw4tZvltduV2I8AFF6GVmzqjfWo/4
- 4SaVXdsnM292LRtep5ZPIPUvA/6nd1fVNGSElCC/H9V5SzWI7NBXrJXaVfvNgOyPPYMH
- YSng==
+ h=from:to:subject:date:message-id:in-reply-to:references:mime-version
+ :content-transfer-encoding;
+ bh=yrb435SyHhRGm1EucboctVOMgvMxS5WyjB6BP+Kvcd0=;
+ b=aRJZoQECV3V+9Om8kMKrD61gHhCIOwhhv4/7pKpind93deQArKPxJZHSDyByWCwL2m
+ Z1kf8ohN3bJnOw+9sDlIJDZsYgLAFH8bVQN+Qc2VxkGB61iaEo2xmNE+uJkytJwr/qDC
+ C/1YDTVAdG7JhyMcuCeOa3C1HuZmd71WTFFHkEd/6HOHRaSakLgz/p14TTxOTkdBNduJ
+ LmjNnKMGeb5owvIhtzZHu5sL6SpURvkhx9kCidu51+1ox0IFE+kZCsE0l7G0uCtaPtY0
+ Bdn8bUiVWJ3HsXFmm8vLd1/VpfR4UcY6nQKK+UROroeC9WkAw9hkyZiF+za2D0DxZRcg
+ ZiNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=d1zXZOEgjCvDqH4TQTfV6VGTaNJ2HtR22eSSv5aQpQI=;
- b=HXXywb85LCY8t+nsOSe2m3JB8JV1zfKPNJdgC3DLfmR9qW+ZwxCvJg55Wnpgw3pQAi
- bI2F/msTlATLcaG80xQ34Edylr81p0XkEXlG0rBw9mfHY1cSSsVzVOMU8hWpcoROmaQD
- GYLjh1ItpK9CYbnQQlUEEeJcBu0vjhnivVG+01xD1WnHT2eatY6NKKAn+7fukKjXb8ET
- +bPHsv9Uap1LF4mP3ZQZUJRSB8sFLQOO9j0CFaHsMjNjbP1upB4AII7i3XSWq9hn5j/S
- h17dfCSN16DL6/gLkbrWapwivZRicQ3CnlCDwgRVBs2RgKfukp6jSJOP5v2plZ6WNB6I
- HqaA==
-X-Gm-Message-State: AOAM531VSC5L+c22yB3a6OyzyIigebdsiTYIiexvx1xV3jqMuVJbiod6
- MhX2A1eJxts/tBtAhij34aBVyQWZXns9k1IkkaNYrg==
-X-Received: by 2002:a50:f28b:: with SMTP id f11mr9948499edm.44.1599754649067; 
- Thu, 10 Sep 2020 09:17:29 -0700 (PDT)
-MIME-Version: 1.0
-References: <CAJoBWHwtE+HWkoj3a2pdYHOkPpG7ya=+-RRFvUp-SXwuTWvm5g@mail.gmail.com>
-In-Reply-To: <CAJoBWHwtE+HWkoj3a2pdYHOkPpG7ya=+-RRFvUp-SXwuTWvm5g@mail.gmail.com>
+ h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=yrb435SyHhRGm1EucboctVOMgvMxS5WyjB6BP+Kvcd0=;
+ b=QDzgOYglAH1hp+xm3zb8bmfPJ/AouzSD6RgSClhvmTL5zr+RVmrjyAdsWqk7bvM/cO
+ U+6XkC4kxIOPY+y6ubvBqpcBCxUlsV8R45U5IGE9orcg3kQlQhFFkWIJO8aJ3l33qT/t
+ UrcNQ/KMG3u3wyiv1iNhNGtvWf+pXURhZZiUqAu45tVZH3tjmUIkWr/cpdM/0/UPMbTp
+ 3VRpa+pDi45Bc+Ye68EbhEwl3ZyAABJ4kqwC/KTwkBQcre9qA1CTIPbVrMjKVT5mOlDa
+ 5LyE7aglmYhCSrQBBFtqVs23ZEIeK3SalfRsASPFg0/rMKziZD5lFDdXzOe2X4AE0pPR
+ jjAg==
+X-Gm-Message-State: AOAM533SMvUGArBJEez95ZepmGoLOsVmB0jF8k23pcn3XBawC1Ph/5CB
+ ylC2/qObCwsUjylQYU5WIopEkIRxNipcbojn
+X-Received: by 2002:a5d:4e0b:: with SMTP id p11mr9983889wrt.32.1599759541467; 
+ Thu, 10 Sep 2020 10:39:01 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id q186sm4603128wma.45.2020.09.10.10.38.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 10 Sep 2020 10:39:00 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 10 Sep 2020 17:17:17 +0100
-Message-ID: <CAFEAcA8spQVin2vj2V5DJYQCR_BizqrRneoRMKhqKAzFv8EiMg@mail.gmail.com>
-Subject: Re: Master cannot execute MTE instructions
-To: Derrick McKee <derrick.mckee@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH 1/5] target/arm: Replace ARM_FEATURE_PXN with ID_MMFR0.VMSA
+ check
+Date: Thu, 10 Sep 2020 18:38:51 +0100
+Message-Id: <20200910173855.4068-2-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20200910173855.4068-1-peter.maydell@linaro.org>
+References: <20200910173855.4068-1-peter.maydell@linaro.org>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -110,22 +119,105 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "open list:ARM" <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +9MhkXRdYq+8
+X-TUID: TwPPzeGt/9ul
 
-On Thu, 10 Sep 2020 at 16:06, Derrick McKee <derrick.mckee@gmail.com> wrote:
->
-> Hi,
->
-> As of commit 9435a8b3dd35f1f926f1b9127e8a906217a5518a compiled with the default configuration, softmmu-aarch64 issues an illegal instruction fault when executing a memory tag instruction.  Below is a minimal code example that triggers the bug.
+The ARM_FEATURE_PXN bit indicates whether the CPU supports the PXN
+bit in short-descriptor translation table format descriptors.  This
+is indicated by ID_MMFR0.VMSA being at least 0b0100.  Replace the
+feature bit with an ID register check, in line with our preference
+for ID register checks over feature bits.
 
-What QEMU command line are you using to run this?
-In particular, MTE is not enabled by default, so you need
-"-cpu max,mte=on" or similar, is not enabled for any
-board except 'virt', and doesn't work with KVM, only TCG.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.h    | 15 ++++++++++++++-
+ target/arm/cpu.c    |  1 -
+ target/arm/helper.c |  5 +++--
+ 3 files changed, 17 insertions(+), 4 deletions(-)
 
-thanks
--- PMM
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index a1c7d8ebae5..b7c2615b2fe 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1775,6 +1775,15 @@ FIELD(ID_ISAR6, FHM, 8, 4)
+ FIELD(ID_ISAR6, SB, 12, 4)
+ FIELD(ID_ISAR6, SPECRES, 16, 4)
+ 
++FIELD(ID_MMFR0, VMSA, 0, 4)
++FIELD(ID_MMFR0, PMSA, 4, 4)
++FIELD(ID_MMFR0, OUTERSHR, 8, 4)
++FIELD(ID_MMFR0, SHARELVL, 12, 4)
++FIELD(ID_MMFR0, TCM, 16, 4)
++FIELD(ID_MMFR0, AUXREG, 20, 4)
++FIELD(ID_MMFR0, FCSE, 24, 4)
++FIELD(ID_MMFR0, INNERSHR, 28, 4)
++
+ FIELD(ID_MMFR3, CMAINTVA, 0, 4)
+ FIELD(ID_MMFR3, CMAINTSW, 4, 4)
+ FIELD(ID_MMFR3, BPMAINT, 8, 4)
+@@ -1952,7 +1961,6 @@ enum arm_features {
+     ARM_FEATURE_CACHE_DIRTY_REG, /* 1136/1176 cache dirty status register */
+     ARM_FEATURE_CACHE_BLOCK_OPS, /* v6 optional cache block operations */
+     ARM_FEATURE_MPIDR, /* has cp15 MPIDR */
+-    ARM_FEATURE_PXN, /* has Privileged Execute Never bit */
+     ARM_FEATURE_LPAE, /* has Large Physical Address Extension */
+     ARM_FEATURE_V8,
+     ARM_FEATURE_AARCH64, /* supports 64 bit mode */
+@@ -3618,6 +3626,11 @@ static inline bool isar_feature_aa32_vminmaxnm(const ARMISARegisters *id)
+     return FIELD_EX32(id->mvfr2, MVFR2, FPMISC) >= 4;
+ }
+ 
++static inline bool isar_feature_aa32_pxn(const ARMISARegisters *id)
++{
++    return FIELD_EX32(id->id_mmfr0, ID_MMFR0, VMSA) >= 4;
++}
++
+ static inline bool isar_feature_aa32_pan(const ARMISARegisters *id)
+ {
+     return FIELD_EX32(id->id_mmfr3, ID_MMFR3, PAN) != 0;
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index c179e0752da..c5e86ce50af 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1589,7 +1589,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+     if (arm_feature(env, ARM_FEATURE_LPAE)) {
+         set_feature(env, ARM_FEATURE_V7MP);
+-        set_feature(env, ARM_FEATURE_PXN);
+     }
+     if (arm_feature(env, ARM_FEATURE_CBAR_RO)) {
+         set_feature(env, ARM_FEATURE_CBAR);
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 44d666627a8..ef6eaf6450f 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10537,6 +10537,7 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
+                              target_ulong *page_size, ARMMMUFaultInfo *fi)
+ {
+     CPUState *cs = env_cpu(env);
++    ARMCPU *cpu = env_archcpu(env);
+     int level = 1;
+     uint32_t table;
+     uint32_t desc;
+@@ -10563,7 +10564,7 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
+         goto do_fault;
+     }
+     type = (desc & 3);
+-    if (type == 0 || (type == 3 && !arm_feature(env, ARM_FEATURE_PXN))) {
++    if (type == 0 || (type == 3 && !cpu_isar_feature(aa32_pxn, cpu))) {
+         /* Section translation fault, or attempt to use the encoding
+          * which is Reserved on implementations without PXN.
+          */
+@@ -10605,7 +10606,7 @@ static bool get_phys_addr_v6(CPUARMState *env, uint32_t address,
+         pxn = desc & 1;
+         ns = extract32(desc, 19, 1);
+     } else {
+-        if (arm_feature(env, ARM_FEATURE_PXN)) {
++        if (cpu_isar_feature(aa32_pxn, cpu)) {
+             pxn = (desc >> 2) & 1;
+         }
+         ns = extract32(desc, 3, 1);
+-- 
+2.20.1
+

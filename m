@@ -1,164 +1,177 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1173252lfq;
-        Thu, 10 Sep 2020 03:13:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxnc1h5YacLMhthcV/QpI5iMwtZJ6H/nEcPnEsPA66/KFRY+0dhEnhtXqQCuUtUqFjtdp+4
-X-Received: by 2002:a7b:cb47:: with SMTP id v7mr8270448wmj.129.1599732834754;
-        Thu, 10 Sep 2020 03:13:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599732834; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1225218lfq;
+        Thu, 10 Sep 2020 04:36:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4HpnjTnzvXH7UCONLYN8fNdH/bLa2jz+YsoJdrRTwg9SAb27Ha9MKxLHcn0ZDRvxuU6AK
+X-Received: by 2002:a25:3891:: with SMTP id f139mr12262687yba.174.1599737768995;
+        Thu, 10 Sep 2020 04:36:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599737768; cv=none;
         d=google.com; s=arc-20160816;
-        b=0umnK51X4zk7Wh1HKIVFtcMcRvI1Ka8c3oYdfRxVu421kz4Sl4B9hOGz6QFlIjk44P
-         rW8hPRxQ1LHEYmMylaZPW11Goj/LgozEge/TmbLD3lUHVGioDNubHq5wUOBVIlcnnT78
-         D6xrA3kJzPhPTQpWBS+H+TKodEnjkifMbaKTsveBv+ARWEVtQQKtB3n/TKmdCviK04QG
-         H4I2VppuMm2xWMLkA6VwTSSFLT7j08N1/ZgcbAGkvDfOQCo6gu6okei4sT6QMHiunTop
-         8SfQNziq/uRCryFcVSz+2BUFcBsSPs+xvjB+fuOSBrSo+rfAQBD+6f1J8R2Us3jd2VNT
-         Ms6w==
+        b=Q83uT0C74+U2Bjz9yNn2vtVTV1xwgZpsGBUpPBbGFMA9thz0vM0LUW9PuPuH3U2I65
+         VXzG/Ie9sC4hL4ZzMZb84xOE+PR5QdxK2fTWqjjDMBJs7O94WMUj7ZFs0QtjxmxWMo1A
+         4YOd5jVvJzJAq/01k2Hd4fRwgqbUBDxK8BgOjBd843qPUvtgrfewiGgn65SO4TIAB/cO
+         CxAfWPaso29w1pi7YRFiIVW7hVLadaGnIG54+v4TcOMYBuF9FtEb4eEfcycEmzaU5hOF
+         DaLmDVwo4WcaQuunCLgNmP/IghIYihYcmtd0IEtpe6KRulD5jEQyaGcLkDIzzp/guJ4m
+         sMeA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject;
-        bh=ghbAqfHY56SlXK3NfTrk82oLbVAVKgXZZzbOQK3EU9Q=;
-        b=sRNKo2deVX4zPNKumn2r2jYsrbg352BnJmpbIL/WmDWjVneXG8YRWbPkKcG68RWk1Z
-         +JcS7Sl3dh31IQOhEiVT75jgDifVDn6FNqC31YRLy1FDclkmNeJCYLdOC1vaD2FLsiqA
-         NU7KlywZdTMdkBwzillCGaz+/4NBGk59+TI/pre8mt3Kg18PrBrxleg+Qp3aYJWy9Iyj
-         spIDuQgIUXujuXzj6qfGcl16h7s0KR/ll4ueUQnfRgQaQD/2+kLXE+I48g/jPakOmlGE
-         WMXtBOIsyVTNBYhZdJfYF9U6N+gcMaHm+N725FTHrbGLyb6QULenhK4n2FoYwVcJvdb/
-         h7/Q==
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=g68Ln2Ykm0AsGzDT36RNb3rZ1ltN22ArPGT5SDWCbBk=;
+        b=lyg85F/nt0CpdUGxH0VtAlUsJhOfoY6bX6QYNHtS5bibvnGmdEsmo5cSb4dLIHNCCY
+         fkTXqtxFd+zb8PM4rSfYOsAx2B+sUZMPiyt4I1SQNJ+XYEWYpARWBV0xwVrM22Y+HBIi
+         /oV1aGjdo7pDIt1pGfgWv5Kif/q5+n4IZXHL6QLXH2BQQNMbf4uyrbZuR5REedh5CGgQ
+         5skJ3z7s4drPPlelXzI0RXOK4XoKawQNrSZ7pafF6JFQSXkJrF5Waiycc3omBwfiCHNE
+         R16u8WUJRWotNC14hD6WAS8rW9EdunRe+quNY7zSez2WFuFotvrlBm3kTSfFfLYBsGiH
+         Lkcg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.75])
-        by mx.google.com with ESMTPS id g17si4934152wro.319.2020.09.10.03.13.54
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Sep 2020 03:13:54 -0700 (PDT)
-Received-SPF: neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=217.72.192.75;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FyylzW2a;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [205.139.110.61])
+        by mx.google.com with ESMTPS id 186si4985902ybh.80.2020.09.10.04.36.08
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 10 Sep 2020 04:36:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 205.139.110.61 as permitted sender) client-ip=205.139.110.61;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
- (mreue107 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1Mnqfc-1ks4FY1yqw-00pNRE; Thu, 10 Sep 2020 12:13:50 +0200
-Subject: Re: [PATCH 6/6] target/i386/kvm: Rename host_tsx_blacklisted() as
- host_tsx_broken()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=FyylzW2a;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 205.139.110.61 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1599737768;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=g68Ln2Ykm0AsGzDT36RNb3rZ1ltN22ArPGT5SDWCbBk=;
+	b=FyylzW2a/0FEqR8XPPuTFe8qeFouGuOmfnOnN3t8EXZcLU+DaTGW5+7JY1J08QaVAGIesF
+	qcgU7NkYZcnr1PLGh08YAiAkP/4S4m3p5b7i5otJeA/9kXtDCshou1gNqSId1rHgGJhvc7
+	4JTuS+6BX96oODOImJB7WxXd5vXBcUc=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-274-q6qAocYGPreLWOyCB8ZV4g-1; Thu, 10 Sep 2020 07:36:06 -0400
+X-MC-Unique: q6qAocYGPreLWOyCB8ZV4g-1
+Received: by mail-ej1-f70.google.com with SMTP id rs9so2574071ejb.17
+        for <alex.bennee@linaro.org>; Thu, 10 Sep 2020 04:36:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=g68Ln2Ykm0AsGzDT36RNb3rZ1ltN22ArPGT5SDWCbBk=;
+        b=EMejW2cGUjlO9dPuZeTVUZ3cCUEm5uLQnS4tY+8YtUaYndYFO/Fyua8i/ivL8pNhxG
+         ak+kErtNip2UFFwk/p8015S2TuugiFkEb5R16OJeGlvEEJfNEYYxkENdwnjwn2Gsj6W2
+         CRI0FvOymwKguMrIRJAhAOdlKf2fNYtWJzkwJ1+opmW/CBHo5AznGPqFlHARI3f1dFda
+         i+saoG4vubEoigCP7fmbwwKhN85ICaAG6qd+LPU4O5V7NrUzkHhoCyRZ6x7NHDBr10zu
+         0E7TO6wtSwyXHA8YTOfB2Etw/c303e54b72cP08Ks6tBry1MMqJflGhEPDHPWuUibYQs
+         Cl8g==
+X-Gm-Message-State: AOAM530L+3d7Mjqfuc5i1CGCcziidxseNnbehNBtM3tWWgx5rmn+AhcA
+	VQDP41wP/vCjp/ml1df1BleWsMYh5s5qFADtI6TKOvzUNeOQ5wFkRaqjE618x+jn90r05q8/GY4
+	CTbalt139JwGZhaON
+X-Received: by 2002:a05:6402:70f:: with SMTP id w15mr9029417edx.202.1599737765598;
+        Thu, 10 Sep 2020 04:36:05 -0700 (PDT)
+X-Received: by 2002:a05:6402:70f:: with SMTP id w15mr9029399edx.202.1599737765385;
+        Thu, 10 Sep 2020 04:36:05 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from ?IPv6:2001:b07:6468:f312:68f6:5b4d:4ee8:10c7? ([2001:b07:6468:f312:68f6:5b4d:4ee8:10c7])
+        by smtp.gmail.com with ESMTPSA id m6sm6450319ejb.85.2020.09.10.04.36.04
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 10 Sep 2020 04:36:04 -0700 (PDT)
+Subject: Re: [PATCH 5/6] hw/pci-host/q35: Rename PCI 'black hole as '(memory)
+ hole'
+To: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Alistair Francis <alistair@alistair23.me>,
  Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
  "Michael S. Tsirkin" <mst@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
  Jason Wang <jasowang@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
  Joel Stanley <joel@jms.id.au>, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Richard Henderson <rth@twiddle.net>
 References: <20200910070131.435543-1-philmd@redhat.com>
- <20200910070131.435543-7-philmd@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <495edfec-a372-34fd-17e8-0d55ea1dae0a@vivier.eu>
-Date: Thu, 10 Sep 2020 12:13:46 +0200
+ <20200910070131.435543-6-philmd@redhat.com>
+ <7dbdef90-1ca6-bf27-7084-af0c716d01d9@redhat.com>
+ <20200910091454.GE1083348@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <b6af444a-fb0b-ed98-60df-28ea67d6abe4@redhat.com>
+Date: Thu, 10 Sep 2020 13:36:10 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200910070131.435543-7-philmd@redhat.com>
+In-Reply-To: <20200910091454.GE1083348@redhat.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: fr
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:XGp5DuYNaH/nAV2W3VvFSDzo1Frn05RQUKvEboRsocfDHUjstLb
- emdlViaZq2xhlXLcUKhsnBwGc5YWzo0QRnxhZCUltjdu1GnTk3sv9pFUf8i9GhliOARfAoz
- H62lkq0Fo2L8bwR71Hc1pT0WZKRJyP+tzRx2PlJgy68ZMDuhEpQmikgxT/TA/kkXa6AnSix
- /hjxZf2sbssdXH21smfeQ==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:BeEbZUjj9Rs=:TDtpgIqE+MSeQ+o/TcwB3U
- piGq0nJO1hA31q4Zj0Q1fESWa/S2q3lg9bnToJhyo3kvePN9Lfd9MH7s4m9RYLxFhpYzaO/VP
- kFR5oeXNoiYAF21wPjO2LC3ojpCtNUY7ggV/EuLA4A6JjLPJIccMn1KuV9cU/5lz1L0xKG605
- uZvAc2YS06xY8BXgRUGjTxWfi6I9GHe5/S+oKhsABcn8NvGw61g10U8wS2/+ut8kRgwEpjNbV
- vSfUxHGUOof5WRZV7O6zLY24tUBBEkUMF94hmK8zceHmblfbuCMcQ+2+FmRDcLn0biXx9tGHf
- S6Flkfn28PmYUXyyL1EQq+0SwwtXe1vdzUhp3SmAGNmIIbMoGgNNUZfLAvQFX3TXVuOZyGQ0d
- C+jmly2iSfp/8y+lpcYIzSWm633FHwefoyb1N60+GTgZ64TwlOVPt+M76qII/8cND//fSs/Kw
- 97LeE47vTBJjC/WKZ2W2FRDyNYZmu2Aq6QUFkGgQaESxHk83uPHb0iVScpi9qV+B47y2LGtfS
- WAPd/vSOrwhc/sW5Yb52GiDMXSNCQxWFnVhd4BmVoss1EgtN/Vl/xdnogyF7l8DrK6DnqYTxd
- z54BVlUc4vmTKzPXAnuY8eqtJP8wTvJXiRmi/Qy6hW3+v4AdEw47WfgT6bc5Os8VF1tOvyijR
- 064Ai+PMYzOar3iW42VzWanSbyhTOxukkeV1i582KPFDDEGPtp6sA8qUKuEJYRsazNmOe5D/a
- QguA7ij9BGMyjAqetMGiBX5Rnb9Gvk9a0BCiR3z++B0/YoQZJ9LeEgctSMQYpLnvKIF7+8NU+
- rua9WcTjKQjDoXhZ/i57vmLZR+klxEW7GJTaqA0LLhNDguGeLjDyDSK8Qn0/gxjyrXsKV2L
-X-TUID: k21a/rx+kHC/
+Content-Language: en-US
+X-TUID: MuaZ8sz//3o9
 
-Le 10/09/2020 à 09:01, Philippe Mathieu-Daudé a écrit :
-> In order to use inclusive terminology, rename host_tsx_blacklisted()
-> as host_tsx_broken().
+On 10/09/20 11:14, Daniel P. Berrangé wrote:
+> On Thu, Sep 10, 2020 at 09:15:02AM +0200, Thomas Huth wrote:
+>> On 10/09/2020 09.01, Philippe Mathieu-Daudé wrote:
+>>> In order to use inclusive terminology, rename "blackhole"
+>>> as "(memory)hole".
+>>
+>> A black hole is a well-known astronomical term, which is simply named
+>> that way since it absorbes all light. I doubt that anybody could get
+>> upset by this term?
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  target/i386/kvm.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-> index 205b68bc0ce..3d640a8decf 100644
-> --- a/target/i386/kvm.c
-> +++ b/target/i386/kvm.c
-> @@ -302,7 +302,7 @@ static int get_para_features(KVMState *s)
->      return features;
->  }
->  
-> -static bool host_tsx_blacklisted(void)
-> +static bool host_tsx_broken(void)
->  {
->      int family, model, stepping;\
->      char vendor[CPUID_VENDOR_SZ + 1];
-> @@ -408,7 +408,7 @@ uint32_t kvm_arch_get_supported_cpuid(KVMState *s, uint32_t function,
->      } else if (function == 6 && reg == R_EAX) {
->          ret |= CPUID_6_EAX_ARAT; /* safe to allow because of emulated APIC */
->      } else if (function == 7 && index == 0 && reg == R_EBX) {
-> -        if (host_tsx_blacklisted()) {
-> +        if (host_tsx_broken()) {
->              ret &= ~(CPUID_7_0_EBX_RTM | CPUID_7_0_EBX_HLE);
->          }
->      } else if (function == 7 && index == 0 && reg == R_EDX) {
-> 
+> In this particular case I think the change is the right thing to do
+> simply because the astronomical analogy is not adding any value in
+> understanding. Calling it a "memoryhole" is more descriptive in what
+> is actually is.
 
-Applied to my trivial-patches branch.
+Absolutely not.  A memory hole ("memoryhole" is not an English word)
+would be easily confused with a hole in the memory map, which this is
+not.  For example on x86 systems the "PCI hole" is a hole between the
+end of low RAM and the bottom of the ROM that is reserved for memory
+mapped devices.  The "PCI hole" is explicitly left free by board code so
+that the OS can put PCI BARs in there.
 
-Thanks,
-Laurent
+These black hole MemoryRegions, instead, are present in the memory map
+and their purpose is to absorbs all writes and only sends back zeros,
+hiding the contents of SMRAM and TSEG from the guest.  Just like a black
+hole they are "something that exists".
+
+Therefore, both "memory hole" and "hole" as in Philippe's patch are
+worse than the astronomical metaphor.
+
+Paolo
+
+>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>>> ---
+>>>  include/hw/pci-host/q35.h |  4 ++--
+>>>  hw/pci-host/q35.c         | 38 +++++++++++++++++++-------------------
+>>>  tests/qtest/q35-test.c    |  2 +-
+>>>  3 files changed, 22 insertions(+), 22 deletions(-)
+>>>
+>>> diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
+>>> index 070305f83df..0fb90aca18b 100644
+>>> --- a/include/hw/pci-host/q35.h
+>>> +++ b/include/hw/pci-host/q35.h
+>>> @@ -48,8 +48,8 @@ typedef struct MCHPCIState {
+>>>      PAMMemoryRegion pam_regions[13];
+>>>      MemoryRegion smram_region, open_high_smram;
+>>>      MemoryRegion smram, low_smram, high_smram;
+>>> -    MemoryRegion tseg_blackhole, tseg_window;
+>>> -    MemoryRegion smbase_blackhole, smbase_window;
+>>> +    MemoryRegion tseg_hole, tseg_window;
+>>> +    MemoryRegion smbase_hole, smbase_window;
+>>
+>> Maybe rather use smbase_memhole and tseg_memhole?
+>>
+>>  Thomas
+>>
+>>
+> 
+> Regards,
+> Daniel
+> 

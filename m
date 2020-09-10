@@ -1,66 +1,66 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1064200lfq;
-        Thu, 10 Sep 2020 00:08:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwsndAgwU1J/ctMyIcxl6omKDyKNLWGDn91uCae2f+1pNZ7nKwJBKC7gVsdD1sRsik3ciR9
-X-Received: by 2002:a05:6902:4f0:: with SMTP id w16mr11915790ybs.334.1599721696845;
-        Thu, 10 Sep 2020 00:08:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599721696; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1068090lfq;
+        Thu, 10 Sep 2020 00:15:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyxmuFKdoDGlTJzJCP0zirkT9JzvjMrhhIkUijPn+Jrb6ftQAZ2rJTQsnlZ323WxIUxAv8X
+X-Received: by 2002:a25:ab91:: with SMTP id v17mr11038142ybi.76.1599722116599;
+        Thu, 10 Sep 2020 00:15:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599722116; cv=none;
         d=google.com; s=arc-20160816;
-        b=iSliQPzjc0TS6HMq6y2dTikXuFqqWYrSbMZxoM0xNY+KLA2I7LfChtR4tEYVk0gSbO
-         b8ASvXER4f939ajGeqqRKTZfGxA6shf/hbxY2KAv2GfnT/FChvDMkjCflkOYYFf5tHV9
-         WpXkV9dnrm4l40p7iKAhE8LAczoYGROHGMt9p2uArQSqeNp8kVjtuRx8KqOTygzeWCzw
-         rqUMFoiq7VRS+D3JbpvxuG85jWyDxhjQeagwgv9Ymf+oXfTVbSGA7xhhKC9ajPODaUmb
-         UdV4FFIh1Jnici8qpP7ktIG7TrVn3pvDyE20Js6VPVStsL8ptTsZVd08aSDoK5STS6s8
-         U6nw==
+        b=0KwJH+btf0kWo6PfiikesbIJgpfVDawTSYB5THEfGuGr00RelzpSWweja0noSIuP4d
+         QgGXMsSGQB7XNmL+yoMdTPmav63r4TztRJVRclwZuNf1i4ptTYPT28ek+WfoiYea7zFU
+         OthfksOYJ9YbnhZ7Qe+FD8D2QwZE6zF+Cbmr2EUrhyQqQYeMJL2hB1rqutCECMzs6LmA
+         OguSAKuoxS/0QBVSLbOBNlEWxrJBudDkNxfZakxq8Pd40xP9tY1N90Yqn1sZ2MqZru2z
+         4h4H3GGvhAkmNvzbWrzfsTL6dKL2GD9OrNyZDB92cj7fVOhd1AJKUQLAjIA2lc/uNHt5
+         +Bxg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=j/H4Uu1wy+G6iibdT+5/lLcjn+HOv3NmsU986xOmN/8=;
-        b=PzRfGVfTOH8u8tTieXSGPbLfKagTYZAOgwTQ7EM+Q+jDIBQUsG0pqRJpEeAJle7cL+
-         USocPKJ6iSRrHPpj6vhSViEhdofcv6bRRBWrHQi3Eawxu28RlM0RplScZ/J/M9fjgHpM
-         t+rbCO9UNHhEh9MOCd38Ppm5Ag3q1P8fOCK7SJVP0kqrZC25fItPJLn/TSv+5a5XmmfR
-         LzHRFyXJzZcDshWiZSsjGjyiKDrFtIUXb8aHMyXE6V80iXQLgY61RbkasHdf67Lo3Xpa
-         JRNyComdQb/UDRYvE/+l88M9B7pcTPW31ZeHU1hxtNZAAaZ5XY4LxJnh4pLVaM1lFPrd
-         L8Ew==
+        bh=NujrVkwgQXomRFqBptCRf8I5qXyjyjT+dpDlxDqalIs=;
+        b=BhxMjukl4mLMuZ5VFC9g1/kheXaxPrR6ps7e/1sP/vtSKOEHDSp0we0/EY22PEAwTI
+         D1ZZ8xxQoaJEYTLyfHwlyKUrmhA3t/mMJ13rgNOVKLCtXINByaeLwm9/dAiPwrNpzvxl
+         iYWjRwJW2geahT0DS3MwDgpSBvqG9QtkxktDXiYj1GQ+/njFvn78hiw+TX8YxykIsLKJ
+         t7qeTouO4rjWqS5Z7kuiodsorvlBM5ogX6uqAlqih/JqrZQb4qitpN31IZZagoZrGda4
+         cVFkBKUvEwEeQZ9vtBIOQ9h2STq15c9x1votTyZ6izzAal+w+OG9eN/9S+iOLb2zQSb3
+         eLmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fBchfI4r;
-       spf=pass (google.com: domain of thuth@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fyEcIooj;
+       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <thuth@redhat.com>
-Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [205.139.110.120])
-        by mx.google.com with ESMTPS id g1si3386675ybq.74.2020.09.10.00.08.16
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id t186si4766568ybf.203.2020.09.10.00.15.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Sep 2020 00:08:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 205.139.110.120 as permitted sender) client-ip=205.139.110.120;
+        Thu, 10 Sep 2020 00:15:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fBchfI4r;
-       spf=pass (google.com: domain of thuth@redhat.com designates 205.139.110.120 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fyEcIooj;
+       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1599721696;
+	s=mimecast20190719; t=1599722116;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=j/H4Uu1wy+G6iibdT+5/lLcjn+HOv3NmsU986xOmN/8=;
-	b=fBchfI4roYR7XF/ucfafX4RuTFiEIhhhdltV2J+N7zm1FsWaXk6VRXqd28SblboVqoZWNT
-	2rL1PgEGOqmH96mF010zr+DgQ32PfGVbwCNJW0usCo+8LfZ8Q+oTcM80DhAEXwoqKFBlD0
-	WIBUflpo2XbWAYRaUjj52xsapkuo1ks=
+	bh=NujrVkwgQXomRFqBptCRf8I5qXyjyjT+dpDlxDqalIs=;
+	b=fyEcIoojD+UT1XsPyY5ujc1BaHdbmMSiXtlVnBzY0RiqwVhCSjrC0tjbNmqE9plUXTEgwM
+	waeDJpRzaVE7Ht1fr52SEAARkEtHr43r4PVnpLjnPiGDHnjc4TLmoSI4wkshL1SJ9vHo9a
+	zjJwRzlW01nUQqw/JefoI9HhaiGdPOs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-314-xb3zd0wRPvaW79iMCmckrQ-1; Thu, 10 Sep 2020 03:08:12 -0400
-X-MC-Unique: xb3zd0wRPvaW79iMCmckrQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com [10.5.11.15])
+ us-mta-18-7ObhZB0GNoSSa78vWCPA5A-1; Thu, 10 Sep 2020 03:15:14 -0400
+X-MC-Unique: 7ObhZB0GNoSSa78vWCPA5A-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
 	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
 	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E314A1882FC5;
-	Thu, 10 Sep 2020 07:08:10 +0000 (UTC)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 191ECEF4EE;
+	Thu, 10 Sep 2020 07:15:12 +0000 (UTC)
 Received: from thuth.remote.csb (ovpn-112-86.ams2.redhat.com [10.36.112.86])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 683198357E;
-	Thu, 10 Sep 2020 07:08:03 +0000 (UTC)
-Subject: Re: [PATCH 6/6] target/i386/kvm: Rename host_tsx_blacklisted() as
- host_tsx_broken()
+	by smtp.corp.redhat.com (Postfix) with ESMTP id BDFEC5D9E8;
+	Thu, 10 Sep 2020 07:15:03 +0000 (UTC)
+Subject: Re: [PATCH 5/6] hw/pci-host/q35: Rename PCI 'black hole as '(memory)
+ hole'
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
@@ -76,54 +76,48 @@ Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Richard Henderson <rth@twiddle.net>, Joel Stanley <joel@jms.id.au>,
  Paolo Bonzini <pbonzini@redhat.com>
 References: <20200910070131.435543-1-philmd@redhat.com>
- <20200910070131.435543-7-philmd@redhat.com>
+ <20200910070131.435543-6-philmd@redhat.com>
 From: Thomas Huth <thuth@redhat.com>
-Message-ID: <118a4cae-f220-8224-52ac-26a1795ac071@redhat.com>
-Date: Thu, 10 Sep 2020 09:08:02 +0200
+Message-ID: <7dbdef90-1ca6-bf27-7084-af0c716d01d9@redhat.com>
+Date: Thu, 10 Sep 2020 09:15:02 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <20200910070131.435543-7-philmd@redhat.com>
+In-Reply-To: <20200910070131.435543-6-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-X-TUID: wIVvtNn9WIv/
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-TUID: WBOOeVcAbZ7r
 
 On 10/09/2020 09.01, Philippe Mathieu-Daudé wrote:
-> In order to use inclusive terminology, rename host_tsx_blacklisted()
-> as host_tsx_broken().
-> 
+> In order to use inclusive terminology, rename "blackhole"
+> as "(memory)hole".
+
+A black hole is a well-known astronomical term, which is simply named
+that way since it absorbes all light. I doubt that anybody could get
+upset by this term?
+
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 > ---
->  target/i386/kvm.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  include/hw/pci-host/q35.h |  4 ++--
+>  hw/pci-host/q35.c         | 38 +++++++++++++++++++-------------------
+>  tests/qtest/q35-test.c    |  2 +-
+>  3 files changed, 22 insertions(+), 22 deletions(-)
 > 
-> diff --git a/target/i386/kvm.c b/target/i386/kvm.c
-> index 205b68bc0ce..3d640a8decf 100644
-> --- a/target/i386/kvm.c
-> +++ b/target/i386/kvm.c
-> @@ -302,7 +302,7 @@ static int get_para_features(KVMState *s)
->      return features;
->  }
->  
-> -static bool host_tsx_blacklisted(void)
-> +static bool host_tsx_broken(void)
->  {
->      int family, model, stepping;\
->      char vendor[CPUID_VENDOR_SZ + 1];
-> @@ -408,7 +408,7 @@ uint32_t kvm_arch_get_supported_cpuid(KVMState *s, uint32_t function,
->      } else if (function == 6 && reg == R_EAX) {
->          ret |= CPUID_6_EAX_ARAT; /* safe to allow because of emulated APIC */
->      } else if (function == 7 && index == 0 && reg == R_EBX) {
-> -        if (host_tsx_blacklisted()) {
-> +        if (host_tsx_broken()) {
->              ret &= ~(CPUID_7_0_EBX_RTM | CPUID_7_0_EBX_HLE);
->          }
->      } else if (function == 7 && index == 0 && reg == R_EDX) {
-> 
+> diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
+> index 070305f83df..0fb90aca18b 100644
+> --- a/include/hw/pci-host/q35.h
+> +++ b/include/hw/pci-host/q35.h
+> @@ -48,8 +48,8 @@ typedef struct MCHPCIState {
+>      PAMMemoryRegion pam_regions[13];
+>      MemoryRegion smram_region, open_high_smram;
+>      MemoryRegion smram, low_smram, high_smram;
+> -    MemoryRegion tseg_blackhole, tseg_window;
+> -    MemoryRegion smbase_blackhole, smbase_window;
+> +    MemoryRegion tseg_hole, tseg_window;
+> +    MemoryRegion smbase_hole, smbase_window;
 
-Looking at commit 40e80ee4113, the term "broken" seems to be a good
-replacement here.
+Maybe rather use smbase_memhole and tseg_memhole?
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+ Thomas

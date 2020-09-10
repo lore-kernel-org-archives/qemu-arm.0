@@ -1,68 +1,85 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1068090lfq;
-        Thu, 10 Sep 2020 00:15:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyxmuFKdoDGlTJzJCP0zirkT9JzvjMrhhIkUijPn+Jrb6ftQAZ2rJTQsnlZ323WxIUxAv8X
-X-Received: by 2002:a25:ab91:: with SMTP id v17mr11038142ybi.76.1599722116599;
-        Thu, 10 Sep 2020 00:15:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599722116; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1076456lfq;
+        Thu, 10 Sep 2020 00:30:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz15FaSWCf2gJ09CcOZP8GOPhUMgERruWXFKQehGneSbA/cdUBIaKvgLoC2NYwu395QfdJk
+X-Received: by 2002:a17:906:f897:: with SMTP id lg23mr7921569ejb.89.1599723028420;
+        Thu, 10 Sep 2020 00:30:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599723028; cv=none;
         d=google.com; s=arc-20160816;
-        b=0KwJH+btf0kWo6PfiikesbIJgpfVDawTSYB5THEfGuGr00RelzpSWweja0noSIuP4d
-         QgGXMsSGQB7XNmL+yoMdTPmav63r4TztRJVRclwZuNf1i4ptTYPT28ek+WfoiYea7zFU
-         OthfksOYJ9YbnhZ7Qe+FD8D2QwZE6zF+Cbmr2EUrhyQqQYeMJL2hB1rqutCECMzs6LmA
-         OguSAKuoxS/0QBVSLbOBNlEWxrJBudDkNxfZakxq8Pd40xP9tY1N90Yqn1sZ2MqZru2z
-         4h4H3GGvhAkmNvzbWrzfsTL6dKL2GD9OrNyZDB92cj7fVOhd1AJKUQLAjIA2lc/uNHt5
-         +Bxg==
+        b=UG3vxnDiOrvB8P1n+tBIH8qMni+WSSqLh6tVDmn2UHKem4dvBIArk2g1HKTCWVDII4
+         8X8MYsUcnVCFO7qJsPv9dtId67wDPdYSZgDdZYRoRc78JyaAhn17ck7acjBr1xel2tRg
+         wl0LqlKVNzIMSpBLGDK2lwTnYtAf90tzsBXFvJiKgQFKXpFntUxDNL/bJ93ciIjpOail
+         RCihXgaUd4M4vbKxepMGBbi5AdTzqCOGzEWqOrxCY9NN7DRqzzKN9nqTsTxSupPoqg6N
+         eNKU8Oaxh9jnCnxVOIULFbtvz5C3fCPEXcoGv+vESKHSvGyVAT7DmP3sigwTI+1moYdl
+         7rLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
          :dkim-signature;
-        bh=NujrVkwgQXomRFqBptCRf8I5qXyjyjT+dpDlxDqalIs=;
-        b=BhxMjukl4mLMuZ5VFC9g1/kheXaxPrR6ps7e/1sP/vtSKOEHDSp0we0/EY22PEAwTI
-         D1ZZ8xxQoaJEYTLyfHwlyKUrmhA3t/mMJ13rgNOVKLCtXINByaeLwm9/dAiPwrNpzvxl
-         iYWjRwJW2geahT0DS3MwDgpSBvqG9QtkxktDXiYj1GQ+/njFvn78hiw+TX8YxykIsLKJ
-         t7qeTouO4rjWqS5Z7kuiodsorvlBM5ogX6uqAlqih/JqrZQb4qitpN31IZZagoZrGda4
-         cVFkBKUvEwEeQZ9vtBIOQ9h2STq15c9x1votTyZ6izzAal+w+OG9eN/9S+iOLb2zQSb3
-         eLmQ==
+        bh=O2/LZQ4SfG2uIyz2Sy8hmaRH8IBqBKbrVmAQjPIOGyA=;
+        b=sWaFccZDpriPFBajy1W/ClUQPuKvXbWM3cNLCf6OKQRfkfxJ9FRfSKTFqc5Y+gTboa
+         SRX6kBOzCuMWmKwd3iTouQQbVvOh8mNvDl+aXErJGxby6NocPqM3FJrIMvagGbNcjQMu
+         +CPoojg97aNSQYxwOCIJk1TymRFlpIBD6LgnVRPuMcoYG8vq1yrzSuD/ryLDbblHCPdI
+         Rcb1Kl2utWvghUF2X8pyw8VTtEm11l55BpjlMPEnEoSTaQZTRqNo6qhh34JQr0q7ghwO
+         yGbPIB65wvMZCIE2EEyRPSaEnukrRiGl/g7eWVtqqP1At2LS8mkRTS/Uv6ksmzhyu61d
+         Up8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fyEcIooj;
-       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NXFYqvhd;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <thuth@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id t186si4766568ybf.203.2020.09.10.00.15.16
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id i12si3017870edy.604.2020.09.10.00.30.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Sep 2020 00:15:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        Thu, 10 Sep 2020 00:30:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=fyEcIooj;
-       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=NXFYqvhd;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1599722116;
+	s=mimecast20190719; t=1599723027;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=NujrVkwgQXomRFqBptCRf8I5qXyjyjT+dpDlxDqalIs=;
-	b=fyEcIoojD+UT1XsPyY5ujc1BaHdbmMSiXtlVnBzY0RiqwVhCSjrC0tjbNmqE9plUXTEgwM
-	waeDJpRzaVE7Ht1fr52SEAARkEtHr43r4PVnpLjnPiGDHnjc4TLmoSI4wkshL1SJ9vHo9a
-	zjJwRzlW01nUQqw/JefoI9HhaiGdPOs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-18-7ObhZB0GNoSSa78vWCPA5A-1; Thu, 10 Sep 2020 03:15:14 -0400
-X-MC-Unique: 7ObhZB0GNoSSa78vWCPA5A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com [10.5.11.14])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 191ECEF4EE;
-	Thu, 10 Sep 2020 07:15:12 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-86.ams2.redhat.com [10.36.112.86])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id BDFEC5D9E8;
-	Thu, 10 Sep 2020 07:15:03 +0000 (UTC)
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=O2/LZQ4SfG2uIyz2Sy8hmaRH8IBqBKbrVmAQjPIOGyA=;
+	b=NXFYqvhdyxEuHZwNKUBZDMqUuN6VMQMxdYBq9DIfaO7YO1LyWcenX49vPEkKXqOiYQb6lp
+	oUl82EHfUSvcL6iuQovA+4LnF+YuAGQyGsNN83eBN4wldvh4EdexujIzUFQP68Ab9IX9Si
+	nc3TD/5Uq2PUH/Q35FnSDrgGXnK18Vs=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-235-Ui-svr3hMjuINFk7I_M39g-1; Thu, 10 Sep 2020 03:30:23 -0400
+X-MC-Unique: Ui-svr3hMjuINFk7I_M39g-1
+Received: by mail-wr1-f72.google.com with SMTP id 33so1912898wrk.12
+        for <alex.bennee@linaro.org>; Thu, 10 Sep 2020 00:30:23 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=O2/LZQ4SfG2uIyz2Sy8hmaRH8IBqBKbrVmAQjPIOGyA=;
+        b=uKplKAAOk35n8jRKbaacI7mkrVZmvLaOrFaXNssuZPfypOiYRBoU+S0KBlA5FRosmN
+         y8sL+0w9SXTdVO1wUNVrMs6bRLOVyV0EU6Oe3ry5KCcbZK22DoiFIANezHSBR8PCiKme
+         NZb6A5vhG54v8doe/dXPyglNXsEL0JBZ/VUoMvKWDzqK/aA0hTyf5NBdujKMak7zqJim
+         sozVjvOFswIxF22yl+ZATQCAXksaqGeb/drljApA3rvmG8sZzpvt1rBd+qEp/swUS4CR
+         Pw6E0phefSKca/pHSZ8vWuoS+t6287gf0FZBgWZuxLmoR2LOSU1432POZP+KLYnXA11Z
+         wobg==
+X-Gm-Message-State: AOAM5306uIBAExrbM/5dLE4BcrYao+HTP9oUTlRLqkTi1VyMTJWwsuS5
+	Pm9yrW78j5UtFPuuN18mCq+zhnN7+7i2JkW9rdAstO2Lu8Gjy/zfse901uEOMDBwA+J84hNpkg1
+	GPTZat3jGkOk4iXnK
+X-Received: by 2002:a1c:1f42:: with SMTP id f63mr6842957wmf.1.1599723022617;
+        Thu, 10 Sep 2020 00:30:22 -0700 (PDT)
+X-Received: by 2002:a1c:1f42:: with SMTP id f63mr6842931wmf.1.1599723022407;
+        Thu, 10 Sep 2020 00:30:22 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.65])
+        by smtp.gmail.com with ESMTPSA id b76sm2377151wme.45.2020.09.10.00.30.21
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 10 Sep 2020 00:30:21 -0700 (PDT)
 Subject: Re: [PATCH 5/6] hw/pci-host/q35: Rename PCI 'black hole as '(memory)
  hole'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  kvm@vger.kernel.org, qemu-arm@nongnu.org,
  Marcelo Tosatti <mtosatti@redhat.com>,
@@ -77,47 +94,90 @@ Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>
 References: <20200910070131.435543-1-philmd@redhat.com>
  <20200910070131.435543-6-philmd@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <7dbdef90-1ca6-bf27-7084-af0c716d01d9@redhat.com>
-Date: Thu, 10 Sep 2020 09:15:02 +0200
+ <7dbdef90-1ca6-bf27-7084-af0c716d01d9@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <8c883b22-c63a-9c61-8dd5-14f26f5e5237@redhat.com>
+Date: Thu, 10 Sep 2020 09:30:20 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200910070131.435543-6-philmd@redhat.com>
+In-Reply-To: <7dbdef90-1ca6-bf27-7084-af0c716d01d9@redhat.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-X-TUID: WBOOeVcAbZ7r
+Content-Language: en-US
+X-TUID: N9YUhB8ocuUU
 
-On 10/09/2020 09.01, Philippe Mathieu-Daudé wrote:
-> In order to use inclusive terminology, rename "blackhole"
-> as "(memory)hole".
-
-A black hole is a well-known astronomical term, which is simply named
-that way since it absorbes all light. I doubt that anybody could get
-upset by this term?
-
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-> ---
->  include/hw/pci-host/q35.h |  4 ++--
->  hw/pci-host/q35.c         | 38 +++++++++++++++++++-------------------
->  tests/qtest/q35-test.c    |  2 +-
->  3 files changed, 22 insertions(+), 22 deletions(-)
+On 9/10/20 9:15 AM, Thomas Huth wrote:
+> On 10/09/2020 09.01, Philippe Mathieu-Daudé wrote:
+>> In order to use inclusive terminology, rename "blackhole"
+>> as "(memory)hole".
 > 
-> diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
-> index 070305f83df..0fb90aca18b 100644
-> --- a/include/hw/pci-host/q35.h
-> +++ b/include/hw/pci-host/q35.h
-> @@ -48,8 +48,8 @@ typedef struct MCHPCIState {
->      PAMMemoryRegion pam_regions[13];
->      MemoryRegion smram_region, open_high_smram;
->      MemoryRegion smram, low_smram, high_smram;
-> -    MemoryRegion tseg_blackhole, tseg_window;
-> -    MemoryRegion smbase_blackhole, smbase_window;
-> +    MemoryRegion tseg_hole, tseg_window;
-> +    MemoryRegion smbase_hole, smbase_window;
+> A black hole is a well-known astronomical term, which is simply named
+> that way since it absorbes all light. I doubt that anybody could get
+> upset by this term?
 
-Maybe rather use smbase_memhole and tseg_memhole?
+Let's put some light in our address space then :)
 
- Thomas
+But you right, the NASA does not consider renaming this one:
+https://www.space.com/nasa-stops-racist-nicknames-cosmic-objects.html
+
+Note than for electronic busses design, master/slave are also
+well-known terms, but they might be considered offensive.
+I changed this one too because I'm not sure about its offensiveness
+threshold.
+
+> 
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  include/hw/pci-host/q35.h |  4 ++--
+>>  hw/pci-host/q35.c         | 38 +++++++++++++++++++-------------------
+>>  tests/qtest/q35-test.c    |  2 +-
+>>  3 files changed, 22 insertions(+), 22 deletions(-)
+>>
+>> diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
+>> index 070305f83df..0fb90aca18b 100644
+>> --- a/include/hw/pci-host/q35.h
+>> +++ b/include/hw/pci-host/q35.h
+>> @@ -48,8 +48,8 @@ typedef struct MCHPCIState {
+>>      PAMMemoryRegion pam_regions[13];
+>>      MemoryRegion smram_region, open_high_smram;
+>>      MemoryRegion smram, low_smram, high_smram;
+>> -    MemoryRegion tseg_blackhole, tseg_window;
+>> -    MemoryRegion smbase_blackhole, smbase_window;
+>> +    MemoryRegion tseg_hole, tseg_window;
+>> +    MemoryRegion smbase_hole, smbase_window;
+> 
+> Maybe rather use smbase_memhole and tseg_memhole?
+
+OK.
+
+> 
+>  Thomas
+> 

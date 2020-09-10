@@ -1,211 +1,143 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp424911lfq;
-        Wed, 9 Sep 2020 06:27:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+/Cs7lj/Kbk2DSn7llrIl4Mv6KXG0c13kI9in1TBYJ8yAmxkcBT+BfjUFcd6zkPQ+mU/x
-X-Received: by 2002:a25:238d:: with SMTP id j135mr5795681ybj.206.1599658070497;
-        Wed, 09 Sep 2020 06:27:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599658070; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1059958lfq;
+        Thu, 10 Sep 2020 00:01:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw9RqI+3h8vl8AGk1P81zNKYksi1ebXmxUYK/mmnQL2CLPHAaw2bavJpPANUBNbPnNpoR3M
+X-Received: by 2002:a50:d942:: with SMTP id u2mr8093896edj.0.1599721298040;
+        Thu, 10 Sep 2020 00:01:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599721298; cv=none;
         d=google.com; s=arc-20160816;
-        b=OKnM2Ah7e5BIe+ifSefnhF9llLPboNRmUKAAkypPCL0SAL8XQp7rbDoL4SuP+HGGsw
-         Dse8O24ArKGaI7m4YKIlT79yM+Tjq2+sB3vtYY1M3XVdT1hUrAzYlOODR+hxBdXVh+x8
-         VOmyxLclzX7eULBM+cMIxdep9kgRWWuAIymSauKIYwD1IKIZR59ghi3YrF12vASPE0qF
-         wlEJRBZ+01IPWxJcaoEDwwKAgV16YVuMEM+3XqmAok7vOrG4vya+Y/qCJ/n3SEUNJX0I
-         Lysh8ZdnVfiqDjWSA7efE53L7n0pRXUi70w4oVpBcuT6S/HORptlfV3g0hh7vpnxR+4J
-         e5vw==
+        b=GDRRrLOA1W/MfegzM0U9/WKvnVUI6y7YMJwZQoyMtUCIlzxiP7lZ4SWLoi7DE/Oejn
+         801f/9lUO4/S7DVBt+HruhdrxGDIU67uuXvmYE0N3uF8hvvFLZ6IDb3zcleeskd22owp
+         1tPOpMuEepRuHyV1fevrQrKmTV/Gcrp1hjDEVa+g2ctbQxXXwFS75qBgnVYkP4K8QlTo
+         PrUEEMLCKr7kMVWvHjfdJSO8dGuRwE8F2iLrm3Ht03hfFTDPu0hGvIpZuLHINhS/9Nf5
+         akvef2ho1NK4xEJnmT410m1SqVyWfHMroIB5ALCMsPV8DTvgvCK5mCUg2npOOh9SyC74
+         9DEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject;
-        bh=dGMjFct5zDgbHjF0XiuKodVmT6rjd+Xa7OCDWbgMUBo=;
-        b=Dl1epFg4JFhOzPWirP2rn/4ORelSbJtyy/oSbrNl5Kf1GbHcEdn7x2Xpdz1rgt7wMn
-         bknaQDFlcQoQIt28GoR1gZSZC1/bvSXiXlJTGCoE5vEHQPsh4PaGOqkpkgfMTolNkoj0
-         WsC2+DwE8VuQFmDh+thy2ur2OR8/tuUI4TeEo22dXrZZan9sK9lDmFvvTrUTE1lMejJy
-         yBHG+NLWyxOM3gZLLeP3WLcPEA6s+uIruJ0QZChhnWHQwKpHTvceaOeKNeWcPN+B9Shf
-         HFEAGb1PrHR0EqQLpCmhaLbnjxJbHkLZPATPZiApy9KXLm99vHoGsU0mY8GtNuEI1gPz
-         33Kw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Y1vGmD/fvsXEOWa6wkRKs3aLydzIceOGg7Tbh5f+UXQ=;
+        b=xRXdR+7yvyHES9e09MZOmYcSIufTMzTiujfRxU7CZZMPMCZiIFSZF0v6p54ip4vq69
+         2CmlIYdfT5EKK/2th0sCoyx9WNgMX6r0dhvt0TrRlP0UyURvnsZ41x7ttqmmDUV0rCE1
+         CEyPSuwQWDAKQBBEXw9P2N0X+dU2xgWokO9oVrgW6Uivbw5mLhHgFQEDmJ5o3yUp60Uh
+         uaApg1/q0P+VcgVkU7BIMHp6882LZgn9eXaTMF+9hQK47jRmnVWjANM4q16AYbEcRO6Q
+         EKUxqHYTX+9HMoehzq0D8Eq/neJDg+fcv95jYuraxtVPnpHjMkgMG1mDOBkN0i67tmVd
+         bOnw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v7si2620363ybm.244.2020.09.09.06.27.50
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GWjYsRTr;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-1.mimecast.com (us-smtp-delivery-1.mimecast.com. [207.211.31.120])
+        by mx.google.com with ESMTPS id yh22si3520093ejb.421.2020.09.10.00.01.37
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 09 Sep 2020 06:27:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 10 Sep 2020 00:01:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) client-ip=207.211.31.120;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33218 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kG08b-00089Y-TB
-	for alex.bennee@linaro.org; Wed, 09 Sep 2020 09:27:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33506)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG07N-0006jZ-OJ; Wed, 09 Sep 2020 09:26:33 -0400
-Received: from mout.kundenserver.de ([212.227.126.187]:37899)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kG07K-00051N-Pd; Wed, 09 Sep 2020 09:26:33 -0400
-Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
- (mreue010 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MkHhB-1kvycc0ozR-00kjvB; Wed, 09 Sep 2020 15:26:03 +0200
-Subject: Re: [PATCH 5/5] hw/isa/isa-bus: Replace hw_error() by assert()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20200901104043.91383-1-f4bug@amsat.org>
- <20200901104043.91383-6-f4bug@amsat.org>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <acb7e804-6244-1db1-4332-42e538cc6051@vivier.eu>
-Date: Wed, 9 Sep 2020 15:25:57 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GWjYsRTr;
+       spf=pass (google.com: domain of philmd@redhat.com designates 207.211.31.120 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1599721297;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=Y1vGmD/fvsXEOWa6wkRKs3aLydzIceOGg7Tbh5f+UXQ=;
+	b=GWjYsRTrA+NnxLIECRMVdbYv0rX9n/OjSIMEmuL36MAooVd+C2d5d/Mmtc20YCUQh2dHe7
+	uznluxpwZIPTOi4BwtjK7RhVkJ3zwmoGwPkbZO7xGDBqfqJ0ZTZzX53Q4BH1W0hQ2kH9Uy
+	//26XvyVJxHD7EUN7bpJLF09yCgSWwo=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-569-movMP8SCPoa_Me3TflqCYg-1; Thu, 10 Sep 2020 03:01:35 -0400
+X-MC-Unique: movMP8SCPoa_Me3TflqCYg-1
+Received: by mail-wr1-f71.google.com with SMTP id v12so1888550wrm.9
+        for <alex.bennee@linaro.org>; Thu, 10 Sep 2020 00:01:35 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=Y1vGmD/fvsXEOWa6wkRKs3aLydzIceOGg7Tbh5f+UXQ=;
+        b=a6JRksHwu+c8UrbEPvW/lyLmUD8Fi4BxQk/wUt4ZOrQ/4E7JSp7eruZELFO9swbUwE
+         Vy+dI7Pl6Obhw3RfkaO1uJLGIVJP8q2+1W10mbMFQT/epvS5MJm2eeV0EkApr3wbqCa2
+         /R9aIHLpoQ+dz7LYADb9//EDJBKUaXtEgSne1OKgdJfYwir3PLdwrGaInhoz0Ibarmbf
+         VulGdAHFb1UHoV28IccZI1wsDVtvMdi9cXPNTxOgQFzw9EWMNJajPAnyzZFH6w3traBw
+         6wEsELjSgQKPMlWqhX8GsjOlVu+NVRHSU8IDqxrYgJs9HHWG6jT1p79M8HujHf+NimXm
+         G7Wg==
+X-Gm-Message-State: AOAM533I9go3dJzOEyoHQ2C0JkE0N37nIZoffaMnIhDJ+OpYZLMdBRsy
+	IJuI5AsDf6gxIDqA1pqE2JemqNPL3any5ld+fqWKrxv/bCIebXz0qbWhXg92jtx6d6C9zCf9W5d
+	36do3uVv9VynShu7y
+X-Received: by 2002:adf:f2d0:: with SMTP id d16mr7037148wrp.332.1599721294399;
+        Thu, 10 Sep 2020 00:01:34 -0700 (PDT)
+X-Received: by 2002:adf:f2d0:: with SMTP id d16mr7037127wrp.332.1599721294215;
+        Thu, 10 Sep 2020 00:01:34 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.65])
+        by smtp.gmail.com with ESMTPSA id c14sm7314726wrv.12.2020.09.10.00.01.32
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 10 Sep 2020 00:01:33 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	kvm@vger.kernel.org,
+	qemu-arm@nongnu.org,
+	Marcelo Tosatti <mtosatti@redhat.com>,
+	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>,
+	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+	Laurent Vivier <lvivier@redhat.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Andrew Jeffery <andrew@aj.id.au>,
+	Jason Wang <jasowang@redhat.com>,
+	Thomas Huth <thuth@redhat.com>,
+	Alistair Francis <alistair@alistair23.me>,
+	qemu-trivial@nongnu.org,
+	Eduardo Habkost <ehabkost@redhat.com>,
+	Richard Henderson <rth@twiddle.net>,
+	Joel Stanley <joel@jms.id.au>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH 0/6] misc: Some inclusive terminology changes
+Date: Thu, 10 Sep 2020 09:01:25 +0200
+Message-Id: <20200910070131.435543-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200901104043.91383-6-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:BSwa64N3/5Uk2GR3Mbn0uw61aITbdeMocYtHtOCdi3+8WrkW8g0
- f3OqN5t312lRq9vv8RAMCbRKbZfr9+Ha9GfDimyqS/Oa/MPpbyWwXFfykYLAkL0BUBfq4Zh
- fiGpTIAQ/2uJRdsgfp1yEGjoX89Hlve8ELje+72/dLyDBMHLBufBJuAEUMwflvE1YKuDmcH
- n3HyLRrwnVxTxZzelikAg==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:ZLAkdfIqjXk=:lpRNIzXz/meXfjMHtN1e4i
- UP9RIxFumtsCxxrRxMPeDLqYPwrXCXJrKtswiIxWP15a+g/xXS7BAZePsmL2PVdPRNbdUd0JP
- 41wThlRLal1xqT5Pv56M6Mq6vKn3qX4tJBa3p+sGfZARCr0SK4Dyr9ghZiydT8U5Kn5xIazwB
- Zs1fPMqz3LowVNDRajedfyFILHSNdVQFk5RshKR0GvfrjhJc5M1tsKULLp2NSLMnUJyTPP+xx
- DaeAk9s2/fMlsNcvq9pd87XidVNVoPlOia2QY3OYvgGSmThozITJWSPPNJq0Q35QzFf/XfOdR
- VA4GDCLSkaK+p7IfoQAnnzdrPZ/AY73QcjiFoyRwOWTMbhZGZ49nRg73gJG0vvaZnLap22Eow
- hKl30BbC1OkRwWQKYpfrH5d5MZ999sRsIuVEdlLQ2rBO8T1iZvJ4bP7+N/hueSSWyripSbiNs
- 7bryAJ5S3svi6gOYjQlaDxvSxsQ4x4vbTP4QvMSXTlm09OZfzf4fHgWpUdd3PI0gJZ+AUAsjE
- RcvqXOHvGBTjVn+UMPN8j96F5Ir84VLoAMZXsoKc7qgZYsT1wqkKhC3e8c1hO1JhWJeYzktv/
- EVkAcjCZ5TGLKixKi4Gkfd/DobnfrVY3v5t0r3uqBYG5lJCWiK0F8HzkjpuuH0hqYq45JHuy/
- oBhc4gsNoEOrRUrs12jKu4EOuVKXBYtbfwU3nCZxuqy6wgt+FZmFWMumnuKIQiW2lry5yMjeL
- 9mAjtNrFH+6WR4o+aElAJf5jVLfsVeMuz5l4I3+Vk132i0k2MXi9+Bm6SXUpCoZf61o0K6N2Z
- 5RRFT4I/GKcp6H1xIjM02+zzqmt7f+Wt/W4WG86McvW/kQLnr81fY8MBaemUPLjgifIIugG
-Received-SPF: none client-ip=212.227.126.187; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/09 09:26:28
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -54
-X-Spam_score: -5.5
-X-Spam_bar: -----
-X-Spam_report: (-5.5 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-3.576,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, qemu-trivial@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, Huacai Chen <chenhc@lemote.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dG+c/x3wQcGa
+X-TUID: R0fvAjHcJT6f
 
-Le 01/09/2020 à 12:40, Philippe Mathieu-Daudé a écrit :
-> As we can never have more than ISA_NUM_IRQS (16) ISA IRQs,
-> replace the not very interesting hw_error() call by an
-> assert() which is more useful to debug condition that can
-> not happen.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  hw/isa/isa-bus.c | 9 ++-------
->  1 file changed, 2 insertions(+), 7 deletions(-)
-> 
-> diff --git a/hw/isa/isa-bus.c b/hw/isa/isa-bus.c
-> index 58fde178f92..10bb7ffa43a 100644
-> --- a/hw/isa/isa-bus.c
-> +++ b/hw/isa/isa-bus.c
-> @@ -21,7 +21,6 @@
->  #include "qemu/error-report.h"
->  #include "qemu/module.h"
->  #include "qapi/error.h"
-> -#include "hw/hw.h"
->  #include "monitor/monitor.h"
->  #include "hw/sysbus.h"
->  #include "sysemu/sysemu.h"
-> @@ -85,18 +84,14 @@ void isa_bus_irqs(ISABus *bus, qemu_irq *irqs)
->  qemu_irq isa_get_irq(ISADevice *dev, unsigned isairq)
->  {
->      assert(!dev || ISA_BUS(qdev_get_parent_bus(DEVICE(dev))) == isabus);
-> -    if (isairq >= ISA_NUM_IRQS) {
-> -        hw_error("isa irq %d invalid", isairq);
-> -    }
-> +    assert(isairq < ISA_NUM_IRQS);
->      return isabus->irqs[isairq];
->  }
->  
->  void isa_init_irq(ISADevice *dev, qemu_irq *p, unsigned isairq)
->  {
->      assert(dev->nirqs < ARRAY_SIZE(dev->isairq));
-> -    if (isairq >= ISA_NUM_IRQS) {
-> -        hw_error("isa irq %d invalid", isairq);
-> -    }
-> +    assert(isairq < ISA_NUM_IRQS);
->      dev->isairq[dev->nirqs] = isairq;
->      *p = isa_get_irq(dev, isairq);
->      dev->nirqs++;
-> 
+We don't have (yet?) inclusive terminology guidelines,
+but the PCI hole memory is not "black", the DMA sources
+don't stream to "slaves", and there isn't really a TSX
+"black" list, we only check for broken fields.
 
-Applied to my trivial-patches branch.
+As this terms can be considered offensive, and changing
+them is a no-brain operation, simply do it.
 
-Thanks,
-Laurent
+Philippe Mathieu-Daudé (6):
+  hw/ssi/aspeed_smc: Rename max_slaves as max_devices
+  hw/core/stream: Rename StreamSlave as StreamSink
+  hw/dma/xilinx_axidma: Rename StreamSlave as StreamSink
+  hw/net/xilinx_axienet: Rename StreamSlave as StreamSink
+  hw/pci-host/q35: Rename PCI 'black hole as '(memory) hole'
+  target/i386/kvm: Rename host_tsx_blacklisted() as host_tsx_broken()
 
+ include/hw/pci-host/q35.h     |  4 +--
+ include/hw/ssi/aspeed_smc.h   |  2 +-
+ include/hw/ssi/xilinx_spips.h |  2 +-
+ include/hw/stream.h           | 46 +++++++++++++--------------
+ hw/core/stream.c              | 20 ++++++------
+ hw/dma/xilinx_axidma.c        | 58 +++++++++++++++++------------------
+ hw/net/xilinx_axienet.c       | 44 +++++++++++++-------------
+ hw/pci-host/q35.c             | 38 +++++++++++------------
+ hw/ssi/aspeed_smc.c           | 40 ++++++++++++------------
+ hw/ssi/xilinx_spips.c         |  2 +-
+ target/i386/kvm.c             |  4 +--
+ tests/qtest/q35-test.c        |  2 +-
+ 12 files changed, 131 insertions(+), 131 deletions(-)
+
+-- 
+2.26.2

@@ -1,433 +1,270 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1515747lfq;
-        Thu, 10 Sep 2020 10:41:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyOzecM83HtJBaq05pddF1xBC+AedZCrKLlcr7+8j+/7Wt2QkfOunvcz9fpRGOuN/NlK38x
-X-Received: by 2002:a25:c07:: with SMTP id 7mr13653990ybm.200.1599759665801;
-        Thu, 10 Sep 2020 10:41:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599759665; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1592786lfq;
+        Thu, 10 Sep 2020 12:25:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyl+/uRKD6qJSYthBmOFNaBQjtiuIGlmSozdb0ozBM2XPunlzklcCco5HgtK2bLw3AJxqeC
+X-Received: by 2002:a7b:c7cd:: with SMTP id z13mr1558078wmk.160.1599765943960;
+        Thu, 10 Sep 2020 12:25:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599765943; cv=none;
         d=google.com; s=arc-20160816;
-        b=QkpV7kj53l3QlG18oCwnehDcutr0tabUWRV6sZiHI8lyyZOi3FrcOFfMiPbPkG4KRt
-         XpBlUkKU56B88bNSOd1He3cf7TPwvtwcASZztBfNZQUF7sS7XD8YZF0vbF4cADgynx9B
-         iUSpQ84ID6aS5GTVOjuAnma5YZI6AO1bNXbnUXYH21eqhhhA6VC8EObqavvXZjwz3ND1
-         tUH11A7FRf0JkemGyXSXiKXQEqwCb3si6YpKHhf70vRCONf77epfzTHhBXzU/+bNAAN4
-         SXp3ilBelUBk3/SGF4U7E/leaRIkWQi9KKbh/r8b5ym/Dc5zfn+vWZhTAANULdIs/gWD
-         RTpg==
+        b=KGMLJWtciy8jV65yGNzwhNJGkG0uH8J0DdRsF7qFNRO7rSHSDyXnPl3JXZY/ClPUYK
+         SjSkhtJ5XPPskFafXDvyfXF1I09KuSPC2qBFVpb/yBzbhzwNUaHKipMXj6RYw0/PrYLi
+         fbcyb9wwzhJ46/RtxrPUKyxf0iJRLz2YtXnjNK1os5QCrdFvNRe2bgINzZJyJlR/Gpkl
+         VPeUcyVVtynQ4fXgIcs1+tITK9yqi8TqDs6HWD05fLpy+jG5l0jOdakYFTgEd97McDUd
+         4eJOJQ8Zv7bzocoIsg5C/8ebL9ClTjxMsx2EKiA8Y5wTN+pfvVYJkOi20qvfAY/hgvfC
+         wKdQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=2T22hnWTeC2DUA3syxYlTqgfpNOouUNFsu2vYh7GjxQ=;
-        b=m1SIvMT58RFfnrkbBDpe+URAwy0aqy78srbtO+5P6+J0evmhOYH5x/viky0LYH34ez
-         ZB54H2ujynIn/vtJtU2Vm0eL6R9oKwhpBVhn8IKehxuYP9xA0arXRB8kQ6f6yWo9D+Px
-         TGcla8+z+sOVmLfU9pm+oxq5Fa6uaGtEGeKY6mnwziAj1+upTbu83dn5c+ZENXcQ5WCu
-         pkzP6NpOOM0CizLZ8ceIGmnpdMeU/iDEPXKZqaeFTt4DZ2nqeKd/YLBKhbIaXzUrQFDn
-         RG/38TcaFqV8kwB8kUTH4SYPQefggmL+SJYPPIXJNLXPM13oDR2YgP5UyenmTth752cm
-         pd1Q==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=TLidOb/cMcADK2lKlCkfxHDmEh8c0rbgrYUHAMC/Xik=;
+        b=iljJNIqU6crGoFkQ851Hi/9LosSUYNPob/PbzEhgk/k085Ge4yLQhL0CFfc4xs6wj7
+         Hq5MqdlFP7CUzIeFgA/JL7JViVAjz+xgGz6qOUPNG5rYdwzgsXkZNW1EXWixLsCuHmph
+         5QNODwkiyXX5uU7z0t+Zl9Dx4AmrF8uIR9Z6aVyiDy6mok1h3XJhzAI6fJM9wVDjIHt1
+         pWqpHG//mVileyJfZZ56FBl0P7ZxIux9tz2Ym+Ho7mP00UMseu4CSADoNO8ea/cSZUcl
+         fIaZRUpOTg7NALamJXnQkFsbLrhvO2BhMMaNxC3rqa6ndCIB4C8VGn/gTStihghoDSkf
+         1SZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kqLRNhOm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 127si6223316ybl.380.2020.09.10.10.41.05
-        for <alex.bennee@linaro.org>
+       spf=pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) smtp.mailfrom=clg@kaod.org
+Return-Path: <clg@kaod.org>
+Received: from smtpout1.mo529.mail-out.ovh.net (smtpout1.mo529.mail-out.ovh.net. [178.32.125.2])
+        by mx.google.com with ESMTPS id n5si5596604wrw.476.2020.09.10.12.25.43
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Sep 2020 10:41:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 10 Sep 2020 12:25:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) client-ip=178.32.125.2;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=kqLRNhOm;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43042 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGQZF-0007Ha-14
-	for alex.bennee@linaro.org; Thu, 10 Sep 2020 13:41:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44572)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kGQXM-0003uK-KK
- for qemu-arm@nongnu.org; Thu, 10 Sep 2020 13:39:08 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:37915)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kGQXJ-0002nZ-Lt
- for qemu-arm@nongnu.org; Thu, 10 Sep 2020 13:39:08 -0400
-Received: by mail-wm1-x341.google.com with SMTP id l9so1005872wme.3
- for <qemu-arm@nongnu.org>; Thu, 10 Sep 2020 10:39:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=2T22hnWTeC2DUA3syxYlTqgfpNOouUNFsu2vYh7GjxQ=;
- b=kqLRNhOm6qFvWXYbHP6w2hJGJuBwpcT1ly2UeJh2QxRj9o9FKpxE42YV4NqwFlViK0
- U0QX6kv5Nj5WO3ktM+rRa12wxKkTMuJsNusl/KWB/puxU3QSlkHLpVoNglJpRqLzbPaH
- fF48+mUC8AnY13G72QoROJ9jqcD/SgzmJC2OyOZ+QAZPV+0A6avddNJi2gW9lrRaF4y9
- kfTXS9KBZ/8I5Zc1bE03j4shZS0AWbQsUH3tBgL3u/qPtc4HofvbvZNff8R9JumSdzGT
- 8VC4mw4BKE8/mImTGB9CqNPLL2sohFtYr2tN97fmiMiqCDktCG3MtywfAm+0JQUah2qY
- vVkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=2T22hnWTeC2DUA3syxYlTqgfpNOouUNFsu2vYh7GjxQ=;
- b=FHH0nCx4iRHpC4K0RHd5dNsBIJo68PXuMYneL4jzj6JV8rJsE+3RuQiii+l52zTNdi
- rsJrDD8BVo0XC17rO+fuUbNSaA0lStOVXV3yPYB2AXaJdTaHlJzXE9AreqoLxKao7w2S
- KUUVvQqRDFxByGiaKbAbdsod10iuCC3BGLWHDS1W8oDLFThvJJnzWH2ju9D+JABtnTt9
- LH+96Xybu+XrObMe4hobt0W9UA3NuZpQfHvSP3BkbjDPHvX3in9Cp0wzo0tDwpaNWHf3
- rOpvU6IyAptl7ktitcIZdkNmJm570ApG9MMz1Q8MAhB0QGJMXtYhyn8oLJ5heuYQhG4O
- 7TXw==
-X-Gm-Message-State: AOAM531x5RJDa09ypZd3jRiAmV3PtH5mq7jhDtg8GkYXkD31n01tiojz
- GAsZI0yUQpvxWdLcFara1jAAXbYxa+cy8UFa
-X-Received: by 2002:a1c:a789:: with SMTP id q131mr1067339wme.141.1599759543367; 
- Thu, 10 Sep 2020 10:39:03 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id q186sm4603128wma.45.2020.09.10.10.39.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Sep 2020 10:39:02 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 2/5] target/arm: Move id_pfr0, id_pfr1 into ARMISARegisters
-Date: Thu, 10 Sep 2020 18:38:52 +0100
-Message-Id: <20200910173855.4068-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20200910173855.4068-1-peter.maydell@linaro.org>
-References: <20200910173855.4068-1-peter.maydell@linaro.org>
+       spf=pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) smtp.mailfrom=clg@kaod.org
+Received: from mxplan5.mail.ovh.net (unknown [10.109.156.35])
+	by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 1B47359BDFDA;
+	Thu, 10 Sep 2020 21:25:42 +0200 (CEST)
+Received: from kaod.org (37.59.142.95) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 10 Sep
+ 2020 21:25:40 +0200
+Authentication-Results: garm.ovh; auth=pass (GARM-95G001c7ff4359-2a02-48c5-be83-c4d2a64ddcce,
+                    8FE11AEDAF16247B821E16C08928A26F58BE1972) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH 1/6] hw/ssi/aspeed_smc: Rename max_slaves as max_devices
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+	<qemu-devel@nongnu.org>
+CC: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+	<kvm@vger.kernel.org>, <qemu-arm@nongnu.org>, Marcelo Tosatti
+	<mtosatti@redhat.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+	"Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum
+	<marcel.apfelbaum@gmail.com>, Laurent Vivier <lvivier@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Jason
+ Wang <jasowang@redhat.com>, Thomas Huth <thuth@redhat.com>, Alistair Francis
+	<alistair@alistair23.me>, <qemu-trivial@nongnu.org>, Eduardo Habkost
+	<ehabkost@redhat.com>, Richard Henderson <rth@twiddle.net>, Joel Stanley
+	<joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20200910070131.435543-1-philmd@redhat.com>
+ <20200910070131.435543-2-philmd@redhat.com>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <6ed7ad28-107a-65a2-489d-1cd15cd372dd@kaod.org>
+Date: Thu, 10 Sep 2020 21:25:40 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <20200910070131.435543-2-philmd@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z+bq77EuOLuJ
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: e9a3d5e1-decd-4ded-bacf-ec1395775ed2
+X-Ovh-Tracer-Id: 9058427701944224528
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudehjedgudefudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehphhhilhhmugesrhgvughhrghtrdgtohhm
+X-TUID: IHJUNEvUNYKX
 
-Move the id_pfr0 and id_pfr1 fields into the ARMISARegisters
-sub-struct. We're going to want id_pfr1 for an isar_features
-check, and moving both at the same time avoids an odd
-inconsistency.
+On 9/10/20 9:01 AM, Philippe Mathieu-Daudé wrote:
+> In order to use inclusive terminology, rename max_slaves
+> as max_devices.>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-Changes other than the ones to cpu.h and kvm64.c made
-automatically with:
-  perl -p -i -e 's/cpu->id_pfr/cpu->isar.id_pfr/' target/arm/*.c hw/intc/armv7m_nvic.c
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-I haven't changed the kvm32.c code to read the ID_PFR* from
-the kernel as the comment above ARMISARegisters suggests,
-because I expect the patchset deleting that file to go in
-before this one.
----
- target/arm/cpu.h      |  4 ++--
- hw/intc/armv7m_nvic.c |  4 ++--
- target/arm/cpu.c      | 20 ++++++++++----------
- target/arm/cpu64.c    | 12 ++++++------
- target/arm/cpu_tcg.c  | 36 ++++++++++++++++++------------------
- target/arm/helper.c   |  4 ++--
- target/arm/kvm64.c    |  4 ++++
- 7 files changed, 44 insertions(+), 40 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index b7c2615b2fe..de2ab41e2a0 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -909,6 +909,8 @@ struct ARMCPU {
-         uint32_t id_mmfr2;
-         uint32_t id_mmfr3;
-         uint32_t id_mmfr4;
-+        uint32_t id_pfr0;
-+        uint32_t id_pfr1;
-         uint32_t mvfr0;
-         uint32_t mvfr1;
-         uint32_t mvfr2;
-@@ -929,8 +931,6 @@ struct ARMCPU {
-     uint32_t reset_fpsid;
-     uint32_t ctr;
-     uint32_t reset_sctlr;
--    uint32_t id_pfr0;
--    uint32_t id_pfr1;
-     uint64_t pmceid0;
-     uint64_t pmceid1;
-     uint32_t id_afr0;
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index 7876c1ba07e..a28be49c1e9 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -1238,9 +1238,9 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
-                       "Aux Fault status registers unimplemented\n");
-         return 0;
-     case 0xd40: /* PFR0.  */
--        return cpu->id_pfr0;
-+        return cpu->isar.id_pfr0;
-     case 0xd44: /* PFR1.  */
--        return cpu->id_pfr1;
-+        return cpu->isar.id_pfr1;
-     case 0xd48: /* DFR0.  */
-         return cpu->isar.id_dfr0;
-     case 0xd4c: /* AFR0.  */
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index c5e86ce50af..a4ea71811e5 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1660,7 +1660,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         /* Disable the security extension feature bits in the processor feature
-          * registers as well. These are id_pfr1[7:4] and id_aa64pfr0[15:12].
-          */
--        cpu->id_pfr1 &= ~0xf0;
-+        cpu->isar.id_pfr1 &= ~0xf0;
-         cpu->isar.id_aa64pfr0 &= ~0xf000;
-     }
- 
-@@ -1697,7 +1697,7 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-          * id_aa64pfr0_el1[11:8].
-          */
-         cpu->isar.id_aa64pfr0 &= ~0xf00;
--        cpu->id_pfr1 &= ~0xf000;
-+        cpu->isar.id_pfr1 &= ~0xf000;
-     }
- 
- #ifndef CONFIG_USER_ONLY
-@@ -1895,8 +1895,8 @@ static void cortex_a8_initfn(Object *obj)
-     cpu->isar.mvfr1 = 0x00011111;
-     cpu->ctr = 0x82048004;
-     cpu->reset_sctlr = 0x00c50078;
--    cpu->id_pfr0 = 0x1031;
--    cpu->id_pfr1 = 0x11;
-+    cpu->isar.id_pfr0 = 0x1031;
-+    cpu->isar.id_pfr1 = 0x11;
-     cpu->isar.id_dfr0 = 0x400;
-     cpu->id_afr0 = 0;
-     cpu->isar.id_mmfr0 = 0x31100003;
-@@ -1967,8 +1967,8 @@ static void cortex_a9_initfn(Object *obj)
-     cpu->isar.mvfr1 = 0x01111111;
-     cpu->ctr = 0x80038003;
-     cpu->reset_sctlr = 0x00c50078;
--    cpu->id_pfr0 = 0x1031;
--    cpu->id_pfr1 = 0x11;
-+    cpu->isar.id_pfr0 = 0x1031;
-+    cpu->isar.id_pfr1 = 0x11;
-     cpu->isar.id_dfr0 = 0x000;
-     cpu->id_afr0 = 0;
-     cpu->isar.id_mmfr0 = 0x00100103;
-@@ -2031,8 +2031,8 @@ static void cortex_a7_initfn(Object *obj)
-     cpu->isar.mvfr1 = 0x11111111;
-     cpu->ctr = 0x84448003;
-     cpu->reset_sctlr = 0x00c50078;
--    cpu->id_pfr0 = 0x00001131;
--    cpu->id_pfr1 = 0x00011011;
-+    cpu->isar.id_pfr0 = 0x00001131;
-+    cpu->isar.id_pfr1 = 0x00011011;
-     cpu->isar.id_dfr0 = 0x02010555;
-     cpu->id_afr0 = 0x00000000;
-     cpu->isar.id_mmfr0 = 0x10101105;
-@@ -2076,8 +2076,8 @@ static void cortex_a15_initfn(Object *obj)
-     cpu->isar.mvfr1 = 0x11111111;
-     cpu->ctr = 0x8444c004;
-     cpu->reset_sctlr = 0x00c50078;
--    cpu->id_pfr0 = 0x00001131;
--    cpu->id_pfr1 = 0x00011011;
-+    cpu->isar.id_pfr0 = 0x00001131;
-+    cpu->isar.id_pfr1 = 0x00011011;
-     cpu->isar.id_dfr0 = 0x02010555;
-     cpu->id_afr0 = 0x00000000;
-     cpu->isar.id_mmfr0 = 0x10201105;
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 3c2b3d95993..e00271b932f 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -108,8 +108,8 @@ static void aarch64_a57_initfn(Object *obj)
-     cpu->isar.mvfr2 = 0x00000043;
-     cpu->ctr = 0x8444c004;
-     cpu->reset_sctlr = 0x00c50838;
--    cpu->id_pfr0 = 0x00000131;
--    cpu->id_pfr1 = 0x00011011;
-+    cpu->isar.id_pfr0 = 0x00000131;
-+    cpu->isar.id_pfr1 = 0x00011011;
-     cpu->isar.id_dfr0 = 0x03010066;
-     cpu->id_afr0 = 0x00000000;
-     cpu->isar.id_mmfr0 = 0x10101105;
-@@ -161,8 +161,8 @@ static void aarch64_a53_initfn(Object *obj)
-     cpu->isar.mvfr2 = 0x00000043;
-     cpu->ctr = 0x84448004; /* L1Ip = VIPT */
-     cpu->reset_sctlr = 0x00c50838;
--    cpu->id_pfr0 = 0x00000131;
--    cpu->id_pfr1 = 0x00011011;
-+    cpu->isar.id_pfr0 = 0x00000131;
-+    cpu->isar.id_pfr1 = 0x00011011;
-     cpu->isar.id_dfr0 = 0x03010066;
-     cpu->id_afr0 = 0x00000000;
-     cpu->isar.id_mmfr0 = 0x10101105;
-@@ -213,8 +213,8 @@ static void aarch64_a72_initfn(Object *obj)
-     cpu->isar.mvfr2 = 0x00000043;
-     cpu->ctr = 0x8444c004;
-     cpu->reset_sctlr = 0x00c50838;
--    cpu->id_pfr0 = 0x00000131;
--    cpu->id_pfr1 = 0x00011011;
-+    cpu->isar.id_pfr0 = 0x00000131;
-+    cpu->isar.id_pfr1 = 0x00011011;
-     cpu->isar.id_dfr0 = 0x03010066;
-     cpu->id_afr0 = 0x00000000;
-     cpu->isar.id_mmfr0 = 0x10201105;
-diff --git a/target/arm/cpu_tcg.c b/target/arm/cpu_tcg.c
-index 00b0e08f33e..a9b7cf52550 100644
---- a/target/arm/cpu_tcg.c
-+++ b/target/arm/cpu_tcg.c
-@@ -142,8 +142,8 @@ static void arm1136_r2_initfn(Object *obj)
-     cpu->isar.mvfr1 = 0x00000000;
-     cpu->ctr = 0x1dd20d2;
-     cpu->reset_sctlr = 0x00050078;
--    cpu->id_pfr0 = 0x111;
--    cpu->id_pfr1 = 0x1;
-+    cpu->isar.id_pfr0 = 0x111;
-+    cpu->isar.id_pfr1 = 0x1;
-     cpu->isar.id_dfr0 = 0x2;
-     cpu->id_afr0 = 0x3;
-     cpu->isar.id_mmfr0 = 0x01130003;
-@@ -173,8 +173,8 @@ static void arm1136_initfn(Object *obj)
-     cpu->isar.mvfr1 = 0x00000000;
-     cpu->ctr = 0x1dd20d2;
-     cpu->reset_sctlr = 0x00050078;
--    cpu->id_pfr0 = 0x111;
--    cpu->id_pfr1 = 0x1;
-+    cpu->isar.id_pfr0 = 0x111;
-+    cpu->isar.id_pfr1 = 0x1;
-     cpu->isar.id_dfr0 = 0x2;
-     cpu->id_afr0 = 0x3;
-     cpu->isar.id_mmfr0 = 0x01130003;
-@@ -205,8 +205,8 @@ static void arm1176_initfn(Object *obj)
-     cpu->isar.mvfr1 = 0x00000000;
-     cpu->ctr = 0x1dd20d2;
-     cpu->reset_sctlr = 0x00050078;
--    cpu->id_pfr0 = 0x111;
--    cpu->id_pfr1 = 0x11;
-+    cpu->isar.id_pfr0 = 0x111;
-+    cpu->isar.id_pfr1 = 0x11;
-     cpu->isar.id_dfr0 = 0x33;
-     cpu->id_afr0 = 0;
-     cpu->isar.id_mmfr0 = 0x01130003;
-@@ -234,8 +234,8 @@ static void arm11mpcore_initfn(Object *obj)
-     cpu->isar.mvfr0 = 0x11111111;
-     cpu->isar.mvfr1 = 0x00000000;
-     cpu->ctr = 0x1d192992; /* 32K icache 32K dcache */
--    cpu->id_pfr0 = 0x111;
--    cpu->id_pfr1 = 0x1;
-+    cpu->isar.id_pfr0 = 0x111;
-+    cpu->isar.id_pfr1 = 0x1;
-     cpu->isar.id_dfr0 = 0;
-     cpu->id_afr0 = 0x2;
-     cpu->isar.id_mmfr0 = 0x01100103;
-@@ -266,8 +266,8 @@ static void cortex_m3_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_M_MAIN);
-     cpu->midr = 0x410fc231;
-     cpu->pmsav7_dregion = 8;
--    cpu->id_pfr0 = 0x00000030;
--    cpu->id_pfr1 = 0x00000200;
-+    cpu->isar.id_pfr0 = 0x00000030;
-+    cpu->isar.id_pfr1 = 0x00000200;
-     cpu->isar.id_dfr0 = 0x00100000;
-     cpu->id_afr0 = 0x00000000;
-     cpu->isar.id_mmfr0 = 0x00000030;
-@@ -296,8 +296,8 @@ static void cortex_m4_initfn(Object *obj)
-     cpu->isar.mvfr0 = 0x10110021;
-     cpu->isar.mvfr1 = 0x11000011;
-     cpu->isar.mvfr2 = 0x00000000;
--    cpu->id_pfr0 = 0x00000030;
--    cpu->id_pfr1 = 0x00000200;
-+    cpu->isar.id_pfr0 = 0x00000030;
-+    cpu->isar.id_pfr1 = 0x00000200;
-     cpu->isar.id_dfr0 = 0x00100000;
-     cpu->id_afr0 = 0x00000000;
-     cpu->isar.id_mmfr0 = 0x00000030;
-@@ -326,8 +326,8 @@ static void cortex_m7_initfn(Object *obj)
-     cpu->isar.mvfr0 = 0x10110221;
-     cpu->isar.mvfr1 = 0x12000011;
-     cpu->isar.mvfr2 = 0x00000040;
--    cpu->id_pfr0 = 0x00000030;
--    cpu->id_pfr1 = 0x00000200;
-+    cpu->isar.id_pfr0 = 0x00000030;
-+    cpu->isar.id_pfr1 = 0x00000200;
-     cpu->isar.id_dfr0 = 0x00100000;
-     cpu->id_afr0 = 0x00000000;
-     cpu->isar.id_mmfr0 = 0x00100030;
-@@ -358,8 +358,8 @@ static void cortex_m33_initfn(Object *obj)
-     cpu->isar.mvfr0 = 0x10110021;
-     cpu->isar.mvfr1 = 0x11000011;
-     cpu->isar.mvfr2 = 0x00000040;
--    cpu->id_pfr0 = 0x00000030;
--    cpu->id_pfr1 = 0x00000210;
-+    cpu->isar.id_pfr0 = 0x00000030;
-+    cpu->isar.id_pfr1 = 0x00000210;
-     cpu->isar.id_dfr0 = 0x00200000;
-     cpu->id_afr0 = 0x00000000;
-     cpu->isar.id_mmfr0 = 0x00101F40;
-@@ -397,8 +397,8 @@ static void cortex_r5_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_PMSA);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
-     cpu->midr = 0x411fc153; /* r1p3 */
--    cpu->id_pfr0 = 0x0131;
--    cpu->id_pfr1 = 0x001;
-+    cpu->isar.id_pfr0 = 0x0131;
-+    cpu->isar.id_pfr1 = 0x001;
-     cpu->isar.id_dfr0 = 0x010400;
-     cpu->id_afr0 = 0x0;
-     cpu->isar.id_mmfr0 = 0x0210030;
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index ef6eaf6450f..93c1c01267a 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6625,7 +6625,7 @@ static void define_pmu_regs(ARMCPU *cpu)
- static uint64_t id_pfr1_read(CPUARMState *env, const ARMCPRegInfo *ri)
- {
-     ARMCPU *cpu = env_archcpu(env);
--    uint64_t pfr1 = cpu->id_pfr1;
-+    uint64_t pfr1 = cpu->isar.id_pfr1;
- 
-     if (env->gicv3state) {
-         pfr1 |= 1 << 28;
-@@ -7258,7 +7258,7 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-               .opc0 = 3, .opc1 = 0, .crn = 0, .crm = 1, .opc2 = 0,
-               .access = PL1_R, .type = ARM_CP_CONST,
-               .accessfn = access_aa32_tid3,
--              .resetvalue = cpu->id_pfr0 },
-+              .resetvalue = cpu->isar.id_pfr0 },
-             /* ID_PFR1 is not a plain ARM_CP_CONST because we don't know
-              * the value of the GIC field until after we define these regs.
-              */
-diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-index ef1e9602850..736be1f236b 100644
---- a/target/arm/kvm64.c
-+++ b/target/arm/kvm64.c
-@@ -555,6 +555,10 @@ bool kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-          * than skipping the reads and leaving 0, as we must avoid
-          * considering the values in every case.
-          */
-+        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_pfr0,
-+                              ARM64_SYS_REG(3, 0, 0, 1, 0));
-+        err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_pfr1,
-+                              ARM64_SYS_REG(3, 0, 0, 1, 1));
-         err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_dfr0,
-                               ARM64_SYS_REG(3, 0, 0, 1, 2));
-         err |= read_sys_reg32(fdarray[2], &ahcf->isar.id_mmfr0,
--- 
-2.20.1
 
+
+> ---
+>  include/hw/ssi/aspeed_smc.h |  2 +-
+>  hw/ssi/aspeed_smc.c         | 40 ++++++++++++++++++-------------------
+>  2 files changed, 21 insertions(+), 21 deletions(-)
+> 
+> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+> index 6fbbb238f15..52ae34e38d1 100644
+> --- a/include/hw/ssi/aspeed_smc.h
+> +++ b/include/hw/ssi/aspeed_smc.h
+> @@ -42,7 +42,7 @@ typedef struct AspeedSMCController {
+>      uint8_t r_timings;
+>      uint8_t nregs_timings;
+>      uint8_t conf_enable_w0;
+> -    uint8_t max_slaves;
+> +    uint8_t max_devices;
+>      const AspeedSegments *segments;
+>      hwaddr flash_window_base;
+>      uint32_t flash_window_size;
+> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+> index 795784e5f36..8219272016c 100644
+> --- a/hw/ssi/aspeed_smc.c
+> +++ b/hw/ssi/aspeed_smc.c
+> @@ -259,7 +259,7 @@ static const AspeedSMCController controllers[] = {
+>          .r_timings         = R_TIMINGS,
+>          .nregs_timings     = 1,
+>          .conf_enable_w0    = CONF_ENABLE_W0,
+> -        .max_slaves        = 1,
+> +        .max_devices       = 1,
+>          .segments          = aspeed_segments_legacy,
+>          .flash_window_base = ASPEED_SOC_SMC_FLASH_BASE,
+>          .flash_window_size = 0x6000000,
+> @@ -275,7 +275,7 @@ static const AspeedSMCController controllers[] = {
+>          .r_timings         = R_TIMINGS,
+>          .nregs_timings     = 1,
+>          .conf_enable_w0    = CONF_ENABLE_W0,
+> -        .max_slaves        = 5,
+> +        .max_devices       = 5,
+>          .segments          = aspeed_segments_fmc,
+>          .flash_window_base = ASPEED_SOC_FMC_FLASH_BASE,
+>          .flash_window_size = 0x10000000,
+> @@ -293,7 +293,7 @@ static const AspeedSMCController controllers[] = {
+>          .r_timings         = R_SPI_TIMINGS,
+>          .nregs_timings     = 1,
+>          .conf_enable_w0    = SPI_CONF_ENABLE_W0,
+> -        .max_slaves        = 1,
+> +        .max_devices       = 1,
+>          .segments          = aspeed_segments_spi,
+>          .flash_window_base = ASPEED_SOC_SPI_FLASH_BASE,
+>          .flash_window_size = 0x10000000,
+> @@ -309,7 +309,7 @@ static const AspeedSMCController controllers[] = {
+>          .r_timings         = R_TIMINGS,
+>          .nregs_timings     = 1,
+>          .conf_enable_w0    = CONF_ENABLE_W0,
+> -        .max_slaves        = 3,
+> +        .max_devices       = 3,
+>          .segments          = aspeed_segments_ast2500_fmc,
+>          .flash_window_base = ASPEED_SOC_FMC_FLASH_BASE,
+>          .flash_window_size = 0x10000000,
+> @@ -327,7 +327,7 @@ static const AspeedSMCController controllers[] = {
+>          .r_timings         = R_TIMINGS,
+>          .nregs_timings     = 1,
+>          .conf_enable_w0    = CONF_ENABLE_W0,
+> -        .max_slaves        = 2,
+> +        .max_devices       = 2,
+>          .segments          = aspeed_segments_ast2500_spi1,
+>          .flash_window_base = ASPEED_SOC_SPI_FLASH_BASE,
+>          .flash_window_size = 0x8000000,
+> @@ -343,7 +343,7 @@ static const AspeedSMCController controllers[] = {
+>          .r_timings         = R_TIMINGS,
+>          .nregs_timings     = 1,
+>          .conf_enable_w0    = CONF_ENABLE_W0,
+> -        .max_slaves        = 2,
+> +        .max_devices       = 2,
+>          .segments          = aspeed_segments_ast2500_spi2,
+>          .flash_window_base = ASPEED_SOC_SPI2_FLASH_BASE,
+>          .flash_window_size = 0x8000000,
+> @@ -359,7 +359,7 @@ static const AspeedSMCController controllers[] = {
+>          .r_timings         = R_TIMINGS,
+>          .nregs_timings     = 1,
+>          .conf_enable_w0    = CONF_ENABLE_W0,
+> -        .max_slaves        = 3,
+> +        .max_devices       = 3,
+>          .segments          = aspeed_segments_ast2600_fmc,
+>          .flash_window_base = ASPEED26_SOC_FMC_FLASH_BASE,
+>          .flash_window_size = 0x10000000,
+> @@ -377,7 +377,7 @@ static const AspeedSMCController controllers[] = {
+>          .r_timings         = R_TIMINGS,
+>          .nregs_timings     = 2,
+>          .conf_enable_w0    = CONF_ENABLE_W0,
+> -        .max_slaves        = 2,
+> +        .max_devices       = 2,
+>          .segments          = aspeed_segments_ast2600_spi1,
+>          .flash_window_base = ASPEED26_SOC_SPI_FLASH_BASE,
+>          .flash_window_size = 0x10000000,
+> @@ -395,7 +395,7 @@ static const AspeedSMCController controllers[] = {
+>          .r_timings         = R_TIMINGS,
+>          .nregs_timings     = 3,
+>          .conf_enable_w0    = CONF_ENABLE_W0,
+> -        .max_slaves        = 3,
+> +        .max_devices       = 3,
+>          .segments          = aspeed_segments_ast2600_spi2,
+>          .flash_window_base = ASPEED26_SOC_SPI2_FLASH_BASE,
+>          .flash_window_size = 0x10000000,
+> @@ -476,7 +476,7 @@ static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
+>      AspeedSegments seg;
+>      int i;
+>  
+> -    for (i = 0; i < s->ctrl->max_slaves; i++) {
+> +    for (i = 0; i < s->ctrl->max_devices; i++) {
+>          if (i == cs) {
+>              continue;
+>          }
+> @@ -537,7 +537,7 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
+>       */
+>      if ((s->ctrl->segments == aspeed_segments_ast2500_spi1 ||
+>           s->ctrl->segments == aspeed_segments_ast2500_spi2) &&
+> -        cs == s->ctrl->max_slaves &&
+> +        cs == s->ctrl->max_devices &&
+>          seg.addr + seg.size != s->ctrl->segments[cs].addr +
+>          s->ctrl->segments[cs].size) {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+> @@ -948,7 +948,7 @@ static void aspeed_smc_reset(DeviceState *d)
+>      }
+>  
+>      /* setup the default segment register values and regions for all */
+> -    for (i = 0; i < s->ctrl->max_slaves; ++i) {
+> +    for (i = 0; i < s->ctrl->max_devices; ++i) {
+>          aspeed_smc_flash_set_segment_region(s, i,
+>                      s->ctrl->segment_to_reg(s, &s->ctrl->segments[i]));
+>      }
+> @@ -995,8 +995,8 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
+>          (s->ctrl->has_dma && addr == R_DMA_DRAM_ADDR) ||
+>          (s->ctrl->has_dma && addr == R_DMA_LEN) ||
+>          (s->ctrl->has_dma && addr == R_DMA_CHECKSUM) ||
+> -        (addr >= R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slaves) ||
+> -        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_slaves)) {
+> +        (addr >= R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_devices) ||
+> +        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_devices)) {
+>  
+>          trace_aspeed_smc_read(addr, size, s->regs[addr]);
+>  
+> @@ -1270,7 +1270,7 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+>          int cs = addr - s->r_ctrl0;
+>          aspeed_smc_flash_update_ctrl(&s->flashes[cs], value);
+>      } else if (addr >= R_SEG_ADDR0 &&
+> -               addr < R_SEG_ADDR0 + s->ctrl->max_slaves) {
+> +               addr < R_SEG_ADDR0 + s->ctrl->max_devices) {
+>          int cs = addr - R_SEG_ADDR0;
+>  
+>          if (value != s->regs[R_SEG_ADDR0 + cs]) {
+> @@ -1341,10 +1341,10 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+>      s->conf_enable_w0 = s->ctrl->conf_enable_w0;
+>  
+>      /* Enforce some real HW limits */
+> -    if (s->num_cs > s->ctrl->max_slaves) {
+> +    if (s->num_cs > s->ctrl->max_devices) {
+>          qemu_log_mask(LOG_GUEST_ERROR, "%s: num_cs cannot exceed: %d\n",
+> -                      __func__, s->ctrl->max_slaves);
+> -        s->num_cs = s->ctrl->max_slaves;
+> +                      __func__, s->ctrl->max_devices);
+> +        s->num_cs = s->ctrl->max_devices;
+>      }
+>  
+>      /* DMA irq. Keep it first for the initialization in the SoC */
+> @@ -1376,7 +1376,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+>                            s->ctrl->flash_window_size);
+>      sysbus_init_mmio(sbd, &s->mmio_flash);
+>  
+> -    s->flashes = g_new0(AspeedSMCFlash, s->ctrl->max_slaves);
+> +    s->flashes = g_new0(AspeedSMCFlash, s->ctrl->max_devices);
+>  
+>      /*
+>       * Let's create a sub memory region for each possible slave. All
+> @@ -1385,7 +1385,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+>       * module behind to handle the memory accesses. This depends on
+>       * the board configuration.
+>       */
+> -    for (i = 0; i < s->ctrl->max_slaves; ++i) {
+> +    for (i = 0; i < s->ctrl->max_devices; ++i) {
+>          AspeedSMCFlash *fl = &s->flashes[i];
+>  
+>          snprintf(name, sizeof(name), "%s.%d", s->ctrl->name, i);
+> 

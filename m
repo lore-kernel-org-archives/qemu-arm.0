@@ -1,270 +1,100 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1592786lfq;
-        Thu, 10 Sep 2020 12:25:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyl+/uRKD6qJSYthBmOFNaBQjtiuIGlmSozdb0ozBM2XPunlzklcCco5HgtK2bLw3AJxqeC
-X-Received: by 2002:a7b:c7cd:: with SMTP id z13mr1558078wmk.160.1599765943960;
-        Thu, 10 Sep 2020 12:25:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599765943; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1611688lfq;
+        Thu, 10 Sep 2020 12:54:40 -0700 (PDT)
+X-Received: by 2002:aa7:cd5a:: with SMTP id v26mr10692399edw.38.1599767680108;
+        Thu, 10 Sep 2020 12:54:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599767680; cv=none;
         d=google.com; s=arc-20160816;
-        b=KGMLJWtciy8jV65yGNzwhNJGkG0uH8J0DdRsF7qFNRO7rSHSDyXnPl3JXZY/ClPUYK
-         SjSkhtJ5XPPskFafXDvyfXF1I09KuSPC2qBFVpb/yBzbhzwNUaHKipMXj6RYw0/PrYLi
-         fbcyb9wwzhJ46/RtxrPUKyxf0iJRLz2YtXnjNK1os5QCrdFvNRe2bgINzZJyJlR/Gpkl
-         VPeUcyVVtynQ4fXgIcs1+tITK9yqi8TqDs6HWD05fLpy+jG5l0jOdakYFTgEd97McDUd
-         4eJOJQ8Zv7bzocoIsg5C/8ebL9ClTjxMsx2EKiA8Y5wTN+pfvVYJkOi20qvfAY/hgvfC
-         wKdQ==
+        b=sMiCKdL8GzUMvwLRyAYucrC0F8rN6MIdVazJw4MfS6H06Er+1Bm/zC6ptpRRMgFef7
+         WnUcIsRRWl3kT1IXJdhDaOh4Pk5Q2febWJqrhPDXkqn1helVtUYKzrPbdUQRDRoEm2Rj
+         w0TMXgyCNiaXhZp2ApsSxXYKiiG1yhokfjqgU8uwKH/sGG4O0JHSNSe02ehSzIa6moNE
+         8Jn+89Unf7edeHGFrH9qn+WnuTqRcXbQsj9rOs2jo1Z46rcO7jRqew5/N6MvFu7SbFac
+         IzuZ48bFtlOyKfypBDJmB9BJ8aeqWAvvIDQ5ydDdnZ6O+v099IUh/bns83J77P5ytj1G
+         baOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject;
-        bh=TLidOb/cMcADK2lKlCkfxHDmEh8c0rbgrYUHAMC/Xik=;
-        b=iljJNIqU6crGoFkQ851Hi/9LosSUYNPob/PbzEhgk/k085Ge4yLQhL0CFfc4xs6wj7
-         Hq5MqdlFP7CUzIeFgA/JL7JViVAjz+xgGz6qOUPNG5rYdwzgsXkZNW1EXWixLsCuHmph
-         5QNODwkiyXX5uU7z0t+Zl9Dx4AmrF8uIR9Z6aVyiDy6mok1h3XJhzAI6fJM9wVDjIHt1
-         pWqpHG//mVileyJfZZ56FBl0P7ZxIux9tz2Ym+Ho7mP00UMseu4CSADoNO8ea/cSZUcl
-         fIaZRUpOTg7NALamJXnQkFsbLrhvO2BhMMaNxC3rqa6ndCIB4C8VGn/gTStihghoDSkf
-         1SZA==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=8GiZi7KPaoENc8uTEJdS0X5H5hTi8PEOnZj99Qy+VAk=;
+        b=Q5naiQvOloyNQfnf0mFLEbzxU2D1aRXafczIZuV6bNnmR/Zxx7qe5Rc6XZYWfLROvW
+         L+GAzlXdVoJ+d7WYbrjZDjj9Yum6idl5QUnLandZ19/d2o+mINUg189XUEzSUdTrYf5H
+         Nqzm4Mdc4TcoXASqss0ai7GThUCMBODMMPd9tDjvu/6dnSZsUcpytQm7g8+BRaohF2hp
+         7GDclI7geCcKV8byILcgj6krzJ+ymRdh6PCcRcMzqwcru1b+dBZ+L3b+j2AQYcIBJpD9
+         CWcRw14QjFhgnYgSKkDIPsAIDBizpMxXiYRka/ycnbqgLM3lpc2g0NDQjEpaWwEzVrbo
+         JfDg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) smtp.mailfrom=clg@kaod.org
-Return-Path: <clg@kaod.org>
-Received: from smtpout1.mo529.mail-out.ovh.net (smtpout1.mo529.mail-out.ovh.net. [178.32.125.2])
-        by mx.google.com with ESMTPS id n5si5596604wrw.476.2020.09.10.12.25.43
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Sep 2020 12:25:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) client-ip=178.32.125.2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=EE8FIGKw;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id w11sor4843481ejy.32.2020.09.10.12.54.40
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Thu, 10 Sep 2020 12:54:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of clg@kaod.org designates 178.32.125.2 as permitted sender) smtp.mailfrom=clg@kaod.org
-Received: from mxplan5.mail.ovh.net (unknown [10.109.156.35])
-	by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 1B47359BDFDA;
-	Thu, 10 Sep 2020 21:25:42 +0200 (CEST)
-Received: from kaod.org (37.59.142.95) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 10 Sep
- 2020 21:25:40 +0200
-Authentication-Results: garm.ovh; auth=pass (GARM-95G001c7ff4359-2a02-48c5-be83-c4d2a64ddcce,
-                    8FE11AEDAF16247B821E16C08928A26F58BE1972) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH 1/6] hw/ssi/aspeed_smc: Rename max_slaves as max_devices
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
-	<qemu-devel@nongnu.org>
-CC: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
-	<kvm@vger.kernel.org>, <qemu-arm@nongnu.org>, Marcelo Tosatti
-	<mtosatti@redhat.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>, Marcel Apfelbaum
-	<marcel.apfelbaum@gmail.com>, Laurent Vivier <lvivier@redhat.com>, Peter
- Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>, Jason
- Wang <jasowang@redhat.com>, Thomas Huth <thuth@redhat.com>, Alistair Francis
-	<alistair@alistair23.me>, <qemu-trivial@nongnu.org>, Eduardo Habkost
-	<ehabkost@redhat.com>, Richard Henderson <rth@twiddle.net>, Joel Stanley
-	<joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20200910070131.435543-1-philmd@redhat.com>
- <20200910070131.435543-2-philmd@redhat.com>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <6ed7ad28-107a-65a2-489d-1cd15cd372dd@kaod.org>
-Date: Thu, 10 Sep 2020 21:25:40 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=EE8FIGKw;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=8GiZi7KPaoENc8uTEJdS0X5H5hTi8PEOnZj99Qy+VAk=;
+        b=EE8FIGKwjBsolRvTG1HhqgmNB7T1mZr+s7ZO/kqiIPQeHtI+8HyFAM30nMptDTzyrH
+         M7ZZW6M/7dRVEmAMx/o6YSmR7ApVlOxMEgRzSO8wEk56ba4mc/G+KmUusb2qIKgvMOR9
+         wJ4463yZRKM4rocWpmONNisiDJpxRt7pjLjcbrNcleZB8hgQ8MhHfUiZExt/s4Kc/X4p
+         pGKQFxNUBtkWQ4xrr7GWbgZaETmbY3T5sKNFSE+M65WkApyZq/Q4qTXzygREncQRJGut
+         pEnYdAtApzq8EN3POVPE55Z9dUrcR+DU5j2QHQP+VB4daRmwx6hP1lxPIv9yU054Dq83
+         jKuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=8GiZi7KPaoENc8uTEJdS0X5H5hTi8PEOnZj99Qy+VAk=;
+        b=VsRYXE48aF2AoAFC3bUN/uMzwJoNgkdsyvsY3lw11QT55RanjcaGacY4K/IfNU/HAV
+         MVc+C6igFf00iRbuNe079hoo0SXmH4ZsczKEJYCNm7woYP72r/7prbMVgAh19WLQXEp5
+         AWOdtRWHkOviNDdQ6Q8WbsGHcM8JpVr/3+0+7oTpHexqNO4Y6/PVpH2BaWWFfl7zp1bo
+         rWyE/Lzijcjq2xhNeGtq2HxgtH+0vlsN2OBc5zFSDoHHLO+v1YRCU8XpGOXvRYPIBupX
+         kPCO5f73a+dOwSK24qmPoUenAYd4MnzJ484LFtuILxJNOFQ5spyYSfTAx3gUm+o9TgCo
+         NFIw==
+X-Gm-Message-State: AOAM531JGW14gnmYuXIbT0WB0ylSST/w4/ZMsKGpyQGi1vEVDpTFusdV
+	p60zvNrz0E205DCTcHY0XTAfZIWuoW4/Iep+6khFU9/C
+X-Google-Smtp-Source: ABdhPJyWYBFOYCNlVlFv2b6WZvHdEdVcC2mqCCExUW7I1qGmRwDDSanKo7Nf9mLl26L6m/mVBWqY1fbENS67y4mKiFE=
+X-Received: by 2002:a17:906:1f42:: with SMTP id d2mr10340341ejk.407.1599767679795;
+ Thu, 10 Sep 2020 12:54:39 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200910070131.435543-2-philmd@redhat.com>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.95]
-X-ClientProxiedBy: DAG9EX1.mxp5.local (172.16.2.81) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: e9a3d5e1-decd-4ded-bacf-ec1395775ed2
-X-Ovh-Tracer-Id: 9058427701944224528
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudehjedgudefudcutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefuvfhfhffkffgfgggjtgfgihesthekredttdefjeenucfhrhhomhepveorughrihgtpgfnvggpifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeejkeduueduveelgeduueegkeelffevledujeetffeivdelvdfgkeeufeduheehfeenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehphhhilhhmugesrhgvughhrghtrdgtohhm
-X-TUID: IHJUNEvUNYKX
+References: <20200901162046.32670-1-peter.maydell@linaro.org>
+In-Reply-To: <20200901162046.32670-1-peter.maydell@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 10 Sep 2020 20:54:28 +0100
+Message-ID: <CAFEAcA8iTN73rjPT9gB4E8g8s6AxQoYLKUwrV+ZoE4PNdJ3t9w@mail.gmail.com>
+Subject: Re: [RISU PATCH 0/2] arm.risu: two minor fixes
+To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: RaRw7YRXJQ17
 
-On 9/10/20 9:01 AM, Philippe Mathieu-Daudé wrote:
-> In order to use inclusive terminology, rename max_slaves
-> as max_devices.>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Ping for review? Mostly I'm interested in whether either
+Richard or Alex knows what's up with the discrepancy between
+the VLDR/VSTR patterns in current risu and the generated
+aarch32 binaries/traces that have been floating around...
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+thanks
+-- PMM
 
-
-
-
-> ---
->  include/hw/ssi/aspeed_smc.h |  2 +-
->  hw/ssi/aspeed_smc.c         | 40 ++++++++++++++++++-------------------
->  2 files changed, 21 insertions(+), 21 deletions(-)
-> 
-> diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
-> index 6fbbb238f15..52ae34e38d1 100644
-> --- a/include/hw/ssi/aspeed_smc.h
-> +++ b/include/hw/ssi/aspeed_smc.h
-> @@ -42,7 +42,7 @@ typedef struct AspeedSMCController {
->      uint8_t r_timings;
->      uint8_t nregs_timings;
->      uint8_t conf_enable_w0;
-> -    uint8_t max_slaves;
-> +    uint8_t max_devices;
->      const AspeedSegments *segments;
->      hwaddr flash_window_base;
->      uint32_t flash_window_size;
-> diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
-> index 795784e5f36..8219272016c 100644
-> --- a/hw/ssi/aspeed_smc.c
-> +++ b/hw/ssi/aspeed_smc.c
-> @@ -259,7 +259,7 @@ static const AspeedSMCController controllers[] = {
->          .r_timings         = R_TIMINGS,
->          .nregs_timings     = 1,
->          .conf_enable_w0    = CONF_ENABLE_W0,
-> -        .max_slaves        = 1,
-> +        .max_devices       = 1,
->          .segments          = aspeed_segments_legacy,
->          .flash_window_base = ASPEED_SOC_SMC_FLASH_BASE,
->          .flash_window_size = 0x6000000,
-> @@ -275,7 +275,7 @@ static const AspeedSMCController controllers[] = {
->          .r_timings         = R_TIMINGS,
->          .nregs_timings     = 1,
->          .conf_enable_w0    = CONF_ENABLE_W0,
-> -        .max_slaves        = 5,
-> +        .max_devices       = 5,
->          .segments          = aspeed_segments_fmc,
->          .flash_window_base = ASPEED_SOC_FMC_FLASH_BASE,
->          .flash_window_size = 0x10000000,
-> @@ -293,7 +293,7 @@ static const AspeedSMCController controllers[] = {
->          .r_timings         = R_SPI_TIMINGS,
->          .nregs_timings     = 1,
->          .conf_enable_w0    = SPI_CONF_ENABLE_W0,
-> -        .max_slaves        = 1,
-> +        .max_devices       = 1,
->          .segments          = aspeed_segments_spi,
->          .flash_window_base = ASPEED_SOC_SPI_FLASH_BASE,
->          .flash_window_size = 0x10000000,
-> @@ -309,7 +309,7 @@ static const AspeedSMCController controllers[] = {
->          .r_timings         = R_TIMINGS,
->          .nregs_timings     = 1,
->          .conf_enable_w0    = CONF_ENABLE_W0,
-> -        .max_slaves        = 3,
-> +        .max_devices       = 3,
->          .segments          = aspeed_segments_ast2500_fmc,
->          .flash_window_base = ASPEED_SOC_FMC_FLASH_BASE,
->          .flash_window_size = 0x10000000,
-> @@ -327,7 +327,7 @@ static const AspeedSMCController controllers[] = {
->          .r_timings         = R_TIMINGS,
->          .nregs_timings     = 1,
->          .conf_enable_w0    = CONF_ENABLE_W0,
-> -        .max_slaves        = 2,
-> +        .max_devices       = 2,
->          .segments          = aspeed_segments_ast2500_spi1,
->          .flash_window_base = ASPEED_SOC_SPI_FLASH_BASE,
->          .flash_window_size = 0x8000000,
-> @@ -343,7 +343,7 @@ static const AspeedSMCController controllers[] = {
->          .r_timings         = R_TIMINGS,
->          .nregs_timings     = 1,
->          .conf_enable_w0    = CONF_ENABLE_W0,
-> -        .max_slaves        = 2,
-> +        .max_devices       = 2,
->          .segments          = aspeed_segments_ast2500_spi2,
->          .flash_window_base = ASPEED_SOC_SPI2_FLASH_BASE,
->          .flash_window_size = 0x8000000,
-> @@ -359,7 +359,7 @@ static const AspeedSMCController controllers[] = {
->          .r_timings         = R_TIMINGS,
->          .nregs_timings     = 1,
->          .conf_enable_w0    = CONF_ENABLE_W0,
-> -        .max_slaves        = 3,
-> +        .max_devices       = 3,
->          .segments          = aspeed_segments_ast2600_fmc,
->          .flash_window_base = ASPEED26_SOC_FMC_FLASH_BASE,
->          .flash_window_size = 0x10000000,
-> @@ -377,7 +377,7 @@ static const AspeedSMCController controllers[] = {
->          .r_timings         = R_TIMINGS,
->          .nregs_timings     = 2,
->          .conf_enable_w0    = CONF_ENABLE_W0,
-> -        .max_slaves        = 2,
-> +        .max_devices       = 2,
->          .segments          = aspeed_segments_ast2600_spi1,
->          .flash_window_base = ASPEED26_SOC_SPI_FLASH_BASE,
->          .flash_window_size = 0x10000000,
-> @@ -395,7 +395,7 @@ static const AspeedSMCController controllers[] = {
->          .r_timings         = R_TIMINGS,
->          .nregs_timings     = 3,
->          .conf_enable_w0    = CONF_ENABLE_W0,
-> -        .max_slaves        = 3,
-> +        .max_devices       = 3,
->          .segments          = aspeed_segments_ast2600_spi2,
->          .flash_window_base = ASPEED26_SOC_SPI2_FLASH_BASE,
->          .flash_window_size = 0x10000000,
-> @@ -476,7 +476,7 @@ static bool aspeed_smc_flash_overlap(const AspeedSMCState *s,
->      AspeedSegments seg;
->      int i;
->  
-> -    for (i = 0; i < s->ctrl->max_slaves; i++) {
-> +    for (i = 0; i < s->ctrl->max_devices; i++) {
->          if (i == cs) {
->              continue;
->          }
-> @@ -537,7 +537,7 @@ static void aspeed_smc_flash_set_segment(AspeedSMCState *s, int cs,
->       */
->      if ((s->ctrl->segments == aspeed_segments_ast2500_spi1 ||
->           s->ctrl->segments == aspeed_segments_ast2500_spi2) &&
-> -        cs == s->ctrl->max_slaves &&
-> +        cs == s->ctrl->max_devices &&
->          seg.addr + seg.size != s->ctrl->segments[cs].addr +
->          s->ctrl->segments[cs].size) {
->          qemu_log_mask(LOG_GUEST_ERROR,
-> @@ -948,7 +948,7 @@ static void aspeed_smc_reset(DeviceState *d)
->      }
->  
->      /* setup the default segment register values and regions for all */
-> -    for (i = 0; i < s->ctrl->max_slaves; ++i) {
-> +    for (i = 0; i < s->ctrl->max_devices; ++i) {
->          aspeed_smc_flash_set_segment_region(s, i,
->                      s->ctrl->segment_to_reg(s, &s->ctrl->segments[i]));
->      }
-> @@ -995,8 +995,8 @@ static uint64_t aspeed_smc_read(void *opaque, hwaddr addr, unsigned int size)
->          (s->ctrl->has_dma && addr == R_DMA_DRAM_ADDR) ||
->          (s->ctrl->has_dma && addr == R_DMA_LEN) ||
->          (s->ctrl->has_dma && addr == R_DMA_CHECKSUM) ||
-> -        (addr >= R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_slaves) ||
-> -        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_slaves)) {
-> +        (addr >= R_SEG_ADDR0 && addr < R_SEG_ADDR0 + s->ctrl->max_devices) ||
-> +        (addr >= s->r_ctrl0 && addr < s->r_ctrl0 + s->ctrl->max_devices)) {
->  
->          trace_aspeed_smc_read(addr, size, s->regs[addr]);
->  
-> @@ -1270,7 +1270,7 @@ static void aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
->          int cs = addr - s->r_ctrl0;
->          aspeed_smc_flash_update_ctrl(&s->flashes[cs], value);
->      } else if (addr >= R_SEG_ADDR0 &&
-> -               addr < R_SEG_ADDR0 + s->ctrl->max_slaves) {
-> +               addr < R_SEG_ADDR0 + s->ctrl->max_devices) {
->          int cs = addr - R_SEG_ADDR0;
->  
->          if (value != s->regs[R_SEG_ADDR0 + cs]) {
-> @@ -1341,10 +1341,10 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
->      s->conf_enable_w0 = s->ctrl->conf_enable_w0;
->  
->      /* Enforce some real HW limits */
-> -    if (s->num_cs > s->ctrl->max_slaves) {
-> +    if (s->num_cs > s->ctrl->max_devices) {
->          qemu_log_mask(LOG_GUEST_ERROR, "%s: num_cs cannot exceed: %d\n",
-> -                      __func__, s->ctrl->max_slaves);
-> -        s->num_cs = s->ctrl->max_slaves;
-> +                      __func__, s->ctrl->max_devices);
-> +        s->num_cs = s->ctrl->max_devices;
->      }
->  
->      /* DMA irq. Keep it first for the initialization in the SoC */
-> @@ -1376,7 +1376,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
->                            s->ctrl->flash_window_size);
->      sysbus_init_mmio(sbd, &s->mmio_flash);
->  
-> -    s->flashes = g_new0(AspeedSMCFlash, s->ctrl->max_slaves);
-> +    s->flashes = g_new0(AspeedSMCFlash, s->ctrl->max_devices);
->  
->      /*
->       * Let's create a sub memory region for each possible slave. All
-> @@ -1385,7 +1385,7 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
->       * module behind to handle the memory accesses. This depends on
->       * the board configuration.
->       */
-> -    for (i = 0; i < s->ctrl->max_slaves; ++i) {
-> +    for (i = 0; i < s->ctrl->max_devices; ++i) {
->          AspeedSMCFlash *fl = &s->flashes[i];
->  
->          snprintf(name, sizeof(name), "%s.%d", s->ctrl->name, i);
-> 
+On Tue, 1 Sep 2020 at 17:20, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> These are a couple of minor fixes to arm.risu patterns.
+> (They're a prereq at least textually to the fp16 arm.risu
+> change, and I should have sent them out with that but I forgot
+> I had them in my patchstack.)
+>
+> thanks
+> -- PMM
+>
+> Peter Maydell (2):
+>   arm.risu: Correct VLDR/VSTR U=0 patterns
+>   arm.risu: Fix typo in VCVT_B_TT pattern name
+>
+>  arm.risu | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)

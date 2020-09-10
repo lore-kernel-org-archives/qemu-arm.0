@@ -1,94 +1,93 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1653335lfq;
-        Thu, 10 Sep 2020 13:54:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwA2mmijw5a+uknR/VWBdhYHfcb19K2Pz99sMdVKloEITNQSnttdyT/qXvx94rAe3jfW5Oy
-X-Received: by 2002:a25:8149:: with SMTP id j9mr16789734ybm.214.1599771291595;
-        Thu, 10 Sep 2020 13:54:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599771291; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1653516lfq;
+        Thu, 10 Sep 2020 13:55:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwMF87IigmqcYk0N21MBENVXI9zfftmGOl8GBV4Fr+PPWUwsaDIi0qB7Dir0HLyiKbxf376
+X-Received: by 2002:a25:2742:: with SMTP id n63mr770856ybn.32.1599771309326;
+        Thu, 10 Sep 2020 13:55:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599771309; cv=none;
         d=google.com; s=arc-20160816;
-        b=YV70aiqOxlmzu6neEowF5a8Zag//s2S0mHgfxOqheoX/Bu00zDXwnC/9A1GQGGD7c0
-         NomjgEbI8aEXI8nSJCu6B9ImmwE5OYAjJWGFKNrx1RKCWW69Ku1lvIWMCjHWs+kQ9iTe
-         3JhW201nHTHeviZ5RQdbf3c7BG8wq9jfDUXaC4/9ERqsOKvbej/r7AAyQBPrOQJBT98f
-         ZxDboL/7u8YRFAf+fWjbDP5rspiNEht82y+yjPPWTcxZxsRl08zW7skvP3t6wLWGlo6e
-         w98gV7D2p5q+xFjDiNabR1jAlCH47w1UGJivHTJDv47NKXVJfE6ikQZ8E4JZFwR1cL02
-         G/cQ==
+        b=kFbGo6Qaydygdh3qPr8aFb5Jr8JbVorRQgMPHK4v0C+Ot5A2+0e6rhemrxWsPeQ7e2
+         RorTbLfV5ATnYAQCU/QKrLfnSHqdhCDp8WoL1dz/yUSHz7s0a/j8Rz94jojPfN4R2GD+
+         st70SfdAvSjR0gh+gMayqZoHkII4t/nbITBTo2S/9lkNTi808EzV/Kfloca6p/Oyekek
+         w7xpyk2TfA4SAHQQm4oqYhpnCSrJpySQHmEXu1vQBAWjidbj8q8PPau5JjJIZ5a+v4JI
+         +pIabaEKPGpUrYVl96fe97QQVt7z3obQItOYpozIUJnF+hjlChZWJWS8cvTYw6PfL7zw
+         AwNQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Pg2UbiPnEyj3JIOQp/7lnXV/UdSauRuubalG7cq91s0=;
-        b=mDG1VHmX5xUML2SNd4bAs1NIsQKw2RkqDbdki1dETQNrZZXq4Ga1zd6Z3qGzpMa600
-         SXtWWPq0jNW9Xr+wHrET1uXHTXSVzC15uidnGsNMgJ3Vz/Nq9g3QO2IAvKU04cHPVTbX
-         Va2Q4Dmi8lLM44ZD9sBVDfyS2YdSkuD9sgd+0IkUCTj4+EWCtNweBcuGGSMZgVOlUjUZ
-         7Db0YAvryMi8TZ6+j++Q7RRNxZt5+p7GzBJjffePm2iyWsAd2QvK9JdYDZbevdPi+doI
-         0rzGwugWaqmJloiCx3YtXIM8/ekXsF9cI4ShdOzYtmsbX99qxOxpI1s9e91tu1Qg5qSt
-         iM0A==
+        bh=Q0lfFRL4xWLEBHVRUO7uZKpVUCkRWQqd0DscmUXOlik=;
+        b=ia0bZWx3M70QC6PAQ7JdRNtWTdNtwEes0qNPaS4JQeJqx3i5QbysBI2zt4t+ivDRG4
+         ucAP13kaoT/2opjyIp0Li3nTt9bJF+pgjiZtwC1Dh8zrQ109z2tB8+s9E0mY1/ByIvoW
+         65y5tdeOAtcNFY6WyDOadVVfNBK7MhhE6/5EoCeQWXIDC3aeKB1GszPEzel++eGi+lvU
+         DFECicy1q9H9dwGmX7Is+JO+TK1zsnB41aUpIP2WNd5jzS/3w50ZoNhEAD8m2FOVBrra
+         AhsmE3wQK77yaIGzpsFha/NAThZCeH8DmQEOX3gOjBzI87pbLtEa1xc7/s1DP2Lgdvk5
+         NEXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=upX18BBU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n4t4oGP6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f187si119334ybg.85.2020.09.10.13.54.51
+        by mx.google.com with ESMTPS id o79si99764yba.346.2020.09.10.13.55.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Sep 2020 13:54:51 -0700 (PDT)
+        Thu, 10 Sep 2020 13:55:09 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=upX18BBU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=n4t4oGP6;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:35220 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36150 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGTak-0004Ij-Vx
-	for alex.bennee@linaro.org; Thu, 10 Sep 2020 16:54:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41058)
+	id 1kGTb2-0004hM-LR
+	for alex.bennee@linaro.org; Thu, 10 Sep 2020 16:55:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41048)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kGTaY-0004DY-Pw; Thu, 10 Sep 2020 16:54:38 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:40432)
+ id 1kGTaX-0004CM-Pg; Thu, 10 Sep 2020 16:54:37 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42163)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kGTaX-0000HI-BQ; Thu, 10 Sep 2020 16:54:38 -0400
-Received: by mail-wr1-x431.google.com with SMTP id j2so8648428wrx.7;
- Thu, 10 Sep 2020 13:54:36 -0700 (PDT)
+ id 1kGTaW-0000H6-As; Thu, 10 Sep 2020 16:54:37 -0400
+Received: by mail-wr1-x441.google.com with SMTP id c18so8629690wrm.9;
+ Thu, 10 Sep 2020 13:54:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=Pg2UbiPnEyj3JIOQp/7lnXV/UdSauRuubalG7cq91s0=;
- b=upX18BBU9qj81TIw224hWd7f9RodAdsuGcLJF8YW8hkxK/1nX1QocqrHGG08utTLXb
- c+ahbIOqRY6ci46wv5yx10szetuUy9cwJEZIQCyd2gD/sc/esJCRqzl1Q0zbi/pfatX2
- rYyP+zidhMPc3gJyCXj9x4B7j20w/CwTWi2l/gk7+ZAmBf38gTAYyjl+pgclpuNDpE4F
- iHY/ReqDZDTJkh8GirSxLq3nGpSFW7WoVluLlAuC8ezn57ClopgsL+iGZTYnd2Zd+/YW
- qPabM5r8vhZWGpdyH5kNZWhaqnHDqrGMZZM6LCIZrR4pN8wKvbgF5ki8+0uuJIny7p58
- 96Yw==
+ bh=Q0lfFRL4xWLEBHVRUO7uZKpVUCkRWQqd0DscmUXOlik=;
+ b=n4t4oGP65oBHUYzE2xK0F74MlbEbRT5IAFeK833QZzdZ8LCW8GBjoZwleGAZqgbieN
+ jYNDKs+Td7Q1MghsoZu4BAjSCI21ev9quK6FkVmPetufVnsdhALR0eoh47mVbJi/kcK+
+ po5rSGPA/Gz8wZggnqAzc58xrNK8K+HWSwBMqmU+zcxVG3wSZ7DTaAUbwApTouEwsIy8
+ ZQ0rp85u5rNbSl6uUOYjQRF3VpShEJsypvMRfodgbq3rx48a8+Y7zHEdMibFEDlggc5k
+ jstX7Km6cbPCq7lETo7Ypkth4c3DxGK7WAaST/V9Lv2p03Bs/3XbtA4i/c7N0PQ60gvy
+ n/hg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=Pg2UbiPnEyj3JIOQp/7lnXV/UdSauRuubalG7cq91s0=;
- b=WWvLeYphv3/jSP5OAzlrFcfi7kBIEzZahE8lHmteay9MgN91U7ttQBDr8KoUVmrfOn
- 0ulYSCCmYXGozvDT/kIe0YuMUo03L93ekMXiVzB3eFHkeUnBihsK/HlbkolQOmnBIFxy
- V1mn23wV14WBV5xrTanVtUyw7vUcLm+6kRBYjK8OmEt/xQABje3zXao03iXwvt6whOZN
- 0TsSs0Z07fMy3vnadNZMYKE3iwyB556hUal4RrERL3L6DPeRoTzD7YVaATlxqDYsRYLK
- nLJNqnn115aucE9qa/8dSdpxK2xK1xM7QPOugGyDcj3QgxXxvU1KDh2O5iDouuclfd/S
- 57Zw==
-X-Gm-Message-State: AOAM533/htCiWPDINEA335EhRZd142PeIB3coC/K2nTMrDESqofGZeOd
- fYfyQWPGlmmuPw+8MOTkxBz1W+CF/3o=
-X-Received: by 2002:a5d:62c2:: with SMTP id o2mr10657829wrv.418.1599771275494; 
- Thu, 10 Sep 2020 13:54:35 -0700 (PDT)
+ bh=Q0lfFRL4xWLEBHVRUO7uZKpVUCkRWQqd0DscmUXOlik=;
+ b=Dvzg6iacQMQqtbSl3O/ZuntqVVtHP8aggMrD9bvg7vfwgcpkUyVSKU+QWYjclkf/xO
+ 4bwp95Bw57yQvk5G/0GDYUWSu0m1L5WpVhP2LcO3k94TuFT16YBrUnP/HTe4mxCUU3Il
+ cknQ5HPwxHi5v9as59iBSmWX46O08iLJY7kJvgCPqTTgOx1HOLo4dXqFeGVjg56zFHhe
+ NYYNEM7xd2l3AZa5thL0g5IgRKa0c+RE7jmzkp6WAw2cX0U6le1n3dJSJnk4kse2q/zj
+ WNxfgegXQOCpbYErIN+xK6mjFSoKKdQhJh65jXee1PkFQ+1sEpwtug1IM9LWIBDSbcK6
+ aKsg==
+X-Gm-Message-State: AOAM533R5sN6vriJV8W87IzjF2+ivX/cCmzcc5/S9cnyyAkuFtAaejEW
+ jFvvodDWZ+IPb2qfhqQyLwPKpXdzrHY=
+X-Received: by 2002:adf:dd0e:: with SMTP id a14mr10840273wrm.151.1599771274236; 
+ Thu, 10 Sep 2020 13:54:34 -0700 (PDT)
 Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id t1sm5089317wmi.16.2020.09.10.13.54.34
+ by smtp.gmail.com with ESMTPSA id t1sm5089317wmi.16.2020.09.10.13.54.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Sep 2020 13:54:34 -0700 (PDT)
+ Thu, 10 Sep 2020 13:54:33 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v5 3/7] hw/misc/led: Emit a trace event when LED intensity has
- changed
-Date: Thu, 10 Sep 2020 22:54:25 +0200
-Message-Id: <20200910205429.727766-4-f4bug@amsat.org>
+Subject: [PATCH v5 2/7] hw/misc/led: Allow connecting from GPIO output
+Date: Thu, 10 Sep 2020 22:54:24 +0200
+Message-Id: <20200910205429.727766-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200910205429.727766-1-f4bug@amsat.org>
 References: <20200910205429.727766-1-f4bug@amsat.org>
@@ -96,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -123,51 +122,152 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
  Luc Michel <luc.michel@greensocs.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZPS11qV206AK
+X-TUID: aop+gTEyc4u4
 
-Track the LED intensity, and emit a trace event when it changes.
+Some devices expose GPIO lines.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Add a GPIO qdev input to our LED device, so we can
+connect a GPIO output using qdev_connect_gpio_out().
+
+When used with GPIOs, the intensity can only be either
+minium or maximum. This depends of the polarity of the
+GPIO (which can be inverted).
+Declare the GpioPolarity type to model the polarity.
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/misc/led.c        | 4 ++++
- hw/misc/trace-events | 1 +
- 2 files changed, 5 insertions(+)
+ include/hw/misc/led.h  |  8 ++++++++
+ include/hw/qdev-core.h |  8 ++++++++
+ hw/misc/led.c          | 17 ++++++++++++++++-
+ 3 files changed, 32 insertions(+), 1 deletion(-)
 
+diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+index f5afaa34bfb..71c9b8c59bf 100644
+--- a/include/hw/misc/led.h
++++ b/include/hw/misc/led.h
+@@ -38,10 +38,16 @@ typedef struct LEDState {
+     /* Public */
+ 
+     uint8_t intensity_percent;
++    qemu_irq irq;
+ 
+     /* Properties */
+     char *description;
+     char *color;
++    /*
++     * When used with GPIO, the intensity at reset is related
++     * to the GPIO polarity.
++     */
++    bool inverted_polarity;
+ } LEDState;
+ 
+ /**
+@@ -71,6 +77,7 @@ void led_set_state(LEDState *s, bool is_emitting);
+ /**
+  * led_create_simple: Create and realize a LED device
+  * @parentobj: the parent object
++ * @gpio_polarity: GPIO polarity
+  * @color: color of the LED
+  * @description: description of the LED (optional)
+  *
+@@ -78,6 +85,7 @@ void led_set_state(LEDState *s, bool is_emitting);
+  * drop the reference to it (the device is realized).
+  */
+ LEDState *led_create_simple(Object *parentobj,
++                            GpioPolarity gpio_polarity,
+                             LEDColor color,
+                             const char *description);
+ 
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index ea3f73a282d..846354736a5 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -424,6 +424,14 @@ void qdev_simple_device_unplug_cb(HotplugHandler *hotplug_dev,
+ void qdev_machine_creation_done(void);
+ bool qdev_machine_modified(void);
+ 
++/**
++ * GpioPolarity: Polarity of a GPIO line
++ */
++typedef enum {
++    GPIO_POLARITY_ACTIVE_LOW,
++    GPIO_POLARITY_ACTIVE_HIGH
++} GpioPolarity;
++
+ /**
+  * qdev_get_gpio_in: Get one of a device's anonymous input GPIO lines
+  * @dev: Device whose GPIO we want
 diff --git a/hw/misc/led.c b/hw/misc/led.c
-index 3ef4f5e0469..ebe1fa45b1e 100644
+index 89acd9acbb7..3ef4f5e0469 100644
 --- a/hw/misc/led.c
 +++ b/hw/misc/led.c
-@@ -41,6 +41,10 @@ void led_set_intensity(LEDState *s, unsigned intensity_percent)
-         intensity_percent = LED_INTENSITY_PERCENT_MAX;
-     }
-     trace_led_set_intensity(s->description, s->color, intensity_percent);
-+    if (intensity_percent != s->intensity_percent) {
-+        trace_led_change_intensity(s->description, s->color,
-+                                   s->intensity_percent, intensity_percent);
-+    }
-     s->intensity_percent = intensity_percent;
+@@ -10,6 +10,7 @@
+ #include "migration/vmstate.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/misc/led.h"
++#include "hw/irq.h"
+ #include "trace.h"
+ 
+ #define LED_INTENSITY_PERCENT_MAX   100
+@@ -53,11 +54,19 @@ void led_set_state(LEDState *s, bool is_emitting)
+     led_set_intensity(s, is_emitting ? LED_INTENSITY_PERCENT_MAX : 0);
  }
  
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 76c9ddb54fe..89d15f05f9a 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -216,6 +216,7 @@ grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx6
++static void led_set_state_gpio_handler(void *opaque, int line, int new_state)
++{
++    LEDState *s = LED(opaque);
++
++    assert(line == 0);
++    led_set_state(s, !!new_state != s->inverted_polarity);
++}
++
+ static void led_reset(DeviceState *dev)
+ {
+     LEDState *s = LED(dev);
  
- # led.c
- led_set_intensity(const char *color, const char *desc, uint8_t intensity_percent) "LED desc:'%s' color:%s intensity: %u%%"
-+led_change_intensity(const char *color, const char *desc, uint8_t old_intensity_percent, uint8_t new_intensity_percent) "LED desc:'%s' color:%s intensity %u%% -> %u%%"
+-    led_set_state(s, false);
++    led_set_state(s, s->inverted_polarity);
+ }
  
- # pca9552.c
- pca955x_gpio_status(const char *description, const char *buf) "%s GPIOs 0-15 [%s]"
+ static const VMStateDescription vmstate_led = {
+@@ -84,11 +93,14 @@ static void led_realize(DeviceState *dev, Error **errp)
+     if (s->description == NULL) {
+         s->description = g_strdup("n/a");
+     }
++
++    qdev_init_gpio_in(DEVICE(s), led_set_state_gpio_handler, 1);
+ }
+ 
+ static Property led_properties[] = {
+     DEFINE_PROP_STRING("color", LEDState, color),
+     DEFINE_PROP_STRING("description", LEDState, description),
++    DEFINE_PROP_BOOL("polarity-inverted", LEDState, inverted_polarity, false),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -119,6 +131,7 @@ static void led_register_types(void)
+ type_init(led_register_types)
+ 
+ LEDState *led_create_simple(Object *parentobj,
++                            GpioPolarity gpio_polarity,
+                             LEDColor color,
+                             const char *description)
+ {
+@@ -126,6 +139,8 @@ LEDState *led_create_simple(Object *parentobj,
+     DeviceState *dev;
+ 
+     dev = qdev_new(TYPE_LED);
++    qdev_prop_set_bit(dev, "polarity-inverted",
++                      gpio_polarity == GPIO_POLARITY_ACTIVE_LOW);
+     qdev_prop_set_string(dev, "color", led_color_name[color]);
+     if (!description) {
+         static unsigned undescribed_led_id;
 -- 
 2.26.2
 

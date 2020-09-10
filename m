@@ -1,89 +1,108 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1621166lfq;
-        Thu, 10 Sep 2020 13:07:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzzw9aMPcq155t7ZDUnKubuB1TNtLIa4SY5G1Y55XcRjhLoP/v+1YVnuHGfAviBvU8Gy52j
-X-Received: by 2002:a25:664e:: with SMTP id z14mr15206983ybm.12.1599768454706;
-        Thu, 10 Sep 2020 13:07:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599768454; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1653304lfq;
+        Thu, 10 Sep 2020 13:54:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGyJAP6Qx+ARh6+S24y7p0boHEBUe3HLuJhHH+tZ8eV6uFh4Gz57K3lZ7dZOI+klxpcrAi
+X-Received: by 2002:a25:408b:: with SMTP id n133mr15662021yba.5.1599771288963;
+        Thu, 10 Sep 2020 13:54:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599771288; cv=none;
         d=google.com; s=arc-20160816;
-        b=AUbyG7RND72Y20gclqKH77jXw/bJQeItrRT+geIZ4XpSBuW/5bmehqmqWH8g7IkDb8
-         WL3CzA83kJkk/jZta4SQwppA057Bm4NBi64MYeMnrTlaQmUQQnhXdTCn0X3hPcM/SYKG
-         3+SZ8Dgakb8iVxJl9nCpTFIqAGSpEevGLFMyObpgBjuPFPLLP4x4R6tR2XH0soFBMVdw
-         KoGZfKjSh3Av11LD49W3gKeQI/vRKC+bZyxc8jtw2px2eOIGvtRr0D0OrBmUAJkip91W
-         oUcFF6L9kFbzTNgm9UdnHL9dXhS1SYvEwkzp4CpEqUMjrsvmA+9IvQ4bJ0jfe0f3bHoo
-         f1rg==
+        b=lag70Vv4BmxLdlgCLVA3lpFjeplN3hqrSlnoqjzbcTyNI9H6VVneKD+8TJWkuDwbzs
+         U40Sjw3ugydnpvp0hqYFqASnAi68tFGSo8yV+r5KzaC8ieL4YuRoCM7qsFL4lSfCXDSg
+         +I8SIxO/tt6Wkr52IDvMkTC7VQRlO2fXgidhVT/nPxidTP8moBR9JwBdMZ/8AYIF5fCr
+         E28euk/J1E4YLAe6I4HYYq9N3littWAYAmiuVeceTi23cEy6Fe/WM0j1147l/VQvlXzS
+         c/58ogO81v6WW7jl2caChe/upNHS6Z3N/bgCoz2oQb0zzLqFnpiU5Rpa4LUWQZvfw//t
+         MN2w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=fW8bzViJ4jd05pRl/Y8evvWYM7mtG+uA4bF/5KP/HZo=;
-        b=UptexeDiFbfiwLnZcKvjSg1Koi+2RZvJ3vy+y0w/gS/9lOZmfm12CtuGruIDUU6lSQ
-         jL417d8pbkrZujPbhg0xYKN+8r9VSEssjfe1fQZv3xdw+AojnSgoDbJTTSDb6ip73mUQ
-         D5iKwQaPt1MSJ1AdzMDAQ3hEb+ehZTSB5ZiFEqh2ixaiVkyr/iwnkoyUvtnkY7omJYHg
-         QqzRC0RUCMImSc2yyshe7S5Gf/e+qCnB1qeSbrN10UczWRMEYcbvgAl32VPnEja/ADgq
-         9TWobcfcA2cxuNitNS4KzsVFm3els3QksTjrobmQTAJziosLE7v+fZIbhHCxYvfx2Wml
-         VQCg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=cE1BdjYokghhyZMf3x3eQ6C62qVX3CCpu206VY6CXYw=;
+        b=cajjEoIt6VRDfSW/eZCTXtc4ZdwdbNVzCcAhscy3tIOmbByNsKvsS8oS2IEH6rLh6u
+         7oRV5PbRLboijSC4ieDxm8ZhS7ibpmTQJXjs3Hmb/dKBv4PEP4q5WDVQPxpdmTTyNh15
+         +Dkdf45cISZL/50O1Zi6dukTBOocCNZ9Y6X7Rv6R36MonVkdCTg/CUtq/VCBuB4t6NwO
+         uJpF5jcul0UIabFbcjlI3icUist40Idwt9ouSV+EwNlAF3QhXyHzxupuIarZE3No+ALq
+         qR5Skf4zwWCLNEIia2ZKAvPHrrSpznO+xacXAueRMbmYRzGDQ0baPIyIArKIJBUFxcr0
+         PFCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WlPQjJzx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b2si10893yba.307.2020.09.10.13.07.34
+        by mx.google.com with ESMTPS id b6si114945ybj.183.2020.09.10.13.54.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Sep 2020 13:07:34 -0700 (PDT)
+        Thu, 10 Sep 2020 13:54:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:60978 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WlPQjJzx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:35052 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGSr0-0004ac-3R
-	for alex.bennee@linaro.org; Thu, 10 Sep 2020 16:07:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58258)
+	id 1kGTai-0004CQ-7U
+	for alex.bennee@linaro.org; Thu, 10 Sep 2020 16:54:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41022)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kGSqr-0004Yx-Pp; Thu, 10 Sep 2020 16:07:25 -0400
-Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:37023)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kGSqp-0002uR-Od; Thu, 10 Sep 2020 16:07:25 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.109.143.58])
- by mo804.mail-out.ovh.net (Postfix) with ESMTPS id 4F5C6603C73F;
- Thu, 10 Sep 2020 22:07:19 +0200 (CEST)
-Received: from kaod.org (37.59.142.98) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 10 Sep
- 2020 22:07:18 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-98R00245ff655a-f162-458d-8800-140f58925766,
- 8FE11AEDAF16247B821E16C08928A26F58BE1972) smtp.auth=clg@kaod.org
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-To: <qemu-devel@nongnu.org>
-Subject: [PATCH] hw/arm/aspeed: Add machine properties to define the flash
- models
-Date: Thu, 10 Sep 2020 22:07:15 +0200
-Message-ID: <20200910200715.1920318-1-clg@kaod.org>
-X-Mailer: git-send-email 2.25.4
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kGTaW-0004Bz-9u; Thu, 10 Sep 2020 16:54:36 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:44548)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kGTaU-0000Gl-EG; Thu, 10 Sep 2020 16:54:35 -0400
+Received: by mail-wr1-x443.google.com with SMTP id s12so8619432wrw.11;
+ Thu, 10 Sep 2020 13:54:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=cE1BdjYokghhyZMf3x3eQ6C62qVX3CCpu206VY6CXYw=;
+ b=WlPQjJzxALSekH5oXTiumyNvEUl6DS2pl5Pes6ebkKWyVXlPgCIJh3v3EIH430hfoa
+ Q0Udy/g/bPFBSZxtHseO9DstarVSW1AqN4wz6oQnmEPPE1efbhjMAnnBNF7A88eJFc5Z
+ Rn4XV0h9/WF2/aGUyGDG2flEi1g5hTBtewpMaD1Ab0r40oReSlZf+WYjjTYc4ayQ7twu
+ MNIEo5KjUBjoKjyffz0Fedi+ntt/IHxMG3uigJfIMzxMFxr7jfsXw2wwtdhQjFNJp6Hn
+ toIpXJwBvdqawwHALdsHDlQtDdAiNh1zCqmQ3T7d1JdxXiNf/hecF0KfmJtJYJaV3ew/
+ se/A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=cE1BdjYokghhyZMf3x3eQ6C62qVX3CCpu206VY6CXYw=;
+ b=hhaob8EwCcUJjfBmsTQXbBFv7LKFyVQw0b+2LYoVTVbXtzsV3z3HmwLEBFs7o6A+h1
+ KtNZLOXpJodnepvGWML/wp1iMWOo3M8RrpoNoTA+KpiiGZrLOKQjUsv9EUE0036zTiZ3
+ 53i/DnTkNMZq3hODTh8p/GhFS6gGJ/UAUNwOmhoEdzwrIyFoCf+ELhSVJituIYEQyH88
+ uOUyIiZ3jC8ck4nBz0sUgSIO7MYuEoB5v6wP5uKYLHyNVAYPDrDa6m3lJ8ARqiKDBupg
+ MZFwKBKho6Mf3ithCx6/au03o3/qq+C97wj7OI4mJUtTQ+khRbz/XHYlpDH1QE8X02Oy
+ HhRg==
+X-Gm-Message-State: AOAM533HLMo9YWqrE79RjOtvmefbpbvQT3RzTO1sk1sYSzr6BLZld9xz
+ EysJC8d7H0MDTpiPvEkN7BIyDI8ZZEY=
+X-Received: by 2002:a5d:5281:: with SMTP id c1mr10925441wrv.184.1599771271551; 
+ Thu, 10 Sep 2020 13:54:31 -0700 (PDT)
+Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id t1sm5089317wmi.16.2020.09.10.13.54.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 10 Sep 2020 13:54:30 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v5 0/7] hw/misc: Add LED device
+Date: Thu, 10 Sep 2020 22:54:22 +0200
+Message-Id: <20200910205429.727766-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.98]
-X-ClientProxiedBy: DAG2EX1.mxp5.local (172.16.2.11) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: 1383795e-b39c-4a49-81a8-8f75bc232971
-X-Ovh-Tracer-Id: 9760989245404711785
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgeduiedrudehjedgudeflecutefuodetggdotefrodftvfcurfhrohhfihhlvgemucfqggfjpdevjffgvefmvefgnecuuegrihhlohhuthemucehtddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenucfjughrpefhvffufffkofggtgfgihesthekredtredtjeenucfhrhhomhepveorughrihgtucfnvgcuifhorghtvghruceotghlgheskhgrohgurdhorhhgqeenucggtffrrghtthgvrhhnpeefvdeutddvieekkeeuhfekudejjefggffghfetgfelgfevveefgefhvdegtdelveenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleeknecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopegtlhhgsehkrghougdrohhrgh
-Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
- helo=smtpout1.mo804.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/10 16:07:20
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,101 +115,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?=E9=83=81=E9=9B=B7?= <yulei.sh@bytedance.com>, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Luc Michel <luc.michel@greensocs.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k7ajk4xa5Jxz
+X-TUID: KFMEaZS1AWuH
 
-Some machines don't have much differences a part from the flash model
-being used. Introduce new machine properties to change them from the
-command line.
+Hello,
 
-Cc: 郁雷 <yulei.sh@bytedance.com>
-Signed-off-by: Cédric Le Goater <clg@kaod.org>
----
- hw/arm/aspeed.c | 45 +++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 43 insertions(+), 2 deletions(-)
+These patches are part of the GSoC unselected 'QEMU visualizer'
+project.
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index 8bfb1c79ddc5..bdb981d2f878 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -41,6 +41,8 @@ struct AspeedMachineState {
-     MemoryRegion ram_container;
-     MemoryRegion max_ram;
-     bool mmio_exec;
-+    char *fmc_model;
-+    char *spi_model;
- };
- 
- /* Palmetto hardware value: 0x120CE416 */
-@@ -332,8 +334,10 @@ static void aspeed_machine_init(MachineState *machine)
-                           "max_ram", max_ram_size  - ram_size);
-     memory_region_add_subregion(&bmc->ram_container, ram_size, &bmc->max_ram);
- 
--    aspeed_board_init_flashes(&bmc->soc.fmc, amc->fmc_model);
--    aspeed_board_init_flashes(&bmc->soc.spi[0], amc->spi_model);
-+    aspeed_board_init_flashes(&bmc->soc.fmc, bmc->fmc_model ?
-+                              bmc->fmc_model : amc->fmc_model);
-+    aspeed_board_init_flashes(&bmc->soc.spi[0], bmc->spi_model ?
-+                              bmc->spi_model : amc->spi_model);
- 
-     /* Install first FMC flash content as a boot rom. */
-     if (drive0) {
-@@ -570,6 +574,34 @@ static void aspeed_machine_instance_init(Object *obj)
-     ASPEED_MACHINE(obj)->mmio_exec = false;
- }
- 
-+static char *aspeed_get_fmc_model(Object *obj, Error **errp)
-+{
-+    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
-+    return g_strdup(bmc->fmc_model);
-+}
-+
-+static void aspeed_set_fmc_model(Object *obj, const char *value, Error **errp)
-+{
-+    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
-+
-+    g_free(bmc->fmc_model);
-+    bmc->fmc_model = g_strdup(value);
-+}
-+
-+static char *aspeed_get_spi_model(Object *obj, Error **errp)
-+{
-+    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
-+    return g_strdup(bmc->spi_model);
-+}
-+
-+static void aspeed_set_spi_model(Object *obj, const char *value, Error **errp)
-+{
-+    AspeedMachineState *bmc = ASPEED_MACHINE(obj);
-+
-+    g_free(bmc->spi_model);
-+    bmc->spi_model = g_strdup(value);
-+}
-+
- static void aspeed_machine_class_props_init(ObjectClass *oc)
- {
-     object_class_property_add_bool(oc, "execute-in-place",
-@@ -577,6 +609,15 @@ static void aspeed_machine_class_props_init(ObjectClass *oc)
-                                    aspeed_set_mmio_exec);
-     object_class_property_set_description(oc, "execute-in-place",
-                            "boot directly from CE0 flash device");
-+
-+    object_class_property_add_str(oc, "fmc-model", aspeed_get_fmc_model,
-+                                   aspeed_set_fmc_model);
-+    object_class_property_set_description(oc, "fmc-model",
-+                                          "Change the FMC Flash model");
-+    object_class_property_add_str(oc, "spi-model", aspeed_get_spi_model,
-+                                   aspeed_set_spi_model);
-+    object_class_property_set_description(oc, "spi-model",
-+                                          "Change the SPI Flash model");
- }
- 
- static int aspeed_soc_num_cpus(const char *soc_name)
+This series introduce a LED device that can be easily connected
+to a GPIO output.
+
+Since v4:
+- Fixed typos (Luc)
+- Removed TYPE_TOSA_MISC_GPIO qdev conversion patch (Peter)
+
+Since v3:
+- Rebased (TYPE_TOSA_MISC_GPIO)
+- Rebased (Meson)
+- Addressed Richard's review comments
+- Improved doc/comments
+
+Since v2:
+- Rebased on PCA9552
+- Model intensity to be ready for PWM use (Dave)
+- Remove QMP events until we get a UI visualizer (Peter)
+- Remove microbit patch (Peter)
+
+Since v1: addressed Eric Blake review comments
+- Added QMP rate limit
+
+Next steps planned:
+
+- PoC visualizer...
+- look at using a dbus backend (elmarco)
+- look at LED array/matrix such 7segments.
+
+Regards,
+
+Phil.
+
+Philippe Mathieu-Daudé (7):
+  hw/misc/led: Add a LED device
+  hw/misc/led: Allow connecting from GPIO output
+  hw/misc/led: Emit a trace event when LED intensity has changed
+  hw/arm/aspeed: Add the 3 front LEDs drived by the PCA9552 #1
+  hw/misc/mps2-fpgaio: Use the LED device
+  hw/misc/mps2-scc: Use the LED device
+  hw/arm/tosa: Replace fprintf() calls by LED devices
+
+ include/hw/misc/led.h         |  92 +++++++++++++++++++
+ include/hw/misc/mps2-fpgaio.h |   2 +
+ include/hw/misc/mps2-scc.h    |   2 +
+ include/hw/qdev-core.h        |   8 ++
+ hw/arm/aspeed.c               |  20 +++++
+ hw/arm/tosa.c                 |  40 ++++-----
+ hw/misc/led.c                 | 161 ++++++++++++++++++++++++++++++++++
+ hw/misc/mps2-fpgaio.c         |  19 ++--
+ hw/misc/mps2-scc.c            |  25 +++---
+ MAINTAINERS                   |   6 ++
+ hw/arm/Kconfig                |   2 +
+ hw/misc/Kconfig               |   5 ++
+ hw/misc/meson.build           |   1 +
+ hw/misc/trace-events          |   6 +-
+ 14 files changed, 346 insertions(+), 43 deletions(-)
+ create mode 100644 include/hw/misc/led.h
+ create mode 100644 hw/misc/led.c
+
 -- 
-2.25.4
+2.26.2
 

@@ -1,248 +1,149 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1060487lfq;
-        Thu, 10 Sep 2020 00:02:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyaGJbwIwqz+XVFSGksdry42jkcAcY1C5iu2dAOATcd2dtshGoldDehl6RmnD02v6ogLnRV
-X-Received: by 2002:a17:906:c0ce:: with SMTP id bn14mr7733260ejb.422.1599721348239;
-        Thu, 10 Sep 2020 00:02:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599721348; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1070413lfq;
+        Thu, 10 Sep 2020 00:19:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx84rHNAVt3HSDdpwlm/NcBsxI6XU1sz5LciD7CV4EwW/8iIRx2ezfUV27dm0LXlA4mZmoO
+X-Received: by 2002:a25:98c2:: with SMTP id m2mr11725793ybo.125.1599722375141;
+        Thu, 10 Sep 2020 00:19:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599722375; cv=none;
         d=google.com; s=arc-20160816;
-        b=o7cCXxdKlJhAoXusd7zjdrTGAtoneZier8JosaoMPjKTSSVJ1yVOvJ+quJXCHmT0VO
-         222E109x65lH4qTFwrxRarqs78a7LIbNHeeqJ1kRPupOSwWNXmyGBO0B+sEmb2001iJM
-         jSCN08PFw14cK6mBjyAJDV30upYxALr28I776OFAHLUsHEyuKsB3f8DSF8rk9uIADcr6
-         +gPkW1Gh/AcQXjGrN5quoPzLfiX8V6CsgvVcQuijiyvURLO29f5Huv0XHIa737DHM8lR
-         paT701XzkzarTjv0rymbSQEAOy9iol1zz8RaI6VPM1T6Z5CLxrUCsug8bLtLq7e0lYXP
-         I/jg==
+        b=pn0OlbbuD9DQmlC6aTmYo4wFCX3t2vN3R9RHMvcqlE2GZSU6X/86QY9NUThhX5L/m4
+         Bw6HxhMp9Gd2syQBCpan0owlVtFtbeTN3ZWZiIUJPdFPp/OkopZxN38RmpyJPMRyDuCf
+         U/Jb+k0UTIoSWuN0urGkdvE7sGO91v7MULzPl+S1SwWJRzSxNS1LaBo1DhJgWHnUrjN7
+         iPwMg2spfHEU6fSgbgPEB0EC/QjdTBmMLI7fL8v/wFfmzVi4BKK5+BnNE6nThlOvthpx
+         9qu46A4z72WzEy8hTumo+DkQncJTE04kyCxNuYaRMoQq1oiFxcF/oz0IZRX/eWe2Q0pb
+         39gg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=O4TiFU/E5h3g7pzVC+3Y38BqYPnJSqtGxVteMoOcLyc=;
-        b=R+LfvrblFq7Aowy+m0dkHbuWIgEZMGKoMrr4vPrKwrX9ayuZGKMz7IVe2MrEq35fp4
-         ph/AqZY4XL3gcngUbxSXW68TEa8lk60nemm4GHD32NP8R3mXWVjeJouwzGIMAADwSKyA
-         xAXfiNNGmpuFnFw0MiGK2WQgXavroXKaxyzCT6XmGj3pefDrqcHOcM2wa5BxakMBOqfu
-         L0IU24xPQXUAT+heQ2yg9sroxeyu4wX/khh3Ut74KaKt+tKSJ0I9i9G+8fhZHhpyjeR7
-         ZmK7DEqK+8fejkggn074FKx6plHPxMJ64f81SfV2Z+6lPJIk5LB4TadquqaDXM9RFWyp
-         jWag==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=hl9W75JxTDTtLskPt/stSZrsAY40mzT8RpIuh3gAYM8=;
+        b=cwv+Bz3ddVh1S+bNkTveP0IhhuAK1Jdzy+2Hv9dDBxWd4sZJG8K6PFHqC6Ldei6pg6
+         L/rSQ31w7q9ovzB8y6R0y6d/ykDKY9V+zyBcrHMTQ7iXLsUYrjHIl049vZ0yAWj04/0n
+         ZNGZ8itJ5OYWlbJRMBhCDSMocWlJ/Ogpg6Jiqef2vqD5fdinkzNyKbtt23pC2ued9nNo
+         HePxJ7HJn+NjsgO6Ofpw3GM7b0ErrJUtzpBsdyOYJaVb7dxvNFiJe/F0kKVSHJS/Oi0P
+         9OeH/UKmm/a2aKidGJSDEq3S3r11tfXhpUdRU7UsxDTMa/ujbdz/1lhydSPFZfKoKRoZ
+         IJFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gYL6QD2N;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id r11si3005621eju.461.2020.09.10.00.02.27
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OSH6yXhX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id e194si4996644yba.368.2020.09.10.00.19.34
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 10 Sep 2020 00:02:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 10 Sep 2020 00:19:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gYL6QD2N;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1599721347;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=O4TiFU/E5h3g7pzVC+3Y38BqYPnJSqtGxVteMoOcLyc=;
-	b=gYL6QD2Npi/lBH4sLQF8EGmLYu2o5up0vmh1zPHJGYATKrEipq/xTEal4mWcdtlP+yNens
-	F94+6jaa8gN6XEOfOfFBZbLGNbwZUS8nlInfQwAt1B07OO/1EcYvUJvNa1ayqh4zEtlqfM
-	PhWE+pnclCr5cnes5kS5rh/9gNPDh2A=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-89-3xqAKHUOMQm55_R-duoxLg-1; Thu, 10 Sep 2020 03:02:03 -0400
-X-MC-Unique: 3xqAKHUOMQm55_R-duoxLg-1
-Received: by mail-wm1-f72.google.com with SMTP id m25so1309440wmi.0
-        for <alex.bennee@linaro.org>; Thu, 10 Sep 2020 00:02:03 -0700 (PDT)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OSH6yXhX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:58148 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kGGrm-0005F8-Ib
+	for alex.bennee@linaro.org; Thu, 10 Sep 2020 03:19:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35120)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kGGrf-0005EU-GW; Thu, 10 Sep 2020 03:19:27 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:36838)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kGGrd-0003mB-Vx; Thu, 10 Sep 2020 03:19:27 -0400
+Received: by mail-wr1-x442.google.com with SMTP id z1so5495874wrt.3;
+ Thu, 10 Sep 2020 00:19:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=hl9W75JxTDTtLskPt/stSZrsAY40mzT8RpIuh3gAYM8=;
+ b=OSH6yXhXOXySEYMz2e8nQsA5/aRUfCHxQiiph3jMk0dLG3cBHNWwuXkbc2SMICOY5H
+ xwZ5ZqzKdslIWvJdQ1bzCUdDoPaLyzAlssbhQuieXXWJS14ES22kB8bGI9pLuOh5297p
+ kQHHGK2y5LeEQt/wWPachckm679SRbDogtMYdle5OcLxm3QMDxH6rSM0vPLQWUgCyZWJ
+ Eii3G+yKHTx/e6ncrGrp58tIXSPnof7u+uoDm7sSxfzpqLq1uwXJsHh960XpzP83E/ph
+ DQF+cH3v0bh1s5dW0Byo2UEEJ1/TfSj2u9D9Hl9rLGejgK9xmD3tRK/tSBUGnqIOs0Q7
+ wBIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=O4TiFU/E5h3g7pzVC+3Y38BqYPnJSqtGxVteMoOcLyc=;
-        b=mzzVaO8OWfFTJPGfQhckLgX3DzVn8NT+9xyVBEcEi8cENRRw7Z/ra5Y0UakqV5Td0f
-         oo6det2CQk7Xk1YLpkTk96lX66XGdtLWMP9XOjS6MI12bbq1NsMNUwItyVvJzzyiPjYa
-         1vK8LaOqCuxgh2tKPPVkRfJDoKJXa7Cu9v9B6ZdKjLKbN8iPDApOCd0YmQmu99uZJ+AZ
-         vdxQpeAhK5yLsB7p5givE/bw9PMH5+8g5E1E64zXqhGII6IJEZy78LJAv5dxzFzDD6PR
-         +RVXZWNfUWSGfIJT91djD+UtrRVdxnwaGBuZmAMl5RIOAQWAIQBtrYuKu5lbmg64zg2B
-         TyXA==
-X-Gm-Message-State: AOAM533rQRQbQ0QJRY30LiJavxuxK5zBVqJHjiTUTz++7Q3rJ/apY1ZU
-	7pyizcEIx4O0CYUYjd2yaAv6EIACoMF/S5QSMGiMNTnk/fsMdgF6JGhUlI2AjRpaAOD4pX8nlVZ
-	ZIjlpsl4RolJP+/48
-X-Received: by 2002:a1c:c256:: with SMTP id s83mr7016236wmf.93.1599721322687;
-        Thu, 10 Sep 2020 00:02:02 -0700 (PDT)
-X-Received: by 2002:a1c:c256:: with SMTP id s83mr7016210wmf.93.1599721322497;
-        Thu, 10 Sep 2020 00:02:02 -0700 (PDT)
-Return-Path: <philmd@redhat.com>
-Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.65])
-        by smtp.gmail.com with ESMTPSA id z15sm7347660wrv.94.2020.09.10.00.02.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Sep 2020 00:02:01 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=hl9W75JxTDTtLskPt/stSZrsAY40mzT8RpIuh3gAYM8=;
+ b=NUacJEI9J19CdNo765xOqwT96ajth9QEug4rQOZH4ypO+4fMyzaQJ1bEwJ7uN2Cz+0
+ 9pXKifXfwfsGWyxmlhQgA60za07kMlJ1+NZNpmb/tpVnZSBfwYet8gCiuhPOh4iq66/+
+ NQ71/klqvymTU/c8ncpXYRifzvBlw2m5wkxJkNuEdvrggPU3DtRjodwHwv5ndMryiwei
+ YlaCx5O5Rrt/YQXmhXlqpiIi4dt76c9gKNrWgjdIUk08ZG9iXX5Xmu2JQpysVOEHKWXi
+ rDrbj5OeVeA9SoEI7TCrGMl/u9twpptocfXhRm87H13V5VF9L37m2fLPzJgRU6pEIqSr
+ RE7Q==
+X-Gm-Message-State: AOAM530IjvQfaGwA4RfHn63HPq0dOFdcyMrmja02qQ1Sp8a5b8hrsGOV
+ LL2jSC1KW/RDnw7cUpBLe5U=
+X-Received: by 2002:adf:cd0e:: with SMTP id w14mr8273326wrm.0.1599722363887;
+ Thu, 10 Sep 2020 00:19:23 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id k22sm7729642wrd.29.2020.09.10.00.19.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 10 Sep 2020 00:19:23 -0700 (PDT)
+Subject: Re: [PATCH 0/4] hw/sd/sdhci: Strengthen multiple DMA transfers
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
-	kvm@vger.kernel.org,
-	qemu-arm@nongnu.org,
-	Marcelo Tosatti <mtosatti@redhat.com>,
-	"Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>,
-	=?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
-	Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
-	Laurent Vivier <lvivier@redhat.com>,
-	Peter Maydell <peter.maydell@linaro.org>,
-	Andrew Jeffery <andrew@aj.id.au>,
-	Jason Wang <jasowang@redhat.com>,
-	Thomas Huth <thuth@redhat.com>,
-	Alistair Francis <alistair@alistair23.me>,
-	qemu-trivial@nongnu.org,
-	Eduardo Habkost <ehabkost@redhat.com>,
-	Richard Henderson <rth@twiddle.net>,
-	Joel Stanley <joel@jms.id.au>,
-	Paolo Bonzini <pbonzini@redhat.com>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH 5/6] hw/pci-host/q35: Rename PCI 'black hole as '(memory) hole'
-Date: Thu, 10 Sep 2020 09:01:30 +0200
-Message-Id: <20200910070131.435543-6-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200910070131.435543-1-philmd@redhat.com>
-References: <20200910070131.435543-1-philmd@redhat.com>
+References: <20200903172806.489710-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <f3c4c8e8-83f6-bd56-36fa-41ba5e2f2eba@amsat.org>
+Date: Thu, 10 Sep 2020 09:19:22 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0.003
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8;
-	text/plain; charset="utf-8"
+In-Reply-To: <20200903172806.489710-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: oC+H/+jUeO6s
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-3.576,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Alexander Bulekov <alxndr@bu.edu>, qemu-arm@nongnu.org,
+ Ruhr-University <bugs-syssec@rub.de>, Prasad J Pandit <pjp@fedoraproject.org>,
+ qemu-block@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ftxNbYIwYzMj
 
-In order to use inclusive terminology, rename "blackhole"
-as "(memory)hole".
+On 9/3/20 7:28 PM, Philippe Mathieu-Daudé wrote:
+> Still trying to fix the bugs reported by Aleksander...
+> 
+> - Do not send 0 block count
+> - Reduce DMA to MMIO re-entrancy by yielding when pending IRQ
+> 
+> Based-on: <20200901140411.112150-1-f4bug@amsat.org>
+> 
+> Philippe Mathieu-Daudé (4):
+>   hw/sd/sdhci: Stop multiple transfers when block count is cleared
+>   hw/sd/sdhci: Resume pending DMA transfers on MMIO accesses
+>   hw/sd/sdhci: Let sdhci_update_irq() return if IRQ was delivered
+>   hw/sd/sdhci: Yield if interrupt delivered during multiple transfer
+> 
+>  hw/sd/sdhci.c | 35 +++++++++++++++++++++++++++++++----
+>  1 file changed, 31 insertions(+), 4 deletions(-)
+> 
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- include/hw/pci-host/q35.h |  4 ++--
- hw/pci-host/q35.c         | 38 +++++++++++++++++++-------------------
- tests/qtest/q35-test.c    |  2 +-
- 3 files changed, 22 insertions(+), 22 deletions(-)
-
-diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
-index 070305f83df..0fb90aca18b 100644
---- a/include/hw/pci-host/q35.h
-+++ b/include/hw/pci-host/q35.h
-@@ -48,8 +48,8 @@ typedef struct MCHPCIState {
-     PAMMemoryRegion pam_regions[13];
-     MemoryRegion smram_region, open_high_smram;
-     MemoryRegion smram, low_smram, high_smram;
--    MemoryRegion tseg_blackhole, tseg_window;
--    MemoryRegion smbase_blackhole, smbase_window;
-+    MemoryRegion tseg_hole, tseg_window;
-+    MemoryRegion smbase_hole, smbase_window;
-     bool has_smram_at_smbase;
-     Range pci_hole;
-     uint64_t below_4g_mem_size;
-diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-index b67cb9c29f8..21f58ccfa28 100644
---- a/hw/pci-host/q35.c
-+++ b/hw/pci-host/q35.c
-@@ -266,20 +266,20 @@ static const TypeInfo q35_host_info = {
-  * MCH D0:F0
-  */
- 
--static uint64_t blackhole_read(void *ptr, hwaddr reg, unsigned size)
-+static uint64_t memoryhole_read(void *ptr, hwaddr reg, unsigned size)
- {
-     return 0xffffffff;
- }
- 
--static void blackhole_write(void *opaque, hwaddr addr, uint64_t val,
-+static void memoryhole_write(void *opaque, hwaddr addr, uint64_t val,
-                             unsigned width)
- {
-     /* nothing */
- }
- 
--static const MemoryRegionOps blackhole_ops = {
--    .read = blackhole_read,
--    .write = blackhole_write,
-+static const MemoryRegionOps memoryhole_ops = {
-+    .read = memoryhole_read,
-+    .write = memoryhole_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
-     .valid.min_access_size = 1,
-     .valid.max_access_size = 4,
-@@ -393,12 +393,12 @@ static void mch_update_smram(MCHPCIState *mch)
-     } else {
-         tseg_size = 0;
-     }
--    memory_region_del_subregion(mch->system_memory, &mch->tseg_blackhole);
--    memory_region_set_enabled(&mch->tseg_blackhole, tseg_size);
--    memory_region_set_size(&mch->tseg_blackhole, tseg_size);
-+    memory_region_del_subregion(mch->system_memory, &mch->tseg_hole);
-+    memory_region_set_enabled(&mch->tseg_hole, tseg_size);
-+    memory_region_set_size(&mch->tseg_hole, tseg_size);
-     memory_region_add_subregion_overlap(mch->system_memory,
-                                         mch->below_4g_mem_size - tseg_size,
--                                        &mch->tseg_blackhole, 1);
-+                                        &mch->tseg_hole, 1);
- 
-     memory_region_set_enabled(&mch->tseg_window, tseg_size);
-     memory_region_set_size(&mch->tseg_window, tseg_size);
-@@ -456,7 +456,7 @@ static void mch_update_smbase_smram(MCHPCIState *mch)
-     } else {
-         lck = false;
-     }
--    memory_region_set_enabled(&mch->smbase_blackhole, lck);
-+    memory_region_set_enabled(&mch->smbase_hole, lck);
-     memory_region_set_enabled(&mch->smbase_window, lck);
-     memory_region_transaction_commit();
- }
-@@ -601,13 +601,13 @@ static void mch_realize(PCIDevice *d, Error **errp)
-     memory_region_set_enabled(&mch->high_smram, true);
-     memory_region_add_subregion(&mch->smram, 0xfeda0000, &mch->high_smram);
- 
--    memory_region_init_io(&mch->tseg_blackhole, OBJECT(mch),
--                          &blackhole_ops, NULL,
--                          "tseg-blackhole", 0);
--    memory_region_set_enabled(&mch->tseg_blackhole, false);
-+    memory_region_init_io(&mch->tseg_hole, OBJECT(mch),
-+                          &memoryhole_ops, NULL,
-+                          "tseg-hole", 0);
-+    memory_region_set_enabled(&mch->tseg_hole, false);
-     memory_region_add_subregion_overlap(mch->system_memory,
-                                         mch->below_4g_mem_size,
--                                        &mch->tseg_blackhole, 1);
-+                                        &mch->tseg_hole, 1);
- 
-     memory_region_init_alias(&mch->tseg_window, OBJECT(mch), "tseg-window",
-                              mch->ram_memory, mch->below_4g_mem_size, 0);
-@@ -619,13 +619,13 @@ static void mch_realize(PCIDevice *d, Error **errp)
-      * This is not what hardware does, so it's QEMU specific hack.
-      * See commit message for details.
-      */
--    memory_region_init_io(&mch->smbase_blackhole, OBJECT(mch), &blackhole_ops,
--                          NULL, "smbase-blackhole",
-+    memory_region_init_io(&mch->smbase_hole, OBJECT(mch), &memoryhole_ops,
-+                          NULL, "smbase-hole",
-                           MCH_HOST_BRIDGE_SMBASE_SIZE);
--    memory_region_set_enabled(&mch->smbase_blackhole, false);
-+    memory_region_set_enabled(&mch->smbase_hole, false);
-     memory_region_add_subregion_overlap(mch->system_memory,
-                                         MCH_HOST_BRIDGE_SMBASE_ADDR,
--                                        &mch->smbase_blackhole, 1);
-+                                        &mch->smbase_hole, 1);
- 
-     memory_region_init_alias(&mch->smbase_window, OBJECT(mch),
-                              "smbase-window", mch->ram_memory,
-diff --git a/tests/qtest/q35-test.c b/tests/qtest/q35-test.c
-index b7cf1449906..7cddd0a7f61 100644
---- a/tests/qtest/q35-test.c
-+++ b/tests/qtest/q35-test.c
-@@ -231,7 +231,7 @@ static void test_smram_smbase_lock(void)
-         qpci_config_writeb(pcidev, MCH_HOST_BRIDGE_F_SMBASE, i);
-         g_assert(qpci_config_readb(pcidev, MCH_HOST_BRIDGE_F_SMBASE) == 0x02);
- 
--        /* RAM access should go into black hole */
-+        /* RAM access should go into memory hole */
-         qtest_writeb(qts, SMBASE, SMRAM_TEST_PATTERN);
-         g_assert_cmpint(qtest_readb(qts, SMBASE), ==, 0xff);
-     }
--- 
-2.26.2
+ping for review?

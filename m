@@ -1,112 +1,112 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1655420lfq;
-        Thu, 10 Sep 2020 13:58:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxS71gmdHblhOOcQVR3JgRsEvYQeqQ1ajGuBZOLJDdFTCITni24piOcHl6y7Q7OWpE23l8E
-X-Received: by 2002:a25:7042:: with SMTP id l63mr13748783ybc.394.1599771489417;
-        Thu, 10 Sep 2020 13:58:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599771489; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1761853lfq;
+        Thu, 10 Sep 2020 16:52:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy3PxgEHuAQolM/K98AfXHyFSlYdD4zjAToHUmqNocr+hqlpS/rF7/UGysomF67YKHsORJ/
+X-Received: by 2002:a25:df8d:: with SMTP id w135mr128391ybg.194.1599781954595;
+        Thu, 10 Sep 2020 16:52:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599781954; cv=none;
         d=google.com; s=arc-20160816;
-        b=cycdmnOYRjN/QSqEOjgmsKk0xVvd1GwW8fH9gEsu9zNZKUHJTD7DTSQCDZYxuGCMf0
-         nYepv/Q/JKBFTxf29GwscWvWF0XOG8+rneQ1cGjIdbr3nBF8N0yPbNhpB4gR4LcIC/3l
-         P0aC4mmmspHEqTqC1ADEwL9iiKoHsqcF2y/MJ1o6uZDfUFoVWHO9lKMvEM2q4g3usd31
-         SeUPW4ySY+2lnVW3X9zIE5Kl9QkuQNc1U7iTqQ9popya74qu7X2g/YNQX9iVh2Mc+oTj
-         o2Faw1KFdGVUWGqYUBeGAatIt30+FosF0opvNzHlPPJf6AdKCJFHVP/nyh7QPgxG13a4
-         rkgQ==
+        b=Cqaobw45XyLZ6GPyLoIO8Lc1kax5/VnuySM9DYXIe4pdq7ecGFjc1NBXJeafMUrWRF
+         9USws/4FrjSHDMhBi0P+/HhFwBokACYrK0MnhIeRmbbrLxFNbi+cm7i3khfMK9UOC7vI
+         JVdM+CtonVn4Q+/yNWHhLwuu3vPKqAxkqYcUoiGFCPPD86ZtmZMwXCvmHsh4NxDUnSGa
+         NIIU45dd3vK4OwB7iMNkQTM9EoMs9ltFxZ4KhLRzeXmLDBeFdaheyXn5Gv+Cm2AULCix
+         FmNrJ+kF9CI2RBl3+Rw0GjhFoAaLju6rxY4HOJqKByDSOuQD5LRhUPC+9B29a/3qdXEb
+         ZPiQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=vnMbp0E6IauzdwSblFJxUFoyT1SAl8asRcn4brlYdgU=;
-        b=xHbHLzSCZPGCNiavVmIBwZCiz7zdOQ2L6vxuiBz3q3voHNA5cvrzPf5p0IrkbIIfLk
-         bjUZTFftQzjQNN8eW8o66ikQucFAjfWNjCjjB83p8FYz7LUclKTSK0bD0fkgWvsyVWNO
-         HlNDkkgJxKmz6TocUyQgKJHjb/QISHovULsNwacRCQWEHx/pVSB52w/pnzSG2xKn+Xa0
-         UYP52pI+aDLx/vPyEQHgMNU/rCSUjOrQg3EqQmwfFAgZQpsVg9l7/OeDmzTsB7SdZMjy
-         g3glTN6o7mJANIrXgLE4npv8jVtUFidzPHGzIRDvwiR+YudpururRRs0A6vY5GIwgui5
-         e8+g==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
+         :from:in-reply-to:references:mime-version:dkim-signature;
+        bh=yIOTfsure3msuKXwPAVb2H7BrCPQYzZ1Pzv0Rbq7S3k=;
+        b=z4ITDKZn4CH3i63bTfLQRcvV4lL2Nt1LwG8I4Mvu8wpzO5XF9fKrdvng8nC0wc/bD4
+         0roZkd6v+R78HPZlkXx9wBk8vjeMPP/bgMosh44VpiB2V18f5pA1GAugFkD8eH8wczY6
+         kXr2WxtYRsnEzwL5//uqxy8nkcj42Zi0FCe2ChMCYR31joS9hFY7VvQXMNu39bV8776J
+         U2u0imQgR6fOe25gn75s15rykrUQUbf1SswzhTtLgRv5fVp/nROuBnF5t8kRhQ6xpieO
+         95v9sjF+bdHrvn9C/jFGC/L5Unh4XvWQvjOYS3n05h1gQA91EVcRcYkL1JOQ7dlYFCyg
+         0cNw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="XV/kzY7R";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=nMHkZG4L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e18si100521ybp.450.2020.09.10.13.58.09
+        by mx.google.com with ESMTPS id z14si411424ybp.423.2020.09.10.16.52.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Sep 2020 13:58:09 -0700 (PDT)
+        Thu, 10 Sep 2020 16:52:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="XV/kzY7R";
+       dkim=pass header.i=@google.com header.s=20161025 header.b=nMHkZG4L;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:51620 helo=lists1p.gnu.org)
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:49324 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGTdw-0002ZP-MI
-	for alex.bennee@linaro.org; Thu, 10 Sep 2020 16:58:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41086)
+	id 1kGWMj-0001yd-TV
+	for alex.bennee@linaro.org; Thu, 10 Sep 2020 19:52:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46358)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kGTac-0004H2-6T; Thu, 10 Sep 2020 16:54:42 -0400
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:46814)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1kGWMc-0001yS-TO
+ for qemu-arm@nongnu.org; Thu, 10 Sep 2020 19:52:26 -0400
+Received: from mail-vk1-xa42.google.com ([2607:f8b0:4864:20::a42]:42416)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kGTaZ-0000Hk-W0; Thu, 10 Sep 2020 16:54:41 -0400
-Received: by mail-wr1-x42f.google.com with SMTP id o5so8593428wrn.13;
- Thu, 10 Sep 2020 13:54:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=vnMbp0E6IauzdwSblFJxUFoyT1SAl8asRcn4brlYdgU=;
- b=XV/kzY7Rl5zm+9oYL6HBoDbfOFK8NMcdGh4lEQSoNJ2nc/om3QgskwbeKSCivkQ5V/
- GlbhDfh3bm4wDe2y/0L+bxwg1UXcTW6zuzOMnsMRKkqPEy2f8b5pkymq4BMlGXeGTEUO
- MhftaWIPF9kfezdWA5biVEyHUOw2demUTgXQWxzWR1d3SH6a6UMCnUozVt8K6vzwE+ec
- 2eENy/AkaNNpxvuWoLN+Cpk2sWBh0L12vRFryRh0OHxCH7pCGQb9Dg/BY3UxVF2Rz+Y9
- ZzNP1GXUiNWbnjh9g8IwhvBlvarlEXGn9/lzvlGIU5ds3fZgix6JnSMukccCPakV/34T
- LvCQ==
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1kGWMa-0005Ax-LI
+ for qemu-arm@nongnu.org; Thu, 10 Sep 2020 19:52:26 -0400
+Received: by mail-vk1-xa42.google.com with SMTP id b4so1982629vkh.9
+ for <qemu-arm@nongnu.org>; Thu, 10 Sep 2020 16:52:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=yIOTfsure3msuKXwPAVb2H7BrCPQYzZ1Pzv0Rbq7S3k=;
+ b=nMHkZG4L41inxZ1a9huMiZDgTqXrJdZi1a5Hphy30s5K2VjkdFdQiHAJS1DSBqytXo
+ PH61rTYn77iOPCeDYJOaooeYLXjiKSeWeV1hztyy7gkK00Jg5OctQOjiIYM8SRrFaJqn
+ MB9nDZcRNea5/JswFpZpLxaTHRf7Akvj4ExEzrx95/6DPIDWvY+HSWyJ6xcCRpNUc930
+ j1Tv04BtUZkTiVJmdNjXUWx6eufeNIG/TNrnDgENtstM9KZvir0vut0hGMsAtkWGEkc1
+ k9Z2iyjK+ttuki4O/uvhATk7uWRrI543PaL9Mkj+jZMoxq0QgtjVu9Iqa1dzgdBXyB7D
+ Yp6A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=vnMbp0E6IauzdwSblFJxUFoyT1SAl8asRcn4brlYdgU=;
- b=mDdKO/Tl0B7pH3/mjFQ/riXC1EE+rRrkXZ/+HNlyAdqbxZObQ35+lt+OKGhhxh4AQh
- GOoD6TKc7Ndqa5rn1HWugeBAUELvcwqxXxLogUjXTV4+PE7r8ArzTGAmjohBhlakjJN7
- qg5Je7IIfFGAVqsfzOPSr3horvl8p10uLVMQreMHE2yp5TpYte6pLrh4QOlKpJLi8kDY
- RjAgP5YdjjYCBfciidRWSQ4WpvbTQPRBxoy2aMpzby76XbS29aGoGZbPOQj2MlpR6aYc
- BH9Ahi9/luG/FL3jrNFKm5lw8jEGTUQcwIZq92z0hEtbDiiIvgrl0xHcX6T42+BexdpX
- 1rag==
-X-Gm-Message-State: AOAM532W7Ls3r4hz8G2yWMMRzUnujAbnKoMQObyHEWpw8tOaqEoHYUAK
- O3/JRUgbHxit7hRliQgXBck+FJOJkCo=
-X-Received: by 2002:adf:f58b:: with SMTP id f11mr10910155wro.250.1599771278004; 
- Thu, 10 Sep 2020 13:54:38 -0700 (PDT)
-Received: from x1w.redhat.com (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id t1sm5089317wmi.16.2020.09.10.13.54.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Sep 2020 13:54:37 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v5 5/7] hw/misc/mps2-fpgaio: Use the LED device
-Date: Thu, 10 Sep 2020 22:54:27 +0200
-Message-Id: <20200910205429.727766-6-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20200910205429.727766-1-f4bug@amsat.org>
-References: <20200910205429.727766-1-f4bug@amsat.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=yIOTfsure3msuKXwPAVb2H7BrCPQYzZ1Pzv0Rbq7S3k=;
+ b=il5I8Ga0cCNUTuQAlnWyZgcY3uMelmNm2/N1OM/vtAO3G/nwRekt68Xx8tvtWHmcgF
+ 62zsKsyG43u62hPuWGrwkIcjVrhz7PVC9Wgy6uTV40fOWGOPrv5WtU6wjUbj0p57L3I+
+ zTkg8YJxHwMdM9SEaZJ9MUbPntSMtgVBXUuFVtlUatAZGr3Mx6ciiWwWNM9iKeMxBpG8
+ nrQN5VNA5oc027AqM/91qzQW5asAVheN55ni5hVlme7wzT9jiJ2W5+NY9zNq+41oqAft
+ 60yFTsJcK0evLSi/S/76D4cFRCNtTPMk84KtWY4UfNIu4IgPSc3waTVaYZKvQ7JZUlBh
+ lPnw==
+X-Gm-Message-State: AOAM531Y8sNuMLsD2zqHZf3gy8tEahX1HmLE9ab9otIBi7kLXQeXUgmP
+ BpKfaL2dUrq+nMRkHFj+mMR7IRIOgswCGirIeNEpXQ==
+X-Received: by 2002:a1f:ad94:: with SMTP id w142mr3091347vke.8.1599781942111; 
+ Thu, 10 Sep 2020 16:52:22 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
+References: <20200825001711.1340443-1-hskinnemoen@google.com>
+ <20200825001711.1340443-8-hskinnemoen@google.com>
+ <af0b3d23-41d8-4c46-1156-973d653d8064@amsat.org>
+In-Reply-To: <af0b3d23-41d8-4c46-1156-973d653d8064@amsat.org>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Thu, 10 Sep 2020 16:52:10 -0700
+Message-ID: <CAFQmdRY00+izZSRfV_pbO3xvFrQqrgaCMaSHdmmSapJM6fv-fQ@mail.gmail.com>
+Subject: Re: [PATCH v8 07/14] hw/arm: Load -bios image as a boot ROM for
+ npcm7xx
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+ QEMU Developers <qemu-devel@nongnu.org>,
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
+ CS20 KFTing <kfting@nuvoton.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: multipart/alternative; boundary="00000000000061343a05aefe424e"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a42;
+ envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,141 +119,295 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Luc Michel <luc.michel@greensocs.com>, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dZyvy4mFmIW3
+X-TUID: ASdMvV84Nqux
 
-Per the 'ARM MPS2 and MPS2+ FPGA Prototyping Boards Technical
-Reference Manual' (100112_0200_07_en):
+--00000000000061343a05aefe424e
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-  2.1  Overview of the MPS2 and MPS2+ hardware
+On Thu, Sep 3, 2020 at 11:59 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g>
+wrote:
 
-       The MPS2 and MPS2+ FPGA Prototyping Boards contain the
-       following components and interfaces:
+> On 8/25/20 2:17 AM, Havard Skinnemoen via wrote:
+> > If a -bios option is specified on the command line, load the image into
+> > the internal ROM memory region, which contains the first instructions
+> > run by the CPU after reset.
+> >
+> > If -bios is not specified, the vbootrom included with qemu is loaded by
+> > default.
+> >
+> > Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+> > Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+> > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+> > ---
+> >  hw/arm/npcm7xx_boards.c | 33 +++++++++++++++++++++++++++++++++
+> >  1 file changed, 33 insertions(+)
+> >
+> > diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+> > index 0b9dce2b35..b67e45e913 100644
+> > --- a/hw/arm/npcm7xx_boards.c
+> > +++ b/hw/arm/npcm7xx_boards.c
+> > @@ -18,12 +18,43 @@
+> >
+> >  #include "hw/arm/npcm7xx.h"
+> >  #include "hw/core/cpu.h"
+> > +#include "hw/loader.h"
+> >  #include "qapi/error.h"
+> > +#include "qemu-common.h"
+> >  #include "qemu/units.h"
+> > +#include "sysemu/sysemu.h"
+> >
+> >  #define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7
+> >  #define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff
+> >
+> > +static const char npcm7xx_default_bootrom[] =3D "npcm7xx_bootrom.bin";
+> > +
+> > +static void npcm7xx_load_bootrom(MachineState *machine, NPCM7xxState
+> *soc)
+> > +{
+> > +    g_autofree char *filename =3D NULL;
+> > +    int ret;
+> > +
+> > +    if (machine->kernel_filename) {
+> > +        /* Don't load the bootrom if user requested direct kernel boot=
+.
+> */
+> > +        return;
+>
+> Wondering why not load it always if available, and what would
+> happen if booting from a kernel (without bootrom) and running
+> "reboot" (via SysRq) in the guest I got:
+>
+> # echo b > /proc/sysrq-trigger
+> sysrq: Resetting
+> CPU0: stopping
+> CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.4.32-7dc9442-dirty-8978043 #1
+> Hardware name: NPCM7XX Chip family
+> Backtrace:
+> [<b0107c4c>] (dump_backtrace) from [<b010823c>] (show_stack+0x20/0x24)
+>  r7:00000000 r6:600f0193 r5:00000000 r4:b0b5b1b8
+> [<b010821c>] (show_stack) from [<b077b230>] (dump_stack+0x94/0xa8)
+> [<b077b19c>] (dump_stack) from [<b010a20c>] (handle_IPI+0x1f0/0x38c)
+>  r7:00000000 r6:00000004 r5:b0b5eb64 r4:b0b729e0
+> [<b010a01c>] (handle_IPI) from [<b0102264>] (gic_handle_irq+0x9c/0xa0)
+>  r10:10c5387d r9:b0b01ef8 r8:d0803100 r7:d0802100 r6:d080210c r5:b0b37db4
+>  r4:b0b04504
+> [<b01021c8>] (gic_handle_irq) from [<b0101a8c>] (__irq_svc+0x6c/0x90)
+> Exception stack(0xb0b01ef8 to 0xb0b01f40)
+> 1ee0:                                                       00000000
+> 00012f74
+> 1f00: cfbc1774 b01112e0 b0b00000 00000000 b0b03e28 b0b03e6c b0b5e72c
+> b08e5ea8
+> 1f20: 10c5387d b0b01f54 b0b01f58 b0b01f48 b0104114 b0104118 600f0013
+> ffffffff
+>  r9:b0b00000 r8:b0b5e72c r7:b0b01f2c r6:ffffffff r5:600f0013 r4:b0104118
+> [<b01040d4>] (arch_cpu_idle) from [<b014b240>] (do_idle+0xec/0x140)
+> [<b014b154>] (do_idle) from [<b014b56c>] (cpu_startup_entry+0x28/0x2c)
+>  r9:410fc090 r8:0810c000 r7:00000000 r6:b0a53a40 r5:00000001 r4:000000ce
+> [<b014b544>] (cpu_startup_entry) from [<b0794f6c>] (rest_init+0xb4/0xbc)
+> [<b0794eb8>] (rest_init) from [<b0a00c50>] (arch_call_rest_init+0x18/0x1c=
+)
+>  r5:00000001 r4:b0b72754
+> [<b0a00c38>] (arch_call_rest_init) from [<b0a010f4>]
+> (start_kernel+0x428/0x458)
+> [<b0a00ccc>] (start_kernel) from [<00000000>] (0x0)
+> Reboot failed -- System halted
+>
+> So not a problem so far...
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>
+> But still I'd keep loading the bootrom regardless -kernel.
+>
 
-       * User switches and user LEDs:
+So you mean something like this?
 
-         - Two green LEDs and two push buttons that connect to
-           the FPGA.
-         - Eight green LEDs and one 8-way dip switch that connect
-           to the MCC.
+@@ -35,11 +35,6 @@ static void npcm7xx_load_bootrom(MachineState *machine,
+NPCM7xxState *soc)
+     g_autofree char *filename =3D NULL;
+     int ret;
 
-Add the 2 LEDs connected to the FPGA.
+-    if (machine->kernel_filename) {
+-        /* Don't load the bootrom if user requested direct kernel boot. */
+-        return;
+-    }
+-
+     if (!bios_name) {
+         bios_name =3D npcm7xx_default_bootrom;
+     }
+@@ -47,7 +42,11 @@ static void npcm7xx_load_bootrom(MachineState *machine,
+NPCM7xxState *soc)
+     filename =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, bios_name);
+     if (!filename) {
+         error_report("Could not find ROM image '%s'", bios_name);
+-        exit(1);
++        if (!machine->kernel_filename) {
++            /* We can't boot without a bootrom or a kernel image. */
++            exit(1);
++        }
++        return;
+     }
+     ret =3D load_image_mr(filename, &soc->irom);
+     if (ret < 0) {
 
-This remplaces the 'mps2_fpgaio_leds' trace events by the generic
-'led_set_intensity' event.
+I'm not sure if it will make much of a difference, as (IIUC)
+arm_load_kernel installs a reset hook to jump directly into the kernel,
+bypassing the bootrom entirely. I'm assuming a watchdog or SW reset would
+trigger the same reset hook and jump right back into the kernel, though I
+could be wrong.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/misc/mps2-fpgaio.h |  2 ++
- hw/misc/mps2-fpgaio.c         | 19 ++++++++++++++-----
- hw/misc/Kconfig               |  1 +
- hw/misc/trace-events          |  1 -
- 4 files changed, 17 insertions(+), 6 deletions(-)
+Anyway, I can make the above change in any case.
 
-diff --git a/include/hw/misc/mps2-fpgaio.h b/include/hw/misc/mps2-fpgaio.h
-index 69e265cd4b2..901880cc3a7 100644
---- a/include/hw/misc/mps2-fpgaio.h
-+++ b/include/hw/misc/mps2-fpgaio.h
-@@ -22,6 +22,7 @@
- #define MPS2_FPGAIO_H
- 
- #include "hw/sysbus.h"
-+#include "hw/misc/led.h"
- 
- #define TYPE_MPS2_FPGAIO "mps2-fpgaio"
- #define MPS2_FPGAIO(obj) OBJECT_CHECK(MPS2FPGAIO, (obj), TYPE_MPS2_FPGAIO)
-@@ -32,6 +33,7 @@ typedef struct {
- 
-     /*< public >*/
-     MemoryRegion iomem;
-+    LEDState *led[2];
- 
-     uint32_t led0;
-     uint32_t prescale;
-diff --git a/hw/misc/mps2-fpgaio.c b/hw/misc/mps2-fpgaio.c
-index 2f3fbeef348..86ca78eb235 100644
---- a/hw/misc/mps2-fpgaio.c
-+++ b/hw/misc/mps2-fpgaio.c
-@@ -24,6 +24,7 @@
- #include "migration/vmstate.h"
- #include "hw/registerfields.h"
- #include "hw/misc/mps2-fpgaio.h"
-+#include "hw/misc/led.h"
- #include "hw/qdev-properties.h"
- #include "qemu/timer.h"
- 
-@@ -176,12 +177,9 @@ static void mps2_fpgaio_write(void *opaque, hwaddr offset, uint64_t value,
- 
-     switch (offset) {
-     case A_LED0:
--        /* LED bits [1:0] control board LEDs. We don't currently have
--         * a mechanism for displaying this graphically, so use a trace event.
--         */
--        trace_mps2_fpgaio_leds(value & 0x02 ? '*' : '.',
--                               value & 0x01 ? '*' : '.');
-         s->led0 = value & 0x3;
-+        led_set_state(s->led[0], value & 0x01);
-+        led_set_state(s->led[1], value & 0x02);
-         break;
-     case A_PRESCALE:
-         resync_counter(s);
-@@ -251,6 +249,16 @@ static void mps2_fpgaio_init(Object *obj)
-     sysbus_init_mmio(sbd, &s->iomem);
- }
- 
-+static void mps2_fpgaio_realize(DeviceState *dev, Error **errp)
-+{
-+    MPS2FPGAIO *s = MPS2_FPGAIO(dev);
-+
-+    s->led[0] = led_create_simple(OBJECT(dev), GPIO_POLARITY_ACTIVE_HIGH,
-+                                  LED_COLOR_GREEN, "USERLED0");
-+    s->led[1] = led_create_simple(OBJECT(dev), GPIO_POLARITY_ACTIVE_HIGH,
-+                                  LED_COLOR_GREEN, "USERLED1");
-+}
-+
- static bool mps2_fpgaio_counters_needed(void *opaque)
- {
-     /* Currently vmstate.c insists all subsections have a 'needed' function */
-@@ -299,6 +307,7 @@ static void mps2_fpgaio_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     dc->vmsd = &mps2_fpgaio_vmstate;
-+    dc->realize = mps2_fpgaio_realize;
-     dc->reset = mps2_fpgaio_reset;
-     device_class_set_props(dc, mps2_fpgaio_properties);
- }
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 5c151fa3a83..0cecad45aad 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -93,6 +93,7 @@ config MIPS_ITU
- 
- config MPS2_FPGAIO
-     bool
-+    select LED
- 
- config MPS2_SCC
-     bool
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 89d15f05f9a..43b9e0cf250 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -93,7 +93,6 @@ mps2_scc_cfg_read(unsigned function, unsigned device, uint32_t value) "MPS2 SCC
- mps2_fpgaio_read(uint64_t offset, uint64_t data, unsigned size) "MPS2 FPGAIO read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- mps2_fpgaio_write(uint64_t offset, uint64_t data, unsigned size) "MPS2 FPGAIO write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- mps2_fpgaio_reset(void) "MPS2 FPGAIO: reset"
--mps2_fpgaio_leds(char led1, char led0) "MPS2 FPGAIO LEDs: %c%c"
- 
- # msf2-sysreg.c
- msf2_sysreg_write(uint64_t offset, uint32_t val, uint32_t prev) "msf2-sysreg write: addr 0x%08" PRIx64 " data 0x%" PRIx32 " prev 0x%" PRIx32
--- 
-2.26.2
+Havard
 
+--00000000000061343a05aefe424e
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">On Thu, Sep 3, 2020 at 11:59 AM Philippe =
+Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.org</=
+a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"gmai=
+l_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,20=
+4,204);padding-left:1ex">On 8/25/20 2:17 AM, Havard Skinnemoen via wrote:<b=
+r>
+&gt; If a -bios option is specified on the command line, load the image int=
+o<br>
+&gt; the internal ROM memory region, which contains the first instructions<=
+br>
+&gt; run by the CPU after reset.<br>
+&gt; <br>
+&gt; If -bios is not specified, the vbootrom included with qemu is loaded b=
+y<br>
+&gt; default.<br>
+&gt; <br>
+&gt; Reviewed-by: Tyrone Ting &lt;<a href=3D"mailto:kfting@nuvoton.com" tar=
+get=3D"_blank" class=3D"cremed">kfting@nuvoton.com</a>&gt;<br>
+&gt; Reviewed-by: C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.org"=
+ target=3D"_blank" class=3D"cremed">clg@kaod.org</a>&gt;<br>
+&gt; Signed-off-by: Havard Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@goo=
+gle.com" target=3D"_blank" class=3D"cremed">hskinnemoen@google.com</a>&gt;<=
+br>
+&gt; ---<br>
+&gt;=C2=A0 hw/arm/npcm7xx_boards.c | 33 +++++++++++++++++++++++++++++++++<b=
+r>
+&gt;=C2=A0 1 file changed, 33 insertions(+)<br>
+&gt; <br>
+&gt; diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c<br>
+&gt; index 0b9dce2b35..b67e45e913 100644<br>
+&gt; --- a/hw/arm/npcm7xx_boards.c<br>
+&gt; +++ b/hw/arm/npcm7xx_boards.c<br>
+&gt; @@ -18,12 +18,43 @@<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 #include &quot;hw/arm/npcm7xx.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/core/cpu.h&quot;<br>
+&gt; +#include &quot;hw/loader.h&quot;<br>
+&gt;=C2=A0 #include &quot;qapi/error.h&quot;<br>
+&gt; +#include &quot;qemu-common.h&quot;<br>
+&gt;=C2=A0 #include &quot;qemu/units.h&quot;<br>
+&gt; +#include &quot;sysemu/sysemu.h&quot;<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 #define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7<br>
+&gt;=C2=A0 #define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff<br>
+&gt;=C2=A0 <br>
+&gt; +static const char npcm7xx_default_bootrom[] =3D &quot;npcm7xx_bootrom=
+.bin&quot;;<br>
+&gt; +<br>
+&gt; +static void npcm7xx_load_bootrom(MachineState *machine, NPCM7xxState =
+*soc)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 g_autofree char *filename =3D NULL;<br>
+&gt; +=C2=A0 =C2=A0 int ret;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 if (machine-&gt;kernel_filename) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 /* Don&#39;t load the bootrom if user req=
+uested direct kernel boot. */<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
+<br>
+Wondering why not load it always if available, and what would<br>
+happen if booting from a kernel (without bootrom) and running<br>
+&quot;reboot&quot; (via SysRq) in the guest I got:<br>
+<br>
+# echo b &gt; /proc/sysrq-trigger<br>
+sysrq: Resetting<br>
+CPU0: stopping<br>
+CPU: 0 PID: 0 Comm: swapper/0 Not tainted 5.4.32-7dc9442-dirty-8978043 #1<b=
+r>
+Hardware name: NPCM7XX Chip family<br>
+Backtrace:<br>
+[&lt;b0107c4c&gt;] (dump_backtrace) from [&lt;b010823c&gt;] (show_stack+0x2=
+0/0x24)<br>
+=C2=A0r7:00000000 r6:600f0193 r5:00000000 r4:b0b5b1b8<br>
+[&lt;b010821c&gt;] (show_stack) from [&lt;b077b230&gt;] (dump_stack+0x94/0x=
+a8)<br>
+[&lt;b077b19c&gt;] (dump_stack) from [&lt;b010a20c&gt;] (handle_IPI+0x1f0/0=
+x38c)<br>
+=C2=A0r7:00000000 r6:00000004 r5:b0b5eb64 r4:b0b729e0<br>
+[&lt;b010a01c&gt;] (handle_IPI) from [&lt;b0102264&gt;] (gic_handle_irq+0x9=
+c/0xa0)<br>
+=C2=A0r10:10c5387d r9:b0b01ef8 r8:d0803100 r7:d0802100 r6:d080210c r5:b0b37=
+db4<br>
+=C2=A0r4:b0b04504<br>
+[&lt;b01021c8&gt;] (gic_handle_irq) from [&lt;b0101a8c&gt;] (__irq_svc+0x6c=
+/0x90)<br>
+Exception stack(0xb0b01ef8 to 0xb0b01f40)<br>
+1ee0:=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A000000000<br>
+00012f74<br>
+1f00: cfbc1774 b01112e0 b0b00000 00000000 b0b03e28 b0b03e6c b0b5e72c<br>
+b08e5ea8<br>
+1f20: 10c5387d b0b01f54 b0b01f58 b0b01f48 b0104114 b0104118 600f0013<br>
+ffffffff<br>
+=C2=A0r9:b0b00000 r8:b0b5e72c r7:b0b01f2c r6:ffffffff r5:600f0013 r4:b01041=
+18<br>
+[&lt;b01040d4&gt;] (arch_cpu_idle) from [&lt;b014b240&gt;] (do_idle+0xec/0x=
+140)<br>
+[&lt;b014b154&gt;] (do_idle) from [&lt;b014b56c&gt;] (cpu_startup_entry+0x2=
+8/0x2c)<br>
+=C2=A0r9:410fc090 r8:0810c000 r7:00000000 r6:b0a53a40 r5:00000001 r4:000000=
+ce<br>
+[&lt;b014b544&gt;] (cpu_startup_entry) from [&lt;b0794f6c&gt;] (rest_init+0=
+xb4/0xbc)<br>
+[&lt;b0794eb8&gt;] (rest_init) from [&lt;b0a00c50&gt;] (arch_call_rest_init=
++0x18/0x1c)<br>
+=C2=A0r5:00000001 r4:b0b72754<br>
+[&lt;b0a00c38&gt;] (arch_call_rest_init) from [&lt;b0a010f4&gt;]<br>
+(start_kernel+0x428/0x458)<br>
+[&lt;b0a00ccc&gt;] (start_kernel) from [&lt;00000000&gt;] (0x0)<br>
+Reboot failed -- System halted<br>
+<br>
+So not a problem so far...<br>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.=
+org" target=3D"_blank" class=3D"cremed">f4bug@amsat.org</a>&gt;<br>
+<br>
+But still I&#39;d keep loading the bootrom regardless -kernel.<br></blockqu=
+ote><div><br></div><div>So you mean something like this?</div><div><br></di=
+v><div>@@ -35,11 +35,6 @@ static void npcm7xx_load_bootrom(MachineState *ma=
+chine, NPCM7xxState *soc)<br>=C2=A0 =C2=A0 =C2=A0g_autofree char *filename =
+=3D NULL;<br>=C2=A0 =C2=A0 =C2=A0int ret;<br>=C2=A0<br>- =C2=A0 =C2=A0if (m=
+achine-&gt;kernel_filename) {<br>- =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Don&#39;t =
+load the bootrom if user requested direct kernel boot. */<br>- =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0return;<br>- =C2=A0 =C2=A0}<br>-<br>=C2=A0 =C2=A0 =C2=A0if=
+ (!bios_name) {<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0bios_name =3D npcm7xx_=
+default_bootrom;<br>=C2=A0 =C2=A0 =C2=A0}<br></div><div>@@ -47,7 +42,11 @@ =
+static void npcm7xx_load_bootrom(MachineState *machine, NPCM7xxState *soc)<=
+br>=C2=A0 =C2=A0 =C2=A0filename =3D qemu_find_file(QEMU_FILE_TYPE_BIOS, bio=
+s_name);<br>=C2=A0 =C2=A0 =C2=A0if (!filename) {<br>=C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0error_report(&quot;Could not find ROM image &#39;%s&#39;&quot;=
+, bios_name);<br>- =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>+ =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0if (!machine-&gt;kernel_filename) {<br>+ =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0/* We can&#39;t boot without a bootrom or a kernel imag=
+e. */<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0exit(1);<br>+ =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0}<br>+ =C2=A0 =C2=A0 =C2=A0 =C2=A0return;<br>=C2=A0 =C2=
+=A0 =C2=A0}<br>=C2=A0 =C2=A0 =C2=A0ret =3D load_image_mr(filename, &amp;soc=
+-&gt;irom);<br>=C2=A0 =C2=A0 =C2=A0if (ret &lt; 0) {<br></div><div>=C2=A0</=
+div><div>I&#39;m not sure if it will make much of a difference, as (IIUC) a=
+rm_load_kernel installs a reset hook to jump directly into the kernel, bypa=
+ssing the bootrom entirely. I&#39;m assuming a watchdog or SW reset would t=
+rigger the same reset hook and jump right back into the kernel, though I co=
+uld be wrong.</div><div><br></div><div>Anyway, I can make the above change =
+in any case.</div><div><br></div><div>Havard=C2=A0</div></div></div>
+
+--00000000000061343a05aefe424e--

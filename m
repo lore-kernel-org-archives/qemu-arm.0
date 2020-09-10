@@ -1,144 +1,154 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1080959lfq;
-        Thu, 10 Sep 2020 00:38:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzCk3x3Veg+e2ba/HBZPnwqXDh+jv9yCB3F+T/Vhxcn+HC8GAZVOYZ//0M2mIQfcaFSGyEk
-X-Received: by 2002:a1c:b608:: with SMTP id g8mr7536133wmf.106.1599723518673;
-        Thu, 10 Sep 2020 00:38:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599723518; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1131686lfq;
+        Thu, 10 Sep 2020 02:08:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxceG/1TZIC4YOtSHfgv4CAIiTjnELl9MNkUAUjYKEMChfaGEr089naUUFdCwQhQmpSzVnj
+X-Received: by 2002:a17:906:b0a:: with SMTP id u10mr7631508ejg.226.1599728887490;
+        Thu, 10 Sep 2020 02:08:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599728887; cv=none;
         d=google.com; s=arc-20160816;
-        b=xTW5OvSaSelvdqkvdYydTBIYb7w73iQnUVoyorACaE1MCquvh/qQ4oexN4moPyJNUi
-         mU/bKbgoN0Kxb89ie8v/R5SNZSDEhM2WPU3tDIQz1DV3cg4EMAzWK/n7kMEsWM6dCmOx
-         gtd45HUcifrROG6imIYWOGFz3eTx9jVLFeU72nmL8KtLcmGJE24EIjSxGQAW2ULnKeoA
-         VxnhDaG2ePSFWeScIYWl1qjTvciC9TxGm/UG9qOd5xmR2c17VmJ3jmz83aM6BukPCr3u
-         5W0MfBKejBMU3WxjhafOwrjLd1YKr72Ogkno7oAR3Opd9qbeHin01WcyxpohuMKjueIS
-         Tl/Q==
+        b=weq9/QCG/MOJH++X8s/gHulxk+3oAFfNwEp0P68Dg02HSt+h4x9/nn0mcKWEHClF0S
+         8GK6TL2I6vgho8+eXMfXYb9QOs2WDSs7wJcsxl/O+OT+b5uLYvqEm8XuTZhGU5XxXy+m
+         df2Csq1aTMGE5Mob1d4fxGFgz5NAtSPxUL0KWSWqL3G8APw6Z3mkrHuhQA2UBDrat6wX
+         RE1D+ZXS7EyWHyExkj7GocNmhpBYiSkwONJ8XthHnVOqfg85f2whgkA3K9WmsQk4BnRm
+         k4GS4sqH/y3fajj2h0UoEf41Rcwg6EKy7pDRj6V3IKw3pW0P8kHp3opQunikF2qU/QKJ
+         K/tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:subject:autocrypt:from:references:cc:to;
-        bh=Wy4jmgLJt+W/SEpsZ/12Wu/5u9SXfEvc9bOBdHcR09A=;
-        b=jNFE9zf+i9FiHtMI0g9huQ4w7SKizFiaayh3bpGCYtitarYvRIUqMkpf7HLedJ8mom
-         VzvWw+mF/EDEuf/OrSmOtp0lKEDZhuatdeGFCvZesi3hkF5jNz8S/LJRlZK7use2yDlQ
-         /EMV2fS0wFcbQCq5uZjAN9AlSIrad2oINIFCYqBAVc25tpPpJHwb54EfafCGYLbMWI43
-         SDAmUqEG/SFJik/ill6xOOx643ON5wZCCpc6lM5STzj2bpYq6VqY71eo7Wp0iZ/G4Hdc
-         cX3so9PM2sxkJBk8O5c3aWjNJqpF7mmnhp6XtCu829JvATAsfzBWJae7zENdmS9dXDq8
-         lDiA==
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=MPFIhvjjZZMrZtxtj2VIAvzFKsc4panpciSld1za2uc=;
+        b=iDgtXLQxNNu+5ERCXGFRe6teKQqNh1XMp70Ec/D36BnCaDf4nXVrd6YoPx/HRpo3DP
+         XDGyEpcWmoWKaR1J8Bb7EOlyJ3LbgwTBEcz0YulNYUmPHsieG1kD1DIMwmWqh15i3aee
+         KBRr58FSnBqC/n5/Oz/I+gjkXpIEWuYGcldJvA2FjAepLdoE5AaJfmL13TN+Pb2fZTNA
+         CYFOvxzbM1pO0a13jh8EUl6gjvY/0BXSddbQNhXNpo6sxDMq9+JbVHZKXAJuq7SMhCvo
+         yYHlneZgvZ+SlnxsajOvq/zL4QtUsa6JII8H1D4pLA0MrPx1J4GqO12tC3J5HFe+bG1Y
+         Mgig==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Return-Path: <laurent@vivier.eu>
-Received: from mout.kundenserver.de (mout.kundenserver.de. [217.72.192.75])
-        by mx.google.com with ESMTPS id 131si1430827wma.62.2020.09.10.00.38.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 10 Sep 2020 00:38:38 -0700 (PDT)
-Received-SPF: neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) client-ip=217.72.192.75;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PbNBbNtz;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-1.mimecast.com (us-smtp-2.mimecast.com. [207.211.31.81])
+        by mx.google.com with ESMTPS id n4si3095408edo.589.2020.09.10.02.08.07
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 10 Sep 2020 02:08:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 207.211.31.81 as permitted sender) client-ip=207.211.31.81;
 Authentication-Results: mx.google.com;
-       spf=neutral (google.com: 217.72.192.75 is neither permitted nor denied by best guess record for domain of laurent@vivier.eu) smtp.mailfrom=laurent@vivier.eu
-Received: from [192.168.100.1] ([82.252.148.206]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MuDTn-1kWIPW1PIL-00uXuW; Thu, 10 Sep 2020 09:38:35 +0200
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Eduardo Habkost <ehabkost@redhat.com>, kvm@vger.kernel.org,
- "Michael S. Tsirkin" <mst@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Jason Wang <jasowang@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>,
- Joel Stanley <joel@jms.id.au>, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PbNBbNtz;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 207.211.31.81 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1599728886;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=MPFIhvjjZZMrZtxtj2VIAvzFKsc4panpciSld1za2uc=;
+	b=PbNBbNtzypN38UrlgI3Al1yihPnpqqVg3617doEpaUR7vlQ5x6B3oZ2XRyIEhMH1Z5DE6e
+	RIRB+mS4DyQ4z2nC+b1+1kjHlADfBRIq1FNchk6pi+o5KvenLwbvGynA7h/HrBoFbOs25u
+	XQ2jQF7Y9oqyw6Oxhp+hjbEXnuYgmRY=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-519-hGXaoZBhNBy_2Nl7-ado7g-1; Thu, 10 Sep 2020 05:08:02 -0400
+X-MC-Unique: hGXaoZBhNBy_2Nl7-ado7g-1
+Received: by mail-ej1-f71.google.com with SMTP id b17so2464057ejb.20
+        for <alex.bennee@linaro.org>; Thu, 10 Sep 2020 02:08:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=MPFIhvjjZZMrZtxtj2VIAvzFKsc4panpciSld1za2uc=;
+        b=kRwIJxtopkPhMmQ9lryU2MmqTdr8m6J8X2mtv/3uimdYDR+r67scObIWUuDfVsG80Z
+         7KuSEaqX1a/e4Kq4QcZJ6aACcJbCd+k0RzXO8laxc5fFb6woHCtGOxZGLJ+U1Dz+tMaL
+         C60EfZepH+aiOxt29HXfmofXOV8j70S/5VRg3nH4BJbTQBdyJJqCLkhB+F78oWsRvCgq
+         rHsZcG9kO23uswsN/zWiWoRxgcJY8kGty+JpNPOYC6YB5hmzk3cTuKJ+YZ8YgLtIXjEi
+         EJOrHEhtmJAMQjXUoN9ywWoSx+kEJpXRiC1rYbCb87yIlD45pW92rJsy7MYf0TJQJDdx
+         0UHQ==
+X-Gm-Message-State: AOAM53355JO3q9ytAciW1y6Cibf4qm5nxLnaHVdtZc+Mn1EXsJvao2cN
+	2F1xXW9DXiHzgcL+R6/Q/1M719Ve7tHXjqsspfR/eqbPfycGDh83D1En9jn5KnUanzk6ZBLax81
+	4x87p6a1b5sxdfzg+
+X-Received: by 2002:aa7:d15a:: with SMTP id r26mr8264334edo.181.1599728881628;
+        Thu, 10 Sep 2020 02:08:01 -0700 (PDT)
+X-Received: by 2002:aa7:d15a:: with SMTP id r26mr8264297edo.181.1599728881331;
+        Thu, 10 Sep 2020 02:08:01 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from ?IPv6:2001:b07:6468:f312:2744:1c91:fa55:fa01? ([2001:b07:6468:f312:2744:1c91:fa55:fa01])
+        by smtp.gmail.com with ESMTPSA id lr14sm6284398ejb.0.2020.09.10.02.08.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 10 Sep 2020 02:08:00 -0700 (PDT)
+Subject: Re: [PATCH 6/6] target/i386/kvm: Rename host_tsx_blacklisted() as
+ host_tsx_broken()
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <philmd@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ kvm@vger.kernel.org, qemu-arm@nongnu.org,
+ Marcelo Tosatti <mtosatti@redhat.com>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Richard Henderson <rth@twiddle.net>
+ "Michael S. Tsirkin" <mst@redhat.com>, =?UTF-8?Q?C=c3=a9dric_Le_Goater?=
+ <clg@kaod.org>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Laurent Vivier <lvivier@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ Jason Wang <jasowang@redhat.com>, Alistair Francis <alistair@alistair23.me>,
+ qemu-trivial@nongnu.org, Eduardo Habkost <ehabkost@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Joel Stanley <joel@jms.id.au>
 References: <20200910070131.435543-1-philmd@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Subject: Re: [PATCH 0/6] misc: Some inclusive terminology changes
-Message-ID: <fc0df054-2212-df74-f561-d52976870e55@vivier.eu>
-Date: Thu, 10 Sep 2020 09:38:31 +0200
+ <20200910070131.435543-7-philmd@redhat.com>
+ <118a4cae-f220-8224-52ac-26a1795ac071@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <cfc1c6be-8569-4150-6deb-136f930285ee@redhat.com>
+Date: Thu, 10 Sep 2020 11:08:05 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200910070131.435543-1-philmd@redhat.com>
+In-Reply-To: <118a4cae-f220-8224-52ac-26a1795ac071@redhat.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0.003
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:3XPYXZnEL9oBPvi6dynCc9QtpVdL2UdAuLgu56r8dUYGYYgIE/w
- TDtIb9kjbb+hq2fYweKecxQ6MfdStqf36I8WOi4WEaIkplEst799DqjCnUw7niZOYAZgzvj
- NrkFUMBVwdyQUDwlg0L6VFQ5ogU0uRayMkhaMsUoIoEqO9V1R325jTPUMnP+ZRsGboLaQyY
- CfWleSDitg5zEMMTV0GUQ==
-X-Spam-Flag: NO
-X-UI-Out-Filterresults: notjunk:1;V03:K0:q+hO28sWeus=:Im/mAeAzGp3eHnfvBbfJYu
- UHOGR6hRqEn+c5SfTGsvsF1RYgm7eSzvAKvHBHDaWAXHxKinfVZQMhuinKK3jlDY8ApZR2RqY
- Qcceuylgu2LzSydkVDncHS0tzt3yh5/XYgqmGD4BhC0K5csjd23tECAjia03fKKkY2zOQ/oPv
- Pmv2iKTN/LA0gFpWpY4kmsUUICV7mhBjIhU6DDghaMh5OAr13MWvAGhZxraVYycwLW6rVdNqX
- DU10dwLWmNTk4t1xL87gVoO7nJf889QVtQk31dQDWP0phWQ1BKQmBppN573ccrVjVQfP7e/Eq
- 0FbTGJTxtcIHkEk4ZDgfqKZgBDax82jge21GY1Lcp9+Fbz9TPZGnXNQUPM+npxHNYwFkW3s1M
- ernksuYMhk9GG638VldG8MQ5q+UcMs8MRL9SCJkLAiECmVoBob5q7R08wykPyf3IJ55Boj7gS
- j6jLZwgclCJm+oyJCsba1RrGHmujJgajSKE09cOHT+B+uUlzuPFPvRqwd9dH8jq0d7HXoOSZz
- 5WOqcWuT2sg2l3uMeJiT9gcxtDXwEkbdtQ04U9FFtDxHhUPV44/LMcpQH7aVu1SqTP267kTbq
- pBbDErgrnNo/eUgnd911qgt/XWTpy7mcQejHnTX33sv/jEq+6El/CH4rPWQv9iXyiUNgLJmeW
- W6x/4sTxmVf2ghWzViQ+QnY0AtXJUnAuInzvaSyHYEz9TNF55GrVyMseN1knFSwpoehaFsfIR
- JcxP1iLQFfsLSotnzlLKPOr3FAyhsnEVJo0tO45Jf04b2h+3f86QYnv4qT5ALgLmDug24vhSJ
- 4Fy1l78ZUbcVcjMuGLBAkUCM8rrUYDu3ZLJwpHbmyN9Aep9S95VZaFBdivqdk9AK1GDn0tM
-X-TUID: 2VwVUbO+BOAd
+Content-Language: en-US
+X-TUID: Bk6FkiXFeYo8
 
-Le 10/09/2020 à 09:01, Philippe Mathieu-Daudé a écrit :
-> We don't have (yet?) inclusive terminology guidelines,
-> but the PCI hole memory is not "black", the DMA sources
-> don't stream to "slaves", and there isn't really a TSX
-> "black" list, we only check for broken fields.
+On 10/09/20 09:08, Thomas Huth wrote:
+> On 10/09/2020 09.01, Philippe Mathieu-Daudé wrote:
+>> In order to use inclusive terminology, rename host_tsx_blacklisted()
+>> as host_tsx_broken().
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>  target/i386/kvm.c | 4 ++--
+>>  1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/target/i386/kvm.c b/target/i386/kvm.c
+>> index 205b68bc0ce..3d640a8decf 100644
+>> --- a/target/i386/kvm.c
+>> +++ b/target/i386/kvm.c
+>> @@ -302,7 +302,7 @@ static int get_para_features(KVMState *s)
+>>      return features;
+>>  }
+>>  
+>> -static bool host_tsx_blacklisted(void)
+>> +static bool host_tsx_broken(void)
+>>  {
+>>      int family, model, stepping;\
+>>      char vendor[CPUID_VENDOR_SZ + 1];
+>> @@ -408,7 +408,7 @@ uint32_t kvm_arch_get_supported_cpuid(KVMState *s, uint32_t function,
+>>      } else if (function == 6 && reg == R_EAX) {
+>>          ret |= CPUID_6_EAX_ARAT; /* safe to allow because of emulated APIC */
+>>      } else if (function == 7 && index == 0 && reg == R_EBX) {
+>> -        if (host_tsx_blacklisted()) {
+>> +        if (host_tsx_broken()) {
+>>              ret &= ~(CPUID_7_0_EBX_RTM | CPUID_7_0_EBX_HLE);
+>>          }
+>>      } else if (function == 7 && index == 0 && reg == R_EDX) {
+>>
 > 
-> As this terms can be considered offensive, and changing
-> them is a no-brain operation, simply do it.
+> Looking at commit 40e80ee4113, the term "broken" seems to be a good
+> replacement here.
+> 
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 > 
 
-These changes are technically trivial but they are not from an ethical
-point of view. I will add to the trivial branch only if they are acked
-by their own maintainers.
-
-Moreover, I think we should have a project level guideline before doing
-that to be sure everyone agrees.
-
-Thanks,
-Laurent
+Acked-by: Paolo Bonzini <pbonzini@redhat.com>

@@ -1,103 +1,106 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1941430lfq;
-        Thu, 10 Sep 2020 22:24:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFidQDVhRnq2eHL/hJe9kRAaAuLg6k3g98wqgN5WulnzxCEjSLiVgn3bIwPyX7K50EtY8R
-X-Received: by 2002:a05:6902:505:: with SMTP id x5mr153557ybs.49.1599801878150;
-        Thu, 10 Sep 2020 22:24:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599801878; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1941667lfq;
+        Thu, 10 Sep 2020 22:25:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw/tdIBmYz01IHOloUiRlsoMwpcvogtFTbg9a/cgzphLYPc64DK/F094cOxnKurj+gttpNf
+X-Received: by 2002:ad4:430d:: with SMTP id c13mr430596qvs.49.1599801910052;
+        Thu, 10 Sep 2020 22:25:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599801910; cv=none;
         d=google.com; s=arc-20160816;
-        b=n36U4Ei/TX/HNae32hkWlCJqcR1TfvM0PNfPZAQKK8w1Clsj8MY3En1DCw20eLhUSz
-         obw2hHyMZdNflBmDAZxcloqlI5zoVa49WGCZSQBZS618DMQxBIYbqfUiTUDpVrPNbNbE
-         MSBWeC0VEbnA1+3BHp0cVH7ClXNH8RQ/751z0G72cr12plZALxhbw+vQS2p++b5tpXaN
-         0BIrm9vh+Ks6OOtSyGTs6GVJFqg2o9ehyZjGxaCBikDe45xZRTLUPjDX/LvNR23IBa/0
-         OllwXFp8W2ppHBlldk3h/mVwY/cTf1qsIfPOGR5m103ngJpporuafY/yJE2A+KvARcUH
-         sCZA==
+        b=EjaDEK1hS0NmDmPkvLRngghM46OzGTisvu1fe6QmThVfX0Wj2i9pc/H43L5z267shc
+         l3Jgx7+ftjDqxPdacwtEkZr6j8QYQUUmrj+HZC8FVRlMt5ctdS4MLs38cX1GhjQ5cHjJ
+         7Yk0tkX9tDb4bw/p6YL309kiwKR0X/ADPYK2vcL4BPTS2BNtkfciyWpjb3Ql3eoEZerI
+         1n85Y+dozOaLM9phMkKi85oaqaDc6xxvqsErQsaRrQIIigdWVVW40Up0qQdZAW5pSSbB
+         qb9+2XCxiL4EY2GXL9QNVJCShWsWSVEbmRFrKmfSiXhkuzmFm1j3hx1UpAZRsrvzFGxj
+         wXCw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence
          :content-transfer-encoding:cc:to:subject:references:mime-version
          :message-id:in-reply-to:date:dkim-signature;
-        bh=TUfG/ppYVHfWx5/gI+xD8w0XrnvIampp1qtuo77C6r4=;
-        b=MJXrxBJw/UmIV1TnVFHsp0T3pvv2Kqi+9YeCNmaOx9QK3wY/55t1LPA67fGGjVvmBO
-         a8cj1pdgDbPkNoZxaKclJt6QifP7LBNSli5zXkiKB6485OsRzQVXhDZbYGXUR+jnHInC
-         6L9ebi0G+AUVnHSk9BKwWI/kwfiW3Yqm50OduvY+F9fE5wBMz4GDbyamuJtENUPpqabd
-         qF79cPUbJ7ONBLKIm3GjQF2cIOahf2MqpjIjJcSh7N9fzi3IftaAGqwo6Up4RaSO1bHG
-         aSXgGRLWbzn7Zw0yRV1Jjyt55FuN50tAS1r79oY3L7nkQgIcSjuXm0/NpHiFP/FO4bsO
-         9wCQ==
+        bh=YOrl7QRjHT0JAJTy57fDIpmabWtCrZiSBV/eTlMUOFc=;
+        b=ZqlzURZw7WZWrD2+9Wkrm1X2U7z8xrCnylCMMefRcGMzxt57ne2dvrfOZ3omJ1mZtk
+         fXQOkqZttQ33+Muef6UGASDIMQ/TWGJ50AnDQ3VcahuCWI6yxasV/61hsUpSWgvbMGBk
+         kOjMhcD+DLyhhn31glSLUSJaGgLo5F/f3qIddtBHOfaSPoGfndBx4WLMgP9acDASsE+b
+         f5/o5hdUt7o5vFW2Oga2nSaT2xIrxyI0/OmLxczrOdDVP5WxTZYUWO0EcByIIIZyLpzM
+         r2at/GJAQfVwU797H2SXt3XUZyqOiwm60CWeJBsMBxRYT9GDGkQ83EajYCKJyobTbmIb
+         SQ1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=l3x6ZCat;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@google.com header.s=20161025 header.b=lgtlDW3p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q6si1084315ybm.163.2020.09.10.22.24.37
+        by mx.google.com with ESMTPS id r11si667324qtm.85.2020.09.10.22.25.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Sep 2020 22:24:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 10 Sep 2020 22:25:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=l3x6ZCat;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36196 helo=lists1p.gnu.org)
+       dkim=fail header.i=@google.com header.s=20161025 header.b=lgtlDW3p;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:40952 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGbY5-0003S4-HG
-	for alex.bennee@linaro.org; Fri, 11 Sep 2020 01:24:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52366)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kGbYb-0005M1-Cy
+	for alex.bennee@linaro.org; Fri, 11 Sep 2020 01:25:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52272)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3VglbXwsKCtU8JB9EE5DF5E7FF7C5.3FDH5DL-45M5CEFE7EL.FI7@flex--hskinnemoen.bounces.google.com>)
- id 1kGbV4-0006co-3i
- for qemu-devel@nongnu.org; Fri, 11 Sep 2020 01:21:30 -0400
-Received: from mail-qv1-xf49.google.com ([2607:f8b0:4864:20::f49]:43360)
+ <3UAlbXwsKCM82D5388z79z819916z.x97Bz7F-vC789818F.9C1@flex--hskinnemoen.bounces.google.com>)
+ id 1kGbUz-0006Pj-2g
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2020 01:21:25 -0400
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a]:41187)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3VglbXwsKCtU8JB9EE5DF5E7FF7C5.3FDH5DL-45M5CEFE7EL.FI7@flex--hskinnemoen.bounces.google.com>)
- id 1kGbV1-0002Oa-Ut
- for qemu-devel@nongnu.org; Fri, 11 Sep 2020 01:21:29 -0400
-Received: by mail-qv1-xf49.google.com with SMTP id v14so4677787qvq.10
- for <qemu-devel@nongnu.org>; Thu, 10 Sep 2020 22:21:27 -0700 (PDT)
+ <3UAlbXwsKCM82D5388z79z819916z.x97Bz7F-vC789818F.9C1@flex--hskinnemoen.bounces.google.com>)
+ id 1kGbUv-0002NF-Q5
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2020 01:21:24 -0400
+Received: by mail-pf1-x44a.google.com with SMTP id x2so6123966pfd.8
+ for <qemu-arm@nongnu.org>; Thu, 10 Sep 2020 22:21:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:in-reply-to:message-id:mime-version:references:subject
  :from:to:cc:content-transfer-encoding;
- bh=TUfG/ppYVHfWx5/gI+xD8w0XrnvIampp1qtuo77C6r4=;
- b=l3x6ZCatVWG5CtcBNtzVZJNZ1L9XlA3XasXTThnoRPO2xdxZGefzqzDbweBF8KS5hy
- 5R1IhN8hysDcRzdchJQwpKzqPdoeQZeQC8tk8g1XufbUuvYhmFVP42YCtokRULNDcEwq
- Jtwli6eZlRKsPORj13Z2mdlUTXoKIEgnAV533DNgfybcpIx1xIUbI8U7+fwrCmz2q7Rl
- zo2/OC/DxXq+M/zJy7EccSzjW110QRfmhbZgRPp0ybW+V9G0/OW9m3WZHU08vBb/ljAp
- 64+c8WkJLaXnBt680kw3k5aBL6AiBHelBVvuxxRYSmIwq1NwPwk/WyaMnSee+kNG34fh
- ORvA==
+ bh=YOrl7QRjHT0JAJTy57fDIpmabWtCrZiSBV/eTlMUOFc=;
+ b=lgtlDW3pu1ZDvp4lDZeaWKPRDU1lrbQaV1D+7FBb90jbCZvE4PUcr0MmCJPJzZipJB
+ 1PatkN0IGApC4XiXDLWzCwgejMKflEUvMvBISbzHCZFQvYWAoioeOcqEbdQwVjiZ/gHR
+ Tg5P4L5hED75P+sORpeM2UPJabDV2UjQCsI09fuIe4idWXXxqWAeNI1+ozASOqjGWyLp
+ Cx82s6YFwWF52kMMis2x8jyL+6b8f7qFqpDxs2jz04OsnN0UCEJgEDJeMMewJaRWD7Qt
+ IHaQwg/CF5UResKH6tC7MiYC8ldP10GnkSZekYI8NKspMzl6VVFrG2scDXMgedz9c0IO
+ 3vhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc:content-transfer-encoding;
- bh=TUfG/ppYVHfWx5/gI+xD8w0XrnvIampp1qtuo77C6r4=;
- b=fIVYxzsPA5AOcMbPU53nFPba4RBm/7zbSAis/YXbZt2tq3BG5/EGvTDvfgJBjEmDd8
- MK+rP5q7hPhNuhCofKb4R7nfrBaAKay7jBItYjYyQuBRGFUfX55snpaCWFv/rqjt/Ns+
- yNAujWcEWT+mHenI5nEliYr50NvVlO6RxlOb8VXU2aMZ5OWs3oh5iu68mpFUKNfCSgIE
- 72bfwoocNaYB/GLxpMxMfUaeiJe/iXEGlK6cI137jNdkBISJn/5mwFFdzZ9bMPQ5/xIO
- 62lXk4UhkqI/WCEjYXOyi8R9/d3tt3sqZuXTGErnPVgebE4C3XN670lput9gfMgF0K6s
- R2Jg==
-X-Gm-Message-State: AOAM532svRoi0ihpO5n+i4fOdp7dwqMAnm1GS8EH8ObxWk/OXMwhpeok
- 27d8JU+Cc9WbzsVG+f+dybMGXiEeFAY9//KU5A==
+ bh=YOrl7QRjHT0JAJTy57fDIpmabWtCrZiSBV/eTlMUOFc=;
+ b=sQJFL1MeNyzQfR6MlDL9hZMdk9d93gwdjMgkZgvuWsNH7hTNqsBVVbRBQRyPZdNPyP
+ 0LfFnAdZMoJVeqNbvG+WZAgdk1Me8SSsihAjsPVGjxtZx+is+nBIfwm/QaEhPeHLVgiN
+ 8zNi9H1k0aplkGSWIkXPJnzMZl89DiibMZ4xv+3Gw/ky1GDGqlEzEy+m+1CHnbIxcIRD
+ Y4AD8/9xO4R4iAHn+3ag+3lZ1T1lS6UebNQsC5XAESyooymcUkfjfI4rMkrSPiAJYaNQ
+ FDFAMvs9R9oHP0j1RCmqBc47V0LVA8ayHFdFHjJxJrkEc+qKdjLJqaICCV9OWHukhRPW
+ tPPA==
+X-Gm-Message-State: AOAM532Kil6BbAKCn1YIfgsZawpYikMDrTzkz7HkWj2XQi3g0GWn7yXO
+ yNTQXgevIN0qiRMK7i2W2r1ymH9CgBfzBKTEuA==
 X-Received: from skybert.c.googlers.com ([fda3:e722:ac3:10:24:72f4:c0a8:3107])
- (user=hskinnemoen job=sendgmr) by 2002:ad4:5146:: with SMTP id
- g6mr467354qvq.22.1599801686652; Thu, 10 Sep 2020 22:21:26 -0700 (PDT)
-Date: Thu, 10 Sep 2020 22:20:56 -0700
+ (user=hskinnemoen job=sendgmr) by
+ 2002:a05:6a00:792:b029:13c:1611:652d with
+ SMTP id g18-20020a056a000792b029013c1611652dmr634778pfu.13.1599801680246;
+ Thu, 10 Sep 2020 22:21:20 -0700 (PDT)
+Date: Thu, 10 Sep 2020 22:20:52 -0700
 In-Reply-To: <20200911052101.2602693-1-hskinnemoen@google.com>
-Message-Id: <20200911052101.2602693-10-hskinnemoen@google.com>
+Message-Id: <20200911052101.2602693-6-hskinnemoen@google.com>
 Mime-Version: 1.0
 References: <20200911052101.2602693-1-hskinnemoen@google.com>
 X-Mailer: git-send-email 2.28.0.526.ge36021eeef-goog
-Subject: [PATCH v9 09/14] hw/mem: Stubbed out NPCM7xx Memory Controller model
+Subject: [PATCH v9 05/14] hw/arm: Add two NPCM7xx-based machines
 To: peter.maydell@linaro.org, f4bug@amsat.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
- kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>, 
+ kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>,
+ Joel Stanley <joel@jms.id.au>, 
  "=?UTF-8?q?C=C3=A9dric=20Le=20Goater?=" <clg@kaod.org>,
  Alexander Bulekov <alxndr@bu.edu>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f49;
- envelope-from=3VglbXwsKCtU8JB9EE5DF5E7FF7C5.3FDH5DL-45M5CEFE7EL.FI7@flex--hskinnemoen.bounces.google.com;
- helo=mail-qv1-xf49.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=3UAlbXwsKCM82D5388z79z819916z.x97Bz7F-vC789818F.9C1@flex--hskinnemoen.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -95
@@ -106,150 +109,104 @@ X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to: Havard Skinnemoen <hskinnemoen@google.com>
-From: Havard Skinnemoen via <qemu-devel@nongnu.org>
-X-TUID: 8dpuQboMMHIz
+From: Havard Skinnemoen via <qemu-arm@nongnu.org>
+X-TUID: jDNltOgTwori
 
-This just implements the bare minimum to cause the boot block to skip
-memory initialization.
+This adds two new machines, both supported by OpenBMC:
+
+  - npcm750-evb: Nuvoton NPCM750 Evaluation Board.
+  - quanta-gsj: A board with a NPCM730 chip.
+
+They rely on the NPCM7xx SoC device to do the heavy lifting. They are
+almost completely identical at the moment, apart from the SoC type,
+which currently only changes the reset contents of one register
+(GCR.MDLR), but they might grow apart a bit more as more functionality
+is added.
+
+Both machines can boot the Linux kernel into /bin/sh.
 
 Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
 Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 Tested-by: Alexander Bulekov <alxndr@bu.edu>
 Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 ---
- include/hw/arm/npcm7xx.h    |  2 +
- include/hw/mem/npcm7xx_mc.h | 36 ++++++++++++++++
- hw/arm/npcm7xx.c            |  6 +++
- hw/mem/npcm7xx_mc.c         | 84 +++++++++++++++++++++++++++++++++++++
- hw/mem/meson.build          |  1 +
- 5 files changed, 129 insertions(+)
- create mode 100644 include/hw/mem/npcm7xx_mc.h
- create mode 100644 hw/mem/npcm7xx_mc.c
+ default-configs/arm-softmmu.mak |   1 +
+ include/hw/arm/npcm7xx.h        |  19 +++++
+ hw/arm/npcm7xx_boards.c         | 145 ++++++++++++++++++++++++++++++++
+ hw/arm/meson.build              |   2 +-
+ 4 files changed, 166 insertions(+), 1 deletion(-)
+ create mode 100644 hw/arm/npcm7xx_boards.c
 
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.=
+mak
+index 8fc09a4a51..9a94ebd0be 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -27,6 +27,7 @@ CONFIG_GUMSTIX=3Dy
+ CONFIG_SPITZ=3Dy
+ CONFIG_TOSA=3Dy
+ CONFIG_Z2=3Dy
++CONFIG_NPCM7XX=3Dy
+ CONFIG_COLLIE=3Dy
+ CONFIG_ASPEED_SOC=3Dy
+ CONFIG_NETDUINO2=3Dy
 diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 5816a07a72..9fa84a0702 100644
+index e68d9c79e6..ba7495869d 100644
 --- a/include/hw/arm/npcm7xx.h
 +++ b/include/hw/arm/npcm7xx.h
-@@ -18,6 +18,7 @@
+@@ -35,6 +35,25 @@
+ #define NPCM7XX_SMP_BOOTREG_ADDR        (0xf080013c)  /* GCR.SCRPAD */
+ #define NPCM7XX_GIC_CPU_IF_ADDR         (0xf03fe100)  /* GIC within A9 */
 =20
- #include "hw/boards.h"
- #include "hw/cpu/a9mpcore.h"
-+#include "hw/mem/npcm7xx_mc.h"
- #include "hw/misc/npcm7xx_clk.h"
- #include "hw/misc/npcm7xx_gcr.h"
- #include "hw/nvram/npcm7xx_otp.h"
-@@ -71,6 +72,7 @@ typedef struct NPCM7xxState {
-     NPCM7xxTimerCtrlState tim[3];
-     NPCM7xxOTPState     key_storage;
-     NPCM7xxOTPState     fuse_array;
-+    NPCM7xxMCState      mc;
- } NPCM7xxState;
++typedef struct NPCM7xxMachine {
++    MachineState        parent;
++} NPCM7xxMachine;
++
++#define TYPE_NPCM7XX_MACHINE MACHINE_TYPE_NAME("npcm7xx")
++#define NPCM7XX_MACHINE(obj)                                            \
++    OBJECT_CHECK(NPCM7xxMachine, (obj), TYPE_NPCM7XX_MACHINE)
++
++typedef struct NPCM7xxMachineClass {
++    MachineClass        parent;
++
++    const char          *soc_type;
++} NPCM7xxMachineClass;
++
++#define NPCM7XX_MACHINE_CLASS(klass)                                    \
++    OBJECT_CLASS_CHECK(NPCM7xxMachineClass, (klass), TYPE_NPCM7XX_MACHINE)
++#define NPCM7XX_MACHINE_GET_CLASS(obj)                                  \
++    OBJECT_GET_CLASS(NPCM7xxMachineClass, (obj), TYPE_NPCM7XX_MACHINE)
++
+ typedef struct NPCM7xxState {
+     DeviceState         parent;
 =20
- #define TYPE_NPCM7XX    "npcm7xx"
-diff --git a/include/hw/mem/npcm7xx_mc.h b/include/hw/mem/npcm7xx_mc.h
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
 new file mode 100644
-index 0000000000..7ed38be243
+index 0000000000..939391c3a3
 --- /dev/null
-+++ b/include/hw/mem/npcm7xx_mc.h
-@@ -0,0 +1,36 @@
++++ b/hw/arm/npcm7xx_boards.c
+@@ -0,0 +1,145 @@
 +/*
-+ * Nuvoton NPCM7xx Memory Controller stub
-+ *
-+ * Copyright 2020 Google LLC
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
-+ *
-+ * This program is distributed in the hope that it will be useful, but WIT=
-HOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
-+ */
-+#ifndef NPCM7XX_MC_H
-+#define NPCM7XX_MC_H
-+
-+#include "exec/memory.h"
-+#include "hw/sysbus.h"
-+
-+/**
-+ * struct NPCM7xxMCState - Device state for the memory controller.
-+ * @parent: System bus device.
-+ * @mmio: Memory region through which registers are accessed.
-+ */
-+typedef struct NPCM7xxMCState {
-+    SysBusDevice parent;
-+
-+    MemoryRegion mmio;
-+} NPCM7xxMCState;
-+
-+#define TYPE_NPCM7XX_MC "npcm7xx-mc"
-+#define NPCM7XX_MC(obj) OBJECT_CHECK(NPCM7xxMCState, (obj), TYPE_NPCM7XX_M=
-C)
-+
-+#endif /* NPCM7XX_MC_H */
-diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index 9166002598..6bb1693833 100644
---- a/hw/arm/npcm7xx.c
-+++ b/hw/arm/npcm7xx.c
-@@ -43,6 +43,7 @@
- #define NPCM7XX_CPUP_BA         (0xf03fe000)
- #define NPCM7XX_GCR_BA          (0xf0800000)
- #define NPCM7XX_CLK_BA          (0xf0801000)
-+#define NPCM7XX_MC_BA           (0xf0824000)
-=20
- /* Internal AHB SRAM */
- #define NPCM7XX_RAM3_BA         (0xc0008000)
-@@ -186,6 +187,7 @@ static void npcm7xx_init(Object *obj)
-                             TYPE_NPCM7XX_KEY_STORAGE);
-     object_initialize_child(obj, "otp2", &s->fuse_array,
-                             TYPE_NPCM7XX_FUSE_ARRAY);
-+    object_initialize_child(obj, "mc", &s->mc, TYPE_NPCM7XX_MC);
-=20
-     for (i =3D 0; i < ARRAY_SIZE(s->tim); i++) {
-         object_initialize_child(obj, "tim[*]", &s->tim[i], TYPE_NPCM7XX_TI=
-MER);
-@@ -261,6 +263,10 @@ static void npcm7xx_realize(DeviceState *dev, Error **=
-errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->fuse_array), 0, NPCM7XX_OTP2_BA);
-     npcm7xx_init_fuses(s);
-=20
-+    /* Fake Memory Controller (MC). Cannot fail. */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->mc), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->mc), 0, NPCM7XX_MC_BA);
-+
-     /* Timer Modules (TIM). Cannot fail. */
-     QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_tim_addr) !=3D ARRAY_SIZE(s->tim)=
-);
-     for (i =3D 0; i < ARRAY_SIZE(s->tim); i++) {
-diff --git a/hw/mem/npcm7xx_mc.c b/hw/mem/npcm7xx_mc.c
-new file mode 100644
-index 0000000000..0435d06ab4
---- /dev/null
-+++ b/hw/mem/npcm7xx_mc.c
-@@ -0,0 +1,84 @@
-+/*
-+ * Nuvoton NPCM7xx Memory Controller stub
++ * Machine definitions for boards featuring an NPCM7xx SoC.
 + *
 + * Copyright 2020 Google LLC
 + *
@@ -267,86 +224,153 @@ HOUT
 +
 +#include "qemu/osdep.h"
 +
-+#include "hw/mem/npcm7xx_mc.h"
++#include "exec/address-spaces.h"
++#include "hw/arm/npcm7xx.h"
++#include "hw/core/cpu.h"
 +#include "qapi/error.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
 +#include "qemu/units.h"
 +
-+#define NPCM7XX_MC_REGS_SIZE (4 * KiB)
++#define NPCM750_EVB_POWER_ON_STRAPS 0x00001ff7
++#define QUANTA_GSJ_POWER_ON_STRAPS 0x00001fff
 +
-+static uint64_t npcm7xx_mc_read(void *opaque, hwaddr addr, unsigned int si=
-ze)
++static void npcm7xx_connect_dram(NPCM7xxState *soc, MemoryRegion *dram)
 +{
-+    /*
-+     * If bits 8..11 @ offset 0 are not zero, the boot block thinks the me=
-mory
-+     * controller has already been initialized and will skip DDR training.
-+     */
-+    if (addr =3D=3D 0) {
-+        return 0x100;
++    memory_region_add_subregion(get_system_memory(), NPCM7XX_DRAM_BA, dram=
+);
++
++    object_property_set_link(OBJECT(soc), "dram-mr", OBJECT(dram),
++                             &error_abort);
++}
++
++static NPCM7xxState *npcm7xx_create_soc(MachineState *machine,
++                                        uint32_t hw_straps)
++{
++    NPCM7xxMachineClass *nmc =3D NPCM7XX_MACHINE_GET_CLASS(machine);
++    MachineClass *mc =3D &nmc->parent;
++    Object *obj;
++
++    if (strcmp(machine->cpu_type, mc->default_cpu_type) !=3D 0) {
++        error_report("This board can only be used with %s",
++                     mc->default_cpu_type);
++        exit(1);
 +    }
 +
-+    qemu_log_mask(LOG_UNIMP, "%s: mostly unimplemented\n", __func__);
++    obj =3D object_new_with_props(nmc->soc_type, OBJECT(machine), "soc",
++                                &error_abort, NULL);
++    object_property_set_uint(obj, "power-on-straps", hw_straps, &error_abo=
+rt);
 +
-+    return 0;
++    return NPCM7XX(obj);
 +}
 +
-+static void npcm7xx_mc_write(void *opaque, hwaddr addr, uint64_t v,
-+                             unsigned int size)
++static void npcm750_evb_init(MachineState *machine)
 +{
-+    qemu_log_mask(LOG_UNIMP, "%s: mostly unimplemented\n", __func__);
++    NPCM7xxState *soc;
++
++    soc =3D npcm7xx_create_soc(machine, NPCM750_EVB_POWER_ON_STRAPS);
++    npcm7xx_connect_dram(soc, machine->ram);
++    qdev_realize(DEVICE(soc), NULL, &error_fatal);
++
++    npcm7xx_load_kernel(machine, soc);
 +}
 +
-+static const MemoryRegionOps npcm7xx_mc_ops =3D {
-+    .read =3D npcm7xx_mc_read,
-+    .write =3D npcm7xx_mc_write,
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,
-+    .valid =3D {
-+        .min_access_size =3D 4,
-+        .max_access_size =3D 4,
-+        .unaligned =3D false,
-+    },
++static void quanta_gsj_init(MachineState *machine)
++{
++    NPCM7xxState *soc;
++
++    soc =3D npcm7xx_create_soc(machine, QUANTA_GSJ_POWER_ON_STRAPS);
++    npcm7xx_connect_dram(soc, machine->ram);
++    qdev_realize(DEVICE(soc), NULL, &error_fatal);
++
++    npcm7xx_load_kernel(machine, soc);
++}
++
++static void npcm7xx_set_soc_type(NPCM7xxMachineClass *nmc, const char *typ=
+e)
++{
++    NPCM7xxClass *sc =3D NPCM7XX_CLASS(object_class_by_name(type));
++    MachineClass *mc =3D MACHINE_CLASS(nmc);
++
++    nmc->soc_type =3D type;
++    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D sc->num_cpus;
++}
++
++static void npcm7xx_machine_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc =3D MACHINE_CLASS(oc);
++
++    mc->no_floppy =3D 1;
++    mc->no_cdrom =3D 1;
++    mc->no_parallel =3D 1;
++    mc->default_ram_id =3D "ram";
++    mc->default_cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a9");
++}
++
++/*
++ * Schematics:
++ * https://github.com/Nuvoton-Israel/nuvoton-info/blob/master/npcm7xx-pole=
+g/evaluation-board/board_deliverables/NPCM750x_EB_ver.A1.1_COMPLETE.pdf
++ */
++static void npcm750_evb_machine_class_init(ObjectClass *oc, void *data)
++{
++    NPCM7xxMachineClass *nmc =3D NPCM7XX_MACHINE_CLASS(oc);
++    MachineClass *mc =3D MACHINE_CLASS(oc);
++
++    npcm7xx_set_soc_type(nmc, TYPE_NPCM750);
++
++    mc->desc =3D "Nuvoton NPCM750 Evaluation Board (Cortex A9)";
++    mc->init =3D npcm750_evb_init;
++    mc->default_ram_size =3D 512 * MiB;
 +};
 +
-+static void npcm7xx_mc_realize(DeviceState *dev, Error **errp)
++static void gsj_machine_class_init(ObjectClass *oc, void *data)
 +{
-+    NPCM7xxMCState *s =3D NPCM7XX_MC(dev);
++    NPCM7xxMachineClass *nmc =3D NPCM7XX_MACHINE_CLASS(oc);
++    MachineClass *mc =3D MACHINE_CLASS(oc);
 +
-+    memory_region_init_io(&s->mmio, OBJECT(s), &npcm7xx_mc_ops, s, "regs",
-+                          NPCM7XX_MC_REGS_SIZE);
-+    sysbus_init_mmio(&s->parent, &s->mmio);
-+}
++    npcm7xx_set_soc_type(nmc, TYPE_NPCM730);
 +
-+static void npcm7xx_mc_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc =3D DEVICE_CLASS(klass);
++    mc->desc =3D "Quanta GSJ (Cortex A9)";
++    mc->init =3D quanta_gsj_init;
++    mc->default_ram_size =3D 512 * MiB;
++};
 +
-+    dc->desc =3D "NPCM7xx Memory Controller stub";
-+    dc->realize =3D npcm7xx_mc_realize;
-+}
-+
-+static const TypeInfo npcm7xx_mc_types[] =3D {
++static const TypeInfo npcm7xx_machine_types[] =3D {
 +    {
-+        .name =3D TYPE_NPCM7XX_MC,
-+        .parent =3D TYPE_SYS_BUS_DEVICE,
-+        .instance_size =3D sizeof(NPCM7xxMCState),
-+        .class_init =3D npcm7xx_mc_class_init,
++        .name           =3D TYPE_NPCM7XX_MACHINE,
++        .parent         =3D TYPE_MACHINE,
++        .instance_size  =3D sizeof(NPCM7xxMachine),
++        .class_size     =3D sizeof(NPCM7xxMachineClass),
++        .class_init     =3D npcm7xx_machine_class_init,
++        .abstract       =3D true,
++    }, {
++        .name           =3D MACHINE_TYPE_NAME("npcm750-evb"),
++        .parent         =3D TYPE_NPCM7XX_MACHINE,
++        .class_init     =3D npcm750_evb_machine_class_init,
++    }, {
++        .name           =3D MACHINE_TYPE_NAME("quanta-gsj"),
++        .parent         =3D TYPE_NPCM7XX_MACHINE,
++        .class_init     =3D gsj_machine_class_init,
 +    },
 +};
-+DEFINE_TYPES(npcm7xx_mc_types);
-diff --git a/hw/mem/meson.build b/hw/mem/meson.build
-index ba424622bb..0d22f2b572 100644
---- a/hw/mem/meson.build
-+++ b/hw/mem/meson.build
-@@ -1,6 +1,7 @@
- mem_ss =3D ss.source_set()
- mem_ss.add(files('memory-device.c'))
- mem_ss.add(when: 'CONFIG_DIMM', if_true: files('pc-dimm.c'))
-+mem_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_mc.c'))
- mem_ss.add(when: 'CONFIG_NVDIMM', if_true: files('nvdimm.c'))
-=20
- softmmu_ss.add_all(when: 'CONFIG_MEM_DEVICE', if_true: mem_ss)
++
++DEFINE_TYPES(npcm7xx_machine_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index b0967c44c9..be39117b9b 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -13,7 +13,7 @@ arm_ss.add(when: 'CONFIG_MICROBIT', if_true: files('micro=
+bit.c'))
+ arm_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
+ arm_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
+ arm_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c')=
+)
+-arm_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c'))
++arm_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c', 'npcm7xx_bo=
+ards.c'))
+ arm_ss.add(when: 'CONFIG_NSERIES', if_true: files('nseries.c'))
+ arm_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
+ arm_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
 --=20
 2.28.0.526.ge36021eeef-goog
 

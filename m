@@ -1,79 +1,79 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp239255lfq;
-        Fri, 11 Sep 2020 12:44:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwi44xsogwVZMPbCVJuPVxQIkYkJIrqmNr+0lhno3fzVr+Ak9II+CMBMxabTZJz/Yy01z8n
-X-Received: by 2002:ac8:6d0e:: with SMTP id o14mr3449681qtt.31.1599853476057;
-        Fri, 11 Sep 2020 12:44:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599853476; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp245335lfq;
+        Fri, 11 Sep 2020 12:55:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxutxtlGAywiQK3+K5/CzqzPZRmIoPWU3aza40motJ1LBbj0wfoIN/jDsQDQUIF5b+1g9TD
+X-Received: by 2002:a25:e786:: with SMTP id e128mr4437180ybh.502.1599854117023;
+        Fri, 11 Sep 2020 12:55:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599854117; cv=none;
         d=google.com; s=arc-20160816;
-        b=DZmElMU0celHu9XwrijMRuz9lyOPH/+GMOgO9gHg6K1xtgRlQLK8Hg2SKVCLqitw8j
-         MC1PlM1PO+wB6/znLkf8LRJTpIXtO7lRahVvPeaSmFzDYdB0lkN7QXuVJ15KCeyGJmAp
-         mz6uNWUioJSTcWtlOCQvcuwYwqlX3IE2xHx/k/+Cv7sbT+9dJYl35+R6kvdlT1Seo6ck
-         a+yKDqkrtwQHWjfCEEGv5YsiQuSUHJRbV9MfRGdjhw1iGrVBlkfZ4/2pM1aQaO4xduga
-         QB4JMeuWHJMf/0q9OnRnMqojr2GcOaHxgssow/Md3i8t6yTPvQF4hooTmfDXIxVY0BRY
-         tzDg==
+        b=MVvkOSjT9kJfw/KcHYa9WEk2l5BK/SlKvjDJvJVHhMS0edteLmV6IjcKzat3Ivdjla
+         MV8duys+HLw/1A6A4lUmyML0HEM00vhrYkCQB/CwGSh9DgbC7GxWueiaggqVuMcaggb2
+         XIgEAFzoIeioDE9HPviNJNZmxRyGg1p5ZLt+8NUNaSk3FijMKmM+EHhgBm5JatzZ4XkI
+         urD8bgGnpl1b6Jj6W/+iuU+em9hmkCzVOhhpis35IS9wZE3ZntUjrIHlu0ijEJj8s6u2
+         5wyWfHxBrzbqgbWptY/G2UVei9sueGlFF47f5WBj7h0l3cs38hJRXgAO5fMA8gsP89yP
+         SpsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=mco1yf6QqNRxCf73wZn48JWfmYkCiitl9wTq52Sz4M4=;
-        b=WuU5rhpo7jjxO2pvQOE2tgyW9y7p23LX9SWbkLmZa65J6VR4JPkhvDaB45kKEvlTvZ
-         e9OKhds61VmD8eZ2Ll+c2o/MjLW9VikJWAspulmdcqD6uyXkPUqxCehtV00LMYLl+wof
-         +S6hSGcUUL8TbiBdAm9jAsZiORz7K3iBWzLJw666i5dPt1rokEFybxKV3LD5o/JvwE0e
-         TG07QUBrDhhDpmnGrfptIdOmyiwr8x9mRFMCQfJ/nBhOFN9ZsKwPvn5ZJA/UXsdJZcat
-         R2AjGV5TE+fOwAHHjNWp376+o5qIGO3IZHoltA76wUdDdDL2UjCN2txqEDsfasQQa5eZ
-         yfiw==
+        bh=tnYKkyD7t5KPzHFTsZpMrBWGznVj5cmE40e4PmNOBgA=;
+        b=mYPxPDc4HNM5XwhfTcyFaOkDNP7abm/guJa2V6B7VIqh1zOV4Qiit5MCD0unVY0mnh
+         lcgQrMN8tcSMruoKwdXddfrf0b5QfB+H2oXVrglbqG3eJvrTFWKHulhnYYiLRBcQDUUg
+         28xHAsVGIs6qdkWbPWOpZ6VpqlhdSCzdkeN8BxhHWhQpI3ILDhEfSN8DkmdUHI3Nxu48
+         x1WYbXH2dSUpn1TDKmOeRkWByD2kTyWShzNsaLd3RU79l1caPkM+JbduxJ5OFu19qMGJ
+         1JFMVw1K/C+eqRiqIT+Dsoon7vbnXaYp3TMMsXSZIdoPgjAVkfeTNfhfSma4DYT7S/CK
+         ZJDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=u7ugHPsG;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=pLSrqU9M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r3si2010418qkm.274.2020.09.11.12.44.35
+        by mx.google.com with ESMTPS id w5si2870801ybt.337.2020.09.11.12.55.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Sep 2020 12:44:36 -0700 (PDT)
+        Fri, 11 Sep 2020 12:55:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=u7ugHPsG;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=pLSrqU9M;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:32940 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51614 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGoyJ-0004UR-BW
-	for alex.bennee@linaro.org; Fri, 11 Sep 2020 15:44:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46456)
+	id 1kGp8e-00043q-9w
+	for alex.bennee@linaro.org; Fri, 11 Sep 2020 15:55:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1kGovE-00080v-Cr; Fri, 11 Sep 2020 15:41:24 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:60280)
+ id 1kGp8E-00043F-Hk; Fri, 11 Sep 2020 15:54:50 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:32920)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1kGov9-0001k0-8T; Fri, 11 Sep 2020 15:41:24 -0400
+ id 1kGp8C-0003Ue-BO; Fri, 11 Sep 2020 15:54:50 -0400
 Received: from [172.17.10.18] (unknown [172.17.10.18])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 3434B21C31;
- Fri, 11 Sep 2020 19:41:14 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 68CC821C1F;
+ Fri, 11 Sep 2020 19:54:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1599853274;
+ s=mail; t=1599854085;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mco1yf6QqNRxCf73wZn48JWfmYkCiitl9wTq52Sz4M4=;
- b=u7ugHPsGp0BJsbWkR1QcW61wBzQaPBPldDoW6oHJnNXc3fwz+bH/HqeeDGBCJ7rYx0L7c8
- ptHl8IgGnHAoi4JrUhmlZ8ZYpquct1Coh4lSm6mTp7/wJEXuuiH/nqtLVCYgrRv49Lhahe
- ezwDHvgUz+PLxvDknIpABMZ92oUidT4=
-Subject: Re: [PATCH v5 2/7] hw/misc/led: Allow connecting from GPIO output
+ bh=tnYKkyD7t5KPzHFTsZpMrBWGznVj5cmE40e4PmNOBgA=;
+ b=pLSrqU9MCAsttFR3KW3st0bKvUVOQrgacn8OVGxUAWxBNioDd3WgAIjNCv4ObLxq06Ezyh
+ 1c/S7hzYcRkds4ScYcumqdokvYn7KapDG9Iszdq3AqpjjwX2wP7DJXCTOzp5ojTemc4fd/
+ zXFN7AaxLea3NKar9U96jeLvY48t7k0=
+Subject: Re: [PATCH v5 7/7] hw/arm/tosa: Replace fprintf() calls by LED devices
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200910205429.727766-1-f4bug@amsat.org>
- <20200910205429.727766-3-f4bug@amsat.org>
+ <20200910205429.727766-8-f4bug@amsat.org>
 From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <448947fa-805a-69d6-258f-6e337c4c5076@greensocs.com>
-Date: Fri, 11 Sep 2020 21:42:05 +0200
+Message-ID: <de100cf8-70d1-6b73-c8b8-a7f0ce854f64@greensocs.com>
+Date: Fri, 11 Sep 2020 21:55:36 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20200910205429.727766-3-f4bug@amsat.org>
+In-Reply-To: <20200910205429.727766-8-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -107,161 +107,116 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 5nstaL9fOlxq
-
-Hi Phil,
+X-TUID: WD2PFvf1DGy5
 
 On 9/10/20 10:54 PM, Philippe Mathieu-Daudé wrote:
-> Some devices expose GPIO lines.
-> 
-> Add a GPIO qdev input to our LED device, so we can
-> connect a GPIO output using qdev_connect_gpio_out().
-> 
-> When used with GPIOs, the intensity can only be either
-> minium or maximum. This depends of the polarity of the
-> GPIO (which can be inverted).
-> Declare the GpioPolarity type to model the polarity.
+> The recently added LED device reports LED status changes with
+> the 'led_set_intensity' trace event. It is less invasive than
+> the fprintf() calls. We need however to have a binary built
+> with tracing support.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->   include/hw/misc/led.h  |  8 ++++++++
->   include/hw/qdev-core.h |  8 ++++++++
->   hw/misc/led.c          | 17 ++++++++++++++++-
->   3 files changed, 32 insertions(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
-> index f5afaa34bfb..71c9b8c59bf 100644
-> --- a/include/hw/misc/led.h
-> +++ b/include/hw/misc/led.h
-> @@ -38,10 +38,16 @@ typedef struct LEDState {
->       /* Public */
->   
->       uint8_t intensity_percent;
-> +    qemu_irq irq;
->   
->       /* Properties */
->       char *description;
->       char *color;
-> +    /*
-> +     * When used with GPIO, the intensity at reset is related
-> +     * to the GPIO polarity.
-> +     */
-> +    bool inverted_polarity;
->   } LEDState;
->   
->   /**
-> @@ -71,6 +77,7 @@ void led_set_state(LEDState *s, bool is_emitting);
->   /**
->    * led_create_simple: Create and realize a LED device
->    * @parentobj: the parent object
-> + * @gpio_polarity: GPIO polarity
->    * @color: color of the LED
->    * @description: description of the LED (optional)
->    *
-> @@ -78,6 +85,7 @@ void led_set_state(LEDState *s, bool is_emitting);
->    * drop the reference to it (the device is realized).
->    */
->   LEDState *led_create_simple(Object *parentobj,
-> +                            GpioPolarity gpio_polarity,
->                               LEDColor color,
->                               const char *description);
->   
-> diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
-> index ea3f73a282d..846354736a5 100644
-> --- a/include/hw/qdev-core.h
-> +++ b/include/hw/qdev-core.h
-> @@ -424,6 +424,14 @@ void qdev_simple_device_unplug_cb(HotplugHandler *hotplug_dev,
->   void qdev_machine_creation_done(void);
->   bool qdev_machine_modified(void);
->   
-> +/**
-> + * GpioPolarity: Polarity of a GPIO line
-> + */
-> +typedef enum {
-> +    GPIO_POLARITY_ACTIVE_LOW,
-> +    GPIO_POLARITY_ACTIVE_HIGH
-> +} GpioPolarity;
-> +
->   /**
->    * qdev_get_gpio_in: Get one of a device's anonymous input GPIO lines
->    * @dev: Device whose GPIO we want
-> diff --git a/hw/misc/led.c b/hw/misc/led.c
-> index 89acd9acbb7..3ef4f5e0469 100644
-> --- a/hw/misc/led.c
-> +++ b/hw/misc/led.c
-> @@ -10,6 +10,7 @@
->   #include "migration/vmstate.h"
->   #include "hw/qdev-properties.h"
->   #include "hw/misc/led.h"
-> +#include "hw/irq.h"
->   #include "trace.h"
->   
->   #define LED_INTENSITY_PERCENT_MAX   100
-> @@ -53,11 +54,19 @@ void led_set_state(LEDState *s, bool is_emitting)
->       led_set_intensity(s, is_emitting ? LED_INTENSITY_PERCENT_MAX : 0);
->   }
->   
-> +static void led_set_state_gpio_handler(void *opaque, int line, int new_state)
-> +{
-> +    LEDState *s = LED(opaque);
-> +
-> +    assert(line == 0);
-> +    led_set_state(s, !!new_state != s->inverted_polarity);
-> +}
-> +
->   static void led_reset(DeviceState *dev)
->   {
->       LEDState *s = LED(dev);
->   
-> -    led_set_state(s, false);
-> +    led_set_state(s, s->inverted_polarity);
->   }
->   
->   static const VMStateDescription vmstate_led = {
-> @@ -84,11 +93,14 @@ static void led_realize(DeviceState *dev, Error **errp)
->       if (s->description == NULL) {
->           s->description = g_strdup("n/a");
->       }
-> +
-> +    qdev_init_gpio_in(DEVICE(s), led_set_state_gpio_handler, 1);
->   }
->   
->   static Property led_properties[] = {
->       DEFINE_PROP_STRING("color", LEDState, color),
->       DEFINE_PROP_STRING("description", LEDState, description),
-> +    DEFINE_PROP_BOOL("polarity-inverted", LEDState, inverted_polarity, false),
-I was wondering, since the GpioPolarity type you introduce is not used 
-in the GPIO API, and since you use a boolean property here. Wouldn't it 
-be clearer is you name this property "active-low"? Because 
-"polarity-inverted" doesn't tell what the polarity is in the first 
-place. Moreover since this property only affects the LED GPIO, and not 
-the LED API (led_set_state), I think you can even name it 
-"gpio-active-low" to make this clear.
 
->       DEFINE_PROP_END_OF_LIST(),
->   };
->   
-> @@ -119,6 +131,7 @@ static void led_register_types(void)
->   type_init(led_register_types)
->   
->   LEDState *led_create_simple(Object *parentobj,
-> +                            GpioPolarity gpio_polarity,
-You could go with a boolean here also and name the parameter 
-gpio_active_low, but I don't have a strong opinion on this.
-
-So with or without those modifications:
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
->                               LEDColor color,
->                               const char *description)
->   {
-> @@ -126,6 +139,8 @@ LEDState *led_create_simple(Object *parentobj,
->       DeviceState *dev;
+> ---
+>   hw/arm/tosa.c  | 40 +++++++++++++++-------------------------
+>   hw/arm/Kconfig |  1 +
+>   2 files changed, 16 insertions(+), 25 deletions(-)
+> 
+> diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
+> index 90eef1f14dd..f23651fd775 100644
+> --- a/hw/arm/tosa.c
+> +++ b/hw/arm/tosa.c
+> @@ -24,6 +24,7 @@
+>   #include "hw/irq.h"
+>   #include "hw/ssi/ssi.h"
+>   #include "hw/sysbus.h"
+> +#include "hw/misc/led.h"
+>   #include "exec/address-spaces.h"
 >   
->       dev = qdev_new(TYPE_LED);
-> +    qdev_prop_set_bit(dev, "polarity-inverted",
-> +                      gpio_polarity == GPIO_POLARITY_ACTIVE_LOW);
->       qdev_prop_set_string(dev, "color", led_color_name[color]);
->       if (!description) {
->           static unsigned undescribed_led_id;
+>   #define TOSA_RAM 0x04000000
+> @@ -81,26 +82,6 @@ typedef struct TosaMiscGPIOState {
+>       SysBusDevice parent_obj;
+>   } TosaMiscGPIOState;
+>   
+> -static void tosa_gpio_leds(void *opaque, int line, int level)
+> -{
+> -    switch (line) {
+> -    case 0:
+> -        fprintf(stderr, "blue LED %s.\n", level ? "on" : "off");
+> -        break;
+> -    case 1:
+> -        fprintf(stderr, "green LED %s.\n", level ? "on" : "off");
+> -        break;
+> -    case 2:
+> -        fprintf(stderr, "amber LED %s.\n", level ? "on" : "off");
+> -        break;
+> -    case 3:
+> -        fprintf(stderr, "wlan LED %s.\n", level ? "on" : "off");
+> -        break;
+> -    default:
+> -        g_assert_not_reached();
+> -    }
+> -}
+> -
+>   static void tosa_reset(void *opaque, int line, int level)
+>   {
+>       if (level) {
+> @@ -112,7 +93,6 @@ static void tosa_misc_gpio_init(Object *obj)
+>   {
+>       DeviceState *dev = DEVICE(obj);
+>   
+> -    qdev_init_gpio_in_named(dev, tosa_gpio_leds, "leds", 4);
+>       qdev_init_gpio_in_named(dev, tosa_reset, "reset", 1);
+>   }
+>   
+> @@ -122,6 +102,7 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
+>                   TC6393xbState *tmio)
+>   {
+>       DeviceState *misc_gpio;
+> +    LEDState *led[4];
+>   
+>       misc_gpio = sysbus_create_simple(TYPE_TOSA_MISC_GPIO, -1, NULL);
+>   
+> @@ -143,14 +124,23 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
+>                           qdev_get_gpio_in(cpu->gpio, TOSA_GPIO_JC_CF_IRQ),
+>                           NULL);
+>   
+> +    led[0] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
+> +                               LED_COLOR_BLUE, "bluetooth");
+> +    led[1] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
+> +                               LED_COLOR_GREEN, "note");
+> +    led[2] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
+> +                               LED_COLOR_AMBER, "charger-error");
+> +    led[3] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
+> +                               LED_COLOR_GREEN, "wlan");
+> +
+>       qdev_connect_gpio_out(scp1, TOSA_GPIO_BT_LED,
+> -                          qdev_get_gpio_in_named(misc_gpio, "leds", 0));
+> +                          qdev_get_gpio_in(DEVICE(led[0]), 0));
+>       qdev_connect_gpio_out(scp1, TOSA_GPIO_NOTE_LED,
+> -                          qdev_get_gpio_in_named(misc_gpio, "leds", 1));
+> +                          qdev_get_gpio_in(DEVICE(led[1]), 0));
+>       qdev_connect_gpio_out(scp1, TOSA_GPIO_CHRG_ERR_LED,
+> -                          qdev_get_gpio_in_named(misc_gpio, "leds", 2));
+> +                          qdev_get_gpio_in(DEVICE(led[2]), 0));
+>       qdev_connect_gpio_out(scp1, TOSA_GPIO_WLAN_LED,
+> -                          qdev_get_gpio_in_named(misc_gpio, "leds", 3));
+> +                          qdev_get_gpio_in(DEVICE(led[3]), 0));
+>   
+>       qdev_connect_gpio_out(scp1, TOSA_GPIO_TC6393XB_L3V_ON, tc6393xb_l3v_get(tmio));
+>   
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 06ba1c355b1..bbcfa098ae2 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -150,6 +150,7 @@ config TOSA
+>       select ZAURUS  # scoop
+>       select MICRODRIVE
+>       select PXA2XX
+> +    select LED
+>   
+>   config SPITZ
+>       bool
 > 

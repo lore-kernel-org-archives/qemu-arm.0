@@ -1,113 +1,111 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1769268lfq;
-        Thu, 10 Sep 2020 17:03:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzA5+ZvVEQfykIfK0KZYuOSdlXD32v5yGKY43L5xpGaino983/xI9TgYQB5KGFe1ZVW5xGJ
-X-Received: by 2002:a05:6902:4cf:: with SMTP id v15mr16627048ybs.373.1599782629160;
-        Thu, 10 Sep 2020 17:03:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599782629; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1940067lfq;
+        Thu, 10 Sep 2020 22:21:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJztnze9bGdznBs0joHPs+Lf84PWxs1SkpLxEResT3Z76EhaFvhD9wILRy1+SwpsRrgeA1P0
+X-Received: by 2002:a25:244a:: with SMTP id k71mr162411ybk.504.1599801696793;
+        Thu, 10 Sep 2020 22:21:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599801696; cv=none;
         d=google.com; s=arc-20160816;
-        b=d73zSM/ToVlM01P0anbYUKuzSRYpPu/okCFK2ZGCgj4AX8oVgkIVtJV4HC96yBfKCO
-         LkoqEsTMQCS9Q6OCTHwVm9Lntrz0TfQk6Qmn/5aZ4X/sN9SWiKTTgu3NLhLrChLdTZEg
-         YlW+9FZ1ualw8CJN8o7HCSLEFXVsaJUMo2l022RqIQawYI8kqExlSG7U/p0Ey60LnpjE
-         FAcCGtDaRxYkHyo7UGgnfU4JlacZzBN4n7iUjOhyz6qNxc8Yi6hPdk5XWG/GZm8+z+AM
-         pJED4C9ONLdtaRCn/wnovQNXsWXIL16Ht3YSb1RjUy4kFIlHl1Jh4XaxWBkiCgfmJJy7
-         b+tQ==
+        b=og4e0oh1zEp7AlJkXJ7Z6ctOCBsoumW8UR9B2/ejMgdNmONfLue5A5WTjS/L6jncR+
+         ngTd3odw2CBbsgXqhHvnzZ+8AeOQH7sdIabifXzqlPP0Luxq94KwArD8jL5tvxTeD5YP
+         tMILwNLQzzcH/UoS5oFIP+Ajgng+qzVIcHuQ2rpn5C+ndArsb8Cx3GmpSOvh1BpVtcwd
+         bfV1p8G+XOYxGR7bmvSBs8pguIsFEwD7l8W7Sso8CMygXxkF+qro/PFC2wHiRfNd9NUQ
+         TsRA3L+5OLh/7tM6Z4ycMDL19xBCqyr7m79pKCWZv3ns9r+TvCubPsh3dQZUoFfYCdPi
+         ncHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ex2ScRsljyOtKd7OP8bfM4hRKTdwRV8x4IggfxFhtoI=;
-        b=P8qWmXVpo65EpP60yOOBcXlCUHiX6AVI+LMosIPS1ouVhfnhKbr/dyOEFoC4iU1yNT
-         aaxnxovBq2j9p0SbXE+12mjdI9n+keP1JpaSsMkFAm4S9apInQp6wKM1VBgrEF/MgYJg
-         eDMXB6OD3wsxEgN7Rco0KG7Q4F/B+PocuKeqs7uQ6yICwWD+kVh9FxRzlYvYX/9DaWvB
-         /4r8JrzF0nBhtj+Ug0SaS6pKOGYvN0xEDH7ZEY/oOqzqTuI3TDi5eLhvs/N63CEverwy
-         HKwE3nJ4hbNZH+6D2vuMNGw/jDxHohU+qef/7DpBQO0Ax3d71qnCHuuEOxU+qqMv1qZT
-         XMrA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:cc:to:subject:references:mime-version
+         :message-id:in-reply-to:date:dkim-signature;
+        bh=FIvJn3bW47bFj62ROGqfiOvrP1TXYJa02fL+u//ZQzQ=;
+        b=el4BsQKfJJ0p24W62z9GU9Po9b8bKf7kW/T8t6lEq6dhsHEeLKTS2nVVOhRnKvU/Vs
+         1TS+iHQCc/TI2HX87SaHJmI0HV6heLyL+E+EH5RrxDtYUA7p4cOu6e/UGmxqkrO+4c5I
+         3SMfh01EtU5k0KWwwbO5F15K+fOiV7DjUqxsNDrw1mAGLw22khxmB0NXxmNxbPqCiNSe
+         1T6Mt6NXoIfPbTBVFLQK3RtYwfjTdg7551/B9LjVM1ssc/patRUNCK1XML3u+GGuxoHs
+         KYKjdFt9E81J6zicSFtbhpWST1tKoxP8YiKiOCfOhcRVtYLNFaGzLcgNZawkOWM44xFF
+         QstA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=Q0GbbLRQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dkim=fail header.i=@google.com header.s=20161025 header.b=hymp96N1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e15si394112ybq.482.2020.09.10.17.03.48
+        by mx.google.com with ESMTPS id s3si1064029ybe.497.2020.09.10.22.21.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 10 Sep 2020 17:03:49 -0700 (PDT)
+        Thu, 10 Sep 2020 22:21:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=Q0GbbLRQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:51886 helo=lists1p.gnu.org)
+       dkim=fail header.i=@google.com header.s=20161025 header.b=hymp96N1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51102 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGWXc-0003mk-F1
-	for alex.bennee@linaro.org; Thu, 10 Sep 2020 20:03:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48162)
+	id 1kGbVA-0006SS-0i
+	for alex.bennee@linaro.org; Fri, 11 Sep 2020 01:21:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52258)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kGWXT-0003kU-0L
- for qemu-arm@nongnu.org; Thu, 10 Sep 2020 20:03:39 -0400
-Received: from mail-vk1-xa44.google.com ([2607:f8b0:4864:20::a44]:36748)
+ (Exim 4.90_1) (envelope-from
+ <3TQlbXwsKCMwzA2055w46w5y66y3w.u648w4C-s94565y5C.69y@flex--hskinnemoen.bounces.google.com>)
+ id 1kGbUy-0006Oa-Jc
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2020 01:21:24 -0400
+Received: from mail-pg1-x549.google.com ([2607:f8b0:4864:20::549]:54892)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kGWXO-0006La-8e
- for qemu-arm@nongnu.org; Thu, 10 Sep 2020 20:03:38 -0400
-Received: by mail-vk1-xa44.google.com with SMTP id s127so2002741vkg.3
- for <qemu-arm@nongnu.org>; Thu, 10 Sep 2020 17:03:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from
+ <3TQlbXwsKCMwzA2055w46w5y66y3w.u648w4C-s94565y5C.69y@flex--hskinnemoen.bounces.google.com>)
+ id 1kGbUv-0002MJ-0p
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2020 01:21:24 -0400
+Received: by mail-pg1-x549.google.com with SMTP id t3so5322079pgc.21
+ for <qemu-arm@nongnu.org>; Thu, 10 Sep 2020 22:21:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ex2ScRsljyOtKd7OP8bfM4hRKTdwRV8x4IggfxFhtoI=;
- b=Q0GbbLRQ3g7w+MPBeAr3OJr4FNRlrgOnezrmSV6z433UMqufSeBaOXP0r5bZ5lHnPS
- zEQ0zpNvoTFWv/7M6wszHOxDjGtBmnSwRBAGytPW+npyrIpTrVruZhA1S3BZ5Na/5dG9
- Ur0kciZQOlEJ8Vn5+U9YnFwxoxKNFPlml/n/L5r0bJ5hLokoO3XRfuwCTVCmdoTVOU+2
- HmT7wWKbO/om6cXO0+otnzwOtz/AfaZLWb8BcjimBOC9y2p2ti/Z9K+WbeGeNTaAkfjH
- BLtcIBtNtVbfYpw2sm3RNXYIruugZQ0gjWwA7ZcOc1IputM5mkKrXAkwxX0g8IYmmYXh
- RC/w==
+ h=sender:date:in-reply-to:message-id:mime-version:references:subject
+ :from:to:cc:content-transfer-encoding;
+ bh=FIvJn3bW47bFj62ROGqfiOvrP1TXYJa02fL+u//ZQzQ=;
+ b=hymp96N1EFOJXMJq5zQ7AloFiDvlWaId5D7u8Gvwc7+2Mopi+/aLmbJiKUjhiRKer0
+ cxAkbB6WSTTStqeU5JPxzCn3oKE7bKkZBX2LOWqvZdAt1XKGBBk5jXCh/HR/Sgkpjunx
+ XAfdPV4ySL5rsuFMcDumK1TyFGzsJT63kKnZ734tG2t3416cA16pFfSR8rzk2m/vrtNl
+ 7oBMKKzxx2DuhKiS6jW8KH2lD2lEsNHuR4Ni9AUwZ/T8F3dfY40WfAnpjsmaykoFZfu5
+ jAS+v1NRMKRQhGj8Og6qjFZTk+lbLmEzOYX8+UzZUVlAeeVvGSLXyhjAqDkyamOA9NYH
+ PsyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ex2ScRsljyOtKd7OP8bfM4hRKTdwRV8x4IggfxFhtoI=;
- b=BsZIw7prXnBhZn9npR+7IkjYJwx0AVSAMHPFbqqVIXtjls7W4Y3D7vm0XumZlzrAht
- NFDfTGXv3m/qA2B8shz+q0OUy3LdvLXtx5StLuFO4tl2d3Z8cplJaGsgja0hVshjh3a4
- jqvmHAJA9aVBa70ZDBnAmsdzJq9MdqVx6+3CDWgEi2gu4ULmGT01yn3tNznfIcLiIh2O
- 5BJXvTliJ3LQNLdoYnL27O/4c31HfRtz6+Gsnxymkk3jNd06G39jXDArkyQpaM1JKMH0
- xPAc/f2vplDE0ZUXHSb7biMLD0F6roxGtFdqWaXqIVx3N0UwsJr9QbttjWKTYgnLXrSs
- FO5A==
-X-Gm-Message-State: AOAM532QhyJP9hPwBw0eKcRZR/WNgYCPt4bZKj0hVQuCXiDFgfA2CQ5Y
- AfXM5UZxbCOVxH7OtPkMZUJJJDIavyGN0+vr9+pBzg==
-X-Received: by 2002:a1f:c641:: with SMTP id w62mr6031901vkf.11.1599782612883; 
- Thu, 10 Sep 2020 17:03:32 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200825001711.1340443-1-hskinnemoen@google.com>
- <20200908150224.pkuyhpmw33xqhmjn@mozz.bu.edu>
- <d88bc6ae-e07e-700f-d3cc-c093d2d44594@amsat.org>
- <bfb442b4-9700-5591-eeef-00bc6675c89f@amsat.org>
- <CAFQmdRZfmbgUgUh3iryPQs5LfiYpn2cHWPzjBdJKSXANFFtT6g@mail.gmail.com>
- <CAFQmdRb1ye0mZjt1PYhqNiGMQMP1iBFWVsEhW5ADWYS5G5qteQ@mail.gmail.com>
-In-Reply-To: <CAFQmdRb1ye0mZjt1PYhqNiGMQMP1iBFWVsEhW5ADWYS5G5qteQ@mail.gmail.com>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Thu, 10 Sep 2020 17:03:21 -0700
-Message-ID: <CAFQmdRabaHFPC3X_xmpjt8Vj3DOxS6y4wcanhpPz4S1vokVHTQ@mail.gmail.com>
-Subject: Re: [PATCH v8 00/14] Add Nuvoton NPCM730/NPCM750 SoCs and two BMC
- machines
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Alexander Bulekov <alxndr@bu.edu>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, CS20 KFTing <kfting@nuvoton.com>
-Content-Type: multipart/alternative; boundary="0000000000005c336605aefe6a4e"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a44;
- envelope-from=hskinnemoen@google.com; helo=mail-vk1-xa44.google.com
+ h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
+ :references:subject:from:to:cc:content-transfer-encoding;
+ bh=FIvJn3bW47bFj62ROGqfiOvrP1TXYJa02fL+u//ZQzQ=;
+ b=bm9ti4q/sifp7vBV74ivbLKZBqA12YQjwzbe9W6DBDyZE73YGSezRPuHCMMv/xv3l7
+ zYJO4yGE043+0LKNyJCyWY6DeeqXz0Fx7CpFhNOM1gKo3JtAE2otFeki/0LKPQb8kau8
+ 8ARzg1K1tvdA3F3Qpc7EL4gnhkFdALJJCO2YjvB/cHH+WOxE/medUde6K1XbuIB9S2Re
+ EDc7Vx17XfnILXqWvMb+rw4h983KWNUtbRCg6BzTOjaj23GgH+Gi4dypUDuyO6hzDGh1
+ RntKBq4WLJjLhM6scbW+Lv01RbY/554aounl+AIqkB3nCeOEVRFAEcfaaTKCff5UjA5T
+ QrJQ==
+X-Gm-Message-State: AOAM5302Mt6CIjZRtqp9wEFMfed8rXoXy+OtLk1gBBSyCRWiy2OnNU8h
+ AqFWBJ/zo6N98ISLvwbZA4KdILh4FzHoUBbVoA==
+X-Received: from skybert.c.googlers.com ([fda3:e722:ac3:10:24:72f4:c0a8:3107])
+ (user=hskinnemoen job=sendgmr) by 2002:a62:5244:: with SMTP id
+ g65mr643592pfb.132.1599801677358; Thu, 10 Sep 2020 22:21:17 -0700 (PDT)
+Date: Thu, 10 Sep 2020 22:20:51 -0700
+In-Reply-To: <20200911052101.2602693-1-hskinnemoen@google.com>
+Message-Id: <20200911052101.2602693-5-hskinnemoen@google.com>
+Mime-Version: 1.0
+References: <20200911052101.2602693-1-hskinnemoen@google.com>
+X-Mailer: git-send-email 2.28.0.526.ge36021eeef-goog
+Subject: [PATCH v9 04/14] hw/arm: Add NPCM730 and NPCM750 SoC models
+To: peter.maydell@linaro.org, f4bug@amsat.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
+ kfting@nuvoton.com, Havard Skinnemoen <hskinnemoen@google.com>,
+ Joel Stanley <joel@jms.id.au>, Alexander Bulekov <alxndr@bu.edu>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::549;
+ envelope-from=3TQlbXwsKCMwzA2055w46w5y66y3w.u648w4C-s94565y5C.69y@flex--hskinnemoen.bounces.google.com;
+ helo=mail-pg1-x549.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,1158 +120,679 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: y3A3/xSRs/Vt
+Reply-to: Havard Skinnemoen <hskinnemoen@google.com>
+From: Havard Skinnemoen via <qemu-arm@nongnu.org>
+X-TUID: f16RDVn73it+
 
---0000000000005c336605aefe6a4e
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+The Nuvoton NPCM7xx SoC family are used to implement Baseboard
+Management Controllers in servers. While the family includes four SoCs,
+this patch implements limited support for two of them: NPCM730 (targeted
+for Data Center applications) and NPCM750 (targeted for Enterprise
+applications).
 
-On Tue, Sep 8, 2020 at 6:32 PM Havard Skinnemoen <hskinnemoen@google.com>
-wrote:
+This patch includes little more than the bare minimum needed to boot a
+Linux kernel built with NPCM7xx support in direct-kernel mode:
 
-> On Tue, Sep 8, 2020 at 12:52 PM Havard Skinnemoen
-> <hskinnemoen@google.com> wrote:
-> >
-> > On Tue, Sep 8, 2020 at 9:58 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat=
-.org>
-> wrote:
-> > >
-> > > On 9/8/20 5:52 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > > > On 9/8/20 5:02 PM, Alexander Bulekov wrote:
-> > > >> Hi Havard,
-> > > >> I fuzzed the npcm750-evb machine until I hit over 85% coverage ove=
-r
-> all
-> > > >> the new npcm.*\.c files. The only thing I found specific to the ne=
-w
-> > > >> code, so far:
-> > > >>
-> > > >> cat << EOF | ./qemu-system-arm -machine npcm750-evb -m 128M -qtest
-> stdio
-> > > >> write 0xf0009040 0x4 0xc4c4c4c4
-> > > >> write 0xf0009040 0x4 0x4
-> > > >> EOF
-> > > >
-> > > > This is an odd test because with -qtest the timer is not running,
-> > > > so this can not really happen on real hw.
-> > > >
-> > > > The fix is:
-> > > >
-> > > > -    g_assert(t->remaining_ns > 0);
-> > > > +    g_assert(qtest_enabled() || t->remaining_ns > 0);
-> > >
-> > > Alex corrected me on IRC, qtest is irrelevant here.
-> > > The problem is he disables the timer twice.
-> > >
-> > > So maybe something like:
-> > >
-> > >  static void npcm7xx_timer_pause(NPCM7xxTimer *t)
-> > >  {
-> > >      int64_t now;
-> > >
-> > > +    if (!timer_pending(&t->qtimer)) {
-> > > +        return;
-> > > +    }
-> > >      timer_del(&t->qtimer);
-> > >      now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
-> > >      t->remaining_ns =3D t->expires_ns - now;
-> > >      g_assert(t->remaining_ns > 0);
-> > >  }
-> >
-> > Thanks, that makes sense. I was worried that making the assert
-> > conditional on qtest_enabled() might hide real issues.
->
-> Hmm, that didn't help, though it might make sense to keep it there anyway=
-.
->
-> What the test case does is:
->
->   1. Enable the timer (with zero expiration time) and reset it at the sam=
-e
-> time.
->   2. Disable the timer zero cycles after it was enabled.
->
-> It also touches a bunch of other bits (including reserved bits), but
-> they should be irrelevant.
->
-> I think there are two issues here.
->
-> When the Reset bit is set, the Enable bit should be forced to zero.
-> This is easy to fix.
->
-> If the timer is enabled with zero expiration time, and immediately
-> disabled without advancing the virtual time, npcm7xx_timer_pause() is
-> called while the timer is active, but t->expires_ns =3D=3D
-> qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL). So t->remaining_ns becomes zero
-> and triggers the assertion.
->
-> If I revert a change that Philippe asked me to do earlier:
->
->     timer_del(&t->qtimer);
->      now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
->      t->remaining_ns =3D t->expires_ns - now;
-> -    g_assert(t->remaining_ns > 0);
-> +    if (t->remaining_ns <=3D 0) {
-> +        npcm7xx_timer_reached_zero(t);
-> +    }
->  }
->
-> it doesn't crash:
->
-> $ cat << EOF | ./qemu-system-arm -machine npcm750-evb -m 128M -qtest
-> stdio --trace npcm7xx_timer*
-> write 0xf0009040 0x4 0xc4c4c4c4
-> write 0xf0009040 0x4 0x4
-> EOF
-> [I 1599613445.620379] OPENED
-> [R +0.180771] write 0xf0009040 0x4 0xc4c4c4c4
-> 1361079@1599613445.801182:npcm7xx_timer_write /machine/soc/tim[1]
-> offset: 0x0040 value 0xc4c4c4c4
-> OK
-> [S +0.180816] OK
-> [R +0.180833] write 0xf0009040 0x4 0x4
-> 1361079@1599613445.801220:npcm7xx_timer_write /machine/soc/tim[1]
-> offset: 0x0040 value 0x00000000
-> 1361079@1599613445.801295:npcm7xx_timer_irq /machine/soc/tim[1] timer 4
-> state 0
-> OK
-> [S +0.180927] OK
-> [I +0.181319] CLOSED
-> [I +4.003267] CLOSED
->
-> Note that the npcm7xx_timer_irq trace event is a sign of the first
-> bug, but fixing that might mask the second bug. If we write the same
-> pattern, only without the Reset bit, this would be the correct
-> behavior (and it still causes the v8 code to crash).
->
-> I think this device deserves a qtest. I wonder if we'd trigger the
-> assertion if we set a nonzero expiration time, but happen to clear the
-> Enable bit on the exact cycle it's supposed to expire. That would be a
-> more realistic scenario, as it wouldn't require multiple register
-> writes in the same virtual clock cycle.
->
+  - Two Cortex-A9 CPU cores with built-in periperhals.
+  - Global Configuration Registers.
+  - Clock Management.
+  - 3 Timer Modules with 5 timers each.
+  - 4 serial ports.
 
-I wrote some qtests, and found several more bugs, but I wasn't able to
-trigger this particular failure mode. I was able to reproduce both of the
-bugs found by the fuzzer though.
+The chips themselves have a lot more features, some of which will be
+added to the model at a later stage.
 
-I'll refresh the patch series tonight or tomorrow, and also send the qtest
-to Nuvoton (and probably send it to the list within the next few weeks or
-so).
+Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
+Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+Tested-by: Alexander Bulekov <alxndr@bu.edu>
+Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
+---
+ include/hw/arm/npcm7xx.h |  85 ++++++++
+ hw/arm/npcm7xx.c         | 407 +++++++++++++++++++++++++++++++++++++++
+ hw/arm/Kconfig           |   5 +
+ hw/arm/meson.build       |   1 +
+ 4 files changed, 498 insertions(+)
+ create mode 100644 include/hw/arm/npcm7xx.h
+ create mode 100644 hw/arm/npcm7xx.c
 
-
-> I probably won't add the qtest to the same series, as I'd like someone
-> from Nuvoton to get a chance to review it first.
->
-> Havard
->
-> >
-> > This fuzz testing is great, it would have been hard to find this bug
-> > without it. Thanks a lot Alex for running it.
-> >
-> > Havard
-> >
-> > > >
-> > > >>
-> > > >> ERROR:../hw/timer/npcm7xx_timer.c:160:npcm7xx_timer_pause:
-> assertion failed: (t->remaining_ns > 0)
-> > > >> Bail out!
-> ERROR:../hw/timer/npcm7xx_timer.c:160:npcm7xx_timer_pause: assertion
-> failed: (t->remaining_ns > 0)
-> > > >> Aborted
-> > > >>
-> > > >> I'm doing the same for the quanta-gsj machine, but I'm not sure
-> whether
-> > > >> it will cover more code, so I'm happy to leave a:
-> > > >>
-> > > >> Tested-by: Alexander Bulekov <alxndr@bu.edu>
-> > > >>
-> > > >> for the patches that add new virtual-device code (1-5, 7-12 ?)
-> > > >> -Alex
-> > > >
-> > > > Very nice from you for testing running the fuzzer!
-> > > >
-> > > > Regards,
-> > > >
-> > > > Phil.
-> > > >
-> > > >>
-> > > >>
-> > > >> On 200824 1716, Havard Skinnemoen via wrote:
-> > > >>> I also pushed this and the previous patchsets to my qemu fork on
-> github.
-> > > >>> The branches are named npcm7xx-v[1-8].
-> > > >>>
-> > > >>>   https://github.com/hskinnemoen/qemu
-> > > >>>
-> > > >>> This patch series models enough of the Nuvoton NPCM730 and NPCM75=
-0
-> SoCs to boot
-> > > >>> an OpenBMC image built for quanta-gsj. This includes device model=
-s
-> for:
-> > > >>>
-> > > >>>   - Global Configuration Registers
-> > > >>>   - Clock Control
-> > > >>>   - Timers
-> > > >>>   - Fuses
-> > > >>>   - Memory Controller
-> > > >>>   - Flash Controller
-> > > >>>
-> > > >>> These modules, along with the existing Cortex A9 CPU cores and
-> built-in
-> > > >>> peripherals, are integrated into a NPCM730 or NPCM750 SoC, which
-> in turn form
-> > > >>> the foundation for the quanta-gsj and npcm750-evb machines,
-> respectively. The
-> > > >>> two SoCs are very similar; the only difference is that NPCM730 is
-> missing some
-> > > >>> peripherals that NPCM750 has, and which are not considered
-> essential for
-> > > >>> datacenter use (e.g. graphics controllers). For more information,
-> see
-> > > >>>
-> > > >>> https://www.nuvoton.com/products/cloud-computing/ibmc/
-> > > >>>
-> > > >>> Both quanta-gsj and npcm750-evb correspond to real boards
-> supported by OpenBMC.
-> > > >>> At the end of the series, qemu can boot an OpenBMC image built fo=
-r
-> one of these
-> > > >>> boards with some minor modifications.
-> > > >>>
-> > > >>> The patches in this series were developed by Google and reviewed
-> by Nuvoton. We
-> > > >>> will be maintaining the machine and peripheral support together.
-> > > >>>
-> > > >>> The data sheet for these SoCs is not generally available. Please
-> let me know if
-> > > >>> more comments are needed to understand the device behavior.
-> > > >>>
-> > > >>> Changes since v7:
-> > > >>>
-> > > >>>   - Move register enums to .c files throughout, leaving a single
-> > > >>>     NPCM7XX_FOO_NR_REGS definition behind in the .h file. A
-> QEMU_BUILD_BUG_ON
-> > > >>>     should alert anyone accidentally expanding the register enum
-> that they need
-> > > >>>     to update the corresponding NR_REGS define, which in turn has
-> a comment
-> > > >>>     reminding them to update the vmstate version_id as well.
-> > > >>>   - Skip loading the bootrom if a kernel filename is provided by
-> the user.
-> > > >>>   - New patch adding a board setup stub to tweak clocks before
-> booting directly
-> > > >>>     into the kernel.
-> > > >>>   - Add stuff to meson files instead of Makefiles.
-> > > >>>   - Try to disable the slowest drivers and services to speed up
-> the flash boot
-> > > >>>     acceptance test a bit. This is somewhat based on the followin=
-g
-> > > >>>     systemd-analyze blame report:
-> > > >>>
-> https://gist.github.com/hskinnemoen/475cb0676530cd2cebaa1754cf16ca97
-> > > >>>
-> > > >>> Changes since v6:
-> > > >>>
-> > > >>>   - Use size_to_str to report DRAM sizes in npcm7xx_gcr.
-> > > >>>   - Simplify the interrupt logic in npcm7xx_timer.
-> > > >>>   - Update global bios_name instead of temporary.
-> > > >>>   - Add npcm7xx_bootrom to MAINTAINERS and pc-bios/README.
-> > > >>>   - Use a predefined name for the gsj boot image in the acceptanc=
-e
-> test.
-> > > >>>
-> > > >>> Changes since v5:
-> > > >>>
-> > > >>>   - Boot ROM included, as a git submodule and a binary blob, and
-> loaded by
-> > > >>>     default, so the -bios option is usually not necessary anymore=
-.
-> > > >>>   - Two acceptance tests added (openbmc image boot, and direct
-> kernel boot).
-> > > >>>   - npcm7xx_load_kernel() moved to SoC code.
-> > > >>>   - NPCM7XX_TIMER_REF_HZ definition moved to CLK header.
-> > > >>>   - Comments added clarifying available SPI flash chip selects.
-> > > >>>   - Error handling adjustments:
-> > > >>>       - Errors from CPU and GCR realization are propagated throug=
-h
-> the SoC
-> > > >>>         since they may be triggered by user-configurable
-> parameters.
-> > > >>>       - Machine init uses error_fatal instead of error_abort for
-> SoC
-> > > >>>         realization flash init. This makes error messages more
-> helpful.
-> > > >>>       - Comments added to indicate whether peripherals may fail t=
-o
-> realize.
-> > > >>>       - Use ERRP_GUARD() instead of Error *err when possible.
-> > > >>>   - Default CPU type is now set, and attempting to set it to
-> anything else
-> > > >>>     will fail.
-> > > >>>   - Format string fixes (use HWADDR_PRIx, etc.)
-> > > >>>   - Simplified memory size encoding and error checking in
-> npcm7xx_gcr.
-> > > >>>   - Encapsulate non-obvious pointer subtraction into helper
-> functions in the
-> > > >>>     FIU and TIMER modules.
-> > > >>>   - Incorporate review feedback into the FIU module:
-> > > >>>       - Add select/deselect trace events.
-> > > >>>       - Use npcm7xx_fiu_{de,}select() consistently.
-> > > >>>       - Use extract/deposit in more places for consistency.
-> > > >>>       - Use -Wimplicit-fallthrough compatible fallthrough comment=
-s.
-> > > >>>       - Use qdev_init_gpio_out_named instead of sysbus_init_irq
-> for chip
-> > > >>>         selects.
-> > > >>>   - Incorporate review feedback into the TIMER module:
-> > > >>>       - Assert that we never pause a timer that has already
-> expired, instead of
-> > > >>>         trying to handle it. This should be safe since
-> QEMU_CLOCK_VIRTUAL is
-> > > >>>         stopped while this code is running.
-> > > >>>       - Simplify the switch blocks in the read and write handlers=
-.
-> > > >>>
-> > > >>> I made a change to error out if a flash drive was not specified,
-> but reverted
-> > > >>> it because it caused make check to fail (qom-test). When
-> specifying a NULL
-> > > >>> block device, the m25p flash device initializes its in-memory
-> storage with 0xff
-> > > >>> and doesn't attempt to write anything back. This seems correct to
-> me.
-> > > >>>
-> > > >>> Changes since v4:
-> > > >>>
-> > > >>>   - OTP cleanups suggested by Philippe Mathieu-Daud=C3=A9.
-> > > >>>       - Added fuse array definitions based on public Nuvoton
-> bootblock code.
-> > > >>>       - Moved class structure to .c file since it's only used
-> internally.
-> > > >>>       - Readability improvements.
-> > > >>>   - Split the first patch and folded parts of it into three other
-> patches so
-> > > >>>     that CONFIG_NPCM7XX is only enabled after the initial NPCM7xx
-> machine
-> > > >>>     support is added.
-> > > >>>   - DRAM init moved to machine init code.
-> > > >>>   - Consistently use lower-case hex literals.
-> > > >>>   - Switched to fine-grained unimplemented devices, based on
-> public bootblock
-> > > >>>     source code. Added a tiny SRAM that got left out previously.
-> > > >>>   - Simplified error handling in npcm7xx_realize() since the boar=
-d
-> code will
-> > > >>>     abort anyway, and SoCs are not hot-pluggable.
-> > > >>>
-> > > >>> Changes since v3:
-> > > >>>
-> > > >>>   - License headers are now GPL v2-or-later throughout.
-> > > >>>   - Added vmstate throughout (except the memory controller, which
-> doesn't
-> > > >>>     really have any state worth saving). Successfully booted a gs=
-j
-> image
-> > > >>>     with two stop/savevm/quit/loadvm cycles along the way.
-> > > >>>       - JFFS2 really doesn't like it if I let qemu keep running
-> after savevm,
-> > > >>>         and then jump back in time with loadvm. I assume this is
-> expected.
-> > > >>>   - Fixed an error API violation in npcm7xx_realize, removed
-> pointless error
-> > > >>>     check after object_property_set_link().
-> > > >>>   - Switched the OTP device to use an embedded array instead of a
-> g_malloc0'd
-> > > >>>     one because I couldn't figure out how to set up vmstate for
-> the latter.
-> > > >>>
-> > > >>> Changes since v2:
-> > > >>>
-> > > >>>   - Simplified the MAINTAINERS entry.
-> > > >>>   - Added link to OpenPOWER jenkins for gsj BMC images.
-> > > >>>   - Reverted the smpboot change, back to byte swapping.
-> > > >>>   - Adapted to upstream API changes:
-> > > >>>       - sysbus_init_child_obj -> object_initialize_child
-> > > >>>       - object_property_set_bool -> qdev_realize / sysbus_realize
-> > > >>>       - ssi_create_slave_no_init -> qdev_new
-> > > >>>       - qdev_init_nofail -> qdev_realize_and_unref
-> > > >>>       - ssi_auto_connect_slaves removed
-> > > >>>   - Moved Boot ROM loading from soc to machine init.
-> > > >>>   - Plumbed power-on-straps property from GCR to the machine init
-> code so it
-> > > >>>     can be properly initialized. Turns out npcm750 memory init
-> doesn't work
-> > > >>>     without this. npcm730 is fine either way, though I'm not sure
-> why.
-> > > >>>   - Reworked the flash init code so it looks more like aspeed
-> (i.e. the flash
-> > > >>>     device gets added even if there's no drive).
-> > > >>>
-> > > >>> Changes since v1 (requested by reviewers):
-> > > >>>
-> > > >>>   - Clarify the source of CLK reset values.
-> > > >>>   - Made smpboot a constant byte array, eliinated byte swapping.
-> > > >>>   - NPCM7xxState now stores an array of ARMCPUs, not pointers to
-> ARMCPUs.
-> > > >>>   - Clarify why EL3 is disabled.
-> > > >>>   - Introduce NPCM7XX_NUM_IRQ constant.
-> > > >>>   - Set the number of CPUs according to SoC variant, and disallow
-> command line
-> > > >>>     overrides (i.e. you can no longer override the number of CPUs
-> with the -smp
-> > > >>>     parameter). This is trying to follow the spirit of
-> > > >>>     https://patchwork.kernel.org/patch/11595407/.
-> > > >>>   - Switch register operations to DEVICE_LITTLE_ENDIAN throughout=
-.
-> > > >>>   - Machine documentation added (new patch).
-> > > >>>
-> > > >>> Changes since v1 to support flash booting:
-> > > >>>
-> > > >>>   - GCR reset value changes to get past memory initialization whe=
-n
-> booting
-> > > >>>     from flash (patches 2 and 5):
-> > > >>>       - INTCR2 now indicates that the DDR controller is
-> initialized.
-> > > >>>       - INTCR3 is initialized according to DDR memory size. A
-> realize()
-> > > >>>     method was implemented to achieve this.
-> > > >>>   - Refactor the machine initialization a bit to make it easier t=
-o
-> drop in
-> > > >>>     machine-specific flash initialization (patch 6).
-> > > >>>   - Extend the series with additional patches to enable booting
-> from flash:
-> > > >>>       - Boot ROM (through the -bios option).
-> > > >>>       - OTP (fuse) controller.
-> > > >>>       - Memory Controller stub (just enough to skip memory
-> training).
-> > > >>>       - Flash controller.
-> > > >>>       - Board-specific flash initialization.
-> > > >>>
-> > > >>> Thanks for reviewing,
-> > > >>>
-> > > >>> Havard
-> > > >>>
-> > > >>> Havard Skinnemoen (14):
-> > > >>>   hw/misc: Add NPCM7xx System Global Control Registers device mod=
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+new file mode 100644
+index 0000000000..e68d9c79e6
+--- /dev/null
++++ b/include/hw/arm/npcm7xx.h
+@@ -0,0 +1,85 @@
++/*
++ * Nuvoton NPCM7xx SoC family.
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WIT=
+HOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++#ifndef NPCM7XX_H
++#define NPCM7XX_H
++
++#include "hw/boards.h"
++#include "hw/cpu/a9mpcore.h"
++#include "hw/misc/npcm7xx_clk.h"
++#include "hw/misc/npcm7xx_gcr.h"
++#include "hw/timer/npcm7xx_timer.h"
++#include "target/arm/cpu.h"
++
++#define NPCM7XX_MAX_NUM_CPUS    (2)
++
++/* The first half of the address space is reserved for DDR4 DRAM. */
++#define NPCM7XX_DRAM_BA         (0x00000000)
++#define NPCM7XX_DRAM_SZ         (2 * GiB)
++
++/* Magic addresses for setting up direct kernel booting and SMP boot stubs=
+. */
++#define NPCM7XX_LOADER_START            (0x00000000)  /* Start of SDRAM */
++#define NPCM7XX_SMP_LOADER_START        (0xffff0000)  /* Boot ROM */
++#define NPCM7XX_SMP_BOOTREG_ADDR        (0xf080013c)  /* GCR.SCRPAD */
++#define NPCM7XX_GIC_CPU_IF_ADDR         (0xf03fe100)  /* GIC within A9 */
++
++typedef struct NPCM7xxState {
++    DeviceState         parent;
++
++    ARMCPU              cpu[NPCM7XX_MAX_NUM_CPUS];
++    A9MPPrivState       a9mpcore;
++
++    MemoryRegion        sram;
++    MemoryRegion        irom;
++    MemoryRegion        ram3;
++    MemoryRegion        *dram;
++
++    NPCM7xxGCRState     gcr;
++    NPCM7xxCLKState     clk;
++    NPCM7xxTimerCtrlState tim[3];
++} NPCM7xxState;
++
++#define TYPE_NPCM7XX    "npcm7xx"
++#define NPCM7XX(obj)    OBJECT_CHECK(NPCM7xxState, (obj), TYPE_NPCM7XX)
++
++#define TYPE_NPCM730    "npcm730"
++#define TYPE_NPCM750    "npcm750"
++
++typedef struct NPCM7xxClass {
++    DeviceClass         parent;
++
++    /* Bitmask of modules that are permanently disabled on this chip. */
++    uint32_t            disabled_modules;
++    /* Number of CPU cores enabled in this SoC class (may be 1 or 2). */
++    uint32_t            num_cpus;
++} NPCM7xxClass;
++
++#define NPCM7XX_CLASS(klass)                                            \
++    OBJECT_CLASS_CHECK(NPCM7xxClass, (klass), TYPE_NPCM7XX)
++#define NPCM7XX_GET_CLASS(obj)                                          \
++    OBJECT_GET_CLASS(NPCM7xxClass, (obj), TYPE_NPCM7XX)
++
++/**
++ * npcm7xx_load_kernel - Loads memory with everything needed to boot
++ * @machine - The machine containing the SoC to be booted.
++ * @soc - The SoC containing the CPU to be booted.
++ *
++ * This will set up the ARM boot info structure for the specific NPCM7xx
++ * derivative and call arm_load_kernel() to set up loading of the kernel, =
+etc.
++ * into memory, if requested by the user.
++ */
++void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc);
++
++#endif /* NPCM7XX_H */
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+new file mode 100644
+index 0000000000..9669ac5fa0
+--- /dev/null
++++ b/hw/arm/npcm7xx.c
+@@ -0,0 +1,407 @@
++/*
++ * Nuvoton NPCM7xx SoC family.
++ *
++ * Copyright 2020 Google LLC
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms of the GNU General Public License as published by the
++ * Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but WIT=
+HOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
++ * for more details.
++ */
++
++#include "qemu/osdep.h"
++
++#include "exec/address-spaces.h"
++#include "hw/arm/boot.h"
++#include "hw/arm/npcm7xx.h"
++#include "hw/char/serial.h"
++#include "hw/loader.h"
++#include "hw/misc/unimp.h"
++#include "hw/qdev-properties.h"
++#include "qapi/error.h"
++#include "qemu/units.h"
++#include "sysemu/sysemu.h"
++
++/*
++ * This covers the whole MMIO space. We'll use this to catch any MMIO acce=
+sses
++ * that aren't handled by any device.
++ */
++#define NPCM7XX_MMIO_BA         (0x80000000)
++#define NPCM7XX_MMIO_SZ         (0x7ffd0000)
++
++/* Core system modules. */
++#define NPCM7XX_L2C_BA          (0xf03fc000)
++#define NPCM7XX_CPUP_BA         (0xf03fe000)
++#define NPCM7XX_GCR_BA          (0xf0800000)
++#define NPCM7XX_CLK_BA          (0xf0801000)
++
++/* Internal AHB SRAM */
++#define NPCM7XX_RAM3_BA         (0xc0008000)
++#define NPCM7XX_RAM3_SZ         (4 * KiB)
++
++/* Memory blocks at the end of the address space */
++#define NPCM7XX_RAM2_BA         (0xfffd0000)
++#define NPCM7XX_RAM2_SZ         (128 * KiB)
++#define NPCM7XX_ROM_BA          (0xffff0000)
++#define NPCM7XX_ROM_SZ          (64 * KiB)
++
++/*
++ * Interrupt lines going into the GIC. This does not include internal Cort=
+ex-A9
++ * interrupts.
++ */
++enum NPCM7xxInterrupt {
++    NPCM7XX_UART0_IRQ           =3D 2,
++    NPCM7XX_UART1_IRQ,
++    NPCM7XX_UART2_IRQ,
++    NPCM7XX_UART3_IRQ,
++    NPCM7XX_TIMER0_IRQ          =3D 32,   /* Timer Module 0 */
++    NPCM7XX_TIMER1_IRQ,
++    NPCM7XX_TIMER2_IRQ,
++    NPCM7XX_TIMER3_IRQ,
++    NPCM7XX_TIMER4_IRQ,
++    NPCM7XX_TIMER5_IRQ,                 /* Timer Module 1 */
++    NPCM7XX_TIMER6_IRQ,
++    NPCM7XX_TIMER7_IRQ,
++    NPCM7XX_TIMER8_IRQ,
++    NPCM7XX_TIMER9_IRQ,
++    NPCM7XX_TIMER10_IRQ,                /* Timer Module 2 */
++    NPCM7XX_TIMER11_IRQ,
++    NPCM7XX_TIMER12_IRQ,
++    NPCM7XX_TIMER13_IRQ,
++    NPCM7XX_TIMER14_IRQ,
++};
++
++/* Total number of GIC interrupts, including internal Cortex-A9 interrupts=
+. */
++#define NPCM7XX_NUM_IRQ         (160)
++
++/* Register base address for each Timer Module */
++static const hwaddr npcm7xx_tim_addr[] =3D {
++    0xf0008000,
++    0xf0009000,
++    0xf000a000,
++};
++
++/* Register base address for each 16550 UART */
++static const hwaddr npcm7xx_uart_addr[] =3D {
++    0xf0001000,
++    0xf0002000,
++    0xf0003000,
++    0xf0004000,
++};
++
++static void npcm7xx_write_secondary_boot(ARMCPU *cpu,
++                                         const struct arm_boot_info *info)
++{
++    /*
++     * The default smpboot stub halts the secondary CPU with a 'wfi'
++     * instruction, but the arch/arm/mach-npcm/platsmp.c in the Linux kern=
 el
-> > > >>>   hw/misc: Add NPCM7xx Clock Controller device model
-> > > >>>   hw/timer: Add NPCM7xx Timer device model
-> > > >>>   hw/arm: Add NPCM730 and NPCM750 SoC models
-> > > >>>   hw/arm: Add two NPCM7xx-based machines
-> > > >>>   roms: Add virtual Boot ROM for NPCM7xx SoCs
-> > > >>>   hw/arm: Load -bios image as a boot ROM for npcm7xx
-> > > >>>   hw/nvram: NPCM7xx OTP device model
-> > > >>>   hw/mem: Stubbed out NPCM7xx Memory Controller model
-> > > >>>   hw/ssi: NPCM7xx Flash Interface Unit device model
-> > > >>>   hw/arm: Wire up BMC boot flash for npcm750-evb and quanta-gsj
-> > > >>>   hw/arm/npcm7xx: add board setup stub for CPU and UART clocks
-> > > >>>   docs/system: Add Nuvoton machine documentation
-> > > >>>   tests/acceptance: console boot tests for quanta-gsj
-> > > >>>
-> > > >>>  docs/system/arm/nuvoton.rst            |  90 ++++
-> > > >>>  docs/system/target-arm.rst             |   1 +
-> > > >>>  Makefile                               |   1 +
-> > > >>>  default-configs/arm-softmmu.mak        |   1 +
-> > > >>>  include/hw/arm/npcm7xx.h               | 112 +++++
-> > > >>>  include/hw/mem/npcm7xx_mc.h            |  36 ++
-> > > >>>  include/hw/misc/npcm7xx_clk.h          |  48 +++
-> > > >>>  include/hw/misc/npcm7xx_gcr.h          |  43 ++
-> > > >>>  include/hw/nvram/npcm7xx_otp.h         |  79 ++++
-> > > >>>  include/hw/ssi/npcm7xx_fiu.h           |  73 ++++
-> > > >>>  include/hw/timer/npcm7xx_timer.h       |  78 ++++
-> > > >>>  hw/arm/npcm7xx.c                       | 532
-> +++++++++++++++++++++++
-> > > >>>  hw/arm/npcm7xx_boards.c                | 197 +++++++++
-> > > >>>  hw/mem/npcm7xx_mc.c                    |  84 ++++
-> > > >>>  hw/misc/npcm7xx_clk.c                  | 266 ++++++++++++
-> > > >>>  hw/misc/npcm7xx_gcr.c                  | 269 ++++++++++++
-> > > >>>  hw/nvram/npcm7xx_otp.c                 | 439 +++++++++++++++++++
-> > > >>>  hw/ssi/npcm7xx_fiu.c                   | 572
-> +++++++++++++++++++++++++
-> > > >>>  hw/timer/npcm7xx_timer.c               | 509
-> ++++++++++++++++++++++
-> > > >>>  .gitmodules                            |   3 +
-> > > >>>  MAINTAINERS                            |  10 +
-> > > >>>  hw/arm/Kconfig                         |   9 +
-> > > >>>  hw/arm/meson.build                     |   1 +
-> > > >>>  hw/mem/meson.build                     |   1 +
-> > > >>>  hw/misc/meson.build                    |   4 +
-> > > >>>  hw/misc/trace-events                   |   8 +
-> > > >>>  hw/nvram/meson.build                   |   1 +
-> > > >>>  hw/ssi/meson.build                     |   1 +
-> > > >>>  hw/ssi/trace-events                    |  11 +
-> > > >>>  hw/timer/meson.build                   |   1 +
-> > > >>>  hw/timer/trace-events                  |   5 +
-> > > >>>  pc-bios/README                         |   6 +
-> > > >>>  pc-bios/npcm7xx_bootrom.bin            | Bin 0 -> 768 bytes
-> > > >>>  roms/Makefile                          |   7 +
-> > > >>>  roms/vbootrom                          |   1 +
-> > > >>>  tests/acceptance/boot_linux_console.py |  83 ++++
-> > > >>>  36 files changed, 3582 insertions(+)
-> > > >>>  create mode 100644 docs/system/arm/nuvoton.rst
-> > > >>>  create mode 100644 include/hw/arm/npcm7xx.h
-> > > >>>  create mode 100644 include/hw/mem/npcm7xx_mc.h
-> > > >>>  create mode 100644 include/hw/misc/npcm7xx_clk.h
-> > > >>>  create mode 100644 include/hw/misc/npcm7xx_gcr.h
-> > > >>>  create mode 100644 include/hw/nvram/npcm7xx_otp.h
-> > > >>>  create mode 100644 include/hw/ssi/npcm7xx_fiu.h
-> > > >>>  create mode 100644 include/hw/timer/npcm7xx_timer.h
-> > > >>>  create mode 100644 hw/arm/npcm7xx.c
-> > > >>>  create mode 100644 hw/arm/npcm7xx_boards.c
-> > > >>>  create mode 100644 hw/mem/npcm7xx_mc.c
-> > > >>>  create mode 100644 hw/misc/npcm7xx_clk.c
-> > > >>>  create mode 100644 hw/misc/npcm7xx_gcr.c
-> > > >>>  create mode 100644 hw/nvram/npcm7xx_otp.c
-> > > >>>  create mode 100644 hw/ssi/npcm7xx_fiu.c
-> > > >>>  create mode 100644 hw/timer/npcm7xx_timer.c
-> > > >>>  create mode 100644 pc-bios/npcm7xx_bootrom.bin
-> > > >>>  create mode 160000 roms/vbootrom
-> > > >>>
-> > > >>> --
-> > > >>> 2.28.0.297.g1956fa8f8d-goog
-> > > >>>
-> > > >>>
-> > > >>
-> > > >
->
++     * does not send an IPI to wake it up, so the second CPU fails to boot=
+. So
++     * we need to provide our own smpboot stub that can not use 'wfi', it =
+has
++     * to spin the secondary CPU until the first CPU writes to the SCRPAD =
+reg.
++     */
++    uint32_t smpboot[] =3D {
++        0xe59f2018,     /* ldr r2, bootreg_addr */
++        0xe3a00000,     /* mov r0, #0 */
++        0xe5820000,     /* str r0, [r2] */
++        0xe320f002,     /* wfe */
++        0xe5921000,     /* ldr r1, [r2] */
++        0xe1110001,     /* tst r1, r1 */
++        0x0afffffb,     /* beq <wfe> */
++        0xe12fff11,     /* bx r1 */
++        NPCM7XX_SMP_BOOTREG_ADDR,
++    };
++    int i;
++
++    for (i =3D 0; i < ARRAY_SIZE(smpboot); i++) {
++        smpboot[i] =3D tswap32(smpboot[i]);
++    }
++
++    rom_add_blob_fixed("smpboot", smpboot, sizeof(smpboot),
++                       NPCM7XX_SMP_LOADER_START);
++}
++
++static struct arm_boot_info npcm7xx_binfo =3D {
++    .loader_start           =3D NPCM7XX_LOADER_START,
++    .smp_loader_start       =3D NPCM7XX_SMP_LOADER_START,
++    .smp_bootreg_addr       =3D NPCM7XX_SMP_BOOTREG_ADDR,
++    .gic_cpu_if_addr        =3D NPCM7XX_GIC_CPU_IF_ADDR,
++    .write_secondary_boot   =3D npcm7xx_write_secondary_boot,
++    .board_id               =3D -1,
++};
++
++void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc)
++{
++    NPCM7xxClass *sc =3D NPCM7XX_GET_CLASS(soc);
++
++    npcm7xx_binfo.ram_size =3D machine->ram_size;
++    npcm7xx_binfo.nb_cpus =3D sc->num_cpus;
++
++    arm_load_kernel(&soc->cpu[0], machine, &npcm7xx_binfo);
++}
++
++static qemu_irq npcm7xx_irq(NPCM7xxState *s, int n)
++{
++    return qdev_get_gpio_in(DEVICE(&s->a9mpcore), n);
++}
++
++static void npcm7xx_init(Object *obj)
++{
++    NPCM7xxState *s =3D NPCM7XX(obj);
++    int i;
++
++    for (i =3D 0; i < NPCM7XX_MAX_NUM_CPUS; i++) {
++        object_initialize_child(obj, "cpu[*]", &s->cpu[i],
++                                ARM_CPU_TYPE_NAME("cortex-a9"));
++    }
++
++    object_initialize_child(obj, "a9mpcore", &s->a9mpcore, TYPE_A9MPCORE_P=
+RIV);
++    object_initialize_child(obj, "gcr", &s->gcr, TYPE_NPCM7XX_GCR);
++    object_property_add_alias(obj, "power-on-straps", OBJECT(&s->gcr),
++                              "power-on-straps");
++    object_initialize_child(obj, "clk", &s->clk, TYPE_NPCM7XX_CLK);
++
++    for (i =3D 0; i < ARRAY_SIZE(s->tim); i++) {
++        object_initialize_child(obj, "tim[*]", &s->tim[i], TYPE_NPCM7XX_TI=
+MER);
++    }
++}
++
++static void npcm7xx_realize(DeviceState *dev, Error **errp)
++{
++    NPCM7xxState *s =3D NPCM7XX(dev);
++    NPCM7xxClass *nc =3D NPCM7XX_GET_CLASS(s);
++    int i;
++
++    if (memory_region_size(s->dram) > NPCM7XX_DRAM_SZ) {
++        error_setg(errp, "%s: NPCM7xx cannot address more than %" PRIu64
++                   " MiB of DRAM", __func__, NPCM7XX_DRAM_SZ / MiB);
++        return;
++    }
++
++    /* CPUs */
++    for (i =3D 0; i < nc->num_cpus; i++) {
++        object_property_set_int(OBJECT(&s->cpu[i]), "mp-affinity",
++                                arm_cpu_mp_affinity(i, NPCM7XX_MAX_NUM_CPU=
+S),
++                                &error_abort);
++        object_property_set_int(OBJECT(&s->cpu[i]), "reset-cbar",
++                                NPCM7XX_GIC_CPU_IF_ADDR, &error_abort);
++        object_property_set_bool(OBJECT(&s->cpu[i]), "reset-hivecs", true,
++                                 &error_abort);
++
++        /* Disable security extensions. */
++        object_property_set_bool(OBJECT(&s->cpu[i]), "has_el3", false,
++                                 &error_abort);
++
++        if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
++            return;
++        }
++    }
++
++    /* A9MPCORE peripherals. Can only fail if we pass bad parameters here.=
+ */
++    object_property_set_int(OBJECT(&s->a9mpcore), "num-cpu", nc->num_cpus,
++                            &error_abort);
++    object_property_set_int(OBJECT(&s->a9mpcore), "num-irq", NPCM7XX_NUM_I=
+RQ,
++                            &error_abort);
++    sysbus_realize(SYS_BUS_DEVICE(&s->a9mpcore), &error_abort);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->a9mpcore), 0, NPCM7XX_CPUP_BA);
++
++    for (i =3D 0; i < nc->num_cpus; i++) {
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i,
++                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_IR=
+Q));
++        sysbus_connect_irq(SYS_BUS_DEVICE(&s->a9mpcore), i + nc->num_cpus,
++                           qdev_get_gpio_in(DEVICE(&s->cpu[i]), ARM_CPU_FI=
+Q));
++    }
++
++    /* L2 cache controller */
++    sysbus_create_simple("l2x0", NPCM7XX_L2C_BA, NULL);
++
++    /* System Global Control Registers (GCR). Can fail due to user input. =
+*/
++    object_property_set_int(OBJECT(&s->gcr), "disabled-modules",
++                            nc->disabled_modules, &error_abort);
++    object_property_add_const_link(OBJECT(&s->gcr), "dram-mr", OBJECT(s->d=
+ram));
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->gcr), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gcr), 0, NPCM7XX_GCR_BA);
++
++    /* Clock Control Registers (CLK). Cannot fail. */
++    sysbus_realize(SYS_BUS_DEVICE(&s->clk), &error_abort);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->clk), 0, NPCM7XX_CLK_BA);
++
++    /* Timer Modules (TIM). Cannot fail. */
++    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_tim_addr) !=3D ARRAY_SIZE(s->tim)=
+);
++    for (i =3D 0; i < ARRAY_SIZE(s->tim); i++) {
++        SysBusDevice *sbd =3D SYS_BUS_DEVICE(&s->tim[i]);
++        int first_irq;
++        int j;
++
++        sysbus_realize(sbd, &error_abort);
++        sysbus_mmio_map(sbd, 0, npcm7xx_tim_addr[i]);
++
++        first_irq =3D NPCM7XX_TIMER0_IRQ + i * NPCM7XX_TIMERS_PER_CTRL;
++        for (j =3D 0; j < NPCM7XX_TIMERS_PER_CTRL; j++) {
++            qemu_irq irq =3D npcm7xx_irq(s, first_irq + j);
++            sysbus_connect_irq(sbd, j, irq);
++        }
++    }
++
++    /* UART0..3 (16550 compatible) */
++    for (i =3D 0; i < ARRAY_SIZE(npcm7xx_uart_addr); i++) {
++        serial_mm_init(get_system_memory(), npcm7xx_uart_addr[i], 2,
++                       npcm7xx_irq(s, NPCM7XX_UART0_IRQ + i), 115200,
++                       serial_hd(i), DEVICE_LITTLE_ENDIAN);
++    }
++
++    /* RAM2 (SRAM) */
++    memory_region_init_ram(&s->sram, OBJECT(dev), "ram2",
++                           NPCM7XX_RAM2_SZ, &error_abort);
++    memory_region_add_subregion(get_system_memory(), NPCM7XX_RAM2_BA, &s->=
+sram);
++
++    /* RAM3 (SRAM) */
++    memory_region_init_ram(&s->ram3, OBJECT(dev), "ram3",
++                           NPCM7XX_RAM3_SZ, &error_abort);
++    memory_region_add_subregion(get_system_memory(), NPCM7XX_RAM3_BA, &s->=
+ram3);
++
++    /* Internal ROM */
++    memory_region_init_rom(&s->irom, OBJECT(dev), "irom", NPCM7XX_ROM_SZ,
++                           &error_abort);
++    memory_region_add_subregion(get_system_memory(), NPCM7XX_ROM_BA, &s->i=
+rom);
++
++    create_unimplemented_device("npcm7xx.shm",          0xc0001000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.vdmx",         0xe0800000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.pcierc",       0xe1000000,  64 * =
+KiB);
++    create_unimplemented_device("npcm7xx.kcs",          0xf0007000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.rng",          0xf000b000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.adc",          0xf000c000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gfxi",         0xf000e000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gpio[0]",      0xf0010000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gpio[1]",      0xf0011000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gpio[2]",      0xf0012000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gpio[3]",      0xf0013000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gpio[4]",      0xf0014000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gpio[5]",      0xf0015000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gpio[6]",      0xf0016000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gpio[7]",      0xf0017000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[0]",     0xf0080000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[1]",     0xf0081000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[2]",     0xf0082000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[3]",     0xf0083000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[4]",     0xf0084000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[5]",     0xf0085000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[6]",     0xf0086000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[7]",     0xf0087000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[8]",     0xf0088000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[9]",     0xf0089000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[10]",    0xf008a000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[11]",    0xf008b000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[12]",    0xf008c000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[13]",    0xf008d000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[14]",    0xf008e000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.smbus[15]",    0xf008f000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.espi",         0xf009f000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.peci",         0xf0100000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.siox[1]",      0xf0101000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.siox[2]",      0xf0102000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.pwm[0]",       0xf0103000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.pwm[1]",       0xf0104000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.mft[0]",       0xf0180000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.mft[1]",       0xf0181000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.mft[2]",       0xf0182000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.mft[3]",       0xf0183000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.mft[4]",       0xf0184000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.mft[5]",       0xf0185000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.mft[6]",       0xf0186000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.mft[7]",       0xf0187000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.pspi1",        0xf0200000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.pspi2",        0xf0201000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.ahbpci",       0xf0400000,   1 * =
+MiB);
++    create_unimplemented_device("npcm7xx.mcphy",        0xf05f0000,  64 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gmac1",        0xf0802000,   8 * =
+KiB);
++    create_unimplemented_device("npcm7xx.gmac2",        0xf0804000,   8 * =
+KiB);
++    create_unimplemented_device("npcm7xx.ehci",         0xf0806000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.ohci",         0xf0807000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.vcd",          0xf0810000,  64 * =
+KiB);
++    create_unimplemented_device("npcm7xx.ece",          0xf0820000,   8 * =
+KiB);
++    create_unimplemented_device("npcm7xx.vdma",         0xf0822000,   8 * =
+KiB);
++    create_unimplemented_device("npcm7xx.emc1",         0xf0825000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.emc2",         0xf0826000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[0]",      0xf0830000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[1]",      0xf0831000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[2]",      0xf0832000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[3]",      0xf0833000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[4]",      0xf0834000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[5]",      0xf0835000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[6]",      0xf0836000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[7]",      0xf0837000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[8]",      0xf0838000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.usbd[9]",      0xf0839000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.sd",           0xf0840000,   8 * =
+KiB);
++    create_unimplemented_device("npcm7xx.mmc",          0xf0842000,   8 * =
+KiB);
++    create_unimplemented_device("npcm7xx.pcimbx",       0xf0848000, 512 * =
+KiB);
++    create_unimplemented_device("npcm7xx.aes",          0xf0858000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.des",          0xf0859000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.sha",          0xf085a000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.secacc",       0xf085b000,   4 * =
+KiB);
++    create_unimplemented_device("npcm7xx.spixcs0",      0xf8000000,  16 * =
+MiB);
++    create_unimplemented_device("npcm7xx.spixcs1",      0xf9000000,  16 * =
+MiB);
++    create_unimplemented_device("npcm7xx.spix",         0xfb001000,   4 * =
+KiB);
++}
++
++static Property npcm7xx_properties[] =3D {
++    DEFINE_PROP_LINK("dram-mr", NPCM7xxState, dram, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void npcm7xx_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc =3D DEVICE_CLASS(oc);
++
++    dc->realize =3D npcm7xx_realize;
++    dc->user_creatable =3D false;
++    device_class_set_props(dc, npcm7xx_properties);
++}
++
++static void npcm730_class_init(ObjectClass *oc, void *data)
++{
++    NPCM7xxClass *nc =3D NPCM7XX_CLASS(oc);
++
++    /* NPCM730 is optimized for data center use, so no graphics, etc. */
++    nc->disabled_modules =3D 0x00300395;
++    nc->num_cpus =3D 2;
++}
++
++static void npcm750_class_init(ObjectClass *oc, void *data)
++{
++    NPCM7xxClass *nc =3D NPCM7XX_CLASS(oc);
++
++    /* NPCM750 has 2 cores and a full set of peripherals */
++    nc->disabled_modules =3D 0x00000000;
++    nc->num_cpus =3D 2;
++}
++
++static const TypeInfo npcm7xx_soc_types[] =3D {
++    {
++        .name           =3D TYPE_NPCM7XX,
++        .parent         =3D TYPE_DEVICE,
++        .instance_size  =3D sizeof(NPCM7xxState),
++        .instance_init  =3D npcm7xx_init,
++        .class_size     =3D sizeof(NPCM7xxClass),
++        .class_init     =3D npcm7xx_class_init,
++        .abstract       =3D true,
++    }, {
++        .name           =3D TYPE_NPCM730,
++        .parent         =3D TYPE_NPCM7XX,
++        .class_init     =3D npcm730_class_init,
++    }, {
++        .name           =3D TYPE_NPCM750,
++        .parent         =3D TYPE_NPCM7XX,
++        .class_init     =3D npcm750_class_init,
++    },
++};
++
++DEFINE_TYPES(npcm7xx_soc_types);
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 4aec9c63f8..cd74642034 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -357,6 +357,11 @@ config XLNX_VERSAL
+=20
+ config NPCM7XX
+     bool
++    select A9MPCORE
++    select ARM_GIC
++    select PL310  # cache controller
++    select SERIAL
++    select UNIMP
+=20
+ config FSL_IMX25
+     bool
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 8480b7f37d..b0967c44c9 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -13,6 +13,7 @@ arm_ss.add(when: 'CONFIG_MICROBIT', if_true: files('micro=
+bit.c'))
+ arm_ss.add(when: 'CONFIG_MUSICPAL', if_true: files('musicpal.c'))
+ arm_ss.add(when: 'CONFIG_NETDUINO2', if_true: files('netduino2.c'))
+ arm_ss.add(when: 'CONFIG_NETDUINOPLUS2', if_true: files('netduinoplus2.c')=
+)
++arm_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx.c'))
+ arm_ss.add(when: 'CONFIG_NSERIES', if_true: files('nseries.c'))
+ arm_ss.add(when: 'CONFIG_SX1', if_true: files('omap_sx1.c'))
+ arm_ss.add(when: 'CONFIG_CHEETAH', if_true: files('palm.c'))
+--=20
+2.28.0.526.ge36021eeef-goog
 
---0000000000005c336605aefe6a4e
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">On Tue, Sep 8, 2020 at 6:32 PM Havard Ski=
-nnemoen &lt;<a href=3D"mailto:hskinnemoen@google.com">hskinnemoen@google.co=
-m</a>&gt; wrote:<br></div><div class=3D"gmail_quote"><blockquote class=3D"g=
-mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
-,204,204);padding-left:1ex">On Tue, Sep 8, 2020 at 12:52 PM Havard Skinnemo=
-en<br>
-&lt;<a href=3D"mailto:hskinnemoen@google.com" target=3D"_blank" class=3D"cr=
-emed">hskinnemoen@google.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On Tue, Sep 8, 2020 at 9:58 AM Philippe Mathieu-Daud=C3=A9 &lt;<a href=
-=3D"mailto:f4bug@amsat.org" target=3D"_blank" class=3D"cremed">f4bug@amsat.=
-org</a>&gt; wrote:<br>
-&gt; &gt;<br>
-&gt; &gt; On 9/8/20 5:52 PM, Philippe Mathieu-Daud=C3=A9 wrote:<br>
-&gt; &gt; &gt; On 9/8/20 5:02 PM, Alexander Bulekov wrote:<br>
-&gt; &gt; &gt;&gt; Hi Havard,<br>
-&gt; &gt; &gt;&gt; I fuzzed the npcm750-evb machine until I hit over 85% co=
-verage over all<br>
-&gt; &gt; &gt;&gt; the new npcm.*\.c files. The only thing I found specific=
- to the new<br>
-&gt; &gt; &gt;&gt; code, so far:<br>
-&gt; &gt; &gt;&gt;<br>
-&gt; &gt; &gt;&gt; cat &lt;&lt; EOF | ./qemu-system-arm -machine npcm750-ev=
-b -m 128M -qtest stdio<br>
-&gt; &gt; &gt;&gt; write 0xf0009040 0x4 0xc4c4c4c4<br>
-&gt; &gt; &gt;&gt; write 0xf0009040 0x4 0x4<br>
-&gt; &gt; &gt;&gt; EOF<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; This is an odd test because with -qtest the timer is not run=
-ning,<br>
-&gt; &gt; &gt; so this can not really happen on real hw.<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; The fix is:<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; -=C2=A0 =C2=A0 g_assert(t-&gt;remaining_ns &gt; 0);<br>
-&gt; &gt; &gt; +=C2=A0 =C2=A0 g_assert(qtest_enabled() || t-&gt;remaining_n=
-s &gt; 0);<br>
-&gt; &gt;<br>
-&gt; &gt; Alex corrected me on IRC, qtest is irrelevant here.<br>
-&gt; &gt; The problem is he disables the timer twice.<br>
-&gt; &gt;<br>
-&gt; &gt; So maybe something like:<br>
-&gt; &gt;<br>
-&gt; &gt;=C2=A0 static void npcm7xx_timer_pause(NPCM7xxTimer *t)<br>
-&gt; &gt;=C2=A0 {<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 int64_t now;<br>
-&gt; &gt;<br>
-&gt; &gt; +=C2=A0 =C2=A0 if (!timer_pending(&amp;t-&gt;qtimer)) {<br>
-&gt; &gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 return;<br>
-&gt; &gt; +=C2=A0 =C2=A0 }<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 timer_del(&amp;t-&gt;qtimer);<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL)=
-;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 t-&gt;remaining_ns =3D t-&gt;expires_ns - now=
-;<br>
-&gt; &gt;=C2=A0 =C2=A0 =C2=A0 g_assert(t-&gt;remaining_ns &gt; 0);<br>
-&gt; &gt;=C2=A0 }<br>
-&gt;<br>
-&gt; Thanks, that makes sense. I was worried that making the assert<br>
-&gt; conditional on qtest_enabled() might hide real issues.<br>
-<br>
-Hmm, that didn&#39;t help, though it might make sense to keep it there anyw=
-ay.<br>
-<br>
-What the test case does is:<br>
-<br>
-=C2=A0 1. Enable the timer (with zero expiration time) and reset it at the =
-same time.<br>
-=C2=A0 2. Disable the timer zero cycles after it was enabled.<br>
-<br>
-It also touches a bunch of other bits (including reserved bits), but<br>
-they should be irrelevant.<br>
-<br>
-I think there are two issues here.<br>
-<br>
-When the Reset bit is set, the Enable bit should be forced to zero.<br>
-This is easy to fix.<br>
-<br>
-If the timer is enabled with zero expiration time, and immediately<br>
-disabled without advancing the virtual time, npcm7xx_timer_pause() is<br>
-called while the timer is active, but t-&gt;expires_ns =3D=3D<br>
-qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL). So t-&gt;remaining_ns becomes zero<b=
-r>
-and triggers the assertion.<br>
-<br>
-If I revert a change that Philippe asked me to do earlier:<br>
-<br>
-=C2=A0 =C2=A0 timer_del(&amp;t-&gt;qtimer);<br>
-=C2=A0 =C2=A0 =C2=A0now =3D qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);<br>
-=C2=A0 =C2=A0 =C2=A0t-&gt;remaining_ns =3D t-&gt;expires_ns - now;<br>
--=C2=A0 =C2=A0 g_assert(t-&gt;remaining_ns &gt; 0);<br>
-+=C2=A0 =C2=A0 if (t-&gt;remaining_ns &lt;=3D 0) {<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 npcm7xx_timer_reached_zero(t);<br>
-+=C2=A0 =C2=A0 }<br>
-=C2=A0}<br>
-<br>
-it doesn&#39;t crash:<br>
-<br>
-$ cat &lt;&lt; EOF | ./qemu-system-arm -machine npcm750-evb -m 128M -qtest<=
-br>
-stdio --trace npcm7xx_timer*<br>
-write 0xf0009040 0x4 0xc4c4c4c4<br>
-write 0xf0009040 0x4 0x4<br>
-EOF<br>
-[I 1599613445.620379] OPENED<br>
-[R +0.180771] write 0xf0009040 0x4 0xc4c4c4c4<br>
-1361079@1599613445.801182:npcm7xx_timer_write /machine/soc/tim[1]<br>
-offset: 0x0040 value 0xc4c4c4c4<br>
-OK<br>
-[S +0.180816] OK<br>
-[R +0.180833] write 0xf0009040 0x4 0x4<br>
-1361079@1599613445.801220:npcm7xx_timer_write /machine/soc/tim[1]<br>
-offset: 0x0040 value 0x00000000<br>
-1361079@1599613445.801295:npcm7xx_timer_irq /machine/soc/tim[1] timer 4 sta=
-te 0<br>
-OK<br>
-[S +0.180927] OK<br>
-[I +0.181319] CLOSED<br>
-[I +4.003267] CLOSED<br>
-<br>
-Note that the npcm7xx_timer_irq trace event is a sign of the first<br>
-bug, but fixing that might mask the second bug. If we write the same<br>
-pattern, only without the Reset bit, this would be the correct<br>
-behavior (and it still causes the v8 code to crash).<br>
-<br>
-I think this device deserves a qtest. I wonder if we&#39;d trigger the<br>
-assertion if we set a nonzero expiration time, but happen to clear the<br>
-Enable bit on the exact cycle it&#39;s supposed to expire. That would be a<=
-br>
-more realistic scenario, as it wouldn&#39;t require multiple register<br>
-writes in the same virtual clock cycle.<br></blockquote><div><br></div><div=
->I wrote some qtests, and found several more bugs, but I wasn&#39;t able to=
- trigger this particular failure mode. I was able to reproduce both of the =
-bugs found by the fuzzer though.</div><div><br></div><div>I&#39;ll refresh =
-the patch series tonight or tomorrow, and also send the qtest to Nuvoton (a=
-nd probably send it to the list within the next few weeks or so).</div><div=
->=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px =
-0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
-I probably won&#39;t add the qtest to the same series, as I&#39;d like some=
-one<br>
-from Nuvoton to get a chance to review it first.<br>
-<br>
-Havard<br>
-<br>
-&gt;<br>
-&gt; This fuzz testing is great, it would have been hard to find this bug<b=
-r>
-&gt; without it. Thanks a lot Alex for running it.<br>
-&gt;<br>
-&gt; Havard<br>
-&gt;<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt;&gt;<br>
-&gt; &gt; &gt;&gt; ERROR:../hw/timer/npcm7xx_timer.c:160:npcm7xx_timer_paus=
-e: assertion failed: (t-&gt;remaining_ns &gt; 0)<br>
-&gt; &gt; &gt;&gt; Bail out! ERROR:../hw/timer/npcm7xx_timer.c:160:npcm7xx_=
-timer_pause: assertion failed: (t-&gt;remaining_ns &gt; 0)<br>
-&gt; &gt; &gt;&gt; Aborted<br>
-&gt; &gt; &gt;&gt;<br>
-&gt; &gt; &gt;&gt; I&#39;m doing the same for the quanta-gsj machine, but I=
-&#39;m not sure whether<br>
-&gt; &gt; &gt;&gt; it will cover more code, so I&#39;m happy to leave a:<br=
->
-&gt; &gt; &gt;&gt;<br>
-&gt; &gt; &gt;&gt; Tested-by: Alexander Bulekov &lt;<a href=3D"mailto:alxnd=
-r@bu.edu" target=3D"_blank" class=3D"cremed">alxndr@bu.edu</a>&gt;<br>
-&gt; &gt; &gt;&gt;<br>
-&gt; &gt; &gt;&gt; for the patches that add new virtual-device code (1-5, 7=
--12 ?)<br>
-&gt; &gt; &gt;&gt; -Alex<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; Very nice from you for testing running the fuzzer!<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; Regards,<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt; Phil.<br>
-&gt; &gt; &gt;<br>
-&gt; &gt; &gt;&gt;<br>
-&gt; &gt; &gt;&gt;<br>
-&gt; &gt; &gt;&gt; On 200824 1716, Havard Skinnemoen via wrote:<br>
-&gt; &gt; &gt;&gt;&gt; I also pushed this and the previous patchsets to my =
-qemu fork on github.<br>
-&gt; &gt; &gt;&gt;&gt; The branches are named npcm7xx-v[1-8].<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0<a href=3D"https://github.com/hskinnemoe=
-n/qemu" rel=3D"noreferrer" target=3D"_blank" class=3D"cremed">https://githu=
-b.com/hskinnemoen/qemu</a><br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; This patch series models enough of the Nuvoton NPCM7=
-30 and NPCM750 SoCs to boot<br>
-&gt; &gt; &gt;&gt;&gt; an OpenBMC image built for quanta-gsj. This includes=
- device models for:<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Global Configuration Registers<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Clock Control<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Timers<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Fuses<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Memory Controller<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Flash Controller<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; These modules, along with the existing Cortex A9 CPU=
- cores and built-in<br>
-&gt; &gt; &gt;&gt;&gt; peripherals, are integrated into a NPCM730 or NPCM75=
-0 SoC, which in turn form<br>
-&gt; &gt; &gt;&gt;&gt; the foundation for the quanta-gsj and npcm750-evb ma=
-chines, respectively. The<br>
-&gt; &gt; &gt;&gt;&gt; two SoCs are very similar; the only difference is th=
-at NPCM730 is missing some<br>
-&gt; &gt; &gt;&gt;&gt; peripherals that NPCM750 has, and which are not cons=
-idered essential for<br>
-&gt; &gt; &gt;&gt;&gt; datacenter use (e.g. graphics controllers). For more=
- information, see<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; <a href=3D"https://www.nuvoton.com/products/cloud-co=
-mputing/ibmc/" rel=3D"noreferrer" target=3D"_blank" class=3D"cremed">https:=
-//www.nuvoton.com/products/cloud-computing/ibmc/</a><br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Both quanta-gsj and npcm750-evb correspond to real b=
-oards supported by OpenBMC.<br>
-&gt; &gt; &gt;&gt;&gt; At the end of the series, qemu can boot an OpenBMC i=
-mage built for one of these<br>
-&gt; &gt; &gt;&gt;&gt; boards with some minor modifications.<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; The patches in this series were developed by Google =
-and reviewed by Nuvoton. We<br>
-&gt; &gt; &gt;&gt;&gt; will be maintaining the machine and peripheral suppo=
-rt together.<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; The data sheet for these SoCs is not generally avail=
-able. Please let me know if<br>
-&gt; &gt; &gt;&gt;&gt; more comments are needed to understand the device be=
-havior.<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Changes since v7:<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Move register enums to .c files throug=
-hout, leaving a single<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0NPCM7XX_FOO_NR_REGS definition be=
-hind in the .h file. A QEMU_BUILD_BUG_ON<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0should alert anyone accidentally =
-expanding the register enum that they need<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0to update the corresponding NR_RE=
-GS define, which in turn has a comment<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0reminding them to update the vmst=
-ate version_id as well.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Skip loading the bootrom if a kernel f=
-ilename is provided by the user.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- New patch adding a board setup stub to=
- tweak clocks before booting directly<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0into the kernel.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Add stuff to meson files instead of Ma=
-kefiles.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Try to disable the slowest drivers and=
- services to speed up the flash boot<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0acceptance test a bit. This is so=
-mewhat based on the following<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0systemd-analyze blame report:<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0<a href=3D"https://gist.github.co=
-m/hskinnemoen/475cb0676530cd2cebaa1754cf16ca97" rel=3D"noreferrer" target=
-=3D"_blank" class=3D"cremed">https://gist.github.com/hskinnemoen/475cb06765=
-30cd2cebaa1754cf16ca97</a><br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Changes since v6:<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Use size_to_str to report DRAM sizes i=
-n npcm7xx_gcr.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Simplify the interrupt logic in npcm7x=
-x_timer.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Update global bios_name instead of tem=
-porary.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Add npcm7xx_bootrom to MAINTAINERS and=
- pc-bios/README.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Use a predefined name for the gsj boot=
- image in the acceptance test.<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Changes since v5:<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Boot ROM included, as a git submodule =
-and a binary blob, and loaded by<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0default, so the -bios option is u=
-sually not necessary anymore.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Two acceptance tests added (openbmc im=
-age boot, and direct kernel boot).<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- npcm7xx_load_kernel() moved to SoC cod=
-e.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- NPCM7XX_TIMER_REF_HZ definition moved =
-to CLK header.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Comments added clarifying available SP=
-I flash chip selects.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Error handling adjustments:<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Errors from CPU and GCR =
-realization are propagated through the SoC<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0since they may be t=
-riggered by user-configurable parameters.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Machine init uses error_=
-fatal instead of error_abort for SoC<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0realization flash i=
-nit. This makes error messages more helpful.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Comments added to indica=
-te whether peripherals may fail to realize.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Use ERRP_GUARD() instead=
- of Error *err when possible.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Default CPU type is now set, and attem=
-pting to set it to anything else<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0will fail.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Format string fixes (use HWADDR_PRIx, =
-etc.)<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Simplified memory size encoding and er=
-ror checking in npcm7xx_gcr.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Encapsulate non-obvious pointer subtra=
-ction into helper functions in the<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0FIU and TIMER modules.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Incorporate review feedback into the F=
-IU module:<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Add select/deselect trac=
-e events.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Use npcm7xx_fiu_{de,}sel=
-ect() consistently.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Use extract/deposit in m=
-ore places for consistency.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Use -Wimplicit-fallthrou=
-gh compatible fallthrough comments.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Use qdev_init_gpio_out_n=
-amed instead of sysbus_init_irq for chip<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0selects.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Incorporate review feedback into the T=
-IMER module:<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Assert that we never pau=
-se a timer that has already expired, instead of<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0trying to handle it=
-. This should be safe since QEMU_CLOCK_VIRTUAL is<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0stopped while this =
-code is running.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Simplify the switch bloc=
-ks in the read and write handlers.<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; I made a change to error out if a flash drive was no=
-t specified, but reverted<br>
-&gt; &gt; &gt;&gt;&gt; it because it caused make check to fail (qom-test). =
-When specifying a NULL<br>
-&gt; &gt; &gt;&gt;&gt; block device, the m25p flash device initializes its =
-in-memory storage with 0xff<br>
-&gt; &gt; &gt;&gt;&gt; and doesn&#39;t attempt to write anything back. This=
- seems correct to me.<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Changes since v4:<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- OTP cleanups suggested by Philippe Mat=
-hieu-Daud=C3=A9.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Added fuse array definit=
-ions based on public Nuvoton bootblock code.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Moved class structure to=
- .c file since it&#39;s only used internally.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Readability improvements=
-.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Split the first patch and folded parts=
- of it into three other patches so<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0that CONFIG_NPCM7XX is only enabl=
-ed after the initial NPCM7xx machine<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0support is added.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- DRAM init moved to machine init code.<=
-br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Consistently use lower-case hex litera=
-ls.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Switched to fine-grained unimplemented=
- devices, based on public bootblock<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0source code. Added a tiny SRAM th=
-at got left out previously.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Simplified error handling in npcm7xx_r=
-ealize() since the board code will<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0abort anyway, and SoCs are not ho=
-t-pluggable.<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Changes since v3:<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- License headers are now GPL v2-or-late=
-r throughout.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Added vmstate throughout (except the m=
-emory controller, which doesn&#39;t<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0really have any state worth savin=
-g). Successfully booted a gsj image<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0with two stop/savevm/quit/loadvm =
-cycles along the way.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- JFFS2 really doesn&#39;t=
- like it if I let qemu keep running after savevm,<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0and then jump back =
-in time with loadvm. I assume this is expected.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Fixed an error API violation in npcm7x=
-x_realize, removed pointless error<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0check after object_property_set_l=
-ink().<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Switched the OTP device to use an embe=
-dded array instead of a g_malloc0&#39;d<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0one because I couldn&#39;t figure=
- out how to set up vmstate for the latter.<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Changes since v2:<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Simplified the MAINTAINERS entry.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Added link to OpenPOWER jenkins for gs=
-j BMC images.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Reverted the smpboot change, back to b=
-yte swapping.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Adapted to upstream API changes:<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- sysbus_init_child_obj -&=
-gt; object_initialize_child<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- object_property_set_bool=
- -&gt; qdev_realize / sysbus_realize<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- ssi_create_slave_no_init=
- -&gt; qdev_new<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- qdev_init_nofail -&gt; q=
-dev_realize_and_unref<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- ssi_auto_connect_slaves =
-removed<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Moved Boot ROM loading from soc to mac=
-hine init.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Plumbed power-on-straps property from =
-GCR to the machine init code so it<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0can be properly initialized. Turn=
-s out npcm750 memory init doesn&#39;t work<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0without this. npcm730 is fine eit=
-her way, though I&#39;m not sure why.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Reworked the flash init code so it loo=
-ks more like aspeed (i.e. the flash<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0device gets added even if there&#=
-39;s no drive).<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Changes since v1 (requested by reviewers):<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Clarify the source of CLK reset values=
-.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Made smpboot a constant byte array, el=
-iinated byte swapping.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- NPCM7xxState now stores an array of AR=
-MCPUs, not pointers to ARMCPUs.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Clarify why EL3 is disabled.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Introduce NPCM7XX_NUM_IRQ constant.<br=
->
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Set the number of CPUs according to So=
-C variant, and disallow command line<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0overrides (i.e. you can no longer=
- override the number of CPUs with the -smp<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0parameter). This is trying to fol=
-low the spirit of<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0<a href=3D"https://patchwork.kern=
-el.org/patch/11595407/" rel=3D"noreferrer" target=3D"_blank" class=3D"creme=
-d">https://patchwork.kernel.org/patch/11595407/</a>.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Switch register operations to DEVICE_L=
-ITTLE_ENDIAN throughout.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Machine documentation added (new patch=
-).<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Changes since v1 to support flash booting:<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- GCR reset value changes to get past me=
-mory initialization when booting<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0from flash (patches 2 and 5):<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- INTCR2 now indicates tha=
-t the DDR controller is initialized.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- INTCR3 is initialized ac=
-cording to DDR memory size. A realize()<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0method was implemented to achieve=
- this.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Refactor the machine initialization a =
-bit to make it easier to drop in<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0machine-specific flash initializa=
-tion (patch 6).<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0- Extend the series with additional patc=
-hes to enable booting from flash:<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Boot ROM (through the -b=
-ios option).<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- OTP (fuse) controller.<b=
-r>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Memory Controller stub (=
-just enough to skip memory training).<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Flash controller.<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0- Board-specific flash ini=
-tialization.<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Thanks for reviewing,<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Havard<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; Havard Skinnemoen (14):<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/misc: Add NPCM7xx System Global Contr=
-ol Registers device model<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/misc: Add NPCM7xx Clock Controller de=
-vice model<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/timer: Add NPCM7xx Timer device model=
-<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/arm: Add NPCM730 and NPCM750 SoC mode=
-ls<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/arm: Add two NPCM7xx-based machines<b=
-r>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0roms: Add virtual Boot ROM for NPCM7xx S=
-oCs<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/arm: Load -bios image as a boot ROM f=
-or npcm7xx<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/nvram: NPCM7xx OTP device model<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/mem: Stubbed out NPCM7xx Memory Contr=
-oller model<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/ssi: NPCM7xx Flash Interface Unit dev=
-ice model<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/arm: Wire up BMC boot flash for npcm7=
-50-evb and quanta-gsj<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0hw/arm/npcm7xx: add board setup stub for=
- CPU and UART clocks<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0docs/system: Add Nuvoton machine documen=
-tation<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 =C2=A0tests/acceptance: console boot tests for=
- quanta-gsj<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 docs/system/arm/nuvoton.rst=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 90 ++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 docs/system/target-arm.rst=C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 Makefile=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=
-=C2=A0 =C2=A01 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 default-configs/arm-softmmu.mak=C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 |=C2=A0 =C2=A01 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 include/hw/arm/npcm7xx.h=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 112 +++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 include/hw/mem/npcm7xx_mc.h=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 36 ++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 include/hw/misc/npcm7xx_clk.h=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 |=C2=A0 48 +++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 include/hw/misc/npcm7xx_gcr.h=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 |=C2=A0 43 ++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 include/hw/nvram/npcm7xx_otp.h=C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0|=C2=A0 79 ++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 include/hw/ssi/npcm7xx_fiu.h=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 73 ++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 include/hw/timer/npcm7xx_timer.h=C2=A0 =C2=A0 =
-=C2=A0 =C2=A0|=C2=A0 78 ++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/arm/npcm7xx.c=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 532 ++++++++++++++=
-+++++++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/arm/npcm7xx_boards.c=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 197 +++++++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/mem/npcm7xx_mc.c=C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 84 ++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/misc/npcm7xx_clk.c=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 266 ++++++++++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/misc/npcm7xx_gcr.c=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 | 269 ++++++++++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/nvram/npcm7xx_otp.c=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 439 +++++++++++++++++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/ssi/npcm7xx_fiu.c=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 572 ++++++++++++++++++++++++=
-+<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/timer/npcm7xx_timer.c=C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 509 ++++++++++++++++++++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 .gitmodules=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=
-=A03 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 MAINTAINERS=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 10 +=
-<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/arm/Kconfig=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A09 =
-+<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/arm/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/mem/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/misc/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A04 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/misc/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A08 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/nvram/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/ssi/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/ssi/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 11 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/timer/meson.build=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A01 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 hw/timer/trace-events=C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A05 +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 pc-bios/README=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0|=C2=A0 =C2=A06 =
-+<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 pc-bios/npcm7xx_bootrom.bin=C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 | Bin 0 -&gt; 768 bytes<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 roms/Makefile=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A07=
- +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 roms/vbootrom=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A01=
- +<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 tests/acceptance/boot_linux_console.py |=C2=A0=
- 83 ++++<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 36 files changed, 3582 insertions(+)<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 docs/system/arm/nuvoton.rst=
-<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 include/hw/arm/npcm7xx.h<br=
->
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 include/hw/mem/npcm7xx_mc.h=
-<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 include/hw/misc/npcm7xx_clk=
-.h<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 include/hw/misc/npcm7xx_gcr=
-.h<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 include/hw/nvram/npcm7xx_ot=
-p.h<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 include/hw/ssi/npcm7xx_fiu.=
-h<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 include/hw/timer/npcm7xx_ti=
-mer.h<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 hw/arm/npcm7xx.c<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 hw/arm/npcm7xx_boards.c<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 hw/mem/npcm7xx_mc.c<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 hw/misc/npcm7xx_clk.c<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 hw/misc/npcm7xx_gcr.c<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 hw/nvram/npcm7xx_otp.c<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 hw/ssi/npcm7xx_fiu.c<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 hw/timer/npcm7xx_timer.c<br=
->
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 100644 pc-bios/npcm7xx_bootrom.bin=
-<br>
-&gt; &gt; &gt;&gt;&gt;=C2=A0 create mode 160000 roms/vbootrom<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt; --<br>
-&gt; &gt; &gt;&gt;&gt; 2.28.0.297.g1956fa8f8d-goog<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;&gt;<br>
-&gt; &gt; &gt;&gt;<br>
-&gt; &gt; &gt;<br>
-</blockquote></div></div>
-
---0000000000005c336605aefe6a4e--

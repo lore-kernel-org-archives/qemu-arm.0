@@ -1,109 +1,106 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp231923lfq;
-        Fri, 11 Sep 2020 12:32:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxUqWWwqfIqQQ2T0dlQ7HQl4u043NsdMle59A1PZU1nyoOraxzwyCutFB0OHFjDQ26Z6U7R
-X-Received: by 2002:ac8:5305:: with SMTP id t5mr3511616qtn.278.1599852770724;
-        Fri, 11 Sep 2020 12:32:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599852770; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp237705lfq;
+        Fri, 11 Sep 2020 12:41:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw79IbeGdVvJvBvuc6nmRZMwxfcV6mr1tNKjRFqL7LIXyjL1RdDognToSyNRApvfXwFKiJW
+X-Received: by 2002:a5b:14f:: with SMTP id c15mr4980219ybp.151.1599853316238;
+        Fri, 11 Sep 2020 12:41:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599853316; cv=none;
         d=google.com; s=arc-20160816;
-        b=R979Ftn17aF9R5sqDsHeC+7u9pciZcUANDd/INX2EldV/igkk7RaoFdQ7F3toyEnxo
-         C9S/1XOUP/xK8zzaQSVYuzyrtPUg+GK3N3uXrP1ZVjKrLctEYGTuoq8tGdY/DXYIS81V
-         iuXVbsBR7IBxB8tdzIGdiJOf8vCRQ4oOGbK0PF43UP1InLtiKtVSCMSxenoX8EwOka5C
-         v6yAwTBBUmHxsgYPU0mVXDrnJBzBs0qwuU1GRpDwlgSfc3RIqLX9NIqlCc4CvYkVvyXJ
-         vUFguvF0jMo+E1xnUYkBttIDbiOpmb9wbE6B8Ansos1G6JBjKe/exn80VzS/QLbYZQ2w
-         3Jaw==
+        b=cElgSfjmG4LVXkwJrCermJbmivwgO0cR2YPN9/RrumwDc+LuihCF4Vp9PeyG7nvLFu
+         sHb7DLVxZXBAyxLC2bK/oGPjrTAAgsjmv5i51lnBaSYUejO0niDgNgsU8i2Db8PiHVPo
+         dhUd1v4A1riLw1fcIFWbp873LnKz+QB0wk7GC6d4dsbOapZauGnbyQr02I/vwM8CsPD2
+         CMFhxoF6wsEoqfwlz38/U0SGILc+N2Zh8o0VgUbg49LW3TBKqwR+hpkeltyKWD65RLRR
+         t8801EZfH3ntBKzLIGSaK9T8bvWITKUH94/E/debPeiY7c3mjDuAre2zoaGXGHJ4g/xD
+         qXVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=9Q7Y8X4tEBGZBhcUzxSkpKyUE7cjbzl0G3J6ilMIXKY=;
-        b=OJ8Lj5IyPpJZhBqQJKTblnUrUHPeFjcxBHESF2P1ibuSddbzVATEd8xYs6+5wPx+Mo
-         D+LLm66I0Vdrpvt0LuJFn4eKAlRsmb5lT1LsaCkPPixhrqj2gWJpOEN4CWow0yV+IBXZ
-         zRwNh/WiM0ASa60yAj/qsOabbB/3Xdq8sE/GwCpcNHbpIi2aQLjfjybK9eHk71uj+GV5
-         gMesiiJioyHcPqwzxJNU0AD0gfYPnE7nmWq5qVAsOP4E7KKOqilfFJE2wtYKqT6tJlFh
-         7Bh2JNT/9Cz73Is5tY6rIYEPjbxVpImsZTFC6UtXC9UYXVakx1k0znAb3/XJd9Ttnfpv
-         RNIA==
+        bh=fzsN2kmp759BPhrivZCf0ftkqqjeCNXbrECqPg8QK3A=;
+        b=aXItwzLrCP5oVNtxuj4LNDcpV50XuwUdCTQB6sak8QWB69x+Jg/XXXPavqEeyP+4X4
+         9GPYJaXtxUuk4tqPdEVpuADvFwJLzcopXnnrX9l3vGjJ1Zi/4LDLF5mxw3hdT09dfavY
+         7VKB7rZ36HsYeTHH78af/CSHpHNtY0AkQQZUd7wXuTr9R8FBXf/nUKNk3FBW9Hz56fSV
+         v05/YMukD/osu5A1YFVTpAzCvVbLNjvvTP0HtcdImsfJnffAMJe8STagPcLd1T9KPN2A
+         lpxkAie4M7Uk3P6uaN3R1g4yKYSAgEk/8l2HL1FsLKWWUeDhly5PNwLKP8SRUfkibyOG
+         23ZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rRf5qHtx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nVUJDjbY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o7si2312970qvx.195.2020.09.11.12.32.50
+        by mx.google.com with ESMTPS id v13si2850435ybm.196.2020.09.11.12.41.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Sep 2020 12:32:50 -0700 (PDT)
+        Fri, 11 Sep 2020 12:41:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=rRf5qHtx;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nVUJDjbY;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:41612 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50120 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGomw-0001fT-2h
-	for alex.bennee@linaro.org; Fri, 11 Sep 2020 15:32:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44516)
+	id 1kGovj-0008S5-Gc
+	for alex.bennee@linaro.org; Fri, 11 Sep 2020 15:41:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46232)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kGomb-0001RD-Nu
- for qemu-arm@nongnu.org; Fri, 11 Sep 2020 15:32:29 -0400
-Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:46222)
+ id 1kGouF-0006av-1H
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2020 15:40:23 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:40729)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kGoma-0000dh-7X
- for qemu-arm@nongnu.org; Fri, 11 Sep 2020 15:32:29 -0400
-Received: by mail-pl1-x642.google.com with SMTP id d16so1322670pll.13
- for <qemu-arm@nongnu.org>; Fri, 11 Sep 2020 12:32:26 -0700 (PDT)
+ id 1kGouC-0001ZI-I0
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2020 15:40:22 -0400
+Received: by mail-pf1-x442.google.com with SMTP id x123so8150492pfc.7
+ for <qemu-arm@nongnu.org>; Fri, 11 Sep 2020 12:40:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=subject:to:references:from:message-id:date:user-agent:mime-version
  :in-reply-to:content-language:content-transfer-encoding;
- bh=9Q7Y8X4tEBGZBhcUzxSkpKyUE7cjbzl0G3J6ilMIXKY=;
- b=rRf5qHtxWaUKe47odM3bVssDZIWg71GI7UvPZRYzozV94x5IJ2FHgz3E1gTbon+Eer
- BhBEwPNVglu9rBeADUM4mY4cau9NjofOlLTE0XKgjzYM8i1DV4fIQg1DFZyZO/fzbQ1K
- JZCDY9zEWm8v9XjqRcWjw6ALMKcKm0ch+qw9DpzB6LfoYnQ9Pz3Z8Ulu7zUqfg0niIbb
- nb2sgnill/2Y4SICk8Jyb5Wz/mskEBWRuxRdFfDGh2oBlBShpmLLgpzR5xK0hRNtWdh9
- x4VZYh1tJQI/IrIR2rM9Go5cqGQdpiycnbvKMMuVmqFPZ9GmgMqsTY5Jo3OIDDqL/qYj
- yCAQ==
+ bh=fzsN2kmp759BPhrivZCf0ftkqqjeCNXbrECqPg8QK3A=;
+ b=nVUJDjbYmKKhvCJuBkUTEPJbTeWY9Sp9fSkEhU30G87x92A9Dpb+hURHjdAqqAsq+e
+ cLdnz5RwrTIaX7mDrftfaibNYeWB37PJHlODHUyp+GbgmHF4R64pLJVr8PMT/TL9/7WO
+ QfgScagcR5FswXXijnBOsgeRBVN0trbURZaxuAdpULJfOAAuTGDVzsKF0ZUT0+71y1gK
+ 8A/b8TUhjmIM2avIksEl8CHjGa1DCA+wEnanULYNSrHC9ktnDNqsMWR4oWJUeqBJPwjd
+ nJr0VkrDeLjrScYmUXrSUHuKu1daUyFosLK2p36hreAS13Lry0diNjsn9Gr5hZxKAd9B
+ ivQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:subject:to:references:from:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=9Q7Y8X4tEBGZBhcUzxSkpKyUE7cjbzl0G3J6ilMIXKY=;
- b=hMPDhvnCZCk1YasE2erg2dw2P3iTFhZ+mn97zOMHik7XQRIT8fhReMzLuGqyzdug/x
- Hfum+vJpT66eYve9Ft/BU/7vFTdwnrK0xKL9DB9v6meWiThpth6HcvBW6CA1gntsRtGi
- HO1ITbE+6yGFw7PwGqnBDmuCZE+VXvWDXXq+iWQbvwZTy5+cOOSGSccdI63bdAzjJc6O
- GP+JYGFgLdBHbOvfAZTXhVW3JgShKAwp54qnBSdNoim7YoxU30SvMk+wcGyuEXL9oBXE
- gMut36H/5qVS+y6ocL/6buIsfB6VaiPaazocY8xvtzLAsdakm8RVeauuAA37ykS06RPf
- oUAQ==
-X-Gm-Message-State: AOAM5303KRN3b50DO9DyFEaWIVakGyjZM6OHaLkMvTcLV7B6qkCTFPvW
- BAXoIMeXZlQoSgwjj3NouIh9NA==
-X-Received: by 2002:a17:902:bb84:: with SMTP id
- m4mr3437829pls.90.1599852745706; 
- Fri, 11 Sep 2020 12:32:25 -0700 (PDT)
+ bh=fzsN2kmp759BPhrivZCf0ftkqqjeCNXbrECqPg8QK3A=;
+ b=mWCA8EytPwL3HI12cPWQ7FcGmoyOyD+O9MrxxaEl/q/04W79u+ItWdfD5Ef9LmdliY
+ Lv5VolFnCumECP8dNKaR2BocJPeqmCF3Evgeem8iBg6LUJOFNHvH4ukcD8CtUWQuxMPm
+ yYxZFKZmIUtNBpFKpbsBvGsF6mJ7GMUKVY5irpy+xlujNrhfLFFlfFP5AmbExvyUp646
+ T/XwH9dDnZ9aYgkizF3QOB6fzdUTrK5Tpsus/NOCmjt4/UfeeXhkvG0UCoCmpZWdL5IA
+ PRLS76mI92lU4C8+dr3y0kmdwj30yO2hQQbKE3a6N1tsgu81AIE+v4elRjZH3lRbPddj
+ 3elA==
+X-Gm-Message-State: AOAM532zFKQg+jip6Ql9L7Hh9aK3NFLWz5nIQ8Mjo7/ILA7tM8RDuH3z
+ tUNSjjZJbHHBRmfrzHUpCgSYsQ==
+X-Received: by 2002:a62:8f4a:: with SMTP id n71mr3605478pfd.141.1599853219124; 
+ Fri, 11 Sep 2020 12:40:19 -0700 (PDT)
 Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id k5sm3101343pfp.214.2020.09.11.12.32.24
+ by smtp.gmail.com with ESMTPSA id gi20sm2611596pjb.28.2020.09.11.12.40.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 11 Sep 2020 12:32:24 -0700 (PDT)
-Subject: Re: [PATCH 5/5] target/arm: Make isar_feature_aa32_fp16_arith()
- handle M-profile
+ Fri, 11 Sep 2020 12:40:18 -0700 (PDT)
+Subject: Re: [PATCH 0/5] handle M-profile in fp16_arith isar_feature test
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 References: <20200910173855.4068-1-peter.maydell@linaro.org>
- <20200910173855.4068-6-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <7b490e9a-5cf0-0be5-fd6e-e3612674b3dc@linaro.org>
-Date: Fri, 11 Sep 2020 12:32:23 -0700
+Message-ID: <df87b4ec-2091-6d1f-9f5e-3f3617f7cf92@linaro.org>
+Date: Fri, 11 Sep 2020 12:40:16 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200910173855.4068-6-peter.maydell@linaro.org>
+In-Reply-To: <20200910173855.4068-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x642.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -45
@@ -127,25 +124,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6ydzwn6+aN80
+X-TUID: qBGA7Y66fX7N
 
 On 9/10/20 10:38 AM, Peter Maydell wrote:
-> +static inline bool isar_feature_aa32_mprofile(const ARMISARegisters *id)
-> +{
-> +    return FIELD_EX32(id->id_pfr1, ID_PFR1, MPROGMOD) != 0;
-> +}
-> +
->  static inline bool isar_feature_aa32_fp16_arith(const ARMISARegisters *id)
->  {
-> -    return FIELD_EX32(id->mvfr1, MVFR1, FPHP) >= 3;
-> +    /* Sadly this is encoded differently for A-profile and M-profile */
-> +    if (isar_feature_aa32_mprofile(id)) {
-> +        return FIELD_EX32(id->mvfr1, MVFR1, FP16) > 0;
-> +    } else {
-> +        return FIELD_EX32(id->mvfr1, MVFR1, FPHP) >= 3;
-> +    }
+> This series leaves us with two different ways to check for "is this
+> M-profile?" -- the old ARM_FEATURE_M bit, and also the new
+> isar_feature_aa32_mprofile() test.  We could in theory convert the
+> users of ARM_FEATURE_M, but I haven't, because there are a lot of
+> callsites, and it can't be done automatically:
+> 
+>  * arm_feature() takes the CPUARMState* whereas cpu_isar_feature()
+>    takes the ARMCPU*, so each callsite needs manual attention to
+>    identify whether it already has a 'cpu' local variable and
+>    add one if it doesn't
+>  * awkwardly, the KVM-on-AArch64-only host case does not zero
+>    out these ID register fields (see the comment in kvm64.c
+>    kvm_arm_get_host_cpu_features()), so calling the
+>    isar_feature function is only valid if we already know that
+>    this CPU is AArch32 -- this would need manually checking
+>    at all callsites. (Unless we wanted to change our minds about
+>    leaving UNKNOWN values in the ID register fields.)
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+That is why I had suggested moving env->features to cpu->isar.features, so that
+it would be nearby.
+
+Which would give us
+
+static inline bool isar_feature(const ARMISARegisters *id,
+                                int feature)
+{
+    return extract64(id->features, feature, 1);
+}
+
+static inline bool arm_feature(CPUARMState *env, int feature)
+{
+    return isar_feature(&env_archcpu(env)->isar, feature);
+}
+
+But what you have at present solves the current problem, where we know we're in
+aa32 mode in translate.c.
+
 
 r~
-

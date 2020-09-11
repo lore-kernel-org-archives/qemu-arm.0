@@ -1,80 +1,79 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp246179lfq;
-        Fri, 11 Sep 2020 12:56:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxucy1kdFHfq4fb/owki3pPQiB6vjan46mJMn5tLE7s0v8cgxgzXqLBUK9+tBqzNvZ6LikY
-X-Received: by 2002:a37:c203:: with SMTP id i3mr2955138qkm.155.1599854212147;
-        Fri, 11 Sep 2020 12:56:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599854212; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp258107lfq;
+        Fri, 11 Sep 2020 13:12:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwW2+Izm0rBCpyUuynm7elL/RYJQvx9sPgMtk878kmf7D4z130NdTsngvnI9lyQ96kdpy5W
+X-Received: by 2002:a05:6902:72b:: with SMTP id l11mr4739552ybt.505.1599855159401;
+        Fri, 11 Sep 2020 13:12:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599855159; cv=none;
         d=google.com; s=arc-20160816;
-        b=i9oSh2S8e3X/Ih/qVIgQgxvBMTecrevUSEyto41EuHf3FLhTOvRJUWRDrtZ9g733zQ
-         EzB3g280qOHPDcxIQlJaLQ0I3aPVJkdenTi81AnJPy9+HYo7Uzvjm45mYemRzZN6IVOb
-         AkD5NQ6ZBopX799fX9r8QfwUgV94px0cu+SVFJyEKjWgJZTG5nS9WVUmg4Rp43ABqbeK
-         6Rfqtc4bIz5AXB4vFWyE/B8SPuO86GSlh5UCcc2i8tsBouFMCqEaq2oApiaifEyHQUhV
-         4bJSERfcOkbiPcNIlW8DOX9xz2fpB8V6sONNqMhfbaoBNNvCKr7enUCEMfj02C6exzuS
-         Mq0w==
+        b=ZafYZRLlQAc2hO+D5fZDQrz7U7QljptUvk5ecHuLiKlj7+c5ejw9AjmYgYkT8H1hB5
+         I6DKHBv2c3uZlYcm8e7KIH6KX1KVxz086WAVOGzJ7fEaoO7mp7jdGZPx/zrBUHpS7rBm
+         cHAsrF5ltTEmbaxtRDn9Do1AwxOa457yEOynuyxUcNWxx6mM3h+aDKdepccEqPMENL85
+         L3QAkB13HKvR5Ta23sXF2WMhT7yzW7rUiSSu+W5GM1+0/8n6b5aMslcLY/QMhCLoKVDG
+         PG2HIlN6OOGbgw5Ru2Q3Pj/EBzW9Zee7dpm/WTBgIjHYasDfvilghLusfJjcoXCpJB1U
+         G7DQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=j3Jp32DOmEUKD+UFTzD+kq3uK4vmAci16OFio8uGAN0=;
-        b=nbhfkI1e7cScbXUyB9vpOPKs0aUT6uQ7yk1RqRSJ6xcvD1OW6F5ffDGftHXct//OGt
-         esyagjIiw0M0ns/HGN1d2XrPm8Ttg6UEx/W8A6UQA7pBvNdINCS/cyODe1QF/ZGrh5l8
-         THF+xQIUOfyh/JCDlcoFaT7meYyj2i56EGP/n40q9henqXT/qSfVxXaGpyfu/Tbz03Rq
-         bLsJvz+vWbejUmkvLcOueWEY9L1acMV3kSzDw2i4TxURpJuqXOuNmM/v4pHbCi+Iedjd
-         4eZnFappjp1LNEKv6Shza98Hh80hQd6HVLJKq98pPVQYETlTrMhEzW+xTJLxMexXNlw3
-         vITQ==
+        bh=UMNnS6kf9hj0OrwbS9qBPoULwxCa1W4WiYFnh2Eo86E=;
+        b=tB7Ds1mpUKiUsvnOp0rwqSaWoNhlreaFsNfdfhV1930W4rNGzOtLqcNVxisJpBnfVP
+         gfDZP0HFUp+qC68S7kU59PkmV+uYWJcwCHW/HMudbW/g4wZTwcQ1ZuGk/UMtANTNBuho
+         eD1QYf3nbTRFuUVxg9EP177S6IOLIU7PNqDYn2sbEtmA/kf05Ac9W+ukc7+JRn7kFjwq
+         CD3hy0TE6d89/xje+sa7W1AveSEjuN79byKpwv4h4i1adk0gwSPYQepPkwl2TcT+hHq4
+         KsGb9ik6X68fZSmyattZW9zT0KqXboVMyhXx3qt/ZvF5p5kS6h0DiRzfXFfvCH6ihTQx
+         sV/A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=EFdCCxQv;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="iT/TBXe8";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m18si1940261qtq.48.2020.09.11.12.56.51
+        by mx.google.com with ESMTPS id 139si3058488ybl.218.2020.09.11.13.12.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 11 Sep 2020 12:56:52 -0700 (PDT)
+        Fri, 11 Sep 2020 13:12:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=EFdCCxQv;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b="iT/TBXe8";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52988 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:41472 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kGpAB-0004m9-Ea
-	for alex.bennee@linaro.org; Fri, 11 Sep 2020 15:56:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50240)
+	id 1kGpPS-0004Ph-KT
+	for alex.bennee@linaro.org; Fri, 11 Sep 2020 16:12:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53724)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1kGp9b-0004l4-M1; Fri, 11 Sep 2020 15:56:15 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:32992)
+ id 1kGpOv-0004PC-PI; Fri, 11 Sep 2020 16:12:05 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:33660)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1kGp9Y-0003lk-NA; Fri, 11 Sep 2020 15:56:15 -0400
+ id 1kGpOt-0005rt-7D; Fri, 11 Sep 2020 16:12:05 -0400
 Received: from [172.17.10.18] (unknown [172.17.10.18])
- by beetle.greensocs.com (Postfix) with ESMTPSA id 0516921C1F;
- Fri, 11 Sep 2020 19:56:09 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 9792621C31;
+ Fri, 11 Sep 2020 20:11:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1599854170;
+ s=mail; t=1599855120;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=j3Jp32DOmEUKD+UFTzD+kq3uK4vmAci16OFio8uGAN0=;
- b=EFdCCxQvy3oXZTU8J0FIGvNRpmvl6DOjgbz27CdJoafXmobvVOmaqpHmynSCBBt5OJ2Fad
- t8XGWPCyP6xeZ3yGzRmsSzu6Pm9xW5I/at0Ec8zDnpmvAWy+oUukeEmFPZBcrBKKUJVe5Y
- uU3GqpEHk7NxJeO7aAgvxISzLHml3/0=
-Subject: Re: [PATCH v5 4/7] hw/arm/aspeed: Add the 3 front LEDs drived by the
- PCA9552 #1
+ bh=UMNnS6kf9hj0OrwbS9qBPoULwxCa1W4WiYFnh2Eo86E=;
+ b=iT/TBXe8Emvj7ZRIUCtXtZjzT2HmqnNTRVS+jRYqFf+kp9EehrdCk+6G4VfJ2YFexddS2q
+ L/ppMmRkAURevzUlfPvO7x16/v+NVlIMCiwCWezXKNNAu+d7KG8bYYC02VbSYWQKo7Y1//
+ sPVBJg+mjNJPnUYcJ3ZTe/Sj37Kc6rs=
+Subject: Re: [PATCH v5 5/7] hw/misc/mps2-fpgaio: Use the LED device
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200910205429.727766-1-f4bug@amsat.org>
- <20200910205429.727766-5-f4bug@amsat.org>
+ <20200910205429.727766-6-f4bug@amsat.org>
 From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <2b47f80b-0c4a-5715-af55-19c93c31e30a@greensocs.com>
-Date: Fri, 11 Sep 2020 21:57:01 +0200
+Message-ID: <5630d710-09cb-bc8a-a67d-b9f01308fb12@greensocs.com>
+Date: Fri, 11 Sep 2020 22:12:51 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20200910205429.727766-5-f4bug@amsat.org>
+In-Reply-To: <20200910205429.727766-6-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -103,104 +102,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WOHretqBmeTN
+X-TUID: xY2F3RSC+bmH
+
+Hi Phil,
 
 On 9/10/20 10:54 PM, Philippe Mathieu-Daudé wrote:
-> The Witherspoon has 3 LEDs connected to a PCA9552. Add them.
-> The names and reset values are taken from:
-> https://github.com/open-power/witherspoon-xml/blob/master/witherspoon.xml
+> Per the 'ARM MPS2 and MPS2+ FPGA Prototyping Boards Technical
+> Reference Manual' (100112_0200_07_en):
 > 
-> Example booting obmc-phosphor-image:
+>    2.1  Overview of the MPS2 and MPS2+ hardware
 > 
->    $ qemu-system-arm -M witherspoon-bmc -trace led_change_intensity
->    1592693373.997015:led_change_intensity LED desc:'front-fault-4' color:green intensity 0% -> 100%
->    1592693373.997632:led_change_intensity LED desc:'front-power-3' color:green intensity 0% -> 100%
->    1592693373.998239:led_change_intensity LED desc:'front-id-5' color:green intensity 0% -> 100%
->    1592693500.291805:led_change_intensity LED desc:'front-power-3' color:green intensity 100% -> 0%
->    1592693500.312041:led_change_intensity LED desc:'front-power-3' color:green intensity 0% -> 100%
->    1592693500.821254:led_change_intensity LED desc:'front-power-3' color:green intensity 100% -> 0%
->    1592693501.331517:led_change_intensity LED desc:'front-power-3' color:green intensity 0% -> 100%
->    1592693501.841367:led_change_intensity LED desc:'front-power-3' color:green intensity 100% -> 0%
->    1592693502.350839:led_change_intensity LED desc:'front-power-3' color:green intensity 0% -> 100%
->    1592693502.861134:led_change_intensity LED desc:'front-power-3' color:green intensity 100% -> 0%
->    1592693503.371090:led_change_intensity LED desc:'front-power-3' color:green intensity 0% -> 100%
+>         The MPS2 and MPS2+ FPGA Prototyping Boards contain the
+>         following components and interfaces:
 > 
-> We notice the front-power LED starts to blink at a ~2Hz rate.
+>         * User switches and user LEDs:
 > 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+>           - Two green LEDs and two push buttons that connect to
+>             the FPGA.
+>           - Eight green LEDs and one 8-way dip switch that connect
+>             to the MCC.
+> 
+> Add the 2 LEDs connected to the FPGA.
+> 
+> This remplaces the 'mps2_fpgaio_leds' trace events by the generic
+replaces
+> 'led_set_intensity' event.
+
+If I'm not mistaken the LED device being a DEVICE and not a 
+SYS_BUS_DEVICE, it needs to be manually reset. So you probably need to 
+reset it in mps2_fpgaio_reset so it doesn't get out of sync on system reset.
+
+-- 
+Luc
+
+> 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
-
 > ---
->   hw/arm/aspeed.c | 20 ++++++++++++++++++++
->   hw/arm/Kconfig  |  1 +
->   2 files changed, 21 insertions(+)
+>   include/hw/misc/mps2-fpgaio.h |  2 ++
+>   hw/misc/mps2-fpgaio.c         | 19 ++++++++++++++-----
+>   hw/misc/Kconfig               |  1 +
+>   hw/misc/trace-events          |  1 -
+>   4 files changed, 17 insertions(+), 6 deletions(-)
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 8bfb1c79ddc..83e322ea983 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -20,6 +20,7 @@
->   #include "hw/i2c/smbus_eeprom.h"
->   #include "hw/misc/pca9552.h"
->   #include "hw/misc/tmp105.h"
+> diff --git a/include/hw/misc/mps2-fpgaio.h b/include/hw/misc/mps2-fpgaio.h
+> index 69e265cd4b2..901880cc3a7 100644
+> --- a/include/hw/misc/mps2-fpgaio.h
+> +++ b/include/hw/misc/mps2-fpgaio.h
+> @@ -22,6 +22,7 @@
+>   #define MPS2_FPGAIO_H
+>   
+>   #include "hw/sysbus.h"
+> +#include "hw/misc/led.h"
+>   
+>   #define TYPE_MPS2_FPGAIO "mps2-fpgaio"
+>   #define MPS2_FPGAIO(obj) OBJECT_CHECK(MPS2FPGAIO, (obj), TYPE_MPS2_FPGAIO)
+> @@ -32,6 +33,7 @@ typedef struct {
+>   
+>       /*< public >*/
+>       MemoryRegion iomem;
+> +    LEDState *led[2];
+>   
+>       uint32_t led0;
+>       uint32_t prescale;
+> diff --git a/hw/misc/mps2-fpgaio.c b/hw/misc/mps2-fpgaio.c
+> index 2f3fbeef348..86ca78eb235 100644
+> --- a/hw/misc/mps2-fpgaio.c
+> +++ b/hw/misc/mps2-fpgaio.c
+> @@ -24,6 +24,7 @@
+>   #include "migration/vmstate.h"
+>   #include "hw/registerfields.h"
+>   #include "hw/misc/mps2-fpgaio.h"
 > +#include "hw/misc/led.h"
 >   #include "hw/qdev-properties.h"
->   #include "qemu/log.h"
->   #include "sysemu/block-backend.h"
-> @@ -521,9 +522,20 @@ static void sonorapass_bmc_i2c_init(AspeedMachineState *bmc)
+>   #include "qemu/timer.h"
 >   
->   static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+> @@ -176,12 +177,9 @@ static void mps2_fpgaio_write(void *opaque, hwaddr offset, uint64_t value,
+>   
+>       switch (offset) {
+>       case A_LED0:
+> -        /* LED bits [1:0] control board LEDs. We don't currently have
+> -         * a mechanism for displaying this graphically, so use a trace event.
+> -         */
+> -        trace_mps2_fpgaio_leds(value & 0x02 ? '*' : '.',
+> -                               value & 0x01 ? '*' : '.');
+>           s->led0 = value & 0x3;
+> +        led_set_state(s->led[0], value & 0x01);
+> +        led_set_state(s->led[1], value & 0x02);
+>           break;
+>       case A_PRESCALE:
+>           resync_counter(s);
+> @@ -251,6 +249,16 @@ static void mps2_fpgaio_init(Object *obj)
+>       sysbus_init_mmio(sbd, &s->iomem);
+>   }
+>   
+> +static void mps2_fpgaio_realize(DeviceState *dev, Error **errp)
+> +{
+> +    MPS2FPGAIO *s = MPS2_FPGAIO(dev);
+> +
+> +    s->led[0] = led_create_simple(OBJECT(dev), GPIO_POLARITY_ACTIVE_HIGH,
+> +                                  LED_COLOR_GREEN, "USERLED0");
+> +    s->led[1] = led_create_simple(OBJECT(dev), GPIO_POLARITY_ACTIVE_HIGH,
+> +                                  LED_COLOR_GREEN, "USERLED1");
+> +}
+> +
+>   static bool mps2_fpgaio_counters_needed(void *opaque)
 >   {
-> +    static const struct {
-> +        unsigned gpio_id;
-> +        LEDColor color;
-> +        const char *description;
-> +        bool gpio_polarity;
-> +    } pca1_leds[] = {
-> +        {13, LED_COLOR_GREEN, "front-fault-4",  GPIO_POLARITY_ACTIVE_LOW},
-> +        {14, LED_COLOR_GREEN, "front-power-3",  GPIO_POLARITY_ACTIVE_LOW},
-> +        {15, LED_COLOR_GREEN, "front-id-5",     GPIO_POLARITY_ACTIVE_LOW},
-> +    };
->       AspeedSoCState *soc = &bmc->soc;
->       uint8_t *eeprom_buf = g_malloc0(8 * 1024);
->       DeviceState *dev;
-> +    LEDState *led;
+>       /* Currently vmstate.c insists all subsections have a 'needed' function */
+> @@ -299,6 +307,7 @@ static void mps2_fpgaio_class_init(ObjectClass *klass, void *data)
+>       DeviceClass *dc = DEVICE_CLASS(klass);
 >   
->       /* Bus 3: TODO bmp280@77 */
->       /* Bus 3: TODO max31785@52 */
-> @@ -534,6 +546,14 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
->                                   aspeed_i2c_get_bus(&soc->i2c, 3),
->                                   &error_fatal);
+>       dc->vmsd = &mps2_fpgaio_vmstate;
+> +    dc->realize = mps2_fpgaio_realize;
+>       dc->reset = mps2_fpgaio_reset;
+>       device_class_set_props(dc, mps2_fpgaio_properties);
+>   }
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index 5c151fa3a83..0cecad45aad 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -93,6 +93,7 @@ config MIPS_ITU
 >   
-> +    for (size_t i = 0; i < ARRAY_SIZE(pca1_leds); i++) {
-> +        led = led_create_simple(OBJECT(bmc),
-> +                                pca1_leds[i].gpio_polarity,
-> +                                pca1_leds[i].color,
-> +                                pca1_leds[i].description);
-> +        qdev_connect_gpio_out(dev, pca1_leds[i].gpio_id,
-> +                              qdev_get_gpio_in(DEVICE(led), 0));
-> +    }
->       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 4), "tmp423", 0x4c);
->       i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "tmp423", 0x4c);
->   
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index bc3a423940b..06ba1c355b1 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -394,6 +394,7 @@ config ASPEED_SOC
->       select TMP105
->       select TMP421
->       select UNIMP
+>   config MPS2_FPGAIO
+>       bool
 > +    select LED
 >   
->   config MPS2
+>   config MPS2_SCC
 >       bool
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index 89d15f05f9a..43b9e0cf250 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -93,7 +93,6 @@ mps2_scc_cfg_read(unsigned function, unsigned device, uint32_t value) "MPS2 SCC
+>   mps2_fpgaio_read(uint64_t offset, uint64_t data, unsigned size) "MPS2 FPGAIO read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+>   mps2_fpgaio_write(uint64_t offset, uint64_t data, unsigned size) "MPS2 FPGAIO write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+>   mps2_fpgaio_reset(void) "MPS2 FPGAIO: reset"
+> -mps2_fpgaio_leds(char led1, char led0) "MPS2 FPGAIO LEDs: %c%c"
+>   
+>   # msf2-sysreg.c
+>   msf2_sysreg_write(uint64_t offset, uint32_t val, uint32_t prev) "msf2-sysreg write: addr 0x%08" PRIx64 " data 0x%" PRIx32 " prev 0x%" PRIx32
 > 

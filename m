@@ -1,93 +1,93 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp793821lfq;
-        Sat, 12 Sep 2020 06:41:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxmLlpo4K5yWO+zm7FpslY2KdTofQ5yjiWNo6tNigmb5hjw84bkS93bu/LNUw5dNlGvDBTq
-X-Received: by 2002:a0c:b45b:: with SMTP id e27mr6423398qvf.3.1599918109378;
-        Sat, 12 Sep 2020 06:41:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599918109; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp794002lfq;
+        Sat, 12 Sep 2020 06:42:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzv625rPpNLiX4g5QT/BqFOsvTp7wCnCAz93J5aQ+0qFjb7IpwJfoCixE/gXlbiFE6abtyv
+X-Received: by 2002:a25:c00c:: with SMTP id c12mr9379935ybf.465.1599918130073;
+        Sat, 12 Sep 2020 06:42:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599918130; cv=none;
         d=google.com; s=arc-20160816;
-        b=kPFyAIg3aMGYkU+sSZ3iXOabbnGoCoXPV6Fu3b7fYbpjtJxksCG2Wd2y8SP8j2+RAA
-         NTlye/pybTTfnclAyNr7Ny5z5PHNo5/WzF0BufxkL+YZdrECmKSDWEEePMUkWqWYynrl
-         1cYmNm2UJVrMCFlX9VDXiaP9GntvH2dunlwVlQiaIGDK0HvLSmcWw32u2b6o4HtIUGxc
-         6qQo7KTfXGOf4TivRMXGSH0SfpydcOAr8YFQC6zo70erwCh14hp23OkKa14jehPNlQnX
-         vgTALJLGX7Zzo8SBXiOeOmgfY9BiFKVodhgPGVk8Yif2TDu+OsrGZPrdyDunKQTn03ta
-         sfCA==
+        b=KSOJdnT+azvqW6O1Y7CoOGya2fzWHvIn6Obw3/M45L1gycSVfeKW75CA4pnVOCTj1E
+         FmzhJSpS55vaGx7uCKO45JBiorA6xZQE7ES63RAde3lUEkrPd/QLhgO1DX9p9d8uGMyP
+         VpZPH28ZStJAT8U/Qn93lcG69qp+eGq3MJXFbZsEHaGbab5MYSbO1nx/Aw8dVglcDnYA
+         KIErtxX4BswmapAWjVAxBj+4aUCMSDM1jyFKDmkT/GI7WFQNe/+w8Gt5jaLZWT6rorTs
+         q2F5C0pPr8qDXshHYPzQfbNuLP5dT2+zsDLooYQWXKv8xq2GSAw4ROotw3pY/s2QjPjV
+         G00w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=LRr5PGbbM0M9HoMOdGuvjP4Xsc2e6vYqTLWnU5FdlUg=;
-        b=BQwKzU+/NVj/37gVuP9bATOJ51eJn8PpWfEnwMSRwGFPrrOBF6e3Er9fH/Na5VI2r7
-         CagDwIbWKlUsv6w6fkK/icRSl87Ru6TlBGtlH3sSYtTt37vkgjb/UQPDub+frrzn4r7i
-         LwDM8LKQ1qhSXf88pKyjjTBzsbyhN1DwSBAc3ax3ccB5gH+y5rMR44uyzzjXFhr58aTU
-         yWUuxrGoZQj5mexJm2u3NDHpWihHRuGsIeyNhSHjGJPG/IqmNP/KpubE09AVuJUM1oEp
-         O9DW4Pe30B92jRLotGBswH6B2cmaFwAq7zdd1A8CFgHi0HP9T2dUs1lZJbB66ga6AgrK
-         oTZg==
+        bh=w8Eo5/7klXOolpStkbQL0lu8B2pZTUunJlMPyHZPBkE=;
+        b=cRJEf8SOHziBegKAJmsDzE+KM4edJJNU0lvi59cZppKQsKJVE+Pu2oSE4m8uts4X9/
+         uNGA5m98IudfOuaJSKrgNpsT60G+UfJnYCuwsu4hy2HH0Q4SVflXUnjIpaPZGIJK9ExX
+         14/JSLuI4mKshN6KPCBWy/MuyKTczQo2Ckz0LtZ9NWN7Gd0D3jvsybp+iL/KYtSYpTvR
+         T/TfTDOjk38RO1nNzAssWU7YSLWr3zhSe9fnnoQod/R3UdrWgyDcDOHGOanDDozi3Mdp
+         rUvuRTqKxg4EI0TaYp2Tx8DX7q79yCjlpRHeatXVIv+xrgQ5eSyVylq/pqJbUrI7ODk6
+         VK1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e2Vdrx6U;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uciR+5a5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t24si3161507qtp.246.2020.09.12.06.41.49
+        by mx.google.com with ESMTPS id s13si5350816ybk.332.2020.09.12.06.42.09
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 12 Sep 2020 06:41:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 12 Sep 2020 06:42:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=e2Vdrx6U;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uciR+5a5;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:48018 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:49298 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kH5mm-0002oB-Jo
-	for alex.bennee@linaro.org; Sat, 12 Sep 2020 09:41:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52844)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kH5n7-0003Jm-F5
+	for alex.bennee@linaro.org; Sat, 12 Sep 2020 09:42:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52746)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH5ly-0001wB-RT; Sat, 12 Sep 2020 09:40:58 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:55290)
+ id 1kH5lq-0001Ze-KW; Sat, 12 Sep 2020 09:40:50 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:38443)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH5lx-0007rt-1J; Sat, 12 Sep 2020 09:40:58 -0400
-Received: by mail-wm1-x344.google.com with SMTP id s13so6774074wmh.4;
- Sat, 12 Sep 2020 06:40:56 -0700 (PDT)
+ id 1kH5lo-0007pe-WC; Sat, 12 Sep 2020 09:40:50 -0400
+Received: by mail-wr1-x444.google.com with SMTP id g4so14104048wrs.5;
+ Sat, 12 Sep 2020 06:40:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=LRr5PGbbM0M9HoMOdGuvjP4Xsc2e6vYqTLWnU5FdlUg=;
- b=e2Vdrx6UVgfC+p7pfZ0wt5P3A1TjXmivQVWEjaHqZ55hDhWbDuBLzuH5TKVeSr6vDV
- eI9WYCFupAV3YqHTCjGvdJUhK7fp6BNJ9SZt4DnuGmoIUnJL4WL4Hcl1Xr1bXg9hIRUv
- E3V2Mq3XKj5DgWaqwVE494lrajBq2d7vk+CWxvnSYICyVOVb+iewiX7CLGBm/CgC/+37
- l5ej2aGLv9uBhsjThoBp3HXK/6pkaJgPp1SdH94fwvtBBFIgxTsvK9EDLkFbcZFbNIbx
- SVkvXWaGMa0J5ZnjDu+SVrsIUG6yxd6gzAtE9qBMmh2aqVTzKZUNsDC1QjDYps6d9JWs
- TrIg==
+ bh=w8Eo5/7klXOolpStkbQL0lu8B2pZTUunJlMPyHZPBkE=;
+ b=uciR+5a5X9kHY5AYZgFmM7NhPz72lwUQmpehWGgPBVPbW1sxTyBC17FhEFSbfsadde
+ Zv7LFOoe82E/xIKzAtxSVdbFCCYyf1k9A08g7vnnbZ12O004xEUG7paM5skUrWn6EFq/
+ f0BkNYYu6hMfj6pOM+mXd/rfsx0Wp7swL8CqGJmd8MWaCN3ce9UB38res5wB6TNFuFhM
+ u61wsgZ2OmqeVyI6EcT2KRQ9FXvqhhj3KZLQ8BS46g3k8VHBlCD2dupHjNOfCAQjFx4v
+ gkncRIMlVAs13S2oFqZjYhnb5NZq4TU/PJX70MJVDqqVgpk9CWqn3c5UQkPdZmE+cHrF
+ z+VA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=LRr5PGbbM0M9HoMOdGuvjP4Xsc2e6vYqTLWnU5FdlUg=;
- b=WsK/OsZi1HpKp+bTrz1uwVl6aNHgpTV6sTXHHXiYszT4AkUrKJqIZeQQxmEo6vb1yf
- +34xLKr2zSeECgLkru1miHZPiyMzLAj4ATxGXdFMRhEgWvDYQZuyaR4cdqA69NdBT4O+
- 3Sk98QdspBosWRFeAKAVePvxxwn4LsT3DmS5ScHrHqjppMcVeTXc27NEJ++SQEI/ryhh
- QgJqfV9V9t6OuMNCiSoRmvsv2cz5vGzigWQXNcR6wCnQgylxx2fUguViHFY3knqcnE2h
- 7ENqS09XTVAMvzwvRuGrja/wYve/U/fR2ajy0cFk9I3WRU+OtoqgFbQtmjkaw46XbmWN
- h1dQ==
-X-Gm-Message-State: AOAM5322jER8Zb6hFf0YIlAungRIvz8r4aSHzXg24NCbHgjFJyCkNNag
- gM0Q8Vwkif6ixGVCXVLQu7m2JTV2B+M=
-X-Received: by 2002:a1c:a911:: with SMTP id s17mr7010141wme.77.1599918054610; 
- Sat, 12 Sep 2020 06:40:54 -0700 (PDT)
+ bh=w8Eo5/7klXOolpStkbQL0lu8B2pZTUunJlMPyHZPBkE=;
+ b=jYgrb1fid2+Z3AYBfVdWGzz+fdRZGV+RELmSbUEEv0OTigbohrDR6pD9sK2uJVJ5cW
+ xQ/w3c82k6JSUvYw0ildfjy6A/Dn+JXH8eWtSzWQ43u9gkJNKDPl66+ebJY0wbaluYg/
+ 4xmqdkyCFJi79y3xmfnThWEqZulDivpK5oV19Sb24Edpso9Wyb3vMzFCFBISIs/IiGoa
+ qm45Gd9ukd4v3qI5uqo9VLfhdRlsETqzH5+7yEoDqq48x+ml4GwL7Y42jQUxoYssrv0r
+ wvURp1P1xRN3XoFyK7yKLbKIGyW3sh9lgoud8eOyszK7HU7tiyH9yv81jG5EwjQJEnJB
+ HS3A==
+X-Gm-Message-State: AOAM532nBR2RW9xRtY1qhc+c6H58taU5MdFAm6JdTWPigbrhRPtw5o6U
+ Vzy4t/T+90RIS/gnppSX9db7C+zezIM=
+X-Received: by 2002:adf:f586:: with SMTP id f6mr6852900wro.299.1599918047130; 
+ Sat, 12 Sep 2020 06:40:47 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id u66sm10309144wmg.44.2020.09.12.06.40.53
+ by smtp.gmail.com with ESMTPSA id u66sm10309144wmg.44.2020.09.12.06.40.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Sep 2020 06:40:54 -0700 (PDT)
+ Sat, 12 Sep 2020 06:40:46 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v6 7/7] hw/arm/tosa: Replace fprintf() calls by LED devices
-Date: Sat, 12 Sep 2020 15:40:41 +0200
-Message-Id: <20200912134041.946260-8-f4bug@amsat.org>
+Subject: [PATCH v6 2/7] hw/misc/led: Allow connecting from GPIO output
+Date: Sat, 12 Sep 2020 15:40:36 +0200
+Message-Id: <20200912134041.946260-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200912134041.946260-1-f4bug@amsat.org>
 References: <20200912134041.946260-1-f4bug@amsat.org>
@@ -95,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -108,137 +108,183 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-arm@nongnu.org, =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Luc Michel <luc.michel@greensocs.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4D3zdLPd790s
+ Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 07aQSge3xsic
 
-The recently added LED device reports LED status changes with
-the 'led_set_intensity' trace event. It is less invasive than
-the fprintf() calls. We need however to have a binary built
-with tracing support.
+Some devices expose GPIO lines.
 
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Add a GPIO qdev input to our LED device, so we can
+connect a GPIO output using qdev_connect_gpio_out().
+
+When used with GPIOs, the intensity can only be either
+minium or maximum. This depends of the polarity of the
+GPIO (which can be inverted).
+Declare the GpioPolarity type to model the polarity.
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/tosa.c  | 40 +++++++++++++++-------------------------
- hw/arm/Kconfig |  1 +
- 2 files changed, 16 insertions(+), 25 deletions(-)
+ include/hw/misc/led.h  | 10 ++++++++++
+ include/hw/qdev-core.h | 16 ++++++++++++++++
+ hw/misc/led.c          | 17 ++++++++++++++++-
+ 3 files changed, 42 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/tosa.c b/hw/arm/tosa.c
-index 2ef6c7b2883..ca998f05232 100644
---- a/hw/arm/tosa.c
-+++ b/hw/arm/tosa.c
-@@ -24,6 +24,7 @@
- #include "hw/irq.h"
- #include "hw/ssi/ssi.h"
- #include "hw/sysbus.h"
-+#include "hw/misc/led.h"
- #include "exec/address-spaces.h"
+diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+index 286d37c75c1..aa359b87c20 100644
+--- a/include/hw/misc/led.h
++++ b/include/hw/misc/led.h
+@@ -9,6 +9,7 @@
+ #define HW_MISC_LED_H
+ 
  #include "qom/object.h"
++#include "hw/qdev-core.h"
  
-@@ -83,26 +84,6 @@ struct TosaMiscGPIOState {
-     SysBusDevice parent_obj;
+ #define TYPE_LED "led"
+ 
+@@ -37,10 +38,17 @@ struct LEDState {
+     /* Public */
+ 
+     uint8_t intensity_percent;
++    qemu_irq irq;
+ 
+     /* Properties */
+     char *description;
+     char *color;
++    /*
++     * Determines whether a GPIO is using a positive (active-high)
++     * logic (when used with GPIO, the intensity at reset is related
++     * to the GPIO polarity).
++     */
++    bool gpio_active_high;
  };
+ typedef struct LEDState LEDState;
+ DECLARE_INSTANCE_CHECKER(LEDState, LED, TYPE_LED)
+@@ -72,6 +80,7 @@ void led_set_state(LEDState *s, bool is_emitting);
+ /**
+  * led_create_simple: Create and realize a LED device
+  * @parentobj: the parent object
++ * @gpio_polarity: GPIO polarity
+  * @color: color of the LED
+  * @description: description of the LED (optional)
+  *
+@@ -81,6 +90,7 @@ void led_set_state(LEDState *s, bool is_emitting);
+  * Returns: The newly allocated and instantiated LED object.
+  */
+ LEDState *led_create_simple(Object *parentobj,
++                            GpioPolarity gpio_polarity,
+                             LEDColor color,
+                             const char *description);
  
--static void tosa_gpio_leds(void *opaque, int line, int level)
--{
--    switch (line) {
--    case 0:
--        fprintf(stderr, "blue LED %s.\n", level ? "on" : "off");
--        break;
--    case 1:
--        fprintf(stderr, "green LED %s.\n", level ? "on" : "off");
--        break;
--    case 2:
--        fprintf(stderr, "amber LED %s.\n", level ? "on" : "off");
--        break;
--    case 3:
--        fprintf(stderr, "wlan LED %s.\n", level ? "on" : "off");
--        break;
--    default:
--        g_assert_not_reached();
--    }
--}
--
- static void tosa_reset(void *opaque, int line, int level)
- {
-     if (level) {
-@@ -114,7 +95,6 @@ static void tosa_misc_gpio_init(Object *obj)
- {
-     DeviceState *dev = DEVICE(obj);
+diff --git a/include/hw/qdev-core.h b/include/hw/qdev-core.h
+index e025ba9653f..ec1f1efc37b 100644
+--- a/include/hw/qdev-core.h
++++ b/include/hw/qdev-core.h
+@@ -423,6 +423,22 @@ void qdev_simple_device_unplug_cb(HotplugHandler *hotplug_dev,
+ void qdev_machine_creation_done(void);
+ bool qdev_machine_modified(void);
  
--    qdev_init_gpio_in_named(dev, tosa_gpio_leds, "leds", 4);
-     qdev_init_gpio_in_named(dev, tosa_reset, "reset", 1);
++/**
++ * GpioPolarity: Polarity of a GPIO line
++ *
++ * GPIO lines use either positive (active-high) logic,
++ * or negative (active-low) logic.
++ *
++ * In active-high logic (%GPIO_POLARITY_ACTIVE_HIGH), a pin is
++ * active when the voltage on the pin is high (relative to ground);
++ * whereas in active-low logic (%GPIO_POLARITY_ACTIVE_LOW), a pin
++ * is active when the voltage on the pin is low (or grounded).
++ */
++typedef enum {
++    GPIO_POLARITY_ACTIVE_LOW,
++    GPIO_POLARITY_ACTIVE_HIGH
++} GpioPolarity;
++
+ /**
+  * qdev_get_gpio_in: Get one of a device's anonymous input GPIO lines
+  * @dev: Device whose GPIO we want
+diff --git a/hw/misc/led.c b/hw/misc/led.c
+index 1e2f49c5710..c5fa09a613a 100644
+--- a/hw/misc/led.c
++++ b/hw/misc/led.c
+@@ -10,6 +10,7 @@
+ #include "migration/vmstate.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/misc/led.h"
++#include "hw/irq.h"
+ #include "trace.h"
+ 
+ #define LED_INTENSITY_PERCENT_MAX   100
+@@ -53,11 +54,19 @@ void led_set_state(LEDState *s, bool is_emitting)
+     led_set_intensity(s, is_emitting ? LED_INTENSITY_PERCENT_MAX : 0);
  }
  
-@@ -124,6 +104,7 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
-                 TC6393xbState *tmio)
- {
-     DeviceState *misc_gpio;
-+    LEDState *led[4];
- 
-     misc_gpio = sysbus_create_simple(TYPE_TOSA_MISC_GPIO, -1, NULL);
- 
-@@ -145,14 +126,23 @@ static void tosa_gpio_setup(PXA2xxState *cpu,
-                         qdev_get_gpio_in(cpu->gpio, TOSA_GPIO_JC_CF_IRQ),
-                         NULL);
- 
-+    led[0] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
-+                               LED_COLOR_BLUE, "bluetooth");
-+    led[1] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
-+                               LED_COLOR_GREEN, "note");
-+    led[2] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
-+                               LED_COLOR_AMBER, "charger-error");
-+    led[3] = led_create_simple(OBJECT(misc_gpio), GPIO_POLARITY_ACTIVE_HIGH,
-+                               LED_COLOR_GREEN, "wlan");
++static void led_set_state_gpio_handler(void *opaque, int line, int new_state)
++{
++    LEDState *s = LED(opaque);
 +
-     qdev_connect_gpio_out(scp1, TOSA_GPIO_BT_LED,
--                          qdev_get_gpio_in_named(misc_gpio, "leds", 0));
-+                          qdev_get_gpio_in(DEVICE(led[0]), 0));
-     qdev_connect_gpio_out(scp1, TOSA_GPIO_NOTE_LED,
--                          qdev_get_gpio_in_named(misc_gpio, "leds", 1));
-+                          qdev_get_gpio_in(DEVICE(led[1]), 0));
-     qdev_connect_gpio_out(scp1, TOSA_GPIO_CHRG_ERR_LED,
--                          qdev_get_gpio_in_named(misc_gpio, "leds", 2));
-+                          qdev_get_gpio_in(DEVICE(led[2]), 0));
-     qdev_connect_gpio_out(scp1, TOSA_GPIO_WLAN_LED,
--                          qdev_get_gpio_in_named(misc_gpio, "leds", 3));
-+                          qdev_get_gpio_in(DEVICE(led[3]), 0));
++    assert(line == 0);
++    led_set_state(s, !!new_state != s->gpio_active_high);
++}
++
+ static void led_reset(DeviceState *dev)
+ {
+     LEDState *s = LED(dev);
  
-     qdev_connect_gpio_out(scp1, TOSA_GPIO_TC6393XB_L3V_ON, tc6393xb_l3v_get(tmio));
+-    led_set_state(s, false);
++    led_set_state(s, s->gpio_active_high);
+ }
  
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 06ba1c355b1..bbcfa098ae2 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -150,6 +150,7 @@ config TOSA
-     select ZAURUS  # scoop
-     select MICRODRIVE
-     select PXA2XX
-+    select LED
+ static const VMStateDescription vmstate_led = {
+@@ -84,11 +93,14 @@ static void led_realize(DeviceState *dev, Error **errp)
+     if (s->description == NULL) {
+         s->description = g_strdup("n/a");
+     }
++
++    qdev_init_gpio_in(DEVICE(s), led_set_state_gpio_handler, 1);
+ }
  
- config SPITZ
-     bool
+ static Property led_properties[] = {
+     DEFINE_PROP_STRING("color", LEDState, color),
+     DEFINE_PROP_STRING("description", LEDState, description),
++    DEFINE_PROP_BOOL("gpio-active-high", LEDState, gpio_active_high, true),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -119,6 +131,7 @@ static void led_register_types(void)
+ type_init(led_register_types)
+ 
+ LEDState *led_create_simple(Object *parentobj,
++                            GpioPolarity gpio_polarity,
+                             LEDColor color,
+                             const char *description)
+ {
+@@ -126,6 +139,8 @@ LEDState *led_create_simple(Object *parentobj,
+     DeviceState *dev;
+ 
+     dev = qdev_new(TYPE_LED);
++    qdev_prop_set_bit(dev, "gpio-active-high",
++                      gpio_polarity == GPIO_POLARITY_ACTIVE_HIGH);
+     qdev_prop_set_string(dev, "color", led_color_name[color]);
+     if (!description) {
+         static unsigned undescribed_led_id;
 -- 
 2.26.2
 

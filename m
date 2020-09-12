@@ -1,106 +1,107 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp612438lfq;
-        Sat, 12 Sep 2020 01:07:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyIws7U9GYcpIJvFEXKKKMKlaPoqDSNSP0p3QbBGr5OBy87EfEVCn6hU4jj64Et2CuWF9xt
-X-Received: by 2002:a25:404b:: with SMTP id n72mr8051167yba.523.1599898041224;
-        Sat, 12 Sep 2020 01:07:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599898041; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp633303lfq;
+        Sat, 12 Sep 2020 01:51:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSTXnykhTgaIuKdQdliBAiVZNjT+rS0D0jLvpqg33EXgyYjre19OMkkdyPg6i1zAS3WDqO
+X-Received: by 2002:a25:7042:: with SMTP id l63mr6880086ybc.394.1599900663130;
+        Sat, 12 Sep 2020 01:51:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599900663; cv=none;
         d=google.com; s=arc-20160816;
-        b=GRff9DO/a+5UhnmsCB978C3kqG107IWAV1dVEVkxPLbcdLBb6O67B68xn+/BYEp7QL
-         PB5j4n3IjVyTMHy/7g3gZ7RA95x3GqQzgOYh3RfasB04tVOtEypUqpm707OSAVQrrRCQ
-         Jgb6NFFkOx73zr4KbV4rrw4fbBPAp4N4TAssMkuSLdmWPUoCt3bgjF2bwA2J/EBP8OvZ
-         v/3piKy2whg3fsIJEMh46Aw+761SqTM3Ai+NkNdpIJUIvuizKqACd2WfOtnIHGpnibEa
-         MswUuJAoPHa0Kx5j5Wa/exAD88x7JAibYtuAWuMnSq231yqPAaXOmTs9z1/hmxD3GGSC
-         mGAw==
+        b=ovRgJolXcVv5fkwAlMpoEO3T0AJg0+6RBa7xJo+MixDWhkoX4mANMHWtpt1hP5JVot
+         Za9O8uNLanGnQ1r9h75HIq1DQJQjmP02vK4z+CalKbfjGJy/E+u6Wy1btzhW3ji98dkC
+         we+VGR4H43QZtYoWytJM8WXOL19cVqkmZ0xOY9KXH3Gb6qEI2aN25f1IzcCGO42da0yk
+         /lX51SzuDW171weEVovrNH0C8Z0ZrHF4gqBVuJhxs2S9+A8zvtvAUnEO/fmJi+DPr+6+
+         JiG9o0iZZ3jD9iqv5ePqun48OLeBuVkyiFNzMHSBCBlqk46Q+HHzqaS/wKPFekTdRyNX
+         Qi+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=IIt2T9X0xyRXM+0XlSWeN8sXU8EnQg8GjwWbjHYzBZs=;
-        b=Lf8CTEVYn36/r1gzozSpJ7oaZIhQ3ZEPQ/87yO81Az0vRb4rvYf2FbAOEv0s/UgwsR
-         f3JdWGMWcsUOB5jL3h7nT4GnppEIB8FLRqFgGLWdjL/tEUAhg/dVYAEhAzCnXpN3NKKW
-         xMd91Ze3I+QkPb6/kWcG8ykCLfzAzC9mXHoKPyjgwfaGJX+ABX+2pl7wu3RkKH88r00v
-         CICYnAHgFVS3G01pWFz+stLgyDCmLW/vKoID3EQ/DmBMaF/BZw3HCy91RPvERfnF79e+
-         qMi5uGqMFoYpBsWfEVyyWm2wj3SvVzwueezVphFtmNxlDDXWLW0gaSqGLDfI+E3D+Cu2
-         dDHA==
+        bh=Dmc99agAnDVzyuJsSeHagbG/xUJi7YNXwJj8YYiPS/M=;
+        b=Q/1VoWjyYIoiBy+zLUcdScPi2Wm4/lcDRvX9MdPFd1tTVjxp+0I9OoSxZVO4i7hdsX
+         iDjGaD430+7fsHd+wzvDKeoHTZGmsRfsqB0i6fywFE8IJdgfC1ZLd5rVObf0TQLSZoFZ
+         PQOZT928NX0UAOVILmTI5woZcYf3VCEeFB/bL8mwtj05QUbegnbeZiDcHGUWP7UxSdo4
+         kcbOP10aFqgJXp6YHZGhfyYBjJMWZKL5S2997GiTl3ZkvK0AKR7MkqftfeazvFI8mTcC
+         NjUV2tvbj4m7wdn82noY2F77vA5I6JVUA1IGtoy294kxZMmfMlEMzwYGixf6b/P1g0/q
+         avqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LBHRhVdH;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HFEAsr83;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 202si4513074ybd.434.2020.09.12.01.07.21
+        by mx.google.com with ESMTPS id m72si4671483ybf.14.2020.09.12.01.51.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 12 Sep 2020 01:07:21 -0700 (PDT)
+        Sat, 12 Sep 2020 01:51:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=LBHRhVdH;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HFEAsr83;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:56964 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58742 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kH0Z6-00050y-M3
-	for alex.bennee@linaro.org; Sat, 12 Sep 2020 04:07:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41748)
+	id 1kH1FO-0002jG-Hy
+	for alex.bennee@linaro.org; Sat, 12 Sep 2020 04:51:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48372)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH0Yn-00050X-EH; Sat, 12 Sep 2020 04:07:01 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:35746)
+ id 1kH1FG-0002io-UG; Sat, 12 Sep 2020 04:50:54 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:34926)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH0Yl-0007zR-KX; Sat, 12 Sep 2020 04:07:01 -0400
-Received: by mail-wm1-x344.google.com with SMTP id y15so6753969wmi.0;
- Sat, 12 Sep 2020 01:06:58 -0700 (PDT)
+ id 1kH1FF-0004Uf-9T; Sat, 12 Sep 2020 04:50:54 -0400
+Received: by mail-wr1-x444.google.com with SMTP id e16so13664942wrm.2;
+ Sat, 12 Sep 2020 01:50:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=IIt2T9X0xyRXM+0XlSWeN8sXU8EnQg8GjwWbjHYzBZs=;
- b=LBHRhVdHi5eRpEJrN2nqaYUl06QO37ZqTv1yKT0SLuZjnF6pTRuQEWFtTNuWMKzOjb
- PkN3AZ7gqTpk2N7aAfs0NrvgDFx21Usg1OtuOBJY/A0QYCuZIpGDmaV7ti39usO3rczz
- nA4CBlEVzAgB1+0STKxMJTsqrWPpbZQYR7bBkq/NFoPrtQlfoE0Sj8Lg1Tb5QW/RCD/P
- /dJfcCMc+huDsynp4rZHOUKJmceAxt8jPv2DvAfP6FoWdDfiTZIRJ7qfKjIvJYQe3/rc
- lcUS3yEuaD6JFu58l2laslHx8yHFZK8wZ+j8Kd2qruPdz8hIfBCMqk2BEGZBcPpJ3KUI
- 945g==
+ bh=Dmc99agAnDVzyuJsSeHagbG/xUJi7YNXwJj8YYiPS/M=;
+ b=HFEAsr83QKHRs4j4BjJm3YLvjcsAb7OwlYy+08VinHoWgGsKvTc4TO255seJr9XmdC
+ JIeuW1iAjlSSFvXa7ImwyQxdV4b24ev7wRZJb7Vf1lh2Yw9KP1e3X9fPi1uZRV3jfJy1
+ 4lsYE+COgMFr0ryPBulBRFsldX0YHB1/GBuesCKbew8Fhz/gsPnzjtpajCVUOY5RTKr7
+ zlNnpYgV5b2ngveSm9nUks/Tf4A4AD5hRYYIbAZdHHfw0AgbejvyMJFhcbvJjAO/i+0G
+ xe2ewR4EAUOfVs2gz2G0JH/3A3nha+DA0EhxcTbwhVVBpFYB/zXL5unA9LsNkv2MJewp
+ JivQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=IIt2T9X0xyRXM+0XlSWeN8sXU8EnQg8GjwWbjHYzBZs=;
- b=ZmLcWxVpLd7PU9/8AwOxsE3oxHAFnx5R6q/ayOGMTabsJOQd9gLu6GA5fkzG9WjWEL
- x35nFXGbqO/hYeC5GsY8+eXodcA3WKX8RhWRukzzjpUgBHXF1vBmknXwxmF57eKVy4nC
- xJVDpLOuH4Y2r3hbiSXZQhT66/TO9aicNK+YHFPyCTKBAnVWZ70BMDwL8tqO6hg0QWqH
- +tn8BWpxACwGd2dd4lj9kvTucfG3Q68In3FSaqOmMDiU5B1A7G9zgFVAuM1XcTtjBHCp
- lHb1yukHtjhwrsVSneoV6fNMvxcyXAYN4dpPYRi8rCAO3DrugUMlRqDQV2F1SE+4QDtu
- ngAw==
-X-Gm-Message-State: AOAM533Zr38qid9tXNeaCGjFXzznAtCZefXx2Q0Zd9ZEw6rNHah6/qPm
- CGQ7tjOriRZp0DUmNGVNZwg=
-X-Received: by 2002:a1c:2543:: with SMTP id l64mr5567221wml.96.1599898016954; 
- Sat, 12 Sep 2020 01:06:56 -0700 (PDT)
+ bh=Dmc99agAnDVzyuJsSeHagbG/xUJi7YNXwJj8YYiPS/M=;
+ b=tUgP5jRwAWtjYEAxzYcTHih3BxMe/crbLrxSWnzq2HE4vIcEmYFIzfy3zSoIRYfL02
+ O4FLtE88wUWvmFegSirQrPjuAdXfshb/kzaXb7TJu0s8RkShC9SoltXx2Yik70gS1oSH
+ O93LW1eeCCZAs8LHneaJQlSwAZl0WIqy1jjyJJtnbZLhHTMBanwhPNcnae8qiyFJsk3W
+ 26GuqUwrexXz1PHy6071c1px3lnULu2VpSzaTQqyjolisico/enV0I68MZSvS60xEdld
+ wdxBaQi+QlosWQ20djJPzsIWNW/g7RZFJzUtjq+SloEy8XKhWK4OAmBaMgBSwlLVFq+g
+ +zRQ==
+X-Gm-Message-State: AOAM533dPGIBXXXJzXy0clPGDwq2t2Y/5JsijVsVtnNhjeD/2dvRfgkB
+ rrDoXQ2jX1Vmq7LOAZOXaT0=
+X-Received: by 2002:a5d:44cc:: with SMTP id z12mr6137485wrr.189.1599900651409; 
+ Sat, 12 Sep 2020 01:50:51 -0700 (PDT)
 Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id b18sm9295622wrn.21.2020.09.12.01.06.55
+ by smtp.gmail.com with ESMTPSA id f23sm16746310wmc.3.2020.09.12.01.50.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 12 Sep 2020 01:06:56 -0700 (PDT)
-Subject: Re: [PATCH v5 5/7] hw/misc/mps2-fpgaio: Use the LED device
-To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
+ Sat, 12 Sep 2020 01:50:50 -0700 (PDT)
+Subject: Re: [PATCH v5 2/7] hw/misc/led: Allow connecting from GPIO output
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
+ Eduardo Habkost <ehabkost@redhat.com>, Markus Armbruster <armbru@redhat.com>
 References: <20200910205429.727766-1-f4bug@amsat.org>
- <20200910205429.727766-6-f4bug@amsat.org>
- <5630d710-09cb-bc8a-a67d-b9f01308fb12@greensocs.com>
+ <20200910205429.727766-3-f4bug@amsat.org>
+ <071b68a6-58e4-0d68-e056-ee7ae19e2227@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f9137411-66c0-1cac-bac5-63d48621a003@amsat.org>
-Date: Sat, 12 Sep 2020 10:06:55 +0200
+Message-ID: <db55f80e-ca2d-d432-134b-a05333a7e124@amsat.org>
+Date: Sat, 12 Sep 2020 10:50:49 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <5630d710-09cb-bc8a-a67d-b9f01308fb12@greensocs.com>
+In-Reply-To: <071b68a6-58e4-0d68-e056-ee7ae19e2227@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -39
@@ -125,50 +126,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Andrew Jeffery <andrew@aj.id.au>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 9nXbiMwQzQdA
+X-TUID: gUPJXVoLbW2I
 
-On 9/11/20 10:12 PM, Luc Michel wrote:
-> Hi Phil,
+Eduardo is already in Cc, adding Markus.
+
+On 9/12/20 12:44 AM, Richard Henderson wrote:
+> On 9/10/20 1:54 PM, Philippe Mathieu-Daudé wrote:
+>> Some devices expose GPIO lines.
+>>
+>> Add a GPIO qdev input to our LED device, so we can
+>> connect a GPIO output using qdev_connect_gpio_out().
+>>
+>> When used with GPIOs, the intensity can only be either
+>> minium or maximum. This depends of the polarity of the
+>> GPIO (which can be inverted).
+>> Declare the GpioPolarity type to model the polarity.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  include/hw/misc/led.h  |  8 ++++++++
+>>  include/hw/qdev-core.h |  8 ++++++++
+>>  hw/misc/led.c          | 17 ++++++++++++++++-
+>>  3 files changed, 32 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+>> index f5afaa34bfb..71c9b8c59bf 100644
+>> --- a/include/hw/misc/led.h
+>> +++ b/include/hw/misc/led.h
+>> @@ -38,10 +38,16 @@ typedef struct LEDState {
+>>      /* Public */
+>>  
+>>      uint8_t intensity_percent;
+>> +    qemu_irq irq;
+>>  
+>>      /* Properties */
+>>      char *description;
+>>      char *color;
+>> +    /*
+>> +     * When used with GPIO, the intensity at reset is related
+>> +     * to the GPIO polarity.
+>> +     */
+>> +    bool inverted_polarity;
 > 
-> On 9/10/20 10:54 PM, Philippe Mathieu-Daudé wrote:
->> Per the 'ARM MPS2 and MPS2+ FPGA Prototyping Boards Technical
->> Reference Manual' (100112_0200_07_en):
->>
->>    2.1  Overview of the MPS2 and MPS2+ hardware
->>
->>         The MPS2 and MPS2+ FPGA Prototyping Boards contain the
->>         following components and interfaces:
->>
->>         * User switches and user LEDs:
->>
->>           - Two green LEDs and two push buttons that connect to
->>             the FPGA.
->>           - Eight green LEDs and one 8-way dip switch that connect
->>             to the MCC.
->>
->> Add the 2 LEDs connected to the FPGA.
->>
->> This remplaces the 'mps2_fpgaio_leds' trace events by the generic
-> replaces
->> 'led_set_intensity' event.
-> 
-> If I'm not mistaken the LED device being a DEVICE and not a
-> SYS_BUS_DEVICE, it needs to be manually reset. So you probably need to
-> reset it in mps2_fpgaio_reset so it doesn't get out of sync on system
-> reset.
+> Why are you not using the GpioPolarity enum that you added?
 
-Correct...
+Because it is migrated...
 
-Alternatively we could see a LED as a SysBusDevice exposing a MMIO
-region of 1 writable bit =) But it is unlikely to be mapped on the
-main system bus.
+Using DEFINE_PROP_BOOL() is simpler that adding hardware specific
+enum visitor in hw/core/qdev-properties.c (which is included in
+user-mode builds because pulled by the CPU type).
 
-I'll add the reset, thanks for reviewing!
+A sane cleanup would be to make get_enum(), set_enum()
+and set_default_value_enum() public (prefixed with 'qdev_')
+in include/hw/qdev-properties.h.
+
+Out of the scope of this series, but might be worth it.
+
+Eduardo, Markus, what do you think?
+
+Thanks Richard for reviewing this series!
 
 Phil.

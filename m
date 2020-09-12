@@ -1,94 +1,93 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp794689lfq;
-        Sat, 12 Sep 2020 06:43:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVIdJBA64R+iQuVmtbkh3+xWjWy7GYr9vbKZisV4+5rrUC07HoJGPhar0J0Epfj2fhH4Ci
-X-Received: by 2002:a0c:e38d:: with SMTP id a13mr6313623qvl.26.1599918205075;
-        Sat, 12 Sep 2020 06:43:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599918205; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp794930lfq;
+        Sat, 12 Sep 2020 06:43:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfjXPFjfqE6TvQPDLeKAn3g6UVhcS73vV8Q98waqRMhiE0qsCi/1YQmTiDyjdYMRr9ABiO
+X-Received: by 2002:ac8:7773:: with SMTP id h19mr6044257qtu.337.1599918235665;
+        Sat, 12 Sep 2020 06:43:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599918235; cv=none;
         d=google.com; s=arc-20160816;
-        b=ut1LMByQtlqpH95QsRexbsRMqTDZbrgZbweAx7nWdmF8NqBhwst9sTzpYUtqx0wKVN
-         kHpbvN833XYFHXJRYBiie1fdUxtTQMzVy/cTA5SkpC79efsNB05K4Aw1N9zwSrBV+AjS
-         /ZnQZR8KbjjD0G4MHHT6eg34coUS+Piz7VbjTlM5/9iaYZ0MrBTW6uJxZgaWoX4UuQTc
-         NACwT+OTb+Rmata2LWZUn/2eic18ymuvjD2YDsSWvT3thPXjxARdTcVXyeDZ50NYGcn+
-         g+BLWc3e/15Em2Uc8CYSnlYUGADIJxKq1WZxdQYJxGcOXcneBXiyZ6a3O82gijJnoKVv
-         kdeg==
+        b=cP3J791+tOQXC5zOVrgwTVuVytCXbQB7ffU2yO82LS1pVqhHGff+9o6qlPqCTjR7+u
+         LrXmWp7kGf3O/KeCtQABjJMV2zZ2shy8xf+UR8SAYUzwlpWgZiOALbExWratzOP4dMgE
+         Y7IbCqLjSBM4+QCVK5CPkOD7m/zIGT5BpI/PSoAIqV3VyR8p5dO+9qxcoLQESgiLGs+C
+         t+mXr7JNdUseoCv2w3ypTTXr5clnBdhPbg0+o1dqea8hgicdT5nXkN2weYv2xqkIMEzC
+         goorZ5Lf80UFwkxp4/CqY4l7AvM9b0OQwfvkgdHJ5mF7GzEU64lNMvxon2nFYsVQqjo+
+         dj5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dSaiRltAOJ/zxeobJcA1LXrUSnmjbfrE49BlQ0jwkLs=;
-        b=D6z52BKwl28Kd2ONFsGyJLxvplFWdzg5JVpZpNXK/sySdd/5ybWKuOFt0Wf8HRQXgQ
-         39YVbTh6/cdgz7zIw8YHBIzlyx3W9AFwpv/fhQfiSYAji5FGj7PZVHhDpudtHxq8QRWN
-         dYh4DUATwR7EudD7SRCWiVObhmCy+ThvTvxPfErHmiZcAcctH0xMG8axePipQa0kxgZu
-         1AVSZ/ITth21D3Vm2zDkN+iunswN4sIyQE8kb0HpYDTyMGScSyjgsjsrNNqZrwF46db7
-         BOY2v92/xZMhOM90I5y1yfajTk9PZmbIzrbR3mLxJ87nLgoEa7Ms6+gyb2qtwKG6wm5B
-         9jMg==
+        bh=5jonLkEs0bfAQb56MWErimOd7AbsJVnkd4i01BNhPLw=;
+        b=FsZ0rkYR1UQVA6c1XXrxqypcB4j0xXuH00CmF/d547QK/tVab3vC9lDrySf0WBVOZv
+         JXyopEVm+63aVm+7f+PxccNrckvJPTL9jsyR3sALEv//RzgVdG3+oJGCNuFDyftsrEY9
+         9UI7TbSz3Xzhv4Zko2Sw3tL9fCdCQUu7/E27A13tCXS774rCyomA6Pk4tzd0fOcei3ub
+         GTGq6Xf45WLHmIL5j2R99gC74TXekEWh0iruoBzLWr7J/vB7fmlL6P0jXtDR9CWhcme4
+         +vXLTr7L4HFzFlp3/rmcPGy2tc5UZfU1ysYrYMNkZhmx8uYGuFG0/23oj0UF0qlqPwDh
+         mavg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KJJ6UM1a;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tI0P0bmr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x8si3235505qka.24.2020.09.12.06.43.24
+        by mx.google.com with ESMTPS id a26si3198658qtd.41.2020.09.12.06.43.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 12 Sep 2020 06:43:25 -0700 (PDT)
+        Sat, 12 Sep 2020 06:43:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KJJ6UM1a;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tI0P0bmr;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:55346 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57384 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kH5oK-0005mo-GP
-	for alex.bennee@linaro.org; Sat, 12 Sep 2020 09:43:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52758)
+	id 1kH5oo-0006cx-V8
+	for alex.bennee@linaro.org; Sat, 12 Sep 2020 09:43:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52818)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH5ls-0001dG-27; Sat, 12 Sep 2020 09:40:52 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:34856)
+ id 1kH5lw-0001qn-SI; Sat, 12 Sep 2020 09:40:56 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f]:42994)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kH5lq-0007pr-F0; Sat, 12 Sep 2020 09:40:51 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id e16so14120002wrm.2;
- Sat, 12 Sep 2020 06:40:49 -0700 (PDT)
+ id 1kH5lv-0007rZ-0L; Sat, 12 Sep 2020 09:40:56 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id c18so14076849wrm.9;
+ Sat, 12 Sep 2020 06:40:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dSaiRltAOJ/zxeobJcA1LXrUSnmjbfrE49BlQ0jwkLs=;
- b=KJJ6UM1aUNnpaFueQ/03AK5N4pwtNsVK6FSFmmFvug0PXtNpZLPPw5SGbQAy61UsD5
- +o+WmmKZFKGUsr3B37WtCDMdmqwnUYxb5psWrEDgICUO4sZOF6p01QngSCKfT4nP2+72
- TwZbDsXQ7zfYq8/PqfGktzqgrjTa6DubNdACc6A++eDTTwe5kNhwQrb3mQox/03pptIP
- VDXVV4Jwc5RUrVK+evTAjFLL70CiRuDfwuXYYhE636jBDRpvMxLVZ6baY/PSS0R0cx85
- nGkW6xKE6/ba1GcXAWIU8yw+5X21fNUI0ux+fol+g8L6Jm9d+pPUTgOyeiLhxh+0fs2T
- 4m7w==
+ bh=5jonLkEs0bfAQb56MWErimOd7AbsJVnkd4i01BNhPLw=;
+ b=tI0P0bmrLxrX57L1IDZSIKcu56JJVbF+8DbAneZ+thrh2Jgayed6PtWT5lFu5teUpE
+ OLZfA9qnpvno1CLUhnDVziuV0pdnfuJQ6k3TLktzVzXJEh0MHmcJrv/CVFLFjQiZiMvd
+ dMg/w9eDE+CLJ2WdWt+S2X1XRawranqRlWDCVThag+l4TVbuAZkpP4+ackHe84nI9WJF
+ Y1pc0hkg977W0JWaKODRz8+JPuTs/S+vSH9gK+CUfNtFzDU+M/5VDCzhNaFUO1ry8ydx
+ qnvk2uivMAkBQss8CNZ+KBVy0eggPm1tWFWFM+qfZKMhZcEOSm3oN2v9kBfhWhpjoQGl
+ I+LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=dSaiRltAOJ/zxeobJcA1LXrUSnmjbfrE49BlQ0jwkLs=;
- b=YnhUaKuJ4GKRRoKj1iZ/+T2zoRa0Z/XbxP35i0nU96BmEzIb9G8SC7+sVVCpIHBU4/
- fq0tAeQeHzYZFicAvMdlTXnqkr1q/aCxPnMRzC6JUSwo74bxvfty5KeXft/pft0SyP7s
- 0dBmciYqeZXwOSzdsk4QZ0T2Wy7hvjvcOzEmeAeyaihuNMYbwwu9HnZKQFtFFuiyAPTC
- NS/K5nBSczNuRVIGDKRPgxWKHb4gRZ43tWH8y49xpM6FARXZqXPJPZ6DgXeK/N42oHkt
- U+3cRh2z4/A/64hmgfiPnLEQlozJqcbko5cmHrqlWmNEsZS59oqaqP8FmCTECvVlMrjp
- f97A==
-X-Gm-Message-State: AOAM530bCaw1KCZxaz7Pfxk7knGrPRX/90Sx0bhp74a0u6JRPFWjjzQF
- rdQ2sdLlFfcc+VuFLbCNRL0ARAQtt3U=
-X-Received: by 2002:adf:e289:: with SMTP id v9mr6932636wri.14.1599918048595;
- Sat, 12 Sep 2020 06:40:48 -0700 (PDT)
+ bh=5jonLkEs0bfAQb56MWErimOd7AbsJVnkd4i01BNhPLw=;
+ b=iHXO0YwkpCj+txKAOrgdV4RTOa/5180plQYX5fU73FsAicRSQkuj5lGcrUOHx9/AYI
+ 7zK0lkMlioswcqBrEoeKSAYUgvxw8+5I+FmMJPAunHTJBLxvKt3I1CUA0dEsX7/KGmHF
+ m6chavQ4S7Ay3NS1CD0kelWtL5Cdw/5t0Q+JXbMryRacCNFDz5u/woAxDt1l8K8fPNds
+ fVJwSGp3TIIZCudRryIYdGpJBwyLiPxXtKKSd4MpWrj27fuz0gq+7wpTPngyecaQpFnq
+ fhtajGzU/ACZTBRShGoCRh4mbsuFeLcFUl9wvS89cDGBt9WNZCo4kanpvq2x41einadj
+ 5pgA==
+X-Gm-Message-State: AOAM531HOarM9k2v54bd95AV87PrL//1wCHxwK2nF0nl/d47jPk1ktZo
+ C8ZYpWPByyUeUUQ+NWv1xlvzA/g9/mQ=
+X-Received: by 2002:a5d:4e0f:: with SMTP id p15mr6936109wrt.155.1599918053110; 
+ Sat, 12 Sep 2020 06:40:53 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id u66sm10309144wmg.44.2020.09.12.06.40.47
+ by smtp.gmail.com with ESMTPSA id u66sm10309144wmg.44.2020.09.12.06.40.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 12 Sep 2020 06:40:48 -0700 (PDT)
+ Sat, 12 Sep 2020 06:40:52 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v6 3/7] hw/misc/led: Emit a trace event when LED intensity has
- changed
-Date: Sat, 12 Sep 2020 15:40:37 +0200
-Message-Id: <20200912134041.946260-4-f4bug@amsat.org>
+Subject: [PATCH v6 6/7] hw/misc/mps2-scc: Use the LED device
+Date: Sat, 12 Sep 2020 15:40:40 +0200
+Message-Id: <20200912134041.946260-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200912134041.946260-1-f4bug@amsat.org>
 References: <20200912134041.946260-1-f4bug@amsat.org>
@@ -96,8 +95,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42f.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -130,45 +129,146 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LnoIrNRUTa9t
+X-TUID: t4/bjxK6vBp/
 
-Track the LED intensity, and emit a trace event when it changes.
+Per the 'ARM MPS2 and MPS2+ FPGA Prototyping Boards Technical
+Reference Manual' (100112_0200_07_en):
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
+  2.1  Overview of the MPS2 and MPS2+ hardware
+
+       The MPS2 and MPS2+ FPGA Prototyping Boards contain the
+       following components and interfaces:
+
+       * User switches and user LEDs:
+
+         - Two green LEDs and two push buttons that connect to
+           the FPGA.
+         - Eight green LEDs and one 8-way dip switch that connect
+           to the MCC.
+
+Add the 8 LEDs connected to the MCC.
+
+This replaces the 'mps2_scc_leds' trace events by the generic
+'led_set_intensity' event.
+
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/misc/led.c        | 4 ++++
- hw/misc/trace-events | 1 +
- 2 files changed, 5 insertions(+)
+ include/hw/misc/mps2-scc.h |  2 ++
+ hw/misc/mps2-scc.c         | 27 ++++++++++++++++-----------
+ hw/misc/Kconfig            |  1 +
+ hw/misc/trace-events       |  1 -
+ 4 files changed, 19 insertions(+), 12 deletions(-)
 
-diff --git a/hw/misc/led.c b/hw/misc/led.c
-index c5fa09a613a..5266d026d0b 100644
---- a/hw/misc/led.c
-+++ b/hw/misc/led.c
-@@ -41,6 +41,10 @@ void led_set_intensity(LEDState *s, unsigned intensity_percent)
-         intensity_percent = LED_INTENSITY_PERCENT_MAX;
+diff --git a/include/hw/misc/mps2-scc.h b/include/hw/misc/mps2-scc.h
+index 445e268b1fd..0009479ae83 100644
+--- a/include/hw/misc/mps2-scc.h
++++ b/include/hw/misc/mps2-scc.h
+@@ -13,6 +13,7 @@
+ #define MPS2_SCC_H
+ 
+ #include "hw/sysbus.h"
++#include "hw/misc/led.h"
+ #include "qom/object.h"
+ 
+ #define TYPE_MPS2_SCC "mps2-scc"
+@@ -28,6 +29,7 @@ struct MPS2SCC {
+ 
+     /*< public >*/
+     MemoryRegion iomem;
++    LEDState *led[8];
+ 
+     uint32_t cfg0;
+     uint32_t cfg1;
+diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
+index 9d0909e7b35..ce1dfe93562 100644
+--- a/hw/misc/mps2-scc.c
++++ b/hw/misc/mps2-scc.c
+@@ -20,11 +20,13 @@
+ #include "qemu/osdep.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
++#include "qemu/bitops.h"
+ #include "trace.h"
+ #include "hw/sysbus.h"
+ #include "migration/vmstate.h"
+ #include "hw/registerfields.h"
+ #include "hw/misc/mps2-scc.h"
++#include "hw/misc/led.h"
+ #include "hw/qdev-properties.h"
+ 
+ REG32(CFG0, 0)
+@@ -152,18 +154,10 @@ static void mps2_scc_write(void *opaque, hwaddr offset, uint64_t value,
+         s->cfg0 = value;
+         break;
+     case A_CFG1:
+-        /* CFG1 bits [7:0] control the board LEDs. We don't currently have
+-         * a mechanism for displaying this graphically, so use a trace event.
+-         */
+-        trace_mps2_scc_leds(value & 0x80 ? '*' : '.',
+-                            value & 0x40 ? '*' : '.',
+-                            value & 0x20 ? '*' : '.',
+-                            value & 0x10 ? '*' : '.',
+-                            value & 0x08 ? '*' : '.',
+-                            value & 0x04 ? '*' : '.',
+-                            value & 0x02 ? '*' : '.',
+-                            value & 0x01 ? '*' : '.');
+         s->cfg1 = value;
++        for (size_t i = 0; i < ARRAY_SIZE(s->led); i++) {
++            led_set_state(s->led[i], extract32(value, i, 1));
++        }
+         break;
+     case A_CFGDATA_OUT:
+         s->cfgdata_out = value;
+@@ -236,6 +230,9 @@ static void mps2_scc_reset(DeviceState *dev)
+     for (i = 0; i < NUM_OSCCLK; i++) {
+         s->oscclk[i] = s->oscclk_reset[i];
      }
-     trace_led_set_intensity(s->description, s->color, intensity_percent);
-+    if (intensity_percent != s->intensity_percent) {
-+        trace_led_change_intensity(s->description, s->color,
-+                                   s->intensity_percent, intensity_percent);
++    for (i = 0; i < ARRAY_SIZE(s->led); i++) {
++        device_cold_reset(DEVICE(s->led[i]));
 +    }
-     s->intensity_percent = intensity_percent;
  }
  
+ static void mps2_scc_init(Object *obj)
+@@ -249,6 +246,14 @@ static void mps2_scc_init(Object *obj)
+ 
+ static void mps2_scc_realize(DeviceState *dev, Error **errp)
+ {
++    MPS2SCC *s = MPS2_SCC(dev);
++
++    for (size_t i = 0; i < ARRAY_SIZE(s->led); i++) {
++        char *name = g_strdup_printf("SCC LED%zu", i);
++        s->led[i] = led_create_simple(OBJECT(dev), GPIO_POLARITY_ACTIVE_HIGH,
++                                      LED_COLOR_GREEN, name);
++        g_free(name);
++    }
+ }
+ 
+ static const VMStateDescription mps2_scc_vmstate = {
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 0cecad45aad..7557a3e7b46 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -97,6 +97,7 @@ config MPS2_FPGAIO
+ 
+ config MPS2_SCC
+     bool
++    select LED
+ 
+ config TZ_MPC
+     bool
 diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 211ff114694..5f3f6121bc9 100644
+index 908272e8593..97f511aa58c 100644
 --- a/hw/misc/trace-events
 +++ b/hw/misc/trace-events
-@@ -217,6 +217,7 @@ grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx6
+@@ -84,7 +84,6 @@ aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" PRIx64
+ mps2_scc_read(uint64_t offset, uint64_t data, unsigned size) "MPS2 SCC read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ mps2_scc_write(uint64_t offset, uint64_t data, unsigned size) "MPS2 SCC write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ mps2_scc_reset(void) "MPS2 SCC: reset"
+-mps2_scc_leds(char led7, char led6, char led5, char led4, char led3, char led2, char led1, char led0) "MPS2 SCC LEDs: %c%c%c%c%c%c%c%c"
+ mps2_scc_cfg_write(unsigned function, unsigned device, uint32_t value) "MPS2 SCC config write: function %d device %d data 0x%" PRIx32
+ mps2_scc_cfg_read(unsigned function, unsigned device, uint32_t value) "MPS2 SCC config read: function %d device %d data 0x%" PRIx32
  
- # led.c
- led_set_intensity(const char *color, const char *desc, uint8_t intensity_percent) "LED desc:'%s' color:%s intensity: %u%%"
-+led_change_intensity(const char *color, const char *desc, uint8_t old_intensity_percent, uint8_t new_intensity_percent) "LED desc:'%s' color:%s intensity %u%% -> %u%%"
- 
- # pca9552.c
- pca955x_gpio_status(const char *description, const char *buf) "%s GPIOs 0-15 [%s]"
 -- 
 2.26.2
 

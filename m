@@ -1,112 +1,139 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1074709lfq;
-        Sat, 12 Sep 2020 15:25:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxVAKLE+BXH0KKp0upaO2ynS2nM5mx+i2fHe0llKalte025prG2aCVoHTfBIdJ/97WB3aOF
-X-Received: by 2002:a25:61cd:: with SMTP id v196mr11761150ybb.103.1599949527328;
-        Sat, 12 Sep 2020 15:25:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1599949527; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1434640lfq;
+        Sun, 13 Sep 2020 04:38:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSDBT+XVXLgn2+ba3nA8CGiBvQfJ2/vUzE9Kv5cdDnEVnA2s8VjTx7ncTk9ScmW7e56pzj
+X-Received: by 2002:a37:9f52:: with SMTP id i79mr8393286qke.109.1599997112162;
+        Sun, 13 Sep 2020 04:38:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1599997112; cv=none;
         d=google.com; s=arc-20160816;
-        b=NLogytYHYXMFRYBac5uLZ4Ryiujbb5r32GmIv74vfbYRjchAdj8Rw166knm5ddUsfC
-         JfFlCg6Ai4xD6fQfMPrjX4Vfa7toaoJG90nSyc0BExR/rWGmXqRYs/ZGJNWhsaUyHvm4
-         k+u1jJ9psW+ZRjSV6XvIv2FIQ5TieonV3QZTI4Fp6oXBUyYsESamPxc5o6FsAoXol10I
-         r/qmfKNry8yoBjBqcaUwnPIca9O84h6M0JCI1bBmeQkNONLvZyvOvZ4WhO+mfNqGkKnr
-         kBVehasHqCpR2SzDVBIlgtEqKiFBiWoAtumK8lGMLQSybuXyiJ2kpRdPB04eD+FNQ2Rx
-         FZ5w==
+        b=0Iihuu3NTdUfGQyisuLIrB3Sb0LAUqdU5O/d72ThtQSo1JcPCrvZyE4YR+LFK3nLLJ
+         9DGnhM8L508pf4WVAWGR05P9uJCMVxMqq3Gn3+cOSgAmCTL4D1G6zbCZdHeZWVd2tXh2
+         2K4y+V0ooh7iq0p5mkIVg2flOar1zOGut9kzr5q1sb+1zkbGIcf8p9GW2eFnwfbR3v1x
+         w8CW35T8fXrCo0oaB9/Vh7tnGN6Sf6vrR7auc1ozszHluyoDpRuHXKF92+qiagosZblw
+         dgSH+Bb/TFtXho/39hfdV91GpMjulqfkZiwLW4MH5h9b9mwZorJMuKkbP8u4Td8Bj+rQ
+         cDTQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ZGaX7CsCAWtERESwHJLWurSNk7QjKSPOqUNldqXNN+8=;
-        b=ZCtgX+tCCpvgMD9LD8ELHDqi7Z0r3dblRSV4cFKc73mM1XkX8eogXETmJ1qg95tWus
-         qfQg24tWtSHI2IUqa6vzgWBZq6n24SWBzjj6IySPmt1PEFNFTYtVkIB+gKLdbC2Elhrq
-         uX+QspLxCOT7QkVGok5UP4n4kEUsdoVgv6KmZIWtfrIIuz8qmZKptkK/rbkdHPbjO+LW
-         P00REco3DnNE76M0r4BDI+e2HudXkOGyg0PJCUbRKsS2JbDKwQcFEDECbP/VBX2Cn/ij
-         9d3J4+yoodX74JfHRSu35GLp4B6P3ALal8IlRptFLvFr71PD4JkuinV+ZZ1HLy8cpRjj
-         dCqg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:references:to:from:subject:dkim-signature;
+        bh=8bL7Tyb3MV/UEGkXFiK/mDEGsL868LauQleEyGp/R4g=;
+        b=X5TG+qJ61yHKtzG7WiuANt0x97DKCVL4IYd6fvLMC1c5P6pQzfa6Bg/TRcPloFqWCq
+         gWnmJufjW2g1Bnm24nLmSUJ/SEcfpb/DYcDPDJKX+CnADWSD+0gRvrUW8dF+QaQfQE1j
+         VN8QchYZ4aQ+fcUUvEa8zaMJn5CfRUWZgglbkXf1c9onI+GL71W76rYA0WbXw9vkJiLR
+         Ki3GAaSP0XlvZOVAMa51wLvDyAZmRgpO1LPtH4RrpMc7NvWsFaunrDBrky32npmg4SX6
+         xfI1zz6NR50d+RB/GGbfKtuKvj0tIOnAoXtgsgI0rPN+md8ZC19zu44WIo6gvi++fARc
+         vXWg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=HsjCNrKr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NyvQnlqV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d80si5839902ybh.392.2020.09.12.15.25.27
+        by mx.google.com with ESMTPS id 141si4959918qkf.107.2020.09.13.04.38.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 12 Sep 2020 15:25:27 -0700 (PDT)
+        Sun, 13 Sep 2020 04:38:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=HsjCNrKr;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NyvQnlqV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:46922 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:54856 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kHDxW-0006ph-MK
-	for alex.bennee@linaro.org; Sat, 12 Sep 2020 18:25:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44554)
+	id 1kHQL1-0007rJ-IE
+	for alex.bennee@linaro.org; Sun, 13 Sep 2020 07:38:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40656)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kHDxN-0006pS-Dw
- for qemu-arm@nongnu.org; Sat, 12 Sep 2020 18:25:17 -0400
-Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:42639)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kHQKo-0007qz-RL; Sun, 13 Sep 2020 07:38:20 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55534)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kHDxL-0002Ec-5A
- for qemu-arm@nongnu.org; Sat, 12 Sep 2020 18:25:17 -0400
-Received: by mail-ua1-x944.google.com with SMTP id w23so4130725uam.9
- for <qemu-arm@nongnu.org>; Sat, 12 Sep 2020 15:25:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ZGaX7CsCAWtERESwHJLWurSNk7QjKSPOqUNldqXNN+8=;
- b=HsjCNrKrg1lOg8ickXxcAAbpkMteeXxOwnqnjlxRChB5fxpChvMGfykP/rkNGlA2g+
- BR8OVCC35K1a7FAK/wcN1P07I3pMVEDZ/mwkArN+ual6kcIa2+YgPfeyAk2KQlTtLMvP
- HXUyiktDbIEuzpxX8xZHqgR97+Kvxl88KmtUupo95CzLSEcYhy9v7n6sYDh0CUAF8MP+
- f4kW6GgKVyOTYtxigiNlKnsWeqFwZxpxn18E8TCadYCyem8MNTiFowmVqzanztc2paHu
- 0GuvwPTGRy/AqiCkmBznPoIoFC4QGqF0F1bQRO+nLFo7xxssn0D+tE+a7wVQeYsmKJYZ
- wUKA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kHQKn-0003LU-8u; Sun, 13 Sep 2020 07:38:18 -0400
+Received: by mail-wm1-x343.google.com with SMTP id d4so2730513wmd.5;
+ Sun, 13 Sep 2020 04:38:15 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:from:to:cc:references:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=8bL7Tyb3MV/UEGkXFiK/mDEGsL868LauQleEyGp/R4g=;
+ b=NyvQnlqVU6RB4l1RGrhqE+Cn4SraiXqEoxlJ9J5NJxiMgjycD39o5UgvTrhkuP8Ch6
+ zVbYOOHrZYs22M5FV4SDgGmbGcXfknmOrbvFDZBxvqHS950lm9tPE+0u04karTj1uHIX
+ ktCkgipF8+Fbsk4yjWiSivsT7ndQ5qjIZsV8RtZpX0czsYLS0FMepiv7V7P8q+kUvj/B
+ TVcc8B5CK3nEPH6T3PVfiOWNUUJTDlRifT/t+/WdWCGytL/eHKsISK7s2Lwx7xGjgped
+ sUz0HqcfohZ8xXsjukNv4VAqJhxrbX0SYuQm6eM7KiofWe0R0fSCAwCfaIcgxqorsomE
+ mVsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ZGaX7CsCAWtERESwHJLWurSNk7QjKSPOqUNldqXNN+8=;
- b=ZG/j5bQp7nlFgrHqtTjkcHtQN3QCnlaTwhm8YNk3Qej/U5qK36cTnIRV3JtNLSQJ31
- vniG97XpR16aAoNzQZpNcK3u0m+BbqIMp2yKgz6ELLyNgaJ+f1U/uJ/diNd9khVQDF/t
- sKtgFm+IbdyeH2iir+573zLsMCEJSnaQqiO7fYBc81mKagBmW1pBmdNmRHZCPHs0Oq7p
- 63SdeiZIZ78f8B13hnHMIQ6sAzWI2xop7po/z2JreQ3uGemS56IHG4ZPCg7pigSB5eN8
- z0NhToquArOBKDSIdDHDPzjY6XDX+KM2dmaOrRhbqfN4K7jQvB4dBVAMHGJjh97lS9yY
- 3HJg==
-X-Gm-Message-State: AOAM5303tYf1Ockg6b4bOVRHITUMJKO5DlaKn95gz2NdRa5MbNWhuVEp
- wlUuQiO1QzW/CK3a9q90821ZwWQAaR7yRZmFFM8QJw==
-X-Received: by 2002:ab0:2904:: with SMTP id v4mr4017866uap.15.1599949511811;
- Sat, 12 Sep 2020 15:25:11 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=8bL7Tyb3MV/UEGkXFiK/mDEGsL868LauQleEyGp/R4g=;
+ b=ucBubYQdEuA8+g3DizoikHMXK9lnJVf3fvT7zZZs7utfyjwtA4w20h1EiIrhN2XC1X
+ +AYx0reG+IBhbTrpvvt7nd5UZkYbK+/FRFoU+HCwYQmoS/VsR+qHSKSGVeHMRJdLl3r0
+ mnrsUzTd6BVonFzxl6+IOGs2YYlUjZnYFIcAIEiyzlvBiOFQsdZDwaiz8jtWSljL/AVP
+ HD++2p9wCCDq3qLDi4TWevoyp7AXqItP7bgQshJSayFzrf/E/1PrxfNVN01CsT1WcQ6c
+ xxUT9EitoHjt62Q3F88NnLTGA3ZS3vMo5XrK0BHFsKBoM+grqe4ajXlQs8vxYuoroDAr
+ /lOg==
+X-Gm-Message-State: AOAM531QCtKnrvu9+YTwtN2dJHbpCKzJ29JJXXKmmoi92SWDq2g1NnT8
+ GFDwNkksztTU/21mHt5PnFE=
+X-Received: by 2002:a7b:c938:: with SMTP id h24mr10751468wml.142.1599997094481; 
+ Sun, 13 Sep 2020 04:38:14 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id b8sm14374571wmh.48.2020.09.13.04.38.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 13 Sep 2020 04:38:13 -0700 (PDT)
+Subject: Re: [PATCH] hw/block/nand: Decommission the NAND museum
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+References: <20200814132118.12450-1-f4bug@amsat.org>
+ <75f7421f-3ea4-ff6c-2c92-0ea9b5b8fdc1@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <d455e7b3-7346-2058-b13f-5455b138577b@amsat.org>
+Date: Sun, 13 Sep 2020 13:38:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <20200911052101.2602693-1-hskinnemoen@google.com>
- <20200911052101.2602693-12-hskinnemoen@google.com>
- <e852efda-b8d9-0e41-8b1b-ed7cb01e7f51@amsat.org>
-In-Reply-To: <e852efda-b8d9-0e41-8b1b-ed7cb01e7f51@amsat.org>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Sat, 12 Sep 2020 15:24:58 -0700
-Message-ID: <CAFQmdRbjH7=6VE=dDVNmKGenHoseKnNNr3SLcQojo0doS+gT7Q@mail.gmail.com>
-Subject: Re: [PATCH v9 11/14] hw/arm: Wire up BMC boot flash for npcm750-evb
- and quanta-gsj
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
- QEMU Developers <qemu-devel@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>, 
- CS20 KFTing <kfting@nuvoton.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: multipart/alternative; boundary="0000000000004fdb6d05af2546eb"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::944;
- envelope-from=hskinnemoen@google.com; helo=mail-ua1-x944.google.com
+In-Reply-To: <75f7421f-3ea4-ff6c-2c92-0ea9b5b8fdc1@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,230 +146,91 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-block@nongnu.org, Max Reitz <mreitz@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cjZBxDaoRiKQ
+X-TUID: MqfEQaBoJQOe
 
---0000000000004fdb6d05af2546eb
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 8/14/20 3:23 PM, Philippe Mathieu-Daudé wrote:
+> I forgot to Cc qemu-arm@, doing it now since most of the users
+> of this are ARM machines.
 
-On Fri, Sep 11, 2020 at 5:46 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g>
-wrote:
+The machine using this device are:
 
->
->
-> On 9/11/20 7:20 AM, Havard Skinnemoen via wrote:
-> > This allows these NPCM7xx-based boards to boot from a flash image, e.g.
-> > one built with OpenBMC. For example like this:
-> >
-> > IMAGE=3D${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc
-> > qemu-system-arm -machine quanta-gsj -nographic \
-> >       -drive file=3D${IMAGE},if=3Dmtd,bus=3D0,unit=3D0,format=3Draw,sna=
-pshot=3Don
-> >
-> > Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> > Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> > Tested-by: C=C3=A9dric Le Goater <clg@kaod.org>
-> > Tested-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
-> > ---
-> >  hw/arm/npcm7xx_boards.c | 20 ++++++++++++++++++++
-> >  1 file changed, 20 insertions(+)
-> >
-> > diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-> > index b4c772d6b5..79e2e2744c 100644
-> > --- a/hw/arm/npcm7xx_boards.c
-> > +++ b/hw/arm/npcm7xx_boards.c
-> > @@ -20,6 +20,7 @@
-> >  #include "hw/arm/npcm7xx.h"
-> >  #include "hw/core/cpu.h"
-> >  #include "hw/loader.h"
-> > +#include "hw/qdev-properties.h"
-> >  #include "qapi/error.h"
-> >  #include "qemu-common.h"
-> >  #include "qemu/units.h"
-> > @@ -55,6 +56,22 @@ static void npcm7xx_load_bootrom(MachineState
-> *machine, NPCM7xxState *soc)
-> >      }
-> >  }
-> >
-> > +static void npcm7xx_connect_flash(NPCM7xxFIUState *fiu, int cs_no,
-> > +                                  const char *flash_type, DriveInfo
-> *dinfo)
-> > +{
-> > +    DeviceState *flash;
-> > +    qemu_irq flash_cs;
-> > +
-> > +    flash =3D qdev_new(flash_type);
-> > +    if (dinfo) {
-> > +        qdev_prop_set_drive(flash, "drive", blk_by_legacy_dinfo(dinfo)=
-);
-> > +    }
-> > +    qdev_realize_and_unref(flash, BUS(fiu->spi), &error_fatal);
-> > +
-> > +    flash_cs =3D qdev_get_gpio_in_named(flash, SSI_GPIO_CS, 0);
-> > +    qdev_connect_gpio_out_named(DEVICE(fiu), "cs", cs_no, flash_cs);
-> > +}
-> > +
-> >  static void npcm7xx_connect_dram(NPCM7xxState *soc, MemoryRegion *dram=
-)
-> >  {
-> >      memory_region_add_subregion(get_system_memory(), NPCM7XX_DRAM_BA,
-> dram);
-> > @@ -92,6 +109,7 @@ static void npcm750_evb_init(MachineState *machine)
-> >      qdev_realize(DEVICE(soc), NULL, &error_fatal);
-> >
-> >      npcm7xx_load_bootrom(machine, soc);
-> > +    npcm7xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD=
-,
-> 0, 0));
->
-> Nitpicking: add definition for '0' magic number
-> (consider as future cleanup).
->
+- axis-dev88
+- tosa (via tc6393xb_init)
+- spitz based (akita, borzoi, terrier)
 
-Thanks. I've made the change, but won't send it out until this series is
-merged, or I'll fold it in if I need to do another iteration for other
-reasons.
+$ git grep nand_init
+hw/arm/spitz.c:223:    s->nand = nand_init(nand ?
+blk_by_legacy_dinfo(nand) : NULL,
+hw/block/nand.c:641:DeviceState *nand_init(BlockBackend *blk, int
+manf_id, int chip_id)
+hw/cris/axis_dev88.c:278:    nand_state.nand = nand_init(nand ?
+blk_by_legacy_dinfo(nand) : NULL,
+hw/display/tc6393xb.c:569:    s->flash = nand_init(nand ?
+blk_by_legacy_dinfo(nand) : NULL,
 
->      npcm7xx_load_kernel(machine, soc);
-> >  }
-> >
-> > @@ -104,6 +122,8 @@ static void quanta_gsj_init(MachineState *machine)
-> >      qdev_realize(DEVICE(soc), NULL, &error_fatal);
-> >
-> >      npcm7xx_load_bootrom(machine, soc);
-> > +    npcm7xx_connect_flash(&soc->fiu[0], 0, "mx25l25635e",
-> > +                          drive_get(IF_MTD, 0, 0));
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
->
-> >      npcm7xx_load_kernel(machine, soc);
-> >  }
-> >
-> >
->
-
---0000000000004fdb6d05af2546eb
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
-<div dir=3D"ltr" class=3D"gmail_attr">On Fri, Sep 11, 2020 at 5:46 AM Phili=
-ppe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org">f4bug@amsat.o=
-rg</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margi=
-n:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex=
-"><br>
-<br>
-On 9/11/20 7:20 AM, Havard Skinnemoen via wrote:<br>
-&gt; This allows these NPCM7xx-based boards to boot from a flash image, e.g=
-.<br>
-&gt; one built with OpenBMC. For example like this:<br>
-&gt; <br>
-&gt; IMAGE=3D${OPENBMC}/build/tmp/deploy/images/gsj/image-bmc<br>
-&gt; qemu-system-arm -machine quanta-gsj -nographic \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0-drive file=3D${IMAGE},if=3Dmtd,bus=3D0,unit=
-=3D0,format=3Draw,snapshot=3Don<br>
-&gt; <br>
-&gt; Reviewed-by: Tyrone Ting &lt;<a href=3D"mailto:kfting@nuvoton.com" tar=
-get=3D"_blank" class=3D"cremed">kfting@nuvoton.com</a>&gt;<br>
-&gt; Reviewed-by: C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.org"=
- target=3D"_blank" class=3D"cremed">clg@kaod.org</a>&gt;<br>
-&gt; Tested-by: C=C3=A9dric Le Goater &lt;<a href=3D"mailto:clg@kaod.org" t=
-arget=3D"_blank" class=3D"cremed">clg@kaod.org</a>&gt;<br>
-&gt; Tested-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@ams=
-at.org" target=3D"_blank" class=3D"cremed">f4bug@amsat.org</a>&gt;<br>
-&gt; Signed-off-by: Havard Skinnemoen &lt;<a href=3D"mailto:hskinnemoen@goo=
-gle.com" target=3D"_blank" class=3D"cremed">hskinnemoen@google.com</a>&gt;<=
-br>
-&gt; ---<br>
-&gt;=C2=A0 hw/arm/npcm7xx_boards.c | 20 ++++++++++++++++++++<br>
-&gt;=C2=A0 1 file changed, 20 insertions(+)<br>
-&gt; <br>
-&gt; diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c<br>
-&gt; index b4c772d6b5..79e2e2744c 100644<br>
-&gt; --- a/hw/arm/npcm7xx_boards.c<br>
-&gt; +++ b/hw/arm/npcm7xx_boards.c<br>
-&gt; @@ -20,6 +20,7 @@<br>
-&gt;=C2=A0 #include &quot;hw/arm/npcm7xx.h&quot;<br>
-&gt;=C2=A0 #include &quot;hw/core/cpu.h&quot;<br>
-&gt;=C2=A0 #include &quot;hw/loader.h&quot;<br>
-&gt; +#include &quot;hw/qdev-properties.h&quot;<br>
-&gt;=C2=A0 #include &quot;qapi/error.h&quot;<br>
-&gt;=C2=A0 #include &quot;qemu-common.h&quot;<br>
-&gt;=C2=A0 #include &quot;qemu/units.h&quot;<br>
-&gt; @@ -55,6 +56,22 @@ static void npcm7xx_load_bootrom(MachineState *mach=
-ine, NPCM7xxState *soc)<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;=C2=A0 }<br>
-&gt;=C2=A0 <br>
-&gt; +static void npcm7xx_connect_flash(NPCM7xxFIUState *fiu, int cs_no,<br=
->
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 const char *flash_type, D=
-riveInfo *dinfo)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 DeviceState *flash;<br>
-&gt; +=C2=A0 =C2=A0 qemu_irq flash_cs;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 flash =3D qdev_new(flash_type);<br>
-&gt; +=C2=A0 =C2=A0 if (dinfo) {<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 qdev_prop_set_drive(flash, &quot;drive&qu=
-ot;, blk_by_legacy_dinfo(dinfo));<br>
-&gt; +=C2=A0 =C2=A0 }<br>
-&gt; +=C2=A0 =C2=A0 qdev_realize_and_unref(flash, BUS(fiu-&gt;spi), &amp;er=
-ror_fatal);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 flash_cs =3D qdev_get_gpio_in_named(flash, SSI_GPIO_CS,=
- 0);<br>
-&gt; +=C2=A0 =C2=A0 qdev_connect_gpio_out_named(DEVICE(fiu), &quot;cs&quot;=
-, cs_no, flash_cs);<br>
-&gt; +}<br>
-&gt; +<br>
-&gt;=C2=A0 static void npcm7xx_connect_dram(NPCM7xxState *soc, MemoryRegion=
- *dram)<br>
-&gt;=C2=A0 {<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 memory_region_add_subregion(get_system_memory(), N=
-PCM7XX_DRAM_BA, dram);<br>
-&gt; @@ -92,6 +109,7 @@ static void npcm750_evb_init(MachineState *machine)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 qdev_realize(DEVICE(soc), NULL, &amp;error_fatal);=
-<br>
-&gt;=C2=A0 <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 npcm7xx_load_bootrom(machine, soc);<br>
-&gt; +=C2=A0 =C2=A0 npcm7xx_connect_flash(&amp;soc-&gt;fiu[0], 0, &quot;w25=
-q256&quot;, drive_get(IF_MTD, 0, 0));<br>
-<br>
-Nitpicking: add definition for &#39;0&#39; magic number<br>
-(consider as future cleanup).<br></blockquote><div><br></div><div>Thanks. I=
-&#39;ve made the change, but won&#39;t send it out until this series is mer=
-ged, or I&#39;ll fold it in if I need to do another iteration for other rea=
-sons.</div><div><br></div><blockquote class=3D"gmail_quote" style=3D"margin=
-:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"=
->
-&gt;=C2=A0 =C2=A0 =C2=A0 npcm7xx_load_kernel(machine, soc);<br>
-&gt;=C2=A0 }<br>
-&gt;=C2=A0 <br>
-&gt; @@ -104,6 +122,8 @@ static void quanta_gsj_init(MachineState *machine)=
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 qdev_realize(DEVICE(soc), NULL, &amp;error_fatal);=
-<br>
-&gt;=C2=A0 <br>
-&gt;=C2=A0 =C2=A0 =C2=A0 npcm7xx_load_bootrom(machine, soc);<br>
-&gt; +=C2=A0 =C2=A0 npcm7xx_connect_flash(&amp;soc-&gt;fiu[0], 0, &quot;mx2=
-5l25635e&quot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 =C2=A0 drive_get(IF_MTD, 0, 0));<br>
-<br>
-Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.=
-org" target=3D"_blank" class=3D"cremed">f4bug@amsat.org</a>&gt;<br>
-<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 npcm7xx_load_kernel(machine, soc);<br>
-&gt;=C2=A0 }<br>
-&gt;=C2=A0 <br>
-&gt; <br>
-</blockquote></div></div>
-
---0000000000004fdb6d05af2546eb--
+> 
+> On 8/14/20 3:21 PM, Philippe Mathieu-Daudé wrote:
+>> This is the QEMU equivalent of this Linux commit (but 7 years later):
+>> https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=f7025a43a9da2
+>>
+>>     The MTD subsystem has its own small museum of ancient NANDs
+>>     in a form of the CONFIG_MTD_NAND_MUSEUM_IDS configuration option.
+>>     The museum contains stone age NANDs with 256 bytes pages, as well
+>>     as iron age NANDs with 512 bytes per page and up to 8MiB page size.
+>>
+>>     It is with great sorrow that I inform you that the museum is being
+>>     decommissioned. The MTD subsystem is out of budget for Kconfig
+>>     options and already has too many of them, and there is a general
+>>     kernel trend to simplify the configuration menu.
+>>
+>>     We remove the stone age exhibits along with closing the museum,
+>>     but some of the iron age ones are transferred to the regular NAND
+>>     depot. Namely, only those which have unique device IDs are
+>>     transferred, and the ones which have conflicting device IDs are
+>>     removed.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  hw/block/nand.c | 13 ++++++-------
+>>  1 file changed, 6 insertions(+), 7 deletions(-)
+>>
+>> diff --git a/hw/block/nand.c b/hw/block/nand.c
+>> index 654e0cb5d1..7d7ccc9aa4 100644
+>> --- a/hw/block/nand.c
+>> +++ b/hw/block/nand.c
+>> @@ -137,7 +137,7 @@ static void mem_and(uint8_t *dest, const uint8_t *src, size_t n)
+>>  # define ADDR_SHIFT		16
+>>  # include "nand.c"
+>>  
+>> -/* Information based on Linux drivers/mtd/nand/nand_ids.c */
+>> +/* Information based on Linux drivers/mtd/nand/raw/nand_ids.c */
+>>  static const struct {
+>>      int size;
+>>      int width;
+>> @@ -153,15 +153,14 @@ static const struct {
+>>      [0xe8] = { 1,	8,	8, 4, 0 },
+>>      [0xec] = { 1,	8,	8, 4, 0 },
+>>      [0xea] = { 2,	8,	8, 4, 0 },
+>> -    [0xd5] = { 4,	8,	9, 4, 0 },
+>>      [0xe3] = { 4,	8,	9, 4, 0 },
+>>      [0xe5] = { 4,	8,	9, 4, 0 },
+>> -    [0xd6] = { 8,	8,	9, 4, 0 },
+>>  
+>> -    [0x39] = { 8,	8,	9, 4, 0 },
+>> -    [0xe6] = { 8,	8,	9, 4, 0 },
+>> -    [0x49] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
+>> -    [0x59] = { 8,	16,	9, 4, NAND_BUSWIDTH_16 },
+>> +    [0x6b] = { 4,        8,        9, 4, 0 },
+>> +    [0xe3] = { 4,        8,        9, 4, 0 },
+>> +    [0xe5] = { 4,        8,        9, 4, 0 },
+>> +    [0xd6] = { 8,        8,        9, 4, 0 },
+>> +    [0xe6] = { 8,        8,        9, 4, 0 },
+>>  
+>>      [0x33] = { 16,	8,	9, 5, 0 },
+>>      [0x73] = { 16,	8,	9, 5, 0 },
+>>
+> 

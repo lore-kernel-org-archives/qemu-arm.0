@@ -1,221 +1,265 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2290429lfq;
-        Mon, 14 Sep 2020 07:03:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxKAR/iC9WsPPJ49E8VT2nmrZZt07upw+OEXR82RN+Gazm1e9Y4iEg7aWnT6T0pJnkEPwZu
-X-Received: by 2002:a25:e4c6:: with SMTP id b189mr19379948ybh.503.1600092218015;
-        Mon, 14 Sep 2020 07:03:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600092218; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2342151lfq;
+        Mon, 14 Sep 2020 08:06:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyckgiUKQeuq0m8uI7bDAHItfju3SDljozh4grrrxAFEz/bkJ9mDtKLxDexRf7bUeIq7cdA
+X-Received: by 2002:ab0:1490:: with SMTP id d16mr6137191uae.79.1600096018978;
+        Mon, 14 Sep 2020 08:06:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600096018; cv=none;
         d=google.com; s=arc-20160816;
-        b=TqK6TBY2npu0Q2hP0XkMlSiFKOJnyAxv42Q5aNRjUGBoImON7TFQUdZypfigaxOnqp
-         kIkk7y7T+YGYQpWIU2FSQuNYNlJ0KnkvSIWGBcvkGI6xhR+FvMGyXgsVglaEd7TdY4Ca
-         ueRxZm1Ifzj7SNzlhQdiSEW5YsKztFK3OwCCzcixKes/fdAm10+G2eC/2i1hpja1IQ09
-         z4gLVX+hwP4h5GXdbMN8HqKy2OnK/nGKv7tjKLH5oyErqRyma1ny17Oeo2KJks21vtaf
-         /eqaGsHSBDvj9oVppc29y7uQMpP5F04YLxln8+FVbrgiRrvDdpRXuzR1uHlx9xDW/xkT
-         /EZw==
+        b=rv0F+3k6JAmFdUy/Cp9+fZ38NwbHqnSCyg/2oGWvRWmQAg7qivbtCMydgGdbn+rmA6
+         RHLazaPPgMXoEsokjrjcuoLCDNVCePAuI3p/LtnfNhsvdL5eDuQL+P2SWX+1U1uW75V1
+         1Jw1wiazbnfAakvANovZlwHIK1ZLqMOKpTEDbuA+KTUc03sDTL+XEwDJfHMb27sy9Fgn
+         dC0TF26H/vONed2DmThPvsnb3DGgyyW8+QyJzj9rMf2wFdHSkW7gvuxMqqbUy8WvyVQB
+         8UrdlZyuIO139wzcDmra5aeMcQybbl+PwO8BxyA+ueYxJQGQMj24/hDvPQiA8NuzMANE
+         bJ5Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :content-transfer-encoding:in-reply-to:mime-version:references
-         :message-id:subject:to:from:date:dkim-signature;
-        bh=xJ61TQmGt05vYw/DZO3qxapq5iKMmEZHhYtUqvX2ceM=;
-        b=aufyO9QO5Yyn6g1GMtliaNTAeBTDsGAHxMz7hrphO7GBj6Bka6P7/rzSRoI5/1d5XC
-         jPQMkL5RfO/RxIHjJ+9OYs+ZvkPi5BMHZOxfHdYaFZGqTPovzCnoafVqf+saOvo3UQ59
-         Opk5ccL1wbhrLcTsdj2z49gMCmOdP1jxOuoQ8EqECqrnPgvyujhI4bAOZn5GUYsxSLyt
-         GBkRpvt+Cpk+5q1OCnyFq13Lls8ySl32HkYx6ZXhiV4FpHBywEN0Vdtwz239PmxSP2+f
-         kyBOnBuRfXAolL1TAROrEFzIvLHT+zk1hCTwwbMFCpq3qSsXIqyEOcuI0dvbKqgdoO99
-         Mreg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Qj0eiagyDTtsoUHetYKIyTR699TUJfKIMw5A6AnVMPQ=;
+        b=ccRWpHuGJLgYXUe0+K9M4fuUznL3wgRqzrLDxvVhDrWAKn4ZIHJSJB4Y/V0+SsfrAw
+         NEYudU+jR72l8qb4pl7dTzGw7+uY3Cd6EoaEEZFJ3oPV8KVZi4QsMAaINIBnyCVchZOi
+         gYChwFSxhv7qVAY/Fe/oXn3/KX1IYm736e9CjEDDmBYk9RCXzkBeC9CLshEyY2IaJsLQ
+         Szc+kHZO2pBBtlfKxaKFVn6+jP7tpwR7ByObTf/s/J39B7nI5N/ptw3H4Dx8tomfDIlp
+         EuHBLLFUPtk2ZYQ9/w3wpwEEq2mX4dnvVJHZ4UIdHCm1lqrVplplZj4hVfh8cVAkffjy
+         PzFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hhd4t5XW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OiDq6V3k;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k40si10335454ybj.140.2020.09.14.07.03.37
+        by mx.google.com with ESMTPS id r20si1127280vsg.375.2020.09.14.08.06.58
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Sep 2020 07:03:38 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Sep 2020 08:06:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hhd4t5XW;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47174 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OiDq6V3k;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38234 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kHp4z-0000X7-Db
-	for alex.bennee@linaro.org; Mon, 14 Sep 2020 10:03:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43986)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kHq4H-0007yg-WA
+	for alex.bennee@linaro.org; Mon, 14 Sep 2020 11:06:58 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kHp4s-0000Wo-GC
- for qemu-arm@nongnu.org; Mon, 14 Sep 2020 10:03:30 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:23578
- helo=us-smtp-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kHp4q-0006tw-Nt
- for qemu-arm@nongnu.org; Mon, 14 Sep 2020 10:03:30 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600092207;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xJ61TQmGt05vYw/DZO3qxapq5iKMmEZHhYtUqvX2ceM=;
- b=hhd4t5XWyEC8iVd6ec3l5T7cXypNnvDY3z5UdqKZSmLfaUARcWYke1IgcGyXk8peS7Fvz7
- vdsIm+/Lp+l5naVTsVJul5sZn7Ah+RpJCJMT0ebArSRYFZLRwx6w/4NCZloknmycTfAOKz
- fU/DhEx1K8Ke7vDK6+9oOkd+9UYPgoU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-32-zMmteinvNLuujcT19pIyzQ-1; Mon, 14 Sep 2020 10:03:22 -0400
-X-MC-Unique: zMmteinvNLuujcT19pIyzQ-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B022380ED8E;
- Mon, 14 Sep 2020 14:03:20 +0000 (UTC)
-Received: from localhost (ovpn-66-226.rdu2.redhat.com [10.10.66.226])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E107575139;
- Mon, 14 Sep 2020 14:03:19 +0000 (UTC)
-Date: Mon, 14 Sep 2020 10:03:19 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kHq2s-0006W6-Ki; Mon, 14 Sep 2020 11:05:30 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54970)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kHq2q-0008F4-QF; Mon, 14 Sep 2020 11:05:30 -0400
+Received: by mail-wm1-x343.google.com with SMTP id s13so352777wmh.4;
+ Mon, 14 Sep 2020 08:05:27 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Qj0eiagyDTtsoUHetYKIyTR699TUJfKIMw5A6AnVMPQ=;
+ b=OiDq6V3kin3vq1k4o1H2m7WhE723Zj+gEyIExmitwU8Dh9I8cZJ5KuRc07IRai0grI
+ dhck7cEg9TcOhDKQPYzumn0+wf+F7mB4qzCub7Bwfb5vy8e6+m1aeKmo3MSSFxUpgjbc
+ otCm812AiytvYTNtZne8ZIx8+IOX/yKcbzer6domoXXFKRm3R0mAo7Qv3PaogE+WeBep
+ z5CZE7dWRmt2M8sVSHgug6cLBaeyBb2GbjV1yf92hvO6seLiuR5fn8hOys79sNT+LKgR
+ L3O2XuGqPE9QAkM0FpR04ObojudD44NDkU/uYo0hcxZKaUz8ddr4Vx7MMSl0Iadi2p19
+ VchA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Qj0eiagyDTtsoUHetYKIyTR699TUJfKIMw5A6AnVMPQ=;
+ b=AHFit0LjBldh0SQPzi1NszeFY2QBUPNT6XiSkrVtYk0lG91FHAr19OrojZnyjdBpiB
+ 5yNAglSZ2xm60+xMmiZmqPV962x5olE1h7JXrbc5PBuNnOji8m+e2TM58JvT2znvGmPH
+ xDOUv+tDuRaFSzOw4ieBZut6epmBOJ03zyBMYjE4M+GGP+SX9qqWPZUPITAwzjnS3NQg
+ HlOEwqexC1Pw95Cm/lGYftpEPGvc1+258IHlqqQtIzgmPsmNpHwH/1AdXapCkMhDGPAN
+ RdOF+SUPD9ad9ex+NBNSkTwvigquAujhbemYGRLvpMDhteSfyH8vkYp62fD4qrL2Hwkr
+ ie6w==
+X-Gm-Message-State: AOAM532POg4bWNZzUbQZ+ntEhe910nZMGMrPK3nhsU10Y/55U/ahMI+N
+ 9GpRTXX6CWGZC7/cVLmsd7s=
+X-Received: by 2002:a05:600c:21cd:: with SMTP id
+ x13mr15552813wmj.63.1600095926627; 
+ Mon, 14 Sep 2020 08:05:26 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id n4sm20822382wrp.61.2020.09.14.08.05.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Sep 2020 08:05:25 -0700 (PDT)
 Subject: Re: [PATCH v5 2/7] hw/misc/led: Allow connecting from GPIO output
-Message-ID: <20200914140319.GA1618070@habkost.net>
+To: Eduardo Habkost <ehabkost@redhat.com>
 References: <20200910205429.727766-1-f4bug@amsat.org>
  <20200910205429.727766-3-f4bug@amsat.org>
  <071b68a6-58e4-0d68-e056-ee7ae19e2227@linaro.org>
  <db55f80e-ca2d-d432-134b-a05333a7e124@amsat.org>
  <87imcg4y3l.fsf@dusky.pond.sub.org>
  <f451861f-fa21-6465-865e-9d5e42e165b5@amsat.org>
+ <20200914140319.GA1618070@habkost.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <5576befe-b616-f061-f384-6c4b1fde3323@amsat.org>
+Date: Mon, 14 Sep 2020 17:05:24 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <f451861f-fa21-6465-865e-9d5e42e165b5@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200914140319.GA1618070@habkost.net>
 Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Disposition: inline
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/14 01:39:17
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.792,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  Andrew Jeffery <andrew@aj.id.au>,
  Richard Henderson <richard.henderson@linaro.org>,
  Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J8Z+yD/zLHHq
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kKVq2RBaa+E7
 
-On Mon, Sep 14, 2020 at 09:48:45AM +0200, Philippe Mathieu-Daudé wrote:
-> On 9/14/20 9:27 AM, Markus Armbruster wrote:
-> > Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
-> > 
-> >> Eduardo is already in Cc, adding Markus.
-> >>
-> >> On 9/12/20 12:44 AM, Richard Henderson wrote:
-> >>> On 9/10/20 1:54 PM, Philippe Mathieu-Daudé wrote:
-> >>>> Some devices expose GPIO lines.
-> >>>>
-> >>>> Add a GPIO qdev input to our LED device, so we can
-> >>>> connect a GPIO output using qdev_connect_gpio_out().
-> >>>>
-> >>>> When used with GPIOs, the intensity can only be either
-> >>>> minium or maximum. This depends of the polarity of the
-> >>>> GPIO (which can be inverted).
-> >>>> Declare the GpioPolarity type to model the polarity.
-> >>>>
-> >>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> >>>> ---
-> >>>>  include/hw/misc/led.h  |  8 ++++++++
-> >>>>  include/hw/qdev-core.h |  8 ++++++++
-> >>>>  hw/misc/led.c          | 17 ++++++++++++++++-
-> >>>>  3 files changed, 32 insertions(+), 1 deletion(-)
-> >>>>
-> >>>> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
-> >>>> index f5afaa34bfb..71c9b8c59bf 100644
-> >>>> --- a/include/hw/misc/led.h
-> >>>> +++ b/include/hw/misc/led.h
-> >>>> @@ -38,10 +38,16 @@ typedef struct LEDState {
-> >>>>      /* Public */
-> >>>>  
-> >>>>      uint8_t intensity_percent;
-> >>>> +    qemu_irq irq;
-> >>>>  
-> >>>>      /* Properties */
-> >>>>      char *description;
-> >>>>      char *color;
-> >>>> +    /*
-> >>>> +     * When used with GPIO, the intensity at reset is related
-> >>>> +     * to the GPIO polarity.
-> >>>> +     */
-> >>>> +    bool inverted_polarity;
-> >>>
-> >>> Why are you not using the GpioPolarity enum that you added?
-> >>
-> >> Because it is migrated...
-> >>
-> >> Using DEFINE_PROP_BOOL() is simpler that adding hardware specific
-> >> enum visitor in hw/core/qdev-properties.c (which is included in
-> >> user-mode builds because pulled by the CPU type).
-> > 
-> > Yes.
-> > 
-> > You could also use DEFINE_PROP_UINT8(), and use it with your enumeration
-> > constants.
-> > 
-> > I'd be tempted to ditch the enum entirely.  Matter of taste, no big deal
-> > either way.
+On 9/14/20 4:03 PM, Eduardo Habkost wrote:
+> On Mon, Sep 14, 2020 at 09:48:45AM +0200, Philippe Mathieu-Daudé wrote:
+>> On 9/14/20 9:27 AM, Markus Armbruster wrote:
+>>> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
+>>>
+>>>> Eduardo is already in Cc, adding Markus.
+>>>>
+>>>> On 9/12/20 12:44 AM, Richard Henderson wrote:
+>>>>> On 9/10/20 1:54 PM, Philippe Mathieu-Daudé wrote:
+>>>>>> Some devices expose GPIO lines.
+>>>>>>
+>>>>>> Add a GPIO qdev input to our LED device, so we can
+>>>>>> connect a GPIO output using qdev_connect_gpio_out().
+>>>>>>
+>>>>>> When used with GPIOs, the intensity can only be either
+>>>>>> minium or maximum. This depends of the polarity of the
+>>>>>> GPIO (which can be inverted).
+>>>>>> Declare the GpioPolarity type to model the polarity.
+>>>>>>
+>>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>>>> ---
+>>>>>>  include/hw/misc/led.h  |  8 ++++++++
+>>>>>>  include/hw/qdev-core.h |  8 ++++++++
+>>>>>>  hw/misc/led.c          | 17 ++++++++++++++++-
+>>>>>>  3 files changed, 32 insertions(+), 1 deletion(-)
+>>>>>>
+>>>>>> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+>>>>>> index f5afaa34bfb..71c9b8c59bf 100644
+>>>>>> --- a/include/hw/misc/led.h
+>>>>>> +++ b/include/hw/misc/led.h
+>>>>>> @@ -38,10 +38,16 @@ typedef struct LEDState {
+>>>>>>      /* Public */
+>>>>>>  
+>>>>>>      uint8_t intensity_percent;
+>>>>>> +    qemu_irq irq;
+>>>>>>  
+>>>>>>      /* Properties */
+>>>>>>      char *description;
+>>>>>>      char *color;
+>>>>>> +    /*
+>>>>>> +     * When used with GPIO, the intensity at reset is related
+>>>>>> +     * to the GPIO polarity.
+>>>>>> +     */
+>>>>>> +    bool inverted_polarity;
+>>>>>
+>>>>> Why are you not using the GpioPolarity enum that you added?
+>>>>
+>>>> Because it is migrated...
+>>>>
+>>>> Using DEFINE_PROP_BOOL() is simpler that adding hardware specific
+>>>> enum visitor in hw/core/qdev-properties.c (which is included in
+>>>> user-mode builds because pulled by the CPU type).
+>>>
+>>> Yes.
+>>>
+>>> You could also use DEFINE_PROP_UINT8(), and use it with your enumeration
+>>> constants.
+>>>
+>>> I'd be tempted to ditch the enum entirely.  Matter of taste, no big deal
+>>> either way.
+>>
+>> Done in v6!
+>>
+>>>
+>>>> A sane cleanup would be to make get_enum(), set_enum()
+>>>> and set_default_value_enum() public (prefixed with 'qdev_')
+>>>> in include/hw/qdev-properties.h.
+>>>
 > 
-> Done in v6!
+> Where and how exactly do you expect those functions to be used?
+> Having additional PropertyInfo structs defined manually would not
+> be desirable (especially if they are outside qdev*.c).  Having a
+> DEFINE_PROP_ENUM macro that does the enum magic behind the scenes
+> would be nice.
 > 
-> > 
-> >> A sane cleanup would be to make get_enum(), set_enum()
-> >> and set_default_value_enum() public (prefixed with 'qdev_')
-> >> in include/hw/qdev-properties.h.
-> > 
-
-Where and how exactly do you expect those functions to be used?
-Having additional PropertyInfo structs defined manually would not
-be desirable (especially if they are outside qdev*.c).  Having a
-DEFINE_PROP_ENUM macro that does the enum magic behind the scenes
-would be nice.
-
-> > Purpose?  To be able to define enum properties outside
-> > qdev-properties.c?
+>>> Purpose?  To be able to define enum properties outside
+>>> qdev-properties.c?
+>>
+>> Yes, to avoid pulling in PCI and MAC address properties
+>> into qemu-storage-daemon and linux-user binaries...
 > 
-> Yes, to avoid pulling in PCI and MAC address properties
-> into qemu-storage-daemon and linux-user binaries...
+> I don't understand what enum functions have to do with PCI and
+> MAC address properties.
 
-I don't understand what enum functions have to do with PCI and
-MAC address properties.
+My guess is that as get_enum()/set_enum()/set_default_value_enum()
+are static, enum properties using it ended in this core file:
 
--- 
-Eduardo
+const PropertyInfo qdev_prop_bios_chs_trans = {
+    .name = "BiosAtaTranslation",
+    .description = "Logical CHS translation algorithm, "
+                   "auto/none/lba/large/rechs",
+    .enum_table = &BiosAtaTranslation_lookup,
+    .get = get_enum,
+    .set = set_enum,
+    .set_default_value = set_default_value_enum,
+};
 
+const PropertyInfo qdev_prop_fdc_drive_type = {
+    .name = "FdcDriveType",
+    .description = "FDC drive type, "
+                   "144/288/120/none/auto",
+    .enum_table = &FloppyDriveType_lookup,
+    .get = get_enum,
+    .set = set_enum,
+    .set_default_value = set_default_value_enum,
+};
+
+const PropertyInfo qdev_prop_pcie_link_speed = {
+    .name = "PCIELinkSpeed",
+    .description = "2_5/5/8/16",
+    .enum_table = &PCIELinkSpeed_lookup,
+    .get = get_prop_pcielinkspeed,
+    .set = set_prop_pcielinkspeed,
+    .set_default_value = set_default_value_enum,
+};
+
+Looking at qdev_prop_macaddr[] and qdev_prop_set_macaddr()
+maybe I was remembering incorrectly, it seems this one can
+be extracted easily.
+
+Regards,
+
+Phil.

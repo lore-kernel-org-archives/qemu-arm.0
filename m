@@ -1,91 +1,92 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2342151lfq;
-        Mon, 14 Sep 2020 08:06:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyckgiUKQeuq0m8uI7bDAHItfju3SDljozh4grrrxAFEz/bkJ9mDtKLxDexRf7bUeIq7cdA
-X-Received: by 2002:ab0:1490:: with SMTP id d16mr6137191uae.79.1600096018978;
-        Mon, 14 Sep 2020 08:06:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600096018; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2405993lfq;
+        Mon, 14 Sep 2020 09:29:10 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyWvdkb6tXR8xymBpJ9pnMYqkkE92Kx5xHtGceI6MvEHp8mTOhzzJAcwJqXdAvjwyQa+SqH
+X-Received: by 2002:a25:eb08:: with SMTP id d8mr2540228ybs.23.1600100950325;
+        Mon, 14 Sep 2020 09:29:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600100950; cv=none;
         d=google.com; s=arc-20160816;
-        b=rv0F+3k6JAmFdUy/Cp9+fZ38NwbHqnSCyg/2oGWvRWmQAg7qivbtCMydgGdbn+rmA6
-         RHLazaPPgMXoEsokjrjcuoLCDNVCePAuI3p/LtnfNhsvdL5eDuQL+P2SWX+1U1uW75V1
-         1Jw1wiazbnfAakvANovZlwHIK1ZLqMOKpTEDbuA+KTUc03sDTL+XEwDJfHMb27sy9Fgn
-         dC0TF26H/vONed2DmThPvsnb3DGgyyW8+QyJzj9rMf2wFdHSkW7gvuxMqqbUy8WvyVQB
-         8UrdlZyuIO139wzcDmra5aeMcQybbl+PwO8BxyA+ueYxJQGQMj24/hDvPQiA8NuzMANE
-         bJ5Q==
+        b=UPMKwaKtobJMuryUIhlzoevHgRqFDfv8bdwVQCoTCIe6Mtd7GDts2q9bNBoa88jR6z
+         3dcxE5zV7z7Sk3heXN7MB2VqNFbnTj71NqwREIZIpAJvhZNBYXSgNUJshywHrsUclXtL
+         Ut+GxDo46GF3fZNrGG9JcoRRNHx5sLl8yoPkFmTCHM4Ut8re1BxtYSA88vb2rFNDH55f
+         JXCROmKIpvcKeth+uRQF+ccwdn2fmBXnOhhfMRm59q4Vhe/OUsn9Kwn1e7NNYMpCeFoi
+         Ek1tmzJpfH60GyWzSMYKZukp5u9GPqRQbSNQgNFqvQsBN742DfpdAWniAOxNkbCw6BpZ
+         h70w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=Qj0eiagyDTtsoUHetYKIyTR699TUJfKIMw5A6AnVMPQ=;
-        b=ccRWpHuGJLgYXUe0+K9M4fuUznL3wgRqzrLDxvVhDrWAKn4ZIHJSJB4Y/V0+SsfrAw
-         NEYudU+jR72l8qb4pl7dTzGw7+uY3Cd6EoaEEZFJ3oPV8KVZi4QsMAaINIBnyCVchZOi
-         gYChwFSxhv7qVAY/Fe/oXn3/KX1IYm736e9CjEDDmBYk9RCXzkBeC9CLshEyY2IaJsLQ
-         Szc+kHZO2pBBtlfKxaKFVn6+jP7tpwR7ByObTf/s/J39B7nI5N/ptw3H4Dx8tomfDIlp
-         EuHBLLFUPtk2ZYQ9/w3wpwEEq2mX4dnvVJHZ4UIdHCm1lqrVplplZj4hVfh8cVAkffjy
-         PzFQ==
+         :message-id:autocrypt:references:to:from:subject:dkim-signature;
+        bh=SjNoij3SVgbb0MXFGjZ8yOODynuVTkl7oY8Ssl1TkDs=;
+        b=KtWuofVA1oQuJbfazUms3srg0OJ0w4566XgzkjZISjD7jLIakUESixB/rWEE3dh/F5
+         Tq4gzkoKRTKKybofUudGmTGiDlmCiYa+IPGMN1/JRHGVBop2U7NimM12Jw/zuSkI50JM
+         HzuYmYAMuB57Xq/oQ/1ZwGcPw3zooocqzci1V9gnNj/BGovHQKAugrM8ti1G/3ya7Rfo
+         O87GQ7sO4eHs477iaB9W0FEKz4L9Wy1ef5dTteua4cDNZK+pkk5tdkR7XS35C0j8AiDm
+         eWbNfloj9bJLf+GvWfwVLND1y1KYF6rHmqBUHZaSiVd+wLNy+Y8eJgMzu8HBgC/ArPZi
+         0rbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OiDq6V3k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cXQr83qM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r20si1127280vsg.375.2020.09.14.08.06.58
+        by mx.google.com with ESMTPS id y133si4995019ybe.277.2020.09.14.09.29.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Sep 2020 08:06:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 14 Sep 2020 09:29:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=OiDq6V3k;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cXQr83qM;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38234 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:39166 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kHq4H-0007yg-WA
-	for alex.bennee@linaro.org; Mon, 14 Sep 2020 11:06:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36662)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kHrLp-0000aP-Mw
+	for alex.bennee@linaro.org; Mon, 14 Sep 2020 12:29:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51742)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kHq2s-0006W6-Ki; Mon, 14 Sep 2020 11:05:30 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54970)
+ id 1kHqqa-0001ne-TP; Mon, 14 Sep 2020 11:56:52 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:39925)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kHq2q-0008F4-QF; Mon, 14 Sep 2020 11:05:30 -0400
-Received: by mail-wm1-x343.google.com with SMTP id s13so352777wmh.4;
- Mon, 14 Sep 2020 08:05:27 -0700 (PDT)
+ id 1kHqqZ-0008LZ-2L; Mon, 14 Sep 2020 11:56:52 -0400
+Received: by mail-wm1-x343.google.com with SMTP id b79so569346wmb.4;
+ Mon, 14 Sep 2020 08:56:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=Qj0eiagyDTtsoUHetYKIyTR699TUJfKIMw5A6AnVMPQ=;
- b=OiDq6V3kin3vq1k4o1H2m7WhE723Zj+gEyIExmitwU8Dh9I8cZJ5KuRc07IRai0grI
- dhck7cEg9TcOhDKQPYzumn0+wf+F7mB4qzCub7Bwfb5vy8e6+m1aeKmo3MSSFxUpgjbc
- otCm812AiytvYTNtZne8ZIx8+IOX/yKcbzer6domoXXFKRm3R0mAo7Qv3PaogE+WeBep
- z5CZE7dWRmt2M8sVSHgug6cLBaeyBb2GbjV1yf92hvO6seLiuR5fn8hOys79sNT+LKgR
- L3O2XuGqPE9QAkM0FpR04ObojudD44NDkU/uYo0hcxZKaUz8ddr4Vx7MMSl0Iadi2p19
- VchA==
+ h=sender:subject:from:to:cc:references:autocrypt:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=SjNoij3SVgbb0MXFGjZ8yOODynuVTkl7oY8Ssl1TkDs=;
+ b=cXQr83qMMe8IUMfo9gegBeUDcvnZR4PePYuPouDrMzKQdKPZtc9OG7RcMUWTx5UCJc
+ eN/pIHJi1I+iCf4/Pd5oKVKIY4bZOWnM+CSzFSPS/z4oJGl5QvZD3otvUtl1aL/vrUpr
+ Y1r9ZouS9dqvVPV/On5Ay5Nk7J3Bq0q81BpfjwjNYdxUxckxLR8yaz2iDExueA9D7myU
+ CL96L8N1kVNtIIAtqDxtWG7WKQ+zmBKlPYYySaA/bI9NiURhi63nQsW00WC4I8Ueql+b
+ q+wZX5Ik69wn6awzcnkYnuBwF5CGsP5LkoYNwXjl7As823OsaGpjX3lMnyivvVyW08AY
+ URTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=Qj0eiagyDTtsoUHetYKIyTR699TUJfKIMw5A6AnVMPQ=;
- b=AHFit0LjBldh0SQPzi1NszeFY2QBUPNT6XiSkrVtYk0lG91FHAr19OrojZnyjdBpiB
- 5yNAglSZ2xm60+xMmiZmqPV962x5olE1h7JXrbc5PBuNnOji8m+e2TM58JvT2znvGmPH
- xDOUv+tDuRaFSzOw4ieBZut6epmBOJ03zyBMYjE4M+GGP+SX9qqWPZUPITAwzjnS3NQg
- HlOEwqexC1Pw95Cm/lGYftpEPGvc1+258IHlqqQtIzgmPsmNpHwH/1AdXapCkMhDGPAN
- RdOF+SUPD9ad9ex+NBNSkTwvigquAujhbemYGRLvpMDhteSfyH8vkYp62fD4qrL2Hwkr
- ie6w==
-X-Gm-Message-State: AOAM532POg4bWNZzUbQZ+ntEhe910nZMGMrPK3nhsU10Y/55U/ahMI+N
- 9GpRTXX6CWGZC7/cVLmsd7s=
-X-Received: by 2002:a05:600c:21cd:: with SMTP id
- x13mr15552813wmj.63.1600095926627; 
- Mon, 14 Sep 2020 08:05:26 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
+ :message-id:date:user-agent:mime-version:in-reply-to
+ :content-language:content-transfer-encoding;
+ bh=SjNoij3SVgbb0MXFGjZ8yOODynuVTkl7oY8Ssl1TkDs=;
+ b=orh3Od7feZXX9h2mtL7cm8/dg5p8CLlbi/+n5ustUxDuVH/Es+fl/BJNbi7zne9WFk
+ m4fAQi9pqUWht3nxJ54bQCmH6BpKAu+HvDqYOyLkpMb4NIoI5WKLzg2EO74lYeqEWMoG
+ M7Cen+fJBz+CTKXd3PaxNVGrxRyJOMPQfkDTTcaBmUq17SntwS5OCVhjZH+ulXYGXCUB
+ Do5sYzxuemNsFnueMhBSty2w1sQB1YZnMGBkHT9r1cJV9Gk2+qPVSg33ZlbkbYCHVNy4
+ pyaTISkmFL9JgTfcFGH90dZwvXhMJItz42KjDvCh845WyjGRaZQQ6Poj1jgvrtZrymDM
+ 2IXQ==
+X-Gm-Message-State: AOAM531Usfms+IvjiN5Y3+fvUKvuVFhIs27RmwV89eXy0f5Ql68WmBs8
+ Tv6mdJxP8/rCSvoKwCiiuL0=
+X-Received: by 2002:a1c:5641:: with SMTP id k62mr61042wmb.13.1600099008557;
+ Mon, 14 Sep 2020 08:56:48 -0700 (PDT)
 Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id n4sm20822382wrp.61.2020.09.14.08.05.25
+ by smtp.gmail.com with ESMTPSA id 189sm20519466wmb.3.2020.09.14.08.56.46
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Sep 2020 08:05:25 -0700 (PDT)
+ Mon, 14 Sep 2020 08:56:47 -0700 (PDT)
 Subject: Re: [PATCH v5 2/7] hw/misc/led: Allow connecting from GPIO output
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
 To: Eduardo Habkost <ehabkost@redhat.com>
 References: <20200910205429.727766-1-f4bug@amsat.org>
  <20200910205429.727766-3-f4bug@amsat.org>
@@ -94,13 +95,36 @@ References: <20200910205429.727766-1-f4bug@amsat.org>
  <87imcg4y3l.fsf@dusky.pond.sub.org>
  <f451861f-fa21-6465-865e-9d5e42e165b5@amsat.org>
  <20200914140319.GA1618070@habkost.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <5576befe-b616-f061-f384-6c4b1fde3323@amsat.org>
-Date: Mon, 14 Sep 2020 17:05:24 +0200
+ <5576befe-b616-f061-f384-6c4b1fde3323@amsat.org>
+Autocrypt: addr=f4bug@amsat.org; keydata=
+ mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
+ u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
+ HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
+ YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
+ ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
+ dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
+ ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
+ Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
+ HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
+ Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
+ CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
+ klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
+ jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
+ 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
+ loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
+ sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
+ JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
+ 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
+ K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
+ n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
+ CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
+Message-ID: <11324359-53b7-4ce4-5ad7-2daaf615a5ba@amsat.org>
+Date: Mon, 14 Sep 2020 17:56:46 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200914140319.GA1618070@habkost.net>
+In-Reply-To: <5576befe-b616-f061-f384-6c4b1fde3323@amsat.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -117,17 +141,17 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
  Andrew Jeffery <andrew@aj.id.au>,
@@ -136,130 +160,131 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Luc Michel <luc.michel@greensocs.com>,
  Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kKVq2RBaa+E7
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: LTbOQ9LC7W2K
 
-On 9/14/20 4:03 PM, Eduardo Habkost wrote:
-> On Mon, Sep 14, 2020 at 09:48:45AM +0200, Philippe Mathieu-Daudé wrote:
->> On 9/14/20 9:27 AM, Markus Armbruster wrote:
->>> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
->>>
->>>> Eduardo is already in Cc, adding Markus.
+On 9/14/20 5:05 PM, Philippe Mathieu-Daudé wrote:
+> On 9/14/20 4:03 PM, Eduardo Habkost wrote:
+>> On Mon, Sep 14, 2020 at 09:48:45AM +0200, Philippe Mathieu-Daudé wrote:
+>>> On 9/14/20 9:27 AM, Markus Armbruster wrote:
+>>>> Philippe Mathieu-Daudé <f4bug@amsat.org> writes:
 >>>>
->>>> On 9/12/20 12:44 AM, Richard Henderson wrote:
->>>>> On 9/10/20 1:54 PM, Philippe Mathieu-Daudé wrote:
->>>>>> Some devices expose GPIO lines.
->>>>>>
->>>>>> Add a GPIO qdev input to our LED device, so we can
->>>>>> connect a GPIO output using qdev_connect_gpio_out().
->>>>>>
->>>>>> When used with GPIOs, the intensity can only be either
->>>>>> minium or maximum. This depends of the polarity of the
->>>>>> GPIO (which can be inverted).
->>>>>> Declare the GpioPolarity type to model the polarity.
->>>>>>
->>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>>>>> ---
->>>>>>  include/hw/misc/led.h  |  8 ++++++++
->>>>>>  include/hw/qdev-core.h |  8 ++++++++
->>>>>>  hw/misc/led.c          | 17 ++++++++++++++++-
->>>>>>  3 files changed, 32 insertions(+), 1 deletion(-)
->>>>>>
->>>>>> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
->>>>>> index f5afaa34bfb..71c9b8c59bf 100644
->>>>>> --- a/include/hw/misc/led.h
->>>>>> +++ b/include/hw/misc/led.h
->>>>>> @@ -38,10 +38,16 @@ typedef struct LEDState {
->>>>>>      /* Public */
->>>>>>  
->>>>>>      uint8_t intensity_percent;
->>>>>> +    qemu_irq irq;
->>>>>>  
->>>>>>      /* Properties */
->>>>>>      char *description;
->>>>>>      char *color;
->>>>>> +    /*
->>>>>> +     * When used with GPIO, the intensity at reset is related
->>>>>> +     * to the GPIO polarity.
->>>>>> +     */
->>>>>> +    bool inverted_polarity;
+>>>>> Eduardo is already in Cc, adding Markus.
 >>>>>
->>>>> Why are you not using the GpioPolarity enum that you added?
+>>>>> On 9/12/20 12:44 AM, Richard Henderson wrote:
+>>>>>> On 9/10/20 1:54 PM, Philippe Mathieu-Daudé wrote:
+>>>>>>> Some devices expose GPIO lines.
+>>>>>>>
+>>>>>>> Add a GPIO qdev input to our LED device, so we can
+>>>>>>> connect a GPIO output using qdev_connect_gpio_out().
+>>>>>>>
+>>>>>>> When used with GPIOs, the intensity can only be either
+>>>>>>> minium or maximum. This depends of the polarity of the
+>>>>>>> GPIO (which can be inverted).
+>>>>>>> Declare the GpioPolarity type to model the polarity.
+>>>>>>>
+>>>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>>>>> ---
+>>>>>>>  include/hw/misc/led.h  |  8 ++++++++
+>>>>>>>  include/hw/qdev-core.h |  8 ++++++++
+>>>>>>>  hw/misc/led.c          | 17 ++++++++++++++++-
+>>>>>>>  3 files changed, 32 insertions(+), 1 deletion(-)
+>>>>>>>
+>>>>>>> diff --git a/include/hw/misc/led.h b/include/hw/misc/led.h
+>>>>>>> index f5afaa34bfb..71c9b8c59bf 100644
+>>>>>>> --- a/include/hw/misc/led.h
+>>>>>>> +++ b/include/hw/misc/led.h
+>>>>>>> @@ -38,10 +38,16 @@ typedef struct LEDState {
+>>>>>>>      /* Public */
+>>>>>>>  
+>>>>>>>      uint8_t intensity_percent;
+>>>>>>> +    qemu_irq irq;
+>>>>>>>  
+>>>>>>>      /* Properties */
+>>>>>>>      char *description;
+>>>>>>>      char *color;
+>>>>>>> +    /*
+>>>>>>> +     * When used with GPIO, the intensity at reset is related
+>>>>>>> +     * to the GPIO polarity.
+>>>>>>> +     */
+>>>>>>> +    bool inverted_polarity;
+>>>>>>
+>>>>>> Why are you not using the GpioPolarity enum that you added?
+>>>>>
+>>>>> Because it is migrated...
+>>>>>
+>>>>> Using DEFINE_PROP_BOOL() is simpler that adding hardware specific
+>>>>> enum visitor in hw/core/qdev-properties.c (which is included in
+>>>>> user-mode builds because pulled by the CPU type).
 >>>>
->>>> Because it is migrated...
+>>>> Yes.
 >>>>
->>>> Using DEFINE_PROP_BOOL() is simpler that adding hardware specific
->>>> enum visitor in hw/core/qdev-properties.c (which is included in
->>>> user-mode builds because pulled by the CPU type).
+>>>> You could also use DEFINE_PROP_UINT8(), and use it with your enumeration
+>>>> constants.
+>>>>
+>>>> I'd be tempted to ditch the enum entirely.  Matter of taste, no big deal
+>>>> either way.
 >>>
->>> Yes.
+>>> Done in v6!
 >>>
->>> You could also use DEFINE_PROP_UINT8(), and use it with your enumeration
->>> constants.
->>>
->>> I'd be tempted to ditch the enum entirely.  Matter of taste, no big deal
->>> either way.
+>>>>
+>>>>> A sane cleanup would be to make get_enum(), set_enum()
+>>>>> and set_default_value_enum() public (prefixed with 'qdev_')
+>>>>> in include/hw/qdev-properties.h.
+>>>>
 >>
->> Done in v6!
+>> Where and how exactly do you expect those functions to be used?
+>> Having additional PropertyInfo structs defined manually would not
+>> be desirable (especially if they are outside qdev*.c).  Having a
+>> DEFINE_PROP_ENUM macro that does the enum magic behind the scenes
+>> would be nice.
 >>
+>>>> Purpose?  To be able to define enum properties outside
+>>>> qdev-properties.c?
 >>>
->>>> A sane cleanup would be to make get_enum(), set_enum()
->>>> and set_default_value_enum() public (prefixed with 'qdev_')
->>>> in include/hw/qdev-properties.h.
->>>
-> 
-> Where and how exactly do you expect those functions to be used?
-> Having additional PropertyInfo structs defined manually would not
-> be desirable (especially if they are outside qdev*.c).  Having a
-> DEFINE_PROP_ENUM macro that does the enum magic behind the scenes
-> would be nice.
-> 
->>> Purpose?  To be able to define enum properties outside
->>> qdev-properties.c?
+>>> Yes, to avoid pulling in PCI and MAC address properties
+>>> into qemu-storage-daemon and linux-user binaries...
 >>
->> Yes, to avoid pulling in PCI and MAC address properties
->> into qemu-storage-daemon and linux-user binaries...
+>> I don't understand what enum functions have to do with PCI and
+>> MAC address properties.
 > 
-> I don't understand what enum functions have to do with PCI and
-> MAC address properties.
+> My guess is that as get_enum()/set_enum()/set_default_value_enum()
+> are static, enum properties using it ended in this core file:
+> 
+> const PropertyInfo qdev_prop_bios_chs_trans = {
+>     .name = "BiosAtaTranslation",
+>     .description = "Logical CHS translation algorithm, "
+>                    "auto/none/lba/large/rechs",
+>     .enum_table = &BiosAtaTranslation_lookup,
+>     .get = get_enum,
+>     .set = set_enum,
+>     .set_default_value = set_default_value_enum,
+> };
+> 
+> const PropertyInfo qdev_prop_fdc_drive_type = {
+>     .name = "FdcDriveType",
+>     .description = "FDC drive type, "
+>                    "144/288/120/none/auto",
+>     .enum_table = &FloppyDriveType_lookup,
+>     .get = get_enum,
+>     .set = set_enum,
+>     .set_default_value = set_default_value_enum,
+> };
+> 
+> const PropertyInfo qdev_prop_pcie_link_speed = {
+>     .name = "PCIELinkSpeed",
+>     .description = "2_5/5/8/16",
+>     .enum_table = &PCIELinkSpeed_lookup,
+>     .get = get_prop_pcielinkspeed,
+>     .set = set_prop_pcielinkspeed,
+>     .set_default_value = set_default_value_enum,
+> };
+> 
+> Looking at qdev_prop_macaddr[] and qdev_prop_set_macaddr()
+> maybe I was remembering incorrectly, it seems this one can
+> be extracted easily.
 
-My guess is that as get_enum()/set_enum()/set_default_value_enum()
-are static, enum properties using it ended in this core file:
-
-const PropertyInfo qdev_prop_bios_chs_trans = {
-    .name = "BiosAtaTranslation",
-    .description = "Logical CHS translation algorithm, "
-                   "auto/none/lba/large/rechs",
-    .enum_table = &BiosAtaTranslation_lookup,
-    .get = get_enum,
-    .set = set_enum,
-    .set_default_value = set_default_value_enum,
-};
-
-const PropertyInfo qdev_prop_fdc_drive_type = {
-    .name = "FdcDriveType",
-    .description = "FDC drive type, "
-                   "144/288/120/none/auto",
-    .enum_table = &FloppyDriveType_lookup,
-    .get = get_enum,
-    .set = set_enum,
-    .set_default_value = set_default_value_enum,
-};
-
-const PropertyInfo qdev_prop_pcie_link_speed = {
-    .name = "PCIELinkSpeed",
-    .description = "2_5/5/8/16",
-    .enum_table = &PCIELinkSpeed_lookup,
-    .get = get_prop_pcielinkspeed,
-    .set = set_prop_pcielinkspeed,
-    .set_default_value = set_default_value_enum,
-};
-
-Looking at qdev_prop_macaddr[] and qdev_prop_set_macaddr()
-maybe I was remembering incorrectly, it seems this one can
-be extracted easily.
-
-Regards,
-
-Phil.
+Already done in "user-mode: Prune build dependencies (part 3)"
+actually :)
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg688867.html

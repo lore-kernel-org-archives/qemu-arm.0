@@ -1,103 +1,102 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2217900lfq;
-        Mon, 14 Sep 2020 05:28:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTORg5FAiLEnLKu2h54kzJrruDsEvqSLPl/+sPM71bpEqDnHY7Tfi4kL0sS3Do6j6YkgdK
-X-Received: by 2002:a05:6902:100b:: with SMTP id w11mr22190492ybt.43.1600086483969;
-        Mon, 14 Sep 2020 05:28:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600086483; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2230604lfq;
+        Mon, 14 Sep 2020 05:46:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwXCDO8NShxKyB+dtrQWFWNBK8Mg+msqokKNteioqC/LtdngE0LhEe3W1X/42MIVVYYq3Lf
+X-Received: by 2002:ac8:22da:: with SMTP id g26mr546848qta.218.1600087584687;
+        Mon, 14 Sep 2020 05:46:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600087584; cv=none;
         d=google.com; s=arc-20160816;
-        b=TkoVqxzAXH/OAbyeMh0HRm86pgJoNdKfhjHxnnR+accqnlL4IeG0Skgw0Nnkh9p7S7
-         6psW9VFt5vmTVs1mNpmqrpAk8W72TmB/5QZGi7x4oaYDAIaDF0EOVn+3B0b2/nM3Fcxa
-         xhuRh4cph2AFpYqNlOjKzuKYv8OA67nt+FAMXODd8CEMpIchR7xZCnUEmKijyvmpSJEP
-         ixS63VshVmYBLE4Rucz3kHtWPAnX2NOjhroamp2d/Wcz3tC4spj8fg5SPAHvHnsM3RVp
-         9TBnMRtRwLu+ZczWpqTr4Pn7BRXB7CZjZGxbhuU7KV0aBb1qBTcMuu33MRTPN/XKQBs9
-         1gug==
+        b=1FLD9/LXZdQ2M9BgNcNwmvM5dz7bosFru1zNOTX8tdgR7HShbkk8o7ZntirmscNiKI
+         6IYGBdNuPhVqAoih/rGD0AnTWjny84ENE5EmITPx898TnHR7JKdh5tr24ln7B1OipPx+
+         9HysEyTwr3XgC++42S4AKtTBY03veKoTc6gLMKUgedB8/EnYWdld50pthPVOO2uCc+j7
+         pKHQq/ItQAF3Hkv/5Bc0a2L6OtTA6SRT0jxa6wAdbJ1BypDeNOPR5JlEc9F6wmqLmyHi
+         gdAF+ElaVltvesrI3Z+zFCV0jE/NNxjTRNupLBWkLDHKN2xXz7uAoWbVXBwhQ0aSYYo2
+         SVGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=4YJvX8r1AGHm4LXtW8381XZByd8RQjFAZBDnyxEbrMw=;
-        b=oRiAvGJ+45DwXdjOR6149cBSN8liaf0ArxeRcduTLfurz7qkU51uT2YPL4/9YxGsRS
-         JpcgCfIzFsR2XNll59KfLFTS+4fkxIg2OxFVPKlwPwryZS2WByV5jLIkHfAyk6KsDJKd
-         88C8tEls29BnTzFHawBGEzhZLL8/Sjzt+R5azr90Z7HbEOvleMiqXfVZbrXM0rJGoniI
-         c49t1LpyMF8mV6q6ITD/XLoTCkYU4l/fCDoQ9TjueBf9GF/f0bitw98CSmbJJtOEJlex
-         XgF5H02nZrBB98uXU4MwVSbXukEP1PgmSoHYOipwzjpseV+2pWDwVYvB2oorLdrFYYqg
-         WdbA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=Wd5IOhNrr2AVWRpBQvmY98Gu56fm8I57I2JuuLZHhOI=;
+        b=IS3oX7GApepPn3okhKf6qVs7ZoEcAQ6sDiMXf+yWHzmoSatSEwonlz/1+WqhrwFPxR
+         ddH3O/GOMb7/DdaT7zDNfn8nk53p8rQt51sHHbKId7w0EP8z4jqm56oC+ffVhR4Yr3BX
+         y+MXH7mE+jW9+5l6qkOxh6Vyery2XQr3c9HbL9q2ADRr7p0Eu90JJUypXl5QNSFH1zBP
+         i+hQGrAbzVRTtuuZLUTQGeVfIZ+Li6JFY9Cdyejq33JobAcmXKN3BKDwYWdJ5OJQJ3U+
+         K/+Tjctts7mtZWEarWhJRkK1TDF0lywLml0vacxeQHX/29IDP+Hvag74fyyRVlNABavG
+         8+aA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FSivjIPs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dkim=fail header.i=@jms.id.au header.s=google header.b=M26zNf2c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1si9662713ybb.59.2020.09.14.05.28.03
+        by mx.google.com with ESMTPS id w19si7131783qvz.152.2020.09.14.05.46.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Sep 2020 05:28:03 -0700 (PDT)
+        Mon, 14 Sep 2020 05:46:24 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FSivjIPs;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:51490 helo=lists1p.gnu.org)
+       dkim=fail header.i=@jms.id.au header.s=google header.b=M26zNf2c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53988 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kHnaV-0001AB-9R
-	for alex.bennee@linaro.org; Mon, 14 Sep 2020 08:28:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35564)
+	id 1kHnsG-0000Sv-1C
+	for alex.bennee@linaro.org; Mon, 14 Sep 2020 08:46:24 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38444)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kHnZV-00006e-G6
- for qemu-arm@nongnu.org; Mon, 14 Sep 2020 08:27:01 -0400
-Received: from mail-ed1-x541.google.com ([2a00:1450:4864:20::541]:36736)
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1kHnjm-00026Q-9T; Mon, 14 Sep 2020 08:37:38 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:43238)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kHnZR-0007lu-3L
- for qemu-arm@nongnu.org; Mon, 14 Sep 2020 08:27:01 -0400
-Received: by mail-ed1-x541.google.com with SMTP id w1so17404468edr.3
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2020 05:26:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
+ id 1kHnjk-000166-4l; Mon, 14 Sep 2020 08:37:37 -0400
+Received: by mail-ed1-x542.google.com with SMTP id n13so17352390edo.10;
+ Mon, 14 Sep 2020 05:37:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=4YJvX8r1AGHm4LXtW8381XZByd8RQjFAZBDnyxEbrMw=;
- b=FSivjIPsD4WUtqcCSO4DguzznYxJ9+kIIfV5Cg9bSBwXe+yUXLjoe9No43KJx7HaVB
- TWeblfRTuEbQNBfdCRfozLHdlT5Dyk+37AM0B1ukNMeiVj6yfxIw5KeiRE9ihnShzke/
- uOwndNqUmr4IfH4DhFBQCbonEzFmLbYRpzxm1iUWUcW3pagBPoesgNm8KzpUi/yOTaqv
- uatm0eEa2OSX9NGCOU5tK+CywxNFmGuMwEU88t3PEFJ81fGlIkOJilqo/ax4NoBmz5Al
- 63BlUzWoBOJPc6gB6dZx6GvaDyN8yclTWJGydDbcrRCMv3xexhdATtJAVq8A0hA5oC1A
- 7zXQ==
+ :cc:content-transfer-encoding;
+ bh=Wd5IOhNrr2AVWRpBQvmY98Gu56fm8I57I2JuuLZHhOI=;
+ b=M26zNf2cXKEbdMaheqi55Ov1TD+a4e8omQYVmA2Rnnnd/1TfF0RhmIGaMo0pFznr8E
+ vMZEhDV9uzuZpuEKAXsW/BM78XVuRyx+VZMxc3H1bK+O4lAdurb1S9J08QtxqeH3guyT
+ IaatqB98p/EbyseQckKIOrLXw8bii26jEIrdQ=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=4YJvX8r1AGHm4LXtW8381XZByd8RQjFAZBDnyxEbrMw=;
- b=CjDDH2KoZbJNpm7FPzJw1hmzvf9xJBpZgKwEmIC2dqSnfHmfaLHkTFZOuZbf1IQLV+
- EC+1/bu0yqDABChiIa+HFLFg6KIacjOmiKZ2SeFW41TjKziZvpabelhQOqeWgm4hxIcn
- o5xUa36tXrz0Ivb6MieoKwxmBeYwG2mqiaVpPEmewufr7fazQ/ozIklMmH5Wrpj5fJm5
- 6/ppg334cI6Sp9b+keSxlNq1RkCacWXzmkxr1v0bML3Vwzhh8XDXnz0UuklU5wmC629I
- Alrkc3IDFGS9zezqftXyQkqv/ly7CEV1uVUeh7rrdKB5DngJyDQxuxyocoirelk8BKmu
- Ou5w==
-X-Gm-Message-State: AOAM531AJi5+YTavmhrsMF7qNatAQJ4zqgHVPkhGIHiti3gPyzOIyu/q
- XSsb7EaW+By6Kxd2hKr8yxyFef+/nFgy9fD2J8GmAQ==
-X-Received: by 2002:a50:8f45:: with SMTP id 63mr17594526edy.52.1600086414320; 
- Mon, 14 Sep 2020 05:26:54 -0700 (PDT)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=Wd5IOhNrr2AVWRpBQvmY98Gu56fm8I57I2JuuLZHhOI=;
+ b=raNU18qVyNKVA/Yjjzp9k78nzzQ6ifO+485B2RHRs3XExvD4vPnoFw1B83HHkLJceW
+ T5OWZbtRNiYTvTKFo7ea763wMAZUpEcQQP8p8XrJEwg0vPoRYHvskSPGWIQMw3z+2c+J
+ 0ldv2eUPx+mUmT0cpHkYkBuj/clb21aYLB8vNEezXI/h2GcVEREYwBLExRTxcx35Fr8P
+ dyKhH/dkZtPhFupdwQafEO/Uv5GO96NjeM3zMKV/LCqYRbj6++r2Pnk6x1Gin//WmdFf
+ 2fdP/QXutujxenjNuj08JRDrnqYxsHyQYnlTXEQpgYPawpHhYNv+M/AM9Fk1hZrkratl
+ p+ow==
+X-Gm-Message-State: AOAM532XwsEZ8KTiHRWn07rynD5qhrbQ7dBxzPglhVmEi+77xWLp/409
+ vWPSLEH8vHJWGtZHVJubq4gycuIexo5Moqhd2yI=
+X-Received: by 2002:a05:6402:18d:: with SMTP id
+ r13mr16343821edv.267.1600087053407; 
+ Mon, 14 Sep 2020 05:37:33 -0700 (PDT)
 MIME-Version: 1.0
-References: <20200909174647.662864-1-edgar.iglesias@gmail.com>
-In-Reply-To: <20200909174647.662864-1-edgar.iglesias@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Sep 2020 13:26:43 +0100
-Message-ID: <CAFEAcA9BK1z3hJL0nNjJQkX9kH0_64v81fPhOmj78DY85zYTgw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/1] hw/arm: versal-virt: Correct the tx/rx GEM clocks
-To: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+References: <20200910200715.1920318-1-clg@kaod.org>
+In-Reply-To: <20200910200715.1920318-1-clg@kaod.org>
+From: Joel Stanley <joel@jms.id.au>
+Date: Mon, 14 Sep 2020 12:37:21 +0000
+Message-ID: <CACPK8Xfd6c_i7kKqFtEYzgbDw0_6SsVwtNGJ=bG_0pzSh5TP2w@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/aspeed: Add machine properties to define the flash
+ models
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::541;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x541.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=joel.stan@gmail.com; helo=mail-ed1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,42 +109,30 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: figlesia@xilinx.com, Edgar Iglesias <edgar.iglesias@xilinx.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
- Francisco Iglesias <frasse.iglesias@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- QEMU Developers <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>,
- Luc Michel <luc.michel@greensocs.com>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm <qemu-arm@nongnu.org>, =?UTF-8?B?6YOB6Zu3?= <yulei.sh@bytedance.com>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6tMmaR58fy4E
+X-TUID: Do5CK4jKL6KF
 
-On Wed, 9 Sep 2020 at 18:46, Edgar E. Iglesias <edgar.iglesias@gmail.com> wrote:
+On Thu, 10 Sep 2020 at 20:07, C=C3=A9dric Le Goater <clg@kaod.org> wrote:
 >
-> From: "Edgar E. Iglesias" <edgar.iglesias@xilinx.com>
+> Some machines don't have much differences a part from the flash model
+> being used. Introduce new machine properties to change them from the
+> command line.
 >
-> This corrects the Ethernet tx/rx clocks in the generated DTB.
-> Avoids a Linux kernel warning.
->
-> Cheers,
-> Edgar
->
-> ChangeLog:
->
-> v1 -> v2:
-> * Fix commit message typo, I -> It
->
-> Edgar E. Iglesias (1):
->   hw/arm: versal-virt: Correct the tx/rx GEM clocks
->
->  hw/arm/xlnx-versal-virt.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+> Cc: =E9=83=81=E9=9B=B7 <yulei.sh@bytedance.com>
+> Signed-off-by: C=C3=A9dric Le Goater <clg@kaod.org>
 
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 
+A nice feature! Can you add an example command line in the commit message?
 
-Applied to target-arm.next, thanks.
+We have docs/system/arm/aspeed.rst where we could add the supported
+options and some examples of different sized flashes. I know of 16,
+32, 64 and 128MB machines out there.
 
--- PMM
+Cheers,
+
+Joel

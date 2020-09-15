@@ -1,94 +1,94 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3110253lfq;
-        Tue, 15 Sep 2020 05:10:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzGI0psT1ZfCNtEgUqVvB0J/rxMmsN7zxd5++mM9KJq0gx//jmagbU7M4ngzLMlib9W6iiR
-X-Received: by 2002:a67:cf87:: with SMTP id g7mr836760vsm.32.1600171808959;
-        Tue, 15 Sep 2020 05:10:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600171808; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3110839lfq;
+        Tue, 15 Sep 2020 05:10:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz53yO6tz1mWgYwVG0rSpU/w8/LrBYUlq2w1au9ioi5ftNeLSaNTGARHEYM5RmIXS35LDMY
+X-Received: by 2002:a37:68d4:: with SMTP id d203mr16340065qkc.125.1600171854076;
+        Tue, 15 Sep 2020 05:10:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600171854; cv=none;
         d=google.com; s=arc-20160816;
-        b=fhblNvZdnl8KUTrpxrgJJwAqR4+WQx81f/5d7hiXeGHAyFfZqHZTzdKLde2ySt10ws
-         niu2IDQm7wTKh9x5XQOHkh0T4XSOaD824fb4G16XqQhvoDuMNmAjPFpuj/H1dgvCAj4p
-         9LyRNyHlVfDG7ugGGyAiHxSyN2Q3zKKXz86Gjq4ikVBs6cjddQUyB/ezgVz6/LNLfhGw
-         SWb6sEjrx5Ex7YSHGJN+hxE7F7Mpg1WDnx05+vXZbuA7NcHny1bF097Yvces/wRX+SdW
-         mUF1pceKgCEV+STpOQr/kXgiNaMhOP3CM9TLLEN2Ps0J4YsOjaw9P6Ah7EIkDSTDDzcu
-         m80Q==
+        b=Ec/9yNbsrp6/c6BebHQhIgE46nG3ckD8OVG6VmzYBWOsa0j3duylg8r9RjwTP2MgPR
+         YwanM6tGNAFQgIWoTU1XeVhCB6yy6khAEI+4q18U7OoFwSg/3u+qimtSFqGIdaa7ltT2
+         hAeI0PEwwqZGVNNGn2mmtW0qQNiUUb0jx7ptBgnToXgBNxVUZs+nI+PfKl/5Ek3c54PL
+         ZpS6dROOmqWGmkPtky9mJazdYr7oBCHiO/X6oMtleQkAMQUpDvvxltE1IKXHY9keB0Rr
+         B6bdOAb62PkLaBdKaUxQVKvjYwmkNFguFR1+zy3Kpzo7LBrlnpdoqJxCWldK+CpydmjO
+         wLMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=S7l+P3buoZt7VTrit7Bgi07Dv5+mwhkNmD/cqJKlVcc=;
-        b=lNfhrvPL033dve1tQeMJBWOzeWddDRFnxjaV6QoZB2Y8Xg1TE0zwWo3VQqNOA1B+wD
-         bN0IE5l+GxnywvT1Wi8y02vk9Lwy3rD4en/PjRaziWC25Kkt+H/MRvDEXkT72hcJ7SvN
-         UwcKyBHNfjNr1+IebmztyakNRP1ukpl1ZHTCJUdeWbMFnbKLMYUVnaL7g423xsbDDdM/
-         5ZZhk+BveOBChrh+sjahfLd2eBWntVgAOcqKY1zfzlKtkpQU4uLyVUkSUc1iURqlJ48g
-         wgStYiTVm0OXrAfcKI4w5aQqTVi9mEwIAsXcOP4KjJIyVH4WBmkZlgojwOm1+SV380iy
-         kbzg==
+        bh=CjMaQq5b7d6xZab6r1I8iIsLu0kAb+RnTVO4UWJ1lpA=;
+        b=tkzNOeBZgXyv/AVWke46gu+IN04pa78206aNsYl2PE0TE7PF7CObDIUWK5QQdzifkg
+         SW+dj8fg46DC74Z/mYEFtwPULwOPRnqM6R64Fm19RVF8xZuigX/vRGcOdOmLm0Oz5NSo
+         mCleZcX8gGykgQDkSjat+k766kPUnmsRXbEC38OxqA5oRkAcceK7ArqhAzEs/wMI44hN
+         Uiyydf/cxvVm0E//xAxUJovYIsVP4V5EGJznoqXemn0CKEYsjsVKEi5LC6ugNHM7DoO9
+         Fyr3pIzRB/NZ7l4kuOzR00Qi3ERrb0WROAvNLu4zc617/WEQwP8jjABdSOKjchTbj1vz
+         BuZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PjSRvAwj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VxZbO1qd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p17si1535526vsj.222.2020.09.15.05.10.08
+        by mx.google.com with ESMTPS id t35si8459705qtj.38.2020.09.15.05.10.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Sep 2020 05:10:08 -0700 (PDT)
+        Tue, 15 Sep 2020 05:10:54 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PjSRvAwj;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VxZbO1qd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59162 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60282 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kI9mi-000409-6u
-	for alex.bennee@linaro.org; Tue, 15 Sep 2020 08:10:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46084)
+	id 1kI9nR-0004Tm-5g
+	for alex.bennee@linaro.org; Tue, 15 Sep 2020 08:10:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46088)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kI9mG-0003vT-Nr
- for qemu-arm@nongnu.org; Tue, 15 Sep 2020 08:09:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:39109)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kI9mH-0003vs-AK
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2020 08:09:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25595)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kI9mD-0007SG-OD
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kI9mF-0007Sz-CG
  for qemu-arm@nongnu.org; Tue, 15 Sep 2020 08:09:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600171774;
+ s=mimecast20190719; t=1600171776;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=S7l+P3buoZt7VTrit7Bgi07Dv5+mwhkNmD/cqJKlVcc=;
- b=PjSRvAwjYEAblLqBBKKvMNMPpzUlkSwR1P93Z9mMpA7Y190HX5vQ+tM6ySdU0knlOa8SnM
- +P/OihUTCGY32ZU/9u2zqFwhDdUqglai2GK2IBZamB2sx4vLxC8mv/rwbpn4WX7MjeM2hZ
- fHjlEaOffe7UzLIgBm+VoqZmKJnaJPg=
+ bh=CjMaQq5b7d6xZab6r1I8iIsLu0kAb+RnTVO4UWJ1lpA=;
+ b=VxZbO1qdJpqd7H31vUksSrJR+ozHi6F4Qfzcu2bqKGuqURrafvZIuioRV9pjWZADVk5RfH
+ fvdGot1h96LGls3rCTIxvQ9YRyGTzDkJ9XwPyP4UAnZa18XACXaVUI1lPGskHoxRXS7/rI
+ kfu+GCfF+g+ylxjPEiq2swsGLkovlfo=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-247-5BU4jkNcMPK9Ob8JkhdGdw-1; Tue, 15 Sep 2020 08:09:33 -0400
-X-MC-Unique: 5BU4jkNcMPK9Ob8JkhdGdw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-313-_npvyFLdPbKjl14jxEqXnQ-1; Tue, 15 Sep 2020 08:09:33 -0400
+X-MC-Unique: _npvyFLdPbKjl14jxEqXnQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 9390C64086;
- Tue, 15 Sep 2020 12:09:31 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 545C31009440;
+ Tue, 15 Sep 2020 12:09:32 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-85.ams2.redhat.com
  [10.36.112.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BCFBA19D7D;
- Tue, 15 Sep 2020 12:09:21 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AA09A51574;
+ Tue, 15 Sep 2020 12:09:24 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id AC6B240820; Tue, 15 Sep 2020 14:09:09 +0200 (CEST)
+ id 533A340BFD; Tue, 15 Sep 2020 14:09:10 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v8 05/21] acpi: ged: add x86 device variant.
-Date: Tue, 15 Sep 2020 14:08:53 +0200
-Message-Id: <20200915120909.20838-6-kraxel@redhat.com>
+Subject: [PATCH v8 18/21] tests/acpi: allow override blkdev
+Date: Tue, 15 Sep 2020 14:09:06 +0200
+Message-Id: <20200915120909.20838-19-kraxel@redhat.com>
 In-Reply-To: <20200915120909.20838-1-kraxel@redhat.com>
 References: <20200915120909.20838-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Spam-Score: 0.0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
@@ -125,89 +125,42 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 1D3one0lMSFk
+X-TUID: 4us7KXrL2TTs
 
-Set AcpiDeviceIfClass->madt_cpu,
-otherwise identical to TYPE_ACPI_GED.
+microvm needs virtio-blk instead of ide.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Sergio Lopez <slp@redhat.com>
 ---
- include/hw/acpi/generic_event_device.h |  4 +++
- hw/i386/generic_event_device_x86.c     | 36 ++++++++++++++++++++++++++
- hw/i386/meson.build                    |  1 +
- 3 files changed, 41 insertions(+)
- create mode 100644 hw/i386/generic_event_device_x86.c
+ tests/qtest/bios-tables-test.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index 38aec526f944..241151662b45 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -71,6 +71,10 @@ typedef struct AcpiGedState AcpiGedState;
- DECLARE_INSTANCE_CHECKER(AcpiGedState, ACPI_GED,
-                          TYPE_ACPI_GED)
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index 504b810af583..1779af1cc889 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -72,6 +72,7 @@ typedef struct {
+     const char *variant;
+     const char *uefi_fl1;
+     const char *uefi_fl2;
++    const char *blkdev;
+     const char *cd;
+     const uint64_t ram_start;
+     const uint64_t scan_len;
+@@ -666,9 +667,10 @@ static void test_acpi_one(const char *params, test_data *data)
+         args = g_strdup_printf("-machine %s,kernel-irqchip=off %s -accel tcg "
+             "-net none -display none %s "
+             "-drive id=hd0,if=none,file=%s,format=raw "
+-            "-device ide-hd,drive=hd0 ",
++            "-device %s,drive=hd0 ",
+              data->machine, data->tcg_only ? "" : "-accel kvm",
+-             params ? params : "", disk);
++             params ? params : "", disk,
++             data->blkdev ?: "ide-hd");
+     }
  
-+#define TYPE_ACPI_GED_X86 "acpi-ged-x86"
-+#define ACPI_GED_X86(obj) \
-+    OBJECT_CHECK(AcpiGedX86State, (obj), TYPE_ACPI_GED_X86)
-+
- #define ACPI_GED_EVT_SEL_OFFSET    0x0
- #define ACPI_GED_EVT_SEL_LEN       0x4
- 
-diff --git a/hw/i386/generic_event_device_x86.c b/hw/i386/generic_event_device_x86.c
-new file mode 100644
-index 000000000000..e26fb02a2ef6
---- /dev/null
-+++ b/hw/i386/generic_event_device_x86.c
-@@ -0,0 +1,36 @@
-+/*
-+ * x86 variant of the generic event device for hw reduced acpi
-+ *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms and conditions of the GNU General Public License,
-+ * version 2 or later, as published by the Free Software Foundation.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/acpi/generic_event_device.h"
-+#include "hw/i386/pc.h"
-+
-+static void acpi_ged_x86_class_init(ObjectClass *class, void *data)
-+{
-+    AcpiDeviceIfClass *adevc = ACPI_DEVICE_IF_CLASS(class);
-+
-+    adevc->madt_cpu = pc_madt_cpu_entry;
-+}
-+
-+static const TypeInfo acpi_ged_x86_info = {
-+    .name          = TYPE_ACPI_GED_X86,
-+    .parent        = TYPE_ACPI_GED,
-+    .class_init    = acpi_ged_x86_class_init,
-+    .interfaces = (InterfaceInfo[]) {
-+        { TYPE_HOTPLUG_HANDLER },
-+        { TYPE_ACPI_DEVICE_IF },
-+        { }
-+    }
-+};
-+
-+static void acpi_ged_x86_register_types(void)
-+{
-+    type_register_static(&acpi_ged_x86_info);
-+}
-+
-+type_init(acpi_ged_x86_register_types)
-diff --git a/hw/i386/meson.build b/hw/i386/meson.build
-index 63918fbe22f9..1a7d1a685d77 100644
---- a/hw/i386/meson.build
-+++ b/hw/i386/meson.build
-@@ -18,6 +18,7 @@ i386_ss.add(when: 'CONFIG_VMPORT', if_true: files('vmport.c'))
- i386_ss.add(when: 'CONFIG_VTD', if_true: files('intel_iommu.c'))
- 
- i386_ss.add(when: 'CONFIG_ACPI', if_true: files('acpi-common.c'))
-+i386_ss.add(when: 'CONFIG_ACPI_HW_REDUCED', if_true: files('generic_event_device_x86.c'))
- i386_ss.add(when: 'CONFIG_PC', if_true: files(
-   'pc.c',
-   'pc_sysfw.c',
+     data->qts = qtest_init(args);
 -- 
 2.27.0
 

@@ -1,101 +1,97 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3113837lfq;
-        Tue, 15 Sep 2020 05:14:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhz9IpRWouFau5f3ZjvdANxeYb49SnGToSNjDsUl70WuYfSabKTo2/ymTpewent23BOEcH
-X-Received: by 2002:a25:743:: with SMTP id 64mr26391943ybh.134.1600172080222;
-        Tue, 15 Sep 2020 05:14:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600172080; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3114148lfq;
+        Tue, 15 Sep 2020 05:15:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxG9zCxncAJyGiTUFPcVSJI1lqgVFWdGm+xp9jKGhekXX3O/I4o/1SggxiKA4EFlcxp1Jpq
+X-Received: by 2002:a25:b8b:: with SMTP id 133mr9377056ybl.65.1600172105996;
+        Tue, 15 Sep 2020 05:15:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600172105; cv=none;
         d=google.com; s=arc-20160816;
-        b=qzdRe0S1dNpwxxky4VJNd2uPiP4T9Pq4hRaTQjR7npaREP/+oslRxCQvpX6URm/bzG
-         Z33ZPwOxffNw+7SsrJIUr1J4GMk9qr6t23ckaMg20+aHRRx3ToVzfDy5FUuFh7hwkJgW
-         FDcAnA3wLOqH1gBVgn9/3Ij0zrrDD54v6GkQvZFkvw3CBwhD6cQuPOmPm6GrIvXgZYnf
-         BScbn5HPuYiUWBaVhVdDFO+ABW6uxrGIsxL1BLj3WUdLu3snAZGxmGrarUjCeyFHQsmG
-         +IxOmcRS8EP7AoMJlux6jFvQjx1KeD88sFbWwoWiNxpdk7zfpyAoKIU5uONzu0sQlkrq
-         HK2g==
+        b=qN97T/JfdzM+bJq3n2p0v34in1vpbaLlxnFM4dfS2TyUocQv5oW+ZG1yePScXA87bq
+         x7lmRIlW5MWav/c5aatCYKfKpBhDm9Lo8/XIIovT0aMmhu+WsCMf6Drfhxn4TDSehLVR
+         uV3mpujb5jPWH7UMpc0DcWkcTnX0YHh31Ywk5eknZCTVZwlKmJBdjILVlnLwRiVZsOcn
+         FhBSMzUO4IbvXNkXQ/8iXAdAjZ5pbfv21FrxllDScPxVslq+hCwrOkURrsEKzNEhK67F
+         doQFXOIDwnJV9C4wldPddryZSDFotXW/g6c7h7/P6VBGrkcTfeTdJMfAY6x1ovHBc3TU
+         gQbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=l8Ud8iozTU5Im+G80wvGvhC9Rn5W0PW1auciivrLPfY=;
-        b=MNarIT2aoPkeuQBkgvOV63SrPrs5K4W22ak4VWmZCB8h5Gxw7cTWBvXOi08UDm0VUd
-         z1NjAy6+lHI8IRqpCsM2cWWnH3ZP9LKWC4cxd3lupnoSEv1AeRXLtq7u3YyvlBbqlnKQ
-         OJwdvAyjsRoSzmozjAD4MFX7rJOUOjS91MXf51PnAW8HVanPEPA3ISCLtYY2bXUPa13o
-         Pg+DJGwtSQDoO/E2hBp/uvi6KKAGtVfvFiNXyJfHgloLqmAf7NpVdLejxfawIUxk23q1
-         v3+SaDxNSmwmkzMJibMLqYyWT6f/7TI0hMmDp7jcpnElkV1B6M427ubc4e7w0YMKsQMv
-         Latg==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=ZUr0kL4zTz6HREmGTuc0t2Mqvr55F/pnRdCkCTntaAY=;
+        b=K2x6fV0xV+O1N+HSejLj+5z8E6pie3B+glFwWS2GaV9DqNs+y3ZhzbPyLqjixDmH3i
+         vnghqcNKf/aM+b9suNqpahmM5E2IcJ/dKy9R56y8nQtYPqY1Wa6pXUlkAz9Fe4YtAqw4
+         5SVrGsbntKez6ng6RRkLYUvqv0C9POSDFh7n/wVLt59kr/BUGwU/BxTOT65ruAox6RhE
+         nW9M9yQsG6xQNblnYxEXOMA01cSm+pxCoMdU6zjHIPPNRIlYFYod6WZFb0Ip4iwez9GW
+         ko7RzI6+GaMGXPguHEV6Yuv473LCzMcVT5Tb1qxTcnWj25U5Lk5xRmpplI7Nj9BqeFys
+         7ZEQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Zx6gZFJB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eIvz4Uqw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e3si12921212ybn.376.2020.09.15.05.14.40
+        by mx.google.com with ESMTPS id t23si5948003ybt.446.2020.09.15.05.15.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 15 Sep 2020 05:14:40 -0700 (PDT)
+        Tue, 15 Sep 2020 05:15:05 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Zx6gZFJB;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eIvz4Uqw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:42810 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43832 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kI9r5-0000nS-Jr
-	for alex.bennee@linaro.org; Tue, 15 Sep 2020 08:14:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46680)
+	id 1kI9rV-0001GP-5I
+	for alex.bennee@linaro.org; Tue, 15 Sep 2020 08:15:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46824)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kI9nM-0004su-UE
- for qemu-arm@nongnu.org; Tue, 15 Sep 2020 08:10:49 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([207.211.31.120]:51658
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kI9ne-0005CA-Lp
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2020 08:11:07 -0400
+Received: from us-smtp-1.mimecast.com ([205.139.110.61]:26450
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kI9nI-0007iU-Kg
- for qemu-arm@nongnu.org; Tue, 15 Sep 2020 08:10:48 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kI9na-0007or-D2
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2020 08:11:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600171843;
+ s=mimecast20190719; t=1600171861;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=l8Ud8iozTU5Im+G80wvGvhC9Rn5W0PW1auciivrLPfY=;
- b=Zx6gZFJBLALHJ/f5NZBPPl+bBIywFvRlieduOFvLOCKZlP6KKsGoW4TDh5xXEnsPP1m8kg
- CZUGHfTeP3rkuSKFUx/97r+0iPC6xDUKlMXQXXPr9HLFvvMgPD1oG/58FV/aC9y+pVYAwO
- 0O1InTU3Z73W/d6Kj4x2A6tkcsvVy7k=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ZUr0kL4zTz6HREmGTuc0t2Mqvr55F/pnRdCkCTntaAY=;
+ b=eIvz4UqwBbPS6/qMXxGKRJrwwvfRqALgx4u4y1ohLVuKYRZ4cZwqdUSxMLzhpDsOH7qmtx
+ 7Jz8LxhV2ah5+Eh+ePvaUzCV3+cdyqfukODRX6m+HrxTXMcrYM3yKypIVAS8s9skfSrZ26
+ kyLbPWO1b6T1/VPDW2ntZsnGKgQqKH4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-152-BvPwM7fgPxW897GTd-PIWQ-1; Tue, 15 Sep 2020 08:09:33 -0400
-X-MC-Unique: BvPwM7fgPxW897GTd-PIWQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-553-BLDIqJqXMF2puyYTJ3pwww-1; Tue, 15 Sep 2020 08:09:23 -0400
+X-MC-Unique: BLDIqJqXMF2puyYTJ3pwww-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3F4031009459;
- Tue, 15 Sep 2020 12:09:32 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3A0A16409E;
+ Tue, 15 Sep 2020 12:09:22 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-85.ams2.redhat.com
  [10.36.112.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0D4065FC16;
- Tue, 15 Sep 2020 12:09:24 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 55E3F7839F;
+ Tue, 15 Sep 2020 12:09:10 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 123C040845; Tue, 15 Sep 2020 14:09:10 +0200 (CEST)
+ id 72BD69A95; Tue, 15 Sep 2020 14:09:09 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v8 13/21] x86: constify x86_machine_is_*_enabled
-Date: Tue, 15 Sep 2020 14:09:01 +0200
-Message-Id: <20200915120909.20838-14-kraxel@redhat.com>
-In-Reply-To: <20200915120909.20838-1-kraxel@redhat.com>
-References: <20200915120909.20838-1-kraxel@redhat.com>
+Subject: [PATCH v8 00/21] microvm: add acpi support
+Date: Tue, 15 Sep 2020 14:08:48 +0200
+Message-Id: <20200915120909.20838-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Spam-Score: 0.003
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=207.211.31.120; envelope-from=kraxel@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/15 02:29:39
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=205.139.110.61; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/15 03:21:13
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -50
 X-Spam_score: -5.1
@@ -123,58 +119,136 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  qemu-arm@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: A6uqBBkii25u
+X-TUID: OSnJ6eIiq9vL
 
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Sergio Lopez <slp@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
----
- include/hw/i386/x86.h | 4 ++--
- hw/i386/x86.c         | 4 ++--
- 2 files changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/include/hw/i386/x86.h b/include/hw/i386/x86.h
-index 1a188a7deabb..25c904638c11 100644
---- a/include/hw/i386/x86.h
-+++ b/include/hw/i386/x86.h
-@@ -100,8 +100,8 @@ void x86_load_linux(X86MachineState *x86ms,
-                     bool pvh_enabled,
-                     bool linuxboot_dma_enabled);
- 
--bool x86_machine_is_smm_enabled(X86MachineState *x86ms);
--bool x86_machine_is_acpi_enabled(X86MachineState *x86ms);
-+bool x86_machine_is_smm_enabled(const X86MachineState *x86ms);
-+bool x86_machine_is_acpi_enabled(const X86MachineState *x86ms);
- 
- /* Global System Interrupts */
- 
-diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-index c1954db152eb..e2a5005f389c 100644
---- a/hw/i386/x86.c
-+++ b/hw/i386/x86.c
-@@ -821,7 +821,7 @@ void x86_bios_rom_init(MemoryRegion *rom_memory, bool isapc_ram_fw)
-                                 bios);
- }
- 
--bool x86_machine_is_smm_enabled(X86MachineState *x86ms)
-+bool x86_machine_is_smm_enabled(const X86MachineState *x86ms)
- {
-     bool smm_available = false;
- 
-@@ -863,7 +863,7 @@ static void x86_machine_set_smm(Object *obj, Visitor *v, const char *name,
-     visit_type_OnOffAuto(v, name, &x86ms->smm, errp);
- }
- 
--bool x86_machine_is_acpi_enabled(X86MachineState *x86ms)
-+bool x86_machine_is_acpi_enabled(const X86MachineState *x86ms)
- {
-     if (x86ms->acpi == ON_OFF_AUTO_OFF) {
-         return false;
--- 
-2.27.0
+I know that not supporting ACPI in microvm is intentional.  If you still=0D
+don't want ACPI this is perfectly fine, you can use the usual -no-acpi=0D
+switch to toggle ACPI support.=0D
+=0D
+These are the advantages you are going to loose then:=0D
+=0D
+  (1) virtio-mmio device discovery without command line hacks (tweaking=0D
+      the command line is a problem when not using direct kernel boot).=0D
+  (2) Better IO-APIC support, we can use IRQ lines 16-23.=0D
+  (3) ACPI power button (aka powerdown request) works.=0D
+  (4) machine poweroff (aka S5 state) works.=0D
+=0D
+Together with seabios patches for virtio-mmio support this allows to=0D
+boot standard fedora images (cloud, coreos, workstation live) with the=0D
+microvm machine type.=0D
+=0D
+git branch for testing (including updated seabios):=0D
+=09https://git.kraxel.org/cgit/qemu/log/?h=3Dsirius/microvm=0D
+=0D
+changes in v2:=0D
+  * some acpi cleanups are an separate patch series now.=0D
+  * switched to hw reduced acpi & generic event device.=0D
+  * misc fixes here and there.=0D
+=0D
+changes in v3:=0D
+  * depeds on "[PATCH v6 00/16] acpi: i386 tweaks" series.=0D
+  * renamed qboot to qboot.bin=0D
+  * updated seabios to master branch snapshot.=0D
+    - this version boots fine with rtc=3Doff=0D
+  * generic event device tweaks (Igor's comments).=0D
+  * make SMP work.=0D
+  * add RfC patches to turn off acpi by default for microvm.=0D
+  * misc fixes here and there.=0D
+=0D
+changes in v4:=0D
+  * rebase to latest master=0D
+    - this also depends on the pending seabios update=0D
+  * drop some patches which got cherry-picked.=0D
+  * wire up cpu hotplug (also does coldplug cpu init).=0D
+  * add microvm acpi test case.=0D
+  * dropped RfC patches to turn off acpi by default for microvm.=0D
+  * misc fixes here and there.=0D
+=0D
+changes in v5:=0D
+  * rebase to latest master (seabios dependency is merged meanwhile)=0D
+  * fix DSDT version (mst).=0D
+  * add comments referencing the ACPI spec for easier review (mst).=0D
+=0D
+changes in v6:=0D
+  * rebase to latest master, adapt to meson build system.=0D
+  * pick up some review tags.=0D
+  * misc fixes here and there.=0D
+=0D
+changes in v7:=0D
+  * rebase to latest master, adapt to x86 cpu hotplug changes.=0D
+  * meson tweaks for firmware binaries.=0D
+  * pick up some review tags.=0D
+=0D
+changes in v8:=0D
+  * rebase to latest master, adapt to typedef changes.=0D
+  * pick up some review tags.=0D
+=0D
+take care,=0D
+  Gerd=0D
+=0D
+Gerd Hoffmann (21):=0D
+  microvm: name qboot binary qboot.rom=0D
+  seabios: add microvm config, update build rules=0D
+  seabios: add bios-microvm.bin binary=0D
+  acpi: ged: add control regs=0D
+  acpi: ged: add x86 device variant.=0D
+  acpi: move acpi_dsdt_add_power_button() to ged=0D
+  microvm: make virtio irq base runtime configurable=0D
+  microvm/acpi: add minimal acpi support=0D
+  microvm/acpi: add acpi_dsdt_add_virtio() for x86=0D
+  microvm/acpi: use GSI 16-23 for virtio=0D
+  microvm/acpi: use seabios with acpi=3Don=0D
+  microvm/acpi: disable virtio-mmio cmdline hack=0D
+  x86: constify x86_machine_is_*_enabled=0D
+  x86: move acpi_dev from pc/microvm=0D
+  x86: move cpu hotplug from pc to x86=0D
+  microvm: wire up hotplug=0D
+  tests/acpi: allow microvm test data updates.=0D
+  tests/acpi: allow override blkdev=0D
+  tests/acpi: add microvm test=0D
+  tests/acpi: update expected data files for microvm=0D
+  microvm: enable ramfb=0D
+=0D
+ hw/i386/acpi-microvm.h                 |   8 +=0D
+ include/hw/acpi/generic_event_device.h |  17 ++=0D
+ include/hw/i386/microvm.h              |  10 +-=0D
+ include/hw/i386/pc.h                   |   1 -=0D
+ include/hw/i386/x86.h                  |  15 +-=0D
+ hw/acpi/generic_event_device.c         |  52 +++++=0D
+ hw/arm/virt-acpi-build.c               |   8 -=0D
+ hw/i386/acpi-build.c                   |   2 +-=0D
+ hw/i386/acpi-microvm.c                 | 240 ++++++++++++++++++++=0D
+ hw/i386/generic_event_device_x86.c     |  36 +++=0D
+ hw/i386/microvm.c                      | 108 ++++++++-=0D
+ hw/i386/pc.c                           | 297 ++-----------------------=0D
+ hw/i386/pc_piix.c                      |   2 +-=0D
+ hw/i386/pc_q35.c                       |   2 +-=0D
+ hw/i386/x86.c                          | 275 ++++++++++++++++++++++-=0D
+ tests/qtest/bios-tables-test.c         |  21 +-=0D
+ hw/i386/Kconfig                        |   1 +=0D
+ hw/i386/meson.build                    |   3 +-=0D
+ pc-bios/bios-microvm.bin               | Bin 65536 -> 131072 bytes=0D
+ pc-bios/meson.build                    |   1 +=0D
+ pc-bios/qboot.rom                      | Bin 0 -> 65536 bytes=0D
+ roms/Makefile                          |  11 +-=0D
+ roms/config.seabios-microvm            |  26 +++=0D
+ tests/data/acpi/microvm/APIC           | Bin 0 -> 70 bytes=0D
+ tests/data/acpi/microvm/DSDT           | Bin 0 -> 365 bytes=0D
+ tests/data/acpi/microvm/FACP           | Bin 0 -> 268 bytes=0D
+ 26 files changed, 823 insertions(+), 313 deletions(-)=0D
+ create mode 100644 hw/i386/acpi-microvm.h=0D
+ create mode 100644 hw/i386/acpi-microvm.c=0D
+ create mode 100644 hw/i386/generic_event_device_x86.c=0D
+ create mode 100644 pc-bios/qboot.rom=0D
+ create mode 100644 roms/config.seabios-microvm=0D
+ create mode 100644 tests/data/acpi/microvm/APIC=0D
+ create mode 100644 tests/data/acpi/microvm/DSDT=0D
+ create mode 100644 tests/data/acpi/microvm/FACP=0D
+=0D
+--=20=0D
+2.27.0=0D
+=0D
 

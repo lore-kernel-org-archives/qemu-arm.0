@@ -1,104 +1,104 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2796728lfq;
-        Mon, 14 Sep 2020 20:14:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzk5ca6UKrn7uypqkSyybGDOZN7HfquDwgw9JN1TSyvKkGGvIhyQ58BZDUvQWEPz0t91twr
-X-Received: by 2002:a37:9402:: with SMTP id w2mr16575495qkd.329.1600139679214;
-        Mon, 14 Sep 2020 20:14:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600139679; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2797702lfq;
+        Mon, 14 Sep 2020 20:16:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyLWbF2/Flmpo27CwEp5RGZ9wm1omh5Fv6PtbgTh/Loqrliz9tRgL44rzsXvK+nwHx/Dj1D
+X-Received: by 2002:a37:cc7:: with SMTP id 190mr15860309qkm.388.1600139778218;
+        Mon, 14 Sep 2020 20:16:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600139778; cv=none;
         d=google.com; s=arc-20160816;
-        b=U7MIHM4zidniq1BNt8FVcdbKNLpnc4MdVxdWfVcBgJptpismdLaOJk4+nVjs/oOjde
-         Cp7IdM7106P5e6zp5ZzgVUEwVB9pQ8ryMNJaNN4X0eWTjFteYejJ5lvZIAsetXdJP9ak
-         r7egwZfLAEkabtTrlYOPc5Kyvf8+yHMb+QrYGruzVqP3c0ubXcdIMD3xLvOjyRvkeerv
-         jGmtj8FTl+tcX66d0OCSescBw31qh0W6yDjogszynP5P3D42Wm6FZVTS6pQX+cEEjS5v
-         eG6rumliHVVlJISBQTc/ksnZe+V/G2pGfFsQUkSOQsfomeUrq5g0DQ0xuZ/nJXp9X6Ey
-         AiwA==
+        b=biSNOIezA+jmEg+KTH6K4cPSlrGjL+p9KGxdk0ONTqIASf6Jhtl7YnXJmmAzAE2+Ae
+         OtSzdfFvfafLiuCpFUZWNwGMb/WmhhrQDT2Hp5zf/KlRLkzgFShhD1s9uCJ5TsilFLvi
+         EvjTN+pDNG1pNVgrowWVny328DeiuWP2WwOfpwzXmay9tKAPrhTmPLcrl2eSmqL812U9
+         34eR70DEnksNEKt+YCuXh4csbsLNE8j9dkUDBMJV8D2PzOuyYeb0Om0Fl+3jCQGf5lpI
+         AOhq+SU6voRtnNC+irwkVM8gamopS0Cf8PvzzOGj6f7QC8WHNICNMq5gAqIUOorndVRB
+         /Jqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ttZlTeQRiqAfohcWiL5/T40b1TJUWiG1lTmcd0fZw3M=;
-        b=nAkmOPxYlqnkVbBh4UryBrqDQp1LwSPWuU9JOrDyHpplZX/12HS6cLKyKP2IGSHgyf
-         v1JpVuDYJs3JaKfKqoil5du7B2m4uAe7IknpyJR326beKQxM4Dv75T5h4Z1wgcSK1GcY
-         0Iygdif0y7k8pXRBpiAZ8PXoOcVnLiaGxhFR3ouph3q4JLtp4L7Tau4uRrTjjJmAQ4w1
-         M4DeJeKR5PxiD+pU4n6Uy1+7Ssvmpl54Y2Vbp4eX/AlBnGB5UUAg3aoXaciQ6Ujwcfoz
-         sgJk0Xq990qPah3gYr0+4KGzeEFHQYG9VopaC+fDukul1cjOLhkG0dmE4UPhoWXqKfd4
-         930g==
+        bh=W+V3obnXTS2moUn5807WDrMB34yhPyYZkE7Y60hl+S0=;
+        b=DbkoHOV8IrQZLXJ7GeFg9cnAbhYHSVQKD/c/QjZCvBpXNRqmk/GaGNS1G4KREOiFoB
+         yM3v+v3r7i5mukaleEA9+JBQwGBkoyKqwlVF5Ed+1r9xKm6H/S4jHYN5wltvnI+63NuW
+         58w0PtqhTBDZdi6D18cyvP/3NfT0U/C6ta3BpHzLEG7BeviRQpx8iSeKlSqHO20JMGaP
+         GIRBCl1qF3Q6n4/WD1wNMPBhvRbV4eK/J18gv8H8mubpTJf34kWvsNemO3MTSqSOvRBV
+         vS3Z5b4J790uQHXOlBlULvhkFHKyZConVH6zrNvD9iwFw89tji3MSyc7DuIsheR/3dMq
+         jEew==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IS2O6XuE;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ifSRseTT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f14si8251421qtx.172.2020.09.14.20.14.39
+        by mx.google.com with ESMTPS id y9si8332238qvv.11.2020.09.14.20.16.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 14 Sep 2020 20:14:39 -0700 (PDT)
+        Mon, 14 Sep 2020 20:16:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=IS2O6XuE;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ifSRseTT;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53096 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59172 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kI1QU-0003mG-LR
-	for alex.bennee@linaro.org; Mon, 14 Sep 2020 23:14:38 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48268)
+	id 1kI1S5-0006Hg-K7
+	for alex.bennee@linaro.org; Mon, 14 Sep 2020 23:16:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48096)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kI1OH-0000eV-Fl
- for qemu-devel@nongnu.org; Mon, 14 Sep 2020 23:12:21 -0400
-Received: from mail-pl1-x641.google.com ([2607:f8b0:4864:20::641]:35202)
+ id 1kI1OA-0000L2-FV
+ for qemu-devel@nongnu.org; Mon, 14 Sep 2020 23:12:14 -0400
+Received: from mail-pf1-x442.google.com ([2607:f8b0:4864:20::442]:35145)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <haibo.xu@linaro.org>)
- id 1kI1OF-0001l5-Mb
- for qemu-devel@nongnu.org; Mon, 14 Sep 2020 23:12:21 -0400
-Received: by mail-pl1-x641.google.com with SMTP id bg9so596574plb.2
- for <qemu-devel@nongnu.org>; Mon, 14 Sep 2020 20:12:19 -0700 (PDT)
+ id 1kI1O8-0001iZ-M5
+ for qemu-devel@nongnu.org; Mon, 14 Sep 2020 23:12:14 -0400
+Received: by mail-pf1-x442.google.com with SMTP id o68so1134737pfg.2
+ for <qemu-devel@nongnu.org>; Mon, 14 Sep 2020 20:12:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ttZlTeQRiqAfohcWiL5/T40b1TJUWiG1lTmcd0fZw3M=;
- b=IS2O6XuEJSiZJDGUq0SNt7l9x3joh9zRRBNSWAAlorBsl+/baV/rLWBCV8hzOETjKW
- 6T9hSwktaRZXtoFESrfWRAqqiw/ZC4RqZzuBEhva8mZR26Giik8FqAQuHUw8zZO6cqLu
- UEMpbHazR94QtzFhXCaDmjSFJBJLSOyT+9k7EZqEFWQ35lYcK/TQXtpTbXjE5AnskadY
- hTfiS1dompDH67PeT1mJvSGyfrY+kL8hmR8m7bd6nlkQuAZeo2KeG8Bo8k6YLqeOrhSc
- gIsN5NELvw9RRM/zDgs7ph8FCp3i1zQHAJRMedmL1MVxIio7JJCYjYvY8JhciecTP8kQ
- ywgw==
+ bh=W+V3obnXTS2moUn5807WDrMB34yhPyYZkE7Y60hl+S0=;
+ b=ifSRseTT+IWW7cF7o8md//hp9KC4y2VFoKEda5+zNgS5OgbVUI75l1wLZoBfX7lPOJ
+ xSWO6wfLFj9roXdVz4Fzbh1tXGv3Yu97dDQqO7I8lINsz9U7zrf/Tao+OvLzQXUITarS
+ /4lbI5seL2WtvSMwZy1dWTcNsPAbrXU7toSnJWlYPLALgQGBH2S9d2tZOBQXroOVxe4U
+ 4HJAdOIXQN95zsyzKgcUbVJFIa4RkG1H650i0LxCzT+5pxrXG5vH0ZgNcZgk9oZg7NGv
+ fwuZGfcme0iIYTRUh1uCvE3uLTC7jsWFnGlt6GErb/4YsNdNkroZgxiYqxXVySIi+1HK
+ paKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ttZlTeQRiqAfohcWiL5/T40b1TJUWiG1lTmcd0fZw3M=;
- b=OV2iaT/GPuwiZv6vtdkigSqsxKPULA4StfVqRd4GrS0D8LObuD2NhQpEAl/ez4o+dk
- JyaaOibTbnb++mmJkTXfJuQlTKzJnfATvvS+9jbVVHfrRjf708pKPHBLuRXyLlFKKhEl
- eItXV2VxgS61i16Dr+n+l7N3pfiPICdhGn5Ed6pwbhNjVS66jowy9PsjwtmQemWIcYR4
- Jj06aawGbn1a9gDAGJDMAIGG5cC/iObG+yrk+x8tA6G9316obmRHnCtY2miGXXkd+wHx
- OZLQxFhU1/g2XBtv8018/MVFuZEUESWOhhnpR6HSrz4koACAWArxSUAJNpm22tmRDQ5z
- FGDQ==
-X-Gm-Message-State: AOAM5313RnVXauCWmOyFCLP5AiVijVPCg9e8lb7AB4pfw/JKcnXQUPwJ
- kmQ5MvAom0yiU2wh/mFMn668
-X-Received: by 2002:a17:902:b193:: with SMTP id
- s19mr17147865plr.125.1600139538439; 
- Mon, 14 Sep 2020 20:12:18 -0700 (PDT)
+ bh=W+V3obnXTS2moUn5807WDrMB34yhPyYZkE7Y60hl+S0=;
+ b=VnYhD2+Ly/6wrZdVynBmbBw79xPbTE+zTxaxTrgYx9iVKZqFfJ0ZAZzcHAMgHwuLPm
+ XcTSBTMhwVWq66v4XXhzmmWQ8/lZ44XS5cF/maYwEqNM95zL3S2w23ZyCbirado6TE31
+ tRZEWj1qE3ysz42u0f6AhpAnXSeHMeqhDTjLFrSirSkFKqBG+O2gOeq7ymabYhXpv1nD
+ opanjEm7QuHAU8os6mwzZiuGX/QU1gC+ZV6OyhcjK6PwOeziKnkzSvSTbmvAIpnBJKat
+ 9821EQoHBbBpESuQxaLXdPGZO6smw2kq5sv0MSAQblig5PDhIQCM9ObnstOnQ7431Xv8
+ nk6A==
+X-Gm-Message-State: AOAM530egDuRSy7eYxbtkxqHiNNYHomTrDblbS2hGb2+zluQvTK2mLnq
+ Epxg7Y46FIz6W6qiJU/PZY2o
+X-Received: by 2002:aa7:92c8:0:b029:13e:d13d:a12b with SMTP id
+ k8-20020aa792c80000b029013ed13da12bmr16460143pfa.19.1600139531540; 
+ Mon, 14 Sep 2020 20:12:11 -0700 (PDT)
 Received: from localhost.localdomain ([147.75.106.138])
- by smtp.gmail.com with ESMTPSA id g23sm11551776pfh.133.2020.09.14.20.12.16
+ by smtp.gmail.com with ESMTPSA id g23sm11551776pfh.133.2020.09.14.20.12.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2020 20:12:17 -0700 (PDT)
+ Mon, 14 Sep 2020 20:12:11 -0700 (PDT)
 From: Haibo Xu <haibo.xu@linaro.org>
 To: drjones@redhat.com,
 	richard.henderson@linaro.org
-Subject: [PATCH v3 11/12] target/arm/kvm: spe: Enable userspace irqchip
- support.
-Date: Tue, 15 Sep 2020 03:11:47 +0000
-Message-Id: <6e6ef8d1ea15180514a6f1540933aca4d59939a8.1600135462.git.haibo.xu@linaro.org>
+Subject: [PATCH v3 06/12] target/arm/kvm: spe: Add device init and set_irq
+ operations
+Date: Tue, 15 Sep 2020 03:11:42 +0000
+Message-Id: <cdd78c54073f1bcedef391b3d08b4a520690756f.1600135462.git.haibo.xu@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <cover.1600135462.git.haibo.xu@linaro.org>
 References: <cover.1600135462.git.haibo.xu@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::641;
- envelope-from=haibo.xu@linaro.org; helo=mail-pl1-x641.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::442;
+ envelope-from=haibo.xu@linaro.org; helo=mail-pf1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -124,48 +124,82 @@ Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, philmd@redhat.com,
  qemu-devel@nongnu.org, Haibo Xu <haibo.xu@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xgKKwXmZow92
-
-Since the current kernel patches haven't enabled the
-userspace irqchip support, this patch is not verified yet!
+X-TUID: pMUALe293Iu/
 
 Reviewed-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Haibo Xu <haibo.xu@linaro.org>
 ---
- hw/arm/virt.c    | 2 +-
- target/arm/kvm.c | 5 +++++
- 2 files changed, 6 insertions(+), 1 deletion(-)
+ target/arm/kvm64.c   | 33 +++++++++++++++++++++++++++++++++
+ target/arm/kvm_arm.h |  5 +++++
+ 2 files changed, 38 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ee0831922b..bdb1ce925c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -1715,8 +1715,8 @@ static void virt_cpu_post_init(VirtMachineState *vms)
-                 assert(ARM_CPU(cpu)->has_spe == ON_OFF_AUTO_ON);
-                 if (kvm_irqchip_in_kernel()) {
-                     kvm_arm_spe_set_irq(cpu, PPI(VIRTUAL_SPE_IRQ));
--                    kvm_arm_spe_init(cpu);
-                 }
-+                kvm_arm_spe_init(cpu);
-             }
-         }
-     } else {
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 58f991e890..7950ff1d83 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -820,6 +820,11 @@ MemTxAttrs kvm_arch_post_run(CPUState *cs, struct kvm_run *run)
-             switched_level &= ~KVM_ARM_DEV_PMU;
-         }
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index 8ffd31ffdf..5a2032fc9e 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -450,6 +450,39 @@ void kvm_arm_pmu_set_irq(CPUState *cs, int irq)
+     }
+ }
  
-+        if (switched_level & KVM_ARM_DEV_SPE) {
-+            qemu_set_irq(cpu->spe_interrupt,
-+                         !!(run->s.regs.device_irq_level & KVM_ARM_DEV_SPE));
-+            switched_level &= ~KVM_ARM_DEV_SPE;
-+        }
-         if (switched_level) {
-             qemu_log_mask(LOG_UNIMP, "%s: unhandled in-kernel device IRQ %x\n",
-                           __func__, switched_level);
++void kvm_arm_spe_init(CPUState *cs)
++{
++    struct kvm_device_attr attr = {
++        .group = KVM_ARM_VCPU_SPE_V1_CTRL,
++        .attr = KVM_ARM_VCPU_SPE_V1_INIT,
++    };
++
++    if (!ARM_CPU(cs)->has_spe) {
++        return;
++    }
++    if (!kvm_arm_set_device_attr(cs, &attr, "SPE")) {
++        error_report("failed to init SPE");
++        abort();
++    }
++}
++
++void kvm_arm_spe_set_irq(CPUState *cs, int irq)
++{
++    struct kvm_device_attr attr = {
++        .group = KVM_ARM_VCPU_SPE_V1_CTRL,
++        .addr = (intptr_t)&irq,
++        .attr = KVM_ARM_VCPU_SPE_V1_IRQ,
++    };
++
++    if (!ARM_CPU(cs)->has_spe) {
++        return;
++    }
++    if (!kvm_arm_set_device_attr(cs, &attr, "SPE")) {
++        error_report("failed to set irq for SPE");
++        abort();
++    }
++}
++
+ static int read_sys_reg32(int fd, uint32_t *pret, uint64_t id)
+ {
+     uint64_t ret;
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index f79655674e..bb155322eb 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -348,6 +348,8 @@ int kvm_arm_vgic_probe(void);
+ 
+ void kvm_arm_pmu_set_irq(CPUState *cs, int irq);
+ void kvm_arm_pmu_init(CPUState *cs);
++void kvm_arm_spe_set_irq(CPUState *cs, int irq);
++void kvm_arm_spe_init(CPUState *cs);
+ int kvm_arm_set_irq(int cpu, int irqtype, int irq, int level);
+ 
+ #else
+@@ -397,6 +399,9 @@ static inline int kvm_arm_vgic_probe(void)
+ static inline void kvm_arm_pmu_set_irq(CPUState *cs, int irq) {}
+ static inline void kvm_arm_pmu_init(CPUState *cs) {}
+ 
++static inline void kvm_arm_spe_set_irq(CPUState *cs, int irq) {}
++static inline void kvm_arm_spe_init(CPUState *cs) {}
++
+ static inline void kvm_arm_sve_get_vls(CPUState *cs, unsigned long *map) {}
+ 
+ static inline void kvm_arm_get_virtual_time(CPUState *cs) {}
 -- 
 2.17.1
 

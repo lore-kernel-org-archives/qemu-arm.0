@@ -1,105 +1,139 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp262001lfq;
-        Wed, 16 Sep 2020 01:22:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz0CZLt4kRauB8BZRY/LQ+q7SsPrxgCNpfph9nNr2MavuKTZm8PB2WIR/h7L8TrEUM08YoM
-X-Received: by 2002:a25:6cd7:: with SMTP id h206mr2177113ybc.5.1600244573162;
-        Wed, 16 Sep 2020 01:22:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600244573; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp274666lfq;
+        Wed, 16 Sep 2020 01:45:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzh5yQtXs7sI1mqanuSXmvlEyaUutkHq2BDfUWiTIt5hPiA+e2LlPErV/DoMYOafVDdzl9T
+X-Received: by 2002:a25:e786:: with SMTP id e128mr30452162ybh.502.1600245957227;
+        Wed, 16 Sep 2020 01:45:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600245957; cv=none;
         d=google.com; s=arc-20160816;
-        b=oWxI7v/Aryq8qVs8FrgPDjXanf6YaGCO5tgtVUNOz36EutasMcz6mWK9P65cfZegmb
-         2VG4ZYxa8JoJne70KWJo/mdSehU7SPNCsP7tBWP9hkmsEMndS98AXHCFdDLvkRKEweuq
-         p0TB3aIwk31Q6G6RFAGn2vevyrq3JkTAhmGeS+eAYqD53NS5x46U1GDiUg0Gkbqgclir
-         iWdXvLrE+/mae/m2XLFsdlocsZY9pAWCQqIs3OL/9KddJXp4N+Qf4wCyg53EvObP9zuN
-         gTLYAzgEcNDbuYUHPVKTurukKN3wqoAszYbcqtiDzSPSQuuXGzFWBovrS2X6kCFJDV53
-         6yiQ==
+        b=T0GS13ku9OoqHfuZBMgl+m5VaREQrQew4hsoRO3sZG8h0qskkSCwKSk02tMeIbVy49
+         82gwyI9nBppydA8lMA8RWDMMW54Pf1oADYYNISY9REItO5OJr3J10RF3g+AO8HVxDg1I
+         Lherm5hWYKZ38SEdAI7INSwDe9RHAVZknfEt1vnnVGNBHgchJkDbPRL1EnMnV4Bb/pBL
+         gjvib9XcBxOAqPPEAAGFWU9OsR0nJgmVZBmR85X1NuQnveqaExO5d1rGJLad2qEU7unJ
+         fButgqXdF3IGKUZ5dNk5o9rmLVGGVhg67aI8AcEXBahH20NLhwuRjl7++4yJpzwIh3rc
+         wegA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=fmGZF5+gALayIq6Zx2cIKlc+1e9CSaPO+NBWM9DNzS4=;
-        b=PwwNpsW1Fy88TTc2mk/CtMxWuUwGeis1kBzeSEUaBwNgGBwLViO4GbnhuUQpIMW9ym
-         CjT6lUn/fFRJDgdQyniyY8cweJjAC7Lf2DmGVDknVXsrsVsCl/B7hUEfWnGINocLXKro
-         vAoXPMuM3tZ0KNPfmiIEf83gmTDtHxQ66tnT4DSP6ti+D7lN3wi+LvrJDwyKH8cByID3
-         mhwYNWyjJel2XZD3eBqA5wtDV7dz0saEzvGdjIUyqWiIYg71KygecVduewIhzj0gydFd
-         MfF6r6qQpy9Rvz/vrLiD6TfHXgZmMa7MdgasSZ8ZYbHY9PzHE2/ZRRhoreeC1hCLDKzg
-         qUYA==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject;
+        bh=nw6H+zNm6a0aZhHMVJ21pY/4Xt5b2NQI8M/txgwUEt0=;
+        b=b+1/LInKAsm7/kcmam0loWxF6P25BgfiD4ecCWHF+gUoGHpiG3dqbwRXcTSfECtYNs
+         JSNDXodJhhQP049ub2lFaxAn2ZBpYjLPQZ0IBfzgSYMgDn2ovu/acjSPT9cZXcFGyOwK
+         NypofRPZPKNOvZDYaJ2RGOM/fpz2NMDqiQJ+3q3ZZWewEEjWEEdeKB824guWWEBr2pSE
+         84k/PiqP6oQpkfrcmMXJIf6MBy5N3lynBNd5QkB8wULpVE7eam4pY9j3pf+FDsp59S3Z
+         IWvNdgqXx8IBhD0uO1yz7LxpwtDgpHwrHzOKehnDlDCWYLhi4MNpO4jqEPiKV627D4gY
+         w/fA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="d3/ZpwtR";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v16si18033875ybp.278.2020.09.16.01.22.53
+        by mx.google.com with ESMTPS id d29si9415433yba.337.2020.09.16.01.45.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Sep 2020 01:22:53 -0700 (PDT)
+        Wed, 16 Sep 2020 01:45:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="d3/ZpwtR";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36286 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46646 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kISiK-0003XV-G6
-	for alex.bennee@linaro.org; Wed, 16 Sep 2020 04:22:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58126)
+	id 1kIT4e-0006VW-Hb
+	for alex.bennee@linaro.org; Wed, 16 Sep 2020 04:45:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35420)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1kISg1-0000qO-1v; Wed, 16 Sep 2020 04:20:30 -0400
-Received: from mail-pj1-x1043.google.com ([2607:f8b0:4864:20::1043]:36413)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1kISfx-0004x9-Go; Wed, 16 Sep 2020 04:20:27 -0400
-Received: by mail-pj1-x1043.google.com with SMTP id b17so1155430pji.1;
- Wed, 16 Sep 2020 01:20:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=fmGZF5+gALayIq6Zx2cIKlc+1e9CSaPO+NBWM9DNzS4=;
- b=d3/ZpwtRYd9FSiDDJcxMg2zer5dvnu25bGTxfieyDiAsDFEx7/xYkEDmuxHKF0L9GE
- wz2mYL03guGyNmhAdAYitxUaT0yCMnERoggjCBzyf8sSkMFnZbf+3qkF7tK+l1rL/qjQ
- QlFpSi6NnlDRtccpikPTNW7LA7kRRRsc2xggD2T9GFITbMuOM+SYnOXreB29erIJymUx
- WeZ0k3cRPhxACcNvKzLQnBk+98zL7GoHXXS11f+hl/ILSs5P5TSEVl2tDxnLXLZVQIag
- S04iUpqdh1RDTdxHOlwvZdNV8GHY8AzoCKfRJl1TA+StCUUfhZ2FCPk74bl2JpuWKCAA
- vDbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=fmGZF5+gALayIq6Zx2cIKlc+1e9CSaPO+NBWM9DNzS4=;
- b=Iv8cN51GeGMP7jGu9OPE+yDF4BXwTFQ/uMO8IHA0dVUPzqHZ5QyHOYVu4LnQZ4qwkU
- 97plTmgdRgWmuiouxwJ0ZmzwvEdoi0thgVC4ul6EodLbsowze/HtQ2htBZU0jYYl863y
- w4yr7sTpo1xE0OsxAlyskEr9s1VxvAidy/ZwJBy50UKizfUW9Oa8vul6XP72WZnFvUzA
- IUd4eGbzWHDpuGztMTFvaaRdrdUS+OyrCqQntcvv6OWFyC86M+3xSDeEQ/qCn+1fIY3p
- EpRaZaD5A72JRwZPW4uSU08uKc0MAF2sp66qh8O6UibWD88xF+iFoAiLdtFUWzUrqRRt
- qOQg==
-X-Gm-Message-State: AOAM531ZccrqEEdHNq7IcVGphQOnO6X+XFu/8wDafVxjvpm9b8qUHtl7
- myiBMM55OF8OCkXEf2UvJzg=
-X-Received: by 2002:a17:90a:d997:: with SMTP id
- d23mr3017491pjv.171.1600244421394; 
- Wed, 16 Sep 2020 01:20:21 -0700 (PDT)
-Received: from localhost.localdomain ([45.124.203.18])
- by smtp.gmail.com with ESMTPSA id hg16sm1763850pjb.37.2020.09.16.01.20.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2020 01:20:20 -0700 (PDT)
-From: Joel Stanley <joel@jms.id.au>
-To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Subject: [PATCH] misc: aspeed_scu: Update AST2600 silicon id register
-Date: Wed, 16 Sep 2020 17:50:12 +0930
-Message-Id: <20200916082012.776628-1-joel@jms.id.au>
-X-Mailer: git-send-email 2.28.0
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kIT4R-0006Un-PU; Wed, 16 Sep 2020 04:45:44 -0400
+Received: from mout.kundenserver.de ([212.227.17.13]:45273)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kIT4P-00084p-Ey; Wed, 16 Sep 2020 04:45:43 -0400
+Received: from [192.168.100.1] ([82.252.129.222]) by mrelayeu.kundenserver.de
+ (mreue109 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MAfQk-1kBuXy0EGG-00B6rJ; Wed, 16 Sep 2020 10:45:30 +0200
+Subject: Re: [PATCH v2 1/2] hw/gpio/max7310: Remove impossible check
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200910072325.439344-1-f4bug@amsat.org>
+ <20200910072325.439344-2-f4bug@amsat.org>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <ad3a983e-71f5-d7f3-6901-09627d32b126@vivier.eu>
+Date: Wed, 16 Sep 2020 10:45:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <20200910072325.439344-2-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1043;
- envelope-from=joel.stan@gmail.com; helo=mail-pj1-x1043.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+X-Provags-ID: V03:K1:psvMSW/tZ423hpgguO+zFWCDIwwiAzjksEcPhkmjDLrgVbHPHZ3
+ nMknlUm0hdqRzDTRPNvRTBcXh0oJOccwl+M5SjBpZKmmcWVpeurht/kxjuA+/oPTJQ9PYSQ
+ jfgQ5unE84SJMa5s1J4iT8o6+8qN2ZvM1/FJxpFdNCKqBUJRd7hroYlzdK+sIl4kmfb1VBc
+ DiX0/CqxNv0einvQc8c3Q==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:8P340mYI228=:ZYneblLv+bbUAJhDPdlBKp
+ cHUvzdJAFAAq3bSTNvxM6zrDdLhRgFhc0Tuz3kv5ojCJFeaML9BXsIOn4gKOdZRVokrWr9ceF
+ Tk2OWfv1Bm2k+tMViqqVzU7/IyaiXfTKQfWixSCTXwPF7gGI02XfUNQT8W63U4cMlbhaZeRvn
+ 5OuLUUX73pNycEDE+O9QTvbK6pgJDpvtvbnDBLufnS7pYxAqn+wAXDYrjzQWMqRP4uwmwBfTh
+ JtAb6wVhhx6Re+CUhFl6bLj8yCuaFEKuShmiF4tbU2HWKS6jrQMXXbZbmUl7I/Uh1an0/zdKe
+ JIMG/vFM1Jth5x+wxdQxtDp3bWsckaugebSsVAfSXWe1uXI9n3g2sU7drjnVBYfH8FZoSS87q
+ Gl4Bn3Ep4Ie3VRVXyZN11j+cU6fcOljQ87APx0fa0UhkjcMn+693ZQwky2ZysgmdtZmJrqZ6b
+ nlwUrORE91aRYGCfumEHfi6jsDohUS02qZHLxi3UdyjmZJgFP5o0pfmpFU7xEm/WskO0H035B
+ fFB+qLkGsHqV7E3gPfxJ3wNYPMwVBvE/R4SP7GdgMPVn5km6mG0/1xkN0QBWWLECM/Zz3ijMO
+ dv+YcZEJfsvtHEdSEPKbiJmgpXjP9ODvvg8wzQLxqeUoKuTqcW+SBBvU4PQMyj0D2az9bU9d7
+ ostjhtkHeeR58WBbdqICZxzI7mIylTVmau8rzLvi1GKp/C2pPCBrDcZfzQp1ZGjuB+hAHAHYJ
+ uLBbqv8mcqq3h3uoGFYzs/NGrf918enr/NRIQzyTg4NYLXlyqajyhNjMSZ3pWwcDTU8tT7KSM
+ PFLUzkchLldJ4HlogBFLoNfvDrnTgL+uZNApuGIAtmoWOBodPtii8GUgKtWn5psjjWieIgp
+Received-SPF: none client-ip=212.227.17.13; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 04:45:38
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,52 +146,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Andrzej Zaborowski <balrogg@gmail.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3YEygC1YLlbD
+X-TUID: VV81Sj7dPlFF
 
-Aspeed have released an updated datasheet (v7) containing the silicon id
-for the AST2600 A2. It looks like this:
+Le 10/09/2020 à 09:23, Philippe Mathieu-Daudé a écrit :
+> The max7310_gpio_set() handler is static and only used by
+> qdev_init_gpio_in, initialized with 8 IRQs. The 'line'
+> argument can not be out of the [0-8[ range.
+> Replace the dead code by an assertion.
+> 
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/gpio/max7310.c | 5 +----
+>  1 file changed, 1 insertion(+), 4 deletions(-)
+> 
+> diff --git a/hw/gpio/max7310.c b/hw/gpio/max7310.c
+> index 4f78774dc8f..158b0a074e5 100644
+> --- a/hw/gpio/max7310.c
+> +++ b/hw/gpio/max7310.c
+> @@ -8,9 +8,7 @@
+>   */
+>  
+>  #include "qemu/osdep.h"
+> -#include "hw/hw.h"
+>  #include "hw/i2c/i2c.h"
+> -#include "hw/hw.h"
+>  #include "hw/irq.h"
+>  #include "migration/vmstate.h"
+>  #include "qemu/module.h"
+> @@ -173,8 +171,7 @@ static const VMStateDescription vmstate_max7310 = {
+>  static void max7310_gpio_set(void *opaque, int line, int level)
+>  {
+>      MAX7310State *s = (MAX7310State *) opaque;
+> -    if (line >= ARRAY_SIZE(s->handler) || line  < 0)
+> -        hw_error("bad GPIO line");
+> +    assert(line >= 0 && line < ARRAY_SIZE(s->handler));
+>  
+>      if (level)
+>          s->level |= s->direction & (1 << line);
+> 
 
-              SCU004      SCU014
-  AST2600-A0  0x05000303  0x05000303
-  AST2600-A1  0x05010303  0x05010303
-  AST2600-A2  0x05010303  0x05020303
-  AST2620-A1  0x05010203  0x05010203
-  AST2620-A2  0x05010203  0x05020203
+Applied to my trivial-patches branch.
 
-The SCU004 (silicon id 1) value matches SCU014 for A0, but for
-subsequent revisions it is hard coded to the A1 value.
-
-Qemu effectively dropped support for the A0 in 7582591ae745 ("aspeed:
-Support AST2600A1 silicon revision") as the A0 reset table was removed,
-so it makes sense to only support the behaviour of A1 and onwards.
-
-Signed-off-by: Joel Stanley <joel@jms.id.au>
----
- hw/misc/aspeed_scu.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
-
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index dc6dd87c22f4..40a38ebd8549 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -670,7 +670,12 @@ static void aspeed_ast2600_scu_reset(DeviceState *dev)
- 
-     memcpy(s->regs, asc->resets, asc->nr_regs * 4);
- 
--    s->regs[AST2600_SILICON_REV] = s->silicon_rev;
-+    /*
-+     * A0 reports A0 in _REV, but subsequent revisions report A1 regardless
-+     * of actual revision. QEMU and Linux only support A1 onwards so this is
-+     * sufficient.
-+     */
-+    s->regs[AST2600_SILICON_REV] = AST2600_A1_SILICON_REV;
-     s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
-     s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
-     s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
--- 
-2.28.0
+Thanks,
+Laurent
 

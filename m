@@ -1,71 +1,73 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp530713lfq;
-        Thu, 17 Sep 2020 05:23:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzTaHff3DovfYKKWgGX3cNiAOR0jV6GNV9x5suz9c7dsm5vmREOgvXxpmXQoQ8IOQq25UVo
-X-Received: by 2002:a25:c444:: with SMTP id u65mr1729917ybf.188.1600345416054;
-        Thu, 17 Sep 2020 05:23:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600345416; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp530741lfq;
+        Thu, 17 Sep 2020 05:23:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyC7mXwqXvYuzIIyXB7NfP3L37n7XINYCXcWRmJsY86zhK+G+t6E9zwh8zErsF3IRJYDu6V
+X-Received: by 2002:a5b:287:: with SMTP id x7mr41024313ybl.144.1600345418495;
+        Thu, 17 Sep 2020 05:23:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600345418; cv=none;
         d=google.com; s=arc-20160816;
-        b=vF6+GX9PM73LEhupjHeXmvqxRI6ViW5P5Twctu4+ZeiIluOLfaTPFUOLlJB7MCGVeX
-         V5sttps0NQ8cm2rd55vmUVgNmX650BMKBDz5ejy4nDUoD4QO1xGvsaFt/dTJP/DwO7aT
-         KscxhUbYbDra1uxsMgyb+73nY090D6J9ecSfOMJoeGg+i2ujqAk9KnMoHKhokZocHFYt
-         5d1vrHxj1z1j1ni2bgbC440xgMhiWfSL3PzPkkm+DLuINLWwhhO2LkGhaEhnKbrMI7/m
-         8JZlnpypjqjruKWZoW5zDhwF/hF0pGCW+N+wwNSlCR30SSVN61bNx9+MvRmZiZAE6q20
-         OerQ==
+        b=0N7m4onQSsneoXP/qYAZ3s687FhjgZkeIG3r5GC2xAidprSdQCqtNvLz7xttA85uxJ
+         xAuCO5Op9sBrGgNttvzPGfdU9/u/Ctu9DR7FtL7bVqKQ2iixzhKhy8v7I/tjRecaA6a/
+         1dlc7WzZcUOdRezkPaAIf9bxeJMYGyjgWlZk+YzwNGlUM+l/jEO2AQs0NjLJ0WSVhI1J
+         kWQEygVkConJGrWjns9Wy9yV+T6kd63PqbmZZcFSVell7uEbE0vI90GyAADkvJzXjO+J
+         aV7w2DgjcnKwm7gV3Ahvx130kAPHPPULzhWK6yXQ4fKITlWzgP9D1M9NNqO24FTLjxwE
+         GV+w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from;
-        bh=oBBTvDlmQazq4+sGjVL5eO5stGEXv1P+8btbsBUqu3c=;
-        b=tYu4k7CL7xi55ZIs89Bet6DNwBXcgMxlFx3/7RbY9z4gK1JsXWT/J78wUv1w9NLOFn
-         O+JLSYpddIChpXhxZfIKBNLfo/6UpCW2GghYRQERt3uOF98X9nO35bKDBopWPf7vADQ2
-         ao+DDd6NL+dluBfwwADgzvfBhJRnle/kDji9BQFN1zpd61+zVbg/1Im3vfVZUJEOfxxq
-         iDKpdZkm2gJ64F0qWudKOO5OyBPVScjq0qEMr+K0vVmklS5qa5jurFadt4XEpx17ssb2
-         TfwgFvs3bsRrdF9tJMAV0FOQFAIO9/sp/oIDFF9TRiI2x7M2giHGgVhY2Faq+MaYmPo/
-         3yoA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=c87eOSfFD2FtU0P6NbN7MMxJqWwme3F1j2RHGIVRWbA=;
+        b=ABd6QEyBjU4nmzbXUMVmeJ4dL3ifTREFiJoDfNFbkaV48j4KRW2B+B/XzbqK142Gin
+         KK6mbgZt0wIpMPQvxMnoWyepWFnbtbVFrTMXQXqUWDsPYhXU8YI+eu++syoKTXP/wv6l
+         NjT7mun5Wo0hIXDX1FKOZnVzdwcAury80A9jB8ZrET7LpF90cCZLZp+C2sR+ynDQv/Un
+         9ZLVA28InWpqXgbPtvsYDbLcpLISkoYfPjkw+tce33GDU94ZKm5SE4UkHn9t5xsWhKPW
+         WqPenrg3Bjj+t4GtXlaP2wUQ+HentLRnIWZtIFKXin8zP7Ku9FUvWXisNvgsBzXxNGtk
+         4sng==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s80si19172534ybs.142.2020.09.17.05.23.35
+        by mx.google.com with ESMTPS id u38si21957352ybi.168.2020.09.17.05.23.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 05:23:36 -0700 (PDT)
+        Thu, 17 Sep 2020 05:23:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52402 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52536 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIswp-00088g-C7
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 08:23:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34958)
+	id 1kIswr-0008Co-Nk
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 08:23:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34980)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1kIswf-00085t-85; Thu, 17 Sep 2020 08:23:25 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:51242 helo=huawei.com)
+ id 1kIswg-00087e-Ll; Thu, 17 Sep 2020 08:23:26 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4711 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1kIswc-0003O4-Ed; Thu, 17 Sep 2020 08:23:24 -0400
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 586CDECE9633EE63C126;
- Thu, 17 Sep 2020 20:23:08 +0800 (CST)
+ id 1kIswe-0003P9-N7; Thu, 17 Sep 2020 08:23:26 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 5C1F6D076B237CBC13A8;
+ Thu, 17 Sep 2020 20:23:20 +0800 (CST)
 Received: from localhost.localdomain (10.175.104.175) by
  DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 17 Sep 2020 20:22:58 +0800
+ 14.3.487.0; Thu, 17 Sep 2020 20:23:10 +0800
 From: Peng Liang <liangpeng10@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [RFC v2 00/10] Support disable/enable CPU features for AArch64
-Date: Thu, 17 Sep 2020 20:14:39 +0800
-Message-ID: <20200917121449.3442059-1-liangpeng10@huawei.com>
+Subject: [RFC v2 03/10] target/arm: only set ID_PFR1_EL1.GIC for AArch32 guest
+Date: Thu, 17 Sep 2020 20:14:42 +0800
+Message-ID: <20200917121449.3442059-4-liangpeng10@huawei.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200917121449.3442059-1-liangpeng10@huawei.com>
+References: <20200917121449.3442059-1-liangpeng10@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
+Received-SPF: pass client-ip=45.249.212.190;
  envelope-from=liangpeng10@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 08:23:09
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 08:17:13
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -91,63 +93,30 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MnBFdBA7OLR9
+X-TUID: ilzmQV7OcKW9
 
-QEMU does not support disable/enable CPU features in AArch64 for now.
-This patch series add support for CPU features in AArch64.
+Some AArch64 CPU doesn't support AArch32 mode, AArch32 registers should
+be 0.
 
-Firstly, we change the isar struct in ARMCPU to an array for
-convenience.  Secondly, we add support to configure CPU feautres in
-AArch64 and make sure that the ID registers can be synchronized to KVM
-so that guest can read the value we configure.  Thirdly, we add a
-mechanism to solve the dependency relationship of some CPU features.
-Last, we add a KVM_CAP_ARM_CPU_FEATURE to check whether KVM supports to
-set CPU features in AArch64.
+Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
+Signed-off-by: Peng Liang <liangpeng10@huawei.com>
+---
+ target/arm/helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Also export CPU features to the result of qmp query-cpu-model-expansion
-so that libvirt can get the supported CPU features.
-
-Update the ID fields to ARMv8.6 and add some CPU features according to
-the new ID fields.
-
-With related KVM patch set[1], we can disable/enable CPU features in
-AArch64.
-
-[1] https://patchwork.kernel.org/patch/11782361/
-
-v1 -> v2:
- - adjust the order of patches
- - only expose AArch64 features which are exposed by kernel via /proc/cpuinfo
- - add check for conflict CPU features set by user
- - split the change in linux-headers/linux/kvm.h
-
-Peng Liang (10):
-  linux-header: Introduce KVM_CAP_ARM_CPU_FEATURE
-  target/arm: Update ID fields
-  target/arm: only set ID_PFR1_EL1.GIC for AArch32 guest
-  target/arm: convert isar regs to array
-  target/arm: Introduce kvm_arm_cpu_feature_supported
-  target/arm: register CPU features for property
-  target/arm: Allow ID registers to synchronize to KVM
-  target/arm: Introduce user_mask to indicate whether the feature is set
-    explicitly
-  target/arm: introduce CPU feature dependency mechanism
-  target/arm: Add CPU features to query-cpu-model-expansion
-
- linux-headers/linux/kvm.h |   1 +
- target/arm/cpu.h          | 243 +++++++++--------
- target/arm/internals.h    |  15 +-
- target/arm/kvm_arm.h      |  10 +
- hw/intc/armv7m_nvic.c     |  28 +-
- target/arm/cpu.c          | 555 ++++++++++++++++++++++++++++++--------
- target/arm/cpu64.c        | 174 ++++++------
- target/arm/cpu_tcg.c      | 250 ++++++++---------
- target/arm/helper.c       | 102 ++++---
- target/arm/kvm.c          |  38 +++
- target/arm/kvm64.c        |  86 +++---
- target/arm/monitor.c      |   4 +
- 12 files changed, 976 insertions(+), 530 deletions(-)
-
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 88bd9dd35da8..3a48bc4e4809 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -6627,7 +6627,7 @@ static uint64_t id_pfr1_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     ARMCPU *cpu = env_archcpu(env);
+     uint64_t pfr1 = cpu->id_pfr1;
+ 
+-    if (env->gicv3state) {
++    if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64) && env->gicv3state) {
+         pfr1 |= 1 << 28;
+     }
+     return pfr1;
 -- 
 2.26.2
 

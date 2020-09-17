@@ -1,63 +1,62 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp533344lfq;
-        Thu, 17 Sep 2020 05:27:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8YlzdOnzEYIzo8nc0jutOCrptBrhPHIhUTv0r+rjoF7SQu4VAKuG850NE7vGOFhy1UxTH
-X-Received: by 2002:a5b:ad1:: with SMTP id a17mr20750229ybr.488.1600345645051;
-        Thu, 17 Sep 2020 05:27:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600345645; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp533583lfq;
+        Thu, 17 Sep 2020 05:27:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwodBD5WzjCOS915vpVpkU62oj+wQ6196YpSRtepTj9aarQUecNdg5/izt5KO7Q3du01ebC
+X-Received: by 2002:a25:6942:: with SMTP id e63mr548539ybc.508.1600345662222;
+        Thu, 17 Sep 2020 05:27:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600345662; cv=none;
         d=google.com; s=arc-20160816;
-        b=Yo35fyRfq9oI4ti8dW2ZG6DDTmEo5wNmNvfC4Khb7dDi7J7XykgNjqs2v7wIYqBwTo
-         Mwik3X3Z4+ZnTX8CRn0V2N6SFyneg3MHgM8dnzpBeAcPFC+e7GOwy7wKPOJe44Rj1Cdp
-         491OQQpJGr/Mu3aDGycy2aFml0QpT1x1gg2mTeoJksYRbk/DHFYl4LAiWr8U9fP8/yP4
-         M1D+0Tf+6DJuPhxUAMN7fE4ACNWdOU4hxCc9fhjl8sEssG7hoIYIAhjHQuZG5Xvl6IQW
-         mcTCgNWR75XOpwilKCFQuzGonLf2bMOn/Vanl3GYvEg7fzh33cY1Azp5khO86v2kGD+Q
-         ejmA==
+        b=LMSEq4qiMwckP+nEttd1MJwmnEQYh8hXGfSk+/UCZ0Dy61BBQrxiR4wXsZ7fjFN7AB
+         Z6CdVFdIhl2+9X0tzQ3tECxnNPZn3lznVoRBDN1xmTHTVST5TJMIBuz9b3DUgJ29Oanx
+         TwybW2JFP22A6ZAq3Ijk9o2a5a5KHUoQhhF87lHfFRmb59zmW5K7hflWdpbqXgTGxhJJ
+         /koVt5szuT27Gu4yjgfaY3XdRZyca3NDX0lrA6cDlYPVhYGRuZNZEeM9gC0QDFwZJ5j+
+         H96rhaP/lrBnQmOEjO47EUyyJJtNzgTK/kf57nJHK2XOPEAgW5/vp2qI4E4LhbR4sh2A
+         7+Vg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=Oa1ZFtVQ1Il4bObh3pBUVp2XQucv/5EN77QB7tvIAwE=;
-        b=J4E+ns0FG/H/AqrU7MRRNEEW6xvwt0vyQ1tqWaWqWxwxvhd0aTtUu5trHBxfWProNr
-         8OMoD46NnOb7zPE4forHnO6C3TRKKwAinWvbvjrn6l/zvImDSe4UMXSjbO/Ke0yQTmrS
-         iNRUBc3JnklMR/3UyYtaLRiJ2rj1qLs8rSzX9fHyeGD+ep5Pc2BwCWj5qRZ3ytZPdUWV
-         PfmA/JwW/BYfAD1NVLx3KuPY++VHlQCVhRpgkXPYIpZYG/+60ActDvkLYGm/XYvxfqTX
-         fDbzqecp6BAOSuLQAU9uGC83aeFfaj8rYpgCY3OtK8cYNQedd+AuQoGQkyxrDwem1zXf
-         tACQ==
+        bh=J8ab/qn3tlMGOxD6BurSy120lKnDUGmHhgcJef1xbso=;
+        b=aVHa2kTe+TZZujuFEjZEQN3upBUfcMILzXrki8iufB7LGcAvhkEarB4r+fKvmKjUQb
+         PEINq6fdqgQwhWxzwDhmsgluHlkoyjT8HADfvopZEvLLboirhdaEp9hFik2/+nYWb3Og
+         EZh64esCqPIO2xmF0HUrdwcqBH2PcObAyfX6oDXTcP49Z3BuheCXSb8UghrBT5qr4O0N
+         D8acuyj16WNwMUC0OIdFyEujZSAvTgATVb8qgD6omUS99FLCjaDpwJBKnbZvigXAN6B2
+         nuvZtEaOMP8e6K+X4HLVNWkLyjCWjcY40oC43o5xTw07al4KSx6XCSDi294JdhON44CQ
+         RLMg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j132si999180ybc.13.2020.09.17.05.27.24
+        by mx.google.com with ESMTPS id r12si11907711ybk.203.2020.09.17.05.27.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 05:27:25 -0700 (PDT)
+        Thu, 17 Sep 2020 05:27:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34254 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35338 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIt0W-0003xL-5w
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 08:27:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35098)
+	id 1kIt0n-0004Pd-Jn
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 08:27:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35128)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1kIswr-00008I-Rq; Thu, 17 Sep 2020 08:23:37 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:51600 helo=huawei.com)
+ id 1kIswt-0000DE-Ht; Thu, 17 Sep 2020 08:23:39 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4764 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
- id 1kIswp-0003R9-EG; Thu, 17 Sep 2020 08:23:37 -0400
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 66995CFAC79B39438DFC;
- Thu, 17 Sep 2020 20:23:32 +0800 (CST)
+ id 1kIswl-0003QC-JK; Thu, 17 Sep 2020 08:23:39 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id A601F1191B05C090ACA5;
+ Thu, 17 Sep 2020 20:23:26 +0800 (CST)
 Received: from localhost.localdomain (10.175.104.175) by
  DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 17 Sep 2020 20:23:23 +0800
+ 14.3.487.0; Thu, 17 Sep 2020 20:23:16 +0800
 From: Peng Liang <liangpeng10@huawei.com>
 To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
-Subject: [RFC v2 10/10] target/arm: Add CPU features to
- query-cpu-model-expansion
-Date: Thu, 17 Sep 2020 20:14:49 +0800
-Message-ID: <20200917121449.3442059-11-liangpeng10@huawei.com>
+Subject: [RFC v2 06/10] target/arm: register CPU features for property
+Date: Thu, 17 Sep 2020 20:14:45 +0800
+Message-ID: <20200917121449.3442059-7-liangpeng10@huawei.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200917121449.3442059-1-liangpeng10@huawei.com>
 References: <20200917121449.3442059-1-liangpeng10@huawei.com>
@@ -66,9 +65,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35;
+Received-SPF: pass client-ip=45.249.212.191;
  envelope-from=liangpeng10@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 08:23:09
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 08:23:14
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -94,33 +93,243 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com,
  pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rv1Ku7JK/khE
+X-TUID: IQCShM4D7Yt2
 
-Add CPU features to the result of query-cpu-model-expansion so that
-other applications (such as libvirt) can know the supported CPU
-features.
+The Arm architecture specifies a number of ID registers that are
+characterized as comprising a set of 4-bit ID fields. Each ID field
+identifies the presence, and possibly the level of support for, a
+particular feature in an implementation of the architecture. [1]
+
+For most of the ID fields, there is a minimum presence value, equal to
+or higher than which means the corresponding CPU feature is implemented.
+Hence, we can use the minimum presence value to determine whether a CPU
+feature is enabled and enable a CPU feature.
+
+To disable a CPU feature, setting the corresponding ID field to 0x0/0xf
+(for unsigned/signed field) seems as a good idea.  However, it maybe
+lead to some problems.  For example,  ID_AA64PFR0_EL1.FP is a signed ID
+field. ID_AA64PFR0_EL1.FP == 0x0 represents the implementation of FP
+(floating-point) and ID_AA64PFR0_EL1.FP == 0x1 represents the
+implementation of FPHP (half-precision floating-point).  If
+ID_AA64PFR0_EL1.FP is set to 0xf when FPHP is disabled (which is also
+disable FP), guest kernel maybe stuck.  Hence, we add a ni_value (means
+not-implemented value) to disable a CPU feature safely.
+
+[1] D13.1.3 Principles of the ID scheme for fields in ID registers in
+    DDI.0487
 
 Signed-off-by: zhanghailiang <zhang.zhanghailiang@huawei.com>
 Signed-off-by: Peng Liang <liangpeng10@huawei.com>
 ---
- target/arm/monitor.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ target/arm/cpu.c | 188 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 188 insertions(+)
 
-diff --git a/target/arm/monitor.c b/target/arm/monitor.c
-index ba6e01abd037..bcc4209e950d 100644
---- a/target/arm/monitor.c
-+++ b/target/arm/monitor.c
-@@ -104,6 +104,10 @@ static const char *cpu_model_advertised_features[] = {
-     "sve640", "sve768", "sve896", "sve1024", "sve1152", "sve1280",
-     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
-     "kvm-no-adjvtime",
-+    "aes", "sha1", "sha2", "crc32", "atomics", "asimdrdm", "sha3", "sm3", "sm4",
-+    "asimddp", "asimdfhm", "flagm", "rng", "dcpop", "jscvt", "fcma", "lrcpc",
-+    "frint", "sb", "i8mm", "bf16", "dgh", "fp", "asimd", "dit", "bt", "sbss",
-+    "uscat", "fphp", "asimdhp", "pmull", "sha512", "flagm2", "dcpodp", "ilrcpc",
-     NULL
- };
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 1dd7228875db..10a52518dd14 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1148,6 +1148,193 @@ unsigned int gt_cntfrq_period_ns(ARMCPU *cpu)
+       NANOSECONDS_PER_SECOND / cpu->gt_cntfrq_hz : 1;
+ }
  
++/**
++ * CPUFeatureInfo:
++ * @reg: The ID register where the ID field is in.
++ * @name: The name of the CPU feature.
++ * @length: The bit length of the ID field.
++ * @shift: The bit shift of the ID field in the ID register.
++ * @min_value: The minimum value equal to or larger than which means the CPU
++ *   feature is implemented.
++ * @ni_value: Not-implemented value. It will be set to the ID field when
++ *   disabling the CPU feature.  Usually, it's min_value - 1.
++ * @sign: Whether the ID field is signed.
++ * @is_32bit: Whether the CPU feature is for 32-bit.
++ *
++ * In ARM, a CPU feature is described by an ID field, which is a 4-bit field in
++ * an ID register.
++ */
++typedef struct CPUFeatureInfo {
++    CPUIDReg reg;
++    const char *name;
++    int length;
++    int shift;
++    int min_value;
++    int ni_value;
++    bool sign;
++    bool is_32bit;
++} CPUFeatureInfo;
++
++#define FIELD_INFO(feat_name, id_reg, field, s, min_val, ni_val, is32bit) { \
++    .reg = id_reg, \
++    .length = R_ ## id_reg ## _ ## field ## _LENGTH, \
++    .shift = R_ ## id_reg ## _ ## field ## _SHIFT, \
++    .sign = s, \
++    .min_value = min_val, \
++    .ni_value = ni_val, \
++    .name = feat_name, \
++    .is_32bit = is32bit, \
++}
++
++static struct CPUFeatureInfo cpu_features[] = {
++    FIELD_INFO("aes", ID_AA64ISAR0, AES, false, 1, 0, false),
++    FIELD_INFO("sha1", ID_AA64ISAR0, SHA1, false, 1, 0, false),
++    FIELD_INFO("sha2", ID_AA64ISAR0, SHA2, false, 1, 0, false),
++    FIELD_INFO("crc32", ID_AA64ISAR0, CRC32, false, 1, 0, false),
++    FIELD_INFO("atomics", ID_AA64ISAR0, ATOMIC, false, 1, 0, false),
++    FIELD_INFO("asimdrdm", ID_AA64ISAR0, RDM, false, 1, 0, false),
++    FIELD_INFO("sha3", ID_AA64ISAR0, SHA3, false, 1, 0, false),
++    FIELD_INFO("sm3", ID_AA64ISAR0, SM3, false, 1, 0, false),
++    FIELD_INFO("sm4", ID_AA64ISAR0, SM4, false, 1, 0, false),
++    FIELD_INFO("asimddp", ID_AA64ISAR0, DP, false, 1, 0, false),
++    FIELD_INFO("asimdfhm", ID_AA64ISAR0, FHM, false, 1, 0, false),
++    FIELD_INFO("flagm", ID_AA64ISAR0, TS, false, 1, 0, false),
++    FIELD_INFO("rng", ID_AA64ISAR0, RNDR, false, 1, 0, false),
++
++    FIELD_INFO("dcpop", ID_AA64ISAR1, DPB, false, 1, 0, false),
++    FIELD_INFO("jscvt", ID_AA64ISAR1, JSCVT, false, 1, 0, false),
++    FIELD_INFO("fcma", ID_AA64ISAR1, FCMA, false, 1, 0, false),
++    FIELD_INFO("lrcpc", ID_AA64ISAR1, LRCPC, false, 1, 0, false),
++    FIELD_INFO("frint", ID_AA64ISAR1, FRINTTS, false, 1, 0, false),
++    FIELD_INFO("sb", ID_AA64ISAR1, SB, false, 1, 0, false),
++    FIELD_INFO("i8mm", ID_AA64ISAR1, I8MM, false, 1, 0, false),
++    FIELD_INFO("bf16", ID_AA64ISAR1, BF16, false, 1, 0, false),
++    FIELD_INFO("dgh", ID_AA64ISAR1, DGH, false, 1, 0, false),
++
++    FIELD_INFO("fp", ID_AA64PFR0, FP, true, 0, 0xf, false),
++    FIELD_INFO("asimd", ID_AA64PFR0, ADVSIMD, true, 0, 0xf, false),
++    FIELD_INFO("dit", ID_AA64PFR0, DIT, false, 1, 0, false),
++
++    FIELD_INFO("bt", ID_AA64PFR1, BT, false, 1, 0, false),
++    FIELD_INFO("sbss", ID_AA64PFR1, SBSS, false, 1, 0, false),
++
++    FIELD_INFO("uscat", ID_AA64MMFR2, AT, false, 1, 0, false),
++
++    {
++        .reg = ID_AA64PFR0, .length = R_ID_AA64PFR0_FP_LENGTH,
++        .shift = R_ID_AA64PFR0_FP_SHIFT, .sign = true, .min_value = 1,
++        .ni_value = 0, .name = "fphp", .is_32bit = false,
++    },
++    {
++        .reg = ID_AA64PFR0, .length = R_ID_AA64PFR0_ADVSIMD_LENGTH,
++        .shift = R_ID_AA64PFR0_ADVSIMD_SHIFT, .sign = true, .min_value = 1,
++        .ni_value = 0, .name = "asimdhp", .is_32bit = false,
++    },
++    {
++        .reg = ID_AA64ISAR0, .length = R_ID_AA64ISAR0_AES_LENGTH,
++        .shift = R_ID_AA64ISAR0_AES_SHIFT, .sign = false, .min_value = 2,
++        .ni_value = 1, .name = "pmull", .is_32bit = false,
++    },
++    {
++        .reg = ID_AA64ISAR0, .length = R_ID_AA64ISAR0_SHA2_LENGTH,
++        .shift = R_ID_AA64ISAR0_SHA2_SHIFT, .sign = false, .min_value = 2,
++        .ni_value = 1, .name = "sha512", .is_32bit = false,
++    },
++    {
++        .reg = ID_AA64ISAR0, .length = R_ID_AA64ISAR0_TS_LENGTH,
++        .shift = R_ID_AA64ISAR0_TS_SHIFT, .sign = false, .min_value = 2,
++        .ni_value = 1, .name = "flagm2", .is_32bit = false,
++    },
++    {
++        .reg = ID_AA64ISAR1, .length = R_ID_AA64ISAR1_DPB_LENGTH,
++        .shift = R_ID_AA64ISAR1_DPB_SHIFT, .sign = false, .min_value = 2,
++        .ni_value = 1, .name = "dcpodp", .is_32bit = false,
++    },
++    {
++        .reg = ID_AA64ISAR1, .length = R_ID_AA64ISAR1_LRCPC_LENGTH,
++        .shift = R_ID_AA64ISAR1_LRCPC_SHIFT, .sign = false, .min_value = 2,
++        .ni_value = 1, .name = "ilrcpc", .is_32bit = false,
++    },
++};
++
++static void arm_cpu_get_feature_prop(Object *obj, Visitor *v, const char *name,
++                                     void *opaque, Error **errp)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++    CPUFeatureInfo *feat = opaque;
++    int field_value = feat->sign ? sextract64(cpu->isar.regs[feat->reg],
++                                              feat->shift, feat->length) :
++                                   extract64(cpu->isar.regs[feat->reg],
++                                             feat->shift, feat->length);
++    bool value = field_value >= feat->min_value;
++
++    visit_type_bool(v, name, &value, errp);
++}
++
++static void arm_cpu_set_feature_prop(Object *obj, Visitor *v, const char *name,
++                                     void *opaque, Error **errp)
++{
++    DeviceState *dev = DEVICE(obj);
++    ARMCPU *cpu = ARM_CPU(obj);
++    ARMISARegisters *isar = &cpu->isar;
++    CPUFeatureInfo *feat = opaque;
++    Error *local_err = NULL;
++    bool value;
++
++    if (!kvm_arm_cpu_feature_supported()) {
++        warn_report("KVM doesn't support to set CPU feature in arm.  "
++                    "Setting to `%s` is ignored.", name);
++        return;
++    }
++    if (dev->realized) {
++        qdev_prop_set_after_realize(dev, name, errp);
++        return;
++    }
++
++    visit_type_bool(v, name, &value, &local_err);
++    if (local_err) {
++        error_propagate(errp, local_err);
++        return;
++    }
++
++    if (value) {
++        if (object_property_get_bool(obj, feat->name, &error_abort)) {
++            return;
++        }
++        isar->regs[feat->reg] = deposit64(isar->regs[feat->reg],
++                                          feat->shift, feat->length,
++                                          feat->min_value);
++    } else {
++        if (!object_property_get_bool(obj, feat->name, &error_abort)) {
++            return;
++        }
++        isar->regs[feat->reg] = deposit64(isar->regs[feat->reg],
++                                          feat->shift, feat->length,
++                                          feat->ni_value);
++    }
++}
++
++static void arm_cpu_register_feature_props(ARMCPU *cpu)
++{
++    int i;
++    ObjectProperty *op;
++    CPUARMState *env = &cpu->env;
++
++    for (i = 0; i < ARRAY_SIZE(cpu_features); i++) {
++        if (!(arm_feature(env, ARM_FEATURE_AARCH64) ^
++              cpu_features[i].is_32bit)) {
++            continue;
++        }
++        op = object_property_find(OBJECT(cpu), cpu_features[i].name, NULL);
++        if (!op) {
++            object_property_add(OBJECT(cpu), cpu_features[i].name, "bool",
++                                arm_cpu_get_feature_prop,
++                                arm_cpu_set_feature_prop,
++                                NULL, &cpu_features[i]);
++        }
++    }
++}
++
+ void arm_cpu_post_init(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -1273,6 +1460,7 @@ void arm_cpu_post_init(Object *obj)
+         }
+     }
+ #endif
++    arm_cpu_register_feature_props(cpu);
+ }
+ 
+ static void arm_cpu_finalizefn(Object *obj)
 -- 
 2.26.2
 

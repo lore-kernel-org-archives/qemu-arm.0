@@ -1,62 +1,63 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp209366lfq;
-        Wed, 16 Sep 2020 20:22:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxr5rwBo9PLySiD3nG55HcfqzIVyWiCbLseab1OOX7CdvEXbSe20BeQQ58XVPseOGezjZY+
-X-Received: by 2002:a25:3891:: with SMTP id f139mr38373531yba.174.1600312921259;
-        Wed, 16 Sep 2020 20:22:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600312921; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp209494lfq;
+        Wed, 16 Sep 2020 20:22:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJye73MdV6ajqjdFra5gM32fR8YU2oSBs3PvMukTblfmL0OcGlBVZZwCmCtS/M4+yRx9SM3u
+X-Received: by 2002:a25:354:: with SMTP id 81mr36908930ybd.292.1600312937068;
+        Wed, 16 Sep 2020 20:22:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600312937; cv=none;
         d=google.com; s=arc-20160816;
-        b=HfoNqhwCxUPIH4bVFAoWN6gXxmaKimiidQ0jEPpxbb/DYCu7cER9YEO4o451vXaDgA
-         vlxaLGKwUMJ5EDHL/5EtZZ3NzaiTEk9faMN4yJSwoVyUY9xELKU0aw0wg6SdDXdPKoAZ
-         j0B6h1Vm2I5CJJajDHJ44Sw3VjuVB2GDL9s98jMpEMhV2aLP46cirkJR/TB775pm8XSp
-         xx3yjBFotneVLA8RGsvYPybyY5LgBXmvRwihH2JKUnca097ghXdN+TotTxlINmSUjGQ9
-         6dysrHA2XbkQZAnp1BzYYC+YUZ483mBMTUkmG+YlurcuhpvjO2kplAwpSSdpET4VaQGp
-         1Wpg==
+        b=kwckuNT1rT9yXTL1/W/XWEY9V0+Hl6eSwlyvo39hmfsu0ZLm9s/TWFNnlWQ42Ww5kf
+         PAce3U5ycsvvIA/YeY+GJptS17iCJGFVvYpUT4UZV4C5VCDBCnH/p3zso2VlEaG9Sa+x
+         bDMU/OVFEtukEvdQuyzEiSOyKjgrtxzZZ802T1+hV7T9yPGyl2dW9euLu2UIFLKNL16T
+         1HKgzdsxkN6LJoPpQLonT/rrbc+W4bLYcnDrPMzAUQYLQCsmRm662wrzOCApaB59rOuG
+         efvPYBgcq4iATTSyXlIpqwtz1R+NwEuh+/OXdgRjU4wCOK8RgTeTL8ZEt6yXaqzujSWn
+         vtEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=JHuEz3adtyOawUgmmOjVEgzxVED7LZrYFpIT/OMJ6ZM=;
-        b=LZtvPGqkvXVSgAwK/REVbvS3CI8Q+Wx9PU2KemQDkQrZcmOZ0PoTn1u2mFX6atHK6g
-         7Fl0K2pvhsikKYVxLNXOWkQlzypNlbThlHr7nBWyqrq/3r7/sOI1XiYhwE1jWcIT273A
-         iSwuf5ke+Co2fCOZY6Qq1584zqTun0KVahNoLyIvaN/CHx6Ciicc+HK8UJDSfOMLXXrj
-         MoYQHhtp2GwkqfEBG5ftcoTdAQK5Mt5nyzfdKds1nXPwTDYiW9nNCpPhtredTiLPgW7h
-         cVFc6pk9LkdAnvZZ1FbWR49VbBlbbWJfJgl3ks6MexfukcQ20HyRmw3DtP9q17lywOVp
-         5tnA==
+        bh=BHTxxgmREGtmGscisLLMmGilfD20GxVFXKRKlDSN5Os=;
+        b=LVd0mCl343YRT/eDAqHoXkIuG2pbvY4Ux8QbEAa6Tio0Tllm9AGvTxG8lPSAcKq19E
+         puSct4nz6Q0boBAj+srI7ck6Mit8ymDIp8KwOz6hnO+I8NR8l4CkRgqMVlR9F5W3efwk
+         3d1k/iLmUoX0kj3rKoicUHjewH/2Ssh9z7g4kPbGX6dr5xdmqO68BDd2S7+BgRXqEOhm
+         myksAEBRtgrtZR7IudumDxcwE/kw7Vm8rs+ZASnI1ir0DTSQQgem+DeM99aSSDGL74q2
+         gfmXWxHUShp8Y8Ye6SmdTQWhrUD0q/nh12qUqnJFKbvAd6KEwGkUCfTGOMxV/jEdKyPj
+         hKlg==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t18si3919919ybq.458.2020.09.16.20.22.01
+        by mx.google.com with ESMTPS id d1si11186110ybs.229.2020.09.16.20.22.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Sep 2020 20:22:01 -0700 (PDT)
+        Wed, 16 Sep 2020 20:22:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:42610 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43268 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIkUi-0004w8-Kb
-	for alex.bennee@linaro.org; Wed, 16 Sep 2020 23:22:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47770)
+	id 1kIkUy-0005Ge-CR
+	for alex.bennee@linaro.org; Wed, 16 Sep 2020 23:22:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47888)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIkUM-0004uv-Ez; Wed, 16 Sep 2020 23:21:38 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4701 helo=huawei.com)
+ id 1kIkUP-0004yf-1g; Wed, 16 Sep 2020 23:21:41 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4699 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIkTp-0004Qh-L7; Wed, 16 Sep 2020 23:21:38 -0400
-Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 98A92AAABFA1E255AFE5;
- Thu, 17 Sep 2020 11:20:59 +0800 (CST)
-Received: from localhost (10.174.185.104) by DGGEMS402-HUB.china.huawei.com
- (10.3.19.202) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
- 11:20:51 +0800
+ id 1kIkUM-0004QM-Ev; Wed, 16 Sep 2020 23:21:40 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 7A375E32711B65A2A2E3;
+ Thu, 17 Sep 2020 11:20:53 +0800 (CST)
+Received: from localhost (10.174.185.104) by DGGEMS404-HUB.china.huawei.com
+ (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
+ 11:20:45 +0800
 From: Ying Fang <fangying1@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [RFC PATCH 05/12] hw/arm/virt: DT: add cpu-map
-Date: Thu, 17 Sep 2020 11:20:26 +0800
-Message-ID: <20200917032033.2020-6-fangying1@huawei.com>
+Subject: [RFC PATCH 02/12] target/arm/kvm64: make MPIDR consistent with CPU
+ Topology
+Date: Thu, 17 Sep 2020 11:20:23 +0800
+Message-ID: <20200917032033.2020-3-fangying1@huawei.com>
 X-Mailer: git-send-email 2.26.0.windows.1
 In-Reply-To: <20200917032033.2020-1-fangying1@huawei.com>
 References: <20200917032033.2020-1-fangying1@huawei.com>
@@ -89,99 +90,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com,
  zhang.zhanghailiang@huawei.com, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
+ qemu-arm@nongnu.org, alistair.francis@wdc.com,
+ Ying Fang <fangying1@huawei.com>, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z/mtWnSsSY5r
+X-TUID: Wxd0ixIlv6GP
 
-From: Andrew Jones <drjones@redhat.com>
+MPIDR helps to provide an additional PE identification in a multiprocessor
+system. This patch adds support for setting MPIDR from userspace, so that
+MPIDR is consistent with CPU topology configured.
 
-Support devicetree CPU topology descriptions.
-
-Signed-off-by: Andrew Jones <drjones@redhat.com>
+Signed-off-by: Ying Fang <fangying1@huawei.com>
 ---
- hw/arm/virt.c         | 37 ++++++++++++++++++++++++++++++++++++-
- include/hw/arm/virt.h |  1 +
- 2 files changed, 37 insertions(+), 1 deletion(-)
+ target/arm/kvm64.c | 46 ++++++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 38 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index acf9bfbece..71f7dbb317 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -348,7 +348,10 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-     int cpu;
-     int addr_cells = 1;
-     const MachineState *ms = MACHINE(vms);
--
-+    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-+    unsigned int smp_cores = ms->smp.cores;
-+    unsigned int smp_threads = ms->smp.threads;
-+    bool cpu_topology_enabled = !vmc->ignore_cpu_topology;
-     /*
-      * From Documentation/devicetree/bindings/arm/cpus.txt
-      *  On ARM v8 64-bit systems value should be set to 2,
-@@ -404,8 +407,37 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-                 ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
-         }
+diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+index ef1e960285..fcce261a10 100644
+--- a/target/arm/kvm64.c
++++ b/target/arm/kvm64.c
+@@ -757,10 +757,46 @@ static int kvm_arm_sve_set_vls(CPUState *cs)
  
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-+                              qemu_fdt_alloc_phandle(vms->fdt));
+ #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
+ 
++static int kvm_arm_set_mp_affinity(CPUState *cs)
++{
++    uint64_t mpidr;
++    ARMCPU *cpu = ARM_CPU(cs);
 +
-         g_free(nodename);
-     }
-+    if (cpu_topology_enabled) {
-+        /* Add vcpu topology by fdt node cpu-map. */
-+        qemu_fdt_add_subnode(vms->fdt, "/cpus/cpu-map");
++    if (kvm_check_extension(kvm_state, KVM_CAP_ARM_MP_AFFINITY)) {
++        /* Make MPIDR consistent with CPU topology */
++        MachineState *ms = MACHINE(qdev_get_machine());
 +
-+        for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
-+            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
-+            char *map_path;
++        mpidr = (kvm_arch_vcpu_id(cs) % ms->smp.threads) << ARM_AFF0_SHIFT;
++        mpidr |= ((kvm_arch_vcpu_id(cs) / ms->smp.threads % ms->smp.cores)
++                                    & 0xff) << ARM_AFF1_SHIFT;
++        mpidr |= (kvm_arch_vcpu_id(cs) / (ms->smp.cores * ms->smp.threads)
++                                    & 0xff) << ARM_AFF2_SHIFT;
 +
-+            if (smp_threads > 1) {
-+                map_path = g_strdup_printf(
-+                           "/cpus/cpu-map/%s%d/%s%d/%s%d",
-+                           "cluster", cpu / (smp_cores * smp_threads),
-+                           "core", (cpu / smp_threads) % smp_cores,
-+                           "thread", cpu % smp_threads);
-+            } else {
-+                map_path = g_strdup_printf(
-+                           "/cpus/cpu-map/%s%d/%s%d",
-+                           "cluster", cpu / smp_cores,
-+                           "core", cpu % smp_cores);
-+            }
-+            qemu_fdt_add_path(vms->fdt, map_path);
-+            qemu_fdt_setprop_phandle(vms->fdt, map_path, "cpu", cpu_path);
-+            g_free(map_path);
-+            g_free(cpu_path);
++        /* Override mp affinity when KVM is in use */
++        cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
++
++        /* Bit 31 is RES1 indicates the ARMv7 Multiprocessing Extensions */
++        mpidr |= (1ULL << 31);
++        return kvm_vcpu_ioctl(cs, KVM_ARM_SET_MP_AFFINITY, &mpidr);
++    } else {
++        /*
++         * When KVM_CAP_ARM_MP_AFFINITY is not supported, it means KVM has its
++         * own idea about MPIDR assignment, so we override our defaults with
++         * what we get from KVM.
++         */
++        int ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
++        if (ret) {
++            error_report("failed to set MPIDR");
++            return ret;
 +        }
++        cpu->mp_affinity = mpidr & ARM32_AFFINITY_MASK;
++        return ret;
 +    }
- }
- 
- static void fdt_add_its_gic_node(VirtMachineState *vms)
-@@ -2553,8 +2585,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
- 
- static void virt_machine_5_1_options(MachineClass *mc)
- {
-+    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++}
 +
-     virt_machine_5_2_options(mc);
-     compat_props_add(mc->compat_props, hw_compat_5_1, hw_compat_5_1_len);
-+    vmc->ignore_cpu_topology = true;
- }
- DEFINE_VIRT_MACHINE(5, 1)
+ int kvm_arch_init_vcpu(CPUState *cs)
+ {
+     int ret;
+-    uint64_t mpidr;
+     ARMCPU *cpu = ARM_CPU(cs);
+     CPUARMState *env = &cpu->env;
  
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index dff67e1bef..d37c6b7858 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -119,6 +119,7 @@ typedef struct {
-     MachineClass parent;
-     bool disallow_affinity_adjustment;
-     bool no_its;
-+    bool ignore_cpu_topology;
-     bool no_pmu;
-     bool claim_edge_triggered_timers;
-     bool smbios_old_sys_ver;
+@@ -814,16 +850,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         }
+     }
+ 
+-    /*
+-     * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
+-     * Currently KVM has its own idea about MPIDR assignment, so we
+-     * override our defaults with what we get from KVM.
+-     */
+-    ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
++    ret = kvm_arm_set_mp_affinity(cs);
+     if (ret) {
+         return ret;
+     }
+-    cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+ 
+     kvm_arm_init_debug(cs);
+ 
 -- 
 2.23.0
 

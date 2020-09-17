@@ -1,62 +1,62 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp211687lfq;
-        Wed, 16 Sep 2020 20:26:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyl2DczDuthgAhFHkQk6BUXuNDQpbK/S4OCn5EQfaZH4byibdwsaYAHiGxb07dJjqMCwKcV
-X-Received: by 2002:a25:9d8b:: with SMTP id v11mr22291671ybp.444.1600313215597;
-        Wed, 16 Sep 2020 20:26:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600313215; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp211720lfq;
+        Wed, 16 Sep 2020 20:27:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxUwesRhhdynHmeNjYCsZ+UdaERzfSJxaMEU4yAPI8f79s5aqJ2fkDHrGR5CfhIiFGQOb5x
+X-Received: by 2002:a25:c694:: with SMTP id k142mr13100991ybf.369.1600313220409;
+        Wed, 16 Sep 2020 20:27:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600313220; cv=none;
         d=google.com; s=arc-20160816;
-        b=RFUYio3SbcVjFerH15trUAeByofCmzTd8TTe1Kz8JLErKManUC1jMQ1m30n1UR9+0L
-         1RMCG9QUuEFcFrhjCDAuRQks8nE9JG+8i+Z4iGS1Ddx07h1+EQ46/1U0O1Ft+YzCH16L
-         190T39Cm+2juetPaD3ALufAn1Gfe46u3nTeQoQt379ASrH3NXzombsnm+I5w1Zi5pmRO
-         SzvNt8d/D/7MBGKOb9ue+TMMMa09ddviRwb0p14p3BjyjGszCWm5AZ2/KmNVfRZs2nz5
-         Xp0j/T3sCSFddPxowiPC1Hvn2UwbhdeBw1j9FaMfwXcUl4GGxjcdpZhACcHylb4jJBrn
-         CAXg==
+        b=DESXDXboqpaDzBhfdAqa188M9RHFrAD3tI86m4z+S1E3dSBdz/t4q6APr8hsC5NKQe
+         vd6mU+RErqgK0Mv/dKpscNxDeuXvTqPJfGNr2pLndFoe89mqwlLUayJy7WnyHhlwmDxY
+         h+ofm/N0TfQxxFQM/7H88vNNF0hXb8yf1lHxdEFagPqBwYTdgdi04S4nldZi9oVBk0oQ
+         G9un4h4bwEVkaPJ2Rnz0Ljva5muQRIEVL2PE1bQ1tFmNF3gFQRprQLWT7HfqvHxDhwJJ
+         TDwby/HKRy8EZNGMPzAn4MHeHmLu9kyia62F/c3x2wSirRnVVtlkW9pbjfZAxvO1knIF
+         ea4w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=GxdqhNGYdWyW2Nc/aLxbWs0TBDc+fG8vP4z4An/gceQ=;
-        b=tU5X48bhZpHdR37IRFVu1xOvH+iIQXgmWfbjr7naOaBs3n5Z3lcep5F9ZipBlv4IBv
-         hMf4G8UNgOEM41rlvxSx8b0hrgzqBhz9YWBNnu0nydCEAWTa5nI1l8b7eVno4WuXMF5X
-         cqBGcAoD1Ythu057H3PStY1rGEoGDuA+tCB/fl9rTXLhlVF6fiMj+yMRacRjYaDqK1fk
-         XiD44S3KQ7HHxPoTf6e2IxB+kluXXSHyy4oddEgNjJHElqeuQPaInS/G5k31631ILJg3
-         Zk1KDMxsRUcASQABdP3mwq135TgpdE2d7JP4xmvOYN5EabeK84c7Hk2I2nlw0VHnmLGw
-         9MRw==
+        bh=oAIcXWtduCmL0BgxCvJ07McvFIcTOakyD10QlwWzzkk=;
+        b=Ko4HuLSNgJRYr1HtxC1q+anNs9Qd9KwtZSFtDE+hyWKLgRGvo6Fi4nbsTAVOXfKZSz
+         Ph1uTUCdtAksovHV+dtzsWu3gIUnffSd6zIgw7EAtGtPvJMezMc36fZWRmYj/j5WtM9a
+         Mc0pArfcB1JK3zCjXcShIRxs2vae5LxKSKcJbPCkgxaHWyd1ITV+2V2CnSpGR56IASt9
+         65Y86wMy12BP+WUpHLqJwR0R+9/08NbFqTPVjEiR0D8xRFr766ijUNPfB3Lw6moY4PO1
+         aOxQ6pScsX1qnEyjhP8MLPHpYG4DAPRO/qKWkI2pOrrNi4DUv15BcO/DAZtoccPMjLEf
+         bPgA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p9si18570353yba.238.2020.09.16.20.26.55
+        by mx.google.com with ESMTPS id w5si22401564ybg.100.2020.09.16.20.27.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Sep 2020 20:26:55 -0700 (PDT)
+        Wed, 16 Sep 2020 20:27:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33576 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34026 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIkZS-0004l9-TI
-	for alex.bennee@linaro.org; Wed, 16 Sep 2020 23:26:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47992)
+	id 1kIkZX-0004wK-Pi
+	for alex.bennee@linaro.org; Wed, 16 Sep 2020 23:26:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47970)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIkUU-0005C4-82; Wed, 16 Sep 2020 23:21:46 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4703 helo=huawei.com)
+ id 1kIkUS-000579-78; Wed, 16 Sep 2020 23:21:44 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:45244 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIkUM-0004Rb-Nb; Wed, 16 Sep 2020 23:21:45 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id A07A7DF9F29F525B468D;
- Thu, 17 Sep 2020 11:21:15 +0800 (CST)
-Received: from localhost (10.174.185.104) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
- 11:21:05 +0800
+ id 1kIkUM-0004Rp-L0; Wed, 16 Sep 2020 23:21:43 -0400
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 05F8EEB1067D628429A8;
+ Thu, 17 Sep 2020 11:21:18 +0800 (CST)
+Received: from localhost (10.174.185.104) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
+ 11:21:07 +0800
 From: Ying Fang <fangying1@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [RFC PATCH 10/12] hw/arm/virt: add fdt cache information
-Date: Thu, 17 Sep 2020 11:20:31 +0800
-Message-ID: <20200917032033.2020-11-fangying1@huawei.com>
+Subject: [RFC PATCH 12/12] hw/arm/virt-acpi-build: Enable CPU cache topology
+Date: Thu, 17 Sep 2020 11:20:33 +0800
+Message-ID: <20200917032033.2020-13-fangying1@huawei.com>
 X-Mailer: git-send-email 2.26.0.windows.1
 In-Reply-To: <20200917032033.2020-1-fangying1@huawei.com>
 References: <20200917032033.2020-1-fangying1@huawei.com>
@@ -65,9 +65,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.185.104]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=fangying1@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 23:20:53
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 23:20:51
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -88,135 +88,192 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com,
- zhang.zhanghailiang@huawei.com, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, alistair.francis@wdc.com,
- Ying Fang <fangying1@huawei.com>, imammedo@redhat.com
+ zhang.zhanghailiang@huawei.com, Henglong Fan <fanhenglong@huawei.com>,
+ alex.chen@huawei.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
+ alistair.francis@wdc.com, Ying Fang <fangying1@huawei.com>,
+ imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XQs433dh3Y1U
+X-TUID: wye/6N+boB1g
 
-Support devicetree CPU cache information descriptions
+A helper struct AcpiCacheOffset is introduced to describe the offset
+of three level caches. The cache hierarchy is built according to
+ACPI spec v6.3 5.2.29.2. Let's enable CPU cache topology now.
 
 Signed-off-by: Ying Fang <fangying1@huawei.com>
+Signed-off-by: Henglong Fan <fanhenglong@huawei.com>
 ---
- hw/arm/virt.c | 91 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 91 insertions(+)
+ hw/acpi/aml-build.c         | 19 +++++++++-----
+ hw/arm/virt-acpi-build.c    | 52 ++++++++++++++++++++++++++++++++-----
+ include/hw/acpi/acpi-defs.h |  6 +++++
+ include/hw/acpi/aml-build.h |  7 ++---
+ 4 files changed, 68 insertions(+), 16 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 71f7dbb317..74b748ae35 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -343,6 +343,89 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
-                        GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_NS_EL2_IRQ, irqflags);
+diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+index 123eb032cd..f8d74f3f10 100644
+--- a/hw/acpi/aml-build.c
++++ b/hw/acpi/aml-build.c
+@@ -1783,27 +1783,32 @@ void build_cache_hierarchy(GArray *tbl,
+ /*
+  * ACPI 6.3: 5.2.29.1 Processor hierarchy node structure (Type 0)
+  */
+-void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
++void build_socket_hierarchy(GArray *tbl, uint32_t parent,
++                            uint32_t offset, uint32_t id)
+ {
+     build_append_byte(tbl, 0);          /* Type 0 - processor */
+-    build_append_byte(tbl, 20);         /* Length, no private resources */
++    build_append_byte(tbl, 24);         /* Length, no private resources */
+     build_append_int_noprefix(tbl, 0, 2);  /* Reserved */
+     build_append_int_noprefix(tbl, 1, 4);  /* Flags: Physical package */
+     build_append_int_noprefix(tbl, parent, 4);  /* Parent */
+     build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
+-    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
++    build_append_int_noprefix(tbl, 1, 4);  /*  Number of private resources */
++    build_append_int_noprefix(tbl, offset, 4);  /* Private resources */
  }
  
-+static void fdt_add_l3cache_nodes(const VirtMachineState *vms)
-+{
-+    int i;
-+    const MachineState *ms = MACHINE(vms);
-+    ARMCPU *cpu = ARM_CPU(first_cpu);
-+    unsigned int smp_cores = ms->smp.cores;
-+    unsigned int sockets = ms->smp.max_cpus / smp_cores;
-+
-+    for (i = 0; i < sockets; i++) {
-+        char *nodename = g_strdup_printf("/cpus/l3-cache%d", i);
-+        qemu_fdt_add_subnode(vms->fdt, nodename);
-+        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cache");
-+        qemu_fdt_setprop_string(vms->fdt, nodename, "cache-unified", "true");
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-level", 3);
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-size",
-+                              cpu->caches.l3_cache->size);
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-line-size",
-+                              cpu->caches.l3_cache->line_size);
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-sets",
-+                              cpu->caches.l3_cache->sets);
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-+                              qemu_fdt_alloc_phandle(vms->fdt));
-+        g_free(nodename);
-+    }
-+}
-+
-+static void fdt_add_l2cache_nodes(const VirtMachineState *vms)
-+{
-+    int i, j;
-+    const MachineState *ms = MACHINE(vms);
-+    unsigned int smp_cores = ms->smp.cores;
-+    signed int sockets = ms->smp.max_cpus / smp_cores;
-+    ARMCPU *cpu = ARM_CPU(first_cpu);
-+
-+    for (i = 0; i < sockets; i++) {
-+        char *next_path = g_strdup_printf("/cpus/l3-cache%d", i);
-+        for (j = 0; j < smp_cores; j++) {
-+            char *nodename = g_strdup_printf("/cpus/l2-cache%d",
-+                                  i * smp_cores + j);
-+            qemu_fdt_add_subnode(vms->fdt, nodename);
-+            qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cache");
-+            qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-size",
-+                                  cpu->caches.l2_cache->size);
-+            qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-line-size",
-+                                  cpu->caches.l2_cache->line_size);
-+            qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-sets",
-+                                  cpu->caches.l2_cache->sets);
-+            qemu_fdt_setprop_phandle(vms->fdt, nodename,
-+                                  "next-level-cache", next_path);
-+            qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-+                                  qemu_fdt_alloc_phandle(vms->fdt));
-+            g_free(nodename);
-+        }
-+        g_free(next_path);
-+    }
-+}
-+
-+static void fdt_add_l1cache_prop(const VirtMachineState *vms,
-+                            char *nodename, int cpu_index)
-+{
-+
-+    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(cpu_index));
-+    CPUCaches caches = cpu->caches;
-+
-+    char *cachename = g_strdup_printf("/cpus/l2-cache%d", cpu_index);
-+
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "d-cache-size",
-+                          caches.l1d_cache->size);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "d-cache-line-size",
-+                          caches.l1d_cache->line_size);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "d-cache-sets",
-+                          caches.l1d_cache->sets);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "i-cache-size",
-+                          caches.l1i_cache->size);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "i-cache-line-size",
-+                          caches.l1i_cache->line_size);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "i-cache-sets",
-+                          caches.l1i_cache->sets);
-+    qemu_fdt_setprop_phandle(vms->fdt, nodename, "next-level-cache",
-+                          cachename);
-+    g_free(cachename);
-+}
-+
- static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+-void build_processor_hierarchy(GArray *tbl, uint32_t flags,
+-                               uint32_t parent, uint32_t id)
++void build_processor_hierarchy(GArray *tbl, uint32_t flags, uint32_t parent,
++                               AcpiCacheOffset offset, uint32_t id)
  {
-     int cpu;
-@@ -378,6 +461,11 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-     qemu_fdt_setprop_cell(vms->fdt, "/cpus", "#address-cells", addr_cells);
-     qemu_fdt_setprop_cell(vms->fdt, "/cpus", "#size-cells", 0x0);
+     build_append_byte(tbl, 0);          /* Type 0 - processor */
+-    build_append_byte(tbl, 20);         /* Length, no private resources */
++    build_append_byte(tbl, 32);         /* Length, no private resources */
+     build_append_int_noprefix(tbl, 0, 2);      /* Reserved */
+     build_append_int_noprefix(tbl, flags, 4);  /* Flags */
+     build_append_int_noprefix(tbl, parent, 4); /* Parent */
+     build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
+-    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
++    build_append_int_noprefix(tbl, 3, 4);  /* Number of private resources */
++    build_append_int_noprefix(tbl, offset.l1d_offset, 4);/* Private resources */
++    build_append_int_noprefix(tbl, offset.l1i_offset, 4);/* Private resources */
++    build_append_int_noprefix(tbl, offset.l2_offset, 4); /* Private resources */
+ }
  
-+    if (cpu_topology_enabled) {
-+        fdt_add_l3cache_nodes(vms);
-+        fdt_add_l2cache_nodes(vms);
-+    }
+ void build_smt_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index b5aa3d3c83..375fb9e24f 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -594,29 +594,69 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                  "SRAT", table_data->len - srat_start, 3, NULL, NULL);
+ }
+ 
+-static void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms)
++static inline void arm_acpi_cache_info(CPUCacheInfo *cpu_cache,
++                                       AcpiCacheInfo *acpi_cache)
+ {
++    acpi_cache->size = cpu_cache->size;
++    acpi_cache->sets = cpu_cache->sets;
++    acpi_cache->associativity = cpu_cache->associativity;
++    acpi_cache->attributes = cpu_cache->attributes;
++    acpi_cache->line_size = cpu_cache->line_size;
++}
 +
-     for (cpu = vms->smp_cpus - 1; cpu >= 0; cpu--) {
-         char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
-         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
-@@ -407,6 +495,9 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-                 ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
-         }
++static void build_pptt(GArray *table_data, BIOSLinker *linker,
++                       VirtMachineState *vms)
++{
++    MachineState *ms = MACHINE(vms);
+     int pptt_start = table_data->len;
+     int uid = 0, cpus = 0, socket;
+     unsigned int smp_cores = ms->smp.cores;
+     unsigned int smp_threads = ms->smp.threads;
++    AcpiCacheOffset offset;
++    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(cpus));
++    AcpiCacheInfo cache_info;
  
-+        if (cpu_topology_enabled) {
-+            fdt_add_l1cache_prop(vms, nodename, cpu);
-+        }
-         qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-                               qemu_fdt_alloc_phandle(vms->fdt));
+     acpi_data_push(table_data, sizeof(AcpiTableHeader));
+ 
+     for (socket = 0; cpus < ms->possible_cpus->len; socket++) {
+-        uint32_t socket_offset = table_data->len - pptt_start;
++        uint32_t l3_offset = table_data->len - pptt_start;
++        uint32_t socket_offset;
+         int core;
+ 
+-        build_socket_hierarchy(table_data, 0, socket);
++        /* L3 cache type structure */
++        arm_acpi_cache_info(cpu->caches.l3_cache, &cache_info);
++        build_cache_hierarchy(table_data, 0, &cache_info);
++
++        socket_offset = table_data->len - pptt_start;
++        build_socket_hierarchy(table_data, 0, l3_offset, socket);
+ 
+         for (core = 0; core < smp_cores; core++) {
+             uint32_t core_offset = table_data->len - pptt_start;
+             int thread;
+ 
++            /* L2 cache tpe structure */
++            offset.l2_offset = table_data->len - pptt_start;
++            arm_acpi_cache_info(cpu->caches.l2_cache, &cache_info);
++            build_cache_hierarchy(table_data, 0, &cache_info);
++
++            /* L1d cache type structure */
++            offset.l1d_offset = table_data->len - pptt_start;
++            arm_acpi_cache_info(cpu->caches.l1d_cache, &cache_info);
++            build_cache_hierarchy(table_data, offset.l2_offset, &cache_info);
++
++            /* L1i cache type structure */
++            offset.l1i_offset = table_data->len - pptt_start;
++            arm_acpi_cache_info(cpu->caches.l1i_cache, &cache_info);
++            build_cache_hierarchy(table_data, offset.l2_offset, &cache_info);
++
++            core_offset = table_data->len - pptt_start;
+             if (smp_threads <= 1) {
+-                build_processor_hierarchy(table_data, 2, socket_offset, uid++);
++                build_processor_hierarchy(table_data, 2, socket_offset,
++                                          offset, uid++);
+              } else {
+-                build_processor_hierarchy(table_data, 0, socket_offset, core);
++
++                build_processor_hierarchy(table_data, 0, socket_offset,
++                                          offset, core);
+                 for (thread = 0; thread < smp_threads; thread++) {
+                     build_smt_hierarchy(table_data, core_offset, uid++);
+                 }
+@@ -892,7 +932,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+ 
+     if (cpu_topology_enabled) {
+         acpi_add_table(table_offsets, tables_blob);
+-        build_pptt(tables_blob, tables->linker, ms);
++        build_pptt(tables_blob, tables->linker, vms);
+     }
+ 
+     acpi_add_table(table_offsets, tables_blob);
+diff --git a/include/hw/acpi/acpi-defs.h b/include/hw/acpi/acpi-defs.h
+index 3df38ab449..e48b7fa506 100644
+--- a/include/hw/acpi/acpi-defs.h
++++ b/include/hw/acpi/acpi-defs.h
+@@ -626,4 +626,10 @@ typedef struct AcpiCacheInfo {
+     uint16_t line_size;
+ } AcpiCacheInfo;
+ 
++typedef struct AcpiCacheOffset {
++    uint32_t l1d_offset;
++    uint32_t l1i_offset;
++    uint32_t l2_offset;
++} AcpiCacheOffset;
++
+ #endif
+diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+index ced1ae6a83..984c5dec3b 100644
+--- a/include/hw/acpi/aml-build.h
++++ b/include/hw/acpi/aml-build.h
+@@ -438,10 +438,11 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
+ void build_cache_hierarchy(GArray *tbl,
+               uint32_t next_level, AcpiCacheInfo *cache_info);
+ 
+-void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
++void build_socket_hierarchy(GArray *tbl, uint32_t parent,
++                            uint32_t offset, uint32_t id);
+ 
+-void build_processor_hierarchy(GArray *tbl, uint32_t flags,
+-                               uint32_t parent, uint32_t id);
++void build_processor_hierarchy(GArray *tbl, uint32_t flags, uint32_t parent,
++                               AcpiCacheOffset offset, uint32_t id);
+ 
+ void build_smt_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
  
 -- 
 2.23.0

@@ -1,104 +1,104 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp654760lfq;
-        Thu, 17 Sep 2020 07:59:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy+7F5jxBtGUkW+kG595osEL/PqrCQc05iiZJhC83WXBHuHcqwWEw+IB+0+CRU6wmZFRSVP
-X-Received: by 2002:a65:4505:: with SMTP id n5mr22516575pgq.229.1600354763778;
-        Thu, 17 Sep 2020 07:59:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600354763; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp676590lfq;
+        Thu, 17 Sep 2020 08:23:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwsW7SW9seLGGLkwpGeA1tR/DMBcvbC6zo/JXcfqrvZYAzuzfF+ez6cXip1Vy715SN169VX
+X-Received: by 2002:a25:ad43:: with SMTP id l3mr25187591ybe.157.1600356212315;
+        Thu, 17 Sep 2020 08:23:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600356212; cv=none;
         d=google.com; s=arc-20160816;
-        b=CadgY275WEkm0h4JCdwyodkZWpoShRIhiwCa/VVEanQNh4gKTAuVk5q07tZ8oXxFr2
-         MR0qNNpoxHGXKGK6HD48s29Lt/HjwmARWwsPMsE6/oa2AzP+fYs7ApVavM4F7DYXiOLI
-         9v1LUNbRq1B0EgeIdyd5zbzXLb3Dca+JU9fud+4bkTaOHJaD5PwNhvpsasK6h2SoeE3V
-         o7jzcC39QEX8JGkVQ4BDiJ7xsxYPsCFvQ7kFjk6v2y0omvZFbEEUioRNkagOW5gTC11t
-         W7M7MbNEggCOCaGobzt2FlKTqcg5yFo0jnBJbF5f/X15vlNIN5L7C9XRkUlcBXmZUbof
-         90zw==
+        b=zM3irsUP5SnTKZWCvghuYMtg1z2V2yTUjYAu7CrQTxVPYvDAjYmB2xianCmxm95GcL
+         dhUWmvO/IJS6mfV0catRlO7s4oOqcF4cFn7p+w6mmzEJOV9ojW9d1bxI8RQsZHBW6+ZT
+         4TWJn3SvRzsbSms5ZqAoMBQKUitDJCZNw+Ey6SkKti4IY6uUfj1gaQ8VqnJtdTJLCs0N
+         LEhM4yz2MgHawe3STUqQ4GphGNOZRyd5/BEKGyqIzNo+ijuQ1jzhL/QaTPlQWdnQzAH0
+         Qv8ibobLRDEhfsZNivcoI/CYY/tpu27AKvhMucXCgwk+Rg51npWNs90LifK8TOGqvvST
+         IslA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
          :content-transfer-encoding:content-disposition:mime-version
          :references:message-id:subject:to:from:date:dkim-signature;
-        bh=Qija0jniBOLs5N6qr7SKNOjdKkyl4mPPcNefiWT4QYE=;
-        b=VWQ6pRxb1K4ufbBRMNqfh59IHtkSnjR8DPogEUuIckygFcc2sBBKhIZU4vRPv1OqWV
-         HphJDUFvR90cISvh8G8mbKnHT5X2/UfeU/AsHzF5maZSfy2zYyRYpyThSKSFXtpEp8Yb
-         Y0kF1TaHg9KK8KDFb7Mo8fIOFFj/8J3NVJDt4Sf81ucy4xTzcIkqeYD/YwpazItZEV6c
-         /58hfnix2fp9PyMiHoowL5qwHpLi4RAo0eWr3/y/+H+iO7RgI5iRgtoW7UE4HSdqa3Dh
-         xjUw8BBrPKm8v7VTZ0GNRXX78lOo0DQnhqNx8RtHayzk7W4X76oLvZeG0c8Nn/gAV5+3
-         mJhg==
+        bh=t93QmXvWf49oJ6tHh5ukHLlQ/jL/PlDziVbWsUzfxF0=;
+        b=QcyQznDjFNW77Gg95wvj8KtdvjhzNOz7EE7C3fBevoabF8UT5JK1pX0sUFc0y22E+6
+         amK9mfV0TSKqGfTfi7dhlszf1bm0nJPtWlXWCUskl7XpHrjDi65vJVx1KtiZA54BobVM
+         fStXEvNfFWjFw3jarbDwCxGqglpyu2ZhdWcPTGC3xvidnQnBgKaEBMXwuUhZMg0wQCGB
+         tDlvv20tCQrXoAvUdj5VhnecLGVMhZTBhTq0srsyNvGKxO5h+taCFoIu1TiQo90Wl7Wq
+         IdquclY1Q+mFB7iN0jBcO8QAhneqz/3ytK5GmGH1wGXf7vnMDuutrZpT3TX1PRkpxSby
+         fn9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qsDTBJkL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RnlkCLKv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x21si112997pfp.154.2020.09.17.07.59.23
+        by mx.google.com with ESMTPS id j190si14698770ybj.150.2020.09.17.08.23.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 07:59:23 -0700 (PDT)
+        Thu, 17 Sep 2020 08:23:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=qsDTBJkL;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RnlkCLKv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:56744 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36322 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIvNZ-0007la-3L
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 10:59:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51934)
+	id 1kIvkx-0003P4-70
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 11:23:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57212)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1kIvGq-0001dC-6o; Thu, 17 Sep 2020 10:52:25 -0400
-Received: from mail-lj1-x243.google.com ([2a00:1450:4864:20::243]:45578)
+ id 1kIvYN-0006Sc-DR; Thu, 17 Sep 2020 11:10:31 -0400
+Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:39763)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1kIvGj-0007ww-RT; Thu, 17 Sep 2020 10:52:23 -0400
-Received: by mail-lj1-x243.google.com with SMTP id c2so2270941ljj.12;
- Thu, 17 Sep 2020 07:52:16 -0700 (PDT)
+ id 1kIvYK-0002Ud-PB; Thu, 17 Sep 2020 11:10:31 -0400
+Received: by mail-lj1-x242.google.com with SMTP id u21so2345710ljl.6;
+ Thu, 17 Sep 2020 08:10:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=date:from:to:cc:subject:message-id:references:mime-version
  :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=Qija0jniBOLs5N6qr7SKNOjdKkyl4mPPcNefiWT4QYE=;
- b=qsDTBJkLNNCfon4VjloRdn8NUtflELX6D2rK+s/bvkr0wlqeR3ySqwm7Oqi475Bj0v
- HzoHgV4TprymlErNRQK+X0WOu2NqRZNyID8Hky1Bc/qBiS27QHozRP9XccIyml6MatF0
- YHYYUMkgaKZmEsutrz5L7J6h2nfswB1V0LoO4u7qvMN6FNXXOHTAnnLRL6HhnQUd2tCs
- eIQfDr5c8fZu6K8OUH9pY4U7lHyxnqrPP0R1+I0WeZFfSvCA30/1ail+UZZoWVzKQKDc
- 4P5HRxsSKSQxJtlPFe/N033PDct5dekZb8qWhRrZfauNZjyUhXZnq1E72igJu/24A2ys
- YqPw==
+ :user-agent; bh=t93QmXvWf49oJ6tHh5ukHLlQ/jL/PlDziVbWsUzfxF0=;
+ b=RnlkCLKvtnpPscBbHjg9Td1Sh3EXBregPZZtqPvfyuswaehWutH6DEUrO+8CkL290G
+ WZrhdK33LXAuhyYehGrNXwyQPvCjj3rW184P+SEugJSEGotXRApPE3B4sqbtYGy1OO6N
+ 4FWGYNiOS1xOmIJkhawM3FFzzskd3uJQZqMJrsuc/CzS1UU+O2nlRhSOGNA+PYtgFK+Z
+ VrgS3krcO3DWQahKZCim8/QIokhYjM4Sv2ieiOjCBUVaBsSp1pMkoqm+W17p4Kt0b+k5
+ g6I+TDe+qyUxgjvKEazlf66EuHXQFyIoxOgwvBYBM8apfYvTgCYeH74s2RLNjNtIQJAt
+ cnDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:date:from:to:cc:subject:message-id:references
  :mime-version:content-disposition:content-transfer-encoding
  :in-reply-to:user-agent;
- bh=Qija0jniBOLs5N6qr7SKNOjdKkyl4mPPcNefiWT4QYE=;
- b=VMLwMpF9LzeR6aRsIJaFxkRr7jIP7F/FdxDNCI5vLdhmNenc9QgczScKsgn6D/mBu4
- 6NwFL+1HXytsSMpuAwoOGDHmwMrwz1i2f99bGw7tiViYY2v2VWRscZRwoIPkWAOQFDa1
- SqJKu37LYR6ytIv1Rvj1VT2zn0dMEGp+79faHUJHzaUhrdyD7yjn1/unjH6j445PVh7+
- DL/SXtQEwO8eiuERJw09oRQMGeJ8ujvGc2kwOf7VxSHz4/3/FElNq8pqbU7L6EBav5+Q
- 0MzL2HozN2ypsljk+0XNqGt/nHnQ98nz5QKn3ld0y0MXEPCCiE1wLvaeJ7hMYm6zgw2R
- bm+g==
-X-Gm-Message-State: AOAM532ShOoPaSuGDQdv9sxapZEUT74Y4qZKkOMuTYTwG34lSCVxTQWI
- rJnG1Ob+o0CXa3gixoLlnC0ITZEuf60=
-X-Received: by 2002:a2e:8e71:: with SMTP id t17mr9765887ljk.413.1600354335125; 
- Thu, 17 Sep 2020 07:52:15 -0700 (PDT)
+ bh=t93QmXvWf49oJ6tHh5ukHLlQ/jL/PlDziVbWsUzfxF0=;
+ b=V5ZhDYqGa7uY3Yy1UdjB1JUrkydwmdsNEEem7+TsRPSKMPYQIvX3zArZ2jmG1WFU7n
+ JDYiQn6hobnHH/zXPwZbbkzd1vT2IGUx7PdURKkPq9y/XLAZd1z5WyBYQijoEeUJ0ywp
+ XbNXwBMwwfZNo7nVjVQLIj2fR74Iv/5sqbc8/k2aMOzwh/78T4enoC/0orJN1WKt4qQO
+ RHc1LQYsWmEMYuAvFXua0UYgmypv/n+8DQhSLvrCag+QMBDfVy1pHSgIFXs+5kLxQHjv
+ dViJKsVPanq5TrB9Rsf5hrhFtF4Y5wdC/F01S+TY6y+WnthPoUJFFGn5WOahgv8nVkSH
+ OCsg==
+X-Gm-Message-State: AOAM533iQLBpjLmoz7RtCg4g8wo5wJh+SmzFMB9PIKC558fIE9zpVnmJ
+ 7iK9JL1q1n5u9FZDZi1cStY=
+X-Received: by 2002:a2e:6f1c:: with SMTP id k28mr9517475ljc.297.1600355425763; 
+ Thu, 17 Sep 2020 08:10:25 -0700 (PDT)
 Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
  by smtp.gmail.com with ESMTPSA id
- b7sm5543039lfq.36.2020.09.17.07.52.14
+ o8sm5234603lfn.179.2020.09.17.08.10.24
  (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 17 Sep 2020 07:52:14 -0700 (PDT)
-Date: Thu, 17 Sep 2020 16:52:12 +0200
+ Thu, 17 Sep 2020 08:10:25 -0700 (PDT)
+Date: Thu, 17 Sep 2020 17:10:23 +0200
 From: Francisco Iglesias <frasse.iglesias@gmail.com>
 To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH v2 8/9] arm/aspeed: Replace mx25l25635e chip model
-Message-ID: <20200917145211.nwoc5ijytqjfb7c7@fralle-msi>
+Subject: Re: [PATCH v2 2/9] m25p80: Add the n25q256a SFDP table
+Message-ID: <20200917151022.vy5u6x5an23cnzhn@fralle-msi>
 References: <20200902093107.608000-1-clg@kaod.org>
- <20200902093107.608000-9-clg@kaod.org>
+ <20200902093107.608000-3-clg@kaod.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200902093107.608000-9-clg@kaod.org>
+In-Reply-To: <20200902093107.608000-3-clg@kaod.org>
 User-Agent: NeoMutt/20170113 (1.7.2)
-Received-SPF: pass client-ip=2a00:1450:4864:20::243;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x243.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::242;
+ envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x242.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -1020
@@ -126,52 +126,146 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
  qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XUB/Q+fnqd7r
+X-TUID: PnyM2uDGUrTR
 
-On [2020 Sep 02] Wed 11:31:06, Cédric Le Goater wrote:
-> A mx25l25635f chip model is generally found on these machines. It's
-> newer and uses 4B opcodes which is better to exercise the support in
-> the Linux kernel.
+Hi Cedric,
+
+On [2020 Sep 02] Wed 11:31:00, Cédric Le Goater wrote:
+> The same values were collected on 4 differents OpenPower systems,
+> palmettos, romulus and tacoma.
+> 
+> The SFDP table size is defined as being 0x100 bytes but it could be
+> bigger. Only the mandatory table for basic features is available at
+> byte 0x30.
 > 
 > Signed-off-by: Cédric Le Goater <clg@kaod.org>
-
-Reviewed-by: Francisco Iglesias <frasse.iglesias@gmail.com>
-
 > ---
->  hw/arm/aspeed.c | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
+>  hw/block/m25p80_sfdp.h |  2 ++
+>  hw/block/m25p80.c      |  6 +++--
+>  hw/block/m25p80_sfdp.c | 58 ++++++++++++++++++++++++++++++++++++++++++
+>  hw/block/meson.build   |  1 +
+>  4 files changed, 65 insertions(+), 2 deletions(-)
+>  create mode 100644 hw/block/m25p80_sfdp.c
 > 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index 8bfb1c79ddc5..df65d949b7e6 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -609,7 +609,7 @@ static void aspeed_machine_palmetto_class_init(ObjectClass *oc, void *data)
->      amc->soc_name  = "ast2400-a1";
->      amc->hw_strap1 = PALMETTO_BMC_HW_STRAP1;
->      amc->fmc_model = "n25q256a";
-> -    amc->spi_model = "mx25l25635e";
-> +    amc->spi_model = "mx25l25635f";
->      amc->num_cs    = 1;
->      amc->i2c_init  = palmetto_bmc_i2c_init;
->      mc->default_ram_size       = 256 * MiB;
-> @@ -643,7 +643,7 @@ static void aspeed_machine_ast2500_evb_class_init(ObjectClass *oc, void *data)
->      amc->soc_name  = "ast2500-a1";
->      amc->hw_strap1 = AST2500_EVB_HW_STRAP1;
->      amc->fmc_model = "w25q256";
-> -    amc->spi_model = "mx25l25635e";
-> +    amc->spi_model = "mx25l25635f";
->      amc->num_cs    = 1;
->      amc->i2c_init  = ast2500_evb_i2c_init;
->      mc->default_ram_size       = 512 * MiB;
-> @@ -710,7 +710,7 @@ static void aspeed_machine_witherspoon_class_init(ObjectClass *oc, void *data)
->      mc->desc       = "OpenPOWER Witherspoon BMC (ARM1176)";
->      amc->soc_name  = "ast2500-a1";
->      amc->hw_strap1 = WITHERSPOON_BMC_HW_STRAP1;
-> -    amc->fmc_model = "mx25l25635e";
-> +    amc->fmc_model = "mx25l25635f";
->      amc->spi_model = "mx66l1g45g";
->      amc->num_cs    = 2;
->      amc->i2c_init  = witherspoon_bmc_i2c_init;
+> diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
+> index 230b07ef3308..d3a0a778ae84 100644
+> --- a/hw/block/m25p80_sfdp.h
+> +++ b/hw/block/m25p80_sfdp.h
+> @@ -15,4 +15,6 @@
+>   */
+>  #define M25P80_SFDP_MAX_SIZE  (1 << 24)
+>  
+> +extern uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
+
+s/extern//
+
+> +
+>  #endif
+> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
+> index 4d6133b3594e..dbfd88b41a12 100644
+> --- a/hw/block/m25p80.c
+> +++ b/hw/block/m25p80.c
+> @@ -234,11 +234,13 @@ static const FlashPartInfo known_devices[] = {
+>      { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, ER_4K) },
+>      { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, ER_4K) },
+>      { INFO("n25q256a11",  0x20bb19,      0,  64 << 10, 512, ER_4K) },
+> -    { INFO("n25q256a13",  0x20ba19,      0,  64 << 10, 512, ER_4K) },
+> +    { INFO("n25q256a13",  0x20ba19,      0,  64 << 10, 512, ER_4K),
+> +      .sfdp_read = m25p80_sfdp_n25q256a },
+>      { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
+>      { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+>      { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
+> -    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
+> +    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K),
+> +      .sfdp_read = m25p80_sfdp_n25q256a },
+>      { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
+>      { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
+>      { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
+> diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
+> new file mode 100644
+> index 000000000000..24ec05de79a1
+> --- /dev/null
+> +++ b/hw/block/m25p80_sfdp.c
+> @@ -0,0 +1,58 @@
+> +/*
+> + * M25P80 Serial Flash Discoverable Parameter (SFDP)
+> + *
+> + * Copyright (c) 2020, IBM Corporation.
+> + *
+> + * This code is licensed under the GPL version 2 or later. See the
+> + * COPYING file in the top-level directory.
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qemu/host-utils.h"
+> +#include "m25p80_sfdp.h"
+> +
+> +#define define_sfdp_read(model)                                       \
+> +    uint8_t m25p80_sfdp_##model(uint32_t addr)                        \
+> +    {                                                                 \
+> +        assert(is_power_of_2(sizeof(sfdp_##model)));                  \
+> +        return sfdp_##model[addr & (sizeof(sfdp_##model) - 1)];       \
+> +    }
+> +
+> +/*
+> + * Micron
+> + */
+> +static const uint8_t sfdp_n25q256a[] = {
+> +    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x00, 0xff,
+> +    0x00, 0x00, 0x01, 0x09, 0x30, 0x00, 0x00, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xe5, 0x20, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x0f,
+> +    0x29, 0xeb, 0x27, 0x6b, 0x08, 0x3b, 0x27, 0xbb,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x27, 0xbb,
+> +    0xff, 0xff, 0x29, 0xeb, 0x0c, 0x20, 0x10, 0xd8,
+> +    0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+
+Looking at the SFDP spec I have it says that reserved locations (unused or not
+yet defined memory in the address space) are recommended to return 0xFF. Do you
+think we could use that and somehow and return 0xFF by default above instead of
+having them in the array? (The file will not grow as fast then)
+
+Best regards,
+Francisco Iglesias
+
+> +};
+> +define_sfdp_read(n25q256a);
+> diff --git a/hw/block/meson.build b/hw/block/meson.build
+> index 78cad8f7cba1..6f0380a12081 100644
+> --- a/hw/block/meson.build
+> +++ b/hw/block/meson.build
+> @@ -10,6 +10,7 @@ softmmu_ss.add(when: 'CONFIG_ONENAND', if_true: files('onenand.c'))
+>  softmmu_ss.add(when: 'CONFIG_PFLASH_CFI01', if_true: files('pflash_cfi01.c'))
+>  softmmu_ss.add(when: 'CONFIG_PFLASH_CFI02', if_true: files('pflash_cfi02.c'))
+>  softmmu_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80.c'))
+> +softmmu_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80_sfdp.c'))
+>  softmmu_ss.add(when: 'CONFIG_SWIM', if_true: files('swim.c'))
+>  softmmu_ss.add(when: 'CONFIG_XEN', if_true: files('xen-block.c'))
+>  softmmu_ss.add(when: 'CONFIG_SH4', if_true: files('tc58128.c'))
 > -- 
 > 2.25.4
 > 

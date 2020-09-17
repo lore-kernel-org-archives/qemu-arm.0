@@ -1,74 +1,72 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp211486lfq;
-        Wed, 16 Sep 2020 20:26:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyhBT6foUu/JVwN/BHZpKdh1sF5r3s7fHYbXt+9zyPGE7aG0xQZo+R5nbyk3S+/PV6wXGiL
-X-Received: by 2002:a25:5855:: with SMTP id m82mr39091417ybb.329.1600313188834;
-        Wed, 16 Sep 2020 20:26:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600313188; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp211579lfq;
+        Wed, 16 Sep 2020 20:26:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwwwx5NGwWQe0dzSvouZkg5THeSC+qstSYGI2EDiyV75xVy4x8HA4t8roYUjTRhypLXllV3
+X-Received: by 2002:a25:81cb:: with SMTP id n11mr40052487ybm.490.1600313201043;
+        Wed, 16 Sep 2020 20:26:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600313201; cv=none;
         d=google.com; s=arc-20160816;
-        b=M5RWyyTwRNB0k7Q/S1Is80OzwHIgVKF/8omC4eJMi66PxRqVg4s+2OBN0sQzVlpsKY
-         pWqNQcT9Gw+GDOH0hGFmMGwsljRD/2gVgofG3AkKJ12UiUpZ8O1YO2Um2zfBgM5/pzz7
-         V0KKurlUWYqILfIuMPzaEH5gR21DgiCM1icYks9eYWoW2NVO9LqnDh+XwS2Vie7QMISe
-         ycya9YiWf0AtFbCAloSxZsIIh0PNu86OVzr3lnygVm+LpWezqvfvzjJi+x8N5stIomR2
-         Lla835Br/EaO4iG7PdXzmEVMbCT/G9pibB/5LVvxBm8OVvqnxcOxxy469c1a8AxC0vez
-         Zl0w==
+        b=o58yMGwH70v20KKu2ppBkGQBLdAwynhbuW0PmeZi8GulUZbhTsz6d4Lwov6JSZGWeK
+         mz/3ToWaO39pvR0xzVFJJoiI9kQpKoHPcBMJ83/1Vf023jTaLK5+HXPZKQEI+CATWyfa
+         Z+rIQVqEUp0Y+kYlPn4mM6UlL/iZMDYBY6aQhBlTpwXan/RomlSN8Agzm1ZUyw3c7VuM
+         WXMA8WzFrbjfy498IgyjodQZYgqVHHIHPSVgqCe8saMkNvbwnLnkUc+nFPHIVAyH0j2e
+         n2Zv2pvKrxkkGa3rr94FV0ovKiwPeh5lc1tE7S4tvu4KVPmiD6O7jfVcfSOJ4L2jL834
+         OVJg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=mjOPCLsznwMg/oNntN3VcTXnYKi/8OzW9bXoUoHKq8g=;
-        b=BL92bet7QGEqcO7hhkj4uCS4AwmLeTswBiVA01P6PLre8cRHF5OAMCclzYxfIRslx+
-         /uQKf6J+0PAIqirc0zR7SwQP9wnrQ2o04YNKeuH6Mgcsn+sbx6b0Q0HmAEdmCuuI53yc
-         Bfmwmf8139dqlULb6cZau1HwfToaRKJYNf2/NWnurIVez5ZjcouMqcaYEcv+E6lVU9gj
-         ja2wHfhQ7XhVcHEhKP9baIrmkKuxsE6ZMOTvNR6O4BKsqLUh24VriPx3IvfEr2bODA3K
-         urwU+fxPIew8FthwvzxAH93yVmpsUOvsiapifEQsreDVc5IdJF0Ki+xii5CWnvbAB9RJ
-         iG/Q==
+         :mime-version:message-id:date:subject:to:from;
+        bh=TadSj3vChi2ZCE4BzxHK/X7JEFqhlUwq2LpNiIQhuaM=;
+        b=NfgFriFlWFvfDIpeNwNWWXnLcVx1uc5iWKqveWaYCze1jcF+c9dpUSd3ng78vEhq+9
+         fKktUGjKt+fyzJsNg2+IYsm83zhppvDFm1qNadxbsNYdWBTPlZ8WZtwjFrIca1XCp0UL
+         AH7mwHTWZCsj8JwBVHOkpj0OBOPhZde5Dc+Ywy1mgPF15HS+EIlw2gsc3AJOigkK3B0Z
+         znaIWSx5bKvs5aHZ7L7v2UZZJqbrpZtcp2ffDTMcwMSabF9v84P6LrzGFVgGK3t3XH57
+         O6kLTGYFP0kPcIuXpk+R4eV1kZ62X1+5WsGs0yKp7Th7cog3CpY62do+nqowlLj2bRQ4
+         XQ5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j190si12999441ybj.150.2020.09.16.20.26.28
+        by mx.google.com with ESMTPS id c189si10714962yba.291.2020.09.16.20.26.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Sep 2020 20:26:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Sep 2020 20:26:41 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57818 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:60264 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIkZ2-0002ww-3n
-	for alex.bennee@linaro.org; Wed, 16 Sep 2020 23:26:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47940)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kIkZE-00049G-Bu
+	for alex.bennee@linaro.org; Wed, 16 Sep 2020 23:26:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47982)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIkUR-00054e-DZ; Wed, 16 Sep 2020 23:21:43 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:4747 helo=huawei.com)
+ id 1kIkUS-00058i-Tx; Wed, 16 Sep 2020 23:21:44 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:44580 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIkUM-0004RL-LY; Wed, 16 Sep 2020 23:21:43 -0400
-Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id D3C28BAC7ABDFF61A6C6;
- Thu, 17 Sep 2020 11:21:08 +0800 (CST)
-Received: from localhost (10.174.185.104) by DGGEMS404-HUB.china.huawei.com
- (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
- 11:20:58 +0800
+ id 1kIkUM-0004QF-Bt; Wed, 16 Sep 2020 23:21:44 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 02EE63B39BCAAE14CE4B;
+ Thu, 17 Sep 2020 11:20:51 +0800 (CST)
+Received: from localhost (10.174.185.104) by DGGEMS414-HUB.china.huawei.com
+ (10.3.19.214) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
+ 11:20:42 +0800
 From: Ying Fang <fangying1@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [RFC PATCH 06/12] hw/arm/virt-acpi-build: distinguish possible and
- present cpus
-Date: Thu, 17 Sep 2020 11:20:27 +0800
-Message-ID: <20200917032033.2020-7-fangying1@huawei.com>
+Subject: [RFC PATCH 00/12] hw/arm/virt: Introduce cpu and cache topology
+ support
+Date: Thu, 17 Sep 2020 11:20:21 +0800
+Message-ID: <20200917032033.2020-1-fangying1@huawei.com>
 X-Mailer: git-send-email 2.26.0.windows.1
-In-Reply-To: <20200917032033.2020-1-fangying1@huawei.com>
-References: <20200917032033.2020-1-fangying1@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.185.104]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191; envelope-from=fangying1@huawei.com;
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=fangying1@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 23:21:09
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 23:20:51
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -77,97 +75,79 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com,
  zhang.zhanghailiang@huawei.com, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
  qemu-arm@nongnu.org, alistair.francis@wdc.com,
  Ying Fang <fangying1@huawei.com>, imammedo@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: S7t+kSdbk2bl
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: xhPmer48bq6Q
 
-When building ACPI tables regarding CPUs we should always build
-them for the number of possible CPUs, not the number of present
-CPUs. We then ensure only the present CPUs are enabled.
+An accurate cpu topology may help improve the cpu scheduler's decision
+making when dealing with multi-core system. So cpu topology description
+is helpful to provide guest with the right view. Cpu cache information may
+also have slight impact on the sched domain, and even userspace software
+may check the cpu cache information to do some optimizations. Thus this patch
+series is posted to provide cpu and cache topology support for arm.
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
-Signed-off-by: Ying Fang <fangying1@huawei.com>
----
- hw/arm/virt-acpi-build.c | 17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
+To make the cpu topology consistent with MPIDR, an vcpu ioctl
+KVM_ARM_SET_MP_AFFINITY is introduced so that userspace can set MPIDR
+according to the topology specified [1]. To describe the cpu topology
+both fdt and ACPI are supported. To describe the cpu cache information,
+a default cache hierarchy is given and can be made configurable later.
+The cpu topology is built according to processor hierarchy node structure.
+The cpu cache information is built according to cache type structure.
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 9efd7a3881..f1d574b5d3 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -56,14 +56,18 @@
- 
- #define ARM_SPI_BASE 32
- 
--static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
-+static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
- {
-     uint16_t i;
-+    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
- 
--    for (i = 0; i < smp_cpus; i++) {
-+    for (i = 0; i < possible_cpus->len; i++) {
-         Aml *dev = aml_device("C%.03X", i);
-         aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
-         aml_append(dev, aml_name_decl("_UID", aml_int(i)));
-+        if (possible_cpus->cpus[i].cpu == NULL) {
-+            aml_append(dev, aml_name_decl("_STA", aml_int(0)));
-+        }
-         aml_append(scope, dev);
-     }
- }
-@@ -635,6 +639,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     const int *irqmap = vms->irqmap;
-     AcpiMadtGenericDistributor *gicd;
-     AcpiMadtGenericMsiFrame *gic_msi;
-+    int possible_cpus = MACHINE(vms)->possible_cpus->len;
-     int i;
- 
-     acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
-@@ -645,7 +650,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
-     gicd->version = vms->gic_version;
- 
--    for (i = 0; i < vms->smp_cpus; i++) {
-+    for (i = 0; i < possible_cpus; i++) {
-         AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
-                                                            sizeof(*gicc));
-         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
-@@ -660,7 +665,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-         gicc->cpu_interface_number = cpu_to_le32(i);
-         gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
-         gicc->uid = cpu_to_le32(i);
--        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
-+        if (i < vms->smp_cpus) {
-+            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
-+        }
- 
-         if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
-             gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
-@@ -764,7 +771,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-      * the RTC ACPI device at all when using UEFI.
-      */
-     scope = aml_scope("\\_SB");
--    acpi_dsdt_add_cpus(scope, vms->smp_cpus);
-+    acpi_dsdt_add_cpus(scope, vms);
-     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
-                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
-     if (vmc->acpi_expose_flash) {
+This patch series is partially based on the patches posted by Andrew Jone
+years ago [2], I jumped in on it since some OS vendor cooperative partners
+are eager for it. Thanks for Andrew's contribution. Please feel free to reply
+to me if there is anything improper.
+
+[1] https://patchwork.kernel.org/cover/11781317
+[2] https://patchwork.ozlabs.org/project/qemu-devel/cover/20180704124923.32483-1-drjones@redhat.com
+
+Andrew Jones (2):
+  device_tree: add qemu_fdt_add_path
+  hw/arm/virt: DT: add cpu-map
+
+Ying Fang (10):
+  linux headers: Update linux header with KVM_ARM_SET_MP_AFFINITY
+  target/arm/kvm64: make MPIDR consistent with CPU Topology
+  target/arm/kvm32: make MPIDR consistent with CPU Topology
+  hw/arm/virt-acpi-build: distinguish possible and present cpus
+  hw/acpi/aml-build: add processor hierarchy node structure
+  hw/arm/virt-acpi-build: add PPTT table
+  target/arm/cpu: Add CPU cache description for arm
+  hw/arm/virt: add fdt cache information
+  hw/acpi/aml-build: build ACPI CPU cache topology information
+  hw/arm/virt-acpi-build: Enable CPU cache topology
+
+ device_tree.c                |  24 +++++++
+ hw/acpi/aml-build.c          |  68 +++++++++++++++++++
+ hw/arm/virt-acpi-build.c     |  99 +++++++++++++++++++++++++--
+ hw/arm/virt.c                | 128 ++++++++++++++++++++++++++++++++++-
+ include/hw/acpi/acpi-defs.h  |  14 ++++
+ include/hw/acpi/aml-build.h  |  11 +++
+ include/hw/arm/virt.h        |   1 +
+ include/sysemu/device_tree.h |   1 +
+ linux-headers/linux/kvm.h    |   3 +
+ target/arm/cpu.c             |  42 ++++++++++++
+ target/arm/cpu.h             |  27 ++++++++
+ target/arm/kvm32.c           |  46 ++++++++++---
+ target/arm/kvm64.c           |  46 ++++++++++---
+ 13 files changed, 488 insertions(+), 22 deletions(-)
+
 -- 
 2.23.0
 

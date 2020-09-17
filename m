@@ -1,271 +1,151 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp676590lfq;
-        Thu, 17 Sep 2020 08:23:32 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwsW7SW9seLGGLkwpGeA1tR/DMBcvbC6zo/JXcfqrvZYAzuzfF+ez6cXip1Vy715SN169VX
-X-Received: by 2002:a25:ad43:: with SMTP id l3mr25187591ybe.157.1600356212315;
-        Thu, 17 Sep 2020 08:23:32 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600356212; cv=none;
+Received: by 2002:a05:6214:13e3:0:0:0:0 with SMTP id ch3csp1656778qvb;
+        Thu, 17 Sep 2020 10:05:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwYSc2xyOPf56M/MEMEoGlfYHXvPXoHWIVDzYfY8xKpCePcb/yk93zDHe5/YRNm8QH6lQKq
+X-Received: by 2002:ab0:748e:: with SMTP id n14mr13287014uap.91.1600362332615;
+        Thu, 17 Sep 2020 10:05:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600362332; cv=none;
         d=google.com; s=arc-20160816;
-        b=zM3irsUP5SnTKZWCvghuYMtg1z2V2yTUjYAu7CrQTxVPYvDAjYmB2xianCmxm95GcL
-         dhUWmvO/IJS6mfV0catRlO7s4oOqcF4cFn7p+w6mmzEJOV9ojW9d1bxI8RQsZHBW6+ZT
-         4TWJn3SvRzsbSms5ZqAoMBQKUitDJCZNw+Ey6SkKti4IY6uUfj1gaQ8VqnJtdTJLCs0N
-         LEhM4yz2MgHawe3STUqQ4GphGNOZRyd5/BEKGyqIzNo+ijuQ1jzhL/QaTPlQWdnQzAH0
-         Qv8ibobLRDEhfsZNivcoI/CYY/tpu27AKvhMucXCgwk+Rg51npWNs90LifK8TOGqvvST
-         IslA==
+        b=bem0RovpVIfI4oR7CqkzmPBnuFu3VKDBaTW6hMcagSImX8uhZ6pOJcuPqzVtO6koK+
+         0audsyfLs5xJDN0B8sPlNgwqrU7rQYVuaDlRu9wfyqyWFOdaFQJzdLtj0FkvfUPN8Vtg
+         PCqVw1al9/NzhjNwGobMEOwOJT6N36gLlPbU/Wv3rki/cjFESZ6J1yF2WDD20Y1LlNW9
+         DPWbMPLUqk+XpmIMf88b9uFYKJxa3NKcGQoYihL40Z7DWEszY8CugWPiT3WAeQiji2/m
+         v5vXS75ZrT3DpYK0t2805OoOMzHQ3r+jUoT/RZX943TLsgPopX9cHXVpluYPFh2+ZRsA
+         GgsQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:user-agent:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=t93QmXvWf49oJ6tHh5ukHLlQ/jL/PlDziVbWsUzfxF0=;
-        b=QcyQznDjFNW77Gg95wvj8KtdvjhzNOz7EE7C3fBevoabF8UT5JK1pX0sUFc0y22E+6
-         amK9mfV0TSKqGfTfi7dhlszf1bm0nJPtWlXWCUskl7XpHrjDi65vJVx1KtiZA54BobVM
-         fStXEvNfFWjFw3jarbDwCxGqglpyu2ZhdWcPTGC3xvidnQnBgKaEBMXwuUhZMg0wQCGB
-         tDlvv20tCQrXoAvUdj5VhnecLGVMhZTBhTq0srsyNvGKxO5h+taCFoIu1TiQo90Wl7Wq
-         IdquclY1Q+mFB7iN0jBcO8QAhneqz/3ytK5GmGH1wGXf7vnMDuutrZpT3TX1PRkpxSby
-         fn9A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=4l/CKTt+rFIyqgOWynJ5zSqnVe4MEVaE1yhkFm5T8IY=;
+        b=yugXV0lLdNjrKuB8uj14JcmBae06UEjgIO+3D2hSBaTiikh/Am40yprfzkw7FwQpO4
+         tZUQPtuh3inseAAcu9rzMXLukRtqLdX/VtMGAZ9TUqKMWzt6bAfNFB93Z51BXP18ouy3
+         rOcz2F262NMjxIlK+Htwnq6gcw4hG9tgtivwoMPz3N9tfZxgzgmNNbAXPAidtAbBJ+BO
+         PaVak37n6QePq8EcjF3vHy9XXLbeM2jTEKYVpf+7unPHNDhwsE8+yv/OBhafwM9kkpAj
+         WJvEw54CBsulKx0G/hqakN4PACcD9q5Rq/j4RLAWX5nMvRostoSTeoc1lpgJoPH481wq
+         idZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RnlkCLKv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j190si14698770ybj.150.2020.09.17.08.23.31
+        by mx.google.com with ESMTPS id g25si131411vsa.289.2020.09.17.10.05.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 08:23:32 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Sep 2020 10:05:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RnlkCLKv;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36322 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:52718 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIvkx-0003P4-70
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 11:23:31 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57212)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kIxLg-0007YA-1m
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 13:05:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1kIvYN-0006Sc-DR; Thu, 17 Sep 2020 11:10:31 -0400
-Received: from mail-lj1-x242.google.com ([2a00:1450:4864:20::242]:39763)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <frasse.iglesias@gmail.com>)
- id 1kIvYK-0002Ud-PB; Thu, 17 Sep 2020 11:10:31 -0400
-Received: by mail-lj1-x242.google.com with SMTP id u21so2345710ljl.6;
- Thu, 17 Sep 2020 08:10:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to
- :user-agent; bh=t93QmXvWf49oJ6tHh5ukHLlQ/jL/PlDziVbWsUzfxF0=;
- b=RnlkCLKvtnpPscBbHjg9Td1Sh3EXBregPZZtqPvfyuswaehWutH6DEUrO+8CkL290G
- WZrhdK33LXAuhyYehGrNXwyQPvCjj3rW184P+SEugJSEGotXRApPE3B4sqbtYGy1OO6N
- 4FWGYNiOS1xOmIJkhawM3FFzzskd3uJQZqMJrsuc/CzS1UU+O2nlRhSOGNA+PYtgFK+Z
- VrgS3krcO3DWQahKZCim8/QIokhYjM4Sv2ieiOjCBUVaBsSp1pMkoqm+W17p4Kt0b+k5
- g6I+TDe+qyUxgjvKEazlf66EuHXQFyIoxOgwvBYBM8apfYvTgCYeH74s2RLNjNtIQJAt
- cnDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to:user-agent;
- bh=t93QmXvWf49oJ6tHh5ukHLlQ/jL/PlDziVbWsUzfxF0=;
- b=V5ZhDYqGa7uY3Yy1UdjB1JUrkydwmdsNEEem7+TsRPSKMPYQIvX3zArZ2jmG1WFU7n
- JDYiQn6hobnHH/zXPwZbbkzd1vT2IGUx7PdURKkPq9y/XLAZd1z5WyBYQijoEeUJ0ywp
- XbNXwBMwwfZNo7nVjVQLIj2fR74Iv/5sqbc8/k2aMOzwh/78T4enoC/0orJN1WKt4qQO
- RHc1LQYsWmEMYuAvFXua0UYgmypv/n+8DQhSLvrCag+QMBDfVy1pHSgIFXs+5kLxQHjv
- dViJKsVPanq5TrB9Rsf5hrhFtF4Y5wdC/F01S+TY6y+WnthPoUJFFGn5WOahgv8nVkSH
- OCsg==
-X-Gm-Message-State: AOAM533iQLBpjLmoz7RtCg4g8wo5wJh+SmzFMB9PIKC558fIE9zpVnmJ
- 7iK9JL1q1n5u9FZDZi1cStY=
-X-Received: by 2002:a2e:6f1c:: with SMTP id k28mr9517475ljc.297.1600355425763; 
- Thu, 17 Sep 2020 08:10:25 -0700 (PDT)
-Received: from fralle-msi (31-208-27-151.cust.bredband2.com. [31.208.27.151])
- by smtp.gmail.com with ESMTPSA id
- o8sm5234603lfn.179.2020.09.17.08.10.24
- (version=TLS1_2 cipher=ECDHE-RSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 17 Sep 2020 08:10:25 -0700 (PDT)
-Date: Thu, 17 Sep 2020 17:10:23 +0200
-From: Francisco Iglesias <frasse.iglesias@gmail.com>
-To: =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>
-Subject: Re: [PATCH v2 2/9] m25p80: Add the n25q256a SFDP table
-Message-ID: <20200917151022.vy5u6x5an23cnzhn@fralle-msi>
-References: <20200902093107.608000-1-clg@kaod.org>
- <20200902093107.608000-3-clg@kaod.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kIxJy-0006Mh-0Y; Thu, 17 Sep 2020 13:03:46 -0400
+Received: from smtpout1.mo804.mail-out.ovh.net ([79.137.123.220]:48151)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kIxJw-0005ek-0C; Thu, 17 Sep 2020 13:03:45 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.16.64])
+ by mo804.mail-out.ovh.net (Postfix) with ESMTPS id ABBB762C261F;
+ Thu, 17 Sep 2020 19:03:39 +0200 (CEST)
+Received: from kaod.org (37.59.142.95) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 17 Sep
+ 2020 19:03:38 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-95G001e665840b-41c7-424d-a326-2d6e643fb57f,
+ FF1720B74B3888C93CA5040C1F5ACCC945AC33B8) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH] hw/arm/aspeed: Map the UART5 device unconditionally
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ <qemu-devel@nongnu.org>
+References: <20200905212415.760452-1-f4bug@amsat.org>
+ <e640309b-b694-e815-d64d-40dd453e52ef@amsat.org>
+ <5e27c1f9-6d11-fa62-ba71-0020ce9d595b@kaod.org>
+ <07b21d1d-fb5b-efb0-50f2-54a4b86df444@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <4648c188-cacc-c532-857c-f0206f60e109@kaod.org>
+Date: Thu, 17 Sep 2020 19:03:38 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <07b21d1d-fb5b-efb0-50f2-54a4b86df444@amsat.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20200902093107.608000-3-clg@kaod.org>
-User-Agent: NeoMutt/20170113 (1.7.2)
-Received-SPF: pass client-ip=2a00:1450:4864:20::242;
- envelope-from=frasse.iglesias@gmail.com; helo=mail-lj1-x242.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -1020
-X-Spam_score: -102.1
-X-Spam_bar: ---------------------------------------------------
-X-Spam_report: (-102.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_WELCOMELIST=-0.01,
- USER_IN_WHITELIST=-100 autolearn=ham autolearn_force=no
+X-Originating-IP: [37.59.142.95]
+X-ClientProxiedBy: DAG5EX2.mxp5.local (172.16.2.42) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: 3561077f-3dce-4517-a17d-727132410fa7
+X-Ovh-Tracer-Id: 10874785728916392742
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrtdeggdduuddtucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeehtdeviefhgfeugfevjeeiveefvedtvdehhfejleduveejieefhfeffeetfeeunecuffhomhgrihhnpehoiihlrggsshdrohhrghenucfkpheptddrtddrtddrtddpfeejrdehledrudegvddrleehnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehfgegsuhhgsegrmhhsrghtrdhorhhg
+Received-SPF: pass client-ip=79.137.123.220; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo804.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 13:03:40
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PnyM2uDGUrTR
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: RA7sB4ZopIRB
 
-Hi Cedric,
-
-On [2020 Sep 02] Wed 11:31:00, Cédric Le Goater wrote:
-> The same values were collected on 4 differents OpenPower systems,
-> palmettos, romulus and tacoma.
+On 9/17/20 6:57 PM, Philippe Mathieu-DaudÃ© wrote:
+> On 9/16/20 7:51 AM, CÃ©dric Le Goater wrote:
+>> On 9/15/20 7:23 PM, Philippe Mathieu-DaudÃ© wrote:
+>>> ping?
+>>
+>> It's reviewed : 
+>>
+>>   http://patchwork.ozlabs.org/project/qemu-devel/patch/20200905212415.760452-1-f4bug@amsat.org/
+>>
 > 
-> The SFDP table size is defined as being 0x100 bytes but it could be
-> bigger. Only the mandatory table for basic features is available at
-> byte 0x30.
+> Yes I know :) This is part of my routine to check if a
+> patch hasn't been confirmed to be queued 1 week after the
+> last review, to ping the maintainer (because some
+> automatically flush patches older than 1month in their
+> mailbox).
+
+ooh. That's brutal.
+
+>> I will send a PR when I have more patches.
 > 
-> Signed-off-by: Cédric Le Goater <clg@kaod.org>
-> ---
->  hw/block/m25p80_sfdp.h |  2 ++
->  hw/block/m25p80.c      |  6 +++--
->  hw/block/m25p80_sfdp.c | 58 ++++++++++++++++++++++++++++++++++++++++++
->  hw/block/meson.build   |  1 +
->  4 files changed, 65 insertions(+), 2 deletions(-)
->  create mode 100644 hw/block/m25p80_sfdp.c
-> 
-> diff --git a/hw/block/m25p80_sfdp.h b/hw/block/m25p80_sfdp.h
-> index 230b07ef3308..d3a0a778ae84 100644
-> --- a/hw/block/m25p80_sfdp.h
-> +++ b/hw/block/m25p80_sfdp.h
-> @@ -15,4 +15,6 @@
->   */
->  #define M25P80_SFDP_MAX_SIZE  (1 << 24)
->  
-> +extern uint8_t m25p80_sfdp_n25q256a(uint32_t addr);
+> Ah OK. I didn't know you would keep merging the Aspeed
+> patches. Since this was a single patch, I thought it would
+> go via the usual qemu-arm queue from Peter.
 
-s/extern//
+sure. It could also. Fine with me. I have only three for the
+moment. 
 
-> +
->  #endif
-> diff --git a/hw/block/m25p80.c b/hw/block/m25p80.c
-> index 4d6133b3594e..dbfd88b41a12 100644
-> --- a/hw/block/m25p80.c
-> +++ b/hw/block/m25p80.c
-> @@ -234,11 +234,13 @@ static const FlashPartInfo known_devices[] = {
->      { INFO("n25q128a11",  0x20bb18,      0,  64 << 10, 256, ER_4K) },
->      { INFO("n25q128a13",  0x20ba18,      0,  64 << 10, 256, ER_4K) },
->      { INFO("n25q256a11",  0x20bb19,      0,  64 << 10, 512, ER_4K) },
-> -    { INFO("n25q256a13",  0x20ba19,      0,  64 << 10, 512, ER_4K) },
-> +    { INFO("n25q256a13",  0x20ba19,      0,  64 << 10, 512, ER_4K),
-> +      .sfdp_read = m25p80_sfdp_n25q256a },
->      { INFO("n25q512a11",  0x20bb20,      0,  64 << 10, 1024, ER_4K) },
->      { INFO("n25q512a13",  0x20ba20,      0,  64 << 10, 1024, ER_4K) },
->      { INFO("n25q128",     0x20ba18,      0,  64 << 10, 256, 0) },
-> -    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K) },
-> +    { INFO("n25q256a",    0x20ba19,      0,  64 << 10, 512, ER_4K),
-> +      .sfdp_read = m25p80_sfdp_n25q256a },
->      { INFO("n25q512a",    0x20ba20,      0,  64 << 10, 1024, ER_4K) },
->      { INFO("n25q512ax3",  0x20ba20,  0x1000,  64 << 10, 1024, ER_4K) },
->      { INFO("mt25ql512ab", 0x20ba20, 0x1044, 64 << 10, 1024, ER_4K | ER_32K) },
-> diff --git a/hw/block/m25p80_sfdp.c b/hw/block/m25p80_sfdp.c
-> new file mode 100644
-> index 000000000000..24ec05de79a1
-> --- /dev/null
-> +++ b/hw/block/m25p80_sfdp.c
-> @@ -0,0 +1,58 @@
-> +/*
-> + * M25P80 Serial Flash Discoverable Parameter (SFDP)
-> + *
-> + * Copyright (c) 2020, IBM Corporation.
-> + *
-> + * This code is licensed under the GPL version 2 or later. See the
-> + * COPYING file in the top-level directory.
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qemu/host-utils.h"
-> +#include "m25p80_sfdp.h"
-> +
-> +#define define_sfdp_read(model)                                       \
-> +    uint8_t m25p80_sfdp_##model(uint32_t addr)                        \
-> +    {                                                                 \
-> +        assert(is_power_of_2(sizeof(sfdp_##model)));                  \
-> +        return sfdp_##model[addr & (sizeof(sfdp_##model) - 1)];       \
-> +    }
-> +
-> +/*
-> + * Micron
-> + */
-> +static const uint8_t sfdp_n25q256a[] = {
-> +    0x53, 0x46, 0x44, 0x50, 0x00, 0x01, 0x00, 0xff,
-> +    0x00, 0x00, 0x01, 0x09, 0x30, 0x00, 0x00, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xe5, 0x20, 0xfb, 0xff, 0xff, 0xff, 0xff, 0x0f,
-> +    0x29, 0xeb, 0x27, 0x6b, 0x08, 0x3b, 0x27, 0xbb,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x27, 0xbb,
-> +    0xff, 0xff, 0x29, 0xeb, 0x0c, 0x20, 0x10, 0xd8,
-> +    0x00, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
-> +    0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
+> No rush, I just wanted to be sure the patch was not lost.
+> Also, once a patch is queued, I understand it is the
+> maintainer responsibility to keep rebasing the patch
+> queued.
 
-Looking at the SFDP spec I have it says that reserved locations (unused or not
-yet defined memory in the address space) are recommended to return 0xFF. Do you
-think we could use that and somehow and return 0xFF by default above instead of
-having them in the array? (The file will not grow as fast then)
+yes. I know. I have been taking care of Andrew's ADC patches 
+since 2017 ... cough cough :)
 
-Best regards,
-Francisco Iglesias
+Cheers,
 
-> +};
-> +define_sfdp_read(n25q256a);
-> diff --git a/hw/block/meson.build b/hw/block/meson.build
-> index 78cad8f7cba1..6f0380a12081 100644
-> --- a/hw/block/meson.build
-> +++ b/hw/block/meson.build
-> @@ -10,6 +10,7 @@ softmmu_ss.add(when: 'CONFIG_ONENAND', if_true: files('onenand.c'))
->  softmmu_ss.add(when: 'CONFIG_PFLASH_CFI01', if_true: files('pflash_cfi01.c'))
->  softmmu_ss.add(when: 'CONFIG_PFLASH_CFI02', if_true: files('pflash_cfi02.c'))
->  softmmu_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80.c'))
-> +softmmu_ss.add(when: 'CONFIG_SSI_M25P80', if_true: files('m25p80_sfdp.c'))
->  softmmu_ss.add(when: 'CONFIG_SWIM', if_true: files('swim.c'))
->  softmmu_ss.add(when: 'CONFIG_XEN', if_true: files('xen-block.c'))
->  softmmu_ss.add(when: 'CONFIG_SH4', if_true: files('tc58128.c'))
-> -- 
-> 2.25.4
-> 
+C.

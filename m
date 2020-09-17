@@ -1,298 +1,223 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp359470lfq;
-        Thu, 17 Sep 2020 00:58:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxjmtcSDs+vG8NiLqY0Wi65LEl5qlQ1DIQ7OJqfJEGp7nmG/S0dRxB8MzXjYz0ug37+Y4G2
-X-Received: by 2002:a50:ed94:: with SMTP id h20mr31579225edr.184.1600329487623;
-        Thu, 17 Sep 2020 00:58:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600329487; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp363880lfq;
+        Thu, 17 Sep 2020 01:04:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxC+jpM16Wqm5UcrN+5o3bi3Yvm+GI7E3oktMTM3zq8q4RwIaj1yo6aVyz4WbdpxQR3T/g6
+X-Received: by 2002:a25:ac28:: with SMTP id w40mr25039275ybi.359.1600329840944;
+        Thu, 17 Sep 2020 01:04:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600329840; cv=none;
         d=google.com; s=arc-20160816;
-        b=tXEa24FJULiUV+G1+sM0R8bW9a8Qgn1Osmm04yARmlCfAQI+n8fTl9OAmcb9+y/e88
-         xH5kz9Y+l/GoyxNHkPfO8EvsRJ0ZccRD8FIbOr5b4A4lQ4N1CtKWiPRW4l1jg8n+8+Fv
-         6J5Wj0dIklhrAWWYSgJw6rQVhPiAbXWqzAKCmg8bkVslNf4txbCZDAE3hhNoPrd6lcCY
-         wl6oq+7E/Vrp0LMDnKzI0Pt7mwftfl6O0aHXa8PXc8TvRI5TTJ2n3YTrzxZHH9jBD1P3
-         IFJ0BOAdRO/+IilzKmE55cbznnT6UMVTkQuazbS7dQS/4r8n2mGDoED9QJPFzL9WMN4C
-         AA5Q==
+        b=n63nkJnOFU5DAhB4tzI1jwysLKK8I3jMG7wGfoegJ4+tytlSCzSmOos9U0Nrhk20rl
+         5BaZtX35WQxItVgrHe4TJUHM+OBPMq2to+S+7dE9TtFEUuzI/EbD8gep1IxBQ+0AY5h/
+         R/hswCv/vCc5nEXM8mBr+Umfuy2Dr/cBd/MfplyX4Fo0+NRg4zup/Y0OM2pNVNfehRHr
+         +sFgxihW5Qy1P5ZqKDEmp9ZMSEYLVf1HxBNOtZxdset0oTceVHWMkEX2Z4ocw1tszfY1
+         Fl+fE7GY1cyOU44Vm+tEhOA6/5uD5wEfYojxS41ajyIv16hOK/6sFxaw2NSrSK40Ov2/
+         LArQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:thread-index:content-language
-         :content-transfer-encoding:mime-version:message-id:date:subject
-         :in-reply-to:references:cc:to:reply-to:from:dkim-signature;
-        bh=F5tUFeKbpaEUrhow1U7w2I/lFPTZrbFATqkKv3cbFJA=;
-        b=ZTEI+zxuB48cfMiLCYnb9CKE/1UDiLisvRKfi4TLdsQFgbRHRrmEvZHe20u3cNW/FC
-         +qWjslyzo7LIA6JrSTyYwhS2kgbJt6/7ebi5WM3TPb8ISip2d1RWIzUvDKGIeHM4vUd7
-         mYQs2EOjLEdPbStRCXll1jrS2pPehc/dSdrwM5ugtZgKmUj4wEwEz7+VD2SEwqjHlpOL
-         2rsDi9+IlsmK3D5RVuxQwl7epSjKwKuJbG9DFAOzBeJIDV2DdX9RM4qcRTlwiAi8Zy9X
-         ha/f29VFKE4S1jtEnfPzWR2BE824h9+HQBp674X9o67yS2Y9256cEkGUI/mCd3uCgtUS
-         Y5+Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=OQk0xcfrchmDMl0kODBhm1N7A680RbBTTOkOP58qI+c=;
+        b=Pz8KhA5MpzSZOYDVf3f50wZTcUThsvVBGvCairTQJ5053DDoJ6ZtQUm66FlU48r4FG
+         vBdQ8ihWRJS21YFID3Xb0008YS1Lrf8MASZR5Yq+rXDMPBjynDLDPzPgAI5jCSAVsXb4
+         TMVHGdt0UOuE2T5mPmcaiIpw+Vc0NWGJB9/115q9xdxOUY94Xf9sMXH4Wn1BQ2zCIrrZ
+         rvH7k6b0rQuQWHhTsW5N/+ec6w3p+ok7ai4K8gQA1e9L5B4AdsBoE4T4tKBLng4EswV5
+         l7a9pWMhKu8yiplEGzZwxXglUWZrtDrdqYmAAG3bdz/WnVSOh15ovvJOYYr7enzQabaf
+         p3ZQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FNSk40xn;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id bi26si13596664ejb.361.2020.09.17.00.58.07;
-        Thu, 17 Sep 2020 00:58:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d25Bl2i1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 205si1043187ybf.46.2020.09.17.01.04.00
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 17 Sep 2020 01:04:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=FNSk40xn;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726200AbgIQH6B (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 17 Sep 2020 03:58:01 -0400
-Received: from lindbergh.monkeyblade.net ([23.128.96.19]:54492 "EHLO
-        lindbergh.monkeyblade.net" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1726198AbgIQH6B (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 17 Sep 2020 03:58:01 -0400
-Received: from mail-wm1-x343.google.com (mail-wm1-x343.google.com [IPv6:2a00:1450:4864:20::343])
-        by lindbergh.monkeyblade.net (Postfix) with ESMTPS id 1EC54C06174A
-        for <kvm@vger.kernel.org>; Thu, 17 Sep 2020 00:57:59 -0700 (PDT)
-Received: by mail-wm1-x343.google.com with SMTP id q9so1007850wmj.2
-        for <kvm@vger.kernel.org>; Thu, 17 Sep 2020 00:57:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=from:reply-to:to:cc:references:in-reply-to:subject:date:message-id
-         :mime-version:content-transfer-encoding:content-language
-         :thread-index;
-        bh=F5tUFeKbpaEUrhow1U7w2I/lFPTZrbFATqkKv3cbFJA=;
-        b=FNSk40xnigWgLlCaL62kHnc+P/yjp8QdcnH0aWaO96WYn0BmXic2joO/YFkThuDp4m
-         gjGwwcqEO0+wPsVkP+Kv78yf9OIjYzMi88kt9zd/WrUMdtldCiDvzcoK4pTIbMfTaurL
-         hjpUAji34/NkrNUAWEKQDPs8/MGafty1jcLdq6ZVTOouX5+NS7gKeW0YkOEdgIUZG7Fh
-         Mmdh3S6nhYIVzKsTbpD3eCHB13hvKV6FRo7HTNrkU2pyGy2weIaKXKxC9vCF2qNpNJQh
-         LtSUJD8k7S9juvysgja6hanFQKMglfE6PTxmx80iyLzWhPZeUndH30FwDZHOLlG9Hc51
-         qQHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:reply-to:to:cc:references:in-reply-to
-         :subject:date:message-id:mime-version:content-transfer-encoding
-         :content-language:thread-index;
-        bh=F5tUFeKbpaEUrhow1U7w2I/lFPTZrbFATqkKv3cbFJA=;
-        b=i80MV3joBiS+WLCh07usUYOLA3bK747i4EaKMWZHouqpNzW6cwSQfgpohUFDuq1zfc
-         MF2An3y3fTRI9iYJlTTI1IDIQ70TfMMzt+3cxxltfg8XGsyylq53kIj9NCQkaLDRdCkQ
-         4C+m8srY9QbxfsDztuSMBz/MQOxFHyT2UCaweHvJNBt8hgWHiD0h4F63geSR29KzwNwx
-         iKnRIcxt+AtmssUIgsBhcOszr0PPt7DVNhs38nWUJEZCVTykvNkVZv70X5+zh2cKd8pC
-         wxl1ME/FLtSmfc4gbkwolOLlFtZAjndDTTk8AYf/bpun5F1urqK/AoZNwICQrXQvcYgJ
-         Vaog==
-X-Gm-Message-State: AOAM533dYfx+S13ln0t7DNw1yON7/me+vPmgZkeyqAmzvj47uE/MOmWp
-        xbQfCSrCdiXco0zRn+fJAGc=
-X-Received: by 2002:a1c:6a11:: with SMTP id f17mr8064960wmc.143.1600329477743;
-        Thu, 17 Sep 2020 00:57:57 -0700 (PDT)
-Received: from CBGR90WXYV0 (host86-176-94-160.range86-176.btcentralplus.com. [86.176.94.160])
-        by smtp.gmail.com with ESMTPSA id c25sm9433892wml.31.2020.09.17.00.57.54
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Thu, 17 Sep 2020 00:57:57 -0700 (PDT)
-From:   Paul Durrant <xadimgnik@gmail.com>
-X-Google-Original-From: "Paul Durrant" <paul@xen.org>
-Reply-To: <paul@xen.org>
-To:     "'Eduardo Habkost'" <ehabkost@redhat.com>, <qemu-devel@nongnu.org>
-Cc:     "'Paolo Bonzini'" <pbonzini@redhat.com>,
-        "'Daniel P. Berrange'" <berrange@redhat.com>,
-        "'Gonglei \(Arei\)'" <arei.gonglei@huawei.com>,
-        "'Igor Mammedov'" <imammedo@redhat.com>,
-        "'Laurent Vivier'" <lvivier@redhat.com>,
-        "'Amit Shah'" <amit@kernel.org>,
-        "'Stefan Berger'" <stefanb@linux.ibm.com>,
-        "'Michael S. Tsirkin'" <mst@redhat.com>,
-        "'Greg Kurz'" <groug@kaod.org>,
-        "'Christian Schoenebeck'" <qemu_oss@crudebyte.com>,
-        "'Marcel Apfelbaum'" <marcel.apfelbaum@gmail.com>,
-        "'Aleksandar Markovic'" <aleksandar.qemu.devel@gmail.com>,
-        =?utf-8?Q?'Philippe_Mathieu-Daud=C3=A9'?= <f4bug@amsat.org>,
-        "'Aurelien Jarno'" <aurelien@aurel32.net>,
-        "'Richard Henderson'" <rth@twiddle.net>,
-        "'Peter Maydell'" <peter.maydell@linaro.org>,
-        "'Rob Herring'" <robh@kernel.org>,
-        "'Joel Stanley'" <joel@jms.id.au>,
-        "'Jan Kiszka'" <jan.kiszka@web.de>,
-        "'Andrzej Zaborowski'" <balrogg@gmail.com>,
-        "'Radoslaw Biernacki'" <rad@semihalf.com>,
-        "'Leif Lindholm'" <leif@nuviainc.com>,
-        "'Edgar E. Iglesias'" <edgar.iglesias@gmail.com>,
-        "'Alistair Francis'" <alistair@alistair23.me>,
-        "'Gerd Hoffmann'" <kraxel@redhat.com>,
-        "'Michael Walle'" <michael@walle.cc>,
-        "'John Snow'" <jsnow@redhat.com>,
-        "'Kevin Wolf'" <kwolf@redhat.com>,
-        "'Max Reitz'" <mreitz@redhat.com>,
-        =?utf-8?Q?'Marc-Andr=C3=A9_Lureau'?= <marcandre.lureau@redhat.com>,
-        "'Igor Mitsyanko'" <i.mitsyanko@gmail.com>,
-        "'Fabien Chouteau'" <chouteau@adacore.com>,
-        "'KONRAD Frederic'" <frederic.konrad@adacore.com>,
-        "'Alberto Garcia'" <berto@igalia.com>,
-        "'Thomas Huth'" <huth@tuxfamily.org>,
-        "'David Gibson'" <david@gibson.dropbear.id.au>,
-        "'Mark Cave-Ayland'" <mark.cave-ayland@ilande.co.uk>,
-        =?utf-8?Q?'Herv=C3=A9_Poussineau'?= <hpoussin@reactos.org>,
-        "'Aleksandar Rikalo'" <aleksandar.rikalo@syrmia.com>,
-        "'BALATON Zoltan'" <balaton@eik.bme.hu>,
-        "'Guan Xuetao'" <gxt@mprc.pku.edu.cn>,
-        "'Helge Deller'" <deller@gmx.de>,
-        "'Corey Minyard'" <cminyard@mvista.com>,
-        "'Stefano Stabellini'" <sstabellini@kernel.org>,
-        "'Anthony Perard'" <anthony.perard@citrix.com>,
-        "'Chris Wulff'" <crwulff@gmail.com>,
-        "'Marek Vasut'" <marex@denx.de>,
-        "'Huacai Chen'" <chenhc@lemote.com>,
-        "'Jiaxun Yang'" <jiaxun.yang@flygoat.com>,
-        "'Artyom Tarasenko'" <atar4qemu@gmail.com>,
-        "'Jason Wang'" <jasowang@redhat.com>,
-        "'Dmitry Fleytman'" <dmitry.fleytman@gmail.com>,
-        "'Max Filippov'" <jcmvbkbc@gmail.com>,
-        "'Sven Schnelle'" <svens@stackframe.org>,
-        "'Christian Borntraeger'" <borntraeger@de.ibm.com>,
-        "'Cornelia Huck'" <cohuck@redhat.com>,
-        "'Halil Pasic'" <pasic@linux.ibm.com>,
-        "'David Hildenbrand'" <david@redhat.com>,
-        "'Matthew Rosato'" <mjrosato@linux.ibm.com>,
-        "'Fam Zheng'" <fam@euphon.net>,
-        "'Yoshinori Sato'" <ysato@users.sourceforge.jp>,
-        "'Samuel Thibault'" <samuel.thibault@ens-lyon.org>,
-        "'Tony Krowiak'" <akrowiak@linux.ibm.com>,
-        "'Pierre Morel'" <pmorel@linux.ibm.com>,
-        "'Alex Williamson'" <alex.williamson@redhat.com>,
-        "'Ben Warren'" <ben@skyportsystems.com>,
-        "'Beniamino Galvani'" <b.galvani@gmail.com>,
-        "'Niek Linnenbank'" <nieklinnenbank@gmail.com>,
-        "'Andrew Baumann'" <Andrew.Baumann@microsoft.com>,
-        "'Antony Pavlov'" <antonynpavlov@gmail.com>,
-        "'Jean-Christophe Dubois'" <jcd@tribudubois.net>,
-        "'Peter Chubb'" <peter.chubb@nicta.com.au>,
-        "'Andrey Smirnov'" <andrew.smirnov@gmail.com>,
-        "'Subbaraya Sundeep'" <sundeep.lkml@gmail.com>,
-        "'Michael Rolnik'" <mrolnik@gmail.com>,
-        "'Sarah Harris'" <S.E.Harris@kent.ac.uk>,
-        "'Peter Xu'" <peterx@redhat.com>,
-        =?utf-8?Q?'C=C3=A9dric_Le_Goater'?= <clg@kaod.org>,
-        "'Andrew Jeffery'" <andrew@aj.id.au>,
-        "'Laszlo Ersek'" <lersek@redhat.com>,
-        "'Paul Burton'" <paulburton@kernel.org>,
-        "'Palmer Dabbelt'" <palmer@dabbelt.com>,
-        "'Sagar Karandikar'" <sagark@eecs.berkeley.edu>,
-        "'Bastian Koppelmann'" <kbastian@mail.uni-paderborn.de>,
-        "'Anup Patel'" <anup.patel@wdc.com>,
-        "'Eric Farman'" <farman@linux.ibm.com>,
-        "'Raphael Norwitz'" <raphael.norwitz@nutanix.com>,
-        "'Dr. David Alan Gilbert'" <dgilbert@redhat.com>,
-        "'Stefan Hajnoczi'" <stefanha@redhat.com>,
-        "'Eric Auger'" <eric.auger@redhat.com>,
-        "'Juan Quintela'" <quintela@redhat.com>,
-        "'Pavel Dovgalyuk'" <pavel.dovgaluk@ispras.ru>,
-        "'Zhang Chen'" <chen.zhang@intel.com>,
-        "'Li Zhijian'" <lizhijian@cn.fujitsu.com>, <qemu-arm@nongnu.org>,
-        <qemu-block@nongnu.org>, <qemu-ppc@nongnu.org>,
-        <kvm@vger.kernel.org>, <xen-devel@lists.xenproject.org>,
-        <qemu-s390x@nongnu.org>, <qemu-riscv@nongnu.org>
-References: <20200916182519.415636-1-ehabkost@redhat.com> <20200916182519.415636-6-ehabkost@redhat.com>
-In-Reply-To: <20200916182519.415636-6-ehabkost@redhat.com>
-Subject: RE: [PATCH 5/5] [automated] Use OBJECT_DECLARE_SIMPLE_TYPE when possible
-Date:   Thu, 17 Sep 2020 08:57:54 +0100
-Message-ID: <007d01d68cc8$4146b8b0$c3d42a10$@xen.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=d25Bl2i1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58404 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kIotc-00040i-8i
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 04:04:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52136)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kIojg-0007uO-I1
+ for qemu-devel@nongnu.org; Thu, 17 Sep 2020 03:53:46 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:28300
+ helo=us-smtp-delivery-1.mimecast.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kIoje-0005XU-Nv
+ for qemu-devel@nongnu.org; Thu, 17 Sep 2020 03:53:44 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1600329221;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=OQk0xcfrchmDMl0kODBhm1N7A680RbBTTOkOP58qI+c=;
+ b=d25Bl2i14nZtAxUjPolGFXGKmpVWP92dwiyww7csty+iobJzRghLsi3/B+fMJNv3Y0Ek9x
+ 62/frVeWEEp60cbFCz9rRakIevBycpftjdCeXMpuLvfC0oilO4m8hGI/cb+hjFWtrUF9VH
+ 0WZ19ooCW1hYH+zoipPjuG8lZ/6QyXE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-403-8p4479OhPrGI3jhTq3r3wQ-1; Thu, 17 Sep 2020 03:53:37 -0400
+X-MC-Unique: 8p4479OhPrGI3jhTq3r3wQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C445D427F8;
+ Thu, 17 Sep 2020 07:53:35 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.192.179])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7DE765DEC7;
+ Thu, 17 Sep 2020 07:53:33 +0000 (UTC)
+Date: Thu, 17 Sep 2020 09:53:30 +0200
+From: Andrew Jones <drjones@redhat.com>
+To: Ying Fang <fangying1@huawei.com>
+Subject: Re: [RFC PATCH 02/12] target/arm/kvm64: make MPIDR consistent with
+ CPU Topology
+Message-ID: <20200917075330.7sx3xm7gd4mwqqtq@kamzik.brq.redhat.com>
+References: <20200917032033.2020-1-fangying1@huawei.com>
+ <20200917032033.2020-3-fangying1@huawei.com>
 MIME-Version: 1.0
-Content-Type: text/plain;
-        charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-X-Mailer: Microsoft Outlook 16.0
-Content-Language: en-gb
-Thread-Index: AQIelPz0+HUIa2jn7mxP/pozU40YBAFKLlCOqNIUBNA=
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: 6g19TyXmSR2/
+In-Reply-To: <20200917032033.2020-3-fangying1@huawei.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
+X-Mimecast-Spam-Score: 0.002
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 03:47:35
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
+ qemu-devel@nongnu.org, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: JfETJ/Pl/CvF
 
-> -----Original Message-----
-> From: Eduardo Habkost <ehabkost@redhat.com>
-> Sent: 16 September 2020 19:25
-> To: qemu-devel@nongnu.org
-> Cc: Paolo Bonzini <pbonzini@redhat.com>; Daniel P. Berrange =
-<berrange@redhat.com>; Gonglei (Arei)
-> <arei.gonglei@huawei.com>; Igor Mammedov <imammedo@redhat.com>; =
-Laurent Vivier <lvivier@redhat.com>;
-> Amit Shah <amit@kernel.org>; Stefan Berger <stefanb@linux.ibm.com>; =
-Michael S. Tsirkin
-> <mst@redhat.com>; Greg Kurz <groug@kaod.org>; Christian Schoenebeck =
-<qemu_oss@crudebyte.com>; Marcel
-> Apfelbaum <marcel.apfelbaum@gmail.com>; Aleksandar Markovic =
-<aleksandar.qemu.devel@gmail.com>;
-> Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>; Aurelien Jarno =
-<aurelien@aurel32.net>; Richard Henderson
-> <rth@twiddle.net>; Peter Maydell <peter.maydell@linaro.org>; Rob =
-Herring <robh@kernel.org>; Joel
-> Stanley <joel@jms.id.au>; Jan Kiszka <jan.kiszka@web.de>; Andrzej =
-Zaborowski <balrogg@gmail.com>;
-> Radoslaw Biernacki <rad@semihalf.com>; Leif Lindholm =
-<leif@nuviainc.com>; Edgar E. Iglesias
-> <edgar.iglesias@gmail.com>; Alistair Francis <alistair@alistair23.me>; =
-Gerd Hoffmann
-> <kraxel@redhat.com>; Michael Walle <michael@walle.cc>; John Snow =
-<jsnow@redhat.com>; Kevin Wolf
-> <kwolf@redhat.com>; Max Reitz <mreitz@redhat.com>; Marc-Andr=C3=A9 =
-Lureau <marcandre.lureau@redhat.com>;
-> Igor Mitsyanko <i.mitsyanko@gmail.com>; Fabien Chouteau =
-<chouteau@adacore.com>; KONRAD Frederic
-> <frederic.konrad@adacore.com>; Alberto Garcia <berto@igalia.com>; =
-Thomas Huth <huth@tuxfamily.org>;
-> David Gibson <david@gibson.dropbear.id.au>; Mark Cave-Ayland =
-<mark.cave-ayland@ilande.co.uk>; Herv=C3=A9
-> Poussineau <hpoussin@reactos.org>; Aleksandar Rikalo =
-<aleksandar.rikalo@syrmia.com>; BALATON Zoltan
-> <balaton@eik.bme.hu>; Guan Xuetao <gxt@mprc.pku.edu.cn>; Helge Deller =
-<deller@gmx.de>; Corey Minyard
-> <cminyard@mvista.com>; Stefano Stabellini <sstabellini@kernel.org>; =
-Anthony Perard
-> <anthony.perard@citrix.com>; Paul Durrant <paul@xen.org>; Chris Wulff =
-<crwulff@gmail.com>; Marek Vasut
-> <marex@denx.de>; Huacai Chen <chenhc@lemote.com>; Jiaxun Yang =
-<jiaxun.yang@flygoat.com>; Artyom
-> Tarasenko <atar4qemu@gmail.com>; Jason Wang <jasowang@redhat.com>; =
-Dmitry Fleytman
-> <dmitry.fleytman@gmail.com>; Max Filippov <jcmvbkbc@gmail.com>; Sven =
-Schnelle <svens@stackframe.org>;
-> Christian Borntraeger <borntraeger@de.ibm.com>; Cornelia Huck =
-<cohuck@redhat.com>; Halil Pasic
-> <pasic@linux.ibm.com>; David Hildenbrand <david@redhat.com>; Matthew =
-Rosato <mjrosato@linux.ibm.com>;
-> Fam Zheng <fam@euphon.net>; Yoshinori Sato =
-<ysato@users.sourceforge.jp>; Samuel Thibault
-> <samuel.thibault@ens-lyon.org>; Tony Krowiak <akrowiak@linux.ibm.com>; =
-Pierre Morel
-> <pmorel@linux.ibm.com>; Alex Williamson <alex.williamson@redhat.com>; =
-Ben Warren
-> <ben@skyportsystems.com>; Beniamino Galvani <b.galvani@gmail.com>; =
-Niek Linnenbank
-> <nieklinnenbank@gmail.com>; Andrew Baumann =
-<Andrew.Baumann@microsoft.com>; Antony Pavlov
-> <antonynpavlov@gmail.com>; Jean-Christophe Dubois =
-<jcd@tribudubois.net>; Peter Chubb
-> <peter.chubb@nicta.com.au>; Andrey Smirnov <andrew.smirnov@gmail.com>; =
-Subbaraya Sundeep
-> <sundeep.lkml@gmail.com>; Michael Rolnik <mrolnik@gmail.com>; Sarah =
-Harris <S.E.Harris@kent.ac.uk>;
-> Peter Xu <peterx@redhat.com>; C=C3=A9dric Le Goater <clg@kaod.org>; =
-Andrew Jeffery <andrew@aj.id.au>;
-> Laszlo Ersek <lersek@redhat.com>; Paul Burton <paulburton@kernel.org>; =
-Palmer Dabbelt
-> <palmer@dabbelt.com>; Sagar Karandikar <sagark@eecs.berkeley.edu>; =
-Bastian Koppelmann
-> <kbastian@mail.uni-paderborn.de>; Anup Patel <anup.patel@wdc.com>; =
-Eric Farman <farman@linux.ibm.com>;
-> Raphael Norwitz <raphael.norwitz@nutanix.com>; Dr. David Alan Gilbert =
-<dgilbert@redhat.com>; Stefan
-> Hajnoczi <stefanha@redhat.com>; Eric Auger <eric.auger@redhat.com>; =
-Juan Quintela
-> <quintela@redhat.com>; Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>; =
-Zhang Chen <chen.zhang@intel.com>;
-> Li Zhijian <lizhijian@cn.fujitsu.com>; qemu-arm@nongnu.org; =
-qemu-block@nongnu.org; qemu-
-> ppc@nongnu.org; kvm@vger.kernel.org; xen-devel@lists.xenproject.org; =
-qemu-s390x@nongnu.org; qemu-
-> riscv@nongnu.org
-> Subject: [PATCH 5/5] [automated] Use OBJECT_DECLARE_SIMPLE_TYPE when =
-possible
->=20
-> This converts existing DECLARE_INSTANCE_CHECKER usage to
-> OBJECT_DECLARE_SIMPLE_TYPE when possible.
->=20
-> $ ./scripts/codeconverter/converter.py -i \
->   --pattern=3DAddObjectDeclareSimpleType $(git grep -l '' -- '*.[ch]')
->=20
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+On Thu, Sep 17, 2020 at 11:20:23AM +0800, Ying Fang wrote:
+> MPIDR helps to provide an additional PE identification in a multiprocessor
+> system. This patch adds support for setting MPIDR from userspace, so that
+> MPIDR is consistent with CPU topology configured.
+> 
+> Signed-off-by: Ying Fang <fangying1@huawei.com>
+> ---
+>  target/arm/kvm64.c | 46 ++++++++++++++++++++++++++++++++++++++--------
+>  1 file changed, 38 insertions(+), 8 deletions(-)
+> 
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index ef1e960285..fcce261a10 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -757,10 +757,46 @@ static int kvm_arm_sve_set_vls(CPUState *cs)
+>  
+>  #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
+>  
+> +static int kvm_arm_set_mp_affinity(CPUState *cs)
+> +{
+> +    uint64_t mpidr;
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +
+> +    if (kvm_check_extension(kvm_state, KVM_CAP_ARM_MP_AFFINITY)) {
+> +        /* Make MPIDR consistent with CPU topology */
+> +        MachineState *ms = MACHINE(qdev_get_machine());
+> +
+> +        mpidr = (kvm_arch_vcpu_id(cs) % ms->smp.threads) << ARM_AFF0_SHIFT;
 
-Acked-by: Paul Durrant <paul@xen.org>
+We should query KVM first to determine if it wants guests to see their PEs
+as threads or not. If not, and ms->smp.threads is > 1, then that's an
+error. And, in any case, if ms->smp.threads == 1, then we shouldn't waste
+aff0 on it, as that could reduce IPI broadcast performance.
+
+> +        mpidr |= ((kvm_arch_vcpu_id(cs) / ms->smp.threads % ms->smp.cores)
+> +                                    & 0xff) << ARM_AFF1_SHIFT;
+> +        mpidr |= (kvm_arch_vcpu_id(cs) / (ms->smp.cores * ms->smp.threads)
+> +                                    & 0xff) << ARM_AFF2_SHIFT;
+> +
+> +        /* Override mp affinity when KVM is in use */
+> +        cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+> +
+> +        /* Bit 31 is RES1 indicates the ARMv7 Multiprocessing Extensions */
+> +        mpidr |= (1ULL << 31);
+> +        return kvm_vcpu_ioctl(cs, KVM_ARM_SET_MP_AFFINITY, &mpidr);
+> +    } else {
+> +        /*
+> +         * When KVM_CAP_ARM_MP_AFFINITY is not supported, it means KVM has its
+> +         * own idea about MPIDR assignment, so we override our defaults with
+> +         * what we get from KVM.
+> +         */
+> +        int ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
+> +        if (ret) {
+> +            error_report("failed to set MPIDR");
+
+We don't need this error, kvm_get_one_reg() has trace support already.
+Anyway, the wording is wrong since it says 'set' instead of 'get'.
+
+> +            return ret;
+> +        }
+> +        cpu->mp_affinity = mpidr & ARM32_AFFINITY_MASK;
+> +        return ret;
+> +    }
+> +}
+> +
+>  int kvm_arch_init_vcpu(CPUState *cs)
+>  {
+>      int ret;
+> -    uint64_t mpidr;
+>      ARMCPU *cpu = ARM_CPU(cs);
+>      CPUARMState *env = &cpu->env;
+>  
+> @@ -814,16 +850,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>          }
+>      }
+>  
+> -    /*
+> -     * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
+> -     * Currently KVM has its own idea about MPIDR assignment, so we
+> -     * override our defaults with what we get from KVM.
+> -     */
+> -    ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
+> +    ret = kvm_arm_set_mp_affinity(cs);
+>      if (ret) {
+>          return ret;
+>      }
+> -    cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+>  
+>      kvm_arm_init_debug(cs);
+>  
+> -- 
+> 2.23.0
+> 
+>
+
+Thanks,
+drew 
+

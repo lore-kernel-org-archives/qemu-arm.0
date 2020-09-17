@@ -1,137 +1,212 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp385790lfq;
-        Thu, 17 Sep 2020 01:41:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy6ehIN7j77XaxgHXsR6k4WSG4lDSJh2tbq/+fxzcbISt/g54c+fTGWlzVR7SMpRTstR8bE
-X-Received: by 2002:a25:e0a:: with SMTP id 10mr7561961ybo.344.1600332070905;
-        Thu, 17 Sep 2020 01:41:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600332070; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp526287lfq;
+        Thu, 17 Sep 2020 05:17:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzMLdH63PCZge+UKFypdAwjqCbM99rMUhHajzmdLclL+FWrTcwZnelsz0ORgve9oQts3Kt1
+X-Received: by 2002:a05:6902:72b:: with SMTP id l11mr9541646ybt.419.1600345056695;
+        Thu, 17 Sep 2020 05:17:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600345056; cv=none;
         d=google.com; s=arc-20160816;
-        b=ihNUrOjwyp9rgMDGsmoI6Jhn6FMoE6zXDM1UU1o3XpeeOFgSDWrmt2xDY12imC+wL8
-         nFclRQgMErLXOsAqM28aqDZuhEDiM/59vGO0gxgxkWK4xkt0p2oFwD4mdielWCBZAAsU
-         4PsgSe41QDRV4gvKZjcVGToQDKtQLrbdiA5sZcLQ3eqE47ep3wIFkcnidH+BK80zvtUz
-         sEw3D5tVRQDUoGLyD+bWkYh2mS14Apx+kr62gM5kdNQtuSnDbqGqmRi3bOsiSaBWAaC3
-         OKSgmEI1beNXpOi54hCPUzJ0mjFBcEBlBC1YCrwD35NO7qlI0rUUtBHVw7x6EotozOcx
-         RvUA==
+        b=mkrg8UnrazWd4vabLOlx2rlR8oUrjy25lJU5jz1T4et50s2mrpW3AcQkGJoBKMtEcf
+         pWSCyXTEmSgXrw/Bd+be/06I4PmbIhLlLh/7QgO1Gjg059326mZrAqh/Ax7PNd90TGPp
+         xYUEj7EmRElc8SSIkcs8Dh0ocHyzTG9fNkhBbtBEZnxFKaTEV92DHjpTXZTD/qxk5x8S
+         iUR0Zavh226M7xwZ7m+TIJ+UDj+ulQK/lNrcqJ4JpjAaTkU145E3VCG37tdJ7G4TfwL9
+         FXYzkEGaNO1dVzqDiyoVAKIXR8oR8YP9/Y+zNEifqOEdEB1uPMN4BMJuAu1QK/znp6g8
+         zoqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=u3xFOE2CBixst2wCvVXavXh+SXGEO68n3zknfyfSnCA=;
-        b=pYt/FYOjUDAHisPoNsM8IDDY9BxmF4vjKcAJsUzrk+oTWccXdTBaJZwoRnaBkGsLva
-         cOGZdRtWeqifhwvOP09ApqMvgNH99CojAze23BZykpOwC46thYyRBdLqdTgdbfwo5kJH
-         xi+wJ9sWSjz5+pI2LPHktoyptrxIjtuGUzmShUEm1GsYtDkhC+u1UHmx+NABMk7yW/R+
-         3R5CJDWf7NVAFfqoM1I9satZOv28cM67LY18JLZfBEERMzmzHBgh28Xg3jQyu/vKtmIQ
-         UJHRkLFvDGnxjeQXzv6AKWhSs/3i7+rVi1cTXE9mxLHEm4vwOiUL24Hp6J8Mm8KK95AC
-         qFlQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=r7INStwlvrBRDNBIaLxnGq5lr5ccF8V+/KKoeqDJp1Q=;
+        b=b0DIJeWxZ8QyIjog2l2X1yuMVCcFTBbE8XbH6vkT6ugjno5DAWipoSBzO5RwYGDTVj
+         N1SBwM3UaYeUzgJViIqtrBZAvFVuXrxwvHtqL+eIsjHSra7ouitYzFO/aZrQLf11Es1P
+         FW80N8UfyntO0DXm6QapJJbtpMmEHK2ClB1tjOjvLcXScIoFCwFtUjVeHiLtSYIR/agM
+         ZAn4TQXcNYufNSShKZp9IPrbg5+GSp+ADmYZI6vhGJ+Y9Q1IAzMpzO6H5cyLmwRK4vtx
+         h9YuQOxLnpHrH79STiKJDxEjY0i0OoamysYF3TAQRbyzVNSRNRlC/MaYQaVGJXVj/Xwi
+         ENjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="H4Mn/EAt";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r16si20456577ybm.187.2020.09.17.01.41.10
+        by mx.google.com with ESMTPS id o81si26468290ybc.465.2020.09.17.05.17.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 01:41:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 17 Sep 2020 05:17:36 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="H4Mn/EAt";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50942 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:46700 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIpTa-0007Oi-9n
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 04:41:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36872)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kIsr2-0005cz-31
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 08:17:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33700)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kIpSE-0006nl-4D
- for qemu-devel@nongnu.org; Thu, 17 Sep 2020 04:39:46 -0400
-Received: from us-smtp-1.mimecast.com ([207.211.31.81]:23397
- helo=us-smtp-delivery-1.mimecast.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kIpSB-00087d-Jq
- for qemu-devel@nongnu.org; Thu, 17 Sep 2020 04:39:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600331980;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=u3xFOE2CBixst2wCvVXavXh+SXGEO68n3zknfyfSnCA=;
- b=H4Mn/EAtsCJTgMBzTDs3duMgoEUu0NUZwfE4nvvSEa52DNyYF8zoga37r4Ttp7V5qcwdoY
- bkILbPYSF8v/PRgYDt3qotqGIaqJ1pC6ZIS61yygstx46cBlEpEW9mxDh01Hp0VW+sD4WA
- UaLbf6RixRAOxOisuYveaDgcresfoNA=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-375-GpwbTirwP-GgIxeCtpyKkQ-1; Thu, 17 Sep 2020 04:39:36 -0400
-X-MC-Unique: GpwbTirwP-GgIxeCtpyKkQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4510718BA283;
- Thu, 17 Sep 2020 08:39:35 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.179])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 9500A10013D7;
- Thu, 17 Sep 2020 08:39:32 +0000 (UTC)
-Date: Thu, 17 Sep 2020 10:39:29 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Ying Fang <fangying1@huawei.com>
-Subject: Re: [RFC PATCH 09/12] target/arm/cpu: Add CPU cache description for
- arm
-Message-ID: <20200917083929.uv2oukokqmiykfs5@kamzik.brq.redhat.com>
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kIsqt-0005bW-9T; Thu, 17 Sep 2020 08:17:27 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:4710 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kIsqp-0002oN-P0; Thu, 17 Sep 2020 08:17:26 -0400
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 7D2577891D1007D95006;
+ Thu, 17 Sep 2020 20:17:12 +0800 (CST)
+Received: from [10.174.185.104] (10.174.185.104) by
+ DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 17 Sep 2020 20:17:03 +0800
+Subject: Re: [RFC PATCH 02/12] target/arm/kvm64: make MPIDR consistent with
+ CPU Topology
+To: Andrew Jones <drjones@redhat.com>
 References: <20200917032033.2020-1-fangying1@huawei.com>
- <20200917032033.2020-10-fangying1@huawei.com>
+ <20200917032033.2020-3-fangying1@huawei.com>
+ <20200917075330.7sx3xm7gd4mwqqtq@kamzik.brq.redhat.com>
+From: Ying Fang <fangying1@huawei.com>
+Message-ID: <0e8aa66e-2440-07a5-1fa6-5b42ac757a8a@huawei.com>
+Date: Thu, 17 Sep 2020 20:17:02 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200917032033.2020-10-fangying1@huawei.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0.002
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=207.211.31.81; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 03:47:35
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20200917075330.7sx3xm7gd4mwqqtq@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.185.104]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
+ helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 08:17:13
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
  qemu-devel@nongnu.org, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
  qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Be2QuDI4kNpy
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 8uB+KQrYVity
 
-On Thu, Sep 17, 2020 at 11:20:30AM +0800, Ying Fang wrote:
-> Add the CPUCacheInfo structure to hold CPU cache information for ARM cpus.
-> A classic three level cache topology is used here. The default cache
-> capacity is given and userspace can overwrite these values.
 
-Doesn't TCG already have some sort of fake cache hierarchy? If so, then
-we shouldn't be adding another one, we should be simply describing the
-one we already have. For KVM, we shouldn't describe anything other than
-what is actually on the host.
 
-drew
+On 9/17/2020 3:53 PM, Andrew Jones wrote:
+> On Thu, Sep 17, 2020 at 11:20:23AM +0800, Ying Fang wrote:
+>> MPIDR helps to provide an additional PE identification in a multiprocessor
+>> system. This patch adds support for setting MPIDR from userspace, so that
+>> MPIDR is consistent with CPU topology configured.
+>>
+>> Signed-off-by: Ying Fang <fangying1@huawei.com>
+>> ---
+>>   target/arm/kvm64.c | 46 ++++++++++++++++++++++++++++++++++++++--------
+>>   1 file changed, 38 insertions(+), 8 deletions(-)
+>>
+>> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+>> index ef1e960285..fcce261a10 100644
+>> --- a/target/arm/kvm64.c
+>> +++ b/target/arm/kvm64.c
+>> @@ -757,10 +757,46 @@ static int kvm_arm_sve_set_vls(CPUState *cs)
+>>   
+>>   #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
+>>   
+>> +static int kvm_arm_set_mp_affinity(CPUState *cs)
+>> +{
+>> +    uint64_t mpidr;
+>> +    ARMCPU *cpu = ARM_CPU(cs);
+>> +
+>> +    if (kvm_check_extension(kvm_state, KVM_CAP_ARM_MP_AFFINITY)) {
+>> +        /* Make MPIDR consistent with CPU topology */
+>> +        MachineState *ms = MACHINE(qdev_get_machine());
+>> +
+>> +        mpidr = (kvm_arch_vcpu_id(cs) % ms->smp.threads) << ARM_AFF0_SHIFT;
+> 
+> We should query KVM first to determine if it wants guests to see their PEs
+> as threads or not. If not, and ms->smp.threads is > 1, then that's an
+> error. And, in any case, if ms->smp.threads == 1, then we shouldn't waste
+> aff0 on it, as that could reduce IPI broadcast performance.
 
+Yes, good catch. Should check against smp.threads before filling
+the MPIDR value.
+
+> 
+>> +        mpidr |= ((kvm_arch_vcpu_id(cs) / ms->smp.threads % ms->smp.cores)
+>> +                                    & 0xff) << ARM_AFF1_SHIFT;
+>> +        mpidr |= (kvm_arch_vcpu_id(cs) / (ms->smp.cores * ms->smp.threads)
+>> +                                    & 0xff) << ARM_AFF2_SHIFT;
+>> +
+>> +        /* Override mp affinity when KVM is in use */
+>> +        cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+>> +
+>> +        /* Bit 31 is RES1 indicates the ARMv7 Multiprocessing Extensions */
+>> +        mpidr |= (1ULL << 31);
+>> +        return kvm_vcpu_ioctl(cs, KVM_ARM_SET_MP_AFFINITY, &mpidr);
+>> +    } else {
+>> +        /*
+>> +         * When KVM_CAP_ARM_MP_AFFINITY is not supported, it means KVM has its
+>> +         * own idea about MPIDR assignment, so we override our defaults with
+>> +         * what we get from KVM.
+>> +         */
+>> +        int ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
+>> +        if (ret) {
+>> +            error_report("failed to set MPIDR");
+> 
+> We don't need this error, kvm_get_one_reg() has trace support already.
+> Anyway, the wording is wrong since it says 'set' instead of 'get'.
+
+Yes, my careless, I will fix it.
+
+> 
+>> +            return ret;
+>> +        }
+>> +        cpu->mp_affinity = mpidr & ARM32_AFFINITY_MASK;
+>> +        return ret;
+>> +    }
+>> +}
+>> +
+>>   int kvm_arch_init_vcpu(CPUState *cs)
+>>   {
+>>       int ret;
+>> -    uint64_t mpidr;
+>>       ARMCPU *cpu = ARM_CPU(cs);
+>>       CPUARMState *env = &cpu->env;
+>>   
+>> @@ -814,16 +850,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>>           }
+>>       }
+>>   
+>> -    /*
+>> -     * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
+>> -     * Currently KVM has its own idea about MPIDR assignment, so we
+>> -     * override our defaults with what we get from KVM.
+>> -     */
+>> -    ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
+>> +    ret = kvm_arm_set_mp_affinity(cs);
+>>       if (ret) {
+>>           return ret;
+>>       }
+>> -    cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+>>   
+>>       kvm_arm_init_debug(cs);
+>>   
+>> -- 
+>> 2.23.0
+>>
+>>
+> 
+> Thanks,
+> drew
+> 
+> .
+> 

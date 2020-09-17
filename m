@@ -1,107 +1,109 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp380425lfq;
-        Thu, 17 Sep 2020 01:31:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxuP27cWNlm+FhW4Eb7x8onF02DVnLt19DTtfeZv7mIApToaUm61PtCQMad+tLpoLIQxef1
-X-Received: by 2002:a5b:889:: with SMTP id e9mr5418978ybq.192.1600331512838;
-        Thu, 17 Sep 2020 01:31:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600331512; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp385790lfq;
+        Thu, 17 Sep 2020 01:41:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy6ehIN7j77XaxgHXsR6k4WSG4lDSJh2tbq/+fxzcbISt/g54c+fTGWlzVR7SMpRTstR8bE
+X-Received: by 2002:a25:e0a:: with SMTP id 10mr7561961ybo.344.1600332070905;
+        Thu, 17 Sep 2020 01:41:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600332070; cv=none;
         d=google.com; s=arc-20160816;
-        b=sTx3kKaB0DoO/gA93SMMqr0nKuLxw7IW9MvJTNECe0frntnhYpjgB9ggceSFChFJwu
-         dwJylWver0H+aXmVWGCRUxlBeCyIuRVyMrL6mG8GDXJbD75u2zlPv/9pohBV7Y2HhQsz
-         +5G1nYCPPLqUAoeYlXOIiHq/tLxXmyMA4skGFQXBOxE70aHvojxqoK+RdYI59yZfUoJc
-         eMOyXL86NziRFJ0AASEmU2L2BxidKvn7olR/Q1oaUUyuXUUgp4v9A8CcCPhWeCEywWj9
-         Gt7GpYqtoEXF+B+d1vjemqJJukVkeg/uj3go6W4nzYpa52rib+2qmdMoLMJ6ORgGF9Rh
-         f2nQ==
+        b=ihNUrOjwyp9rgMDGsmoI6Jhn6FMoE6zXDM1UU1o3XpeeOFgSDWrmt2xDY12imC+wL8
+         nFclRQgMErLXOsAqM28aqDZuhEDiM/59vGO0gxgxkWK4xkt0p2oFwD4mdielWCBZAAsU
+         4PsgSe41QDRV4gvKZjcVGToQDKtQLrbdiA5sZcLQ3eqE47ep3wIFkcnidH+BK80zvtUz
+         sEw3D5tVRQDUoGLyD+bWkYh2mS14Apx+kr62gM5kdNQtuSnDbqGqmRi3bOsiSaBWAaC3
+         OKSgmEI1beNXpOi54hCPUzJ0mjFBcEBlBC1YCrwD35NO7qlI0rUUtBHVw7x6EotozOcx
+         RvUA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=nTmOOY6ZmAf/9WSAJFVy6jPQ/eMy1StMsvqyxPAhAyc=;
-        b=XlIFDIpqWk2MzXmtXJSJ/3+G3b/xA/arn9CmHwtpUERbeB/7Jjj0yakXtjineXW2/K
-         2DwjicxiKv9ZIYljzt5k4KFSrG4XzvoUggao4RbRassd2jFtycYlwiuLCKXr48yAWRI+
-         p63ZyX5IjiB2qvL4DQdMpglpUOOm4kN8ughFa68mJjpyjioXOAh3CZc+vBnBy37SmlQm
-         bKI3hd2KmiE92P38CglJvR6d6Pe4UFEi/cT0zPsFXtfokC6FEKKi81whiE9G3vkacMLb
-         53BGj10yeI6k6NDh0G5pgEFQBxS7l5v1CngwHEcqpNwqNBFFW1rH4m28fJmh8StNnPJi
-         oyig==
+        bh=u3xFOE2CBixst2wCvVXavXh+SXGEO68n3zknfyfSnCA=;
+        b=pYt/FYOjUDAHisPoNsM8IDDY9BxmF4vjKcAJsUzrk+oTWccXdTBaJZwoRnaBkGsLva
+         cOGZdRtWeqifhwvOP09ApqMvgNH99CojAze23BZykpOwC46thYyRBdLqdTgdbfwo5kJH
+         xi+wJ9sWSjz5+pI2LPHktoyptrxIjtuGUzmShUEm1GsYtDkhC+u1UHmx+NABMk7yW/R+
+         3R5CJDWf7NVAFfqoM1I9satZOv28cM67LY18JLZfBEERMzmzHBgh28Xg3jQyu/vKtmIQ
+         UJHRkLFvDGnxjeQXzv6AKWhSs/3i7+rVi1cTXE9mxLHEm4vwOiUL24Hp6J8Mm8KK95AC
+         qFlQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Oo+H3pbe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="H4Mn/EAt";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i70si8769259yba.227.2020.09.17.01.31.52
+        by mx.google.com with ESMTPS id r16si20456577ybm.187.2020.09.17.01.41.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 01:31:52 -0700 (PDT)
+        Thu, 17 Sep 2020 01:41:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Oo+H3pbe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="H4Mn/EAt";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60472 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50942 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIpKa-0007aY-0c
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 04:31:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60932)
+	id 1kIpTa-0007Oi-9n
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 04:41:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kIpHt-0004sW-Qw
- for qemu-devel@nongnu.org; Thu, 17 Sep 2020 04:29:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42884)
+ id 1kIpSE-0006nl-4D
+ for qemu-devel@nongnu.org; Thu, 17 Sep 2020 04:39:46 -0400
+Received: from us-smtp-1.mimecast.com ([207.211.31.81]:23397
+ helo=us-smtp-delivery-1.mimecast.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kIpHr-00067u-5g
- for qemu-devel@nongnu.org; Thu, 17 Sep 2020 04:29:04 -0400
+ id 1kIpSB-00087d-Jq
+ for qemu-devel@nongnu.org; Thu, 17 Sep 2020 04:39:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600331342;
+ s=mimecast20190719; t=1600331980;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=nTmOOY6ZmAf/9WSAJFVy6jPQ/eMy1StMsvqyxPAhAyc=;
- b=Oo+H3pbeyUP/Nub7TeyJ77Tcgk67R4t1uLHGYTf0zEP5deygnYgINfsYKcxfVOJ3Br2JE3
- 4GgLVcUpMTUR9gmEkst40dbMcdsg6OgODz4uLb1jhLIy5JRdjokgM6bbhG6pZO9ZhyFZtw
- XSBmGWYCPPiaokhwUEBUfF8g99LHVEQ=
+ bh=u3xFOE2CBixst2wCvVXavXh+SXGEO68n3zknfyfSnCA=;
+ b=H4Mn/EAtsCJTgMBzTDs3duMgoEUu0NUZwfE4nvvSEa52DNyYF8zoga37r4Ttp7V5qcwdoY
+ bkILbPYSF8v/PRgYDt3qotqGIaqJ1pC6ZIS61yygstx46cBlEpEW9mxDh01Hp0VW+sD4WA
+ UaLbf6RixRAOxOisuYveaDgcresfoNA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-215-tGnnHg3KMCmfoiLYKNfPhg-1; Thu, 17 Sep 2020 04:28:58 -0400
-X-MC-Unique: tGnnHg3KMCmfoiLYKNfPhg-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
+ us-mta-375-GpwbTirwP-GgIxeCtpyKkQ-1; Thu, 17 Sep 2020 04:39:36 -0400
+X-MC-Unique: GpwbTirwP-GgIxeCtpyKkQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 94FA9873088;
- Thu, 17 Sep 2020 08:28:56 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4510718BA283;
+ Thu, 17 Sep 2020 08:39:35 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.40.192.179])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 51C837880D;
- Thu, 17 Sep 2020 08:28:54 +0000 (UTC)
-Date: Thu, 17 Sep 2020 10:28:51 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 9500A10013D7;
+ Thu, 17 Sep 2020 08:39:32 +0000 (UTC)
+Date: Thu, 17 Sep 2020 10:39:29 +0200
 From: Andrew Jones <drjones@redhat.com>
 To: Ying Fang <fangying1@huawei.com>
-Subject: Re: [RFC PATCH 08/12] hw/arm/virt-acpi-build: add PPTT table
-Message-ID: <20200917082851.mvxldh4eifsfpayo@kamzik.brq.redhat.com>
+Subject: Re: [RFC PATCH 09/12] target/arm/cpu: Add CPU cache description for
+ arm
+Message-ID: <20200917083929.uv2oukokqmiykfs5@kamzik.brq.redhat.com>
 References: <20200917032033.2020-1-fangying1@huawei.com>
- <20200917032033.2020-9-fangying1@huawei.com>
+ <20200917032033.2020-10-fangying1@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20200917032033.2020-9-fangying1@huawei.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+In-Reply-To: <20200917032033.2020-10-fangying1@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0.001
+X-Mimecast-Spam-Score: 0.002
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 02:01:40
+Received-SPF: pass client-ip=207.211.31.81; envelope-from=drjones@redhat.com;
+ helo=us-smtp-delivery-1.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 03:47:35
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -50
 X-Spam_score: -5.1
 X-Spam_bar: -----
 X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,21 +121,17 @@ Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
  qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g8+zIVT25joc
+X-TUID: Be2QuDI4kNpy
 
-On Thu, Sep 17, 2020 at 11:20:29AM +0800, Ying Fang wrote:
-> Add the Processor Properties Topology Table (PPTT) to present CPU topology
-> information to the guest.
-> 
-> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> Signed-off-by: Ying Fang <fangying1@huawei.com>
-> ---
->  hw/arm/virt-acpi-build.c | 42 ++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 42 insertions(+)
->
+On Thu, Sep 17, 2020 at 11:20:30AM +0800, Ying Fang wrote:
+> Add the CPUCacheInfo structure to hold CPU cache information for ARM cpus.
+> A classic three level cache topology is used here. The default cache
+> capacity is given and userspace can overwrite these values.
 
-There's a new version of this patch on the refresh branch.
-https://github.com/rhdrjones/qemu/commits/virt-cpu-topology-refresh
+Doesn't TCG already have some sort of fake cache hierarchy? If so, then
+we shouldn't be adding another one, we should be simply describing the
+one we already have. For KVM, we shouldn't describe anything other than
+what is actually on the host.
 
-drew 
+drew
 

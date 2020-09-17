@@ -1,109 +1,108 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp602348lfq;
-        Thu, 17 Sep 2020 06:54:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0sH0YFSB/dkKlck4qvCIgGi/vJDB+LziORTDfCsgxylGhA4fEuGbhwF2v56t/DT7OBpS9
-X-Received: by 2002:a5b:ace:: with SMTP id a14mr14516177ybr.441.1600350852441;
-        Thu, 17 Sep 2020 06:54:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600350852; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp602469lfq;
+        Thu, 17 Sep 2020 06:54:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyB283wIumRFrEeDsd6U1M/sFUhRQL7cSlHUJY9zSDs429/QvxO2eMpCiKfHBvGfr/7D5md
+X-Received: by 2002:a5b:5ce:: with SMTP id w14mr20579008ybp.83.1600350861265;
+        Thu, 17 Sep 2020 06:54:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600350861; cv=none;
         d=google.com; s=arc-20160816;
-        b=aUqCJL6JgP2mPqIKaijlwZLpBX8EBbvr/4/Sv4kORR8XQHg3GXe2zRoWb20Lzcz5bu
-         sxxN3sbabVf/SwZVh62xG7Whd2JAik0dQNb+WS/JHFyrnuLzYN5cCRQV9y1clpb7PemL
-         DAv/dLjvEDmwGJyB75B14w0LlC8QuggqmCgcJ6JZvOB2V+ugdglXvm2O4pS3UoONRGb6
-         GKescgKtlSgIm0Hxw1AxdlDpEiwUQYcBOmfLmQmmQ1Qk4tHHSi5sygvZtDWz2ue1hgYG
-         3HJNVPh48AbDq+f/wbM0VgZ/74grpXbNFRO5wD8LBBtXlAAIvIRNInpDVCHbMpGkVQX9
-         ga4w==
+        b=ff0CM7Ax0iKtcziTMaj/ElN5ujGYFs0pcl8oyBQW2coR/5iOwuppZXGkX5w/PUneJ6
+         nzjwn/vo7OPNGQhmXACtzaaR5L0GrOmTABzgE5d2yyji6iQ3PiN6uyAQGQIgGOA2J9mz
+         +IY77bcC+D5PGJYIKkDznYDEP13RPSQAUlTPwaRTSJfd3GvGGpuIbvJqP8wAP6sMDLkR
+         VanbQUTp2WNBmpmMjBuxLt07VT0Yo9/mNNdtyk0812284uLZcKDGnvb/hYIjs+S3J9Sq
+         +9rcKRYJKK2JY9HyZg5n+70XZ1tg0EMWxuZzokoon3dPr3ixH9WRA+XR/8/onH29uChb
+         2usA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ChUqQNnAXkzHIQx9TB59mjS7APRGCrp3vPf9nY/htpQ=;
-        b=X6mI8YHKkFrt2EPcuc7rwvBcMASIC8IT8OMcK2rvc3wF7BIUDJpObwiXzxQ8JMqw1j
-         PanqW1IIflQI78MUZaXDhVB5T5V0v4jnDvnfy8Q4gA9QQ4y3LhcCvcs9k1BKxOrDcAjt
-         Mw9q8QEH+FQiiLFhW7cFLlrpgvo5MSiT8MzD/HKKj6s+gCgF4wVjPZXyNEnKYNIHZE5J
-         reaN+uc5vHSNGEqTCvjVpTt/mFU49i6SgS+YjSlV7DTx6a5W9Ao0jPoULklcwL97ijjK
-         oXuMc99DdNAsQ9px1LKoKL+4xJmtqmbmGBepEDEEQAjUUR+NWm45s5cJj1vgPppl8x68
-         /4Pg==
+        bh=ZLD+Sit25/qmgfx5038iz6MD+ijxOcduhMfIIhwKx9Y=;
+        b=wRMGS2ZcdGNgyNHUEvCincNgFdCFQYB2nItO8HgPEiWQPVeQWexAilyL3hkXYRrh3b
+         fJSQMqTC8ziHPnK4C//jN4fO+nBeeoIrsOyg+v1dxQQuoK+7UBNHmnTtEirwxMKLMd9L
+         9oW9sQ1nDsLhMgHE/YXy+9JWWoOKBFgNotnTEeWHpZtRKJfKq7RXzeZUWNM6glhzJQ+v
+         AxAXP8ZkJXhTAxCLAZOlTsNyZh8Mvrwh/2T52mFuIJPOX5BEiTkZwAu197BbhJ2i6llT
+         TTVoQ1r1uxHGGHf4nAXcwzqbF6ryQNqeDWyqzbn7unrdvr78AninuSQ6n+7j7ijFLg4R
+         OJOQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OMhOhh9Y;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PplR3ydt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q81si6682745ybg.245.2020.09.17.06.54.12
+        by mx.google.com with ESMTPS id i202si7051226yba.271.2020.09.17.06.54.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 06:54:12 -0700 (PDT)
+        Thu, 17 Sep 2020 06:54:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OMhOhh9Y;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PplR3ydt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58478 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIuMV-0008L5-My
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 09:54:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34206)
+	id 1kIuMe-0000OF-Ha
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 09:54:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34254)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kIuM2-0008Fy-Sz
- for qemu-arm@nongnu.org; Thu, 17 Sep 2020 09:53:42 -0400
-Received: from us-smtp-delivery-1.mimecast.com ([205.139.110.120]:60988
- helo=us-smtp-1.mimecast.com)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kIuM4-0008IU-0C
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2020 09:53:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:23680)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kIuLz-00082M-GH
- for qemu-arm@nongnu.org; Thu, 17 Sep 2020 09:53:42 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kIuLz-00082g-NC
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2020 09:53:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600350817;
+ s=mimecast20190719; t=1600350818;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ChUqQNnAXkzHIQx9TB59mjS7APRGCrp3vPf9nY/htpQ=;
- b=OMhOhh9YPu6+BDdzy3TCPEBcxlsSmf+1vZzcBqNdJptMwT/odfS94jPxSiGegQ5yVZgHIF
- LwKOAAHnEeoJt+myFteEGqs5cVSX7lM+Dn797NhJtohtWLfyoEkPa1pZ5Jy0XoZ2pxGbL/
- 4HHb0n1EsvNyqgdz0v0q9MpDooMO0AM=
+ bh=ZLD+Sit25/qmgfx5038iz6MD+ijxOcduhMfIIhwKx9Y=;
+ b=PplR3ydt5guHVyTdKoyaelPQ0pCF3HWmRtkoKcO9dIRwytve+li5ABe3xAh2l/Hj/a5Req
+ /cHwS4g5ayjAmlSUS/8d7pAueFsa9/A+mWuy0mjGx+hr9cmd1K4JQglZRPEjEGGeDSZbuN
+ r4ayi7RtyFA4vwacJgVJqQkrK+embkA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-40-f7NAHvD-OS-D0mVTn9xnag-1; Thu, 17 Sep 2020 09:53:35 -0400
-X-MC-Unique: f7NAHvD-OS-D0mVTn9xnag-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-18-PU9re5w9NLy6BLSD8YvVGQ-1; Thu, 17 Sep 2020 09:53:35 -0400
+X-MC-Unique: PU9re5w9NLy6BLSD8YvVGQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 63A22107465C;
- Thu, 17 Sep 2020 13:53:34 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7F2CB80732A;
+ Thu, 17 Sep 2020 13:53:33 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-85.ams2.redhat.com
  [10.36.112.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E266367CF0;
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B12DE5DE51;
  Thu, 17 Sep 2020 13:53:24 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id B69899A8F; Thu, 17 Sep 2020 15:53:23 +0200 (CEST)
+ id 9F9DF9CBC; Thu, 17 Sep 2020 15:53:23 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 04/21] acpi: ged: add control regs
-Date: Thu, 17 Sep 2020 15:53:06 +0200
-Message-Id: <20200917135323.18022-5-kraxel@redhat.com>
+Subject: [PULL 02/21] seabios: add microvm config, update build rules
+Date: Thu, 17 Sep 2020 15:53:04 +0200
+Message-Id: <20200917135323.18022-3-kraxel@redhat.com>
 In-Reply-To: <20200917135323.18022-1-kraxel@redhat.com>
 References: <20200917135323.18022-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=205.139.110.120; envelope-from=kraxel@redhat.com;
- helo=us-smtp-1.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 09:24:35
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 20:51:18
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -50
 X-Spam_score: -5.1
 X-Spam_bar: -----
 X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.997,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,117 +125,67 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wjxDR4Atrwv4
-
-Add control regs (sleep, reset) for hw-reduced acpi.
+X-TUID: l3MCI0idPCQH
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Message-id: 20200915120909.20838-5-kraxel@redhat.com
+Reviewed-by: Sergio Lopez <slp@redhat.com>
+Message-id: 20200915120909.20838-3-kraxel@redhat.com
 ---
- include/hw/acpi/generic_event_device.h | 12 +++++++
- hw/acpi/generic_event_device.c         | 44 ++++++++++++++++++++++++++
- 2 files changed, 56 insertions(+)
+ roms/Makefile               |  5 ++++-
+ roms/config.seabios-microvm | 26 ++++++++++++++++++++++++++
+ 2 files changed, 30 insertions(+), 1 deletion(-)
+ create mode 100644 roms/config.seabios-microvm
 
-diff --git a/include/hw/acpi/generic_event_device.h b/include/hw/acpi/generic_event_device.h
-index 1be05a3c0f8c..38aec526f944 100644
---- a/include/hw/acpi/generic_event_device.h
-+++ b/include/hw/acpi/generic_event_device.h
-@@ -74,6 +74,17 @@ DECLARE_INSTANCE_CHECKER(AcpiGedState, ACPI_GED,
- #define ACPI_GED_EVT_SEL_OFFSET    0x0
- #define ACPI_GED_EVT_SEL_LEN       0x4
+diff --git a/roms/Makefile b/roms/Makefile
+index 1395a46695be..1489d47350f2 100644
+--- a/roms/Makefile
++++ b/roms/Makefile
+@@ -72,9 +72,12 @@ default help:
+ 	@echo "  clean              -- delete the files generated by the previous" \
+ 	                              "build targets"
  
-+#define ACPI_GED_REG_SLEEP_CTL     0x00
-+#define ACPI_GED_REG_SLEEP_STS     0x01
-+#define ACPI_GED_REG_RESET         0x02
-+#define ACPI_GED_REG_COUNT         0x03
-+
-+/* ACPI_GED_REG_RESET value for reset*/
-+#define ACPI_GED_RESET_VALUE       0x42
-+
-+/* ACPI_GED_REG_SLEEP_CTL.SLP_TYP value for S5 (aka poweroff) */
-+#define ACPI_GED_SLP_TYP_S5        0x05
-+
- #define GED_DEVICE      "GED"
- #define AML_GED_EVT_REG "EREG"
- #define AML_GED_EVT_SEL "ESEL"
-@@ -89,6 +100,7 @@ DECLARE_INSTANCE_CHECKER(AcpiGedState, ACPI_GED,
+-bios: build-seabios-config-seabios-128k build-seabios-config-seabios-256k
++bios: build-seabios-config-seabios-128k \
++		build-seabios-config-seabios-256k \
++		build-seabios-config-seabios-microvm
+ 	cp seabios/builds/seabios-128k/bios.bin ../pc-bios/bios.bin
+ 	cp seabios/builds/seabios-256k/bios.bin ../pc-bios/bios-256k.bin
++	cp seabios/builds/seabios-microvm/bios.bin ../pc-bios/bios-microvm.bin
  
- typedef struct GEDState {
-     MemoryRegion evt;
-+    MemoryRegion regs;
-     uint32_t     sel;
- } GEDState;
+ vgabios seavgabios: $(patsubst %,seavgabios-%,$(vgabios_variants))
  
-diff --git a/hw/acpi/generic_event_device.c b/hw/acpi/generic_event_device.c
-index b8abdefa1c77..491df80a5cc7 100644
---- a/hw/acpi/generic_event_device.c
-+++ b/hw/acpi/generic_event_device.c
-@@ -20,6 +20,7 @@
- #include "hw/qdev-properties.h"
- #include "migration/vmstate.h"
- #include "qemu/error-report.h"
-+#include "sysemu/runstate.h"
- 
- static const uint32_t ged_supported_events[] = {
-     ACPI_GED_MEM_HOTPLUG_EVT,
-@@ -176,6 +177,45 @@ static const MemoryRegionOps ged_evt_ops = {
-     },
- };
- 
-+static uint64_t ged_regs_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    return 0;
-+}
-+
-+static void ged_regs_write(void *opaque, hwaddr addr, uint64_t data,
-+                           unsigned int size)
-+{
-+    bool slp_en;
-+    int slp_typ;
-+
-+    switch (addr) {
-+    case ACPI_GED_REG_SLEEP_CTL:
-+        slp_typ = (data >> 2) & 0x07;
-+        slp_en  = (data >> 5) & 0x01;
-+        if (slp_en && slp_typ == 5) {
-+            qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+        }
-+        return;
-+    case ACPI_GED_REG_SLEEP_STS:
-+        return;
-+    case ACPI_GED_REG_RESET:
-+        if (data == ACPI_GED_RESET_VALUE) {
-+            qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
-+        }
-+        return;
-+    }
-+}
-+
-+static const MemoryRegionOps ged_regs_ops = {
-+    .read = ged_regs_read,
-+    .write = ged_regs_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 1,
-+    },
-+};
-+
- static void acpi_ged_device_plug_cb(HotplugHandler *hotplug_dev,
-                                     DeviceState *dev, Error **errp)
- {
-@@ -332,6 +372,10 @@ static void acpi_ged_initfn(Object *obj)
-      sysbus_init_mmio(sbd, &s->container_memhp);
-      acpi_memory_hotplug_init(&s->container_memhp, OBJECT(dev),
-                               &s->memhp_state, 0);
-+
-+    memory_region_init_io(&ged_st->regs, obj, &ged_regs_ops, ged_st,
-+                          TYPE_ACPI_GED "-regs", ACPI_GED_REG_COUNT);
-+    sysbus_init_mmio(sbd, &ged_st->regs);
- }
- 
- static void acpi_ged_class_init(ObjectClass *class, void *data)
+diff --git a/roms/config.seabios-microvm b/roms/config.seabios-microvm
+new file mode 100644
+index 000000000000..a253e2edc6ec
+--- /dev/null
++++ b/roms/config.seabios-microvm
+@@ -0,0 +1,26 @@
++CONFIG_QEMU=y
++CONFIG_QEMU_HARDWARE=y
++CONFIG_PERMIT_UNALIGNED_PCIROM=y
++CONFIG_ROM_SIZE=128
++CONFIG_XEN=n
++CONFIG_BOOTSPLASH=n
++CONFIG_ATA=n
++CONFIG_AHCI=n
++CONFIG_SDCARD=n
++CONFIG_PVSCSI=n
++CONFIG_ESP_SCSI=n
++CONFIG_LSI_SCSI=n
++CONFIG_MEGASAS=n
++CONFIG_MPT_SCSI=n
++CONFIG_FLOPPY=n
++CONFIG_FLASH_FLOPPY=n
++CONFIG_NVME=n
++CONFIG_PS2PORT=n
++CONFIG_USB=n
++CONFIG_LPT=n
++CONFIG_RTC_TIMER=n
++CONFIG_USE_SMM=n
++CONFIG_PMTIMER=n
++CONFIG_TCGBIOS=n
++CONFIG_HARDWARE_IRQ=n
++CONFIG_ACPI_PARSE=y
 -- 
 2.27.0
 

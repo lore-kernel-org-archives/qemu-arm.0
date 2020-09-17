@@ -1,86 +1,78 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp526287lfq;
-        Thu, 17 Sep 2020 05:17:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzMLdH63PCZge+UKFypdAwjqCbM99rMUhHajzmdLclL+FWrTcwZnelsz0ORgve9oQts3Kt1
-X-Received: by 2002:a05:6902:72b:: with SMTP id l11mr9541646ybt.419.1600345056695;
-        Thu, 17 Sep 2020 05:17:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600345056; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp530713lfq;
+        Thu, 17 Sep 2020 05:23:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzTaHff3DovfYKKWgGX3cNiAOR0jV6GNV9x5suz9c7dsm5vmREOgvXxpmXQoQ8IOQq25UVo
+X-Received: by 2002:a25:c444:: with SMTP id u65mr1729917ybf.188.1600345416054;
+        Thu, 17 Sep 2020 05:23:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600345416; cv=none;
         d=google.com; s=arc-20160816;
-        b=mkrg8UnrazWd4vabLOlx2rlR8oUrjy25lJU5jz1T4et50s2mrpW3AcQkGJoBKMtEcf
-         pWSCyXTEmSgXrw/Bd+be/06I4PmbIhLlLh/7QgO1Gjg059326mZrAqh/Ax7PNd90TGPp
-         xYUEj7EmRElc8SSIkcs8Dh0ocHyzTG9fNkhBbtBEZnxFKaTEV92DHjpTXZTD/qxk5x8S
-         iUR0Zavh226M7xwZ7m+TIJ+UDj+ulQK/lNrcqJ4JpjAaTkU145E3VCG37tdJ7G4TfwL9
-         FXYzkEGaNO1dVzqDiyoVAKIXR8oR8YP9/Y+zNEifqOEdEB1uPMN4BMJuAu1QK/znp6g8
-         zoqg==
+        b=vF6+GX9PM73LEhupjHeXmvqxRI6ViW5P5Twctu4+ZeiIluOLfaTPFUOLlJB7MCGVeX
+         V5sttps0NQ8cm2rd55vmUVgNmX650BMKBDz5ejy4nDUoD4QO1xGvsaFt/dTJP/DwO7aT
+         KscxhUbYbDra1uxsMgyb+73nY090D6J9ecSfOMJoeGg+i2ujqAk9KnMoHKhokZocHFYt
+         5d1vrHxj1z1j1ni2bgbC440xgMhiWfSL3PzPkkm+DLuINLWwhhO2LkGhaEhnKbrMI7/m
+         8JZlnpypjqjruKWZoW5zDhwF/hF0pGCW+N+wwNSlCR30SSVN61bNx9+MvRmZiZAE6q20
+         OerQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=r7INStwlvrBRDNBIaLxnGq5lr5ccF8V+/KKoeqDJp1Q=;
-        b=b0DIJeWxZ8QyIjog2l2X1yuMVCcFTBbE8XbH6vkT6ugjno5DAWipoSBzO5RwYGDTVj
-         N1SBwM3UaYeUzgJViIqtrBZAvFVuXrxwvHtqL+eIsjHSra7ouitYzFO/aZrQLf11Es1P
-         FW80N8UfyntO0DXm6QapJJbtpMmEHK2ClB1tjOjvLcXScIoFCwFtUjVeHiLtSYIR/agM
-         ZAn4TQXcNYufNSShKZp9IPrbg5+GSp+ADmYZI6vhGJ+Y9Q1IAzMpzO6H5cyLmwRK4vtx
-         h9YuQOxLnpHrH79STiKJDxEjY0i0OoamysYF3TAQRbyzVNSRNRlC/MaYQaVGJXVj/Xwi
-         ENjg==
+         :mime-version:message-id:date:subject:to:from;
+        bh=oBBTvDlmQazq4+sGjVL5eO5stGEXv1P+8btbsBUqu3c=;
+        b=tYu4k7CL7xi55ZIs89Bet6DNwBXcgMxlFx3/7RbY9z4gK1JsXWT/J78wUv1w9NLOFn
+         O+JLSYpddIChpXhxZfIKBNLfo/6UpCW2GghYRQERt3uOF98X9nO35bKDBopWPf7vADQ2
+         ao+DDd6NL+dluBfwwADgzvfBhJRnle/kDji9BQFN1zpd61+zVbg/1Im3vfVZUJEOfxxq
+         iDKpdZkm2gJ64F0qWudKOO5OyBPVScjq0qEMr+K0vVmklS5qa5jurFadt4XEpx17ssb2
+         TfwgFvs3bsRrdF9tJMAV0FOQFAIO9/sp/oIDFF9TRiI2x7M2giHGgVhY2Faq+MaYmPo/
+         3yoA==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o81si26468290ybc.465.2020.09.17.05.17.36
+        by mx.google.com with ESMTPS id s80si19172534ybs.142.2020.09.17.05.23.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 05:17:36 -0700 (PDT)
+        Thu, 17 Sep 2020 05:23:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:46700 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIsr2-0005cz-31
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 08:17:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33700)
+	id 1kIswp-00088g-C7
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 08:23:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIsqt-0005bW-9T; Thu, 17 Sep 2020 08:17:27 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:4710 helo=huawei.com)
+ (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
+ id 1kIswf-00085t-85; Thu, 17 Sep 2020 08:23:25 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:51242 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIsqp-0002oN-P0; Thu, 17 Sep 2020 08:17:26 -0400
-Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 7D2577891D1007D95006;
- Thu, 17 Sep 2020 20:17:12 +0800 (CST)
-Received: from [10.174.185.104] (10.174.185.104) by
- DGGEMS401-HUB.china.huawei.com (10.3.19.201) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 17 Sep 2020 20:17:03 +0800
-Subject: Re: [RFC PATCH 02/12] target/arm/kvm64: make MPIDR consistent with
- CPU Topology
-To: Andrew Jones <drjones@redhat.com>
-References: <20200917032033.2020-1-fangying1@huawei.com>
- <20200917032033.2020-3-fangying1@huawei.com>
- <20200917075330.7sx3xm7gd4mwqqtq@kamzik.brq.redhat.com>
-From: Ying Fang <fangying1@huawei.com>
-Message-ID: <0e8aa66e-2440-07a5-1fa6-5b42ac757a8a@huawei.com>
-Date: Thu, 17 Sep 2020 20:17:02 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
+ id 1kIswc-0003O4-Ed; Thu, 17 Sep 2020 08:23:24 -0400
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
+ by Forcepoint Email with ESMTP id 586CDECE9633EE63C126;
+ Thu, 17 Sep 2020 20:23:08 +0800 (CST)
+Received: from localhost.localdomain (10.175.104.175) by
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 17 Sep 2020 20:22:58 +0800
+From: Peng Liang <liangpeng10@huawei.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+Subject: [RFC v2 00/10] Support disable/enable CPU features for AArch64
+Date: Thu, 17 Sep 2020 20:14:39 +0800
+Message-ID: <20200917121449.3442059-1-liangpeng10@huawei.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200917075330.7sx3xm7gd4mwqqtq@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.185.104]
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.175.104.175]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
- helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 08:17:13
+Received-SPF: pass client-ip=45.249.212.35;
+ envelope-from=liangpeng10@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 08:23:09
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -93,120 +85,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- qemu-devel@nongnu.org, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
+Cc: peter.maydell@linaro.org, drjones@redhat.com,
+ zhang.zhanghailiang@huawei.com, mst@redhat.com, cohuck@redhat.com,
+ xiexiangyou@huawei.com, Peng Liang <liangpeng10@huawei.com>,
+ pbonzini@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 8uB+KQrYVity
+X-TUID: MnBFdBA7OLR9
 
+QEMU does not support disable/enable CPU features in AArch64 for now.
+This patch series add support for CPU features in AArch64.
 
+Firstly, we change the isar struct in ARMCPU to an array for
+convenience.  Secondly, we add support to configure CPU feautres in
+AArch64 and make sure that the ID registers can be synchronized to KVM
+so that guest can read the value we configure.  Thirdly, we add a
+mechanism to solve the dependency relationship of some CPU features.
+Last, we add a KVM_CAP_ARM_CPU_FEATURE to check whether KVM supports to
+set CPU features in AArch64.
 
-On 9/17/2020 3:53 PM, Andrew Jones wrote:
-> On Thu, Sep 17, 2020 at 11:20:23AM +0800, Ying Fang wrote:
->> MPIDR helps to provide an additional PE identification in a multiprocessor
->> system. This patch adds support for setting MPIDR from userspace, so that
->> MPIDR is consistent with CPU topology configured.
->>
->> Signed-off-by: Ying Fang <fangying1@huawei.com>
->> ---
->>   target/arm/kvm64.c | 46 ++++++++++++++++++++++++++++++++++++++--------
->>   1 file changed, 38 insertions(+), 8 deletions(-)
->>
->> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
->> index ef1e960285..fcce261a10 100644
->> --- a/target/arm/kvm64.c
->> +++ b/target/arm/kvm64.c
->> @@ -757,10 +757,46 @@ static int kvm_arm_sve_set_vls(CPUState *cs)
->>   
->>   #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
->>   
->> +static int kvm_arm_set_mp_affinity(CPUState *cs)
->> +{
->> +    uint64_t mpidr;
->> +    ARMCPU *cpu = ARM_CPU(cs);
->> +
->> +    if (kvm_check_extension(kvm_state, KVM_CAP_ARM_MP_AFFINITY)) {
->> +        /* Make MPIDR consistent with CPU topology */
->> +        MachineState *ms = MACHINE(qdev_get_machine());
->> +
->> +        mpidr = (kvm_arch_vcpu_id(cs) % ms->smp.threads) << ARM_AFF0_SHIFT;
-> 
-> We should query KVM first to determine if it wants guests to see their PEs
-> as threads or not. If not, and ms->smp.threads is > 1, then that's an
-> error. And, in any case, if ms->smp.threads == 1, then we shouldn't waste
-> aff0 on it, as that could reduce IPI broadcast performance.
+Also export CPU features to the result of qmp query-cpu-model-expansion
+so that libvirt can get the supported CPU features.
 
-Yes, good catch. Should check against smp.threads before filling
-the MPIDR value.
+Update the ID fields to ARMv8.6 and add some CPU features according to
+the new ID fields.
 
-> 
->> +        mpidr |= ((kvm_arch_vcpu_id(cs) / ms->smp.threads % ms->smp.cores)
->> +                                    & 0xff) << ARM_AFF1_SHIFT;
->> +        mpidr |= (kvm_arch_vcpu_id(cs) / (ms->smp.cores * ms->smp.threads)
->> +                                    & 0xff) << ARM_AFF2_SHIFT;
->> +
->> +        /* Override mp affinity when KVM is in use */
->> +        cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
->> +
->> +        /* Bit 31 is RES1 indicates the ARMv7 Multiprocessing Extensions */
->> +        mpidr |= (1ULL << 31);
->> +        return kvm_vcpu_ioctl(cs, KVM_ARM_SET_MP_AFFINITY, &mpidr);
->> +    } else {
->> +        /*
->> +         * When KVM_CAP_ARM_MP_AFFINITY is not supported, it means KVM has its
->> +         * own idea about MPIDR assignment, so we override our defaults with
->> +         * what we get from KVM.
->> +         */
->> +        int ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
->> +        if (ret) {
->> +            error_report("failed to set MPIDR");
-> 
-> We don't need this error, kvm_get_one_reg() has trace support already.
-> Anyway, the wording is wrong since it says 'set' instead of 'get'.
+With related KVM patch set[1], we can disable/enable CPU features in
+AArch64.
 
-Yes, my careless, I will fix it.
+[1] https://patchwork.kernel.org/patch/11782361/
 
-> 
->> +            return ret;
->> +        }
->> +        cpu->mp_affinity = mpidr & ARM32_AFFINITY_MASK;
->> +        return ret;
->> +    }
->> +}
->> +
->>   int kvm_arch_init_vcpu(CPUState *cs)
->>   {
->>       int ret;
->> -    uint64_t mpidr;
->>       ARMCPU *cpu = ARM_CPU(cs);
->>       CPUARMState *env = &cpu->env;
->>   
->> @@ -814,16 +850,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
->>           }
->>       }
->>   
->> -    /*
->> -     * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
->> -     * Currently KVM has its own idea about MPIDR assignment, so we
->> -     * override our defaults with what we get from KVM.
->> -     */
->> -    ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
->> +    ret = kvm_arm_set_mp_affinity(cs);
->>       if (ret) {
->>           return ret;
->>       }
->> -    cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
->>   
->>       kvm_arm_init_debug(cs);
->>   
->> -- 
->> 2.23.0
->>
->>
-> 
-> Thanks,
-> drew
-> 
-> .
-> 
+v1 -> v2:
+ - adjust the order of patches
+ - only expose AArch64 features which are exposed by kernel via /proc/cpuinfo
+ - add check for conflict CPU features set by user
+ - split the change in linux-headers/linux/kvm.h
+
+Peng Liang (10):
+  linux-header: Introduce KVM_CAP_ARM_CPU_FEATURE
+  target/arm: Update ID fields
+  target/arm: only set ID_PFR1_EL1.GIC for AArch32 guest
+  target/arm: convert isar regs to array
+  target/arm: Introduce kvm_arm_cpu_feature_supported
+  target/arm: register CPU features for property
+  target/arm: Allow ID registers to synchronize to KVM
+  target/arm: Introduce user_mask to indicate whether the feature is set
+    explicitly
+  target/arm: introduce CPU feature dependency mechanism
+  target/arm: Add CPU features to query-cpu-model-expansion
+
+ linux-headers/linux/kvm.h |   1 +
+ target/arm/cpu.h          | 243 +++++++++--------
+ target/arm/internals.h    |  15 +-
+ target/arm/kvm_arm.h      |  10 +
+ hw/intc/armv7m_nvic.c     |  28 +-
+ target/arm/cpu.c          | 555 ++++++++++++++++++++++++++++++--------
+ target/arm/cpu64.c        | 174 ++++++------
+ target/arm/cpu_tcg.c      | 250 ++++++++---------
+ target/arm/helper.c       | 102 ++++---
+ target/arm/kvm.c          |  38 +++
+ target/arm/kvm64.c        |  86 +++---
+ target/arm/monitor.c      |   4 +
+ 12 files changed, 976 insertions(+), 530 deletions(-)
+
+-- 
+2.26.2
+

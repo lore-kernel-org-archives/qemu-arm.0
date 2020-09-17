@@ -1,79 +1,78 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp581325lfq;
-        Thu, 17 Sep 2020 06:27:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxnWbSuda5hWuBjFX2tTD4tJeX/AGTgp8FlTBeT1uBB96Ck60Jawi9ePvihu4/XyYOfUOXt
-X-Received: by 2002:a25:b9c3:: with SMTP id y3mr2401579ybj.440.1600349249221;
-        Thu, 17 Sep 2020 06:27:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600349249; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp614692lfq;
+        Thu, 17 Sep 2020 07:08:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhCc1f/wgeazgX/5UsAewrU6Y6iUYrLgVcejA+KMzRcIVH3LpH4zLhmukRtzJeJST9+75N
+X-Received: by 2002:a25:a85:: with SMTP id 127mr26756148ybk.143.1600351729674;
+        Thu, 17 Sep 2020 07:08:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600351729; cv=none;
         d=google.com; s=arc-20160816;
-        b=P3cl+715VQvEvFVtUNbLzodacCJLGi9ij6VUmB2KxFjPxRUVUcsUaIRG+qjPiVKwo/
-         1g6ZhQxxnOjR1eTpm1wVdnZzGmPQu9uAqUkmuBG8EkYptEb4jZP36Z+CF/+5UKlFYf0C
-         yPtGSRRnZwncacIFN/iHdH8xWZXa8omsCnL/+SIQ9od4M5yqDKFIAV5Ks2SjRQSxkyjc
-         +iKNeUE3XelUvjdVArDt4jnx5k5GIxz3A2HCkbiqVQb5fBMdra13ME2qKGkUp1rj/bPt
-         NQBCqQvXURG36sABr0wWdUr28S0cywDSyLGS8qmIUav3v+iezgTa/HSdTeTvBN8lKHN2
-         Dd0w==
+        b=V/OnKaORGCVeooBBWennLbPUmqSFxmLIFH+zlsXDDb2KI+7T7zrH7Mz6sKs3oTBcYK
+         sOF7/Dn0RYusm0tBGMSl11cBo35x2ry3bv4WW4UulEy9zQnbEg6a5M8BZyUt1anfOmTA
+         XWTDkJbs5caFmTCa05du35weVAf/ipRX8XyRY1ObVyHV1jYXeU2r1e6JWXPSAAGYbRUd
+         h9thRucbclwPh24e1qdnGKsh4VygXMaufJtt6P/3hRrmYkjHlA9rgVbcPuwo/xnV6cx1
+         b8/Aa3RFbMit4MKRvtE8cif+avIS4WxFFl4EnrAQ0yEIh6KHThQizf6FscUq77pC5CH5
+         07Tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject;
-        bh=fAsxb4Jp4OcRNGFAxn7eNI2gjWh16t3QTu5OEWRQSkI=;
-        b=fa5cQDaY39ygUrm0ScF3IR6vqc/ZjakRi6pkxVBY6jnUYycSAaLh3ygp+Kyg2AR7Wr
-         FoX2beIcXClKe6nqpKtBwUXwNafqBhAZj+6eXAZspvIsVuopOPEkpP4ChewuHmY1nZPC
-         ni/DgJY4F65mGOdA9qAga8l19FJu4Squ9Y058eLxutPeQmOmpSP58GDLljiRTmCSBH8q
-         fMgCtCofn2luV1euEhOpEIShaU4v5iCJ8PTqJ1Xavb+li33apd/PsRcfA7wiel8Jm6uF
-         WtLEASXBJMkqMiITX+LOBpiFS8sw+Sse6+1kw9TjJuagDEh+20HmCNt4Poj1PksGS/qi
-         P9rg==
+        bh=mm1Km8vEHLF132mU/vq28YRqpxQve5N4yDElAZBpoPw=;
+        b=iPfWOM00n+njOkFyCurwEXR1E0b10dfOa6+GFCE8W/AL8esG+UbRrO33YAT48Tpx3x
+         2pia4InYNBgLGE8rqRk14jKfvwOw0TJOOiJktZawsXP3/jo3XJt7AIo4aEgpTdFQBZJX
+         rMXY4rcMh71XSd7fWsuKvv2QuA+6GUzJW16lwvcvnZLImksF0Nqd4muuRHDcsU3URDIx
+         SyZZ6KhfQNK6CKSh2pRBn19OuLzsyNkMU5fHyXwFG7YoQX1K5yYnrEoRy0/WmkoFE8fy
+         BaqrK21g9ST0fNDeutM4EcXHwLJdaXNCZmE3Xr77zpOQyK7JNmqh+Lp/jbqg/phNQy5M
+         h0IQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m65si1185826ybf.268.2020.09.17.06.27.29
+        by mx.google.com with ESMTPS id w185si21158186ybe.483.2020.09.17.07.08.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 06:27:29 -0700 (PDT)
+        Thu, 17 Sep 2020 07:08:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55356 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kItwe-00089m-Lh
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 09:27:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53818)
+	id 1kIuad-0001iv-HZ
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 10:08:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34946)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kItwW-00088e-1E; Thu, 17 Sep 2020 09:27:20 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:47444 helo=huawei.com)
+ id 1kIuNl-0002b7-RZ; Thu, 17 Sep 2020 09:55:29 -0400
+Received: from szxga07-in.huawei.com ([45.249.212.35]:52788 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kItwT-0003x6-Rl; Thu, 17 Sep 2020 09:27:19 -0400
-Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 203ECA78578142DC1B22;
- Thu, 17 Sep 2020 21:27:07 +0800 (CST)
+ id 1kIuNh-0008J1-2N; Thu, 17 Sep 2020 09:55:27 -0400
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 938F63F47763929775EE;
+ Thu, 17 Sep 2020 21:55:14 +0800 (CST)
 Received: from [10.174.185.104] (10.174.185.104) by
- DGGEMS407-HUB.china.huawei.com (10.3.19.207) with Microsoft SMTP Server id
- 14.3.487.0; Thu, 17 Sep 2020 21:27:00 +0800
-Subject: Re: [RFC PATCH 03/12] target/arm/kvm32: make MPIDR consistent with
- CPU Topology
+ DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
+ 14.3.487.0; Thu, 17 Sep 2020 21:55:05 +0800
+Subject: Re: [RFC PATCH 04/12] device_tree: add qemu_fdt_add_path
 To: Andrew Jones <drjones@redhat.com>
 References: <20200917032033.2020-1-fangying1@huawei.com>
- <20200917032033.2020-4-fangying1@huawei.com>
- <20200917080706.s4edh2vd2gzjwg6y@kamzik.brq.redhat.com>
+ <20200917032033.2020-5-fangying1@huawei.com>
+ <20200917081239.bdfhkofodqvhg3i6@kamzik.brq.redhat.com>
 From: Ying Fang <fangying1@huawei.com>
-Message-ID: <e009e583-03da-721e-04db-7efad9658267@huawei.com>
-Date: Thu, 17 Sep 2020 21:26:59 +0800
+Message-ID: <75888154-dec6-3a70-7eb8-3cb1a13b91a6@huawei.com>
+Date: Thu, 17 Sep 2020 21:55:05 +0800
 User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
  Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20200917080706.s4edh2vd2gzjwg6y@kamzik.brq.redhat.com>
+In-Reply-To: <20200917081239.bdfhkofodqvhg3i6@kamzik.brq.redhat.com>
 Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.185.104]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=fangying1@huawei.com;
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=fangying1@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 09:27:07
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/17 08:23:09
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -94,35 +93,97 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- qemu-devel@nongnu.org, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
+ Alexander Graf <agraf@suse.de>, qemu-devel@nongnu.org, alex.chen@huawei.com,
+ shannon.zhaosl@gmail.com, qemu-arm@nongnu.org, alistair.francis@wdc.com,
+ imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: RB+t16GSF4+o
+X-TUID: rsAok/K6WgwM
 
 
 
-On 9/17/2020 4:07 PM, Andrew Jones wrote:
-> On Thu, Sep 17, 2020 at 11:20:24AM +0800, Ying Fang wrote:
->> MPIDR helps to provide an additional PE identification in a multiprocessor
->> system. This patch adds support for setting MPIDR from userspace, so that
->> MPIDR is consistent with CPU topology configured.
+On 9/17/2020 4:12 PM, Andrew Jones wrote:
+> On Thu, Sep 17, 2020 at 11:20:25AM +0800, Ying Fang wrote:
+>> From: Andrew Jones <drjones@redhat.com>
 >>
->> Signed-off-by: Ying Fang <fangying1@huawei.com>
+>> qemu_fdt_add_path works like qemu_fdt_add_subnode, except it
+>> also recursively adds any missing parent nodes.
+>>
+>> Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>
+>> Cc: Alexander Graf <agraf@suse.de>
+>> Signed-off-by: Andrew Jones <drjones@redhat.com>
 >> ---
->>   target/arm/kvm32.c | 46 ++++++++++++++++++++++++++++++++++++++--------
->>   1 file changed, 38 insertions(+), 8 deletions(-)
+>>   device_tree.c                | 24 ++++++++++++++++++++++++
+>>   include/sysemu/device_tree.h |  1 +
+>>   2 files changed, 25 insertions(+)
 >>
->> diff --git a/target/arm/kvm32.c b/target/arm/kvm32.c
->> index 0af46b41c8..85694dc8bf 100644
->> --- a/target/arm/kvm32.c
->> +++ b/target/arm/kvm32.c
+>> diff --git a/device_tree.c b/device_tree.c
+>> index b335dae707..1854be3a02 100644
+>> --- a/device_tree.c
+>> +++ b/device_tree.c
+>> @@ -524,6 +524,30 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+>>       return retval;
+>>   }
+>>   
+>> +int qemu_fdt_add_path(void *fdt, const char *path)
+>> +{
+>> +    char *parent;
+>> +    int offset;
+>> +
+>> +    offset = fdt_path_offset(fdt, path);
+>> +    if (offset < 0 && offset != -FDT_ERR_NOTFOUND) {
+>> +        error_report("%s Couldn't find node %s: %s", __func__, path,
+>> +                     fdt_strerror(offset));
+>> +        exit(1);
+>> +    }
+>> +
+>> +    if (offset != -FDT_ERR_NOTFOUND) {
+>> +        return offset;
+>> +    }
+>> +
+>> +    parent = g_strdup(path);
+>> +    strrchr(parent, '/')[0] = '\0';
+>> +    qemu_fdt_add_path(fdt, parent);
+>> +    g_free(parent);
+>> +
+>> +    return qemu_fdt_add_subnode(fdt, path);
+>> +}
 > 
-> This file no longer exists in mainline. Please rebase the whole series.
-Thanks, it is gone. Will rebase it.
+> Igor didn't like the recursion when I posted this before so I changed
+> it when doing the refresh[*] that I gave to Salil Mehta. Salil also
+> works for Huawei, are you guys not working together?
+> 
+> [*] https://github.com/rhdrjones/qemu/commits/virt-cpu-topology-refresh
+
+Thanks for the sync. I'll look into it. I did not know about the refresh
+and the effort Salil Mehta has made on this. We are not in the same dept 
+and work for different projects.
+
+Thanks Ying.
 > 
 > Thanks,
 > drew
+> 
+>> +
+>>   void qemu_fdt_dumpdtb(void *fdt, int size)
+>>   {
+>>       const char *dumpdtb = qemu_opt_get(qemu_get_machine_opts(), "dumpdtb");
+>> diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+>> index 982c89345f..15fb98af98 100644
+>> --- a/include/sysemu/device_tree.h
+>> +++ b/include/sysemu/device_tree.h
+>> @@ -104,6 +104,7 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
+>>   uint32_t qemu_fdt_alloc_phandle(void *fdt);
+>>   int qemu_fdt_nop_node(void *fdt, const char *node_path);
+>>   int qemu_fdt_add_subnode(void *fdt, const char *name);
+>> +int qemu_fdt_add_path(void *fdt, const char *path);
+>>   
+>>   #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)                 \
+>>       do {                                                                      \
+>> -- 
+>> 2.23.0
+>>
+>>
 > 
 > .
 > 

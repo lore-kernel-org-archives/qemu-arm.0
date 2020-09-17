@@ -1,218 +1,550 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp71318lfq;
-        Wed, 16 Sep 2020 16:11:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxcPGJPl/dCK3kcZjxQRmLsk/ZmFFKsiiqvvk/J7atmiUlKERNby+JKER9R/MFBWBJEPEms
-X-Received: by 2002:a25:6a41:: with SMTP id f62mr11553532ybc.225.1600297861189;
-        Wed, 16 Sep 2020 16:11:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600297861; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp145931lfq;
+        Wed, 16 Sep 2020 18:19:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyMIcBZPaLhddHR+BVpKp3HoPpDWNLPwUH2e2WfWv9CyeWvRfDxiZkYsw7IyV7vJaPiHnSG
+X-Received: by 2002:a25:ac09:: with SMTP id w9mr30462101ybi.491.1600305569357;
+        Wed, 16 Sep 2020 18:19:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600305569; cv=none;
         d=google.com; s=arc-20160816;
-        b=g0iYXoSfUtH+wF1XNuOXqQPvVBzxmui+AZK/0g7ZnOW9BT6PGHJKRX2dGGGtt7iUB0
-         w03eU+ePwrCejPhFpkR+kBlt73C4okalipwziyUxd1mkU37IBNCOrUaiSBF1xnXkVyoU
-         3XTN6ljFGBhebw/U6zfA9AdI7kPWjYRi8hSPww7EzWGTaRuetcLbslimbtlkyxgbLqbe
-         OTU4lKyontOJRIXYj6aavbqaHBKkTLiUmJ1aaXRwxoQAvrM7CtdckfDlsie6DCMDBVHg
-         b+Dld8OCLhKeMeQvBHpDRPwUBssqwCvLNUAaRLXG2HYt7pmtJ7c1+8pB8wEOVnPMTmly
-         hFKA==
+        b=e/s5ywyIz6M5YOsywqZsyzrfTIa/y7Ok6sbDBnI//CDQUcWJAiALXzaIxDvjlixSGL
+         5qE1AZ7661TDYGW9m6DnwKep92Y2u9PlkND5bskaPQQRx1HYVF6I2QKVftu4W37x88Yw
+         MGuM3sEndWBGBoVA4oqaMwukdo05raTcMnCEtFRk2mqbqgL1D+IVFFHsUv4zGtvU47ee
+         P4WD/zm/CNnuNkMhR/0ZZbiUzBDGKVb/oRGxvTXp42ZPCpO85dMcDC8nY5FkxFSAEcqZ
+         uLkte8rJDsMUFuNFd7rrxQfLtW76NcQFRX7o0bsR4QM27JLyaVDZYcfN7xrWQA1n9+ZJ
+         bt+Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=e/5UsAxmnUVzHtcRiKgjko8kzeK/JClDw+iiIgx2Wt4=;
-        b=QfvXmn2qq/abQ0eCbs0YyEbiBnCaBpnGrBoq+RjjqPZETa0VM58NI/cjb0O16rj/eF
-         LmG0TDR67J7vtTfGa2DQ/iV81w3zvtSvy7B8p08/CHiDXfuJJ2zakLUlc2bLHVKGnQxw
-         YBLZ/YLnmoyOUPNDpPnqOZibWswJSv1lhM/O2nEmYI8lG11AJa4ZsLLlMxe8W1oJc/Km
-         Yvt6mU49e0eByGcu6/kOI7K7LvqXoHs2eeOJY5jndFI4QFYPLtIZtQ/YNO/vMRQCPPqJ
-         Qh6HTTgJdEL581nIoKXFxLk+R9akFfNwY/+gE+gMwb3UY/fJ3UCwieO+9ixwMX67rsEc
-         9nEQ==
+         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=Ek/j9bqpvJGLhtXaCu30oCBtFL5aA8L0Q//5anLSOmQ=;
+        b=sOT8yiuq1KgzWWJsfnx4N0IKu1UUGACCzi0ffvoSrSs4YoctDn0BhnwzVqgZHPTtqD
+         ZgQdnZwRWN6Li2SxvMN2d2xBiUMR3u+Zb/nNZbG7vyHiUnIVtJjcRl/fXwDGQrC4Le8+
+         Zf0Yu2clj791inmbeiWsa96ZycS3+rxV/LLqtZPJ0TAajsq2JIJrVos7jtExTtqgtphr
+         0UWCUvYDqR/HLTVjlm3WCj0tBJXUnB3gRiAY8Bu3pcN5RprCaYspxuSgutrdc6n0f/hx
+         AaLsuIg6f9l60cB00+IZcStHQd0PEpPhLypH5Lvg/GlkD/T404G6y2ZBy1Op3MGEzcVa
+         uJjQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TijStcC4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=f3kybrPl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r6si4925523ybg.16.2020.09.16.16.11.01
+        by mx.google.com with ESMTPS id u2si924558ybm.274.2020.09.16.18.19.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Sep 2020 16:11:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Sep 2020 18:19:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TijStcC4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:55116 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=f3kybrPl;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58950 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIgZn-0001G8-26
-	for alex.bennee@linaro.org; Wed, 16 Sep 2020 19:11:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35386)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kIia8-0002lK-OV
+	for alex.bennee@linaro.org; Wed, 16 Sep 2020 21:19:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56022)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1kIgZX-00010a-Fb; Wed, 16 Sep 2020 19:10:43 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:35406)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <edgar.iglesias@gmail.com>)
- id 1kIgZV-0004eV-Jo; Wed, 16 Sep 2020 19:10:43 -0400
-Received: by mail-ej1-x643.google.com with SMTP id u21so295558eja.2;
- Wed, 16 Sep 2020 16:10:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=e/5UsAxmnUVzHtcRiKgjko8kzeK/JClDw+iiIgx2Wt4=;
- b=TijStcC4qTgcCiKSfqYclsF3ShCwkaO011hiDb+F8ga8jaZPalNV6ork+vKaU7b879
- KntwheqJF5Ibo5aSChkzI5XGSONP9chJZ/khcPhqc1+VgrZqaIydKyB8x8YmRLpHzG9l
- VCQlRIluZ2qwQIVByStM5GHMAWJjeCgq85ItA18VlOnrmkUF5WgqkqSTjAO53plUYx6x
- B6xM8rKaIiNw2SE7uAHTGLKxJAMqSDra2OmW/MNbbLJk0KP8xD+hbgF/mdowqCBI7t3Y
- cKku+z7T400ZcMyJzvUbbrgTi08w75DGLiJayvzn3GUp8EW0aYZUjSSP3mcoO3tPebPU
- aStw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=e/5UsAxmnUVzHtcRiKgjko8kzeK/JClDw+iiIgx2Wt4=;
- b=ZYROy+dvMUMwl9QE2L4LLQUXPC3JspNq1zGZCMTkgaFODF1ys1g/q3C0NrCZycT4CE
- vIg87LAmG4DUFqdP9TFNmiyOtIAY19bWS3zoykOsVtk/zp2KgAa3QrKgUzxgC8lD3nnV
- jS6EjPj/L9qZPIZz5cRuqtJqkEQNbi/1BG2X/yugzJFV2pNAiYcCzBIj19SPao6ws8u7
- 2clat2UPJ8v3fSRtyre+WDGTF0V0eALW3MJTGlN5qHHZj82tAmKhgiqvp8NBXprobCD1
- ctR2aorS01NYwLh5j8uKHPIwjZNEjFyyob9Q8kBhh7kBJYDslsKALhVRs/f6yGMwXJXO
- K2KQ==
-X-Gm-Message-State: AOAM5302nC93KBoufvua7nzcP4zEzWFtnfh5QApQ4bp/U3uj3Mi0LrWd
- RwbakxdsCbfTEmatQEOD/GLQHTwdTlPTbnAeJTE=
-X-Received: by 2002:a17:906:7856:: with SMTP id
- p22mr27216395ejm.262.1600297838469; 
- Wed, 16 Sep 2020 16:10:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kIiXg-0008TT-D1; Wed, 16 Sep 2020 21:16:56 -0400
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:49533 helo=ozlabs.org)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
+ id 1kIiXc-0002Ru-En; Wed, 16 Sep 2020 21:16:56 -0400
+Received: by ozlabs.org (Postfix, from userid 1007)
+ id 4BsJvx1Z8Lz9sV6; Thu, 17 Sep 2020 11:16:44 +1000 (AEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=gibson.dropbear.id.au; s=201602; t=1600305405;
+ bh=Wc3VykqGzaeb8hZEoDfWDPV9hCpyiAiimsRNX1MLfBg=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+ b=f3kybrPlB0cTG9dg3TZHvuIJGMrxky/IYwj6ZPcVxV6AWqQf0n+GIxbbR7Q32p4Md
+ p6GDcWTdqdI1D9yc9L6oBSIfTfhFlR9n3dXQsC/r1gdGgb1Q+inzIkVBofHGU8B3Mz
+ XVhzBB+1Dd9/h37qEzgPbFKVZ9lb2J90wP3wuDTk=
+Date: Thu, 17 Sep 2020 10:44:34 +1000
+From: David Gibson <david@gibson.dropbear.id.au>
+To: Eduardo Habkost <ehabkost@redhat.com>
+Subject: Re: [PATCH 2/2] qom: Use DECLARE_INTERFACE_CHECKER macro
+Message-ID: <20200917004434.GF5258@yekko.fritz.box>
+References: <20200916223258.599367-1-ehabkost@redhat.com>
+ <20200916223258.599367-3-ehabkost@redhat.com>
 MIME-Version: 1.0
-References: <20200904154439.643272-1-philmd@redhat.com>
- <69f3f4d6-de7d-9535-03b3-a57ca8f041d6@redhat.com>
-In-Reply-To: <69f3f4d6-de7d-9535-03b3-a57ca8f041d6@redhat.com>
-From: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-Date: Thu, 17 Sep 2020 01:10:28 +0200
-Message-ID: <CAJy5ezqT2vuhFG6n4cAHsB4NwDjC8EdbC=A3aJ94hu+u831vYQ@mail.gmail.com>
-Subject: Re: [PATCH 00/13] dma: Let the DMA API take MemTxAttrs argument and
- propagate MemTxResult
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
-Content-Type: multipart/alternative; boundary="00000000000032673d05af76601a"
-Received-SPF: pass client-ip=2a00:1450:4864:20::643;
- envelope-from=edgar.iglesias@gmail.com; helo=mail-ej1-x643.google.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="NQTVMVnDVuULnIzU"
+Content-Disposition: inline
+In-Reply-To: <20200916223258.599367-3-ehabkost@redhat.com>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
+ helo=ozlabs.org
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- qemu-devel <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- Li Qiang <liq3ea@gmail.com>, Peter Chubb <peter.chubb@nicta.com.au>,
- Joel Stanley <joel@jms.id.au>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, Laszlo Ersek <lersek@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Beniamino Galvani <b.galvani@gmail.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, John Snow <jsnow@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Andrew Jeffery <andrew@aj.id.au>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: peQI6/aAbKKA
+ "Daniel P. Berrange" <berrange@redhat.com>, Corey Minyard <minyard@acm.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
+ Juan Quintela <quintela@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-devel@nongnu.org,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>, qemu-arm@nongnu.org,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@gmail.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Stefan Berger <stefanb@linux.ibm.com>,
+ =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CZUdou/BBZlV
 
---00000000000032673d05af76601a
-Content-Type: text/plain; charset="UTF-8"
+
+--NQTVMVnDVuULnIzU
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Wed, 16 Sep 2020, 15:48 Philippe Mathieu-Daud=C3=A9, <philmd@redhat.com>
-wrote:
+On Wed, Sep 16, 2020 at 06:32:58PM -0400, Eduardo Habkost wrote:
+> Mechanical search/replace to use the new
+> DECLARE_INTERFACE_CHECKER macro instead of manually defining
+> macros using INTERFACE_CHECK.
+>=20
+> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 
-> On 9/4/20 5:44 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Salvaging cleanups patches from the RFC series "Forbid DMA write
-> > accesses to MMIO regions" [*], propagating MemTxResult and
-> > adding documentation.
-> >
-> > Philippe Mathieu-Daud=C3=A9 (12):
-> >   dma: Let dma_memory_valid() take MemTxAttrs argument
-> >   dma: Let dma_memory_set() take MemTxAttrs argument
-> >   dma: Let dma_memory_rw_relaxed() take MemTxAttrs argument
-> >   dma: Let dma_memory_rw() take MemTxAttrs argument
-> >   dma: Let dma_memory_read/write() take MemTxAttrs argument
-> >   dma: Let dma_memory_map() take MemTxAttrs argument
->
-> Talking with Laszlo, he wonders if we shouldn't enforce setting
-> MemTxAttrs attrs.secure =3D 0 in these calls.
->
-> Is there a concept of "secure DMA controller" in QEMU?
->
-> Thanks,
->
-> Phil.
->
+ppc parts
+Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
-Hi,
+> ---
+> This is an alternative to the patches submitted at
+> https://lore.kernel.org/qemu-devel/20200916193101.511600-3-ehabkost@redha=
+t.com/
+> https://lore.kernel.org/qemu-devel/20200916193101.511600-4-ehabkost@redha=
+t.com/
+> ---
+> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: Corey Minyard <minyard@acm.org>
+> Cc: "C=E9dric Le Goater" <clg@kaod.org>
+> Cc: David Gibson <david@gibson.dropbear.id.au>
+> Cc: "Herv=E9 Poussineau" <hpoussin@reactos.org>
+> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
+> Cc: Juan Quintela <quintela@redhat.com>
+> Cc: "Dr. David Alan Gilbert" <dgilbert@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: "Daniel P. Berrang=E9" <berrange@redhat.com>
+> Cc: Eduardo Habkost <ehabkost@redhat.com>
+> Cc: Stefan Berger <stefanb@linux.ibm.com>
+> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-devel@nongnu.org
+> Cc: qemu-ppc@nongnu.org
+> Cc: qemu-arm@nongnu.org
+> ---
+>  include/hw/acpi/acpi_dev_interface.h |  5 ++---
+>  include/hw/arm/linux-boot-if.h       |  4 ++--
+>  include/hw/fw-path-provider.h        |  4 ++--
+>  include/hw/hotplug.h                 |  4 ++--
+>  include/hw/intc/intc.h               |  5 ++---
+>  include/hw/ipmi/ipmi.h               |  4 ++--
+>  include/hw/isa/isa.h                 |  4 ++--
+>  include/hw/mem/memory-device.h       |  4 ++--
+>  include/hw/nmi.h                     |  4 ++--
+>  include/hw/ppc/pnv_xscom.h           |  4 ++--
+>  include/hw/ppc/spapr_irq.h           |  4 ++--
+>  include/hw/ppc/xics.h                |  4 ++--
+>  include/hw/ppc/xive.h                | 12 ++++++------
+>  include/hw/rdma/rdma.h               |  5 ++---
+>  include/hw/rtc/m48t59.h              |  4 ++--
+>  include/hw/stream.h                  |  4 ++--
+>  include/hw/vmstate-if.h              |  4 ++--
+>  include/qom/object_interfaces.h      |  5 ++---
+>  include/sysemu/tpm.h                 |  4 ++--
+>  target/arm/idau.h                    |  4 ++--
+>  tests/check-qom-interface.c          |  4 ++--
+>  21 files changed, 46 insertions(+), 50 deletions(-)
+>=20
+> diff --git a/include/hw/acpi/acpi_dev_interface.h b/include/hw/acpi/acpi_=
+dev_interface.h
+> index 9adf1e4706..96aa63919a 100644
+> --- a/include/hw/acpi/acpi_dev_interface.h
+> +++ b/include/hw/acpi/acpi_dev_interface.h
+> @@ -21,9 +21,8 @@ typedef enum {
+>  typedef struct AcpiDeviceIfClass AcpiDeviceIfClass;
+>  DECLARE_CLASS_CHECKERS(AcpiDeviceIfClass, ACPI_DEVICE_IF,
+>                         TYPE_ACPI_DEVICE_IF)
+> -#define ACPI_DEVICE_IF(obj) \
+> -     INTERFACE_CHECK(AcpiDeviceIf, (obj), \
+> -                     TYPE_ACPI_DEVICE_IF)
+> +DECLARE_INTERFACE_CHECKER(AcpiDeviceIf, ACPI_DEVICE_IF,
+> +                          TYPE_ACPI_DEVICE_IF)
+> =20
+>  typedef struct AcpiDeviceIf AcpiDeviceIf;
+> =20
+> diff --git a/include/hw/arm/linux-boot-if.h b/include/hw/arm/linux-boot-i=
+f.h
+> index c85f33b2c5..856d95831c 100644
+> --- a/include/hw/arm/linux-boot-if.h
+> +++ b/include/hw/arm/linux-boot-if.h
+> @@ -12,8 +12,8 @@
+>  typedef struct ARMLinuxBootIfClass ARMLinuxBootIfClass;
+>  DECLARE_CLASS_CHECKERS(ARMLinuxBootIfClass, ARM_LINUX_BOOT_IF,
+>                         TYPE_ARM_LINUX_BOOT_IF)
+> -#define ARM_LINUX_BOOT_IF(obj) \
+> -    INTERFACE_CHECK(ARMLinuxBootIf, (obj), TYPE_ARM_LINUX_BOOT_IF)
+> +DECLARE_INTERFACE_CHECKER(ARMLinuxBootIf, ARM_LINUX_BOOT_IF,
+> +                          TYPE_ARM_LINUX_BOOT_IF)
+> =20
+>  typedef struct ARMLinuxBootIf ARMLinuxBootIf;
+> =20
+> diff --git a/include/hw/fw-path-provider.h b/include/hw/fw-path-provider.h
+> index 8e1d45651c..93d5fdb6c3 100644
+> --- a/include/hw/fw-path-provider.h
+> +++ b/include/hw/fw-path-provider.h
+> @@ -25,8 +25,8 @@
+>  typedef struct FWPathProviderClass FWPathProviderClass;
+>  DECLARE_CLASS_CHECKERS(FWPathProviderClass, FW_PATH_PROVIDER,
+>                         TYPE_FW_PATH_PROVIDER)
+> -#define FW_PATH_PROVIDER(obj) \
+> -     INTERFACE_CHECK(FWPathProvider, (obj), TYPE_FW_PATH_PROVIDER)
+> +DECLARE_INTERFACE_CHECKER(FWPathProvider, FW_PATH_PROVIDER,
+> +                          TYPE_FW_PATH_PROVIDER)
+> =20
+>  typedef struct FWPathProvider FWPathProvider;
+> =20
+> diff --git a/include/hw/hotplug.h b/include/hw/hotplug.h
+> index e15f59c8b3..727c70ca9a 100644
+> --- a/include/hw/hotplug.h
+> +++ b/include/hw/hotplug.h
+> @@ -19,8 +19,8 @@
+>  typedef struct HotplugHandlerClass HotplugHandlerClass;
+>  DECLARE_CLASS_CHECKERS(HotplugHandlerClass, HOTPLUG_HANDLER,
+>                         TYPE_HOTPLUG_HANDLER)
+> -#define HOTPLUG_HANDLER(obj) \
+> -     INTERFACE_CHECK(HotplugHandler, (obj), TYPE_HOTPLUG_HANDLER)
+> +DECLARE_INTERFACE_CHECKER(HotplugHandler, HOTPLUG_HANDLER,
+> +                          TYPE_HOTPLUG_HANDLER)
+> =20
+>  typedef struct HotplugHandler HotplugHandler;
+> =20
+> diff --git a/include/hw/intc/intc.h b/include/hw/intc/intc.h
+> index 7018f608ca..9f36c9c14f 100644
+> --- a/include/hw/intc/intc.h
+> +++ b/include/hw/intc/intc.h
+> @@ -8,9 +8,8 @@
+>  typedef struct InterruptStatsProviderClass InterruptStatsProviderClass;
+>  DECLARE_CLASS_CHECKERS(InterruptStatsProviderClass, INTERRUPT_STATS_PROV=
+IDER,
+>                         TYPE_INTERRUPT_STATS_PROVIDER)
+> -#define INTERRUPT_STATS_PROVIDER(obj) \
+> -    INTERFACE_CHECK(InterruptStatsProvider, (obj), \
+> -                    TYPE_INTERRUPT_STATS_PROVIDER)
+> +DECLARE_INTERFACE_CHECKER(InterruptStatsProvider, INTERRUPT_STATS_PROVID=
+ER,
+> +                          TYPE_INTERRUPT_STATS_PROVIDER)
+> =20
+>  typedef struct InterruptStatsProvider InterruptStatsProvider;
+> =20
+> diff --git a/include/hw/ipmi/ipmi.h b/include/hw/ipmi/ipmi.h
+> index 3fa5a4abd0..25133264ff 100644
+> --- a/include/hw/ipmi/ipmi.h
+> +++ b/include/hw/ipmi/ipmi.h
+> @@ -109,8 +109,8 @@ uint32_t ipmi_next_uuid(void);
+>   * and the BMC.
+>   */
+>  #define TYPE_IPMI_INTERFACE "ipmi-interface"
+> -#define IPMI_INTERFACE(obj) \
+> -     INTERFACE_CHECK(IPMIInterface, (obj), TYPE_IPMI_INTERFACE)
+> +DECLARE_INTERFACE_CHECKER(IPMIInterface, IPMI_INTERFACE,
+> +                          TYPE_IPMI_INTERFACE)
+>  typedef struct IPMIInterfaceClass IPMIInterfaceClass;
+>  DECLARE_CLASS_CHECKERS(IPMIInterfaceClass, IPMI_INTERFACE,
+>                         TYPE_IPMI_INTERFACE)
+> diff --git a/include/hw/isa/isa.h b/include/hw/isa/isa.h
+> index ddb6a2d168..9e3e8aaaaa 100644
+> --- a/include/hw/isa/isa.h
+> +++ b/include/hw/isa/isa.h
+> @@ -38,8 +38,8 @@ static inline uint16_t applesmc_port(void)
+>  typedef struct IsaDmaClass IsaDmaClass;
+>  DECLARE_CLASS_CHECKERS(IsaDmaClass, ISADMA,
+>                         TYPE_ISADMA)
+> -#define ISADMA(obj) \
+> -    INTERFACE_CHECK(IsaDma, (obj), TYPE_ISADMA)
+> +DECLARE_INTERFACE_CHECKER(IsaDma, ISADMA,
+> +                          TYPE_ISADMA)
+> =20
+>  typedef enum {
+>      ISADMA_TRANSFER_VERIFY,
+> diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-devic=
+e.h
+> index cde52e83c9..c5b32e2c6a 100644
+> --- a/include/hw/mem/memory-device.h
+> +++ b/include/hw/mem/memory-device.h
+> @@ -22,8 +22,8 @@
+>  typedef struct MemoryDeviceClass MemoryDeviceClass;
+>  DECLARE_CLASS_CHECKERS(MemoryDeviceClass, MEMORY_DEVICE,
+>                         TYPE_MEMORY_DEVICE)
+> -#define MEMORY_DEVICE(obj) \
+> -     INTERFACE_CHECK(MemoryDeviceState, (obj), TYPE_MEMORY_DEVICE)
+> +DECLARE_INTERFACE_CHECKER(MemoryDeviceState, MEMORY_DEVICE,
+> +                          TYPE_MEMORY_DEVICE)
+> =20
+>  typedef struct MemoryDeviceState MemoryDeviceState;
+> =20
+> diff --git a/include/hw/nmi.h b/include/hw/nmi.h
+> index fff41bebc6..b31082e969 100644
+> --- a/include/hw/nmi.h
+> +++ b/include/hw/nmi.h
+> @@ -29,8 +29,8 @@
+>  typedef struct NMIClass NMIClass;
+>  DECLARE_CLASS_CHECKERS(NMIClass, NMI,
+>                         TYPE_NMI)
+> -#define NMI(obj) \
+> -     INTERFACE_CHECK(NMIState, (obj), TYPE_NMI)
+> +DECLARE_INTERFACE_CHECKER(NMIState, NMI,
+> +                          TYPE_NMI)
+> =20
+>  typedef struct NMIState NMIState;
+> =20
+> diff --git a/include/hw/ppc/pnv_xscom.h b/include/hw/ppc/pnv_xscom.h
+> index 7e3b189c07..0d24a75827 100644
+> --- a/include/hw/ppc/pnv_xscom.h
+> +++ b/include/hw/ppc/pnv_xscom.h
+> @@ -25,8 +25,8 @@
+>  typedef struct PnvXScomInterface PnvXScomInterface;
+> =20
+>  #define TYPE_PNV_XSCOM_INTERFACE "pnv-xscom-interface"
+> -#define PNV_XSCOM_INTERFACE(obj) \
+> -    INTERFACE_CHECK(PnvXScomInterface, (obj), TYPE_PNV_XSCOM_INTERFACE)
+> +DECLARE_INTERFACE_CHECKER(PnvXScomInterface, PNV_XSCOM_INTERFACE,
+> +                          TYPE_PNV_XSCOM_INTERFACE)
+>  typedef struct PnvXScomInterfaceClass PnvXScomInterfaceClass;
+>  DECLARE_CLASS_CHECKERS(PnvXScomInterfaceClass, PNV_XSCOM_INTERFACE,
+>                         TYPE_PNV_XSCOM_INTERFACE)
+> diff --git a/include/hw/ppc/spapr_irq.h b/include/hw/ppc/spapr_irq.h
+> index c22a72c9e2..105e1fb4e7 100644
+> --- a/include/hw/ppc/spapr_irq.h
+> +++ b/include/hw/ppc/spapr_irq.h
+> @@ -34,8 +34,8 @@ struct SpaprMachineState;
+>  typedef struct SpaprInterruptController SpaprInterruptController;
+> =20
+>  #define TYPE_SPAPR_INTC "spapr-interrupt-controller"
+> -#define SPAPR_INTC(obj)                                     \
+> -    INTERFACE_CHECK(SpaprInterruptController, (obj), TYPE_SPAPR_INTC)
+> +DECLARE_INTERFACE_CHECKER(SpaprInterruptController, SPAPR_INTC,
+> +                          TYPE_SPAPR_INTC)
+>  typedef struct SpaprInterruptControllerClass SpaprInterruptControllerCla=
+ss;
+>  DECLARE_CLASS_CHECKERS(SpaprInterruptControllerClass, SPAPR_INTC,
+>                         TYPE_SPAPR_INTC)
+> diff --git a/include/hw/ppc/xics.h b/include/hw/ppc/xics.h
+> index c5a3cdcadc..eea6701371 100644
+> --- a/include/hw/ppc/xics.h
+> +++ b/include/hw/ppc/xics.h
+> @@ -137,8 +137,8 @@ struct ICSIRQState {
+>  };
+> =20
+>  #define TYPE_XICS_FABRIC "xics-fabric"
+> -#define XICS_FABRIC(obj)                                     \
+> -    INTERFACE_CHECK(XICSFabric, (obj), TYPE_XICS_FABRIC)
+> +DECLARE_INTERFACE_CHECKER(XICSFabric, XICS_FABRIC,
+> +                          TYPE_XICS_FABRIC)
+>  typedef struct XICSFabricClass XICSFabricClass;
+>  DECLARE_CLASS_CHECKERS(XICSFabricClass, XICS_FABRIC,
+>                         TYPE_XICS_FABRIC)
+> diff --git a/include/hw/ppc/xive.h b/include/hw/ppc/xive.h
+> index 482fafccfd..3db9b4e5fd 100644
+> --- a/include/hw/ppc/xive.h
+> +++ b/include/hw/ppc/xive.h
+> @@ -152,8 +152,8 @@
+>  typedef struct XiveNotifier XiveNotifier;
+> =20
+>  #define TYPE_XIVE_NOTIFIER "xive-notifier"
+> -#define XIVE_NOTIFIER(obj)                                     \
+> -    INTERFACE_CHECK(XiveNotifier, (obj), TYPE_XIVE_NOTIFIER)
+> +DECLARE_INTERFACE_CHECKER(XiveNotifier, XIVE_NOTIFIER,
+> +                          TYPE_XIVE_NOTIFIER)
+>  typedef struct XiveNotifierClass XiveNotifierClass;
+>  DECLARE_CLASS_CHECKERS(XiveNotifierClass, XIVE_NOTIFIER,
+>                         TYPE_XIVE_NOTIFIER)
+> @@ -389,8 +389,8 @@ typedef struct XiveTCTXMatch {
+>  } XiveTCTXMatch;
+> =20
+>  #define TYPE_XIVE_PRESENTER "xive-presenter"
+> -#define XIVE_PRESENTER(obj)                                     \
+> -    INTERFACE_CHECK(XivePresenter, (obj), TYPE_XIVE_PRESENTER)
+> +DECLARE_INTERFACE_CHECKER(XivePresenter, XIVE_PRESENTER,
+> +                          TYPE_XIVE_PRESENTER)
+>  typedef struct XivePresenterClass XivePresenterClass;
+>  DECLARE_CLASS_CHECKERS(XivePresenterClass, XIVE_PRESENTER,
+>                         TYPE_XIVE_PRESENTER)
+> @@ -414,8 +414,8 @@ int xive_presenter_tctx_match(XivePresenter *xptr, Xi=
+veTCTX *tctx,
+>   */
+> =20
+>  #define TYPE_XIVE_FABRIC "xive-fabric"
+> -#define XIVE_FABRIC(obj)                                     \
+> -    INTERFACE_CHECK(XiveFabric, (obj), TYPE_XIVE_FABRIC)
+> +DECLARE_INTERFACE_CHECKER(XiveFabric, XIVE_FABRIC,
+> +                          TYPE_XIVE_FABRIC)
+>  typedef struct XiveFabricClass XiveFabricClass;
+>  DECLARE_CLASS_CHECKERS(XiveFabricClass, XIVE_FABRIC,
+>                         TYPE_XIVE_FABRIC)
+> diff --git a/include/hw/rdma/rdma.h b/include/hw/rdma/rdma.h
+> index e77e43a170..ba520b64fe 100644
+> --- a/include/hw/rdma/rdma.h
+> +++ b/include/hw/rdma/rdma.h
+> @@ -22,9 +22,8 @@
+>  typedef struct RdmaProviderClass RdmaProviderClass;
+>  DECLARE_CLASS_CHECKERS(RdmaProviderClass, RDMA_PROVIDER,
+>                         INTERFACE_RDMA_PROVIDER)
+> -#define RDMA_PROVIDER(obj) \
+> -    INTERFACE_CHECK(RdmaProvider, (obj), \
+> -                    INTERFACE_RDMA_PROVIDER)
+> +DECLARE_INTERFACE_CHECKER(RdmaProvider, RDMA_PROVIDER,
+> +                          INTERFACE_RDMA_PROVIDER)
+> =20
+>  typedef struct RdmaProvider RdmaProvider;
+> =20
+> diff --git a/include/hw/rtc/m48t59.h b/include/hw/rtc/m48t59.h
+> index 04abedf3b2..0e61c6c2c4 100644
+> --- a/include/hw/rtc/m48t59.h
+> +++ b/include/hw/rtc/m48t59.h
+> @@ -34,8 +34,8 @@
+>  typedef struct NvramClass NvramClass;
+>  DECLARE_CLASS_CHECKERS(NvramClass, NVRAM,
+>                         TYPE_NVRAM)
+> -#define NVRAM(obj) \
+> -    INTERFACE_CHECK(Nvram, (obj), TYPE_NVRAM)
+> +DECLARE_INTERFACE_CHECKER(Nvram, NVRAM,
+> +                          TYPE_NVRAM)
+> =20
+>  typedef struct Nvram Nvram;
+> =20
+> diff --git a/include/hw/stream.h b/include/hw/stream.h
+> index e39d5a5b55..8662c4fcff 100644
+> --- a/include/hw/stream.h
+> +++ b/include/hw/stream.h
+> @@ -9,8 +9,8 @@
+>  typedef struct StreamSlaveClass StreamSlaveClass;
+>  DECLARE_CLASS_CHECKERS(StreamSlaveClass, STREAM_SLAVE,
+>                         TYPE_STREAM_SLAVE)
+> -#define STREAM_SLAVE(obj) \
+> -     INTERFACE_CHECK(StreamSlave, (obj), TYPE_STREAM_SLAVE)
+> +DECLARE_INTERFACE_CHECKER(StreamSlave, STREAM_SLAVE,
+> +                          TYPE_STREAM_SLAVE)
+> =20
+>  typedef struct StreamSlave StreamSlave;
+> =20
+> diff --git a/include/hw/vmstate-if.h b/include/hw/vmstate-if.h
+> index 52df571d17..9797cb4321 100644
+> --- a/include/hw/vmstate-if.h
+> +++ b/include/hw/vmstate-if.h
+> @@ -16,8 +16,8 @@
+>  typedef struct VMStateIfClass VMStateIfClass;
+>  DECLARE_CLASS_CHECKERS(VMStateIfClass, VMSTATE_IF,
+>                         TYPE_VMSTATE_IF)
+> -#define VMSTATE_IF(obj)                             \
+> -    INTERFACE_CHECK(VMStateIf, (obj), TYPE_VMSTATE_IF)
+> +DECLARE_INTERFACE_CHECKER(VMStateIf, VMSTATE_IF,
+> +                          TYPE_VMSTATE_IF)
+> =20
+>  typedef struct VMStateIf VMStateIf;
+> =20
+> diff --git a/include/qom/object_interfaces.h b/include/qom/object_interfa=
+ces.h
+> index f118fb516b..1e6a6ce811 100644
+> --- a/include/qom/object_interfaces.h
+> +++ b/include/qom/object_interfaces.h
+> @@ -9,9 +9,8 @@
+>  typedef struct UserCreatableClass UserCreatableClass;
+>  DECLARE_CLASS_CHECKERS(UserCreatableClass, USER_CREATABLE,
+>                         TYPE_USER_CREATABLE)
+> -#define USER_CREATABLE(obj) \
+> -     INTERFACE_CHECK(UserCreatable, (obj), \
+> -                     TYPE_USER_CREATABLE)
+> +DECLARE_INTERFACE_CHECKER(UserCreatable, USER_CREATABLE,
+> +                          TYPE_USER_CREATABLE)
+> =20
+>  typedef struct UserCreatable UserCreatable;
+> =20
+> diff --git a/include/sysemu/tpm.h b/include/sysemu/tpm.h
+> index 1a85564e47..5a7f13400d 100644
+> --- a/include/sysemu/tpm.h
+> +++ b/include/sysemu/tpm.h
+> @@ -29,8 +29,8 @@ typedef enum TPMVersion {
+>  typedef struct TPMIfClass TPMIfClass;
+>  DECLARE_CLASS_CHECKERS(TPMIfClass, TPM_IF,
+>                         TYPE_TPM_IF)
+> -#define TPM_IF(obj)                             \
+> -    INTERFACE_CHECK(TPMIf, (obj), TYPE_TPM_IF)
+> +DECLARE_INTERFACE_CHECKER(TPMIf, TPM_IF,
+> +                          TYPE_TPM_IF)
+> =20
+>  typedef struct TPMIf TPMIf;
+> =20
+> diff --git a/target/arm/idau.h b/target/arm/idau.h
+> index 0ef5251971..0d09ad0abd 100644
+> --- a/target/arm/idau.h
+> +++ b/target/arm/idau.h
+> @@ -31,8 +31,8 @@
+>  #include "qom/object.h"
+> =20
+>  #define TYPE_IDAU_INTERFACE "idau-interface"
+> -#define IDAU_INTERFACE(obj) \
+> -    INTERFACE_CHECK(IDAUInterface, (obj), TYPE_IDAU_INTERFACE)
+> +DECLARE_INTERFACE_CHECKER(IDAUInterface, IDAU_INTERFACE,
+> +                          TYPE_IDAU_INTERFACE)
+>  typedef struct IDAUInterfaceClass IDAUInterfaceClass;
+>  DECLARE_CLASS_CHECKERS(IDAUInterfaceClass, IDAU_INTERFACE,
+>                         TYPE_IDAU_INTERFACE)
+> diff --git a/tests/check-qom-interface.c b/tests/check-qom-interface.c
+> index c99be97ed8..b0ca517510 100644
+> --- a/tests/check-qom-interface.c
+> +++ b/tests/check-qom-interface.c
+> @@ -19,8 +19,8 @@
+>  typedef struct TestIfClass TestIfClass;
+>  DECLARE_CLASS_CHECKERS(TestIfClass, TEST_IF,
+>                         TYPE_TEST_IF)
+> -#define TEST_IF(obj) \
+> -     INTERFACE_CHECK(TestIf, (obj), TYPE_TEST_IF)
+> +DECLARE_INTERFACE_CHECKER(TestIf, TEST_IF,
+> +                          TYPE_TEST_IF)
+> =20
+>  typedef struct TestIf TestIf;
+> =20
 
-Yes, we have models of secure DMA devices out of tree. Actually, on the
-ZynqMP and Versal SoCs, there are secure registers that can configure any
-DMA device to issue secure or non-secure transactions at runtime. We just
-haven't modelled all of the control regs that allow that in upstream QEMU.
+--=20
+David Gibson			| I'll have my music baroque, and my code
+david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
+				| _way_ _around_!
+http://www.ozlabs.org/~dgibson
 
-Cheers,
-Edgar
+--NQTVMVnDVuULnIzU
+Content-Type: application/pgp-signature; name="signature.asc"
 
---00000000000032673d05af76601a
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+-----BEGIN PGP SIGNATURE-----
 
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Wed, 16 Sep 2020, 15:48 Philippe Mathieu-Daud=C3=A9=
-, &lt;<a href=3D"mailto:philmd@redhat.com">philmd@redhat.com</a>&gt; wrote:=
-<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;bord=
-er-left:1px #ccc solid;padding-left:1ex">On 9/4/20 5:44 PM, Philippe Mathie=
-u-Daud=C3=A9 wrote:<br>
-&gt; Salvaging cleanups patches from the RFC series &quot;Forbid DMA write<=
-br>
-&gt; accesses to MMIO regions&quot; [*], propagating MemTxResult and<br>
-&gt; adding documentation.<br>
-&gt; <br>
-&gt; Philippe Mathieu-Daud=C3=A9 (12):<br>
-&gt;=C2=A0 =C2=A0dma: Let dma_memory_valid() take MemTxAttrs argument<br>
-&gt;=C2=A0 =C2=A0dma: Let dma_memory_set() take MemTxAttrs argument<br>
-&gt;=C2=A0 =C2=A0dma: Let dma_memory_rw_relaxed() take MemTxAttrs argument<=
-br>
-&gt;=C2=A0 =C2=A0dma: Let dma_memory_rw() take MemTxAttrs argument<br>
-&gt;=C2=A0 =C2=A0dma: Let dma_memory_read/write() take MemTxAttrs argument<=
-br>
-&gt;=C2=A0 =C2=A0dma: Let dma_memory_map() take MemTxAttrs argument<br>
-<br>
-Talking with Laszlo, he wonders if we shouldn&#39;t enforce setting<br>
-MemTxAttrs attrs.secure =3D 0 in these calls.<br>
-<br>
-Is there a concept of &quot;secure DMA controller&quot; in QEMU?<br>
-<br>
-Thanks,<br>
-<br>
-Phil.<br></blockquote></div></div><div dir=3D"auto"><br></div><div dir=3D"a=
-uto">Hi,=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto">Yes, we h=
-ave models of secure DMA devices out of tree. Actually, on the ZynqMP and V=
-ersal SoCs, there are secure registers that can configure any DMA device to=
- issue secure or non-secure transactions at runtime. We just haven&#39;t mo=
-delled all of the control regs that allow that in upstream QEMU.</div><div =
-dir=3D"auto"><br></div><div dir=3D"auto">Cheers,</div><div dir=3D"auto">Edg=
-ar=C2=A0</div><div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div =
-dir=3D"auto"><div class=3D"gmail_quote"><blockquote class=3D"gmail_quote" s=
-tyle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"></bl=
-ockquote></div></div></div>
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl9isXEACgkQbDjKyiDZ
+s5Lz1xAA1GkhEgsf2LE8OUkI6N7ihpNAbU0XiYyezMOho9s4ARTjzk5mnlAm8OEL
+KBV34jmGHPOkbIx3zGhRR4OCgb3lJajKSEHfhBsOSISAPdqz7g2bxf+sfvE+31oq
+pw+m9VDpJmy5iYcYFeC9FmSWPWtXIlFaVtqiidnbUeWP0eW6hfPAMyuLgFEyvZGH
+tOfhkFYgTHPmhwRN0XiOF2L5F2NXxKW4n1SxPj92o/Qn80h+coCzsrSOBc3j9azu
+2E2DKVv6sMPSCMYcz9PmZwSaaa+QxCMAAAhiIF7ehQMFjuj5E19DnK4bp4opX+9M
+sYrYr/6mV0Cd/29ASYMIBqG1nZ3RfM91hgVM3qxhSlpV5QFVvAENZNMRevfw8KnR
+xpQ2B24+uPMnx6Vo+nyX51Dova4dze/OWHUWJ8j7UVHGLGF2Rh1EECiUIRG3/ivn
+oH2E/tNz9BDBU3vU9NvTjbns9ZBotTz5PylzipnG4Xb5WDbeZO6Ngc+HK9lg+mRm
+9/WIEJewTxpU8uIaJ5i4Ik+t1dqffgrl8EBgHBZHteGbRRxqWt2/8Ge0OgNgFYDa
+xQ2yNEETxwhkXUNsO1GPZAWTWsw7yJ4iz/NbOWLMAn900uR/M+ldIX48HMClPOxL
+bM/eqX4LkfAugV3JfU6OHUVUjEDj845G67oqlZqcZFL5zWVwN/4=
+=Si5n
+-----END PGP SIGNATURE-----
 
---00000000000032673d05af76601a--
+--NQTVMVnDVuULnIzU--

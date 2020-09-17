@@ -1,63 +1,63 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp210670lfq;
-        Wed, 16 Sep 2020 20:24:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwN7/FHorWmt3v1fo8aCmIlt+y4UJpml24MOBzPYTbpMEiYLVM1Spmy4/Gur0WyjddX18Jn
-X-Received: by 2002:a25:aba1:: with SMTP id v30mr21737056ybi.518.1600313073451;
-        Wed, 16 Sep 2020 20:24:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600313073; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp211486lfq;
+        Wed, 16 Sep 2020 20:26:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhBT6foUu/JVwN/BHZpKdh1sF5r3s7fHYbXt+9zyPGE7aG0xQZo+R5nbyk3S+/PV6wXGiL
+X-Received: by 2002:a25:5855:: with SMTP id m82mr39091417ybb.329.1600313188834;
+        Wed, 16 Sep 2020 20:26:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600313188; cv=none;
         d=google.com; s=arc-20160816;
-        b=F69rve1V920QPhTl/nIOE0Ngu4QFOIzr8kb/waD2ezobktODjExCRthvOPtFDMAxbe
-         E2yF8P/pdmig4FqZHNBApIxqArKClM+K/s3s4sxVtKny4zw1b85vjGPCXHr1TjAMuFQL
-         bby+Kw7QGSDHATwiSQeyNrR74coU54mweS4b0xoruVJ7Ga3tetdz4TNcJUphxoT80DJz
-         AKXDHOk1wUfQeeDMvBfWRNxI0t5E+xiim1/Bdh0hFTLHFGQd1t6wbOe2earQFaYOXjGZ
-         C0r2ffVFiawH0igGC/LT6whOMC2lTVTZNp1RgWD6V7WnRSBV/b/42lmQC7bHXVRp1VEC
-         rpkA==
+        b=M5RWyyTwRNB0k7Q/S1Is80OzwHIgVKF/8omC4eJMi66PxRqVg4s+2OBN0sQzVlpsKY
+         pWqNQcT9Gw+GDOH0hGFmMGwsljRD/2gVgofG3AkKJ12UiUpZ8O1YO2Um2zfBgM5/pzz7
+         V0KKurlUWYqILfIuMPzaEH5gR21DgiCM1icYks9eYWoW2NVO9LqnDh+XwS2Vie7QMISe
+         ycya9YiWf0AtFbCAloSxZsIIh0PNu86OVzr3lnygVm+LpWezqvfvzjJi+x8N5stIomR2
+         Lla835Br/EaO4iG7PdXzmEVMbCT/G9pibB/5LVvxBm8OVvqnxcOxxy469c1a8AxC0vez
+         Zl0w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=XVjq0lZMOnrZSaMbzkc6eVIhD1URPWVcWVf5k8Cdoqw=;
-        b=kqSbw3VU297EluhFt3wrqbY8V5vb7xfKgrxBfeCBYhVCdewlJFlHy9Rj3CtR/LyJJg
-         6lcXtig4g+vpmwcqVdjmBmxgHcymT41PbZgzAHY6GvsrZCz6vBN7lJeB6hqLQAgCBKL+
-         H56zcAYL91B5E3J+p5ei5BkNaMtV8F0Ggtr3HB7z79bWygY4TA6cRD5lZCCDHd1is2S+
-         07AGwHAU6HfJCM/uJv6CP5sVSqkB0B3BmMZO+Kf+7VRJXEsM4lZzYAHL2JcHNUh/pgrA
-         HY9cOpQmUA3FDFtLYZDF7/YRTRUoHrL92us8ugEDY/fggwEuQuqzMVU3IdfHfTFFd+fI
-         s+Ag==
+        bh=mjOPCLsznwMg/oNntN3VcTXnYKi/8OzW9bXoUoHKq8g=;
+        b=BL92bet7QGEqcO7hhkj4uCS4AwmLeTswBiVA01P6PLre8cRHF5OAMCclzYxfIRslx+
+         /uQKf6J+0PAIqirc0zR7SwQP9wnrQ2o04YNKeuH6Mgcsn+sbx6b0Q0HmAEdmCuuI53yc
+         Bfmwmf8139dqlULb6cZau1HwfToaRKJYNf2/NWnurIVez5ZjcouMqcaYEcv+E6lVU9gj
+         ja2wHfhQ7XhVcHEhKP9baIrmkKuxsE6ZMOTvNR6O4BKsqLUh24VriPx3IvfEr2bODA3K
+         urwU+fxPIew8FthwvzxAH93yVmpsUOvsiapifEQsreDVc5IdJF0Ki+xii5CWnvbAB9RJ
+         iG/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p82si12777507ybb.267.2020.09.16.20.24.33
+        by mx.google.com with ESMTPS id j190si12999441ybj.150.2020.09.16.20.26.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 16 Sep 2020 20:24:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 16 Sep 2020 20:26:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52750 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57818 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIkXA-0000m0-Oq
-	for alex.bennee@linaro.org; Wed, 16 Sep 2020 23:24:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47932)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kIkZ2-0002ww-3n
+	for alex.bennee@linaro.org; Wed, 16 Sep 2020 23:26:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47940)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIkUR-00054X-Ba; Wed, 16 Sep 2020 23:21:43 -0400
-Received: from szxga07-in.huawei.com ([45.249.212.35]:53794 helo=huawei.com)
+ id 1kIkUR-00054e-DZ; Wed, 16 Sep 2020 23:21:43 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:4747 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kIkUM-0004RH-PU; Wed, 16 Sep 2020 23:21:42 -0400
-Received: from DGGEMS413-HUB.china.huawei.com (unknown [172.30.72.58])
- by Forcepoint Email with ESMTP id 6DF405B978E71AA35A9D;
- Thu, 17 Sep 2020 11:21:07 +0800 (CST)
-Received: from localhost (10.174.185.104) by DGGEMS413-HUB.china.huawei.com
- (10.3.19.213) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
- 11:21:01 +0800
+ id 1kIkUM-0004RL-LY; Wed, 16 Sep 2020 23:21:43 -0400
+Received: from DGGEMS404-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id D3C28BAC7ABDFF61A6C6;
+ Thu, 17 Sep 2020 11:21:08 +0800 (CST)
+Received: from localhost (10.174.185.104) by DGGEMS404-HUB.china.huawei.com
+ (10.3.19.204) with Microsoft SMTP Server id 14.3.487.0; Thu, 17 Sep 2020
+ 11:20:58 +0800
 From: Ying Fang <fangying1@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [RFC PATCH 07/12] hw/acpi/aml-build: add processor hierarchy node
- structure
-Date: Thu, 17 Sep 2020 11:20:28 +0800
-Message-ID: <20200917032033.2020-8-fangying1@huawei.com>
+Subject: [RFC PATCH 06/12] hw/arm/virt-acpi-build: distinguish possible and
+ present cpus
+Date: Thu, 17 Sep 2020 11:20:27 +0800
+Message-ID: <20200917032033.2020-7-fangying1@huawei.com>
 X-Mailer: git-send-email 2.26.0.windows.1
 In-Reply-To: <20200917032033.2020-1-fangying1@huawei.com>
 References: <20200917032033.2020-1-fangying1@huawei.com>
@@ -66,9 +66,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.185.104]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.35; envelope-from=fangying1@huawei.com;
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=fangying1@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 23:20:58
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 23:21:09
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -77,106 +77,97 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com,
- zhang.zhanghailiang@huawei.com, Henglong Fan <fanhenglong@huawei.com>,
- alex.chen@huawei.com, shannon.zhaosl@gmail.com, qemu-arm@nongnu.org,
- alistair.francis@wdc.com, Ying Fang <fangying1@huawei.com>,
- imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PsoQEfLzd8Ny
+ zhang.zhanghailiang@huawei.com, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
+ qemu-arm@nongnu.org, alistair.francis@wdc.com,
+ Ying Fang <fangying1@huawei.com>, imammedo@redhat.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: S7t+kSdbk2bl
 
-Add the processor hierarchy node structures to build ACPI information
-for CPU topology. Three helpers are introduced:
+When building ACPI tables regarding CPUs we should always build
+them for the number of possible CPUs, not the number of present
+CPUs. We then ensure only the present CPUs are enabled.
 
-(1) build_socket_hierarchy for socket description structure
-(2) build_processor_hierarchy for processor description structure
-(3) build_smt_hierarchy for thread (logic processor) description structure
-
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Ying Fang <fangying1@huawei.com>
-Signed-off-by: Henglong Fan <fanhenglong@huawei.com>
 ---
- hw/acpi/aml-build.c         | 37 +++++++++++++++++++++++++++++++++++++
- include/hw/acpi/aml-build.h |  7 +++++++
- 2 files changed, 44 insertions(+)
+ hw/arm/virt-acpi-build.c | 17 ++++++++++++-----
+ 1 file changed, 12 insertions(+), 5 deletions(-)
 
-diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
-index f6fbc9b95d..13eb6e1345 100644
---- a/hw/acpi/aml-build.c
-+++ b/hw/acpi/aml-build.c
-@@ -1754,6 +1754,43 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms)
-                  table_data->len - slit_start, 1, NULL, NULL);
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 9efd7a3881..f1d574b5d3 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -56,14 +56,18 @@
+ 
+ #define ARM_SPI_BASE 32
+ 
+-static void acpi_dsdt_add_cpus(Aml *scope, int smp_cpus)
++static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
+ {
+     uint16_t i;
++    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
+ 
+-    for (i = 0; i < smp_cpus; i++) {
++    for (i = 0; i < possible_cpus->len; i++) {
+         Aml *dev = aml_device("C%.03X", i);
+         aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
+         aml_append(dev, aml_name_decl("_UID", aml_int(i)));
++        if (possible_cpus->cpus[i].cpu == NULL) {
++            aml_append(dev, aml_name_decl("_STA", aml_int(0)));
++        }
+         aml_append(scope, dev);
+     }
  }
+@@ -635,6 +639,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     const int *irqmap = vms->irqmap;
+     AcpiMadtGenericDistributor *gicd;
+     AcpiMadtGenericMsiFrame *gic_msi;
++    int possible_cpus = MACHINE(vms)->possible_cpus->len;
+     int i;
  
-+/*
-+ * ACPI 6.3: 5.2.29.1 Processor hierarchy node structure (Type 0)
-+ */
-+void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
-+{
-+    build_append_byte(tbl, 0);          /* Type 0 - processor */
-+    build_append_byte(tbl, 20);         /* Length, no private resources */
-+    build_append_int_noprefix(tbl, 0, 2);  /* Reserved */
-+    build_append_int_noprefix(tbl, 1, 4);  /* Flags: Physical package */
-+    build_append_int_noprefix(tbl, parent, 4);  /* Parent */
-+    build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
-+    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
-+}
-+
-+void build_processor_hierarchy(GArray *tbl, uint32_t flags,
-+                               uint32_t parent, uint32_t id)
-+{
-+    build_append_byte(tbl, 0);          /* Type 0 - processor */
-+    build_append_byte(tbl, 20);         /* Length, no private resources */
-+    build_append_int_noprefix(tbl, 0, 2);      /* Reserved */
-+    build_append_int_noprefix(tbl, flags, 4);  /* Flags */
-+    build_append_int_noprefix(tbl, parent, 4); /* Parent */
-+    build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
-+    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
-+}
-+
-+void build_smt_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
-+{
-+    build_append_byte(tbl, 0);            /* Type 0 - processor */
-+    build_append_byte(tbl, 20);           /* Length, add private resources */
-+    build_append_int_noprefix(tbl, 0, 2); /* Reserved */
-+    build_append_int_noprefix(tbl, 0x0e, 4);    /* Processor is a thread */
-+    build_append_int_noprefix(tbl, parent , 4); /* parent */
-+    build_append_int_noprefix(tbl, id, 4);      /* ACPI processor ID */
-+    build_append_int_noprefix(tbl, 0, 4);       /* Num of private resources */
-+}
-+
- /* build rev1/rev3/rev5.1 FADT */
- void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-                 const char *oem_id, const char *oem_table_id)
-diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
-index d27da03d64..ff4c6a38f3 100644
---- a/include/hw/acpi/aml-build.h
-+++ b/include/hw/acpi/aml-build.h
-@@ -435,6 +435,13 @@ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+     acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
+@@ -645,7 +650,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+     gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
+     gicd->version = vms->gic_version;
  
- void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
+-    for (i = 0; i < vms->smp_cpus; i++) {
++    for (i = 0; i < possible_cpus; i++) {
+         AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
+                                                            sizeof(*gicc));
+         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
+@@ -660,7 +665,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+         gicc->cpu_interface_number = cpu_to_le32(i);
+         gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
+         gicc->uid = cpu_to_le32(i);
+-        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
++        if (i < vms->smp_cpus) {
++            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
++        }
  
-+void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
-+
-+void build_processor_hierarchy(GArray *tbl, uint32_t flags,
-+                               uint32_t parent, uint32_t id);
-+
-+void build_smt_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
-+
- void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
-                 const char *oem_id, const char *oem_table_id);
- 
+         if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
+             gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
+@@ -764,7 +771,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+      * the RTC ACPI device at all when using UEFI.
+      */
+     scope = aml_scope("\\_SB");
+-    acpi_dsdt_add_cpus(scope, vms->smp_cpus);
++    acpi_dsdt_add_cpus(scope, vms);
+     acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
+                        (irqmap[VIRT_UART] + ARM_SPI_BASE));
+     if (vmc->acpi_expose_flash) {
 -- 
 2.23.0
 

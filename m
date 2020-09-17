@@ -1,109 +1,116 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp471825lfq;
-        Thu, 17 Sep 2020 04:01:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz+ZuvjtoXewUQxy34fLVulZffUh4rtTJh7fX8t7IjzF6hCQfLBmjgGsbt+eGstaPOJFEbm
-X-Received: by 2002:a25:b31b:: with SMTP id l27mr9139694ybj.166.1600340513880;
-        Thu, 17 Sep 2020 04:01:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600340513; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp749760lfq;
+        Thu, 17 Sep 2020 09:57:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw22/lPvn2M66WbnD6Oz2Ij8qWJ4ioJjlVn++vuGE72QO7BJRic1srJznX5GIA+YRCPiskf
+X-Received: by 2002:a25:db10:: with SMTP id g16mr3033441ybf.138.1600361871718;
+        Thu, 17 Sep 2020 09:57:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600361871; cv=none;
         d=google.com; s=arc-20160816;
-        b=VXa+wGkOMjpWyE/9ZnmegdJlmx+O2Np3oXVpJ+t/HXeTLNLBi33xRWg/frw+Gs0aV5
-         2+Z2Ie3hnbPF9Ivd9bsy8cORPAwJ02Y16uR8fXMCmkTGcu0czZcU0mvlh6fCLPZ3d782
-         uA37NAzRERA4YdAkJP7Ni0bc1PPjt03Kv22R3nPJP+XhMMx6GbraHbSmz14jrXWCPCGL
-         6JyG0CPbBfac0YFRlKZievRPzSpLNXfWyPIKxkY7ER85kA9unER+BF0/eJ+TSp82RKSH
-         fJXb7fsaWT2K5V9BOdLQxTJUBmGC+OUxdMIciLcp59nHK7uwESHt4Ec5Wy4anKHfFPgh
-         opxw==
+        b=pdg1U6Nu8Y446pdmTcmBK9ZBH0hqvBuRj93WAzpvhvN1rSz4RKqraaP0uC0NBLsQGX
+         x1IkN1LOi5Rb6g/9wYEeEsYlCN9WSRKXFsAIyJf5v2EIcQCZE1BkH7NJGkDRWyEKlVuG
+         0nreAdQFO713SYuQHKdY8U9F0jf4pWew9p8skCnblIZa7wrcYELmbVcDF9VCI+/C01hL
+         qBfbAFvwalsfitrvsRxfm8etxAWijgkkia7h39r86idvPXs9NY84PMHBoC1XVCp7Muu6
+         bobmffkZJgxue/6nQs6HT1K58ZgHe0tsXTnEsAxiXd1xeb9UcIU/lZwGGAgeDoEgFU5z
+         IVXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=ej/hvssTnJCJxA3zx+Yhtavtrh7pF2Z5g5HrQ24eKvg=;
-        b=wCfuY5pPdmR+Fq4n3MMIpTaStSWQcWNQjWbYxNq+hDd8c7184GUGVSxmCMn1Gnfp9s
-         cGFRJ556l2BbU6y3bdXz0G8Y3am8qR6SWxhiSxoRmbXhfWP28wg1PIQJ014OmvJBAlHH
-         Zp9+maO6MeIVx0Z1xdLaGUvJ2/rbAkP9t+pOC1ThyybV5qPUGHM7ZHpv8vJPqM8vYGac
-         FiPi/T+RbBQ1JCPbL2U3BXzvfhJM4cW2FcH8gWJAJAD53QXah4nAaghmv8RQ0e0DG0W/
-         WsI+w72UcOGs4HUrxuY6yzG2cHjN204rFyhq3CzxwdlGUDne7SnPrvWfLRPOzwmpVzst
-         nnvw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=6QaMg1AvMw1pue6iNBZDZCiuxftSbFxqP2NNoQR16oU=;
+        b=1EVpzt21eL8aO3F3ZeFjiqzVUo2KpRdwErad5OPLaslZ8+F+28G2YlxDo4obDIdfzS
+         jwEDOPNpQrpaeqczimEkuq2xbS+er2G7YMvHUFUa88mNxMniR7J4NbE8R3UlBRpzrCkQ
+         pbL818CZjxjld6IISOAk4KbqP+T93ay799weU4f5KkuB42SGFWU+BE5q9HFv0GiCWiZd
+         fl71AmVlU3OgIFgQlzGfs0VX95IbsZJwPc4fUBC75bdOgx8XU8MoRiqP64z67XhQpNpX
+         lixzTsvWScN/9ubUPTRZlb4LZYWMcbmDpf8JnkTBt6EozA1Xr7gkz35E6HAqRa9H50im
+         rl0g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SU0n1w8c;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="hM/T/F69";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p130si20805879yba.25.2020.09.17.04.01.53
+        by mx.google.com with ESMTPS id w8si143731ybj.107.2020.09.17.09.57.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 04:01:53 -0700 (PDT)
+        Thu, 17 Sep 2020 09:57:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SU0n1w8c;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="hM/T/F69";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:57166 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:34424 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIrfl-0007Mn-7v
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 07:01:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42904)
+	id 1kIxEF-0007jh-0z
+	for alex.bennee@linaro.org; Thu, 17 Sep 2020 12:57:51 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58838)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kIrfY-0007La-Bp
- for qemu-arm@nongnu.org; Thu, 17 Sep 2020 07:01:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:57036)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kIrdi-0001AJ-A7
- for qemu-arm@nongnu.org; Thu, 17 Sep 2020 07:01:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600340385;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=ej/hvssTnJCJxA3zx+Yhtavtrh7pF2Z5g5HrQ24eKvg=;
- b=SU0n1w8chtuuC/o9EhUz3jKM5DvNfWotkYgNTp6EvQ5m91nwZAjYY4H3y76pmCLSTzmUYi
- aHiDcRz79mFORqUPNkeOdA18wm+fX+OVyXq2EBDJKmhb4q0blAQUNFViZkbH9iQ4zUWfp3
- ojXr44dyDTVholBe58I291YuLCArJ7M=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-42-KxbfH2Y5PI2GfCXGxIPvPw-1; Thu, 17 Sep 2020 06:59:41 -0400
-X-MC-Unique: KxbfH2Y5PI2GfCXGxIPvPw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3E9E6AD682;
- Thu, 17 Sep 2020 10:59:40 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.179])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id CE1FC1002D5D;
- Thu, 17 Sep 2020 10:59:37 +0000 (UTC)
-Date: Thu, 17 Sep 2020 12:59:34 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Ying Fang <fangying1@huawei.com>
-Subject: Re: [RFC PATCH 02/12] target/arm/kvm64: make MPIDR consistent with
- CPU Topology
-Message-ID: <20200917105934.3rki6xwv5t4glxxi@kamzik.brq.redhat.com>
-References: <20200917032033.2020-1-fangying1@huawei.com>
- <20200917032033.2020-3-fangying1@huawei.com>
- <20200917075330.7sx3xm7gd4mwqqtq@kamzik.brq.redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kIxE6-0007hd-Cp; Thu, 17 Sep 2020 12:57:42 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40381)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kIxE3-0004ok-Ic; Thu, 17 Sep 2020 12:57:42 -0400
+Received: by mail-wm1-x342.google.com with SMTP id k18so2763811wmj.5;
+ Thu, 17 Sep 2020 09:57:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=6QaMg1AvMw1pue6iNBZDZCiuxftSbFxqP2NNoQR16oU=;
+ b=hM/T/F69PEgcWCYjroOjIIv7bfZwEtWdAfXh75vdxaA5lTCXR2DPwxKQAW96Ga0jkW
+ XEn2HHqL3uzH433I9Mzod2BDcTfdpChn01KM+SUmP6ELOrDMJRtfl3qD/PFPtr40oaQg
+ gJnF4IlmVu7+TSf3wBAxxlpB8OvPQ/dqQwfsj6PnAh7fayYGQbTyROi1G5C5xj+eYBS4
+ QXTat0uM3CeNGww+trqHVwSe7gitmOfa+UklCInduE5lO8HM1FCq4LLDKBeoCXeCZrlx
+ aLaREZQ+J5cqY5lPmY0l2ZoheT+y160345KZ5dojBOwYF9ajENagzFlw+3b3cIto/Bdt
+ jW4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=6QaMg1AvMw1pue6iNBZDZCiuxftSbFxqP2NNoQR16oU=;
+ b=qqyrfJYX6uvde0faaFBz6ld0SVKjr/uWmnP0QpATElLp+Kap+gNh2m0mFHoG1VnYQF
+ ctMgxWTHAtMDos3wcCvzMzZIzwShD5zc16UB8KAOSPjdQVxaze3nmTUtAaOUKjlQUPHx
+ ftHatruVyrv/DWisOIH2L2+hFaqU0ocxuQc+fSCbLIM13dFsT2qwnVPwu3InAsHMd50Q
+ /WSUMTAcgOUjM1xsaNB8tj5T5rilC8XlBLRFm8gxsYC+WQ3rifpOCb8YSc/609CZdjqC
+ su9CMfqQXj8Na871pTGJ1vIJkteKn86/1FPTnzIKsW3GoXvNgyMUXckQ0J9vIRCT0ukv
+ XXvg==
+X-Gm-Message-State: AOAM5314uMV03dGefONuu6UJnYx8w201vhglSOULIaYH1dA16pgJCEsx
+ vhoFRcI1gOWDIbZClLtcJJI=
+X-Received: by 2002:a7b:c3da:: with SMTP id t26mr10470848wmj.23.1600361857453; 
+ Thu, 17 Sep 2020 09:57:37 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id y6sm195832wrt.80.2020.09.17.09.57.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 17 Sep 2020 09:57:36 -0700 (PDT)
+Subject: Re: [PATCH] hw/arm/aspeed: Map the UART5 device unconditionally
+To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
+References: <20200905212415.760452-1-f4bug@amsat.org>
+ <e640309b-b694-e815-d64d-40dd453e52ef@amsat.org>
+ <5e27c1f9-6d11-fa62-ba71-0020ce9d595b@kaod.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <07b21d1d-fb5b-efb0-50f2-54a4b86df444@amsat.org>
+Date: Thu, 17 Sep 2020 18:57:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200917075330.7sx3xm7gd4mwqqtq@kamzik.brq.redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/16 20:51:18
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -50
-X-Spam_score: -5.1
-X-Spam_bar: -----
-X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.997,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <5e27c1f9-6d11-fa62-ba71-0020ce9d595b@kaod.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,124 +123,95 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- qemu-devel@nongnu.org, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: a6YdWdpcuUHd
+X-TUID: fgkypTXtU4Zq
 
-On Thu, Sep 17, 2020 at 09:53:35AM +0200, Andrew Jones wrote:
-> On Thu, Sep 17, 2020 at 11:20:23AM +0800, Ying Fang wrote:
-> > MPIDR helps to provide an additional PE identification in a multiprocessor
-> > system. This patch adds support for setting MPIDR from userspace, so that
-> > MPIDR is consistent with CPU topology configured.
-> > 
-> > Signed-off-by: Ying Fang <fangying1@huawei.com>
-> > ---
-> >  target/arm/kvm64.c | 46 ++++++++++++++++++++++++++++++++++++++--------
-> >  1 file changed, 38 insertions(+), 8 deletions(-)
-> > 
-> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> > index ef1e960285..fcce261a10 100644
-> > --- a/target/arm/kvm64.c
-> > +++ b/target/arm/kvm64.c
-> > @@ -757,10 +757,46 @@ static int kvm_arm_sve_set_vls(CPUState *cs)
-> >  
-> >  #define ARM_CPU_ID_MPIDR       3, 0, 0, 0, 5
-> >  
-> > +static int kvm_arm_set_mp_affinity(CPUState *cs)
-> > +{
-> > +    uint64_t mpidr;
-> > +    ARMCPU *cpu = ARM_CPU(cs);
-> > +
-> > +    if (kvm_check_extension(kvm_state, KVM_CAP_ARM_MP_AFFINITY)) {
-> > +        /* Make MPIDR consistent with CPU topology */
-> > +        MachineState *ms = MACHINE(qdev_get_machine());
-> > +
-> > +        mpidr = (kvm_arch_vcpu_id(cs) % ms->smp.threads) << ARM_AFF0_SHIFT;
+On 9/16/20 7:51 AM, Cédric Le Goater wrote:
+> On 9/15/20 7:23 PM, Philippe Mathieu-Daudé wrote:
+>> ping?
 > 
-> We should query KVM first to determine if it wants guests to see their PEs
-> as threads or not. If not, and ms->smp.threads is > 1, then that's an
-> error. And, in any case, if ms->smp.threads == 1, then we shouldn't waste
-> aff0 on it, as that could reduce IPI broadcast performance.
+> It's reviewed : 
 > 
-> > +        mpidr |= ((kvm_arch_vcpu_id(cs) / ms->smp.threads % ms->smp.cores)
-> > +                                    & 0xff) << ARM_AFF1_SHIFT;
-> > +        mpidr |= (kvm_arch_vcpu_id(cs) / (ms->smp.cores * ms->smp.threads)
-> > +                                    & 0xff) << ARM_AFF2_SHIFT;
-
-Also, as pointed out in the KVM thread, we should not be attempting to
-describe topology with the MPIDR at all. Alexandru pointed out [*] as
-evidence for that.
-
-However, we do need to consider the limits on Aff0 imposed by the GIC.
-See hw/arm/virt.c:virt_cpu_mp_affinity() for how we currently do it
-for TCG. We should do something similar for KVM guests when we're taking
-full control of the MPIDR.
-
-[*] https://git.kernel.org/pub/scm/linux/kernel/git/arm64/linux.git/commit/?id=3102bc0e6ac7
-
-Thanks,
-drew
-
-> > +
-> > +        /* Override mp affinity when KVM is in use */
-> > +        cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
-> > +
-> > +        /* Bit 31 is RES1 indicates the ARMv7 Multiprocessing Extensions */
-> > +        mpidr |= (1ULL << 31);
-> > +        return kvm_vcpu_ioctl(cs, KVM_ARM_SET_MP_AFFINITY, &mpidr);
-> > +    } else {
-> > +        /*
-> > +         * When KVM_CAP_ARM_MP_AFFINITY is not supported, it means KVM has its
-> > +         * own idea about MPIDR assignment, so we override our defaults with
-> > +         * what we get from KVM.
-> > +         */
-> > +        int ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
-> > +        if (ret) {
-> > +            error_report("failed to set MPIDR");
+>   http://patchwork.ozlabs.org/project/qemu-devel/patch/20200905212415.760452-1-f4bug@amsat.org/
 > 
-> We don't need this error, kvm_get_one_reg() has trace support already.
-> Anyway, the wording is wrong since it says 'set' instead of 'get'.
-> 
-> > +            return ret;
-> > +        }
-> > +        cpu->mp_affinity = mpidr & ARM32_AFFINITY_MASK;
-> > +        return ret;
-> > +    }
-> > +}
-> > +
-> >  int kvm_arch_init_vcpu(CPUState *cs)
-> >  {
-> >      int ret;
-> > -    uint64_t mpidr;
-> >      ARMCPU *cpu = ARM_CPU(cs);
-> >      CPUARMState *env = &cpu->env;
-> >  
-> > @@ -814,16 +850,10 @@ int kvm_arch_init_vcpu(CPUState *cs)
-> >          }
-> >      }
-> >  
-> > -    /*
-> > -     * When KVM is in use, PSCI is emulated in-kernel and not by qemu.
-> > -     * Currently KVM has its own idea about MPIDR assignment, so we
-> > -     * override our defaults with what we get from KVM.
-> > -     */
-> > -    ret = kvm_get_one_reg(cs, ARM64_SYS_REG(ARM_CPU_ID_MPIDR), &mpidr);
-> > +    ret = kvm_arm_set_mp_affinity(cs);
-> >      if (ret) {
-> >          return ret;
-> >      }
-> > -    cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
-> >  
-> >      kvm_arm_init_debug(cs);
-> >  
-> > -- 
-> > 2.23.0
-> > 
-> >
+
+Yes I know :) This is part of my routine to check if a
+patch hasn't been confirmed to be queued 1 week after the
+last review, to ping the maintainer (because some
+automatically flush patches older than 1month in their
+mailbox).
+
+> I will send a PR when I have more patches.
+
+Ah OK. I didn't know you would keep merging the Aspeed
+patches. Since this was a single patch, I thought it would
+go via the usual qemu-arm queue from Peter.
+
+No rush, I just wanted to be sure the patch was not lost.
+Also, once a patch is queued, I understand it is the
+maintainer responsibility to keep rebasing the patch
+queued.
+
+Thanks!
+
+Phil.
+
 > 
 > Thanks,
-> drew 
-
+> 
+> C. 
+> 
+>> On 9/5/20 11:24 PM, Philippe Mathieu-Daudé wrote:
+>>> The UART5 is present on the machine regardless there is a
+>>> character device connected to it. Map it unconditionally.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> ---
+>>>  hw/arm/aspeed_ast2600.c | 8 +++-----
+>>>  hw/arm/aspeed_soc.c     | 8 +++-----
+>>>  2 files changed, 6 insertions(+), 10 deletions(-)
+>>>
+>>> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
+>>> index 9d95e421435..1450bde7cf2 100644
+>>> --- a/hw/arm/aspeed_ast2600.c
+>>> +++ b/hw/arm/aspeed_ast2600.c
+>>> @@ -325,11 +325,9 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
+>>>      }
+>>>  
+>>>      /* UART - attach an 8250 to the IO space as our UART5 */
+>>> -    if (serial_hd(0)) {
+>>> -        qemu_irq uart5 = aspeed_soc_get_irq(s, ASPEED_DEV_UART5);
+>>> -        serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+>>> -                       uart5, 38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>>> -    }
+>>> +    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+>>> +                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
+>>> +                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>>>  
+>>>      /* I2C */
+>>>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+>>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
+>>> index 35be126db6f..7eefd54ac07 100644
+>>> --- a/hw/arm/aspeed_soc.c
+>>> +++ b/hw/arm/aspeed_soc.c
+>>> @@ -283,11 +283,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
+>>>      }
+>>>  
+>>>      /* UART - attach an 8250 to the IO space as our UART5 */
+>>> -    if (serial_hd(0)) {
+>>> -        qemu_irq uart5 = aspeed_soc_get_irq(s, ASPEED_DEV_UART5);
+>>> -        serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+>>> -                       uart5, 38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>>> -    }
+>>> +    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
+>>> +                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
+>>> +                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
+>>>  
+>>>      /* I2C */
+>>>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
+>>>
+> 
+> 

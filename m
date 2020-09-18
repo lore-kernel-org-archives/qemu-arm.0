@@ -1,94 +1,106 @@
-Received: by 2002:a05:6214:13e3:0:0:0:0 with SMTP id ch3csp2481916qvb;
-        Fri, 18 Sep 2020 09:59:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwbwTvSNALfrvhcvyL/t4EfgBJ/BYnW5OI61g4hPONGPK3YMxKLnzTjHt0FYienB3PfH75U
-X-Received: by 2002:a25:ac28:: with SMTP id w40mr34920171ybi.359.1600448354512;
-        Fri, 18 Sep 2020 09:59:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600448354; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1734479lfq;
+        Fri, 18 Sep 2020 11:00:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwPlfzNgiMAf9xFyGL90de7oDhQXw2Js5Ny+GurEz4/w27Bdl82svKsKZuwXJ/sUmiTG55R
+X-Received: by 2002:a25:3ce:: with SMTP id 197mr5288508ybd.233.1600452034171;
+        Fri, 18 Sep 2020 11:00:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600452034; cv=none;
         d=google.com; s=arc-20160816;
-        b=fDcTEkn9AX1oeUO5MqbkGM0jWkoVqg7TysnKdD8UPBtRMlTL6INEZsKNkwWLrzgK4e
-         gHaUcISy77QgTsNUdkUEJZnikPfyVZuR2M0pB5wNQrQxR3ZwapMWoBxEwuo5jyLSuQnP
-         /bDaxoUFj4VQSMAr+REIExzeMFZbRcg3qr9mn0/lwO4S8ERXvwBfiNnXSgKot3KBiDgx
-         +lZ/ncuqR3vk3VwLdJ24kuqWFgc6H43vx8Ee2N3BjFERSCHfjlNUWr0zq3QgVmF/jR+a
-         d+XEvwLIYWEUjL0/WjcMmO6a+0pYYatQVjHI6244elTrpOu12/phjTPVOrwu7CnFO2MR
-         tJSQ==
+        b=SCquwCR9fizmVrsoFqrGR0M/zj/DLXtrA6ai1hrFFFJZ2kMXjZMpCMOe6Q611qfzZq
+         TAjcTSIlXB8B0b4zPUuI1f6P93o5ROgbono64ZR1ojTAulByPVJRnAIsWC8HwOnwzKc5
+         TQF2LKQ8viYLG5BuclSQmB/usPUr5l1IxYr9kVInEJ1xq2qUwRBsRADqJGE1vHtvcK6p
+         Vcid2iQVtnIDWwzg+ZL9K9Ido0syp9QgAsOLvS8PuINT2aYnneZpvNKciklJwrddTYoK
+         5y2lWWZsFK/jBx0pat77YbOJpf3UIVPbgyHNjdlRL0IfBFv6y+lal4gYamBjDy6dXqWm
+         AMcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=5v+VwXd0DomqxaRpx2v4emujqgUsxH/rzu95M/LVoy8=;
-        b=UevNV4/1X9BZf1NFeLtbjG8y2Qb71LHxrTEhq6+eiUVHGn0cUcbGkNdVjW4V1ZcBgg
-         oRGRwP2+GhFJcLyPIAfrB9trMErDWzJWdEaxAlZTnu1R/+61E8hOUup+W6JSwgvG0p0F
-         pCg7qe0OJHq3E8eSep/IpoEgp5lUITlXS5/93Iq9iEOZmTjtUhQS5BheMuIdEn0HHPMk
-         kwKoXNWDv5TJAe1oljU61FCEKNN9xF5UcB0BzXnvz7JSqOWHQTC84J5mJm2ZLPS7EbqQ
-         g1MG8xJ5CEVDvwhKwCPY3Th5nrhmjg6Mdk5jW12lZA0d9IREOFTToUEznyCav9ygP53d
-         c6WA==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=3F1x7MczDYTNGGFx+fYd5czEPRA32ArBkr30TvxIgkg=;
+        b=V84ypmwO14GDsu261OO7Pybg5GwKPwoUx0TbPj/mqEi+Rm5k6A5cXvA8XPYeSypjcl
+         lvd+1Z1JU28WtATFYVl29I4FbOuOR9PjLKpzF371MHK6Yc6AdLM111BPmsWuHLG01MEg
+         qMw3YOS7Z/YR5Hae3T4IEpWX3WCHSiNqxxKIWHHFKMuD740QKDYPj1z9wxr3SrkkdJv+
+         yvH6k3x5j9ocgoDqwRv0wyFtwSbnrF7OZg/LOBn7q6ERGizQ0wrG2JE4HjHv9z+e1x9R
+         DmrwWNoGkSOV6FhsjbDzd1ZYp0B2hzj8kwI8eXOxjcfgARNMJDOIZDgpz5kh2zqCtU/y
+         LxCQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L9oG8N+j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c186si4188482yba.132.2020.09.18.09.59.14
+        by mx.google.com with ESMTPS id b130si4153823ybg.60.2020.09.18.11.00.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 18 Sep 2020 09:59:14 -0700 (PDT)
+        Fri, 18 Sep 2020 11:00:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:43586 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L9oG8N+j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58798 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kJJj8-0006wk-0k
-	for alex.bennee@linaro.org; Fri, 18 Sep 2020 12:59:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50648)
+	id 1kJKgT-00075u-Gg
+	for alex.bennee@linaro.org; Fri, 18 Sep 2020 14:00:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1kJJiy-0006v5-QR; Fri, 18 Sep 2020 12:59:04 -0400
-Received: from szxga03-in.huawei.com ([45.249.212.189]:2545 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <salil.mehta@huawei.com>)
- id 1kJJiv-0002aB-27; Fri, 18 Sep 2020 12:59:04 -0400
-Received: from nkgeml709-chm.china.huawei.com (unknown [172.30.72.54])
- by Forcepoint Email with ESMTP id 77DE2540EBD2317782A9;
- Sat, 19 Sep 2020 00:58:52 +0800 (CST)
-Received: from lhreml703-chm.china.huawei.com (10.201.108.52) by
- nkgeml709-chm.china.huawei.com (10.98.57.40) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id
- 15.1.1913.5; Sat, 19 Sep 2020 00:58:49 +0800
-Received: from lhreml703-chm.china.huawei.com ([10.201.68.198]) by
- lhreml703-chm.china.huawei.com ([10.201.68.198]) with mapi id 15.01.1913.007; 
- Fri, 18 Sep 2020 17:58:46 +0100
-From: Salil Mehta <salil.mehta@huawei.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: RE: [RFC PATCH 04/12] device_tree: add qemu_fdt_add_path
-Thread-Topic: [RFC PATCH 04/12] device_tree: add qemu_fdt_add_path
-Thread-Index: AQHWjKHH5zES4p0+/UadBbZsJn/3JalsapaAgAEMekCAAGKzgIAAxAJQ
-Date: Fri, 18 Sep 2020 16:58:46 +0000
-Message-ID: <4147233067d04928a7255ce3f806a8a4@huawei.com>
-References: <20200917032033.2020-1-fangying1@huawei.com>
- <20200917032033.2020-5-fangying1@huawei.com>
- <20200917081239.bdfhkofodqvhg3i6@kamzik.brq.redhat.com>
- <a0ef33da132a411a8da14a8b05f78c1d@huawei.com>
- <20200918060649.oi5cdgouuopf45us@kamzik.brq.redhat.com>
-In-Reply-To: <20200918060649.oi5cdgouuopf45us@kamzik.brq.redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.47.65.147]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kJKgE-00075Z-M7
+ for qemu-arm@nongnu.org; Fri, 18 Sep 2020 14:00:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34655)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kJKgC-0002FB-0o
+ for qemu-arm@nongnu.org; Fri, 18 Sep 2020 14:00:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1600452014;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3F1x7MczDYTNGGFx+fYd5czEPRA32ArBkr30TvxIgkg=;
+ b=L9oG8N+j/CPgU46OtRx5dP/nLderNlCJK3iFda+0mwRRD/c5myrCGArjhE27T6Z+QFxU2b
+ OUQ0FdjBDRsasS/HY5gMo7BjAP9dWkvK50q80PIN2hF+odGQ/8agN4RR/hamMUyiC5/F34
+ 5CF5uSHgcPNbQtIhm9qr+Uk0UMr+Mdg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-585-jDN9dpt8M3KLZjv8TqPZjQ-1; Fri, 18 Sep 2020 14:00:13 -0400
+X-MC-Unique: jDN9dpt8M3KLZjv8TqPZjQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 35FAD192CC46;
+ Fri, 18 Sep 2020 18:00:11 +0000 (UTC)
+Received: from localhost (ovpn-119-217.rdu2.redhat.com [10.10.119.217])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 86F635D9D5;
+ Fri, 18 Sep 2020 18:00:07 +0000 (UTC)
+Date: Fri, 18 Sep 2020 14:00:06 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH v2 0/6] qom: Allow object to be aligned
+Message-ID: <20200918180006.GC7594@habkost.net>
+References: <20200916004638.2444147-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.189;
- envelope-from=salil.mehta@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/18 12:58:53
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20200916004638.2444147-1-richard.henderson@linaro.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/18 01:32:10
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -50
+X-Spam_score: -5.1
+X-Spam_bar: -----
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.999,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,143 +113,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>, Alexander Graf <agraf@suse.de>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "Chenzhendong \(alex\)" <alex.chen@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
- fangying <fangying1@huawei.com>, "imammedo@redhat.com" <imammedo@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ qemu-riscv@nongnu.org, David Hildenbrand <david@redhat.com>,
+ qemu-ppc@nongnu.org, Cornelia Huck <cohuck@redhat.com>, qemu-devel@nongnu.org,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Alistair Francis <Alistair.Francis@wdc.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7/EM4bfFp5vt
+X-TUID: s/vvzQLEgNMA
 
-> From: Andrew Jones [mailto:drjones@redhat.com]
-> Sent: Friday, September 18, 2020 7:07 AM
->=20
-> On Fri, Sep 18, 2020 at 12:25:19AM +0000, Salil Mehta wrote:
-> >
-> > > From: Qemu-arm
-> [mailto:qemu-arm-bounces+salil.mehta=3Dhuawei.com@nongnu.org]
-> > > On Behalf Of Andrew Jones
-> > > Sent: Thursday, September 17, 2020 9:13 AM
-> > > To: fangying <fangying1@huawei.com>
-> > > Cc: peter.maydell@linaro.org; Zhanghailiang
-> <zhang.zhanghailiang@huawei.com>;
-> > > Alexander Graf <agraf@suse.de>; qemu-devel@nongnu.org; Chenzhendong (=
-alex)
-> > > <alex.chen@huawei.com>; shannon.zhaosl@gmail.com; qemu-arm@nongnu.org=
-;
-> > > alistair.francis@wdc.com; imammedo@redhat.com
-> > > Subject: Re: [RFC PATCH 04/12] device_tree: add qemu_fdt_add_path
-> > >
-> > > On Thu, Sep 17, 2020 at 11:20:25AM +0800, Ying Fang wrote:
-> > > > From: Andrew Jones <drjones@redhat.com>
-> > > >
-> > > > qemu_fdt_add_path works like qemu_fdt_add_subnode, except it
-> > > > also recursively adds any missing parent nodes.
-> > > >
-> > > > Cc: Peter Crosthwaite <crosthwaite.peter@gmail.com>
-> > > > Cc: Alexander Graf <agraf@suse.de>
-> > > > Signed-off-by: Andrew Jones <drjones@redhat.com>
-> > > > ---
-> > > >  device_tree.c                | 24 ++++++++++++++++++++++++
-> > > >  include/sysemu/device_tree.h |  1 +
-> > > >  2 files changed, 25 insertions(+)
-> > > >
-> > > > diff --git a/device_tree.c b/device_tree.c
-> > > > index b335dae707..1854be3a02 100644
-> > > > --- a/device_tree.c
-> > > > +++ b/device_tree.c
-> > > > @@ -524,6 +524,30 @@ int qemu_fdt_add_subnode(void *fdt, const char=
- *name)
-> > > >      return retval;
-> > > >  }
-> > > >
-> > > > +int qemu_fdt_add_path(void *fdt, const char *path)
-> > > > +{
-> > > > +    char *parent;
-> > > > +    int offset;
-> > > > +
-> > > > +    offset =3D fdt_path_offset(fdt, path);
-> > > > +    if (offset < 0 && offset !=3D -FDT_ERR_NOTFOUND) {
-> > > > +        error_report("%s Couldn't find node %s: %s", __func__, pat=
-h,
-> > > > +                     fdt_strerror(offset));
-> > > > +        exit(1);
-> > > > +    }
-> > > > +
-> > > > +    if (offset !=3D -FDT_ERR_NOTFOUND) {
-> > > > +        return offset;
-> > > > +    }
-> > > > +
-> > > > +    parent =3D g_strdup(path);
-> > > > +    strrchr(parent, '/')[0] =3D '\0';
-> > > > +    qemu_fdt_add_path(fdt, parent);
-> > > > +    g_free(parent);
-> > > > +
-> > > > +    return qemu_fdt_add_subnode(fdt, path);
-> > > > +}
-> > >
-> > > Igor didn't like the recursion when I posted this before so I changed
-> > > it when doing the refresh[*] that I gave to Salil Mehta. Salil also
-> > > works for Huawei, are you guys not working together?
-> > >
-> > > [*] https://github.com/rhdrjones/qemu/commits/virt-cpu-topology-refre=
-sh
-> > >
-> >
-> >
-> > I was not aware of this work going on. I am based at Cambridge and Fang=
-ying
-> > in Hangzhou and work for different teams.
-> >
-> > Yes, I have it and have integrated it with the Virtual CPU hotplug bran=
-ch
-> > and I am testing them.
-> >
-> > I have also rebased virtual cpu hotplug patches and integrated the PMU
-> > related changes recently been discussed in other mail-chain. Plus, I am
-> > also dealing with the MPIDR/affinity part from the Kernel which has bee=
-n
-> > discussed earlier with the Marc Zyngier.
-> >
-> > It looks some of the changes are common here like ability to set MPIDR
-> > of the vcpus at the time of their creation inside KVM. And the PPTT
-> > table changes which were present in your refresh branch as well. Change=
-s
-> > related to the possible and present vcpus might need a sync as well.
-> >
-> > @Andrew, should I take out the part which is common and affects the
-> > virtual cpu hotplug and push them separately. This way I can have part
-> > of the changes related to the vcpu hotplug done which will also cover
-> > this patch-set requirements as well?
->=20
-> Whatever works best for you and Ying Fang. It looks like this series
-> only focuses on topology. It's not considering present and possible
-> cpus, but it probably should. It also adds the cache hierarchy stuff,
-> but I'm not sure it's approaching that in the right way. I think it
-> may make sense to put this series on hold and take another look at
-> your hotplug series when it's reposted before deciding what to do.
+On Tue, Sep 15, 2020 at 05:46:32PM -0700, Richard Henderson wrote:
+> I've seen some failures on arm and s390x hosts after
+> enabling host vector support.  It turns out that the
+> malloc for these hosts does not provide 16-byte alignment.
+> 
+> We already have a function that can alloc with alignment,
+> but we need to pass this down from the structure.  We also
+> don't want to use this function unconditionally, because
+> the windows version does page allocation, which would be
+> overkill for the vast majority of the objects allocated.
 
+I'm queueing patches 2-6.  Thanks!
 
-Ok fine. Let me collaborate with him internally first. Either of us
-will have to rebase our patches on others code.
-
-
-thanks
-
-
->=20
-> Thanks,
-> drew
->=20
-> >
-> > @Fangying, will this work for you?
-> >
-> >
-> > Salil.
-> >
-> >
+-- 
+Eduardo
 

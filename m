@@ -1,117 +1,107 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp749760lfq;
-        Thu, 17 Sep 2020 09:57:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw22/lPvn2M66WbnD6Oz2Ij8qWJ4ioJjlVn++vuGE72QO7BJRic1srJznX5GIA+YRCPiskf
-X-Received: by 2002:a25:db10:: with SMTP id g16mr3033441ybf.138.1600361871718;
-        Thu, 17 Sep 2020 09:57:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600361871; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1497144lfq;
+        Fri, 18 Sep 2020 06:10:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz8YHyDIhnjRDtyyzEkB3eRY40mghvEXSdOL2ewlZLjB3f7lVcIvKq6PXU+uZ+5JTc8SoUL
+X-Received: by 2002:a25:ab81:: with SMTP id v1mr39175728ybi.392.1600434638163;
+        Fri, 18 Sep 2020 06:10:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600434638; cv=none;
         d=google.com; s=arc-20160816;
-        b=pdg1U6Nu8Y446pdmTcmBK9ZBH0hqvBuRj93WAzpvhvN1rSz4RKqraaP0uC0NBLsQGX
-         x1IkN1LOi5Rb6g/9wYEeEsYlCN9WSRKXFsAIyJf5v2EIcQCZE1BkH7NJGkDRWyEKlVuG
-         0nreAdQFO713SYuQHKdY8U9F0jf4pWew9p8skCnblIZa7wrcYELmbVcDF9VCI+/C01hL
-         qBfbAFvwalsfitrvsRxfm8etxAWijgkkia7h39r86idvPXs9NY84PMHBoC1XVCp7Muu6
-         bobmffkZJgxue/6nQs6HT1K58ZgHe0tsXTnEsAxiXd1xeb9UcIU/lZwGGAgeDoEgFU5z
-         IVXA==
+        b=FxS9YK7JA/9kmq+ulKHiDdm5pTn4nS8Y3LZBmMyj9uDa90I8s3hpE+zOyAvH516H/C
+         yCyjGjXDiZ47/wTGsCxdtm3+8Ga8YG64CfHTuIV2qlSG+jll8QmVJTG98cvoKuBlum0X
+         aG1TtNycsPLModxtCQxq5QWdiqJiksW67APm9gW9RNSe302ENFE1In3QuImzMr1oIJcj
+         XZITP07x/4VRSyE5yPuhopDwA4K5Y/QKK+nk8Wx+qh0VgP8wpxA2jH90gZ87DGo5Hbsd
+         3GiDx5xlKwAYL0E9R6gBXpTUzARCIhyt2kozV8SjJYKNkDaOyum7HorWERUmT3uOTTBg
+         /FyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=6QaMg1AvMw1pue6iNBZDZCiuxftSbFxqP2NNoQR16oU=;
-        b=1EVpzt21eL8aO3F3ZeFjiqzVUo2KpRdwErad5OPLaslZ8+F+28G2YlxDo4obDIdfzS
-         jwEDOPNpQrpaeqczimEkuq2xbS+er2G7YMvHUFUa88mNxMniR7J4NbE8R3UlBRpzrCkQ
-         pbL818CZjxjld6IISOAk4KbqP+T93ay799weU4f5KkuB42SGFWU+BE5q9HFv0GiCWiZd
-         fl71AmVlU3OgIFgQlzGfs0VX95IbsZJwPc4fUBC75bdOgx8XU8MoRiqP64z67XhQpNpX
-         lixzTsvWScN/9ubUPTRZlb4LZYWMcbmDpf8JnkTBt6EozA1Xr7gkz35E6HAqRa9H50im
-         rl0g==
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:content-language
+         :accept-language:message-id:date:thread-index:thread-topic:subject
+         :to:from:dkim-signature;
+        bh=IYMzpBxT8A12a+KpXqGnLrWB0pAtzJXfRZDIOY56Ki4=;
+        b=ayFtl9I/v1RihdRd9EHtvRN2P+FDrokt5bfmMMizX7L0AUhXNXF5AysNniYzk97roU
+         4xPZvpZfupbPG75TRR/pMiKhTUEPlSJA4VAFeB6hg42qgrrf64ZpUHVdOv3LZTMmvokX
+         plvmfFczzI2+/QBXlJXbQstWeL1YBYQQjyagYy/dm7vfSiUKBQbySHSOAo2jc+Wha8SL
+         vyAYNujvi8Slb4f14CBYAYSvMmg+zoTrqTdSs9Na+Nwu9tGMlghMRTfg+7Skj6wKud2L
+         7msHw4oUqV8Dr0a2gWF6BZeFozlkCk6elH9GrJU6igXyEiA/FUcObVgX438LMuHdt9H3
+         yACw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="hM/T/F69";
+       dkim=pass header.i=@tencent.com header.s=s202002 header.b=J20t3Hhk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tencent.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w8si143731ybj.107.2020.09.17.09.57.51
+        by mx.google.com with ESMTPS id 7si3115274yba.470.2020.09.18.06.10.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 17 Sep 2020 09:57:51 -0700 (PDT)
+        Fri, 18 Sep 2020 06:10:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="hM/T/F69";
+       dkim=pass header.i=@tencent.com header.s=s202002 header.b=J20t3Hhk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34424 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=tencent.com
+Received: from localhost ([::1]:41498 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kIxEF-0007jh-0z
-	for alex.bennee@linaro.org; Thu, 17 Sep 2020 12:57:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58838)
+	id 1kJG9t-0006wV-HA
+	for alex.bennee@linaro.org; Fri, 18 Sep 2020 09:10:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59090)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kIxE6-0007hd-Cp; Thu, 17 Sep 2020 12:57:42 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40381)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kIxE3-0004ok-Ic; Thu, 17 Sep 2020 12:57:42 -0400
-Received: by mail-wm1-x342.google.com with SMTP id k18so2763811wmj.5;
- Thu, 17 Sep 2020 09:57:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=6QaMg1AvMw1pue6iNBZDZCiuxftSbFxqP2NNoQR16oU=;
- b=hM/T/F69PEgcWCYjroOjIIv7bfZwEtWdAfXh75vdxaA5lTCXR2DPwxKQAW96Ga0jkW
- XEn2HHqL3uzH433I9Mzod2BDcTfdpChn01KM+SUmP6ELOrDMJRtfl3qD/PFPtr40oaQg
- gJnF4IlmVu7+TSf3wBAxxlpB8OvPQ/dqQwfsj6PnAh7fayYGQbTyROi1G5C5xj+eYBS4
- QXTat0uM3CeNGww+trqHVwSe7gitmOfa+UklCInduE5lO8HM1FCq4LLDKBeoCXeCZrlx
- aLaREZQ+J5cqY5lPmY0l2ZoheT+y160345KZ5dojBOwYF9ajENagzFlw+3b3cIto/Bdt
- jW4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=6QaMg1AvMw1pue6iNBZDZCiuxftSbFxqP2NNoQR16oU=;
- b=qqyrfJYX6uvde0faaFBz6ld0SVKjr/uWmnP0QpATElLp+Kap+gNh2m0mFHoG1VnYQF
- ctMgxWTHAtMDos3wcCvzMzZIzwShD5zc16UB8KAOSPjdQVxaze3nmTUtAaOUKjlQUPHx
- ftHatruVyrv/DWisOIH2L2+hFaqU0ocxuQc+fSCbLIM13dFsT2qwnVPwu3InAsHMd50Q
- /WSUMTAcgOUjM1xsaNB8tj5T5rilC8XlBLRFm8gxsYC+WQ3rifpOCb8YSc/609CZdjqC
- su9CMfqQXj8Na871pTGJ1vIJkteKn86/1FPTnzIKsW3GoXvNgyMUXckQ0J9vIRCT0ukv
- XXvg==
-X-Gm-Message-State: AOAM5314uMV03dGefONuu6UJnYx8w201vhglSOULIaYH1dA16pgJCEsx
- vhoFRcI1gOWDIbZClLtcJJI=
-X-Received: by 2002:a7b:c3da:: with SMTP id t26mr10470848wmj.23.1600361857453; 
- Thu, 17 Sep 2020 09:57:37 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id y6sm195832wrt.80.2020.09.17.09.57.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Sep 2020 09:57:36 -0700 (PDT)
-Subject: Re: [PATCH] hw/arm/aspeed: Map the UART5 device unconditionally
-To: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>, qemu-devel@nongnu.org
-References: <20200905212415.760452-1-f4bug@amsat.org>
- <e640309b-b694-e815-d64d-40dd453e52ef@amsat.org>
- <5e27c1f9-6d11-fa62-ba71-0020ce9d595b@kaod.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <07b21d1d-fb5b-efb0-50f2-54a4b86df444@amsat.org>
-Date: Thu, 17 Sep 2020 18:57:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
-MIME-Version: 1.0
-In-Reply-To: <5e27c1f9-6d11-fa62-ba71-0020ce9d595b@kaod.org>
-Content-Type: text/plain; charset=utf-8
+ (Exim 4.90_1) (envelope-from <haibinzhang@tencent.com>)
+ id 1kJFTN-0006HN-0v; Fri, 18 Sep 2020 08:26:41 -0400
+Received: from mail6.tencent.com ([220.249.245.26]:37246)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <haibinzhang@tencent.com>)
+ id 1kJFTK-0002gO-MR; Fri, 18 Sep 2020 08:26:40 -0400
+Received: from EX-SZ022.tencent.com (unknown [10.28.6.88])
+ by mail6.tencent.com (Postfix) with ESMTP id 26F65CC24B;
+ Fri, 18 Sep 2020 20:27:54 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tencent.com;
+ s=s202002; t=1600432074;
+ bh=IYMzpBxT8A12a+KpXqGnLrWB0pAtzJXfRZDIOY56Ki4=;
+ h=From:To:CC:Subject:Date;
+ b=J20t3HhkgnshsdRAZAE4gI8tz9VZDQA8+QkIc1+qPrbc7Nqp/f3akCykWVUeN9VhZ
+ 9O1e8U/2Gh2jo53NBG6jM0h+WKQ0M+ZH0s4sxeRjUuXISpICs1S7V3oyq6FxBj6y0z
+ l5jBwQxDfTfzGNrHp3im1LJVadRrM9GJedoCQrZ8=
+Received: from EX-SZ004.tencent.com (10.28.6.25) by EX-SZ022.tencent.com
+ (10.28.6.88) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1847.3; Fri, 18 Sep
+ 2020 20:26:30 +0800
+Received: from EX-SZ006.tencent.com (10.28.6.30) by EX-SZ004.tencent.com
+ (10.28.6.25) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.1847.3; Fri, 18 Sep
+ 2020 20:26:30 +0800
+Received: from EX-SZ006.tencent.com ([fe80::a84e:872e:7c90:2930]) by
+ EX-SZ006.tencent.com ([fe80::a84e:872e:7c90:2930%2]) with mapi id
+ 15.01.1847.007; Fri, 18 Sep 2020 20:26:30 +0800
+From: =?gb2312?B?aGFpYmluemhhbmco1cW6o7HzKQ==?= <haibinzhang@tencent.com>
+To: Peter Maydell <peter.maydell@linaro.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+Subject: [PATCH] hw/arm/virt: use pflash image real size when mapping
+Thread-Topic: [PATCH] hw/arm/virt: use pflash image real size when mapping
+Thread-Index: AQHWjbbv4P90hmic9Uq+Paekk/9thQ==
+Date: Fri, 18 Sep 2020 12:26:30 +0000
+Message-ID: <790EEEF3-0799-4507-BF30-DA85440E766F@tencent.com>
+Accept-Language: zh-CN, en-US
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-originating-ip: [9.19.161.115]
+Content-Type: text/plain; charset="gb2312"
+Content-ID: <CA4493F127714C4989D8570F8792F4D9@tencent.com>
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+Received-SPF: pass client-ip=220.249.245.26;
+ envelope-from=haibinzhang@tencent.com; helo=mail6.tencent.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/18 08:26:31
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, CHARSET_FARAWAY_HEADER=3.2,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 18 Sep 2020 09:10:24 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,95 +113,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fgkypTXtU4Zq
+X-TUID: KWGZpN6LUckR
 
-On 9/16/20 7:51 AM, Cédric Le Goater wrote:
-> On 9/15/20 7:23 PM, Philippe Mathieu-Daudé wrote:
->> ping?
-> 
-> It's reviewed : 
-> 
->   http://patchwork.ozlabs.org/project/qemu-devel/patch/20200905212415.760452-1-f4bug@amsat.org/
-> 
-
-Yes I know :) This is part of my routine to check if a
-patch hasn't been confirmed to be queued 1 week after the
-last review, to ping the maintainer (because some
-automatically flush patches older than 1month in their
-mailbox).
-
-> I will send a PR when I have more patches.
-
-Ah OK. I didn't know you would keep merging the Aspeed
-patches. Since this was a single patch, I thought it would
-go via the usual qemu-arm queue from Peter.
-
-No rush, I just wanted to be sure the patch was not lost.
-Also, once a patch is queued, I understand it is the
-maintainer responsibility to keep rebasing the patch
-queued.
-
-Thanks!
-
-Phil.
-
-> 
-> Thanks,
-> 
-> C. 
-> 
->> On 9/5/20 11:24 PM, Philippe Mathieu-Daudé wrote:
->>> The UART5 is present on the machine regardless there is a
->>> character device connected to it. Map it unconditionally.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->>> ---
->>>  hw/arm/aspeed_ast2600.c | 8 +++-----
->>>  hw/arm/aspeed_soc.c     | 8 +++-----
->>>  2 files changed, 6 insertions(+), 10 deletions(-)
->>>
->>> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
->>> index 9d95e421435..1450bde7cf2 100644
->>> --- a/hw/arm/aspeed_ast2600.c
->>> +++ b/hw/arm/aspeed_ast2600.c
->>> @@ -325,11 +325,9 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->>>      }
->>>  
->>>      /* UART - attach an 8250 to the IO space as our UART5 */
->>> -    if (serial_hd(0)) {
->>> -        qemu_irq uart5 = aspeed_soc_get_irq(s, ASPEED_DEV_UART5);
->>> -        serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
->>> -                       uart5, 38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
->>> -    }
->>> +    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
->>> +                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5),
->>> +                   38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
->>>  
->>>      /* I2C */
->>>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
->>> diff --git a/hw/arm/aspeed_soc.c b/hw/arm/aspeed_soc.c
->>> index 35be126db6f..7eefd54ac07 100644
->>> --- a/hw/arm/aspeed_soc.c
->>> +++ b/hw/arm/aspeed_soc.c
->>> @@ -283,11 +283,9 @@ static void aspeed_soc_realize(DeviceState *dev, Error **errp)
->>>      }
->>>  
->>>      /* UART - attach an 8250 to the IO space as our UART5 */
->>> -    if (serial_hd(0)) {
->>> -        qemu_irq uart5 = aspeed_soc_get_irq(s, ASPEED_DEV_UART5);
->>> -        serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
->>> -                       uart5, 38400, serial_hd(0), DEVICE_LITTLE_ENDIAN);
->>> -    }
->>> +    serial_mm_init(get_system_memory(), sc->memmap[ASPEED_DEV_UART5], 2,
->>> +                   aspeed_soc_get_irq(s, ASPEED_DEV_UART5), 38400,
->>> +                   serial_hd(0), DEVICE_LITTLE_ENDIAN);
->>>  
->>>      /* I2C */
->>>      object_property_set_link(OBJECT(&s->i2c), "dram", OBJECT(s->dram_mr),
->>>
-> 
-> 
+RGVmYXVsdCBzaXplIG9mIGFybS12aXJ0IHBmbGFzaCBpbWFnZSBpcyA2NE1CIHdoaWNoDQp3aWxs
+IGNvc3QgZXh0cmEgMTI4TUIoNjRNQngyKSBtZW1vcnkgcGVyIHFlbXUgcHJvY2Vzcw0KYW5kIDEy
+LjVHQiBmb3IgMTAwIHFlbXUgcHJvY2Vzc2VzLiBIb3N0IG1lbW9yeSBpcw0KcHJlY2lvdXMgYW5k
+IGl0IGlzIHZhbHVhYmxlIHRvIHJlZHVjZSBwZmxhc2ggaW1hZ2Ugc2l6ZS4NCkZvciBjb21wYXRp
+YmlsaXR5IGFybS12aXJ0IHVzZXMgcmVhbCBzaXplIHdoZW4gbWFwcGluZy4NCg0KU2lnbmVkLW9m
+Zi1ieTogSGFpYmluIFpoYW5nIDxoYWliaW56aGFuZ0B0ZW5jZW50LmNvbT4NCi0tLQ0KIGh3L2Fy
+bS92aXJ0LmMgfCAyMiArKysrKysrKysrKysrKysrKysrKy0tDQogMSBmaWxlIGNoYW5nZWQsIDIw
+IGluc2VydGlvbnMoKyksIDIgZGVsZXRpb25zKC0pDQoNCmRpZmYgLS1naXQgYS9ody9hcm0vdmly
+dC5jIGIvaHcvYXJtL3ZpcnQuYw0KaW5kZXggYWNmOWJmYmVjZS4uMzU0NWUxMjg2NSAxMDA2NDQN
+Ci0tLSBhL2h3L2FybS92aXJ0LmMNCisrKyBiL2h3L2FybS92aXJ0LmMNCkBAIC01MCw2ICs1MCw3
+IEBADQogI2luY2x1ZGUgInN5c2VtdS9zeXNlbXUuaCINCiAjaW5jbHVkZSAic3lzZW11L3RwbS5o
+Ig0KICNpbmNsdWRlICJzeXNlbXUva3ZtLmgiDQorI2luY2x1ZGUgInN5c2VtdS9ibG9jay1iYWNr
+ZW5kLmgiDQogI2luY2x1ZGUgImh3L2xvYWRlci5oIg0KICNpbmNsdWRlICJleGVjL2FkZHJlc3Mt
+c3BhY2VzLmgiDQogI2luY2x1ZGUgInFlbXUvYml0b3BzLmgiDQpAQCAtMTAwMSwxMCArMTAwMiwy
+NyBAQCBzdGF0aWMgdm9pZCB2aXJ0X2ZsYXNoX21hcChWaXJ0TWFjaGluZVN0YXRlICp2bXMsDQog
+ICAgICAqLw0KICAgICBod2FkZHIgZmxhc2hzaXplID0gdm1zLT5tZW1tYXBbVklSVF9GTEFTSF0u
+c2l6ZSAvIDI7DQogICAgIGh3YWRkciBmbGFzaGJhc2UgPSB2bXMtPm1lbW1hcFtWSVJUX0ZMQVNI
+XS5iYXNlOw0KKyAgICBpbnQ2NF90IHJlYWxzaXplOw0KKyAgICBCbG9ja0JhY2tlbmQgKmJsazsN
+Cg0KLSAgICB2aXJ0X2ZsYXNoX21hcDEodm1zLT5mbGFzaFswXSwgZmxhc2hiYXNlLCBmbGFzaHNp
+emUsDQorICAgIHJlYWxzaXplID0gZmxhc2hzaXplOw0KKyAgICBibGsgPSBwZmxhc2hfY2ZpMDFf
+Z2V0X2Jsayh2bXMtPmZsYXNoWzBdKTsNCisgICAgaWYgKGJsaykgew0KKyAgICAgICAgcmVhbHNp
+emUgPSBibGtfZ2V0bGVuZ3RoKGJsayk7DQorICAgICAgICByZWFsc2l6ZSA9IHJlYWxzaXplIDwg
+Zmxhc2hzaXplID8gcmVhbHNpemUgOiBmbGFzaHNpemU7DQorICAgIH0NCisNCisgICAgdmlydF9m
+bGFzaF9tYXAxKHZtcy0+Zmxhc2hbMF0sIGZsYXNoYmFzZSwgcmVhbHNpemUsDQogICAgICAgICAg
+ICAgICAgICAgICBzZWN1cmVfc3lzbWVtKTsNCi0gICAgdmlydF9mbGFzaF9tYXAxKHZtcy0+Zmxh
+c2hbMV0sIGZsYXNoYmFzZSArIGZsYXNoc2l6ZSwgZmxhc2hzaXplLA0KKw0KKyAgICByZWFsc2l6
+ZSA9IGZsYXNoc2l6ZTsNCisgICAgYmxrID0gcGZsYXNoX2NmaTAxX2dldF9ibGsodm1zLT5mbGFz
+aFsxXSk7DQorICAgIGlmIChibGspIHsNCisgICAgICAgIHJlYWxzaXplID0gYmxrX2dldGxlbmd0
+aChibGspOw0KKyAgICAgICAgcmVhbHNpemUgPSByZWFsc2l6ZSA8IGZsYXNoc2l6ZSA/IHJlYWxz
+aXplIDogZmxhc2hzaXplOw0KKyAgICB9DQorDQorICAgIHZpcnRfZmxhc2hfbWFwMSh2bXMtPmZs
+YXNoWzFdLCBmbGFzaGJhc2UgKyBmbGFzaHNpemUsIHJlYWxzaXplLA0KICAgICAgICAgICAgICAg
+ICAgICAgc3lzbWVtKTsNCiB9DQoNCi0tDQoyLjIzLjANCg0K

@@ -1,103 +1,162 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2329935lfq;
-        Sat, 19 Sep 2020 04:15:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyixdyH1cRDmu+GctmFMN4Ik9CxbscxsPv7h2NmIlj/nCi3oow33w55dpKdWHBeTK8h5Glv
-X-Received: by 2002:a17:907:264c:: with SMTP id ar12mr41784499ejc.80.1600514151872;
-        Sat, 19 Sep 2020 04:15:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600514151; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2376278lfq;
+        Sat, 19 Sep 2020 05:31:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFikUDMJCjJm3ihltGaSey4Eap5E5hMAenOKAlBXI+QUIHL9NTSlPYoeHy/xSqR3eKfa9o
+X-Received: by 2002:a5b:585:: with SMTP id l5mr34223186ybp.473.1600518667250;
+        Sat, 19 Sep 2020 05:31:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600518667; cv=none;
         d=google.com; s=arc-20160816;
-        b=KkWYOcgQ3L2C7Q0CWfaAv2dlNuYhmPtE0tg+iY9fqeuKCjDuIwRAe0rfHUboS0ftoi
-         yDsvp7aEgxmw29quBzBXm1wqtI7Q0w5xlNldpb9MLj7eVrW42Z6eRTdHigcledo4dm00
-         USFjO2DzUxtNB2NQEWZanBY/rQegmjG6h0vGt3ZDOwIKMj39uW5B+oBOgJXpEYLpJVAD
-         cn4xnx4GiD1X0DKiJr4ZOP2S1pdEzT/Dp56x0UpJUVh366mq2ADWPB43prTyWXWfeQVK
-         vrJ09ZLdF2rqtxf5s4uYUs/87vleYqoUfCMJ/42r8wBGykCbZE+xmibYB19wJo86AYYU
-         EPJA==
+        b=tHxfamuj5wPPtU2bhRZnvB6WHfyLUkTNyXZ6Hq6EC+CZwidcBWv8TA8CA45O4tayWS
+         THvX/PoBkLZXfm0Pv30BrvW9oUHHTqFR3uk7fzbFXiZxW5hT0RWmR1FROHqxfgUZpn6I
+         5tVDCRzOKv8X/4WzdU+HYOQAEsO6J3Dc3DLOGrRYWLcbIBY13h9WpfySCGMqgW2gdeC7
+         61aV1AlJxq7HGVJmNg1/R//6l2xPj4P9BRyB4Xxi57qAZx151KLNbCke+t5OwrmzHrJC
+         /tEaTSafU3+DhldHt1099BV1A+A+dzsYxgWppE1NihlV+yJRdj66c5CHqUSd7+Q+bwnC
+         SJLg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:content-language
-         :mime-version:user-agent:date:message-id:cc:to:subject:from;
-        bh=vNwUi2JLPurtdimKJ4Z2B45LFDY9CW6I0hmhrP3G5Sk=;
-        b=aMz6U1mAN16BSImeyqQhHUXixBE94g1dFXIyZEJhIiaaZe4/GCgoJOpybW2MyNgvf5
-         70liAStEGjzhL3kYWYsV03O6oMmixskZ6Zj7vje7Pkf+rvFeerOmIR3otlBNz+by1Vmd
-         KgQxhIKa35DF2KlajZM8/mLHUhOXueJmvP9UFroIYyRCwFLaiV9M917UCjl6LqTd3Diz
-         6cyAlWW6i4yRG11SslYHnrpCq0Od9LZhAg3TqP1BVTYiiWUpmxBVnWCIEdwDVnNZZstd
-         vfeacmbwZHD0nedVNgWKkgTRCqg4dHixDFxXrmxFYmgxIfLcVziuY5JLGQU1v2gzNQkU
-         MRLA==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=PscmLFzXHDm/w1ZGBCLgyQqfbpOX+ZiYSHSp27dfx3U=;
+        b=OBFVVJXDyxjc+uGgpLu+xvBn9/GZ+9P1c+dCZ92NqhQH+DWpBCR2XdZvRGf4TmmNZf
+         PNUBQbip2V/0uK/C+feueWcYlYcf11r4N89OZRI3c6H3/YC5CgWHgFeNl1ES+3jbscc/
+         P5+l9Pe6EaEYFJDDnpuuad5AwH/0gr1MXJV67h0U4u7Ck+hzCcun1SaIMoF3le34ZtJ8
+         buYJgN6TeayLBFQ2sSw2OZU1+sE7gcHkBagIY/WxYxd7Z5YttO0OkQQGI3jkxLrxIs5F
+         L6CMiweI8FpPrjO4MABFBYd3UhrgPLd0rToVfzExA2Uwgu/SE1u4G1ye2pPOHtIJSNn/
+         sDMQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id a18si3993538edy.407.2020.09.19.04.15.51;
-        Sat, 19 Sep 2020 04:15:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hx9mshQe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id 205si7087120ybf.46.2020.09.19.05.31.06
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 19 Sep 2020 05:31:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726168AbgISLPu (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Sat, 19 Sep 2020 07:15:50 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:13731 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1726041AbgISLPu (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Sat, 19 Sep 2020 07:15:50 -0400
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
-        by Forcepoint Email with ESMTP id 0BAC450C2E2CAE8B0AC4;
-        Sat, 19 Sep 2020 19:15:49 +0800 (CST)
-Received: from [10.174.185.226] (10.174.185.226) by
- DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
- 14.3.487.0; Sat, 19 Sep 2020 19:15:38 +0800
-From:   Zenghui Yu <yuzenghui@huawei.com>
-Subject: KVM_SET_DEVICE_ATTR failed
-To:     <qemu-arm@nongnu.org>, <kvmarm@lists.cs.columbia.edu>,
-        <kvm@vger.kernel.org>
-CC:     Marc Zyngier <maz@kernel.org>, Eric Auger <eric.auger@redhat.com>,
-        "Alex Williamson" <alex.williamson@redhat.com>,
-        <wanghaibin.wang@huawei.com>
-Message-ID: <1f70926e-27dd-9e30-3d0f-770130112777@huawei.com>
-Date:   Sat, 19 Sep 2020 19:15:38 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.9.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hx9mshQe;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:44764 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kJc1C-0005IO-6l
+	for alex.bennee@linaro.org; Sat, 19 Sep 2020 08:31:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41904)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kJc0n-0005G1-E4; Sat, 19 Sep 2020 08:30:41 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37180)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kJc0l-0006Yk-Me; Sat, 19 Sep 2020 08:30:41 -0400
+Received: by mail-wr1-x441.google.com with SMTP id z4so8173574wrr.4;
+ Sat, 19 Sep 2020 05:30:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=PscmLFzXHDm/w1ZGBCLgyQqfbpOX+ZiYSHSp27dfx3U=;
+ b=hx9mshQewbDDf+e4eki5hMeXjwLw5WtsVxt/g7GsUK+lLh+Sw3D/Ik5qJJq71oG6iv
+ eXvOxvEbrkeXW24FfibbnL8qn8O1t9Yru6oJ9Y8c4t8TuO1AiTNeVZn9mJdAuf46zfL7
+ 0gUespuI21XioGxcIi/GplsJBdhqkrZeMptGE4TMgy2jkJ25jYLRaTC0gS6NQbhAQJK5
+ 9loGqadHrNN7eqmdd3G6AyZncc0axPNAmeLe/Ps1jwzrKEhKJFOxeKEJoDCQGc8lS50s
+ hfqVmOpvUzvT6a2+IiUibISPU+Lbh3aCY8jghHg8gnLrib6rEgBbpwTPc/70vHaHK4ED
+ pE3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=PscmLFzXHDm/w1ZGBCLgyQqfbpOX+ZiYSHSp27dfx3U=;
+ b=Zmxx0+XWTlpFU2wOfWoZsM5O9YPvz3x5lVmmiP16txuNyu10F9pYAIFss27dHOGJPc
+ 61B1DVoDjS0XgmTDfc9iwm+rU/WXygVzDgb6a0M8hm0zNnLB7BSOA5CEkXiq/tyqW+cL
+ QLLrcY7xwzgt5luzf2YxKdrk2HWRPe120xWE8/KyL4XyTv+YbROMMR+IoVJCDZz50UxP
+ cNCRWXkbtwtIkHe/bqr79FqYz76Nx67SzkClza5MhNNyfCgl641TgaayDt+PLIdziAdC
+ 3m1cWdL5UImXhm5GQwK3M+uwtRikz/mEOC/C1Uv8GLddq1NX5gZnh7T/2eX6Y/kBQh/g
+ E1Ww==
+X-Gm-Message-State: AOAM530/XHY06Xctm1SdR+J17CEM4bBuJoq/punn1J85UjHsjkMMQlEQ
+ 5rO53CzrvysuHbd0DXTYJIg=
+X-Received: by 2002:adf:ec90:: with SMTP id z16mr41082408wrn.145.1600518637105; 
+ Sat, 19 Sep 2020 05:30:37 -0700 (PDT)
+Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ [83.57.170.65])
+ by smtp.gmail.com with ESMTPSA id 76sm11166018wma.42.2020.09.19.05.30.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 19 Sep 2020 05:30:36 -0700 (PDT)
+Subject: Re: [PATCH v6 0/7] hw/misc: Add LED device
+To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+References: <20200912134041.946260-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <3783cc00-8ec6-6174-dad6-331177b95724@amsat.org>
+Date: Sat, 19 Sep 2020 14:30:35 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"; format=flowed
+In-Reply-To: <20200912134041.946260-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.185.226]
-X-CFilter-Loop: Reflected
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: Au2Xyj0OIcT5
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
+ qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Luc Michel <luc.michel@greensocs.com>, Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: STU9plkFc7Bk
 
-Hi folks,
+On 9/12/20 3:40 PM, Philippe Mathieu-Daudé wrote:
+> Hello,
+> 
+> These patches are part of the GSoC unselected 'QEMU visualizer'
+> project.
+> 
+> This series introduce a LED device that can be easily connected
+> to a GPIO output.
+[...]
+> Philippe Mathieu-Daud=C3=A9 (7):
+>   hw/misc/led: Add a LED device
+>   hw/misc/led: Allow connecting from GPIO output
+>   hw/misc/led: Emit a trace event when LED intensity has changed
+>   hw/arm/aspeed: Add the 3 front LEDs drived by the PCA9552 #1
+>   hw/misc/mps2-fpgaio: Use the LED device
+>   hw/misc/mps2-scc: Use the LED device
+>   hw/arm/tosa: Replace fprintf() calls by LED devices
 
-I had booted a guest with an assigned virtual function, with GICv4
-(direct MSI injection) enabled on my arm64 server. I got the following
-QEMU error message on its shutdown:
+This series is now fully reviewed.
 
-"qemu-system-aarch64: KVM_SET_DEVICE_ATTR failed: Group 4 attr 
-0x0000000000000001: Permission denied"
+Peter, since so far only ARM boards use the LED device,
+do you mind queuing it via your ARM tree?
 
-The problem is that the KVM_DEV_ARM_ITS_SAVE_TABLES ioctl failed while
-stopping the VM.
-
-As for the kernel side, it turned out that an LPI with irq->hw=true was
-observed while saving ITT for the device. KVM simply failed the save
-operation by returning -EACCES to user-space. The reason is explained in
-the comment block of vgic_its_save_itt(), though I think the HW bit
-should actually be checked in the KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES
-ioctl rather than in the ITT saving, well, it isn't much related to this
-problem...
-
-I had noticed that some vectors had been masked by guest VF-driver on
-shutdown, the correspond VLPIs had therefore been unmapped and irq->hw
-was cleared. But some other vectors were un-handled. I *guess* that VFIO
-released these vectors *after* the KVM_DEV_ARM_ITS_SAVE_TABLES ioctl so
-that we end-up trying to save the VLPI's state.
-
-It may not be a big problem as the guest is going to shutdown anyway and
-the whole guest save/restore on the GICv4.x system is not supported for
-the time being... I'll look at how VFIO would release these vectors but
-post it early in case this is an already known issue (and this might be
-one thing need to be considered if one wants to implement migration on
-the GICv4.x system).
-
+Alternatively I can ask Paolo or send a pull request
+myself is both of you think it is out of the scope of
+your maintenance area.
 
 Thanks,
-Zenghui
+
+Phil.

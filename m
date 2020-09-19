@@ -1,101 +1,96 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2376278lfq;
-        Sat, 19 Sep 2020 05:31:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzFikUDMJCjJm3ihltGaSey4Eap5E5hMAenOKAlBXI+QUIHL9NTSlPYoeHy/xSqR3eKfa9o
-X-Received: by 2002:a5b:585:: with SMTP id l5mr34223186ybp.473.1600518667250;
-        Sat, 19 Sep 2020 05:31:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600518667; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2414434lfq;
+        Sat, 19 Sep 2020 06:25:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwbQ4M7zbOPzSG97IGDHirL5+t8snali+BZOoDpnRJh6dLQLk70ifiR/wLruN8C5WLjKXwk
+X-Received: by 2002:a25:3ce:: with SMTP id 197mr9602002ybd.233.1600521951715;
+        Sat, 19 Sep 2020 06:25:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600521951; cv=none;
         d=google.com; s=arc-20160816;
-        b=tHxfamuj5wPPtU2bhRZnvB6WHfyLUkTNyXZ6Hq6EC+CZwidcBWv8TA8CA45O4tayWS
-         THvX/PoBkLZXfm0Pv30BrvW9oUHHTqFR3uk7fzbFXiZxW5hT0RWmR1FROHqxfgUZpn6I
-         5tVDCRzOKv8X/4WzdU+HYOQAEsO6J3Dc3DLOGrRYWLcbIBY13h9WpfySCGMqgW2gdeC7
-         61aV1AlJxq7HGVJmNg1/R//6l2xPj4P9BRyB4Xxi57qAZx151KLNbCke+t5OwrmzHrJC
-         /tEaTSafU3+DhldHt1099BV1A+A+dzsYxgWppE1NihlV+yJRdj66c5CHqUSd7+Q+bwnC
-         SJLg==
+        b=FINPPtR5Iwy7+mzSzL3Ii3pnP5vuC1r5PwStU9IfIaTSLn7kl5s6OfGCDAu8WZN04K
+         RRidgpnmNZUHjtIWNagrRDo8u/Sk9d9z7tCzqXFNETQFdQg8iY7Dpa0ixHU15BgfSUO7
+         ijGpv3W7sThS/cWtCxM89eJIDpqYBqSS7/Lw9/TShJhTPaMcBcHbQe0dv84BQUe/YJTn
+         5+bJOVJTGiuAkBcUM4edvfUg/7AMiBFstk4PFF0RKltsmf3oDMDF8dJWn1CsaobA2bP3
+         SW7oG9zlMmxR4JLtLQS7NnZxobUFPkS574QS719FmbdHksD+55BU0BSrswcN/EwsPbtk
+         11AA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=PscmLFzXHDm/w1ZGBCLgyQqfbpOX+ZiYSHSp27dfx3U=;
-        b=OBFVVJXDyxjc+uGgpLu+xvBn9/GZ+9P1c+dCZ92NqhQH+DWpBCR2XdZvRGf4TmmNZf
-         PNUBQbip2V/0uK/C+feueWcYlYcf11r4N89OZRI3c6H3/YC5CgWHgFeNl1ES+3jbscc/
-         P5+l9Pe6EaEYFJDDnpuuad5AwH/0gr1MXJV67h0U4u7Ck+hzCcun1SaIMoF3le34ZtJ8
-         buYJgN6TeayLBFQ2sSw2OZU1+sE7gcHkBagIY/WxYxd7Z5YttO0OkQQGI3jkxLrxIs5F
-         L6CMiweI8FpPrjO4MABFBYd3UhrgPLd0rToVfzExA2Uwgu/SE1u4G1ye2pPOHtIJSNn/
-         sDMQ==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=apNiNwtCTkCJZflMQCw25LK+sf/BwC+K1q+Rj9YfQ1k=;
+        b=hG9Ke50D0/yKzg9xqDVOmCpE7V4Wek6zJlxk/dMZaJ9TnKcerRCROA518ENon5XR/5
+         P/VJAv4vpWdm/1Uh8rzVXFx/LzaRB99jFp6EhFCj33j2263g2VQZ0SBAHLq3FGRaTNRK
+         xriSILv8rbhQgarX8bo1ttYXpXwQvyCPgSFpE9UFHLq6y+Brc3fClxR4+1Bwsi3mJViw
+         a399JrO+h9z10iKZBoekZ02P6bDUh4jQkyjleHAabk4fKSW+LqMfA8ePnJk+ClYesznm
+         3z7r7gcusdd1gqOK4fTrmKfJT0/a1bd9OW0daOD3ydBGuBfFi+Lib6S2Bq4YS0SMVCRC
+         lPsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hx9mshQe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HYm7E7Ke;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 205si7087120ybf.46.2020.09.19.05.31.06
+        by mx.google.com with ESMTPS id q81si7513259ybg.245.2020.09.19.06.25.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 19 Sep 2020 05:31:07 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sat, 19 Sep 2020 06:25:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=hx9mshQe;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=HYm7E7Ke;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44764 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36708 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kJc1C-0005IO-6l
-	for alex.bennee@linaro.org; Sat, 19 Sep 2020 08:31:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41904)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kJcsA-0008HT-Ul
+	for alex.bennee@linaro.org; Sat, 19 Sep 2020 09:25:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49498)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kJc0n-0005G1-E4; Sat, 19 Sep 2020 08:30:41 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:37180)
+ id 1kJcr4-0007qx-U0; Sat, 19 Sep 2020 09:24:42 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35968)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kJc0l-0006Yk-Me; Sat, 19 Sep 2020 08:30:41 -0400
-Received: by mail-wr1-x441.google.com with SMTP id z4so8173574wrr.4;
- Sat, 19 Sep 2020 05:30:38 -0700 (PDT)
+ id 1kJcr2-0003Yh-Kv; Sat, 19 Sep 2020 09:24:42 -0400
+Received: by mail-wr1-x441.google.com with SMTP id z1so8278788wrt.3;
+ Sat, 19 Sep 2020 06:24:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=PscmLFzXHDm/w1ZGBCLgyQqfbpOX+ZiYSHSp27dfx3U=;
- b=hx9mshQewbDDf+e4eki5hMeXjwLw5WtsVxt/g7GsUK+lLh+Sw3D/Ik5qJJq71oG6iv
- eXvOxvEbrkeXW24FfibbnL8qn8O1t9Yru6oJ9Y8c4t8TuO1AiTNeVZn9mJdAuf46zfL7
- 0gUespuI21XioGxcIi/GplsJBdhqkrZeMptGE4TMgy2jkJ25jYLRaTC0gS6NQbhAQJK5
- 9loGqadHrNN7eqmdd3G6AyZncc0axPNAmeLe/Ps1jwzrKEhKJFOxeKEJoDCQGc8lS50s
- hfqVmOpvUzvT6a2+IiUibISPU+Lbh3aCY8jghHg8gnLrib6rEgBbpwTPc/70vHaHK4ED
- pE3g==
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=apNiNwtCTkCJZflMQCw25LK+sf/BwC+K1q+Rj9YfQ1k=;
+ b=HYm7E7KeFgPd3AN4N5LzKzdbFZpTIeyfPZfhPbZkDrHrHqS2pJdzUaQiuq5i5DYFRH
+ joXSLEJT9VfFTDc8kd8/le0nBySj3fWMcc/KEI9KptiU8MxN5nBhfUqO53OcveJQxMDD
+ U0KkW4h9PiozlgG3R+3zRpbpr+iSmcGbcMYi3s0SkMGg7I8RHXyUcwzY/vWlWJgtBEMM
+ GqheZ/0qMi5D8WXZvUIQPLgF5fMFReYD8tCxv8O6yhzrmDFOX6x3p2TDR0ZDjslSVWk1
+ O0zJJzb680g2mhRKhg8O+tKKiE/N9EBmJApdFv9AaiYyATOa5DF6Mr+aCQHf0W+d2gkd
+ lptw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=PscmLFzXHDm/w1ZGBCLgyQqfbpOX+ZiYSHSp27dfx3U=;
- b=Zmxx0+XWTlpFU2wOfWoZsM5O9YPvz3x5lVmmiP16txuNyu10F9pYAIFss27dHOGJPc
- 61B1DVoDjS0XgmTDfc9iwm+rU/WXygVzDgb6a0M8hm0zNnLB7BSOA5CEkXiq/tyqW+cL
- QLLrcY7xwzgt5luzf2YxKdrk2HWRPe120xWE8/KyL4XyTv+YbROMMR+IoVJCDZz50UxP
- cNCRWXkbtwtIkHe/bqr79FqYz76Nx67SzkClza5MhNNyfCgl641TgaayDt+PLIdziAdC
- 3m1cWdL5UImXhm5GQwK3M+uwtRikz/mEOC/C1Uv8GLddq1NX5gZnh7T/2eX6Y/kBQh/g
- E1Ww==
-X-Gm-Message-State: AOAM530/XHY06Xctm1SdR+J17CEM4bBuJoq/punn1J85UjHsjkMMQlEQ
- 5rO53CzrvysuHbd0DXTYJIg=
-X-Received: by 2002:adf:ec90:: with SMTP id z16mr41082408wrn.145.1600518637105; 
- Sat, 19 Sep 2020 05:30:37 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=apNiNwtCTkCJZflMQCw25LK+sf/BwC+K1q+Rj9YfQ1k=;
+ b=GwV0q9EYdL8JVskUdC9C12tN2miG+2+sbJtQXmlF5JVYwUvqPR5GFBvzCQDIEno1GC
+ Yr5SDruQzBeerFVgepnopTb761ZP6CNE540sfpJzIGNCzIrscWIKZl0luXSjg8VhWT1n
+ 5SqOo2a2StWmT141ZU0Q3WDiUxqsiU/nn3ga+XkUV+dW9FRhgq/ZjtnJ2QfKnHNX9Y6C
+ Q2XHyRhBpB1fnszcGCPwEItIbFkWxEpP8XlwBTXi/b7y6F1I2h4M7SqA+hlREdq80TkV
+ VVWdkfJp2sB9D4FnipohKFbdH3q7djOOORfZIBcWFExn+i1vgmFD06uswJsDe4BbBth3
+ vzzg==
+X-Gm-Message-State: AOAM532G7bVb+xNkY62RKJhgOFRZ7QM1BXgndnmH49PGPlh+sTIZoOvw
+ fJ1ymihpV19kGXxbLX/52Z6CAXQLd0s=
+X-Received: by 2002:adf:ba4f:: with SMTP id t15mr19868280wrg.335.1600521878572; 
+ Sat, 19 Sep 2020 06:24:38 -0700 (PDT)
+Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id 76sm11166018wma.42.2020.09.19.05.30.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 19 Sep 2020 05:30:36 -0700 (PDT)
-Subject: Re: [PATCH v6 0/7] hw/misc: Add LED device
-To: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20200912134041.946260-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <3783cc00-8ec6-6174-dad6-331177b95724@amsat.org>
-Date: Sat, 19 Sep 2020 14:30:35 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ by smtp.gmail.com with ESMTPSA id a20sm10167454wmm.40.2020.09.19.06.24.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 19 Sep 2020 06:24:37 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/ssi/npcm7xx_fiu: Fix handling of unsigned integer
+Date: Sat, 19 Sep 2020 15:24:35 +0200
+Message-Id: <20200919132435.310527-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200912134041.946260-1-f4bug@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::441;
  envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
@@ -106,57 +101,110 @@ X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
- qemu-arm@nongnu.org, =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- Luc Michel <luc.michel@greensocs.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: STU9plkFc7Bk
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Tyrone Ting <kfting@nuvoton.com>, Alistair Francis <alistair@alistair23.me>,
+ Havard Skinnemoen <hskinnemoen@google.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rve6r/U+mJuK
 
-On 9/12/20 3:40 PM, Philippe Mathieu-Daudé wrote:
-> Hello,
-> 
-> These patches are part of the GSoC unselected 'QEMU visualizer'
-> project.
-> 
-> This series introduce a LED device that can be easily connected
-> to a GPIO output.
-[...]
-> Philippe Mathieu-Daud=C3=A9 (7):
->   hw/misc/led: Add a LED device
->   hw/misc/led: Allow connecting from GPIO output
->   hw/misc/led: Emit a trace event when LED intensity has changed
->   hw/arm/aspeed: Add the 3 front LEDs drived by the PCA9552 #1
->   hw/misc/mps2-fpgaio: Use the LED device
->   hw/misc/mps2-scc: Use the LED device
->   hw/arm/tosa: Replace fprintf() calls by LED devices
+Fix integer handling issues handling issue reported by Coverity:
 
-This series is now fully reviewed.
+  hw/ssi/npcm7xx_fiu.c: 162 in npcm7xx_fiu_flash_read()
+  >>>     CID 1432730:  Integer handling issues  (NEGATIVE_RETURNS)
+  >>>     "npcm7xx_fiu_cs_index(fiu, f)" is passed to a parameter that cannot be negative.
+  162         npcm7xx_fiu_select(fiu, npcm7xx_fiu_cs_index(fiu, f));
 
-Peter, since so far only ARM boards use the LED device,
-do you mind queuing it via your ARM tree?
+  hw/ssi/npcm7xx_fiu.c: 221 in npcm7xx_fiu_flash_write()
+  218         cs_id = npcm7xx_fiu_cs_index(fiu, f);
+  219         trace_npcm7xx_fiu_flash_write(DEVICE(fiu)->canonical_path, cs_id, addr,
+  220                                       size, v);
+  >>>     CID 1432729:  Integer handling issues  (NEGATIVE_RETURNS)
+  >>>     "cs_id" is passed to a parameter that cannot be negative.
+  221         npcm7xx_fiu_select(fiu, cs_id);
 
-Alternatively I can ask Paolo or send a pull request
-myself is both of you think it is out of the scope of
-your maintenance area.
+Since the index of the flash can not be negative, return an
+unsigned type.
 
-Thanks,
+Reported-by: Coverity (CID 1432729 & 1432730: NEGATIVE_RETURNS)
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/ssi/npcm7xx_fiu.c | 12 ++++++------
+ hw/ssi/trace-events  |  2 +-
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-Phil.
+diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+index 104e8f2b963..5040132b074 100644
+--- a/hw/ssi/npcm7xx_fiu.c
++++ b/hw/ssi/npcm7xx_fiu.c
+@@ -103,7 +103,8 @@ enum NPCM7xxFIURegister {
+  * Returns the index of flash in the fiu->flash array. This corresponds to the
+  * chip select ID of the flash.
+  */
+-static int npcm7xx_fiu_cs_index(NPCM7xxFIUState *fiu, NPCM7xxFIUFlash *flash)
++static unsigned npcm7xx_fiu_cs_index(NPCM7xxFIUState *fiu,
++                                     NPCM7xxFIUFlash *flash)
+ {
+     int index = flash - fiu->flash;
+ 
+@@ -113,20 +114,19 @@ static int npcm7xx_fiu_cs_index(NPCM7xxFIUState *fiu, NPCM7xxFIUFlash *flash)
+ }
+ 
+ /* Assert the chip select specified in the UMA Control/Status Register. */
+-static void npcm7xx_fiu_select(NPCM7xxFIUState *s, int cs_id)
++static void npcm7xx_fiu_select(NPCM7xxFIUState *s, unsigned cs_id)
+ {
+     trace_npcm7xx_fiu_select(DEVICE(s)->canonical_path, cs_id);
+ 
+     if (cs_id < s->cs_count) {
+         qemu_irq_lower(s->cs_lines[cs_id]);
++        s->active_cs = cs_id;
+     } else {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: UMA to CS%d; this module has only %d chip selects",
+                       DEVICE(s)->canonical_path, cs_id, s->cs_count);
+-        cs_id = -1;
++        s->active_cs = -1;
+     }
+-
+-    s->active_cs = cs_id;
+ }
+ 
+ /* Deassert the currently active chip select. */
+@@ -206,7 +206,7 @@ static void npcm7xx_fiu_flash_write(void *opaque, hwaddr addr, uint64_t v,
+     NPCM7xxFIUFlash *f = opaque;
+     NPCM7xxFIUState *fiu = f->fiu;
+     uint32_t dwr_cfg;
+-    int cs_id;
++    unsigned cs_id;
+     int i;
+ 
+     if (fiu->active_cs != -1) {
+diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+index 2f83ef833fb..612d3d6087a 100644
+--- a/hw/ssi/trace-events
++++ b/hw/ssi/trace-events
+@@ -19,4 +19,4 @@ npcm7xx_fiu_deselect(const char *id, int cs) "%s deselect CS%d"
+ npcm7xx_fiu_ctrl_read(const char *id, uint64_t addr, uint32_t data) "%s offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
+ npcm7xx_fiu_ctrl_write(const char *id, uint64_t addr, uint32_t data) "%s offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
+ npcm7xx_fiu_flash_read(const char *id, int cs, uint64_t addr, unsigned int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value: 0x%" PRIx64
+-npcm7xx_fiu_flash_write(const char *id, int cs, uint64_t addr, unsigned int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value: 0x%" PRIx64
++npcm7xx_fiu_flash_write(const char *id, unsigned cs, uint64_t addr, unsigned int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value: 0x%" PRIx64
+-- 
+2.26.2
+

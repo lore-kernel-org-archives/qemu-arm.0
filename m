@@ -1,93 +1,94 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3324188lfq;
-        Sun, 20 Sep 2020 11:02:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzLKJC1urPmrZDcaNfivaxXdgg6HDxMEBVjlU3bD6okC2BA98wwLG6gOqVcoxjrP7L54cjf
-X-Received: by 2002:a25:cec1:: with SMTP id x184mr46580476ybe.520.1600624921240;
-        Sun, 20 Sep 2020 11:02:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600624921; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3324218lfq;
+        Sun, 20 Sep 2020 11:02:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx2tqFvx+dQd9a9fFQHFxoCch8EYgXiUlUlTjk+bVHnI9kUjKw6To3jrwT0mEV9FdAEyAu3
+X-Received: by 2002:a25:b68c:: with SMTP id s12mr17896922ybj.502.1600624923306;
+        Sun, 20 Sep 2020 11:02:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600624923; cv=none;
         d=google.com; s=arc-20160816;
-        b=N8GrWtvdPJV6S2MCu7TlIGbKyNDK5NrqZzTeCeQfGIGmazbF1VERcA8gSjGMuOLs8g
-         w0dl9dJffHCjgI2LmA1CrbUCNOkQEz2JACzBUGDZUNQinlXiDb8P1hailJD2plbT1f6d
-         3+AK5o9yCpbISmu5MtvdWxulGn+qmZjZwNHA+60Sid2rMv1XSejKkGfLkyPCvvDHy5vV
-         aCdq9VhvBmNMJpTPy/+3q3z8qjAbo4RjTgsmEkmAWdn0U/EFooCopoOfOGXTMahdAZO7
-         5kNMzNiHMZ8RCIGen8W2fCheBthnkIu/YFC2V4ZXv7gKRL5UZQcq3puuRKuepxIk72nE
-         N/rQ==
+        b=TNmCprTwCz/CGF9tbYh3yTsGmAHdYGZj+2F1Pv8LkcHI6+vBwdeYdUfzCZqH9rpbJF
+         ZI8H+Gq0qV962tPgurCNjYZhkg1yfXAHTyRZi34NGkjwnnK4jB93o1N90yohAKmThrE5
+         dO34mE0DhhtqybvVi4ReVyUfLzirPHF6Sg2OrXhUHutjwfxm16hupV9cQw4r8HZxn6XH
+         O59bxIP11cbLT0jUxkiLKZF7efB9eOIBKIx+LbzhgnbszGFuRTa0FZFgBHYUw5r0X1q8
+         aYRvrMRXTzjlXxQ7zdtu37sEm3KQeTG9864SVmBNeVxTgY3+UIsjwUtNCspJn4eBb3c6
+         0+AQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=dcCXq9EmDF/ND5OQIcbMSYGFUbh9qfqOjQv8VK2LW0A=;
-        b=eiBnzN6u47fbD/e3qaHGBAZXouFlBptEqnIkvnB4Ji0rHmH/CdHml3zpQ8Wq43/mtV
-         cx5B7MOOfnh/+KXYCsZrCbHDvHoFOuOplwZG7ZuMk5lzxHE53Dm4a+Z7Tmand2YbSTLb
-         iRdzmk558nfekje3Qf6W11Hgj1Hr3/hLWuwkV7GMHk3aJmeVVX2Lhlzbns6pfznY6l6M
-         Q7Vr4weS739ubIkQ2npVspNkYQOunf4UZfZbZe/TR4A4EzfXnPtt7ccRMA7d9nCgz4Vu
-         /fMq8EoQO/DEEA50cXnhc2+BLGt4NOEzy5RAgea62FblI9U//Qf+QozwGK+dnQAAfM0s
-         Q8FA==
+        bh=ru9JeznwCHjcxiZ+MKIheuMQIUXnKfc2N76bXeVgo8I=;
+        b=FsJB2NXJAMCQ+0JZ1iOeeSI6+UW6uTkhgVlYhHajPVaxIkHXTd1ILP7p/TlC3r4NQX
+         F3sfBnHCU+J4LnUzjbSqyCMV1PH0Ac/dSAF9S2OT1lIzz/b0AiZ69uJBjrHclGfk4B3N
+         V3SzPrA9WGRbW48Y0Rp80xGZ0bf2Mxr0eijl1wfD+OYrMGUSK6OZd6MfnD5BoxiyPabO
+         lm+lhsPKFML77PSPiFTuWJkdDkG37K+iOagvLgvKctmt6Jf3oxxVQ2xKicFW8PaCy3F2
+         KX7VRRyc73QRqOK67RPTdU1yTROMCoMknQoxg2WrZbbHbEtw2dyKj02JiodrWc287SFu
+         QG3g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mcw1/4AU";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CAXA9PBD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 65si10835919ybn.358.2020.09.20.11.02.01
+        by mx.google.com with ESMTPS id c184si891771ybf.140.2020.09.20.11.02.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Sep 2020 11:02:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 20 Sep 2020 11:02:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mcw1/4AU";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CAXA9PBD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:52462 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53860 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kK3ey-0005GM-IN
-	for alex.bennee@linaro.org; Sun, 20 Sep 2020 14:02:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51106)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kK3f0-0005pT-Lu
+	for alex.bennee@linaro.org; Sun, 20 Sep 2020 14:02:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51142)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kK3be-0001ue-Vl; Sun, 20 Sep 2020 13:58:35 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431]:37548)
+ id 1kK3bh-0001wg-U4; Sun, 20 Sep 2020 13:58:38 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40890)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kK3bd-00030Z-F0; Sun, 20 Sep 2020 13:58:34 -0400
-Received: by mail-wr1-x431.google.com with SMTP id z4so10435019wrr.4;
- Sun, 20 Sep 2020 10:58:32 -0700 (PDT)
+ id 1kK3bg-000319-8S; Sun, 20 Sep 2020 13:58:37 -0400
+Received: by mail-wm1-x344.google.com with SMTP id k18so10313356wmj.5;
+ Sun, 20 Sep 2020 10:58:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=dcCXq9EmDF/ND5OQIcbMSYGFUbh9qfqOjQv8VK2LW0A=;
- b=mcw1/4AUz+zjMfM9db6StlM88A312gpLsWvAoOOF83A5evn2GgHGmHQZI4w1ZV1kap
- tFFyzLN7EOCK5mCxRCf6Z04sEHTcNy7oveBJygH++ZMhBVH5T3WwGoUIRZERRAwUfJVz
- d1Wo+IZ9+dj4Eq+5JtPJlnkC7+v7JBKJC6DeTtc4sjNctWQ6hgSKe6R1noHwJUYCWrk3
- GDuXTlTYnpb9NFQa1uEHhRbOaHSmTYFCQ27tdr8eEfB/OXBOE8h5f+vs1A4kdRzdVp85
- T92/S1yZtCVFXl16WH1U6sqOcfPBiZQov9UvLWIrS25iuzKnZcu5Wc5TF44TGTPpa0bh
- NIcw==
+ bh=ru9JeznwCHjcxiZ+MKIheuMQIUXnKfc2N76bXeVgo8I=;
+ b=CAXA9PBD0O4/H3X4XbousjqKShB4hQxlmxM0CgMq6vbvyVoG9vgGrac5Z2GpmLIGxv
+ jIK3tOr2pjmTw5uwDduyf9jY/4YTm8CXOMZAW1k9dgDRH2ZoSc28W2ZBxgWK5sFz+DHK
+ H7qtCCY+LQZkFLIWsY74xXAIdfpB/f83q+3+ENrE1UBVnVp+Bz8LIzwqPh8krGUt/4D7
+ WMtW+teFpC5ejBJP5II9B2Xe1DEoCEaCywhzqkN7+4MA5BqFc9T8BCr0p3iyIOxPe315
+ 504Amm7/uRd8pv02QjH0dtJOG0F5zRHHcxi2gLub5qpQ+QE51JAUzc4BIWvkne2hYRq2
+ Ky3A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=dcCXq9EmDF/ND5OQIcbMSYGFUbh9qfqOjQv8VK2LW0A=;
- b=IM0pOWzGVJ6VjFxCF62AYnnftc5DBXqoNOuBaifWurv58OAsnF+qjue7otoKH2waJo
- aNMWHfT9kS8OPQd/+LqZGe0ToiALoACRtwpMmH6ygbrYPBBMbczYK9+x0Lod+kt3x1Eh
- PGj+/eLgu5Qj8+EtwYEPbcyzcBGcuGTHu60OEToER4cFqmSUn/YfXXHznS4wcCBtVVkk
- nNzvDYLswA+TGX7ofbzQ6hhA4Pj3ctL7eU/qtZimhbvQ25bLDVo2w32r8/VqPmnTSgcB
- NHQwI1r/K1gFRjYnFgBN1xV89ZM5fq7dX3kRsTHl8YLtj8qjw910218O65oi95XAqIC0
- EbKw==
-X-Gm-Message-State: AOAM533pbXl7GMjJQVpQFsvJnpf5XrBsrjIRcayguOiCPuHLMFbNs07z
- Ps9noMJsTi1apamRUnrvaTpyhoqGfOU=
-X-Received: by 2002:adf:ce01:: with SMTP id p1mr32321632wrn.61.1600624711595; 
- Sun, 20 Sep 2020 10:58:31 -0700 (PDT)
+ bh=ru9JeznwCHjcxiZ+MKIheuMQIUXnKfc2N76bXeVgo8I=;
+ b=FUztD31T9yI1ZiD3l1uleh7/BJGD7nYZ8wDLc8K8uwY5lL6Pe/2cTyW6mvugF3G0dF
+ rHdvRjTxePSzhAUSrOvLrlN75KezaH+Fsi0aw7OKpxJAdpB14ZOjruItt4GR9cyAb+qw
+ ItKhmZ/iEAU5Rsbks6SLG9UqHZIznfAmR3JiSKtQS0YZ3uoEVoF77ukyh3N001nZpK3g
+ j6whcSJYUWUi340/giv16YkXEWy5MtYLzG0fYuF9+6ZzyM70Ww/crKT73npCO+cDRqWj
+ pqmrm1SWiFMNhThtfv+UDsEaWipZCJ85lxRBAs8ebNjVh/Ng7DscRk/lFy8iWT1IIPu5
+ P98w==
+X-Gm-Message-State: AOAM5318JpUR87nOhyZeRBYXes20FClCBVTY2f+brxKKnxH9gYYlgefE
+ yTHYyvy/G1NauwAp2l+Klk8y+hvmwr8=
+X-Received: by 2002:a7b:c095:: with SMTP id r21mr27847340wmh.133.1600624714171; 
+ Sun, 20 Sep 2020 10:58:34 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id u66sm15675781wme.12.2020.09.20.10.58.30
+ by smtp.gmail.com with ESMTPSA id u66sm15675781wme.12.2020.09.20.10.58.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Sep 2020 10:58:31 -0700 (PDT)
+ Sun, 20 Sep 2020 10:58:33 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 3/7] hw/intc/bcm2835_ic: Trace GPU/CPU IRQ handlers
-Date: Sun, 20 Sep 2020 19:58:21 +0200
-Message-Id: <20200920175825.417680-4-f4bug@amsat.org>
+Subject: [PATCH 5/7] hw/timer/bcm2835: Rename variable holding CTRL_STATUS
+ register
+Date: Sun, 20 Sep 2020 19:58:23 +0200
+Message-Id: <20200920175825.417680-6-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200920175825.417680-1-f4bug@amsat.org>
 References: <20200920175825.417680-1-f4bug@amsat.org>
@@ -95,8 +96,8 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -108,83 +109,90 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Paul Zimmerman <pauldzim@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pW7d6osmz5ji
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 5uQzp1WFZXUQ
 
-Add trace events for GPU and CPU IRQs.
+The variable holding the CTRL_STATUS register is misnamed
+'status'. Rename it 'ctrl_status' to make it more obvious
+this register is also used to control the peripheral.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/intc/bcm2835_ic.c | 4 +++-
- hw/intc/trace-events | 4 ++++
- 2 files changed, 7 insertions(+), 1 deletion(-)
+ include/hw/timer/bcm2835_systmr.h | 2 +-
+ hw/timer/bcm2835_systmr.c         | 8 ++++----
+ 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c
-index 53ab8f58810..9000d995e81 100644
---- a/hw/intc/bcm2835_ic.c
-+++ b/hw/intc/bcm2835_ic.c
-@@ -18,6 +18,7 @@
- #include "migration/vmstate.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "trace.h"
+diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
+index 11272837a6b..e0db9e9e12b 100644
+--- a/include/hw/timer/bcm2835_systmr.h
++++ b/include/hw/timer/bcm2835_systmr.h
+@@ -29,7 +29,7 @@ struct BCM2835SystemTimerState {
+     qemu_irq irq;
  
- #define GPU_IRQS 64
- #define ARM_IRQS 8
-@@ -51,7 +52,6 @@ static void bcm2835_ic_update(BCM2835ICState *s)
-     set = (s->gpu_irq_level & s->gpu_irq_enable)
-         || (s->arm_irq_level & s->arm_irq_enable);
-     qemu_set_irq(s->irq, set);
--
- }
+     struct {
+-        uint32_t status;
++        uint32_t ctrl_status;
+         uint32_t compare[BCM2835_SYSTIMER_COUNT];
+     } reg;
+ };
+diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
+index ff8c5536610..b234e83824f 100644
+--- a/hw/timer/bcm2835_systmr.c
++++ b/hw/timer/bcm2835_systmr.c
+@@ -30,7 +30,7 @@ REG32(COMPARE3,     0x18)
  
- static void bcm2835_ic_set_gpu_irq(void *opaque, int irq, int level)
-@@ -59,6 +59,7 @@ static void bcm2835_ic_set_gpu_irq(void *opaque, int irq, int level)
-     BCM2835ICState *s = opaque;
+ static void bcm2835_systmr_update_irq(BCM2835SystemTimerState *s)
+ {
+-    bool enable = !!s->reg.status;
++    bool enable = !!s->reg.ctrl_status;
  
-     assert(irq >= 0 && irq < 64);
-+    trace_bcm2835_ic_set_gpu_irq(irq, level);
-     s->gpu_irq_level = deposit64(s->gpu_irq_level, irq, 1, level != 0);
-     bcm2835_ic_update(s);
- }
-@@ -68,6 +69,7 @@ static void bcm2835_ic_set_arm_irq(void *opaque, int irq, int level)
-     BCM2835ICState *s = opaque;
+     trace_bcm2835_systmr_irq(enable);
+     qemu_set_irq(s->irq, enable);
+@@ -52,7 +52,7 @@ static uint64_t bcm2835_systmr_read(void *opaque, hwaddr offset,
  
-     assert(irq >= 0 && irq < 8);
-+    trace_bcm2835_ic_set_cpu_irq(irq, level);
-     s->arm_irq_level = deposit32(s->arm_irq_level, irq, 1, level != 0);
-     bcm2835_ic_update(s);
- }
-diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-index 527c3f76cae..22782b3f089 100644
---- a/hw/intc/trace-events
-+++ b/hw/intc/trace-events
-@@ -199,3 +199,7 @@ nvic_sysreg_write(uint64_t addr, uint32_t value, unsigned size) "NVIC sysreg wri
- heathrow_write(uint64_t addr, unsigned int n, uint64_t value) "0x%"PRIx64" %u: 0x%"PRIx64
- heathrow_read(uint64_t addr, unsigned int n, uint64_t value) "0x%"PRIx64" %u: 0x%"PRIx64
- heathrow_set_irq(int num, int level) "set_irq: num=0x%02x level=%d"
-+
-+# bcm2835_ic.c
-+bcm2835_ic_set_gpu_irq(int irq, int level) "GPU irq #%d level %d"
-+bcm2835_ic_set_cpu_irq(int irq, int level) "CPU irq #%d level %d"
+     switch (offset) {
+     case A_CTRL_STATUS:
+-        r = s->reg.status;
++        r = s->reg.ctrl_status;
+         break;
+     case A_COMPARE0 ... A_COMPARE3:
+         r = s->reg.compare[(offset - A_COMPARE0) >> 2];
+@@ -82,7 +82,7 @@ static void bcm2835_systmr_write(void *opaque, hwaddr offset,
+     trace_bcm2835_systmr_write(offset, value);
+     switch (offset) {
+     case A_CTRL_STATUS:
+-        s->reg.status &= ~value; /* Ack */
++        s->reg.ctrl_status &= ~value; /* Ack */
+         bcm2835_systmr_update_irq(s);
+         break;
+     case A_COMPARE0 ... A_COMPARE3:
+@@ -133,7 +133,7 @@ static const VMStateDescription bcm2835_systmr_vmstate = {
+     .version_id = 1,
+     .minimum_version_id = 1,
+     .fields = (VMStateField[]) {
+-        VMSTATE_UINT32(reg.status, BCM2835SystemTimerState),
++        VMSTATE_UINT32(reg.ctrl_status, BCM2835SystemTimerState),
+         VMSTATE_UINT32_ARRAY(reg.compare, BCM2835SystemTimerState,
+                              BCM2835_SYSTIMER_COUNT),
+         VMSTATE_END_OF_LIST()
 -- 
 2.26.2
 

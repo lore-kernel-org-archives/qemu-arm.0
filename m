@@ -1,233 +1,199 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2555952lfq;
-        Sat, 19 Sep 2020 10:09:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzhZ5FzKGWYEvAEdhOSzdmnEdBCHv7TEFJ1ju76yGFUvcMaBIMkBQdI8CLaZKz9lGMQhOjd
-X-Received: by 2002:a25:cec1:: with SMTP id x184mr42139482ybe.520.1600535397724;
-        Sat, 19 Sep 2020 10:09:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600535397; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3322015lfq;
+        Sun, 20 Sep 2020 10:58:29 -0700 (PDT)
+X-Received: by 2002:a5d:6cb1:: with SMTP id a17mr45323018wra.386.1600624709215;
+        Sun, 20 Sep 2020 10:58:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600624709; cv=none;
         d=google.com; s=arc-20160816;
-        b=p6CEl4RVkLkEAFWJiisrJHgXnv7zgJFEpz0SYkKC2xAc18n0S4P3bIsjPFojMMzzMR
-         /N1HxgcLDDu+oVjhRKXbHbsPd/DOuTs+iBLc5DGWwjEhhMWz4vNxo/K2lEbSLrcRD30l
-         1XpXGII/qsqaWL54NMSpj8WcpC+KYHcOX+JgeaRXow7IupiohVG4Q8Sqpqf8n3tS/oq4
-         dKkb8NpQ3ST4kewUwKlTojWPnfkXxir1rKz5NvtXN3JpDngAkdZ2wo7dBSOhQOpiMiOx
-         JAZ9ZD1qv7SExyQexEzMiWXnKEY5bJ8p8sXQJgxr4zGYZKfLf82F3qxUNIqy+dJn2Ifr
-         YESg==
+        b=nLD7sNTjvvcthI7WU0rJgoOXsm/NKWv87mK951zAKNKw0msh/O5b5AchsrhUDi2VE6
+         HAuQFRFOpseflVEamiY5eJQ7y9BtHOU6kDam1sLpT/yi8Qd6fuO5ps1Gd1U5V79BgT6Y
+         bpw6UFPEdi3AwwEQiE0pETTsVHpxFi1m3bPDzy39KVHmzpa3fdG34bnPjJUazREpzUci
+         Ik0kw1dT4HeSbS5ROSz4xi3dcObp/AGbwdUdRKxmRILVR6Vy7zD9LLdO1c4n3dzdjbMk
+         eJxQOjBZxxEpoE6dnvnSdmqVDME9GvYhZXNcyPhIUUb5n9nmEhU3TQxuPs+P8xo2aR4P
+         EzEQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=18YTLxHNbCR8a0/G2zyogZ28CfKzJIiiTrsyrBDitWc=;
-        b=eXuNzMAlKX3KiBUxLAAR1hqgC0JsquG7LsGcDMuYl/hysbutKwwpzxqxY3SP3am+28
-         atpERAdtJo331MF8/LpFCe4RKTkzRMhlxK5FuGapfpFuWen8Z6U4qotCccJ+p58IfJ45
-         Ggtht6Th1o3tuduzi2nHzQ70fjT2qpigYLVnkcVAHuAhzvKZePaByBAH56iVlZ3DMbir
-         IxpuvFkgTOpwOG6Nkd3MLGC6/jqPav5StkqnRrm6IXB074KAJU8UuaiPihRVjoYA7nKI
-         VQnN5H+FfSxQjjt//4MlsCv/f0GLQ8bOSkf0rIGR/XXOmegBm07cX7d0nv3wDy3teTmM
-         aJow==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:sender:dkim-signature;
+        bh=gjFOw5Zj9oE5Q4kDhKw5pc8BNx41CMef2pSlNT1oQak=;
+        b=BkBeJ8ZiYXAydog4a9fmbjiqvl7H5m8FF8AaRvuYjrsLyOQj6ppQqd7oXC606fdi8F
+         PP3OW7zAoM/bRRysgd/Dd7fwalzkf1LxIBf0TZG1KV8K6oKRqpWpO6iFBcQlC5S1zG/c
+         9WXe7/6KYPNKgKpHPb8ap1GOX/ERaW9QH5R2sI2R62y+T/PzyAvUrZqiUHFRqAFDcx/g
+         DAQ3huTRIVaWv7tiIZ4mTxAa2R1z7Fz7wmgH1SIWleLlgT3QO2bXXAGPfbU0d4g5jUWd
+         1SHV83kmTNzh56eEe3nQg/f5y3c3GUdL7XfiXlmnwsQyUVz5yfp2kuv0Ho64+EsepAgp
+         jmNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=nxzqQoFc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 137si7359726ybc.78.2020.09.19.10.09.57
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 19 Sep 2020 10:09:57 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YgR9Wz4f;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id l1sor4170742wrp.20.2020.09.20.10.58.29
+        (Google Transport Security);
+        Sun, 20 Sep 2020 10:58:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=nxzqQoFc;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:33190 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kJgN3-00053O-4q
-	for alex.bennee@linaro.org; Sat, 19 Sep 2020 13:09:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36914)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kJgL7-00049p-1t
- for qemu-devel@nongnu.org; Sat, 19 Sep 2020 13:07:57 -0400
-Received: from mail-vs1-xe41.google.com ([2607:f8b0:4864:20::e41]:34135)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kJgL5-0007WV-5H
- for qemu-devel@nongnu.org; Sat, 19 Sep 2020 13:07:56 -0400
-Received: by mail-vs1-xe41.google.com with SMTP id y190so5600662vsy.1
- for <qemu-devel@nongnu.org>; Sat, 19 Sep 2020 10:07:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=18YTLxHNbCR8a0/G2zyogZ28CfKzJIiiTrsyrBDitWc=;
- b=nxzqQoFcKIFKEk+VgYG3GoK5HbBzvukPjvI+eZXDSOVFNo3Zco5wUCEVXS3xSWZ6Rd
- kKS3cOqfl/uNgcPq1/v9ZHbsEuSdwWMg63EKSxHXNs4kjk6wpvPiD1UT4OThF+YzovLC
- +eOtkfETrPLCaiTGx+3XKltUIfYEXdHk2TvpxV7YSRJi8E2xv9NLNEfjASJe/GhoMY+/
- +9KJfw754DEMOKmc8Waf8SfLMY558Y45bnemoK/kh0Cjbo0c6YBAMT1gZ6aCjHc6y8P1
- Y++VltrJgKkiM0tlGiNvAUxGvtI8Ui966czG/El8e7hPXodsZModZ5AAJLI1REziqI4F
- 6YkQ==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=YgR9Wz4f;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=gjFOw5Zj9oE5Q4kDhKw5pc8BNx41CMef2pSlNT1oQak=;
+        b=YgR9Wz4fm5JbsRmTNRj8JY8gJwvE+Des/NbC9m9cuu0N50cRUWJLnzYmUWzqQTC5DQ
+         co05vfpnoBIg31An0iq5wX40fl5fAP/DV07l7SZrwSQNdFtyWQaLTuRn4AtI7mCfXzUY
+         I8iosslRoltgVmSw6oMTJ4Kh4YNVtv+7htBWcM5eW5QEZ5B6Z1RxMiFfgsW6coKT5n8f
+         6Gv8kN7sPDuDxJJGw6LiImSBaQcyHWwKkr5Xec0/V9zvoXNewZ0X55YjfEtnOPqrsj0S
+         y/WMdbB6sn+oJfTw3mDrzHU9iDGf9k9esZy93oDC3qYSClEWsEsadH0tzXHwesfEeGkP
+         Nv4g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=18YTLxHNbCR8a0/G2zyogZ28CfKzJIiiTrsyrBDitWc=;
- b=J9Uws6DzSnz/RpoTbZKEi8eQXFiM9lxMFE0M4ioddHjRfQiu+zrp9oi+5bY5p/DISd
- UfqrmdR8NIKmz96VZwOUeKE9oCx/Dz6dT6pOLdoKUyzjfSacmwp1XhxRmD1t8QLiJ99x
- al8V6LGByghljVHAqxUNW5Qjz7BxyOg9JOdB4IijWSc2zcEmQQhWxvK73uRB70ln7oiI
- tdlQ24ovNDQ5jf4QEPQy7maegMQz+c28GsFMId9iqjYnbHuBp6MBuoF42ud/VodCK2DI
- e0reAtlT64tK3FvsOjRMSdfr4YnI6oVKsiZLNJD4+3ZeSyfHZaBFg9Bd+3b+SIpGl97V
- zAFw==
-X-Gm-Message-State: AOAM533kEn6AG3vvixHLT+p/7Q6TM+5Uf6UuS2a4nCiNIm6n8PsKXumc
- AxzwpK2yyJBJI2CwPwlmpxXLrMWhu2mv9VOl0/Zvjg==
-X-Received: by 2002:a05:6102:379:: with SMTP id
- f25mr15578576vsa.47.1600535270762; 
- Sat, 19 Sep 2020 10:07:50 -0700 (PDT)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+         :in-reply-to:references:mime-version:content-transfer-encoding;
+        bh=gjFOw5Zj9oE5Q4kDhKw5pc8BNx41CMef2pSlNT1oQak=;
+        b=qWWtoeO8+OynAh7dYn0R40Qd5hUQic2gw9bidjsx1yQqOiK6JgYqHMl1oMW5hgZQm8
+         qNSK9Kz01O7ns3pp4S55yMHQ4iLqyZqpYHfXsSpPyeuuF94nEjgmP+9uxtlri0PKevpm
+         6311UX/X/A2/MJD/sREEYI5sIyZvTnpQPMy7gUnk5Mn5X1Bsb5Mu+b5kC39kXY/48r7p
+         dGThcDZslQn6ceyqqoxbFFPZahgxBmCf5KpF6EfxUbfBVgXsPy0I4VApNF0t08eZeqym
+         XpePjgDQE/sHNb0D03w3ZbDQ41hQlzB/T5gKErlAone4Fp35tk8VUe9Ei+YcKSrigIeG
+         juxA==
+X-Gm-Message-State: AOAM530qpbtrNShI1hy6hg7XfDLXyQJ8xdDn/pZT8cQ5jfxYRWO4TEHR
+	1xdzw0gdG9WnOdbtnFWuxLgreZXrH0Y=
+X-Google-Smtp-Source: ABdhPJz/oIP+1CZ+zU7vhPqv1w1jA3pFbEbTUr/DXvT5ZGQZ7XG0RRllezW3eKbk4cyVWTyBHPPxHA==
+X-Received: by 2002:a05:6000:1184:: with SMTP id g4mr47993796wrx.20.1600624708996;
+        Sun, 20 Sep 2020 10:58:28 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.65])
+        by smtp.gmail.com with ESMTPSA id u66sm15675781wme.12.2020.09.20.10.58.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 20 Sep 2020 10:58:28 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	qemu-arm@nongnu.org,
+	Niek Linnenbank <nieklinnenbank@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	Paul Zimmerman <pauldzim@gmail.com>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Luc Michel <luc.michel@greensocs.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 1/7] hw/arm/raspi: Define various blocks base addresses
+Date: Sun, 20 Sep 2020 19:58:19 +0200
+Message-Id: <20200920175825.417680-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200920175825.417680-1-f4bug@amsat.org>
+References: <20200920175825.417680-1-f4bug@amsat.org>
 MIME-Version: 1.0
-References: <20200919132435.310527-1-f4bug@amsat.org>
-In-Reply-To: <20200919132435.310527-1-f4bug@amsat.org>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Sat, 19 Sep 2020 10:07:39 -0700
-Message-ID: <CAFQmdRZsS3=CkCZFHSmSqC8HpikqGxBt0uL9NJP2E4AgB6vHSA@mail.gmail.com>
-Subject: Re: [PATCH] hw/ssi/npcm7xx_fiu: Fix handling of unsigned integer
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Tyrone Ting <kfting@nuvoton.com>, 
- Alistair Francis <alistair@alistair23.me>, qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e41;
- envelope-from=hskinnemoen@google.com; helo=mail-vs1-xe41.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ex6ZeXSQ610Y
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-TUID: uIM+yJUWSa87
 
-On Sat, Sep 19, 2020 at 6:24 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> Fix integer handling issues handling issue reported by Coverity:
->
->   hw/ssi/npcm7xx_fiu.c: 162 in npcm7xx_fiu_flash_read()
->   >>>     CID 1432730:  Integer handling issues  (NEGATIVE_RETURNS)
->   >>>     "npcm7xx_fiu_cs_index(fiu, f)" is passed to a parameter that ca=
-nnot be negative.
->   162         npcm7xx_fiu_select(fiu, npcm7xx_fiu_cs_index(fiu, f));
->
->   hw/ssi/npcm7xx_fiu.c: 221 in npcm7xx_fiu_flash_write()
->   218         cs_id =3D npcm7xx_fiu_cs_index(fiu, f);
->   219         trace_npcm7xx_fiu_flash_write(DEVICE(fiu)->canonical_path, =
-cs_id, addr,
->   220                                       size, v);
->   >>>     CID 1432729:  Integer handling issues  (NEGATIVE_RETURNS)
->   >>>     "cs_id" is passed to a parameter that cannot be negative.
->   221         npcm7xx_fiu_select(fiu, cs_id);
->
-> Since the index of the flash can not be negative, return an
-> unsigned type.
->
-> Reported-by: Coverity (CID 1432729 & 1432730: NEGATIVE_RETURNS)
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+The Raspberry firmware is closed-source. While running it, it
+accesses various I/O registers. Logging these accesses as UNIMP
+(unimplemented) help to understand what the firmware is doing
+(ideally we want it able to boot a Linux kernel).
 
-Reviewed-by: Havard Skinnemoen <hskinnemoen@google.com>
+Document various blocks we might use later.
 
-Thanks!
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/arm/raspi_platform.h | 51 +++++++++++++++++++++++++++------
+ 1 file changed, 43 insertions(+), 8 deletions(-)
 
-> ---
->  hw/ssi/npcm7xx_fiu.c | 12 ++++++------
->  hw/ssi/trace-events  |  2 +-
->  2 files changed, 7 insertions(+), 7 deletions(-)
->
-> diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
-> index 104e8f2b963..5040132b074 100644
-> --- a/hw/ssi/npcm7xx_fiu.c
-> +++ b/hw/ssi/npcm7xx_fiu.c
-> @@ -103,7 +103,8 @@ enum NPCM7xxFIURegister {
->   * Returns the index of flash in the fiu->flash array. This corresponds =
-to the
->   * chip select ID of the flash.
->   */
-> -static int npcm7xx_fiu_cs_index(NPCM7xxFIUState *fiu, NPCM7xxFIUFlash *f=
-lash)
-> +static unsigned npcm7xx_fiu_cs_index(NPCM7xxFIUState *fiu,
-> +                                     NPCM7xxFIUFlash *flash)
->  {
->      int index =3D flash - fiu->flash;
->
-> @@ -113,20 +114,19 @@ static int npcm7xx_fiu_cs_index(NPCM7xxFIUState *fi=
-u, NPCM7xxFIUFlash *flash)
->  }
->
->  /* Assert the chip select specified in the UMA Control/Status Register. =
-*/
-> -static void npcm7xx_fiu_select(NPCM7xxFIUState *s, int cs_id)
-> +static void npcm7xx_fiu_select(NPCM7xxFIUState *s, unsigned cs_id)
->  {
->      trace_npcm7xx_fiu_select(DEVICE(s)->canonical_path, cs_id);
->
->      if (cs_id < s->cs_count) {
->          qemu_irq_lower(s->cs_lines[cs_id]);
-> +        s->active_cs =3D cs_id;
->      } else {
->          qemu_log_mask(LOG_GUEST_ERROR,
->                        "%s: UMA to CS%d; this module has only %d chip sel=
-ects",
->                        DEVICE(s)->canonical_path, cs_id, s->cs_count);
-> -        cs_id =3D -1;
-> +        s->active_cs =3D -1;
->      }
-> -
-> -    s->active_cs =3D cs_id;
->  }
->
->  /* Deassert the currently active chip select. */
-> @@ -206,7 +206,7 @@ static void npcm7xx_fiu_flash_write(void *opaque, hwa=
-ddr addr, uint64_t v,
->      NPCM7xxFIUFlash *f =3D opaque;
->      NPCM7xxFIUState *fiu =3D f->fiu;
->      uint32_t dwr_cfg;
-> -    int cs_id;
-> +    unsigned cs_id;
->      int i;
->
->      if (fiu->active_cs !=3D -1) {
-> diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
-> index 2f83ef833fb..612d3d6087a 100644
-> --- a/hw/ssi/trace-events
-> +++ b/hw/ssi/trace-events
-> @@ -19,4 +19,4 @@ npcm7xx_fiu_deselect(const char *id, int cs) "%s desele=
-ct CS%d"
->  npcm7xx_fiu_ctrl_read(const char *id, uint64_t addr, uint32_t data) "%s =
-offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
->  npcm7xx_fiu_ctrl_write(const char *id, uint64_t addr, uint32_t data) "%s=
- offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
->  npcm7xx_fiu_flash_read(const char *id, int cs, uint64_t addr, unsigned i=
-nt size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value: 0x=
-%" PRIx64
-> -npcm7xx_fiu_flash_write(const char *id, int cs, uint64_t addr, unsigned =
-int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value: 0=
-x%" PRIx64
-> +npcm7xx_fiu_flash_write(const char *id, unsigned cs, uint64_t addr, unsi=
-gned int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u val=
-ue: 0x%" PRIx64
-> --
-> 2.26.2
->
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index 61b04a1bd4a..c7f50b260f6 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -20,20 +20,29 @@
+  * You should have received a copy of the GNU General Public License
+  * along with this program; if not, write to the Free Software
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ *
++ * Various undocumented addresses and names come from Herman Hermitage's VC4
++ * documentation:
++ * https://github.com/hermanhermitage/videocoreiv/wiki/MMIO-Register-map
+  */
+ 
+ #ifndef HW_ARM_RASPI_PLATFORM_H
+ #define HW_ARM_RASPI_PLATFORM_H
+ 
+ #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
+-#define IC0_OFFSET              0x2000
++#define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
++#define INTE_OFFSET             0x2000   /* VC Interrupt controller */
+ #define ST_OFFSET               0x3000   /* System Timer */
++#define TXP_OFFSET              0x4000   /* Transposer */
++#define JPEG_OFFSET             0x5000
+ #define MPHI_OFFSET             0x6000   /* Message-based Parallel Host Intf. */
+ #define DMA_OFFSET              0x7000   /* DMA controller, channels 0-14 */
+-#define ARM_OFFSET              0xB000   /* BCM2708 ARM control block */
++#define ARBA_OFFSET             0x9000
++#define BRDG_OFFSET             0xa000
++#define ARM_OFFSET              0xB000   /* ARM control block */
+ #define ARMCTRL_OFFSET          (ARM_OFFSET + 0x000)
+ #define ARMCTRL_IC_OFFSET       (ARM_OFFSET + 0x200) /* Interrupt controller */
+-#define ARMCTRL_TIMER0_1_OFFSET (ARM_OFFSET + 0x400) /* Timer 0 and 1 */
++#define ARMCTRL_TIMER0_1_OFFSET (ARM_OFFSET + 0x400) /* Timer 0 and 1 (SP804) */
+ #define ARMCTRL_0_SBM_OFFSET    (ARM_OFFSET + 0x800) /* User 0 (ARM) Semaphores
+                                                       * Doorbells & Mailboxes */
+ #define CPRMAN_OFFSET           0x100000 /* Power Management, Watchdog */
+@@ -42,24 +51,50 @@
+ #define AVS_OFFSET              0x103000 /* Audio Video Standard */
+ #define RNG_OFFSET              0x104000
+ #define GPIO_OFFSET             0x200000
+-#define UART0_OFFSET            0x201000
+-#define MMCI0_OFFSET            0x202000
+-#define I2S_OFFSET              0x203000
+-#define SPI0_OFFSET             0x204000
++#define UART0_OFFSET            0x201000 /* PL011 */
++#define MMCI0_OFFSET            0x202000 /* Legacy MMC */
++#define I2S_OFFSET              0x203000 /* PCM */
++#define SPI0_OFFSET             0x204000 /* SPI master */
+ #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
++#define PIXV0_OFFSET            0x206000
++#define PIXV1_OFFSET            0x207000
++#define DPI_OFFSET              0x208000
++#define DSI0_OFFSET             0x209000 /* Display Serial Interface */
++#define PWM_OFFSET              0x20c000
++#define PERM_OFFSET             0x20d000
++#define TEC_OFFSET              0x20e000
+ #define OTP_OFFSET              0x20f000
++#define SLIM_OFFSET             0x210000 /* SLIMbus */
++#define CPG_OFFSET              0x211000
+ #define THERMAL_OFFSET          0x212000
+-#define BSC_SL_OFFSET           0x214000 /* SPI slave */
++#define AVSP_OFFSET             0x213000
++#define BSC_SL_OFFSET           0x214000 /* SPI slave (bootrom) */
+ #define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
+ #define EMMC1_OFFSET            0x300000
++#define EMMC2_OFFSET            0x340000
++#define HVS_OFFSET              0x400000
+ #define SMI_OFFSET              0x600000
++#define DSI1_OFFSET             0x700000
++#define UCAM_OFFSET             0x800000
++#define CMI_OFFSET              0x802000
+ #define BSC1_OFFSET             0x804000 /* BSC1 I2C/TWI */
+ #define BSC2_OFFSET             0x805000 /* BSC2 I2C/TWI */
++#define VECA_OFFSET             0x806000
++#define PIXV2_OFFSET            0x807000
++#define HDMI_OFFSET             0x808000
++#define HDCP_OFFSET             0x809000
++#define ARBR0_OFFSET            0x80a000
+ #define DBUS_OFFSET             0x900000
+ #define AVE0_OFFSET             0x910000
+ #define USB_OTG_OFFSET          0x980000 /* DTC_OTG USB controller */
++#define V3D_OFFSET              0xc00000
+ #define SDRAMC_OFFSET           0xe00000
++#define L2CC_OFFSET             0xe01000 /* Level 2 Cache controller */
++#define L1CC_OFFSET             0xe02000 /* Level 1 Cache controller */
++#define ARBR1_OFFSET            0xe04000
+ #define DMA15_OFFSET            0xE05000 /* DMA controller, channel 15 */
++#define DCRC_OFFSET             0xe07000
++#define AXIP_OFFSET             0xe08000
+ 
+ /* GPU interrupts */
+ #define INTERRUPT_TIMER0               0
+-- 
+2.26.2

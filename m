@@ -1,294 +1,138 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3326096lfq;
-        Sun, 20 Sep 2020 11:04:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwBtYvRB9Jd/37xY8tJEwqQWYpKgLuDyf60as8IoHegfqWO03IVXkOmUc+WK9pQ18U03LcW
-X-Received: by 2002:a25:b792:: with SMTP id n18mr21376011ybh.286.1600625062289;
-        Sun, 20 Sep 2020 11:04:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600625062; cv=none;
-        d=google.com; s=arc-20160816;
-        b=io1uPF4pCyBCO3dRfvDBDgfHb5/JsoghqGKicQ1FTwLwVbF8SQcNYW+mwleiw7IW5j
-         7ZSkBX3EryqRSjGAZCAeZJMopTBn91ImCIYnCk7afIiVuEjrLFrY9ff02dEPHdQPti8m
-         5eg/mGa4diEVia5zq79Bd97G2ef4Uta1GtIEfnLTAMS2eG4ktwi2kFmvCgcjXVXps205
-         aWFR7w5ogc1H3wQyvuG/W4g3veiVBk34ucDhCNBUs5CHTdpbr6oIEMquDoR7DE6WH4Em
-         CPJK5whYgl3O+tHMGDIDQGadpzTyMgbD2ST+aWtyc9tg8j3gNkmCu6CO7dREnGGB+/Ra
-         5AAg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=ZsGklvGCCEfAG2C9pvK94uYRWIB54oFE2Bd5BK/jcb8=;
-        b=oPjNhQ/bk3BN25HFPdYTJfS1l5IGpL8g1tgc3OH31dwVXldkv2/A49zVwLgsyHpw2I
-         pBhjZSMfsPV7hgb5szPX1+vg6urNduN0c6T1yAgpZJgimAvHgfv2tdoT/rIPoa174UGl
-         BFyS1FlGkeOsd/Nq8YC/CEBD+Tgo9IksnvSKjkPXtkJ9OvW8ho/X6L/UvIT1rA+V14XJ
-         RollUAftX4fLZV8GiyDVLpdSLrz9moBvHclwW+tGmQs8QaJjm/q6cZ5dldUbxjj00888
-         BY6xezkgF9O0/N8YBHpH3I7Sc1Xr48h1lapkhnDmEFNdUrcD8v3d1kodlPZqhesAmAH+
-         kIQA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TkB3zzCe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3366686lfq;
+        Sun, 20 Sep 2020 12:17:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxOXWgchNDW8RV0SMvDe1aKs/+g+oK7LiKzAeBw4PCLpGc/vGA67uraj8aF8O7VQkgzl2oK
+X-Received: by 2002:a25:9d8b:: with SMTP id v11mr43353704ybp.444.1600629445829;
+        Sun, 20 Sep 2020 12:17:25 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r4si611079ybs.115.2020.09.20.11.04.22
+        by mx.google.com with ESMTPS id p190si13170820ybg.137.2020.09.20.12.17.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Sep 2020 11:04:22 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 20 Sep 2020 12:17:25 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=TkB3zzCe;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:58656 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:32850 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kK3hF-0007oL-KA
-	for alex.bennee@linaro.org; Sun, 20 Sep 2020 14:04:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51162)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kK4px-0007Oi-40
+	for alex.bennee@linaro.org; Sun, 20 Sep 2020 15:17:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35924)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kK3bj-0001xd-Hk; Sun, 20 Sep 2020 13:58:39 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:36191)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kK3bh-00031N-PE; Sun, 20 Sep 2020 13:58:39 -0400
-Received: by mail-wm1-x343.google.com with SMTP id z9so10311112wmk.1;
- Sun, 20 Sep 2020 10:58:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=ZsGklvGCCEfAG2C9pvK94uYRWIB54oFE2Bd5BK/jcb8=;
- b=TkB3zzCeI8YhT2U6WxycJrsinLA87pX1heBznbc6QoAumbTiblsnhocnhiFikIH3v5
- DK6JmphQDVPGRuaO40U3eERiPmElnP2CmbwInxA4QbCGsawVQ8IYkf3AcTq+btdh/Xc6
- BZDZH4ITChGmXL8o8cwbpJW8VWZWHM2mWNqYtjggk2IVBU0FoUGf/DZRpb1bpkkHxbps
- 3YnKVP+WbyWQ0W7uBKEUzPyb0I8lyTP4gj8wf0nFpOQTV18Tn8MB9N2ZvcYL9U1PIYay
- 0bTTBiK1YS0OUMTGQiFdYfKUBMb7Go1ObIvLlWTJiOg6eK5m73Qp+rdEsBCJOeF71kK0
- fysw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=ZsGklvGCCEfAG2C9pvK94uYRWIB54oFE2Bd5BK/jcb8=;
- b=o0zs206EBjncJjREZ00nQMKSHY9IkdiqL22qcMVYeqXNBfwdmz0HQH1vBCkLF9VaDI
- uqoVfyK7d3ghccTTOnF3mLbPD4RAd4pVfXxQ5VJMZtEB6PoU42/Jyd2MUydu6B9rwnGC
- RqgbUYfhNIkwiGq3SzTg+Cc6y6Hy0mDNuGmMRtsU7J73EdKXgRSvtRIfrCsxFp3+NREd
- bOTyebM4vWwVC0Mj72I9r2zPlDmV0JDCkbCrAm7ZNT17pYxQ8HwM6SsBimdGUo3xlWHD
- dU6itQ8z1dRUa53cayFVBo0/h2+6aeVKNv7oTDHSsBVT0LNSLIckvKQI/i7pEcOsH4hs
- m8Dg==
-X-Gm-Message-State: AOAM5321rm98C4gvkD1pdzt2s22dzPqyWOzXx7CLGKqgv3wQNdO/FwP6
- IrSr7LNAuo+qxhyd9HCzewH/UR8Uyn8=
-X-Received: by 2002:a1c:7f8b:: with SMTP id
- a133mr27881664wmd.155.1600624715498; 
- Sun, 20 Sep 2020 10:58:35 -0700 (PDT)
-Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id u66sm15675781wme.12.2020.09.20.10.58.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Sep 2020 10:58:34 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH 6/7] hw/timer/bcm2835: Support the timer COMPARE registers
-Date: Sun, 20 Sep 2020 19:58:24 +0200
-Message-Id: <20200920175825.417680-7-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kK4pn-0007OE-Fq; Sun, 20 Sep 2020 15:17:15 -0400
+Resent-Date: Sun, 20 Sep 2020 15:17:15 -0400
+Resent-Message-Id: <E1kK4pn-0007OE-Fq@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21771)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kK4pk-0003mX-QD; Sun, 20 Sep 2020 15:17:15 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1600629412; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=Lx295WHKzoTtsGIcg+W+QrPKBtvlijhj1up3MHvyoN3FNJP+9XJA9bXEUssXvbfEl6Zl/FGRo+PGKVPjg6mC5ajxKRqi8agSNGCsLahPwxH0Z7M7qIWJv1CnyyRxo4m7rpAK9riSP1iEbonCBUjs25iTuO7pkXZdb6OQoL5q9RE=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1600629412;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=g2A2QuUK2VJ3E0eXTgr/zGuBwGWBUh70uwIajSIH2qg=; 
+ b=dPODUMOhjy0FckaMKOS70uL/ZOAldRoHB89/4tzXDBum7E3lW8xAq/+qWTaoWOUeoVOo3kWgag6FUfYTA4j+MM+RhMmGEqlB7euUoYQ4TZf7kD4oPR8HzZ64gKAoti7JP434P5L0CWh1F5cOKkTeC1w3DH/zBoQ/sG7WrnAGgZk=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1600629410180257.59664564760396;
+ Sun, 20 Sep 2020 12:16:50 -0700 (PDT)
+Subject: Re: [PATCH 0/7] hw/arm/raspi: Fix SYS_timer on Linux + misc changes
+Message-ID: <160062940832.23907.8004777003360682726@66eaa9a8a123>
 In-Reply-To: <20200920175825.417680-1-f4bug@amsat.org>
-References: <20200920175825.417680-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: f4bug@amsat.org
+Date: Sun, 20 Sep 2020 12:16:50 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/20 14:03:11
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lWIjX/Y6m8JL
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ Andrew.Baumann@microsoft.com, pauldzim@gmail.com, nieklinnenbank@gmail.com,
+ qemu-arm@nongnu.org, luc.michel@greensocs.com, f4bug@amsat.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ePhgIwdqmOx5
 
-This peripheral has 1 free-running timer and 4 compare registers.
-
-Only the free-running timer is implemented. Add support the
-COMPARE registers (each register is wired to an IRQ).
-
-Reference: "BCM2835 ARM Peripherals" datasheet [*]
-            chapter 12 "System Timer":
-
-  The System Timer peripheral provides four 32-bit timer channels
-  and a single 64-bit free running counter. Each channel has an
-  output compare register, which is compared against the 32 least
-  significant bits of the free running counter values. When the
-  two values match, the system timer peripheral generates a signal
-  to indicate a match for the appropriate channel. The match signal
-  is then fed into the interrupt controller.
-
-This peripheral is used since Linux 3.7, commit ee4af5696720
-("ARM: bcm2835: add system timer").
-
-[*] https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
-
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/timer/bcm2835_systmr.h | 11 +++++++--
- hw/timer/bcm2835_systmr.c         | 41 +++++++++++++++++++------------
- hw/timer/trace-events             |  4 ++-
- 3 files changed, 37 insertions(+), 19 deletions(-)
-
-diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
-index e0db9e9e12b..17fdd9d67b2 100644
---- a/include/hw/timer/bcm2835_systmr.h
-+++ b/include/hw/timer/bcm2835_systmr.h
-@@ -11,6 +11,7 @@
- 
- #include "hw/sysbus.h"
- #include "hw/irq.h"
-+#include "qemu/timer.h"
- #include "qom/object.h"
- 
- #define TYPE_BCM2835_SYSTIMER "bcm2835-sys-timer"
-@@ -20,18 +21,24 @@ DECLARE_INSTANCE_CHECKER(BCM2835SystemTimerState, BCM2835_SYSTIMER,
- 
- #define BCM2835_SYSTIMER_COUNT 4
- 
-+typedef struct {
-+    unsigned id;
-+    QEMUTimer timer;
-+    qemu_irq irq;
-+    BCM2835SystemTimerState *state;
-+} BCM2835SystemTimerCompare;
-+
- struct BCM2835SystemTimerState {
-     /*< private >*/
-     SysBusDevice parent_obj;
- 
-     /*< public >*/
-     MemoryRegion iomem;
--    qemu_irq irq;
--
-     struct {
-         uint32_t ctrl_status;
-         uint32_t compare[BCM2835_SYSTIMER_COUNT];
-     } reg;
-+    BCM2835SystemTimerCompare tmr[BCM2835_SYSTIMER_COUNT];
- };
- 
- #endif
-diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
-index b234e83824f..43e644f5e45 100644
---- a/hw/timer/bcm2835_systmr.c
-+++ b/hw/timer/bcm2835_systmr.c
-@@ -28,20 +28,13 @@ REG32(COMPARE1,     0x10)
- REG32(COMPARE2,     0x14)
- REG32(COMPARE3,     0x18)
- 
--static void bcm2835_systmr_update_irq(BCM2835SystemTimerState *s)
-+static void bcm2835_systmr_timer_expire(void *opaque)
- {
--    bool enable = !!s->reg.ctrl_status;
-+    BCM2835SystemTimerCompare *tmr = opaque;
- 
--    trace_bcm2835_systmr_irq(enable);
--    qemu_set_irq(s->irq, enable);
--}
--
--static void bcm2835_systmr_update_compare(BCM2835SystemTimerState *s,
--                                          unsigned timer_index)
--{
--    /* TODO fow now, since neither Linux nor U-boot use these timers. */
--    qemu_log_mask(LOG_UNIMP, "COMPARE register %u not implemented\n",
--                  timer_index);
-+    trace_bcm2835_systmr_timer_expired(tmr->id);
-+    tmr->state->reg.ctrl_status |= 1 << tmr->id;
-+    qemu_set_irq(tmr->irq, 1);
- }
- 
- static uint64_t bcm2835_systmr_read(void *opaque, hwaddr offset,
-@@ -78,16 +71,25 @@ static void bcm2835_systmr_write(void *opaque, hwaddr offset,
-                                  uint64_t value, unsigned size)
- {
-     BCM2835SystemTimerState *s = BCM2835_SYSTIMER(opaque);
-+    int index;
- 
-     trace_bcm2835_systmr_write(offset, value);
-     switch (offset) {
-     case A_CTRL_STATUS:
-         s->reg.ctrl_status &= ~value; /* Ack */
--        bcm2835_systmr_update_irq(s);
-+        for (index = 0; index < ARRAY_SIZE(s->tmr); index++) {
-+            if (extract32(value, index, 1)) {
-+                trace_bcm2835_systmr_irq_ack(index);
-+                qemu_set_irq(s->tmr[index].irq, 0);
-+            }
-+        }
-         break;
-     case A_COMPARE0 ... A_COMPARE3:
--        s->reg.compare[(offset - A_COMPARE0) >> 2] = value;
--        bcm2835_systmr_update_compare(s, (offset - A_COMPARE0) >> 2);
-+        index = (offset - A_COMPARE0) >> 2;
-+        s->reg.compare[index] = value;
-+        timer_mod(&s->tmr[index].timer, value);
-+        trace_bcm2835_systmr_run(index,
-+                                 value - qemu_clock_get_us(QEMU_CLOCK_VIRTUAL));
-         break;
-     case A_COUNTER_LOW:
-     case A_COUNTER_HIGH:
-@@ -125,7 +127,14 @@ static void bcm2835_systmr_realize(DeviceState *dev, Error **errp)
-     memory_region_init_io(&s->iomem, OBJECT(dev), &bcm2835_systmr_ops,
-                           s, "bcm2835-sys-timer", 0x20);
-     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
--    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
-+
-+    for (size_t i = 0; i < ARRAY_SIZE(s->tmr); i++) {
-+        s->tmr[i].id = i;
-+        s->tmr[i].state = s;
-+        sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->tmr[i].irq);
-+        timer_init_us(&s->tmr[i].timer, QEMU_CLOCK_VIRTUAL,
-+                      bcm2835_systmr_timer_expire, &s->tmr[i]);
-+    }
- }
- 
- static const VMStateDescription bcm2835_systmr_vmstate = {
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index b996d992000..f4ca31d4951 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -77,9 +77,11 @@ nrf51_timer_write(uint8_t timer_id, uint64_t addr, uint32_t value, unsigned size
- nrf51_timer_set_count(uint8_t timer_id, uint8_t counter_id, uint32_t value) "timer %u counter %u count 0x%" PRIx32
- 
- # bcm2835_systmr.c
--bcm2835_systmr_irq(bool enable) "timer irq state %u"
-+bcm2835_systmr_timer_expired(unsigned id) "timer #%u expired"
-+bcm2835_systmr_irq_ack(unsigned id) "timer #%u acked"
- bcm2835_systmr_read(uint64_t offset, uint64_t data) "timer read: offset 0x%" PRIx64 " data 0x%" PRIx64
- bcm2835_systmr_write(uint64_t offset, uint64_t data) "timer write: offset 0x%" PRIx64 " data 0x%" PRIx64
-+bcm2835_systmr_run(unsigned id, uint64_t delay_us) "timer #%u expiring in %"PRIu64" us"
- 
- # avr_timer16.c
- avr_timer16_read(uint8_t addr, uint8_t value) "timer16 read addr:%u value:%u"
--- 
-2.26.2
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkyMDE3NTgyNS40MTc2
+ODAtMS1mNGJ1Z0BhbXNhdC5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRoZSBkb2Nr
+ZXItbWluZ3dAZmVkb3JhIGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5nIGNvbW1h
+bmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0YWxsZWQs
+IHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBTQ1JJUFQg
+QkVHSU4gPT09CiMhIC9iaW4vYmFzaApleHBvcnQgQVJDSD14ODZfNjQKbWFrZSBkb2NrZXItaW1h
+Z2UtZmVkb3JhIFY9MSBORVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LW1pbmd3QGZlZG9y
+YSBKPTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKSG9zdCBtYWNoaW5lIGNw
+dTogeDg2XzY0ClRhcmdldCBtYWNoaW5lIGNwdSBmYW1pbHk6IHg4NgpUYXJnZXQgbWFjaGluZSBj
+cHU6IHg4Nl82NAouLi9zcmMvbWVzb24uYnVpbGQ6MTA6IFdBUk5JTkc6IE1vZHVsZSB1bnN0YWJs
+ZS1rZXl2YWwgaGFzIG5vIGJhY2t3YXJkcyBvciBmb3J3YXJkcyBjb21wYXRpYmlsaXR5IGFuZCBt
+aWdodCBub3QgZXhpc3QgaW4gZnV0dXJlIHJlbGVhc2VzLgpQcm9ncmFtIHNoIGZvdW5kOiBZRVMK
+UHJvZ3JhbSBweXRob24zIGZvdW5kOiBZRVMgKC91c3IvYmluL3B5dGhvbjMpCkNvbmZpZ3VyaW5n
+IG5pbmphdG9vbCB1c2luZyBjb25maWd1cmF0aW9uCi0tLQpDb21waWxpbmcgQyBvYmplY3QgbGli
+cWVtdS1hYXJjaDY0LXNvZnRtbXUuZmEucC9od192aXJ0aW9fdmlydGlvLmMub2JqCkNvbXBpbGlu
+ZyBDIG9iamVjdCBsaWJxZW11LWFhcmNoNjQtc29mdG1tdS5mYS5wL2h3X3ZpcnRpb192aXJ0aW8t
+bmV0LXBjaS5jLm9iagouLi9zcmMvaHcvYXJtL2JjbTI4MzVfcGVyaXBoZXJhbHMuYzogSW4gZnVu
+Y3Rpb24gJ2JjbTI4MzVfcGVyaXBoZXJhbHNfcmVhbGl6ZSc6Ci4uL3NyYy9ody9hcm0vYmNtMjgz
+NV9wZXJpcGhlcmFscy5jOjM1NTo0NTogZXJyb3I6ICdUUFhfT0ZGU0VUJyB1bmRlY2xhcmVkIChm
+aXJzdCB1c2UgaW4gdGhpcyBmdW5jdGlvbik7IGRpZCB5b3UgbWVhbiAnVFhQX09GRlNFVCc/CiAg
+MzU1IHwgICAgIGNyZWF0ZV91bmltcChzLCAmcy0+dHB4LCAiYmNtMjgzNS10cHgiLCBUUFhfT0ZG
+U0VULCAweDEwMDApOwogICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgXn5+fn5+fn5+fgogICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgVFhQX09GRlNFVAouLi9zcmMvaHcvYXJtL2JjbTI4MzVfcGVyaXBoZXJh
+bHMuYzozNTU6NDU6IG5vdGU6IGVhY2ggdW5kZWNsYXJlZCBpZGVudGlmaWVyIGlzIHJlcG9ydGVk
+IG9ubHkgb25jZSBmb3IgZWFjaCBmdW5jdGlvbiBpdCBhcHBlYXJzIGluCm1ha2U6ICoqKiBbTWFr
+ZWZpbGUubmluamE6MTcyODogbGlicWVtdS1hYXJjaDY0LXNvZnRtbXUuZmEucC9od19hcm1fYmNt
+MjgzNV9wZXJpcGhlcmFscy5jLm9ial0gRXJyb3IgMQptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5m
+aW5pc2hlZCBqb2JzLi4uLgpDb21waWxpbmcgQyBvYmplY3QgbGlicWVtdS1hYXJjaDY0LXNvZnRt
+bXUuZmEucC9od192aXJ0aW9fdmlydGlvLXJuZy5jLm9iagpUcmFjZWJhY2sgKG1vc3QgcmVjZW50
+IGNhbGwgbGFzdCk6Ci0tLQogICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNt
+ZCkKc3VicHJvY2Vzcy5DYWxsZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbics
+ICdkb2NrZXInLCAncnVuJywgJy0tcm0nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51
+dWlkPWVlOTJlOTFiYjI4ZTQ4ODE5NjlmMzU1MTVjOTExOWRjJywgJy11JywgJzEwMDEnLCAnLS1z
+ZWN1cml0eS1vcHQnLCAnc2VjY29tcD11bmNvbmZpbmVkJywgJy1lJywgJ1RBUkdFVF9MSVNUPScs
+ICctZScsICdFWFRSQV9DT05GSUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcs
+ICctZScsICdERUJVRz0nLCAnLWUnLCAnU0hPV19FTlY9JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zh
+ci90bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcvLmNhY2hlL3FlbXUtZG9ja2VyLWNj
+YWNoZTovdmFyL3RtcC9jY2FjaGU6eicsICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10
+bXAtZmdsZmJrX2ovc3JjL2RvY2tlci1zcmMuMjAyMC0wOS0yMC0xNS4xMi41MC4zMTEyMzovdmFy
+L3RtcC9xZW11Onoscm8nLCAncWVtdS9mZWRvcmEnLCAnL3Zhci90bXAvcWVtdS9ydW4nLCAndGVz
+dC1taW5ndyddJyByZXR1cm5lZCBub24temVybyBleGl0IHN0YXR1cyAyLgpmaWx0ZXI9LS1maWx0
+ZXI9bGFiZWw9Y29tLnFlbXUuaW5zdGFuY2UudXVpZD1lZTkyZTkxYmIyOGU0ODgxOTY5ZjM1NTE1
+YzkxMTlkYwptYWtlWzFdOiAqKiogW2RvY2tlci1ydW5dIEVycm9yIDEKbWFrZVsxXTogTGVhdmlu
+ZyBkaXJlY3RvcnkgYC92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRtcC1mZ2xmYmtfai9zcmMnCm1h
+a2U6ICoqKiBbZG9ja2VyLXJ1bi10ZXN0LW1pbmd3QGZlZG9yYV0gRXJyb3IgMgoKcmVhbCAgICAz
+bTU3LjM1MXMKdXNlciAgICAwbTIwLjIzOHMKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0
+Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAwOTIwMTc1ODI1LjQxNzY4MC0xLWY0YnVnQGFt
+c2F0Lm9yZy90ZXN0aW5nLmRvY2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVt
+YWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5v
+cmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5j
+b20=

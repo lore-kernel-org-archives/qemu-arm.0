@@ -1,117 +1,93 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4130833lfq;
-        Mon, 21 Sep 2020 09:46:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxAL0ifFajQkAPjyKK3t91VyFPKtDEhAyUC40hVxZpoPvPj2vYcRCGdWMhZR/+owQewmceF
-X-Received: by 2002:a25:bcd0:: with SMTP id l16mr1069531ybm.129.1600706778670;
-        Mon, 21 Sep 2020 09:46:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600706778; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4252791lfq;
+        Mon, 21 Sep 2020 12:40:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxuNe2ijNWw367V9NmWDeTNY1CgndsuNLfnr2dBttl/ynFC0y9elZwskQQCK5Oq+4Q+G7V0
+X-Received: by 2002:a25:b45:: with SMTP id 66mr1905494ybl.2.1600717213837;
+        Mon, 21 Sep 2020 12:40:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600717213; cv=none;
         d=google.com; s=arc-20160816;
-        b=nmXYgInwnRRoO6WpB4BiRT8HgOI9n7k3FuepRetdX+xIrZyJCgUwMY+3U1o0NErsLV
-         P+efR/02QGI0szuRnTEQREdUxbxAS+n3R1co1fuwvxten6cuqSvcS7YfXml7x4+Fuy0K
-         wsZgCvAcOMTfUc0VNoysADGJbJ5VLQmx4+S8aJ5dT/VuFfiI0ilIpoFmkJ5SjjqEo/Yy
-         GSf25OlMSAyqdCYifQ1CqIk8g2X5//yz1wAIwrcz+cIZUlJNSxsq3nbSJkObrGSudi7y
-         PgtvzNmMJZ0lNdbEJ9/VqGpgKDkTfiKmtgdEjnoTDzD3SUxGNYwnI8b9y+P6fc3DHSde
-         LOYw==
+        b=mNhXfXtWwDWTGygKAChFuihU6lNJJEdsJ+6HeM5lK9M5BpQlnVjYfpmErFNUvcEtuL
+         lrz8XH0Fcf3+1ustKVDwKMFQBOlAQium+Je0LR6UpNESvNo872+GMtjwU2dVg1nvZgbU
+         Z7GT29nqQ+ty0JGg6qA5ma8VzIXc3rEslB0sWNGgshV++bwRoYE5+jyeSBPhZYEqYZfB
+         yrPvE6SjebgRSR+Yj0kQJl0gmTy3vgj+/xI3iJh3XRv2AMbDgjV1NP5v2PngIpp2UbbA
+         kqI4ynPK7OyaNAW3DabLBUB4unrZUBfJhHYGFuQXRAmh7VBuT+79c08l1DyXDLsHqq5t
+         2PvQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=7xLLDx1x2JYSVCcdlCwiZuHm/O6qggRKuxknbHAE59g=;
-        b=WSLSy7Bj5GMuwgOU3rcgwGQmb8Qz8qIrvrwKkBQzgEBdrZri7LkzQA0STDbtHOYPwx
-         /yrE7EPOZHHu+sPUed6DWoWAONJ1EhjGjlBpTkxnr+lStNSmfztS3m4zyjfOK3C6Qa8V
-         iFimikqY2Dw1rqPxpl97OyIMQ2PPuPL6HPtkzDuHFMMYvqxn+Q9/d8HJgR0a8BC3q3OI
-         o4EfAqyxwMVeshMiuNGums0bJnOwvrOzdpsXbBo3reERbZQkNT4BEMfMhVjp6e1IzWKk
-         QOYPrqCNbglFV92I6Pxle8CcJfZXIf3xMi0con1fb25Rh8agM4StVeaFeASEf5FJM6W2
-         gpoA==
+        bh=A8cn/oZOpOWRTCTjgZSGgcp8pU6Sd0lJoIcpSgT9hLU=;
+        b=SG8xzYqRR84r6sk13Xh7ZOAv1dkzsCbevjZWGJq5IfyGNwT7EKMGDuaOYf6/lKLzIj
+         qfeaiq8mIfdXF15hAwIvgNcmPK+2y4/gUsgmmNfEa/tL+n+2HWnxNdC864Xw2fVScI05
+         KUt1w6sGWmqqiaQ8UacCwSKhVJ4B6HACwRhTbKriALSNlfUZq6N6l/I9wEG9KXgaXDy9
+         OPsx9Mhn8VeBzliNhtWKFlaPNsNHhvcbj9KP4BmAn+yn4ZyMYdnDELmGrC2G04h0drFn
+         p8e14F52kpq3FdPzn2alrw0RpU8OG9qbS4LB+iJ+EmHXgrMOisxVNvS4TsAEIxZED4J0
+         /Y+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I5lSqZV+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=s5oWaTvG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v9si12567891ybs.37.2020.09.21.09.46.18
+        by mx.google.com with ESMTPS id e13si7430033ybp.43.2020.09.21.12.40.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Sep 2020 09:46:18 -0700 (PDT)
+        Mon, 21 Sep 2020 12:40:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=I5lSqZV+;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36696 helo=lists1p.gnu.org)
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=s5oWaTvG;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53310 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kKOxF-00016g-UW
-	for alex.bennee@linaro.org; Mon, 21 Sep 2020 12:46:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32892)
+	id 1kKRfY-0000Gn-Al
+	for alex.bennee@linaro.org; Mon, 21 Sep 2020 15:40:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kKOx4-00014q-BW; Mon, 21 Sep 2020 12:46:06 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:52309)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kKOx2-0001eh-AO; Mon, 21 Sep 2020 12:46:06 -0400
-Received: by mail-wm1-x341.google.com with SMTP id q9so177488wmj.2;
- Mon, 21 Sep 2020 09:46:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=7xLLDx1x2JYSVCcdlCwiZuHm/O6qggRKuxknbHAE59g=;
- b=I5lSqZV+mKaiAA3Qy+GNk/x5Quyg8+Ok90vPdmNZi8KBBnbPc/wIPIlQiLqERTzMOZ
- bg17PnBQqXboq4d7FpTrjif+UMvNJYu3U8jYW9xbtdDBiLQhFDMm1J8YDvhY8rE/yepX
- 0Ni0BJZ7dRJrCLLTC1IgU0glGqKdjQqfM3ndZO91TawsSoprRYut3cIHcisSez3cqX5X
- t7Jn1C/P92dyr4sW7Si4vALkUoDyc7lPsRJku5uuhW7pPSJYex9NYIF1bKYTt1T68Ujh
- 1r7k/Q/Gs1POQXCIk3xmepHuK1bcnixE3pDBJ7VFowmcTJcTLYxR4iQlbASIl5p4Udv/
- kijg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=7xLLDx1x2JYSVCcdlCwiZuHm/O6qggRKuxknbHAE59g=;
- b=SP4dmO3ZBVhISo40aEMpKgBHAmxlbaNpe6SrAS94CUStt5rKdRhiCIYiGuYe3fIXzo
- c6bwnSV9N5wv9EQdClYMwNG7WMqT75ouYAkVW80dBSO7mWoUZvbTKdCvpqNljIhUrBx0
- wSxE+IH6CDtZNd+c8Pk3IZJrcJ9ycFr5y9kq3hzzZot9+0Jd8XeHjL3VLbCL1iQndiY+
- 2tZM9n0eGg7tiUNLyk3A0FdffyxkQLm6S7B1D8k2gPpbR3IQtx+uVUF0EqU9AM0mduA8
- EFoMP7RMZDkG0qG1nmqHeiAta33tgM+gbLg0mPbh482CTKuzjy6a/6dTwuMU0eIZBfjJ
- YJOw==
-X-Gm-Message-State: AOAM5315voo8ns8un0MF+OQy6oJaTIF4jYc45aQuagdTBda4248otR09
- beos7pJAE4EUztD259luBDU=
-X-Received: by 2002:a1c:80cd:: with SMTP id b196mr285149wmd.104.1600706761187; 
- Mon, 21 Sep 2020 09:46:01 -0700 (PDT)
-Received: from [192.168.1.36] (65.red-83-57-170.dynamicip.rima-tde.net.
- [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id u17sm23785661wri.45.2020.09.21.09.45.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Sep 2020 09:46:00 -0700 (PDT)
-Subject: Re: [PATCH v2 12/13] hw/arm/raspi: Add the Raspberry Pi B+ machine
-To: Niek Linnenbank <nieklinnenbank@gmail.com>
-References: <20200217114533.17779-1-f4bug@amsat.org>
- <20200217114533.17779-13-f4bug@amsat.org>
- <CAPan3Wr=hxEu_XdKWEYJAZXJY4hHf774O2UfsJd0OmCHc8X0OQ@mail.gmail.com>
- <4d419e3f-9e85-c014-7cc7-b25544eb341f@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <28b9f5c7-5375-6f3f-2ff8-414257a62db7@amsat.org>
-Date: Mon, 21 Sep 2020 18:45:59 +0200
+ (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
+ id 1kKReJ-0008Vr-D5; Mon, 21 Sep 2020 15:38:57 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:40494)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
+ id 1kKReF-0007bl-42; Mon, 21 Sep 2020 15:38:55 -0400
+Received: from [172.17.10.14] (unknown [172.17.10.14])
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 14EA021CC5;
+ Mon, 21 Sep 2020 19:38:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
+ s=mail; t=1600717127;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=A8cn/oZOpOWRTCTjgZSGgcp8pU6Sd0lJoIcpSgT9hLU=;
+ b=s5oWaTvG5hK/j1FCIwJeKBXJH1yd2fvdfZiM0X1+l74euMQlmcT9iKiBtBtJQw072kFhF5
+ jZRLB/IFb4YdxRMYyX7qKtVirCBQrCa1GNZlpy7CTbipwk718tL2MflPF0tbSLl4lxJuUH
+ 5OkdwItTzJnyCKyXa/tyCtZXSL7LMoI=
+Subject: Re: [PATCH v2 4/5] hw/timer/bcm2835: Support the timer COMPARE
+ registers
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20200921035257.434532-1-f4bug@amsat.org>
+ <20200921035257.434532-5-f4bug@amsat.org>
+From: Luc Michel <luc.michel@greensocs.com>
+Message-ID: <49f67ca8-7a4e-c698-3deb-e53ee942cf06@greensocs.com>
+Date: Mon, 21 Sep 2020 21:39:41 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <4d419e3f-9e85-c014-7cc7-b25544eb341f@redhat.com>
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20200921035257.434532-5-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=5.135.226.135;
+ envelope-from=luc.michel@greensocs.com; helo=beetle.greensocs.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/21 15:38:48
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,168 +100,208 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
- Luc Michel <luc.michel@greensocs.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Paul Zimmerman <pauldzim@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ESBcU9hzuy42
+X-TUID: BB3BObeUQbJi
 
-On 2/24/20 9:55 AM, Philippe Mathieu-Daudé wrote:
-> On 2/22/20 11:19 PM, Niek Linnenbank wrote:
->> Hey Philippe,
->>
->> Very nice to see that the Raspberry 1 will be supported again, thanks
->> for contributing this!
->>
->> I tried to bring up the machine using raspbian 2019-09-26. It ran
->> throught the early kernel initialisation
->> but for me it gets stuck at this point:
->>
->> ./arm-softmmu/qemu-system-arm -M raspi1b -kernel
->> $HOME/raspi/boot/kernel.img -append 'printk.time=0
->> earlycon=pl011,0x20201000 console=ttyAMA0 rootwait root=/dev/mmcblk0p2' \
->> -dtb $HOME/raspi/boot/bcm2708-rpi-b-plus.dtb -m 512 -sd
->> $HOME/raspi/2019-09-26-raspbian-buster-lite.img -serial stdio -s
->>
->> [    0.000000] Booting Linux on physical CPU 0x0
->> [    0.000000] Linux version 4.19.75+ (dom@buildbot) (gcc version
->> 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1270 Tue Sep 24
->> 18:38:54 BST 2019
->> [    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7
->> (ARMv7), cr=00c5387d
->> [    0.000000] CPU: VIPT aliasing data cache, unknown instruction cache
->> [    0.000000] OF: fdt: Machine model: Raspberry Pi Model B+
->> [    0.000000] earlycon: pl11 at MMIO 0x20201000 (options '')
->> [    0.000000] bootconsole [pl11] enabled
->> [    0.000000] Memory policy: Data cache writeback
->> [    0.000000] cma: Reserved 8 MiB at 0x1b800000
->> [    0.000000] random: get_random_bytes called from
->> start_kernel+0x8c/0x49c with crng_init=0
->> [    0.000000] Built 1 zonelists, mobility grouping on.  Total pages:
->> 113680
->> [    0.000000] Kernel command line: printk.time=0
->> earlycon=pl011,0x20201000 console=ttyAMA0 rootwait root=/dev/mmcblk0p2
->> Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
->> Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
->> Memory: 434380K/458752K available (6973K kernel code, 635K rwdata,
->> 2080K rodata, 464K init, 797K bss, 16180K reserved, 8192K cma-reserved)
->> Virtual kernel memory layout:
->>      vector  : 0xffff0000 - 0xffff1000   (   4 kB)
->>      fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
->>      vmalloc : 0xdc800000 - 0xff800000   ( 560 MB)
->>      lowmem  : 0xc0000000 - 0xdc000000   ( 448 MB)
->>      modules : 0xbf000000 - 0xc0000000   (  16 MB)
->>        .text : 0x(ptrval) - 0x(ptrval)   (6975 kB)
->>        .init : 0x(ptrval) - 0x(ptrval)   ( 464 kB)
->>        .data : 0x(ptrval) - 0x(ptrval)   ( 636 kB)
->>         .bss : 0x(ptrval) - 0x(ptrval)   ( 798 kB)
->> SLUB: HWalign=32, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
->> ftrace: allocating 25197 entries in 74 pages
->> NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
->> sched_clock: 32 bits at 1000kHz, resolution 1000ns, wraps every
->> 2147483647500ns
->> clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff,
->> max_idle_ns: 1911260446275 ns
->> bcm2835: system timer (irq = 27)
->> Console: colour dummy device 80x30
->>
->> Maybe it should switch to the graphical console here, but I dont see
->> the boot splash logo either (when using -stdio instead of -nographic).
->> With -M raspi2 and -dtb bcm2709-rpi-2-b.dtb the same raspbian image
->> can fully boot to the login console.
+Hi Phil,
+
+On 9/21/20 5:52 AM, Philippe Mathieu-Daudé wrote:
+> This peripheral has 1 free-running timer and 4 compare registers.
 > 
-> Argh this is because I split this of a bigger series and didn't included
-> changes related to the GPU 'properties', sorry.
-
-Actually it was missing SYS_timer changes, now rebased/posted:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg742694.html
-
+> Only the free-running timer is implemented. Add support the
+> COMPARE registers (each register is wired to an IRQ).
 > 
->>
->> Regards,
->> Niek
->>
->>
->>
->> On Mon, Feb 17, 2020 at 12:51 PM Philippe Mathieu-Daudé
->> <f4bug@amsat.org <mailto:f4bug@amsat.org>> wrote:
->>
->>        $ qemu-system-arm -M raspi1b -serial stdio \
->>            -kernel raspberrypi/firmware/boot/kernel.img \
->>            -dtb raspberrypi/firmware/boot/bcm2708-rpi-b.dtb \
->>            -append 'printk.time=0 earlycon=pl011,0x20201000
->> console=ttyAMA0'
->>        [    0.000000] Booting Linux on physical CPU 0x0
->>        [    0.000000] Linux version 4.19.69+ (dom@buildbot) (gcc version
->>     4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1261 Tue Sep
->>     3 20:21:01 BST 2019
->>        [    0.000000] CPU: ARMv6-compatible processor [410fb767]
->>     revision 7 (ARMv7), cr=00c5387d
->>        [    0.000000] CPU: VIPT aliasing data cache, unknown instruction
->>     cache
->>        [    0.000000] OF: fdt: Machine model: Raspberry Pi Model B
->>        [    0.000000] earlycon: pl11 at MMIO 0x20201000 (options '')
->>        [    0.000000] bootconsole [pl11] enabled
->>        [    0.000000] Memory policy: Data cache writeback
->>        [    0.000000] cma: Reserved 8 MiB at 0x1b800000
->>        [    0.000000] random: get_random_bytes called from
->>     start_kernel+0x8c/0x49c with crng_init=0
->>        [    0.000000] Built 1 zonelists, mobility grouping on.  Total
->>     pages: 113680
->>        [    0.000000] Kernel command line: printk.time=0
->>     earlycon=pl011,0x20201000 console=ttyAMA0
->>        Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
->>        Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
->>        Memory: 434380K/458752K available (6971K kernel code, 635K
->>     rwdata, 2080K rodata, 464K init, 797K bss, 16180K reserved, 8192K
->>     cma-reserved)
->>        ...
->>
->>     Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org
->>     <mailto:f4bug@amsat.org>>
->>     ---
->>       hw/arm/raspi.c | 13 +++++++++++++
->>       1 file changed, 13 insertions(+)
->>
->>     diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
->>     index 3537a329ac..2d9f4e3085 100644
->>     --- a/hw/arm/raspi.c
->>     +++ b/hw/arm/raspi.c
->>     @@ -324,6 +324,15 @@ static void
->>     raspi_machine_class_common_init(MachineClass *mc,
->>           mc->default_ram_size = board_ram_size(board_rev);
->>       };
->>
->>     +static void raspi1b_machine_class_init(ObjectClass *oc, void *data)
->>     +{
->>     +    MachineClass *mc = MACHINE_CLASS(oc);
->>     +    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
->>     +
->>     +    rmc->board_rev = 0x900032;
->>     +    raspi_machine_class_common_init(mc, rmc->board_rev);
->>     +};
->>     +
->>       static void raspi2b_machine_class_init(ObjectClass *oc, void *data)
->>       {
->>           MachineClass *mc = MACHINE_CLASS(oc);
->>     @@ -348,6 +357,10 @@ static void
->>     raspi3b_machine_class_init(ObjectClass *oc, void *data)
->>
->>       static const TypeInfo raspi_machine_types[] = {
->>           {
->>     +        .name           = MACHINE_TYPE_NAME("raspi1b"),
->>     +        .parent         = TYPE_RASPI_MACHINE,
->>     +        .class_init     = raspi1b_machine_class_init,
->>     +    }, {
->>               .name           = MACHINE_TYPE_NAME("raspi2b"),
->>               .parent         = TYPE_RASPI_MACHINE,
->>               .class_init     = raspi2b_machine_class_init,
->>     --     2.21.1
->>
->>
->>
->>
->> -- 
->> Niek Linnenbank
->>
+> Reference: "BCM2835 ARM Peripherals" datasheet [*]
+>              chapter 12 "System Timer":
+> 
+>    The System Timer peripheral provides four 32-bit timer channels
+>    and a single 64-bit free running counter. Each channel has an
+>    output compare register, which is compared against the 32 least
+>    significant bits of the free running counter values. When the
+>    two values match, the system timer peripheral generates a signal
+>    to indicate a match for the appropriate channel. The match signal
+>    is then fed into the interrupt controller.
+> 
+> This peripheral is used since Linux 3.7, commit ee4af5696720
+> ("ARM: bcm2835: add system timer").
+> 
+> [*] https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   include/hw/timer/bcm2835_systmr.h | 11 +++++++--
+>   hw/timer/bcm2835_systmr.c         | 41 +++++++++++++++++++------------
+>   hw/timer/trace-events             |  4 ++-
+>   3 files changed, 37 insertions(+), 19 deletions(-)
+> 
+> diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
+> index e0db9e9e12b..17fdd9d67b2 100644
+> --- a/include/hw/timer/bcm2835_systmr.h
+> +++ b/include/hw/timer/bcm2835_systmr.h
+> @@ -11,6 +11,7 @@
+>   
+>   #include "hw/sysbus.h"
+>   #include "hw/irq.h"
+> +#include "qemu/timer.h"
+>   #include "qom/object.h"
+>   
+>   #define TYPE_BCM2835_SYSTIMER "bcm2835-sys-timer"
+> @@ -20,18 +21,24 @@ DECLARE_INSTANCE_CHECKER(BCM2835SystemTimerState, BCM2835_SYSTIMER,
+>   
+>   #define BCM2835_SYSTIMER_COUNT 4
+>   
+> +typedef struct {
+> +    unsigned id;
+> +    QEMUTimer timer;
+> +    qemu_irq irq;
+> +    BCM2835SystemTimerState *state;
+> +} BCM2835SystemTimerCompare;
+> +
+>   struct BCM2835SystemTimerState {
+>       /*< private >*/
+>       SysBusDevice parent_obj;
+>   
+>       /*< public >*/
+>       MemoryRegion iomem;
+> -    qemu_irq irq;
+> -
+>       struct {
+>           uint32_t ctrl_status;
+>           uint32_t compare[BCM2835_SYSTIMER_COUNT];
+>       } reg;
+> +    BCM2835SystemTimerCompare tmr[BCM2835_SYSTIMER_COUNT];
+>   };
+>   
+>   #endif
+> diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
+> index b234e83824f..43e644f5e45 100644
+> --- a/hw/timer/bcm2835_systmr.c
+> +++ b/hw/timer/bcm2835_systmr.c
+> @@ -28,20 +28,13 @@ REG32(COMPARE1,     0x10)
+>   REG32(COMPARE2,     0x14)
+>   REG32(COMPARE3,     0x18)
+>   
+> -static void bcm2835_systmr_update_irq(BCM2835SystemTimerState *s)
+> +static void bcm2835_systmr_timer_expire(void *opaque)
+>   {
+> -    bool enable = !!s->reg.ctrl_status;
+> +    BCM2835SystemTimerCompare *tmr = opaque;
+>   
+> -    trace_bcm2835_systmr_irq(enable);
+> -    qemu_set_irq(s->irq, enable);
+> -}
+> -
+> -static void bcm2835_systmr_update_compare(BCM2835SystemTimerState *s,
+> -                                          unsigned timer_index)
+> -{
+> -    /* TODO fow now, since neither Linux nor U-boot use these timers. */
+> -    qemu_log_mask(LOG_UNIMP, "COMPARE register %u not implemented\n",
+> -                  timer_index);
+> +    trace_bcm2835_systmr_timer_expired(tmr->id);
+> +    tmr->state->reg.ctrl_status |= 1 << tmr->id;
+> +    qemu_set_irq(tmr->irq, 1);
+>   }
+>   
+>   static uint64_t bcm2835_systmr_read(void *opaque, hwaddr offset,
+> @@ -78,16 +71,25 @@ static void bcm2835_systmr_write(void *opaque, hwaddr offset,
+>                                    uint64_t value, unsigned size)
+>   {
+>       BCM2835SystemTimerState *s = BCM2835_SYSTIMER(opaque);
+> +    int index;
+>   
+>       trace_bcm2835_systmr_write(offset, value);
+>       switch (offset) {
+>       case A_CTRL_STATUS:
+>           s->reg.ctrl_status &= ~value; /* Ack */
+> -        bcm2835_systmr_update_irq(s);
+> +        for (index = 0; index < ARRAY_SIZE(s->tmr); index++) {
+> +            if (extract32(value, index, 1)) {
+> +                trace_bcm2835_systmr_irq_ack(index);
+> +                qemu_set_irq(s->tmr[index].irq, 0);
+> +            }
+> +        }
+>           break;
+>       case A_COMPARE0 ... A_COMPARE3:
+> -        s->reg.compare[(offset - A_COMPARE0) >> 2] = value;
+> -        bcm2835_systmr_update_compare(s, (offset - A_COMPARE0) >> 2);
+> +        index = (offset - A_COMPARE0) >> 2;
+> +        s->reg.compare[index] = value;
+> +        timer_mod(&s->tmr[index].timer, value);
+I think "value" is wrong here. timer_mod takes an absolute time value. 
+Here "value" is a 32 bits truncated view of "current_time + some_time".
+> +        trace_bcm2835_systmr_run(index,
+> +                                 value - qemu_clock_get_us(QEMU_CLOCK_VIRTUAL));
+Here also.
+
+I think you can do something like (untested):
+            {
+                uint64_t now, triggers_at;
+                uint32_t clo, triggers_in;
+
+                index = (offset - A_COMPARE0) >> 2;
+                s->reg.compare[index] = value;
+
+                /* get the current clock and its truncated 32 bits view */
+                now = qemu_clock_get_us(QEMU_CLOCK_VIRTUAL);
+                clo = now;
+
+                /* will overflow in case clo > value. We still get the 
+correct value on 32 bits (which is "UINT32_MAX - (clo - value)") */
+                triggers_in = value - clo;
+
+                /* timer_mod takes an absolute time value, go back to 64 
+bits values */
+                triggers_at = now + triggers_in;
+                timer_mod(&s->tmr[index].timer, triggers_at);
+
+                trace_bcm2835_systmr_run(index, triggers_in);
+            }
+
+
+The rest is OK to me.
+
+-- 
+Luc
+
+>           break;
+>       case A_COUNTER_LOW:
+>       case A_COUNTER_HIGH:
+> @@ -125,7 +127,14 @@ static void bcm2835_systmr_realize(DeviceState *dev, Error **errp)
+>       memory_region_init_io(&s->iomem, OBJECT(dev), &bcm2835_systmr_ops,
+>                             s, "bcm2835-sys-timer", 0x20);
+>       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
+> -    sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+> +
+> +    for (size_t i = 0; i < ARRAY_SIZE(s->tmr); i++) {
+> +        s->tmr[i].id = i;
+> +        s->tmr[i].state = s;
+> +        sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->tmr[i].irq);
+> +        timer_init_us(&s->tmr[i].timer, QEMU_CLOCK_VIRTUAL,
+> +                      bcm2835_systmr_timer_expire, &s->tmr[i]);
+> +    }
+>   }
+>   
+>   static const VMStateDescription bcm2835_systmr_vmstate = {
+> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+> index b996d992000..f4ca31d4951 100644
+> --- a/hw/timer/trace-events
+> +++ b/hw/timer/trace-events
+> @@ -77,9 +77,11 @@ nrf51_timer_write(uint8_t timer_id, uint64_t addr, uint32_t value, unsigned size
+>   nrf51_timer_set_count(uint8_t timer_id, uint8_t counter_id, uint32_t value) "timer %u counter %u count 0x%" PRIx32
+>   
+>   # bcm2835_systmr.c
+> -bcm2835_systmr_irq(bool enable) "timer irq state %u"
+> +bcm2835_systmr_timer_expired(unsigned id) "timer #%u expired"
+> +bcm2835_systmr_irq_ack(unsigned id) "timer #%u acked"
+>   bcm2835_systmr_read(uint64_t offset, uint64_t data) "timer read: offset 0x%" PRIx64 " data 0x%" PRIx64
+>   bcm2835_systmr_write(uint64_t offset, uint64_t data) "timer write: offset 0x%" PRIx64 " data 0x%" PRIx64
+> +bcm2835_systmr_run(unsigned id, uint64_t delay_us) "timer #%u expiring in %"PRIu64" us"
+>   
+>   # avr_timer16.c
+>   avr_timer16_read(uint8_t addr, uint8_t value) "timer16 read addr:%u value:%u"
+> 

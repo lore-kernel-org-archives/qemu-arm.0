@@ -1,201 +1,134 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3677014lfq;
-        Sun, 20 Sep 2020 22:35:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx3dDzhaRw7R9i4lHD1zmzC02ZC4k4/dOaVJP78tUmva/f1xfSlSaR63xdRcuGyoBS1cWrV
-X-Received: by 2002:a25:aa54:: with SMTP id s78mr49820988ybi.75.1600666528871;
-        Sun, 20 Sep 2020 22:35:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600666528; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3750155lfq;
+        Mon, 21 Sep 2020 00:53:25 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwLIUGT/40X2MzuRdaR60cz8X8QQD27lmL2v7t5LBMfiMAF8V/DG0gRBFvspUaqsa2ApskP
+X-Received: by 2002:a17:906:6884:: with SMTP id n4mr49867969ejr.50.1600674804930;
+        Mon, 21 Sep 2020 00:53:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600674804; cv=none;
         d=google.com; s=arc-20160816;
-        b=B2H6O2dLmo7qO9ks2rDnGJQvmjvAZO/2P4HL+2azXhEnrJBmW3Ki9RBMBZBIfLq5fd
-         Yo0ejXjRgWf5QRm6rCibdjJzfBvDlvut468yn0qdqFtvg5sSIqMU0DNVrLCsgyu6E5Bt
-         gm56s5ioeFiEEon27nUhI5isAJoIDdGVwF2Fk4+/wVS8pcWrlXtFrKjBqYvpI03Jo8Ec
-         M47Vyw3D0bqEyqqrGURaGYxl067y3WICViz7WQZW0t00ZJYrUE5azKUCBsYmWISWl2vC
-         C6v2diurhlgpxei9xQHUfFmluHDLCv7JDMkVYnnpGs78PnFdT/0y5fzO+JSaj0OD5F5m
-         gMXA==
+        b=ixJ9/uo1ViBhc0v+cZgBEOIlAqCIvn4RTMq0Vj+6nT/pOU9rIY46lf4Z8c14y8mtTY
+         IxUIXu4fVc7IYtOc0616yh15yUjHsZVZFZ+PsD+/sZF/AuK8TayrMI8T5wvGcttsKuvk
+         j5amX69JqQkalWzabejo2gmC+tIRzAxKkN+1Prinkd0mGeG9CNzGD1baxQJFSOflBz5y
+         LXQRF7td4b/4UgaRv7Dv8naS7zWhwzulCmfvIgzuUXs7GsQst9Xb29+5qLgXzwU0RFMR
+         CpIuGuKrMDNIH0zaM0ucJHrOwQHSP6EDtVN6KRdeRIrBgpPwIIA2KttFkJoXB2vb0xx+
+         CQQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature;
-        bh=G0jK20Mo8U5msXJ5ovoNI3Pb0ukRMbXXD54Gwzjwb7U=;
-        b=GvR2ZM92L7XAKoE82GuipcCn1bMs0g0Eo8Qh0R9DHajAkBvmplxKFbBCHPajovY1AQ
-         MUj3XfcJ4Kt3pfRFuH7NH9D2TAUpvtHPHbhV1CVuzrFaykt4sTZtQx8mEtTtJzmyNC60
-         4pK+dTdqr6dUXwypqlkklie0SDeaKnlAf7gnbqUfwZpsWTS4YhOhgYy4jPNjzq0vvz3V
-         fX6b5HevOT+gEbS4YwKOEuZN26LNaD6lYe97h8p03WBbNckSEjWUUUoH6x4SI9XJ6vzz
-         u54T/wWVRx0cGG049Lu9bQspps4sttlfyD4PeTlp0aPkPlMHMup0ZXX3NCZ8QfhJifys
-         l8UA==
+        h=list-id:precedence:content-transfer-encoding:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:subject:dkim-signature;
+        bh=+yU0qD4mrbo+E/JHts5fvuh+XEsnmFdemkkwXFLVy4I=;
+        b=yGBYgQ9Os8TNq3TpbMartuS5kCiL6BzvBre1fMpct23IegkVGBmhjMYEjw3UuWGJbD
+         rYWmmiDw4QhG65PE8ZTvm3aDuVP8I8bad4mNdkm4PX7H9eK4DZq4VrRMRul1BMTd75Qp
+         f3cxoVjvG1P8Kz6mvuE4ZKofrvgv5N5zSnm9hJFSe0DqGRecjxwe54dGqdZwROAUb3vJ
+         WOtrwDX6r38AP7VErU4knKvWZgcW0E6I6RdTNo3oYbP2K8NUxyHr8N0y6gt6lLmD2gcN
+         KvrByfdiFGAG4oXIy2c5IVtB+7arT2HrV446WM1yuWlIlWVr0OtmOEIiraXLqD3j1txC
+         kv1w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@tencent.com header.s=s202002 header.b=c3M4xmds;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=tencent.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a36si12437732ybi.315.2020.09.20.22.35.28
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Sep 2020 22:35:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EQpmjzjs;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id o18si7254190ejg.313.2020.09.21.00.53.24;
+        Mon, 21 Sep 2020 00:53:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@tencent.com header.s=s202002 header.b=c3M4xmds;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=tencent.com
-Received: from localhost ([::1]:36124 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kKEU4-00015N-7L
-	for alex.bennee@linaro.org; Mon, 21 Sep 2020 01:35:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41584)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <haibinzhang@tencent.com>)
- id 1kKETu-000152-6P; Mon, 21 Sep 2020 01:35:18 -0400
-Received: from mail4.tencent.com ([183.57.53.109]:45049)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <haibinzhang@tencent.com>)
- id 1kKETg-0005Vi-Nn; Mon, 21 Sep 2020 01:35:07 -0400
-Received: from EX-SZ019.tencent.com (unknown [10.28.6.74])
- by mail4.tencent.com (Postfix) with ESMTP id A1AB472543;
- Mon, 21 Sep 2020 13:34:44 +0800 (CST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tencent.com;
- s=s202002; t=1600666484;
- bh=G0jK20Mo8U5msXJ5ovoNI3Pb0ukRMbXXD54Gwzjwb7U=;
- h=From:To:CC:Subject:Date:References:In-Reply-To;
- b=c3M4xmdscOFiSROq2CRNbC0DfLRWc0x0n08cjR0of45GVuypSQMaeZDf6xahyo/yq
- dL0gnXhqyo7Ctb+EO/E977a4kF3vslvzGgNwq1vBKDo3zWVEcSX4jTGuJi5E/uXv6b
- K91XqHMgiRibM3f+Vht1SOWx/rpYlt900sdat3ls=
-Received: from EX-SZ003.tencent.com (10.28.6.15) by EX-SZ019.tencent.com
- (10.28.6.74) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Mon, 21 Sep
- 2020 13:34:44 +0800
-Received: from EX-SZ006.tencent.com (10.28.6.30) by EX-SZ003.tencent.com
- (10.28.6.15) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2106.2; Mon, 21 Sep
- 2020 13:34:44 +0800
-Received: from EX-SZ006.tencent.com ([fe80::a84e:872e:7c90:2930]) by
- EX-SZ006.tencent.com ([fe80::a84e:872e:7c90:2930%2]) with mapi id
- 15.01.2106.002; Mon, 21 Sep 2020 13:34:44 +0800
-From: =?utf-8?B?aGFpYmluemhhbmco5byg5rW35paMKQ==?= <haibinzhang@tencent.com>
-To: =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: [PATCH] hw/arm/virt: use pflash image real size when mapping
-Thread-Topic: [PATCH] hw/arm/virt: use pflash image real size when mapping
-Thread-Index: AQHWj9jp3iU0W8yxW0mOeOdrWvTgGw==
-Date: Mon, 21 Sep 2020 05:34:44 +0000
-Message-ID: <811E645C-AE91-43F5-B849-3F79532E1023@tencent.com>
-References: <790EEEF3-0799-4507-BF30-DA85440E766F@tencent.com>
- <52eb89e8-3602-2a2a-df9e-66130bce4070@redhat.com>
-In-Reply-To: <52eb89e8-3602-2a2a-df9e-66130bce4070@redhat.com>
-Accept-Language: zh-CN, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [9.19.161.113]
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <B0D857B18E13534DBCD10977DE0A2FBA@tencent.com>
-Content-Transfer-Encoding: base64
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=EQpmjzjs;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726406AbgIUHxX (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Mon, 21 Sep 2020 03:53:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34916 "EHLO
+        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1726211AbgIUHxX (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Mon, 21 Sep 2020 03:53:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1600674802;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=+yU0qD4mrbo+E/JHts5fvuh+XEsnmFdemkkwXFLVy4I=;
+        b=EQpmjzjs81v9fV8L7tAI3Bb6Mb4F4Xl41lldGRZPd2NWFsd9zGS5+vtOiTh1QlFdQF+fD5
+        T91jHsxlCNujL52PkVlHQbKwFHHKkisk/tuP7U2Acg3qkytcIS5brAjFZMfEysCR4dxnxY
+        HNDbq/bGUq8U9Barr+RzuEMByPp6xYg=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-85-NEEVvtwfM5axLizBzqIYLg-1; Mon, 21 Sep 2020 03:53:18 -0400
+X-MC-Unique: NEEVvtwfM5axLizBzqIYLg-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com [10.5.11.11])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 32B551018720;
+        Mon, 21 Sep 2020 07:53:17 +0000 (UTC)
+Received: from [10.36.112.29] (ovpn-112-29.ams2.redhat.com [10.36.112.29])
+        by smtp.corp.redhat.com (Postfix) with ESMTPS id 9A1D87882C;
+        Mon, 21 Sep 2020 07:53:12 +0000 (UTC)
+Subject: Re: KVM_SET_DEVICE_ATTR failed
+To:     Zenghui Yu <yuzenghui@huawei.com>, qemu-arm@nongnu.org,
+        kvmarm@lists.cs.columbia.edu, kvm@vger.kernel.org
+Cc:     Marc Zyngier <maz@kernel.org>,
+        Alex Williamson <alex.williamson@redhat.com>,
+        wanghaibin.wang@huawei.com
+References: <1f70926e-27dd-9e30-3d0f-770130112777@huawei.com>
+From:   Auger Eric <eric.auger@redhat.com>
+Message-ID: <d0c418f2-07a2-f090-e13d-f5ea299a009b@redhat.com>
+Date:   Mon, 21 Sep 2020 09:53:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Received-SPF: pass client-ip=183.57.53.109;
- envelope-from=haibinzhang@tencent.com; helo=mail4.tencent.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/21 01:34:46
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "xtay.haibin@gmail.com" <xtay.haibin@gmail.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- Ard Biesheuvel <Ard.Biesheuvel@arm.com>, Leif Lindholm <leif@nuviainc.com>,
- Laszlo Ersek <lersek@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XLu5XW5Q4qOr
+In-Reply-To: <1f70926e-27dd-9e30-3d0f-770130112777@huawei.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: mKBwXCtzVc4o
 
-UmVzZW5kIHRoZSBtYWlsIHVzaW5nIHBsYWluIHRleHQgZm9ybWF0DQoNCj4gT24gU2VwIDE4LCAy
-MDIwLCBhdCA5OjQxIFBNLCBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqSA8cGhpbG1kQHJlZGhhdC5j
-b20+IHdyb3RlOg0KPiANCj4gQ2MnaW5nIGZpcm13YXJlIGV4cGVydHMuDQo+IA0KPiBPbiA5LzE4
-LzIwIDI6MjYgUE0sIGhhaWJpbnpoYW5nKOWvrueKs+aNo+mPgj8gd3JvdGU6DQo+PiBEZWZhdWx0
-IHNpemUgb2YgYXJtLXZpcnQgcGZsYXNoIGltYWdlIGlzIDY0TUIgd2hpY2gNCj4+IHdpbGwgY29z
-dCBleHRyYSAxMjhNQig2NE1CeDIpIG1lbW9yeSBwZXIgcWVtdSBwcm9jZXNzDQo+PiBhbmQgMTIu
-NUdCIGZvciAxMDAgcWVtdSBwcm9jZXNzZXMuIEhvc3QgbWVtb3J5IGlzDQo+PiBwcmVjaW91cyBh
-bmQgaXQgaXMgdmFsdWFibGUgdG8gcmVkdWNlIHBmbGFzaCBpbWFnZSBzaXplLg0KPj4gRm9yIGNv
-bXBhdGliaWxpdHkgYXJtLXZpcnQgdXNlcyByZWFsIHNpemUgd2hlbiBtYXBwaW5nLg0KPiANCj4g
-Rmxhc2gjMCBpcyBhIGRldmljZSBiZWNhdXNlIGV2ZW50dWFsbHkgaXRzIG1vZGVsIHdpbGwgaGFu
-ZGxlDQo+IHNlY3Rvci9ibG9jayBwcm90ZWN0aW9uLCBzbyBmaXJtd2FyZSBjYW4gZG8gQ2Fwc3Vs
-ZVVwZGF0ZQ0KPiAodXBkYXRpbmcgaXRzZWxmKS4gTWVhbndoaWxlIHlvdSBjb3VsZCB0cmVhdCBm
-bGFzaCMwIGFzIGEgcHVyZQ0KPiBST00gZGV2aWNlLi4uIEJ1dCB0aGlzIHdvdWxkbid0IGJlIHRo
-ZSAnYXJtLXZpcnQnIG1hY2hpbmUgYW55bW9yZS4NCj4gDQoNCkJ1dCBGbGFzaCMwLyMxIGFyZSBj
-b3JyZXNwb25kaW5nIHRvIHR3byByb20gTWVtb3J5UmVnaW9ucyByZWxhdGVkIHRvIG1lbW9yeSBj
-b3N0Lg0KDQpFeGFtcGxlOg0KMS4gR2V0IFFFTVVfRUZJLmZkIGFuZCBRRU1VX1ZBUlMuZmQgZnJv
-bSB0aWFub2NvcmUvZWRrMg0KDQoyLiBNYWtlIHBmbGFzaCBpbWFnZXMNCiAgZGQgaWY9L2Rldi96
-ZXJvIGJzPTFNIGNvdW50PTY0IG9mPWZsYXNoMC5pbWcNCiAgZGQgaWY9L2Rldi96ZXJvIGJzPTFN
-IGNvdW50PTY0IG9mPWZsYXNoMS5pbWcNCiAgZGQgaWY9UUVNVV9FRkkuZmQgYnM9MU0gb2Y9Zmxh
-c2gwLmltZyBjb252PW5vdHJ1bmMNCiAgZGQgaWY9UUVNVV9WQVJTLmZkIGJzPTFNIG9mPWZsYXNo
-MS5pbWcgY29udj1ub3RydW5jDQoNCjMuIFN0YXJ0IFZNDQogIHFlbXUtc3lzdGVtLWFhcmNoNjQg
-LW1hY2hpbmUgdmlydCxhY2NlbD1rdm0sZ2ljLXZlcnNpb249MyBcDQogIC1kcml2ZSBmaWxlPWZs
-YXNoMC5pbWcsaWY9cGZsYXNoLGZvcm1hdD1yYXcsdW5pdD0wLHJlYWRvbmx5PW9uIFwNCiAgLWRy
-aXZlIGZpbGU9Zmxhc2gxLmltZyxpZj1wZmxhc2gsZm9ybWF0PXJhdyx1bml0PTEgXA0KICDigKYN
-Cg0KSW4gdmlydCBtYWNoaW5lLCBWSVJUX0ZMQVNIIHNpemUgaXMgZml4ZWQgMTI4TUIgKGZpeGVk
-IDY0TUIgZm9yIEZsYXNoMCwgZml4ZWQgNjRNQiBmb3IgRmxhc2gxKS4NCkZsYXNoMCBhbmQgRmxh
-c2gxIGFyZSB0d28gQmxvY2sgQmFja2VuZCBkZXZpY2VzIGFuZCB3aWxsIGJlIGNvcGllZCBpbnRv
-IHR3byBtZW1vcnkgc3RvcmFnZXMgYWxsb2NlZCANCmluIHZpcnRfZmxhc2hfbWFwLCBub3QgZmls
-ZSBtYXBwaW5nLiBTaXplIG9mIG1lbW9yeSBzdG9yYWdlIGlzIGZpeGVkIDY0TUIuDQoNClNpbmNl
-IHNpemUgY2hlY2tpbmcsIHZpcnQgbWFjaGluZSBjdXJyZW50bHkgZG9lc27igJl0IHN1cHBvcnQg
-PDY0TUIgcGZsYXNoIGltYWdlcy4gU28sIGdldCByZWFsDQpzaXplIG9mIHBmbGFzaCBpbWFnZSBm
-aXJzdCwgYW5kIHVzZSByZWFsIHNpemUgdG8gYWxsb2MgbWVtb3J5IHN0b3JhZ2UuDQoNCkkgYWx3
-YXlzIHVzZSA4TUIgRmxhc2gwIGFuZCBGbGFzaDEsIHVzaW5nIGZvbGxvd2luZyBjb21tYW5kcw0K
-ICBkZCBpZj0vZGV2L3plcm8gYnM9MU0gY291bnQ9OCBvZj1mbGFzaDAuaW1nDQogIGRkIGlmPS9k
-ZXYvemVybyBicz0xTSBjb3VudD04IG9mPWZsYXNoMS5pbWcNCiAgZGQgaWY9UUVNVV9FRkkuZmQg
-YnM9MU0gb2Y9Zmxhc2gwLmltZyBjb252PW5vdHJ1bmMNCiAgZGQgaWY9UUVNVV9WQVJTLmZkIGJz
-PTFNIG9mPWZsYXNoMS5pbWcgY29udj1ub3RydW5jDQoNCj4+IA0KPj4gU2lnbmVkLW9mZi1ieTog
-SGFpYmluIFpoYW5nIDxoYWliaW56aGFuZ0B0ZW5jZW50LmNvbT4NCj4+IC0tLQ0KPj4gaHcvYXJt
-L3ZpcnQuYyB8IDIyICsrKysrKysrKysrKysrKysrKysrLS0NCj4+IDEgZmlsZSBjaGFuZ2VkLCAy
-MCBpbnNlcnRpb25zKCspLCAyIGRlbGV0aW9ucygtKQ0KPj4gDQo+PiBkaWZmIC0tZ2l0IGEvaHcv
-YXJtL3ZpcnQuYyBiL2h3L2FybS92aXJ0LmMNCj4+IGluZGV4IGFjZjliZmJlY2UuLjM1NDVlMTI4
-NjUgMTAwNjQ0DQo+PiAtLS0gYS9ody9hcm0vdmlydC5jDQo+PiArKysgYi9ody9hcm0vdmlydC5j
-DQo+PiBAQCAtNTAsNiArNTAsNyBAQA0KPj4gI2luY2x1ZGUgInN5c2VtdS9zeXNlbXUuaCINCj4+
-ICNpbmNsdWRlICJzeXNlbXUvdHBtLmgiDQo+PiAjaW5jbHVkZSAic3lzZW11L2t2bS5oIg0KPj4g
-KyNpbmNsdWRlICJzeXNlbXUvYmxvY2stYmFja2VuZC5oIg0KPj4gI2luY2x1ZGUgImh3L2xvYWRl
-ci5oIg0KPj4gI2luY2x1ZGUgImV4ZWMvYWRkcmVzcy1zcGFjZXMuaCINCj4+ICNpbmNsdWRlICJx
-ZW11L2JpdG9wcy5oIg0KPj4gQEAgLTEwMDEsMTAgKzEwMDIsMjcgQEAgc3RhdGljIHZvaWQgdmly
-dF9mbGFzaF9tYXAoVmlydE1hY2hpbmVTdGF0ZSAqdm1zLA0KPj4gICAgICAqLw0KPj4gICAgIGh3
-YWRkciBmbGFzaHNpemUgPSB2bXMtPm1lbW1hcFtWSVJUX0ZMQVNIXS5zaXplIC8gMjsNCj4+ICAg
-ICBod2FkZHIgZmxhc2hiYXNlID0gdm1zLT5tZW1tYXBbVklSVF9GTEFTSF0uYmFzZTsNCj4+ICsg
-ICAgaW50NjRfdCByZWFsc2l6ZTsNCj4+ICsgICAgQmxvY2tCYWNrZW5kICpibGs7DQo+PiANCj4+
-IC0gICAgdmlydF9mbGFzaF9tYXAxKHZtcy0+Zmxhc2hbMF0sIGZsYXNoYmFzZSwgZmxhc2hzaXpl
-LA0KPj4gKyAgICByZWFsc2l6ZSA9IGZsYXNoc2l6ZTsNCj4+ICsgICAgYmxrID0gcGZsYXNoX2Nm
-aTAxX2dldF9ibGsodm1zLT5mbGFzaFswXSk7DQo+PiArICAgIGlmIChibGspIHsNCj4+ICsgICAg
-ICAgIHJlYWxzaXplID0gYmxrX2dldGxlbmd0aChibGspOw0KPj4gKyAgICAgICAgcmVhbHNpemUg
-PSByZWFsc2l6ZSA8IGZsYXNoc2l6ZSA/IHJlYWxzaXplIDogZmxhc2hzaXplOw0KPj4gKyAgICB9
-DQo+IA0KPiBTdGVmYW4gcmVjZW50bHkgcG9zdGVkICJudmRpbW06IHJlYWQtb25seSBmaWxlIHN1
-cHBvcnQiIHdoaWNoDQo+IG1pZ2h0IGJlIGEgYmV0dGVyIHdheSB0byBhY2hpZXZlIHdoYXQgeW91
-IHdhbnQ6DQo+IGh0dHBzOi8vd3d3Lm1haWwtYXJjaGl2ZS5jb20vcWVtdS1kZXZlbEBub25nbnUu
-b3JnL21zZzc0MTEzNy5odG1sDQoNCkZsYXNoMCBpcyByZWFkLW9ubHkgYW5kIHNoYXJlZCBieSBh
-bGwgVk1zLCBidXQgRmxhc2gxIGlzIG5vdCBhbmQgcHJpdmF0ZSBmb3IgZWFjaCBWTS4NCg0KQnR3
-LiwgaG93IHRvIGNyZWF0ZSBhIG52ZGltbSBkZXZpY2UgbWFwcGluZyB0byBhZGRyZXNzIHJhbmdl
-IDB+MTI4TUI/DQoNCj4gDQo+PiArDQo+PiArICAgIHZpcnRfZmxhc2hfbWFwMSh2bXMtPmZsYXNo
-WzBdLCBmbGFzaGJhc2UsIHJlYWxzaXplLA0KPj4gICAgICAgICAgICAgICAgICAgICBzZWN1cmVf
-c3lzbWVtKTsNCj4+IC0gICAgdmlydF9mbGFzaF9tYXAxKHZtcy0+Zmxhc2hbMV0sIGZsYXNoYmFz
-ZSArIGZsYXNoc2l6ZSwgZmxhc2hzaXplLA0KPj4gKw0KPj4gKyAgICByZWFsc2l6ZSA9IGZsYXNo
-c2l6ZTsNCj4+ICsgICAgYmxrID0gcGZsYXNoX2NmaTAxX2dldF9ibGsodm1zLT5mbGFzaFsxXSk7
-DQo+PiArICAgIGlmIChibGspIHsNCj4+ICsgICAgICAgIHJlYWxzaXplID0gYmxrX2dldGxlbmd0
-aChibGspOw0KPj4gKyAgICAgICAgcmVhbHNpemUgPSByZWFsc2l6ZSA8IGZsYXNoc2l6ZSA/IHJl
-YWxzaXplIDogZmxhc2hzaXplOw0KPj4gKyAgICB9DQo+PiArDQo+PiArICAgIHZpcnRfZmxhc2hf
-bWFwMSh2bXMtPmZsYXNoWzFdLCBmbGFzaGJhc2UgKyBmbGFzaHNpemUsIHJlYWxzaXplLA0KPj4g
-ICAgICAgICAgICAgICAgICAgICBzeXNtZW0pOw0KPj4gfQ0KPj4gDQo+PiAtLQ0KPj4gMi4yMy4w
-DQoNCg==
+Hi Zenghui,
+
+On 9/19/20 1:15 PM, Zenghui Yu wrote:
+> Hi folks,
+> 
+> I had booted a guest with an assigned virtual function, with GICv4
+> (direct MSI injection) enabled on my arm64 server. I got the following
+> QEMU error message on its shutdown:
+> 
+> "qemu-system-aarch64: KVM_SET_DEVICE_ATTR failed: Group 4 attr
+> 0x0000000000000001: Permission denied"
+> 
+> The problem is that the KVM_DEV_ARM_ITS_SAVE_TABLES ioctl failed while
+> stopping the VM.
+> 
+> As for the kernel side, it turned out that an LPI with irq->hw=true was
+> observed while saving ITT for the device. KVM simply failed the save
+> operation by returning -EACCES to user-space. The reason is explained in
+> the comment block of vgic_its_save_itt(), though I think the HW bit
+> should actually be checked in the KVM_DEV_ARM_VGIC_SAVE_PENDING_TABLES
+> ioctl rather than in the ITT saving, well, it isn't much related to this
+> problem...
+> 
+> I had noticed that some vectors had been masked by guest VF-driver on
+> shutdown, the correspond VLPIs had therefore been unmapped and irq->hw
+> was cleared. But some other vectors were un-handled. I *guess* that VFIO
+> released these vectors *after* the KVM_DEV_ARM_ITS_SAVE_TABLES ioctl so
+> that we end-up trying to save the VLPI's state.
+> 
+> It may not be a big problem as the guest is going to shutdown anyway and
+> the whole guest save/restore on the GICv4.x system is not supported for
+> the time being... I'll look at how VFIO would release these vectors but
+> post it early in case this is an already known issue (and this might be
+> one thing need to be considered if one wants to implement migration on
+> the GICv4.x system).
+
+Thanks for reporting the issue. I will have a look at the QEMU sequence too
+
+
+Eric
+> 
+> 
+> Thanks,
+> Zenghui
+> 

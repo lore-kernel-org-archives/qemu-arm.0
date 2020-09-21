@@ -1,79 +1,80 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4253596lfq;
-        Mon, 21 Sep 2020 12:41:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxxc7nTECEDGKm0ICu6JM3mzwp91P9fcKQ3pkVeqMV4FHYuoEIRBWAMlmRWJmfZkxOmzziV
-X-Received: by 2002:a25:aaae:: with SMTP id t43mr1974430ybi.404.1600717294590;
-        Mon, 21 Sep 2020 12:41:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600717294; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4255699lfq;
+        Mon, 21 Sep 2020 12:44:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxc0kwU8piofwVCVgUeBfQYH9os7LiDH+418iKoTejj8EDv9HnR2WZFXpe+dGeuqZp9dDMR
+X-Received: by 2002:a5b:bd0:: with SMTP id c16mr2003996ybr.290.1600717496521;
+        Mon, 21 Sep 2020 12:44:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600717496; cv=none;
         d=google.com; s=arc-20160816;
-        b=vWX4gFCUu2rCB/US5Xvzw4cKr/IZe3JqyJ0R2c1N7F7S/+Ie3u/yq5w2YDUHYXTr5e
-         bQieRx3Pz88q7BTXYrqHL110l15YfK24UsDIwdeL9ednkmJ4s5SSoRB0QZ65HvDURFqj
-         mTlJWTMaYoFq1SuUPbB3nYZM9Xz1tx0/rpZmXhM+pHhhYhfs8hKdspHNDPcnNENAuJSj
-         ygbggYCt/UJlup95yirhSYfe9j0hc2EnZDF3nyoCFKfWvRLpKoN6tyn8K+HtzbgVVZbu
-         V8xytkHkZR03D+s6M0qC1hmsvEsuSinMwJa6Qu7GRvPruxozeQ/2CwRG5hhsENchxT6a
-         ObZA==
+        b=JIfjTBZRATomF6X6z00Cah6bLBKCIYieZZSNXCrWgVUeHsciplOtH4+4LKhV60tJ8s
+         M9JLXJZWn1CQvZc/Ib9tBVTaJv2pOmtDMyLw4LkOe8KICywF3WqWx+7pNs3oJkuXEUBW
+         vR26oPOo3jYh8bWjwzyxP/3ibWuCF7QKsfvPGdflwIbnFW5sb4W++v3SixBRr6PmNOHv
+         fNwzQYwkvrdp/PxjCumwLeV4AIsN/3VoDkTgvHc4fQq9CiInYlbLlKQav1/d6Xv0YLzh
+         iAaBzL+bW0WrFtGW7B/GzRRcJ7nKRimEz6PZbPCHYdleeMRz7HpYs8q2ypFiDGC9PTKk
+         ET8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=SJhzqHGenUT2igcwbjLJQqVVKAgdEOLOrVJsUbOHY6U=;
-        b=KOxfJWx2AA0IyWljG4S+x8yTgGI4tdPthGvXKNzRwvllxVI/BVcie63n6VR122XCFk
-         GFAaoHUfJhCslxXJZa+HHKtAoG7C0V6hM0afwrSFYUMc/Wh+nyQ/FSjMdPMcR6OBUga/
-         lH3NUNxx5NJf706/3CvHso1iEM57WBO67TMBxIpebFMQDBNINJvd/MlOwJ3kCVT3L6t1
-         q2EUUGPvkmIjKdi9tlvwOYlzmdW7oj+VcOtc56xevkPLqXNvKmLxLzDo6BGCgdz0IpaD
-         GSVnDkkZGQUffbgRhHSAZcYocK7+RCA/zAbl9fEs/dQMuP357VyYXGUxnrs0O255JVW1
-         CnMg==
+        bh=YxJBix3d7PhTD31XVGO0NuBDtpjiRRtoggn07D34y1M=;
+        b=w57YpUNxAU1daj1WUrmS7ecJYaJdZiUz0ip1uZ5HThTOhSmIjQcJ7Mj5bW3LXCEopd
+         jsOj7EzlW1JfObd3oGPVpeXAfDBpU0MzOMAnv9oM6Bji6oe3laM9yfyCAGvwzdHL1Aie
+         6tRnVzF7ynbVGCTCydGSf4pq4rD7xvxhyhHOHpQcsa4Im4AopBDpbt1qV4Fp4It8kQWk
+         0e/wdtWFrq2jzQMg7KPVfWjf8R7jDcWpT1TKx3lH+sWfiNIEe9MK1wxHfo6/NxzNUmdf
+         NbsJ13bCr6NAVU0BQj3y6HtoDHHWZl4Q2KKzqI3Xt53OO/eGk3yK0EBl0GiBgm9P6l8i
+         uxNA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=1g4iVbCf;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=ZA5GmhWw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 130si11988372ybw.444.2020.09.21.12.41.34
+        by mx.google.com with ESMTPS id d12si14756331ybc.287.2020.09.21.12.44.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Sep 2020 12:41:34 -0700 (PDT)
+        Mon, 21 Sep 2020 12:44:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@greensocs.com header.s=mail header.b=1g4iVbCf;
+       dkim=fail header.i=@greensocs.com header.s=mail header.b=ZA5GmhWw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:56090 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kKRgr-0001bi-RJ
-	for alex.bennee@linaro.org; Mon, 21 Sep 2020 15:41:34 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50640)
+	id 1kKRk7-0002tK-QG
+	for alex.bennee@linaro.org; Mon, 21 Sep 2020 15:44:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51746)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1kKRgH-0001ae-2B; Mon, 21 Sep 2020 15:40:57 -0400
-Received: from beetle.greensocs.com ([5.135.226.135]:40598)
+ id 1kKRij-0002sb-Ns; Mon, 21 Sep 2020 15:43:29 -0400
+Received: from beetle.greensocs.com ([5.135.226.135]:40732)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc.michel@greensocs.com>)
- id 1kKRgF-0007zu-BR; Mon, 21 Sep 2020 15:40:56 -0400
+ id 1kKRii-0008RW-2I; Mon, 21 Sep 2020 15:43:29 -0400
 Received: from [172.17.10.14] (unknown [172.17.10.14])
- by beetle.greensocs.com (Postfix) with ESMTPSA id E994D21CC5;
- Mon, 21 Sep 2020 19:40:50 +0000 (UTC)
+ by beetle.greensocs.com (Postfix) with ESMTPSA id 86C2121CBD;
+ Mon, 21 Sep 2020 19:43:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=greensocs.com;
- s=mail; t=1600717251;
+ s=mail; t=1600717405;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SJhzqHGenUT2igcwbjLJQqVVKAgdEOLOrVJsUbOHY6U=;
- b=1g4iVbCfHMycB7ABVES038Y/m+7wh/OWHJMsmtlhOcDzBlEL/wsvkHDICXWIO86wxGXA/x
- 1u/wAYXP1ooOBwYunlHMTiCWlI/q0X9zLOvkf4mUH9hcJI/4O6bYG5+gVkowsFD+WReFBD
- AbpQxGLpve7Q+6jE900h3IUzPtqCbyw=
-Subject: Re: [PATCH v2 1/5] hw/intc/bcm2835_ic: Trace GPU/CPU IRQ handlers
+ bh=YxJBix3d7PhTD31XVGO0NuBDtpjiRRtoggn07D34y1M=;
+ b=ZA5GmhWwsmmbZe6fei/MKCg8TO6o50eRdwAr4wb2SXt95ZjMlnQU8pNx/vo+nP/ntAntPH
+ AngUsO/1HMIuCwvsxMGDzKFTuQe7idTtI36WuK5fxRvMNS7TeOyfeH/U4bpYNtO8RKcJaY
+ TZakpW0+gqaIZvtfH8e1yQDiihdwpZM=
+Subject: Re: [PATCH v2 3/5] hw/timer/bcm2835: Rename variable holding
+ CTRL_STATUS register
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
  qemu-devel@nongnu.org
 References: <20200921035257.434532-1-f4bug@amsat.org>
- <20200921035257.434532-2-f4bug@amsat.org>
+ <20200921035257.434532-4-f4bug@amsat.org>
 From: Luc Michel <luc.michel@greensocs.com>
-Message-ID: <36eba17d-58a9-3521-7c6a-aec211819232@greensocs.com>
-Date: Mon, 21 Sep 2020 21:41:45 +0200
+Message-ID: <e1835d9c-4380-6f5c-23be-5ddbe1bf8077@greensocs.com>
+Date: Mon, 21 Sep 2020 21:44:19 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.12.0
 MIME-Version: 1.0
-In-Reply-To: <20200921035257.434532-2-f4bug@amsat.org>
+In-Reply-To: <20200921035257.434532-4-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -105,66 +106,73 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Paul Zimmerman <pauldzim@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nbT9dbdBm82+
+X-TUID: m+8261lbtDIk
 
 On 9/21/20 5:52 AM, Philippe Mathieu-Daudé wrote:
-> Add trace events for GPU and CPU IRQs.
+> The variable holding the CTRL_STATUS register is misnamed
+> 'status'. Rename it 'ctrl_status' to make it more obvious
+> this register is also used to control the peripheral.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 
 > ---
->   hw/intc/bcm2835_ic.c | 4 +++-
->   hw/intc/trace-events | 4 ++++
->   2 files changed, 7 insertions(+), 1 deletion(-)
+>   include/hw/timer/bcm2835_systmr.h | 2 +-
+>   hw/timer/bcm2835_systmr.c         | 8 ++++----
+>   2 files changed, 5 insertions(+), 5 deletions(-)
 > 
-> diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c
-> index 53ab8f58810..9000d995e81 100644
-> --- a/hw/intc/bcm2835_ic.c
-> +++ b/hw/intc/bcm2835_ic.c
-> @@ -18,6 +18,7 @@
->   #include "migration/vmstate.h"
->   #include "qemu/log.h"
->   #include "qemu/module.h"
-> +#include "trace.h"
+> diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
+> index 11272837a6b..e0db9e9e12b 100644
+> --- a/include/hw/timer/bcm2835_systmr.h
+> +++ b/include/hw/timer/bcm2835_systmr.h
+> @@ -29,7 +29,7 @@ struct BCM2835SystemTimerState {
+>       qemu_irq irq;
 >   
->   #define GPU_IRQS 64
->   #define ARM_IRQS 8
-> @@ -51,7 +52,6 @@ static void bcm2835_ic_update(BCM2835ICState *s)
->       set = (s->gpu_irq_level & s->gpu_irq_enable)
->           || (s->arm_irq_level & s->arm_irq_enable);
->       qemu_set_irq(s->irq, set);
-> -
->   }
+>       struct {
+> -        uint32_t status;
+> +        uint32_t ctrl_status;
+>           uint32_t compare[BCM2835_SYSTIMER_COUNT];
+>       } reg;
+>   };
+> diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
+> index ff8c5536610..b234e83824f 100644
+> --- a/hw/timer/bcm2835_systmr.c
+> +++ b/hw/timer/bcm2835_systmr.c
+> @@ -30,7 +30,7 @@ REG32(COMPARE3,     0x18)
 >   
->   static void bcm2835_ic_set_gpu_irq(void *opaque, int irq, int level)
-> @@ -59,6 +59,7 @@ static void bcm2835_ic_set_gpu_irq(void *opaque, int irq, int level)
->       BCM2835ICState *s = opaque;
+>   static void bcm2835_systmr_update_irq(BCM2835SystemTimerState *s)
+>   {
+> -    bool enable = !!s->reg.status;
+> +    bool enable = !!s->reg.ctrl_status;
 >   
->       assert(irq >= 0 && irq < 64);
-> +    trace_bcm2835_ic_set_gpu_irq(irq, level);
->       s->gpu_irq_level = deposit64(s->gpu_irq_level, irq, 1, level != 0);
->       bcm2835_ic_update(s);
->   }
-> @@ -68,6 +69,7 @@ static void bcm2835_ic_set_arm_irq(void *opaque, int irq, int level)
->       BCM2835ICState *s = opaque;
+>       trace_bcm2835_systmr_irq(enable);
+>       qemu_set_irq(s->irq, enable);
+> @@ -52,7 +52,7 @@ static uint64_t bcm2835_systmr_read(void *opaque, hwaddr offset,
 >   
->       assert(irq >= 0 && irq < 8);
-> +    trace_bcm2835_ic_set_cpu_irq(irq, level);
->       s->arm_irq_level = deposit32(s->arm_irq_level, irq, 1, level != 0);
->       bcm2835_ic_update(s);
->   }
-> diff --git a/hw/intc/trace-events b/hw/intc/trace-events
-> index 527c3f76cae..22782b3f089 100644
-> --- a/hw/intc/trace-events
-> +++ b/hw/intc/trace-events
-> @@ -199,3 +199,7 @@ nvic_sysreg_write(uint64_t addr, uint32_t value, unsigned size) "NVIC sysreg wri
->   heathrow_write(uint64_t addr, unsigned int n, uint64_t value) "0x%"PRIx64" %u: 0x%"PRIx64
->   heathrow_read(uint64_t addr, unsigned int n, uint64_t value) "0x%"PRIx64" %u: 0x%"PRIx64
->   heathrow_set_irq(int num, int level) "set_irq: num=0x%02x level=%d"
-> +
-> +# bcm2835_ic.c
-> +bcm2835_ic_set_gpu_irq(int irq, int level) "GPU irq #%d level %d"
-> +bcm2835_ic_set_cpu_irq(int irq, int level) "CPU irq #%d level %d"
+>       switch (offset) {
+>       case A_CTRL_STATUS:
+> -        r = s->reg.status;
+> +        r = s->reg.ctrl_status;
+>           break;
+>       case A_COMPARE0 ... A_COMPARE3:
+>           r = s->reg.compare[(offset - A_COMPARE0) >> 2];
+> @@ -82,7 +82,7 @@ static void bcm2835_systmr_write(void *opaque, hwaddr offset,
+>       trace_bcm2835_systmr_write(offset, value);
+>       switch (offset) {
+>       case A_CTRL_STATUS:
+> -        s->reg.status &= ~value; /* Ack */
+> +        s->reg.ctrl_status &= ~value; /* Ack */
+>           bcm2835_systmr_update_irq(s);
+>           break;
+>       case A_COMPARE0 ... A_COMPARE3:
+> @@ -133,7 +133,7 @@ static const VMStateDescription bcm2835_systmr_vmstate = {
+>       .version_id = 1,
+>       .minimum_version_id = 1,
+>       .fields = (VMStateField[]) {
+> -        VMSTATE_UINT32(reg.status, BCM2835SystemTimerState),
+> +        VMSTATE_UINT32(reg.ctrl_status, BCM2835SystemTimerState),
+>           VMSTATE_UINT32_ARRAY(reg.compare, BCM2835SystemTimerState,
+>                                BCM2835_SYSTIMER_COUNT),
+>           VMSTATE_END_OF_LIST()
 > 

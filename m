@@ -1,94 +1,93 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3751917lfq;
-        Mon, 21 Sep 2020 00:57:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyocQPlX+PJ9Hp5YN//i2x7rwnq/Nv+wSV+u890eHoxEAUaRkiFK70cm7bEtVftGOwRQfWR
-X-Received: by 2002:a25:5346:: with SMTP id h67mr27504395ybb.420.1600675035461;
-        Mon, 21 Sep 2020 00:57:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600675035; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3752442lfq;
+        Mon, 21 Sep 2020 00:58:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzDMSCwvQSYu59nBDT14d0Lmd724tdqIhr07L43XVepPVYAgnY7rog2w4OZ20N6Cd7Yoe8M
+X-Received: by 2002:a25:b111:: with SMTP id g17mr65817104ybj.483.1600675101175;
+        Mon, 21 Sep 2020 00:58:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600675101; cv=none;
         d=google.com; s=arc-20160816;
-        b=mS5VOWhA5VFC+TsP/fH5vpxQQwgAL6F/V7ko0Qm7JQ/Gl/aj/ISzlNaHkG6ju6D3fo
-         8gyplzRwcubPoEXrC5HwNbcnNddvcT71hw76ib8XrVQ+xuIMwTSl1BkCORga9kEJG9dE
-         jJYVHaFIrFznvdX+KiCWe6M8RM9iOe0VHFixld7DOL0e47cxPqXXH48/KlGb2WwDrRIv
-         Zv8ZpR3mjLO5hRqV9Bk7LkM90XLh62b6b22FwDCE0KA9WKuHcolzvgan9zUmTmSCRIwc
-         MsXYiesrcYvDag6+L/3DuN5U8qeCGGSxSPkvax9lEhM9d5OluwqTH20VlAchhF+E9GG+
-         yY2A==
+        b=VQ14YYoRXyIdSlrL4ixIfsVqYPDBL1tUvFmL9oowjXvLOHiCIza86iXAUDgy9iMvMs
+         6Tz7feB8+fEqs5ubXhiyWPoMhtmvQ/XqLCTdLogSkbjSPXH1f2Q1QlYJkEiUvo3Aumsf
+         SGskOd5tkw3j/CAKdfIz583+bQUZjijkoddcR3P6Afe7vgv/qNkghQUn0GWnVFETuUXT
+         NGgfUD1m7nlmk+eGqESUqIAH4F82Qc56Fcw+jBqmnOcfPzTeOSWssj96blCN+JskV9Po
+         fMJRMz0Sbk+JDYBwOX9XLNRtE/1EuO9EV6/wJGX9vTX04Si6Npd5aAiyjQRZ1NzEDID4
+         Zaxw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bdvjopkTSWyYlzzNIYBWFkPl2GYS4eTOsFgqMfsz/M4=;
-        b=Ba0tv7x3uivzdsglzjuPUajDITa7liqWgWyVsz7vNH9CBMcSQVesiLa20cnVqejO2w
-         WE0EIYM031HjSTJwGYkpFrBaC9KRtmyfBU87Y9oeZ8PbxvELp0W0QFEU/vpeSDgBP8/1
-         HBcTGb1wWV+cncpWfbnu1zwagF2PhCKNFnyMuLmDd8hauZKvsnLoG3ERqQZSnEcg0PRM
-         EVFVmBESsA2NOib2QEezj7uwLC0y46x2X16x8zg8qxNmFE/xriz/fldyxnewAkRMpdeb
-         +V8+B3SDSDPQIYs2R1TzjjxcLpldH5QDladVAuMom5hAm0a8Qszt6Cr60CrH0+HPnEOA
-         k1AA==
+        bh=JjzDLZKocLNXbXwLaMQHkkBQ+3Bkq4AUITFlMs6JsJw=;
+        b=C2lSxlmkFNEf5uLc6ri1SzvtxER7BzjXS0SZiCJdCnd/qS7SVrAJqYNd8Zvp5oJha/
+         9SvfY4OgMY55Vg7TRmexDvhiHn2tWimb1WzAkromOMkigqm8qt6EBoXNnZHIOF2UVeAp
+         R1TSSkuvWL8B6+54+QtruYEDo+eJcLgyLi1Wft4DRyUXD7gjDA3m2ZlRTLUsseKAbYra
+         y3GcBgNMH2F6LCVx95TzS3e7hkbU8SoCNCu5ywJZFu3QAAQ6ymmRy408Pzz7flMAhPnC
+         iaQgWkZ7/KIFtt42b5WxkoZLYFvMkjdnAsWk+iZhOpjPhblrPpF2vcGUSYr+rXfi5Fgs
+         3wYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AacNfGaI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IHC8jDSZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e9si9053893ybk.385.2020.09.21.00.57.15
+        by mx.google.com with ESMTPS id y139si12199615yby.193.2020.09.21.00.58.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Sep 2020 00:57:15 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 21 Sep 2020 00:58:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AacNfGaI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=IHC8jDSZ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49940 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52314 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kKGhG-000568-SZ
-	for alex.bennee@linaro.org; Mon, 21 Sep 2020 03:57:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42090)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kKGiK-00063N-IH
+	for alex.bennee@linaro.org; Mon, 21 Sep 2020 03:58:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41976)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kKGgl-0004Vh-Fx; Mon, 21 Sep 2020 03:56:44 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:38909)
+ id 1kKGge-0004Tg-J9; Mon, 21 Sep 2020 03:56:40 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:55636)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kKGgj-0005uW-2Q; Mon, 21 Sep 2020 03:56:43 -0400
-Received: by mail-wm1-x341.google.com with SMTP id l9so11520634wme.3;
- Mon, 21 Sep 2020 00:56:39 -0700 (PDT)
+ id 1kKGgc-0005th-I2; Mon, 21 Sep 2020 03:56:35 -0400
+Received: by mail-wm1-x341.google.com with SMTP id d4so11137889wmd.5;
+ Mon, 21 Sep 2020 00:56:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bdvjopkTSWyYlzzNIYBWFkPl2GYS4eTOsFgqMfsz/M4=;
- b=AacNfGaIGNK+5xuW8s1l0Qd+TpoVrU/nTYtNc+F7NhNK9yos+VwG5vzFcRyiYaFncc
- SkPVDbP4U5Bp7OLoJ42D+E59fruC+WJYfr5DytUvXXS8VJvqr7OdrDn8IvBU2FRp4564
- iJadkEPZuDyXkiUHnQnMkPupKeVOoYSsd6266ZfBHjGeV7tIuKClIw/5Dv1WY4aTgidS
- IZ2ej/wT+uu+dz2K0IlnKS+F4b49sd9+Du9qMc7yIIOg/IhTCyhRR4vNob5x0ZbU2rio
- gIctGbcsO30NG8Gnu6cubOU5upZt7MYNeMLWZebAsjxTRy8dkY0IDiqCG4nWcBe5+6x8
- /g6A==
+ bh=JjzDLZKocLNXbXwLaMQHkkBQ+3Bkq4AUITFlMs6JsJw=;
+ b=IHC8jDSZnQUPjMl9lRKd539CmVZ1hVNPFuEPK+oWYapd3NuIH7t8XLuxG0OTGJ66T9
+ TNj9zMJ/zVqxfqF3TVzfQSXjH9nKYC4OMyZ7tgJOPFdGNaDYaWUQ95rcbmBN/G6qWlzO
+ Q++ndGjzft3lNVaelaXKFFI87P9fPDrjOtutufoaSXYt+/P5E9okGouRE46kkZvpOdiz
+ OnQbR6aTSoAm/skEB0Oly0+0prtcufibcp6ysZa3WV445AhOxoPfjzhQEgQyTICJ6xoJ
+ 8sNP7v7QeGqcR7CEtGkLBRES7Zjb1bVIoDXsoU46uaILClMz1RxJnlAzeu2w0fSL0Pzi
+ tEOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=bdvjopkTSWyYlzzNIYBWFkPl2GYS4eTOsFgqMfsz/M4=;
- b=GWN8mr2JuT3vmskU98JZV0uPqDurgjH2AIqCO1iHIldwXgWF1EMsd5gzL103N7X9k+
- +rbF7lYgauhxzQF72gnS4HWwn/ohUKL6Ht4NJ3LAZ8xEMpaLYnb7xBHJZLhIb7bfZCGV
- 8Mb6j0KzbP0yUc9V/VnEpf2aFb2dHTCWnXLFZ3YN8nCHXx6+EktfHh6/w+eJmEpOfmcU
- aDGUOa9BEgaxyyqtVnFTsbZAp3aq5TlaNFPx9a9zHi55CpASAztnB4dd0OFxRY/281vh
- +am1hHQVWHv1fMqrQKB3lWF8VwdOf/Z130RPOtEy/7Lx82rt5yhR97h71zNREs5JUJYI
- 91jQ==
-X-Gm-Message-State: AOAM5304VyvYq3Zam1+TenID5QDq6TvTliWoCYmQhCDIzzrN98IiSxND
- F7DTyuk7NKrPYqmmZC1OzdMPPpMj25g=
-X-Received: by 2002:a7b:c92c:: with SMTP id h12mr28912799wml.121.1600674998178; 
- Mon, 21 Sep 2020 00:56:38 -0700 (PDT)
+ bh=JjzDLZKocLNXbXwLaMQHkkBQ+3Bkq4AUITFlMs6JsJw=;
+ b=WeSc4QtWS/+348uBRcVC5Z7uZpQEplsWvPMCKplY/Vz6Vl0AkocV3xBpRfX2l2/w0g
+ 0emfUcqtFCUwiq3jByMYH/FEVh3pCssyFffGcEKQQ2j5eyRxYLDKpP3yIlL81wnKHRyi
+ 9trZ19iMTpCWlOnI/4Qy23ilnT6I1rpyRVLpFGAWcQITTxXZo2nNvvzS7BKpWvTGbvVC
+ C9u7omaO+0AbVAiKJsQQGle5d99fquPPGgPE8AgYFjWij9dESWzyD3PA68uXDR8+BcnK
+ uAlTv8fyNvSgAGkd2ZSzGGuzuiy4zJ/NNEK8lLYAoQWNrRmY0X/LU3KG5YCQDwGnNEIR
+ EKQw==
+X-Gm-Message-State: AOAM533ZxHGmS6Y3x1XMmOdOmhKvx83+wvtjrAf6q3fuRITlNMT+qMZw
+ dMyKGMyeGRz8DSBdDt45KnlBiCSQPf8=
+X-Received: by 2002:a1c:7f14:: with SMTP id a20mr29369727wmd.95.1600674992712; 
+ Mon, 21 Sep 2020 00:56:32 -0700 (PDT)
 Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net.
  [83.57.170.65])
- by smtp.gmail.com with ESMTPSA id o15sm17807538wmh.29.2020.09.21.00.56.37
+ by smtp.gmail.com with ESMTPSA id o15sm17807538wmh.29.2020.09.21.00.56.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2020 00:56:37 -0700 (PDT)
+ Mon, 21 Sep 2020 00:56:32 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 7/8] hw/arm/raspi: Use RaspiProcessorId to set the firmware
- load address
-Date: Mon, 21 Sep 2020 09:56:27 +0200
-Message-Id: <20200921075628.466506-8-f4bug@amsat.org>
+Subject: [PATCH v3 2/8] hw/arm/raspi: Load the firmware on the first core
+Date: Mon, 21 Sep 2020 09:56:22 +0200
+Message-Id: <20200921075628.466506-3-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200921075628.466506-1-f4bug@amsat.org>
 References: <20200921075628.466506-1-f4bug@amsat.org>
@@ -109,28 +108,30 @@ X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Paul Zimmerman <pauldzim@gmail.com>, qemu-arm@nongnu.org,
  Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xdAGrimmo1N7
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Kh9eC2qdokLV
 
-The firmware load address depends of the SoC ("processor id") used,
-not of the version of the board.
+The 'first_cpu' is more a QEMU accelerator-related concept
+than a variable the machine requires to use.
+Since the machine is aware of its CPUs, directly use the
+first one to load the firmware.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
@@ -138,19 +139,26 @@ Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 0d8e5a34c78..ae98a2fbfca 100644
+index 46d9ed7f054..8716a80a75e 100644
 --- a/hw/arm/raspi.c
 +++ b/hw/arm/raspi.c
-@@ -238,7 +238,8 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
-      * the normal Linux boot process
-      */
-     if (machine->firmware) {
--        hwaddr firmware_addr = version == 3 ? FIRMWARE_ADDR_3 : FIRMWARE_ADDR_2;
-+        hwaddr firmware_addr = processor_id <= PROCESSOR_ID_BCM2836
-+                             ? FIRMWARE_ADDR_2 : FIRMWARE_ADDR_3;
-         /* load the firmware image (typically kernel.img) */
-         r = load_image_targphys(machine->firmware, firmware_addr,
-                                 ram_size - firmware_addr);
+@@ -205,6 +205,7 @@ static void reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
+ 
+ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+ {
++    RaspiMachineState *s = RASPI_MACHINE(machine);
+     static struct arm_boot_info binfo;
+     int r;
+ 
+@@ -253,7 +254,7 @@ static void setup_boot(MachineState *machine, int version, size_t ram_size)
+         binfo.firmware_loaded = true;
+     }
+ 
+-    arm_load_kernel(ARM_CPU(first_cpu), machine, &binfo);
++    arm_load_kernel(&s->soc.cpu[0].core, machine, &binfo);
+ }
+ 
+ static void raspi_machine_init(MachineState *machine)
 -- 
 2.26.2
 

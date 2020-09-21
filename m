@@ -1,135 +1,198 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3368617lfq;
-        Sun, 20 Sep 2020 12:21:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxYUoYigW77y0FR5kSqraJb869bx+gEMvW4hyYCKi/FLaneRb1F4KmLzK2Kka6gtb6gC5Ge
-X-Received: by 2002:a25:7287:: with SMTP id n129mr6835482ybc.90.1600629689642;
-        Sun, 20 Sep 2020 12:21:29 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z15si11422855ybk.319.2020.09.20.12.21.29
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 20 Sep 2020 12:21:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3621396lfq;
+        Sun, 20 Sep 2020 20:47:32 -0700 (PDT)
+X-Received: by 2002:a05:600c:245:: with SMTP id 5mr28789790wmj.33.1600660052320;
+        Sun, 20 Sep 2020 20:47:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600660052; cv=none;
+        d=google.com; s=arc-20160816;
+        b=pntqe46cCSZr21oGGQOnNa/oipNXLZU69iTuGl27QDnt4pYGB9y4XETZ2TC8urdaka
+         Am5mkDsjNtbYBTgDTHNeCy/JtL4vrBcv5zgHGxubgtM5nnqKGteg0Mzvo5MDaibnHhKE
+         Hmpms/r8iccV5t0KI1EPlyp4bMuqbWfCD+yPzs5rHsIagyeRGgC27+3XoOZNbRsl1mlX
+         78p4iGur9nXJ8iOzZRXKDCergqJEmf/cUKyCBooGPZIVRUocKGE2Rz7EoJTw/hB6Bfta
+         ueLq3K6y1OUU6Acu+30DFmLYnVEXviE6gW+relAXph4UfXKIvNgHw7s4s5NY8mfZpAhS
+         YRTA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:sender:dkim-signature;
+        bh=gjFOw5Zj9oE5Q4kDhKw5pc8BNx41CMef2pSlNT1oQak=;
+        b=VTHiv4tzQtiUH78nHRKZOtR+Vq72eyIQszcl/H0GuBiuUhVpjKh6R7hYxIbzBfV5K5
+         9eOGarNsbPfVEsV2sLgHkZDvFGlyWfiLX/PwQKsN0WAPt/18ByRRz3rO8Wtcrg9XzbIv
+         fwh256Nh1vk0VQpIzfWpj5hIz72/SkofkR/d1JMPbeJ98c2+i9KXsxoqIwLYg+7n7e39
+         vSXUc8+NFiSgnuy4O+zsyOMDs01eCO3LC06FRIxoWLtampQJdJteqwfmZ7Y3szuD2a9E
+         horWY5Oevk/zoY8cNsRwpM/vbML6tsFqIel+SE00dA3EGkw/B31MoKVPaNN5ltFuWevM
+         lfbA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PqFk3RfY;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id h2sor5035870wmm.21.2020.09.20.20.47.32
+        (Google Transport Security);
+        Sun, 20 Sep 2020 20:47:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36004 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kK4tt-0000Vw-2P
-	for alex.bennee@linaro.org; Sun, 20 Sep 2020 15:21:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36390)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kK4tZ-0000VK-SI; Sun, 20 Sep 2020 15:21:09 -0400
-Resent-Date: Sun, 20 Sep 2020 15:21:09 -0400
-Resent-Message-Id: <E1kK4tZ-0000VK-SI@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21717)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kK4tX-0004D7-GS; Sun, 20 Sep 2020 15:21:09 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1600629653; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=JHSyG1Q17JjCWARZQGTYtqJNxtfXtdW9OFiJ3B7UZ2o2rhSTrk4MLA8IT0vh+9gxxdrRHaFQlUfWOvKeERZoCi2HaTjxAYhEipdBk/yRGm12IMx/yzje+Yr9ViU8pDqWW26J5eUEbp/YkJnk8eW+xX64QZZFi+xb94bcLsl6nKw=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1600629653;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=rnMz9lyYv1IQKm6/ZbDUT6i8GWfmeDTtqWBBUq/02Fw=; 
- b=A5a2ef5/AmbGbcPXmJBCLWh9rXPEcN6VvoYNzzp5KpgAIFCPfdC3t+dfSw7nTLtYj1iny5HM1x+ARk+i//MxDxL9KAIeYQD4WB9t4Fv9qvirDECdq9UI9BaFgw3AS31N/zaG+15wgYkYPmPDwXPN6JUc1XXqUA35F+SKdbkzCOY=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1600629650358653.2532792225796;
- Sun, 20 Sep 2020 12:20:50 -0700 (PDT)
-Subject: Re: [PATCH 0/7] hw/arm/raspi: Fix SYS_timer on Linux + misc changes
-Message-ID: <160062964873.23907.1805407191412457120@66eaa9a8a123>
-In-Reply-To: <20200920175825.417680-1-f4bug@amsat.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PqFk3RfY;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=gjFOw5Zj9oE5Q4kDhKw5pc8BNx41CMef2pSlNT1oQak=;
+        b=PqFk3RfYkE2fEY9sQUESGF65cG8IP119Nf4csUpfi7MtCsn4Xtg18uhd1j0e3cOqMb
+         jIHpLvJHxlcNe0d8X2tfNGl+wZhsVbzeP3c+QkfiTVHpPKx03E9j9JA2QmVM/3rgcIk9
+         RSZwdJADuz9vcZw79UaGBO5Oj8FbGleRTN3FEo2Yw5OlztJScQ4Vdqv9m2b5+3uf8EJ6
+         4y2uZh7vqoJFLUIyxEBqsEgms+uCi5v41Vsn+vEocURaAoh0q9uzocWcX88XYT40cXag
+         oEIK6dr3TpkXJXEGohSJA+6TXpikEsJ43HhzlKRy5pgg53+tk7f4eo3O2OiIQkMpliIN
+         j8aw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+         :in-reply-to:references:mime-version:content-transfer-encoding;
+        bh=gjFOw5Zj9oE5Q4kDhKw5pc8BNx41CMef2pSlNT1oQak=;
+        b=m7BBnHooOtaBIlh8fSCQfZ3nbedcICXUPlo9c8h25j0VM2V3cz7glOS598wNX2BgMC
+         YaLVvDjPvId2URotELnwjD0a+5o71h/R+m5UBHeY4X9Y0PoZgqWcHdTaoIIx8n2TgQsU
+         kfiD1u2jylWShvNSjeQDccEsdURC3JJGn0m6oZ/X9kKZVnQXhkfK/b8PZCYovQOof0Xr
+         89WMP4RbslzX6NTfbT/sN3OkJQOhfILjURIVP3fUknQLGpr1W5S453PBZSMNlubyOFVN
+         xISsCyyrtuZ/0nnQ7TzgXJwyuzWaLCbLmPqpmdPnpKZkn7LmfhL/U+09IPLawj8gHDyN
+         d5pQ==
+X-Gm-Message-State: AOAM533tPDeakYFa16F9D0zk1GQWcmilN9I95/3UzBUKhuo+yNe3p4ql
+	2a5/LfEcxJkekVWXvqbgO7edT7j6Rv0=
+X-Google-Smtp-Source: ABdhPJwPIRGpy2AfIzFVhHI1+Yxk1V6zMZRSV5kganUbl/5TBTptK9Wlx7cXxhCY7AWTi5hGrLgiEQ==
+X-Received: by 2002:a05:600c:410e:: with SMTP id j14mr29335293wmi.13.1600660052083;
+        Sun, 20 Sep 2020 20:47:32 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from localhost.localdomain (65.red-83-57-170.dynamicip.rima-tde.net. [83.57.170.65])
+        by smtp.gmail.com with ESMTPSA id u63sm11751440wmb.13.2020.09.20.20.47.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 20 Sep 2020 20:47:31 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Cc: Paul Zimmerman <pauldzim@gmail.com>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+	Andrew Baumann <Andrew.Baumann@microsoft.com>,
+	Luc Michel <luc.michel@greensocs.com>,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH 1/3] hw/arm/raspi: Define various blocks base addresses
+Date: Mon, 21 Sep 2020 05:47:27 +0200
+Message-Id: <20200921034729.432931-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200921034729.432931-1-f4bug@amsat.org>
+References: <20200921034729.432931-1-f4bug@amsat.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: f4bug@amsat.org
-Date: Sun, 20 Sep 2020 12:20:50 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/20 14:03:11
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-devel@nongnu.org,
- Andrew.Baumann@microsoft.com, pauldzim@gmail.com, nieklinnenbank@gmail.com,
- qemu-arm@nongnu.org, luc.michel@greensocs.com, f4bug@amsat.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cLAxoPqK3RuV
+Content-Transfer-Encoding: 8bit
+X-TUID: WUECgLEvmMh6
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkyMDE3NTgyNS40MTc2
-ODAtMS1mNGJ1Z0BhbXNhdC5vcmcvCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRoZSBkb2Nr
-ZXItcXVpY2tAY2VudG9zNyBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBjb21t
-YW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFsbGVk
-LCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NSSVBU
-IEJFR0lOID09PQojIS9iaW4vYmFzaAptYWtlIGRvY2tlci1pbWFnZS1jZW50b3M3IFY9MSBORVRX
-T1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LXF1aWNrQGNlbnRvczcgU0hPV19FTlY9MSBKPTE0
-IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKQyBsaW5rZXIgZm9yIHRoZSBob3N0
-IG1hY2hpbmU6IGNjIGxkLmJmZCAyLjI3LTQzCkhvc3QgbWFjaGluZSBjcHUgZmFtaWx5OiB4ODZf
-NjQKSG9zdCBtYWNoaW5lIGNwdTogeDg2XzY0Ci4uL3NyYy9tZXNvbi5idWlsZDoxMDogV0FSTklO
-RzogTW9kdWxlIHVuc3RhYmxlLWtleXZhbCBoYXMgbm8gYmFja3dhcmRzIG9yIGZvcndhcmRzIGNv
-bXBhdGliaWxpdHkgYW5kIG1pZ2h0IG5vdCBleGlzdCBpbiBmdXR1cmUgcmVsZWFzZXMuClByb2dy
-YW0gc2ggZm91bmQ6IFlFUwpQcm9ncmFtIHB5dGhvbjMgZm91bmQ6IFlFUyAoL3Vzci9iaW4vcHl0
-aG9uMykKQ29uZmlndXJpbmcgbmluamF0b29sIHVzaW5nIGNvbmZpZ3VyYXRpb24KLS0tCkNvbXBp
-bGluZyBDIG9iamVjdCBsaWJxZW11LWFhcmNoNjQtc29mdG1tdS5mYS5wL2h3X2FybV9vbWFwMS5j
-Lm8KQ29tcGlsaW5nIEMgb2JqZWN0IGxpYnFlbXUtYWFyY2g2NC1zb2Z0bW11LmZhLnAvaHdfYXJt
-X21zZjItc29jLmMubwouLi9zcmMvaHcvYXJtL2JjbTI4MzVfcGVyaXBoZXJhbHMuYzogSW4gZnVu
-Y3Rpb24gJ2JjbTI4MzVfcGVyaXBoZXJhbHNfcmVhbGl6ZSc6Ci4uL3NyYy9ody9hcm0vYmNtMjgz
-NV9wZXJpcGhlcmFscy5jOjM1NTo0NTogZXJyb3I6ICdUUFhfT0ZGU0VUJyB1bmRlY2xhcmVkIChm
-aXJzdCB1c2UgaW4gdGhpcyBmdW5jdGlvbikKICAgICBjcmVhdGVfdW5pbXAocywgJnMtPnRweCwg
-ImJjbTI4MzUtdHB4IiwgVFBYX09GRlNFVCwgMHgxMDAwKTsKICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgXgouLi9zcmMvaHcvYXJtL2JjbTI4MzVfcGVyaXBoZXJh
-bHMuYzozNTU6NDU6IG5vdGU6IGVhY2ggdW5kZWNsYXJlZCBpZGVudGlmaWVyIGlzIHJlcG9ydGVk
-IG9ubHkgb25jZSBmb3IgZWFjaCBmdW5jdGlvbiBpdCBhcHBlYXJzIGluCm1ha2U6ICoqKiBbbGli
-cWVtdS1hYXJjaDY0LXNvZnRtbXUuZmEucC9od19hcm1fYmNtMjgzNV9wZXJpcGhlcmFscy5jLm9d
-IEVycm9yIDEKbWFrZTogKioqIFdhaXRpbmcgZm9yIHVuZmluaXNoZWQgam9icy4uLi4KVHJhY2Vi
-YWNrIChtb3N0IHJlY2VudCBjYWxsIGxhc3QpOgogIEZpbGUgIi4vdGVzdHMvZG9ja2VyL2RvY2tl
-ci5weSIsIGxpbmUgNzA5LCBpbiA8bW9kdWxlPgotLS0KICAgIHJhaXNlIENhbGxlZFByb2Nlc3NF
-cnJvcihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVkUHJvY2Vzc0Vycm9yOiBDb21tYW5k
-ICdbJ3N1ZG8nLCAnLW4nLCAnZG9ja2VyJywgJ3J1bicsICctLXJtJywgJy0tbGFiZWwnLCAnY29t
-LnFlbXUuaW5zdGFuY2UudXVpZD0wNDU3N2Y1NDNlMjA0NjBjYjJmYWFjY2YxN2E3ZTc3MicsICct
-dScsICcxMDAzJywgJy0tc2VjdXJpdHktb3B0JywgJ3NlY2NvbXA9dW5jb25maW5lZCcsICctZScs
-ICdUQVJHRVRfTElTVD0nLCAnLWUnLCAnRVhUUkFfQ09ORklHVVJFX09QVFM9JywgJy1lJywgJ1Y9
-JywgJy1lJywgJ0o9MTQnLCAnLWUnLCAnREVCVUc9JywgJy1lJywgJ1NIT1dfRU5WPTEnLCAnLWUn
-LCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAnLXYnLCAnL2hvbWUvcGF0Y2hldzIvLmNh
-Y2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2FjaGU6eicsICctdicsICcvdmFyL3Rt
-cC9wYXRjaGV3LXRlc3Rlci10bXAtMTJfMzU2N3Qvc3JjL2RvY2tlci1zcmMuMjAyMC0wOS0yMC0x
-NS4xNy4zMS41MDkxOi92YXIvdG1wL3FlbXU6eixybycsICdxZW11L2NlbnRvczcnLCAnL3Zhci90
-bXAvcWVtdS9ydW4nLCAndGVzdC1xdWljayddJyByZXR1cm5lZCBub24temVybyBleGl0IHN0YXR1
-cyAyLgpmaWx0ZXI9LS1maWx0ZXI9bGFiZWw9Y29tLnFlbXUuaW5zdGFuY2UudXVpZD0wNDU3N2Y1
-NDNlMjA0NjBjYjJmYWFjY2YxN2E3ZTc3MgptYWtlWzFdOiAqKiogW2RvY2tlci1ydW5dIEVycm9y
-IDEKbWFrZVsxXTogTGVhdmluZyBkaXJlY3RvcnkgYC92YXIvdG1wL3BhdGNoZXctdGVzdGVyLXRt
-cC0xMl8zNTY3dC9zcmMnCm1ha2U6ICoqKiBbZG9ja2VyLXJ1bi10ZXN0LXF1aWNrQGNlbnRvczdd
-IEVycm9yIDIKCnJlYWwgICAgM20xNy4xODZzCnVzZXIgICAgMG0xOC4yMDVzCgoKVGhlIGZ1bGwg
-bG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMDkyMDE3NTgy
-NS40MTc2ODAtMS1mNGJ1Z0BhbXNhdC5vcmcvdGVzdGluZy5kb2NrZXItcXVpY2tAY2VudG9zNy8/
-dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hl
-dyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBh
-dGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+The Raspberry firmware is closed-source. While running it, it
+accesses various I/O registers. Logging these accesses as UNIMP
+(unimplemented) help to understand what the firmware is doing
+(ideally we want it able to boot a Linux kernel).
+
+Document various blocks we might use later.
+
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ include/hw/arm/raspi_platform.h | 51 +++++++++++++++++++++++++++------
+ 1 file changed, 43 insertions(+), 8 deletions(-)
+
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index 61b04a1bd4a..c7f50b260f6 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -20,20 +20,29 @@
+  * You should have received a copy of the GNU General Public License
+  * along with this program; if not, write to the Free Software
+  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
++ *
++ * Various undocumented addresses and names come from Herman Hermitage's VC4
++ * documentation:
++ * https://github.com/hermanhermitage/videocoreiv/wiki/MMIO-Register-map
+  */
+ 
+ #ifndef HW_ARM_RASPI_PLATFORM_H
+ #define HW_ARM_RASPI_PLATFORM_H
+ 
+ #define MSYNC_OFFSET            0x0000   /* Multicore Sync Block */
+-#define IC0_OFFSET              0x2000
++#define CCPT_OFFSET             0x1000   /* Compact Camera Port 2 TX */
++#define INTE_OFFSET             0x2000   /* VC Interrupt controller */
+ #define ST_OFFSET               0x3000   /* System Timer */
++#define TXP_OFFSET              0x4000   /* Transposer */
++#define JPEG_OFFSET             0x5000
+ #define MPHI_OFFSET             0x6000   /* Message-based Parallel Host Intf. */
+ #define DMA_OFFSET              0x7000   /* DMA controller, channels 0-14 */
+-#define ARM_OFFSET              0xB000   /* BCM2708 ARM control block */
++#define ARBA_OFFSET             0x9000
++#define BRDG_OFFSET             0xa000
++#define ARM_OFFSET              0xB000   /* ARM control block */
+ #define ARMCTRL_OFFSET          (ARM_OFFSET + 0x000)
+ #define ARMCTRL_IC_OFFSET       (ARM_OFFSET + 0x200) /* Interrupt controller */
+-#define ARMCTRL_TIMER0_1_OFFSET (ARM_OFFSET + 0x400) /* Timer 0 and 1 */
++#define ARMCTRL_TIMER0_1_OFFSET (ARM_OFFSET + 0x400) /* Timer 0 and 1 (SP804) */
+ #define ARMCTRL_0_SBM_OFFSET    (ARM_OFFSET + 0x800) /* User 0 (ARM) Semaphores
+                                                       * Doorbells & Mailboxes */
+ #define CPRMAN_OFFSET           0x100000 /* Power Management, Watchdog */
+@@ -42,24 +51,50 @@
+ #define AVS_OFFSET              0x103000 /* Audio Video Standard */
+ #define RNG_OFFSET              0x104000
+ #define GPIO_OFFSET             0x200000
+-#define UART0_OFFSET            0x201000
+-#define MMCI0_OFFSET            0x202000
+-#define I2S_OFFSET              0x203000
+-#define SPI0_OFFSET             0x204000
++#define UART0_OFFSET            0x201000 /* PL011 */
++#define MMCI0_OFFSET            0x202000 /* Legacy MMC */
++#define I2S_OFFSET              0x203000 /* PCM */
++#define SPI0_OFFSET             0x204000 /* SPI master */
+ #define BSC0_OFFSET             0x205000 /* BSC0 I2C/TWI */
++#define PIXV0_OFFSET            0x206000
++#define PIXV1_OFFSET            0x207000
++#define DPI_OFFSET              0x208000
++#define DSI0_OFFSET             0x209000 /* Display Serial Interface */
++#define PWM_OFFSET              0x20c000
++#define PERM_OFFSET             0x20d000
++#define TEC_OFFSET              0x20e000
+ #define OTP_OFFSET              0x20f000
++#define SLIM_OFFSET             0x210000 /* SLIMbus */
++#define CPG_OFFSET              0x211000
+ #define THERMAL_OFFSET          0x212000
+-#define BSC_SL_OFFSET           0x214000 /* SPI slave */
++#define AVSP_OFFSET             0x213000
++#define BSC_SL_OFFSET           0x214000 /* SPI slave (bootrom) */
+ #define AUX_OFFSET              0x215000 /* AUX: UART1/SPI1/SPI2 */
+ #define EMMC1_OFFSET            0x300000
++#define EMMC2_OFFSET            0x340000
++#define HVS_OFFSET              0x400000
+ #define SMI_OFFSET              0x600000
++#define DSI1_OFFSET             0x700000
++#define UCAM_OFFSET             0x800000
++#define CMI_OFFSET              0x802000
+ #define BSC1_OFFSET             0x804000 /* BSC1 I2C/TWI */
+ #define BSC2_OFFSET             0x805000 /* BSC2 I2C/TWI */
++#define VECA_OFFSET             0x806000
++#define PIXV2_OFFSET            0x807000
++#define HDMI_OFFSET             0x808000
++#define HDCP_OFFSET             0x809000
++#define ARBR0_OFFSET            0x80a000
+ #define DBUS_OFFSET             0x900000
+ #define AVE0_OFFSET             0x910000
+ #define USB_OTG_OFFSET          0x980000 /* DTC_OTG USB controller */
++#define V3D_OFFSET              0xc00000
+ #define SDRAMC_OFFSET           0xe00000
++#define L2CC_OFFSET             0xe01000 /* Level 2 Cache controller */
++#define L1CC_OFFSET             0xe02000 /* Level 1 Cache controller */
++#define ARBR1_OFFSET            0xe04000
+ #define DMA15_OFFSET            0xE05000 /* DMA controller, channel 15 */
++#define DCRC_OFFSET             0xe07000
++#define AXIP_OFFSET             0xe08000
+ 
+ /* GPU interrupts */
+ #define INTERRUPT_TIMER0               0
+-- 
+2.26.2

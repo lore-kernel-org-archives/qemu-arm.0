@@ -1,211 +1,196 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4640465lfq;
-        Mon, 21 Sep 2020 23:58:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwOJa6S0iTbWvLbGofh3yhLc8YmhkCS+dVoz76ncd5SGTwLdqJbW0uhzbXD27YoC7fIuxVe
-X-Received: by 2002:a25:ad16:: with SMTP id y22mr4754796ybi.331.1600757891534;
-        Mon, 21 Sep 2020 23:58:11 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600757891; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4667886lfq;
+        Tue, 22 Sep 2020 00:45:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxOwEtKDVNVAX92/vfBHU7SBQQ8+peNnLbCpHIujfR1V2QlFOdONShjFEzyF9QlG28KLoAd
+X-Received: by 2002:a17:906:29ca:: with SMTP id y10mr3381867eje.327.1600760742737;
+        Tue, 22 Sep 2020 00:45:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600760742; cv=none;
         d=google.com; s=arc-20160816;
-        b=gxmIeb5PBVeiFH+NnGICjRYcehPd5iq1qUdF1vnRFx2m0KOO5108ukcnXbwvznMzpG
-         ekWDLx6csXeRXxnIthJDOXqVMUJ3CmV2+6Nn6A+owvzQWQmjAoYiM0cct37ucvMMPlm1
-         dUbchO46KWoKmrb+8hMW9rCKhT5O/qwaLX9M66QHdE156oIhofub7kCS2d2DtGP3Nl32
-         V6bNQEoz8zW9YcNCt0HQfRzl9J734x0q2EuqMVTUNi7u02Jn0BiBGlf9ujUIQqFuJurl
-         sJB0zoxp8MR95YmBgKzeB94FzkMB7CiMQMuvVCXlsxwfbwP36A1TtGP/z1GC2K0fzch6
-         IANg==
+        b=V8ahKkHC/KN/VJelTdgUczF6vjor2XxB8LDOqBDWUmY+2KCc2oprhrp43zo/GBeoDr
+         NJfqHC4QJLQYBr9UzyTnAQOOkCWtCAx+uwii4EpeUM5Oshkd9/sVhdTSnPtX9Xs7eGGm
+         6TZLIMW6n6gLaYlSHxpqKJS945F8eew9PLl4gxSmi4EGPvBqrgoJp+XGGz/xODRNlQmi
+         ZCySZ7n0v+y4tzqvBQCMT7jCu8EKnSwUKwwSrla+eLHfuWM1hbhCvgEMRqvH+Qc9Oqto
+         4ljHwCUNPkSTelEcqzhZMIjOcXbh0Uge8BZ+oJfsFEIqt3CYrmsp64Wzl4q2kdYHL22j
+         M7sw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-language
-         :content-transfer-encoding:in-reply-to:mime-version:date:message-id
-         :from:references:to:subject:dkim-signature;
-        bh=Q99VPgV8vXmQ4qrSDr09hOonSD3fsQ1DdpkynigjR5U=;
-        b=vpB5KFZMAhCpAs4ZsfLxh4Frb5KeTOoNFnzfO+2s941CoowXxA9S0AbrpzoQ6snvSL
-         4iLQECfwCNiEx0HTM+dfoRUlMXqfyoCts6Y9e/QN/o6HRfx/veNb1bTecnBLl2MB1iSi
-         UdUlCbcJotdX8GADuZ/BqxuzS9W4csBLSRkemU3VPCw/6c/WJi7sMpe//yZQ8GgWT+QD
-         vG4EDLvu+iURkhW4Oi5mPHChnInHcM3CKmcMvxdVGU0+x/bNrEu6kg8/JcGFhbsDxd3N
-         zmqoRzlhGDCXB/ABz7gaGbTv3u4nd3PhaEDAO6Qjf+Z+Gevq/0q5fjx/nDtwNk6UjsHz
-         rhMQ==
+        h=list-id:precedence:content-transfer-encoding:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:organization
+         :autocrypt:from:references:cc:to:subject:dkim-signature;
+        bh=3thooXtiPUuFIAbOGq+rpbuFtagB6Zo9i6TmBGwgJFo=;
+        b=bhVDtQMCCfkVtQNV0Ipv9I1IZ5Zp+n0uxymnA8Shmi5SQ0bGSpiEMpxUlc2m4nF3rW
+         5c8r+c/XVQGZ+Es1OWDbG83vfVabnn0kXdIeLVjAr3b/y1QWmR29k2pQrh4JoYKUToy2
+         LYXhbZqjhlHuoXZlrxlJNwn7dFikIAweIvAUzCjRBlzh4/sMdyHImlkmFBL9I/bf/Q6X
+         f55DriKGXJwIH13V86ljgl65n3zBV8rT6W4I7+2C4BIdklIdXL8R0dBRR29xkAmvLsxl
+         z6TsnSDIhs/aaSdvLWEaKLvG6XM72YrH0bY9SJxno+b4nFziXpSpxB8VyglXsWZiazG/
+         Gtiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VZCMtcVd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v35si15193795ybi.281.2020.09.21.23.58.11
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 21 Sep 2020 23:58:11 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GJIf+bxS;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id pj4si10004193ejb.628.2020.09.22.00.45.42;
+        Tue, 22 Sep 2020 00:45:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VZCMtcVd;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58376 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kKcFe-0003hP-Rh
-	for alex.bennee@linaro.org; Tue, 22 Sep 2020 02:58:10 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58876)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kKcF4-0003dV-VT
- for qemu-arm@nongnu.org; Tue, 22 Sep 2020 02:57:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:40218)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kKcEz-000423-QD
- for qemu-arm@nongnu.org; Tue, 22 Sep 2020 02:57:34 -0400
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=GJIf+bxS;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1730025AbgIVHpl (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 22 Sep 2020 03:45:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:33344 "EHLO
+        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1729943AbgIVHpl (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Tue, 22 Sep 2020 03:45:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600757848;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Q99VPgV8vXmQ4qrSDr09hOonSD3fsQ1DdpkynigjR5U=;
- b=VZCMtcVdpohLb/VYaJRZQPsKPHF2EVAQ/QGqzFR59a95BUJ8g39nhJuiyYP5Gkf0mumTrK
- zoCMlE7btn4GrhlzXinv8MvbfMPpyM8jSjKGzkquxaFoAhqx+ealW7Fdqu0RuLcJZ30qH/
- Kz/dK1z9v/UoX3Ic0XQH7ARv0GOD0rw=
+        s=mimecast20190719; t=1600760739;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+        bh=3thooXtiPUuFIAbOGq+rpbuFtagB6Zo9i6TmBGwgJFo=;
+        b=GJIf+bxSDOvj0AScD7EDGv6UVtHfc/KRpvRuOPMJQwbq/3DCFL3TMk4jkZjaSGrYmEnlvu
+        rPHgrPuSAiCeChbBXnVCpCdE6h502jMZBepVL028zeQDUhZRI2Cf5YPb2sfoz6VqyWwwSW
+        fB1tjVpr/pveaGtJZ8aglm/kWeR03cs=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-372-d_Wtj7oJNy6zQOstXwjxbg-1; Tue, 22 Sep 2020 02:57:24 -0400
-X-MC-Unique: d_Wtj7oJNy6zQOstXwjxbg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 93C671074654;
- Tue, 22 Sep 2020 06:57:23 +0000 (UTC)
-Received: from lacos-laptop-7.usersys.redhat.com (ovpn-112-3.ams2.redhat.com
- [10.36.112.3])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9CAE727BDC;
- Tue, 22 Sep 2020 06:57:18 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/virt: use pflash image real size when mapping
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- =?UTF-8?B?aGFpYmluemhhbmco5byg5rW35paMKQ==?= <haibinzhang@tencent.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-References: <790EEEF3-0799-4507-BF30-DA85440E766F@tencent.com>
- <52eb89e8-3602-2a2a-df9e-66130bce4070@redhat.com>
-From: Laszlo Ersek <lersek@redhat.com>
-Message-ID: <db1e1feb-aef0-e8c4-429b-61586106edec@redhat.com>
-Date: Tue, 22 Sep 2020 08:57:17 +0200
+ us-mta-24-42TYj2SXPOqIFipD_75kIA-1; Tue, 22 Sep 2020 03:45:36 -0400
+X-MC-Unique: 42TYj2SXPOqIFipD_75kIA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com [10.5.11.13])
+        (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+        (No client certificate requested)
+        by mimecast-mx01.redhat.com (Postfix) with ESMTPS id B09D18797C3;
+        Tue, 22 Sep 2020 07:45:30 +0000 (UTC)
+Received: from [10.36.113.20] (ovpn-113-20.ams2.redhat.com [10.36.113.20])
+        by smtp.corp.redhat.com (Postfix) with ESMTP id CF21373689;
+        Tue, 22 Sep 2020 07:45:03 +0000 (UTC)
+Subject: Re: [PATCH] qemu/atomic.h: prefix qemu_ to solve <stdatomic.h>
+ collisions
+To:     Paolo Bonzini <pbonzini@redhat.com>,
+        Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+Cc:     qemu-riscv@nongnu.org, Fam Zheng <fam@euphon.net>,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Alberto Garcia <berto@igalia.com>, Jiri Slaby <jslaby@suse.cz>,
+        Richard Henderson <rth@twiddle.net>, Peter Lieven <pl@kamp.de>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        Eric Blake <eblake@redhat.com>, Max Reitz <mreitz@redhat.com>,
+        =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+        =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Markus Armbruster <armbru@redhat.com>, kvm@vger.kernel.org,
+        Yuval Shaia <yuval.shaia.ml@gmail.com>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Cornelia Huck <cohuck@redhat.com>, qemu-block@nongnu.org,
+        Stefan Weil <sw@weilnetz.de>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        Michael Roth <mdroth@linux.vnet.ibm.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        John Snow <jsnow@redhat.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Alistair Francis <Alistair.Francis@wdc.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Huacai Chen <chenhc@lemote.com>,
+        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Thomas Huth <thuth@redhat.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Liu Yuan <namei.unix@gmail.com>, Paul Durrant <paul@xen.org>,
+        Kevin Wolf <kwolf@redhat.com>,
+        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+        Sagar Karandikar <sagark@eecs.berkeley.edu>,
+        Jason Wang <jasowang@redhat.com>,
+        Laurent Vivier <laurent@vivier.eu>,
+        xen-devel@lists.xenproject.org,
+        Matthew Rosato <mjrosato@linux.ibm.com>,
+        sheepdog@lists.wpkg.org, qemu-s390x@nongnu.org,
+        qemu-arm@nongnu.org, Juan Quintela <quintela@redhat.com>,
+        Hailiang Zhang <zhang.zhanghailiang@huawei.com>
+References: <20200921162346.188997-1-stefanha@redhat.com>
+ <c8892b73-6cee-9fd3-54b0-289149926041@redhat.com>
+ <52b8a46e-ab9e-1645-163d-497122ece907@redhat.com>
+ <8610ca0e-0b3f-6d95-43b9-e2e49571e311@redhat.com>
+From:   David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; prefer-encrypt=mutual; keydata=
+ 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
+ WNyWQQ==
+Organization: Red Hat GmbH
+Message-ID: <fe91c6fa-94bb-8b4e-5173-e0870dbbb5b6@redhat.com>
+Date:   Tue, 22 Sep 2020 09:45:02 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <52eb89e8-3602-2a2a-df9e-66130bce4070@redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <8610ca0e-0b3f-6d95-43b9-e2e49571e311@redhat.com>
+Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=lersek@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/22 02:07:04
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.455,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Leif Lindholm <leif@nuviainc.com>, Ard Biesheuvel <Ard.Biesheuvel@arm.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Stefan Hajnoczi <stefanha@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: UnmIakcL7yuy
+Content-Transfer-Encoding: 7bit
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: B/IQGhiPLZ/H
 
-On 09/18/20 15:41, Philippe Mathieu-Daudé wrote:
-> Cc'ing firmware experts.
-> 
-> On 9/18/20 2:26 PM, haibinzhang(寮犳捣鏂�) wrote:
->> Default size of arm-virt pflash image is 64MB which
->> will cost extra 128MB(64MBx2) memory per qemu process
->> and 12.5GB for 100 qemu processes. Host memory is
->> precious and it is valuable to reduce pflash image size.
->> For compatibility arm-virt uses real size when mapping.
-> 
-> Flash#0 is a device because eventually its model will handle
-> sector/block protection, so firmware can do CapsuleUpdate
-> (updating itself). Meanwhile you could treat flash#0 as a pure
-> ROM device... But this wouldn't be the 'arm-virt' machine anymore.
-> 
+On 22.09.20 08:56, Paolo Bonzini wrote:
+> On 22/09/20 08:45, David Hildenbrand wrote:
+>>> It's certainly a good idea but it's quite verbose.
+>>>
+>>> What about using atomic__* as the prefix?  It is not very common in QEMU
+>>> but there are some cases (and I cannot think of anything better).
 >>
->> Signed-off-by: Haibin Zhang <haibinzhang@tencent.com>
->> ---
->>  hw/arm/virt.c | 22 ++++++++++++++++++++--
->>  1 file changed, 20 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->> index acf9bfbece..3545e12865 100644
->> --- a/hw/arm/virt.c
->> +++ b/hw/arm/virt.c
->> @@ -50,6 +50,7 @@
->>  #include "sysemu/sysemu.h"
->>  #include "sysemu/tpm.h"
->>  #include "sysemu/kvm.h"
->> +#include "sysemu/block-backend.h"
->>  #include "hw/loader.h"
->>  #include "exec/address-spaces.h"
->>  #include "qemu/bitops.h"
->> @@ -1001,10 +1002,27 @@ static void virt_flash_map(VirtMachineState *vms,
->>       */
->>      hwaddr flashsize = vms->memmap[VIRT_FLASH].size / 2;
->>      hwaddr flashbase = vms->memmap[VIRT_FLASH].base;
->> +    int64_t realsize;
->> +    BlockBackend *blk;
->>
->> -    virt_flash_map1(vms->flash[0], flashbase, flashsize,
->> +    realsize = flashsize;
->> +    blk = pflash_cfi01_get_blk(vms->flash[0]);
->> +    if (blk) {
->> +        realsize = blk_getlength(blk);
->> +        realsize = realsize < flashsize ? realsize : flashsize;
->> +    }
+>> aqomic_*, lol :)
 > 
-> Stefan recently posted "nvdimm: read-only file support" which
-> might be a better way to achieve what you want:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg741137.html
-> 
->> +
->> +    virt_flash_map1(vms->flash[0], flashbase, realsize,
->>                      secure_sysmem);
->> -    virt_flash_map1(vms->flash[1], flashbase + flashsize, flashsize,
->> +
->> +    realsize = flashsize;
->> +    blk = pflash_cfi01_get_blk(vms->flash[1]);
->> +    if (blk) {
->> +        realsize = blk_getlength(blk);
->> +        realsize = realsize < flashsize ? realsize : flashsize;
->> +    }
->> +
->> +    virt_flash_map1(vms->flash[1], flashbase + flashsize, realsize,
->>                      sysmem);
->>  }
->>
->> --
->> 2.23.0
->>
-> 
+> Actually qatomic_ would be a good one, wouldn't it?
 
-We've been here before.
+agreed!
 
-  [Qemu-devel] [RFC PATCH] hw/arm/virt: use variable size of flash device to save memory
+-- 
+Thanks,
 
-  https://lists.gnu.org/archive/html/qemu-devel/2019-03/msg06773.html
-  http://mid.mail-archive.com/20190325125142.11628-1-zhengxiang9@huawei.com
-
-I don't have anything to add.
-
-Laszlo
-
+David / dhildenb

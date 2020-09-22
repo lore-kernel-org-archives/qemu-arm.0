@@ -1,157 +1,131 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4730726lfq;
-        Tue, 22 Sep 2020 02:32:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzuJazD1GrsJ+YwxgqYXL0f84ou6b40XRovvfpbXfoy+qUWIS0go60fAfRxhvVIkZQOTOaw
-X-Received: by 2002:a17:906:841a:: with SMTP id n26mr3865521ejx.213.1600767151188;
-        Tue, 22 Sep 2020 02:32:31 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1600767151; cv=pass;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5171288lfq;
+        Tue, 22 Sep 2020 12:02:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwI9XTaXTnfSVMkD5MNNULULYjLSB0XaYDa2Y4buWT2Wbg6uArKmTwDLAJpaEr6NGk3DSeI
+X-Received: by 2002:a25:1581:: with SMTP id 123mr8157544ybv.480.1600801322764;
+        Tue, 22 Sep 2020 12:02:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600801322; cv=none;
         d=google.com; s=arc-20160816;
-        b=ntImAPivS+o0KA4ihJ4pxmKuFLQ3JwDIEaexe1R0/wzKf2nbt/eTY3tzAAoRc6kYcC
-         aUmF7n0azIUkt1liXrIa2g3RC2Xo32Icqak7n2yZDJkSD7p8tSnhroW3VjCQoBP5ay3o
-         wALITZY1Z3HkUmHbLeBalZs3814aealUGBm+Enwt2mGJcKvSagMmpr8Y8YnfkImtWPdl
-         edhuo2rjq0HKWCetOdAnElJBEBIcG+1J8gR6K55E99DWzDM+yFEwJF2C6i+Ldww7lHRm
-         sXnSPj2EADd9nBRqMYVGS03CJCU/YEolGBW+3QvjxsRwMikke0OQXl2RfT8JgkFjPYJA
-         Ug2g==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:date:cc:to:from:content-transfer-encoding
-         :mime-version:in-reply-to:reply-to:message-id:subject;
-        bh=D4DIMr06Njxf6DVvs7o1fUGh1IQ09kuy8PuWU3bfCAs=;
-        b=t79LajPSBI+umicmWxpr9lUw2xM29sltrIJ6Zno4CnMdkTq/yEvfCQTKkHvNH7JA6G
-         rb1vaAht7UXDOiiMYeicDJdhgZY303Cfj9VybEL/j9LwloyMGlEtnN0vPxF9vxq/DYdz
-         tllmaO5xWtCf3agUW78b4X+/Xm4K+quJpMIdHxI0UyPJZPGWzFAUxR44DJagM9Z9Qt/s
-         ixvMVuXGnxHnGlzeAdCzldAIi6nYPO88xjj1zlRDbo0aPKBj/zOMlwExMv6sh7YUkx6R
-         baQ0y58C51+Tp2Ky7/gX6CAsgLZVa/fqsazw9lT/ZuDsaxa+MeyFrrZZGdpt7m68l8sQ
-         hv+A==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id l11si10210681ejd.105.2020.09.22.02.32.30;
-        Tue, 22 Sep 2020 02:32:31 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+        b=Px8dbyoDq+/I1xmIzWTCKp6dgsj8pbD6ieduLEJjayQXJ4Yrc4htyP3wUCXajFOr8Z
+         me4DZQKpTWsMqEEN3AE9AdN58QQbPJx1P0/6GnkfvXCx9Rq4/kUC8yc3XOY4AcWBB5JJ
+         Q+lCUeoTS34qujp1LODJxH/pBa1cAC18+YplXPpNzS3CUzTi4FXPJQxjfzyS/CMXniIN
+         GuEzSWesF1POwaQXRWrbAJOE2ocE+aIodl9BSeUGJLQecX6ge72ithNeIeGoSzzm3iL3
+         EqDz5PNc+5EroUQdnbgARItSvz1oTkeaufk1yGkR49bt8cvsV5aOpPZPBM750Lpkq+oI
+         UdHg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=ts3rUxumwHNEOgoOcA6EATOfig9A0L6p2VG+NpBMRwk=;
+        b=PZr2g5+EL8O82qRJrYgujDfpEZn3i/eP5qwJomPeaxkJMeseQZY8JCSw6cPrS1abmg
+         qI9j4eROJ81SEf0lLebEZpXsyJv4NHlB90syNTB0u6DJfPt3iE/LynUsRYH9I/j49yiW
+         SmZPNEDggofj7ZqWbibcPSX/TrlfgEf+HRGr/LOBuoLW2QnyS4q9zIUe2BdnVp4yEXyX
+         wax3X6iBHDPWJO13yvVIqghX5srM5KUIdt9BcrqPzMvONxQUslBvWtk+TW98KoXhbZgy
+         QNmRqdODaZwBICthzlIhPmi0X8VADJxivCZsHSJ2y2tCubQXz+KZE512dioM6hVf2/1X
+         n3dg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PbqcGA4j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id v8si15311387ybk.348.2020.09.22.12.02.02
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 22 Sep 2020 12:02:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1726579AbgIVJc3 (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Tue, 22 Sep 2020 05:32:29 -0400
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21729 "EHLO
-        sender4-of-o57.zoho.com" rhost-flags-OK-OK-OK-OK) by vger.kernel.org
-        with ESMTP id S1726424AbgIVJc3 (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Tue, 22 Sep 2020 05:32:29 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1600767018; cv=none; 
-        d=zohomail.com; s=zohoarc; 
-        b=KVpaG9bJ7mJffR86frelEdIv+WrkPlOtTUB1GBFksBD8EOnJffSahEX1YQs+DsFEvA0LsDCDXMgshCggRn6kHeRvriZissqgELgjwcpRV6ZAxqRaQxNp+nE4xRDXnrn9vou1MHlfQ9sXgtaaq2ToxWCgdMMANSpBGjFdsrqq9GU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-        t=1600767018; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
-        bh=D4DIMr06Njxf6DVvs7o1fUGh1IQ09kuy8PuWU3bfCAs=; 
-        b=ZOCSrF5Bd2dq26J08o4XG+IEd3id3USxz1R1A9yS4X0CHf4BLYUloa4Msidb7SQ31RVBrvmTjVgR2JJvEiuJudRgM0JnX+frNFTmKYBxPrIUvUSziMui8EckkpVnhr0cpKRsLfcM/U5FVo/EGB6ClTaO14R8RIaaO4XtnREEbw8=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-        spf=pass  smtp.mailfrom=no-reply@patchew.org;
-        dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-        with SMTPS id 1600767016322169.2570710812787; Tue, 22 Sep 2020 02:30:16 -0700 (PDT)
-Subject: Re: [PATCH v2] qemu/atomic.h: prefix qemu_ to solve <stdatomic.h> collisions
-Message-ID: <160076700882.418.13612231969011652089@66eaa9a8a123>
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20200922085838.230505-1-stefanha@redhat.com>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=PbqcGA4j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:36278 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kKnYA-0001ux-4E
+	for alex.bennee@linaro.org; Tue, 22 Sep 2020 15:02:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37618)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <josemartins90@gmail.com>)
+ id 1kKnXf-0001uh-Lx
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2020 15:01:31 -0400
+Received: from mail-io1-xd32.google.com ([2607:f8b0:4864:20::d32]:42501)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <josemartins90@gmail.com>)
+ id 1kKnXW-0006Bw-In
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2020 15:01:31 -0400
+Received: by mail-io1-xd32.google.com with SMTP id u6so20819369iow.9
+ for <qemu-arm@nongnu.org>; Tue, 22 Sep 2020 12:01:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:from:date:message-id:subject:to;
+ bh=ts3rUxumwHNEOgoOcA6EATOfig9A0L6p2VG+NpBMRwk=;
+ b=PbqcGA4j0yg5aYDB0i4hbf+lA/LtcKVK9j73DIZvJLGO1qeINYQvch8wn3rjqlbGjJ
+ eFNooWfI3XBRXm0o51FkQcZt7e/R9oj8MzCxjj2AWcgfJ6G2m/XeuAGOa5AQxTxuJMX6
+ jIkNvly+9Hb9Ah/3EAOWXjxjCu2f62zXvewj2whyV8phgvgHFMPWRnauJe4x9lbr2cwQ
+ GD6W/3N2gmCtsm14lkbWT0QM8QFdEkrwN390xnqEkTP23JrwdTqBFFH+rUkLsFOiQ3Do
+ NPhdYUGqcki7fqn84GJtT9ppNdQbnlYKcPym2MNx8S+J3XWv7f+7mS7889JTkOr4gnio
+ YcxQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=ts3rUxumwHNEOgoOcA6EATOfig9A0L6p2VG+NpBMRwk=;
+ b=duzopLhQDjLEWbiCrbLiQQBRBNwKuPazHyfig2IgogMGt4WQq+8R7XVa+Z5Jw2bhGd
+ QDAQ2xcrrfKbBM/7YKJ6J0hZL0tfqB4i1vmft3YfMC1HsPfCbC62EFLHELV2/P49Zguf
+ hCXmW69ivX+Y/tJKC8o1H2zi8p99f/lYWaeHOl88tZJV0L1eHz0tTpDHY+IjlhB+YTBa
+ A/+cMfz2SFhdWFHbnOmWwIWwuBZ91m29Xca321ATd/NFQwKfwrpm9+bTMIn09RVVuKWX
+ oUM+PKL73/1fWLsKzeYuktWAsO5YRgrTusZzBhsUN1Cjyd2Xcj2aKIbSAK6fSJapkkIe
+ CFlw==
+X-Gm-Message-State: AOAM530LuUiiPvWG9POKU5/M5G8XR2FnEI/NcY8oj9fK8YlBhvptQgMT
+ oYyH8WgUt6+KXJ0Dt8VM2AaCwEmluwu5R22KSCGh8x88/jbQxg==
+X-Received: by 2002:a6b:e718:: with SMTP id b24mr4707209ioh.9.1600801279127;
+ Tue, 22 Sep 2020 12:01:19 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-From:   no-reply@patchew.org
-To:     stefanha@redhat.com
-Cc:     qemu-devel@nongnu.org, jcmvbkbc@gmail.com, eblake@redhat.com,
-        pl@kamp.de, mst@redhat.com, cohuck@redhat.com, jasowang@redhat.com,
-        david@redhat.com, marcel.apfelbaum@gmail.com,
-        sagark@eecs.berkeley.edu, berto@igalia.com, qemu-s390x@nongnu.org,
-        kvm@vger.kernel.org, namei.unix@gmail.com, jslaby@suse.cz,
-        fam@euphon.net, paul@xen.org, ehabkost@redhat.com,
-        jiaxun.yang@flygoat.com, aurelien@aurel32.net, mreitz@redhat.com,
-        pasic@linux.ibm.com, mdroth@linux.vnet.ibm.com,
-        stefanha@redhat.com, kwolf@redhat.com, borntraeger@de.ibm.com,
-        thuth@redhat.com, jsnow@redhat.com, Alistair.Francis@wdc.com,
-        aleksandar.qemu.devel@gmail.com, pbonzini@redhat.com,
-        anthony.perard@citrix.com, qemu-arm@nongnu.org,
-        yuval.shaia.ml@gmail.com, aleksandar.rikalo@syrmia.com,
-        sheepdog@lists.wpkg.org, kbastian@mail.uni-paderborn.de,
-        ysato@users.sourceforge.jp, kraxel@redhat.com, berrange@redhat.com,
-        sstabellini@kernel.org, quintela@redhat.com, qemu-riscv@nongnu.org,
-        dgilbert@redhat.com, sw@weilnetz.de, mjrosato@linux.ibm.com,
-        sunilmut@microsoft.com, armbru@redhat.com, palmer@dabbelt.com,
-        qemu-block@nongnu.org, marcandre.lureau@redhat.com,
-        xen-devel@lists.xenproject.org, laurent@vivier.eu,
-        zhang.zhanghailiang@huawei.com, rth@twiddle.net,
-        peter.maydell@linaro.org, chenhc@lemote.com
-Date:   Tue, 22 Sep 2020 02:30:16 -0700 (PDT)
-X-ZohoMailClient: External
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: EtoHFfYlbeWt
+From: Jose Martins <josemartins90@gmail.com>
+Date: Tue, 22 Sep 2020 20:01:07 +0100
+Message-ID: <CAC41xo2yEoDvy15yExroY+ZX+qQns_rxQiqP9D2Xo3dqquP7KA@mail.gmail.com>
+Subject: gicv3 maintenance interrupt not triggering
+To: qemu-arm <qemu-arm@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d32;
+ envelope-from=josemartins90@gmail.com; helo=mail-io1-xd32.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 6rxyLFNrqIGm
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkyMjA4NTgzOC4yMzA1
-MDUtMS1zdGVmYW5oYUByZWRoYXQuY29tLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNlZW1zIHRvIGhh
-dmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cgZm9yCm1vcmUg
-aW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMDA5MjIwODU4MzguMjMw
-NTA1LTEtc3RlZmFuaGFAcmVkaGF0LmNvbQpTdWJqZWN0OiBbUEFUQ0ggdjJdIHFlbXUvYXRvbWlj
-Lmg6IHByZWZpeCBxZW11XyB0byBzb2x2ZSA8c3RkYXRvbWljLmg+IGNvbGxpc2lvbnMKCj09PSBU
-RVNUIFNDUklQVCBCRUdJTiA9PT0KIyEvYmluL2Jhc2gKZ2l0IHJldi1wYXJzZSBiYXNlID4gL2Rl
-di9udWxsIHx8IGV4aXQgMApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVsaW1pdCAwCmdp
-dCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZXMgVHJ1ZQpnaXQgY29uZmlnIC0tbG9jYWwgZGlm
-Zi5hbGdvcml0aG0gaGlzdG9ncmFtCi4vc2NyaXB0cy9jaGVja3BhdGNoLnBsIC0tbWFpbGJhY2sg
-YmFzZS4uCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9w
-YXRjaGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIwMjAwOTIy
-MDg1ODM4LjIzMDUwNS0xLXN0ZWZhbmhhQHJlZGhhdC5jb20gLT4gcGF0Y2hldy8yMDIwMDkyMjA4
-NTgzOC4yMzA1MDUtMS1zdGVmYW5oYUByZWRoYXQuY29tClN3aXRjaGVkIHRvIGEgbmV3IGJyYW5j
-aCAndGVzdCcKMWU2NDU3ZCBxZW11L2F0b21pYy5oOiBwcmVmaXggcWVtdV8gdG8gc29sdmUgPHN0
-ZGF0b21pYy5oPiBjb2xsaXNpb25zCgo9PT0gT1VUUFVUIEJFR0lOID09PQpXQVJOSU5HOiBCbG9j
-ayBjb21tZW50cyB1c2UgYSB0cmFpbGluZyAqLyBvbiBhIHNlcGFyYXRlIGxpbmUKIzI1MDE6IEZJ
-TEU6IGh3L3ZpcnRpby92aG9zdC5jOjkyOgorICAgICAgICAgKiBidXQgaXQncyBlYXNpZXIgdG8g
-dXNlIHFlbXVfYXRvbWljXyogdGhhbiByb2xsIG91ciBvd24uICovCgpFUlJPUjogTWFjcm9zIHdp
-dGggbXVsdGlwbGUgc3RhdGVtZW50cyBzaG91bGQgYmUgZW5jbG9zZWQgaW4gYSBkbyAtIHdoaWxl
-IGxvb3AKIzI5NzM6IEZJTEU6IGluY2x1ZGUvcWVtdS9hdG9taWMuaDoxNTI6CisjZGVmaW5lIHFl
-bXVfYXRvbWljX3JjdV9yZWFkX19ub2NoZWNrKHB0ciwgdmFscHRyKSAgICAgIFwKICAgICBfX2F0
-b21pY19sb2FkKHB0ciwgdmFscHRyLCBfX0FUT01JQ19SRUxBWEVEKTsgICAgICAgXAogICAgIHNt
-cF9yZWFkX2JhcnJpZXJfZGVwZW5kcygpOwoKRVJST1I6IHNwYWNlIHJlcXVpcmVkIGJlZm9yZSB0
-aGF0ICcqJyAoY3R4OlZ4QikKIzMxMjg6IEZJTEU6IGluY2x1ZGUvcWVtdS9hdG9taWMuaDozNDc6
-CisjZGVmaW5lIHFlbXVfYXRvbWljX3JlYWRfX25vY2hlY2socCkgKCooX190eXBlb2ZfXygqKHAp
-KSB2b2xhdGlsZSopIChwKSkKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJST1I6IFVzZSBvZiB2b2xhdGlsZSBpcyB1
-c3VhbGx5IHdyb25nLCBwbGVhc2UgYWRkIGEgY29tbWVudAojMzEyODogRklMRTogaW5jbHVkZS9x
-ZW11L2F0b21pYy5oOjM0NzoKKyNkZWZpbmUgcWVtdV9hdG9taWNfcmVhZF9fbm9jaGVjayhwKSAo
-KihfX3R5cGVvZl9fKCoocCkpIHZvbGF0aWxlKikgKHApKQoKRVJST1I6IHNwYWNlIHJlcXVpcmVk
-IGJlZm9yZSB0aGF0ICcqJyAoY3R4OlZ4QikKIzMxMzA6IEZJTEU6IGluY2x1ZGUvcWVtdS9hdG9t
-aWMuaDozNDk6CisgICAgKCgqKF9fdHlwZW9mX18oKihwKSkgdm9sYXRpbGUqKSAocCkpID0gKGkp
-KQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXgoKRVJST1I6IFVzZSBvZiB2b2xh
-dGlsZSBpcyB1c3VhbGx5IHdyb25nLCBwbGVhc2UgYWRkIGEgY29tbWVudAojMzEzMDogRklMRTog
-aW5jbHVkZS9xZW11L2F0b21pYy5oOjM0OToKKyAgICAoKCooX190eXBlb2ZfXygqKHApKSB2b2xh
-dGlsZSopIChwKSkgPSAoaSkpCgpFUlJPUjogc3BhY2UgcmVxdWlyZWQgYWZ0ZXIgdGhhdCAnLCcg
-KGN0eDpWeFYpCiMzMTM1OiBGSUxFOiBpbmNsdWRlL3FlbXUvYXRvbWljLmg6MzUyOgorI2RlZmlu
-ZSBxZW11X2F0b21pY19zZXQocHRyLCBpKSAgICAgcWVtdV9hdG9taWNfc2V0X19ub2NoZWNrKHB0
-cixpKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgIF4KCkVSUk9SOiBtZW1vcnkgYmFycmllciB3aXRob3V0IGNvbW1lbnQKIzMy
-MTA6IEZJTEU6IGluY2x1ZGUvcWVtdS9hdG9taWMuaDo0MTA6CisjZGVmaW5lIHFlbXVfYXRvbWlj
-X3hjaGcocHRyLCBpKSAoc21wX21iKCksIF9fc3luY19sb2NrX3Rlc3RfYW5kX3NldChwdHIsIGkp
-KQoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRl
-IGxpbmUKIzMyODU6IEZJTEU6IGluY2x1ZGUvcWVtdS9hdG9taWMuaDo0NjI6CisvKiBxZW11X2F0
-b21pY19tYl9yZWFkL3NldCBzZW1hbnRpY3MgbWFwIEphdmEgdm9sYXRpbGUgdmFyaWFibGVzLiBU
-aGV5IGFyZQoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNl
-cGFyYXRlIGxpbmUKIzY0MDI6IEZJTEU6IHV0aWwvYml0bWFwLmM6MjE0OgorICAgICAgICAvKiBJ
-ZiB3ZSBhdm9pZGVkIHRoZSBmdWxsIGJhcnJpZXIgaW4gcWVtdV9hdG9taWNfb3IoKSwgaXNzdWUg
-YQoKV0FSTklORzogQmxvY2sgY29tbWVudHMgdXNlIGEgbGVhZGluZyAvKiBvbiBhIHNlcGFyYXRl
-IGxpbmUKIzc0Mzg6IEZJTEU6IHV0aWwvcmN1LmM6ODU6CisgICAgICAgIC8qIEluc3RlYWQgb2Yg
-dXNpbmcgcWVtdV9hdG9taWNfbWJfc2V0IGZvciBpbmRleC0+d2FpdGluZywgYW5kCgpXQVJOSU5H
-OiBCbG9jayBjb21tZW50cyB1c2UgYSBsZWFkaW5nIC8qIG9uIGEgc2VwYXJhdGUgbGluZQojNzQ2
-NDogRklMRTogdXRpbC9yY3UuYzoxNTQ6CisgICAgICAgIC8qIEluIGVpdGhlciBjYXNlLCB0aGUg
-cWVtdV9hdG9taWNfbWJfc2V0IGJlbG93IGJsb2NrcyBzdG9yZXMgdGhhdCBmcmVlCgp0b3RhbDog
-NyBlcnJvcnMsIDUgd2FybmluZ3MsIDY1MjAgbGluZXMgY2hlY2tlZAoKQ29tbWl0IDFlNjQ1N2Rm
-YjQ5OSAocWVtdS9hdG9taWMuaDogcHJlZml4IHFlbXVfIHRvIHNvbHZlIDxzdGRhdG9taWMuaD4g
-Y29sbGlzaW9ucykgaGFzIHN0eWxlIHByb2JsZW1zLCBwbGVhc2UgcmV2aWV3LiAgSWYgYW55IG9m
-IHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVzIHJlcG9ydCB0aGVtIHRvIHRoZSBtYWlu
-dGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJTkVSUy4KPT09IE9VVFBVVCBFTkQgPT09
-CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTogMQoKClRoZSBmdWxsIGxvZyBpcyBhdmFp
-bGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA5MjIwODU4MzguMjMwNTA1LTEt
-c3RlZmFuaGFAcmVkaGF0LmNvbS90ZXN0aW5nLmNoZWNrcGF0Y2gvP3R5cGU9bWVzc2FnZS4KLS0t
-CkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hl
-dy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhh
-dC5jb20=
+I'm using qemu aarch64 virt platform to run my hypervisor. However,
+the gicv3 maintenance interrupts (id 25) does not trigger. I'm reading
+these values off the gic for the cpu in question:
+
+gich.hcr = 0xd
+gich.misr = 0xd
+gich.eisr = 0xf
+gicr.ispendr0 = 0x0
+
+I think that for this gich state, I should be reading a pending state
+for the maintenance interrupt in the redistributor pending registers.
+I will try out the same code in real hardware asap to confirm there's
+no issue with the driver. But does somebody have any clues on what
+might be the problem?
+
+Cheers,
+Jose

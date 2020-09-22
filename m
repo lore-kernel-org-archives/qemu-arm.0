@@ -1,154 +1,191 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp169162lfq;
-        Thu, 24 Sep 2020 04:24:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxTYDFsGozgwWEeLjeJJzItoH+IuMLSKhBhzizliM0uULQZDLBhY4WywZi9LabrTg6lUMx0
-X-Received: by 2002:a25:2447:: with SMTP id k68mr5956539ybk.242.1600946689993;
-        Thu, 24 Sep 2020 04:24:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600946689; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4813443lfq;
+        Tue, 22 Sep 2020 04:35:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyl1P0N8wJhDxKdQUfvMdhCLtMLbgYFE2eJgBwT8T+R8LVhMjAPhSkeZF7AJJdM2Qb3Buq8
+X-Received: by 2002:a17:906:9346:: with SMTP id p6mr4237379ejw.305.1600774558485;
+        Tue, 22 Sep 2020 04:35:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600774558; cv=none;
         d=google.com; s=arc-20160816;
-        b=McmjZZC3LLw72GFlT6UfpZ1CAQl5LWtuDJDY4ze/HUal9DMT0FeWh90J3M9Ti9g+S7
-         rFIy0HVdDSu9QVo1ur6zyMsLCY9QzwQFE8Bcvm2i6BQrFBnuxcBGEcqYBDlugDDU3+Ic
-         PqjqXVEPxjsIk/ejpp/FhdoamrkgS3Oid9Ljn+fWnNhr9VVuRRPVbHKPf6EhV2jByKXC
-         7LP4R86gyI/yVLaCCvN4uo1a5IfGuctr0ii74TaHCBZ20Vnw/X0YgYUVDTnfp9/UuhS9
-         OFDR66qy94B6q1VIxaZYkC9iwwwhqqqS1iUA2dcmReAnkXJ/0UBvzKC26jU+rc/ChUlL
-         ThlA==
+        b=pSpwW8yf/gpfRXkTfy1+zdAsb8dPeKdt5I0DlEmwy4inMw/1xYD/Oydb0G45Ye50Fe
+         /9U4IFSPB5APnmM8Vrdu+T/HQ+cMmovCNUR+SSLfFWrp4o0tYG1sBKNMX2R3ycDs8Qxj
+         kEWijedDDCIQv+Rht/9s7OrPB7pLRkBdiiFLtrlMQ8dw9+8clPTYqcT64vGxSCtZloMQ
+         4SPmCuuOJXuUFBaiDUX9YctiHuHtUjpjI+dC4FtIyAl2vPOGJR3xBdrjPNmLitpUfSQY
+         g+AxgzN80R+QJ8nHWDG7tkGpk+W748LnNdw0fZQlZ4PuS/EAir6FAkVvPJemEmFcwU2Y
+         RLKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=5yo252NP5gBDkXbN6/NBxZR9g3mZ/MmbyKBXikp+NFI=;
-        b=YybjycWppyNBBtTVC8ZJPjsLgl2pfiO/jARUQX/lAuGUMoS3nXvoQMDLYMGYmGQZd5
-         C5FZHDQqZ7zmj5KvmZnNSNWxwTxNiSEGh11blPAyHHmSXvHORKZgP/WJa0V0OOX88FLJ
-         u8zFYAB5Y+4ab8lVLCrIRk6C2kGgbClzyg4qjXRVQUQjYdq8+uTH5Fcgpzyqon0AVPQ7
-         bIIjOU3VDHmy7gasiXHSRu67hD0viW5yiagNv3OI1NtZfeJnUKXBy3q5lXHGhzyeWmTj
-         5sfmMbcq+H+3JT/BwKJO9VKSEALCR2DRBTAPWLFp88120BYpylWz1EN5A9EdsLbwdfU7
-         N+9A==
+        h=list-id:precedence:content-transfer-encoding:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:subject:dkim-signature;
+        bh=iVuM9z2yUr8zyxXYDwbwyPVDW6UrW4ow9wkAb6hmN1A=;
+        b=WE1MPB1eJcTVOKzRxPnOm9hYeNKQFenWRQwRIg3xLZuQCBRsl9tEMMxMw++P7c7MZ8
+         ek9hto9sEvrz57bYidcJFAUxiTfQQzRMwhdR6c3AF785FRdjY/yt5Fs+QYY1htKIrj55
+         dqOcp/ElYKHCxhBxh8Vec4cMZak33iuZe6tjtKnnaEa8xMNlI0vQ7qVriJNf29vWqSXD
+         LsujJp3sXFsWLHfooPiJf8fafpmcL+l2aZNDyhJff36n5syo3/FkwfKvi6EQGsklVdrO
+         Fz6cqS2+DZecchv6hbqQowBq4sm0HOtgd/pqfrc+/6rMJ2Srl9w9cLRBtNintuhAJqqt
+         cZuQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="cF/n9sQO";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k17si2742308ybh.50.2020.09.24.04.24.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Sep 2020 04:24:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IdCasDbB;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id w11si10567971ejy.632.2020.09.22.04.35.58;
+        Tue, 22 Sep 2020 04:35:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="cF/n9sQO";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44000 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kLPMn-0004LI-Bl
-	for alex.bennee@linaro.org; Thu, 24 Sep 2020 07:24:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38660)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kLPJY-0008Q7-GS; Thu, 24 Sep 2020 07:21:28 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:35712)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kLPJW-0004KH-Fo; Thu, 24 Sep 2020 07:21:28 -0400
-Received: by mail-wm1-x344.google.com with SMTP id y15so3210698wmi.0;
- Thu, 24 Sep 2020 04:21:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5yo252NP5gBDkXbN6/NBxZR9g3mZ/MmbyKBXikp+NFI=;
- b=cF/n9sQOZvDjqggC0chbJQEu3M6YCOssqdDQr66p7QU0BGDPhAQoGq7+h0H5BCuhrb
- KsPPpy6tp26JXyzReSOyJfkFlWaaAb090ekTWt/+YWof0tWdbYEiwh4VAlVPJAArknIP
- /jRWkLSxg3XEvIMd+54WBuurNktXz78q5XFD8NDWiS862BUcdXDQhPcsUqvbqWZn3Jxd
- AWlfvbHYEcijs1172Nb9ZmLGbP5DzTG+YlLrrs/D0hBX9AKMBTOV3yjt8DQvM2h+KFFi
- k7jufQX0dhPAiVICiXnZKVvDhTbyg3QWL2t8Y+lALzQV+5fhbremYUMbAIv3Ml/05mJB
- VnzA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IdCasDbB;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1726654AbgIVLf5 (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Tue, 22 Sep 2020 07:35:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:55061 "EHLO
+        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1726701AbgIVLfr (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Tue, 22 Sep 2020 07:35:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1600774545;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=iVuM9z2yUr8zyxXYDwbwyPVDW6UrW4ow9wkAb6hmN1A=;
+        b=IdCasDbB5I3yINNoIe57gd423VtZ1c8ErAIk9ObVFnwFUE9Ysd+hoy3Vzzh84Q/JdJXHZ5
+        nGmIeMbWTjPoQMKc/N+yHrEiIndvwuRFWVN7qyqwHjFqVReVs6RIEuJK1hHcf5lHOH1+yc
+        IbC6IfRrEyB3mD0Hh/0K7PUddt8D11E=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-33-Q1nJ2DRCNVi9MLlSRT3twg-1; Tue, 22 Sep 2020 07:35:42 -0400
+X-MC-Unique: Q1nJ2DRCNVi9MLlSRT3twg-1
+Received: by mail-wm1-f69.google.com with SMTP id m125so790883wmm.7
+        for <kvm@vger.kernel.org>; Tue, 22 Sep 2020 04:35:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5yo252NP5gBDkXbN6/NBxZR9g3mZ/MmbyKBXikp+NFI=;
- b=ndpusKQdgS3tfEToUMKB5LeJXr14vj1TGKXVtRo/HeaBDYN07hTFYklF9nyUevPfHZ
- 6Xcr6RTTNdEIQNzn2at4J2TOGIBANEesgnuD32qcLvTEQ4OfRIbtxgITAkhwA86NlAYj
- Qz/coC5UHXr5XcdlB02Fip2kpAV7MSRNzRqSN+5Mpy+xttx3h7VYJPzLANphE/CTTSIk
- JJSK6j5lhV76O2H3MWpIUPvSye8OYSQLV40SRu+xLdJP6vQLGbAOQg48dDPGMMZ6XCQ+
- OxT5mc/0Gs2ADNvPgQS7/x09hqQvQvVAasm99d3MPdbYzV5gSO44KyfYTZT5xU2RZJoR
- 7aDg==
-X-Gm-Message-State: AOAM531V/oBJKEkMAqY/55Q9D4+xnL55DfhcFX+nLl0HbALmBfgz8xKR
- 0+ItT4lu4sCq8L7hpSiVJ/g=
-X-Received: by 2002:a7b:c751:: with SMTP id w17mr4096204wmk.97.1600946484941; 
- Thu, 24 Sep 2020 04:21:24 -0700 (PDT)
-Received: from [192.168.1.34] (234.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.234])
- by smtp.gmail.com with ESMTPSA id t203sm3230662wmg.43.2020.09.24.04.21.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 24 Sep 2020 04:21:23 -0700 (PDT)
-Subject: Re: [PATCH v2 0/5] hw/arm/raspi: Fix SYS_timer to unbrick Linux
- kernels v3.7+
-To: qemu-devel@nongnu.org
-References: <20200921035257.434532-1-f4bug@amsat.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <80c32945-a83a-1c8d-d2df-5d8c832bf0b9@amsat.org>
-Date: Thu, 24 Sep 2020 13:21:22 +0200
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=iVuM9z2yUr8zyxXYDwbwyPVDW6UrW4ow9wkAb6hmN1A=;
+        b=dLicr5MgO3M8LQbNrr5aAzle/DSJTUx4BLKCcSxg32zslRj1oLlKPco6YDhK1HdD30
+         T/OeKza+TqyaWl8C6NZIZQDRnZ6XJBerPn4f62EOwG3ba3f5V8Q1GcAoJsKwZE6ipZQo
+         /t6CyjvmpHQwm62wwQ1z9FqvyiRxteR4HdlpYhX92jc/4+la/v9KwOm44lFr/cVoHhLS
+         tWziGtKBeDbfn0hr2l+Ktpd3iMW6bggMdwNVDIlbHCD8/aPZOew03C6rQU3y82mMLh1z
+         +A30rs+fmyaZ6QlyE+Q3C7lWlaZvUzQleerPPHHLN+a3j8vizfryp6QudzcrxpSSKhZZ
+         M9SQ==
+X-Gm-Message-State: AOAM533QPHXmG5muLUTGIM3HpeHxDFGKlCvwnol4GVMftaqOOu2AfUsY
+        P7HSKWv2lv/ILrw/lhQylIufmDcQVaG367/OklAoFN4PGbP2m4e+gbBSHD6J5zbqV0H3bGD9RXT
+        UZOCFQcmieuRq
+X-Received: by 2002:a1c:2c0a:: with SMTP id s10mr522270wms.103.1600774540926;
+        Tue, 22 Sep 2020 04:35:40 -0700 (PDT)
+X-Received: by 2002:a1c:2c0a:: with SMTP id s10mr522238wms.103.1600774540651;
+        Tue, 22 Sep 2020 04:35:40 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:ec2c:90a9:1236:ebc6? ([2001:b07:6468:f312:ec2c:90a9:1236:ebc6])
+        by smtp.gmail.com with ESMTPSA id m18sm25626053wrx.58.2020.09.22.04.35.38
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 22 Sep 2020 04:35:39 -0700 (PDT)
+Subject: Re: [PATCH v2] qemu/atomic.h: prefix qemu_ to solve <stdatomic.h>
+ collisions
+To:     Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+Cc:     Max Filippov <jcmvbkbc@gmail.com>, Eric Blake <eblake@redhat.com>,
+        Peter Lieven <pl@kamp.de>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Cornelia Huck <cohuck@redhat.com>,
+        Jason Wang <jasowang@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+        Sagar Karandikar <sagark@eecs.berkeley.edu>,
+        Alberto Garcia <berto@igalia.com>, qemu-s390x@nongnu.org,
+        kvm@vger.kernel.org, Liu Yuan <namei.unix@gmail.com>,
+        Jiri Slaby <jslaby@suse.cz>, Fam Zheng <fam@euphon.net>,
+        Paul Durrant <paul@xen.org>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Jiaxun Yang <jiaxun.yang@flygoat.com>,
+        Aurelien Jarno <aurelien@aurel32.net>,
+        Max Reitz <mreitz@redhat.com>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        Michael Roth <mdroth@linux.vnet.ibm.com>,
+        Kevin Wolf <kwolf@redhat.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Thomas Huth <thuth@redhat.com>, John Snow <jsnow@redhat.com>,
+        Alistair Francis <Alistair.Francis@wdc.com>,
+        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        qemu-arm@nongnu.org, Yuval Shaia <yuval.shaia.ml@gmail.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        sheepdog@lists.wpkg.org,
+        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Juan Quintela <quintela@redhat.com>, qemu-riscv@nongnu.org,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        Stefan Weil <sw@weilnetz.de>,
+        Matthew Rosato <mjrosato@linux.ibm.com>,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Palmer Dabbelt <palmer@dabbelt.com>, qemu-block@nongnu.org,
+        =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+        xen-devel@lists.xenproject.org, Laurent Vivier <laurent@vivier.eu>,
+        Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        Huacai Chen <chenhc@lemote.com>
+References: <20200922085838.230505-1-stefanha@redhat.com>
+From:   Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <33631340-e3e3-b10f-4f9a-0e1b295d79ef@redhat.com>
+Date:   Tue, 22 Sep 2020 13:35:37 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200921035257.434532-1-f4bug@amsat.org>
+In-Reply-To: <20200922085838.230505-1-stefanha@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.214,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rlbplf9a/cFZ
+Content-Transfer-Encoding: 7bit
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 4RAXAbc264mP
 
-On 9/21/20 5:52 AM, Philippe Mathieu-Daudé wrote:
-> In this series we implement the COMPARE registers of the
-> SYS_timer, since they are used by Linux.
+On 22/09/20 10:58, Stefan Hajnoczi wrote:
+> clang's C11 atomic_fetch_*() functions only take a C11 atomic type
+> pointer argument. QEMU uses direct types (int, etc) and this causes a
+> compiler error when a QEMU code calls these functions in a source file
+> that also included <stdatomic.h> via a system header file:
 > 
-> This fixes the hang reported by Niek here:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg682090.html
+>   $ CC=clang CXX=clang++ ./configure ... && make
+>   ../util/async.c:79:17: error: address argument to atomic operation must be a pointer to _Atomic type ('unsigned int *' invalid)
 > 
-> Since v1:
-> - Extracted unrelated patches to previous series
->   (which happened to be mis-rebased)
+> Avoid using atomic_*() names in QEMU's atomic.h since that namespace is
+> used by <stdatomic.h>. Prefix QEMU's APIs with qemu_ so that atomic.h
+> and <stdatomic.h> can co-exist.
 > 
-> Based-on: <20200921034729.432931-1-f4bug@amsat.org>
-> Supersedes: <20200920175825.417680-1-f4bug@amsat.org>
+> This patch was generated using:
 > 
-> Philippe Mathieu-Daudé (5):
->   hw/intc/bcm2835_ic: Trace GPU/CPU IRQ handlers
->   hw/timer/bcm2835: Introduce BCM2835_SYSTIMER_COUNT definition
->   hw/timer/bcm2835: Rename variable holding CTRL_STATUS register
->   hw/timer/bcm2835: Support the timer COMPARE registers
+>   $ git grep -h -o '\<atomic\(64\)\?_[a-z0-9_]\+' include/qemu/atomic.h | \
+>     sort -u >/tmp/changed_identifiers
+>   $ for identifier in $(</tmp/changed_identifiers); do
+>        sed -i "s%\<$identifier\>%qemu_$identifier%g" \
+>            $(git grep -I -l "\<$identifier\>")
+>     done
+> 
+> I manually fixed line-wrap issues and misaligned rST tables.
+> 
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+> ---
+> v2:
+>  * The diff of my manual fixups is available here:
+>    https://vmsplice.net/~stefan/atomic-namespace-pre-fixups.diff
+>    - Dropping #ifndef qemu_atomic_fetch_add in atomic.h
+>    - atomic_##X(haddr, val) glue macros not caught by grep
+>    - Keep atomic_add-bench name
+>    - C preprocessor backslash-newline ('\') column alignment
+>    - Line wrapping
+>  * Use grep -I to avoid accidentally modifying binary files (RISC-V
+>    OpenSBI ELFs) [Eric Blake]
+>  * Tweak .gitorder to show atomic.h changes first [Eric Blake]
+>  * Update grep commands in commit description so reviewers can reproduce
+>    mechanical changes [Eric Blake]
 
-I'll respin this series trying to address Luc's comments on patch 4.
+I think the reviews crossed, are you going to respin using a qatomic_
+prefix?
+
+Paolo

@@ -1,109 +1,70 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp334217lfq;
-        Wed, 23 Sep 2020 03:44:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzcwBwRG0bYACgA8Hrj9Oqow5uZ4TI1u1MlgJVsV0zFSq1ns5m276detHqfi6emVyCNxYxL
-X-Received: by 2002:a25:bcc7:: with SMTP id l7mr13793376ybm.67.1600857843526;
-        Wed, 23 Sep 2020 03:44:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600857843; cv=none;
-        d=google.com; s=arc-20160816;
-        b=1HoQc8eA5Q3awYVFBrVodQD6GNgdclv24ayuQkXVZUXxjvWqeyCKp8GjoW00SHCabN
-         06p4Bw3eMyn8sY0bp3c5ONXi7Bc3FtitIDlxrLeY3NEA7BKUu5xLq/pN9dd20nFXtWaQ
-         oSmx1dTHy+nymLhJkxUaKhLWi3XiIcpG1cwgR1M3/zLz8hcJReF9BfOkEvU+Z4UmN0fo
-         713mcvwhYM0+dLGQS81lOXHrvYiQ/z5F9xULFCy1poCg8hkSJbBr3Dhhcx09c3UlFcuD
-         ls3HUGDzUcZgRZVq0bvyJzV75HfPXv4zOFYtFVJOiCY9cL+ZGsEjwPHTtX2jaCEqh2d/
-         II8Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=eFPkbYxA6FaaMTGJYUsKcGN1xs97j6/u2JzPLhfib1Y=;
-        b=mFgcFe0H7gc3VZPYPSdKmWHMpcJ7/xRZ750u+zVnghrv5cG2x1evAQm5VhUEoMtLK2
-         nzqkNmJe8yLAhARa5HGcFvQGqLqFX7Q2IOHZCJi3R4xpQ7ca4cxtrfsPpwlGKN7V3Oa/
-         LKfAFcWWoK9alUVHawAIJqd2sixuUZqfTcgAhmbM/HMWvj6xOf2J+jFw/jbrktiuoLJF
-         XTSrASATHg51L0FScH7cUMfMxnfc8pDM4Vf7TBxQPEAGq2LqarsrfAUBqc2UzsHDp5uy
-         ootrre2XZDqcH87qDFXzmf8aIFMlstGk6e5gypHucUq6vjzloms/N9HNqLcbQ3eQ9yzk
-         Vo9Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UK4W91Hf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp454463lfq;
+        Wed, 23 Sep 2020 06:20:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwhQc4gKjOh1PNWG2jUAEexWKFUKfRTBaY6PMk5IGYvQQh+FlkeSGJR8+7kttsO8B+KzNtW
+X-Received: by 2002:a25:240e:: with SMTP id k14mr1508054ybk.5.1600867251598;
+        Wed, 23 Sep 2020 06:20:51 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r7si21837814ybc.36.2020.09.23.03.44.03
+        by mx.google.com with ESMTPS id w2si19534111ybs.253.2020.09.23.06.20.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Sep 2020 03:44:03 -0700 (PDT)
+        Wed, 23 Sep 2020 06:20:51 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UK4W91Hf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47748 helo=lists1p.gnu.org)
+       arc=fail (signature failed);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:57708 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kL2Fm-0001qL-TM
-	for alex.bennee@linaro.org; Wed, 23 Sep 2020 06:44:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50886)
+	id 1kL4hW-00060Q-IP
+	for alex.bennee@linaro.org; Wed, 23 Sep 2020 09:20:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kL2DX-0008Hp-8Y
- for qemu-arm@nongnu.org; Wed, 23 Sep 2020 06:41:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52114)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1kL2DV-0006yw-90
- for qemu-arm@nongnu.org; Wed, 23 Sep 2020 06:41:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600857700;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=eFPkbYxA6FaaMTGJYUsKcGN1xs97j6/u2JzPLhfib1Y=;
- b=UK4W91Hfxc5ppm9JseA1IuYhOnK67S8gcjd8RcvvbqjRZwsmkmOV3t4tEMzOxNs8P1VLy7
- DmWoj1h0j5odz85wX18hEeF0vK8AXuJROhcbuRbMZvJQWiSi39WXgejI1L+HatrpRTRm6x
- Q1qS5/hBp0jgHWY2LYSggFjKOD7rKb0=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-157-IHWV25uUMR6jLacSb4W2YA-1; Wed, 23 Sep 2020 06:41:26 -0400
-X-MC-Unique: IHWV25uUMR6jLacSb4W2YA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2B826192AB65;
- Wed, 23 Sep 2020 10:41:25 +0000 (UTC)
-Received: from localhost.localdomain.com (ovpn-114-73.ams2.redhat.com
- [10.36.114.73])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C97E31002C03;
- Wed, 23 Sep 2020 10:41:21 +0000 (UTC)
-From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v2 3/3] qemu-options: document SMBIOS type 11 settings
-Date: Wed, 23 Sep 2020 11:41:02 +0100
-Message-Id: <20200923104102.2068416-4-berrange@redhat.com>
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kL4gq-0005YM-P8; Wed, 23 Sep 2020 09:20:08 -0400
+Resent-Date: Wed, 23 Sep 2020 09:20:08 -0400
+Resent-Message-Id: <E1kL4gq-0005YM-P8@lists.gnu.org>
+Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21782)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
+ id 1kL4go-0003Ra-0D; Wed, 23 Sep 2020 09:20:08 -0400
+ARC-Seal: i=1; a=rsa-sha256; t=1600867190; cv=none; 
+ d=zohomail.com; s=zohoarc; 
+ b=YAscWlQslsYO5xWyC+KwnCTFce0gf7vEohKbOF4RfU5UHKXLxpJkLa7/ct4+VGscxP+Sr5O0IMn9f4ebfmT2PiaoVKZSWQ0x+5EFaV9jcWpDc/a8vet7NXUE6bkMmZJhv6szUDMKcUJMLxHgwNl637uoZZpVE8bXaIFtGO4Cj8w=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
+ s=zohoarc; t=1600867190;
+ h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
+ bh=K+YOu8w9XoDhdx1qeMSyb62OUDOBtrAG9DlY5gPNhyA=; 
+ b=gJTrHa66foTnCxoq3uhk3pt0ESjCOKhf4XO/RESM2hMWUHygLFiWPewdMys1UPpyBT8JgMMvA3ZzkNd0WBnVnSNxHsfNQ5CCJpFcLRND2QsTiTTGN7NmuffkRvVqFEps0NiE5dM+fReowvqgQ/O1p7hoF8iUaeLfa1vIS5HnjZ8=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+ spf=pass  smtp.mailfrom=no-reply@patchew.org;
+ dmarc=pass header.from=<no-reply@patchew.org>
+ header.from=<no-reply@patchew.org>
+Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
+ mx.zohomail.com with SMTPS id 1600867188650167.82748159333482;
+ Wed, 23 Sep 2020 06:19:48 -0700 (PDT)
+Subject: Re: [PATCH v2 0/3] Add support for loading SMBIOS OEM strings from a
+ file
+Message-ID: <160086718660.23158.14368998722153069203@66eaa9a8a123>
 In-Reply-To: <20200923104102.2068416-1-berrange@redhat.com>
-References: <20200923104102.2068416-1-berrange@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/22 23:02:20
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.455,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NUMERIC_HTTP_ADDR=1.242, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_PORT=0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+Resent-From: 
+From: no-reply@patchew.org
+To: berrange@redhat.com
+Date: Wed, 23 Sep 2020 06:19:48 -0700 (PDT)
+X-ZohoMailClient: External
+Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
+ helo=sender4-of-o57.zoho.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/23 09:20:02
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,83 +77,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- qemu-arm@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Laszlo Ersek <lersek@redhat.com>, Richard Henderson <rth@twiddle.net>
+Reply-To: qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
+ mst@redhat.com, qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org,
+ imammedo@redhat.com, pbonzini@redhat.com, lersek@redhat.com, rth@twiddle.net
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 135miA5fk5WK
+X-TUID: uBGnNT2ethgB
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
----
- qemu-options.hx | 41 +++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 41 insertions(+)
-
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 47f64be0c0..2cb034bce3 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -2296,6 +2296,8 @@ DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,
-     "-smbios type=4[,sock_pfx=str][,manufacturer=str][,version=str][,serial=str]\n"
-     "              [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]\n"
-     "                specify SMBIOS type 4 fields\n"
-+    "-smbios type=11[,value=str][,path=filename]\n"
-+    "                specify SMBIOS type 11 fields\n"
-     "-smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str]\n"
-     "               [,asset=str][,part=str][,speed=%d]\n"
-     "                specify SMBIOS type 17 fields\n",
-@@ -2319,6 +2321,45 @@ SRST
- ``-smbios type=4[,sock_pfx=str][,manufacturer=str][,version=str][,serial=str][,asset=str][,part=str]``
-     Specify SMBIOS type 4 fields
- 
-+``-smbios type=11[,value=str][,path=filename]``
-+    Specify SMBIOS type 11 fields inline
-+
-+    This argument can be repeated multiple times, and values are added in the order they are parsed.
-+    Applications intending to use OEM strings data are encouraged to use their application name as
-+    a prefix for the value string. This facilitates passing information for multiple applications
-+    concurrently.
-+
-+    The ``value=str`` syntax provides the string data inline, while the ``path=filename`` syntax
-+    loads data from a file on disk. Note that the file is not permitted to contain any NUL bytes.
-+
-+    Both the ``value`` and ``path`` options can be repeated multiple times and will be added to
-+    the SMBIOS table in the order in which they appear.
-+
-+    Note that on the x86 architecture, the total size of all SMBIOS tables is limited to 65535
-+    bytes. Thus the OEM strings data is not suitable for passing large amounts of data into the
-+    guest. Instead it should be used as a indicator to inform the guest where to locate the real
-+    data set, for example, by specifying the serial ID of a block device.
-+
-+    An example passing three strings is
-+
-+    .. parsed-literal::
-+
-+        -smbios type=11,value=cloud-init:ds=nocloud-net;s=http://10.10.0.1:8000/,\\
-+                        value=anaconda:method=http://dl.fedoraproject.org/pub/fedora/linux/releases/25/x86_64/os,\\
-+                        path=/some/file/with/oemstringsdata.txt
-+
-+    In the guest OS this is visible with the ``dmidecode`` command
-+
-+     .. parsed-literal::
-+
-+         $ dmidecode -t 11
-+         Handle 0x0E00, DMI type 11, 5 bytes
-+         OEM Strings
-+              String 1: cloud-init:ds=nocloud-net;s=http://10.10.0.1:8000/
-+              String 2: anaconda:method=http://dl.fedoraproject.org/pub/fedora/linux/releases/25/x86_64/os
-+              String 3: myapp:some extra data
-+
-+
- ``-smbios type=17[,loc_pfx=str][,bank=str][,manufacturer=str][,serial=str][,asset=str][,part=str][,speed=%d]``
-     Specify SMBIOS type 17 fields
- ERST
--- 
-2.26.2
-
+UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkyMzEwNDEwMi4yMDY4
+NDE2LTEtYmVycmFuZ2VAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhl
+IGRvY2tlci1taW5nd0BmZWRvcmEgYnVpbGQgdGVzdC4gUGxlYXNlIGZpbmQgdGhlIHRlc3Rpbmcg
+Y29tbWFuZHMgYW5kCnRoZWlyIG91dHB1dCBiZWxvdy4gSWYgeW91IGhhdmUgRG9ja2VyIGluc3Rh
+bGxlZCwgeW91IGNhbiBwcm9iYWJseSByZXByb2R1Y2UgaXQKbG9jYWxseS4KCj09PSBURVNUIFND
+UklQVCBCRUdJTiA9PT0KIyEgL2Jpbi9iYXNoCmV4cG9ydCBBUkNIPXg4Nl82NAptYWtlIGRvY2tl
+ci1pbWFnZS1mZWRvcmEgVj0xIE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtbWluZ3dA
+ZmVkb3JhIEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpIb3N0IG1hY2hp
+bmUgY3B1OiB4ODZfNjQKVGFyZ2V0IG1hY2hpbmUgY3B1IGZhbWlseTogeDg2ClRhcmdldCBtYWNo
+aW5lIGNwdTogeDg2XzY0Ci4uL3NyYy9tZXNvbi5idWlsZDoxMDogV0FSTklORzogTW9kdWxlIHVu
+c3RhYmxlLWtleXZhbCBoYXMgbm8gYmFja3dhcmRzIG9yIGZvcndhcmRzIGNvbXBhdGliaWxpdHkg
+YW5kIG1pZ2h0IG5vdCBleGlzdCBpbiBmdXR1cmUgcmVsZWFzZXMuClByb2dyYW0gc2ggZm91bmQ6
+IFlFUwpQcm9ncmFtIHB5dGhvbjMgZm91bmQ6IFlFUyAoL3Vzci9iaW4vcHl0aG9uMykKQ29uZmln
+dXJpbmcgbmluamF0b29sIHVzaW5nIGNvbmZpZ3VyYXRpb24KLS0tCmRvbmUKY29weWluZyBzdGF0
+aWMgZmlsZXMuLi4gLi4uIENvbXBpbGluZyBDIG9iamVjdCBsaWJxZW11LXg4Nl82NC1zb2Z0bW11
+LmZhLnAvdGFyZ2V0X2kzODZfc2VnX2hlbHBlci5jLm9iagouLi9zcmMvaHcvc21iaW9zL3NtYmlv
+cy5jOiBJbiBmdW5jdGlvbiAnc2F2ZV9vcHRfb25lJzoKLi4vc3JjL2h3L3NtYmlvcy9zbWJpb3Mu
+Yzo5Nzg6MTg6IGVycm9yOiB0b28gZmV3IGFyZ3VtZW50cyB0byBmdW5jdGlvbiAncWVtdV9vcGVu
+JwogIDk3OCB8ICAgICAgICAgaW50IGZkID0gcWVtdV9vcGVuKHZhbHVlLCBPX1JET05MWSk7CiAg
+ICAgIHwgICAgICAgICAgICAgICAgICBefn5+fn5+fn4KSW4gZmlsZSBpbmNsdWRlZCBmcm9tIC4u
+L3NyYy9ody9zbWJpb3Mvc21iaW9zLmM6MTg6Ci90bXAvcWVtdS10ZXN0L3NyYy9pbmNsdWRlL3Fl
+bXUvb3NkZXAuaDo1MDU6NTogbm90ZTogZGVjbGFyZWQgaGVyZQogIDUwNSB8IGludCBxZW11X29w
+ZW4oY29uc3QgY2hhciAqbmFtZSwgaW50IGZsYWdzLCBFcnJvciAqKmVycnApOwogICAgICB8ICAg
+ICBefn5+fn5+fn4KbWFrZTogKioqIFtNYWtlZmlsZS5uaW5qYToxMzkxOiBsaWJjb21tb24uZmEu
+cC9od19zbWJpb3Nfc21iaW9zLmMub2JqXSBFcnJvciAxCm1ha2U6ICoqKiBXYWl0aW5nIGZvciB1
+bmZpbmlzaGVkIGpvYnMuLi4uCmRvbmUKY29weWluZyBleHRyYSBmaWxlcy4uLiBkb25lCi0tLQog
+ICAgcmFpc2UgQ2FsbGVkUHJvY2Vzc0Vycm9yKHJldGNvZGUsIGNtZCkKc3VicHJvY2Vzcy5DYWxs
+ZWRQcm9jZXNzRXJyb3I6IENvbW1hbmQgJ1snc3VkbycsICctbicsICdkb2NrZXInLCAncnVuJywg
+Jy0tcm0nLCAnLS1sYWJlbCcsICdjb20ucWVtdS5pbnN0YW5jZS51dWlkPTJhNjgxN2QxMjEzMTRl
+NTVhMmY4YWU4MGY2NDFmOGQ4JywgJy11JywgJzEwMDMnLCAnLS1zZWN1cml0eS1vcHQnLCAnc2Vj
+Y29tcD11bmNvbmZpbmVkJywgJy1lJywgJ1RBUkdFVF9MSVNUPScsICctZScsICdFWFRSQV9DT05G
+SUdVUkVfT1BUUz0nLCAnLWUnLCAnVj0nLCAnLWUnLCAnSj0xNCcsICctZScsICdERUJVRz0nLCAn
+LWUnLCAnU0hPV19FTlY9JywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywgJy12
+JywgJy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRvY2tlci1jY2FjaGU6L3Zhci90bXAvY2Nh
+Y2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLV91aWJtZXl0L3NyYy9k
+b2NrZXItc3JjLjIwMjAtMDktMjMtMDkuMTYuMTkuMTI3NTM6L3Zhci90bXAvcWVtdTp6LHJvJywg
+J3FlbXUvZmVkb3JhJywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3QtbWluZ3cnXScgcmV0dXJu
+ZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVyPWxhYmVsPWNvbS5xZW11
+Lmluc3RhbmNlLnV1aWQ9MmE2ODE3ZDEyMTMxNGU1NWEyZjhhZTgwZjY0MWY4ZDgKbWFrZVsxXTog
+KioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFy
+L3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtX3VpYm1leXQvc3JjJwptYWtlOiAqKiogW2RvY2tlci1y
+dW4tdGVzdC1taW5nd0BmZWRvcmFdIEVycm9yIDIKCnJlYWwgICAgM20yNi41ODVzCnVzZXIgICAg
+MG0yMS42OTZzCgoKVGhlIGZ1bGwgbG9nIGlzIGF2YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5v
+cmcvbG9ncy8yMDIwMDkyMzEwNDEwMi4yMDY4NDE2LTEtYmVycmFuZ2VAcmVkaGF0LmNvbS90ZXN0
+aW5nLmRvY2tlci1taW5nd0BmZWRvcmEvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRl
+ZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNl
+IHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=

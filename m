@@ -1,134 +1,174 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp457547lfq;
-        Wed, 23 Sep 2020 06:24:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwJjxzqOZ02u5zUIGIkbaWReYdmRM3uWCPaNXNYb8pfWGJkEHT0UoF3sIWQjSIpg3vuAM7
-X-Received: by 2002:a25:558:: with SMTP id 85mr13776331ybf.315.1600867483133;
-        Wed, 23 Sep 2020 06:24:43 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp469886lfq;
+        Wed, 23 Sep 2020 06:39:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzxEE7uhWcqN7mbcwuZp4qQDyUSzbnOCZHDjXIGY5GXY5bXyjBoR3oFDbdfr2xD87wA9R1Z
+X-Received: by 2002:a25:bfcf:: with SMTP id q15mr14353ybm.133.1600868394726;
+        Wed, 23 Sep 2020 06:39:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600868394; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ByywslSAIr/fNqH0cnMEkxEzFQndwQMD+reVV96Jr3WGlzeyHJoMYoXriz6DF1wQA7
+         56BlH6EZx1HPQEyeGglUBZzd7qCnSS4iE7cqJQuWknD+BUOmXTN15ZDK/fdUs6w76jhU
+         0jl60RAjrmap65y2F3qGCKeu27+3Or9Gy/heCu+sq6RuurFsMmgoseGEAQKG1C5lgk9E
+         VYJk5MeN0mrJvuc/I53P3Rq6v08VTENG9GVxWCA0jV4u3rVAS/kyfzu76zoglQWTEjNa
+         WzDJYZVjQHlv2CByTRPmz0oVx00AAG591yT7m58VwoTiilpKp61W9vk94WbbjuqohNcS
+         25NQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=tQRoNuKsM85S6dOrahwCoBi3agJZYsO6Om4aDsnQEVA=;
+        b=yX1ZUGr4V/ysCJfiaf1iFe964et74EzsjVYP8QYlBFug4eXexlPVLbwm+fc05d7Wyz
+         v7AyPsulOWkWX9nA3fdBcmWp5b4Dy1cA1xYGipTlW5XWB+GNf4470ImhaMJQKY9WcQ14
+         al0VdQmLCy8PCoSz36JgLu/QoIcL8ISGLeysoKg9sxUM6qUP4Yh5b3o01OrM2LZrahF0
+         DUHXGbgnbyLyq5N9nIgTNVpvOB099EO9zPitK786vwQ7Zl/Wu+FFLjWnrr+tuzymcs+H
+         4k3EPm0XpBGhRwUUIiBCUS+1g8VVeetziSLShkH794BhRY+rf+uDkr78lE/ySGSvFzZq
+         BnQA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UEaa0bTg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z10si14684565ybk.483.2020.09.23.06.24.42
+        by mx.google.com with ESMTPS id z3si30374ybo.258.2020.09.23.06.39.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Sep 2020 06:24:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Sep 2020 06:39:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33388 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=UEaa0bTg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58218 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kL4lG-0007no-IZ
-	for alex.bennee@linaro.org; Wed, 23 Sep 2020 09:24:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33366)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kL4zy-0001tX-1Y
+	for alex.bennee@linaro.org; Wed, 23 Sep 2020 09:39:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37194)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kL4kv-0007Ra-WB; Wed, 23 Sep 2020 09:24:22 -0400
-Resent-Date: Wed, 23 Sep 2020 09:24:21 -0400
-Resent-Message-Id: <E1kL4kv-0007Ra-WB@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21731)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kL4kt-00041F-CF; Wed, 23 Sep 2020 09:24:21 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1600867438; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=HLwA/Nklkrb7Y0wXHBINdv16+Ff/UF2SVv7IKyiS3tbjYl8x4S5i0oQJjGOX4QanaZ6eVdEtX4cnowSWpU9VMyhBYkgoQHl0xCVGQahYg4S0FOl3Peb1Hn9as7JCChQua6DiUJj+Hiv9WMhao9ky3BsL7wj/YAkNBwQRUcjBpNo=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1600867438;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=VnIUSkHnw6myX2RXAFJceLS3dna7G98MvpRpeIMO9Yw=; 
- b=AE4lyy0EfXGZEg+IgsxkAusWYAoICgsf/YDUQIDv9IK1TfgH9/lBjzFLIympV2DjdjAezWRKbhHA2jkvzB5ljLax25tCu7qZ25qfweENC+++n/cc8r1iQu+JsVgOsYcCvz+Do4V5bIXkENE3Nif3ZiIAFp5qqhEwn/kE464nZ+E=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1600867437013782.0463689580795;
- Wed, 23 Sep 2020 06:23:57 -0700 (PDT)
-Subject: Re: [PATCH v2 0/3] Add support for loading SMBIOS OEM strings from a
- file
-Message-ID: <160086743498.23158.999351932696569376@66eaa9a8a123>
-In-Reply-To: <20200923104102.2068416-1-berrange@redhat.com>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kL4yS-0000FV-NM
+ for qemu-devel@nongnu.org; Wed, 23 Sep 2020 09:38:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:29645)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1kL4yQ-0005zO-6g
+ for qemu-devel@nongnu.org; Wed, 23 Sep 2020 09:38:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1600868297;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=tQRoNuKsM85S6dOrahwCoBi3agJZYsO6Om4aDsnQEVA=;
+ b=UEaa0bTgUogQWr0RU5yHzShlCuNq7GAh45Wfx4RbxFPynoFskZZ5nwzZaJMR1bvoOaBeaA
+ vGz/wz7k6zc11yIxkwy/u7AAGCQYUZbL/NwsDGzpFFHuIwvv9RVgFVgYl/H1Vn/50Prt30
+ wR3U1Iws0NwF4EBEbdj5XeXjq1zWiTA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-410-d5kWxqnFMcGDcp6zjhQaaw-1; Wed, 23 Sep 2020 09:38:13 -0400
+X-MC-Unique: d5kWxqnFMcGDcp6zjhQaaw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 107EB801ABD;
+ Wed, 23 Sep 2020 13:38:12 +0000 (UTC)
+Received: from localhost.localdomain.com (ovpn-114-73.ams2.redhat.com
+ [10.36.114.73])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 18F6F60BEC;
+ Wed, 23 Sep 2020 13:38:05 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 0/3] Add support for loading SMBIOS OEM strings from a file
+Date: Wed, 23 Sep 2020 14:38:01 +0100
+Message-Id: <20200923133804.2089190-1-berrange@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=berrange@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: berrange@redhat.com
-Date: Wed, 23 Sep 2020 06:23:57 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/23 09:20:02
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/23 00:53:58
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.228,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, berrange@redhat.com, ehabkost@redhat.com,
- mst@redhat.com, qemu-devel@nongnu.org, armbru@redhat.com, qemu-arm@nongnu.org,
- imammedo@redhat.com, pbonzini@redhat.com, lersek@redhat.com, rth@twiddle.net
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ueJ/yv98Bn4W
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Laszlo Ersek <lersek@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: a87I439cnmOF
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkyMzEwNDEwMi4yMDY4
-NDE2LTEtYmVycmFuZ2VAcmVkaGF0LmNvbS8KCgoKSGksCgpUaGlzIHNlcmllcyBmYWlsZWQgdGhl
-IGRvY2tlci1xdWlja0BjZW50b3M3IGJ1aWxkIHRlc3QuIFBsZWFzZSBmaW5kIHRoZSB0ZXN0aW5n
-IGNvbW1hbmRzIGFuZAp0aGVpciBvdXRwdXQgYmVsb3cuIElmIHlvdSBoYXZlIERvY2tlciBpbnN0
-YWxsZWQsIHlvdSBjYW4gcHJvYmFibHkgcmVwcm9kdWNlIGl0CmxvY2FsbHkuCgo9PT0gVEVTVCBT
-Q1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCm1ha2UgZG9ja2VyLWltYWdlLWNlbnRvczcgVj0x
-IE5FVFdPUks9MQp0aW1lIG1ha2UgZG9ja2VyLXRlc3QtcXVpY2tAY2VudG9zNyBTSE9XX0VOVj0x
-IEo9MTQgTkVUV09SSz0xCj09PSBURVNUIFNDUklQVCBFTkQgPT09CgpDIGxpbmtlciBmb3IgdGhl
-IGhvc3QgbWFjaGluZTogY2MgbGQuYmZkIDIuMjctNDMKSG9zdCBtYWNoaW5lIGNwdSBmYW1pbHk6
-IHg4Nl82NApIb3N0IG1hY2hpbmUgY3B1OiB4ODZfNjQKLi4vc3JjL21lc29uLmJ1aWxkOjEwOiBX
-QVJOSU5HOiBNb2R1bGUgdW5zdGFibGUta2V5dmFsIGhhcyBubyBiYWNrd2FyZHMgb3IgZm9yd2Fy
-ZHMgY29tcGF0aWJpbGl0eSBhbmQgbWlnaHQgbm90IGV4aXN0IGluIGZ1dHVyZSByZWxlYXNlcy4K
-UHJvZ3JhbSBzaCBmb3VuZDogWUVTClByb2dyYW0gcHl0aG9uMyBmb3VuZDogWUVTICgvdXNyL2Jp
-bi9weXRob24zKQpDb25maWd1cmluZyBuaW5qYXRvb2wgdXNpbmcgY29uZmlndXJhdGlvbgotLS0K
-Q29tcGlsaW5nIEMgb2JqZWN0IGxpYmNvbW1vbi5mYS5wL2h3X3RpbWVyX2hwZXQuYy5vCkNvbXBp
-bGluZyBDIG9iamVjdCBsaWJjb21tb24uZmEucC91aV9pbnB1dC1rZXltYXAuYy5vCi4uL3NyYy9o
-dy9zbWJpb3Mvc21iaW9zLmM6IEluIGZ1bmN0aW9uICdzYXZlX29wdF9vbmUnOgouLi9zcmMvaHcv
-c21iaW9zL3NtYmlvcy5jOjk3ODo5OiBlcnJvcjogdG9vIGZldyBhcmd1bWVudHMgdG8gZnVuY3Rp
-b24gJ3FlbXVfb3BlbicKICAgICAgICAgaW50IGZkID0gcWVtdV9vcGVuKHZhbHVlLCBPX1JET05M
-WSk7CiAgICAgICAgIF4KSW4gZmlsZSBpbmNsdWRlZCBmcm9tIC4uL3NyYy9ody9zbWJpb3Mvc21i
-aW9zLmM6MTg6MDoKL3RtcC9xZW11LXRlc3Qvc3JjL2luY2x1ZGUvcWVtdS9vc2RlcC5oOjUwNTo1
-OiBub3RlOiBkZWNsYXJlZCBoZXJlCiBpbnQgcWVtdV9vcGVuKGNvbnN0IGNoYXIgKm5hbWUsIGlu
-dCBmbGFncywgRXJyb3IgKiplcnJwKTsKICAgICBeCm1ha2U6ICoqKiBbbGliY29tbW9uLmZhLnAv
-aHdfc21iaW9zX3NtYmlvcy5jLm9dIEVycm9yIDEKbWFrZTogKioqIFdhaXRpbmcgZm9yIHVuZmlu
-aXNoZWQgam9icy4uLi4KVHJhY2ViYWNrIChtb3N0IHJlY2VudCBjYWxsIGxhc3QpOgogIEZpbGUg
-Ii4vdGVzdHMvZG9ja2VyL2RvY2tlci5weSIsIGxpbmUgNzA5LCBpbiA8bW9kdWxlPgotLS0KICAg
-IHJhaXNlIENhbGxlZFByb2Nlc3NFcnJvcihyZXRjb2RlLCBjbWQpCnN1YnByb2Nlc3MuQ2FsbGVk
-UHJvY2Vzc0Vycm9yOiBDb21tYW5kICdbJ3N1ZG8nLCAnLW4nLCAnZG9ja2VyJywgJ3J1bicsICct
-LXJtJywgJy0tbGFiZWwnLCAnY29tLnFlbXUuaW5zdGFuY2UudXVpZD01ZGQzNmQxMDljYjg0OWQw
-YWY4YTFhMjY0MjRhNGQxOCcsICctdScsICcxMDAzJywgJy0tc2VjdXJpdHktb3B0JywgJ3NlY2Nv
-bXA9dW5jb25maW5lZCcsICctZScsICdUQVJHRVRfTElTVD0nLCAnLWUnLCAnRVhUUkFfQ09ORklH
-VVJFX09QVFM9JywgJy1lJywgJ1Y9JywgJy1lJywgJ0o9MTQnLCAnLWUnLCAnREVCVUc9JywgJy1l
-JywgJ1NIT1dfRU5WPTEnLCAnLWUnLCAnQ0NBQ0hFX0RJUj0vdmFyL3RtcC9jY2FjaGUnLCAnLXYn
-LCAnL2hvbWUvcGF0Y2hldzIvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9jY2Fj
-aGU6eicsICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtN2FrM2R2ZDEvc3JjL2Rv
-Y2tlci1zcmMuMjAyMC0wOS0yMy0wOS4yMC4yNC4xODM0OTovdmFyL3RtcC9xZW11Onoscm8nLCAn
-cWVtdS9jZW50b3M3JywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3QtcXVpY2snXScgcmV0dXJu
-ZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVyPWxhYmVsPWNvbS5xZW11
-Lmluc3RhbmNlLnV1aWQ9NWRkMzZkMTA5Y2I4NDlkMGFmOGExYTI2NDI0YTRkMTgKbWFrZVsxXTog
-KioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAvdmFy
-L3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtN2FrM2R2ZDEvc3JjJwptYWtlOiAqKiogW2RvY2tlci1y
-dW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAgIDNtMzAuNjM0cwp1c2VyICAg
-IDBtMjIuNjE0cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcu
-b3JnL2xvZ3MvMjAyMDA5MjMxMDQxMDIuMjA2ODQxNi0xLWJlcnJhbmdlQHJlZGhhdC5jb20vdGVz
-dGluZy5kb2NrZXItcXVpY2tAY2VudG9zNy8/dHlwZT1tZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJh
-dGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVh
-c2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNvbQ==
+I previously added support for SMBIOS OEM strings tables but only=0D
+allowed for data to be passed inline. Potential users indicated they=0D
+wanted to pass some quite large data blobs which is inconvenient todo=0D
+inline. Thus I'm adding support for passing the data from a file.=0D
+=0D
+In testing this I discovered the hard way that on x86 we're limited to=0D
+using the SMBIOS 2.1 entry point currently. This has a maximum size of=0D
+0xffff, and if you exceed this all sorts of wierd behaviour happens.=0D
+=0D
+QEMU forces SMBIOS 2.1 on x86 because the default SeaBIOS firmware does=0D
+not support SMBIOS 3.0. The EDK2 firmware supports SMBIOS 3.0 and QEMU=0D
+defaults to this on the ARM virt machine type.=0D
+=0D
+This series adds support for checking the SMBIOS 2.1 limits to protect=0D
+users from impossible to diagnose problems.=0D
+=0D
+There is also a fix needed to SeaBIOS which fails to check for=0D
+integer overflow when it appends the type 0 table.=0D
+=0D
+  https://mail.coreboot.org/hyperkitty/list/seabios@seabios.org/thread/3EMI=
+OY=3D=0D
+6YS6MG5UQN3JJJS2A3DJZOVFR6/=0D
+=0D
+IIUC, SMBIOS 3.0 should only be limited by what you can fit into RAM,=0D
+but in testing, EDK2 appears to hang shortly after the SMBIOS 3.0 data=0D
+size exceeds 128 KB. I've not spotted an obvious flaw in EDK2 or QEMU,=0D
+nor do I attempt to enforce a limit in QEMU for SMBIOS 3.0.=0D
+=0D
+Changed in v3:=0D
+=0D
+ - Adjust for qemu_open method signature change=0D
+=0D
+Changed in v2:=0D
+=0D
+ - Drop the patches that allowed choice of SMBIOS 2.1 / 3.0 entry=0D
+   point. There's no compelling reason to need 3.0 on x86 while=0D
+   aarch64 is 3.0 only.=0D
+=0D
+Daniel P. Berrang=3DC3=3DA9 (3):=0D
+  hw/smbios: support loading OEM strings values from a file=0D
+  hw/smbios: report error if table size is too large=0D
+  qemu-options: document SMBIOS type 11 settings=0D
+=0D
+ hw/smbios/smbios.c | 85 +++++++++++++++++++++++++++++++++++++++-------=0D
+ qemu-options.hx    | 41 ++++++++++++++++++++++=0D
+ 2 files changed, 113 insertions(+), 13 deletions(-)=0D
+=0D
+--=3D20=0D
+2.26.2=0D
+=0D
+

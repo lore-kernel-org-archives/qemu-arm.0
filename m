@@ -1,55 +1,55 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1129092lfq;
-        Wed, 23 Sep 2020 23:31:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw83Yw/cTTGHlqyrFWhBh4PrysS3jLuCy3WlTPx/jfMDy4yjhcSIzS3yYNN+cqbO1X+TOiv
-X-Received: by 2002:a25:ce52:: with SMTP id x79mr4834948ybe.183.1600929096292;
-        Wed, 23 Sep 2020 23:31:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600929096; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1129203lfq;
+        Wed, 23 Sep 2020 23:31:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxWdwo0SlzYrOQinbYUDpCmRhPeAhWKypoMbszKjYCxnvLLoe2WJntDsgaKr8n9IxYg1M0M
+X-Received: by 2002:a25:eb08:: with SMTP id d8mr4645773ybs.23.1600929107333;
+        Wed, 23 Sep 2020 23:31:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600929107; cv=none;
         d=google.com; s=arc-20160816;
-        b=JZKa/B7QYO8o+nbS+pqt2AgQaGwdszPup6B5yl6G7hs0zCG+N26kHc+W6uxzaYyvDX
-         0lnXQ+SgycTAHVx5HfNS60tzVzBCvukwuDdglgz6JldYNrH79MpSvGnggFANImACnlUP
-         PpzMYFeA4TVAC353ZOdway3tv1+MVvgNZiOfvSnP9RAbX9iDm0o4W7Jq/nVYbHXgiE6C
-         0HIv9ShBObxSlFER7lQyWEEUXiCX73DRqJs77Es9X5I5t48/m9lxvznqEHc84VD0YnoP
-         0+ZGpJDJo4P2ByopISMfx8EEwHPypKvGNRzS0UTupqLGTj8y13foMiBLRW9XOz3rNqy7
-         Wsqw==
+        b=KUQOjSzL3vif2q24ph2BEbxrgQIyFSQhI0YvISS7OGtt1vFrYzFzFcQg9g9J0GBgkR
+         EpzxhJ3XjNCXSyKri3AYyloQq7O3Q3gHr65H4ULc2KyUETftAm3Z1l2gjRsOLJVlQ8Wa
+         Hs5Sil1RHzFGwtFKRfXobMsDCm0Nuc/HMuIu0tlGhYhiE0p3lGahLJl3eJ3NETA7H4Qc
+         VKW/VztrRaqc5sbf+xJEclpiktVBrhZWTXHtoSZE3HXq7QK0ZpL5C18xHi476+fSeDmE
+         Fu78UPO7D2WJP2AF3nNCrcV1XPhwnVJo9I2zJ/WAbNiv8HhR5+meRcNWNTJDF4wflWZW
+         ksDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=7f9JSFIk2sSkySR9exqPYV9gY4QALzxbXoJ1MRsUdO0=;
-        b=PB2u9lzQalMdDJYnF7AvzgR+N1gtblc3t+Mub7DPFqibBYcVw025VNz8vjpZ6jhVYC
-         nMjGVHuP4mkNsIpKdW3abIrb9KzEiOLx/q2CkWjV3tb1bn/y+p+2f77WXQbMWSvd//Fo
-         VdGTKGP7guv3mPyWREzcWPvSm55RZdxgpLBdBSAMUOzImgNTIcdF/fS1+XuVS/aOitPa
-         3/hBSUAtwm1gKW13ny2dfPXt3b1GStwVfQpmZ8sFzynBbE4qVECD0cyNqwyI/7bdKbRN
-         lv3SonKRnArwSaQTkiT2INlaoOmyr0+YrZz3E5bYWZxA/rlpozPu+pM1w/Vvozq328Ch
-         fICw==
+        bh=KhmU3pe9/lU0THQyQ4P0B/pDgq5xDQM6ETgJNB2cgTg=;
+        b=KnK/pAW2VqPGdTJqj7YgfFFeKlfx+BQqs8iON57dN/kolukV1sVc2OLUidGx0PgpUU
+         wHw3d2zygi8KGEn80gFsAquZS7qQ1iMYv7m236MuNa5cmLSm2MNt87mpWfOtz9avKyxk
+         05g/FaDT7pAtwbBMfnv/Y2rUsZit33vU4k9M4V3E8dik366jyH0jCTiDpyNMzgBduxCf
+         GSF8T/XqZv3dOj8wiOF8h175fpyD5HDnhYIkAckRhTZa0SRgjFyyI5t1aIQ99cDaQ3L7
+         W95siovV02hbeh60F6g0hvnwrWBei1W89lGZh8YErOAXTpWX2WZYZdEG3kt+cCGOSOtV
+         CzCA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="CVGQS/xV";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ELdwJSWO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r31si2271726ybd.478.2020.09.23.23.31.36
+        by mx.google.com with ESMTPS id v197si2153910ybv.255.2020.09.23.23.31.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Sep 2020 23:31:36 -0700 (PDT)
+        Wed, 23 Sep 2020 23:31:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="CVGQS/xV";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=ELdwJSWO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43330 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44290 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kLKn1-0003hr-Kf
-	for alex.bennee@linaro.org; Thu, 24 Sep 2020 02:31:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57722)
+	id 1kLKnC-00045G-Lt
+	for alex.bennee@linaro.org; Thu, 24 Sep 2020 02:31:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57736)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLKjX-0000CN-FI
- for qemu-arm@nongnu.org; Thu, 24 Sep 2020 02:27:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:50211)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLKjX-0000Dt-Vr
+ for qemu-arm@nongnu.org; Thu, 24 Sep 2020 02:28:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:32276)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLKjQ-0001g1-9d
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLKjQ-0001g6-HW
  for qemu-arm@nongnu.org; Thu, 24 Sep 2020 02:27:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1600928871;
@@ -57,31 +57,31 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7f9JSFIk2sSkySR9exqPYV9gY4QALzxbXoJ1MRsUdO0=;
- b=CVGQS/xVhENL0JEMFZMTDO2IRWHpYqV1EGq9q0/mrnrIKQCJLHti5AySGx0EfffrePe8A5
- YeKc22Gk5GB9UY6vB5q0iTXiq0/06rDoTFcc194ZZPG/Si/IJdVXV76Yw9vAar8fFJwQfN
- w1Efk3LtGPwUP/MM2zegKrjcl3TGUtM=
+ bh=KhmU3pe9/lU0THQyQ4P0B/pDgq5xDQM6ETgJNB2cgTg=;
+ b=ELdwJSWOzO1WznYIRPyMxlDoPvux9fVnRrQBBZCJxeCs+ElDUcXNCA/K9lmN12Rr9POqgd
+ NlmIQB8as7PWwsJV2HKHgRuqkvs2F3Y+9eKy4Cit87kAk/C6WmMKx/Jo9GxXmLZcHr3D9P
+ g95K5b8sip/4vaV1//w8KLBUearrx4E=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-430-U_-uBFQcNfO7SgUHWFDkEA-1; Thu, 24 Sep 2020 02:27:47 -0400
-X-MC-Unique: U_-uBFQcNfO7SgUHWFDkEA-1
+ us-mta-478-69errbeGPTmyKIHp0SXRDA-1; Thu, 24 Sep 2020 02:27:48 -0400
+X-MC-Unique: 69errbeGPTmyKIHp0SXRDA-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4FCAB800462;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D06151007469;
  Thu, 24 Sep 2020 06:27:46 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-85.ams2.redhat.com
  [10.36.112.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C13D35C1C7;
- Thu, 24 Sep 2020 06:27:35 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 600EB5C1C7;
+ Thu, 24 Sep 2020 06:27:46 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 02DBA9CBC; Thu, 24 Sep 2020 08:27:35 +0200 (CEST)
+ id 53E2231F93; Thu, 24 Sep 2020 08:27:35 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 03/11] arm: use acpi_dsdt_add_gpex
-Date: Thu, 24 Sep 2020 08:27:26 +0200
-Message-Id: <20200924062734.22978-4-kraxel@redhat.com>
+Subject: [PATCH v2 11/11] tests/acpi: update expected data files
+Date: Thu, 24 Sep 2020 08:27:34 +0200
+Message-Id: <20200924062734.22978-12-kraxel@redhat.com>
 In-Reply-To: <20200924062734.22978-1-kraxel@redhat.com>
 References: <20200924062734.22978-1-kraxel@redhat.com>
 MIME-Version: 1.0
@@ -126,213 +126,90 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Leif Lindholm <leif@nuviainc.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Z6yGCdPDGwBg
+X-TUID: 96l8+XUe/nu0
 
-Fill gpex config struct from memory map, then call the new
-acpi_dsdt_add_gpex helper function.  No functional change.
+Also clear allowed changes.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/arm/virt-acpi-build.c | 175 ++-------------------------------------
- 1 file changed, 9 insertions(+), 166 deletions(-)
+ tests/qtest/bios-tables-test-allowed-diff.h |   4 ----
+ tests/data/acpi/microvm/DSDT.pcie           | Bin 0 -> 3023 bytes
+ tests/data/acpi/virt/DSDT                   | Bin 5200 -> 5196 bytes
+ tests/data/acpi/virt/DSDT.memhp             | Bin 6561 -> 6557 bytes
+ tests/data/acpi/virt/DSDT.numamem           | Bin 5200 -> 5196 bytes
+ 5 files changed, 4 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6bff5e373872..9747a6458f0b 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -44,6 +44,7 @@
- #include "hw/acpi/tpm.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
-+#include "hw/pci-host/gpex.h"
- #include "hw/arm/virt.h"
- #include "hw/mem/nvdimm.h"
- #include "hw/platform-bus.h"
-@@ -155,176 +156,18 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-                               uint32_t irq, bool use_highmem, bool highmem_ecam)
- {
-     int ecam_id = VIRT_ECAM_ID(highmem_ecam);
--    Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
--    int i, slot_no;
--    hwaddr base_mmio = memmap[VIRT_PCIE_MMIO].base;
--    hwaddr size_mmio = memmap[VIRT_PCIE_MMIO].size;
--    hwaddr base_pio = memmap[VIRT_PCIE_PIO].base;
--    hwaddr size_pio = memmap[VIRT_PCIE_PIO].size;
--    hwaddr base_ecam = memmap[ecam_id].base;
--    hwaddr size_ecam = memmap[ecam_id].size;
--    int nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
--
--    Aml *dev = aml_device("%s", "PCI0");
--    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A08")));
--    aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
--    aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
--    aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
--    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
--    aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Device")));
--    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
--
--    /* Declare the PCI Routing Table. */
--    Aml *rt_pkg = aml_varpackage(PCI_SLOT_MAX * PCI_NUM_PINS);
--    for (slot_no = 0; slot_no < PCI_SLOT_MAX; slot_no++) {
--        for (i = 0; i < PCI_NUM_PINS; i++) {
--            int gsi = (i + slot_no) % PCI_NUM_PINS;
--            Aml *pkg = aml_package(4);
--            aml_append(pkg, aml_int((slot_no << 16) | 0xFFFF));
--            aml_append(pkg, aml_int(i));
--            aml_append(pkg, aml_name("GSI%d", gsi));
--            aml_append(pkg, aml_int(0));
--            aml_append(rt_pkg, pkg);
--        }
--    }
--    aml_append(dev, aml_name_decl("_PRT", rt_pkg));
--
--    /* Create GSI link device */
--    for (i = 0; i < PCI_NUM_PINS; i++) {
--        uint32_t irqs =  irq + i;
--        Aml *dev_gsi = aml_device("GSI%d", i);
--        aml_append(dev_gsi, aml_name_decl("_HID", aml_string("PNP0C0F")));
--        aml_append(dev_gsi, aml_name_decl("_UID", aml_int(i)));
--        crs = aml_resource_template();
--        aml_append(crs,
--                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                                 AML_EXCLUSIVE, &irqs, 1));
--        aml_append(dev_gsi, aml_name_decl("_PRS", crs));
--        crs = aml_resource_template();
--        aml_append(crs,
--                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                                 AML_EXCLUSIVE, &irqs, 1));
--        aml_append(dev_gsi, aml_name_decl("_CRS", crs));
--        method = aml_method("_SRS", 1, AML_NOTSERIALIZED);
--        aml_append(dev_gsi, method);
--        aml_append(dev, dev_gsi);
--    }
--
--    method = aml_method("_CBA", 0, AML_NOTSERIALIZED);
--    aml_append(method, aml_return(aml_int(base_ecam)));
--    aml_append(dev, method);
--
--    method = aml_method("_CRS", 0, AML_NOTSERIALIZED);
--    Aml *rbuf = aml_resource_template();
--    aml_append(rbuf,
--        aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
--                            0x0000, 0x0000, nr_pcie_buses - 1, 0x0000,
--                            nr_pcie_buses));
--    aml_append(rbuf,
--        aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
--                         AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000, base_mmio,
--                         base_mmio + size_mmio - 1, 0x0000, size_mmio));
--    aml_append(rbuf,
--        aml_dword_io(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
--                     AML_ENTIRE_RANGE, 0x0000, 0x0000, size_pio - 1, base_pio,
--                     size_pio));
-+    struct GPEXConfig cfg = {
-+        .mmio32 = memmap[VIRT_PCIE_MMIO],
-+        .pio    = memmap[VIRT_PCIE_PIO],
-+        .ecam   = memmap[ecam_id],
-+        .irq    = irq,
-+    };
- 
-     if (use_highmem) {
--        hwaddr base_mmio_high = memmap[VIRT_HIGH_PCIE_MMIO].base;
--        hwaddr size_mmio_high = memmap[VIRT_HIGH_PCIE_MMIO].size;
--
--        aml_append(rbuf,
--            aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
--                             AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
--                             base_mmio_high,
--                             base_mmio_high + size_mmio_high - 1, 0x0000,
--                             size_mmio_high));
-+        cfg.mmio64 = memmap[VIRT_HIGH_PCIE_MMIO];
-     }
- 
--    aml_append(method, aml_return(rbuf));
--    aml_append(dev, method);
--
--    /* Declare an _OSC (OS Control Handoff) method */
--    aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
--    aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
--    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
--    aml_append(method,
--        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
--
--    /* PCI Firmware Specification 3.0
--     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
--     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
--     * identified by the Universal Unique IDentifier (UUID)
--     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
--     */
--    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
--    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
--    aml_append(ifctx,
--        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
--    aml_append(ifctx,
--        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
--    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
--    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
--
--    /*
--     * Allow OS control for all 5 features:
--     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
--     */
--    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
--                              aml_name("CTRL")));
--
--    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
--    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
--                              aml_name("CDW1")));
--    aml_append(ifctx, ifctx1);
--
--    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
--    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
--                              aml_name("CDW1")));
--    aml_append(ifctx, ifctx1);
--
--    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
--    aml_append(ifctx, aml_return(aml_arg(3)));
--    aml_append(method, ifctx);
--
--    elsectx = aml_else();
--    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
--                               aml_name("CDW1")));
--    aml_append(elsectx, aml_return(aml_arg(3)));
--    aml_append(method, elsectx);
--    aml_append(dev, method);
--
--    method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
--
--    /* PCI Firmware Specification 3.0
--     * 4.6.1. _DSM for PCI Express Slot Information
--     * The UUID in _DSM in this context is
--     * {E5C937D0-3553-4D7A-9117-EA4D19C3434D}
--     */
--    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
--    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
--    ifctx1 = aml_if(aml_equal(aml_arg(2), aml_int(0)));
--    uint8_t byte_list[1] = {1};
--    buf = aml_buffer(1, byte_list);
--    aml_append(ifctx1, aml_return(buf));
--    aml_append(ifctx, ifctx1);
--    aml_append(method, ifctx);
--
--    byte_list[0] = 0;
--    buf = aml_buffer(1, byte_list);
--    aml_append(method, aml_return(buf));
--    aml_append(dev, method);
--
--    Aml *dev_res0 = aml_device("%s", "RES0");
--    aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
--    crs = aml_resource_template();
--    aml_append(crs,
--        aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
--                         AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000, base_ecam,
--                         base_ecam + size_ecam - 1, 0x0000, size_ecam));
--    aml_append(dev_res0, aml_name_decl("_CRS", crs));
--    aml_append(dev, dev_res0);
--    aml_append(scope, dev);
-+    acpi_dsdt_add_gpex(scope, &cfg);
- }
- 
- static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
+index 1ee19a1bcdf8..dfb8523c8bf4 100644
+--- a/tests/qtest/bios-tables-test-allowed-diff.h
++++ b/tests/qtest/bios-tables-test-allowed-diff.h
+@@ -1,5 +1 @@
+ /* List of comma-separated changed AML files to ignore */
+-"tests/data/acpi/microvm/DSDT.pcie",
+-"tests/data/acpi/virt/DSDT",
+-"tests/data/acpi/virt/DSDT.numamem",
+-"tests/data/acpi/virt/DSDT.memhp",
+diff --git a/tests/data/acpi/microvm/DSDT.pcie b/tests/data/acpi/microvm/DSDT.pcie
+index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..b5dcef1ac79c32fa7bb6fe4cb3589b9984c09776 100644
+GIT binary patch
+literal 3023
+zcmZveJ!~UI6vyA%YkNKZ$oeDS9}aXU1X{<6jt1%MwUZdd$>Mb`=!~?H5Qrm9BoGpu
+z5Fy0@>9|PLMvACu=}w}e;yMZnuA!l!<f=3Ox0B7yQ_hli=0Ee^oA-OWJ3HO5JNmsq
+zl)BZ~_jkhe&bxu%#h67z+~?Nq{}P3rXngj@)}g=UL_7U%>7Cx-!1KHfa-wk5Rs|>W
+zhhe3p)VAej+>BNHoW^Gx{{EmD+ZWqUGL{n^^t-sS!;E%tRcYILmVTBd=T(>3XE(du
+z>qdH!wjcC8ui3&P@GM~hJzl4*3g2ZZZRL?2oKAbg-ZmA9CeM{U{<^@@?}feH_4;bm
+zyF1FCusE8y7Y~k9id5=ha5(I!)A89Ncl2VxUf}tjuh&8%9sBOkyRGMT_lEnR-PDsR
+zhb;UyNH~`zHUBVA7L|W~PAMYfWm)q&ud_Qp1%BUq5x?!d$pm2G)!H7Dg-G3rI-NZo
+zoJU5(N<*y#<WrwMpmp-_@1pk^-KY1_5{z^L!EjXD{Y0Hs3wB{TrR}iqk?vdQH>q0W
+zag~DDNJJW<Mb(mBoKA6jwcV9sFBq2fT<izaM6xI1$F@M#wpWTh6H_j+HjO<Y*%R5s
+zw&~b2$skSaiKww@T6@AYk?e_#Voy8vOfs-z&&1T$o=NhMCTB))W@698G^0I}<RMMY
+ztl-4WMLvmXR&qj`oH@an6P!8832AaVg3}S4j^u<iIq^ammBwSKs}~nDFF7GiP9->%
+z;8c<m(&WVMp=%P~qk`ZpNKQzT6K^a$llxf|oJGkAX>yhXXGw6DBqyZFSr(jS!C97^
+zkS6Dh;G7YhGm;b1<a7n6D>z-r32Aax1ZPEXRwO5+$ypVgRl!-6oRB7GO>ou(XH9ZK
+znw)jPSr?pj$q8w4&I-<1!8t2AAx+LX!8s>5=Oibj$%#$ccy8wf=e*>EG&vUp=Yrr|
+zkerYv=c3?T6r78a6Vl{d5}Zqdb4hYSnw-mmb6IdMOHN3Wb475j2+kGB32Ab!3eHu*
+zxhgp!P0lsJxh6Q*BqyZF*$|u!!P$_UkeYLR*0*^Jdhv<&y{+pHad3Uquq^CVIBMum
+zzCL~=WA$tl4nylIls@mo-}mcKI4PK+uzB4GrN^#Az0Fx|yd*1?lCiLz-H4^fWUSW9
+zVx?s)Y;ZSX>9MO=^<w0A+H}dac&baWmr?h=Em4Yxh^Bn8zQLPS<bxys9#5y!zjT+@
+z&tEfU;=v<aVKM#c$|Pyl(LuSxgCHQs9}Rb@zLk&mL*G6>Cck^wob2Q-KC0A|J0ASm
+z`meEa=ZC{j+mGM+<HPe~Wy4?tt%J68!h+*)r^TTj@I^KFI&mLe+_%2OOf$A_PUaq6
+zBzAh(<;fE^=JCtpAIo~27inG|*I$pi;lQ4}qO*B&`?tTt%`XPu&;K)6{M8>!@)sY|
+zWhHG{e8I7DU=Mqtc;5I7%?HVr@@~}UDc1w#`IlSchc61($93O>bGR8*bGE`6hyDj2
+CwWA*Z
+
+literal 0
+HcmV?d00001
+
+diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
+index 9b002836f35fd03afeab9e827fdde3134d26ed2e..bc519abff9cadc1552e4e586b0a3f5f0db498f4a 100644
+GIT binary patch
+delta 43
+zcmcbhaYlp7CD<jzM}&ca>BB@WX~y=AYLc8xe#<vIa^B-$<%o9<3f`<Cq`?FL7G(?c
+
+delta 47
+zcmX@3aY2L2CD<h-K!kyT>DNRqX~yo2YLc8xPAfJ$a^B<M6mjH;cMb|>Sh86~NP`Ig
+DNc#-*
+
+diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/DSDT.memhp
+index 545a18c3657781d350a006adfa5e58fa63e63922..54728e2b4b8b959f3f829386f6a388ef2600e747 100644
+GIT binary patch
+delta 43
+zcmZ2zJlB}ZCD<iot|S8kli)-yX~vF?YLc8xe#<vIa^B-$<%o9<3f`<CRLKqi{Zk8i
+
+delta 47
+zcmbPhywI4-CD<iop(FzXlk`L`X~v$7YLc8xPAfJ$a^B<M6mjH;cMb|>Sh86~sFEE3
+DEVvAM
+
+diff --git a/tests/data/acpi/virt/DSDT.numamem b/tests/data/acpi/virt/DSDT.numamem
+index 9b002836f35fd03afeab9e827fdde3134d26ed2e..bc519abff9cadc1552e4e586b0a3f5f0db498f4a 100644
+GIT binary patch
+delta 43
+zcmcbhaYlp7CD<jzM}&ca>BB@WX~y=AYLc8xe#<vIa^B-$<%o9<3f`<Cq`?FL7G(?c
+
+delta 47
+zcmX@3aY2L2CD<h-K!kyT>DNRqX~yo2YLc8xPAfJ$a^B<M6mjH;cMb|>Sh86~NP`Ig
+DNc#-*
+
 -- 
 2.27.0
 

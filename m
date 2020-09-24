@@ -1,602 +1,302 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp816598lfq;
-        Wed, 23 Sep 2020 14:18:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHE456Qmy+d1rEBZw5vWTPOakuciNhcnPqhbYax1CjSgYkviji+Rtz6USrBy8ZgFxpF0A9
-X-Received: by 2002:a25:3747:: with SMTP id e68mr3078090yba.93.1600895886433;
-        Wed, 23 Sep 2020 14:18:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600895886; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1059321lfq;
+        Wed, 23 Sep 2020 21:26:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzd3XSSzX/wJpQ5WgoDBeuv8uQRUwHxzL1XxvUhJWVjE7sMjZrqPtd8fU+K3H/6u9T0c4zV
+X-Received: by 2002:a25:10c1:: with SMTP id 184mr4264927ybq.407.1600921617540;
+        Wed, 23 Sep 2020 21:26:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600921617; cv=none;
         d=google.com; s=arc-20160816;
-        b=RjMGCQ7OQ61/nmtYZ0tP8oN87LAiJV2wD6bdFDcevgIFNmu7VIMGThyf0AxhWR56f7
-         WA82/zakElhNm8e64pWNU2zIm7SKHJnpg1mkzzd9q4tr+UZx6yiLEBf4AAMaEOMF+lwF
-         UglpzvS87LbQPMywkLg1gVtzyIzzjLgg0olhG/h6X6amzGP6yAUhH+AAOi56AQM6Icpc
-         jyIQxhSsSF9yQEqga5aFfZ4QevNGmEqpO8rKDSdGnnCKmR+GpqeaYRPSJEwqBLI3FrGz
-         EvsNX0fRN1aoH+25gOj7vNl5TIMjhZjFR5uw3zUdSjJKvAtqcRszqbEYYGijvyMFtRh2
-         BqQA==
+        b=KDEjh/XOMlDX8dmPZBxRxK1BPdqZXGzlqWlrL/uUwrTFVk8pXkvuRAD4+p50/OifOB
+         BuUTzuHXXBIq1cI6rDcJa0lqVnT5RseEjNRjKFM5XWNWuCozEgVzTvIBxD3TUZz7fkzn
+         ncB557wKmR7PPo1Es3/dZmc2MriTAmUvhSkdC9c0XVaoE9ZbaNw3fZUC82NqqB1ScSuk
+         SuMRPPORikw8OfLeympsllfBTwobmRgmBXyZBnM3BscgWmOwTvn2bpdTtZSiHHPn3iea
+         GyrQX5cGqliyHLg6Ri3Q5n4ycCWrjOsX3twqp0aOtvEblkjn96vraX/FwR0ktaMFMSfb
+         9z8Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence
-         :mime-version:references:message-id:in-reply-to:subject:to:date;
-        bh=QEFWixowqQCmtsuXyKHIqnIQEFMMvQuBwChE9ElFVIo=;
-        b=trCwqroL1mQHY4XOmAiJvidoMInUoHw2DoPP7iE1sCZ0jQczmhdEmz2ogXDyk6pmP1
-         p9XN45Sl9bIa5M3RbTDn33cpW6QY7iJBjUuoyHAKZb9QtBVht+a+O9yPwyGLm1TsPz/A
-         WcXzH9qwHesYWZFdojjrli4LyMG/CBAHn3EsyNEfp8l1zzQiVksrNijbXeXpMJL5u7DF
-         aQDeMPGEY3rZFmHbtZKAyRUY/gxpRAp+zK01LwpntvCvmY/LJSOLCo16o2DorbB3zK2c
-         LkJGZlGWzCtATCKBBCpsBMQdoGk5l+dQIvsLJ4b6VB3cQT2URev4wD/UOGjt6KWUZQU9
-         HXYg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-language
+         :content-transfer-encoding:in-reply-to:mime-version:date:message-id
+         :from:references:to:subject:dkim-signature;
+        bh=QZl7WNBRcdD0N0+RSPPLjIPBbtX8D65bAr4I1fmeYu8=;
+        b=ds8HbnOJqvhu6Jx7fOZxhy3TNmfUW0ZXqB0s+OLOgRFzKqucauhPSoXceMQCxeX/td
+         KNoBDGxdW4jjNC2aqbhVfrS5vuNn2FW/+E8UGuzK3wbzXW/uWer8Rzz23+F8bAEDbOr6
+         WgNe++ClYvrm48ZFCwqnl8elFVsDvy0pqR/3AlnYrvqKYBTEArxrjWlhSQZ4+WbFqsAw
+         kkHETfpwL8iTL+pRnLpfKx9AU/nHbc0X6tFM80fJIYwL9IajvBtUUiPAGuRMC5cpJbg0
+         pHQArAzkYKTvxcTqF5JQt1YdEVWNpJ6PeTcuOEWyAdkhavun4EmpFJSBwVS3qcZ1B4us
+         AbUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OynkapN1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i13si1167749ybq.64.2020.09.23.14.18.06
+        by mx.google.com with ESMTPS id z8si2092203ybm.479.2020.09.23.21.26.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Sep 2020 14:18:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 23 Sep 2020 21:26:57 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34528 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OynkapN1;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:38918 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kLC9N-00011J-Qo
-	for alex.bennee@linaro.org; Wed, 23 Sep 2020 17:18:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60268)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kLIqO-0007rL-Uk
+	for alex.bennee@linaro.org; Thu, 24 Sep 2020 00:26:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41176)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1kLC8q-000101-Fk; Wed, 23 Sep 2020 17:17:32 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:23768)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1kLC8n-00047M-En; Wed, 23 Sep 2020 17:17:32 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id E682E74633F;
- Wed, 23 Sep 2020 23:17:26 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 34A1174632C; Wed, 23 Sep 2020 23:17:26 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 31F46746307;
- Wed, 23 Sep 2020 23:17:26 +0200 (CEST)
-Date: Wed, 23 Sep 2020 23:17:26 +0200 (CEST)
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH] load_elf: Remove unused address variables from callers
-In-Reply-To: <86fbf276-bbd6-1481-4387-34dd1a6c0b2@eik.bme.hu>
-Message-ID: <a0dbe71-b47e-2467-9c73-7612e672b34@eik.bme.hu>
-References: <20200705174020.BDD0174633F@zero.eik.bme.hu>
- <CAKmqyKPJDiSYvcw5-7_t4uNrXuzeqfX0jnvu-hHc1DxeekB=2w@mail.gmail.com>
- <alpine.BSF.2.22.395.2007072050210.70758@zero.eik.bme.hu>
- <86fbf276-bbd6-1481-4387-34dd1a6c0b2@eik.bme.hu>
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kLIpD-0007Ht-Dl
+ for qemu-devel@nongnu.org; Thu, 24 Sep 2020 00:25:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:30021)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kLIpB-0005Kw-79
+ for qemu-devel@nongnu.org; Thu, 24 Sep 2020 00:25:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1600921540;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=QZl7WNBRcdD0N0+RSPPLjIPBbtX8D65bAr4I1fmeYu8=;
+ b=OynkapN13BJ3Q7pmwkA85WEtULTgu13dPPau3GuPXkg9vPMrdGPvM658qT8ylcN5LoEsgR
+ h9Ok6ItheqmBVUghKuuac+pUB6nSc7Nz4YbFlQAJKbhDPh0V9y0hGpx6kHMrsGXD0jzJfL
+ tHeg/RuX5wuP3s2TSTSEnWnwC54IGeY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-261-sxJQY55eOqed6T2tXHjX1A-1; Thu, 24 Sep 2020 00:25:37 -0400
+X-MC-Unique: sxJQY55eOqed6T2tXHjX1A-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 19B0556B36;
+ Thu, 24 Sep 2020 04:25:36 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-112-39.ams2.redhat.com
+ [10.36.112.39])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9DCCD702E7;
+ Thu, 24 Sep 2020 04:25:30 +0000 (UTC)
+Subject: Re: [PATCH v2 1/3] hw/smbios: support loading OEM strings values from
+ a file
+To: =?UTF-8?Q?Daniel_P._Berrang=c3=a9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+References: <20200923104102.2068416-1-berrange@redhat.com>
+ <20200923104102.2068416-2-berrange@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <71057ff8-77b9-2385-afe3-63d17a7e7138@redhat.com>
+Date: Thu, 24 Sep 2020 06:25:29 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-Spam-Probability: 8%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/23 17:17:27
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+In-Reply-To: <20200923104102.2068416-2-berrange@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=lersek@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/22 23:02:20
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -32
+X-Spam_score: -3.3
+X-Spam_bar: ---
+X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.228,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Marek Vasut <marex@denx.de>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Anthony Green <green@moxielogic.com>, Chris Wulff <crwulff@gmail.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Alistair Francis <alistair23@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, "open list:New World" <qemu-ppc@nongnu.org>,
- Huacai Chen <chenhc@lemote.com>, Alistair Francis <Alistair.Francis@wdc.com>,
- Richard Henderson <rth@twiddle.net>,
- =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@redhat.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Aurelien Jarno <aurelien@aurel32.net>,
- David Gibson <david@gibson.dropbear.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: BALATON Zoltan <balaton@eik.bme.hu>
-From: BALATON Zoltan via <qemu-arm@nongnu.org>
-X-TUID: a7bQHt5gFjYv
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DFrX4PeZkMBh
 
-On Wed, 23 Sep 2020, BALATON Zoltan wrote:
-> On Tue, 7 Jul 2020, BALATON Zoltan wrote:
->> On Tue, 7 Jul 2020, Alistair Francis wrote:
->>> On Sun, Jul 5, 2020 at 10:41 AM BALATON Zoltan <balaton@eik.bme.hu> wrote:
->>>> Several callers of load_elf() pass pointers for lowaddr and highaddr
->>>> parameters which are then not used for anything. This may stem from a
->>>> misunderstanding that load_elf need a value here but in fact it can
->>>> take NULL to ignore these values. Remove such unused variables and
->>>> pass NULL instead from callers that don't need these.
->>>> 
->>>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
->>> 
->>> Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
->> 
->> So this got a few review and acked by but since it touches multiple parts 
->> who will actually send pull or merge it? I'd like to make sure this won't 
->> miss the freeze deadline just because everybody thinks this should go in 
->> via some other maintainer. What's the best way for this? Trivial 
->> maintainers or Peter should handle such patches?
->
-> Ping? Could someone please queue this patch? It still seems to apply cleanly.
+Hi Daniel,
 
-Forgot to include the link to the original patch:
+On 09/23/20 12:41, Daniel P. Berrangé wrote:
+> Some applications want to pass quite large values for the OEM strings
+> entries. Rather than having huge strings on the command line, it would
+> be better to load them from a file, as supported with -fw_cfg.
+> 
+> This introduces the "path" parameter allowing for:
+> 
+>   $ echo -n "thisthing" > mydata.txt
+>   $ qemu-system-x86_64 \
+>     -smbios type=11,value=something \
+>     -smbios type=11,path=mydata.txt \
+>     -smbios type=11,value=somemore \
+>     ...other args...
+> 
+> Now in the guest
+> 
+> $ dmidecode -t 11
+> Getting SMBIOS data from sysfs.
+> SMBIOS 2.8 present.
+> 
+> Handle 0x0E00, DMI type 11, 5 bytes
+> OEM Strings
+> 	String 1: something
+> 	String 2: thisthing
+> 	String 3: somemore
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+> ---
+>  hw/smbios/smbios.c | 72 +++++++++++++++++++++++++++++++++++++---------
+>  1 file changed, 59 insertions(+), 13 deletions(-)
+> 
+> diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+> index 7cc950b41c..8450fad285 100644
+> --- a/hw/smbios/smbios.c
+> +++ b/hw/smbios/smbios.c
+> @@ -110,7 +110,7 @@ static struct {
+>  
+>  static struct {
+>      size_t nvalues;
+> -    const char **values;
+> +    char **values;
+>  } type11;
+>  
+>  static struct {
+> @@ -314,6 +314,11 @@ static const QemuOptDesc qemu_smbios_type11_opts[] = {
+>          .type = QEMU_OPT_STRING,
+>          .help = "OEM string data",
+>      },
+> +    {
+> +        .name = "path",
+> +        .type = QEMU_OPT_STRING,
+> +        .help = "OEM string data from file",
+> +    },
+>  };
+>  
+>  static const QemuOptDesc qemu_smbios_type17_opts[] = {
+> @@ -641,6 +646,8 @@ static void smbios_build_type_11_table(void)
+>  
+>      for (i = 0; i < type11.nvalues; i++) {
+>          SMBIOS_TABLE_SET_STR_LIST(11, type11.values[i]);
+> +        g_free(type11.values[i]);
+> +        type11.values[i] = NULL;
+>      }
+>  
+>      SMBIOS_BUILD_TABLE_POST;
+> @@ -940,9 +947,8 @@ static void save_opt(const char **dest, QemuOpts *opts, const char *name)
+>  
+>  
+>  struct opt_list {
+> -    const char *name;
+>      size_t *ndest;
+> -    const char ***dest;
+> +    char ***dest;
+>  };
+>  
+>  static int save_opt_one(void *opaque,
+> @@ -951,23 +957,61 @@ static int save_opt_one(void *opaque,
+>  {
+>      struct opt_list *opt = opaque;
+>  
+> -    if (!g_str_equal(name, opt->name)) {
+> -        return 0;
+> +    if (g_str_equal(name, "path")) {
+> +        g_autoptr(GByteArray) data = g_byte_array_new();
+> +        g_autofree char *buf = g_new(char, 4096);
+> +        ssize_t ret;
+> +        int fd = qemu_open(value, O_RDONLY);
 
-http://patchwork.ozlabs.org/project/qemu-devel/patch/20200705174020.BDD0174633F@zero.eik.bme.hu/
+This line now fails to compile, due to commit c490af57cb45 ("util:
+introduce qemu_open and qemu_create with error reporting", 2020-09-16).
 
-> Regards,
-> BALATON Zoltan
->
->>>> ---
->>>>  hw/alpha/dp264.c       |  8 ++++----
->>>>  hw/arm/armv7m.c        |  4 +---
->>>>  hw/cris/boot.c         |  4 ++--
->>>>  hw/microblaze/boot.c   |  4 ++--
->>>>  hw/mips/fuloong2e.c    |  8 ++++----
->>>>  hw/moxie/moxiesim.c    |  4 ++--
->>>>  hw/nios2/boot.c        |  4 ++--
->>>>  hw/ppc/mac_newworld.c  |  6 ++----
->>>>  hw/ppc/mac_oldworld.c  |  6 ++----
->>>>  hw/ppc/ppc440_bamboo.c |  9 +++------
->>>>  hw/ppc/sam460ex.c      | 12 +++++-------
->>>>  hw/ppc/spapr.c         | 11 ++++-------
->>>>  hw/ppc/virtex_ml507.c  |  4 ++--
->>>>  hw/riscv/boot.c        |  8 ++++----
->>>>  hw/xtensa/sim.c        |  3 +--
->>>>  hw/xtensa/xtfpga.c     |  3 +--
->>>>  16 files changed, 41 insertions(+), 57 deletions(-)
->>>> 
->>>> diff --git a/hw/alpha/dp264.c b/hw/alpha/dp264.c
->>>> index f7751b18f6..4d24518d1d 100644
->>>> --- a/hw/alpha/dp264.c
->>>> +++ b/hw/alpha/dp264.c
->>>> @@ -62,8 +62,8 @@ static void clipper_init(MachineState *machine)
->>>>      qemu_irq rtc_irq;
->>>>      long size, i;
->>>>      char *palcode_filename;
->>>> -    uint64_t palcode_entry, palcode_low, palcode_high;
->>>> -    uint64_t kernel_entry, kernel_low, kernel_high;
->>>> +    uint64_t palcode_entry;
->>>> +    uint64_t kernel_entry, kernel_low;
->>>>      unsigned int smp_cpus = machine->smp.cpus;
->>>>
->>>>      /* Create up to 4 cpus.  */
->>>> @@ -113,7 +113,7 @@ static void clipper_init(MachineState *machine)
->>>>          exit(1);
->>>>      }
->>>>      size = load_elf(palcode_filename, NULL, cpu_alpha_superpage_to_phys,
->>>> -                    NULL, &palcode_entry, &palcode_low, &palcode_high, 
->>>> NULL,
->>>> +                    NULL, &palcode_entry, NULL, NULL, NULL,
->>>>                      0, EM_ALPHA, 0, 0);
->>>>      if (size < 0) {
->>>>          error_report("could not load palcode '%s'", palcode_filename);
->>>> @@ -132,7 +132,7 @@ static void clipper_init(MachineState *machine)
->>>>          uint64_t param_offset;
->>>>
->>>>          size = load_elf(kernel_filename, NULL, 
->>>> cpu_alpha_superpage_to_phys,
->>>> -                        NULL, &kernel_entry, &kernel_low, &kernel_high, 
->>>> NULL,
->>>> +                        NULL, &kernel_entry, &kernel_low, NULL, NULL,
->>>>                          0, EM_ALPHA, 0, 0);
->>>>          if (size < 0) {
->>>>              error_report("could not load kernel '%s'", kernel_filename);
->>>> diff --git a/hw/arm/armv7m.c b/hw/arm/armv7m.c
->>>> index 3308211e9c..92f859d760 100644
->>>> --- a/hw/arm/armv7m.c
->>>> +++ b/hw/arm/armv7m.c
->>>> @@ -309,7 +309,6 @@ void armv7m_load_kernel(ARMCPU *cpu, const char 
->>>> *kernel_filename, int mem_size)
->>>>  {
->>>>      int image_size;
->>>>      uint64_t entry;
->>>> -    uint64_t lowaddr;
->>>>      int big_endian;
->>>>      AddressSpace *as;
->>>>      int asidx;
->>>> @@ -330,12 +329,11 @@ void armv7m_load_kernel(ARMCPU *cpu, const char 
->>>> *kernel_filename, int mem_size)
->>>>
->>>>      if (kernel_filename) {
->>>>          image_size = load_elf_as(kernel_filename, NULL, NULL, NULL,
->>>> -                                 &entry, &lowaddr, NULL,
->>>> +                                 &entry, NULL, NULL,
->>>>                                   NULL, big_endian, EM_ARM, 1, 0, as);
->>>>          if (image_size < 0) {
->>>>              image_size = load_image_targphys_as(kernel_filename, 0,
->>>>                                                  mem_size, as);
->>>> -            lowaddr = 0;
->>>>          }
->>>>          if (image_size < 0) {
->>>>              error_report("Could not load kernel '%s'", kernel_filename);
->>>> diff --git a/hw/cris/boot.c b/hw/cris/boot.c
->>>> index b8947bc660..aa8d2756d6 100644
->>>> --- a/hw/cris/boot.c
->>>> +++ b/hw/cris/boot.c
->>>> @@ -67,7 +67,7 @@ static uint64_t translate_kernel_address(void *opaque, 
->>>> uint64_t addr)
->>>>  void cris_load_image(CRISCPU *cpu, struct cris_load_info *li)
->>>>  {
->>>>      CPUCRISState *env = &cpu->env;
->>>> -    uint64_t entry, high;
->>>> +    uint64_t entry;
->>>>      int kcmdline_len;
->>>>      int image_size;
->>>> 
->>>> @@ -76,7 +76,7 @@ void cris_load_image(CRISCPU *cpu, struct 
->>>> cris_load_info *li)
->>>>         devboard SDK.  */
->>>>      image_size = load_elf(li->image_filename, NULL,
->>>>                            translate_kernel_address, NULL,
->>>> -                          &entry, NULL, &high, NULL, 0, EM_CRIS, 0, 0);
->>>> +                          &entry, NULL, NULL, NULL, 0, EM_CRIS, 0, 0);
->>>>      li->entry = entry;
->>>>      if (image_size < 0) {
->>>>          /* Takes a kimage from the axis devboard SDK.  */
->>>> diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
->>>> index 925e3f7c9d..8ad3c27f2c 100644
->>>> --- a/hw/microblaze/boot.c
->>>> +++ b/hw/microblaze/boot.c
->>>> @@ -135,7 +135,7 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, 
->>>> hwaddr ddr_base,
->>>>
->>>>      if (kernel_filename) {
->>>>          int kernel_size;
->>>> -        uint64_t entry, low, high;
->>>> +        uint64_t entry, high;
->>>>          uint32_t base32;
->>>>          int big_endian = 0;
->>>> 
->>>> @@ -145,7 +145,7 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, 
->>>> hwaddr ddr_base,
->>>>
->>>>          /* Boots a kernel elf binary.  */
->>>>          kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
->>>> -                               &entry, &low, &high, NULL,
->>>> +                               &entry, NULL, &high, NULL,
->>>>                                 big_endian, EM_MICROBLAZE, 0, 0);
->>>>          base32 = entry;
->>>>          if (base32 == 0xc0000000) {
->>>> diff --git a/hw/mips/fuloong2e.c b/hw/mips/fuloong2e.c
->>>> index 8ca31e5162..507e549fca 100644
->>>> --- a/hw/mips/fuloong2e.c
->>>> +++ b/hw/mips/fuloong2e.c
->>>> @@ -107,7 +107,7 @@ static void GCC_FMT_ATTR(3, 4) prom_set(uint32_t 
->>>> *prom_buf, int index,
->>>>
->>>>  static int64_t load_kernel(CPUMIPSState *env)
->>>>  {
->>>> -    int64_t kernel_entry, kernel_low, kernel_high, initrd_size;
->>>> +    int64_t kernel_entry, kernel_high, initrd_size;
->>>>      int index = 0;
->>>>      long kernel_size;
->>>>      ram_addr_t initrd_offset;
->>>> @@ -116,9 +116,9 @@ static int64_t load_kernel(CPUMIPSState *env)
->>>>
->>>>      kernel_size = load_elf(loaderparams.kernel_filename, NULL,
->>>>                             cpu_mips_kseg0_to_phys, NULL,
->>>> -                           (uint64_t *)&kernel_entry,
->>>> -                           (uint64_t *)&kernel_low, (uint64_t 
->>>> *)&kernel_high,
->>>> -                           NULL, 0, EM_MIPS, 1, 0);
->>>> +                           (uint64_t *)&kernel_entry, NULL,
->>>> +                           (uint64_t *)&kernel_high, NULL,
->>>> +                           0, EM_MIPS, 1, 0);
->>>>      if (kernel_size < 0) {
->>>>          error_report("could not load kernel '%s': %s",
->>>>                       loaderparams.kernel_filename,
->>>> diff --git a/hw/moxie/moxiesim.c b/hw/moxie/moxiesim.c
->>>> index 51a98287b5..a765e9f6be 100644
->>>> --- a/hw/moxie/moxiesim.c
->>>> +++ b/hw/moxie/moxiesim.c
->>>> @@ -52,13 +52,13 @@ typedef struct {
->>>>
->>>>  static void load_kernel(MoxieCPU *cpu, LoaderParams *loader_params)
->>>>  {
->>>> -    uint64_t entry, kernel_low, kernel_high;
->>>> +    uint64_t entry, kernel_high;
->>>>      int64_t initrd_size;
->>>>      long kernel_size;
->>>>      ram_addr_t initrd_offset;
->>>>
->>>>      kernel_size = load_elf(loader_params->kernel_filename,  NULL, NULL, 
->>>> NULL,
->>>> -                           &entry, &kernel_low, &kernel_high, NULL, 1, 
->>>> EM_MOXIE,
->>>> +                           &entry, NULL, &kernel_high, NULL, 1, 
->>>> EM_MOXIE,
->>>>                             0, 0);
->>>>
->>>>      if (kernel_size <= 0) {
->>>> diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
->>>> index 88224aa84c..1df3b66c29 100644
->>>> --- a/hw/nios2/boot.c
->>>> +++ b/hw/nios2/boot.c
->>>> @@ -139,7 +139,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr 
->>>> ddr_base,
->>>>
->>>>      if (kernel_filename) {
->>>>          int kernel_size, fdt_size;
->>>> -        uint64_t entry, low, high;
->>>> +        uint64_t entry, high;
->>>>          int big_endian = 0;
->>>>
->>>>  #ifdef TARGET_WORDS_BIGENDIAN
->>>> @@ -148,7 +148,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr 
->>>> ddr_base,
->>>>
->>>>          /* Boots a kernel elf binary. */
->>>>          kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
->>>> -                               &entry, &low, &high, NULL,
->>>> +                               &entry, NULL, &high, NULL,
->>>>                                 big_endian, EM_ALTERA_NIOS2, 0, 0);
->>>>          if ((uint32_t)entry == 0xc0000000) {
->>>>              /*
->>>> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
->>>> index 828c5992ae..a3f25ab479 100644
->>>> --- a/hw/ppc/mac_newworld.c
->>>> +++ b/hw/ppc/mac_newworld.c
->>>> @@ -177,7 +177,6 @@ static void ppc_core99_init(MachineState *machine)
->>>>      }
->>>>
->>>>      if (linux_boot) {
->>>> -        uint64_t lowaddr = 0;
->>>>          int bswap_needed;
->>>>
->>>>  #ifdef BSWAP_NEEDED
->>>> @@ -188,9 +187,8 @@ static void ppc_core99_init(MachineState *machine)
->>>>          kernel_base = KERNEL_LOAD_ADDR;
->>>>
->>>>          kernel_size = load_elf(kernel_filename, NULL,
->>>> -                               translate_kernel_address, NULL,
->>>> -                               NULL, &lowaddr, NULL, NULL, 1, 
->>>> PPC_ELF_MACHINE,
->>>> -                               0, 0);
->>>> +                               translate_kernel_address, NULL, NULL, 
->>>> NULL,
->>>> +                               NULL, NULL, 1, PPC_ELF_MACHINE, 0, 0);
->>>>          if (kernel_size < 0)
->>>>              kernel_size = load_aout(kernel_filename, kernel_base,
->>>>                                      ram_size - kernel_base, 
->>>> bswap_needed,
->>>> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
->>>> index f8c204ead7..4bcce22a96 100644
->>>> --- a/hw/ppc/mac_oldworld.c
->>>> +++ b/hw/ppc/mac_oldworld.c
->>>> @@ -150,7 +150,6 @@ static void ppc_heathrow_init(MachineState *machine)
->>>>      }
->>>>
->>>>      if (linux_boot) {
->>>> -        uint64_t lowaddr = 0;
->>>>          int bswap_needed;
->>>>
->>>>  #ifdef BSWAP_NEEDED
->>>> @@ -160,9 +159,8 @@ static void ppc_heathrow_init(MachineState *machine)
->>>>  #endif
->>>>          kernel_base = KERNEL_LOAD_ADDR;
->>>>          kernel_size = load_elf(kernel_filename, NULL,
->>>> -                               translate_kernel_address, NULL,
->>>> -                               NULL, &lowaddr, NULL, NULL, 1, 
->>>> PPC_ELF_MACHINE,
->>>> -                               0, 0);
->>>> +                               translate_kernel_address, NULL, NULL, 
->>>> NULL,
->>>> +                               NULL, NULL, 1, PPC_ELF_MACHINE, 0, 0);
->>>>          if (kernel_size < 0)
->>>>              kernel_size = load_aout(kernel_filename, kernel_base,
->>>>                                      ram_size - kernel_base, 
->>>> bswap_needed,
->>>> diff --git a/hw/ppc/ppc440_bamboo.c b/hw/ppc/ppc440_bamboo.c
->>>> index 4c5e9e4373..74028dc986 100644
->>>> --- a/hw/ppc/ppc440_bamboo.c
->>>> +++ b/hw/ppc/ppc440_bamboo.c
->>>> @@ -172,9 +172,6 @@ static void bamboo_init(MachineState *machine)
->>>>      PCIBus *pcibus;
->>>>      PowerPCCPU *cpu;
->>>>      CPUPPCState *env;
->>>> -    uint64_t elf_entry;
->>>> -    uint64_t elf_lowaddr;
->>>> -    hwaddr loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
->>>>      target_long initrd_size = 0;
->>>>      DeviceState *dev;
->>>>      int success;
->>>> @@ -246,14 +243,14 @@ static void bamboo_init(MachineState *machine)
->>>>
->>>>      /* Load kernel. */
->>>>      if (kernel_filename) {
->>>> +        hwaddr loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
->>>>          success = load_uimage(kernel_filename, &entry, &loadaddr, NULL,
->>>>                                NULL, NULL);
->>>>          if (success < 0) {
->>>> +            uint64_t elf_entry;
->>>>              success = load_elf(kernel_filename, NULL, NULL, NULL, 
->>>> &elf_entry,
->>>> -                               &elf_lowaddr, NULL, NULL, 1, 
->>>> PPC_ELF_MACHINE,
->>>> -                               0, 0);
->>>> +                               NULL, NULL, NULL, 1, PPC_ELF_MACHINE, 0, 
->>>> 0);
->>>>              entry = elf_entry;
->>>> -            loadaddr = elf_lowaddr;
->>>>          }
->>>>          /* XXX try again as binary */
->>>>          if (success < 0) {
->>>> diff --git a/hw/ppc/sam460ex.c b/hw/ppc/sam460ex.c
->>>> index 1a106a68de..71f74e983c 100644
->>>> --- a/hw/ppc/sam460ex.c
->>>> +++ b/hw/ppc/sam460ex.c
->>>> @@ -286,7 +286,6 @@ static void sam460ex_init(MachineState *machine)
->>>>      CPUPPCState *env;
->>>>      I2CBus *i2c;
->>>>      hwaddr entry = UBOOT_ENTRY;
->>>> -    hwaddr loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
->>>>      target_long initrd_size = 0;
->>>>      DeviceState *dev;
->>>>      SysBusDevice *sbdev;
->>>> @@ -426,17 +425,16 @@ static void sam460ex_init(MachineState *machine)
->>>>
->>>>      /* Load kernel. */
->>>>      if (machine->kernel_filename) {
->>>> +        hwaddr loadaddr = LOAD_UIMAGE_LOADADDR_INVALID;
->>>>          success = load_uimage(machine->kernel_filename, &entry, 
->>>> &loadaddr,
->>>>                                NULL, NULL, NULL);
->>>>          if (success < 0) {
->>>> -            uint64_t elf_entry, elf_lowaddr;
->>>> +            uint64_t elf_entry;
->>>> 
->>>> -            success = load_elf(machine->kernel_filename, NULL,
->>>> -                               NULL, NULL, &elf_entry,
->>>> -                               &elf_lowaddr, NULL, NULL, 1, 
->>>> PPC_ELF_MACHINE, 0,
->>>> -                               0);
->>>> +            success = load_elf(machine->kernel_filename, NULL, NULL, 
->>>> NULL,
->>>> +                               &elf_entry, NULL, NULL, NULL,
->>>> +                               1, PPC_ELF_MACHINE, 0, 0);
->>>>              entry = elf_entry;
->>>> -            loadaddr = elf_lowaddr;
->>>>          }
->>>>          /* XXX try again as binary */
->>>>          if (success < 0) {
->>>> diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
->>>> index f6f034d039..f4e8e2e139 100644
->>>> --- a/hw/ppc/spapr.c
->>>> +++ b/hw/ppc/spapr.c
->>>> @@ -2972,18 +2972,15 @@ static void spapr_machine_init(MachineState 
->>>> *machine)
->>>>      }
->>>>
->>>>      if (kernel_filename) {
->>>> -        uint64_t lowaddr = 0;
->>>> -
->>>>          spapr->kernel_size = load_elf(kernel_filename, NULL,
->>>>                                        translate_kernel_address, spapr,
->>>> -                                      NULL, &lowaddr, NULL, NULL, 1,
->>>> +                                      NULL, NULL, NULL, NULL, 1,
->>>>                                        PPC_ELF_MACHINE, 0, 0);
->>>>          if (spapr->kernel_size == ELF_LOAD_WRONG_ENDIAN) {
->>>>              spapr->kernel_size = load_elf(kernel_filename, NULL,
->>>> -                                          translate_kernel_address, 
->>>> spapr, NULL,
->>>> -                                          &lowaddr, NULL, NULL, 0,
->>>> -                                          PPC_ELF_MACHINE,
->>>> -                                          0, 0);
->>>> +                                          translate_kernel_address, 
->>>> spapr,
->>>> +                                          NULL, NULL, NULL, NULL, 0,
->>>> +                                          PPC_ELF_MACHINE, 0, 0);
->>>>              spapr->kernel_le = spapr->kernel_size > 0;
->>>>          }
->>>>          if (spapr->kernel_size < 0) {
->>>> diff --git a/hw/ppc/virtex_ml507.c b/hw/ppc/virtex_ml507.c
->>>> index 78c4901be1..c790c1113f 100644
->>>> --- a/hw/ppc/virtex_ml507.c
->>>> +++ b/hw/ppc/virtex_ml507.c
->>>> @@ -250,12 +250,12 @@ static void virtex_init(MachineState *machine)
->>>>      sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, irq[TIMER_IRQ]);
->>>>
->>>>      if (kernel_filename) {
->>>> -        uint64_t entry, low, high;
->>>> +        uint64_t entry, high;
->>>>          hwaddr boot_offset;
->>>>
->>>>          /* Boots a kernel elf binary.  */
->>>>          kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
->>>> -                               &entry, &low, &high, NULL, 1, 
->>>> PPC_ELF_MACHINE,
->>>> +                               &entry, NULL, &high, NULL, 1, 
->>>> PPC_ELF_MACHINE,
->>>>                                 0, 0);
->>>>          boot_info.bootstrap_pc = entry & 0x00ffffff;
->>>> 
->>>> diff --git a/hw/riscv/boot.c b/hw/riscv/boot.c
->>>> index adb421b91b..ab8da252ee 100644
->>>> --- a/hw/riscv/boot.c
->>>> +++ b/hw/riscv/boot.c
->>>> @@ -85,10 +85,10 @@ target_ulong riscv_load_firmware(const char 
->>>> *firmware_filename,
->>>>                                   hwaddr firmware_load_addr,
->>>>                                   symbol_fn_t sym_cb)
->>>>  {
->>>> -    uint64_t firmware_entry, firmware_start, firmware_end;
->>>> +    uint64_t firmware_entry;
->>>>
->>>>      if (load_elf_ram_sym(firmware_filename, NULL, NULL, NULL,
->>>> -                         &firmware_entry, &firmware_start, 
->>>> &firmware_end, NULL,
->>>> +                         &firmware_entry, NULL, NULL, NULL,
->>>>                           0, EM_RISCV, 1, 0, NULL, true, sym_cb) > 0) {
->>>>          return firmware_entry;
->>>>      }
->>>> @@ -104,10 +104,10 @@ target_ulong riscv_load_firmware(const char 
->>>> *firmware_filename,
->>>>
->>>>  target_ulong riscv_load_kernel(const char *kernel_filename, symbol_fn_t 
->>>> sym_cb)
->>>>  {
->>>> -    uint64_t kernel_entry, kernel_high;
->>>> +    uint64_t kernel_entry;
->>>>
->>>>      if (load_elf_ram_sym(kernel_filename, NULL, NULL, NULL,
->>>> -                         &kernel_entry, NULL, &kernel_high, NULL, 0,
->>>> +                         &kernel_entry, NULL, NULL, NULL, 0,
->>>>                           EM_RISCV, 1, 0, NULL, true, sym_cb) > 0) {
->>>>          return kernel_entry;
->>>>      }
->>>> diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
->>>> index aeb46d86f5..cbac50db2d 100644
->>>> --- a/hw/xtensa/sim.c
->>>> +++ b/hw/xtensa/sim.c
->>>> @@ -106,9 +106,8 @@ void xtensa_sim_load_kernel(XtensaCPU *cpu, 
->>>> MachineState *machine)
->>>>
->>>>      if (kernel_filename) {
->>>>          uint64_t elf_entry;
->>>> -        uint64_t elf_lowaddr;
->>>>          int success = load_elf(kernel_filename, NULL, 
->>>> translate_phys_addr, cpu,
->>>> -                               &elf_entry, &elf_lowaddr, NULL, NULL, 
->>>> big_endian,
->>>> +                               &elf_entry, NULL, NULL, NULL, big_endian,
->>>>                                 EM_XTENSA, 0, 0);
->>>>
->>>>          if (success > 0) {
->>>> diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
->>>> index 10de15855a..b1470b88e6 100644
->>>> --- a/hw/xtensa/xtfpga.c
->>>> +++ b/hw/xtensa/xtfpga.c
->>>> @@ -413,9 +413,8 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, 
->>>> MachineState *machine)
->>>>          env->regs[2] = tagptr;
->>>>
->>>>          uint64_t elf_entry;
->>>> -        uint64_t elf_lowaddr;
->>>>          int success = load_elf(kernel_filename, NULL, 
->>>> translate_phys_addr, cpu,
->>>> -                &elf_entry, &elf_lowaddr, NULL, NULL, be, EM_XTENSA, 0, 
->>>> 0);
->>>> +                &elf_entry, NULL, NULL, NULL, be, EM_XTENSA, 0, 0);
->>>>          if (success > 0) {
->>>>              entry_point = elf_entry;
->>>>          } else {
->>>> --
->>>> 2.21.3
->>>> 
->>>> 
->>> 
->>> 
->> 
->> 
->
+... I guess I could test the patch with qemu_open_old(), but that
+wouldn't allow for a valid Tested-by.
+
+Thanks,
+Laszlo
+
+> +        if (fd < 0) {
+> +            error_setg(errp, "Unable to open %s: %s", value, strerror(errno));
+> +            return -1;
+> +        }
+> +
+> +        while (1) {
+> +            ret = read(fd, buf, 4096);
+> +            if (ret == 0) {
+> +                break;
+> +            }
+> +            if (ret < 0) {
+> +                error_setg(errp, "Unable to read from %s: %s",
+> +                           value, strerror(errno));
+> +                return -1;
+> +            }
+> +            if (memchr(buf, '\0', ret)) {
+> +                error_setg(errp, "NUL in OEM strings value in %s", value);
+> +                return -1;
+> +            }
+> +            g_byte_array_append(data, (guint8 *)buf, ret);
+> +        }
+> +
+> +        close(fd);
+> +
+> +        *opt->dest = g_renew(char *, *opt->dest, (*opt->ndest) + 1);
+> +        (*opt->dest)[*opt->ndest] = (char *)g_byte_array_free(data,  FALSE);
+> +        (*opt->ndest)++;
+> +        data = NULL;
+> +   } else if (g_str_equal(name, "value")) {
+> +        *opt->dest = g_renew(char *, *opt->dest, (*opt->ndest) + 1);
+> +        (*opt->dest)[*opt->ndest] = g_strdup(value);
+> +        (*opt->ndest)++;
+> +    } else if (!g_str_equal(name, "type")) {
+> +        error_setg(errp, "Unexpected option %s", name);
+> +        return -1;
+>      }
+>  
+> -    *opt->dest = g_renew(const char *, *opt->dest, (*opt->ndest) + 1);
+> -    (*opt->dest)[*opt->ndest] = value;
+> -    (*opt->ndest)++;
+>      return 0;
+>  }
+>  
+> -static void save_opt_list(size_t *ndest, const char ***dest,
+> -                          QemuOpts *opts, const char *name)
+> +static bool save_opt_list(size_t *ndest, char ***dest, QemuOpts *opts,
+> +                          Error **errp)
+>  {
+>      struct opt_list opt = {
+> -        name, ndest, dest,
+> +        ndest, dest,
+>      };
+> -    qemu_opt_foreach(opts, save_opt_one, &opt, NULL);
+> +    if (!qemu_opt_foreach(opts, save_opt_one, &opt, errp)) {
+> +        return false;
+> +    }
+> +    return true;
+>  }
+>  
+>  void smbios_entry_add(QemuOpts *opts, Error **errp)
+> @@ -1149,7 +1193,9 @@ void smbios_entry_add(QemuOpts *opts, Error **errp)
+>              if (!qemu_opts_validate(opts, qemu_smbios_type11_opts, errp)) {
+>                  return;
+>              }
+> -            save_opt_list(&type11.nvalues, &type11.values, opts, "value");
+> +            if (!save_opt_list(&type11.nvalues, &type11.values, opts, errp)) {
+> +                return;
+> +            }
+>              return;
+>          case 17:
+>              if (!qemu_opts_validate(opts, qemu_smbios_type17_opts, errp)) {
+> 
+

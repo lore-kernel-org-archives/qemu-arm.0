@@ -1,108 +1,110 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp125742lfq;
-        Thu, 24 Sep 2020 03:24:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyH+IeFOxWpnisdrj3cSlrQAJg9CDLHuGzo42DeCJyAtL5Qnnth9ir32k/16Y2Y6cWT+Dz3
-X-Received: by 2002:a05:6902:529:: with SMTP id y9mr5747703ybs.130.1600943073829;
-        Thu, 24 Sep 2020 03:24:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600943073; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp165721lfq;
+        Thu, 24 Sep 2020 04:20:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz6vRJGf85OMnmcO/vsOzF1MkKJq/7SW862krasWVgICQ5gxMRJbH2RH9AbkN44J4Y/zt6g
+X-Received: by 2002:a25:b993:: with SMTP id r19mr82884ybg.374.1600946402671;
+        Thu, 24 Sep 2020 04:20:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600946402; cv=none;
         d=google.com; s=arc-20160816;
-        b=C3+uWOkhU6MLqgH5TyumzphUoK+CjJm1scbv0VxwukFKIuYgnEwepdZf/MjbHjjmhQ
-         jG3UHgEZbQwizC5sjURCFYMRLY6u0P8XBmHbjCm9cF0tAGgrMeN529HqzvPyl3tIJixe
-         2oyInk6mULqSnYsveD6A3rhgJmGiWAiK0xSl0k1ZNlYsEtWGIO6a6e4dlEV5689D13ga
-         QhIe3QXiKqpD2UmTsPDXlVyv7A3JTVpz2dn58DKDhihmopRClb0EyXC7OQ4mZ4Xb7uwG
-         vTfPGOU8WD5ZyNOUNryOub8n9isf8E8auKyJKbHy1588CrEyOmsSidu1qPSbu5RI5Na5
-         OAcA==
+        b=GY4V0x2xt/djwMubd8pjnDMxMK93qSa2fDbMaplC2pE/kxTvU71MUskLNYjTM6QeBK
+         JmiH/qvXQyFydSPjrPdyYBy4ew7wY6aJui/pUTShSElZDA29y0tRXhGocKR63GwCU1VI
+         YwGjNngzng7VH6jSkT9dKt7yDF6aKQWe+y541BM7vNq1narSsnkMPs5ZdhTWy/dhHHPy
+         9mf4HkNZI49zr79Y98Ds/HOk373vEGrNvJmk8Puj6Dsq+SbHDEuQibmF732MbTWaQfd8
+         860T/Rp5YhdS48E6FMQRJuQ1EqM4o3XrlTozNgrV+FlcXNUx0/ZSjqc9G/kPa5Ea0tNa
+         rCsg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=CD45ho2Xfed1+qpUE87PRt8WCtp/CIslAqqrAiGhw84=;
-        b=ScpCktqQ5EpeHzRbOj/jnWKi2QIXqa85xMPUPvLhyYiPamBHdI6SDNGULBwjJpyoPD
-         lxcgqM6fGkfjHFBIWifxiQMbTJ0hYQ+jfhhqBUS93B3GTF3LrBkFWm5/Bnk8bWE4kTTW
-         oFMQRFvnuP4M+wypAAwA25eu87ppQ1EejJOkMSfRVXaBhwqWkHx5QVDdCWionk4qSGYj
-         YVE9uR+omzLRC11L0T3oLob6bMTeQKlS6PkKbbEaq5LawuDTN3HCH1GmDHVj/rLjY//b
-         iw7s4/x4SylZyTLgr09bBe9HhxwP6PFhx6+bItJht88uvs3/f7S1bmrFACeMUj9Y4h+x
-         CUeQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=jRYBbPZdjZNqhsxNCbQU/40Ab/DhwUD75yfurRb+dzI=;
+        b=zp+YixNfzZmPDMAu8hslpLh/TmIyY5syINTddkF7tj0IvKxpKnEbOMDKh9YrgCKqdW
+         X7iXzg9awPab/tod7UPyCqXLClQqwcGVMzdcwNyZQBtchkURd4cuSGMdScG8b+cj7DSP
+         s3qdpLSj4rhrylkPGFjAu6nIpum2F/WzsI1wFiqx3RYmoXnzxqoY7hwpt8z1/VXUJY4g
+         SWz/jlKECkYkKqXfgKnwfrj35OlMtcE8LZCgCmHMZY12ZqLlusQryhHhXZhiUPh3fgCO
+         AmVPElV/qwXg59Io/g9tOeOWxiskXwnpw5EERBcZirr8o/31OnGcJhKUR3mUrGspL8mh
+         3OYw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z6AO7We5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Is6odIUB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d130si2750332ybc.251.2020.09.24.03.24.33
+        by mx.google.com with ESMTPS id 21si2766461ybf.118.2020.09.24.04.20.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 24 Sep 2020 03:24:33 -0700 (PDT)
+        Thu, 24 Sep 2020 04:20:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Z6AO7We5;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Is6odIUB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39524 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:57182 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kLOQT-0004rJ-6i
-	for alex.bennee@linaro.org; Thu, 24 Sep 2020 06:24:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45858)
+	id 1kLPI9-0006Ej-VT
+	for alex.bennee@linaro.org; Thu, 24 Sep 2020 07:20:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37938)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLNyr-0005Ux-GB
- for qemu-arm@nongnu.org; Thu, 24 Sep 2020 05:56:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:49387)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLNyo-0001lM-Rs
- for qemu-arm@nongnu.org; Thu, 24 Sep 2020 05:56:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600941357;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=CD45ho2Xfed1+qpUE87PRt8WCtp/CIslAqqrAiGhw84=;
- b=Z6AO7We5OOy7GSQou82NtqEqv2x7Cx9snmWlUsbb/qKZN5vr8oRbRZ45a92gueQDOdjdjg
- cwHVL1AEuP0LJLZwd3y7m/CoRGjTE36MI8issnzzFaq0QQvBrWSO7E8LhNP0n0dAhNAvjO
- lRzDcjz9v0t4DpSYXDZw3Ua400GDTYs=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-24-_T__Uw2DPGGn8Wp-T0wPMw-1; Thu, 24 Sep 2020 05:55:53 -0400
-X-MC-Unique: _T__Uw2DPGGn8Wp-T0wPMw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
- [10.5.11.12])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 45E1618B9F40;
- Thu, 24 Sep 2020 09:55:52 +0000 (UTC)
-Received: from sirius.home.kraxel.org (ovpn-112-85.ams2.redhat.com
- [10.36.112.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4F47960C04;
- Thu, 24 Sep 2020 09:55:46 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 80EC416E0A; Thu, 24 Sep 2020 11:55:45 +0200 (CEST)
-Date: Thu, 24 Sep 2020 11:55:45 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Subject: Re: [PATCH v2 00/11] microvm: add pcie support
-Message-ID: <20200924095545.splwjfu73fhirj3x@sirius.home.kraxel.org>
-References: <20200924062734.22978-1-kraxel@redhat.com>
- <20200924032838-mutt-send-email-mst@kernel.org>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kLPGS-0004C0-3l; Thu, 24 Sep 2020 07:18:16 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:51071)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kLPGP-0003uJ-Lf; Thu, 24 Sep 2020 07:18:15 -0400
+Received: by mail-wm1-x341.google.com with SMTP id e17so3140458wme.0;
+ Thu, 24 Sep 2020 04:18:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=jRYBbPZdjZNqhsxNCbQU/40Ab/DhwUD75yfurRb+dzI=;
+ b=Is6odIUBW44SU+LOw24Ds41ytKCpjyYfE5RPQtYIYtm+eQ4P9Cf/DgLI/wI7IRQ0Jm
+ VFaTWi/irZbMVVGWzMKlZIw1MIqIRy7xS/25LD9pBV1regbR1Cp8uoDo5ZQz/l5rPwee
+ Jgcj1EhTXNVncjoaZ+OcPryas61G5V97go3najE+iOLO87Gih1Pxa19AoTQ2TK/GjZ14
+ GAEWI0cHsfAmtjci5Dr2fNcBAcjil2jCbtYWAm+t2N8SEBx/nXb+GgOsU7z7s0N6tuOS
+ UITzH2A55p/X4JdgLfznvCesXdYbIiD3buXZVD0xWMmCgde6np0F8jTq4sqPHm3qXxr5
+ K3Ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=jRYBbPZdjZNqhsxNCbQU/40Ab/DhwUD75yfurRb+dzI=;
+ b=KALP18+Wq25nxYa+13jBYShlFnUhT/eMkQKa0eDxYhCdJGrHjar8sq+UAm66V5Ldm9
+ MggrP8RnJG9aH+W8rV5W7qPNbqe8AHbclK5S/+xfnCcBx50FnQgGitqu2x1LAtXTcuPC
+ gyfFp+kQKC0ZHVsMEXdUOIbKcvmdN9F77qCd+Cd9uwxnsLBwVsYND5f+0mpH4EOIPPho
+ 18RRzFLJPBh7Q8+ZHZci5rFi9HRqRprbosuuEsMGMyFrzaqMPhPrKaudlq30KWCeTqU8
+ fbFs1DCw7iF+kpe/Wxro1jQkzAGHV4C4U/qR7FdjXyUbR0aEzfm62tLBCnLfjrwoX3Bn
+ aYSg==
+X-Gm-Message-State: AOAM532XEtLjmdgW3muoSwT8kZ7idlnbb2wqec9BygIkkNiq6NRD+d2F
+ ihgfbSdUODh3yDEXJdPksMP0VxJSlGI=
+X-Received: by 2002:a05:600c:216:: with SMTP id
+ 22mr4004200wmi.149.1600946290374; 
+ Thu, 24 Sep 2020 04:18:10 -0700 (PDT)
+Received: from x1w.redhat.com (234.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.234])
+ by smtp.gmail.com with ESMTPSA id h76sm3400363wme.10.2020.09.24.04.18.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 24 Sep 2020 04:18:09 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v4 0/8] hw/arm/raspi: QOM housekeeping to be able to add more
+ machines
+Date: Thu, 24 Sep 2020 13:18:00 +0200
+Message-Id: <20200924111808.77168-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200924032838-mutt-send-email-mst@kernel.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/24 01:10:00
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -32
-X-Spam_score: -3.3
-X-Spam_bar: ---
-X-Spam_report: (-3.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.228,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,33 +117,39 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- Radoslaw Biernacki <rad@semihalf.com>, qemu-devel@nongnu.org,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Leif Lindholm <leif@nuviainc.com>, Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: N9p85ElILuwz
+X-TUID: J+lOb5AwxxNd
 
-On Thu, Sep 24, 2020 at 03:29:02AM -0400, Michael S. Tsirkin wrote:
-> On Thu, Sep 24, 2020 at 08:27:23AM +0200, Gerd Hoffmann wrote:
-> > v2:
-> >  - move aml generator to gpex and have arm virt + microvm share it.
-> >  - add 64bit window.
-> >  - add testcase.
-> 
-> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> which tree is this for? Yours?
+Machine-specific patches extracted from v2 [*] and rebased.
 
-I don't mind much.  I can do a microvm pull request, but given the acpi
-test data changes it might be less trouble with conflicts if you take
-it through the acpi tree ...
+Series now fully reviewed.
 
-take care,
-  Gerd
+Since v3:
+- Fixed typos (Luc)
+- Added Luc tags
+
+[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg680135.html
+
+Based-on: <20200921034729.432931-1-f4bug@amsat.org>
+"hw/arm/raspi: Remove ignore_memory_transaction_failures on the raspi2"
+
+Philippe Mathieu-Daudé (8):
+  hw/arm/raspi: Display the board revision in the machine description
+  hw/arm/raspi: Load the firmware on the first core
+  hw/arm/raspi: Move arm_boot_info structure to RaspiMachineState
+  hw/arm/raspi: Avoid using TypeInfo::class_data pointer
+  hw/arm/raspi: Use more specific machine names
+  hw/arm/raspi: Introduce RaspiProcessorId enum
+  hw/arm/raspi: Use RaspiProcessorId to set the firmware load address
+  hw/arm/raspi: Remove use of the 'version' value in the board code
+
+ hw/arm/raspi.c | 152 +++++++++++++++++++++++++++----------------------
+ 1 file changed, 83 insertions(+), 69 deletions(-)
+
+-- 
+2.26.2
 

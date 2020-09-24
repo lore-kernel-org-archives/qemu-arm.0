@@ -1,87 +1,87 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1126992lfq;
-        Wed, 23 Sep 2020 23:28:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJye6WOXVgrSFWk41AZ8fKPqza5NRD32xhph5b6ywRvgy1UvFJ7gknTXr1XcfbkVsOvDhGW7
-X-Received: by 2002:a25:2f85:: with SMTP id v127mr5216656ybv.372.1600928888896;
-        Wed, 23 Sep 2020 23:28:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600928888; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1127036lfq;
+        Wed, 23 Sep 2020 23:28:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz4hMCWSVs9z8whwUr9aOymFYuvlyUYlER5fwG7G/bLL9P0P0OEbKEjV+zBejOu4meTf3KI
+X-Received: by 2002:a25:d9ce:: with SMTP id q197mr4557470ybg.88.1600928892517;
+        Wed, 23 Sep 2020 23:28:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1600928892; cv=none;
         d=google.com; s=arc-20160816;
-        b=xv6f1RUI9eO8Wi1f6+mqYuxK8XDztIwd3LbExC6uE2QyVnhBsHhsr+0jhEG64jWE9F
-         e4dHBiRdTpy4mGo6IUwVN1J+JFy2u0/7t1VO/rxMN9Wh0qvF965svo/kBsIGuohtr6Fx
-         Dm30NLo3XARH+ueeGwb/sU8e0Q2mPMP5fNybOoZ17pCkkwvbTfLGJpa2r6E1L/9DTVB/
-         VHXniXF/YVL0f0/tvjE9aB3QvzI1HNBbjz23e8ua4ceR/R6ZddVbkMAxNAHwiBSagz5M
-         Fx4fbNQkkZT2T95yHN5CHNv4Z5wj9OOz1bb5QOwpO39e8y6WwTQ36uUnQiNkYmFHS3Zj
-         wvZg==
+        b=SPxbLAW6fMtsKPTzUOMVfRMi1MDHeRkUVS4SKd6YEIY4qUa/ez7EQ8TN3o3owvfXch
+         oGvo3BGOMquyh8xxqecF1tJfEjiOThdccEhLY/0D4Y/wuE5LoMhrgMRaNfXdWzpV6VGl
+         +vMq7tyHGghUmMCxAGBzHDLVeXDlK9cwrI71G+k8QQ7N5U17eLKBm2ZLj6x++qgQ/A+K
+         fgrdtPLz8seTE6HBLGamHmf383JfQKmDpjPFhGCXPQVefsZm6TLmnGKOCSgZqz8LiITa
+         +5Y9ik6uouVcBShkNLmQeJpDoamYnr7h4Wu5G+CZCJYung4JgqLRkKMOUfvFnV+rDIS5
+         D8Lg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=Ib36JYmFLiIwnNEOQb/Im3BQLWOLXUGlFCDFWRqXeZ8=;
-        b=jU+yve2fHFdvVPsJFrrzm866j3lr5gXhsj7b23wR3siARMrwunNp06q7RuwVyMnQO/
-         6FH4D2JPoN+uMGqUlTpdtmMBFWEVRQb3/F36flle3QKxXad7EhYg0CqmFReAp4H1C/YN
-         MbFv6yBg61rFrqvh/C6douax7ilvdgiMHWA6QC8kDHPLbNNffzWECp4g4DDSxgRKVsGK
-         yTQP0BS1dUgdVt+s/y+gKyqXoW9+ZK73+c3vdzVhcqmsv2luHrS7SXHZUjTGp3JWdsTF
-         RxBKkB5T22LxYXV1Sf7zpeBOGYW4c30iBGOLMdKxytJdISYLcU70pJjLlYFIYcHc8os7
-         mUBQ==
+        bh=J4uSRwmejHiEPkNlrqI1qIapmjK57nTqYkgqk4v/84Y=;
+        b=oousIf/2rzXNowCSGqsCJ1ec3CtWQydF54n4eHswfqyFLF16DQdSFgRhvsmWi1/HI5
+         5og4phfmfhgINz5pLUMGTnS/rizTe4MJuioBEtpBHupEntWopdswjoAALavvMjlzGOMv
+         kLCEBMMxDBKtmy1u7hyHVRZ7lYQPhl5RDTQ7WJ26niQhTHD8Q9oTOCbYeN2mYyi656M5
+         7nrUVK1vo4xO21DHp5hM8qXydCHPHDDIuq/ZyQNGrbMNAKT0cNC/js4gZGwFsh8TIH9d
+         FJnibC63nsppP2H3+cTxeWZnbTf8dgzBR3tL3FxIiF5ZZ8yS7JAuHqWZiIODMhw2IxTU
+         r2Kg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KpPCSY12;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eUrhNarB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j139si2784210ybg.474.2020.09.23.23.28.08
+        by mx.google.com with ESMTPS id 132si2098656ybk.433.2020.09.23.23.28.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 23 Sep 2020 23:28:08 -0700 (PDT)
+        Wed, 23 Sep 2020 23:28:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KpPCSY12;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eUrhNarB;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34838 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34938 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kLKjg-00004x-6U
-	for alex.bennee@linaro.org; Thu, 24 Sep 2020 02:28:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57550)
+	id 1kLKjj-00008K-Qb
+	for alex.bennee@linaro.org; Thu, 24 Sep 2020 02:28:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57610)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLKjS-0008WM-7Z
- for qemu-arm@nongnu.org; Thu, 24 Sep 2020 02:27:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:53076)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLKjT-00005V-QZ
+ for qemu-arm@nongnu.org; Thu, 24 Sep 2020 02:27:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:35600)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLKjP-0001fL-GT
- for qemu-arm@nongnu.org; Thu, 24 Sep 2020 02:27:53 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kLKjP-0001fj-HH
+ for qemu-arm@nongnu.org; Thu, 24 Sep 2020 02:27:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1600928869;
+ s=mimecast20190719; t=1600928870;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ib36JYmFLiIwnNEOQb/Im3BQLWOLXUGlFCDFWRqXeZ8=;
- b=KpPCSY12Qhn0EJiM/cCJaN4wBOUs5dbYMhtsDfLmZ50l3arM8QgmC74DR9XPDJOVNW5dCp
- tCE4l/daGk9OViMTAD3hckBLFICGR4W9A9HNWtZPEhUE5oS4UxFGDZHtbYRnQJBrYfMGCJ
- 3sxQsEEid2D1Ckpew+rlYFKd/Sxon5s=
+ bh=J4uSRwmejHiEPkNlrqI1qIapmjK57nTqYkgqk4v/84Y=;
+ b=eUrhNarBxku9EuzQKbRcoG7u2k+Mg1q2bi/imyHgK/MKaRkb003PA1St3SOdoI8feazAzO
+ YQfRpG0o+dbRz90lX9/83hMdEM1gYW036dHFw5SEhmEvWK1b4S7eQs1d1d4DY7W47d9m3Z
+ 6EuAdaecNqIC5mGYql5O1D7TQk93o3M=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-205-dq7GsCrfMICsmH25JdLYiw-1; Thu, 24 Sep 2020 02:27:47 -0400
-X-MC-Unique: dq7GsCrfMICsmH25JdLYiw-1
+ us-mta-330-I1jui1hZPI6pDAbctoQk-Q-1; Thu, 24 Sep 2020 02:27:47 -0400
+X-MC-Unique: I1jui1hZPI6pDAbctoQk-Q-1
 Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
  [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 47281100746B;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3DD5381F030;
  Thu, 24 Sep 2020 06:27:46 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-85.ams2.redhat.com
  [10.36.112.85])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 91B3B5C269;
- Thu, 24 Sep 2020 06:27:45 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C2D215C1DC;
+ Thu, 24 Sep 2020 06:27:35 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 1C0D31FCF6; Thu, 24 Sep 2020 08:27:35 +0200 (CEST)
+ id ED0119CAE; Thu, 24 Sep 2020 08:27:34 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 05/11] microvm: add pcie support
-Date: Thu, 24 Sep 2020 08:27:28 +0200
-Message-Id: <20200924062734.22978-6-kraxel@redhat.com>
+Subject: [PATCH v2 02/11] acpi: add acpi_dsdt_add_gpex
+Date: Thu, 24 Sep 2020 08:27:25 +0200
+Message-Id: <20200924062734.22978-3-kraxel@redhat.com>
 In-Reply-To: <20200924062734.22978-1-kraxel@redhat.com>
 References: <20200924062734.22978-1-kraxel@redhat.com>
 MIME-Version: 1.0
@@ -92,9 +92,9 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/22 23:02:20
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/24 01:10:00
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -32
 X-Spam_score: -3.3
@@ -126,263 +126,246 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Leif Lindholm <leif@nuviainc.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vvWxw5Ln466E
+X-TUID: VRQrremhEk29
 
-Uses the existing gpex device which is also used as pcie host bridge on
-arm/aarch64.  For now only a 32bit mmio window and no ioport support.
-
-It is disabled by default, use "-machine microvm,pcie=on" to enable.
-ACPI support must be enabled too because the bus is declared in the
-DSDT table.
+Add helper function to generate dsdt aml code for the gpex pci host.
+Largely copied from arm/virt.  Configuration is handled by passing
+a config struct instead of looked up from memory map.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/hw/i386/microvm.h | 18 +++++++--
- hw/i386/acpi-microvm.c    | 12 ++++++
- hw/i386/microvm.c         | 84 +++++++++++++++++++++++++++++++++++++++
- hw/i386/Kconfig           |  1 +
- 4 files changed, 111 insertions(+), 4 deletions(-)
+ include/hw/pci-host/gpex.h |  11 +++
+ hw/pci-host/gpex-acpi.c    | 179 +++++++++++++++++++++++++++++++++++++
+ hw/pci-host/meson.build    |   1 +
+ 3 files changed, 191 insertions(+)
+ create mode 100644 hw/pci-host/gpex-acpi.c
 
-diff --git a/include/hw/i386/microvm.h b/include/hw/i386/microvm.h
-index 0d61697c97f0..91b064575d55 100644
---- a/include/hw/i386/microvm.h
-+++ b/include/hw/i386/microvm.h
-@@ -25,6 +25,7 @@
- #include "hw/boards.h"
- #include "hw/i386/x86.h"
- #include "hw/acpi/acpi_dev_interface.h"
-+#include "hw/pci-host/gpex.h"
- #include "qom/object.h"
+diff --git a/include/hw/pci-host/gpex.h b/include/hw/pci-host/gpex.h
+index 7abdb8b406e0..d52ea80d4e04 100644
+--- a/include/hw/pci-host/gpex.h
++++ b/include/hw/pci-host/gpex.h
+@@ -20,6 +20,7 @@
+ #ifndef HW_GPEX_H
+ #define HW_GPEX_H
  
- /*
-@@ -42,10 +43,10 @@
-  *   9     |  acpi      | acpi (ged)
-  *  10     |  pci lnk   |
-  *  11     |  pci lnk   |
-- *  12     |  ps2       |
-- *  13     |  fpu       |
-- *  14     |  ide 0     |
-- *  15     |  ide 1     |
-+ *  12     |  ps2       | pcie
-+ *  13     |  fpu       | pcie
-+ *  14     |  ide 0     | pcie
-+ *  15     |  ide 1     | pcie
-  *  16-23  |  pci gsi   | virtio
-  */
- 
-@@ -59,10 +60,17 @@
- #define GED_MMIO_BASE_REGS    (GED_MMIO_BASE + 0x200)
- #define GED_MMIO_IRQ          9
- 
-+#define PCIE_MMIO_BASE        0xc0000000
-+#define PCIE_MMIO_SIZE        0x20000000
-+#define PCIE_ECAM_BASE        0xe0000000
-+#define PCIE_ECAM_SIZE        0x10000000
-+#define PCIE_IRQ_BASE         12
-+
- /* Machine type options */
- #define MICROVM_MACHINE_PIT                 "pit"
- #define MICROVM_MACHINE_PIC                 "pic"
- #define MICROVM_MACHINE_RTC                 "rtc"
-+#define MICROVM_MACHINE_PCIE                "pcie"
- #define MICROVM_MACHINE_ISA_SERIAL          "isa-serial"
- #define MICROVM_MACHINE_OPTION_ROMS         "x-option-roms"
- #define MICROVM_MACHINE_AUTO_KERNEL_CMDLINE "auto-kernel-cmdline"
-@@ -80,6 +88,7 @@ struct MicrovmMachineState {
-     OnOffAuto pic;
-     OnOffAuto pit;
-     OnOffAuto rtc;
-+    OnOffAuto pcie;
-     bool isa_serial;
-     bool option_roms;
-     bool auto_kernel_cmdline;
-@@ -89,6 +98,7 @@ struct MicrovmMachineState {
-     bool kernel_cmdline_fixed;
-     Notifier machine_done;
-     Notifier powerdown_req;
-+    struct GPEXConfig gpex;
++#include "exec/hwaddr.h"
+ #include "hw/sysbus.h"
+ #include "hw/pci/pci.h"
+ #include "hw/pci/pcie_host.h"
+@@ -52,6 +53,16 @@ struct GPEXHost {
+     int irq_num[GPEX_NUM_IRQS];
  };
  
- #define TYPE_MICROVM_MACHINE   MACHINE_TYPE_NAME("microvm")
-diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
-index df39c5d3bd90..f16f2311955c 100644
---- a/hw/i386/acpi-microvm.c
-+++ b/hw/i386/acpi-microvm.c
-@@ -33,6 +33,8 @@
- #include "hw/boards.h"
- #include "hw/i386/fw_cfg.h"
- #include "hw/i386/microvm.h"
-+#include "hw/pci/pci.h"
-+#include "hw/pci/pcie_host.h"
- #include "hw/virtio/virtio-mmio.h"
- 
- #include "acpi-common.h"
-@@ -87,6 +89,15 @@ static void acpi_dsdt_add_virtio(Aml *scope,
-     }
- }
- 
-+static void acpi_dsdt_add_pci(Aml *scope, MicrovmMachineState *mms)
-+{
-+    if (mms->pcie != ON_OFF_AUTO_ON) {
-+        return;
-+    }
++struct GPEXConfig {
++    MemMapEntry ecam;
++    MemMapEntry mmio32;
++    MemMapEntry mmio64;
++    MemMapEntry pio;
++    int         irq;
++};
 +
-+    acpi_dsdt_add_gpex(scope, &mms->gpex);
-+}
-+
- static void
- build_dsdt_microvm(GArray *table_data, BIOSLinker *linker,
-                    MicrovmMachineState *mms)
-@@ -112,6 +123,7 @@ build_dsdt_microvm(GArray *table_data, BIOSLinker *linker,
-                   GED_MMIO_IRQ, AML_SYSTEM_MEMORY, GED_MMIO_BASE);
-     acpi_dsdt_add_power_button(sb_scope);
-     acpi_dsdt_add_virtio(sb_scope, mms);
-+    acpi_dsdt_add_pci(sb_scope, mms);
-     aml_append(dsdt, sb_scope);
+ int gpex_set_irq_num(GPEXHost *s, int index, int gsi);
  
-     /* ACPI 5.0: Table 7-209 System State Package */
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index 60d32722301f..273abe28c9c1 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -46,6 +46,7 @@
- #include "hw/virtio/virtio-mmio.h"
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/generic_event_device.h"
++void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg);
++
+ #endif /* HW_GPEX_H */
+diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+new file mode 100644
+index 000000000000..6fb951a0c19f
+--- /dev/null
++++ b/hw/pci-host/gpex-acpi.c
+@@ -0,0 +1,179 @@
++#include "qemu/osdep.h"
++#include "hw/acpi/aml-build.h"
 +#include "hw/pci-host/gpex.h"
- 
- #include "cpu.h"
- #include "elf.h"
-@@ -101,6 +102,55 @@ static void microvm_gsi_handler(void *opaque, int n, int level)
-     qemu_set_irq(s->ioapic_irq[n], level);
- }
- 
-+static void create_gpex(MicrovmMachineState *mms)
++
++void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
 +{
-+    X86MachineState *x86ms = X86_MACHINE(mms);
-+    MemoryRegion *mmio32_alias;
-+    MemoryRegion *mmio64_alias;
-+    MemoryRegion *mmio_reg;
-+    MemoryRegion *ecam_alias;
-+    MemoryRegion *ecam_reg;
-+    DeviceState *dev;
-+    int i;
++    int nr_pcie_buses = cfg->ecam.size / PCIE_MMCFG_SIZE_MIN;
++    Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
++    int i, slot_no;
 +
-+    dev = qdev_new(TYPE_GPEX_HOST);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    Aml *dev = aml_device("%s", "PCI0");
++    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A08")));
++    aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
++    aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
++    aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
++    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
++    aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Device")));
++    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
 +
-+    /* Map only the first size_ecam bytes of ECAM space */
-+    ecam_alias = g_new0(MemoryRegion, 1);
-+    ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-+    memory_region_init_alias(ecam_alias, OBJECT(dev), "pcie-ecam",
-+                             ecam_reg, 0, mms->gpex.ecam.size);
-+    memory_region_add_subregion(get_system_memory(),
-+                                mms->gpex.ecam.base, ecam_alias);
++    /* Declare the PCI Routing Table. */
++    Aml *rt_pkg = aml_varpackage(PCI_SLOT_MAX * PCI_NUM_PINS);
++    for (slot_no = 0; slot_no < PCI_SLOT_MAX; slot_no++) {
++        for (i = 0; i < PCI_NUM_PINS; i++) {
++            int gsi = (i + slot_no) % PCI_NUM_PINS;
++            Aml *pkg = aml_package(4);
++            aml_append(pkg, aml_int((slot_no << 16) | 0xFFFF));
++            aml_append(pkg, aml_int(i));
++            aml_append(pkg, aml_name("GSI%d", gsi));
++            aml_append(pkg, aml_int(0));
++            aml_append(rt_pkg, pkg);
++        }
++    }
++    aml_append(dev, aml_name_decl("_PRT", rt_pkg));
 +
-+    /* Map the MMIO window into system address space so as to expose
-+     * the section of PCI MMIO space which starts at the same base address
-+     * (ie 1:1 mapping for that part of PCI MMIO space visible through
-+     * the window).
++    /* Create GSI link device */
++    for (i = 0; i < PCI_NUM_PINS; i++) {
++        uint32_t irqs = cfg->irq + i;
++        Aml *dev_gsi = aml_device("GSI%d", i);
++        aml_append(dev_gsi, aml_name_decl("_HID", aml_string("PNP0C0F")));
++        aml_append(dev_gsi, aml_name_decl("_UID", aml_int(i)));
++        crs = aml_resource_template();
++        aml_append(crs,
++                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
++                                 AML_EXCLUSIVE, &irqs, 1));
++        aml_append(dev_gsi, aml_name_decl("_PRS", crs));
++        crs = aml_resource_template();
++        aml_append(crs,
++                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
++                                 AML_EXCLUSIVE, &irqs, 1));
++        aml_append(dev_gsi, aml_name_decl("_CRS", crs));
++        method = aml_method("_SRS", 1, AML_NOTSERIALIZED);
++        aml_append(dev_gsi, method);
++        aml_append(dev, dev_gsi);
++    }
++
++    method = aml_method("_CBA", 0, AML_NOTSERIALIZED);
++    aml_append(method, aml_return(aml_int(cfg->ecam.base)));
++    aml_append(dev, method);
++
++    method = aml_method("_CRS", 0, AML_NOTSERIALIZED);
++    Aml *rbuf = aml_resource_template();
++    aml_append(rbuf,
++        aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
++                            0x0000, 0x0000, nr_pcie_buses - 1, 0x0000,
++                            nr_pcie_buses));
++    if (cfg->mmio32.size) {
++        aml_append(rbuf,
++                   aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
++                                    AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
++                                    cfg->mmio32.base,
++                                    cfg->mmio32.base + cfg->mmio32.size - 1,
++                                    0x0000,
++                                    cfg->mmio32.size));
++    }
++    if (cfg->pio.size) {
++        aml_append(rbuf,
++                   aml_dword_io(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
++                                AML_ENTIRE_RANGE, 0x0000, 0x0000,
++                                cfg->pio.size - 1,
++                                cfg->pio.base,
++                                cfg->pio.size));
++    }
++    if (cfg->mmio64.size) {
++        aml_append(rbuf,
++                   aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
++                                    AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
++                                    cfg->mmio64.base,
++                                    cfg->mmio64.base + cfg->mmio64.size - 1,
++                                    0x0000,
++                                    cfg->mmio64.size));
++    }
++    aml_append(method, aml_return(rbuf));
++    aml_append(dev, method);
++
++    /* Declare an _OSC (OS Control Handoff) method */
++    aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
++    aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
++    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
++    aml_append(method,
++        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
++
++    /* PCI Firmware Specification 3.0
++     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
++     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
++     * identified by the Universal Unique IDentifier (UUID)
++     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
 +     */
-+    mmio_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
-+    if (mms->gpex.mmio32.size) {
-+        mmio32_alias = g_new0(MemoryRegion, 1);
-+        memory_region_init_alias(mmio32_alias, OBJECT(dev), "pcie-mmio32", mmio_reg,
-+                                 mms->gpex.mmio32.base, mms->gpex.mmio32.size);
-+        memory_region_add_subregion(get_system_memory(),
-+                                    mms->gpex.mmio32.base, mmio32_alias);
-+    }
-+    if (mms->gpex.mmio64.size) {
-+        mmio64_alias = g_new0(MemoryRegion, 1);
-+        memory_region_init_alias(mmio64_alias, OBJECT(dev), "pcie-mmio64", mmio_reg,
-+                                 mms->gpex.mmio64.base, mms->gpex.mmio64.size);
-+        memory_region_add_subregion(get_system_memory(),
-+                                    mms->gpex.mmio64.base, mmio64_alias);
-+    }
++    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
++    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
++    aml_append(ifctx,
++        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
++    aml_append(ifctx,
++        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
++    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
++    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
 +
-+    for (i = 0; i < GPEX_NUM_IRQS; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-+                           x86ms->gsi[mms->gpex.irq + i]);
-+    }
++    /*
++     * Allow OS control for all 5 features:
++     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
++     */
++    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
++                              aml_name("CTRL")));
++
++    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
++    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
++                              aml_name("CDW1")));
++    aml_append(ifctx, ifctx1);
++
++    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
++    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
++                              aml_name("CDW1")));
++    aml_append(ifctx, ifctx1);
++
++    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
++    aml_append(ifctx, aml_return(aml_arg(3)));
++    aml_append(method, ifctx);
++
++    elsectx = aml_else();
++    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
++                               aml_name("CDW1")));
++    aml_append(elsectx, aml_return(aml_arg(3)));
++    aml_append(method, elsectx);
++    aml_append(dev, method);
++
++    method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
++
++    /* PCI Firmware Specification 3.0
++     * 4.6.1. _DSM for PCI Express Slot Information
++     * The UUID in _DSM in this context is
++     * {E5C937D0-3553-4D7A-9117-EA4D19C3434D}
++     */
++    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
++    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
++    ifctx1 = aml_if(aml_equal(aml_arg(2), aml_int(0)));
++    uint8_t byte_list[1] = {1};
++    buf = aml_buffer(1, byte_list);
++    aml_append(ifctx1, aml_return(buf));
++    aml_append(ifctx, ifctx1);
++    aml_append(method, ifctx);
++
++    byte_list[0] = 0;
++    buf = aml_buffer(1, byte_list);
++    aml_append(method, aml_return(buf));
++    aml_append(dev, method);
++
++    Aml *dev_res0 = aml_device("%s", "RES0");
++    aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
++    crs = aml_resource_template();
++    aml_append(crs,
++        aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
++                         AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
++                         cfg->ecam.base,
++                         cfg->ecam.base + cfg->ecam.size - 1,
++                         0x0000,
++                         cfg->ecam.size));
++    aml_append(dev_res0, aml_name_decl("_CRS", crs));
++    aml_append(dev, dev_res0);
++    aml_append(scope, dev);
 +}
-+
- static void microvm_devices_init(MicrovmMachineState *mms)
- {
-     X86MachineState *x86ms = X86_MACHINE(mms);
-@@ -147,6 +197,15 @@ static void microvm_devices_init(MicrovmMachineState *mms)
-         x86ms->acpi_dev = HOTPLUG_HANDLER(dev);
-     }
- 
-+    if (x86_machine_is_acpi_enabled(x86ms) && mms->pcie == ON_OFF_AUTO_ON) {
-+        mms->gpex.mmio32.base = PCIE_MMIO_BASE;
-+        mms->gpex.mmio32.size = PCIE_MMIO_SIZE;
-+        mms->gpex.ecam.base   = PCIE_ECAM_BASE;
-+        mms->gpex.ecam.size   = PCIE_ECAM_SIZE;
-+        mms->gpex.irq         = PCIE_IRQ_BASE;
-+        create_gpex(mms);
-+    }
-+
-     if (mms->pic == ON_OFF_AUTO_ON || mms->pic == ON_OFF_AUTO_AUTO) {
-         qemu_irq *i8259;
- 
-@@ -446,6 +505,23 @@ static void microvm_machine_set_rtc(Object *obj, Visitor *v, const char *name,
-     visit_type_OnOffAuto(v, name, &mms->rtc, errp);
- }
- 
-+static void microvm_machine_get_pcie(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    MicrovmMachineState *mms = MICROVM_MACHINE(obj);
-+    OnOffAuto pcie = mms->pcie;
-+
-+    visit_type_OnOffAuto(v, name, &pcie, errp);
-+}
-+
-+static void microvm_machine_set_pcie(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    MicrovmMachineState *mms = MICROVM_MACHINE(obj);
-+
-+    visit_type_OnOffAuto(v, name, &mms->pcie, errp);
-+}
-+
- static bool microvm_machine_get_isa_serial(Object *obj, Error **errp)
- {
-     MicrovmMachineState *mms = MICROVM_MACHINE(obj);
-@@ -521,6 +597,7 @@ static void microvm_machine_initfn(Object *obj)
-     mms->pic = ON_OFF_AUTO_AUTO;
-     mms->pit = ON_OFF_AUTO_AUTO;
-     mms->rtc = ON_OFF_AUTO_AUTO;
-+    mms->pcie = ON_OFF_AUTO_AUTO;
-     mms->isa_serial = true;
-     mms->option_roms = true;
-     mms->auto_kernel_cmdline = true;
-@@ -587,6 +664,13 @@ static void microvm_class_init(ObjectClass *oc, void *data)
-     object_class_property_set_description(oc, MICROVM_MACHINE_RTC,
-         "Enable MC146818 RTC");
- 
-+    object_class_property_add(oc, MICROVM_MACHINE_PCIE, "OnOffAuto",
-+                              microvm_machine_get_pcie,
-+                              microvm_machine_set_pcie,
-+                              NULL, NULL);
-+    object_class_property_set_description(oc, MICROVM_MACHINE_PCIE,
-+        "Enable PCIe");
-+
-     object_class_property_add_bool(oc, MICROVM_MACHINE_ISA_SERIAL,
-                                    microvm_machine_get_isa_serial,
-                                    microvm_machine_set_isa_serial);
-diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-index d0bd8b537d55..32aa15533bd8 100644
---- a/hw/i386/Kconfig
-+++ b/hw/i386/Kconfig
-@@ -104,6 +104,7 @@ config MICROVM
-     select MC146818RTC
-     select VIRTIO_MMIO
-     select ACPI_HW_REDUCED
-+    select PCI_EXPRESS_GENERIC_BRIDGE
- 
- config X86_IOMMU
-     bool
+diff --git a/hw/pci-host/meson.build b/hw/pci-host/meson.build
+index cd52f6ff1cb6..e6d1b896848c 100644
+--- a/hw/pci-host/meson.build
++++ b/hw/pci-host/meson.build
+@@ -3,6 +3,7 @@ pci_ss.add(when: 'CONFIG_PAM', if_true: files('pam.c'))
+ pci_ss.add(when: 'CONFIG_PCI_BONITO', if_true: files('bonito.c'))
+ pci_ss.add(when: 'CONFIG_PCI_EXPRESS_DESIGNWARE', if_true: files('designware.c'))
+ pci_ss.add(when: 'CONFIG_PCI_EXPRESS_GENERIC_BRIDGE', if_true: files('gpex.c'))
++pci_ss.add(when: 'CONFIG_ACPI', if_true: files('gpex-acpi.c'))
+ pci_ss.add(when: 'CONFIG_PCI_EXPRESS_Q35', if_true: files('q35.c'))
+ pci_ss.add(when: 'CONFIG_PCI_EXPRESS_XILINX', if_true: files('xilinx-pcie.c'))
+ pci_ss.add(when: 'CONFIG_PCI_I440FX', if_true: files('i440fx.c'))
 -- 
 2.27.0
 

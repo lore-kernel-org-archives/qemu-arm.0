@@ -1,114 +1,106 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1239727lfq;
-        Fri, 25 Sep 2020 06:06:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzgK5Ed2PL5UeL9txUdI2+0y08f8VkBVrhbRS9QO8vH9a1XgHMz2G7nj4KLkF1EFMGU9ML4
-X-Received: by 2002:a1f:1f46:: with SMTP id f67mr2652056vkf.6.1601039215208;
-        Fri, 25 Sep 2020 06:06:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601039215; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1268504lfq;
+        Fri, 25 Sep 2020 06:39:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw6ApQeGKlpbXDxl+bsMfP1r7cah9WFzA0AJk1Q6lvBiy/5xp6l/UJEzpsTx/OnsPY+oegQ
+X-Received: by 2002:a25:818e:: with SMTP id p14mr5239195ybk.399.1601041175522;
+        Fri, 25 Sep 2020 06:39:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601041175; cv=none;
         d=google.com; s=arc-20160816;
-        b=V0fvAP0K+6ktr+3Gcr9H1eX88wzFtwFRJ5ni108qAYlBtY25JGIWiGgc3W6ix//Twb
-         YdcCdHetU5v50an8Plp7IIdV/ACF+NWE7cn48Yuy/SwuaVj4Jy3aWj7/pHas+2MT7hGD
-         OmBhSmpaugHgRu/Ku1RtAHzYt5UqXJevkv5uR8drFj39LxmQzZg55ALs5g7tKFxzXHME
-         J8HxMqGtw9MWv0wpKIjvlnhmkc4HIP7Z7lgaaoQPNnyD8CmrIPEk3zBB6T2jW6YYb3mV
-         ufZCgkePTbjoMBrSR0FXpET8vB4I6I7t5bAX2uhpVkaSOHShtohhLTUcFHZEvfNFo/w3
-         01ig==
+        b=AEqWJGpvE+jI/Si21QIRia0JmPlbw2Z2Qm9Qp75DZiwkY8UBp28oZkb8OGVRGEbfJR
+         gJx1wddFcxgpND+MeUncSbDwdLZ3hjAYL6SmjD/UIAJlrNLgIF53KMEDPfZdjtPKKatZ
+         5/bjgQzUopsESdyvFmUJ7qNKfl59M+U5rWlOu0H4KbCiqnGv6r/PWg6KRap/tpzgFkp5
+         TWseSoNJ/9C6U0eZb7yoqG6OBGznb71o0oB2p7b6FMyIAnq6fsujB3BhQLcSIkFReq4h
+         j+WC14yCR35CyfkiaNgDlcHoyI5yLm2tKrvjhTlheKccTALMaPRgBdYib9SRFV7fxoDe
+         y89A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=E66i6/ZzpAgvqmQvZR6jcwUy6QGSNRPMsP3NXLcqhtg=;
-        b=k91rjtwodcGtyJBbc1eXZLth9BL2GDP48DzCWCz7On2aH/K2c83qaWuaGN6t+Bm2Rt
-         YkItHDwcCbJ4Ld1MiQDlMxmKa4IwV4q7Is7S7jo/+zEMymWdNK0nrN96ZqaqH78WmAVT
-         lYkE3cvIe3MfewyBLFMlbQN+DWJd3FWN5uW94Q52eQDpozD76kRWsXLbeHuC8DvFeLbd
-         TLocFWx2bHvNgG9iLTEszpfw79P3/0Ry2vkHak7/X9n+8827CMitx1zozDBBtRTsry5E
-         0dnJPLGLLSJ1pIvP7ubnsve2kyjeSPhlA+nFWjJ8iSAD/7MF4gBnuZ64PZx6zFU+a8QJ
-         3c7Q==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=LEapBT5lGA8vRx16w4G1jp1xfCgBRVKisEf5jOFHwNk=;
+        b=IXLPKr4v7ws0hzworhP3IPnBWetFsDo9Ur9/hO2TQCsx79UBlf3MdgXSOMPQqSrL+T
+         JyIhtzviBCfXEYcZ+hpgeHdiF2Okj7UYdkbBZteS3579wiTkrc3lZUac28Z6qc4xmCB+
+         UhrrBt7chR6oyLm6nRgpBEEZnWI/ST7G8pzKu55PTwt7mkU3WWemiuw9f5h+GPfbvO2B
+         5CmRJiYR6DbRrNFrf8c3zxXNM4CvR6Hj7G6Ta6HbIxA0zcbE4SEjdt3X5oSl0/gdsOre
+         tBS3m2JWMchmgbzqEwQLkvi2SnS5Ty7pLpxp8BujIMR/6DKOv7dWPWblcootYW3K2RkV
+         Y22w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JUnsQT7s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=RLWl3Fcz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x65si311691vsc.82.2020.09.25.06.06.55
+        by mx.google.com with ESMTPS id l124si3287648ybc.102.2020.09.25.06.39.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Sep 2020 06:06:55 -0700 (PDT)
+        Fri, 25 Sep 2020 06:39:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JUnsQT7s;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49780 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=RLWl3Fcz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43662 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kLnR8-0000fq-F7
-	for alex.bennee@linaro.org; Fri, 25 Sep 2020 09:06:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49216)
+	id 1kLnwk-0001xo-TP
+	for alex.bennee@linaro.org; Fri, 25 Sep 2020 09:39:34 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60398)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kLnGU-0004cZ-9t; Fri, 25 Sep 2020 08:55:54 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:45125)
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1kLnwc-0001w0-Mx
+ for qemu-arm@nongnu.org; Fri, 25 Sep 2020 09:39:26 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:55137)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kLnGR-0001wV-Pt; Fri, 25 Sep 2020 08:55:53 -0400
-Received: by mail-wr1-x442.google.com with SMTP id x14so3455240wrl.12;
- Fri, 25 Sep 2020 05:55:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=E66i6/ZzpAgvqmQvZR6jcwUy6QGSNRPMsP3NXLcqhtg=;
- b=JUnsQT7s+uys+cl4zufD7hdUunBqmV6W0JQ0UT+28XeykSmpxuIqbbIbOjfHkt4paa
- fRsDgH4voP1YatOEOEFeMyPFFKMlR1ubgbpSIQ2dZt9uCVFjxUFRdxgyOR8CQvDi+KuI
- +RHtQy2FJh6NRuCdX076ulJU+V9ehhfrRUdJcLhCrEHrY+B045xjU4ca6O0Zl44xfSCn
- 4P9BMxmE6Hcq0pct7IUPQPL72he3Xn7zABmywW/Pe04gSiuvdnIScSkaVyuwGy9Qm6r/
- jEZGpKmNeuQiBB7ZgOLEdeIuxozMc/MJmYmloOgK3pqDHLApjDeRHIVYDSQllfNp4q75
- ENUA==
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1kLnwa-0007hB-8J
+ for qemu-arm@nongnu.org; Fri, 25 Sep 2020 09:39:26 -0400
+Received: by mail-wm1-x343.google.com with SMTP id s13so3073200wmh.4
+ for <qemu-arm@nongnu.org>; Fri, 25 Sep 2020 06:39:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=LEapBT5lGA8vRx16w4G1jp1xfCgBRVKisEf5jOFHwNk=;
+ b=RLWl3FczdndaCQi72oSqFi7gKVxG4d3TI/DKrEKNspCwS/LDF2qLUaQAh01iiQWhGh
+ BILQvgjftHjqR/mDwjXlzkV/x8Pvzas7ezgn4nUIuOHMKfYLkGXxxY0p3JiIkc7MMMcg
+ 3g5Sswy1YvQW9yTzjOySfBDpOTAtYBYAU1JN89EWMc1ZHQtO2xTuT0EZNY/S/fVIb8i0
+ LXzDj98UbrEOlFIetefcIgJj0dcJawaTGUG0NorQtP4Vd32nex3bq+N+hXob4Twfrcm4
+ 3gcnPr9EqSEjlXNIU6voD7sBqKBeN8rNo8SgCzk4B8lDwich5zKdlEbUCisF38N9LJf9
+ bWuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=E66i6/ZzpAgvqmQvZR6jcwUy6QGSNRPMsP3NXLcqhtg=;
- b=eha8NYSZwUonAOLFwjD0ETqkLNdQU295trfyBlf2qQx4JKxHpLrkubxqf8QNWS5EK8
- wY9482iZ/bGpMJEzJpW4PuMB3xwEcUL3xHxbyAr6QO/7x/b/EyQM8U2WTN2ldgPW4igm
- zd4GAodVb7XvTlyFVmnG0h3wzF+xH049Wp+E+/1owd+7F2NjB4hJ+v3Kwg30Fzh/BGWu
- 6NIkZqwBnwKLK530o6o3RjU4BEAIiRhH/Vzd80lOdVn6DEqDRiFy+WiWnQ9lLMLjGA+R
- 7XGVdE8cZPYqUXk9JhDFKjENEhx++68jqpj0zqSW6JsvbVX1ZZOeVfm3EHYvkwQZnS9e
- VqIQ==
-X-Gm-Message-State: AOAM533ZmJMtYlwvcW2MQFwYMnsO0VE9Akz6CqMcZoj09B7WMMmxkJqM
- RkPB9KAZ9VeIEMfeGnFG8Gg=
-X-Received: by 2002:adf:ef03:: with SMTP id e3mr4192604wro.146.1601038549255; 
- Fri, 25 Sep 2020 05:55:49 -0700 (PDT)
-Received: from [192.168.1.34] (234.red-88-10-103.dynamicip.rima-tde.net.
- [88.10.103.234])
- by smtp.gmail.com with ESMTPSA id u126sm3605884wmu.9.2020.09.25.05.55.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Sep 2020 05:55:48 -0700 (PDT)
-Subject: Re: [PATCH 00/14] raspi: add the bcm2835 cprman clock manager
-To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
-References: <20200925101731.2159827-1-luc@lmichel.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <81da166c-a5de-e91e-15a8-5fdd08984423@amsat.org>
-Date: Fri, 25 Sep 2020 14:55:47 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ bh=LEapBT5lGA8vRx16w4G1jp1xfCgBRVKisEf5jOFHwNk=;
+ b=j7A6CVRPOtu7qWs6+/SCvwKdJOwA1kBheb0Eo0qXq7zUDv3ofgj1azo1K954vN7UDH
+ 3xRXa2ghN1N70nB/buSpvIExz7M29BLnNcuwCN2bZaTzUySIZk1RTGjjmjrs3CHTBeae
+ fnLj1ZbudVsHNDRvt/hSCr5evOks26SKyq6rbbciTKmU0CNlIKZhrO5dhodT1Zm2sCU9
+ TUBvNudbiaEfxIt/F/Ypw+rzV9B1S3cUUaUV4JUaV2me4JLLXI+MT75VKQR4rZ0UvQ+z
+ kFuQgYxR/6OMCZ8VVLpqFT+lSBKhZc+kz0X15YnVkgMt8+wyihVu1LNJyC+V4XLcS6Kw
+ coqA==
+X-Gm-Message-State: AOAM5332oW7fOih+AC/egMaszW9VPnisI8ocmdkVpMnPJfwrov6s47Hk
+ M7FVExmE9m2+ufEkLVIGGpms0V5LnN8/xzHiAasJM54/eTA+gGmGk0EZGV+ETS6VrCTp8u/Vh/z
+ xsXb66ijHD4RFHoUSXBtJZSjfu45kzERZE9RGZkLFeLQcgqapsLwlYPab59TLu9icWdAIFA==
+X-Received: by 2002:a1c:9d43:: with SMTP id g64mr3536112wme.16.1601041162147; 
+ Fri, 25 Sep 2020 06:39:22 -0700 (PDT)
+Received: from localhost.localdomain ([2a02:8010:64d6::1d89])
+ by smtp.gmail.com with ESMTPSA id d19sm2860921wmd.0.2020.09.25.06.39.21
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 25 Sep 2020 06:39:21 -0700 (PDT)
+From: Graeme Gregory <graeme@nuviainc.com>
+To: qemu-arm@nongnu.org
+Subject: [PATCH] hw/arm/sbsa-ref : Fix SMMUv3 Initialisation
+Date: Fri, 25 Sep 2020 14:39:02 +0100
+Message-Id: <20200925133902.28349-1-graeme@nuviainc.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20200925101731.2159827-1-luc@lmichel.fr>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=graeme@nuviainc.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.238,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,117 +113,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
+Cc: Graeme Gregory <graeme@nuviainc.com>, peter.maydell@linaro.org,
+ jamie@nuviainc.com, rad@semihalf.com, qemu-devel@nongnu.org, leif@nuviainc.com,
+ philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ozGBAlu1r+El
+X-TUID: FxVco9JH/XNL
 
-Cc'ing Paul/Niek/Havard.
+SMMUv3 has an error in previous patch where a i was transposed to a 1
+meaning interrupts would not have been correctly assigned to the SMMUv3
+instance.
 
-On 9/25/20 12:17 PM, Luc Michel wrote:
-> Hi,
-> 
-> This series add the BCM2835 cprman clock manager peripheral to the
-> Raspberry Pi machine.
-> 
-> Patches 1-3 are preliminary changes, patches 4-12 are the actual
-> implementation.
-> 
-> The two last patches add a clock input to the PL011 and
-> connect it to the cprman and are RFC.
-> 
-> This series has been tested with Linux 5.4.61 (the current raspios
-> version). It fixes the kernel Oops at boot time due to invalid UART
-> clock value, and other warnings/errors here and there because of bad
-> clocks or lack of cprman.
-> 
-> Here is the clock tree as seen by Linux when booted in QEMU:
-> (/sys/kernel/debug/clk/clk_summary with some columns removed)
-> 
->                         enable  prepare              
->    clock                 count    count          rate
-> -----------------------------------------------------
->  otg                         0        0     480000000
->  osc                         5        5      19200000
->     gp2                      1        1         32768
->     tsens                    0        0       1920000
->     otp                      0        0       4800000
->     timer                    0        0       1000002
->     pllh                     4        4     864000000
->        pllh_pix_prediv       1        1       3375000
->           pllh_pix           0        0        337500
->        pllh_aux              1        1     216000000
->           vec                0        0     108000000
->        pllh_rcal_prediv      1        1       3375000
->           pllh_rcal          0        0        337500
->     plld                     3        3    2000000024
->        plld_dsi1             0        0       7812501
->        plld_dsi0             0        0       7812501
->        plld_per              3        3     500000006
->           gp1                1        1      25000000
->           uart               1        2      47999625
->        plld_core             2        2     500000006
->           sdram              0        0     166666668
->     pllc                     3        3    2400000000
->        pllc_per              1        1    1200000000
->           emmc               0        0     200000000
->        pllc_core2            0        0       9375000
->        pllc_core1            0        0       9375000
->        pllc_core0            2        2    1200000000
->           vpu                1        1     700000000
->              aux_spi2        0        0     700000000
->              aux_spi1        0        0     700000000
->              aux_uart        0        0     700000000
->              peri_image      0        0     700000000
->     plla                     2        2    2250000000
->        plla_ccp2             0        0       8789063
->        plla_dsi0             0        0       8789063
->        plla_core             1        1     750000000
->           h264               0        0     250000000
->           isp                0        0     250000000
->  dsi1p                       0        0             0
->  dsi0p                       0        0             0
->  dsi1e                       0        0             0
->  dsi0e                       0        0             0
->  cam1                        0        0             0
->  cam0                        0        0             0
->  dpi                         0        0             0
->  tec                         0        0             0
->  smi                         0        0             0
->  slim                        0        0             0
->  gp0                         0        0             0
->  dft                         0        0             0
->  aveo                        0        0             0
->  pcm                         0        0             0
->  pwm                         0        0             0
->  hsm                         0        0             0
-> 
-> It shows small differences with real hardware due other missing
-> peripherals for which the driver turn the clock off (like tsens).
-> 
-> Luc Michel (14):
->   hw/core/clock: provide the VMSTATE_ARRAY_CLOCK macro
->   hw/core/clock: trace clock values in Hz instead of ns
->   hw/arm/raspi: fix cprman base address
->   hw/arm/raspi: add a skeleton implementation of the cprman
->   hw/misc/bcm2835_cprman: add a PLL skeleton implementation
->   hw/misc/bcm2835_cprman: implement PLLs behaviour
->   hw/misc/bcm2835_cprman: add a PLL channel skeleton implementation
->   hw/misc/bcm2835_cprman: implement PLL channels behaviour
->   hw/misc/bcm2835_cprman: add a clock mux skeleton implementation
->   hw/misc/bcm2835_cprman: implement clock mux behaviour
->   hw/misc/bcm2835_cprman: add the DSI0HSCK multiplexer
->   hw/misc/bcm2835_cprman: add sane reset values to the registers
->   hw/char/pl011: add a clock input
->   hw/arm/bcm2835_peripherals: connect the UART clock
-> 
+The code also contained an error in that the IRQs were never allocated
+in the irqmap.
 
->  14 files changed, 2118 insertions(+), 12 deletions(-)
-ouch... o_O huge device...
+Fixes: 48ba18e6d3f3 ("hw/arm/sbsa-ref: Simplify by moving the gic in the machine state")
+Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
+---
+ hw/arm/sbsa-ref.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Tested on top of my raspi branch with raspi[0123]:
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 257ada9425..9109fb58be 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -138,6 +138,7 @@ static const int sbsa_ref_irqmap[] = {
+     [SBSA_SECURE_UART_MM] = 9,
+     [SBSA_AHCI] = 10,
+     [SBSA_EHCI] = 11,
++    [SBSA_SMMU] = 12, /* ... to 15 */
+ };
+ 
+ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+@@ -530,7 +531,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+     for (i = 0; i < NUM_SMMU_IRQS; i++) {
+         sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+-                           qdev_get_gpio_in(sms->gic, irq + 1));
++                           qdev_get_gpio_in(sms->gic, irq + i));
+     }
+ }
+ 
+-- 
+2.25.1
+

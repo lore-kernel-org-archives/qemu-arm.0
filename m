@@ -1,73 +1,73 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1119928lfq;
-        Fri, 25 Sep 2020 03:27:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw9hWLKn2Po8OT1cQCjEAiV3yre+tuU2ZRjCgNRktjTw/GzY3uShzN6Ybxnqo3CJyRBxCTT
-X-Received: by 2002:a25:a290:: with SMTP id c16mr4506378ybi.84.1601029621805;
-        Fri, 25 Sep 2020 03:27:01 -0700 (PDT)
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1120529lfq;
+        Fri, 25 Sep 2020 03:28:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw/sVzoJtqm5UlpvZ2Z3w3jJY0yiU1bROZvzBFIIivfKz0NH3TJ4LjYPMtTimeHn4nIMg9l
+X-Received: by 2002:a25:2511:: with SMTP id l17mr4441375ybl.108.1601029680186;
+        Fri, 25 Sep 2020 03:28:00 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a63si2412686ybg.163.2020.09.25.03.27.01
+        by mx.google.com with ESMTPS id b88si2358243ybi.314.2020.09.25.03.27.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Sep 2020 03:27:01 -0700 (PDT)
+        Fri, 25 Sep 2020 03:28:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="AVXE/d/X";
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=DW5g0qjJ;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:38708 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42364 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kLkwP-0003CQ-5k
-	for alex.bennee@linaro.org; Fri, 25 Sep 2020 06:27:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42722)
+	id 1kLkxL-0004kB-Ey
+	for alex.bennee@linaro.org; Fri, 25 Sep 2020 06:27:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42798)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kLknK-00018X-Jl; Fri, 25 Sep 2020 06:17:38 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:58236)
+ id 1kLknk-0001Yd-TO; Fri, 25 Sep 2020 06:18:06 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:58264)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kLknF-0007S0-2M; Fri, 25 Sep 2020 06:17:38 -0400
+ id 1kLknh-0007Sp-TQ; Fri, 25 Sep 2020 06:18:04 -0400
 Received: from sekoia-pc.bar.greensocs.com (sekoia-pc.home.lmichel.fr
  [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPS id 882DFC60F20;
- Fri, 25 Sep 2020 10:17:20 +0000 (UTC)
+ by pharaoh.lmichel.fr (Postfix) with ESMTPS id 08C2BC61424;
+ Fri, 25 Sep 2020 10:17:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1601029040;
+ t=1601029041;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=B9F/66Vuw8urIeiKnlqbUW/o4qpDy+MtTRBF5H3Fg5c=;
- b=AVXE/d/XTTIiawt4nUJt41/1Hmz/YG0EH6zFbA1oFPjXxDxJuuHFsxQPgaIgJlZWHR/vW3
- sRbev50NEYQ+uPHTvI583mXhN/gYDtA30rPVnf2pFf7grBLT7zJvfI1/e//RhbzuyvoKk3
- SzLSjiQwE66t4DDMysmqFzLBQCfOqSayU+02qv8AgeDbIOyGOSTtlt5D1ZapleVyLMt2Uh
- JEy/iezn5AVdf5o2AxpmVAbr4w2M2R6WAdHi4Wy3ii4DIriwBpuiFAkRYAw6jwrGtebSpD
- A1BNOanOektZOc1NcC/uRauEduotRcp2LwO30phIPLYhNXCTqsOG6OlsjIHHFw==
+ bh=nYIO6oVFxUZV1TH9x+9OCm3cGZXkpXFo/VqRcUn44+U=;
+ b=DW5g0qjJIUMvhhgTBWSkRp+9YOyVNrwX/TP5EYfA9pPjQkKw4xKeLN3MSNEh5ScPFyHrsz
+ NGZkXToXVrQ4VgC6E6iKmkeB8/EqM3i4iydCSaODOPMDqu1xtd0yAgQ+caGy11LnD2Bgjy
+ zE+guOKG/BER9sTPEXjFevFEIs6z0PPPr2tgmwBI2xvGjMZQzDMx5gemd96iAoTjNmTw7a
+ hUlh5VdfCNUMm3sTMOStOyz6Gbsiv+AonGiJzSVMg78KEMq1FWy5UzMp1+UUGCeCkbsCwa
+ e+euD6wI4Cq3DYAsMV1KHVkLxW43dB2B38Szm2apup60oYERn38NACX+1KH52w==
 From: Luc Michel <luc@lmichel.fr>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 08/14] hw/misc/bcm2835_cprman: implement PLL channels behaviour
-Date: Fri, 25 Sep 2020 12:17:25 +0200
-Message-Id: <20200925101731.2159827-9-luc@lmichel.fr>
+Subject: [RFC PATCH 14/14] hw/arm/bcm2835_peripherals: connect the UART clock
+Date: Fri, 25 Sep 2020 12:17:31 +0200
+Message-Id: <20200925101731.2159827-15-luc@lmichel.fr>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20200925101731.2159827-1-luc@lmichel.fr>
 References: <20200925101731.2159827-1-luc@lmichel.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1601029040;
+ s=pharaoh; t=1601029041;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=B9F/66Vuw8urIeiKnlqbUW/o4qpDy+MtTRBF5H3Fg5c=;
- b=cjG8tE9mjEqEETyVlvOrkQk58Ad0Oxr2DJV4YmsqU78TzJvh0BkuyoTUllvyGnjw/y0C/5
- g7t+s8FSYwgpJMS7heYsnkYnbCqLGwBS/XABLZT08EzWIStE49XP9xVdUlhtp2ZaQTIgpY
- gDxF1vcNtMOJxI4teUZkr3vcCJdKODdRJsPdM+iMWCz+ILlK++VLYZxYEpzw4hO+J/mi8V
- b1kp139A0TkO61wu8fp8wFZi36VtYSzLGS8ZV9DqoQ16DWoBwYBgZpSs7Qt3QqQiM4/Xil
- y/BOdZWrgnpQWr3UqOY4wMjjz6Vn6tR+7/DQld+EC5X4M2BIS2xrjZLULp8EOw==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601029040; a=rsa-sha256; cv=none;
- b=VeYE3jpca0MJWf8Zlf4SpfqlJupuXimZz/NaA+DOUWPnY1wlEo3W35C/e5QeyLe+APuPTnv9mKn+uGOeVkhCEsZK+vUUk5a+zFn2V/gfTi97HKVLJ055GBtMk/QHglr4wJzI3yCu60egR5/v+t0h7SYhbR/cWA5pAyN5tMzsTzRAa80z8VNfT8p3l2ZZ3N4AkeNJyi4uf3AfdNhBz3bb2+hJLv+9GcWyxTUEP8FISaTouRrzzrNRui/fD32dB7ygMlaPMoilQxFCmz0/jKWEIdXfpzT+tY8+y3r/CiaVDAxhxuDoZ7KBaMyIXJ4Jygh3iR3IrNBsRzlz7exnOegWvw==
+ bh=nYIO6oVFxUZV1TH9x+9OCm3cGZXkpXFo/VqRcUn44+U=;
+ b=Aj75JlhH/otuCtkq4rHuO8rkZ1y1YmCKr6nxnldTCBp2pdnqhPc5BMFOeJSXWWviXcJC+f
+ gCne17Goy45PTbFyltcgeJK/zdDvLftHFwbzxh9PhKQKRvQv9Ho+q7jafOuPxmHr3n8Jhl
+ QebBDH2fgUYE0/6NosS2GaaAy5WWM8mtFd9cyGyXCOB1iAeLYtqLCelEt8RLqQdkbUjNFl
+ kH9YGs9GDlm92Xr/ji2olgHyZ+sQDJUoJ3GRWry22EKmM/9qa8yUB6MGaxw9hfhybOvLhb
+ EQqGiaySnlq7hDIUKHTqXELGVIJ2mXfncJHplhXskMvnV9w9980X9vJC8CLFYg==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601029041; a=rsa-sha256; cv=none;
+ b=dyaLWTww/X8AwLKqegqfKpDMeoo40HdqROuBVcSkNUZvT333OEohA5CHKidBgtgK9MkUQ6nejgfcVPKIC5EGg7kUKQWmUTHfAFGiIaYKOoY7uzQECeY6Ilxv+5AMtLzXSaQoW4pTyM7zIFT9nGZ0ByoM6MqFF7kXcW9YzfNUR+OjaWV5DkQWnJnT2fTjXC0Naq1ZomoUe8bv7kR5Ak+iYZ2JvIJb3FbevTKJx/zb12HXkRjc2udg2mGUOmOOX+m/0GIZna9VPZL1laMBqKmEFwJofyN+AAqJXLfSBX7My0LDYcq3mNpS3A9cz53u0pKfa3+gs/gN5ZNJRcUcq+S8uQ==
 ARC-Authentication-Results: i=1;
 	pharaoh.lmichel.fr
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
@@ -98,67 +98,32 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Oca4WNN5G4t6
+X-TUID: +hyQhzZIC/P/
 
-A PLL channel is able to further divide the generated PLL frequency. The
-divider is given in the ctrl_a2w register. Some channels have a
-additional fixed divider which is always applied to the signal.
+Connect the 'uart-out' clock from the cprman to the PL011 instance.
 
 Signed-off-by: Luc Michel <luc@lmichel.fr>
 ---
- hw/misc/bcm2835_cprman.c | 33 ++++++++++++++++++++++++++++++++-
- 1 file changed, 32 insertions(+), 1 deletion(-)
+ hw/arm/bcm2835_peripherals.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-index 2c70a3f317..e644aeb2b5 100644
---- a/hw/misc/bcm2835_cprman.c
-+++ b/hw/misc/bcm2835_cprman.c
-@@ -132,13 +132,44 @@ static const TypeInfo cprman_pll_info = {
- };
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 958aadeeb9..9e4e85c3ad 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -167,10 +167,12 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->cprman), errp)) {
+         return;
+     }
+     memory_region_add_subregion(&s->peri_mr, CPRMAN_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->cprman), 0));
++    qdev_connect_clock_in(DEVICE(&s->uart0), "clk",
++                          qdev_get_clock_out(DEVICE(&s->cprman), "uart-out"));
  
+     memory_region_add_subregion(&s->peri_mr, ARMCTRL_IC_OFFSET,
+                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ic), 0));
+     sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
  
- /* PLL channel */
- 
-+static bool pll_channel_is_enabled(CprmanPLLChannelState *channel)
-+{
-+    /*
-+     * XXX I'm not sure of the purpose of the LOAD field. The Linux driver does
-+     * not set it when enabling the channel, but does clear it when disabling
-+     * it.
-+     */
-+    return !FIELD_EX32(*channel->reg_a2w_ctrl, A2W_PLLx_CHANNELy, DISABLE)
-+        && !(*channel->reg_cm & channel->hold_mask);
-+}
-+
- static void pll_channel_update(CprmanPLLChannelState *channel)
- {
--    clock_update(channel->out, 0);
-+    uint64_t freq, div;
-+
-+    if (!pll_channel_is_enabled(channel)) {
-+        clock_update(channel->out, 0);
-+        return;
-+    }
-+
-+    div = FIELD_EX32(*channel->reg_a2w_ctrl, A2W_PLLx_CHANNELy, DIV);
-+
-+    if (!div) {
-+        /*
-+         * It seems that when the divider value is 0, it is considered as
-+         * being maximum by the hardware (see the Linux driver).
-+         */
-+        div = R_A2W_PLLx_CHANNELy_DIV_MASK;
-+    }
-+
-+    /* Some channels have an additional fixed divider */
-+    freq = clock_get_hz(channel->pll_in) / (div * channel->fixed_divider);
-+
-+    clock_update_hz(channel->out, freq);
- }
- 
- /* Update a PLL and all its channels */
- static void pll_update_all_channels(BCM2835CprmanState *s,
-                                     CprmanPLLState *pll)
 -- 
 2.28.0
 

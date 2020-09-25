@@ -1,102 +1,80 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5077153lfq;
-        Tue, 22 Sep 2020 09:58:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxscMG3sOGmFr5dFgPkJ58k/nb9e8oyK/URA2yDd/GGetq6EYv6zby9jNn0PY2xxGclCOY2
-X-Received: by 2002:a25:e046:: with SMTP id x67mr7908127ybg.342.1600793892228;
-        Tue, 22 Sep 2020 09:58:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1600793892; cv=none;
-        d=google.com; s=arc-20160816;
-        b=a1ownJ1AyYxXnjYgT8dKO2UKzFDYpQwG/hl15ROpdclo78IYB0iBlvi7lbBiL7wRwF
-         IpvBCAl4FLr7+YFHMw0qyOcpGAvUA0RbGFYhXRPPcr6+qEmTZyjKSaiusklR05e+/xNd
-         GmBwOjDcRbh6FTqZNnwfqs+qIRotLW8Ms/wv9ttPJrgSvVmjCu10/tJSV5TW5fOuFptF
-         QKqzdWBuQrPwXx2teBap4oADip4es9CzETwIEMp08tFpy/JDJUa6LPWIGdf3dSh4eJct
-         xO/mJfGAgVpCo9Doh/tYlf7G5PYetm6mGTUPt6Ofl+mD32ohsQPXdRcE/6W//e7PjDKd
-         eIXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Gfsyb5lysBIdSfQQaxz5cxooYItsFeEgaOVO/+UrwjI=;
-        b=gffYUhCJd7qGnbxD4OsS7dHov2DtCPhd6rPfuk+Z2K4vcGC1w2BAw40Ri6M73NntUB
-         KiPhcGox/ZgLQ9znOWzd1jOf1Mr/KTVd1fOj/DSzJ7L5ylWRntdu/jVx9KodAokcUOls
-         RcSD1lQVvpsqin4/j3iOYWNolt3GgjhEzPxIrVGRhRhBncL9OdS3l54Juqj2LuCdl/oI
-         ae8c8lGNl1SOGwN+G6/4VmXg8MLiTXtujAUL/HBec38JjzppZb9wzwOy928Lqo68SXjd
-         9BptPyCiVWpE3LS5Ag1+SqN0ZUDJz+nv8q/yV+cw7lE5/dekzV7FPmQYCc3QYNKO/wSJ
-         GvuQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Yc3t3CmQ;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1115188lfq;
+        Fri, 25 Sep 2020 03:19:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfW+xPRujDRzJNSuTDJ81/21/BhQvOeTlGbeVviEfHOOQhTrgRwOyAWpNnJtMVg557dKYh
+X-Received: by 2002:a25:5f08:: with SMTP id t8mr4552254ybb.270.1601029170183;
+        Fri, 25 Sep 2020 03:19:30 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 132si14895912ybk.433.2020.09.22.09.58.12
+        by mx.google.com with ESMTPS id c15si2392255ybj.44.2020.09.25.03.19.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 22 Sep 2020 09:58:12 -0700 (PDT)
+        Fri, 25 Sep 2020 03:19:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Yc3t3CmQ;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=GJLXcfHd;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:49194 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:46862 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kKlcJ-0003wT-L2
-	for alex.bennee@linaro.org; Tue, 22 Sep 2020 12:58:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60786)
+	id 1kLkp7-0002oF-JR
+	for alex.bennee@linaro.org; Fri, 25 Sep 2020 06:19:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42654)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kKlaT-0002Nj-Ky; Tue, 22 Sep 2020 12:56:17 -0400
-Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:38249)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kKlaR-00066y-71; Tue, 22 Sep 2020 12:56:17 -0400
-Received: by mail-il1-x141.google.com with SMTP id t18so17997264ilp.5;
- Tue, 22 Sep 2020 09:56:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Gfsyb5lysBIdSfQQaxz5cxooYItsFeEgaOVO/+UrwjI=;
- b=Yc3t3CmQCSBiUCucNK9dqtYk4iEChGge1mj1wmQGj6OD3kn3fZy4ZuFMbCDZ3f1eFv
- itJO5SqrUUmEX2lIVo4mAPNnYa4a/txhYrI+1jhRBy07lmQZYyK8rYbM54Y0PaKR1WRP
- H0M7auvT+/9ggW1KYijsqgOJPZQO79oB/Ueu/LOpbnrqDsMJE73EvwUv7evjTcnWXCMx
- 3dtc+t7Nkab0je1rj2JZCPgm6pfoU1kVne+FePm1TToPu6Znfkw3sgH1jclkai6FT7fN
- 4TFOqBvPG0/7X7IIQKUrYqUU9v6UbeCwdRsXEBkzL5QBbUeafiuwHDv4jr/7bWvPZCjR
- nOgw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Gfsyb5lysBIdSfQQaxz5cxooYItsFeEgaOVO/+UrwjI=;
- b=ffWCY0Hx6gso4GM2Lw6ER3VkRUatHutsgp8y2BxUCigUGAlBLX6xPilRfr5T9als0Y
- iIBUAq5lQnhkTmlGiPMyF8DVWiMcQ0k4zhiWEDB3YyMTNhnwEEo6cqloVsw8WTzu6QrM
- NVlwCy9/3atse7w/YytP3gQ0MJZqd3dH2D4iHPSxlV6u+fWkyQxGntTZEbemrd48X5OA
- mKZzPyqWG1YdFlPjXKRFx7ObvO9TBBmZM/PB3ytqG1h8NtXSDhOff4pZjxlCz7ZHt3+7
- cDZgKoRa1d9QkxTwd1HN2x/8drvsMowRAxfiVgR98d7gVxNF3Co6igfJW3VJfkFQtl2F
- cFEA==
-X-Gm-Message-State: AOAM531w19Ew5OUdZLaMvbtD0+2ilA1sX0kBPiT28wbuQtjIpSysB4g3
- kYDV0omgCkZoBXWgDJZKtIaxLuuCbDPsBR2ehkg=
-X-Received: by 2002:a92:4a08:: with SMTP id m8mr5445546ilf.227.1600793772665; 
- Tue, 22 Sep 2020 09:56:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kLknC-00012S-BZ; Fri, 25 Sep 2020 06:17:31 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:58108)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kLkn8-0007QJ-C6; Fri, 25 Sep 2020 06:17:30 -0400
+Received: from sekoia-pc.bar.greensocs.com (sekoia-pc.home.lmichel.fr
+ [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPS id E3E66C60F16;
+ Fri, 25 Sep 2020 10:17:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1601029039;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:references; bh=+i1IMBcfnyxNIfGLpyrczRRU6dqOLvpt9ZQFDVOdrsU=;
+ b=GJLXcfHdChTy1BnExgSIf73pP5O399xYXRDkZtAEPWLnRgj3vULWFBw/9yJNvBNx2V9eJt
+ Fs4Ev0YPGaKGtSXWEYpLq24KgVXbEYxdpsZjQZlj42mtiQagwoOLNjRH9YM3XPEu80Cw96
+ ievT4dgD19hFayCOhYMjDCoe3X/COq/kqsgKaAj/sDeTa3k0WZGaUPjcUnw1EWsT9CAWYF
+ QSnMF0w+U8+yO81mJl2p5Q0OV1HwwNsFlEVZB1M4NJIKjdAlJHT2baMJyztywQr2ML9vcu
+ pv5DqFzYmtsySEExTed8hg3fb9oRvqfoa5S/xwIEjOiVQL0UTckwelJ26p/brQ==
+From: Luc Michel <luc@lmichel.fr>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 00/14] raspi: add the bcm2835 cprman clock manager
+Date: Fri, 25 Sep 2020 12:17:17 +0200
+Message-Id: <20200925101731.2159827-1-luc@lmichel.fr>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-References: <20200921221045.699690-1-ehabkost@redhat.com>
- <20200921221045.699690-20-ehabkost@redhat.com>
-In-Reply-To: <20200921221045.699690-20-ehabkost@redhat.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 22 Sep 2020 09:44:58 -0700
-Message-ID: <CAKmqyKPWN+7wWBnQ5ar1Fn8k8M6Lk6qpxmuVaz-f-iQJOv9qSA@mail.gmail.com>
-Subject: Re: [PATCH 19/24] xlnx-zcu102: Register properties as class properties
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x141.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
+ s=pharaoh; t=1601029039;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:references; bh=+i1IMBcfnyxNIfGLpyrczRRU6dqOLvpt9ZQFDVOdrsU=;
+ b=VttaK9sXbsnsKYY7T0sqNV4pi+f9GKaSHgAtLkwQUO+0vAlJuKxvp1KnrnQ3GOJ++Zi0Zx
+ 70tVawx66iWcjDyRhZfq20OTs586wy74AnRHVq6jijlhRWPNZQH/vcSJiNnhPIcR7HV2Y5
+ xtLAO6ZQbs43CX1Q60Kfa0AaAe9jBkO2/cZMG/wXKYCyG6zH8ttfh4U7AuZpJ/JwVqoEit
+ 05fkDOju49h5wlzhUCpKduqm5JxncoQrn3Dbh/WdhkdvWkElGVOWrJM6FKRiSEegJb220d
+ tVnScOfeEptrTTKUWZPjlBRiBZ0cxof0E3wQB2EenuRo9TISmKQOJV3V55APrQ==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601029039; a=rsa-sha256; cv=none;
+ b=PTpJR9EXehRHHX5m0/ZM9ubtyBwXVCJRivwWMeyZIlb05Z93E1OnLkpTo7RLWMNFBmkFABihKAu8vykvdwSBbMLyjre1LYPrM10eF3SC/D63yjhlhj+/lBgLpO74jRVST8x6/BUc++7wuMTSXYE10vR9TGtucOeK3XCTXdTgOjaeUMOpxIrwLUhIWxImjz7XD+NzQjS3r0QSNbeNhGw7gEthgqN56d3UzT9+UVbiCwuUpGcsak6qvm9qsmKqg0mmeBHaz7nmUJkUjb/e4daU8i49DoHegaerhlz7jVGl6CqM9Q7MMtWIBEtknexRoEd4IC9ASyraziRi3wI8L9nBPw==
+ARC-Authentication-Results: i=1;
+	pharaoh.lmichel.fr
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/25 06:17:20
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -110,83 +88,129 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, John Snow <jsnow@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Luc Michel <luc@lmichel.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JCQnn9RSpOtt
+X-TUID: JXrRLvRUecMT
 
-On Mon, Sep 21, 2020 at 3:28 PM Eduardo Habkost <ehabkost@redhat.com> wrote:
->
-> Class properties make QOM introspection simpler and easier, as
-> they don't require an object to be instantiated.
->
-> Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
+Hi,
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+This series add the BCM2835 cprman clock manager peripheral to the
+Raspberry Pi machine.
 
-Alistair
+Patches 1-3 are preliminary changes, patches 4-12 are the actual
+implementation.
 
-> ---
-> Cc: Alistair Francis <alistair@alistair23.me>
-> Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Cc: qemu-arm@nongnu.org
-> Cc: qemu-devel@nongnu.org
-> ---
->  hw/arm/xlnx-zcu102.c | 25 +++++++++++++------------
->  1 file changed, 13 insertions(+), 12 deletions(-)
->
-> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-> index 19d5a4d4e0e..4deb96bfcc1 100644
-> --- a/hw/arm/xlnx-zcu102.c
-> +++ b/hw/arm/xlnx-zcu102.c
-> @@ -208,20 +208,8 @@ static void xlnx_zcu102_machine_instance_init(Object *obj)
->
->      /* Default to secure mode being disabled */
->      s->secure = false;
-> -    object_property_add_bool(obj, "secure", zcu102_get_secure,
-> -                             zcu102_set_secure);
-> -    object_property_set_description(obj, "secure",
-> -                                    "Set on/off to enable/disable the ARM "
-> -                                    "Security Extensions (TrustZone)");
-> -
->      /* Default to virt (EL2) being disabled */
->      s->virt = false;
-> -    object_property_add_bool(obj, "virtualization", zcu102_get_virt,
-> -                             zcu102_set_virt);
-> -    object_property_set_description(obj, "virtualization",
-> -                                    "Set on/off to enable/disable emulating a "
-> -                                    "guest CPU which implements the ARM "
-> -                                    "Virtualization Extensions");
->  }
->
->  static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
-> @@ -237,6 +225,19 @@ static void xlnx_zcu102_machine_class_init(ObjectClass *oc, void *data)
->      mc->max_cpus = XLNX_ZYNQMP_NUM_APU_CPUS + XLNX_ZYNQMP_NUM_RPU_CPUS;
->      mc->default_cpus = XLNX_ZYNQMP_NUM_APU_CPUS;
->      mc->default_ram_id = "ddr-ram";
-> +
-> +    object_class_property_add_bool(oc, "secure", zcu102_get_secure,
-> +                                   zcu102_set_secure);
-> +    object_class_property_set_description(oc, "secure",
-> +                                          "Set on/off to enable/disable the ARM "
-> +                                          "Security Extensions (TrustZone)");
-> +
-> +    object_class_property_add_bool(oc, "virtualization", zcu102_get_virt,
-> +                                   zcu102_set_virt);
-> +    object_class_property_set_description(oc, "virtualization",
-> +                                          "Set on/off to enable/disable emulating a "
-> +                                          "guest CPU which implements the ARM "
-> +                                          "Virtualization Extensions");
->  }
->
->  static const TypeInfo xlnx_zcu102_machine_init_typeinfo = {
-> --
-> 2.26.2
->
->
+The two last patches add a clock input to the PL011 and
+connect it to the cprman and are RFC.
+
+This series has been tested with Linux 5.4.61 (the current raspios
+version). It fixes the kernel Oops at boot time due to invalid UART
+clock value, and other warnings/errors here and there because of bad
+clocks or lack of cprman.
+
+Here is the clock tree as seen by Linux when booted in QEMU:
+(/sys/kernel/debug/clk/clk_summary with some columns removed)
+
+                        enable  prepare              
+   clock                 count    count          rate
+-----------------------------------------------------
+ otg                         0        0     480000000
+ osc                         5        5      19200000
+    gp2                      1        1         32768
+    tsens                    0        0       1920000
+    otp                      0        0       4800000
+    timer                    0        0       1000002
+    pllh                     4        4     864000000
+       pllh_pix_prediv       1        1       3375000
+          pllh_pix           0        0        337500
+       pllh_aux              1        1     216000000
+          vec                0        0     108000000
+       pllh_rcal_prediv      1        1       3375000
+          pllh_rcal          0        0        337500
+    plld                     3        3    2000000024
+       plld_dsi1             0        0       7812501
+       plld_dsi0             0        0       7812501
+       plld_per              3        3     500000006
+          gp1                1        1      25000000
+          uart               1        2      47999625
+       plld_core             2        2     500000006
+          sdram              0        0     166666668
+    pllc                     3        3    2400000000
+       pllc_per              1        1    1200000000
+          emmc               0        0     200000000
+       pllc_core2            0        0       9375000
+       pllc_core1            0        0       9375000
+       pllc_core0            2        2    1200000000
+          vpu                1        1     700000000
+             aux_spi2        0        0     700000000
+             aux_spi1        0        0     700000000
+             aux_uart        0        0     700000000
+             peri_image      0        0     700000000
+    plla                     2        2    2250000000
+       plla_ccp2             0        0       8789063
+       plla_dsi0             0        0       8789063
+       plla_core             1        1     750000000
+          h264               0        0     250000000
+          isp                0        0     250000000
+ dsi1p                       0        0             0
+ dsi0p                       0        0             0
+ dsi1e                       0        0             0
+ dsi0e                       0        0             0
+ cam1                        0        0             0
+ cam0                        0        0             0
+ dpi                         0        0             0
+ tec                         0        0             0
+ smi                         0        0             0
+ slim                        0        0             0
+ gp0                         0        0             0
+ dft                         0        0             0
+ aveo                        0        0             0
+ pcm                         0        0             0
+ pwm                         0        0             0
+ hsm                         0        0             0
+
+It shows small differences with real hardware due other missing
+peripherals for which the driver turn the clock off (like tsens).
+
+Luc Michel (14):
+  hw/core/clock: provide the VMSTATE_ARRAY_CLOCK macro
+  hw/core/clock: trace clock values in Hz instead of ns
+  hw/arm/raspi: fix cprman base address
+  hw/arm/raspi: add a skeleton implementation of the cprman
+  hw/misc/bcm2835_cprman: add a PLL skeleton implementation
+  hw/misc/bcm2835_cprman: implement PLLs behaviour
+  hw/misc/bcm2835_cprman: add a PLL channel skeleton implementation
+  hw/misc/bcm2835_cprman: implement PLL channels behaviour
+  hw/misc/bcm2835_cprman: add a clock mux skeleton implementation
+  hw/misc/bcm2835_cprman: implement clock mux behaviour
+  hw/misc/bcm2835_cprman: add the DSI0HSCK multiplexer
+  hw/misc/bcm2835_cprman: add sane reset values to the registers
+  hw/char/pl011: add a clock input
+  hw/arm/bcm2835_peripherals: connect the UART clock
+
+ include/hw/arm/bcm2835_peripherals.h       |    5 +-
+ include/hw/arm/raspi_platform.h            |    5 +-
+ include/hw/char/pl011.h                    |    1 +
+ include/hw/clock.h                         |    5 +
+ include/hw/misc/bcm2835_cprman.h           |  209 ++++
+ include/hw/misc/bcm2835_cprman_internals.h | 1018 ++++++++++++++++++++
+ hw/arm/bcm2835_peripherals.c               |   15 +-
+ hw/char/pl011.c                            |   45 +
+ hw/core/clock.c                            |    6 +-
+ hw/misc/bcm2835_cprman.c                   |  810 ++++++++++++++++
+ hw/char/trace-events                       |    1 +
+ hw/core/trace-events                       |    4 +-
+ hw/misc/meson.build                        |    1 +
+ hw/misc/trace-events                       |    5 +
+ 14 files changed, 2118 insertions(+), 12 deletions(-)
+ create mode 100644 include/hw/misc/bcm2835_cprman.h
+ create mode 100644 include/hw/misc/bcm2835_cprman_internals.h
+ create mode 100644 hw/misc/bcm2835_cprman.c
+
+-- 
+2.28.0
+

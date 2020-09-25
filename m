@@ -1,130 +1,295 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1183804lfq;
-        Fri, 25 Sep 2020 04:57:04 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwXBOLyEI8+l/zy3fzr72OztRYM/BWWegjKMw28s1WKeIrLh7jzUZXiSt36/PKEExmWlF6G
-X-Received: by 2002:a5b:dd2:: with SMTP id t18mr4766300ybr.163.1601035024021;
-        Fri, 25 Sep 2020 04:57:04 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1235546lfq;
+        Fri, 25 Sep 2020 06:03:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhX/YrpOcp2zW0sVa93Yi3tefPAHoYbS75BB1uhheMw7Hz3STEogorzI2hq+co2NAMtyy3
+X-Received: by 2002:a25:ac58:: with SMTP id r24mr4733436ybd.3.1601038982345;
+        Fri, 25 Sep 2020 06:03:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601038982; cv=none;
+        d=google.com; s=arc-20160816;
+        b=n234duOjHhtsDeM9gpG+h8OzVV3j5i2qx8uo2oQLehZjXqIYmh07dZUgMdFmwCzmMN
+         fsdTrDd1o/R2WVpBiM0tB0y/bYZKazHTDOulTBNuVsMyA24hwOGyt9vTSsg3KpMp4BCK
+         cpLIhd63z+UHyMsZ8xg9/pXPPDsce1uTXBOWwxD0bAS2Q/RIRAsoCmol/lrjFyz/I+S+
+         WxV4+jSSdL46mfNf8wQvEQfKS2eUC7uz2QH+zT0rLnZ6F5abykgxFBCn4oEkkZLw01B8
+         i1fnFSySqw8YeMMsos4/y9SXZBk4Us1LTAz52/lR2pM1nshOa1OsGyqY6exADkhdAtYd
+         dcQA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=9tA6yjGk5Zyqmh7GnRqcUOboSgoRbkNP2z9bloFWbUE=;
+        b=ErIqNZicA5MVh7HVTm/ezZLqrDH/rRPyO8PvLmBFLf8lOb9ygrEocLI1353sIWjLPV
+         yGoZ5XzZ/0SZax9QRFSa9D1TJnHpMqiOybBMQbAZKROJmNjA9Bqhw9/u5fl+Od8dr3GM
+         mzSG0OdgKYwnPxZedAto2afcYEsGRz+PGcQvtK90D90ucaWi16e7CQJzJ/hQIyOUva3u
+         gvDcRZxTGiwL652tvfQAIOBZOVSWAdwWPA1d0/Wy1gr0vY24feOjoOiMUr0ixac7sZZ+
+         Wa6r/A+/N6grau0IIU8HEa+Ppw3d+W+CsOP0Tybkfv/LBWzVmdKlPsrI8t3MmdXY6jWZ
+         QkVg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="flLiE/u6";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p12si2853385ybl.42.2020.09.25.04.57.03
+        by mx.google.com with ESMTPS id o11si2876610ybk.16.2020.09.25.06.03.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 25 Sep 2020 04:57:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 25 Sep 2020 06:03:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59598 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="flLiE/u6";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38608 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kLmLX-0006nS-Bz
-	for alex.bennee@linaro.org; Fri, 25 Sep 2020 07:57:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35498)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kLnNN-0004D9-G8
+	for alex.bennee@linaro.org; Fri, 25 Sep 2020 09:03:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49626)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kLmKm-0006LF-QF; Fri, 25 Sep 2020 07:56:16 -0400
-Resent-Date: Fri, 25 Sep 2020 07:56:16 -0400
-Resent-Message-Id: <E1kLmKm-0006LF-QF@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21732)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kLmKk-0002pc-Bh; Fri, 25 Sep 2020 07:56:16 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1601034965; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=JsrlPWDoF0gqxtWXAUvnMTQFkt0Ih1fWgBZxR9Mq13ZXema7Ze3VYfy0hO7F8jqggW/egcXIaaHz62Gyj75rriz3bqSsYrXq0zPH8of+LnzYCr4BrIbtzhQYGQO4CaD8b7GnZsQL+GEcHwKdklmzUow04st34f9NJY2kDl28kzM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1601034965;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=e47laVpHD7tFVTzPUrqKJVN+kYY3gOmkPZ81kd4q4Rk=; 
- b=IvcsdG5FSCeY8U1PR4WQYNFYAoBT2W6GJkcQiU4oKipiG8m0v/D9Fur1geNSejd+lXdwOHTlZTo+PlYC1NP/Dc0LscR9jmRCn7QGVev3dTrxsNARRj6bwBAnOZUYY6o9ugypS7lrw4VRIvsQQJMto7eemuGDQlJjzin/ShjpyAI=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1601034962850746.3295282995545;
- Fri, 25 Sep 2020 04:56:02 -0700 (PDT)
-Subject: Re: [PATCH 00/14] raspi: add the bcm2835 cprman clock manager
-Message-ID: <160103496128.12744.12223263817740860098@66eaa9a8a123>
-In-Reply-To: <20200925101731.2159827-1-luc@lmichel.fr>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kLnHy-0007Km-5W; Fri, 25 Sep 2020 08:57:26 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:56285)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kLnHv-00025b-Qr; Fri, 25 Sep 2020 08:57:25 -0400
+Received: by mail-wm1-x343.google.com with SMTP id d4so2923606wmd.5;
+ Fri, 25 Sep 2020 05:57:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=9tA6yjGk5Zyqmh7GnRqcUOboSgoRbkNP2z9bloFWbUE=;
+ b=flLiE/u62ukpU4GMj+Jo43z5UyeCXcR+xzzLD/3kkII8DDt1rThoq6G6JxjbCff8Mw
+ YsZfaYD8ajG5Oor45F6s6Zd+4WJqSuYm5ajp3b8WTLW7pTGB4yXu+eQSTUDPbGPKDqTm
+ cXge8ezPbYF3hVH9MW75UaULjT8oMJlOxxtFGBNemvSt9Q/cDnmPCFAsuEEJgZqVDVY/
+ 2VVd3Kg74KBk6t/z3L+WfCg34VHi/MHgoAq6r5zZTWYHxlpZ1VZaBlHdSzrW9IU1UBI2
+ h44OVi3Ypxstob+se4GttSZEzfy3ZxkvKRWXhslEh8d6Jzj1nYZ9mxVGfv8oqVkyKaug
+ 9gNg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=9tA6yjGk5Zyqmh7GnRqcUOboSgoRbkNP2z9bloFWbUE=;
+ b=lY2ra2nF/0dDZyuDcdEbj5r/JH+7m8uBAqgATuAU44Cd7ClTxIkVDitCAvjDkgrpYM
+ xS6o5gFn0PkBPqSQ62HKHRERXLsxcmDNttTwHeu9pA8GsLwrInXodfwSxAYxK9rQskgf
+ J/xhXZ2tG8RAjoHco492JI7aGHRM8adY/qvgjG+5w8WNowEMRRm2lQFG2XFHlAbNdyQr
+ gpM/AkMzzcsrToe1lHwYA/Oko8pliCLcJBqvW7HYwfGPrdWol3CumWsZYk+qoqRnNrE3
+ q1EHmawJybBvTrJAFT4hFGrnnvDJXu++0v6aMPx7TYQ0qOuIA2/zfndTtRwdECascYe+
+ aYOA==
+X-Gm-Message-State: AOAM531OtDp3MVS7I3X07TauB7zhCm172KVdPQbMB6LoeXu1mOfQ8QRg
+ O8aVfGZREDH29DhVvJuh48M=
+X-Received: by 2002:a1c:dd45:: with SMTP id u66mr3057967wmg.117.1601038642216; 
+ Fri, 25 Sep 2020 05:57:22 -0700 (PDT)
+Received: from [192.168.1.34] (234.red-88-10-103.dynamicip.rima-tde.net.
+ [88.10.103.234])
+ by smtp.gmail.com with ESMTPSA id f6sm2883705wro.5.2020.09.25.05.57.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Sep 2020 05:57:21 -0700 (PDT)
+Subject: Re: [PATCH v2 4/5] hw/timer/bcm2835: Support the timer COMPARE
+ registers
+To: Luc Michel <luc.michel@greensocs.com>, qemu-devel@nongnu.org
+References: <20200921035257.434532-1-f4bug@amsat.org>
+ <20200921035257.434532-5-f4bug@amsat.org>
+ <49f67ca8-7a4e-c698-3deb-e53ee942cf06@greensocs.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <4f5e4628-1866-267b-a073-38ddaf763433@amsat.org>
+Date: Fri, 25 Sep 2020 14:57:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: luc@lmichel.fr
-Date: Fri, 25 Sep 2020 04:56:02 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/25 07:56:12
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <49f67ca8-7a4e-c698-3deb-e53ee942cf06@greensocs.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.238,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, luc@lmichel.fr, qemu-devel@nongnu.org,
- Andrew.Baumann@microsoft.com, f4bug@amsat.org, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k7wRfCNR/nGu
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Paul Zimmerman <pauldzim@gmail.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: fY1YAECMLCkf
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkyNTEwMTczMS4yMTU5
-ODI3LTEtbHVjQGxtaWNoZWwuZnIvCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRoZSBkb2Nr
-ZXItcXVpY2tAY2VudG9zNyBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBjb21t
-YW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFsbGVk
-LCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NSSVBU
-IEJFR0lOID09PQojIS9iaW4vYmFzaAptYWtlIGRvY2tlci1pbWFnZS1jZW50b3M3IFY9MSBORVRX
-T1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LXF1aWNrQGNlbnRvczcgU0hPV19FTlY9MSBKPTE0
-IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKQyBsaW5rZXIgZm9yIHRoZSBob3N0
-IG1hY2hpbmU6IGNjIGxkLmJmZCAyLjI3LTQzCkhvc3QgbWFjaGluZSBjcHUgZmFtaWx5OiB4ODZf
-NjQKSG9zdCBtYWNoaW5lIGNwdTogeDg2XzY0Ci4uL3NyYy9tZXNvbi5idWlsZDoxMDogV0FSTklO
-RzogTW9kdWxlIHVuc3RhYmxlLWtleXZhbCBoYXMgbm8gYmFja3dhcmRzIG9yIGZvcndhcmRzIGNv
-bXBhdGliaWxpdHkgYW5kIG1pZ2h0IG5vdCBleGlzdCBpbiBmdXR1cmUgcmVsZWFzZXMuClByb2dy
-YW0gc2ggZm91bmQ6IFlFUwpQcm9ncmFtIHB5dGhvbjMgZm91bmQ6IFlFUyAoL3Vzci9iaW4vcHl0
-aG9uMykKQ29uZmlndXJpbmcgbmluamF0b29sIHVzaW5nIGNvbmZpZ3VyYXRpb24KLS0tClJ1bm5p
-bmcgdGVzdCBxdGVzdC1hYXJjaDY0OiBxbXAtdGVzdApCcm9rZW4gcGlwZQouLi9zcmMvdGVzdHMv
-cXRlc3QvbGlicXRlc3QuYzoxNzU6IGtpbGxfcWVtdSgpIGRldGVjdGVkIFFFTVUgZGVhdGggZnJv
-bSBzaWduYWwgMTEgKFNlZ21lbnRhdGlvbiBmYXVsdCkgKGNvcmUgZHVtcGVkKQpFUlJPUiBxdGVz
-dC1hYXJjaDY0OiBkZXZpY2UtaW50cm9zcGVjdC10ZXN0IC0gdG9vIGZldyB0ZXN0cyBydW4gKGV4
-cGVjdGVkIDYsIGdvdCA1KQpDb3VsZCBub3QgYWNjZXNzIEtWTSBrZXJuZWwgbW9kdWxlOiBObyBz
-dWNoIGZpbGUgb3IgZGlyZWN0b3J5CnFlbXUtc3lzdGVtLXg4Nl82NDogLWFjY2VsIGt2bTogZmFp
-bGVkIHRvIGluaXRpYWxpemUga3ZtOiBObyBzdWNoIGZpbGUgb3IgZGlyZWN0b3J5CnFlbXUtc3lz
-dGVtLXg4Nl82NDogZmFsbGluZyBiYWNrIHRvIHRjZwptYWtlOiAqKiogW3J1bi10ZXN0LTE2Nl0g
-RXJyb3IgMQptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgoKTG9va2lu
-ZyBmb3IgZXhwZWN0ZWQgZmlsZSAndGVzdHMvZGF0YS9hY3BpL3EzNS9GQUNQLmlwbWlidCcKLS0t
-CiAgICByYWlzZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpzdWJwcm9jZXNzLkNh
-bGxlZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2RvY2tlcicsICdydW4n
-LCAnLS1ybScsICctLWxhYmVsJywgJ2NvbS5xZW11Lmluc3RhbmNlLnV1aWQ9NGU1NDBlOGI2MmY3
-NDZiMDgyYWQ0NzY5M2UyNTIxZmEnLCAnLXUnLCAnMTAwMScsICctLXNlY3VyaXR5LW9wdCcsICdz
-ZWNjb21wPXVuY29uZmluZWQnLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1lJywgJ0VYVFJBX0NP
-TkZJR1VSRV9PUFRTPScsICctZScsICdWPScsICctZScsICdKPTE0JywgJy1lJywgJ0RFQlVHPScs
-ICctZScsICdTSE9XX0VOVj0xJywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90bXAvY2NhY2hlJywg
-Jy12JywgJy9ob21lL3BhdGNoZXcvLmNhY2hlL3FlbXUtZG9ja2VyLWNjYWNoZTovdmFyL3RtcC9j
-Y2FjaGU6eicsICctdicsICcvdmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtZDR1ZXM1eV8vc3Jj
-L2RvY2tlci1zcmMuMjAyMC0wOS0yNS0wNy40Ny40OC4xODEyNjovdmFyL3RtcC9xZW11Onoscm8n
-LCAncWVtdS9jZW50b3M3JywgJy92YXIvdG1wL3FlbXUvcnVuJywgJ3Rlc3QtcXVpY2snXScgcmV0
-dXJuZWQgbm9uLXplcm8gZXhpdCBzdGF0dXMgMi4KZmlsdGVyPS0tZmlsdGVyPWxhYmVsPWNvbS5x
-ZW11Lmluc3RhbmNlLnV1aWQ9NGU1NDBlOGI2MmY3NDZiMDgyYWQ0NzY5M2UyNTIxZmEKbWFrZVsx
-XTogKioqIFtkb2NrZXItcnVuXSBFcnJvciAxCm1ha2VbMV06IExlYXZpbmcgZGlyZWN0b3J5IGAv
-dmFyL3RtcC9wYXRjaGV3LXRlc3Rlci10bXAtZDR1ZXM1eV8vc3JjJwptYWtlOiAqKiogW2RvY2tl
-ci1ydW4tdGVzdC1xdWlja0BjZW50b3M3XSBFcnJvciAyCgpyZWFsICAgIDhtMTMuMTMzcwp1c2Vy
-ICAgIDBtMjAuNTgwcwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNo
-ZXcub3JnL2xvZ3MvMjAyMDA5MjUxMDE3MzEuMjE1OTgyNy0xLWx1Y0BsbWljaGVsLmZyL3Rlc3Rp
-bmcuZG9ja2VyLXF1aWNrQGNlbnRvczcvP3R5cGU9bWVzc2FnZS4KLS0tCkVtYWlsIGdlbmVyYXRl
-ZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hldy5vcmcvXS4KUGxlYXNl
-IHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhhdC5jb20=
+On 9/21/20 9:39 PM, Luc Michel wrote:
+> Hi Phil,
+> 
+> On 9/21/20 5:52 AM, Philippe Mathieu-Daudé wrote:
+>> This peripheral has 1 free-running timer and 4 compare registers.
+>>
+>> Only the free-running timer is implemented. Add support the
+>> COMPARE registers (each register is wired to an IRQ).
+>>
+>> Reference: "BCM2835 ARM Peripherals" datasheet [*]
+>>              chapter 12 "System Timer":
+>>
+>>    The System Timer peripheral provides four 32-bit timer channels
+>>    and a single 64-bit free running counter. Each channel has an
+>>    output compare register, which is compared against the 32 least
+>>    significant bits of the free running counter values. When the
+>>    two values match, the system timer peripheral generates a signal
+>>    to indicate a match for the appropriate channel. The match signal
+>>    is then fed into the interrupt controller.
+>>
+>> This peripheral is used since Linux 3.7, commit ee4af5696720
+>> ("ARM: bcm2835: add system timer").
+>>
+>> [*]
+>> https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
+>>
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   include/hw/timer/bcm2835_systmr.h | 11 +++++++--
+>>   hw/timer/bcm2835_systmr.c         | 41 +++++++++++++++++++------------
+>>   hw/timer/trace-events             |  4 ++-
+>>   3 files changed, 37 insertions(+), 19 deletions(-)
+>>
+>> diff --git a/include/hw/timer/bcm2835_systmr.h
+>> b/include/hw/timer/bcm2835_systmr.h
+>> index e0db9e9e12b..17fdd9d67b2 100644
+>> --- a/include/hw/timer/bcm2835_systmr.h
+>> +++ b/include/hw/timer/bcm2835_systmr.h
+>> @@ -11,6 +11,7 @@
+>>     #include "hw/sysbus.h"
+>>   #include "hw/irq.h"
+>> +#include "qemu/timer.h"
+>>   #include "qom/object.h"
+>>     #define TYPE_BCM2835_SYSTIMER "bcm2835-sys-timer"
+>> @@ -20,18 +21,24 @@ DECLARE_INSTANCE_CHECKER(BCM2835SystemTimerState,
+>> BCM2835_SYSTIMER,
+>>     #define BCM2835_SYSTIMER_COUNT 4
+>>   +typedef struct {
+>> +    unsigned id;
+>> +    QEMUTimer timer;
+>> +    qemu_irq irq;
+>> +    BCM2835SystemTimerState *state;
+>> +} BCM2835SystemTimerCompare;
+>> +
+>>   struct BCM2835SystemTimerState {
+>>       /*< private >*/
+>>       SysBusDevice parent_obj;
+>>         /*< public >*/
+>>       MemoryRegion iomem;
+>> -    qemu_irq irq;
+>> -
+>>       struct {
+>>           uint32_t ctrl_status;
+>>           uint32_t compare[BCM2835_SYSTIMER_COUNT];
+>>       } reg;
+>> +    BCM2835SystemTimerCompare tmr[BCM2835_SYSTIMER_COUNT];
+>>   };
+>>     #endif
+>> diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
+>> index b234e83824f..43e644f5e45 100644
+>> --- a/hw/timer/bcm2835_systmr.c
+>> +++ b/hw/timer/bcm2835_systmr.c
+>> @@ -28,20 +28,13 @@ REG32(COMPARE1,     0x10)
+>>   REG32(COMPARE2,     0x14)
+>>   REG32(COMPARE3,     0x18)
+>>   -static void bcm2835_systmr_update_irq(BCM2835SystemTimerState *s)
+>> +static void bcm2835_systmr_timer_expire(void *opaque)
+>>   {
+>> -    bool enable = !!s->reg.ctrl_status;
+>> +    BCM2835SystemTimerCompare *tmr = opaque;
+>>   -    trace_bcm2835_systmr_irq(enable);
+>> -    qemu_set_irq(s->irq, enable);
+>> -}
+>> -
+>> -static void bcm2835_systmr_update_compare(BCM2835SystemTimerState *s,
+>> -                                          unsigned timer_index)
+>> -{
+>> -    /* TODO fow now, since neither Linux nor U-boot use these timers. */
+>> -    qemu_log_mask(LOG_UNIMP, "COMPARE register %u not implemented\n",
+>> -                  timer_index);
+>> +    trace_bcm2835_systmr_timer_expired(tmr->id);
+>> +    tmr->state->reg.ctrl_status |= 1 << tmr->id;
+>> +    qemu_set_irq(tmr->irq, 1);
+>>   }
+>>     static uint64_t bcm2835_systmr_read(void *opaque, hwaddr offset,
+>> @@ -78,16 +71,25 @@ static void bcm2835_systmr_write(void *opaque,
+>> hwaddr offset,
+>>                                    uint64_t value, unsigned size)
+>>   {
+>>       BCM2835SystemTimerState *s = BCM2835_SYSTIMER(opaque);
+>> +    int index;
+>>         trace_bcm2835_systmr_write(offset, value);
+>>       switch (offset) {
+>>       case A_CTRL_STATUS:
+>>           s->reg.ctrl_status &= ~value; /* Ack */
+>> -        bcm2835_systmr_update_irq(s);
+>> +        for (index = 0; index < ARRAY_SIZE(s->tmr); index++) {
+>> +            if (extract32(value, index, 1)) {
+>> +                trace_bcm2835_systmr_irq_ack(index);
+>> +                qemu_set_irq(s->tmr[index].irq, 0);
+>> +            }
+>> +        }
+>>           break;
+>>       case A_COMPARE0 ... A_COMPARE3:
+>> -        s->reg.compare[(offset - A_COMPARE0) >> 2] = value;
+>> -        bcm2835_systmr_update_compare(s, (offset - A_COMPARE0) >> 2);
+>> +        index = (offset - A_COMPARE0) >> 2;
+>> +        s->reg.compare[index] = value;
+>> +        timer_mod(&s->tmr[index].timer, value);
+>
+> I think "value" is wrong here. timer_mod takes an absolute time value.
+> Here "value" is a 32 bits truncated view of "current_time + some_time".
+
+Yes, you are correct. The reduced datasheet is not easy to understand.
+
+>> +        trace_bcm2835_systmr_run(index,
+>> +                                 value -
+>> qemu_clock_get_us(QEMU_CLOCK_VIRTUAL));
+> Here also.
+> 
+> I think you can do something like (untested):
+>            {
+>                uint64_t now, triggers_at;
+>                uint32_t clo, triggers_in;
+> 
+>                index = (offset - A_COMPARE0) >> 2;
+>                s->reg.compare[index] = value;
+> 
+>                /* get the current clock and its truncated 32 bits view */
+>                now = qemu_clock_get_us(QEMU_CLOCK_VIRTUAL);
+>                clo = now;
+> 
+>                /* will overflow in case clo > value. We still get the
+> correct value on 32 bits (which is "UINT32_MAX - (clo - value)") */
+>                triggers_in = value - clo;
+> 
+>                /* timer_mod takes an absolute time value, go back to 64
+> bits values */
+>                triggers_at = now + triggers_in;
+>                timer_mod(&s->tmr[index].timer, triggers_at);
+> 
+>                trace_bcm2835_systmr_run(index, triggers_in);
+
+This matches the datasheet description, thanks!
+
+>            }
+> 
+> 
+> The rest is OK to me.
+> 

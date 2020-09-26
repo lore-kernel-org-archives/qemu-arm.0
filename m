@@ -1,101 +1,100 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2392784lfq;
-        Sat, 26 Sep 2020 14:18:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzZM3J7pFBgEBSNwOYuL7/MjY1HJ2RWSGmyBIAfN9tb2+eopi0CdwCUdAX0y6qk7PMYIfyN
-X-Received: by 2002:a25:bb01:: with SMTP id z1mr7435898ybg.387.1601155088297;
-        Sat, 26 Sep 2020 14:18:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601155088; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2397036lfq;
+        Sat, 26 Sep 2020 14:26:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwWO7FfogDRCIEqVZMhUzppCHSyA17/PbdkBG2hPJUmzPTVdCinfALntCTB/Tl6j+XD6lmS
+X-Received: by 2002:a25:3a45:: with SMTP id h66mr6739573yba.509.1601155606860;
+        Sat, 26 Sep 2020 14:26:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601155606; cv=none;
         d=google.com; s=arc-20160816;
-        b=V1jsoQANi0zHwmBSSe4LK9ETq/2dU19eBy72JkgIfZv/6WWUG+zu6ZjQ7uAJm0JXaa
-         EwWPja3VgM4mdPiwAF+oO1jm1E3cNVyGf79H92GcO0iJI5hoN3ij2cWKkhOx40qeR8XL
-         hvhFstWNmvERoh7FT3zwZEJC3qOfDsa9chs3PVNcJkHZeF+anpH6hLvKBP+uZp/6DSQf
-         gC2SoJPtG5OX6Du/khwZ0/Px1WuS32e0yONWRRY1GT+HxOdPOfzUQvVHWyay1sxpJX1O
-         DK5xrmRTcwWYbrP7dXl6QHJeiF6Ftij03EDO+iF1v1zmXmWrwuHTI5pSKx1EmqtOR2ch
-         Wz6A==
+        b=s/S7+tAhDh0xNtKLEEjCHhczKxxNDNVzJqXYqfO3l5GDWn9VYKkuv7iBWmWpZ8SUPb
+         5I40DRi+Va9KRcvJ9dYggJSURH/IE7No6R+qHrA64WHFP0rD15LNRNWYXz6wFlLytWEi
+         IFxtm6D6BIhu3Lv3+8dwI7s9zm7XJLBJYG8QUY2hO1fU2Tptg/UyUc3i5UiGkhvKNyv3
+         BRXqvbOd40LFvuOpHzyVRzMkIj1AR/zaAactM2GJLxPq0kYlPZPBorvg46Xvwyo1OV56
+         gxX7jx2uB57+EVxBGn+np2/qddwhXlLlbBIpCZPLQHe7ByoEDcpWUgNwp/GqH1oGWV3y
+         ejvw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=LDCgahYT6qhYEnEZ+Hh/Kwyp3fo8hXXlAIhHnpEtn5M=;
-        b=e2ZPABS2cvhIk0zJIZO0I0THqOxiwsamtycgxojFQmkdocua+bXkukX/FRleXB/4zP
-         mU6HsnWzrwWvxq9gHoCzbHUTs3NbBTfOTGwJQxJPrJgNRaKlStgvWm5b8y5vk4JPWY3f
-         MNTswHXSqf95CNBgJoAVWma3QXjc9TzD8iO0/ybQnflL1jKqcro4kFs/ug9dlqUopK4Z
-         nC3MLF0grWbZM6RxsJFb0MsJUY61ceqn6FifHWuyOFoLMd4SZCOSrUWVgI4QAF3d8IyJ
-         +brcubnO+6J7zkX/EuVQJdnFsOgDt85gj1QUqzWM9c7ijhqQntKfDAG29TTCjdw0167Y
-         Tshw==
+        bh=VyGBqm4CHFJAxG81xmM1b6SMNKSAXm/U5XvX5WLTRNo=;
+        b=qZ7jv30KXPDBOsRZb00PuWsTm27525tv31vAPMgEcdyo6LZ9W6tf1kCrzkcsorBJls
+         UDAIrbJEDUgCk/VLoMk3XWfRtD5Q3HF1jw6a0WLx5xt29SGMUsOYhs02bt1fRzk8r/pE
+         nIC0SDgy1o4bnsjJMRIZ9wPsRMFQMTOFHa2LPNLCEv5ZaBnqCvfjWoa4zuMx4c0HlDst
+         76ejYAc2PqaZCCUOwD4pnYnhzW5KSZRXmYkNmdLo2Ump5mPqsost5TEd1srRdw+RGrTU
+         e/YP4RQ6LQ2ZE1/oUrK8BQdUjYBj8eLLIDKe5kGvCzzj3ZyodNY8tIhhH/3K0xzG7115
+         Zclg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=utk8yCMX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=am7DrqXD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v15si7010437ybq.97.2020.09.26.14.18.08
+        by mx.google.com with ESMTPS id w17si7296783ybs.243.2020.09.26.14.26.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 26 Sep 2020 14:18:08 -0700 (PDT)
+        Sat, 26 Sep 2020 14:26:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=utk8yCMX;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=am7DrqXD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:40248 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45372 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kMHa3-0003MD-MJ
-	for alex.bennee@linaro.org; Sat, 26 Sep 2020 17:18:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57594)
+	id 1kMHiQ-0005uG-8h
+	for alex.bennee@linaro.org; Sat, 26 Sep 2020 17:26:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58564)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kMHZw-0003M2-TL; Sat, 26 Sep 2020 17:18:00 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:34470)
+ id 1kMHhw-0005t8-Eg; Sat, 26 Sep 2020 17:26:16 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:32870)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kMHZu-0006Nz-HX; Sat, 26 Sep 2020 17:18:00 -0400
-Received: by mail-wr1-x441.google.com with SMTP id t10so7669238wrv.1;
- Sat, 26 Sep 2020 14:17:57 -0700 (PDT)
+ id 1kMHhu-0007Bu-Gv; Sat, 26 Sep 2020 17:26:16 -0400
+Received: by mail-wr1-x441.google.com with SMTP id m6so7681873wrn.0;
+ Sat, 26 Sep 2020 14:26:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=LDCgahYT6qhYEnEZ+Hh/Kwyp3fo8hXXlAIhHnpEtn5M=;
- b=utk8yCMXNAUxEgib1rs03y4rdha3idIj8QqDY8KHonE9m66cF+2biah8Jg51sQBYd0
- uoe+Dl8hTMwLJcVlvA0+zMkQ+lgl5ZhzUrjbYT9kgbQXJWqW9JL7f8XSOW8cGrF/X9vh
- qvKgGcZX1oIPEfR4+fdaXg9nKcgUmPc7u16ZaClFhILemq10aAJVEIvSwZQpugg5JVQ2
- tT5VVZFejlqkjlBxDFm9iSxllKDlo1/po48yeOzE22xm4XcrDhZbf5KQB9+y1SftX8+L
- UUDZYB4gwYVXvSFZPxfCVIpLtJe+vVoc8qKElzCPfESlF+9txw7d5Q+IVZ3ZlHptuDzd
- EEVw==
+ bh=VyGBqm4CHFJAxG81xmM1b6SMNKSAXm/U5XvX5WLTRNo=;
+ b=am7DrqXDZuWnkxGjV05k06n60aurT+MMeSNn1a+1p0ispURywaG2yFG9EykKvmIb1N
+ UYepu/mvdT7RX7+joxtwuHBqcFfjXJRX5mHiUtCTFRDmiwkVHWOKg88ELPMwz3roOAZk
+ cRfFOElW79JL23Eg76YRU7m4y5Do+NRHMXw7Zfhow/aCfMeld8FDX8rukERD+KkzSTwm
+ 8ZVJ5Bvg+sqXg3mxMgEfaGP9wD7r6ue2qYknlpVRXprtcplvqPiZnrJ1NvLxa0eMfHkW
+ smAT8yfl7ap9LPMFzkWPC9iXWRc/IevB3liPCf0JClOGUjS42EDB7PKYs5T1shKQLYQd
+ 163A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=LDCgahYT6qhYEnEZ+Hh/Kwyp3fo8hXXlAIhHnpEtn5M=;
- b=k4cxg3jnr1gvrQcGOOKeik5emc1kSfnFbzJbFZnZkSkHQ19vEsyErr2ugoQ7WKVMNE
- oPI4Yyac89WPkRSPy72yj21tVlYXC+alUIs/gThxR9Ap1IKMsC1tgXXTK2aJZ2PRv0WM
- p7YDinO0tPUYdlguaxGyb4rAVLGl8IacIaOvLAv2s7p8u89o2J5lq7hGbWkoHdwMHzKm
- Wmt6lljZQMeL0+xrzl51iKuT5vtkEkexsQTXLQktlqRlFvj6wEUhDP6SYMg/j1yplJYg
- z/e2VUougNQuw4CZyGjQ0aaIB0YG24fQf2Ejuw1biFvOb5G+308naOtw3UhP1CPmdWsn
- l2Bw==
-X-Gm-Message-State: AOAM530X/53fpFLKtPze9ivz+lxO1blb4M23bsdfUqb5OkL5k5raqyQT
- o5X/ZpLcJXnjDEMmeXC1lnY=
-X-Received: by 2002:adf:8b48:: with SMTP id v8mr10991302wra.21.1601155076481; 
- Sat, 26 Sep 2020 14:17:56 -0700 (PDT)
+ bh=VyGBqm4CHFJAxG81xmM1b6SMNKSAXm/U5XvX5WLTRNo=;
+ b=sGIlxLzA5l2aVldQj3eb2k6XEZwAKA+3hllUUsNANyHW9hECoe2B5h3BExUCcqXWJo
+ /ZL9NOWKN5ApB+yCIgjf6B3RECe0UWH8ceapF4l7xnnsxRNCgS8nfaK2hSBe2N11DxC+
+ wsG9s+UNnk23Fy5/JtJvo+FxBh9zk7aic5bTNBmuhGlNKA1EpjAJa69Dj/B4UW1lrhWt
+ hqO6TCk4t6Y7IUDXrj+WS+IyxEoF+9yQgSbj+FN9bLzeJEdzZc9NLYGUbi/tQs8Fprq6
+ YFMj5yAmfaRUb2IFCcZYqHehzu2ahD6anRkvq3ZN8QybBupHpTFLfuH8W72nnR0eH0ib
+ Zosw==
+X-Gm-Message-State: AOAM532SbzijFeKjCSQP3YIFwMJnIiJ277tPfMolHemiJ7vo+jYvs31q
+ g07Mwqc09TXRRu1iidcuFFE=
+X-Received: by 2002:adf:e690:: with SMTP id r16mr10863848wrm.15.1601155572285; 
+ Sat, 26 Sep 2020 14:26:12 -0700 (PDT)
 Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
  [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id k6sm3568099wmf.30.2020.09.26.14.17.55
+ by smtp.gmail.com with ESMTPSA id g14sm7720332wrv.25.2020.09.26.14.26.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 26 Sep 2020 14:17:55 -0700 (PDT)
-Subject: Re: [PATCH 05/14] hw/misc/bcm2835_cprman: add a PLL skeleton
- implementation
+ Sat, 26 Sep 2020 14:26:11 -0700 (PDT)
+Subject: Re: [PATCH 06/14] hw/misc/bcm2835_cprman: implement PLLs behaviour
 To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
 References: <20200925101731.2159827-1-luc@lmichel.fr>
- <20200925101731.2159827-6-luc@lmichel.fr>
+ <20200925101731.2159827-7-luc@lmichel.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <086f93ad-dfa3-fa0c-4d96-7b3f71ce3708@amsat.org>
-Date: Sat, 26 Sep 2020 23:17:54 +0200
+Message-ID: <96c1dfff-13ff-cc15-e759-2e8ee794eb22@amsat.org>
+Date: Sat, 26 Sep 2020 23:26:10 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200925101731.2159827-6-luc@lmichel.fr>
+In-Reply-To: <20200925101731.2159827-7-luc@lmichel.fr>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -127,462 +126,158 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: W7jTX3g2xIPB
+X-TUID: NYuZtuyH48JM
 
 On 9/25/20 12:17 PM, Luc Michel wrote:
-> There is 5 PLLs in the cprman, namely PLL A, C, D, H and B. All of them
-> take the xosc clock as input and produce a new clock.
+> The cprman PLLs generate a clock based on a prescaler, a multiplier and
+> a divider. The prescaler doubles the parent (xosc) frequency, then the
+> multiplier/divider are applied. The multiplier has an integer and a
+> fractionnal part.
 
-Typo "There are"?
-
-> 
-> This commit adds a skeleton implementation for the PLLs as sub-devices
-> of the cprman. The PLLs are instantiated and connected internally to the
-> main oscillator.
-
-"CPRMAN".
+Typo "fractional".
 
 > 
-> Each PLL has 6 registers : cm, a2w_ctrl, a2w_ana[0,1,2,3], a2w_frac. A
-> write to any of them triggers a call to the (not yet implemented)
-> pll_update function.
+> This commit also implements the cprman CM_LOCK register. This register
+> reports which PLL is currently locked. We consider a PLL has being
+> locked as soon as it is enabled (on real hardware, there is a delay
+> after turning a PLL on, for it to stabilise).
 
-[new line]
+Typo "stabilize".
 
-> If the main oscillator changes frequency, an update
-> is also triggered.
 > 
 > Signed-off-by: Luc Michel <luc@lmichel.fr>
 > ---
->  include/hw/misc/bcm2835_cprman.h           |  29 +++++
->  include/hw/misc/bcm2835_cprman_internals.h | 144 +++++++++++++++++++++
->  hw/misc/bcm2835_cprman.c                   | 108 ++++++++++++++++
->  3 files changed, 281 insertions(+)
+>  include/hw/misc/bcm2835_cprman_internals.h |  8 +++
+>  hw/misc/bcm2835_cprman.c                   | 64 +++++++++++++++++++++-
+>  2 files changed, 71 insertions(+), 1 deletion(-)
 > 
-> diff --git a/include/hw/misc/bcm2835_cprman.h b/include/hw/misc/bcm2835_cprman.h
-> index de9bd01b23..f186ab0104 100644
-> --- a/include/hw/misc/bcm2835_cprman.h
-> +++ b/include/hw/misc/bcm2835_cprman.h
-> @@ -19,17 +19,46 @@ typedef struct BCM2835CprmanState BCM2835CprmanState;
->  DECLARE_INSTANCE_CHECKER(BCM2835CprmanState, CPRMAN,
->                           TYPE_BCM2835_CPRMAN)
->  
->  #define CPRMAN_NUM_REGS (0x2000 / sizeof(uint32_t))
->  
-> +typedef enum CprmanPLL {
-> +    CPRMAN_PLLA = 0,
-> +    CPRMAN_PLLC,
-> +    CPRMAN_PLLD,
-> +    CPRMAN_PLLH,
-> +    CPRMAN_PLLB,
-> +
-> +    CPRMAN_NUM_PLL
-> +} CprmanPLL;
-
-CamelCase "CprmanPll"?
-
-> +
-> +typedef struct CprmanPLLState {
-
-"CprmanPllState"?
-
-> +    /*< private >*/
-> +    DeviceState parent_obj;
-> +
-> +    /*< public >*/
-> +    CprmanPLL id;
-> +
-> +    uint32_t *reg_cm;
-> +    uint32_t *reg_a2w_ctrl;
-> +    uint32_t *reg_a2w_ana;
-> +    uint32_t prediv_mask; /* prediv bit in ana[1] */
-> +    uint32_t *reg_a2w_frac;
-> +
-> +    Clock *xosc_in;
-> +    Clock *out;
-> +} CprmanPLLState;
-> +
->  struct BCM2835CprmanState {
->      /*< private >*/
->      SysBusDevice parent_obj;
->  
->      /*< public >*/
->      MemoryRegion iomem;
->  
-> +    CprmanPLLState plls[CPRMAN_NUM_PLL];
-> +
->      uint32_t regs[CPRMAN_NUM_REGS];
->      uint32_t xosc_freq;
->  
->      Clock *xosc;
->  };
 > diff --git a/include/hw/misc/bcm2835_cprman_internals.h b/include/hw/misc/bcm2835_cprman_internals.h
-> index 6a10b60930..5cfa849492 100644
+> index 5cfa849492..22a2500ab0 100644
 > --- a/include/hw/misc/bcm2835_cprman_internals.h
 > +++ b/include/hw/misc/bcm2835_cprman_internals.h
-> @@ -10,15 +10,159 @@
->  #define HW_MISC_CPRMAN_INTERNALS_H
+> @@ -98,10 +98,18 @@ REG32(A2W_PLLA_FRAC, 0x1200)
+>  REG32(A2W_PLLC_FRAC, 0x1220)
+>  REG32(A2W_PLLD_FRAC, 0x1240)
+>  REG32(A2W_PLLH_FRAC, 0x1260)
+>  REG32(A2W_PLLB_FRAC, 0x12e0)
 >  
->  #include "hw/registerfields.h"
->  #include "hw/misc/bcm2835_cprman.h"
->  
-> +#define TYPE_CPRMAN_PLL "bcm2835-cprman-pll"
-> +
-> +DECLARE_INSTANCE_CHECKER(CprmanPLLState, CPRMAN_PLL,
-> +                         TYPE_CPRMAN_PLL)
-> +
->  /* Register map */
->  
-> +/* PLLs */
-> +REG32(CM_PLLA, 0x104)
-> +    FIELD(CM_PLLA, LOADDSI0, 0, 1)
-> +    FIELD(CM_PLLA, HOLDDSI0, 1, 1)
-> +    FIELD(CM_PLLA, LOADCCP2, 2, 1)
-> +    FIELD(CM_PLLA, HOLDCCP2, 3, 1)
-> +    FIELD(CM_PLLA, LOADCORE, 4, 1)
-> +    FIELD(CM_PLLA, HOLDCORE, 5, 1)
-> +    FIELD(CM_PLLA, LOADPER, 6, 1)
-> +    FIELD(CM_PLLA, HOLDPER, 7, 1)
-> +    FIELD(CM_PLLx, ANARST, 8, 1)
-> +REG32(CM_PLLC, 0x108)
-> +    FIELD(CM_PLLC, LOADCORE0, 0, 1)
-> +    FIELD(CM_PLLC, HOLDCORE0, 1, 1)
-> +    FIELD(CM_PLLC, LOADCORE1, 2, 1)
-> +    FIELD(CM_PLLC, HOLDCORE1, 3, 1)
-> +    FIELD(CM_PLLC, LOADCORE2, 4, 1)
-> +    FIELD(CM_PLLC, HOLDCORE2, 5, 1)
-> +    FIELD(CM_PLLC, LOADPER, 6, 1)
-> +    FIELD(CM_PLLC, HOLDPER, 7, 1)
-> +REG32(CM_PLLD, 0x10c)
-> +    FIELD(CM_PLLD, LOADDSI0, 0, 1)
-> +    FIELD(CM_PLLD, HOLDDSI0, 1, 1)
-> +    FIELD(CM_PLLD, LOADDSI1, 2, 1)
-> +    FIELD(CM_PLLD, HOLDDSI1, 3, 1)
-> +    FIELD(CM_PLLD, LOADCORE, 4, 1)
-> +    FIELD(CM_PLLD, HOLDCORE, 5, 1)
-> +    FIELD(CM_PLLD, LOADPER, 6, 1)
-> +    FIELD(CM_PLLD, HOLDPER, 7, 1)
-> +REG32(CM_PLLH, 0x110)
-> +    FIELD(CM_PLLH, LOADPIX, 0, 1)
-> +    FIELD(CM_PLLH, LOADAUX, 1, 1)
-> +    FIELD(CM_PLLH, LOADRCAL, 2, 1)
-> +REG32(CM_PLLB, 0x170)
-> +    FIELD(CM_PLLB, LOADARM, 0, 1)
-> +    FIELD(CM_PLLB, HOLDARM, 1, 1)
-> +
-> +REG32(A2W_PLLA_CTRL, 0x1100)
-> +    FIELD(A2W_PLLx_CTRL, NDIV, 0, 10)
-> +    FIELD(A2W_PLLx_CTRL, PDIV, 12, 3)
-> +    FIELD(A2W_PLLx_CTRL, PWRDN, 16, 1)
-> +    FIELD(A2W_PLLx_CTRL, PRST_DISABLE, 17, 1)
-> +REG32(A2W_PLLC_CTRL, 0x1120)
-> +REG32(A2W_PLLD_CTRL, 0x1140)
-> +REG32(A2W_PLLH_CTRL, 0x1160)
-> +REG32(A2W_PLLB_CTRL, 0x11e0)
-> +
-> +REG32(A2W_PLLA_ANA0, 0x1010)
-> +REG32(A2W_PLLA_ANA1, 0x1014)
-> +    FIELD(A2W_PLLx_ANA1, FB_PREDIV, 14, 1)
-> +REG32(A2W_PLLA_ANA2, 0x1018)
-> +REG32(A2W_PLLA_ANA3, 0x101c)
-> +
-> +REG32(A2W_PLLC_ANA0, 0x1030)
-> +REG32(A2W_PLLC_ANA1, 0x1034)
-> +REG32(A2W_PLLC_ANA2, 0x1038)
-> +REG32(A2W_PLLC_ANA3, 0x103c)
-> +
-> +REG32(A2W_PLLD_ANA0, 0x1050)
-> +REG32(A2W_PLLD_ANA1, 0x1054)
-> +REG32(A2W_PLLD_ANA2, 0x1058)
-> +REG32(A2W_PLLD_ANA3, 0x105c)
-> +
-> +REG32(A2W_PLLH_ANA0, 0x1070)
-> +REG32(A2W_PLLH_ANA1, 0x1074)
-> +    FIELD(A2W_PLLH_ANA1, FB_PREDIV, 11, 1)
-> +REG32(A2W_PLLH_ANA2, 0x1078)
-> +REG32(A2W_PLLH_ANA3, 0x107c)
-> +
-> +REG32(A2W_PLLB_ANA0, 0x10f0)
-> +REG32(A2W_PLLB_ANA1, 0x10f4)
-> +REG32(A2W_PLLB_ANA2, 0x10f8)
-> +REG32(A2W_PLLB_ANA3, 0x10fc)
-> +
-> +REG32(A2W_PLLA_FRAC, 0x1200)
-> +    FIELD(A2W_PLLx_FRAC, FRAC, 0, 20)
-> +REG32(A2W_PLLC_FRAC, 0x1220)
-> +REG32(A2W_PLLD_FRAC, 0x1240)
-> +REG32(A2W_PLLH_FRAC, 0x1260)
-> +REG32(A2W_PLLB_FRAC, 0x12e0)
+> +/* misc registers */
+> +REG32(CM_LOCK, 0x114)
+> +    FIELD(CM_LOCK, FLOCKH, 12, 1)
+> +    FIELD(CM_LOCK, FLOCKD, 11, 1)
+> +    FIELD(CM_LOCK, FLOCKC, 10, 1)
+> +    FIELD(CM_LOCK, FLOCKB, 9, 1)
+> +    FIELD(CM_LOCK, FLOCKA, 8, 1)
 > +
 >  /*
 >   * This field is common to all registers. Each register write value must match
 >   * the CPRMAN_PASSWORD magic value in its 8 MSB.
 >   */
 >  FIELD(CPRMAN, PASSWORD, 24, 8)
->  #define CPRMAN_PASSWORD 0x5a
->  
-> +/* PLL init info */
-> +typedef struct PLLInitInfo {
-> +    const char *name;
-> +    size_t cm_offset;
-> +    size_t a2w_ctrl_offset;
-> +    size_t a2w_ana_offset;
-> +    uint32_t prediv_mask; /* Prediv bit in ana[1] */
-> +    size_t a2w_frac_offset;
-> +} PLLInitInfo;
-> +
-> +#define FILL_PLL_INIT_INFO(pll_)                \
-> +    .cm_offset = R_CM_ ## pll_,                 \
-> +    .a2w_ctrl_offset = R_A2W_ ## pll_ ## _CTRL, \
-> +    .a2w_ana_offset = R_A2W_ ## pll_ ## _ANA0,  \
-> +    .a2w_frac_offset = R_A2W_ ## pll_ ## _FRAC
-> +
-> +static const PLLInitInfo PLL_INIT_INFO[] = {
-> +    [CPRMAN_PLLA] = {
-> +        .name = "plla",
-> +        .prediv_mask = R_A2W_PLLx_ANA1_FB_PREDIV_MASK,
-> +        FILL_PLL_INIT_INFO(PLLA),
-> +    },
-> +    [CPRMAN_PLLC] = {
-> +        .name = "pllc",
-> +        .prediv_mask = R_A2W_PLLx_ANA1_FB_PREDIV_MASK,
-> +        FILL_PLL_INIT_INFO(PLLC),
-> +    },
-> +    [CPRMAN_PLLD] = {
-> +        .name = "plld",
-> +        .prediv_mask = R_A2W_PLLx_ANA1_FB_PREDIV_MASK,
-> +        FILL_PLL_INIT_INFO(PLLD),
-> +    },
-> +    [CPRMAN_PLLH] = {
-> +        .name = "pllh",
-> +        .prediv_mask = R_A2W_PLLH_ANA1_FB_PREDIV_MASK,
-> +        FILL_PLL_INIT_INFO(PLLH),
-> +    },
-> +    [CPRMAN_PLLB] = {
-> +        .name = "pllb",
-> +        .prediv_mask = R_A2W_PLLx_ANA1_FB_PREDIV_MASK,
-> +        FILL_PLL_INIT_INFO(PLLB),
-> +    },
-> +};
-> +
-> +#undef FILL_PLL_CHANNEL_INIT_INFO
-> +
-> +static inline void set_pll_init_info(BCM2835CprmanState *s,
-> +                                     CprmanPLLState *pll,
-> +                                     CprmanPLL id)
-> +{
-> +    pll->id = id;
-> +    pll->reg_cm = &s->regs[PLL_INIT_INFO[id].cm_offset];
-> +    pll->reg_a2w_ctrl = &s->regs[PLL_INIT_INFO[id].a2w_ctrl_offset];
-> +    pll->reg_a2w_ana = &s->regs[PLL_INIT_INFO[id].a2w_ana_offset];
-> +    pll->prediv_mask = PLL_INIT_INFO[id].prediv_mask;
-> +    pll->reg_a2w_frac = &s->regs[PLL_INIT_INFO[id].a2w_frac_offset];
-> +}
-> +
->  #endif
 > diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-> index d2ea0c9236..ad71d30a86 100644
+> index ad71d30a86..ba82522eb1 100644
 > --- a/hw/misc/bcm2835_cprman.c
 > +++ b/hw/misc/bcm2835_cprman.c
-> @@ -46,10 +46,56 @@
->  #include "hw/qdev-properties.h"
->  #include "hw/misc/bcm2835_cprman.h"
+> @@ -48,13 +48,51 @@
 >  #include "hw/misc/bcm2835_cprman_internals.h"
 >  #include "trace.h"
 >  
-> +/* PLL */
-> +
-> +static void pll_update(CprmanPLLState *pll)
+>  /* PLL */
+>  
+> +static bool pll_is_locked(const CprmanPLLState *pll)
 > +{
-> +    clock_update(pll->out, 0);
+> +    return !FIELD_EX32(*pll->reg_a2w_ctrl, A2W_PLLx_CTRL, PWRDN)
+> +        && !FIELD_EX32(*pll->reg_cm, CM_PLLx, ANARST);
 > +}
 > +
-> +static void pll_xosc_update(void *opaque)
-> +{
-> +    pll_update(CPRMAN_PLL(opaque));
-> +}
+>  static void pll_update(CprmanPLLState *pll)
+>  {
+> -    clock_update(pll->out, 0);
+> +    uint64_t freq, ndiv, fdiv, pdiv;
 > +
-> +static void pll_init(Object *obj)
-> +{
-> +    CprmanPLLState *s = CPRMAN_PLL(obj);
-> +
-> +    s->xosc_in = qdev_init_clock_in(DEVICE(s), "xosc-in", pll_xosc_update, s);
-> +    s->out = qdev_init_clock_out(DEVICE(s), "out");
-> +}
-> +
-> +static const VMStateDescription pll_vmstate = {
-> +    .name = TYPE_CPRMAN_PLL,
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .fields = (VMStateField[]) {
-> +        VMSTATE_CLOCK(xosc_in, CprmanPLLState),
-> +        VMSTATE_END_OF_LIST()
+> +    if (!pll_is_locked(pll)) {
+> +        clock_update(pll->out, 0);
+> +        return;
 > +    }
-> +};
 > +
-> +static void pll_class_init(ObjectClass *klass, void *data)
-> +{
-> +    DeviceClass *dc = DEVICE_CLASS(klass);
+> +    pdiv = FIELD_EX32(*pll->reg_a2w_ctrl, A2W_PLLx_CTRL, PDIV);
 > +
-> +    dc->vmsd = &pll_vmstate;
-> +}
-> +
-> +static const TypeInfo cprman_pll_info = {
-> +    .name = TYPE_CPRMAN_PLL,
-> +    .parent = TYPE_DEVICE,
-> +    .instance_size = sizeof(CprmanPLLState),
-> +    .class_init = pll_class_init,
-> +    .instance_init = pll_init,
-> +};
-> +
-> +
->  /* CPRMAN "top level" model */
->  
->  static uint64_t cprman_read(void *opaque, hwaddr offset,
->                                      unsigned size)
->  {
-> @@ -64,10 +110,19 @@ static uint64_t cprman_read(void *opaque, hwaddr offset,
->  
->      trace_bcm2835_cprman_read(offset, r);
->      return r;
->  }
->  
-> +#define CASE_PLL_REGS(pll_)       \
-> +    case R_CM_ ## pll_:           \
-> +    case R_A2W_ ## pll_ ## _CTRL: \
-> +    case R_A2W_ ## pll_ ## _ANA0: \
-> +    case R_A2W_ ## pll_ ## _ANA1: \
-> +    case R_A2W_ ## pll_ ## _ANA2: \
-> +    case R_A2W_ ## pll_ ## _ANA3: \
-> +    case R_A2W_ ## pll_ ## _FRAC
-> +
->  static void cprman_write(void *opaque, hwaddr offset,
->                           uint64_t value, unsigned size)
->  {
->      BCM2835CprmanState *s = CPRMAN(opaque);
->      size_t idx = offset / sizeof(uint32_t);
-> @@ -80,12 +135,35 @@ static void cprman_write(void *opaque, hwaddr offset,
->      value &= ~R_CPRMAN_PASSWORD_MASK;
->  
->      trace_bcm2835_cprman_write(offset, value);
->      s->regs[idx] = value;
->  
-> +    switch (idx) {
-> +    CASE_PLL_REGS(PLLA) :
-> +        pll_update(&s->plls[CPRMAN_PLLA]);
-> +        break;
-> +
-> +    CASE_PLL_REGS(PLLC) :
-> +        pll_update(&s->plls[CPRMAN_PLLC]);
-> +        break;
-> +
-> +    CASE_PLL_REGS(PLLD) :
-> +        pll_update(&s->plls[CPRMAN_PLLD]);
-> +        break;
-> +
-> +    CASE_PLL_REGS(PLLH) :
-> +        pll_update(&s->plls[CPRMAN_PLLH]);
-> +        break;
-> +
-> +    CASE_PLL_REGS(PLLB) :
-> +        pll_update(&s->plls[CPRMAN_PLLB]);
-> +        break;
+> +    if (!pdiv) {
+> +        clock_update(pll->out, 0);
+> +        return;
 > +    }
->  }
->  
-> +#undef CASE_PLL_REGS
 > +
->  static const MemoryRegionOps cprman_ops = {
->      .read = cprman_read,
->      .write = cprman_write,
->      .endianness = DEVICE_LITTLE_ENDIAN,
->      .valid      = {
-> @@ -96,13 +174,18 @@ static const MemoryRegionOps cprman_ops = {
->  };
->  
->  static void cprman_reset(DeviceState *dev)
->  {
->      BCM2835CprmanState *s = CPRMAN(dev);
-> +    size_t i;
->  
->      memset(s->regs, 0, sizeof(s->regs));
->  
-> +    for (i = 0; i < CPRMAN_NUM_PLL; i++) {
-> +        device_cold_reset(DEVICE(&s->plls[i]));
-
-Assuming cprman_reset() is cprman_cold_reset().
+> +    ndiv = FIELD_EX32(*pll->reg_a2w_ctrl, A2W_PLLx_CTRL, NDIV);
+> +    fdiv = FIELD_EX32(*pll->reg_a2w_frac, A2W_PLLx_FRAC, FRAC);
+> +
+> +    if (pll->reg_a2w_ana[1] & pll->prediv_mask) {
+> +        /* The prescaler doubles the parent frequency */
+> +        ndiv *= 2;
+> +        fdiv *= 2;
+> +    }
+> +
+> +    /*
+> +     * We have a multiplier with an integer part (ndiv) and a fractional part
+> +     * (fdiv), and a divider (pdiv).
+> +     */
+> +    freq = clock_get_hz(pll->xosc_in) *
+> +        ((ndiv << R_A2W_PLLx_FRAC_FRAC_LENGTH) + fdiv);
+> +    freq /= pdiv;
+> +    freq >>= R_A2W_PLLx_FRAC_FRAC_LENGTH;
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-> +    }
 > +
->      clock_update_hz(s->xosc, s->xosc_freq);
+> +    clock_update_hz(pll->out, freq);
 >  }
 >  
->  static Clock *init_internal_clock(BCM2835CprmanState *s,
->                                    const char *name)
-> @@ -121,18 +204,41 @@ static Clock *init_internal_clock(BCM2835CprmanState *s,
->  }
->  
->  static void cprman_init(Object *obj)
+>  static void pll_xosc_update(void *opaque)
 >  {
->      BCM2835CprmanState *s = CPRMAN(obj);
-> +    size_t i;
-> +
-> +    for (i = 0; i < CPRMAN_NUM_PLL; i++) {
-> +        object_initialize_child(obj, PLL_INIT_INFO[i].name,
-> +                                &s->plls[i], TYPE_CPRMAN_PLL);
-> +        set_pll_init_info(s, &s->plls[i], i);
-> +    }
->  
->      s->xosc = init_internal_clock(s, "xosc");
->  
->      memory_region_init_io(&s->iomem, obj, &cprman_ops,
->                            s, "bcm2835-cprman", 0x2000);
->      sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
->  }
->  
-> +static void cprman_realize(DeviceState *dev, Error **errp)
-> +{
-> +    BCM2835CprmanState *s = CPRMAN(dev);
-> +    size_t i;
-> +
-> +    for (i = 0; i < CPRMAN_NUM_PLL; i++) {
-> +        CprmanPLLState *pll = &s->plls[i];
-> +
-> +        clock_set_source(pll->xosc_in, s->xosc);
-> +
-> +        if (!qdev_realize(DEVICE(pll), NULL, errp)) {
-> +            return;
-> +        }
-> +    }
-> +}
-> +
->  static const VMStateDescription cprman_vmstate = {
->      .name = TYPE_BCM2835_CPRMAN,
->      .version_id = 1,
->      .minimum_version_id = 1,
->      .fields = (VMStateField[]) {
-> @@ -148,10 +254,11 @@ static Property cprman_properties[] = {
->  
->  static void cprman_class_init(ObjectClass *klass, void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
->  
-> +    dc->realize = cprman_realize;
->      dc->reset = cprman_reset;
->      dc->vmsd = &cprman_vmstate;
->      device_class_set_props(dc, cprman_properties);
->  }
->  
-> @@ -164,8 +271,9 @@ static const TypeInfo cprman_info = {
+>      pll_update(CPRMAN_PLL(opaque));
+> @@ -94,18 +132,42 @@ static const TypeInfo cprman_pll_info = {
 >  };
 >  
->  static void cprman_register_types(void)
->  {
->      type_register_static(&cprman_info);
-> +    type_register_static(&cprman_pll_info);
->  }
 >  
->  type_init(cprman_register_types);
+>  /* CPRMAN "top level" model */
+>  
+> +static uint32_t get_cm_lock(const BCM2835CprmanState *s)
+> +{
+> +    static const int CM_LOCK_MAPPING[] = {
+
+Maybe CM_LOCK_MAPPING[CPRMAN_NUM_PLL].
+
+> +        [CPRMAN_PLLA] = R_CM_LOCK_FLOCKA_SHIFT,
+> +        [CPRMAN_PLLC] = R_CM_LOCK_FLOCKC_SHIFT,
+> +        [CPRMAN_PLLD] = R_CM_LOCK_FLOCKD_SHIFT,
+> +        [CPRMAN_PLLH] = R_CM_LOCK_FLOCKH_SHIFT,
+> +        [CPRMAN_PLLB] = R_CM_LOCK_FLOCKB_SHIFT,
+> +    };
+> +
+> +    uint32_t r = 0;
+> +    size_t i;
+> +
+> +    for (i = 0; i < CPRMAN_NUM_PLL; i++) {
+> +        r |= pll_is_locked(&s->plls[i]) << CM_LOCK_MAPPING[i];
+> +    }
+> +
+> +    return r;
+> +}
+> +
+>  static uint64_t cprman_read(void *opaque, hwaddr offset,
+>                                      unsigned size)
+>  {
+>      BCM2835CprmanState *s = CPRMAN(opaque);
+>      uint64_t r = 0;
+>      size_t idx = offset / sizeof(uint32_t);
+>  
+>      switch (idx) {
+> +    case R_CM_LOCK:
+> +        r = get_cm_lock(s);
+> +        break;
+> +
+>      default:
+>          r = s->regs[idx];
+>      }
+>  
+>      trace_bcm2835_cprman_read(offset, r);
 > 

@@ -1,106 +1,105 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2369657lfq;
-        Sat, 26 Sep 2020 13:36:46 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJze9T2Fx/UmTPzGtkm5ZaejkT49hmc0sgLWPjkJ2/YvJzME8870p25axLr81qeFPGeb74Yo
-X-Received: by 2002:a5b:585:: with SMTP id l5mr7243198ybp.473.1601152606393;
-        Sat, 26 Sep 2020 13:36:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601152606; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2369704lfq;
+        Sat, 26 Sep 2020 13:36:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzV1IlikthUAQOHV/Agsy4p8jO13fjyeDkbyv/gQx+9khIDXQ0xaTToHlLG897IIlHPpXnG
+X-Received: by 2002:a25:c747:: with SMTP id w68mr7341085ybe.349.1601152610226;
+        Sat, 26 Sep 2020 13:36:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601152610; cv=none;
         d=google.com; s=arc-20160816;
-        b=KQvIuhvGEgfU4y+tWzvPGri5IFhpfBaKZtYNVV8wrHppOg94JCamYNFmnTc2uUvNYb
-         nA1QE5IlDMt7PVVmytoMhXVIm5w5v9n9p8mS2QIM9KVrHVldIMZ808mI7CZoOIqvx8qP
-         F+3YXVrMtdNoQMpTRGOzstMRkL9mG9QHSKco92uFdePZQWH8GRZBQ+4t3RP18/3GTR0V
-         KZKb/RHLd+VpCOnqwS+FUgPM3xyH6SF5Jxk+Fb5w7hEVTTtjcw9OoaEe6TokKy9EsaYM
-         tQasCyXtyWQkByDJn7pbvvSPUUMd/jDWrlAODb28qpG3K60eM0xL5j4w/cok8rD7wI00
-         uPqQ==
+        b=0ZV2m0i2E0y+bgw2txznsFBWGKbfYdAfCme0Z+9PC9NxoVMVgiAkILpDhrumwPpS4p
+         H7z2E/bPkKarAJ47hDt12t0OyVVKe3i40oWwR2tBQlomcqwedeutxi1Blsm+zYSXKfyI
+         SBZ1Qs9LDgDK5cIFZjFzhWhXrbWaT6Go3Gcg0ZGi5Sgrmk/Jbq6JLW3QxafulA6J46yP
+         3lpHK4DO/jG48UVAM6P/fxqjEHFN+VqrMF0P7UFh93q4LGjrOaTzC8UvEwnJyZa8jHxO
+         B+tFUz/Qh+7DGl22l/im6xTIwrlA5Y2PZc3u9MGdh3MV6pkDFsNdZpusnHsXb70q3s3q
+         CEBw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=IoycA8sCG/5JeMozMHv0Dmc2yGmLtB9gyHgSajmfEp0=;
-        b=L3wW8JiaHCUimP+1Pe7wKRG6j7E7MG4Ae4yVlcK7bhpUnQGFYASRlsJveRxw4ijJN/
-         W6mx3dBjmYjWzO7Tmwv8CAXDGWI0oHdQoCLQ/u8xOSO2XOSsvDlrlFT3jW83TOIbYvF9
-         kc49ywRLyQ/ykJTd67M3emTC8fHyQqMKJGkySl9o5+JE8Ri2Lz3FpEcLBDrb80jlu++m
-         K2BSQTIyMq7JUm8od7WQUq5a59SmojoZaaCn4ZTXPH2aprV2NHNwAx2WCT1jW5PcwONc
-         C7gayg2MBB0tfqIhJ27qYH1O1LuP4vPPWJyIt5WxlNBFGUFs5cVdglVIpmP/w7mADqKJ
-         zktA==
+        bh=BQEM8GyrRfT9S+MUOhVXhzGx7HhUGi/JUVZeZqV6V6g=;
+        b=MsQ6xCONJ0uZTvkw4ci83SSrgXTnmFnO/GTeYuPeIjEzJQu/LUUFDlzxzGrhGSjGrK
+         lYy2QM2IilKcj9qideGDtID5J6h6T2fUvvWH8lrigPjMFYp7H3DCNd8aefiz2z8s/Mv5
+         ZwxVEeH+1COzLUdiQq7PG3ViD4meG/GX5E/ZIqXP955t+AzD/jXn6jHSiGB5NZyrhTJh
+         WqddT4RzF7PfuhM5hwuPOk0bL5SJ1G0ONxTGHXaDkZARvo5dgKbspu6FJ8ViG1T+BOIV
+         tuDQ6q4q7rXyX2P5rB3BgjR3OX3lALAiuhxW/fm+ySh0kz0PBZjNpWeLqoBbLcUDZbWx
+         SfnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GUianNtc;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PRCH59Jk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l4si7859956ybc.52.2020.09.26.13.36.46
+        by mx.google.com with ESMTPS id p202si6308902ybc.330.2020.09.26.13.36.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 26 Sep 2020 13:36:46 -0700 (PDT)
+        Sat, 26 Sep 2020 13:36:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GUianNtc;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=PRCH59Jk;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45192 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45450 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kMGw1-0008Qi-Ps
-	for alex.bennee@linaro.org; Sat, 26 Sep 2020 16:36:45 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53318)
+	id 1kMGw5-00006j-LD
+	for alex.bennee@linaro.org; Sat, 26 Sep 2020 16:36:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53380)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kMGvT-0008QW-29; Sat, 26 Sep 2020 16:36:11 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:34148)
+ id 1kMGvn-00005L-CM; Sat, 26 Sep 2020 16:36:31 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:33559)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kMGvR-0002Km-7n; Sat, 26 Sep 2020 16:36:10 -0400
-Received: by mail-wr1-x444.google.com with SMTP id t10so7618524wrv.1;
- Sat, 26 Sep 2020 13:36:08 -0700 (PDT)
+ id 1kMGvi-0002Lm-BT; Sat, 26 Sep 2020 16:36:31 -0400
+Received: by mail-wm1-x344.google.com with SMTP id e11so1774120wme.0;
+ Sat, 26 Sep 2020 13:36:25 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=IoycA8sCG/5JeMozMHv0Dmc2yGmLtB9gyHgSajmfEp0=;
- b=GUianNtcE+7jWMG+KuQP1KdSb+5DLAUcCtlEJeVlwfE1JqD4M/lieMaNaqyY3FGWdG
- Jc2V/HB/KcC1Nj0w0tPHRSmlS0cibRNwyxyuo2hb7zZDy6poBmfghtSi6IjtKfR5pESs
- ivcWhqEP/+rD6n7P3D7AA0MTHqyRGpX843bb0yq85KLQ+THfqkosl8zT+iYvlLuX9syh
- /SgbGZJ5wXO8mx1YvwByEHChFAdgM2Hm2Ib5+xMoOZWfsBU/ZPRZsq18tr6O/4LUXzTe
- XS9FSrPHbrymu+zAdhHnyz3saXC2WRspIxynVIelplNgfdPAZZ/QAymukl6lRVSabcEn
- 9YPQ==
+ bh=BQEM8GyrRfT9S+MUOhVXhzGx7HhUGi/JUVZeZqV6V6g=;
+ b=PRCH59JkuL0oscz4LFmFU2pUsqVGCgcHdk8hg5g9BfPg2fNsmxQEtuhOWcFZ0O7wkU
+ YM9ix4PDdiyhlLfXBLW4dp142ICoCelciIoruOl7XN9HlgCPrTcAD7L2jjHyVnGcvkMj
+ r5fgDeeQD/1dyL4FKIwE2xVEIhNH5gGgl7c2JQTXOixXOjxi0oL8PwLT13D2j0QQnNde
+ +PXIkWsq9TDS0vtYPZXl1hmqc9PEtZxvUPGpMzMuYq2v184cACTqgu4byZ5pbjxD4qT8
+ it/uyeGR1/FsU/nbab9ShM50tQi3FN2msbqbJNyIZOnamY/BThU88bIEnHxgLFB9kauV
+ gu9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=IoycA8sCG/5JeMozMHv0Dmc2yGmLtB9gyHgSajmfEp0=;
- b=elUTghjD8hW4pbyi3L3ZJHDEirrrTsJM1uRFIwt2xzHnMWiSAyml/4uYY5ZCOJ4/G7
- /uOqTE58n9UTR+obLYiMj2QPh5gXx8Vq4eV/KneMxboJFK0tonUf5qJvri1oWzDqDNTs
- pw849zXAl4Emrop7utlnXgUoK1VQmjNC7TPqSeW+sFcmrpKscuh3encQAvFzrpkUBy7+
- bee4wo90pWjh7aA6Gjgz21VG60e60Hb3CU3/tfdhyKxwxGlysEyNZ4HGuH8/73ZmWaP5
- AAccpFhtJ3ARIbFXrLj88Sx0Ch/Uoojx++iDpajswYw2PvuZrrA57ZovxyxYw1zS3UsP
- Laeg==
-X-Gm-Message-State: AOAM533nWWsF4hidyMaMQIgOb7GVo6g/5E1N+S2hDBidGDQNiREMxNAD
- 9/sTwMawVbM7F5tnR1tm7iXsMq0SaOo=
-X-Received: by 2002:adf:f2d0:: with SMTP id d16mr10459141wrp.332.1601152567413; 
- Sat, 26 Sep 2020 13:36:07 -0700 (PDT)
+ bh=BQEM8GyrRfT9S+MUOhVXhzGx7HhUGi/JUVZeZqV6V6g=;
+ b=f1+2bWur0qq/A1Y16ja/fcHPAD8RqDb8JF6RQlMWNpPtuCKyjirljyGZXyiqHtGB8m
+ 0IRVrGubNIez4Pbwx5vCiA/vn6tfljnBdRGTXlUJgrYFURbSh0C25uredDn+L9CVpbOd
+ MYa0eZqjxr+eVyrGkgPC6rM7TkNdkbrS1gApPO0GQ8RdDsgwCRGaf2kFhlr4tbqP+j8U
+ /t/e521skGhMm8CSwYsdAllz3rC+ZGnYOoUH+zYk+AqGXxCecpj+Zi2cZNJi32E+5p7+
+ W+yryNBJ4mhVxG2zKClPNEsDl4cHLFMVQNz/5ohZ2bcOcACEjOidccJl87FlUkPmKPrb
+ S3aw==
+X-Gm-Message-State: AOAM533qu4aTwu0PiWy+DkF6z+CopajcIj0KLnbEBbXxlqNNHSjf/piZ
+ HzLzrJGQTqYiO0qF6T9yHztv/nhpEo0=
+X-Received: by 2002:a7b:c14d:: with SMTP id z13mr3844705wmi.19.1601152584509; 
+ Sat, 26 Sep 2020 13:36:24 -0700 (PDT)
 Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
  [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id j26sm7734294wrc.79.2020.09.26.13.36.06
+ by smtp.gmail.com with ESMTPSA id d2sm7662571wro.34.2020.09.26.13.36.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 26 Sep 2020 13:36:06 -0700 (PDT)
-Subject: Re: [PATCH 02/14] hw/core/clock: trace clock values in Hz instead of
- ns
+ Sat, 26 Sep 2020 13:36:23 -0700 (PDT)
+Subject: Re: [PATCH 01/14] hw/core/clock: provide the VMSTATE_ARRAY_CLOCK macro
 To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
 References: <20200925101731.2159827-1-luc@lmichel.fr>
- <20200925101731.2159827-3-luc@lmichel.fr>
+ <20200925101731.2159827-2-luc@lmichel.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f5f6c8ca-d4f7-d06f-94d9-ded36ebf5753@amsat.org>
-Date: Sat, 26 Sep 2020 22:36:06 +0200
+Message-ID: <5f6a9c59-5d17-2ef6-563d-d180270bbc3b@amsat.org>
+Date: Sat, 26 Sep 2020 22:36:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200925101731.2159827-3-luc@lmichel.fr>
+In-Reply-To: <20200925101731.2159827-2-luc@lmichel.fr>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -19
@@ -128,82 +127,35 @@ Cc: Damien Hedde <damien.hedde@greensocs.com>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C6NueGe9GOIz
+X-TUID: suG7YWuxua8+
 
 On 9/25/20 12:17 PM, Luc Michel wrote:
-> The nanosecond unit greatly limits the dynamic range we can display in
-> clock value traces, for values in the order of 1GHz and more. The
-> internal representation can go way beyond this value and it is quite
-> common for today's clocks to be within those ranges.
-> 
-> For example, a frequency between 500MHz+ and 1GHz will be displayed as
-> 1ns. Beyond 1GHz, it will show up as 0ns.
-> 
-> Replace nanosecond periods traces with frequencies in the Hz unit
-> to have more dynamic range in the trace output.
-
-I have a similar patch adding the freq but keeping the periods in
-case, as it might be a matter of taste (for me too the frequency
-is more meaningful).
-
-> 
 > Signed-off-by: Luc Michel <luc@lmichel.fr>
-> ---
->  hw/core/clock.c      | 6 +++---
->  hw/core/trace-events | 4 ++--
->  2 files changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/hw/core/clock.c b/hw/core/clock.c
-> index 7066282f7b..81184734e0 100644
-> --- a/hw/core/clock.c
-> +++ b/hw/core/clock.c
-> @@ -37,12 +37,12 @@ void clock_clear_callback(Clock *clk)
->  bool clock_set(Clock *clk, uint64_t period)
->  {
->      if (clk->period == period) {
->          return false;
->      }
-> -    trace_clock_set(CLOCK_PATH(clk), CLOCK_PERIOD_TO_NS(clk->period),
-> -                    CLOCK_PERIOD_TO_NS(period));
-> +    trace_clock_set(CLOCK_PATH(clk), CLOCK_PERIOD_TO_HZ(clk->period),
-> +                    CLOCK_PERIOD_TO_HZ(period));
->      clk->period = period;
->  
->      return true;
->  }
->  
-> @@ -52,11 +52,11 @@ static void clock_propagate_period(Clock *clk, bool call_callbacks)
->  
->      QLIST_FOREACH(child, &clk->children, sibling) {
->          if (child->period != clk->period) {
->              child->period = clk->period;
->              trace_clock_update(CLOCK_PATH(child), CLOCK_PATH(clk),
-> -                               CLOCK_PERIOD_TO_NS(clk->period),
-> +                               CLOCK_PERIOD_TO_HZ(clk->period),
->                                 call_callbacks);
->              if (call_callbacks && child->callback) {
->                  child->callback(child->callback_opaque);
->              }
->              clock_propagate_period(child, call_callbacks);
-> diff --git a/hw/core/trace-events b/hw/core/trace-events
-> index 1ac60ede6b..6f96d8bfd0 100644
-> --- a/hw/core/trace-events
-> +++ b/hw/core/trace-events
-> @@ -29,8 +29,8 @@ resettable_phase_exit_end(void *obj, const char *objtype, unsigned count) "obj=%
->  resettable_transitional_function(void *obj, const char *objtype) "obj=%p(%s)"
->  
->  # clock.c
->  clock_set_source(const char *clk, const char *src) "'%s', src='%s'"
->  clock_disconnect(const char *clk) "'%s'"
-> -clock_set(const char *clk, uint64_t old, uint64_t new) "'%s', ns=%"PRIu64"->%"PRIu64
-> +clock_set(const char *clk, uint64_t old, uint64_t new) "'%s', %"PRIu64"hz->%"PRIu64"hz"
-
-Unit is spell 'Hz'.
-
->  clock_propagate(const char *clk) "'%s'"
-> -clock_update(const char *clk, const char *src, uint64_t val, int cb) "'%s', src='%s', ns=%"PRIu64", cb=%d"
-> +clock_update(const char *clk, const char *src, uint64_t hz, int cb) "'%s', src='%s', val=%"PRIu64"hz cb=%d"
-
-Ditto.
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> ---
+>  include/hw/clock.h | 5 +++++
+>  1 file changed, 5 insertions(+)
+> 
+> diff --git a/include/hw/clock.h b/include/hw/clock.h
+> index d357594df9..c93e6113cd 100644
+> --- a/include/hw/clock.h
+> +++ b/include/hw/clock.h
+> @@ -79,10 +79,15 @@ struct Clock {
+>  extern const VMStateDescription vmstate_clock;
+>  #define VMSTATE_CLOCK(field, state) \
+>      VMSTATE_CLOCK_V(field, state, 0)
+>  #define VMSTATE_CLOCK_V(field, state, version) \
+>      VMSTATE_STRUCT_POINTER_V(field, state, version, vmstate_clock, Clock)
+> +#define VMSTATE_ARRAY_CLOCK(field, state, num) \
+> +    VMSTATE_ARRAY_CLOCK_V(field, state, num, 0)
+> +#define VMSTATE_ARRAY_CLOCK_V(field, state, num, version)          \
+> +    VMSTATE_ARRAY_OF_POINTER_TO_STRUCT(field, state, num, version, \
+> +                                       vmstate_clock, Clock)
+>  
+>  /**
+>   * clock_setup_canonical_path:
+>   * @clk: clock
+>   *
+> 

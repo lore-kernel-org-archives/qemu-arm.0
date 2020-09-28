@@ -1,159 +1,129 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp39767lfa;
-        Thu, 22 Oct 2020 15:49:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwldRXzT4W4M3dnK+lMnYBDTPm63JGDsSuPJIub757KwW5HoGjD2y2/oc29hnKxccQqbEKw
-X-Received: by 2002:ac8:3674:: with SMTP id n49mr4351838qtb.385.1603406952366;
-        Thu, 22 Oct 2020 15:49:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603406952; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3854218lfq;
+        Mon, 28 Sep 2020 11:01:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz9skJ/Q+/zLvqvEyJBv+5zEUejve1b7axE7MeonkzoSKBSl+JeGykzycGIBfxjGiMhCjZ+
+X-Received: by 2002:a9f:2684:: with SMTP id 4mr1657617uay.94.1601316103622;
+        Mon, 28 Sep 2020 11:01:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601316103; cv=none;
         d=google.com; s=arc-20160816;
-        b=RAH0KRNXGGW5JH+ZEX76xSJPzA+Jr+G1GFJu2rXSctqoWTAMzMNRMpSAfN6qDAQaNY
-         77EQ0BeSsWYZqKk3gM0vcOccFqFYqgWQo6yE/FpYXQYTtPD1ZVn9S91THaMP/WAR4oLs
-         7QI5QYdlfEWQ1toqsVlpW4m/8t5AoVBh63ezAX3mFFc8UqWRIdb2QZiYRECH0q0vsINA
-         4TPHuNgJt3GJbBwn5gIj3n0C1gvmnKchMgh42fvwfxWHHaoShNHp/XFTQH23jqekcFCN
-         aabjGPQqdgh6OPdAh4dI6y8wkZKDrWY2VcO3axObDTyxqPQR+u88gcV8KztHlt/eDLuB
-         6/2w==
+        b=RbXBWZS9986sipfJcfwKEZnOLJBm7K3zke8ESH9aGO32hLO9Cs766gB867gpBNQVqz
+         ku9PoDuqJv9yEXnTV4Br9+54Zfjd6ma6ea8BcduOZo0eu9hST3TAhVIZEVwKpKZrZulE
+         WKnn3JTImmMu3wmKaaEXNuPcPtF6X9RKq1O4mxgvvCNuoNliqzWMj3NiA/zRz3Y8Oj08
+         wTLjcCvjHn6COuit3qtunIZHaVGdoioQqsU1cwKCk8jhOytZLz+DFr3RMbwk8k44XSRh
+         Z5TqeQgdx8dz905UjQUSThAT6wxtmUVLuqLZKxrCgVs3tBlNDeSSvnECiB8lUkZPilB1
+         ofHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=vmNyYTPYs3JCdBF+ZIoTNHkWx5u56IceN7DMWiQxD8c=;
-        b=r5eEsVArJ9Oxbe/LsZQYuyCZipXcJoq5HJYQXlHKuz9Eb8qiaIextAbIlmQAaqOCF1
-         t1XidxCbqb/KDO4YR9XZbMITM2FSYEWP5WvT07c0ivRyq3tGugKFA9YlUxO9QTHB7ORe
-         7sl1N9ZAkwx1VSsaCeBme8zvaDuZZpa26MA68lMMu8QXF4v/3fBRPxxenxgL0JTpJ7eF
-         JSuYcsdpYBuhefOOPWZCmQ+Y8YJ339bX3HShuuuHdTn+aCPLiLwwPEzvcUwoozNAoFs4
-         budjkM6t/I9EoBE6zyvRjvmK/H5dpi1eXkbJ593TGI7/+7vV6z7rBagnfF1Z6fsg+e9f
-         bU1g==
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=N+wk5azjipVwb/ehom8hAby13QOSHxndVwpdQUEw6bY=;
+        b=Qn3Shgl2mZB2X0j4Gv1OSVO7Jgf97qIfzhzqF4wQn3O7qgqgXWNTxpSBkQoUWutDz+
+         AkxxL23QuCkBL4d0vQs++1MCko3z435Y8e1iEcpOxZOgblLoDSe7dJKzTuuSz6N8Mdii
+         LvXhclaXmYVRHlcYYIxwvBzQNEi8Dnr/IV6QZHsYj/GV/yd7NIn8R7611mx/OusuQQdv
+         XvijcVzUqBWUNzsovqdCbiGv4sPskJNjvUEugo751uAEjKd3l+fESOW3AvKYNlWiTVrU
+         OXqY0zMCiZh9ePicumQ4mcaefuo1f/YnmpoZAVXPvfcJUXweZPjtXQlPBK/qHZljs+gS
+         ayRA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QyGvFwkQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WVSxO5PO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s15si1571117qkj.318.2020.10.22.15.49.12
+        by mx.google.com with ESMTPS id d14si865728ual.79.2020.09.28.11.01.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Oct 2020 15:49:12 -0700 (PDT)
+        Mon, 28 Sep 2020 11:01:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=QyGvFwkQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:35088 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WVSxO5PO;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60664 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVjOR-0004go-OZ
-	for alex.bennee@linaro.org; Thu, 22 Oct 2020 18:49:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48122)
+	id 1kMxT4-0006JF-SD
+	for alex.bennee@linaro.org; Mon, 28 Sep 2020 14:01:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54192)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1kVjOD-0004fi-TF; Thu, 22 Oct 2020 18:48:58 -0400
-Received: from mail-oi1-x241.google.com ([2607:f8b0:4864:20::241]:36140)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <groeck7@gmail.com>)
- id 1kVjOB-0001Fk-MD; Thu, 22 Oct 2020 18:48:57 -0400
-Received: by mail-oi1-x241.google.com with SMTP id u17so3689676oie.3;
- Thu, 22 Oct 2020 15:48:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=vmNyYTPYs3JCdBF+ZIoTNHkWx5u56IceN7DMWiQxD8c=;
- b=QyGvFwkQDTqTCYQIsvVC3QWF/NZtntpXgmcV2rDmNJg4VpCMXrFi0DsM7Pouo/1CzV
- uqhVLnrNNqP9CkJukbeVIcFShA5SU1wku1Q7AQ4PviKS8ZCb6QQmCBrnOTDrS6ciYnbp
- t2AchNeS1XkcnnxqTKL5HZSFgOLhbzw/EtccYylNg8XjJiCzmsu+vlxlBr8jROVjA+Ev
- 5pmEoRiwKZoFIjivGDeGYoEktehhQbIosrTLWoVGNn84NSF6FuJd+KAeuKP+So1AyfJ+
- a8IiTuwURDo3VhPUqmhAa8M2l1Q+eCePDoaw8GOfTEtAbc5QhvgQxVESpXrdJESngpQv
- /2kQ==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1kMxIN-0003El-Mi
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 13:50:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:21420)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1kMxIL-0002aQ-W4
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 13:50:39 -0400
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601315435;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=N+wk5azjipVwb/ehom8hAby13QOSHxndVwpdQUEw6bY=;
+ b=WVSxO5POUaWm9YZ1NKDSE3szQ2Ls2TbvAI3K9/LlbYXrp/v75BBKFxhhUoemv2wwZurMR2
+ t+LCzatNmYVPHbtddESQTi1J5zS2BjVygzYTZSnCAjYKCWKeR4++KQ0l7jzdtZfCu/6gug
+ QyxxhwQIRdsTVhrqQMrxeNFFcFoOkiw=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-28-NxeqomcZPVOBbRUc6W3b0A-1; Mon, 28 Sep 2020 13:49:01 -0400
+X-MC-Unique: NxeqomcZPVOBbRUc6W3b0A-1
+Received: by mail-qv1-f70.google.com with SMTP id ct11so1054077qvb.16
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2020 10:49:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=vmNyYTPYs3JCdBF+ZIoTNHkWx5u56IceN7DMWiQxD8c=;
- b=bdL4fbI6wR3x7FV0Mz6EOVLkEU9z50TE8WYj5MHVYIdewXzhOPeY9DeXk4aMbE0lFW
- TPSGcMaoUi3y9Q6gnFE0qRXYC28bBaBmk4ia/Am/WJNTw2IvCiKKVWRxHQKED8VLQkhp
- A1MGBGZ84toVt5m7LH4nxkllRq3fTxQ1Spw1ZJi0OfefxilImGQtB8vP7xErmsBpi8y1
- ZPYrJdoKyavRxs8lvMVACHJ3jDXJ1e2RpH1Za8L3TmxwlENbENbS6nxtetEMwRFUGKNb
- zI88Nh8KhwDWbsaHPVJYQIzsbGATcftrl3zLhHGCMz/+8PxzYj+KAD434ctVYDyKOgQb
- oU2Q==
-X-Gm-Message-State: AOAM530Hs8KeEWsXtzGU8fi4lVDAn1b7h5M0NzLzI3+m1uI1dckXVUL7
- yYR0NvC18H/W9WKqAictMtA=
-X-Received: by 2002:aca:dec3:: with SMTP id v186mr2896672oig.141.1603406933497; 
- Thu, 22 Oct 2020 15:48:53 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:329c:23ff:fee3:9d7c])
- by smtp.gmail.com with ESMTPSA id
- y194sm832132oie.22.2020.10.22.15.48.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Oct 2020 15:48:52 -0700 (PDT)
-Subject: Re: [PATCH v3 00/15] raspi: add the bcm2835 cprman clock manager
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
-References: <20201010135759.437903-1-luc@lmichel.fr>
- <f6c1ad96-ce36-e229-2a9d-d71070b82d82@amsat.org>
-From: Guenter Roeck <linux@roeck-us.net>
-Autocrypt: addr=linux@roeck-us.net; keydata=
- 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
- mDW4+i+XlNFUPUYMrIKi9joBhu18ssf5i5Q=
-Message-ID: <94d318b2-8b79-bfb5-25db-08de1029a156@roeck-us.net>
-Date: Thu, 22 Oct 2020 15:48:51 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=N+wk5azjipVwb/ehom8hAby13QOSHxndVwpdQUEw6bY=;
+ b=bnvpCroBt2pZcMC36PNcf+exQMRtRMQL9aGeQdAU7m6N7gvhTYZRPq8xNImmU3kgEF
+ 6fTlEqqrNwCNOuNIfnHI3a98jJqXRbV72U6B4t5noq3F/t0+1f1L+HKavLxeSeNcyH7p
+ xO6A9QnerOFods3hFe6vAz/h0Hqf1vOt3wXhz1CdSa0XkENysHF5Nwe1xb1EHypaNCkV
+ 5d1XdpmYRDDeeI3WNYUQUOQBaW9kZsPkNNz7wsxjbuVTgAO2x+dEAF4EKmm6CkU99cW8
+ kvlT8FUmScRTN+CgE0lHo4NHDUPu7evUWfOM5kWI1lurx+whAdtOyGrlV/d/YwN6t4nK
+ 6ZRQ==
+X-Gm-Message-State: AOAM533SACb2LcXDSW52jouhNurU3vKmPZNry0FkDLTMy2Q5DRJFCLBF
+ jA7O0a5+DXh1tWUI73Cnr/6ZadaDD9OcLJ2w6K583hMWpwBVf9Dt4GMr3whkWRNTNwgq+JBCZPN
+ S9pzuysxkH8I+
+X-Received: by 2002:a05:6214:1225:: with SMTP id
+ p5mr687489qvv.29.1601315341035; 
+ Mon, 28 Sep 2020 10:49:01 -0700 (PDT)
+X-Received: by 2002:a05:6214:1225:: with SMTP id
+ p5mr687448qvv.29.1601315340679; 
+ Mon, 28 Sep 2020 10:49:00 -0700 (PDT)
+Received: from xz-x1 (bras-vprn-toroon474qw-lp130-11-70-53-122-15.dsl.bell.ca.
+ [70.53.122.15])
+ by smtp.gmail.com with ESMTPSA id u10sm1191583qkk.14.2020.09.28.10.48.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Sep 2020 10:48:59 -0700 (PDT)
+Date: Mon, 28 Sep 2020 13:48:57 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Eugenio Perez Martin <eperezma@redhat.com>
+Subject: Re: [PATCH 5/5] memory: Skip bad range assertion if notifier is
+ DEVIOTLB_UNMAP type
+Message-ID: <20200928174857.GC59869@xz-x1>
+References: <20200625191651.5817-1-eperezma@redhat.com>
+ <20200903161446.29615-1-eperezma@redhat.com>
+ <20200903161446.29615-6-eperezma@redhat.com>
+ <d3e2098d-e150-7f99-a1ee-4a997daf4a5c@redhat.com>
+ <CAJaqyWfwGP7_Ex=NhG_po+A1BkN3OCV=+3Vwi8uhLJ_e4UA5NQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <f6c1ad96-ce36-e229-2a9d-d71070b82d82@amsat.org>
+In-Reply-To: <CAJaqyWfwGP7_Ex=NhG_po+A1BkN3OCV=+3Vwi8uhLJ_e4UA5NQ@mail.gmail.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=peterx@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::241;
- envelope-from=groeck7@gmail.com; helo=mail-oi1-x241.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.107,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 03:47:08
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -167,167 +137,106 @@ List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Juan Quintela <quintela@redhat.com>,
+ =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ qemu-level <qemu-devel@nongnu.org>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Avi Kivity <avi@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KXsfvabPmthQ
+X-TUID: a8G5dNFr9oKb
 
-Hi,
-
-On 10/22/20 3:06 PM, Philippe Mathieu-Daudé wrote:
-> Cc'ing Guenter who had a similar patch and might be interested
-> to test :)
+On Mon, Sep 28, 2020 at 11:05:01AM +0200, Eugenio Perez Martin wrote:
+> On Fri, Sep 4, 2020 at 6:34 AM Jason Wang <jasowang@redhat.com> wrote:
+> >
+> >
+> > On 2020/9/4 上午12:14, Eugenio Pérez wrote:
+> > > Device IOTLB invalidations can unmap arbitrary ranges, eiter outside of
+> > > the memory region or even [0, ~0ULL] for all the space. The assertion
+> > > could be hit by a guest, and rhel7 guest effectively hit it.
+> > >
+> > > Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+> > > Reviewed-by: Peter Xu <peterx@redhat.com>
+> > > Reviewed-by: Juan Quintela <quintela@redhat.com>
+> > > ---
+> > >   softmmu/memory.c | 13 +++++++++++--
+> > >   1 file changed, 11 insertions(+), 2 deletions(-)
+> > >
+> > > diff --git a/softmmu/memory.c b/softmmu/memory.c
+> > > index 8694fc7cf7..e723fcbaa1 100644
+> > > --- a/softmmu/memory.c
+> > > +++ b/softmmu/memory.c
+> > > @@ -1895,6 +1895,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+> > >   {
+> > >       IOMMUTLBEntry *entry = &event->entry;
+> > >       hwaddr entry_end = entry->iova + entry->addr_mask;
+> > > +    IOMMUTLBEntry tmp = *entry;
+> > >
+> > >       if (event->type == IOMMU_NOTIFIER_UNMAP) {
+> > >           assert(entry->perm == IOMMU_NONE);
+> > > @@ -1908,10 +1909,18 @@ void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+> > >           return;
+> > >       }
+> > >
+> > > -    assert(entry->iova >= notifier->start && entry_end <= notifier->end);
+> > > +    if (notifier->notifier_flags & IOMMU_NOTIFIER_DEVIOTLB_UNMAP) {
+> > > +        /* Crop (iova, addr_mask) to range */
+> > > +        tmp.iova = MAX(tmp.iova, notifier->start);
+> > > +        tmp.addr_mask = MIN(entry_end, notifier->end) - tmp.iova;
+> > > +        /* Confirm no underflow */
+> > > +        assert(MIN(entry_end, notifier->end) >= tmp.iova);
+> >
+> >
+> > It's still not clear to me why we need such assert. Consider
+> > notifier->end is the possible IOVA range but not possible device IOTLB
+> > invalidation range (e.g it allows [0, ULLONG_MAX]).
+> >
+> > Thanks
+> >
 > 
-
-great. I think my patch doesn't work anymore since qemu 5.0 (at least not
-for raspi3), and it was pretty hackish anyway. I'll give the series a try.
-
-Guenter
-
-> patch 16/15 fixup:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg752113.html
+> As far as I understood the device should admit that out of bounds
+> notifications in that case,
+> and the assert just makes sure that there was no underflow in
+> tmp.addr_mask, i.e., that something
+> very wrong that should never happen in production happened.
 > 
-> On 10/10/20 3:57 PM, Luc Michel wrote:
->> v2 -> v3:
->>    - patch 03: moved clock_new definition to hw/core/clock.c [Phil]
->>    - patch 03: commit message typo [Clement]
->>    - patch 10: clarifications around the CM_CTL/CM_DIBV mux registers.
->>                reg_cm replaced with reg_ctl and reg_div. Add some
->>                comments for clarity. [Phil]
->>    - patch 10: fixed update_mux_from_cm not matching the CM_DIV offset
->>                correctly. [Phil]
->>    - patch 11: replaced manual bitfield extraction with extract32 [Phil]
->>    - patch 11: added a visual representation of CM_DIV for clarity [Phil]
->>    - patch 11: added a missing return in clock_mux_update.
->>
->> v1 -> v2:
->>    - patch 05: Added a comment about MMIO .valid constraints [Phil]
->>    - patch 05: Added MMIO .impl [Phil]
->>    - patch 05: Moved init_internal_clock to the public clock API, renamed
->>      clock_new (new patch 03) [Phil]
->>    - patch 11: use muldiv64 for clock mux frequency output computation [Phil]
->>    - patch 11: add a check for null divisor (Phil: I dropped your r-b)
->>    - Typos, formatting, naming, style [Phil]
->>
->> Patches without review: 03, 11, 13
->>
->> Hi,
->>
->> This series add the BCM2835 CPRMAN clock manager peripheral to the
->> Raspberry Pi machine.
->>
->> Patches 1-4 are preliminary changes, patches 5-13 are the actual
->> implementation.
->>
->> The two last patches add a clock input to the PL011 and
->> connect it to the CPRMAN.
->>
->> This series has been tested with Linux 5.4.61 (the current raspios
->> version). It fixes the kernel Oops at boot time due to invalid UART
->> clock value, and other warnings/errors here and there because of bad
->> clocks or lack of CPRMAN.
->>
->> Here is the clock tree as seen by Linux when booted in QEMU:
->> (/sys/kernel/debug/clk/clk_summary with some columns removed)
->>
->>                          enable  prepare
->>     clock                 count    count          rate
->> -----------------------------------------------------
->>   otg                         0        0     480000000
->>   osc                         5        5      19200000
->>      gp2                      1        1         32768
->>      tsens                    0        0       1920000
->>      otp                      0        0       4800000
->>      timer                    0        0       1000002
->>      pllh                     4        4     864000000
->>         pllh_pix_prediv       1        1       3375000
->>            pllh_pix           0        0        337500
->>         pllh_aux              1        1     216000000
->>            vec                0        0     108000000
->>         pllh_rcal_prediv      1        1       3375000
->>            pllh_rcal          0        0        337500
->>      plld                     3        3    2000000024
->>         plld_dsi1             0        0       7812501
->>         plld_dsi0             0        0       7812501
->>         plld_per              3        3     500000006
->>            gp1                1        1      25000000
->>            uart               1        2      47999625
->>         plld_core             2        2     500000006
->>            sdram              0        0     166666668
->>      pllc                     3        3    2400000000
->>         pllc_per              1        1    1200000000
->>            emmc               0        0     200000000
->>         pllc_core2            0        0       9375000
->>         pllc_core1            0        0       9375000
->>         pllc_core0            2        2    1200000000
->>            vpu                1        1     700000000
->>               aux_spi2        0        0     700000000
->>               aux_spi1        0        0     700000000
->>               aux_uart        0        0     700000000
->>               peri_image      0        0     700000000
->>      plla                     2        2    2250000000
->>         plla_ccp2             0        0       8789063
->>         plla_dsi0             0        0       8789063
->>         plla_core             1        1     750000000
->>            h264               0        0     250000000
->>            isp                0        0     250000000
->>   dsi1p                       0        0             0
->>   dsi0p                       0        0             0
->>   dsi1e                       0        0             0
->>   dsi0e                       0        0             0
->>   cam1                        0        0             0
->>   cam0                        0        0             0
->>   dpi                         0        0             0
->>   tec                         0        0             0
->>   smi                         0        0             0
->>   slim                        0        0             0
->>   gp0                         0        0             0
->>   dft                         0        0             0
->>   aveo                        0        0             0
->>   pcm                         0        0             0
->>   pwm                         0        0             0
->>   hsm                         0        0             0
->>
->> It shows small differences with real hardware due other missing
->> peripherals for which the driver turn the clock off (like tsens).
->>
->> Luc Michel (15):
->>    hw/core/clock: provide the VMSTATE_ARRAY_CLOCK macro
->>    hw/core/clock: trace clock values in Hz instead of ns
->>    hw/core/clock: add the clock_new helper function
->>    hw/arm/raspi: fix CPRMAN base address
->>    hw/arm/raspi: add a skeleton implementation of the CPRMAN
->>    hw/misc/bcm2835_cprman: add a PLL skeleton implementation
->>    hw/misc/bcm2835_cprman: implement PLLs behaviour
->>    hw/misc/bcm2835_cprman: add a PLL channel skeleton implementation
->>    hw/misc/bcm2835_cprman: implement PLL channels behaviour
->>    hw/misc/bcm2835_cprman: add a clock mux skeleton implementation
->>    hw/misc/bcm2835_cprman: implement clock mux behaviour
->>    hw/misc/bcm2835_cprman: add the DSI0HSCK multiplexer
->>    hw/misc/bcm2835_cprman: add sane reset values to the registers
->>    hw/char/pl011: add a clock input
->>    hw/arm/bcm2835_peripherals: connect the UART clock
->>
->>   include/hw/arm/bcm2835_peripherals.h       |    5 +-
->>   include/hw/arm/raspi_platform.h            |    5 +-
->>   include/hw/char/pl011.h                    |    1 +
->>   include/hw/clock.h                         |   18 +
->>   include/hw/misc/bcm2835_cprman.h           |  210 ++++
->>   include/hw/misc/bcm2835_cprman_internals.h | 1019 ++++++++++++++++++++
->>   hw/arm/bcm2835_peripherals.c               |   15 +-
->>   hw/char/pl011.c                            |   45 +
->>   hw/core/clock.c                            |   21 +-
->>   hw/misc/bcm2835_cprman.c                   |  808 ++++++++++++++++
->>   hw/char/trace-events                       |    1 +
->>   hw/core/trace-events                       |    4 +-
->>   hw/misc/meson.build                        |    1 +
->>   hw/misc/trace-events                       |    5 +
->>   14 files changed, 2146 insertions(+), 12 deletions(-)
->>   create mode 100644 include/hw/misc/bcm2835_cprman.h
->>   create mode 100644 include/hw/misc/bcm2835_cprman_internals.h
->>   create mode 100644 hw/misc/bcm2835_cprman.c
->>
+> Peter, would you mind to confirm/correct it?
+
+I think Jason is right - since we have checked at the entry that the two
+regions cross over each other:
+
+    /*
+     * Skip the notification if the notification does not overlap
+     * with registered range.
+     */
+    if (notifier->start > entry_end || notifier->end < entry->iova) {
+        return;
+    }
+
+Then I don't see how this assertion can fail any more.
+
+But imho not a big problem either, and it shouldn't hurt to even keep the
+assertion of above isn't that straightforward.
+
+> 
+> Is there anything else needed to pull this patch?
+
+I didn't post a pull for this only because I shouldn't :) - the plan was that
+all vt-d patches will still go via Michael's tree, iiuc.  Though at least to me
+I think this series is acceptable for merging.
+
+Though it would always be good too if Jason would still like to review it.
+
+Jason, what's your opinion?
+
+Thanks,
+
+-- 
+Peter Xu
 

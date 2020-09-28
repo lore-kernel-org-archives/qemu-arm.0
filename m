@@ -1,543 +1,222 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3447849lfq;
-        Mon, 28 Sep 2020 01:44:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzmPUs5c52G2XYB6dHXzm2+RMhocV17pIHFogZnh7Qf+r4nnPfl3FbuKw9Jtd3e8yOrpolY
-X-Received: by 2002:a25:8291:: with SMTP id r17mr662971ybk.14.1601282685106;
-        Mon, 28 Sep 2020 01:44:45 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3460278lfq;
+        Mon, 28 Sep 2020 02:07:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzGUtcVsWDKTotEEvPy1GRtvVvmZSF+C+vYAApq8gKgbOlZinfik6Oq6Y/LJLfeqn8+VBm/
+X-Received: by 2002:a25:c688:: with SMTP id k130mr621744ybf.51.1601284063252;
+        Mon, 28 Sep 2020 02:07:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601284063; cv=none;
+        d=google.com; s=arc-20160816;
+        b=1IgKFb0GY8b0PmjCPawVcjjoMOBYvAkUxbR31XdBEabLc4oGsvy3GwyE86hs9Sap19
+         ZXnAksB/D1N+8gHsBDErznKMoTE0m0eykI6nAeUyTuMKpKbNrnZQpHlggDlmSGkCMoyS
+         YgS6QVCwsl7BIzw62ymbqQwm1xCRCz0j0WctyoMgOemaM4vO2oFwBB4gG4FDRp28VJB1
+         AQ3EI0q9KWPxE7xWoIDZt3lhBCwOWCGLD9ItrxIpwrGG50p1PvrxV7AR1KjZ0fBQICb4
+         bo4SoS6ahmEwH2hJfnfKcTLyIK1j0374gtWnkq/LfC2jxOMR5BllV/6GonH+C5Wxnoa9
+         51Pw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=aSt6WEPX6H6arXqRj+mcB74HYWVBtA4o6zZCZbr+014=;
+        b=j29EohA/iIRY1X7Kk8Cn55jFbB+A+ED2PZIGgDm6EhmOM0qza/Q76OXwUAexPoTvpH
+         L2+8bzQOwD2tdPRDk0kUmA2d8qeRR3oA1lr5YY2DjCjD3qgyyeP8gqUTcqevhqRIOgkC
+         KKjAOQIdl4J44CCiqJMR1+PGGWSceRqsHD0W6ZI8YEHkQ8AvPbgs7/CsNgcbAp8UzRDZ
+         T73BatSu/8ZEAiL0GFNcdcOXkFC/i6vAr6gNgyInLYAOEH7N9qugjAsxTLKd+JUwWamk
+         Zh6xsI/B+zCwypiYn55jz/jmQRV32Us7caA6+2dO+VlnCbJppwKnKmRM4JnzVfJ7VnW6
+         R/Rg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AYXLQjkz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o7si253306ybb.244.2020.09.28.01.44.44
+        by mx.google.com with ESMTPS id j2si265520ybo.247.2020.09.28.02.07.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Sep 2020 01:44:45 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Sep 2020 02:07:43 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=jLkSaD5K;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:44576 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AYXLQjkz;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51592 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kMom4-0002QC-GC
-	for alex.bennee@linaro.org; Mon, 28 Sep 2020 04:44:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39428)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kMp8I-0001Oc-Ju
+	for alex.bennee@linaro.org; Mon, 28 Sep 2020 05:07:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44722)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kMolm-0002N9-2u; Mon, 28 Sep 2020 04:44:26 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:38386)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kMoli-0006qO-Hk; Mon, 28 Sep 2020 04:44:25 -0400
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 04627C60F16;
- Mon, 28 Sep 2020 08:44:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1601282658;
- h=from:from:sender:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1kMp6N-0000Ga-R9
+ for qemu-devel@nongnu.org; Mon, 28 Sep 2020 05:05:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:47856)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1kMp6M-0001Br-3X
+ for qemu-devel@nongnu.org; Mon, 28 Sep 2020 05:05:43 -0400
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601283940;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=a7p/ZRkBzOPd0Kwm2PsShPYq0X/tujgngw7ugmyBZpA=;
- b=jLkSaD5K8jiKhRlAddzRAP6V9aPklE6mA3NCng7c8JpdQs0V3sN5BJw/hjTALQybpbnK2S
- w4XmofwNHZkuIOnZLR5erwmOt7yiunfpjjdPQYGE38a3seoyLCIo57Xge09ptOwm1QaMwT
- cAP7gXTu1v4aNAIuGIk0WFeDGCLAswxj6WPaZ8ngr4W6l5jzQlBNrKZ5xGcari9CHTyyEY
- eXkWyWkJkm0YF4KO+lNAONdhlKwklRntpBhx9QV9xU5DWrKyA1mMaTBhk96E4Lq5YGSxrA
- /ebEVvVJAHBqeN3VPE8nVBTCYzUD+q3PyhXhvOtoMoOFto9dBLO/kTsicxwJFQ==
-Date: Mon, 28 Sep 2020 10:45:15 +0200
-From: Luc Michel <luc@lmichel.fr>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 04/14] hw/arm/raspi: add a skeleton implementation of the
- cprman
-Message-ID: <20200928084515.r7s3cl6jlzm465iw@sekoia-pc.home.lmichel.fr>
-References: <20200925101731.2159827-1-luc@lmichel.fr>
- <20200925101731.2159827-5-luc@lmichel.fr>
- <85ccb491-8d4a-caf3-595d-7415471f5dc7@amsat.org>
+ bh=aSt6WEPX6H6arXqRj+mcB74HYWVBtA4o6zZCZbr+014=;
+ b=AYXLQjkzT0FUXnZh0et2q//09h2F7zbHsUL1aWjRTECLc6cyExoc5Yeyx8kIlmkQtfblg0
+ xDngbRtL4BpDCNrZC5aXx3ZV/5VODuweoq3aKjhHk7ntmrK4mm24a9L6BVic+Er7x1HSpz
+ 3TsklESpFiiMNTZwYfm/sqRcW/EgcAE=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-136-zIOkishVOLeo3lA7FEXdlQ-1; Mon, 28 Sep 2020 05:05:38 -0400
+X-MC-Unique: zIOkishVOLeo3lA7FEXdlQ-1
+Received: by mail-qt1-f197.google.com with SMTP id h31so172722qtd.14
+ for <qemu-devel@nongnu.org>; Mon, 28 Sep 2020 02:05:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=aSt6WEPX6H6arXqRj+mcB74HYWVBtA4o6zZCZbr+014=;
+ b=I0s4NIquCsKQZopwuF7DkwB61jHe8RxCBGoAbTUsghp3T7z6YC6Oan63xDhkbPS0bB
+ V36jQtWyXvug+/7Cgc9qhNTUlNHz4SMGB/bkRjyWdwwQ4XZByeB8pSCqKxue98ZOeggo
+ BGopqD6rGwXxmbhrOuqUyaQ8NW/uReY1B9tnWEVlB+dF/Z5JOdIuvQJyvbsvOFMoCXJ2
+ IxHVQtxXi+IkzGHW8vNgZHJbLnOL0QFbF7QvpCyVGnjR2o6sPdDsP/1IhTPgeE1mFNzJ
+ s9bpw4Q9m82ClN7l4eCta7zIwH4P3rIoJw8ljfBPDrw/LHORA6GfKs0Fdncm7Go9C09N
+ wG5w==
+X-Gm-Message-State: AOAM530uFZS7F5LskZ4jY0z0/YDgoVlDz9o6VE4cjsA78lLE1SXWz+xy
+ ex8C/S+LfDZ48fXC/MNGQLTR0ZFm6DtiKrFJg5fdQ1By+DVaOYM9vLOdoPnGM18AFBWsfAujGKe
+ 4JSFOQsO5A5vTd0M6BHnLSMWsItgSbyo=
+X-Received: by 2002:a05:6214:a11:: with SMTP id
+ dw17mr10564622qvb.62.1601283938227; 
+ Mon, 28 Sep 2020 02:05:38 -0700 (PDT)
+X-Received: by 2002:a05:6214:a11:: with SMTP id
+ dw17mr10564590qvb.62.1601283937959; 
+ Mon, 28 Sep 2020 02:05:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <85ccb491-8d4a-caf3-595d-7415471f5dc7@amsat.org>
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1601282659;
- h=from:from:sender:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=a7p/ZRkBzOPd0Kwm2PsShPYq0X/tujgngw7ugmyBZpA=;
- b=SLU8xjsTkXKzum9ANpkjKpj7sPWu/sf69fSLUAaS90RvlkuFixnwLpzwPwc9DDjqLYbyqJ
- aNBAAi+aEOjMjiJuXgYBiIp9kqNjgesGnLJGErlyEKieuMnFpQ/vc93F2IFsPtVZZWyhc/
- VhonWfD4YNt8eBV+Syg8eF2x2esO+AfOTWEoExz7oALiLu4YRIZrZ/pZJNZX0NUswORBrW
- ZloWg/zvfs9g5+HesxIGKcv0FXeVuLAppk0PeKrVjXW4Zv2Fs1A9ti/qL3azvOSF49otwR
- KnL2dy1ah7hiKfqa2yoXYjvtP37IlsXx+L4f+uLtbd/V26LCFQ0tB90NomAGSA==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601282659; a=rsa-sha256; cv=none;
- b=RaCtidxvCgOlknA5M+WcUVLu1FEAwmszM+Sm56eJv1OiAMbKPYjwTZKMlaOxSrvxlXSEaMeZFlyYuPTXUof58HeSZCVD8niO/eTu8CNvKf/KXmupCcgggQIMtyViVOgalmwr69EOg8zisPZWi9M8ohv4wd7lakRF7sDiqV0YnsExiTDp+4SM2wXRIWMg6P1Y2FbH6S2+6oM3cjYbTjKeuRQee34/bMTPm/IsN7srEVbTcsKCxCKZT7wlV/CyflXll65hP51vN10nYaCl5fAL99248z069Imk2d8S/r+hT4R4Jhci/l5DZTGStems4E9VMnxr4JeJmNlkDCpKc+2GfQ==
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=sekoia smtp.mailfrom=luc@lmichel.fr
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 03:49:40
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20200625191651.5817-1-eperezma@redhat.com>
+ <20200903161446.29615-1-eperezma@redhat.com>
+ <20200903161446.29615-6-eperezma@redhat.com>
+ <d3e2098d-e150-7f99-a1ee-4a997daf4a5c@redhat.com>
+In-Reply-To: <d3e2098d-e150-7f99-a1ee-4a997daf4a5c@redhat.com>
+From: Eugenio Perez Martin <eperezma@redhat.com>
+Date: Mon, 28 Sep 2020 11:05:01 +0200
+Message-ID: <CAJaqyWfwGP7_Ex=NhG_po+A1BkN3OCV=+3Vwi8uhLJ_e4UA5NQ@mail.gmail.com>
+Subject: Re: [PATCH 5/5] memory: Skip bad range assertion if notifier is
+ DEVIOTLB_UNMAP type
+To: Jason Wang <jasowang@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eperezma@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 03:47:08
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.576,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: XrUJhTmF9jqb
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-level <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
+ Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: e5PvPAuxSLN+
 
-On 23:05 Sat 26 Sep     , Philippe Mathieu-Daudé wrote:
-> On 9/25/20 12:17 PM, Luc Michel wrote:
-> > The BCM2835 cprman is the clock manager of the SoC. It is composed of a
-> 
-> Can we use CPRMAN in caps?
-> 
-> > main oscillator, and several sub-components (PLLs, multiplexers, ...) to
-> > generate the BCM2835 clock tree.
-> > 
-> > This commit adds a skeleton of the cprman, with a dummy register
-> > read/write implementation. It embeds the main oscillator (xosc) from
-> > which all the clocks will be derived.
-> > 
-> > Signed-off-by: Luc Michel <luc@lmichel.fr>
+On Fri, Sep 4, 2020 at 6:34 AM Jason Wang <jasowang@redhat.com> wrote:
+>
+>
+> On 2020/9/4 =E4=B8=8A=E5=8D=8812:14, Eugenio P=C3=A9rez wrote:
+> > Device IOTLB invalidations can unmap arbitrary ranges, eiter outside of
+> > the memory region or even [0, ~0ULL] for all the space. The assertion
+> > could be hit by a guest, and rhel7 guest effectively hit it.
+> >
+> > Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
+> > Reviewed-by: Peter Xu <peterx@redhat.com>
+> > Reviewed-by: Juan Quintela <quintela@redhat.com>
 > > ---
-> >  include/hw/arm/bcm2835_peripherals.h       |   3 +-
-> >  include/hw/misc/bcm2835_cprman.h           |  37 +++++
-> >  include/hw/misc/bcm2835_cprman_internals.h |  24 +++
-> >  hw/arm/bcm2835_peripherals.c               |  11 +-
-> >  hw/misc/bcm2835_cprman.c                   | 171 +++++++++++++++++++++
-> >  hw/misc/meson.build                        |   1 +
-> >  hw/misc/trace-events                       |   5 +
-> >  7 files changed, 250 insertions(+), 2 deletions(-)
-> >  create mode 100644 include/hw/misc/bcm2835_cprman.h
-> >  create mode 100644 include/hw/misc/bcm2835_cprman_internals.h
-> >  create mode 100644 hw/misc/bcm2835_cprman.c
-> > 
-> > diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-> > index 199088425a..002bb5e73b 100644
-> > --- a/include/hw/arm/bcm2835_peripherals.h
-> > +++ b/include/hw/arm/bcm2835_peripherals.h
-> > @@ -21,10 +21,11 @@
-> >  #include "hw/misc/bcm2835_property.h"
-> >  #include "hw/misc/bcm2835_rng.h"
-> >  #include "hw/misc/bcm2835_mbox.h"
-> >  #include "hw/misc/bcm2835_mphi.h"
-> >  #include "hw/misc/bcm2835_thermal.h"
-> > +#include "hw/misc/bcm2835_cprman.h"
-> >  #include "hw/sd/sdhci.h"
-> >  #include "hw/sd/bcm2835_sdhost.h"
-> >  #include "hw/gpio/bcm2835_gpio.h"
-> >  #include "hw/timer/bcm2835_systmr.h"
-> >  #include "hw/usb/hcd-dwc2.h"
-> > @@ -45,11 +46,11 @@ struct BCM2835PeripheralState {
-> >  
-> >      BCM2835SystemTimerState systmr;
-> >      BCM2835MphiState mphi;
-> >      UnimplementedDeviceState armtmr;
-> >      UnimplementedDeviceState powermgt;
-> > -    UnimplementedDeviceState cprman;
-> > +    BCM2835CprmanState cprman;
-> >      PL011State uart0;
-> >      BCM2835AuxState aux;
-> >      BCM2835FBState fb;
-> >      BCM2835DMAState dma;
-> >      BCM2835ICState ic;
-> > diff --git a/include/hw/misc/bcm2835_cprman.h b/include/hw/misc/bcm2835_cprman.h
-> > new file mode 100644
-> > index 0000000000..de9bd01b23
-> > --- /dev/null
-> > +++ b/include/hw/misc/bcm2835_cprman.h
-> > @@ -0,0 +1,37 @@
-> > +/*
-> > + * BCM2835 cprman clock manager
-> > + *
-> > + * Copyright (c) 2020 Luc Michel <luc@lmichel.fr>
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + */
-> > +
-> > +#ifndef HW_MISC_CPRMAN_H
-> > +#define HW_MISC_CPRMAN_H
-> > +
-> > +#include "hw/sysbus.h"
-> > +#include "hw/qdev-clock.h"
-> > +
-> > +#define TYPE_BCM2835_CPRMAN "bcm2835-cprman"
-> > +
-> > +typedef struct BCM2835CprmanState BCM2835CprmanState;
-> > +
-> > +DECLARE_INSTANCE_CHECKER(BCM2835CprmanState, CPRMAN,
-> > +                         TYPE_BCM2835_CPRMAN)
-> > +
-> > +#define CPRMAN_NUM_REGS (0x2000 / sizeof(uint32_t))
-> > +
-> > +struct BCM2835CprmanState {
-> > +    /*< private >*/
-> > +    SysBusDevice parent_obj;
-> > +
-> > +    /*< public >*/
-> > +    MemoryRegion iomem;
-> > +
-> > +    uint32_t regs[CPRMAN_NUM_REGS];
-> > +    uint32_t xosc_freq;
-> > +
-> > +    Clock *xosc;
-> > +};
-> > +
-> > +#endif
-> > diff --git a/include/hw/misc/bcm2835_cprman_internals.h b/include/hw/misc/bcm2835_cprman_internals.h
-> > new file mode 100644
-> > index 0000000000..6a10b60930
-> > --- /dev/null
-> > +++ b/include/hw/misc/bcm2835_cprman_internals.h
-> > @@ -0,0 +1,24 @@
-> > +/*
-> > + * BCM2835 cprman clock manager
-> > + *
-> > + * Copyright (c) 2020 Luc Michel <luc@lmichel.fr>
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + */
-> > +
-> > +#ifndef HW_MISC_CPRMAN_INTERNALS_H
-> > +#define HW_MISC_CPRMAN_INTERNALS_H
-> > +
-> > +#include "hw/registerfields.h"
-> > +#include "hw/misc/bcm2835_cprman.h"
-> > +
-> > +/* Register map */
-> > +
-> > +/*
-> > + * This field is common to all registers. Each register write value must match
-> > + * the CPRMAN_PASSWORD magic value in its 8 MSB.
-> > + */
-> > +FIELD(CPRMAN, PASSWORD, 24, 8)
-> > +#define CPRMAN_PASSWORD 0x5a
-> 
-> s/PASSWORD/KEY/?
-I'm not a big fan of this name either, but this is actually how this
-field is named in the datasheet and in various sources.
+> >   softmmu/memory.c | 13 +++++++++++--
+> >   1 file changed, 11 insertions(+), 2 deletions(-)
+> >
+> > diff --git a/softmmu/memory.c b/softmmu/memory.c
+> > index 8694fc7cf7..e723fcbaa1 100644
+> > --- a/softmmu/memory.c
+> > +++ b/softmmu/memory.c
+> > @@ -1895,6 +1895,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier=
+ *notifier,
+> >   {
+> >       IOMMUTLBEntry *entry =3D &event->entry;
+> >       hwaddr entry_end =3D entry->iova + entry->addr_mask;
+> > +    IOMMUTLBEntry tmp =3D *entry;
+> >
+> >       if (event->type =3D=3D IOMMU_NOTIFIER_UNMAP) {
+> >           assert(entry->perm =3D=3D IOMMU_NONE);
+> > @@ -1908,10 +1909,18 @@ void memory_region_notify_iommu_one(IOMMUNotifi=
+er *notifier,
+> >           return;
+> >       }
+> >
+> > -    assert(entry->iova >=3D notifier->start && entry_end <=3D notifier=
+->end);
+> > +    if (notifier->notifier_flags & IOMMU_NOTIFIER_DEVIOTLB_UNMAP) {
+> > +        /* Crop (iova, addr_mask) to range */
+> > +        tmp.iova =3D MAX(tmp.iova, notifier->start);
+> > +        tmp.addr_mask =3D MIN(entry_end, notifier->end) - tmp.iova;
+> > +        /* Confirm no underflow */
+> > +        assert(MIN(entry_end, notifier->end) >=3D tmp.iova);
+>
+>
+> It's still not clear to me why we need such assert. Consider
+> notifier->end is the possible IOVA range but not possible device IOTLB
+> invalidation range (e.g it allows [0, ULLONG_MAX]).
+>
+> Thanks
+>
 
-See:
-  - https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
-    (page 107)
-  - https://elinux.org/BCM2835_registers#CM (auto-generated from
-    Broadcom GPU related code)
-  - The Linux driver also use this name FWIW.
-> 
-> > +
-> > +#endif
-> > diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-> > index f0802c91e0..958aadeeb9 100644
-> > --- a/hw/arm/bcm2835_peripherals.c
-> > +++ b/hw/arm/bcm2835_peripherals.c
-> > @@ -119,10 +119,13 @@ static void bcm2835_peripherals_init(Object *obj)
-> >      object_initialize_child(obj, "mphi", &s->mphi, TYPE_BCM2835_MPHI);
-> >  
-> >      /* DWC2 */
-> >      object_initialize_child(obj, "dwc2", &s->dwc2, TYPE_DWC2_USB);
-> >  
-> > +    /* CPRMAN clock manager */
-> > +    object_initialize_child(obj, "cprman", &s->cprman, TYPE_BCM2835_CPRMAN);
-> > +
-> >      object_property_add_const_link(OBJECT(&s->dwc2), "dma-mr",
-> >                                     OBJECT(&s->gpu_bus_mr));
-> >  }
-> >  
-> >  static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-> > @@ -158,10 +161,17 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-> >      /* Interrupt Controller */
-> >      if (!sysbus_realize(SYS_BUS_DEVICE(&s->ic), errp)) {
-> >          return;
-> >      }
-> >  
-> > +    /* CPRMAN clock manager */
-> > +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->cprman), errp)) {
-> > +        return;
-> > +    }
-> > +    memory_region_add_subregion(&s->peri_mr, CPRMAN_OFFSET,
-> > +                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->cprman), 0));
-> > +
-> >      memory_region_add_subregion(&s->peri_mr, ARMCTRL_IC_OFFSET,
-> >                  sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ic), 0));
-> >      sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
-> >  
-> >      /* Sys Timer */
-> > @@ -343,11 +353,10 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-> >          qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
-> >                                 INTERRUPT_USB));
-> >  
-> >      create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
-> >      create_unimp(s, &s->powermgt, "bcm2835-powermgt", PM_OFFSET, 0x114);
-> > -    create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x2000);
-> >      create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
-> >      create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
-> >      create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
-> >      create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
-> >      create_unimp(s, &s->i2c[0], "bcm2835-i2c0", BSC0_OFFSET, 0x20);
-> > diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-> > new file mode 100644
-> > index 0000000000..d2ea0c9236
-> > --- /dev/null
-> > +++ b/hw/misc/bcm2835_cprman.c
-> > @@ -0,0 +1,171 @@
-> > +/*
-> > + * BCM2835 cprman clock manager
-> > + *
-> > + * Copyright (c) 2020 Luc Michel <luc@lmichel.fr>
-> > + *
-> > + * SPDX-License-Identifier: GPL-2.0-or-later
-> > + */
-> > +
-> > +/*
-> > + * This peripheral is roughly divided into 3 main parts:
-> > + *   - the PLLs
-> > + *   - the PLL channels
-> > + *   - the clock muxes
-> > + *
-> > + * A main oscillator (xosc) feeds all the PLLs. Each PLLs has one or more
-> > + * channels. Those channel are then connected to the clock muxes. Each mux has
-> > + * multiples sources (usually the xosc, some of the PLL channels and some "test
-> > + * debug" clocks). It can selects one or the other through a control register.
-> 
-> "It" is unclear (to me) in this sentence. Assuming the mux.
-> 
-> > + * Each mux has one output clock that also goes out of the CPRMAN. It usually
-> 
-> Here is "It" the mux or the output clock? Assuming the mux.
-> 
-> > + * connects to another peripheral in the SoC (so a given mux is dedicated to a
-> > + * peripheral).
-> > + *
-> > + * At each level (PLL, channel and mux), the clock can be altered through
-> > + * dividers (and multipliers in case of the PLLs), and can be disabled (in this
-> > + * case, the next levels see no clock).
-> > + *
-> > + * This can be sum-up as follows (this is an example and not the actual BCM2835
-> > + * clock tree):
-> > + *
-> > + *          /-->[PLL]-|->[PLL channel]--...            [mux]--> to peripherals
-> > + *          |         |->[PLL channel]  muxes takes    [mux]
-> > + *          |         \->[PLL channel]  inputs from    [mux]
-> > + *          |                           some channels  [mux]
-> > + * [xosc]---|-->[PLL]-|->[PLL channel]  and other srcs [mux]
-> > + *          |         \->[PLL channel]           ...-->[mux]
-> > + *          |                                          [mux]
-> > + *          \-->[PLL]--->[PLL channel]                 [mux]
-> > + *
-> > + * The page at https://elinux.org/The_Undocumented_Pi gives the actual clock
-> > + * tree configuration.
-> > + */
-> > +
-> > +#include "qemu/osdep.h"
-> > +#include "qemu/log.h"
-> > +#include "migration/vmstate.h"
-> > +#include "hw/qdev-properties.h"
-> > +#include "hw/misc/bcm2835_cprman.h"
-> > +#include "hw/misc/bcm2835_cprman_internals.h"
-> > +#include "trace.h"
-> > +
-> > +/* CPRMAN "top level" model */
-> > +
-> > +static uint64_t cprman_read(void *opaque, hwaddr offset,
-> > +                                    unsigned size)
-> 
-> Indent off.
-> 
-> > +{
-> > +    BCM2835CprmanState *s = CPRMAN(opaque);
-> > +    uint64_t r = 0;
-> > +    size_t idx = offset / sizeof(uint32_t);
-> > +
-> > +    switch (idx) {
-> > +    default:
-> > +        r = s->regs[idx];
-> > +    }
-> > +
-> > +    trace_bcm2835_cprman_read(offset, r);
-> > +    return r;
-> > +}
-> > +
-> > +static void cprman_write(void *opaque, hwaddr offset,
-> > +                         uint64_t value, unsigned size)
-> > +{
-> > +    BCM2835CprmanState *s = CPRMAN(opaque);
-> > +    size_t idx = offset / sizeof(uint32_t);
-> > +
-> > +    if (FIELD_EX32(value, CPRMAN, PASSWORD) != CPRMAN_PASSWORD) {
-> > +        trace_bcm2835_cprman_write_invalid_magic(offset, value);
-> > +        return;
-> > +    }
-> > +
-> > +    value &= ~R_CPRMAN_PASSWORD_MASK;
-> > +
-> > +    trace_bcm2835_cprman_write(offset, value);
-> > +    s->regs[idx] = value;
-> > +
-> > +}
-> > +
-> > +static const MemoryRegionOps cprman_ops = {
-> > +    .read = cprman_read,
-> > +    .write = cprman_write,
-> > +    .endianness = DEVICE_LITTLE_ENDIAN,
-> > +    .valid      = {
-> > +        .min_access_size        = 4,
-> > +        .max_access_size        = 4,
-> 
-> I couldn't find this in the public datasheets (any pointer?).
-> 
-> Since your implementation is 32bit, can you explicit .impl
-> min/max = 4?
+As far as I understood the device should admit that out of bounds
+notifications in that case,
+and the assert just makes sure that there was no underflow in
+tmp.addr_mask, i.e., that something
+very wrong that should never happen in production happened.
 
-I could not find this information either, but I assumed this is the
-case, mainly because of the 'PASSWORD' field in all registers.
+Peter, would you mind to confirm/correct it?
 
-Regarding .impl, I thought that having .valid was enough?
-
-> 
-> > +        .unaligned              = false,
-> > +    },
-> > +};
-> > +
-> > +static void cprman_reset(DeviceState *dev)
-> > +{
-> > +    BCM2835CprmanState *s = CPRMAN(dev);
-> > +
-> > +    memset(s->regs, 0, sizeof(s->regs));
-> > +
-> > +    clock_update_hz(s->xosc, s->xosc_freq);
-> > +}
-> > +
-> > +static Clock *init_internal_clock(BCM2835CprmanState *s,
-> > +                                  const char *name)
-> 
-> Interesting. Shouldn't this be a public function from the
-> Clock API? (Taking Object + name arguments)?
-> 
-Yes, I hesitated to do just that. I'll add a patch for it when I re-roll.
-> > +{
-> > +    Object *obj;
-> > +    Clock *clk;
-> > +
-> > +    obj = object_new(TYPE_CLOCK);
-> > +    object_property_add_child(OBJECT(s), name, obj);
-> > +    object_unref(obj);
-> > +
-> > +    clk = CLOCK(obj);
-> > +    clock_setup_canonical_path(clk);
-> > +
-> > +    return clk;
-> > +}
-> > +
-> > +static void cprman_init(Object *obj)
-> > +{
-> > +    BCM2835CprmanState *s = CPRMAN(obj);
-> > +
-> > +    s->xosc = init_internal_clock(s, "xosc");
-> > +
-> > +    memory_region_init_io(&s->iomem, obj, &cprman_ops,
-> > +                          s, "bcm2835-cprman", 0x2000);
-> 
-> Again assuming this is a 8KB MMIO device:
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Is there anything else needed to pull this patch?
 
 Thanks!
 
--- 
-Luc
-
-> 
-> > +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-> > +}
-> > +
-> > +static const VMStateDescription cprman_vmstate = {
-> > +    .name = TYPE_BCM2835_CPRMAN,
-> > +    .version_id = 1,
-> > +    .minimum_version_id = 1,
-> > +    .fields = (VMStateField[]) {
-> > +        VMSTATE_UINT32_ARRAY(regs, BCM2835CprmanState, CPRMAN_NUM_REGS),
-> > +        VMSTATE_END_OF_LIST()
+>
+> > +    } else {
+> > +        assert(entry->iova >=3D notifier->start && entry_end <=3D noti=
+fier->end);
 > > +    }
-> > +};
-> > +
-> > +static Property cprman_properties[] = {
-> > +    DEFINE_PROP_UINT32("xosc-freq", BCM2835CprmanState, xosc_freq, 19200000),
-> 
-> Eventually "xosc-freq-hz".
-> 
-> > +    DEFINE_PROP_END_OF_LIST()
-> > +};
-> > +
-> > +static void cprman_class_init(ObjectClass *klass, void *data)
-> > +{
-> > +    DeviceClass *dc = DEVICE_CLASS(klass);
-> > +
-> > +    dc->reset = cprman_reset;
-> > +    dc->vmsd = &cprman_vmstate;
-> > +    device_class_set_props(dc, cprman_properties);
-> > +}
-> > +
-> > +static const TypeInfo cprman_info = {
-> > +    .name = TYPE_BCM2835_CPRMAN,
-> > +    .parent = TYPE_SYS_BUS_DEVICE,
-> > +    .instance_size = sizeof(BCM2835CprmanState),
-> > +    .class_init = cprman_class_init,
-> > +    .instance_init = cprman_init,
-> > +};
-> > +
-> > +static void cprman_register_types(void)
-> > +{
-> > +    type_register_static(&cprman_info);
-> > +}
-> > +
-> > +type_init(cprman_register_types);
-> > diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-> > index 793d45b1dc..c94cf70e82 100644
-> > --- a/hw/misc/meson.build
-> > +++ b/hw/misc/meson.build
-> > @@ -71,10 +71,11 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files(
-> >    'bcm2835_mbox.c',
-> >    'bcm2835_mphi.c',
-> >    'bcm2835_property.c',
-> >    'bcm2835_rng.c',
-> >    'bcm2835_thermal.c',
-> > +  'bcm2835_cprman.c',
-> >  ))
-> >  softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
-> >  softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c', 'zynq-xadc.c'))
-> >  softmmu_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_true: files('stm32f2xx_syscfg.c'))
-> >  softmmu_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx_syscfg.c'))
-> > diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-> > index 6054f9adf3..d718a2b177 100644
-> > --- a/hw/misc/trace-events
-> > +++ b/hw/misc/trace-events
-> > @@ -224,5 +224,10 @@ grlib_ahb_pnp_read(uint64_t addr, uint32_t value) "AHB PnP read addr:0x%03"PRIx6
-> >  grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx64" data:0x%08x"
-> >  
-> >  # pca9552.c
-> >  pca955x_gpio_status(const char *description, const char *buf) "%s GPIOs 0-15 [%s]"
-> >  pca955x_gpio_change(const char *description, unsigned id, unsigned prev_state, unsigned current_state) "%s GPIO id:%u status: %u -> %u"
-> > +
-> > +# bcm2835_cprman.c
-> > +bcm2835_cprman_read(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " value:0x%" PRIx64
-> > +bcm2835_cprman_write(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " value:0x%" PRIx64
-> > +bcm2835_cprman_write_invalid_magic(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " value:0x%" PRIx64
-> > 
+> >
+> >       if (event->type & notifier->notifier_flags) {
+> > -        notifier->notify(notifier, entry);
+> > +        notifier->notify(notifier, &tmp);
+> >       }
+> >   }
+> >
+>
+

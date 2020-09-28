@@ -1,397 +1,142 @@
-Received: by 2002:a19:690d:0:0:0:0:0 with SMTP id e13csp258522lfc;
-        Tue, 9 Feb 2021 03:04:36 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwHPZPnPZmfsboG1SD56mNCT8Qb3Jdoso4ULONB5z8dVDYsU2kZHc3tTG52uyqTITY06ezK
-X-Received: by 2002:a25:b8b:: with SMTP id 133mr1407275ybl.280.1612868675923;
-        Tue, 09 Feb 2021 03:04:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612868675; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3779650lfq;
+        Mon, 28 Sep 2020 09:18:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwLcwtrrummH3zC7j62uF4weHmggx3WfI/EaRQxqnV3aG3ktsGPXt67XHRXNpS0VMWWfYQv
+X-Received: by 2002:a25:ac99:: with SMTP id x25mr427956ybi.13.1601309934058;
+        Mon, 28 Sep 2020 09:18:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601309934; cv=none;
         d=google.com; s=arc-20160816;
-        b=Zpxz5YQZ3bSYjeu9lRshQmoiUrL2W+N+9qmNeMOqai0JAG4R0uDMSpVeMXkt+V8Rhu
-         jkeOz4A1spFat2YpRUhAmj8lisjhRnJxTu1tPrLEEFZ0EeRWI+mH99QB+Zv/DdKZ0cZ5
-         qd3MkMkoXLyilAREQvs1unLpet1cXN/fd8eztLI+lwPgd/d/DjdLRPHoknybSwNr7wnP
-         IuDsbyDbNGe4gf6qC3puYo9vWiC4L4lCxOHZECaZlYZJxKUZDWlgj7O9+HtALLgssg/K
-         eQt7UbFa9H/Hj1PA3ZBwsurU46awkokL0YEpmIxNmYwmkaeWSvwYnyyj7K+MUH/LqqJb
-         xrJA==
+        b=PiN5nGRLuTC9Oh7EXEmRl1Tu7XMJtJDcaizrx0dxPZw/2jCcnWM41akjo4RqsIU1QV
+         D+7f7WHeuXTJmRH0pvqc0opIJ66UXGaCgB3bqb/nMQMqIwkKdj/BLfhjZgyAsBS6SOOk
+         tU5T8KDBGKyCJKGJ0A5Exi9cMXy+4pN9FXdbNV2RAA5Lh5qvCX8OHalqCTnKILVRRGxX
+         l3s2lqDhRooSQWBZ4Cki9VyrX/IefphCnxV/DCfEl1yHeqjpNr019hr1v61Rnszd2Yrv
+         pD5aC1rhb40ocYE1ORjworNFf/IUYZgwtpQkYbJtl32QDAEXK6fg3usl8KtMaGY80M0h
+         hp7A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :mime-version:message-id:subject:to:from:date:dkim-signature;
-        bh=0WWcMg4JsER/8CpHpHb1Sg9R4hoc8deFkLkW0zU4jvs=;
-        b=wI8Tuyn/1KmtEk7hcN4HWvHy37HvDsL5eZLD+x9xCytahwO5dsewqKYJNWU+idNoQi
-         Yzf3s7aHtR9GI4WRUo51wwHDb9srrx6MxF0NG1tWAdEoA9UvQKJ1tlU3zW0i/6zKguk3
-         mOpw3CpZkeYwm/Zc9KAnrNzRI2sWDgyjw2M64S8x5Lfa6v4qjG+CuotNIdCPW6vCzlaL
-         BDV8Ah3r8SsDbDQsjcIWcTmaGPFO/lF8n+leJgPj5jZ1O0UVN15qSTs3F6iTl5TAr36Y
-         mGA8VLNesqnYaI2H7TR6l/G0DDDRtfk4Qy/X6/x6oRLc3YRBdNS2/+1AVYeAQz7pQ/Me
-         95GQ==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :mime-version:dkim-signature;
+        bh=NuD0lMwvpzn5vDhe8ZM0TLc0R2Pl21Ma5DHqG/maFe4=;
+        b=tQlQDfX+cPrP9rHoM4F7TTGFsGPhjEBKcuId2ZykA1sLVvMKLRVRboa5eoUBEEWIBx
+         9GnyS6ZLB/yTSi20wgzSnY+i+M7sFDY6lQAP7ubv8o0PviYxHHLCWNiTPJ2X5hDYEaOl
+         NF95nnmcOO0n9LTORwNFs6nJRVq/hJGFNcVrXdtLzpuolPk3e8MJJhmhd5bSIBD9nz76
+         7/dY3w3sC+C8ky9UOFNagcRG0HP0upvOeAs2zTI4ZCZtcTOOAw3QFbNnM3vmalObWYP/
+         PRvL8K50HavmzIdhZJSnxQysLh6C21Mx2ZptP2RTIA/eMvwgrJcf+WfK9RKIjp+kt8vQ
+         rKdA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T6yUIP9j;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Yd/gObof";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l8si22031273ybj.237.2021.02.09.03.04.35
+        by mx.google.com with ESMTPS id 18si1308217ybj.342.2020.09.28.09.18.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 09 Feb 2021 03:04:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Sep 2020 09:18:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=T6yUIP9j;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:58732 helo=lists1p.gnu.org)
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b="Yd/gObof";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52002 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l9Qot-00054V-4l
-	for alex.bennee@linaro.org; Tue, 09 Feb 2021 06:04:35 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34822)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kMvrZ-0002bt-Dl
+	for alex.bennee@linaro.org; Mon, 28 Sep 2020 12:18:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46848)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berardi.dav@gmail.com>)
- id 1l9QnP-000468-GK; Tue, 09 Feb 2021 06:03:03 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430]:42089)
+ (Exim 4.90_1) (envelope-from <psunjohnny@gmail.com>)
+ id 1kMpFp-0003Za-BT
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 05:15:29 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:42598)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <berardi.dav@gmail.com>)
- id 1l9QnM-0000XM-G3; Tue, 09 Feb 2021 06:03:02 -0500
-Received: by mail-wr1-x430.google.com with SMTP id r21so4846327wrr.9;
- Tue, 09 Feb 2021 03:02:58 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <psunjohnny@gmail.com>)
+ id 1kMpFn-0002Ib-K9
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 05:15:28 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id q13so7466204ejo.9
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2020 02:15:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=date:from:to:cc:subject:message-id:mime-version:content-disposition;
- bh=0WWcMg4JsER/8CpHpHb1Sg9R4hoc8deFkLkW0zU4jvs=;
- b=T6yUIP9j9O7om7HxufmL0dH+7sriyouBDDtKOAL+Ppis9zQ8KAzQYGQUDWGjx915pC
- nvcC8KVhEMla0Kv+yut4OgGtnkdNXk3B8sSyLxgMLv2YkUX/e3hNPcpRN0hLm5/GtPbX
- 8O1rv+EW0MejfnJKyrAHhCvnqS3ZBmqnMWUDz0G5AF0+ktBnjIwQ02Edr/Zs137Zqm62
- XYLrrvVMlY4PpIYipZOn9s52zO5GEjq+qGxFz+kljBBDTRKDz1udZ9LkVBH4f1aNkCw4
- 1wv1n+B8KHfJWH6DnS4Bda6xKpjXJxByFL+ILP9h+mGHcTVXXB0Iq3JOC0BWeZOjf/vd
- 6+aQ==
+ h=mime-version:from:date:message-id:subject:to;
+ bh=NuD0lMwvpzn5vDhe8ZM0TLc0R2Pl21Ma5DHqG/maFe4=;
+ b=Yd/gObofM1B7ShKzj3FOsV5dRzUbZUeQrKTTmY0lRgXeTcWF0Skb+3qb1AEZHiL1xf
+ ZIReHnkE8FQIpfJWpQfqBeShIsTulnLWC3JcIuBXZnPqxEoTSD+YIid/ZJJItGqtWZj2
+ M04MqSK3/irYZTGqaB+lQaIcFSJLa/oVxa+DGEZH5I+TZaHnyxV629X7bjT+78gP7l8h
+ c0oHro2mz3X2/LdQmXmBXS92DHdQH8HEO78avtAvMzegqnXJ/hBK8CDG/N8gU0jFXcUG
+ kdbx79nwh9JnvijjkAFMJWAZzy7ilBcVwViEzY9wgANMXjMEB5827XNI1V4sCynz+JQP
+ loEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:mime-version
- :content-disposition;
- bh=0WWcMg4JsER/8CpHpHb1Sg9R4hoc8deFkLkW0zU4jvs=;
- b=pX8//xTiX8GpAAVtIBfN5qF+OPXCYfgJTzwjPYEhfy7s6YzrTjCet5CRL63r63yqJD
- wEbizR9mExJsJE3fyDC1dm3oJ3uC2bC7E2EseidZ9jQBzobTqQM5RRD0jrzwIjKLoAhW
- y8VhiNjGRZ8/XZgJAmCn9H0uAbX/9v5t16TbJ52HBltY1f1dUmgAUSSUOyDZ9iuCa/k+
- AYF1za+waTIewYUGeid4aJg9qYtm3leN1NbeU8jppXK0VPjAITMXmvXBe6yosnU1dvHC
- QbH9JDDK+4Z07X/MbSDfkt9jK6/V+YTukp+QiVpLn1QIm1jSs+7kgPiWNSto5+0RpM5v
- hxLQ==
-X-Gm-Message-State: AOAM530DgtoAC5mW8iQLUzU7cKUjipyI7OeDTaMqQyNZHQQqrpg1oqVw
- FDx6MSqe4oX4XqB84uyIDKalLnntddwwyA==
-X-Received: by 2002:adf:f68e:: with SMTP id v14mr24547262wrp.273.1612868577687; 
- Tue, 09 Feb 2021 03:02:57 -0800 (PST)
-Received: from localhost ([37.163.141.139])
- by smtp.gmail.com with ESMTPSA id t8sm3503346wmq.36.2021.02.09.03.02.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 09 Feb 2021 03:02:56 -0800 (PST)
-Date: Tue, 9 Feb 2021 12:02:52 +0100
-From: Davide Berardi <berardi.dav@gmail.com>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] Raspberry PI GPIO interrupt support
-Message-ID: <20210209110252.GA14409@carpenter.lan>
+ h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+ bh=NuD0lMwvpzn5vDhe8ZM0TLc0R2Pl21Ma5DHqG/maFe4=;
+ b=NvrvKe+GtUkRPy0GvLg0dJrcHld6gJMLcBzsSUejOHhBBB/U+K58Eoll88Kiz/nZFI
+ hdLBQ4eytZ4SI0XgF1GrFx199ohAJyjpTNzlaE2wFznHvRv62Unqi6/8ljwIrxyYhgOX
+ 9H3Qa6En8OEG0mELvJOiS8EP0h6PmwPLmy+Ebn8IZrCxhAMFK6XTEtjHi07gDIWt/6kf
+ rImpF8e5XOFnHzdx5QHjWfQT9623GXlwd0UWUbP0sZZ3T00gCaBzKtmz9lDH32GrkgUs
+ hMZl7euxk2MyCCxgs8z8jZO7T0jaof64kpExJwInrDHMiHNpTkknc8cMykx4T7zZRBKf
+ bmXg==
+X-Gm-Message-State: AOAM531neJ4CVdPUPgyBC7Z71Levx7/IYmZ6qPg5W10NSfOOc5QTUwN4
+ kRs9E1hTEPMGIrHXnaiyQmCzRcFwabDZZzYfJCuFM9qQEgVxKQ==
+X-Received: by 2002:a17:906:2b83:: with SMTP id
+ m3mr703756ejg.456.1601284525216; 
+ Mon, 28 Sep 2020 02:15:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii; format=flowed
-Content-Disposition: inline
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=berardi.dav@gmail.com; helo=mail-wr1-x430.google.com
+From: Johnny Sun <psunjohnny@gmail.com>
+Date: Mon, 28 Sep 2020 17:15:14 +0800
+Message-ID: <CAEBAajZPv8bqHSBJ2iSw7njzy1yMrriO4GAAFuh+AAjy-enheQ@mail.gmail.com>
+Subject: Any plan for supporting Raspberry Pi 4(raspi4)?
+To: qemu-arm@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000004f596105b05c1b5b"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=psunjohnny@gmail.com; helo=mail-ej1-x62f.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Approved-At: Mon, 28 Sep 2020 12:17:10 -0400
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iOWsH9ktNNgj
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: You3gFvujaxc
 
-The bcm2835 GPIOs now generate interrupts.
-This modification enables QTEST clients to trigger interrupt-based
-interfaces.
+--0000000000004f596105b05c1b5b
+Content-Type: text/plain; charset="UTF-8"
 
-Signed-off-by: Davide Berardi <berardi.dav@gmail.com>
----
-   hw/arm/bcm2835_peripherals.c   |   2 +
-   hw/gpio/bcm2835_gpio.c         | 105 +++++++++++++++++++++++++++++++++
-   hw/intc/bcm2835_ic.c           |   2 -
-   include/hw/gpio/bcm2835_gpio.h |  12 ++++
-   4 files changed, 119 insertions(+), 2 deletions(-)
+Hi,
 
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index dcff13433e..101c3e6fba 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -114,6 +114,8 @@ static void bcm2835_peripherals_init(Object *obj)
-                                      OBJECT(&s->sdhci.sdbus));
-       object_property_add_const_link(OBJECT(&s->gpio), "sdbus-sdhost",
-                                      OBJECT(&s->sdhost.sdbus));
-+    object_property_add_const_link(OBJECT(&s->gpio), "ic",
-+                                   OBJECT(&s->ic));
-   
-       /* Mphi */
-       object_initialize_child(obj, "mphi", &s->mphi, TYPE_BCM2835_MPHI);
-diff --git a/hw/gpio/bcm2835_gpio.c b/hw/gpio/bcm2835_gpio.c
-index abdddbc67c..2952ebe1da 100644
---- a/hw/gpio/bcm2835_gpio.c
-+++ b/hw/gpio/bcm2835_gpio.c
-@@ -7,6 +7,9 @@
-    *  Clement Deschamps <clement.deschamps@antfield.fr>
-    *  Luc Michel <luc.michel@antfield.fr>
-    *
-+ * GPIO Interrupt support
-+ *  Davide Berardi <berardi.dav@gmail.com>
-+ *
-    * This work is licensed under the terms of the GNU GPL, version 2 or later.
-    * See the COPYING file in the top-level directory.
-    */
-@@ -20,6 +23,7 @@
-   #include "migration/vmstate.h"
-   #include "hw/sd/sd.h"
-   #include "hw/gpio/bcm2835_gpio.h"
-+#include "hw/intc/bcm2835_ic.h"
-   #include "hw/irq.h"
-   
-   #define GPFSEL0   0x00
-@@ -110,6 +114,29 @@ static int gpfsel_is_out(BCM2835GpioState *s, int index)
-       return 0;
-   }
-   
-+static inline int get_bit_2_u32(const uint32_t idx,
-+                                const uint32_t v1, const uint32_t v2)
-+{
-+    uint64_t v = v1 | ((uint64_t)v2) << 32;
-+    return !!(v & (1 << idx));
-+}
-+
-+static int ren_detect(BCM2835GpioState *s, int index)
-+{
-+    if (index >= 0 && index < 54) {
-+        return get_bit_2_u32(index, s->ren0, s->ren1);
-+    }
-+    return 0;
-+}
-+
-+static int fen_detect(BCM2835GpioState *s, int index)
-+{
-+    if (index >= 0 && index < 54) {
-+        return get_bit_2_u32(index, s->fen0, s->fen1);
-+    }
-+    return 0;
-+}
-+
-   static void gpset(BCM2835GpioState *s,
-           uint32_t val, uint8_t start, uint8_t count, uint32_t *lev)
-   {
-@@ -120,6 +147,20 @@ static void gpset(BCM2835GpioState *s,
-       for (i = 0; i < count; i++) {
-           if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
-               qemu_set_irq(s->out[start + i], 1);
-+        } else if ((changes & cur) && ren_detect(s, start + i)) {
-+            /* If this is an input and must check rising edge */
-+            int irqline = 0;
-+            if (i > 27)
-+                irqline = 1;
-+            if (i > 45)
-+                irqline = 2;
-+
-+            /* Set the bit in the events */
-+            if (i < 32)
-+                s->eds0 |= cur;
-+            else
-+                s->eds1 |= cur;
-+            qemu_set_irq(s->irq[irqline], 1);
-           }
-           cur <<= 1;
-       }
-@@ -137,6 +178,15 @@ static void gpclr(BCM2835GpioState *s,
-       for (i = 0; i < count; i++) {
-           if ((changes & cur) && (gpfsel_is_out(s, start + i))) {
-               qemu_set_irq(s->out[start + i], 0);
-+        } else if ((changes & cur) && fen_detect(s, start + i)) {
-+            /* If this is an input we must check falling edge */
-+            int irqline = 0;
-+            if (i > 27)
-+                irqline = 1;
-+            if (i > 45)
-+              irqline = 2;
-+
-+            qemu_set_irq(s->irq[irqline], 1);
-           }
-           cur <<= 1;
-       }
-@@ -144,6 +194,34 @@ static void gpclr(BCM2835GpioState *s,
-       *lev &= ~val;
-   }
-   
-+static int gpio_from_value(uint64_t value, int bank)
-+{
-+    int i;
-+    for (i = 0 ; i < 32; ++i)
-+        if (value & (1 << i))
-+           return i + (32 * bank);
-+    return 0;
-+}
-+
-+static void eds_clear(BCM2835GpioState *s, uint64_t value, int bank)
-+{
-+    int gpio = 0;
-+    int irqline = 0;
-+    if (bank) {
-+        s->eds0 &= ~value;
-+    } else {
-+        s->eds1 &= (~value & 0x3f);
-+    }
-+    gpio = gpio_from_value(value, bank);
-+
-+    if (gpio > 27)
-+       irqline = 1;
-+    if (gpio > 45)
-+       irqline = 2;
-+
-+    qemu_set_irq(s->irq[irqline], 0);
-+}
-+
-   static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
-           unsigned size)
-   {
-@@ -170,11 +248,17 @@ static uint64_t bcm2835_gpio_read(void *opaque, hwaddr offset,
-       case GPLEV1:
-           return s->lev1;
-       case GPEDS0:
-+        return s->eds0;
-       case GPEDS1:
-+        return s->eds1;
-       case GPREN0:
-+        return s->ren0;
-       case GPREN1:
-+        return s->ren1;
-       case GPFEN0:
-+        return s->fen0;
-       case GPFEN1:
-+        return s->fen1;
-       case GPHEN0:
-       case GPHEN1:
-       case GPLEN0:
-@@ -228,11 +312,23 @@ static void bcm2835_gpio_write(void *opaque, hwaddr offset,
-           /* Read Only */
-           break;
-       case GPEDS0:
-+        eds_clear(s, value, 0);
-+        break;
-       case GPEDS1:
-+        eds_clear(s, value, 1);
-+        break;
-       case GPREN0:
-+        s->ren0 = value;
-+        break;
-       case GPREN1:
-+        s->ren1 = value;
-+        break;
-       case GPFEN0:
-+        s->fen0 = value;
-+        break;
-       case GPFEN1:
-+        s->fen1 = value;
-+        break;
-       case GPHEN0:
-       case GPHEN1:
-       case GPLEN0:
-@@ -310,6 +406,7 @@ static void bcm2835_gpio_init(Object *obj)
-   
-   static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
-   {
-+    int i;
-       BCM2835GpioState *s = BCM2835_GPIO(dev);
-       Object *obj;
-   
-@@ -318,6 +415,14 @@ static void bcm2835_gpio_realize(DeviceState *dev, Error **errp)
-   
-       obj = object_property_get_link(OBJECT(dev), "sdbus-sdhost", &error_abort);
-       s->sdbus_sdhost = SD_BUS(obj);
-+
-+    obj = object_property_get_link(OBJECT(dev), "ic", &error_abort);
-+    s->ic = BCM2835_IC(obj);
-+
-+    for (i = 0 ; i < 3; ++i) {
-+        s->irq[i] = qdev_get_gpio_in_named(DEVICE(obj),
-+                                           BCM2835_IC_GPU_IRQ, i + 49);
-+    }
-   }
-   
-   static void bcm2835_gpio_class_init(ObjectClass *klass, void *data)
-diff --git a/hw/intc/bcm2835_ic.c b/hw/intc/bcm2835_ic.c
-index 9000d995e8..b381dc6603 100644
---- a/hw/intc/bcm2835_ic.c
-+++ b/hw/intc/bcm2835_ic.c
-@@ -57,7 +57,6 @@ static void bcm2835_ic_update(BCM2835ICState *s)
-   static void bcm2835_ic_set_gpu_irq(void *opaque, int irq, int level)
-   {
-       BCM2835ICState *s = opaque;
--
-       assert(irq >= 0 && irq < 64);
-       trace_bcm2835_ic_set_gpu_irq(irq, level);
-       s->gpu_irq_level = deposit64(s->gpu_irq_level, irq, 1, level != 0);
-@@ -67,7 +66,6 @@ static void bcm2835_ic_set_gpu_irq(void *opaque, int irq, int level)
-   static void bcm2835_ic_set_arm_irq(void *opaque, int irq, int level)
-   {
-       BCM2835ICState *s = opaque;
--
-       assert(irq >= 0 && irq < 8);
-       trace_bcm2835_ic_set_cpu_irq(irq, level);
-       s->arm_irq_level = deposit32(s->arm_irq_level, irq, 1, level != 0);
-diff --git a/include/hw/gpio/bcm2835_gpio.h b/include/hw/gpio/bcm2835_gpio.h
-index 1c53a05090..cad3e987d3 100644
---- a/include/hw/gpio/bcm2835_gpio.h
-+++ b/include/hw/gpio/bcm2835_gpio.h
-@@ -7,6 +7,9 @@
-    *  Clement Deschamps <clement.deschamps@antfield.fr>
-    *  Luc Michel <luc.michel@antfield.fr>
-    *
-+ * GPIO External support
-+ *  Davide Berardi <berardi.dav@gmail.com>
-+ *
-    * This work is licensed under the terms of the GNU GPL, version 2 or later.
-    * See the COPYING file in the top-level directory.
-    */
-@@ -17,6 +20,7 @@
-   #include "hw/sd/sd.h"
-   #include "hw/sysbus.h"
-   #include "qom/object.h"
-+#include "hw/intc/bcm2835_ic.h"
-   
-   struct BCM2835GpioState {
-       SysBusDevice parent_obj;
-@@ -27,11 +31,19 @@ struct BCM2835GpioState {
-       SDBus sdbus;
-       SDBus *sdbus_sdhci;
-       SDBus *sdbus_sdhost;
-+    BCM2835ICState *ic;
-   
-       uint8_t fsel[54];
-       uint32_t lev0, lev1;
-+    /* Event detection */
-+    uint32_t eds0, eds1;
-+    /* Edge selector */
-+    uint32_t ren0, ren1;
-+    uint32_t fen0, fen1;
-+
-       uint8_t sd_fsel;
-       qemu_irq out[54];
-+    qemu_irq irq[3];
-   };
-   
-   #define TYPE_BCM2835_GPIO "bcm2835_gpio"
--- 
-2.30.0
+Now I can see the list of raspi2 and raspi3 in the machine list,
 
+And I also see
+https://lists.sr.ht/~philmd/qemu/%3C20190904171315.8354-1-f4bug%40amsat.org%3E
+
+Anyone knows when the raspi4 will be ready? Maybe in 5.2?
+
+Thanks
+
+--0000000000004f596105b05c1b5b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Hi,</div><div><br></div>Now I can see the list of ras=
+pi2 and raspi3 in the machine list,<div><br></div><div>And I also see=C2=A0=
+<a href=3D"https://lists.sr.ht/~philmd/qemu/%3C20190904171315.8354-1-f4bug%=
+40amsat.org%3E">https://lists.sr.ht/~philmd/qemu/%3C20190904171315.8354-1-f=
+4bug%40amsat.org%3E</a></div><div><br></div><div>Anyone knows when the rasp=
+i4 will be ready? Maybe in 5.2?</div><div><br></div><div>Thanks</div><div><=
+br></div></div>
+
+--0000000000004f596105b05c1b5b--

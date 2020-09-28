@@ -1,222 +1,204 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3460278lfq;
-        Mon, 28 Sep 2020 02:07:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzGUtcVsWDKTotEEvPy1GRtvVvmZSF+C+vYAApq8gKgbOlZinfik6Oq6Y/LJLfeqn8+VBm/
-X-Received: by 2002:a25:c688:: with SMTP id k130mr621744ybf.51.1601284063252;
-        Mon, 28 Sep 2020 02:07:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601284063; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3477027lfq;
+        Mon, 28 Sep 2020 02:36:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGylx9/BARjezPlkKzOm/6uzwhUg1r7GpF4m6SEbHGeclIb+/PNnMBemfa3xgUPDU88yAx
+X-Received: by 2002:a05:620a:f85:: with SMTP id b5mr507520qkn.239.1601285776422;
+        Mon, 28 Sep 2020 02:36:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601285776; cv=none;
         d=google.com; s=arc-20160816;
-        b=1IgKFb0GY8b0PmjCPawVcjjoMOBYvAkUxbR31XdBEabLc4oGsvy3GwyE86hs9Sap19
-         ZXnAksB/D1N+8gHsBDErznKMoTE0m0eykI6nAeUyTuMKpKbNrnZQpHlggDlmSGkCMoyS
-         YgS6QVCwsl7BIzw62ymbqQwm1xCRCz0j0WctyoMgOemaM4vO2oFwBB4gG4FDRp28VJB1
-         AQ3EI0q9KWPxE7xWoIDZt3lhBCwOWCGLD9ItrxIpwrGG50p1PvrxV7AR1KjZ0fBQICb4
-         bo4SoS6ahmEwH2hJfnfKcTLyIK1j0374gtWnkq/LfC2jxOMR5BllV/6GonH+C5Wxnoa9
-         51Pw==
+        b=pbbc7xLyw9NfGrdCDcXraq1N8+naGasL+y6MLGPIMm1sp/BuUCaeEj9Dlt54PNVUQZ
+         QLqTpqaxFClm9ygaOs2oZOjQBeq7wEoBT84EytP97uu3l7Ahw4o9nVuqq8gNTuZtIZF3
+         3p6WudwsCni/TPvSikjGShBHiIQ8AqUa4nJyl5LWLZJDujSlNwAiXxrIgsbwdhbhUz7L
+         GNqCjMOSCGpSE2RGCvS1ekAPXBUAYZ2tKRe5gppOICJv5oYYoIc/Pw9vP1IA1kpOUQQp
+         u3n43+FfF6Sj6oGO7JwWY0RPGyIXgw7oNZa1YaNV104PGAgw+fAno4Jj1QQVzYK3exmx
+         pnBg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=aSt6WEPX6H6arXqRj+mcB74HYWVBtA4o6zZCZbr+014=;
-        b=j29EohA/iIRY1X7Kk8Cn55jFbB+A+ED2PZIGgDm6EhmOM0qza/Q76OXwUAexPoTvpH
-         L2+8bzQOwD2tdPRDk0kUmA2d8qeRR3oA1lr5YY2DjCjD3qgyyeP8gqUTcqevhqRIOgkC
-         KKjAOQIdl4J44CCiqJMR1+PGGWSceRqsHD0W6ZI8YEHkQ8AvPbgs7/CsNgcbAp8UzRDZ
-         T73BatSu/8ZEAiL0GFNcdcOXkFC/i6vAr6gNgyInLYAOEH7N9qugjAsxTLKd+JUwWamk
-         Zh6xsI/B+zCwypiYn55jz/jmQRV32Us7caA6+2dO+VlnCbJppwKnKmRM4JnzVfJ7VnW6
-         R/Rg==
+         :list-unsubscribe:list-id:precedence:in-reply-to
+         :content-transfer-encoding:content-disposition:mime-version
+         :references:message-id:subject:to:from:date:dkim-signature;
+        bh=ynyAuloBqMxpWXLnS0x1CRYgjLxv7glQL157MRYGbaQ=;
+        b=SOR9NAsLVtFM/9gUHoYD93oJsRcx/Kl6nIlydHmdlq/ZtMa4jMmXwwZsQQ0KumVoUM
+         bTfPJpkPhlm6Swqc45d74WZJsAjZ/5b1LsilpprvM1hqZn4I/CWOQsLKbpwkoic1djkp
+         vzyqKcpgBzqJC1VFfRCD1NiijvRKJSpr7GC9XUzvczMi/T1V/HWBXHp7m+H5pgMi6lnY
+         NJNBpkJ4Gku+B21SLulwjVJeWjA0j0fxt8WR/+nAb2CJX5oqtQ3CTHI3ypJvP/811X+h
+         E4CsXUKQ+i9LDcZqZL8a5WiCWuk6e/obeor7W7jBxdmr7oW9PRGy5vEGw5wzLws2eVxo
+         aSGA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AYXLQjkz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=NOm68y4G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j2si265520ybo.247.2020.09.28.02.07.43
+        by mx.google.com with ESMTPS id c16si4836403qvn.30.2020.09.28.02.36.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Sep 2020 02:07:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Sep 2020 02:36:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=AYXLQjkz;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51592 helo=lists1p.gnu.org)
+       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=NOm68y4G;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:43182 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kMp8I-0001Oc-Ju
-	for alex.bennee@linaro.org; Mon, 28 Sep 2020 05:07:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44722)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kMpZu-0005b3-69
+	for alex.bennee@linaro.org; Mon, 28 Sep 2020 05:36:14 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51618)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kMp6N-0000Ga-R9
- for qemu-devel@nongnu.org; Mon, 28 Sep 2020 05:05:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:47856)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kMp6M-0001Br-3X
- for qemu-devel@nongnu.org; Mon, 28 Sep 2020 05:05:43 -0400
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601283940;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=aSt6WEPX6H6arXqRj+mcB74HYWVBtA4o6zZCZbr+014=;
- b=AYXLQjkzT0FUXnZh0et2q//09h2F7zbHsUL1aWjRTECLc6cyExoc5Yeyx8kIlmkQtfblg0
- xDngbRtL4BpDCNrZC5aXx3ZV/5VODuweoq3aKjhHk7ntmrK4mm24a9L6BVic+Er7x1HSpz
- 3TsklESpFiiMNTZwYfm/sqRcW/EgcAE=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-136-zIOkishVOLeo3lA7FEXdlQ-1; Mon, 28 Sep 2020 05:05:38 -0400
-X-MC-Unique: zIOkishVOLeo3lA7FEXdlQ-1
-Received: by mail-qt1-f197.google.com with SMTP id h31so172722qtd.14
- for <qemu-devel@nongnu.org>; Mon, 28 Sep 2020 02:05:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1kMpZe-0005ak-4b
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 05:35:58 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:39842)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
+ id 1kMpZc-00052S-17
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 05:35:57 -0400
+Received: by mail-wm1-x344.google.com with SMTP id b79so399327wmb.4
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2020 02:35:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
+ h=date:from:to:cc:subject:message-id:references:mime-version
+ :content-disposition:content-transfer-encoding:in-reply-to;
+ bh=ynyAuloBqMxpWXLnS0x1CRYgjLxv7glQL157MRYGbaQ=;
+ b=NOm68y4GdOW95blTIQOEA3PlCVuKuVXVjrKBDXAbxFjkC7fgtvoxvgRK2DeuGk3dJx
+ vKJcauN1XSCD7BLZv/H4dlw2UQ8Zqpm0kx5m5/tk7RC31JkmbYBhulp372x7e4fxXqSA
+ D1BiAS9UHDx9UPtoIb17zkfcyWniYZOf1QA5dmRtof6VG3Z/ueIkcRBoCs+ZNjz0R8zk
+ oP343K+HiO46/LmGCESPKE69Y2+a1xF+ebx884SU8lYvtSbrKb02bbUWG588CtHMIyxH
+ KieOIFuPzAJ8p7WY5moIx163tHSxHHEF/GTu5vNjpNMmkdHCVdo7VP0LwKEYXvEwMSNM
+ syBQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=aSt6WEPX6H6arXqRj+mcB74HYWVBtA4o6zZCZbr+014=;
- b=I0s4NIquCsKQZopwuF7DkwB61jHe8RxCBGoAbTUsghp3T7z6YC6Oan63xDhkbPS0bB
- V36jQtWyXvug+/7Cgc9qhNTUlNHz4SMGB/bkRjyWdwwQ4XZByeB8pSCqKxue98ZOeggo
- BGopqD6rGwXxmbhrOuqUyaQ8NW/uReY1B9tnWEVlB+dF/Z5JOdIuvQJyvbsvOFMoCXJ2
- IxHVQtxXi+IkzGHW8vNgZHJbLnOL0QFbF7QvpCyVGnjR2o6sPdDsP/1IhTPgeE1mFNzJ
- s9bpw4Q9m82ClN7l4eCta7zIwH4P3rIoJw8ljfBPDrw/LHORA6GfKs0Fdncm7Go9C09N
- wG5w==
-X-Gm-Message-State: AOAM530uFZS7F5LskZ4jY0z0/YDgoVlDz9o6VE4cjsA78lLE1SXWz+xy
- ex8C/S+LfDZ48fXC/MNGQLTR0ZFm6DtiKrFJg5fdQ1By+DVaOYM9vLOdoPnGM18AFBWsfAujGKe
- 4JSFOQsO5A5vTd0M6BHnLSMWsItgSbyo=
-X-Received: by 2002:a05:6214:a11:: with SMTP id
- dw17mr10564622qvb.62.1601283938227; 
- Mon, 28 Sep 2020 02:05:38 -0700 (PDT)
-X-Received: by 2002:a05:6214:a11:: with SMTP id
- dw17mr10564590qvb.62.1601283937959; 
- Mon, 28 Sep 2020 02:05:37 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=ynyAuloBqMxpWXLnS0x1CRYgjLxv7glQL157MRYGbaQ=;
+ b=XlVzZUoBqlTHnpq2sGaWLDQ1vrwT/yi6h/TeGyCdD5ss/sllShlJ7JYfOslJT3BlRN
+ bS29BrO/ZBhRq2u4f8xAnJLZut4k8lMETG71/4nMRJBcC9Wn8vJCEa6rwE5GiB3oGsGb
+ KetVl4jMaP/rKHwz7dcj2QZXm9Y/MkxvAdbiU4wNf8dZVVic0vyOmjFejyt5sAF475Kh
+ 6ivdai1ICV7sHQdXmzQh4/TgHRoKFfltGM/Tf7w4MlP+ZsfAk51AaT05CIkhj46JMO0f
+ GyY3EkkYQoFVrfQPELBBpC3ne5gL/vPNN4xHRbMqmsYuzrQmkHiKbdSZ1lRIzTgfZxby
+ 3OHA==
+X-Gm-Message-State: AOAM530yN1SUK++DviFkaCytnqXUMtOqgzZ4+FK9nTEli05nuRKD6NTY
+ p6XMW3W6Fu5pitd1X2MezBwwmQ==
+X-Received: by 2002:a7b:c090:: with SMTP id r16mr734026wmh.56.1601285753984;
+ Mon, 28 Sep 2020 02:35:53 -0700 (PDT)
+Received: from xora-monster ([2a02:8010:64d6::1d89])
+ by smtp.gmail.com with ESMTPSA id d13sm672886wrp.44.2020.09.28.02.35.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Sep 2020 02:35:53 -0700 (PDT)
+Date: Mon, 28 Sep 2020 10:35:50 +0100
+From: Graeme Gregory <graeme@nuviainc.com>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH] hw/arm/sbsa-ref : Fix SMMUv3 Initialisation
+Message-ID: <20200928093550.epbudrvdk2v47bct@xora-monster>
+References: <20200925133902.28349-1-graeme@nuviainc.com>
+ <f67b75fe-c5ce-8b95-e19b-fc4ce2217b31@redhat.com>
+ <e548848c-75ac-e82e-f40d-7c1ae70a6e02@amsat.org>
 MIME-Version: 1.0
-References: <20200625191651.5817-1-eperezma@redhat.com>
- <20200903161446.29615-1-eperezma@redhat.com>
- <20200903161446.29615-6-eperezma@redhat.com>
- <d3e2098d-e150-7f99-a1ee-4a997daf4a5c@redhat.com>
-In-Reply-To: <d3e2098d-e150-7f99-a1ee-4a997daf4a5c@redhat.com>
-From: Eugenio Perez Martin <eperezma@redhat.com>
-Date: Mon, 28 Sep 2020 11:05:01 +0200
-Message-ID: <CAJaqyWfwGP7_Ex=NhG_po+A1BkN3OCV=+3Vwi8uhLJ_e4UA5NQ@mail.gmail.com>
-Subject: Re: [PATCH 5/5] memory: Skip bad range assertion if notifier is
- DEVIOTLB_UNMAP type
-To: Jason Wang <jasowang@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 03:47:08
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -36
-X-Spam_score: -3.7
-X-Spam_bar: ---
-X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.576,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <e548848c-75ac-e82e-f40d-7c1ae70a6e02@amsat.org>
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=graeme@nuviainc.com; helo=mail-wm1-x344.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Juan Quintela <quintela@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- qemu-level <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e5PvPAuxSLN+
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: peter.maydell@linaro.org, jamie@nuviainc.com, rad@semihalf.com,
+ qemu-devel@nongnu.org, Auger Eric <eric.auger@redhat.com>, qemu-arm@nongnu.org,
+ leif@nuviainc.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: iUF2sqImcTT/
 
-On Fri, Sep 4, 2020 at 6:34 AM Jason Wang <jasowang@redhat.com> wrote:
->
->
-> On 2020/9/4 =E4=B8=8A=E5=8D=8812:14, Eugenio P=C3=A9rez wrote:
-> > Device IOTLB invalidations can unmap arbitrary ranges, eiter outside of
-> > the memory region or even [0, ~0ULL] for all the space. The assertion
-> > could be hit by a guest, and rhel7 guest effectively hit it.
-> >
-> > Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
-> > Reviewed-by: Peter Xu <peterx@redhat.com>
-> > Reviewed-by: Juan Quintela <quintela@redhat.com>
-> > ---
-> >   softmmu/memory.c | 13 +++++++++++--
-> >   1 file changed, 11 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/softmmu/memory.c b/softmmu/memory.c
-> > index 8694fc7cf7..e723fcbaa1 100644
-> > --- a/softmmu/memory.c
-> > +++ b/softmmu/memory.c
-> > @@ -1895,6 +1895,7 @@ void memory_region_notify_iommu_one(IOMMUNotifier=
- *notifier,
-> >   {
-> >       IOMMUTLBEntry *entry =3D &event->entry;
-> >       hwaddr entry_end =3D entry->iova + entry->addr_mask;
-> > +    IOMMUTLBEntry tmp =3D *entry;
-> >
-> >       if (event->type =3D=3D IOMMU_NOTIFIER_UNMAP) {
-> >           assert(entry->perm =3D=3D IOMMU_NONE);
-> > @@ -1908,10 +1909,18 @@ void memory_region_notify_iommu_one(IOMMUNotifi=
-er *notifier,
-> >           return;
-> >       }
-> >
-> > -    assert(entry->iova >=3D notifier->start && entry_end <=3D notifier=
-->end);
-> > +    if (notifier->notifier_flags & IOMMU_NOTIFIER_DEVIOTLB_UNMAP) {
-> > +        /* Crop (iova, addr_mask) to range */
-> > +        tmp.iova =3D MAX(tmp.iova, notifier->start);
-> > +        tmp.addr_mask =3D MIN(entry_end, notifier->end) - tmp.iova;
-> > +        /* Confirm no underflow */
-> > +        assert(MIN(entry_end, notifier->end) >=3D tmp.iova);
->
->
-> It's still not clear to me why we need such assert. Consider
-> notifier->end is the possible IOVA range but not possible device IOTLB
-> invalidation range (e.g it allows [0, ULLONG_MAX]).
->
-> Thanks
->
+On Sat, Sep 26, 2020 at 09:45:24AM +0200, Philippe Mathieu-Daudé wrote:
+> Hi Gregory,
+> 
+> On 9/25/20 4:00 PM, Auger Eric wrote:
+> > Hi Gregory,
+> > 
+> > On 9/25/20 3:39 PM, Graeme Gregory wrote:
+> >> SMMUv3 has an error in previous patch where a i was transposed to a 1
+> >> meaning interrupts would not have been correctly assigned to the SMMUv3
+> >> instance.
+> 
+> This is a first issue, fixing 48ba18e6d3f3.
+> 
+> >>
+> >> The code also contained an error in that the IRQs were never allocated
+> >> in the irqmap.
+> 
+> This is another issue, not well explained. IIUC IRQs *are* allocated as
+> IRQ #0, right?
+> 
+> This fixes commit e9fdf453240 ("hw/arm: Add arm SBSA reference machine,
+> devices part"). Can you split this in another patch please? Eventually
+> Cc'ing qemu-stable@nongnu.org as suggested by Peter.
+> 
 
-As far as I understood the device should admit that out of bounds
-notifications in that case,
-and the assert just makes sure that there was no underflow in
-tmp.addr_mask, i.e., that something
-very wrong that should never happen in production happened.
+Ok I will split and issue v2 ASAP
 
-Peter, would you mind to confirm/correct it?
+Thanks
 
-Is there anything else needed to pull this patch?
+Graeme
 
-Thanks!
-
->
-> > +    } else {
-> > +        assert(entry->iova >=3D notifier->start && entry_end <=3D noti=
-fier->end);
-> > +    }
-> >
-> >       if (event->type & notifier->notifier_flags) {
-> > -        notifier->notify(notifier, entry);
-> > +        notifier->notify(notifier, &tmp);
-> >       }
-> >   }
-> >
->
-
+> >>
+> >> Fixes: 48ba18e6d3f3 ("hw/arm/sbsa-ref: Simplify by moving the gic in the machine state")
+> >> Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
+> > Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> > 
+> > Thanks
+> > 
+> > Eric
+> > 
+> >> ---
+> >>  hw/arm/sbsa-ref.c | 3 ++-
+> >>  1 file changed, 2 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> >> index 257ada9425..9109fb58be 100644
+> >> --- a/hw/arm/sbsa-ref.c
+> >> +++ b/hw/arm/sbsa-ref.c
+> >> @@ -138,6 +138,7 @@ static const int sbsa_ref_irqmap[] = {
+> >>      [SBSA_SECURE_UART_MM] = 9,
+> >>      [SBSA_AHCI] = 10,
+> >>      [SBSA_EHCI] = 11,
+> >> +    [SBSA_SMMU] = 12, /* ... to 15 */
+> >>  };
+> >>  
+> >>  static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+> >> @@ -530,7 +531,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+> >>      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+> >>      for (i = 0; i < NUM_SMMU_IRQS; i++) {
+> >>          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+> >> -                           qdev_get_gpio_in(sms->gic, irq + 1));
+> >> +                           qdev_get_gpio_in(sms->gic, irq + i));
+> 
+> BTW this fix is already in Peter's queue:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg732819.html
+> 
+> Thanks,
+> 
+> Phil.
+> 
+> >>      }
+> >>  }
+> >>  
+> >>
+> > 
+> 

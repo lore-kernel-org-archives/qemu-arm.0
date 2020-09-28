@@ -1,91 +1,91 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3520990lfq;
-        Mon, 28 Sep 2020 03:48:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy5QG7P/Rdh5TfJEYMOylPh2S6aAJVtQ3+hogySQFgvJhTIEx6s0cKpojXsYVma3mO6e0bb
-X-Received: by 2002:a25:8546:: with SMTP id f6mr1215494ybn.476.1601290081615;
-        Mon, 28 Sep 2020 03:48:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601290081; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3521497lfq;
+        Mon, 28 Sep 2020 03:48:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzS0fOZ8Pvclp2jvt1mQACnEiWVLBr3sJJOsRz60+BjRVwoY65U5Pl7+K+tKddRbzmo6B0q
+X-Received: by 2002:a25:81cd:: with SMTP id n13mr1016718ybm.514.1601290129280;
+        Mon, 28 Sep 2020 03:48:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601290129; cv=none;
         d=google.com; s=arc-20160816;
-        b=gRvIXqhs1m9l4G1LONK5z8SnE+OfTi/QyiBxj3BUAHjDKkl9cuG7E8VfAlFWnPIHfl
-         snJMlR7tlalvBY44PHhObHl/hhEd9iFuQ9cVqXZ948HBE+jdEk8AaRnR0zQ8gtMsBrI2
-         rZ9KWbVq5HSMb1Qjfk0i7+gFLhozZou33orqGVSR/br93THuClJapREeA6jvYpzctDVg
-         rwG0wL6iv1Nishx1a1mEIWT5PsAXr8IHvE983zNUCRnuohzQh/+9xqu07VWjbFLpBUVZ
-         qVkeNQj5KqF6JWssEZF3t1bEqA6szFJI8ot5UuaPkASfQusnvWqyePu5GUKhJHHFeWLi
-         L7og==
+        b=ayusmbGuiS/CMenY7IQMijhnmHCduemheDbVlr31spu82OixSAc4UFEfrQujLNkGI/
+         GXk+yzIBBBYT1HNy3I851pl5iwWX/IQduLbhGx+0M0PaD3Rt0qePsPLhsMGl7XI/j5dn
+         n5BbUPjmYDXpCBNber1SRYMhS5R/qYR1E0omiL+Hh4vx056BDVngcBjqqzDdrUp9PSvH
+         8kkTvoDITaTmjEe97olbFH5vPlblluwvGZR3K6dh9YeKFfvlukFqXtdS0BqBPkHkjh7u
+         QRWDP5jqqTttAgcAVm9mPywFRNrOnxb3L14wwA9+tZPTyK5sCvbWP94uWUb+X3M7aX6/
+         JDUg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=/srhCkt+oYeOsWkXlEUXpf3BTQ+ZmL7BrrTNh7Eod3k=;
-        b=Dt/etPmaTKKbxlQKfjO61Npg1ktUQo6KfmtiHmJ7QQfxwe7R4Ma/Dasw+cx/0+EHZr
-         ZwgNuR0ie4fdW3ipMR2vGRAgwjq/cFJYYooTVtqrqnjVDSfM2DAokzkfuvqQSp1Y9+/S
-         U19y3zk4hnMwX+WWNFC4rAThtTa16fvuKF1qRRV7Ifd3WL9t0D0qmHkyKdpfHKOT8Ubd
-         CeEufP80GWZ3hF9zRn6uh+qyM8sKWmn63BzQ7gEp28728+5bz6WtH2fnHKL3eeRMT/ny
-         2SCzZ3T+gRZoq/JvVFS8SKjbnH0fy80OifyB+dG8nppbZo2bFXtUPAgr92YV5lTTCUB8
-         MUew==
+        bh=DzuHHKR6tmXSjEbMqJkV/4p/aqbq2kdpVntF34U3/qo=;
+        b=U6k9ENsIc6q+e1IRdOGQZB80lKloh6idLRebTOlPv/gJsJEHLX91r0AsBDOGS5KqEt
+         1djFV2YirWpNx00wdrlltWaMJMW1wtWdKKrHPqXGia7bMlLZPiRWAStMN9zKKmkFsOqI
+         tj1/XONfYuJ2cAC+2Q2LfltBn3r/Zn07sCKAtWc+QdL6KylXTQAoyvLMsbQeZaDUUXzS
+         RvOaezSbT2bOCiUr6Q4TtAAEsuhvPyWXaZWiPE1oCd9HtwC+mMBnjIORJGkKOf3R27Z8
+         enkEGr+RIPtCdyn7QiAii9fHGRmJfNoYl6t5rG+Pdydy1JiY0GKKri5liQVfVBk9cr0f
+         eyXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UEz/5K66";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YJpVb0BW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e196si444063yba.62.2020.09.28.03.48.01
+        by mx.google.com with ESMTPS id o5si478696ybe.283.2020.09.28.03.48.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Sep 2020 03:48:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Sep 2020 03:48:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="UEz/5K66";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YJpVb0BW;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49920 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53310 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kMqhM-0005Cb-UV
-	for alex.bennee@linaro.org; Mon, 28 Sep 2020 06:48:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43940)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kMqi8-0006XJ-LF
+	for alex.bennee@linaro.org; Mon, 28 Sep 2020 06:48:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqcq-0007s2-DH
- for qemu-devel@nongnu.org; Mon, 28 Sep 2020 06:43:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:50094)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqcp-0007pS-9g
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 06:43:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:60789)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqck-0006Hr-2z
- for qemu-devel@nongnu.org; Mon, 28 Sep 2020 06:43:20 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqck-0006Hp-1c
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 06:43:18 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1601289793;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/srhCkt+oYeOsWkXlEUXpf3BTQ+ZmL7BrrTNh7Eod3k=;
- b=UEz/5K662P8mOTwEEwqrcnk+thioBx3QGXvidxkaRn2ub/vN/DSUHmXxVuHfPt9b8hhf32
- IOPCLq2WGG18QDIpNdU7IveLJPDNs4/9Pe+GQuXg5B4R/l0J9RzNC9keMK86cTgJ9FILRN
- 6F/7fbP556XFaj+gEo2z6JFFt8h3MXw=
+ bh=DzuHHKR6tmXSjEbMqJkV/4p/aqbq2kdpVntF34U3/qo=;
+ b=YJpVb0BWPfxCXwGQh4OrSW9+QAASTB7vFZdncypDGjz0xyCVBTgfXsti+GJVWVXfsRt7h7
+ NUmqKfI/tRQ6Vxu/WUeR3zhHGy5M8VBBFPiyol69UECiHdUmbenvj4wzZATBdi417NDtjb
+ /RcXUwOw5NB0W+tuUhuU5ebOl8FeNkE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-300-RmKfga-2MvibXuv1Q4utgQ-1; Mon, 28 Sep 2020 06:43:09 -0400
-X-MC-Unique: RmKfga-2MvibXuv1Q4utgQ-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-64-9fh5eRzZPgmUg5OydNU0uQ-1; Mon, 28 Sep 2020 06:43:09 -0400
+X-MC-Unique: 9fh5eRzZPgmUg5OydNU0uQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B1341DDF7;
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1E27D1DDFE;
  Mon, 28 Sep 2020 10:43:08 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
  [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id B5F8D5D9CD;
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AFDD81002C26;
  Mon, 28 Sep 2020 10:43:07 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id CB0F940DE5; Mon, 28 Sep 2020 12:42:56 +0200 (CEST)
+ id C104140DD0; Mon, 28 Sep 2020 12:42:56 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 12/12] tests/acpi: update expected data files
-Date: Mon, 28 Sep 2020 12:42:56 +0200
-Message-Id: <20200928104256.9241-13-kraxel@redhat.com>
+Subject: [PATCH v3 11/12] acpi/gpex: no reason to use a method for _CRS
+Date: Mon, 28 Sep 2020 12:42:55 +0200
+Message-Id: <20200928104256.9241-12-kraxel@redhat.com>
 In-Reply-To: <20200928104256.9241-1-kraxel@redhat.com>
 References: <20200928104256.9241-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -102,112 +102,74 @@ X-Spam_bar: ---
 X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.576,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Leif Lindholm <leif@nuviainc.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bth1RyyabOvb
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Leif Lindholm <leif@nuviainc.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qhoKUb+tvf66
+
+... just to return something which is constant anyway.
+
+-            Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+-            {
+-                Return (ResourceTemplate ()
+-                {
+-                    WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
+[ ... ]
+
++            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
++            {
++                WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
+[ ... ]
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 ---
- tests/qtest/bios-tables-test-allowed-diff.h |   5 -----
- tests/data/acpi/microvm/DSDT.pcie           | Bin 0 -> 3023 bytes
- tests/data/acpi/virt/DSDT                   | Bin 5200 -> 5196 bytes
- tests/data/acpi/virt/DSDT.memhp             | Bin 6561 -> 6557 bytes
- tests/data/acpi/virt/DSDT.numamem           | Bin 5200 -> 5196 bytes
- 5 files changed, 5 deletions(-)
+ hw/pci-host/gpex-acpi.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index 53109c22a56f..dfb8523c8bf4 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1,6 +1 @@
- /* List of comma-separated changed AML files to ignore */
--"tests/data/acpi/microvm/DSDT.pcie32",
--"tests/data/acpi/microvm/DSDT.pcie64",
--"tests/data/acpi/virt/DSDT",
--"tests/data/acpi/virt/DSDT.numamem",
--"tests/data/acpi/virt/DSDT.memhp",
-diff --git a/tests/data/acpi/microvm/DSDT.pcie b/tests/data/acpi/microvm/DSDT.pcie
-index e69de29bb2d1d6434b8b29ae775ad8c2e48c5391..4b765541e372f4ba4e25529c14acf696516c8f61 100644
-GIT binary patch
-literal 3023
-zcmZveJ!~UI6vyA%>v%o>$l7tfKOE>z2(-2p9Su_KwUZdd$)4A_AbirEgg_i=B7u<L
-zgcMR7kdCuNZKQ~rmhL1fDz2lT;2IhlO0GKde>>USJmoBTcK$Q(y?MX4yR*{?JHy}e
-zM5$ZtLw_&aY`+)y9gJB-#C^WHy<eiR9gWW4+Bx=joM^AtDc<S!k37$7kQ0T&mdZPk
-zKM2c3rFJbh<7TYF7c@F=_=o*^Y+q<S%~(!!)a#&Shgt35s^YHoJpDXP&g(9*&;HDA
-zw-f0_T7J;;ym}Lhz_W-6^mv_;%6~UQX)A~9;B?j<ba$yhG<l)y(bsvFemCsyZ&uf%
-z?%iSTl*RptJAQayrAVb71;>N7IvbrYb4M>090Z>4`FbrR(zfpoyxV$i|6p(k+ATe)
-zvdF@3frN8eQHzgqWKrqo7nCAGUY50}^E%)DDe!yV%lIwtZ6*K<uh#OIEJW%~)NUW>
-z;5;%Mlxu1&AfI~lA#IX}e+RwK=>dI!E5S%75DbQM`=6?_O5V;-r?eaPJkos&{W?_&
-zJg!m@jYOm&np7#;h3OQxSKD1F_JUza&&7T)O(c6FeryX=ZF{BIGcn~7Ytz^hl0A`4
-zY@3cflMK?to`@QornM(b6Um;)DE72t&m;po_DoD|?U^JGX>w)+XD0ScOf%XuNgmSV
-zoDrP3xyUCmospc7CTCV~W(8+fazdJ%j^K0zrz1HbO-{TJMy2ss>gvVC%t=m2lT!&!
-zB{-Gjgfuy^d+3_P_b4wo^O6(N<ir~b&*Xj<1ZP2VLYkaK!C4fXMac<ia+U;VNpO}V
-zC#1<aD>!Eb=d9#}G&x<t=?YF)azdJ%Wx-h%oMp)gX>wKsXGL&UBqyZFIVU*h1m~RO
-zgfuy;g0m_(tCADa<eV3r^MZ3;azdJ%3xab&a4twrNRtzrwDH_73eH8z32AaJ3C<<K
-zxg<FuP0nS(xhy!BB`2iGxgt1M1m}w6gfux<1?Q^ZT$P-VCg+;qToasYk`vP8To;_{
-zf^%JRLYkZ#f^$P~Zb(i@ld~o`Yl5>TIUzOY=)7n17WDEH?Rz`dAL8Kps9{;yt8moN
-zpL~7%NXDu&Q8);#t5Ev96Mx^YL*b-ghQj7`Ba|My4)rc))p$i#DkWoKJG&7}kI7ig
-zSH()pSlHlh#L{C|v8sj0Z@1`@Yw=8%;vl2m|F%de9wM4@V|{}+tH1|G{ymvar+?`#
-zZC<=#%;;&fu)x_x{<a}e?(irG$nl4ReX8!{qQlU)FHXqs9M>m%+40BaIpvP}e>VTC
-zt!@8s{8{VCJAZt1aiVM(G;norZJx5=INWJ+sE6FB8n+Yo@%VxD6=v$Ob$zn%c%0bj
-zVV5UQ*_g*KPkt=vabBc;c~X5d>V$oJ@|w=(>FwYC4!6GSf4}%ofB9FxKgo?hq04gG
-zvbe#qvTqN%p?Kc-49y40rt)so=NVT8)%lmN#t&Z<u8-^9gLAkQRkF6i8HfG{XT+o*
-
-literal 0
-HcmV?d00001
-
-diff --git a/tests/data/acpi/virt/DSDT b/tests/data/acpi/virt/DSDT
-index 9b002836f35fd03afeab9e827fdde3134d26ed2e..bc519abff9cadc1552e4e586b0a3f5f0db498f4a 100644
-GIT binary patch
-delta 43
-zcmcbhaYlp7CD<jzM}&ca>BB@WX~y=AYLc8xe#<vIa^B-$<%o9<3f`<Cq`?FL7G(?c
-
-delta 47
-zcmX@3aY2L2CD<h-K!kyT>DNRqX~yo2YLc8xPAfJ$a^B<M6mjH;cMb|>Sh86~NP`Ig
-DNc#-*
-
-diff --git a/tests/data/acpi/virt/DSDT.memhp b/tests/data/acpi/virt/DSDT.memhp
-index 545a18c3657781d350a006adfa5e58fa63e63922..54728e2b4b8b959f3f829386f6a388ef2600e747 100644
-GIT binary patch
-delta 43
-zcmZ2zJlB}ZCD<iot|S8kli)-yX~vF?YLc8xe#<vIa^B-$<%o9<3f`<CRLKqi{Zk8i
-
-delta 47
-zcmbPhywI4-CD<iop(FzXlk`L`X~v$7YLc8xPAfJ$a^B<M6mjH;cMb|>Sh86~sFEE3
-DEVvAM
-
-diff --git a/tests/data/acpi/virt/DSDT.numamem b/tests/data/acpi/virt/DSDT.numamem
-index 9b002836f35fd03afeab9e827fdde3134d26ed2e..bc519abff9cadc1552e4e586b0a3f5f0db498f4a 100644
-GIT binary patch
-delta 43
-zcmcbhaYlp7CD<jzM}&ca>BB@WX~y=AYLc8xe#<vIa^B-$<%o9<3f`<Cq`?FL7G(?c
-
-delta 47
-zcmX@3aY2L2CD<h-K!kyT>DNRqX~yo2YLc8xPAfJ$a^B<M6mjH;cMb|>Sh86~NP`Ig
-DNc#-*
-
+diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+index 6fb951a0c19f..dbb350a837f8 100644
+--- a/hw/pci-host/gpex-acpi.c
++++ b/hw/pci-host/gpex-acpi.c
+@@ -57,7 +57,6 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+     aml_append(method, aml_return(aml_int(cfg->ecam.base)));
+     aml_append(dev, method);
+ 
+-    method = aml_method("_CRS", 0, AML_NOTSERIALIZED);
+     Aml *rbuf = aml_resource_template();
+     aml_append(rbuf,
+         aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
+@@ -89,8 +88,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+                                     0x0000,
+                                     cfg->mmio64.size));
+     }
+-    aml_append(method, aml_return(rbuf));
+-    aml_append(dev, method);
++    aml_append(dev, aml_name_decl("_CRS", rbuf));
+ 
+     /* Declare an _OSC (OS Control Handoff) method */
+     aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
 -- 
 2.27.0
 

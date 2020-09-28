@@ -1,141 +1,198 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1719874lfa;
-        Fri, 16 Oct 2020 10:20:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyiV8HfSLo3fVnI5zAB20j0zS+SJ/H/REte2bwc52wHB7GdyY8SaEgAxfPpLQ2sF2jwj/ra
-X-Received: by 2002:a25:bd0c:: with SMTP id f12mr6331830ybk.3.1602868818829;
-        Fri, 16 Oct 2020 10:20:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602868818; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3629935lfq;
+        Mon, 28 Sep 2020 06:16:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx23H+FymepqyIfZEK0qyRXDG8AzmR9mmkgOBwmdLdUVSYGU7qYW+rv8EWXeMbtAc9Z21u/
+X-Received: by 2002:a25:e5c3:: with SMTP id c186mr1871732ybh.320.1601298992630;
+        Mon, 28 Sep 2020 06:16:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601298992; cv=none;
         d=google.com; s=arc-20160816;
-        b=iOEnVDTKAB1Rk3y483hH76qEALqIaHFNgWCy0F4qkCyXAVK7craI5ZUlGuEHwN4K5g
-         l0gsQx5bmqTnTy+rjRSf+WT7DHWH69OSXBaQ6pj+KpcRiEHQkNexWupsWLAMd4oBSo4f
-         11txNk8mJU3B2guzPy7hgDHa3c600d5+lUeJeHnPICUgVgtvx7bpLh/9qd+sS2bGHTUl
-         umUC55/7AyhtsBiYJn38F6pP92+szQipiaBNNsgRAmiRWFawLq2LJjyUY4vXi0+ayPFm
-         beMTljIUr1jRjzKXiyhdF1NsytZY7AzSDTBPBKEDOsAI4LMoJLutrnHpc5zJue6A0Z5X
-         iuew==
+        b=aYWhNMn9ML8xsEDvC6zq1buc14M6p8tHN1NsaEwlCr6J/jEhCOWLCwdeLDSB8SCDuH
+         2CE0PE0a/HyolSTYHkx1JDPWQhiex6qM7bx5k17G7Q1PuUC/hckEtEf7oRxOk6IlW99b
+         5y19cX9sflfaIO0tILW2nPftLS/lhml9emxn8yOTWZMOeej2xPV9cxVt4OqHujwml2c0
+         JHmxHvFh9UKeVpCQrs5tYb2sD7zKj+bIZZ3edvpfqZRB6+/272rCYAMQN/Y84endquOi
+         SLKFaU+/3Z308UnWfflhoASwI7yCtFCo0Ki3e+jg/hBleETES6pWAlFt2KNNvXej7B3R
+         76vQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=4wY+U5nMuX3uLuJeo5OAk4URYlw7/kn5+EjoyuhialU=;
-        b=yN88ezagfFiZuJlhbm3X+eusfmnGdr57oX+IeTAj/mpEcp2YXhPivZOkt9ucAo5c9G
-         PxgyOrBgSo8VUQTPv33v7KsJNa5Lwu09CosICt13F3DBmMt84Y8ZV6GggCbcvG3UCFma
-         F+2ju7hFYw7cAJpBnN8BZnmaNW26HfBZczv8BqRssFh1bXmRRPbfAuqpIjYHmfuU8XGn
-         MenlNXRnUZFfnFH8pndBSaSFlFsCATygrO5NfpcWaMTe6Hn5agAngEX4xDAQLFaTYhdh
-         QXnGXqhR9Pt22JmvSF5Y6vuhYeOuxMyI1+0a06prehWUn5oHmjtinAv9SYf6THbunx/p
-         Ukiw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=vc/OIT/jm5Dl4ly9JyhC7cIvq3usxlLGSnp3znzL+OM=;
+        b=bisbBQTvnCjStgYXHQ2AmsbShDeSI/bEJeCSoLcpRjCK/TMvnptFeKhLfJt/1nydDR
+         NTRSSGKAiHn8R64oOkbZLJsBff5yYh2I4JEO1L6l4fUIhXWytO1d51Culqs6asFUjC5I
+         +uWcthQaOusEi8dyxSr73GWnXOoxfEcczYRWiY+YK25RlUcEr3N4kMzHpE8nGJSs7z1o
+         tlnrjLmEH7AYzWr+oAbF8bOFEWzzZ2aiBEIMTX0PrkC630owKLjc/GOk/i5EVmFEPjT4
+         zGkh3zQC56cGDslypZaJtaaUh630Xb+dggnjb4sT8bb1Rm3iJr7TTNet4wrzgYmjp9+j
+         pV3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WBNSElgi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=P7xtFcvF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h12si3375659ybm.358.2020.10.16.10.20.18
+        by mx.google.com with ESMTPS id z12si793221ybp.278.2020.09.28.06.16.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Oct 2020 10:20:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 28 Sep 2020 06:16:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WBNSElgi;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57266 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=P7xtFcvF;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Received: from localhost ([::1]:37506 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kTTOs-0002M2-33
-	for alex.bennee@linaro.org; Fri, 16 Oct 2020 13:20:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36192)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kMt16-00032e-0A
+	for alex.bennee@linaro.org; Mon, 28 Sep 2020 09:16:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38416)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kTTHX-0004R6-Mb; Fri, 16 Oct 2020 13:12:44 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:36971)
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kMmOR-0002uh-HP
+ for qemu-devel@nongnu.org; Mon, 28 Sep 2020 02:12:11 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533]:34933)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kTTHR-0007Vg-S9; Fri, 16 Oct 2020 13:12:39 -0400
-Received: by mail-wr1-x444.google.com with SMTP id h7so3783985wre.4;
- Fri, 16 Oct 2020 10:12:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=4wY+U5nMuX3uLuJeo5OAk4URYlw7/kn5+EjoyuhialU=;
- b=WBNSElgigoiRMzfoKnoGMVBsEuYpwb2YHxVKx+ggZKR1vnpg/f2FemEY40dzGhoRC9
- Ex+kyZgfUZeyb1f7t4zDvFjxU5/G9eKQ5W1r9pzpF26BX52ZgDtY63M/qqDjQqGJlR5u
- s1W00b6ermPOhFTYin2/GFLi8/6wOTMrUM9E20oZazgi5yHFkeXJ9X2brKsNtPLst8bE
- WGgAhdhpz/WXR8HdeRpnlzl4GXb4NYGGoRZHV0kbkYOUUGeYM3fWRPMgo/ZytADy6TiR
- H6fzsv0Zh4GxH28HDQahPfX6vxYRcXCxOKXrgpd1lDBg7VlvdLE7wVJLGtLD8EJwA2Xm
- OMUw==
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kMmON-0006B5-9d
+ for qemu-devel@nongnu.org; Mon, 28 Sep 2020 02:12:10 -0400
+Received: by mail-pg1-x533.google.com with SMTP id g29so7397282pgl.2
+ for <qemu-devel@nongnu.org>; Sun, 27 Sep 2020 23:12:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bytedance-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=vc/OIT/jm5Dl4ly9JyhC7cIvq3usxlLGSnp3znzL+OM=;
+ b=P7xtFcvFeRYw46FlSQe0v35uTz3IMKlgRjkTIa+UhzQp373WyuFoRTysn0kTx0SbEz
+ 1+rbHDhrBmMTIOl62BH5itcRgBNZm6uT7Cn0y86ptnI+r0hXCAzCJiPthVPF9NCl7oRO
+ TAxBGcXJUGvcmZwygFzwK+8x3pLHDIWTYEQgWfZZU3RBu89B6Ifkmc49ckP7OEax+53F
+ iYV+IsSxyZ5poasMejlELsLN3z5lqzLruYFyLC/oSVLt4CxxzlMzj1Ba1SQHulSRISLR
+ TVYH20+X2g15LiDgADoCKcDQwj8eoYRHU3YL5A9/7Zn4r6597D3lBmqgi+Q4xGW0dpES
+ hhdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
  :content-transfer-encoding;
- bh=4wY+U5nMuX3uLuJeo5OAk4URYlw7/kn5+EjoyuhialU=;
- b=V9pZziyHiJmUt8qhDt5on+5r8C0XYtPhzj6nxuDHCTbsE6cYdQXPxZBVIvadd5zBvu
- WCevl9fQ30Mm2TemCxALEVBBM++REpuWOv+c7WpKGg/UMzMq8agq5EpaBVtAkOEoAE4O
- 7NaAOjN+6+1nrgP+W98joFW0gfXhBi8OkWqy4hZPrj54ZjkhiJqJeqMpeGSzr0AktHtU
- OfO9JmTDtkrNKeNWq40dU0C5BNF+L7HqKifD/wVx3z0uK0Gr/yuyTupsY/0GhywU0LAO
- /4X3vmlNvCbaBGdPIFUuYhr8GRGxLKz5Mn2UmvAsmUPhutq3cx+cE8jeMedlmU/2ICAW
- 22PA==
-X-Gm-Message-State: AOAM533aSp8B/KRL5E67jw6NIF1t2awp1xMReUwf/9mtMcd4yQdRfvUD
- SXuwjOb21rDnFiU/9JhjZ6k=
-X-Received: by 2002:adf:fcc3:: with SMTP id f3mr4989774wrs.336.1602868355124; 
- Fri, 16 Oct 2020 10:12:35 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id t124sm3524324wmg.31.2020.10.16.10.11.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Oct 2020 10:11:33 -0700 (PDT)
-Subject: Re: [PATCH v3 00/15] raspi: add the bcm2835 cprman clock manager
-To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
-References: <20201010135759.437903-1-luc@lmichel.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a9a19895-8cfe-c40a-4b26-0ebdffe76d83@amsat.org>
-Date: Fri, 16 Oct 2020 19:11:32 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ bh=vc/OIT/jm5Dl4ly9JyhC7cIvq3usxlLGSnp3znzL+OM=;
+ b=MaMRc4T5oI6zjWXixQSJXtbPNOO8C6SEMAC26MPh7RSAO5GGbnh+O6yv3SXz6yaZUO
+ nLutLx3Op61Ll1OLawj16mBh6OeDoCA9kFohj+XCJ9GaYGGFQyZKp/zQT1D9mlaqjNY7
+ Xrs5xTnuxfFLzD8XSO7/D4ettKp6PkU4o9MKTUijFdx3l+F3siCLzInotnk7FqBytvQ4
+ ykiAzOlmP8qZtA07jogQrM0Z51iVE137TrY563FGN+7t0TuAgCovqzgivcQOXXtdLB7+
+ Y+xE7qvbyodSLIrqBoJwQhBFOZWO5IwqjTJt6jFK9g8mclmcUuCTn4S5/QQFU8VHZdJ6
+ VIrg==
+X-Gm-Message-State: AOAM532ydNIs1/LNBSZ698UpVz1asgqtZDHp6azqWM7XrHr8ug0YgI1y
+ Ux6m5hof5AnM3hs2cQO2rIATzQ==
+X-Received: by 2002:a65:494e:: with SMTP id q14mr59653pgs.281.1601273524484;
+ Sun, 27 Sep 2020 23:12:04 -0700 (PDT)
+Received: from localhost ([61.120.150.74])
+ by smtp.gmail.com with ESMTPSA id w203sm129953pff.0.2020.09.27.23.12.03
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 27 Sep 2020 23:12:04 -0700 (PDT)
+From: John Wang <wangzhiqiang.bj@bytedance.com>
+To: yulei.sh@bytedance.com,
+	xuxiaohan@bytedance.com
+Subject: [PATCH] aspeed: Add support for the g220a-bmc board
+Date: Mon, 28 Sep 2020 14:12:01 +0800
+Message-Id: <20200928061201.1601-1-wangzhiqiang.bj@bytedance.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <20201010135759.437903-1-luc@lmichel.fr>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=wangzhiqiang.bj@bytedance.com; helo=mail-pg1-x533.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.253,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Approved-At: Mon, 28 Sep 2020 09:12:19 -0400
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vNZzHy8FKB1e
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Joel Stanley <joel@jms.id.au>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: DWscgfk10+ma
 
-On 10/10/20 3:57 PM, Luc Michel wrote:
-[...]
-> Hi,
-> 
-> This series add the BCM2835 CPRMAN clock manager peripheral to the
-> Raspberry Pi machine.
+G220A is a 2 socket x86 motherboard supported by OpenBMC.
+Strapping configuration was obtained from hardware.
 
-Series:
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: John Wang <wangzhiqiang.bj@bytedance.com>
+---
+ hw/arm/aspeed.c | 35 +++++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
+
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index bdb981d2f8..1de61f7d4f 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -120,6 +120,20 @@ struct AspeedMachineState {
+         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
+         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
+ 
++#define G220A_BMC_HW_STRAP1 (                                      \
++        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
++        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
++        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
++        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
++        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
++        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
++        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
++        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
++        SCU_AST2500_HW_STRAP_RESERVED1)
++
+ /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+ #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+ 
+@@ -798,6 +812,23 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
+ };
+ 
++static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
++{
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
++
++    mc->desc       = "Bytedance G220A BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
++    amc->fmc_model = "n25q512a";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 2;
++    amc->i2c_init  = NULL;
++    mc->default_ram_size = 1024 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
++};
++
+ static const TypeInfo aspeed_machine_types[] = {
+     {
+         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+@@ -835,6 +866,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_tacoma_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_g220a_class_init,
+     }, {
+         .name          = TYPE_ASPEED_MACHINE,
+         .parent        = TYPE_MACHINE,
+-- 
+2.25.1
+

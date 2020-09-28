@@ -1,93 +1,97 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3519697lfq;
-        Mon, 28 Sep 2020 03:46:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzvM7cAh110AcCT44uJGnueJS3S5MrAJDl9yLZwnLZe8IwWUL/4aGI7WSvrxCh59tyZkwRU
-X-Received: by 2002:a25:168a:: with SMTP id 132mr1028546ybw.299.1601289963721;
-        Mon, 28 Sep 2020 03:46:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601289963; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3520122lfq;
+        Mon, 28 Sep 2020 03:46:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwTu/3OKJ5yv/IaECPbSedmpuMPX+ou1qp8qxT23YqA3itsmA47T4ks4z+6yGnwdqlwMJzJ
+X-Received: by 2002:a25:e710:: with SMTP id e16mr1132941ybh.358.1601290002681;
+        Mon, 28 Sep 2020 03:46:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601290002; cv=none;
         d=google.com; s=arc-20160816;
-        b=QQMQDY7FyInaI/aRTVvfwNCIArqMBrNx7lB2fbRqAzpl3Ik0qtoV2kWoh1F3ppJVSi
-         5wZK5SJIN/t1JIZzKt5w/1kSGvtHrlDyF9cksHmSVLuadHi+eGRVbWonTM8Nq/ivzFuC
-         LkOfKNLLnLm9BiBZqKGXN2vWKJOg21V5r6Txea9NoRmn2vxazLNYT4AdJPPTiRI3gObb
-         AiVdMhj23YmBw5mFQVGjbeEpiZR0gTkLFLYahlSdYkm+VtpB9F+EnzKaHVKgwm/Nt8hJ
-         cqm5n/YKdmy9lkcFISwSjJKC+uuvCo64u/YrGe3dkf17Jaq9uoc+pyg6XsxPxbrcq+7r
-         V5rQ==
+        b=npPe+UTvNCaKJUCzvti+zaXEjSuB1E+IfCpGcplAy8svGuE9QryTNDlRCThpB6iGaw
+         lNkBvAJ35gVCSH6qHojOIbeVxCQFhmfAvQNwn2mrxSG71+g1Vgn2bujzbJJb97qI7V3Q
+         ZjcYTwetJQW3whXMcgMjst7WbXHFV8UsZRyIO42mDkEBY2JUZroUudStID2SoF+VqcGl
+         YG0ke00wC76tqukysrbGqWjUF1PFxFff3WGZab28pXPKJnkvGh1OYXehs/F4tqoMAIJN
+         zVNGg5VgLlTY2pTHkbO1Lyjqi48PXtabqw0n8ZeEZz8MyEpacs58jwxrDrdwrQbhWxqm
+         NGKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=UDNSv99blgCXgYKAJW9DywzNbpAo3HN/zviB89rGwi0=;
-        b=i6KjCYdcTKbdFobMGhU7hH8Z+tSJtbtIAivVR8sCQK4nIvN8ChsZeNxi5vMld+tdjC
-         AFKtp2X8Og0nAw5DO4yc3RxsCXAoEUgk7wHD1Jn9PG0bTslEFZ5dRhD5N26oEmzkAatb
-         PTfUwATHDGoT2vHocwnKj8PgqWLFRxXb1DU2xWGgN8r+GfjfD9BUktVMoRypLEjkRVW2
-         nG+L3PIjB/C5MqkO7USwdQHbt5r0OWAy7su/l2khj5mt6JLNSQdPqV1uviT2KYqkPOwA
-         gjyFHrjDPityjWJnpUsK1wG6N1oFwgxtA/ln4+AXghos83/czDzjn4OVjuiD9tZyE7ag
-         tA/A==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=x0No8/lNHDWses2JAiQOSnCsiaQe0Jlum0U1EgQFNxA=;
+        b=g/ILh0Axd/B3lbhB0kFo+bZI5EFKsGfJscsUYoNT4fdlyWLXqGimuuVzH3E/um/Hfq
+         mL8raff+bYfTIok0lWB8opEDkX57opCgrL/BeHr5e8AVCwzU/6h/iRo+g8ZthCNKhmWu
+         wvMhKcNRYgY0e7oR8YfZ/W21tGcxpUPyqgaUOYmNVIzsU+NdS5Qqyh/6wtPNoKUlLlLv
+         KG0gyLHjx1obS4VGEGOMhBxxCkZBGqfj2rxxvyFp5hnVihd83rWv4Y7O0fCpjIM9OY7a
+         LWRoLETS3w55bd6xBN6zvxkX9+aCi1Rs9zGiNApO+YlrS56Il3fRPpcV5+wdLkZqz4Oh
+         pJxg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MFupLCMx;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fpIQ4P9b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i6si457100ybp.218.2020.09.28.03.46.03
+        by mx.google.com with ESMTPS id j133si465017ybj.75.2020.09.28.03.46.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Sep 2020 03:46:03 -0700 (PDT)
+        Mon, 28 Sep 2020 03:46:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=MFupLCMx;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fpIQ4P9b;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44728 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45650 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kMqfT-00034u-3s
-	for alex.bennee@linaro.org; Mon, 28 Sep 2020 06:46:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43764)
+	id 1kMqg6-0003Tp-35
+	for alex.bennee@linaro.org; Mon, 28 Sep 2020 06:46:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqck-0007ep-Q9
- for qemu-arm@nongnu.org; Mon, 28 Sep 2020 06:43:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:31641)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqco-0007nf-KK
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 06:43:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:33925)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqch-0006GV-3t
- for qemu-arm@nongnu.org; Mon, 28 Sep 2020 06:43:14 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kMqci-0006H6-5h
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2020 06:43:18 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601289790;
+ s=mimecast20190719; t=1601289791;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=UDNSv99blgCXgYKAJW9DywzNbpAo3HN/zviB89rGwi0=;
- b=MFupLCMxMrbxRTiMdhMXOhw2U4MqrArkUnG3y2BwcOYEufJvmkHB11Qc0nG07laNkyQEN6
- epD6nDqbeXnD45i/gmrdy5lFBm2Bee3acODDLr33RQWdMKaP9zaZ/+bJBD7k7kijnet347
- +t4nye+wH31QKW99kM7fs9c7b0plpz0=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=x0No8/lNHDWses2JAiQOSnCsiaQe0Jlum0U1EgQFNxA=;
+ b=fpIQ4P9blHRLN9UkiLhUSycNjBa31beviY/TCHJwWXmR4ux1JLwgmZNxJ8dQG8CwF2fc8L
+ dQPLb9aMjsHgyF0SGVyofEPYByMk7LX5OPIL581GZPrpcl+BmzXd+asoVP+DriEvUYySi9
+ dyEPmuWUM/VFfkK952c2xQaLo2bPBeM=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-242-utlhAF7EMd6n-v3CKHbecw-1; Mon, 28 Sep 2020 06:43:08 -0400
-X-MC-Unique: utlhAF7EMd6n-v3CKHbecw-1
+ us-mta-550-ChHKRiu2MGmPSBwv7sJs2A-1; Mon, 28 Sep 2020 06:43:09 -0400
+X-MC-Unique: ChHKRiu2MGmPSBwv7sJs2A-1
 Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
  [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BC9661DDF9;
- Mon, 28 Sep 2020 10:43:06 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 23D9B1074657;
+ Mon, 28 Sep 2020 10:43:08 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
  [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 217911002C08;
- Mon, 28 Sep 2020 10:42:57 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B4A291002C03;
+ Mon, 28 Sep 2020 10:43:07 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 51B689CAE; Mon, 28 Sep 2020 12:42:56 +0200 (CEST)
+ id B7D0A40DCF; Mon, 28 Sep 2020 12:42:56 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v3 00/12] microvm: add pcie support
-Date: Mon, 28 Sep 2020 12:42:44 +0200
-Message-Id: <20200928104256.9241-1-kraxel@redhat.com>
+Subject: [PATCH v3 10/12] tests/acpi: add microvm pcie test
+Date: Mon, 28 Sep 2020 12:42:54 +0200
+Message-Id: <20200928104256.9241-11-kraxel@redhat.com>
+In-Reply-To: <20200928104256.9241-1-kraxel@redhat.com>
+References: <20200928104256.9241-1-kraxel@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"
 Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 03:47:08
@@ -98,7 +102,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.576,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,50 +126,47 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Leif Lindholm <leif@nuviainc.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wC7XViyMkIz9
+X-TUID: 7daJ3/1xufDh
 
-v2:=0D
- - move aml generator to gpex and have arm virt + microvm share it.=0D
- - add 64bit window.=0D
- - add testcase.=0D
-v3:=0D
- - fix testcase: force tcg, disable on i386.=0D
-=0D
-Gerd Hoffmann (12):=0D
-  move MemMapEntry=0D
-  acpi: add acpi_dsdt_add_gpex=0D
-  arm: use acpi_dsdt_add_gpex=0D
-  microvm: add irq table=0D
-  microvm: add pcie support=0D
-  microvm/pcie: add 64bit mmio window=0D
-  tests/acpi: allow updates for expected data files=0D
-  tests/acpi: add empty tests/data/acpi/microvm/DSDT.pcie file=0D
-  tests/acpi: factor out common microvm test setup=0D
-  tests/acpi: add microvm pcie test=0D
-  acpi/gpex: no reason to use a method for _CRS=0D
-  tests/acpi: update expected data files=0D
-=0D
- include/exec/hwaddr.h             |   5 +=0D
- include/hw/arm/virt.h             |   5 -=0D
- include/hw/i386/microvm.h         |  32 ++++++=0D
- include/hw/pci-host/gpex.h        |  11 ++=0D
- hw/arm/sbsa-ref.c                 |   5 -=0D
- hw/arm/virt-acpi-build.c          | 175 ++---------------------------=0D
- hw/i386/acpi-microvm.c            |  12 ++=0D
- hw/i386/microvm.c                 |  93 ++++++++++++++++=0D
- hw/pci-host/gpex-acpi.c           | 177 ++++++++++++++++++++++++++++++=0D
- tests/qtest/bios-tables-test.c    |  30 ++++-=0D
- hw/i386/Kconfig                   |   1 +=0D
- hw/pci-host/meson.build           |   1 +=0D
- tests/data/acpi/microvm/DSDT.pcie | Bin 0 -> 3023 bytes=0D
- tests/data/acpi/virt/DSDT         | Bin 5200 -> 5196 bytes=0D
- tests/data/acpi/virt/DSDT.memhp   | Bin 6561 -> 6557 bytes=0D
- tests/data/acpi/virt/DSDT.numamem | Bin 5200 -> 5196 bytes=0D
- 16 files changed, 366 insertions(+), 181 deletions(-)=0D
- create mode 100644 hw/pci-host/gpex-acpi.c=0D
- create mode 100644 tests/data/acpi/microvm/DSDT.pcie=0D
-=0D
---=20=0D
-2.27.0=0D
-=0D
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ tests/qtest/bios-tables-test.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index cc4579d914e7..bf34be5decf3 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -1063,6 +1063,18 @@ static void test_acpi_microvm_tcg(void)
+     free_test_data(&data);
+ }
+ 
++static void test_acpi_microvm_pcie_tcg(void)
++{
++    test_data data;
++
++    test_acpi_microvm_prepare(&data);
++    data.variant = ".pcie";
++    data.tcg_only = true; /* need constant host-phys-bits */
++    test_acpi_one(" -machine microvm,acpi=on,rtc=off,pcie=on",
++                  &data);
++    free_test_data(&data);
++}
++
+ static void test_acpi_virt_tcg_numamem(void)
+ {
+     test_data data = {
+@@ -1181,6 +1193,9 @@ int main(int argc, char *argv[])
+         qtest_add_func("acpi/piix4/acpihmat", test_acpi_piix4_tcg_acpi_hmat);
+         qtest_add_func("acpi/q35/acpihmat", test_acpi_q35_tcg_acpi_hmat);
+         qtest_add_func("acpi/microvm", test_acpi_microvm_tcg);
++        if (strcmp(arch, "x86_64") == 0) {
++            qtest_add_func("acpi/microvm/pcie", test_acpi_microvm_pcie_tcg);
++        }
+     } else if (strcmp(arch, "aarch64") == 0) {
+         qtest_add_func("acpi/virt", test_acpi_virt_tcg);
+         qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
+-- 
+2.27.0
 

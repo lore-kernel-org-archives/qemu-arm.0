@@ -1,80 +1,80 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4986069lfq;
-        Tue, 29 Sep 2020 15:44:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz57cjpj+sYjsr3bET10tWC9en8ok09D8MpCpn1VfXx3GvlBrXmJ/QMoIpDH5+H8gioAskM
-X-Received: by 2002:a25:6887:: with SMTP id d129mr9747558ybc.434.1601419457130;
-        Tue, 29 Sep 2020 15:44:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601419457; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4986135lfq;
+        Tue, 29 Sep 2020 15:44:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzmNZ1Kp2xjhvneJK+U6MRgrqOvzC1H2c1QabqhgSp5bEmIy5NUKMacRtdTIS3bkXhMSlRF
+X-Received: by 2002:a17:906:2655:: with SMTP id i21mr5901767ejc.511.1601419462671;
+        Tue, 29 Sep 2020 15:44:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601419462; cv=none;
         d=google.com; s=arc-20160816;
-        b=n96ab0kz8ZSLzV3kiSseLRMmhmJnIoEbWWgxQ7Kra44N3BvRJEkffL4nxgApfGYxj2
-         izrMEV0w+Ze9rN7Zb27P8Hj02WU5UVQNDrDQ+8ExPLzl5QFrbwKYWR1TwWgNvskumx85
-         OlpHqdwEcCiAO3qUyNsufyaXFAMW4q/5R7j50+d2Ynd4w5TpNvy410qdZGS5Oz2MlnNP
-         JllPVtQTSyn1G4/qyy/334VddbIzfFDf5iwCR/zw/5uHLFkuoX4m6rq4GvVlbksIsnHk
-         NBir8sIdxuWxs/vWM+Ba+DWq5zTynhg+PJam1iAZVq7HPPrW0uoma1ABkRagCVFJ6ioD
-         y/oA==
+        b=WPEutmueW9XI+HB9uwApV2m7mac88l5jlSLGC9+ecWnoqvdfYVkYiYgG0UyeAYM7zr
+         1dBeectkfrHaRGgHTwr5uPGyHdER+GJzOQmdRYb3ybpfLLFWBCw6sDwRcUztd99BV8QI
+         TITa9+HHDXygjqfxAjktgRL7nLhWe/ngCnZOtdAA7UTOG5fLYtOe9nliCmxDKKupmyvy
+         cuu+h87HmlJFxaDcvnM+GMt0uZIhEb4B/va3mh2tE3v4RXKf5P79g3tqv8tsg8aPhwBu
+         JfOu9uLMxQg+aDAE4UPaWcHrnrr2jgeWiLrv/teeucaz9P65SAInMaW9rIspMEGtltLg
+         jWsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=fVtzhoPQ9oRe5A4whgi5/tX3r24KuxvOyig0n+4hw6k=;
-        b=e12SIx9YRKAnOfV5NoAsE5Q8esLC7AZ6WGX02U8wft4aqtQK4b3tqKBRuzearwSsZL
-         68lzdgaWd6aoHIkkewPt086PMfbLehGsA6tdfl1ukWIS7lBzykUMPH9Xd+9Eh6QCjD3+
-         762+4CXOCl8fl6Vpd0K4Yqa6rDzOv7CLuAVUNulqgFHgKZwunHp+EqE3gjRmPTbA76Ub
-         K0QetdBJlNl3w5nkdAo2qVDx6Z6+u6u/vGSKwnrAsBJRLhMmWtKvDLMv/A0NLiVuJiJS
-         N9oJLzl2H4EpUyHSgw1+fcoWtxx96sNw8F/MCWEahheZPGSbiLUOSbRyH7KK67Y6LEnB
-         sbBg==
+        bh=9dR9Nk0eM9jSf6djV760qyeufq0GIQie0fmgNB3aO7w=;
+        b=GuRbRB8enOdkLtFGOiVeUMxw3FPbW81Bz9B+WNV5aAnIGWRFiFlLBFi3LSlVFNrswM
+         zYktjiDsvMDXun+t1ReVVwHFOHM+TuKueA+iHw8QKw7fSIlqIdzSntA+2SkrXGWRYJTD
+         FQjBWM0LL3kN643/oFBNPnauQF+C75j05eJtD/UBzIiVTIAhS871f81jrip5SgIxe14n
+         EOqtJ3ADwv0EHEk4IE2G6JygcwMo4BQCCV7Ogtyqi26OXTy8RvZAHa8RstS6UfCBOLVl
+         1463usQyDgqXIeL/FTxr0h1pGHrAJbUlLUSb2hj9YeBRCcl+z3uIIxPqB8sFs5d01Xtn
+         U4DA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aBF9pNrH;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ABzl7VNu;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id w4si4905084ybt.392.2020.09.29.15.44.16
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id ec11si3612551ejb.540.2020.09.29.15.44.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2020 15:44:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        Tue, 29 Sep 2020 15:44:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aBF9pNrH;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ABzl7VNu;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1601419456;
+	s=mimecast20190719; t=1601419461;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=fVtzhoPQ9oRe5A4whgi5/tX3r24KuxvOyig0n+4hw6k=;
-	b=aBF9pNrHMqQNbow0wsE4Sz6MQ4k5OJ3SFX2z4J9nq6w4cwFI+dBPFoS18bZoyUAuaYx5Hd
-	eKWk2fUvsU/LGbbeoPrmoEMEPHebKtMU6PKl723UTEsVPJrDN4g5ZvZwOSaogEWLtLAnQG
-	QnbV45rzO8k1irs2wQ8cgtzfrEl2f6g=
+	bh=9dR9Nk0eM9jSf6djV760qyeufq0GIQie0fmgNB3aO7w=;
+	b=ABzl7VNu1PaIwvHqYBjXD9sL92SzShanvI7/wPHo5VkZ/djlfFseeq/RaRxhCGK9k45Fpo
+	Qfdj6qsoHQnDoMYZD2S6+G38u8rIzApA/r7q8/O6F2MBrdjUebf3HXzIgWbHjqR3+p7O2v
+	s+8IWxyVrC/kJxl5I5wAcrwgBcf5PkQ=
 Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
  [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-584-c8sCsAfyMvibSB_e946CoA-1; Tue, 29 Sep 2020 18:44:14 -0400
-X-MC-Unique: c8sCsAfyMvibSB_e946CoA-1
-Received: by mail-wr1-f69.google.com with SMTP id b7so2359593wrn.6
-        for <alex.bennee@linaro.org>; Tue, 29 Sep 2020 15:44:14 -0700 (PDT)
+ us-mta-297-vpT-5EiOOAWSJoi_0LayFg-1; Tue, 29 Sep 2020 18:44:19 -0400
+X-MC-Unique: vpT-5EiOOAWSJoi_0LayFg-1
+Received: by mail-wr1-f69.google.com with SMTP id j7so2360653wro.14
+        for <alex.bennee@linaro.org>; Tue, 29 Sep 2020 15:44:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=fVtzhoPQ9oRe5A4whgi5/tX3r24KuxvOyig0n+4hw6k=;
-        b=rFNNuUmP0V6MYwxRwb0S9qqyvTPakwoAqY3RpxkWj+UIH/fZexSVmaQsNqQBL68rT+
-         f2ZNx1BehNTqri2Bk4kkdklHZEKDGhNwih3V29AcybNI1t2ECTCu1w5o0h8tjftYTGgd
-         b49qrzu4rP+8nxSR0JfBPy9YEkNltf418NPrkTm1NFST2xRTuq8/Shzoo3ZHk/JCjVI1
-         uRu+JJc6aNeDfVlwrPrOBKfnf9mfmo95D8FE1AaUNpiMFYeyUn/1t9Oibh9Qjf1Wusj7
-         /Vf0Nrq04EmCF8CDgR/jcBwtugiPeD17UgJIjXJ76+uTQxIZPjs0SaLUUJILxwMai+dN
-         EZJg==
-X-Gm-Message-State: AOAM532YozqaBi88G/DaxKx1rcqrrKDDhInkOtci/dOrky9g/PnA1IN8
-	lKN14dm7puC/cGq1sdiudf1Fxh3JCMzn+R9kj4tbMYcvnr1JVdtsemxcO346NIzp++9l57Lhb5w
-	EORcCCXyR8hsJHkAL
-X-Received: by 2002:a5d:5261:: with SMTP id l1mr6619431wrc.193.1601419453411;
-        Tue, 29 Sep 2020 15:44:13 -0700 (PDT)
-X-Received: by 2002:a5d:5261:: with SMTP id l1mr6619416wrc.193.1601419453250;
-        Tue, 29 Sep 2020 15:44:13 -0700 (PDT)
+        bh=9dR9Nk0eM9jSf6djV760qyeufq0GIQie0fmgNB3aO7w=;
+        b=C6nT5upVf5RcIgbSx2hfm24ul3p5HGqBnEL1jEgrRsRGSIO4mHfEFy5xfLjz2rc8l0
+         QKO6OrNKAIdGQYTM9U3aORoV51L8BMVcbkSrtvR3vEpDQLri2UV3DSIEpb0CU1y+CH1U
+         XwSlD7QelA/uguVNvPK2tUgt3MVRioVtWRd9mHSc8a4kiV+4AwaPPbmD8pOYOH1Cy3i1
+         uEEEhiJ7aU7cM5EFOwXrQMkQIykKJKlpF95drKiL+mq8005hzvdQpMXiCEgZ8H+X2GMq
+         9qnW3oiMHU8eUtK6vpHajSWhIe7CWN6WnccJS/GGZTz4/VxMYNSqlB204iMV0W2TfmNG
+         KJVQ==
+X-Gm-Message-State: AOAM531vnB9HdyepxAqHZyILnVhUxNyajEyBHpSd+Yox8nPV/H1f0Bio
+	eoJPh5f3NjLq459Nteo/QwCAw5e/6wxSRtR+HuxoE7uBD6ak3Qfje2pj+FHveeKG6thAuVo45IG
+	5gVKSdnxhsBpr6reC
+X-Received: by 2002:adf:fd01:: with SMTP id e1mr6312401wrr.44.1601419458523;
+        Tue, 29 Sep 2020 15:44:18 -0700 (PDT)
+X-Received: by 2002:adf:fd01:: with SMTP id e1mr6312389wrr.44.1601419458354;
+        Tue, 29 Sep 2020 15:44:18 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.redhat.com (74.red-83-53-161.dynamicip.rima-tde.net. [83.53.161.74])
-        by smtp.gmail.com with ESMTPSA id l18sm7902646wrp.84.2020.09.29.15.44.11
+        by smtp.gmail.com with ESMTPSA id y1sm7440740wmi.36.2020.09.29.15.44.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Sep 2020 15:44:12 -0700 (PDT)
+        Tue, 29 Sep 2020 15:44:17 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -87,9 +87,9 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	qemu-arm@nongnu.org,
 	Richard Henderson <rth@twiddle.net>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v4 03/12] target/arm: Select SEMIHOSTING if TCG is available
-Date: Wed, 30 Sep 2020 00:43:46 +0200
-Message-Id: <20200929224355.1224017-4-philmd@redhat.com>
+Subject: [PATCH v4 04/12] target/arm: Restrict ARMv4 cpus to TCG accel
+Date: Wed, 30 Sep 2020 00:43:47 +0200
+Message-Id: <20200929224355.1224017-5-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200929224355.1224017-1-philmd@redhat.com>
 References: <20200929224355.1224017-1-philmd@redhat.com>
@@ -100,33 +100,47 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: obiRAiJ7bwFs
+X-TUID: NwsdK1+T5Wyo
 
-Add a kconfig entry which not explicitly selected by another
-entry, but which selects SEMIHOSTING if TCG is available.
+KVM requires a cpu based on (at least) the ARMv7 architecture.
 
-This avoids:
+Only enable the following ARMv4 CPUs when TCG is available:
 
-  /usr/bin/ld: libqemu-aarch64-softmmu.fa.p/target_arm_arm-semi.c.o: in function `do_arm_semihosting':
-  target/arm/arm-semi.c:784: undefined reference to `qemu_semihosting_console_outc'
-  target/arm/arm-semi.c:787: undefined reference to `qemu_semihosting_console_outs'
-  /usr/bin/ld: target/arm/arm-semi.c:815: undefined reference to `qemu_semihosting_console_inc'
+  - StrongARM (SA1100/1110)
+  - OMAP1510 (TI925T)
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- target/arm/Kconfig | 4 ++++
- 1 file changed, 4 insertions(+)
- create mode 100644 target/arm/Kconfig
+ hw/arm/Kconfig | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/target/arm/Kconfig b/target/arm/Kconfig
-new file mode 100644
-index 0000000000..972d9a1b9a
---- /dev/null
-+++ b/target/arm/Kconfig
-@@ -0,0 +1,4 @@
-+# arch-specific rule to select SEMIHOSTING if ARM && TCG
-+config ARM_SEMIHOSTING
-+    default y if TCG
-+    select SEMIHOSTING
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 7d040827af..b546b20654 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -1,3 +1,7 @@
++config ARM_V4
++    bool
++    select TCG
++
+ config ARM_VIRT
+     bool
+     imply PCI_DEVICES
+@@ -30,6 +34,7 @@ config ARM_VIRT
+ 
+ config CHEETAH
+     bool
++    select ARM_V4
+     select OMAP
+     select TSC210X
+ 
+@@ -244,6 +249,7 @@ config COLLIE
+ 
+ config SX1
+     bool
++    select ARM_V4
+     select OMAP
+ 
+ config VERSATILE
 -- 
 2.26.2

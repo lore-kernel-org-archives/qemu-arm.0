@@ -1,128 +1,108 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1264820lfb;
-        Fri, 13 Nov 2020 03:18:24 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz7dx5BxDKeaBShU0blkRff4lQe/NKscci+tGx2wVjhwBdJxVVYzTGhJ5yJvC6uBNp+G2Yx
-X-Received: by 2002:a25:d049:: with SMTP id h70mr1960138ybg.190.1605266303885;
-        Fri, 13 Nov 2020 03:18:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605266303; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4275724lfq;
+        Mon, 28 Sep 2020 22:51:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzCZoa/KvrWcUwrqagUUu8lUuOnivRiXLY9OP93XLcC5CIMML/77ImXPreucsle+UaNv/Fy
+X-Received: by 2002:a25:cbc4:: with SMTP id b187mr4183035ybg.260.1601358689932;
+        Mon, 28 Sep 2020 22:51:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601358689; cv=none;
         d=google.com; s=arc-20160816;
-        b=y+b+mtT8l+Mj8031b7F02Vdvws1WhtFH4aighvDbNd/R7DM923RXVfWpano9HKFQoK
-         dDD45pxqj2xIoYc8qCDSmJRp9O/Ykpmj0uyaVd12G8belNGKHA+DelSwDXJ6JpB8zrqL
-         yHfMEEQ04YaLhttsETk+qorcqsK2VFRtGxNwp3yhjJqTWM2a8e3Ol3CMlRyFZNNViSGC
-         IANoZ9+sOgYeGLjRMt2BLmkyTv/3FUqdkN3dqn4bjXtSoWfQ1CsRYuAeRV5zOaavzjkH
-         USaFcuB9uom34MS8JUcDV6MyjimrjdCG4/zKwgcr9eCLp04llRcm/XZpXA/Nya6GXxIs
-         szeQ==
+        b=YBCuU9QWTWIO9FyTGiItu4jcmKK9bqQ1sa0PL9KWwkkDj8fn42dF2uPfsMXHCMh4MT
+         TGKu4o0O3YNV28ufRuP2VD1skdVJL5vEw5sOs8yHSYkRUbPTa2lJ2nwP3ZdtrvJMVDaP
+         9g27iUdaW9cfvDODBbszn0deqP418MJAhcYF+55HNPyN/dQH9pDJDTtBwBSON4hEY9XW
+         T56bONbwjKfVQ2rWFWO9EEHODzZdD4pLYzJHufeNoKjmQkn9DfipNUhMjaHA0pVi9tfi
+         kaw39NTB5Oju04rAo0MusOr1sTWZ2ONr9bCjRE9W/0B0RDDBitqbYSeOaIG0uFP6+vtx
+         uN8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=XTWw0Ele00oDA94ovqRiyW7RimoqODaWzCRNHen2pSw=;
-        b=EElQ9kt9AobDiAVS0DEC70wc1BMmlVYzC8PPc6VCYtyHLpuHO/CS28xOclas4ZkX81
-         9SUo/Q54VP18sLXu4whz3gAqmji2spzeIRLCtHSIODJiP9Kz12kJn55VkW5hHKre+sXK
-         Cp3soP9aREj5BRpGqBqanf/wYh5sbpk3/EyH8QeK04unr+SUBpLRQ67TdRcqa0ciQwDs
-         j1+41ios3QcdH9QWSkpAKfoIb32Xlw8vHi3vbpHuHTOnk7kLutpMpMo5X1KDSoRMBUb0
-         YPqACuFlNekTCor1obrQG1lKzntyWEhwDcKYb8K9Zq1ZHfUSZQkI/iIqMC3WOH+Oj42b
-         hN8A==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=n9p5HKRqH3lWpcbVXdHz7U4jk6m8NJ0bELLmpYlme7I=;
+        b=FSxKAzTKhlKviUiHgACprI73AaZ5QFIethJ+LerGylZoaxHnA7DZHctC7gw1XYJ0YL
+         GoQ8yKhLTeXGcMaWIoG0L6VxGLlK/qf+yCie0tEGqqDtwYI3Yaq8sfsJnR5jwtdSCUc5
+         b0gEs7cEGd3jm2AN4JcFV6vqxIKnpnItg+EjnCP2gbT7xy23DAerQeZgMPmHHTD1mT9Z
+         g3ziJ5aluizkPdEBuak5+At1h7BE3ptFvixzrPWChTbLP64Xi+WTtIC3RVAeIVb3Qng1
+         rgsuS4RpERQqW2W2MlEXt2i72KOCq60xAS6IHIaTtdD5T/kzCWf9yhlVdYcF+8QDs9/f
+         EtGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q4os47LM;
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=uBJdh4En;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s7si4560793ybk.123.2020.11.13.03.18.23
+        by mx.google.com with ESMTPS id y18si3032535yby.169.2020.09.28.22.51.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Nov 2020 03:18:23 -0800 (PST)
+        Mon, 28 Sep 2020 22:51:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Q4os47LM;
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=uBJdh4En;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54086 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Received: from localhost ([::1]:46568 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kdX5z-0003nd-9w
-	for alex.bennee@linaro.org; Fri, 13 Nov 2020 06:18:23 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46698)
+	id 1kN8Xx-0002rW-92
+	for alex.bennee@linaro.org; Tue, 29 Sep 2020 01:51:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35400)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kdX5i-0003ln-2W
- for qemu-arm@nongnu.org; Fri, 13 Nov 2020 06:18:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:22256)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1kdX5c-0000qC-3Q
- for qemu-arm@nongnu.org; Fri, 13 Nov 2020 06:18:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1605266278;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XTWw0Ele00oDA94ovqRiyW7RimoqODaWzCRNHen2pSw=;
- b=Q4os47LMJz5zyxAxgEms/dBbgD7UM6qXSz03e67b7YwpiWb0FC9uUHu/CPpDUkbNOSp5l2
- OyyVMqIAHBC+FCVx50Y/9D5lfGhbyktcP6VbWNOAY2QQ3LgG9Zbf2Tv7oAXvRaII1it/wi
- JYOheW/1V6lNHiO4NI4yhIPnLpU7m+M=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-591-bx5RXND5MeS8SNZ638h_Pg-1; Fri, 13 Nov 2020 06:17:57 -0500
-X-MC-Unique: bx5RXND5MeS8SNZ638h_Pg-1
-Received: by mail-wr1-f71.google.com with SMTP id h11so3626172wrq.20
- for <qemu-arm@nongnu.org>; Fri, 13 Nov 2020 03:17:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kN8XP-0002Tk-C9
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2020 01:50:55 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:33822)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kN8XK-0005Y0-6J
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2020 01:50:53 -0400
+Received: by mail-oi1-x243.google.com with SMTP id n2so4167978oij.1
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2020 22:50:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bytedance-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=n9p5HKRqH3lWpcbVXdHz7U4jk6m8NJ0bELLmpYlme7I=;
+ b=uBJdh4En8UbsL7dBLhID5N2+AqAyr+oYrfQVZCparL/ER8h2gGW7vhC5u6nN6tX16G
+ 1U0y5RUm72sQV72wqPJnpnZ5fAPChwq1NrWSEUZI9+gDJQH5SmzjV4CCyWtKb6Vge3zY
+ 66P9js4DOhN1QvbM1YOTZwSvIKlYGVFqYme2bjs6flEhbKZAxcbCtRXm8FZuN4qSwDQK
+ ruQ11122ETbj9lfP865qHyJ3jmw3maMA2LUhsyEmDk4qCOJkFm8dmkQq5qpjOBlPohtB
+ qJcHSJgzyFDv2dlAZZ212K4ZtfKQXYm8KkB04olW1zH5WqlUkwXFvYvOFlr5AP5l14G/
+ sN1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=XTWw0Ele00oDA94ovqRiyW7RimoqODaWzCRNHen2pSw=;
- b=erRJct1FOdanCmbC1GtilhWU2cJYmKjBW0JkBr0VM6GGLk4DFFyJOFLxcqweZC69kM
- PHFibUhosbkm/2zmha7fUSsg4nBLo04OZrRpDda5A8sBoLJn8HBHNou/y0Ix8WToBU43
- 9R5MmqDvsJM5pFeFc7J2jqcx6YsUi/clIZor+IS8gF2MAEfR2GUGLiMjts78pqQLYcTV
- d03JYJ8YYNndmWvvXHcGc14v8xHgX4mgTF2sWWB18eOfu5x+EtK6ye9G9y6KNg2aTJ3T
- w4rG6k2H7gzWuSu/epLxRv0ivVZbv/bRiHRD12P1XJ2Yp9HNGQImDDW2uZdhVU3pfpF+
- h2DQ==
-X-Gm-Message-State: AOAM5305I7FCE7wPuM94aM3WHwsQBUGG9FanEA7o/d9Mqd0wB1PPrOZd
- 7hiKYj3VGJAvL9PvI2/knaFYQhT21eezHt8i3nhLpBgp5y18pUFQb2UqH2nZamiCl2eOKDous0d
- lQX+fVlkM04Wxu8q0zNXmEcUZuFsxHUi0LmX/4lBwdMfn+W0tfq/KIRYX77KBo/L3
-X-Received: by 2002:adf:fa82:: with SMTP id h2mr2814264wrr.24.1605266275630;
- Fri, 13 Nov 2020 03:17:55 -0800 (PST)
-X-Received: by 2002:adf:fa82:: with SMTP id h2mr2814236wrr.24.1605266275338;
- Fri, 13 Nov 2020 03:17:55 -0800 (PST)
-Received: from ?IPv6:2001:b07:6468:f312:c8dd:75d4:99ab:290a?
- ([2001:b07:6468:f312:c8dd:75d4:99ab:290a])
- by smtp.gmail.com with ESMTPSA id t13sm11073965wru.67.2020.11.13.03.17.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Nov 2020 03:17:54 -0800 (PST)
-Subject: Re: [PATCH v2 006/122] m68k: do not use ram_size global
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <20201113101704.1438368-1-pbonzini@redhat.com>
- <20201113101704.1438368-6-pbonzini@redhat.com>
- <38677358-6eeb-830b-6248-343267eddc8a@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <5b0d7a6d-0e17-527d-9b25-a1dd9cbad062@redhat.com>
-Date: Fri, 13 Nov 2020 12:17:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.4.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=n9p5HKRqH3lWpcbVXdHz7U4jk6m8NJ0bELLmpYlme7I=;
+ b=OlGnTqdVYMXHi9mme6E4Z/yAGNMn4dMvWPd6NuR7kcoSCDCPhFofZyQJ7NcwAqhmyK
+ 0a0jMpeHE5dRudDmXy0bd6G1l9L4LlvfccpiwfNhZCKOWEEbuJWaZaGForcvhDT87zu7
+ vA7v/Uxny+s5D328Sf397Nd1CJTny06NikhVZzSj0SQx/NTLihRkZeiyxvhi819IaWVz
+ aPnzZrAEGbYzrjBSgagewG2N9JPLOwYCps9nYBQ/BcXMlmf/tZn+1YeX8/sAUoqvW9H5
+ Q1DnmMYJIPrVF81LwGbMO5eHS01PfbUBxvke3NG9hkjggCvrCWgR1ZAqvZmNw55+OEOa
+ U7wg==
+X-Gm-Message-State: AOAM533zmhtk4vbv+nwLabDYiWSRiYYYuvGn3m5ZpCRY5ThUNFB02KMw
+ yYKT4awvTzbPll+YJqQ+H0qsgWVDhLlDDc4+l12uSg==
+X-Received: by 2002:aca:bd8a:: with SMTP id n132mr1525724oif.100.1601358648123; 
+ Mon, 28 Sep 2020 22:50:48 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <38677358-6eeb-830b-6248-343267eddc8a@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/12 08:00:44
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20200928061201.1601-1-wangzhiqiang.bj@bytedance.com>
+ <d6cf7464-a0bf-2748-7e4c-732208881711@kaod.org>
+ <CAH0XSJtDEPnf8qLNuT_Ev3TkGQw_68cZ5KGgY_aLBThMQwU9sQ@mail.gmail.com>
+ <a4371d4f-0df1-fedb-4f1b-3a29dbeac465@kaod.org>
+In-Reply-To: <a4371d4f-0df1-fedb-4f1b-3a29dbeac465@kaod.org>
+From: John Wang <wangzhiqiang.bj@bytedance.com>
+Date: Tue, 29 Sep 2020 13:50:37 +0800
+Message-ID: <CAH0XSJs4kMiVMNzFZTYJseDjDO1PuwRs=FzAxMzAAs0SSJBeUQ@mail.gmail.com>
+Subject: Re: [External] Re: [PATCH] aspeed: Add support for the g220a-bmc board
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=wangzhiqiang.bj@bytedance.com; helo=mail-oi1-x243.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -136,24 +116,36 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, peter.maydell@linaro.org,
- qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?B?6YOB6Zu3?= <yulei.sh@bytedance.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Lotus Xu <xuxiaohan@bytedance.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Bym4HcKcVyoI
+X-TUID: t9UC9etCZQvB
 
-On 13/11/20 11:44, Thomas Huth wrote:
-> On 13/11/2020 11.15, Paolo Bonzini wrote:
->> Use the machine properties instead.
->>
->> Cc: Laurent Vivier <lvivier@redhat.com>
->> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+On Mon, Sep 28, 2020 at 6:11 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> >> Isn't it possible to add some default I2C devices ? temperature sensor=
+s ?
+> >
+> > hmm, G220A BMC uses emc1413 as the temperature sensor. I can not find
+> > it in qemu.
+>
+> Could it be compatible with the tm105 or TM421 ?
 
-Thanks -- of course this was just an unintentional send, but I'll note 
-your Reviewed-by nevertheless.
+It isn't, I think. but I try to model an emc1413, so I will send a patchset=
+ :)
 
-Paolo
+>
+> > I can't find an i2c chip that qemu has and that the g220a uses. :(
+>
+> Try to model them ! :)
 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
+Yes!
 
+>
+> Thanks,
+>
+> C.

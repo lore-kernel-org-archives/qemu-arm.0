@@ -1,107 +1,108 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp579397lfb;
-        Wed, 11 Nov 2020 08:53:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxZwbiUNsN96O3mtahkDZNMLKXT9Lathxv+SSO9vcHklJatlN+RpzrpztRIIktAr5Q07KVm
-X-Received: by 2002:a25:5016:: with SMTP id e22mr2374206ybb.156.1605113588656;
-        Wed, 11 Nov 2020 08:53:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605113588; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4276786lfq;
+        Mon, 28 Sep 2020 22:53:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwCy8WaA5l8rSA5rxf81VNP5YUvdQ+RLT4r1PR38Bt+4QA2pBJuePIJUDaDVmwWASUYAR+Q
+X-Received: by 2002:a25:a85:: with SMTP id 127mr4157424ybk.396.1601358806052;
+        Mon, 28 Sep 2020 22:53:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601358806; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bb9ap0zWebID8MDHAV1Ghr7EKENr5OubBBlhhS54wAQWO6MOj2GJTyTzmRBd6jkjlr
-         5SLTJxRE3xBUGBy6CmsJhtp3OlN2kh25YkE1xm9oPX7D6l34B5NcUHfms/7LJAR9OSjx
-         Lk+RaKdIFWA6dygvQxXUY/3/wpfspWP7XeXno9GP71hz07hQelG+QXwnC8CvGREDkEa2
-         O7w6UEF/EGwb6GXkUuwpEqaQ5263N5bIQA6u1qyMyvSQRDJsRjqRNV18Dk4FVJ3DgzZC
-         YH3I7c7BDGeRVKk8rffFCVOzg8xfihObk5mCtNE4EZ0DnznJAQav8B2DQki7g1R9Qp/U
-         OfEg==
+        b=VLcO73ZtlBtbIym6Npk3fHcLyCgo/+iFtcMZjd/OafIxMfzFwMg7FoVlu6zBWVSFjF
+         C16H+1eFHJSRDZNQk7rsAsvyWafYebwR7z3qldLHyS5F+U9Kr8TQFsut8kx49sPDC3FR
+         x1WHHXEkEYYzhCYouHkxlpZU/pug1227uCaO3DIGlEbMLcBsGqBwtjRUJTqYayOGQOf+
+         jsVlpZqkTKaNLHFVDGiks4Lwsov/GO/mc1JdVvGf948awCLoZmHHimRdc74GdawQMDQW
+         9tzwsWOfFZmlwVfIUv0UEkDoVPc954ix86HJ4vw6AbzWEqNaHGFuCFfq8Wf/btGglu68
+         gAXA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=OZPp11DvRVV9lUx7GVVmPc1W5GyoG8cNsXDBQwAqY/I=;
-        b=FFIiIpx9pYtLoXcB2Gn4ps7I73Y8mviLU8wPTqnucogAZsiXyQjTwMAaNgvBy3PuoA
-         mvI0SPhgaCdpTHu9NpMAhEqjwyiKUuFjVtinyudAomiqh2VW5pA4iAH8R5Jvs3v6CQEK
-         +DH/qNxePyIx7R6PT4C/yPy/GmHdoReEFwMMdKkFqj2lfRMU3u5vioRYtFNsFDfBvC0h
-         i7ojm+GgqkopJtMa43Uclbzn/2qE8zRHGcy3DYzYL9grnpap5HdIdtD1sMWVev8/Xpmi
-         k9JzJShfnEGRIy77fmE6nozDVwhO+JGWlKCwm1twM4Dyh2dy7wij7eh2QWnzeD4Oyx7G
-         slQw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=S/RF3ckH0QgozTqheODtOoYVCdw1gOaH/8Ie4ZtYQXU=;
+        b=d7JbAeu7Q86zYYnxwfwXhX/YkJaMO1mVvpeYmnwdGk6YhjW4RlUlJIKFC3wOgBc63b
+         jnVzXo4bC3UCp/IJXmD0JJYDLPNRT8wZEgAYu+1Oxc471HZNbyS31aCjUSBZoecytKrU
+         mJ5KvMcro4D2Qnx00rVilGl0+yhV6lqN81grlG5ei3zX4fHqnBxVgTbP9TU9Res8moVy
+         XY0AiliwT56nS1h5EJGv8D6BNMWF/3m7/HhsMwTGCwVTJDU7J2+JsfFsyz8GE9UJcn9p
+         pSXpyF8nHxJDqTsRNfEdschBPgEaUgZiiAfCRmvvsB8csCIHJhcKBPafVTsK7b/+eSfE
+         +u9g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ad7j/XoP";
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=B5RIc7IO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b139si737141ybg.237.2020.11.11.08.53.07
+        by mx.google.com with ESMTPS id o81si3168750ybg.77.2020.09.28.22.53.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 11 Nov 2020 08:53:08 -0800 (PST)
+        Mon, 28 Sep 2020 22:53:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="ad7j/XoP";
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=B5RIc7IO;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50164 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Received: from localhost ([::1]:49356 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kctMp-0003ge-8v
-	for alex.bennee@linaro.org; Wed, 11 Nov 2020 11:53:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46044)
+	id 1kN8Zp-00041S-D4
+	for alex.bennee@linaro.org; Tue, 29 Sep 2020 01:53:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35850)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rbsingh1983@gmail.com>)
- id 1kctMi-0003gX-GL
- for qemu-arm@nongnu.org; Wed, 11 Nov 2020 11:53:00 -0500
-Received: from mail-lj1-x22e.google.com ([2a00:1450:4864:20::22e]:38995)
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kN8Zh-00041M-Hx
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2020 01:53:17 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d]:46094)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rbsingh1983@gmail.com>)
- id 1kctMg-0003TW-Da
- for qemu-arm@nongnu.org; Wed, 11 Nov 2020 11:53:00 -0500
-Received: by mail-lj1-x22e.google.com with SMTP id o24so2834044ljj.6
- for <qemu-arm@nongnu.org>; Wed, 11 Nov 2020 08:52:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=OZPp11DvRVV9lUx7GVVmPc1W5GyoG8cNsXDBQwAqY/I=;
- b=ad7j/XoPg5Efye1OEFpbCAPFVVc2h70+pWEVfGgo4Yimb9gRutAuH323GdQAL2VVcg
- WSh6Pxd7eIU8CRRErTSAs51MVOBXW9I0ekef3XgEyEAiNZU0VJZ7L/oicSGIZD/G+MDX
- vsj7vTdMnc5T1iX0k+3Izws19lXnbrmsG3MWCi3XTgG1MsTLwWmriI9BrxLK6LH+jDVD
- fkrffYmbuuGUZLj3h/5Wr6UCUM/e1kXusxgVtcZiisTiy4cNq9hPdz9qIJMXRRciIYq7
- 2XbEAENy8JTenWM3put4j6U/J5HlFye5SzUJNDBQJiwMAZBnLQGxHRSu8PDa3TzgMfyO
- gX6g==
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kN8Ze-0005kb-DO
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2020 01:53:17 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id b124so3414159pfg.13
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2020 22:53:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bytedance-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=S/RF3ckH0QgozTqheODtOoYVCdw1gOaH/8Ie4ZtYQXU=;
+ b=B5RIc7IO9G9cMff4VRBAfbgDYQjqmuZdIzzCUjETRkdHlreV60sOkcmkp38KKnF8bI
+ eRbm4XFELFH+QtskCNN2MVx/gTuiKJMpjQkg5Ex2jVlEf9LK5qzokyQhyRc74LkluO6D
+ uSmnN7c8TUEfBf6WdljCiNDmq/hcoBvTjW1Um/iAyTW8WUj5Yg5Kp3Q7l384Qm1JavMd
+ xthuMvp4v1ZVtM4m9azfPKm43z9nNR6xkuxuJ5Clx/hfKmqGY3S+gm7ZjumSgUvZ93Q8
+ OE0RmlHSGYWMV6UrDbiLYfKKaEqoP+h+NJhWEwdy/Hq29/7+TUTMXOZ2l+qat1MMJXO9
+ 6sFw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=OZPp11DvRVV9lUx7GVVmPc1W5GyoG8cNsXDBQwAqY/I=;
- b=TTDJFWfC1g9zkh12oX2Pa8sn5nNSos0ptZPtUtGrU+DQpcff6xz1OQJCpbPA7IAOVx
- MuKqTyNViKx+TnSFRUMSn5NnvqB/o4qKYnvQdH4GkaRf2nEchA6x25e5ISIyGZkmNzL4
- bJfmxJ6fnxEFcOuV1pOdn0cnV/D8xNlsUoq5kp0xcZFK6heJbEUyIShSZ3LCC8hV/WtI
- ceC8n70O0l7QJnxE9lrnYffi6vWRMhnhm675cJn1wafQvUhUXR0iVQn9nYEsf2qAKTil
- mI5N8jJ4VNKclMYE3xeu5lS6sRstn8LJXPFrMuhAIz/kIyvIUygV/4D1X8/Irmqy2v5F
- Sn2Q==
-X-Gm-Message-State: AOAM532zmFrzAuNiPed/qY3Lj8g3SN2ryu0HL63VnKzf+yxqVfYyAiqd
- wL2lm6HuwAv9mRWuAIkeOXxRUSudEB39WlSTiWc=
-X-Received: by 2002:a2e:91cd:: with SMTP id u13mr10115129ljg.239.1605113576025; 
- Wed, 11 Nov 2020 08:52:56 -0800 (PST)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=S/RF3ckH0QgozTqheODtOoYVCdw1gOaH/8Ie4ZtYQXU=;
+ b=GDU/jczIqRhhTXrjc1I0wsTMiOS31+2T7dffzA4c02MokP0DpRGGAYv969VQqcp7r7
+ KYzmvn2t61piwJPo55iZDRPhjcaXSnSd7U6rC3VY0/EdzoTiBU2DRUynH9yvGe1rRVtv
+ dZC1Jn8awmQF+vaV8gVV0YfhB0Woky/KCldVZUSHsahgA1in7tByVImYFji3Q+EscYFt
+ NUGqGmzpNWWE5S3IMh23PHsRidx26Xs87gCPFPpQ/Fm2nqkVAa17V1veTil2JtX8h1eD
+ spKmwlRNNG843FNMuuu4eyIQQDPli+weXJYUG0XH0QdM3/+BO+NILbR1O5B/IggsQyP/
+ kgdg==
+X-Gm-Message-State: AOAM531gp2pu+5vOmcZQeI5dQtzvutMYTW9CmhSQfGBxnrOVT2I9zXWr
+ FzOhsqCEZEbO27x5hrXMaoSTuA==
+X-Received: by 2002:a65:498a:: with SMTP id r10mr1896979pgs.400.1601358792438; 
+ Mon, 28 Sep 2020 22:53:12 -0700 (PDT)
+Received: from localhost ([61.120.150.74])
+ by smtp.gmail.com with ESMTPSA id gn24sm3251470pjb.8.2020.09.28.22.53.11
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 28 Sep 2020 22:53:11 -0700 (PDT)
+From: John Wang <wangzhiqiang.bj@bytedance.com>
+To: clkg@kaod.org, yulei.sh@bytedance.com, xuxiaohan@bytedance.com,
+ joel@jms.id.au
+Subject: [PATCH 1/2] hw/misc: add an EMC141{3,4} device model
+Date: Tue, 29 Sep 2020 13:53:08 +0800
+Message-Id: <20200929055309.509-1-wangzhiqiang.bj@bytedance.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <CAB+VpJkthrifUseJdx667T_UL=579ySZ=v6+aW8bWYBcsg08Wg@mail.gmail.com>
- <CAFEAcA_RCZfCjk2_KQ=_9fhz1O6A6Ev+GNAOTmGThnAHBaxs5w@mail.gmail.com>
- <CAB+VpJkQR0kd1MY8jnv+oCVKzGq1MJR15ed1tG-MO2-d3R41Vg@mail.gmail.com>
- <CAFEAcA_p8_WfVYtxAiDJS2P2Y622Xcb-k01AJzkqtBy776Co0g@mail.gmail.com>
-In-Reply-To: <CAFEAcA_p8_WfVYtxAiDJS2P2Y622Xcb-k01AJzkqtBy776Co0g@mail.gmail.com>
-From: Rajan Singh <rbsingh1983@gmail.com>
-Date: Wed, 11 Nov 2020 11:52:44 -0500
-Message-ID: <CAB+VpJkXhLTbf-REe5PXO=m_wahEr1pJMaCNYyVA0MUYLhXq8Q@mail.gmail.com>
-Subject: Re: Error while configuring Qemu
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: multipart/alternative; boundary="00000000000085f41e05b3d7a020"
-Received-SPF: pass client-ip=2a00:1450:4864:20::22e;
- envelope-from=rbsingh1983@gmail.com; helo=mail-lj1-x22e.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=wangzhiqiang.bj@bytedance.com; helo=mail-pf1-x42d.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,124 +115,382 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TQM2C43Qz3W1
+X-TUID: 2zmZdDBvrV/R
 
---00000000000085f41e05b3d7a020
-Content-Type: text/plain; charset="UTF-8"
+Largely inspired by the TMP423 temperature sensor, here is a model for
+the EMC1413 temperature sensors.
 
-Hi Peter,
-I am noe using ubuntu20.4 and doing all these configuration.I am getting
-below error-
+Specs can be found here :
+  https://pdf1.alldatasheet.com/datasheet-pdf/view/533713/SMSC/EMC1413.html
 
-*./meson.build:568:2: ERROR: Dependency "sdl2" not found, tried pkgconfig
-and config-tool*
+Signed-off-by: John Wang <wangzhiqiang.bj@bytedance.com>
+---
+ hw/arm/Kconfig      |   1 +
+ hw/misc/Kconfig     |   4 +
+ hw/misc/emc1413.c   | 309 ++++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build |   1 +
+ 4 files changed, 315 insertions(+)
+ create mode 100644 hw/misc/emc1413.c
 
-could you pls help.
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index f303c6bead..8801ada145 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -402,6 +402,7 @@ config ASPEED_SOC
+     select SSI_M25P80
+     select TMP105
+     select TMP421
++    select EMC1413
+     select UNIMP
+ 
+ config MPS2
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 3185456110..91badf2d4d 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -13,6 +13,10 @@ config TMP421
+     bool
+     depends on I2C
+ 
++config EMC1413
++    bool
++    depends on I2C
++
+ config ISA_DEBUG
+     bool
+     depends on ISA_BUS
+diff --git a/hw/misc/emc1413.c b/hw/misc/emc1413.c
+new file mode 100644
+index 0000000000..2430c3f074
+--- /dev/null
++++ b/hw/misc/emc1413.c
+@@ -0,0 +1,309 @@
++/*
++ * SMSC EMC1413 temperature sensor.
++ *
++ * Copyright (c) 2020 Bytedance Corporation
++ * Written by John Wang <wangzhiqiang.bj@bytedance.com>
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 or
++ * (at your option) version 3 of the License.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License along
++ * with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#include "qemu/osdep.h"
++#include "hw/i2c/i2c.h"
++#include "migration/vmstate.h"
++#include "qapi/error.h"
++#include "qapi/visitor.h"
++#include "qemu/module.h"
++#include "qom/object.h"
++
++#define DEVICE_ID_REG                    0xfd
++#define MANUFACTURER_ID_REG              0xfe
++#define REVISION_REG                     0xff
++#define EMC1413_DEVICE_ID                0x21
++#define EMC1414_DEVICE_ID                0x25
++
++typedef struct DeviceInfo {
++    uint8_t model;
++    const char *name;
++} DeviceInfo;
++
++static const DeviceInfo devices[] = {
++    { EMC1413_DEVICE_ID, "emc1413" },
++    { EMC1414_DEVICE_ID, "emc1414" },
++};
++
++struct EMC1413State {
++    I2CSlave i2c;
++    uint8_t temperature[4];
++    uint8_t min[4];
++    uint8_t max[4];
++    uint8_t len;
++    uint8_t data;
++    uint8_t pointer;
++
++};
++
++struct EMC1413Class {
++    I2CSlaveClass parent_class;
++    DeviceInfo *dev;
++};
++
++#define TYPE_EMC1413 "emc1413-generic"
++OBJECT_DECLARE_TYPE(EMC1413State, EMC1413Class, EMC1413)
++
++
++/* the EMC1413 registers */
++#define EMC1413_TEMP_HIGH0               0x00
++#define EMC1413_TEMP_HIGH1               0x01
++#define EMC1413_TEMP_HIGH2               0x23
++#define EMC1413_TEMP_HIGH3               0x2a
++#define EMC1413_TEMP_MAX_HIGH0           0x05
++#define EMC1413_TEMP_MIN_HIGH0           0x06
++#define EMC1413_TEMP_MAX_HIGH1           0x07
++#define EMC1413_TEMP_MIN_HIGH1           0x08
++#define EMC1413_TEMP_MAX_HIGH2           0x15
++#define EMC1413_TEMP_MIN_HIGH2           0x16
++#define EMC1413_TEMP_MAX_HIGH3           0x2c
++#define EMC1413_TEMP_MIN_HIGH3           0x2d
++
++static void emc1413_get_temperature(Object *obj, Visitor *v, const char *name,
++                                   void *opaque, Error **errp)
++{
++    EMC1413State *s = EMC1413(obj);
++    int64_t value;
++    int tempid;
++
++    if (sscanf(name, "temperature%d", &tempid) != 1) {
++        error_setg(errp, "error reading %s: %s", name, g_strerror(errno));
++        return;
++    }
++
++    if (tempid >= 4 || tempid < 0) {
++        error_setg(errp, "error reading %s", name);
++        return;
++    }
++
++    value = s->temperature[tempid] * 1000;
++
++    visit_type_int(v, name, &value, errp);
++}
++
++static void emc1413_set_temperature(Object *obj, Visitor *v, const char *name,
++                                   void *opaque, Error **errp)
++{
++    EMC1413State *s = EMC1413(obj);
++    int64_t temp;
++    int tempid;
++
++    if (!visit_type_int(v, name, &temp, errp)) {
++        return;
++    }
++
++    if (sscanf(name, "temperature%d", &tempid) != 1) {
++        error_setg(errp, "error reading %s: %s", name, g_strerror(errno));
++        return;
++    }
++
++    if (tempid >= 4 || tempid < 0) {
++        error_setg(errp, "error reading %s", name);
++        return;
++    }
++
++    s->temperature[tempid] = temp / 1000;
++}
++
++struct emc1413_reg {
++    uint8_t addr;
++    uint8_t *data;
++};
++
++static void emc1413_read(EMC1413State *s)
++{
++    EMC1413Class *sc = EMC1413_GET_CLASS(s);
++    uint8_t smsc_manufacturer_id = 0x5d;
++    uint8_t revision = 0x04;
++    struct emc1413_reg emc1413_regs[] = {
++        {DEVICE_ID_REG, &sc->dev->model},
++        {MANUFACTURER_ID_REG, &smsc_manufacturer_id},
++        {REVISION_REG, &revision},
++        {EMC1413_TEMP_HIGH0, &s->temperature[0]},
++        {EMC1413_TEMP_HIGH1, &s->temperature[1]},
++        {EMC1413_TEMP_HIGH2, &s->temperature[2]},
++        {EMC1413_TEMP_HIGH3, &s->temperature[3]},
++        {EMC1413_TEMP_MAX_HIGH0, &s->max[0]},
++        {EMC1413_TEMP_MAX_HIGH1, &s->max[1]},
++        {EMC1413_TEMP_MAX_HIGH2, &s->max[2]},
++        {EMC1413_TEMP_MAX_HIGH3, &s->max[3]},
++        {EMC1413_TEMP_MIN_HIGH0, &s->min[0]},
++        {EMC1413_TEMP_MIN_HIGH1, &s->min[1]},
++        {EMC1413_TEMP_MIN_HIGH2, &s->min[2]},
++        {EMC1413_TEMP_MIN_HIGH3, &s->min[3]},
++    };
++    size_t i;
++    for (i = 0; i < ARRAY_SIZE(emc1413_regs); i++) {
++        if (emc1413_regs[i].addr == s->pointer) {
++            s->data = *(emc1413_regs[i].data);
++            return;
++        }
++    }
++}
++
++static void emc1413_write(EMC1413State *s)
++{
++    struct emc1413_reg emc1413_regs[] = {
++        {EMC1413_TEMP_MAX_HIGH0, &s->max[0]},
++        {EMC1413_TEMP_MAX_HIGH1, &s->max[1]},
++        {EMC1413_TEMP_MAX_HIGH2, &s->max[2]},
++        {EMC1413_TEMP_MAX_HIGH3, &s->max[3]},
++        {EMC1413_TEMP_MIN_HIGH0, &s->min[0]},
++        {EMC1413_TEMP_MIN_HIGH1, &s->min[1]},
++        {EMC1413_TEMP_MIN_HIGH2, &s->min[2]},
++        {EMC1413_TEMP_MIN_HIGH3, &s->min[3]},
++    };
++    size_t i;
++    for (i = 0; i < ARRAY_SIZE(emc1413_regs); i++) {
++        if (emc1413_regs[i].addr == s->pointer) {
++            *(emc1413_regs[i].data) = s->data;
++            return;
++        }
++    }
++}
++
++static uint8_t emc1413_rx(I2CSlave *i2c)
++{
++    EMC1413State *s = EMC1413(i2c);
++
++    if (s->len == 0) {
++        s->len++;
++        return s->data;
++    } else {
++        return 0xff;
++    }
++}
++
++static int emc1413_tx(I2CSlave *i2c, uint8_t data)
++{
++    EMC1413State *s = EMC1413(i2c);
++
++    if (s->len == 0) {
++        /* first byte is the reg pointer */
++        s->pointer = data;
++        s->len++;
++    } else if (s->len == 1) {
++        s->data = data;
++        emc1413_write(s);
++    }
++
++    return 0;
++}
++
++static int emc1413_event(I2CSlave *i2c, enum i2c_event event)
++{
++    EMC1413State *s = EMC1413(i2c);
++
++    if (event == I2C_START_RECV) {
++        emc1413_read(s);
++    }
++
++    s->len = 0;
++    return 0;
++}
++
++static const VMStateDescription vmstate_emc1413 = {
++    .name = "EMC1413",
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (VMStateField[]) {
++        VMSTATE_UINT8(len, EMC1413State),
++        VMSTATE_UINT8(data, EMC1413State),
++        VMSTATE_UINT8(pointer, EMC1413State),
++        VMSTATE_UINT8_ARRAY(temperature, EMC1413State, 4),
++        VMSTATE_I2C_SLAVE(i2c, EMC1413State),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void emc1413_reset(I2CSlave *i2c)
++{
++    EMC1413State *s = EMC1413(i2c);
++
++    memset(s->temperature, 0, sizeof(s->temperature));
++    memset(s->min, 0, sizeof(s->min));
++    memset(s->max, 0x55, sizeof(s->max));
++    s->pointer = 0;
++    s->len = 0;
++}
++
++static void emc1413_realize(DeviceState *dev, Error **errp)
++{
++    EMC1413State *s = EMC1413(dev);
++
++    emc1413_reset(&s->i2c);
++}
++
++static void emc1413_initfn(Object *obj)
++{
++    object_property_add(obj, "temperature0", "int",
++                        emc1413_get_temperature,
++                        emc1413_set_temperature, NULL, NULL);
++    object_property_add(obj, "temperature1", "int",
++                        emc1413_get_temperature,
++                        emc1413_set_temperature, NULL, NULL);
++    object_property_add(obj, "temperature2", "int",
++                        emc1413_get_temperature,
++                        emc1413_set_temperature, NULL, NULL);
++    object_property_add(obj, "temperature3", "int",
++                        emc1413_get_temperature,
++                        emc1413_set_temperature, NULL, NULL);
++}
++
++static void emc1413_class_init(ObjectClass *klass, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
++    EMC1413Class *sc = EMC1413_CLASS(klass);
++
++    dc->realize = emc1413_realize;
++    k->event = emc1413_event;
++    k->recv = emc1413_rx;
++    k->send = emc1413_tx;
++    dc->vmsd = &vmstate_emc1413;
++    sc->dev = (DeviceInfo *) data;
++}
++
++static const TypeInfo emc1413_info = {
++    .name          = TYPE_EMC1413,
++    .parent        = TYPE_I2C_SLAVE,
++    .instance_size = sizeof(EMC1413State),
++    .class_size    = sizeof(EMC1413Class),
++    .instance_init = emc1413_initfn,
++    .abstract      = true,
++};
++
++static void emc1413_register_types(void)
++{
++    int i;
++
++    type_register_static(&emc1413_info);
++    for (i = 0; i < ARRAY_SIZE(devices); ++i) {
++        TypeInfo ti = {
++            .name       = devices[i].name,
++            .parent     = TYPE_EMC1413,
++            .class_init = emc1413_class_init,
++            .class_data = (void *) &devices[i],
++        };
++        type_register(&ti);
++    }
++}
++
++type_init(emc1413_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 793d45b1dc..08821c72ba 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -9,6 +9,7 @@ softmmu_ss.add(when: 'CONFIG_PCI_TESTDEV', if_true: files('pci-testdev.c'))
+ softmmu_ss.add(when: 'CONFIG_SGA', if_true: files('sga.c'))
+ softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
+ softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
++softmmu_ss.add(when: 'CONFIG_EMC1413', if_true: files('emc1413.c'))
+ softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
+ softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
+ 
+-- 
+2.25.1
 
-Thanks.
-
-On Wed, Nov 11, 2020 at 11:27 AM Peter Maydell <peter.maydell@linaro.org>
-wrote:
-
-> On Wed, 11 Nov 2020 at 16:06, Rajan Singh <rbsingh1983@gmail.com> wrote:
-> >
-> > Hi Peter,
-> > Thanks for the information.It helped me.
-> > Now I am getting an error regarding meson.Could help to fix this .
-> > Here is the screenshot of the error-
->
-> Please quote error messages by cutting and pasting their text,
-> not by taking screen shots.
->
-> The error message from the build seems clear enough to me:
-> it could not find the pixman-1 dependency, so you need to
-> install it. The wiki provides some information on installing
-> dependencies on Linux hosts:
-> https://wiki.qemu.org/Hosts/Linux#Building_QEMU_for_Linux
->
-> I see also that you appear to be using Ubuntu 16.04.
-> This is a version that is older than any Ubuntu which
-> QEMU currently supports. QEMU may still build OK, or on
-> the other hand you may find that configure complains that
-> it requires a newer version of some dependency than is
-> available in the Ubuntu 16.04 packages. (You can in theory
-> build such missing dependencies locally yourself but it's
-> probably easier to just upgrade to a newer Ubuntu.)
->
-> (QEMU's distro support policy is documented here:
-> https://www.qemu.org/docs/master/system/build-platforms.html
-> For distros like Ubuntu with a 'long-lifetime' type release
-> (like LTS), we support the most recent major version, and
-> the previous major version up until 2 years after the next
-> major version was released. So we support 20.04 LTS (the
-> most recent) and also will support 18.04 LTS until at least
-> April 2022 (since 20.04 was released in April 2020), but
-> anything older than that is not officially supported and
-> may or may not work.)
->
-> thanks
-> -- PMM
->
-
---00000000000085f41e05b3d7a020
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr">Hi Peter,<div>I am noe using ubuntu20.4 and doing all thes=
-e configuration.I am getting below error-</div><div><br></div><div><b>./mes=
-on.build:568:2: ERROR: Dependency &quot;sdl2&quot; not found, tried pkgconf=
-ig and config-tool</b><br></div><div><br></div><div>could you pls help.</di=
-v><div><br></div><div>Thanks.</div></div><br><div class=3D"gmail_quote"><di=
-v dir=3D"ltr" class=3D"gmail_attr">On Wed, Nov 11, 2020 at 11:27 AM Peter M=
-aydell &lt;<a href=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro=
-.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1=
-ex">On Wed, 11 Nov 2020 at 16:06, Rajan Singh &lt;<a href=3D"mailto:rbsingh=
-1983@gmail.com" target=3D"_blank">rbsingh1983@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Hi Peter,<br>
-&gt; Thanks for the information.It helped me.<br>
-&gt; Now I am getting an error regarding meson.Could help to fix this .<br>
-&gt; Here is the screenshot of the error-<br>
-<br>
-Please quote error messages by cutting and pasting their text,<br>
-not by taking screen shots.<br>
-<br>
-The error message from the build seems clear enough to me:<br>
-it could not find the pixman-1 dependency, so you need to<br>
-install it. The wiki provides some information on installing<br>
-dependencies on Linux hosts:<br>
-<a href=3D"https://wiki.qemu.org/Hosts/Linux#Building_QEMU_for_Linux" rel=
-=3D"noreferrer" target=3D"_blank">https://wiki.qemu.org/Hosts/Linux#Buildin=
-g_QEMU_for_Linux</a><br>
-<br>
-I see also that you appear to be using Ubuntu 16.04.<br>
-This is a version that is older than any Ubuntu which<br>
-QEMU currently supports. QEMU may still build OK, or on<br>
-the other hand you may find that configure complains that<br>
-it requires a newer version of some dependency than is<br>
-available in the Ubuntu 16.04 packages. (You can in theory<br>
-build such missing dependencies locally yourself but it&#39;s<br>
-probably easier to just upgrade to a newer Ubuntu.)<br>
-<br>
-(QEMU&#39;s distro support policy is documented here:<br>
-<a href=3D"https://www.qemu.org/docs/master/system/build-platforms.html" re=
-l=3D"noreferrer" target=3D"_blank">https://www.qemu.org/docs/master/system/=
-build-platforms.html</a><br>
-For distros like Ubuntu with a &#39;long-lifetime&#39; type release<br>
-(like LTS), we support the most recent major version, and<br>
-the previous major version up until 2 years after the next<br>
-major version was released. So we support 20.04 LTS (the<br>
-most recent) and also will support 18.04 LTS until at least<br>
-April 2022 (since 20.04 was released in April 2020), but<br>
-anything older than that is not officially supported and<br>
-may or may not work.)<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div>
-
---00000000000085f41e05b3d7a020--

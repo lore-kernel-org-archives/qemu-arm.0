@@ -1,151 +1,178 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4275724lfq;
-        Mon, 28 Sep 2020 22:51:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzCZoa/KvrWcUwrqagUUu8lUuOnivRiXLY9OP93XLcC5CIMML/77ImXPreucsle+UaNv/Fy
-X-Received: by 2002:a25:cbc4:: with SMTP id b187mr4183035ybg.260.1601358689932;
-        Mon, 28 Sep 2020 22:51:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601358689; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4560142lfq;
+        Tue, 29 Sep 2020 06:02:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyOEguu9w3XzgIrFBWue9CW9/eGxHGLXxBGNJXrQpl1q5YwMq3jTTM5QlAnjwyOiYfBly7h
+X-Received: by 2002:a25:256:: with SMTP id 83mr5750456ybc.64.1601384527860;
+        Tue, 29 Sep 2020 06:02:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601384527; cv=none;
         d=google.com; s=arc-20160816;
-        b=YBCuU9QWTWIO9FyTGiItu4jcmKK9bqQ1sa0PL9KWwkkDj8fn42dF2uPfsMXHCMh4MT
-         TGKu4o0O3YNV28ufRuP2VD1skdVJL5vEw5sOs8yHSYkRUbPTa2lJ2nwP3ZdtrvJMVDaP
-         9g27iUdaW9cfvDODBbszn0deqP418MJAhcYF+55HNPyN/dQH9pDJDTtBwBSON4hEY9XW
-         T56bONbwjKfVQ2rWFWO9EEHODzZdD4pLYzJHufeNoKjmQkn9DfipNUhMjaHA0pVi9tfi
-         kaw39NTB5Oju04rAo0MusOr1sTWZ2ONr9bCjRE9W/0B0RDDBitqbYSeOaIG0uFP6+vtx
-         uN8w==
+        b=G4G/UexiZZDbh7OOzordCL+XD9VHxhFTlPP8U1Of9hN+SRzN1OLLqAjzhxLkfBav2m
+         mRDKZaOrbA4YKs/qVe2OY3yLkmjtpc0jqFcc8XDtI9ambBOncfPigXzTWYeq8yjHgU2a
+         DK72ZUTaub1Hl0paqNEdvoX5ySCo0eGG8uOtE9Xfpo9r+fe293e1Ny4Pqzq3SyoBL8K6
+         NNP03jEd7Mq9pEkOkZEzgMKai3rVwUpAAiQqSpXv6H3X5aVy5C/LsF3473U1bH7nJezS
+         iq6vpBEFgq6eIfuko7ZUMAeyFbgRFG+ixtyX+83XYRRD7ZCrvFDw6EkDxwDKgjIAz4GV
+         L8dg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=n9p5HKRqH3lWpcbVXdHz7U4jk6m8NJ0bELLmpYlme7I=;
-        b=FSxKAzTKhlKviUiHgACprI73AaZ5QFIethJ+LerGylZoaxHnA7DZHctC7gw1XYJ0YL
-         GoQ8yKhLTeXGcMaWIoG0L6VxGLlK/qf+yCie0tEGqqDtwYI3Yaq8sfsJnR5jwtdSCUc5
-         b0gEs7cEGd3jm2AN4JcFV6vqxIKnpnItg+EjnCP2gbT7xy23DAerQeZgMPmHHTD1mT9Z
-         g3ziJ5aluizkPdEBuak5+At1h7BE3ptFvixzrPWChTbLP64Xi+WTtIC3RVAeIVb3Qng1
-         rgsuS4RpERQqW2W2MlEXt2i72KOCq60xAS6IHIaTtdD5T/kzCWf9yhlVdYcF+8QDs9/f
-         EtGQ==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=iguQs2kfsCnerdjWScTWC7qFlJXZ9V7uhuoxVsh48D8=;
+        b=QZFWlB/+XFKAYTMgiUsSNW3ZSEBeKqq0HDlz5lHkHnoGbv9Ans6Q0FIS2KO1phS5Wg
+         p5FmxMIBAKerq9bdDttI/wY0souVRvPmg27moT3euPnv9ToyfaI4XmLrIOdAQChSCAhq
+         M0Q3r8tG4b0biJIGo3FHwHhL24r73xmkYwHzURGtX7Q4P0pjOCAZ8O+VGffSusNyGD8+
+         zZVdci4akyoyw72xnj2Wi2qzE1h4lKnMPirlGL7ET7Q/VEDFvq/5tfMGbJsKWx1sS5Ac
+         MDAMO6qzl4VXxtDI/JC6Pd8xg4EK4nk9/uI6e7eVG2h/89YRzCbuKq1DLZNw6w8tldfD
+         dudw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=uBJdh4En;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KHNuZy/o";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y18si3032535yby.169.2020.09.28.22.51.29
+        by mx.google.com with ESMTPS id r12si4214311ybk.203.2020.09.29.06.02.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 28 Sep 2020 22:51:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Sep 2020 06:02:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=uBJdh4En;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
-Received: from localhost ([::1]:46568 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="KHNuZy/o";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:60586 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kN8Xx-0002rW-92
-	for alex.bennee@linaro.org; Tue, 29 Sep 2020 01:51:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35400)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kNFGh-0004oi-2J
+	for alex.bennee@linaro.org; Tue, 29 Sep 2020 09:02:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57398)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
- id 1kN8XP-0002Tk-C9
- for qemu-arm@nongnu.org; Tue, 29 Sep 2020 01:50:55 -0400
-Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:33822)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
- id 1kN8XK-0005Y0-6J
- for qemu-arm@nongnu.org; Tue, 29 Sep 2020 01:50:53 -0400
-Received: by mail-oi1-x243.google.com with SMTP id n2so4167978oij.1
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2020 22:50:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bytedance-com.20150623.gappssmtp.com; s=20150623;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=n9p5HKRqH3lWpcbVXdHz7U4jk6m8NJ0bELLmpYlme7I=;
- b=uBJdh4En8UbsL7dBLhID5N2+AqAyr+oYrfQVZCparL/ER8h2gGW7vhC5u6nN6tX16G
- 1U0y5RUm72sQV72wqPJnpnZ5fAPChwq1NrWSEUZI9+gDJQH5SmzjV4CCyWtKb6Vge3zY
- 66P9js4DOhN1QvbM1YOTZwSvIKlYGVFqYme2bjs6flEhbKZAxcbCtRXm8FZuN4qSwDQK
- ruQ11122ETbj9lfP865qHyJ3jmw3maMA2LUhsyEmDk4qCOJkFm8dmkQq5qpjOBlPohtB
- qJcHSJgzyFDv2dlAZZ212K4ZtfKQXYm8KkB04olW1zH5WqlUkwXFvYvOFlr5AP5l14G/
- sN1A==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNFB4-0007Nf-1O
+ for qemu-devel@nongnu.org; Tue, 29 Sep 2020 08:56:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48707)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNFB2-0003Fn-3F
+ for qemu-devel@nongnu.org; Tue, 29 Sep 2020 08:56:17 -0400
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601384175;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=iguQs2kfsCnerdjWScTWC7qFlJXZ9V7uhuoxVsh48D8=;
+ b=KHNuZy/oqkqaxQw4qxAhnUR2IjEc63Roe8a/RhXWHkunfbZ8IBsqUIf7sB2W+REPjk1eRv
+ q+ikIOl8QnGXelm/fKiBDl78wxunUTLLWC4BNym1/fyZRYfV/6eNtMx9qr2IPm/kTpTQM1
+ Hl2h7AO7u4JL+i12ELXbNMA5/VCfP2o=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-165-xgzwXCjaMXeKCigUrkE-Ng-1; Tue, 29 Sep 2020 08:56:13 -0400
+X-MC-Unique: xgzwXCjaMXeKCigUrkE-Ng-1
+Received: by mail-wm1-f72.google.com with SMTP id a11so1050326wmh.7
+ for <qemu-devel@nongnu.org>; Tue, 29 Sep 2020 05:56:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=n9p5HKRqH3lWpcbVXdHz7U4jk6m8NJ0bELLmpYlme7I=;
- b=OlGnTqdVYMXHi9mme6E4Z/yAGNMn4dMvWPd6NuR7kcoSCDCPhFofZyQJ7NcwAqhmyK
- 0a0jMpeHE5dRudDmXy0bd6G1l9L4LlvfccpiwfNhZCKOWEEbuJWaZaGForcvhDT87zu7
- vA7v/Uxny+s5D328Sf397Nd1CJTny06NikhVZzSj0SQx/NTLihRkZeiyxvhi819IaWVz
- aPnzZrAEGbYzrjBSgagewG2N9JPLOwYCps9nYBQ/BcXMlmf/tZn+1YeX8/sAUoqvW9H5
- Q1DnmMYJIPrVF81LwGbMO5eHS01PfbUBxvke3NG9hkjggCvrCWgR1ZAqvZmNw55+OEOa
- U7wg==
-X-Gm-Message-State: AOAM533zmhtk4vbv+nwLabDYiWSRiYYYuvGn3m5ZpCRY5ThUNFB02KMw
- yYKT4awvTzbPll+YJqQ+H0qsgWVDhLlDDc4+l12uSg==
-X-Received: by 2002:aca:bd8a:: with SMTP id n132mr1525724oif.100.1601358648123; 
- Mon, 28 Sep 2020 22:50:48 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=iguQs2kfsCnerdjWScTWC7qFlJXZ9V7uhuoxVsh48D8=;
+ b=f8TLBlvsLcZDuDALY3cvak8r5ctES+90Ars2LvIwzvWc3GcLa0ZRGVWopEB01jdSQy
+ gQ9EzOa/SnsQ413kYEgLSIYBRe9O+TKfY4PKAG1ONI3ibu6BhXouDIK6Zi5V+zpH262S
+ xfaCO+VM012X9fQgKe+C3Z7DsXm4Wa64QONoE5ZC8wSb8wzzgc8NIrJKneWKgkGiv/ti
+ jS7FvL6tHFvXiVIVWwTiiSGgBIX6FwDuvVqM76lzhr/sndr+P3btC5vRjit0mOIcSINl
+ 9LBb4UO3ZNefvrRdyKQjIMgI5SpvvvMCxqNLXFE7Lkcdx/ZpeU2jUSHDn9KSeebOVowK
+ /QqA==
+X-Gm-Message-State: AOAM533aiajlqhKW1jJxt1Al7KiF3Fp9vHksV6TvPj2iZsshjIxtEKys
+ rtPiY00TPJgd7R3HuzqxgpEpOz4JPAup4PlELrqlKdcaKmiZYbsuaPR2IoCLt5BPjH7cz0M3TM2
+ 8/OAKSJukVOCjeKY=
+X-Received: by 2002:a7b:c453:: with SMTP id l19mr4207284wmi.163.1601384171908; 
+ Tue, 29 Sep 2020 05:56:11 -0700 (PDT)
+X-Received: by 2002:a7b:c453:: with SMTP id l19mr4207263wmi.163.1601384171691; 
+ Tue, 29 Sep 2020 05:56:11 -0700 (PDT)
+Received: from x1w.redhat.com (74.red-83-53-161.dynamicip.rima-tde.net.
+ [83.53.161.74])
+ by smtp.gmail.com with ESMTPSA id n21sm5387913wmi.21.2020.09.29.05.56.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 29 Sep 2020 05:56:11 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/arm: Restrict APEI tables generation to the 'virt' machine
+Date: Tue, 29 Sep 2020 14:56:09 +0200
+Message-Id: <20200929125609.1088330-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-References: <20200928061201.1601-1-wangzhiqiang.bj@bytedance.com>
- <d6cf7464-a0bf-2748-7e4c-732208881711@kaod.org>
- <CAH0XSJtDEPnf8qLNuT_Ev3TkGQw_68cZ5KGgY_aLBThMQwU9sQ@mail.gmail.com>
- <a4371d4f-0df1-fedb-4f1b-3a29dbeac465@kaod.org>
-In-Reply-To: <a4371d4f-0df1-fedb-4f1b-3a29dbeac465@kaod.org>
-From: John Wang <wangzhiqiang.bj@bytedance.com>
-Date: Tue, 29 Sep 2020 13:50:37 +0800
-Message-ID: <CAH0XSJs4kMiVMNzFZTYJseDjDO1PuwRs=FzAxMzAAs0SSJBeUQ@mail.gmail.com>
-Subject: Re: [External] Re: [PATCH] aspeed: Add support for the g220a-bmc board
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
- envelope-from=wangzhiqiang.bj@bytedance.com; helo=mail-oi1-x243.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/29 02:22:44
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?B?6YOB6Zu3?= <yulei.sh@bytedance.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
- Lotus Xu <xuxiaohan@bytedance.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t9UC9etCZQvB
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Laszlo Ersek <lersek@redhat.com>,
+ Dongjiu Geng <gengdongjiu@huawei.com>, Xiang Zheng <zhengxiang9@huawei.com>,
+ qemu-arm@nongnu.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: p6K/SQddJA5w
 
-On Mon, Sep 28, 2020 at 6:11 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
->
-> >> Isn't it possible to add some default I2C devices ? temperature sensor=
-s ?
-> >
-> > hmm, G220A BMC uses emc1413 as the temperature sensor. I can not find
-> > it in qemu.
->
-> Could it be compatible with the tm105 or TM421 ?
+As only the Virt machine uses the RAS Virtualization feature (see
+commit 2afa8c8519: "hw/arm/virt: Introduce a RAS machine option"),
+restrict the APEI tables generation code to the virt machine.
 
-It isn't, I think. but I try to model an emc1413, so I will send a patchset=
- :)
+Fixes: aa16508f1d ("ACPI: Build related register address fields via hardware error fw_cfg blob")
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Xiang Zheng <zhengxiang9@huawei.com>
+Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Dongjiu Geng <gengdongjiu@huawei.com>
+Cc: Michael S. Tsirkin <mst@redhat.com>
+---
+ default-configs/arm-softmmu.mak | 1 -
+ hw/arm/Kconfig                  | 1 +
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
->
-> > I can't find an i2c chip that qemu has and that the g220a uses. :(
->
-> Try to model them ! :)
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 9a94ebd0be..08a32123b4 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -43,4 +43,3 @@ CONFIG_FSL_IMX7=y
+ CONFIG_FSL_IMX6UL=y
+ CONFIG_SEMIHOSTING=y
+ CONFIG_ALLWINNER_H3=y
+-CONFIG_ACPI_APEI=y
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index f303c6bead..7d040827af 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -26,6 +26,7 @@ config ARM_VIRT
+     select ACPI_MEMORY_HOTPLUG
+     select ACPI_HW_REDUCED
+     select ACPI_NVDIMM
++    select ACPI_APEI
+ 
+ config CHEETAH
+     bool
+-- 
+2.26.2
 
-Yes!
-
->
-> Thanks,
->
-> C.

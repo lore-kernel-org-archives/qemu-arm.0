@@ -1,173 +1,113 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4879685lfq;
-        Tue, 29 Sep 2020 12:53:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzzgoVdjY7vpQwz5NY2CIYH1cP6rjFZIVuhOik3Aag1zFcDi7yOrvTkRdrieibAO9/CFEGu
-X-Received: by 2002:a25:c611:: with SMTP id k17mr9185752ybf.92.1601409181564;
-        Tue, 29 Sep 2020 12:53:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601409181; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4889206lfq;
+        Tue, 29 Sep 2020 13:07:00 -0700 (PDT)
+X-Received: by 2002:a17:906:6ce:: with SMTP id v14mr5419335ejb.451.1601410020415;
+        Tue, 29 Sep 2020 13:07:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601410020; cv=none;
         d=google.com; s=arc-20160816;
-        b=u4/n0LLeXdcegeRzCHZVxYZxxCG6sdTty09ym4NPl2xMCd8pyMKwnvQX0hJQICQ65P
-         s+3mvgl0n9OM69jwuAQLr7nTYauYDXW80q5+XNwm0vvTmbgLwT+CGF6ziK+0MCgNkkpf
-         IfwcXcv5SAZ4sCvExk3W9w1pZcWFXq+oVUErcX4GMy+Cds9KilbiBOrjbnKq4Ko8WBED
-         hVZCeiJPdjk6dY07HSHV4RKTNZQM5y+mz0xEJYqS/hOItK9nn9az2RXN91UsvWbi1oUN
-         /qh2WezxsES14SiqXY6CbJLcy2cxm6ecLxgw5KMJUqY5a5Ggn7LZUUy3cN/A7vdky+9q
-         HLJg==
+        b=gmzPqEeOaI/bTS+1oDt6obHJ6VGceR+Bn/Mb2lxZ/R+Z8NpC81g15O09TBD4ZIV++R
+         EkSZW7YBZylekinDW56b6Aklk/A/cgwOk34s7rAzGpawh4nw9aDSK4h0Sb3E/X72yi/D
+         Ytn6Jf5jO1UVtZasW3avj5TBOzK1FGkRYFQEjTGZ9YhYjJo9HlOfkRXasy0A+PKfo7u5
+         4ZwOK7orGmNbSIQ+UVg7a/J3wrnJYqMzL5H+czGKXP93FUwS3O4DTYBmumGQjtYX0eyM
+         qN5is5zJ6OomAyVIozw6UDdp612PBPAbtKnIghd+W2p4iW0ot2LVFNyGfxDGTde0mO2m
+         2wOw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=ApZGxpY8y8F7xmMMII2LWwpwh5Cnnxx2AjaMg3GtiCI=;
-        b=t0V8ldV+zVy1+ecNn2KfxIS/EeGTJGhraUCW7dOj0luBeFVZW+Tga16yx7WZCVuRgz
-         uLgWrhMEmto3bQmpNSW7kLguVrlrQPIWt2FyCNCHGWkLsnxOkZKXjoc2EOoOyOJBPHrH
-         44E9fQ1z7AOY7UqibgRBFfXTkfgeUalvS87EG0Rj1U/TztXPf4ocDiqvMbeFZDy09Pm5
-         jjr4iCP59TIK59I+OGuYCcSC+hm+/sg9oCCqU0yaUVSdFClEwLTyjSWAbvdpmvOTLL5F
-         xcE+QkmzulYAzUNI4BHjKoBk7aUs+k2wqeQDt0F7uare6kM98rmHM/aORFDFggvoy+0t
-         yvsg==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=u1h2fvvT4OPp+mDt9BSuEIwI1NU5rX5oD8xSPHyS3oE=;
+        b=stL0J9jQD4UtxEmdIejSI6+rV7iTYEw0SmJpRDb14H4K6/U9/ReiubXN6csJooNpBe
+         ep8TKI1pE81tbV+h7JhbYhn7hqyNoCHW9kVqQW+MOAt/xuub/ci5P1LHBTCNMnxqOTBa
+         MdmppiLyI2+923QpeB4JqHVHB7r1rduzoz3ZoDDbtwRweRnU5GKRKwDE8nhkKw929PF+
+         xhftmnBstV7GBLlk/At5TznXQPv24jBMJ5+hRKVrbD0NxAnKs9SPnvBa4VX74eSUbRN8
+         BLH436rLrhtkX5w1JVJ8fwSuiU4dwP5kuiCYaZlK/TrAaCbRFgpcCngJQz0sKxHcRk6q
+         ziPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bLVu7BnX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h20si6449071ybk.71.2020.09.29.12.53.01
+       dkim=pass header.i=@linaro.org header.s=google header.b=t0WcvVom;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id z23sor3774554ejp.33.2020.09.29.13.07.00
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Sep 2020 12:53:01 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 29 Sep 2020 13:07:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bLVu7BnX;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58180 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNLgK-0002kV-V0
-	for alex.bennee@linaro.org; Tue, 29 Sep 2020 15:53:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52282)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kNLYj-0000Sb-EU
- for qemu-arm@nongnu.org; Tue, 29 Sep 2020 15:45:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:43911)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kNLYf-0007Gu-QO
- for qemu-arm@nongnu.org; Tue, 29 Sep 2020 15:45:09 -0400
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601408704;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ApZGxpY8y8F7xmMMII2LWwpwh5Cnnxx2AjaMg3GtiCI=;
- b=bLVu7BnXEA+KxLJzNqWDuQnrtGiI5TndZ6wCBwAbODjA4e+QEwST7qd431DFExRIoq8z4V
- wcFYEoNXIu32wlJi4dxlqS5dIMXxvtBncJRU8WxA8rl6AjHEaV7dmgkrmCdvE88ie/pG8w
- xO7Hk7L9/r49JnEwQMAbHh16juj6d90=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-140-wweYFVZrOKye_q78H9BtWg-1; Tue, 29 Sep 2020 15:45:00 -0400
-X-MC-Unique: wweYFVZrOKye_q78H9BtWg-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 93FCB186841B;
- Tue, 29 Sep 2020 19:44:59 +0000 (UTC)
-Received: from [10.36.113.210] (ovpn-113-210.ams2.redhat.com [10.36.113.210])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 33D7655795;
- Tue, 29 Sep 2020 19:44:50 +0000 (UTC)
-Subject: Re: [PATCH v2 2/2] util/vfio-helpers: Rework the IOVA allocator to
- avoid IOVA reserved regions
-To: Stefan Hajnoczi <stefanha@redhat.com>
-References: <20200929085550.30926-1-eric.auger@redhat.com>
- <20200929085550.30926-3-eric.auger@redhat.com>
- <20200929155951.GB191675@stefanha-x1.localdomain>
-From: Auger Eric <eric.auger@redhat.com>
-Message-ID: <6ebdb1f7-792b-6fbe-d4b3-f06aafc8deef@redhat.com>
-Date: Tue, 29 Sep 2020 21:44:48 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.5.0
+       dkim=pass header.i=@linaro.org header.s=google header.b=t0WcvVom;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=u1h2fvvT4OPp+mDt9BSuEIwI1NU5rX5oD8xSPHyS3oE=;
+        b=t0WcvVombLhwdXdTCcUWhl2itrZyb/IumcAxL3uVxGyb+WGHU7Uoz2ogoqkVeZAGQG
+         gW2aYszOTJ2aNsbB+Z7NeadAmAPSpjGCuOEUp39eBda8VphQlH9gIWkuTtSj77LJ420/
+         vF54QA5aweY79WlMUb7c3cN0o9CvJGUE+WTyQte3ECfZObuWUpdj9EPiWNEYkwgpj7GH
+         ascElJ35lrz2DMJ0n/C6k96ywcVccRucu9kHhvLPb3qgPv1z0IcZoajuknEAnKVtrnzt
+         ViwIn7o/SNtjAmnE92xgSNB+qc6WQwHs3Wp8lIFhQqnKMy71Vse1JvjQELUunP9Uqndf
+         0miw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=u1h2fvvT4OPp+mDt9BSuEIwI1NU5rX5oD8xSPHyS3oE=;
+        b=eHhz7Rv5x9qcNGc9QlCAsld2jv5510mSQ9E1pPUcdGbi3hqUmFdPpUrXhXCiTNuuiY
+         kyJRPZEf3QK8edcwTejxRa9F6PWIf/VWpLq23tT+9exkYgnvDwqCR1v+lWgamdq7snkA
+         bk5ZTjDVi6H9ov7xev137hDCwR61U+Dwv6IoUBswWBuYyfg8zzpQ84UGl0afDnSXRnOb
+         PMymIBLX8qVHOvTdowoklJS18g9zp6vyuqU2cawaN51CVLqYWqK9RDISE0sELto7dVQE
+         +Uf+1wy8373M2SvlaB7qmdnHTr4vsv2PR+nUVaidqtnE0G4YrFOG+kDbqSdbb/CXiduu
+         MUnQ==
+X-Gm-Message-State: AOAM530OL5mhqLT7MT4auZRqh+xV2A3qADgrH7M55N3gAAFF7d4istRp
+	XShAz6NWT+KAD2B32/uihgtqJJS45e1YLdDo1MSHNlK8
+X-Google-Smtp-Source: ABdhPJzNvPmfpqeFF5weiJ06WOCbfrwLMo30g1vXELPjVSGmAHTe0OlZZUhZENuMjibdqJ8Ah+loAU7hXvzaKksnKQA=
+X-Received: by 2002:a17:906:d936:: with SMTP id rn22mr5774019ejb.4.1601410020098;
+ Tue, 29 Sep 2020 13:07:00 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200929155951.GB191675@stefanha-x1.localdomain>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=windows-1252
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 22:47:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, lvivier@redhat.com, cohuck@redhat.com,
- qemu-devel@nongnu.org, mreitz@redhat.com, alex.williamson@redhat.com,
- qemu-arm@nongnu.org, kwolf@redhat.com, philmd@redhat.com,
- eric.auger.pro@gmail.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: jrG1piWJ71S7
+References: <20200316160634.3386-1-philmd@redhat.com> <20200316160634.3386-18-philmd@redhat.com>
+In-Reply-To: <20200316160634.3386-18-philmd@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 29 Sep 2020 21:06:48 +0100
+Message-ID: <CAFEAcA-Rt__Du0TqqVFov4mNoBvC9hTt7t7e-3G45Eck4z94tQ@mail.gmail.com>
+Subject: Re: [PATCH v3 17/19] hw/arm: Automatically select the 'virt' machine
+ on KVM
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	kvm-devel <kvm@vger.kernel.org>, Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>, 
+	Fam Zheng <fam@euphon.net>, Paolo Bonzini <pbonzini@redhat.com>, 
+	Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: dnNqgPzCf+GY
 
-Hi Stefan,
+On Mon, 16 Mar 2020 at 16:08, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.co=
+m> wrote:
+>
+> When building a KVM-only QEMU, the 'virt' machine is a good
+> default :)
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> ---
+>  hw/arm/Kconfig | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index d0903d8544..8e801cd15f 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -1,5 +1,6 @@
+>  config ARM_VIRT
+>      bool
+> +    default y if KVM
+>      imply PCI_DEVICES
+>      imply TEST_DEVICES
+>      imply VFIO_AMD_XGBE
 
-On 9/29/20 5:59 PM, Stefan Hajnoczi wrote:
-> On Tue, Sep 29, 2020 at 10:55:50AM +0200, Eric Auger wrote:
->> diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
->> index ba0ee6e21c..71145970f3 100644
->> --- a/util/vfio-helpers.c
->> +++ b/util/vfio-helpers.c
->> @@ -667,6 +667,50 @@ static bool qemu_vfio_verify_mappings(QEMUVFIOState *s)
->>      return true;
->>  }
->>  
->> +static int
->> +qemu_vfio_find_fixed_iova(QEMUVFIOState *s, size_t size, uint64_t *iova)
->> +{
->> +    int i;
->> +
->> +    for (i = 0; i < s->nb_iova_ranges; i++) {
->> +        if (s->usable_iova_ranges[i].end < s->low_water_mark) {
->> +            continue;
->> +        }
->> +        s->low_water_mark =
->> +            MAX(s->low_water_mark, s->usable_iova_ranges[i].start);
->> +
->> +        if (s->usable_iova_ranges[i].end - s->low_water_mark + 1 >= size ||
->> +            s->usable_iova_ranges[i].end - s->low_water_mark + 1 == 0) {
-> 
-> I don't understand the == 0 case. It seems like we are allocating an
-> IOVA beyond usable_iova_ranges[i].end?>
-It is meant to handle the case were low_water_mark = 0 and
-s->usable_iova_ranges[0].end = ULLONG_MAX (I know it cannot exist at the
-moment but may happen in the future) where we get an overflow. Given the
-        if (s->usable_iova_ranges[i].end < s->low_water_mark) {
-            continue;
-        }
-I think this prevents us from allocating beyond
-usable_iova_ranges[i].end or do I miss something?
+What does this actually do ? Why should the choice of
+accelerator affect what boards we pull in by default?
+I can see why you'd want to disable boards that only
+work with accelerators we don't enable, ie don't build
+TCG-only boards unless CONFIG_TCG, but this is the other
+way around...
 
-Thanks
-
-Eric
-
+thanks
+-- PMM

@@ -1,189 +1,173 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4879036lfq;
-        Tue, 29 Sep 2020 12:51:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKdB6K12a0I/38ODqBUOfMkahqbwTBIhCXfiwt188+C9SFYjLfkRVFzZNWuMADfrs23lil
-X-Received: by 2002:a25:cd41:: with SMTP id d62mr7923187ybf.463.1601409112309;
-        Tue, 29 Sep 2020 12:51:52 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4879685lfq;
+        Tue, 29 Sep 2020 12:53:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzzgoVdjY7vpQwz5NY2CIYH1cP6rjFZIVuhOik3Aag1zFcDi7yOrvTkRdrieibAO9/CFEGu
+X-Received: by 2002:a25:c611:: with SMTP id k17mr9185752ybf.92.1601409181564;
+        Tue, 29 Sep 2020 12:53:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601409181; cv=none;
+        d=google.com; s=arc-20160816;
+        b=u4/n0LLeXdcegeRzCHZVxYZxxCG6sdTty09ym4NPl2xMCd8pyMKwnvQX0hJQICQ65P
+         s+3mvgl0n9OM69jwuAQLr7nTYauYDXW80q5+XNwm0vvTmbgLwT+CGF6ziK+0MCgNkkpf
+         IfwcXcv5SAZ4sCvExk3W9w1pZcWFXq+oVUErcX4GMy+Cds9KilbiBOrjbnKq4Ko8WBED
+         hVZCeiJPdjk6dY07HSHV4RKTNZQM5y+mz0xEJYqS/hOItK9nn9az2RXN91UsvWbi1oUN
+         /qh2WezxsES14SiqXY6CbJLcy2cxm6ecLxgw5KMJUqY5a5Ggn7LZUUy3cN/A7vdky+9q
+         HLJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ApZGxpY8y8F7xmMMII2LWwpwh5Cnnxx2AjaMg3GtiCI=;
+        b=t0V8ldV+zVy1+ecNn2KfxIS/EeGTJGhraUCW7dOj0luBeFVZW+Tga16yx7WZCVuRgz
+         uLgWrhMEmto3bQmpNSW7kLguVrlrQPIWt2FyCNCHGWkLsnxOkZKXjoc2EOoOyOJBPHrH
+         44E9fQ1z7AOY7UqibgRBFfXTkfgeUalvS87EG0Rj1U/TztXPf4ocDiqvMbeFZDy09Pm5
+         jjr4iCP59TIK59I+OGuYCcSC+hm+/sg9oCCqU0yaUVSdFClEwLTyjSWAbvdpmvOTLL5F
+         xcE+QkmzulYAzUNI4BHjKoBk7aUs+k2wqeQDt0F7uare6kM98rmHM/aORFDFggvoy+0t
+         yvsg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bLVu7BnX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17si5233101ybq.409.2020.09.29.12.51.52
+        by mx.google.com with ESMTPS id h20si6449071ybk.71.2020.09.29.12.53.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Sep 2020 12:51:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 29 Sep 2020 12:53:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:52912 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bLVu7BnX;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:58180 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNLfD-0000ZZ-Kx
-	for alex.bennee@linaro.org; Tue, 29 Sep 2020 15:51:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51096)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kNLgK-0002kV-V0
+	for alex.bennee@linaro.org; Tue, 29 Sep 2020 15:53:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52282)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kNLS6-0007H2-NB; Tue, 29 Sep 2020 15:38:19 -0400
-Resent-Date: Tue, 29 Sep 2020 15:38:18 -0400
-Resent-Message-Id: <E1kNLS6-0007H2-NB@lists.gnu.org>
-Received: from sender4-of-o57.zoho.com ([136.143.188.57]:21715)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kNLS2-0006Lh-Gy; Tue, 29 Sep 2020 15:38:18 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1601408274; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=RKjj4dFBTKwuT+q9vvay+H3y689XxSiUBmNIlfVWR9iIM+RlDlBOdhO9/n/sC5MRyr3kliWoMaUbGbpO09WixagTp6RxpAPoFU7d+sNltCUtHS3S7aV94qaeMhCubjoBPcvXezlwJVH2d3zfdqnCNtfkI3FygDq69cHH6cmQqmI=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1601408274;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=YMGDiCUEQOZ3Ey/R64NzljF8pZ5otYS65UYfrZ21Gog=; 
- b=F6wypmcuMGPkrg/4t4sELk+EYRZqdg3jEJTiJ7mu8hqs39CawmG7rw1Tbh7wFH9nRGV3FWYNL8pfu0uGKdmAln8tov+2V7u17R3V22zBDUU7CSeRxq+RtbxUIV3mouyD3BGyBNTGA9L+R4hO7S5l69EW6MDV1OuHmb7XY89Xvag=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1601408271936393.3642552315698;
- Tue, 29 Sep 2020 12:37:51 -0700 (PDT)
-Subject: Re: [PATCH] hw/arm: Restrict APEI tables generation to the 'virt'
- machine
-Message-ID: <160140826997.29860.6237618789435428416@66eaa9a8a123>
-In-Reply-To: <20200929125609.1088330-1-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kNLYj-0000Sb-EU
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2020 15:45:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:43911)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kNLYf-0007Gu-QO
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2020 15:45:09 -0400
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601408704;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ApZGxpY8y8F7xmMMII2LWwpwh5Cnnxx2AjaMg3GtiCI=;
+ b=bLVu7BnXEA+KxLJzNqWDuQnrtGiI5TndZ6wCBwAbODjA4e+QEwST7qd431DFExRIoq8z4V
+ wcFYEoNXIu32wlJi4dxlqS5dIMXxvtBncJRU8WxA8rl6AjHEaV7dmgkrmCdvE88ie/pG8w
+ xO7Hk7L9/r49JnEwQMAbHh16juj6d90=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-140-wweYFVZrOKye_q78H9BtWg-1; Tue, 29 Sep 2020 15:45:00 -0400
+X-MC-Unique: wweYFVZrOKye_q78H9BtWg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 93FCB186841B;
+ Tue, 29 Sep 2020 19:44:59 +0000 (UTC)
+Received: from [10.36.113.210] (ovpn-113-210.ams2.redhat.com [10.36.113.210])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 33D7655795;
+ Tue, 29 Sep 2020 19:44:50 +0000 (UTC)
+Subject: Re: [PATCH v2 2/2] util/vfio-helpers: Rework the IOVA allocator to
+ avoid IOVA reserved regions
+To: Stefan Hajnoczi <stefanha@redhat.com>
+References: <20200929085550.30926-1-eric.auger@redhat.com>
+ <20200929085550.30926-3-eric.auger@redhat.com>
+ <20200929155951.GB191675@stefanha-x1.localdomain>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <6ebdb1f7-792b-6fbe-d4b3-f06aafc8deef@redhat.com>
+Date: Tue, 29 Sep 2020 21:44:48 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: philmd@redhat.com
-Date: Tue, 29 Sep 2020 12:37:51 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.57; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o57.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/29 15:38:10
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+In-Reply-To: <20200929155951.GB191675@stefanha-x1.localdomain>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=windows-1252
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 22:47:55
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=-0.614, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, mst@redhat.com, lersek@redhat.com,
- qemu-devel@nongnu.org, gengdongjiu@huawei.com, zhengxiang9@huawei.com,
- qemu-arm@nongnu.org, Jonathan.Cameron@huawei.com, imammedo@redhat.com,
- philmd@redhat.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GyHxMK2Q75D7
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: fam@euphon.net, lvivier@redhat.com, cohuck@redhat.com,
+ qemu-devel@nongnu.org, mreitz@redhat.com, alex.williamson@redhat.com,
+ qemu-arm@nongnu.org, kwolf@redhat.com, philmd@redhat.com,
+ eric.auger.pro@gmail.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jrG1piWJ71S7
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMDkyOTEyNTYwOS4xMDg4
-MzMwLTEtcGhpbG1kQHJlZGhhdC5jb20vCgoKCkhpLAoKVGhpcyBzZXJpZXMgZmFpbGVkIHRoZSBk
-b2NrZXItcXVpY2tAY2VudG9zNyBidWlsZCB0ZXN0LiBQbGVhc2UgZmluZCB0aGUgdGVzdGluZyBj
-b21tYW5kcyBhbmQKdGhlaXIgb3V0cHV0IGJlbG93LiBJZiB5b3UgaGF2ZSBEb2NrZXIgaW5zdGFs
-bGVkLCB5b3UgY2FuIHByb2JhYmx5IHJlcHJvZHVjZSBpdApsb2NhbGx5LgoKPT09IFRFU1QgU0NS
-SVBUIEJFR0lOID09PQojIS9iaW4vYmFzaAptYWtlIGRvY2tlci1pbWFnZS1jZW50b3M3IFY9MSBO
-RVRXT1JLPTEKdGltZSBtYWtlIGRvY2tlci10ZXN0LXF1aWNrQGNlbnRvczcgU0hPV19FTlY9MSBK
-PTE0IE5FVFdPUks9MQo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKQyBsaW5rZXIgZm9yIHRoZSBo
-b3N0IG1hY2hpbmU6IGNjIGxkLmJmZCAyLjI3LTQzCkhvc3QgbWFjaGluZSBjcHUgZmFtaWx5OiB4
-ODZfNjQKSG9zdCBtYWNoaW5lIGNwdTogeDg2XzY0Ci4uL3NyYy9tZXNvbi5idWlsZDoxMDogV0FS
-TklORzogTW9kdWxlIHVuc3RhYmxlLWtleXZhbCBoYXMgbm8gYmFja3dhcmRzIG9yIGZvcndhcmRz
-IGNvbXBhdGliaWxpdHkgYW5kIG1pZ2h0IG5vdCBleGlzdCBpbiBmdXR1cmUgcmVsZWFzZXMuClBy
-b2dyYW0gc2ggZm91bmQ6IFlFUwpQcm9ncmFtIHB5dGhvbjMgZm91bmQ6IFlFUyAoL3Vzci9iaW4v
-cHl0aG9uMykKQ29uZmlndXJpbmcgbmluamF0b29sIHVzaW5nIGNvbmZpZ3VyYXRpb24KLS0tClJ1
-bm5pbmcgdGVzdCBxdGVzdC1hYXJjaDY0OiB0cG0tdGlzLWRldmljZS10ZXN0CkNvdWxkIG5vdCBh
-bGxvY2F0ZSBkeW5hbWljIHRyYW5zbGF0b3IgYnVmZmVyCioqCkVSUk9SOi4uL3NyYy90ZXN0cy9x
-dGVzdC90cG0tZW11LmM6OTc6dHBtX2VtdV9jdHJsX3RocmVhZDogYXNzZXJ0aW9uIGZhaWxlZCAo
-Y21kID09IENNRF9TRVRfREFUQUZEKTogKDAgPT0gMTYpCi4uL3NyYy90ZXN0cy9xdGVzdC9saWJx
-dGVzdC5jOjE2Njoga2lsbF9xZW11KCkgdHJpZWQgdG8gdGVybWluYXRlIFFFTVUgcHJvY2VzcyBi
-dXQgZW5jb3VudGVyZWQgZXhpdCBzdGF0dXMgMSAoZXhwZWN0ZWQgMCkKRVJST1IgcXRlc3QtYWFy
-Y2g2NDogdHBtLXRpcy1kZXZpY2UtdGVzdCAtIEJhaWwgb3V0ISBFUlJPUjouLi9zcmMvdGVzdHMv
-cXRlc3QvdHBtLWVtdS5jOjk3OnRwbV9lbXVfY3RybF90aHJlYWQ6IGFzc2VydGlvbiBmYWlsZWQg
-KGNtZCA9PSBDTURfU0VUX0RBVEFGRCk6ICgwID09IDE2KQptYWtlOiAqKiogW3J1bi10ZXN0LTE2
-MF0gRXJyb3IgMQptYWtlOiAqKiogV2FpdGluZyBmb3IgdW5maW5pc2hlZCBqb2JzLi4uLgpzb2Nr
-ZXRfYWNjZXB0IGZhaWxlZDogUmVzb3VyY2UgdGVtcG9yYXJpbHkgdW5hdmFpbGFibGUKKioKRVJS
-T1I6Li4vc3JjL3Rlc3RzL3F0ZXN0L2xpYnF0ZXN0LmM6MzAxOnF0ZXN0X2luaXRfd2l0aG91dF9x
-bXBfaGFuZHNoYWtlOiBhc3NlcnRpb24gZmFpbGVkOiAocy0+ZmQgPj0gMCAmJiBzLT5xbXBfZmQg
-Pj0gMCkKLi4vc3JjL3Rlc3RzL3F0ZXN0L2xpYnF0ZXN0LmM6MTY2OiBraWxsX3FlbXUoKSB0cmll
-ZCB0byB0ZXJtaW5hdGUgUUVNVSBwcm9jZXNzIGJ1dCBlbmNvdW50ZXJlZCBleGl0IHN0YXR1cyAx
-IChleHBlY3RlZCAwKQpFUlJPUiBxdGVzdC14ODZfNjQ6IHB4ZS10ZXN0IC0gQmFpbCBvdXQhIEVS
-Uk9SOi4uL3NyYy90ZXN0cy9xdGVzdC9saWJxdGVzdC5jOjMwMTpxdGVzdF9pbml0X3dpdGhvdXRf
-cW1wX2hhbmRzaGFrZTogYXNzZXJ0aW9uIGZhaWxlZDogKHMtPmZkID49IDAgJiYgcy0+cW1wX2Zk
-ID49IDApCm1ha2U6ICoqKiBbcnVuLXRlc3QtMTEwXSBFcnJvciAxCnNvY2tldF9hY2NlcHQgZmFp
-bGVkOiBSZXNvdXJjZSB0ZW1wb3JhcmlseSB1bmF2YWlsYWJsZQoqKgpFUlJPUjouLi9zcmMvdGVz
-dHMvcXRlc3QvbGlicXRlc3QuYzozMDE6cXRlc3RfaW5pdF93aXRob3V0X3FtcF9oYW5kc2hha2U6
-IGFzc2VydGlvbiBmYWlsZWQ6IChzLT5mZCA+PSAwICYmIHMtPnFtcF9mZCA+PSAwKQpFUlJPUiBx
-dGVzdC14ODZfNjQ6IGJvb3Qtc2VyaWFsLXRlc3QgLSBCYWlsIG91dCEgRVJST1I6Li4vc3JjL3Rl
-c3RzL3F0ZXN0L2xpYnF0ZXN0LmM6MzAxOnF0ZXN0X2luaXRfd2l0aG91dF9xbXBfaGFuZHNoYWtl
-OiBhc3NlcnRpb24gZmFpbGVkOiAocy0+ZmQgPj0gMCAmJiBzLT5xbXBfZmQgPj0gMCkKLi4vc3Jj
-L3Rlc3RzL3F0ZXN0L2xpYnF0ZXN0LmM6MTY2OiBraWxsX3FlbXUoKSB0cmllZCB0byB0ZXJtaW5h
-dGUgUUVNVSBwcm9jZXNzIGJ1dCBlbmNvdW50ZXJlZCBleGl0IHN0YXR1cyAxIChleHBlY3RlZCAw
-KQptYWtlOiAqKiogW3J1bi10ZXN0LTExNV0gRXJyb3IgMQpzb2NrZXRfYWNjZXB0IGZhaWxlZDog
-UmVzb3VyY2UgdGVtcG9yYXJpbHkgdW5hdmFpbGFibGUKKioKRVJST1I6Li4vc3JjL3Rlc3RzL3F0
-ZXN0L2xpYnF0ZXN0LmM6MzAxOnF0ZXN0X2luaXRfd2l0aG91dF9xbXBfaGFuZHNoYWtlOiBhc3Nl
-cnRpb24gZmFpbGVkOiAocy0+ZmQgPj0gMCAmJiBzLT5xbXBfZmQgPj0gMCkKLi4vc3JjL3Rlc3Rz
-L3F0ZXN0L2xpYnF0ZXN0LmM6MTY2OiBraWxsX3FlbXUoKSB0cmllZCB0byB0ZXJtaW5hdGUgUUVN
-VSBwcm9jZXNzIGJ1dCBlbmNvdW50ZXJlZCBleGl0IHN0YXR1cyAxIChleHBlY3RlZCAwKQpFUlJP
-UiBxdGVzdC14ODZfNjQ6IGJpb3MtdGFibGVzLXRlc3QgLSBCYWlsIG91dCEgRVJST1I6Li4vc3Jj
-L3Rlc3RzL3F0ZXN0L2xpYnF0ZXN0LmM6MzAxOnF0ZXN0X2luaXRfd2l0aG91dF9xbXBfaGFuZHNo
-YWtlOiBhc3NlcnRpb24gZmFpbGVkOiAocy0+ZmQgPj0gMCAmJiBzLT5xbXBfZmQgPj0gMCkKbWFr
-ZTogKioqIFtydW4tdGVzdC0xMzhdIEVycm9yIDEKc29ja2V0X2FjY2VwdCBmYWlsZWQ6IFJlc291
-cmNlIHRlbXBvcmFyaWx5IHVuYXZhaWxhYmxlCioqCkVSUk9SOi4uL3NyYy90ZXN0cy9xdGVzdC9s
-aWJxdGVzdC5jOjMwMTpxdGVzdF9pbml0X3dpdGhvdXRfcW1wX2hhbmRzaGFrZTogYXNzZXJ0aW9u
-IGZhaWxlZDogKHMtPmZkID49IDAgJiYgcy0+cW1wX2ZkID49IDApCkVSUk9SIHF0ZXN0LXg4Nl82
-NDogdm1nZW5pZC10ZXN0IC0gQmFpbCBvdXQhIEVSUk9SOi4uL3NyYy90ZXN0cy9xdGVzdC9saWJx
-dGVzdC5jOjMwMTpxdGVzdF9pbml0X3dpdGhvdXRfcW1wX2hhbmRzaGFrZTogYXNzZXJ0aW9uIGZh
-aWxlZDogKHMtPmZkID49IDAgJiYgcy0+cW1wX2ZkID49IDApCi4uL3NyYy90ZXN0cy9xdGVzdC9s
-aWJxdGVzdC5jOjE2Njoga2lsbF9xZW11KCkgdHJpZWQgdG8gdGVybWluYXRlIFFFTVUgcHJvY2Vz
-cyBidXQgZW5jb3VudGVyZWQgZXhpdCBzdGF0dXMgMSAoZXhwZWN0ZWQgMCkKbWFrZTogKioqIFty
-dW4tdGVzdC0xNDddIEVycm9yIDEKc29ja2V0X2FjY2VwdCBmYWlsZWQ6IFJlc291cmNlIHRlbXBv
-cmFyaWx5IHVuYXZhaWxhYmxlCioqCkVSUk9SOi4uL3NyYy90ZXN0cy9xdGVzdC9saWJxdGVzdC5j
-OjMwMTpxdGVzdF9pbml0X3dpdGhvdXRfcW1wX2hhbmRzaGFrZTogYXNzZXJ0aW9uIGZhaWxlZDog
-KHMtPmZkID49IDAgJiYgcy0+cW1wX2ZkID49IDApCi4uL3NyYy90ZXN0cy9xdGVzdC9saWJxdGVz
-dC5jOjE2Njoga2lsbF9xZW11KCkgdHJpZWQgdG8gdGVybWluYXRlIFFFTVUgcHJvY2VzcyBidXQg
-ZW5jb3VudGVyZWQgZXhpdCBzdGF0dXMgMSAoZXhwZWN0ZWQgMCkKRVJST1IgcXRlc3QteDg2XzY0
-OiBtaWdyYXRpb24tdGVzdCAtIEJhaWwgb3V0ISBFUlJPUjouLi9zcmMvdGVzdHMvcXRlc3QvbGli
-cXRlc3QuYzozMDE6cXRlc3RfaW5pdF93aXRob3V0X3FtcF9oYW5kc2hha2U6IGFzc2VydGlvbiBm
-YWlsZWQ6IChzLT5mZCA+PSAwICYmIHMtPnFtcF9mZCA+PSAwKQptYWtlOiAqKiogW3J1bi10ZXN0
-LTE0OF0gRXJyb3IgMQpzb2NrZXRfYWNjZXB0IGZhaWxlZDogUmVzb3VyY2UgdGVtcG9yYXJpbHkg
-dW5hdmFpbGFibGUKRVJST1IgcXRlc3QtYWFyY2g2NDogYmlvcy10YWJsZXMtdGVzdCAtIEJhaWwg
-b3V0ISBFUlJPUjouLi9zcmMvdGVzdHMvcXRlc3QvbGlicXRlc3QuYzozMDE6cXRlc3RfaW5pdF93
-aXRob3V0X3FtcF9oYW5kc2hha2U6IGFzc2VydGlvbiBmYWlsZWQ6IChzLT5mZCA+PSAwICYmIHMt
-PnFtcF9mZCA+PSAwKQoqKgpFUlJPUjouLi9zcmMvdGVzdHMvcXRlc3QvbGlicXRlc3QuYzozMDE6
-cXRlc3RfaW5pdF93aXRob3V0X3FtcF9oYW5kc2hha2U6IGFzc2VydGlvbiBmYWlsZWQ6IChzLT5m
-ZCA+PSAwICYmIHMtPnFtcF9mZCA+PSAwKQouLi9zcmMvdGVzdHMvcXRlc3QvbGlicXRlc3QuYzox
-NjY6IGtpbGxfcWVtdSgpIHRyaWVkIHRvIHRlcm1pbmF0ZSBRRU1VIHByb2Nlc3MgYnV0IGVuY291
-bnRlcmVkIGV4aXQgc3RhdHVzIDEgKGV4cGVjdGVkIDApCm1ha2U6ICoqKiBbcnVuLXRlc3QtMTU5
-XSBFcnJvciAxClRyYWNlYmFjayAobW9zdCByZWNlbnQgY2FsbCBsYXN0KToKICBGaWxlICIuL3Rl
-c3RzL2RvY2tlci9kb2NrZXIucHkiLCBsaW5lIDcwOSwgaW4gPG1vZHVsZT4KICAgIHN5cy5leGl0
-KG1haW4oKSkKLS0tCiAgICByYWlzZSBDYWxsZWRQcm9jZXNzRXJyb3IocmV0Y29kZSwgY21kKQpz
-dWJwcm9jZXNzLkNhbGxlZFByb2Nlc3NFcnJvcjogQ29tbWFuZCAnWydzdWRvJywgJy1uJywgJ2Rv
-Y2tlcicsICdydW4nLCAnLS1ybScsICctLWxhYmVsJywgJ2NvbS5xZW11Lmluc3RhbmNlLnV1aWQ9
-OTljNDlhZTU5YjBjNDc5NGI2MjE5YjlmMjA0MjVjNzQnLCAnLXUnLCAnMTAwMycsICctLXNlY3Vy
-aXR5LW9wdCcsICdzZWNjb21wPXVuY29uZmluZWQnLCAnLWUnLCAnVEFSR0VUX0xJU1Q9JywgJy1l
-JywgJ0VYVFJBX0NPTkZJR1VSRV9PUFRTPScsICctZScsICdWPScsICctZScsICdKPTE0JywgJy1l
-JywgJ0RFQlVHPScsICctZScsICdTSE9XX0VOVj0xJywgJy1lJywgJ0NDQUNIRV9ESVI9L3Zhci90
-bXAvY2NhY2hlJywgJy12JywgJy9ob21lL3BhdGNoZXcyLy5jYWNoZS9xZW11LWRvY2tlci1jY2Fj
-aGU6L3Zhci90bXAvY2NhY2hlOnonLCAnLXYnLCAnL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1w
-LWRycGYyZW1iL3NyYy9kb2NrZXItc3JjLjIwMjAtMDktMjktMTUuMjguNDUuMjU4MTY6L3Zhci90
-bXAvcWVtdTp6LHJvJywgJ3FlbXUvY2VudG9zNycsICcvdmFyL3RtcC9xZW11L3J1bicsICd0ZXN0
-LXF1aWNrJ10nIHJldHVybmVkIG5vbi16ZXJvIGV4aXQgc3RhdHVzIDIuCmZpbHRlcj0tLWZpbHRl
-cj1sYWJlbD1jb20ucWVtdS5pbnN0YW5jZS51dWlkPTk5YzQ5YWU1OWIwYzQ3OTRiNjIxOWI5ZjIw
-NDI1Yzc0Cm1ha2VbMV06ICoqKiBbZG9ja2VyLXJ1bl0gRXJyb3IgMQptYWtlWzFdOiBMZWF2aW5n
-IGRpcmVjdG9yeSBgL3Zhci90bXAvcGF0Y2hldy10ZXN0ZXItdG1wLWRycGYyZW1iL3NyYycKbWFr
-ZTogKioqIFtkb2NrZXItcnVuLXRlc3QtcXVpY2tAY2VudG9zN10gRXJyb3IgMgoKcmVhbCAgICA5
-bTMuMjQzcwp1c2VyICAgIDBtMTMuODM2cwoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQK
-aHR0cDovL3BhdGNoZXcub3JnL2xvZ3MvMjAyMDA5MjkxMjU2MDkuMTA4ODMzMC0xLXBoaWxtZEBy
-ZWRoYXQuY29tL3Rlc3RpbmcuZG9ja2VyLXF1aWNrQGNlbnRvczcvP3R5cGU9bWVzc2FnZS4KLS0t
-CkVtYWlsIGdlbmVyYXRlZCBhdXRvbWF0aWNhbGx5IGJ5IFBhdGNoZXcgW2h0dHBzOi8vcGF0Y2hl
-dy5vcmcvXS4KUGxlYXNlIHNlbmQgeW91ciBmZWVkYmFjayB0byBwYXRjaGV3LWRldmVsQHJlZGhh
-dC5jb20=
+Hi Stefan,
+
+On 9/29/20 5:59 PM, Stefan Hajnoczi wrote:
+> On Tue, Sep 29, 2020 at 10:55:50AM +0200, Eric Auger wrote:
+>> diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
+>> index ba0ee6e21c..71145970f3 100644
+>> --- a/util/vfio-helpers.c
+>> +++ b/util/vfio-helpers.c
+>> @@ -667,6 +667,50 @@ static bool qemu_vfio_verify_mappings(QEMUVFIOState *s)
+>>      return true;
+>>  }
+>>  
+>> +static int
+>> +qemu_vfio_find_fixed_iova(QEMUVFIOState *s, size_t size, uint64_t *iova)
+>> +{
+>> +    int i;
+>> +
+>> +    for (i = 0; i < s->nb_iova_ranges; i++) {
+>> +        if (s->usable_iova_ranges[i].end < s->low_water_mark) {
+>> +            continue;
+>> +        }
+>> +        s->low_water_mark =
+>> +            MAX(s->low_water_mark, s->usable_iova_ranges[i].start);
+>> +
+>> +        if (s->usable_iova_ranges[i].end - s->low_water_mark + 1 >= size ||
+>> +            s->usable_iova_ranges[i].end - s->low_water_mark + 1 == 0) {
+> 
+> I don't understand the == 0 case. It seems like we are allocating an
+> IOVA beyond usable_iova_ranges[i].end?>
+It is meant to handle the case were low_water_mark = 0 and
+s->usable_iova_ranges[0].end = ULLONG_MAX (I know it cannot exist at the
+moment but may happen in the future) where we get an overflow. Given the
+        if (s->usable_iova_ranges[i].end < s->low_water_mark) {
+            continue;
+        }
+I think this prevents us from allocating beyond
+usable_iova_ranges[i].end or do I miss something?
+
+Thanks
+
+Eric
+

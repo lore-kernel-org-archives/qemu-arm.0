@@ -1,79 +1,80 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4985919lfq;
-        Tue, 29 Sep 2020 15:44:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxL49o9qPAK5JIDbHiRxAvqN/jbwuSm0ehuKjmxuejO3K8ypzBs64I1rIXUJAo3UZNWKtTI
-X-Received: by 2002:a17:906:1157:: with SMTP id i23mr6401961eja.440.1601419443842;
-        Tue, 29 Sep 2020 15:44:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601419443; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4985959lfq;
+        Tue, 29 Sep 2020 15:44:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxTqzUiUA2enBRxU76Fr/PFBZ8DKmHIaFoq+tS6yiYoUCt5v3OQG+5BV/09ekschMhSvRMD
+X-Received: by 2002:a25:cc45:: with SMTP id l66mr8975552ybf.112.1601419446759;
+        Tue, 29 Sep 2020 15:44:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601419446; cv=none;
         d=google.com; s=arc-20160816;
-        b=z/kFzVs8Xt+AOSPov5XwqiLvNDvKoXibo3dpWEU02EpyH5RuV5uLSYeG+txxLx4LNw
-         0zYRLnXXO6kbM8+peH9BAT8zjUvUpfVutiH98eLens9ZFVjgRT6HVmvCFkCSOGnaF7a7
-         +gTV6C8ker1biqri6vkZvRDzrFwYMmKt154cEn2sHPLv9PXTgZMp9OKXzJhgql9UIiDz
-         Ci1oXS4Y1pSbzsBeL8BP1ZZB62YdTQbSQnzOnvqoe8WFqmOi8imMBOk8rRGoLfTugPrA
-         XNv/GKw0erNOHo4KMjjerBXTmz4kE6/rlTO5b0s8Z4/XzWLEahzxgEk8WeQ8Uh4fAXrO
-         YX2Q==
+        b=lxg4r7rYlwSBmdlHDar8rVmikB5LDMzFUYmO7IPcDwz/F3xUJrfjmCtlb7jvHuy3PX
+         h1JzI+vnLaSYnCB7lrCcg0kh2Nwj16MPhuAa6dHCS5VGLr3mdBqoS1MLDX5BAizPgfQF
+         3YJWMj9bP0ue/2zDyO/Mf1gD+saD9QUv2ya1QtqgIkZlF6T54FQ9hSBDtWYgzgwJkjVM
+         P6xBCWYuyPGpLT9N+vgaqDoeqmJKIBzr9VEIk5+0kYQypS8jbY3Cb029G89gGJyx7xCj
+         cp7WT4672qg86C1JYQqpEiFaV0OBh67BkL0syoCGdGL/PigppXf5/Smn5wDnNkiitSZ7
+         wmDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=Sm3Gm34Jjn5EWoNbFg1uRbBUxTP1yXhpa0ydpRV9pWQ=;
-        b=np3cf4ndWDI2umchT33M8GHcrDbKTOhZueKb7ffj54sXmwYav2J6kdvCgGUr38yVVN
-         KY2TLgyH0IblTnfL4ufYqQlPyRZjLkJ/TRfWIByHFBJFLbZFRuFbSgeFOCbDMHaheIHx
-         XMdagEIlC5CAkQyyImjCcco/EAKK+ofJlwLdWF7sv7mlQirI9XyWt+E2T2yaDOgchqPh
-         oRpCtZ57BY6JBBaZvfTrgpNhL+hLavtDqiyCDxdu6gwtc+gFVkWejck+cYwRX9npEyz9
-         enGx3GGxRsLilJx4fCQfYz3rIBOx1+vB0UJnofokGrB01ErIg3AD+Wr71ADQvQiVTxcd
-         j5xA==
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=66DSIrlhCeV+xyo2otn2L+hQAxSXyWg/ic5Sp/vZwto=;
+        b=J0y09LR7P+QkkyO5EgSU+9o/QeDXRlqRDsQSLK2rJM+gQiEG1Lyiy8n2IcXtQuL+4N
+         sOqkLI+DWmbBpYXr0ykSyh80Wi5qtypNMktruAY/5uJrK6PRoBTfDy6rA5pLtXBcdpY3
+         jfNcVCqLbq4HavFQJ9y+ch1fkpUJQj6s3Jb9chlE0068bW52ZveENCbKvz71MGLPYQ84
+         jCVd4LLjrVxmu2A3q4/uUcWhsRC6eDV4UzHCacWdf7c4nypjVOUSBFJZkYZY2KfS7nUZ
+         K3qTO8+akGQ6xoWNpk305A+/MdGWkJ36x+ZIDyuUeRc3fpsq+8cTsUqPZHrOICvq0l4L
+         1KJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eO3FSZiO;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P2gRsD4z;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id jo4si3345034ejb.681.2020.09.29.15.44.03
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id l6si6087403ybc.66.2020.09.29.15.44.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2020 15:44:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Tue, 29 Sep 2020 15:44:06 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eO3FSZiO;
-       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P2gRsD4z;
+       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1601419442;
+	s=mimecast20190719; t=1601419446;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=Sm3Gm34Jjn5EWoNbFg1uRbBUxTP1yXhpa0ydpRV9pWQ=;
-	b=eO3FSZiOtZUPxt50ouDu/cjEE4wVOb2qUuRoElSkh8Gydgf7zd/KtPEFBoqAKjNZHbow/8
-	o/AlppNwHMAizPMfEeLuiyg4BGZogdZNCbU0+5BEobssw7Vk0K3sAwYDUZSEaqwW+JKb7v
-	9Bm7UmUBqcxjng4zmcv+0ug441BucMo=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-541-ig4ZiTXaP2e20dO5NoZ5tg-1; Tue, 29 Sep 2020 18:43:59 -0400
-X-MC-Unique: ig4ZiTXaP2e20dO5NoZ5tg-1
-Received: by mail-wm1-f71.google.com with SMTP id y6so195071wmi.7
-        for <alex.bennee@linaro.org>; Tue, 29 Sep 2020 15:43:58 -0700 (PDT)
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=66DSIrlhCeV+xyo2otn2L+hQAxSXyWg/ic5Sp/vZwto=;
+	b=P2gRsD4zgeBbihXz4fdnsT263Af1b1iWdxljRPd2Imco4dBS/Q97k+XbZjEvctfXCOp+BI
+	ErFSt0zN/xtYeIgiPkbAYakV7L5o9vvFA30drPAr221/duEBx6LopbDz5XMS2XUD2eX6Wi
+	mSw05E4yybQ1YlC4YHpdYERyC9wgkes=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-358-jGsPbo9MNV21zncHqo84DQ-1; Tue, 29 Sep 2020 18:44:04 -0400
+X-MC-Unique: jGsPbo9MNV21zncHqo84DQ-1
+Received: by mail-wr1-f69.google.com with SMTP id b7so2359471wrn.6
+        for <alex.bennee@linaro.org>; Tue, 29 Sep 2020 15:44:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=Sm3Gm34Jjn5EWoNbFg1uRbBUxTP1yXhpa0ydpRV9pWQ=;
-        b=Ho2bPmvveEQ3HFvunbFttt8TLL7120S7k0qI7c1I58v5FdSgC7foRpEiGtb0ryOKPL
-         81e7zDs9PKZvxWsrt2kO/pSKyCN0x4beCnqJQkrDgIFmjOaxjINJTgRK51Aa6ce/hMpt
-         BuWF+grUkSyse0KjXY/z4NkTF2iUf6BgVwkKmP651CD0LB+CBaQh7IT2yhc+x5lzRpRu
-         f9BslZ52P22u+ZgK3+1MZfy8Fl9O/JZTbPdtwYSVxJOcLOs91HRmYGfCu240tT/1cYRB
-         xrAeKlUhF2JwAyqlLawte6wUs/0Wtlr/QPqAm/jygwarC2sjO1a2tNdc5tHKUPx/YPGg
-         6v+A==
-X-Gm-Message-State: AOAM531MkAOp28nYt2BOml6IPREHYWopLQe0V5UbiyJrQIscoP2rARN7
-	yF55zwFDoLr2WRYus4o5NOWeNZ4I/eCCaKCbm0Cw/k3KobuF9ygL+86zXIdpOAwCBFJfE5cZtSg
-	Qa2Owe+azv2bC45tQ
-X-Received: by 2002:a05:600c:2053:: with SMTP id p19mr6799095wmg.50.1601419437870;
-        Tue, 29 Sep 2020 15:43:57 -0700 (PDT)
-X-Received: by 2002:a05:600c:2053:: with SMTP id p19mr6799082wmg.50.1601419437666;
-        Tue, 29 Sep 2020 15:43:57 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=66DSIrlhCeV+xyo2otn2L+hQAxSXyWg/ic5Sp/vZwto=;
+        b=PZY3NeQqA4WGohjoS88C3qRVPjVn82bU2aH7DRLeDOOfpGSoJp5ZooDFRIV9gH78rJ
+         PXgwrnZo0W92UgJQLk4N5lJoWtVfGRnib7ubKqr9Grqd4LEvzMzmuNy/rMGHDev0MWHI
+         XMmGIrdkqYPL0LWWO4pVG6UZ4/ACC6VxR8B1fVhdypBUXEM65GQQ1027lEznjQInUmAW
+         cVe0IGH8O6O2n696r57FpT+ZxmvgucqUJPSLdykJ7V0Jo7/UxQ4Rz6Evp3a81WIsWdoC
+         iieLLmhX/+0r5NwLO8mv5eonnFr0U8DlVz6d9SzhC3T943XqyGn8pOuYE2vC4dP+3eSw
+         Ca4A==
+X-Gm-Message-State: AOAM532cyJl7CdUXd28hzNGNzP+pq2QY3UrTSzsv49GfPjgtXXVKVhSF
+	4RqJbXiOcrcLhmX4Atggn2d2bGtO1Zu5jYhGJBIw5jZuW/nxVm/HWgi9jjxyiiVSyVudB+gu7J/
+	4A7GDes/cVCiTyKjr
+X-Received: by 2002:adf:efc9:: with SMTP id i9mr6933027wrp.187.1601419443106;
+        Tue, 29 Sep 2020 15:44:03 -0700 (PDT)
+X-Received: by 2002:adf:efc9:: with SMTP id i9mr6933012wrp.187.1601419442929;
+        Tue, 29 Sep 2020 15:44:02 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.redhat.com (74.red-83-53-161.dynamicip.rima-tde.net. [83.53.161.74])
-        by smtp.gmail.com with ESMTPSA id t17sm8129443wrx.82.2020.09.29.15.43.56
+        by smtp.gmail.com with ESMTPSA id t202sm7798963wmt.14.2020.09.29.15.44.01
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Sep 2020 15:43:56 -0700 (PDT)
+        Tue, 29 Sep 2020 15:44:02 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -85,11 +86,14 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
 	qemu-arm@nongnu.org,
 	Richard Henderson <rth@twiddle.net>,
-	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v4 00/12] Support disabling TCG on ARM (part 2)
-Date: Wed, 30 Sep 2020 00:43:43 +0200
-Message-Id: <20200929224355.1224017-1-philmd@redhat.com>
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+	Keith Packard <keithp@keithp.com>
+Subject: [PATCH v4 01/12] accel/tcg: Add stub for cpu_loop_exit()
+Date: Wed, 30 Sep 2020 00:43:44 +0200
+Message-Id: <20200929224355.1224017-2-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20200929224355.1224017-1-philmd@redhat.com>
+References: <20200929224355.1224017-1-philmd@redhat.com>
 MIME-Version: 1.0
 Authentication-Results: relay.mimecast.com;
 	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
@@ -97,81 +101,38 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: 5b1Gm4XzQjsn
+X-TUID: B8xdw1Qo0u2S
 
-Cover from Samuel Ortiz from (part 1) [1]:
+Since the support of SYS_READC in commit 8de702cb67 the
+semihosting code is strongly depedent of the TCG accelerator
+via a call to cpu_loop_exit().
 
-  This patchset allows for building and running ARM targets with TCG
-  disabled. [...]
+Ideally we would only build semihosting support when TCG
+is available, but unfortunately this is not trivial because
+semihosting is used by many targets in different configurations.
+For now add a simple stub to avoid link failure when building
+with --disable-tcg:
 
-  The rationale behind this work comes from the NEMU project where we're
-  trying to only support x86 and ARM 64-bit architectures, without
-  including the TCG code base. We can only do so if we can build and run
-  ARM binaries with TCG disabled.
+  hw/semihosting/console.c:160: undefined reference to `cpu_loop_exit'
 
-v4 almost 2 years later... [2]:
-- Rebased on Meson
-- Addressed Richard review comments
-- Addressed Claudio review comments
+Cc: Keith Packard <keithp@keithp.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+---
+ accel/stubs/tcg-stub.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-v3 almost 18 months later [3]:
-- Rebased
-- Addressed Thomas review comments
-- Added Travis-CI job to keep building --disable-tcg on ARM
-
-v2 [4]:
-- Addressed review comments from Richard and Thomas from v1 [1]
-
-Regards,
-
-Phil.
-
-[1]: https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html
-[2]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg689168.html
-[3]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg641796.html
-[4]: https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05003.html
-
-Green CI:
-- https://cirrus-ci.com/build/4572961761918976
-- https://gitlab.com/philmd/qemu/-/pipelines/196047779
-- https://travis-ci.org/github/philmd/qemu/builds/731370972
-
-Based-on: <20200929125609.1088330-1-philmd@redhat.com>
-"hw/arm: Restrict APEI tables generation to the 'virt' machine"
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg745792.html
-
-Philippe Mathieu-Daudé (10):
-  accel/tcg: Add stub for cpu_loop_exit()
-  meson: Allow optional target/${ARCH}/Kconfig
-  target/arm: Select SEMIHOSTING if TCG is available
-  target/arm: Restrict ARMv4 cpus to TCG accel
-  target/arm: Restrict ARMv5 cpus to TCG accel
-  target/arm: Restrict ARMv6 cpus to TCG accel
-  target/arm: Restrict ARMv7 R-profile cpus to TCG accel
-  target/arm: Restrict ARMv7 M-profile cpus to TCG accel
-  target/arm: Reorder meson.build rules
-  .travis.yml: Add a KVM-only Aarch64 job
-
-Samuel Ortiz (1):
-  target/arm: Do not build TCG objects when TCG is off
-
-Thomas Huth (1):
-  target/arm: Make m_helper.c optional via CONFIG_ARM_V7M
-
- default-configs/arm-softmmu.mak |  3 --
- meson.build                     |  8 +++-
- target/arm/cpu.h                | 12 ------
- accel/stubs/tcg-stub.c          |  5 +++
- target/arm/cpu_tcg.c            |  4 +-
- target/arm/helper.c             |  7 ----
- target/arm/m_helper-stub.c      | 73 +++++++++++++++++++++++++++++++++
- .travis.yml                     | 35 ++++++++++++++++
- hw/arm/Kconfig                  | 32 +++++++++++++++
- target/arm/Kconfig              |  4 ++
- target/arm/meson.build          | 40 +++++++++++-------
- 11 files changed, 184 insertions(+), 39 deletions(-)
- create mode 100644 target/arm/m_helper-stub.c
- create mode 100644 target/arm/Kconfig
-
+diff --git a/accel/stubs/tcg-stub.c b/accel/stubs/tcg-stub.c
+index e4bbf997aa..1eec7fb90e 100644
+--- a/accel/stubs/tcg-stub.c
++++ b/accel/stubs/tcg-stub.c
+@@ -29,3 +29,8 @@ void *probe_access(CPUArchState *env, target_ulong addr, int size,
+      /* Handled by hardware accelerator. */
+      g_assert_not_reached();
+ }
++
++void cpu_loop_exit(CPUState *cpu)
++{
++    g_assert_not_reached();
++}
 -- 
 2.26.2

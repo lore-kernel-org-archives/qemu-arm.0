@@ -1,80 +1,80 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4986304lfq;
-        Tue, 29 Sep 2020 15:44:39 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzJ+fG+NbI+I8DejhK32eKEOJDZfK/Z/+BhhYJg4dGCTjCWRBEkRPgWFFUeGQK6fId7Mqb/
-X-Received: by 2002:a17:907:aa9:: with SMTP id bz9mr5910256ejc.421.1601419479851;
-        Tue, 29 Sep 2020 15:44:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601419479; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4986331lfq;
+        Tue, 29 Sep 2020 15:44:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhIxMyrlBJWcIoQLPQZxdAsaG5UyPn88aC81tWyTb09qnIb3Z0VMoqkBVpXXJba1KIYnNi
+X-Received: by 2002:a50:fa81:: with SMTP id w1mr5634550edr.122.1601419483074;
+        Tue, 29 Sep 2020 15:44:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601419483; cv=none;
         d=google.com; s=arc-20160816;
-        b=oIvTz5yMcdKRRUVgezRmNIgECNLsh+eKSH0XhLzA/YEmglSqvr3v5JmhiSKWRfqrDe
-         sKdvphj0uTI2ANumXTAARTibyoTj9Y/vjpWUHXb97leHNVpacYRvHaqfnyNJFw3qMQXl
-         ROVKPrVKWxmsTGVCnkNMftVFhve6j9kdIsbM5numBMVokPRAXjKBrJA7MjfZ4qmZ4ca5
-         rr46YVXCj4VyZDFWnA+e3Ux7wV/xaVHPPg93cnzAeijwuGgmqRB/wQbhT/dQWoIc4eWV
-         GiIxgmH5gu6FveeytW/OTJ/k2zybbONcNnmsxj7KyEHNmrH/eCn9TOCCcpatfcZjB0OJ
-         KE4w==
+        b=w3Z5WITCLso1FvvQR4Bz4yS/WpdANY5DpqE5BOip+GKQwIJMDbw1wyqcYpH5pTTKQa
+         2Mmd86C5PoqjaT9LQjbKigr3BOJn0dz+3JNW0kFBBdDr60wzYFgfveP7VU8dxIXOqde7
+         3QqMgNwmsdBnBgZRSwznHqE7Ybt2KNoEfVGPFsyPSHLUj1ERAhIddAGboRs3c2Fn8uTK
+         udWq4QTXC+lJAXWChqwosI3BFhOF19snmifM0m9saoqRuXwypbRZb+B78A6t6v+GdB7Y
+         ZHnc74z2fOGTSgQfZhUfjF6MSr2xtjbVDYuB4lJllqvqR8v6f08h292rcKoI63pgGDXf
+         CT/Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=O2ptRm8f/lOeml0jS1cRqmJHNlSkXaKtAQigKfi/TLU=;
-        b=Qg80csIzCqoafOC6XgScyFIgLsgsaNn39gRT+94V7MRDgCtQCUPE37iUHRhu6a/Krp
-         3oO71vgRbVaPDYW6NiIlQLOPCZxVqslFYG171rdmbzBm31b+CFxLZZFJFfIUcJqE7Uka
-         bmkX7PlZhNfkIvAbOTB+O62czFsIGN2qW2+zsZg3hi05rSmfab2FNtiylW9eQmphH1Ei
-         NAZdvCOj5n6815VWK6DCa3NKk13ItToXIHZQO2yvvYCox/HCGFD44vV1HCSvCg4qAWYi
-         74EWnTOhuI6Q5+zB9+qeUanKHE5yrcrMmKslmn5Wgimm4wrSTccsLymk0pTkJGOrgHnh
-         vlVA==
+        bh=VMKffrN5obKOm6UxS550K4u6DmnYBBMm9AG93ufLP5A=;
+        b=ipitl6uQ1Jvx5nqcyh13OgWDSwzj6FvO+8HLV5QigdQTR8ycrCPSHdVcXYZq0+OPlK
+         ETF2H9yFdKvnAkQNlLus+yVxHLQgDhUTNb7MMej0BYjGEnGz35QEtIuStAQcgy1JImnU
+         Dkn7l6JBXvsg8LTfK4aRMcdPcIHab3zKsqrwamJU/c9gkiv2y0anug7Ddqalk6RELayl
+         Z/kVEmFQEuyY4A6kWxd0eFTxK8JQBc/A/GzKXCVghcMYhmg5wZt8BAoHsp4+SorZC0Ci
+         frkfKlmLUABfo9OXf5WlbYsgAUhVBbicWBCex80tkbMSRxlEoh12NIqpGeAZiBWuCXWZ
+         FxAw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aWZBjCBO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gqQYDBhV;
        spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id x2si3518672eju.153.2020.09.29.15.44.39
+        by mx.google.com with ESMTPS id n2si3831418edi.564.2020.09.29.15.44.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2020 15:44:39 -0700 (PDT)
+        Tue, 29 Sep 2020 15:44:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=aWZBjCBO;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=gqQYDBhV;
        spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1601419478;
+	s=mimecast20190719; t=1601419482;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=O2ptRm8f/lOeml0jS1cRqmJHNlSkXaKtAQigKfi/TLU=;
-	b=aWZBjCBO87iSv+zMdp4m5OZ5aG04YCqBszF0AWk8tOze0plZcdK7WR++UhsQ9+/WTA7zxn
-	L9comcff5iaFGZuLpYYsbup0oeu6/8eWlNqFJ8T5MbOa+p+muYOxsyxH4SiaFDKovrO6sN
-	95pHyV2HooH4mkdXjDHJ/8fv/PltwBI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-345-fWRfr4FCMrCxoY7RHP_QNg-1; Tue, 29 Sep 2020 18:44:35 -0400
-X-MC-Unique: fWRfr4FCMrCxoY7RHP_QNg-1
-Received: by mail-wr1-f72.google.com with SMTP id l9so2330552wrq.20
-        for <alex.bennee@linaro.org>; Tue, 29 Sep 2020 15:44:34 -0700 (PDT)
+	bh=VMKffrN5obKOm6UxS550K4u6DmnYBBMm9AG93ufLP5A=;
+	b=gqQYDBhVM3BaJ6f2rhOOCiuAzasuv/g0jQfJbhZYXK/D8//kfQvAypVP6SrWAHSvxS++vl
+	HVGu9n1JnA7XgHeM5WfTS37Bhm26aUzzLSVhPo7N5oJZnZuXb3TY1KgeLxiploZb/7aWC3
+	rbokezywFY3CJDz4ucvQnssQoNOC0dA=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-63-2O0doFDINkeIWfvO4IrbTg-1; Tue, 29 Sep 2020 18:44:40 -0400
+X-MC-Unique: 2O0doFDINkeIWfvO4IrbTg-1
+Received: by mail-wr1-f70.google.com with SMTP id g6so2366786wrv.3
+        for <alex.bennee@linaro.org>; Tue, 29 Sep 2020 15:44:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=O2ptRm8f/lOeml0jS1cRqmJHNlSkXaKtAQigKfi/TLU=;
-        b=DPdAQ2cLk+yQm1wMbAfgVFyh892KDyUbI/ceacS+u1ixel6lKGs5lbV4j0k277IrH2
-         Tg9O8rdnz/tf78phgtg42BprsqAoEYtHjn97lGKdYi7+dz2O8NxJbDuqjoYQsk9hpMcZ
-         +D3bjoqYZYvK5Wv6DF9dXsc82bPGILDOijt+pbBOE2Se7HawlH1vZY/YT1TZ4QC2r83S
-         CuY7B3hN/kx0dQwCgqz8aYE4jA0usMVXY5oZiyqnMWZHMxteNHosULbHLhOVcNt8GvEu
-         an2IYcRldGmc5sO/gIc5QH7liDxlkZ6PaJt2fruaLyFUKE8ZJpG64oP74bx3P1tRV89M
-         Ih9g==
-X-Gm-Message-State: AOAM532TTmtvFBGcYwXkQPU1GXhC0IQLgMl6vv9+9emICDTgFKyT9qTW
-	VEqvqIN51XJwGEDJ2cR0lnvOsXCjlXrzZkOqN3d5J3fv3BDj/p3d0ryux9xZuyOFc8FBvGAqhau
-	/MQK1qnR7Clwa+0K+
-X-Received: by 2002:a5d:444b:: with SMTP id x11mr6634814wrr.402.1601419473912;
-        Tue, 29 Sep 2020 15:44:33 -0700 (PDT)
-X-Received: by 2002:a5d:444b:: with SMTP id x11mr6634802wrr.402.1601419473707;
-        Tue, 29 Sep 2020 15:44:33 -0700 (PDT)
+        bh=VMKffrN5obKOm6UxS550K4u6DmnYBBMm9AG93ufLP5A=;
+        b=KV8+mPzZoosgFgkXI2p5zXchz36vv8pH09yaRxnEfz4CiWXjwnwFogE7GIboeXyCsi
+         xq/JhBo7iuA0vtm7c80WkDTRsKVIpGnMWmCX/2dyVM75CCnij27EtDSccZD+M5yx5WmM
+         OccfewAtxiuvd0iRq0rLYp3XqZnAgLS/lxMz03i4BxI8mFAFDMqERqs0yuWN3W9OdNM5
+         hL9QLsNdsfvjVgUDMpDfSIj5TJHsZtsAb6FY42Ha8B/CfSlkWWgZz6O/9IGGl1TaS3F0
+         n/NVsmWWWBdSA3t1+4oPezr2zSIASyrzrwpLsqonEk3rVLgwARdIm207ukAlD68ZKZES
+         AVSA==
+X-Gm-Message-State: AOAM530S3ujKWEFfGFiqfr+EKX3QNNhp4czn0YuMp66vnzQC7AbibvbZ
+	t3IOP+UR183FQLA9fV73kC2Pqx7JDDljCf3qLLjmOGa0NRsBosOdruKLSa8zN7DKuMHW/w4Ovsk
+	boC6r+lNBpVufqzzE
+X-Received: by 2002:a7b:c76d:: with SMTP id x13mr6762369wmk.10.1601419478957;
+        Tue, 29 Sep 2020 15:44:38 -0700 (PDT)
+X-Received: by 2002:a7b:c76d:: with SMTP id x13mr6762351wmk.10.1601419478789;
+        Tue, 29 Sep 2020 15:44:38 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.redhat.com (74.red-83-53-161.dynamicip.rima-tde.net. [83.53.161.74])
-        by smtp.gmail.com with ESMTPSA id m10sm7056524wmi.9.2020.09.29.15.44.32
+        by smtp.gmail.com with ESMTPSA id l17sm6922065wme.11.2020.09.29.15.44.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Sep 2020 15:44:33 -0700 (PDT)
+        Tue, 29 Sep 2020 15:44:38 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -87,9 +87,9 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	qemu-arm@nongnu.org,
 	Richard Henderson <rth@twiddle.net>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-Subject: [PATCH v4 07/12] target/arm: Restrict ARMv7 R-profile cpus to TCG accel
-Date: Wed, 30 Sep 2020 00:43:50 +0200
-Message-Id: <20200929224355.1224017-8-philmd@redhat.com>
+Subject: [PATCH v4 08/12] target/arm: Restrict ARMv7 M-profile cpus to TCG accel
+Date: Wed, 30 Sep 2020 00:43:51 +0200
+Message-Id: <20200929224355.1224017-9-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200929224355.1224017-1-philmd@redhat.com>
 References: <20200929224355.1224017-1-philmd@redhat.com>
@@ -100,42 +100,53 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: C1r7hmJwgNGk
+X-TUID: JyuIEp3E7Gds
 
-A KVM-only build won't be able to run R-profile cpus.
+A KVM-only build won't be able to run M-profile cpus.
 
-Only enable the following ARMv7 R-Profile CPUs when TCG is available:
+Only enable the following ARMv7 M-Profile CPUs when TCG is available:
 
-  - Cortex-R5
-  - Cortex-R5F
+  - Cortex-M0
+  - Cortex-M3
+  - Cortex-M4
+  - Cortex-M33
+
+We don't need to enforce CONFIG_ARM_V7M in default-configs because
+all machines using a Cortex-M are already explicitly selected.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- hw/arm/Kconfig | 5 +++++
- 1 file changed, 5 insertions(+)
+ default-configs/arm-softmmu.mak | 3 ---
+ hw/arm/Kconfig                  | 4 ++++
+ 2 files changed, 4 insertions(+), 3 deletions(-)
 
+diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+index 08a32123b4..002c97862b 100644
+--- a/default-configs/arm-softmmu.mak
++++ b/default-configs/arm-softmmu.mak
+@@ -1,8 +1,5 @@
+ # Default configuration for arm-softmmu
+ 
+-# TODO: ARM_V7M is currently always required - make this more flexible!
+-CONFIG_ARM_V7M=y
+-
+ # CONFIG_PCI_DEVICES=n
+ # CONFIG_TEST_DEVICES=n
+ 
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index e01eb55bc0..7f19872722 100644
+index 7f19872722..15faa2f2d7 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -10,6 +10,10 @@ config ARM_V6
+@@ -14,6 +14,10 @@ config ARM_V7R
      bool
      select TCG
  
-+config ARM_V7R
++config ARM_V7M
 +    bool
 +    select TCG
 +
  config ARM_VIRT
      bool
      imply PCI_DEVICES
-@@ -358,6 +362,7 @@ config XLNX_ZYNQMP_ARM
-     bool
-     select AHCI
-     select ARM_GIC
-+    select ARM_V7R
-     select CADENCE
-     select DDC
-     select DPCD
 -- 
 2.26.2

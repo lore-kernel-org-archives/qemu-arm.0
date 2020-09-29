@@ -1,80 +1,80 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4985959lfq;
-        Tue, 29 Sep 2020 15:44:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxTqzUiUA2enBRxU76Fr/PFBZ8DKmHIaFoq+tS6yiYoUCt5v3OQG+5BV/09ekschMhSvRMD
-X-Received: by 2002:a25:cc45:: with SMTP id l66mr8975552ybf.112.1601419446759;
-        Tue, 29 Sep 2020 15:44:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601419446; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4986033lfq;
+        Tue, 29 Sep 2020 15:44:12 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzAFpgXyIJVdcpUOG6uBHYMv7BSXBlclQ74fdRmtUphx4rj42Rt0T9aXWwyyRJf+YCtN/+p
+X-Received: by 2002:a50:fc0b:: with SMTP id i11mr5676719edr.164.1601419452656;
+        Tue, 29 Sep 2020 15:44:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601419452; cv=none;
         d=google.com; s=arc-20160816;
-        b=lxg4r7rYlwSBmdlHDar8rVmikB5LDMzFUYmO7IPcDwz/F3xUJrfjmCtlb7jvHuy3PX
-         h1JzI+vnLaSYnCB7lrCcg0kh2Nwj16MPhuAa6dHCS5VGLr3mdBqoS1MLDX5BAizPgfQF
-         3YJWMj9bP0ue/2zDyO/Mf1gD+saD9QUv2ya1QtqgIkZlF6T54FQ9hSBDtWYgzgwJkjVM
-         P6xBCWYuyPGpLT9N+vgaqDoeqmJKIBzr9VEIk5+0kYQypS8jbY3Cb029G89gGJyx7xCj
-         cp7WT4672qg86C1JYQqpEiFaV0OBh67BkL0syoCGdGL/PigppXf5/Smn5wDnNkiitSZ7
-         wmDg==
+        b=Aj4/BmoYiXFY7vvKgTHCBqdqkKoHFXEKwzox5pSwqN2uaXOUAYreubQfvBpzwLfwT5
+         lZahLQV7XvKvQOFk9S5OOwL60ouqZQPhChlRAUopZR23F6sO2XTF+P0O+P+gYCYxoyI5
+         Qq1MZ8YLVDlLxDQKgPVzVUTV7ELqERNO8PTYvc+WtQGTglS9tp3U+Jf/tiTnmU/cklel
+         kmeVR3LdywhVTtcytuhMLdldmMxcjv5nUD/2JEC3uQZg01eUtYku/EBBlFfXwHxCVIL8
+         uIGFdubCN+HDa9O0NkbqPRCSc87peLtoUTsuwCn7AkBJWMGH7hxdgMQvSWdAMhTP5vT0
+         +n6w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=66DSIrlhCeV+xyo2otn2L+hQAxSXyWg/ic5Sp/vZwto=;
-        b=J0y09LR7P+QkkyO5EgSU+9o/QeDXRlqRDsQSLK2rJM+gQiEG1Lyiy8n2IcXtQuL+4N
-         sOqkLI+DWmbBpYXr0ykSyh80Wi5qtypNMktruAY/5uJrK6PRoBTfDy6rA5pLtXBcdpY3
-         jfNcVCqLbq4HavFQJ9y+ch1fkpUJQj6s3Jb9chlE0068bW52ZveENCbKvz71MGLPYQ84
-         jCVd4LLjrVxmu2A3q4/uUcWhsRC6eDV4UzHCacWdf7c4nypjVOUSBFJZkYZY2KfS7nUZ
-         K3qTO8+akGQ6xoWNpk305A+/MdGWkJ36x+ZIDyuUeRc3fpsq+8cTsUqPZHrOICvq0l4L
-         1KJQ==
+        bh=fnVaKlxSjgosYNWUZ3C9BB5KnUFHrX+zW6dbopznvYU=;
+        b=LBzLLhlZUMQcxXt26SJf/HZXR98jepvggOKZck3r/8uPALS6d2/TtiVR9WYMYPcv90
+         579jkfAejVWK6KrfYQ9X+7/ewl9U0dkKh1+ypSfKaJdv7wYOwVbHLVOk0iVXAd0sw7vG
+         xdq0wJ1qp6T89If8UG5SR0kcDC/v42he8TsWNmhaxoePYGoUGKaE7zjZcila5t5MPVMh
+         RP+PNJZimCORgrbTFOZNUEqlw7DrFAA91ULDbbkj8e6MpVhtcL5wq2PBh1dY+9w1YF5m
+         JtEy3as2ZrNsL9req+5modSe/WO3A+1a896IN5qBN0hUZvd/aMxTLjxsLn9eARVEk7HH
+         cLgQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P2gRsD4z;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MVZaWTj3;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <philmd@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
-        by mx.google.com with ESMTPS id l6si6087403ybc.66.2020.09.29.15.44.06
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id cq27si3728579edb.415.2020.09.29.15.44.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 29 Sep 2020 15:44:06 -0700 (PDT)
-Received-SPF: pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
+        Tue, 29 Sep 2020 15:44:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=P2gRsD4z;
-       spf=pass (google.com: domain of philmd@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MVZaWTj3;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1601419446;
+	s=mimecast20190719; t=1601419451;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=66DSIrlhCeV+xyo2otn2L+hQAxSXyWg/ic5Sp/vZwto=;
-	b=P2gRsD4zgeBbihXz4fdnsT263Af1b1iWdxljRPd2Imco4dBS/Q97k+XbZjEvctfXCOp+BI
-	ErFSt0zN/xtYeIgiPkbAYakV7L5o9vvFA30drPAr221/duEBx6LopbDz5XMS2XUD2eX6Wi
-	mSw05E4yybQ1YlC4YHpdYERyC9wgkes=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-358-jGsPbo9MNV21zncHqo84DQ-1; Tue, 29 Sep 2020 18:44:04 -0400
-X-MC-Unique: jGsPbo9MNV21zncHqo84DQ-1
-Received: by mail-wr1-f69.google.com with SMTP id b7so2359471wrn.6
-        for <alex.bennee@linaro.org>; Tue, 29 Sep 2020 15:44:04 -0700 (PDT)
+	bh=fnVaKlxSjgosYNWUZ3C9BB5KnUFHrX+zW6dbopznvYU=;
+	b=MVZaWTj3uuEWiAJX7mnLgvCR1qJdqbNF7Nh0l4y4x/JPJrz8tRNUAuG6j33lDKNGvmWG2G
+	daNojlzfhWL7Kmw6Pq3P6/F8zJ90dEURNaiaEeB+rcIrVqXHwbZ7nUxo76h2bXdHpavGdR
+	mrDR+0DUrG8Yr5Fo45KvI9Bd2gamV4o=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-377-Vr-Q7DsMM9Os7WQr2RYaAw-1; Tue, 29 Sep 2020 18:44:09 -0400
+X-MC-Unique: Vr-Q7DsMM9Os7WQr2RYaAw-1
+Received: by mail-wr1-f71.google.com with SMTP id 33so2341573wrk.12
+        for <alex.bennee@linaro.org>; Tue, 29 Sep 2020 15:44:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=66DSIrlhCeV+xyo2otn2L+hQAxSXyWg/ic5Sp/vZwto=;
-        b=PZY3NeQqA4WGohjoS88C3qRVPjVn82bU2aH7DRLeDOOfpGSoJp5ZooDFRIV9gH78rJ
-         PXgwrnZo0W92UgJQLk4N5lJoWtVfGRnib7ubKqr9Grqd4LEvzMzmuNy/rMGHDev0MWHI
-         XMmGIrdkqYPL0LWWO4pVG6UZ4/ACC6VxR8B1fVhdypBUXEM65GQQ1027lEznjQInUmAW
-         cVe0IGH8O6O2n696r57FpT+ZxmvgucqUJPSLdykJ7V0Jo7/UxQ4Rz6Evp3a81WIsWdoC
-         iieLLmhX/+0r5NwLO8mv5eonnFr0U8DlVz6d9SzhC3T943XqyGn8pOuYE2vC4dP+3eSw
-         Ca4A==
-X-Gm-Message-State: AOAM532cyJl7CdUXd28hzNGNzP+pq2QY3UrTSzsv49GfPjgtXXVKVhSF
-	4RqJbXiOcrcLhmX4Atggn2d2bGtO1Zu5jYhGJBIw5jZuW/nxVm/HWgi9jjxyiiVSyVudB+gu7J/
-	4A7GDes/cVCiTyKjr
-X-Received: by 2002:adf:efc9:: with SMTP id i9mr6933027wrp.187.1601419443106;
-        Tue, 29 Sep 2020 15:44:03 -0700 (PDT)
-X-Received: by 2002:adf:efc9:: with SMTP id i9mr6933012wrp.187.1601419442929;
-        Tue, 29 Sep 2020 15:44:02 -0700 (PDT)
+        bh=fnVaKlxSjgosYNWUZ3C9BB5KnUFHrX+zW6dbopznvYU=;
+        b=gto8q4bDZOtg7Pe0I8IOaEBGLHhU7/mEzU3+qiGb4BcZ/Gt9i4/MleqcDQ9JrPzSOu
+         ppELOxksTVNYK3h2Iv849NXB2FCmDXfvd7vdudoaxGN+/lAG8dz69cDwKecu4ZatNXJn
+         QEn0dY3ZrIm9waJO2JvCz9t2nbKWIN5DDpSoET/Cetnd3x9KA1q80Sm84TZpD08VleGy
+         rPgg4MDOapxfRMF112ZPVOA9T6eeAo6CYaljXSWPYms3IN2E89ZLOYT7qGMT8e63aa9+
+         TyDMVRdYZjsu9SbIR5ZjIRA7AHiGL8jUwAonCy91hNpWdBQ+Me7ofNUMGHn0eVochiZu
+         arbQ==
+X-Gm-Message-State: AOAM5327qmKqYHJS7lydRo5JIUjNe7xk+GYLMUC3fP/daY7nGFVtDo8o
+	Sp1GuOUzTPpDaDA8waDzXpGcVGI5C8ZrRtUAD0Q9J1SPFBeDV/muHEIHslFuvdUrUFM8jV7iGDa
+	UHYHQMI3emjjFTGYZ
+X-Received: by 2002:adf:f2d0:: with SMTP id d16mr6386598wrp.332.1601419448303;
+        Tue, 29 Sep 2020 15:44:08 -0700 (PDT)
+X-Received: by 2002:adf:f2d0:: with SMTP id d16mr6386570wrp.332.1601419448124;
+        Tue, 29 Sep 2020 15:44:08 -0700 (PDT)
 Return-Path: <philmd@redhat.com>
 Received: from x1w.redhat.com (74.red-83-53-161.dynamicip.rima-tde.net. [83.53.161.74])
-        by smtp.gmail.com with ESMTPSA id t202sm7798963wmt.14.2020.09.29.15.44.01
+        by smtp.gmail.com with ESMTPSA id e13sm8276536wre.60.2020.09.29.15.44.06
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Sep 2020 15:44:02 -0700 (PDT)
+        Tue, 29 Sep 2020 15:44:07 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>,
@@ -87,10 +87,10 @@ Cc: Thomas Huth <thuth@redhat.com>,
 	qemu-arm@nongnu.org,
 	Richard Henderson <rth@twiddle.net>,
 	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
-	Keith Packard <keithp@keithp.com>
-Subject: [PATCH v4 01/12] accel/tcg: Add stub for cpu_loop_exit()
-Date: Wed, 30 Sep 2020 00:43:44 +0200
-Message-Id: <20200929224355.1224017-2-philmd@redhat.com>
+	Claudio Fontana <cfontana@suse.de>
+Subject: [PATCH v4 02/12] meson: Allow optional target/${ARCH}/Kconfig
+Date: Wed, 30 Sep 2020 00:43:45 +0200
+Message-Id: <20200929224355.1224017-3-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20200929224355.1224017-1-philmd@redhat.com>
 References: <20200929224355.1224017-1-philmd@redhat.com>
@@ -101,38 +101,48 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: B8xdw1Qo0u2S
+X-TUID: l5DMDT5LBbvk
 
-Since the support of SYS_READC in commit 8de702cb67 the
-semihosting code is strongly depedent of the TCG accelerator
-via a call to cpu_loop_exit().
+Extend the generic Meson script to pass optional target Kconfig
+file to the minikconf script.
 
-Ideally we would only build semihosting support when TCG
-is available, but unfortunately this is not trivial because
-semihosting is used by many targets in different configurations.
-For now add a simple stub to avoid link failure when building
-with --disable-tcg:
-
-  hw/semihosting/console.c:160: undefined reference to `cpu_loop_exit'
-
-Cc: Keith Packard <keithp@keithp.com>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 ---
- accel/stubs/tcg-stub.c | 5 +++++
- 1 file changed, 5 insertions(+)
+We could use fs.exists() but is_file() is more specific
+(can not be a directory).
 
-diff --git a/accel/stubs/tcg-stub.c b/accel/stubs/tcg-stub.c
-index e4bbf997aa..1eec7fb90e 100644
---- a/accel/stubs/tcg-stub.c
-+++ b/accel/stubs/tcg-stub.c
-@@ -29,3 +29,8 @@ void *probe_access(CPUArchState *env, target_ulong addr, int size,
-      /* Handled by hardware accelerator. */
-      g_assert_not_reached();
- }
-+
-+void cpu_loop_exit(CPUState *cpu)
-+{
-+    g_assert_not_reached();
-+}
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Claudio Fontana <cfontana@suse.de>
+---
+ meson.build | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index d36dd085b5..9ab5d514d7 100644
+--- a/meson.build
++++ b/meson.build
+@@ -529,6 +529,7 @@ kconfig_external_symbols = [
+ ]
+ ignored = ['TARGET_XML_FILES', 'TARGET_ABI_DIR', 'TARGET_DIRS']
+ 
++fs = import('fs')
+ foreach target : target_dirs
+   config_target = keyval.load(meson.current_build_dir() / target / 'config-target.mak')
+ 
+@@ -569,8 +570,13 @@ foreach target : target_dirs
+     endforeach
+ 
+     config_devices_mak = target + '-config-devices.mak'
++    target_kconfig = 'target' / config_target['TARGET_BASE_ARCH'] / 'Kconfig'
++    minikconf_input = ['default-configs' / target + '.mak', 'Kconfig']
++    if fs.is_file(target_kconfig)
++      minikconf_input += [target_kconfig]
++    endif
+     config_devices_mak = configure_file(
+-      input: ['default-configs' / target + '.mak', 'Kconfig'],
++      input: minikconf_input,
+       output: config_devices_mak,
+       depfile: config_devices_mak + '.d',
+       capture: true,
 -- 
 2.26.2

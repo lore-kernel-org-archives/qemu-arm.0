@@ -1,87 +1,90 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4383090lfq;
-        Tue, 29 Sep 2020 01:56:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxHtQFx/N2pOKBd/dfe1HZJr5dFyth1fdwTut9E9ydbvaGgJWf2CIs49xoDPrL5RSeTZzle
-X-Received: by 2002:a25:8e05:: with SMTP id p5mr4879782ybl.370.1601369793135;
-        Tue, 29 Sep 2020 01:56:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601369793; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4383100lfq;
+        Tue, 29 Sep 2020 01:56:34 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyt9lXgA+5b8LvGdLv+O0iWj1hdSEp/DQ4T7KOT7Bpe5mVyQhsf+tsdKcM7MtDqTFTJ56nF
+X-Received: by 2002:a5b:381:: with SMTP id k1mr4776688ybp.141.1601369794058;
+        Tue, 29 Sep 2020 01:56:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601369794; cv=none;
         d=google.com; s=arc-20160816;
-        b=E7AiCinz8wnAcNCHVyTthHYZN3SpWSMugLwFTraBDXkmCjhtpM6htinSqbOOTINGOU
-         zReXF9ahCl+7PnzmEX4SHHe7K6INLgOZZYLcss8SscWohhQEDD84KA/NCgrrfy/6Rbx6
-         3fwen+5G1UgP9Fmn6sRNb1iedSop3bU+5SBlAPs0PYteYKRaEKHNTp3yLPHatoD5t5Aq
-         yF4Wda3pEm2HHZSxFcDF6crUhDL/Y319qm4scpu8E0FWOTeoCWEIqpK8nd7G7TB0pBe6
-         2Jc7W6tASYVIM5L8Hw1X7rB5OGOP0+ND28SrS2ZbH4e7ji/A3ACeFZD/p7I7ZwE1FIfk
-         Lksg==
+        b=gntJDK7kTCGp5a9B92IPBh2nm5NkmAfsAqnEKZN2LyrDARZZROQZbhBbZ1Q49hCZYn
+         D1Gdfa/ykXx12dXv30dUmHv8BjpV5+25E01pdviaO/JsSxnOX12QrCWs3Kcch2jkJogt
+         6PA4NLH3GChazfWxcSjXqk2ldd30O1JemH9dk299KRHEV6LnMMYDLYt5L+iJdlSnBowa
+         AbQn97wOqttf68Uk/gTAao7A3+5S2pHa5DQHHQUjlE3Q1m9HtlNXOJ4uJ5upZ1r5agsT
+         83KY8MRWRtCsD/vi/G/n7nzQonOr47FVAcpZHYQ7BW3u4S+XgoP2AboEpMX6wfqR8kCB
+         J7Rw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=u/J84kmOSP7AfNvh9mEFkOHuirkAtr85pDh5FYd6++Y=;
-        b=o0UzevAYFO26N5NvWk9qEJUR2uPE6LG9p7/lweDaNymH3uzyLR0Mg7N2v9sgHg+6zO
-         TaW+4cy8z+oZXt8vP9SHvY5mGjJF8rs8FPSknf4i+vyLhw1cY3qHEYZgc13wTTZvzNS1
-         yJ7i5O5Ln2uBXjopjvh9GezAIaHsDq4FHQVqpr1Ebsoc/tkGMZHuTITFmlaiUjlV6T72
-         eVMBJxcjKKHs7OkR8zBv8PWgSDlIK53eHY02l2aHMMIC84zFdoOLG+mbudHY7M+z+RX4
-         2FlzyMTwn15KGPabhQnTYkms38mJqDMC91s9SZwu5F36qRGl/n9y+W2I975jUoW89Rne
-         bCtQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=bOpLCl232BV1cFhR67SrTPAGiW78Gwt9UKIEAZc/kEI=;
+        b=liFjUYW2FSFeomE3oDRCIkw/JAENdmwI6UNybbTjsJfSoTY9nvfSKi6SNPSrGyC1Fe
+         S8ASj24PLY99Yq8XmEOcBnIq45ikiGlaTcbaEs770I8gyZdfRe5kIVuElySvJCqVK1TW
+         TcHw58ZkHopGTs+VWWePq5LVBgB7Outh+BMlLILqXxqB54cPgyMxiQ52PJmsWm/LdV8t
+         2GE0M1E3xsbxhgdj/l/FLUYMAcB6HKkkN2KXLU/f4GDsBnnCqM4Dfq1loTSUSpZ6b4EX
+         3F/yOvvrm4dUAL/0IAu21bPl8R7/J6HnJ9ybG47phNG/TF24kEMc3uM3v65p2yZaSv5Z
+         EcYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Gj/nEIpa";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LfOv4JZV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y3si3555677ybb.273.2020.09.29.01.56.32
+        by mx.google.com with ESMTPS id a10si3533719ybe.424.2020.09.29.01.56.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 29 Sep 2020 01:56:33 -0700 (PDT)
+        Tue, 29 Sep 2020 01:56:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Gj/nEIpa";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LfOv4JZV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58904 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58970 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNBR2-0000v9-Hl
-	for alex.bennee@linaro.org; Tue, 29 Sep 2020 04:56:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52694)
+	id 1kNBR3-0000xs-BY
+	for alex.bennee@linaro.org; Tue, 29 Sep 2020 04:56:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52730)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kNBQj-0000uh-PF
- for qemu-arm@nongnu.org; Tue, 29 Sep 2020 04:56:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:38399)
+ id 1kNBQn-0000vx-71
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2020 04:56:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54649)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kNBQh-0000E9-3N
- for qemu-arm@nongnu.org; Tue, 29 Sep 2020 04:56:13 -0400
+ id 1kNBQk-0000EV-Le
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2020 04:56:16 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601369770;
+ s=mimecast20190719; t=1601369772;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=u/J84kmOSP7AfNvh9mEFkOHuirkAtr85pDh5FYd6++Y=;
- b=Gj/nEIpaRBhX89GYutyxJJZzrIXTe2nv6nKd3mpE5NkoOswmRJme+FH9KPPCubcaU/zgCA
- LZE3j4r98DmTA3FIC30Z1muY7pC5GTitRJGBEeunFeyZduhDUr4LbsRsMTiVAcQxZF/Mxr
- xj0/3uQUoBapnDmpB2kBqJs+P3eWTAE=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=bOpLCl232BV1cFhR67SrTPAGiW78Gwt9UKIEAZc/kEI=;
+ b=LfOv4JZV//to2xJWLBBYC/RPt8++TNdFYwUZ8DWE3nJYrd3ARKHN0sHooWQAO2M1n60o6H
+ FR0ZcFp4VpBynwcI9FLvdYP7ycrcP+TzkvfvnryONa/lLQhrG1TlMu1ih5F2yR+n3of0u9
+ suioLFfRk5BNzwFXaqIyuOOTYpuqgpU=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-8-4CM3dNo7PcG31xkYascORQ-1; Tue, 29 Sep 2020 04:56:08 -0400
-X-MC-Unique: 4CM3dNo7PcG31xkYascORQ-1
+ us-mta-589-sZ2w6PzuN4u-EoQzHRny-A-1; Tue, 29 Sep 2020 04:56:11 -0400
+X-MC-Unique: sZ2w6PzuN4u-EoQzHRny-A-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D7C9A9CC02;
- Tue, 29 Sep 2020 08:56:06 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id F14E5104D3E4;
+ Tue, 29 Sep 2020 08:56:09 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-113-210.ams2.redhat.com [10.36.113.210])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E2BDB3782;
- Tue, 29 Sep 2020 08:55:54 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3D3B83782;
+ Tue, 29 Sep 2020 08:56:07 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, stefanha@redhat.com, fam@euphon.net,
  philmd@redhat.com, alex.williamson@redhat.com
-Subject: [PATCH v2 0/2] NVMe passthrough: Take into account host IOVA reserved
- regions
-Date: Tue, 29 Sep 2020 10:55:48 +0200
-Message-Id: <20200929085550.30926-1-eric.auger@redhat.com>
+Subject: [PATCH v2 1/2] util/vfio-helpers: Collect IOVA reserved regions
+Date: Tue, 29 Sep 2020 10:55:49 +0200
+Message-Id: <20200929085550.30926-2-eric.auger@redhat.com>
+In-Reply-To: <20200929085550.30926-1-eric.auger@redhat.com>
+References: <20200929085550.30926-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
@@ -90,9 +93,9 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/28 22:47:55
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/29 02:22:44
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -27
 X-Spam_score: -2.8
@@ -116,50 +119,163 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: lvivier@redhat.com, kwolf@redhat.com, cohuck@redhat.com, mreitz@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tB+rKacb3TOh
+X-TUID: tyrlVERPjG+h
 
-The current IOVA allocator allocates within the [0x10000, 1ULL << 39]
-window, without paying attention to the host IOVA reserved regions.
-This prevents NVMe passthtrough from working on ARM as the fixed
-IOVAs rapidly grow up to the MSI reserved region [0x8000000, 0x8100000]
-causing some VFIO MAP DMA failures. This series collects the usable
-IOVA regions using VFIO GET_INFO (this requires the host to support
-VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE) and rework the fixed and
-temporary IOVA allocators to avoid those latter.
+The IOVA allocator currently ignores host reserved regions.
+As a result some chosen IOVAs may collide with some of them,
+resulting in VFIO MAP_DMA errors later on. This happens on ARM
+where the MSI reserved window quickly is encountered:
+[0x8000000, 0x8100000]. since 5.4 kernel, VFIO returns the usable
+IOVA regions. So let's enumerate them in the prospect to avoid
+them, later on.
 
-For the time being we do not change the arbitrary min/max IOVAs.
-In theory they could be dynamically determined but the kernel
-currently fails to expose some HW limitations described in the ACPI
-tables (such as PCI root complex Device Memory Address Size Limit).
-See kernel thread related to "[RFC 0/3] iommu: Reserved regions for
-IOVAs beyond dma_mask and iommu aperture" for more details:
-https://lkml.org/lkml/2020/9/28/1102
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
 
-Best Regards
+---
 
-Eric
-
-This series can be found at:
-https://github.com/eauger/qemu/tree/nvme_resv_v2
-
-This was tested on ARM only.
-
-History:
 v1 -> v2:
-- remove "util/vfio-helpers: Dynamically compute the min/max IOVA" to
-  relax the kernel dependency
-- Fix cabapbility enumeration loop
+- fix the loop on caps
 - set s->usable_iova_ranges=NULL to avoid double free
-- handle possible u64 wrap
+---
+ util/vfio-helpers.c | 72 +++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 70 insertions(+), 2 deletions(-)
 
-Eric Auger (2):
-  util/vfio-helpers: Collect IOVA reserved regions
-  util/vfio-helpers: Rework the IOVA allocator to avoid IOVA reserved
-    regions
-
- util/vfio-helpers.c | 129 +++++++++++++++++++++++++++++++++++++++++---
- 1 file changed, 123 insertions(+), 6 deletions(-)
-
+diff --git a/util/vfio-helpers.c b/util/vfio-helpers.c
+index 583bdfb36f..ba0ee6e21c 100644
+--- a/util/vfio-helpers.c
++++ b/util/vfio-helpers.c
+@@ -40,6 +40,11 @@ typedef struct {
+     uint64_t iova;
+ } IOVAMapping;
+ 
++struct IOVARange {
++    uint64_t start;
++    uint64_t end;
++};
++
+ struct QEMUVFIOState {
+     QemuMutex lock;
+ 
+@@ -49,6 +54,8 @@ struct QEMUVFIOState {
+     int device;
+     RAMBlockNotifier ram_notifier;
+     struct vfio_region_info config_region_info, bar_region_info[6];
++    struct IOVARange *usable_iova_ranges;
++    uint8_t nb_iova_ranges;
+ 
+     /* These fields are protected by @lock */
+     /* VFIO's IO virtual address space is managed by splitting into a few
+@@ -236,6 +243,35 @@ static int qemu_vfio_pci_write_config(QEMUVFIOState *s, void *buf, int size, int
+     return ret == size ? 0 : -errno;
+ }
+ 
++static void collect_usable_iova_ranges(QEMUVFIOState *s, void *buf)
++{
++    struct vfio_iommu_type1_info *info = (struct vfio_iommu_type1_info *)buf;
++    struct vfio_info_cap_header *cap = (void *)buf + info->cap_offset;
++    struct vfio_iommu_type1_info_cap_iova_range *cap_iova_range;
++    int i;
++
++    while (cap->id != VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE) {
++        if (!cap->next) {
++            return;
++        }
++        cap = (struct vfio_info_cap_header *)(buf + cap->next);
++    }
++
++    cap_iova_range = (struct vfio_iommu_type1_info_cap_iova_range *)cap;
++
++    s->nb_iova_ranges = cap_iova_range->nr_iovas;
++    if (s->nb_iova_ranges > 1) {
++        s->usable_iova_ranges =
++            g_realloc(s->usable_iova_ranges,
++                      s->nb_iova_ranges * sizeof(struct IOVARange));
++    }
++
++    for (i = 0; i < s->nb_iova_ranges; i++) {
++        s->usable_iova_ranges[i].start = cap_iova_range->iova_ranges[i].start;
++        s->usable_iova_ranges[i].end = cap_iova_range->iova_ranges[i].end;
++    }
++}
++
+ static int qemu_vfio_init_pci(QEMUVFIOState *s, const char *device,
+                               Error **errp)
+ {
+@@ -243,10 +279,13 @@ static int qemu_vfio_init_pci(QEMUVFIOState *s, const char *device,
+     int i;
+     uint16_t pci_cmd;
+     struct vfio_group_status group_status = { .argsz = sizeof(group_status) };
+-    struct vfio_iommu_type1_info iommu_info = { .argsz = sizeof(iommu_info) };
++    struct vfio_iommu_type1_info *iommu_info = NULL;
++    size_t iommu_info_size = sizeof(*iommu_info);
+     struct vfio_device_info device_info = { .argsz = sizeof(device_info) };
+     char *group_file = NULL;
+ 
++    s->usable_iova_ranges = NULL;
++
+     /* Create a new container */
+     s->container = open("/dev/vfio/vfio", O_RDWR);
+ 
+@@ -310,13 +349,35 @@ static int qemu_vfio_init_pci(QEMUVFIOState *s, const char *device,
+         goto fail;
+     }
+ 
++    iommu_info = g_malloc0(iommu_info_size);
++    iommu_info->argsz = iommu_info_size;
++
+     /* Get additional IOMMU info */
+-    if (ioctl(s->container, VFIO_IOMMU_GET_INFO, &iommu_info)) {
++    if (ioctl(s->container, VFIO_IOMMU_GET_INFO, iommu_info)) {
+         error_setg_errno(errp, errno, "Failed to get IOMMU info");
+         ret = -errno;
+         goto fail;
+     }
+ 
++    /*
++     * if the kernel does not report usable IOVA regions, choose
++     * the legacy [QEMU_VFIO_IOVA_MIN, QEMU_VFIO_IOVA_MAX -1] region
++     */
++    s->nb_iova_ranges = 1;
++    s->usable_iova_ranges = g_new0(struct IOVARange, 1);
++    s->usable_iova_ranges[0].start = QEMU_VFIO_IOVA_MIN;
++    s->usable_iova_ranges[0].end = QEMU_VFIO_IOVA_MAX - 1;
++
++    if (iommu_info->argsz > iommu_info_size) {
++        iommu_info_size = iommu_info->argsz;
++        iommu_info = g_realloc(iommu_info, iommu_info_size);
++        if (ioctl(s->container, VFIO_IOMMU_GET_INFO, iommu_info)) {
++            ret = -errno;
++            goto fail;
++        }
++        collect_usable_iova_ranges(s, iommu_info);
++    }
++
+     s->device = ioctl(s->group, VFIO_GROUP_GET_DEVICE_FD, device);
+ 
+     if (s->device < 0) {
+@@ -365,8 +426,13 @@ static int qemu_vfio_init_pci(QEMUVFIOState *s, const char *device,
+     if (ret) {
+         goto fail;
+     }
++    g_free(iommu_info);
+     return 0;
+ fail:
++    g_free(s->usable_iova_ranges);
++    s->usable_iova_ranges = NULL;
++    s->nb_iova_ranges = 0;
++    g_free(iommu_info);
+     close(s->group);
+ fail_container:
+     close(s->container);
+@@ -716,6 +782,8 @@ void qemu_vfio_close(QEMUVFIOState *s)
+         qemu_vfio_undo_mapping(s, &s->mappings[i], NULL);
+     }
+     ram_block_notifier_remove(&s->ram_notifier);
++    g_free(s->usable_iova_ranges);
++    s->nb_iova_ranges = 0;
+     qemu_vfio_reset(s);
+     close(s->device);
+     close(s->group);
 -- 
 2.21.3
 

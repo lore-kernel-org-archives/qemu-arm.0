@@ -1,107 +1,177 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp4137584lfb;
-        Tue, 19 May 2020 08:26:03 -0700 (PDT)
-X-Received: by 2002:a63:e60b:: with SMTP id g11mr5477958pgh.120.1589901962864;
-        Tue, 19 May 2020 08:26:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589901962; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4985919lfq;
+        Tue, 29 Sep 2020 15:44:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxL49o9qPAK5JIDbHiRxAvqN/jbwuSm0ehuKjmxuejO3K8ypzBs64I1rIXUJAo3UZNWKtTI
+X-Received: by 2002:a17:906:1157:: with SMTP id i23mr6401961eja.440.1601419443842;
+        Tue, 29 Sep 2020 15:44:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601419443; cv=none;
         d=google.com; s=arc-20160816;
-        b=ndkYKbuE9JUjKyOfJ1x0zcvBj6F5ntsZ2NyphHkbDFlC7vUACsLcmXbgADp5FUp0H/
-         F2P0V0/Sia0NXtW4Qbrdv1kCgd2gUAwkdRb09pbJGWxIV+oBCmEfdd7NX7Qn0O0I8huw
-         iXsRgOWU5QW/ZtulVuhs7cE+CzfSeOBwsYcFN/E25nuyikPj0JioKDBjpxFgwDYCew4t
-         gF1c/xpwR0G4RrVTvjA/b/SS1quhRvPIUPOm6jeKxuS5jIPikwRBs5P+wtNMKZFyN5Ym
-         KvjLmCibAZFCFixdyVMcIgfqA8cx62KYLYR0EaPTUvpox2eR0FkDjC6nuTzByIDkzpcX
-         XcyQ==
+        b=z/kFzVs8Xt+AOSPov5XwqiLvNDvKoXibo3dpWEU02EpyH5RuV5uLSYeG+txxLx4LNw
+         0zYRLnXXO6kbM8+peH9BAT8zjUvUpfVutiH98eLens9ZFVjgRT6HVmvCFkCSOGnaF7a7
+         +gTV6C8ker1biqri6vkZvRDzrFwYMmKt154cEn2sHPLv9PXTgZMp9OKXzJhgql9UIiDz
+         Ci1oXS4Y1pSbzsBeL8BP1ZZB62YdTQbSQnzOnvqoe8WFqmOi8imMBOk8rRGoLfTugPrA
+         XNv/GKw0erNOHo4KMjjerBXTmz4kE6/rlTO5b0s8Z4/XzWLEahzxgEk8WeQ8Uh4fAXrO
+         YX2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:content-language:in-reply-to:mime-version
-         :user-agent:date:message-id:from:references:cc:to:subject
-         :dkim-signature;
-        bh=1yOKRJBrLMOqpYn7HveRFDPZudPhxWBTAMeOFnmFlyE=;
-        b=wSO46AWrF+Av1RMPjRaY0ILg9jH2IdxqAqmzxV9sDAUI4S2q/rHqW1r13OPaDOOJ7C
-         C0UTSMSuia6zuef19KictZPoqKRNtSpoy+E+vzxpdhWkKdDlFP67gt96K0Dq0Heu+X9x
-         UWFo9ZYrNMO4THmYgiPQPfo2BvbfsK1JAts2Y7crNWKkQWYZInAQ9U0s9spJPshrwbaN
-         rY62X1Q06+zpFqUuhbDZmdYDnE0/sVEax7VLx4w3i3qjOLczpx8TV9N1a8mGngVBrPY5
-         WEa5WHlIF2RKEzALv9Qs+V4Y4A0+03WZCuS/K6tR7zAfr3GFyIdiPdtHo7OXW+3sQMvw
-         bxFw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=Sm3Gm34Jjn5EWoNbFg1uRbBUxTP1yXhpa0ydpRV9pWQ=;
+        b=np3cf4ndWDI2umchT33M8GHcrDbKTOhZueKb7ffj54sXmwYav2J6kdvCgGUr38yVVN
+         KY2TLgyH0IblTnfL4ufYqQlPyRZjLkJ/TRfWIByHFBJFLbZFRuFbSgeFOCbDMHaheIHx
+         XMdagEIlC5CAkQyyImjCcco/EAKK+ofJlwLdWF7sv7mlQirI9XyWt+E2T2yaDOgchqPh
+         oRpCtZ57BY6JBBaZvfTrgpNhL+hLavtDqiyCDxdu6gwtc+gFVkWejck+cYwRX9npEyz9
+         enGx3GGxRsLilJx4fCQfYz3rIBOx1+vB0UJnofokGrB01ErIg3AD+Wr71ADQvQiVTxcd
+         j5xA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ULk/fcTB";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id bj8sor4990887plb.68.2020.05.19.08.26.02
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eO3FSZiO;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id jo4si3345034ejb.681.2020.09.29.15.44.03
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 19 May 2020 08:26:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 29 Sep 2020 15:44:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="ULk/fcTB";
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=1yOKRJBrLMOqpYn7HveRFDPZudPhxWBTAMeOFnmFlyE=;
-        b=ULk/fcTBsT81MIJcEJ9Ddzsqsl0UuTpaNk2/bROU1Id7ePFtMU/jfEtl06iDb3dwBS
-         NYPJtSGYwYKK3NUg43rX2YaCMNyGYwrTlYac39EGaCrOvPcClSWKze0X3Ruror6IZplm
-         jFzL9Q1zCZN+G+RWQ50sjwB9BNZj9wQG1CcSAPlIY51My73iHmawhvmqLGLPeWrmKQMY
-         J5MqEGrWQbehDSJo8meD2VpRVair6z6OwaWtW/wcGMu9ZL2p+xKp26olo1hWwg90L6PA
-         ZMZQDrRS8WV/JlwcY2cQoXZGLNpmgstCTR3MCCZgM8j31+/GQiA7MOur2e62LtqXma3o
-         3/Dg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=eO3FSZiO;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1601419442;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=Sm3Gm34Jjn5EWoNbFg1uRbBUxTP1yXhpa0ydpRV9pWQ=;
+	b=eO3FSZiOtZUPxt50ouDu/cjEE4wVOb2qUuRoElSkh8Gydgf7zd/KtPEFBoqAKjNZHbow/8
+	o/AlppNwHMAizPMfEeLuiyg4BGZogdZNCbU0+5BEobssw7Vk0K3sAwYDUZSEaqwW+JKb7v
+	9Bm7UmUBqcxjng4zmcv+0ug441BucMo=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-541-ig4ZiTXaP2e20dO5NoZ5tg-1; Tue, 29 Sep 2020 18:43:59 -0400
+X-MC-Unique: ig4ZiTXaP2e20dO5NoZ5tg-1
+Received: by mail-wm1-f71.google.com with SMTP id y6so195071wmi.7
+        for <alex.bennee@linaro.org>; Tue, 29 Sep 2020 15:43:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
          :content-transfer-encoding;
-        bh=1yOKRJBrLMOqpYn7HveRFDPZudPhxWBTAMeOFnmFlyE=;
-        b=rZBcw3pJnIQ72CVNbhc3Mit3RukW8yEawSBh4ZLgpcveWLS+udLJGDd/+cXrtSUF2L
-         l+T7CglZsPmx6oUAsDdlLq/OzMfWv46GQYh8xl0hum9g3+e1K/ARgg/0ESP+LuzaYvfJ
-         m0+KLTjhRdfiuLnwmW0PrWeM/Jl3fJVlnaKCOmJ8U6o4/rEWJzHc2k+T28Gz1IsA0YS1
-         LD2ZwXtJDkNykUFVQzzNnKqYTvF38bXGajfGS+04Jk0Zs4WX6HtTyuIEdQs3s4Axuyh/
-         5gX7C8Nhesjzv/SeX+oO2qumzNjLKStn5+w/aWqrqgLadqselRHQj8inVv3c4UyX3Vp7
-         9nhA==
-X-Gm-Message-State: AOAM533Llc/YVPsGvmFnfB8cNQ7ViAGc7yVe1Lq+c04f+hxPvvG+WBbw
-	GkW9lnMPx1AGWSZIwyiHbb+Ntl94if6sWg==
-X-Google-Smtp-Source: ABdhPJxO9moHaODU8HfiQSlOLMw7FcQjTDdUHRaJYui5wy6CPhr1zG2fZdZszxSzkeDzxuY/xdYN1g==
-X-Received: by 2002:a17:902:8f8b:: with SMTP id z11mr78549plo.208.1589901962381;
-        Tue, 19 May 2020 08:26:02 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [192.168.1.11] (174-21-143-238.tukw.qwest.net. [174.21.143.238])
-        by smtp.gmail.com with ESMTPSA id r12sm10107011pgv.59.2020.05.19.08.26.00
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 19 May 2020 08:26:01 -0700 (PDT)
-Subject: Re: [PATCH v2] tests/tcg: fix invocation of the memory record/replay
- tests
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-References: <20200518162903.883-1-alex.bennee@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <9c82070d-8024-9d5e-82c9-5c81fa711e20@linaro.org>
-Date: Tue, 19 May 2020 08:25:59 -0700
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+        bh=Sm3Gm34Jjn5EWoNbFg1uRbBUxTP1yXhpa0ydpRV9pWQ=;
+        b=Ho2bPmvveEQ3HFvunbFttt8TLL7120S7k0qI7c1I58v5FdSgC7foRpEiGtb0ryOKPL
+         81e7zDs9PKZvxWsrt2kO/pSKyCN0x4beCnqJQkrDgIFmjOaxjINJTgRK51Aa6ce/hMpt
+         BuWF+grUkSyse0KjXY/z4NkTF2iUf6BgVwkKmP651CD0LB+CBaQh7IT2yhc+x5lzRpRu
+         f9BslZ52P22u+ZgK3+1MZfy8Fl9O/JZTbPdtwYSVxJOcLOs91HRmYGfCu240tT/1cYRB
+         xrAeKlUhF2JwAyqlLawte6wUs/0Wtlr/QPqAm/jygwarC2sjO1a2tNdc5tHKUPx/YPGg
+         6v+A==
+X-Gm-Message-State: AOAM531MkAOp28nYt2BOml6IPREHYWopLQe0V5UbiyJrQIscoP2rARN7
+	yF55zwFDoLr2WRYus4o5NOWeNZ4I/eCCaKCbm0Cw/k3KobuF9ygL+86zXIdpOAwCBFJfE5cZtSg
+	Qa2Owe+azv2bC45tQ
+X-Received: by 2002:a05:600c:2053:: with SMTP id p19mr6799095wmg.50.1601419437870;
+        Tue, 29 Sep 2020 15:43:57 -0700 (PDT)
+X-Received: by 2002:a05:600c:2053:: with SMTP id p19mr6799082wmg.50.1601419437666;
+        Tue, 29 Sep 2020 15:43:57 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from x1w.redhat.com (74.red-83-53-161.dynamicip.rima-tde.net. [83.53.161.74])
+        by smtp.gmail.com with ESMTPSA id t17sm8129443wrx.82.2020.09.29.15.43.56
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Sep 2020 15:43:56 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>,
+	Paolo Bonzini <pbonzini@redhat.com>,
+	Richard Henderson <richard.henderson@linaro.org>,
+	Fam Zheng <fam@euphon.net>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	kvm@vger.kernel.org,
+	=?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	qemu-arm@nongnu.org,
+	Richard Henderson <rth@twiddle.net>,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Subject: [PATCH v4 00/12] Support disabling TCG on ARM (part 2)
+Date: Wed, 30 Sep 2020 00:43:43 +0200
+Message-Id: <20200929224355.1224017-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20200518162903.883-1-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-TUID: fys6OqSwemso
+X-TUID: 5b1Gm4XzQjsn
 
-On 5/18/20 9:29 AM, Alex Bennée wrote:
-> I'm not sure when this broke but we should use EXTRA_RUNS for
-> "virtual" tests which are not generated from the binary names.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> 
-> ---
-> v2
->   - keep the PHONY's for the benefit of output
-> ---
->  tests/tcg/aarch64/Makefile.softmmu-target | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Cover from Samuel Ortiz from (part 1) [1]:
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+  This patchset allows for building and running ARM targets with TCG
+  disabled. [...]
 
+  The rationale behind this work comes from the NEMU project where we're
+  trying to only support x86 and ARM 64-bit architectures, without
+  including the TCG code base. We can only do so if we can build and run
+  ARM binaries with TCG disabled.
 
-r~
+v4 almost 2 years later... [2]:
+- Rebased on Meson
+- Addressed Richard review comments
+- Addressed Claudio review comments
+
+v3 almost 18 months later [3]:
+- Rebased
+- Addressed Thomas review comments
+- Added Travis-CI job to keep building --disable-tcg on ARM
+
+v2 [4]:
+- Addressed review comments from Richard and Thomas from v1 [1]
+
+Regards,
+
+Phil.
+
+[1]: https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html
+[2]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg689168.html
+[3]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg641796.html
+[4]: https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05003.html
+
+Green CI:
+- https://cirrus-ci.com/build/4572961761918976
+- https://gitlab.com/philmd/qemu/-/pipelines/196047779
+- https://travis-ci.org/github/philmd/qemu/builds/731370972
+
+Based-on: <20200929125609.1088330-1-philmd@redhat.com>
+"hw/arm: Restrict APEI tables generation to the 'virt' machine"
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg745792.html
+
+Philippe Mathieu-Daudé (10):
+  accel/tcg: Add stub for cpu_loop_exit()
+  meson: Allow optional target/${ARCH}/Kconfig
+  target/arm: Select SEMIHOSTING if TCG is available
+  target/arm: Restrict ARMv4 cpus to TCG accel
+  target/arm: Restrict ARMv5 cpus to TCG accel
+  target/arm: Restrict ARMv6 cpus to TCG accel
+  target/arm: Restrict ARMv7 R-profile cpus to TCG accel
+  target/arm: Restrict ARMv7 M-profile cpus to TCG accel
+  target/arm: Reorder meson.build rules
+  .travis.yml: Add a KVM-only Aarch64 job
+
+Samuel Ortiz (1):
+  target/arm: Do not build TCG objects when TCG is off
+
+Thomas Huth (1):
+  target/arm: Make m_helper.c optional via CONFIG_ARM_V7M
+
+ default-configs/arm-softmmu.mak |  3 --
+ meson.build                     |  8 +++-
+ target/arm/cpu.h                | 12 ------
+ accel/stubs/tcg-stub.c          |  5 +++
+ target/arm/cpu_tcg.c            |  4 +-
+ target/arm/helper.c             |  7 ----
+ target/arm/m_helper-stub.c      | 73 +++++++++++++++++++++++++++++++++
+ .travis.yml                     | 35 ++++++++++++++++
+ hw/arm/Kconfig                  | 32 +++++++++++++++
+ target/arm/Kconfig              |  4 ++
+ target/arm/meson.build          | 40 +++++++++++-------
+ 11 files changed, 184 insertions(+), 39 deletions(-)
+ create mode 100644 target/arm/m_helper-stub.c
+ create mode 100644 target/arm/Kconfig
+
+-- 
+2.26.2

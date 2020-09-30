@@ -1,164 +1,177 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5289360lfq;
-        Wed, 30 Sep 2020 00:58:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxh+xvjm1GZekSNuZdqLw7GHj6cAMuP+sqffy7/rIjGGQW8eNl9AIAiLDG1K9ZLMNEmxNbi
-X-Received: by 2002:a17:906:d8cd:: with SMTP id re13mr1536035ejb.140.1601452732853;
-        Wed, 30 Sep 2020 00:58:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601452732; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5292374lfq;
+        Wed, 30 Sep 2020 01:03:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw82qSnj/I2DyxwV9ieWKWEOoz+qbJ7DsShwoMgy2fJ8aTueIidfX4JDo5vj9a5fCH6ZBSv
+X-Received: by 2002:a17:906:c8d2:: with SMTP id gc18mr1631625ejb.467.1601452996235;
+        Wed, 30 Sep 2020 01:03:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601452996; cv=none;
         d=google.com; s=arc-20160816;
-        b=rZ213eMgUuMpoiPnfMTlFrOiS3QKzPShd5H0/IQ8y0EFE4UaQuzn+7+/Nu5fDKAxY2
-         uQE/Fxux+P2YSOemRIUcBHFMnR03cKq+OhzWRVmgMOAS91BoJp1s/twlihdo4mzb6dz6
-         6IYNPu413N7rt8+1foKdhDNyzNYJhCAKe52m/PjOTDosLkMV8nVG05Sj61yuYnWJlirG
-         bTqM4zFcmXMuLhr9LA5q2fGRYnSssCMOD+zNv5H8y4VR1LBwpCYacx5/BbK2MqXBVM+1
-         /ElwJKwiYLk7vwW66xq1GAzf2bSiNxM2Se5ZXMbTTCSSbkeoJCptSDuPNC8HLJrFEXgD
-         qF1A==
+        b=VFU1A9K/alugKN1aP0AJkJTZe83kZj10svHeprR69LhO/COWlULzudGS5JKyHozckn
+         WB5ZxRVZqSiF5Ejaf/9lTWzPfiLJTvF2OKhnRTaGmJJTCSyt8B9ySswO8+7pMuhsjjZR
+         v+vGbmkwdnhdQbhN3Q76kRT7L9RlLq0ZmDFhLSWrrq5i44m4GxdplhYc6EDQ5o8sSG8C
+         zUY/L+8aGIZqfvjNPZecz7zoVqTIcHc/Aq2ER9le7dE9KsaSXourZvwONjXWVERpEQon
+         Jxou72+S6nVKXVVAF42gvVS5FKnGyAz0qUewPxDlryNim8RqBySesOEb5baPS7SqYkiZ
+         OzuQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:subject:cc:to:from:date:dkim-signature;
-        bh=9UK1L1ZkImu26Sre+1+L0kxvnt8evmM4tiE1NkrMAeg=;
-        b=DfnXPL4dqHVHuo7lbb4wEF8Tc73BlmRDlgMiOZY68ku4dX10tIRmMwDOYqvRvDPxgp
-         b4NyYDsOU7LyGVP5xosBwKwVDKxTv+3/lhC4tzeYt1Ar4gsYlPMOUGGbRJle0QjhxA+H
-         DhqXCMNdCJEmi4k+X0t/XMByPg+ah7E2+Xac4AyHduv+SA8EZR9mERL958nlGFgYORdt
-         tv6bi+jIluKsHk51kupMTNH3ULrBmeyOwvq/DkrLLfFxfMUWvxA4ga9pS1EIgJUdBTeM
-         ptdJOfVq7lW8qPuqVDAwNNTxP54y6M90gmnLusHPUBp4S3JmC8V6VFeMvlld5c1Tl2MD
-         bH8g==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
+         :dkim-signature;
+        bh=H4BYt/vK5k2En+rBp+T6Wcx0j3U2356tq8o6rj5g7sk=;
+        b=JrBKKbl8puMne2fbQkmSwKi18Qb5XVmuWhgK0BDv016DQhZtBgUUn5d7nAS7UEEXGy
+         Dtc+TNyDN43mS+oEaaIYoPTBdqGIcsG5LQF0k9iuPz/V8ybseYxaWQptlSLm/VaCTIvy
+         D2BatbaP0+i7wlNfMoVD+qg5rbkJMOuZ3EuxlS4RROMCIOvu8NOx7jeZzWSMjl1qrKmU
+         pXlNa5/WwNBogNTJObDxzrCjpX22O5LF0CeKXGqucHVjt6jwheSY5DIUS9o2Ev3+PeNn
+         hmzr/NaE0CoROAgu9ChFQCklonPdQHni9GA8EnuI9bawTlThinIoZjm9OVsA+uJ88nVg
+         VjCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D5dLbpD9;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U9uKzT2G;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <imammedo@redhat.com>
+Return-Path: <philmd@redhat.com>
 Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id e18si535622edv.524.2020.09.30.00.58.52
+        by mx.google.com with ESMTPS id g11si521407eds.232.2020.09.30.01.03.15
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Wed, 30 Sep 2020 00:58:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of imammedo@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Wed, 30 Sep 2020 01:03:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=D5dLbpD9;
-       spf=pass (google.com: domain of imammedo@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=imammedo@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=U9uKzT2G;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1601452731;
+	s=mimecast20190719; t=1601452995;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=9UK1L1ZkImu26Sre+1+L0kxvnt8evmM4tiE1NkrMAeg=;
-	b=D5dLbpD9lY22YccFeDEYuVEJhuNsgTPe7E2jXV/KEnfWRc1CkRnAZdmkaRcdMnlJPdKp5V
-	x7mGFCxX9+KG9EENHKHygLe6jgvZr2geNDKiWjvAuveM00PaakZZo2N8WGWdqt1WdCnk8l
-	xlxGFjNa0kXi3uGu2FJirPIoiwrTZzY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-567-TJ916KJOOwqggiYIDRRdIw-1; Wed, 30 Sep 2020 03:58:46 -0400
-X-MC-Unique: TJ916KJOOwqggiYIDRRdIw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com [10.5.11.16])
-	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
-	(No client certificate requested)
-	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C030E1074652;
-	Wed, 30 Sep 2020 07:58:44 +0000 (UTC)
-Received: from localhost (unknown [10.43.2.114])
-	by smtp.corp.redhat.com (Postfix) with ESMTP id 8DE085C1CF;
-	Wed, 30 Sep 2020 07:58:42 +0000 (UTC)
-Date: Wed, 30 Sep 2020 09:58:41 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Cc: qemu-devel@nongnu.org, Fam Zheng <fam@euphon.net>, Peter Maydell
- <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- kvm@vger.kernel.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Alex
- =?UTF-8?B?QmVubsOpZQ==?= <alex.bennee@linaro.org>, Richard Henderson
- <rth@twiddle.net>
-Subject: Re: [PATCH v4 00/12] Support disabling TCG on ARM (part 2)
-Message-ID: <20200930095841.3df7f8ee@redhat.com>
-In-Reply-To: <20200929224355.1224017-1-philmd@redhat.com>
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=H4BYt/vK5k2En+rBp+T6Wcx0j3U2356tq8o6rj5g7sk=;
+	b=U9uKzT2G/Oitq1KguT58OOjat4IByhl4L9mChzucQYxuegEsVhHNWU0sIrncjIYl/Mm5uv
+	rG6ZcPbqc3yXpg5K2M4pYSH8Mu2+/LN1KQD1aPaOmzvWmm6zd6ChHSJwrxf7E8/uOiCDUj
+	RA/3tE1LwwbtxsdI0tRn79RoEr1FLpw=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-291-oCh5PpWEPxaCXbjlSoTycg-1; Wed, 30 Sep 2020 04:03:13 -0400
+X-MC-Unique: oCh5PpWEPxaCXbjlSoTycg-1
+Received: by mail-wm1-f72.google.com with SMTP id 23so169978wmk.8
+        for <alex.bennee@linaro.org>; Wed, 30 Sep 2020 01:03:13 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=H4BYt/vK5k2En+rBp+T6Wcx0j3U2356tq8o6rj5g7sk=;
+        b=PaizRuPbn0t8srtIgOAP2CXDeuxqqA4VYHtlY/xhqizaVTE4mk2CufJuGfxNzFpnQJ
+         TYQHkfa2Hrc6G7tffrnZcJot164uLOfUmgum5MSkIDdyCkVchbyifT/maR6n6899r/Hn
+         rPt17FA9aQyppwtEbG3kdv1JVMjyTiTEDkI+zgeVTM1DmWkluJTUGxAHkR2DNlaIBBPL
+         2DxaoLkOcf37Sh3nFVlbaouoJUmMuNm6ajkMXdHT0ib8q3Hvi2X7dz9q3sA9iQftiBq6
+         RQ0NJciYvJnouNvKlrIU/UifhLwpolQtah86dv3WzlLfIfCK5HA92uSxqCMAwxf4cs80
+         AFsg==
+X-Gm-Message-State: AOAM532/YZLCx5KyfEJUhTL21aGr2EQipT7goCB7y1GGc1mKAUqYuHmP
+	pQWdOwuioGwl5qgzkmTzJh1ogx8Ss8dJjUEOmEOUieecDk8GcAnxWveE8kO0JZWNMqhxPgap6+/
+	CvdnHFbhTlil6vx6K
+X-Received: by 2002:a1c:7302:: with SMTP id d2mr1636640wmb.133.1601452992065;
+        Wed, 30 Sep 2020 01:03:12 -0700 (PDT)
+X-Received: by 2002:a1c:7302:: with SMTP id d2mr1636624wmb.133.1601452991837;
+        Wed, 30 Sep 2020 01:03:11 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net. [83.53.161.74])
+        by smtp.gmail.com with ESMTPSA id k12sm1444147wrn.39.2020.09.30.01.03.10
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 30 Sep 2020 01:03:11 -0700 (PDT)
+Subject: Re: [PATCH v4 04/12] target/arm: Restrict ARMv4 cpus to TCG accel
+To: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ kvm@vger.kernel.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>
 References: <20200929224355.1224017-1-philmd@redhat.com>
+ <20200929224355.1224017-5-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Autocrypt: addr=philmd@redhat.com; keydata=
+ mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
+ bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
+ GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
+ z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
+ XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
+ CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
+ bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
+ qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
+ MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
+ qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
+ YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
+ CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
+ KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
+ 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
+ JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
+ piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
+ 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
+ gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
+ 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
+ 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
+ RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
+ apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
+Message-ID: <971287b0-fd62-21bb-e80e-8b83c8a5c459@redhat.com>
+Date: Wed, 30 Sep 2020 10:03:10 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-X-TUID: DNrw7lyngtyT
+In-Reply-To: <20200929224355.1224017-5-philmd@redhat.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: 3fNuXnpEZYsw
 
-On Wed, 30 Sep 2020 00:43:43 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On 9/30/20 12:43 AM, Philippe Mathieu-Daudé wrote:
+> KVM requires a cpu based on (at least) the ARMv7 architecture.
+> 
+> Only enable the following ARMv4 CPUs when TCG is available:
+> 
+>   - StrongARM (SA1100/1110)
+>   - OMAP1510 (TI925T)
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  hw/arm/Kconfig | 6 ++++++
+>  1 file changed, 6 insertions(+)
+> 
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index 7d040827af..b546b20654 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -1,3 +1,7 @@
+> +config ARM_V4
+> +    bool
+> +    select TCG
 
-> Cover from Samuel Ortiz from (part 1) [1]:
->=20
->   This patchset allows for building and running ARM targets with TCG
->   disabled. [...]
->=20
->   The rationale behind this work comes from the NEMU project where we're
->   trying to only support x86 and ARM 64-bit architectures, without
->   including the TCG code base. We can only do so if we can build and run
->   ARM binaries with TCG disabled.
+This should be 'depends on TCG' because we can not
+*select* TCG, either we enabled it or not.
 
-I don't recall exact reason but TCG variant is used by bios-tables-test
-to test arm/virt so it will probably break that
-(it has something to do with how KVM uses CPU/GIC, which was making
-ACPI tables not stable (i.e. depend on host), so comparison with master
-tables was failing)
+The problem is the machines are already selected in
+default-configs/arm-softmmu.mak, so we can not build
+the current config without TCG.
 
-
->=20
-> v4 almost 2 years later... [2]:
-> - Rebased on Meson
-> - Addressed Richard review comments
-> - Addressed Claudio review comments
->=20
-> v3 almost 18 months later [3]:
-> - Rebased
-> - Addressed Thomas review comments
-> - Added Travis-CI job to keep building --disable-tcg on ARM
->=20
-> v2 [4]:
-> - Addressed review comments from Richard and Thomas from v1 [1]
->=20
-> Regards,
->=20
-> Phil.
->=20
-> [1]: https://lists.gnu.org/archive/html/qemu-devel/2018-11/msg02451.html
-> [2]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg689168.html
-> [3]: https://www.mail-archive.com/qemu-devel@nongnu.org/msg641796.html
-> [4]: https://lists.gnu.org/archive/html/qemu-devel/2019-08/msg05003.html
->=20
-> Green CI:
-> - https://cirrus-ci.com/build/4572961761918976
-> - https://gitlab.com/philmd/qemu/-/pipelines/196047779
-> - https://travis-ci.org/github/philmd/qemu/builds/731370972
->=20
-> Based-on: <20200929125609.1088330-1-philmd@redhat.com>
-> "hw/arm: Restrict APEI tables generation to the 'virt' machine"
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg745792.html
->=20
-> Philippe Mathieu-Daud=C3=A9 (10):
->   accel/tcg: Add stub for cpu_loop_exit()
->   meson: Allow optional target/${ARCH}/Kconfig
->   target/arm: Select SEMIHOSTING if TCG is available
->   target/arm: Restrict ARMv4 cpus to TCG accel
->   target/arm: Restrict ARMv5 cpus to TCG accel
->   target/arm: Restrict ARMv6 cpus to TCG accel
->   target/arm: Restrict ARMv7 R-profile cpus to TCG accel
->   target/arm: Restrict ARMv7 M-profile cpus to TCG accel
->   target/arm: Reorder meson.build rules
->   .travis.yml: Add a KVM-only Aarch64 job
->=20
-> Samuel Ortiz (1):
->   target/arm: Do not build TCG objects when TCG is off
->=20
-> Thomas Huth (1):
->   target/arm: Make m_helper.c optional via CONFIG_ARM_V7M
->=20
->  default-configs/arm-softmmu.mak |  3 --
->  meson.build                     |  8 +++-
->  target/arm/cpu.h                | 12 ------
->  accel/stubs/tcg-stub.c          |  5 +++
->  target/arm/cpu_tcg.c            |  4 +-
->  target/arm/helper.c             |  7 ----
->  target/arm/m_helper-stub.c      | 73 +++++++++++++++++++++++++++++++++
->  .travis.yml                     | 35 ++++++++++++++++
->  hw/arm/Kconfig                  | 32 +++++++++++++++
->  target/arm/Kconfig              |  4 ++
->  target/arm/meson.build          | 40 +++++++++++-------
->  11 files changed, 184 insertions(+), 39 deletions(-)
->  create mode 100644 target/arm/m_helper-stub.c
->  create mode 100644 target/arm/Kconfig
->=20
+> +
+>  config ARM_VIRT
+>      bool
+>      imply PCI_DEVICES
+> @@ -30,6 +34,7 @@ config ARM_VIRT
+>  
+>  config CHEETAH
+>      bool
+> +    select ARM_V4
+>      select OMAP
+>      select TSC210X
+>  
+> @@ -244,6 +249,7 @@ config COLLIE
+>  
+>  config SX1
+>      bool
+> +    select ARM_V4
+>      select OMAP
+>  
+>  config VERSATILE
+> 

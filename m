@@ -1,139 +1,112 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5389530lfq;
-        Wed, 30 Sep 2020 03:36:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyiV9uOdOjispGyIhUX0a5ustrvzawBCl0tGWN/ek3f6X1MGtsH6g7BNiIDKLW9F4EgHImi
-X-Received: by 2002:a25:37ca:: with SMTP id e193mr2287969yba.263.1601462167411;
-        Wed, 30 Sep 2020 03:36:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601462167; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5398104lfq;
+        Wed, 30 Sep 2020 03:49:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyBaGvDjSE97aPq4CPbu22xnRk6WjTMGIawuvWAPtIO5KmZNxnL/r7sbqQL4vV1mAaeP+vk
+X-Received: by 2002:a25:2506:: with SMTP id l6mr2303919ybl.390.1601462953699;
+        Wed, 30 Sep 2020 03:49:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601462953; cv=none;
         d=google.com; s=arc-20160816;
-        b=XxUTSchecMwboHWj0kpSauy5ud2c0tfk6rXO0BKdJoSbHh0LXlRcympMdeHntRjxrq
-         ciC0jh4g5mQE7ZAbAwHhFqx3uQVQ+SFLEgHD/0pX6Ilad5JMoA/rBTw9HIxuTWLbNqKU
-         KornOwKqBT8r3xioNWephmR1BeIcZP0xERUfLdKDBBdLJrhDpO/iPPsgztNkgBIwSZEG
-         eCzG+wDyTksWU/2Rermk1WUlfbolc47/CHRsEqnkW09hvIhMOFq08ccY1ju5ft20Mqdt
-         Ve7oPecRr6IN7LQUDrhUNufG+1880hjdFqiv8zgpW8PojIj07fAHUWXo0MOUlNV7ZuFf
-         qBGg==
+        b=rOWnRJtbAhhEplSoRvfsAldPxTmCXwC6WH7QacrNhgksV5CFegxKfyzOSRdtyXm/cf
+         RcpUZ1EvqBogzJ4uD9xSjk3SNZ3bnrn3ErGVyamgNmYiS10sBxEh3qyyZWL5ejGL8SpM
+         sd2FNoGreyr7yZ3hij+FEV428VVEElPukgSdX/KlkvXqMOkc/uqV2GgsIkisAYGlYaHV
+         XaI0Fv9jLFcPfOu19zwtIIsS6z3Zz7naeQfjbAfmeVHbVSt1sxOUTwLgJIM5eEDtEirw
+         VYNvWrqfZM5wqtHlbSOh7872oSqmGVTqEbAJoaZgEzUN/sRw/SKm/tKX+Vjf4KlZuYwe
+         /0wQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=XX52Ayxvy1ZDoQcUutDGt9kWwf0Umq3kpQ0xWvoLh90=;
-        b=yAt4UahdLqWFYoLccjLTiMKd5ABqx9oM7PYqZvnv77TYDKawrXThX3GZPpDENlu3+d
-         eRI14/Ph+WySC7Tuug+9CXTBypK2+rv2mO3JG8v9cS4D8PEcgluYuuIOEBC21qlymn1h
-         bpF2PG+/fOjn0uC2h5Jb9Sj+K7bEK9ZX3snDTFLPacrZwS1oKFJ9AU9rRkPYrR1sEL1V
-         Evs+2gG4pwCDaD+SGqbukEK16SBHjmTz+VtuqtQNPa2YZQHK4HmuOsc0B+pyPBIVkAG7
-         /aSrTMEU6WQPcUXGZMTroReD6W/a9pTkxi78nMrgl1bxsqgiVX5OZSrKWKNkKPm0h/+C
-         s2TQ==
+         :content-disposition:in-reply-to:mime-version:references:message-id
+         :subject:to:from:date:dkim-signature;
+        bh=4fZsuNISzwNY/mPJmil+Cj7GKV2Pr2PQSQbMiFFLq+8=;
+        b=JqpObDNq54Gv17kBBlhWCJ4oBdnYaH0P+xqF9v+Wn60ZGH/Eyw1B5w1DYL4CfKjbAo
+         hssyZXToLUDLov5ECZFCiu4GEsbpB7U57b6u6blR3KNeZQcgT2RCUCWTC2BCn4UfSMUN
+         O30e+Ka2iItSpd+SzTV6B90BldFj6fE655hN3IirAO6yQ1NERdZJjbjIV3URlgDhq0Xd
+         TLiNOZwzRMePvgK2pENIR/QenfLJmkOAceoFQ2j30QJ5FglthCnAuLNmvz+qLp7DnjD8
+         S50RFnumGDZvRjmVgTPOZgRfMgNUqu/MvvOG7ekWPdu2/6KTHKfl/aCzMANerE9pevzK
+         SGCw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dK9kCerw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JMj0DDsq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w67si1410981ybw.466.2020.09.30.03.36.07
+        by mx.google.com with ESMTPS id n2si1255132yba.58.2020.09.30.03.49.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Sep 2020 03:36:07 -0700 (PDT)
+        Wed, 30 Sep 2020 03:49:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=dK9kCerw;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=JMj0DDsq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50318 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46518 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNZSw-0007cp-MB
-	for alex.bennee@linaro.org; Wed, 30 Sep 2020 06:36:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49340)
+	id 1kNZfc-0000qo-Q1
+	for alex.bennee@linaro.org; Wed, 30 Sep 2020 06:49:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51296)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNZSk-0007Xz-Ou
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 06:35:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:37697)
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kNZe5-0008Qc-Q2
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2020 06:47:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:30350)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNZSi-0007hT-6p
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 06:35:54 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1kNZe3-00009d-FE
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2020 06:47:37 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601462150;
+ s=mimecast20190719; t=1601462852;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=XX52Ayxvy1ZDoQcUutDGt9kWwf0Umq3kpQ0xWvoLh90=;
- b=dK9kCerwWDFOIqYCd0rGVYW5TVRVFW1pJiWf4nTm38TTcxXp9sXi4P2I1X0Gxh6YiM9BJc
- xs8x/PFLNPBUvcg7PmmqNMUJvjYHPmmMw3SP+OIlypW0rJU9biDkOdpTSaobxVFhjhyha0
- Gpq6OzlkUqqXA8GIpzvHO941THEUooo=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-344-qNV16JLkP1GNUJWEUjzL_w-1; Wed, 30 Sep 2020 06:35:48 -0400
-X-MC-Unique: qNV16JLkP1GNUJWEUjzL_w-1
-Received: by mail-wm1-f72.google.com with SMTP id b14so318248wmj.3
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2020 03:35:48 -0700 (PDT)
+ in-reply-to:in-reply-to:references:references;
+ bh=4fZsuNISzwNY/mPJmil+Cj7GKV2Pr2PQSQbMiFFLq+8=;
+ b=JMj0DDsqJ0Za9SseHrjJ2KTE1jxBr9VA4+yyu1ElJpgr4CJ9N5mfe7p1iPogroR9rGpyVa
+ X7/iJxQlWXk7KjuXQmmqzlnGosswEE3bcAd8BdYfofubQyWS4Oyprrkgxj1n3Pz+AnQAgb
+ rgDG76VjpdSkyaGTDvfZvdQadP1+jvk=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-590-Bwq_Jv9AORCUupKDnseN_Q-1; Wed, 30 Sep 2020 06:47:31 -0400
+X-MC-Unique: Bwq_Jv9AORCUupKDnseN_Q-1
+Received: by mail-wr1-f69.google.com with SMTP id l15so460011wro.10
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2020 03:47:30 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=XX52Ayxvy1ZDoQcUutDGt9kWwf0Umq3kpQ0xWvoLh90=;
- b=dKp6GPMLLkTvhAO7+b4ECcPxwFJCLAoK/15TcekFejM/FlWrWZKNwaSCKJDbqdmMdK
- Yto+7BMVBsuO0nuCUb31mQ017qi0Qf2T+3th3sOkNSMDS/79ki83stUXRMQanJ/3ehCH
- /XHK2DKE5b6i+E0hSjyZnUZzVgYd3ispqu80pdUo2gT1dm8pff4Jc4B5mvx8rHXptRDp
- /djD0KHyqgYCyUg07JNfWcyo9aD6KCyAKRXwgHqwA7GwpzYM6iwNJNwS2VoJ5Qp0z7CQ
- na34jyt6LcUEOOz9eQoMt0FARAcgd3VzV68okyxGIHtmePnJhpZ2rWGIQX+ZZ4AudJTL
- 0Q0Q==
-X-Gm-Message-State: AOAM531QR1NDcoPMWZPfdvSpe8LxS3WoY6AAuCQIksxzpY9lZBMigzuV
- f9/Y2/AWbNizLEif7PM7O2waJqhqvvtGtI+GZKBLLPS/F2mFQauXvIEfO75AGfFCuutpXySiSke
- lN66ZIB5TJM/4
-X-Received: by 2002:a1c:a593:: with SMTP id o141mr2325426wme.88.1601462147494; 
- Wed, 30 Sep 2020 03:35:47 -0700 (PDT)
-X-Received: by 2002:a1c:a593:: with SMTP id o141mr2325402wme.88.1601462147255; 
- Wed, 30 Sep 2020 03:35:47 -0700 (PDT)
-Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id e18sm2134711wrx.50.2020.09.30.03.35.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Sep 2020 03:35:46 -0700 (PDT)
+ h=x-gm-message-state:date:from:to:cc:subject:message-id:references
+ :mime-version:content-disposition:content-transfer-encoding
+ :in-reply-to;
+ bh=bWvN3FA3f4hDob/bobaLcT6CJkbAuluYXFtzV3u1w/0=;
+ b=UZjM5BKj8ByojBTHVBIZfzI3scdEex7LEf1k21cmrkmhHFV0DeO5AuhCQAA6STPpNd
+ k6KD+onIeD6vPgyIiqMYJn3yk9TJbpWbRTFjTL3o6nrklD/ZI94u8+eJmeUFuUd4uUiP
+ oULqHPk0FmTxJ8QvG852Brx2ciF744cog2tPGXEYHqlBerlI0znlVb8ZcDOVtod2CLRH
+ V9N/p/kwpN+eq1qxf9Hf/GecCXyHnFR0sLic+lDGYkh7NlT/LafKpKPcLW8F6BGwkS8h
+ 5qh3UM1vmZdvQWI9uWR+IPuIE9mU77bvBYEEPT7+ROsLH91+uI2JUArj1MSNVc1gyMci
+ e/RQ==
+X-Gm-Message-State: AOAM5323VtSxKAblCXQlqfliNq0QoiFIc6+L2lvXROKR0xLqsoaX5uXU
+ LBgTUgKcHtXm+pCLOacCcI9lSBWpjyfkqSP/AVlsVQ7mKMzmTFvRN6bwDvsYkhM8FJO+cUUxuo7
+ px5zjIRB4fAht
+X-Received: by 2002:adf:f190:: with SMTP id h16mr2456518wro.202.1601462849895; 
+ Wed, 30 Sep 2020 03:47:29 -0700 (PDT)
+X-Received: by 2002:adf:f190:: with SMTP id h16mr2456492wro.202.1601462849642; 
+ Wed, 30 Sep 2020 03:47:29 -0700 (PDT)
+Received: from redhat.com (bzq-79-179-71-128.red.bezeqint.net. [79.179.71.128])
+ by smtp.gmail.com with ESMTPSA id c4sm2195105wrp.85.2020.09.30.03.47.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 30 Sep 2020 03:47:28 -0700 (PDT)
+Date: Wed, 30 Sep 2020 06:47:25 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
 Subject: Re: [PATCH] hw/arm: Restrict APEI tables generation to the 'virt'
  machine
-To: Dongjiu Geng <gengdongjiu@huawei.com>, qemu-devel@nongnu.org
+Message-ID: <20200930064717-mutt-send-email-mst@kernel.org>
 References: <20200929125609.1088330-1-philmd@redhat.com>
- <12be4400-c37f-2b7f-2f15-f8700dad6003@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <056736d8-dc89-a94b-7e76-93825492c957@redhat.com>
-Date: Wed, 30 Sep 2020 12:35:45 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <12be4400-c37f-2b7f-2f15-f8700dad6003@huawei.com>
+In-Reply-To: <20200929125609.1088330-1-philmd@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=mst@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 00:31:59
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -142,9 +115,8 @@ X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -157,70 +129,58 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, Xiang Zheng <zhengxiang9@huawei.com>,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ Dongjiu Geng <gengdongjiu@huawei.com>, Xiang Zheng <zhengxiang9@huawei.com>,
  qemu-arm@nongnu.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 6icAIrahxU7c
+X-TUID: Oeh019jC3uuX
 
-On 9/30/20 7:08 AM, Dongjiu Geng wrote:
-> On 2020/9/29 20:56, Philippe Mathieu-Daudé wrote:
->> As only the Virt machine uses the RAS Virtualization feature (see
->> commit 2afa8c8519: "hw/arm/virt: Introduce a RAS machine option"),
->> restrict the APEI tables generation code to the virt machine.
+On Tue, Sep 29, 2020 at 02:56:09PM +0200, Philippe Mathieu-Daudé wrote:
+> As only the Virt machine uses the RAS Virtualization feature (see
+> commit 2afa8c8519: "hw/arm/virt: Introduce a RAS machine option"),
+> restrict the APEI tables generation code to the virt machine.
 > 
-> APEI is a generic feature for X86 and arm64.  X86 platform also can use it, although currently it was mainly
-> used by ARM64. what is reason that we restrict APEI tables generation to the 'virt' machine?
+> Fixes: aa16508f1d ("ACPI: Build related register address fields via hardware error fw_cfg blob")
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-It is currently only selected on (all) the ARM machines, not the X86
-ones. I am simply restricting it to the 'virt' machine which is the
-single one enabling the RAS. Without RAS the table is not built, so
-for the case of the SBSA-Ref machine this code is unreachable, no need
-to select ACPI_APEI.
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
 
-When a X86 machine configure a RAS it will have to 'select ACPI_APEI'
-to get it built (I'm not forbidding it, I'm restricting it to where
-it is used).
 
+> ---
+> Cc: Laszlo Ersek <lersek@redhat.com>
+> Cc: Xiang Zheng <zhengxiang9@huawei.com>
+> Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Cc: Dongjiu Geng <gengdongjiu@huawei.com>
+> Cc: Michael S. Tsirkin <mst@redhat.com>
+> ---
+>  default-configs/arm-softmmu.mak | 1 -
+>  hw/arm/Kconfig                  | 1 +
+>  2 files changed, 1 insertion(+), 1 deletion(-)
 > 
->>
->> Fixes: aa16508f1d ("ACPI: Build related register address fields via hardware error fw_cfg blob")
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->> ---
->> Cc: Laszlo Ersek <lersek@redhat.com>
->> Cc: Xiang Zheng <zhengxiang9@huawei.com>
->> Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
->> Cc: Igor Mammedov <imammedo@redhat.com>
->> Cc: Dongjiu Geng <gengdongjiu@huawei.com>
->> Cc: Michael S. Tsirkin <mst@redhat.com>
->> ---
->>  default-configs/arm-softmmu.mak | 1 -
->>  hw/arm/Kconfig                  | 1 +
->>  2 files changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
->> index 9a94ebd0be..08a32123b4 100644
->> --- a/default-configs/arm-softmmu.mak
->> +++ b/default-configs/arm-softmmu.mak
->> @@ -43,4 +43,3 @@ CONFIG_FSL_IMX7=y
->>  CONFIG_FSL_IMX6UL=y
->>  CONFIG_SEMIHOSTING=y
->>  CONFIG_ALLWINNER_H3=y
->> -CONFIG_ACPI_APEI=y
->> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->> index f303c6bead..7d040827af 100644
->> --- a/hw/arm/Kconfig
->> +++ b/hw/arm/Kconfig
->> @@ -26,6 +26,7 @@ config ARM_VIRT
->>      select ACPI_MEMORY_HOTPLUG
->>      select ACPI_HW_REDUCED
->>      select ACPI_NVDIMM
->> +    select ACPI_APEI
->>  
->>  config CHEETAH
->>      bool
->>
-> 
+> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
+> index 9a94ebd0be..08a32123b4 100644
+> --- a/default-configs/arm-softmmu.mak
+> +++ b/default-configs/arm-softmmu.mak
+> @@ -43,4 +43,3 @@ CONFIG_FSL_IMX7=y
+>  CONFIG_FSL_IMX6UL=y
+>  CONFIG_SEMIHOSTING=y
+>  CONFIG_ALLWINNER_H3=y
+> -CONFIG_ACPI_APEI=y
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index f303c6bead..7d040827af 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -26,6 +26,7 @@ config ARM_VIRT
+>      select ACPI_MEMORY_HOTPLUG
+>      select ACPI_HW_REDUCED
+>      select ACPI_NVDIMM
+> +    select ACPI_APEI
+>  
+>  config CHEETAH
+>      bool
+> -- 
+> 2.26.2
 

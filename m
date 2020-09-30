@@ -1,252 +1,108 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5386514lfq;
-        Wed, 30 Sep 2020 03:31:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJysmGSeHBltua0CcsKQ69kR1FgaPnazRVBqpkY/hnJtahqXMd8Zdggqkp1KMceaBM40oIN+
-X-Received: by 2002:a25:24ca:: with SMTP id k193mr2378109ybk.77.1601461909548;
-        Wed, 30 Sep 2020 03:31:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601461909; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5489999lfq;
+        Wed, 30 Sep 2020 05:50:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJygw8qMOUEudWFjUAbdo5qv+dE0w73eDVXt/pGUJqr21l2zfM7OqRY4ScE0U2v0jTpD+kRP
+X-Received: by 2002:a5d:5261:: with SMTP id l1mr2945456wrc.193.1601470235788;
+        Wed, 30 Sep 2020 05:50:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601470235; cv=none;
         d=google.com; s=arc-20160816;
-        b=UK1ZYxPNoIKblyw6tw4sNgXs3jjbgPfkek5BLQ7Qt1T7ABoRntjWF87Yd2SYdPnvw1
-         Wb84IYC1WzKtVvueIuLxuX99NuxbR6ta2yAP3DKhBZlhjyQ7qVZEBiz+FyYUZeiaukmH
-         Mdx9MHC9CxUT4ul5Y2nr4UPf6kDtBlqiPoe5kRJPNmPBRaBQ6ZLfaCdONu8oouKj7LHN
-         6aLgHhkurBYyAz1jZ9w+7trMsUJzQCQdOhJq6Li6tJP7glRZZJzWwYbPSYOB4YgaoyUm
-         gVyfsEcAj85HPuYFcOqvZ3F6eBHkp1ItxhDm4PpD2/WYGhJa9bqk25O5rvIYfHK0Nla4
-         0Hvw==
+        b=tO+b9pUZKJlf1T01f8n6E/RqRr12GV1ca9hazh+evwvH8aCfbaNRuWyrNfIYbwJsCP
+         v04divvaOeji8YsAs0GJqi1pO/DYt0zJMCoVDzWBVOcy83b9o5vEMBWizJTYnNqImoJd
+         mHm7Eax2yzQ6k/eVQ3VOKHBP38/IN88b1vaf3eaITZSxx2nakms5WB3ftfIcYJNSNQ0q
+         WjwMAhQHHugZ3gtK5JHdXmFoKl14kZOrxTjVfUgBy29bKi3Vvc0aY2moo7xx6gyT8ZmQ
+         wttWfmqoclxpU83QNccUJ0J2rq+MsPzSNxHE9Y95z35JMCf0Y0/bUypmP6GrDQAmQB3+
+         liKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=mQ4zkt5fbex5IpwN676Z7zynsHhcMMWVl8k6oyU7Mf4=;
-        b=R4Lbc3vY5hq3Lrd6JVtlkR2lAOncUycDVeejD7vZaIiIezLi5HCQnVpkMU7CmjTLX6
-         1cwnpvuzuT3E0v3gr0N+h/0fHpqdf5akwANEd7S66COD2Z/XM/zXfUMWT2/gxyzQp8Qp
-         dK+ZBxa7VmxAdYfi01+igFI4IvkWAOReFfL29VPGSVW9msYafF0u35JmXplqnrvPWsib
-         dskbbCCFuWUk5ClndtOmFmWpdt3svW4lqfTEDAjp+ZzI14bg0poRucAqlrJuoxWORfFT
-         RacLMt8azzAzQLIPYK/hlyGZBLBiQO+ZjtrLbW8lR50QZCAvh2uZ5DFnv+dhhqkl/p3P
-         ci4w==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject;
+        bh=F9gcnRDLE89CjtY84guRHWpQh+L+GwxyRN6AlmhRgLU=;
+        b=tKjyvuYvETy9HDolyOiFMIYWMjd0eRBN4c1Ha1SWabXJUfoSR8OVwz1sjwIHB9TFC+
+         HjGOju7XUED2Cj/ihcFEGWXUOZOa6LRLOcPSSt0PXygvritTsKvYmV2/0f7Z8qnppxr3
+         /Kxr49YA3tecueGqsRmny0NJlWvWTdYSHqwq4HKW/zCtS7EiGIg0cQ0MsHzYD34TxF6p
+         E6UZffVFacl15S3GD54UGKMFgFwDULSCXEFgmr0Xmz2jNFZ9fVP07e9j0hiz/l4l/ScX
+         Qfrp4dBGRcbLtA/Dr6iM6CkLelDPGGphSTA725bUD+weCc86UjV268YPQOCheeY4AHrO
+         ovwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aMzBnYCI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n71si1428195ybf.395.2020.09.30.03.31.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Sep 2020 03:31:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
+Return-Path: <cfontana@suse.de>
+Received: from mx2.suse.de (mx2.suse.de. [195.135.220.15])
+        by mx.google.com with ESMTPS id y8si1649018wmj.102.2020.09.30.05.50.35
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Wed, 30 Sep 2020 05:50:35 -0700 (PDT)
+Received-SPF: pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) client-ip=195.135.220.15;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=aMzBnYCI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38084 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNZOm-0002i2-RF
-	for alex.bennee@linaro.org; Wed, 30 Sep 2020 06:31:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44986)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kNZAS-0007Ot-DE; Wed, 30 Sep 2020 06:17:03 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:36048)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kNZAQ-0006JX-O6; Wed, 30 Sep 2020 06:17:00 -0400
-Received: by mail-wr1-x444.google.com with SMTP id z1so1149112wrt.3;
- Wed, 30 Sep 2020 03:16:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=mQ4zkt5fbex5IpwN676Z7zynsHhcMMWVl8k6oyU7Mf4=;
- b=aMzBnYCIAkKV3MrvK/o0b1M87OI2b16xb7NiTlHgWwyaZj/WwNstzBuilgZUf4Z+wC
- SsnjbFA3I05HVCBecsbNLyPI0GId0A2tLLVaUuDjkA/mtI2Eu0ySpRTOq96egeQgV9Ux
- 2X+tnsTU+VmixWxrHbbbiA5bXcV6z1o1s5rA03dmB/a0MAmKA9f5ixINaUCpJFmgDPda
- 73AF00t6HWFQ23MhxqrcZXBBVQ9e7x05RN5fqnk8eTfMMBezyW7kNq993oZwL9I6Go98
- mxnc0x1g0lyhOzyn1qlHziEo9t/Redg++QIzuEMscCt94s8sQLiaIElvXDTiq2qt/3Xe
- HWQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=mQ4zkt5fbex5IpwN676Z7zynsHhcMMWVl8k6oyU7Mf4=;
- b=CdtlYkwksyk3xpMdKqH+i1Fjx3Yj71ot8pv9FLBBRW/7p8ojiXiaPW+KWdI5s32fpg
- ypwldU50g0Wp3mkvAXb+n5PUG6rxcvT1AeYXIiawuriMUhIC69osuAZ90dEKA/0/Oh2M
- Bi44I9PVxVZh5aHXYHCvT9h6WW6ORtfNg6jNrq9K8CyCvsp1N32UyE4hrrt/3PzkHugI
- FCQZS/aqL6FbtnekMxTEmP9vSUaImw9OPsGjeJdp70lwqLi7DCjhzvMdbMl2HWnclAF4
- D9dILrpgKbXa1WqGjmkSgVhelszja1hTAfVawSf+y3SFeOMtNPgD8LUZDhkrmkXWmxza
- 6LeQ==
-X-Gm-Message-State: AOAM533iD0CJtdx+ax+3qCNIGRmqnHZazfa8Vf4Kq2pG5YkG24z8jnkZ
- oPG6K1lvLmgaSNPuOuOxHHjgzn5fGDQ=
-X-Received: by 2002:adf:ab54:: with SMTP id r20mr2278116wrc.293.1601461015844; 
- Wed, 30 Sep 2020 03:16:55 -0700 (PDT)
-Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id i14sm2016572wml.24.2020.09.30.03.16.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Sep 2020 03:16:55 -0700 (PDT)
-Subject: Re: [PATCH 01/16] hw/core/cpu: Let CPU object have a clock source
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20200928171539.788309-1-f4bug@amsat.org>
- <20200928171539.788309-2-f4bug@amsat.org>
- <20200930094313.1120a040@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <da7248f7-5098-188b-d274-e122c87bb498@amsat.org>
-Date: Wed, 30 Sep 2020 12:16:53 +0200
+       spf=pass (google.com: domain of cfontana@suse.de designates 195.135.220.15 as permitted sender) smtp.mailfrom=cfontana@suse.de
+X-Virus-Scanned: by amavisd-new at test-mx.suse.de
+Received: from relay2.suse.de (unknown [195.135.221.27])
+	by mx2.suse.de (Postfix) with ESMTP id 29CA0AF26;
+	Wed, 30 Sep 2020 12:50:35 +0000 (UTC)
+Subject: Re: [PATCH v4 02/12] meson: Allow optional target/${ARCH}/Kconfig
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, Fam Zheng
+ <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ kvm@vger.kernel.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>
+References: <20200929224355.1224017-1-philmd@redhat.com>
+ <20200929224355.1224017-3-philmd@redhat.com>
+From: Claudio Fontana <cfontana@suse.de>
+Message-ID: <19b1318a-f9be-5808-760b-ba7748d48267@suse.de>
+Date: Wed, 30 Sep 2020 14:50:33 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200930094313.1120a040@redhat.com>
+In-Reply-To: <20200929224355.1224017-3-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.199, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Huacai Chen <zltjiangshi@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Paul Burton <paulburton@kernel.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, qemu-devel@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Cleber Rosa <crosa@redhat.com>, Huacai Chen <chenhc@lemote.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +Bs7sCZCwskA
+X-TUID: aDrsWLXY5+wC
 
-+arm/ppc/riscv folks
-
-On 9/30/20 9:43 AM, Igor Mammedov wrote:
-> On Mon, 28 Sep 2020 19:15:24 +0200
-> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+On 9/30/20 12:43 AM, Philippe Mathieu-Daudé wrote:
+> Extend the generic Meson script to pass optional target Kconfig
+> file to the minikconf script.
 > 
->> Let CPUState have a clock source (named 'clk') and CPUClass
->> have a clock_update() callback. The clock can be optionally
->> set Using qdev_connect_clock_in() from the Clock API.
->> If the clock changes, the optional clock_update() will be
->> called.
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> We could use fs.exists() but is_file() is more specific
+> (can not be a directory).
 > 
-> the sole user of it is mips cpu, so question is why
-> you are making it part of generic CPUm instead of
-> MIPSCPUClass/MIPSCPU?
-
-This is a feature of the CPU, regardless its architecture.
-
-I expect the other archs to start using it soon.
-
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Claudio Fontana <cfontana@suse.de>
+> ---
+>  meson.build | 8 +++++++-
+>  1 file changed, 7 insertions(+), 1 deletion(-)
 > 
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>  include/hw/core/cpu.h |  5 +++++
->>  hw/core/cpu.c         | 12 ++++++++++++
->>  2 files changed, 17 insertions(+)
->>
->> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
->> index 6c34798c8b3..6989d90c193 100644
->> --- a/include/hw/core/cpu.h
->> +++ b/include/hw/core/cpu.h
->> @@ -31,6 +31,7 @@
->>  #include "qemu/thread.h"
->>  #include "qemu/plugin.h"
->>  #include "qom/object.h"
->> +#include "hw/clock.h"
->>  
->>  typedef int (*WriteCoreDumpFunction)(const void *buf, size_t size,
->>                                       void *opaque);
->> @@ -155,6 +156,7 @@ struct TranslationBlock;
->>   * @disas_set_info: Setup architecture specific components of disassembly info
->>   * @adjust_watchpoint_address: Perform a target-specific adjustment to an
->>   * address before attempting to match it against watchpoints.
->> + * @clock_update: Callback for input clock changes
->>   *
->>   * Represents a CPU family or model.
->>   */
->> @@ -176,6 +178,7 @@ struct CPUClass {
->>                                    unsigned size, MMUAccessType access_type,
->>                                    int mmu_idx, MemTxAttrs attrs,
->>                                    MemTxResult response, uintptr_t retaddr);
->> +    void (*clock_update)(CPUState *cpu);
->>      bool (*virtio_is_big_endian)(CPUState *cpu);
->>      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
->>                             uint8_t *buf, int len, bool is_write);
->> @@ -316,6 +319,7 @@ struct qemu_work_item;
->>   *   QOM parent.
->>   * @nr_cores: Number of cores within this CPU package.
->>   * @nr_threads: Number of threads within this CPU.
->> + * @clock: this CPU source clock (an output clock of another device)
->>   * @running: #true if CPU is currently running (lockless).
->>   * @has_waiter: #true if a CPU is currently waiting for the cpu_exec_end;
->>   * valid under cpu_list_lock.
->> @@ -400,6 +404,7 @@ struct CPUState {
->>      int num_ases;
->>      AddressSpace *as;
->>      MemoryRegion *memory;
->> +    Clock *clock;
->>  
->>      void *env_ptr; /* CPUArchState */
->>      IcountDecr *icount_decr_ptr;
->> diff --git a/hw/core/cpu.c b/hw/core/cpu.c
->> index c55c09f734c..37fcff3ec64 100644
->> --- a/hw/core/cpu.c
->> +++ b/hw/core/cpu.c
->> @@ -30,6 +30,7 @@
->>  #include "qemu/qemu-print.h"
->>  #include "sysemu/tcg.h"
->>  #include "hw/boards.h"
->> +#include "hw/qdev-clock.h"
->>  #include "hw/qdev-properties.h"
->>  #include "trace/trace-root.h"
->>  #include "qemu/plugin.h"
->> @@ -247,6 +248,16 @@ void cpu_reset(CPUState *cpu)
->>      trace_guest_cpu_reset(cpu);
->>  }
->>  
->> +static void cpu_clk_update(void *opaque)
->> +{
->> +    CPUState *cpu = opaque;
->> +    CPUClass *cc = CPU_GET_CLASS(cpu);
->> +
->> +    if (cc->clock_update) {
->> +        cc->clock_update(cpu);
->> +    }
->> +}
->> +
->>  static void cpu_common_reset(DeviceState *dev)
->>  {
->>      CPUState *cpu = CPU(dev);
->> @@ -367,6 +378,7 @@ static void cpu_common_initfn(Object *obj)
->>      /* the default value is changed by qemu_init_vcpu() for softmmu */
->>      cpu->nr_cores = 1;
->>      cpu->nr_threads = 1;
->> +    cpu->clock = qdev_init_clock_in(DEVICE(obj), "clk", cpu_clk_update, cpu);
->>  
->>      qemu_mutex_init(&cpu->work_mutex);
->>      QSIMPLEQ_INIT(&cpu->work_list);
+> diff --git a/meson.build b/meson.build
+> index d36dd085b5..9ab5d514d7 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -529,6 +529,7 @@ kconfig_external_symbols = [
+>  ]
+>  ignored = ['TARGET_XML_FILES', 'TARGET_ABI_DIR', 'TARGET_DIRS']
+>  
+> +fs = import('fs')
+>  foreach target : target_dirs
+>    config_target = keyval.load(meson.current_build_dir() / target / 'config-target.mak')
+>  
+> @@ -569,8 +570,13 @@ foreach target : target_dirs
+>      endforeach
+>  
+>      config_devices_mak = target + '-config-devices.mak'
+> +    target_kconfig = 'target' / config_target['TARGET_BASE_ARCH'] / 'Kconfig'
+> +    minikconf_input = ['default-configs' / target + '.mak', 'Kconfig']
+> +    if fs.is_file(target_kconfig)
+> +      minikconf_input += [target_kconfig]
+> +    endif
+>      config_devices_mak = configure_file(
+> -      input: ['default-configs' / target + '.mak', 'Kconfig'],
+> +      input: minikconf_input,
+>        output: config_devices_mak,
+>        depfile: config_devices_mak + '.d',
+>        capture: true,
 > 
+
+I can't say I understand it, but the general idea seems right to me.
+
+Ciao,
+
+Claudio

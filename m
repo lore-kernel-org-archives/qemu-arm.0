@@ -1,100 +1,100 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5740597lfq;
-        Wed, 30 Sep 2020 10:50:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxyoZkL2bEyuJaWV5iJ91vVrUGLOxBbve5aU7hYIl6PVDqaGHXzGZGIdl22OQU2UElhfMOl
-X-Received: by 2002:a25:2393:: with SMTP id j141mr5096152ybj.462.1601488228601;
-        Wed, 30 Sep 2020 10:50:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601488228; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5740726lfq;
+        Wed, 30 Sep 2020 10:50:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzoqr96ie0v2EEF8VXEm/0t5M3SCXFlYCiiUf/2iIrenJEgUW1HvngpaXu9stzegZzaOkJB
+X-Received: by 2002:a25:c014:: with SMTP id c20mr5173669ybf.277.1601488239272;
+        Wed, 30 Sep 2020 10:50:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601488239; cv=none;
         d=google.com; s=arc-20160816;
-        b=lpXd9/m5OqcilDY4BR4u46gBs1mSGAdbnhv80gXuQcTKAq3QFonm0TJNMsJeDROaKl
-         zR/f50aS6H0RNCc46T71es+B61og66RZkZ3JaJFCbFZ6cJpEpMhvIzkKmKl50+GhyIl4
-         Cl5JkhZ7b4xl0/gAeAnRi5XcghfgmtCnZ2gXkxlCXz0wHjkxHOFKqLdKRBlV88Ig2AWx
-         V3unls669RzVngf/01vnV9leEJ7chONEnZgYTP4tYac1AG5N/croDiUucN5KuLZSMgQ0
-         SBCm3ZhtzVfOecQEKUv+xmAGS/jf7E9B5euLuaBrYbakHW8Wh5hWV0WXAPip7LLYzlXd
-         eSZw==
+        b=PQyz6sk22IQK0VkGxTle9NZIMEoE+i1SNza3EP2vKiBorULiNreGU4xiFcGxxibhAS
+         jzOEn9MWn4qXMHPfiY+zH7UN81PJVHkNkj3bBLxglD51T86cB52dP6SwHVnBfgOs/hpI
+         +W1+ikoaMKV/gxNQjgZqmaqEHaYUlfwWWXCJWgJUjLAPOgiOI65KhE4rlhRcVoaWyTg5
+         /XRNmHOxh/CMJPEujD1jehnGRtUkiEjZZR2YZoY7Mj6HI5Tcp5nEtgFveSLdbLzw/Bwe
+         QqaHgA/rTdRBJSiukQXTSKECvgHgfRez2BaHG0JEZErgq2QqUkd1JoNXCSTEgU6OR/Zm
+         QTLA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=z9xOuwCEJYSFj7tax+KvuYSl7yT6OpvutN8mRH/aYQQ=;
-        b=amkhFkzdkqLGr9BjZJoeDncupJp5g9tuIA/8uuyjHoia1aJioJyp6HGSqZOpL/70kq
-         H6hym/3UNyABlvF1yNrcLk9ZHD4dwaADZMOVB1sMDugKzW/jcR15rYUgKzNBQ8tC1Bk7
-         PsD8tfpEd3DdWt3SORSY/lIj0B9AIDtZrsesiu9WlhAFvMm8D+IibAgTz/aR6JmoE0oC
-         yRTfxx/77fAdGZY2CeM3vXqucINi8Aq8UXubxr26SRuw8aGcwhEb4o33rGeo/p3N9GgE
-         7ojInjD43nlPEwRzVoG03Ltp5heoBjA7NVPnvhg2L8sQeI8IsYZn2rifolbo52vKdTrc
-         KaaA==
+        bh=cnEvm2YGufL/LGTxpb1iYvXccIx4fAshtwx4WeM3AM0=;
+        b=CnQZQfb1GOylJHiKuHsQq1pQqJMpnlUwysDA7D9vFDRGSbq5ZGQvo+RPv2j9tWPulH
+         ABMW7YPTPuJrHTQXf99/NOZ9MpIGS5gppn1QuzxSsFXNg0Z5ZLXB4d7i2yDlwfCiqMah
+         PLmL/xeynOqB/QT7b6+Rj3uOtRQnU2uczOLHG5VZCIyqLa8trypXINu0dr8BU/dBNFy+
+         bS04guhRy4leYzorF1OWURwx/jdpX4MUN40Rz1FDMlXcFeVqCGpxVqz4wXlxOlOaVq+5
+         mns96VT8/UtnVRhkdddTRc7hePUfPOMnxueL+woCbkIbIC/BVybw/D2m4XizgVWIje54
+         bmwg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eKWqTzGe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="aPAiFb/z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x134si2530345ybe.297.2020.09.30.10.50.28
+        by mx.google.com with ESMTPS id c15si2440003ybj.44.2020.09.30.10.50.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Sep 2020 10:50:28 -0700 (PDT)
+        Wed, 30 Sep 2020 10:50:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eKWqTzGe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="aPAiFb/z";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:36922 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37982 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNgFH-0005zm-T8
-	for alex.bennee@linaro.org; Wed, 30 Sep 2020 13:50:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55228)
+	id 1kNgFS-0006TV-Ja
+	for alex.bennee@linaro.org; Wed, 30 Sep 2020 13:50:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55270)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgE2-00054P-QG
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 13:49:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:49513)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgE7-00057r-Gs
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2020 13:49:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:44171)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgE0-0004hf-Uu
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 13:49:10 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgE5-0004i5-V6
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2020 13:49:15 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601488148;
+ s=mimecast20190719; t=1601488153;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=z9xOuwCEJYSFj7tax+KvuYSl7yT6OpvutN8mRH/aYQQ=;
- b=eKWqTzGevCFoX4TRbq08AThloltHcpiNX9fszj7v8RV9ipsEITylJ1fDdth9413oq9anWU
- cFKepY03iTpGaeb04MRTuTsbKnk075lMs3D+XqwcF/31D7RNbk58JxSxLt3/ewSC/lYw0G
- NSUz5H+bAiq8eWK84q0s/+BeZ7QCgQU=
+ bh=cnEvm2YGufL/LGTxpb1iYvXccIx4fAshtwx4WeM3AM0=;
+ b=aPAiFb/zp0Fxf+Bc1vbR64Cm8Z1x5g7k/TYLuUhkQImfIvhb2iWiPS6Io4nwI39nwcXVYc
+ SgWwmm5dCalpzz8zLrVoEI7kqkMCTRcKi8ToeWBzotUVEGj8umWDZ0Wi61woVl9HOFdC0f
+ 2QGJsSmbwGcj8uxUSy49JWKvWv16AIg=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-152-M4-ZV1AEPjC8NQlVV4Uq7Q-1; Wed, 30 Sep 2020 13:49:02 -0400
-X-MC-Unique: M4-ZV1AEPjC8NQlVV4Uq7Q-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-545-ppq9LB9RNWqsiZMROomY2Q-1; Wed, 30 Sep 2020 13:49:10 -0400
+X-MC-Unique: ppq9LB9RNWqsiZMROomY2Q-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
+ [10.5.11.14])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BECF78018A4;
- Wed, 30 Sep 2020 17:49:00 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7666D80F058;
+ Wed, 30 Sep 2020 17:49:08 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
  [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 2CB3A5C1D0;
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 0E5F55D9DC;
  Wed, 30 Sep 2020 17:48:57 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 2786243BFB6; Wed, 30 Sep 2020 19:48:56 +0200 (CEST)
+ id 1178443BFB4; Wed, 30 Sep 2020 19:48:56 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 03/12] arm: use acpi_dsdt_add_gpex
-Date: Wed, 30 Sep 2020 19:48:46 +0200
-Message-Id: <20200930174856.11296-4-kraxel@redhat.com>
+Subject: [PULL 01/12] move MemMapEntry
+Date: Wed, 30 Sep 2020 19:48:44 +0200
+Message-Id: <20200930174856.11296-2-kraxel@redhat.com>
 In-Reply-To: <20200930174856.11296-1-kraxel@redhat.com>
 References: <20200930174856.11296-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 00:31:59
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 00:26:33
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -25
 X-Spam_score: -2.6
@@ -126,215 +126,66 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Leif Lindholm <leif@nuviainc.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: gRdrlym0i+r0
+X-TUID: DYZQdJ3O2gmH
 
-Fill gpex config struct from memory map, then call the new
-acpi_dsdt_add_gpex helper function.  No functional change.
+It is defined twice already.  Move to a common header file to
+remove duplication and make it available to everybody.
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-id: 20200928104256.9241-4-kraxel@redhat.com
+Message-id: 20200928104256.9241-2-kraxel@redhat.com
 ---
- hw/arm/virt-acpi-build.c | 175 ++-------------------------------------
- 1 file changed, 9 insertions(+), 166 deletions(-)
+ include/exec/hwaddr.h | 5 +++++
+ include/hw/arm/virt.h | 5 -----
+ hw/arm/sbsa-ref.c     | 5 -----
+ 3 files changed, 5 insertions(+), 10 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6bff5e373872..9747a6458f0b 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -44,6 +44,7 @@
- #include "hw/acpi/tpm.h"
- #include "hw/pci/pcie_host.h"
- #include "hw/pci/pci.h"
-+#include "hw/pci-host/gpex.h"
- #include "hw/arm/virt.h"
- #include "hw/mem/nvdimm.h"
- #include "hw/platform-bus.h"
-@@ -155,176 +156,18 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
-                               uint32_t irq, bool use_highmem, bool highmem_ecam)
- {
-     int ecam_id = VIRT_ECAM_ID(highmem_ecam);
--    Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
--    int i, slot_no;
--    hwaddr base_mmio = memmap[VIRT_PCIE_MMIO].base;
--    hwaddr size_mmio = memmap[VIRT_PCIE_MMIO].size;
--    hwaddr base_pio = memmap[VIRT_PCIE_PIO].base;
--    hwaddr size_pio = memmap[VIRT_PCIE_PIO].size;
--    hwaddr base_ecam = memmap[ecam_id].base;
--    hwaddr size_ecam = memmap[ecam_id].size;
--    int nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
--
--    Aml *dev = aml_device("%s", "PCI0");
--    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A08")));
--    aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
--    aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
--    aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
--    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
--    aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Device")));
--    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
--
--    /* Declare the PCI Routing Table. */
--    Aml *rt_pkg = aml_varpackage(PCI_SLOT_MAX * PCI_NUM_PINS);
--    for (slot_no = 0; slot_no < PCI_SLOT_MAX; slot_no++) {
--        for (i = 0; i < PCI_NUM_PINS; i++) {
--            int gsi = (i + slot_no) % PCI_NUM_PINS;
--            Aml *pkg = aml_package(4);
--            aml_append(pkg, aml_int((slot_no << 16) | 0xFFFF));
--            aml_append(pkg, aml_int(i));
--            aml_append(pkg, aml_name("GSI%d", gsi));
--            aml_append(pkg, aml_int(0));
--            aml_append(rt_pkg, pkg);
--        }
--    }
--    aml_append(dev, aml_name_decl("_PRT", rt_pkg));
--
--    /* Create GSI link device */
--    for (i = 0; i < PCI_NUM_PINS; i++) {
--        uint32_t irqs =  irq + i;
--        Aml *dev_gsi = aml_device("GSI%d", i);
--        aml_append(dev_gsi, aml_name_decl("_HID", aml_string("PNP0C0F")));
--        aml_append(dev_gsi, aml_name_decl("_UID", aml_int(i)));
--        crs = aml_resource_template();
--        aml_append(crs,
--                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                                 AML_EXCLUSIVE, &irqs, 1));
--        aml_append(dev_gsi, aml_name_decl("_PRS", crs));
--        crs = aml_resource_template();
--        aml_append(crs,
--                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
--                                 AML_EXCLUSIVE, &irqs, 1));
--        aml_append(dev_gsi, aml_name_decl("_CRS", crs));
--        method = aml_method("_SRS", 1, AML_NOTSERIALIZED);
--        aml_append(dev_gsi, method);
--        aml_append(dev, dev_gsi);
--    }
--
--    method = aml_method("_CBA", 0, AML_NOTSERIALIZED);
--    aml_append(method, aml_return(aml_int(base_ecam)));
--    aml_append(dev, method);
--
--    method = aml_method("_CRS", 0, AML_NOTSERIALIZED);
--    Aml *rbuf = aml_resource_template();
--    aml_append(rbuf,
--        aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
--                            0x0000, 0x0000, nr_pcie_buses - 1, 0x0000,
--                            nr_pcie_buses));
--    aml_append(rbuf,
--        aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
--                         AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000, base_mmio,
--                         base_mmio + size_mmio - 1, 0x0000, size_mmio));
--    aml_append(rbuf,
--        aml_dword_io(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
--                     AML_ENTIRE_RANGE, 0x0000, 0x0000, size_pio - 1, base_pio,
--                     size_pio));
-+    struct GPEXConfig cfg = {
-+        .mmio32 = memmap[VIRT_PCIE_MMIO],
-+        .pio    = memmap[VIRT_PCIE_PIO],
-+        .ecam   = memmap[ecam_id],
-+        .irq    = irq,
-+    };
+diff --git a/include/exec/hwaddr.h b/include/exec/hwaddr.h
+index a71c93cc810a..8f16d179a885 100644
+--- a/include/exec/hwaddr.h
++++ b/include/exec/hwaddr.h
+@@ -18,4 +18,9 @@ typedef uint64_t hwaddr;
+ #define HWADDR_PRIx PRIx64
+ #define HWADDR_PRIX PRIX64
  
-     if (use_highmem) {
--        hwaddr base_mmio_high = memmap[VIRT_HIGH_PCIE_MMIO].base;
--        hwaddr size_mmio_high = memmap[VIRT_HIGH_PCIE_MMIO].size;
--
--        aml_append(rbuf,
--            aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
--                             AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
--                             base_mmio_high,
--                             base_mmio_high + size_mmio_high - 1, 0x0000,
--                             size_mmio_high));
-+        cfg.mmio64 = memmap[VIRT_HIGH_PCIE_MMIO];
-     }
++typedef struct MemMapEntry {
++    hwaddr base;
++    hwaddr size;
++} MemMapEntry;
++
+ #endif
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index d018a4f29788..655b895d5eba 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -111,11 +111,6 @@ typedef enum VirtGICType {
+     VIRT_GIC_VERSION_NOSEL,
+ } VirtGICType;
  
--    aml_append(method, aml_return(rbuf));
--    aml_append(dev, method);
+-typedef struct MemMapEntry {
+-    hwaddr base;
+-    hwaddr size;
+-} MemMapEntry;
 -
--    /* Declare an _OSC (OS Control Handoff) method */
--    aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
--    aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
--    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
--    aml_append(method,
--        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
--
--    /* PCI Firmware Specification 3.0
--     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
--     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
--     * identified by the Universal Unique IDentifier (UUID)
--     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
--     */
--    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
--    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
--    aml_append(ifctx,
--        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
--    aml_append(ifctx,
--        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
--    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
--    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
--
--    /*
--     * Allow OS control for all 5 features:
--     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
--     */
--    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
--                              aml_name("CTRL")));
--
--    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
--    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
--                              aml_name("CDW1")));
--    aml_append(ifctx, ifctx1);
--
--    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
--    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
--                              aml_name("CDW1")));
--    aml_append(ifctx, ifctx1);
--
--    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
--    aml_append(ifctx, aml_return(aml_arg(3)));
--    aml_append(method, ifctx);
--
--    elsectx = aml_else();
--    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
--                               aml_name("CDW1")));
--    aml_append(elsectx, aml_return(aml_arg(3)));
--    aml_append(method, elsectx);
--    aml_append(dev, method);
--
--    method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
--
--    /* PCI Firmware Specification 3.0
--     * 4.6.1. _DSM for PCI Express Slot Information
--     * The UUID in _DSM in this context is
--     * {E5C937D0-3553-4D7A-9117-EA4D19C3434D}
--     */
--    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
--    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
--    ifctx1 = aml_if(aml_equal(aml_arg(2), aml_int(0)));
--    uint8_t byte_list[1] = {1};
--    buf = aml_buffer(1, byte_list);
--    aml_append(ifctx1, aml_return(buf));
--    aml_append(ifctx, ifctx1);
--    aml_append(method, ifctx);
--
--    byte_list[0] = 0;
--    buf = aml_buffer(1, byte_list);
--    aml_append(method, aml_return(buf));
--    aml_append(dev, method);
--
--    Aml *dev_res0 = aml_device("%s", "RES0");
--    aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
--    crs = aml_resource_template();
--    aml_append(crs,
--        aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
--                         AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000, base_ecam,
--                         base_ecam + size_ecam - 1, 0x0000, size_ecam));
--    aml_append(dev_res0, aml_name_decl("_CRS", crs));
--    aml_append(dev, dev_res0);
--    aml_append(scope, dev);
-+    acpi_dsdt_add_gpex(scope, &cfg);
- }
+ struct VirtMachineClass {
+     MachineClass parent;
+     bool disallow_affinity_adjustment;
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 257ada942550..9c3a893bedfd 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -80,11 +80,6 @@ enum {
+     SBSA_EHCI,
+ };
  
- static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+-typedef struct MemMapEntry {
+-    hwaddr base;
+-    hwaddr size;
+-} MemMapEntry;
+-
+ struct SBSAMachineState {
+     MachineState parent;
+     struct arm_boot_info bootinfo;
 -- 
 2.27.0
 

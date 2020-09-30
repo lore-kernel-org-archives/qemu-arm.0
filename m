@@ -1,142 +1,98 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5668798lfq;
-        Wed, 30 Sep 2020 09:17:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzh0duQ0hNxNrsh1f7pwl0xySxhx4I0subPjdqR9rjI/qeASEDwd/nwMw+5iUD/pgcAJolJ
-X-Received: by 2002:a25:abc2:: with SMTP id v60mr4556754ybi.467.1601482650523;
-        Wed, 30 Sep 2020 09:17:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601482650; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5740597lfq;
+        Wed, 30 Sep 2020 10:50:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxyoZkL2bEyuJaWV5iJ91vVrUGLOxBbve5aU7hYIl6PVDqaGHXzGZGIdl22OQU2UElhfMOl
+X-Received: by 2002:a25:2393:: with SMTP id j141mr5096152ybj.462.1601488228601;
+        Wed, 30 Sep 2020 10:50:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601488228; cv=none;
         d=google.com; s=arc-20160816;
-        b=e4cQ+vETsivx9FiuUpLmRvWdrp8cORrp9jrxjgQTPzXalDHQVhfN5ic+4uAiqjdXVy
-         H3nCJ6ZI5JTzEPppsjqSE5WvNP9gXRONJnYDjL1lLZZ4giwVs+7l8vMvTbkWRg+qBalG
-         lZULbylu0XKDoBThUqJ46aB45wgQcXlVdfkufBorlgN2onATE3jZREwNIs5pyuo++Znv
-         CBqqTl5sWDUXypZMOhIbvyd+0BmP9p0w72ZK/DO6mfvIvGZbbXgle9YCZ7c5KV3iQHgj
-         /hHb6TtjGtpI6OCM8VNIxWJsOgJcX6ZhYuIj19b1CS3egQWFCZRiVO1oaW4FXuB53zfW
-         VCIw==
+        b=lpXd9/m5OqcilDY4BR4u46gBs1mSGAdbnhv80gXuQcTKAq3QFonm0TJNMsJeDROaKl
+         zR/f50aS6H0RNCc46T71es+B61og66RZkZ3JaJFCbFZ6cJpEpMhvIzkKmKl50+GhyIl4
+         Cl5JkhZ7b4xl0/gAeAnRi5XcghfgmtCnZ2gXkxlCXz0wHjkxHOFKqLdKRBlV88Ig2AWx
+         V3unls669RzVngf/01vnV9leEJ7chONEnZgYTP4tYac1AG5N/croDiUucN5KuLZSMgQ0
+         SBCm3ZhtzVfOecQEKUv+xmAGS/jf7E9B5euLuaBrYbakHW8Wh5hWV0WXAPip7LLYzlXd
+         eSZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=zE4/WyurK5yQ4i1ZCyTvcfzgw23AZ3fmpBgVSNh9/Vo=;
-        b=Yu/TE7KVVpl/pRDRT0C8LYhLa7eCI9kI2swUgEwDfLC7ug9MiECEGFh/XjcVQpOUne
-         iKOKypEcCX4Zi253+DYHStnc2+U99gesEdWysiBmJXoumKHCamkujXocruE07d0MNReq
-         wT73mgkhDpkrEWeOs8QP2YH0p2E768QCOjiRnsjfdkedYiPExgrOPSIEJ4WArkUU+y3b
-         3My5doyroLZGlSQktQB5Je+fZxSxC7Ttar/PFdcgcIH87lDrQy0Rdw6t7ostXcaiXBlq
-         0IUWdz2C0srR+ToxMCcsJa/FtvofSBYZpHLZd+zOtRUx6QLX769D9aCiTImyGgHTsg3U
-         xxUQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=z9xOuwCEJYSFj7tax+KvuYSl7yT6OpvutN8mRH/aYQQ=;
+        b=amkhFkzdkqLGr9BjZJoeDncupJp5g9tuIA/8uuyjHoia1aJioJyp6HGSqZOpL/70kq
+         H6hym/3UNyABlvF1yNrcLk9ZHD4dwaADZMOVB1sMDugKzW/jcR15rYUgKzNBQ8tC1Bk7
+         PsD8tfpEd3DdWt3SORSY/lIj0B9AIDtZrsesiu9WlhAFvMm8D+IibAgTz/aR6JmoE0oC
+         yRTfxx/77fAdGZY2CeM3vXqucINi8Aq8UXubxr26SRuw8aGcwhEb4o33rGeo/p3N9GgE
+         7ojInjD43nlPEwRzVoG03Ltp5heoBjA7NVPnvhg2L8sQeI8IsYZn2rifolbo52vKdTrc
+         KaaA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=duEyk0Pe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eKWqTzGe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w17si2147145ybs.243.2020.09.30.09.17.30
+        by mx.google.com with ESMTPS id x134si2530345ybe.297.2020.09.30.10.50.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Sep 2020 09:17:30 -0700 (PDT)
+        Wed, 30 Sep 2020 10:50:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=duEyk0Pe;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eKWqTzGe;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:52646 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:36922 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNenJ-0006pL-S3
-	for alex.bennee@linaro.org; Wed, 30 Sep 2020 12:17:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58756)
+	id 1kNgFH-0005zm-T8
+	for alex.bennee@linaro.org; Wed, 30 Sep 2020 13:50:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55228)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNen8-0006p8-GS
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 12:17:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:44419)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgE2-00054P-QG
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2020 13:49:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:49513)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNen6-00047n-A9
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 12:17:18 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgE0-0004hf-Uu
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2020 13:49:10 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601482635;
+ s=mimecast20190719; t=1601488148;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=zE4/WyurK5yQ4i1ZCyTvcfzgw23AZ3fmpBgVSNh9/Vo=;
- b=duEyk0PeCjyaJYnXGsZ/8xbAEj7dHDi5V7UibeOUzEuh0gQ18KuQSyLfDWdeqJpy/zmV1T
- NuLzqZzHl84PEb9eBXnNMdSnCkTpNZMRzS6Dz8xhmwJUv+70cFeFqqknc0sh/9L8OA6Vkt
- jj+frdawtjTHgGdsFGoXWyiJmi287rw=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-552-Reg0Q7n0PbudJT2oyiTvRw-1; Wed, 30 Sep 2020 12:17:13 -0400
-X-MC-Unique: Reg0Q7n0PbudJT2oyiTvRw-1
-Received: by mail-wm1-f69.google.com with SMTP id r83so22533wma.8
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2020 09:17:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=zE4/WyurK5yQ4i1ZCyTvcfzgw23AZ3fmpBgVSNh9/Vo=;
- b=MicT7QaUlsvqZVJKC7AJWWCt/IZ5FrdMgsi2IDwaac5eLsC6PIrSop8t2kFoCROD5g
- c+iqA9UeInVS//NtscEdvsKP5sf0G+1PmFxzpsRqCoyYo65KO8KmwVb7X7ZfARkfg7o7
- fOhi/kWgu3O0293aeIePhVmS7kOaWJZk21OER60rfU9qj2XMIfLsDHwC7kl96S1Qeo6C
- oTct9+AHfHrsdTFFMLLeQf/emzblu/IDRe/yI8t5wwtcr28jdugsbBfyVgZtEIbM8Xi7
- yL0zl2AXEPRIWJ9ywDP5WcH3qq+j8vwFeOYOux+W14zXvqsfFe8YjU2RG8EPrEAOztWW
- /Q2A==
-X-Gm-Message-State: AOAM531sboRhyb7M/lpuioouJhFOa3eud+Z3uCS7zMR5yI/PcKStzhh6
- 6UaTVXxpl1ZSO4KDmxoKYfhWKw6BvrR5FNPL0gnpl2CwFB9FZLklfgHgeKJnZliBgwObnX/yMTK
- lb3GzyAN75p3w
-X-Received: by 2002:a1c:1fc6:: with SMTP id f189mr3913606wmf.20.1601482631753; 
- Wed, 30 Sep 2020 09:17:11 -0700 (PDT)
-X-Received: by 2002:a1c:1fc6:: with SMTP id f189mr3913583wmf.20.1601482631546; 
- Wed, 30 Sep 2020 09:17:11 -0700 (PDT)
-Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id b8sm3595152wmb.4.2020.09.30.09.17.10
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Sep 2020 09:17:10 -0700 (PDT)
-Subject: Re: [Qemu-devel] [PULL 04/28] hw/arm: Express dependencies of the
- highbank machines with Kconfig
-To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
- qemu-devel@nongnu.org
-References: <20190505135714.11277-1-thuth@redhat.com>
- <20190505135714.11277-5-thuth@redhat.com>
- <f2489790-8fcd-a9c3-4ec3-c8a72240f172@redhat.com>
- <b56334d8-e165-4aac-2092-2912d442e6a9@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <72ee8d49-eb98-8fe3-208b-67d8e093e9ca@redhat.com>
-Date: Wed, 30 Sep 2020 18:17:09 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ in-reply-to:in-reply-to:references:references;
+ bh=z9xOuwCEJYSFj7tax+KvuYSl7yT6OpvutN8mRH/aYQQ=;
+ b=eKWqTzGevCFoX4TRbq08AThloltHcpiNX9fszj7v8RV9ipsEITylJ1fDdth9413oq9anWU
+ cFKepY03iTpGaeb04MRTuTsbKnk075lMs3D+XqwcF/31D7RNbk58JxSxLt3/ewSC/lYw0G
+ NSUz5H+bAiq8eWK84q0s/+BeZ7QCgQU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-152-M4-ZV1AEPjC8NQlVV4Uq7Q-1; Wed, 30 Sep 2020 13:49:02 -0400
+X-MC-Unique: M4-ZV1AEPjC8NQlVV4Uq7Q-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BECF78018A4;
+ Wed, 30 Sep 2020 17:49:00 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
+ [10.36.112.56])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2CB3A5C1D0;
+ Wed, 30 Sep 2020 17:48:57 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 2786243BFB6; Wed, 30 Sep 2020 19:48:56 +0200 (CEST)
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PULL 03/12] arm: use acpi_dsdt_add_gpex
+Date: Wed, 30 Sep 2020 19:48:46 +0200
+Message-Id: <20200930174856.11296-4-kraxel@redhat.com>
+In-Reply-To: <20200930174856.11296-1-kraxel@redhat.com>
+References: <20200930174856.11296-1-kraxel@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <b56334d8-e165-4aac-2092-2912d442e6a9@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 00:31:59
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
@@ -145,9 +101,8 @@ X-Spam_score: -2.6
 X-Spam_bar: --
 X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.469,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -160,97 +115,226 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Leif Lindholm <leif@nuviainc.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: doo5WOk05qmV
+X-TUID: gRdrlym0i+r0
 
-On 9/30/20 6:10 PM, Thomas Huth wrote:
-> On 30/09/2020 17.38, Philippe Mathieu-Daudé wrote:
->> Hi Thomas,
->>
->> On 5/5/19 3:56 PM, Thomas Huth wrote:
->>> Add Kconfig dependencies for the highbank machine (and the midway
->>> machine).
->>> This patch is slightly based on earlier work by Ákos Kovács (i.e.
->>> his "hw/arm/Kconfig: Add ARM Kconfig" patch).
->>>
->>> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>> Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>>  default-configs/arm-softmmu.mak |  9 +--------
->>>  hw/arm/Kconfig                  | 11 +++++++++++
->>>  2 files changed, 12 insertions(+), 8 deletions(-)
->>>
->>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
->>> index 2a11e76cc7..50a4be3cad 100644
->>> --- a/default-configs/arm-softmmu.mak
->>> +++ b/default-configs/arm-softmmu.mak
->>> @@ -8,6 +8,7 @@ CONFIG_PCI_DEVICES=y
->>>  CONFIG_PCI_TESTDEV=y
->>>  
->>>  CONFIG_EXYNOS4=y
->>> +CONFIG_HIGHBANK=y
->>>  
->>>  CONFIG_VGA=y
->>>  CONFIG_NAND=y
->>> @@ -45,24 +46,17 @@ CONFIG_PLATFORM_BUS=y
->>>  CONFIG_VIRTIO_MMIO=y
->>>  
->>>  CONFIG_ARM11MPCORE=y
->>> -CONFIG_A15MPCORE=y
->>>  
->>>  CONFIG_NETDUINO2=y
->>>  
->>> -CONFIG_ARM_TIMER=y
->>> -CONFIG_PL011=y
->>> -CONFIG_PL022=y
->>> -CONFIG_PL031=y
->>>  CONFIG_PL041=y
->>>  CONFIG_PL050=y
->>> -CONFIG_PL061=y
->>>  CONFIG_PL080=y
->>>  CONFIG_PL110=y
->>>  CONFIG_PL181=y
->>>  CONFIG_PL190=y
->>>  CONFIG_PL330=y
->>>  CONFIG_CADENCE=y
->>> -CONFIG_XGMAC=y
->>>  CONFIG_PXA2XX=y
->>>  CONFIG_BITBANG_I2C=y
->>>  CONFIG_FRAMEBUFFER=y
->>> @@ -150,7 +144,6 @@ CONFIG_XILINX_AXI=y
->>>  CONFIG_PCI_EXPRESS_DESIGNWARE=y
->>>  
->>>  CONFIG_STRONGARM=y
->>> -CONFIG_HIGHBANK=y
->>>  CONFIG_MUSICPAL=y
->>>  
->>>  # for realview and versatilepb
->>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->>> index acd07b2add..0ba377ac18 100644
->>> --- a/hw/arm/Kconfig
->>> +++ b/hw/arm/Kconfig
->>> @@ -18,6 +18,17 @@ config EXYNOS4
->>>  
->>>  config HIGHBANK
->>>      bool
->>> +    select A9MPCORE
->>> +    select A15MPCORE
->>> +    select AHCI
->>> +    select ARM_TIMER # sp804
->>> +    select ARM_V7M
->>
->> Hmm I missed that... This machine doesn't use a v7M core, right?
-> 
-> I think you're right: The machines seem to use A9 and A15 ... so I guess
-> this was a copy-n-paste bug ... could you send a patch to clean it up,
-> please?
+Fill gpex config struct from memory map, then call the new
+acpi_dsdt_add_gpex helper function.  No functional change.
 
-Yes, will do.
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Message-id: 20200928104256.9241-4-kraxel@redhat.com
+---
+ hw/arm/virt-acpi-build.c | 175 ++-------------------------------------
+ 1 file changed, 9 insertions(+), 166 deletions(-)
 
-> 
->  Thomas
-> 
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index 6bff5e373872..9747a6458f0b 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -44,6 +44,7 @@
+ #include "hw/acpi/tpm.h"
+ #include "hw/pci/pcie_host.h"
+ #include "hw/pci/pci.h"
++#include "hw/pci-host/gpex.h"
+ #include "hw/arm/virt.h"
+ #include "hw/mem/nvdimm.h"
+ #include "hw/platform-bus.h"
+@@ -155,176 +156,18 @@ static void acpi_dsdt_add_pci(Aml *scope, const MemMapEntry *memmap,
+                               uint32_t irq, bool use_highmem, bool highmem_ecam)
+ {
+     int ecam_id = VIRT_ECAM_ID(highmem_ecam);
+-    Aml *method, *crs, *ifctx, *UUID, *ifctx1, *elsectx, *buf;
+-    int i, slot_no;
+-    hwaddr base_mmio = memmap[VIRT_PCIE_MMIO].base;
+-    hwaddr size_mmio = memmap[VIRT_PCIE_MMIO].size;
+-    hwaddr base_pio = memmap[VIRT_PCIE_PIO].base;
+-    hwaddr size_pio = memmap[VIRT_PCIE_PIO].size;
+-    hwaddr base_ecam = memmap[ecam_id].base;
+-    hwaddr size_ecam = memmap[ecam_id].size;
+-    int nr_pcie_buses = size_ecam / PCIE_MMCFG_SIZE_MIN;
+-
+-    Aml *dev = aml_device("%s", "PCI0");
+-    aml_append(dev, aml_name_decl("_HID", aml_string("PNP0A08")));
+-    aml_append(dev, aml_name_decl("_CID", aml_string("PNP0A03")));
+-    aml_append(dev, aml_name_decl("_SEG", aml_int(0)));
+-    aml_append(dev, aml_name_decl("_BBN", aml_int(0)));
+-    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+-    aml_append(dev, aml_name_decl("_STR", aml_unicode("PCIe 0 Device")));
+-    aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+-
+-    /* Declare the PCI Routing Table. */
+-    Aml *rt_pkg = aml_varpackage(PCI_SLOT_MAX * PCI_NUM_PINS);
+-    for (slot_no = 0; slot_no < PCI_SLOT_MAX; slot_no++) {
+-        for (i = 0; i < PCI_NUM_PINS; i++) {
+-            int gsi = (i + slot_no) % PCI_NUM_PINS;
+-            Aml *pkg = aml_package(4);
+-            aml_append(pkg, aml_int((slot_no << 16) | 0xFFFF));
+-            aml_append(pkg, aml_int(i));
+-            aml_append(pkg, aml_name("GSI%d", gsi));
+-            aml_append(pkg, aml_int(0));
+-            aml_append(rt_pkg, pkg);
+-        }
+-    }
+-    aml_append(dev, aml_name_decl("_PRT", rt_pkg));
+-
+-    /* Create GSI link device */
+-    for (i = 0; i < PCI_NUM_PINS; i++) {
+-        uint32_t irqs =  irq + i;
+-        Aml *dev_gsi = aml_device("GSI%d", i);
+-        aml_append(dev_gsi, aml_name_decl("_HID", aml_string("PNP0C0F")));
+-        aml_append(dev_gsi, aml_name_decl("_UID", aml_int(i)));
+-        crs = aml_resource_template();
+-        aml_append(crs,
+-                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+-                                 AML_EXCLUSIVE, &irqs, 1));
+-        aml_append(dev_gsi, aml_name_decl("_PRS", crs));
+-        crs = aml_resource_template();
+-        aml_append(crs,
+-                   aml_interrupt(AML_CONSUMER, AML_LEVEL, AML_ACTIVE_HIGH,
+-                                 AML_EXCLUSIVE, &irqs, 1));
+-        aml_append(dev_gsi, aml_name_decl("_CRS", crs));
+-        method = aml_method("_SRS", 1, AML_NOTSERIALIZED);
+-        aml_append(dev_gsi, method);
+-        aml_append(dev, dev_gsi);
+-    }
+-
+-    method = aml_method("_CBA", 0, AML_NOTSERIALIZED);
+-    aml_append(method, aml_return(aml_int(base_ecam)));
+-    aml_append(dev, method);
+-
+-    method = aml_method("_CRS", 0, AML_NOTSERIALIZED);
+-    Aml *rbuf = aml_resource_template();
+-    aml_append(rbuf,
+-        aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
+-                            0x0000, 0x0000, nr_pcie_buses - 1, 0x0000,
+-                            nr_pcie_buses));
+-    aml_append(rbuf,
+-        aml_dword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
+-                         AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000, base_mmio,
+-                         base_mmio + size_mmio - 1, 0x0000, size_mmio));
+-    aml_append(rbuf,
+-        aml_dword_io(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
+-                     AML_ENTIRE_RANGE, 0x0000, 0x0000, size_pio - 1, base_pio,
+-                     size_pio));
++    struct GPEXConfig cfg = {
++        .mmio32 = memmap[VIRT_PCIE_MMIO],
++        .pio    = memmap[VIRT_PCIE_PIO],
++        .ecam   = memmap[ecam_id],
++        .irq    = irq,
++    };
+ 
+     if (use_highmem) {
+-        hwaddr base_mmio_high = memmap[VIRT_HIGH_PCIE_MMIO].base;
+-        hwaddr size_mmio_high = memmap[VIRT_HIGH_PCIE_MMIO].size;
+-
+-        aml_append(rbuf,
+-            aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
+-                             AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000,
+-                             base_mmio_high,
+-                             base_mmio_high + size_mmio_high - 1, 0x0000,
+-                             size_mmio_high));
++        cfg.mmio64 = memmap[VIRT_HIGH_PCIE_MMIO];
+     }
+ 
+-    aml_append(method, aml_return(rbuf));
+-    aml_append(dev, method);
+-
+-    /* Declare an _OSC (OS Control Handoff) method */
+-    aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
+-    aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
+-    method = aml_method("_OSC", 4, AML_NOTSERIALIZED);
+-    aml_append(method,
+-        aml_create_dword_field(aml_arg(3), aml_int(0), "CDW1"));
+-
+-    /* PCI Firmware Specification 3.0
+-     * 4.5.1. _OSC Interface for PCI Host Bridge Devices
+-     * The _OSC interface for a PCI/PCI-X/PCI Express hierarchy is
+-     * identified by the Universal Unique IDentifier (UUID)
+-     * 33DB4D5B-1FF7-401C-9657-7441C03DD766
+-     */
+-    UUID = aml_touuid("33DB4D5B-1FF7-401C-9657-7441C03DD766");
+-    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
+-    aml_append(ifctx,
+-        aml_create_dword_field(aml_arg(3), aml_int(4), "CDW2"));
+-    aml_append(ifctx,
+-        aml_create_dword_field(aml_arg(3), aml_int(8), "CDW3"));
+-    aml_append(ifctx, aml_store(aml_name("CDW2"), aml_name("SUPP")));
+-    aml_append(ifctx, aml_store(aml_name("CDW3"), aml_name("CTRL")));
+-
+-    /*
+-     * Allow OS control for all 5 features:
+-     * PCIeHotplug SHPCHotplug PME AER PCIeCapability.
+-     */
+-    aml_append(ifctx, aml_and(aml_name("CTRL"), aml_int(0x1F),
+-                              aml_name("CTRL")));
+-
+-    ifctx1 = aml_if(aml_lnot(aml_equal(aml_arg(1), aml_int(0x1))));
+-    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x08),
+-                              aml_name("CDW1")));
+-    aml_append(ifctx, ifctx1);
+-
+-    ifctx1 = aml_if(aml_lnot(aml_equal(aml_name("CDW3"), aml_name("CTRL"))));
+-    aml_append(ifctx1, aml_or(aml_name("CDW1"), aml_int(0x10),
+-                              aml_name("CDW1")));
+-    aml_append(ifctx, ifctx1);
+-
+-    aml_append(ifctx, aml_store(aml_name("CTRL"), aml_name("CDW3")));
+-    aml_append(ifctx, aml_return(aml_arg(3)));
+-    aml_append(method, ifctx);
+-
+-    elsectx = aml_else();
+-    aml_append(elsectx, aml_or(aml_name("CDW1"), aml_int(4),
+-                               aml_name("CDW1")));
+-    aml_append(elsectx, aml_return(aml_arg(3)));
+-    aml_append(method, elsectx);
+-    aml_append(dev, method);
+-
+-    method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
+-
+-    /* PCI Firmware Specification 3.0
+-     * 4.6.1. _DSM for PCI Express Slot Information
+-     * The UUID in _DSM in this context is
+-     * {E5C937D0-3553-4D7A-9117-EA4D19C3434D}
+-     */
+-    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
+-    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
+-    ifctx1 = aml_if(aml_equal(aml_arg(2), aml_int(0)));
+-    uint8_t byte_list[1] = {1};
+-    buf = aml_buffer(1, byte_list);
+-    aml_append(ifctx1, aml_return(buf));
+-    aml_append(ifctx, ifctx1);
+-    aml_append(method, ifctx);
+-
+-    byte_list[0] = 0;
+-    buf = aml_buffer(1, byte_list);
+-    aml_append(method, aml_return(buf));
+-    aml_append(dev, method);
+-
+-    Aml *dev_res0 = aml_device("%s", "RES0");
+-    aml_append(dev_res0, aml_name_decl("_HID", aml_string("PNP0C02")));
+-    crs = aml_resource_template();
+-    aml_append(crs,
+-        aml_qword_memory(AML_POS_DECODE, AML_MIN_FIXED, AML_MAX_FIXED,
+-                         AML_NON_CACHEABLE, AML_READ_WRITE, 0x0000, base_ecam,
+-                         base_ecam + size_ecam - 1, 0x0000, size_ecam));
+-    aml_append(dev_res0, aml_name_decl("_CRS", crs));
+-    aml_append(dev, dev_res0);
+-    aml_append(scope, dev);
++    acpi_dsdt_add_gpex(scope, &cfg);
+ }
+ 
+ static void acpi_dsdt_add_gpio(Aml *scope, const MemMapEntry *gpio_memmap,
+-- 
+2.27.0
 

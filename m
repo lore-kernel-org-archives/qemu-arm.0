@@ -1,93 +1,104 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp284143lfq;
-        Thu, 1 Oct 2020 00:22:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwzZs14YShQrF0ZLlUlZUy2ZggouK4VOvTrvqfoRriRiBMvsXNZqwsAMC/7l2+wxAL7I4/W
-X-Received: by 2002:a25:4841:: with SMTP id v62mr8258021yba.104.1601536928212;
-        Thu, 01 Oct 2020 00:22:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601536928; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp37618lfq;
+        Wed, 30 Sep 2020 17:05:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyvQj+hJbPX8kjQ8nNgUxaXocbip5fcnskZyahPqQCkeOIaY9+lDZixN52DWK+tXGU65V7p
+X-Received: by 2002:a25:3744:: with SMTP id e65mr6417059yba.275.1601510713962;
+        Wed, 30 Sep 2020 17:05:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601510713; cv=none;
         d=google.com; s=arc-20160816;
-        b=g3QVuD5Y8ssAdt2pcHb5ZnWZLchhaZoSXkxeUxrlP7A0pdcLFZYMe4f3+xq02r6ucs
-         BmVs14O0w6J8g2Cw8MtPW08pE5nvCjMnrNeV9RBv8PWW0IAVvjOhJD78N+aR1xKZWruW
-         chnZ444/mh8KZrAQMSLeThH0NuVhLrV4zzRW29iuwSefZ3Xz3cHqZinQjA8cj0cCfBrn
-         AyGYo6haCpOJyK18a3XZzblbdU2o9z0T0da+d0FVluu4m1C0yxILTfbk79AQG36Y+bE0
-         gJrKFK5pDgTqOEWpfAUXPhiv9X6t3wWFb0Ie4QcS/Y3kqp1TUHnFCM5JcaBoISuNcA4z
-         JsEw==
+        b=mvUws192QG7xWObSm4gL/kT7S1xhRMMAaDeS/rmUmNsIS27HGxbS8u07ClXPlXQjTI
+         WMKKwpjOTEnDWwIHCwbXCYwP/RufStIyUmW7++e/efSlUv3pC0f5qQcSp4C6bbFpALoI
+         MTvwFI1aysaOrBoyOn8D86Vww1aw/QAFtlxcklrrxU1EIgAj1njbpfF0C5q56VBFOYBR
+         ottD01FHVBVCGuT63lm8ScIWLHxBRVFfIh5R50hs8lDepjOIR+Gd5vDC3EliGWg3urVN
+         mDd6B1IyVvGWeG6w70xYOVUUk7R8p0YdQHRg0f0Ty1/1YvbiFer/rUIeR/7aTS4bmU0L
+         9eOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=uL4h5S6sdPcNvbTLJHkwrr3Qmse4WnXfzM2vD3oVUXQ=;
-        b=WlkPvjCtqkeGTgvtK6hZ++Ux4aCBbG8xW7jpyzVsp0J2y4ycwYvuQu4LqFKfmXSC15
-         /xuCO8Q92I8nC25wycv2/M7WxJR8nCPSSRu0VxHQsukjq+mEcUVHOLrVEjzfAFWtgbDB
-         fvubDLmc4xgbO/aatkYtkepRTSDcUtDSmDdD4Rc2OrhSmDDJsDrlNeXB06ECKXngIo9a
-         rivseIEHQ7+ZfTOm62VXZUWUbzG01elnhWLN7p4CAPzq+PoHN2qnL8FMO1Sw+EuoN2BV
-         MS2Cp+mOPbTF4V/XV2GY5EPuLZtljXX2wk95Zeaty++VVxI+N4x6ffz+VCLrHsER6fIn
-         4l1Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=YPWmL5pqxcGhaQHK4Z5UI4PW8UeS6FPhFCYrMEvjtso=;
+        b=E4ZYvF4IpiuB4UZf1BMxs3zh3RNKenkm5N/sXHs7qzlokf8dqmq1kSbinxdp4Tyi7j
+         ZgjYWk+UfPFFNumhlCG/WdTOdVZtOJtpdcxG2LZdU89bcFAyRQkYwzFW588jvB0q+FvF
+         zK2U0T9vTNhf6gJzbyAwWhl5y6bkQ58maGycRKP2pflXvpp8CAFQb77DIa4+oc3EgrIf
+         FcuM/yw506hNa7BxzfV6pcYppn9NJtTfZ5rWSlL5Br5vqr4j6ufA2KgKFN8EBcmsg57W
+         bA/z/Merx4tTPz4EBbUr0jWLn9mnLk1xYzUNwidG0Br0rlE24tPwtASkOQ70a/ou3MmD
+         h8dQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nkhOPp4c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i18si4257368ybt.54.2020.10.01.00.22.08
+        by mx.google.com with ESMTPS id y139si3072100yby.193.2020.09.30.17.05.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Oct 2020 00:22:08 -0700 (PDT)
+        Wed, 30 Sep 2020 17:05:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53600 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=nkhOPp4c;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:42990 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNsul-0006PT-Jm
-	for alex.bennee@linaro.org; Thu, 01 Oct 2020 03:22:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49724)
+	id 1kNm5x-0005HP-8x
+	for alex.bennee@linaro.org; Wed, 30 Sep 2020 20:05:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54690)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kNsud-0006P3-PG; Thu, 01 Oct 2020 03:21:59 -0400
-Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:59103)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1kNsub-0002xo-8X; Thu, 01 Oct 2020 03:21:59 -0400
-Received: from mxplan5.mail.ovh.net (unknown [10.108.20.2])
- by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 020AC60CD283;
- Thu,  1 Oct 2020 09:21:52 +0200 (CEST)
-Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 1 Oct 2020
- 09:21:52 +0200
-Authentication-Results: garm.ovh; auth=pass
- (GARM-103G005aef4187a-d417-48cf-8b9d-dffdaaa9e142,
- 2FD1C644E9D11323632A639817FC6AC7C89AF497) smtp.auth=clg@kaod.org
-Subject: Re: [PATCH] ssi: Display chip select polarity in monitor 'info qtree'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- <qemu-devel@nongnu.org>
-References: <20200927091946.65491-1-f4bug@amsat.org>
-From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
-Message-ID: <9b1175fa-9837-f3c9-0931-34965e6db14a@kaod.org>
-Date: Thu, 1 Oct 2020 09:21:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kNm5j-0005H2-33; Wed, 30 Sep 2020 20:04:59 -0400
+Received: from mail-il1-x142.google.com ([2607:f8b0:4864:20::142]:37373)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1kNm5h-0006TP-GC; Wed, 30 Sep 2020 20:04:58 -0400
+Received: by mail-il1-x142.google.com with SMTP id j13so4334736ilc.4;
+ Wed, 30 Sep 2020 17:04:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=YPWmL5pqxcGhaQHK4Z5UI4PW8UeS6FPhFCYrMEvjtso=;
+ b=nkhOPp4c6Qa0eFRa+2Y3Ni6dG7752zjaBeBHsql53dac/htwSg8IeN0V4+0xEhsbDl
+ Is/KsLUxvMj47pYwKUmY1t/O6tFtNWuR/LEgUupftBoUbRotewJog4IxD/3DxIpgMd54
+ oXbcc5W+SzOP4SC0XXR8A2Smi+Pumpyn0LABdZeWXmGfbIzFg80sd5Qld0qeccqAx0w4
+ epxAiSKbLmdTcHtYIhUk1ZnMJsMv2nQxVLbkNrU+hBJWArLeif4tSeln0g68u94teIKi
+ PM0Zd2WkMfJ0EWZOH6zUMKy0s+VsIAi5I1Lt0I7FdODumwsSXe4Ws2ZIuLFEOs6nXo59
+ imEw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=YPWmL5pqxcGhaQHK4Z5UI4PW8UeS6FPhFCYrMEvjtso=;
+ b=ZZHyHmWEaKICrgZ+L8JnDEsUbtdb0aXXF2IXMuZv8MfT54vkdn1i/zNijYDE6Ischz
+ C5F1TejJpgub3PWc88s3ytzYUBX9imCnsReMMCPPg0EEW5t+SfZTN4vylBHm6O6GHG9U
+ 2Wvztm41NEzlO3dkbkyqa9p/ljSmSo0eagn0brWJeDrMrmSujXVBeHB4TDc6nssZcZx4
+ JBEI7pV54MqJEh3AhzGdnMUrDJUAA5UyvnwFsSdKWnd+JdzJG3XS/YGlqfMyWkagmVSI
+ iyPn4As4pnElH22+9t0gNFSAdg+FR/gAFcbZwFnj8ugrkMu4eCRd3OA7lfkTk2McEWmp
+ dTRA==
+X-Gm-Message-State: AOAM532dSpgzq1wwufh330TGD2fQQoRvW//INIqVeHDrdTkPxpczLCUx
+ d0UYcthDxPCfbPk7okpg/j3DBK/SlcDb0rhsLJ0=
+X-Received: by 2002:a92:9817:: with SMTP id l23mr338924ili.131.1601510696190; 
+ Wed, 30 Sep 2020 17:04:56 -0700 (PDT)
 MIME-Version: 1.0
+References: <20200927091946.65491-1-f4bug@amsat.org>
 In-Reply-To: <20200927091946.65491-1-f4bug@amsat.org>
-Content-Type: text/plain; charset="utf-8"
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-Originating-IP: [37.59.142.103]
-X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX1.mxp5.local
- (172.16.2.31)
-X-Ovh-Tracer-GUID: a482203b-b840-4422-a4de-6b8db3bebbbd
-X-Ovh-Tracer-Id: 9480077218061781923
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrfeefgdduvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehfgegsuhhgsegrmhhsrghtrdhorhhg
-Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
- helo=smtpout1.mo529.mail-out.ovh.net
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 03:21:53
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.373, SPF_HELO_NONE=0.001,
+From: Alistair Francis <alistair23@gmail.com>
+Date: Wed, 30 Sep 2020 16:53:33 -0700
+Message-ID: <CAKmqyKO0jkh+=R4H5yFms2fDk7N4vfUgU8RQLTAZHqoCPMS9kw@mail.gmail.com>
+Subject: Re: [PATCH] ssi: Display chip select polarity in monitor 'info qtree'
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::142;
+ envelope-from=alistair23@gmail.com; helo=mail-il1-x142.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -101,17 +112,22 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, qemu-arm@nongnu.org,
- Alistair Francis <alistair@alistair23.me>
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: D7rugkgJrSDa
+X-TUID: 8klTfSkPp2wA
 
-On 9/27/20 11:19 AM, Philippe Mathieu-Daudé wrote:
+On Sun, Sep 27, 2020 at 2:20 AM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
 > It is sometime useful to verify a device chip select polarity
 > on a SPI bus. Since we have this information available, display
 > it in the 'info qtree' monitor output:
-> 
+>
 >   $ qemu-system-arm -M lm3s6965evb -monitor stdio -S
 >   (qemu) info qtree
 >   [...]
@@ -130,71 +146,65 @@ On 9/27/20 11:19 AM, Philippe Mathieu-Daudé wrote:
 >         bus: sd-bus
 >           type sd-bus
 >           dev: sd-card, id ""
->             spec_version = 2 (0x2)
->             drive = "sd0"
->             spi = true
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>             spec_version =3D 2 (0x2)
+>             drive =3D "sd0"
+>             spi =3D true
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Tested-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Thanks,
+Alistair
 
-C.
-
-  dev: aspeed.spi2-ast2600, id ""
-    gpio-out "sysbus-irq" 2
-    num-cs = 1 (0x1)
-    inject-failure = false
-    sdram-base = 0 (0x0)
-    mmio 000000001e641000/0000000000000100
-    mmio 0000000050000000/0000000010000000
-    bus: spi
-      type SSI
-  dev: aspeed.spi1-ast2600, id ""
-    gpio-out "sysbus-irq" 2
-    num-cs = 1 (0x1)
-    inject-failure = false
-    sdram-base = 0 (0x0)
-    mmio 000000001e630000/0000000000000100
-    mmio 0000000030000000/0000000010000000
-    bus: spi
-      type SSI
-      dev: mx66l1g45g, id ""
-        gpio-in "ssi-gpio-cs" 1
-        nonvolatile-cfg = 36863 (0x8fff)
-        spansion-cr1nv = 0 (0x0)
-        spansion-cr2nv = 8 (0x8)
-        spansion-cr3nv = 2 (0x2)
-        spansion-cr4nv = 16 (0x10)
-        drive = "mtd2"
-        chip select polarity: low
-  dev: aspeed.fmc-ast2600, id ""
-    gpio-out "sysbus-irq" 3
-    num-cs = 2 (0x2)
-    inject-failure = false
-    sdram-base = 2147483648 (0x80000000)
-    mmio 000000001e620000/0000000000000100
-    mmio 0000000020000000/0000000010000000
-    bus: spi
-      type SSI
-      dev: mx66l1g45g, id ""
-        gpio-in "ssi-gpio-cs" 1
-        nonvolatile-cfg = 36863 (0x8fff)
-        spansion-cr1nv = 0 (0x0)
-        spansion-cr2nv = 8 (0x8)
-        spansion-cr3nv = 2 (0x2)
-        spansion-cr4nv = 16 (0x10)
-        drive = "mtd1"
-        chip select polarity: low
-      dev: mx66l1g45g, id ""
-        gpio-in "ssi-gpio-cs" 1
-        nonvolatile-cfg = 36863 (0x8fff)
-        spansion-cr1nv = 0 (0x0)
-        spansion-cr2nv = 8 (0x8)
-        spansion-cr3nv = 2 (0x2)
-        spansion-cr4nv = 16 (0x10)
-        drive = "mtd0"
-        chip select polarity: low
-
+> ---
+>  hw/ssi/ssi.c | 22 ++++++++++++++++++++++
+>  1 file changed, 22 insertions(+)
+>
+> diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
+> index 4278d0e4440..4c9f8d66d23 100644
+> --- a/hw/ssi/ssi.c
+> +++ b/hw/ssi/ssi.c
+> @@ -17,6 +17,7 @@
+>  #include "migration/vmstate.h"
+>  #include "qemu/module.h"
+>  #include "qapi/error.h"
+> +#include "monitor/monitor.h"
+>  #include "qom/object.h"
+>
+>  struct SSIBus {
+> @@ -26,10 +27,31 @@ struct SSIBus {
+>  #define TYPE_SSI_BUS "SSI"
+>  OBJECT_DECLARE_SIMPLE_TYPE(SSIBus, SSI_BUS)
+>
+> +static void ssi_print_dev(Monitor *mon, DeviceState *dev, int indent)
+> +{
+> +    static const char *const polarity_s[] =3D {
+> +        [SSI_CS_NONE] =3D "unknown",
+> +        [SSI_CS_LOW]  =3D "low",
+> +        [SSI_CS_HIGH] =3D "high"
+> +    };
+> +    SSISlaveClass *ssc =3D SSI_SLAVE_GET_CLASS(dev);
+> +
+> +    monitor_printf(mon, "%*schip select polarity: %s\n",
+> +                   indent, "", polarity_s[ssc->cs_polarity]);
+> +}
+> +
+> +static void ssi_bus_class_init(ObjectClass *klass, void *data)
+> +{
+> +    BusClass *k =3D BUS_CLASS(klass);
+> +
+> +    k->print_dev =3D ssi_print_dev;
+> +}
+> +
+>  static const TypeInfo ssi_bus_info =3D {
+>      .name =3D TYPE_SSI_BUS,
+>      .parent =3D TYPE_BUS,
+>      .instance_size =3D sizeof(SSIBus),
+> +    .class_init =3D ssi_bus_class_init,
+>  };
+>
+>  static void ssi_cs_default(void *opaque, int n, int level)
+> --
+> 2.26.2
+>
+>

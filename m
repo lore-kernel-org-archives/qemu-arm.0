@@ -1,91 +1,91 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5744026lfq;
-        Wed, 30 Sep 2020 10:55:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzsMfWhmHIMG44sbDCM26ylH0eI6200HjH1sQ7CSFIm7N6BOdXAbbjwwKdwtsqAtZs1swL2
-X-Received: by 2002:a25:aaae:: with SMTP id t43mr4973837ybi.404.1601488517927;
-        Wed, 30 Sep 2020 10:55:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601488517; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5744555lfq;
+        Wed, 30 Sep 2020 10:56:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJysjF4Jy+pji4REbtdncfyqQNN8WrrgkVkHNmNMXRbyPi5wFjljDrtb+tzyI4eQ73n56pNm
+X-Received: by 2002:a25:dc92:: with SMTP id y140mr5202553ybe.113.1601488565402;
+        Wed, 30 Sep 2020 10:56:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601488565; cv=none;
         d=google.com; s=arc-20160816;
-        b=IcAOrgFjDbolhvEHUW4gnYhpdWR4d+kcGDKvSAngxjrzfFTtUQgSZS9isA7oMx2fce
-         ZUK6GJy8redQ55tQklYepZPdfX8OsFDEVjWcjiSCC5KRPafPoeA3QYI3rkPvGHTxfDFp
-         H6WVGq/sFd6cChdFtTfUSryygfE32qKOvMiMqkzWTlEoXbGpZh7MBbfGDWqM9PXfZyEM
-         WqC9SDIBmMB9noQY3g+oQI34IYdkeMQ16K+EyiiFFv1U2XV3a/eY0FHQVVYkPjtUWHZk
-         ypKKhFRnCjOit8O8LXIZB7tsEXukgdDM68b32htoyYYLfozC4Q0Sfb4s4Z8q6XEfg/Tg
-         X9Yg==
+        b=zUfKOCinENimL3ZGk5T+pyQU1/Fy0a0KZGyOvCl9yj5pj8iSH7aci0hHVhTwEaJIKc
+         Yu8OTHazJAtjMxaLGCgMRwftW+kofO7tzweF76fQc+TULSTZaKaeuOzyIolGljylWnoN
+         V/QvM8yoC1L6/rVAwYLJbBfQm9MvvPWMptZlkknGB5MyW7sZlPEAg3DR8Cukf2yiVZ+Z
+         FVpaCKszwiH2s6X6m5JK2idynSDz1QdEE4wXmSmF8CQeWfuxk7iafrhRr9XhYHzEekmL
+         azAkssuk+99rMYklFzeDdaXEsWMEPMt3toziVufva4zh1ZVSfYLzvrgJsbT2fSTr/nVS
+         6Zhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=UucSB7Sljzdm7y9MgpPqKEcOntN+FrMdoMcI5WN+SrM=;
-        b=iHXwMaZDnv4KEmQbO8LoDWl7te0NcgpN37Wit2erRh2YswaLG0kH8ROyxKaLdDaopf
-         vymCDZfG8T28ynQM5ws7QEhHzSPa9tPiuVrNSYk3xn7OBZn4eZQgzgmOAIQqMUCWlpmu
-         1lRdKOEN7/LZ1eRz4GEIsFgL5hpu97cgRk0MNopKP0KHaFD2tktixKGI6tUXipoaNLP4
-         uRV13OpP6YH3lSHVKOeYXgBxFcurR5cpVvToTWl32F3xsvg9OvxizMUpYpRyjk39+M1/
-         GJEXVQp1vkrSbf8szjrR1IfWr7YFZ0YEeBwQVifFV9ExafewAOi3qK5Eyp3d3+5BLRCb
-         TJNg==
+        bh=aVlgghQWOtGdrS3DFQka7ncCz1zWWLT4V5AG7CyK/vg=;
+        b=K6RH5adeEALi9rCiKdNcoC/bDBxIc/POMa0DRVUcpFAYfvJMWFGjzntgpHKVVrOIBC
+         enc/jbhTEBg/Zt/EA6DEUd8MaDY4SCIFS0KuGqPEEiy6VZ0lprk4bwdeA0Ir0R7bbk+n
+         48k50D6o8kGe0z2vErKRjoaa8z1ubz2IXeIC7OnDDbFF5695Cd+D23xdQeDlNxeVJN8t
+         RF89s3kxxpngk6TYcWre4QzIj7tFHamTFXF5oaCMiiQM0iORNIyG/SLYS03jnD5nKIjT
+         jgCHDO1nr24Nlr9+adospyUdx8I1yTpZ4zZ5/4CfFPtFLVtOpoq8+CM5o0WQuoXsDROC
+         litA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fbRQcmBC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HECxVnCJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q16si2356275ybm.220.2020.09.30.10.55.17
+        by mx.google.com with ESMTPS id d129si2127468ybh.40.2020.09.30.10.56.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Sep 2020 10:55:17 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 30 Sep 2020 10:56:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fbRQcmBC;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=HECxVnCJ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:53938 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57460 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNgJw-0004Y5-Kj
-	for alex.bennee@linaro.org; Wed, 30 Sep 2020 13:55:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55538)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kNgKh-0005zd-Lm
+	for alex.bennee@linaro.org; Wed, 30 Sep 2020 13:56:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55470)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgEK-0005Ta-N4
- for qemu-devel@nongnu.org; Wed, 30 Sep 2020 13:49:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54004)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgEH-0005Jz-Dk
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2020 13:49:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:42482)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgEE-0004kT-Bk
- for qemu-devel@nongnu.org; Wed, 30 Sep 2020 13:49:28 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kNgEB-0004jh-LO
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2020 13:49:25 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601488161;
+ s=mimecast20190719; t=1601488158;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UucSB7Sljzdm7y9MgpPqKEcOntN+FrMdoMcI5WN+SrM=;
- b=fbRQcmBClYdvWcnl0qRXAhA3beGLbYhCI3OhdnGStiPQKaLcGHR5+ybcm5EkZ3i91DW4S7
- /PXUWlTstJRGHD3b7+IIovdgt7gliNZSFr0ffN61Hs1JBvPMAW2u1gQqGhVDg2s93kQwJW
- ZT7/hSAHGFD9bM0udBkfCdeCdVysaA4=
+ bh=aVlgghQWOtGdrS3DFQka7ncCz1zWWLT4V5AG7CyK/vg=;
+ b=HECxVnCJX4fA1g8IWSsZZ8NoifaCXKFUeYd3+uOuygLThLmhg2s7JHYN0YBx1FHMVBo2Yx
+ Iy/woiksd+8k1h5wBskY45s8iFZ3EBoxIsC3T99Ga46XmGwVZe1DjDL7jWmEtjo9mHGH6z
+ l86toxM2V/TDCpd1C1QdPvz6FCD924M=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-507-yA1YRxTZOpOh_FW3a534NA-1; Wed, 30 Sep 2020 13:49:16 -0400
-X-MC-Unique: yA1YRxTZOpOh_FW3a534NA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-575-xziw3H5eP16ELNvLQKM3VA-1; Wed, 30 Sep 2020 13:49:11 -0400
+X-MC-Unique: xziw3H5eP16ELNvLQKM3VA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 866F364155;
- Wed, 30 Sep 2020 17:49:14 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1555C101FFA4;
+ Wed, 30 Sep 2020 17:49:10 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-112-56.ams2.redhat.com
  [10.36.112.56])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D13D81972B;
- Wed, 30 Sep 2020 17:49:01 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id BACA55C1D0;
+ Wed, 30 Sep 2020 17:49:09 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 3F55043BFB8; Wed, 30 Sep 2020 19:48:56 +0200 (CEST)
+ id 7B02C40825; Wed, 30 Sep 2020 19:48:56 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PULL 05/12] microvm: add pcie support
-Date: Wed, 30 Sep 2020 19:48:48 +0200
-Message-Id: <20200930174856.11296-6-kraxel@redhat.com>
+Subject: [PULL 11/12] acpi/gpex: no reason to use a method for _CRS
+Date: Wed, 30 Sep 2020 19:48:54 +0200
+Message-Id: <20200930174856.11296-12-kraxel@redhat.com>
 In-Reply-To: <20200930174856.11296-1-kraxel@redhat.com>
 References: <20200930174856.11296-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -104,286 +104,73 @@ X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.469,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Laurent Vivier <lvivier@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
  Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Leif Lindholm <leif@nuviainc.com>,
- Richard Henderson <rth@twiddle.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E14BqTbj/wVa
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Leif Lindholm <leif@nuviainc.com>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WYXa87YZYuCr
 
-Uses the existing gpex device which is also used as pcie host bridge on
-arm/aarch64.  For now only a 32bit mmio window and no ioport support.
+... just to return something which is constant anyway.
 
-It is disabled by default, use "-machine microvm,pcie=on" to enable.
-ACPI support must be enabled too because the bus is declared in the
-DSDT table.
+-            Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
+-            {
+-                Return (ResourceTemplate ()
+-                {
+-                    WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
+[ ... ]
+
++            Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
++            {
++                WordBusNumber (ResourceProducer, MinFixed, MaxFixed, PosDecode,
+[ ... ]
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Message-id: 20200928104256.9241-6-kraxel@redhat.com
+Message-id: 20200928104256.9241-12-kraxel@redhat.com
 ---
- include/hw/i386/microvm.h | 18 +++++++--
- hw/i386/acpi-microvm.c    | 12 ++++++
- hw/i386/microvm.c         | 84 +++++++++++++++++++++++++++++++++++++++
- hw/i386/Kconfig           |  1 +
- 4 files changed, 111 insertions(+), 4 deletions(-)
+ hw/pci-host/gpex-acpi.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/include/hw/i386/microvm.h b/include/hw/i386/microvm.h
-index 0d61697c97f0..91b064575d55 100644
---- a/include/hw/i386/microvm.h
-+++ b/include/hw/i386/microvm.h
-@@ -25,6 +25,7 @@
- #include "hw/boards.h"
- #include "hw/i386/x86.h"
- #include "hw/acpi/acpi_dev_interface.h"
-+#include "hw/pci-host/gpex.h"
- #include "qom/object.h"
+diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+index 6fb951a0c19f..dbb350a837f8 100644
+--- a/hw/pci-host/gpex-acpi.c
++++ b/hw/pci-host/gpex-acpi.c
+@@ -57,7 +57,6 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+     aml_append(method, aml_return(aml_int(cfg->ecam.base)));
+     aml_append(dev, method);
  
- /*
-@@ -42,10 +43,10 @@
-  *   9     |  acpi      | acpi (ged)
-  *  10     |  pci lnk   |
-  *  11     |  pci lnk   |
-- *  12     |  ps2       |
-- *  13     |  fpu       |
-- *  14     |  ide 0     |
-- *  15     |  ide 1     |
-+ *  12     |  ps2       | pcie
-+ *  13     |  fpu       | pcie
-+ *  14     |  ide 0     | pcie
-+ *  15     |  ide 1     | pcie
-  *  16-23  |  pci gsi   | virtio
-  */
- 
-@@ -59,10 +60,17 @@
- #define GED_MMIO_BASE_REGS    (GED_MMIO_BASE + 0x200)
- #define GED_MMIO_IRQ          9
- 
-+#define PCIE_MMIO_BASE        0xc0000000
-+#define PCIE_MMIO_SIZE        0x20000000
-+#define PCIE_ECAM_BASE        0xe0000000
-+#define PCIE_ECAM_SIZE        0x10000000
-+#define PCIE_IRQ_BASE         12
-+
- /* Machine type options */
- #define MICROVM_MACHINE_PIT                 "pit"
- #define MICROVM_MACHINE_PIC                 "pic"
- #define MICROVM_MACHINE_RTC                 "rtc"
-+#define MICROVM_MACHINE_PCIE                "pcie"
- #define MICROVM_MACHINE_ISA_SERIAL          "isa-serial"
- #define MICROVM_MACHINE_OPTION_ROMS         "x-option-roms"
- #define MICROVM_MACHINE_AUTO_KERNEL_CMDLINE "auto-kernel-cmdline"
-@@ -80,6 +88,7 @@ struct MicrovmMachineState {
-     OnOffAuto pic;
-     OnOffAuto pit;
-     OnOffAuto rtc;
-+    OnOffAuto pcie;
-     bool isa_serial;
-     bool option_roms;
-     bool auto_kernel_cmdline;
-@@ -89,6 +98,7 @@ struct MicrovmMachineState {
-     bool kernel_cmdline_fixed;
-     Notifier machine_done;
-     Notifier powerdown_req;
-+    struct GPEXConfig gpex;
- };
- 
- #define TYPE_MICROVM_MACHINE   MACHINE_TYPE_NAME("microvm")
-diff --git a/hw/i386/acpi-microvm.c b/hw/i386/acpi-microvm.c
-index df39c5d3bd90..f16f2311955c 100644
---- a/hw/i386/acpi-microvm.c
-+++ b/hw/i386/acpi-microvm.c
-@@ -33,6 +33,8 @@
- #include "hw/boards.h"
- #include "hw/i386/fw_cfg.h"
- #include "hw/i386/microvm.h"
-+#include "hw/pci/pci.h"
-+#include "hw/pci/pcie_host.h"
- #include "hw/virtio/virtio-mmio.h"
- 
- #include "acpi-common.h"
-@@ -87,6 +89,15 @@ static void acpi_dsdt_add_virtio(Aml *scope,
+-    method = aml_method("_CRS", 0, AML_NOTSERIALIZED);
+     Aml *rbuf = aml_resource_template();
+     aml_append(rbuf,
+         aml_word_bus_number(AML_MIN_FIXED, AML_MAX_FIXED, AML_POS_DECODE,
+@@ -89,8 +88,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+                                     0x0000,
+                                     cfg->mmio64.size));
      }
- }
+-    aml_append(method, aml_return(rbuf));
+-    aml_append(dev, method);
++    aml_append(dev, aml_name_decl("_CRS", rbuf));
  
-+static void acpi_dsdt_add_pci(Aml *scope, MicrovmMachineState *mms)
-+{
-+    if (mms->pcie != ON_OFF_AUTO_ON) {
-+        return;
-+    }
-+
-+    acpi_dsdt_add_gpex(scope, &mms->gpex);
-+}
-+
- static void
- build_dsdt_microvm(GArray *table_data, BIOSLinker *linker,
-                    MicrovmMachineState *mms)
-@@ -112,6 +123,7 @@ build_dsdt_microvm(GArray *table_data, BIOSLinker *linker,
-                   GED_MMIO_IRQ, AML_SYSTEM_MEMORY, GED_MMIO_BASE);
-     acpi_dsdt_add_power_button(sb_scope);
-     acpi_dsdt_add_virtio(sb_scope, mms);
-+    acpi_dsdt_add_pci(sb_scope, mms);
-     aml_append(dsdt, sb_scope);
- 
-     /* ACPI 5.0: Table 7-209 System State Package */
-diff --git a/hw/i386/microvm.c b/hw/i386/microvm.c
-index 60d32722301f..273abe28c9c1 100644
---- a/hw/i386/microvm.c
-+++ b/hw/i386/microvm.c
-@@ -46,6 +46,7 @@
- #include "hw/virtio/virtio-mmio.h"
- #include "hw/acpi/acpi.h"
- #include "hw/acpi/generic_event_device.h"
-+#include "hw/pci-host/gpex.h"
- 
- #include "cpu.h"
- #include "elf.h"
-@@ -101,6 +102,55 @@ static void microvm_gsi_handler(void *opaque, int n, int level)
-     qemu_set_irq(s->ioapic_irq[n], level);
- }
- 
-+static void create_gpex(MicrovmMachineState *mms)
-+{
-+    X86MachineState *x86ms = X86_MACHINE(mms);
-+    MemoryRegion *mmio32_alias;
-+    MemoryRegion *mmio64_alias;
-+    MemoryRegion *mmio_reg;
-+    MemoryRegion *ecam_alias;
-+    MemoryRegion *ecam_reg;
-+    DeviceState *dev;
-+    int i;
-+
-+    dev = qdev_new(TYPE_GPEX_HOST);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+
-+    /* Map only the first size_ecam bytes of ECAM space */
-+    ecam_alias = g_new0(MemoryRegion, 1);
-+    ecam_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 0);
-+    memory_region_init_alias(ecam_alias, OBJECT(dev), "pcie-ecam",
-+                             ecam_reg, 0, mms->gpex.ecam.size);
-+    memory_region_add_subregion(get_system_memory(),
-+                                mms->gpex.ecam.base, ecam_alias);
-+
-+    /* Map the MMIO window into system address space so as to expose
-+     * the section of PCI MMIO space which starts at the same base address
-+     * (ie 1:1 mapping for that part of PCI MMIO space visible through
-+     * the window).
-+     */
-+    mmio_reg = sysbus_mmio_get_region(SYS_BUS_DEVICE(dev), 1);
-+    if (mms->gpex.mmio32.size) {
-+        mmio32_alias = g_new0(MemoryRegion, 1);
-+        memory_region_init_alias(mmio32_alias, OBJECT(dev), "pcie-mmio32", mmio_reg,
-+                                 mms->gpex.mmio32.base, mms->gpex.mmio32.size);
-+        memory_region_add_subregion(get_system_memory(),
-+                                    mms->gpex.mmio32.base, mmio32_alias);
-+    }
-+    if (mms->gpex.mmio64.size) {
-+        mmio64_alias = g_new0(MemoryRegion, 1);
-+        memory_region_init_alias(mmio64_alias, OBJECT(dev), "pcie-mmio64", mmio_reg,
-+                                 mms->gpex.mmio64.base, mms->gpex.mmio64.size);
-+        memory_region_add_subregion(get_system_memory(),
-+                                    mms->gpex.mmio64.base, mmio64_alias);
-+    }
-+
-+    for (i = 0; i < GPEX_NUM_IRQS; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-+                           x86ms->gsi[mms->gpex.irq + i]);
-+    }
-+}
-+
- static void microvm_devices_init(MicrovmMachineState *mms)
- {
-     X86MachineState *x86ms = X86_MACHINE(mms);
-@@ -147,6 +197,15 @@ static void microvm_devices_init(MicrovmMachineState *mms)
-         x86ms->acpi_dev = HOTPLUG_HANDLER(dev);
-     }
- 
-+    if (x86_machine_is_acpi_enabled(x86ms) && mms->pcie == ON_OFF_AUTO_ON) {
-+        mms->gpex.mmio32.base = PCIE_MMIO_BASE;
-+        mms->gpex.mmio32.size = PCIE_MMIO_SIZE;
-+        mms->gpex.ecam.base   = PCIE_ECAM_BASE;
-+        mms->gpex.ecam.size   = PCIE_ECAM_SIZE;
-+        mms->gpex.irq         = PCIE_IRQ_BASE;
-+        create_gpex(mms);
-+    }
-+
-     if (mms->pic == ON_OFF_AUTO_ON || mms->pic == ON_OFF_AUTO_AUTO) {
-         qemu_irq *i8259;
- 
-@@ -446,6 +505,23 @@ static void microvm_machine_set_rtc(Object *obj, Visitor *v, const char *name,
-     visit_type_OnOffAuto(v, name, &mms->rtc, errp);
- }
- 
-+static void microvm_machine_get_pcie(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    MicrovmMachineState *mms = MICROVM_MACHINE(obj);
-+    OnOffAuto pcie = mms->pcie;
-+
-+    visit_type_OnOffAuto(v, name, &pcie, errp);
-+}
-+
-+static void microvm_machine_set_pcie(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    MicrovmMachineState *mms = MICROVM_MACHINE(obj);
-+
-+    visit_type_OnOffAuto(v, name, &mms->pcie, errp);
-+}
-+
- static bool microvm_machine_get_isa_serial(Object *obj, Error **errp)
- {
-     MicrovmMachineState *mms = MICROVM_MACHINE(obj);
-@@ -521,6 +597,7 @@ static void microvm_machine_initfn(Object *obj)
-     mms->pic = ON_OFF_AUTO_AUTO;
-     mms->pit = ON_OFF_AUTO_AUTO;
-     mms->rtc = ON_OFF_AUTO_AUTO;
-+    mms->pcie = ON_OFF_AUTO_AUTO;
-     mms->isa_serial = true;
-     mms->option_roms = true;
-     mms->auto_kernel_cmdline = true;
-@@ -587,6 +664,13 @@ static void microvm_class_init(ObjectClass *oc, void *data)
-     object_class_property_set_description(oc, MICROVM_MACHINE_RTC,
-         "Enable MC146818 RTC");
- 
-+    object_class_property_add(oc, MICROVM_MACHINE_PCIE, "OnOffAuto",
-+                              microvm_machine_get_pcie,
-+                              microvm_machine_set_pcie,
-+                              NULL, NULL);
-+    object_class_property_set_description(oc, MICROVM_MACHINE_PCIE,
-+        "Enable PCIe");
-+
-     object_class_property_add_bool(oc, MICROVM_MACHINE_ISA_SERIAL,
-                                    microvm_machine_get_isa_serial,
-                                    microvm_machine_set_isa_serial);
-diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
-index d0bd8b537d55..32aa15533bd8 100644
---- a/hw/i386/Kconfig
-+++ b/hw/i386/Kconfig
-@@ -104,6 +104,7 @@ config MICROVM
-     select MC146818RTC
-     select VIRTIO_MMIO
-     select ACPI_HW_REDUCED
-+    select PCI_EXPRESS_GENERIC_BRIDGE
- 
- config X86_IOMMU
-     bool
+     /* Declare an _OSC (OS Control Handoff) method */
+     aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
 -- 
 2.27.0
 

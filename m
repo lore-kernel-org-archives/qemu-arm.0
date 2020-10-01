@@ -1,90 +1,130 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp2408110lfb;
-        Sun, 24 Jan 2021 05:34:52 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzb4Sn/iC11Mi2Tk+x63XR2A+Q+ThUcar2yk6uvyd75P7BcMfCY73KmA+KXkiSNl7zHDjMU
-X-Received: by 2002:a25:ba88:: with SMTP id s8mr19097459ybg.183.1611495292166;
-        Sun, 24 Jan 2021 05:34:52 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611495292; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp60926lfq;
+        Wed, 30 Sep 2020 17:38:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyr+Rogu7vVzUVplyMhKVk7aox3q8v+Z43xY2j8jLa3S+2+yjN1K5ftWGyxXzy4uZVhanRp
+X-Received: by 2002:a25:1e42:: with SMTP id e63mr7139175ybe.78.1601512692878;
+        Wed, 30 Sep 2020 17:38:12 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601512692; cv=none;
         d=google.com; s=arc-20160816;
-        b=XLC3XgjcTqVWR32VrHsOBtsL3MUMPpeLaCKKKSBcUIBTEUGY7Z5iQ996wlaJe7UnBb
-         jgFsnM8AWpgxBCBnP/CJ9+SE73d1BciUOeIrefLInJ2rDC7i09ttYoFJRw5DZwlB247M
-         /DTA+objqMslJAJssuqVkraMmTXJOCFQe+fuood8Gzf6yzwNGOtnrvjVxQHXYHlYIO1K
-         BAkC1cOhYjqE9+6YXG+fTygq54DZ0fxAwZIW/F/fplorXmiCB4XEbrFjmgJcm1ri4LVw
-         Rnq/z2xLLOmr6Hi+yVSpsN7CzgjURyZoAUjtRZ4aJb7beB0iA/E5pIfXlvkvAicOOC9c
-         vD9A==
+        b=qxMA6vveZvKAM5D4Cvc6UKDR+fbJ6CpXRmVDiUw/N8BhRQFsOPI06bVpaJaaZcKfop
+         HpMwW8VrKIxGZlqpMgGUNsGoFyWulnz+ERGXN/DVgky0yyITkAmsL+y4vNw8p48XWRx8
+         ls/Vd5xc6igY1eDw17IPQyEhR6s5eq61G4XQ5lEqykkTSLlwyNZRcg6DKBaNNt1dMiSr
+         gbO/C7tJp+dXIFk71mpG4k7FGi3s0t/q5frAi9KZ4e/7RNVpnwiFr/sNJX9CRTcQu8TW
+         x9amPUak1Ksn5QmeUgr/GNhrn6UheNKMqvYOLD+bXtZTsrjyQQyRTWjf7Wz64hIy+6f7
+         E5cA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=DnEB7eCvT+FDDOw6DNNPM1u7lv33jN4hxVUC4ix651M=;
-        b=DjX/XxJNp7IpMhOXaUR8xwdjDwfUb/VFXh/xjKBWLY0tE4HWF3xSjZPMZI5YjjhtSk
-         hmWXoIYsfPaupzIo4+vDO8qvbly+ENZP8v/0IQSDf5VNAeY+FXTnJrbatFcOaEFT9cok
-         BJsLzuchZZCUW1Pdk8xMsDuBuoMoCM0eCeeSbMnZRvtNnUGKnGfcA2Mihjo4o1PC/JG3
-         M+kzwyph6OuovnY/X9dd1BBJ+AtAmgRsLL/4ekGR1XnYcNS9nXu/aNtY9u4FAgNmKxiC
-         eSrPhSZ6bd7k5Ye10tKdpccXsdePMqr5MeYTL1sxfa7vU+GIO9cvjbH8xCMUBYXaAszS
-         4x0Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :subject:to:from:date:references:in-reply-to:message-id:mime-version
+         :user-agent:dkim-signature:dkim-signature;
+        bh=ad9oTYf42CSXnIkb9wrddznbrkkOlVdD1dWDk0wFhpE=;
+        b=YWYj9JbUkdxXFnl7SyIbNwYcslbu2aMi3MdqJtQXQomMd5jY6n50EiW06AVvAGUBiV
+         5J0rTzYo2naz5UZ/wE4OeYs0+w/SOK9P7g8XMYbR/YjvDtVvGLowRElTHLY709+e7t9m
+         XdqRQo5/aNUcAh3Z94B3UobVIr9wJbXsx5YE3WL+MR3gRl6nZfi/KZjip6mB/7DbraLK
+         Pnt9WKMZpH88OXhQTUHMums/EnqouGOrGYY0f5H6wEqX49As6oAx1hO+t0DNpZ/pVQmU
+         IrICT8CTwniouCoQNUV4LetA75iZYIDF/dNZ/BwpHnQhgSOGh11q+2iB1BI6kM8yUwum
+         9v5A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="ZVzqNh/7";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=J62Ju40Y;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=a9z1A2GZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j133si14058402ybb.145.2021.01.24.05.34.51
+        by mx.google.com with ESMTPS id j145si3038688ybj.324.2020.09.30.17.38.12
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 24 Jan 2021 05:34:52 -0800 (PST)
+        Wed, 30 Sep 2020 17:38:12 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="ZVzqNh/7";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:57424 helo=lists1p.gnu.org)
+       dkim=fail header.i=@aj.id.au header.s=fm3 header.b=J62Ju40Y;
+       dkim=fail header.i=@messagingengine.com header.s=fm3 header.b=a9z1A2GZ;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:54468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l3fXX-0004xX-JX
-	for alex.bennee@linaro.org; Sun, 24 Jan 2021 08:34:51 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40098)
+	id 1kNmbs-0004nx-9T
+	for alex.bennee@linaro.org; Wed, 30 Sep 2020 20:38:12 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33362)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l3fXQ-0004xI-0y; Sun, 24 Jan 2021 08:34:44 -0500
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:56602)
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1kNmbb-0004nZ-0t; Wed, 30 Sep 2020 20:37:55 -0400
+Received: from out3-smtp.messagingengine.com ([66.111.4.27]:47679)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1l3fXN-00080t-MW; Sun, 24 Jan 2021 08:34:43 -0500
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 3B211C602E6;
- Sun, 24 Jan 2021 14:34:38 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1611495278;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=DnEB7eCvT+FDDOw6DNNPM1u7lv33jN4hxVUC4ix651M=;
- b=ZVzqNh/7ovJLeGgrahAH4yNO3Tr7UwxJmJcQ1aAks65D9mgm4v6/YXLshTuUbJW+/ei95Q
- tnpKxu7Oj/eHikiUoTFhccQGZ1jXKGtrlJAXBXi1BuD//dccD0Y9Zupft3rI+0++W1Hm93
- uo+L8HxVTmhmogiKDyjYS7SSJhz8Wg7fc/CcVDUZx3ET1/vLYFFI+xe84IrL2Aj6V7yKeu
- 6QropEbyLo/tFU7LsyiC1l3BDaf8LZNKlq8rhAFAexTAS5YEJySrKB6baPMxZvWPTYIzX5
- ch84g/YAjVbQ5koiDeH6UIIRLdeybTD0dX0fpBXmJgx0CyLDRga9Up9A7bBAcQ==
-Date: Sun, 24 Jan 2021 14:35:00 +0100
-From: Luc Michel <luc@lmichel.fr>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH 21/25] tests/qtest/cmsdk-apb-watchdog-test: Test clock
- changes
-Message-ID: <20210124133500.utnoaefyfozwg64e@sekoia-pc.home.lmichel.fr>
-References: <20210121190622.22000-1-peter.maydell@linaro.org>
- <20210121190622.22000-22-peter.maydell@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20210121190622.22000-22-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ (Exim 4.90_1) (envelope-from <andrew@aj.id.au>)
+ id 1kNmbX-00029t-RY; Wed, 30 Sep 2020 20:37:54 -0400
+Received: from compute4.internal (compute4.nyi.internal [10.202.2.44])
+ by mailout.nyi.internal (Postfix) with ESMTP id CA67E5C029D;
+ Wed, 30 Sep 2020 20:37:50 -0400 (EDT)
+Received: from imap2 ([10.202.2.52])
+ by compute4.internal (MEProxy); Wed, 30 Sep 2020 20:37:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aj.id.au; h=
+ mime-version:message-id:in-reply-to:references:date:from:to:cc
+ :subject:content-type:content-transfer-encoding; s=fm3; bh=ad9oT
+ Yf42CSXnIkb9wrddznbrkkOlVdD1dWDk0wFhpE=; b=J62Ju40YhQo2Q7W2lWuDG
+ 9qkO43DEV7XyLxX0NpREMsvzgeBAWI62DZAUtRLFOQ5GJimCCTpK9GEWYs12wFuy
+ Fk9gc8I1h3Qyo7jAibV0BKXdgZoxUIe/SVb8MXClSRnmyQ8k3gvPc0SblKCnKAMH
+ WRXDckcxAha70qqwOXwzME2MpVXA5tv90z3Ujp07DKcxCJF/b5t2Q9f6i5VYNdeG
+ E4U1AWH11Nkmj6as7NgrD1Wqn6roDvvRpId7ZGVgCQH9fHOoDH2M1hR6sSZBm6tq
+ A+9U9E4ZJeEl10fd3iuyI5uULBWw080UXG5bxwR6vWos80H6TWjtUIj9NqAq8ln9
+ A==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:content-transfer-encoding:content-type
+ :date:from:in-reply-to:message-id:mime-version:references
+ :subject:to:x-me-proxy:x-me-proxy:x-me-sender:x-me-sender
+ :x-sasl-enc; s=fm3; bh=ad9oTYf42CSXnIkb9wrddznbrkkOlVdD1dWDk0wFh
+ pE=; b=a9z1A2GZ+YREHnZv3x5IBoGMOWGNvl7dnGnXTYpLNCjMbOVnwho6Y5n08
+ rqMBb0QeRlx6YoCckZXAisaZvkUlgh59NWe85GQ01uuDZVldFaEOqL44g8raPM63
+ l3/9mEeREX8JinScB4EV8Ha4EhhQimebP5j37DXgHgfAD3ZtjK41ZKbU8VkT7htf
+ ss8YrsrhXQXz2tSB3B0Vpt5WJYrVW1+0yvudlR0ZSxmrxDeAghdVVW4YVL7zkqwF
+ mw/6T2xUCgObil+ZJ62Iip+8VQvHBtHd5JyHlKq7PWM9vD/ThBredq1gq6CtG7fI
+ N8RfbISir447FUSrje/lNk3zY2uZQ==
+X-ME-Sender: <xms:3SR1XylP6r_khHCZtsgDx0Fx9SxstFVqGATGjUFt4P9k3I3oBSPmrQ>
+ <xme:3SR1X52mpAnMc3B77w-SiJSzYi5ob_h36uThFYeLvIm0GgURxZB32ZBLr-QXK4SdS
+ 89igLCeSxppkIgBvw>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgedujedrfeefgdefkecutefuodetggdotefrodftvf
+ curfhrohhfihhlvgemucfhrghsthforghilhdpqfgfvfdpuffrtefokffrpgfnqfghnecu
+ uegrihhlohhuthemuceftddtnecusecvtfgvtghiphhivghnthhsucdlqddutddtmdenuc
+ fjughrpefofgggkfgjfhffhffvufgtgfesthhqredtreerjeenucfhrhhomhepfdetnhgu
+ rhgvficulfgvfhhfvghrhidfuceorghnughrvgifsegrjhdrihgurdgruheqnecuggftrf
+ grthhtvghrnhepieffteejteeitddtheehheetfeeggfehheeljedvueefhffhjeeufedu
+ hfeijeefnecuffhomhgrihhnpehoiihlrggsshdrohhrghenucevlhhushhtvghrufhiii
+ gvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhmpegrnhgurhgvfiesrghjrdhiugdrrghu
+X-ME-Proxy: <xmx:3SR1XwpX6L4ufYt_HQBztH2XJtyBiVEENNL-AKaZ7Oy8UJ5EgtLpWQ>
+ <xmx:3SR1X2l3OzUxT2v4QWl9zjIUw3YMc5o00aY1AHLfS5NQENln4tC_ow>
+ <xmx:3SR1Xw3yqXbfBoN7vYqMaiQN9PiTW3OGVPdEVQPQ0uuIS7lRQZr7MQ>
+ <xmx:3iR1X9z_n2BftiBlNJnrUJ6v15T8TNlU5e5xAOoqTCFv91KSroEo0Q>
+Received: by mailuser.nyi.internal (Postfix, from userid 501)
+ id B2045E0181; Wed, 30 Sep 2020 20:37:48 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
+User-Agent: Cyrus-JMAP/3.3.0-382-ge235179-fm-20200928.002-ge2351794
+Mime-Version: 1.0
+Message-Id: <9a77a08e-e931-4ffc-abc8-498e7cfaf802@www.fastmail.com>
+In-Reply-To: <c18df4e1-99ad-8f73-378f-db00a8afa262@kaod.org>
+References: <20200905212415.760452-1-f4bug@amsat.org>
+ <e640309b-b694-e815-d64d-40dd453e52ef@amsat.org>
+ <5e27c1f9-6d11-fa62-ba71-0020ce9d595b@kaod.org>
+ <07b21d1d-fb5b-efb0-50f2-54a4b86df444@amsat.org>
+ <4648c188-cacc-c532-857c-f0206f60e109@kaod.org>
+ <fd68ae45-da39-44fe-b07f-2510481dbf7f@www.fastmail.com>
+ <c18df4e1-99ad-8f73-378f-db00a8afa262@kaod.org>
+Date: Thu, 01 Oct 2020 10:07:29 +0930
+From: "Andrew Jeffery" <andrew@aj.id.au>
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ "Cameron Esfahani via" <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] hw/arm/aspeed: Map the UART5 device unconditionally
+Content-Type: text/plain;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=66.111.4.27; envelope-from=andrew@aj.id.au;
+ helo=out3-smtp.messagingengine.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 20:37:50
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -97,114 +137,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: v8B5TtnqO9Yj
+X-TUID: iViVFshSCFnt
 
-On 19:06 Thu 21 Jan     , Peter Maydell wrote:
-> Now that the CMSDK APB watchdog uses its Clock input, it will
-> correctly respond when the system clock frequency is changed using
-> the RCC register on in the Stellaris board system registers.  Test
-> that when the RCC register is written it causes the watchdog timer to
-> change speed.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Reviewed-by: Luc Michel <luc@lmichel.fr>
 
-> ---
->  tests/qtest/cmsdk-apb-watchdog-test.c | 52 +++++++++++++++++++++++++++
->  1 file changed, 52 insertions(+)
-> 
-> diff --git a/tests/qtest/cmsdk-apb-watchdog-test.c b/tests/qtest/cmsdk-apb-watchdog-test.c
-> index c6add1fee85..9a4873a8314 100644
-> --- a/tests/qtest/cmsdk-apb-watchdog-test.c
-> +++ b/tests/qtest/cmsdk-apb-watchdog-test.c
-> @@ -15,6 +15,7 @@
->   */
->  
->  #include "qemu/osdep.h"
-> +#include "qemu/bitops.h"
->  #include "libqtest-single.h"
->  
->  /*
-> @@ -31,6 +32,11 @@
->  #define WDOGMIS 0x14
->  #define WDOGLOCK 0xc00
->  
-> +#define SSYS_BASE 0x400fe000
-> +#define RCC 0x60
-> +#define SYSDIV_SHIFT 23
-> +#define SYSDIV_LENGTH 4
-> +
->  static void test_watchdog(void)
->  {
->      g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-> @@ -61,6 +67,50 @@ static void test_watchdog(void)
->      g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
->  }
->  
-> +static void test_clock_change(void)
-> +{
-> +    uint32_t rcc;
-> +
-> +    /*
-> +     * Test that writing to the stellaris board's RCC register to
-> +     * change the system clock frequency causes the watchdog
-> +     * to change the speed it counts at.
-> +     */
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-> +
-> +    writel(WDOG_BASE + WDOGCONTROL, 1);
-> +    writel(WDOG_BASE + WDOGLOAD, 1000);
-> +
-> +    /* Step to just past the 500th tick */
-> +    clock_step(80 * 500 + 1);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
-> +
-> +    /* Rewrite RCC.SYSDIV from 16 to 8, so the clock is now 40ns per tick */
-> +    rcc = readl(SSYS_BASE + RCC);
-> +    g_assert_cmpuint(extract32(rcc, SYSDIV_SHIFT, SYSDIV_LENGTH), ==, 0xf);
-> +    rcc = deposit32(rcc, SYSDIV_SHIFT, SYSDIV_LENGTH, 7);
-> +    writel(SSYS_BASE + RCC, rcc);
-> +
-> +    /* Just past the 1000th tick: timer should have fired */
-> +    clock_step(40 * 500);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
-> +
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 0);
-> +
-> +    /* VALUE reloads at following tick */
-> +    clock_step(41);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
-> +
-> +    /* Writing any value to WDOGINTCLR clears the interrupt and reloads */
-> +    clock_step(40 * 500);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 500);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 1);
-> +    writel(WDOG_BASE + WDOGINTCLR, 0);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGVALUE), ==, 1000);
-> +    g_assert_cmpuint(readl(WDOG_BASE + WDOGRIS), ==, 0);
-> +}
-> +
->  int main(int argc, char **argv)
->  {
->      QTestState *s;
-> @@ -71,6 +121,8 @@ int main(int argc, char **argv)
->      s = qtest_start("-machine lm3s811evb");
->  
->      qtest_add_func("/cmsdk-apb-watchdog/watchdog", test_watchdog);
-> +    qtest_add_func("/cmsdk-apb-watchdog/watchdog_clock_change",
-> +                   test_clock_change);
->  
->      r = g_test_run();
->  
-> -- 
-> 2.20.1
-> 
+On Wed, 30 Sep 2020, at 19:37, C=C3=A9dric Le Goater wrote:
+> On 9/30/20 7:29 AM, Andrew Jeffery wrote:
+> >=20
+> >=20
+> > On Fri, 18 Sep 2020, at 02:33, C=C3=A9dric Le Goater wrote:
+> >> On 9/17/20 6:57 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> >>> On 9/16/20 7:51 AM, C=C3=A9dric Le Goater wrote:
+> >>>> On 9/15/20 7:23 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> >>>>> ping?
+> >>>>
+> >>>> It's reviewed :=20
+> >>>>
+> >>>>   http://patchwork.ozlabs.org/project/qemu-devel/patch/2020090521=
+2415.760452-1-f4bug@amsat.org/
+> >>>>
+> >>>
+> >>> Yes I know :) This is part of my routine to check if a
+> >>> patch hasn't been confirmed to be queued 1 week after the
+> >>> last review, to ping the maintainer (because some
+> >>> automatically flush patches older than 1month in their
+> >>> mailbox).
+> >>
+> >> ooh. That's brutal.
+> >>
+> >>>> I will send a PR when I have more patches.
+> >>>
+> >>> Ah OK. I didn't know you would keep merging the Aspeed
+> >>> patches. Since this was a single patch, I thought it would
+> >>> go via the usual qemu-arm queue from Peter.
+> >>
+> >> sure. It could also. Fine with me. I have only three for the
+> >> moment.=20
+> >>
+> >>> No rush, I just wanted to be sure the patch was not lost.
+> >>> Also, once a patch is queued, I understand it is the
+> >>> maintainer responsibility to keep rebasing the patch
+> >>> queued.
+> >>
+> >> yes. I know. I have been taking care of Andrew's ADC patches=20
+> >> since 2017 ... cough cough :)
+> >=20
+> > Agh!
+>=20
+> Does that mean "I will work on it !" ? :)
 
--- 
+I'll see what I can do, I've recently started to rearrange my task queue=
+.
+
+Andrew

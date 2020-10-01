@@ -1,89 +1,85 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp246827lfq;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp246828lfq;
         Wed, 30 Sep 2020 23:17:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzGLsYnizsWzLYvTzDEHMO2nrxHsJBQmccn2GXwY3ZxGf2WH7btCJ61ZJzxIHpKGJBqUi15
-X-Received: by 2002:a05:6902:50e:: with SMTP id x14mr8315357ybs.273.1601533067350;
+X-Google-Smtp-Source: ABdhPJyDkejxXtwqaxBg/OXSvsejUakIJQM2hS9d9Q9aNp+B9VV1bG0MtCDJKtrS8Krf48w5xi6G
+X-Received: by 2002:a25:b31b:: with SMTP id l27mr7827174ybj.166.1601533067482;
         Wed, 30 Sep 2020 23:17:47 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; t=1601533067; cv=none;
         d=google.com; s=arc-20160816;
-        b=0MO4FvrdlusaqhKMpw/5Aowr/s6lldAdpSgzGbT+iwGGjwT3BPgMTVeh/Cj1x1fdQ8
-         MjUTpHHz5n18G+aiHXkyqZtB3MX4vmI+OM9b28tMpswo4ARDBvJF1F+jkN5tzDtQhhh5
-         9rp28gz98nFi4j4dnibuVmv+d2S7Sic11kITJhk8fPJtTJHQ7Lr8V60MDcLj/8VAArhz
-         IUjiQcjie6fF0D7H/nI5P544EE259DCdegEvjw5r6TrO1xQK07l2Efp9j4oInoLmOHuw
-         N3kqGns2gPDTNHR/7/8lzTDsVfcHgleDOLwZ9OfYlQ4NYEqlsOkYayBMzEmKz4mVzFqI
-         Lggg==
+        b=vAXwxUYrlNn38hIrQfw4ZolRQYRSyyH01KX/lLIPQE2WuuS4FR1JVZh5gLsKzoDAe7
+         dLUAyvdMX4QwRNbkhg3yqzatObGmZuo9TRBeWHA0Z1LFwTm/f/Lusu/m7pQuFIX/41cT
+         aDPfoAOWEy7z+euhasN6Ett+QuSmO1n6zUQpD5eB0t7BQLrlyItdo8LKIy/xnxRdXWLz
+         cF9Xysj34+3icsA1XDWdAak0N9/W+vcFRGQwsVe526Eu36mKk56SZZM8BqQ8dknBBXN3
+         6EXCQP2gUCcCI+A4SlPkIpMeDnwVCUYW2iTtNh/Z/YI1n5nufixEaBDFitF0cM0EScdt
+         ORDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=ieUA5yF+LXhcrhfytruIU7n15HTff8gqNaSJB/pnLxM=;
-        b=mi28FgOwSG/Fs8Z7GHxjOakT4CfIjN0Ayr++1olUAfMWbNI+EyST/IuN5yewDNmbJU
-         W8W4GrIqZR0d70nqKWa3N6vzzbw5aqwp4sSIpw8QQh6TMk5l+0m2E+aVNV3LmoVf2qDs
-         /aDrXU6OFS2dO6vp7NQx1C+6b1VgrqmaT5p8L8qj5rowBZeHDeeADY5m39kmP/Vk2wIn
-         u1dHKWzrC/+bG4qysfpAeVbsZPNnjH4MD5V9Wy+Pxj41fZuEI4QVGY7FUUNGuFSULOlw
-         XL7Ppg7jJAPK5dGYjt4BpmpFrnyVwgEKAoG10baBx+QfR5tg4MG4UG3e5PyM9yEZgTQ/
-         7lng==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=8eBQ4xArbNe0H4b51EnwvK//0iqdyYTLDLzz0NqmkOk=;
+        b=bQ3ALOSOUSB2UYCesQrzjeHtA7nMMSyeJy4zxabsfu4k/Pj9ZozGeVAdQMxVqY/+JW
+         tMHqXbl/SECYF1Gu33O/UV8USLLckk969M79PwvKvUYtpr/gvttMqV37E8pEmLhWirrp
+         +NWZ+m5BagYN7UsydiOD2qo38w/iz5tvHGP3EEfZOn1kXarSNb++IymZcIJ86YwXmQ9b
+         tnTJ63iToG/5ivPwPAsiCk3loXdNV6s2WltpJjCSSWOI/4Dmb02ljKEvePbDeADQ6Y8t
+         T1sxPpN2l+z+F2nlUMiVIjStbmEcW4WEnaOH+h5+jFjJO7c5OjXuPq+/+T5hIvElJZow
+         Re4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sy3znG4y;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g6kPRmo7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f19si4065690ybg.133.2020.09.30.23.17.47
+        by mx.google.com with ESMTPS id v8si4082577ybk.348.2020.09.30.23.17.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
         Wed, 30 Sep 2020 23:17:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Sy3znG4y;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=g6kPRmo7;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:45334 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45320 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNruT-00049X-96
+	id 1kNruU-00049B-Rv
 	for alex.bennee@linaro.org; Thu, 01 Oct 2020 02:17:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38270)
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38256)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kNruH-00047m-5G
- for qemu-arm@nongnu.org; Thu, 01 Oct 2020 02:17:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:39986)
+ id 1kNruG-00046u-L8
+ for qemu-arm@nongnu.org; Thu, 01 Oct 2020 02:17:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34217)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kNruE-0003rC-3I
+ id 1kNruD-0003r3-U4
  for qemu-arm@nongnu.org; Thu, 01 Oct 2020 02:17:32 -0400
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1601533049;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ieUA5yF+LXhcrhfytruIU7n15HTff8gqNaSJB/pnLxM=;
- b=Sy3znG4yPlvqcJw7Fw9oELRf1O64vtzYYCZh0vAgRUYDP/XpKSC7/UQUMgaQuPyR/mFZ5a
- QoZSGu/7zxOZZffJgjKGekBsBteTwIq6pdfcFS81RB+1HeLu70cfPNYKkKjX+INxhZ958j
- PxJn8aBYfEO8HpUD84F7trMiGJBtaE4=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=8eBQ4xArbNe0H4b51EnwvK//0iqdyYTLDLzz0NqmkOk=;
+ b=g6kPRmo7pQnWntj1NzBAxqqw4fD8z5vzaLAKXPvovIBCK9kRyVF0zGUhkZJiehE9gkjybB
+ WPlv0R8u/RjhZnJs01VDvv0haHBEt/CboT4phH8rZwdqsoagK+w53RzeMFmi9NYzpU4WyC
+ hYOryPeudz4h6P8Pwd7BXY/GezN0VX4=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-440-H-sVKAD4MY24D7GRkCZAHg-1; Thu, 01 Oct 2020 02:17:27 -0400
-X-MC-Unique: H-sVKAD4MY24D7GRkCZAHg-1
+ us-mta-285-0t21fm0lNFevAFt8wBbkrA-1; Thu, 01 Oct 2020 02:17:26 -0400
+X-MC-Unique: 0t21fm0lNFevAFt8wBbkrA-1
 Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
  [10.5.11.15])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DEF148030B2;
- Thu,  1 Oct 2020 06:17:26 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D304E185A0E1;
+ Thu,  1 Oct 2020 06:17:24 +0000 (UTC)
 Received: from kamzik.brq.redhat.com (unknown [10.40.193.24])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3C4E35577A;
- Thu,  1 Oct 2020 06:17:25 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 063275578D;
+ Thu,  1 Oct 2020 06:17:19 +0000 (UTC)
 From: Andrew Jones <drjones@redhat.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Subject: [PATCH v4 1/6] linux headers: sync to 5.9-rc7
-Date: Thu,  1 Oct 2020 08:17:13 +0200
-Message-Id: <20201001061718.101915-2-drjones@redhat.com>
-In-Reply-To: <20201001061718.101915-1-drjones@redhat.com>
-References: <20201001061718.101915-1-drjones@redhat.com>
+Subject: [PATCH v4 0/6] hw/arm/virt: Introduce kvm-steal-time
+Date: Thu,  1 Oct 2020 08:17:12 +0200
+Message-Id: <20201001061718.101915-1-drjones@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
 Authentication-Results: relay.mimecast.com;
@@ -92,9 +88,9 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=drjones@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 02:15:30
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 00:27:22
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -25
 X-Spam_score: -2.6
@@ -115,45 +111,69 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, Paolo Bonzini <pbonzini@redhat.com>,
- eric.auger@redhat.com
+Cc: peter.maydell@linaro.org, eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: zHj86XVT2IVC
+X-TUID: hN8tEUnHBAUu
 
-Update against Linux 5.9-rc7.
+v4:
+  - Rebased to latest master
+  - Added an official linux header synch patch, replacing the
+    hack patch used in v3
+  - Added a patch to restore the arm-cpu-features test for AArch64
+    that got lost in the meson shuffle
+  - Added Eric's R-b's
 
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- linux-headers/linux/kvm.h | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+v3:
+  - Rebased: 5.2 machine type and kvm32 drop now included
+  - Switched to using new KVM cap that has been merged upstream
+  - Picked up some r-b's and some of Eric's comments from v2
 
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index 6683e2e1b0a0..43580c767c33 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -790,9 +790,10 @@ struct kvm_ppc_resize_hpt {
- #define KVM_VM_PPC_HV 1
- #define KVM_VM_PPC_PR 2
- 
--/* on MIPS, 0 forces trap & emulate, 1 forces VZ ASE */
--#define KVM_VM_MIPS_TE		0
-+/* on MIPS, 0 indicates auto, 1 forces VZ ASE, 2 forces trap & emulate */
-+#define KVM_VM_MIPS_AUTO	0
- #define KVM_VM_MIPS_VZ		1
-+#define KVM_VM_MIPS_TE		2
- 
- #define KVM_S390_SIE_PAGE_OFFSET 1
- 
-@@ -1035,6 +1036,7 @@ struct kvm_ppc_resize_hpt {
- #define KVM_CAP_LAST_CPU 184
- #define KVM_CAP_SMALLER_MAXPHYADDR 185
- #define KVM_CAP_S390_DIAG318 186
-+#define KVM_CAP_STEAL_TIME 187
- 
- #ifdef KVM_CAP_IRQ_ROUTING
- 
+v2: https://www.mail-archive.com/qemu-devel@nongnu.org/msg727588.html
+
+KVM supports the ability to publish the amount of time that VCPUs
+were runnable, but not running due to other host threads running
+instead, to the guest. The guest scheduler may use that information
+when making decisions and the guest may expose it to its userspace
+(Linux publishes this information in /proc/stat). This feature is
+called "steal time" as it represents the amount of time stolen from
+a guest by scheduling out its VCPUs. To enable this feature KVM
+userspace must provide a memory region that will be used to publish
+the information to the guest. The memory region is typical migratable
+region. The GPA of the region is given to KVM through a VCPU device
+ioctl interface. This feature is only available for 64-bit guests
+per the Arm PVTIME specification (DEN0057A).
+
+This series provides the QEMU support of this feature. It will
+be enabled by default for 5.2 machine types and later, but may
+be disabled with a new CPU property "kvm-steal-time".
+
+Thanks,
+drew
+
+
+Andrew Jones (6):
+  linux headers: sync to 5.9-rc7
+  target/arm/kvm: Make uncalled stubs explicitly unreachable
+  hw/arm/virt: Move post cpu realize check into its own function
+  hw/arm/virt: Move kvm pmu setup to virt_cpu_post_init
+  tests/qtest: Restore aarch64 arm-cpu-features test
+  hw/arm/virt: Implement kvm-steal-time
+
+ docs/system/arm/cpu-features.rst |  11 ++++
+ hw/arm/virt.c                    | 110 ++++++++++++++++++++++---------
+ include/hw/arm/virt.h            |   5 ++
+ linux-headers/linux/kvm.h        |   6 +-
+ target/arm/cpu.c                 |   8 +++
+ target/arm/cpu.h                 |   4 ++
+ target/arm/kvm.c                 |  16 +++++
+ target/arm/kvm64.c               |  64 ++++++++++++++++--
+ target/arm/kvm_arm.h             |  94 ++++++++++++++++++++------
+ target/arm/monitor.c             |   2 +-
+ tests/qtest/arm-cpu-features.c   |  25 +++++--
+ tests/qtest/meson.build          |   3 +-
+ 12 files changed, 286 insertions(+), 62 deletions(-)
+
 -- 
 2.26.2
 

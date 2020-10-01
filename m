@@ -1,197 +1,127 @@
-Received: by 2002:a19:ee17:0:0:0:0:0 with SMTP id g23csp2495743lfb;
-        Sun, 24 Jan 2021 08:08:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwSS6zS+qa51Dw2Azn87ogAgcPjBSy2Y2CVq3ekcANCPtf/iL7YR+C5+MMLRUCGd8R9KPN7
-X-Received: by 2002:a25:8450:: with SMTP id r16mr7861854ybm.37.1611504498961;
-        Sun, 24 Jan 2021 08:08:18 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611504498; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp294133lfq;
+        Thu, 1 Oct 2020 00:39:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDiXEZ+OtvRY1C+EtNfZaIdFUPzThP3SP+xksgKWwsd9UrRr9upUlZMgtmrOLAAokQVdX1
+X-Received: by 2002:aa7:dc16:: with SMTP id b22mr6740429edu.252.1601537949042;
+        Thu, 01 Oct 2020 00:39:09 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601537949; cv=none;
         d=google.com; s=arc-20160816;
-        b=vAEp1Fs2mXNJyvhjLW7rSYQ0/E55clD9+o6agOZpsFJWfFX34pN19kAXWUff6DG4eg
-         i4uJnOR4mPQzgLn9+aTA9A6v02UpkjkbkvG1sXDsYoYvURzFno2/v0t7RKhDvSHX1Her
-         8zA2diEQkbagSIMJny5MkMGjje2BlKKEgcFm3IuVgC2v6gjwUAbKXfcGxk9w8iTMhs0t
-         RPZp8PBw9ylOxen6798lfHNEQEsZ+t0WNmuz7H1T6cfJV19lZ0rTq4XyKZQoVDDrbVkP
-         LbU52k6VgHTEFTRhGoFUNCwZSM7jm8zY01pTYTBGLv1M+KzRzhPLTYv4mt4fUCIbJ5+G
-         Kepw==
+        b=s1utFH3r6WBXG7Lp9CPiUYj3TX34nEV0QRXNU4MFHeWpq1Izv3KYkBVfsmkXgvdurF
+         s9+gIIZ+z0jgI5XpV2HEEZ5k2AVx6g9wytMvwC3jJNEvpceUWxeY8rKiGnhHP+WS6gA0
+         8XNbL53p60eIc7FpbPnXcu7fkL431Ol/wyCY9SpguEO7jKIAUzmqHN5zjXB11SOAbI2L
+         oMJyh+FE7D+bl1BcQCqXvNBJwP2B+ZWyGUrvqaARnuNr4hyLbETexjPZqA+ABvLXa6SE
+         76VZ3pgwRi2ph9miK3fk0/nH9cK/GW0N2RURNZkD5KVzhDug1rZXha2TkHpukE/DhEGC
+         iWQw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=tNu9hFqN2gGcAA7+goDvjENW5QyDLv05V0Gd8G9L/UM=;
-        b=KR84TPNgp0qvt3jUwkYLGuSc6eCNPFuRtKP0orbe+pSfWzQSbNrpGS1gnj2mEUbfqO
-         rcbTURa/L2j58lRa36TCIzhLo/kSSf6HV/OxyEqYGpyJTLYOsR1uyKNglD+b/89wPdTL
-         +l1wLijS5K9+DRx4H7JRiHW2UyxmISlqXvRvBicElIG2yJZHRUX0HQDUD94iJ2vgWeSg
-         rqKgaKGVwvFEamRrL9i4AlR5CsIdLgfeJ6lPNorIbh61UHtUCFMR02tyXajgyMhItt1a
-         da26P+Vqr5PZjfhR254aGR+TFBXHfwJnM8JCRZEJD8aiLeao55A73xCAbrzX/HkPIGP5
-         4zZA==
+        bh=QIWTzCXKkMg/CKhfRHWpTjVDVAjxRLdwdegBES+XJQ8=;
+        b=C1dC8vNkgWU4FRRPW49EpKdrQvcIvcESwTdVLxXIYF/DMiKTprcTOU0z9kS7YfyryG
+         r2kEInEzCrNPX1maga6pF/HrR1bK7ZlK8sfNCBmhzVbLkvBbZ+UBg+oj4TLTEeajCvLW
+         mlTrdk5fC6HASfwK83sj5S1gAqaLiCLu70SzyUcJDnQt+hXlbwvpS0gk+DcdlINDou0I
+         i5/q0mZAvm+mqZV0VkUodutopzSaYXppKOcluweuGWsnLm/D0t3w24bEaojwE7avUcSy
+         jNA25OmtydIlNc2HHkun0Sh3Nf62sxxLJ4vvN2G2W9eDKTCCjnKFIvwdJbSB0zYsldDi
+         kWGQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B3rVvUP2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z1si14410129ybj.393.2021.01.24.08.08.18
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=glws4Js1;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id yj16si3325100ejb.751.2020.10.01.00.39.08
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 24 Jan 2021 08:08:18 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 01 Oct 2020 00:39:09 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=B3rVvUP2;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39678 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l3hw2-00008k-AB
-	for alex.bennee@linaro.org; Sun, 24 Jan 2021 11:08:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58890)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l3hvl-000089-Fe
- for qemu-arm@nongnu.org; Sun, 24 Jan 2021 11:08:04 -0500
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:45329)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l3hvg-0002ZI-8z
- for qemu-arm@nongnu.org; Sun, 24 Jan 2021 11:08:01 -0500
-Received: by mail-ej1-x629.google.com with SMTP id ke15so14458166ejc.12
- for <qemu-arm@nongnu.org>; Sun, 24 Jan 2021 08:07:55 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=tNu9hFqN2gGcAA7+goDvjENW5QyDLv05V0Gd8G9L/UM=;
- b=B3rVvUP2/A5lAd3QaAYa1WO3w0rPFHSXE3KxyRrLcpDzi65WWb0QyGgjVWlWsC5w/F
- 4z76r1MI8HgCSuErqKm4ogJG7gybB/nFa6Jg5PWBJBOEcFp1j3pmJ4NeBs5QvdC2u8EE
- wJeeQ8JwV36gJ1kXCjmNj8tNPek7rNPBkIRKhapaKecNfr02u42y2+U85GV1ByHhQJSl
- YpwihLd96nUoIuIwbZtkhEUFCA0+4+H//eIT1aHcs690QdoDyblvQ8OvHnGn7A+Yq8aD
- zCWJPX6zJmJ2+BouKSWlltJWGM+lLX0j8UpMPyxQd4ZynZrMwk/d2dV+WhLcWDN3RbO/
- V0Mg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=glws4Js1;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1601537948;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=QIWTzCXKkMg/CKhfRHWpTjVDVAjxRLdwdegBES+XJQ8=;
+	b=glws4Js18WlmGR57CBw2VZ/R8QVtbeAJ7jujXOwDrFsSYT0aBa44Q/5JFguueYVk9EjE2y
+	y4/mAAHmFVQP8JiGoGQPJ7IfZpxNG2bsF95/XBHPRFP7VhXmikKUIIRHXA8o6+qPw38Z8u
+	BZoid/PATxJ107CwndtCTUKGa0gBe+U=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-107-ubz-ci21N6GH_1NjcAwqGQ-1; Thu, 01 Oct 2020 03:39:03 -0400
+X-MC-Unique: ubz-ci21N6GH_1NjcAwqGQ-1
+Received: by mail-wm1-f70.google.com with SMTP id f2so5981wml.6
+        for <alex.bennee@linaro.org>; Thu, 01 Oct 2020 00:39:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=tNu9hFqN2gGcAA7+goDvjENW5QyDLv05V0Gd8G9L/UM=;
- b=WwBxkoJKPgMqnRClvCP8gGVS/u46q0uUdtedoWX1zwWiBI9h6EubJ3NKAHz7WVOjLj
- P7/++1X/DaKZIiu8S4Z+sh8u11VeVgTY6ydZk1rFT9i1jGb2hyR+eIiBpad+2qtevNCQ
- 5qVzHqKM+A1t4+AAYp+bQMDuMbA8u5U4+KPz5PXEXHR3nMgN0p7RRO4bjv6ppBrXauF+
- zotCNwr178BR3cA4/+8UsXGnc9fXFZdCWHnhsqGGwwbzF7AqhuK5XOCqa9xpilgkixVM
- 7tLSpTnNTvsvzNQkjwxHiGcTjSVzP1+cVSootx8goIlWEi1V+K35GJQBvKz20HvqLI2M
- mfLA==
-X-Gm-Message-State: AOAM530B5z7ubTfMGBfAAS0RqDLq01330rHF0BEV5s4blb+3by2PzLO+
- FX/9nadTo/EzlGLLfRPJhmwbJJlqq4T2WKsr1b1ipA==
-X-Received: by 2002:a17:906:494c:: with SMTP id
- f12mr121208ejt.56.1611504474126; 
- Sun, 24 Jan 2021 08:07:54 -0800 (PST)
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=QIWTzCXKkMg/CKhfRHWpTjVDVAjxRLdwdegBES+XJQ8=;
+        b=Uc3QgxV3bYhoj/81KzK0rwKRUTMIziogejcTedSyfc+fC32VclttiNr0o+EbyBHspb
+         365J1dTuI+RhaatnHK7iqGYU/mKIy5eQV8klZeCX0+95LHoV6fyUezo27TDV0lrUqD2K
+         ojTBRDFizUe83ZJ92h+qypjleFi66oZwQAKAT7BV6sgKXWR2I08JkbpQif887Z7GlBui
+         qhaSz27EvaQqDX8+zps2PpaKZdg89jW6LjCzdXJE+goH7UM/OsVIO8isYsW1EGPGSnSs
+         zRfECnFouvAaTFH0EK/TFJk2i01pcSP33btJtDBdjpSoGEnxqqFJRva14fPyWpIiRTDu
+         dzwA==
+X-Gm-Message-State: AOAM532cUioL5NzR1XjsLx02+WCmS/pH4hFYYGkSQEGBe1L5aRlSEKuA
+	6rOkz9eUHiIZ/eIA8k/kZwx1r4tcPqC1G+FW8/4xannJWHWGDk608m6X2yWcioshQ7gBOFMjH8v
+	60bTICZ0G6wSwPR7A
+X-Received: by 2002:a05:600c:2283:: with SMTP id 3mr6713959wmf.37.1601537942343;
+        Thu, 01 Oct 2020 00:39:02 -0700 (PDT)
+X-Received: by 2002:a05:600c:2283:: with SMTP id 3mr6713941wmf.37.1601537942116;
+        Thu, 01 Oct 2020 00:39:02 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from ?IPv6:2001:b07:6468:f312:aecc:db56:dd3f:503b? ([2001:b07:6468:f312:aecc:db56:dd3f:503b])
+        by smtp.gmail.com with ESMTPSA id n66sm7270051wmb.35.2020.10.01.00.39.00
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 01 Oct 2020 00:39:01 -0700 (PDT)
+Subject: Re: [PATCH v3 17/19] hw/arm: Automatically select the 'virt' machine
+ on KVM
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ kvm-devel <kvm@vger.kernel.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Fam Zheng <fam@euphon.net>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20200316160634.3386-1-philmd@redhat.com>
+ <20200316160634.3386-18-philmd@redhat.com>
+ <CAFEAcA-Rt__Du0TqqVFov4mNoBvC9hTt7t7e-3G45Eck4z94tQ@mail.gmail.com>
+ <CAFEAcA-u53dVdv8EJdeeOWxw+SfPJueTq7M6g0vBF5XM2Go4zw@mail.gmail.com>
+ <c7d07e18-57dd-7b55-f3dc-283c9d13e4b5@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <8253ddd7-3149-17d9-1174-6474c4bde605@redhat.com>
+Date: Thu, 1 Oct 2020 09:38:59 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <994f40e1-2a5b-4b7a-a4aa-23f824881d8a@www.fastmail.com>
-In-Reply-To: <994f40e1-2a5b-4b7a-a4aa-23f824881d8a@www.fastmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 24 Jan 2021 16:07:42 +0000
-Message-ID: <CAFEAcA-pm+k4ukfVQ_zg-Bi5SAj4e2P9LEVHpbCkSK6wR=T-Mw@mail.gmail.com>
-Subject: Re: KVM guests reading/writing guest memory directly and accurately
-To: Berto Furth <bertofurth@sent.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 05fb9skCMlmJ
+In-Reply-To: <c7d07e18-57dd-7b55-f3dc-283c9d13e4b5@redhat.com>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+X-TUID: 9jv+3lu7uU8s
 
-On Sun, 24 Jan 2021 at 07:22, Berto Furth <bertofurth@sent.com> wrote:
-> Can anyone give me some advice on how a machine or device can read and wr=
-ite kvm guest ram memory and get a guaranteed up to date result? Can someon=
-e point me at an example in the latest QEMU source code? I'm working with a=
-n ARM-32 guest (-cpu host,aarch64=3Doff) running on an ARM-64 host (Cortex =
-A72 - Raspberry Pi4b).
->
-> I have a problem where if I write directly to my guest RAM, (such as a DM=
-A transfer) then the guest can't see the change straight away. Similarly wh=
-en the host writes memory, the guest doesn't see the change until much late=
-r.
->
-> If during a KVM_EXIT_MMIO the qemu host changes some values in guest ram =
-memory (via address_space_write() or cpu_physical_memory_rw() etc...) , is =
-there a way to make the guest be able to accurately read that memory as soo=
-n as the exit is complete. Additionally if a guest changes a value in ram j=
-ust before a KVM_EXIT_MMIO, is there a way to ensure that the QEMU host can=
- then read the up to date newly set values?
+On 29/09/20 22:36, Philippe Mathieu-Daudé wrote:
+> Yes, the problem if I don't restrict to KVM, when
+> using the Xen accelerator odd things occur
+> (using configure --enable-xen --disable-tcg --disable-kvm):
+> 
+> Compiling C object libqemu-i386-softmmu.fa.p/hw_cpu_a15mpcore.c.o
+> hw/cpu/a15mpcore.c:28:10: fatal error: kvm_arm.h: No such file or directory
+> 
+> See
+> https://wiki.xenproject.org/wiki/Xen_ARM_with_Virtualization_Extensions#Use_of_qemu-system-i386_on_ARM
 
-With KVM I think this is just normal "multiple threads/CPUs both
-accessing one in-memory data structure" effects, so you need a
-memory barrier to ensure that what one thread has written is
-visible to the other. I think that the idea is that
-the functions in include/sysemu/dma.h provide a dma_barrier() (which is
-just a CPU memory barrier) and some wrapper functions which put in the
-barrier on the right side of a read or write operation. On the guest
-side it should already be using the right barrier insns in order
-to ensure that real hardware DMA sees the right view of RAM...
+I don't understand.  Is Xen adding CONFIG_ARM_VIRT=y to
+default-configs/i386-softmmu.mak??
 
-We're very inconsistent about using these -- I've never liked the way
-we have separate 'dma' operations here rather than having the normal
-functions Just Work. But I haven't ever looked very deeply into what
-the requirements in this area are.
+(By the way, there are duplicate Kconfig symbols between target/arm and
+hw/cpu, they could/should be removed from target/arm).
 
-> I understand that the proper thing to do is to set up the memory region i=
-n question as MMIO so that when the guest accesses this memory a KVM_EXIT_M=
-MIO will occur but the memory region in question has to be executable and M=
-MIO memory areas are not executable in QEMU. In addition it's not easily po=
-ssible to predict before hand exactly what memory addresses are going to be=
- involved in DMA, so I'd prefer to avoid having to dynamically construct li=
-ttle MMIO memory islands inside the main guest ram space as the guest runs.
-
-You only want to mark regions as MMIO if they need to actually come
-out to QEMU for the guest memory access to be handled -- typically
-this is device MMIO-mapped register banks. Normal RAM isn't mapped
-as MMIO.
-
-> I'm assuming that the guest could be modified to disable d-caching (modif=
-y the ARM register SCTLR / p15 ?) and that may help but I'm desperately try=
-ing to avoid that if possible because I'm working with a proprietary "blob"=
- on the guest that I don't have all the source code for.
-
-With Arm KVM doing this wouldn't help; in fact it would make things
-worse, because then the view of guest RAM that the guest sees has
-the non-cacheable attribute, but the view of guest RAM that QEMU
-has mapped is still cacheable, so the two get hopelessly mismatched
-ideas of what the RAM contents are.
-
-(Side note: if the guest wants to map RAM as non-cacheable, this
-won't work with Arm KVM (unless the host CPU supports FEAT_S2FWB,
-which is an Armv8.4 feature), for the same "QEMU and guest view
-of the same block of RAM disagree about whether it's cached" reason.
-The most commonly encountered case of this is that you can't use a
-normal VGA PCI graphics device model with KVM, because the guest maps
-the graphics RAM on the device non-cacheable.)
-
-> I know it's not very professional of me to make an emotional plea, but I'=
-ve been working on this for weeks and I am desperately hoping someone can p=
-oint to a solution for me. I am not a KVM expert and so I'm hoping I'm just=
- missing something simple and obvious that one of you can quickly point out=
- for me.
-
-Nah, this isn't obvious stuff -- a lot of QEMU's internals aren't
-very well documented and often are inconsistent about whether they
-do things correctly or not...
-
-thanks
--- PMM
+Paolo

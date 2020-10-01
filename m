@@ -1,108 +1,94 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp249183lfq;
-        Wed, 30 Sep 2020 23:21:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzRGSkr5dgkpi7br/RJKBVKh+Tm7+dN4yKeLtyCHIEiDdnjG+tkFzckbhpO4HXSjyGhZruG
-X-Received: by 2002:a25:8389:: with SMTP id t9mr9011059ybk.471.1601533309829;
-        Wed, 30 Sep 2020 23:21:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601533309; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp284143lfq;
+        Thu, 1 Oct 2020 00:22:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzZs14YShQrF0ZLlUlZUy2ZggouK4VOvTrvqfoRriRiBMvsXNZqwsAMC/7l2+wxAL7I4/W
+X-Received: by 2002:a25:4841:: with SMTP id v62mr8258021yba.104.1601536928212;
+        Thu, 01 Oct 2020 00:22:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601536928; cv=none;
         d=google.com; s=arc-20160816;
-        b=r3whkrG6clsVUHRjWNRM8qbstt13SxauOjzTcO82lN5R03kZrIItcrnbHDquvJHCC7
-         /knT2Ljqn7enoH7in2HFBNVM5GtfrbVbE/OvajyZlhPfxRBmvp+PxQ8x4eaRwRWHV+w+
-         tjhKkNCr4cx5JRlw0kRAWrDk9zzfiAmehjH453ePfkCsr5wE44cNOCh1CPT+PxVAZijk
-         NNcq/Yw9Kl4dh9eBJ3Bkk8RsTvDOBs0ubJcQptXrJuum1JLpliGOn5FR/gYVOikG9IZB
-         QzuPvSZHgKBhjJBt7gBNkbPu4yWEOa/gEJTH+HkUkqIQDel3o6D51zUnQd4aY5Uiw3vG
-         EWew==
+        b=g3QVuD5Y8ssAdt2pcHb5ZnWZLchhaZoSXkxeUxrlP7A0pdcLFZYMe4f3+xq02r6ucs
+         BmVs14O0w6J8g2Cw8MtPW08pE5nvCjMnrNeV9RBv8PWW0IAVvjOhJD78N+aR1xKZWruW
+         chnZ444/mh8KZrAQMSLeThH0NuVhLrV4zzRW29iuwSefZ3Xz3cHqZinQjA8cj0cCfBrn
+         AyGYo6haCpOJyK18a3XZzblbdU2o9z0T0da+d0FVluu4m1C0yxILTfbk79AQG36Y+bE0
+         gJrKFK5pDgTqOEWpfAUXPhiv9X6t3wWFb0Ie4QcS/Y3kqp1TUHnFCM5JcaBoISuNcA4z
+         JsEw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=qozuzyWIIUkD3H8iW/Pdp1MSaWMoH53JCt3b3Tc2H3E=;
-        b=FPMHjeYTSVbYKzSTzlixeBWaPt3beIEdz1U1pIftlz7apx5Cr5lW97GC2iUc85Va01
-         cFqac3/yKV+JUrhl77tOnz+khqkYIkG9VC9tnki5mrS8AA1o4hwvksJSUAfEURG7vjtv
-         zKiVVt9r97oRpGLnq8o9FI6Q+fcA3pMX5FlAwzjarFRM5BPvaU8+2BlVFoiJWzvt7z+D
-         IDcixdF2rdLXGxUL4O+Sh5WeAhwDYc0QnlTX+a2fl+0fLKHbSy0BU1haPnI0mIeciOem
-         0wGSk3miSA37HFrQGhyPo9d5H+qh+fr1BbifM2Sfw0UOc1JxEGIGDpC+624yCm0MU8Ez
-         K3Zg==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=uL4h5S6sdPcNvbTLJHkwrr3Qmse4WnXfzM2vD3oVUXQ=;
+        b=WlkPvjCtqkeGTgvtK6hZ++Ux4aCBbG8xW7jpyzVsp0J2y4ycwYvuQu4LqFKfmXSC15
+         /xuCO8Q92I8nC25wycv2/M7WxJR8nCPSSRu0VxHQsukjq+mEcUVHOLrVEjzfAFWtgbDB
+         fvubDLmc4xgbO/aatkYtkepRTSDcUtDSmDdD4Rc2OrhSmDDJsDrlNeXB06ECKXngIo9a
+         rivseIEHQ7+ZfTOm62VXZUWUbzG01elnhWLN7p4CAPzq+PoHN2qnL8FMO1Sw+EuoN2BV
+         MS2Cp+mOPbTF4V/XV2GY5EPuLZtljXX2wk95Zeaty++VVxI+N4x6ffz+VCLrHsER6fIn
+         4l1Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZENHq90j;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c184si3745555ybf.140.2020.09.30.23.21.49
+        by mx.google.com with ESMTPS id i18si4257368ybt.54.2020.10.01.00.22.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Sep 2020 23:21:49 -0700 (PDT)
+        Thu, 01 Oct 2020 00:22:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=ZENHq90j;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59138 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:53600 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNryP-0001VC-7U
-	for alex.bennee@linaro.org; Thu, 01 Oct 2020 02:21:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38404)
+	id 1kNsul-0006PT-Jm
+	for alex.bennee@linaro.org; Thu, 01 Oct 2020 03:22:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49724)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kNruP-0004Um-R6
- for qemu-arm@nongnu.org; Thu, 01 Oct 2020 02:17:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51571)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kNruN-0003ss-Kd
- for qemu-arm@nongnu.org; Thu, 01 Oct 2020 02:17:41 -0400
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601533059;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qozuzyWIIUkD3H8iW/Pdp1MSaWMoH53JCt3b3Tc2H3E=;
- b=ZENHq90jr4p3Gub/DYi3GxP+jbiIrgSlsk082gyQT8Q9t6Tn7qsyBdhw15kjq+mwZvN36u
- /Kq+Okp4KqByws79zndctaTMet+Usg31TTW7BnuB7AuGo4XKzp2KkVD1E2Vry0GAE2VdP+
- 8ydVL94gN+sGi6WmNcv/I2uvQ56IMuU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-237-EF1c7_qEP0mNeAv4hqsqaA-1; Thu, 01 Oct 2020 02:17:37 -0400
-X-MC-Unique: EF1c7_qEP0mNeAv4hqsqaA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1EA0680EF9B;
- Thu,  1 Oct 2020 06:17:36 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.193.24])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A328E55797;
- Thu,  1 Oct 2020 06:17:34 +0000 (UTC)
-From: Andrew Jones <drjones@redhat.com>
-To: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org
-Subject: [PATCH v4 5/6] tests/qtest: Restore aarch64 arm-cpu-features test
-Date: Thu,  1 Oct 2020 08:17:17 +0200
-Message-Id: <20201001061718.101915-6-drjones@redhat.com>
-In-Reply-To: <20201001061718.101915-1-drjones@redhat.com>
-References: <20201001061718.101915-1-drjones@redhat.com>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kNsud-0006P3-PG; Thu, 01 Oct 2020 03:21:59 -0400
+Received: from smtpout1.mo529.mail-out.ovh.net ([178.32.125.2]:59103)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>)
+ id 1kNsub-0002xo-8X; Thu, 01 Oct 2020 03:21:59 -0400
+Received: from mxplan5.mail.ovh.net (unknown [10.108.20.2])
+ by mo529.mail-out.ovh.net (Postfix) with ESMTPS id 020AC60CD283;
+ Thu,  1 Oct 2020 09:21:52 +0200 (CEST)
+Received: from kaod.org (37.59.142.103) by DAG4EX1.mxp5.local (172.16.2.31)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2044.4; Thu, 1 Oct 2020
+ 09:21:52 +0200
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G005aef4187a-d417-48cf-8b9d-dffdaaa9e142,
+ 2FD1C644E9D11323632A639817FC6AC7C89AF497) smtp.auth=clg@kaod.org
+Subject: Re: [PATCH] ssi: Display chip select polarity in monitor 'info qtree'
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ <qemu-devel@nongnu.org>
+References: <20200927091946.65491-1-f4bug@amsat.org>
+From: =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Message-ID: <9b1175fa-9837-f3c9-0931-34965e6db14a@kaod.org>
+Date: Thu, 1 Oct 2020 09:21:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20200927091946.65491-1-f4bug@amsat.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 00:27:22
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+X-Originating-IP: [37.59.142.103]
+X-ClientProxiedBy: DAG2EX2.mxp5.local (172.16.2.12) To DAG4EX1.mxp5.local
+ (172.16.2.31)
+X-Ovh-Tracer-GUID: a482203b-b840-4422-a4de-6b8db3bebbbd
+X-Ovh-Tracer-Id: 9480077218061781923
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: gggruggvucftvghtrhhoucdtuddrgedujedrfeefgdduvdduucetufdoteggodetrfdotffvucfrrhhofhhilhgvmecuqfggjfdpvefjgfevmfevgfenuceurghilhhouhhtmecuhedttdenucesvcftvggtihhpihgvnhhtshculddquddttddmnecujfgurhepuffvfhfhkffffgggjggtgfhisehtkeertddtfeejnecuhfhrohhmpeevrogurhhitggpnfgvpgfiohgrthgvrhcuoegtlhhgsehkrghougdrohhrgheqnecuggftrfgrthhtvghrnhepjeekudeuudevleegudeugeekleffveeludejteffiedvledvgfekueefudehheefnecukfhppedtrddtrddtrddtpdefjedrheelrddugedvrddutdefnecuvehluhhsthgvrhfuihiivgeptdenucfrrghrrghmpehmohguvgepshhmthhpqdhouhhtpdhhvghlohepmhigphhlrghnhedrmhgrihhlrdhovhhhrdhnvghtpdhinhgvtheptddrtddrtddrtddpmhgrihhlfhhrohhmpegtlhhgsehkrghougdrohhrghdprhgtphhtthhopehfgegsuhhgsegrmhhsrghtrdhorhhg
+Received-SPF: pass client-ip=178.32.125.2; envelope-from=clg@kaod.org;
+ helo=smtpout1.mo529.mail-out.ovh.net
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 03:21:53
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.469,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.373, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,33 +101,100 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, eric.auger@redhat.com
+Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WQB5GwpUKdw6
+X-TUID: D7rugkgJrSDa
 
-arm-cpu-features got dropped from the AArch64 tests during the meson
-conversion shuffle.
+On 9/27/20 11:19 AM, Philippe Mathieu-Daudé wrote:
+> It is sometime useful to verify a device chip select polarity
+> on a SPI bus. Since we have this information available, display
+> it in the 'info qtree' monitor output:
+> 
+>   $ qemu-system-arm -M lm3s6965evb -monitor stdio -S
+>   (qemu) info qtree
+>   [...]
+>   dev: pl022, id ""
+>     gpio-out "sysbus-irq" 1
+>     mmio 0000000040008000/0000000000001000
+>     bus: ssi
+>       type SSI
+>       dev: ssd0323, id ""
+>         gpio-in "" 1
+>         gpio-in "ssi-gpio-cs" 1
+>         chip select polarity: high           <---
+>       dev: ssi-sd, id ""
+>         gpio-in "ssi-gpio-cs" 1
+>         chip select polarity: low            <---
+>         bus: sd-bus
+>           type sd-bus
+>           dev: sd-card, id ""
+>             spec_version = 2 (0x2)
+>             drive = "sd0"
+>             spi = true
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Signed-off-by: Andrew Jones <drjones@redhat.com>
----
- tests/qtest/meson.build | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Tested-by: Cédric Le Goater <clg@kaod.org>
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 874b5be62be2..db169a53b530 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -146,7 +146,8 @@ qtests_aarch64 = \
-   (cpu != 'arm' ? ['bios-tables-test'] : []) +                                                  \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-test'] : []) +        \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-swtpm-test'] : []) +  \
--  ['numa-test',
-+  ['arm-cpu-features',
-+   'numa-test',
-    'boot-serial-test',
-    'migration-test']
- 
--- 
-2.26.2
+Thanks,
+
+C.
+
+  dev: aspeed.spi2-ast2600, id ""
+    gpio-out "sysbus-irq" 2
+    num-cs = 1 (0x1)
+    inject-failure = false
+    sdram-base = 0 (0x0)
+    mmio 000000001e641000/0000000000000100
+    mmio 0000000050000000/0000000010000000
+    bus: spi
+      type SSI
+  dev: aspeed.spi1-ast2600, id ""
+    gpio-out "sysbus-irq" 2
+    num-cs = 1 (0x1)
+    inject-failure = false
+    sdram-base = 0 (0x0)
+    mmio 000000001e630000/0000000000000100
+    mmio 0000000030000000/0000000010000000
+    bus: spi
+      type SSI
+      dev: mx66l1g45g, id ""
+        gpio-in "ssi-gpio-cs" 1
+        nonvolatile-cfg = 36863 (0x8fff)
+        spansion-cr1nv = 0 (0x0)
+        spansion-cr2nv = 8 (0x8)
+        spansion-cr3nv = 2 (0x2)
+        spansion-cr4nv = 16 (0x10)
+        drive = "mtd2"
+        chip select polarity: low
+  dev: aspeed.fmc-ast2600, id ""
+    gpio-out "sysbus-irq" 3
+    num-cs = 2 (0x2)
+    inject-failure = false
+    sdram-base = 2147483648 (0x80000000)
+    mmio 000000001e620000/0000000000000100
+    mmio 0000000020000000/0000000010000000
+    bus: spi
+      type SSI
+      dev: mx66l1g45g, id ""
+        gpio-in "ssi-gpio-cs" 1
+        nonvolatile-cfg = 36863 (0x8fff)
+        spansion-cr1nv = 0 (0x0)
+        spansion-cr2nv = 8 (0x8)
+        spansion-cr3nv = 2 (0x2)
+        spansion-cr4nv = 16 (0x10)
+        drive = "mtd1"
+        chip select polarity: low
+      dev: mx66l1g45g, id ""
+        gpio-in "ssi-gpio-cs" 1
+        nonvolatile-cfg = 36863 (0x8fff)
+        spansion-cr1nv = 0 (0x0)
+        spansion-cr2nv = 8 (0x8)
+        spansion-cr3nv = 2 (0x2)
+        spansion-cr4nv = 16 (0x10)
+        drive = "mtd0"
+        chip select polarity: low
 

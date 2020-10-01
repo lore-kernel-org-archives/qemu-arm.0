@@ -1,153 +1,224 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp743895lfq;
-        Thu, 1 Oct 2020 10:14:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzb45mmeeUjDT63LRhYFKf9Ijd6/V1foSnq3rU683fChJaoWmFKA0vl+2nAYhQnB+wwTLRY
-X-Received: by 2002:a25:44:: with SMTP id 65mr11698013yba.6.1601572466674;
-        Thu, 01 Oct 2020 10:14:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601572466; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp803651lfq;
+        Thu, 1 Oct 2020 11:28:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx8AY+w8snwMRTBO4H/ZuKOAXCrXLmmE93AmqLYS3qRVsL6BFxdQs5iriwJXCKZzoZHIJ0L
+X-Received: by 2002:a25:d94d:: with SMTP id q74mr12395756ybg.452.1601576902183;
+        Thu, 01 Oct 2020 11:28:22 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601576902; cv=none;
         d=google.com; s=arc-20160816;
-        b=Bx8b8eTkwJCOBrqCWx5NF1Tj5WbMt3SPNP98klWoU+YnVyg83VqFEHrPNVHCqULOta
-         /SxRfHETNnU/ww2Hiwxn0QjeHgf3SVPFHaWld1iRGBEDZ00Y1s5/4gfkckcjihDx92IK
-         7H5lA1D7SI6cGh+WDvn21FRBQ/1uWdfZHgbhf8XiQRkIme5UUzTybeW8wuypnFqg65FI
-         XIIcMi8AcoAXzNLLsZkRdkIYC0NetVzuM6V1RclDFHAkumYkPvIKa3nJSRlywBpu48p4
-         Z9NhGEnqAZKMsYzvuvrDK5D3DjWwvw0PqlrVvvwPLqrjU4VbznCOX6lSnAnZjHW1CLKX
-         AVXg==
+        b=jYewVBe6PAme6r0qzPjDnyM0AyN4qIuAYowUUhxyCqNuI28tLG0BYUURjXL2LwYzd6
+         /Dr4Pyo3qVOWZ81a04OlOaFAT9Bl3zot0dO2P2jtpH52uWsnz+UigiJhnUN52A5zHTIx
+         SI7x+FE5oJQ2A4Nq7jZqdj1t38YN2PJkJB3H8v3jMpW0pudqR5/v1vHeo2oV1ZU4iWZK
+         OxiTxGej2bg7DHtR6tgIoUpUqWp/4nOgiR+tNWZkjS6kXbgMe1GexMzuu4hjRm1HOGmV
+         jkX8GAwP4q8KVHZ9cARnkuX3oFH10czgVyGf8XknmvA2/g/bAF0MaBjPRN73M+xugn2o
+         V6Mg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=RQlFEpLKBh5i/mlvWh+6qpQClVJ+XtthGnl3HhZREwI=;
-        b=RnRi+f7S1mCu8lsObuOtpflpZC0nbj4ghgHE7tyqPNurpLLHxMvh4sZstKyF/zTTYu
-         peR04wboPJW9uqnM1q7cm2zJUgN8YtUgBbGcIgvEF4UkgT7zNxKFWmSF5XfwVshjfWD4
-         Lq7Llmmf1YCskOAiPjG71/7+zlQ0MRTcLFS75krEKhO3UgYOwxuSalFDu9cITrf5SVKS
-         pkZ7q3VHGGTcmmVGwHdDuxa+dog9h1m5uOJ6s/psYnZsZ/e0XytqRC9fxBvLIajnOQtw
-         Qug/SnnRV2NQ3WMgaEBoV6oPwkTKAjXwL6n+fX9cjQ89oysefjATSu0WQ8Oqp5aXOlz1
-         r/3A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=XovN2yUCiekbmBAKdpWLRIt4i1lJ0Bmc1UNkl7nCvwU=;
+        b=QnDU9r5o6LO6c4ZHmS/Ok+w16p4H6qXPo1i5XCrofQV/c+dM9mRLOuc4/ztG0ffsxT
+         T5k/LZD3pm+5Es+dv6rNjQDllQp6lvYTZkvIyhNawvUHq8X0l137MpF8288HEBZdMD11
+         6HQOlu8QsBj9WAM16yjULm7upAMDRnnpsJAa9NXVwmNeklyxanvHVK9LNsTy5Q65UaBF
+         54dVAfBGsU+FtBtmqm0DbcDw+e1nqxSOfcnRbO/1bjZRV8hmEzii4sMJago+xkja18+s
+         Bc1ZsqdTEcczj+tsB+BR5TChK+jwZBAApN7ZZ1cs10f6X/COVgQz3Vo1Fjwh8ei/r33Z
+         LOgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mk7yrgYK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YXAJD+Rp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 10si5454380ybn.21.2020.10.01.10.14.26
+        by mx.google.com with ESMTPS id w14si5226925ybm.231.2020.10.01.11.28.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Oct 2020 10:14:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 01 Oct 2020 11:28:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mk7yrgYK;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:56376 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=YXAJD+Rp;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34526 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kO29y-0001a9-0z
-	for alex.bennee@linaro.org; Thu, 01 Oct 2020 13:14:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56772)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kO3JV-0003Ci-Jy
+	for alex.bennee@linaro.org; Thu, 01 Oct 2020 14:28:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45620)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kO29o-0001Vd-EY
- for qemu-arm@nongnu.org; Thu, 01 Oct 2020 13:14:16 -0400
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344]:39414)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kO29i-0002Zf-T6
- for qemu-arm@nongnu.org; Thu, 01 Oct 2020 13:14:16 -0400
-Received: by mail-ot1-x344.google.com with SMTP id u25so6187955otq.6
- for <qemu-arm@nongnu.org>; Thu, 01 Oct 2020 10:14:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:references:from:message-id:date:user-agent:mime-version
- :in-reply-to:content-language:content-transfer-encoding;
- bh=RQlFEpLKBh5i/mlvWh+6qpQClVJ+XtthGnl3HhZREwI=;
- b=mk7yrgYKlci+8rw4b9qKiuX45vqgi5zGvpkCeiLoUkn/NUyIZ2tgIuQX9Udx5n1NYV
- 3p95n1S9DDfPq5iz7851DbLv+AXJ7JQky5w/VlHZp4H1dCqGpOAZUexI/R0xu2ocC13u
- 5c+gGecDs5j4zkYTxB5iBpu+iB1oScaRejPilJHD2hJB50XV1vEFO4wiS/3bREpy9JKI
- BdGRRPracnRQ+IwRYV3Z+s1KY8TbBuOY9KXmSer6sKJImA5ezWeUm2XkF7dYKc13Opm6
- fJtL9DpjKsbZ7dM1pKMcoi2OQF1GtPqIejS1dekQ1931ywn8KO7svA0pJQvKG2CmBk+J
- Xwbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=RQlFEpLKBh5i/mlvWh+6qpQClVJ+XtthGnl3HhZREwI=;
- b=IjCLl5Xz9+HApn4zjxZQmpFVxp1j7//lRfaB3sXXdvjnvOEIMEmJiM6BZgQo0KvZjz
- S0a/cZ0Ppzd5BlEmsHUynen6NQNeCAGxTIzBiwmbBgXrLnck6RhK1odfxHxGwa5uNO15
- c0vg6UDWISYuV1snI82UeltcWTfGP2qFxjJn8wElMWedoueLBCQdeEeBvsnXNEp0Zk6s
- NVIyAgpYvuHbZXQywJTI0fI+L+lrff57QNkqSFljqk/VuuJtb8LKtolgaQ31510QVDIj
- N3tnK1OJBN3ylMzKKRwSbZzbWTjC+w0fiQIt+v3zbr4SMFbWXhf9EKBOSHJbKau9yX9Z
- heeA==
-X-Gm-Message-State: AOAM530f3m2nGgtttt5JLDCo/IZlGvVrAfsv8LzJ0SRRivCWMQlNBK6h
- Ro1oIupE7xkWvNZEd8HEuWw6WQ==
-X-Received: by 2002:a05:6830:48:: with SMTP id
- d8mr5360433otp.272.1601572449524; 
- Thu, 01 Oct 2020 10:14:09 -0700 (PDT)
-Received: from [10.10.73.179] (fixed-187-189-51-144.totalplay.net.
- [187.189.51.144])
- by smtp.gmail.com with ESMTPSA id h204sm234009oib.52.2020.10.01.10.14.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Oct 2020 10:14:08 -0700 (PDT)
-Subject: Re: [PATCH] target/arm: Make '-cpu max' have a 48-bit PA
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20201001160116.18095-1-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <f8f3a88e-2c8d-74c7-4f38-c21629d86cef@linaro.org>
-Date: Thu, 1 Oct 2020 12:14:05 -0500
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
-MIME-Version: 1.0
-In-Reply-To: <20201001160116.18095-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::344;
- envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kO3Cv-0005AG-QT
+ for qemu-devel@nongnu.org; Thu, 01 Oct 2020 14:21:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:51662)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kO3Cs-0002pm-Na
+ for qemu-devel@nongnu.org; Thu, 01 Oct 2020 14:21:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601576489;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:content-type:content-type;
+ bh=XovN2yUCiekbmBAKdpWLRIt4i1lJ0Bmc1UNkl7nCvwU=;
+ b=YXAJD+RpHjMU/w0Xw8TvcrxJtQRuuCiu/vigiRnktv0RoTA7zdmgQj3WPVVuUg1qRJ3Bg2
+ F5rFr4kjuqnc+aTEn6lFAyARh61VZ36noqzahduUqXuElr2c1vzdYIzZCRS0cAjC/WMaV/
+ 4wIbGnKiziu2Bh8GtWucHANHD/1x/98=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-575-pzuGm37mNd2DR_HrlrpD9A-1; Thu, 01 Oct 2020 14:21:27 -0400
+X-MC-Unique: pzuGm37mNd2DR_HrlrpD9A-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8F54710866A0;
+ Thu,  1 Oct 2020 18:21:26 +0000 (UTC)
+Received: from thuth.com (ovpn-112-107.ams2.redhat.com [10.36.112.107])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3B9175C1CF;
+ Thu,  1 Oct 2020 18:21:24 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/rtc/twl92230: Silence warnings about missing fallthrough
+ statements
+Date: Thu,  1 Oct 2020 20:21:21 +0200
+Message-Id: <20201001182121.187122-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="US-ASCII"
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/01 04:25:37
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.26,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: PcOyV/aVHEQV
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: udt5Mtfs2csE
 
-On 10/1/20 11:01 AM, Peter Maydell wrote:
-> QEMU supports a 48-bit physical address range, but we don't currently
-> expose it in the '-cpu max' ID registers (you get the same range as
-> Cortex-A57, which is 44 bits).
-> 
-> Set the ID_AA64MMFR0.PARange field to indicate 48 bits.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I forget why I wanted this patch originally, it's been so long
-> since I wrote it, but it seems like a useful thing to allow -cpu max
-> to have a big PA range...
-> ---
->  target/arm/cpu64.c | 4 ++++
->  1 file changed, 4 insertions(+)
+When compiling with -Werror=implicit-fallthrough, gcc complains about
+missing fallthrough annotations in this file. Looking at the code,
+the fallthrough is indeed wanted here, but instead of adding the
+annotations, it can be done more efficiently by simply calculating
+the offset with a subtraction instead of increasing a local variable
+one by one.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/rtc/twl92230.c | 50 +++++++++++++++++++++++------------------------
+ 1 file changed, 24 insertions(+), 26 deletions(-)
 
-Were you by chance looking at some of the optional v8.2 extensions, one of
-which is a 52-bit VA, and noticed this nit?
+diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
+index f838913b37..499f421932 100644
+--- a/hw/rtc/twl92230.c
++++ b/hw/rtc/twl92230.c
+@@ -271,37 +271,36 @@ static void menelaus_gpio_set(void *opaque, int line, int level)
+ static uint8_t menelaus_read(void *opaque, uint8_t addr)
+ {
+     MenelausState *s = (MenelausState *) opaque;
+-    int reg = 0;
+ 
+     switch (addr) {
+     case MENELAUS_REV:
+         return 0x22;
+ 
+-    case MENELAUS_VCORE_CTRL5: reg ++;
+-    case MENELAUS_VCORE_CTRL4: reg ++;
+-    case MENELAUS_VCORE_CTRL3: reg ++;
+-    case MENELAUS_VCORE_CTRL2: reg ++;
++    case MENELAUS_VCORE_CTRL5:
++    case MENELAUS_VCORE_CTRL4:
++    case MENELAUS_VCORE_CTRL3:
++    case MENELAUS_VCORE_CTRL2:
+     case MENELAUS_VCORE_CTRL1:
+-        return s->vcore[reg];
++        return s->vcore[addr - MENELAUS_VCORE_CTRL1];
+ 
+-    case MENELAUS_DCDC_CTRL3: reg ++;
+-    case MENELAUS_DCDC_CTRL2: reg ++;
++    case MENELAUS_DCDC_CTRL3:
++    case MENELAUS_DCDC_CTRL2:
+     case MENELAUS_DCDC_CTRL1:
+-        return s->dcdc[reg];
+-
+-    case MENELAUS_LDO_CTRL8: reg ++;
+-    case MENELAUS_LDO_CTRL7: reg ++;
+-    case MENELAUS_LDO_CTRL6: reg ++;
+-    case MENELAUS_LDO_CTRL5: reg ++;
+-    case MENELAUS_LDO_CTRL4: reg ++;
+-    case MENELAUS_LDO_CTRL3: reg ++;
+-    case MENELAUS_LDO_CTRL2: reg ++;
++        return s->dcdc[addr - MENELAUS_VCORE_CTRL1];
++
++    case MENELAUS_LDO_CTRL8:
++    case MENELAUS_LDO_CTRL7:
++    case MENELAUS_LDO_CTRL6:
++    case MENELAUS_LDO_CTRL5:
++    case MENELAUS_LDO_CTRL4:
++    case MENELAUS_LDO_CTRL3:
++    case MENELAUS_LDO_CTRL2:
+     case MENELAUS_LDO_CTRL1:
+-        return s->ldo[reg];
++        return s->ldo[addr - MENELAUS_LDO_CTRL1];
+ 
+-    case MENELAUS_SLEEP_CTRL2: reg ++;
++    case MENELAUS_SLEEP_CTRL2:
+     case MENELAUS_SLEEP_CTRL1:
+-        return s->sleep[reg];
++        return s->sleep[addr - MENELAUS_SLEEP_CTRL1];
+ 
+     case MENELAUS_DEVICE_OFF:
+         return 0;
+@@ -395,10 +394,10 @@ static uint8_t menelaus_read(void *opaque, uint8_t addr)
+     case MENELAUS_S2_PULL_DIR:
+         return s->pull[3];
+ 
+-    case MENELAUS_MCT_CTRL3: reg ++;
+-    case MENELAUS_MCT_CTRL2: reg ++;
++    case MENELAUS_MCT_CTRL3:
++    case MENELAUS_MCT_CTRL2:
+     case MENELAUS_MCT_CTRL1:
+-        return s->mmc_ctrl[reg];
++        return s->mmc_ctrl[addr - MENELAUS_MCT_CTRL1];
+     case MENELAUS_MCT_PIN_ST:
+         /* TODO: return the real Card Detect */
+         return 0;
+@@ -418,7 +417,6 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
+ {
+     MenelausState *s = (MenelausState *) opaque;
+     int line;
+-    int reg = 0;
+     struct tm tm;
+ 
+     switch (addr) {
+@@ -496,9 +494,9 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
+         s->ldo[7] = value & 3;
+         break;
+ 
+-    case MENELAUS_SLEEP_CTRL2: reg ++;
++    case MENELAUS_SLEEP_CTRL2:
+     case MENELAUS_SLEEP_CTRL1:
+-        s->sleep[reg] = value;
++        s->sleep[addr - MENELAUS_SLEEP_CTRL1] = value;
+         break;
+ 
+     case MENELAUS_DEVICE_OFF:
+-- 
+2.18.2
 
-
-r~

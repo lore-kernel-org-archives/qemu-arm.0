@@ -1,95 +1,99 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp667903lfq;
-        Thu, 1 Oct 2020 08:48:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8EU/xwXaiqJqV5H490omiY8wSmOj8RaIOtfa0RD49odWhjSnnvDuCf5UOxpIoLDMcW+W/
-X-Received: by 2002:a05:6902:72b:: with SMTP id l11mr10454125ybt.419.1601567335637;
-        Thu, 01 Oct 2020 08:48:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601567335; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp688137lfq;
+        Thu, 1 Oct 2020 09:10:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxVtvlomLxwvOC36F6FH22BwO4B4B8uJwLxLIPVQX8kx/n3dH8Vg+wEpVIUCwU5DnVmzBDR
+X-Received: by 2002:a25:2388:: with SMTP id j130mr12350745ybj.40.1601568646921;
+        Thu, 01 Oct 2020 09:10:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601568646; cv=none;
         d=google.com; s=arc-20160816;
-        b=yntw/pNbFj0HvX1fuk79Qs8rKQDUCZLkZYx0L4a6ciNXN/VFZGmcEq/qM5sloqdZ/9
-         NN+PDuewLydU5FFp5HhesDFJrcX8I/PEwfjr5y6B8XyliqJjqxNu7jAGhAAKCsLhilKg
-         OasvPCmkCxUAiReZ7/iQPY/XLhzGoreqdJK118j/XHmDJjeWvMk5/dVWBHnYkr3nBjSB
-         TXKTbG8tiHfkd58hbsXKWySd3t1AxS9sSZgfbJ+xMYvRv0AGAOBi7QehqdfrkMcjqXkL
-         mbJNSp62xkbON9uybLbT4M0Vean1vS0FX68drk0ZSRLNAcxEEy0AtMNvq3IKsBYxSgrU
-         Pv9g==
+        b=eamUakr5eHmeuza7SxUomXs3bHiDfa6nvAaHpHOCkMjB7TUfjEKE6h30YBmGef5ddF
+         keupS6O0Mvgclk8jT3aoxBrN98xt8MdWOKmdRaQCPMxdbPPmqreLnKP11/ZIuDMzvF8e
+         yr93uIHg1hUbcNxAZ+lowQBNk/GnvvJcz8ltbOqUsJmmJF+2XtECO6OVd4oFo/hRWagW
+         /XesxW8VgkilQDiixlj9WlHiTE+3BSAW3Xnh3RVAafNdBru7YT1QQ1JOmv1CUb5JF6d9
+         UxX65G9tIJKrzl2EWxXOwEIYR2Za7E84JcJ0I9pinA/IjvzGqWPPNt8BDo0mKT4pvaZU
+         rS0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=Afj7M3pKyFDf82BCHFLt5lNbz7+/s62EDCcB5isXrsU=;
-        b=zSY7YIUgqX9UsI3Xjg0+Zwn5B3tj55nSikjxjO6cdbs/e5V0t5tYIRwKCOT11ohV6U
-         d0ddwBzMtZYNDoEEQSl9HqsX99sdTcfqsmwUndTn7VgUV0wROWQGb+jXNLz46j8RrqdT
-         yvfM24myIhP92sUQOav2dkQ3yY5nuIgXnwBpGmI0M/+5jcoTmZv2a0IuFILE5q27fVkc
-         bk1XXTd5jQfHCF6LSLupTY38+ZCPRdHBCsXo3NK4SVjhS+RcDtMWPNKf13NFCj69Mv3r
-         YtYyjMxX6pzuguU8e/fTF2SuXFL9DTm8ypgKg9XwslUjAomupDGy/g9CN7lXlkWhqhu8
-         1Fyw==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=KAzkYKKavvSQCbtYv8JWrT8eSXOG4QFZI4u6wSWQ8vA=;
+        b=AOsA2/2qDLGB/LvNpR3EVN1CBXCINGL7zFnr8Fw75NR521e7jbhDN5aV1FTMUdZOCL
+         E1Nge0rXA5/Nch3X8of4V2aM90jdl4It419lro4bx05YKC9J0zphb9e5QTMJnVzk0whO
+         BNmorGubJn2BqYLAAyW7s6ZHBgIYW486O7KQIdKjgW51UOxoZJdObhQzOm1t5DSXiFtL
+         HesL95oBjZOOCeunwlUm2TD5Q25FhWil7JeHEpPiVYR/jtS8ZeOa2CBtnkB8iqgPZW5M
+         z68Qbgj/NoQNCSlSAglP5oLJy91HxBB6GOELFHXhSoF1ZWt4YN8uo3J4T9Kj+y1RZjgK
+         2NhA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tBrqR7Ai;
+       dkim=pass header.i=@linaro.org header.s=google header.b="tdkSmxE/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x17si5262576ybq.409.2020.10.01.08.48.55
+        by mx.google.com with ESMTPS id s62si5405017ybc.366.2020.10.01.09.10.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 01 Oct 2020 08:48:55 -0700 (PDT)
+        Thu, 01 Oct 2020 09:10:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=tBrqR7Ai;
+       dkim=pass header.i=@linaro.org header.s=google header.b="tdkSmxE/";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:55714 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:50198 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kO0pD-0002CI-0C
-	for alex.bennee@linaro.org; Thu, 01 Oct 2020 11:48:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58296)
+	id 1kO1AM-0000sw-8T
+	for alex.bennee@linaro.org; Thu, 01 Oct 2020 12:10:46 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35624)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kO0hD-0001ey-Ow
- for qemu-devel@nongnu.org; Thu, 01 Oct 2020 11:40:39 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634]:39800)
+ id 1kO11I-0008Jr-Pt
+ for qemu-devel@nongnu.org; Thu, 01 Oct 2020 12:01:24 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54078)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kO0hB-0003wE-Pd
- for qemu-devel@nongnu.org; Thu, 01 Oct 2020 11:40:39 -0400
-Received: by mail-ej1-x634.google.com with SMTP id p9so8725390ejf.6
- for <qemu-devel@nongnu.org>; Thu, 01 Oct 2020 08:40:37 -0700 (PDT)
+ id 1kO11F-00073w-4u
+ for qemu-devel@nongnu.org; Thu, 01 Oct 2020 12:01:24 -0400
+Received: by mail-wm1-x343.google.com with SMTP id x23so3472242wmi.3
+ for <qemu-devel@nongnu.org>; Thu, 01 Oct 2020 09:01:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=Afj7M3pKyFDf82BCHFLt5lNbz7+/s62EDCcB5isXrsU=;
- b=tBrqR7Ail8IZM9gxuRr9KcbioAmCsvpsfDohZgO0vQrAF3gxV4WfxKPw3HQ9z/fl4+
- ECU/RFtL4+0OyOtJk+9rEi22me19cVRuYc+w7EtrZ7QAQ59Gt9YFojmPnvUqaC/cym7+
- KV5E4pxMfNdFpJ4hlYj2fAM9+O9OmX9vsvPowWom3zs8XqfRcJjjKgxuwaxbzflZUrd0
- ONKoZHhaGV8y48kCiBVL7PXbiP66YBolNLiSuDEf7mPh5tR+617FXf6WvRdzfcGENNRt
- +/5dcSYFniXBzF8BwTdpt5B8awRG+nN1afieQEJjkIK2wC6DsALIG/y10Q0dzixAn0SL
- 8E1A==
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KAzkYKKavvSQCbtYv8JWrT8eSXOG4QFZI4u6wSWQ8vA=;
+ b=tdkSmxE/9EiRElzDrY2wQBZnB3pVSNUXe5ynTRBOkvAJj+0svkXHH2m3GkUCd3Ho7Z
+ tpNXxCcSZu0MOxFdGC891pkbz/48CSjrdeYBvi5ZouQBc7LB37kF/OuKryoKfkjj05bs
+ Vd8o17yYjijMoXfKwwTGboB58GJj9v8bLSYUh5P8SuP8uJCS+r4+7RHYNuK4JJFty6s+
+ OrhKTMnis42frzYtG4IRImmUs8VzSCpT+0ELbrxr2MxmqyxWZKJCsxBBwZe6sdkrqlHF
+ u9UfjzkCNaeQridLKDJdEMxqdbVM2mLCoN5G3JizhSbCy6RpgeQIK9xNbdJ9cz17H7Sc
+ DJ2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=Afj7M3pKyFDf82BCHFLt5lNbz7+/s62EDCcB5isXrsU=;
- b=D1dMADwadlg6kNgmuFJP/AvmAULLu749RPSrjgrRQa2fOu0bLgttyd2ckx9lMQpw6b
- 3bmNtH6lUfeYPfA76JXLb850j9q9DcF28cJkG8xARYkPE/stHGmHWS99TeKR5XVI/tx7
- sulxUgEKN30JV7Dh2Z81WxfqcjoHos/P6P6kRWejeN44pXVgrXN4G24tlNhC++paZNdJ
- QzQqegFIroxf8HLx2RaA34c5VjEa0MwwqCyOl+l5Hx1xRkLMSBFk13lFTrfXaqm5PNG4
- tqWcnF/UY8wL5nA4RImTd3qqDzMqfy6mJdr+4/YUufuf1MHD7SGvTu2Co/RfWCyIkLSM
- 942w==
-X-Gm-Message-State: AOAM532foylouQb70aPk3GtJP1SsalRuzRULkGP44OeA/U33XsNYRZ8Q
- qck5VA8FIXA86rapR7vOwtkdmVZ5qSlFgMSgarjiQg==
-X-Received: by 2002:a17:906:4a53:: with SMTP id
- a19mr9152321ejv.56.1601566836157; 
- Thu, 01 Oct 2020 08:40:36 -0700 (PDT)
-MIME-Version: 1.0
-References: <20200930174856.11296-1-kraxel@redhat.com>
-In-Reply-To: <20200930174856.11296-1-kraxel@redhat.com>
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=KAzkYKKavvSQCbtYv8JWrT8eSXOG4QFZI4u6wSWQ8vA=;
+ b=o417lXAEorMwxbPfXTj1/vnBLrD1pfnER5m3O81L8yjgGmjc9tD5wqlfWAHoDpGqdi
+ nFhaRULLUx24v1snUy24nDd3ng4DySkOIfibmMHpd42xpJWRQF5t2vo5R0YwbAEjz+uO
+ 6bf+GwoE7G0pvLOqFxNcZLsvx56sRxDeCZBDDTrXHO8O/S7Zu1DrLc7E5gYm0z0+cokY
+ T35mywmxO0CvztJ6lwQjlVbhwKqt+uZE9KnLgo/f0XYOyQgHIsXrzw8La7lVcMW21Z+O
+ sEbedVNQzvRHANJhrmcQsUGPgqQjfLoW5sPCxMHGEyJYSfMHAkE6TFrTzkDzvfEgfaB8
+ MX4w==
+X-Gm-Message-State: AOAM531elP4Zc6fNlHiMctFQs3/QNIZMhEJOgJ/rM0qg+1TIo5Exl3+U
+ tV9GvwYynTuAeVXWMCrQI6fXXQ==
+X-Received: by 2002:a7b:cb07:: with SMTP id u7mr673347wmj.57.1601568079212;
+ Thu, 01 Oct 2020 09:01:19 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id y207sm587123wmc.17.2020.10.01.09.01.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Oct 2020 09:01:18 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 1 Oct 2020 16:40:25 +0100
-Message-ID: <CAFEAcA8XyMo03tzDeopw4bSb3NXYB6NozKLPwqFxUxqk-+TeDQ@mail.gmail.com>
-Subject: Re: [PULL 00/12] Microvm 20200930 patches
-To: Gerd Hoffmann <kraxel@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x634.google.com
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Make '-cpu max' have a 48-bit PA
+Date: Thu,  1 Oct 2020 17:01:16 +0100
+Message-Id: <20201001160116.18095-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -111,38 +115,40 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Radoslaw Biernacki <rad@semihalf.com>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Igor Mammedov <imammedo@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Leif Lindholm <leif@nuviainc.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: z2PSdRcFng/A
+X-TUID: 3LvEf9bOrWAT
 
-On Wed, 30 Sep 2020 at 18:49, Gerd Hoffmann <kraxel@redhat.com> wrote:
->
-> The following changes since commit b150cb8f67bf491a49a1cb1c7da151eeacbdbcc9:
->
->   Merge remote-tracking branch 'remotes/mst/tags/for_upstream' into staging (2020-09-29 13:18:54 +0100)
->
-> are available in the Git repository at:
->
->   git://git.kraxel.org/qemu tags/microvm-20200930-pull-request
->
-> for you to fetch changes up to 7f6c3d1a574bddcda6931eb00287089998725f71:
->
->   tests/acpi: update expected data files (2020-09-30 11:29:56 +0200)
->
-> ----------------------------------------------------------------
-> microvm: add pcie support.
+QEMU supports a 48-bit physical address range, but we don't currently
+expose it in the '-cpu max' ID registers (you get the same range as
+Cortex-A57, which is 44 bits).
 
+Set the ID_AA64MMFR0.PARange field to indicate 48 bits.
 
-Applied, thanks.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I forget why I wanted this patch originally, it's been so long
+since I wrote it, but it seems like a useful thing to allow -cpu max
+to have a big PA range...
+---
+ target/arm/cpu64.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/5.2
-for any user-visible changes.
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 3c2b3d95993..3ba7f1675cc 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -653,6 +653,10 @@ static void aarch64_max_initfn(Object *obj)
+         t = FIELD_DP64(t, ID_AA64PFR1, MTE, 2);
+         cpu->isar.id_aa64pfr1 = t;
+ 
++        t = cpu->isar.id_aa64mmfr0;
++        t = FIELD_DP64(t, ID_AA64MMFR0, PARANGE, 5); /* PARange: 48 bits */
++        cpu->isar.id_aa64mmfr0 = t;
++
+         t = cpu->isar.id_aa64mmfr1;
+         t = FIELD_DP64(t, ID_AA64MMFR1, HPDS, 1); /* HPD */
+         t = FIELD_DP64(t, ID_AA64MMFR1, LO, 1);
+-- 
+2.20.1
 
--- PMM

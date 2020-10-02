@@ -1,215 +1,260 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1944734lfq;
-        Fri, 2 Oct 2020 15:00:09 -0700 (PDT)
-X-Received: by 2002:a05:6808:1cf:: with SMTP id x15mr2366629oic.164.1601676008913;
-        Fri, 02 Oct 2020 15:00:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601676008; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1944761lfq;
+        Fri, 2 Oct 2020 15:00:10 -0700 (PDT)
+X-Received: by 2002:a9d:5a8c:: with SMTP id w12mr3207699oth.332.1601676010513;
+        Fri, 02 Oct 2020 15:00:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601676010; cv=none;
         d=google.com; s=arc-20160816;
-        b=Grxx5Iz/M//gARVXmFnUmVnzMMj8a/lHQaQNPiBFlEa4lapOT0vcsd9AejSXx70Fiy
-         XRCB2x875OlzGFegkjYI+PLuDC/q+lrFd91JBqtQwU5nu4mEpXy+00qmvr4m+2OGeJre
-         vVqdO56fTHzBAGmGKdevAJs+Yyc6BwFrUk/VjhZLC8A3fHjabdenD04ZW23Bo+5Ayx8J
-         3tMmpETIPSezQSjlZgjSrdsIhst8y8HUCrITlrOwcb6zRt7waUumyRV7rgNpfhS+h5fL
-         aCRzOwdgpyWDfziSShE8U8QgG6Ljis8ZsUYQkbuxDLiXcXUZ330Uzq2USOZyXN8UugZw
-         lpFQ==
+        b=avJQcnVlEHftbGHmMtimXgi8x6M+3bYEe/yA9BuyIDCJmZ0sj3My9hUae3us2sFxvL
+         BuEnNZmsPl90ajGRg8giCx0uCABzTDQyr4FVknvLTYThQnuNOxXbMp4L9+To0wnqpIsE
+         qp1m/UG+uCwLeOFwnhFU8ZrRXbL1du+7jP5bXilemYLJTbJk8UfOZKM16kSstQukf6Cf
+         eWfQYdFj7lt98hYhH4EaF3hGD3N695BGO/67TtXY8VeEmLhsESAgKZ9PF/XWKShl//GT
+         LJzDTFF0l6mlwslmk2NnWc36L8sbupd2fZZmgROR1P4/ThbO5pBwMNL9hrYeVvOPHhUR
+         LWzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=UmXRKUbKgXmhfW+77FLjDFzejAZSQt8OzgtpBP6qGqY=;
-        b=jGDUI6DCSy/NXanjxb/EkoQdXZXP0LLIqdD8jcymM0ycOHRvagkwFWTSDC/pF1f2B7
-         S6dll5Fokft4kX5f2ykT5GMmkaKNyiJ7bmU0zi36JBuBriUPOpThDQj82U/z7ugOldAb
-         evgWryq5n1g66JHqPj2AdbKauTC7kw1AvxWfvSbNtdV/JaLCII6U5IyyajN3I/p3m8mm
-         WFj4XiLdVowuDAcp4THcpDkIApLSI2KeZ3jLaGOSpTMt1E/12gzs7r51mWf974lVB6UP
-         Xy2nLV5XMRJJ5i7Y8SBhOqm+zmOgY5qsHaHXbZmBgqt8qdLAWwhaHLmZP6sfn31GxR+B
-         tL+A==
+        bh=S4v0KO82Wzlx0JZkhGIkBUAKLry2EN5cCldjJF9G/o4=;
+        b=TNBZD4zoQLe1wV8bYX3FgIizamdSp5BuFRp2XzkOIhzu1nlMz5ld+0vB6LiiLYeV7Q
+         DZ2qAbsvdNtbPcH9H/TzGaJjIwjTIvL2vI9neKXCP6ESjFI6soT8QJIhYmQY4mAkknJb
+         yJgxb/puRfWyuE8VDGA3xVc0kRMpeV5z0Idb/6GXD+fhaW0tffo2MdG6jk8iHwNIySMq
+         AVqSVWYiwBRnMuDpMcKwsAO69srU2e2gnZfIc56cbahr/G70eWtpBQ1mZnd7BwGJMesZ
+         0dUs0RqeppLwtJ52mdIaHHnM7LU+uVZdZHwtcDrETJZLRvFbzEs8SUobxnZfqI5Ddi7j
+         WVMw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BP9MX9Oc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LwMqakNC;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id k4sor616425otc.180.2020.10.02.15.00.08
+        by mx.google.com with SMTPS id x68sor203224oix.114.2020.10.02.15.00.10
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 02 Oct 2020 15:00:08 -0700 (PDT)
+        Fri, 02 Oct 2020 15:00:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=BP9MX9Oc;
+       dkim=pass header.i=@linaro.org header.s=google header.b=LwMqakNC;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=UmXRKUbKgXmhfW+77FLjDFzejAZSQt8OzgtpBP6qGqY=;
-        b=BP9MX9OcYQH2u/z17O9RrczsPMQ4PpIEB8DQmSSOx1zKmX/5WSpt/Ojh4Y3NO7nB63
-         33789GG/tht7XCnfIGeByLbuMdrT0jiwA2xd00qJOXP2VQUAXV7xKu9++1L3v2JdnfnE
-         BPDkUWSorIPaPcYfTEJKlTNuM9gMcekeOl2C81xfdF4GBjCfqnzx2mQsWMognZHs9XwS
-         OnPkQbzqYhla/23ucPpCmhpTGeVY2NUfrqop1MWtEImjf0sdleiQcYcC6XKVpivs8agz
-         YDUNJ3VR+QHNKJygy857y4Yvt0omcIFPZyXeigtJh6LLOJxkgrfjcMv86zT+MhrFEDSm
-         fZ3A==
+        bh=S4v0KO82Wzlx0JZkhGIkBUAKLry2EN5cCldjJF9G/o4=;
+        b=LwMqakNC2QpnD9J255X+mbTTPKvXL9QSu/A20IPVh7SQzOAMWEwVzamj4SeE9MgwU8
+         4OSWR+zBL4QscrJqidiP3RssFihuT5Ckfr3fH1/tXf3oe42SoIvXuCY+EIbIPq3u5vXc
+         MXuyUJVwLj+DGfUcxbXC7O5q/kpaUzBC55jhnGsI6zYgeam8eGb2NHKBR1XkMc7OUnJK
+         K5vME11cMvtUzJevkdaWMmzG+Rr6ilsWw0ArMYSTjtAFfQBwHIx1pJlRf4g8+T8gOY3O
+         zwuuiHpIbKtwnFCCXqkGcJjeyWFDhvpPn7BNMpyiv53JWIvP7IFx/o0ntqmbyaFTFSjB
+         SZOg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=UmXRKUbKgXmhfW+77FLjDFzejAZSQt8OzgtpBP6qGqY=;
-        b=s0Oue3sDq1Q7bRewfsyV0NluSWvW/ydoeTfTANjpvI+pR3BS7kdUHNT1sxw1Q5XDP1
-         2i44uVLb92szYyofCqjFWVgF7gNYt8ipEVLPmmDdYnS5ft2N1fZCWiKKSRWpLRXAvYrc
-         AfQPILbEReT4XqiS/musMFdoJMdXDoIDh0bCJ91FeKw2rjrbu43wdcGYF63Z/b4Nx6UA
-         OFEDCerWMX6x9wSJJ1wWLuaJyzQSd1pHNGhccESNVnOPaawdv1CzKg53BReQVK+q4pez
-         Vig7Lk2B3B6R0lkynR/mqndGn9JEdkwE4duIIZP4GkZN1vlzrzJw/0YNjJhnPENvibH0
-         ANXA==
-X-Gm-Message-State: AOAM533w317fOUxDMOSnmIAozWo2G+n2C/6c1mjbwzGbM+/iZfmDzkUt
-	KmAQc38w4SbOkB/HpqqNqlKvmf1Tkcr98BL+HKM=
-X-Google-Smtp-Source: ABdhPJxWQWgHqeHeLP9AZ7TlKphAE28bQei1LUV6m367BQpAYasGUBryOfDcMJHgROyhEPcNsD9ZpA==
-X-Received: by 2002:a05:6830:1ac8:: with SMTP id r8mr3071904otc.70.1601676008387;
-        Fri, 02 Oct 2020 15:00:08 -0700 (PDT)
+        bh=S4v0KO82Wzlx0JZkhGIkBUAKLry2EN5cCldjJF9G/o4=;
+        b=U4uW1/YNqdgCsz3H03Dqqr0uHx0BjPDWTr12FOMt9Yg5eCxYYrIU/bNHb863PcLFVw
+         PzRHOOph/+0G4MH9+WWxDAganLy99JRnEjbFTfFoJEOPUo1ye299PanGMxau884fYTe0
+         lYgfx9CMOV//t+E41qlCWTFcMkU+oLz40RGMIxj9oMPFGG8SuZVY8UBwYjJU2/Z0cL+L
+         Z8UBEkXYmts8IPrXrHuC6mpPnz1Gm6JIaKWK+0MAPQXpSDdOLCE0U+algO2/w02gHlQn
+         rZn/kv75ylqAzTMUDcEh27HlKelXmrccA7csshCEdJxDoXRyHWsp3ZP8hcOE+sFCShrO
+         qtKg==
+X-Gm-Message-State: AOAM5312iazAZZr6ovGndBXyTnaDQCJHdR+NMFxyZ43FOlpd+fJlbVMu
+	kX5VAxweKIHBqqohoxLidgqI5yuRq+yVYHDn6To=
+X-Google-Smtp-Source: ABdhPJyDg5AYgtto1TjYwk96iEDlmR2uWk2IWKxajQsAfXzMXEG+9UxteMc+BygUv2Cdy4Ra8y6XbA==
+X-Received: by 2002:aca:5b09:: with SMTP id p9mr2381132oib.68.1601676010042;
+        Fri, 02 Oct 2020 15:00:10 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id k10sm684268ots.60.2020.10.02.15.00.07
+        by smtp.gmail.com with ESMTPSA id k10sm684268ots.60.2020.10.02.15.00.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Oct 2020 15:00:07 -0700 (PDT)
+        Fri, 02 Oct 2020 15:00:09 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	alex.bennee@linaro.org,
 	laurent@vivier.eu
-Subject: [PATCH v10 7/8] linux-user/elfload: Parse NT_GNU_PROPERTY_TYPE_0 notes
-Date: Fri,  2 Oct 2020 16:59:54 -0500
-Message-Id: <20201002215955.254866-8-richard.henderson@linaro.org>
+Subject: [PATCH v10 8/8] tests/tcg/aarch64: Add bti smoke test
+Date: Fri,  2 Oct 2020 16:59:55 -0500
+Message-Id: <20201002215955.254866-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201002215955.254866-1-richard.henderson@linaro.org>
 References: <20201002215955.254866-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: e7EWnA7yaKn2
+X-TUID: FCw+lqj3/iwW
 
-For aarch64, this includes the GNU_PROPERTY_AARCH64_FEATURE_1_BTI bit,
-which indicates that the image should be mapped with guarded pages.
+This test requires gcc 10 for -mbranch-protection=standard.
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v9: Only map the startup executable with BTI; anything else must be
-    handled by the interpreter.
-v10: Split out preparatory patches (pmm).
+v9: Expect and require gcc 10.
 ---
- linux-user/qemu.h    |  4 +++
- linux-user/elfload.c | 68 ++++++++++++++++++++++++++++++++++++++++++--
- 2 files changed, 70 insertions(+), 2 deletions(-)
+ tests/tcg/aarch64/bti-1.c         | 62 +++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/bti-crt.inc.c   | 51 +++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  7 ++++
+ tests/tcg/configure.sh            |  4 ++
+ 4 files changed, 124 insertions(+)
+ create mode 100644 tests/tcg/aarch64/bti-1.c
+ create mode 100644 tests/tcg/aarch64/bti-crt.inc.c
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 941ca99722..534753ca12 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -61,6 +61,10 @@ struct image_info {
-         abi_ulong       interpreter_loadmap_addr;
-         abi_ulong       interpreter_pt_dynamic_addr;
-         struct image_info *other_info;
+diff --git a/tests/tcg/aarch64/bti-1.c b/tests/tcg/aarch64/bti-1.c
+new file mode 100644
+index 0000000000..61924f0d7a
+--- /dev/null
++++ b/tests/tcg/aarch64/bti-1.c
+@@ -0,0 +1,62 @@
++/*
++ * Branch target identification, basic notskip cases.
++ */
 +
-+        /* For target-specific processing of NT_GNU_PROPERTY_TYPE_0. */
-+        uint32_t        note_flags;
++#include "bti-crt.inc.c"
 +
- #ifdef TARGET_MIPS
-         int             fp_abi;
-         int             interp_fp_abi;
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 6b422990ff..3c6cbd35c3 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -2391,7 +2391,7 @@ static void load_elf_image(const char *image_name, int image_fd,
-     struct elfhdr *ehdr = (struct elfhdr *)bprm_buf;
-     struct elf_phdr *phdr;
-     abi_ulong load_addr, load_bias, loaddr, hiaddr, error;
--    int i, retval;
-+    int i, retval, prot_exec;
-     const char *errmsg;
- 
-     /* First of all, some simple consistency checks */
-@@ -2467,6 +2467,50 @@ static void load_elf_image(const char *image_name, int image_fd,
-                 goto exit_errmsg;
-             }
-             *pinterp_name = interp_name;
-+        } else if (eppnt->p_type == PT_GNU_PROPERTY) {
-+            /* Process NT_GNU_PROPERTY_TYPE_0. */
-+            const uint32_t gnu0_magic = const_le32('G' | 'N' << 8 | 'U' << 16);
-+            uint32_t note[7];
++static void skip2_sigill(int sig, siginfo_t *info, ucontext_t *uc)
++{
++    uc->uc_mcontext.pc += 8;
++    uc->uc_mcontext.pstate = 1;
++}
 +
-+            /*
-+             * The note contents are 7 words, but depending on LP64 vs ILP32
-+             * there may be an 8th padding word at the end.  Check for and
-+             * read the minimum size.  Further checks below will validate
-+             * that the sizes of everything involved are as we expect.
-+             */
-+            if (eppnt->p_filesz < sizeof(note)) {
-+                continue;
-+            }
-+            if (eppnt->p_offset + eppnt->p_filesz <= BPRM_BUF_SIZE) {
-+                memcpy(note, bprm_buf + eppnt->p_offset, sizeof(note));
-+            } else {
-+                retval = pread(image_fd, note, sizeof(note), eppnt->p_offset);
-+                if (retval != sizeof(note)) {
-+                    goto exit_perror;
-+                }
-+            }
-+#ifdef BSWAP_NEEDED
-+            for (i = 0; i < ARRAY_SIZE(note); ++i) {
-+                bswap32s(note + i);
-+            }
-+#endif
-+            /*
-+             * Check that this is a NT_GNU_PROPERTY_TYPE_0 note.
-+             * Again, descsz includes padding.  Full size validation
-+             * awaits checking the final payload.
-+             */
-+            if (note[0] != 4 ||                       /* namesz */
-+                note[1] < 12 ||                       /* descsz */
-+                note[2] != NT_GNU_PROPERTY_TYPE_0 ||  /* type */
-+                note[3] != gnu0_magic) {              /* name */
-+                continue;
-+            }
-+#ifdef TARGET_AARCH64
-+            if (note[4] == GNU_PROPERTY_AARCH64_FEATURE_1_AND &&
-+                note[5] == 4) {
-+                info->note_flags = note[6];
-+            }
-+#endif /* TARGET_AARCH64 */
-         }
-     }
- 
-@@ -2555,6 +2599,26 @@ static void load_elf_image(const char *image_name, int image_fd,
-     info->brk = 0;
-     info->elf_flags = ehdr->e_flags;
- 
-+    prot_exec = PROT_EXEC;
-+#ifdef TARGET_AARCH64
-+    /*
-+     * If the BTI feature is present, this indicates that the executable
-+     * pages of the startup binary should be mapped with PROT_BTI, so that
-+     * branch targets are enforced.
-+     *
-+     * The startup binary is either the interpreter or the static executable.
-+     * The interpreter is responsible for all pages of a dynamic executable.
-+     *
-+     * Elf notes are backward compatible to older cpus.
-+     * Do not enable BTI unless it is supported.
-+     */
-+    if ((info->note_flags & GNU_PROPERTY_AARCH64_FEATURE_1_BTI)
-+        && (pinterp_name == NULL || *pinterp_name == 0)
-+        && cpu_isar_feature(aa64_bti, ARM_CPU(thread_cpu))) {
-+        prot_exec |= TARGET_PROT_BTI;
-+    }
-+#endif
++#define NOP       "nop"
++#define BTI_N     "hint #32"
++#define BTI_C     "hint #34"
++#define BTI_J     "hint #36"
++#define BTI_JC    "hint #38"
 +
-     for (i = 0; i < ehdr->e_phnum; i++) {
-         struct elf_phdr *eppnt = phdr + i;
-         if (eppnt->p_type == PT_LOAD) {
-@@ -2568,7 +2632,7 @@ static void load_elf_image(const char *image_name, int image_fd,
-                 elf_prot |= PROT_WRITE;
-             }
-             if (eppnt->p_flags & PF_X) {
--                elf_prot |= PROT_EXEC;
-+                elf_prot |= prot_exec;
-             }
++#define BTYPE_1(DEST) \
++    asm("mov %0,#1; adr x16, 1f; br x16; 1: " DEST "; mov %0,#0" \
++        : "=r"(skipped) : : "x16")
++
++#define BTYPE_2(DEST) \
++    asm("mov %0,#1; adr x16, 1f; blr x16; 1: " DEST "; mov %0,#0" \
++        : "=r"(skipped) : : "x16", "x30")
++
++#define BTYPE_3(DEST) \
++    asm("mov %0,#1; adr x15, 1f; br x15; 1: " DEST "; mov %0,#0" \
++        : "=r"(skipped) : : "x15")
++
++#define TEST(WHICH, DEST, EXPECT) \
++    do { WHICH(DEST); fail += skipped ^ EXPECT; } while (0)
++
++
++int main()
++{
++    int fail = 0;
++    int skipped;
++
++    /* Signal-like with SA_SIGINFO.  */
++    signal_info(SIGILL, skip2_sigill);
++
++    TEST(BTYPE_1, NOP, 1);
++    TEST(BTYPE_1, BTI_N, 1);
++    TEST(BTYPE_1, BTI_C, 0);
++    TEST(BTYPE_1, BTI_J, 0);
++    TEST(BTYPE_1, BTI_JC, 0);
++
++    TEST(BTYPE_2, NOP, 1);
++    TEST(BTYPE_2, BTI_N, 1);
++    TEST(BTYPE_2, BTI_C, 0);
++    TEST(BTYPE_2, BTI_J, 1);
++    TEST(BTYPE_2, BTI_JC, 0);
++
++    TEST(BTYPE_3, NOP, 1);
++    TEST(BTYPE_3, BTI_N, 1);
++    TEST(BTYPE_3, BTI_C, 1);
++    TEST(BTYPE_3, BTI_J, 0);
++    TEST(BTYPE_3, BTI_JC, 0);
++
++    return fail;
++}
+diff --git a/tests/tcg/aarch64/bti-crt.inc.c b/tests/tcg/aarch64/bti-crt.inc.c
+new file mode 100644
+index 0000000000..47805f4e35
+--- /dev/null
++++ b/tests/tcg/aarch64/bti-crt.inc.c
+@@ -0,0 +1,51 @@
++/*
++ * Minimal user-environment for testing BTI.
++ *
++ * Normal libc is not (yet) built with BTI support enabled,
++ * and so could generate a BTI TRAP before ever reaching main.
++ */
++
++#include <stdlib.h>
++#include <signal.h>
++#include <ucontext.h>
++#include <asm/unistd.h>
++
++int main(void);
++
++void _start(void)
++{
++    exit(main());
++}
++
++void exit(int ret)
++{
++    register int x0 __asm__("x0") = ret;
++    register int x8 __asm__("x8") = __NR_exit;
++
++    asm volatile("svc #0" : : "r"(x0), "r"(x8));
++    __builtin_unreachable();
++}
++
++/*
++ * Irritatingly, the user API struct sigaction does not match the
++ * kernel API struct sigaction.  So for simplicity, isolate the
++ * kernel ABI here, and make this act like signal.
++ */
++void signal_info(int sig, void (*fn)(int, siginfo_t *, ucontext_t *))
++{
++    struct kernel_sigaction {
++        void (*handler)(int, siginfo_t *, ucontext_t *);
++        unsigned long flags;
++        unsigned long restorer;
++        unsigned long mask;
++    } sa = { fn, SA_SIGINFO, 0, 0 };
++
++    register int x0 __asm__("x0") = sig;
++    register void *x1 __asm__("x1") = &sa;
++    register void *x2 __asm__("x2") = 0;
++    register int x3 __asm__("x3") = sizeof(unsigned long);
++    register int x8 __asm__("x8") = __NR_rt_sigaction;
++
++    asm volatile("svc #0"
++                 : : "r"(x0), "r"(x1), "r"(x2), "r"(x3), "r"(x8) : "memory");
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index e7249915e7..491683e91d 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -25,6 +25,13 @@ run-pauth-%: QEMU_OPTS += -cpu max
+ run-plugin-pauth-%: QEMU_OPTS += -cpu max
+ endif
  
-             vaddr = load_bias + eppnt->p_vaddr;
++# BTI Tests
++ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_BTI),)
++AARCH64_TESTS += bti-1
++bti-%: CFLAGS += -mbranch-protection=standard
++bti-%: LDFLAGS += -nostdlib
++endif
++
+ # Semihosting smoke test for linux-user
+ AARCH64_TESTS += semihosting
+ run-semihosting: semihosting
+diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
+index be51bdb5a4..e1b70e25f2 100755
+--- a/tests/tcg/configure.sh
++++ b/tests/tcg/configure.sh
+@@ -240,6 +240,10 @@ for target in $target_list; do
+                -march=armv8.3-a -o $TMPE $TMPC; then
+                 echo "CROSS_CC_HAS_ARMV8_3=y" >> $config_target_mak
+             fi
++            if do_compiler "$target_compiler" $target_compiler_cflags \
++               -mbranch-protection=standard -o $TMPE $TMPC; then
++                echo "CROSS_CC_HAS_ARMV8_BTI=y" >> $config_target_mak
++            fi
+         ;;
+     esac
+ 
 -- 
 2.25.1

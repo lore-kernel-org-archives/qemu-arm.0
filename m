@@ -1,191 +1,141 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1944640lfq;
-        Fri, 2 Oct 2020 15:00:01 -0700 (PDT)
-X-Received: by 2002:aca:b287:: with SMTP id b129mr2547388oif.85.1601676001111;
-        Fri, 02 Oct 2020 15:00:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601676001; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1944654lfq;
+        Fri, 2 Oct 2020 15:00:02 -0700 (PDT)
+X-Received: by 2002:aca:ad08:: with SMTP id w8mr2407189oie.148.1601676002533;
+        Fri, 02 Oct 2020 15:00:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601676002; cv=none;
         d=google.com; s=arc-20160816;
-        b=TCS5oFyXZyVHGMCEcNxa+COin8OqRlKuNFFTnjbMs3LwTxV1GwS9+kaz/uZu5cFfQ9
-         9RG3rxg75Y2w23uXBviUzvJsIurxSTtw4dxGiWZ0avsnvHDRJrhW3jENlWo9yeqt+nV1
-         Z1nxUs4syaSbkA/zBbeDp4N8JZYs91WaSrcPL8muswk16uoinUpHBShqeDMtLGu3aR55
-         3h9gz2oTQ2I5efN0lCKaqgQNuJX2ZOFvQ9wnt6ozN0YjehmkhXBwAWpI5cSyYq5l6PKQ
-         /4PnwrkPqvKzHusQVv6KVYrzA2NeJCJHZgid91zAhqK52VWGGoeFROIHjwuK21vsgIvd
-         rgLw==
+        b=Ce8ZzSsCJ6hP4jAZjCmcDlXt5MQ67epNVvZQerPJQw7jX0TlKpiDYL2mpP89QcUSYp
+         h0hThCKP4Qk5r9PxQPDnUWEh3nuUiZ8Mgs24t3D46d+nVhPnTgAofeZCLWBqjAMvVEL8
+         4WGH/bMp6heWl5ovd7dBk5LTtecodl7eor7wOC6MggRX19i+2BUmnmBinFya6pc0zpGo
+         YtAu5gEoBWJSmH7VY/e6w97UuhBbyYznv207bVEErV3U9lW3Sh7PhUi3BWbfrI0HvACX
+         k0diTTC6mQcVUf0lcUSsSGrIXa5GjrFuyQnDwneHaQl4PS3aisRZGloIelQRv4MekjuB
+         AjKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=1sPywZydkzNx8f/80GoSubL6qkbD2bze0L3zxjjn9Qg=;
-        b=h1nZxOQyZUkhEJF9rlMUi+gy0USbvO5RSX2sVzRcHsE/PHIsD+KxSe8pyYhsYIHr8Q
-         KEF2l0VcTqRYLHtD1IHw8g8WkP4znNDt4sFydXPi113Xa8hyJvdFNWYyRa/lG6Ua7CXU
-         wkEBoBoAJE0EoC6KURrVuQi06UXKr7/sQkzjgCINaqXE2sBAu/DL7lDC/rDFG7vL9IFX
-         870aQ1pieNujNPYayOEY7x459/DLFeyXdlSyhXKkMfbm6FkYWBZ0a9z/bElgE7Ar6OnF
-         GKJYOLNZZ/bELC//Uj3rRH6fc/QhfnWMP8ZZXNSuiDeU3XVdSaNbtX05xd7aw9+WBdQg
-         FQmg==
+        bh=8JkogZW08o4QbERarC4qat0jsqD9fmDjl7gKGBrUP6I=;
+        b=iuVSE5gJ8feF0Bv9qP0RE8IjTjjDUZQmHYyBZUjuvqEAT3DKcpWDKBzmvNcVKqX1Io
+         Puh0IThkH0HdXnTPgNO1u/8AZcxu7qbembcqVLrQmuGSwbtfzAp2pNXflubkO0YuWTyp
+         1SeCl67noJQvv2t4LOLozfCH3DsrPqpMriAWLjHXv1KjYGdbYvuOiOkLhsRp4spwWNiH
+         m9kbMMZei4oFOnE1THE3Ena09ksck14KO5ghbqy7Dp0I55Tm4ASKpw/Yqjm7uFObmRIp
+         NUq8egONrMAAJ2XjD7kI1u1zxK4l/R0MXqGVzVuNaB1MuemAK6Fj08GFX02UGjTqDO//
+         GvQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sXKo8YEz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=c3RN+aji;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id y8sor609765otq.1.2020.10.02.15.00.00
+        by mx.google.com with SMTPS id a15sor612067otf.107.2020.10.02.15.00.02
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 02 Oct 2020 15:00:01 -0700 (PDT)
+        Fri, 02 Oct 2020 15:00:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=sXKo8YEz;
+       dkim=pass header.i=@linaro.org header.s=google header.b=c3RN+aji;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=1sPywZydkzNx8f/80GoSubL6qkbD2bze0L3zxjjn9Qg=;
-        b=sXKo8YEznddVXahGBBUB8MPdd7uVD5frA0ogbMV72F3DEGzKYBnPZOI4QkE9G+i145
-         /3TrWuQ7jrfBdZMCf8dHn4VJk3pxhcFX02O2cwDbbY7gwhQFOB715Hqv/Yba9kTkx4Sx
-         Apz+hHB5vkWNEE3YQZKFPcxiamos5mcTUro5/3sxq9HiLThhY12IaAGoWLfTxrERIOWI
-         JwHtKDttDDQ/irqqhlj1nJdpRwBM37k59LRnFhDx84JWMnhMTmh/KxFWi2fBz7hebHsm
-         bVK5lIiVhhMuj7qWDb/p87AfIrtnwfsrkT8whKj36rAbABAA43tFvfE7BgclYkR3inT+
-         0YAw==
+        bh=8JkogZW08o4QbERarC4qat0jsqD9fmDjl7gKGBrUP6I=;
+        b=c3RN+aji6elqAzxQuRf0rQc9a0thf5PgQZjIrZc/eCTeEInfcnBayDCUPLQdNLtcR1
+         6GS+qYB4TQU2KQ5QtrmvAGS/witbEbPSItSYWJwL9W5g9NYEbG3PrhB/80XN9msaE8UI
+         LHvkKV3KoWXYHgrzoateQGCnURj4VBRz1izfuNx6AKYcZOGI2ta8749jvX9mFgvv3rhM
+         7vfZipBVPVe7MZHEPvQgPofnUuVdCnnwdZAmp8XAH9FAig0lVO9VDz6Qn6yy44mBdLQ6
+         TVLNluaFsaDjmbFNatPCApTYCmcf9/kLvjQi1/jQ3T+FQqsGa8wNcfLgZgMwIDtmOAJf
+         Oe9Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=1sPywZydkzNx8f/80GoSubL6qkbD2bze0L3zxjjn9Qg=;
-        b=cGJHl08vDwvT6bNOEdaovdy4TJ7CrDaVyW99OLwwjtQjR15KvTQO7mhKsBR83QyZAE
-         EVs0QPqwyXbVN/FUfINUN7iu7AlsDPPOU9iE0xhk5TjhvE3bmfvvoNfTpNEsuZK+y7po
-         vYh1+8/hgnJ/OKVCi4UKS73VHKbxMtEuI+pilHVUubCvQWpnQjWEXWwSZf7FNdBMAy1C
-         /85e3zdDth9+lZqtMl0Latm9U29CJn+G6t60ZbbLNrpzpJmcaugP0QOGlH4BoILL3v3Z
-         VsOqUocSFQYFGMAAcDOI0RwAAPxUnmVngDb9IMtKMFGWMAegDSNKTVZSXZBUyDcnCPgm
-         nuJQ==
-X-Gm-Message-State: AOAM533pXcEq/P/yRk3zsvhdJwBSueXoVWHvRKJh0foIU+xRFMF7cCtO
-	5TmntcIVfuGd2I0Pb5PK3/Cbxy7J
-X-Google-Smtp-Source: ABdhPJzCn8lS566R5abRvl4jGA/N7I2ltVyfzG+DhtvxKIxOk3KwL9jk1anM2AM7sFxF55YOrSkK6A==
-X-Received: by 2002:a9d:5cc2:: with SMTP id r2mr3346514oti.63.1601676000681;
-        Fri, 02 Oct 2020 15:00:00 -0700 (PDT)
+        bh=8JkogZW08o4QbERarC4qat0jsqD9fmDjl7gKGBrUP6I=;
+        b=X3MKod7pjyHOfOj1jB+7AdA8Ja7hTutD35efo49SglOlL2Y8gpSdeb1mrDT8XXHjnU
+         gFROYSBinsxLkLbH4dPi8t/NYGNAY6PYvlU1Kd4VNnLmlw8X17WBDg/hGKEwGq47nopw
+         LNjDdNrQMCBMyVNMb1zYcRDyZln8Qdr2UKHH4ZZNVQ8Qsq8sBVBV7sbWN7FRTfCyX5mm
+         JSnQCM62rIYFPOyzMq+M9zTzN+JjIPxG642mar4aQcMKeA47hmbHi3AuscTlQLTQWVgX
+         d11eLALw7/EHwvMvftwcmdDoJQpqGoIc8EXi9l++oJTvdH3+PLTZQds/ENFwSBD3Iapc
+         XJow==
+X-Gm-Message-State: AOAM530ZT1eyYkBfaeGPjD6bkMHX7voRgpR0AGi3o8POsTHwhoJyWtce
+	zRejkXym8duHFZPbThfR9vgMmtMejcoL2TwfmSc=
+X-Google-Smtp-Source: ABdhPJwP9J3brY/GoD1M9WbIcvO7jrfA7Gsjh4ejWLvR0DZsLiV8lIDKBxcu9oEVC8I/GFI0WBQaqg==
+X-Received: by 2002:a9d:1442:: with SMTP id h60mr3387353oth.35.1601676002120;
+        Fri, 02 Oct 2020 15:00:02 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id k10sm684268ots.60.2020.10.02.14.59.59
+        by smtp.gmail.com with ESMTPSA id k10sm684268ots.60.2020.10.02.15.00.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Oct 2020 15:00:00 -0700 (PDT)
+        Fri, 02 Oct 2020 15:00:01 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	alex.bennee@linaro.org,
 	laurent@vivier.eu
-Subject: [PATCH v10 2/8] linux-user: Set PAGE_TARGET_1 for TARGET_PROT_BTI
-Date: Fri,  2 Oct 2020 16:59:49 -0500
-Message-Id: <20201002215955.254866-3-richard.henderson@linaro.org>
+Subject: [PATCH v10 3/8] include/elf: Add defines related to GNU property notes for AArch64
+Date: Fri,  2 Oct 2020 16:59:50 -0500
+Message-Id: <20201002215955.254866-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201002215955.254866-1-richard.henderson@linaro.org>
 References: <20201002215955.254866-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: 0HGdUSKowLOn
+X-TUID: b7sHreBqSj0W
 
-Transform the prot bit to a qemu internal page bit, and save
-it in the page tables.
+These are all of the defines required to parse
+GNU_PROPERTY_AARCH64_FEATURE_1_AND, copied from binutils.
+Other missing defines related to other GNU program headers
+and notes are elided for now.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v10: Add PAGE_BTI define (pmm).
----
- include/exec/cpu-all.h     |  2 ++
- linux-user/syscall_defs.h  |  4 ++++
- target/arm/cpu.h           |  5 +++++
- linux-user/mmap.c          | 16 ++++++++++++++++
- target/arm/translate-a64.c |  6 +++---
- 5 files changed, 30 insertions(+), 3 deletions(-)
+ include/elf.h | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/include/exec/cpu-all.h b/include/exec/cpu-all.h
-index f6439c4705..ba80c46c95 100644
---- a/include/exec/cpu-all.h
-+++ b/include/exec/cpu-all.h
-@@ -274,6 +274,8 @@ extern intptr_t qemu_host_page_mask;
- /* FIXME: Code that sets/uses this is broken and needs to go away.  */
- #define PAGE_RESERVED  0x0020
- #endif
-+/* Target-specific bits that will be used via page_get_flags().  */
-+#define PAGE_TARGET_1  0x0080
+diff --git a/include/elf.h b/include/elf.h
+index c117a4d1ab..10126ff809 100644
+--- a/include/elf.h
++++ b/include/elf.h
+@@ -26,9 +26,13 @@ typedef int64_t  Elf64_Sxword;
+ #define PT_NOTE    4
+ #define PT_SHLIB   5
+ #define PT_PHDR    6
++#define PT_LOOS    0x60000000
++#define PT_HIOS    0x6fffffff
+ #define PT_LOPROC  0x70000000
+ #define PT_HIPROC  0x7fffffff
  
- #if defined(CONFIG_USER_ONLY)
- void page_dump(FILE *f);
-diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
-index 731c3d5341..cabbfb762d 100644
---- a/linux-user/syscall_defs.h
-+++ b/linux-user/syscall_defs.h
-@@ -1277,6 +1277,10 @@ struct target_winsize {
- #define TARGET_PROT_SEM         0x08
- #endif
- 
-+#ifdef TARGET_AARCH64
-+#define TARGET_PROT_BTI         0x10
-+#endif
++#define PT_GNU_PROPERTY   (PT_LOOS + 0x474e553)
 +
- /* Common */
- #define TARGET_MAP_SHARED	0x01		/* Share changes */
- #define TARGET_MAP_PRIVATE	0x02		/* Changes are private */
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e4549a8cc0..a07d605c2f 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3439,6 +3439,11 @@ static inline MemTxAttrs *typecheck_memtxattrs(MemTxAttrs *x)
- #define arm_tlb_bti_gp(x) (typecheck_memtxattrs(x)->target_tlb_bit0)
- #define arm_tlb_mte_tagged(x) (typecheck_memtxattrs(x)->target_tlb_bit1)
+ #define PT_MIPS_REGINFO   0x70000000
+ #define PT_MIPS_RTPROC    0x70000001
+ #define PT_MIPS_OPTIONS   0x70000002
+@@ -1657,6 +1661,24 @@ typedef struct elf64_shdr {
+ #define NT_ARM_SYSTEM_CALL      0x404   /* ARM system call number */
+ #define NT_ARM_SVE      0x405           /* ARM Scalable Vector Extension regs */
  
-+/*
-+ * AArch64 usage of the PAGE_TARGET_* bits for linux-user.
-+ */
-+#define PAGE_BTI  PAGE_TARGET_1
++/* Defined note types for GNU systems.  */
++
++#define NT_GNU_PROPERTY_TYPE_0  5       /* Program property */
++
++/* Values used in GNU .note.gnu.property notes (NT_GNU_PROPERTY_TYPE_0).  */
++
++#define GNU_PROPERTY_STACK_SIZE                 1
++#define GNU_PROPERTY_NO_COPY_ON_PROTECTED       2
++
++#define GNU_PROPERTY_LOPROC                     0xc0000000
++#define GNU_PROPERTY_HIPROC                     0xdfffffff
++#define GNU_PROPERTY_LOUSER                     0xe0000000
++#define GNU_PROPERTY_HIUSER                     0xffffffff
++
++#define GNU_PROPERTY_AARCH64_FEATURE_1_AND      0xc0000000
++#define GNU_PROPERTY_AARCH64_FEATURE_1_BTI      (1u << 0)
++#define GNU_PROPERTY_AARCH64_FEATURE_1_PAC      (1u << 1)
 +
  /*
-  * Naming convention for isar_feature functions:
-  * Functions which test 32-bit ID registers should have _aa32_ in
-diff --git a/linux-user/mmap.c b/linux-user/mmap.c
-index f261563420..00c05e6a0f 100644
---- a/linux-user/mmap.c
-+++ b/linux-user/mmap.c
-@@ -83,6 +83,22 @@ static int validate_prot_to_pageflags(int *host_prot, int prot)
-     *host_prot = (prot & (PROT_READ | PROT_WRITE))
-                | (prot & PROT_EXEC ? PROT_READ : 0);
- 
-+#ifdef TARGET_AARCH64
-+    /*
-+     * The PROT_BTI bit is only accepted if the cpu supports the feature.
-+     * Since this is the unusual case, don't bother checking unless
-+     * the bit has been requested.  If set and valid, record the bit
-+     * within QEMU's page_flags.
-+     */
-+    if (prot & TARGET_PROT_BTI) {
-+        ARMCPU *cpu = ARM_CPU(thread_cpu);
-+        if (cpu_isar_feature(aa64_bti, cpu)) {
-+            valid |= TARGET_PROT_BTI;
-+            page_flags |= PAGE_BTI;
-+        }
-+    }
-+#endif
-+
-     return prot & ~valid ? 0 : page_flags;
- }
- 
-diff --git a/target/arm/translate-a64.c b/target/arm/translate-a64.c
-index 7188808341..072754fa24 100644
---- a/target/arm/translate-a64.c
-+++ b/target/arm/translate-a64.c
-@@ -14507,10 +14507,10 @@ static void disas_data_proc_simd_fp(DisasContext *s, uint32_t insn)
-  */
- static bool is_guarded_page(CPUARMState *env, DisasContext *s)
- {
--#ifdef CONFIG_USER_ONLY
--    return false;  /* FIXME */
--#else
-     uint64_t addr = s->base.pc_first;
-+#ifdef CONFIG_USER_ONLY
-+    return page_get_flags(addr) & PAGE_BTI;
-+#else
-     int mmu_idx = arm_to_core_mmu_idx(s->mmu_idx);
-     unsigned int index = tlb_index(env, mmu_idx, addr);
-     CPUTLBEntry *entry = tlb_entry(env, mmu_idx, addr);
+  * Physical entry point into the kernel.
+  *
 -- 
 2.25.1

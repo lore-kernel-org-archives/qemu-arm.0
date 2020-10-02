@@ -1,113 +1,104 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3239990lfq;
-        Sat, 10 Oct 2020 08:17:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxc7YmhgmgYzsXdrCBNVJXU4ya+62zpmblEXUJBF0jrYL07IF/plawZIs1qsp4tMDODLomP
-X-Received: by 2002:a25:8541:: with SMTP id f1mr21280148ybn.230.1602343073114;
-        Sat, 10 Oct 2020 08:17:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602343073; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1587124lfq;
+        Fri, 2 Oct 2020 07:17:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyzZiXMEh3mUoKMKgkGo+LQXGY6A42WLBatsmdt6xMylG3unEuA/A/Wpwx13ZSmdeT1YkNi
+X-Received: by 2002:a25:6644:: with SMTP id z4mr3062496ybm.347.1601648276188;
+        Fri, 02 Oct 2020 07:17:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601648276; cv=none;
         d=google.com; s=arc-20160816;
-        b=Kd1HG6cFa58RPnr3vslG82enBhv81MEDKBsBvFIkvSuuGspELqwrW0vLoy9noF67xt
-         udXB37k7klQRDER+ajADuA56RDbPbhue7ubKdcYPjPS36iScxBBtHu9UDDTCISc0rsRG
-         zt4XYqwBoYylpcftOjYnV3kR0Samo1bBK7nGXSMwOTV4E9h+RQpSsQ2vNiYj7BswBqIc
-         A7yHnHxd41Fk3ccTfm2/PJWvDlA4qgLh6gfsrncni489vmX8t80mVtr+UuJ8A3n0v8Cf
-         +7YcdQqyssJ1q3u+OMM1eP8UEFK6ybFFZHLqEDfnxKi6OoEWMy0013ONZ+V8/pHbQqnW
-         c/Hw==
+        b=RP63Z9wqQuY0bQJ4EGkiZAbxczN2t0Glaf/Dl+urPGHEajhrKC4XE41bKqKPV3pBGM
+         v9NYB60n+W1kVXx+MZwlVJb2sM3W6RQ1d1v2jAVXeJzk9KANuFldahHZV9GXeRyW6LpR
+         PZn9/PNev/rXbM8Zlu+BrpmjvQyBNTukZz4oIb5yx6lzencKweE3iRK6p1P046i0I/P0
+         d/QVveQRTueJ0c//eMe814Ay22hv96otBSFln5NelQnJ9CXOfJFSiaF7MdFlyitPahQT
+         9Kd9KP5ySKZbSOYrIoMKgMnkRWtPrPCfwsA+pLUbeXkxfiOX1w9mJtmVZHXa/0GEtYiU
+         Aewg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=rZUK4OpgM9LDSuM+PftlglNnkrsDkN4iy8skrvx7zaQ=;
-        b=rv3kYQg/HcZ3bZBYtIH9PPH7KYQLogO8O0H4xyyAiRDtBNAS1907D155EOzWI5HuIN
-         FEvr9OfELUQdnDsq4uihMIOwdZYGQ3nH5dgg2z23ndvaSA3xPW+BPdT74XbgjIwxtJxo
-         57VANR5WqPM/q74YfmvWNT/Q83uVfoYCfvUgFGA5Uw9TkN/PWOpYXl5zo4HLHsK7CIUR
-         iJtUGgDd+78NTC8x6c3RFJp7lxKrlapFLLe4CEy2eYVUzgy34CiIEBl5w2SVNBZtKEgX
-         UkUTX7bb/9rwaqLTT4XvTOh7uNRyIe5fu2van5YRNd+VxhgVEfCJ2Cs8S/JKltkWxpq+
-         OsRA==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=JzF260npFDfcZ9JASf9Kvb/IM6bbY7fKtyDop8EwStI=;
+        b=F2MvhqrXP5Y7qgPlPb2r/a7FIuosB0N1ME3ACdZV4jcQBwBmvSNxeEDfWbELRIPTBp
+         x5uVKMOOEAKGtwyTXDbTsgbLUooXJdWObrVO8wg1U0HdKttjqk+a1mbzxPo8qhYE8vuz
+         8qsbd1vnVvOyYZoE3ooNd+POJ98Y5PemTNZv7sVh4JMBmWNJxQGhnyCakssJw92A7k73
+         evSybPB4c0unxp2yHFmcbnLxJQ5kW6h7VQDfc5sB1zBSitgcoe7jw7I0MLGGPKk+pq6o
+         kuhz0lAfI3os4h3Q8X+EGNg6x41GDTImRsgcQns5M+fi1QpA7HwB4xAU9tf9FZOUdSXG
+         ogZA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a6yY7bpe;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CGggeLTQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c62si316772yba.75.2020.10.10.08.17.52
+        by mx.google.com with ESMTPS id r9si1814285ybb.427.2020.10.02.07.17.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Oct 2020 08:17:53 -0700 (PDT)
+        Fri, 02 Oct 2020 07:17:56 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=a6yY7bpe;
+       dkim=fail header.i=@linaro.org header.s=google header.b=CGggeLTQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43158 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37802 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRGd6-0006E5-Gs
-	for alex.bennee@linaro.org; Sat, 10 Oct 2020 11:17:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34530)
+	id 1kOLsh-0005aw-Hq
+	for alex.bennee@linaro.org; Fri, 02 Oct 2020 10:17:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56962)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRGcp-0006CF-Tk; Sat, 10 Oct 2020 11:17:35 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:40001)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kOLs6-0005aM-1V
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2020 10:17:18 -0400
+Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:34844)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRGcf-0006pd-5f; Sat, 10 Oct 2020 11:17:29 -0400
-Received: by mail-wm1-x343.google.com with SMTP id k18so12610109wmj.5;
- Sat, 10 Oct 2020 08:17:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=rZUK4OpgM9LDSuM+PftlglNnkrsDkN4iy8skrvx7zaQ=;
- b=a6yY7bpeVfflurfL3PA2HjXerIF+8xFrpPC2IekDNjdKP39IgixUjUQWkcC3R1V7fY
- pGQ54AfoO/tSa36JWtFMSidUKg2bTYWRsD3OOHDks2AjZlPF72LWkWqf7SWyAJB8kB+q
- xgMqzhbJQFO3tZ/FfhvXA7nVQNWrLEG1hMIoL6ZawOwFu598IaLAQI3XH5DXdnT1gcxY
- iPfJ6AEmHXdNpqc3vF17zNtkbpZFEqDy4robbE0X4M5fTLW7q1qxDADH+FNsEmkh2UNn
- K7+Mp1fTG7a+tFoh9tufu857NjqN+n4dWzjv2ERxp/eA1oIcdTUXPnYsB7fwhRPwgSPe
- IJ4Q==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kOLs3-0001Tv-G9
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2020 10:17:17 -0400
+Received: by mail-ej1-x642.google.com with SMTP id u21so2228521eja.2
+ for <qemu-arm@nongnu.org>; Fri, 02 Oct 2020 07:17:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=JzF260npFDfcZ9JASf9Kvb/IM6bbY7fKtyDop8EwStI=;
+ b=CGggeLTQz7l2zsGH2CsPH53lOjJtEC2h29DFQjPZ6aCVpv3gzqHoyHZC6bkgfQH1ib
+ WO2bzxkJ2ztOeoag5FiCvE2dbugfwF+s+REPEHbEfC3tsFaJ38yCBU43cnKLjNypGhNl
+ cMto0UkJPEDoOQMuZ92gVuYsJ3inUiL6KbrOs3R5fQ1Lhw+X9z9QmexSQwpSplHc9tpM
+ UOS/yTeYWiAhwsyYx5h8CjjrM1KG2I7+7FcDc1vwIioxV+xPxEbKKvGfzUueJR3mG+CX
+ Jmov51vkpAE9u9LMjM8vQ95miyzi3QZQ+eOqNXV+UAbDmCwvtGJNRZELEQJPEDupAqL4
+ aG0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=rZUK4OpgM9LDSuM+PftlglNnkrsDkN4iy8skrvx7zaQ=;
- b=CEret54jJkUUlfuLOxrNqSP1qf0sdYFGZ6Zm0Htb0QPO+q+kUqjl6OJdTbdQC18LR/
- TvVJ/073BYgBWighT5zCREHe+pXG52HcS9YO00KveM9c5sSBwTLgz863kkh10dCIhWQm
- EGgp2IwAUnM09krJrK17a2F1cL9qqVgRfzprgMPiRHHBQI+cV3Cgnf3sxwlGOzHtTMNO
- HiQEOuvsUH2Sq6lOjnrIOdqvw8R1mdd0KikcP2Ql80KxU9UR74U4bDl7erH6dX2tJOQm
- o5Y/zSvYDCDXQFUniT1vqmGmZSqcgflf44b71cTmjpBUHznrox1YuxFIv/aMBLIElheP
- 1ing==
-X-Gm-Message-State: AOAM530KFjD782GRBbZ4hGhjBRZzy3yJKN/nBJSOUtlfJd1GebBukmqk
- EnAE8ndnv3V2uOVQhv/zysM=
-X-Received: by 2002:a7b:cb82:: with SMTP id m2mr3313045wmi.56.1602343037794;
- Sat, 10 Oct 2020 08:17:17 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id g139sm16781658wme.2.2020.10.10.08.17.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 10 Oct 2020 08:17:16 -0700 (PDT)
-Subject: Re: [PATCH v3 03/15] hw/core/clock: add the clock_new helper function
-To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
-References: <20201010135759.437903-1-luc@lmichel.fr>
- <20201010135759.437903-4-luc@lmichel.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f49f1c17-9343-c5dc-51fd-da0edb208314@amsat.org>
-Date: Sat, 10 Oct 2020 17:17:15 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=JzF260npFDfcZ9JASf9Kvb/IM6bbY7fKtyDop8EwStI=;
+ b=S56c92x1RigE+t7bGXlD97yIZEf3k82Ht2lw6McbPgXsCbjWQH5/XL3B8teODsbhj6
+ xKy5ee5yJ8YJ/9MXTCwSm1DYbmb/HHHK/mj7axsY1AEJaNDNa1BexhmnheyzqdSb+XlJ
+ E4hgXQ+KP12NNtjbOJjLO9XKe0znHyJ0yynnGRP3Y3EhXD96I+DZJzB2Dvl0/vJ59XEd
+ G6yGMD3j7Vx+9u97s1s5MStEZnj2QPydkQVklzroOuMs1q/yIsLSNamugrLIX5a+UVAN
+ r28l7w2GlNV2qZfmrDE/Q9Ze0+R8o5w3TgMny4EBv7XNyGT+XtNbBDF2o9VKB9BTCFU8
+ E6Lw==
+X-Gm-Message-State: AOAM530QLvnb9xcatOIva+SQMRa3i8Nb2m87c2cqXhFDVkmS+dSwriJz
+ chrIotrQbUwnJBPof4/1pEHBj6vIZP8QWvGDT2omMA==
+X-Received: by 2002:a17:906:d936:: with SMTP id
+ rn22mr2552663ejb.4.1601648233570; 
+ Fri, 02 Oct 2020 07:17:13 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201010135759.437903-4-luc@lmichel.fr>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+References: <20201001193659.21685-1-maxim.uvarov@linaro.org>
+ <CAFEAcA_76y5DoNw3tirFFaC9FfE6NnxwAkdgV5eSv9NUeBxdhw@mail.gmail.com>
+ <CAD8XO3ZWW87Ze+gX9xWtrZ=XaETvE63WqzobQamoGM2_tb-4Zw@mail.gmail.com>
+In-Reply-To: <CAD8XO3ZWW87Ze+gX9xWtrZ=XaETvE63WqzobQamoGM2_tb-4Zw@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 2 Oct 2020 15:17:01 +0100
+Message-ID: <CAFEAcA9U=hrGZQ=1ZVHsFVJc1Ghygcueq0caE2U9nk29aBGCwA@mail.gmail.com>
+Subject: Re: [PATCH] hw: wdt: implement sbsa watchdog
+To: Maxim Uvarov <maxim.uvarov@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::642;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.207,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -122,30 +113,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Havard Skinnemoen <hskinnemoen@google.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
+Cc: Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ =?UTF-8?Q?Fran=C3=A7ois_Ozog?= <francois.ozog@linaro.org>,
+ Shashi Mallela <shashi.mallela@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xnnsOVZqNBCD
+X-TUID: gRnflEnKU1tH
 
-On 10/10/20 3:57 PM, Luc Michel wrote:
-> This function creates a clock and parents it to another object with a given
-> name. It calls clock_setup_canonical_path before returning the new
-> clock.
-> 
-> This function is useful to create clocks in devices when one doesn't
-> want to expose it at the qdev level (as an input or an output).
-> 
-> Suggested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Signed-off-by: Luc Michel <luc@lmichel.fr>
-> ---
->   include/hw/clock.h | 13 +++++++++++++
->   hw/core/clock.c    | 15 +++++++++++++++
->   2 files changed, 28 insertions(+)
+On Fri, 2 Oct 2020 at 15:06, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
+>
+> On Thu, 1 Oct 2020 at 23:36, Peter Maydell <peter.maydell@linaro.org> wrote:
+> > Hi; what's the relationship between this SBSA watchdog
+> > device model and the one that Shashi posted recently?
+> > https://patchew.org/QEMU/20200929180410.33058-1-shashi.mallela@linaro.org/
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Nice it's the same driver written a little bit differently. I did not
+> see his patch before. 2 things missing in Sashis driver which are
+> useful for me:
+> 1. Add sbsa watchdog to machine virt also. That helped me to reboot a
+> virtual machine with secure payload.
+> 2. I specially did not disable timer on driver close. I.e. "reboot"
+> linux path reboots with that watchdog.  And make timeout lower to not
+> wait for a long period.
 
+You should get together and figure out a single version of
+the patchset that you want to upstream...
+
+> Can this driver also be considered for virt machine?
+
+Maybe, but you'd need to explain why it's useful (ie why
+you can't just plug in the wdt_i6300esb, which I think
+is a PCI watchdog device). We try not to add devices to
+virt unless we have to, because they increase the security
+attack surface.
+
+thanks
+-- PMM

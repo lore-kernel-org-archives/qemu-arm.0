@@ -1,139 +1,108 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1659440lfq;
-        Fri, 2 Oct 2020 08:38:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwqb3qeiyU/FX1p82EzH9jf226FoI32dhTZUwgYD2inb3p+nY31hRLn6l9pGRaxTushjWsB
-X-Received: by 2002:a25:3403:: with SMTP id b3mr3403984yba.455.1601653106258;
-        Fri, 02 Oct 2020 08:38:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601653106; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1673947lfq;
+        Fri, 2 Oct 2020 08:57:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzedevanVwoZVdbzz55QRDbJ75vgjdndSMF0Hwzmsp2vPYgTwCaPfU+x9bDZknuMfN4+0hc
+X-Received: by 2002:a25:4845:: with SMTP id v66mr3651333yba.397.1601654239133;
+        Fri, 02 Oct 2020 08:57:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601654239; cv=none;
         d=google.com; s=arc-20160816;
-        b=oJZ6DQ/vbzl17K/e1Qz+5pWpeTBVRy0QOUSgzstbTIC1oQkmNeT6FihP/NPT/dFnQv
-         rwxen5nBirxdH/gdiK3LcZ6uVMbnCM+WeBniEQZX/skL1r5asICopjet9L5ZJANzpI15
-         2T5n77rL2DpjOukodNWxUcMvTz654oCDeb6zhIRV10vR3vx/0SR4i7myi2rwiszNUP52
-         8fm15kIgCx7EbfcOhbhAUcqiWDoWC5kn5ehYJqo/2Eb15hHGVLyopmsAXKdJXqK5TFxa
-         TwYsXEDOnDu8cZMYOR3nFX6VND6IsHDE07DIjVzombwj6LcXTPM8Fyc5q4eH0eKuyQPN
-         kIBw==
+        b=QHf0C9qU09Q7WKkixoZZs4Ho9A+eQTHS8gju6SkA/kOurvHCK/EqYVUjp2nhfj+npM
+         1UJ28ASjH0O2WXUmAIH4HNZeaUq7uN+WTa4Q70S3EiqzIuQRF8eMiz2WH46PKYngdoVS
+         oa0DSmWdoebGwzBH/CbYQkhTBr3/A5P0U7+0nCIPpcWdFQCKyOOWtGxEjyKcTP5HM60X
+         mytTyTB3pjt79+tKgY8tFF6u0dFX0HgM3+wlfkUniWnMtYY1MpZ7QZWHIXCpydL6tR99
+         9AngQ4qC4jKXi1sOvqvwdgtuJWmHUIkkqkFPZZkXZE9SLyhdfJclqcdNxhWaaM1Z1zDv
+         M6Zg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:references:to:from:subject:dkim-signature;
-        bh=/d3CzUA3lypjw4nnz152qE/pDG8fVawaHwwuebdJzYE=;
-        b=pAbsCT53AMgfI3rLyMj3M1/oEcDshWB4UTN5+JaEF9148fnlV8eHKIY2z4qiWJCTyI
-         Ie90VfByg1Oz1Sismi+g0okRq73MlotJeNPvyeey2jwYXjNhZWlrVpTtE+qfX9imnkR6
-         AkocpwkhbYgRFWaAOisTDCnb45JOBqkY8exb8mwJuHdVgtgMlODttJA7RdzmBw1KWAn1
-         WSSMp9t1UupFDZnvxJzT+zGxQJ32GMIlNHtetGHHlTPpCJwWItO0Gfn5NQEZseSHhfYy
-         H6JkcA0Guk/73g10UR+Z9O0fTJNB3ivKrhQY8lyYTJl+3d2ib6DDRjcdL+ap9/elCXgd
-         WkJg==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=IqVrNhZTauTtwi6BBKx0EUucNfa0p2NyiXM/ojlYnfc=;
+        b=a0ZwCs7uN0kMIpoTGX0PDvjpe+GhHV3ii0CD3ajK749UVpDiO8ZH2l4WbPSnZGlbYp
+         9N4GEnJ2T1QEAPLgbGjOgDCquISzSrTo3vnKrHJ3VECzWf5lCw75gbo4iGMY0HDPVhKj
+         fdzOQoOf1JEntMhZYE6rzPtKegsC7rmHPc4FdirQARorAP6VXSYaEeXjvdiAsypcVlQA
+         zXOJiVNIqkTsOat28JlyFi0pQbqyPpAxlxm5r/Fc/B0g/WsBkymUOkuPEqd0CxMZxpnk
+         Lf3m0dSVus9+hCpiLmFMiimrtgfdQHxI4FUasWNhNjVBYfr1jB5NbWKe83UOFQ7Wu5C5
+         3YPA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WJSgFPzd;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nYu7j1b8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c140si1978529ybf.232.2020.10.02.08.38.26
+        by mx.google.com with ESMTPS id s1si2126955ybf.423.2020.10.02.08.57.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Oct 2020 08:38:26 -0700 (PDT)
+        Fri, 02 Oct 2020 08:57:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=WJSgFPzd;
+       dkim=fail header.i=@linaro.org header.s=google header.b=nYu7j1b8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:34066 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:44090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kON8b-0007Rm-Ja
-	for alex.bennee@linaro.org; Fri, 02 Oct 2020 11:38:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46002)
+	id 1kONQs-0007as-HD
+	for alex.bennee@linaro.org; Fri, 02 Oct 2020 11:57:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51038)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kON5G-00030C-MY; Fri, 02 Oct 2020 11:34:58 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:35851)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kONPy-0007Yh-FP
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2020 11:56:22 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d]:43215)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kON5E-00034O-Ih; Fri, 02 Oct 2020 11:34:58 -0400
-Received: by mail-wm1-x342.google.com with SMTP id e2so2198663wme.1;
- Fri, 02 Oct 2020 08:34:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:autocrypt:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=/d3CzUA3lypjw4nnz152qE/pDG8fVawaHwwuebdJzYE=;
- b=WJSgFPzd7R4C6UjRhDUyxenBWvuxSpsMepkkhewHxaHXplvVTNbYMyW2Nk4uYHpa7Y
- YkonUtvYEW572FgXl/J04187HQ+ijUFdQpJVvG54lQMpGzHVOWPjpFsT9C+DMdE1rfbD
- y2N9zLRs2LP3Ge3jGbaxwLkM9+y7+03LB35MevN6LyF4v4frLkmn7feOLAFGtIJfxPLg
- /SokdhE9NZvs7Xrq5k20dZKEV0U+YCULg9kG1YR0Dl+PDwugrAg6Jvp0p+3jitH2pzDq
- 3HeBfCB6f/ZTVXwsKKxMVs4Y7gNQPvVEl+SMWG824v2/QLt6Ya0xg8X8QhnpKHBcg4Au
- v9VA==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kONPs-0006Mj-OV
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2020 11:56:21 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id md26so2651492ejb.10
+ for <qemu-arm@nongnu.org>; Fri, 02 Oct 2020 08:56:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=IqVrNhZTauTtwi6BBKx0EUucNfa0p2NyiXM/ojlYnfc=;
+ b=nYu7j1b8J0bUKwuB69hdchKrJnfWaGbA0wqMjFuumPqJv+r+eBilDxudUC3mVk5hf+
+ Y+qhfEvn02nufswaNqnNC5i8e2brtRSiCMOdFdX+vsN7h0uBjjOimbUfgX4ZMAjBOxLJ
+ mGwfpfiRmJQdD/qy8mWOh1/Gw2sdQguFfE00Qb6pSqRRQLX7pGkJdUeM6IECd6mjyYJ8
+ 04bLNRn44LX2N8C28D2/f7KoBBTP6oBQxLmqwm1a6B7JW7cIaBWaStY5qx1F4VH734dP
+ uvqMXdK/Iv6s8MeuOaDTBmdDfGuMHFBPw+ynnYodOMfQ66s7RaRJxDIRt2M8M4kQ+pxG
+ vUng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=/d3CzUA3lypjw4nnz152qE/pDG8fVawaHwwuebdJzYE=;
- b=TAR0B4CcGe4YNlK6pu9u+zzoB7gWWlzcH3e6nEd5OjOTKouJvQT7BueWi62GyeDmeS
- Zas7NbDdKHgf/jEYG9GvYQ15WTctUkziSscl7/EVNWn+BrmOLmv7Wnpi1pjudrVLHgH6
- AnrULCud2kG1P48F2cniZqj4q0XMJquXMu+YCcAmDqUUXa9wRGY4lQ7/8W8ieftwh/Re
- G/KD+W2waDtZi7GWzanTQvFwmGJUJAxk4X9YAEqCXoGPyh9LsdLivRcUTOooxD8PIcdS
- G85fxZdzuIUFTAdzzlhWV2YWzVk0jksRtLqvjZyJ5D4oEM83nxECd8C/9Cr4ISrY5mtF
- JweQ==
-X-Gm-Message-State: AOAM5332dzuu1kjhqV3m88FsloRBfSigL41x+NXi0luBogexmtrkq75H
- aISsCg41dpXTfNKxsZdKyp4=
-X-Received: by 2002:a1c:f715:: with SMTP id v21mr3777956wmh.117.1601652894089; 
- Fri, 02 Oct 2020 08:34:54 -0700 (PDT)
-Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id d6sm2215468wrq.67.2020.10.02.08.34.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Oct 2020 08:34:52 -0700 (PDT)
-Subject: Re: [PATCH 09/14] hw/misc/bcm2835_cprman: add a clock mux skeleton
- implementation
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
-References: <20200925101731.2159827-1-luc@lmichel.fr>
- <20200925101731.2159827-10-luc@lmichel.fr>
- <2a18bb94-1e6c-d853-3e6e-f6874b617a2b@amsat.org>
-Autocrypt: addr=f4bug@amsat.org; keydata=
- mQINBDU8rLoBEADb5b5dyglKgWF9uDbIjFXU4gDtcwiga9wJ/wX6xdhBqU8tlQ4BroH7AeRl
- u4zXP0QnBDAG7EetxlQzcfYbPmxFISWjckDBFvDbFsojrZmwF2/LkFSzlvKiN5KLghzzJhLO
- HhjGlF8deEZz/d/G8qzO9mIw8GIBS8uuWh6SIcG/qq7+y+2+aifaj92EdwU79apZepT/U3vN
- YrfcAuo1Ycy7/u0hJ7rlaFUn2Fu5KIgV2O++hHYtCCQfdPBg/+ujTL+U+sCDawCyq+9M5+LJ
- ojCzP9rViLZDd/gS6jX8T48hhidtbtsFRj/e9QpdZgDZfowRMVsRx+TB9yzjFdMO0YaYybXp
- dg/wCUepX5xmDBrle6cZ8VEe00+UQCAU1TY5Hs7QFfBbjgR3k9pgJzVXNUKcJ9DYQP0OBH9P
- ZbZvM0Ut2Bk6bLBO5iCVDOco0alrPkX7iJul2QWBy3Iy9j02GnA5jZ1Xtjr9kpCqQT+sRXso
- Vpm5TPGWaWljIeLWy/qL8drX1eyJzwTB3A36Ck4r3YmjMjfmvltSZB1uAdo1elHTlFEULpU/
- HiwvvqXQ9koB15U154VCuguvx/Qnboz8GFb9Uw8VyawzVxYVNME7xw7CQF8FYxzj6eI7rBf2
- Dj/II6wxWPgDEy3oUzuNOxTB7sT3b/Ym76yOJzWX5BylXQIJ5wARAQABtDFQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoRjRCVUcpIDxmNGJ1Z0BhbXNhdC5vcmc+iQJVBBMBCAA/AhsPBgsJ
- CAcDAgYVCAIJCgsEFgIDAQIeAQIXgBYhBPqr514SkXIh3P1rsuPjLCzercDeBQJd660aBQks
- klzgAAoJEOPjLCzercDe2iMP+gMG2dUf+qHz2uG8nTBGMjgK0aEJrKVPodFA+iedQ5Kp3BMo
- jrTg3/DG1HMYdcvQu/NFLYwamUfUasyor1k+3dB23hY09O4xOsYJBWdilkBGsJTKErUmkUO2
- 3J/kawosvYtJJSHUpw3N6mwz/iWnjkT8BPp7fFXSujV63aZWZINueTbK7Y8skFHI0zpype9s
- loU8xc4JBrieGccy3n4E/kogGrTG5jcMTNHZ106DsQkhFnjhWETp6g9xOKrzZQbETeRBOe4P
- sRsY9YSG2Sj+ZqmZePvO8LyzGRjYU7T6Z80S1xV0lH6KTMvq7vvz5rd92f3pL4YrXq+e//HZ
- JsiLen8LH/FRhTsWRgBtNYkOsd5F9NvfJtSM0qbX32cSXMAStDVnS4U+H2vCVCWnfNug2TdY
- 7v4NtdpaCi4CBBa3ZtqYVOU05IoLnlx0miKTBMqmI05kpgX98pi2QUPJBYi/+yNu3fjjcuS9
- K5WmpNFTNi6yiBbNjJA5E2qUKbIT/RwQFQvhrxBUcRCuK4x/5uOZrysjFvhtR8YGm08h+8vS
- n0JCnJD5aBhiVdkohEFAz7e5YNrAg6kOA5IVRHB44lTBOatLqz7ntwdGD0rteKuHaUuXpTYy
- CRqCVAKqFJtxhvJvaX0vLS1Z2dwtDwhjfIdgPiKEGOgCNGH7R8l+aaM4OPOd
-Message-ID: <d758d149-bca5-e52f-8d1f-65caf742a136@amsat.org>
-Date: Fri, 2 Oct 2020 17:34:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=IqVrNhZTauTtwi6BBKx0EUucNfa0p2NyiXM/ojlYnfc=;
+ b=NlEFf/5VpA/NNmS1ZE0KsP2MMFF7VWsi2BF1cVRbtYPVi2IKpsnZBYpzcBIY0Gj0pY
+ W9rb8r7TVLE6N2XzNt10fXa7ALcPVNipTTrZUtE1X5FlHJDYGe1TR6/c6U1fW0c9NIUI
+ lhjsusrcJ58V5LOSfK6p7zwJVqS5/IOWKVQtaEYrU+DH4gb/Zl6RhCu7BTwm969QYY+g
+ euy2voXZwooIuSr7NyPD1N6G04ujiZl+nbjM+afB+2izF1839sVoXK8ia9ds64VfPW6E
+ WjpHEfjaq45Br8N7vCBeNoS57suwbw3DFHsTGf6fsWblFcFKAr4XweDUIGeuQSvvhwuG
+ u0wQ==
+X-Gm-Message-State: AOAM531UL98GDSBFHaHdqC8WzR9q86ZRW4yrVU8yJKxlQuVjXLP7i83v
+ K1WrJeDq7BeNCOwkMG3lFDYoNpB6nD0zqpz004P1Ng==
+X-Received: by 2002:a17:906:c7d9:: with SMTP id
+ dc25mr2901769ejb.482.1601654175048; 
+ Fri, 02 Oct 2020 08:56:15 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <2a18bb94-1e6c-d853-3e6e-f6874b617a2b@amsat.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+References: <CAC41xo2yEoDvy15yExroY+ZX+qQns_rxQiqP9D2Xo3dqquP7KA@mail.gmail.com>
+ <CAFEAcA-gMfOntN=up20vjF00Mbf0MOeWyTWufmcZ9E=AKKYWEw@mail.gmail.com>
+ <CAC41xo0mWv4LoHbzvxkq+vhw=kn8iyi2vhgZhv4vxODmJcnngQ@mail.gmail.com>
+ <1bfa78a6-b478-118f-c284-466dcddde468@amsat.org>
+ <CAFEAcA8OhKmg5R=h4E4qO_RwPGbP50p711j_zjoSY-fhjeMAjA@mail.gmail.com>
+ <CAC41xo1cOxgM5bR9G6O72QRgAcPMEA_tCje0=HZ73vGhD22hQg@mail.gmail.com>
+ <CAFEAcA__RSrAhxWe8P5JkJwh3p8-w1MiNOjgCf_D323mxns5UA@mail.gmail.com>
+In-Reply-To: <CAFEAcA__RSrAhxWe8P5JkJwh3p8-w1MiNOjgCf_D323mxns5UA@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 2 Oct 2020 16:56:03 +0100
+Message-ID: <CAFEAcA_psc6qJ4dcxb5vCU5f3hf6sm5FmjMCwW6X7DNZ-pefHQ@mail.gmail.com>
+Subject: Re: gicv3 maintenance interrupt not triggering
+To: Jose Martins <josemartins90@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62d.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.256,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -148,67 +117,17 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pVGC950cwhEB
+X-TUID: h/mmhu/zhOIB
 
-On 10/2/20 4:42 PM, Philippe Mathieu-Daudé wrote:
-> On 9/25/20 12:17 PM, Luc Michel wrote:
->> The clock multiplexers are the last clock stage in the cprman. Each mux
->> outputs one clock signal that goes out of the cprman to the SoC
->> peripherals.
->>
->> Each mux has at most 10 sources. The sources 0 to 3 are common to all
->> muxes. They are:
->>    0. ground (no clock signal)
->>    1. the main oscillator (xosc)
->>    2. "test debug 0" clock
->>    3. "test debug 1" clock
->>
->> Test debug 0 and 1 are actual clock muxes that can be used as sources to
->> other muxes (for debug purpose).
->>
->> Sources 4 to 9 are mux specific and can be unpopulated (grounded). Those
->> sources are fed by the PLL channels outputs.
->>
->> One corner case exists for DSI0E and DSI0P muxes. They have their source
->> number 4 connected to an intermediate multiplexer that can select
->> between PLLA-DSI0 and PLLD-DSI0 channel. This multiplexer is called
->> DSI0HSCK and is not a clock mux as such. It is really a simple mux from
->> the hardware point of view (see https://elinux.org/The_Undocumented_Pi).
->> This mux is not implemented in this commit.
->>
->> Note that there is some muxes for which sources are unknown (because of
->> a lack of documentation). For those cases all the sources are connected
->> to ground in this implementation.
->>
->> Each clock mux output is exported by the cprman at the qdev level,
->> adding the suffix '-out' to the mux name to form the output clock name.
->> (E.g. the 'uart' mux sees its output exported as 'uart-out' at the
->> cprman level.)
->>
->> Signed-off-by: Luc Michel <luc@lmichel.fr>
->> ---
-[...]
->>  struct BCM2835CprmanState {
->>      /*< private >*/
->>      SysBusDevice parent_obj;
->>  
->>      /*< public >*/
->>      MemoryRegion iomem;
->>  
->>      CprmanPLLState plls[CPRMAN_NUM_PLL];
->>      CprmanPLLChannelState channels[CPRMAN_NUM_PLL_CHANNEL];
->> +    CprmanClockMuxState clock_muxes[CPRMAN_NUM_CLOCK_MUX];
->>  
->>      uint32_t regs[CPRMAN_NUM_REGS];
->>      uint32_t xosc_freq;
->>  
->>      Clock *xosc;
->> +    Clock *gnd;
-> 
-> This one seems to belong to MachineState in "hw/boards.h".
+On Fri, 25 Sep 2020 at 17:47, Peter Maydell <peter.maydell@linaro.org> wrote:
+> Do you have a test case binary/command line I can use to repro?
 
-Although it might be easier to have a singleton in hw/core/clock.c...
+Ping? I have a draft of a fix for this but I'd like to test it
+before I send it out to the list...
+
+thanks
+-- PMM

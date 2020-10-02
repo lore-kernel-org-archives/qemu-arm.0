@@ -1,199 +1,236 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1716206lfq;
-        Fri, 2 Oct 2020 09:44:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy2kZRiUFfDcEs1OrmJkAx3jF3cbxtADNMQsodpJXeCbNtGHEuhLHdXJQur2/CF96pl0Rdl
-X-Received: by 2002:a25:d287:: with SMTP id j129mr3826593ybg.308.1601657070515;
-        Fri, 02 Oct 2020 09:44:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601657070; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1716607lfq;
+        Fri, 2 Oct 2020 09:45:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyxXbtXf9Vr8t/3MDUGImeHJHoC+ETwd5BoJiU77KM5zbk+Qx9swbwv1M6TkVXYujN06d2l
+X-Received: by 2002:aa7:de97:: with SMTP id j23mr1769926edv.45.1601657102470;
+        Fri, 02 Oct 2020 09:45:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601657102; cv=none;
         d=google.com; s=arc-20160816;
-        b=cOUeV40cjuG1xMs1dgbJXWgp5rZgrWHkY22B8Sunb+eE5rTJ/+/kB9bASAtNEEA10S
-         odGvYAf5Evu6KM8dQx5KYzbfSThg12k3tFMTepB+z1auNS/FUS4kxhzQ7FG1xKnnzIH8
-         g+ObtCC9EkJIvr7Gmd4NsJQU0+AQGBsBsfRSy6AeNh8NOUE+UrPWOtnsLqZzczxQpY0m
-         cVn0LJXxGh3qWCOKCvZoDGpbWLqW+PW/b35Qo/ncy1rLa91QxyFCUrcHxqus6OISPd+M
-         aVT04lOCxFn481FLum5yCTxmmv//UpI6NUFyZFgmJPzvTQO7NpbkRvBZsBcUD8T7h+nB
-         99yQ==
+        b=WEnA02A1iB2oruPqsI6dAcSLxZGlxMKwkcl+M3WouHtyBFcEvbJmzg0mkNlADgN2yU
+         4lxTfB7iz5wVy4f2nAy4NzTaWvy12tFxhHdTspBLK0UioB1ITelbCqqBM5MvDc6fTA23
+         HiW0zyvmk74zjBPW3UCjFWdB8FlOa8gTa4KxHkFeaUIx6gIEXwm/jj5lmhim0G7M18pn
+         0moWKPxrnhQ0KwVHNBoLo3Z8sxqtwX4NlxgK4CbuvvX+52+AjmMU/h1UczN48KLKMoM1
+         9qyRSIWFVA/nBO2Sr2GtorxSYwUstmChBZLR7g49sbd4zqvbVMycGPMEGcqINWGMg784
+         FAhA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=dWp63D9c2Lr1JkfNpk3fP0mvyDGBITZOhbYefHb3Q5E=;
-        b=0LIHVZwKFS+dD8m1qv+PKlDrK6rHDjlU+9QUctZcN3oN634F3kT/de85cf465rC8Av
-         7N1xiCig1hAYYJKCfgHLuqXAXw1VRSwTZZpcic98YzKc90/b1CPW7+A46sWbArzdEDqK
-         kCMlRh4++x3K3CY5sm+Vll4jlxX+xG6hKQ4SZGWASm0EvtO7EGW/6fkhE6kDs2UPKKzq
-         Ftfm93LvkYVCL3JbN+MHq1XwI5XN3oRKp2yNLrgxg5ZpzTtU7nhi6kXj1lOqYV8J5vSt
-         tFKTeUS+ROzSScf3vrdRFXR5yNRjpL/xQPP1IwckncS8fTu9ncJIyDsZP698SG4dZFLl
-         1xlQ==
+        h=list-id:precedence:content-transfer-encoding:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:subject:dkim-signature;
+        bh=2+A3Co7DfxkWQ8HV8UobuhVZsZR1j3dufeR3zFyNIJM=;
+        b=q4lcLnrQSjtoyyAei6ouBPWp4IGI/VFe+WNOU7vpHFilTzzrlhHGpSiygQIHBfQqIv
+         oRXi8GVhbBn7SEvSn+sKA786RY9G6um6lG8SptTnGTk2heIxdwmTXhUZSJG1BnWRjirJ
+         7fu4cea/jmt58EWQ7qg7+9TD/YKxulE8CpmeDaYf6LjRCuyk/0SDs/fxZYjlfHGXPuIT
+         YKML5NGHgWrGHb6DEVF5bhDUB+sk8WDVUmJp84p9quDlcA7d4hDKYCB+XX4modCkzxm3
+         suqceBIHGx0pIt+GEVgIAbgMdZoGZXgbLQRGNOHcb0RAajr9lxe44P6FXrzb5Tq30QdP
+         uzjg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CmC0xxSb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o133si2349702yba.435.2020.10.02.09.44.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Oct 2020 09:44:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ZL6lpAo7;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id d10si1468248edv.145.2020.10.02.09.45.02;
+        Fri, 02 Oct 2020 09:45:02 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=CmC0xxSb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38578 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kOOAX-0006si-Rg
-	for alex.bennee@linaro.org; Fri, 02 Oct 2020 12:44:29 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34016)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kOO8W-0004Ad-L0; Fri, 02 Oct 2020 12:42:24 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:42386)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kOO8V-0005cp-1p; Fri, 02 Oct 2020 12:42:24 -0400
-Received: by mail-wr1-x441.google.com with SMTP id c18so2498270wrm.9;
- Fri, 02 Oct 2020 09:42:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=dWp63D9c2Lr1JkfNpk3fP0mvyDGBITZOhbYefHb3Q5E=;
- b=CmC0xxSbZUsDEpDzXkvQVngmvyZ7mmQ0DdrtxBSeYl2NOvcudtRH/uQwv/rcJhXQ+R
- xsXnYAi87rYb1AlabT9IiQxlSSL1PiwZOvlQXNb6Sou3L2vf7InLzjPmGume0bhpFgTU
- VxMTzbZT45eSmbf9Vj1hvc3zJPHAPRqzs8KmC45KzrXXYdRDlrKRdFZqprwVOsFp8z8m
- EqtoIh7+n1h+huyCYCCvgVQP2g/pFjl1K4gmkDCiWQ0gnJ6cH6+hxFxKCaLjxTtx+wve
- 0yIq4PAJrYkYpjI/W90L/zOC46wgMjRnp3Z7g32201FwxRXuEX/YnvPvSaT5RTztv9+v
- VUJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=dWp63D9c2Lr1JkfNpk3fP0mvyDGBITZOhbYefHb3Q5E=;
- b=cFUgtIryhca+R56RwIrmbveTlcx7+7snpG9Rlxmb1OYUmOOqWrQKZrGPKzUU6Gz+88
- +gYmcgZI/7sk1vsswK7sWnnkkaoFjFoPqJtf5nEMx85mv66MFOaODnVczZ38OgIIghJx
- ntP7Ny3fSaNtGc2CUUp+Y76SzmRTKoHoO/U1Co2MX7I6sSa7pR0AWkOReEWWoRtmjlKV
- k94xi4eQvz5sXFZ+byq2L77BoDwzn/8uFpr00gE0Nfjg1NC9vZuuGft/l60hKJgAcD1k
- 82+N3BbGuCKH6nCminzx3q4bvPZJP7tpj+oslwDfs9lR5UJLYQ+lwUO+Nupwp8V+8VOl
- JcmQ==
-X-Gm-Message-State: AOAM531uMpjcJcsjRs1uWdN5xPKCW2wTmC/0Gov8Z9y6ghO8+n4yJySB
- nUi5P5kflaB4/iNTX7CXydIbmz4+5Sc=
-X-Received: by 2002:adf:fd8c:: with SMTP id d12mr4000702wrr.283.1601656941141; 
- Fri, 02 Oct 2020 09:42:21 -0700 (PDT)
-Received: from localhost.localdomain (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id t17sm2378673wrx.82.2020.10.02.09.42.20
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2020 09:42:20 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 2/4] hw/timer/bcm2835: Rename variable holding CTRL_STATUS
- register
-Date: Fri,  2 Oct 2020 18:42:14 +0200
-Message-Id: <20201002164216.1741110-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201002164216.1741110-1-f4bug@amsat.org>
-References: <20201002164216.1741110-1-f4bug@amsat.org>
+       dkim=pass header.i=@ibm.com header.s=pp1 header.b=ZL6lpAo7;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=ibm.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S2387692AbgJBQpB (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Fri, 2 Oct 2020 12:45:01 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1]:29512 "EHLO
+        mx0a-001b2d01.pphosted.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1726017AbgJBQpA (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Fri, 2 Oct 2020 12:45:00 -0400
+Received: from pps.filterd (m0098410.ppops.net [127.0.0.1])
+        by mx0a-001b2d01.pphosted.com (8.16.0.42/8.16.0.42) with SMTP id 092GVwrx006908;
+        Fri, 2 Oct 2020 12:43:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=2+A3Co7DfxkWQ8HV8UobuhVZsZR1j3dufeR3zFyNIJM=;
+ b=ZL6lpAo76UUwp11NPj6zYDs8uDEd5Eg4s8Bnu+x6A9pDfY4v17ur2V5/VQAm1Xsa8WoZ
+ jF57ZhyECCCEOAt7VEtCJ+X/62wSfpjwuK8OmQILaGAJlfyt2IHdnxk4i2PTbV8C5+y2
+ E8QrbmluwZPKJ8nkfjZ4pV2KHv9Srg8dbS4C4+LjouCp1w1golKNt2NX64W5vFoFU3mx
+ GraG/FKAidg+fls6cQa0tWqYA9UpnCVqQINCGpM6utTnAAyg9W8PYf1GW7PzOz6aQuMF
+ ueSdxKKi3wtCWnYS16nDlnkvuNyIusRowWITviL71dULf4YjNRCfBzdgzDBNFIg1cgvz Tg== 
+Received: from pps.reinject (localhost [127.0.0.1])
+        by mx0a-001b2d01.pphosted.com with ESMTP id 33x5rycn28-1
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+        Fri, 02 Oct 2020 12:43:16 -0400
+Received: from m0098410.ppops.net (m0098410.ppops.net [127.0.0.1])
+        by pps.reinject (8.16.0.36/8.16.0.36) with SMTP id 092GWgtP009181;
+        Fri, 2 Oct 2020 12:43:15 -0400
+Received: from ppma05wdc.us.ibm.com (1b.90.2fa9.ip4.static.sl-reverse.com [169.47.144.27])
+        by mx0a-001b2d01.pphosted.com with ESMTP id 33x5rycn1m-1
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+        Fri, 02 Oct 2020 12:43:15 -0400
+Received: from pps.filterd (ppma05wdc.us.ibm.com [127.0.0.1])
+        by ppma05wdc.us.ibm.com (8.16.0.42/8.16.0.42) with SMTP id 092GcU34023331;
+        Fri, 2 Oct 2020 16:43:13 GMT
+Received: from b01cxnp22036.gho.pok.ibm.com (b01cxnp22036.gho.pok.ibm.com [9.57.198.26])
+        by ppma05wdc.us.ibm.com with ESMTP id 33sw99y7yv-1
+        (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+        Fri, 02 Oct 2020 16:43:13 +0000
+Received: from b01ledav006.gho.pok.ibm.com (b01ledav006.gho.pok.ibm.com [9.57.199.111])
+        by b01cxnp22036.gho.pok.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id 092GhDIh14615524
+        (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+        Fri, 2 Oct 2020 16:43:13 GMT
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+        by IMSVA (Postfix) with ESMTP id 120D4AC05B;
+        Fri,  2 Oct 2020 16:43:13 +0000 (GMT)
+Received: from b01ledav006.gho.pok.ibm.com (unknown [127.0.0.1])
+        by IMSVA (Postfix) with ESMTP id 4E754AC059;
+        Fri,  2 Oct 2020 16:43:04 +0000 (GMT)
+Received: from oc4221205838.ibm.com (unknown [9.163.4.25])
+        by b01ledav006.gho.pok.ibm.com (Postfix) with ESMTP;
+        Fri,  2 Oct 2020 16:43:04 +0000 (GMT)
+Subject: Re: [PATCH v3] qemu/atomic.h: rename atomic_ to qatomic_
+To:     Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+Cc:     Fam Zheng <fam@euphon.net>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        sheepdog@lists.wpkg.org, Paul Durrant <paul@xen.org>,
+        Jason Wang <jasowang@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Yuval Shaia <yuval.shaia.ml@gmail.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Alistair Francis <Alistair.Francis@wdc.com>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        Huacai Chen <chenhc@lemote.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Alberto Garcia <berto@igalia.com>, kvm@vger.kernel.org,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Juan Quintela <quintela@redhat.com>,
+        Jiri Slaby <jslaby@suse.cz>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Michael Roth <mdroth@linux.vnet.ibm.com>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+        Liu Yuan <namei.unix@gmail.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Thomas Huth <thuth@redhat.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Stefan Weil <sw@weilnetz.de>, Peter Lieven <pl@kamp.de>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+        xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        John Snow <jsnow@redhat.com>,
+        Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+        Kevin Wolf <kwolf@redhat.com>,
+        =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+        qemu-block@nongnu.org,
+        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+        Cornelia Huck <cohuck@redhat.com>,
+        Laurent Vivier <laurent@vivier.eu>,
+        Max Reitz <mreitz@redhat.com>,
+        Sagar Karandikar <sagark@eecs.berkeley.edu>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Paolo Bonzini <pbonzini@redhat.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Aurelien Jarno <aurelien@aurel32.net>
+References: <20200923105646.47864-1-stefanha@redhat.com>
+From:   Matthew Rosato <mjrosato@linux.ibm.com>
+Message-ID: <4e65d6fa-0a7e-015b-eb6f-5dd1cc3ddd91@linux.ibm.com>
+Date:   Fri, 2 Oct 2020 12:43:03 -0400
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uIzDN3VCszvV
+In-Reply-To: <20200923105646.47864-1-stefanha@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Virus-Version: vendor=fsecure engine=2.50.10434:6.0.235,18.0.687
+ definitions=2020-10-02_10:2020-10-02,2020-10-02 signatures=0
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0 mlxscore=0 suspectscore=0
+ phishscore=0 adultscore=0 spamscore=0 lowpriorityscore=0 malwarescore=0
+ clxscore=1011 bulkscore=0 priorityscore=1501 mlxlogscore=999
+ impostorscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2006250000 definitions=main-2010020121
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: 6K2YR5IUL2NJ
 
-The variable holding the CTRL_STATUS register is misnamed
-'status'. Rename it 'ctrl_status' to make it more obvious
-this register is also used to control the peripheral.
+On 9/23/20 6:56 AM, Stefan Hajnoczi wrote:
+> clang's C11 atomic_fetch_*() functions only take a C11 atomic type
+> pointer argument. QEMU uses direct types (int, etc) and this causes a
+> compiler error when a QEMU code calls these functions in a source file
+> that also included <stdatomic.h> via a system header file:
+> 
+>    $ CC=clang CXX=clang++ ./configure ... && make
+>    ../util/async.c:79:17: error: address argument to atomic operation must be a pointer to _Atomic type ('unsigned int *' invalid)
+> 
+> Avoid using atomic_*() names in QEMU's atomic.h since that namespace is
+> used by <stdatomic.h>. Prefix QEMU's APIs with 'q' so that atomic.h
+> and <stdatomic.h> can co-exist. I checked /usr/include on my machine and
+> searched GitHub for existing "qatomic_" users but there seem to be none.
+> 
+> This patch was generated using:
+> 
+>    $ git grep -h -o '\<atomic\(64\)\?_[a-z0-9_]\+' include/qemu/atomic.h | \
+>      sort -u >/tmp/changed_identifiers
+>    $ for identifier in $(</tmp/changed_identifiers); do
+>          sed -i "s%\<$identifier\>%q$identifier%g" \
+>              $(git grep -I -l "\<$identifier\>")
+>      done
+> 
+> I manually fixed line-wrap issues and misaligned rST tables.
+> 
+> Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+..snip..
+> diff --git a/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h b/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+> index acd4c8346d..7b4062a1a1 100644
+> --- a/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+> +++ b/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+> @@ -68,7 +68,7 @@ static inline int pvrdma_idx_valid(uint32_t idx, uint32_t max_elems)
+>   
+>   static inline int32_t pvrdma_idx(int *var, uint32_t max_elems)
+>   {
+> -	const unsigned int idx = atomic_read(var);
+> +	const unsigned int idx = qatomic_read(var);
+>   
+>   	if (pvrdma_idx_valid(idx, max_elems))
+>   		return idx & (max_elems - 1);
+> @@ -77,17 +77,17 @@ static inline int32_t pvrdma_idx(int *var, uint32_t max_elems)
+>   
+>   static inline void pvrdma_idx_ring_inc(int *var, uint32_t max_elems)
+>   {
+> -	uint32_t idx = atomic_read(var) + 1;	/* Increment. */
+> +	uint32_t idx = qatomic_read(var) + 1;	/* Increment. */
+>   
+>   	idx &= (max_elems << 1) - 1;		/* Modulo size, flip gen. */
+> -	atomic_set(var, idx);
+> +	qatomic_set(var, idx);
+>   }
+>   
+>   static inline int32_t pvrdma_idx_ring_has_space(const struct pvrdma_ring *r,
+>   					      uint32_t max_elems, uint32_t *out_tail)
+>   {
+> -	const uint32_t tail = atomic_read(&r->prod_tail);
+> -	const uint32_t head = atomic_read(&r->cons_head);
+> +	const uint32_t tail = qatomic_read(&r->prod_tail);
+> +	const uint32_t head = qatomic_read(&r->cons_head);
+>   
+>   	if (pvrdma_idx_valid(tail, max_elems) &&
+>   	    pvrdma_idx_valid(head, max_elems)) {
+> @@ -100,8 +100,8 @@ static inline int32_t pvrdma_idx_ring_has_space(const struct pvrdma_ring *r,
+>   static inline int32_t pvrdma_idx_ring_has_data(const struct pvrdma_ring *r,
+>   					     uint32_t max_elems, uint32_t *out_head)
+>   {
+> -	const uint32_t tail = atomic_read(&r->prod_tail);
+> -	const uint32_t head = atomic_read(&r->cons_head);
+> +	const uint32_t tail = qatomic_read(&r->prod_tail);
+> +	const uint32_t head = qatomic_read(&r->cons_head);
+>   
+>   	if (pvrdma_idx_valid(tail, max_elems) &&
+>   	    pvrdma_idx_valid(head, max_elems)) {
 
-Reviewed-by: Luc Michel <luc.michel@greensocs.com>
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/timer/bcm2835_systmr.h | 2 +-
- hw/timer/bcm2835_systmr.c         | 8 ++++----
- 2 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/include/hw/timer/bcm2835_systmr.h b/include/hw/timer/bcm2835_systmr.h
-index 43df7ee488..f15788a78d 100644
---- a/include/hw/timer/bcm2835_systmr.h
-+++ b/include/hw/timer/bcm2835_systmr.h
-@@ -27,7 +27,7 @@ struct BCM2835SystemTimerState {
-     qemu_irq irq;
- 
-     struct {
--        uint32_t status;
-+        uint32_t ctrl_status;
-         uint32_t compare[BCM2835_SYSTIMER_COUNT];
-     } reg;
- };
-diff --git a/hw/timer/bcm2835_systmr.c b/hw/timer/bcm2835_systmr.c
-index ff8c553661..b234e83824 100644
---- a/hw/timer/bcm2835_systmr.c
-+++ b/hw/timer/bcm2835_systmr.c
-@@ -30,7 +30,7 @@ REG32(COMPARE3,     0x18)
- 
- static void bcm2835_systmr_update_irq(BCM2835SystemTimerState *s)
- {
--    bool enable = !!s->reg.status;
-+    bool enable = !!s->reg.ctrl_status;
- 
-     trace_bcm2835_systmr_irq(enable);
-     qemu_set_irq(s->irq, enable);
-@@ -52,7 +52,7 @@ static uint64_t bcm2835_systmr_read(void *opaque, hwaddr offset,
- 
-     switch (offset) {
-     case A_CTRL_STATUS:
--        r = s->reg.status;
-+        r = s->reg.ctrl_status;
-         break;
-     case A_COMPARE0 ... A_COMPARE3:
-         r = s->reg.compare[(offset - A_COMPARE0) >> 2];
-@@ -82,7 +82,7 @@ static void bcm2835_systmr_write(void *opaque, hwaddr offset,
-     trace_bcm2835_systmr_write(offset, value);
-     switch (offset) {
-     case A_CTRL_STATUS:
--        s->reg.status &= ~value; /* Ack */
-+        s->reg.ctrl_status &= ~value; /* Ack */
-         bcm2835_systmr_update_irq(s);
-         break;
-     case A_COMPARE0 ... A_COMPARE3:
-@@ -133,7 +133,7 @@ static const VMStateDescription bcm2835_systmr_vmstate = {
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
--        VMSTATE_UINT32(reg.status, BCM2835SystemTimerState),
-+        VMSTATE_UINT32(reg.ctrl_status, BCM2835SystemTimerState),
-         VMSTATE_UINT32_ARRAY(reg.compare, BCM2835SystemTimerState,
-                              BCM2835_SYSTIMER_COUNT),
-         VMSTATE_END_OF_LIST()
--- 
-2.26.2
-
+It looks like the changes in this file are going to get reverted the 
+next time someone does a linux header sync.

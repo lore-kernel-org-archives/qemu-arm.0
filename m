@@ -1,118 +1,105 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3416694lfq;
-        Sun, 4 Oct 2020 13:18:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyT86M8j+dGJB4q3FQ6HSCDkHWq0H8bVDB7ZbMFhZEqVU9nBvHpQflQcHAp0nd1rN0nYo7H
-X-Received: by 2002:a25:c542:: with SMTP id v63mr14438524ybe.241.1601842728828;
-        Sun, 04 Oct 2020 13:18:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601842728; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1577032lfq;
+        Fri, 2 Oct 2020 07:06:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzzspdi9tOtDL4/HElhsjw6NzQxLAZgAuxTL1iJticLzSn0aV8w4fyqcbRF6+ucWmuyCDoW
+X-Received: by 2002:ab0:71cb:: with SMTP id n11mr1068257uao.4.1601647590480;
+        Fri, 02 Oct 2020 07:06:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601647590; cv=none;
         d=google.com; s=arc-20160816;
-        b=b33TNrypAL2635kp8DWVLxwbwEeuZZgekpfYoxj6o0mlsD5RbKy5G+fdPGwPqO/5U+
-         1BfUpZ/z/zE/eXM/bjZnRyMqs+ea7L4DG/QSFJOrTikRsiObnfIPEE0D32oFk8Uq1XTU
-         xNAQugsrbCMdr7l/cCfhTxIwFMLiBgSK2ieucNocMa7ZqDPJjvN2NwEDw1tuvUc5gIIh
-         vslo9eWCeGqcSw1+T/QbhdfIm4Uj+KjmawiBZR7cJ3M6j8hYgqFzy48oLEmSjE6f6lbL
-         Nmh7nvfTv+keExhj7XwDR3wmSQBj85COJh8AtQOLfI2x/cmfZNwDByc//9LgG4P5x3gw
-         j58A==
+        b=d/MmOtUWGxGcyfoArdyTdwb7id3jKsuHZQlYGVP43UQ5k7PxiTN2bdrrtnI0vQpTtk
+         93X+UfmUPK2o+2/LWC8Ml2vos3vAhre9AYWeoScP0l/u3ABuaGyzQ4XF8Cw3FN66suqL
+         Wf7k0ACyiWkd/6f8mXl+mSQ+vAGN0Qspyxbk6VLY5f4wu44BrzeLJ5GeJJbiO58p7kTM
+         3fVu489JDU+GU1qYHVWlg3VA4BtXjs0n3ApWqOedcjOdZpoaSnMT7Q4nJrm9Vk59jCPG
+         AcTo/G3rg+l6cJ1KDaQq/1wCBNvSafKXLl7TgL8cNe6z9K9IVeh0x/VzKPCBO+SVtAB2
+         0wKg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=lNBlfs3DDUcJBQHUwmk1uWRH7eQlwOERdywbZr/j6HE=;
-        b=cP0AMgu7zzlqYdrmTpYmTahTUGyG+KMvDPxZZFCu865mJlZS9yyFYOjBHBTYqZoF+2
-         D39D4Jc3ZRfZASGH7M3XSkhLL/LcF7c2EWFTshMbBcy0IGcbfMtx/0amkIyNuocsNeCx
-         xdHE6+sakF2RoYBpSUVxSVUy4lB+QL3CWwAiS1O5KOgjW3AKETKYZf0eGKInIRNyTRbf
-         Lpbm0wBQGCeGSzxxRj1LCy5o2TqWAiZ/WwzoOgE+EDYb8QVNULlsbNGh0kicRcSzfuRm
-         xAVI2InYde6zHHxmcxKmzZ1SIpPwCFCg3QkIu2X/1yM0g7lJNxq1RQstGK8sdAcC9x9Q
-         1o8Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ZiZGpOz0igLCK49f4SgGqroASsXYSEsr3M9TqW+MP0o=;
+        b=Frt41km2dADUbPSkCUWWPlKPcSJduTBzYbUa4yR/uffBsMdFr5kKyGB8FC2+hwBB3y
+         pck4TajaqOSb7f2+1hsyA1HOPz6CR6uxk/qM2bVA2fWBEb8pokWjHSyKzun0Isz5DVGK
+         fqKu0exWSKEQi4Yv2bDMo4GULiwLC3GBeetCt7Fu+wQO+xSuO3I0EjqioCJXhsCSoECU
+         wY2m2SWZYugl37ZSN8Y4olax24NXrrzypXEYUlZC3sp3jmQgDhVyIJG5tmCLvP6+SDGy
+         YtyjLlQQxdAoseIYAXNc/xyPHd2jUnvf2wfzWTvH9S4ZZ9oDuGNHwYLtDVopSQwdOO4Z
+         VzAA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EHH2NnRS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WbbHMyGJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p190si12206430ybg.279.2020.10.04.13.18.48
+        by mx.google.com with ESMTPS id f12si227996ual.34.2020.10.02.07.06.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 04 Oct 2020 13:18:48 -0700 (PDT)
+        Fri, 02 Oct 2020 07:06:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=EHH2NnRS;
+       dkim=fail header.i=@linaro.org header.s=google header.b=WbbHMyGJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45468 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:54876 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPAT2-0005tE-5o
-	for alex.bennee@linaro.org; Sun, 04 Oct 2020 16:18:48 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35212)
+	id 1kOLhd-0007wI-Q4
+	for alex.bennee@linaro.org; Fri, 02 Oct 2020 10:06:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54588)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kPAS2-0005BD-B1; Sun, 04 Oct 2020 16:17:46 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:33858)
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kOLhW-0007w9-GD
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2020 10:06:22 -0400
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441]:40355)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kPAS0-0006BM-Ht; Sun, 04 Oct 2020 16:17:46 -0400
-Received: by mail-wr1-x442.google.com with SMTP id t10so7308471wrv.1;
- Sun, 04 Oct 2020 13:17:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=lNBlfs3DDUcJBQHUwmk1uWRH7eQlwOERdywbZr/j6HE=;
- b=EHH2NnRSlIBs6zCNj2uGTzSwMsCKnfzYZuZw9sfOusbQw0Cq/2fV0BOCQ+K87ePP5Q
- G+A9RoNNcM40AG8s/jrnrwdXuUTTsQVYsUZXq9wg6BWJQ3RMZ6z19efNeIhICW4xEVYa
- 2FXfoE6iWi9RKWf7EHX90YVufVNhCIjtYOV66TZqUr304/xAuOJG9C5XJRNhIkYyma24
- w05WFVSgFQQlOwS2AmkQb3D357FTNE8usiC2TOAdptRsnitoukqZdi58QKVGLaTlkmFB
- S1VD7l264AwHvSPMXoFkgKtP2Hc/2qt3XE1NSpYlCuFI46jsidBAHTHdOs8qcj9QSKK2
- q7zg==
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kOLhU-0000Eu-9M
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2020 10:06:22 -0400
+Received: by mail-pf1-x441.google.com with SMTP id w21so1298197pfc.7
+ for <qemu-arm@nongnu.org>; Fri, 02 Oct 2020 07:06:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=ZiZGpOz0igLCK49f4SgGqroASsXYSEsr3M9TqW+MP0o=;
+ b=WbbHMyGJ9vtz/1R/DQAl0Hpa5fwv67SlCcTGxpW8jk6cKx+3ym2VLzERfZMOeE8XUX
+ xfhluRXs1NhlKIuOiVg1i1dDqgtrHO4Iy0FbFzbyI3mObq9LGl4Xpk293ROwNZfel+Zs
+ l/ANJQju8GBreMVnvxe2HGqff/kwaJ4YxWHnB8eays1eqx9UlYMZtFJW59kVyte7P1uw
+ AVN+cXiOiTolWl4oU7YIeud34WSHLCYlOPws0RmfrGwHUPnWC7kZDmrDL7Of9MckfbsY
+ ZZya7qM8NIVXEJZKsy9/I8npyz9SVZnMTFe1qTlfI9A10PUjq4OK2fjxUNqA9CFRi4kw
+ Ksqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=lNBlfs3DDUcJBQHUwmk1uWRH7eQlwOERdywbZr/j6HE=;
- b=VQoZ4EVsW4jKlte8MvjUrR8qwYRQHqS5joAXEzDvG9HvCm8+Z/K1g3SUFASMBwNm4p
- lnaMnFoP/kCUwsBYROUcAI4to2T4bgn6wCrYiw1wxoxZZlD7El3Ryp8b/3TPsg5vleKq
- Awj6RstMqUZ/58Wf6IdNPkdDxFvawqLp34uuy7z1tAXDFv6YSjp/e7Srd6YJHvHv6gJQ
- kM1JeiuLj8SAPbHC0iXepOFmAaHfhhxkVAo4K/m/FlnVMP/KML1aOBofqXKV4Y5Tcblz
- AREvfR0d0ahjiNZymBWZp939vL7I7PSUcUvHg9dUu+xr+bia7EE0Ilqzr9NVn9pmClEv
- ENGw==
-X-Gm-Message-State: AOAM533UpYp4AsDIUS5jnUwKMGfLEkYa4d/7CNhcnI6EFf0/i7Empm+V
- ZU5kZh55OBtcWnlhZblhuwk=
-X-Received: by 2002:adf:94e6:: with SMTP id 93mr207633wrr.190.1601842662676;
- Sun, 04 Oct 2020 13:17:42 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id z203sm10225377wmg.17.2020.10.04.13.17.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 04 Oct 2020 13:17:41 -0700 (PDT)
-Subject: Re: [PATCH 09/14] hw/misc/bcm2835_cprman: add a clock mux skeleton
- implementation
-To: Luc Michel <luc@lmichel.fr>
-References: <20200925101731.2159827-1-luc@lmichel.fr>
- <20200925101731.2159827-10-luc@lmichel.fr>
- <2a18bb94-1e6c-d853-3e6e-f6874b617a2b@amsat.org>
- <20201004193421.2a2znqtgwaoslvm3@sekoia-pc.home.lmichel.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <0d76c36c-b5a1-bd4e-3825-945ea323a01c@amsat.org>
-Date: Sun, 4 Oct 2020 22:17:41 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=ZiZGpOz0igLCK49f4SgGqroASsXYSEsr3M9TqW+MP0o=;
+ b=Pe/C5hE1c0l+rHSbl0wlOS5JLw4+uOgbtgYlaYc5AqGJ+3oiCzrIrkg/bEiuBu8nMe
+ xCPK/4nVc2W58xa3jwDiD6GsVy7RKIrUn2Ullwu0J8TsySbCIFQzROaRHcZVYirNX+Et
+ BP6+CQ4TrjtKx7mzJUHgGYkBJIzp1dmxl5wZFZ49PbB6hO45UNO9dUkn0k0nXSZTibWz
+ VA9/I5BKXICnM4cRhsg8N5oz0C0SFkIo/aha4FpLhnjqHVJtu0EjpyFOQ2Y3AFb8C4ks
+ Q4MFSm3kLRFdSrHVVQ8FZrJY2r0FSjgTjawgzqCwDeOGUmJ6kLzhJLEf6EAHazA05e5M
+ 3LOw==
+X-Gm-Message-State: AOAM532N/G4JcfZ2jrL3kVDpRdR8v3nOG9wiEYryLSxVInDXwY7SvBIZ
+ AYH3BkjQQNcFR072mm9el+UCHD5xMf18vTDkXscQ2w==
+X-Received: by 2002:a62:6c2:0:b029:142:2501:397c with SMTP id
+ 185-20020a6206c20000b02901422501397cmr2876618pfg.65.1601647578563; Fri, 02
+ Oct 2020 07:06:18 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201004193421.2a2znqtgwaoslvm3@sekoia-pc.home.lmichel.fr>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+References: <20201001193659.21685-1-maxim.uvarov@linaro.org>
+ <CAFEAcA_76y5DoNw3tirFFaC9FfE6NnxwAkdgV5eSv9NUeBxdhw@mail.gmail.com>
+In-Reply-To: <CAFEAcA_76y5DoNw3tirFFaC9FfE6NnxwAkdgV5eSv9NUeBxdhw@mail.gmail.com>
+From: Maxim Uvarov <maxim.uvarov@linaro.org>
+Date: Fri, 2 Oct 2020 17:06:07 +0300
+Message-ID: <CAD8XO3ZWW87Ze+gX9xWtrZ=XaETvE63WqzobQamoGM2_tb-4Zw@mail.gmail.com>
+Subject: Re: [PATCH] hw: wdt: implement sbsa watchdog
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
+ envelope-from=maxim.uvarov@linaro.org; helo=mail-pf1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -125,82 +112,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: Ilias Apalodimas <ilias.apalodimas@linaro.org>,
+ =?UTF-8?Q?Fran=C3=A7ois_Ozog?= <francois.ozog@linaro.org>,
+ Shashi Mallela <shashi.mallela@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: FAE1yhWvvRfR
+X-TUID: UOG6n5FWu+jI
 
-On 10/4/20 9:34 PM, Luc Michel wrote:
-> On 16:42 Fri 02 Oct     , Philippe Mathieu-Daudé wrote:
->> On 9/25/20 12:17 PM, Luc Michel wrote:
->>> The clock multiplexers are the last clock stage in the cprman. Each mux
->>> outputs one clock signal that goes out of the cprman to the SoC
->>> peripherals.
->>>
->>> Each mux has at most 10 sources. The sources 0 to 3 are common to all
->>> muxes. They are:
->>>    0. ground (no clock signal)
->>>    1. the main oscillator (xosc)
->>>    2. "test debug 0" clock
->>>    3. "test debug 1" clock
->>>
->>> Test debug 0 and 1 are actual clock muxes that can be used as sources to
->>> other muxes (for debug purpose).
->>>
->>> Sources 4 to 9 are mux specific and can be unpopulated (grounded). Those
->>> sources are fed by the PLL channels outputs.
->>>
->>> One corner case exists for DSI0E and DSI0P muxes. They have their source
->>> number 4 connected to an intermediate multiplexer that can select
->>> between PLLA-DSI0 and PLLD-DSI0 channel. This multiplexer is called
->>> DSI0HSCK and is not a clock mux as such. It is really a simple mux from
->>> the hardware point of view (see https://elinux.org/The_Undocumented_Pi).
->>> This mux is not implemented in this commit.
->>>
->>> Note that there is some muxes for which sources are unknown (because of
->>> a lack of documentation). For those cases all the sources are connected
->>> to ground in this implementation.
->>>
->>> Each clock mux output is exported by the cprman at the qdev level,
->>> adding the suffix '-out' to the mux name to form the output clock name.
->>> (E.g. the 'uart' mux sees its output exported as 'uart-out' at the
->>> cprman level.)
->>>
->>> Signed-off-by: Luc Michel <luc@lmichel.fr>
->>> ---
->>>  include/hw/misc/bcm2835_cprman.h           |  84 ++++
->>>  include/hw/misc/bcm2835_cprman_internals.h | 421 +++++++++++++++++++++
->>>  hw/misc/bcm2835_cprman.c                   | 151 ++++++++
->>>  3 files changed, 656 insertions(+)
->>>
->>> diff --git a/include/hw/misc/bcm2835_cprman.h b/include/hw/misc/bcm2835_cprman.h
->>> index aaf15fb20c..c2a89e8e90 100644
->>> --- a/include/hw/misc/bcm2835_cprman.h
->>> +++ b/include/hw/misc/bcm2835_cprman.h
->>> @@ -52,12 +52,73 @@ typedef enum CprmanPLLChannel {
->>>      CPRMAN_PLLH_CHANNEL_PIX,
->>>
->>>      CPRMAN_PLLB_CHANNEL_ARM,
->>>
->>>      CPRMAN_NUM_PLL_CHANNEL,
->>> +
->>> +    /* Special values used when connecting clock sources to clocks */
->>> +    CPRMAN_CLOCK_SRC_NORMAL = -1,
->>> +    CPRMAN_CLOCK_SRC_FORCE_GROUND = -2,
->>> +    CPRMAN_CLOCK_SRC_DSI0HSCK = -3,
->>
->> Why not use CPRMAN_NORMAL_CHANNEL,
->> CPRMAN_FORCED_GROUND_CHANNEL and CPRMAN_DSI0HSCK_CHANNEL?
-> Well, those are special values used when connecting the clock sources to
-> the muxes in connect_mux_sources(). They are not channels hence the
-> name. To keep the code simple, I reused the CprmanPLLChannel type for
-> mux sources (it is used in bcm2835_cprman_internals.h to describe what
-> source connects to what mux input).
-> 
-> Ideally this type should be named something like ClockMuxSources (and
-> CprmanPLLChannel should be a sub-set of this type). But doing so
-> complicates the code quite a bit so I chose to simply have those three
-> constants here instead.
+On Thu, 1 Oct 2020 at 23:36, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Thu, 1 Oct 2020 at 20:37, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
+> >
+> > Initial virtual driver matching linux kernel sbsa_gwdt
+> > driver. Driver implements basic functionality and makes
+> > watchdog works on virtual machine and allows to reboot
+> > secure OS. I.e. atf->optee->efi/uboot->kernel. More
+> > information about that device can be found under:
+> > ARM DEN0029B - Server Base System Architecture (SBSA)
+> >
+> > Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
+>
+> Hi; what's the relationship between this SBSA watchdog
+> device model and the one that Shashi posted recently?
+> https://patchew.org/QEMU/20200929180410.33058-1-shashi.mallela@linaro.org/
+>
+> thanks
+> -- PMM
 
-Understood, OK.
+Nice it's the same driver written a little bit differently. I did not
+see his patch before. 2 things missing in Sashis driver which are
+useful for me:
+1. Add sbsa watchdog to machine virt also. That helped me to reboot a
+virtual machine with secure payload.
+2. I specially did not disable timer on driver close. I.e. "reboot"
+linux path reboots with that watchdog.  And make timeout lower to not
+wait for a long period.
+
+Can this driver also be considered for virt machine?
+
+Regards,
+Maxim.

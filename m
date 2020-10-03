@@ -1,106 +1,110 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2635428lfq;
-        Sat, 3 Oct 2020 10:51:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJytMpl1bQxjELe4pIjpK/e0ra+H5l6viQ9JFpP/W4zTl+FEU1Fpee9uZU6zq4tywlHacG4z
-X-Received: by 2002:a25:640f:: with SMTP id y15mr9742153ybb.59.1601747516396;
-        Sat, 03 Oct 2020 10:51:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601747516; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2648457lfq;
+        Sat, 3 Oct 2020 11:14:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwJjq+u+xaKSG96QlMTD/Dc7FFeuEo3w+LrA0nttQ5XzPmNXgo37QYw0UOzYnnlrhIqnX1A
+X-Received: by 2002:a25:9c87:: with SMTP id y7mr10134477ybo.18.1601748871383;
+        Sat, 03 Oct 2020 11:14:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601748871; cv=none;
         d=google.com; s=arc-20160816;
-        b=hZT0SWYsbLKwkO5Qp6Bb583PIVXp4uSUpPKpue8Ur2XhzJihnNvycNGZWVETjrM+BU
-         Bs+e/465N6E+ZA42KW+KcjSgUKFPyglXLl4mN0ulxM5vZ9+SF7JGnCSpBy6IuwWn8kBA
-         fyPC7R/ouDjx+fKEwaPgNSQWtnZOBzJU/708t12CN3PvhBhN6u+9CbbHzoq9oCRyFViH
-         U+26XOEyR9AxMjaJuvb9POZI67BKM3uzn2qSyU8EchdQ+mi6mZegn9+HTyOyrHd7sIsG
-         G1HVciBGuUds+gqGLGbzNfzHt6iemFHeg75O/25kNw7pZD/T5qhhsGQQggfdjBNpONlw
-         UTrA==
+        b=O+nzgppM4JFreYglgpia5uqRV2lCjySpb1WtY+1yq76xrtOCHkmbRzXIIJrUvggJSg
+         DOdO4VuZB6mtWKrXDA/6N9gDmXFr+BwLduqERrquZALND9KWxT98Jnmai6DldFNvQI0i
+         pkbl07AFTds2SkJGLchTxveDYnEzEBYPd8ohghK25l5xvY9WQry+bvrSMBS+XkVBGB0O
+         E6GCMAHfGcLNP8rqpcWxZVF9uu6Mrjh1ln3Lzr7ZXWOOMyDC6dLqjDjPgWufmlyBzsjk
+         pPMjSAbStEVkXYxPXlF1mC+eOvo3e+PKTn7E0OylDI6nnN3zfEzYKS9UWYBiNvZhfn8k
+         I9EQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=bh3lXGz4KMFoW1Duf/q+SyxiwmL7JXHKrBkWEz9YXC0=;
-        b=RpsyWswRoGEXqticO4TkqTmcjlIIMtWr+QgfTRFyWXCQoNf/fAD/YoortkaoSZMBCW
-         o1byPA2vQrlxLO4aAyptT+sX/k2cxKlBxVhIs6beohblj7lgZY7rBH8dyMQ/Gr1DxPnC
-         zXuPZ7sUz6ziU7GqGv55G5xzyYrJ3l1LjTUCIKQdp5zzOZyDUPARyLdnqh93KCaSaaEd
-         5L1ReIo4P2hY0kT/RTLFZbV13mnL4ZGHt5mWccfWkpmS+ofHw/shLi19KSB8szqEhh3A
-         EJ/2mI+XPU2CfRudwdxGV1IDSwdd6S5jlw5oRLRo36Sz70I341ZCsq6hz/tdlvtY9yBn
-         vXTg==
+        bh=kxQCIZkLUp4cXcK24Uf9Izm4LCAQBro6GywH9pmjLrQ=;
+        b=LVF8mHqwh96A9KU4sOggoJ68k4Bzg9/3QsWSTWFpUJHoDONphHIumF9M1xzXiG968K
+         iikpgKuVjscopXNR1QieVNLhRzvaPSKxiiy4dZIr13PWkxLTNkwQfuH8Zf2PGnBZ3J0I
+         XOQfJ9fS3yyY2nNHPAkZIZFAaEy2mRePiaK/qlYHvOljYatd380lhzp0Gstp4rToGFDM
+         whsdoMTZk5K2bMvkGgIQ5tN5p/FVMhKXrJUKh/tXtZXWHjouFzmyt0xnNsYSpnI5GeyW
+         9zSg/rH+I90e0ffTxO8kI9frNePxeB17n6ldFs2W+bxoGnSKvbRoywp1DHAhK4ZVZoX5
+         LCwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KvlpzcIT;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mcM5zsn/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p18si5727237ybl.164.2020.10.03.10.51.56
+        by mx.google.com with ESMTPS id q18si5685758ybd.123.2020.10.03.11.14.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 03 Oct 2020 10:51:56 -0700 (PDT)
+        Sat, 03 Oct 2020 11:14:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=KvlpzcIT;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="mcM5zsn/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45758 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:42204 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kOlhL-0002HY-R7
-	for alex.bennee@linaro.org; Sat, 03 Oct 2020 13:51:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49606)
+	id 1kOm3C-0005Ln-MR
+	for alex.bennee@linaro.org; Sat, 03 Oct 2020 14:14:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kOlhE-0002HN-P1; Sat, 03 Oct 2020 13:51:48 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:51475)
+ id 1kOm34-0005LU-Fc; Sat, 03 Oct 2020 14:14:22 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:51625)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kOlhD-0004MG-5q; Sat, 03 Oct 2020 13:51:48 -0400
-Received: by mail-wm1-x343.google.com with SMTP id w2so4670950wmi.1;
- Sat, 03 Oct 2020 10:51:46 -0700 (PDT)
+ id 1kOm32-00079t-Jq; Sat, 03 Oct 2020 14:14:22 -0400
+Received: by mail-wm1-x342.google.com with SMTP id w2so4703494wmi.1;
+ Sat, 03 Oct 2020 11:14:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=bh3lXGz4KMFoW1Duf/q+SyxiwmL7JXHKrBkWEz9YXC0=;
- b=KvlpzcIToroDnQ4t7I6Ag4YmxDCkIQGJDhxaxtsucHe8cwFxaI0c+9V0pRN5G3/vrd
- d2yVl8ANbvm+Nr8RFyV35ZuwJGNqxL7Gtk2LME/tB20Io16aWsG09sr/8Qbb8hT0xYQD
- fCmEuUO3OxWmmIb3P7KcdeHA5SBXlt5a5NPH7OI6jLigRx0845BkQXOoIKBnohenutQK
- KVW8jsLT3tksr3mjZ5YN9fs0EG/mSyL0YmHDpQKYr+4TSmRH2yxsxQx/X/3Xya2Ad2xE
- B+tryErz9x74egIB+1ju412Hanxu/mhWfp1L/OeE55xoXZQHY8ZTtk8ESEEXXhiPr+4u
- 1gSQ==
+ bh=kxQCIZkLUp4cXcK24Uf9Izm4LCAQBro6GywH9pmjLrQ=;
+ b=mcM5zsn/B9EblArEbpE5eXMBSgpflN6zdB7bJskMAtfQXICHdH7kqw2/p38uX1QJOS
+ eMeSR1PZ+eUBPi490Y80bT2cjBvPQy8uk7nig92wOZBWImtHth5kVdpB6/vUXxKuKKKw
+ 34O2VY0QK0fFtCmY84UQgZiVwp5dtjnDtI1+F9UR8lIMeMJrrsmNjKlYx92098FzCMYr
+ VKPppf7bM4mHRl+K/gfF3LMHqD+KA0IXCCa7PtRT6LGXkEpB1WQDiVLVcccgFXqONoCG
+ dDqXzIfAd6nEVhVBdBrzcZgvx7MvfbjZPt03Ma31X7XwNBu1d4Xunf8e0WbmEIUdQGLC
+ gvPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=bh3lXGz4KMFoW1Duf/q+SyxiwmL7JXHKrBkWEz9YXC0=;
- b=FZLpHy+yewe++WlpHFw0DfWZHYLYvQ04IdyUpzDvFiIj3qzKj7+NJ56dg+16zZTPpH
- UNImVJDrQu7bVIzhktJOAvazAYFohZOK8fmBeVQPQ7iOvW8YD4bR+cjG1sxHK6KInx2j
- NcnZzaQ+fERGX3nvOmBm65Z9CJaP6LWc4Lj325oUcqel2AgOGF3NemE0VOQv9OcT4v7s
- TwNaixpTx25OzAcCrve4K/yiQ9vZRpbXTxFMTmlsS3gBOwSN3nuSQ1fThdeBp2QhMB8R
- 8g1jv6ad4yYuUi9HBTBAGZCtFxE/s++bsv89la3oZ1YA3XBvV23pMgUNCsrmvejlKgp3
- n0fw==
-X-Gm-Message-State: AOAM533ALognGuSLfBjbHZNdAAOrLtHCA7/gn7wckNhNxa/4cAC6crgD
- Eqc65/Nib9esuAXwcGluDK4=
-X-Received: by 2002:a05:600c:2256:: with SMTP id
- a22mr149657wmm.138.1601747505384; 
- Sat, 03 Oct 2020 10:51:45 -0700 (PDT)
+ bh=kxQCIZkLUp4cXcK24Uf9Izm4LCAQBro6GywH9pmjLrQ=;
+ b=bNL2IE+dLwHGySHBJX39EOzynTDOUgsbJYHpN4nCvB/yGEt2Ly4K7Z/nDip9B5FL4j
+ 9hqQr88kjgJ5hH1xYSysmdX/DY4We1SUhnAL52Vr4m4Q60KYWztybVcgMUOVaaKK7y7m
+ uJmDhxX3VMos30pdr6pv3CsZGTZzUBQ+cFBlGQcXuMPutlTIG0UhRRGGkmSAGt5LJdNf
+ qUCUWvWnXxRcHmxfMqYbo5Lfe8njdrYnlWkYX6Q0tK6xkTFDZq68HSjbejbNzMKYLc4B
+ VoSY+TkRDfo1AZcDarB57QQfbmO+K1UwTuYQ5TO+2QjeAT32LHqIlGS8db7B24Yaymep
+ NILQ==
+X-Gm-Message-State: AOAM533WV+ou80/D69QSPDGWV8Mc0t6cgcoPPqA2XWiUvSQQqHWpQZMg
+ L7XJ6QTkdkGKYTrdFyRpFls=
+X-Received: by 2002:a1c:a515:: with SMTP id o21mr8584850wme.75.1601748857867; 
+ Sat, 03 Oct 2020 11:14:17 -0700 (PDT)
 Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
  [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id f5sm5895820wmh.16.2020.10.03.10.51.44
+ by smtp.gmail.com with ESMTPSA id f14sm6605477wrv.72.2020.10.03.11.14.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 03 Oct 2020 10:51:44 -0700 (PDT)
-Subject: Re: [PATCH v10 5/8] linux-user/elfload: Adjust iteration over phdr
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-References: <20201002215955.254866-1-richard.henderson@linaro.org>
- <20201002215955.254866-6-richard.henderson@linaro.org>
+ Sat, 03 Oct 2020 11:14:16 -0700 (PDT)
+Subject: Re: [PATCH 04/14] hw/arm/raspi: add a skeleton implementation of the
+ cprman
+To: Luc Michel <luc@lmichel.fr>
+References: <20200925101731.2159827-1-luc@lmichel.fr>
+ <20200925101731.2159827-5-luc@lmichel.fr>
+ <85ccb491-8d4a-caf3-595d-7415471f5dc7@amsat.org>
+ <20200928084515.r7s3cl6jlzm465iw@sekoia-pc.home.lmichel.fr>
+ <4aa9f0c3-dc4b-1e87-d601-87b0498de8b1@amsat.org>
+ <20201003115444.m2woqcpit34vfv3u@sekoia-pc.home.lmichel.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <5a3983a6-56a2-9803-1b3c-496af5cd01a8@amsat.org>
-Date: Sat, 3 Oct 2020 19:51:43 +0200
+Message-ID: <dfb488db-afa4-d307-cac1-ce71e5ebf29a@amsat.org>
+Date: Sat, 3 Oct 2020 20:14:15 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201002215955.254866-6-richard.henderson@linaro.org>
+In-Reply-To: <20201003115444.m2woqcpit34vfv3u@sekoia-pc.home.lmichel.fr>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -19
@@ -123,50 +127,78 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, laurent@vivier.eu
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kvZbptSopR9N
+X-TUID: v90o2KbQey7q
 
-On 10/2/20 11:59 PM, Richard Henderson wrote:
-> The second loop uses a loop induction variable, and the first
-> does not.  Transform the first to match the second, to simplify
-> a following patch moving code between them.
+On 10/3/20 1:54 PM, Luc Michel wrote:
+> On 16:37 Fri 02 Oct     , Philippe Mathieu-Daudé wrote:
 > 
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> ---
->  linux-user/elfload.c | 9 +++++----
->  1 file changed, 5 insertions(+), 4 deletions(-)
+> [snip]
 > 
-> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-> index 7572a32a30..735ebfa190 100644
-> --- a/linux-user/elfload.c
-> +++ b/linux-user/elfload.c
-> @@ -2426,17 +2426,18 @@ static void load_elf_image(const char *image_name, int image_fd,
->      loaddr = -1, hiaddr = 0;
->      info->alignment = 0;
->      for (i = 0; i < ehdr->e_phnum; ++i) {
-> -        if (phdr[i].p_type == PT_LOAD) {
-> -            abi_ulong a = phdr[i].p_vaddr - phdr[i].p_offset;
-> +        struct elf_phdr *eppnt = phdr + i;
-> +        if (eppnt->p_type == PT_LOAD) {
-> +            abi_ulong a = eppnt->p_vaddr - eppnt->p_offset;
->              if (a < loaddr) {
->                  loaddr = a;
->              }
-> -            a = phdr[i].p_vaddr + phdr[i].p_memsz;
-> +            a = eppnt->p_vaddr + eppnt->p_memsz;
->              if (a > hiaddr) {
->                  hiaddr = a;
->              }
->              ++info->nsegs;
-> -            info->alignment |= phdr[i].p_align;
-> +            info->alignment |= eppnt->p_align;
->          }
->      }
->  
-> 
+>>>>> +struct BCM2835CprmanState {
+>>>>> +    /*< private >*/
+>>>>> +    SysBusDevice parent_obj;
+>>>>> +
+>>>>> +    /*< public >*/
+>>>>> +    MemoryRegion iomem;
+>>>>> +
+>>>>> +    uint32_t regs[CPRMAN_NUM_REGS];
+>>>>> +    uint32_t xosc_freq;
+>>>>> +
+>>>>> +    Clock *xosc;
+>>
+>> Isn't it xosc external to the CPRMAN?
+>>
+> Yes on real hardware I'm pretty sure it's the oscillator we can see on
+> the board itself, near the SoC (on the bottom side). This is how I first
+> planned to implement it. I then realized that would add complexity to
+> the BCM2835Peripherals model for no good reasons IMHO (mainly because of
+> migration). So at the end I put it inside the CPRMAN for simplicity, and
+> added a property to set its frequency.
 
+OK as long as all boards have a 19.2MHz crystal, but if the property
+is not easily accessible why not use a #define in
+"hw/arm/raspi_platform.h" instead?
+
+Else we should alias the property using object_property_add_alias()
+in TYPE_BCM2835_PERIPHERALS.
+
+> 
+>>>>> +};
+> 
+> [snip]
+> 
+>>>>> +static const MemoryRegionOps cprman_ops = {
+>>>>> +    .read = cprman_read,
+>>>>> +    .write = cprman_write,
+>>>>> +    .endianness = DEVICE_LITTLE_ENDIAN,
+>>>>> +    .valid      = {
+>>>>> +        .min_access_size        = 4,
+>>>>> +        .max_access_size        = 4,
+>>>>
+>>>> I couldn't find this in the public datasheets (any pointer?).
+>>>>
+>>>> Since your implementation is 32bit, can you explicit .impl
+>>>> min/max = 4?
+>>>
+>>> I could not find this information either, but I assumed this is the
+>>> case, mainly because of the 'PASSWORD' field in all registers.
+>>
+>> Good point. Do you mind adding a comment about it here please?
+>>
+> 
+> OK
+> 
+>>>
+>>> Regarding .impl, I thought that having .valid was enough?
+>>
+>> Until we eventually figure out we can do 64-bit accesses,
+>> so someone change .valid.max to 8 and your model is broken :/
+> 
+> OK, I'll add the .impl constraints.
+> 
+> [snip]
+> 

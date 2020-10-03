@@ -1,121 +1,118 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2315037lfq;
-        Sat, 3 Oct 2020 02:13:20 -0700 (PDT)
-X-Received: by 2002:a9d:600a:: with SMTP id h10mr4937065otj.170.1601716400365;
-        Sat, 03 Oct 2020 02:13:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601716400; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2316042lfq;
+        Sat, 3 Oct 2020 02:15:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwCgdVmM2VH4/hX9cnPuY1SSS3Gb3ySzxScp9aS4pQRuiCqKPqtrfrXUy4d4Apix6HvKYsr
+X-Received: by 2002:a17:906:60d6:: with SMTP id f22mr5782476ejk.250.1601716521178;
+        Sat, 03 Oct 2020 02:15:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601716521; cv=none;
         d=google.com; s=arc-20160816;
-        b=I1/wD0C30rdKFUosW8GDXBR4g3TDbS5qvKDOliCj9ED3+F2my4+yeZTYKrXpZbqJC8
-         hwq0w3MOyOj8h3s4tvG/zxf6dvNsz8r/AkFzdPbpdrwUejDzEExUc8d7lP5HPBY4ui4V
-         J4BPYxYeONHrQKZQ8cweB0iri/o0Uju4vtTzCDRbZ2IAZH8HEGeOvhmH7G8Ct2FFY0LC
-         XnWXignCd2O8UW9bZiOUFdiNsVddK7JvLiSC7xW9E1Zcms5OyTUPrgPTe+2gijtKi21d
-         FrupRRBh9ROJoJbx6vpTfEIVFPDC2NpbBXCmNqSbXkbqZwBGeqqZjX8TEpmb5RAT95kf
-         JqxQ==
+        b=PKvK92tlgj7dbnwN2EuDDirR7DptuvMlvI8NmhQAnNJ1EYbW6Pk3jV2Mh3B85KkUca
+         DSTd8ix4seTf/AdOceaGUlyl/t1VKuruuW0qeejaSSiDMw73/g3Ab1SKMTmm87/CBR9/
+         dO/UBDeL3/upK12sYt+DZ6do71pFFgnlL/DvHJFdFKOBV2W6MIFHHB3ohoGPkg3qW6SU
+         vHdXe3uHS0qCXV/GoJDKVd1XLlbltGAcTQgngvKiuy8Kue1fLsnhRkj579tFBbYohQZA
+         EkyDAc9JqI6V/qJmU3dSNQU+KE/n/rZjXMtpNCj7ArN1vLEJJY9zzQbZjHpu1tr/WuZz
+         2m4A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=V+N6roBMczoEkvPQ/1usVDxzLXsrnEaEaI6P98ExkN8=;
-        b=HYoKjrYztZdBdPSyB9mxY5ZHmKD2zoy7G1SPByzeG0rLV1BDrnsFMVz/pimq47guZE
-         UGGOP64cPzpH3UgJx9phfbyWac+bfCCPBmHaL3951gBnMok0ALC2/NvH0FIlVtKtl0hi
-         Hprs/KWe8Ad4rWXLVDF/BdnZX87T8Ckj9VPtlWpwMiSYEXzRnAs9qLlnSUv71qwPODyu
-         WAKio1PhShvTwoq8POHWdy4YXYkYjL+YLmBMQzUHNt/zftgdxQCz1QtK2fkL/lOjRd+q
-         hZpkHzLmb9HV9BtaOWLDHdfEzqoAU8piWK46u0qfCgd4b/w2vWsIaqf+BHsDHCoiWGIh
-         P5vQ==
+        bh=aqKUOGkrbnr63pzYqTB3ZzHYKIeURmurnEarIe7Rvvs=;
+        b=xhFL2+5c+3XpkneA4iLCvKKi43YZ2icGoKktn89Gvyallj3mlkxd4kKll1n8R05Wz0
+         nw8iBnXmlrjqZkjZ11VGrCJd87CqpY6yr8Il44Y5WJzxZmab7n1H/sajRQPdJHhOQ2aj
+         T15jTi1ZHGWL11DsobvO/kDekgKKHXMJnlZ/7KO9K9qZpFCQoCDMn7HfWobzKtJC0F4F
+         8zr6pdAamwPjQMA/Wxikq3DDGZ8JNfnxT6Vgzn+RBv48J/yQ8hSMDj5HNshgT7iYdbJQ
+         dhQ6HHiJHjmQSBaxkT7nlSKlhZHhTN3oVCHo/ouls3jjA6RvkkqqXkFgXvsFdUXz6OAt
+         sXrA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=awPMnOdq;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id d25sor1833289ooh.1.2020.10.03.02.13.20
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMjF4IRQ;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <pbonzini@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id b5si3073726ejq.317.2020.10.03.02.15.20
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 03 Oct 2020 02:13:20 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sat, 03 Oct 2020 02:15:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=awPMnOdq;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=V+N6roBMczoEkvPQ/1usVDxzLXsrnEaEaI6P98ExkN8=;
-        b=awPMnOdq1T4kpdut+GKLndz1VMH3tU2JmzebXVpH05JbWXk7EoVLkSYl8ZnXq6eU48
-         bDayG73Ko/u7QHfYe6uxBIoDoX7Nbigndip70Vq5hmz46vDAhcNGmdn/z5iXMTvYggbf
-         3pLgIHGCxbBRAIc+CH8Ais12lN9xMhbBPYEZNOZk2yAmXy5F2ezPQtpdG0aOsKFjgSC8
-         imSOaI9gf4lF+cYjtC4xyUXIPpG7/DhHd9wO0WhVZ2FWV4NY+yGOVBTUipZEDGSDjsdn
-         nrOVgO7gImyrafJVHirXd+QwElxd4DGscn38ywe0xXikkZYkyU36V1tInwbz9V93vO9Q
-         LiJA==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMjF4IRQ;
+       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1601716520;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=aqKUOGkrbnr63pzYqTB3ZzHYKIeURmurnEarIe7Rvvs=;
+	b=MMjF4IRQzRG46yFAg3mnwN5Lbl7yuZ6ZzQedpre4OIDviCXuaQz9Pfuazcv9Z3GO/4AUs4
+	9rj+v2sMEETHM3USamLQXOzF3gLYoKdpp22Kxv6Xh94qHXofFbGHmGAoaN5K1bnIEz8TaL
+	gNOXpV2iixEky6byTAYLIjoFBZwizYU=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-237-5fH-qh0YOzyOo8UKu1Egog-1; Sat, 03 Oct 2020 05:15:18 -0400
+X-MC-Unique: 5fH-qh0YOzyOo8UKu1Egog-1
+Received: by mail-wr1-f72.google.com with SMTP id d9so1606079wrv.16
+        for <alex.bennee@linaro.org>; Sat, 03 Oct 2020 02:15:18 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=V+N6roBMczoEkvPQ/1usVDxzLXsrnEaEaI6P98ExkN8=;
-        b=LoT3TGO5UR7y77pzbyq1fr92QPAPh5e0FY+k7Gwq+YvjzklJnYhk3YTT1VetMRpZyP
-         0f5yjAMLZyITOKbaUZ0xr3KA3BruoytvrDtzmRyQZRSZHf6jrGDX72/XUZDb9MdvBknq
-         xXTaKLK7jnyKdNVwsUaknkKQJu6Eu/9EBq0m+T68TcG4VE8qfrDgbLgrL0LIgDHLiz78
-         K9V6UDNfFqskUK4vpqg0J2qFBvoGjZJ3xsFD3k4Vtho0I/fLzSzfQPvlbP/ai1MuNVvd
-         mL2TXxOSJ6/v+IynyggO1LcEjJG9rmZNlKiLLQ2x6ZVoTlEBunatoASZ35MfudS1Z1uQ
-         fwZQ==
-X-Gm-Message-State: AOAM532jXbV2tXXYOTf7iUIb3Ef95XsqimCrjo+1l9CBGsWXh2i/+YWl
-	ilhvkPzktquD0ynX8XR6GhKOC3uH
-X-Google-Smtp-Source: ABdhPJwDyS+3vQCCE/z6hQPZsQUkioDfS81B5I/mwT+QjHwuP7aEz8vec/vBRXJPG9lK5OrPrnuzEg==
-X-Received: by 2002:a4a:d38c:: with SMTP id i12mr5006756oos.81.1601716399988;
-        Sat, 03 Oct 2020 02:13:19 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from [10.10.73.179] (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id n23sm132277oon.14.2020.10.03.02.13.17
+        bh=aqKUOGkrbnr63pzYqTB3ZzHYKIeURmurnEarIe7Rvvs=;
+        b=XGAPQZjkukn3zo8zfbhd0emdQSAs6lbQwF6MO17kc2kCkEkGMYonPFI6GwF2Bu3bCo
+         DrafpD+jDGBPBnry1fstXFXTNG1Xv78DAtD2tLAbJ/Nsc1x6SZSAQUqrhvEeJbBt4mHH
+         9Ymg9Avzc+PQ2aTzjFe2nhuwyh85q1Docr7UWwMiUlgzF8M5QRqISTGXoNnJN974uyHt
+         WROO6biS+Xk6O+3NpfOe6hnIicHvHBtYyegBSdZiJ593b/SqusXHI9fGOyYVWuWhPbWv
+         9qnNmLewfqy8pNJuaUOQsMoAKrUsQxZo42B0en3JYEd85PxTmDnCpbhKJDplXgSuyZIN
+         wFkw==
+X-Gm-Message-State: AOAM53266r5uon/adLZhY3drrWspramORRsTDUqfg4x/AxtszxIVoNJX
+	rbgvNDEYe2NxQuFF9egbsYawW2kt0x3I1BwXpAi7SMhR93Bxl7pjMwvgo9UspVHbsQbecacCI5v
+	LztJupXFK7OIREYq6
+X-Received: by 2002:a05:600c:2283:: with SMTP id 3mr6672795wmf.37.1601716517509;
+        Sat, 03 Oct 2020 02:15:17 -0700 (PDT)
+X-Received: by 2002:a05:600c:2283:: with SMTP id 3mr6672777wmf.37.1601716517335;
+        Sat, 03 Oct 2020 02:15:17 -0700 (PDT)
+Return-Path: <pbonzini@redhat.com>
+Received: from [192.168.10.150] ([93.56.170.5])
+        by smtp.gmail.com with ESMTPSA id n10sm4714605wmk.7.2020.10.03.02.15.16
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 03 Oct 2020 02:13:18 -0700 (PDT)
+        Sat, 03 Oct 2020 02:15:16 -0700 (PDT)
 Subject: Re: [PATCH v4 02/12] meson: Allow optional target/${ARCH}/Kconfig
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+To: Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
- kvm@vger.kernel.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>,
- Claudio Fontana <cfontana@suse.de>
+Cc: Thomas Huth <thuth@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Richard Henderson <rth@twiddle.net>, Claudio Fontana <cfontana@suse.de>
 References: <20200929224355.1224017-1-philmd@redhat.com>
  <20200929224355.1224017-3-philmd@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <31a173bf-6aa3-1ce8-7d14-5e8f11e2a279@linaro.org>
-Date: Sat, 3 Oct 2020 04:13:16 -0500
+ <31a173bf-6aa3-1ce8-7d14-5e8f11e2a279@linaro.org>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <0303fe78-5ae1-2115-247c-71807ce74e12@redhat.com>
+Date: Sat, 3 Oct 2020 11:15:15 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200929224355.1224017-3-philmd@redhat.com>
+In-Reply-To: <31a173bf-6aa3-1ce8-7d14-5e8f11e2a279@linaro.org>
+Authentication-Results: relay.mimecast.com;
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-TUID: p3czuQl6hNza
+Content-Transfer-Encoding: 7bit
+X-TUID: 9yJngqa08BAW
 
-On 9/29/20 5:43 PM, Philippe Mathieu-Daudé wrote:
-> +++ b/meson.build
-> @@ -529,6 +529,7 @@ kconfig_external_symbols = [
->  ]
->  ignored = ['TARGET_XML_FILES', 'TARGET_ABI_DIR', 'TARGET_DIRS']
->  
-> +fs = import('fs')
+On 03/10/20 11:13, Richard Henderson wrote:
+>> +    target_kconfig = 'target' / config_target['TARGET_BASE_ARCH'] / 'Kconfig'
+>> +    minikconf_input = ['default-configs' / target + '.mak', 'Kconfig']
+>> +    if fs.is_file(target_kconfig)
+> Missing a meson.current_source_dir()?
+> Leastwise that was a comment that Paolo had for me.
 
-Note that I have this in the capstone update, and I placed it closer to the top
-of the file with some other imports.
+Not sure, but it was the only way I thought the BSD build could fail;
+unless the capstone submodule really was not present in Peter's checkout
+and submodule update was disabled.
 
-
->  foreach target : target_dirs
->    config_target = keyval.load(meson.current_build_dir() / target / 'config-target.mak')
->  
-> @@ -569,8 +570,13 @@ foreach target : target_dirs
->      endforeach
->  
->      config_devices_mak = target + '-config-devices.mak'
-> +    target_kconfig = 'target' / config_target['TARGET_BASE_ARCH'] / 'Kconfig'
-> +    minikconf_input = ['default-configs' / target + '.mak', 'Kconfig']
-> +    if fs.is_file(target_kconfig)
-
-Missing a meson.current_source_dir()?
-Leastwise that was a comment that Paolo had for me.
-
-
-r~
+Paolo

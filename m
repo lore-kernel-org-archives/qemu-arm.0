@@ -1,123 +1,115 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1944608lfq;
-        Fri, 2 Oct 2020 14:59:58 -0700 (PDT)
-X-Received: by 2002:aca:3b82:: with SMTP id i124mr2330184oia.155.1601675998231;
-        Fri, 02 Oct 2020 14:59:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601675998; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2312735lfq;
+        Sat, 3 Oct 2020 02:09:25 -0700 (PDT)
+X-Received: by 2002:a4a:5258:: with SMTP id d85mr4957205oob.72.1601716165002;
+        Sat, 03 Oct 2020 02:09:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601716164; cv=none;
         d=google.com; s=arc-20160816;
-        b=NpZbZd9PUxcnI1FAppYayGULBpey/+Db1x3zaVpu5NVZVapMLWyW+3/Rjtd/kVoZCA
-         T8Cf/eIyK+5sbjD4x53Y+7Ldvukadk39XHnxGr8CY3ZeOqBYCq6eECyCQ3k8vTkAGq0p
-         YTbjyHGKzRQeWank+L7K4sCuYbfJMQ0QHBtfiv+c/myukqC7H8oFp5aELWFZbrMtHK4c
-         3Yaeqc86LsNSrEA1daNOP5SaXpixtYjiu930dcbpj7tZrrcpjcIlVacndNthelcf2u7q
-         amcddXeEVPShBbTV92p6ja/uAfLtYcqbRjlDwR7PPzYmyPFUmUP9ZgHhK76tdYRMiaXJ
-         9OPQ==
+        b=XPaSIMmS8N6T0wLJQR1luHuIBaFtOzunPuYod/4WHQx2SuGIlY7SgyTQqojJV761VU
+         J2BaYGpLsW5WP56iSaLtcpE4zYm+At1lVY1Sa5qq9BiRjwKOAQxEFUCv36s96OjgmUj7
+         bi3sE3jPpOlK6zoEhCb4Q+fdz+ZXwuy50yxK1oBpiwHewHELkWaW0wqK/7usn6xKL5DZ
+         P8BsA9UJoR7mGThpiY4wfBzBZtHRJXZEXOrhzc3Y/YyNSjWftQ7zRsxK/FUdGrkHuZoZ
+         5rOW13Q/csYyl2+Sfv7ArMlpEAFL85tN3jjJ+EaqvB513Q8awlO2/IPRQ0SJ2ZmPxL2p
+         R5gA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:dkim-signature;
-        bh=4Dp1ZT13R0EQdEu6dxQsq0XHxGgkkn7MNkTsVH0IryU=;
-        b=lwiK+RXciqn4dB6FPdEFJxIfrtPv2FOzIRf/MipfqOx3/lUII1Fpcx64tnf00qaBxE
-         K+c9maNkd0rhxRvbeRMuzbK80XfxSeew8MzQ+6F+9FoumF+j1h9KxpYKH07SJceDgDZD
-         qx/LG6URUCo6FPNSmSMcVQNJsp/24/zD0QmJqVqpCG2z4qxMHpf8deVWWoawZx0G9tlh
-         9bmI79Nd8RSJD5+2aSVjSVw6VL+wPJCh3TrQbz0lykT3qSfRvJLhV6iSv1+JPv0bvPgg
-         dxdEgsYwx86LdRf9ej2qRW9PJg9e5bgvyqJBnm9e2RmrdMq3yTDnELBRG6IS0l5IdLKd
-         y2WQ==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject
+         :dkim-signature;
+        bh=HYSCtcMUH1CnN1lWiP4pycuNjmBqf/V7CmBzZsvjo70=;
+        b=KOKDLdA8c+JwxOFu8afCt9KgfxWCSWGl4UpAXRmQXdTMUr9hWfTKMLkgWFrXrbepO1
+         PzUqrJ3bXGFtC25nSp9SE203RZGa7i/zRjz0xIkSFWw4FnNiLGSyhkLOFIXR6f78V++A
+         aqtyZqah1C+m0j/It9EsL6OJt4+N9AGIZhN0iefgPWgo4Dx01psvP19I0uTtl1g+moH9
+         /7mvfFYXVhgJ6Fu/kH7YnZAy2GGBOioemd+K+PoG+jPVNNRexx06YxLgauoOed9Rtwll
+         TWwevpVMMLfkcC1EiRozJB6ruZqYWa5hFIukVJPTp3LKruTqsuzYNPXkdIFnoeBrNiEd
+         9MPg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VzEyCjgH;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zen9iB1y;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id l15sor587694otk.35.2020.10.02.14.59.57
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id d25sor808637otq.132.2020.10.03.02.09.24
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 02 Oct 2020 14:59:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        Sat, 03 Oct 2020 02:09:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=VzEyCjgH;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=zen9iB1y;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:mime-version
-         :content-transfer-encoding;
-        bh=4Dp1ZT13R0EQdEu6dxQsq0XHxGgkkn7MNkTsVH0IryU=;
-        b=VzEyCjgHWf9UwTPvOoMP79F1mljFfZrjrezkIMT1ct+0EQxESPVUG5zy82gV3bCHxS
-         5q7e+N/iIdPmKDjZMpcXq6uiDAnDbeqhmr1XGSJTFMOSzMfqmOBbAt1HYTfPHGUVuIxN
-         xVjHNRy7nqYnNhGT8Qwf4Sz5DQmUmToNLpwYHHqWyDdOXjyrKePYq5di6Zv7Dgy+/PgI
-         QuXa7DNQeGMXm3Ual7YVI8e/67IDkxV0Qg9weMMWyAvjlcGMcerunNkMss1BZQ4gKzgI
-         IzFGt+AZxsVce6C/Gw27EC3f5h0l2QtQQcGmFAK7Of+w4K3A9I22pcMQw0/bAtr2Yp7y
-         tW1Q==
+        h=subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=HYSCtcMUH1CnN1lWiP4pycuNjmBqf/V7CmBzZsvjo70=;
+        b=zen9iB1yMPujq97iQd0rcqeRg2ftw3ME8gIklBFi8p9ldwneLaDXCDPYRUIQTkjPmu
+         34gpNg5WuzSZl9oqb4EqsMJpID7Y8kqBXJN3lH6S4KyBU2GMIlgl0TTl6E+UVa33u510
+         3Rh14+w366lPClVPydalaCx8NxczYi4TvLeZD2vj3p3wCzFn7msZNBt/JVfVWh3nGC0n
+         7+GGP4US3qXnRDgu9/Ti+7ZjPRKMQiE30/YT7a1k6v6ax+sUGyRg9yD6N68gbwO1wt1H
+         Rt9BsMi2c3z3Q8NvcmfIH8x9WHxlS3gWDRK7Ni2ODGW31CZ6cw45ek/rpWWeBWhDhvBh
+         lXAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=4Dp1ZT13R0EQdEu6dxQsq0XHxGgkkn7MNkTsVH0IryU=;
-        b=K1MP3FZig9YDIACIhwZpGA7HTiN/1jQyywUVZeN6l6RhJxVRD24bSpeWq9Rtql9vya
-         JXeXFq4cEwVBIe0Wke50pqrS+JeFe39iOoLlY1cV643XjCsHcoaWClw7tDIldYyMU1rB
-         r9Yci6LH6mdGJkn0GTWldkA0Ovqe4UiiZe9avic6SB2hlg/N29kb15yHAvKMd9HmQCYi
-         gPh2vJDz3tEyrHbr+HN5W6uKYvjB7iVOk4vMe5Pr8aMCCkFaPorjVzAJOI49YewqVNKT
-         /lsMmlxRUSxbCbbDfprfy+npI0I7F/VFHeEOphW/pdE/vsdWRnlL0ndw1XyO/869+K2n
-         WKmQ==
-X-Gm-Message-State: AOAM530TEcvyACX8w3Win1F3WKIebV1uFoUisq8Do9OBMbZ8xB+YfntC
-	pIsJoAnTDd9S6EFRBV0FAexzoBeO
-X-Google-Smtp-Source: ABdhPJxAkhJGDjUn9YTztGdCrXIZTjZ/o/n1OZqcumcDuABOqW5J5Ym+wzgcnd0YtYlD+VVNisBiPA==
-X-Received: by 2002:a9d:6950:: with SMTP id p16mr3124284oto.60.1601675997688;
-        Fri, 02 Oct 2020 14:59:57 -0700 (PDT)
+        bh=HYSCtcMUH1CnN1lWiP4pycuNjmBqf/V7CmBzZsvjo70=;
+        b=MFP6LBka3rOw+7typEOg5dKdidoIMqaKgz/mg6K52JOCjtJI5TM4AdvPTzt/fV/CeN
+         SJsYOTQFkq/Rt3gTdoHNGUgQeWNmiRzWapsn2LEfVNyfCQwwnOLwae2msbJ43vx5lYOr
+         WWouvrymdrge8ZC0ui0dUnwpaoz5RkKNYr8TVRzkCWFpevRpNSatGJ9TSNMaAL/tWZSD
+         VIPGrQQS1MsKm6YcoRk8AEZ11cMtExNdYAiDnbNsPUvcWYhkfALyszRoIIqsu99EBmV8
+         ZFF+71G65aTHNCzzMwwNAWVvvFbTrizhMqPkGPGhASen7gqM3efFqinHhJkZm4f8znDZ
+         f9Ng==
+X-Gm-Message-State: AOAM530SVE5ELSSJsY06mfBp2gkwqnKQju2xMbmQuSerT6tHo+4/KQql
+	2gSWNperrURdu1/d5jdFWpdW/QOC
+X-Google-Smtp-Source: ABdhPJx4lrVJsgCJS8zeF1KPZ5f9Ry1mx0UpzDyt1+dQuj+wzFEHnqikKO7+ju8aX5ld/ijPH/aJeg==
+X-Received: by 2002:a9d:53cc:: with SMTP id i12mr4536397oth.215.1601716164481;
+        Sat, 03 Oct 2020 02:09:24 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id k10sm684268ots.60.2020.10.02.14.59.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Oct 2020 14:59:56 -0700 (PDT)
+Received: from [10.10.73.179] (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
+        by smtp.gmail.com with ESMTPSA id v18sm1125780oof.41.2020.10.03.02.09.22
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 03 Oct 2020 02:09:23 -0700 (PDT)
+Subject: Re: [PATCH v4 01/12] accel/tcg: Add stub for cpu_loop_exit()
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ kvm@vger.kernel.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>,
+ Keith Packard <keithp@keithp.com>
+References: <20200929224355.1224017-1-philmd@redhat.com>
+ <20200929224355.1224017-2-philmd@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org,
-	laurent@vivier.eu
-Subject: [PATCH v10 0/8] linux-user: User support for AArch64 BTI
-Date: Fri,  2 Oct 2020 16:59:47 -0500
-Message-Id: <20201002215955.254866-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
+Message-ID: <c4d714db-18d6-a789-b7f9-fe7e2c62b224@linaro.org>
+Date: Sat, 3 Oct 2020 04:09:20 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
+In-Reply-To: <20200929224355.1224017-2-philmd@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: +K9qbaqz6Evw
+X-TUID: /iIDohmJLvh6
 
-The kernel abi for this was merged in v5.8, just as the qemu 5.1
-merge window was closing, so this slipped to the next dev cycle.
+On 9/29/20 5:43 PM, Philippe Mathieu-Daudé wrote:
+> Since the support of SYS_READC in commit 8de702cb67 the
+> semihosting code is strongly depedent of the TCG accelerator
+> via a call to cpu_loop_exit().
+> 
+> Ideally we would only build semihosting support when TCG
+> is available, but unfortunately this is not trivial because
+> semihosting is used by many targets in different configurations.
+> For now add a simple stub to avoid link failure when building
+> with --disable-tcg:
+> 
+>   hw/semihosting/console.c:160: undefined reference to `cpu_loop_exit'
+> 
+> Cc: Keith Packard <keithp@keithp.com>
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+>  accel/stubs/tcg-stub.c | 5 +++++
+>  1 file changed, 5 insertions(+)
 
-Changes from v9:
-  * Split what is now patch 7 into 3 more (pmm).
-  * All prerequisites are now upstream.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 r~
-
-
-Richard Henderson (8):
-  linux-user/aarch64: Reset btype for signals
-  linux-user: Set PAGE_TARGET_1 for TARGET_PROT_BTI
-  include/elf: Add defines related to GNU property notes for AArch64
-  linux-user/elfload: Fix coding style in load_elf_image
-  linux-user/elfload: Adjust iteration over phdr
-  linux-user/elfload: Move PT_INTERP detection to first loop
-  linux-user/elfload: Parse NT_GNU_PROPERTY_TYPE_0 notes
-  tests/tcg/aarch64: Add bti smoke test
-
- include/elf.h                     |  22 +++++
- include/exec/cpu-all.h            |   2 +
- linux-user/qemu.h                 |   4 +
- linux-user/syscall_defs.h         |   4 +
- target/arm/cpu.h                  |   5 +
- linux-user/aarch64/signal.c       |  10 +-
- linux-user/elfload.c              | 147 ++++++++++++++++++++++--------
- linux-user/mmap.c                 |  16 ++++
- target/arm/translate-a64.c        |   6 +-
- tests/tcg/aarch64/bti-1.c         |  62 +++++++++++++
- tests/tcg/aarch64/bti-crt.inc.c   |  51 +++++++++++
- tests/tcg/aarch64/Makefile.target |   7 ++
- tests/tcg/configure.sh            |   4 +
- 13 files changed, 298 insertions(+), 42 deletions(-)
- create mode 100644 tests/tcg/aarch64/bti-1.c
- create mode 100644 tests/tcg/aarch64/bti-crt.inc.c
-
--- 
-2.25.1

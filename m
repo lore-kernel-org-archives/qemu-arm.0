@@ -1,102 +1,105 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2335873lfq;
-        Sat, 3 Oct 2020 02:52:28 -0700 (PDT)
-X-Received: by 2002:a4a:af45:: with SMTP id x5mr5127965oon.86.1601718748583;
-        Sat, 03 Oct 2020 02:52:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601718748; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2336318lfq;
+        Sat, 3 Oct 2020 02:53:34 -0700 (PDT)
+X-Received: by 2002:a05:6830:1408:: with SMTP id v8mr4930910otp.120.1601718814723;
+        Sat, 03 Oct 2020 02:53:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601718814; cv=none;
         d=google.com; s=arc-20160816;
-        b=lt75Nwq71H0JXV/3gsRscP5umUqSEmi4W8azKeqZ3ekVYX48cs0EiwfFVuBso/ndcA
-         RDNI970g8/9Q6gJLcNqyv9b5fMDMY980LljlG2fK+HSEjbuLa6wNCZqDce0YPE9JyRsu
-         ETTHSG8d0JIohf9icQ+/I38FDjQ2zv7H+TD2WWq40lQaof8RVu46cruvW6G0cQdd3a32
-         PQo/UDw++Cgf86Syf2vzPwZSKp6+4uhrKsYXy/5ETJw7QfZ5xGaQnvRTbVvEgufblHo6
-         b/+thP14qE53LzKbaClzvu5QuE2y5fvrDbL6cQPZMgOeIaeWkk+q1lxnZpO+mdrJZLjZ
-         RChA==
+        b=xG0atn63sVVqNd37Xv7E8dNG48JzNRXofslPfO5u4d+Atn/6taa9IqN3hSSzieWReQ
+         u8bmp43jT+qsbghacMim5sCwx3Ujbg6MYpqy7flDS+aauhhxmJ8CtPylOLU3RWWJZ7aK
+         oOtbvdAy6bOl8nDqQCB2EZq7g7HdPz/ya07qAQpuRprciBvDV+C4qs15DC/AFupNdwmf
+         oiT6T949tC49Uupr1Ev/9pJ5TF7ldFpHroeecnPIJo23fSKeaX6qY5QmgD3450nKR+M5
+         pD0QY/xVJRTh0PEqLodIUcftGd65CfqzJ50Hr/+igSudPKcm/bSIK5Q7S7d5aKmalcJY
+         yTzw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=dI6MSQceoyGQyNafcDDo8z39Xp3NtkmKrboZO4BdFlk=;
-        b=s6W1zpLxWazH764EgpAZGxNou9P2ivVW9iHEtVuY9V5qlqPONjzsnbQ5KB6Zbe/5XK
-         gxB5b8dIXALxnw2QYgmEItNbtd5R9pWNlLPQtiTbWdZPkSXvn+0Osiu3FvKZt9nJymb/
-         WmP1RSf2qU7IuKpqeqYgc2oKqxtz4iLU5S4epGC2ZYb0J8vUi5phpvh3DmpYST8QtbzF
-         kKwtBsm0U3UnheBnqlIz1nS0wVuObNsdzDOaUPDZvDV/NQFS3oHhVxbq5XB0FV8TN6SS
-         nJE4qRR2HjSBD40ddr19q2OdvZWrbtRNx7tq/DYxL/0VyW9PUHSxKW6W2RvRzGwqzLDn
-         BB4g==
+        bh=obIunJMCwuIctwMB9KHyMjEcZAsycYX2a/PARzklzgo=;
+        b=yzp3h1f/aj9BbVZ10gKGAAXhwmLcGKacc0VhBjHAx0SX0QCsYm0vWX1Q7Mbpusgn1K
+         G96g1jwd25gbF5ZzfJDw/42SeeDwZ5cBdMxM6boe3UOmyfZpwAVgqAhLsvRpChSlGCQy
+         dd0qGvf6iOAIEunZyp8ceEjSDeX3F0DxWu5OEF1CRABlQUfKD36xVObef/38BeA3/xPq
+         JBn09H4bgqV2Pe7IpJ8cUm5a+WscFy4poY7xa5gpuwyikpuJGL/QzVXFv37wqH8s61Oi
+         7kMOXtK61ulTUseaH+ZWu7QeB0GKHLdSsu3ydj0REGtd23pSh17CnWrsAseC0E71/hK/
+         jWZg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="AVr+lCE/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=e6AdNSF8;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id n17sor832242otf.116.2020.10.03.02.52.28
+        by mx.google.com with SMTPS id w18sor799518otj.98.2020.10.03.02.53.34
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sat, 03 Oct 2020 02:52:28 -0700 (PDT)
+        Sat, 03 Oct 2020 02:53:34 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="AVr+lCE/";
+       dkim=pass header.i=@linaro.org header.s=google header.b=e6AdNSF8;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=subject:to:cc:references:from:message-id:date:user-agent
          :mime-version:in-reply-to:content-language:content-transfer-encoding;
-        bh=dI6MSQceoyGQyNafcDDo8z39Xp3NtkmKrboZO4BdFlk=;
-        b=AVr+lCE/snv+lozpJPbVz/EkxCcF0kdHV3N5+gfeT20nS0trBBohCQvjOAEqCH4Sv1
-         sWJ0AQbReEfOZw+0K2ysVziBRY9bm53Z+ea9MUOPxph+oNNMgQz1m0qsLLtB9fyeJyHg
-         MIjd55Yoag32Grnx7P/N64EciS/fDgCMkvA/LVgaxPRuJEjQpD9yBUaCLtGN3ZT/blsl
-         2fCU8a02Aq+ukFN6WzYxtG6U8dKqegI4GjzYtKmz+i+p7daZLRBEgFz9Kwrd29u5ke++
-         I1kCMXfkektIkmbnFAqOQlo3Y/vEyhuXvHeL+jSL5OfFOAImYo+x9RPMlWnAeFnzbkKB
-         U1og==
+        bh=obIunJMCwuIctwMB9KHyMjEcZAsycYX2a/PARzklzgo=;
+        b=e6AdNSF8ykaX1FRPeb0Av9rzGcI6O/WKjwfucJ0YWkM2PWqm4XXzoO8A7B/wgLAjgJ
+         jwmVw7iegXUiPIuumoqUV+pbHwz5LqTgso0qHLSoAkMhPrcHl/EtqNa538JQbvcmsIee
+         mYPulDS/O9ZsiGUJPi5FlBDl/N+8joV6u1R1gb2g14QDvj52ENpUkRvRi5Ka67umkufO
+         8f/VJ5hNm8bl2RKyrR226RCuo5+kMTJ09UjHfrU26ZIIB+h/y311oK3EIPkKGRcD/yJW
+         0U1v4jHJ0ovP3h+//HxR5TBDApmGa4/blsu4aium9WyQjaOM2muWO3c5v2VlxCUUkKGV
+         bOnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:subject:to:cc:references:from:message-id:date
          :user-agent:mime-version:in-reply-to:content-language
          :content-transfer-encoding;
-        bh=dI6MSQceoyGQyNafcDDo8z39Xp3NtkmKrboZO4BdFlk=;
-        b=MuHAxfHFXBWwJ2zXNs//sMFTZgDEljqUOwomBAPA8J7Xj/u4XNenJRZegk9pzvKWx2
-         OLO7Uoj+NpFvyw4i60MURz+WW3EkCUql5oehXungkzwhhJpNZvb/eVaNz7KRgEu2BX2t
-         1zJt9lwWQDEXeRfNom6lfhedNnqCP4q396kKKcQvBMnMNxq8PweeCv989Uz94+il/htL
-         jNmBppsr8LCzKE3iMYFaEpQ+if8gq7UasaPKGNyzCo9lzPXGiSWkVv5l2QPxUV3e7fCZ
-         rvJ3e7mWc2klNtLM5PU5O7jsR9nUxamLaRlmrJPvcMMFUJjXxcCX5DvYtPOqITUXVUpr
-         rHUw==
-X-Gm-Message-State: AOAM533kPsFCJrxjaYPyOB35YX+M5+twXxBR/f1iUzAqCRm2hwiU1sGn
-	FdhDLXSuvfu0cOSZvbQYmm1Y687h
-X-Google-Smtp-Source: ABdhPJxD+MErIQ5oDaFwq19v45SWlpim50VTqiCPIanBQsgODnWQ97qXiW4/uYJQvwb9yxEZEhm4Wg==
-X-Received: by 2002:a05:6830:188:: with SMTP id q8mr5046280ota.278.1601718748230;
-        Sat, 03 Oct 2020 02:52:28 -0700 (PDT)
+        bh=obIunJMCwuIctwMB9KHyMjEcZAsycYX2a/PARzklzgo=;
+        b=g0o5TNUbHD8gpe+DEtYx+6j+zqhTsLL3ZcW4NdDcRObocB91dUknVQBi4KHE/bcYMS
+         Q4kO9PMjduh+5OhqmPP7UVF3+XAyOhWJ5U0h87tKStevbh82KxHBRYbxQwB3W58wgJy3
+         t3x1LM+QBkKTckqQ7XE4bijm+DVn3PeUOBEP5dwHaIsUZwTPWgQTcYULAXWJYRuNwh8U
+         D1KqHulFqcAi49USIQ9MShmbqwhOTlo7E9g+J+hcpUpyWqys4NSAsXmx8eU607l8gF+F
+         563UqkF+qyEftj1J1fnDd4BOPW7RqLDQivIaKHJ21ki8kFqCKGP3rgw41cDqWR3aQ/hD
+         n6FQ==
+X-Gm-Message-State: AOAM531EmJRGpZbLON7R4K9W2vEPAVdYI12rHwgPCaQ6PezT5p9TBhZN
+	MiBEheCOtcPPsFmo8XCGkjMiomrl7GekLe5CkXg=
+X-Google-Smtp-Source: ABdhPJzortVGd43nIZrKjIRjdtZc+WQ0B+CpSCY952bMMF8IDrxjYl/ZrH209h+EJ6RbncHWhg6Nog==
+X-Received: by 2002:a9d:5509:: with SMTP id l9mr5179019oth.154.1601718814363;
+        Sat, 03 Oct 2020 02:53:34 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from [10.10.73.179] (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id i205sm882668oih.23.2020.10.03.02.52.25
+        by smtp.gmail.com with ESMTPSA id c12sm1087623otm.61.2020.10.03.02.53.31
         (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 03 Oct 2020 02:52:26 -0700 (PDT)
-Subject: Re: [PATCH v4 10/12] target/arm: Do not build TCG objects when TCG is
- off
+        Sat, 03 Oct 2020 02:53:32 -0700 (PDT)
+Subject: Re: [PATCH v4 11/12] target/arm: Reorder meson.build rules
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
  qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
  kvm@vger.kernel.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>,
- Samuel Ortiz <sameo@linux.intel.com>
+ qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>
 References: <20200929224355.1224017-1-philmd@redhat.com>
- <20200929224355.1224017-11-philmd@redhat.com>
+ <20200929224355.1224017-12-philmd@redhat.com>
 From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <59ecbee0-3f6c-d63a-13c8-01b47de4c78a@linaro.org>
-Date: Sat, 3 Oct 2020 04:52:23 -0500
+Message-ID: <1328c0d8-be1d-1cbc-2c58-f17d078a1104@linaro.org>
+Date: Sat, 3 Oct 2020 04:53:29 -0500
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20200929224355.1224017-11-philmd@redhat.com>
+In-Reply-To: <20200929224355.1224017-12-philmd@redhat.com>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: 3eDyVL9qJl7b
+X-TUID: l1PpzvHjkzjk
 
 On 9/29/20 5:43 PM, Philippe Mathieu-Daudé wrote:
-> -arm_ss.add(when: 'CONFIG_TCG', if_true: files('arm-semi.c'))
-
-Aha, so you remove the line in the next patch anyway.
-I suspect that you can not add it in the previous.
+> Reorder the rules to make this file easier to modify.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> I prefer to not squash that with the previous patch,
+> as it makes it harder to review.
+> ---
+>  target/arm/meson.build | 22 ++++++++++------------
+>  1 file changed, 10 insertions(+), 12 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

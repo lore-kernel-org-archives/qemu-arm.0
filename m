@@ -1,118 +1,119 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2316042lfq;
-        Sat, 3 Oct 2020 02:15:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwCgdVmM2VH4/hX9cnPuY1SSS3Gb3ySzxScp9aS4pQRuiCqKPqtrfrXUy4d4Apix6HvKYsr
-X-Received: by 2002:a17:906:60d6:: with SMTP id f22mr5782476ejk.250.1601716521178;
-        Sat, 03 Oct 2020 02:15:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601716521; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2317438lfq;
+        Sat, 3 Oct 2020 02:17:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyQ9ewio/Y9FYKT9YENZsEtsXo1Ywd1fxK50D3vQJCxT1Z9E7fXZpfTjeluy2EvzTwzJKd/
+X-Received: by 2002:a5b:302:: with SMTP id j2mr8515840ybp.50.1601716672218;
+        Sat, 03 Oct 2020 02:17:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601716672; cv=none;
         d=google.com; s=arc-20160816;
-        b=PKvK92tlgj7dbnwN2EuDDirR7DptuvMlvI8NmhQAnNJ1EYbW6Pk3jV2Mh3B85KkUca
-         DSTd8ix4seTf/AdOceaGUlyl/t1VKuruuW0qeejaSSiDMw73/g3Ab1SKMTmm87/CBR9/
-         dO/UBDeL3/upK12sYt+DZ6do71pFFgnlL/DvHJFdFKOBV2W6MIFHHB3ohoGPkg3qW6SU
-         vHdXe3uHS0qCXV/GoJDKVd1XLlbltGAcTQgngvKiuy8Kue1fLsnhRkj579tFBbYohQZA
-         EkyDAc9JqI6V/qJmU3dSNQU+KE/n/rZjXMtpNCj7ArN1vLEJJY9zzQbZjHpu1tr/WuZz
-         2m4A==
+        b=faJv6rSGnn9RZFhUNR2097yp4KhSvVb6BECCRZlULkwo1lGoCIzBFZ4DsLuOIX+BLI
+         qYGzL2mvLfW2qYoDFUed2hL8vAkMSWlEDHDB5auCBybTcqXsZbUFqO03JtJRqzxCM5v/
+         3bOJBlWwp0B3sUTU9szt3ijg1pM8wZ0/E6GHGKoZdMEyFe2gfGqdhyG3QdQz2cKQBSPv
+         qP7TwNhHvMEpJcLXO81TF6aiyt18AWX3ZZ7zUo5Jf07mN1avPcWTI9tnY+DDuBimUfpa
+         hAsl7JHmDdbb78gtSF8qCXoJDfAIFxvNOUv4ro/Rv0f4QQiyAuqmINltmU7Ziiy8/BVc
+         N9oA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:content-language:in-reply-to:mime-version
          :user-agent:date:message-id:from:references:cc:to:subject
          :dkim-signature;
-        bh=aqKUOGkrbnr63pzYqTB3ZzHYKIeURmurnEarIe7Rvvs=;
-        b=xhFL2+5c+3XpkneA4iLCvKKi43YZ2icGoKktn89Gvyallj3mlkxd4kKll1n8R05Wz0
-         nw8iBnXmlrjqZkjZ11VGrCJd87CqpY6yr8Il44Y5WJzxZmab7n1H/sajRQPdJHhOQ2aj
-         T15jTi1ZHGWL11DsobvO/kDekgKKHXMJnlZ/7KO9K9qZpFCQoCDMn7HfWobzKtJC0F4F
-         8zr6pdAamwPjQMA/Wxikq3DDGZ8JNfnxT6Vgzn+RBv48J/yQ8hSMDj5HNshgT7iYdbJQ
-         dhQ6HHiJHjmQSBaxkT7nlSKlhZHhTN3oVCHo/ouls3jjA6RvkkqqXkFgXvsFdUXz6OAt
-         sXrA==
+        bh=1fzLg32yIxL4nuBAaxGzjjdUPzlfMH4ds5vNoj1mFCc=;
+        b=Bgy0PJFpy7Gr363/pmL2E/obqS0XvE0R0LeCtuEJZ4ZrHO/908VAjT+PjH/Qip8rij
+         tg8qKm25AZYTlYkuawmVMh4B4BOvGzsEe7Jm3D0wE0wrqXnBSP3N3JzcUJEjWIi7JwUb
+         77vSPVhN3cpXtPcWorgUlv8hVF2cuuFy2XAZBFWhJsFjBwP781nY4Jj1ZR/fXGUFF5NN
+         4YyB8v2c9o1ua25p9xrq+agakxMWjY6zDaNdrmFQGe8a/iBYT4NmZNJv3q0Cdt3eWou9
+         jegCHeRrhBBC0hia/CluJUyKZlYdU691deWlIIiJiEfBmYCHfSAFPgOllGXP5ni91uW1
+         Elbg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMjF4IRQ;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PF7f3QYO;
+       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <pbonzini@redhat.com>
-Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
-        by mx.google.com with ESMTPS id b5si3073726ejq.317.2020.10.03.02.15.20
+Return-Path: <thuth@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [63.128.21.124])
+        by mx.google.com with ESMTPS id e81si4707170yba.28.2020.10.03.02.17.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Sat, 03 Oct 2020 02:15:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
+        Sat, 03 Oct 2020 02:17:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) client-ip=63.128.21.124;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=MMjF4IRQ;
-       spf=pass (google.com: domain of pbonzini@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=pbonzini@redhat.com;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=PF7f3QYO;
+       spf=pass (google.com: domain of thuth@redhat.com designates 63.128.21.124 as permitted sender) smtp.mailfrom=thuth@redhat.com;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1601716520;
+	s=mimecast20190719; t=1601716671;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=aqKUOGkrbnr63pzYqTB3ZzHYKIeURmurnEarIe7Rvvs=;
-	b=MMjF4IRQzRG46yFAg3mnwN5Lbl7yuZ6ZzQedpre4OIDviCXuaQz9Pfuazcv9Z3GO/4AUs4
-	9rj+v2sMEETHM3USamLQXOzF3gLYoKdpp22Kxv6Xh94qHXofFbGHmGAoaN5K1bnIEz8TaL
-	gNOXpV2iixEky6byTAYLIjoFBZwizYU=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-237-5fH-qh0YOzyOo8UKu1Egog-1; Sat, 03 Oct 2020 05:15:18 -0400
-X-MC-Unique: 5fH-qh0YOzyOo8UKu1Egog-1
-Received: by mail-wr1-f72.google.com with SMTP id d9so1606079wrv.16
-        for <alex.bennee@linaro.org>; Sat, 03 Oct 2020 02:15:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=aqKUOGkrbnr63pzYqTB3ZzHYKIeURmurnEarIe7Rvvs=;
-        b=XGAPQZjkukn3zo8zfbhd0emdQSAs6lbQwF6MO17kc2kCkEkGMYonPFI6GwF2Bu3bCo
-         DrafpD+jDGBPBnry1fstXFXTNG1Xv78DAtD2tLAbJ/Nsc1x6SZSAQUqrhvEeJbBt4mHH
-         9Ymg9Avzc+PQ2aTzjFe2nhuwyh85q1Docr7UWwMiUlgzF8M5QRqISTGXoNnJN974uyHt
-         WROO6biS+Xk6O+3NpfOe6hnIicHvHBtYyegBSdZiJ593b/SqusXHI9fGOyYVWuWhPbWv
-         9qnNmLewfqy8pNJuaUOQsMoAKrUsQxZo42B0en3JYEd85PxTmDnCpbhKJDplXgSuyZIN
-         wFkw==
-X-Gm-Message-State: AOAM53266r5uon/adLZhY3drrWspramORRsTDUqfg4x/AxtszxIVoNJX
-	rbgvNDEYe2NxQuFF9egbsYawW2kt0x3I1BwXpAi7SMhR93Bxl7pjMwvgo9UspVHbsQbecacCI5v
-	LztJupXFK7OIREYq6
-X-Received: by 2002:a05:600c:2283:: with SMTP id 3mr6672795wmf.37.1601716517509;
-        Sat, 03 Oct 2020 02:15:17 -0700 (PDT)
-X-Received: by 2002:a05:600c:2283:: with SMTP id 3mr6672777wmf.37.1601716517335;
-        Sat, 03 Oct 2020 02:15:17 -0700 (PDT)
-Return-Path: <pbonzini@redhat.com>
-Received: from [192.168.10.150] ([93.56.170.5])
-        by smtp.gmail.com with ESMTPSA id n10sm4714605wmk.7.2020.10.03.02.15.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 03 Oct 2020 02:15:16 -0700 (PDT)
-Subject: Re: [PATCH v4 02/12] meson: Allow optional target/${ARCH}/Kconfig
-To: Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, Fam Zheng <fam@euphon.net>,
- Peter Maydell <peter.maydell@linaro.org>, kvm@vger.kernel.org,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- Richard Henderson <rth@twiddle.net>, Claudio Fontana <cfontana@suse.de>
+	bh=1fzLg32yIxL4nuBAaxGzjjdUPzlfMH4ds5vNoj1mFCc=;
+	b=PF7f3QYO2zwQNggtWdit2YGXy112+7JBQQvkY8FCa6nJuMgBojorMCpqToN/YqZEr7hgzk
+	MJwZwBERVwyROoQ1Dm5V9P5a8AWiIjRowzDUadOWIjkvZabrK23mFRPYE6bnTQ6yIYz7A+
+	JPpsh/HbHz2u1xwpU6DhuykyMq09lfE=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-448-XzWEcPFZMJi_MD1bMolAxw-1; Sat, 03 Oct 2020 05:17:50 -0400
+X-MC-Unique: XzWEcPFZMJi_MD1bMolAxw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com [10.5.11.22])
+	(using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+	(No client certificate requested)
+	by mimecast-mx01.redhat.com (Postfix) with ESMTPS id AB50C1868410;
+	Sat,  3 Oct 2020 09:17:48 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-61.ams2.redhat.com [10.36.112.61])
+	by smtp.corp.redhat.com (Postfix) with ESMTP id 3385510013C4;
+	Sat,  3 Oct 2020 09:17:45 +0000 (UTC)
+Subject: Re: [PATCH v4 04/12] target/arm: Restrict ARMv4 cpus to TCG accel
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Fam Zheng <fam@euphon.net>, Peter Maydell <peter.maydell@linaro.org>,
+ kvm@vger.kernel.org, =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
+ qemu-arm@nongnu.org, Richard Henderson <rth@twiddle.net>
 References: <20200929224355.1224017-1-philmd@redhat.com>
- <20200929224355.1224017-3-philmd@redhat.com>
- <31a173bf-6aa3-1ce8-7d14-5e8f11e2a279@linaro.org>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <0303fe78-5ae1-2115-247c-71807ce74e12@redhat.com>
-Date: Sat, 3 Oct 2020 11:15:15 +0200
+ <20200929224355.1224017-5-philmd@redhat.com>
+ <971287b0-fd62-21bb-e80e-8b83c8a5c459@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <4488d878-09ff-5ea6-bc4b-69dda534131e@redhat.com>
+Date: Sat, 3 Oct 2020 11:17:45 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-In-Reply-To: <31a173bf-6aa3-1ce8-7d14-5e8f11e2a279@linaro.org>
-Authentication-Results: relay.mimecast.com;
-	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <971287b0-fd62-21bb-e80e-8b83c8a5c459@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-TUID: 9yJngqa08BAW
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+X-TUID: CuZAPy43ugR5
 
-On 03/10/20 11:13, Richard Henderson wrote:
->> +    target_kconfig = 'target' / config_target['TARGET_BASE_ARCH'] / 'Kconfig'
->> +    minikconf_input = ['default-configs' / target + '.mak', 'Kconfig']
->> +    if fs.is_file(target_kconfig)
-> Missing a meson.current_source_dir()?
-> Leastwise that was a comment that Paolo had for me.
+On 30/09/2020 10.03, Philippe Mathieu-Daudé wrote:
+> On 9/30/20 12:43 AM, Philippe Mathieu-Daudé wrote:
+>> KVM requires a cpu based on (at least) the ARMv7 architecture.
+>>
+>> Only enable the following ARMv4 CPUs when TCG is available:
+>>
+>>    - StrongARM (SA1100/1110)
+>>    - OMAP1510 (TI925T)
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>> ---
+>>   hw/arm/Kconfig | 6 ++++++
+>>   1 file changed, 6 insertions(+)
+>>
+>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+>> index 7d040827af..b546b20654 100644
+>> --- a/hw/arm/Kconfig
+>> +++ b/hw/arm/Kconfig
+>> @@ -1,3 +1,7 @@
+>> +config ARM_V4
+>> +    bool
+>> +    select TCG
+> 
+> This should be 'depends on TCG' because we can not
+> *select* TCG, either we enabled it or not.
+> 
+> The problem is the machines are already selected in
+> default-configs/arm-softmmu.mak, so we can not build
+> the current config without TCG.
 
-Not sure, but it was the only way I thought the BSD build could fail;
-unless the capstone submodule really was not present in Peter's checkout
-and submodule update was disabled.
+Is it really a problem? If the users disabled TCG and still have these 
+machines in their arm-softmmu.mak, it's a configuration issue on their side, 
+so it's ok if they get an error in that case.
 
-Paolo
+  Thomas

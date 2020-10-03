@@ -1,209 +1,166 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2301542lfq;
-        Sat, 3 Oct 2020 01:48:23 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx5Yvcf/jtUQ2FU0UgNHXGGyF7AxmtOjt7l+KwI0F1bJUVMkc2Pkz5aUzdfkGA6o13ItS+X
-X-Received: by 2002:a50:c05b:: with SMTP id u27mr7091227edd.290.1601714903530;
-        Sat, 03 Oct 2020 01:48:23 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601714903; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2303560lfq;
+        Sat, 3 Oct 2020 01:53:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzgBhijVafLEgiOVr7/j9uGwl/59bKwm7wuF6HEiFIZEGv8XAniNSUbBdgrwIec1cjCRSHJ
+X-Received: by 2002:a25:ca85:: with SMTP id a127mr7999419ybg.184.1601715180444;
+        Sat, 03 Oct 2020 01:53:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601715180; cv=none;
         d=google.com; s=arc-20160816;
-        b=lljRiCoSkTalA24ebGmTVvbvIi2kCXOsnUiKYtEc6l1/veC1ZyFKw6EBHYvmV5+U+g
-         n1zWiD6jUVRwrDUeIYRyQ4aLvEJUVmoiyu0zyiRIYO2l7t7bLk8yuP73+8Fm1uzChcgb
-         jzBbu7OuGZ706vW2k4yg0tdwgu4Np2Hvhn1DXC9cLXKGsNkjw5CGY4n+tBIgBj9vyOfz
-         DJ4uRVn9UjOAUURiPatkC0mbectbUtBIUAvEVSwQRFkG8xcJDq8OfhuwjKfAAjcN/siq
-         zuDkTXY1twtC+weHZH2iZoIn364HGWXCahxehGHXiU0IZD4Mj5Wdr2+J7zDatylU7W1/
-         18ig==
+        b=HBQLGHSo1PFIAzYlbVf8YoP+Z/2xKInKVeERQp/UHidYoulBxKw6D4DP7MqpzWrO3y
+         cRus47WYuTLU4IcC/pY//nWvBpJr6jsJ33FAfJjV74WeEGWWYTRgnPHzgPwBxJfQVf7t
+         5H4ccuwHnCtGUW/MUYahF+a4Go/eFmmZ40fdglMlW4FOJeOfEj/fF30Sk/IPmpiC/1iJ
+         FNy6eaT91KoWCTxD6dGSFMobAgcXYE5ETCsGb6poVqYVhMO6kJ8C552vManQ3vS81jYa
+         XVZUyt04KEEozwfkmdMrGAg+tT5z6FiSdwDvE6CFaKVHUQQILb5geylxOPXTYEczKeWn
+         B2Tw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:content-transfer-encoding:content-language
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :cc:to:subject:dkim-signature;
-        bh=/yD2Xg+heLEf/P4MLYz+dS5vx/J1O0Ekd2CO4abRGUI=;
-        b=DlPjq0rFwlUIUtmKiTTvGYcByad0YBCeVktfrupFrXfn76FZgM97lfY624+M7tLJbx
-         Zj69KQj/JGo2F+m0YMg/nqZNpWukfmCt1FFog/QGaoARMAzy4CcJlGEC8LejDTDGf6gX
-         Xmnr3H/il8KzB4Othn+oUi1fLkJ6EfXS8XEwM8390Xi94EK5T5iL80JYJWj3Fyq+xIUs
-         0VpEC4P9uk1u/vRhLE1pZoLjNdCANXcb3uqQcrIsAq2zPyJUg+2QSfesXImO6EV1UQ/e
-         4MKu6nG8+In5cbRK6PoU+jrX17qzpNBrGvEicSwYCDtSCBI8TvAYuFSZ8+0mL//Jh19O
-         94xg==
+        h=sender:errors-to:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence
+         :content-transfer-encoding:mime-version:subject:to:message-id:from
+         :date:dkim-signature;
+        bh=1RuDpK0scaImWU+uLXOa+HiCC2ftD3uYDo2swBJr5CY=;
+        b=mwTOcGQuuO5ejG6vq+Oq6O53EkxWSMLQn3TBgmh4Y8DHEzQ/DUtAgbZqWVjcRBxUFv
+         f872y47O53GXrkaSx37t3zK0wZkRKeZJ9kKRxI7/3p7K806/nzocKpA7aXTJglc8s3NP
+         j3ONMlIa+cCHw387uNw8sSgj1Id3+pCeOHRGqzVvU3hoeXFyp2ES/njal7uMQGKz3m+u
+         OffzeT0tdi2hACxWQ+hEIbrCllGiJecWuFM8W9btpHpafaEx8rfxl8jh78I67dOu6qB0
+         +xArAcIfbQ2r5Mengpg3DEmfhivUOgzogYdomDqb4S/RI2KbwDTsRry+MC2cvj9QWLWl
+         YdOw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IZBvuzTz;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id b26si2916265edu.250.2020.10.03.01.48.23;
-        Sat, 03 Oct 2020 01:48:23 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=pass header.i=@mail.ru header.s=mail3 header.b=JF4FFPQ2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.ru
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p8si4853326ybg.291.2020.10.03.01.53.00
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 03 Oct 2020 01:53:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IZBvuzTz;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1725767AbgJCIsT (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Sat, 3 Oct 2020 04:48:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54833 "EHLO
-        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
-        by vger.kernel.org with ESMTP id S1725601AbgJCIsS (ORCPT
-        <rfc822;kvm@vger.kernel.org>); Sat, 3 Oct 2020 04:48:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-        s=mimecast20190719; t=1601714897;
-        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-         content-transfer-encoding:content-transfer-encoding:
-         in-reply-to:in-reply-to:references:references;
-        bh=/yD2Xg+heLEf/P4MLYz+dS5vx/J1O0Ekd2CO4abRGUI=;
-        b=IZBvuzTz3/gX1eODDowjdNzWz67prVyS566rsBHR6xJ6z39WoXCxpU9GBnILNG2YlvqG70
-        Gmh4CaT9dInJiN/Da7Fko3okm7sBShHdYy7PKMrmlh5IFXY/STGLvWV1dV/ZjsEuCBcBDQ
-        EpQDldvLOW7ykK9dupD0BxBluagVTJg=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-245-mxUhvGPqNyeSEYF4m48TNQ-1; Sat, 03 Oct 2020 04:48:13 -0400
-X-MC-Unique: mxUhvGPqNyeSEYF4m48TNQ-1
-Received: by mail-wr1-f70.google.com with SMTP id r16so1575883wrm.18
-        for <kvm@vger.kernel.org>; Sat, 03 Oct 2020 01:48:13 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-language
-         :content-transfer-encoding;
-        bh=/yD2Xg+heLEf/P4MLYz+dS5vx/J1O0Ekd2CO4abRGUI=;
-        b=FtaPZcFwOsC561lmFEUTPJx/iHDVjrMgBSb1cnlqGe4K+SIxIMhCNnKyk8xkeQNCKg
-         RZtWvCHfR1eKAgLEm8OyhE3C9IksNRJxX2lb/Pr5xfVLXP+q+Cu5TzPS1qTLEwxf3N3a
-         FY0m43u14b9MR4zp2w1C8goOPCAcyb/5a33Vo8XFd+ldVBjtXJHdGFyBewo00u6zno0h
-         MTAmHjAOpf/+yiWLP2gU/tB1hZDLjc3xXpjROm1Ju4JrfnxDrCYFRZyD6ZxlWvk9qP+x
-         GDzNa9ukVSRjO6ApsTA5+mKQjP2LM17nAJ78K83gbSfSk/4E/dMPt0psNz+AoEFq2fsQ
-         /aJA==
-X-Gm-Message-State: AOAM532GIankj1LS7XRniq2fgtyco5TfjRnyQYh0J75stIqxs1YkE/OB
-        bN43gMd5Hzt4bSTX81yTGSlKW3uGIMZAutaYmecRo45AK7+Vj7etaOCAFykqxFScXGLk4jT0hJS
-        7gnTgrbmgQYiJ
-X-Received: by 2002:a5d:55c8:: with SMTP id i8mr7276932wrw.331.1601714892045;
-        Sat, 03 Oct 2020 01:48:12 -0700 (PDT)
-X-Received: by 2002:a5d:55c8:: with SMTP id i8mr7276871wrw.331.1601714891730;
-        Sat, 03 Oct 2020 01:48:11 -0700 (PDT)
-Received: from ?IPv6:2001:b07:6468:f312:f6ef:6259:374d:b794? ([2001:b07:6468:f312:f6ef:6259:374d:b794])
-        by smtp.gmail.com with ESMTPSA id u81sm1344487wmg.43.2020.10.03.01.48.09
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Sat, 03 Oct 2020 01:48:11 -0700 (PDT)
-Subject: Re: [PATCH v3] qemu/atomic.h: rename atomic_ to qatomic_
-To:     Matthew Rosato <mjrosato@linux.ibm.com>,
-        Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
-Cc:     Fam Zheng <fam@euphon.net>,
-        Peter Maydell <peter.maydell@linaro.org>,
-        sheepdog@lists.wpkg.org, Paul Durrant <paul@xen.org>,
-        Jason Wang <jasowang@redhat.com>,
-        David Hildenbrand <david@redhat.com>,
-        Yuval Shaia <yuval.shaia.ml@gmail.com>,
-        Markus Armbruster <armbru@redhat.com>,
-        Max Filippov <jcmvbkbc@gmail.com>,
-        Alistair Francis <Alistair.Francis@wdc.com>,
-        Gerd Hoffmann <kraxel@redhat.com>,
-        Huacai Chen <chenhc@lemote.com>,
-        Stefano Stabellini <sstabellini@kernel.org>,
-        Alberto Garcia <berto@igalia.com>, kvm@vger.kernel.org,
-        Yoshinori Sato <ysato@users.sourceforge.jp>,
-        Juan Quintela <quintela@redhat.com>,
-        Jiri Slaby <jslaby@suse.cz>,
-        "Michael S. Tsirkin" <mst@redhat.com>,
-        Michael Roth <mdroth@linux.vnet.ibm.com>,
-        Halil Pasic <pasic@linux.ibm.com>,
-        Christian Borntraeger <borntraeger@de.ibm.com>,
-        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
-        Anthony Perard <anthony.perard@citrix.com>,
-        =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
-        Liu Yuan <namei.unix@gmail.com>,
-        Richard Henderson <rth@twiddle.net>,
-        Thomas Huth <thuth@redhat.com>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Stefan Weil <sw@weilnetz.de>, Peter Lieven <pl@kamp.de>,
-        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
-        qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
-        xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
-        Sunil Muthuswamy <sunilmut@microsoft.com>,
-        John Snow <jsnow@redhat.com>,
-        Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
-        Kevin Wolf <kwolf@redhat.com>,
-        =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
-        qemu-block@nongnu.org,
-        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
-        Cornelia Huck <cohuck@redhat.com>,
-        Laurent Vivier <laurent@vivier.eu>,
-        Max Reitz <mreitz@redhat.com>,
-        Sagar Karandikar <sagark@eecs.berkeley.edu>,
-        Palmer Dabbelt <palmer@dabbelt.com>,
-        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
-        Aurelien Jarno <aurelien@aurel32.net>
-References: <20200923105646.47864-1-stefanha@redhat.com>
- <4e65d6fa-0a7e-015b-eb6f-5dd1cc3ddd91@linux.ibm.com>
-From:   Paolo Bonzini <pbonzini@redhat.com>
-Message-ID: <45ba3626-0e06-96c7-5ed8-ea561ae20f15@redhat.com>
-Date:   Sat, 3 Oct 2020 10:48:08 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+       dkim=pass header.i=@mail.ru header.s=mail3 header.b=JF4FFPQ2;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=mail.ru
+Received: from localhost ([::1]:55124 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kOdHn-0005Uj-TP
+	for alex.bennee@linaro.org; Sat, 03 Oct 2020 04:52:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59232)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dims12@mail.ru>) id 1kOdHV-0005Tj-8o
+ for qemu-arm@nongnu.org; Sat, 03 Oct 2020 04:52:41 -0400
+Received: from smtp10.mail.ru ([94.100.181.92]:33020)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dims12@mail.ru>) id 1kOdHS-00049G-3F
+ for qemu-arm@nongnu.org; Sat, 03 Oct 2020 04:52:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mail.ru;
+ s=mail3; 
+ h=Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:To:Message-ID:Reply-To:From:Date:From:Subject:Content-Type:Content-Transfer-Encoding:To:Cc;
+ bh=1RuDpK0scaImWU+uLXOa+HiCC2ftD3uYDo2swBJr5CY=; 
+ b=JF4FFPQ2edbu9zOB7p3lsiartrJlx/ElTBmmYakGXNo+D2T+XdbsI79NYKcKuRlupQvCmclire1QqoMRQM7DFBKqA/gKAG5VKjaV22C4Dv9jz/HIvud8ChmtMY9GoOeeB1WZJIiWWWvdoS5BeFdF03/Rfv7/744lt6xIfDdivws=;
+Received: by smtp10.mail.ru with esmtpa (envelope-from <dims12@mail.ru>)
+ id 1kOdHN-0007At-Go
+ for qemu-arm@nongnu.org; Sat, 03 Oct 2020 11:52:33 +0300
+Date: Sat, 3 Oct 2020 11:52:33 +0300
+From: Dmitry S Kravchenko <dims12@mail.ru>
+Message-ID: <818484776.20201003115233@mail.ru>
+To: qemu-arm@nongnu.org
+Subject: How to pass-through USB when Running Raspberry Pi image?
 MIME-Version: 1.0
-In-Reply-To: <4e65d6fa-0a7e-015b-eb6f-5dd1cc3ddd91@linux.ibm.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: dMBZ5ROGgCg5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Antivirus: Avast (VPS 201003-0, 03.10.2020), Outbound message
+X-Antivirus-Status: Clean
+Authentication-Results: smtp10.mail.ru; auth=pass smtp.auth=dims12@mail.ru
+ smtp.mailfrom=dims12@mail.ru
+X-7564579A: 646B95376F6C166E
+X-77F55803: 4F1203BC0FB41BD9E98D729206725230F4632E9A98CB8CA84C82A46976C49F1F182A05F53808504097A3488A38C3F0227DB0B14FBE991496849908669D0116FB96C755FFF76A5925
+X-7FA49CB5: FF5795518A3D127A4AD6D5ED66289B5278DA827A17800CE7AC43A7B4C36B769DEA1F7E6F0F101C67BD4B6F7A4D31EC0BCC500DACC3FED6E28638F802B75D45FF8AA50765F7900637835928C62272F24E8638F802B75D45FF5571747095F342E8C7A0BC55FA0FE5FC87C4C53F983B2025AAAB9790E22C35E3CF4FD0D6B9E93C49389733CBF5DBD5E913377AFFFEAFD269176DF2183F8FC7C07E7E81EEA8A9722B8941B15DA834481FCF19DD082D7633A0E7DDDDC251EA7DABA471835C12D1D977725E5C173C3A84C362968DCAA3E4B45B117882F4460429728AD0CFFFB425014EFE57002F862A6B6676E601842F6C81A19E625A9149C048EE38D4DC57D478E688098B145E00970258D8FC6C240DEA76429449624AB7ADAF37B2D370F7B14D4BC40A6AB1C7CE11FEE37BF93E671518182AC0837EA9F3D19764C4224003CC8364767A15B7713DBEF166A7F4EDE966BC389F9E8FC8737B5C22497393CE827C55B5F775ECD9A6C639B01BBD4B6F7A4D31EC0BC0CAF46E325F83A522CA9DD8327EE4930A3850AC1BE2E73557739F23D657EF2BB5C8C57E37DE458B4C7702A67D5C3316FA3894348FB808DBA1CE242F1348D5363B503F486389A921A5CC5B56E945C8DA
+X-C8649E89: E34E851992FCED65B5688C51040EC3923E052F59D1986B4474884381DD1CAD5B55B84F4C62AE5C43
+X-D57D3AED: 3ZO7eAau8CL7WIMRKs4sN3D3tLDjz0dLbV79QFUyzQ2Ujvy7cMT6pYYqY16iZVKkSc3dCLJ7zSJH7+u4VD18S7Vl4ZUrpaVfd2+vE6kuoey4m4VkSEu530nj6fImhcD4MUrOEAnl0W826KZ9Q+tr5ycPtXkTV4k65bRjmOUUP8cvGozZ33TWg5HZplvhhXbhDGzqmQDTd6OAevLeAnq3Ra9uf7zvY2zzsIhlcp/Y7m53TZgf2aB4JOg4gkr2biojbL9S8ysBdXiGEZTr0S5mT2tGLatOGNeQ
+X-Mailru-Internal-Actual: B:0.87796206762262
+X-Mailru-Sender: F16D9CAFEEA6770ECAF442C8E1739AC0FE7BBB421EA3499B1882D6238A6B754723486710E24E14016490C8872583B4AB3DDE9B364B0DF289D0242E59F813069D7652F063092A458AAE208404248635DF
+X-Mras: Ok
+Received-SPF: pass client-ip=94.100.181.92; envelope-from=dims12@mail.ru;
+ helo=smtp10.mail.ru
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/03 04:52:33
+X-ACL-Warn: Detected OS   = ???
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ FREEMAIL_REPLYTO_END_DIGIT=0.25, RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Dmitry S Kravchenko <dims12@mail.ru>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 3iE1gzNZEdDt
 
-On 02/10/20 18:43, Matthew Rosato wrote:
->> diff --git
->> a/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
->> b/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
->> index acd4c8346d..7b4062a1a1 100644
->> ---
->> a/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
->> +++
->> b/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
->> @@ -68,7 +68,7 @@ static inline int pvrdma_idx_valid(uint32_t idx,
->> uint32_t max_elems)
->>     static inline int32_t pvrdma_idx(int *var, uint32_t max_elems)
->>   {
->> -    const unsigned int idx = atomic_read(var);
->> +    const unsigned int idx = qatomic_read(var);
->>         if (pvrdma_idx_valid(idx, max_elems))
->>           return idx & (max_elems - 1);
->> @@ -77,17 +77,17 @@ static inline int32_t pvrdma_idx(int *var,
->> uint32_t max_elems)
->>     static inline void pvrdma_idx_ring_inc(int *var, uint32_t max_elems)
->>   {
->> -    uint32_t idx = atomic_read(var) + 1;    /* Increment. */
->> +    uint32_t idx = qatomic_read(var) + 1;    /* Increment. */
->>         idx &= (max_elems << 1) - 1;        /* Modulo size, flip gen. */
->> -    atomic_set(var, idx);
->> +    qatomic_set(var, idx);
->>   }
->>     static inline int32_t pvrdma_idx_ring_has_space(const struct
->> pvrdma_ring *r,
->>                             uint32_t max_elems, uint32_t *out_tail)
->>   {
->> -    const uint32_t tail = atomic_read(&r->prod_tail);
->> -    const uint32_t head = atomic_read(&r->cons_head);
->> +    const uint32_t tail = qatomic_read(&r->prod_tail);
->> +    const uint32_t head = qatomic_read(&r->cons_head);
->>         if (pvrdma_idx_valid(tail, max_elems) &&
->>           pvrdma_idx_valid(head, max_elems)) {
->> @@ -100,8 +100,8 @@ static inline int32_t
->> pvrdma_idx_ring_has_space(const struct pvrdma_ring *r,
->>   static inline int32_t pvrdma_idx_ring_has_data(const struct
->> pvrdma_ring *r,
->>                            uint32_t max_elems, uint32_t *out_head)
->>   {
->> -    const uint32_t tail = atomic_read(&r->prod_tail);
->> -    const uint32_t head = atomic_read(&r->cons_head);
->> +    const uint32_t tail = qatomic_read(&r->prod_tail);
->> +    const uint32_t head = qatomic_read(&r->cons_head);
->>         if (pvrdma_idx_valid(tail, max_elems) &&
->>           pvrdma_idx_valid(head, max_elems)) {
-> 
-> 
-> It looks like the changes in this file are going to get reverted the
-> next time someone does a linux header sync.
+I  am  trying  to  emulate  Raspberry  Pi image on Linux host and have
+access to host USB ports and failing
 
-Source code should not be at all imported from Linux.  The hacks that
-accomodate pvrdma in update-linux-headers.sh (like s/atomic_t/u32/)
-really have no place there; the files in
-include/standard-headers/drivers/infiniband/hw/vmw_pvrdma should all be
-moved in hw/.
+My basic command line is
 
-Paolo
+qemu-system-arm \
+    -kernel qemu-rpi-kernel/kernel-qemu-4.4.34-jessie \
+    -cpu arm1176 \
+    -m 256 \
+    -M versatilepb \
+    -append "root=3D/dev/sda2 panic=3D1" \
+    -hda 2017-07-05-raspbian-jessie.img \
+    -usb \
+    -redir tcp:5022::22 \
+    -redir tcp:5080::80 \
+    -serial stdio \
+    -no-reboot
+
+And I also tried to add some combinations of options such as
+
+-usb \
+-device qemu-xhci \
+-device usb-ehci,id=3Dehci \
+-device usb-host,hostbus=3D1,hostport=3D1.3
+
+and so on, but failed.
+
+I have no any usb on guest and also have
+
+$ lsusb
+unable to initalize libusb: -99
+
+My host is Ubunto 18.04, my device is serial-based custom USB device
+
+On host:
+
+$ lsusb -t
+/:  Bus 02.Port 1: Dev 1, Class=3Droot_hub, Driver=3Dxhci_hcd/6p, 5000M
+    |__ Port 6: Dev 2, If 0, Class=3DMass Storage, Driver=3Dusb-storage, 50=
+00M
+/:  Bus 01.Port 1: Dev 1, Class=3Droot_hub, Driver=3Dxhci_hcd/12p, 480M
+    |__ Port 3: Dev 2, If 0, Class=3DVendor Specific Class, Driver=3Dftdi_s=
+io, 12M
+
+last one is interested
+
+How to investigate and fix?
+
+
+-- 
+=D0=AD=D1=82=D0=BE =D1=81=D0=BE=D0=BE=D0=B1=D1=89=D0=B5=D0=BD=D0=B8=D0=B5 =
+=D0=BF=D1=80=D0=BE=D0=B2=D0=B5=D1=80=D0=B5=D0=BD=D0=BE =D0=BD=D0=B0 =D0=B2=
+=D0=B8=D1=80=D1=83=D1=81=D1=8B =D0=B0=D0=BD=D1=82=D0=B8=D0=B2=D0=B8=D1=80=
+=D1=83=D1=81=D0=BE=D0=BC Avast.
+https://www.avast.com/antivirus
+

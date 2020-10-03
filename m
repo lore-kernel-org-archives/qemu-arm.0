@@ -1,260 +1,209 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1944761lfq;
-        Fri, 2 Oct 2020 15:00:10 -0700 (PDT)
-X-Received: by 2002:a9d:5a8c:: with SMTP id w12mr3207699oth.332.1601676010513;
-        Fri, 02 Oct 2020 15:00:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601676010; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2301542lfq;
+        Sat, 3 Oct 2020 01:48:23 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx5Yvcf/jtUQ2FU0UgNHXGGyF7AxmtOjt7l+KwI0F1bJUVMkc2Pkz5aUzdfkGA6o13ItS+X
+X-Received: by 2002:a50:c05b:: with SMTP id u27mr7091227edd.290.1601714903530;
+        Sat, 03 Oct 2020 01:48:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601714903; cv=none;
         d=google.com; s=arc-20160816;
-        b=avJQcnVlEHftbGHmMtimXgi8x6M+3bYEe/yA9BuyIDCJmZ0sj3My9hUae3us2sFxvL
-         BuEnNZmsPl90ajGRg8giCx0uCABzTDQyr4FVknvLTYThQnuNOxXbMp4L9+To0wnqpIsE
-         qp1m/UG+uCwLeOFwnhFU8ZrRXbL1du+7jP5bXilemYLJTbJk8UfOZKM16kSstQukf6Cf
-         eWfQYdFj7lt98hYhH4EaF3hGD3N695BGO/67TtXY8VeEmLhsESAgKZ9PF/XWKShl//GT
-         LJzDTFF0l6mlwslmk2NnWc36L8sbupd2fZZmgROR1P4/ThbO5pBwMNL9hrYeVvOPHhUR
-         LWzA==
+        b=lljRiCoSkTalA24ebGmTVvbvIi2kCXOsnUiKYtEc6l1/veC1ZyFKw6EBHYvmV5+U+g
+         n1zWiD6jUVRwrDUeIYRyQ4aLvEJUVmoiyu0zyiRIYO2l7t7bLk8yuP73+8Fm1uzChcgb
+         jzBbu7OuGZ706vW2k4yg0tdwgu4Np2Hvhn1DXC9cLXKGsNkjw5CGY4n+tBIgBj9vyOfz
+         DJ4uRVn9UjOAUURiPatkC0mbectbUtBIUAvEVSwQRFkG8xcJDq8OfhuwjKfAAjcN/siq
+         zuDkTXY1twtC+weHZH2iZoIn364HGWXCahxehGHXiU0IZD4Mj5Wdr2+J7zDatylU7W1/
+         18ig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=S4v0KO82Wzlx0JZkhGIkBUAKLry2EN5cCldjJF9G/o4=;
-        b=TNBZD4zoQLe1wV8bYX3FgIizamdSp5BuFRp2XzkOIhzu1nlMz5ld+0vB6LiiLYeV7Q
-         DZ2qAbsvdNtbPcH9H/TzGaJjIwjTIvL2vI9neKXCP6ESjFI6soT8QJIhYmQY4mAkknJb
-         yJgxb/puRfWyuE8VDGA3xVc0kRMpeV5z0Idb/6GXD+fhaW0tffo2MdG6jk8iHwNIySMq
-         AVqSVWYiwBRnMuDpMcKwsAO69srU2e2gnZfIc56cbahr/G70eWtpBQ1mZnd7BwGJMesZ
-         0dUs0RqeppLwtJ52mdIaHHnM7LU+uVZdZHwtcDrETJZLRvFbzEs8SUobxnZfqI5Ddi7j
-         WVMw==
+        h=list-id:precedence:content-transfer-encoding:content-language
+         :in-reply-to:mime-version:user-agent:date:message-id:from:references
+         :cc:to:subject:dkim-signature;
+        bh=/yD2Xg+heLEf/P4MLYz+dS5vx/J1O0Ekd2CO4abRGUI=;
+        b=DlPjq0rFwlUIUtmKiTTvGYcByad0YBCeVktfrupFrXfn76FZgM97lfY624+M7tLJbx
+         Zj69KQj/JGo2F+m0YMg/nqZNpWukfmCt1FFog/QGaoARMAzy4CcJlGEC8LejDTDGf6gX
+         Xmnr3H/il8KzB4Othn+oUi1fLkJ6EfXS8XEwM8390Xi94EK5T5iL80JYJWj3Fyq+xIUs
+         0VpEC4P9uk1u/vRhLE1pZoLjNdCANXcb3uqQcrIsAq2zPyJUg+2QSfesXImO6EV1UQ/e
+         4MKu6nG8+In5cbRK6PoU+jrX17qzpNBrGvEicSwYCDtSCBI8TvAYuFSZ8+0mL//Jh19O
+         94xg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LwMqakNC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id x68sor203224oix.114.2020.10.02.15.00.10
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Fri, 02 Oct 2020 15:00:10 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IZBvuzTz;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <kvm-owner@vger.kernel.org>
+Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
+        by mx.google.com with ESMTP id b26si2916265edu.250.2020.10.03.01.48.23;
+        Sat, 03 Oct 2020 01:48:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LwMqakNC;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=S4v0KO82Wzlx0JZkhGIkBUAKLry2EN5cCldjJF9G/o4=;
-        b=LwMqakNC2QpnD9J255X+mbTTPKvXL9QSu/A20IPVh7SQzOAMWEwVzamj4SeE9MgwU8
-         4OSWR+zBL4QscrJqidiP3RssFihuT5Ckfr3fH1/tXf3oe42SoIvXuCY+EIbIPq3u5vXc
-         MXuyUJVwLj+DGfUcxbXC7O5q/kpaUzBC55jhnGsI6zYgeam8eGb2NHKBR1XkMc7OUnJK
-         K5vME11cMvtUzJevkdaWMmzG+Rr6ilsWw0ArMYSTjtAFfQBwHIx1pJlRf4g8+T8gOY3O
-         zwuuiHpIbKtwnFCCXqkGcJjeyWFDhvpPn7BNMpyiv53JWIvP7IFx/o0ntqmbyaFTFSjB
-         SZOg==
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=IZBvuzTz;
+       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
+        id S1725767AbgJCIsT (ORCPT <rfc822;naresh.kamboju@linaro.org>
+        + 5 others); Sat, 3 Oct 2020 04:48:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:54833 "EHLO
+        us-smtp-delivery-124.mimecast.com" rhost-flags-OK-OK-OK-OK)
+        by vger.kernel.org with ESMTP id S1725601AbgJCIsS (ORCPT
+        <rfc822;kvm@vger.kernel.org>); Sat, 3 Oct 2020 04:48:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+        s=mimecast20190719; t=1601714897;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         content-transfer-encoding:content-transfer-encoding:
+         in-reply-to:in-reply-to:references:references;
+        bh=/yD2Xg+heLEf/P4MLYz+dS5vx/J1O0Ekd2CO4abRGUI=;
+        b=IZBvuzTz3/gX1eODDowjdNzWz67prVyS566rsBHR6xJ6z39WoXCxpU9GBnILNG2YlvqG70
+        Gmh4CaT9dInJiN/Da7Fko3okm7sBShHdYy7PKMrmlh5IFXY/STGLvWV1dV/ZjsEuCBcBDQ
+        EpQDldvLOW7ykK9dupD0BxBluagVTJg=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-245-mxUhvGPqNyeSEYF4m48TNQ-1; Sat, 03 Oct 2020 04:48:13 -0400
+X-MC-Unique: mxUhvGPqNyeSEYF4m48TNQ-1
+Received: by mail-wr1-f70.google.com with SMTP id r16so1575883wrm.18
+        for <kvm@vger.kernel.org>; Sat, 03 Oct 2020 01:48:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=S4v0KO82Wzlx0JZkhGIkBUAKLry2EN5cCldjJF9G/o4=;
-        b=U4uW1/YNqdgCsz3H03Dqqr0uHx0BjPDWTr12FOMt9Yg5eCxYYrIU/bNHb863PcLFVw
-         PzRHOOph/+0G4MH9+WWxDAganLy99JRnEjbFTfFoJEOPUo1ye299PanGMxau884fYTe0
-         lYgfx9CMOV//t+E41qlCWTFcMkU+oLz40RGMIxj9oMPFGG8SuZVY8UBwYjJU2/Z0cL+L
-         Z8UBEkXYmts8IPrXrHuC6mpPnz1Gm6JIaKWK+0MAPQXpSDdOLCE0U+algO2/w02gHlQn
-         rZn/kv75ylqAzTMUDcEh27HlKelXmrccA7csshCEdJxDoXRyHWsp3ZP8hcOE+sFCShrO
-         qtKg==
-X-Gm-Message-State: AOAM5312iazAZZr6ovGndBXyTnaDQCJHdR+NMFxyZ43FOlpd+fJlbVMu
-	kX5VAxweKIHBqqohoxLidgqI5yuRq+yVYHDn6To=
-X-Google-Smtp-Source: ABdhPJyDg5AYgtto1TjYwk96iEDlmR2uWk2IWKxajQsAfXzMXEG+9UxteMc+BygUv2Cdy4Ra8y6XbA==
-X-Received: by 2002:aca:5b09:: with SMTP id p9mr2381132oib.68.1601676010042;
-        Fri, 02 Oct 2020 15:00:10 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain (fixed-187-189-51-144.totalplay.net. [187.189.51.144])
-        by smtp.gmail.com with ESMTPSA id k10sm684268ots.60.2020.10.02.15.00.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 02 Oct 2020 15:00:09 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org,
-	laurent@vivier.eu
-Subject: [PATCH v10 8/8] tests/tcg/aarch64: Add bti smoke test
-Date: Fri,  2 Oct 2020 16:59:55 -0500
-Message-Id: <20201002215955.254866-9-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201002215955.254866-1-richard.henderson@linaro.org>
-References: <20201002215955.254866-1-richard.henderson@linaro.org>
+        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+         :user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=/yD2Xg+heLEf/P4MLYz+dS5vx/J1O0Ekd2CO4abRGUI=;
+        b=FtaPZcFwOsC561lmFEUTPJx/iHDVjrMgBSb1cnlqGe4K+SIxIMhCNnKyk8xkeQNCKg
+         RZtWvCHfR1eKAgLEm8OyhE3C9IksNRJxX2lb/Pr5xfVLXP+q+Cu5TzPS1qTLEwxf3N3a
+         FY0m43u14b9MR4zp2w1C8goOPCAcyb/5a33Vo8XFd+ldVBjtXJHdGFyBewo00u6zno0h
+         MTAmHjAOpf/+yiWLP2gU/tB1hZDLjc3xXpjROm1Ju4JrfnxDrCYFRZyD6ZxlWvk9qP+x
+         GDzNa9ukVSRjO6ApsTA5+mKQjP2LM17nAJ78K83gbSfSk/4E/dMPt0psNz+AoEFq2fsQ
+         /aJA==
+X-Gm-Message-State: AOAM532GIankj1LS7XRniq2fgtyco5TfjRnyQYh0J75stIqxs1YkE/OB
+        bN43gMd5Hzt4bSTX81yTGSlKW3uGIMZAutaYmecRo45AK7+Vj7etaOCAFykqxFScXGLk4jT0hJS
+        7gnTgrbmgQYiJ
+X-Received: by 2002:a5d:55c8:: with SMTP id i8mr7276932wrw.331.1601714892045;
+        Sat, 03 Oct 2020 01:48:12 -0700 (PDT)
+X-Received: by 2002:a5d:55c8:: with SMTP id i8mr7276871wrw.331.1601714891730;
+        Sat, 03 Oct 2020 01:48:11 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:f6ef:6259:374d:b794? ([2001:b07:6468:f312:f6ef:6259:374d:b794])
+        by smtp.gmail.com with ESMTPSA id u81sm1344487wmg.43.2020.10.03.01.48.09
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 03 Oct 2020 01:48:11 -0700 (PDT)
+Subject: Re: [PATCH v3] qemu/atomic.h: rename atomic_ to qatomic_
+To:     Matthew Rosato <mjrosato@linux.ibm.com>,
+        Stefan Hajnoczi <stefanha@redhat.com>, qemu-devel@nongnu.org
+Cc:     Fam Zheng <fam@euphon.net>,
+        Peter Maydell <peter.maydell@linaro.org>,
+        sheepdog@lists.wpkg.org, Paul Durrant <paul@xen.org>,
+        Jason Wang <jasowang@redhat.com>,
+        David Hildenbrand <david@redhat.com>,
+        Yuval Shaia <yuval.shaia.ml@gmail.com>,
+        Markus Armbruster <armbru@redhat.com>,
+        Max Filippov <jcmvbkbc@gmail.com>,
+        Alistair Francis <Alistair.Francis@wdc.com>,
+        Gerd Hoffmann <kraxel@redhat.com>,
+        Huacai Chen <chenhc@lemote.com>,
+        Stefano Stabellini <sstabellini@kernel.org>,
+        Alberto Garcia <berto@igalia.com>, kvm@vger.kernel.org,
+        Yoshinori Sato <ysato@users.sourceforge.jp>,
+        Juan Quintela <quintela@redhat.com>,
+        Jiri Slaby <jslaby@suse.cz>,
+        "Michael S. Tsirkin" <mst@redhat.com>,
+        Michael Roth <mdroth@linux.vnet.ibm.com>,
+        Halil Pasic <pasic@linux.ibm.com>,
+        Christian Borntraeger <borntraeger@de.ibm.com>,
+        Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+        Anthony Perard <anthony.perard@citrix.com>,
+        =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+        Liu Yuan <namei.unix@gmail.com>,
+        Richard Henderson <rth@twiddle.net>,
+        Thomas Huth <thuth@redhat.com>,
+        Eduardo Habkost <ehabkost@redhat.com>,
+        Stefan Weil <sw@weilnetz.de>, Peter Lieven <pl@kamp.de>,
+        "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+        qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+        xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
+        Sunil Muthuswamy <sunilmut@microsoft.com>,
+        John Snow <jsnow@redhat.com>,
+        Hailiang Zhang <zhang.zhanghailiang@huawei.com>,
+        Kevin Wolf <kwolf@redhat.com>,
+        =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+        qemu-block@nongnu.org,
+        Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+        Cornelia Huck <cohuck@redhat.com>,
+        Laurent Vivier <laurent@vivier.eu>,
+        Max Reitz <mreitz@redhat.com>,
+        Sagar Karandikar <sagark@eecs.berkeley.edu>,
+        Palmer Dabbelt <palmer@dabbelt.com>,
+        Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+        Aurelien Jarno <aurelien@aurel32.net>
+References: <20200923105646.47864-1-stefanha@redhat.com>
+ <4e65d6fa-0a7e-015b-eb6f-5dd1cc3ddd91@linux.ibm.com>
+From:   Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <45ba3626-0e06-96c7-5ed8-ea561ae20f15@redhat.com>
+Date:   Sat, 3 Oct 2020 10:48:08 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <4e65d6fa-0a7e-015b-eb6f-5dd1cc3ddd91@linux.ibm.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: FCw+lqj3/iwW
+Precedence: bulk
+List-ID: <kvm.vger.kernel.org>
+X-Mailing-List: kvm@vger.kernel.org
+X-TUID: dMBZ5ROGgCg5
 
-This test requires gcc 10 for -mbranch-protection=standard.
+On 02/10/20 18:43, Matthew Rosato wrote:
+>> diff --git
+>> a/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+>> b/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+>> index acd4c8346d..7b4062a1a1 100644
+>> ---
+>> a/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+>> +++
+>> b/include/standard-headers/drivers/infiniband/hw/vmw_pvrdma/pvrdma_ring.h
+>> @@ -68,7 +68,7 @@ static inline int pvrdma_idx_valid(uint32_t idx,
+>> uint32_t max_elems)
+>>     static inline int32_t pvrdma_idx(int *var, uint32_t max_elems)
+>>   {
+>> -    const unsigned int idx = atomic_read(var);
+>> +    const unsigned int idx = qatomic_read(var);
+>>         if (pvrdma_idx_valid(idx, max_elems))
+>>           return idx & (max_elems - 1);
+>> @@ -77,17 +77,17 @@ static inline int32_t pvrdma_idx(int *var,
+>> uint32_t max_elems)
+>>     static inline void pvrdma_idx_ring_inc(int *var, uint32_t max_elems)
+>>   {
+>> -    uint32_t idx = atomic_read(var) + 1;    /* Increment. */
+>> +    uint32_t idx = qatomic_read(var) + 1;    /* Increment. */
+>>         idx &= (max_elems << 1) - 1;        /* Modulo size, flip gen. */
+>> -    atomic_set(var, idx);
+>> +    qatomic_set(var, idx);
+>>   }
+>>     static inline int32_t pvrdma_idx_ring_has_space(const struct
+>> pvrdma_ring *r,
+>>                             uint32_t max_elems, uint32_t *out_tail)
+>>   {
+>> -    const uint32_t tail = atomic_read(&r->prod_tail);
+>> -    const uint32_t head = atomic_read(&r->cons_head);
+>> +    const uint32_t tail = qatomic_read(&r->prod_tail);
+>> +    const uint32_t head = qatomic_read(&r->cons_head);
+>>         if (pvrdma_idx_valid(tail, max_elems) &&
+>>           pvrdma_idx_valid(head, max_elems)) {
+>> @@ -100,8 +100,8 @@ static inline int32_t
+>> pvrdma_idx_ring_has_space(const struct pvrdma_ring *r,
+>>   static inline int32_t pvrdma_idx_ring_has_data(const struct
+>> pvrdma_ring *r,
+>>                            uint32_t max_elems, uint32_t *out_head)
+>>   {
+>> -    const uint32_t tail = atomic_read(&r->prod_tail);
+>> -    const uint32_t head = atomic_read(&r->cons_head);
+>> +    const uint32_t tail = qatomic_read(&r->prod_tail);
+>> +    const uint32_t head = qatomic_read(&r->cons_head);
+>>         if (pvrdma_idx_valid(tail, max_elems) &&
+>>           pvrdma_idx_valid(head, max_elems)) {
+> 
+> 
+> It looks like the changes in this file are going to get reverted the
+> next time someone does a linux header sync.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
-v9: Expect and require gcc 10.
----
- tests/tcg/aarch64/bti-1.c         | 62 +++++++++++++++++++++++++++++++
- tests/tcg/aarch64/bti-crt.inc.c   | 51 +++++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |  7 ++++
- tests/tcg/configure.sh            |  4 ++
- 4 files changed, 124 insertions(+)
- create mode 100644 tests/tcg/aarch64/bti-1.c
- create mode 100644 tests/tcg/aarch64/bti-crt.inc.c
+Source code should not be at all imported from Linux.  The hacks that
+accomodate pvrdma in update-linux-headers.sh (like s/atomic_t/u32/)
+really have no place there; the files in
+include/standard-headers/drivers/infiniband/hw/vmw_pvrdma should all be
+moved in hw/.
 
-diff --git a/tests/tcg/aarch64/bti-1.c b/tests/tcg/aarch64/bti-1.c
-new file mode 100644
-index 0000000000..61924f0d7a
---- /dev/null
-+++ b/tests/tcg/aarch64/bti-1.c
-@@ -0,0 +1,62 @@
-+/*
-+ * Branch target identification, basic notskip cases.
-+ */
-+
-+#include "bti-crt.inc.c"
-+
-+static void skip2_sigill(int sig, siginfo_t *info, ucontext_t *uc)
-+{
-+    uc->uc_mcontext.pc += 8;
-+    uc->uc_mcontext.pstate = 1;
-+}
-+
-+#define NOP       "nop"
-+#define BTI_N     "hint #32"
-+#define BTI_C     "hint #34"
-+#define BTI_J     "hint #36"
-+#define BTI_JC    "hint #38"
-+
-+#define BTYPE_1(DEST) \
-+    asm("mov %0,#1; adr x16, 1f; br x16; 1: " DEST "; mov %0,#0" \
-+        : "=r"(skipped) : : "x16")
-+
-+#define BTYPE_2(DEST) \
-+    asm("mov %0,#1; adr x16, 1f; blr x16; 1: " DEST "; mov %0,#0" \
-+        : "=r"(skipped) : : "x16", "x30")
-+
-+#define BTYPE_3(DEST) \
-+    asm("mov %0,#1; adr x15, 1f; br x15; 1: " DEST "; mov %0,#0" \
-+        : "=r"(skipped) : : "x15")
-+
-+#define TEST(WHICH, DEST, EXPECT) \
-+    do { WHICH(DEST); fail += skipped ^ EXPECT; } while (0)
-+
-+
-+int main()
-+{
-+    int fail = 0;
-+    int skipped;
-+
-+    /* Signal-like with SA_SIGINFO.  */
-+    signal_info(SIGILL, skip2_sigill);
-+
-+    TEST(BTYPE_1, NOP, 1);
-+    TEST(BTYPE_1, BTI_N, 1);
-+    TEST(BTYPE_1, BTI_C, 0);
-+    TEST(BTYPE_1, BTI_J, 0);
-+    TEST(BTYPE_1, BTI_JC, 0);
-+
-+    TEST(BTYPE_2, NOP, 1);
-+    TEST(BTYPE_2, BTI_N, 1);
-+    TEST(BTYPE_2, BTI_C, 0);
-+    TEST(BTYPE_2, BTI_J, 1);
-+    TEST(BTYPE_2, BTI_JC, 0);
-+
-+    TEST(BTYPE_3, NOP, 1);
-+    TEST(BTYPE_3, BTI_N, 1);
-+    TEST(BTYPE_3, BTI_C, 1);
-+    TEST(BTYPE_3, BTI_J, 0);
-+    TEST(BTYPE_3, BTI_JC, 0);
-+
-+    return fail;
-+}
-diff --git a/tests/tcg/aarch64/bti-crt.inc.c b/tests/tcg/aarch64/bti-crt.inc.c
-new file mode 100644
-index 0000000000..47805f4e35
---- /dev/null
-+++ b/tests/tcg/aarch64/bti-crt.inc.c
-@@ -0,0 +1,51 @@
-+/*
-+ * Minimal user-environment for testing BTI.
-+ *
-+ * Normal libc is not (yet) built with BTI support enabled,
-+ * and so could generate a BTI TRAP before ever reaching main.
-+ */
-+
-+#include <stdlib.h>
-+#include <signal.h>
-+#include <ucontext.h>
-+#include <asm/unistd.h>
-+
-+int main(void);
-+
-+void _start(void)
-+{
-+    exit(main());
-+}
-+
-+void exit(int ret)
-+{
-+    register int x0 __asm__("x0") = ret;
-+    register int x8 __asm__("x8") = __NR_exit;
-+
-+    asm volatile("svc #0" : : "r"(x0), "r"(x8));
-+    __builtin_unreachable();
-+}
-+
-+/*
-+ * Irritatingly, the user API struct sigaction does not match the
-+ * kernel API struct sigaction.  So for simplicity, isolate the
-+ * kernel ABI here, and make this act like signal.
-+ */
-+void signal_info(int sig, void (*fn)(int, siginfo_t *, ucontext_t *))
-+{
-+    struct kernel_sigaction {
-+        void (*handler)(int, siginfo_t *, ucontext_t *);
-+        unsigned long flags;
-+        unsigned long restorer;
-+        unsigned long mask;
-+    } sa = { fn, SA_SIGINFO, 0, 0 };
-+
-+    register int x0 __asm__("x0") = sig;
-+    register void *x1 __asm__("x1") = &sa;
-+    register void *x2 __asm__("x2") = 0;
-+    register int x3 __asm__("x3") = sizeof(unsigned long);
-+    register int x8 __asm__("x8") = __NR_rt_sigaction;
-+
-+    asm volatile("svc #0"
-+                 : : "r"(x0), "r"(x1), "r"(x2), "r"(x3), "r"(x8) : "memory");
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index e7249915e7..491683e91d 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -25,6 +25,13 @@ run-pauth-%: QEMU_OPTS += -cpu max
- run-plugin-pauth-%: QEMU_OPTS += -cpu max
- endif
- 
-+# BTI Tests
-+ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_BTI),)
-+AARCH64_TESTS += bti-1
-+bti-%: CFLAGS += -mbranch-protection=standard
-+bti-%: LDFLAGS += -nostdlib
-+endif
-+
- # Semihosting smoke test for linux-user
- AARCH64_TESTS += semihosting
- run-semihosting: semihosting
-diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
-index be51bdb5a4..e1b70e25f2 100755
---- a/tests/tcg/configure.sh
-+++ b/tests/tcg/configure.sh
-@@ -240,6 +240,10 @@ for target in $target_list; do
-                -march=armv8.3-a -o $TMPE $TMPC; then
-                 echo "CROSS_CC_HAS_ARMV8_3=y" >> $config_target_mak
-             fi
-+            if do_compiler "$target_compiler" $target_compiler_cflags \
-+               -mbranch-protection=standard -o $TMPE $TMPC; then
-+                echo "CROSS_CC_HAS_ARMV8_BTI=y" >> $config_target_mak
-+            fi
-         ;;
-     esac
- 
--- 
-2.25.1
+Paolo

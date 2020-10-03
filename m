@@ -1,152 +1,125 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2618935lfq;
-        Sat, 3 Oct 2020 10:23:06 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyF4CCXW6XeAH+qrZ5P6GW5wcoktomsVbRhFVhMpOoFBLFPWBCTxmT0xqJK59+9JaiJyhld
-X-Received: by 2002:a25:8389:: with SMTP id t9mr10896716ybk.471.1601745785880;
-        Sat, 03 Oct 2020 10:23:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601745785; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2625709lfq;
+        Sat, 3 Oct 2020 10:34:44 -0700 (PDT)
+X-Received: by 2002:a1c:7c1a:: with SMTP id x26mr8942700wmc.112.1601746484435;
+        Sat, 03 Oct 2020 10:34:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601746484; cv=none;
         d=google.com; s=arc-20160816;
-        b=RcfV8UavOk9e8A3ehNYBteKTscqPy3nV3wZAvuCJnppGjmWUjzfX1EO05ik1fIdhOv
-         b7LuMySxRZQ0WAeOpR0EJ+dXdJoPaN4ujoOLdQcPjgQKn1e42456zR1GcL1EYEZh039O
-         64yDWcFX65anjh7cqhuUcSXE1Tj50TfqZOn7+GwaGQCuKA2D+H/J411+KY10NMGieI7f
-         9jkB0XYauT5Dra/DWphT8oO6Qm2EvVjkVro1jygVzCxYx+xQGJ4LxVtOd0N3p2D8Giux
-         ms+kuhXpzjG4X8mSEpUkilN7xIrPHnCZ38gLdXWO3hWLQER5hhtNIqgGYD0xdaXMJNj2
-         jZfw==
+        b=TBThKFtBhej0WvKGECCoEByYzbtkneVUEhsZ+mlBGB7y63JC0qEQVnT57Lg2PHK7F7
+         s7gDgWC8W9PkVPPQpyLkVcko6cCQUltXEVnbMdhaFDog5782wY1dKIg9eyIGE6eB6gm7
+         c0dD9cYi2aAUiWR88LWhANh1lBAM9CQvouGXHvdjV5U6IxcBj9Ozm72bSK3I1MhTa57I
+         OwWk/ehZc4d+HOa40/weuih43zGBtXmRhueRaTN1qoCMA4XWnPRUiMjADpUGjITctdTi
+         5s2IQBxAl3opZaa8kBRbXxIb+PVKr8CqsNLWoU1LjtwI1xe4WHpSqnmklnf6QUzsMUX5
+         zMjg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=JiOaHmztZx69QdBOi89znhr2Y++Js4D7pdtyKCX51lw=;
-        b=zoYD74JgshAlVGRcrvwF3+5JGeJzFKJj781BG5ZndkgRNMea03chhnmMpRLlAppj/H
-         9ZsEe0Z/fSXONjxIqqbwK3NLdRgKD1RaecB2iyXqSctAFYxG6UabfsYUc0TEvwOoPIXv
-         xpHUaknir5iMeGyDEgyPnfbcuxAbNOfn4qMo3lK+CGh6RFTbgpUH3vSkazSh8Q0bgCHJ
-         yifbQkKXdTN6qqfFiwABrI/aLivTUdYCHzlWhlhXytGK+2b7i2UWNntbMM5j1KrSbqAm
-         Cqr+Znt760c+lEcgvSeedmxoloyO7BknkB18iGy+WnLAfMU02YG+MPWt77wxB1fKqibB
-         vDNw==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:from:references:cc:to:subject:sender
+         :dkim-signature;
+        bh=ZJxSGf+k2fRY3+8WPoIY5XuHZfje2g9U1YdaT4hvrTI=;
+        b=Vf6zx6U9gVCVFfcPcwfsbWqZ/XMsLcU2HW+kBUrB/aLq8+jjmiFmRJ6gpDN/L4Bf+U
+         mGFAZ/Zo+RfCtbSeU5PNNOxMvj0EFkmkkMRgsrC7Is0YIVbonzzufH2wAeCAS4z6Ii7Y
+         mEmNsn0ZSk8DOl6escYva19wvkifxqzjlB0+eoX1RthR59Gw4Fsbx6ipRB3F0WWRUL8F
+         p4mOMKWqB6vy6Y9IFf1M+UXSajddrwruA2S5X7SLIau0n97KdZ3+Xdv76rnWvq123uCw
+         o1g8iW0nAwWkqs6FbwDYZb70g9SDokSCUMCM0ou/yJnY52a5VuQetBXbzS3L0bPk6PBC
+         iRag==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HZOUMSCY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z11si6068248ybk.360.2020.10.03.10.23.05
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 03 Oct 2020 10:23:05 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Lw0A0M29;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id a12sor2566901wrg.23.2020.10.03.10.34.44
+        (Google Transport Security);
+        Sat, 03 Oct 2020 10:34:44 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=HZOUMSCY;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:46406 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kOlFR-0006NY-9n
-	for alex.bennee@linaro.org; Sat, 03 Oct 2020 13:23:05 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43914)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kOlBM-0001f9-IT
- for qemu-devel@nongnu.org; Sat, 03 Oct 2020 13:18:52 -0400
-Received: from mail-oo1-xc43.google.com ([2607:f8b0:4864:20::c43]:45261)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kOlBJ-0000PH-Sg
- for qemu-devel@nongnu.org; Sat, 03 Oct 2020 13:18:52 -0400
-Received: by mail-oo1-xc43.google.com with SMTP id h8so1172860ooc.12
- for <qemu-devel@nongnu.org>; Sat, 03 Oct 2020 10:18:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=JiOaHmztZx69QdBOi89znhr2Y++Js4D7pdtyKCX51lw=;
- b=HZOUMSCY0A0SkgJCmIuglJlEP4EsiXf/i6tftEoc4QWlEyMk5d5E+Jw8cKuBTEmm0v
- gK7YpRoiAaYEpiPX5afCDuzJgFiOsV0y3+y7c5RHGBU1OfGq6lRjC5Gj+18RMjoyGjzL
- LqZPCHko2ZbGepqjcejiDIvmgPNQhfyanqyod4ZwmcQWbw6fDLpNF6upukiPHqmbVH4H
- FTH1UAilgzPNsHeoVwLtUYtIWwyb16sAw94k2r8yUwUERcgQ3B47MxdHm+UIMMK+HEl2
- pScSK7Co0iBtg4RpQcF0mbvUE7iXG1ldeZyYLgadMNjNdW4lkqDcCoUgY5/XTw6sg4e4
- IVhQ==
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=Lw0A0M29;
+       spf=pass (google.com: domain of philippe.mathieu.daude@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=philippe.mathieu.daude@gmail.com;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=sender:subject:to:cc:references:from:message-id:date:user-agent
+         :mime-version:in-reply-to:content-language:content-transfer-encoding;
+        bh=ZJxSGf+k2fRY3+8WPoIY5XuHZfje2g9U1YdaT4hvrTI=;
+        b=Lw0A0M299o8nvOY9K+SA5YnHxLbCT2Xicuq2dK7EAbekHshm4QUMKJVH1rYrRPR6Q5
+         /QSZjVq+1WjaSv8l+ersaiLga/Hk2i0bixXkRt8id4OWeNPj0LCWCTIvp0pZzh4eCL0g
+         L9sJtFSmQ9MoNoagIgmir2uMy6CRPRMNPFTkkF1bsnHbFjmkuQh9yYSsaAbn5LeevCki
+         Zha8QynRfRIMyTL6sADbnjdTUS16udVBzuPLkTyzuXcz9O3EUn3+7EYm3C7/YderWBQQ
+         vG0aTfEgXY9EDmY0MvmYgUMWIpoZxEoFD6jOr2NpqM/1HRoPRRqptAx2WRec7/uY/RRs
+         RVHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=JiOaHmztZx69QdBOi89znhr2Y++Js4D7pdtyKCX51lw=;
- b=YCOzj049c218FIVzXb9rxINs6+aIWlAsmG4h2ezdXP2xeu2o4uJN8Oy9qnIO7f20Dj
- JKn0+HL0696cAVtMkbfnHXgHZXMpKavNF08OloEXSupQN51kEiXWxudRRkJPJ51lTBGe
- Q+PCsCWZMVpUSdg+Ex+tfcuayYlU4Qm/hrJbjbGFc6F0K6KqG90lrOeMph7V18/jds44
- Hu1CWG2C2ti8HvU0PMTfM4Wb3WQc+sj6snn4ufv9IUSfXxos0v/vkXS3ktEG4CvgCYQi
- XN036VWvc6e7zhHF/dsn6pRGVYxIqc26M8iLy+1oLMHKm4VkeO8hQhtpeCl37P0liOs3
- gfrw==
-X-Gm-Message-State: AOAM531RTSUoO92t4fM/KOnFLZHcBBKNTEq/mNNEHYPp5iXqVjM1WsuW
- CO0FDIOlkzaaVE6ScfoYH3Pu1A==
-X-Received: by 2002:a05:6820:384:: with SMTP id
- r4mr6265392ooj.62.1601745528622; 
- Sat, 03 Oct 2020 10:18:48 -0700 (PDT)
-Received: from [10.10.73.179] (fixed-187-189-51-144.totalplay.net.
- [187.189.51.144])
- by smtp.gmail.com with ESMTPSA id a82sm112533oii.44.2020.10.03.10.18.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 03 Oct 2020 10:18:47 -0700 (PDT)
-Subject: Re: [PATCH v3 4/4] hw/arm/bcm2835_peripherals: Correctly wire the
- SYS_timer IRQs
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20201002164216.1741110-1-f4bug@amsat.org>
- <20201002164216.1741110-5-f4bug@amsat.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <1a762827-4d82-63c2-c3f6-3ac9475fb408@linaro.org>
-Date: Sat, 3 Oct 2020 12:18:45 -0500
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+         :date:user-agent:mime-version:in-reply-to:content-language
+         :content-transfer-encoding;
+        bh=ZJxSGf+k2fRY3+8WPoIY5XuHZfje2g9U1YdaT4hvrTI=;
+        b=R84MDyUlaUYlybeATZ24ito0fnDWCTBkqN8Uv129iXGO6+azI3fAisYqkL6OrP2+kn
+         DxilN1phUj5Tu7+2EWLlO6GdaDhysYnTgZ1Qe94BrwoUCLyst8rgIr7x07DM3J2icArB
+         yIMvavh8P8zDPo57xgw1AOR4paB7PWSl3j1+pH3O8CjIZeYISXxGHt4dr5mI0BRI3FWg
+         lZrjRaX2nXjVb6uYcIHVjafEOOTGJX9ItuqGyGnrVHu02HiXDk5D8Z2teCHOalnKXgnx
+         nv+hTxWGHGOgutcMijlKANr+0+wU8Cth7oXWP2zSNiWzNEFFEPgescEjliIQ0h2NNcG+
+         nxiA==
+X-Gm-Message-State: AOAM533aSKacFwxgSdZemkfarYsyHmhpNwq1lpK4D9xWh4fDXayEf5Ns
+	chbFr3hOKeondTa9umHs0uNeFlCSLls=
+X-Google-Smtp-Source: ABdhPJx4ZGVnd8h3kyZsTfkBc/iCQFIPM4hju5UCCyR9VTkgtlECuGKO4rrNQyr14nnQXlBbmpUuPw==
+X-Received: by 2002:adf:f643:: with SMTP id x3mr2022034wrp.180.1601746484193;
+        Sat, 03 Oct 2020 10:34:44 -0700 (PDT)
+Return-Path: <philippe.mathieu.daude@gmail.com>
+Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net. [83.53.161.74])
+        by smtp.gmail.com with ESMTPSA id u15sm5676629wml.21.2020.10.03.10.34.43
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Sat, 03 Oct 2020 10:34:43 -0700 (PDT)
+Sender: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philippe.mathieu.daude@gmail.com>
+Subject: Re: [PATCH v10 4/8] linux-user/elfload: Fix coding style in
+ load_elf_image
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, alex.bennee@linaro.org,
+ laurent@vivier.eu
+References: <20201002215955.254866-1-richard.henderson@linaro.org>
+ <20201002215955.254866-5-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <96bd930b-e11c-150c-b4ab-670cd8f46aa6@amsat.org>
+Date: Sat, 3 Oct 2020 19:34:42 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201002164216.1741110-5-f4bug@amsat.org>
+In-Reply-To: <20201002215955.254866-5-richard.henderson@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c43;
- envelope-from=richard.henderson@linaro.org; helo=mail-oo1-xc43.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.252,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Luc Michel <luc.michel@greensocs.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 4xfF59o2jjk7
+X-TUID: l3sB65249UR7
 
-On 10/2/20 11:42 AM, Philippe Mathieu-Daudé wrote:
-> The SYS_timer is not directly wired to the ARM core, but to the
-> SoC (peripheral) interrupt controller.
+On 10/2/20 11:59 PM, Richard Henderson wrote:
+> Fixing this now will clarify following patches.
 > 
-> Fixes: 0e5bbd74064 ("hw/arm/bcm2835_peripherals: Use the SYS_timer")
-> Reviewed-by: Luc Michel <luc.michel@greensocs.com>
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
 > ---
->  hw/arm/bcm2835_peripherals.c | 13 +++++++++++--
->  1 file changed, 11 insertions(+), 2 deletions(-)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
+>  linux-user/elfload.c | 12 +++++++++---
+>  1 file changed, 9 insertions(+), 3 deletions(-)
+> 
+> diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+> index f6022fd704..7572a32a30 100644
+> --- a/linux-user/elfload.c
+> +++ b/linux-user/elfload.c
+> @@ -2531,9 +2531,15 @@ static void load_elf_image(const char *image_name, int image_fd,
+>              abi_ulong vaddr, vaddr_po, vaddr_ps, vaddr_ef, vaddr_em, vaddr_len;
+>              int elf_prot = 0;
+>  
+> -            if (eppnt->p_flags & PF_R) elf_prot =  PROT_READ;
+> -            if (eppnt->p_flags & PF_W) elf_prot |= PROT_WRITE;
+> -            if (eppnt->p_flags & PF_X) elf_prot |= PROT_EXEC;
+> +            if (eppnt->p_flags & PF_R) {
+> +                elf_prot |= PROT_READ;
+> +            }
+> +            if (eppnt->p_flags & PF_W) {
+> +                elf_prot |= PROT_WRITE;
+> +            }
+> +            if (eppnt->p_flags & PF_X) {
+> +                elf_prot |= PROT_EXEC;
+> +            }
+>  
+>              vaddr = load_bias + eppnt->p_vaddr;
+>              vaddr_po = TARGET_ELF_PAGEOFFSET(vaddr);
+> 

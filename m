@@ -1,108 +1,91 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1693582lfq;
-        Thu, 8 Oct 2020 14:13:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzq2K2amIxLmpDopFt7+zORuigxYpe6IB59KuTntNEP1xsavCK8BOhsXEKcHKww7eiHvWUp
-X-Received: by 2002:a25:3a45:: with SMTP id h66mr13211614yba.509.1602191608584;
-        Thu, 08 Oct 2020 14:13:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602191608; cv=none;
-        d=google.com; s=arc-20160816;
-        b=rIP1WV7/RsiHBml4jBmdlU7YzXFIKqodMEpSYhnG0nDm+kjmBFrc2Gs6sD0hze8jLo
-         5h0WTWrCB/s8PUy3O0Rm409SYI6PsN2lHqV7P5vknLKbkhxDlcGpCs5xm7FScaMYGLAs
-         7NctkoT+gv7HfJl4ZZq280Gb5GoQnR/UUALv62o6Ec1KOgdWglIQa+W/oIABUTbjybFV
-         pf90+WE2NXpGObIaXh1p3H3MrR2eBmAOavxlLt1VJnI5ypPgG86iK1Dh3k89f99xmIpr
-         gZtllXnF1ebF5631Yti5h1IDs/8X4XrvzKWy+VkveFRUQrMbqNLpL6urWq+40MAGAmeu
-         Tamg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=6VdFhlJc8TU7Vq5uGZRsBNTyQN4fCKJTTZ+eyEy8gXk=;
-        b=mEPzIOyNXTfPzXC8XLOtQrob6Stqvm2CbqaE86eB1ywWC7jc7JJPHS0tcQdz1NaLcS
-         O53jAP7Nm5nzvSIAUdSP3bCL56a8eOdSJunE7L/JJiUP0xE7nxlTt8MwFTFZwroWIQNs
-         XDrUIugu2CzSzG1uxDHXq/n2eXEe1NDi/NjulIAs02fgZO5dDINLVzlPVeSCjJggmWWf
-         Fs7GKp6Z0FbUIbnTI2zVOanJKxshlLC8xWxu4nlUH6yv9fSq9hyMa1IQz6FuSw9V09z6
-         sJPqWzcli9q7aeM1fD4hEOPls4wUwG3cayhRly+oWqBCZwZTvMlWfc/aLVq/DienpGA0
-         NfNg==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Tr5T0g0C;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3364906lfq;
+        Sun, 4 Oct 2020 11:37:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwixiqgjEXrRkM/kjTtlzWI/bHYfGuurJ4bIe7tVsByMCkb3dGtZbGIYc41VFcrskDxf2Aj
+X-Received: by 2002:a25:1f84:: with SMTP id f126mr14578062ybf.192.1601836626216;
+        Sun, 04 Oct 2020 11:37:06 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d129si5190416ybh.40.2020.10.08.14.13.28
+        by mx.google.com with ESMTPS id 66si8930764ybe.18.2020.10.04.11.37.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Oct 2020 14:13:28 -0700 (PDT)
+        Sun, 04 Oct 2020 11:37:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Tr5T0g0C;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=N2WXytjP;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:43976 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:44080 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQdE8-0008EE-09
-	for alex.bennee@linaro.org; Thu, 08 Oct 2020 17:13:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50834)
+	id 1kP8sb-0000UY-I2
+	for alex.bennee@linaro.org; Sun, 04 Oct 2020 14:37:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kQdDu-0008DM-N2
- for qemu-arm@nongnu.org; Thu, 08 Oct 2020 17:13:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:58845)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
- id 1kQdDq-0003Rc-3q
- for qemu-arm@nongnu.org; Thu, 08 Oct 2020 17:13:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602191584;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kP8rz-0000UI-2b; Sun, 04 Oct 2020 14:36:28 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:43512)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kP8rw-0003Nz-O9; Sun, 04 Oct 2020 14:36:26 -0400
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 863E8C60F16;
+ Sun,  4 Oct 2020 18:36:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1601836579;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6VdFhlJc8TU7Vq5uGZRsBNTyQN4fCKJTTZ+eyEy8gXk=;
- b=Tr5T0g0CQPHY2QK1xr9Bh1vCbMH6CRbYhTi1XISZ1EF7oFFQR6uLvRJOUqey3wEAxL+Kax
- C+egndm9Ao/+K4EVcJUY9lthjCqa6S5tiQBBBBFAOJqT+9dlgww4tZKSI3klmWe+PFVf6O
- M4JCw6xWHxIX9IlBIA/tpaKceLuMGuo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-335-c8N2hFP3OMGnWxstIt1CHg-1; Thu, 08 Oct 2020 17:13:02 -0400
-X-MC-Unique: c8N2hFP3OMGnWxstIt1CHg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 3B41A64145;
- Thu,  8 Oct 2020 21:13:01 +0000 (UTC)
-Received: from kamzik.brq.redhat.com (unknown [10.40.192.139])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 77CC35D9E8;
- Thu,  8 Oct 2020 21:12:57 +0000 (UTC)
-Date: Thu, 8 Oct 2020 23:12:54 +0200
-From: Andrew Jones <drjones@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: Re: [PATCH v4 6/6] hw/arm/virt: Implement kvm-steal-time
-Message-ID: <20201008211254.pnbmwfanbor3pgv6@kamzik.brq.redhat.com>
-References: <20201001061718.101915-1-drjones@redhat.com>
- <20201001061718.101915-7-drjones@redhat.com>
- <CAFEAcA-ZwwzrjPjsaGJbwW-y0g+j-usk25f1hiFVadaS74Nv+w@mail.gmail.com>
+ bh=oYrPmGapUrL8sbllpEjU/XZ4BAVyq3utolvb2tZ2CQU=;
+ b=N2WXytjPhf9ZiqjlGepmRjdDkLbJMKmCBcAHzbS8qfZcENekLuY8I+MkUBFxPORetBLMVy
+ FRPmN63Z/s2cmtQGK8f9IwUchTnvo9Mb1YL1y/G99j5Nh6Q+PQCqGBOPoWBzxXMSzC3GVx
+ npxILmZd6G1BX6U3/OFcFWASG1PvneMQp1varXqnNDG0IliHOyfxVlp1coNjc2OZONQa5n
+ cDplVEjDAyso4Ho1NWN+VlqJHb8L+95QJud2pCFW+SXJSFC2nSfiWYceRoI0g2rYiramA2
+ ep9Mn1YO9LBY/NyKdkTHMIR7K0+rBsQ4lV/o6KgqJeoBhCsExv6CL/8HTXSUEA==
+Date: Sun, 4 Oct 2020 20:37:19 +0200
+From: Luc Michel <luc@lmichel.fr>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 10/14] hw/misc/bcm2835_cprman: implement clock mux
+ behaviour
+Message-ID: <20201004183719.m3tsetxcgvc5ea2m@sekoia-pc.home.lmichel.fr>
+References: <20200925101731.2159827-1-luc@lmichel.fr>
+ <20200925101731.2159827-11-luc@lmichel.fr>
+ <76aae8af-dff0-b76f-cf04-0e3231eaf2bb@amsat.org>
+ <2ca8802e-3295-bd22-e705-931ae8dbbd1d@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA-ZwwzrjPjsaGJbwW-y0g+j-usk25f1hiFVadaS74Nv+w@mail.gmail.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/08 02:56:27
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <2ca8802e-3295-bd22-e705-931ae8dbbd1d@amsat.org>
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
+ s=pharaoh; t=1601836579;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oYrPmGapUrL8sbllpEjU/XZ4BAVyq3utolvb2tZ2CQU=;
+ b=SXe2tJozztdlXfHaThnIncvtgJTXXjP2Djg3jMntdui+7wMRfsv/QIOV3Eqzcn5Rqks/wu
+ WjjX6xo0j1vHQAgXO9fGYxl+fa71icmlwvINGh5hJ11wrU8CZgV5Fyplj//RWz9EmcIGlS
+ DmbrdJ1PM312yl67nbd0sgprXSYW4J1ebVGyg2aSErGr0z7bs4aeVOUI69PX1JgI8G5dBw
+ Q+p9j88tuHkjKjHEeY6FPgZGq5eWMmpQqvH8WsmXs0bOa2TaDKJNm/ecu5I0L/dd4dCXXq
+ dKDuxoYzZBybdJIqzMOFSbP5QbrbJaJNj2KZomIJJdgDlDcm39bd9M3Tr0yz0w==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601836579; a=rsa-sha256; cv=none;
+ b=caikVKz2or3ZkhbvaBRVRYr9A9BZj9e/sQbDkie+2Y5IKtfLFnESivxZsqU/nP47golzn7Y/OYWpBw6kJuBtzAyIRO4J3wMYBoJaUnKbJ+6sSvDRplkfV+6gOlVLz9ORWxep1UXQjN6FDeVrxGpTVx6bPdzbLQVhsDkIhbfY91tBAf9zgV1Mmxn2p1q0FRj5Kl/blJcAVoMDxARIBbIDOeiOAeYpNawJUaU8Tj3gl/AV3+vHlHaGUNg16d/d+HPhyeB16Qsxg4IBmqxgNmwNVFGkK2RpY2vQxYiFcDl0GlNLQ0bk0QzUvqxIpIrCFvdxj/GW7E85EW7Wo892X+ZQbg==
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=sekoia smtp.mailfrom=luc@lmichel.fr
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/04 14:36:20
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,59 +98,128 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GCOex4CmhsZN
+X-TUID: G9g3UNHQzDHr
 
-Hi Peter,
+On 16:51 Fri 02 Oct     , Philippe Mathieu-Daudé wrote:
+> On 9/26/20 11:40 PM, Philippe Mathieu-Daudé wrote:
+> > On 9/25/20 12:17 PM, Luc Michel wrote:
+> >> A clock mux can be configured to select one of its 10 sources through
+> >> the cm_ctl register. It also embeds yet another clock divider, composed
+> >> of an integer part and a fractionnal part. The number of bits of each
+> > 
+> > Typo "fractional".
+> > 
+> >> part is mux dependant.
+> > 
+> > Typo "dependent"?
+> > 
+> >>
+> >> Signed-off-by: Luc Michel <luc@lmichel.fr>
+> >> ---
+> >>  hw/misc/bcm2835_cprman.c | 43 +++++++++++++++++++++++++++++++++++++++-
+> >>  1 file changed, 42 insertions(+), 1 deletion(-)
+> >>
+> >> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+> >> index 8df2db0fd9..75bc11939b 100644
+> >> --- a/hw/misc/bcm2835_cprman.c
+> >> +++ b/hw/misc/bcm2835_cprman.c
+> >> @@ -229,19 +229,60 @@ static const TypeInfo cprman_pll_channel_info = {
+> >>  };
+> >>  
+> >>  
+> >>  /* clock mux */
+> >>  
+> >> +static bool clock_mux_is_enabled(CprmanClockMuxState *mux)
+> >> +{
+> >> +    return FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, ENABLE);
+> >> +}
+> >> +
+> >>  static void clock_mux_update(CprmanClockMuxState *mux)
+> >>  {
+> >> -    clock_update(mux->out, 0);
+> >> +    uint64_t freq, div;
+> >> +    uint32_t src = FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, SRC);
+> >> +    bool enabled = clock_mux_is_enabled(mux);
+> >> +
+> >> +    *mux->reg_cm = FIELD_DP32(*mux->reg_cm, CM_CLOCKx_CTL, BUSY, enabled);
+> >> +
+> >> +    if (!enabled) {
+> >> +        clock_update(mux->out, 0);
+> >> +        return;
+> >> +    }
+> >> +
+> >> +    freq = clock_get_hz(mux->srcs[src]);
+> >> +
+> >> +    if (mux->int_bits == 0 && mux->frac_bits == 0) {
+> >> +        clock_update_hz(mux->out, freq);
+> >> +        return;
+> >> +    }
+> >> +
+> >> +    /*
+> >> +     * The divider has an integer and a fractional part. The size of each part
+> >> +     * varies with the muxes (int_bits and frac_bits). Both parts are
+> >> +     * concatenated, with the integer part always starting at bit 12.
+> >> +     */
+> >> +    div = mux->reg_cm[1] >> (R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits);
+> >> +    div &= (1 << (mux->int_bits + mux->frac_bits)) - 1;
+> 
+> Eventually:
+> 
+>     div &= MAKE_64BIT_MASK(mux->int_bits + mux->frac_bits, 64);
+I think this is MAKE_64BIT_MASK(0, mux->int_bits + mux->frac_bits)
+(The shift macro parameter is 0 to have the ones positioned at the
+mask's LSBs.
+I'll use this macro in my next re-roll.
 
-Thanks for fixing this up and applying!
+> 
+> >> +
+> >> +    freq = (freq << mux->frac_bits) / div;
+> 
+> Maybe:
+> 
+>     freq = muldiv64(freq, 1 << mux->frac_bits, div);
+OK
 
-drew
+> 
+> >> +
+> >> +    clock_update_hz(mux->out, freq);
+> >>  }
+> >>  
+> >>  static void clock_mux_src_update(void *opaque)
+> >>  {
+> >>      CprmanClockMuxState **backref = opaque;
+> >>      CprmanClockMuxState *s = *backref;
+> >> +    CprmanClockMuxSource src = backref - s->backref;
+> >> +    uint32_t current_src;
+> 
+> Maybe avoid current_src and use in place.
+OK
 
-On Thu, Oct 08, 2020 at 09:39:59PM +0100, Peter Maydell wrote:
-> On Thu, 1 Oct 2020 at 07:17, Andrew Jones <drjones@redhat.com> wrote:
-> >
-> > We add the kvm-steal-time CPU property and implement it for machvirt.
-> > A tiny bit of refactoring was also done to allow pmu and pvtime to
-> > use the same vcpu device helper functions.
 > 
-> > +            if (pvtime_size > pvtime_reg_size) {
-> > +                error_report("pvtime requires a %ld byte memory region for "
-> > +                             "%d CPUs, but only %ld has been reserved",
-> > +                             pvtime_size, max_cpus, pvtime_reg_size);
-> > +                exit(1);
-> > +            }
-> 
-> This turns out not to compile on Windows:
-> 
-> ../../hw/arm/virt.c:1693:30: error: format '%ld' expects argument of
-> type 'long int', but argument 2 has type 'hwaddr {aka long long
-> unsigned int}' [-Werror=format=]
->                  error_report("pvtime requires a %ld byte memory region for "
->                               ^
-> 
-> I'm going to squash this fix into the pullreq:
-> 
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -1690,8 +1690,9 @@ static void virt_cpu_post_init(VirtMachineState
-> *vms, int max_cpus,
->              pvtime_size = REAL_HOST_PAGE_ALIGN(pvtime_size);
-> 
->              if (pvtime_size > pvtime_reg_size) {
-> -                error_report("pvtime requires a %ld byte memory region for "
-> -                             "%d CPUs, but only %ld has been reserved",
-> +                error_report("pvtime requires a %" HWADDR_PRId
-> +                             " byte memory region for %d CPUs,"
-> +                             " but only %" HWADDR_PRId " has been reserved",
->                               pvtime_size, max_cpus, pvtime_reg_size);
->                  exit(1);
->              }
-> 
-> thanks
-> -- PMM
->
+> Otherwise:
+> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Thanks !
 
+-- 
+Luc
+
+> 
+> >> +
+> >> +    current_src = FIELD_EX32(*s->reg_cm, CM_CLOCKx_CTL, SRC);
+> >> +
+> >> +    if (current_src != src) {
+> >> +        return;
+> >> +    }
+> >>  
+> >>      clock_mux_update(s);
+> >>  }
+> >>  
+> >>  static void clock_mux_init(Object *obj)
+> >>
+> > 
+
+-- 

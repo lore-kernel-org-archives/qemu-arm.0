@@ -1,55 +1,55 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp56624lfq;
-        Mon, 5 Oct 2020 13:20:13 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwsB8DZHply6ZjMR0/XqoryMEA6fgylBcchro/ieQx42t0iiYOw/zzxVCki39cVEUjxeKtE
-X-Received: by 2002:a25:168a:: with SMTP id 132mr2309513ybw.299.1601929213361;
-        Mon, 05 Oct 2020 13:20:13 -0700 (PDT)
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp56875lfq;
+        Mon, 5 Oct 2020 13:20:38 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxn6Pu3HQ3UEMyXNEKEfdIYOPybzCaqmCZXQJgUTCDNqKtG055xsG6L6K7+xGsoTK3m23Lk
+X-Received: by 2002:a25:aba1:: with SMTP id v30mr2464946ybi.518.1601929238375;
+        Mon, 05 Oct 2020 13:20:38 -0700 (PDT)
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 131si967790ybt.108.2020.10.05.13.20.13
+        by mx.google.com with ESMTPS id f197si880826yba.276.2020.10.05.13.20.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 13:20:13 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 Oct 2020 13:20:38 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=Mywm6ZpD;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=NSIREmTx;
        arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:37436 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40700 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPWxw-0004Av-La
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:20:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57682)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kPWyL-0005Wz-N6
+	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:20:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57844)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWZr-00040n-Iq; Mon, 05 Oct 2020 15:55:19 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:35790)
+ id 1kPWaH-0004y7-TG; Mon, 05 Oct 2020 15:55:45 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:35982)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWZo-0007S2-Po; Mon, 05 Oct 2020 15:55:19 -0400
+ id 1kPWaG-0007ZX-14; Mon, 05 Oct 2020 15:55:45 -0400
 Received: from sekoia-pc.home.lmichel.fr (sekoia-pc.home.lmichel.fr
  [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPS id 9EFC4C60F1B;
- Mon,  5 Oct 2020 19:55:14 +0000 (UTC)
+ by pharaoh.lmichel.fr (Postfix) with ESMTPS id 006A1C60F1B;
+ Mon,  5 Oct 2020 19:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1601927714;
+ t=1601927720;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2YvRWU8Q71r/HodOj2Tq1W8QbOOySWrqCTp2w6lz2kQ=;
- b=Mywm6ZpDAbIthRVxtnIwbd1hq9qx8M3cIHlhxLekBXVSs2dJxonj3ocI9Wy3x9Ul/d/8dK
- zLFwQ2MBcKIITLkMaSillQLAO0v1N2NzrGU5ybyuV04vtBtQie1+xC6XH+Cakgub6r+aqd
- 6Ypk/WgAHq1KT3hAtHIxABa+9p/DcjQqkd6chOPw+VmCyznBEG18oiJiwSzj3c5LohU+WR
- RSUH0jfo2LKe5T+paNH76M2PafpugB9l3ONcGvyvhD9fURR5JcvfE1nvQhjoOpk1aXJt0d
- dMnLpJqmuWyQH5vo2zBk/7saX/RZao9HeecIW+qaksdtzuOgrJdjVa8QX0Wbpw==
+ bh=sXZbbcIcfJa9fmuyQ/jkFubTz3/tLARdyvfrI2boCtg=;
+ b=NSIREmTxom20lxgcpeVoX620QlQ+XM9XQnrLwl0sdMgU5dQOIYwd3QfInbt+Wv11H2VNjX
+ r4OkHA/a9ZVi/QlmpCeptTF9iMyZEMoPqSV96mY5UcWeX8USz4cFX2SAX0mmUUjCWJZfi3
+ sTfrvXnDMROEnkBFPXtW9SX6IgKosRcMKYUjExA2q+MXhIJxIBpEfWp0lufCWnSh5lDwtq
+ TUQu28CyjPYGCE/JESCKTxqtsGvS0NZ3D5uzSfTmTQU8EAj5xB7EhQYH8l/JFHSAnyou78
+ vE3T7Df5zf+ren8ROQjDXpoP1qa/S26/cy1xG2Fj8cUJ2Ix4e8sBsfEQGrqdlQ==
 From: Luc Michel <luc@lmichel.fr>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 03/15] hw/core/clock: add the clock_new helper function
-Date: Mon,  5 Oct 2020 21:56:00 +0200
-Message-Id: <20201005195612.1999165-4-luc@lmichel.fr>
+Subject: [PATCH v2 11/15] hw/misc/bcm2835_cprman: implement clock mux behaviour
+Date: Mon,  5 Oct 2020 21:56:08 +0200
+Message-Id: <20201005195612.1999165-12-luc@lmichel.fr>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201005195612.1999165-1-luc@lmichel.fr>
 References: <20201005195612.1999165-1-luc@lmichel.fr>
@@ -57,20 +57,20 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1601927714;
+ s=pharaoh; t=1601927720;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2YvRWU8Q71r/HodOj2Tq1W8QbOOySWrqCTp2w6lz2kQ=;
- b=euQcevv4jynwm0+jfP9KKIrNU4Y01UbJTG0h4lXLD49juT4KstHkr2IMk0tjB9BZhuyXMa
- OVFwczELmt1pV04A1N93dJqB0AUDEwcvyWxUptTrnt9EuLVt6gTNADKlS1wR3N5/yxHDWu
- wZR8hHeRr2BmrlIAD5uIHCWpq6p4Wmm47ptOsn7PGxCRkhCC81U0KHigaOA8QaXtEF7U0P
- 12uh9vyGWldEJbkENCAUdQpRx5oBuZ3TkhrD7yg89u5y2aKTRlvKUYZSSI1ZkCOOseX1O5
- Rbhi95YzlE6WhPrTcOGiwSEL0e9MPXLK6HYkG5n1dbrDAkk17tZFD5PkutskCQ==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927714; a=rsa-sha256; cv=none;
- b=azX0yWmV/MrtJ1Cez+JfxoYNRUCJ5bwfr8vVNnDsQOxzETU6YJW4npnYD7ODeqrqXe1Pz8NCoreNqlMLOxUSSapTTb3M6lNQsn3bpXH0CLzoxT/Vuiga8Lwvht4iCIox19hbGNda6Jj45xd25XncfmIEex5U9UVIVkYQ+oyvhUHgTX3TR9J3UZ+SrFPvaB0apbDWT7FLAcSZaO7ArmHueknhIu2JBV6N9twd/8p2NDJFE1pkG7V9JWEWRp333Mb5Gu3+bW1v92PRnBP6UoGut9F8+Tkm3qONeW8ae+/CvgEp1ChBrmSk43IlDJgtGDETkFTs0neGwWJcrNKbiHhy6g==
+ bh=sXZbbcIcfJa9fmuyQ/jkFubTz3/tLARdyvfrI2boCtg=;
+ b=cuaktJghC3KIS8Q4gEWOvwQ7F8Ez/oG/QosnmU1raegC/jsWJyeRW9lSO54XmKL5oMJ7d8
+ MkKLzdG1qClFzkTNCwPYAIiNehdIhwnlelSwCvIqz9ihU1TBPHL73ctKNb/T8Yy4vP9IZe
+ unTM4vziHQ8M7T3UwUsjv0oEoaKGhQQbIi3TB/r1kPcW1cqcphmme/k3t8tEQJY0Rd7Lu1
+ ONwE+zPGfHCtY4QlzH4yBYo4ZQ5Fb9ZNltkkiBY/ERwxmV2+ts8UyOTdW7ejktZq4PuYz6
+ RxY9usIA+wp0VqYOzPmvZRIrJ+TY6cDY9zpW/LCjgIs5AjJNr213xVTt/sHUKg==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927720; a=rsa-sha256; cv=none;
+ b=EeNOZrywYdSfvZajZ+tAE07XNrtZDue3TqKIMOmgUARksP12jX72OWOCj5759fuKT7DPYh/z67cw6zvhfguCSlSbVrtl8Ms7q1wMRiwPEX5FrxO0Tm3tC8Ij7oIhda7KVUgLiT4UAAjWL4Mv0laHSyYe5f4TzOTTdnv35PzrFdVsoxRCs4rm12hM43sp6+aifBWma6/t2BcVjGBih/Xt2aEjT32ogiV7zMHlXZ5veN06C/j0mpr3qtaR84luH5+4m0KCTcB0QSVJnBfdG7ychQ9eRiBStBgLN2XlW26cw25IFudOje3LhY72w/tYzQOs8VR/g81eJVdZ/GpvoBfoeQ==
 ARC-Authentication-Results: i=1;
 	pharaoh.lmichel.fr
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
@@ -84,82 +84,105 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Paul Zimmerman <pauldzim@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  Havard Skinnemoen <hskinnemoen@google.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZeFScWI+O13b
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: pzxDurU1GeqE
 
-This function creates a clock a parent it to another object with a given
-name. It calls clock_setup_canonical_path before returning the new
-clock.
+A clock mux can be configured to select one of its 10 sources through
+the CM_CTL register. It also embeds yet another clock divider, composed
+of an integer part and a fractional part. The number of bits of each
+part is mux dependent.
 
-This function is useful to create clocks in devices when one doesn't
-want to expose it at the qdev level (as an input or an output).
-
-Suggested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Luc Michel <luc@lmichel.fr>
 ---
- include/hw/clock.h | 26 ++++++++++++++++++++++++++
- 1 file changed, 26 insertions(+)
+ hw/misc/bcm2835_cprman.c | 44 +++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 43 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/clock.h b/include/hw/clock.h
-index c93e6113cd..a67c4c008b 100644
---- a/include/hw/clock.h
-+++ b/include/hw/clock.h
-@@ -93,10 +93,36 @@ extern const VMStateDescription vmstate_clock;
-  *
-  * compute the canonical path of the clock (used by log messages)
-  */
- void clock_setup_canonical_path(Clock *clk);
+diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+index a470ce2026..7d59423367 100644
+--- a/hw/misc/bcm2835_cprman.c
++++ b/hw/misc/bcm2835_cprman.c
+@@ -229,19 +229,61 @@ static const TypeInfo cprman_pll_channel_info = {
+ };
  
-+/**
-+ * clock_new:
-+ * @parent: the clock parent
-+ * @name: the clock object name
-+ *
-+ * Helper function to create a new clock and parent it to @parent. There is no
-+ * need to call clock_setup_canonical_path on the returned clock as it is done
-+ * by this function.
-+ *
-+ * @return the newly created clock
-+ */
-+static inline Clock *clock_new(Object *parent, const char *name)
+ 
+ /* clock mux */
+ 
++static bool clock_mux_is_enabled(CprmanClockMuxState *mux)
 +{
-+    Object *obj;
-+    Clock *clk;
-+
-+    obj = object_new(TYPE_CLOCK);
-+    object_property_add_child(parent, name, obj);
-+    object_unref(obj);
-+
-+    clk = CLOCK(obj);
-+    clock_setup_canonical_path(clk);
-+
-+    return clk;
++    return FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, ENABLE);
 +}
 +
- /**
-  * clock_set_callback:
-  * @clk: the clock to register the callback into
-  * @cb: the callback function
-  * @opaque: the argument to the callback
+ static void clock_mux_update(CprmanClockMuxState *mux)
+ {
+-    clock_update(mux->out, 0);
++    uint64_t freq;
++    uint32_t div, src = FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, SRC);
++    bool enabled = clock_mux_is_enabled(mux);
++
++    *mux->reg_cm = FIELD_DP32(*mux->reg_cm, CM_CLOCKx_CTL, BUSY, enabled);
++
++    if (!enabled) {
++        clock_update(mux->out, 0);
++        return;
++    }
++
++    freq = clock_get_hz(mux->srcs[src]);
++
++    if (mux->int_bits == 0 && mux->frac_bits == 0) {
++        clock_update_hz(mux->out, freq);
++        return;
++    }
++
++    /*
++     * The divider has an integer and a fractional part. The size of each part
++     * varies with the muxes (int_bits and frac_bits). Both parts are
++     * concatenated, with the integer part always starting at bit 12.
++     */
++    div = mux->reg_cm[1] >> (R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits);
++    div &= (1 << (mux->int_bits + mux->frac_bits)) - 1;
++
++    if (!div) {
++        clock_update(mux->out, 0);
++    }
++
++    freq = muldiv64(freq, 1 << mux->frac_bits, div);
++
++    clock_update_hz(mux->out, freq);
+ }
+ 
+ static void clock_mux_src_update(void *opaque)
+ {
+     CprmanClockMuxState **backref = opaque;
+     CprmanClockMuxState *s = *backref;
++    CprmanClockMuxSource src = backref - s->backref;
++
++    if (FIELD_EX32(*s->reg_cm, CM_CLOCKx_CTL, SRC) != src) {
++        return;
++    }
+ 
+     clock_mux_update(s);
+ }
+ 
+ static void clock_mux_init(Object *obj)
 -- 
 2.28.0
 

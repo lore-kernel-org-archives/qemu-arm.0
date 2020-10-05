@@ -1,56 +1,55 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp58863lfq;
-        Mon, 5 Oct 2020 13:23:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyEQyS738NmffNTile1DnkOLKOO82s8UT5fMyXYdsaqk0ZT0bJgqH9pB6BBLgqqkpk4qNdI
-X-Received: by 2002:a25:d34b:: with SMTP id e72mr2223617ybf.167.1601929433920;
-        Mon, 05 Oct 2020 13:23:53 -0700 (PDT)
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp60861lfq;
+        Mon, 5 Oct 2020 13:27:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJykEnCTr+dBa7oOtf+4rkYUikoGC6qyMuaRJ7K2HqkEqkZaSQl1GIwX8N87l/TyHc92YAgp
+X-Received: by 2002:a25:8505:: with SMTP id w5mr2143304ybk.486.1601929631721;
+        Mon, 05 Oct 2020 13:27:11 -0700 (PDT)
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c184si855943ybf.140.2020.10.05.13.23.53
+        by mx.google.com with ESMTPS id s12si1144196ybk.84.2020.10.05.13.27.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 13:23:53 -0700 (PDT)
+        Mon, 05 Oct 2020 13:27:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=GDEA92JF;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=PVf0faXM;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:47692 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58186 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPX1V-00004w-74
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:23:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57760)
+	id 1kPX4h-0004Y2-1y
+	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:27:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57898)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWZx-00049z-B5; Mon, 05 Oct 2020 15:55:25 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:35938)
+ id 1kPWaJ-00052Q-MQ; Mon, 05 Oct 2020 15:55:47 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:35984)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWZu-0007Wq-Fh; Mon, 05 Oct 2020 15:55:24 -0400
+ id 1kPWaG-0007Zn-NU; Mon, 05 Oct 2020 15:55:47 -0400
 Received: from sekoia-pc.home.lmichel.fr (sekoia-pc.home.lmichel.fr
  [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPS id A3659C60F20;
- Mon,  5 Oct 2020 19:55:15 +0000 (UTC)
+ by pharaoh.lmichel.fr (Postfix) with ESMTPS id 5C13CC60F25;
+ Mon,  5 Oct 2020 19:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1601927715;
+ t=1601927720;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=g9qLCcBY4noWNDZEFR7O5gq5n2c/yZEP8cmmEnoo4i4=;
- b=GDEA92JFl1OYiixtOhsxqFbf0uocaBz1I0xtrenF3KWyamTGwSSIQG1nDx59CVPktbqj3x
- CPVUunT96Xgy9PcZfu6gkd1CVplcnSYggdpRHHjLxTPmiBxv4fqGfD65D6+Znd4fHcj18e
- NYxjhPCsPam81GxDfvA4XCEIa7zBYhX4UKjrslTCVRmaa7i2sbRx69X6hhEiFwTMt49Gmp
- jcd9MZiSMYPvu/vurXoghzip+TnE0Su4YpNZmlzkfXo+bNYjwB3BR0BWqiyO2q7VB21t40
- FQ9JNFtx4+bxdA7FTpy1ExCznN6ZMumkGVBpjYYe1t423WnkWhH3Qentr+JvYQ==
+ bh=MO0Muj7yuPd6SWwH9hfY/l2s1zABrTHCErTOwR/d+QM=;
+ b=PVf0faXMbJklfb6mQG8L+Ri+8I1NBUCQZLK6fTGCaI9QHhUFDjc6WXjUzy4tumRzANqUBS
+ /jAFyFPGzOABEg9GBdTMPqMq3NyVJYexJzda4ducYoYLY8ReWw5bwGPLrJ4LNzZfySpk7j
+ tRh6lRcZLgkxbezURqK28Nw+4DGfSX4G/eEhDoWg6tM+ajqSn9yfNZkqPtT9hdJRv6IRnS
+ 6KWdo1X7KIMQ3EN5/es7/Xeq4RGpGKTW16I+obyOb/jlkzzW+53xVZ4+SOrqc1+zHc/77s
+ E9sHX+pw4AZzgFkTq3d6GgRX07bHF3VqSjGQW4EZuBqp1qY67vTkVyHAQv3a6A==
 From: Luc Michel <luc@lmichel.fr>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 08/15] hw/misc/bcm2835_cprman: add a PLL channel skeleton
- implementation
-Date: Mon,  5 Oct 2020 21:56:05 +0200
-Message-Id: <20201005195612.1999165-9-luc@lmichel.fr>
+Subject: [PATCH v2 14/15] hw/char/pl011: add a clock input
+Date: Mon,  5 Oct 2020 21:56:11 +0200
+Message-Id: <20201005195612.1999165-15-luc@lmichel.fr>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201005195612.1999165-1-luc@lmichel.fr>
 References: <20201005195612.1999165-1-luc@lmichel.fr>
@@ -58,20 +57,20 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1601927715;
+ s=pharaoh; t=1601927720;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=g9qLCcBY4noWNDZEFR7O5gq5n2c/yZEP8cmmEnoo4i4=;
- b=WDZNBTZC02X0WRReQG/1oFxCUZzZ88fQNtzw8/xsZTEosp5pBmevDrPnoPMry9UgSf4HLv
- D5WYyuBXV8Xn3A+13z0sPsg3nFZzp5v2EeOWaqnR8eAsT7clggdLtCOuw+1XaBcJOvQ+GP
- qJW47VjBSjhVN5g0dO2LMuD5JF8HzYrEF4MYMbQ+4JLxkG9AjbS/iwcgbjlb7zQnQZshav
- qVTA9lqc0ABNyyipns5mGqAkuvTtRMoqRBN4dJ2vrxouihOn/VEwTIwF8kySZRlvnDheXx
- 2/k7fyn3xJp45TY7udOICwp/otH+w7wjE2I5holKZN6oVvlT8gBBMotzbyL9Gg==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927715; a=rsa-sha256; cv=none;
- b=ZNih1ZN0BhjtBVRw443jwLy3sFJ/c9auH5UywkbihOiKqz9+3NUkTObUyeT/tnD9T9NiOpGMH0Fwj3XGSfNJKjfNdnefjGFYh82OVKCWzxWprdThqlo7wCI8KuW1A2Bes42jR4xrxZycngSdcIxWWaO7z2KV1NACeOBgLpzI5ergoRDlelETr6XtdzuR8OogLxA59wke+FXEZu/FyunyNygODrCOIA0JWTFTrjcbuHZWifRJC01B6PUy54FsHw44SgkfonoWg4ix0YIuOCG6z2Oh3S881JgUzgayR0nZ9m15lGJV0cRb3zOQ4hO5mnwDA/krRATtVEskwXri8L7baQ==
+ bh=MO0Muj7yuPd6SWwH9hfY/l2s1zABrTHCErTOwR/d+QM=;
+ b=B8aQ0HjneQ2tN65sFmYG451gFNNxM7xYrS0SOOcLJ5ZhkN4hKk58K2lEH0XjviJiingwgu
+ /psIXvoYLE6fCUYrGfL/TK2JwCbHtPNBrO20ln1zNRx1Vw9ffROljk+vOTA5hXgfIrDcwy
+ 7LQSL9FyJQsVrjCXwMqqZG/3qfQDSmNXUgm+dFXY05SOW18IZ4a8BodPk+Z0CddGGg9WIx
+ SopMwfZg/FkJPje4r4RzKeIxxa2J+tX0KmJc8jdDeLmpAVOKi0jg3qSK7qFlhvkxfGcWNM
+ ZiOs9xhke2/mV9vTdCqFqjA+LgAOW9h/yAXRoRjNZCLJo7AF36DVJq+/qrS1UQ==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927720; a=rsa-sha256; cv=none;
+ b=flOTzkktyFUcF0SHcXbTkePk2wYRiO7s+xv54HGbm+PlcoLFrIZDtgVe7udBCKGXCTYF7bFoWN1oVkau+he/PCSycvkuDEejylPNyjeckUBlRg/KAqp0sSbr3AW7A6tD8A67PWc9C4yGquXmMG7NjE84znZSEJAfALMcy1n4MVYE6zs36lg691q66jU5ObuY0zbOK0ni3l2MhJLIg7VBZcqkneOoAZngcCBXnaou9K3I4Lc2wlqUl+98X9RZBzb6u1ik638/N9g9CLE251QRcV09p2R0umZN3v9k/v/Dl8PAPli8vzjPbyenU8J9grHtR81H/1uR9m979t+C7mSOYw==
 ARC-Authentication-Results: i=1;
 	pharaoh.lmichel.fr
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
@@ -104,537 +103,177 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
  Havard Skinnemoen <hskinnemoen@google.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2st3SXA+mgc9
+X-TUID: PN9xwhrcodZg
 
-PLLs are composed of multiple channels. Each channel outputs one clock
-signal. They are modeled as one device taking the PLL generated clock as
-input, and outputting a new clock.
-
-A channel shares the CM register with its parent PLL, and has its own
-A2W_CTRL register. A write to the CM register will trigger an update of
-the PLL and all its channels, while a write to an A2W_CTRL channel
-register will update the required channel only.
+Add a clock input to the PL011 UART so we can compute the current baud
+rate and trace it. This is intended for developers who wish to use QEMU
+to e.g. debug their firmware or to figure out the baud rate configured
+by an unknown/closed source binary.
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Luc Michel <luc@lmichel.fr>
 ---
- include/hw/misc/bcm2835_cprman.h           |  44 ++++++
- include/hw/misc/bcm2835_cprman_internals.h | 146 +++++++++++++++++++
- hw/misc/bcm2835_cprman.c                   | 155 +++++++++++++++++++--
- 3 files changed, 337 insertions(+), 8 deletions(-)
+ include/hw/char/pl011.h |  1 +
+ hw/char/pl011.c         | 45 +++++++++++++++++++++++++++++++++++++++++
+ hw/char/trace-events    |  1 +
+ 3 files changed, 47 insertions(+)
 
-diff --git a/include/hw/misc/bcm2835_cprman.h b/include/hw/misc/bcm2835_cprman.h
-index ddbb3e0237..8d3e39f0a8 100644
---- a/include/hw/misc/bcm2835_cprman.h
-+++ b/include/hw/misc/bcm2835_cprman.h
-@@ -29,10 +29,35 @@ typedef enum CprmanPll {
-     CPRMAN_PLLB,
- 
-     CPRMAN_NUM_PLL
- } CprmanPll;
- 
-+typedef enum CprmanPllChannel {
-+    CPRMAN_PLLA_CHANNEL_DSI0 = 0,
-+    CPRMAN_PLLA_CHANNEL_CORE,
-+    CPRMAN_PLLA_CHANNEL_PER,
-+    CPRMAN_PLLA_CHANNEL_CCP2,
-+
-+    CPRMAN_PLLC_CHANNEL_CORE2,
-+    CPRMAN_PLLC_CHANNEL_CORE1,
-+    CPRMAN_PLLC_CHANNEL_PER,
-+    CPRMAN_PLLC_CHANNEL_CORE0,
-+
-+    CPRMAN_PLLD_CHANNEL_DSI0,
-+    CPRMAN_PLLD_CHANNEL_CORE,
-+    CPRMAN_PLLD_CHANNEL_PER,
-+    CPRMAN_PLLD_CHANNEL_DSI1,
-+
-+    CPRMAN_PLLH_CHANNEL_AUX,
-+    CPRMAN_PLLH_CHANNEL_RCAL,
-+    CPRMAN_PLLH_CHANNEL_PIX,
-+
-+    CPRMAN_PLLB_CHANNEL_ARM,
-+
-+    CPRMAN_NUM_PLL_CHANNEL,
-+} CprmanPllChannel;
-+
- typedef struct CprmanPllState {
-     /*< private >*/
-     DeviceState parent_obj;
- 
-     /*< public >*/
-@@ -46,18 +71,37 @@ typedef struct CprmanPllState {
- 
-     Clock *xosc_in;
-     Clock *out;
- } CprmanPllState;
- 
-+typedef struct CprmanPllChannelState {
-+    /*< private >*/
-+    DeviceState parent_obj;
-+
-+    /*< public >*/
-+    CprmanPllChannel id;
-+    CprmanPll parent;
-+
-+    uint32_t *reg_cm;
-+    uint32_t hold_mask;
-+    uint32_t load_mask;
-+    uint32_t *reg_a2w_ctrl;
-+    int fixed_divider;
-+
-+    Clock *pll_in;
-+    Clock *out;
-+} CprmanPllChannelState;
-+
- struct BCM2835CprmanState {
-     /*< private >*/
-     SysBusDevice parent_obj;
- 
-     /*< public >*/
-     MemoryRegion iomem;
- 
-     CprmanPllState plls[CPRMAN_NUM_PLL];
-+    CprmanPllChannelState channels[CPRMAN_NUM_PLL_CHANNEL];
- 
-     uint32_t regs[CPRMAN_NUM_REGS];
-     uint32_t xosc_freq;
- 
-     Clock *xosc;
-diff --git a/include/hw/misc/bcm2835_cprman_internals.h b/include/hw/misc/bcm2835_cprman_internals.h
-index 7aa46c6e18..7409ddb024 100644
---- a/include/hw/misc/bcm2835_cprman_internals.h
-+++ b/include/hw/misc/bcm2835_cprman_internals.h
-@@ -11,13 +11,16 @@
- 
- #include "hw/registerfields.h"
- #include "hw/misc/bcm2835_cprman.h"
- 
- #define TYPE_CPRMAN_PLL "bcm2835-cprman-pll"
-+#define TYPE_CPRMAN_PLL_CHANNEL "bcm2835-cprman-pll-channel"
- 
- DECLARE_INSTANCE_CHECKER(CprmanPllState, CPRMAN_PLL,
-                          TYPE_CPRMAN_PLL)
-+DECLARE_INSTANCE_CHECKER(CprmanPllChannelState, CPRMAN_PLL_CHANNEL,
-+                         TYPE_CPRMAN_PLL_CHANNEL)
- 
- /* Register map */
- 
- /* PLLs */
- REG32(CM_PLLA, 0x104)
-@@ -98,10 +101,35 @@ REG32(A2W_PLLA_FRAC, 0x1200)
- REG32(A2W_PLLC_FRAC, 0x1220)
- REG32(A2W_PLLD_FRAC, 0x1240)
- REG32(A2W_PLLH_FRAC, 0x1260)
- REG32(A2W_PLLB_FRAC, 0x12e0)
- 
-+/* PLL channels */
-+REG32(A2W_PLLA_DSI0, 0x1300)
-+    FIELD(A2W_PLLx_CHANNELy, DIV, 0, 8)
-+    FIELD(A2W_PLLx_CHANNELy, DISABLE, 8, 1)
-+REG32(A2W_PLLA_CORE, 0x1400)
-+REG32(A2W_PLLA_PER, 0x1500)
-+REG32(A2W_PLLA_CCP2, 0x1600)
-+
-+REG32(A2W_PLLC_CORE2, 0x1320)
-+REG32(A2W_PLLC_CORE1, 0x1420)
-+REG32(A2W_PLLC_PER, 0x1520)
-+REG32(A2W_PLLC_CORE0, 0x1620)
-+
-+REG32(A2W_PLLD_DSI0, 0x1340)
-+REG32(A2W_PLLD_CORE, 0x1440)
-+REG32(A2W_PLLD_PER, 0x1540)
-+REG32(A2W_PLLD_DSI1, 0x1640)
-+
-+REG32(A2W_PLLH_AUX, 0x1360)
-+REG32(A2W_PLLH_RCAL, 0x1460)
-+REG32(A2W_PLLH_PIX, 0x1560)
-+REG32(A2W_PLLH_STS, 0x1660)
-+
-+REG32(A2W_PLLB_ARM, 0x13e0)
-+
- /* misc registers */
- REG32(CM_LOCK, 0x114)
-     FIELD(CM_LOCK, FLOCKH, 12, 1)
-     FIELD(CM_LOCK, FLOCKD, 11, 1)
-     FIELD(CM_LOCK, FLOCKC, 10, 1)
-@@ -171,6 +199,124 @@ static inline void set_pll_init_info(BCM2835CprmanState *s,
-     pll->reg_a2w_ana = &s->regs[PLL_INIT_INFO[id].a2w_ana_offset];
-     pll->prediv_mask = PLL_INIT_INFO[id].prediv_mask;
-     pll->reg_a2w_frac = &s->regs[PLL_INIT_INFO[id].a2w_frac_offset];
- }
- 
-+
-+/* PLL channel init info */
-+typedef struct PLLChannelInitInfo {
-+    const char *name;
-+    CprmanPll parent;
-+    size_t cm_offset;
-+    uint32_t cm_hold_mask;
-+    uint32_t cm_load_mask;
-+    size_t a2w_ctrl_offset;
-+    unsigned int fixed_divider;
-+} PLLChannelInitInfo;
-+
-+#define FILL_PLL_CHANNEL_INIT_INFO_common(pll_, channel_)            \
-+    .parent = CPRMAN_ ## pll_,                                       \
-+    .cm_offset = R_CM_ ## pll_,                                      \
-+    .cm_load_mask = R_CM_ ## pll_ ## _ ## LOAD ## channel_ ## _MASK, \
-+    .a2w_ctrl_offset = R_A2W_ ## pll_ ## _ ## channel_
-+
-+#define FILL_PLL_CHANNEL_INIT_INFO(pll_, channel_)                   \
-+    FILL_PLL_CHANNEL_INIT_INFO_common(pll_, channel_),               \
-+    .cm_hold_mask = R_CM_ ## pll_ ## _ ## HOLD ## channel_ ## _MASK, \
-+    .fixed_divider = 1
-+
-+#define FILL_PLL_CHANNEL_INIT_INFO_nohold(pll_, channel_) \
-+    FILL_PLL_CHANNEL_INIT_INFO_common(pll_, channel_),    \
-+    .cm_hold_mask = 0
-+
-+static PLLChannelInitInfo PLL_CHANNEL_INIT_INFO[] = {
-+    [CPRMAN_PLLA_CHANNEL_DSI0] = {
-+        .name = "plla-dsi0",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLA, DSI0),
-+    },
-+    [CPRMAN_PLLA_CHANNEL_CORE] = {
-+        .name = "plla-core",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLA, CORE),
-+    },
-+    [CPRMAN_PLLA_CHANNEL_PER] = {
-+        .name = "plla-per",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLA, PER),
-+    },
-+    [CPRMAN_PLLA_CHANNEL_CCP2] = {
-+        .name = "plla-ccp2",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLA, CCP2),
-+    },
-+
-+    [CPRMAN_PLLC_CHANNEL_CORE2] = {
-+        .name = "pllc-core2",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLC, CORE2),
-+    },
-+    [CPRMAN_PLLC_CHANNEL_CORE1] = {
-+        .name = "pllc-core1",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLC, CORE1),
-+    },
-+    [CPRMAN_PLLC_CHANNEL_PER] = {
-+        .name = "pllc-per",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLC, PER),
-+    },
-+    [CPRMAN_PLLC_CHANNEL_CORE0] = {
-+        .name = "pllc-core0",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLC, CORE0),
-+    },
-+
-+    [CPRMAN_PLLD_CHANNEL_DSI0] = {
-+        .name = "plld-dsi0",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLD, DSI0),
-+    },
-+    [CPRMAN_PLLD_CHANNEL_CORE] = {
-+        .name = "plld-core",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLD, CORE),
-+    },
-+    [CPRMAN_PLLD_CHANNEL_PER] = {
-+        .name = "plld-per",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLD, PER),
-+    },
-+    [CPRMAN_PLLD_CHANNEL_DSI1] = {
-+        .name = "plld-dsi1",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLD, DSI1),
-+    },
-+
-+    [CPRMAN_PLLH_CHANNEL_AUX] = {
-+        .name = "pllh-aux",
-+        .fixed_divider = 1,
-+        FILL_PLL_CHANNEL_INIT_INFO_nohold(PLLH, AUX),
-+    },
-+    [CPRMAN_PLLH_CHANNEL_RCAL] = {
-+        .name = "pllh-rcal",
-+        .fixed_divider = 10,
-+        FILL_PLL_CHANNEL_INIT_INFO_nohold(PLLH, RCAL),
-+    },
-+    [CPRMAN_PLLH_CHANNEL_PIX] = {
-+        .name = "pllh-pix",
-+        .fixed_divider = 10,
-+        FILL_PLL_CHANNEL_INIT_INFO_nohold(PLLH, PIX),
-+    },
-+
-+    [CPRMAN_PLLB_CHANNEL_ARM] = {
-+        .name = "pllb-arm",
-+        FILL_PLL_CHANNEL_INIT_INFO(PLLB, ARM),
-+    },
-+};
-+
-+#undef FILL_PLL_CHANNEL_INIT_INFO_nohold
-+#undef FILL_PLL_CHANNEL_INIT_INFO
-+#undef FILL_PLL_CHANNEL_INIT_INFO_common
-+
-+static inline void set_pll_channel_init_info(BCM2835CprmanState *s,
-+                                             CprmanPllChannelState *channel,
-+                                             CprmanPllChannel id)
-+{
-+    channel->id = id;
-+    channel->parent = PLL_CHANNEL_INIT_INFO[id].parent;
-+    channel->reg_cm = &s->regs[PLL_CHANNEL_INIT_INFO[id].cm_offset];
-+    channel->hold_mask = PLL_CHANNEL_INIT_INFO[id].cm_hold_mask;
-+    channel->load_mask = PLL_CHANNEL_INIT_INFO[id].cm_load_mask;
-+    channel->reg_a2w_ctrl = &s->regs[PLL_CHANNEL_INIT_INFO[id].a2w_ctrl_offset];
-+    channel->fixed_divider = PLL_CHANNEL_INIT_INFO[id].fixed_divider;
-+}
-+
- #endif
-diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-index 144bcc289d..12fa78181b 100644
---- a/hw/misc/bcm2835_cprman.c
-+++ b/hw/misc/bcm2835_cprman.c
-@@ -130,10 +130,73 @@ static const TypeInfo cprman_pll_info = {
-     .class_init = pll_class_init,
-     .instance_init = pll_init,
+diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
+index a91ea50e11..33e5e5317b 100644
+--- a/include/hw/char/pl011.h
++++ b/include/hw/char/pl011.h
+@@ -47,10 +47,11 @@ struct PL011State {
+     int read_pos;
+     int read_count;
+     int read_trigger;
+     CharBackend chr;
+     qemu_irq irq[6];
++    Clock *clk;
+     const unsigned char *id;
  };
  
+ static inline DeviceState *pl011_create(hwaddr addr,
+                                         qemu_irq irq,
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index 13e784f9d9..ede16c781c 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -20,10 +20,11 @@
  
-+/* PLL channel */
-+
-+static void pll_channel_update(CprmanPllChannelState *channel)
+ #include "qemu/osdep.h"
+ #include "hw/char/pl011.h"
+ #include "hw/irq.h"
+ #include "hw/sysbus.h"
++#include "hw/qdev-clock.h"
+ #include "migration/vmstate.h"
+ #include "chardev/char-fe.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+ #include "trace.h"
+@@ -167,10 +168,29 @@ static void pl011_set_read_trigger(PL011State *s)
+     else
+ #endif
+         s->read_trigger = 1;
+ }
+ 
++static unsigned int pl011_get_baudrate(const PL011State *s)
 +{
-+    clock_update(channel->out, 0);
-+}
++    uint64_t clk;
 +
-+/* Update a PLL and all its channels */
-+static void pll_update_all_channels(BCM2835CprmanState *s,
-+                                    CprmanPllState *pll)
-+{
-+    size_t i;
-+
-+    pll_update(pll);
-+
-+    for (i = 0; i < CPRMAN_NUM_PLL_CHANNEL; i++) {
-+        CprmanPllChannelState *channel = &s->channels[i];
-+        if (channel->parent == pll->id) {
-+            pll_channel_update(channel);
-+        }
++    if (s->fbrd == 0) {
++        return 0;
 +    }
++
++    clk = clock_get_hz(s->clk);
++    return (clk / ((s->ibrd << 6) + s->fbrd)) << 2;
 +}
 +
-+static void pll_channel_pll_in_update(void *opaque)
++static void pl011_trace_baudrate_change(const PL011State *s)
 +{
-+    pll_channel_update(CPRMAN_PLL_CHANNEL(opaque));
++    trace_pl011_baudrate_change(pl011_get_baudrate(s),
++                                clock_get_hz(s->clk),
++                                s->ibrd, s->fbrd);
 +}
 +
-+static void pll_channel_init(Object *obj)
+ static void pl011_write(void *opaque, hwaddr offset,
+                         uint64_t value, unsigned size)
+ {
+     PL011State *s = (PL011State *)opaque;
+     unsigned char ch;
+@@ -196,13 +216,15 @@ static void pl011_write(void *opaque, hwaddr offset,
+     case 8: /* UARTUARTILPR */
+         s->ilpr = value;
+         break;
+     case 9: /* UARTIBRD */
+         s->ibrd = value;
++        pl011_trace_baudrate_change(s);
+         break;
+     case 10: /* UARTFBRD */
+         s->fbrd = value;
++        pl011_trace_baudrate_change(s);
+         break;
+     case 11: /* UARTLCR_H */
+         /* Reset the FIFO state on FIFO enable or disable */
+         if ((s->lcr ^ value) & 0x10) {
+             s->read_count = 0;
+@@ -284,16 +306,33 @@ static void pl011_event(void *opaque, QEMUChrEvent event)
+ {
+     if (event == CHR_EVENT_BREAK)
+         pl011_put_fifo(opaque, 0x400);
+ }
+ 
++static void pl011_clock_update(void *opaque)
 +{
-+    CprmanPllChannelState *s = CPRMAN_PLL_CHANNEL(obj);
++    PL011State *s = PL011(opaque);
 +
-+    s->pll_in = qdev_init_clock_in(DEVICE(s), "pll-in",
-+                                   pll_channel_pll_in_update, s);
-+    s->out = qdev_init_clock_out(DEVICE(s), "out");
++    pl011_trace_baudrate_change(s);
 +}
 +
-+static const VMStateDescription pll_channel_vmstate = {
-+    .name = TYPE_CPRMAN_PLL_CHANNEL,
+ static const MemoryRegionOps pl011_ops = {
+     .read = pl011_read,
+     .write = pl011_write,
+     .endianness = DEVICE_NATIVE_ENDIAN,
+ };
+ 
++static const VMStateDescription vmstate_pl011_clock = {
++    .name = "pl011/clock",
 +    .version_id = 1,
 +    .minimum_version_id = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_CLOCK(pll_in, CprmanPllChannelState),
++        VMSTATE_CLOCK(clk, PL011State),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static void pll_channel_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &pll_channel_vmstate;
-+}
-+
-+static const TypeInfo cprman_pll_channel_info = {
-+    .name = TYPE_CPRMAN_PLL_CHANNEL,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(CprmanPllChannelState),
-+    .class_init = pll_channel_class_init,
-+    .instance_init = pll_channel_init,
-+};
-+
-+
- /* CPRMAN "top level" model */
- 
- static uint32_t get_cm_lock(const BCM2835CprmanState *s)
- {
-     static const int CM_LOCK_MAPPING[CPRMAN_NUM_PLL] = {
-@@ -172,12 +235,36 @@ static uint64_t cprman_read(void *opaque, hwaddr offset,
- 
-     trace_bcm2835_cprman_read(offset, r);
-     return r;
- }
- 
--#define CASE_PLL_REGS(pll_)       \
--    case R_CM_ ## pll_:           \
-+static inline void update_pll_and_channels_from_cm(BCM2835CprmanState *s,
-+                                                   size_t idx)
-+{
-+    size_t i;
-+
-+    for (i = 0; i < CPRMAN_NUM_PLL; i++) {
-+        if (PLL_INIT_INFO[i].cm_offset == idx) {
-+            pll_update_all_channels(s, &s->plls[i]);
-+            return;
-+        }
-+    }
-+}
-+
-+static inline void update_channel_from_a2w(BCM2835CprmanState *s, size_t idx)
-+{
-+    size_t i;
-+
-+    for (i = 0; i < CPRMAN_NUM_PLL_CHANNEL; i++) {
-+        if (PLL_CHANNEL_INIT_INFO[i].a2w_ctrl_offset == idx) {
-+            pll_channel_update(&s->channels[i]);
-+            return;
-+        }
-+    }
-+}
-+
-+#define CASE_PLL_A2W_REGS(pll_) \
-     case R_A2W_ ## pll_ ## _CTRL: \
-     case R_A2W_ ## pll_ ## _ANA0: \
-     case R_A2W_ ## pll_ ## _ANA1: \
-     case R_A2W_ ## pll_ ## _ANA2: \
-     case R_A2W_ ## pll_ ## _ANA3: \
-@@ -198,33 +285,61 @@ static void cprman_write(void *opaque, hwaddr offset,
- 
-     trace_bcm2835_cprman_write(offset, value);
-     s->regs[idx] = value;
- 
-     switch (idx) {
--    CASE_PLL_REGS(PLLA) :
-+    case R_CM_PLLA ... R_CM_PLLH:
-+    case R_CM_PLLB:
-+        /*
-+         * A given CM_PLLx register is shared by both the PLL and the channels
-+         * of this PLL.
-+         */
-+        update_pll_and_channels_from_cm(s, idx);
-+        break;
-+
-+    CASE_PLL_A2W_REGS(PLLA) :
-         pll_update(&s->plls[CPRMAN_PLLA]);
-         break;
- 
--    CASE_PLL_REGS(PLLC) :
-+    CASE_PLL_A2W_REGS(PLLC) :
-         pll_update(&s->plls[CPRMAN_PLLC]);
-         break;
- 
--    CASE_PLL_REGS(PLLD) :
-+    CASE_PLL_A2W_REGS(PLLD) :
-         pll_update(&s->plls[CPRMAN_PLLD]);
-         break;
- 
--    CASE_PLL_REGS(PLLH) :
-+    CASE_PLL_A2W_REGS(PLLH) :
-         pll_update(&s->plls[CPRMAN_PLLH]);
-         break;
- 
--    CASE_PLL_REGS(PLLB) :
-+    CASE_PLL_A2W_REGS(PLLB) :
-         pll_update(&s->plls[CPRMAN_PLLB]);
-         break;
-+
-+    case R_A2W_PLLA_DSI0:
-+    case R_A2W_PLLA_CORE:
-+    case R_A2W_PLLA_PER:
-+    case R_A2W_PLLA_CCP2:
-+    case R_A2W_PLLC_CORE2:
-+    case R_A2W_PLLC_CORE1:
-+    case R_A2W_PLLC_PER:
-+    case R_A2W_PLLC_CORE0:
-+    case R_A2W_PLLD_DSI0:
-+    case R_A2W_PLLD_CORE:
-+    case R_A2W_PLLD_PER:
-+    case R_A2W_PLLD_DSI1:
-+    case R_A2W_PLLH_AUX:
-+    case R_A2W_PLLH_RCAL:
-+    case R_A2W_PLLH_PIX:
-+    case R_A2W_PLLB_ARM:
-+        update_channel_from_a2w(s, idx);
-+        break;
+ static const VMStateDescription vmstate_pl011 = {
+     .name = "pl011",
+     .version_id = 2,
+     .minimum_version_id = 2,
+     .fields = (VMStateField[]) {
+@@ -312,10 +351,14 @@ static const VMStateDescription vmstate_pl011 = {
+         VMSTATE_UINT32(ifl, PL011State),
+         VMSTATE_INT32(read_pos, PL011State),
+         VMSTATE_INT32(read_count, PL011State),
+         VMSTATE_INT32(read_trigger, PL011State),
+         VMSTATE_END_OF_LIST()
++    },
++    .subsections = (const VMStateDescription * []) {
++        &vmstate_pl011_clock,
++        NULL
      }
- }
+ };
  
--#undef CASE_PLL_REGS
-+#undef CASE_PLL_A2W_REGS
- 
- static const MemoryRegionOps cprman_ops = {
-     .read = cprman_read,
-     .write = cprman_write,
-     .endianness = DEVICE_LITTLE_ENDIAN,
-@@ -252,10 +367,14 @@ static void cprman_reset(DeviceState *dev)
- 
-     for (i = 0; i < CPRMAN_NUM_PLL; i++) {
-         device_cold_reset(DEVICE(&s->plls[i]));
+ static Property pl011_properties[] = {
+     DEFINE_PROP_CHR("chardev", PL011State, chr),
+@@ -332,10 +375,12 @@ static void pl011_init(Object *obj)
+     sysbus_init_mmio(sbd, &s->iomem);
+     for (i = 0; i < ARRAY_SIZE(s->irq); i++) {
+         sysbus_init_irq(sbd, &s->irq[i]);
      }
  
-+    for (i = 0; i < CPRMAN_NUM_PLL_CHANNEL; i++) {
-+        device_cold_reset(DEVICE(&s->channels[i]));
-+    }
++    s->clk = qdev_init_clock_in(DEVICE(obj), "clk", pl011_clock_update, s);
 +
-     clock_update_hz(s->xosc, s->xosc_freq);
- }
+     s->read_trigger = 1;
+     s->ifl = 0x12;
+     s->cr = 0x300;
+     s->flags = 0x90;
  
- static void cprman_init(Object *obj)
- {
-@@ -266,10 +385,17 @@ static void cprman_init(Object *obj)
-         object_initialize_child(obj, PLL_INIT_INFO[i].name,
-                                 &s->plls[i], TYPE_CPRMAN_PLL);
-         set_pll_init_info(s, &s->plls[i], i);
-     }
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index 609df10fed..81026f6612 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -63,10 +63,11 @@ pl011_read(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+ pl011_read_fifo(int read_count) "FIFO read, read_count now %d"
+ pl011_write(uint32_t addr, uint32_t value) "addr 0x%08x value 0x%08x"
+ pl011_can_receive(uint32_t lcr, int read_count, int r) "LCR 0x%08x read_count %d returning %d"
+ pl011_put_fifo(uint32_t c, int read_count) "new char 0x%x read_count now %d"
+ pl011_put_fifo_full(void) "FIFO now full, RXFF set"
++pl011_baudrate_change(unsigned int baudrate, uint64_t clock, uint32_t ibrd, uint32_t fbrd) "new baudrate %u (clk: %" PRIu64 "hz, ibrd: %" PRIu32 ", fbrd: %" PRIu32 ")"
  
-+    for (i = 0; i < CPRMAN_NUM_PLL_CHANNEL; i++) {
-+        object_initialize_child(obj, PLL_CHANNEL_INIT_INFO[i].name,
-+                                &s->channels[i],
-+                                TYPE_CPRMAN_PLL_CHANNEL);
-+        set_pll_channel_init_info(s, &s->channels[i], i);
-+    }
-+
-     s->xosc = clock_new(obj, "xosc");
- 
-     memory_region_init_io(&s->iomem, obj, &cprman_ops,
-                           s, "bcm2835-cprman", 0x2000);
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-@@ -287,10 +413,22 @@ static void cprman_realize(DeviceState *dev, Error **errp)
- 
-         if (!qdev_realize(DEVICE(pll), NULL, errp)) {
-             return;
-         }
-     }
-+
-+    for (i = 0; i < CPRMAN_NUM_PLL_CHANNEL; i++) {
-+        CprmanPllChannelState *channel = &s->channels[i];
-+        CprmanPll parent = PLL_CHANNEL_INIT_INFO[i].parent;
-+        Clock *parent_clk = s->plls[parent].out;
-+
-+        clock_set_source(channel->pll_in, parent_clk);
-+
-+        if (!qdev_realize(DEVICE(channel), NULL, errp)) {
-+            return;
-+        }
-+    }
- }
- 
- static const VMStateDescription cprman_vmstate = {
-     .name = TYPE_BCM2835_CPRMAN,
-     .version_id = 1,
-@@ -326,8 +464,9 @@ static const TypeInfo cprman_info = {
- 
- static void cprman_register_types(void)
- {
-     type_register_static(&cprman_info);
-     type_register_static(&cprman_pll_info);
-+    type_register_static(&cprman_pll_channel_info);
- }
- 
- type_init(cprman_register_types);
+ # cmsdk-apb-uart.c
+ cmsdk_apb_uart_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB UART read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ cmsdk_apb_uart_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB UART write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
+ cmsdk_apb_uart_reset(void) "CMSDK APB UART: reset"
 -- 
 2.28.0
 

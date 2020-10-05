@@ -1,82 +1,74 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp35855lfq;
-        Mon, 5 Oct 2020 12:50:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzVf6iF4EHqG9ZjkbHfHD0LjaIr1IIeQFxdslMQOK9oY57mulgSfNw3Ue8VTCHdTtAVTDYo
-X-Received: by 2002:a25:2cd1:: with SMTP id s200mr2233412ybs.110.1601927407832;
-        Mon, 05 Oct 2020 12:50:07 -0700 (PDT)
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp53494lfq;
+        Mon, 5 Oct 2020 13:15:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwM5l/ddrqD+LTisS/u7gDnaL6JOxWrMYZYc9QnNRzeyAjH4n6Ec/tIGHonpLxRKDPIgkTS
+X-Received: by 2002:a25:ab14:: with SMTP id u20mr26347ybi.83.1601928913990;
+        Mon, 05 Oct 2020 13:15:13 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k10si918698ybf.285.2020.10.05.12.50.07
+        by mx.google.com with ESMTPS id v4si894001ybl.323.2020.10.05.13.15.13
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 12:50:07 -0700 (PDT)
+        Mon, 05 Oct 2020 13:15:13 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=E8CFNSkA;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=Y1s7LgZJ;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:58282 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51844 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPWUp-0006CP-4d
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 15:50:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56032)
+	id 1kPWt7-0006ry-B6
+	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:15:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57702)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWUf-0006C7-W8; Mon, 05 Oct 2020 15:49:58 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:35548)
+ id 1kPWZu-00042y-DI; Mon, 05 Oct 2020 15:55:22 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:35786)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWUd-0006jD-D5; Mon, 05 Oct 2020 15:49:57 -0400
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 561A6C60F16;
- Mon,  5 Oct 2020 19:49:49 +0000 (UTC)
+ id 1kPWZo-0007S3-U1; Mon, 05 Oct 2020 15:55:22 -0400
+Received: from sekoia-pc.home.lmichel.fr (sekoia-pc.home.lmichel.fr
+ [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPS id 45620C60F16;
+ Mon,  5 Oct 2020 19:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1601927389;
+ t=1601927714;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pJFENdhqupghajawulvBj40O7T5YCNemlhz/pELAp4Y=;
- b=E8CFNSkA4aIr/tQyu2u+OjyiMuGkz5Yc2tSJPSo3pBJMzRf5+tC4fF2O2D/cs28HIC+dJW
- qY5m4cVTT1ivyghfNP8n76nrDv7E6MeKJROYCeWPW/9mWmtB3YdDIkfSx3bYo41H7tt5wa
- /0aIh9fYzCUwJ9UXqDMcfZ9x/9iuCpy5KA9WSXS0Iwv+Ql73KHy/Koz6sZOYkyqTHUrVbG
- 2jZUAgTpzDfNIh6yeC1PJTE3WsABrz474dp20XbEGarmb8GwH3F+RWZ3q8/4slhUHgdmJg
- 9uPfU++3Zr2bNfWRbBj+hEeihTIqO1lYtOjGyfwoNONoqng/+BDX1QWieJ27gg==
-Date: Mon, 5 Oct 2020 21:50:49 +0200
+ content-transfer-encoding:content-transfer-encoding:in-reply-to:
+ references; bh=iR4KXb62I/k5aldm3ydk7GV+/axR6FSrHl7HyK9S/UM=;
+ b=Y1s7LgZJPp3GnPWQmniwTosEZggQvxD+rx2k4GMEQkdqC+Q7JvdEh7bMwlvseJ5NmZ/l06
+ N+J+Y3pkUgkkKRKPsDeBeV0hYEOpEKjgdGek9FgluXK9ATg7td3HuNcRnJww9GmhcVF4am
+ Dyj4BFXDNW6j9rtMh4L1cnC81gDUI1dOUmKpqIP/biUwsgrg+zwxxteYXYbOTZC4lSu9cU
+ C1vSd2ZD7Lc8bioSLk7s1I3gpyamglSUa0Ffq2aWkUoOoe2e2ZABQqMLm578r6LXim1wO7
+ 4Kz6Ke4EN7yzN7Bql3urPqcbS/8V46s19cKC0Dp1RplwgjHaguT29nGS/3UcEA==
 From: Luc Michel <luc@lmichel.fr>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 10/14] hw/misc/bcm2835_cprman: implement clock mux
- behaviour
-Message-ID: <20201005195049.333vsqwfgh72suhq@sekoia-pc.home.lmichel.fr>
-References: <20200925101731.2159827-1-luc@lmichel.fr>
- <20200925101731.2159827-11-luc@lmichel.fr>
- <76aae8af-dff0-b76f-cf04-0e3231eaf2bb@amsat.org>
- <2ca8802e-3295-bd22-e705-931ae8dbbd1d@amsat.org>
- <20201004183719.m3tsetxcgvc5ea2m@sekoia-pc.home.lmichel.fr>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v2 00/15] raspi: add the bcm2835 cprman clock manager
+Date: Mon,  5 Oct 2020 21:55:57 +0200
+Message-Id: <20201005195612.1999165-1-luc@lmichel.fr>
+X-Mailer: git-send-email 2.28.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20201004183719.m3tsetxcgvc5ea2m@sekoia-pc.home.lmichel.fr>
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1601927389;
+ s=pharaoh; t=1601927714;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pJFENdhqupghajawulvBj40O7T5YCNemlhz/pELAp4Y=;
- b=AOg9d39DbYYLE9/qRhIRXtArC9SCQexD4sTFKuBdNAI/zzzVnjHA3AYycaOJeDdNM4NOWr
- r8+cvZ96jLLssNdVVp4+VyjuhdTY2cEldp1lIFAegqv3CVdwEi/EswZcR3fXNqOmoLGUS3
- fhmJpdDXXGfuHolctaMEuZohEtvJdNEaYszeoHLpc+LwvydNFbB6mOwYoPaH52m+jD7sU8
- JRe1dM/eABSG8/4VNe5Dd7et6gad6yovx4cgABF+y5Rj7Y2sh5xiqZzdEXk2/klf9MXkVG
- YJ+NaCzXhUxt4t7VdHhYneaGfTO3qOWM+NgDZyMwqbUJYOqHYABBSR+GTkuDAA==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927389; a=rsa-sha256; cv=none;
- b=FBM5QMuIW8qsvQ/QevHP6Eiuk1C+PV6sKxDxayn3A8alYGOvceYZxosZ6unSWvITLf730TZ4VYplyUoAUswdx65nloj2PBbcX2Kz9DhMq/UsSfq+Go75awWzwx3qB8ou5OgGVMEkyeC49QZBySMRVtF51UejGQlaXjH2X1XyAjnbtL700ajkrvuyCwgkh7dylQA+bHgBkwbIJYpePq7Jm6t3WrSsPat4t99nz0bcpm1jz3nWFPFdFu3gE4Hm02TpJ9v1NbEUOrIfj9wA9jXKbACkCt8MyItbxuhIcddA+utRrazitoBmsjBioea28o/gArZp9z6zPR2rvHu+UP2gEA==
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=sekoia smtp.mailfrom=luc@lmichel.fr
+ content-transfer-encoding:content-transfer-encoding:in-reply-to:
+ references; bh=iR4KXb62I/k5aldm3ydk7GV+/axR6FSrHl7HyK9S/UM=;
+ b=EcNFv3wEJBDFP4k3tZJCrwRrULNUIW/0E6Y36iowqzzsJ4v5D0Vnc07ykZswI1mep2Ek7c
+ gPu5/KEBhFWyaByB5MpiAufl6TucK6O9P+/6BSLzCFlQzagXCosIIvn2lRWoXF+NIvlnH8
+ AjhKaykGesNuRq62pty7HH1c/Yz7LtUJvVRewtQ+nMoF0JWKGg5zUm2zLiLa9uCpluARO3
+ TG26lnu8URiOCaS9ECoywnvTiFkj5Ax/Rz84lTifR/kBgY9WXI2MzBUYC+vI53dF6xjHXl
+ 0oRwElna/2MxHqL7PC3nJU+zDLqE/HYPkVkLb77/DZ57Jtmjux19BqWkceL/hQ==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927714; a=rsa-sha256; cv=none;
+ b=V8nZ2B2oK8JAMSbsUmGt4GHLN9hG6qf5WHZ2ds8Ws9InqExoPAvyhIeSwGxopF7QFI4hxgUoinK2Ff9cna3zPzld7BNRSdbTu3BuW1gnRxHczSq8mwVY5e+bCGt3/2j912zjbp1Z7uwsV3sLuYLcmKAHjqphY+neStg1TrOAbON6d9di530Jqv5itLcNkTpm0IHk1wSsmIJZ4DdiYyjWArvcYz2kLVwMATuxotjdrUYBHLn9STrCy1vN0WrKiSZcCz2FE1D/IKa43MarX9bGNLRjmGL7ue11VC4qu5JS6dOoXR0Uv/I4DZkShENw2yUmTMiHcleCj/bm1/QLwUNMag==
+ARC-Authentication-Results: i=1;
+	pharaoh.lmichel.fr
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
  helo=pharaoh.lmichel.fr
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 15:49:50
@@ -99,140 +91,143 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Paul Zimmerman <pauldzim@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Havard Skinnemoen <hskinnemoen@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vLeSYKJt60eE
+X-TUID: CWSZQVhlg8C/
 
-On 20:37 Sun 04 Oct     , Luc Michel wrote:
-> On 16:51 Fri 02 Oct     , Philippe Mathieu-Daudé wrote:
-> > On 9/26/20 11:40 PM, Philippe Mathieu-Daudé wrote:
-> > > On 9/25/20 12:17 PM, Luc Michel wrote:
-> > >> A clock mux can be configured to select one of its 10 sources through
-> > >> the cm_ctl register. It also embeds yet another clock divider, composed
-> > >> of an integer part and a fractionnal part. The number of bits of each
-> > > 
-> > > Typo "fractional".
-> > > 
-> > >> part is mux dependant.
-> > > 
-> > > Typo "dependent"?
-> > > 
-> > >>
-> > >> Signed-off-by: Luc Michel <luc@lmichel.fr>
-> > >> ---
-> > >>  hw/misc/bcm2835_cprman.c | 43 +++++++++++++++++++++++++++++++++++++++-
-> > >>  1 file changed, 42 insertions(+), 1 deletion(-)
-> > >>
-> > >> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-> > >> index 8df2db0fd9..75bc11939b 100644
-> > >> --- a/hw/misc/bcm2835_cprman.c
-> > >> +++ b/hw/misc/bcm2835_cprman.c
-> > >> @@ -229,19 +229,60 @@ static const TypeInfo cprman_pll_channel_info = {
-> > >>  };
-> > >>  
-> > >>  
-> > >>  /* clock mux */
-> > >>  
-> > >> +static bool clock_mux_is_enabled(CprmanClockMuxState *mux)
-> > >> +{
-> > >> +    return FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, ENABLE);
-> > >> +}
-> > >> +
-> > >>  static void clock_mux_update(CprmanClockMuxState *mux)
-> > >>  {
-> > >> -    clock_update(mux->out, 0);
-> > >> +    uint64_t freq, div;
-> > >> +    uint32_t src = FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, SRC);
-> > >> +    bool enabled = clock_mux_is_enabled(mux);
-> > >> +
-> > >> +    *mux->reg_cm = FIELD_DP32(*mux->reg_cm, CM_CLOCKx_CTL, BUSY, enabled);
-> > >> +
-> > >> +    if (!enabled) {
-> > >> +        clock_update(mux->out, 0);
-> > >> +        return;
-> > >> +    }
-> > >> +
-> > >> +    freq = clock_get_hz(mux->srcs[src]);
-> > >> +
-> > >> +    if (mux->int_bits == 0 && mux->frac_bits == 0) {
-> > >> +        clock_update_hz(mux->out, freq);
-> > >> +        return;
-> > >> +    }
-> > >> +
-> > >> +    /*
-> > >> +     * The divider has an integer and a fractional part. The size of each part
-> > >> +     * varies with the muxes (int_bits and frac_bits). Both parts are
-> > >> +     * concatenated, with the integer part always starting at bit 12.
-> > >> +     */
-> > >> +    div = mux->reg_cm[1] >> (R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits);
-> > >> +    div &= (1 << (mux->int_bits + mux->frac_bits)) - 1;
-> > 
-> > Eventually:
-> > 
-> >     div &= MAKE_64BIT_MASK(mux->int_bits + mux->frac_bits, 64);
-> I think this is MAKE_64BIT_MASK(0, mux->int_bits + mux->frac_bits)
-> (The shift macro parameter is 0 to have the ones positioned at the
-> mask's LSBs.
-> I'll use this macro in my next re-roll.
-Actually, I won't, because switching to muldiv64 implied some
-modifications. The muldiv64 divisor parameter is uint32_t. Since there
-is no MAKE_32BIT_MASK, and I don't use all the "features" of this macro
-anyway (shift = 0 in my case), I'll keep this form (but I'll switch to
-uin32_t for div).
+v1 -> v2:
+  - patch 05: Added a comment about MMIO .valid constraints [Phil]
+  - patch 05: Added MMIO .impl [Phil]
+  - patch 05: Moved init_internal_clock to the public clock API, renamed
+    clock_new (new patch 03) [Phil]
+  - patch 11: use muldiv64 for clock mux frequency output computation [Phil]
+  - patch 11: add a check for null divisor (Phil: I dropped your r-b)
+  - Typos, formatting, naming, style [Phil]
 
--- 
-Luc
+Patches without review: 03, 09, 10, 11, 13, 15
 
-> 
-> > 
-> > >> +
-> > >> +    freq = (freq << mux->frac_bits) / div;
-> > 
-> > Maybe:
-> > 
-> >     freq = muldiv64(freq, 1 << mux->frac_bits, div);
-> OK
-> 
-> > 
-> > >> +
-> > >> +    clock_update_hz(mux->out, freq);
-> > >>  }
-> > >>  
-> > >>  static void clock_mux_src_update(void *opaque)
-> > >>  {
-> > >>      CprmanClockMuxState **backref = opaque;
-> > >>      CprmanClockMuxState *s = *backref;
-> > >> +    CprmanClockMuxSource src = backref - s->backref;
-> > >> +    uint32_t current_src;
-> > 
-> > Maybe avoid current_src and use in place.
-> OK
-> 
-> > 
-> > Otherwise:
-> > Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> Thanks !
-> 
-> -- 
-> Luc
-> 
-> > 
-> > >> +
-> > >> +    current_src = FIELD_EX32(*s->reg_cm, CM_CLOCKx_CTL, SRC);
-> > >> +
-> > >> +    if (current_src != src) {
-> > >> +        return;
-> > >> +    }
-> > >>  
-> > >>      clock_mux_update(s);
-> > >>  }
-> > >>  
-> > >>  static void clock_mux_init(Object *obj)
-> > >>
-> > > 
-> 
-> -- 
+Hi,
+
+This series add the BCM2835 CPRMAN clock manager peripheral to the
+Raspberry Pi machine.
+
+Patches 1-3 are preliminary changes, patches 4-12 are the actual
+implementation.
+
+The two last patches add a clock input to the PL011 and
+connect it to the CPRMAN and are RFC.
+
+This series has been tested with Linux 5.4.61 (the current raspios
+version). It fixes the kernel Oops at boot time due to invalid UART
+clock value, and other warnings/errors here and there because of bad
+clocks or lack of CPRMAN.
+
+Here is the clock tree as seen by Linux when booted in QEMU:
+(/sys/kernel/debug/clk/clk_summary with some columns removed)
+
+                        enable  prepare              
+   clock                 count    count          rate
+-----------------------------------------------------
+ otg                         0        0     480000000
+ osc                         5        5      19200000
+    gp2                      1        1         32768
+    tsens                    0        0       1920000
+    otp                      0        0       4800000
+    timer                    0        0       1000002
+    pllh                     4        4     864000000
+       pllh_pix_prediv       1        1       3375000
+          pllh_pix           0        0        337500
+       pllh_aux              1        1     216000000
+          vec                0        0     108000000
+       pllh_rcal_prediv      1        1       3375000
+          pllh_rcal          0        0        337500
+    plld                     3        3    2000000024
+       plld_dsi1             0        0       7812501
+       plld_dsi0             0        0       7812501
+       plld_per              3        3     500000006
+          gp1                1        1      25000000
+          uart               1        2      47999625
+       plld_core             2        2     500000006
+          sdram              0        0     166666668
+    pllc                     3        3    2400000000
+       pllc_per              1        1    1200000000
+          emmc               0        0     200000000
+       pllc_core2            0        0       9375000
+       pllc_core1            0        0       9375000
+       pllc_core0            2        2    1200000000
+          vpu                1        1     700000000
+             aux_spi2        0        0     700000000
+             aux_spi1        0        0     700000000
+             aux_uart        0        0     700000000
+             peri_image      0        0     700000000
+    plla                     2        2    2250000000
+       plla_ccp2             0        0       8789063
+       plla_dsi0             0        0       8789063
+       plla_core             1        1     750000000
+          h264               0        0     250000000
+          isp                0        0     250000000
+ dsi1p                       0        0             0
+ dsi0p                       0        0             0
+ dsi1e                       0        0             0
+ dsi0e                       0        0             0
+ cam1                        0        0             0
+ cam0                        0        0             0
+ dpi                         0        0             0
+ tec                         0        0             0
+ smi                         0        0             0
+ slim                        0        0             0
+ gp0                         0        0             0
+ dft                         0        0             0
+ aveo                        0        0             0
+ pcm                         0        0             0
+ pwm                         0        0             0
+ hsm                         0        0             0
+
+It shows small differences with real hardware due other missing
+peripherals for which the driver turn the clock off (like tsens).
+
+Luc Michel (15):
+  hw/core/clock: provide the VMSTATE_ARRAY_CLOCK macro
+  hw/core/clock: trace clock values in Hz instead of ns
+  hw/core/clock: add the clock_new helper function
+  hw/arm/raspi: fix CPRMAN base address
+  hw/arm/raspi: add a skeleton implementation of the CPRMAN
+  hw/misc/bcm2835_cprman: add a PLL skeleton implementation
+  hw/misc/bcm2835_cprman: implement PLLs behaviour
+  hw/misc/bcm2835_cprman: add a PLL channel skeleton implementation
+  hw/misc/bcm2835_cprman: implement PLL channels behaviour
+  hw/misc/bcm2835_cprman: add a clock mux skeleton implementation
+  hw/misc/bcm2835_cprman: implement clock mux behaviour
+  hw/misc/bcm2835_cprman: add the DSI0HSCK multiplexer
+  hw/misc/bcm2835_cprman: add sane reset values to the registers
+  hw/char/pl011: add a clock input
+  hw/arm/bcm2835_peripherals: connect the UART clock
+
+ include/hw/arm/bcm2835_peripherals.h       |    5 +-
+ include/hw/arm/raspi_platform.h            |    5 +-
+ include/hw/char/pl011.h                    |    1 +
+ include/hw/clock.h                         |   31 +
+ include/hw/misc/bcm2835_cprman.h           |  209 ++++
+ include/hw/misc/bcm2835_cprman_internals.h | 1018 ++++++++++++++++++++
+ hw/arm/bcm2835_peripherals.c               |   15 +-
+ hw/char/pl011.c                            |   45 +
+ hw/core/clock.c                            |    6 +-
+ hw/misc/bcm2835_cprman.c                   |  798 +++++++++++++++
+ hw/char/trace-events                       |    1 +
+ hw/core/trace-events                       |    4 +-
+ hw/misc/meson.build                        |    1 +
+ hw/misc/trace-events                       |    5 +
+ 14 files changed, 2132 insertions(+), 12 deletions(-)
+ create mode 100644 include/hw/misc/bcm2835_cprman.h
+ create mode 100644 include/hw/misc/bcm2835_cprman_internals.h
+ create mode 100644 hw/misc/bcm2835_cprman.c
 
 -- 
+2.28.0
+

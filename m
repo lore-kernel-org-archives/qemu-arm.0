@@ -1,123 +1,114 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3738449lfq;
-        Sun, 4 Oct 2020 23:33:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwu2+kfRDMuOAWBjEXWGeqIHCQG8oJHRTBh71W8yzGo1BSl0I3JPnyv9MsaimVQQOpxbq3J
-X-Received: by 2002:a25:854d:: with SMTP id f13mr16018539ybn.210.1601879639010;
-        Sun, 04 Oct 2020 23:33:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601879639; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3784231lfq;
+        Mon, 5 Oct 2020 00:43:59 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzECq265AMxOgZgRqMeHlGnWSQW9LC3WC30iniZIUvAHoA1HX7AT3A9ysfOi/QRQuTtnTPL
+X-Received: by 2002:a25:3b96:: with SMTP id i144mr16349769yba.220.1601883839660;
+        Mon, 05 Oct 2020 00:43:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601883839; cv=none;
         d=google.com; s=arc-20160816;
-        b=xDjpSIwry2aZAb5VbSJKrHqdcVpPHJWj/jrzPVZC1xddWnboQbGce4oQrfTQumP64j
-         r9/GoFqsDSoBBbnYrG7+4v+xgsESY8JhtYvbwCZ9mZi463CcE/Lu9JjfXvTigfNHeSkn
-         jic7AATu30FSjOAFj2c+7bQVxY0/ybpeVqas3ebQSgk/LqwRwWlRJWUshlBsDV9kXQZI
-         p14dX2hQeDTAZR3ztMz7W127c6v5oWvz+PJ0LrZWt1n23dMudlQpIHUmby7ony4lx6f+
-         MqZgqoq4ovyrYRBw9nnj9+sULWSCOjVS1QJmofUytdSnXQM4i2PrEvuTgDnkhsT7B5fx
-         ovsg==
+        b=VtxyHVNT0aPWk19RwLgfUIUVSWcHCDb5fKPQm3nDYgX4/7js6gwFPRQNz55Ptb3YWq
+         J6tMbpImCrOPqe7xhLRZ8uEAQttd+f2CADn+lVmgICkCP84k+P4loeY2kehyCVK9MvLP
+         O2IOOuJvYwqL6PSQEmZzHTgL78aUT1L1q1mw4UXBT3sIxt+NfDT3Kj9hqFNFlUHTXq1B
+         UPl4O7/lVRbDs/n45RCOO97ICUNar7jjdm1cc1VXPKYjv6VGICz96yYuLpv6swtYkbTN
+         XhnQlUswQaMk7LKOOFt0+rFDO9mc0tGLOqu5CzFuHW6Idfhj8frhPDDYs1Esa9SHM2XJ
+         MBaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=tYhPG5upwMkpIHxG+0Upc1PqbqAzbVxFJ+rcnlZQ0A8=;
-        b=LrAAEoYSqwyUYx5N3amfwwTPHNYI21qTLXmVlZb2lBQG6H97ME8/b1ni3/nkbO/Mk6
-         0IJYcAF2crrPnHCXmLy8ke5PR7kZmLZVUAjgkyTOmSxNGd7Edl7/2wHw/7WFlicnBOaj
-         Y6lTzuZb0cjULM2Fk8Qq+0QDgEuvaFgbSyAU/RoioPCv+zoBfdUrDK+kpCsS7zi/AuBk
-         XTHbKITscFmInXYLiOmpODiN8l8ryT/LO/Lyhl8lDCHaRj0y5iG4fYB7EcfPaofhCrVv
-         NJ8nAXPO4HOwbW+KWLGZkezJgSV6T4eFYXy5+t/2weyxhlPRZadYixUAf7/vqsDyXL7V
-         1sow==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=jNZgGSdv00Vt+eNZ9kI38Vs96Vi60bucTcGiMo5uk9M=;
+        b=K1eaCy4Zkb64Q1n4d5dbzME2DsmwOdVswBJhh5cLBFaZW/rwEb2XVOrT+oRRxBHt26
+         svwJPcZrdOLXtUXPZA0BypR5DArrobL8VJRCDmiJA6aoFKWsom05JbnfjMoxIbJanEDH
+         j8psssXwvANAN+XaXNvrcn5zDc+8jqOcwB6GvGdHsYaUnqxPMu4jHOm6RMVFYgbD+4qV
+         wfw4+lSXMKwenHLQn3eWU++PYE4qgZEwELlCYnj7pmvUHBtapYSTLquxko1NYSdpo/wv
+         np+VVQhNrbuv3hrzLGBq1ceHHICQ9y7JQSzMp1aetc2sIQPpAuYDxs2fTp+o3QAv3xBR
+         g2zg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jAbIey5f;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="SPnxuLj/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v66si10381035ybv.476.2020.10.04.23.33.58
+        by mx.google.com with ESMTPS id b11si9601579ybn.387.2020.10.05.00.43.59
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 04 Oct 2020 23:33:59 -0700 (PDT)
+        Mon, 05 Oct 2020 00:43:59 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jAbIey5f;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="SPnxuLj/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:50222 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:58350 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPK4M-00082W-Dn
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 02:33:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42338)
+	id 1kPLA7-0001e4-0J
+	for alex.bennee@linaro.org; Mon, 05 Oct 2020 03:43:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56046)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kPK3e-000828-8n
- for qemu-arm@nongnu.org; Mon, 05 Oct 2020 02:33:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:27550)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kPK3b-000255-Ps
- for qemu-arm@nongnu.org; Mon, 05 Oct 2020 02:33:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601879590;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=tYhPG5upwMkpIHxG+0Upc1PqbqAzbVxFJ+rcnlZQ0A8=;
- b=jAbIey5f2oAYNtcGh79AP6C1Ns+RDav++PdgHI8SwZh92ucxtnjYFNRxvTnkIzUHD5xzfF
- u79AlbOeHAyB8bJ0gXbki/4bsDU5F14wVU0lpv8JwAUHTcf4mDSapuuSLr5KasPwsw8w03
- hbhcSxz1CyMrBNFhwicbbZG80EOVw8M=
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-393-dY2alSt4PyGMWv0uaK1U7Q-1; Mon, 05 Oct 2020 02:33:08 -0400
-X-MC-Unique: dY2alSt4PyGMWv0uaK1U7Q-1
-Received: by mail-qk1-f199.google.com with SMTP id f126so1139218qke.17
- for <qemu-arm@nongnu.org>; Sun, 04 Oct 2020 23:33:08 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kPL9y-0001cv-Mw; Mon, 05 Oct 2020 03:43:50 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36870)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kPL9w-0002G2-Vf; Mon, 05 Oct 2020 03:43:50 -0400
+Received: by mail-wm1-x342.google.com with SMTP id j136so7700045wmj.2;
+ Mon, 05 Oct 2020 00:43:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=jNZgGSdv00Vt+eNZ9kI38Vs96Vi60bucTcGiMo5uk9M=;
+ b=SPnxuLj/HBbggkEGW5iUw8hrdpU3zi+xMkWI5rXDVrcOdPlPoqVji/6Y7ToiTy+7S0
+ x+NIbRw09F9u/HZzDihnrrgUE7NZbTM9HgcvfPj0wd6LzgdkNYHfKlTi5rcpaK41dbEt
+ RNTzf/OOl8VsW/uk9ZvdxXS1s0AVgfeOHaqIuMwfuMr3hiLn6ZCHcw3BwSX1URZlKu9p
+ FxDgWPexjfIl1TVAR0jkYwrKOAQmzjFWmH3QhMIyK/Rh8rTGSZA/4lQnrGT4k8TpDB7G
+ RDK/FYOtlz2lhFLjKV37Xt/tpi6kOrX9zqlxEdrHh6Y0EuZzuscyrrMSSjveFvkc0IZs
+ Ce2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=tYhPG5upwMkpIHxG+0Upc1PqbqAzbVxFJ+rcnlZQ0A8=;
- b=Vz0GZri5db1j7H29QZGSqabLdxCgmuW6kJgYdrvJzo3hony2B1xBx4zI/yyo4ze/48
- 3ONoi5npMjxHs0B4nZnuUbcwikO9plmba0rBOknYE7+GbgiRSossprrnW2lWlgrnOiRe
- JXe+CtFvg9In3vIZQsDRuOHNOI3SOjm5P56Nq3Ze4/bnJZRi8kK664VSjiIc3sVvV8UP
- /Bb2Qw0xu7sZWDayLvF8sWYTr4phWbw5sH4fffaE5VMQwAlN21LxLZ/Bhszh9J1HXzAx
- K3xSUSyLNpNChFBLRoURNL3KQ3DrZDwKLfXJ7h9xKO/0OcEpBLICY/z1s6amVQjblrUM
- EQLA==
-X-Gm-Message-State: AOAM533vRnaAcCT5BxcxbQAF/g/y7ZhiXR3uOyccsO3PW985jTNGv5H6
- LHeaQib4pHP9lCniClBAnuaZTN++06FfKk5y/npGlDimDaMIP7jlPy1pENnyNSwMPwuOIKNSBtY
- QDCNCxXnetFfC1u0wNBzg+1iHgMCr
-X-Received: by 2002:a37:e214:: with SMTP id g20mr12131160qki.89.1601879588431; 
- Sun, 04 Oct 2020 23:33:08 -0700 (PDT)
-X-Received: by 2002:a37:e214:: with SMTP id g20mr12131134qki.89.1601879588140; 
- Sun, 04 Oct 2020 23:33:08 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=jNZgGSdv00Vt+eNZ9kI38Vs96Vi60bucTcGiMo5uk9M=;
+ b=rB4TvqZQMWS+9MhmgrkIs/kS25tu8A5kLx8xY6QdE349q8HjBvcO+vPeJ4TwYBqtzg
+ 95gBezkU3joE5dOPTaVFLENYXjlXV39BxhCnnY+VQX1p2p5zEHIBijkCxRCAWMf6LF5z
+ MymX3cEJHCyoLYQSfNL0ry/25pBkfry4JtrIskCy6kseVLHlXyB5jcWF48L/vDnrFDiW
+ pbWyArTcfJpS23Cejnt9xITN+2+ZLjVoqWFDAQ24z0K2vDGcK1/Q6qswCn+uXxtlUsbU
+ faojGPXb4kacecG4augsbVBPqdxw0/2ESeVSrFzmg90nIcaM2yxN9zjSvohCOOkTSyOq
+ OMKQ==
+X-Gm-Message-State: AOAM530tMig5susdz1pSWHK7G8OM9i+0LDapU2NHwonh+6Rw4GQOf/ie
+ x7iKBzfZmwF0vCCWwMeftMQQgk1k5QVAMA==
+X-Received: by 2002:a1c:4409:: with SMTP id r9mr1219323wma.131.1601883826320; 
+ Mon, 05 Oct 2020 00:43:46 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id s6sm5259972wrg.92.2020.10.05.00.43.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 05 Oct 2020 00:43:45 -0700 (PDT)
+Subject: Re: [PATCH] hw/ssi/npcm7xx_fiu: Fix handling of unsigned integer
+To: qemu-devel@nongnu.org
+References: <20200919132435.310527-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <e35e3c67-2f45-c1e2-b8ea-6f3512829fe4@amsat.org>
+Date: Mon, 5 Oct 2020 09:43:45 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <20200625191651.5817-1-eperezma@redhat.com>
- <20200903161446.29615-1-eperezma@redhat.com>
- <20200903161446.29615-6-eperezma@redhat.com>
- <d3e2098d-e150-7f99-a1ee-4a997daf4a5c@redhat.com>
- <CAJaqyWfwGP7_Ex=NhG_po+A1BkN3OCV=+3Vwi8uhLJ_e4UA5NQ@mail.gmail.com>
- <20200928174857.GC59869@xz-x1> <20201003082953-mutt-send-email-mst@kernel.org>
-In-Reply-To: <20201003082953-mutt-send-email-mst@kernel.org>
-From: Eugenio Perez Martin <eperezma@redhat.com>
-Date: Mon, 5 Oct 2020 08:32:31 +0200
-Message-ID: <CAJaqyWc1rrGu_YYNcANquXqd+LCBvoOZYYHdtsG3XQJDDbWohg@mail.gmail.com>
-Subject: Re: [PATCH 5/5] memory: Skip bad range assertion if notifier is
- DEVIOTLB_UNMAP type
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 02:11:31
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.745,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20200919132435.310527-1-f4bug@amsat.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -130,138 +121,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Juan Quintela <quintela@redhat.com>, Jason Wang <jasowang@redhat.com>,
- =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>,
- qemu-level <qemu-devel@nongnu.org>, Peter Xu <peterx@redhat.com>,
- Eric Auger <eric.auger@redhat.com>, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- Avi Kivity <avi@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- David Gibson <david@gibson.dropbear.id.au>,
- Richard Henderson <rth@twiddle.net>
+Cc: Tyrone Ting <kfting@nuvoton.com>, Alistair Francis <alistair@alistair23.me>,
+ Havard Skinnemoen <hskinnemoen@google.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Udyg65M98vqa
+X-TUID: yyFqf3Y8Bnch
 
-On Sat, Oct 3, 2020 at 7:38 PM Michael S. Tsirkin <mst@redhat.com> wrote:
->
-> On Mon, Sep 28, 2020 at 01:48:57PM -0400, Peter Xu wrote:
-> > On Mon, Sep 28, 2020 at 11:05:01AM +0200, Eugenio Perez Martin wrote:
-> > > On Fri, Sep 4, 2020 at 6:34 AM Jason Wang <jasowang@redhat.com> wrote=
-:
-> > > >
-> > > >
-> > > > On 2020/9/4 =E4=B8=8A=E5=8D=8812:14, Eugenio P=C3=A9rez wrote:
-> > > > > Device IOTLB invalidations can unmap arbitrary ranges, eiter outs=
-ide of
-> > > > > the memory region or even [0, ~0ULL] for all the space. The asser=
-tion
-> > > > > could be hit by a guest, and rhel7 guest effectively hit it.
-> > > > >
-> > > > > Signed-off-by: Eugenio P=C3=A9rez <eperezma@redhat.com>
-> > > > > Reviewed-by: Peter Xu <peterx@redhat.com>
-> > > > > Reviewed-by: Juan Quintela <quintela@redhat.com>
-> > > > > ---
-> > > > >   softmmu/memory.c | 13 +++++++++++--
-> > > > >   1 file changed, 11 insertions(+), 2 deletions(-)
-> > > > >
-> > > > > diff --git a/softmmu/memory.c b/softmmu/memory.c
-> > > > > index 8694fc7cf7..e723fcbaa1 100644
-> > > > > --- a/softmmu/memory.c
-> > > > > +++ b/softmmu/memory.c
-> > > > > @@ -1895,6 +1895,7 @@ void memory_region_notify_iommu_one(IOMMUNo=
-tifier *notifier,
-> > > > >   {
-> > > > >       IOMMUTLBEntry *entry =3D &event->entry;
-> > > > >       hwaddr entry_end =3D entry->iova + entry->addr_mask;
-> > > > > +    IOMMUTLBEntry tmp =3D *entry;
-> > > > >
-> > > > >       if (event->type =3D=3D IOMMU_NOTIFIER_UNMAP) {
-> > > > >           assert(entry->perm =3D=3D IOMMU_NONE);
-> > > > > @@ -1908,10 +1909,18 @@ void memory_region_notify_iommu_one(IOMMU=
-Notifier *notifier,
-> > > > >           return;
-> > > > >       }
-> > > > >
-> > > > > -    assert(entry->iova >=3D notifier->start && entry_end <=3D no=
-tifier->end);
-> > > > > +    if (notifier->notifier_flags & IOMMU_NOTIFIER_DEVIOTLB_UNMAP=
-) {
-> > > > > +        /* Crop (iova, addr_mask) to range */
-> > > > > +        tmp.iova =3D MAX(tmp.iova, notifier->start);
-> > > > > +        tmp.addr_mask =3D MIN(entry_end, notifier->end) - tmp.io=
-va;
-> > > > > +        /* Confirm no underflow */
-> > > > > +        assert(MIN(entry_end, notifier->end) >=3D tmp.iova);
-> > > >
-> > > >
-> > > > It's still not clear to me why we need such assert. Consider
-> > > > notifier->end is the possible IOVA range but not possible device IO=
-TLB
-> > > > invalidation range (e.g it allows [0, ULLONG_MAX]).
-> > > >
-> > > > Thanks
-> > > >
-> > >
-> > > As far as I understood the device should admit that out of bounds
-> > > notifications in that case,
-> > > and the assert just makes sure that there was no underflow in
-> > > tmp.addr_mask, i.e., that something
-> > > very wrong that should never happen in production happened.
-> > >
-> > > Peter, would you mind to confirm/correct it?
-> >
-> > I think Jason is right - since we have checked at the entry that the tw=
-o
-> > regions cross over each other:
-> >
-> >     /*
-> >      * Skip the notification if the notification does not overlap
-> >      * with registered range.
-> >      */
-> >     if (notifier->start > entry_end || notifier->end < entry->iova) {
-> >         return;
-> >     }
-> >
-> > Then I don't see how this assertion can fail any more.
-> >
-> > But imho not a big problem either, and it shouldn't hurt to even keep t=
-he
-> > assertion of above isn't that straightforward.
-> >
-> > >
-> > > Is there anything else needed to pull this patch?
-> >
-> > I didn't post a pull for this only because I shouldn't :) - the plan wa=
-s that
-> > all vt-d patches will still go via Michael's tree, iiuc.  Though at lea=
-st to me
-> > I think this series is acceptable for merging.
->
-> Sure, that's ok.
->
-> Eugenio, you sent patch 0 as a response to another series, which
-> made me miss the series. Pls don't do that in the future.
->
+Hi Peter,
 
-Sorry, noted for the next time.
+Can you take this patch via your qemu-arm tree?
 
-Thanks!
-
-> Looks like Jason reviewed the series - Jason, is that right? -
-> so I'd like his ack if possible.
->
->
-> > Though it would always be good too if Jason would still like to review =
-it.
-> >
-> > Jason, what's your opinion?
-> >
-> > Thanks,
-> >
-> > --
-> > Peter Xu
->
-
+On 9/19/20 3:24 PM, Philippe Mathieu-Daudé wrote:
+> Fix integer handling issues handling issue reported by Coverity:
+> 
+>   hw/ssi/npcm7xx_fiu.c: 162 in npcm7xx_fiu_flash_read()
+>   >>>     CID 1432730:  Integer handling issues  (NEGATIVE_RETURNS)
+>   >>>     "npcm7xx_fiu_cs_index(fiu, f)" is passed to a parameter that cannot be negative.
+>   162         npcm7xx_fiu_select(fiu, npcm7xx_fiu_cs_index(fiu, f));
+> 
+>   hw/ssi/npcm7xx_fiu.c: 221 in npcm7xx_fiu_flash_write()
+>   218         cs_id = npcm7xx_fiu_cs_index(fiu, f);
+>   219         trace_npcm7xx_fiu_flash_write(DEVICE(fiu)->canonical_path, cs_id, addr,
+>   220                                       size, v);
+>   >>>     CID 1432729:  Integer handling issues  (NEGATIVE_RETURNS)
+>   >>>     "cs_id" is passed to a parameter that cannot be negative.
+>   221         npcm7xx_fiu_select(fiu, cs_id);
+> 
+> Since the index of the flash can not be negative, return an
+> unsigned type.
+> 
+> Reported-by: Coverity (CID 1432729 & 1432730: NEGATIVE_RETURNS)
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  hw/ssi/npcm7xx_fiu.c | 12 ++++++------
+>  hw/ssi/trace-events  |  2 +-
+>  2 files changed, 7 insertions(+), 7 deletions(-)
+> 
+> diff --git a/hw/ssi/npcm7xx_fiu.c b/hw/ssi/npcm7xx_fiu.c
+> index 104e8f2b963..5040132b074 100644
+> --- a/hw/ssi/npcm7xx_fiu.c
+> +++ b/hw/ssi/npcm7xx_fiu.c
+> @@ -103,7 +103,8 @@ enum NPCM7xxFIURegister {
+>   * Returns the index of flash in the fiu->flash array. This corresponds to the
+>   * chip select ID of the flash.
+>   */
+> -static int npcm7xx_fiu_cs_index(NPCM7xxFIUState *fiu, NPCM7xxFIUFlash *flash)
+> +static unsigned npcm7xx_fiu_cs_index(NPCM7xxFIUState *fiu,
+> +                                     NPCM7xxFIUFlash *flash)
+>  {
+>      int index = flash - fiu->flash;
+>  
+> @@ -113,20 +114,19 @@ static int npcm7xx_fiu_cs_index(NPCM7xxFIUState *fiu, NPCM7xxFIUFlash *flash)
+>  }
+>  
+>  /* Assert the chip select specified in the UMA Control/Status Register. */
+> -static void npcm7xx_fiu_select(NPCM7xxFIUState *s, int cs_id)
+> +static void npcm7xx_fiu_select(NPCM7xxFIUState *s, unsigned cs_id)
+>  {
+>      trace_npcm7xx_fiu_select(DEVICE(s)->canonical_path, cs_id);
+>  
+>      if (cs_id < s->cs_count) {
+>          qemu_irq_lower(s->cs_lines[cs_id]);
+> +        s->active_cs = cs_id;
+>      } else {
+>          qemu_log_mask(LOG_GUEST_ERROR,
+>                        "%s: UMA to CS%d; this module has only %d chip selects",
+>                        DEVICE(s)->canonical_path, cs_id, s->cs_count);
+> -        cs_id = -1;
+> +        s->active_cs = -1;
+>      }
+> -
+> -    s->active_cs = cs_id;
+>  }
+>  
+>  /* Deassert the currently active chip select. */
+> @@ -206,7 +206,7 @@ static void npcm7xx_fiu_flash_write(void *opaque, hwaddr addr, uint64_t v,
+>      NPCM7xxFIUFlash *f = opaque;
+>      NPCM7xxFIUState *fiu = f->fiu;
+>      uint32_t dwr_cfg;
+> -    int cs_id;
+> +    unsigned cs_id;
+>      int i;
+>  
+>      if (fiu->active_cs != -1) {
+> diff --git a/hw/ssi/trace-events b/hw/ssi/trace-events
+> index 2f83ef833fb..612d3d6087a 100644
+> --- a/hw/ssi/trace-events
+> +++ b/hw/ssi/trace-events
+> @@ -19,4 +19,4 @@ npcm7xx_fiu_deselect(const char *id, int cs) "%s deselect CS%d"
+>  npcm7xx_fiu_ctrl_read(const char *id, uint64_t addr, uint32_t data) "%s offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
+>  npcm7xx_fiu_ctrl_write(const char *id, uint64_t addr, uint32_t data) "%s offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
+>  npcm7xx_fiu_flash_read(const char *id, int cs, uint64_t addr, unsigned int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value: 0x%" PRIx64
+> -npcm7xx_fiu_flash_write(const char *id, int cs, uint64_t addr, unsigned int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value: 0x%" PRIx64
+> +npcm7xx_fiu_flash_write(const char *id, unsigned cs, uint64_t addr, unsigned int size, uint64_t value) "%s[%d] offset: 0x%08" PRIx64 " size: %u value: 0x%" PRIx64
+> 

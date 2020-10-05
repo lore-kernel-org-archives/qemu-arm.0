@@ -1,101 +1,98 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3801645lfq;
-        Mon, 5 Oct 2020 01:09:26 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwi6lYOx3ooWEQV5OWcLf1E+fsk5mV6akTwOujDRV5qd8KA4uxsXyvqdd1K3rQUx7XzHBHH
-X-Received: by 2002:a25:7405:: with SMTP id p5mr17894969ybc.19.1601885365893;
-        Mon, 05 Oct 2020 01:09:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601885365; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3845814lfq;
+        Mon, 5 Oct 2020 02:23:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy5pI9VLT/DL6jY2CuXSuh/2l1ineW7SIrZAnXS61PAGEL1UPp+s593RS+5fGfq8ESRrsGm
+X-Received: by 2002:a17:906:1c0f:: with SMTP id k15mr999248ejg.343.1601889783052;
+        Mon, 05 Oct 2020 02:23:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601889783; cv=none;
         d=google.com; s=arc-20160816;
-        b=xRR5xTHet18Rum23Wk6QS484vQRmocgGZV1RdT1OeZkXbSv4ShtbN0yeIKdSLb1JNr
-         NYOoqRjkL7Q1TjEsd1dUYocjjioSAjYJ5cOWl5eWF5i/73dowE93mGSTPsjjeO5srtdZ
-         L+ZeKKn39OJsXzJWCvT9arvaepVdwBxdXIo2Mwlt5EfZPHN4sVMpqL/2s3tBKtesrLAL
-         WAxsB7fKmGjzzmi0ePA6MqYTId/c+oUc/jl4mPFq0RHToWUWIYZEB80rIQBUMJ23PuIo
-         yhyTKNRku39RkSGiBDGwrZv8wypRNtCbWz6Ua8/sqfBbdJOPF9erirrne9WW+GRs7rRl
-         FpLQ==
+        b=RGyTFIrJ7feX/a99NJKj9TZEkh6wF1WFKTn7pdpqHKmOH+htiZiYIfYXZmSCt1aHkm
+         taT/KaTNw8mRFSpa8I3J5in412u3VAV1eiachLmKg3CnEfp8kaZY+dAjS/ToaLDPUDdY
+         GZzDwuBtguWvB/qkc7/kST9sOS5TcAgA8f7bVJg5R90FgPk/m3zDoEKIQkycmdSP3xqr
+         G6n0Wo9WMuVQnUsX9/Z0vYmbubPJ9fEMXpVysUb9XwagT0+1bPC91pvqSJf5rYEEnYoQ
+         +u9Qc4YfLFx6owahb2VBO6lp1KURgsQx2Gjs9jKs0x2r9pQV03yA4ybzRFQE6u1/Z1oF
+         uwRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=hFokf7VtIUajpwgQMfOnv7bWuVtWqGGh1Q951fJ0rAo=;
-        b=qpZ0+YYZ6ZnXM7aQFwqwEzNaIfDZ3lBLCuNyAzf2VWMQBSxSV6Fq/oTqy3t8XS8bcO
-         QQLr9opDdmUI576A4lxYJ/6ABVzzGju+9f7yoO/b+WU36rEEY9sYWlQi0lC3xIsf9GHY
-         42Uy8JD9fBjPeLcg8JN/ksYEXSBQWnQ3cKv1SRfNUsllYnlJd/yVf5kiWi9tYS2C6gUG
-         MqxXxmOg8Dx5Aa/GCyHesDMXhfa2dAItcvpnw6fBpb5V4Sb7ZyECi1tziOZdGY9AL/e/
-         l2B1dL1+W5Ig/MXq4iFNgSOP58RIovzf9Pu2e8r8nJzV5CBNwr8IrBdLPlVYeD2NpkXr
-         dMdA==
+        h=content-transfer-encoding:content-language:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:references:cc:to:from:subject
+         :dkim-signature;
+        bh=ugm8HlWBBQwIq6YqZ4bqZwMlHXIN2IqfB12xnKXSLh4=;
+        b=mS3UbWXzMJelTWBP3aWmY4Eqxsq9qUmUdLU+p8qLwHUJt+6/NORuCcR4ifSEP29lc/
+         lJkARLB1SNFQcz/EBCe9M99km+xKbPKGZWAGf9InW5WQ2+5MofUmXW3+5yNC32Iuq7pQ
+         Y4CAUkwKaRhdA60Zptofc+5fkQzZB2Rh6RaDlhja3ssTGEV/4uvXY+D8xXGOIV2EYg+5
+         4JCw07OdbUkVQ2sHj4Ydv2s5nd6pEBoiAAQS5CM1OQb9SiYbN/d/VmmbGqQLDYetL9+u
+         2bO6KeYRqq6fE0HoMOfb/OlTPhLjd4vuiS9ikFJqlT++eRrYO0u0ZgIzlOnUtW4+IxLc
+         Ptaw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VtE9UZKA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 185si12626480ybv.198.2020.10.05.01.09.25
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zr9+LqYH;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <philmd@redhat.com>
+Received: from us-smtp-delivery-124.mimecast.com (us-smtp-delivery-124.mimecast.com. [216.205.24.124])
+        by mx.google.com with ESMTPS id l13si4916355edn.600.2020.10.05.02.23.02
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 01:09:25 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 05 Oct 2020 02:23:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) client-ip=216.205.24.124;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=VtE9UZKA;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:60642 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPLYj-0007N0-9r
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 04:09:25 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33100)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kPLXA-0006Oc-FS
- for qemu-devel@nongnu.org; Mon, 05 Oct 2020 04:07:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20143)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kPLX7-00058p-BN
- for qemu-devel@nongnu.org; Mon, 05 Oct 2020 04:07:48 -0400
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=Zr9+LqYH;
+       spf=pass (google.com: domain of philmd@redhat.com designates 216.205.24.124 as permitted sender) smtp.mailfrom=philmd@redhat.com;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601885264;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=hFokf7VtIUajpwgQMfOnv7bWuVtWqGGh1Q951fJ0rAo=;
- b=VtE9UZKAbfwuFHQvi1kyHVntIO78PqeUW/GArnKuDVYH6e+vyW7bflJXH9o7AJL9X8HlA6
- Cw5NGXqsFZNqEPAmIw9Y+s0+Bx3nJlexzyNfYWKksMqDcsPoBWhE0QGHOAdquiBzdJJj/d
- JQTlK+6ZvgUtfq08yJMbgJxpWTusk58=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-5-TKyqVR2YMWyIjvgv_xEDxA-1; Mon, 05 Oct 2020 04:07:41 -0400
-X-MC-Unique: TKyqVR2YMWyIjvgv_xEDxA-1
-Received: by mail-wr1-f69.google.com with SMTP id v12so3690099wrm.9
- for <qemu-devel@nongnu.org>; Mon, 05 Oct 2020 01:07:41 -0700 (PDT)
+	s=mimecast20190719; t=1601889781;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+	bh=ugm8HlWBBQwIq6YqZ4bqZwMlHXIN2IqfB12xnKXSLh4=;
+	b=Zr9+LqYH3m2q1IdW/ADuGp20Tk7QlIixE07mwiyHONqiy1dKr+GD29vIth2xPrTvCiVOBX
+	nhhRxBed0uZ6lnORynUOpP/PTlZzMbnn1CSJO7GiBz/FWLv7hjIv/g24yUmD4gAQgDluWy
+	mgiSFU5Fa2oh0mNV0DYWVO4KlemTDjQ=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-381-cNU3j5iYP7ivcz1JaciqDQ-1; Mon, 05 Oct 2020 05:22:58 -0400
+X-MC-Unique: cNU3j5iYP7ivcz1JaciqDQ-1
+Received: by mail-wr1-f72.google.com with SMTP id r16so3739274wrm.18
+        for <alex.bennee@linaro.org>; Mon, 05 Oct 2020 02:22:58 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=hFokf7VtIUajpwgQMfOnv7bWuVtWqGGh1Q951fJ0rAo=;
- b=ggsO49v398zPnrPCUYwf1LsRsju/hqCwZGlNkKM/0vYT7BbFw1za1UNKPuo1CFqheM
- OzrhqGNQhSeeoWT2r7WaZaLiGxH6K2Ou6IcrMiV55cZqXpWtbPVLOHUud7xF2xz3RUG6
- ertbQPLsdSyuWLOxOFv+tARecUkHHNwtXo0pMrkkZHhk46wVPRAdowgMemFZjaFP6XOU
- mqTYv6cfD5WVivUcu5LlThJK4lcof+0XoVWxXF3WlLYIzF6c9c9Mc4cCC3AI1d2IelF6
- W033vNbDmNN16vOc3d28y8yf4EnnhJDEDqor4Mij3EGTfr5Rgle59CJhx7CLYOed3CV7
- UQvg==
-X-Gm-Message-State: AOAM533VY1aUokzFrZJW5TtTZmq6HXzY7mUojHvBK3fVTOEnZZsuPG15
- wI1D7EqIcidYnMYPMOOkCIdhhOLuSFI1hp5eODs6x7oS+jlrwQxY5vI2WIxgcFWDmbinBxEJEsk
- 3hFIN/dIiDEcd8qw=
-X-Received: by 2002:adf:b306:: with SMTP id j6mr15539447wrd.279.1601885260311; 
- Mon, 05 Oct 2020 01:07:40 -0700 (PDT)
-X-Received: by 2002:adf:b306:: with SMTP id j6mr15539431wrd.279.1601885260112; 
- Mon, 05 Oct 2020 01:07:40 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id b11sm11911725wrt.38.2020.10.05.01.07.38
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Oct 2020 01:07:39 -0700 (PDT)
-Subject: Re: [PATCH v2] tests/boot_linux_console: Boot Trusted Firmware-A on
- the Raspberry Pi 3
-To: qemu-devel@nongnu.org
-References: <20200217103442.30318-1-f4bug@amsat.org>
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:from:to:cc:references:autocrypt
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-language:content-transfer-encoding;
+        bh=ugm8HlWBBQwIq6YqZ4bqZwMlHXIN2IqfB12xnKXSLh4=;
+        b=EZUm5PD9Z7zMCyNAR1EGClnAOoS5U4aAgC1Il4AZnherK948oG52QahfIQsnzrk3Ci
+         79wqKlmKM8BES9niOILGaie/pZbZlNqeAMgZYiuAQXJDd9pX2+kz0E25M8NuCw0zDxR7
+         drt1jX8T4KURUFP0IsfKW0zOnYUMxAGqKd/exHRX29odj7tm7V9kKYO5rxMT2yr7jY9m
+         gLOWug4RjMllOizDYEKzJH6Lyt5z8tDY7nsiU4LCekOCzDUxoePjpMscLsUckdhsygwt
+         wx0S7m9fOpfMUYr/YVfO9rZr1kw0bwlCjV7EA+oYBuDChEpzGgCuPTiRVvHBeLnN1gYW
+         891Q==
+X-Gm-Message-State: AOAM532+xJX0sAu1W1x/ttMg6MPo8ZeboySMPjpNkiHkcPmNyii5c94L
+	U02AkQWQ4jf//UIcusao4Ln7cQMgROnLPvm0Tu01ztrf5BRivjzIMVonaZDOr9k2LwO0NYRo8Ng
+	YSBN3C2xt+3Pb2k0p
+X-Received: by 2002:adf:dd46:: with SMTP id u6mr5188154wrm.295.1601889777063;
+        Mon, 05 Oct 2020 02:22:57 -0700 (PDT)
+X-Received: by 2002:adf:dd46:: with SMTP id u6mr5188134wrm.295.1601889776884;
+        Mon, 05 Oct 2020 02:22:56 -0700 (PDT)
+Return-Path: <philmd@redhat.com>
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
+        by smtp.gmail.com with ESMTPSA id a7sm11085392wmh.6.2020.10.05.02.22.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 05 Oct 2020 02:22:56 -0700 (PDT)
+Subject: Re: [PATCH v3 17/19] hw/arm: Automatically select the 'virt' machine
+ on KVM
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, kvm-devel <kvm@vger.kernel.org>,
+ Thomas Huth <thuth@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Fam Zheng <fam@euphon.net>, Richard Henderson <richard.henderson@linaro.org>
+References: <20200316160634.3386-1-philmd@redhat.com>
+ <20200316160634.3386-18-philmd@redhat.com>
+ <CAFEAcA-Rt__Du0TqqVFov4mNoBvC9hTt7t7e-3G45Eck4z94tQ@mail.gmail.com>
+ <CAFEAcA-u53dVdv8EJdeeOWxw+SfPJueTq7M6g0vBF5XM2Go4zw@mail.gmail.com>
+ <c7d07e18-57dd-7b55-f3dc-283c9d13e4b5@redhat.com>
+ <8253ddd7-3149-17d9-1174-6474c4bde605@redhat.com>
+ <36629bed-9b32-01a0-fdc2-831b10e4bad9@redhat.com>
 Autocrypt: addr=philmd@redhat.com; keydata=
  mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
  bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
@@ -119,90 +116,111 @@ Autocrypt: addr=philmd@redhat.com; keydata=
  9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
  RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
  apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <79e2fbbc-2afb-5cef-2af6-4664679b8745@redhat.com>
-Date: Mon, 5 Oct 2020 10:07:38 +0200
+Message-ID: <f3b931f5-c785-1d98-edd1-e5fcc91ff0ce@redhat.com>
+Date: Mon, 5 Oct 2020 11:22:54 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20200217103442.30318-1-f4bug@amsat.org>
+In-Reply-To: <36629bed-9b32-01a0-fdc2-831b10e4bad9@redhat.com>
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+	auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 02:11:31
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.745,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, pete@akeo.ie, Luc Michel <luc.michel@greensocs.com>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Ard Biesheuvel <ard.biesheuvel@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bSpLK4c+dbEc
+X-TUID: 4hl84IQ1F8PI
 
-On 2/17/20 11:34 AM, Philippe Mathieu-Daudé wrote:
-> This test runs Trusted Firmware-A on the Raspberry Pi 3.
-> We deliberately stop the boot process when the EDK2 UEFI version
-> is displayed.
+On 10/1/20 5:05 PM, Philippe Mathieu-Daudé wrote:
+> On 10/1/20 9:38 AM, Paolo Bonzini wrote:
+>> On 29/09/20 22:36, Philippe Mathieu-Daudé wrote:
+>>> Yes, the problem if I don't restrict to KVM, when
+>>> using the Xen accelerator odd things occur
+>>> (using configure --enable-xen --disable-tcg --disable-kvm):
+>>>
+>>> Compiling C object libqemu-i386-softmmu.fa.p/hw_cpu_a15mpcore.c.o
+>>> hw/cpu/a15mpcore.c:28:10: fatal error: kvm_arm.h: No such file or directory
+>>>
+>>> See
+>>> https://wiki.xenproject.org/wiki/Xen_ARM_with_Virtualization_Extensions#Use_of_qemu-system-i386_on_ARM
+>>
+>> I don't understand.  Is Xen adding CONFIG_ARM_VIRT=y to
+>> default-configs/i386-softmmu.mak??
 > 
-> The binary is build on AppVeyor CI using Pete Batard repository [1].
-> ATF v2.1 binary are used (see [2]). Extra documentation in [3].
+> No, this is when using:
 > 
-> It is very simple and fast:
+>  config ARM_VIRT
+>      bool
+> +    default y
 > 
->   $ avocado --show=app,console run -t atf tests/acceptance
->   JOB ID     : 1e748d7c9e9011cf0af3250ddc8ebf2389d6204e
->   JOB LOG    : avocado/job-results/job-2020-02-16T18.08-1e748d7/job.log
->    (1/1) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_aarch64_raspi3_atf:
->   console: NOTICE:  Booting Trusted Firmware
->   console: NOTICE:  BL1: v2.1(release):v2.1
->   console: NOTICE:  BL1: Built : 15:26:06, May 13 2019
->   console: NOTICE:  rpi3: Detected: Raspberry Pi 3 Model B (1GB, Sony, UK) [0x00a02082]
->   console: NOTICE:  BL1: Booting BL2
->   console: ERROR:   rpi3_sdhost: timeout status 0x40
->   console: NOTICE:  BL2: v2.1(release):v2.1
->   console: NOTICE:  BL2: Built : 15:26:01, May 13 2019
->   console: NOTICE:  BL1: Booting BL31
->   console: NOTICE:  BL31: v2.1(release):v2.1
->   console: NOTICE:  BL31: Built : 15:26:04, May 13 2019
->   console: =UEFI firmware (version UEFI Firmware v1.15 built at 11:58:44 on Feb 14 2020)
->   PASS (1.54 s)
->   RESULTS    : PASS 1 | ERROR 0 | FAIL 0 | SKIP 0 | WARN 0 | INTERRUPT 0 | CANCEL 0
->   JOB TIME   : 1.88 s
+> I had the understanding devices in hw/$BASEARCH would be only
+> included for $ARCH, but I was wrong, any arch kconfig-include
+> the devices of the other archs.
 > 
-> [1] https://github.com/pbatard/RPi3#summary
-> [2] https://github.com/ARM-software/arm-trusted-firmware/blob/v2.1/docs/plat/rpi3.rst
-> [3] http://www.skylyrac.net/2018-02-01-port-arm-tf-to-rpi3.html
+> I tried the following diff which doesn't build because various
+> devices in *non*-archdep folders use arch-specific Kconfig values:
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> -- >8 --
+> diff --git a/meson.build b/meson.build
+> index 9ab5d514d7..cfe19d0007 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -575,6 +575,7 @@ foreach target : target_dirs
+>      if fs.is_file(target_kconfig)
+>        minikconf_input += [target_kconfig]
+>      endif
+> +    minikconf_input += 'hw' / config_target['TARGET_BASE_ARCH'] / 'Kconfig'
+>      config_devices_mak = configure_file(
+>        input: minikconf_input,
+>        output: config_devices_mak,
+> diff --git a/hw/Kconfig b/hw/Kconfig
+> index 4de1797ffd..64c120175a 100644
+> --- a/hw/Kconfig
+> +++ b/hw/Kconfig
+> @@ -41,29 +41,29 @@ source vfio/Kconfig
+>  source watchdog/Kconfig
+> 
+>  # arch Kconfig
+> -source arm/Kconfig
+> -source alpha/Kconfig
+> -source avr/Kconfig
+> -source cris/Kconfig
+> -source hppa/Kconfig
+> -source i386/Kconfig
+> -source lm32/Kconfig
+> -source m68k/Kconfig
+> -source microblaze/Kconfig
+> -source mips/Kconfig
+> -source moxie/Kconfig
+> -source nios2/Kconfig
+> -source openrisc/Kconfig
+> -source ppc/Kconfig
+> -source riscv/Kconfig
+> -source rx/Kconfig
+> -source s390x/Kconfig
+> -source sh4/Kconfig
+> -source sparc/Kconfig
+> -source sparc64/Kconfig
+> -source tricore/Kconfig
+> -source unicore32/Kconfig
+> -source xtensa/Kconfig
+> 
+>  # Symbols used by multiple targets
+>  config TEST_DEVICES
 > ---
-> v2: Start with a single core powered-on
-> ---
->  tests/acceptance/boot_linux_console.py | 24 ++++++++++++++++++++++++
->  1 file changed, 24 insertions(+)
 
-Thanks, applied to my acceptance-testing tree.
+List of arch-indep Kconfig using arch-defined selectors:
 
+hw/acpi/Kconfig:42:    depends on PC
+hw/intc/Kconfig:31:    depends on ARM_GIC && KVM
+hw/intc/Kconfig:36:    depends on OPENPIC && KVM
+hw/intc/Kconfig:40:    depends on POWERNV || PSERIES
+hw/intc/Kconfig:49:    depends on XICS && KVM
+hw/intc/Kconfig:60:    depends on S390_FLIC && KVM
+hw/mem/Kconfig:11:    depends on (PC || PSERIES || ARM_VIRT)
+hw/pci-bridge/Kconfig:8:    default y if Q35
+hw/timer/Kconfig:14:    default y if PC
+hw/tpm/Kconfig:18:    depends on TPM && PC
+hw/tpm/Kconfig:24:    depends on TPM && PSERIES
+hw/vfio/Kconfig:16:    depends on LINUX && S390_CCW_VIRTIO
+hw/vfio/Kconfig:38:    depends on LINUX && S390_CCW_VIRTIO

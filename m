@@ -1,110 +1,92 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp263899lfo;
-        Thu, 28 Jan 2021 06:22:53 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzr7DQeRbff4xZ3N7JfD8+ROXqu+u6Krpe8SSfGhX7VoJubQ+5MUWEg30xCHWWHfMN80xps
-X-Received: by 2002:a25:688c:: with SMTP id d134mr25162980ybc.477.1611843773863;
-        Thu, 28 Jan 2021 06:22:53 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611843773; cv=none;
-        d=google.com; s=arc-20160816;
-        b=tdRIKN//v8KYgl8bPD0veUkwgkeKukKkyw/qzXMvm7saVNnuvnsmUx+uecGj3exiFI
-         zWYfbToewxiAboow7PIea8KZvUtpPSH8duHh/uJFugopKqk86vLB7RW/sqpG09bfwf5m
-         Ff50F6jClxmUF62gT2VjXs9YZXI5E1Kwj45G2/jiV/x9I+3fHGt6GOzSrY7oJqx7ml3g
-         HQAtbXy6W2vv40Yk0YYmcbiB/YX84d4vkWJqjkduIcFDQ4whhN+j4rQJE8M8hjQ5p6om
-         hpWE+8j9AWXwpRUMtmWDHDgkPF6pfZ3vwxsj/rIg5gN2gcp/DvN/RryvQGa75a7sHqNL
-         p+rg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=8Tcbr9SedKFrNWTq4e/LLHNQILimboW0eGVvS+bEniw=;
-        b=NqHLJxbT0+gTuZOwM6fZwH5Ck8R4uelFagVF/BShNWK2GyTOzhcZwRv++AhNTr8MPI
-         ZqB87mjjqzyfq2jbUa2LmdQxb7CQ5ILfDuy6Gl0WQqYWB8enxgLcI/iqtTfC7hR4Uin4
-         LCW2rWJg396U9BhRZxJzl0u/x7WUXGIjqddfPod5Nm+VXc2BdseRr5IZd75F06ZiEW3V
-         LzycX3ket+ZFcPKt58lishNBi1YiswiCgAaZtXm39s/M5MbZjH2JfgKOdZHKXY8BRBmm
-         MzNRpOKCVOs+Uj05fm8DN4QK9+6K6F/i7GOCaYwA8bgcCa+/T9Ue4LG9oVi+4k/u+Ivn
-         T+Pw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="qyY/HXQX";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp35855lfq;
+        Mon, 5 Oct 2020 12:50:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzVf6iF4EHqG9ZjkbHfHD0LjaIr1IIeQFxdslMQOK9oY57mulgSfNw3Ue8VTCHdTtAVTDYo
+X-Received: by 2002:a25:2cd1:: with SMTP id s200mr2233412ybs.110.1601927407832;
+        Mon, 05 Oct 2020 12:50:07 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n71si5173028ybn.278.2021.01.28.06.22.53
+        by mx.google.com with ESMTPS id k10si918698ybf.285.2020.10.05.12.50.07
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 06:22:53 -0800 (PST)
+        Mon, 05 Oct 2020 12:50:07 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="qyY/HXQX";
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=E8CFNSkA;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40368 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:58282 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l58CD-0002vm-5p
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 09:22:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38786)
+	id 1kPWUp-0006CP-4d
+	for alex.bennee@linaro.org; Mon, 05 Oct 2020 15:50:07 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56032)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l58C3-0002uB-K6
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 09:22:43 -0500
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f]:44389)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l58C0-0000S8-W9
- for qemu-arm@nongnu.org; Thu, 28 Jan 2021 09:22:43 -0500
-Received: by mail-ed1-x52f.google.com with SMTP id c2so6778013edr.11
- for <qemu-arm@nongnu.org>; Thu, 28 Jan 2021 06:22:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=8Tcbr9SedKFrNWTq4e/LLHNQILimboW0eGVvS+bEniw=;
- b=qyY/HXQXptNOa5T8hs1kvW4IKbJPZ6FpYo9Xe9CXzR7s8bHNQD+qiV2K52d+0NrCh6
- wuU1Cz/1JUwjnpVQUanfnaq05fFCQRMaoqYl9B/UAbhXLh0r/BTT8mvGSWib/vjzvD7w
- zo0YgkdEraZhEOeK3Zr7ro4EVYDaBU4ScCUIPb15gvwujbc9fV0nJK6ODLgZUwcByF2V
- 6b+g1UUGa8dMUHYvIne5szc27uNN3azg6XNONst8igOnVQNZ4uauSlOtRjAJeMKw6OoO
- YK7xZytfkuJn5CWTnT+WSNBAeqeCDzZoSvoMqzdbq2sKgYlHD/EYwjfuDqwrAYsH2lvJ
- FNUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=8Tcbr9SedKFrNWTq4e/LLHNQILimboW0eGVvS+bEniw=;
- b=L2dp685qgXgjEbvCbhrfnouUkSvirtudws2tLz3Np4t/o0lnYPYQ6p58lCcyrbxpBU
- pu0qQTohpd4VhF6u0VeEnU5+XArONq6wFNQCJU/pG3D0JQQWyY21vXGFOB28nPBUpOoO
- Q3F4Nxsk2BY0u9cG0xj6uY0afgouX9adUfTkDQ1kcbSE6X7oNgNllHJrk/V3w3iHIvfv
- To+hxvNXI7B/GXFl+DWuPOlGpo0Nj92J34ydAnhyCWR2X7cTG2/GcwGaZiiFeIA7URSq
- piidUDx0gD+9AiVWfQeFPM59yezRmc9HhBn1u8iVxZTfMSlcfPkygnZIZK+MHbj+z1Sw
- mndQ==
-X-Gm-Message-State: AOAM531bVMjyEKptfkZ3SrnTpKuyVZoE8UyFbhEhUy5i2NnzBkwAqJlM
- 5n70n/reRaPQ4eNDOLlVPnuwihIYI90RXpO9COqiQA==
-X-Received: by 2002:aa7:c88a:: with SMTP id p10mr14328349eds.204.1611843759171; 
- Thu, 28 Jan 2021 06:22:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kPWUf-0006C7-W8; Mon, 05 Oct 2020 15:49:58 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:35548)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kPWUd-0006jD-D5; Mon, 05 Oct 2020 15:49:57 -0400
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 561A6C60F16;
+ Mon,  5 Oct 2020 19:49:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1601927389;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pJFENdhqupghajawulvBj40O7T5YCNemlhz/pELAp4Y=;
+ b=E8CFNSkA4aIr/tQyu2u+OjyiMuGkz5Yc2tSJPSo3pBJMzRf5+tC4fF2O2D/cs28HIC+dJW
+ qY5m4cVTT1ivyghfNP8n76nrDv7E6MeKJROYCeWPW/9mWmtB3YdDIkfSx3bYo41H7tt5wa
+ /0aIh9fYzCUwJ9UXqDMcfZ9x/9iuCpy5KA9WSXS0Iwv+Ql73KHy/Koz6sZOYkyqTHUrVbG
+ 2jZUAgTpzDfNIh6yeC1PJTE3WsABrz474dp20XbEGarmb8GwH3F+RWZ3q8/4slhUHgdmJg
+ 9uPfU++3Zr2bNfWRbBj+hEeihTIqO1lYtOjGyfwoNONoqng/+BDX1QWieJ27gg==
+Date: Mon, 5 Oct 2020 21:50:49 +0200
+From: Luc Michel <luc@lmichel.fr>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH 10/14] hw/misc/bcm2835_cprman: implement clock mux
+ behaviour
+Message-ID: <20201005195049.333vsqwfgh72suhq@sekoia-pc.home.lmichel.fr>
+References: <20200925101731.2159827-1-luc@lmichel.fr>
+ <20200925101731.2159827-11-luc@lmichel.fr>
+ <76aae8af-dff0-b76f-cf04-0e3231eaf2bb@amsat.org>
+ <2ca8802e-3295-bd22-e705-931ae8dbbd1d@amsat.org>
+ <20201004183719.m3tsetxcgvc5ea2m@sekoia-pc.home.lmichel.fr>
 MIME-Version: 1.0
-References: <1611063546-20278-1-git-send-email-bmeng.cn@gmail.com>
- <1611063546-20278-5-git-send-email-bmeng.cn@gmail.com>
- <CAFEAcA-SG1nJ3g1dDSvZ99Wgduz+Wd0p483keCvd-oQNb0DO0A@mail.gmail.com>
- <CAEUhbmVTPnPBO-8qY1UoZ_4HR4d-GcMLcwCf-Hm20rhD9pSi5w@mail.gmail.com>
- <CAFEAcA_cE=fHmegAjs0Sefk4p1Fhi34ohjFcuxYFQUviBtRszQ@mail.gmail.com>
- <34c45d74-adec-2734-830b-612b5e2f6083@amsat.org>
-In-Reply-To: <34c45d74-adec-2734-830b-612b5e2f6083@amsat.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 Jan 2021 14:22:27 +0000
-Message-ID: <CAFEAcA8=t6pxsvSt3FrPbAPXKT6y4t4hqjU8CXfbsw=RbbXK_w@mail.gmail.com>
-Subject: Re: [PATCH v8 04/10] hw/ssi: imx_spi: Rework imx_spi_reset() to keep
- CONREG register value
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20201004183719.m3tsetxcgvc5ea2m@sekoia-pc.home.lmichel.fr>
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
+ s=pharaoh; t=1601927389;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pJFENdhqupghajawulvBj40O7T5YCNemlhz/pELAp4Y=;
+ b=AOg9d39DbYYLE9/qRhIRXtArC9SCQexD4sTFKuBdNAI/zzzVnjHA3AYycaOJeDdNM4NOWr
+ r8+cvZ96jLLssNdVVp4+VyjuhdTY2cEldp1lIFAegqv3CVdwEi/EswZcR3fXNqOmoLGUS3
+ fhmJpdDXXGfuHolctaMEuZohEtvJdNEaYszeoHLpc+LwvydNFbB6mOwYoPaH52m+jD7sU8
+ JRe1dM/eABSG8/4VNe5Dd7et6gad6yovx4cgABF+y5Rj7Y2sh5xiqZzdEXk2/klf9MXkVG
+ YJ+NaCzXhUxt4t7VdHhYneaGfTO3qOWM+NgDZyMwqbUJYOqHYABBSR+GTkuDAA==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927389; a=rsa-sha256; cv=none;
+ b=FBM5QMuIW8qsvQ/QevHP6Eiuk1C+PV6sKxDxayn3A8alYGOvceYZxosZ6unSWvITLf730TZ4VYplyUoAUswdx65nloj2PBbcX2Kz9DhMq/UsSfq+Go75awWzwx3qB8ou5OgGVMEkyeC49QZBySMRVtF51UejGQlaXjH2X1XyAjnbtL700ajkrvuyCwgkh7dylQA+bHgBkwbIJYpePq7Jm6t3WrSsPat4t99nz0bcpm1jz3nWFPFdFu3gE4Hm02TpJ9v1NbEUOrIfj9wA9jXKbACkCt8MyItbxuhIcddA+utRrazitoBmsjBioea28o/gArZp9z6zPR2rvHu+UP2gEA==
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=sekoia smtp.mailfrom=luc@lmichel.fr
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 15:49:50
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,54 +99,140 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Bin Meng <bin.meng@windriver.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yP9lHWWAJ+NY
+X-TUID: vLeSYKJt60eE
 
-On Thu, 28 Jan 2021 at 14:18, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> On 1/28/21 2:54 PM, Peter Maydell wrote:
-> > On Thu, 28 Jan 2021 at 13:47, Bin Meng <bmeng.cn@gmail.com> wrote:
-> >>
-> >> On Thu, Jan 28, 2021 at 9:43 PM Peter Maydell <peter.maydell@linaro.or=
-g> wrote:
-> >>> This retains the CONREG register value for both:
-> >>>  * 'soft' reset caused by write to device register to disable
-> >>>    the block
-> >>>    -- this is corrcet as per the datasheet quote
-> >>>  * 'power on' reset via TYPE_DEVICE's reset method
-> >>>    -- but in this case we should reset CONREG, because the Device
-> >>>    reset method is like a complete device powercycle and should
-> >>>    return the device state to what it was when QEMU was first
-> >>>    started.
-> >>
-> >> The POR value of CONREG is zero, which should be the default value, no=
-?
-> >
-> > But you're not setting it to zero here, you're leaving it with
-> > whatever value it had before. (That's correct for soft reset,
-> > but wrong for power-on.)
->
-> zero value on power-on is what I tried to describe as
-> "It is initialized to zero when the instance is created."
+On 20:37 Sun 04 Oct     , Luc Michel wrote:
+> On 16:51 Fri 02 Oct     , Philippe Mathieu-Daudé wrote:
+> > On 9/26/20 11:40 PM, Philippe Mathieu-Daudé wrote:
+> > > On 9/25/20 12:17 PM, Luc Michel wrote:
+> > >> A clock mux can be configured to select one of its 10 sources through
+> > >> the cm_ctl register. It also embeds yet another clock divider, composed
+> > >> of an integer part and a fractionnal part. The number of bits of each
+> > > 
+> > > Typo "fractional".
+> > > 
+> > >> part is mux dependant.
+> > > 
+> > > Typo "dependent"?
+> > > 
+> > >>
+> > >> Signed-off-by: Luc Michel <luc@lmichel.fr>
+> > >> ---
+> > >>  hw/misc/bcm2835_cprman.c | 43 +++++++++++++++++++++++++++++++++++++++-
+> > >>  1 file changed, 42 insertions(+), 1 deletion(-)
+> > >>
+> > >> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+> > >> index 8df2db0fd9..75bc11939b 100644
+> > >> --- a/hw/misc/bcm2835_cprman.c
+> > >> +++ b/hw/misc/bcm2835_cprman.c
+> > >> @@ -229,19 +229,60 @@ static const TypeInfo cprman_pll_channel_info = {
+> > >>  };
+> > >>  
+> > >>  
+> > >>  /* clock mux */
+> > >>  
+> > >> +static bool clock_mux_is_enabled(CprmanClockMuxState *mux)
+> > >> +{
+> > >> +    return FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, ENABLE);
+> > >> +}
+> > >> +
+> > >>  static void clock_mux_update(CprmanClockMuxState *mux)
+> > >>  {
+> > >> -    clock_update(mux->out, 0);
+> > >> +    uint64_t freq, div;
+> > >> +    uint32_t src = FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, SRC);
+> > >> +    bool enabled = clock_mux_is_enabled(mux);
+> > >> +
+> > >> +    *mux->reg_cm = FIELD_DP32(*mux->reg_cm, CM_CLOCKx_CTL, BUSY, enabled);
+> > >> +
+> > >> +    if (!enabled) {
+> > >> +        clock_update(mux->out, 0);
+> > >> +        return;
+> > >> +    }
+> > >> +
+> > >> +    freq = clock_get_hz(mux->srcs[src]);
+> > >> +
+> > >> +    if (mux->int_bits == 0 && mux->frac_bits == 0) {
+> > >> +        clock_update_hz(mux->out, freq);
+> > >> +        return;
+> > >> +    }
+> > >> +
+> > >> +    /*
+> > >> +     * The divider has an integer and a fractional part. The size of each part
+> > >> +     * varies with the muxes (int_bits and frac_bits). Both parts are
+> > >> +     * concatenated, with the integer part always starting at bit 12.
+> > >> +     */
+> > >> +    div = mux->reg_cm[1] >> (R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits);
+> > >> +    div &= (1 << (mux->int_bits + mux->frac_bits)) - 1;
+> > 
+> > Eventually:
+> > 
+> >     div &= MAKE_64BIT_MASK(mux->int_bits + mux->frac_bits, 64);
+> I think this is MAKE_64BIT_MASK(0, mux->int_bits + mux->frac_bits)
+> (The shift macro parameter is 0 to have the ones positioned at the
+> mask's LSBs.
+> I'll use this macro in my next re-roll.
+Actually, I won't, because switching to muldiv64 implied some
+modifications. The muldiv64 divisor parameter is uint32_t. Since there
+is no MAKE_32BIT_MASK, and I don't use all the "features" of this macro
+anyway (shift = 0 in my case), I'll keep this form (but I'll switch to
+uin32_t for div).
 
-Yes, but QOM device reset does not happen just once at startup and
-not thereafter. Consider:
+-- 
+Luc
 
- * user starts QEMU
- * QOM devices are created and realized
- * QOM device reset happens
-     -- CONREG is zero here because QOM structs are zero-initialized
- * guest runs
- * guest modifies CONREG from its initial value
- * system reset is requested (perhaps by user, perhaps by
-   guest writing some register or another)
- * QOM device reset happens
-     -- CONREG is not zero here, so reset must clear it
+> 
+> > 
+> > >> +
+> > >> +    freq = (freq << mux->frac_bits) / div;
+> > 
+> > Maybe:
+> > 
+> >     freq = muldiv64(freq, 1 << mux->frac_bits, div);
+> OK
+> 
+> > 
+> > >> +
+> > >> +    clock_update_hz(mux->out, freq);
+> > >>  }
+> > >>  
+> > >>  static void clock_mux_src_update(void *opaque)
+> > >>  {
+> > >>      CprmanClockMuxState **backref = opaque;
+> > >>      CprmanClockMuxState *s = *backref;
+> > >> +    CprmanClockMuxSource src = backref - s->backref;
+> > >> +    uint32_t current_src;
+> > 
+> > Maybe avoid current_src and use in place.
+> OK
+> 
+> > 
+> > Otherwise:
+> > Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Thanks !
+> 
+> -- 
+> Luc
+> 
+> > 
+> > >> +
+> > >> +    current_src = FIELD_EX32(*s->reg_cm, CM_CLOCKx_CTL, SRC);
+> > >> +
+> > >> +    if (current_src != src) {
+> > >> +        return;
+> > >> +    }
+> > >>  
+> > >>      clock_mux_update(s);
+> > >>  }
+> > >>  
+> > >>  static void clock_mux_init(Object *obj)
+> > >>
+> > > 
+> 
+> -- 
 
-thanks
--- PMM
+-- 

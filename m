@@ -1,340 +1,229 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp17513lfq;
-        Mon, 5 Oct 2020 12:23:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFbSEbuOxyvmvbYAmHJWGwiTWUegUCVoHWSgtVsXCIQ6caRnxYJUPrVrOVIQfe4x/OGPXg
-X-Received: by 2002:a25:8312:: with SMTP id s18mr2117127ybk.456.1601925784836;
-        Mon, 05 Oct 2020 12:23:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601925784; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp123236lfq;
+        Mon, 5 Oct 2020 15:08:28 -0700 (PDT)
+X-Received: by 2002:a05:6638:242:: with SMTP id w2mr1953949jaq.32.1601935708841;
+        Mon, 05 Oct 2020 15:08:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601935708; cv=none;
         d=google.com; s=arc-20160816;
-        b=MMeVAZYTx0Tbz9Hrrd8jc1kPyGyTN0Ycx+ymuU5ArTX65/fH0fM+WLBdfG1WYmkgqI
-         i4atOQJ04ChUwcNv0MaNxsXQDDo3Y7N23udR2Bt8jlQFqUF2UU5Y+/LUM77MaSSvqnQR
-         QDco8nmioLz/eL6Z6UisjETWRLdCVTTao6KgYAK8EGfxo+aedOK81Dz/1sub2PJWjr5k
-         EIwh1hOxs7V6tPnPNKFxIeGnF+d6XbfL2ql6LIpd2ew5AnJW7ooizp0+3p0BIgiebt3R
-         meU6pwAyVh2FDuq2QNz7cdicQBzRxV9qayVvSlM2HnExr+sbb+h/8orun7SZIUZhDOiC
-         zlGw==
+        b=z34/+6AVzDc9u5l9DfXvMKsxJTbnmBq0YThCcyoOiM++1qSnGgixCgOPfpkRaY7jL7
+         7hp//bMcggmjE6408KQuyV2CsAplkH31f6zB11fqRSIc4aCggJShr7rkgWJEPV6oOo4V
+         WfjwLJGgBoRNLM+cIYX7IX4lqtTrun8BLtl7a2zSyZ6i7c1wh5vqVVCC2CwSn31dWDs3
+         /GHqNZfUsJC9Vwj+oR6suvQds2aFNmSxrvbkoDQ1xy7FNnKORnWppL2EvofmcsZbPbXP
+         ebcxkim1wUB3mIVP1mYbMC0frNWd87cdxBJPFpSNJLA945H/ZADU0eoJ+xvj2qLZnMKc
+         /9CQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=8BtbpXhmx8fffbI1hbsFafqfzbXCmj2U9MrMlFu+hHE=;
-        b=pHEiPYkiwSMyq2xcXgDC9LjPhizgCCMNEi234jJlphorEFLc3eijkfHzrxJJdYuaRd
-         DBbOoRea5iPmVOTCXj22Wh20by4XNwuXh4c4QpafMkplfGIXzkXUeQaluYg9wHZcoHeP
-         YlgPB7nqkAzms9iSb06oSrgaKdoz/KOtQ6CSwfXuWs5tre5MDSpgkDGSdFzc88ne/kpq
-         C2BhqdiusBEhh39DdIqfNBlJWtKSUu4twPs+2A5AnOxXoN02tUtovGkIt+bKJPI5EmSg
-         VIro04MoHvnV2EE5QrXKOzryA7WkauQV78MH9hcVdjpqN+RIBSC1WevGF7aFktVxk+T1
-         nDnA==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=kElEDkSB/y1n8weFenZdcNF8XtMXgsLU4Kh6hIb6KhE=;
+        b=nPutXmdZnI2pct9IRGjz+S7dPZc1JqvIk8XaqAKetJhDNm9I58CmusNR4UoK1umYU9
+         ArH6TXcZxRAtKuEx/Kcav2DGtM6jv5KQ+7T1UUvlLEFPMbi6+9Pebrm2BJt9SiK5VrlY
+         FHQgbezk6AK0f5mqpd6QR4Ax3ZbpOfT+iwzbcX0sXffwtEy4C461fB6znYhDi1AC9Hw6
+         E7kzu5yh01juKNweERlA7hrJDC3YaAqm4fNqm50j60kUWeu9jgfFzEDIQbt6Y0Ejp3QL
+         kIZa37iv0QTYyVRpJF0HVLzL2D919cg3ia1srBJrftPmEBs2R3lhT/TalVljSpEN3x2w
+         pj9A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EarcGD7u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w3si869335ybt.105.2020.10.05.12.23.04
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 12:23:04 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R1vAemth;
+       spf=pass (google.com: domain of pauldzim@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=pauldzim@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <pauldzim@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id r14sor1122380iog.50.2020.10.05.15.08.28
+        (Google Transport Security);
+        Mon, 05 Oct 2020 15:08:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pauldzim@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=EarcGD7u;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59630 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPW4e-0001CK-2x
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 15:23:04 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50606)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kPW40-0001A3-IA
- for qemu-arm@nongnu.org; Mon, 05 Oct 2020 15:22:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:28486)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kPW3x-0003Qc-KP
- for qemu-arm@nongnu.org; Mon, 05 Oct 2020 15:22:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601925740;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=8BtbpXhmx8fffbI1hbsFafqfzbXCmj2U9MrMlFu+hHE=;
- b=EarcGD7uP0hpBYCVP6OzuL9DEHidvr407ALN4NpMTH+Ha0RyzUj7u3897mywja17PPTjcK
- v6sB1FAxlo9yCNbSrsBDzk8VTVyxOpWFRM1dVscWB65wFH1EBUFzLA8gEbA4kbFWeOL6jY
- Lov2KSgnS90NfyltxOgEB8WpMN1OflQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-164-AApP0EcrMdqgQ2eN4vTT0w-1; Mon, 05 Oct 2020 15:22:18 -0400
-X-MC-Unique: AApP0EcrMdqgQ2eN4vTT0w-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 8C015107ACF9;
- Mon,  5 Oct 2020 19:22:13 +0000 (UTC)
-Received: from localhost (ovpn-119-102.rdu2.redhat.com [10.10.119.102])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6E6FD5C1BD;
- Mon,  5 Oct 2020 19:22:09 +0000 (UTC)
-Date: Mon, 5 Oct 2020 15:22:08 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH 01/16] hw/core/cpu: Let CPU object have a clock source
-Message-ID: <20201005192208.GO7303@habkost.net>
-References: <20200928171539.788309-1-f4bug@amsat.org>
- <20200928171539.788309-2-f4bug@amsat.org>
- <20200930094313.1120a040@redhat.com>
- <da7248f7-5098-188b-d274-e122c87bb498@amsat.org>
- <20201005184009.493629b0@redhat.com>
- <20201005174454.GM7303@habkost.net>
- <8c337ca9-4f03-e6df-0e67-f8ca2b3248e7@amsat.org>
- <ff8b4e4f-e9d3-2539-73a5-1715028a6a76@amsat.org>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R1vAemth;
+       spf=pass (google.com: domain of pauldzim@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=pauldzim@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=kElEDkSB/y1n8weFenZdcNF8XtMXgsLU4Kh6hIb6KhE=;
+        b=R1vAemthUV9oDEeIt18p0l4JV6tVztg5F6sn2Ne8yfyuKkHYfSgBfUuMuaFD4oMRGT
+         DEZZFM5Sy82H6KoaWbjGf2hd/iSzeXd7LkG2coMbqBfWS93cwMqyKDynyhlABZrRGy7A
+         vELmLxwg4uEUnsJAbSeIfKzJUgXnTl+A20IY2+iKFSzPQfJ8kFEtBQ1gbeXIPpssZeud
+         nv2T4wPMjU4l2nVZut2LeOGqJg8p9GYU3oboy/oY6JIvrB25sJLrlyQIrexrDWEf43Rc
+         hb1p4JDzSDcnQHVrQXcg/xhD9V6PUeLZlf+8ZQgLmYSTPdnfDGIWlJyDr89uN0vxEMte
+         KWAQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=kElEDkSB/y1n8weFenZdcNF8XtMXgsLU4Kh6hIb6KhE=;
+        b=JSup2u3HiIx12Lw9A9bxim14SR/MzxvNS3LQCHgwXRfoR2hYGRLvUYHghO31UmBI+O
+         9hqdUvI5zL8D7UpZ9z23a5sg+QlFBGl/tvcV8vPp305Nk7+ldD78gjJVa3SgNNxK4sDS
+         4T+SSsvrnrx00RY2aTpNMnfpco0J4sXPwIYyFkesrN1y8cVaNtUqG1QEWxAXWhEOnlpb
+         TKFbIhqgy1VsmJN9ilf54OLTAs9kqwPyCynPL3/j2txFTsPGdu90MnB8ODnSKjFFkMU9
+         Tn8hBbixqwfnoGcn1xhpPQwuj50rdrnriUDOiGT28iX8ApDYnzbu88trKZasXau0Htpe
+         RRlg==
+X-Gm-Message-State: AOAM533f/8/GfvhXY+sWRvayVTpynp4lPluze2P4WhCn9oyw+cZNQnbS
+	HfYysJEx6HG+P9+YdjOrLbqsXLV4O089T0Eliso=
+X-Google-Smtp-Source: ABdhPJyAcK5k/Z3L/MsVmIqHhVLm/oDJ7g3NCoMd4/FuMTqRrpHuw2hfc7SWaKiSei3jIR7gFYqUYMGf3PUu1Xeb1RA=
+X-Received: by 2002:a02:a50c:: with SMTP id e12mr1953982jam.26.1601935708217;
+ Mon, 05 Oct 2020 15:08:28 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <ff8b4e4f-e9d3-2539-73a5-1715028a6a76@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 01:25:11
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Paul Burton <paulburton@kernel.org>, Huacai Chen <zltjiangshi@gmail.com>,
- qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Cleber Rosa <crosa@redhat.com>,
- Huacai Chen <chenhc@lemote.com>, Igor Mammedov <imammedo@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Luc Michel <luc.michel@greensocs.com>,
- =?utf-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U5FEM1wz5HyB
+References: <47dbcad4-3121-b1c3-06fa-abec7c353fb6@gmail.com>
+ <87sgatanti.fsf@linaro.org> <CAFEAcA_ZMLV3DZ_R_SHvPLdEf=i-xpspD5itBmfYeqyMhgtLWQ@mail.gmail.com>
+ <875z7p3t9e.fsf@linaro.org> <e43be86d-1847-199f-4cbd-2e3bd124d70a@gmail.com>
+In-Reply-To: <e43be86d-1847-199f-4cbd-2e3bd124d70a@gmail.com>
+From: Paul Zimmerman <pauldzim@gmail.com>
+Date: Mon, 5 Oct 2020 15:08:01 -0700
+Message-ID: <CADBGO794+ZPD=B=dFuA7SC96g3GDJXF1A8j=VP6MeiSw1Sf4oQ@mail.gmail.com>
+Subject: Re: Emulate Rpi with QEMU fails
+To: Thomas Schneider <74cmonty@gmail.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Andrew Baumann <Andrew.Baumann@microsoft.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: g+NGsPn0k37J
 
-On Mon, Oct 05, 2020 at 08:29:24PM +0200, Philippe Mathieu-Daudé wrote:
-> On 10/5/20 8:09 PM, Philippe Mathieu-Daudé wrote:
-> > On 10/5/20 7:44 PM, Eduardo Habkost wrote:
-> >> On Mon, Oct 05, 2020 at 06:40:09PM +0200, Igor Mammedov wrote:
-> >>> On Wed, 30 Sep 2020 12:16:53 +0200
-> >>> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
-> >>>
-> >>>> +arm/ppc/riscv folks
+If you can upgrade to Qemu 5.1 or newer, you should be able to use the
+builtin raspi2 or raspi3 emulation directly. Version 5.1 adds support for t=
+he
+USB controller on the Pi.
+
+There is no limitation on the amount of memory you can use with this
+method, and the networking should work.
+
+Here is the command line I use to run the Raspbian image
+2019-09-26-raspbian-buster. I extracted bcm2709-rpi-2-b and
+kernel7.img from the FAT partition inside the image file.
+
+qemu-system-arm -M raspi2 -drive
+file=3Dbootpi/2019-09-26-raspbian-buster.img,format=3Draw,if=3Dsd -dtb
+bcm2709-rpi-2-b.dtb -kernel kernel7.img -append 'rw
+earlycon=3Dpl011,0x3f201000 console=3DttyAMA0 loglevel=3D8
+root=3D/dev/mmcblk0p2 fsck.repair=3Dyes net.ifnames=3D0 rootwait memtest=3D=
+1
+dwc_otg.fiq_fsm_enable=3D0' -serial stdio -no-reboot -netdev
+user,id=3Dnet0 -usb -device usb-kbd -device usb-tablet -device
+usb-net,netdev=3Dnet0
+
+Hope this helps.
+
+On Mon, Oct 5, 2020 at 3:51 AM Thomas Schneider <74cmonty@gmail.com> wrote:
+>
+> Hello,
+>
+> thanks for your replies.
+>
+> I must admit that I don't fully understand your analysis.
+> However you made some conclusions that are correct.
+>
+> In fact I have found a Github repo
+> <https://github.com/dhruvvyas90/qemu-rpi-kernel> where a specific kernel
+> and versatile-pb are provided + instructions for lauching the emulation
+> with the original RPi image file:
+> $ qemu-system-arm \
+>    -M versatilepb \
+>    -cpu arm1176 \
+>    -m 256 \
+>    -drive
+> "file=3D/.../2020-05-27-raspios-buster-lite-armhf.img,if=3Dnone,index=3D0=
+,media=3Ddisk,format=3Draw,id=3Ddisk0"
+> \
+>    -device
+> "virtio-blk-pci,drive=3Ddisk0,disable-modern=3Don,disable-legacy=3Doff" \
+>    -net "user,hostfwd=3Dtcp::5022-:22" \
+>    -dtb /.../versatile-pb-buster-5.4.51.dtb \
+>    -kernel /.../kernel-qemu-5.4.51-buster \
+>    -append 'root=3D/dev/vda2 panic=3D1' \
+>    -no-reboot
+>
+> This means it is more recent than the Raspberry Pi Geek article, and the
+> emulation works.
+> But I'm not sure if this usable considering the added models -M raspi2
+> and -M raspi3.
+>
+> Can you please advise how to proceed?
+>
+> In addition I would like to know if there's a memory limitation using
+> models -M raspi2 and -M raspi3?
+> To my understanding there's a limitation to 256MB using -M versatilepb.
+> If yes, I consider to another raw image located on host's temporary
+> filesystem and use this a swap in the client.
+>
+> And how can I make use of a client network device that is based on
+> host's tap device connected to a network bridge?
+>
+> THX
+>
+>
+> Am 05.10.2020 um 11:40 schrieb Alex Benn=C3=A9e:
+> > Peter Maydell <peter.maydell@linaro.org> writes:
+> >
+> >> On Sun, 4 Oct 2020 at 18:44, Alex Benn=C3=A9e <alex.bennee@linaro.org>=
+ wrote:
+> >>> Thomas <74cmonty@gmail.com> writes:
+> >>>> I'm trying to emulate Rpi with QEMU.
+> >>>> I found
+> >>>> [url=3D1]this[/url]
+> >>>> arcticle in Raspberry Pi Geek documenting the steps including persis=
+tent
+> >>>> storage on host.
 > >>>>
-> >>>> On 9/30/20 9:43 AM, Igor Mammedov wrote:
-> >>>>> On Mon, 28 Sep 2020 19:15:24 +0200
-> >>>>> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
-> >>>>>   
-> >>>>>> Let CPUState have a clock source (named 'clk') and CPUClass
+> >>>> However when starting the emulation with command
+> >>>> qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -serial stdio -hd=
+a
+> >>>> 2020-08-20-raspios-buster-armhf-lite.img -net
+> >>>> "user,hostfwd=3Dtcp::5022-:22" -dtb versatile-pb-buster.dtb -kernel
+> >>>> kernel-qemu-5.4.51-buster -append "root=3D/dev/sda2 rootfstype=3Dext=
+4 rw
+> >>>> panic=3D1" -no-reboot
+> >>> Let's start with the fact you are using a versatilepb machine type wi=
+th
+> >>> a versatilepb dtb and not the rasppi model.
+> >> Given the name of the kernel image, this probably actually *is*
+> >> built for versatilepb, or it wouldn't have got as far as failing
+> >> to mount the root partition. There seems to be a lot of confusion
+> >> in the raspberry pi community about the difference between
+> >> running the raspi userspace plus a for-versatilepb kernel
+> >> versus running a full raspi setup.
+> > Ahh your German is considerably better than mine ;-) Looking more
+> > closely at the blog it seems to be predicated on extracting a Raspbian
+> > kernel which at least stands a fighting chance of being a multi_config
+> > kernel - like the buster above.
+> >
+> > I can see why these sorts of shenanigans used to be pulled when there
+> > where no RaspPi models although if all you want to do is run an ARM use=
+r
+> > space what's wrong with using linux-user for this sort of thing?
+> >
+> >> Anyway, failing to mount the rootfs and not listing any
+> >> sda devices is not a problem with the fstab, because the system
+> >> hasn't got as far as being able to mount the filesystem with a
+> >> fstab on it yet. One possibility is that the kernel is
+> >> missing the device drivers for either PCI or for the SCSI
+> >> controller that gets plugged in to versatilepb by default.
 > >>
-> >> The language here confuses me: is this a clock source inside the
-> >> CPU, or just a clock input that can be connected to a clock
-> >> source somewhere?
-> > 
-> > 2nd description, "somewhere". I'll reword.
-> > 
-> >>
-> >> See also comment below[1].
-> >>
-> >>>>>> have a clock_update() callback. The clock can be optionally
-> >>>>>> set Using qdev_connect_clock_in() from the Clock API.
-> >>>>>> If the clock changes, the optional clock_update() will be
-> >>>>>> called.  
-> >>
-> >> What does "clock change" means?  Is this just about the
-> >> frequency, or something else?
-> > 
-> > A frequency changes -- which can be because a parent (in the
-> > clock tree) changed its source using a MUX.
-> > 
-> >>
-> >> (By reading the Clock API documentation, it looks like it only
-> >> represents the clock frequency, but I'm not sure)
-> >>
-> >>>>>
-> >>>>> the sole user of it is mips cpu, so question is why
-> >>>>> you are making it part of generic CPUm instead of
-> >>>>> MIPSCPUClass/MIPSCPU?  
-> >>>>
-> >>>> This is a feature of the CPU, regardless its architecture.
-> >>>>
-> >>>> I expect the other archs to start using it soon.
-> >>>
-> >>> if there aren't any plans to actually to do that,
-> >>> I'd keep it to MIPS class and generalize later when there is demand.
-> > 
-> > No problem.
-> > 
-> >>
-> >> I normally don't mind if a feature is generic from the beginning.
-> >> But in this case I'm inclined to agree with Igor.  Unless we
-> >> expect to see arch-independent code to use CPUState.clock soon
-> >> (do we?), having CPUState.clock existing but unused by most
-> >> architectures would be misleading.
-> >>
-> >> Also, at least on x86 there are so many different clock sources,
-> >> that I'm not sure it would be a desirable to have a generic clock
-> >> input named "clk".
-> > 
-> > Well X86 is the arch I'm less confident with. Anyhow if it has
-> > multiple clock sources, I'd expect a Clock MUX block to select
-> > an unique clock to feed the CPU.
-> > 
-> >>
-> >>>  
-> >>>>
-> >>>>>   
-> >>>>>>
-> >>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> >>>>>> ---
-> >>>>>>  include/hw/core/cpu.h |  5 +++++
-> >>>>>>  hw/core/cpu.c         | 12 ++++++++++++
-> >>>>>>  2 files changed, 17 insertions(+)
-> >>>>>>
-> >>>>>> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> >>>>>> index 6c34798c8b3..6989d90c193 100644
-> >>>>>> --- a/include/hw/core/cpu.h
-> >>>>>> +++ b/include/hw/core/cpu.h
-> >>>>>> @@ -31,6 +31,7 @@
-> >>>>>>  #include "qemu/thread.h"
-> >>>>>>  #include "qemu/plugin.h"
-> >>>>>>  #include "qom/object.h"
-> >>>>>> +#include "hw/clock.h"
-> >>>>>>  
-> >>>>>>  typedef int (*WriteCoreDumpFunction)(const void *buf, size_t size,
-> >>>>>>                                       void *opaque);
-> >>>>>> @@ -155,6 +156,7 @@ struct TranslationBlock;
-> >>>>>>   * @disas_set_info: Setup architecture specific components of disassembly info
-> >>>>>>   * @adjust_watchpoint_address: Perform a target-specific adjustment to an
-> >>>>>>   * address before attempting to match it against watchpoints.
-> >>>>>> + * @clock_update: Callback for input clock changes
-> >>>>>>   *
-> >>>>>>   * Represents a CPU family or model.
-> >>>>>>   */
-> >>>>>> @@ -176,6 +178,7 @@ struct CPUClass {
-> >>>>>>                                    unsigned size, MMUAccessType access_type,
-> >>>>>>                                    int mmu_idx, MemTxAttrs attrs,
-> >>>>>>                                    MemTxResult response, uintptr_t retaddr);
-> >>>>>> +    void (*clock_update)(CPUState *cpu);
-> >>>>>>      bool (*virtio_is_big_endian)(CPUState *cpu);
-> >>>>>>      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-> >>>>>>                             uint8_t *buf, int len, bool is_write);
-> >>>>>> @@ -316,6 +319,7 @@ struct qemu_work_item;
-> >>>>>>   *   QOM parent.
-> >>>>>>   * @nr_cores: Number of cores within this CPU package.
-> >>>>>>   * @nr_threads: Number of threads within this CPU.
-> >>>>>> + * @clock: this CPU source clock (an output clock of another device)
-> >>
-> >> [1]
-> >>
-> >> What does "source clock" means?  Is this the same as "clock input"?
-> > 
-> > Yes, for clocks it is common to use source/sink instead of input/output.
-> > I'll try to reword.
-> 
-> Hard to reword when it looks clear to oneself...
-> 
-> @clock is the source, @cpu is the sink.
-> @clock clocks @cpu at some frequency.
-> 
-> One output from @clock is the @cpu.
-> The @cpu has an unique input: @clock.
-
-The interchangeable usage of "clock source" and "clock input" is
-what confuses me here.  CPUState.clock seems to be a clock input,
-which may or may not be connected to a clock source.
-
-You seem to imply that "clock source" and "clock input" are
-synonymous, but that's not what I understand from the clock API
-documentation.
-
-> 
-> Damien/Peter/Luc, do you have better description suggestions?
-> 
-> > 
-> >>
-> >>
-> >>>>>>   * @running: #true if CPU is currently running (lockless).
-> >>>>>>   * @has_waiter: #true if a CPU is currently waiting for the cpu_exec_end;
-> >>>>>>   * valid under cpu_list_lock.
-> >>>>>> @@ -400,6 +404,7 @@ struct CPUState {
-> >>>>>>      int num_ases;
-> >>>>>>      AddressSpace *as;
-> >>>>>>      MemoryRegion *memory;
-> >>>>>> +    Clock *clock;
-> >>>>>>  
-> >>>>>>      void *env_ptr; /* CPUArchState */
-> >>>>>>      IcountDecr *icount_decr_ptr;
-> >>>>>> diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-> >>>>>> index c55c09f734c..37fcff3ec64 100644
-> >>>>>> --- a/hw/core/cpu.c
-> >>>>>> +++ b/hw/core/cpu.c
-> >>>>>> @@ -30,6 +30,7 @@
-> >>>>>>  #include "qemu/qemu-print.h"
-> >>>>>>  #include "sysemu/tcg.h"
-> >>>>>>  #include "hw/boards.h"
-> >>>>>> +#include "hw/qdev-clock.h"
-> >>>>>>  #include "hw/qdev-properties.h"
-> >>>>>>  #include "trace/trace-root.h"
-> >>>>>>  #include "qemu/plugin.h"
-> >>>>>> @@ -247,6 +248,16 @@ void cpu_reset(CPUState *cpu)
-> >>>>>>      trace_guest_cpu_reset(cpu);
-> >>>>>>  }
-> >>>>>>  
-> >>>>>> +static void cpu_clk_update(void *opaque)
-> >>>>>> +{
-> >>>>>> +    CPUState *cpu = opaque;
-> >>>>>> +    CPUClass *cc = CPU_GET_CLASS(cpu);
-> >>>>>> +
-> >>>>>> +    if (cc->clock_update) {
-> >>>>>> +        cc->clock_update(cpu);
-> >>>>>> +    }
-> >>>>>> +}
-> >>>>>> +
-> >>>>>>  static void cpu_common_reset(DeviceState *dev)
-> >>>>>>  {
-> >>>>>>      CPUState *cpu = CPU(dev);
-> >>>>>> @@ -367,6 +378,7 @@ static void cpu_common_initfn(Object *obj)
-> >>>>>>      /* the default value is changed by qemu_init_vcpu() for softmmu */
-> >>>>>>      cpu->nr_cores = 1;
-> >>>>>>      cpu->nr_threads = 1;
-> >>>>>> +    cpu->clock = qdev_init_clock_in(DEVICE(obj), "clk", cpu_clk_update, cpu);
-> >>>>>>  
-> >>>>>>      qemu_mutex_init(&cpu->work_mutex);
-> >>>>>>      QSIMPLEQ_INIT(&cpu->work_list);  
-> >>>>>   
-> >>>>
-> >>>
-> >>
-> > 
-> 
-
--- 
-Eduardo
-
+> >> My guess at the cause is that you're trying to boot a Linux 5.somethin=
+g
+> >> kernel and you've run into the issue described in this thread:
+> >> https://lists.gnu.org/archive/html/qemu-discuss/2020-09/msg00023.html
+> >> where the Linux 5.x sym53c8xx scsi driver is not compatible with QEMU'=
+s
+> >> emulation of that device. If that's the case then you should see
+> >> earlier in the kernel boot log error messages similar to the ones
+> >> that Roger reported. The fix would be either to use an older
+> >> kernel, or to change the QEMU commandline to use a different
+> >> SCSI controller (or to use a virtio block device).
+> > Do we have any documentation for the RaspPi models? The acceptance test=
+s
+> > look like they support the inbuilt MMC/SD controller device:
+> >
+> >          kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
+> >                                 serial_kernel_cmdline[uart_id] +
+> >                                 ' root=3D/dev/mmcblk0p2 rootwait ' +
+> >                                 'dwc_otg.fiq_fsm_enable=3D0')
+> >
+> > It would be useful to fill the hole in the documentation so gently stee=
+r
+> > people away from these hybrid franken-machine approaches.
+> >
+> >> thanks
+> >> -- PMM
+> >
+>
+>

@@ -1,55 +1,55 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp54735lfq;
-        Mon, 5 Oct 2020 13:17:03 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzpk9Q0RZbJz+0bzTlIGFyOfBGEcdOyTh08qunLKYCpqsH09WNPsq5yi8TWwOzz7XLk6wur
-X-Received: by 2002:a05:6902:1006:: with SMTP id w6mr2262545ybt.15.1601929023129;
-        Mon, 05 Oct 2020 13:17:03 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp55615lfq;
+        Mon, 5 Oct 2020 13:18:22 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhxzPzH3e7MKK4Tp7KKtbQPG0sWazor/UBE4yBS/nJ5sRyn9kKSnFrSr596oV2rZoINfUa
+X-Received: by 2002:a25:df08:: with SMTP id w8mr2272003ybg.436.1601929102259;
+        Mon, 05 Oct 2020 13:18:22 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b1si1002305ybr.270.2020.10.05.13.17.02
+        by mx.google.com with ESMTPS id f20si836076ybj.367.2020.10.05.13.18.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 13:17:03 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 Oct 2020 13:18:22 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=A63q+Fbj;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=Y4EbZOTq;
        arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:56242 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:59032 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPWus-0000Lk-HC
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:17:02 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57762)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kPWw9-0001VF-KM
+	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:18:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57692)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWZx-0004BL-SG; Mon, 05 Oct 2020 15:55:25 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:35936)
+ id 1kPWZs-00041N-IX; Mon, 05 Oct 2020 15:55:21 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:35784)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWZu-0007Wp-EX; Mon, 05 Oct 2020 15:55:25 -0400
+ id 1kPWZo-0007S4-RO; Mon, 05 Oct 2020 15:55:20 -0400
 Received: from sekoia-pc.home.lmichel.fr (sekoia-pc.home.lmichel.fr
  [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPS id 8C7FAC60F1F;
- Mon,  5 Oct 2020 19:55:15 +0000 (UTC)
+ by pharaoh.lmichel.fr (Postfix) with ESMTPS id 5B833C60F18;
+ Mon,  5 Oct 2020 19:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1601927715;
+ t=1601927714;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6Tw5rebm56xIRl4Y6xn4/weNTQ41I+JOywwnSzbgJS4=;
- b=A63q+FbjgyieSDp3DP2cQmcssArUT1Y6etovDwKzGQ5bqAh2uEiM9ro68NfAhpjoGg7aop
- gUyXsBGZCkLIyHp9Kh8JRjyCZIBylyCl3viNpNiNTvb5Ahba7DIPqfd25bw4ANULQZkSp1
- DteNSHLOBG4LV2j2Mgp7MPI19z2ursSMayHo8P76S+2yFKvwhcaXtMV7bPPnckXNh4jGGo
- pHteeK62gYv+akVFfMHWkJMtBkw5n8T3riCWYWnJQluCVmgG/6pRMSdbje95abuF1Q2VCp
- BNq9XNS5H/7nmVUZfpaJF5zotErhe5z5pPUcB8lvGu4lxWYZk6fzP71do++/uw==
+ bh=47VbYAct+c9hftOWPp/AO6VMc8Ptj3zoGkrDEH1t/nk=;
+ b=Y4EbZOTqe3klYtUsmPW4UjDX4DhcAneW7OQog5cYbvY4Eh5D88NQ3e6rq/IRLM5x4OrXN8
+ m5+B67Bxg3yVBmnlMOWFAaH3zsCTtkl2ZO+37vly8TAssBB0HgcpR+QXzrSlru0Rut/bvI
+ OeaSL0kl86xhSj2r+7dIg1PWu4mpl2/w71tV+BCbpTXhZgeZAKrz+zIZpyJsRPzJL2PZkX
+ XDE47M8c/GZ2pcBRPt12Y3LuD9WGInGc+65ZeuefAYNYQyVp4pLSkfEp/lPpYf3EEfZvRY
+ 4RPFMChNSkACjpx+EIbIn9nVMHSYWWaGTzQLpTl2FPtD4oybtza1V+0G0yNN1g==
 From: Luc Michel <luc@lmichel.fr>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 07/15] hw/misc/bcm2835_cprman: implement PLLs behaviour
-Date: Mon,  5 Oct 2020 21:56:04 +0200
-Message-Id: <20201005195612.1999165-8-luc@lmichel.fr>
+Subject: [PATCH v2 01/15] hw/core/clock: provide the VMSTATE_ARRAY_CLOCK macro
+Date: Mon,  5 Oct 2020 21:55:58 +0200
+Message-Id: <20201005195612.1999165-2-luc@lmichel.fr>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201005195612.1999165-1-luc@lmichel.fr>
 References: <20201005195612.1999165-1-luc@lmichel.fr>
@@ -57,20 +57,20 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1601927715;
+ s=pharaoh; t=1601927714;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6Tw5rebm56xIRl4Y6xn4/weNTQ41I+JOywwnSzbgJS4=;
- b=MQ9FaDIt8OGNycObUAoJzOhXYNPyO69hj7Dqn61V0WGiDnUQ+FHKtlmNxjfyYuyD5badAc
- I5K83MkG5K85c/DyB77S5nuxVBjVqoK7vveGPeDZwrF163s9dQNAAkbqJ1THNsbJGQbNIc
- Q/RweSTswfzyxp4eLcWBQljdf3uB9usiODgTuSMo8lvQoC9MGwCqdo7aTOqH7W7SURFssK
- hytMpRZtxV8nZn86nbgwR3PWG1Y/vLuhs0a3lnn7TsIdUUbv+W/wUx8w3qbz7I+J/DH5b5
- WxGPX6NE1Jpq5Xh8I2kdKRyf73Cwddltadoj+d14T9d2KjGpcFRZx1JL60gJLw==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927715; a=rsa-sha256; cv=none;
- b=QGERrztZVBxC3zADrjJYx4BdwgSPpImbmOCwbzP+jGHfnC0n292SKk4zBqSuN0v7aJ2MURnDUWkn60W4cL/Zy6uDbvnbt2PWHYUSAoD5jrCzeNbmwTR4+N4Qtp9v0l2YUCnxxHsADK3wosXPxhAjIFVg3QyK5KrwRwuRbRBBnuFPk7wFZb4EyouBCzSKeHEQJkDxZpgyVODK6xoB/4JSwhlAsOWQd897Si823mppM5FwrO1K40E0wpAO12zCr8d9SNWS/zVIvIfSXFS5pL122ut8vz0KO7q4CxF9cFvfAGpxq6+5kwPOgzy8dUz5eW7kKXIN+AKEld36mB44QO3AOw==
+ bh=47VbYAct+c9hftOWPp/AO6VMc8Ptj3zoGkrDEH1t/nk=;
+ b=GcPf1PEIDn1EAyackIRZ5Rw54RR+6yaESOEq1F+mfetMLohChGEpY7MNlmyxbIJHHjDGbo
+ jKboewXA1w2aupFx4e0FEYmOhy0HoeiCnCwNJGPaX27FY4yPPWrcFsByANC9mG9R3D7KMc
+ MKEHm3qTXj6KlEfR6QkDeVLCxAC20gM09hKON+sa2NQPcaCpFEfVOm5Kp0GaCf5HXSZ2Qo
+ yus+mZE2gVppNSj7NzNptDnD2LA/LRqeguieTZBzKxC2goDJTxXG25ZJcuwaVp3dAlRBZb
+ aZj51QdnE3FH0ZXuOhh5ixnYRu8ZogU8zZNlelGK0sMm8rPwDDrizRfzUStbKw==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927714; a=rsa-sha256; cv=none;
+ b=REZqpR1egl7XoCo0IHsLa2XkprqUOLDqdwYQFzwIG75mUxIkzvkl7FzeyjGCqdVDYqx2zZ5YUZ7Lja4BaV9LSxaoMNvKJPgG3GJcrkRz9A77cwfuZVBBleATcPbTdaCLgGt1n+KV21W43JqxE1w7pDHlYxBCEyE5DCOcuBlmi06dNsBhIbeHJE090VIEwOb7spxJRuIlCjY07Ny6Goe0kIxADSdTVHyPy6FVyDvUd3YYVPDRvbKtFg0yGfQY3Fp5k85irMeZK7BcpEF0Gdx/qGwty1Iu2qN9ZCGRQii/uS8CnjO+8ixRP6UML5xGM10r73yAY33lTC+Qp+9Qc6zpeQ==
 ARC-Authentication-Results: i=1;
 	pharaoh.lmichel.fr
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
@@ -84,168 +84,55 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Paul Zimmerman <pauldzim@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  Havard Skinnemoen <hskinnemoen@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fc2knxG5mM94
-
-The CPRMAN PLLs generate a clock based on a prescaler, a multiplier and
-a divider. The prescaler doubles the parent (xosc) frequency, then the
-multiplier/divider are applied. The multiplier has an integer and a
-fractional part.
-
-This commit also implements the CPRMAN CM_LOCK register. This register
-reports which PLL is currently locked. We consider a PLL has being
-locked as soon as it is enabled (on real hardware, there is a delay
-after turning a PLL on, for it to stabilize).
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yvLfGTD6VkwK
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Damien Hedde <damien.hedde@greensocs.com>
 Signed-off-by: Luc Michel <luc@lmichel.fr>
 ---
- include/hw/misc/bcm2835_cprman_internals.h |  8 +++
- hw/misc/bcm2835_cprman.c                   | 64 +++++++++++++++++++++-
- 2 files changed, 71 insertions(+), 1 deletion(-)
+ include/hw/clock.h | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/include/hw/misc/bcm2835_cprman_internals.h b/include/hw/misc/bcm2835_cprman_internals.h
-index 340ad623bb..7aa46c6e18 100644
---- a/include/hw/misc/bcm2835_cprman_internals.h
-+++ b/include/hw/misc/bcm2835_cprman_internals.h
-@@ -98,10 +98,18 @@ REG32(A2W_PLLA_FRAC, 0x1200)
- REG32(A2W_PLLC_FRAC, 0x1220)
- REG32(A2W_PLLD_FRAC, 0x1240)
- REG32(A2W_PLLH_FRAC, 0x1260)
- REG32(A2W_PLLB_FRAC, 0x12e0)
+diff --git a/include/hw/clock.h b/include/hw/clock.h
+index d357594df9..c93e6113cd 100644
+--- a/include/hw/clock.h
++++ b/include/hw/clock.h
+@@ -79,10 +79,15 @@ struct Clock {
+ extern const VMStateDescription vmstate_clock;
+ #define VMSTATE_CLOCK(field, state) \
+     VMSTATE_CLOCK_V(field, state, 0)
+ #define VMSTATE_CLOCK_V(field, state, version) \
+     VMSTATE_STRUCT_POINTER_V(field, state, version, vmstate_clock, Clock)
++#define VMSTATE_ARRAY_CLOCK(field, state, num) \
++    VMSTATE_ARRAY_CLOCK_V(field, state, num, 0)
++#define VMSTATE_ARRAY_CLOCK_V(field, state, num, version)          \
++    VMSTATE_ARRAY_OF_POINTER_TO_STRUCT(field, state, num, version, \
++                                       vmstate_clock, Clock)
  
-+/* misc registers */
-+REG32(CM_LOCK, 0x114)
-+    FIELD(CM_LOCK, FLOCKH, 12, 1)
-+    FIELD(CM_LOCK, FLOCKD, 11, 1)
-+    FIELD(CM_LOCK, FLOCKC, 10, 1)
-+    FIELD(CM_LOCK, FLOCKB, 9, 1)
-+    FIELD(CM_LOCK, FLOCKA, 8, 1)
-+
- /*
-  * This field is common to all registers. Each register write value must match
-  * the CPRMAN_PASSWORD magic value in its 8 MSB.
-  */
- FIELD(CPRMAN, PASSWORD, 24, 8)
-diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-index b86f5901b8..144bcc289d 100644
---- a/hw/misc/bcm2835_cprman.c
-+++ b/hw/misc/bcm2835_cprman.c
-@@ -48,13 +48,51 @@
- #include "hw/misc/bcm2835_cprman_internals.h"
- #include "trace.h"
- 
- /* PLL */
- 
-+static bool pll_is_locked(const CprmanPllState *pll)
-+{
-+    return !FIELD_EX32(*pll->reg_a2w_ctrl, A2W_PLLx_CTRL, PWRDN)
-+        && !FIELD_EX32(*pll->reg_cm, CM_PLLx, ANARST);
-+}
-+
- static void pll_update(CprmanPllState *pll)
- {
--    clock_update(pll->out, 0);
-+    uint64_t freq, ndiv, fdiv, pdiv;
-+
-+    if (!pll_is_locked(pll)) {
-+        clock_update(pll->out, 0);
-+        return;
-+    }
-+
-+    pdiv = FIELD_EX32(*pll->reg_a2w_ctrl, A2W_PLLx_CTRL, PDIV);
-+
-+    if (!pdiv) {
-+        clock_update(pll->out, 0);
-+        return;
-+    }
-+
-+    ndiv = FIELD_EX32(*pll->reg_a2w_ctrl, A2W_PLLx_CTRL, NDIV);
-+    fdiv = FIELD_EX32(*pll->reg_a2w_frac, A2W_PLLx_FRAC, FRAC);
-+
-+    if (pll->reg_a2w_ana[1] & pll->prediv_mask) {
-+        /* The prescaler doubles the parent frequency */
-+        ndiv *= 2;
-+        fdiv *= 2;
-+    }
-+
-+    /*
-+     * We have a multiplier with an integer part (ndiv) and a fractional part
-+     * (fdiv), and a divider (pdiv).
-+     */
-+    freq = clock_get_hz(pll->xosc_in) *
-+        ((ndiv << R_A2W_PLLx_FRAC_FRAC_LENGTH) + fdiv);
-+    freq /= pdiv;
-+    freq >>= R_A2W_PLLx_FRAC_FRAC_LENGTH;
-+
-+    clock_update_hz(pll->out, freq);
- }
- 
- static void pll_xosc_update(void *opaque)
- {
-     pll_update(CPRMAN_PLL(opaque));
-@@ -94,18 +132,42 @@ static const TypeInfo cprman_pll_info = {
- };
- 
- 
- /* CPRMAN "top level" model */
- 
-+static uint32_t get_cm_lock(const BCM2835CprmanState *s)
-+{
-+    static const int CM_LOCK_MAPPING[CPRMAN_NUM_PLL] = {
-+        [CPRMAN_PLLA] = R_CM_LOCK_FLOCKA_SHIFT,
-+        [CPRMAN_PLLC] = R_CM_LOCK_FLOCKC_SHIFT,
-+        [CPRMAN_PLLD] = R_CM_LOCK_FLOCKD_SHIFT,
-+        [CPRMAN_PLLH] = R_CM_LOCK_FLOCKH_SHIFT,
-+        [CPRMAN_PLLB] = R_CM_LOCK_FLOCKB_SHIFT,
-+    };
-+
-+    uint32_t r = 0;
-+    size_t i;
-+
-+    for (i = 0; i < CPRMAN_NUM_PLL; i++) {
-+        r |= pll_is_locked(&s->plls[i]) << CM_LOCK_MAPPING[i];
-+    }
-+
-+    return r;
-+}
-+
- static uint64_t cprman_read(void *opaque, hwaddr offset,
-                             unsigned size)
- {
-     BCM2835CprmanState *s = CPRMAN(opaque);
-     uint64_t r = 0;
-     size_t idx = offset / sizeof(uint32_t);
- 
-     switch (idx) {
-+    case R_CM_LOCK:
-+        r = get_cm_lock(s);
-+        break;
-+
-     default:
-         r = s->regs[idx];
-     }
- 
-     trace_bcm2835_cprman_read(offset, r);
+ /**
+  * clock_setup_canonical_path:
+  * @clk: clock
+  *
 -- 
 2.28.0
 

@@ -1,56 +1,55 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp57526lfq;
-        Mon, 5 Oct 2020 13:21:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxItV6zyP9YI3wHc8B76oOS/+kY4wtQZkVKyHrR5+ErUiYOJmY8KLIIFTfF+FCrfzJO2RuX
-X-Received: by 2002:a25:d74f:: with SMTP id o76mr2398487ybg.55.1601929300724;
-        Mon, 05 Oct 2020 13:21:40 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp58522lfq;
+        Mon, 5 Oct 2020 13:23:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwIupW+4fBzprH3c2zAEvzrzTzO+T4fD4QhJY8HPQUNaKtj1NxGWtUDlT0KqKPoknE/7zdJ
+X-Received: by 2002:a25:7346:: with SMTP id o67mr2174274ybc.188.1601929399889;
+        Mon, 05 Oct 2020 13:23:19 -0700 (PDT)
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g2si955116ybc.263.2020.10.05.13.21.40
+        by mx.google.com with ESMTPS id 203si971776ybe.15.2020.10.05.13.23.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 13:21:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 05 Oct 2020 13:23:19 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=NrbuVxeL;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=HpGBfrqT;
        arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:43418 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45872 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPWzM-0006jI-1R
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:21:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57764)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kPX0x-0007mC-8G
+	for alex.bennee@linaro.org; Mon, 05 Oct 2020 16:23:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57852)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWZy-0004Ca-B8; Mon, 05 Oct 2020 15:55:26 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:35898)
+ id 1kPWaI-0004zD-Ci; Mon, 05 Oct 2020 15:55:46 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:35980)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kPWZs-0007WU-Rs; Mon, 05 Oct 2020 15:55:25 -0400
+ id 1kPWaG-0007ZY-2T; Mon, 05 Oct 2020 15:55:46 -0400
 Received: from sekoia-pc.home.lmichel.fr (sekoia-pc.home.lmichel.fr
  [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPS id D0177C60F1D;
- Mon,  5 Oct 2020 19:55:14 +0000 (UTC)
+ by pharaoh.lmichel.fr (Postfix) with ESMTPS id 22D9BC60F23;
+ Mon,  5 Oct 2020 19:55:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1601927714;
+ t=1601927720;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HZVj10AFujvPZeDEOYBlWPdrZCZDe5HuOmVNdOSGfsA=;
- b=NrbuVxeLnCbqxyPWVqLaBognD8NYFU9H/P3T/J2mHMWl4uXjIRawGQsBecrUoUPvC+gGOf
- WnM4W5ttJsq3jdk7IJ3wwc1r+Gz1uvSlIkLIEz0gLMfsRg8KOqIN8uHAdY1HAt8loQIICA
- TCYDWMFjOoHSiIdk+weYecKbb0dwggWYUOVYQLjshpdBEpZQu0AVkw5QRf+S628Msa98Gh
- MbJR+F8KyP87BcnhtoWB1I8T1xapp7VO+cEGat/L4v3aBQLn4yd+ZPFsS2cMV14RY9Wm6z
- eZv+jJNFaWJR+FJGzlKoNf6DdRe4isz1QvzxXtAAhKeU2uGqKvWClIz8RuyakA==
+ bh=rgQnfA4gJ5UqQkulxy+qp1Ezps7+MOOFEN3I8HU3nPw=;
+ b=HpGBfrqT5zf3Xo4h2VyGmPCGiTbPeQcP1WmH4SEbitffqje7G3L8wOENHyIwjkwwsYzPpv
+ lxn5C6mxWmG7e5kyh8Dy6roEVE2jf3TyHtE2N4As33GkpvkerURsRjlYvS4EQupc4Szoud
+ FhWFAkZ88zpN2sdT/d64d0Ziw41qJfx5+MwuRx8bVk0iMNOq8nuOlbvLu+uI6xs+0o+sra
+ GPo1OHXXEJPr5z8pbr6eltvttQbq3eD50kNDA7H2f6DWGcgtfGcSButxtL3X4Z68B+rUE1
+ HZjQ8t+0KFzFVnhAytgD4QfJC2MF8L+BZdw8GN9FIUGRfGtn/swZoU/05/iHJA==
 From: Luc Michel <luc@lmichel.fr>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 05/15] hw/arm/raspi: add a skeleton implementation of the
- CPRMAN
-Date: Mon,  5 Oct 2020 21:56:02 +0200
-Message-Id: <20201005195612.1999165-6-luc@lmichel.fr>
+Subject: [PATCH v2 12/15] hw/misc/bcm2835_cprman: add the DSI0HSCK multiplexer
+Date: Mon,  5 Oct 2020 21:56:09 +0200
+Message-Id: <20201005195612.1999165-13-luc@lmichel.fr>
 X-Mailer: git-send-email 2.28.0
 In-Reply-To: <20201005195612.1999165-1-luc@lmichel.fr>
 References: <20201005195612.1999165-1-luc@lmichel.fr>
@@ -58,20 +57,20 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1601927715;
+ s=pharaoh; t=1601927720;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HZVj10AFujvPZeDEOYBlWPdrZCZDe5HuOmVNdOSGfsA=;
- b=Rd8nDMLHfohlt3TbELAtMsdVHRtPXXyJ3W/uA1yAmCLec9fgSuViL2CsKUrsJInRhzzE1F
- lpzRja6VmOPeZU832GhV5jYb2jN014sfe1mRqYw6U3L5Wi3VowKypfo6bE50/RFY1xjWVA
- iB++ivwphLGeFfRvxNk4VAWo08jW9/p/HLgrIUKqN/upX0+5ld6O8QVq/dEejNFjXvgO10
- j8KtLCvHKJam5OQeXnA3le6rYVSyhxKfQG23AgJsa4KfjReC8s9oS6jhkUvZdKfw8o8hN0
- 2/9rR72oheykCJ4f6XKpD+E8MS20nXJd4ehtEDwAgRAXsPkYtTVFu48zptbfxA==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927715; a=rsa-sha256; cv=none;
- b=PNXc3AhKt9mKpVhKcBseZGHdhVRqRSg9k30X6pgUErHb48mZ8ytceH089ROWMmUJg4xVfQM/SYqVSjVyv5CQfxO/yjN8Pbv5SoAZx+2ZjhWVj9F9E7FkcPzg/aLlbT8FAwsbyF/bUgYYbHCWWO0RRIqFdxIdl3pQnhNyP08HIsUK3ZhCgsJr0vZtBt0gnj+cxnL3bLkR6WlgcW+bGQ3LfEcwmQQaDo51j42AmJzGibLUwP6Bq8JbaVmDc9juVZiRTX6C5d3aXguf/E0bOgo5ySBmHSuV3k9xZQZSx2PvhY37V/fi1PJJjczq0PFbmP4TulTvt+a0vgzqaOi918beOw==
+ bh=rgQnfA4gJ5UqQkulxy+qp1Ezps7+MOOFEN3I8HU3nPw=;
+ b=OFzSJOv1dIV5034BL//GACaNYfDMm8wFd8CRxcvkn6WIRRbOBYRLljqw4obPRxJ6C0Edtq
+ 5p1F5DgCVWtltQSNLy1oQFnRxWAvOvZnxyEidkfLRkX0p3AnDQf0NpW+LpBR+Y5beAFhxp
+ 8InyHNmue9EUeg+OtePjZOMy8eduBWa8GVzqj/J/PKy4cSMNC85lOIeynphwclf1jy0X/3
+ H76saGaFLkTvh/kHNhG6L4Zt6bajpKRnP4jugB1lDCDNVBMFyu/561PVJ5axSP3aprZQSB
+ W/rJlM8rjD4dYq9BhNB5YtSenAX9eHML9rXRgFQa4t5VXHmxcpmLnqpb/AVbGg==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1601927720; a=rsa-sha256; cv=none;
+ b=EfK5vG+7Sz6VlLyHx/tTXDTcbSI/JHcciA/mR8fsCuAsq/4bb2oYhUmVpHFdZoP1984PCOa0XSTq6EGRQUR1FBhoScLbkgTELEs9H5lRcJEnjWt0HnWos+ERb7TJkUXE5xiAYsDHYj3x5x35kNcCER17kkcAMqFsk69CjntGBAD5B1WK2bSBIhNub2sQ/3mfhQQzR6MQNHfHqMsy/yPr0F9xnw8dLFle5QjWxsuez34T6ay76AD7rIs3ItIEO0mFQHYe1jvSSFbV96wkTTikkCVJ6IFRjeK4jj0xy6g40WNh50pMjbk/uWm6+0zgwhOW1n1E+tVU/mEC8WB5CAPVLQ==
 ARC-Authentication-Results: i=1;
 	pharaoh.lmichel.fr
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
@@ -85,401 +84,273 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Paul Zimmerman <pauldzim@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  Havard Skinnemoen <hskinnemoen@google.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KarwVUY/UPfI
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hTubnbg8NPHx
 
-The BCM2835 CPRMAN is the clock manager of the SoC. It is composed of a
-main oscillator, and several sub-components (PLLs, multiplexers, ...) to
-generate the BCM2835 clock tree.
-
-This commit adds a skeleton of the CPRMAN, with a dummy register
-read/write implementation. It embeds the main oscillator (xosc) from
-which all the clocks will be derived.
+This simple mux sits between the PLL channels and the DSI0E and DSI0P
+clock muxes. This mux selects between PLLA-DSI0 and PLLD-DSI0 channel
+and outputs the selected signal to source number 4 of DSI0E/P clock
+muxes. It is controlled by the cm_dsi0hsck register.
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 Signed-off-by: Luc Michel <luc@lmichel.fr>
 ---
- include/hw/arm/bcm2835_peripherals.h       |   3 +-
- include/hw/misc/bcm2835_cprman.h           |  37 +++++
- include/hw/misc/bcm2835_cprman_internals.h |  24 +++
- hw/arm/bcm2835_peripherals.c               |  11 +-
- hw/misc/bcm2835_cprman.c                   | 163 +++++++++++++++++++++
- hw/misc/meson.build                        |   1 +
- hw/misc/trace-events                       |   5 +
- 7 files changed, 242 insertions(+), 2 deletions(-)
- create mode 100644 include/hw/misc/bcm2835_cprman.h
- create mode 100644 include/hw/misc/bcm2835_cprman_internals.h
- create mode 100644 hw/misc/bcm2835_cprman.c
+ include/hw/misc/bcm2835_cprman.h           | 15 +++++
+ include/hw/misc/bcm2835_cprman_internals.h |  6 ++
+ hw/misc/bcm2835_cprman.c                   | 74 +++++++++++++++++++++-
+ 3 files changed, 94 insertions(+), 1 deletion(-)
 
-diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
-index 6aa94184eb..479e2346e8 100644
---- a/include/hw/arm/bcm2835_peripherals.h
-+++ b/include/hw/arm/bcm2835_peripherals.h
-@@ -21,10 +21,11 @@
- #include "hw/misc/bcm2835_property.h"
- #include "hw/misc/bcm2835_rng.h"
- #include "hw/misc/bcm2835_mbox.h"
- #include "hw/misc/bcm2835_mphi.h"
- #include "hw/misc/bcm2835_thermal.h"
-+#include "hw/misc/bcm2835_cprman.h"
- #include "hw/sd/sdhci.h"
- #include "hw/sd/bcm2835_sdhost.h"
- #include "hw/gpio/bcm2835_gpio.h"
- #include "hw/timer/bcm2835_systmr.h"
- #include "hw/usb/hcd-dwc2.h"
-@@ -46,11 +47,11 @@ struct BCM2835PeripheralState {
-     BCM2835SystemTimerState systmr;
-     BCM2835MphiState mphi;
-     UnimplementedDeviceState txp;
-     UnimplementedDeviceState armtmr;
-     UnimplementedDeviceState powermgt;
--    UnimplementedDeviceState cprman;
-+    BCM2835CprmanState cprman;
-     PL011State uart0;
-     BCM2835AuxState aux;
-     BCM2835FBState fb;
-     BCM2835DMAState dma;
-     BCM2835ICState ic;
 diff --git a/include/hw/misc/bcm2835_cprman.h b/include/hw/misc/bcm2835_cprman.h
-new file mode 100644
-index 0000000000..8ae2d4d17c
---- /dev/null
+index 817915ee95..4a1060c3d1 100644
+--- a/include/hw/misc/bcm2835_cprman.h
 +++ b/include/hw/misc/bcm2835_cprman.h
-@@ -0,0 +1,37 @@
-+/*
-+ * BCM2835 CPRMAN clock manager
-+ *
-+ * Copyright (c) 2020 Luc Michel <luc@lmichel.fr>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_MISC_CPRMAN_H
-+#define HW_MISC_CPRMAN_H
-+
-+#include "hw/sysbus.h"
-+#include "hw/qdev-clock.h"
-+
-+#define TYPE_BCM2835_CPRMAN "bcm2835-cprman"
-+
-+typedef struct BCM2835CprmanState BCM2835CprmanState;
-+
-+DECLARE_INSTANCE_CHECKER(BCM2835CprmanState, CPRMAN,
-+                         TYPE_BCM2835_CPRMAN)
-+
-+#define CPRMAN_NUM_REGS (0x2000 / sizeof(uint32_t))
-+
-+struct BCM2835CprmanState {
+@@ -171,20 +171,35 @@ typedef struct CprmanClockMuxState {
+      * source number.
+      */
+     struct CprmanClockMuxState *backref[CPRMAN_NUM_CLOCK_MUX_SRC];
+ } CprmanClockMuxState;
+ 
++typedef struct CprmanDsi0HsckMuxState {
 +    /*< private >*/
-+    SysBusDevice parent_obj;
++    DeviceState parent_obj;
 +
 +    /*< public >*/
-+    MemoryRegion iomem;
++    CprmanClockMux id;
 +
-+    uint32_t regs[CPRMAN_NUM_REGS];
-+    uint32_t xosc_freq;
++    uint32_t *reg_cm;
 +
-+    Clock *xosc;
-+};
++    Clock *plla_in;
++    Clock *plld_in;
++    Clock *out;
++} CprmanDsi0HsckMuxState;
 +
-+#endif
+ struct BCM2835CprmanState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+ 
+     /*< public >*/
+     MemoryRegion iomem;
+ 
+     CprmanPllState plls[CPRMAN_NUM_PLL];
+     CprmanPllChannelState channels[CPRMAN_NUM_PLL_CHANNEL];
+     CprmanClockMuxState clock_muxes[CPRMAN_NUM_CLOCK_MUX];
++    CprmanDsi0HsckMuxState dsi0hsck_mux;
+ 
+     uint32_t regs[CPRMAN_NUM_REGS];
+     uint32_t xosc_freq;
+ 
+     Clock *xosc;
 diff --git a/include/hw/misc/bcm2835_cprman_internals.h b/include/hw/misc/bcm2835_cprman_internals.h
-new file mode 100644
-index 0000000000..8fcc6d1d09
---- /dev/null
+index 2d16f9ace5..d9abda91cb 100644
+--- a/include/hw/misc/bcm2835_cprman_internals.h
 +++ b/include/hw/misc/bcm2835_cprman_internals.h
-@@ -0,0 +1,24 @@
-+/*
-+ * BCM2835 CPRMAN clock manager
-+ *
-+ * Copyright (c) 2020 Luc Michel <luc@lmichel.fr>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_MISC_CPRMAN_INTERNALS_H
-+#define HW_MISC_CPRMAN_INTERNALS_H
-+
-+#include "hw/registerfields.h"
-+#include "hw/misc/bcm2835_cprman.h"
-+
-+/* Register map */
-+
-+/*
-+ * This field is common to all registers. Each register write value must match
-+ * the CPRMAN_PASSWORD magic value in its 8 MSB.
-+ */
-+FIELD(CPRMAN, PASSWORD, 24, 8)
-+#define CPRMAN_PASSWORD 0x5a
-+
-+#endif
-diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
-index 10e9f501d2..9d6190042d 100644
---- a/hw/arm/bcm2835_peripherals.c
-+++ b/hw/arm/bcm2835_peripherals.c
-@@ -119,10 +119,13 @@ static void bcm2835_peripherals_init(Object *obj)
-     object_initialize_child(obj, "mphi", &s->mphi, TYPE_BCM2835_MPHI);
+@@ -13,17 +13,20 @@
+ #include "hw/misc/bcm2835_cprman.h"
  
-     /* DWC2 */
-     object_initialize_child(obj, "dwc2", &s->dwc2, TYPE_DWC2_USB);
+ #define TYPE_CPRMAN_PLL "bcm2835-cprman-pll"
+ #define TYPE_CPRMAN_PLL_CHANNEL "bcm2835-cprman-pll-channel"
+ #define TYPE_CPRMAN_CLOCK_MUX "bcm2835-cprman-clock-mux"
++#define TYPE_CPRMAN_DSI0HSCK_MUX "bcm2835-cprman-dsi0hsck-mux"
  
-+    /* CPRMAN clock manager */
-+    object_initialize_child(obj, "cprman", &s->cprman, TYPE_BCM2835_CPRMAN);
+ DECLARE_INSTANCE_CHECKER(CprmanPllState, CPRMAN_PLL,
+                          TYPE_CPRMAN_PLL)
+ DECLARE_INSTANCE_CHECKER(CprmanPllChannelState, CPRMAN_PLL_CHANNEL,
+                          TYPE_CPRMAN_PLL_CHANNEL)
+ DECLARE_INSTANCE_CHECKER(CprmanClockMuxState, CPRMAN_CLOCK_MUX,
+                          TYPE_CPRMAN_CLOCK_MUX)
++DECLARE_INSTANCE_CHECKER(CprmanDsi0HsckMuxState, CPRMAN_DSI0HSCK_MUX,
++                         TYPE_CPRMAN_DSI0HSCK_MUX)
+ 
+ /* Register map */
+ 
+ /* PLLs */
+ REG32(CM_PLLA, 0x104)
+@@ -221,10 +224,13 @@ REG32(CM_LOCK, 0x114)
+     FIELD(CM_LOCK, FLOCKD, 11, 1)
+     FIELD(CM_LOCK, FLOCKC, 10, 1)
+     FIELD(CM_LOCK, FLOCKB, 9, 1)
+     FIELD(CM_LOCK, FLOCKA, 8, 1)
+ 
++REG32(CM_DSI0HSCK, 0x120)
++    FIELD(CM_DSI0HSCK, SELPLLD, 0, 1)
 +
-     object_property_add_const_link(OBJECT(&s->dwc2), "dma-mr",
-                                    OBJECT(&s->gpu_bus_mr));
- }
- 
- static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-@@ -158,10 +161,17 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-     /* Interrupt Controller */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->ic), errp)) {
-         return;
-     }
- 
-+    /* CPRMAN clock manager */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->cprman), errp)) {
-+        return;
-+    }
-+    memory_region_add_subregion(&s->peri_mr, CPRMAN_OFFSET,
-+                sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->cprman), 0));
-+
-     memory_region_add_subregion(&s->peri_mr, ARMCTRL_IC_OFFSET,
-                 sysbus_mmio_get_region(SYS_BUS_DEVICE(&s->ic), 0));
-     sysbus_pass_irq(SYS_BUS_DEVICE(s), SYS_BUS_DEVICE(&s->ic));
- 
-     /* Sys Timer */
-@@ -344,11 +354,10 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-                                INTERRUPT_USB));
- 
-     create_unimp(s, &s->txp, "bcm2835-txp", TXP_OFFSET, 0x1000);
-     create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
-     create_unimp(s, &s->powermgt, "bcm2835-powermgt", PM_OFFSET, 0x114);
--    create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x2000);
-     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
-     create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
-     create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
-     create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
-     create_unimp(s, &s->i2c[0], "bcm2835-i2c0", BSC0_OFFSET, 0x20);
+ /*
+  * This field is common to all registers. Each register write value must match
+  * the CPRMAN_PASSWORD magic value in its 8 MSB.
+  */
+ FIELD(CPRMAN, PASSWORD, 24, 8)
 diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-new file mode 100644
-index 0000000000..57ab9910b5
---- /dev/null
+index 7d59423367..4f5bb7a182 100644
+--- a/hw/misc/bcm2835_cprman.c
 +++ b/hw/misc/bcm2835_cprman.c
-@@ -0,0 +1,163 @@
-+/*
-+ * BCM2835 CPRMAN clock manager
-+ *
-+ * Copyright (c) 2020 Luc Michel <luc@lmichel.fr>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
+@@ -328,10 +328,62 @@ static const TypeInfo cprman_clock_mux_info = {
+     .class_init = clock_mux_class_init,
+     .instance_init = clock_mux_init,
+ };
+ 
+ 
++/* DSI0HSCK mux */
 +
-+/*
-+ * This peripheral is roughly divided into 3 main parts:
-+ *   - the PLLs
-+ *   - the PLL channels
-+ *   - the clock muxes
-+ *
-+ * A main oscillator (xosc) feeds all the PLLs. Each PLLs has one or more
-+ * channels. Those channel are then connected to the clock muxes. Each mux has
-+ * multiples sources (usually the xosc, some of the PLL channels and some "test
-+ * debug" clocks). A mux is configured to select a given source through its
-+ * control register. Each mux has one output clock that also goes out of the
-+ * CPRMAN. This output clock usually connects to another peripheral in the SoC
-+ * (so a given mux is dedicated to a peripheral).
-+ *
-+ * At each level (PLL, channel and mux), the clock can be altered through
-+ * dividers (and multipliers in case of the PLLs), and can be disabled (in this
-+ * case, the next levels see no clock).
-+ *
-+ * This can be sum-up as follows (this is an example and not the actual BCM2835
-+ * clock tree):
-+ *
-+ *          /-->[PLL]-|->[PLL channel]--...            [mux]--> to peripherals
-+ *          |         |->[PLL channel]  muxes takes    [mux]
-+ *          |         \->[PLL channel]  inputs from    [mux]
-+ *          |                           some channels  [mux]
-+ * [xosc]---|-->[PLL]-|->[PLL channel]  and other srcs [mux]
-+ *          |         \->[PLL channel]           ...-->[mux]
-+ *          |                                          [mux]
-+ *          \-->[PLL]--->[PLL channel]                 [mux]
-+ *
-+ * The page at https://elinux.org/The_Undocumented_Pi gives the actual clock
-+ * tree configuration.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "migration/vmstate.h"
-+#include "hw/qdev-properties.h"
-+#include "hw/misc/bcm2835_cprman.h"
-+#include "hw/misc/bcm2835_cprman_internals.h"
-+#include "trace.h"
-+
-+/* CPRMAN "top level" model */
-+
-+static uint64_t cprman_read(void *opaque, hwaddr offset,
-+                            unsigned size)
++static void dsi0hsck_mux_update(CprmanDsi0HsckMuxState *s)
 +{
-+    BCM2835CprmanState *s = CPRMAN(opaque);
-+    uint64_t r = 0;
-+    size_t idx = offset / sizeof(uint32_t);
++    bool src_is_plld = FIELD_EX32(*s->reg_cm, CM_DSI0HSCK, SELPLLD);
++    Clock *src = src_is_plld ? s->plld_in : s->plla_in;
 +
-+    switch (idx) {
-+    default:
-+        r = s->regs[idx];
-+    }
-+
-+    trace_bcm2835_cprman_read(offset, r);
-+    return r;
++    clock_update(s->out, clock_get(src));
 +}
 +
-+static void cprman_write(void *opaque, hwaddr offset,
-+                         uint64_t value, unsigned size)
++static void dsi0hsck_mux_in_update(void *opaque)
 +{
-+    BCM2835CprmanState *s = CPRMAN(opaque);
-+    size_t idx = offset / sizeof(uint32_t);
-+
-+    if (FIELD_EX32(value, CPRMAN, PASSWORD) != CPRMAN_PASSWORD) {
-+        trace_bcm2835_cprman_write_invalid_magic(offset, value);
-+        return;
-+    }
-+
-+    value &= ~R_CPRMAN_PASSWORD_MASK;
-+
-+    trace_bcm2835_cprman_write(offset, value);
-+    s->regs[idx] = value;
-+
++    dsi0hsck_mux_update(CPRMAN_DSI0HSCK_MUX(opaque));
 +}
 +
-+static const MemoryRegionOps cprman_ops = {
-+    .read = cprman_read,
-+    .write = cprman_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        /*
-+         * Although this hasn't been checked against real hardware, nor the
-+         * information can be found in a datasheet, it seems reasonable because
-+         * of the "PASSWORD" magic value found in every registers.
-+         */
-+        .min_access_size        = 4,
-+        .max_access_size        = 4,
-+        .unaligned              = false,
-+    },
-+    .impl = {
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void cprman_reset(DeviceState *dev)
++static void dsi0hsck_mux_init(Object *obj)
 +{
-+    BCM2835CprmanState *s = CPRMAN(dev);
++    CprmanDsi0HsckMuxState *s = CPRMAN_DSI0HSCK_MUX(obj);
++    DeviceState *dev = DEVICE(obj);
 +
-+    memset(s->regs, 0, sizeof(s->regs));
-+
-+    clock_update_hz(s->xosc, s->xosc_freq);
++    s->plla_in = qdev_init_clock_in(dev, "plla-in", dsi0hsck_mux_in_update, s);
++    s->plld_in = qdev_init_clock_in(dev, "plld-in", dsi0hsck_mux_in_update, s);
++    s->out = qdev_init_clock_out(DEVICE(s), "out");
 +}
 +
-+static void cprman_init(Object *obj)
-+{
-+    BCM2835CprmanState *s = CPRMAN(obj);
-+
-+    s->xosc = clock_new(obj, "xosc");
-+
-+    memory_region_init_io(&s->iomem, obj, &cprman_ops,
-+                          s, "bcm2835-cprman", 0x2000);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+}
-+
-+static const VMStateDescription cprman_vmstate = {
-+    .name = TYPE_BCM2835_CPRMAN,
++static const VMStateDescription dsi0hsck_mux_vmstate = {
++    .name = TYPE_CPRMAN_DSI0HSCK_MUX,
 +    .version_id = 1,
 +    .minimum_version_id = 1,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, BCM2835CprmanState, CPRMAN_NUM_REGS),
++        VMSTATE_CLOCK(plla_in, CprmanDsi0HsckMuxState),
++        VMSTATE_CLOCK(plld_in, CprmanDsi0HsckMuxState),
 +        VMSTATE_END_OF_LIST()
 +    }
 +};
 +
-+static Property cprman_properties[] = {
-+    DEFINE_PROP_UINT32("xosc-freq-hz", BCM2835CprmanState, xosc_freq, 19200000),
-+    DEFINE_PROP_END_OF_LIST()
-+};
-+
-+static void cprman_class_init(ObjectClass *klass, void *data)
++static void dsi0hsck_mux_class_init(ObjectClass *klass, void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->reset = cprman_reset;
-+    dc->vmsd = &cprman_vmstate;
-+    device_class_set_props(dc, cprman_properties);
++    dc->vmsd = &dsi0hsck_mux_vmstate;
 +}
 +
-+static const TypeInfo cprman_info = {
-+    .name = TYPE_BCM2835_CPRMAN,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(BCM2835CprmanState),
-+    .class_init = cprman_class_init,
-+    .instance_init = cprman_init,
++static const TypeInfo cprman_dsi0hsck_mux_info = {
++    .name = TYPE_CPRMAN_DSI0HSCK_MUX,
++    .parent = TYPE_DEVICE,
++    .instance_size = sizeof(CprmanDsi0HsckMuxState),
++    .class_init = dsi0hsck_mux_class_init,
++    .instance_init = dsi0hsck_mux_init,
 +};
 +
-+static void cprman_register_types(void)
-+{
-+    type_register_static(&cprman_info);
-+}
 +
-+type_init(cprman_register_types);
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 793d45b1dc..c94cf70e82 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -71,10 +71,11 @@ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files(
-   'bcm2835_mbox.c',
-   'bcm2835_mphi.c',
-   'bcm2835_property.c',
-   'bcm2835_rng.c',
-   'bcm2835_thermal.c',
-+  'bcm2835_cprman.c',
- ))
- softmmu_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
- softmmu_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c', 'zynq-xadc.c'))
- softmmu_ss.add(when: 'CONFIG_STM32F2XX_SYSCFG', if_true: files('stm32f2xx_syscfg.c'))
- softmmu_ss.add(when: 'CONFIG_STM32F4XX_SYSCFG', if_true: files('stm32f4xx_syscfg.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 6054f9adf3..d718a2b177 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -224,5 +224,10 @@ grlib_ahb_pnp_read(uint64_t addr, uint32_t value) "AHB PnP read addr:0x%03"PRIx6
- grlib_apb_pnp_read(uint64_t addr, uint32_t value) "APB PnP read addr:0x%03"PRIx64" data:0x%08x"
+ /* CPRMAN "top level" model */
  
- # pca9552.c
- pca955x_gpio_status(const char *description, const char *buf) "%s GPIOs 0-15 [%s]"
- pca955x_gpio_change(const char *description, unsigned id, unsigned prev_state, unsigned current_state) "%s GPIO id:%u status: %u -> %u"
+ static uint32_t get_cm_lock(const BCM2835CprmanState *s)
+ {
+     static const int CM_LOCK_MAPPING[CPRMAN_NUM_PLL] = {
+@@ -489,10 +541,14 @@ static void cprman_write(void *opaque, hwaddr offset,
+     case R_CM_SDCCTL ... R_CM_ARMCTL:
+     case R_CM_AVEOCTL ... R_CM_EMMCDIV:
+     case R_CM_EMMC2CTL ... R_CM_EMMC2DIV:
+         update_mux_from_cm(s, idx);
+         break;
 +
-+# bcm2835_cprman.c
-+bcm2835_cprman_read(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " value:0x%" PRIx64
-+bcm2835_cprman_write(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " value:0x%" PRIx64
-+bcm2835_cprman_write_invalid_magic(uint64_t offset, uint64_t value) "offset:0x%" PRIx64 " value:0x%" PRIx64
++    case R_CM_DSI0HSCK:
++        dsi0hsck_mux_update(&s->dsi0hsck_mux);
++        break;
+     }
+ }
+ 
+ #undef CASE_PLL_A2W_REGS
+ 
+@@ -528,10 +584,12 @@ static void cprman_reset(DeviceState *dev)
+ 
+     for (i = 0; i < CPRMAN_NUM_PLL_CHANNEL; i++) {
+         device_cold_reset(DEVICE(&s->channels[i]));
+     }
+ 
++    device_cold_reset(DEVICE(&s->dsi0hsck_mux));
++
+     for (i = 0; i < CPRMAN_NUM_CLOCK_MUX; i++) {
+         device_cold_reset(DEVICE(&s->clock_muxes[i]));
+     }
+ 
+     clock_update_hz(s->xosc, s->xosc_freq);
+@@ -553,10 +611,14 @@ static void cprman_init(Object *obj)
+                                 &s->channels[i],
+                                 TYPE_CPRMAN_PLL_CHANNEL);
+         set_pll_channel_init_info(s, &s->channels[i], i);
+     }
+ 
++    object_initialize_child(obj, "dsi0hsck-mux",
++                            &s->dsi0hsck_mux, TYPE_CPRMAN_DSI0HSCK_MUX);
++    s->dsi0hsck_mux.reg_cm = &s->regs[R_CM_DSI0HSCK];
++
+     for (i = 0; i < CPRMAN_NUM_CLOCK_MUX; i++) {
+         char *alias;
+ 
+         object_initialize_child(obj, CLOCK_MUX_INIT_INFO[i].name,
+                                 &s->clock_muxes[i],
+@@ -600,11 +662,11 @@ static void connect_mux_sources(BCM2835CprmanState *s,
+         Clock *src;
+ 
+         if (mapping == CPRMAN_CLOCK_SRC_FORCE_GROUND) {
+             src = s->gnd;
+         } else if (mapping == CPRMAN_CLOCK_SRC_DSI0HSCK) {
+-            src = s->gnd; /* TODO */
++            src = s->dsi0hsck_mux.out;
+         } else if (i < CPRMAN_CLOCK_SRC_PLLA) {
+             src = CLK_SRC_MAPPING[i];
+         } else {
+             src = s->channels[mapping].out;
+         }
+@@ -638,10 +700,19 @@ static void cprman_realize(DeviceState *dev, Error **errp)
+         if (!qdev_realize(DEVICE(channel), NULL, errp)) {
+             return;
+         }
+     }
+ 
++    clock_set_source(s->dsi0hsck_mux.plla_in,
++                     s->channels[CPRMAN_PLLA_CHANNEL_DSI0].out);
++    clock_set_source(s->dsi0hsck_mux.plld_in,
++                     s->channels[CPRMAN_PLLD_CHANNEL_DSI0].out);
++
++    if (!qdev_realize(DEVICE(&s->dsi0hsck_mux), NULL, errp)) {
++        return;
++    }
++
+     for (i = 0; i < CPRMAN_NUM_CLOCK_MUX; i++) {
+         CprmanClockMuxState *clock_mux = &s->clock_muxes[i];
+ 
+         connect_mux_sources(s, clock_mux, CLOCK_MUX_INIT_INFO[i].src_mapping);
+ 
+@@ -688,8 +759,9 @@ static void cprman_register_types(void)
+ {
+     type_register_static(&cprman_info);
+     type_register_static(&cprman_pll_info);
+     type_register_static(&cprman_pll_channel_info);
+     type_register_static(&cprman_clock_mux_info);
++    type_register_static(&cprman_dsi0hsck_mux_info);
+ }
+ 
+ type_init(cprman_register_types);
 -- 
 2.28.0
 

@@ -1,110 +1,110 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp543226lfq;
-        Wed, 7 Oct 2020 09:16:11 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwHEXzwUWNs0IlrVRUzgZG+XsX7dCqoRfI/gyMybg+0lHsHnr2lwi/8D7VjuNYk0TJEyGQe
-X-Received: by 2002:a25:5507:: with SMTP id j7mr5285334ybb.214.1602087370791;
-        Wed, 07 Oct 2020 09:16:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602087370; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4180967lfq;
+        Mon, 5 Oct 2020 09:40:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLFEx1Gsk+dgfUt8KJpGuayNoS8qu9l8y/GAJJB1dWnqcqDF4pGxLvJpLPSpw9Dtr/UW/c
+X-Received: by 2002:a5b:5ce:: with SMTP id w14mr1250141ybp.83.1601916042125;
+        Mon, 05 Oct 2020 09:40:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601916042; cv=none;
         d=google.com; s=arc-20160816;
-        b=HvSdzTBaIZhK118SaEhTSsyr+RskNqaCBsoLfmZV6wvsYPRwbUTO1pKocrurRA8Uyc
-         tuZdjrSBx0qwz3sSicMpL+zYgEAEBbskRm3r9JXnotnehApYiaAWScdYisT1XE8r6Kjs
-         K7cCDdpeZaYg8PZ6LQVq5KNzVrdaybXQsYnUVOWRB0thOi6uK8r0bFge4jhsVC1qRHRe
-         fW5mQ+/y5wbqcfwuS3Q5rWMcDpaP/0LM/SrceeawmE70wH3KKAgzOErllHW2C9gXj9QI
-         hreq9a/W2aX/8mRNJWDEUPI8B6VwzVMYK12fE5ihPqa8B1M6jb5T6d4VovduUSKSophP
-         8Aqw==
+        b=nykA8LzGeaD4kb6ZvED5YVL/BJFkqns5T/HSl5GDFxNWJ/swoVYS1nbh3aHfeG5B/1
+         fzlrTu041VmqF4GSBozh4CJUQpK64GF+iaHjnR2Aff79AitT6VDUGPm6oUcwx6ObJd1y
+         pAUj62nWjZ6TzvEZvDxGjcaPs7iJLEPK1n0M1oDYM0AHgDdBuM+0qIHqQxKJcfLdgor3
+         r9UH2LUPBKSIu9RWDSJ2jN9R2x3hSNpZEkliUOB2rpsZy5rmUGJxjzBLHsIy8teXx2si
+         c2efKKMna84KL9SfvTQXtKFybr+NgyVx/iaI7oIpHZZM+nKwNDcZYAFGKfsa+aXuxtr+
+         XM+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=7OyP3p/J0BJTuUMR+7M8eSTXEQKQJgp0W9yhB+Uzeec=;
-        b=K/LmS1/nF1qvHGeLL5Ol8dAaNqvZbK6UYJiYm/XqDbr+bRiRc7q9909SXmD2HvS9Dq
-         q2U5IHmx0k/ny51yzKiYnBvvgvRZmI72KrnAZWK7fiXPSEoG1UX/TWrdSZo764w8FMk4
-         Jlo1n3ziEOfRCJ0po3/SCO1QHGNcHqayi28NoHAxXBEsxerBimPUAqs+590ApKhugdxB
-         8hz7uyL4wv/0QvTzv4jb50/3ScUf6cK6BSkHD4OefZVSJ5yc7r+d+Sdvi8mwxHy8uYeC
-         4w3FjbiiXR/en8QhuwPaAX8P0ptMzW0JQKjjKYFHhXQYtGzuaFViSNzVpRH2Uxljn/wN
-         E+WA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=OK4Zm+CDihcj7rnMnXkHEuEcrJFYNjGqyRUOrY+EdNY=;
+        b=GisrnArqLa6by3siYb6r+HmCWh7JwA8yTc22CpQFxqvAtKmSgmDbsP8Tx3YwTCR3jt
+         HTO0gxcPsyKarsFSNnNjocYZjsfVZqbesv2SJ5Ln0LNJH9CTE0WyL5prU5oZkzvXtdWH
+         tsj3BvCwmVUbbZxjJ2UEe+abLk8rBlR4npfakpv+c9Ti8c5xtR5x8t1fvF8rkNr6+x5Z
+         81FLUICwMnHFdNvO5T8CNnZVA3bhglSW3cAhzmrNNtPze06cdDawDuZAKEh4AST9CUZf
+         hnBVfQGKytJu8ms8MJ9L+q3b0yS4TMlbNjypT00JuI0iT/5txiHu2+uU2sDTvfs1zbEE
+         bw8g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fpXED4jJ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hysPRBCD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a18si2133684ybr.155.2020.10.07.09.16.10
+        by mx.google.com with ESMTPS id f20si397183ybj.367.2020.10.05.09.40.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Oct 2020 09:16:10 -0700 (PDT)
+        Mon, 05 Oct 2020 09:40:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=fpXED4jJ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hysPRBCD;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:48164 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34616 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQC6r-0001iq-Ko
-	for alex.bennee@linaro.org; Wed, 07 Oct 2020 12:16:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33904)
+	id 1kPTXV-0001t2-HD
+	for alex.bennee@linaro.org; Mon, 05 Oct 2020 12:40:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43660)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kQBqH-0003vm-8h
- for qemu-arm@nongnu.org; Wed, 07 Oct 2020 11:59:01 -0400
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:39595)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kQBqF-0000Zf-Jl
- for qemu-arm@nongnu.org; Wed, 07 Oct 2020 11:59:00 -0400
-Received: by mail-ej1-x62f.google.com with SMTP id lw21so3700884ejb.6
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2020 08:58:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=7OyP3p/J0BJTuUMR+7M8eSTXEQKQJgp0W9yhB+Uzeec=;
- b=fpXED4jJez9o+tGUuQt5fbq3Y9S8FcKGfdeUgSbaOC5TiZBP6wgdmvckuLx2XpdUaL
- m0ZsojOb0ZN+Ce+b3nK/Y/JvkTNGcOqI+AoYsnN5KlCuvEr9PiXLb6yIBYg9G6w23epU
- BuGjICsQSF0Vya6GA0a182kzIo38j5Iz++I4PSzT0tx8YXdcf4TSaD+yqCNInde3dkKT
- ifIKUbjc/1r2UrqxN5Bc/9sm5feBOukGV4B6tf+JxoIEQKprnXLBVOqInUedf9eDWhoX
- +8kVjyOOmKmFH8W3+GYrTUju7zh+GyPzJEc9elOCzTPG5az7lEC/0TRDekaBG5D7ppi6
- lpxg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=7OyP3p/J0BJTuUMR+7M8eSTXEQKQJgp0W9yhB+Uzeec=;
- b=Nbo6nT9OVHnE/bOMA/79OjvZTSeGG2044IjWq3czLMD+bNS5cfHuX+G7k35czan+6s
- ws57jEMRDj5ouH4yTaUkPvYPBVabDs0511vR0WtOvcQWj1obi3TRw+hpmJxzaYY7rG3k
- 71PTV081pqUxc1RqhuPpfewWX2LqprF7/xhSCmb3EvpCl8O2BdV7mL5OXUgEGreOXqV5
- jhTwA/o8Xlve0Ga5FYaZbsqJrL53pLLfUsoEu1sG4fZhVqxjlkkecGR4KXdOpf+kIp8O
- 6UW56ayQ0Q1ribOPuG0CpXHDhbLrwQMOA4ZbMn7SModrHAB8u4/xhogqmv9760Jo/9x+
- pLKw==
-X-Gm-Message-State: AOAM5330WCN7n9HRbxRpG55FXbuAfM1eN78d14SohdVh8Mj/Xz3AEMhc
- UiuQgKQTFHXXiyM92Zna8vd9n/d7QGnuFnf848c3QA==
-X-Received: by 2002:a17:906:c7d9:: with SMTP id
- dc25mr3999790ejb.482.1602086337977; 
- Wed, 07 Oct 2020 08:58:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1kPTXH-0001sj-2j
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2020 12:40:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48379)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1kPTXE-000098-RA
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2020 12:40:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1601916023;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=OK4Zm+CDihcj7rnMnXkHEuEcrJFYNjGqyRUOrY+EdNY=;
+ b=hysPRBCD27yf1Bpx6fCocayKnriida6f7faLtIFZhPL78axJpVWx/PGcwl9tL3rqcrNk3F
+ 48JK1pGtm3AkSkPNaQd/yucDRHsvWk+Q0wikLKq35Ky3tVvewDExqNLuUiAsoIqPxpkhYJ
+ FQwE7YnZfiWuXS6GaJFpQ8MzjLdcWuA=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-67-3hj0ReY8O5OU_QQPhm2HCA-1; Mon, 05 Oct 2020 12:40:21 -0400
+X-MC-Unique: 3hj0ReY8O5OU_QQPhm2HCA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 737CFE0040;
+ Mon,  5 Oct 2020 16:40:19 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.52])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 49D545C221;
+ Mon,  5 Oct 2020 16:40:11 +0000 (UTC)
+Date: Mon, 5 Oct 2020 18:40:09 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Subject: Re: [PATCH 01/16] hw/core/cpu: Let CPU object have a clock source
+Message-ID: <20201005184009.493629b0@redhat.com>
+In-Reply-To: <da7248f7-5098-188b-d274-e122c87bb498@amsat.org>
+References: <20200928171539.788309-1-f4bug@amsat.org>
+ <20200928171539.788309-2-f4bug@amsat.org>
+ <20200930094313.1120a040@redhat.com>
+ <da7248f7-5098-188b-d274-e122c87bb498@amsat.org>
 MIME-Version: 1.0
-References: <20201006220647.GR7303@habkost.net>
- <a6e652d9-548f-4d4e-e451-48e3f5e11031@redhat.com>
- <20201007130240.GU7303@habkost.net>
- <659289e0-4133-b945-45fd-25e759c18b03@redhat.com>
- <20201007142742.GV7303@habkost.net>
- <117cb090-d9ce-6394-42a2-2ac99fd965b9@redhat.com>
- <20201007155105.GX7303@habkost.net>
-In-Reply-To: <20201007155105.GX7303@habkost.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Oct 2020 16:58:46 +0100
-Message-ID: <CAFEAcA9kaTa0P8g6qzEvGYq8fKqmjquH0+bBbAWLeLaa11ygHA@mail.gmail.com>
-Subject: Re: Purpose of QOM properties registered at realize time?
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62f.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 02:11:31
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,47 +117,145 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Daniel P. Berrange" <berrange@redhat.com>,
- "open list:RISC-V" <qemu-riscv@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Huacai Chen <zltjiangshi@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ Eduardo Habkost <ehabkost@redhat.com>, Paul Burton <paulburton@kernel.org>,
+ qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Cleber Rosa <crosa@redhat.com>, Huacai Chen <chenhc@lemote.com>,
+ =?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
+ Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: xvLxd0ikgSaQ
+X-TUID: qzHQwJsQfDDO
 
-On Wed, 7 Oct 2020 at 16:51, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> Right now, I only want to know if the QOM property is part of a
-> supported stable external interface.  For the properties
-> registered at realize time, the answer seems to be "no".
+On Wed, 30 Sep 2020 12:16:53 +0200
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-I don't think that's inherently the case. But most QOM
-properties are not going to be part of an external
-interface (and definitely those for devices which are
-not user-creatable are not), so the chances are good
-that any particular QOM property is not external.
+> +arm/ppc/riscv folks
+>=20
+> On 9/30/20 9:43 AM, Igor Mammedov wrote:
+> > On Mon, 28 Sep 2020 19:15:24 +0200
+> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+> >  =20
+> >> Let CPUState have a clock source (named 'clk') and CPUClass
+> >> have a clock_update() callback. The clock can be optionally
+> >> set Using qdev_connect_clock_in() from the Clock API.
+> >> If the clock changes, the optional clock_update() will be
+> >> called. =20
+> >=20
+> > the sole user of it is mips cpu, so question is why
+> > you are making it part of generic CPUm instead of
+> > MIPSCPUClass/MIPSCPU? =20
+>=20
+> This is a feature of the CPU, regardless its architecture.
+>=20
+> I expect the other archs to start using it soon.
 
-> Now, how do I locate the code that depends on those QOM
-> properties to work?  When the property name is visible in the
-> code, I can grep for the property name.  But I don't know how to
-> find users of the GPIOs exposed by qdev_pass_gpios().
+if there aren't any plans to actually to do that,
+I'd keep it to MIPS class and generalize later when there is demand.
+=20
+>=20
+> >  =20
+> >>
+> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> >> ---
+> >>  include/hw/core/cpu.h |  5 +++++
+> >>  hw/core/cpu.c         | 12 ++++++++++++
+> >>  2 files changed, 17 insertions(+)
+> >>
+> >> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+> >> index 6c34798c8b3..6989d90c193 100644
+> >> --- a/include/hw/core/cpu.h
+> >> +++ b/include/hw/core/cpu.h
+> >> @@ -31,6 +31,7 @@
+> >>  #include "qemu/thread.h"
+> >>  #include "qemu/plugin.h"
+> >>  #include "qom/object.h"
+> >> +#include "hw/clock.h"
+> >> =20
+> >>  typedef int (*WriteCoreDumpFunction)(const void *buf, size_t size,
+> >>                                       void *opaque);
+> >> @@ -155,6 +156,7 @@ struct TranslationBlock;
+> >>   * @disas_set_info: Setup architecture specific components of disasse=
+mbly info
+> >>   * @adjust_watchpoint_address: Perform a target-specific adjustment t=
+o an
+> >>   * address before attempting to match it against watchpoints.
+> >> + * @clock_update: Callback for input clock changes
+> >>   *
+> >>   * Represents a CPU family or model.
+> >>   */
+> >> @@ -176,6 +178,7 @@ struct CPUClass {
+> >>                                    unsigned size, MMUAccessType access=
+_type,
+> >>                                    int mmu_idx, MemTxAttrs attrs,
+> >>                                    MemTxResult response, uintptr_t ret=
+addr);
+> >> +    void (*clock_update)(CPUState *cpu);
+> >>      bool (*virtio_is_big_endian)(CPUState *cpu);
+> >>      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
+> >>                             uint8_t *buf, int len, bool is_write);
+> >> @@ -316,6 +319,7 @@ struct qemu_work_item;
+> >>   *   QOM parent.
+> >>   * @nr_cores: Number of cores within this CPU package.
+> >>   * @nr_threads: Number of threads within this CPU.
+> >> + * @clock: this CPU source clock (an output clock of another device)
+> >>   * @running: #true if CPU is currently running (lockless).
+> >>   * @has_waiter: #true if a CPU is currently waiting for the cpu_exec_=
+end;
+> >>   * valid under cpu_list_lock.
+> >> @@ -400,6 +404,7 @@ struct CPUState {
+> >>      int num_ases;
+> >>      AddressSpace *as;
+> >>      MemoryRegion *memory;
+> >> +    Clock *clock;
+> >> =20
+> >>      void *env_ptr; /* CPUArchState */
+> >>      IcountDecr *icount_decr_ptr;
+> >> diff --git a/hw/core/cpu.c b/hw/core/cpu.c
+> >> index c55c09f734c..37fcff3ec64 100644
+> >> --- a/hw/core/cpu.c
+> >> +++ b/hw/core/cpu.c
+> >> @@ -30,6 +30,7 @@
+> >>  #include "qemu/qemu-print.h"
+> >>  #include "sysemu/tcg.h"
+> >>  #include "hw/boards.h"
+> >> +#include "hw/qdev-clock.h"
+> >>  #include "hw/qdev-properties.h"
+> >>  #include "trace/trace-root.h"
+> >>  #include "qemu/plugin.h"
+> >> @@ -247,6 +248,16 @@ void cpu_reset(CPUState *cpu)
+> >>      trace_guest_cpu_reset(cpu);
+> >>  }
+> >> =20
+> >> +static void cpu_clk_update(void *opaque)
+> >> +{
+> >> +    CPUState *cpu =3D opaque;
+> >> +    CPUClass *cc =3D CPU_GET_CLASS(cpu);
+> >> +
+> >> +    if (cc->clock_update) {
+> >> +        cc->clock_update(cpu);
+> >> +    }
+> >> +}
+> >> +
+> >>  static void cpu_common_reset(DeviceState *dev)
+> >>  {
+> >>      CPUState *cpu =3D CPU(dev);
+> >> @@ -367,6 +378,7 @@ static void cpu_common_initfn(Object *obj)
+> >>      /* the default value is changed by qemu_init_vcpu() for softmmu *=
+/
+> >>      cpu->nr_cores =3D 1;
+> >>      cpu->nr_threads =3D 1;
+> >> +    cpu->clock =3D qdev_init_clock_in(DEVICE(obj), "clk", cpu_clk_upd=
+ate, cpu);
+> >> =20
+> >>      qemu_mutex_init(&cpu->work_mutex);
+> >>      QSIMPLEQ_INIT(&cpu->work_list); =20
+> >  =20
+>=20
 
-GPIOs are wired up with the APIs documented in
-hw/qdev-core.h: typically qdev_get_gpio_in() to get
-an anonymous GPIO input, qdev_get_gpio_in_named()
-for a named GPIO line, similarly qdev_connect_gpio_out()
-and qdev_connect_gpio_out_named() for oubound GPIO lines.
-Most GPIOs are anonymous because that's the older set
-of APIs (and sometimes it's still the simplest). To find
-which code is wiring up the GPIOs from a particular
-device you're better off searching for the device name,
-because different devices can use the same name for a
-set of GPIO lines (and lots of devices have anonymous
-GPIO lines).
-
-The GPIOs exposed by qdev_pass_gpios() are no different
-from those exposed when the device directly creates
-its own GPIOs.
-
-thanks
--- PMM

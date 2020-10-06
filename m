@@ -1,231 +1,381 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp871690lfq;
-        Tue, 6 Oct 2020 10:24:22 -0700 (PDT)
-X-Received: by 2002:a05:6402:17a6:: with SMTP id j6mr567290edy.322.1602005061964;
-        Tue, 06 Oct 2020 10:24:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602005061; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp906946lfq;
+        Tue, 6 Oct 2020 11:11:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy0ogfv1Z8al/EVij+xxWWx8Z8FHPRvwFGOCEEbtk5Z4vCqq82rH0UMzN4lU5nNNZGRAsJT
+X-Received: by 2002:a25:d8b:: with SMTP id 133mr8097924ybn.294.1602007916313;
+        Tue, 06 Oct 2020 11:11:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602007916; cv=none;
         d=google.com; s=arc-20160816;
-        b=yxs5rxdlJtdPR93OJCA/8RmR58gg72xM0WwwpfYpLncUJ6W7pkWTzE5EJUnRaqX8m6
-         0Md3HUsk0PX31WN44i46XaJyfuzcbFPC1KAlivBIEbvEYoAcpIwSIdXQXYy2YqN+7MD4
-         VycGn0Juqsitq64WFOvDa1Aw0rNjvmzM8I0yFpM5s2tYnzC7GogxB0q1cCViJ1/Pv3iu
-         5MwcygZKFHUzOq5rcsBYoSarFxGz7lxVLSA5A4X6kACEm3Ziw3XfoVekoTUJ06GLN4Rf
-         t0pDln0GQWxebU5l/zpc2MR+XE1eYyCk4mwaMICceDc8NV5vbjR80WVvbKvipd3bdOD6
-         WItw==
+        b=Br4Nmv1xzmF3SiZWFNZ6NJQ5AXc9WTWwz11MAjovugr/fLqvJbroxucw1yWUtlJCDq
+         CMtLG4zaY+2zN4hRy0CLcpWBqdgu+1n4m16ndspnUIYxtLApwfwqdrRQQ2Jn9t086wPh
+         tRvIOpAqAl07s+994wlStyQ1WMAVTTazXJq5tXwSqWe3o/IskOnGepGWOuKf9+N5aLfT
+         LTEE1nh8eR0FeawJddAGVYTqyGaXSJJDOH8s6NNZb5KrTViaSH3BAGbcPzLiWqW+jAgL
+         PMsNjX9fd3sZxeOod2jYjlc8kQSfYauji1M213OFbrEMnofRxj6v5lpuStM92zLSgG6o
+         ahOQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=ERee18FoTL0JMAd5NEQQsgDqJQ9rx0tJzGkfHm/LdgI=;
-        b=UDpS36Qy19ubtPh2K3uZYaFioX6nvu3EBJHKiJOXyKCZJB9i2Gv9NG2RJQ3kJZLdTD
-         UCbCaoPxVnACfUt435HcEWyGtZMP/7m+vLIg1/tGM5UdnjwVenvX0URWjpS0coG9eW+m
-         ol1x30saDwWiAaHJTmcXOAavEegkoVZhMoJ2gSMmK+t82CmY1slRDdgkbRWmhPA2tdCk
-         Hv2nF4fFvU1BCUMZkC2xf/FA/E9VLrMwTnp3hok8KAKGOedlB1L+8cQOmtW+zgNnetHl
-         xJBRYjSCsNv+77e3Xo12xGMixG4M8DMDpmEe7dIgnHXglmGq0FgJubvzJvu8p6icpJOW
-         PP1Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=DZyZJdm4muyeZIvxmbfJ7Dzpyn8EAerSoefjqZp86+U=;
+        b=phZ8yAVMNBx058t/RKYJG4wVuqWeDolOHtES+znGJWQzwm0cBo6Yg0UZdG1EnPFxXR
+         Le7M79AEsPzEIA9Z82YSFdjpxq1adAcWuAlXWA3Gj1z9nS5xYerYE1XqF/TXOeoP150Q
+         xkILisXfj3AkrlMFcHXibpTd8hm5i+oZMUHODT3fyb3MttMsD5VjOlxoXAzmHOK6U7x+
+         /tDCnG4D0Bh9rwffQQcHMd6A5DPFgEkrG/jvvia/8lbiQJOSIV7lOEiSIXWR2NbDuJp2
+         gMt0wTNiy04ijiZj0hBXYvG/dG6A4il3RnJEKxZqTL6K+YH3Quf1+itdENB5sP8k9cab
+         1XBw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xqRcutZD;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id w12sor2397586ejf.64.2020.10.06.10.24.21
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=URKcrPTj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t1si3838348ybb.361.2020.10.06.11.11.56
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Tue, 06 Oct 2020 10:24:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 06 Oct 2020 11:11:56 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=xqRcutZD;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=from:to:cc:subject:date:message-id:in-reply-to:references
-         :mime-version:content-transfer-encoding;
-        bh=ERee18FoTL0JMAd5NEQQsgDqJQ9rx0tJzGkfHm/LdgI=;
-        b=xqRcutZD2orO5tu3bOZ+46W0sEzNpHj8u3EtWAvmUvYLtnmi1KhQXfy4dkLJrt2tz2
-         BLh02lwqFk/noYcEjKrn0UC62GUc/pd9vm4Y6cypBrIiUynPWqHfR0gYDyyCPbk6FiPw
-         XMdRrCQwLpMRIL3GTjfs6v+9R7tFeaoJpYsNqE/IihpfBMGNqy4jKoJKoNrrzDVIXRhE
-         O6KeL+m+GnQgyZ6BxjePVHw8LBPR5cF2BnNkNTZM1rpeG8XuI2kJYfYg1KNYok+ocR7q
-         CBavTdOmZfx9Blno8jszvaUFIarVcqLgaOHVqmIKME868CKGowCVyeIBKQh2WmZjp2dI
-         s66A==
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=URKcrPTj;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:51482 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kPrRL-0004bG-My
+	for alex.bennee@linaro.org; Tue, 06 Oct 2020 14:11:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53678)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kPrR7-0004Xi-Rw; Tue, 06 Oct 2020 14:11:41 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:51735)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kPrQz-0003pL-Ij; Tue, 06 Oct 2020 14:11:39 -0400
+Received: by mail-wm1-x343.google.com with SMTP id d81so3869502wmc.1;
+ Tue, 06 Oct 2020 11:11:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=DZyZJdm4muyeZIvxmbfJ7Dzpyn8EAerSoefjqZp86+U=;
+ b=URKcrPTj1aBM5t/papfsHBrtU6WwJph69QdXlL4GwWGt1epQqfFmGr7rgTdow2rZ+T
+ QgaBr/CCp4uzr1W38IZTGmYLeHs1B0T25Wtg/DZvJCFUQdawff7khz5q3aNhFfcN+jWI
+ nUBwD62hLy0hkCTT83THtjaN3DMgRKLhp7+8rsPIYs7f6VIG6owOaum50iAiJfJC0mRu
+ o5tZD5Ub1xbukwA7DCAhTLB/FWaOBUbzjZ4NZt4hw7T9pkf/3hQpuhfbIPxSLCyx2Qca
+ Y77p4Ch3bTg4ccwSPJqsF7IyYzsmY5WdLkAwT/us+5CU8weTllnTJRUXFduhQDo1jTCt
+ 2Nog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
-         :references:mime-version:content-transfer-encoding;
-        bh=ERee18FoTL0JMAd5NEQQsgDqJQ9rx0tJzGkfHm/LdgI=;
-        b=IjM1bMRy+SuWqsVDNxZ/mY+2yp2OgYXHTwXFPpir22d6LzcsXYYoVCRnFmnuD6zTwD
-         VoCy2GdWXFOz9jSxn0x4xQXGrEpV4dFPxK8f2k3OhyaXCCRZURRi2G0aDB15OzEt06C/
-         7YnAh86BrCJZpN8j5ln134HDvdv93A3gJybhHC9nymtpiA1SH7FIKBQvg+vcgMKT76ek
-         XCrknEmvh9Msg0WFGKA0kIl2jNMXN6TTCUJBD1Q7H/QBjaQL8srZd0BS1PRgPQhSAzLP
-         US2wwglpbYikMCyFqpcBzA95xa5VTp1+vmbGPb185krdhR8e34V7ba8wRElTzXQ5ipLv
-         9eNg==
-X-Gm-Message-State: AOAM532lymxTA/yiTf/kqbCO7HzIrDVb5nT7t73V2AD8hRTJnGC/xPGJ
-	Uv2KXFalS6WLkf6rkRTYw9qJnh2e0CVQ/d2ZBfQ=
-X-Google-Smtp-Source: ABdhPJxinL6to301GIvzEhZY+fHkEo+LIkLCEDHs8zyvRlaFm/WEqjSqS6iP19/5fyZKLyb0qPNgvg==
-X-Received: by 2002:a17:906:f14b:: with SMTP id gw11mr610720ejb.41.1602005061639;
-        Tue, 06 Oct 2020 10:24:21 -0700 (PDT)
-Return-Path: <richard.henderson@linaro.org>
-Received: from localhost.localdomain ([185.81.136.21])
-        by smtp.gmail.com with ESMTPSA id a22sm2536968ejs.25.2020.10.06.10.24.17
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Oct 2020 10:24:21 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	peter.maydell@linaro.org,
-	alex.bennee@linaro.org
-Subject: [PATCH 1/1] tests/tcg/aarch64: Add bti mmap smoke test
-Date: Tue,  6 Oct 2020 12:23:59 -0500
-Message-Id: <20201006172359.2998-2-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.25.1
-In-Reply-To: <20201006172359.2998-1-richard.henderson@linaro.org>
-References: <20201006172359.2998-1-richard.henderson@linaro.org>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=DZyZJdm4muyeZIvxmbfJ7Dzpyn8EAerSoefjqZp86+U=;
+ b=tGqFFMZSFBYKu5+Ik3oVzXIvBSdTULMuPodwjTRJIYfcHP6Dhtu3YrXSKMvVUPQufc
+ iXWROviKtaycv6DvSFyfMonQ83Hr08HTNr7cTXmVyVA1pIAXz9+MYgBCVAx0ygloMe4c
+ 5TwFJ/vCTgqtP1tJLZ08D4KVZloPDqS6lyjuA/UOZ6mLDpP5azNpjjblElGm51TE3j1/
+ gEBxvAT0+d8PsEkLwhSN9lZipxnXM2Za+kKhjpCXRfyqP/ARinqBnyu10VgHPvwPrcaW
+ kQfMs9liJDMCnJ9YU34lvsKPR1miu0C4zLg9KysG8+vMJ1vSrdraog+/+DtgjuNhMihz
+ Lndg==
+X-Gm-Message-State: AOAM532P08SKooBZuWwMlgwpyxD2e0eQeYLBoJ30edwO8LVRM9euqSla
+ C77+u6sY6/raDqb+OhCUwSA=
+X-Received: by 2002:a1c:5a06:: with SMTP id o6mr6311641wmb.181.1602007890904; 
+ Tue, 06 Oct 2020 11:11:30 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id s17sm5036540wmj.1.2020.10.06.11.11.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 06 Oct 2020 11:11:30 -0700 (PDT)
+Subject: Re: [PATCH 01/16] hw/core/cpu: Let CPU object have a clock source
+To: Eduardo Habkost <ehabkost@redhat.com>
+References: <20200928171539.788309-1-f4bug@amsat.org>
+ <20200928171539.788309-2-f4bug@amsat.org>
+ <20200930094313.1120a040@redhat.com>
+ <da7248f7-5098-188b-d274-e122c87bb498@amsat.org>
+ <20201005184009.493629b0@redhat.com> <20201005174454.GM7303@habkost.net>
+ <8c337ca9-4f03-e6df-0e67-f8ca2b3248e7@amsat.org>
+ <ff8b4e4f-e9d3-2539-73a5-1715028a6a76@amsat.org>
+ <20201005192208.GO7303@habkost.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <4c15f35a-110a-5021-77f0-97427b12bd64@amsat.org>
+Date: Tue, 6 Oct 2020 20:11:28 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <20201005192208.GO7303@habkost.net>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-X-TUID: vtbsStUnfQ+4
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Damien Hedde <damien.hedde@greensocs.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
+ Paul Burton <paulburton@kernel.org>, Huacai Chen <zltjiangshi@gmail.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
+ Luc Michel <luc.michel@greensocs.com>, Cleber Rosa <crosa@redhat.com>,
+ Huacai Chen <chenhc@lemote.com>, Igor Mammedov <imammedo@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 1DUsIyA/hDbm
 
-This tests PROT_BTI, and also does not require special
-compiler support.
+On 10/5/20 9:22 PM, Eduardo Habkost wrote:
+> On Mon, Oct 05, 2020 at 08:29:24PM +0200, Philippe Mathieu-Daudé wrote:
+>> On 10/5/20 8:09 PM, Philippe Mathieu-Daudé wrote:
+>>> On 10/5/20 7:44 PM, Eduardo Habkost wrote:
+>>>> On Mon, Oct 05, 2020 at 06:40:09PM +0200, Igor Mammedov wrote:
+>>>>> On Wed, 30 Sep 2020 12:16:53 +0200
+>>>>> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>>>>
+>>>>>> +arm/ppc/riscv folks
+>>>>>>
+>>>>>> On 9/30/20 9:43 AM, Igor Mammedov wrote:
+>>>>>>> On Mon, 28 Sep 2020 19:15:24 +0200
+>>>>>>> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>>>>>>   
+>>>>>>>> Let CPUState have a clock source (named 'clk') and CPUClass
+>>>>
+>>>> The language here confuses me: is this a clock source inside the
+>>>> CPU, or just a clock input that can be connected to a clock
+>>>> source somewhere?
+>>>
+>>> 2nd description, "somewhere". I'll reword.
+>>>
+>>>>
+>>>> See also comment below[1].
+>>>>
+>>>>>>>> have a clock_update() callback. The clock can be optionally
+>>>>>>>> set Using qdev_connect_clock_in() from the Clock API.
+>>>>>>>> If the clock changes, the optional clock_update() will be
+>>>>>>>> called.  
+>>>>
+>>>> What does "clock change" means?  Is this just about the
+>>>> frequency, or something else?
+>>>
+>>> A frequency changes -- which can be because a parent (in the
+>>> clock tree) changed its source using a MUX.
+>>>
+>>>>
+>>>> (By reading the Clock API documentation, it looks like it only
+>>>> represents the clock frequency, but I'm not sure)
+>>>>
+>>>>>>>
+>>>>>>> the sole user of it is mips cpu, so question is why
+>>>>>>> you are making it part of generic CPUm instead of
+>>>>>>> MIPSCPUClass/MIPSCPU?  
+>>>>>>
+>>>>>> This is a feature of the CPU, regardless its architecture.
+>>>>>>
+>>>>>> I expect the other archs to start using it soon.
+>>>>>
+>>>>> if there aren't any plans to actually to do that,
+>>>>> I'd keep it to MIPS class and generalize later when there is demand.
+>>>
+>>> No problem.
+>>>
+>>>>
+>>>> I normally don't mind if a feature is generic from the beginning.
+>>>> But in this case I'm inclined to agree with Igor.  Unless we
+>>>> expect to see arch-independent code to use CPUState.clock soon
+>>>> (do we?), having CPUState.clock existing but unused by most
+>>>> architectures would be misleading.
+>>>>
+>>>> Also, at least on x86 there are so many different clock sources,
+>>>> that I'm not sure it would be a desirable to have a generic clock
+>>>> input named "clk".
+>>>
+>>> Well X86 is the arch I'm less confident with. Anyhow if it has
+>>> multiple clock sources, I'd expect a Clock MUX block to select
+>>> an unique clock to feed the CPU.
+>>>
+>>>>
+>>>>>  
+>>>>>>
+>>>>>>>   
+>>>>>>>>
+>>>>>>>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>>>>>>> ---
+>>>>>>>>  include/hw/core/cpu.h |  5 +++++
+>>>>>>>>  hw/core/cpu.c         | 12 ++++++++++++
+>>>>>>>>  2 files changed, 17 insertions(+)
+>>>>>>>>
+>>>>>>>> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
+>>>>>>>> index 6c34798c8b3..6989d90c193 100644
+>>>>>>>> --- a/include/hw/core/cpu.h
+>>>>>>>> +++ b/include/hw/core/cpu.h
+>>>>>>>> @@ -31,6 +31,7 @@
+>>>>>>>>  #include "qemu/thread.h"
+>>>>>>>>  #include "qemu/plugin.h"
+>>>>>>>>  #include "qom/object.h"
+>>>>>>>> +#include "hw/clock.h"
+>>>>>>>>  
+>>>>>>>>  typedef int (*WriteCoreDumpFunction)(const void *buf, size_t size,
+>>>>>>>>                                       void *opaque);
+>>>>>>>> @@ -155,6 +156,7 @@ struct TranslationBlock;
+>>>>>>>>   * @disas_set_info: Setup architecture specific components of disassembly info
+>>>>>>>>   * @adjust_watchpoint_address: Perform a target-specific adjustment to an
+>>>>>>>>   * address before attempting to match it against watchpoints.
+>>>>>>>> + * @clock_update: Callback for input clock changes
+>>>>>>>>   *
+>>>>>>>>   * Represents a CPU family or model.
+>>>>>>>>   */
+>>>>>>>> @@ -176,6 +178,7 @@ struct CPUClass {
+>>>>>>>>                                    unsigned size, MMUAccessType access_type,
+>>>>>>>>                                    int mmu_idx, MemTxAttrs attrs,
+>>>>>>>>                                    MemTxResult response, uintptr_t retaddr);
+>>>>>>>> +    void (*clock_update)(CPUState *cpu);
+>>>>>>>>      bool (*virtio_is_big_endian)(CPUState *cpu);
+>>>>>>>>      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
+>>>>>>>>                             uint8_t *buf, int len, bool is_write);
+>>>>>>>> @@ -316,6 +319,7 @@ struct qemu_work_item;
+>>>>>>>>   *   QOM parent.
+>>>>>>>>   * @nr_cores: Number of cores within this CPU package.
+>>>>>>>>   * @nr_threads: Number of threads within this CPU.
+>>>>>>>> + * @clock: this CPU source clock (an output clock of another device)
+>>>>
+>>>> [1]
+>>>>
+>>>> What does "source clock" means?  Is this the same as "clock input"?
+>>>
+>>> Yes, for clocks it is common to use source/sink instead of input/output.
+>>> I'll try to reword.
+>>
+>> Hard to reword when it looks clear to oneself...
+>>
+>> @clock is the source, @cpu is the sink.
+>> @clock clocks @cpu at some frequency.
+>>
+>> One output from @clock is the @cpu.
+>> The @cpu has an unique input: @clock.
+> 
+> The interchangeable usage of "clock source" and "clock input" is
+> what confuses me here.  CPUState.clock seems to be a clock input,
+> which may or may not be connected to a clock source.
+> 
+> You seem to imply that "clock source" and "clock input" are
+> synonymous, but that's not what I understand from the clock API
+> documentation.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- tests/tcg/aarch64/bti-2.c         | 108 ++++++++++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |   7 +-
- 2 files changed, 113 insertions(+), 2 deletions(-)
- create mode 100644 tests/tcg/aarch64/bti-2.c
+Hmm the concepts are different.
 
-diff --git a/tests/tcg/aarch64/bti-2.c b/tests/tcg/aarch64/bti-2.c
-new file mode 100644
-index 0000000000..6dc8908b5a
---- /dev/null
-+++ b/tests/tcg/aarch64/bti-2.c
-@@ -0,0 +1,108 @@
-+/*
-+ * Branch target identification, basic notskip cases.
-+ */
-+
-+#include <stdio.h>
-+#include <signal.h>
-+#include <string.h>
-+#include <unistd.h>
-+#include <sys/mman.h>
-+
-+#ifndef PROT_BTI
-+#define PROT_BTI  0x10
-+#endif
-+
-+static void skip2_sigill(int sig, siginfo_t *info, void *vuc)
-+{
-+    ucontext_t *uc = vuc;
-+    uc->uc_mcontext.pc += 8;
-+    uc->uc_mcontext.pstate = 1;
-+}
-+
-+#define NOP       "nop"
-+#define BTI_N     "hint #32"
-+#define BTI_C     "hint #34"
-+#define BTI_J     "hint #36"
-+#define BTI_JC    "hint #38"
-+
-+#define BTYPE_1(DEST)    \
-+    "mov x1, #1\n\t"     \
-+    "adr x16, 1f\n\t"    \
-+    "br x16\n"           \
-+"1: " DEST "\n\t"        \
-+    "mov x1, #0"
-+
-+#define BTYPE_2(DEST)    \
-+    "mov x1, #1\n\t"     \
-+    "adr x16, 1f\n\t"    \
-+    "blr x16\n"          \
-+"1: " DEST "\n\t"        \
-+    "mov x1, #0"
-+
-+#define BTYPE_3(DEST)    \
-+    "mov x1, #1\n\t"     \
-+    "adr x15, 1f\n\t"    \
-+    "br x15\n"           \
-+"1: " DEST "\n\t"        \
-+    "mov x1, #0"
-+
-+#define TEST(WHICH, DEST, EXPECT) \
-+    WHICH(DEST) "\n"              \
-+    ".if " #EXPECT "\n\t"         \
-+    "eor x1, x1," #EXPECT "\n"    \
-+    ".endif\n\t"                  \
-+    "add x0, x0, x1\n\t"
-+
-+extern char test_begin[], test_end[];
-+
-+asm("\n"
-+"test_begin:\n\t"
-+    BTI_C "\n\t"
-+    "mov x2, x30\n\t"
-+    "mov x0, #0\n\t"
-+
-+    TEST(BTYPE_1, NOP, 1)
-+    TEST(BTYPE_1, BTI_N, 1)
-+    TEST(BTYPE_1, BTI_C, 0)
-+    TEST(BTYPE_1, BTI_J, 0)
-+    TEST(BTYPE_1, BTI_JC, 0)
-+
-+    TEST(BTYPE_2, NOP, 1)
-+    TEST(BTYPE_2, BTI_N, 1)
-+    TEST(BTYPE_2, BTI_C, 0)
-+    TEST(BTYPE_2, BTI_J, 1)
-+    TEST(BTYPE_2, BTI_JC, 0)
-+
-+    TEST(BTYPE_3, NOP, 1)
-+    TEST(BTYPE_3, BTI_N, 1)
-+    TEST(BTYPE_3, BTI_C, 1)
-+    TEST(BTYPE_3, BTI_J, 0)
-+    TEST(BTYPE_3, BTI_JC, 0)
-+
-+    "ret x2\n"
-+"test_end:"
-+);
-+
-+int main()
-+{
-+    struct sigaction sa;
-+
-+    void *p = mmap(0, getpagesize(),
-+                   PROT_EXEC | PROT_READ | PROT_WRITE | PROT_BTI,
-+                   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-+    if (p == MAP_FAILED) {
-+        perror("mmap");
-+        return 1;
-+    }
-+
-+    memset(&sa, 0, sizeof(sa));
-+    sa.sa_sigaction = skip2_sigill;
-+    sa.sa_flags = SA_SIGINFO;
-+    if (sigaction(SIGILL, &sa, NULL) < 0) {
-+        perror("sigaction");
-+        return 1;
-+    }
-+
-+    memcpy(p, test_begin, test_end - test_begin);
-+    return ((int (*)(void))p)();
-+}
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
-index 491683e91d..d7d33e293c 100644
---- a/tests/tcg/aarch64/Makefile.target
-+++ b/tests/tcg/aarch64/Makefile.target
-@@ -26,11 +26,14 @@ run-plugin-pauth-%: QEMU_OPTS += -cpu max
- endif
- 
- # BTI Tests
-+# bti-1 tests the elf notes, so we require special compiler support.
- ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_BTI),)
- AARCH64_TESTS += bti-1
--bti-%: CFLAGS += -mbranch-protection=standard
--bti-%: LDFLAGS += -nostdlib
-+bti-1: CFLAGS += -mbranch-protection=standard
-+bti-1: LDFLAGS += -nostdlib
- endif
-+# bti-2 tests PROT_BTI, so no special compiler support required.
-+AARCH64_TESTS += bti-2
- 
- # Semihosting smoke test for linux-user
- AARCH64_TESTS += semihosting
--- 
-2.25.1
+From a clock generator point of view, the "output" is
+the point where the signal leaves the block, to be
+eventually consumed by a sink. The generator doesn't
+know what the sinks are made of:
+
++-----------+   +----------> Sink1
+|           |   |
+|           +---+ ClkOut1
+|           |   |
+|  ClkGen   |   +----------> Sink2
+|           |
+|           +--> ClkOut2
+|           |
++-----------+
+
+From a device point of view, the "input" is where
+the external signal (generated by a source) is
+connected. The device doesn't know what is the
+source made of:
+
+                     +-----------+
+                     |           |
+                     |           |
+(Source)  ClkIn ----->  Device   |
+                     |           |
+                     |           |
+                     +-----------+
+
+So input/output refer to interface to connect the
+clock signal.
+
+Source/sink refer to the other object having a
+relation with this signal.
+
+> 
+>>
+>> Damien/Peter/Luc, do you have better description suggestions?
+>>
+>>>
+>>>>
+>>>>
+>>>>>>>>   * @running: #true if CPU is currently running (lockless).
+>>>>>>>>   * @has_waiter: #true if a CPU is currently waiting for the cpu_exec_end;
+>>>>>>>>   * valid under cpu_list_lock.
+>>>>>>>> @@ -400,6 +404,7 @@ struct CPUState {
+>>>>>>>>      int num_ases;
+>>>>>>>>      AddressSpace *as;
+>>>>>>>>      MemoryRegion *memory;
+>>>>>>>> +    Clock *clock;
+>>>>>>>>  
+>>>>>>>>      void *env_ptr; /* CPUArchState */
+>>>>>>>>      IcountDecr *icount_decr_ptr;
+>>>>>>>> diff --git a/hw/core/cpu.c b/hw/core/cpu.c
+>>>>>>>> index c55c09f734c..37fcff3ec64 100644
+>>>>>>>> --- a/hw/core/cpu.c
+>>>>>>>> +++ b/hw/core/cpu.c
+>>>>>>>> @@ -30,6 +30,7 @@
+>>>>>>>>  #include "qemu/qemu-print.h"
+>>>>>>>>  #include "sysemu/tcg.h"
+>>>>>>>>  #include "hw/boards.h"
+>>>>>>>> +#include "hw/qdev-clock.h"
+>>>>>>>>  #include "hw/qdev-properties.h"
+>>>>>>>>  #include "trace/trace-root.h"
+>>>>>>>>  #include "qemu/plugin.h"
+>>>>>>>> @@ -247,6 +248,16 @@ void cpu_reset(CPUState *cpu)
+>>>>>>>>      trace_guest_cpu_reset(cpu);
+>>>>>>>>  }
+>>>>>>>>  
+>>>>>>>> +static void cpu_clk_update(void *opaque)
+>>>>>>>> +{
+>>>>>>>> +    CPUState *cpu = opaque;
+>>>>>>>> +    CPUClass *cc = CPU_GET_CLASS(cpu);
+>>>>>>>> +
+>>>>>>>> +    if (cc->clock_update) {
+>>>>>>>> +        cc->clock_update(cpu);
+>>>>>>>> +    }
+>>>>>>>> +}
+>>>>>>>> +
+>>>>>>>>  static void cpu_common_reset(DeviceState *dev)
+>>>>>>>>  {
+>>>>>>>>      CPUState *cpu = CPU(dev);
+>>>>>>>> @@ -367,6 +378,7 @@ static void cpu_common_initfn(Object *obj)
+>>>>>>>>      /* the default value is changed by qemu_init_vcpu() for softmmu */
+>>>>>>>>      cpu->nr_cores = 1;
+>>>>>>>>      cpu->nr_threads = 1;
+>>>>>>>> +    cpu->clock = qdev_init_clock_in(DEVICE(obj), "clk", cpu_clk_update, cpu);
+>>>>>>>>  
+>>>>>>>>      qemu_mutex_init(&cpu->work_mutex);
+>>>>>>>>      QSIMPLEQ_INIT(&cpu->work_list);  
+>>>>>>>   
+>>>>>>
+>>>>>
+>>>>
+>>>
+>>
+> 

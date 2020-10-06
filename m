@@ -1,108 +1,103 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp529559lfq;
-        Tue, 6 Oct 2020 03:05:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzl7AMdvTQnkmQd6+FFm9J+A4dgbHpZKlb7NPv25s2rCBatfTbFvhxeS5icM+pG2Zu7TWIr
-X-Received: by 2002:a25:8051:: with SMTP id a17mr5626650ybn.104.1601978756688;
-        Tue, 06 Oct 2020 03:05:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601978756; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp630362lfq;
+        Tue, 6 Oct 2020 05:28:53 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzfEgO5Hm442JakjpVO2fHjiuMfTaSYcx90Cjy+hg4ng3J88RomQlKLCvJc1b/TknEJ87i8
+X-Received: by 2002:a25:505:: with SMTP id 5mr6157478ybf.355.1601987333349;
+        Tue, 06 Oct 2020 05:28:53 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601987333; cv=none;
         d=google.com; s=arc-20160816;
-        b=p7RrUhLsNMmuivqKN3QqdHMATZBS4040PSBu6kLTHNl92qUiypVD3PTvxWprLVf+q/
-         kAfJlXo5GzL1I1BvAAn+L+YeWeSlhiXJFtJhqrgW+l0oFG5xyh5fvhsmRd5iyyjL9a7c
-         ZkRBgkC2pOENdzCJwxL1ac9reemZKLwZgeB8j1B3B5jrX6HFyqkddAKyI841DlotKGwa
-         YPnBzSNC4ntsJpwQWszwNCJZ+l/Da2S9E7I1ifuPVjxLHNAmaIpCnIc5rT+OY2b8uc3L
-         GkXM3TRndI5Rspwy2c9AeCoNkALEnIVFZLyUtkP4vBCpfTWinUk34GrMDrcQcrrrt1fu
-         +Sxw==
+        b=TCXgy2FmJiWpyYhUYsqMnPCkhIFQ5zXDU5kSiE4sI63BOMCqKGfNjc58fe0nVu6nCo
+         B6GSTBkyGRgBUKkT/iI4tjs/TX9P80Mv+yGOeLubyA86NK3Ki0dEHfgT4JeMrR1rCQ/F
+         +Xc1AryiGO7QloWWkhZZ4cazmYh9DQBQkojQloRM6/0z56T5IgiAmt6tgNUcXCOj6jGi
+         d99hJCIroxHJD/NJ37mS+yi4YmuvzkeYcD+w9vrByFwmIi9eErx5qiyMumb4z7yZGwhj
+         tcIo2+61yJTUGdPOOtQQqsa3nEL5mUxUcnRZW0qXSuZbCe3Otl93YQHFr8XJfRPot99Y
+         b23w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=RrblmXBARzc9SOzmVezVfLhBelLQC35BvSdrmk3nDlA=;
-        b=wSEpJlOxJ6zBCO8ihmf9XEPs18eZhROA5g9rM2EosBz3dQC0p0AfURhZKK1/7zliNO
-         zgwzxRhS+aRjIr8drqksvxuxET5H/pUXVGwTBEFIOve6SGk4c0OCCnLJRd5NOBQDP6C8
-         jXfhI+dEK7L0vab0mVe0zfL9yNV2NPqRc9GxoI1FjAgPb3iqU2B6HYLZiXEZRo1NOOps
-         c+7qGoO33J4AzNvbE07Du+XISGUqtCmktBKCmBVPNTVo4r3hpiW2lR5xHzp1H4+sVuZT
-         xV1NPOh1CKQFsUxanyqG53RH8/rBGzihLVdb81Zm6wMHtp/u76MuPkAKDYvb77XH2VsD
-         TreQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=u5WeevEvfpjBTG3OkCNgGk0MO+FrCtxerWMgq9/5I1g=;
+        b=ZiHbPrI1gmEqlzRGZSkbLhsz3PCTPG5+B5yo7YUC6Q+VTDEAFqUHDn+jXnjWqj7j2r
+         mcbj3XX9pJD6+yXCzllYM+yVDziMoN0jPW9eozuUXOpxJnHrR2L/mQcKV9SUBtTFmRPk
+         c0l7Pe3onm5PnhQTMnLVIkUCT0wk4IpnuIHzzp+AM0NtVLweANPUXbmbKMY9j4C0df+Y
+         VdEVqJ8dJdFvTaFY+Fyj/UoA05/5YvxYUXcx4P73F+vwsZcQhv2pgA+nub57yP0FjKhD
+         hi6+BxsOSFaLl9zPlPi/ApKmC3YyMS6eKz5WZK80GzEkAhPfxQHALucufJfml/IfiT96
+         BKtQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FgtLSlwY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fQ172Zyf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v202si2912774ybv.429.2020.10.06.03.05.56
+        by mx.google.com with ESMTPS id w18si3787454ybm.192.2020.10.06.05.28.53
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Oct 2020 03:05:56 -0700 (PDT)
+        Tue, 06 Oct 2020 05:28:53 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=FgtLSlwY;
+       dkim=pass header.i=@linaro.org header.s=google header.b=fQ172Zyf;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37206 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:42316 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPjr2-0002VZ-3s
-	for alex.bennee@linaro.org; Tue, 06 Oct 2020 06:05:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46348)
+	id 1kPm5M-0007Sb-Pf
+	for alex.bennee@linaro.org; Tue, 06 Oct 2020 08:28:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kPjqR-0001iK-F6
- for qemu-arm@nongnu.org; Tue, 06 Oct 2020 06:05:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:35237)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kPjqO-00055Q-K7
- for qemu-arm@nongnu.org; Tue, 06 Oct 2020 06:05:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601978715;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RrblmXBARzc9SOzmVezVfLhBelLQC35BvSdrmk3nDlA=;
- b=FgtLSlwYK2rLWOlxpMIFxQcJzop7OvQlK/9qEKT6bJB+toadVHlU0vruW/ArpA66S3Nfs7
- zNFiBb54A8P5M8lL/LWrbe7h6sZHgsM7p/AryytO1MTRb3dBNNEMtuMx52iw3KVsodDM1h
- AQdH+eIJOVumD1i2tnrKg3Uu+uFcp9E=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-128--OEqxv9qOQ-17xYSyGtzzw-1; Tue, 06 Oct 2020 06:05:13 -0400
-X-MC-Unique: -OEqxv9qOQ-17xYSyGtzzw-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A13EF100F7C8;
- Tue,  6 Oct 2020 10:05:09 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.74])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 4DE3B10001B3;
- Tue,  6 Oct 2020 10:05:07 +0000 (UTC)
-Date: Tue, 6 Oct 2020 12:05:06 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>
-Subject: Re: [PATCH v2] hw/arm: Restrict APEI tables generation to the
- 'virt' machine
-Message-ID: <20201006120506.115c7f9c@redhat.com>
-In-Reply-To: <20201001162207.1566127-1-philmd@redhat.com>
-References: <20201001162207.1566127-1-philmd@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kPm57-0007R6-UQ
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2020 08:28:37 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529]:33923)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kPm53-0006kX-VN
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2020 08:28:37 -0400
+Received: by mail-ed1-x529.google.com with SMTP id k14so13324617edo.1
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2020 05:28:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=u5WeevEvfpjBTG3OkCNgGk0MO+FrCtxerWMgq9/5I1g=;
+ b=fQ172ZyfZxFZavsnzWmgtlq8WGH2mOGT+PdaiB6qhLew7QLzheImH+8P01DcVtMih0
+ 8mPmegKSwu9TBIrYpGLFyviyPWVGmxsj+XV/AxxrK8ohSqZDqcKkYCdgmVfFzCuXQUAN
+ wW3AyinYVnoBpXVBxhTp62F9AK+AniDL2MuMnquTDOU/HYyNDh5Uks5HI1Q07elJgYGL
+ KwHYRvbGpHjmkETbdXSNNbF+BKZLdmXjst6JAAjaZHn4by7qcXcpQDR5rySDYAiE7glR
+ HZjrh6XIedUbSv3u8gMOuwJqSdSd35lElOTnRhBP63DOfIJwWvmj225S+Y5+F5sb9XDv
+ xaRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=u5WeevEvfpjBTG3OkCNgGk0MO+FrCtxerWMgq9/5I1g=;
+ b=sOk795pKgywmf/cFacqYguFkrcZ9E3Abe9638hfCQUbLeANmS0qzgtGLzGq69V2L+c
+ 75MfxwAuPB0j6DY4VcuToQzHpgiIW4PIbD4EF6Q0L8Yj6ijiObBIbLAr64rBNbkbpWW/
+ V9VL/8JIT6+S9WG4hscityaNOjzOJfIBhKekoO1uJGkNEv+B5BOblVehLN3QhkMBU5mA
+ R9pcnQ3sW9yzXl4G6iZYVjUMvXWwgcVUwQzbe6bE+EoeM4URDOxu2HZNtpA165LFAHVP
+ ZcnxGptgFPJBdSouDOIY/uFbjKWydBpv6gGa763oV2zPhiAZMW4iA4ugHIKC4SKjsmwq
+ O0BA==
+X-Gm-Message-State: AOAM532h+vlbyxG6bND0a+pY04AFSNMRSTqOMyBKxrY2CJqElu3YNtDz
+ G3Pg3XHl+LL6X7lhadNYap8ITdPbVU4ucwoze8HWLw==
+X-Received: by 2002:aa7:dd4b:: with SMTP id o11mr5006200edw.251.1601987311400; 
+ Tue, 06 Oct 2020 05:28:31 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/06 01:55:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <01e701d69bd4$e49413d0$adbc3b70$@gmail.com>
+In-Reply-To: <01e701d69bd4$e49413d0$adbc3b70$@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 6 Oct 2020 13:28:20 +0100
+Message-ID: <CAFEAcA9HUh7Ge-4zqEewECCs0HwfdQXc3RRqX6hKKV=HUEMy5g@mail.gmail.com>
+Subject: Re: pstate_read/write ignores nRW field that is kept in env->aarch64
+To: ivan.i.kulagin@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x529.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,66 +110,46 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org,
- Dongjiu Geng <gengdongjiu@huawei.com>, Xiang Zheng <zhengxiang9@huawei.com>,
- qemu-arm@nongnu.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Laszlo Ersek <lersek@redhat.com>
+Cc: qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: mXhNiHDYJSAJ
+X-TUID: pG+VmL5CqDj8
 
-On Thu,  1 Oct 2020 18:22:07 +0200
-Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com> wrote:
+On Tue, 6 Oct 2020 at 12:36, <ivan.i.kulagin@gmail.com> wrote:
+> Could you please explain me why in pstate_read and pstate_write
+> the nRW bit is ignored?
+> The comment in CPUState says that nRW (also known as M[4]) is kept,
+> inverted, in env->aarch64,
+> but the value returned by pstate_read doesn't contain this bit.
 
-> While APEI is a generic ACPI feature (usable by X86 and ARM64), only
-> the 'virt' machine uses it, by enabling the RAS Virtualization. See
-> commit 2afa8c8519: "hw/arm/virt: Introduce a RAS machine option").
->=20
-> Restrict the APEI tables generation code to the single user: the virt
-> machine. If another machine wants to use it, it simply has to 'select
-> ACPI_APEI' in its Kconfig.
->=20
-> Fixes: aa16508f1d ("ACPI: Build related register address fields via hardw=
-are error fw_cfg blob")
-> Acked-by: Michael S. Tsirkin <mst@redhat.com>
-> Reviewed-by: Dongjiu Geng <gengdongjiu@huawei.com>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+That's because pstate_read() is in general only used from
+contexts where the CPU is known to be in AArch64 state
+and so that bit is always zero. AArch32 state code instead
+uses cpsr_read(). Similarly for pstate_write(), it is only
+used in cases where we're in (or switching to) AArch64
+state, and the calling code generally handles the "flip
+the env->aarch64 flag" part itself -- see for instance
+the exception_return handling in helper-a64.c, which does
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+ if (!return_to_aa64) {
+     env->aarch64 = 0;
+     /* ... */
+     cpsr_write(...);
+     /* ... */
+ } else {
+     env->aarch64 = 1;
+     /* ... */
+     pstate_write(...);
+     /* ... */
+ }
 
-> ---
-> v2: Reworded
->=20
-> Cc: Laszlo Ersek <lersek@redhat.com>
-> Cc: Xiang Zheng <zhengxiang9@huawei.com>
-> Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-> Cc: Igor Mammedov <imammedo@redhat.com>
-> ---
->  default-configs/arm-softmmu.mak | 1 -
->  hw/arm/Kconfig                  | 1 +
->  2 files changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmm=
-u.mak
-> index 9a94ebd0be..08a32123b4 100644
-> --- a/default-configs/arm-softmmu.mak
-> +++ b/default-configs/arm-softmmu.mak
-> @@ -43,4 +43,3 @@ CONFIG_FSL_IMX7=3Dy
->  CONFIG_FSL_IMX6UL=3Dy
->  CONFIG_SEMIHOSTING=3Dy
->  CONFIG_ALLWINNER_H3=3Dy
-> -CONFIG_ACPI_APEI=3Dy
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index f303c6bead..7d040827af 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -26,6 +26,7 @@ config ARM_VIRT
->      select ACPI_MEMORY_HOTPLUG
->      select ACPI_HW_REDUCED
->      select ACPI_NVDIMM
-> +    select ACPI_APEI
-> =20
->  config CHEETAH
->      bool
+This is because switching between AArch32 and AArch64 is
+complicated (among other things you need to sync the state
+to or from the 32-bit and 64-bit views of the general
+purpose registers in env->regs[] and env->xregs[]). It
+never happens just as a side-effect of a pstate_write():
+you always know you're making the switch and are doing
+a lot of other things at the same time.
 
+thanks
+-- PMM

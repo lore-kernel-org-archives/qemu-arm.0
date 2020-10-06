@@ -1,126 +1,102 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3367076lfq;
-        Sun, 4 Oct 2020 11:40:58 -0700 (PDT)
-X-Received: by 2002:a05:6402:84f:: with SMTP id b15mr13605842edz.149.1601836858464;
-        Sun, 04 Oct 2020 11:40:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601836858; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp871639lfq;
+        Tue, 6 Oct 2020 10:24:16 -0700 (PDT)
+X-Received: by 2002:a17:906:881:: with SMTP id n1mr589489eje.502.1602005056808;
+        Tue, 06 Oct 2020 10:24:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602005056; cv=none;
         d=google.com; s=arc-20160816;
-        b=w99EfkfgNpitsALTif9ieNG8MCbN1WBFS9PgOTjtYocalCDHkW5fmkD18hH0bYng/U
-         axuFz8NvUFHKsTa0RnFJgPyojfRMRdhxFseivZvkrqRKGoqYLxbGvC1dy4MJ19CKYCLm
-         2nCUHlDo+X0poirbrZ4Zyu93F9g8bnP/t3mPtGixve+WBgFwjLgCv+SmzVxqYlMyrjZa
-         Ed/35/mVQ6er8gIb8UOlY+6anytD/SuipHWkctjo+sSkgCGG/x7k7VxUeT+xuoejoY7S
-         IF/g6uKe44AhT9sdD3uuevEAD7/UB0WhuJyvw/l0SGh2bvMsP9I9S4j5FuPYfFJ42pjU
-         Zibw==
+        b=qn8saWu2Dy7grExE22H1fhww0/eVR0K3oMEyBfTxXLQNP4b7jwq8QXICS8GOa1T9wr
+         wRDo8a0acfkrs76x71TSxSswjnHvVCXzbTZ/0eJ9sn6E45Uj/ptuFLZ5J/gIX7NdTToq
+         2j7DBBFsSa4HJ6EM+Tf9HKj7P1vDDIbuBoPHO9Rwxwo7TogSIBS0QfekXKJT4g9GpoNU
+         Px5mf4QiSTiT3mmrYLEI6X4+9l7Es6DguMdClj0xgKmKUP15sIePw17gVNLQVsaskfjL
+         f9MT7KwHsRTEd2Qle4nrVKJGrcTQ2g1GXEOLGDOZW3t3MxhS/nA7Dpc35kl4bj0Sshm0
+         54Wg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=vPP3s4z361Q9UgQNLLTL7OkavWGws14FpHuVpd66USo=;
-        b=Cm+iwymUTT/MKBspsKoTIO53z8sw4PHaElSeVlR6P56asfNNHZLZLT79p4znqXAG05
-         nOctu7vKH5NwAwBTllCAczjG+vjEwj+fImDSIMiyNpSqCJqL2//Y1xHiVUJVl4fmGfga
-         Wm23OI7ZIWKH4CumkfXfuhP7eLRDtH+9noKidZjRvQW8fOWt2J/QUXZMmBv4n7IZ77fI
-         K7R+nWC3rVWjxmzm6B1lde7OqAhgO5ySgro5uJmXBoGfxUx+Vh2z9hSbUStORZxPBeMv
-         /PlwSfCUf8dGNQLxL2V1GjpJMQKPSt5RvoQuPK42M0kdr7ite3EN+02A5dKJhVC1eHJW
-         7Gvw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=6EoYhQEwepyJOet9GdIdyEvpKJ7MIJ8V+HlUJhfVcb8=;
+        b=ToUhTRFNwSuBppnLwKKXdA79g62VNLWTIOykQvmZus7ZQ41vMQ7tdHiqSxMbYmpo+7
+         2ZEm1rhmbG8mXSS71/WhCUvwwWFo8FKBQK5cSsmSiGXRLnnyT7MXYlzNYYEcm9UH61cJ
+         nqq2mcIbJNUutXBfWNtp2BZpjvtcF6Qe5NUO/jYPfCDE1/rSRCAP0oc+zxUHfK5lap4K
+         0gay8DAM0ngLZCkv5b2CU+cSq8SdahAiZ9yWwYqieiZyc09y939BUyPBPSt2GFv8mLSv
+         d2m20LrsSgQaDdL3K1xXWAAIzJLnrZCPiJfgAfXdYPGZL8JCRtFbsNhoE0gbtNwzbEpe
+         zOVQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mmJtpsOS;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r7h3Fxcy;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
+Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id n22sor3201869eju.86.2020.10.04.11.40.58
+        by mx.google.com with SMTPS id bw9sor2395007ejb.91.2020.10.06.10.24.16
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Sun, 04 Oct 2020 11:40:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Tue, 06 Oct 2020 10:24:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mmJtpsOS;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=r7h3Fxcy;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=vPP3s4z361Q9UgQNLLTL7OkavWGws14FpHuVpd66USo=;
-        b=mmJtpsOS8ugC5pZ2fC9NsasWinEZCA3IWEKnwATZFzxq3BU+O9GdQFbnCwTjlSSRpX
-         tYx2zEdYaqLFmEI4/EC9KoCYqOx54nS1bY3uNzrYn6H9NyDQoBR4rnlDzJRdzUc0Nhh7
-         VPP/Go8ftHassRygl1KeOHpcrjYBS4sH8CSNGQFti3j3agWu2eO62py25CsDXkb3CqBP
-         59XTuBXkkFVP6E7+N93RIfGVjDE5VhkXLuRXpekl1pqnr2A9+5VSQOKPTkAavXZo8dHJ
-         FF97o5v4yOti9TGihzMCEdF4CGYPcRa5qGfQ12gMdvkJnqBLxATVPLCitja1Kr0N56XR
-         wh6g==
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=6EoYhQEwepyJOet9GdIdyEvpKJ7MIJ8V+HlUJhfVcb8=;
+        b=r7h3FxcyPANqlR9lbRX5DMqsDbiKZzS81YxNP1lvpKa2qeWgN0Y4LXWIobAgJSpM28
+         TfOhtwBg3TOs0r50fheI8PyLLG775iTjjWEDnbdYVd/JLGYS8bvYXl6LFKOUZ//nSz29
+         OnbIvc2ClB8DFZLYqpfUB7mlDtexmO8MvitC6Xo03gVi8FYAWB5bBa8isBP2+JjQ0T9K
+         5rHqnepfU7K8VECvpUVAX7sTNpOYb/v+oaRReDzMZiEb2H5Z1/721Ad+wKYd3/idXq6a
+         Oqdat+xB6tblQuPguqrBAMyhDm+PCSZOW4xJcsu7E1EW7DfHBidmg90/XePeCszB4vK3
+         su4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=vPP3s4z361Q9UgQNLLTL7OkavWGws14FpHuVpd66USo=;
-        b=c4g9aL1dXLaRJjEBht7VyVmaIUZmEP0YF2ee8dFmSdvLSmAqaLfJqCqt+nV3lnU1lr
-         +tRhjOo42EpahuCMX2UZ3N1B0br24z4Ixwog4pS1mO7gD5Gp2ZvAjETGATAS9snmYslX
-         De0XfVn4LKlMZnkh6g9SDhWxruSAbf0QbLSuhyYr2o9xjT/Cf4RPja9xb87+A+vkgsxa
-         peQi7RrfNCjD1wyJr4tGdBDGyqBycGvEBL7ww0vMLkLz5/T9W53OFntVQKnIU0Ti7JH0
-         ChceuIPuezzo6GdUxjREeUz9mNDOFjt3nXo+iOt2Xc4Q/91JdfjuHrkecpzh+IcsCL5Q
-         R92A==
-X-Gm-Message-State: AOAM532Hl49F0J3VYf2ZKxWlCXxKobuNUg1IIcTwfDK1zJFUnjRJIOCT
-	edkIosj+2whkEA+v/djYLMeW3ROAM3Wo0oulONMh1EfMlyJE5eOdRuY=
-X-Google-Smtp-Source: ABdhPJwI4Kuk0DLopxQQFsVJd36uVqa4/wc42sYxtjxCOTRkDh3lTqZwxjQ6YtDzPdfGyy/EUIuBx06zXMdiTlzw3Gc=
-X-Received: by 2002:a17:906:1f42:: with SMTP id d2mr11713267ejk.407.1601836857425;
- Sun, 04 Oct 2020 11:40:57 -0700 (PDT)
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=6EoYhQEwepyJOet9GdIdyEvpKJ7MIJ8V+HlUJhfVcb8=;
+        b=cRMKtPtx/fo5MyBaoJKCnOd65EM1lm11DpI7W+HsXSS2HHQE57LssMTuNiflmIJ3hE
+         FZfuYv8nXG1kHgg5uSPXjluL0OCWgKyViOVd8DPr7aWCFWMqZBvucuwuA17qLj6NY8vB
+         qG2X0ieITa6YvmJHoCVtgWG9/4rvdoeuBhe7MIWXBezSKgyiEp/gpf48Diwb8aUxcHov
+         MzBVIF5tB9lmFNzJEVnMutsc5E1Cx18asU12XSv3zQNHPIFzJdmDmTJDv6vbPIsxruvT
+         D48Y49ak36wFSnI5oEXGbrC28RwjNfPbjr2MUbheTl1H114EAyKV60fFP4mZFvwFUqs7
+         NVWg==
+X-Gm-Message-State: AOAM5323nskUOGO7RNXqfsboGqDH9PdZImguyoZCRVh2oz9f2GMRde+4
+	nNNLjwAjpVUi8+MS5HADiTIMWKf1
+X-Google-Smtp-Source: ABdhPJz+HxAmmnwP7e+6m3IVDRfiGdqhxXy6sPOPsM47kxiVccGeHhcAmMB3hRWQmyUurnYiMIbz2g==
+X-Received: by 2002:a17:906:3ad0:: with SMTP id z16mr625735ejd.193.1602005056569;
+        Tue, 06 Oct 2020 10:24:16 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain ([185.81.136.21])
+        by smtp.gmail.com with ESMTPSA id a22sm2536968ejs.25.2020.10.06.10.24.11
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Oct 2020 10:24:16 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org
+Subject: [PATCH v10.5 0/1] tests/tcg/aarch64: Add bti mmap smoke test
+Date: Tue,  6 Oct 2020 12:23:58 -0500
+Message-Id: <20201006172359.2998-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-References: <47dbcad4-3121-b1c3-06fa-abec7c353fb6@gmail.com> <87sgatanti.fsf@linaro.org>
-In-Reply-To: <87sgatanti.fsf@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 4 Oct 2020 19:40:46 +0100
-Message-ID: <CAFEAcA_ZMLV3DZ_R_SHvPLdEf=i-xpspD5itBmfYeqyMhgtLWQ@mail.gmail.com>
-Subject: Re: Emulate Rpi with QEMU fails
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Thomas <74cmonty@gmail.com>, qemu-arm <qemu-arm@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, Andrew Baumann <Andrew.Baumann@microsoft.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: BM3op0qEQFTl
+Content-Transfer-Encoding: 8bit
+X-TUID: TyoGWhUJBB33
 
-On Sun, 4 Oct 2020 at 18:44, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
-> Thomas <74cmonty@gmail.com> writes:
-> > I'm trying to emulate Rpi with QEMU.
-> > I found
-> > [url=3D1]this[/url]
-> > arcticle in Raspberry Pi Geek documenting the steps including persisten=
-t
-> > storage on host.
-> >
-> > However when starting the emulation with command
-> > qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -serial stdio -hda
-> > 2020-08-20-raspios-buster-armhf-lite.img -net
-> > "user,hostfwd=3Dtcp::5022-:22" -dtb versatile-pb-buster.dtb -kernel
-> > kernel-qemu-5.4.51-buster -append "root=3D/dev/sda2 rootfstype=3Dext4 r=
-w
-> > panic=3D1" -no-reboot
->
-> Let's start with the fact you are using a versatilepb machine type with
-> a versatilepb dtb and not the rasppi model.
+Based-on: 20201002215955.254866-1-richard.henderson@linaro.org
+(linux-user: User support for AArch64 BTI)
 
-Given the name of the kernel image, this probably actually *is*
-built for versatilepb, or it wouldn't have got as far as failing
-to mount the root partition. There seems to be a lot of confusion
-in the raspberry pi community about the difference between
-running the raspi userspace plus a for-versatilepb kernel
-versus running a full raspi setup.
+Adding a second smoke test, which both tests PROT_BTI via the
+syscall, as opposed to the ELF NOTE.
 
-Anyway, failing to mount the rootfs and not listing any
-sda devices is not a problem with the fstab, because the system
-hasn't got as far as being able to mount the filesystem with a
-fstab on it yet. One possibility is that the kernel is
-missing the device drivers for either PCI or for the SCSI
-controller that gets plugged in to versatilepb by default.
 
-My guess at the cause is that you're trying to boot a Linux 5.something
-kernel and you've run into the issue described in this thread:
-https://lists.gnu.org/archive/html/qemu-discuss/2020-09/msg00023.html
-where the Linux 5.x sym53c8xx scsi driver is not compatible with QEMU's
-emulation of that device. If that's the case then you should see
-earlier in the kernel boot log error messages similar to the ones
-that Roger reported. The fix would be either to use an older
-kernel, or to change the QEMU commandline to use a different
-SCSI controller (or to use a virtio block device).
+r~
 
-thanks
--- PMM
+
+Richard Henderson (1):
+  tests/tcg/aarch64: Add bti mmap smoke test
+
+ tests/tcg/aarch64/bti-2.c         | 108 ++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |   7 +-
+ 2 files changed, 113 insertions(+), 2 deletions(-)
+ create mode 100644 tests/tcg/aarch64/bti-2.c
+
+-- 
+2.25.1

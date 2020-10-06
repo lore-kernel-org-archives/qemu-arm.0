@@ -1,96 +1,114 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp150310lfq;
-        Mon, 5 Oct 2020 15:56:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyMrOoiAqcdvTjE8GVucZX0aDCWTJGAoMf5rJzMdEewO90EBsvDJcxhybMG5Shs2o/k9wV8
-X-Received: by 2002:a25:b29a:: with SMTP id k26mr3033109ybj.450.1601938600856;
-        Mon, 05 Oct 2020 15:56:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601938600; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp475602lfq;
+        Tue, 6 Oct 2020 01:40:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz6ImkuugRR9gmcTwzKvEybR7HD6myRRbrAiW4ptNxN7Iz2+zTfMjxUQJurc+YW1Ac1UWCD
+X-Received: by 2002:a25:69cb:: with SMTP id e194mr5374936ybc.243.1601973633558;
+        Tue, 06 Oct 2020 01:40:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601973633; cv=none;
         d=google.com; s=arc-20160816;
-        b=N04bzC2BOn5T4iZsMKs43FoLMeY07Cog5T5ltaf5RrD9IFxwwDk9Gk16Yn5guYLCA5
-         xRhPSddZqfLiQDEfz2zPFnkstgIidtuWT30L78ZwG6r7lOCUvXE1Duzni90Ms7kSectN
-         02kdXvvmSkyvxRkWMJZsFke7HcAVkJzhAUBuM6+RHnfBbP1ACjt1W/PPROD60Nw6cihM
-         OQpoa1+4lNTFqhmTzgka/F7hc+yCa6LPHuvjWKdGs87LVMIXPaz7C24Dl5RB3xo97+w7
-         VaQXS6CP2onME3qhsHy4Q8Hw1eZKB5cCb/1KzTJnHKSiEJr64/ryp37yy+4DsSbeMhJa
-         193A==
+        b=j8M1mxe/OrAdr+uRuGf1HAoCzjUnT38aRwKDaK+AVH0aorIx49oPtQNs8ys73/nmpp
+         fdZpbuW/Lf/zJpR5j1mO023NmxIVTYuMUe8EVjQcswHfVXIJtYJTM+AJ6tLJhCiiV5W0
+         gEsHhiZZ+zKFVpZ1sXVU8U7sY9mHmfiID5ZfnEA67KD6LB6tWkM+R1+8i/byopuIT9OY
+         q752YUZ9C8fWpdLSdD8dMgBNjOb0UoMOwDBb1cO6fCup6YBnfxb3/hv5e5l+j+gcgI0a
+         jmh+R7Ge9VxppsjxNYfyV8nMLe4+5tt18lGgyUzmVGGXERrYKM/Ct8c8MH/OmHPmM2nB
+         DuPA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=gPKf2w9mX4wYAK4imtSS4zpT61Op7JZnKhqQzehCEVM=;
-        b=GJRf093SxohCI43dG2Nxgx9EP0a+uQM/zapLS7DVfItEDF5xELtnzjx8XdyMo7JEu1
-         32Dx63vrsqFgnagG87ut4YM2eXILEn9gv1ubBxz++8wriErzBuLbhxHFgLiJ7gdy9UNj
-         Ui3jk1tl9PRpckx1P4DDtvA8qzDFBgEs0LcgOXX741sEV8WAWqX/fbK96OBjP1KYU54i
-         lYGFK761KTGuIIAMICdBADcrcZo0GP+XgN/J2RVwpi3twKVi9sP9Oq6BxhP4MHhjRk57
-         1xoPqATR0xiHeZ591W5ypEYBMAZ7WmnzfMCKQDhWcTFxThnzKGxbvVeMBGs3Kmi2PBJ0
-         iynA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=5R99MHvHog38JUAHK+cJI9tw/G0v91gWyeejkWSp+EU=;
+        b=eWlpQpJHYOErak2s8pcjbbrMj0+Fj+veLtNrTWjhDz+mcgbYLm/ZgHjLZLcflF8zSz
+         leb5qddyoPBTDcMLOcHjvBe6ianlmdYvo++6E8nCisrU0BVRWnx+Qq7l/txDXCkHwymb
+         DGCBSlq9+Eo8z/Bz+V7o/frk95SGIMgM6qnjghdCEVumQbhG5OMNENPxo/M0yPz0lqsV
+         /rWMXEgPRkA0Lz+8n9t0SE+JqHHcpsIA8kVnqepbLgQS1zzr2gUFy/E0zl6gXE7gYiG0
+         FXb+D5OzXljJGmc3OEgM5O4HaCeg4o4taIbI3GJrAtkIc2AjYtws4dopO1k+HmB783HT
+         55fw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=h9s98Ogb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mumAl4PD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t9si1289206ybq.201.2020.10.05.15.56.40
+        by mx.google.com with ESMTPS id y7si3057403ybp.348.2020.10.06.01.40.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 15:56:40 -0700 (PDT)
+        Tue, 06 Oct 2020 01:40:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@jms.id.au header.s=google header.b=h9s98Ogb;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:39914 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mumAl4PD;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:44710 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPZPM-0007kS-1X
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 18:56:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33206)
+	id 1kPiWO-0005PP-Up
+	for alex.bennee@linaro.org; Tue, 06 Oct 2020 04:40:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55226)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1kPZOj-0007k0-An; Mon, 05 Oct 2020 18:56:01 -0400
-Received: from mail-qv1-xf42.google.com ([2607:f8b0:4864:20::f42]:33645)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kPiWF-0005ML-Ot; Tue, 06 Oct 2020 04:40:23 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:43054)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1kPZOh-0002md-9p; Mon, 05 Oct 2020 18:56:01 -0400
-Received: by mail-qv1-xf42.google.com with SMTP id cy2so6990929qvb.0;
- Mon, 05 Oct 2020 15:55:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jms.id.au; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=gPKf2w9mX4wYAK4imtSS4zpT61Op7JZnKhqQzehCEVM=;
- b=h9s98OgbpV+4KhUR5qQMSsvBs7Dc+A1VSABFVLr9p3w77LoDE0MDK58TVGy6fqkRSE
- rvznW1OL1zuShPpeisGoKyOtdY9oUlxPGGh3zfoBW5iw/SXXYc39imBh68GF/HTObjnS
- v+yZLWDFcAwjNIhGOTZ5mSamRRcH/CSSkNjWY=
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kPiWE-0002qa-2t; Tue, 06 Oct 2020 04:40:23 -0400
+Received: by mail-wr1-x443.google.com with SMTP id g12so7022559wrp.10;
+ Tue, 06 Oct 2020 01:40:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=5R99MHvHog38JUAHK+cJI9tw/G0v91gWyeejkWSp+EU=;
+ b=mumAl4PDKinRUSCHhFvuoegv1u3awm7PtIkoSeWq/8OJiSBpJRZT6OPXGcmMLZPv74
+ L0/myKESO/F8sFqjicfWL1vXeDuEOIPXByY9BggyI0ujZptA3tnHMxQTQaJZk7/fW2+x
+ TdTM1odXEunbNYzdmTbbg9abotLNhZWWiov9AW96Ac3bx8CqlRJfhXwJ53ElBKhlTyhi
+ LtB47TnU0WfKYdft0UT+bdW+2l/4DiQzCzAB8KPlq5ZL6mvgd0wwZ90GDGGEC8yOafnS
+ h0lbyLW8ALTYt+xmjsC7b/yKDe1Fr3LCsrCNf+/4bgI8ETApBlqMUZ9FgOWHvy2RnL7v
+ JqmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=gPKf2w9mX4wYAK4imtSS4zpT61Op7JZnKhqQzehCEVM=;
- b=JLjPSA+FGjJ6qpUnSNN1gBqGeiVoaK6rDBXAYVbT6y6rwVziTjktdw0SrA3AiB8IF3
- BYRN9PuMmvAgX9MZBhoENmFuaVZZy1P4V5AUA6Sr20qWEdIFE/lOg5rgpATeEvLtWjlR
- Ln40y4Q319xRn6+zhKwDI/88jQ1DOR1kmWFRk4BDghpihbEPLL9cXpch+S0KeFE49abe
- Z3NbW4JGt2tL4XUuh4XIY7BwRgQUvUT9kQgl1FwhFGX2d9dFmaNVIhbS90C9ll7gsLyz
- UYlrHCfI4C8Jttw1ADrn8Q8d1MTO9tL0VaNrTcLzi3ZnwJmYw0HxKFYWzxii45q4QvDP
- dRaA==
-X-Gm-Message-State: AOAM533uZ5xwmRCYNlPdC9r1xfgQUtaQz549jyBJXAAzmOFdpNW4O5mq
- bq/1VZC1Fra9xI5XR+05GBX0dt6ZQbfSDIaj27A=
-X-Received: by 2002:a0c:f984:: with SMTP id t4mr2029982qvn.18.1601938557454;
- Mon, 05 Oct 2020 15:55:57 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=5R99MHvHog38JUAHK+cJI9tw/G0v91gWyeejkWSp+EU=;
+ b=CdH0CjAZHEs8WgdiuUfSRIEyytSDTJ3mi7IkMk3V+2YiRq+AuWBONYip/9BgtpPI3v
+ 6Kdc6DICleBnNp9Z5eVj4cPBCJ46ytkbetMTDQn3XlVvQmj6FplyoSEGoYqIF4/eAGX5
+ NO2LvtDE5MWSoL8UGBKIuXYunXDkElE44d4OE6vF3UiX5a+A7QKi1zWJ0z2ZwK4At+9C
+ L1zZT5HqAXxCe3k+n12zZD+5xypQJQV/wBAAvc55M6uGU+fnrCYjszc6o3wI9F6/GuPr
+ buDptjhUZczQGOpPqiadEbuuJi1lJTU0932B6Ys/QwlO3swDCEGimFYQpUr0nA4GoADh
+ pHDA==
+X-Gm-Message-State: AOAM530sifPeM4PswODanGJubF7CDAc0Kjdi064xZotIlZIgj7bRpYh7
+ n/ywlKeSAo4R9XXAnGL8tE0=
+X-Received: by 2002:a5d:6551:: with SMTP id z17mr3623507wrv.200.1601973619585; 
+ Tue, 06 Oct 2020 01:40:19 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id s6sm3358640wrg.92.2020.10.06.01.40.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 06 Oct 2020 01:40:18 -0700 (PDT)
+Subject: Re: [PATCH v2 10/15] hw/misc/bcm2835_cprman: add a clock mux skeleton
+ implementation
+To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
+References: <20201005195612.1999165-1-luc@lmichel.fr>
+ <20201005195612.1999165-11-luc@lmichel.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <ea432580-114b-3f85-b4f1-0012bfb008c0@amsat.org>
+Date: Tue, 6 Oct 2020 10:40:17 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <20200929055309.509-1-wangzhiqiang.bj@bytedance.com>
- <20200929055309.509-2-wangzhiqiang.bj@bytedance.com>
-In-Reply-To: <20200929055309.509-2-wangzhiqiang.bj@bytedance.com>
-From: Joel Stanley <joel@jms.id.au>
-Date: Mon, 5 Oct 2020 22:55:45 +0000
-Message-ID: <CACPK8Xf-R=1UrEVxF92Y4HGXadWfdvHjmjyDnH5K3GSJTkq7YA@mail.gmail.com>
-Subject: Re: [PATCH 2/2] aspeed: Add support for the g220a-bmc board
-To: John Wang <wangzhiqiang.bj@bytedance.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f42;
- envelope-from=joel.stan@gmail.com; helo=mail-qv1-xf42.google.com
+In-Reply-To: <20201005195612.1999165-11-luc@lmichel.fr>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
 X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -105,120 +123,110 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
- =?UTF-8?B?6YOB6Zu3?= <yulei.sh@bytedance.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, clkg@kaod.org,
- xuxiaohan@bytedance.com, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Paul Zimmerman <pauldzim@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: DXBZFHTCpWW5
+X-TUID: cuz4PeK4o/NN
 
-On Tue, 29 Sep 2020 at 05:53, John Wang <wangzhiqiang.bj@bytedance.com> wrote:
->
-> G220A is a 2 socket x86 motherboard supported by OpenBMC.
-> Strapping configuration was obtained from hardware.
->
-> Signed-off-by: John Wang <wangzhiqiang.bj@bytedance.com>
-
-Reviewed-by: Joel Stanley <joel@jms.id.au>
-
+On 10/5/20 9:56 PM, Luc Michel wrote:
+> The clock multiplexers are the last clock stage in the CPRMAN. Each mux
+> outputs one clock signal that goes out of the CPRMAN to the SoC
+> peripherals.
+> 
+> Each mux has at most 10 sources. The sources 0 to 3 are common to all
+> muxes. They are:
+>    0. ground (no clock signal)
+>    1. the main oscillator (xosc)
+>    2. "test debug 0" clock
+>    3. "test debug 1" clock
+> 
+> Test debug 0 and 1 are actual clock muxes that can be used as sources to
+> other muxes (for debug purpose).
+> 
+> Sources 4 to 9 are mux specific and can be unpopulated (grounded). Those
+> sources are fed by the PLL channels outputs.
+> 
+> One corner case exists for DSI0E and DSI0P muxes. They have their source
+> number 4 connected to an intermediate multiplexer that can select
+> between PLLA-DSI0 and PLLD-DSI0 channel. This multiplexer is called
+> DSI0HSCK and is not a clock mux as such. It is really a simple mux from
+> the hardware point of view (see https://elinux.org/The_Undocumented_Pi).
+> This mux is not implemented in this commit.
+> 
+> Note that there is some muxes for which sources are unknown (because of
+> a lack of documentation). For those cases all the sources are connected
+> to ground in this implementation.
+> 
+> Each clock mux output is exported by the CPRMAN at the qdev level,
+> adding the suffix '-out' to the mux name to form the output clock name.
+> (E.g. the 'uart' mux sees its output exported as 'uart-out' at the
+> CPRMAN level.)
+> 
+> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Luc Michel <luc@lmichel.fr>
 > ---
->  hw/arm/aspeed.c | 60 +++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 60 insertions(+)
->
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index bdb981d2f8..04c8ad2bcd 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -120,6 +120,20 @@ struct AspeedMachineState {
->          SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
->          SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
->
-> +#define G220A_BMC_HW_STRAP1 (                                      \
-> +        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
-> +        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
-> +        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
-> +        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
-> +        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
-> +        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
-> +        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-> +        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-> +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
-> +        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
-> +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
-> +        SCU_AST2500_HW_STRAP_RESERVED1)
+>  include/hw/misc/bcm2835_cprman.h           |  84 ++++
+>  include/hw/misc/bcm2835_cprman_internals.h | 421 +++++++++++++++++++++
+>  hw/misc/bcm2835_cprman.c                   | 150 ++++++++
+>  3 files changed, 655 insertions(+)
+[...]
+
+> +#define FILL_CLOCK_MUX_INIT_INFO(clock_, kind_) \
+> +    .cm_offset = R_CM_ ## clock_ ## CTL,        \
+> +    FILL_CLOCK_MUX_SRC_MAPPING_INIT_INFO(kind_)
 > +
->  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
->  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
->
-> @@ -559,6 +573,30 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
->      /* Bus 11: TODO ucd90160@64 */
->  }
->
-> +static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+> +static ClockMuxInitInfo CLOCK_MUX_INIT_INFO[] = {
+> +    [CPRMAN_CLOCK_GNRIC] = {
+> +        .name = "gnric",
+> +        FILL_CLOCK_MUX_INIT_INFO(GNRIC, unknown),
+> +    },
+[...]
+
+> +static inline void update_mux_from_cm(BCM2835CprmanState *s, size_t idx)
 > +{
-> +    AspeedSoCState *soc = &bmc->soc;
-> +    DeviceState *dev;
+> +    size_t i;
 > +
-> +    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
-> +                                         "emc1413", 0x4c));
-> +    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-> +    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-> +    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-> +
-> +    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
-> +                                         "emc1413", 0x4c));
-> +    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-> +    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-> +    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-> +
-> +    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
-> +                                         "emc1413", 0x4c));
-> +    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-> +    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-> +    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
+> +    for (i = 0; i < CPRMAN_NUM_CLOCK_MUX; i++) {
+> +        if ((CLOCK_MUX_INIT_INFO[i].cm_offset == idx) ||
+> +            (CLOCK_MUX_INIT_INFO[i].cm_offset == idx + 4)) {
+
+Maybe add a /* Matches DIV or CTL */ comment. Anyway
+FILL_CLOCK_MUX_INIT_INFO() only uses CTL, not DIV, so
++4 check is not necessary.
+
+Otherwise:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+
+> +            clock_mux_update(&s->clock_muxes[i]);
+> +            return;
+> +        }
+> +    }
 > +}
 > +
->  static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
->  {
->      return ASPEED_MACHINE(obj)->mmio_exec;
-> @@ -798,6 +836,24 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
->          aspeed_soc_num_cpus(amc->soc_name);
->  };
->
-> +static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
+>  #define CASE_PLL_A2W_REGS(pll_) \
+>      case R_A2W_ ## pll_ ## _CTRL: \
+>      case R_A2W_ ## pll_ ## _ANA0: \
+>      case R_A2W_ ## pll_ ## _ANA1: \
+>      case R_A2W_ ## pll_ ## _ANA2: \
+> @@ -363,10 +438,19 @@ static void cprman_write(void *opaque, hwaddr offset,
+>      case R_A2W_PLLH_RCAL:
+>      case R_A2W_PLLH_PIX:
+>      case R_A2W_PLLB_ARM:
+>          update_channel_from_a2w(s, idx);
+>          break;
 > +
-> +    mc->desc       = "Bytedance G220A BMC (ARM1176)";
-> +    amc->soc_name  = "ast2500-a1";
-> +    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
-> +    amc->fmc_model = "n25q512a";
-> +    amc->spi_model = "mx25l25635e";
-> +    amc->num_cs    = 2;
-> +    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON;
-> +    amc->i2c_init  = g220a_bmc_i2c_init;
-> +    mc->default_ram_size = 1024 * MiB;
-> +    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-> +        aspeed_soc_num_cpus(amc->soc_name);
-> +};
-> +
->  static const TypeInfo aspeed_machine_types[] = {
->      {
->          .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-> @@ -835,6 +891,10 @@ static const TypeInfo aspeed_machine_types[] = {
->          .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
->          .parent        = TYPE_ASPEED_MACHINE,
->          .class_init    = aspeed_machine_tacoma_class_init,
-> +    }, {
-> +        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
-> +        .parent        = TYPE_ASPEED_MACHINE,
-> +        .class_init    = aspeed_machine_g220a_class_init,
->      }, {
->          .name          = TYPE_ASPEED_MACHINE,
->          .parent        = TYPE_MACHINE,
-> --
-> 2.25.1
->
+> +    case R_CM_GNRICCTL ... R_CM_SMIDIV:
+> +    case R_CM_TCNTCNT ... R_CM_VECDIV:
+> +    case R_CM_PULSECTL ... R_CM_PULSEDIV:
+> +    case R_CM_SDCCTL ... R_CM_ARMCTL:
+> +    case R_CM_AVEOCTL ... R_CM_EMMCDIV:
+> +    case R_CM_EMMC2CTL ... R_CM_EMMC2DIV:
+> +        update_mux_from_cm(s, idx);
+> +        break;
+>      }
+>  }
+[...]

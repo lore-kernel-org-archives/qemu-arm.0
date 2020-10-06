@@ -1,101 +1,101 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp491749lfq;
-        Tue, 6 Oct 2020 02:06:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxEj6Pi6v57Y9cugOsn3DJodxEdyga1rAwM6jpDQc9Y0pGwt9CxdFFt1p4t450GH7KiOuG6
-X-Received: by 2002:a25:cc86:: with SMTP id l128mr5675865ybf.232.1601975190929;
-        Tue, 06 Oct 2020 02:06:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601975190; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp492575lfq;
+        Tue, 6 Oct 2020 02:07:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyjBzjWamwMoTL+qaY+jHQ4eWqjVQVU6+jyGHN7TBxLhDO87hbentrJJmfT4gXWxlPUWOWD
+X-Received: by 2002:a5b:4d2:: with SMTP id u18mr4927671ybp.56.1601975262430;
+        Tue, 06 Oct 2020 02:07:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601975262; cv=none;
         d=google.com; s=arc-20160816;
-        b=PTl26k0E5vuxN40pU4CVLG1nRRz8Ry70B5nCOChw3nR1gqD12fUGOcO/p65+acOGKU
-         oc8HSOaJ1FC2t83zGX45MT9bVybPU6XdVEIGx9fU/m07wA+CE3zCENGcmmgxjuKdlaaY
-         AizrMyxtSHemBcCYx29pF060vpGa03zR3D6+e1vCIr59YsjvJcQLiSN3xBh8nVhS3NtT
-         H8VYLEVg/gxJNl8QMF/htgY3ldStqZf98Kjj550XuTMBznLdMBPGSXMd1mtGeh+xIt19
-         5rNIzfAwJUWHGLo5qZmKo/OeL80TgaddGSEz/fbaEI2+eN3cUqA8fpgABuws9CsM63IY
-         c4EQ==
+        b=qwedvOclpeUkkYljhPobCpIjQRgaXjlTpy3bEU2slYesbrYdWtSio1EBM5JYioDkvx
+         hpon2Ank5K6eDPxxqSnewEu7CCnnDaQQ/6q527JXh2x9j2kJgTVQMle5ajk+w5FlUv0K
+         1ZXIGij2jn3cxULVJ5vG3D5FCFAUWcCbTnxIgHEbCaphlK7W9nGbcce1rzd6tRSC6rWX
+         q6nMtVF8bBwtkpRRq8SU3PueI3G6bunkifLFGKcqCuZDhmw/GUFBxd5mXddDXgu/wAPA
+         d4wUkvn0JZYryyJeHpmAB/cJ0mAGHh9Sd8Htn53JryUUPCmWnufzkj7JhAnmfOL5Y+XV
+         AR1g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=WZepGlMPJlVNOljb8JHNaBnOB89f2qn5cTwdEoDE8fI=;
-        b=zBujLxB9ssOzNgZnuF4q3EWMOeyrcAzzfYU3T8gSYu6g4C0mIKPdsHEDOsP0J94g2o
-         TrOoHvrAobHxBKOIHJkseULxFBnovGsyOaqrSR0kOo9R7d8umzNy59DyIdXjFKKQhEKq
-         cJSncyavfCpW9DLjt/ipAbBrknMqkuZtjX2pbQxE2WwlmakLxTvPbFIxoqmMEts3wVBv
-         jH2t7FATBlcIqoiopHx49GJM6HuFY8XGs2+XaTNtpLOTtTwmw+rYJdJ77pC0xKLwQfPj
-         UAWqgNXpTuqv8TiMGU53kbBH390vBco7L9gKhaAyfmHDX1uLSD6P15MHrsMvpFs+wNlW
-         VQ4g==
+        bh=PyxQtSv2w2q7ELER+Rv4ydmaKuPujU4mv1JYlTOYOs0=;
+        b=SztVjqLifDg8HP2sOk6vw+55QtfmoaeCPWYo8ArX0/+BQMMCpEtOEzKGMqXT3nLOwN
+         47Xe8Emk+Q+PYtjw7o6VV10hoM6Co4HwpnxBRrBGOqKnoje0qW3opeCQTYz1AztSy6zU
+         uN9A6/mUoMFOCcZHHYM9JU5J5gH59+JhyEgxZvV5HodgnJFNdcNvb5utyWmsx3uJdczW
+         8li68ciaG5jN1hSOIEu4dl2e6SkJZ4vbSh0sBAisl743mbbq9h20scK9Vh9TvD3P/D1J
+         Hpml7/x2ZLHn+xvdnPTr9yUNEeWlCfJh399nMbEldC8Kitzuq/rLudj4ofgPdCd/Js++
+         yBGg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r9dlBYMw;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XwH3vcfh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e13si2810013ybp.43.2020.10.06.02.06.30
+        by mx.google.com with ESMTPS id r7si3311096ybc.36.2020.10.06.02.07.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Oct 2020 02:06:30 -0700 (PDT)
+        Tue, 06 Oct 2020 02:07:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=r9dlBYMw;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=XwH3vcfh;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:43944 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45748 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPivW-00018q-AV
-	for alex.bennee@linaro.org; Tue, 06 Oct 2020 05:06:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32908)
+	id 1kPiwf-0001uZ-R7
+	for alex.bennee@linaro.org; Tue, 06 Oct 2020 05:07:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33226)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kPiuY-0000Rz-0D; Tue, 06 Oct 2020 05:05:30 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:40675)
+ id 1kPiwQ-0001uN-Pt; Tue, 06 Oct 2020 05:07:27 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:47093)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kPiuU-00064e-60; Tue, 06 Oct 2020 05:05:28 -0400
-Received: by mail-wr1-x441.google.com with SMTP id j2so12547448wrx.7;
- Tue, 06 Oct 2020 02:05:25 -0700 (PDT)
+ id 1kPiwP-0006HK-Bj; Tue, 06 Oct 2020 05:07:26 -0400
+Received: by mail-wr1-x441.google.com with SMTP id o5so12550549wrn.13;
+ Tue, 06 Oct 2020 02:07:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=WZepGlMPJlVNOljb8JHNaBnOB89f2qn5cTwdEoDE8fI=;
- b=r9dlBYMwS4h0jBI/2ww50/DoRCBDhjiqaA1N+D6ffkQebY34ycqJtYCKQ0kUOORtvf
- Ht4XgZMLdYvMmg+oryBmJJatej/uTMljfI1yItm7a3adMXAzvt7znobrBIo8eLax+Wgr
- exRVasT8pHfV/ww+QdhqGahcung8H2s+CZUD/XQ1yUL9AR9HHZpeBN0e/cFGdiDYuic1
- 1jzZJgKwZ1UqCgImlg4HUkO06DrQnWjdbOf5EEDDkq1g0BycSn9JY/OZb9i4ZMglSvLW
- Ku9S0n1RpGvJf9TgdDkszdg1yD60O/ptk4Bfy1MawvfLJj/VTLsaSybIgYj3teY/VvGk
- Vqgg==
+ bh=PyxQtSv2w2q7ELER+Rv4ydmaKuPujU4mv1JYlTOYOs0=;
+ b=XwH3vcfh1V55hBdhMxPx8UZzMqic6zD3Lwy2tvcYwi6TXMSFoRfFMJqgRQ6cMdlHYJ
+ MCByY85QCrr7u1MtShvaagnZ5D43+2hj28Utiq0fV88EB2x6CPtGIXdYBPRqFlImhmEB
+ Kcdm+vv+BU+I8ioOcCUnCHivDqIPJoyoszbpk46mK2LAhfO6yqJIK0ym1XdiZxL/kTkp
+ tg/mzR0c8h1/6G/AvjPq1sO4zXOFWQBBEfcAbHJWFYevC+MPkaRIAJTAAxf6ZXMREzdt
+ vvagZ7kPXIoFQD8Za3kUyMxmForU235mgfpjfRu9fTcn5+ug05RyZezkmfTDvHUQhLOo
+ cT/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=WZepGlMPJlVNOljb8JHNaBnOB89f2qn5cTwdEoDE8fI=;
- b=WQxr528DVEAaqM6O5LsKAKau1Jfx9RFnfCpYbJSsZKIkaPQvgoNGYs6397Y468ROWD
- nBqvsHQNP1Dlwf3QZbjpVdi4LzlpefRRKfpRRMnnqzhVU+g8XPla4ISWeWcRlasEGL/I
- i5PxQoj1tvDKSmr0eJylCfw1SkYhU8iIktnatuWTzKlHftFInOkMjPVGbXYy2r5U23AT
- 9Ta/kV+Jlqo4IVPOupMnA5AhK4PAtTCnm6Y+SwURClYdtaPbWy3wv1NfW+lg84eKWaHx
- fc0Otv621V50q28ltqXf3wgbWmz32r7NHykYMFxA9GD6ZADMYiZc8F8MaL28chmxpI2H
- 4G+g==
-X-Gm-Message-State: AOAM531XbBSl4NjYck07KyripjYPY5fywPVqmJMMgRisTf9oWQERtL0T
- z5jTkMQZsiZUQ4W0bLzeBw8=
-X-Received: by 2002:adf:ce8a:: with SMTP id r10mr2647089wrn.188.1601975123677; 
- Tue, 06 Oct 2020 02:05:23 -0700 (PDT)
+ bh=PyxQtSv2w2q7ELER+Rv4ydmaKuPujU4mv1JYlTOYOs0=;
+ b=Z1ldNkfrOrK0efb0VAJw75olQ0tGpYgWvTAQskVqHkG7yHItSlrqJVd1RlLhTm+M47
+ +OYUq77pyc0uYCRLbldGJ43ijB2GdZvk8wWFfDz7VGOoCMmSzleOJMAOoO+9+Xe7ZLUA
+ /hlZfy+u0TXl6XhjVNsI533WUhOl5zm0Y/gG07oL4fGs5eFbWh5PtfNlfp16j+h27do7
+ B5+jr1LN5/gqbDZILbq62c++HYU5VmM0iQhJuIt0fTZWFCjBe6hVZZYm7RrgceljryLl
+ zQKoTosWBWlVrATviDKCg0MADbUTW5y/7+fh5fWrjbfnnI/Y3cVKgxZdTePlGz3b32iB
+ gNtg==
+X-Gm-Message-State: AOAM533fyO0aIWwGnBKGC04vWBYRxmYu1bpqiq6vcBkF248PmGRDCg5/
+ IIp5+UDEpFhHWfGUymrVn7M=
+X-Received: by 2002:adf:e8c3:: with SMTP id k3mr3784125wrn.228.1601975243843; 
+ Tue, 06 Oct 2020 02:07:23 -0700 (PDT)
 Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
  [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id v3sm677085wre.17.2020.10.06.02.05.22
+ by smtp.gmail.com with ESMTPSA id i1sm3361075wrx.44.2020.10.06.02.07.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Oct 2020 02:05:23 -0700 (PDT)
-Subject: Re: [PATCH v2 15/15] hw/arm/bcm2835_peripherals: connect the UART
- clock
+ Tue, 06 Oct 2020 02:07:23 -0700 (PDT)
+Subject: Re: [PATCH v2 09/15] hw/misc/bcm2835_cprman: implement PLL channels
+ behaviour
 To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
 References: <20201005195612.1999165-1-luc@lmichel.fr>
- <20201005195612.1999165-16-luc@lmichel.fr>
+ <20201005195612.1999165-10-luc@lmichel.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <5fcdd0f1-400c-c906-6f39-059e0f4bfb2a@amsat.org>
-Date: Tue, 6 Oct 2020 11:05:22 +0200
+Message-ID: <3f1034d3-0ad7-e947-5bce-a54a95420606@amsat.org>
+Date: Tue, 6 Oct 2020 11:07:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201005195612.1999165-16-luc@lmichel.fr>
+In-Reply-To: <20201005195612.1999165-10-luc@lmichel.fr>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -130,14 +130,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IV7CwuzWrwHL
+X-TUID: 7ePbf3YIuhTj
 
 On 10/5/20 9:56 PM, Luc Michel wrote:
-> Connect the 'uart-out' clock from the CPRMAN to the PL011 instance.
+> A PLL channel is able to further divide the generated PLL frequency.
+> The divider is given in the CTRL_A2W register. Some channels have an
+> additional fixed divider which is always applied to the signal.
 > 
+> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > Signed-off-by: Luc Michel <luc@lmichel.fr>
 > ---
->  hw/arm/bcm2835_peripherals.c | 2 ++
->  1 file changed, 2 insertions(+)
+>  hw/misc/bcm2835_cprman.c | 33 ++++++++++++++++++++++++++++++++-
+>  1 file changed, 32 insertions(+), 1 deletion(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>

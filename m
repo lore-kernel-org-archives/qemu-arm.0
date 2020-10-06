@@ -1,101 +1,101 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp475602lfq;
-        Tue, 6 Oct 2020 01:40:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz6ImkuugRR9gmcTwzKvEybR7HD6myRRbrAiW4ptNxN7Iz2+zTfMjxUQJurc+YW1Ac1UWCD
-X-Received: by 2002:a25:69cb:: with SMTP id e194mr5374936ybc.243.1601973633558;
-        Tue, 06 Oct 2020 01:40:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601973633; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp490372lfq;
+        Tue, 6 Oct 2020 02:04:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwcjIDeb6uMJdFbZ6jkPo/Xq6GDEqNyrtf9LMH4fx4rC+jKZwj33Xx1nVdTadVwhw2GcZOd
+X-Received: by 2002:a25:3416:: with SMTP id b22mr4842478yba.361.1601975077004;
+        Tue, 06 Oct 2020 02:04:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1601975077; cv=none;
         d=google.com; s=arc-20160816;
-        b=j8M1mxe/OrAdr+uRuGf1HAoCzjUnT38aRwKDaK+AVH0aorIx49oPtQNs8ys73/nmpp
-         fdZpbuW/Lf/zJpR5j1mO023NmxIVTYuMUe8EVjQcswHfVXIJtYJTM+AJ6tLJhCiiV5W0
-         gEsHhiZZ+zKFVpZ1sXVU8U7sY9mHmfiID5ZfnEA67KD6LB6tWkM+R1+8i/byopuIT9OY
-         q752YUZ9C8fWpdLSdD8dMgBNjOb0UoMOwDBb1cO6fCup6YBnfxb3/hv5e5l+j+gcgI0a
-         jmh+R7Ge9VxppsjxNYfyV8nMLe4+5tt18lGgyUzmVGGXERrYKM/Ct8c8MH/OmHPmM2nB
-         DuPA==
+        b=C9QrqQIoxdNGavuRb5imWUhKm9nHDrq/vqlIwle74jHeNDvJylVNlkMHMaYhxszAx4
+         tmkXgHckeQKJqjl7y1NME5aD8XOlsgNH0cEbuvol9nTnQKTrjYEqOmbbKQvg33NMY6oU
+         4ZQsRSP2lEV6MFWzPuTYcyzO5Hj+nlNiYV3Q5NXb5SzCX+j2lg8T1eIPJzmlJOvKKco0
+         WOJ9cmFFSDIBwx/91gZSG4RPgQAuq2OC3sIu814NXAnxo9fiU34NKTK0Mm4IORo07abz
+         utOmhELTHoH45YQ9T/tgnnAy3QWhK/nDZ04TLWmiaCtFQSs4eWbpsCMcmANW2kbobAm5
+         LdGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=5R99MHvHog38JUAHK+cJI9tw/G0v91gWyeejkWSp+EU=;
-        b=eWlpQpJHYOErak2s8pcjbbrMj0+Fj+veLtNrTWjhDz+mcgbYLm/ZgHjLZLcflF8zSz
-         leb5qddyoPBTDcMLOcHjvBe6ianlmdYvo++6E8nCisrU0BVRWnx+Qq7l/txDXCkHwymb
-         DGCBSlq9+Eo8z/Bz+V7o/frk95SGIMgM6qnjghdCEVumQbhG5OMNENPxo/M0yPz0lqsV
-         /rWMXEgPRkA0Lz+8n9t0SE+JqHHcpsIA8kVnqepbLgQS1zzr2gUFy/E0zl6gXE7gYiG0
-         FXb+D5OzXljJGmc3OEgM5O4HaCeg4o4taIbI3GJrAtkIc2AjYtws4dopO1k+HmB783HT
-         55fw==
+        bh=nIWAxLqrKAbGNoBod0ssufydW4+pTVAQe4xA+k3/wqI=;
+        b=HXq4Os1wAS3TtxogOlQsnu9+aN10SD5GIfKF5ZRWD2iU2Oc1U10l/P31RqNUFJhG+O
+         kAexbZXHs9hk+PuUb1k9BCLhuuCCGMnnZDGZanWEZURebprQFGg/ixPOWKJIJCDtF8i7
+         8hwFQX1gqXXj50B7KPUTb7jmZ9EtBZyfIKTmuDhBWxoe3vv/e6hwJHNoibK7D2bG+Niy
+         x5xKksmCxl6EA5A5IO2p71c8D7/Py8kGgv0tf/WnTgHKIsQo07g2+rFW6T7zfHWZA0ld
+         WqKbDR80q+11LY66yTFAGs9PCMjVirU600Fum2EI6skk5EFiKfflKQcKPPctCwB7UQji
+         I6EQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mumAl4PD;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GRwvXple;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y7si3057403ybp.348.2020.10.06.01.40.33
+        by mx.google.com with ESMTPS id l6si3092791ybc.66.2020.10.06.02.04.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Oct 2020 01:40:33 -0700 (PDT)
+        Tue, 06 Oct 2020 02:04:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=mumAl4PD;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GRwvXple;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:44710 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40242 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPiWO-0005PP-Up
-	for alex.bennee@linaro.org; Tue, 06 Oct 2020 04:40:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:55226)
+	id 1kPitg-0007w0-9u
+	for alex.bennee@linaro.org; Tue, 06 Oct 2020 05:04:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kPiWF-0005ML-Ot; Tue, 06 Oct 2020 04:40:23 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:43054)
+ id 1kPitY-0007vZ-VW; Tue, 06 Oct 2020 05:04:28 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42166)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kPiWE-0002qa-2t; Tue, 06 Oct 2020 04:40:23 -0400
-Received: by mail-wr1-x443.google.com with SMTP id g12so7022559wrp.10;
- Tue, 06 Oct 2020 01:40:21 -0700 (PDT)
+ id 1kPitX-0005rp-EN; Tue, 06 Oct 2020 05:04:28 -0400
+Received: by mail-wr1-x443.google.com with SMTP id e18so6640865wrw.9;
+ Tue, 06 Oct 2020 02:04:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5R99MHvHog38JUAHK+cJI9tw/G0v91gWyeejkWSp+EU=;
- b=mumAl4PDKinRUSCHhFvuoegv1u3awm7PtIkoSeWq/8OJiSBpJRZT6OPXGcmMLZPv74
- L0/myKESO/F8sFqjicfWL1vXeDuEOIPXByY9BggyI0ujZptA3tnHMxQTQaJZk7/fW2+x
- TdTM1odXEunbNYzdmTbbg9abotLNhZWWiov9AW96Ac3bx8CqlRJfhXwJ53ElBKhlTyhi
- LtB47TnU0WfKYdft0UT+bdW+2l/4DiQzCzAB8KPlq5ZL6mvgd0wwZ90GDGGEC8yOafnS
- h0lbyLW8ALTYt+xmjsC7b/yKDe1Fr3LCsrCNf+/4bgI8ETApBlqMUZ9FgOWHvy2RnL7v
- JqmQ==
+ bh=nIWAxLqrKAbGNoBod0ssufydW4+pTVAQe4xA+k3/wqI=;
+ b=GRwvXpledPrjxJkwM8s3W7AccYm2qzGc17cm26gu+RTrsvOrdZCNetuIfWNtcIamsx
+ 93YPwAfC7NUr6YOa4En7hMJfSA/iJt9F1/zQwhaDBSR0atXaDjh3QTvAsskl03KRYpf0
+ HAqK2REsXlRLogn9gSeOo4zmBm6TgtixAyiAM2fHod5Ty+W3kEpqwuZ8okt6NdffpU4U
+ MDoZy/J/bvyYp+NUzCzWBJtIYNEmtlgiiPdqpRQouafPn7NLwX58cuN0kIluv8otusow
+ ybpiNOf4eE6Wk7i1z365blyTOHk9Cp21UJcd7Ueda8B1Nlwbqspy6UUjoSYtA8BHsSm6
+ 5F7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=5R99MHvHog38JUAHK+cJI9tw/G0v91gWyeejkWSp+EU=;
- b=CdH0CjAZHEs8WgdiuUfSRIEyytSDTJ3mi7IkMk3V+2YiRq+AuWBONYip/9BgtpPI3v
- 6Kdc6DICleBnNp9Z5eVj4cPBCJ46ytkbetMTDQn3XlVvQmj6FplyoSEGoYqIF4/eAGX5
- NO2LvtDE5MWSoL8UGBKIuXYunXDkElE44d4OE6vF3UiX5a+A7QKi1zWJ0z2ZwK4At+9C
- L1zZT5HqAXxCe3k+n12zZD+5xypQJQV/wBAAvc55M6uGU+fnrCYjszc6o3wI9F6/GuPr
- buDptjhUZczQGOpPqiadEbuuJi1lJTU0932B6Ys/QwlO3swDCEGimFYQpUr0nA4GoADh
- pHDA==
-X-Gm-Message-State: AOAM530sifPeM4PswODanGJubF7CDAc0Kjdi064xZotIlZIgj7bRpYh7
- n/ywlKeSAo4R9XXAnGL8tE0=
-X-Received: by 2002:a5d:6551:: with SMTP id z17mr3623507wrv.200.1601973619585; 
- Tue, 06 Oct 2020 01:40:19 -0700 (PDT)
+ bh=nIWAxLqrKAbGNoBod0ssufydW4+pTVAQe4xA+k3/wqI=;
+ b=XCz8ULX5C4iWAMBo7EuOvdNrys/1u1BkQckioD6WTs/q9tNy5Vdd5hVhet41wDagVH
+ zzhLAGQzRMgeMOnWePcVFwba4Gz62lxhM9xpfIGu5gHLE+Hrj/IPuAzx4CmZCXEXIhu4
+ HXW4stwWo2icO05XqDkAfmZpnueMsMr/pmbMf9CT9y8tzvoRBjYI8xoydQpkc0zLYv0z
+ EUQLErplv9wXkMJDZwEfpP6aAesqO1/c0YyReSyYhNRVbFwIzhou9yvnZeDyPMdIKOoI
+ FcRlMRtnqh+XXSfVWXJm/eZw3eE0gIzLcwWey0vZ5cJ5v+KE3anV1uMR38UL5JBVV5iO
+ j1QA==
+X-Gm-Message-State: AOAM5306Jk9xgLxvZdzurJGGaQ7pdMqMpULvGQ1nAOGaGhuFuckwbpx6
+ 3MS2Yc8kRz0k4qWknFXYZaA=
+X-Received: by 2002:adf:f207:: with SMTP id p7mr4059181wro.152.1601975064995; 
+ Tue, 06 Oct 2020 02:04:24 -0700 (PDT)
 Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
  [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id s6sm3358640wrg.92.2020.10.06.01.40.18
+ by smtp.gmail.com with ESMTPSA id l5sm956734wrq.14.2020.10.06.02.04.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Oct 2020 01:40:18 -0700 (PDT)
-Subject: Re: [PATCH v2 10/15] hw/misc/bcm2835_cprman: add a clock mux skeleton
- implementation
+ Tue, 06 Oct 2020 02:04:23 -0700 (PDT)
+Subject: Re: [PATCH v2 11/15] hw/misc/bcm2835_cprman: implement clock mux
+ behaviour
 To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
 References: <20201005195612.1999165-1-luc@lmichel.fr>
- <20201005195612.1999165-11-luc@lmichel.fr>
+ <20201005195612.1999165-12-luc@lmichel.fr>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <ea432580-114b-3f85-b4f1-0012bfb008c0@amsat.org>
-Date: Tue, 6 Oct 2020 10:40:17 +0200
+Message-ID: <d304e1f9-a1ea-17a1-e830-8be1f7671a53@amsat.org>
+Date: Tue, 6 Oct 2020 11:04:22 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
  Thunderbird/68.11.0
 MIME-Version: 1.0
-In-Reply-To: <20201005195612.1999165-11-luc@lmichel.fr>
+In-Reply-To: <20201005195612.1999165-12-luc@lmichel.fr>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
@@ -130,103 +130,103 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cuz4PeK4o/NN
+X-TUID: 8KMgvWrBxR3R
 
 On 10/5/20 9:56 PM, Luc Michel wrote:
-> The clock multiplexers are the last clock stage in the CPRMAN. Each mux
-> outputs one clock signal that goes out of the CPRMAN to the SoC
-> peripherals.
-> 
-> Each mux has at most 10 sources. The sources 0 to 3 are common to all
-> muxes. They are:
->    0. ground (no clock signal)
->    1. the main oscillator (xosc)
->    2. "test debug 0" clock
->    3. "test debug 1" clock
-> 
-> Test debug 0 and 1 are actual clock muxes that can be used as sources to
-> other muxes (for debug purpose).
-> 
-> Sources 4 to 9 are mux specific and can be unpopulated (grounded). Those
-> sources are fed by the PLL channels outputs.
-> 
-> One corner case exists for DSI0E and DSI0P muxes. They have their source
-> number 4 connected to an intermediate multiplexer that can select
-> between PLLA-DSI0 and PLLD-DSI0 channel. This multiplexer is called
-> DSI0HSCK and is not a clock mux as such. It is really a simple mux from
-> the hardware point of view (see https://elinux.org/The_Undocumented_Pi).
-> This mux is not implemented in this commit.
-> 
-> Note that there is some muxes for which sources are unknown (because of
-> a lack of documentation). For those cases all the sources are connected
-> to ground in this implementation.
-> 
-> Each clock mux output is exported by the CPRMAN at the qdev level,
-> adding the suffix '-out' to the mux name to form the output clock name.
-> (E.g. the 'uart' mux sees its output exported as 'uart-out' at the
-> CPRMAN level.)
+> A clock mux can be configured to select one of its 10 sources through
+> the CM_CTL register. It also embeds yet another clock divider, composed
+> of an integer part and a fractional part. The number of bits of each
+> part is mux dependent.
 > 
 > Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 > Signed-off-by: Luc Michel <luc@lmichel.fr>
 > ---
->  include/hw/misc/bcm2835_cprman.h           |  84 ++++
->  include/hw/misc/bcm2835_cprman_internals.h | 421 +++++++++++++++++++++
->  hw/misc/bcm2835_cprman.c                   | 150 ++++++++
->  3 files changed, 655 insertions(+)
-[...]
-
-> +#define FILL_CLOCK_MUX_INIT_INFO(clock_, kind_) \
-> +    .cm_offset = R_CM_ ## clock_ ## CTL,        \
-> +    FILL_CLOCK_MUX_SRC_MAPPING_INIT_INFO(kind_)
-> +
-> +static ClockMuxInitInfo CLOCK_MUX_INIT_INFO[] = {
-> +    [CPRMAN_CLOCK_GNRIC] = {
-> +        .name = "gnric",
-> +        FILL_CLOCK_MUX_INIT_INFO(GNRIC, unknown),
-> +    },
-[...]
-
-> +static inline void update_mux_from_cm(BCM2835CprmanState *s, size_t idx)
+>  hw/misc/bcm2835_cprman.c | 44 +++++++++++++++++++++++++++++++++++++++-
+>  1 file changed, 43 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+> index a470ce2026..7d59423367 100644
+> --- a/hw/misc/bcm2835_cprman.c
+> +++ b/hw/misc/bcm2835_cprman.c
+> @@ -229,19 +229,61 @@ static const TypeInfo cprman_pll_channel_info = {
+>  };
+>  
+>  
+>  /* clock mux */
+>  
+> +static bool clock_mux_is_enabled(CprmanClockMuxState *mux)
 > +{
-> +    size_t i;
-> +
-> +    for (i = 0; i < CPRMAN_NUM_CLOCK_MUX; i++) {
-> +        if ((CLOCK_MUX_INIT_INFO[i].cm_offset == idx) ||
-> +            (CLOCK_MUX_INIT_INFO[i].cm_offset == idx + 4)) {
-
-Maybe add a /* Matches DIV or CTL */ comment. Anyway
-FILL_CLOCK_MUX_INIT_INFO() only uses CTL, not DIV, so
-+4 check is not necessary.
-
-Otherwise:
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-
-> +            clock_mux_update(&s->clock_muxes[i]);
-> +            return;
-> +        }
-> +    }
+> +    return FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, ENABLE);
 > +}
 > +
->  #define CASE_PLL_A2W_REGS(pll_) \
->      case R_A2W_ ## pll_ ## _CTRL: \
->      case R_A2W_ ## pll_ ## _ANA0: \
->      case R_A2W_ ## pll_ ## _ANA1: \
->      case R_A2W_ ## pll_ ## _ANA2: \
-> @@ -363,10 +438,19 @@ static void cprman_write(void *opaque, hwaddr offset,
->      case R_A2W_PLLH_RCAL:
->      case R_A2W_PLLH_PIX:
->      case R_A2W_PLLB_ARM:
->          update_channel_from_a2w(s, idx);
->          break;
+>  static void clock_mux_update(CprmanClockMuxState *mux)
+>  {
+> -    clock_update(mux->out, 0);
+> +    uint64_t freq;
+> +    uint32_t div, src = FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, SRC);
+> +    bool enabled = clock_mux_is_enabled(mux);
 > +
-> +    case R_CM_GNRICCTL ... R_CM_SMIDIV:
-> +    case R_CM_TCNTCNT ... R_CM_VECDIV:
-> +    case R_CM_PULSECTL ... R_CM_PULSEDIV:
-> +    case R_CM_SDCCTL ... R_CM_ARMCTL:
-> +    case R_CM_AVEOCTL ... R_CM_EMMCDIV:
-> +    case R_CM_EMMC2CTL ... R_CM_EMMC2DIV:
-> +        update_mux_from_cm(s, idx);
-> +        break;
->      }
+> +    *mux->reg_cm = FIELD_DP32(*mux->reg_cm, CM_CLOCKx_CTL, BUSY, enabled);
+> +
+> +    if (!enabled) {
+> +        clock_update(mux->out, 0);
+> +        return;
+> +    }
+> +
+> +    freq = clock_get_hz(mux->srcs[src]);
+> +
+> +    if (mux->int_bits == 0 && mux->frac_bits == 0) {
+> +        clock_update_hz(mux->out, freq);
+> +        return;
+> +    }
+> +
+> +    /*
+> +     * The divider has an integer and a fractional part. The size of each part
+> +     * varies with the muxes (int_bits and frac_bits). Both parts are
+> +     * concatenated, with the integer part always starting at bit 12.
+> +     */
+> +    div = mux->reg_cm[1] >> (R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits);
+> +    div &= (1 << (mux->int_bits + mux->frac_bits)) - 1;
+
+I understand the description as:
+
+                   0
+                  [     12-bit    ][     12-bit    ][   reserved...   ]
+ CM_CLOCKx_DIV    [      FRAC     ][      INT      ][                 ]
+                  [         <frac>][<int>          ][                 ]
+                            ^^^^^^^^^^^^^
+
+What about:
+
+       div = extract32(mux->reg_cm[1],
+                       R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits,
+                       mux->frac_bits, mux->int_bits);
+
+Also consider adding the register visual representation if it is
+correct.
+
+> +
+> +    if (!div) {
+> +        clock_update(mux->out, 0);
+> +    }
+> +
+> +    freq = muldiv64(freq, 1 << mux->frac_bits, div);
+> +
+> +    clock_update_hz(mux->out, freq);
 >  }
-[...]
+>  
+>  static void clock_mux_src_update(void *opaque)
+>  {
+>      CprmanClockMuxState **backref = opaque;
+>      CprmanClockMuxState *s = *backref;
+> +    CprmanClockMuxSource src = backref - s->backref;
+> +
+> +    if (FIELD_EX32(*s->reg_cm, CM_CLOCKx_CTL, SRC) != src) {
+> +        return;
+> +    }
+>  
+>      clock_mux_update(s);
+>  }
+>  
+>  static void clock_mux_init(Object *obj)
+> 

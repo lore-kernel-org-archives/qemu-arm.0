@@ -1,128 +1,231 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1798512lfa;
-        Fri, 16 Oct 2020 12:06:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKcop+rUDATAeHCUvsAaKhXjxLxCAvJK3r7Yjap49Nu0BtMqNiWgkepKc69hNQemoOSUlW
-X-Received: by 2002:a50:fa89:: with SMTP id w9mr5673561edr.235.1602875216121;
-        Fri, 16 Oct 2020 12:06:56 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1602875216; cv=pass;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp871690lfq;
+        Tue, 6 Oct 2020 10:24:22 -0700 (PDT)
+X-Received: by 2002:a05:6402:17a6:: with SMTP id j6mr567290edy.322.1602005061964;
+        Tue, 06 Oct 2020 10:24:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602005061; cv=none;
         d=google.com; s=arc-20160816;
-        b=xGtx+ospQayTWQhqrXmOCGfNmqWP8zVksrlbZGn2wuXlWN9MfZ2uy8hz5WiqyITg6/
-         DmLJFU3c5bFRCr4Ux5xxy4pUCLvBdp9JM6pj8YaBVK2LMJYdN41Ol1noLppP1hAwSC37
-         j5NbknSmI9hlNZ3wEdTk+DWme5KlBjLW9sPZMjzfziZljIIOGK8vnhlT644Gta6NocNw
-         zde/TS9ODiqE/QLXZTpaJSgHkLloSSl+2HUVZpcXv4Et8B6AsQap1aV1p5/O4gCWtANy
-         f0ZExwBIXqOdkIXxh9lGeZMtY9rsmmQrHoKgpadtqnfgMSYhHo2YGly2tPO0hIbPxdyj
-         R+zg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :in-reply-to:reply-to:message-id:subject;
-        bh=GHHn5V6ndqJabY8GedSN6R4YOjU5m4ryD4lVrmTcBiM=;
-        b=FxIRj+K3M5YjMrAzzvcm2qfGJsCCQmARa6hougOYH9gKN8Sx8Z9Ke29OjVqidPy63Y
-         hd4hEKHEZZC62Ox3vECzmAZ5tLBPvcw77CzsIzSOi7IlH8gHPoUVSb7+rw4L+R2ZnADP
-         rpbwcBCIkWm86DgtbCoMVZO/yUGVDBWwiYF0VeY6RXf41MYBrg6wIfXgLpziOmlusijG
-         Bw2t3DpIQUbUxhyQ+M3rmj+vrVaypJL5D5j12lvAjGwOfuBu8h3Rw90dv0EkuHf9v/tm
-         opR3JoY8+ANqXVmUbAhmAz571QymSJf0yTdL+1DdTI4qGcrjh1hp40M4GFbzEFRDcugH
-         RBvA==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.57 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender4-of-o57.zoho.com (sender4-of-o57.zoho.com. [136.143.188.57])
-        by mx.google.com with ESMTPS id dc22si2478291ejb.275.2020.10.16.12.06.54
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Fri, 16 Oct 2020 12:06:56 -0700 (PDT)
-Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.57 as permitted sender) client-ip=136.143.188.57;
+        b=yxs5rxdlJtdPR93OJCA/8RmR58gg72xM0WwwpfYpLncUJ6W7pkWTzE5EJUnRaqX8m6
+         0Md3HUsk0PX31WN44i46XaJyfuzcbFPC1KAlivBIEbvEYoAcpIwSIdXQXYy2YqN+7MD4
+         VycGn0Juqsitq64WFOvDa1Aw0rNjvmzM8I0yFpM5s2tYnzC7GogxB0q1cCViJ1/Pv3iu
+         5MwcygZKFHUzOq5rcsBYoSarFxGz7lxVLSA5A4X6kACEm3Ziw3XfoVekoTUJ06GLN4Rf
+         t0pDln0GQWxebU5l/zpc2MR+XE1eYyCk4mwaMICceDc8NV5vbjR80WVvbKvipd3bdOD6
+         WItw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:dkim-signature;
+        bh=ERee18FoTL0JMAd5NEQQsgDqJQ9rx0tJzGkfHm/LdgI=;
+        b=UDpS36Qy19ubtPh2K3uZYaFioX6nvu3EBJHKiJOXyKCZJB9i2Gv9NG2RJQ3kJZLdTD
+         UCbCaoPxVnACfUt435HcEWyGtZMP/7m+vLIg1/tGM5UdnjwVenvX0URWjpS0coG9eW+m
+         ol1x30saDwWiAaHJTmcXOAavEegkoVZhMoJ2gSMmK+t82CmY1slRDdgkbRWmhPA2tdCk
+         Hv2nF4fFvU1BCUMZkC2xf/FA/E9VLrMwTnp3hok8KAKGOedlB1L+8cQOmtW+zgNnetHl
+         xJBRYjSCsNv+77e3Xo12xGMixG4M8DMDpmEe7dIgnHXglmGq0FgJubvzJvu8p6icpJOW
+         PP1Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=xqRcutZD;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w12sor2397586ejf.64.2020.10.06.10.24.21
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Tue, 06 Oct 2020 10:24:21 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.57 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-ARC-Seal: i=1; a=rsa-sha256; t=1602875212; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=BxGxbR5CDSwqQhv3+BF05aMM0rnZFtApJP+TwXYiqfoDaqYiNefn7/twMXJnBxMz6T/zuT/d1NoSZWCYGAEQKf+BmIG/1LsK6SRGLbnTI/rmujfosOBKR4k0I6/uTylaHhW5jT3eASObmm4ioZOcrV0eICvftSnFgJNubPyPdYM=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1602875212; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
-	bh=GHHn5V6ndqJabY8GedSN6R4YOjU5m4ryD4lVrmTcBiM=; 
-	b=jyhfKtZp2Wmu9ak2eqN0uFVhSsnNf7vMBR9jvrVKKUrJSs/z4Zmq+YHuNR2nWs4/BYHqez0joidUszdWo+VLGj5cZ9YINBwkMvpgTyxEveyg+eqMxy/pLowqJIQTeuUgEgBKiSXGduGJxlLRtu4CBkrctS6p3Ktp75cdc67wC6g=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 160287521010412.796348504163348; Fri, 16 Oct 2020 12:06:50 -0700 (PDT)
-Subject: Re: [PATCH v11 00/12] linux-user: User support for AArch64 BTI
-Message-ID: <160287520829.1194.14173174275238509522@66eaa9a8a123>
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20201016184207.786698-1-richard.henderson@linaro.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=xqRcutZD;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:in-reply-to:references
+         :mime-version:content-transfer-encoding;
+        bh=ERee18FoTL0JMAd5NEQQsgDqJQ9rx0tJzGkfHm/LdgI=;
+        b=xqRcutZD2orO5tu3bOZ+46W0sEzNpHj8u3EtWAvmUvYLtnmi1KhQXfy4dkLJrt2tz2
+         BLh02lwqFk/noYcEjKrn0UC62GUc/pd9vm4Y6cypBrIiUynPWqHfR0gYDyyCPbk6FiPw
+         XMdRrCQwLpMRIL3GTjfs6v+9R7tFeaoJpYsNqE/IihpfBMGNqy4jKoJKoNrrzDVIXRhE
+         O6KeL+m+GnQgyZ6BxjePVHw8LBPR5cF2BnNkNTZM1rpeG8XuI2kJYfYg1KNYok+ocR7q
+         CBavTdOmZfx9Blno8jszvaUFIarVcqLgaOHVqmIKME868CKGowCVyeIBKQh2WmZjp2dI
+         s66A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+         :references:mime-version:content-transfer-encoding;
+        bh=ERee18FoTL0JMAd5NEQQsgDqJQ9rx0tJzGkfHm/LdgI=;
+        b=IjM1bMRy+SuWqsVDNxZ/mY+2yp2OgYXHTwXFPpir22d6LzcsXYYoVCRnFmnuD6zTwD
+         VoCy2GdWXFOz9jSxn0x4xQXGrEpV4dFPxK8f2k3OhyaXCCRZURRi2G0aDB15OzEt06C/
+         7YnAh86BrCJZpN8j5ln134HDvdv93A3gJybhHC9nymtpiA1SH7FIKBQvg+vcgMKT76ek
+         XCrknEmvh9Msg0WFGKA0kIl2jNMXN6TTCUJBD1Q7H/QBjaQL8srZd0BS1PRgPQhSAzLP
+         US2wwglpbYikMCyFqpcBzA95xa5VTp1+vmbGPb185krdhR8e34V7ba8wRElTzXQ5ipLv
+         9eNg==
+X-Gm-Message-State: AOAM532lymxTA/yiTf/kqbCO7HzIrDVb5nT7t73V2AD8hRTJnGC/xPGJ
+	Uv2KXFalS6WLkf6rkRTYw9qJnh2e0CVQ/d2ZBfQ=
+X-Google-Smtp-Source: ABdhPJxinL6to301GIvzEhZY+fHkEo+LIkLCEDHs8zyvRlaFm/WEqjSqS6iP19/5fyZKLyb0qPNgvg==
+X-Received: by 2002:a17:906:f14b:: with SMTP id gw11mr610720ejb.41.1602005061639;
+        Tue, 06 Oct 2020 10:24:21 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain ([185.81.136.21])
+        by smtp.gmail.com with ESMTPSA id a22sm2536968ejs.25.2020.10.06.10.24.17
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Oct 2020 10:24:21 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org
+Subject: [PATCH 1/1] tests/tcg/aarch64: Add bti mmap smoke test
+Date: Tue,  6 Oct 2020 12:23:59 -0500
+Message-Id: <20201006172359.2998-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20201006172359.2998-1-richard.henderson@linaro.org>
+References: <20201006172359.2998-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: richard.henderson@linaro.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org, alex.bennee@linaro.org, laurent@vivier.eu
-Date: Fri, 16 Oct 2020 12:06:50 -0700 (PDT)
-X-ZohoMailClient: External
-X-TUID: SdKhapbdd0Hl
+Content-Transfer-Encoding: 8bit
+X-TUID: vtbsStUnfQ+4
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTAxNjE4NDIwNy43ODY2
-OTgtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnLwoKCgpIaSwKClRoaXMgc2VyaWVzIHNl
-ZW1zIHRvIGhhdmUgc29tZSBjb2Rpbmcgc3R5bGUgcHJvYmxlbXMuIFNlZSBvdXRwdXQgYmVsb3cg
-Zm9yCm1vcmUgaW5mb3JtYXRpb246CgpUeXBlOiBzZXJpZXMKTWVzc2FnZS1pZDogMjAyMDEwMTYx
-ODQyMDcuNzg2Njk4LTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZwpTdWJqZWN0OiBbUEFU
-Q0ggdjExIDAwLzEyXSBsaW51eC11c2VyOiBVc2VyIHN1cHBvcnQgZm9yIEFBcmNoNjQgQlRJCgo9
-PT0gVEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+
-IC9kZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQg
-MApnaXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2Fs
-IGRpZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxi
-YWNrIGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFm
-Zjg3ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRj
-aGV3LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIwMjAxMDE2MTg0
-MjA3Ljc4NjY5OC0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcgLT4gcGF0Y2hldy8yMDIw
-MTAxNjE4NDIwNy43ODY2OTgtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnClN3aXRjaGVk
-IHRvIGEgbmV3IGJyYW5jaCAndGVzdCcKYWRkZGViZCB0ZXN0cy90Y2cvYWFyY2g2NDogQWRkIGJ0
-aSBzbW9rZSB0ZXN0cwo2ZGU5ZTEyIGxpbnV4LXVzZXIvZWxmbG9hZDogUGFyc2UgR05VX1BST1BF
-UlRZX0FBUkNINjRfRkVBVFVSRV8xX0FORAo5YjA1MDc3IGxpbnV4LXVzZXIvZWxmbG9hZDogUGFy
-c2UgTlRfR05VX1BST1BFUlRZX1RZUEVfMCBub3RlcwplMDYzZmRlIGxpbnV4LXVzZXIvZWxmbG9h
-ZDogVXNlIEVycm9yIGZvciBsb2FkX2VsZl9pbnRlcnAKNWZhNjMwNSBsaW51eC11c2VyL2VsZmxv
-YWQ6IFVzZSBFcnJvciBmb3IgbG9hZF9lbGZfaW1hZ2UKMGJkZjNiOSBsaW51eC11c2VyL2VsZmxv
-YWQ6IE1vdmUgUFRfSU5URVJQIGRldGVjdGlvbiB0byBmaXJzdCBsb29wCjMxOTI5NDMgbGludXgt
-dXNlci9lbGZsb2FkOiBBZGp1c3QgaXRlcmF0aW9uIG92ZXIgcGhkcgpkMzVhYzBlIGxpbnV4LXVz
-ZXIvZWxmbG9hZDogRml4IGNvZGluZyBzdHlsZSBpbiBsb2FkX2VsZl9pbWFnZQpmMTAxOWMwIGxp
-bnV4LXVzZXIvZWxmbG9hZDogQXZvaWQgbGVha2luZyBpbnRlcnBfbmFtZSB1c2luZyBHTGliIG1l
-bW9yeSBBUEkKNDZiOGUwNCBpbmNsdWRlL2VsZjogQWRkIGRlZmluZXMgcmVsYXRlZCB0byBHTlUg
-cHJvcGVydHkgbm90ZXMgZm9yIEFBcmNoNjQKMTUxNjJiNCBsaW51eC11c2VyOiBTZXQgUEFHRV9U
-QVJHRVRfMSBmb3IgVEFSR0VUX1BST1RfQlRJCjQ5ZWQ3NGIgbGludXgtdXNlci9hYXJjaDY0OiBS
-ZXNldCBidHlwZSBmb3Igc2lnbmFscwoKPT09IE9VVFBVVCBCRUdJTiA9PT0KMS8xMiBDaGVja2lu
-ZyBjb21taXQgNDllZDc0YmMxYWVlIChsaW51eC11c2VyL2FhcmNoNjQ6IFJlc2V0IGJ0eXBlIGZv
-ciBzaWduYWxzKQoyLzEyIENoZWNraW5nIGNvbW1pdCAxNTE2MmI0ZGNiZWMgKGxpbnV4LXVzZXI6
-IFNldCBQQUdFX1RBUkdFVF8xIGZvciBUQVJHRVRfUFJPVF9CVEkpCjMvMTIgQ2hlY2tpbmcgY29t
-bWl0IDQ2YjhlMDQ3ODFhMSAoaW5jbHVkZS9lbGY6IEFkZCBkZWZpbmVzIHJlbGF0ZWQgdG8gR05V
-IHByb3BlcnR5IG5vdGVzIGZvciBBQXJjaDY0KQo0LzEyIENoZWNraW5nIGNvbW1pdCBmMTAxOWMw
-NDE2YzMgKGxpbnV4LXVzZXIvZWxmbG9hZDogQXZvaWQgbGVha2luZyBpbnRlcnBfbmFtZSB1c2lu
-ZyBHTGliIG1lbW9yeSBBUEkpCjUvMTIgQ2hlY2tpbmcgY29tbWl0IGQzNWFjMGUxOTMwYiAobGlu
-dXgtdXNlci9lbGZsb2FkOiBGaXggY29kaW5nIHN0eWxlIGluIGxvYWRfZWxmX2ltYWdlKQo2LzEy
-IENoZWNraW5nIGNvbW1pdCAzMTkyOTQzYjhkNzUgKGxpbnV4LXVzZXIvZWxmbG9hZDogQWRqdXN0
-IGl0ZXJhdGlvbiBvdmVyIHBoZHIpCjcvMTIgQ2hlY2tpbmcgY29tbWl0IDBiZGYzYjljMDdmNiAo
-bGludXgtdXNlci9lbGZsb2FkOiBNb3ZlIFBUX0lOVEVSUCBkZXRlY3Rpb24gdG8gZmlyc3QgbG9v
-cCkKOC8xMiBDaGVja2luZyBjb21taXQgNWZhNjMwNTZlMDg0IChsaW51eC11c2VyL2VsZmxvYWQ6
-IFVzZSBFcnJvciBmb3IgbG9hZF9lbGZfaW1hZ2UpCjkvMTIgQ2hlY2tpbmcgY29tbWl0IGUwNjNm
-ZGU3ZDRiMSAobGludXgtdXNlci9lbGZsb2FkOiBVc2UgRXJyb3IgZm9yIGxvYWRfZWxmX2ludGVy
-cCkKMTAvMTIgQ2hlY2tpbmcgY29tbWl0IDliMDUwNzdmYTJlZCAobGludXgtdXNlci9lbGZsb2Fk
-OiBQYXJzZSBOVF9HTlVfUFJPUEVSVFlfVFlQRV8wIG5vdGVzKQoxMS8xMiBDaGVja2luZyBjb21t
-aXQgNmRlOWUxMmIyYWRmIChsaW51eC11c2VyL2VsZmxvYWQ6IFBhcnNlIEdOVV9QUk9QRVJUWV9B
-QVJDSDY0X0ZFQVRVUkVfMV9BTkQpCjEyLzEyIENoZWNraW5nIGNvbW1pdCBhZGRkZWJkOGE3MDIg
-KHRlc3RzL3RjZy9hYXJjaDY0OiBBZGQgYnRpIHNtb2tlIHRlc3RzKQpXQVJOSU5HOiBhZGRlZCwg
-bW92ZWQgb3IgZGVsZXRlZCBmaWxlKHMpLCBkb2VzIE1BSU5UQUlORVJTIG5lZWQgdXBkYXRpbmc/
-CiMzNzogCm5ldyBmaWxlIG1vZGUgMTAwNjQ0CgpFUlJPUjogZXh0ZXJucyBzaG91bGQgYmUgYXZv
-aWRlZCBpbiAuYyBmaWxlcwojMTY1OiBGSUxFOiB0ZXN0cy90Y2cvYWFyY2g2NC9idGktMi5jOjU2
-OgorZXh0ZXJuIGNoYXIgdGVzdF9iZWdpbltdLCB0ZXN0X2VuZFtdOwoKRVJST1I6IHVzZSBxZW11
-X3JlYWxfaG9zdF9wYWdlX3NpemUgaW5zdGVhZCBvZiBnZXRwYWdlc2l6ZSgpCiMxOTk6IEZJTEU6
-IHRlc3RzL3RjZy9hYXJjaDY0L2J0aS0yLmM6OTA6CisgICAgdm9pZCAqcCA9IG1tYXAoMCwgZ2V0
-cGFnZXNpemUoKSwKCkVSUk9SOiBleHRlcm5zIHNob3VsZCBiZSBhdm9pZGVkIGluIC5jIGZpbGVz
-CiMyMzY6IEZJTEU6IHRlc3RzL3RjZy9hYXJjaDY0L2J0aS1jcnQuaW5jLmM6MTM6CitpbnQgbWFp
-bih2b2lkKTsKCnRvdGFsOiAzIGVycm9ycywgMSB3YXJuaW5ncywgMjQ3IGxpbmVzIGNoZWNrZWQK
-ClBhdGNoIDEyLzEyIGhhcyBzdHlsZSBwcm9ibGVtcywgcGxlYXNlIHJldmlldy4gIElmIGFueSBv
-ZiB0aGVzZSBlcnJvcnMKYXJlIGZhbHNlIHBvc2l0aXZlcyByZXBvcnQgdGhlbSB0byB0aGUgbWFp
-bnRhaW5lciwgc2VlCkNIRUNLUEFUQ0ggaW4gTUFJTlRBSU5FUlMuCgo9PT0gT1VUUFVUIEVORCA9
-PT0KClRlc3QgY29tbWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAxCgoKVGhlIGZ1bGwgbG9nIGlzIGF2
-YWlsYWJsZSBhdApodHRwOi8vcGF0Y2hldy5vcmcvbG9ncy8yMDIwMTAxNjE4NDIwNy43ODY2OTgt
-MS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1t
-ZXNzYWdlLgotLS0KRW1haWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0
-cHM6Ly9wYXRjaGV3Lm9yZy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXct
-ZGV2ZWxAcmVkaGF0LmNvbQ==
+This tests PROT_BTI, and also does not require special
+compiler support.
+
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tests/tcg/aarch64/bti-2.c         | 108 ++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |   7 +-
+ 2 files changed, 113 insertions(+), 2 deletions(-)
+ create mode 100644 tests/tcg/aarch64/bti-2.c
+
+diff --git a/tests/tcg/aarch64/bti-2.c b/tests/tcg/aarch64/bti-2.c
+new file mode 100644
+index 0000000000..6dc8908b5a
+--- /dev/null
++++ b/tests/tcg/aarch64/bti-2.c
+@@ -0,0 +1,108 @@
++/*
++ * Branch target identification, basic notskip cases.
++ */
++
++#include <stdio.h>
++#include <signal.h>
++#include <string.h>
++#include <unistd.h>
++#include <sys/mman.h>
++
++#ifndef PROT_BTI
++#define PROT_BTI  0x10
++#endif
++
++static void skip2_sigill(int sig, siginfo_t *info, void *vuc)
++{
++    ucontext_t *uc = vuc;
++    uc->uc_mcontext.pc += 8;
++    uc->uc_mcontext.pstate = 1;
++}
++
++#define NOP       "nop"
++#define BTI_N     "hint #32"
++#define BTI_C     "hint #34"
++#define BTI_J     "hint #36"
++#define BTI_JC    "hint #38"
++
++#define BTYPE_1(DEST)    \
++    "mov x1, #1\n\t"     \
++    "adr x16, 1f\n\t"    \
++    "br x16\n"           \
++"1: " DEST "\n\t"        \
++    "mov x1, #0"
++
++#define BTYPE_2(DEST)    \
++    "mov x1, #1\n\t"     \
++    "adr x16, 1f\n\t"    \
++    "blr x16\n"          \
++"1: " DEST "\n\t"        \
++    "mov x1, #0"
++
++#define BTYPE_3(DEST)    \
++    "mov x1, #1\n\t"     \
++    "adr x15, 1f\n\t"    \
++    "br x15\n"           \
++"1: " DEST "\n\t"        \
++    "mov x1, #0"
++
++#define TEST(WHICH, DEST, EXPECT) \
++    WHICH(DEST) "\n"              \
++    ".if " #EXPECT "\n\t"         \
++    "eor x1, x1," #EXPECT "\n"    \
++    ".endif\n\t"                  \
++    "add x0, x0, x1\n\t"
++
++extern char test_begin[], test_end[];
++
++asm("\n"
++"test_begin:\n\t"
++    BTI_C "\n\t"
++    "mov x2, x30\n\t"
++    "mov x0, #0\n\t"
++
++    TEST(BTYPE_1, NOP, 1)
++    TEST(BTYPE_1, BTI_N, 1)
++    TEST(BTYPE_1, BTI_C, 0)
++    TEST(BTYPE_1, BTI_J, 0)
++    TEST(BTYPE_1, BTI_JC, 0)
++
++    TEST(BTYPE_2, NOP, 1)
++    TEST(BTYPE_2, BTI_N, 1)
++    TEST(BTYPE_2, BTI_C, 0)
++    TEST(BTYPE_2, BTI_J, 1)
++    TEST(BTYPE_2, BTI_JC, 0)
++
++    TEST(BTYPE_3, NOP, 1)
++    TEST(BTYPE_3, BTI_N, 1)
++    TEST(BTYPE_3, BTI_C, 1)
++    TEST(BTYPE_3, BTI_J, 0)
++    TEST(BTYPE_3, BTI_JC, 0)
++
++    "ret x2\n"
++"test_end:"
++);
++
++int main()
++{
++    struct sigaction sa;
++
++    void *p = mmap(0, getpagesize(),
++                   PROT_EXEC | PROT_READ | PROT_WRITE | PROT_BTI,
++                   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++    if (p == MAP_FAILED) {
++        perror("mmap");
++        return 1;
++    }
++
++    memset(&sa, 0, sizeof(sa));
++    sa.sa_sigaction = skip2_sigill;
++    sa.sa_flags = SA_SIGINFO;
++    if (sigaction(SIGILL, &sa, NULL) < 0) {
++        perror("sigaction");
++        return 1;
++    }
++
++    memcpy(p, test_begin, test_end - test_begin);
++    return ((int (*)(void))p)();
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 491683e91d..d7d33e293c 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -26,11 +26,14 @@ run-plugin-pauth-%: QEMU_OPTS += -cpu max
+ endif
+ 
+ # BTI Tests
++# bti-1 tests the elf notes, so we require special compiler support.
+ ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_BTI),)
+ AARCH64_TESTS += bti-1
+-bti-%: CFLAGS += -mbranch-protection=standard
+-bti-%: LDFLAGS += -nostdlib
++bti-1: CFLAGS += -mbranch-protection=standard
++bti-1: LDFLAGS += -nostdlib
+ endif
++# bti-2 tests PROT_BTI, so no special compiler support required.
++AARCH64_TESTS += bti-2
+ 
+ # Semihosting smoke test for linux-user
+ AARCH64_TESTS += semihosting
+-- 
+2.25.1

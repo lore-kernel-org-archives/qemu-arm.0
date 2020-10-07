@@ -1,229 +1,177 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp123236lfq;
-        Mon, 5 Oct 2020 15:08:28 -0700 (PDT)
-X-Received: by 2002:a05:6638:242:: with SMTP id w2mr1953949jaq.32.1601935708841;
-        Mon, 05 Oct 2020 15:08:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601935708; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp430907lfq;
+        Wed, 7 Oct 2020 06:57:16 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzkSn3FCQVdiBc+xAFWHIsP1XEv1o4hz/obrLfauqYkjsTIENOGLDy8FTtJY6RXxipTG/zQ
+X-Received: by 2002:a25:d45:: with SMTP id 66mr4136511ybn.231.1602079036701;
+        Wed, 07 Oct 2020 06:57:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602079036; cv=none;
         d=google.com; s=arc-20160816;
-        b=z34/+6AVzDc9u5l9DfXvMKsxJTbnmBq0YThCcyoOiM++1qSnGgixCgOPfpkRaY7jL7
-         7hp//bMcggmjE6408KQuyV2CsAplkH31f6zB11fqRSIc4aCggJShr7rkgWJEPV6oOo4V
-         WfjwLJGgBoRNLM+cIYX7IX4lqtTrun8BLtl7a2zSyZ6i7c1wh5vqVVCC2CwSn31dWDs3
-         /GHqNZfUsJC9Vwj+oR6suvQds2aFNmSxrvbkoDQ1xy7FNnKORnWppL2EvofmcsZbPbXP
-         ebcxkim1wUB3mIVP1mYbMC0frNWd87cdxBJPFpSNJLA945H/ZADU0eoJ+xvj2qLZnMKc
-         /9CQ==
+        b=oiDNIDfA/ApcJVvMAC7fno+MdlrWQ5wDVXsJHRuPdrT6CxAX8+lu2O804a7hI25DjR
+         hUBKmqGzXkgKT3uzpLvPKq/qpAGRfEoNIZ/6QDU+cZ9UG8rj5FBOor8QmItIqV8Sg2/S
+         gRbqkqSEoZ1ij7wkr51dRNafz37A+XLh41Gc/JbxCMT68yaFvmj7h+5/duGHWnv6OVxt
+         KBTZQG6QceayIIVaJvwKjtkDPjpZVy5CKiqgosHrCwUxaeyfR8ls+gsl1ihvtMR6zRzu
+         emkbSwu9FY1oU8h/mAiiDFNlAHYMQIJoOhre+NbyxaVkUmc7Yc2SLN44WOtqXMvT3SFI
+         vdKA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=kElEDkSB/y1n8weFenZdcNF8XtMXgsLU4Kh6hIb6KhE=;
-        b=nPutXmdZnI2pct9IRGjz+S7dPZc1JqvIk8XaqAKetJhDNm9I58CmusNR4UoK1umYU9
-         ArH6TXcZxRAtKuEx/Kcav2DGtM6jv5KQ+7T1UUvlLEFPMbi6+9Pebrm2BJt9SiK5VrlY
-         FHQgbezk6AK0f5mqpd6QR4Ax3ZbpOfT+iwzbcX0sXffwtEy4C461fB6znYhDi1AC9Hw6
-         E7kzu5yh01juKNweERlA7hrJDC3YaAqm4fNqm50j60kUWeu9jgfFzEDIQbt6Y0Ejp3QL
-         kIZa37iv0QTYyVRpJF0HVLzL2D919cg3ia1srBJrftPmEBs2R3lhT/TalVljSpEN3x2w
-         pj9A==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=+9rNT+iiAfWSu6aL5L3R1Fn2fnsuD64gg7o9yydA8y0=;
+        b=B/RFzf/w3lCsJ65AJsbW2ut61jvFXYJJtkykOwPysOWvZtzPoG/g8dOBNRaTG1/NNv
+         wMS3vPFHwSJbJyxKS2FnKzclfdIc6mkfg1KtlAM4/7HuZRCrjQOr2hx588UZn7Q/Glv+
+         FB8DkFErzqmuoRHQMBH3MnvtVHTHMgIvy5H5+dPlamNadWsNBTnBdkQhWE+nu5ALwZ65
+         SuzBVceNixwDRPuYOdYWgvMvsrZB5nk3phMsjN3jla1ps3riir2HqSfYwKMAH6bZJJHV
+         Nrp0B8AqLIN3B1BHDNa8rpJ7wgMP9Ab8etvYQCj+rzZJYhJSRY6THMA16b8DLTivKOAV
+         SSDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R1vAemth;
-       spf=pass (google.com: domain of pauldzim@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=pauldzim@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <pauldzim@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id r14sor1122380iog.50.2020.10.05.15.08.28
-        (Google Transport Security);
-        Mon, 05 Oct 2020 15:08:28 -0700 (PDT)
-Received-SPF: pass (google.com: domain of pauldzim@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i+htwH6S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id y17si1897367ybr.148.2020.10.07.06.57.16
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 07 Oct 2020 06:57:16 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=R1vAemth;
-       spf=pass (google.com: domain of pauldzim@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=pauldzim@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=kElEDkSB/y1n8weFenZdcNF8XtMXgsLU4Kh6hIb6KhE=;
-        b=R1vAemthUV9oDEeIt18p0l4JV6tVztg5F6sn2Ne8yfyuKkHYfSgBfUuMuaFD4oMRGT
-         DEZZFM5Sy82H6KoaWbjGf2hd/iSzeXd7LkG2coMbqBfWS93cwMqyKDynyhlABZrRGy7A
-         vELmLxwg4uEUnsJAbSeIfKzJUgXnTl+A20IY2+iKFSzPQfJ8kFEtBQ1gbeXIPpssZeud
-         nv2T4wPMjU4l2nVZut2LeOGqJg8p9GYU3oboy/oY6JIvrB25sJLrlyQIrexrDWEf43Rc
-         hb1p4JDzSDcnQHVrQXcg/xhD9V6PUeLZlf+8ZQgLmYSTPdnfDGIWlJyDr89uN0vxEMte
-         KWAQ==
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i+htwH6S;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57732 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kQ9wS-00063C-41
+	for alex.bennee@linaro.org; Wed, 07 Oct 2020 09:57:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34272)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kQ9vO-0005Aw-3r
+ for qemu-devel@nongnu.org; Wed, 07 Oct 2020 09:56:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54872)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kQ9vI-0008Ne-JQ
+ for qemu-devel@nongnu.org; Wed, 07 Oct 2020 09:56:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602078963;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+9rNT+iiAfWSu6aL5L3R1Fn2fnsuD64gg7o9yydA8y0=;
+ b=i+htwH6SPBO8+XGYv3godjd0otQaNVYTHZ3JvJ7nqhZqtX8M1xQ8CTG8+TI1vZwuzUUbeg
+ Dh1l5m4y2fIo2ZDw8tFBPNT0AfuXZvn74M25r1/7vw144H1GxJYFwfLDA3fWjLa6aSHWFJ
+ VKoFRGIfKiJgiXkXyT2jEssJne2aLoQ=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-34--UCVPnlaPuqRliOxwV08pw-1; Wed, 07 Oct 2020 09:56:01 -0400
+X-MC-Unique: -UCVPnlaPuqRliOxwV08pw-1
+Received: by mail-wr1-f69.google.com with SMTP id 33so1036551wrk.12
+ for <qemu-devel@nongnu.org>; Wed, 07 Oct 2020 06:56:01 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=kElEDkSB/y1n8weFenZdcNF8XtMXgsLU4Kh6hIb6KhE=;
-        b=JSup2u3HiIx12Lw9A9bxim14SR/MzxvNS3LQCHgwXRfoR2hYGRLvUYHghO31UmBI+O
-         9hqdUvI5zL8D7UpZ9z23a5sg+QlFBGl/tvcV8vPp305Nk7+ldD78gjJVa3SgNNxK4sDS
-         4T+SSsvrnrx00RY2aTpNMnfpco0J4sXPwIYyFkesrN1y8cVaNtUqG1QEWxAXWhEOnlpb
-         TKFbIhqgy1VsmJN9ilf54OLTAs9kqwPyCynPL3/j2txFTsPGdu90MnB8ODnSKjFFkMU9
-         Tn8hBbixqwfnoGcn1xhpPQwuj50rdrnriUDOiGT28iX8ApDYnzbu88trKZasXau0Htpe
-         RRlg==
-X-Gm-Message-State: AOAM533f/8/GfvhXY+sWRvayVTpynp4lPluze2P4WhCn9oyw+cZNQnbS
-	HfYysJEx6HG+P9+YdjOrLbqsXLV4O089T0Eliso=
-X-Google-Smtp-Source: ABdhPJyAcK5k/Z3L/MsVmIqHhVLm/oDJ7g3NCoMd4/FuMTqRrpHuw2hfc7SWaKiSei3jIR7gFYqUYMGf3PUu1Xeb1RA=
-X-Received: by 2002:a02:a50c:: with SMTP id e12mr1953982jam.26.1601935708217;
- Mon, 05 Oct 2020 15:08:28 -0700 (PDT)
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=+9rNT+iiAfWSu6aL5L3R1Fn2fnsuD64gg7o9yydA8y0=;
+ b=RjKGHQv/AUPixQrdYRJDKnh8hz6+5EA/KLpP6W7rLAX84/73GiafPpW89rfRQ02MA6
+ w5cDMcqTfJtJSa6qc7ddESVGqlmGcdAk91kGGsTenDjaKuCcYzl4LVbVi3A7HsS8ljrt
+ fo06Znb5iIVRW8+mFOp2Y5liUdBEC3VBBEtNlUMmlxXVuAJ+QWMyNXmINcKvID7hB5oQ
+ wmA2vTgLICVcl2q5ikM0D53/pWl2kGu8sN4ZAubeNyeI901cffoyWwzgHyaunqyNSxUc
+ rgxzqZzK4GQHQuS/193IAl6B6XUJJVBrjNFa3AmPUc0H1KdB2OTyY7Hvtx5bDHnaeE8c
+ tQ8Q==
+X-Gm-Message-State: AOAM5317xrCd+e9QnWncOltykeQldOU6I4IFiF2ZxZXBT3vnXuTRQs26
+ HEkCfZLZXfT72hZncTvhJU9lDDBSe4F5Z83SK/jEEiW9jTwHiRqzRvwhBeQlTVIWiSWF8dJPZr4
+ 6wShsvRkc9f3/vww=
+X-Received: by 2002:adf:d08e:: with SMTP id y14mr820850wrh.424.1602078960658; 
+ Wed, 07 Oct 2020 06:56:00 -0700 (PDT)
+X-Received: by 2002:adf:d08e:: with SMTP id y14mr820823wrh.424.1602078960382; 
+ Wed, 07 Oct 2020 06:56:00 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:d2f4:5943:190c:39ff?
+ ([2001:b07:6468:f312:d2f4:5943:190c:39ff])
+ by smtp.gmail.com with ESMTPSA id w11sm2897366wrs.26.2020.10.07.06.55.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Oct 2020 06:55:59 -0700 (PDT)
+Subject: Re: Purpose of QOM properties registered at realize time?
+To: Eduardo Habkost <ehabkost@redhat.com>
+References: <20201006220647.GR7303@habkost.net>
+ <a6e652d9-548f-4d4e-e451-48e3f5e11031@redhat.com>
+ <20201007130240.GU7303@habkost.net>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <659289e0-4133-b945-45fd-25e759c18b03@redhat.com>
+Date: Wed, 7 Oct 2020 15:55:58 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-References: <47dbcad4-3121-b1c3-06fa-abec7c353fb6@gmail.com>
- <87sgatanti.fsf@linaro.org> <CAFEAcA_ZMLV3DZ_R_SHvPLdEf=i-xpspD5itBmfYeqyMhgtLWQ@mail.gmail.com>
- <875z7p3t9e.fsf@linaro.org> <e43be86d-1847-199f-4cbd-2e3bd124d70a@gmail.com>
-In-Reply-To: <e43be86d-1847-199f-4cbd-2e3bd124d70a@gmail.com>
-From: Paul Zimmerman <pauldzim@gmail.com>
-Date: Mon, 5 Oct 2020 15:08:01 -0700
-Message-ID: <CADBGO794+ZPD=B=dFuA7SC96g3GDJXF1A8j=VP6MeiSw1Sf4oQ@mail.gmail.com>
-Subject: Re: Emulate Rpi with QEMU fails
-To: Thomas Schneider <74cmonty@gmail.com>
-Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	QEMU Developers <qemu-devel@nongnu.org>, Andrew Baumann <Andrew.Baumann@microsoft.com>, 
-	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: g+NGsPn0k37J
+In-Reply-To: <20201007130240.GU7303@habkost.net>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:44:56
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ "Daniel P. Berrange" <berrange@redhat.com>, John Snow <jsnow@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ZICOHMePIfzw
 
-If you can upgrade to Qemu 5.1 or newer, you should be able to use the
-builtin raspi2 or raspi3 emulation directly. Version 5.1 adds support for t=
-he
-USB controller on the Pi.
+On 07/10/20 15:02, Eduardo Habkost wrote:
+> On Wed, Oct 07, 2020 at 02:04:23PM +0200, Paolo Bonzini wrote:
+>> On 07/10/20 00:06, Eduardo Habkost wrote:
+>>> Hi,
+>>>
+>>> While trying to understand how QOM properties are used in QEMU, I
+>>> stumbled upon multiple cases where alias properties are added at
+>>> realize time.
+>>>
+>>> Now, I don't understand why those properties exist.  As the
+>>> properties are added at realize time, I assume they aren't
+>>> supposed to be touched by the user at all.  If they are not
+>>> supposed to be touched by the user, what exactly is the purpose
+>>> of those QOM properties?
+>>
+>> In the case of GPIOs, I think they will be used by other devices that
+>> are added afterwards.
+> 
+> Do you know how exactly are they used?  Is this always wrapped
+> behind a specific API for GPIOs, or the devices can look for the
+> properties directly?
 
-There is no limitation on the amount of memory you can use with this
-method, and the networking should work.
+It is always wrapped, but (as far as I recall, because I have never
+worked with GPIOs) they are intentionally QOM properties and not just as
+an implementation detail.  It's meant to be accessible to the user if
+only through qom-get/qom-set.
 
-Here is the command line I use to run the Raspbian image
-2019-09-26-raspbian-buster. I extracted bcm2709-rpi-2-b and
-kernel7.img from the FAT partition inside the image file.
+Paolo
 
-qemu-system-arm -M raspi2 -drive
-file=3Dbootpi/2019-09-26-raspbian-buster.img,format=3Draw,if=3Dsd -dtb
-bcm2709-rpi-2-b.dtb -kernel kernel7.img -append 'rw
-earlycon=3Dpl011,0x3f201000 console=3DttyAMA0 loglevel=3D8
-root=3D/dev/mmcblk0p2 fsck.repair=3Dyes net.ifnames=3D0 rootwait memtest=3D=
-1
-dwc_otg.fiq_fsm_enable=3D0' -serial stdio -no-reboot -netdev
-user,id=3Dnet0 -usb -device usb-kbd -device usb-tablet -device
-usb-net,netdev=3Dnet0
+> I'm concerned by the possibility of having QOM properties as an
+> undocumented part of an internal API.
 
-Hope this helps.
-
-On Mon, Oct 5, 2020 at 3:51 AM Thomas Schneider <74cmonty@gmail.com> wrote:
->
-> Hello,
->
-> thanks for your replies.
->
-> I must admit that I don't fully understand your analysis.
-> However you made some conclusions that are correct.
->
-> In fact I have found a Github repo
-> <https://github.com/dhruvvyas90/qemu-rpi-kernel> where a specific kernel
-> and versatile-pb are provided + instructions for lauching the emulation
-> with the original RPi image file:
-> $ qemu-system-arm \
->    -M versatilepb \
->    -cpu arm1176 \
->    -m 256 \
->    -drive
-> "file=3D/.../2020-05-27-raspios-buster-lite-armhf.img,if=3Dnone,index=3D0=
-,media=3Ddisk,format=3Draw,id=3Ddisk0"
-> \
->    -device
-> "virtio-blk-pci,drive=3Ddisk0,disable-modern=3Don,disable-legacy=3Doff" \
->    -net "user,hostfwd=3Dtcp::5022-:22" \
->    -dtb /.../versatile-pb-buster-5.4.51.dtb \
->    -kernel /.../kernel-qemu-5.4.51-buster \
->    -append 'root=3D/dev/vda2 panic=3D1' \
->    -no-reboot
->
-> This means it is more recent than the Raspberry Pi Geek article, and the
-> emulation works.
-> But I'm not sure if this usable considering the added models -M raspi2
-> and -M raspi3.
->
-> Can you please advise how to proceed?
->
-> In addition I would like to know if there's a memory limitation using
-> models -M raspi2 and -M raspi3?
-> To my understanding there's a limitation to 256MB using -M versatilepb.
-> If yes, I consider to another raw image located on host's temporary
-> filesystem and use this a swap in the client.
->
-> And how can I make use of a client network device that is based on
-> host's tap device connected to a network bridge?
->
-> THX
->
->
-> Am 05.10.2020 um 11:40 schrieb Alex Benn=C3=A9e:
-> > Peter Maydell <peter.maydell@linaro.org> writes:
-> >
-> >> On Sun, 4 Oct 2020 at 18:44, Alex Benn=C3=A9e <alex.bennee@linaro.org>=
- wrote:
-> >>> Thomas <74cmonty@gmail.com> writes:
-> >>>> I'm trying to emulate Rpi with QEMU.
-> >>>> I found
-> >>>> [url=3D1]this[/url]
-> >>>> arcticle in Raspberry Pi Geek documenting the steps including persis=
-tent
-> >>>> storage on host.
-> >>>>
-> >>>> However when starting the emulation with command
-> >>>> qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -serial stdio -hd=
-a
-> >>>> 2020-08-20-raspios-buster-armhf-lite.img -net
-> >>>> "user,hostfwd=3Dtcp::5022-:22" -dtb versatile-pb-buster.dtb -kernel
-> >>>> kernel-qemu-5.4.51-buster -append "root=3D/dev/sda2 rootfstype=3Dext=
-4 rw
-> >>>> panic=3D1" -no-reboot
-> >>> Let's start with the fact you are using a versatilepb machine type wi=
-th
-> >>> a versatilepb dtb and not the rasppi model.
-> >> Given the name of the kernel image, this probably actually *is*
-> >> built for versatilepb, or it wouldn't have got as far as failing
-> >> to mount the root partition. There seems to be a lot of confusion
-> >> in the raspberry pi community about the difference between
-> >> running the raspi userspace plus a for-versatilepb kernel
-> >> versus running a full raspi setup.
-> > Ahh your German is considerably better than mine ;-) Looking more
-> > closely at the blog it seems to be predicated on extracting a Raspbian
-> > kernel which at least stands a fighting chance of being a multi_config
-> > kernel - like the buster above.
-> >
-> > I can see why these sorts of shenanigans used to be pulled when there
-> > where no RaspPi models although if all you want to do is run an ARM use=
-r
-> > space what's wrong with using linux-user for this sort of thing?
-> >
-> >> Anyway, failing to mount the rootfs and not listing any
-> >> sda devices is not a problem with the fstab, because the system
-> >> hasn't got as far as being able to mount the filesystem with a
-> >> fstab on it yet. One possibility is that the kernel is
-> >> missing the device drivers for either PCI or for the SCSI
-> >> controller that gets plugged in to versatilepb by default.
-> >>
-> >> My guess at the cause is that you're trying to boot a Linux 5.somethin=
-g
-> >> kernel and you've run into the issue described in this thread:
-> >> https://lists.gnu.org/archive/html/qemu-discuss/2020-09/msg00023.html
-> >> where the Linux 5.x sym53c8xx scsi driver is not compatible with QEMU'=
-s
-> >> emulation of that device. If that's the case then you should see
-> >> earlier in the kernel boot log error messages similar to the ones
-> >> that Roger reported. The fix would be either to use an older
-> >> kernel, or to change the QEMU commandline to use a different
-> >> SCSI controller (or to use a virtio block device).
-> > Do we have any documentation for the RaspPi models? The acceptance test=
-s
-> > look like they support the inbuilt MMC/SD controller device:
-> >
-> >          kernel_command_line =3D (self.KERNEL_COMMON_COMMAND_LINE +
-> >                                 serial_kernel_cmdline[uart_id] +
-> >                                 ' root=3D/dev/mmcblk0p2 rootwait ' +
-> >                                 'dwc_otg.fiq_fsm_enable=3D0')
-> >
-> > It would be useful to fill the hole in the documentation so gently stee=
-r
-> > people away from these hybrid franken-machine approaches.
-> >
-> >> thanks
-> >> -- PMM
-> >
->
->

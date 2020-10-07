@@ -1,110 +1,107 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp4180967lfq;
-        Mon, 5 Oct 2020 09:40:42 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLFEx1Gsk+dgfUt8KJpGuayNoS8qu9l8y/GAJJB1dWnqcqDF4pGxLvJpLPSpw9Dtr/UW/c
-X-Received: by 2002:a5b:5ce:: with SMTP id w14mr1250141ybp.83.1601916042125;
-        Mon, 05 Oct 2020 09:40:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601916042; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp387979lfq;
+        Wed, 7 Oct 2020 06:03:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwDH9kGqxkQ3QiJNPt1VvRHlWDUydZzOHjeNidRzWydNVqdrcJumAthJBTvk84OYgKwg1nP
+X-Received: by 2002:a5b:302:: with SMTP id j2mr4261358ybp.50.1602075824528;
+        Wed, 07 Oct 2020 06:03:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602075824; cv=none;
         d=google.com; s=arc-20160816;
-        b=nykA8LzGeaD4kb6ZvED5YVL/BJFkqns5T/HSl5GDFxNWJ/swoVYS1nbh3aHfeG5B/1
-         fzlrTu041VmqF4GSBozh4CJUQpK64GF+iaHjnR2Aff79AitT6VDUGPm6oUcwx6ObJd1y
-         pAUj62nWjZ6TzvEZvDxGjcaPs7iJLEPK1n0M1oDYM0AHgDdBuM+0qIHqQxKJcfLdgor3
-         r9UH2LUPBKSIu9RWDSJ2jN9R2x3hSNpZEkliUOB2rpsZy5rmUGJxjzBLHsIy8teXx2si
-         c2efKKMna84KL9SfvTQXtKFybr+NgyVx/iaI7oIpHZZM+nKwNDcZYAFGKfsa+aXuxtr+
-         XM+g==
+        b=e5Rtz1YWD/AQglSRKJpm53qxe3hUHXJhzCS1WXTJrmUTnUlBD+bghsa1Wn9WPC3B51
+         hMG1u2bZep4u+7Ud1EvTxRcHeEQRLRr01k5kpwl+YNWvAtHp8nNbyzgjgiHivqeb1l0F
+         BNCjDWwlOB8ZVJgRTxW4ARMW1jdVcu6trhpj8lAc71TUF5+N3evqsr/nkBdr6K+nxf18
+         57iMW5V8YZjkVzNL1gfuRSARxNP4x3m3jKYqUSW3nxrWXV04S++z9VK8JU3ZbocjL8d3
+         IZok7IE8bWiPAz4URs2oanqQFPQKdpAKUtJ6OQ1Mmvy038AAk3SrQuqzPHROw7Q1JQrr
+         8zBA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=OK4Zm+CDihcj7rnMnXkHEuEcrJFYNjGqyRUOrY+EdNY=;
-        b=GisrnArqLa6by3siYb6r+HmCWh7JwA8yTc22CpQFxqvAtKmSgmDbsP8Tx3YwTCR3jt
-         HTO0gxcPsyKarsFSNnNjocYZjsfVZqbesv2SJ5Ln0LNJH9CTE0WyL5prU5oZkzvXtdWH
-         tsj3BvCwmVUbbZxjJ2UEe+abLk8rBlR4npfakpv+c9Ti8c5xtR5x8t1fvF8rkNr6+x5Z
-         81FLUICwMnHFdNvO5T8CNnZVA3bhglSW3cAhzmrNNtPze06cdDawDuZAKEh4AST9CUZf
-         hnBVfQGKytJu8ms8MJ9L+q3b0yS4TMlbNjypT00JuI0iT/5txiHu2+uU2sDTvfs1zbEE
-         bw8g==
+        bh=YAC7NOB+gtz3eLsj/JsOKrn9rwcp50yoW4Q24mtEiaQ=;
+        b=b7mXHXx7/J6aApikwys02HlerZ45Uw2PHgQ/tQbRQfOaUNmYlggtvUEIYC480h9BkA
+         nqL7Jug/maA3bQro6MHZQ2ytYkW6M1PPsD3gKvJPBkwVrOYui0s1LBD/kpI0SvSkSMDw
+         UgncPiNegddaAle288shkPB7+lFVzzy7ir3zLzw0T2zx2pvR8SjifUn3waLUuOeisriR
+         KAnhuQvQfQH/lGwlv0BaMqDhvuSaMtTb1l9fDqOHM48rgbHqRDHAyNUZLG9HXDVSQfwg
+         hsNvsbPC6vn/2liT9oW3DHrpJhVIDKWxE6zZBpK7zQqGAPqE3V/krTbnk8gux3mDKdKP
+         L0fA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hysPRBCD;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CR5QbWHT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f20si397183ybj.367.2020.10.05.09.40.41
+        by mx.google.com with ESMTPS id c18si1751365ybn.331.2020.10.07.06.03.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 05 Oct 2020 09:40:42 -0700 (PDT)
+        Wed, 07 Oct 2020 06:03:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hysPRBCD;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=CR5QbWHT;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34616 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46548 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPTXV-0001t2-HD
-	for alex.bennee@linaro.org; Mon, 05 Oct 2020 12:40:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43660)
+	id 1kQ96d-0000EY-UL
+	for alex.bennee@linaro.org; Wed, 07 Oct 2020 09:03:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50396)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kPTXH-0001sj-2j
- for qemu-arm@nongnu.org; Mon, 05 Oct 2020 12:40:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48379)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kQ95p-0008Ud-AV
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2020 09:02:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:24025)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kPTXE-000098-RA
- for qemu-arm@nongnu.org; Mon, 05 Oct 2020 12:40:26 -0400
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kQ95j-0001hW-1p
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2020 09:02:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601916023;
+ s=mimecast20190719; t=1602075766;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=OK4Zm+CDihcj7rnMnXkHEuEcrJFYNjGqyRUOrY+EdNY=;
- b=hysPRBCD27yf1Bpx6fCocayKnriida6f7faLtIFZhPL78axJpVWx/PGcwl9tL3rqcrNk3F
- 48JK1pGtm3AkSkPNaQd/yucDRHsvWk+Q0wikLKq35Ky3tVvewDExqNLuUiAsoIqPxpkhYJ
- FQwE7YnZfiWuXS6GaJFpQ8MzjLdcWuA=
+ bh=YAC7NOB+gtz3eLsj/JsOKrn9rwcp50yoW4Q24mtEiaQ=;
+ b=CR5QbWHTHCcAMREm1d+wdKE3eeuzWa0Woq3QPQ4TygARCOcLZNL1StmSsPm6XJaqEAO2qr
+ 2e7sFPCxD3p9tY5xzN6Q0tDqD7UWs5BCJx1TnQMvSJh5sCy6S+ki1mkqXKvXdY/XYCwwbs
+ aWy4D9NnFkFj4P4JO+9loi5pPEjDoXw=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-67-3hj0ReY8O5OU_QQPhm2HCA-1; Mon, 05 Oct 2020 12:40:21 -0400
-X-MC-Unique: 3hj0ReY8O5OU_QQPhm2HCA-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-535-6Tu-Sz0zO3ylFGAV9iP4mg-1; Wed, 07 Oct 2020 09:02:42 -0400
+X-MC-Unique: 6Tu-Sz0zO3ylFGAV9iP4mg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 737CFE0040;
- Mon,  5 Oct 2020 16:40:19 +0000 (UTC)
-Received: from localhost (unknown [10.40.208.52])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 49D545C221;
- Mon,  5 Oct 2020 16:40:11 +0000 (UTC)
-Date: Mon, 5 Oct 2020 18:40:09 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
-Subject: Re: [PATCH 01/16] hw/core/cpu: Let CPU object have a clock source
-Message-ID: <20201005184009.493629b0@redhat.com>
-In-Reply-To: <da7248f7-5098-188b-d274-e122c87bb498@amsat.org>
-References: <20200928171539.788309-1-f4bug@amsat.org>
- <20200928171539.788309-2-f4bug@amsat.org>
- <20200930094313.1120a040@redhat.com>
- <da7248f7-5098-188b-d274-e122c87bb498@amsat.org>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 38B9A804013;
+ Wed,  7 Oct 2020 13:02:41 +0000 (UTC)
+Received: from localhost (ovpn-119-102.rdu2.redhat.com [10.10.119.102])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B33BC60BF1;
+ Wed,  7 Oct 2020 13:02:40 +0000 (UTC)
+Date: Wed, 7 Oct 2020 09:02:40 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: Purpose of QOM properties registered at realize time?
+Message-ID: <20201007130240.GU7303@habkost.net>
+References: <20201006220647.GR7303@habkost.net>
+ <a6e652d9-548f-4d4e-e451-48e3f5e11031@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+In-Reply-To: <a6e652d9-548f-4d4e-e451-48e3f5e11031@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/05 02:11:31
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:54:30
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -117,145 +114,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Damien Hedde <damien.hedde@greensocs.com>,
- Huacai Chen <zltjiangshi@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>,
- Eduardo Habkost <ehabkost@redhat.com>, Paul Burton <paulburton@kernel.org>,
- qemu-devel@nongnu.org, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
- Cleber Rosa <crosa@redhat.com>, Huacai Chen <chenhc@lemote.com>,
- =?UTF-8?B?SGVydsOp?= Poussineau <hpoussin@reactos.org>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Richard Henderson <rth@twiddle.net>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ "Daniel P. Berrange" <berrange@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qzHQwJsQfDDO
+X-TUID: YasBuxUIWcBc
 
-On Wed, 30 Sep 2020 12:16:53 +0200
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
+On Wed, Oct 07, 2020 at 02:04:23PM +0200, Paolo Bonzini wrote:
+> On 07/10/20 00:06, Eduardo Habkost wrote:
+> > Hi,
+> > 
+> > While trying to understand how QOM properties are used in QEMU, I
+> > stumbled upon multiple cases where alias properties are added at
+> > realize time.
+> > 
+> > Now, I don't understand why those properties exist.  As the
+> > properties are added at realize time, I assume they aren't
+> > supposed to be touched by the user at all.  If they are not
+> > supposed to be touched by the user, what exactly is the purpose
+> > of those QOM properties?
+> 
+> In the case of GPIOs, I think they will be used by other devices that
+> are added afterwards.
 
-> +arm/ppc/riscv folks
->=20
-> On 9/30/20 9:43 AM, Igor Mammedov wrote:
-> > On Mon, 28 Sep 2020 19:15:24 +0200
-> > Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
-> >  =20
-> >> Let CPUState have a clock source (named 'clk') and CPUClass
-> >> have a clock_update() callback. The clock can be optionally
-> >> set Using qdev_connect_clock_in() from the Clock API.
-> >> If the clock changes, the optional clock_update() will be
-> >> called. =20
-> >=20
-> > the sole user of it is mips cpu, so question is why
-> > you are making it part of generic CPUm instead of
-> > MIPSCPUClass/MIPSCPU? =20
->=20
-> This is a feature of the CPU, regardless its architecture.
->=20
-> I expect the other archs to start using it soon.
+Do you know how exactly are they used?  Is this always wrapped
+behind a specific API for GPIOs, or the devices can look for the
+properties directly?
 
-if there aren't any plans to actually to do that,
-I'd keep it to MIPS class and generalize later when there is demand.
-=20
->=20
-> >  =20
-> >>
-> >> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >> ---
-> >>  include/hw/core/cpu.h |  5 +++++
-> >>  hw/core/cpu.c         | 12 ++++++++++++
-> >>  2 files changed, 17 insertions(+)
-> >>
-> >> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> >> index 6c34798c8b3..6989d90c193 100644
-> >> --- a/include/hw/core/cpu.h
-> >> +++ b/include/hw/core/cpu.h
-> >> @@ -31,6 +31,7 @@
-> >>  #include "qemu/thread.h"
-> >>  #include "qemu/plugin.h"
-> >>  #include "qom/object.h"
-> >> +#include "hw/clock.h"
-> >> =20
-> >>  typedef int (*WriteCoreDumpFunction)(const void *buf, size_t size,
-> >>                                       void *opaque);
-> >> @@ -155,6 +156,7 @@ struct TranslationBlock;
-> >>   * @disas_set_info: Setup architecture specific components of disasse=
-mbly info
-> >>   * @adjust_watchpoint_address: Perform a target-specific adjustment t=
-o an
-> >>   * address before attempting to match it against watchpoints.
-> >> + * @clock_update: Callback for input clock changes
-> >>   *
-> >>   * Represents a CPU family or model.
-> >>   */
-> >> @@ -176,6 +178,7 @@ struct CPUClass {
-> >>                                    unsigned size, MMUAccessType access=
-_type,
-> >>                                    int mmu_idx, MemTxAttrs attrs,
-> >>                                    MemTxResult response, uintptr_t ret=
-addr);
-> >> +    void (*clock_update)(CPUState *cpu);
-> >>      bool (*virtio_is_big_endian)(CPUState *cpu);
-> >>      int (*memory_rw_debug)(CPUState *cpu, vaddr addr,
-> >>                             uint8_t *buf, int len, bool is_write);
-> >> @@ -316,6 +319,7 @@ struct qemu_work_item;
-> >>   *   QOM parent.
-> >>   * @nr_cores: Number of cores within this CPU package.
-> >>   * @nr_threads: Number of threads within this CPU.
-> >> + * @clock: this CPU source clock (an output clock of another device)
-> >>   * @running: #true if CPU is currently running (lockless).
-> >>   * @has_waiter: #true if a CPU is currently waiting for the cpu_exec_=
-end;
-> >>   * valid under cpu_list_lock.
-> >> @@ -400,6 +404,7 @@ struct CPUState {
-> >>      int num_ases;
-> >>      AddressSpace *as;
-> >>      MemoryRegion *memory;
-> >> +    Clock *clock;
-> >> =20
-> >>      void *env_ptr; /* CPUArchState */
-> >>      IcountDecr *icount_decr_ptr;
-> >> diff --git a/hw/core/cpu.c b/hw/core/cpu.c
-> >> index c55c09f734c..37fcff3ec64 100644
-> >> --- a/hw/core/cpu.c
-> >> +++ b/hw/core/cpu.c
-> >> @@ -30,6 +30,7 @@
-> >>  #include "qemu/qemu-print.h"
-> >>  #include "sysemu/tcg.h"
-> >>  #include "hw/boards.h"
-> >> +#include "hw/qdev-clock.h"
-> >>  #include "hw/qdev-properties.h"
-> >>  #include "trace/trace-root.h"
-> >>  #include "qemu/plugin.h"
-> >> @@ -247,6 +248,16 @@ void cpu_reset(CPUState *cpu)
-> >>      trace_guest_cpu_reset(cpu);
-> >>  }
-> >> =20
-> >> +static void cpu_clk_update(void *opaque)
-> >> +{
-> >> +    CPUState *cpu =3D opaque;
-> >> +    CPUClass *cc =3D CPU_GET_CLASS(cpu);
-> >> +
-> >> +    if (cc->clock_update) {
-> >> +        cc->clock_update(cpu);
-> >> +    }
-> >> +}
-> >> +
-> >>  static void cpu_common_reset(DeviceState *dev)
-> >>  {
-> >>      CPUState *cpu =3D CPU(dev);
-> >> @@ -367,6 +378,7 @@ static void cpu_common_initfn(Object *obj)
-> >>      /* the default value is changed by qemu_init_vcpu() for softmmu *=
-/
-> >>      cpu->nr_cores =3D 1;
-> >>      cpu->nr_threads =3D 1;
-> >> +    cpu->clock =3D qdev_init_clock_in(DEVICE(obj), "clk", cpu_clk_upd=
-ate, cpu);
-> >> =20
-> >>      qemu_mutex_init(&cpu->work_mutex);
-> >>      QSIMPLEQ_INIT(&cpu->work_list); =20
-> >  =20
->=20
+I'm concerned by the possibility of having QOM properties as an
+undocumented part of an internal API.
+
+
+> 
+> The remaining ones are:
+> 
+> > hw/arm/allwinner-h3.c=232=static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+> > hw/arm/allwinner-h3.c:359:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->mmc0),
+> > --
+> > hw/arm/bcm2835_peripherals.c=128=static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+> > hw/arm/bcm2835_peripherals.c:322:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
+> > --
+> > hw/arm/bcm2836.c=69=static void bcm2836_realize(DeviceState *dev, Error **errp)
+> > hw/arm/bcm2836.c:87:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->peripherals),
+> > --
+> > hw/arm/xlnx-zynqmp.c=276=static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+> > hw/arm/xlnx-zynqmp.c:522:        object_property_add_alias(OBJECT(s), bus_name, sdhci, "sd-bus");
+> 
+> And this are probably usable with "bus=sd-bus" or something like that on
+> other devices, too.
+> 
+> Paolo
+> 
+
+-- 
+Eduardo
 

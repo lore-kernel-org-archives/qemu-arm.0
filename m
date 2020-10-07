@@ -1,77 +1,107 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1116251lfb;
-        Fri, 20 Nov 2020 00:53:38 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyXcQAAFmZKDW59pnu/VOBgFYuLuSEFHBLgJuI0N3+uTf0qYBpfF8ADRGkO8Pl162IzjZPz
-X-Received: by 2002:a25:bd7:: with SMTP id 206mr20613294ybl.84.1605862417999;
-        Fri, 20 Nov 2020 00:53:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605862417; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp520978lfq;
+        Wed, 7 Oct 2020 08:48:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyGs2kfw1CfDFKSDdyWwpr+TUFmDuGb3qOi3uyoGhi8Cdpq5k87GJm9ksCGc9dIcl9znKI8
+X-Received: by 2002:a25:c5d3:: with SMTP id v202mr5206327ybe.338.1602085728417;
+        Wed, 07 Oct 2020 08:48:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602085728; cv=none;
         d=google.com; s=arc-20160816;
-        b=KEtrgXEV5sXtl0J8803Qtw2n6MKQv72uktKzRulQdVyLqZgwhoFwKOEfzzYNJXyhN4
-         is4fLtLcqI151A5/D8i0RQjQAVfG9WI8FaXtDqnys9wmq0yHOHYWD2isL3W0Ht8Dz80h
-         PUMOGTv9/E1RaNJzQUc1nAUpPs5D7fAfR8EgSyCUGu2Q0nf8ymM/FnG86bWcXdMiIEYQ
-         lPgf9okwRAuhCCRJJI38HosjFfjqnspECvE/DulmBLvet4DVr2hzxUllXp1kw08IzLSR
-         w5POdNbPD6hzAoOIGYJoLWgqeAWvMds78NqbxJ3xxxvCGM8bjYi08q/1CDJyK/eoYd5/
-         g93w==
+        b=reRybdWlzDWC8Qzte7+e9FBs0w1UFdj3NDxbZxvKBA1bwqm+RlCAHVTm2HZNJPS+AT
+         IgLIQktxeIBO+K4URM2ZCoUbklARBWNY4HGdquNZmT2kkA9JmbXQNSestxijMmPAZXrd
+         M1qFcGNhiTMmuz50af1ImhLVZgdKEODGa4EiqQovR2kgwC1Io42F75hsHDkjzlL+dGNK
+         1I60R7KPiaCec2iPBG+hW5rvRqPmFxY/POKEV4TH8CFTuuDyw1aJzxpMOPUjIJnzWO5Q
+         K9Mf6PCMs8Yy7OKvFBMw3fLvjpF52E/FyuDvy7PbwA06oLSC7+JHo+SjyoQceS8lq9rt
+         Tmqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=4arQomiTsXkKV9kMWLI13Vvc95Zu05uKLua2WPru/P4=;
-        b=yaX/x2XgpDqC0RQ4FnupLBnNAt4ZP9olwyWS03FiGsUdpJdPReZ1pRfj5Ssqs8uUq8
-         v5sSO5hk0IoVmw8YsrBOFYIspsg5OJBJo4jYEi3ibFdD3nNz79ZKiP8qTYmB7kSKNBu8
-         w0rOqRS7YdAdPUocoV7hcl7JM4vZDI8k25su6ubjUA3bwnon4HkF9qsS8Mg4zqzJYZeL
-         OZ4Om/WZ3KX5aMEiFjpkKd+wo8fropQma8H/57kvMRTSpptA6gslygHVaik2RmJSSvlu
-         Pm1xoQt5k7ilpJM0OyrXR8jtOIaKr2z/XxodLp0bUrK3loVFCljCSfEgeKuWrGhPCiFw
-         dIvQ==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=3bLGhH3VZCQrwNeTrqclwMhr30WXj6AmOhDSHN1dYQ8=;
+        b=irysS7O635rJNDFy9LWGrSvF4xadXhbxRjII+DbBhuX340/Tw52+gNupTpg6iEmKaC
+         oRU5RPK/UV9vMwvEScjjyZ8MDWd4YzAYzWFfuKhwc8wNs9FiOe2z74Hd9Sc8MsA059nH
+         qq0JCD/AJH7j/u/MqXuWitFv/QxOE03BrHA3cEJxYrfaXDkW5b9YlXPz6RuRtORWldE+
+         qaFDYnrs/Z6MhdeStdU1QuNlPnj4OIKGLoYMUJ0AJq/ZnwKBlzqBmJYEKO/i4YsN/vHJ
+         P81unbR7woCXQwikPfLg4/T06EDzxPBmFGT71zJFHO7nCyOMhmZckOOTXja9h2aboh0e
+         K0CA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WCY9dxhx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h97si3054089ybi.405.2020.11.20.00.53.37
+        by mx.google.com with ESMTPS id y139si2066964yby.193.2020.10.07.08.48.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 20 Nov 2020 00:53:37 -0800 (PST)
+        Wed, 07 Oct 2020 08:48:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57152 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=WCY9dxhx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:52826 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kg2Aj-000691-DP
-	for alex.bennee@linaro.org; Fri, 20 Nov 2020 03:53:37 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56510)
+	id 1kQBgN-0003LC-Qf
+	for alex.bennee@linaro.org; Wed, 07 Oct 2020 11:48:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59770)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kg2AR-0005pT-QJ; Fri, 20 Nov 2020 03:53:19 -0500
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2533)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kg2AN-0001Ui-VB; Fri, 20 Nov 2020 03:53:19 -0500
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4Ccr0W0MTdzhdX3;
- Fri, 20 Nov 2020 16:52:43 +0800 (CST)
-Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
- DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
- 14.3.487.0; Fri, 20 Nov 2020 16:52:51 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, "Dr . David
- Alan Gilbert" <dgilbert@redhat.com>
-Subject: [RFC PATCH 0/2] bugfix: Decrease dirty bitmap blocks after we remove
- ramblock
-Date: Fri, 20 Nov 2020 16:51:55 +0800
-Message-ID: <20201120085157.7136-1-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kQBfm-0003J3-EL
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2020 11:48:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:49142)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kQBfh-000778-PT
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2020 11:48:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602085684;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3bLGhH3VZCQrwNeTrqclwMhr30WXj6AmOhDSHN1dYQ8=;
+ b=WCY9dxhxpNWmuoBh+pQrqkv855R31Dphh+PBdL1PyG9j/FDBT1EkMeC7j8tm7c4/XGwVtj
+ c7OGdsI1AdzyljhzDbBCOBwuoqcHbX9lwMD4ehc9tFx2RBIALtGePGguq0dnnU57Wn7WJR
+ RMlksfbO7izqHu6fN2nt6cecpMQHUI8=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-381-wxnZHm_RPJSJ_vbLHy2acw-1; Wed, 07 Oct 2020 11:48:02 -0400
+X-MC-Unique: wxnZHm_RPJSJ_vbLHy2acw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5146487951B;
+ Wed,  7 Oct 2020 15:48:01 +0000 (UTC)
+Received: from localhost (ovpn-119-102.rdu2.redhat.com [10.10.119.102])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 111C75579B;
+ Wed,  7 Oct 2020 15:48:00 +0000 (UTC)
+Date: Wed, 7 Oct 2020 11:48:00 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: Purpose of QOM properties registered at realize time?
+Message-ID: <20201007154800.GW7303@habkost.net>
+References: <20201006220647.GR7303@habkost.net>
+ <CAFEAcA_se7jErv9AFM2D7UdDMurB9Lb6W9aAXD6648spQ6idKg@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.37]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.191;
- envelope-from=zhukeqian1@huawei.com; helo=szxga05-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <CAFEAcA_se7jErv9AFM2D7UdDMurB9Lb6W9aAXD6648spQ6idKg@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:54:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -84,27 +114,92 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
- Keqian Zhu <zhukeqian1@huawei.com>
+Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sLs2cDd+xi4u
+X-TUID: X3PqEveYSZw5
 
-Hi all,
+On Wed, Oct 07, 2020 at 03:28:52PM +0100, Peter Maydell wrote:
+> On Tue, 6 Oct 2020 at 23:06, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> > While trying to understand how QOM properties are used in QEMU, I
+> > stumbled upon multiple cases where alias properties are added at
+> > realize time.
+> >
+> > Now, I don't understand why those properties exist.  As the
+> > properties are added at realize time, I assume they aren't
+> > supposed to be touched by the user at all.  If they are not
+> > supposed to be touched by the user, what exactly is the purpose
+> > of those QOM properties?
+> 
+> QOM properties are not solely provided for the benefit of the user.
+> We also use them a lot in board and SoC code as the interface
+> by which C code says "create an object, configure it, connect it".
+> 
 
-I failed to find where we free dirty bitmap blocks of ramlist. If this is a
-memory leakage problem, I hope this patch series can fix it properly :-).
+Right.  I'm trying to get a better understand of how exactly QOM
+is used internally when it's not user-visible.  Not being able to
+distinguish internal and external usage when looking at the code
+makes it very difficult to clean up external QOM-based
+interfaces.
 
-Thanks,
-Keqian.
 
-Keqian Zhu (2):
-  ramlist: Make dirty bitmap blocks of ramlist resizable
-  ramlist: Resize dirty bitmap blocks after remove ramblock
+> (This was partly motivated in the original QOM design I think by the idea
+> being that eventually one might be able to completely define a board model
+> purely declaratively by specifying all the devices and properties and
+> wiring everything up that way. Needless to say we've never really
+> taken any serious steps towards actually doing that.)
 
- softmmu/physmem.c | 36 ++++++++++++++++++++++++++++--------
- 1 file changed, 28 insertions(+), 8 deletions(-)
+Thanks for the explanation.
+
+Now, how do I locate the code that depends on those QOM
+properties to work?  When the property name is visible in the
+code, I can grep for the property name.  But I don't know how to
+find users of the GPIOs exposed by qdev_pass_gpios().
+
+> 
+> > For reference, these are the cases I've found:
+> >
+> > $ git grep -nwpE 'object_property_add_alias|qdev_pass_gpios|qdev_alias_all_properties' | grep -A1 realize
+> > hw/arm/allwinner-a10.c=71=static void aw_a10_realize(DeviceState *dev, Error **errp)
+> > hw/arm/allwinner-a10.c:89:    qdev_pass_gpios(DEVICE(&s->intc), dev, NULL);
+> 
+> This kind of thing, and also the sd-bus cases, is where an SoC device wants
+> to expose some GPIO lines or an sd-bus which is actually implemented by
+> a device which exists inside the SoC (and which the SoC has created and
+> wired up). The effect is that for the user of the SoC object the gpio/sd-bus
+> can be used as if it was directly implemented by the SoC object, when it's
+> actually just being passed through to the internal device.
+> 
+> I'd have to look at the code to find out whether it's really necessary in all
+> cases to do this pass-through setup at realize rather than instance-init.
+> 
+> In this case:
+> 
+> > hw/arm/armv7m.c=149=static void armv7m_realize(DeviceState *dev, Error **errp)
+> > hw/arm/armv7m.c:219:    qdev_pass_gpios(DEVICE(&s->nvic), dev, NULL);
+> 
+> there's a comment on the immediately preceding lines which explains what
+> the code is doing and why it is being done in realize:
+> 
+>  215     /* Alias the NVIC's input and output GPIOs as our own so the board
+>  216      * code can wire them up. (We do this in realize because the
+>  217      * NVIC doesn't create the input GPIO array until realize.)
+>  218      */
+> 
+> Possibly one could move the code in the devices which creates the
+> GPIO array/sdbus/whatever so that it does so in instance_init
+> rather than in realize, and then more of these "alias a connection
+> through" bits of code could also move to instance_init. But there are
+> cases where the GPiO/etc can only be created in realize because
+> the number of GPIOs depends on properties of the device and so isn't
+> know at instance_init time.
+> 
+> -- PMM
+> 
 
 -- 
-2.23.0
+Eduardo
 

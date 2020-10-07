@@ -1,77 +1,178 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id y6sm2664036wrt.80.2020.10.07.05.02.31
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 07 Oct 2020 05:02:31 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id E572E1FF7E;
-	Wed,  7 Oct 2020 13:02:30 +0100 (BST)
-References: <47dbcad4-3121-b1c3-06fa-abec7c353fb6@gmail.com>
- <87sgatanti.fsf@linaro.org>
- <CAFEAcA_ZMLV3DZ_R_SHvPLdEf=i-xpspD5itBmfYeqyMhgtLWQ@mail.gmail.com>
- <875z7p3t9e.fsf@linaro.org>
- <e43be86d-1847-199f-4cbd-2e3bd124d70a@gmail.com>
- <CADBGO794+ZPD=B=dFuA7SC96g3GDJXF1A8j=VP6MeiSw1Sf4oQ@mail.gmail.com>
- <d8d79b4c-aeb4-4f07-7110-91d8d1afd701@gmail.com>
- <87362r3cbt.fsf@linaro.org>
- <61c49583-c548-a8b2-7106-59011196f430@gmail.com>
- <CADBGO7-BaTH3MBZa6Dbv2+uxKNbv3ztwQ=iu_FCgrcrKBUzCPw@mail.gmail.com>
- <4da67d13-a774-f62e-ad89-de062cbe81da@gmail.com>
- <87blhe1esd.fsf@linaro.org>
- <f32593d0-e87b-0549-7b59-f58da24c9130@gmail.com>
-User-agent: mu4e 1.5.5; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Schneider <74cmonty@gmail.com>
-Cc: Paul Zimmerman <pauldzim@gmail.com>, Peter Maydell
- <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, QEMU
- Developers <qemu-devel@nongnu.org>, Andrew Baumann
- <Andrew.Baumann@microsoft.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <f4bug@amsat.org>
-Subject: Re: Emulate Rpi with QEMU fails
-In-reply-to: <f32593d0-e87b-0549-7b59-f58da24c9130@gmail.com>
-Date: Wed, 07 Oct 2020 13:02:30 +0100
-Message-ID: <87362q1bxl.fsf@linaro.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp359745lfq;
+        Wed, 7 Oct 2020 05:24:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzzyiRagdY5Z8lQRYG8uS4veAXPDfoY/qViSHntLZ549/SpIAzNYFQW7M653J5/tBCum8c2
+X-Received: by 2002:a25:7255:: with SMTP id n82mr3758297ybc.442.1602073451800;
+        Wed, 07 Oct 2020 05:24:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602073451; cv=none;
+        d=google.com; s=arc-20160816;
+        b=V46w8DXSUbEOG0mH/h5rk+mls18ZMV/3cSRV8+zZQZ/xaO2Fq63QGLftVuCpK7/deG
+         H/3AD+vb6ky8T+3IeKGrMdvZRapM56PeWAsytb1IoPeTZFYIMeLnMvD7HyFO2NKsa+6D
+         V5yjuqjF0glfbbcUX0CuFwK0dkS5hTkKF8E3AvlCnYZrfr/MpXOLfucSdt+sn0aAXFol
+         pBWs5h+QdN54KvEm4DK5yPQU8YFuRsIe54fyc4zuqTlqEKY8NqmixX34RtO+NceL5J62
+         k6vmMp2bp1KItx8sLoArkPfSzExGZABZM+0Fw82T84Mj5ZsS+B2JPqfx/mpCHMYIH0e+
+         2ldg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ANpKyxB7hmXVGI1rDwcbSfSbvlpPNoIeA5bKoXd/mlo=;
+        b=o1+z4OXkPXBjDGdSZZrT30pm9mCGFSsddScPf/mt9rHiGAqKP5IWDRxIliFUG7k8rc
+         bprI/p7WshBZIoHvWC2mXCMbe5t1jSE9FOosxWJv+HxL0cZkwuTje5xDR+wfjjbwOSoO
+         fzcsCc7FLDhbFYRnx/avfs6v0VBBJM0l5hcDRuSTygd3v+0pKBxeGe4eiN1plzZrdQeb
+         MMMHN6coio4dL711X9Y5ca2fcqKVKTo1eqc8C+VYpNfQthFgQYvTZOsJ/CM/rJCOyZtn
+         2XJJ8DqtaIV4eRbgRrDzLUlWuYLOmO3qRWDgD2VY2CsNR7RWdmzWk+LJTf2Gki59gb8L
+         8uxA==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IRbnyutm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id p190si2285143ybg.279.2020.10.07.05.24.11
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 07 Oct 2020 05:24:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+Authentication-Results: mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=IRbnyutm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44166 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kQ8UN-00028H-5p
+	for alex.bennee@linaro.org; Wed, 07 Oct 2020 08:24:11 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37572)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kQ8BO-0002PQ-L9
+ for qemu-devel@nongnu.org; Wed, 07 Oct 2020 08:04:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:53979)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1kQ8BJ-0002XL-Qg
+ for qemu-devel@nongnu.org; Wed, 07 Oct 2020 08:04:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602072269;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ANpKyxB7hmXVGI1rDwcbSfSbvlpPNoIeA5bKoXd/mlo=;
+ b=IRbnyutmdIC4WpP6AC8CaAJYjBnc4g8f9h4sXf87VXlgAchzH+5p4Ef40oMEi/DonTbCgB
+ +mNAMXTEXaDrOdmtyh/YGshUueZBu8Aoc0dyZgxN+4h+O2/vHKwRrgd74jdnaK2IjKQVDT
+ n8LXAwdB/7SqbRHCu7R6LAVOkI+fMzk=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-161--zmxzIGjO8SmCTRS9ngBPw-1; Wed, 07 Oct 2020 08:04:27 -0400
+X-MC-Unique: -zmxzIGjO8SmCTRS9ngBPw-1
+Received: by mail-wm1-f70.google.com with SMTP id s25so411274wmj.7
+ for <qemu-devel@nongnu.org>; Wed, 07 Oct 2020 05:04:27 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ANpKyxB7hmXVGI1rDwcbSfSbvlpPNoIeA5bKoXd/mlo=;
+ b=s7RgQuOXHqPEhBF0YYtYFj8QXmwvclSmRdkF/AJxCjOWG66WO7TIRFBKzi8F5BgYtH
+ V5E0VmLTd0WJ2U+GaoYKvyDwcJnalnEpbJQAq6WHVE+bsBORFyPVd5++/Y/LIm6wEhau
+ MFvlpqUxXZMDOvGo5oHSWawAQdNIaCBHTeW3sQDM1vb6oybP1fKe1qWnfU8FA2StTKlk
+ PZCovNzxyzdZXngTCCuvtQX3CNq1iWdUkp+nIqEe4OhoSX+tDA39AT4d7M83cfx4HnBr
+ 87S7HFuATZAJ3Ggw0/uk45O6fB6uqhY9swfU5xFX5+/8bqDtJ5xfsuLgJVuD8b6Uigzl
+ ShWA==
+X-Gm-Message-State: AOAM530aimDP080IKuNElWQE0U7vJQT9YRR5O6O03IMdCOHjTmXouvQl
+ /XQ2A/eF4iB3+6ilrZaw4mMbw6UI8FGY5ZSN974fFjVwnGfTRU8aH/BCsYwPKXijqfDrDLPA5t/
+ W4P1phRyrgTu1zAQ=
+X-Received: by 2002:adf:f2d0:: with SMTP id d16mr3049321wrp.332.1602072266364; 
+ Wed, 07 Oct 2020 05:04:26 -0700 (PDT)
+X-Received: by 2002:adf:f2d0:: with SMTP id d16mr3049298wrp.332.1602072266085; 
+ Wed, 07 Oct 2020 05:04:26 -0700 (PDT)
+Received: from ?IPv6:2001:b07:6468:f312:d2f4:5943:190c:39ff?
+ ([2001:b07:6468:f312:d2f4:5943:190c:39ff])
+ by smtp.gmail.com with ESMTPSA id y14sm2331564wma.48.2020.10.07.05.04.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Oct 2020 05:04:25 -0700 (PDT)
+Subject: Re: Purpose of QOM properties registered at realize time?
+To: Eduardo Habkost <ehabkost@redhat.com>, qemu-devel@nongnu.org
+References: <20201006220647.GR7303@habkost.net>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Message-ID: <a6e652d9-548f-4d4e-e451-48e3f5e11031@redhat.com>
+Date: Wed, 7 Oct 2020 14:04:23 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <20201006220647.GR7303@habkost.net>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=pbonzini@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: sBYERaRf64Jc
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:54:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
+ qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ "Daniel P. Berrange" <berrange@redhat.com>, John Snow <jsnow@redhat.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: E36EvlgaZ+4L
 
+On 07/10/20 00:06, Eduardo Habkost wrote:
+> Hi,
+> 
+> While trying to understand how QOM properties are used in QEMU, I
+> stumbled upon multiple cases where alias properties are added at
+> realize time.
+> 
+> Now, I don't understand why those properties exist.  As the
+> properties are added at realize time, I assume they aren't
+> supposed to be touched by the user at all.  If they are not
+> supposed to be touched by the user, what exactly is the purpose
+> of those QOM properties?
 
-Thomas Schneider <74cmonty@gmail.com> writes:
+In the case of GPIOs, I think they will be used by other devices that
+are added afterwards.
 
-> Are you referring to this tool?
-> https://github.com/stefano-garzarella/qemu-boot-time=20
-> <https://github.com/stefano-garzarella/qemu-boot-time>
+The remaining ones are:
 
-No - just plain perf:
+> hw/arm/allwinner-h3.c=232=static void allwinner_h3_realize(DeviceState *dev, Error **errp)
+> hw/arm/allwinner-h3.c:359:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->mmc0),
+> --
+> hw/arm/bcm2835_peripherals.c=128=static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+> hw/arm/bcm2835_peripherals.c:322:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
+> --
+> hw/arm/bcm2836.c=69=static void bcm2836_realize(DeviceState *dev, Error **errp)
+> hw/arm/bcm2836.c:87:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->peripherals),
+> --
+> hw/arm/xlnx-zynqmp.c=276=static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
+> hw/arm/xlnx-zynqmp.c:522:        object_property_add_alias(OBJECT(s), bus_name, sdhci, "sd-bus");
 
-  perf record $QEMU $ARGS
+And this are probably usable with "bus=sd-bus" or something like that on
+other devices, too.
 
-Then a "perf report" which will show you the hotspots, for example:
+Paolo
 
-   8.92%  qemu-system-aar  qemu-system-aarch64      [.] helper_lookup_tb_ptr
-   4.76%  qemu-system-aar  qemu-system-aarch64      [.] liveness_pass_1
-   3.69%  qemu-system-aar  qemu-system-aarch64      [.] tcg_gen_code
-   2.95%  qemu-system-aar  qemu-system-aarch64      [.] qht_lookup_custom
-   2.93%  qemu-system-aar  qemu-system-aarch64      [.] tcg_optimize
-   1.28%  qemu-system-aar  qemu-system-aarch64      [.] tcg_out_opc.isra.15
-   1.09%  qemu-system-aar  qemu-system-aarch64      [.] get_phys_addr_lpae
-   1.09%  qemu-system-aar  [kernel.kallsyms]        [k] isolate_freepages_b=
-lock
-   1.05%  qemu-system-aar  qemu-system-aarch64      [.] cpu_get_tb_cpu_state
-   0.98%  qemu-system-aar  [kernel.kallsyms]        [k] do_syscall_64
-   0.94%  qemu-system-aar  qemu-system-aarch64      [.] tb_lookup_cmp
-   0.78%  qemu-system-aar  qemu-system-aarch64      [.] init_ts_info
-   0.73%  qemu-system-aar  qemu-system-aarch64      [.] tb_htable_lookup
-   0.73%  qemu-system-aar  qemu-system-aarch64      [.] tb_gen_code
-   0.73%  qemu-system-aar  qemu-system-aarch64      [.] tlb_set_page_with_a=
-ttrs
-
->
->
-> Am 07.10.2020 um 13:00 schrieb Alex Benn=C3=A9e:
->> perf to record your boot
-
-
---=20
-Alex Benn=C3=A9e

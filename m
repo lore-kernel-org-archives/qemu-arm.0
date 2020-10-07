@@ -1,180 +1,179 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp459750lfq;
-        Wed, 7 Oct 2020 07:30:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyYQYWZFwTiBVV1eM1mZMezo2HM/EmqXPbQNySU0s+zv2xiis0bTcf0mpy/sSO5gtsN+Mgs
-X-Received: by 2002:a25:d287:: with SMTP id j129mr4387929ybg.308.1602081042906;
-        Wed, 07 Oct 2020 07:30:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602081042; cv=none;
-        d=google.com; s=arc-20160816;
-        b=qV4UK3o5kQYHZRQIaZMmLcRL+LUiixcjPlTiDG7t2pQdN+hdE11w3z/qRzE6isoA2O
-         JH8wZScZMLCH6fX+q6c3Q0S8Wuf1tDlpPWAAGC0Wa5cKJTrzTXvExb482ms6GwnmUciY
-         bEV8E605NSv8srN4qUpRtkAxO/HE6uDCF4+OY0h1XRc6yx4kI0RTpmeXK/wfHV53Xpz6
-         Ax4TISe6h7f+p1DX0xODx8GKxWHa16K9biqdDUoulqHVgYroAMP+AwQk3oPiG2u6SwwR
-         VfxLHzy95UJair7/m1D478yO7vQzeXqt+QIB4uGhVXKGD3F1jfD9zIPQHbyoE8re0ISD
-         SWXA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=OoFgoofjsmYL58cW4VnPw0ke8EQ+W3YO/cvn1z5iJ2k=;
-        b=c9JohV7NhlxFq7bXlLjCRuQCb66rjC0JKBi0odPQYJI391ZaVEGh1/kAwR+EBhmqHz
-         LUdNZpCU7s4hBlo32nGMWuJCJ6RNW3GwkMOWNu49wMnPS7vinVZbP0XtPgGajhayElZT
-         Ya+4rZp8u+aiPBhogU7PSh28g5Kex28NAeoeBw62PkdlwWEWPvPZhmtSKFuq0cGsIGxp
-         Fj1OTcRiJt39NGmj4xvuD1TKJiZv7zKGaBmGsjPdJ/2RvjosO2jTbkHnMAyyoeFV1q0L
-         mjfkxltOF9cg8UA34Jc7SOluNoYVoj3PrtdO6NwsCjujH3EteZH28eAPm9jCRzNczFYH
-         rHVw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nLZKzi76;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h20si2415078ybk.71.2020.10.07.07.30.42
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Oct 2020 07:30:42 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=nLZKzi76;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:33902 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQASo-0004gC-AA
-	for alex.bennee@linaro.org; Wed, 07 Oct 2020 10:30:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42118)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kQARJ-00038V-DB
- for qemu-devel@nongnu.org; Wed, 07 Oct 2020 10:29:12 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629]:34279)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kQARG-0003cU-2S
- for qemu-devel@nongnu.org; Wed, 07 Oct 2020 10:29:08 -0400
-Received: by mail-ej1-x629.google.com with SMTP id u8so3290035ejg.1
- for <qemu-devel@nongnu.org>; Wed, 07 Oct 2020 07:29:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=OoFgoofjsmYL58cW4VnPw0ke8EQ+W3YO/cvn1z5iJ2k=;
- b=nLZKzi76+qawzoYR4YDzJGOyL0yrQ54C9/43BLw7dM37NckCzkY91PRZyX3pcpnFO1
- ktf01yi33TiTaRdgqGc+nrjHCPbM/wwVOa4LJDRzzloR5oBw9c+U1CUCfRuVv/gpBb5M
- zHXRV1n1xWyIC+mc5rQbD/RMfScSAesz1PJgY8TXvzd2UW7hQldPavXfuH4rGFwAjq8S
- Uw0lU/f0TXijdpim/SZlEhmaY0yoKmwOu4/VcRLbsCqJYtU2r89Gt5zk9rDN5XdG6HZS
- DrEMC835OZp+txmoGE1UhK/muwOfNnr2O3Ez/MEL4kip1wZoB+UfNTMxjMczewCqdG1G
- A10Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=OoFgoofjsmYL58cW4VnPw0ke8EQ+W3YO/cvn1z5iJ2k=;
- b=tPxLUxndLHnb1HmZh4/9LJc9pyahG7i7lYycnKtnpqCdh66ED91wps4aJlTYmqliBB
- JXCgdubuEIuxisKcs7qF914dO+gK5aK9X+6karklMEYhczqy/TnRHaM73Fh32BSg4pck
- QFB1xksLubNTx4yn4QL7D4hvHQkybvWbTXOmqkx7ftKpt9hGVJlEwbKNKh7cHSSo110P
- y2pdIwAhPkYXAi2dFO+kl/l2Sxj3b66NJHT2b8RCcu3YIXHS0LZDZiYJv7GB2r159VIW
- FdQPauYnyeTRE4Cb0mYXtwYkFBXgP7m1iXDFtqYnU8f4wFzMdC6al6Gu47DB+kFxk7Ol
- 5fGg==
-X-Gm-Message-State: AOAM532r324jiJJDzwnQe4Jz4q06PjGaoZlFAdceLAgOmhwI5ZNj1Wkx
- r38BZSDKpE+UJoJANsAG58HHfyOK+uF78zXwOJePDQ==
-X-Received: by 2002:a17:906:ce21:: with SMTP id
- sd1mr3746064ejb.4.1602080944066; 
- Wed, 07 Oct 2020 07:29:04 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id u8sm2919462wmj.45.2020.10.07.08.06.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Oct 2020 08:06:00 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id CA6DB1FF7E;
+	Wed,  7 Oct 2020 16:05:59 +0100 (BST)
+References: <20201006172359.2998-1-richard.henderson@linaro.org>
+ <20201006172359.2998-2-richard.henderson@linaro.org>
+User-agent: mu4e 1.5.5; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, peter.maydell@linaro.org
+Subject: Re: [PATCH 1/1] tests/tcg/aarch64: Add bti mmap smoke test
+In-reply-to: <20201006172359.2998-2-richard.henderson@linaro.org>
+Date: Wed, 07 Oct 2020 16:05:59 +0100
+Message-ID: <87lfgiyt2g.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20201006220647.GR7303@habkost.net>
-In-Reply-To: <20201006220647.GR7303@habkost.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 7 Oct 2020 15:28:52 +0100
-Message-ID: <CAFEAcA_se7jErv9AFM2D7UdDMurB9Lb6W9aAXD6648spQ6idKg@mail.gmail.com>
-Subject: Re: Purpose of QOM properties registered at realize time?
-To: Eduardo Habkost <ehabkost@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x629.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- qemu-ppc <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- "Daniel P. Berrange" <berrange@redhat.com>, John Snow <jsnow@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: eZpuSoTxB9Gz
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: qlM8++cbZr71
 
-On Tue, 6 Oct 2020 at 23:06, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> While trying to understand how QOM properties are used in QEMU, I
-> stumbled upon multiple cases where alias properties are added at
-> realize time.
+
+Richard Henderson <richard.henderson@linaro.org> writes:
+
+> This tests PROT_BTI, and also does not require special
+> compiler support.
 >
-> Now, I don't understand why those properties exist.  As the
-> properties are added at realize time, I assume they aren't
-> supposed to be touched by the user at all.  If they are not
-> supposed to be touched by the user, what exactly is the purpose
-> of those QOM properties?
-
-QOM properties are not solely provided for the benefit of the user.
-We also use them a lot in board and SoC code as the interface
-by which C code says "create an object, configure it, connect it".
-
-(This was partly motivated in the original QOM design I think by the idea
-being that eventually one might be able to completely define a board model
-purely declaratively by specifying all the devices and properties and
-wiring everything up that way. Needless to say we've never really
-taken any serious steps towards actually doing that.)
-
-> For reference, these are the cases I've found:
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  tests/tcg/aarch64/bti-2.c         | 108 ++++++++++++++++++++++++++++++
+>  tests/tcg/aarch64/Makefile.target |   7 +-
+>  2 files changed, 113 insertions(+), 2 deletions(-)
+>  create mode 100644 tests/tcg/aarch64/bti-2.c
 >
-> $ git grep -nwpE 'object_property_add_alias|qdev_pass_gpios|qdev_alias_all_properties' | grep -A1 realize
-> hw/arm/allwinner-a10.c=71=static void aw_a10_realize(DeviceState *dev, Error **errp)
-> hw/arm/allwinner-a10.c:89:    qdev_pass_gpios(DEVICE(&s->intc), dev, NULL);
+> diff --git a/tests/tcg/aarch64/bti-2.c b/tests/tcg/aarch64/bti-2.c
+> new file mode 100644
+> index 0000000000..6dc8908b5a
+> --- /dev/null
+> +++ b/tests/tcg/aarch64/bti-2.c
+> @@ -0,0 +1,108 @@
+> +/*
+> + * Branch target identification, basic notskip cases.
+> + */
+> +
+> +#include <stdio.h>
+> +#include <signal.h>
+> +#include <string.h>
+> +#include <unistd.h>
+> +#include <sys/mman.h>
+> +
+> +#ifndef PROT_BTI
+> +#define PROT_BTI  0x10
+> +#endif
+> +
+> +static void skip2_sigill(int sig, siginfo_t *info, void *vuc)
+> +{
+> +    ucontext_t *uc =3D vuc;
+> +    uc->uc_mcontext.pc +=3D 8;
+> +    uc->uc_mcontext.pstate =3D 1;
+> +}
+> +
+> +#define NOP       "nop"
+> +#define BTI_N     "hint #32"
+> +#define BTI_C     "hint #34"
+> +#define BTI_J     "hint #36"
+> +#define BTI_JC    "hint #38"
+> +
+> +#define BTYPE_1(DEST)    \
+> +    "mov x1, #1\n\t"     \
+> +    "adr x16, 1f\n\t"    \
+> +    "br x16\n"           \
+> +"1: " DEST "\n\t"        \
+> +    "mov x1, #0"
+> +
+> +#define BTYPE_2(DEST)    \
+> +    "mov x1, #1\n\t"     \
+> +    "adr x16, 1f\n\t"    \
+> +    "blr x16\n"          \
+> +"1: " DEST "\n\t"        \
+> +    "mov x1, #0"
+> +
+> +#define BTYPE_3(DEST)    \
+> +    "mov x1, #1\n\t"     \
+> +    "adr x15, 1f\n\t"    \
+> +    "br x15\n"           \
+> +"1: " DEST "\n\t"        \
+> +    "mov x1, #0"
+> +
+> +#define TEST(WHICH, DEST, EXPECT) \
+> +    WHICH(DEST) "\n"              \
+> +    ".if " #EXPECT "\n\t"         \
+> +    "eor x1, x1," #EXPECT "\n"    \
+> +    ".endif\n\t"                  \
+> +    "add x0, x0, x1\n\t"
+> +
+> +extern char test_begin[], test_end[];
+> +
+> +asm("\n"
+> +"test_begin:\n\t"
+> +    BTI_C "\n\t"
+> +    "mov x2, x30\n\t"
+> +    "mov x0, #0\n\t"
+> +
+> +    TEST(BTYPE_1, NOP, 1)
+> +    TEST(BTYPE_1, BTI_N, 1)
+> +    TEST(BTYPE_1, BTI_C, 0)
+> +    TEST(BTYPE_1, BTI_J, 0)
+> +    TEST(BTYPE_1, BTI_JC, 0)
+> +
+> +    TEST(BTYPE_2, NOP, 1)
+> +    TEST(BTYPE_2, BTI_N, 1)
+> +    TEST(BTYPE_2, BTI_C, 0)
+> +    TEST(BTYPE_2, BTI_J, 1)
+> +    TEST(BTYPE_2, BTI_JC, 0)
+> +
+> +    TEST(BTYPE_3, NOP, 1)
+> +    TEST(BTYPE_3, BTI_N, 1)
+> +    TEST(BTYPE_3, BTI_C, 1)
+> +    TEST(BTYPE_3, BTI_J, 0)
+> +    TEST(BTYPE_3, BTI_JC, 0)
+> +
+> +    "ret x2\n"
+> +"test_end:"
+> +);
+> +
+> +int main()
+> +{
+> +    struct sigaction sa;
+> +
+> +    void *p =3D mmap(0, getpagesize(),
+> +                   PROT_EXEC | PROT_READ | PROT_WRITE | PROT_BTI,
+> +                   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+> +    if (p =3D=3D MAP_FAILED) {
+> +        perror("mmap");
+> +        return 1;
+> +    }
+> +
+> +    memset(&sa, 0, sizeof(sa));
+> +    sa.sa_sigaction =3D skip2_sigill;
+> +    sa.sa_flags =3D SA_SIGINFO;
+> +    if (sigaction(SIGILL, &sa, NULL) < 0) {
+> +        perror("sigaction");
+> +        return 1;
+> +    }
+> +
+> +    memcpy(p, test_begin, test_end - test_begin);
+> +    return ((int (*)(void))p)();
+> +}
+> diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefi=
+le.target
+> index 491683e91d..d7d33e293c 100644
+> --- a/tests/tcg/aarch64/Makefile.target
+> +++ b/tests/tcg/aarch64/Makefile.target
+> @@ -26,11 +26,14 @@ run-plugin-pauth-%: QEMU_OPTS +=3D -cpu max
+>  endif
+>=20=20
+>  # BTI Tests
+> +# bti-1 tests the elf notes, so we require special compiler support.
+>  ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_BTI),)
+>  AARCH64_TESTS +=3D bti-1
+> -bti-%: CFLAGS +=3D -mbranch-protection=3Dstandard
+> -bti-%: LDFLAGS +=3D -nostdlib
+> +bti-1: CFLAGS +=3D -mbranch-protection=3Dstandard
+> +bti-1: LDFLAGS +=3D -nostdlib
+>  endif
+> +# bti-2 tests PROT_BTI, so no special compiler support required.
+> +AARCH64_TESTS +=3D bti-2
 
-This kind of thing, and also the sd-bus cases, is where an SoC device wants
-to expose some GPIO lines or an sd-bus which is actually implemented by
-a device which exists inside the SoC (and which the SoC has created and
-wired up). The effect is that for the user of the SoC object the gpio/sd-bus
-can be used as if it was directly implemented by the SoC object, when it's
-actually just being passed through to the internal device.
 
-I'd have to look at the code to find out whether it's really necessary in all
-cases to do this pass-through setup at realize rather than instance-init.
+LGTM
 
-In this case:
+Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-> hw/arm/armv7m.c=149=static void armv7m_realize(DeviceState *dev, Error **errp)
-> hw/arm/armv7m.c:219:    qdev_pass_gpios(DEVICE(&s->nvic), dev, NULL);
+(I assume this just rolls up with your existing BTI patches).
 
-there's a comment on the immediately preceding lines which explains what
-the code is doing and why it is being done in realize:
-
- 215     /* Alias the NVIC's input and output GPIOs as our own so the board
- 216      * code can wire them up. (We do this in realize because the
- 217      * NVIC doesn't create the input GPIO array until realize.)
- 218      */
-
-Possibly one could move the code in the devices which creates the
-GPIO array/sdbus/whatever so that it does so in instance_init
-rather than in realize, and then more of these "alias a connection
-through" bits of code could also move to instance_init. But there are
-cases where the GPiO/etc can only be created in realize because
-the number of GPIOs depends on properties of the device and so isn't
-know at instance_init time.
-
--- PMM
+--=20
+Alex Benn=C3=A9e

@@ -1,160 +1,115 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp283444lfq;
-        Wed, 7 Oct 2020 03:35:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwDC8tbml5ohKNGCugFZR/AE0jjTiFd4CV/1X8NWUxhOjuhXpcvVH/q+HuQe7onr590IwqU
-X-Received: by 2002:a25:23d6:: with SMTP id j205mr3241967ybj.76.1602066949990;
-        Wed, 07 Oct 2020 03:35:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602066949; cv=none;
-        d=google.com; s=arc-20160816;
-        b=CcIPTP/SqwIydWF0UzBW2G6Zgftl0O9ACPUyAi6YzGb2pdK92RK+GHy0BJqR9UT+RL
-         huE0Ful9A7OIATJSZ/OeFTwERh7N9iL29pZktcWMOOk9l1ugnUpStc+wmVNPFqHP13Fu
-         XIR7gnkEsVY9Nl62JsHORWQ5nDxSMre/9hbxPrObuIre1h5bk+ULxD27qmMafxTaCt2l
-         HcB5IushXa6SbOdJYqGzkfCIb/LJXSRzsBKgHFVVoRyNi63vDW2a6MAW2fM8mh2d5WOP
-         YK5nFW3cEvnyQ7Jc9g4kgSHFkEYVpFoRLLdJDBZBLo5pRQoeLM4Jt/4Q2j/QxsV1U2u0
-         GQWA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence
-         :mime-version:references:message-id:in-reply-to:subject:to:date;
-        bh=wqcLHl65iWyi+nXbIJL0w7Q/IDlDv1GujGxXvr59qHs=;
-        b=deb6lyvdjRG4RaqrvrBD/0yei6BqiVzxLV1msJoxNNpe3jto0IWeb0yjMxPRtYGtmX
-         iqMORcbXisPU4F5t7rbkZdk0BhZr7uphTLALNSQBrUY5l05/L9MZ/1xkG0phV5CMZyEM
-         QTjU1iMT2/BzTh2tCoXi8wt4Qps+ahY+jLB5JmQL45nxO73170GI5E5C7x0s3JodQtcu
-         rucbshA52brR3pD7UzQ5f3VDynsyEooNKBxXebQH9W6/x3nw/+C0e8yUrc6E5wEed5eM
-         CfELHow6w0YHAoXUfOHbb2VC9EE+Y+qbZYqh1dSVt4ehAorKAxGC8/Mf1gDa0Kmrque4
-         ioww==
-ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d129si1476147ybh.40.2020.10.07.03.35.49
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Oct 2020 03:35:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:38128 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQ6nV-0000C3-Do
-	for alex.bennee@linaro.org; Wed, 07 Oct 2020 06:35:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45640)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1kQ6nC-000089-Qw; Wed, 07 Oct 2020 06:35:30 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2]:52606)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1kQ6n9-0007ym-Rb; Wed, 07 Oct 2020 06:35:30 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 66635747DFA;
- Wed,  7 Oct 2020 12:35:15 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 3EA28747871; Wed,  7 Oct 2020 12:35:15 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 3C6C97475FA;
- Wed,  7 Oct 2020 12:35:15 +0200 (CEST)
-Date: Wed, 7 Oct 2020 12:35:15 +0200 (CEST)
-To: Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: Purpose of QOM properties registered at realize time?
-In-Reply-To: <20201006220647.GR7303@habkost.net>
-Message-ID: <98c7534-cdc4-579-3dee-47f75b69961e@eik.bme.hu>
-References: <20201006220647.GR7303@habkost.net>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id l3sm2179504wmh.27.2020.10.07.04.00.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Oct 2020 04:00:50 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 19FDD1FF7E;
+	Wed,  7 Oct 2020 12:00:50 +0100 (BST)
+References: <47dbcad4-3121-b1c3-06fa-abec7c353fb6@gmail.com>
+ <87sgatanti.fsf@linaro.org>
+ <CAFEAcA_ZMLV3DZ_R_SHvPLdEf=i-xpspD5itBmfYeqyMhgtLWQ@mail.gmail.com>
+ <875z7p3t9e.fsf@linaro.org>
+ <e43be86d-1847-199f-4cbd-2e3bd124d70a@gmail.com>
+ <CADBGO794+ZPD=B=dFuA7SC96g3GDJXF1A8j=VP6MeiSw1Sf4oQ@mail.gmail.com>
+ <d8d79b4c-aeb4-4f07-7110-91d8d1afd701@gmail.com>
+ <87362r3cbt.fsf@linaro.org>
+ <61c49583-c548-a8b2-7106-59011196f430@gmail.com>
+ <CADBGO7-BaTH3MBZa6Dbv2+uxKNbv3ztwQ=iu_FCgrcrKBUzCPw@mail.gmail.com>
+ <4da67d13-a774-f62e-ad89-de062cbe81da@gmail.com>
+User-agent: mu4e 1.5.5; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Schneider <74cmonty@gmail.com>
+Cc: Paul Zimmerman <pauldzim@gmail.com>, Peter Maydell
+ <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, QEMU
+ Developers <qemu-devel@nongnu.org>, Andrew Baumann
+ <Andrew.Baumann@microsoft.com>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <f4bug@amsat.org>
+Subject: Re: Emulate Rpi with QEMU fails
+In-reply-to: <4da67d13-a774-f62e-ad89-de062cbe81da@gmail.com>
+Date: Wed, 07 Oct 2020 12:00:50 +0100
+Message-ID: <87blhe1esd.fsf@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-Spam-Probability: 8%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 06:35:15
-X-ACL-Warn: Detected OS   = FreeBSD 9.x or newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: BALATON Zoltan <balaton@eik.bme.hu>
-From: BALATON Zoltan via <qemu-arm@nongnu.org>
-X-TUID: 6AZfRwEFXozO
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: lFRBoiMqtjGb
 
-On Tue, 6 Oct 2020, Eduardo Habkost wrote:
+
+Thomas Schneider <74cmonty@gmail.com> writes:
+
 > Hi,
 >
-> While trying to understand how QOM properties are used in QEMU, I
-> stumbled upon multiple cases where alias properties are added at
-> realize time.
->
-> Now, I don't understand why those properties exist.  As the
-> properties are added at realize time, I assume they aren't
-> supposed to be touched by the user at all.  If they are not
-> supposed to be touched by the user, what exactly is the purpose
-> of those QOM properties?
->
-> For reference, these are the cases I've found:
->
-> $ git grep -nwpE 'object_property_add_alias|qdev_pass_gpios|qdev_alias_all_properties' | grep -A1 realize
-> hw/arm/allwinner-a10.c=71=static void aw_a10_realize(DeviceState *dev, Error **errp)
-> hw/arm/allwinner-a10.c:89:    qdev_pass_gpios(DEVICE(&s->intc), dev, NULL);
-> --
-> hw/arm/allwinner-h3.c=232=static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-> hw/arm/allwinner-h3.c:359:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->mmc0),
-> --
-> hw/arm/armsse.c=429=static void armsse_realize(DeviceState *dev, Error **errp)
-> hw/arm/armsse.c:1092:    qdev_pass_gpios(dev_secctl, dev, "mscexp_status");
-> --
-> hw/arm/armv7m.c=149=static void armv7m_realize(DeviceState *dev, Error **errp)
-> hw/arm/armv7m.c:219:    qdev_pass_gpios(DEVICE(&s->nvic), dev, NULL);
-> --
-> hw/arm/bcm2835_peripherals.c=128=static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-> hw/arm/bcm2835_peripherals.c:322:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
-> --
-> hw/arm/bcm2836.c=69=static void bcm2836_realize(DeviceState *dev, Error **errp)
-> hw/arm/bcm2836.c:87:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->peripherals),
-> hw/arm/msf2-soc.c=79=static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
-> hw/arm/msf2-soc.c:170:        object_property_add_alias(OBJECT(s), bus_name,
-> --
-> hw/arm/nrf51_soc.c=58=static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
-> hw/arm/nrf51_soc.c:138:    qdev_pass_gpios(DEVICE(&s->gpio), dev_soc, NULL);
-> --
-> hw/arm/xlnx-zynqmp.c=276=static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-> hw/arm/xlnx-zynqmp.c:522:        object_property_add_alias(OBJECT(s), bus_name, sdhci, "sd-bus");
-> --
-> hw/misc/mac_via.c=1011=static void mac_via_realize(DeviceState *dev, Error **errp)
-> hw/misc/mac_via.c:1028:    object_property_add_alias(OBJECT(dev), "irq[0]", OBJECT(ms),
+> I already considered the host CPU power.
+> However I have this=20
+> <https://ark.intel.com/content/www/us/en/ark/products/33924/intel-core-2-=
+quad-processor-q9550-12m-cache-2-83-ghz-1333-mhz-fsb.html>=20
+> CPU
+> Intel Core 2 Quad Q9550 2,83 GHz
+> and assumed this should be powerful enough for RPi emulation.
 
-Mark likely knows this one. I think he mentioned once that it may be used 
-for storing reference to some object that needs to be accessed later but I 
-could be wrong, haven't checked actual code only recalling from memory.
+For each emulated instruction you can be running between 6-10 host
+instructions on average. We have certainly improved the performance of
+the emulation over time and take advantage of multiple threads but in
+the end system emulation will always be fairly expensive.
 
-Regards,
-BALATON Zoltan
+> But maybe my assumption was too optimistic.
 
-> --
-> hw/ppc/spapr_drc.c=511=static void realize(DeviceState *d, Error **errp)
-> hw/ppc/spapr_drc.c:530:    object_property_add_alias(root_container, link_name,
-> hw/riscv/sifive_e.c=186=static void sifive_e_soc_realize(DeviceState *dev, Error **errp)
-> hw/riscv/sifive_e.c:233:    qdev_pass_gpios(DEVICE(&s->gpio), dev, NULL);
-> hw/riscv/sifive_u.c=651=static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
-> hw/riscv/sifive_u.c:743:    qdev_pass_gpios(DEVICE(&s->gpio), dev, NULL);
+You can use perf to record your boot and analyse where QEMU is spending
+it's time. Unless there is a major outlier though it's unlikely to be
+easy to optimise.
+
 >
 >
+> Am 07.10.2020 um 08:50 schrieb Paul Zimmerman:
+>> On Tue, Oct 6, 2020 at 11:28 PM Thomas <74cmonty@gmail.com> wrote:
+>>> Hello!
+>>>
+>>> Many thanks for your support.
+>>>
+>>> I managed to get emulated RPi starting.
+>>>
+>>> However there's one question I want to ask:
+>>> How can I accelerate the startup sequence?
+>>> I mean booting the emulated RPi takes more than 3 minutes.
+>>>
+>>> Regards
+>>> Thomas
+>> Get a faster computer? ;)
+>>
+>> On my Intel i7 desktop it takes about 40 seconds to boot to the login:
+>> prompt on the serial console, and about 1 min 8 seconds before the
+>> GUI is up. On my 5 year old laptop it's probably twice that. I don't know
+>> of any way to make it go faster.
+>>
+>> - Paul
+>>
+>>> Am 06.10.20 um 11:58 schrieb Alex Benn=C3=A9e:
+>>>> Thomas Schneider <74cmonty@gmail.com> writes:
+>>>>
+>>>>> Hello Paul,
+>>>>>
+>>>>> many thanks for sharing this info.
+>>>>>
+>>>>> Can you confirm that the emulated RPi with your command will use
+>>>>> "internal QEMU" network, means the client cannot be accessed from any
+>>>>> other device in LAN?
+>>>> The support for user-mode and TAP networking is orthogonal to the
+>>>> emulated device. However if you only want a few ports it's quite easy =
+to
+>>>> use port forwarding, e.g:
+>>>>
+>>>>    -netdev user,id=3Dunet,hostfwd=3Dtcp::2222-:22
+>>>>
+>>>> which forwards 2222 to port 22 on the device. I have an alias in
+>>>> .ssh/config for accessing my QEMU devices.
+>>>>
+>>>>> If yes, what is required to setup a TAP connected to host's network
+>>>>> bridge?
+>>>> I'll defer to others for this but generally when I want proper bridged
+>>>> networking for a VM I use virt-manager/libvirt to configure it because
+>>>> it can be quite fiddly to do by hand.
+>>>>
+
+
+--=20
+Alex Benn=C3=A9e

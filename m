@@ -1,161 +1,218 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id e4sm27559080wrw.96.2021.02.08.00.48.22
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 08 Feb 2021 00:48:22 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id BE51B1FF7E;
-	Mon,  8 Feb 2021 08:48:21 +0000 (GMT)
-References: <20210207232310.2505283-1-f4bug@amsat.org>
- <20210207232310.2505283-6-f4bug@amsat.org>
-User-agent: mu4e 1.5.7; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <Alistair.Francis@wdc.com>, qemu-riscv@nongnu.org,
- Yoshinori Sato <ysato@users.sourceforge.jp>, Sagar Karandikar
- <sagark@eecs.berkeley.edu>, Bastian Koppelmann
- <kbastian@mail.uni-paderborn.de>, Richard Henderson
- <richard.henderson@linaro.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>,
- Claudio Fontana <cfontana@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>, Aurelien Jarno
- <aurelien@aurel32.net>, qemu-arm@nongnu.org
-Subject: Re: [RFC PATCH v2 5/6] accel/tcg: Refactor debugging
- tlb_assert_iotlb_entry_for_ptr_present()
-Date: Mon, 08 Feb 2021 08:42:57 +0000
-In-reply-to: <20210207232310.2505283-6-f4bug@amsat.org>
-Message-ID: <87im73aqsq.fsf@linaro.org>
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp137292lfq;
+        Tue, 6 Oct 2020 23:28:29 -0700 (PDT)
+X-Received: by 2002:a5d:5449:: with SMTP id w9mr1766844wrv.182.1602052109859;
+        Tue, 06 Oct 2020 23:28:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602052109; cv=none;
+        d=google.com; s=arc-20160816;
+        b=atnYwbjtVnZg9PkItz1doZO1zjkkk7A4RalHHEZM5RvEl+N9eldGQbThrPGjV9kJwU
+         Ay2vqW7ET1P0F0zeSar39SvvUnU+OxhfWuOKlTS4L23A1xd6PBUxdu2dTe69EtXUbDXw
+         plRdUql+c+5MNn/4IPFePbQs631Cw1nP9dUGEyGJsvZTR19V1wY1rlIzxT20tfr9xiZ4
+         wwqPoloO1qMpTHfrEUSALIFiI4ZUL/brMOR0+eY/wp1mGxJ2PCFLo66LL693Nbujk1za
+         w0UlliEiY/pT+o+Xlhp9iG4MuAHN95Vp014vk/x/269whhoaOwycxHZI+8NcuhZneBUr
+         9CjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-language:content-transfer-encoding:in-reply-to:mime-version
+         :user-agent:date:message-id:autocrypt:from:references:cc:to:subject
+         :dkim-signature;
+        bh=j1izx32osDo1A3hTn0MvPqt5JizCW12iU+JC9aFRxEo=;
+        b=SN9d2cstWG1imPkhcnb7UC4JLP1on29h7x2jWxzugXeaFqeceIvX1pBMX3HTEOiBNb
+         wdmV/PlH3d2La/byQxsFgADslUA+Y4yL7TpyAGi4zZy+LG/f+I4ZpmNw4uMsusYxH//v
+         +eGZ33Tmq38BGXd0tC5BgBh/GfOEh1kR+ZeweGS8/shiDjEd8zwP/Wvtn/5ZDbv3fSj5
+         b4GGl5vvkC3ANgmR2mxO+J1rOReJvJvak6StfZ2B8FiI3JIDpHYuVT0dXoXA0pX9bOxq
+         OnLbLxOYJmS3TIqmvy7dWxvMdglKzvE3KiJg76ZJRJKXKCdlF8F8AYFKE+oUb6gxNE7u
+         4G+Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qQCOjbi3;
+       spf=pass (google.com: domain of 74cmonty@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=74cmonty@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <74cmonty@gmail.com>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id m1sor443190wrq.26.2020.10.06.23.28.29
+        (Google Transport Security);
+        Tue, 06 Oct 2020 23:28:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 74cmonty@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=qQCOjbi3;
+       spf=pass (google.com: domain of 74cmonty@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=74cmonty@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=subject:to:cc:references:from:autocrypt:message-id:date:user-agent
+         :mime-version:in-reply-to:content-transfer-encoding:content-language;
+        bh=j1izx32osDo1A3hTn0MvPqt5JizCW12iU+JC9aFRxEo=;
+        b=qQCOjbi35oNPM/TSYE0afuxj0+DYKIw0L09v54x+xlHPi6vaOgnhFZfs2VFZkH62wX
+         hAvmXD7yK8d4UOnNJCFolP8Qx8/BxHugEw9eZ/RdKD2eUwGpMRonsaRFYB5jA71rJIyV
+         xkA1fyR5M9NDm8aWemLPAKjxZCA9e36F8pBqWnHWisNIUXNHfQb8tuCVlFVQ1eLpWExv
+         TZLQiedNXns7mk0KvQ4qiszbsrH2dzBWrEceR41PWSb2v8JfLGpmJHziUOxWN+GmbJAm
+         9Ux0tT+ooxOaRBneZINjJa4t65Jle/PRMozXQICZ5yeVJl1ZhaRfGYyb7MK3wde7CR0a
+         dWYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:subject:to:cc:references:from:autocrypt
+         :message-id:date:user-agent:mime-version:in-reply-to
+         :content-transfer-encoding:content-language;
+        bh=j1izx32osDo1A3hTn0MvPqt5JizCW12iU+JC9aFRxEo=;
+        b=VjF/ZK0JWruhJ854/a8PAj0OuJ4ke5vKTW6HxxUId6x0stvhxJPjntqN9glz2IL18V
+         xPN/lDnEjuVdDb24wW6UueiElyvo+0OErAtVLhIJ3NRrdcxpeSOBndG/3pwSQ3UcoCHi
+         9jFSrisCgBo2EigpGGTYBxQ6MnndB5l3BRwPRQ1h2AKvcdT9+huM4/msV+X9cT5E5qo6
+         M+DMeMZamaMJ9gDxsmXKxxvOpX1BO5SH3+sY+cFmtCwDl81aXQFvG/xJn8VlE8m7URo2
+         1mNTjP6iMcmM6ez3yLJh4QqYrenztIvIFqQwFRUuvB6H0TDOpvEi5wEMtr6ZfoJOdQki
+         /zAw==
+X-Gm-Message-State: AOAM530tSAkrBY9sqv68X+b0c5EtE4xB8FnA0mieSNnHlr6dH6it+yEr
+	RIxICDPOLriu9FOixCTHp6M=
+X-Google-Smtp-Source: ABdhPJwTbEBxpzlLEMs3TUcgVgpv88+1sS8+oKoE5ovblK3tXY5Ff3DTTwA46WZhSzX7h8Fv+CTHgw==
+X-Received: by 2002:adf:edd2:: with SMTP id v18mr1636762wro.242.1602052109534;
+        Tue, 06 Oct 2020 23:28:29 -0700 (PDT)
+Return-Path: <74cmonty@gmail.com>
+Received: from [192.168.1.11] (b2b-94-79-184-225.unitymedia.biz. [94.79.184.225])
+        by smtp.gmail.com with ESMTPSA id b200sm1265196wme.44.2020.10.06.23.28.27
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 06 Oct 2020 23:28:28 -0700 (PDT)
+Subject: Re: Emulate Rpi with QEMU fails
+To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+Cc: Paul Zimmerman <pauldzim@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+References: <47dbcad4-3121-b1c3-06fa-abec7c353fb6@gmail.com>
+ <87sgatanti.fsf@linaro.org>
+ <CAFEAcA_ZMLV3DZ_R_SHvPLdEf=i-xpspD5itBmfYeqyMhgtLWQ@mail.gmail.com>
+ <875z7p3t9e.fsf@linaro.org> <e43be86d-1847-199f-4cbd-2e3bd124d70a@gmail.com>
+ <CADBGO794+ZPD=B=dFuA7SC96g3GDJXF1A8j=VP6MeiSw1Sf4oQ@mail.gmail.com>
+ <d8d79b4c-aeb4-4f07-7110-91d8d1afd701@gmail.com> <87362r3cbt.fsf@linaro.org>
+From: Thomas <74cmonty@gmail.com>
+Autocrypt: addr=74cmonty@gmail.com; keydata=
+ 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
+Message-ID: <61c49583-c548-a8b2-7106-59011196f430@gmail.com>
+Date: Wed, 7 Oct 2020 08:28:26 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.0
 MIME-Version: 1.0
+In-Reply-To: <87362r3cbt.fsf@linaro.org>
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-TUID: BOWe3rmDNUOx
+Content-Transfer-Encoding: 8bit
+Content-Language: de-DE
+X-TUID: UnoXi7GaXdIA
 
+Hello!
 
-Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> writes:
+Many thanks for your support.
 
-> Refactor debug code as tlb_assert_iotlb_entry_for_ptr_present() helper.
+I managed to get emulated RPi starting.
+
+However there's one question I want to ask:
+How can I accelerate the startup sequence?
+I mean booting the emulated RPi takes more than 3 minutes.
+
+Regards
+Thomas
+
+Am 06.10.20 um 11:58 schrieb Alex Bennée:
+> Thomas Schneider <74cmonty@gmail.com> writes:
 >
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> ---
-> What this code does is out of my league, but refactoring it allow
-> keeping tlb_addr_write() local to accel/tcg/cputlb.c in the next
-> patch.
-
-The assertion that the table entry is current is just a simple
-housekeeping one. The details of how the MTE implementation uses
-(abuses?) the iotlb entries requires a closer reading of the code.
-
-> ---
->  include/exec/exec-all.h |  9 +++++++++
->  accel/tcg/cputlb.c      | 14 ++++++++++++++
->  target/arm/mte_helper.c | 11 ++---------
->  target/arm/sve_helper.c | 10 ++--------
->  4 files changed, 27 insertions(+), 17 deletions(-)
+>> Hello Paul,
+>>
+>> many thanks for sharing this info.
+>>
+>> Can you confirm that the emulated RPi with your command will use 
+>> "internal QEMU" network, means the client cannot be accessed from any 
+>> other device in LAN?
+> The support for user-mode and TAP networking is orthogonal to the
+> emulated device. However if you only want a few ports it's quite easy to
+> use port forwarding, e.g:
 >
-> diff --git a/include/exec/exec-all.h b/include/exec/exec-all.h
-> index f933c74c446..c5e8e355b7f 100644
-> --- a/include/exec/exec-all.h
-> +++ b/include/exec/exec-all.h
-> @@ -296,6 +296,15 @@ void tlb_set_page_with_attrs(CPUState *cpu, target_u=
-long vaddr,
->  void tlb_set_page(CPUState *cpu, target_ulong vaddr,
->                    hwaddr paddr, int prot,
->                    int mmu_idx, target_ulong size);
-> +
-> +/*
-> + * Find the iotlbentry for ptr.  This *must* be present in the TLB
-> + * because we just found the mapping.
-> + */
-> +void tlb_assert_iotlb_entry_for_ptr_present(CPUArchState *env, int ptr_m=
-mu_idx,
-> +                                            uint64_t ptr,
-> +                                            MMUAccessType ptr_access,
-> +                                            uintptr_t index);
-
-Probably worth making this an empty inline for the non CONFIG_DEBUG_TCG
-case so we can eliminate the call to an empty function.
-
->  #else
->  static inline void tlb_init(CPUState *cpu)
->  {
-> diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-> index 8a7b779270a..a6247da34a0 100644
-> --- a/accel/tcg/cputlb.c
-> +++ b/accel/tcg/cputlb.c
-> @@ -429,6 +429,20 @@ void tlb_flush_all_cpus_synced(CPUState *src_cpu)
->      tlb_flush_by_mmuidx_all_cpus_synced(src_cpu, ALL_MMUIDX_BITS);
->  }
->=20=20
-> +void tlb_assert_iotlb_entry_for_ptr_present(CPUArchState *env, int ptr_m=
-mu_idx,
-> +                                            uint64_t ptr,
-> +                                            MMUAccessType ptr_access,
-> +                                            uintptr_t index)
-> +{
-> +#ifdef CONFIG_DEBUG_TCG
-> +    CPUTLBEntry *entry =3D tlb_entry(env, ptr_mmu_idx, ptr);
-> +    target_ulong comparator =3D (ptr_access =3D=3D MMU_DATA_LOAD
-> +                               ? entry->addr_read
-> +                               : tlb_addr_write(entry));
-> +    g_assert(tlb_hit(comparator, ptr));
-> +#endif
-> +}
-> +
->  static bool tlb_hit_page_mask_anyprot(CPUTLBEntry *tlb_entry,
->                                        target_ulong page, target_ulong ma=
-sk)
->  {
-> diff --git a/target/arm/mte_helper.c b/target/arm/mte_helper.c
-> index 6cea9d1b506..f47d3b4570e 100644
-> --- a/target/arm/mte_helper.c
-> +++ b/target/arm/mte_helper.c
-> @@ -111,15 +111,8 @@ static uint8_t *allocation_tag_mem(CPUARMState *env,=
- int ptr_mmu_idx,
->       * matching tlb entry + iotlb entry.
->       */
->      index =3D tlb_index(env, ptr_mmu_idx, ptr);
-> -# ifdef CONFIG_DEBUG_TCG
-> -    {
-> -        CPUTLBEntry *entry =3D tlb_entry(env, ptr_mmu_idx, ptr);
-> -        target_ulong comparator =3D (ptr_access =3D=3D MMU_DATA_LOAD
-> -                                   ? entry->addr_read
-> -                                   : tlb_addr_write(entry));
-> -        g_assert(tlb_hit(comparator, ptr));
-> -    }
-> -# endif
-> +    tlb_assert_iotlb_entry_for_ptr_present(env, ptr_mmu_idx, ptr,
-> +                                           ptr_access, index);
->      iotlbentry =3D &env_tlb(env)->d[ptr_mmu_idx].iotlb[index];
->=20=20
->      /* If the virtual page MemAttr !=3D Tagged, access unchecked. */
-> diff --git a/target/arm/sve_helper.c b/target/arm/sve_helper.c
-> index c8cdf7618eb..a5708da0f2f 100644
-> --- a/target/arm/sve_helper.c
-> +++ b/target/arm/sve_helper.c
-> @@ -4089,14 +4089,8 @@ static bool sve_probe_page(SVEHostPage *info, bool=
- nofault,
->      {
->          uintptr_t index =3D tlb_index(env, mmu_idx, addr);
->=20=20
-> -# ifdef CONFIG_DEBUG_TCG
-> -        CPUTLBEntry *entry =3D tlb_entry(env, mmu_idx, addr);
-> -        target_ulong comparator =3D (access_type =3D=3D MMU_DATA_LOAD
-> -                                   ? entry->addr_read
-> -                                   : tlb_addr_write(entry));
-> -        g_assert(tlb_hit(comparator, addr));
-> -# endif
-> -
-> +        tlb_assert_iotlb_entry_for_ptr_present(env, mmu_idx, addr,
-> +                                               access_type, index);
->          CPUIOTLBEntry *iotlbentry =3D &env_tlb(env)->d[mmu_idx].iotlb[in=
-dex];
->          info->attrs =3D iotlbentry->attrs;
->      }
-
-with the inline fix:
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
---=20
-Alex Benn=C3=A9e
+>   -netdev user,id=unet,hostfwd=tcp::2222-:22
+>
+> which forwards 2222 to port 22 on the device. I have an alias in
+> .ssh/config for accessing my QEMU devices.
+>
+>> If yes, what is required to setup a TAP connected to host's network
+>> bridge?
+> I'll defer to others for this but generally when I want proper bridged
+> networking for a VM I use virt-manager/libvirt to configure it because
+> it can be quite fiddly to do by hand.
+>

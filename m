@@ -1,204 +1,210 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1899056lfa;
-        Tue, 13 Oct 2020 05:14:19 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzRlP6GD+Mlf9hTKS/2M+6OTild3md0G4H6sUtmIX2xbrBbEm1MD6bKjUiX6qN7zkGsMtnH
-X-Received: by 2002:a25:3f82:: with SMTP id m124mr29824797yba.73.1602591259491;
-        Tue, 13 Oct 2020 05:14:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602591259; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp794391lfq;
+        Wed, 7 Oct 2020 15:27:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLCIE1ikos+u7db+WJr3kfHJwR8t9tfSOTG45C9k9YU98335KDoXvEXibqr11bkh7tla5h
+X-Received: by 2002:a25:7314:: with SMTP id o20mr6567865ybc.211.1602109653675;
+        Wed, 07 Oct 2020 15:27:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602109653; cv=none;
         d=google.com; s=arc-20160816;
-        b=P6loqEjcXYk6x2mU5Hl5gU/zELoxsOo/NTn2MzpMuw/ck3TTXFhfQohIYIeHL3UdM5
-         BZ1hk/zOwjkH6VwCSX6f80VnM2GtBvYeI+j6aCgaPg/rlwT8OSj4g7td1SY6lZVkPKAG
-         LmIUtpXVRcbWEihPDBl50nvOc4ssUnkSxjMI6y4HQFmkE7lw7utYyA8O6uTMAT0eVO0M
-         w7hiD5BZpFTEnS3hRCMCq5IvPpYtM/Jb/avnCSQzrXeEqCArZidCNiR2ftbfXWm7glUm
-         B8SgS4ZYfVgLA78RvIyGCP6bINGRt41kQhNNGsb/BVLoB71LDhTEYu9TP2POANREOfD6
-         nlgQ==
+        b=ICpI6m0J6JA1znCPtFB7HjAMVweGBlh5DnKdySJxM4YeoAcQjVbzx1MWlSrADMjb+B
+         9ae67xw2UkSSeThSKRPmLh1wDjiiXr85AVOEwQuDfV9G6Igxv5CYgrvOInSIpjn2UMvm
+         c/ZjIYelGwMuBH0RUWZWtAXmDfHDiT5QODnE7eSoEtkhTm/dqMf6SF3QCzftn/YyPQmP
+         vmgqF6/Gp4uQLAsR/WphMwBHvX1TlbNIK76HJdkR79ixCAwxzmGjbLqVOIAj3RZl8PIB
+         joQu83TMeNjkeWhepMk2Kz4cCjoJsoxOJzTK5i+8IevsgldwK9xnlKO9h/5vRUPpwTzJ
+         k++w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=/03C0bdSrituLpAzK4IxkEeRVE6IdLuEV5LVrm5rzyI=;
-        b=dYvFGoNLU0PRsDL0xRfxSixoJgAAwDgw+JA5sH6PeA0QVn+1mReViD9sZmaFc79af/
-         sn/CO9cr55ascqCjYCfkpIbTqKjDAuCihl2yl1B46gN9wcQNCW5CEzrN8X4ktGerDy9q
-         mQXAs7qstDrsRQZvXsCMVxT7EFKfLfKxwH0q8yKdDD4kTxKkCvNDM3zsSccu/J8cqqkB
-         zH9vHo68cNcomxSUYHTgeU+FzSPJfhPjDROL3YLtDrfMds+pC5caEr160IP/Yi4D43+Q
-         1fzUaVuUrhkwFTaFvyAH9q1Ueo9+vb2p2/YgRFGFPcB3mxurhTpbYXZWz4U5JgZ91kGz
-         nCzA==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=zlAk6viXZB+2JmcBonrJJIWkGxbb541ezreuxfFHjCI=;
+        b=I+nFDIg2U1edv/KNyoePDuzrco9cUuYF7AnQzJKsk4d4bVvXSjfZNWgNCSfFlzifK/
+         G5XtFeklvccG3lvRqZVt0fpXPX6OOoec0Mispsop76/PLnNi16UuGiFsRR8X/5oEShNz
+         H/v02CmjtORMfsYZsSTBoe8MHsCHkTHGMO/+7lNnojdbdsVA+LnY6jIQZFc7dpnyC8W9
+         onxiiKJQZ4ewjFR122jUpcN+aEwAUjTe7x4ZyNPlzUshB+8LxmhFv9kXVYPFoB60Adt4
+         HDaJ7Mpr3fsSmgz5S/grliUTm9XmCavM74ao/vqlnNX50VLfnRkJelD9VWXq48g79JHR
+         oQ8w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cbinlxcI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r1si16214804ybp.255.2020.10.13.05.14.19
+        by mx.google.com with ESMTPS id u8si2919774ybj.264.2020.10.07.15.27.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Oct 2020 05:14:19 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Oct 2020 15:27:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47898 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cbinlxcI;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59294 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kSJC6-0004Hf-Lm
-	for alex.bennee@linaro.org; Tue, 13 Oct 2020 08:14:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50902)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kQHuG-0002T7-Us
+	for alex.bennee@linaro.org; Wed, 07 Oct 2020 18:27:32 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prime.zeng@hisilicon.com>)
- id 1kSJ9g-0003Ka-39; Tue, 13 Oct 2020 08:11:48 -0400
-Received: from szxga08-in.huawei.com ([45.249.212.255]:40882 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <prime.zeng@hisilicon.com>)
- id 1kSJ9a-00080v-5I; Tue, 13 Oct 2020 08:11:47 -0400
-Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.57])
- by Forcepoint Email with ESMTP id 37E67F9DAA1F706534B7;
- Tue, 13 Oct 2020 20:11:26 +0800 (CST)
-Received: from DGGEMM526-MBX.china.huawei.com ([169.254.8.75]) by
- DGGEMM404-HUB.china.huawei.com ([10.3.20.212]) with mapi id 14.03.0487.000;
- Tue, 13 Oct 2020 20:11:20 +0800
-From: "Zengtao (B)" <prime.zeng@hisilicon.com>
-To: fangying <fangying1@huawei.com>, "qemu-devel@nongnu.org"
- <qemu-devel@nongnu.org>
-Subject: RE: [RFC PATCH 00/12] hw/arm/virt: Introduce cpu and cache topology
- support
-Thread-Topic: [RFC PATCH 00/12] hw/arm/virt: Introduce cpu and cache
- topology support
-Thread-Index: AQHWjKJl5HIXIntHik2XLwAv/zxi0qmVk/YA
-Date: Tue, 13 Oct 2020 12:11:20 +0000
-Message-ID: <678F3D1BB717D949B966B68EAEB446ED49E0BB94@dggemm526-mbx.china.huawei.com>
-References: <20200917032033.2020-1-fangying1@huawei.com>
-In-Reply-To: <20200917032033.2020-1-fangying1@huawei.com>
-Accept-Language: zh-CN, en-US
-Content-Language: zh-CN
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.74.221.187]
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kQHu3-0002SN-J9
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2020 18:27:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:21218)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
+ id 1kQHu0-0007wl-Nm
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2020 18:27:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602109634;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=zlAk6viXZB+2JmcBonrJJIWkGxbb541ezreuxfFHjCI=;
+ b=cbinlxcIg7v3YTZOcdWAYzExoZTyw+rTWAGdNGXRPJBkqRWlXOHNWxjWybI2f3pk26F40f
+ ej9deeLgGhqtpneYG2zohgBP6tDsKUL5L8J5N2hMrcQGLcf5urSFzFWuVebAS1Y1VINxor
+ LJz3qbevH9vYHpJRwfxwGTK6TvWWZEo=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-430-LXbSRMSkPuWCzQqZXhCE6w-1; Wed, 07 Oct 2020 18:27:12 -0400
+X-MC-Unique: LXbSRMSkPuWCzQqZXhCE6w-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 360B285C706;
+ Wed,  7 Oct 2020 22:27:10 +0000 (UTC)
+Received: from localhost (ovpn-119-102.rdu2.redhat.com [10.10.119.102])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8BD687BE42;
+ Wed,  7 Oct 2020 22:26:58 +0000 (UTC)
+Date: Wed, 7 Oct 2020 18:26:57 -0400
+From: Eduardo Habkost <ehabkost@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: Re: [PATCH 00/24] qom: Convert some properties to class properties
+Message-ID: <20201007222657.GA7303@habkost.net>
+References: <20200921221045.699690-1-ehabkost@redhat.com>
+ <20200922210029.GB2044576@habkost.net>
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.255;
- envelope-from=prime.zeng@hisilicon.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/13 08:11:26
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20200922210029.GB2044576@habkost.net>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:44:56
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "drjones@redhat.com" <drjones@redhat.com>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- "Chenzhendong \(alex\)" <alex.chen@huawei.com>,
- "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
- fangying <fangying1@huawei.com>, "imammedo@redhat.com" <imammedo@redhat.com>,
- "valentin.schneider@arm.com" <valentin.schneider@arm.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dUV2MvoKG364
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sagar Karandikar <sagark@eecs.berkeley.edu>,
+ David Hildenbrand <david@redhat.com>,
+ Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ qemu-riscv@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Li Qiang <liq3ea@gmail.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Amit Shah <amit@kernel.org>, Alistair Francis <alistair@alistair23.me>,
+ qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
+ Igor Mammedov <imammedo@redhat.com>, Alistair Francis <alistair23@gmail.com>,
+ John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
+ Cornelia Huck <cohuck@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: kTdQkohRZYSX
 
-Cc valentin
+On Tue, Sep 22, 2020 at 05:00:40PM -0400, Eduardo Habkost wrote:
+> On Mon, Sep 21, 2020 at 06:10:21PM -0400, Eduardo Habkost wrote:
+> > Class properties make QOM introspection simpler and easier, as it
+> > doesn't require an object to be instantiated.  This series
+> > converts a few existing object_property_add*() calls to register
+> > class properties instead.
+> > 
+> > Eduardo Habkost (24):
+> >   cryptodev-vhost-user: Register "chardev" as class property
+> >   cryptodev-backend: Register "chardev" as class property
+> >   rng-egd: Register "chardev" as class property
+> >   rng-random: register "filename" as class property
+> >   vhost-user: Register "chardev" as class property
+> >   vexpress: Register "secure" as class property
+> >   rng: Register "opened" as class property
+> >   vexpress-a15: Register "virtualization" as class property
+> >   input-linux: Register properties as class properties
+> >   input-barrier: Register properties as class properties
+> >   tmp421: Register properties as class properties
+> >   s390x: Register all CPU properties as class properties
+> >   i386: Register most CPU properties as class properties
+> >   i386: Register feature bit properties as class properties
+> >   arm/virt: Register most properties as class properties
+> >   virt: Register "its" as class property
+> >   cpu/core: Register core-id and nr-threads as class properties
+> >   arm/cpu64: Register "aarch64" as class property
+> >   xlnx-zcu102: Register properties as class properties
+> >   machine: Register "memory-backend" as class property
+> >   vga-pci: Register "big-endian-framebuffer" as class property
+> >   i440fx: Register i440FX-pcihost properties as class properties
+> >   sifive_e: Register "revb" as class property
+> >   sifive_u: Register "start-in-flash" as class property
+> 
+> I'm queueing the following:
+> 
+> [PATCH 01/24] cryptodev-vhost-user: Register "chardev" as class property
+> [PATCH 02/24] cryptodev-backend: Register "chardev" as class property
+> [PATCH 12/24] s390x: Register all CPU properties as class properties
+> [PATCH 17/24] cpu/core: Register core-id and nr-threads as class properties
+> [PATCH 19/24] xlnx-zcu102: Register properties as class properties
+> [PATCH 20/24] machine: Register "memory-backend" as class property
+> [PATCH 22/24] i440fx: Register i440FX-pcihost properties as class properties
+> [PATCH 23/24] sifive_e: Register "revb" as class property
+> [PATCH 24/24] sifive_u: Register "start-in-flash" as class property
+> 
+> The remaining patches still need reviews.
 
-> -----Original Message-----
-> From: Qemu-devel
-> [mailto:qemu-devel-bounces+prime.zeng=3Dhisilicon.com@nongnu.org]
-> On Behalf Of Ying Fang
-> Sent: Thursday, September 17, 2020 11:20 AM
-> To: qemu-devel@nongnu.org
-> Cc: peter.maydell@linaro.org; drjones@redhat.com; Zhanghailiang;
-> Chenzhendong (alex); shannon.zhaosl@gmail.com;
-> qemu-arm@nongnu.org; alistair.francis@wdc.com; fangying;
-> imammedo@redhat.com
-> Subject: [RFC PATCH 00/12] hw/arm/virt: Introduce cpu and cache
-> topology support
->=20
-> An accurate cpu topology may help improve the cpu scheduler's
-> decision
-> making when dealing with multi-core system. So cpu topology
-> description
-> is helpful to provide guest with the right view. Cpu cache information
-> may
-> also have slight impact on the sched domain, and even userspace
-> software
-> may check the cpu cache information to do some optimizations. Thus
-> this patch
-> series is posted to provide cpu and cache topology support for arm.
->=20
-> To make the cpu topology consistent with MPIDR, an vcpu ioctl
+Queueing:
 
-For aarch64, the cpu topology don't depends on the MPDIR.
-See https://patchwork.kernel.org/patch/11744387/=20
+[PATCH 03/24] rng-egd: Register "chardev" as class property
+[PATCH 04/24] rng-random: register "filename" as class property
+[PATCH 07/24] rng: Register "opened" as class property
+[PATCH 09/24] input-linux: Register properties as class properties
+[PATCH 10/24] input-barrier: Register properties as class properties
+[PATCH 13/24] i386: Register most CPU properties as class properties
+[PATCH 14/24] i386: Register feature bit properties as class properties
 
-> KVM_ARM_SET_MP_AFFINITY is introduced so that userspace can set
-> MPIDR
-> according to the topology specified [1]. To describe the cpu topology
-> both fdt and ACPI are supported. To describe the cpu cache
-> information,
-> a default cache hierarchy is given and can be made configurable later.
-> The cpu topology is built according to processor hierarchy node
-> structure.
-> The cpu cache information is built according to cache type structure.
->=20
-> This patch series is partially based on the patches posted by Andrew
-> Jone
-> years ago [2], I jumped in on it since some OS vendor cooperative
-> partners
-> are eager for it. Thanks for Andrew's contribution. Please feel free to
-> reply
-> to me if there is anything improper.
->=20
-> [1] https://patchwork.kernel.org/cover/11781317
-> [2]
-> https://patchwork.ozlabs.org/project/qemu-devel/cover/2018070412
-> 4923.32483-1-drjones@redhat.com
->=20
-> Andrew Jones (2):
->   device_tree: add qemu_fdt_add_path
->   hw/arm/virt: DT: add cpu-map
->=20
-> Ying Fang (10):
->   linux headers: Update linux header with
-> KVM_ARM_SET_MP_AFFINITY
->   target/arm/kvm64: make MPIDR consistent with CPU Topology
->   target/arm/kvm32: make MPIDR consistent with CPU Topology
->   hw/arm/virt-acpi-build: distinguish possible and present cpus
->   hw/acpi/aml-build: add processor hierarchy node structure
->   hw/arm/virt-acpi-build: add PPTT table
->   target/arm/cpu: Add CPU cache description for arm
->   hw/arm/virt: add fdt cache information
->   hw/acpi/aml-build: build ACPI CPU cache topology information
->   hw/arm/virt-acpi-build: Enable CPU cache topology
->=20
->  device_tree.c                |  24 +++++++
->  hw/acpi/aml-build.c          |  68 +++++++++++++++++++
->  hw/arm/virt-acpi-build.c     |  99
-> +++++++++++++++++++++++++--
->  hw/arm/virt.c                | 128
-> ++++++++++++++++++++++++++++++++++-
->  include/hw/acpi/acpi-defs.h  |  14 ++++
->  include/hw/acpi/aml-build.h  |  11 +++
->  include/hw/arm/virt.h        |   1 +
->  include/sysemu/device_tree.h |   1 +
->  linux-headers/linux/kvm.h    |   3 +
->  target/arm/cpu.c             |  42 ++++++++++++
->  target/arm/cpu.h             |  27 ++++++++
->  target/arm/kvm32.c           |  46 ++++++++++---
->  target/arm/kvm64.c           |  46 ++++++++++---
->  13 files changed, 488 insertions(+), 22 deletions(-)
->=20
-> --
-> 2.23.0
->=20
+Waiting for reviews on:
+
+[PATCH 05/24] vhost-user: Register "chardev" as class property
+[PATCH 06/24] vexpress: Register "secure" as class property
+[PATCH 08/24] vexpress-a15: Register "virtualization" as class property
+[PATCH 11/24] tmp421: Register properties as class properties
+[PATCH 15/24] arm/virt: Register most properties as class properties
+[PATCH 16/24] virt: Register "its" as class property
+[PATCH 18/24] arm/cpu64: Register "aarch64" as class property
+[PATCH 21/24] vga-pci: Register "big-endian-framebuffer" as class property
+
+-- 
+Eduardo
 

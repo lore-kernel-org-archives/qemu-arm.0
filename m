@@ -1,112 +1,117 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp281584lfq;
-        Wed, 7 Oct 2020 03:32:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwGy6A3wjR8X3LbJxDgczKUimx2gs7cPyyfkkrDYhfCVt4tevf8ezQAjoFLgldIDzvkvyZv
-X-Received: by 2002:a25:3783:: with SMTP id e125mr2877819yba.423.1602066763178;
-        Wed, 07 Oct 2020 03:32:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602066763; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp288734lfq;
+        Wed, 7 Oct 2020 03:45:00 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJylvpvgQmtJU1j1rnjeMyA5OTORbs4yj+fLcHFGqxcT+dO5Wu+ES3NUv9FHmx3lK0+sZoWm
+X-Received: by 2002:a25:7314:: with SMTP id o20mr2941595ybc.211.1602067500341;
+        Wed, 07 Oct 2020 03:45:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602067500; cv=none;
         d=google.com; s=arc-20160816;
-        b=KUyBODLLjvt8U2aYtd5u50YU9MZJpP+nUWjoogFvzEyKiCqJONR+NWS0nSdLbnHxVq
-         vpCak2UV2c9X/wfyr5oTSroGGL+J/t3yXP0yeI1xNPM7CYJUyX4MQQVtiUaEtgaL7gke
-         MpU3r+EUugmFGWhEE8KdJ71OZ2g2eioI5sIym5jkEySO8XkNJhwQBYeQPY7Gr+W4yf5n
-         +W0u2YDMIrr9+YsHutUmEIpU5nYTdDCGw9HfiS3FMRgmBoKTPd38oNx0xurQDuTSulRV
-         zoAp1W2/0EI8Xt0Z1LBbhmORPqcgANf1NiqAd/2Gcfc43nNX84G3h0fo/S/zGcVFO3nM
-         Tsfw==
+        b=N1DdEb0vlk+2Jhm/KMFl2NIZYuVGzK5KCx0EHjNWW76Tr9zOwOIA6L+5LmCO0ByVF/
+         xx9ApBvV/XySLVuUS2L2FbRJ+htjxGwzPdsD26Oq4psE0VL+zigFeHoeN9P16vieSkGx
+         P1D28y0ocHIyIPTaqNLBIo4QVcn47mPMjfcJXxY8PT28JnZODK6bTFYwHJ2c2/exEFC8
+         s88T3lcAV28yD8/Jp81zQeGO/Jf5oN1NCxd/8UqBDSmwLWbcEo0MibfpIlWiq3BQxKyX
+         zfW7peXC6LngGFsI06xXZQydP4lwqLRnzLvNTqz4X1D6ClAg2NmY+U/OpasX3OwdVySj
+         B80w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=PvHAkugYI6mUFLhUjoi9PIM1Uw1E52iGTx5pkdOuhdI=;
-        b=mp1LdT/crgtOVG6ISsT9bggE7XlAKdvZZYziQDPErLq0lWG9Q3SBnH0OfWT+/faY09
-         KizJga5nKEcEfgGHTe6W2RfM/1KhbqdDOzZw3qK8tFZIUs2QMtm9eqQyLzNUDBF5AyKm
-         pY3Rq5c9CzvEbaBLC7RyF24WWvkNqoQiffPHRyfNRd+10JEbgxHHg9qIHPGIwnAZ8B2a
-         RrhE5lB1+0yDD0fvwC/9yPdve9YVynUAmHWHRqEUSCjU1feN4Yy+qfAKnmoIyXOVdxMe
-         xgjHp8fjsyy+zzj+bDEFBEvy1osbzskwwGkZGrvSk86Bzw7LmvQWT/xdQDSkHH7zfsoK
-         ivdw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=kpVc9C4AeW7sbHK0c5eNsIiL1L6BDV5PlQzKrOR20vo=;
+        b=osblkm4W9A5annjOfBHvgm4JZVLQtEK6Zf1MzRKtjbhOZbp1RhGWDPaMJ7mmyVRfUs
+         LH4KDZWhqKE8dWXOD3kdaTkUAI5eyYyNBur1sqfdFqmZxjY/8iAnMabOnCBJ1yvGIfix
+         F/w7WBfDfPoBAD8O8nQ3l0GMz+CdxZQ04DV9ypS+SsSzEHGTIv9FB0ymYIzIJuB4qity
+         NPu0mFM2/RFXIIlrXzgX0DCRsaY003qM41JtxQjpQ2+T5wAWquASJBmY1nHukpj3WCLV
+         OL8cVNHoL36GBn1f06Q9DVKzQ4l0nfSAsO0SFnI9p4b233qC1zfyJMmIHEfHdXCFdK5a
+         0Eiw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=WHZfX4Lp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="A0gcj4a/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h23si1830379ybj.454.2020.10.07.03.32.43
+        by mx.google.com with ESMTPS id w138si1568549ybe.340.2020.10.07.03.45.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Oct 2020 03:32:43 -0700 (PDT)
+        Wed, 07 Oct 2020 03:45:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=WHZfX4Lp;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:34222 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="A0gcj4a/";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:53642 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQ6kU-0006xR-Iq
-	for alex.bennee@linaro.org; Wed, 07 Oct 2020 06:32:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45014)
+	id 1kQ6wN-0006zG-Lr
+	for alex.bennee@linaro.org; Wed, 07 Oct 2020 06:44:59 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47614)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
- id 1kQ6kE-0006vW-Pw
- for qemu-arm@nongnu.org; Wed, 07 Oct 2020 06:32:26 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:37981)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kQ6wD-0006z2-62; Wed, 07 Oct 2020 06:44:49 -0400
+Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:53331)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
- id 1kQ6kC-0007m1-L0
- for qemu-arm@nongnu.org; Wed, 07 Oct 2020 06:32:26 -0400
-Received: by mail-wr1-x442.google.com with SMTP id n18so1546612wrs.5
- for <qemu-arm@nongnu.org>; Wed, 07 Oct 2020 03:32:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=PvHAkugYI6mUFLhUjoi9PIM1Uw1E52iGTx5pkdOuhdI=;
- b=WHZfX4Lp0ofYlD6O6T+VXfHCPyRE/0RgMwHeDfW/UzeNmpaSuTCgvYSUg7RrFoR6xG
- M4JeIZYLc4tghvkoLJHMl22/6JdIcX2f3YEntm1AQKchIMXkPoIgTLsVOamLu00iKIkT
- E/DH2PSrjqzHWHmDdHVnDPZ6HGtb+bUl/B4/dK7tfTv2nzth+c1S4eGO99jSLwUanm5U
- VXIIQRDK/JXcbVliweqfSpbtUINDoqy394rfwRxQLlxLBVH3jF445TC8nRLMzkelxTcJ
- YFKH/9ln02USAf7sgIT2hrChiVbCLvQtnWx1NRveF5ySz8KbP3EMM4kjW/ruW9SrUm3/
- wVjw==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kQ6wB-0000ik-9D; Wed, 07 Oct 2020 06:44:48 -0400
+Received: by mail-wm1-x341.google.com with SMTP id f21so1783366wml.3;
+ Wed, 07 Oct 2020 03:44:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=kpVc9C4AeW7sbHK0c5eNsIiL1L6BDV5PlQzKrOR20vo=;
+ b=A0gcj4a/v31bgIM2R2k0mHXV8HJ2vIJxRUEYLwZZMusNwT+r60Dfr+q7DojR9Yg3T9
+ lIVi/M1lm5TPyFYaRr4PIwgY+rZ+EMh7gYl58qzOfUTjXVJHwkbBQeC2r+6BUUpvkVtQ
+ 6faaNEVFVaN2XzMhaDoxzMNsNPm1Ik3dP5mwzYQDa0OP8WT17Ndqa5MCROQk+ebcyyX8
+ amzYoZYeelgNgX7DLh579tsDjzJnATDLoWr/Wy+e0V17jLRBQ1lvRYP0m7n3JumhNYRa
+ 0gTp+Gal4j8rUs4d8rNVcDUgoUDtO/g6R1mavxuYZGArUO9JFnmbnhenjPIlUZU0ECdf
+ +VVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=PvHAkugYI6mUFLhUjoi9PIM1Uw1E52iGTx5pkdOuhdI=;
- b=oRAR+b1aRCc6Ig2RAynweVOGUzufRKjlluDFgy4bQW4f9xfBZKN4FHRcuEQ6tLXImG
- eWvKlz6dCtuG82Oq6tuI1GKF3kAlPxBAq4BDH/Soe3JEwBu6gIdNSYm2o73UG6S4Vf7p
- 4WPrBJRjBQM8B1FqRn0oFKxGg+atXpZ2Kk2FwLU+l00C20YNhBkRgUnt9QcWp9NOVK27
- /1P77uMFBuPaMx0teWcK+SCoGfEaxht5lJi1Li3YQj9y35KDDd3O3S0xYb1bObbVN7Up
- Y7TfzXTKPZZeSjLSGPIp8wp+TagT80iOCA3WnrCTMF5FxdKOIGypOJhNhHGtiAG8fe5k
- hE5w==
-X-Gm-Message-State: AOAM533bi3gXPeizb2qYhYup7IJS8Ri8Fv4US4Ead9zXd3Kio5IHE31T
- odtxSbmhPzpKgGtCvCobb/1LMQ==
-X-Received: by 2002:a5d:52ca:: with SMTP id r10mr2578845wrv.195.1602066742984; 
- Wed, 07 Oct 2020 03:32:22 -0700 (PDT)
-Received: from xora-monster ([2a02:8010:64d6::1d89])
- by smtp.gmail.com with ESMTPSA id g14sm2320666wrx.22.2020.10.07.03.32.21
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Oct 2020 03:32:22 -0700 (PDT)
-Date: Wed, 7 Oct 2020 11:32:20 +0100
-From: Graeme Gregory <graeme@nuviainc.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=kpVc9C4AeW7sbHK0c5eNsIiL1L6BDV5PlQzKrOR20vo=;
+ b=qyp3XRzJi6Yn0RQMjXSQJyh8U2E34pxtySG/W7M2SUMZhLd5Il/d+3h+VUBlux5/Lq
+ 8Le+WLAwz5bhOL/YeOWkQYgQ3iui66ssd77PSwp2yWSyeg/OPyR3NFirFRiQkBSg+s8v
+ cjcQ6WFQjfLYVFfQSK+MkXSpGaWV4iz4RMMRSHCaRDnEVQe0QRcG0wrvym74I9wxw1uj
+ BbO3dq/tApNQhKkSv1RWTO5eOPv5m7g5xiGeWYn3p3mZTjB2Mqei6srZ4OVRozDAYCcB
+ VYxZSjqy6oJf4XF56bTtERy4SzLeItu55cLyaPQAc9P0DEOUxupCVZS8XlymbL0WQukR
+ ZWYw==
+X-Gm-Message-State: AOAM533EeCpSDMKzGo0/vQSkQtQQq3d4CiJgPeOsiGmLLxwVrYFYA/P2
+ oy4Z4MoChcwGrgOIGERfiv0=
+X-Received: by 2002:a1c:495:: with SMTP id 143mr2477077wme.63.1602067485162;
+ Wed, 07 Oct 2020 03:44:45 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id y7sm2149510wmg.40.2020.10.07.03.44.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Oct 2020 03:44:44 -0700 (PDT)
 Subject: Re: [PATCH v2 1/2] hw/arm/sbsa-ref : Fix SMMUv3 Initialisation
-Message-ID: <20201007103220.z5pc5qjoyxbowyrb@xora-monster>
+To: Graeme Gregory <graeme@nuviainc.com>
 References: <20201007100732.4103790-1-graeme@nuviainc.com>
  <20201007100732.4103790-2-graeme@nuviainc.com>
  <c518a446-94ca-f21a-2e49-e2cd8171e581@amsat.org>
+ <20201007103220.z5pc5qjoyxbowyrb@xora-monster>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <aafcbb37-dc5a-e608-21fe-6e65e36df5e4@amsat.org>
+Date: Wed, 7 Oct 2020 12:44:43 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+In-Reply-To: <20201007103220.z5pc5qjoyxbowyrb@xora-monster>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <c518a446-94ca-f21a-2e49-e2cd8171e581@amsat.org>
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=graeme@nuviainc.com; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::341;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x341.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
+X-Spam_score_int: -14
+X-Spam_score: -1.5
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,61 +124,74 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, leif@nuviainc.com, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, rad@semihalf.com
+Cc: peter.maydell@linaro.org, leif@nuviainc.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, rad@semihalf.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uvcj0C6P6DHU
+X-TUID: BP+KbiGodjGr
 
-On Wed, Oct 07, 2020 at 12:24:32PM +0200, Philippe Mathieu-Daud� wrote:
-> On 10/7/20 12:07 PM, Graeme Gregory wrote:
-> > SMMUv3 has an error in a previous patch where an i was transposed to a 1
-> > meaning interrupts would not have been correctly assigned to the SMMUv3
-> > instance.
-> > 
-> > Fixes: 48ba18e6d3f3 ("hw/arm/sbsa-ref: Simplify by moving the gic in the machine state")
-> > Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
+On 10/7/20 12:32 PM, Graeme Gregory wrote:
+> On Wed, Oct 07, 2020 at 12:24:32PM +0200, Philippe Mathieu-DaudÃƒÂ© wrote:
+>> On 10/7/20 12:07 PM, Graeme Gregory wrote:
+>>> SMMUv3 has an error in a previous patch where an i was transposed to a 1
+>>> meaning interrupts would not have been correctly assigned to the SMMUv3
+>>> instance.
+>>>
+>>> Fixes: 48ba18e6d3f3 ("hw/arm/sbsa-ref: Simplify by moving the gic in the machine state")
+>>> Signed-off-by: Graeme Gregory <graeme@nuviainc.com>
+>>
+>> Again, this fix is already in Peter's queue:
+>> https://www.mail-archive.com/qemu-devel@nongnu.org/msg732819.html
+>>
+>> But if you repost, please collect the reviewer tags,
+>> so we don't have to review it again. This one has:
+>> Reviewed-by: Philippe Mathieu-DaudÃƒÂ© <f4bug@amsat.org>
+>> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+>>
 > 
-> Again, this fix is already in Peter's queue:
-> https://www.mail-archive.com/qemu-devel@nongnu.org/msg732819.html
+> Ah I thought splitting the patch invalidated Eric's reviewed by?
 > 
-> But if you repost, please collect the reviewer tags,
-> so we don't have to review it again. This one has:
-> Reviewed-by: Philippe Mathieu-Daud� <f4bug@amsat.org>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> This is a different fix to the one you are referring to, previous one
+> was in PCIe.
 > 
+> Apologies if I have missed an email from you but I have not received a
+> Reviewed by from you for the SMMUv3 IRQ fix.
 
-Ah I thought splitting the patch invalidated Eric's reviewed by?
+Oops sorry my bad, I thought this was a repost of the PCIe fix.
 
-This is a different fix to the one you are referring to, previous one
-was in PCIe.
+So:
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Apologies if I have missed an email from you but I have not received a
-Reviewed by from you for the SMMUv3 IRQ fix.
+Looking at 48ba18e6d3f3 I messed create_smmu() and
+create_pcie() but you now fixed both cases.
 
-Thanks
+And you are right, this patch isn't reviewed by Eric.
 
-Graeme
-
-> Thanks,
 > 
-> Phil.
+> Thanks
 > 
-> > ---
-> >  hw/arm/sbsa-ref.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> > index 9c3a893bed..65e64883b5 100644
-> > --- a/hw/arm/sbsa-ref.c
-> > +++ b/hw/arm/sbsa-ref.c
-> > @@ -525,7 +525,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
-> >      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-> >      for (i = 0; i < NUM_SMMU_IRQS; i++) {
-> >          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-> > -                           qdev_get_gpio_in(sms->gic, irq + 1));
-> > +                           qdev_get_gpio_in(sms->gic, irq + i));
-> >      }
-> >  }
-> >  
-> > 
+> Graeme
+> 
+>> Thanks,
+>>
+>> Phil.
+>>
+>>> ---
+>>>  hw/arm/sbsa-ref.c | 2 +-
+>>>  1 file changed, 1 insertion(+), 1 deletion(-)
+>>>
+>>> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+>>> index 9c3a893bed..65e64883b5 100644
+>>> --- a/hw/arm/sbsa-ref.c
+>>> +++ b/hw/arm/sbsa-ref.c
+>>> @@ -525,7 +525,7 @@ static void create_smmu(const SBSAMachineState *sms, PCIBus *bus)
+>>>      sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
+>>>      for (i = 0; i < NUM_SMMU_IRQS; i++) {
+>>>          sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
+>>> -                           qdev_get_gpio_in(sms->gic, irq + 1));
+>>> +                           qdev_get_gpio_in(sms->gic, irq + i));
+>>>      }
+>>>  }
+>>>  
+>>>
+> 

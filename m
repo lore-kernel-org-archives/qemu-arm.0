@@ -1,111 +1,110 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp522875lfq;
-        Wed, 7 Oct 2020 08:51:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx6sj1/o/MMda0r1JJNLA6sZRfLr6a1yYfiBWZMf7lH9SLbNknqS+EDfuZCKIDfgxvV83QH
-X-Received: by 2002:a25:2786:: with SMTP id n128mr4948884ybn.116.1602085897767;
-        Wed, 07 Oct 2020 08:51:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602085897; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp543226lfq;
+        Wed, 7 Oct 2020 09:16:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwHEXzwUWNs0IlrVRUzgZG+XsX7dCqoRfI/gyMybg+0lHsHnr2lwi/8D7VjuNYk0TJEyGQe
+X-Received: by 2002:a25:5507:: with SMTP id j7mr5285334ybb.214.1602087370791;
+        Wed, 07 Oct 2020 09:16:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602087370; cv=none;
         d=google.com; s=arc-20160816;
-        b=ifNoKpIoxC2WdMSV1PXYbKzj/FWpH9eWO0IoOMb6quVKgq8qSLoAxfJXhd1ylZW14S
-         aV9wQ7xypL/0idx+rLKNTkuHFu9es2EPPrselPMiZueTdHnDQFjA9fBOQmtfj+XtSfKg
-         CJZeILJZnyPqCNV49742qEIzD0qPC7EVXQ45SJsxt8RqFLDZmcp4iQLCF2Jwnn1rnZr3
-         84u+hHbIuiEFRxy+Ire3iRn3TKiM5mcOhR19xj3CAk0pkeHqvNFdgR7gaL+GHUs7FMT8
-         O05sJeKepeCZIugv28BelCrYRW7Z1NpenucA25uDDfVbeQ2+OTj3Gd5zXIF4WkH9Q6VB
-         Ltcw==
+        b=HvSdzTBaIZhK118SaEhTSsyr+RskNqaCBsoLfmZV6wvsYPRwbUTO1pKocrurRA8Uyc
+         tuZdjrSBx0qwz3sSicMpL+zYgEAEBbskRm3r9JXnotnehApYiaAWScdYisT1XE8r6Kjs
+         K7cCDdpeZaYg8PZ6LQVq5KNzVrdaybXQsYnUVOWRB0thOi6uK8r0bFge4jhsVC1qRHRe
+         fW5mQ+/y5wbqcfwuS3Q5rWMcDpaP/0LM/SrceeawmE70wH3KKAgzOErllHW2C9gXj9QI
+         hreq9a/W2aX/8mRNJWDEUPI8B6VwzVMYK12fE5ihPqa8B1M6jb5T6d4VovduUSKSophP
+         8Aqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=Ezg3xLJgiZMdbCSIM2AGJQ7reAQ/jzvu/sS4w/S9ByY=;
-        b=V4JdoDXZg/5ZnBJogUA1vszJhFUAjGruaROIXN0QTJdLrGqMsP2TaCO1n8Trd3DdTJ
-         0kjAFglHVBYavAirjcnwz6X7o9UDLhZPO3hIunjhSzsyEBWDR7UquFmttwcqacnsOzkI
-         ldYuklXB4p/br8ZDebtaZalghcexpywtWjQS3DfBEqR+rRDbKM/dgfp446OnNRb60Xw3
-         e04udkFa5kv8LWkJ7aQbXthpDMr73O57VieitQBBb9Q43x4/vj0ph/HdzNw5f75lRR6r
-         zRMqvjv2Q8FDw3tpcLLutbEIQFmOSKlXNcNv8OPd7vN1fK9tTo8yAMieWoRAmGPpiIB6
-         D8rQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=7OyP3p/J0BJTuUMR+7M8eSTXEQKQJgp0W9yhB+Uzeec=;
+        b=K/LmS1/nF1qvHGeLL5Ol8dAaNqvZbK6UYJiYm/XqDbr+bRiRc7q9909SXmD2HvS9Dq
+         q2U5IHmx0k/ny51yzKiYnBvvgvRZmI72KrnAZWK7fiXPSEoG1UX/TWrdSZo764w8FMk4
+         Jlo1n3ziEOfRCJ0po3/SCO1QHGNcHqayi28NoHAxXBEsxerBimPUAqs+590ApKhugdxB
+         8hz7uyL4wv/0QvTzv4jb50/3ScUf6cK6BSkHD4OefZVSJ5yc7r+d+Sdvi8mwxHy8uYeC
+         4w3FjbiiXR/en8QhuwPaAX8P0ptMzW0JQKjjKYFHhXQYtGzuaFViSNzVpRH2Uxljn/wN
+         E+WA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=V0N5vt64;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fpXED4jJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j73si2154202ybj.443.2020.10.07.08.51.37
+        by mx.google.com with ESMTPS id a18si2133684ybr.155.2020.10.07.09.16.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Oct 2020 08:51:37 -0700 (PDT)
+        Wed, 07 Oct 2020 09:16:10 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=V0N5vt64;
+       dkim=fail header.i=@linaro.org header.s=google header.b=fpXED4jJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58756 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQBj7-00060e-5e
-	for alex.bennee@linaro.org; Wed, 07 Oct 2020 11:51:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60390)
+	id 1kQC6r-0001iq-Ko
+	for alex.bennee@linaro.org; Wed, 07 Oct 2020 12:16:09 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33904)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kQBio-0005zT-Rr
- for qemu-arm@nongnu.org; Wed, 07 Oct 2020 11:51:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55482)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kQBii-0007e3-74
- for qemu-arm@nongnu.org; Wed, 07 Oct 2020 11:51:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602085870;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Ezg3xLJgiZMdbCSIM2AGJQ7reAQ/jzvu/sS4w/S9ByY=;
- b=V0N5vt64BpXV9Gdx4tnostjdBztCPnBGysl87lZ20a+kGgQCy9y9uFnDasR2Ki1pvKrOFG
- 89WKCnDT8RK/P3UdFEVnyHk6D84IsCyOh49xb7F6eugDLKNqbudfd9z9SxMpvZDU3/hELk
- ppXuTrIv4LN0BrB2AUIdv2bRmmW0X9g=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-212-asWaldYbOuiOBexEG9K8eQ-1; Wed, 07 Oct 2020 11:51:08 -0400
-X-MC-Unique: asWaldYbOuiOBexEG9K8eQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id E0BCD56C32;
- Wed,  7 Oct 2020 15:51:06 +0000 (UTC)
-Received: from localhost (ovpn-119-102.rdu2.redhat.com [10.10.119.102])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 76F505C1C2;
- Wed,  7 Oct 2020 15:51:06 +0000 (UTC)
-Date: Wed, 7 Oct 2020 11:51:05 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: Purpose of QOM properties registered at realize time?
-Message-ID: <20201007155105.GX7303@habkost.net>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kQBqH-0003vm-8h
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2020 11:59:01 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f]:39595)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kQBqF-0000Zf-Jl
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2020 11:59:00 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id lw21so3700884ejb.6
+ for <qemu-arm@nongnu.org>; Wed, 07 Oct 2020 08:58:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=7OyP3p/J0BJTuUMR+7M8eSTXEQKQJgp0W9yhB+Uzeec=;
+ b=fpXED4jJez9o+tGUuQt5fbq3Y9S8FcKGfdeUgSbaOC5TiZBP6wgdmvckuLx2XpdUaL
+ m0ZsojOb0ZN+Ce+b3nK/Y/JvkTNGcOqI+AoYsnN5KlCuvEr9PiXLb6yIBYg9G6w23epU
+ BuGjICsQSF0Vya6GA0a182kzIo38j5Iz++I4PSzT0tx8YXdcf4TSaD+yqCNInde3dkKT
+ ifIKUbjc/1r2UrqxN5Bc/9sm5feBOukGV4B6tf+JxoIEQKprnXLBVOqInUedf9eDWhoX
+ +8kVjyOOmKmFH8W3+GYrTUju7zh+GyPzJEc9elOCzTPG5az7lEC/0TRDekaBG5D7ppi6
+ lpxg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=7OyP3p/J0BJTuUMR+7M8eSTXEQKQJgp0W9yhB+Uzeec=;
+ b=Nbo6nT9OVHnE/bOMA/79OjvZTSeGG2044IjWq3czLMD+bNS5cfHuX+G7k35czan+6s
+ ws57jEMRDj5ouH4yTaUkPvYPBVabDs0511vR0WtOvcQWj1obi3TRw+hpmJxzaYY7rG3k
+ 71PTV081pqUxc1RqhuPpfewWX2LqprF7/xhSCmb3EvpCl8O2BdV7mL5OXUgEGreOXqV5
+ jhTwA/o8Xlve0Ga5FYaZbsqJrL53pLLfUsoEu1sG4fZhVqxjlkkecGR4KXdOpf+kIp8O
+ 6UW56ayQ0Q1ribOPuG0CpXHDhbLrwQMOA4ZbMn7SModrHAB8u4/xhogqmv9760Jo/9x+
+ pLKw==
+X-Gm-Message-State: AOAM5330WCN7n9HRbxRpG55FXbuAfM1eN78d14SohdVh8Mj/Xz3AEMhc
+ UiuQgKQTFHXXiyM92Zna8vd9n/d7QGnuFnf848c3QA==
+X-Received: by 2002:a17:906:c7d9:: with SMTP id
+ dc25mr3999790ejb.482.1602086337977; 
+ Wed, 07 Oct 2020 08:58:57 -0700 (PDT)
+MIME-Version: 1.0
 References: <20201006220647.GR7303@habkost.net>
  <a6e652d9-548f-4d4e-e451-48e3f5e11031@redhat.com>
  <20201007130240.GU7303@habkost.net>
  <659289e0-4133-b945-45fd-25e759c18b03@redhat.com>
  <20201007142742.GV7303@habkost.net>
  <117cb090-d9ce-6394-42a2-2ac99fd965b9@redhat.com>
-MIME-Version: 1.0
-In-Reply-To: <117cb090-d9ce-6394-42a2-2ac99fd965b9@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:44:56
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ <20201007155105.GX7303@habkost.net>
+In-Reply-To: <20201007155105.GX7303@habkost.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 7 Oct 2020 16:58:46 +0100
+Message-ID: <CAFEAcA9kaTa0P8g6qzEvGYq8fKqmjquH0+bBbAWLeLaa11ygHA@mail.gmail.com>
+Subject: Re: Purpose of QOM properties registered at realize time?
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62f.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,38 +117,47 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
- "Daniel P. Berrange" <berrange@redhat.com>, John Snow <jsnow@redhat.com>
+Cc: "Daniel P. Berrange" <berrange@redhat.com>,
+ "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ qemu-ppc <qemu-ppc@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ John Snow <jsnow@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kl0gJ98mk1g4
+X-TUID: xvLxd0ikgSaQ
 
-On Wed, Oct 07, 2020 at 04:54:31PM +0200, Paolo Bonzini wrote:
-> On 07/10/20 16:27, Eduardo Habkost wrote:
-> >> It is always wrapped, but (as far as I recall, because I have never
-> >> worked with GPIOs) they are intentionally QOM properties and not just as
-> >> an implementation detail.  It's meant to be accessible to the user if
-> >> only through qom-get/qom-set.
-> >
-> > Being accessible for debugging would be OK.  I'm just worried
-> > about dynamic QOM properties being part of a stable and supported
-> > API.
-> 
-> Certainly accessing the properties is only for debugging.
-> 
-> However, I am not sure if the _existence_ of GPIOs as dynamic QOM
-> properties is part of the API; that is, whether the user has to specify
-> the names of these properties to create some devices.  I don't think
-> that wouldn't be a problem anyway, what do you think?
+On Wed, 7 Oct 2020 at 16:51, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> Right now, I only want to know if the QOM property is part of a
+> supported stable external interface.  For the properties
+> registered at realize time, the answer seems to be "no".
 
-Right now, I only want to know if the QOM property is part of a
-supported stable external interface.  For the properties
-registered at realize time, the answer seems to be "no".
+I don't think that's inherently the case. But most QOM
+properties are not going to be part of an external
+interface (and definitely those for devices which are
+not user-creatable are not), so the chances are good
+that any particular QOM property is not external.
 
-Later, I might want to locate internal users of those QOM
-properties too, to be able to refactor the code if necessary.
+> Now, how do I locate the code that depends on those QOM
+> properties to work?  When the property name is visible in the
+> code, I can grep for the property name.  But I don't know how to
+> find users of the GPIOs exposed by qdev_pass_gpios().
 
--- 
-Eduardo
+GPIOs are wired up with the APIs documented in
+hw/qdev-core.h: typically qdev_get_gpio_in() to get
+an anonymous GPIO input, qdev_get_gpio_in_named()
+for a named GPIO line, similarly qdev_connect_gpio_out()
+and qdev_connect_gpio_out_named() for oubound GPIO lines.
+Most GPIOs are anonymous because that's the older set
+of APIs (and sometimes it's still the simplest). To find
+which code is wiring up the GPIOs from a particular
+device you're better off searching for the device name,
+because different devices can use the same name for a
+set of GPIO lines (and lots of devices have anonymous
+GPIO lines).
 
+The GPIOs exposed by qdev_pass_gpios() are no different
+from those exposed when the device directly creates
+its own GPIOs.
+
+thanks
+-- PMM

@@ -1,172 +1,223 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1061177lfq;
-        Tue, 6 Oct 2020 15:07:30 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+n1XIiaMiKMkrVS/1Hbcdny0p+1BqTlAAhwOH8GdfWPtOcqZQ1NqFyCbzPLZBNqa/Xwvd
-X-Received: by 2002:a25:4688:: with SMTP id t130mr485665yba.345.1602022050680;
-        Tue, 06 Oct 2020 15:07:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602022050; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1689990lfq;
+        Thu, 8 Oct 2020 14:07:54 -0700 (PDT)
+X-Received: by 2002:a92:cd11:: with SMTP id z17mr8165484iln.201.1602191274827;
+        Thu, 08 Oct 2020 14:07:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602191274; cv=none;
         d=google.com; s=arc-20160816;
-        b=yx1KPnDYE7c/xuFGLuliWhCrAhIdWr8DHZlqMmFdHZqXJ6/6+OuLSkeJq8jyBwfvin
-         YjKdqQuyyDDzvsbx3lwZjcS8PRbY0Bfgt8iZ1DRQn27WE/dIOr7mC7WNH7jVGevv+el4
-         O51RQQBTZfCgAUCo0ZEIa7GJpw2/KP4Ws2HTKcIR89t3mkzwYTXVke7upjx5Ea3IzNZB
-         EhuzNw1SL8N2T/zjVKRCmEML3b25ZnRDbLt9NbrFQJWPpxabhhY/HbIjuy9XMFrH+25B
-         LfrLnQOieZAi/cHRh0PzgHHrxsxI7CGPJdqVMPyYbcn5tiJXd/iBTrHrln7r8Lh/OWSH
-         AaAA==
+        b=T/D+3Vr93Euh6RzSlqR0g2C297rnROI4BZ2JjKHg84DqFheVs8WpIFMKV8RHrgaOeR
+         942s1mGbM6ewsnFrZPe3ntt805HF3zJ03zo09dOiotmBi+7E24YwPj8nKDPEzE28EM5x
+         o+IG/N5CIJ5dqIIEhWPXHPb83eAViBmlUO4wBWYe8UFZxw/FRqUTQC+K6Gfkvcdt/5Zv
+         1wbnbO+cYwqxFS/UhJTdz83c4rIDOckUSlcK+eedv/kniaUAKkslBzcetR8ejK2/v7pH
+         tIrihqkiYhM1kJELAFifyVpUpd2o9XfI/BU47ycHgt353Ejz3Yi6p62PziVo4lF60kvU
+         8j9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition
-         :mime-version:message-id:subject:to:from:date:dkim-signature;
-        bh=ils0BP+cNaOMg3GKRSynEad9TgRvNzhouxtHidMz3tU=;
-        b=cZODUdiXiptnp7V4VuGjy7KKKfDO2ZJ3ypdxh9gKAngW1WCfVI6OShtd9H456beepl
-         HZnhYivFzw1IQtFNAYAtDOYfBXe5sX9+LJD9ftmofJcb/2RAUzqlv5WVTxH/0P4vJHqj
-         BxM7dwElYG79YoKkKcb157vMdM+8MuovaCohsa5B7qZv4k0Z9vA7jZiFkOQzrNLmbKEB
-         OMtay3Bo55mR2qsfyNvOAhxUZ+ntsbTHs0K9U5CMsO/O/HgEErIdqBrNqr2FWayACGcn
-         8vEWbtF6AZfM+1mzLSeh0Jk53ajhn7/XqK9WZlWuFgC3LUiGIUBqUeXyGG3YMTDr8Uak
-         agzw==
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=8wGw1bQKjLmdDuCCMwLCKEcpMrQ/51xudvGHXz1YuUI=;
+        b=Sl2z7aA08R9vZpwgo/RcdO0zH6lcT3YVO5KMHCVguhpYEL9KRk8+UubbIjL+PS1JvI
+         uq1EYTgyH+Eg6S3fLEJTF1JvLpD0mQXv/lLJp4neIq4l6Gbvss1Qh1USdZIo/g14Fua3
+         xqlrxfA+Fb4dD1/Zed9eC3u2mDvwZAhilIkG1SkL+dQMCU3sDoc9jn42pHfnrs1pKH82
+         YqYCyDY3GKogmqP6ubHoP1U8eJgsi9+MIQQtVQKUOCce4FW0+Y+jDUeQD3ymPQWHrEA9
+         7SdojFi8wmu7e9lxsD/JIVeclW+SbKCGKdHZyCjlVkZzUdf+3hKHq/TlHTRYa5me1A60
+         kN1g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D6nOfBl4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k7si281658yba.8.2020.10.06.15.07.30
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 06 Oct 2020 15:07:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jtiwrfg2;
+       spf=pass (google.com: domain of pauldzim@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=pauldzim@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <pauldzim@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id g4sor1771007ilk.86.2020.10.08.14.07.54
+        (Google Transport Security);
+        Thu, 08 Oct 2020 14:07:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of pauldzim@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=D6nOfBl4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:38896 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kPv7K-000520-2m
-	for alex.bennee@linaro.org; Tue, 06 Oct 2020 18:07:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44792)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kPv6m-0004zN-1F
- for qemu-arm@nongnu.org; Tue, 06 Oct 2020 18:06:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:42310)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kPv6i-0006Am-Oe
- for qemu-arm@nongnu.org; Tue, 06 Oct 2020 18:06:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602022011;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type;
- bh=ils0BP+cNaOMg3GKRSynEad9TgRvNzhouxtHidMz3tU=;
- b=D6nOfBl4radBOL4DZWVzcNNKDDD2e8DzlzP4P3Xs7h1nAJOQ6ElJdTOarmQjL4z0/GZLAD
- G9RTMRrVkWL8QFGd5Wa+5zNuifnyegzBB2BCQ1ErC+Ljt2XbpGCA/4KjA6Ulwlo82vtCpq
- c8lQ/W8Jso9EQH0EQ/fP2+CwUOO2hLU=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-406-8-4HMb4qOeK2eQbEzfTxIw-1; Tue, 06 Oct 2020 18:06:49 -0400
-X-MC-Unique: 8-4HMb4qOeK2eQbEzfTxIw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 6A7DA1018F7A;
- Tue,  6 Oct 2020 22:06:48 +0000 (UTC)
-Received: from localhost (ovpn-119-102.rdu2.redhat.com [10.10.119.102])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F20495D9CD;
- Tue,  6 Oct 2020 22:06:47 +0000 (UTC)
-Date: Tue, 6 Oct 2020 18:06:47 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: Purpose of QOM properties registered at realize time?
-Message-ID: <20201006220647.GR7303@habkost.net>
+       dkim=pass header.i=@gmail.com header.s=20161025 header.b=jtiwrfg2;
+       spf=pass (google.com: domain of pauldzim@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=pauldzim@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=8wGw1bQKjLmdDuCCMwLCKEcpMrQ/51xudvGHXz1YuUI=;
+        b=jtiwrfg2Mb3CO2+FAO5xUZl2kr8gzHUtjUB2qtxQMje0vOALQk3busiG89JDJOic6u
+         ZKUsNo5DHNcQVVgFjMdF9FuqUGm30HKvOAUV4K+VG9rc4R3jhGd8ebqqBjTA8tD4C0vf
+         Eq8W1JD4Wd8mb7eC2MdrxpMU4azXyS2orSwRUb8sOsY5pgGBy0PvYcWblA/U7+ibjAaz
+         god/2F3Z5PSu+Q+u3/qXFq+VDN3vwqH2+egSfByAZTHgxvHixDfAH4PlM/OJx4Z/E5O6
+         nqA8tPNtGMr67vyCZUs6n5eRgrxKDPvQmH3rjJyFKBv8oMwHsRhEhPkxJhOuHAa1u/J3
+         xXpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=8wGw1bQKjLmdDuCCMwLCKEcpMrQ/51xudvGHXz1YuUI=;
+        b=BSLQwu4s11/BH1hxJdrV0DzgSFYtz1TLifxdv0xHliE7Y4Q2T9jfWBHZorU0HXe0DH
+         fcR7Zz7WgCl+BsRI9Nag5TyDsw484dPGSDMkJ5WwicX74FqHjnHuYmTFInNTBKCQMQKa
+         2fnx022Ht58Nb7hTcBMM0j2G9kBO2CzGiDdJ32QOM+bV6AO81Jn9X6m83/XS8TcB5OUy
+         Q7j3RVxhd0trFeUesX9N7NwsW/Pr4kAdcNNWVEl34r7EymKr0MYrT2K0U3OT75QNbJC+
+         QsJPG1eDgqpXMt9q5e5KuiZ7z5nFrEHD9S+bMh5dXcuHtZf2scQPiO5jKH8jsZO6Uyc8
+         csJQ==
+X-Gm-Message-State: AOAM532r3sRURkUuXlwGIy8Q5TVHJ9aHOvDEv6us+TezV7J/IJs0fGe+
+	uRTVCyvu5/08AxxEwYJNOVSCXJw7u6LQyQcK9t8WHr0mWeo=
+X-Google-Smtp-Source: ABdhPJy4dsE64vuxOnjdVL0w95kR6ehkEdW6nVxyjJPEyi9JFwiKYpXi35wW0FkVxHeyE055et3qRwjoPjBbCgcAaU0=
+X-Received: by 2002:a92:d850:: with SMTP id h16mr7874809ilq.281.1602191274339;
+ Thu, 08 Oct 2020 14:07:54 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/06 01:55:55
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.733,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-riscv@nongnu.org,
- qemu-arm@nongnu.org, qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- "Daniel P. Berrange" <berrange@redhat.com>, John Snow <jsnow@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: H+wbvCBtIy6k
+References: <47dbcad4-3121-b1c3-06fa-abec7c353fb6@gmail.com>
+ <87sgatanti.fsf@linaro.org> <CAFEAcA_ZMLV3DZ_R_SHvPLdEf=i-xpspD5itBmfYeqyMhgtLWQ@mail.gmail.com>
+ <875z7p3t9e.fsf@linaro.org> <e43be86d-1847-199f-4cbd-2e3bd124d70a@gmail.com>
+ <CADBGO794+ZPD=B=dFuA7SC96g3GDJXF1A8j=VP6MeiSw1Sf4oQ@mail.gmail.com>
+ <d8d79b4c-aeb4-4f07-7110-91d8d1afd701@gmail.com> <87362r3cbt.fsf@linaro.org>
+ <61c49583-c548-a8b2-7106-59011196f430@gmail.com> <CADBGO7-BaTH3MBZa6Dbv2+uxKNbv3ztwQ=iu_FCgrcrKBUzCPw@mail.gmail.com>
+ <4da67d13-a774-f62e-ad89-de062cbe81da@gmail.com> <87blhe1esd.fsf@linaro.org>
+ <f32593d0-e87b-0549-7b59-f58da24c9130@gmail.com> <87362q1bxl.fsf@linaro.org> <2e3754fb-8b3c-4ef2-989f-a0015ef3a7e8@gmail.com>
+In-Reply-To: <2e3754fb-8b3c-4ef2-989f-a0015ef3a7e8@gmail.com>
+From: Paul Zimmerman <pauldzim@gmail.com>
+Date: Thu, 8 Oct 2020 14:07:27 -0700
+Message-ID: <CADBGO79XkF7hAxDmrPm9Za16rXPHbB2L6xD2zr8puDLQp+z0Fw@mail.gmail.com>
+Subject: Re: Emulate Rpi with QEMU fails
+To: Thomas <74cmonty@gmail.com>
+Cc: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Peter Maydell <peter.maydell@linaro.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	QEMU Developers <qemu-devel@nongnu.org>, Andrew Baumann <Andrew.Baumann@microsoft.com>, 
+	=?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-TUID: 8RL+JvGaUPle
 
-Hi,
+Hi Thomas,
 
-While trying to understand how QOM properties are used in QEMU, I
-stumbled upon multiple cases where alias properties are added at
-realize time.
+What does 'top' say while the emulation is running? I have an 8 cpu-thread
+system, yet 'top' never shows more than about 300% cpu. I would have
+thought it would get closer to 800% cpu. And running qemu as root with
+nice -20 doesn't seem to make much difference.
 
-Now, I don't understand why those properties exist.  As the
-properties are added at realize time, I assume they aren't
-supposed to be touched by the user at all.  If they are not
-supposed to be touched by the user, what exactly is the purpose
-of those QOM properties?
+- Paul
 
-For reference, these are the cases I've found:
-
-$ git grep -nwpE 'object_property_add_alias|qdev_pass_gpios|qdev_alias_all_properties' | grep -A1 realize
-hw/arm/allwinner-a10.c=71=static void aw_a10_realize(DeviceState *dev, Error **errp)
-hw/arm/allwinner-a10.c:89:    qdev_pass_gpios(DEVICE(&s->intc), dev, NULL);
---
-hw/arm/allwinner-h3.c=232=static void allwinner_h3_realize(DeviceState *dev, Error **errp)
-hw/arm/allwinner-h3.c:359:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->mmc0),
---
-hw/arm/armsse.c=429=static void armsse_realize(DeviceState *dev, Error **errp)
-hw/arm/armsse.c:1092:    qdev_pass_gpios(dev_secctl, dev, "mscexp_status");
---
-hw/arm/armv7m.c=149=static void armv7m_realize(DeviceState *dev, Error **errp)
-hw/arm/armv7m.c:219:    qdev_pass_gpios(DEVICE(&s->nvic), dev, NULL);
---
-hw/arm/bcm2835_peripherals.c=128=static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
-hw/arm/bcm2835_peripherals.c:322:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->gpio), "sd-bus");
---
-hw/arm/bcm2836.c=69=static void bcm2836_realize(DeviceState *dev, Error **errp)
-hw/arm/bcm2836.c:87:    object_property_add_alias(OBJECT(s), "sd-bus", OBJECT(&s->peripherals),
-hw/arm/msf2-soc.c=79=static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
-hw/arm/msf2-soc.c:170:        object_property_add_alias(OBJECT(s), bus_name,
---
-hw/arm/nrf51_soc.c=58=static void nrf51_soc_realize(DeviceState *dev_soc, Error **errp)
-hw/arm/nrf51_soc.c:138:    qdev_pass_gpios(DEVICE(&s->gpio), dev_soc, NULL);
---
-hw/arm/xlnx-zynqmp.c=276=static void xlnx_zynqmp_realize(DeviceState *dev, Error **errp)
-hw/arm/xlnx-zynqmp.c:522:        object_property_add_alias(OBJECT(s), bus_name, sdhci, "sd-bus");
---
-hw/misc/mac_via.c=1011=static void mac_via_realize(DeviceState *dev, Error **errp)
-hw/misc/mac_via.c:1028:    object_property_add_alias(OBJECT(dev), "irq[0]", OBJECT(ms),
---
-hw/ppc/spapr_drc.c=511=static void realize(DeviceState *d, Error **errp)
-hw/ppc/spapr_drc.c:530:    object_property_add_alias(root_container, link_name,
-hw/riscv/sifive_e.c=186=static void sifive_e_soc_realize(DeviceState *dev, Error **errp)
-hw/riscv/sifive_e.c:233:    qdev_pass_gpios(DEVICE(&s->gpio), dev, NULL);
-hw/riscv/sifive_u.c=651=static void sifive_u_soc_realize(DeviceState *dev, Error **errp)
-hw/riscv/sifive_u.c:743:    qdev_pass_gpios(DEVICE(&s->gpio), dev, NULL);
-
--- 
-Eduardo
-
+On Thu, Oct 8, 2020 at 12:00 AM Thomas <74cmonty@gmail.com> wrote:
+>
+> Interesting enough is: my top figure reported by perf is like yours:
+>
+> Samples: 6M of event 'cycles:u', Event count (approx.): 1936571734942
+> Overhead  Command          Shared Object                  Symbol
+>    7,95%  qemu-system-arm  qemu-system-arm                [.]
+> helper_lookup_tb_ptr
+> =E2=97=86
+>    4,16%  qemu-system-arm  qemu-system-arm                [.]
+> cpu_get_tb_cpu_state
+> =E2=96=92
+>    2,52%  qemu-system-arm  libpthread-2.32.so             [.]
+> __pthread_mutex_lock
+> =E2=96=92
+>    2,06%  qemu-system-arm  qemu-system-arm                [.]
+> qht_lookup_custom
+> =E2=96=92
+>    1,66%  qemu-system-arm  qemu-system-arm                [.]
+> tlb_set_page_with_attrs
+> =E2=96=92
+>    1,61%  qemu-system-arm  libpthread-2.32.so             [.]
+> __pthread_mutex_unlock_usercnt
+> =E2=96=92
+>    1,59%  qemu-system-arm  qemu-system-arm                [.]
+> get_phys_addr
+> =E2=96=92
+>    1,27%  qemu-system-arm  qemu-system-arm                [.]
+> cpu_exec
+> =E2=96=92
+>    1,23%  qemu-system-arm  qemu-system-arm                [.]
+> object_class_dynamic_cast_assert
+> =E2=96=92
+>    0,98%  qemu-system-arm  libc-2.32.so                   [.]
+> _int_malloc
+> =E2=96=92
+>    0,95%  qemu-system-arm  qemu-system-arm                [.]
+> object_dynamic_cast_assert
+> =E2=96=92
+>    0,95%  qemu-system-arm  qemu-system-arm                [.]
+> tb_htable_lookup
+> =E2=96=92
+>    0,92%  qemu-system-arm  qemu-system-arm                [.]
+> tcg_gen_code
+> =E2=96=92
+>    0,91%  qemu-system-arm  qemu-system-arm                [.]
+> qemu_mutex_lock_impl
+> =E2=96=92
+>    0,75%  qemu-system-arm  qemu-system-arm                [.]
+> get_page_addr_code_hostp
+> =E2=96=92
+>    0,73%  qemu-system-arm  qemu-system-arm                [.]
+> tcg_optimize
+> =E2=96=92
+>    0,71%  qemu-system-arm  qemu-system-arm                [.]
+> qemu_mutex_unlock_impl
+> =E2=96=92
+>    0,69%  qemu-system-arm  libc-2.32.so                   [.]
+> _int_free
+> =E2=96=92
+>    0,64%  qemu-system-arm  qemu-system-arm                [.]
+> tb_flush_jmp_cache
+> =E2=96=92
+>    0,63%  qemu-system-arm  qemu-system-arm                [.]
+> address_space_ldl_le
+> =E2=96=92
+>    0,62%  qemu-system-arm  libpthread-2.32.so             [.]
+> __lll_lock_wait
+> =E2=96=92
+>    0,58%  qemu-system-arm  libpthread-2.32.so             [.]
+> pthread_cond_wait@@GLIBC_2.3.2
+> =E2=96=92
+>    0,52%  qemu-system-arm  qemu-system-arm                [.]
+> cpu_reset_interrupt
+> =E2=96=92
+>    0,52%  qemu-system-arm  libc-2.32.so                   [.]
+> cfree@GLIBC_2.2.5
+> =E2=96=92
+>    0,52%  qemu-system-arm  qemu-system-arm                [.]
+> qemu_set_irq
+> =E2=96=92
+>
+> However the absolute time is 3-4 minutes.
+> And I don't know where I should start optimization now.
+>
+>
+>
+> Am 07.10.20 um 14:02 schrieb Alex Benn=C3=A9e:
+> > Thomas Schneider <74cmonty@gmail.com> writes:
+> >
+> >> Are you referring to this tool?
+> >> https://github.com/stefano-garzarella/qemu-boot-time
+> >> <https://github.com/stefano-garzarella/qemu-boot-time>
+> > No - just plain perf:
+> >
+> >   perf record $QEMU $ARGS
+> >
+> > Then a "perf report" which will show you the hotspots, for example:
+> >
+> >    8.92%  qemu-system-aar  qemu-system-aarch64      [.] helper_lookup_t=
+b_ptr
+> >    4.76%  qemu-system-aar  qemu-system-aarch64      [.] liveness_pass_1
+> >    3.69%  qemu-system-aar  qemu-system-aarch64      [.] tcg_gen_code
+> >    2.95%  qemu-system-aar  qemu-system-aarch64      [.] qht_lookup_cust=
+om
+> >    2.93%  qemu-system-aar  qemu-system-aarch64      [.] tcg_optimize
+> >    1.28%  qemu-system-aar  qemu-system-aarch64      [.] tcg_out_opc.isr=
+a.15
+> >    1.09%  qemu-system-aar  qemu-system-aarch64      [.] get_phys_addr_l=
+pae
+> >    1.09%  qemu-system-aar  [kernel.kallsyms]        [k] isolate_freepag=
+es_block
+> >    1.05%  qemu-system-aar  qemu-system-aarch64      [.] cpu_get_tb_cpu_=
+state
+> >    0.98%  qemu-system-aar  [kernel.kallsyms]        [k] do_syscall_64
+> >    0.94%  qemu-system-aar  qemu-system-aarch64      [.] tb_lookup_cmp
+> >    0.78%  qemu-system-aar  qemu-system-aarch64      [.] init_ts_info
+> >    0.73%  qemu-system-aar  qemu-system-aarch64      [.] tb_htable_looku=
+p
+> >    0.73%  qemu-system-aar  qemu-system-aarch64      [.] tb_gen_code
+> >    0.73%  qemu-system-aar  qemu-system-aarch64      [.] tlb_set_page_wi=
+th_attrs
+> >
+> >>
+> >> Am 07.10.2020 um 13:00 schrieb Alex Benn=C3=A9e:
+> >>> perf to record your boot
+> >
+>

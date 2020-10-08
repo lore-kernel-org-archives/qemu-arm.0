@@ -1,210 +1,277 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp794391lfq;
-        Wed, 7 Oct 2020 15:27:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxLCIE1ikos+u7db+WJr3kfHJwR8t9tfSOTG45C9k9YU98335KDoXvEXibqr11bkh7tla5h
-X-Received: by 2002:a25:7314:: with SMTP id o20mr6567865ybc.211.1602109653675;
-        Wed, 07 Oct 2020 15:27:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602109653; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp914504lfq;
+        Wed, 7 Oct 2020 18:57:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2ZYmrIhXDmhtPO/yLe4FNMQDd0q3+11F5HKfa0/N7LMextx04tlDXr/MC91jB20U4R3+f
+X-Received: by 2002:a25:5090:: with SMTP id e138mr7337807ybb.430.1602122249523;
+        Wed, 07 Oct 2020 18:57:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602122249; cv=none;
         d=google.com; s=arc-20160816;
-        b=ICpI6m0J6JA1znCPtFB7HjAMVweGBlh5DnKdySJxM4YeoAcQjVbzx1MWlSrADMjb+B
-         9ae67xw2UkSSeThSKRPmLh1wDjiiXr85AVOEwQuDfV9G6Igxv5CYgrvOInSIpjn2UMvm
-         c/ZjIYelGwMuBH0RUWZWtAXmDfHDiT5QODnE7eSoEtkhTm/dqMf6SF3QCzftn/YyPQmP
-         vmgqF6/Gp4uQLAsR/WphMwBHvX1TlbNIK76HJdkR79ixCAwxzmGjbLqVOIAj3RZl8PIB
-         joQu83TMeNjkeWhepMk2Kz4cCjoJsoxOJzTK5i+8IevsgldwK9xnlKO9h/5vRUPpwTzJ
-         k++w==
+        b=vJpz1kHVuoiDb7E70bEMIkdofzvKzhtbxXFSRTtI5976mpMomIBZao2o3FItQXcaDW
+         t/u+sDF8y7rqBF8OajfnpbABtIP8wTI/Cmpb45MEf5R7bUXPu9tAPqL5IB8bqrpRtVPY
+         pKQo6ifWI2DRmoyzvjm287CMyoq8NJm0EC/N3rcB0Bz78h6lMibuP/WNKb0gnTK3o2FY
+         psu496WWP+cEzEbIFlRS1mazpXbOhpfRvsqguyQfdgBBIdXK98L9zcgw7R2yWaJ3LCDJ
+         OXc2cODCf4kVzGa2KjTlWR0cRO+KARISfCdThLwpV3j31Nnwz4sgysf9Bk+K3K47+2LI
+         KnaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=zlAk6viXZB+2JmcBonrJJIWkGxbb541ezreuxfFHjCI=;
-        b=I+nFDIg2U1edv/KNyoePDuzrco9cUuYF7AnQzJKsk4d4bVvXSjfZNWgNCSfFlzifK/
-         G5XtFeklvccG3lvRqZVt0fpXPX6OOoec0Mispsop76/PLnNi16UuGiFsRR8X/5oEShNz
-         H/v02CmjtORMfsYZsSTBoe8MHsCHkTHGMO/+7lNnojdbdsVA+LnY6jIQZFc7dpnyC8W9
-         onxiiKJQZ4ewjFR122jUpcN+aEwAUjTe7x4ZyNPlzUshB+8LxmhFv9kXVYPFoB60Adt4
-         HDaJ7Mpr3fsSmgz5S/grliUTm9XmCavM74ao/vqlnNX50VLfnRkJelD9VWXq48g79JHR
-         oQ8w==
+        bh=oa3gvBDsnQPUaYpvQt0315bU6kg939CNxvlhWTQHlo0=;
+        b=NUa0QLC1ClCNAzMYgkGr3N48E/MvtQk6tQFMd02V1zMDUFIxK8R6xL/r++34sU02tc
+         bqBPYAXsuwVnrIANjTu/N1LA/hp7BRwD8F4RfhDhyZ6u2/PzrwFYnkA3ecdP9b39qdqx
+         B7/nn5fJQcT25G5v2tEzNsPGRER0OWEvVEJCG298DRUvzYApFqUIZUkHRKbLBi1A828D
+         CoQ2OaFBNWWS+VfW3xkmReotk/7bUDu9F4nzK0QXuFwwBVcneRxvjr9/MjUmug842vBq
+         lZo/WDYWgy2UfyxprLU4U28ZA6pFSdlL2TTf1dlOzxYBVnr18O1MvBvIpfgPa4zMXODC
+         1bnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cbinlxcI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=0NkInpLg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8si2919774ybj.264.2020.10.07.15.27.33
+        by mx.google.com with ESMTPS id e131si3217765ybe.250.2020.10.07.18.57.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Oct 2020 15:27:33 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 07 Oct 2020 18:57:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cbinlxcI;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:59294 helo=lists1p.gnu.org)
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=0NkInpLg;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Received: from localhost ([::1]:51786 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQHuG-0002T7-Us
-	for alex.bennee@linaro.org; Wed, 07 Oct 2020 18:27:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35706)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kQLBQ-0007H0-SU
+	for alex.bennee@linaro.org; Wed, 07 Oct 2020 21:57:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37218)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kQHu3-0002SN-J9
- for qemu-arm@nongnu.org; Wed, 07 Oct 2020 18:27:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:21218)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kQHu0-0007wl-Nm
- for qemu-arm@nongnu.org; Wed, 07 Oct 2020 18:27:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602109634;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zlAk6viXZB+2JmcBonrJJIWkGxbb541ezreuxfFHjCI=;
- b=cbinlxcIg7v3YTZOcdWAYzExoZTyw+rTWAGdNGXRPJBkqRWlXOHNWxjWybI2f3pk26F40f
- ej9deeLgGhqtpneYG2zohgBP6tDsKUL5L8J5N2hMrcQGLcf5urSFzFWuVebAS1Y1VINxor
- LJz3qbevH9vYHpJRwfxwGTK6TvWWZEo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-430-LXbSRMSkPuWCzQqZXhCE6w-1; Wed, 07 Oct 2020 18:27:12 -0400
-X-MC-Unique: LXbSRMSkPuWCzQqZXhCE6w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 360B285C706;
- Wed,  7 Oct 2020 22:27:10 +0000 (UTC)
-Received: from localhost (ovpn-119-102.rdu2.redhat.com [10.10.119.102])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8BD687BE42;
- Wed,  7 Oct 2020 22:26:58 +0000 (UTC)
-Date: Wed, 7 Oct 2020 18:26:57 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: qemu-devel@nongnu.org
-Subject: Re: [PATCH 00/24] qom: Convert some properties to class properties
-Message-ID: <20201007222657.GA7303@habkost.net>
-References: <20200921221045.699690-1-ehabkost@redhat.com>
- <20200922210029.GB2044576@habkost.net>
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kQLAQ-0006ps-5B
+ for qemu-devel@nongnu.org; Wed, 07 Oct 2020 21:56:26 -0400
+Received: from mail-oi1-x243.google.com ([2607:f8b0:4864:20::243]:44708)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kQLAI-0000Hk-FI
+ for qemu-devel@nongnu.org; Wed, 07 Oct 2020 21:56:23 -0400
+Received: by mail-oi1-x243.google.com with SMTP id x62so4662468oix.11
+ for <qemu-devel@nongnu.org>; Wed, 07 Oct 2020 18:56:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bytedance-com.20150623.gappssmtp.com; s=20150623;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=oa3gvBDsnQPUaYpvQt0315bU6kg939CNxvlhWTQHlo0=;
+ b=0NkInpLgFi8oFI7kG+2Pl7A1HBZeUfu5h/vcH7aOm8Eyf7o6crQtiXm/W7HpYS5CWx
+ vnFykvTz7EKVnmFx9Inuwh/UtWW9dqP6qCz3H0+YbZs25tlfwvRAVc+pOBnZVtxpq94E
+ Kd42/fR5v30/EOJktQ0z3GXZlhjIA/y7Zy7zrXrFNizAbiXGS2lKskCBxUVClewy0Jrj
+ FFSeT+fhxRTTpGkdyF9bRKyA33/xY0+GQSIhbrkbfL6EaqgAOreccuXe/ZIAqAkkmvqI
+ 1JjubqsqLIDGdwZmgYq3IWHgCQ3MNFp5zKrRzFZMGwUPlihwqgnvbjNo5pjIFAwPGRJq
+ h2vQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=oa3gvBDsnQPUaYpvQt0315bU6kg939CNxvlhWTQHlo0=;
+ b=REINxl7ajAqxfsrwSbkCO7jNyo2VyVYPdUX8V8rH7lydQqSi5/SBEABAul74xV1VI3
+ i41+htS1DbLhYsrsKNUmXuEwH1FY+hZNbfixxVboUdyzdltcZiZMLAEVzOqXAitGG6eo
+ ihQLGpCJe/RlgfK25ZO711PDJaXqaFnTmzA7GuBHh8XhSTKaWUAz5EATPVakXU0sdPg6
+ 2QMSawgVwhlUegYk7I0QxmOpTV0alZV3XgmwHqo8GfkzaLI1HyCOodfeB3Uol5VSYpE2
+ 1Y3t7rhOItsuRVevKCljJPq6UGOn76rQsFuqLBsf4QZrdB9g0a6WwoBL8+i8xNc54Kvf
+ xrFQ==
+X-Gm-Message-State: AOAM5323oujdAa3c2sghiDPk6YY9TbtsssS1p05qcxwqvdrowyhtVI40
+ NB4a5nKtlc+xmYU80s+KKxPCp3q9K6z1ghkQ5j61Ow==
+X-Received: by 2002:aca:4911:: with SMTP id w17mr3552836oia.80.1602122175706; 
+ Wed, 07 Oct 2020 18:56:15 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20200922210029.GB2044576@habkost.net>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/07 00:44:56
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.742,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20200929055309.509-1-wangzhiqiang.bj@bytedance.com>
+ <20200929055309.509-2-wangzhiqiang.bj@bytedance.com>
+ <a4ff4f18-34fa-d3bd-9a63-dfbc8fb41f84@kaod.org>
+In-Reply-To: <a4ff4f18-34fa-d3bd-9a63-dfbc8fb41f84@kaod.org>
+From: John Wang <wangzhiqiang.bj@bytedance.com>
+Date: Thu, 8 Oct 2020 09:56:13 +0800
+Message-ID: <CAH0XSJu6+byt-CMCKP_-pJCXHj-bb27_BqC_nvnFJTox96wjJw@mail.gmail.com>
+Subject: Re: [External] Re: [PATCH 2/2] aspeed: Add support for the g220a-bmc
+ board
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::243;
+ envelope-from=wangzhiqiang.bj@bytedance.com; helo=mail-oi1-x243.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sagar Karandikar <sagark@eecs.berkeley.edu>,
- David Hildenbrand <david@redhat.com>,
- Alistair Francis <Alistair.Francis@wdc.com>, Gerd Hoffmann <kraxel@redhat.com>,
- qemu-riscv@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Li Qiang <liq3ea@gmail.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- "Gonglei \(Arei\)" <arei.gonglei@huawei.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Amit Shah <amit@kernel.org>, Alistair Francis <alistair@alistair23.me>,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
- Igor Mammedov <imammedo@redhat.com>, Alistair Francis <alistair23@gmail.com>,
- John Snow <jsnow@redhat.com>, Richard Henderson <rth@twiddle.net>,
- "Daniel P. Berrange" <berrange@redhat.com>,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Cornelia Huck <cohuck@redhat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kTdQkohRZYSX
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?B?6YOB6Zu3?= <yulei.sh@bytedance.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, Joel Stanley <joel@jms.id.au>,
+ Lotus Xu <xuxiaohan@bytedance.com>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: /fp45JwUJJs5
 
-On Tue, Sep 22, 2020 at 05:00:40PM -0400, Eduardo Habkost wrote:
-> On Mon, Sep 21, 2020 at 06:10:21PM -0400, Eduardo Habkost wrote:
-> > Class properties make QOM introspection simpler and easier, as it
-> > doesn't require an object to be instantiated.  This series
-> > converts a few existing object_property_add*() calls to register
-> > class properties instead.
-> > 
-> > Eduardo Habkost (24):
-> >   cryptodev-vhost-user: Register "chardev" as class property
-> >   cryptodev-backend: Register "chardev" as class property
-> >   rng-egd: Register "chardev" as class property
-> >   rng-random: register "filename" as class property
-> >   vhost-user: Register "chardev" as class property
-> >   vexpress: Register "secure" as class property
-> >   rng: Register "opened" as class property
-> >   vexpress-a15: Register "virtualization" as class property
-> >   input-linux: Register properties as class properties
-> >   input-barrier: Register properties as class properties
-> >   tmp421: Register properties as class properties
-> >   s390x: Register all CPU properties as class properties
-> >   i386: Register most CPU properties as class properties
-> >   i386: Register feature bit properties as class properties
-> >   arm/virt: Register most properties as class properties
-> >   virt: Register "its" as class property
-> >   cpu/core: Register core-id and nr-threads as class properties
-> >   arm/cpu64: Register "aarch64" as class property
-> >   xlnx-zcu102: Register properties as class properties
-> >   machine: Register "memory-backend" as class property
-> >   vga-pci: Register "big-endian-framebuffer" as class property
-> >   i440fx: Register i440FX-pcihost properties as class properties
-> >   sifive_e: Register "revb" as class property
-> >   sifive_u: Register "start-in-flash" as class property
-> 
-> I'm queueing the following:
-> 
-> [PATCH 01/24] cryptodev-vhost-user: Register "chardev" as class property
-> [PATCH 02/24] cryptodev-backend: Register "chardev" as class property
-> [PATCH 12/24] s390x: Register all CPU properties as class properties
-> [PATCH 17/24] cpu/core: Register core-id and nr-threads as class properties
-> [PATCH 19/24] xlnx-zcu102: Register properties as class properties
-> [PATCH 20/24] machine: Register "memory-backend" as class property
-> [PATCH 22/24] i440fx: Register i440FX-pcihost properties as class properties
-> [PATCH 23/24] sifive_e: Register "revb" as class property
-> [PATCH 24/24] sifive_u: Register "start-in-flash" as class property
-> 
-> The remaining patches still need reviews.
+On Thu, Oct 1, 2020 at 10:56 PM C=C3=A9dric Le Goater <clg@kaod.org> wrote:
+>
+> On 9/29/20 7:53 AM, John Wang wrote:
+> > G220A is a 2 socket x86 motherboard supported by OpenBMC.
+> > Strapping configuration was obtained from hardware.
+> >
+> > Signed-off-by: John Wang <wangzhiqiang.bj@bytedance.com>
+>
+> Reviewed-by: C=C3=A9dric Le Goater <clg@kaod.org>
+>
+>
+> One quick question below.
+>
+> > ---
+> >  hw/arm/aspeed.c | 60 +++++++++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 60 insertions(+)
+> >
+> > diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> > index bdb981d2f8..04c8ad2bcd 100644
+> > --- a/hw/arm/aspeed.c
+> > +++ b/hw/arm/aspeed.c
+> > @@ -120,6 +120,20 @@ struct AspeedMachineState {
+> >          SCU_AST2500_HW_STRAP_ACPI_ENABLE |                            =
+  \
+> >          SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
+> >
+> > +#define G220A_BMC_HW_STRAP1 (                                      \
+> > +        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                   =
+  \
+> > +        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                      =
+  \
+> > +        SCU_AST2500_HW_STRAP_UART_DEBUG |                             =
+  \
+> > +        SCU_AST2500_HW_STRAP_RESERVED28 |                             =
+  \
+> > +        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                            =
+  \
+> > +        SCU_HW_STRAP_2ND_BOOT_WDT |                                   =
+  \
+> > +        SCU_HW_STRAP_VGA_CLASS_CODE |                                 =
+  \
+> > +        SCU_HW_STRAP_LPC_RESET_PIN |                                  =
+  \
+> > +        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |              =
+  \
+> > +        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |   =
+  \
+> > +        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                     =
+  \
+> > +        SCU_AST2500_HW_STRAP_RESERVED1)
+> > +
+> >  /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition)=
+ */
+> >  #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+> >
+> > @@ -559,6 +573,30 @@ static void witherspoon_bmc_i2c_init(AspeedMachine=
+State *bmc)
+> >      /* Bus 11: TODO ucd90160@64 */
+> >  }
+> >
+> > +static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
+> > +{
+> > +    AspeedSoCState *soc =3D &bmc->soc;
+> > +    DeviceState *dev;
+> > +
+> > +    dev =3D DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2=
+c, 3),
+> > +                                         "emc1413", 0x4c));
+> > +    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error=
+_abort);
+> > +    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error=
+_abort);
+> > +    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error=
+_abort);
+> > +
+> > +    dev =3D DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2=
+c, 12),
+> > +                                         "emc1413", 0x4c));
+> > +    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error=
+_abort);
+> > +    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error=
+_abort);
+> > +    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error=
+_abort);
+> > +
+> > +    dev =3D DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2=
+c, 13),
+> > +                                         "emc1413", 0x4c));
+> > +    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error=
+_abort);
+> > +    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error=
+_abort);
+> > +    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error=
+_abort);
+> > +}
+> > +
+> >  static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+> >  {
+> >      return ASPEED_MACHINE(obj)->mmio_exec;
+> > @@ -798,6 +836,24 @@ static void aspeed_machine_tacoma_class_init(Objec=
+tClass *oc, void *data)
+> >          aspeed_soc_num_cpus(amc->soc_name);
+> >  };
+> >
+> > +static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *dat=
+a)
+> > +{
+> > +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> > +    AspeedMachineClass *amc =3D ASPEED_MACHINE_CLASS(oc);
+> > +
+> > +    mc->desc       =3D "Bytedance G220A BMC (ARM1176)";
+> > +    amc->soc_name  =3D "ast2500-a1";
+> > +    amc->hw_strap1 =3D G220A_BMC_HW_STRAP1;
+> > +    amc->fmc_model =3D "n25q512a";
+> > +    amc->spi_model =3D "mx25l25635e";
+>
+> On real HW, is it a mx25l25635e or a mx25l25635f ?
 
-Queueing:
+I'm not sure, maybe mx25l25635f , at the lab, we have multiple models
+of flash chips. :)
 
-[PATCH 03/24] rng-egd: Register "chardev" as class property
-[PATCH 04/24] rng-random: register "filename" as class property
-[PATCH 07/24] rng: Register "opened" as class property
-[PATCH 09/24] input-linux: Register properties as class properties
-[PATCH 10/24] input-barrier: Register properties as class properties
-[PATCH 13/24] i386: Register most CPU properties as class properties
-[PATCH 14/24] i386: Register feature bit properties as class properties
-
-Waiting for reviews on:
-
-[PATCH 05/24] vhost-user: Register "chardev" as class property
-[PATCH 06/24] vexpress: Register "secure" as class property
-[PATCH 08/24] vexpress-a15: Register "virtualization" as class property
-[PATCH 11/24] tmp421: Register properties as class properties
-[PATCH 15/24] arm/virt: Register most properties as class properties
-[PATCH 16/24] virt: Register "its" as class property
-[PATCH 18/24] arm/cpu64: Register "aarch64" as class property
-[PATCH 21/24] vga-pci: Register "big-endian-framebuffer" as class property
-
--- 
-Eduardo
-
+>
+> Thanks
+>
+> C.
+>
+> > +    amc->num_cs    =3D 2;
+> > +    amc->macs_mask  =3D ASPEED_MAC1_ON | ASPEED_MAC2_ON;
+> > +    amc->i2c_init  =3D g220a_bmc_i2c_init;
+> > +    mc->default_ram_size =3D 1024 * MiB;
+> > +    mc->default_cpus =3D mc->min_cpus =3D mc->max_cpus =3D
+> > +        aspeed_soc_num_cpus(amc->soc_name);
+> > +};
+> > +
+> >  static const TypeInfo aspeed_machine_types[] =3D {
+> >      {
+> >          .name          =3D MACHINE_TYPE_NAME("palmetto-bmc"),
+> > @@ -835,6 +891,10 @@ static const TypeInfo aspeed_machine_types[] =3D {
+> >          .name          =3D MACHINE_TYPE_NAME("tacoma-bmc"),
+> >          .parent        =3D TYPE_ASPEED_MACHINE,
+> >          .class_init    =3D aspeed_machine_tacoma_class_init,
+> > +    }, {
+> > +        .name          =3D MACHINE_TYPE_NAME("g220a-bmc"),
+> > +        .parent        =3D TYPE_ASPEED_MACHINE,
+> > +        .class_init    =3D aspeed_machine_g220a_class_init,
+> >      }, {
+> >          .name          =3D TYPE_ASPEED_MACHINE,
+> >          .parent        =3D TYPE_MACHINE,
+> >
+>

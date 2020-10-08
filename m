@@ -1,107 +1,111 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp938553lfq;
-        Wed, 7 Oct 2020 19:43:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy550KgjTs4DotFBL3B83B2UVRGbhdJlCxJCuWBOrtWEzcZPCXsSKcZ6TtxANrXaVWD1cy5
-X-Received: by 2002:a25:840d:: with SMTP id u13mr8155633ybk.7.1602125005451;
-        Wed, 07 Oct 2020 19:43:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602125005; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1155681lfq;
+        Thu, 8 Oct 2020 02:05:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyNji6mfaglOMwJuSRl9hfXOY3ut0kczvOio57+7u+nXA3+JV7jtScCfeAp5sARJG/HUhZk
+X-Received: by 2002:a25:cc86:: with SMTP id l128mr9684680ybf.232.1602147920138;
+        Thu, 08 Oct 2020 02:05:20 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602147920; cv=none;
         d=google.com; s=arc-20160816;
-        b=u30gr0IniemtnZgLam3/seSCJhVuBcYiAvKzvNRGJ/lmcdQtxqwDNzu9ujDAFcDSJ9
-         27CTRz9nUveL1qnlF/g+5PnplWYsyraWbFtwrsasF2kCyOOn8SHF1Ug415unVOhn0M9j
-         iKcCan00Tw4GkkTpa5znlOVxD1Gg/LTeeIf+pvghhoN+gzttw4EvRme9dfWnac4dSZLC
-         WOYHaKfZY4PObBrCuYAq21MPWC8k/xiPEUFzjSqXjoNaY7cBehqd0YLSHZddiBv0yNM6
-         tSWnN2Oh05LpYaaSIhHl62I6JkW2IoKbK/skgm57GCMooYBp2zxG9RSQChYZBl7z78UB
-         g2Yg==
+        b=sWfjKHdZpga2ZwEzTsZwgVWCTkSHhsraz8c5xDTeu+AlF2i1zFgjnnjwIHiv8KQjz/
+         bB0REJoP+yn83rxs3Q+nc0k77+/Yc9POOzLWXPnH3XquBrJdT3gVSfrr20pDkBag0A0y
+         9E5mO2dPF+4pbTk5Ea4xYXiMyFIrnKtzEi8Dg9I9sDmfw4srgu3J+pTd4/I3xaJX+J2X
+         myUKrVV5PWvNXEW3zhSeKlAD53MWQNCleWHKAcQKdPKxyPIy27/MbO1aZKTZisZ41laO
+         XQW3rJiFJFZgGlqsqOpMhgk+iqx/bIGLaxwc+mi4QVojIbJGlXzU6PKiMwdhFJ1ivLbk
+         FIYA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:references:in-reply-to
-         :message-id:date:subject:to:from:dkim-signature;
-        bh=S2Iy8pepTnlMACsozQ/NKopOYTXME8B9rCZZ8IS6SeA=;
-        b=le2RQpLKW88uaX10+bJ4iYvG4w+LRcfXyo3P6Yd44+qSlrdV2POaIl8HzDlloTRgrz
-         /vVBwj3V/uoXRuKpf/oRwsK6e36QwS32qGkLFgqczQirMtSNnGpSzDX03sue+2OjhB/y
-         3e6roYnCvzodUp40xIhBNmRhsr2LOVJ0xe3KoDEUlhQ2DftVkTKRXOo/wkNrN9Zhca+w
-         Zfg+IMNEly7/4tJrZjqwLgcpmbqzKJYjIsswH0mqwMRONQVYyULS8ojnNDrLK8942isk
-         SVdTulu7dKRlj/BoJGINXErLE8Av73WFXHA2Xbqly7PZkVAqkK0ZYvP0YhIgvADupkJC
-         RF7w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=tkPzO/sEfgYCDokZyidOZG4oHQpLtbrvVAaaA28oWrA=;
+        b=PFdiKH9T5Qw0zT1Msm8SgeX9h3A+ESN3JcnDLPM93O1ZNyzjDhqySU+UosJTn2jNgl
+         8+gJdEyuj7D+WtEMKAU0KzA4/grDeqaAcl6m8o6V0uCoss0D+GdLMen+v5JTTjGvKxK8
+         p0T4MVXHZvxGvykyTtKVBDzNzxSOYHsRHabjJYLgMBH0OfzclULCv5TPiWQ0R4LB9UTK
+         bx3pvAkDIKfAldj9Vz1MjABv/bcVDnTLNEXnU9Cpm3cDVpc50rbdFJJU+z8wLlJGIREo
+         9HSdmPz9WW0smhsi/Ttkt/f9U1J6Gvot+EXUqzXJQ30W0VXBDNIfjD51rdT8/+LyQL2r
+         gKug==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oZX09gio;
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=lUBfSOA1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i1si3374948ybo.103.2020.10.07.19.43.25
+        by mx.google.com with ESMTPS id 188si4110617yba.417.2020.10.08.02.05.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 07 Oct 2020 19:43:25 -0700 (PDT)
+        Thu, 08 Oct 2020 02:05:20 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oZX09gio;
+       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=lUBfSOA1;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34378 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+Received: from localhost ([::1]:35622 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQLts-0007Pg-R8
-	for alex.bennee@linaro.org; Wed, 07 Oct 2020 22:43:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43288)
+	id 1kQRrT-0008Jj-8B
+	for alex.bennee@linaro.org; Thu, 08 Oct 2020 05:05:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48536)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1kQLsg-0005xk-Fk
- for qemu-devel@nongnu.org; Wed, 07 Oct 2020 22:42:10 -0400
-Received: from mail-qt1-x844.google.com ([2607:f8b0:4864:20::844]:38758)
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kQRpC-0007Pg-KO
+ for qemu-devel@nongnu.org; Thu, 08 Oct 2020 05:02:59 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c]:41159)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1kQLse-0006tt-Q9
- for qemu-devel@nongnu.org; Wed, 07 Oct 2020 22:42:10 -0400
-Received: by mail-qt1-x844.google.com with SMTP id q26so3911241qtb.5
- for <qemu-devel@nongnu.org>; Wed, 07 Oct 2020 19:42:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references;
- bh=S2Iy8pepTnlMACsozQ/NKopOYTXME8B9rCZZ8IS6SeA=;
- b=oZX09giotNyejoWb2DdyEt7/E90dRjUTvAFp7QuGNip1gNeWwxRxPZ9rCPkp8v/gpJ
- oShsWQEbmUraIu/cuvplfgsCOsgG+Xp/bAcDapfhh+krY0GORU8dYdfOjQ33pA2gNsf2
- t+VohewVHrRUtAKtHDnezxe1ZUDKUW4MLfc0RSjElXk9t4vhHUm/ssxcL5EYcEyOGq4N
- amJabMfpZwikIIQIjWOn5Ontx95Zjh64esaViIZnI07OLcqkT1KsKmQNNCsUR0mO89Wc
- RTxcMN02pf5xBppiUznTcteTxZim/KpE5D+mzzc/lqK2oHCZJZ7mZ8/wColFCV4ewwEs
- q/vA==
+ (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
+ id 1kQRp6-00021x-Km
+ for qemu-devel@nongnu.org; Thu, 08 Oct 2020 05:02:58 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id g10so3450995pfc.8
+ for <qemu-devel@nongnu.org>; Thu, 08 Oct 2020 02:02:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bytedance-com.20150623.gappssmtp.com; s=20150623;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=tkPzO/sEfgYCDokZyidOZG4oHQpLtbrvVAaaA28oWrA=;
+ b=lUBfSOA130fwcSmdFYGLDEEkVFurQqIRQrzHKqtfDqhAMGz9GstNsCdcaBiqtOXfvm
+ 31Qt7vWvGpHJox3JmynxDYtzN+rGD8KZH7fW616/idskzY8XEMPwo0ohQcFf7qnyDT14
+ nal2rq/ucr4lSR5mUHsRpsgy3ns5pGahshNzgopBbKtuiX5SCuW8YjJUGe9+zJX3fZd1
+ G9NhghVSs1ULsNJfjvBxiPfk3Yd0G8v9P1SYn+Z9/jKGhgG3lq+4JfFB5YMV/C5kaelG
+ 1RAXmBlqmbtfIo6pciOEfKKhdEqq69hdjpy9sU2L7jqn4HSaa1o9eOazpxM6bdsEJwXp
+ OF1A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references;
- bh=S2Iy8pepTnlMACsozQ/NKopOYTXME8B9rCZZ8IS6SeA=;
- b=tQRyowv/RiWGdqxJ1BWwD6hfVS61BSzevORl2M8AomvNP7swC930yA+naY04yo7HDM
- a5EGY3Sf2V1YJBvB+5OrxeqCJB7fjCR3E9nVzNfocQ/3RgI1rEAPtLRA3ykr9Z+ctHv2
- f0maScUviaUeXC1Oicu8Jh6MXrOPfYw+h8TDQgnLXeHD6Kx1ujYsRo1fBMx/ql4iaAec
- MNVKfITscKYRARIAdZYQvW7FJkarkv1huw/AoNoYMy4hk6WmWld9u1aLbvNsB2Vc8SH7
- OqDlFWRU4csq3b19RkxDtjKxMFiW8dgBbfy1KdaK36BPdiMKaAPAiwECfq/WZ1IaUBZj
- En2A==
-X-Gm-Message-State: AOAM533otnSctAdLn3uwZ54082z2LHYnxISiYcVWjZYalXUsynOyQtYB
- JmL2mArC7sIzn1AmAsAvnXka8A==
-X-Received: by 2002:aed:2fa1:: with SMTP id m30mr5462614qtd.273.1602124927815; 
- Wed, 07 Oct 2020 19:42:07 -0700 (PDT)
-Received: from master.ht.home ([2607:fea8:e2a0:e950::d884])
- by smtp.googlemail.com with ESMTPSA id m3sm3005031qkh.10.2020.10.07.19.42.07
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Oct 2020 19:42:07 -0700 (PDT)
-From: Shashi Mallela <shashi.mallela@linaro.org>
-To: peter.maydell@linaro.org,
-	leif@nuviainc.com,
-	rad@semihalf.com
-Subject: [PATCH v3 2/2] hw/arm/sbsa-ref: add SBSA watchdog device
-Date: Wed,  7 Oct 2020 22:42:03 -0400
-Message-Id: <20201008024203.112303-3-shashi.mallela@linaro.org>
-X-Mailer: git-send-email 2.18.4
-In-Reply-To: <20201008024203.112303-1-shashi.mallela@linaro.org>
-References: <20201008024203.112303-1-shashi.mallela@linaro.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::844;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qt1-x844.google.com
+ :references:mime-version:content-transfer-encoding;
+ bh=tkPzO/sEfgYCDokZyidOZG4oHQpLtbrvVAaaA28oWrA=;
+ b=Q+EGtjACoF+C/jl9H/2Y51GbI7oJD5kUgLCtmiK5SSUoXaVwNidEn6jHkcbahfnd5m
+ eyqziUtEN3LmsuPXswpL/C8JQzx2GHSZ2hHYF/jGbjQtycHdG+VhXJtdOc6yink/Nvwd
+ WEXmEjrMivzyP3sROk/G7G/yQT6MHIWSuh8XOjPRvcgZFV8j3GIop7LVsT8iK6tgap3a
+ 5hoWMBw5oJy9ZpaQtvhq3BB1kQ3T/GFirKWNELHTx77+LykziqWu0eKcJiyUc1jVe0P4
+ WsmovxU316rd85BqW44TD4dhDzg9z9BRTiE6KDSiHR9p9HugoMlAL8lUESYU80A1gTK3
+ fj1A==
+X-Gm-Message-State: AOAM531/AO4PRZmupN+ZuSaBQAlcTOkKrm6brM9ijN3Mruc3pbENr9ud
+ MXoiphZeRiuIOdw2SsMR4WFO6Q==
+X-Received: by 2002:a63:4822:: with SMTP id v34mr6486281pga.342.1602147768560; 
+ Thu, 08 Oct 2020 02:02:48 -0700 (PDT)
+Received: from localhost ([103.136.220.74])
+ by smtp.gmail.com with ESMTPSA id k9sm5745787pfc.96.2020.10.08.02.02.47
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 08 Oct 2020 02:02:48 -0700 (PDT)
+From: John Wang <wangzhiqiang.bj@bytedance.com>
+To: clg@kaod.org, xuxiaohan@bytednace.com, yulei.sh@bytedance.com,
+ joel@jms.id.au
+Subject: [PATCH v2 2/2] aspeed: Add support for the g220a-bmc board
+Date: Thu,  8 Oct 2020 09:02:44 +0000
+Message-Id: <20201008090244.3770-2-wangzhiqiang.bj@bytedance.com>
+X-Mailer: git-send-email 2.17.1
+In-Reply-To: <20201008090244.3770-1-wangzhiqiang.bj@bytedance.com>
+References: <20201008090244.3770-1-wangzhiqiang.bj@bytedance.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=wangzhiqiang.bj@bytedance.com; helo=mail-pf1-x42c.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -115,123 +119,118 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ikem2QER4jYx
+X-TUID: fCeNB5Ry9YV7
 
-Included the newly implemented SBSA generic watchdog device model into
-SBSA platform
+G220A is a 2 socket x86 motherboard supported by OpenBMC.
+Strapping configuration was obtained from hardware.
 
-Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+Signed-off-by: John Wang <wangzhiqiang.bj@bytedance.com>
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Reviewed-by: Joel Stanley <joel@jms.id.au>
 ---
- hw/arm/sbsa-ref.c | 44 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+v2:
+  - No changes
+---
+ hw/arm/aspeed.c | 60 +++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 60 insertions(+)
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 9c3a893bedfd..1e6ef124924c 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -40,6 +40,7 @@
- #include "hw/qdev-properties.h"
- #include "hw/usb.h"
- #include "hw/char/pl011.h"
-+#include "hw/watchdog/wdt_sbsa_gwdt.h"
- #include "net/net.h"
- #include "qom/object.h"
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index bdb981d2f8..04c8ad2bcd 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -120,6 +120,20 @@ struct AspeedMachineState {
+         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
+         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
  
-@@ -64,6 +65,9 @@ enum {
-     SBSA_GIC_DIST,
-     SBSA_GIC_REDIST,
-     SBSA_SECURE_EC,
-+    SBSA_GWDT,
-+    SBSA_GWDT_REFRESH,
-+    SBSA_GWDT_CONTROL,
-     SBSA_SMMU,
-     SBSA_UART,
-     SBSA_RTC,
-@@ -104,6 +108,8 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-     [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
-     [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
-     [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
-+    [SBSA_GWDT_REFRESH] =       { 0x50010000, 0x00001000 },
-+    [SBSA_GWDT_CONTROL] =       { 0x50011000, 0x00001000 },
-     [SBSA_UART] =               { 0x60000000, 0x00001000 },
-     [SBSA_RTC] =                { 0x60010000, 0x00001000 },
-     [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
-@@ -133,6 +139,7 @@ static const int sbsa_ref_irqmap[] = {
-     [SBSA_SECURE_UART_MM] = 9,
-     [SBSA_AHCI] = 10,
-     [SBSA_EHCI] = 11,
-+    [SBSA_GWDT] = 12,
++#define G220A_BMC_HW_STRAP1 (                                      \
++        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
++        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
++        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
++        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
++        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
++        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
++        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
++        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
++        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
++        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
++        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
++        SCU_AST2500_HW_STRAP_RESERVED1)
++
+ /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
+ #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
+ 
+@@ -559,6 +573,30 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+     /* Bus 11: TODO ucd90160@64 */
+ }
+ 
++static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
++{
++    AspeedSoCState *soc = &bmc->soc;
++    DeviceState *dev;
++
++    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
++                                         "emc1413", 0x4c));
++    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
++
++    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
++                                         "emc1413", 0x4c));
++    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
++
++    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
++                                         "emc1413", 0x4c));
++    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
++    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
++}
++
+ static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
+ {
+     return ASPEED_MACHINE(obj)->mmio_exec;
+@@ -798,6 +836,24 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
+         aspeed_soc_num_cpus(amc->soc_name);
  };
  
- static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
-@@ -141,6 +148,26 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
-     return arm_cpu_mp_affinity(idx, clustersz);
- }
- 
-+static void create_wdt_fdt(SBSAMachineState *sms)
++static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
 +{
-+    char *nodename;
-+    const char compat[] = "arm,sbsa-gwdt";
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
-+    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
++    mc->desc       = "Bytedance G220A BMC (ARM1176)";
++    amc->soc_name  = "ast2500-a1";
++    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
++    amc->fmc_model = "n25q512a";
++    amc->spi_model = "mx25l25635e";
++    amc->num_cs    = 2;
++    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON;
++    amc->i2c_init  = g220a_bmc_i2c_init;
++    mc->default_ram_size = 1024 * MiB;
++    mc->default_cpus = mc->min_cpus = mc->max_cpus =
++        aspeed_soc_num_cpus(amc->soc_name);
++};
 +
-+    nodename = g_strdup_printf("/watchdog@%" PRIx64, rbase);
-+    qemu_fdt_add_subnode(sms->fdt, nodename);
-+
-+    qemu_fdt_setprop(sms->fdt, nodename, "compatible",
-+                             compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
-+                                 2, rbase, 2, SBSA_GWDT_RMMIO_SIZE,
-+                                 2, cbase, 2, SBSA_GWDT_CMMIO_SIZE);
-+    qemu_fdt_setprop_cell(sms->fdt, nodename, "timeout-sec", 30);
-+    g_free(nodename);
-+}
-+
- /*
-  * Firmware on this machine only uses ACPI table to load OS, these limited
-  * device tree nodes are just to let firmware know the info which varies from
-@@ -219,6 +246,7 @@ static void create_fdt(SBSAMachineState *sms)
- 
-         g_free(nodename);
-     }
-+    create_wdt_fdt(sms);
- }
- 
- #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
-@@ -447,6 +475,20 @@ static void create_rtc(const SBSAMachineState *sms)
-     sysbus_create_simple("pl031", base, qdev_get_gpio_in(sms->gic, irq));
- }
- 
-+static void create_wdt(const SBSAMachineState *sms)
-+{
-+    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
-+    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
-+    DeviceState *dev = qdev_new(TYPE_WDT_SBSA_GWDT);
-+    SysBusDevice *s = SYS_BUS_DEVICE(dev);
-+    int irq = sbsa_ref_irqmap[SBSA_GWDT];
-+
-+    sysbus_realize_and_unref(s, &error_fatal);
-+    sysbus_mmio_map(s, 0, rbase);
-+    sysbus_mmio_map(s, 1, cbase);
-+    sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms->gic, irq));
-+}
-+
- static DeviceState *gpio_key_dev;
- static void sbsa_ref_powerdown_req(Notifier *n, void *opaque)
- {
-@@ -730,6 +772,8 @@ static void sbsa_ref_init(MachineState *machine)
- 
-     create_rtc(sms);
- 
-+    create_wdt(sms);
-+
-     create_gpio(sms);
- 
-     create_ahci(sms);
+ static const TypeInfo aspeed_machine_types[] = {
+     {
+         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
+@@ -835,6 +891,10 @@ static const TypeInfo aspeed_machine_types[] = {
+         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
+         .parent        = TYPE_ASPEED_MACHINE,
+         .class_init    = aspeed_machine_tacoma_class_init,
++    }, {
++        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_g220a_class_init,
+     }, {
+         .name          = TYPE_ASPEED_MACHINE,
+         .parent        = TYPE_MACHINE,
 -- 
-2.18.4
+2.17.1
 

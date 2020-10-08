@@ -1,102 +1,145 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp876413lfq;
-        Tue, 6 Oct 2020 10:30:49 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzD/FpGW8UGDLfqh8eGV4KRynUgsc7+Vn7o9qUo6/SEvJVk+j755lJ4Y5tbCPwTtUqxJryt
-X-Received: by 2002:aa7:d719:: with SMTP id t25mr6780186edq.11.1602005449402;
-        Tue, 06 Oct 2020 10:30:49 -0700 (PDT)
-ARC-Seal: i=2; a=rsa-sha256; t=1602005449; cv=pass;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1453079lfq;
+        Thu, 8 Oct 2020 08:39:54 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyhN8HEJnkBynRMQyOeTUXzT4nRfl55bZ686rtzJiYfHdEe9xoJczh/rRFmrUrHwYR+7AWl
+X-Received: by 2002:a25:5bc5:: with SMTP id p188mr11650640ybb.283.1602171594015;
+        Thu, 08 Oct 2020 08:39:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602171594; cv=none;
         d=google.com; s=arc-20160816;
-        b=gW3u1wX7NlqSoLlrQBwXY7Vy40E6fpqV+L+agTVS5j7udOUZ/gteIYYQh0IFUlhA7I
-         8/DjB8dBcKZy87tUhfUhhNMuPkLkfesp0kuKjqXD/xiGn4jgjctdvX+Sp4VqO0xhJIeX
-         pGvtYpKt4kOQyrqGJB519CahlbBX47SEj9ag1CQhJgu8YKq61h8JkpeAJ4wsknNqsoOd
-         kS/xZk3jxACScz+Xwu6gtAnHq4S5ZRKsKv1sLCDh97iQAjXRNDI3FWsj2/HBpC+hUj4k
-         cqd/HgFQK7/ale/FKU/obJ+uGp5/VXVpCH/N1xo2Wb+FBK7km1FK6wCNUR4aY70s8P/T
-         Ez4Q==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=date:cc:to:from:resent-from:content-transfer-encoding:mime-version
-         :in-reply-to:reply-to:message-id:subject;
-        bh=Oi1pAqgVx+2bb8XriszpPgAWFE6aVN3KOpO6vZM0ff0=;
-        b=y0qPw90ikzP/Fm5iVp7VyHx4SEFYfn99r/1d9u7GPrlvIX3drFNYrS2Ywt02gWl004
-         Ee+ENh2MWYWYRAtpm4cosr3Nekq3RajR0APB0dpLutGkAWNsMB6ocifBA4yIaMpu+1iU
-         v4mmbpFjpPZV7NXkbZDzU5dXF6ExkCG8wduFdkk3RDfRovj02bb8AqJ7cHkF0T92+w+x
-         lIT8R2ifLVoG/rCO6qXBRg46xd2W2bMbYGlOmC+2e2TkAsQnaiD0PEapnH2qZ+iQ1ioA
-         /8+FUTjddOl0Zg/7W7TwnAWVQ3Infbgc2DEGKRweMCu8CetW9/6UcdoNSBkXBw1U90Ke
-         npwg==
-ARC-Authentication-Results: i=2; mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.53 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-Return-Path: <no-reply@patchew.org>
-Received: from sender4-of-o53.zoho.com (sender4-of-o53.zoho.com. [136.143.188.53])
-        by mx.google.com with ESMTPS id m1si2740665edj.567.2020.10.06.10.30.48
-        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
-        Tue, 06 Oct 2020 10:30:49 -0700 (PDT)
-Received-SPF: pass (google.com: domain of no-reply@patchew.org designates 136.143.188.53 as permitted sender) client-ip=136.143.188.53;
+        b=hpdKTxY8cDgyaTlceerOWU+AiGrMCEvc/caR5l+uVq8VIKSWhqLFqof1xbW2xKLCmr
+         nfdcu0TvcrK0kDWQMHF6MAVnqvnB+bPMTOzfeYNy4pUVS6F8BScaoto0sT2fcobEVx9/
+         +D04Chf0354Z4R7DRE01x6DjBrTlS/NVOgIvW5JxyEa1XJR4tVLpEWp0MRLir+kA+L1P
+         Qr0gCIok0o3EDpZWBE3aUK7By3maOSOQTgahFpbQXoPaxkW0wPB8Jv6t3ln0dBlzjdVZ
+         z8WZ0fKaIVYMLx8VbAZ0IBXkAbjjwHlLO/ES0ldDlTP5Adp6LpNYy6wBDoQTA7wbMDRv
+         yg3w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=tC+strVV+B+K5HjAihiX4yitBIFB+2qfVBtZ+9OjiTQ=;
+        b=k2IWQ1FGxJXq5FNvAu57EI7w4570guYxTgWel23UVOLjt31QSr4OwuWkHf45b3EPDS
+         Z9h/ewCUEwAeiy+1dCp2N/CqNi+cO8Gsv7ajJyx6LtkmI1Nc1ZRU/PzE5nsSzVIRVQNA
+         r0UIR71UKx1RPakADHJ2rVR8xY/jzdEnVpTY8FO0HJjb+iraOBfHVjq8GC+1gRrwtU1M
+         SuvCFh69/Ty8eQXUn87E0KeQJ+uXxWhzRvkVQ7OgfJ5+7T9+KOVxO5KR8mhGB5Y2Tj4w
+         cyaQJSAX3ibRZt7T3W5nJqaFwoqvbrsDZzb1PMqGUgyJ2W+cMRxmLYXrpyezB9xLbz8u
+         vQoQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=NOlmXW8j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id h188si5447536yba.388.2020.10.08.08.39.53
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Thu, 08 Oct 2020 08:39:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=pass (i=1 spf=pass spfdomain=patchew.org dmarc=pass fromdomain=patchew.org>);
-       spf=pass (google.com: domain of no-reply@patchew.org designates 136.143.188.53 as permitted sender) smtp.mailfrom=no-reply@patchew.org
-ARC-Seal: i=1; a=rsa-sha256; t=1602005446; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=CYhc08f7iX6sySjHB/zNbjamVWqnXHt9l8EFCJQJ4w9G+u+OeyJ8jLjLsIQpVHbKnmAaPQyJqcrjLhN5sIOtncP6eNZP+1Vrdv6uvqTXT1eu4ejg2Echx3CPPzi8fW9ZII7sG4t956jgwHgyFYHqXCkh1JeuU6QXDkHks+iWTg4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1602005446; h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To; 
-	bh=Oi1pAqgVx+2bb8XriszpPgAWFE6aVN3KOpO6vZM0ff0=; 
-	b=Ugt6QGlTk9jQ0l0q6+mb28/q34tHp30KSWHPwxKipTzPQXnDwuEL8XmGsLtoMG6rf7g7VS0o8yHmZMu0mGCom3BRA4PJeWeJCai1DZwUmmZChn/Cujz3OQbDyNio2WLLJXInXKpP08FePi6l+WReNUwy8mURTyb6kGU2ui+BMcs=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	spf=pass  smtp.mailfrom=no-reply@patchew.org;
-	dmarc=pass header.from=<no-reply@patchew.org> header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by mx.zohomail.com
-	with SMTPS id 1602005444161680.0338005994042; Tue, 6 Oct 2020 10:30:44 -0700 (PDT)
-Subject: Re: [PATCH v10.5 0/1] tests/tcg/aarch64: Add bti mmap smoke test
-Message-ID: <160200544274.31697.252440278996982882@66eaa9a8a123>
-Reply-To: <qemu-devel@nongnu.org>
-In-Reply-To: <20201006172359.2998-1-richard.henderson@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: richard.henderson@linaro.org
-Cc: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
-Date: Tue, 6 Oct 2020 10:30:44 -0700 (PDT)
-X-ZohoMailClient: External
-X-TUID: 9lDWbWKvz5hw
+       dkim=pass header.i=@linaro.org header.s=google header.b=NOlmXW8j;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48076 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kQY1J-0006VO-E8
+	for alex.bennee@linaro.org; Thu, 08 Oct 2020 11:39:53 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55374)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1kQXyx-0004JI-Vy
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2020 11:37:28 -0400
+Received: from mail-qk1-x742.google.com ([2607:f8b0:4864:20::742]:35654)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1kQXys-0000Uj-Gv
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2020 11:37:27 -0400
+Received: by mail-qk1-x742.google.com with SMTP id 140so5719755qko.2
+ for <qemu-arm@nongnu.org>; Thu, 08 Oct 2020 08:37:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id;
+ bh=tC+strVV+B+K5HjAihiX4yitBIFB+2qfVBtZ+9OjiTQ=;
+ b=NOlmXW8j1FNLs+EF0SboO9o25gLy3tiNVyH4ggxJygLBFWnZejLtJScDtDBDpXk//x
+ O/BM4Jz/O5c497nBC+OhH6pEh0NxldSdUo9Y15aK5wHR1A9fmpvnb6DaXs/rrV8mFq3e
+ wrAhLeuchfroKY4V/qx9JwO9A0O4rs+yR7qamn9bv5Bh/jPSPkg8T4GDFwWw0xlOQDys
+ YCepBh03gMrc3IioFs7txZEEi22qWoY5e2eqIO/iaaTRl4huUrgM6qSPoen8sVDq8GUo
+ bV4ZYCdpiy9v6cUUSQloGf1m371U08ldN8ugAMT2bQkxP6bi2e4pFuZ9OfGFhbvBiSBV
+ 3iMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id;
+ bh=tC+strVV+B+K5HjAihiX4yitBIFB+2qfVBtZ+9OjiTQ=;
+ b=nOASHrpPWHjHLtPp9l5Sf0eJXO4BDUCijQMgd4k1oYhGJBO2GcO4y8MJo6hoYX/Py9
+ q56cajNakKSjUcKdHQ2hMfLtUMp40IBtLIVrmQZ12h3uiD+S4wRp8hAroDwg1AAR+WbE
+ LUgN4sslj5ra+QaVgJc1DyLa+bRnLiEWOOOqpw1WUhL+6OyzLsEIvfuw6mmxmH+Iullq
+ CuX0Y6P2ioN42ynHGTw5wC0Lm0ihl58cZ0lKwLDqodq/ZTdvKX++y6TwRTRO7Iqwt7W7
+ NNugP6GqObBb6Qku8URUtN6uTdrwzUnDpd+czPuUBd61vZ0HEptkdD4oXUXssJ0mQdbT
+ cagg==
+X-Gm-Message-State: AOAM531WCasqKzjEiZgrdUgpANOzYGhI0OIzzcHoBRbFN5LsMGzOVpKZ
+ TYxYjaYxOiU660/hAAjQ9O7Wvw==
+X-Received: by 2002:a37:7d44:: with SMTP id y65mr1518461qkc.2.1602171440944;
+ Thu, 08 Oct 2020 08:37:20 -0700 (PDT)
+Received: from master.ht.home ([2607:fea8:e2a0:e950::d884])
+ by smtp.googlemail.com with ESMTPSA id t186sm4170533qkf.48.2020.10.08.08.37.19
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Oct 2020 08:37:19 -0700 (PDT)
+From: Shashi Mallela <shashi.mallela@linaro.org>
+To: peter.maydell@linaro.org,
+	leif@nuviainc.com,
+	rad@semihalf.com
+Subject: [PATCH v4 0/2] Add watchdog support for SbsaQemu
+Date: Thu,  8 Oct 2020 11:37:16 -0400
+Message-Id: <20201008153718.20143-1-shashi.mallela@linaro.org>
+X-Mailer: git-send-email 2.18.4
+Received-SPF: pass client-ip=2607:f8b0:4864:20::742;
+ envelope-from=shashi.mallela@linaro.org; helo=mail-qk1-x742.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yJenJ4hCHhLq
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTAwNjE3MjM1OS4yOTk4
-LTEtcmljaGFyZC5oZW5kZXJzb25AbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVt
-cyB0byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZv
-cgptb3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjAxMDA2MTcy
-MzU5LjI5OTgtMS1yaWNoYXJkLmhlbmRlcnNvbkBsaW5hcm8ub3JnClN1YmplY3Q6IFtQQVRDSCB2
-MTAuNSAwLzFdIHRlc3RzL3RjZy9hYXJjaDY0OiBBZGQgYnRpIG1tYXAgc21va2UgdGVzdAoKPT09
-IFRFU1QgU0NSSVBUIEJFR0lOID09PQojIS9iaW4vYmFzaApnaXQgcmV2LXBhcnNlIGJhc2UgPiAv
-ZGV2L251bGwgfHwgZXhpdCAwCmdpdCBjb25maWcgLS1sb2NhbCBkaWZmLnJlbmFtZWxpbWl0IDAK
-Z2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lcyBUcnVlCmdpdCBjb25maWcgLS1sb2NhbCBk
-aWZmLmFsZ29yaXRobSBoaXN0b2dyYW0KLi9zY3JpcHRzL2NoZWNrcGF0Y2gucGwgLS1tYWlsYmFj
-ayBiYXNlLi4KPT09IFRFU1QgU0NSSVBUIEVORCA9PT0KClVwZGF0aW5nIDNjOGNmNWE5YzIxZmY4
-NzgyMTY0ZDFkZWY3ZjQ0YmQ4ODg3MTMzODQKRnJvbSBodHRwczovL2dpdGh1Yi5jb20vcGF0Y2hl
-dy1wcm9qZWN0L3FlbXUKIC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDIwMTAwNTE2NTE0
-Ny41MjY0MjYtMS1jbGdAa2FvZC5vcmcgLT4gcGF0Y2hldy8yMDIwMTAwNTE2NTE0Ny41MjY0MjYt
-MS1jbGdAa2FvZC5vcmcKIC0gW3RhZyB1cGRhdGVdICAgICAgcGF0Y2hldy8yMDIwMTAwNTIwNTIy
-OC42OTc0NjMtMS1laGFia29zdEByZWRoYXQuY29tIC0+IHBhdGNoZXcvMjAyMDEwMDUyMDUyMjgu
-Njk3NDYzLTEtZWhhYmtvc3RAcmVkaGF0LmNvbQogLSBbdGFnIHVwZGF0ZV0gICAgICBwYXRjaGV3
-LzIwMjAxMDA2MTU0MjU2LjE3MzkyLTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZyAtPiBwYXRjaGV3
-LzIwMjAxMDA2MTU0MjU2LjE3MzkyLTEtYWxleC5iZW5uZWVAbGluYXJvLm9yZwogKiBbbmV3IHRh
-Z10gICAgICAgICBwYXRjaGV3LzIwMjAxMDA2MTcyMzU5LjI5OTgtMS1yaWNoYXJkLmhlbmRlcnNv
-bkBsaW5hcm8ub3JnIC0+IHBhdGNoZXcvMjAyMDEwMDYxNzIzNTkuMjk5OC0xLXJpY2hhcmQuaGVu
-ZGVyc29uQGxpbmFyby5vcmcKU3dpdGNoZWQgdG8gYSBuZXcgYnJhbmNoICd0ZXN0JwpiZWY5NGY3
-IHRlc3RzL3RjZy9hYXJjaDY0OiBBZGQgYnRpIG1tYXAgc21va2UgdGVzdAoKPT09IE9VVFBVVCBC
-RUdJTiA9PT0KV0FSTklORzogYWRkZWQsIG1vdmVkIG9yIGRlbGV0ZWQgZmlsZShzKSwgZG9lcyBN
-QUlOVEFJTkVSUyBuZWVkIHVwZGF0aW5nPwojMzY6IApuZXcgZmlsZSBtb2RlIDEwMDY0NAoKRVJS
-T1I6IGV4dGVybnMgc2hvdWxkIGJlIGF2b2lkZWQgaW4gLmMgZmlsZXMKIzk2OiBGSUxFOiB0ZXN0
-cy90Y2cvYWFyY2g2NC9idGktMi5jOjU2OgorZXh0ZXJuIGNoYXIgdGVzdF9iZWdpbltdLCB0ZXN0
-X2VuZFtdOwoKRVJST1I6IHVzZSBxZW11X3JlYWxfaG9zdF9wYWdlX3NpemUgaW5zdGVhZCBvZiBn
-ZXRwYWdlc2l6ZSgpCiMxMzA6IEZJTEU6IHRlc3RzL3RjZy9hYXJjaDY0L2J0aS0yLmM6OTA6Cisg
-ICAgdm9pZCAqcCA9IG1tYXAoMCwgZ2V0cGFnZXNpemUoKSwKCnRvdGFsOiAyIGVycm9ycywgMSB3
-YXJuaW5ncywgMTI0IGxpbmVzIGNoZWNrZWQKCkNvbW1pdCBiZWY5NGY3MzNhN2YgKHRlc3RzL3Rj
-Zy9hYXJjaDY0OiBBZGQgYnRpIG1tYXAgc21va2UgdGVzdCkgaGFzIHN0eWxlIHByb2JsZW1zLCBw
-bGVhc2UgcmV2aWV3LiAgSWYgYW55IG9mIHRoZXNlIGVycm9ycwphcmUgZmFsc2UgcG9zaXRpdmVz
-IHJlcG9ydCB0aGVtIHRvIHRoZSBtYWludGFpbmVyLCBzZWUKQ0hFQ0tQQVRDSCBpbiBNQUlOVEFJ
-TkVSUy4KPT09IE9VVFBVVCBFTkQgPT09CgpUZXN0IGNvbW1hbmQgZXhpdGVkIHdpdGggY29kZTog
-MQoKClRoZSBmdWxsIGxvZyBpcyBhdmFpbGFibGUgYXQKaHR0cDovL3BhdGNoZXcub3JnL2xvZ3Mv
-MjAyMDEwMDYxNzIzNTkuMjk5OC0xLXJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmcvdGVzdGlu
-Zy5jaGVja3BhdGNoLz90eXBlPW1lc3NhZ2UuCi0tLQpFbWFpbCBnZW5lcmF0ZWQgYXV0b21hdGlj
-YWxseSBieSBQYXRjaGV3IFtodHRwczovL3BhdGNoZXcub3JnL10uClBsZWFzZSBzZW5kIHlvdXIg
-ZmVlZGJhY2sgdG8gcGF0Y2hldy1kZXZlbEByZWRoYXQuY29t
+This patch series adds watchdog timer support for SbsaQemu platform.
+
+The watchdog timer has been implemented first based on the generic
+watchdog timer specifications from ARM BSA v0.9 and then used 
+in the SbsaQemu reference platform
+
+Changes in v4:
+- addressed review comments(interrupt no. added to dtb)
+
+Shashi Mallela (2):
+  hw/watchdog: Implement SBSA watchdog device
+  hw/arm/sbsa-ref: add SBSA watchdog device
+
+ hw/arm/Kconfig                      |   1 +
+ hw/arm/sbsa-ref.c                   |  49 ++++
+ hw/watchdog/Kconfig                 |   4 +
+ hw/watchdog/meson.build             |   1 +
+ hw/watchdog/wdt_sbsa_gwdt.c         | 346 ++++++++++++++++++++++++++++
+ include/hw/watchdog/wdt_sbsa_gwdt.h |  70 ++++++
+ 6 files changed, 471 insertions(+)
+ create mode 100644 hw/watchdog/wdt_sbsa_gwdt.c
+ create mode 100644 include/hw/watchdog/wdt_sbsa_gwdt.h
+
+-- 
+2.18.4
+

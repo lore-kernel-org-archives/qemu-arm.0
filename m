@@ -1,102 +1,96 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1164194lfa;
-        Mon, 12 Oct 2020 08:58:09 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyXNSHlrjlgP+MJQGPMuIcNmEpKKKPw1kwYetaZn2KZnnVvS6qo3LYioSOF93nx6w6Tb6ky
-X-Received: by 2002:a25:8749:: with SMTP id e9mr13909534ybn.356.1602518289764;
-        Mon, 12 Oct 2020 08:58:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602518289; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1460640lfq;
+        Thu, 8 Oct 2020 08:50:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzwrqm7L8Rvi1q56K2koPeTMbf30koHcqnsT54HxCCGqVM878bDC8BxH5crSivmSgeUOguK
+X-Received: by 2002:a25:e785:: with SMTP id e127mr12433555ybh.447.1602172206750;
+        Thu, 08 Oct 2020 08:50:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602172206; cv=none;
         d=google.com; s=arc-20160816;
-        b=V6bsvEwfaKZyx+NtJ2XzWAdMilnGA6qzYX9pbq5zucuK4fBr5nl29f/TZwsxnkyGYz
-         AnQv4u8FWfeDnt09AcNA/ilHoAurbuFNVxBeJvtSsGuJXqaqVLy9Iiap+L6hBYXLOBN0
-         wbaUJ2TMidsCMvmlBDjpkruziKyv19nbvSp61Ob8yrjNX2pMP69brPLR9LDdFQapu+p3
-         Nm6f7CCZIHxk5NRJC48fZhOG9yWHt4yZ9+hsSlRJOuNbqDV8q52+veF6mg70TfCUCJOy
-         /U8jEGRe62GK4TUQhci0cBgR6PRM7cnV0XnwHldY8NtyYCsRTxJ5WjscTd+n+x+oR6cT
-         96OA==
+        b=VkMMZOTA1y7NtHm+UZnF2jGjyQZREtGqXY+mo72x5UEO4KmeEZKHXe8hnanIBXybHH
+         T9ietC8yK5TJH5h937xxhL+BP/Tl9HEBs+0fbYRjLNeErp6BiGXHTlxPdGw3FXnLu/pX
+         oweZ9EJuN67bsD0MVsd/wd50SwiqgE3BdCI1M04/7uvepPviAWp+itXl2ufc7TO1hrq4
+         Hfzx344Zkk6mA/2yxL8v5TpnMb1SKLDPod7bLY2SZbI7zGlD+FNHt0wlpJ1p946mmivh
+         e1ioAl70uCQfAAlg8HibXlbx4dcoNJ0/PiLkZJY+OPk9trSZ0GSvX8pG2+aWgheata2D
+         3C0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=MHkoxi+EkVCFW4Wg+U688/CA12tSJrQLvZAe0iXiD3s=;
-        b=HMClo4kj7KPRB3tnWAdSuyHW+re5H1OFqljCrosWwsd7Aa4ff21ekuXe3W57/1RrZo
-         N4HPL1jqeE2NKcbwNJqnFjfY3RdbknSU8DibcdafEIgx8a7YDutRPCG6HJR5gZQcYjlp
-         rC2y5PnHJG52TtydHMyV6FhNdszErc/+EJ7qgBDxWpqsZX8cW49MCHKWgFYWCKmQuYl/
-         PQxlr38H9affesaYw0NuxvTJgi+gYhVCS5+RsZAeahbtHC6dHeeeOcpHbPVLUAhEdmLO
-         obrugEj83zGgLlHtkDqsPJxp+fpZCm32G3Wo912N5Mzdt6klfU9lSJ2ZsQJ2ik+QSqN0
-         Up1g==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=r64ZZx9bjWtXBdUUIcYa87604w1d3wlv8wpaQqXSNBs=;
+        b=H8QVPMgn8BmkspvqdhzAaGxjf6lg2gLEFDKyO1xgv2kYDlhvVyFHTYZnLvBCTwj/QJ
+         Nq2WRJl+RbHdh9A44OAMua3gjRR1eAzzR9FLdhdVN2e+I35SGx7ScM/4QH/OyaBOh2Uy
+         8yy3Xj6LHHGzOmGA3s6VsKdHbNjRGqBc/y8GjUmrcssulXI67Jm5gP/Ic4X2R6SFhUps
+         ROgLUIqMAmDEGYoLyRthEZikHvmsV1S5D4SuydBMv8YEuhxBdBYt5EmWyNtB6mwvQZ0T
+         stmLeUVDIzgCFVPTEt2+yXAHXArgUiKMZcJUdRqkGb8qoB93r2dSalKO6guQPMtOebZk
+         Agkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TDmw4Ab+;
+       dkim=fail header.i=@linaro.org header.s=google header.b="NEDom/NU";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z1si15001776ybo.363.2020.10.12.08.58.09
+        by mx.google.com with ESMTPS id t3si4717789ybc.238.2020.10.08.08.50.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:58:09 -0700 (PDT)
+        Thu, 08 Oct 2020 08:50:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TDmw4Ab+;
+       dkim=fail header.i=@linaro.org header.s=google header.b="NEDom/NU";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47922 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:37990 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kS0DB-0004qE-3f
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:58:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57314)
+	id 1kQYBC-0005xW-4h
+	for alex.bennee@linaro.org; Thu, 08 Oct 2020 11:50:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56314)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqs-0007Qo-C1
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:35:06 -0400
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:37137)
+ id 1kQY3G-00081N-OR
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2020 11:41:55 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536]:42818)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqe-0007MN-HK
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:35:05 -0400
-Received: by mail-wr1-x444.google.com with SMTP id h7so19714031wre.4
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:40 -0700 (PDT)
+ id 1kQY3C-0001TD-Hw
+ for qemu-arm@nongnu.org; Thu, 08 Oct 2020 11:41:54 -0400
+Received: by mail-ed1-x536.google.com with SMTP id v19so6304882edx.9
+ for <qemu-arm@nongnu.org>; Thu, 08 Oct 2020 08:41:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=MHkoxi+EkVCFW4Wg+U688/CA12tSJrQLvZAe0iXiD3s=;
- b=TDmw4Ab+up5ZPeCCjMTDp0maLBBjXy0H1LsNGgtWpPV7uMX3CCH28eIbi4HRKCgNQV
- lhl9cq0lx8ya2CWBkYCr8n8uzDU/qQYL6e6WmMMlwZ7rJGaX3IsevZRFEaET7aM1zj5z
- 9SzQ5IZ+hY6rVkSzc9X0Kd9Xt51ljObJotFMwNmK0X6Zp9q+9R4spQIrTwMEXlIv3xAE
- 6vKdA3WiMiRgiD0yX5yZHdDJ0UaP5eXFGyeJJJDCk5dbbbelCmBJLa/UivU1/crsLOuF
- XSPnHtIMN167sOUkxS756LgTNQaunMxzLvPuIw5CfSucOhaJyS72sghFqI6Td/Kv0T1s
- DzRA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=r64ZZx9bjWtXBdUUIcYa87604w1d3wlv8wpaQqXSNBs=;
+ b=NEDom/NUNRHB0eufjsiezHXHVVl45V0GGbwJhWvFJMChVLUzwWm0LdtQyUx/2kLUW2
+ 3mjJUN5twjjA3D2j5hFMD//sTd69aSj9rYgGf02FsR8q+GXyPPAdXWly5nyDm2ZRLPV/
+ Hdq6MulXotThxagrGzZ9KWlnhTCDCv+ylinS/ZuK718DmBMcCyrhQ4XxTWz4CcV+riFS
+ EeZMUrKrcPEWoGjr6lf5J5bo98Af/6WKffzgUSYvUc3jMcyrGJJ7GMbW8rd8s7p8HV/6
+ ShVo7y+ADjpjynyEnuDDKSgCGA8ezToXcjg5WH9lZk6Xskoz767JIHj2xOQwLvnDWEze
+ O2wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=MHkoxi+EkVCFW4Wg+U688/CA12tSJrQLvZAe0iXiD3s=;
- b=WlkOEGVtAtLKs/pv+l454IROb+Fr013YZEDwsK6sZ8VsDVY2AhTizo0vnevbQE3H83
- I6QntMuL7zZ+19mMbZtnEXsZMkq0lCIybI7YxC7AvYqc/yB7UQt8UmpIobwmaQtTWgH3
- QRA20jB07yBY6DrQ2n57jnNwO46POklRhqrX/0bnvTpeUhDEvTedNnDGq+OUrqOprXk2
- Y4lhWGJ5KMhAfHEgAVXcAyrF8rGESx32c6e2uql4DCRANSLnmXxqSFV55KYF1k0h5YkM
- X1KGHEb7hCDsFk1woaQ8wa3kOKhtXsXgTpRBEPxbxit6YnONmDZloVQtxVQAjHSQ7VFA
- qCkQ==
-X-Gm-Message-State: AOAM533K4AGRReXi13YQ6j+aCHK0AlBcl/sZVPu489VwBiYoz+IN2qi/
- NpjtgUUWxsdEVNOqWSHqh6yWneC50VJLvuN/
-X-Received: by 2002:adf:e741:: with SMTP id c1mr19304521wrn.16.1602516879214; 
- Mon, 12 Oct 2020 08:34:39 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:38 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] net/tap-solaris.c: Include qemu-common.h for TFR macro
-Date: Mon, 12 Oct 2020 16:33:48 +0100
-Message-Id: <20201012153408.9747-26-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
-References: <20201012153408.9747-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=r64ZZx9bjWtXBdUUIcYa87604w1d3wlv8wpaQqXSNBs=;
+ b=d4vV69cKo2FGZR5FTWNBuKjyVMvVJRue9JNLZtfWslS9cZjYbg6DV43Uo+omM2gh6x
+ rTp1i++Esz8BuZZW5NMdzHbLDgzR9cTMXLfMqeJIEMpgcHuAmomNXdoy+vNlLwsoX7SZ
+ Sqo2uEpL+JAf3Nqe+N2+2V//GKKFVZCBLar+sSb5qakfWFaYMzu35BW1B/k5TepJK6RQ
+ BnzCMp8jj1zgHkYkjsWgRcfde3Lm/N6ZJMJchwvJVmMwUrCurb+Jquc5p1pVU0bMKahc
+ 1M+R4XCDxA00OzwUVCfjzWaQ/fCNyBFY6m3Drk0vWTNmOgsIMBxsYH9RG5zJpTjbA3O6
+ 6/8Q==
+X-Gm-Message-State: AOAM532GO2XOYkzPwGHj+6DLV2WtcmobK3wsQnYRv7VD11D0nCESH/YC
+ 05CNt3unDVKWGQyDZKskp2m2fh6k2vI4o6aiH5k9zw==
+X-Received: by 2002:aa7:dd4b:: with SMTP id o11mr9421777edw.251.1602171708747; 
+ Thu, 08 Oct 2020 08:41:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x444.google.com
+References: <20201006220647.GR7303@habkost.net>
+ <CAFEAcA_se7jErv9AFM2D7UdDMurB9Lb6W9aAXD6648spQ6idKg@mail.gmail.com>
+ <87mu0xyrtn.fsf@dusky.pond.sub.org> <20201008151521.GB7303@habkost.net>
+In-Reply-To: <20201008151521.GB7303@habkost.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 8 Oct 2020 16:41:37 +0100
+Message-ID: <CAFEAcA_=uScLjGR6vHbjsQK0-jgNuwNK+jcNf-u1yAh-863+2A@mail.gmail.com>
+Subject: Re: Purpose of QOM properties registered at realize time?
+To: Eduardo Habkost <ehabkost@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -118,37 +112,31 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: "open list:RISC-V" <qemu-riscv@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, qemu-ppc <qemu-ppc@nongnu.org>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: g4qpAYpbu4KN
+X-TUID: V8FSA017obzB
 
-In commit a8d2532645cf5ce4 we cleaned up usage of the qemu-common.h header
-so that it was always included from .c files and never from other .h files.
-We missed adding it to net/tap-solaris.c (which previously was pulling it
-in via tap-int.h), which broke building on Solaris hosts.
+On Thu, 8 Oct 2020 at 16:15, Eduardo Habkost <ehabkost@redhat.com> wrote:
+>
+> On Thu, Oct 08, 2020 at 11:45:08AM +0200, Markus Armbruster wrote:
+> > A first class static array property, where the size of the array is part
+> > of the value could perhaps cover this case.
+>
+> This is an interesting idea, I think we should explore that.
+>
+> qdev_pass_gpios() would become unnecessary and could be replaced
+> by a single (static) alias property.
 
-Fixes: a8d2532645cf5ce4
-Reported-by: Michele Denber <denber@mindspring.com>
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-Untested: Michele, could you give this a try?
----
- net/tap-solaris.c | 1 +
- 1 file changed, 1 insertion(+)
+At least in the current implementation, aliasing properties
+is not the only thing qdev_pass_gpios() does -- it also
+updates the NamedGPIOList data structures. It might be
+possible to reimplement it so that we really are just
+aliasing properties, though.
 
-diff --git a/net/tap-solaris.c b/net/tap-solaris.c
-index 4725d2314ee..d03165c57c9 100644
---- a/net/tap-solaris.c
-+++ b/net/tap-solaris.c
-@@ -27,6 +27,7 @@
- #include "tap_int.h"
- #include "qemu/ctype.h"
- #include "qemu/cutils.h"
-+#include "qemu-common.h"
- 
- #include <sys/ethernet.h>
- #include <sys/sockio.h>
--- 
-2.20.1
-
+thanks
+-- PMM

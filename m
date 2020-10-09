@@ -1,84 +1,86 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp1737328lfo;
-        Fri, 29 Jan 2021 22:30:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJym1OMbhVi4CmEpXwYIyUDFDT9rmDCBZPowT6za9YJ4cuKNkFLe81cIWxNvnIwt7O7J9FtE
-X-Received: by 2002:a25:aea1:: with SMTP id b33mr248971ybj.287.1611988256415;
-        Fri, 29 Jan 2021 22:30:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611988256; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2276516lfq;
+        Fri, 9 Oct 2020 06:26:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzeM/ZpgCWD1HFKP1cpXE5j5soUZ7UeOU4klomgY8QBlkM4B7IdgE9NaJL93HXyBmaSjl/8
+X-Received: by 2002:a25:6941:: with SMTP id e62mr18407788ybc.468.1602249961630;
+        Fri, 09 Oct 2020 06:26:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602249961; cv=none;
         d=google.com; s=arc-20160816;
-        b=KsakgLxW9CkZyC1koLjw3tgXXFV/psZNVoJzZOg9cpJg3G2v5Hb2z+KCrxqg+3UJM6
-         W1yGDGjfiHwawcarLxLhEnXhRkN8QC9lrUw3MG88DSETLkeYl19Rt6T//AomxnXgdT1N
-         L4GiMoslJiK5zVna+/9+Sp+9/GaXv2ybiAC6R6koRqxDSMv4AuWKBxaObAbdFcdZK+qa
-         WJqO1ZBBmXc0yMwNCNqO2jvqAED2q2KLlLPTN7DGF2Kvm20fxo1lhp2m8J6qtsJNBuAd
-         E3Tp7U20mFS8Lxz2XfA8eZKf6/Vl4s7rxzoWqRm9iRYc3I8/poXVu8rNIvITGmEk/5IN
-         goOw==
+        b=kAyHuhsYUXW5lbQM17dSC7iTeU7hJUvhr+r1cMYFekERoaVQy3Fcm6gUoDof/j4dYY
+         tBGsksoaoNN7Yu09pbwgpzg29/qgIiyK0DmKkVBmrxIgwCo34FKlp0/Le20IlfRBpSem
+         CG/CnXSwxjAl4j03PrGBuBCm8r/MsSLp/qNOGzyWbuwMhsSRYnPnKmTWIzNKYGazuILt
+         k2om+NIDEZxSAL/VsyBgZG/PJwThMM71rpNY9XnanCoAqt2Ar0R/9tBEVesIPB4V4PyE
+         GlqweeqZwlb9vaSKdpWXhUG8z7U8EQFynuas2sfmyaK9SV3MphyCQCSlSQQQlDnvJkdR
+         H4Hg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :in-reply-to:mime-version:user-agent:date:message-id:from:references
-         :to:subject;
-        bh=6xsXEg7AyTjJH6ipPssGnQ8YmJUEKFd1KKqpss0v6eY=;
-        b=GOsp2kkNHm99xdLSjLDt7QAhqi1Z8RyHpVY79EFnHPy/A4fwdEvnjLNmpXhNH0mxd4
-         MAKYx1JqjSP0AhjAbV+L9VENPFvzTLKdhFFvZ02vnDstJg1v0j6S2QpQBufQ8xSeKUDU
-         Y8PN1jsLGvScxenoxpf1gCf8SEEhA9C4e1sRT4DXCN5MkShGoLwdfKcFUqjMJNF/yZjv
-         kSqP0qf7bhOMuCBrOXqsQEwHkqZqymI5EeaNiHgI0vRFljVwrvIabkv/2Sx97g9HgkRO
-         itnkpPFKcF1ibPTlsoK/lgeMgjvfs4wUC9v/JWz2LdHU11yDdBMNijXE6jAhkVVdaMA0
-         0c9A==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=yRX4wGyvLcQsfQzzP0nYi/X4+WRP3hMZ1prkqr5G28M=;
+        b=JbauwNX1ApzFSIQ4ItZmBtrfZhFGQiTexAPBlFZGyjZtlZcE1yQqYr/7C5x1QXF9FU
+         LkWmzo73yPOn9pQlSlCpy1Bag5WKmCXE098KnyqszRnAcWiafIO9JCWYp7RGksyO5KJL
+         PmKfIZhTlIqXN5oeP1j1y5lJJ/Mieuo0RFfxFo7le2Qrw9rrRMDcL1a62dv8grgFHM4Z
+         ucimv/y4uj2wgRFHMBywbirIVL3hDjTHUkntWsJ9/cqwljSKiIzjgr+0Wr5nBb72Re7E
+         u7Brg2ii3X2KKwoq6hwou61XcmNv3SSUfqpsS0oZltDpSNN1o/EqDWW6/7EtfeENFxG/
+         U2jQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=arm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w138si10294800ybe.330.2021.01.29.22.30.56
+        by mx.google.com with ESMTPS id w3si8237846ybj.52.2020.10.09.06.26.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 29 Jan 2021 22:30:56 -0800 (PST)
+        Fri, 09 Oct 2020 06:26:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:57698 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=arm.com
+Received: from localhost ([::1]:50312 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l5jmZ-000437-OP
-	for alex.bennee@linaro.org; Sat, 30 Jan 2021 01:30:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33886)
+	id 1kQsPJ-0008Q1-1p
+	for alex.bennee@linaro.org; Fri, 09 Oct 2020 09:26:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53978)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1l5jmM-00042X-Nl; Sat, 30 Jan 2021 01:30:42 -0500
-Received: from szxga06-in.huawei.com ([45.249.212.32]:2603)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1l5jmG-0002qO-PN; Sat, 30 Jan 2021 01:30:42 -0500
-Received: from DGGEMS412-HUB.china.huawei.com (unknown [172.30.72.59])
- by szxga06-in.huawei.com (SkyGuard) with ESMTP id 4DSPS921QJzjDTN;
- Sat, 30 Jan 2021 14:29:13 +0800 (CST)
-Received: from [10.174.184.42] (10.174.184.42) by
- DGGEMS412-HUB.china.huawei.com (10.3.19.212) with Microsoft SMTP Server id
- 14.3.498.0; Sat, 30 Jan 2021 14:30:05 +0800
-Subject: Re: [PATCH] vfio/migrate: Move switch of dirty tracking into
- vfio_memory_listener
-To: Kirti Wankhede <kwankhede@nvidia.com>, Alex Williamson
- <alex.williamson@redhat.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-References: <20210111073439.20236-1-zhukeqian1@huawei.com>
- <590a2752-9bba-6971-51b0-a8accee6e814@nvidia.com>
-From: Keqian Zhu <zhukeqian1@huawei.com>
-Message-ID: <5c4b616c-9e73-17c6-b9a4-1ab0a6079780@huawei.com>
-Date: Sat, 30 Jan 2021 14:30:04 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:45.0) Gecko/20100101
- Thunderbird/45.7.1
+ (Exim 4.90_1) (envelope-from <vincenzo.frascino@arm.com>)
+ id 1kQqFw-00038B-5Z; Fri, 09 Oct 2020 07:08:12 -0400
+Received: from foss.arm.com ([217.140.110.172]:40800)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <vincenzo.frascino@arm.com>)
+ id 1kQqFu-0007ym-AK; Fri, 09 Oct 2020 07:08:11 -0400
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id D9411D6E;
+ Fri,  9 Oct 2020 04:08:06 -0700 (PDT)
+Received: from [10.37.12.22] (unknown [10.37.12.22])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id B50373F66B;
+ Fri,  9 Oct 2020 04:08:05 -0700 (PDT)
+Subject: Re: [PATCH 3/3] target/arm: Ignore HCR_EL2.ATA when {E2H,TGE} != 11
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+References: <20201008162155.161886-1-richard.henderson@linaro.org>
+ <20201008162155.161886-4-richard.henderson@linaro.org>
+From: Vincenzo Frascino <vincenzo.frascino@arm.com>
+Message-ID: <d6829822-3e96-af18-1648-35ac25bd8287@arm.com>
+Date: Fri, 9 Oct 2020 12:10:47 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <590a2752-9bba-6971-51b0-a8accee6e814@nvidia.com>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20201008162155.161886-4-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.184.42]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=zhukeqian1@huawei.com;
- helo=szxga06-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
+Received-SPF: pass client-ip=217.140.110.172;
+ envelope-from=vincenzo.frascino@arm.com; helo=foss.arm.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/09 07:07:36
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -43
+X-Spam_score: -4.4
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.208,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 09 Oct 2020 09:25:53 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -90,285 +92,75 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, wanghaibin.wang@huawei.com,
- jiangkunkun@huawei.com, "Dr . David Alan Gilbert" <dgilbert@redhat.com>,
- Peter Xu <peterx@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>, Igor
- Mammedov <imammedo@redhat.com>, Zenghui Yu <yuzenghui@huawei.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7QoF2cI6Sl2z
+X-TUID: h/HJ7miJBocH
 
-Hi Kirti,
 
-On 2021/1/28 5:03, Kirti Wankhede wrote:
+
+On 10/8/20 5:21 PM, Richard Henderson wrote:
+> Unlike many other bits in HCR_EL2, the description for this
+> bit does not contain the phrase "if ... this field behaves
+> as 0 for all purposes other than", so do not squash the bit
+> in arm_hcr_el2_eff.
 > 
+> Instead, replicate the E2H+TGE test in the two places that
+> require it.
 > 
-> On 1/11/2021 1:04 PM, Keqian Zhu wrote:
->> For now the switch of vfio dirty page tracking is integrated into
->> the vfio_save_handler, it causes some problems [1].
->>
+> Reported-by: Vincenzo Frascino <vincenzo.frascino@arm.com>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+
+Reviewed-by: Vincenzo Frascino <vincenzo.frascino@arm.com>
+Tested-by: Vincenzo Frascino <vincenzo.frascino@arm.com>
+
+> ---
+>  target/arm/internals.h | 9 +++++----
+>  target/arm/helper.c    | 9 +++++----
+>  2 files changed, 10 insertions(+), 8 deletions(-)
 > 
-> Sorry, I missed [1] mail, somehow it didn't landed in my inbox.
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index ae99725d2b..5460678756 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -1252,10 +1252,11 @@ static inline bool allocation_tag_access_enabled(CPUARMState *env, int el,
+>          && !(env->cp15.scr_el3 & SCR_ATA)) {
+>          return false;
+>      }
+> -    if (el < 2
+> -        && arm_feature(env, ARM_FEATURE_EL2)
+> -        && !(arm_hcr_el2_eff(env) & HCR_ATA)) {
+> -        return false;
+> +    if (el < 2 && arm_feature(env, ARM_FEATURE_EL2)) {
+> +        uint64_t hcr = arm_hcr_el2_eff(env);
+> +        if (!(hcr & HCR_ATA) && (!(hcr & HCR_E2H) || !(hcr & HCR_TGE))) {
+> +            return false;
+> +        }
+>      }
+>      sctlr &= (el == 0 ? SCTLR_ATA0 : SCTLR_ATA);
+>      return sctlr != 0;
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index cd0779ff5f..0620572e44 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6874,10 +6874,11 @@ static CPAccessResult access_mte(CPUARMState *env, const ARMCPRegInfo *ri,
+>  {
+>      int el = arm_current_el(env);
+>  
+> -    if (el < 2 &&
+> -        arm_feature(env, ARM_FEATURE_EL2) &&
+> -        !(arm_hcr_el2_eff(env) & HCR_ATA)) {
+> -        return CP_ACCESS_TRAP_EL2;
+> +    if (el < 2 && arm_feature(env, ARM_FEATURE_EL2)) {
+> +        uint64_t hcr = arm_hcr_el2_eff(env);
+> +        if (!(hcr & HCR_ATA) && (!(hcr & HCR_E2H) || !(hcr & HCR_TGE))) {
+> +            return CP_ACCESS_TRAP_EL2;
+> +        }
+>      }
+>      if (el < 3 &&
+>          arm_feature(env, ARM_FEATURE_EL3) &&
 > 
->> The object of dirty tracking is guest memory, but the object of
->> the vfio_save_handler is device state. This mixed logic produces
->> unnecessary coupling and conflicts:
->>
->> 1. Coupling: Their saving granule is different (perVM vs perDevice).
->>     vfio will enable dirty_page_tracking for each devices, actually
->>     once is enough.
-> 
-> That's correct, enabling dirty page tracking once is enough. But log_start and log_stop gets called on address space update transaction, region_add() or region_del(), at this point migration may not be active. We don't want to allocate bitmap memory in kernel for lifetime of VM, without knowing migration will be happen or not. vfio_iommu_type1 module should allocate bitmap memory only while migration is active.
-> 
-Yeah, we can use global start/stop callbacks as suggested by Paolo, which solves this problem.
 
-> Paolo's suggestion here to use log_global_start and log_global_stop callbacks seems correct here. But at this point vfio device state is not yet changed to |_SAVING as you had identified it in [1]. May be we can start tracking bitmap in iommu_type1 module while device is not yet _SAVING, but getting dirty bitmap while device is yet not in _SAVING|_RUNNING state doesn't seem optimal solution.
-> 
-> Pasting here your question from [1]
-> 
->> Before start dirty tracking, we will check and ensure that the device
->>  is at _SAVING state and return error otherwise.  But the question is
->>  that what is the rationale?  Why does the VFIO_IOMMU_DIRTY_PAGES
->> ioctl have something to do with the device state?
-> 
-> Lets walk through the types of devices we are supporting:
-> 1. mdev devices without IOMMU backed device
->     Vendor driver pins pages as and when required during runtime. We can say that vendor driver is smart which identifies the pages to pin. We are good here.
-> 
-> 2. mdev device with IOMMU backed device
->     This is similar to vfio-pci, direct assigned device, where all pages are pinned at VM bootup. Vendor driver is not smart, so bitmap query will report all pages dirty always. If --auto-converge is not set, VM stucks infinitely in pre-copy phase. This is known to us.
-> 
-little question here ;-) . Why auto-converge (slow down vCPU) helps to ease the case of full dirty?
-
-> 3. mdev device with IOMMU backed device with smart vendor driver
->     In this case as well all pages are pinned at VM bootup, but vendor driver is smart to identify the pages and pin them explicitly.
-> Pages can be pinned anytime, i.e. during normal VM runtime or on setting _SAVING flag (entering pre-copy phase) or while in iterative pre-copy phase. There is no restriction based on these phases for calling vfio_pin_pages(). Vendor driver can start pinning pages based on its device state when _SAVING flag is set. In that case, if dirty bitmap is queried before that then it will report all sysmem as dirty with an unnecessary copy of sysmem.
-> As an optimal solution, I think its better to query bitmap only after all vfio devices are in pre-copy phase, i.e. after _SAVING flag is set.
-OK, I get your idea. But Qemu assumes all pages are dirty initially, this seems not a problem.
-Let's assume we have a device of type 3, and this device starts to pin pages on setting _SAVING flag.
-
-Before this patch, the work flow is:
-{
-ram_save_setup()
-    memory_global_dirty_log_start():  start dirty tracking excludes vfio part.
-    migration_bitmap_sync_precopy():  try to sync dirty log from kvm, vhost etc, including vfio (as all device saving is not satisfied, fail to get log from vfio). The result is that bitmap of ramblock is all dirty.
-
-vfio_save_setup() of this device
-    vfio_migration_set_state(): Add SAVING state to this device, and vfio starts to log dirty page of this device.
-
-first round (i.e. bulk stage) of ram saving: only handle dirty log which is collected from the first call of migration_bitmap_sync_precopy().
-
-iterative stage of ram saving: when the remaining dirty log is less than threshold, call migration_bitmap_sync_precopy() again. At this stage, all device is saving, so success to get log from vfio.
-}
-
-With this patch, the work flow is:
-{
-ram_save_setup()
-    memory_global_dirty_log_start():  start dirty tracking includes vfio part.
-    migration_bitmap_sync_precopy():  try to sync dirty log from kvm, vhost etc, including vfio (as all device saving is not checked, success to get full dirty log from vfio). The result is that bitmap of ramblock is all dirty.
-vfio_save_setup() of this device
-	vfio_migration_set_state(): Add SAVING state to this device, and vfio starts to log dirty page of this device.
-
-first round of ram saving: only handles dirty log which is collected from the first call of migration_bitmap_sync_precopy().
-
-iterative stage of ram saving: when the remaining dirty log is less than a threshold, calls migration_bitmap_sync_precopy() again. At this stage, all device is saving, so success to get log from vfio.
-}
-
-We can see that there is no unnecessary copy of guest memory with this patch.
-
-> 
->> 2. Conflicts: The ram_save_setup() traverses all memory_listeners
->>     to execute their log_start() and log_sync() hooks to get the
->>     first round dirty bitmap, which is used by the bulk stage of
->>     ram saving. However, it can't get dirty bitmap from vfio, as
->>     @savevm_ram_handlers is registered before @vfio_save_handler.
->>
-> Right, but it can get dirty bitmap from vfio device in it's iterative callback
-> ram_save_pending ->
->     migration_bitmap_sync_precopy() .. ->
->          vfio_listerner_log_sync
-> 
-Yeah, this work flow is OK. But we are not able to handle vfio dirty log at the first round of ram saving.
-
-We plan to add a new interface named manual_log_clear in vfio[1]. If this interface is enabled, kernel vfio
-doesn't automatically clear and repopulate dirty bitmap when report dirty log to Qemu. These actions will
-be triggered by Qemu when it invokes manual_log_clear (memory_region_clear_dirty_bitmap()) before handles
-the dirty log.
-
-Under the following conditions:
-(1)Qemu can handles vfio dirty log at the first round of ram saving.
-(2)device is of type1.
-(3)manual_log_clear is enabled.
-(3)device driver unpins some scopes during the first round of ram saving (before Qemu actually handles these scopes).
-
-Then these unpinned scope is not reported to Qemu at iterative stage (manual_log_clear clears them and re-population
-does not contains them), which avoid unnecessary copy of guest memory.
-
-Thanks,
-Keqian
-
-[1]https://lore.kernel.org/kvmarm/20210128151742.18840-1-zhukeqian1@huawei.com/
-
-
-> Thanks,
-> Kirti
-> 
->> Move the switch of vfio dirty_page_tracking into vfio_memory_listener
->> can solve above problems. Besides, Do not require devices in SAVING
->> state for vfio_sync_dirty_bitmap().
->>
->> [1] https://www.spinics.net/lists/kvm/msg229967.html
->>
->> Reported-by: Zenghui Yu <yuzenghui@huawei.com>
->> Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
->> ---
->>   hw/vfio/common.c    | 53 +++++++++++++++++++++++++++++++++++++--------
->>   hw/vfio/migration.c | 35 ------------------------------
->>   2 files changed, 44 insertions(+), 44 deletions(-)
->>
->> diff --git a/hw/vfio/common.c b/hw/vfio/common.c
->> index 6ff1daa763..9128cd7ee1 100644
->> --- a/hw/vfio/common.c
->> +++ b/hw/vfio/common.c
->> @@ -311,7 +311,7 @@ bool vfio_mig_active(void)
->>       return true;
->>   }
->>   -static bool vfio_devices_all_saving(VFIOContainer *container)
->> +static bool vfio_devices_all_dirty_tracking(VFIOContainer *container)
->>   {
->>       VFIOGroup *group;
->>       VFIODevice *vbasedev;
->> @@ -329,13 +329,8 @@ static bool vfio_devices_all_saving(VFIOContainer *container)
->>                   return false;
->>               }
->>   -            if (migration->device_state & VFIO_DEVICE_STATE_SAVING) {
->> -                if ((vbasedev->pre_copy_dirty_page_tracking == ON_OFF_AUTO_OFF)
->> -                    && (migration->device_state & VFIO_DEVICE_STATE_RUNNING)) {
->> -                        return false;
->> -                }
->> -                continue;
->> -            } else {
->> +            if ((vbasedev->pre_copy_dirty_page_tracking == ON_OFF_AUTO_OFF)
->> +                && (migration->device_state & VFIO_DEVICE_STATE_RUNNING)) {
->>                   return false;
->>               }
->>           }
->> @@ -987,6 +982,44 @@ static void vfio_listener_region_del(MemoryListener *listener,
->>       }
->>   }
->>   +static void vfio_set_dirty_page_tracking(VFIOContainer *container, bool start)
->> +{
->> +    int ret;
->> +    struct vfio_iommu_type1_dirty_bitmap dirty = {
->> +        .argsz = sizeof(dirty),
->> +    };
->> +
->> +    if (start) {
->> +        dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_START;
->> +    } else {
->> +        dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_STOP;
->> +    }
->> +
->> +    ret = ioctl(container->fd, VFIO_IOMMU_DIRTY_PAGES, &dirty);
->> +    if (ret) {
->> +        error_report("Failed to set dirty tracking flag 0x%x errno: %d",
->> +                     dirty.flags, errno);
->> +    }
->> +}
->> +
->> +static void vfio_listener_log_start(MemoryListener *listener,
->> +                                    MemoryRegionSection *section,
->> +                                    int old, int new)
->> +{
->> +    VFIOContainer *container = container_of(listener, VFIOContainer, listener);
->> +
->> +    vfio_set_dirty_page_tracking(container, true);
->> +}
->> +
->> +static void vfio_listener_log_stop(MemoryListener *listener,
->> +                                   MemoryRegionSection *section,
->> +                                   int old, int new)
->> +{
->> +    VFIOContainer *container = container_of(listener, VFIOContainer, listener);
->> +
->> +    vfio_set_dirty_page_tracking(container, false);
->> +}
->> +
->>   static int vfio_get_dirty_bitmap(VFIOContainer *container, uint64_t iova,
->>                                    uint64_t size, ram_addr_t ram_addr)
->>   {
->> @@ -1128,7 +1161,7 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
->>           return;
->>       }
->>   -    if (vfio_devices_all_saving(container)) {
->> +    if (vfio_devices_all_dirty_tracking(container)) {
->>           vfio_sync_dirty_bitmap(container, section);
->>       }
->>   }
->> @@ -1136,6 +1169,8 @@ static void vfio_listerner_log_sync(MemoryListener *listener,
->>   static const MemoryListener vfio_memory_listener = {
->>       .region_add = vfio_listener_region_add,
->>       .region_del = vfio_listener_region_del,
->> +    .log_start = vfio_listener_log_start,
->> +    .log_stop = vfio_listener_log_stop,
->>       .log_sync = vfio_listerner_log_sync,
->>   };
->>   diff --git a/hw/vfio/migration.c b/hw/vfio/migration.c
->> index 00daa50ed8..c0f646823a 100644
->> --- a/hw/vfio/migration.c
->> +++ b/hw/vfio/migration.c
->> @@ -395,40 +395,10 @@ static int vfio_load_device_config_state(QEMUFile *f, void *opaque)
->>       return qemu_file_get_error(f);
->>   }
->>   -static int vfio_set_dirty_page_tracking(VFIODevice *vbasedev, bool start)
->> -{
->> -    int ret;
->> -    VFIOMigration *migration = vbasedev->migration;
->> -    VFIOContainer *container = vbasedev->group->container;
->> -    struct vfio_iommu_type1_dirty_bitmap dirty = {
->> -        .argsz = sizeof(dirty),
->> -    };
->> -
->> -    if (start) {
->> -        if (migration->device_state & VFIO_DEVICE_STATE_SAVING) {
->> -            dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_START;
->> -        } else {
->> -            return -EINVAL;
->> -        }
->> -    } else {
->> -            dirty.flags = VFIO_IOMMU_DIRTY_PAGES_FLAG_STOP;
->> -    }
->> -
->> -    ret = ioctl(container->fd, VFIO_IOMMU_DIRTY_PAGES, &dirty);
->> -    if (ret) {
->> -        error_report("Failed to set dirty tracking flag 0x%x errno: %d",
->> -                     dirty.flags, errno);
->> -        return -errno;
->> -    }
->> -    return ret;
->> -}
->> -
->>   static void vfio_migration_cleanup(VFIODevice *vbasedev)
->>   {
->>       VFIOMigration *migration = vbasedev->migration;
->>   -    vfio_set_dirty_page_tracking(vbasedev, false);
->> -
->>       if (migration->region.mmaps) {
->>           vfio_region_unmap(&migration->region);
->>       }
->> @@ -469,11 +439,6 @@ static int vfio_save_setup(QEMUFile *f, void *opaque)
->>           return ret;
->>       }
->>   -    ret = vfio_set_dirty_page_tracking(vbasedev, true);
->> -    if (ret) {
->> -        return ret;
->> -    }
->> -
->>       qemu_put_be64(f, VFIO_MIG_FLAG_END_OF_STATE);
->>         ret = qemu_file_get_error(f);
->>
-> .
-> 
+-- 
+Regards,
+Vincenzo

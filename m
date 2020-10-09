@@ -1,92 +1,231 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2043128lfo;
-        Sat, 30 Jan 2021 07:37:38 -0800 (PST)
-X-Received: by 2002:a05:6402:40c4:: with SMTP id z4mr10461540edb.233.1612021058426;
-        Sat, 30 Jan 2021 07:37:38 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612021058; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2344049lfq;
+        Fri, 9 Oct 2020 07:48:51 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwj3qKo676PAaN2f7jU6cAZm23bzVpMxbbjqc9fFJhWN5Jazvg1RzZiWWnloWCIf7Lb5YVm
+X-Received: by 2002:a25:2745:: with SMTP id n66mr9815588ybn.47.1602254931169;
+        Fri, 09 Oct 2020 07:48:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602254931; cv=none;
         d=google.com; s=arc-20160816;
-        b=ADoYtMMp/pttvjKbUAE+u3O8Dn/hgVKXs2avCkiZW3grPARi2jKV1u9EVYI9SITukW
-         S9uheWY6e1dGzCKor3XsysaCgoX9dYFzXg28scHR4XOwAESyUMYFQUmNT1NRxaP9Wbsc
-         QTCPnn+UPKaDoUNnjjtjbwJiQmZPz7ZQ4dFCecKceBtkkg8HVuVZECFogDNh0BUtQ/7+
-         Vr2aTPuMdH/+RWLSr1MoXKdyhKpS662SX7Xi01zh1Oo3fAH8AvgwTha526QgEnDw08M7
-         Q6JRpAYzSm8fwgm/5ACpHgGF47EoVMUt9f4FYtqYH9xB33d/JX7UiqwzlHmPkrThE7F9
-         17xA==
+        b=OCYgl2IJJrPq4MEBxW+14IpGruCIpE1T0hm/ZfHvl/dXep7dPjr9FhnDz13V3tIFsa
+         tgdS5tCVsW5He9jlbIraq+pDhyBxqgj6r06BVB1wd5w0cUY0k1aC/B6JaIpJ6JC92Iga
+         Q22Jf8R5Z6wsys6rDZzkerZsekJpMuxQ5OoMnf+V5MXOgQYouFJHeSVCbXFZKgqfH3dR
+         pc7hMSKgPc9czUWW+zYxBM224uCbp98O+0wmJEVnTdTciSzjiR/igr1G5WApeMAPGul+
+         I+4KsnAuQBU7Mce/ZlBQ0Yzu+WaziVdyenjIG04TPZE9vMzEMtm7YmCYpstxsImabDFn
+         cneQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=78kOyNsh9PFQ35W6G6J34UFL3WJ0plW3fjCLydvhNGU=;
-        b=eumm9OJMMZL2wCvPeNASvLv8sJ6E74t/F6Zv3VgnYT0Z2om4FLN1G+iNs6MoM+6pJP
-         KDLdDIyEVlp+FJKLiczTF5qD1zvVGFx6Il71G0Papr6R/bcYArGWkUQ01j0ivf+aeX/5
-         jo8cxhE+muhLsPzKhrVV4UBK550Ec9JXOzl7djP8uUSBtrCRNK7oL6rp/9zvjMoNx7C0
-         sZVTHUwN7w/pfzHyeLyVzhONHMWBsEKNg1lx2MqpI989JAuaGXJBUekW8R2EtkA7H2RZ
-         E2LYmky0w6SMpo3ZelMIfE9p2kEK50EzvtW8F7PwnNGM4fDxREclELFtl98K8slX2LbE
-         3u3A==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=uWUs5XS37Km3EAJspIL0UZAFkTxAe4sbDHRIXZCWeRE=;
+        b=WYUiAQ+esMpCS+fAOIk2/rTHi18sS44XhhWYyL3UUgHMz7G+72KUKku3bxWzdyifjm
+         6W9wCTecQD1vEKgIcrAnAzsUmYLhxz6TyE/I3uHSnD362kc7vS0jFfuRk/0XTWNgZ255
+         3Vai3Lt1BwECok7PNVAhq6BVzkj1C458kqAe/7rIyne83eDQ54W2egDcHFCcuFwQXuMM
+         G7+zZt5F+zO8tiZtD8+dzW3eiiSUAInqkFgDmk6uzqWESNLqT+aSy6y6UWxAyJf5AfL5
+         SN+ZsFjqCG4GaOnujopPMfVfKyfsu81tzveVGj1/pp6zvi2g5CGoSMgzGDF4Q7mqV1+Q
+         rtRg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=evI+JCiN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bIkhuDHR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
-        by mx.google.com with SMTPS id v10sor7690409ejf.57.2021.01.30.07.37.38
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id t4si9310938ybl.13.2020.10.09.07.48.50
         for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Sat, 30 Jan 2021 07:37:38 -0800 (PST)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Fri, 09 Oct 2020 07:48:51 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=evI+JCiN;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=bIkhuDHR;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc:content-transfer-encoding;
-        bh=78kOyNsh9PFQ35W6G6J34UFL3WJ0plW3fjCLydvhNGU=;
-        b=evI+JCiN4q9fC6wQYJuhNtFMDoH0y/ah6iDJRi+XmLvWYdNKZghG075xgvVS6nEH63
-         QdOKU1s/tbYWcdHwDvDugZGRZzCkn/NBqE3cYw+ytxwNgNK7h9d4lF1nfdaX2dqkhC1s
-         m4+eSEQWVVB2kCpgZVbmzfVhV2dfOIYlq6Vn8FQITksyJmROd5NLThrkFBPHH5OqjzTl
-         COIOuFHypRtV5TiZdLH/9lecUqz5sRcjDl+DEHJb6ojwly5a2AJDEb3Bk7F64IO5s7Q0
-         DlGL1cp0xxiiP+UvlIJqJPxke6LXOQduMAUGGia1Z027oaon4bMF7R08U/DuutijOrQs
-         ViAA==
+Received: from localhost ([::1]:50018 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kQthS-0008UX-GG
+	for alex.bennee@linaro.org; Fri, 09 Oct 2020 10:48:50 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41814)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kQtg3-0007Zf-3E
+ for qemu-devel@nongnu.org; Fri, 09 Oct 2020 10:47:23 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336]:37419)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kQtfx-0000Rf-IN
+ for qemu-devel@nongnu.org; Fri, 09 Oct 2020 10:47:22 -0400
+Received: by mail-wm1-x336.google.com with SMTP id j136so10104096wmj.2
+ for <qemu-devel@nongnu.org>; Fri, 09 Oct 2020 07:47:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=uWUs5XS37Km3EAJspIL0UZAFkTxAe4sbDHRIXZCWeRE=;
+ b=bIkhuDHRKYvRui1SAZn4x4iLExMG29e8sy6s5imaclj9ZD34/1+FJADv5R6ZrAAj8p
+ GfOxXzHZKX5XlZElwqfIfpcSd53uKUPkWOfjo4bOSnkVeabmxo8jTmJo495tbVOitX2C
+ cGo04i4FaAxSGGx8truD2+55bzKVgRKG2CWa6O3zRDdPkY0lUXpgdcnoi7nfV8fkm2EN
+ PmIRxI+3uMDlHb4ZgXzwi/9thYrVFYxWMjnCcH0MKwa9g+EUMBa4J6U9OOP7sIaBqRAo
+ ko4IVKfdGZ6yz7x5kGN75wc8ABLs07YTXjxGKdF8UVq4awOLNXRNLp0zsinKJI1LTIfz
+ IZSA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc:content-transfer-encoding;
-        bh=78kOyNsh9PFQ35W6G6J34UFL3WJ0plW3fjCLydvhNGU=;
-        b=bcSsv3e7qZ2bsbY8yZ491ORCvsAVbbopXhkuHm27WsdJh3mtfFrRNxis9MwsfbXEjB
-         0LGGTPJ3ppD5hCIWcxdqwCtFPAoE1+XoDNSVlVqSiYEdqS0b+wpoUdcz/KZN/M9MFqEC
-         0oRshXkJ2IGvdZWhjbNGQ7MFUo7IZG2cwwTyqK7orQXsKnlk3Nk045k5zlE1LVEkHl8k
-         CSHdtqSlrJYDfYtLAKSk8W1brWNAdIuwnkoSc8565CdJ0/LO5Vju8kZI56dvgiaMNmQB
-         /SAGsdfqdRp73zt8pWeHr5tX+rfOyXZ+3rUggeRyKC5xSDgjBr+Z4VyRNJIcW5+5QQdg
-         CUDQ==
-X-Gm-Message-State: AOAM532SbIhuD7ObEPwohT3MM9i982rkbnes0Ce/QDBqwKjCbkJhB/N9
-	X6JbRfyJXCTIyTTEPTl6CKc2hTYh3sdIEqRoEkxuNKzd
-X-Google-Smtp-Source: ABdhPJyD++UlciKvmROO24kS3r/XXDVKijRu1H7xIYaJRV48MHyTsJtFtdfA1zpizwOdbfEwhqs6mx4IqJ20F8mkBMc=
-X-Received: by 2002:a17:906:b215:: with SMTP id p21mr9386002ejz.407.1612021058129;
- Sat, 30 Jan 2021 07:37:38 -0800 (PST)
-MIME-Version: 1.0
-References: <20210130015227.4071332-1-f4bug@amsat.org> <20210130015227.4071332-4-f4bug@amsat.org>
-In-Reply-To: <20210130015227.4071332-4-f4bug@amsat.org>
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=uWUs5XS37Km3EAJspIL0UZAFkTxAe4sbDHRIXZCWeRE=;
+ b=C7J/VYQTUw/jRQr/bq/JrwczIR7Odq9GQnPmZslvlNVGx5A8nmivgZe8FVcAaUaMvn
+ bCU54//HY3Hs2cRAvr6Dy0ZSkZ3b9O/fc54hOuvyPrtN9yxPgpA3Ng919TJSJ+iQ6iES
+ bBlC+VUWczSVwHC4Mfl4RJi3gI+2h4Asdzxc/GuLFl6MXqSphh7Wph5oUFqe1JobfDOU
+ S2hzbkyjSKZ95dJqwaaYwLo7cHQfV4QX0F/SZ2vlHSmA7M8Ah05JV/+7XMBZkTNCwUdb
+ e7FepoyCKW/hxBN/OFV2dLxIgrPXqiI9iZegw2WzbxMUg7CD8nVuB5i7oEKMTTYuPDcm
+ ITiw==
+X-Gm-Message-State: AOAM530eqhFlTHS5lmb0HMODK2qp0vXrpofjUIFdLJ/48h5hQBaN5tza
+ lWR6V4QrzUuyP6krhAw7bKkFUO0dl6tY6O3R
+X-Received: by 2002:a7b:c2a9:: with SMTP id c9mr14565273wmk.87.1602254835612; 
+ Fri, 09 Oct 2020 07:47:15 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id f12sm11832373wmf.26.2020.10.09.07.47.14
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 09 Oct 2020 07:47:14 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 30 Jan 2021 15:37:26 +0000
-Message-ID: <CAFEAcA8UCFghGDb4oMujek_W_wsyYz+duiQ-d8JyN09NYoff-g@mail.gmail.com>
-Subject: Re: [PATCH v5 03/11] target/arm: Restrict ARMv4 cpus to TCG accel
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, Richard Henderson <richard.henderson@linaro.org>, 
-	kvm-devel <kvm@vger.kernel.org>, Fam Zheng <fam@euphon.net>, Thomas Huth <thuth@redhat.com>, 
-	Paolo Bonzini <pbonzini@redhat.com>, =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>, 
-	Richard Henderson <rth@twiddle.net>, Claudio Fontana <cfontana@suse.de>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-TUID: +nb1oNUq9Rjg
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Fix SMLAD incorrect setting of Q bit
+Date: Fri,  9 Oct 2020 15:47:12 +0100
+Message-Id: <20201009144712.11187-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-devel@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: u4a1S/701/c5
 
-On Sat, 30 Jan 2021 at 01:52, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
- wrote:
->
-> KVM requires a cpu based on (at least) the ARMv7 architecture.
+The SMLAD instruction is supposed to:
+ * signed multiply Rn[15:0] * Rm[15:0]
+ * signed multiply Rn[31:16] * Rm[31:16]
+ * perform a signed addition of the products and Ra
+ * set Rd to the low 32 bits of the theoretical
+   infinite-precision result
+ * set the Q flag if the sign-extension of Rd
+   would differ from the infinite-precision result
+   (ie on overflow)
 
-These days it requires ARMv8, because we dropped 32-bit host
-support, and all 64-bit host CPUs are v8.
+Our current implementation doesn't quite do this, though: it performs
+an addition of the products setting Q on overflow, and then it adds
+Ra, again possibly setting Q.  This sometimes incorrectly sets Q when
+the architecturally mandated only-check-for-overflow-once algorithm
+does not. For instance:
+ r1 = 0x80008000; r2 = 0x80008000; r3 = 0xffffffff
+ smlad r0, r1, r2, r3
+This is (-32768 * -32768) + (-32768 * -32768) - 1
 
-thanks
--- PMM
+The products are both 0x4000_0000, so when added together as 32-bit
+signed numbers they overflow (and QEMU sets Q), but because the
+addition of Ra == -1 brings the total back down to 0x7fff_ffff
+there is no overflow for the complete operation and setting Q is
+incorrect.
+
+Fix this edge case by resorting to 64-bit arithmetic for the
+case where we need to add three values together.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/translate.c | 58 ++++++++++++++++++++++++++++++++++--------
+ 1 file changed, 48 insertions(+), 10 deletions(-)
+
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index d34c1d351a6..d8729e42c48 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -7401,21 +7401,59 @@ static bool op_smlad(DisasContext *s, arg_rrrr *a, bool m_swap, bool sub)
+     gen_smul_dual(t1, t2);
+ 
+     if (sub) {
+-        /* This subtraction cannot overflow. */
++        /*
++         * This subtraction cannot overflow, so we can do a simple
++         * 32-bit subtraction and then a possible 32-bit saturating
++         * addition of Ra.
++         */
+         tcg_gen_sub_i32(t1, t1, t2);
++        tcg_temp_free_i32(t2);
++
++        if (a->ra != 15) {
++            t2 = load_reg(s, a->ra);
++            gen_helper_add_setq(t1, cpu_env, t1, t2);
++            tcg_temp_free_i32(t2);
++        }
++    } else if (a->ra == 15) {
++        /* Single saturation-checking addition */
++        gen_helper_add_setq(t1, cpu_env, t1, t2);
++        tcg_temp_free_i32(t2);
+     } else {
+         /*
+-         * This addition cannot overflow 32 bits; however it may
+-         * overflow considered as a signed operation, in which case
+-         * we must set the Q flag.
++         * We need to add the products and Ra together and then
++         * determine whether the final result overflowed. Doing
++         * this as two separate add-and-check-overflow steps incorrectly
++         * sets Q for cases like (-32768 * -32768) + (-32768 * -32768) + -1.
++         * Do all the arithmetic at 64-bits and then check for overflow.
+          */
+-        gen_helper_add_setq(t1, cpu_env, t1, t2);
+-    }
+-    tcg_temp_free_i32(t2);
++        TCGv_i64 p64, q64;
++        TCGv_i32 t3, qf, one;
+ 
+-    if (a->ra != 15) {
+-        t2 = load_reg(s, a->ra);
+-        gen_helper_add_setq(t1, cpu_env, t1, t2);
++        p64 = tcg_temp_new_i64();
++        q64 = tcg_temp_new_i64();
++        tcg_gen_ext_i32_i64(p64, t1);
++        tcg_gen_ext_i32_i64(q64, t2);
++        tcg_gen_add_i64(p64, p64, q64);
++        load_reg_var(s, t2, a->ra);
++        tcg_gen_ext_i32_i64(q64, t2);
++        tcg_gen_add_i64(p64, p64, q64);
++        tcg_temp_free_i64(q64);
++
++        tcg_gen_extr_i64_i32(t1, t2, p64);
++        tcg_temp_free_i64(p64);
++        /*
++         * t1 is the low half of the result which goes into Rd.
++         * We have overflow and must set Q if the high half (t2)
++         * is different from the sign-extension of t1.
++         */
++        t3 = tcg_temp_new_i32();
++        tcg_gen_sari_i32(t3, t1, 31);
++        qf = load_cpu_field(QF);
++        one = tcg_const_i32(1);
++        tcg_gen_movcond_i32(TCG_COND_NE, qf, t2, t3, one, qf);
++        store_cpu_field(qf, QF);
++        tcg_temp_free_i32(one);
++        tcg_temp_free_i32(t3);
+         tcg_temp_free_i32(t2);
+     }
+     store_reg(s, a->rd, t1);
+-- 
+2.20.1
+

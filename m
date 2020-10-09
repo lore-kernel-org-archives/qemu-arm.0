@@ -1,108 +1,105 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2479428lfq;
-        Fri, 9 Oct 2020 10:31:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyid/n0GIdOZVQmls7AgRhooE/wY8e7pmcoCaqNUK+8Yqhf9fMnXfw0R4dcCSPXqqLvBqs2
-X-Received: by 2002:a25:515:: with SMTP id 21mr19229576ybf.114.1602264668509;
-        Fri, 09 Oct 2020 10:31:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602264668; cv=none;
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp2494631lfq;
+        Fri, 9 Oct 2020 10:51:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxEk6ozlZd9EV+qB8ivrvm9h7Y6BWcO8NRPDo8I62ntfqryOJTUc62Zym7EXBEf3R4UqXip
+X-Received: by 2002:a5b:1cc:: with SMTP id f12mr14513578ybp.150.1602265902316;
+        Fri, 09 Oct 2020 10:51:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602265902; cv=none;
         d=google.com; s=arc-20160816;
-        b=S5v9LHDwpqSvXauFQcyzTu3U4YPypecBMSW1KZ7dDveadqLyR6SNitGcSB/0oZpd13
-         Q8kPP3ENtwVW93KTFMcCONruQkK4PiLWEuiW+c5KLaZ21UY6HSJSCSW4+eiMqbpE16au
-         KZNeIphWrBB7b/JUrOaVYECHgDoUoeUXA2XBBWV8PqTqcTvx7jZXX7Ea1wDTwFCu/bAg
-         JlFlWa5iFHdinm0cbGUFMulZfwn6yEmnrbe/Gt9HJngtUqBIHjDOt4vxWE+I4e/IM/x3
-         8vuYXtc6GlruNcue/1H/bdoE/o9wcw+EXUPiNGpcRXj1FKgdfsmPuL4Sepgxx+lroFNJ
-         SfLg==
+        b=Y5HXoHMPc7KiMNHYrRVDJyX3vHVgvBSc4joubkrzCo7o9J4UQ3Gyh7skqPvzpwRteY
+         q3O/LBTqtVpI2N6sy51X8HBxLwOqvljXWl8GosXNYNVY+n7ivu1EoPqVnkEravE9UxCV
+         KTDDXbmD+4WmYZPVTkRFGrvINnzNLgYEZy0iXgvhj59o+2FQwD/TTLY04hwHJRxXehk3
+         8wT8Kn/q+Tbr0vSpMBHmYeqxr6lpuiqaha5EwTNv+65g4qjN1Q8vNl/dTlWrpeHojP7/
+         xQuKAUTBnuzOrfFviqyc6P+p0yUKmrUkupQK9osOcPGaa9wwaqOso/NbUMZJFqj6Afrh
+         w4PA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:subject:message-id
-         :to:from:date:dkim-signature;
-        bh=KZguImmcqnPK0Fiq01Pu+jFSQd8X5P/YuUJ63BD9prs=;
-        b=Qcs0Hudp2IFhuwOEg2aXZPS/ij9Dq/j78T7JpvOjI8khSb4OiWoYCyEV0X+XPSP8Jg
-         xOHsmh+oEBFvAp6SBbDRlgCuF7j1j9dYoxLLKYOuvGsQ6mLrGGBrUKoyrESmn2fw/6yO
-         RnzsgLSwv/zS2pp9b+Codok/XzPlj2oRooygdSNlcc1lSGg2CE8envXl2rNhDb8yUrVp
-         6sFppFzLKzin4/k/80KJ4TKj35x0jS5c4RGgBA3/byyZjJC9XNZwN3xg/4C4OpL+V71S
-         Y7KCeOy2gA+DHEfJpj2POslH+QTyHBlbh7VlBWB4UXisgVep+ANDLLRlJhaEbP0xFLyy
-         9m2Q==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=1YplCQGGpub2zlaw7ENhKq/CRFojJ27h9P4zlJkUHQw=;
+        b=AlmjK1cCUymio4XsDvrGNc390CGnPmBGV93qcU3cotqlSIO5fvh3a8eEluxMECouS8
+         r1CQHWAfvx3qQAuB3nMPFihohJEcgaBs8jGLyPNChibRS4zz+OndDoEfv2ko3WNZkP/c
+         B3Sz27dL/L4yUAEPNYNg6+kgC7PrfGrXecY97FJ1kngpJcIs8VA3n0IAfyG/jqChwn+A
+         cOcpmE5BF7IYdnG/z2xY+ZPygKSUpRuG2t8hpHbp+ZTM1qu+bJ18wrCPBRd1+poeNsvj
+         npVIQ+nrSk1iz5KoSZo54e40omwe1NTEt45VQwuaOXq89O66/9HLKlrGOQia+CDu72jL
+         ba3Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="UiuVu/5f";
+       dkim=fail header.i=@linaro.org header.s=google header.b=sr6pUWN0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c9si9510577ybm.451.2020.10.09.10.31.08
+        by mx.google.com with ESMTPS id f190si8485196ybg.158.2020.10.09.10.51.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 09 Oct 2020 10:31:08 -0700 (PDT)
+        Fri, 09 Oct 2020 10:51:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="UiuVu/5f";
+       dkim=fail header.i=@linaro.org header.s=google header.b=sr6pUWN0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:43472 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:60672 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQwEV-0008Cm-Tn
-	for alex.bennee@linaro.org; Fri, 09 Oct 2020 13:31:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:52160)
+	id 1kQwYP-0007zZ-Hv
+	for alex.bennee@linaro.org; Fri, 09 Oct 2020 13:51:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:55678)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1kQwE3-0008AG-Pt
- for qemu-arm@nongnu.org; Fri, 09 Oct 2020 13:30:39 -0400
-Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836]:43853)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kQwYG-0007zM-PF
+ for qemu-arm@nongnu.org; Fri, 09 Oct 2020 13:51:32 -0400
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630]:36128)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
- id 1kQwE1-0004Pr-UN
- for qemu-arm@nongnu.org; Fri, 09 Oct 2020 13:30:39 -0400
-Received: by mail-qt1-x836.google.com with SMTP id g3so8513546qtq.10
- for <qemu-arm@nongnu.org>; Fri, 09 Oct 2020 10:30:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kQwYF-0007I7-7t
+ for qemu-arm@nongnu.org; Fri, 09 Oct 2020 13:51:32 -0400
+Received: by mail-ej1-x630.google.com with SMTP id qp15so14304770ejb.3
+ for <qemu-arm@nongnu.org>; Fri, 09 Oct 2020 10:51:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=date:from:to:cc:message-id:subject:mime-version;
- bh=KZguImmcqnPK0Fiq01Pu+jFSQd8X5P/YuUJ63BD9prs=;
- b=UiuVu/5fMfufNdQr9WjmQZtfdk3IyK9urYu6k3sD+QZ2U8Fv5nu+U/d4fDgv8nGYVJ
- SOSbyVmUa2iGvajocZsJGW6JG1Q0burWAbUd1Rv7+YoqSPBAjB4NZKwf8Ync+NRreGbl
- HYzn8mAgSEIW3upOVvRjrlSlcxma8bIbuwv4fXGVVJVqBGhxtyPJ/AAOULIzBXK8gUwL
- LRqZW1guxE+sdh02t0S8XyaTbGLylEtzB55KARMXhSM4I84wJhwJr1XtOgxN2Lun8uEP
- BcK+XqAqGHyYkHAGC1LBOCkEscjZtT7+IzFSSLDWkkjzSruV/DKULhK52kqz9DXcH8Cl
- +76A==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=1YplCQGGpub2zlaw7ENhKq/CRFojJ27h9P4zlJkUHQw=;
+ b=sr6pUWN0OWDHodVv8ykgx+XTwDO1lWO+ihseEVkxd1kLH/J1ZS1yOqBhXmyELCFFKw
+ 2CoZQiE32wU1P0YVYzdOwD4UfFwF0FF17de9XoAWjskcDsONYnz7WXPwgWYkmz5cNI84
+ Kd7dDy3ZoF4XfVxKdKicQ3nNh3sllX6SQ5oxjbIve1T8HomS1P65s7GNtmBlpz0YHNwn
+ JXBioc9rDOKAQSOTXK6dJQsPOcG0239jlL+3IlGLOj2oQHyaVD5+GQlQDZzMoveXx33L
+ m0/ETrtHpXsGZoKvB6dHCBYMHhibhBWwqoNTxymqprTI7Y996nAitQ4gd9Uy/9OiA8OC
+ IHLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:message-id:subject:mime-version;
- bh=KZguImmcqnPK0Fiq01Pu+jFSQd8X5P/YuUJ63BD9prs=;
- b=TFpn798R0JRgEJHKGpvZB2D3pEziFsN34aNKqM4C2IkMepXBhWW+FpKHTkXOVAfi6v
- Taw5y9LInC8OuX3Qgrtj6Ygr+3+lgGpqcI0qYIYaZLm7yOb1ESpz+0tNvElhBSlmlsgT
- IwYMh5Egth2yU1itGJ+56KrwmGVM3TzwFaYAlq5l/TsNApB2j2KBoC4nVnUxoblEM9VK
- 3P/fWiX2aIl5ruoeX6DnNLkzypVSUUtLZMMwy4idEykZdrNDrnTmChORAxX4I76A5sik
- yifXKxNRn3hfD5jVscCk0HKvF2PLS/MfRIcFi5YOZSAVLtT0Y6sNf9YPgHUnf4IzVGrH
- pMwQ==
-X-Gm-Message-State: AOAM531d5lVTkCaPhlJ3kiR4djC5ajNBsfx1J7p1rtYKxzgYfinvZmPJ
- DS5y8sC9fCJT+Hj0Cb2wRgtXzkI5sE85Cg==
-X-Received: by 2002:aed:3089:: with SMTP id 9mr9719974qtf.168.1602264635980;
- Fri, 09 Oct 2020 10:30:35 -0700 (PDT)
-Received: from master ([2607:fea8:e2a0:e950::d884])
- by smtp.gmail.com with ESMTPSA id p187sm6257346qkd.129.2020.10.09.10.30.35
- for <qemu-arm@nongnu.org>
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Fri, 09 Oct 2020 10:30:35 -0700 (PDT)
-Date: Fri, 9 Oct 2020 13:30:30 -0400
-From: Shashi Mallela <shashi.mallela@linaro.org>
-To: Maxim Uvarov <maxim.uvarov@linaro.org>
-Message-ID: <74151CBD-4750-4E68-9127-21076C019036@getmailspring.com>
-Subject: Re%3A [PATCH v4 1%2F2] hw%2Fwatchdog%3A Implement SBSA watchdog
- =?utf-8?Q?device&In-Reply-To=3D<CAD8XO3YmTC7fzxttg%3DQLMpJbg7uLogatxN7q7vf-iGZjyQLjjQ%40mail.gmail.com>?=
-X-Mailer: Mailspring
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=1YplCQGGpub2zlaw7ENhKq/CRFojJ27h9P4zlJkUHQw=;
+ b=riBmRq4hsYrcXm08YKvEEvojk1ouK+j2ofiCP2TdY16iSskeInbC3boYT2F0S3w+1S
+ PB+l1QYLxC9sHGInq1+2lsDom+yzHjUAa6wW/6gSOWBgR9BQVZ7+gLWfIGzNc4z2skj4
+ SVrdgbqsAYKRztIM6ew6RaKnfXrpcflAODmdQTMLa7964f3Wmcdkn4/5eyHTF5U4W5i3
+ fWjpke5G18lTo9dRQu0RCzSNxWWjgZ9evER7FbQr27/tUKhe2Sj3MCFL3wOv0/2MEdZJ
+ t1wQE0iViqFq5UgvPQvQb21tl5BoDjVgocCpUAzW6lOLWWVnSLtGZdba7G1PpYvLeN04
+ WsDA==
+X-Gm-Message-State: AOAM533EX8LOavNW9MWe7p5Wb9gIy2fedooCij5nsu/ToTUyxTfKJRTO
+ Ca5Ioz4ug64571qzBv5MCNv3m6qzJSE/IaGmBX8jhg==
+X-Received: by 2002:a17:907:4365:: with SMTP id
+ nd5mr15773807ejb.56.1602265889313; 
+ Fri, 09 Oct 2020 10:51:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/alternative; boundary="5f809e36_50dbf110_10e8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
- envelope-from=shashi.mallela@linaro.org; helo=mail-qt1-x836.google.com
+References: <74151CBD-4750-4E68-9127-21076C019036@getmailspring.com>
+In-Reply-To: <74151CBD-4750-4E68-9127-21076C019036@getmailspring.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 9 Oct 2020 18:51:17 +0100
+Message-ID: <CAFEAcA9cZPgaHGuCs0J20YJ48V2eXHFFRsb9a56xFULjtFtn3g@mail.gmail.com>
+Subject: Re: Re%3A [PATCH v4 1%2F2] hw%2Fwatchdog%3A Implement SBSA watchdog
+ device&In-Reply-To=<CAD8XO3YmTC7fzxttg%3DQLMpJbg7uLogatxN7q7vf-iGZjyQLjjQ%40mail.gmail.com>
+To: Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x630.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_IMAGE_ONLY_08=1.651, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_REMOTE_IMAGE=0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,40 +112,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "=?utf-8?Q?peter.maydell=40linaro.org?=" <peter.maydell@linaro.org>,
- "=?utf-8?Q?qemu-arm=40nongnu.org?=" <qemu-arm@nongnu.org>,
- "=?utf-8?Q?qemu-devel=40nongnu.org?=" <qemu-devel@nongnu.org>
+Cc: Maxim Uvarov <maxim.uvarov@linaro.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Qn0R3XZB+XwM
+X-TUID: DNcmaL4EPkhf
 
---5f809e36_50dbf110_10e8
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+On Fri, 9 Oct 2020 at 18:30, Shashi Mallela <shashi.mallela@linaro.org> wrote:
+>
+> The value being returned here is 0 (initialized to 0 at the beginning of read function).
+> I have seen similar practices being followed in other qemu implementations like for example bcm2835_dma_read() in qemu/hw/dma/bcm2835_dma.c,a9_scu_read() in qemu/hw/misc/a9scu.c.
+>
+> Please confirm if you would still like to add specific value like 0xdeadbeef for bad read offset.
 
-The value being returned here is 0 (initialized to 0 at the beginning of read function).
-I have seen similar practices being followed in other qemu implementations like for example bcm2835_dma_read() in qemu/hw/dma/bcm2835_dma.c,a9_scu_read() in qemu/hw/misc/a9scu.c.
+Judging by the subject line you've mangled the headers on this
+email so I'm not sure exactly what this was a reply to,
+but in general QEMU doesn't do that kind of "return
+specific marker values for bad register offsets". We
+typically log it with a qemu_log_mask(LOG_GUEST_ERROR) and
+return 0 (unless the h/w does something else).
 
-Please confirm if you would still like to add specific value like 0xdeadbeef for bad read offset.
-Thanks
-Shashi
-
---5f809e36_50dbf110_10e8
-Content-Type: text/html; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Content-Disposition: inline
-
-<div>The value being returned here is 0 (initialized to 0 at the beginnin=
-g of read function).</div><div>I have seen similar practices being follow=
-ed in other qemu implementations like for example bcm2835=5Fdma=5Fread() =
-in qemu/hw/dma/bcm2835=5Fdma.c,a9=5Fscu=5Fread() in qemu/hw/misc/a9scu.c.=
-</div><br><div>Please confirm if you would still like to add specific val=
-ue like 0xdeadbeef for bad read offset.</div><br><div>Thanks</div><div>Sh=
-ashi</div><img class=3D=22mailspring-open=22 alt=3D=22Sent from Mailsprin=
-g=22 width=3D=220=22 height=3D=220=22 style=3D=22border:0; width:0; heigh=
-t:0;=22 src=3D=22https://link.getmailspring.com/open/74151CBD-4750-4E68-9=
-127-21076C019036=40getmailspring.com=3Fme=3D2a4b90d6&amp;recipient=3DcWVt=
-dS1hcm1Abm9uZ251Lm9yZw%3D%3D=22>
---5f809e36_50dbf110_10e8--
-
+thanks
+-- PMM

@@ -1,80 +1,78 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3154148lfq;
-        Sat, 10 Oct 2020 06:09:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxaWIY+zvdwQT0mKDRP0diTvUB7NW77kYZ02CCjqz9SPER4gqxBmd+rBObgNTi+6Ul8Quez
-X-Received: by 2002:a25:dc8f:: with SMTP id y137mr23084951ybe.186.1602335340822;
-        Sat, 10 Oct 2020 06:09:00 -0700 (PDT)
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3185229lfq;
+        Sat, 10 Oct 2020 06:57:19 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyArdlGakhpiIYM3Zzd4PJGGlFsUikNjuZ79Jr3REelMTdT1ne7LiwgMfxbHeHLz32FEJmx
+X-Received: by 2002:a25:4f0b:: with SMTP id d11mr2234102ybb.147.1602338238884;
+        Sat, 10 Oct 2020 06:57:18 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h125si10656743yba.334.2020.10.10.06.09.00
+        by mx.google.com with ESMTPS id y14si4022205ybj.402.2020.10.10.06.57.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Oct 2020 06:09:00 -0700 (PDT)
+        Sat, 10 Oct 2020 06:57:18 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=JauB8c5e;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=HMGpABo5;
        arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:47090 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46436 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kREcO-00037p-78
-	for alex.bennee@linaro.org; Sat, 10 Oct 2020 09:09:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60878)
+	id 1kRFN8-0000wO-7l
+	for alex.bennee@linaro.org; Sat, 10 Oct 2020 09:57:18 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40576)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kREcE-00036R-US; Sat, 10 Oct 2020 09:08:50 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:41904)
+ id 1kRFMx-0000wC-Ua; Sat, 10 Oct 2020 09:57:07 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:43476)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kREcA-00079i-5n; Sat, 10 Oct 2020 09:08:50 -0400
-Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id D8CC2C6011D;
- Sat, 10 Oct 2020 13:08:42 +0000 (UTC)
+ id 1kRFMv-0004IL-Ov; Sat, 10 Oct 2020 09:57:07 -0400
+Received: from sekoia-pc.home.lmichel.fr (sekoia-pc.home.lmichel.fr
+ [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPS id 73493C603C3;
+ Sat, 10 Oct 2020 13:57:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1602335322;
+ t=1602338223;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Jazt9/639w3DEeOI8gAmyV0yKv6DDoDESl64N57weGY=;
- b=JauB8c5eTJDOq8YSd7YrWYVpQIKIDGOzqiKjoREQ1s2NReMjfSCU69rmEolYMluJBIRHPN
- NTkCzJKwN29LGyJC/V2OVSnT98zvMswSa1F9ORY4C0K0Ci0BuT0iaKqbTz/zckouPhewsF
- 4NHsDzBRE0FmWRb5DxWBdw7LgNoY9AhM31H3/ICoK5iSLkxTuoJGRb2eswjytk2twNDQiJ
- gJ6o18gzBjjdj3h0K0tifIGa10g1DOzat/EF3WOyhOMFu78fhduR5P6gc/IctL1IAPIB9Y
- 9gKHQHxCRi7u5OzWgeTpoyh+UpCjL8i5RYL3cACw4W7BfPM7MCf/7T/UHh1P2w==
-Date: Sat, 10 Oct 2020 15:09:43 +0200
+ bh=9ytL1MgY7atcQnOFYVbyvTI9rupTIt9JujlNK/ak1Y4=;
+ b=HMGpABo5vO/RgT/gxQSOLj/JIiXd+iiSudGYOuJt9l/lPdigScpn1G4SzzPOijf2WmllcZ
+ vT+IUpvap7WcvuAc/MxSJVbG53Gj5I4m2Lk4zYVbi5GS/8htA5twYhzk7aXigzFISCr39s
+ 3/9rkoG6tW3QLrPIFxVAHVWqFZV7EVWFJzZ+B1XwGUv0czyJYhB8EEbNbLORfa/08itEAQ
+ DAZSGG3vkLfZTd3A9EStKpVNE6oEmkG4vbxoAEQyoxEqfnjz3L/7+gFKOMXyVrCVB69bPO
+ BJZSdXVisGN2OSDAtKuOlbb2RWs3dQbcSyTajGL05s9POKim/NkySD6LxVKw0w==
 From: Luc Michel <luc@lmichel.fr>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-Subject: Re: [PATCH v2 11/15] hw/misc/bcm2835_cprman: implement clock mux
- behaviour
-Message-ID: <20201010130943.6qkmhkb2gwbr6ajx@sekoia-pc.home.lmichel.fr>
-References: <20201005195612.1999165-1-luc@lmichel.fr>
- <20201005195612.1999165-12-luc@lmichel.fr>
- <d304e1f9-a1ea-17a1-e830-8be1f7671a53@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v3 04/15] hw/arm/raspi: fix CPRMAN base address
+Date: Sat, 10 Oct 2020 15:57:48 +0200
+Message-Id: <20201010135759.437903-5-luc@lmichel.fr>
+X-Mailer: git-send-email 2.28.0
+In-Reply-To: <20201010135759.437903-1-luc@lmichel.fr>
+References: <20201010135759.437903-1-luc@lmichel.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <d304e1f9-a1ea-17a1-e830-8be1f7671a53@amsat.org>
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1602335323;
+ s=pharaoh; t=1602338223;
  h=from:from:sender:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Jazt9/639w3DEeOI8gAmyV0yKv6DDoDESl64N57weGY=;
- b=ja8RhR5gUyebZ6nn80phQXiO+i8xpUxjyT44k1qcJKYuGQnDY65CjofUuc32ONJW5GJay6
- gGMu2UX0nM0MsscxD4CRPFIsVgNU/NHT0K0zpYmVS+3mM3Vu7h5tCpDak/puXhVjU833sq
- uJ8m+hyAPXCi7uJ4+uuJOcCp0j/8HWW1WtOqPYBB71MRwWsIEKc1OI5phjxZhV7z63thxO
- pJaSTPIb0kvf92i/LsvkjID9lDTE/P+5ZnFglunpcGvH0iG6s9dwyKfrmjNFYJcEkMU9jw
- CME+lOKY1aIM64j9BrNyny7dJtqRa5xDJSw3fnp5AB9KUaD71jnSDc8ZOizcVw==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1602335323; a=rsa-sha256; cv=none;
- b=dFA/zmfwxSgJOtIFNoRHsQ4wOaQBNCPoVozxcWCLcjbj5rlA1keO5Xo1O4zY0vwho0X0101CQh5v9kjcxUtYneuh36irJ8mnHr4dTrlTUTGagjqhwBBHhX1NFVd1vqHGU3irAzPsS6S+IVp5/FPn25hXy//Q9TAQ8f9TkOj5uDR2rNzoVRGjOGifVKwZv9/bjN9AgeJheZrT98YI4OWvAH5TDlorqXc/RQ416Ji8zscnO8rO8sxRWe82t9U+DL7flQLoTEe2IWY4UtAJzCKOp29z+8NXqbhq8EtKOrX66+xNIFwmRlmt+LeKJppUBxBpDKkUMo4Yq+gH8U1jJcQCbg==
-ARC-Authentication-Results: i=1; ORIGINATING;
- auth=pass smtp.auth=sekoia smtp.mailfrom=luc@lmichel.fr
+ bh=9ytL1MgY7atcQnOFYVbyvTI9rupTIt9JujlNK/ak1Y4=;
+ b=Xm1biEHWyaHyJQfPXv5f9QPVqwIy595+MHsM2vE5O65CdHNxX0ZRcTRBiT1iiV59GBDnGT
+ w7eboM3nTfXvqnz43B4vCCXeSC6hYWMacILQOaHgBv+TjSQANwXs15V8rhgmO/akhXou5R
+ 4mxJ91o0e/wu0Z47I9oktqu71TkU+qHU0uUZihze8V1ClkE9BL/A8+EDrVs4EqZo8Oe+2t
+ fvpyPiPSEFElAqlIAsd9Hm/OeZTVImYzh4u/xG1m/FEhwu9i8gzQe7BEyCfkBK5L5TJVZY
+ yfTG2clEKbyKgW8fMFDILVPlz9JvUe/xPYFtSes22KgqkYwcL/C10qEZUzW+RA==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1602338223; a=rsa-sha256; cv=none;
+ b=W3Jwk6gL8rIjXjrujXwJDigLhmUGylV95EQtaStRJtL0RIfYJRpF9VDYS6SX1/MSxWRABo9VoC9jEqPylWe4nQVkEICK8bIpD0OBHfw6uEAEcM8umsj66pnfZae8FlXTpTFp+wW/wpfFXgwXvSO2bBk66EclA9RqXpscYQEScuMExjJCZ2UL28/TWhZfnQvP+kH5k0NjyiIZM8oqdb/7ijGolU2h9AawGWJt/xHrq8kP0op7F+Y1B4X0AWOhRJETUJb9IBDn6luvwulrIes8GZn14OZJ21n8pBtUdpoas+4r+wRsaA3jJDG+H/d7ato56tgRdgKLdhTQ9JUkXBKOmg==
+ARC-Authentication-Results: i=1;
+	pharaoh.lmichel.fr
 Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
  helo=pharaoh.lmichel.fr
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/10 07:32:09
@@ -97,124 +95,101 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Paul Zimmerman <pauldzim@gmail.com>,
  Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
  Havard Skinnemoen <hskinnemoen@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cXqpjdHTj/UI
+X-TUID: iF7WUiXCcHhQ
 
-On 11:04 Tue 06 Oct     , Philippe Mathieu-Daudé wrote:
-> On 10/5/20 9:56 PM, Luc Michel wrote:
-> > A clock mux can be configured to select one of its 10 sources through
-> > the CM_CTL register. It also embeds yet another clock divider, composed
-> > of an integer part and a fractional part. The number of bits of each
-> > part is mux dependent.
-> > 
-> > Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> > Signed-off-by: Luc Michel <luc@lmichel.fr>
-> > ---
-> >  hw/misc/bcm2835_cprman.c | 44 +++++++++++++++++++++++++++++++++++++++-
-> >  1 file changed, 43 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-> > index a470ce2026..7d59423367 100644
-> > --- a/hw/misc/bcm2835_cprman.c
-> > +++ b/hw/misc/bcm2835_cprman.c
-> > @@ -229,19 +229,61 @@ static const TypeInfo cprman_pll_channel_info = {
-> >  };
-> >  
-> >  
-> >  /* clock mux */
-> >  
-> > +static bool clock_mux_is_enabled(CprmanClockMuxState *mux)
-> > +{
-> > +    return FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, ENABLE);
-> > +}
-> > +
-> >  static void clock_mux_update(CprmanClockMuxState *mux)
-> >  {
-> > -    clock_update(mux->out, 0);
-> > +    uint64_t freq;
-> > +    uint32_t div, src = FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, SRC);
-> > +    bool enabled = clock_mux_is_enabled(mux);
-> > +
-> > +    *mux->reg_cm = FIELD_DP32(*mux->reg_cm, CM_CLOCKx_CTL, BUSY, enabled);
-> > +
-> > +    if (!enabled) {
-> > +        clock_update(mux->out, 0);
-> > +        return;
-> > +    }
-> > +
-> > +    freq = clock_get_hz(mux->srcs[src]);
-> > +
-> > +    if (mux->int_bits == 0 && mux->frac_bits == 0) {
-> > +        clock_update_hz(mux->out, freq);
-> > +        return;
-> > +    }
-> > +
-> > +    /*
-> > +     * The divider has an integer and a fractional part. The size of each part
-> > +     * varies with the muxes (int_bits and frac_bits). Both parts are
-> > +     * concatenated, with the integer part always starting at bit 12.
-> > +     */
-> > +    div = mux->reg_cm[1] >> (R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits);
-> > +    div &= (1 << (mux->int_bits + mux->frac_bits)) - 1;
-> 
-> I understand the description as:
-> 
->                    0
->                   [     12-bit    ][     12-bit    ][   reserved...   ]
->  CM_CLOCKx_DIV    [      FRAC     ][      INT      ][                 ]
->                   [         <frac>][<int>          ][                 ]
->                             ^^^^^^^^^^^^^
-Yes, this is correct :)
+The CPRMAN (clock controller) was mapped at the watchdog/power manager
+address. It was also split into two unimplemented peripherals (CM and
+A2W) but this is really the same one, as shown by this extract of the
+Raspberry Pi 3 Linux device tree:
 
-> 
-> What about:
-> 
->        div = extract32(mux->reg_cm[1],
->                        R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits,
->                        mux->frac_bits, mux->int_bits);
-Yes good idea, with s/,/+/ here -------^
+    watchdog@7e100000 {
+            compatible = "brcm,bcm2835-pm\0brcm,bcm2835-pm-wdt";
+            [...]
+            reg = <0x7e100000 0x114 0x7e00a000 0x24>;
+            [...]
+    };
 
-> 
-> Also consider adding the register visual representation if it is
-> correct.
-Sure, I'll add a visual representation for more clarity.
+    [...]
+    cprman@7e101000 {
+            compatible = "brcm,bcm2835-cprman";
+            [...]
+            reg = <0x7e101000 0x2000>;
+            [...]
+    };
 
-Thanks!
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Signed-off-by: Luc Michel <luc@lmichel.fr>
+---
+ include/hw/arm/bcm2835_peripherals.h | 2 +-
+ include/hw/arm/raspi_platform.h      | 5 ++---
+ hw/arm/bcm2835_peripherals.c         | 4 ++--
+ 3 files changed, 5 insertions(+), 6 deletions(-)
 
+diff --git a/include/hw/arm/bcm2835_peripherals.h b/include/hw/arm/bcm2835_peripherals.h
+index c9ac941a82..6aa94184eb 100644
+--- a/include/hw/arm/bcm2835_peripherals.h
++++ b/include/hw/arm/bcm2835_peripherals.h
+@@ -45,12 +45,12 @@ struct BCM2835PeripheralState {
+ 
+     BCM2835SystemTimerState systmr;
+     BCM2835MphiState mphi;
+     UnimplementedDeviceState txp;
+     UnimplementedDeviceState armtmr;
++    UnimplementedDeviceState powermgt;
+     UnimplementedDeviceState cprman;
+-    UnimplementedDeviceState a2w;
+     PL011State uart0;
+     BCM2835AuxState aux;
+     BCM2835FBState fb;
+     BCM2835DMAState dma;
+     BCM2835ICState ic;
+diff --git a/include/hw/arm/raspi_platform.h b/include/hw/arm/raspi_platform.h
+index c7f50b260f..e0e6c8ce94 100644
+--- a/include/hw/arm/raspi_platform.h
++++ b/include/hw/arm/raspi_platform.h
+@@ -43,13 +43,12 @@
+ #define ARMCTRL_OFFSET          (ARM_OFFSET + 0x000)
+ #define ARMCTRL_IC_OFFSET       (ARM_OFFSET + 0x200) /* Interrupt controller */
+ #define ARMCTRL_TIMER0_1_OFFSET (ARM_OFFSET + 0x400) /* Timer 0 and 1 (SP804) */
+ #define ARMCTRL_0_SBM_OFFSET    (ARM_OFFSET + 0x800) /* User 0 (ARM) Semaphores
+                                                       * Doorbells & Mailboxes */
+-#define CPRMAN_OFFSET           0x100000 /* Power Management, Watchdog */
+-#define CM_OFFSET               0x101000 /* Clock Management */
+-#define A2W_OFFSET              0x102000 /* Reset controller */
++#define PM_OFFSET               0x100000 /* Power Management */
++#define CPRMAN_OFFSET           0x101000 /* Clock Management */
+ #define AVS_OFFSET              0x103000 /* Audio Video Standard */
+ #define RNG_OFFSET              0x104000
+ #define GPIO_OFFSET             0x200000
+ #define UART0_OFFSET            0x201000 /* PL011 */
+ #define MMCI0_OFFSET            0x202000 /* Legacy MMC */
+diff --git a/hw/arm/bcm2835_peripherals.c b/hw/arm/bcm2835_peripherals.c
+index 15c5c72e46..10e9f501d2 100644
+--- a/hw/arm/bcm2835_peripherals.c
++++ b/hw/arm/bcm2835_peripherals.c
+@@ -343,12 +343,12 @@ static void bcm2835_peripherals_realize(DeviceState *dev, Error **errp)
+         qdev_get_gpio_in_named(DEVICE(&s->ic), BCM2835_IC_GPU_IRQ,
+                                INTERRUPT_USB));
+ 
+     create_unimp(s, &s->txp, "bcm2835-txp", TXP_OFFSET, 0x1000);
+     create_unimp(s, &s->armtmr, "bcm2835-sp804", ARMCTRL_TIMER0_1_OFFSET, 0x40);
+-    create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x1000);
+-    create_unimp(s, &s->a2w, "bcm2835-a2w", A2W_OFFSET, 0x1000);
++    create_unimp(s, &s->powermgt, "bcm2835-powermgt", PM_OFFSET, 0x114);
++    create_unimp(s, &s->cprman, "bcm2835-cprman", CPRMAN_OFFSET, 0x2000);
+     create_unimp(s, &s->i2s, "bcm2835-i2s", I2S_OFFSET, 0x100);
+     create_unimp(s, &s->smi, "bcm2835-smi", SMI_OFFSET, 0x100);
+     create_unimp(s, &s->spi[0], "bcm2835-spi0", SPI0_OFFSET, 0x20);
+     create_unimp(s, &s->bscsl, "bcm2835-spis", BSC_SL_OFFSET, 0x100);
+     create_unimp(s, &s->i2c[0], "bcm2835-i2c0", BSC0_OFFSET, 0x20);
 -- 
-Luc
+2.28.0
 
-> 
-> > +
-> > +    if (!div) {
-> > +        clock_update(mux->out, 0);
-> > +    }
-> > +
-> > +    freq = muldiv64(freq, 1 << mux->frac_bits, div);
-> > +
-> > +    clock_update_hz(mux->out, freq);
-> >  }
-> >  
-> >  static void clock_mux_src_update(void *opaque)
-> >  {
-> >      CprmanClockMuxState **backref = opaque;
-> >      CprmanClockMuxState *s = *backref;
-> > +    CprmanClockMuxSource src = backref - s->backref;
-> > +
-> > +    if (FIELD_EX32(*s->reg_cm, CM_CLOCKx_CTL, SRC) != src) {
-> > +        return;
-> > +    }
-> >  
-> >      clock_mux_update(s);
-> >  }
-> >  
-> >  static void clock_mux_init(Object *obj)
-> > 
-
--- 

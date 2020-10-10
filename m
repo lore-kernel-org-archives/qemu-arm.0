@@ -1,88 +1,115 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3193392lfq;
-        Sat, 10 Oct 2020 07:07:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzcqKWglCOB1OkykWKBolqUOpizM/7YEgO8waBwB2lNpU4H3c0iGcyzCSB29F7O5AirNcXf
-X-Received: by 2002:a25:e688:: with SMTP id d130mr24740584ybh.177.1602338866864;
-        Sat, 10 Oct 2020 07:07:46 -0700 (PDT)
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3260626lfq;
+        Sat, 10 Oct 2020 08:53:20 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzVCyMEx8BAaAb7vVl6l998vuJH8OQ7uUU8PjOfSc1LQbEBiVf0uIkpluZ0FZ5PUTa3miBp
+X-Received: by 2002:a25:c42:: with SMTP id 63mr22291708ybm.1.1602345199864;
+        Sat, 10 Oct 2020 08:53:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602345199; cv=none;
+        d=google.com; s=arc-20160816;
+        b=0+x/akHWzyhWhCEb/Tfml7uC+04VZ2EKC0ZcbmYDgoIHSUYek2LC0+WcgCbbiuh3SG
+         D3npY7gwUAiDhctwXpTgaYO1ZD2MxWgBgawwwQPvQyc3H2FjfyQl+rwqqTQrkJzB3ULH
+         fxjfp6ctFJgTuAPyRRAzyAv8Cx4hQlRoq3VuOjqMHdlA8BmMU3YPNLnpYvPKGJy4zG5B
+         1yqi68A3xL8dr9QN3bW8iKhgR/oTkrM9roCd2t6SqvhrLz5JlE3zJ0jJW54atGiIZ0p+
+         Mzufw3hZ1RWaLKxM4HBhadermAIBMY2FwGqEQ1DhtXK/oSu9cnU7eVy6jIZQgl8oduVN
+         h2tw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=/QHDCV4CWgR0KOs1XcYCTat3K8XrMJmcbkD0TAxTnDY=;
+        b=hcTH+ThIiPzqURkEA/oneMx2KFLeE7OzR/BRgSJY4Jueepm0XiwTnqQmrhkCCPBdww
+         06NcST6nB15srkPdL9R6EFtZA2ph0iwtMZac6/LMknRJbUoEoggUf1ijf4nBjTt3s6NM
+         VV+rjRI/RLDiY46nwlJVHeIAyzw1e5Gdy5nl3ucUYPzD0Gk4Wk85CZijt1YwZ5sWlMiO
+         RadI4rNkzUXz5sZNmeaJUHd1J16zv77iAJtTrqgE4VauQguDudfj/IfuMDkIHvsYSfcu
+         9bG9F+bjdL3pEjgDoV7s4SdIHrq5Z4a7CdoNqHOET6HDajXJaLzNtxoBH+hK35vV4Xu/
+         DwTQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c1qLZlLx;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id d30si10418995yba.309.2020.10.10.07.07.46
+        by mx.google.com with ESMTPS id s126si738336ybc.95.2020.10.10.08.53.19
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Oct 2020 07:07:46 -0700 (PDT)
+        Sat, 10 Oct 2020 08:53:19 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b="SRa/8594";
-       arc=fail (signature failed);
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=c1qLZlLx;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:54986 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:34914 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRFXG-000832-75
-	for alex.bennee@linaro.org; Sat, 10 Oct 2020 10:07:46 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40774)
+	id 1kRHBP-0008CK-AZ
+	for alex.bennee@linaro.org; Sat, 10 Oct 2020 11:53:19 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39802)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kRFNO-0001zW-JH; Sat, 10 Oct 2020 09:57:34 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:43624)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kRFNL-0004KL-0d; Sat, 10 Oct 2020 09:57:34 -0400
-Received: from sekoia-pc.home.lmichel.fr (sekoia-pc.home.lmichel.fr
- [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPS id 00FDFC6041F;
- Sat, 10 Oct 2020 13:57:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1602338225;
- h=from:from:sender:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OIfAcjkUtNmViKh9QrQYDJov9LZXlGI0tmDZqkLw5dQ=;
- b=SRa/8594xRbRRw/5GougWN3IwcHCOuSQsNcNE+VGe0/xqYis2MQwjSkn62lNiFY/+xYFLg
- 8Gc5CFE4bKsNO/3WUGbrk9BQF9H7fYBu63C9gWF2bYMJmk0m0lMnVhVVKFH5rAOZWdgIRd
- 7WvSQxfUW78M0tciNdjznb9RId37WI01HIhd9QSGFe8KhEno58hB2tllB5Sj66X/eHr50p
- G+qMI11mVS5I741jiwUobMM+1DCkEfxRdEnvr3wyJaY4hS1lXHZIjXXY/x4A22SRo1gI5L
- 9kVaXUfwh4ekRNGwPIPeawKC/a8EkLEH6qVSpm+m+5VqtXOtJWRQG+ZMp3+8iw==
-From: Luc Michel <luc@lmichel.fr>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 13/15] hw/misc/bcm2835_cprman: add sane reset values to the
- registers
-Date: Sat, 10 Oct 2020 15:57:57 +0200
-Message-Id: <20201010135759.437903-14-luc@lmichel.fr>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201010135759.437903-1-luc@lmichel.fr>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRHBA-0008C1-2P; Sat, 10 Oct 2020 11:53:04 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:40177)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRHB5-0001rL-Kt; Sat, 10 Oct 2020 11:53:03 -0400
+Received: by mail-wr1-x441.google.com with SMTP id h5so3403318wrv.7;
+ Sat, 10 Oct 2020 08:52:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=/QHDCV4CWgR0KOs1XcYCTat3K8XrMJmcbkD0TAxTnDY=;
+ b=c1qLZlLxT9hjTX4mDSBonTbec1o+lAyJG0zd3pyrptnouLbMVXEgJyp/si14+tpQgU
+ 2zroSP7o64bV7n0VPqTf4qaIm8H7ImcGhFxbODpvD8rcsPk8EsgkI4I9eE1u2yAV2F/J
+ 6lQrMRNNe4q0DnJcBTwrutkiikN5q9AG3Lm84sRCv0fgcod/2Ot6wh9+iZWqF8ANymC5
+ W8wVAHKdGkOYYyv2AUMmx8IwhfbJ+uNz+TFLaZcMS4OcbkSy8XOZIH2tnbtTOSzse3Jf
+ /5j97zwVnM0zo4rPCaTtiOGk0wJoAoTdLTakT7z/JWx9fC0AG6gmCnmMsITb17ScDGvX
+ KWwQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=/QHDCV4CWgR0KOs1XcYCTat3K8XrMJmcbkD0TAxTnDY=;
+ b=N3X/1et9Q6IpAFpwci8EVBl30X0yVgITpGRMwlJ4icsOJC76t+x307moW0Il3WWlcm
+ WKv6wMzoCyL7Am8nZuT5fmM1DfCjdf4H4Ic8AKif5g4lFjs+PT5Z1B/Qx5AwAFNhtys4
+ ZmA/JM/2u6JMWbXSoHp8ejerrzLdTESS3t2JNj5+rZzLSlW3amZM4QBYuNxJqzq+rxgX
+ 6u3zPLUQGyno8kxoOTGmuZmdta+oEGa0+bYDmk8mUQQ28EgP9fd0ldcEeETrojxsS6iF
+ WEwo3t8R58BuqACgUpUxiehnIBiHPEjcg4vEha1aWqntrg+alBZsRYuzr/l6B3ORjOOg
+ YHIw==
+X-Gm-Message-State: AOAM530DsEJaqzovOFBJzP0Ml4ZufXMvz2Wx5OAtdSYGfNVPjIyV4w1P
+ /2v5PCzmkQVc51lrZl6RfwY=
+X-Received: by 2002:adf:e94b:: with SMTP id m11mr20026163wrn.35.1602345177946; 
+ Sat, 10 Oct 2020 08:52:57 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id c1sm17196460wru.49.2020.10.10.08.52.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 10 Oct 2020 08:52:57 -0700 (PDT)
+Subject: Re: [PATCH v3 11/15] hw/misc/bcm2835_cprman: implement clock mux
+ behaviour
+To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
 References: <20201010135759.437903-1-luc@lmichel.fr>
+ <20201010135759.437903-12-luc@lmichel.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <6982aced-ca14-73bf-48ff-7f739f2c389a@amsat.org>
+Date: Sat, 10 Oct 2020 17:52:56 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20201010135759.437903-12-luc@lmichel.fr>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1602338225;
- h=from:from:sender:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OIfAcjkUtNmViKh9QrQYDJov9LZXlGI0tmDZqkLw5dQ=;
- b=Qm+qQt9dv57VZHjz8IGQguDSUKeXieuRDt2SvSP+CjV0K7kOcezJbpztERfm3Mbc2GAvXb
- jUfZ6OmDlWmq6pAA83ICsf2+HyhX0sOxIPPkw+vTA2Pt/IoD5rY+TmU73RDGEcLhucURaa
- IL/pfiBTUqUNXDJWdbo1SSUzlsV/M6iDh5zR0xDHDg62lrtgA+z+QQWd9/7b1XL1zaMjkS
- 08WYi1YG4E/P/vr4/fI09KT3ZARHg9Aj6sq+skaK0h4wMMQhiTz8cCOcW1onNfXNbMZVhn
- Z8zbgC/UK7UWzNcT6E6pzYAFxIM3eEsMkFqkPP69zkOiADKif1ebxfjspbb9hA==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1602338225; a=rsa-sha256; cv=none;
- b=QEocohdhXl0KyejpfnIFXZhfQhfuQRVoGYBsnPAqck2NNGm5nRUo4/xU307uWB9I/KX9gaoeHjAVm5Kv+keNN1p/G99Dm9Wm4ByPnFjC9YaszNv++XTZ8w+XpU4dNRWa8/eOxhhfl/kyNQ1Ztu0qlYjsG6fKJ2P2uctH5zKB7U4FYxf/3ZPiLTii0Bg50+l44oIIQd0NhZXBwxLJKVp88opoBZ+JU9D0jWUoaKa9G5s8xQ8IvP9Ud1lMs4cYAALsf6w/GxnbwW+WGfqG8TLdxlFlDIb5xKCDRAOeMlcDUBw0zu3BDm0EeBQT9fnA+8dyuFJNY5BJZuidf8ecgsWpKg==
-ARC-Authentication-Results: i=1;
-	pharaoh.lmichel.fr
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/10 07:32:09
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249, NICE_REPLY_A=-0.207,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,422 +123,106 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
  Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Havard Skinnemoen <hskinnemoen@google.com>
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0N4DrMvuBTVh
+X-TUID: 6DR5QIirehPv
 
-Those reset values have been extracted from a Raspberry Pi 3 model B
-v1.2, using the 2020-08-20 version of raspios. The dump was done using
-the debugfs interface of the CPRMAN driver in Linux (under
-'/sys/kernel/debug/clk'). Each exposed clock tree stage (PLLs, channels
-and muxes) can be observed by reading the 'regdump' file (e.g.
-'plla/regdump').
+On 10/10/20 3:57 PM, Luc Michel wrote:
+> A clock mux can be configured to select one of its 10 sources through
+> the CM_CTL register. It also embeds yet another clock divider, composed
+> of an integer part and a fractional part. The number of bits of each
+> part is mux dependent.
+> 
+> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Luc Michel <luc@lmichel.fr>
+> ---
+>   hw/misc/bcm2835_cprman.c | 53 +++++++++++++++++++++++++++++++++++++++-
+>   1 file changed, 52 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+> index b22170f3bc..919a55aa23 100644
+> --- a/hw/misc/bcm2835_cprman.c
+> +++ b/hw/misc/bcm2835_cprman.c
+> @@ -229,19 +229,70 @@ static const TypeInfo cprman_pll_channel_info = {
+>   };
+>   
+>   
+>   /* clock mux */
+>   
+> +static bool clock_mux_is_enabled(CprmanClockMuxState *mux)
+> +{
+> +    return FIELD_EX32(*mux->reg_ctl, CM_CLOCKx_CTL, ENABLE);
+> +}
+> +
+>   static void clock_mux_update(CprmanClockMuxState *mux)
+>   {
+> -    clock_update(mux->out, 0);
+> +    uint64_t freq;
+> +    uint32_t div, src = FIELD_EX32(*mux->reg_ctl, CM_CLOCKx_CTL, SRC);
+> +    bool enabled = clock_mux_is_enabled(mux);
+> +
+> +    *mux->reg_ctl = FIELD_DP32(*mux->reg_ctl, CM_CLOCKx_CTL, BUSY, enabled);
+> +
+> +    if (!enabled) {
+> +        clock_update(mux->out, 0);
+> +        return;
+> +    }
+> +
+> +    freq = clock_get_hz(mux->srcs[src]);
+> +
+> +    if (mux->int_bits == 0 && mux->frac_bits == 0) {
+> +        clock_update_hz(mux->out, freq);
+> +        return;
+> +    }
+> +
+> +    /*
+> +     * The divider has an integer and a fractional part. The size of each part
+> +     * varies with the muxes (int_bits and frac_bits). Both parts are
+> +     * concatenated, with the integer part always starting at bit 12.
+> +     *
+> +     *         31          12 11          0
+> +     *        ------------------------------
+> +     * CM_DIV |      |  int  |  frac  |    |
+> +     *        ------------------------------
+> +     *                <-----> <------>
+> +     *                int_bits frac_bits
+> +     */
+> +    div = extract32(*mux->reg_div,
+> +                    R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits,
+> +                    mux->int_bits + mux->frac_bits);
+> +
+> +    if (!div) {
+> +        clock_update(mux->out, 0);
+> +        return;
+> +    }
+> +
+> +    freq = muldiv64(freq, 1 << mux->frac_bits, div);
+> +
+> +    clock_update_hz(mux->out, freq);
+>   }
 
-Those values are set by the Raspberry Pi firmware at boot time (Linux
-expects them to be set when it boots up).
+Much nicer now, thanks :)
 
-Some stages are not exposed by the Linux driver (e.g. the PLL B). For
-those, the reset values are unknown and left to 0 which implies a
-disabled output.
+Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Once booted in QEMU, the final clock tree is very similar to the one
-visible on real hardware. The differences come from some unimplemented
-devices for which the driver simply disable the corresponding clock.
-
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Luc Michel <luc@lmichel.fr>
----
- include/hw/misc/bcm2835_cprman_internals.h | 269 +++++++++++++++++++++
- hw/misc/bcm2835_cprman.c                   |  31 +++
- 2 files changed, 300 insertions(+)
-
-diff --git a/include/hw/misc/bcm2835_cprman_internals.h b/include/hw/misc/bcm2835_cprman_internals.h
-index a6e799075f..339759b307 100644
---- a/include/hw/misc/bcm2835_cprman_internals.h
-+++ b/include/hw/misc/bcm2835_cprman_internals.h
-@@ -745,6 +745,275 @@ static inline void set_clock_mux_init_info(BCM2835CprmanState *s,
-     mux->reg_div = &s->regs[CLOCK_MUX_INIT_INFO[id].cm_offset + 1];
-     mux->int_bits = CLOCK_MUX_INIT_INFO[id].int_bits;
-     mux->frac_bits = CLOCK_MUX_INIT_INFO[id].frac_bits;
- }
- 
-+
-+/*
-+ * Object reset info
-+ * Those values have been dumped from a Raspberry Pi 3 Model B v1.2 using the
-+ * clk debugfs interface in Linux.
-+ */
-+typedef struct PLLResetInfo {
-+    uint32_t cm;
-+    uint32_t a2w_ctrl;
-+    uint32_t a2w_ana[4];
-+    uint32_t a2w_frac;
-+} PLLResetInfo;
-+
-+static const PLLResetInfo PLL_RESET_INFO[] = {
-+    [CPRMAN_PLLA] = {
-+        .cm = 0x0000008a,
-+        .a2w_ctrl = 0x0002103a,
-+        .a2w_frac = 0x00098000,
-+        .a2w_ana = { 0x00000000, 0x00144000, 0x00000000, 0x00000100 }
-+    },
-+
-+    [CPRMAN_PLLC] = {
-+        .cm = 0x00000228,
-+        .a2w_ctrl = 0x0002103e,
-+        .a2w_frac = 0x00080000,
-+        .a2w_ana = { 0x00000000, 0x00144000, 0x00000000, 0x00000100 }
-+    },
-+
-+    [CPRMAN_PLLD] = {
-+        .cm = 0x0000020a,
-+        .a2w_ctrl = 0x00021034,
-+        .a2w_frac = 0x00015556,
-+        .a2w_ana = { 0x00000000, 0x00144000, 0x00000000, 0x00000100 }
-+    },
-+
-+    [CPRMAN_PLLH] = {
-+        .cm = 0x00000000,
-+        .a2w_ctrl = 0x0002102d,
-+        .a2w_frac = 0x00000000,
-+        .a2w_ana = { 0x00900000, 0x0000000c, 0x00000000, 0x00000000 }
-+    },
-+
-+    [CPRMAN_PLLB] = {
-+        /* unknown */
-+        .cm = 0x00000000,
-+        .a2w_ctrl = 0x00000000,
-+        .a2w_frac = 0x00000000,
-+        .a2w_ana = { 0x00000000, 0x00000000, 0x00000000, 0x00000000 }
-+    }
-+};
-+
-+typedef struct PLLChannelResetInfo {
-+    /*
-+     * Even though a PLL channel has a CM register, it shares it with its
-+     * parent PLL. The parent already takes care of the reset value.
-+     */
-+    uint32_t a2w_ctrl;
-+} PLLChannelResetInfo;
-+
-+static const PLLChannelResetInfo PLL_CHANNEL_RESET_INFO[] = {
-+    [CPRMAN_PLLA_CHANNEL_DSI0] = { .a2w_ctrl = 0x00000100 },
-+    [CPRMAN_PLLA_CHANNEL_CORE] = { .a2w_ctrl = 0x00000003 },
-+    [CPRMAN_PLLA_CHANNEL_PER] = { .a2w_ctrl = 0x00000000 }, /* unknown */
-+    [CPRMAN_PLLA_CHANNEL_CCP2] = { .a2w_ctrl = 0x00000100 },
-+
-+    [CPRMAN_PLLC_CHANNEL_CORE2] = { .a2w_ctrl = 0x00000100 },
-+    [CPRMAN_PLLC_CHANNEL_CORE1] = { .a2w_ctrl = 0x00000100 },
-+    [CPRMAN_PLLC_CHANNEL_PER] = { .a2w_ctrl = 0x00000002 },
-+    [CPRMAN_PLLC_CHANNEL_CORE0] = { .a2w_ctrl = 0x00000002 },
-+
-+    [CPRMAN_PLLD_CHANNEL_DSI0] = { .a2w_ctrl = 0x00000100 },
-+    [CPRMAN_PLLD_CHANNEL_CORE] = { .a2w_ctrl = 0x00000004 },
-+    [CPRMAN_PLLD_CHANNEL_PER] = { .a2w_ctrl = 0x00000004 },
-+    [CPRMAN_PLLD_CHANNEL_DSI1] = { .a2w_ctrl = 0x00000100 },
-+
-+    [CPRMAN_PLLH_CHANNEL_AUX] = { .a2w_ctrl = 0x00000004 },
-+    [CPRMAN_PLLH_CHANNEL_RCAL] = { .a2w_ctrl = 0x00000000 },
-+    [CPRMAN_PLLH_CHANNEL_PIX] = { .a2w_ctrl = 0x00000000 },
-+
-+    [CPRMAN_PLLB_CHANNEL_ARM] = { .a2w_ctrl = 0x00000000 }, /* unknown */
-+};
-+
-+typedef struct ClockMuxResetInfo {
-+    uint32_t cm_ctl;
-+    uint32_t cm_div;
-+} ClockMuxResetInfo;
-+
-+static const ClockMuxResetInfo CLOCK_MUX_RESET_INFO[] = {
-+    [CPRMAN_CLOCK_GNRIC] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_VPU] = {
-+        .cm_ctl = 0x00000245,
-+        .cm_div = 0x00003000,
-+    },
-+
-+    [CPRMAN_CLOCK_SYS] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_PERIA] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_PERII] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_H264] = {
-+        .cm_ctl = 0x00000244,
-+        .cm_div = 0x00003000,
-+    },
-+
-+    [CPRMAN_CLOCK_ISP] = {
-+        .cm_ctl = 0x00000244,
-+        .cm_div = 0x00003000,
-+    },
-+
-+    [CPRMAN_CLOCK_V3D] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_CAM0] = {
-+        .cm_ctl = 0x00000000,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_CAM1] = {
-+        .cm_ctl = 0x00000000,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_CCP2] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_DSI0E] = {
-+        .cm_ctl = 0x00000000,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_DSI0P] = {
-+        .cm_ctl = 0x00000000,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_DPI] = {
-+        .cm_ctl = 0x00000000,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_GP0] = {
-+        .cm_ctl = 0x00000200,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_GP1] = {
-+        .cm_ctl = 0x00000096,
-+        .cm_div = 0x00014000,
-+    },
-+
-+    [CPRMAN_CLOCK_GP2] = {
-+        .cm_ctl = 0x00000291,
-+        .cm_div = 0x00249f00,
-+    },
-+
-+    [CPRMAN_CLOCK_HSM] = {
-+        .cm_ctl = 0x00000000,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_OTP] = {
-+        .cm_ctl = 0x00000091,
-+        .cm_div = 0x00004000,
-+    },
-+
-+    [CPRMAN_CLOCK_PCM] = {
-+        .cm_ctl = 0x00000200,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_PWM] = {
-+        .cm_ctl = 0x00000200,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_SLIM] = {
-+        .cm_ctl = 0x00000200,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_SMI] = {
-+        .cm_ctl = 0x00000000,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_TEC] = {
-+        .cm_ctl = 0x00000000,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_TD0] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_TD1] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_TSENS] = {
-+        .cm_ctl = 0x00000091,
-+        .cm_div = 0x0000a000,
-+    },
-+
-+    [CPRMAN_CLOCK_TIMER] = {
-+        .cm_ctl = 0x00000291,
-+        .cm_div = 0x00013333,
-+    },
-+
-+    [CPRMAN_CLOCK_UART] = {
-+        .cm_ctl = 0x00000296,
-+        .cm_div = 0x0000a6ab,
-+    },
-+
-+    [CPRMAN_CLOCK_VEC] = {
-+        .cm_ctl = 0x00000097,
-+        .cm_div = 0x00002000,
-+    },
-+
-+    [CPRMAN_CLOCK_PULSE] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_SDC] = {
-+        .cm_ctl = 0x00004006,
-+        .cm_div = 0x00003000,
-+    },
-+
-+    [CPRMAN_CLOCK_ARM] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+
-+    [CPRMAN_CLOCK_AVEO] = {
-+        .cm_ctl = 0x00000000,
-+        .cm_div = 0x00000000,
-+    },
-+
-+    [CPRMAN_CLOCK_EMMC] = {
-+        .cm_ctl = 0x00000295,
-+        .cm_div = 0x00006000,
-+    },
-+
-+    [CPRMAN_CLOCK_EMMC2] = {
-+        .cm_ctl = 0, /* unknown */
-+        .cm_div = 0
-+    },
-+};
-+
- #endif
-diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-index 7a7401963d..7e415a017c 100644
---- a/hw/misc/bcm2835_cprman.c
-+++ b/hw/misc/bcm2835_cprman.c
-@@ -51,10 +51,21 @@
- #include "hw/misc/bcm2835_cprman_internals.h"
- #include "trace.h"
- 
- /* PLL */
- 
-+static void pll_reset(DeviceState *dev)
-+{
-+    CprmanPllState *s = CPRMAN_PLL(dev);
-+    const PLLResetInfo *info = &PLL_RESET_INFO[s->id];
-+
-+    *s->reg_cm = info->cm;
-+    *s->reg_a2w_ctrl = info->a2w_ctrl;
-+    memcpy(s->reg_a2w_ana, info->a2w_ana, sizeof(info->a2w_ana));
-+    *s->reg_a2w_frac = info->a2w_frac;
-+}
-+
- static bool pll_is_locked(const CprmanPllState *pll)
- {
-     return !FIELD_EX32(*pll->reg_a2w_ctrl, A2W_PLLx_CTRL, PWRDN)
-         && !FIELD_EX32(*pll->reg_cm, CM_PLLx, ANARST);
- }
-@@ -121,10 +132,11 @@ static const VMStateDescription pll_vmstate = {
- 
- static void pll_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-+    dc->reset = pll_reset;
-     dc->vmsd = &pll_vmstate;
- }
- 
- static const TypeInfo cprman_pll_info = {
-     .name = TYPE_CPRMAN_PLL,
-@@ -135,10 +147,18 @@ static const TypeInfo cprman_pll_info = {
- };
- 
- 
- /* PLL channel */
- 
-+static void pll_channel_reset(DeviceState *dev)
-+{
-+    CprmanPllChannelState *s = CPRMAN_PLL_CHANNEL(dev);
-+    const PLLChannelResetInfo *info = &PLL_CHANNEL_RESET_INFO[s->id];
-+
-+    *s->reg_a2w_ctrl = info->a2w_ctrl;
-+}
-+
- static bool pll_channel_is_enabled(CprmanPllChannelState *channel)
- {
-     /*
-      * XXX I'm not sure of the purpose of the LOAD field. The Linux driver does
-      * not set it when enabling the channel, but does clear it when disabling
-@@ -215,10 +235,11 @@ static const VMStateDescription pll_channel_vmstate = {
- 
- static void pll_channel_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-+    dc->reset = pll_channel_reset;
-     dc->vmsd = &pll_channel_vmstate;
- }
- 
- static const TypeInfo cprman_pll_channel_info = {
-     .name = TYPE_CPRMAN_PLL_CHANNEL,
-@@ -293,10 +314,19 @@ static void clock_mux_src_update(void *opaque)
-     }
- 
-     clock_mux_update(s);
- }
- 
-+static void clock_mux_reset(DeviceState *dev)
-+{
-+    CprmanClockMuxState *clock = CPRMAN_CLOCK_MUX(dev);
-+    const ClockMuxResetInfo *info = &CLOCK_MUX_RESET_INFO[clock->id];
-+
-+    *clock->reg_ctl = info->cm_ctl;
-+    *clock->reg_div = info->cm_div;
-+}
-+
- static void clock_mux_init(Object *obj)
- {
-     CprmanClockMuxState *s = CPRMAN_CLOCK_MUX(obj);
-     size_t i;
- 
-@@ -325,10 +355,11 @@ static const VMStateDescription clock_mux_vmstate = {
- 
- static void clock_mux_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-+    dc->reset = clock_mux_reset;
-     dc->vmsd = &clock_mux_vmstate;
- }
- 
- static const TypeInfo cprman_clock_mux_info = {
-     .name = TYPE_CPRMAN_CLOCK_MUX,
--- 
-2.28.0
-
+>   
+>   static void clock_mux_src_update(void *opaque)
+>   {
+>       CprmanClockMuxState **backref = opaque;
+>       CprmanClockMuxState *s = *backref;
+> +    CprmanClockMuxSource src = backref - s->backref;
+> +
+> +    if (FIELD_EX32(*s->reg_ctl, CM_CLOCKx_CTL, SRC) != src) {
+> +        return;
+> +    }
+>   
+>       clock_mux_update(s);
+>   }
+>   
+>   static void clock_mux_init(Object *obj)
+> 

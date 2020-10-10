@@ -1,105 +1,89 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3140782lfq;
-        Sat, 10 Oct 2020 05:49:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKRD28STUKc4o0JnadvlctcsfZKSvYZOGWn9i6MDw6dMTT6tBYbzd+fot4YauhQh0CMRcC
-X-Received: by 2002:a25:2d50:: with SMTP id s16mr22130695ybe.85.1602334148124;
-        Sat, 10 Oct 2020 05:49:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602334148; cv=none;
-        d=google.com; s=arc-20160816;
-        b=P5oi2exCvd5m5W4cFGENO6Pw9mGVUjBpTgKCu/H2Iin/n+PN/7NLks7lHmKRqs5J0m
-         HsxGfH5bnnGcuS7YTniiKMDw1h3WiawrM8YgFhuPIoe5dJcM/owj/sEPui6NzmeNUywn
-         JA3RBGBT6fTVL6/G4MsKvHdkOQ0LT5JQoTbpiVNgQlw/S8+WCYn3ndqaiMjYcRFyl0ir
-         nYOIwb2p0nuMlHxauay81h7kJTruBASP5pWnvzzGNiBngKf8gqotbkV11sY5mAZ2nccW
-         d4NYCAZHXcqk048Tjh+dAMzhf53M+FL6tExeYtzcrD+vhLj939WwGNsCeQHmrMGhKfza
-         y+Yw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=B76CCZyfub1/rzmJ2i5V3y2lVks3/V4PSnEy43xna2s=;
-        b=JxYHcac8zPsS3sT2QDpBVQXaH04FUJ60YTENBToAZe1yGBowMZWWxNKxf3wPHVviDg
-         4Wa76YhtXIvjgH6PkXskJsk75T7r7sZHxcYUISuvtWVHa62GKYbd/brM5q92vgjXd1dk
-         ZqHsnpFwjWp0Be3MgfESIUv4K477ekaK8GcbJpf+roQ7W6Smiw4KynnrFED3Jky25jii
-         6FcdPIiNIjDPp1cCynkdyb9SPN1DAo6Huf3qYezav30didV87bzcR2TvfjXhqLscgeKz
-         A9UPEK6W0HAS28aiIdTM42GLcs/p6zX+EZXQdglppvnH6mhElPClyj3GStTeytkE7vYE
-         MpQw==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Zn9Tn0r7;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3154148lfq;
+        Sat, 10 Oct 2020 06:09:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxaWIY+zvdwQT0mKDRP0diTvUB7NW77kYZ02CCjqz9SPER4gqxBmd+rBObgNTi+6Ul8Quez
+X-Received: by 2002:a25:dc8f:: with SMTP id y137mr23084951ybe.186.1602335340822;
+        Sat, 10 Oct 2020 06:09:00 -0700 (PDT)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x131si10722876ybg.9.2020.10.10.05.49.07
+        by mx.google.com with ESMTPS id h125si10656743yba.334.2020.10.10.06.09.00
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Oct 2020 05:49:08 -0700 (PDT)
+        Sat, 10 Oct 2020 06:09:00 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Zn9Tn0r7;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=JauB8c5e;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60594 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:47090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kREJ9-0004UN-Ib
-	for alex.bennee@linaro.org; Sat, 10 Oct 2020 08:49:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57820)
+	id 1kREcO-00037p-78
+	for alex.bennee@linaro.org; Sat, 10 Oct 2020 09:09:00 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60878)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kREIy-0004TF-MQ
- for qemu-arm@nongnu.org; Sat, 10 Oct 2020 08:48:56 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:36108)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kREIx-00058Q-5D
- for qemu-arm@nongnu.org; Sat, 10 Oct 2020 08:48:56 -0400
-Received: by mail-ed1-x542.google.com with SMTP id l16so12218162eds.3
- for <qemu-arm@nongnu.org>; Sat, 10 Oct 2020 05:48:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=B76CCZyfub1/rzmJ2i5V3y2lVks3/V4PSnEy43xna2s=;
- b=Zn9Tn0r7mrdW+aSa28GAI30iuGnbNVLsmi1jl8ujHexEcv18WT0xlzzOMyPdB9Nzly
- jA/CqFTRQqYFehd7xv7w2BRJVQFInKY7oaqTHTL2O/2X9XlxUNV9hgaLgrhy7J3i5gh+
- t0l6KJqBCAyo3cHZja0T7+IEfia5pnuRC1JvdF1TA5mXM+PREBoDpDKMXZW0I7R4h2bF
- LbMScc/Bb5NdV/OTHFAwspJd4JPms23brCMsFp4doxKkRxWR49/tMmDD9O5JyxMP6NtK
- y82Fd8MxXWx1fAr9aeMLA5HiEIOQmBikbpZhqBp2BSlmJbi0gopDdLz+MjDx+T0hRUkm
- pwdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=B76CCZyfub1/rzmJ2i5V3y2lVks3/V4PSnEy43xna2s=;
- b=kpN5q1+ZQIrnAZkDgKDB95yzawI84WvKmmwtEjYhbrSwEHP7wxlseHYepxQHnoYUMB
- Bd4U2bdoyIKeiLZbeOMokFPOIUh8nJXyKhY/tpE8jU4MsR/RHSHAhyyEtno8bNX2Bxah
- zd3Mnhm7FU0ECx6LqQhN6sfGcjEVASvmQZRbtULPYv2BtB7yPA0E1I0uumsg79rh479u
- PMv1ybC2Se3liCDQOJFQlozRH6wTl6Ng/ZBx5BBnfnKL0IaOVvbIa4FOfRwGp3kdyXH1
- lV3uvTDKUZLp9v1disZP/BP3iA+e5r/G14KCmJMKUOquu5pBOWAhBozGlG2CaDm8PDAs
- M8FQ==
-X-Gm-Message-State: AOAM532/8AEIC9KHBiwe6Lj7AvJfOpJxGClVXG5g8zOMh1MVgmVQ9RCz
- gRXcnHn1DRTJyCpT03XXNboXyKBEcmZD0gubipPr4g==
-X-Received: by 2002:a05:6402:3133:: with SMTP id
- dd19mr1985123edb.100.1602334132917; 
- Sat, 10 Oct 2020 05:48:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kREcE-00036R-US; Sat, 10 Oct 2020 09:08:50 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:41904)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kREcA-00079i-5n; Sat, 10 Oct 2020 09:08:50 -0400
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id D8CC2C6011D;
+ Sat, 10 Oct 2020 13:08:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1602335322;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Jazt9/639w3DEeOI8gAmyV0yKv6DDoDESl64N57weGY=;
+ b=JauB8c5eTJDOq8YSd7YrWYVpQIKIDGOzqiKjoREQ1s2NReMjfSCU69rmEolYMluJBIRHPN
+ NTkCzJKwN29LGyJC/V2OVSnT98zvMswSa1F9ORY4C0K0Ci0BuT0iaKqbTz/zckouPhewsF
+ 4NHsDzBRE0FmWRb5DxWBdw7LgNoY9AhM31H3/ICoK5iSLkxTuoJGRb2eswjytk2twNDQiJ
+ gJ6o18gzBjjdj3h0K0tifIGa10g1DOzat/EF3WOyhOMFu78fhduR5P6gc/IctL1IAPIB9Y
+ 9gKHQHxCRi7u5OzWgeTpoyh+UpCjL8i5RYL3cACw4W7BfPM7MCf/7T/UHh1P2w==
+Date: Sat, 10 Oct 2020 15:09:43 +0200
+From: Luc Michel <luc@lmichel.fr>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: Re: [PATCH v2 11/15] hw/misc/bcm2835_cprman: implement clock mux
+ behaviour
+Message-ID: <20201010130943.6qkmhkb2gwbr6ajx@sekoia-pc.home.lmichel.fr>
+References: <20201005195612.1999165-1-luc@lmichel.fr>
+ <20201005195612.1999165-12-luc@lmichel.fr>
+ <d304e1f9-a1ea-17a1-e830-8be1f7671a53@amsat.org>
 MIME-Version: 1.0
-References: <20201009144712.11187-1-peter.maydell@linaro.org>
- <CAFEAcA8BiQcJJr3hkzTqnFLpYtXf1xbDf+GpgvYnPjJr_FAEUA@mail.gmail.com>
- <21d142c5-d651-269a-8fbb-d35a743f1945@linaro.org>
-In-Reply-To: <21d142c5-d651-269a-8fbb-d35a743f1945@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 10 Oct 2020 13:48:41 +0100
-Message-ID: <CAFEAcA-+9UQ4RNU+rjmc=Mx4MecTVJd_FniS4Mr0Q_QL57e7hw@mail.gmail.com>
-Subject: Re: [PATCH] target/arm: Fix SMLAD incorrect setting of Q bit
-To: Richard Henderson <richard.henderson@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x542.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <d304e1f9-a1ea-17a1-e830-8be1f7671a53@amsat.org>
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
+ s=pharaoh; t=1602335323;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Jazt9/639w3DEeOI8gAmyV0yKv6DDoDESl64N57weGY=;
+ b=ja8RhR5gUyebZ6nn80phQXiO+i8xpUxjyT44k1qcJKYuGQnDY65CjofUuc32ONJW5GJay6
+ gGMu2UX0nM0MsscxD4CRPFIsVgNU/NHT0K0zpYmVS+3mM3Vu7h5tCpDak/puXhVjU833sq
+ uJ8m+hyAPXCi7uJ4+uuJOcCp0j/8HWW1WtOqPYBB71MRwWsIEKc1OI5phjxZhV7z63thxO
+ pJaSTPIb0kvf92i/LsvkjID9lDTE/P+5ZnFglunpcGvH0iG6s9dwyKfrmjNFYJcEkMU9jw
+ CME+lOKY1aIM64j9BrNyny7dJtqRa5xDJSw3fnp5AB9KUaD71jnSDc8ZOizcVw==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1602335323; a=rsa-sha256; cv=none;
+ b=dFA/zmfwxSgJOtIFNoRHsQ4wOaQBNCPoVozxcWCLcjbj5rlA1keO5Xo1O4zY0vwho0X0101CQh5v9kjcxUtYneuh36irJ8mnHr4dTrlTUTGagjqhwBBHhX1NFVd1vqHGU3irAzPsS6S+IVp5/FPn25hXy//Q9TAQ8f9TkOj5uDR2rNzoVRGjOGifVKwZv9/bjN9AgeJheZrT98YI4OWvAH5TDlorqXc/RQ416Ji8zscnO8rO8sxRWe82t9U+DL7flQLoTEe2IWY4UtAJzCKOp29z+8NXqbhq8EtKOrX66+xNIFwmRlmt+LeKJppUBxBpDKkUMo4Yq+gH8U1jJcQCbg==
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=sekoia smtp.mailfrom=luc@lmichel.fr
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/10 07:32:09
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -113,30 +97,124 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Paul Zimmerman <pauldzim@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Havard Skinnemoen <hskinnemoen@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: IVBWDzT2wH+B
+X-TUID: cXqpjdHTj/UI
 
-On Fri, 9 Oct 2020 at 23:36, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 10/9/20 1:48 PM, Peter Maydell wrote:
-> > On Fri, 9 Oct 2020 at 15:47, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >> +        tcg_gen_extr_i64_i32(t1, t2, p64);
-> >
-> > Oh, I forgot to mention, but it looks like extr_i64_i32
-> > isn't documented in tcg/README. Is that because it isn't
-> > really a TCG IR op, or just an omission?
->
-> Because it's not an IR op.  It's the combo of extrl and extrh.
+On 11:04 Tue 06 Oct     , Philippe Mathieu-Daudé wrote:
+> On 10/5/20 9:56 PM, Luc Michel wrote:
+> > A clock mux can be configured to select one of its 10 sources through
+> > the CM_CTL register. It also embeds yet another clock divider, composed
+> > of an integer part and a fractional part. The number of bits of each
+> > part is mux dependent.
+> > 
+> > Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> > Signed-off-by: Luc Michel <luc@lmichel.fr>
+> > ---
+> >  hw/misc/bcm2835_cprman.c | 44 +++++++++++++++++++++++++++++++++++++++-
+> >  1 file changed, 43 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+> > index a470ce2026..7d59423367 100644
+> > --- a/hw/misc/bcm2835_cprman.c
+> > +++ b/hw/misc/bcm2835_cprman.c
+> > @@ -229,19 +229,61 @@ static const TypeInfo cprman_pll_channel_info = {
+> >  };
+> >  
+> >  
+> >  /* clock mux */
+> >  
+> > +static bool clock_mux_is_enabled(CprmanClockMuxState *mux)
+> > +{
+> > +    return FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, ENABLE);
+> > +}
+> > +
+> >  static void clock_mux_update(CprmanClockMuxState *mux)
+> >  {
+> > -    clock_update(mux->out, 0);
+> > +    uint64_t freq;
+> > +    uint32_t div, src = FIELD_EX32(*mux->reg_cm, CM_CLOCKx_CTL, SRC);
+> > +    bool enabled = clock_mux_is_enabled(mux);
+> > +
+> > +    *mux->reg_cm = FIELD_DP32(*mux->reg_cm, CM_CLOCKx_CTL, BUSY, enabled);
+> > +
+> > +    if (!enabled) {
+> > +        clock_update(mux->out, 0);
+> > +        return;
+> > +    }
+> > +
+> > +    freq = clock_get_hz(mux->srcs[src]);
+> > +
+> > +    if (mux->int_bits == 0 && mux->frac_bits == 0) {
+> > +        clock_update_hz(mux->out, freq);
+> > +        return;
+> > +    }
+> > +
+> > +    /*
+> > +     * The divider has an integer and a fractional part. The size of each part
+> > +     * varies with the muxes (int_bits and frac_bits). Both parts are
+> > +     * concatenated, with the integer part always starting at bit 12.
+> > +     */
+> > +    div = mux->reg_cm[1] >> (R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits);
+> > +    div &= (1 << (mux->int_bits + mux->frac_bits)) - 1;
+> 
+> I understand the description as:
+> 
+>                    0
+>                   [     12-bit    ][     12-bit    ][   reserved...   ]
+>  CM_CLOCKx_DIV    [      FRAC     ][      INT      ][                 ]
+>                   [         <frac>][<int>          ][                 ]
+>                             ^^^^^^^^^^^^^
+Yes, this is correct :)
 
-We really should figure out somewhere to document the
-interface and operations that frontends can use. (Among
-other important things, extr_i64_i32 is usable generically,
-but extrl/extrh are 64-bit hosts only according to tcg/README,
-so if you trusted the README docs then you'd end up
-trying to synthesize this out of shifts and trunc.)
+> 
+> What about:
+> 
+>        div = extract32(mux->reg_cm[1],
+>                        R_CM_CLOCKx_DIV_FRAC_LENGTH - mux->frac_bits,
+>                        mux->frac_bits, mux->int_bits);
+Yes good idea, with s/,/+/ here -------^
 
-thanks
--- PMM
+> 
+> Also consider adding the register visual representation if it is
+> correct.
+Sure, I'll add a visual representation for more clarity.
+
+Thanks!
+
+-- 
+Luc
+
+> 
+> > +
+> > +    if (!div) {
+> > +        clock_update(mux->out, 0);
+> > +    }
+> > +
+> > +    freq = muldiv64(freq, 1 << mux->frac_bits, div);
+> > +
+> > +    clock_update_hz(mux->out, freq);
+> >  }
+> >  
+> >  static void clock_mux_src_update(void *opaque)
+> >  {
+> >      CprmanClockMuxState **backref = opaque;
+> >      CprmanClockMuxState *s = *backref;
+> > +    CprmanClockMuxSource src = backref - s->backref;
+> > +
+> > +    if (FIELD_EX32(*s->reg_cm, CM_CLOCKx_CTL, SRC) != src) {
+> > +        return;
+> > +    }
+> >  
+> >      clock_mux_update(s);
+> >  }
+> >  
+> >  static void clock_mux_init(Object *obj)
+> > 
+
+-- 

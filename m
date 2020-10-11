@@ -1,97 +1,102 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp506217lfa;
-        Sun, 11 Oct 2020 14:06:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyi5SyYgsMNnocdRIHn0lLuqGbfuETKqqbIu0XydCNU8/2EzwDvalpmGmV6U1HOgZ9lOkAm
-X-Received: by 2002:a25:c790:: with SMTP id w138mr28430013ybe.409.1602450401366;
-        Sun, 11 Oct 2020 14:06:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602450401; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp474725lfa;
+        Sun, 11 Oct 2020 12:52:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyemydlz+T3QyUVwDOyXgxx/zwhat79/aEMWh5w1OXZhEw/2GS5+l/R45ROjtuZPy/x9B9Y
+X-Received: by 2002:a25:42c7:: with SMTP id p190mr27697193yba.99.1602445950332;
+        Sun, 11 Oct 2020 12:52:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602445950; cv=none;
         d=google.com; s=arc-20160816;
-        b=H13O4NLVWdU46xqFCyWHhJdgWQ83fwo1xCzy9L779wFQjMoxHXiPcxsUoE93L+yCeJ
-         hemb7XYmsGqGvZ0Dbu2KSiL5EAcMpttm2RnxJQqk0SPy9K8fsrYxO1QlpOE7h/7sD/+3
-         cq0h+MZGeFA8/x/v61ve24UqrtlXf4xk4DvFivzOu2Xv9vBKrph4xBO9p5mVsrkHzlwj
-         QsYK48ZNF9EA7jMiJg73UK2ltZQuh/nhYXZttxagR+AZnXDcw9922euxLMEX0h0WmsuZ
-         mjNGO0wxUJfDN8pNCJeyCU9odEjCZV4hkUU3TIPZWaZiaz1zcou+u9xg9URuJLQrWWHA
-         fCtg==
+        b=j2UmKyVTmufV7F4IZue+NwIT8KYtsZpP5EqgRBBLKxINm4kjyNOuk9HeR/Z3+rUZdp
+         h9Nbwwii31+vnOnnSPNI9bSfxLXgugFBc/6XfuleYJnZGG6g5dk32EmjqFLTgjqR8NSh
+         KKaJ7WR+v4y6ToWGAWGFvUp1Hh0gqF5H3g3l6S8XxT6YvG7dRG6mWZgqaezBUeumeh50
+         SBbQQlPlIjWb7plZxtaJRcSPBYgNY/pon+8dhCbtQRGdQmp9T/cvy6jh74HaFEZtfW73
+         cPSSFUWDQgPYeawtfsn6T4rvB9ERELRL83MYDTFuATTd7jKWLOGNN7KU/Z6jvKdd+jRO
+         5mrA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=RVEzdFzHG52dMol05fP/JH3htxgV/2K75VVlQolC92Q=;
-        b=CxeWQgNkvDcQ8lXygC0L1IVIr1UX8kHqEQXhDiEDdrfK0EOviGU3wWC8wcv4MSkU1E
-         brqQHqWCBcohlXdh6KuFf4l8uWnnFfDrzsbn3hO39iAH1jUV9oQYYVtHTJECLLRlTQI1
-         UuS6kTbxCtguPlcSE90ajbasdkn7Cgh/H18dsoCbsPcO8f/sXsDu/YtlLHbZYGmznY13
-         IOfO9v1kECDnyAvuEpYlRQSm5kAFj8x4xHw/4n/1bWCR2fd7gqq+dnLLgn6E2DdWDK0I
-         khHXJVdbI+Z4O1ueRGJgqyfcGOL1yS0eIifYAGHUYuujecng0Bdg5/xKoXdyN9todPmq
-         OLvA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=SDIyb5n7P2r5vl2AEidPZJyv8Pk8oGY5haZC+t+fmMk=;
+        b=eJxW/CFBkxdcC/vroj2o1psjInTKaKq1mI7tucpd0/R07CWrN/qbO9CuaS4tJEL3p4
+         pnAN/eDyp4ptgrDYpxyK6uMNW1hJ+NorKTJuiWgviPzPOw3kmwUKg7pTA0raqAntet2a
+         VPOJuhLlOOtpwbsJip/swoj4haerFtZ6N43QhmtGPOw08t2hk1TX6/7WkanZsET5GygI
+         syPZqHPqXZ8iG+61BuMRQ0ibj2n2srtF8wHqI9sGHf3mPNq24B4XMq72TW17PpTzPxbN
+         LwfzvxY5d/7QJBB3aHbdyYhFMJwFzAuge/F89bUnjDFSbMzWhOAj15+I1daH227aejeW
+         rhKQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nOt/7E1w";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cDmoeKgW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i191si12764262yba.12.2020.10.11.14.06.41
+        by mx.google.com with ESMTPS id c184si13010085ybb.20.2020.10.11.12.52.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Oct 2020 14:06:41 -0700 (PDT)
+        Sun, 11 Oct 2020 12:52:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="nOt/7E1w";
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=cDmoeKgW;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45882 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35474 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRiYC-0008CT-OO
-	for alex.bennee@linaro.org; Sun, 11 Oct 2020 17:06:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34174)
+	id 1kRhOP-0005XZ-Ly
+	for alex.bennee@linaro.org; Sun, 11 Oct 2020 15:52:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49740)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRiX4-0007eh-84; Sun, 11 Oct 2020 17:05:30 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:39434)
+ id 1kRhLg-00030m-Jr; Sun, 11 Oct 2020 15:49:40 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:38528)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRiWz-0008SA-5W; Sun, 11 Oct 2020 17:05:26 -0400
-Received: by mail-wm1-x342.google.com with SMTP id d3so15560627wma.4;
- Sun, 11 Oct 2020 14:05:22 -0700 (PDT)
+ id 1kRhLd-0000IS-8m; Sun, 11 Oct 2020 15:49:39 -0400
+Received: by mail-wm1-x342.google.com with SMTP id b127so2544481wmb.3;
+ Sun, 11 Oct 2020 12:49:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=RVEzdFzHG52dMol05fP/JH3htxgV/2K75VVlQolC92Q=;
- b=nOt/7E1w5qckBWFAbySA3+Ea7uSlqnSe92H+xbt4af0H0jD5QOF6W48WhFa8a+iFqB
- TWv7jqJ0+ziefyPjBka1Ot+H/RIfVYAhecFsIXZZwmj/ztJSyAQQUM77GHMxuuB44H9q
- NK2TJ3ltKzVFSAeSLYLkEC+YZYHiJXzEW7HA/Z8Xoo8zoSeNIsITA+v1RtAYchm8s/qc
- fLo5RDDsX+Z8h9kLuvWgrHnaCQwfGGGx/km6YaTzipTSmm9uS6l822Oe4Gybxt5BMk3I
- YNkffa+qogQDkt96K41FbVNh8CluYSeW0G181TwexFIygZSe0mbluTWeFDpu6k4x3NCW
- +gpA==
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=SDIyb5n7P2r5vl2AEidPZJyv8Pk8oGY5haZC+t+fmMk=;
+ b=cDmoeKgWEhFiacoidrflBcXHnqOYg2fZWCT64uknbTOf6DwQl432yKQk8edGKd33X3
+ Ka6ZlMMzDhBbAtq12cpQiCbWwQ2q0Ig409p66knzAnqReVGuyj47vOB35g4m9eC7rnr+
+ Q7hpBnf7+Wkx0KhRuSwaRpIShHDBHfblAiYdNLJsAcCrs4eJgjumb+PGpBgoel/DPq7i
+ GDKZlrVSEigesebzAJlWe+NmVznPppB0J8c8DeUEsz30E6hWYozQHqgfY9yFpGjwd0oI
+ fUL34wSs0M+32+SEZ4yJe+ycnhy+QCbVQ5JosUYLHS/GuDOcbHcDpbcTk8UAYLx2Kp6D
+ HLKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=RVEzdFzHG52dMol05fP/JH3htxgV/2K75VVlQolC92Q=;
- b=tBuzkzh1yzHM6HphrmV0QjHhi0HxpYirygO+B1Qs3DXWzLmZBBptddgHZG0eo5a6qE
- HGOFtwHBBjZ+vybvxsnR2BXQztElYuvhfahCcCYQuiNIuk+eQ5mqcKw/j3NAZxgQIZpk
- 1g0z9VXxM/xmvwO3tmxVonJUQacWJYeXB70hrIuOtG1NeEkrJrmBbI3lMzv1YPT1JFUZ
- V2QlKAM3oesUdTFIBNglVVR2A/oc45uAOA8GnROMlGwdhMbVgY9sMCU5Yy7GKkpYrjlZ
- U50nbvHrSMEu/CpkCyj4wkmnqRUOF4jov4V4C1noinbZgS/eiOJZB8VkqSpuIGiT0OSW
- 1WuA==
-X-Gm-Message-State: AOAM5315pdLQYRn0JiF7oZjPzis3iS6sYh5Ls2f9Cb/375vPdUwppWRz
- VN0IfWjFtKWLr4lrqG6AFzJHbTow0fI=
-X-Received: by 2002:a1c:9cd3:: with SMTP id f202mr8078235wme.148.1602450320998; 
- Sun, 11 Oct 2020 14:05:20 -0700 (PDT)
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=SDIyb5n7P2r5vl2AEidPZJyv8Pk8oGY5haZC+t+fmMk=;
+ b=i/cYADAY7ymzhNOY/4PhIPJD7u8T4LYjXW6CFeG1BSwtPefuWziMqPox5L8vpjm5sd
+ NPXe6kUck+XjdQ2LNIS2Yz8ujZAF2aFGUQRUnbg+yCwEPgz7rWCK5yIDmPKkI4XDWZfH
+ hxPkAn/LH1JTXhT/oRNrdwrCqu0GiZh4hzwnwEvm8JcCl5I9Kms82taCKZ+3iyVgpu6g
+ K0yjxHlw+ZDma1B5zIs598b1bvi6JSrNDqa6lmRIxu5RT5hQo2O+pa/dKo8hx7YxhgA4
+ ymJZVslwIyL8uoxiT5VCZpgy/J1mpy4wx/o4XQ5kMpQvDfRXbDjywpubJl6PgyPL+sGv
+ j7Wg==
+X-Gm-Message-State: AOAM530d6HlS3WAGNeM+MWlxD1Ve7h1v+VNfHsU5QkhhBAxO6dQwhRtv
+ jMvUab5QuQBaC561Ov8/6HUweQtaWGI=
+X-Received: by 2002:a05:600c:216:: with SMTP id
+ 22mr7490260wmi.149.1602445775112; 
+ Sun, 11 Oct 2020 12:49:35 -0700 (PDT)
 Received: from localhost.localdomain
  (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id x15sm24781991wrr.36.2020.10.11.14.05.19
+ by smtp.gmail.com with ESMTPSA id q4sm21420475wru.65.2020.10.11.12.49.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 11 Oct 2020 14:05:20 -0700 (PDT)
+ Sun, 11 Oct 2020 12:49:34 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH 0/3] hw/ssi: Rename SSI 'slave' as 'peripheral'
-Date: Sun, 11 Oct 2020 23:05:10 +0200
-Message-Id: <20201011210513.3253905-1-f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 3/4] hw/pci-host/versatile: Add WINDOW_COUNT definition to
+ replace magic '3'
+Date: Sun, 11 Oct 2020 21:49:17 +0200
+Message-Id: <20201011194918.3219195-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20201011194918.3219195-1-f4bug@amsat.org>
+References: <20201011194918.3219195-1-f4bug@amsat.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::342;
  envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
@@ -116,48 +121,108 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Andrzej Zaborowski <balrogg@gmail.com>, Joel Stanley <joel@jms.id.au>
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ikwLjaucItz+
+X-TUID: Zsj9jRZbVcQ4
 
-In order to use inclusive terminology, rename SSI 'slave' as=0D
-'peripheral', following the resolution Paolo pointed in [*]:=0D
-https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names/=0D
-=0D
-Candidate to be merged via the ARM or Trivial trees.=0D
-=0D
-[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg739108.html=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (3):=0D
-  hw/ssi/aspeed_smc: Rename max_slaves as max_devices=0D
-  hw/ssi/ssi: Update coding style to make checkpatch.pl happy=0D
-  hw/ssi: Rename SSI 'slave' as 'peripheral'=0D
-=0D
- include/hw/misc/max111x.h   |  2 +-=0D
- include/hw/ssi/aspeed_smc.h |  2 +-=0D
- include/hw/ssi/ssi.h        | 56 +++++++++++++++++++------------------=0D
- hw/arm/spitz.c              | 32 ++++++++++-----------=0D
- hw/arm/stellaris.c          |  4 +--=0D
- hw/arm/tosa.c               | 12 ++++----=0D
- hw/arm/z2.c                 | 14 +++++-----=0D
- hw/block/m25p80.c           | 14 +++++-----=0D
- hw/display/ads7846.c        | 12 ++++----=0D
- hw/display/ssd0323.c        | 12 ++++----=0D
- hw/misc/max111x.c           | 18 ++++++------=0D
- hw/sd/ssi-sd.c              | 12 ++++----=0D
- hw/ssi/aspeed_smc.c         | 53 ++++++++++++++++++-----------------=0D
- hw/ssi/pl022.c              |  2 +-=0D
- hw/ssi/ssi.c                | 48 +++++++++++++++----------------=0D
- hw/ssi/xilinx_spips.c       |  7 +++--=0D
- 16 files changed, 152 insertions(+), 148 deletions(-)=0D
-=0D
--- =0D
-2.26.2=0D
-=0D
+Use self-explicit WINDOW_COUNT definition instead of a magic value.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/pci-host/versatile.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+index b4951023f4e..4d9565de4b1 100644
+--- a/hw/pci-host/versatile.c
++++ b/hw/pci-host/versatile.c
+@@ -72,6 +72,8 @@ enum {
+     PCI_VPB_IRQMAP_FORCE_OK,
+ };
+ 
++#define WINDOW_COUNT 3
++
+ struct PCIVPBState {
+     PCIHostState parent_obj;
+ 
+@@ -86,18 +88,18 @@ struct PCIVPBState {
+      * The offsets into pci_mem_space are controlled by the imap registers.
+      */
+     MemoryRegion pci_io_window;
+-    MemoryRegion pci_mem_window[3];
++    MemoryRegion pci_mem_window[WINDOW_COUNT];
+     PCIBus pci_bus;
+     PCIDevice pci_dev;
+ 
+     /* Constant for life of device: */
+     int realview;
+-    uint32_t mem_win_size[3];
++    uint32_t mem_win_size[WINDOW_COUNT];
+     uint8_t irq_mapping_prop;
+ 
+     /* Variable state: */
+-    uint32_t imap[3];
+-    uint32_t smap[3];
++    uint32_t imap[WINDOW_COUNT];
++    uint32_t smap[WINDOW_COUNT];
+     uint32_t selfid;
+     uint32_t flags;
+     uint8_t irq_mapping;
+@@ -130,7 +132,7 @@ static void pci_vpb_update_all_windows(PCIVPBState *s)
+     /* Update all alias windows based on the current register state */
+     int i;
+ 
+-    for (i = 0; i < 3; i++) {
++    for (i = 0; i < WINDOW_COUNT; i++) {
+         pci_vpb_update_window(s, i);
+     }
+ }
+@@ -148,8 +150,8 @@ static const VMStateDescription pci_vpb_vmstate = {
+     .minimum_version_id = 1,
+     .post_load = pci_vpb_post_load,
+     .fields = (VMStateField[]) {
+-        VMSTATE_UINT32_ARRAY(imap, PCIVPBState, 3),
+-        VMSTATE_UINT32_ARRAY(smap, PCIVPBState, 3),
++        VMSTATE_UINT32_ARRAY(imap, PCIVPBState, WINDOW_COUNT),
++        VMSTATE_UINT32_ARRAY(smap, PCIVPBState, WINDOW_COUNT),
+         VMSTATE_UINT32(selfid, PCIVPBState),
+         VMSTATE_UINT32(flags, PCIVPBState),
+         VMSTATE_UINT8(irq_mapping, PCIVPBState),
+@@ -371,12 +373,10 @@ static void pci_vpb_reset(DeviceState *d)
+ {
+     PCIVPBState *s = PCI_VPB(d);
+ 
+-    s->imap[0] = 0;
+-    s->imap[1] = 0;
+-    s->imap[2] = 0;
+-    s->smap[0] = 0;
+-    s->smap[1] = 0;
+-    s->smap[2] = 0;
++    for (int i = 0; i < WINDOW_COUNT; i++) {
++        s->imap[i] = 0;
++        s->smap[i] = 0;
++    }
+     s->selfid = 0;
+     s->flags = 0;
+     s->irq_mapping = s->irq_mapping_prop;
+@@ -453,7 +453,7 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
+      * PCI memory space. The sizes vary from board to board; the base
+      * offsets are guest controllable via the IMAP registers.
+      */
+-    for (i = 0; i < 3; i++) {
++    for (i = 0; i < WINDOW_COUNT; i++) {
+         memory_region_init_alias(&s->pci_mem_window[i], OBJECT(s), "pci-vbp-window",
+                                  &s->pci_mem_space, 0, s->mem_win_size[i]);
+         sysbus_init_mmio(sbd, &s->pci_mem_window[i]);
+-- 
+2.26.2
+

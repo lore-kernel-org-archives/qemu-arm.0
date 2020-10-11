@@ -1,111 +1,112 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1175245lfa;
-        Mon, 12 Oct 2020 09:10:53 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFdjjzCJZLOxB7RWNBXOgHL9LjDK6k8o27xuFv5lM8qMBBhbdfenr2lhtq9BTlOCsdA88R
-X-Received: by 2002:a25:404f:: with SMTP id n76mr28178976yba.336.1602519053820;
-        Mon, 12 Oct 2020 09:10:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602519053; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp474724lfa;
+        Sun, 11 Oct 2020 12:52:30 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzo2B0kqaVzCe1n8WP1WPicgyHi78HQrxapbojcd+RdxZVXLvtNzSTeQl2AogRRCRXAWyEx
+X-Received: by 2002:a25:c549:: with SMTP id v70mr27829783ybe.516.1602445950302;
+        Sun, 11 Oct 2020 12:52:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602445950; cv=none;
         d=google.com; s=arc-20160816;
-        b=ctdYvzawyVLzxw2G/PzEo7sIDB5lrTyIfL6yQN1cMqv4exAndGkPbvJXYARFy76C5d
-         89PeC8rMStAEQ85tC68lL5+srxmtgKM64NZxooOyC+FVfXJsE0fLYOGdvhJVDmwMif0M
-         JEakSuLTRUPVUsACmB6yReHj0ouwM/JJTit67BocjaPIbXVxGQ9jYdtqr2uFrTKaFUm9
-         lGxe9AH9ODoinsXT4e4LC79co6LRQ9XFq1NH+ur+imS13QrA4jqCvm+JJq3J7iB1t3rZ
-         TYhpyFlBSiUy7NARd7r3hOB1OtEPS6dwEdL44ZsCgbwwVWF3GxPHqVdk+FvU9lGuZFia
-         Rh+A==
+        b=pEJvdM7ZjN4puplZK9vpbJTjin3I5ycGImSHj1qKys3IwwYtMPtpds4XUuuslQnluS
+         3qz0xL3M2aZi7BSyd9R+SGFDQUISx4QsAIAi4L9LUM73BAlr+uf86OmhxcqJl3/FN/Dc
+         vHeDR6MpgTCX3DFWuKoTJYGZOsS/mXzcU+YMnMm3aXuS6HGWmh/wQ0z/4SECg0kto6JU
+         28HOjulATCc4z2qFOjlf7YTYmd9NHVGCHdLP/lhW4a+JLqp7jXsRho4wJf6nL7IGh6Vz
+         DWsF2SPPKmzA39teGuA6nVKNoiAAiTjtBuMwi8n3LFWRtdychZF2ynYUat6+uniYeAOQ
+         UOGA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=WZSOSfAAlnoDbupRBScNRlOixSkOtWYILH234kBr4wY=;
-        b=atcxr8LDpfy2wenr08utDaBgMbHe3z1cUWggte+dYH5OwcN990GZF4yhkXaunSphwA
-         YU9+eRUNWFOJCmDm+9IDwEXVRcFgiFvJwZ9gOkwE5Qmovfqx6CCWEmAvg8VNYifRwenk
-         hoBGLboV3ssyx0PSnc1lV84Sx6sGaKDPi5NwQtMbfoFfW+LNgYfQ99W4njkWoUirKsCM
-         vau7wGyPL5RjLhRa7y189A161gGPwh8qP7ZYkXiPOYgm8hPo6m+2rZotINbjmaB/60Gu
-         jfoExgfu1QsNfVt0X1An+IfiZD8/e1g364Bdk4A17eKZpgVnMBP5vs66ZOxsbtte26vz
-         Yx1w==
+        bh=/fQo3DSJb6riAH6KnfckECiEhkMalNL1pPpYvWlbzCc=;
+        b=RlDMgYQSfZOXHS5MWktiP2G+WiLX8ZuvFQym7NW6U04E1O9dyBonOEaxpJ10cSh6lG
+         BzNgyuYXTA7/I/Y/z54Lnu3t39TzFWEF+yK1YVamuA2T/RKcxTJ1BTTBiX6vrEFtN2yB
+         KUe8aR7nWgIWJOCKdBgWW9S1NhvHmunaNYSeR2Z+9Cs/Fh8p+ubJ1Q085Ram4mfVHLFr
+         EABld+GiUIyUsFVpWVI9YZTdi27Vo+jo2QaeQoiWYJ2ctlh+brUfpGYkwdVYsgIU5vh7
+         nGM4/OSl/88OdRTB8bCmFYDwgG0slEbrdrA5EKd+6yCN61WGiIbQBaJc7uyouW2BBimF
+         aU6A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LTVDKShe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fchLa3yE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b16si3285742ybj.244.2020.10.12.09.10.53
+        by mx.google.com with ESMTPS id w7si13406395ybp.213.2020.10.11.12.52.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 09:10:53 -0700 (PDT)
+        Sun, 11 Oct 2020 12:52:30 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=LTVDKShe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=fchLa3yE;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34856 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:34200 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kS0PV-00068u-2O
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 12:10:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58204)
+	id 1kRhOP-00052E-N1
+	for alex.bennee@linaro.org; Sun, 11 Oct 2020 15:52:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRztp-0003m1-HQ
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:38:13 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:55883)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRhLX-0002x1-3b; Sun, 11 Oct 2020 15:49:32 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:37121)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRztg-0007mx-R0
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:38:08 -0400
-Received: by mail-wm1-x344.google.com with SMTP id a72so6930180wme.5
- for <qemu-devel@nongnu.org>; Mon, 12 Oct 2020 08:38:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRhLT-0000HW-Vr; Sun, 11 Oct 2020 15:49:29 -0400
+Received: by mail-wm1-x343.google.com with SMTP id j136so15371696wmj.2;
+ Sun, 11 Oct 2020 12:49:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=WZSOSfAAlnoDbupRBScNRlOixSkOtWYILH234kBr4wY=;
- b=LTVDKSheZqGSBnYO/3aVAQJtAjLvOvPwCjYLbRXpGUgdT2LDnKyFfwSnI1DQgVUiPA
- N5oih9/7ubWXYF+xMAdLdz2euJEvlcQQcUA8nWKVUwSV+siO7McijqUGe7sdMzEq0TMU
- kGnkPSKBUfpaOHApnk1e5qe8piWYHshpS7SqSShiXPp+pIXda7cJU84f1E9BCuY4ig/J
- Lu4YZ1Du1zU5B9YSsv9CuVcwyevw9QFRtTA4ZFjjzhrqvAgNeOG5CjPJRtVpA1RXNeFE
- J3BB7IXxFYOFfttA1pBTIJFPTd/zK/ZNjPqOPLsDAQJEwJwOG3FbIQjLtQhD7kLO9Ejo
- UUcA==
+ bh=/fQo3DSJb6riAH6KnfckECiEhkMalNL1pPpYvWlbzCc=;
+ b=fchLa3yE6WsO/FZ+TB5rqAIHERo2Wc0kfScuX4Nd1FAJjMJybOer7ydG7VO4fPRhUM
+ byTxfmCYAFwlw73VF3USnknTVXPX77Ml+HloAqCxwp4ZRiFf1eaa6cQVpUE7nHAVewzR
+ 2CICmGkLiY4fFTNAJcbjESHcyfORodUgr0ysfOzyI+XkeKB71lBmGoa6UsH0ozKWU7+Z
+ ba639AW3CwlVdXtlEaaWUuFPcu/31i7bjxPW7ZIPXVpEB0PNcJUXdx9+aJ78uDX3L32M
+ jnTT8a+bBoE2urRl3hVdSj1VuXC0SuWxuyEmpYtRxmRfu8SnnHw4VEPkbpFhWJyU409A
+ 3Z2A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=WZSOSfAAlnoDbupRBScNRlOixSkOtWYILH234kBr4wY=;
- b=LqhRwwC/McW3Ew8L5Zma46mGnTLQpG07LhM9OT+qPht5mrIC4eeEZqYrB1Upq9Rme4
- aYP6pWexW3g6oYGkgOFHpOYLICSGHTd5hH75SSzvnZBUXQ99NqJCw2Ycdce7RnjsH9/4
- 9OzEWO9njdmaDa0+0oP09CanBFNSPJ/9JRP33bCPfqeHjTLqvfb/tlCQFJMokSJ7JDAB
- P6L4Mi8meK363c4uxpgCuNg/QCoPoRhaPs1UZs2ZwbwyO0onwzFPh/fZxD7WVIceF0Hi
- vfLv16hoIo0VvuSxydOftxlBmQvQzvQuhXeluihOzoLDxHQlPaX2SXchAJic23x6X20X
- e6Mw==
-X-Gm-Message-State: AOAM531KbWvVEujnmQBqRm+cIE5cNWTOYVFJK501YPWw8M5mgNW7CoU0
- jtwQkU/AuJkvwTsBNDrpZLMCsQ==
-X-Received: by 2002:a7b:cb44:: with SMTP id v4mr11253890wmj.101.1602517079205; 
- Mon, 12 Oct 2020 08:37:59 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y66sm7095961wmd.14.2020.10.12.08.37.58
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=/fQo3DSJb6riAH6KnfckECiEhkMalNL1pPpYvWlbzCc=;
+ b=isYmbhHzWSYxS4hT958WWAU7uDJiGNgjZj+Xdwe3CdR2pkGGeKQP2188p7Akm4lcja
+ 8kfGs6qSHu1QYBwRldey8IiGm9yxzBKnF7xufbvmFK/hcQW6sLiS3ao0TpniBkVxSLe2
+ KQ3kjunsWd4Ll2jHfCqMWxgWZEGADgsEroPoKFZmTHClH6sxiLlaeibzMdTZDXdZeL6s
+ CXs1/2YeAXmYGHqlfcpcivNaEWa7dm8EuRi0S6XNF75kIC/SOIzdMd9ePJ4yqloM5n+E
+ vnXSKXN3FpfCzn5YBqSebm0G4TnRS+h80RbYZdk+F/1vwVTY772sMOiQvtRKonmDsJoc
+ Whrw==
+X-Gm-Message-State: AOAM532tXmVnhlFE+LtI71o3O+KJMHUjgB4LZddeZFqKt+nARvZ8uQtC
+ v8OX2d9DZf4aty8sM/J781qjc+jFcac=
+X-Received: by 2002:a1c:9949:: with SMTP id b70mr7946954wme.116.1602445765529; 
+ Sun, 11 Oct 2020 12:49:25 -0700 (PDT)
+Received: from localhost.localdomain
+ (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id n9sm22111984wrq.72.2020.10.11.12.49.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:37:58 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 10/10] target/arm: Fix writing to FPSCR.FZ16 on M-profile
-Date: Mon, 12 Oct 2020 16:37:46 +0100
-Message-Id: <20201012153746.9996-11-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201012153746.9996-1-peter.maydell@linaro.org>
-References: <20201012153746.9996-1-peter.maydell@linaro.org>
+ Sun, 11 Oct 2020 12:49:24 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 1/4] hw: Replace magic value by PCI_NUM_PINS definition
+Date: Sun, 11 Oct 2020 21:49:15 +0200
+Message-Id: <20201011194918.3219195-2-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20201011194918.3219195-1-f4bug@amsat.org>
+References: <20201011194918.3219195-1-f4bug@amsat.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,46 +119,89 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: U9cw4lVHt3sa
+X-TUID: y4d6RjNIe4rw
 
-The M-profile specific part of the sanitizing of the value to
-be written to the FPSCR used a mask which always zeroed bit 19,
-which is FZ16. This is incorrect when the CPU supports 16-bit
-floating point arithmetic, because the bit should be writeable.
+Use self-explicit PCI_NUM_PINS definition instead of magic value.
 
-Code earlier in the function already handles making this bit be RES0
-if the CPU doesn't implement the FP16 feature, so we can simply stop
-masking it out for M-profile.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- target/arm/vfp_helper.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/arm/virt.c           | 4 ++--
+ hw/mips/gt64xxx_pci.c   | 2 +-
+ hw/pci-host/versatile.c | 6 +++---
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/target/arm/vfp_helper.c b/target/arm/vfp_helper.c
-index 350150adbf1..4b0bb2bacfb 100644
---- a/target/arm/vfp_helper.c
-+++ b/target/arm/vfp_helper.c
-@@ -198,13 +198,14 @@ void HELPER(vfp_set_fpscr)(CPUARMState *env, uint32_t val)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index e465a988d68..ddad9621f79 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1117,11 +1117,11 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
+                                 int first_irq, const char *nodename)
+ {
+     int devfn, pin;
+-    uint32_t full_irq_map[4 * 4 * 10] = { 0 };
++    uint32_t full_irq_map[4 * PCI_NUM_PINS * 10] = { 0 };
+     uint32_t *irq_map = full_irq_map;
  
-     if (arm_feature(env, ARM_FEATURE_M)) {
-         /*
--         * M profile FPSCR is RES0 for the QC, STRIDE, FZ16, LEN bits
-+         * M profile FPSCR is RES0 for the QC, STRIDE, LEN bits
-          * and also for the trapped-exception-handling bits IxE.
-          * From v8.1M with the low-overhead-loop extension bits
-          * [18:16] are used for LTPSIZE and (since we don't implement
-          * MVE) always read as 4 and ignore writes.
-+         * FZ16 has already been handled as RES0 above if needed.
-          */
--        val &= 0xf7c0009f;
-+        val &= 0xf7c8009f;
-         if (cpu_isar_feature(aa32_lob, cpu)) {
-             val |= 4 << 16;
-         }
+     for (devfn = 0; devfn <= 0x18; devfn += 0x8) {
+-        for (pin = 0; pin < 4; pin++) {
++        for (pin = 0; pin < PCI_NUM_PINS; pin++) {
+             int irq_type = GIC_FDT_IRQ_TYPE_SPI;
+             int irq_nr = first_irq + ((pin + PCI_SLOT(devfn)) % PCI_NUM_PINS);
+             int irq_level = GIC_FDT_IRQ_FLAGS_LEVEL_HI;
+diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
+index e091bc4ed55..ff1a35755f6 100644
+--- a/hw/mips/gt64xxx_pci.c
++++ b/hw/mips/gt64xxx_pci.c
+@@ -1018,7 +1018,7 @@ static void gt64120_pci_set_irq(void *opaque, int irq_num, int level)
+     if (pic_irq < 16) {
+         /* The pic level is the logical OR of all the PCI irqs mapped to it. */
+         pic_level = 0;
+-        for (i = 0; i < 4; i++) {
++        for (i = 0; i < PCI_NUM_PINS; i++) {
+             if (pic_irq == piix4_dev->config[PIIX_PIRQCA + i]) {
+                 pic_level |= pci_irq_levels[i];
+             }
+diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+index 3553277f941..b4951023f4e 100644
+--- a/hw/pci-host/versatile.c
++++ b/hw/pci-host/versatile.c
+@@ -75,7 +75,7 @@ enum {
+ struct PCIVPBState {
+     PCIHostState parent_obj;
+ 
+-    qemu_irq irq[4];
++    qemu_irq irq[PCI_NUM_PINS];
+     MemoryRegion controlregs;
+     MemoryRegion mem_config;
+     MemoryRegion mem_config2;
+@@ -412,7 +412,7 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
+ 
+     object_initialize(&s->pci_dev, sizeof(s->pci_dev), TYPE_VERSATILE_PCI_HOST);
+ 
+-    for (i = 0; i < 4; i++) {
++    for (i = 0; i < PCI_NUM_PINS; i++) {
+         sysbus_init_irq(sbd, &s->irq[i]);
+     }
+ 
+@@ -422,7 +422,7 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
+         mapfn = pci_vpb_map_irq;
+     }
+ 
+-    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, mapfn, s->irq, 4);
++    pci_bus_irqs(&s->pci_bus, pci_vpb_set_irq, mapfn, s->irq, PCI_NUM_PINS);
+ 
+     /* Our memory regions are:
+      * 0 : our control registers
 -- 
-2.20.1
+2.26.2
 

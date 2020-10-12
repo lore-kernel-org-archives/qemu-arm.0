@@ -1,117 +1,111 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1024479lfa;
-        Mon, 12 Oct 2020 06:02:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzipnYcg6iO1b3gTfMG+eJv0gaX1UfglLQhEIgruMclqi+R4idQaNbA0okkZagfsAU7MJkp
-X-Received: by 2002:a25:57d6:: with SMTP id l205mr9296101ybb.117.1602507737826;
-        Mon, 12 Oct 2020 06:02:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602507737; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1150008lfa;
+        Mon, 12 Oct 2020 08:37:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwSq1RSIG0oDs47gntZ5JO0Uu9st6ygMOnqGE9iYax2Yd1PwmhHEnqFsvfLejtN78yJA/rb
+X-Received: by 2002:a25:f206:: with SMTP id i6mr32103755ybe.68.1602517048207;
+        Mon, 12 Oct 2020 08:37:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602517048; cv=none;
         d=google.com; s=arc-20160816;
-        b=SZLGRWUxzM9UXXgbIwGJrLcF2tGUWW4XL+58oEnf3WTvnwpDFlS9WA+6kgRIBJChY3
-         1EomnD5jo33ihXdfahu9NKUx0UI4Yrr9B1sXryP3DwkwFJ6+paEILUd29HqqvTiG87RB
-         teSrM8bQyIhByeNSTAHyWzHMS4XopPa+nKLztMGLdAMP6arPHlCG5KSSGnu8DhBbwdEO
-         D0466l4Udmwi3qSKp+o28ga5bXmiO21k5ERsYNwOcDMH4EG11UbxUq7/c6Q2UJCEvXZ5
-         AWW8NWIGbnxQQmSxB9a0AF71CiWDr5gGBACjeeHbLGRUdqxxFXyp3KVR+eG/7rfTd3uB
-         Y2bg==
+        b=r86c2SmwPiZ7S7iHpz3eZzJxyBzWAo8hNsZ4KmzLDCl63tdzEYAuwwvi7PxM4YI0jw
+         k/AUrKg6RIIwiHekbhbPY6u7RJdD3gnru6VL/qX3Brim5p2dZpnoOToLxhyKoan72Cl0
+         +ZgtlOjTiCHlHdw2Br//InbNHPRVLJodK/vTwd7oW+uykpjhhSJUo7+qJjWGiqqCfA9p
+         cQZwP7o1u49mpTNRISnLdB9f9TiuboTDx6iYxqh+Zg92UAahI4G0Lf+FDXdQoZ7+Hkwx
+         yGYOrIPwANDl1TLs3Y7/4+cNCVcPp5yyLcBS72rex3xKysvgXHIX4arJqPZx/qN3z7En
+         dd9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=5ctyKcMcLkw0p2grTwMXcK0kjDzhIaiNn9fFKueBmBE=;
-        b=YpDqaZ74QcO2iKsxLuJdwqEpF3xLUmNqqNZl3AxpscFEQt1XTkw99YfoBo8DRrOJju
-         tbgNa5eGguzefd4y8vquSudIPSjdSPPW/4zRvwpRK76UaEzIdCTWPeZb7zRgDu8nifGs
-         KKlVbBfKwaDhgDG8JLjXyIqs9GAMG/jgE77raNLgau6JpWGoAA7KVpoQPpb6GUJ2mi6O
-         fdVkGER+jPIRarx47Ik2kwM4qRxl+zRwvZDsy+8oFm8LVOBEjP3NnvSFxN/HHReXrXky
-         9M8/xykz7kRMEzRlJHyjmpfqPmfVP4se+haS/iy/F4d6M3AUBx6PC9mMVxhEHJrcr792
-         adbw==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=+ZwHV1TY0j+MTqvjQNw1IJRg8wBizhyo8ltO1jMhlE8=;
+        b=MDnpCS/sR3En3sfVms7fmeeQaYd22SL3I/kfSglLqTgeT1fvMVMkhCFo/x/RttzmZv
+         wfGgaAUVJD/CjMikXzndFXLTfnX6fq/Gh3UAxR0dKPjKif4/YuVuiSh45df0dgKwf122
+         zBfJ3eN6ETKVZmeHkHtYwlSIwehgc3TCWIA9q6WqDmBGYzz7JiwG70/6qul68ST9+e/u
+         AwZa9TVlVLFO3ssIzurf55eQ0Rscn0i8mFc3RBuVo6EmuoSuRGQWqWZoIbxfjRyctjVl
+         WZGpWN/Nx5N4ldV3n+65jFjogURV3vKEJQVwdMZe/B+BsRLW1b1W5axg+ljkW99osxT9
+         G0XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="HO5/L4gZ";
+       dkim=pass header.i=@linaro.org header.s=google header.b=g69A2tRd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e82si15101357ybb.357.2020.10.12.06.02.17
+        by mx.google.com with ESMTPS id 65si6002870ybb.207.2020.10.12.08.37.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 06:02:17 -0700 (PDT)
+        Mon, 12 Oct 2020 08:37:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b="HO5/L4gZ";
+       dkim=pass header.i=@linaro.org header.s=google header.b=g69A2tRd;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:36212 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:38816 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRxSz-0006xn-5N
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 09:02:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38030)
+	id 1kRzt9-0002GB-II
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:37:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56418)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRxSf-0006x4-JS; Mon, 12 Oct 2020 09:01:57 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:35203)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kRzq6-0006QQ-Up
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:18 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:54876)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRxSd-0002bj-S0; Mon, 12 Oct 2020 09:01:57 -0400
-Received: by mail-wm1-x342.google.com with SMTP id q5so17454030wmq.0;
- Mon, 12 Oct 2020 06:01:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=5ctyKcMcLkw0p2grTwMXcK0kjDzhIaiNn9fFKueBmBE=;
- b=HO5/L4gZB7yx+OpPxarWsjplCorye+JyDyjbKqsNpqrmpu/wFMHhOVpCmgvVvcvwMp
- /a9hUHjGC7QYkurPvQ4gsSZuyoUMgCS+l75tLltOc6daEgukcCujDTY0CjkirkzlIGJ3
- iSdQZGeZSPp0L2x6N/Ra8E+GM4liewmOBfuQSfWluOWUpuZd0hPPYv5EFdnp1bpvV3HA
- P+mBLyYhLj4DtrIXC2hnoQqDQFqHAXHNqwlBx9b+HXBs19yyIf0W/ehl7hmHa9XZEahG
- BsK7eH1iK5x+AIkgtxW+RqOG0eDj9uiRjzmgDVoWHWgbUWtrViz0vKdC0HA+3UGNLhvt
- 8PeQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kRzq4-0007E5-Tr
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:18 -0400
+Received: by mail-wm1-x343.google.com with SMTP id p15so17501989wmi.4
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=+ZwHV1TY0j+MTqvjQNw1IJRg8wBizhyo8ltO1jMhlE8=;
+ b=g69A2tRdba4f0A0mocmGIFdBA2FhKTst5Hfi38fpzLPTYMcOWIJ2xb3L/R6gyPxbyU
+ vFhpNFQK0daY/N7M12Sezu+aUv6wzLnyIWSDk5mTrCaTThXvSg8+lHNae3UCa9xYO909
+ 6oXPexeakZR8Hc5HdYfYsG/fCoruErjK+iTWI517dMwUu8M+8xdHoUd7m7Yu5Z5OGZ/n
+ bcY+685c39s9kort8LIBatCnsC8r7DEkJgjBKD4J/8MwxCVQxt8bVtRTEV4/2Z9QD2MU
+ vuaRPNIxh+zkZg7Eofkw2P7b3b03oqN5pk/7dUYgubdVkuvEUKS3OW9BaWHx6uR+Nfjt
+ /UwA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=5ctyKcMcLkw0p2grTwMXcK0kjDzhIaiNn9fFKueBmBE=;
- b=qvCDS+as6h6IpYsofw/ci0Ys4HM5KVhUlOZW+lElkDtgGjStycfSVV1OlWZ9AQts0v
- Osjfv6QLRpqKQromxBE38F79zhY+n5mWEZX41ZhcnxJoAYZ4W0OFkbwB1iofSEMPAIHS
- ZfVyAGz1GQ4lLaf1FIN+p7Cg3ewTjqObBcDZ7KB9PTVL6hwtMgR/3g670OfdXqVlsy5E
- FJFlKzlP+/A4i1CqIGBliTd8S11ryukj+zVeRsxXjx6hRpEw08D6nLI9kzH+UcurTXCO
- 7ZBhfW5y8wy3CtgjiKyLZQKyF6AdVIiOfbXycEXO9OMMty3+NPykAD74biLRQkK0ALau
- G4oQ==
-X-Gm-Message-State: AOAM5327uma7yeMtShndeb8v/O8Tgp/O4BhHFStwM0x2Lr5kAwP5Ah3+
- YVmi3jxIc0TC2HY1zFKwp58=
-X-Received: by 2002:a7b:cc0e:: with SMTP id f14mr10740158wmh.92.1602507713610; 
- Mon, 12 Oct 2020 06:01:53 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id a7sm23130788wmh.6.2020.10.12.06.01.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Oct 2020 06:01:52 -0700 (PDT)
-Subject: Re: [PATCH 3/4] hw/pci-host/versatile: Add WINDOW_COUNT definition to
- replace magic '3'
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <20201011194918.3219195-1-f4bug@amsat.org>
- <20201011194918.3219195-4-f4bug@amsat.org>
- <CAFEAcA8hbkrTo0VpLtjFDtXc5CL7zK+X8ppX==P9_+q_V8-pAw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <1998e286-b4f4-2e2a-2342-ff5e748abcea@amsat.org>
-Date: Mon, 12 Oct 2020 15:01:51 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=+ZwHV1TY0j+MTqvjQNw1IJRg8wBizhyo8ltO1jMhlE8=;
+ b=NxGngPR1pgBMW+Jei3scnuiElIEibq3stoTVBZRuukFe1YxiWtGMD/i0sqlsz6hSVe
+ pGOe4qSzViqmxXZH9wDnyRXevaZyo5sLOQMtu+Cs1VsmNzENjdGxVG0LtNOlnkVYLjp6
+ VZFyDk880iUDsGizgz/ntz6Cpf1hZL7NiQ+4pKoXEPsQJ20cCQF4pdwmGCcxXbTY+s69
+ AbT+Ljrw6YzYyuonURHgqPd+nx+RHSYud0QBjn6vSrJ8NvnlWDquqPxAGHyJ9OOomrih
+ +awZdtA3FOYI9JRnKI+nxuTq0gm8fYW/oNodl6DK9gzVjqCXBx6boCa2Ux9NaM11he0D
+ V5JA==
+X-Gm-Message-State: AOAM5305JuREQmWZpr64DXuH+qz53rKZMH10C01TnasiZBHqCF1QjiEC
+ 434Pn/ptmECq7uApEZEM7MDAsQiRlAPdkz4n
+X-Received: by 2002:a1c:e045:: with SMTP id x66mr11411611wmg.104.1602516855317; 
+ Mon, 12 Oct 2020 08:34:15 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Oct 2020 08:34:14 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH for-5.1] Makefile: Remove config-devices.mak on "make clean"
+Date: Mon, 12 Oct 2020 16:33:27 +0100
+Message-Id: <20201012153408.9747-5-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
+References: <20201012153408.9747-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA8hbkrTo0VpLtjFDtXc5CL7zK+X8ppX==P9_+q_V8-pAw@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -124,96 +118,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- qemu-arm <qemu-arm@nongnu.org>, Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: dcPEkjIuef3q
+X-TUID: 7fZZ5pxlUSJQ
 
-On 10/11/20 10:46 PM, Peter Maydell wrote:
-> On Sun, 11 Oct 2020 at 20:49, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> Use self-explicit WINDOW_COUNT definition instead of a magic value.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   hw/pci-host/versatile.c | 28 ++++++++++++++--------------
->>   1 file changed, 14 insertions(+), 14 deletions(-)
->>
->> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
->> index b4951023f4e..4d9565de4b1 100644
->> --- a/hw/pci-host/versatile.c
->> +++ b/hw/pci-host/versatile.c
->> @@ -72,6 +72,8 @@ enum {
->>       PCI_VPB_IRQMAP_FORCE_OK,
->>   };
->>
->> +#define WINDOW_COUNT 3
->> +
->>   struct PCIVPBState {
->>       PCIHostState parent_obj;
->>
->> @@ -86,18 +88,18 @@ struct PCIVPBState {
->>        * The offsets into pci_mem_space are controlled by the imap registers.
->>        */
->>       MemoryRegion pci_io_window;
->> -    MemoryRegion pci_mem_window[3];
->> +    MemoryRegion pci_mem_window[WINDOW_COUNT];
->>       PCIBus pci_bus;
->>       PCIDevice pci_dev;
->>
->>       /* Constant for life of device: */
->>       int realview;
->> -    uint32_t mem_win_size[3];
->> +    uint32_t mem_win_size[WINDOW_COUNT];
->>       uint8_t irq_mapping_prop;
->>
->>       /* Variable state: */
->> -    uint32_t imap[3];
->> -    uint32_t smap[3];
->> +    uint32_t imap[WINDOW_COUNT];
->> +    uint32_t smap[WINDOW_COUNT];
-> 
-> Strictly speaking, this is conflating two separate
-> things which both happen to be equal to three.
-> 
-> The versatile/realview PCI controller has:
->   * three memory windows in the system address space
->     - those are represented by the pci_mem_window[] array
->     - mem_win_size[] holds the size of each window
->       (which is fixed but varies between the different
->       implementations of this controller on different boards)
->     - the device IMAPn registers allow the guest to
->       configure the mapping from "a CPU access to an
->       address in window n" to "a PCI address on the PCI bus,
->       and our imap[] array holds those register values
->   * three PCI BARs which represent memory windows on the
->       PCI bus which bus-master PCI devices can use to
->       write back into the system address space
->     - the device SMAPn registers allow the guest to configure
->       the mapping from "a bus-master access to an address
->       on the PCI bus wherever the guest mapped BAR n"
->       to "a system address", and the smap[] array holds
->       those register values
-> There's no inherent reason why the number of PCI BARs
-> needs to be the same as the number of system address
-> space memory windows, so they shouldn't really share
-> the same constant.
+The config-devices.mak files are generated by "make", and so they
+should be deleted by "make clean".
 
-Thanks for the detailed explanation, I'll update.
+(This is different from config-host.mak and config-all-disas.mak,
+which are created by "configure" and so only deleted by
+"make distclen".)
 
-> 
-> (We don't actually implement the behaviour of the SMAP
-> registers and the BARs, because Linux always configures
-> the PCI controller to a 1:1 mapping of PCI space to
-> system address space. So we get away with just having
-> our implementation be "always do direct accesses".)
-> 
-> thanks
-> -- PMM
-> 
+If we don't delete these files on "make clean", then the build
+tree is left in a state where it has the config-devices.mak
+file but not the config-devices.mak.d file, and make will not
+realize that it needs to rebuild config-devices.mak if, for
+instance, hw/sd/Kconfig changes.
+
+NB: config-all-devices.mak is also generated by "make", but we
+already remove it on "make clean".
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+I didn't remove the existing 'rm -f $(SUBDIR_DEVICES_MAK)'
+from the 'distclean' rules on the basis that config-all-devices.mak
+is explicitly removed in both 'distclean' and 'clean', despite
+'distclean' depending on 'clean'...
+---
+ Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile b/Makefile
+index 32345c610ee..c2120d8d48d 100644
+--- a/Makefile
++++ b/Makefile
+@@ -775,6 +775,7 @@ clean: recurse-clean
+ 	rm -f storage-daemon/qapi/qapi-gen-timestamp
+ 	rm -rf qga/qapi-generated
+ 	rm -f config-all-devices.mak
++	rm -f $(SUBDIR_DEVICES_MAK)
+ 
+ VERSION ?= $(shell cat VERSION)
+ 
+-- 
+2.20.1
+

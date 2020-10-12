@@ -1,99 +1,104 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1019712lfa;
-        Mon, 12 Oct 2020 05:55:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy3BSIECDMl+8X3z8cId65H6ZSxBmG/WV57sIXU3L/14dKWKX8YbfC5q/HwTubZZimXiUUb
-X-Received: by 2002:a25:8750:: with SMTP id e16mr15307356ybn.145.1602507357461;
-        Mon, 12 Oct 2020 05:55:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602507357; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1024479lfa;
+        Mon, 12 Oct 2020 06:02:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzipnYcg6iO1b3gTfMG+eJv0gaX1UfglLQhEIgruMclqi+R4idQaNbA0okkZagfsAU7MJkp
+X-Received: by 2002:a25:57d6:: with SMTP id l205mr9296101ybb.117.1602507737826;
+        Mon, 12 Oct 2020 06:02:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602507737; cv=none;
         d=google.com; s=arc-20160816;
-        b=bM5DGYFr5EKsT0vQE2MgjhnwmcgVZeOhBJKQ1bGFXr5wpJK0ubleakP+yWGNEKMlAC
-         EC6eIRbQ2K6+kYbbRzsm2BBh7F+y88Yha0Auo0Lgc94g5II0Y5g9xFkmOqGamLOuOG6s
-         gxNdtD8O/2WjVSJ3ARC/HqyCJZntzaw4/b6pvdGMbEueb2F7BDTGggyc6DEvEMtG5uWY
-         tXi9GZsLZGYBscRUJVcrDLqUNTechrUe92g6RSuuRy3ansbaTg9KHSyTLncf+0oDdejl
-         pN+mpDSbGugF75yRt4QA7SzZzPn/C8WcemA3qM393S0mwQoM49THAkTQY/dVnIoKZqV1
-         kWcw==
+        b=SZLGRWUxzM9UXXgbIwGJrLcF2tGUWW4XL+58oEnf3WTvnwpDFlS9WA+6kgRIBJChY3
+         1EomnD5jo33ihXdfahu9NKUx0UI4Yrr9B1sXryP3DwkwFJ6+paEILUd29HqqvTiG87RB
+         teSrM8bQyIhByeNSTAHyWzHMS4XopPa+nKLztMGLdAMP6arPHlCG5KSSGnu8DhBbwdEO
+         D0466l4Udmwi3qSKp+o28ga5bXmiO21k5ERsYNwOcDMH4EG11UbxUq7/c6Q2UJCEvXZ5
+         AWW8NWIGbnxQQmSxB9a0AF71CiWDr5gGBACjeeHbLGRUdqxxFXyp3KVR+eG/7rfTd3uB
+         Y2bg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=3/Yc3WohY6Xtn0FpFPx5SHsA/mZ/UF7uI6UU+43HITI=;
-        b=ZZY10TZzLHR4qcX+7kq0d+QuzOsLyR90DUvTA0zHe4pTnE/pebnnTdSLvnI25mTgCP
-         lTUJgaUMDgaq+xwA5O9pTEexPf68jmSDa7QyxhRcLhcC6Tdr6x4w55OVMJSX79xICqb8
-         E0CuPNmcM/WWn/hqTBHCDqZIoNRGcUrlIt33TYX3GyNKkEeme8Y7PLyhmaKIWsz9ahx6
-         swBUhl7/bmgzQBCXiqt0ZmtBN3Z7+gTc8Wvre9Avdmd3VqmTcV1TFM2WZV4AkkVIBMyA
-         aTLEqSHh5lNCb4iT77nEDj0vGtFg+HR8BxKPGDpL0995yM0JpfiOCODEcVevqC3uc9WH
-         uYFw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=5ctyKcMcLkw0p2grTwMXcK0kjDzhIaiNn9fFKueBmBE=;
+        b=YpDqaZ74QcO2iKsxLuJdwqEpF3xLUmNqqNZl3AxpscFEQt1XTkw99YfoBo8DRrOJju
+         tbgNa5eGguzefd4y8vquSudIPSjdSPPW/4zRvwpRK76UaEzIdCTWPeZb7zRgDu8nifGs
+         KKlVbBfKwaDhgDG8JLjXyIqs9GAMG/jgE77raNLgau6JpWGoAA7KVpoQPpb6GUJ2mi6O
+         fdVkGER+jPIRarx47Ik2kwM4qRxl+zRwvZDsy+8oFm8LVOBEjP3NnvSFxN/HHReXrXky
+         9M8/xykz7kRMEzRlJHyjmpfqPmfVP4se+haS/iy/F4d6M3AUBx6PC9mMVxhEHJrcr792
+         adbw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bz19ocSe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="HO5/L4gZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s12si16525097ybk.84.2020.10.12.05.55.57
+        by mx.google.com with ESMTPS id e82si15101357ybb.357.2020.10.12.06.02.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 05:55:57 -0700 (PDT)
+        Mon, 12 Oct 2020 06:02:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Bz19ocSe;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="HO5/L4gZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:53672 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36212 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRxMq-0002BG-Sy
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:55:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34854)
+	id 1kRxSz-0006xn-5N
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 09:02:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38030)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRxHI-0002Zn-KV; Mon, 12 Oct 2020 08:50:12 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:56263)
+ id 1kRxSf-0006x4-JS; Mon, 12 Oct 2020 09:01:57 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:35203)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRxHG-0000k0-L0; Mon, 12 Oct 2020 08:50:12 -0400
-Received: by mail-wm1-x342.google.com with SMTP id a72so6482774wme.5;
- Mon, 12 Oct 2020 05:50:08 -0700 (PDT)
+ id 1kRxSd-0002bj-S0; Mon, 12 Oct 2020 09:01:57 -0400
+Received: by mail-wm1-x342.google.com with SMTP id q5so17454030wmq.0;
+ Mon, 12 Oct 2020 06:01:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=3/Yc3WohY6Xtn0FpFPx5SHsA/mZ/UF7uI6UU+43HITI=;
- b=Bz19ocSekFRSjlJpsko0m7P6WJCseNwQ5DLsh5GuV0j3zo3yz2ZRE8I5KWhjJ0uD7m
- 7Y3UjRlLdMRyo9DS+0vij3o+L+vYTyMyy0tHtWnCfS/r28i40j4Gx1koDWtgZfc8R5w8
- 254azKNi7mfDLLTx4zHGE6ApOg0xq7wzlKNywwkag5o2EQ9Lu8v7wpmNlBWFkEFD/6aD
- 4O28ZhUGANcvS3DNdosMewdKfOlE3yvPZo6J2ePtstGegCNDHL7siTjk7Va7Oh25YZ2w
- In9/oVACncN74EWK+t0tdxJ3TuiXFMKn1NzcL/jRa8S7f389ESFPh2BOs50VmPKn90a0
- hdAA==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=5ctyKcMcLkw0p2grTwMXcK0kjDzhIaiNn9fFKueBmBE=;
+ b=HO5/L4gZB7yx+OpPxarWsjplCorye+JyDyjbKqsNpqrmpu/wFMHhOVpCmgvVvcvwMp
+ /a9hUHjGC7QYkurPvQ4gsSZuyoUMgCS+l75tLltOc6daEgukcCujDTY0CjkirkzlIGJ3
+ iSdQZGeZSPp0L2x6N/Ra8E+GM4liewmOBfuQSfWluOWUpuZd0hPPYv5EFdnp1bpvV3HA
+ P+mBLyYhLj4DtrIXC2hnoQqDQFqHAXHNqwlBx9b+HXBs19yyIf0W/ehl7hmHa9XZEahG
+ BsK7eH1iK5x+AIkgtxW+RqOG0eDj9uiRjzmgDVoWHWgbUWtrViz0vKdC0HA+3UGNLhvt
+ 8PeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=3/Yc3WohY6Xtn0FpFPx5SHsA/mZ/UF7uI6UU+43HITI=;
- b=RsUz9It4FlYam8G6gX50NFz0OyrVuzz226DRferC8w3RvG0aNZv5EkSAKRoC1us0TF
- aaBBeX000g+y8XbSH2oeUqROc5AVMIwcbs4ix27z1UDnPj/LDpSP/ZxOKPz0CUQt/oUM
- 4zfnaMr0AxjIc5Vb+V+0L7Hz27xnpz/mPWQyLQgW+RmrzFsA4uvbbmOjpvm44DjwcRIV
- A82tsGqcxUiS4qMH+5+QC2cZCw7VnTbqMbIx/zksrihr7mpLfLxSTgTdl6tQo/oEyAfO
- EM9YNLSkAnSeUhSdWM/pbxhYkQ8/jKwmCS9oDEpNqVVTUK5r6t1AvtHrZPx97rpnWD1/
- /xdA==
-X-Gm-Message-State: AOAM533OYRoqWeT4yyA0swo6ENTPTC+OrVzOMInkAye1oMsJEV4BRvmO
- eGnMVhx+X1ED7BTpQpY2iSx30K97viA=
-X-Received: by 2002:a1c:7708:: with SMTP id t8mr10504313wmi.6.1602507007512;
- Mon, 12 Oct 2020 05:50:07 -0700 (PDT)
-Received: from localhost.localdomain
- (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id d7sm21679136wmd.48.2020.10.12.05.50.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 05:50:06 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 2/3] hw/ssi: Update coding style to make checkpatch.pl happy
-Date: Mon, 12 Oct 2020 14:49:54 +0200
-Message-Id: <20201012124955.3409127-3-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201012124955.3409127-1-f4bug@amsat.org>
-References: <20201012124955.3409127-1-f4bug@amsat.org>
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=5ctyKcMcLkw0p2grTwMXcK0kjDzhIaiNn9fFKueBmBE=;
+ b=qvCDS+as6h6IpYsofw/ci0Ys4HM5KVhUlOZW+lElkDtgGjStycfSVV1OlWZ9AQts0v
+ Osjfv6QLRpqKQromxBE38F79zhY+n5mWEZX41ZhcnxJoAYZ4W0OFkbwB1iofSEMPAIHS
+ ZfVyAGz1GQ4lLaf1FIN+p7Cg3ewTjqObBcDZ7KB9PTVL6hwtMgR/3g670OfdXqVlsy5E
+ FJFlKzlP+/A4i1CqIGBliTd8S11ryukj+zVeRsxXjx6hRpEw08D6nLI9kzH+UcurTXCO
+ 7ZBhfW5y8wy3CtgjiKyLZQKyF6AdVIiOfbXycEXO9OMMty3+NPykAD74biLRQkK0ALau
+ G4oQ==
+X-Gm-Message-State: AOAM5327uma7yeMtShndeb8v/O8Tgp/O4BhHFStwM0x2Lr5kAwP5Ah3+
+ YVmi3jxIc0TC2HY1zFKwp58=
+X-Received: by 2002:a7b:cc0e:: with SMTP id f14mr10740158wmh.92.1602507713610; 
+ Mon, 12 Oct 2020 06:01:53 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id a7sm23130788wmh.6.2020.10.12.06.01.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Oct 2020 06:01:52 -0700 (PDT)
+Subject: Re: [PATCH 3/4] hw/pci-host/versatile: Add WINDOW_COUNT definition to
+ replace magic '3'
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <20201011194918.3219195-1-f4bug@amsat.org>
+ <20201011194918.3219195-4-f4bug@amsat.org>
+ <CAFEAcA8hbkrTo0VpLtjFDtXc5CL7zK+X8ppX==P9_+q_V8-pAw@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <1998e286-b4f4-2e2a-2342-ff5e748abcea@amsat.org>
+Date: Mon, 12 Oct 2020 15:01:51 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <CAFEAcA8hbkrTo0VpLtjFDtXc5CL7zK+X8ppX==P9_+q_V8-pAw@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:20::342;
  envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
@@ -104,7 +109,7 @@ X-Spam_score: -1.5
 X-Spam_bar: -
 X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -119,50 +124,96 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>, Andrzej Zaborowski <balrogg@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ qemu-arm <qemu-arm@nongnu.org>, Thomas Huth <thuth@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Vanq6Fd6mzZe
+X-TUID: dcPEkjIuef3q
 
-To make the next commit easier to review, clean this code first.
+On 10/11/20 10:46 PM, Peter Maydell wrote:
+> On Sun, 11 Oct 2020 at 20:49, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> Use self-explicit WINDOW_COUNT definition instead of a magic value.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>   hw/pci-host/versatile.c | 28 ++++++++++++++--------------
+>>   1 file changed, 14 insertions(+), 14 deletions(-)
+>>
+>> diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+>> index b4951023f4e..4d9565de4b1 100644
+>> --- a/hw/pci-host/versatile.c
+>> +++ b/hw/pci-host/versatile.c
+>> @@ -72,6 +72,8 @@ enum {
+>>       PCI_VPB_IRQMAP_FORCE_OK,
+>>   };
+>>
+>> +#define WINDOW_COUNT 3
+>> +
+>>   struct PCIVPBState {
+>>       PCIHostState parent_obj;
+>>
+>> @@ -86,18 +88,18 @@ struct PCIVPBState {
+>>        * The offsets into pci_mem_space are controlled by the imap registers.
+>>        */
+>>       MemoryRegion pci_io_window;
+>> -    MemoryRegion pci_mem_window[3];
+>> +    MemoryRegion pci_mem_window[WINDOW_COUNT];
+>>       PCIBus pci_bus;
+>>       PCIDevice pci_dev;
+>>
+>>       /* Constant for life of device: */
+>>       int realview;
+>> -    uint32_t mem_win_size[3];
+>> +    uint32_t mem_win_size[WINDOW_COUNT];
+>>       uint8_t irq_mapping_prop;
+>>
+>>       /* Variable state: */
+>> -    uint32_t imap[3];
+>> -    uint32_t smap[3];
+>> +    uint32_t imap[WINDOW_COUNT];
+>> +    uint32_t smap[WINDOW_COUNT];
+> 
+> Strictly speaking, this is conflating two separate
+> things which both happen to be equal to three.
+> 
+> The versatile/realview PCI controller has:
+>   * three memory windows in the system address space
+>     - those are represented by the pci_mem_window[] array
+>     - mem_win_size[] holds the size of each window
+>       (which is fixed but varies between the different
+>       implementations of this controller on different boards)
+>     - the device IMAPn registers allow the guest to
+>       configure the mapping from "a CPU access to an
+>       address in window n" to "a PCI address on the PCI bus,
+>       and our imap[] array holds those register values
+>   * three PCI BARs which represent memory windows on the
+>       PCI bus which bus-master PCI devices can use to
+>       write back into the system address space
+>     - the device SMAPn registers allow the guest to configure
+>       the mapping from "a bus-master access to an address
+>       on the PCI bus wherever the guest mapped BAR n"
+>       to "a system address", and the smap[] array holds
+>       those register values
+> There's no inherent reason why the number of PCI BARs
+> needs to be the same as the number of system address
+> space memory windows, so they shouldn't really share
+> the same constant.
 
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
- include/hw/ssi/ssi.h | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+Thanks for the detailed explanation, I'll update.
 
-diff --git a/include/hw/ssi/ssi.h b/include/hw/ssi/ssi.h
-index fe3028c39dc..c15548425a3 100644
---- a/include/hw/ssi/ssi.h
-+++ b/include/hw/ssi/ssi.h
-@@ -1,12 +1,14 @@
- /* QEMU Synchronous Serial Interface support.  */
- 
--/* In principle SSI is a point-point interface.  As such the qemu
--   implementation has a single slave device on a "bus".
--   However it is fairly common for boards to have multiple slaves
--   connected to a single master, and select devices with an external
--   chip select.  This is implemented in qemu by having an explicit mux device.
--   It is assumed that master and slave are both using the same transfer width.
--   */
-+/*
-+ * In principle SSI is a point-point interface.  As such the qemu
-+ * implementation has a single slave device on a "bus".
-+ * However it is fairly common for boards to have multiple slaves
-+ * connected to a single master, and select devices with an external
-+ * chip select.  This is implemented in qemu by having an explicit mux device.
-+ * It is assumed that master and slave are both using the same transfer
-+ * width.
-+ */
- 
- #ifndef QEMU_SSI_H
- #define QEMU_SSI_H
--- 
-2.26.2
-
+> 
+> (We don't actually implement the behaviour of the SMAP
+> registers and the BARs, because Linux always configures
+> the PCI controller to a 1:1 mapping of PCI space to
+> system address space. So we get away with just having
+> our implementation be "always do direct accesses".)
+> 
+> thanks
+> -- PMM
+> 

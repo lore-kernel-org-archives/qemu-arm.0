@@ -1,273 +1,234 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1014952lfa;
-        Mon, 12 Oct 2020 05:48:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxQvkwY9jGCQZKJdbwaZGKUw18YQJX7UZjMKC7Ah7PJR+LnWHMrD7ZEgv06BObBMHrVoq60
-X-Received: by 2002:a25:d7c4:: with SMTP id o187mr2792556ybg.363.1602506932672;
-        Mon, 12 Oct 2020 05:48:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602506932; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1041719lfa;
+        Mon, 12 Oct 2020 06:20:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyYHMMtZicbc/1Pwtq30nCepTIN18/K8N0ll+KvJt6Cf61NGhsS89MQpqzDb2Nvd1MDMV8A
+X-Received: by 2002:a25:b00d:: with SMTP id q13mr6165872ybf.157.1602508849015;
+        Mon, 12 Oct 2020 06:20:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602508849; cv=none;
         d=google.com; s=arc-20160816;
-        b=t+sQR1cuh3rwB1FB+YS+OKHNafLRLM4UKzYQf5et0Czssy+Yv50EzjW8vZe3UNpt2k
-         XyKenxyZNar/T4E4P7GFqOpZmGVqx2j8BLuVVTLXDxddiKMhqJcPuDIwSvs1hC5uOKod
-         aZxoeaPMVG8GVaHCFci7xsx4QS2heJa0eUGHMhHCSTV99hvqRnN9VVSs8422cgKZnPWK
-         s41movlc0cG9R4Vbz9ZHgNMTr33dFPYGgThn79ZTuaZCN8qnz1b+kOWGFEgIVTNn+88V
-         bUbxEbKZq8Cg5mrxN1eYvs0y0F3NFCYNudEc8PMA0bCLxWOEr+JFUqVHT99bV2AbLBbg
-         IEnA==
+        b=D6CE70l1j8JjO26i0AJS4HzpI1/cbYlk4EhgJjXF+yYt9Bk+gRUhKascMyS94fQXm7
+         SbEDHKbBfMYxiqbWFXdeQ8HxfJs7HUmtyawmCYFYthrvHgsDGSCmnBft0nVpM4wVYikn
+         O8fj9lepYG8DM9z4Y5qQmC2bFWHdyZ2xH3y8h5m65NWrjtg7aWBhWTw5G2R48uS9Qc2g
+         +FTOK8k79g58wNL9giYT4kbsqtoGPy2tKBsBn5waRE7qxcSOzLRI6Dv8jWmXkl0F4LLp
+         GyMcbxAE4O4Vw3uluZT564PJE1OoYE1OW6eSav1l8SaJO1l1mWzF2T3UJEGYdhdtSJ/S
+         +mUQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xCNLhoelsRO4TCaFqCkPA59+Ay48720LqdAdNtyWtdc=;
-        b=g8ZEE27JHjvrGDlsWDcyzKXky4pQ//Fm2mvXXBp3mRbQno0GSWJHhmB66oOLpGw7YA
-         bbu+D/xQBrLwUhDdDYFX8eq81vSz8JxYiAsHHqo59o38E0FEUF13l/dpZ85JEfFU+mFZ
-         tRfoSwj12HM/Uj9+D6GSTTO3fSm0oBL3mv3JCO8HqiJZu3ZsWwsSTOjE9iwkgtcvVhw4
-         bDoqJLFfnj+pg8LT/6D1OrqYBG4yVTXnkX215Rb8E91W7UygQP5SLtAOa68T5yXEPVig
-         PVEOTDyShNmtXmYtc673AADidWN8/lp4mKw1wKsu/vD0oPOQotAOe57ESZL3bwvPZzMg
-         aBfA==
+        bh=5dF+jf9n1DnItLemKMZxZtmjBoHnSoohLjejZPCpzDM=;
+        b=1FoKNRo9DbaYTUQ14QcZkDNCv/UdR6vHuHYmEUVX0e5W8gL5ujtsiHUT64aly7YFbc
+         3YEFW7Ek6wbDiT/YFxrz27+rCdvaDDEBZZC1W+yJeoMBpy9kW1Dgla5IhDTt/xja4kfB
+         H0wc+lqXtS1UN/oU/naB5JTzbhV0Ogd6H/KKjXRh1cEzqIJ14pGqWs8nrf1fizSqcY+B
+         elaER+He72Ahg5lTQhPC8bQlOUIHw2FS/dl7Y5ZNGEWnv2KDMjf6wZP92z8fapL0Yc9P
+         ggu45AOZy9o/hGnbBCvfzM5W8haKms2jim/uBlxkE8XG1NLvHQNCyQEfvCFU5n6k9mX/
+         Frxw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ME0qyA/3";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qc0XApVd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e79si2851462ybf.297.2020.10.12.05.48.52
+        by mx.google.com with ESMTPS id c8si13974197ybb.88.2020.10.12.06.20.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 05:48:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Oct 2020 06:20:49 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ME0qyA/3";
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54508 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Qc0XApVd;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:48954 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRxG0-0007Vg-13
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:48:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33504)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kRxku-00056Z-7p
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 09:20:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44816)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCs-0005dv-JQ
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 08:45:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20510)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCp-00005Q-Kn
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 08:45:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602506734;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=xCNLhoelsRO4TCaFqCkPA59+Ay48720LqdAdNtyWtdc=;
- b=ME0qyA/3xFXlPM+JyqDYjndNjdg9M+Bi4xYmeOb4Xfq5nl7WTbN7ImIK16TkalixutE/IG
- fU0zzkjB89xJIysW2YrWW3sqvSeypdbCUwKyuX+QmXULvqq1JUp8+LMl6nin+xFvoOqREc
- 8eMRH+tkhjTdDZB0RzkDW2zUCj1F+Ao=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-49-keh6b2YDNhC6QHEkA2uQYA-1; Mon, 12 Oct 2020 08:45:33 -0400
-X-MC-Unique: keh6b2YDNhC6QHEkA2uQYA-1
-Received: by mail-wr1-f71.google.com with SMTP id y6so4514394wra.9
- for <qemu-devel@nongnu.org>; Mon, 12 Oct 2020 05:45:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRxkj-00052n-EJ; Mon, 12 Oct 2020 09:20:37 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42121)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRxkh-0005Mk-TM; Mon, 12 Oct 2020 09:20:37 -0400
+Received: by mail-wr1-x443.google.com with SMTP id e18so19153803wrw.9;
+ Mon, 12 Oct 2020 06:20:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=5dF+jf9n1DnItLemKMZxZtmjBoHnSoohLjejZPCpzDM=;
+ b=Qc0XApVdKVP/lVruFXWfJNtjQXfReFRvr1+4yT68YiQ4PXMXy2VS+Tms8DIHpnd7WY
+ 3IxqXaVf8NHprI9vBRJwHLg/Ir7knP79xD4PqkjT375/jOfMORusBYzhrZZ5RosRb+QD
+ U1SphhdEAsKVfyQdrEqQwYq4OgE0gntIEj6LK1eh4k7kNb5hfU7CyJ6pK2RZ1Iyw+ZIw
+ nBGoGO1Ccz+zkGeAo4+vjit+Ec6fFMWX+VWPe5vtNK/oSSBjXyxB2CXWnIIBww7AUabB
+ MEfKFTTjlMGn3LsS/v5F1YP0iobEE2UXTGxcQwYK8w7IDDqVUMyWngLVYsE84ipnaVNG
+ K2eA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=xCNLhoelsRO4TCaFqCkPA59+Ay48720LqdAdNtyWtdc=;
- b=nV9JSbEwm8hWQNLk6YXEAI1N/aGPXnka2lMDiTnx77MO11SIbQeOOTxpGRt3raqYiS
- 7fApxuPIto+3QMoofWoJrniHn3nwpIitgbyr2YmayQqaazfVZJEQ2knG1NFPr1MX1i9D
- wBivWhe4S5tTAk0PR++6zU2+osjczqkqSlBhv7ZTAxYEVtjzNgrwhhU7qhFlhSm4MkoA
- f79oWp2uJKtAJItf14kaOzgBvUNOyanBa7S3DUnAZ8CXxYTfJJ9JnbK5c5URViQ8OxSC
- BDL7BaapkPAE/vNfto2b6DUY6W+PrcmVoKl2K+AomRttg56w/iv+KC4bxtozLOddLJIj
- rXKQ==
-X-Gm-Message-State: AOAM533XUpksocRp/1f35mkFeI/luSWLGKPSzxRQJ2XCyC+gpBmjHNem
- ysOueQ4lpcb+hJHWvXxCghXUd8v6ijJEl9+u9S+lTZ6y8TU851ePXW88LUiKh6ZkIp71cR40Lip
- l3JQV6QtBT+MgafU=
-X-Received: by 2002:a5d:4409:: with SMTP id z9mr29211364wrq.236.1602506731773; 
- Mon, 12 Oct 2020 05:45:31 -0700 (PDT)
-X-Received: by 2002:a5d:4409:: with SMTP id z9mr29211331wrq.236.1602506731500; 
- Mon, 12 Oct 2020 05:45:31 -0700 (PDT)
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=5dF+jf9n1DnItLemKMZxZtmjBoHnSoohLjejZPCpzDM=;
+ b=NJics+O9X/4QF6KwH8cxZIYsWbRPldNDEnk5inU1O7SZJWk/URC/uRms70vBcgGThn
+ U2GB1HZOnQghsGmM4jt2DC51ysG3Y4/I7axDb3u1iYVU1xZT1iAOz+L/QGlSdfIWQOAq
+ 1TkPtJ25xtCCEP5viPRLPy/KWvz7GuNe7vduhiYxy834RH9nAA5egEzmVj+7z+dshh2O
+ svzK/fQ2fpuIF9ZpSCuT5q/MFeTpSdqM0LTwGWOhPa9LQszPy+sOM4Yvywv1Ix8srw0Z
+ 6pVHNdiQUuI90FsimNPSh2um5m6bmQIh3s0UqgPWcATZ7mc+EbjW1CVTQZTjYgc0CDTA
+ lg0Q==
+X-Gm-Message-State: AOAM533ucadIHpPW+k+UDDesxUMDlKU/XWVK3RyOEJdk4wgNBP8y+dL3
+ jYE1DAh0Qw4ZAXGqo9QK7aWLgW6sm50=
+X-Received: by 2002:a5d:6744:: with SMTP id l4mr30409135wrw.18.1602508833958; 
+ Mon, 12 Oct 2020 06:20:33 -0700 (PDT)
 Received: from localhost.localdomain
  (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id l5sm24326366wrq.14.2020.10.12.05.45.29
+ by smtp.gmail.com with ESMTPSA id t83sm13254247wmf.39.2020.10.12.06.20.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 05:45:30 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+ Mon, 12 Oct 2020 06:20:33 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 4/5] hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'
-Date: Mon, 12 Oct 2020 14:45:05 +0200
-Message-Id: <20201012124506.3406909-5-philmd@redhat.com>
+Subject: [PATCH v2 3/5] hw/pci-host/versatile: Add the MEMORY_WINDOW_COUNT
+ definition
+Date: Mon, 12 Oct 2020 15:20:14 +0200
+Message-Id: <20201012132017.3423954-4-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
-In-Reply-To: <20201012124506.3406909-1-philmd@redhat.com>
-References: <20201012124506.3406909-1-philmd@redhat.com>
+In-Reply-To: <20201012132017.3423954-1-f4bug@amsat.org>
+References: <20201012132017.3423954-1-f4bug@amsat.org>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/11 23:52:29
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
- Helge Deller <deller@gmx.de>, "Michael S. Tsirkin" <mst@redhat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
- David Gibson <david@gibson.dropbear.id.au>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Richard Henderson <rth@twiddle.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yloJnHr0gFV6
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: W4V/uY+CH3BS
 
-From: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Note from Peter Maydell:
 
-We already have a generic PCI_SLOT() macro in "hw/pci/pci.h"
-to extract the PCI slot identifier, use it.
+ The versatile/realview PCI controller has:
+   * three memory windows in the system address space
+     - those are represented by the pci_mem_window[] array
+     - mem_win_size[] holds the size of each window
+       (which is fixed but varies between the different
+       implementations of this controller on different boards)
+     - the device IMAPn registers allow the guest to
+       configure the mapping from "a CPU access to an
+       address in window n" to "a PCI address on the PCI bus,
+       and our imap[] array holds those register values
+
+Use self-explicit MEMORY_WINDOW_COUNT definition instead of
+a magic value.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/hppa/dino.c        | 2 +-
- hw/i386/xen/xen-hvm.c | 2 +-
- hw/isa/piix3.c        | 2 +-
- hw/mips/gt64xxx_pci.c | 2 +-
- hw/pci-host/bonito.c  | 2 +-
- hw/pci-host/ppce500.c | 2 +-
- hw/ppc/ppc4xx_pci.c   | 2 +-
- hw/sh4/sh_pci.c       | 2 +-
- 8 files changed, 8 insertions(+), 8 deletions(-)
+ hw/pci-host/versatile.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
 
-diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
-index 81053b5fb64..5b82c9440d1 100644
---- a/hw/hppa/dino.c
-+++ b/hw/hppa/dino.c
-@@ -496,7 +496,7 @@ static void dino_set_irq(void *opaque, int irq, int level)
+diff --git a/hw/pci-host/versatile.c b/hw/pci-host/versatile.c
+index b4951023f4e..61465bbbb65 100644
+--- a/hw/pci-host/versatile.c
++++ b/hw/pci-host/versatile.c
+@@ -72,6 +72,8 @@ enum {
+     PCI_VPB_IRQMAP_FORCE_OK,
+ };
  
- static int dino_pci_map_irq(PCIDevice *d, int irq_num)
- {
--    int slot = d->devfn >> 3;
-+    int slot = PCI_SLOT(d->devfn);
++#define MEMORY_WINDOW_COUNT 3
++
+ struct PCIVPBState {
+     PCIHostState parent_obj;
  
-     assert(irq_num >= 0 && irq_num <= 3);
+@@ -86,17 +88,17 @@ struct PCIVPBState {
+      * The offsets into pci_mem_space are controlled by the imap registers.
+      */
+     MemoryRegion pci_io_window;
+-    MemoryRegion pci_mem_window[3];
++    MemoryRegion pci_mem_window[MEMORY_WINDOW_COUNT];
+     PCIBus pci_bus;
+     PCIDevice pci_dev;
  
-diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-index f3ababf33b6..276254e6ca9 100644
---- a/hw/i386/xen/xen-hvm.c
-+++ b/hw/i386/xen/xen-hvm.c
-@@ -140,7 +140,7 @@ typedef struct XenIOState {
+     /* Constant for life of device: */
+     int realview;
+-    uint32_t mem_win_size[3];
++    uint32_t mem_win_size[MEMORY_WINDOW_COUNT];
+     uint8_t irq_mapping_prop;
  
- int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num)
- {
--    return irq_num + ((pci_dev->devfn >> 3) << 2);
-+    return irq_num + (PCI_SLOT(pci_dev->devfn) << 2);
+     /* Variable state: */
+-    uint32_t imap[3];
++    uint32_t imap[MEMORY_WINDOW_COUNT];
+     uint32_t smap[3];
+     uint32_t selfid;
+     uint32_t flags;
+@@ -130,7 +132,7 @@ static void pci_vpb_update_all_windows(PCIVPBState *s)
+     /* Update all alias windows based on the current register state */
+     int i;
+ 
+-    for (i = 0; i < 3; i++) {
++    for (i = 0; i < MEMORY_WINDOW_COUNT; i++) {
+         pci_vpb_update_window(s, i);
+     }
  }
- 
- void xen_piix3_set_irq(void *opaque, int irq_num, int level)
-diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
-index 587850b8881..f46ccae25cf 100644
---- a/hw/isa/piix3.c
-+++ b/hw/isa/piix3.c
-@@ -361,7 +361,7 @@ type_init(piix3_register_types)
- static int pci_slot_get_pirq(PCIDevice *pci_dev, int pci_intx)
+@@ -148,7 +150,7 @@ static const VMStateDescription pci_vpb_vmstate = {
+     .minimum_version_id = 1,
+     .post_load = pci_vpb_post_load,
+     .fields = (VMStateField[]) {
+-        VMSTATE_UINT32_ARRAY(imap, PCIVPBState, 3),
++        VMSTATE_UINT32_ARRAY(imap, PCIVPBState, MEMORY_WINDOW_COUNT),
+         VMSTATE_UINT32_ARRAY(smap, PCIVPBState, 3),
+         VMSTATE_UINT32(selfid, PCIVPBState),
+         VMSTATE_UINT32(flags, PCIVPBState),
+@@ -370,10 +372,11 @@ static void pci_vpb_set_irq(void *opaque, int irq_num, int level)
+ static void pci_vpb_reset(DeviceState *d)
  {
-     int slot_addend;
--    slot_addend = (pci_dev->devfn >> 3) - 1;
-+    slot_addend = PCI_SLOT(pci_dev->devfn) - 1;
-     return (pci_intx + slot_addend) & 3;
- }
+     PCIVPBState *s = PCI_VPB(d);
++    int i;
  
-diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
-index e091bc4ed55..588e6f99301 100644
---- a/hw/mips/gt64xxx_pci.c
-+++ b/hw/mips/gt64xxx_pci.c
-@@ -982,7 +982,7 @@ static int gt64120_pci_map_irq(PCIDevice *pci_dev, int irq_num)
- {
-     int slot;
- 
--    slot = (pci_dev->devfn >> 3);
-+    slot = PCI_SLOT(pci_dev->devfn);
- 
-     switch (slot) {
-     /* PIIX4 USB */
-diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-index b05295639a6..ee8b193e15b 100644
---- a/hw/pci-host/bonito.c
-+++ b/hw/pci-host/bonito.c
-@@ -570,7 +570,7 @@ static int pci_bonito_map_irq(PCIDevice *pci_dev, int irq_num)
- {
-     int slot;
- 
--    slot = (pci_dev->devfn >> 3);
-+    slot = PCI_SLOT(pci_dev->devfn);
- 
-     switch (slot) {
-     case 5:   /* FULOONG2E_VIA_SLOT, SouthBridge, IDE, USB, ACPI, AC97, MC97 */
-diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
-index 9517aab913e..5ad1424b31a 100644
---- a/hw/pci-host/ppce500.c
-+++ b/hw/pci-host/ppce500.c
-@@ -342,7 +342,7 @@ static const MemoryRegionOps e500_pci_reg_ops = {
- 
- static int mpc85xx_pci_map_irq(PCIDevice *pci_dev, int pin)
- {
--    int devno = pci_dev->devfn >> 3;
-+    int devno = PCI_SLOT(pci_dev->devfn);
-     int ret;
- 
-     ret = ppce500_pci_map_irq_slot(devno, pin);
-diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-index 28724c06f88..e8789f64e80 100644
---- a/hw/ppc/ppc4xx_pci.c
-+++ b/hw/ppc/ppc4xx_pci.c
-@@ -243,7 +243,7 @@ static void ppc4xx_pci_reset(void *opaque)
-  * may need further refactoring for other boards. */
- static int ppc4xx_pci_map_irq(PCIDevice *pci_dev, int irq_num)
- {
--    int slot = pci_dev->devfn >> 3;
-+    int slot = PCI_SLOT(pci_dev->devfn);
- 
-     trace_ppc4xx_pci_map_irq(pci_dev->devfn, irq_num, slot);
- 
-diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
-index 73d2d0bccb0..734892f47c7 100644
---- a/hw/sh4/sh_pci.c
-+++ b/hw/sh4/sh_pci.c
-@@ -109,7 +109,7 @@ static const MemoryRegionOps sh_pci_reg_ops = {
- 
- static int sh_pci_map_irq(PCIDevice *d, int irq_num)
- {
--    return (d->devfn >> 3);
-+    return PCI_SLOT(d->devfn);
- }
- 
- static void sh_pci_set_irq(void *opaque, int irq_num, int level)
+-    s->imap[0] = 0;
+-    s->imap[1] = 0;
+-    s->imap[2] = 0;
++    for (i = 0; i < MEMORY_WINDOW_COUNT; i++) {
++        s->imap[i] = 0;
++    }
+     s->smap[0] = 0;
+     s->smap[1] = 0;
+     s->smap[2] = 0;
+@@ -453,7 +456,7 @@ static void pci_vpb_realize(DeviceState *dev, Error **errp)
+      * PCI memory space. The sizes vary from board to board; the base
+      * offsets are guest controllable via the IMAP registers.
+      */
+-    for (i = 0; i < 3; i++) {
++    for (i = 0; i < MEMORY_WINDOW_COUNT; i++) {
+         memory_region_init_alias(&s->pci_mem_window[i], OBJECT(s), "pci-vbp-window",
+                                  &s->pci_mem_space, 0, s->mem_win_size[i]);
+         sysbus_init_mmio(sbd, &s->pci_mem_window[i]);
 -- 
 2.26.2
 

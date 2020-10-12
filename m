@@ -1,100 +1,100 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1015569lfa;
-        Mon, 12 Oct 2020 05:49:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyTUqkj6QMbtkrfIIJ+8ufYqWAIREr4bz4e40c0z3NxcOPjSvQNHS+blMdsPFu0el/w/+OD
-X-Received: by 2002:a25:168a:: with SMTP id 132mr31462443ybw.299.1602506973038;
-        Mon, 12 Oct 2020 05:49:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602506973; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1018303lfa;
+        Mon, 12 Oct 2020 05:53:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwG3zmjdJVRev7TMQe0VND/dd+7rRRMjwHzcX1Z742xyK6Gz8c876JoeHUXlQ8RRvhahi+B
+X-Received: by 2002:a25:af41:: with SMTP id c1mr34632764ybj.213.1602507227635;
+        Mon, 12 Oct 2020 05:53:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602507227; cv=none;
         d=google.com; s=arc-20160816;
-        b=hnLPPqcC6aHBOHxWeeBzbZr6ckaB+RXBJ5/s7Dt6ekm9d0j4Kzk2gbO/cpMrE0/VuQ
-         qfVP8duI/Rqchbbik3mO0I9SKKf3NIE+bJgszygKgh9LYWcuS7uzlhFeA/cQnZUg5vK5
-         MOv2pr8vzgUjSfIyKhPxV+QH421wKJPav/sXf2A8nEnjwd4mc8y2scJIC/ohJ5whVzf/
-         j7VPcYIeS4BAzxAOXp9MFU2U9pe+Jvh7fec0HDd+z1hX1DWMC5YgP7ax4Ueg+s+PzGAR
-         G3i1PoaLSIuvFljwcDF8ZTHI+mpPMRG+XjNDXuMU93Iv5e41I/UkQi94nXYuSbFrsvo3
-         ZY/w==
+        b=CL0rPPMIm1U8YjZM03XvaLDSU2SaSuq5Dc/dkeY2cYFdSYfHnzkmW6SW/F4CtXfxwI
+         Uz55lcmC1Z5J9JJ7qyguvg66aXvdQXZKIGBV7E+goDrKMugMNt3dtnxrW3ycV39FvDSs
+         hpYF7Grs9pAuvuGofU38OTc3M9dRUo2Qlk/jaNhGrf2JC321BP3DjtFEw8jWbcIpmqte
+         izl+4U0Wsu49+rbhNJuVnJ7W8d9nOFR+6XDkpIaXmU/QMX1Hz3w9d6a4PjMtste4HYGc
+         cJOdWasm5iU3AOTqAOO39dEPT/jlQj3XKD0O4kiXEA5Oub/vYh+1+k+f/ZbtceB0NZxz
+         KwTg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bwG8iSHLZW0tTYCnl2ic6/t6qmfYl8jGlMpgEnOotCs=;
-        b=NGSZlP8+kvG7wenROQ/2I2x44g6jPhMXo8V7L7SlhoMiCEDzgPflvFl15OkZVTzjID
-         xmRcZ4NGSQz9Z/5SKXYQCwVOyvJAyBqp/zj2QAADW2INfvTb8ruekckDruzAuT/qmg1a
-         uV9y8GyPv2k/KMXO1fdg1F1lhdt10myA5HH5+sEbxg1BdHHIxlQTvaRMrk8PxNpiuxD3
-         e2+fa0T0oNIbjfT5PzMd8rkB1iHGZIR+j9u1olx1EWmbxwSkADa6wrUy5tqK/QXmo9Rb
-         Iw9VcfWld2lc7oyFwgrhqiRvkJ+DQetWfyYp2t5Cuh9yoLl+/fH6c5nw6XLks2aRfdDF
-         9v0g==
+        bh=9wGxJZcsEOLAGSmgs7p8pt5WGBHmly5siKydoVe/oZE=;
+        b=UtimD1b/kLQ8rD8Y1S8aNO4S7Egx8T9wFcL9xRFGifuhgaoeUA5ACLf0MuAb2tF8/6
+         iDsralHMJTHPne+LL39zNzZ+0gEQwXVZnYALugKVBjIWdDLKbFZPTfof/eKvNep3SEPI
+         gwW9L+wb5Ms0efi1TX4rmCKsSvfi9akFeVrYX6aR6407wDeGDbZ/nyFrDVDLcWNCS2jb
+         GdM8snvTnm5yRe5VoP0NRAHrKUpi6XCQBwHpBKxpmwGZEm6lFTrV3CQWJUeu7LdMViyY
+         P4mxm8Uyu2y5DfbuPloifseFvQN1ovxViuyMo8ksHMCunfUbK4OOo3skjQx/7uTLykKU
+         AfwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LoZqtaFZ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KsGRH1Px;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p184si13685688yba.367.2020.10.12.05.49.32
+        by mx.google.com with ESMTPS id k6si14386520ybt.147.2020.10.12.05.53.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 05:49:33 -0700 (PDT)
+        Mon, 12 Oct 2020 05:53:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LoZqtaFZ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KsGRH1Px;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58990 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45716 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRxGe-0000xd-DJ
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:49:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33268)
+	id 1kRxKl-0007Gp-0O
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:53:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33532)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCb-0004x5-4A
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 08:45:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:55663)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCw-0005ly-Hw
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 08:45:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:34836)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCZ-0008TK-8d
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 08:45:20 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCu-0000AI-M9
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 08:45:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602506718;
+ s=mimecast20190719; t=1602506739;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bwG8iSHLZW0tTYCnl2ic6/t6qmfYl8jGlMpgEnOotCs=;
- b=LoZqtaFZ14PMiVG5YwWZDLriI0xjyU7gGSiWQDnxzOKLHb3cwadDmXh61qzcP0A40ySUE2
- MdBHKQ2YyjyqH2/HvUpEO+g/Lj8MJVewGgFov7OAbbgBhTP9E7hVojhpHOr9/MiNsDaQfr
- 5mQmXpW3qfQOevb7Xa+m/mWEKiM/jJg=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-282-OKKd7mzjN6y5V2dJ9LTKFg-1; Mon, 12 Oct 2020 08:45:16 -0400
-X-MC-Unique: OKKd7mzjN6y5V2dJ9LTKFg-1
-Received: by mail-wr1-f71.google.com with SMTP id b11so5458805wrm.3
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 05:45:16 -0700 (PDT)
+ bh=9wGxJZcsEOLAGSmgs7p8pt5WGBHmly5siKydoVe/oZE=;
+ b=KsGRH1PxYfLxYtjwYmC83GqCU7eL6OEigW9HPP0hlGVVEwLg2T7ZkzTAlzN1Imj/tW4VxV
+ PtDHp2EVBa1FETnXgUm0N1s4TM6tN+tM126JmP9Cl9cgMnPRFR9hlx49+790cF8lk6jKHL
+ cOEEm3ou6gesUD+Uyu884+Inzf/C7sg=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-198-wsOJueC_NPmoCKJ6D8BdHQ-1; Mon, 12 Oct 2020 08:45:38 -0400
+X-MC-Unique: wsOJueC_NPmoCKJ6D8BdHQ-1
+Received: by mail-wm1-f72.google.com with SMTP id c204so5732476wmd.5
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 05:45:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=bwG8iSHLZW0tTYCnl2ic6/t6qmfYl8jGlMpgEnOotCs=;
- b=aA3SAze6Fwti8GmhasHtqgIciVKL4cpch40Yex/HnLaVsjPjEyO0awW6kGpiFIBS8j
- HiC7WB63mvFSnQy10gGQgYNIOMKdFqPcCkkBK3OsETakYsQkna5A6c/8No10y7WK7Iw/
- QODSgNHZJCzdGPUMy3WuJGH8wFVBaLdb3i77klEQLCinBX1oN6PGrf9MBhHiQgo0jEpl
- F/Y+XFgLcurBwXpb2/3v+Rx7VAFzqGZWkm0MuBTFDnA3C5PEdXv3pJuEhGEAr1jBfGcr
- HHvOp6/cn7JSLKW5tc9o1ZU0RgVWCtrOdXPXKr9gh8oTwvwEnTInkdczVvnTMTXeFCtL
- v/6Q==
-X-Gm-Message-State: AOAM533SuGpjz6VQu/QoSP2RnVx8UspUfVV5NmW5Zymf9aGKfYCKI8uk
- VqYtA5f/ZQ2LOh7iDLZbszdN+4uMdU8QHh8cpfxt+OLSuFlC5Q9Nf8zA8Yyp9oN7Mb6lzfsVeOe
- Hfi9sxZ7pDHne
-X-Received: by 2002:adf:dd46:: with SMTP id u6mr29753230wrm.295.1602506715237; 
- Mon, 12 Oct 2020 05:45:15 -0700 (PDT)
-X-Received: by 2002:adf:dd46:: with SMTP id u6mr29753217wrm.295.1602506715091; 
- Mon, 12 Oct 2020 05:45:15 -0700 (PDT)
+ bh=9wGxJZcsEOLAGSmgs7p8pt5WGBHmly5siKydoVe/oZE=;
+ b=rsS9Jksnl2t38k7c9gIGqJtRJ/I0Z/75DOIkkEYrMSAOushJZiFZQW5FjgAmcJiDXu
+ 8CEca5utoOFRP4pByurtdI22nAZi2iiXspuPskQLAqEQ8NQPT53XWm7WTZ0sJear2y7J
+ 37SNuSWeoWRJoFzijf1a6JYYjyAe7+g+Mmp3x/W7UGNPMNBMUHuyuU89G3JoCEAzusdl
+ TZvRF2Wk6vgYe2B5BwClYo55GIxda0OeTXO4Yn/eL4BxDG/hqNFju1RnGoUbEXu1hByU
+ 3sT54eOUdM4PsZ3SPFxZ3XEwT8Tv37vXCyrzqr6WqGUzzps50SHovEQ2Jqv9zU7BtMuk
+ +Alw==
+X-Gm-Message-State: AOAM530r5bWF4lLtOrxR0vND8CXUo7HPwn+lCCQlfWITTfQkQPiO+Yxy
+ JKa3iOLbLOU61p+L7oryu0r1mqUCyxFIKov7WcOETBXOpNrGi7owyt+hzHnioeLLPR44eYalE/L
+ GQIhKa59FBmbh
+X-Received: by 2002:adf:dccc:: with SMTP id x12mr30544381wrm.241.1602506737180; 
+ Mon, 12 Oct 2020 05:45:37 -0700 (PDT)
+X-Received: by 2002:adf:dccc:: with SMTP id x12mr30544349wrm.241.1602506736967; 
+ Mon, 12 Oct 2020 05:45:36 -0700 (PDT)
 Received: from localhost.localdomain
  (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id f6sm11016383wru.50.2020.10.12.05.45.12
+ by smtp.gmail.com with ESMTPSA id s185sm22765462wmf.3.2020.10.12.05.45.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 05:45:14 -0700 (PDT)
+ Mon, 12 Oct 2020 05:45:36 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 1/5] hw/pci-host/bonito: Make PCI_ADDR() macro more readable
-Date: Mon, 12 Oct 2020 14:45:02 +0200
-Message-Id: <20201012124506.3406909-2-philmd@redhat.com>
+Subject: [PATCH 5/5] hw: Use the PCI_DEVFN() macro from 'hw/pci/pci.h'
+Date: Mon, 12 Oct 2020 14:45:06 +0200
+Message-Id: <20201012124506.3406909-6-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201012124506.3406909-1-philmd@redhat.com>
 References: <20201012124506.3406909-1-philmd@redhat.com>
@@ -147,33 +147,50 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: MoSsgZLSrqHm
+X-TUID: nMQaHgMlZDFS
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-The PCI_ADDR() macro use generic PCI fields shifted by 8-bit.
-Rewrite it extracting the shift operation one layer.
+We already have a generic PCI_DEVFN() macro in "hw/pci/pci.h"
+to pack the PCI slot/function identifiers, use it.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/pci-host/bonito.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/virt.c          | 3 ++-
+ hw/pci-host/uninorth.c | 6 ++----
+ 2 files changed, 4 insertions(+), 5 deletions(-)
 
-diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-index a99eced0657..abb3ee86769 100644
---- a/hw/pci-host/bonito.c
-+++ b/hw/pci-host/bonito.c
-@@ -196,8 +196,8 @@ FIELD(BONGENCFG, PCIQUEUE,      12, 1)
- #define PCI_IDSEL_VIA686B          (1 << PCI_IDSEL_VIA686B_BIT)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index e465a988d68..f601ef0798c 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -1144,7 +1144,8 @@ static void create_pcie_irq_map(const VirtMachineState *vms,
+                      full_irq_map, sizeof(full_irq_map));
  
- #define PCI_ADDR(busno , devno , funno , regno)  \
--    ((((busno) << 16) & 0xff0000) + (((devno) << 11) & 0xf800) + \
--    (((funno) << 8) & 0x700) + (regno))
-+    ((((busno) << 8) & 0xff00) + (((devno) << 3) & 0xf8) + \
-+    (((funno) & 0x7) << 8) + (regno))
+     qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupt-map-mask",
+-                           0x1800, 0, 0, /* devfn (PCI_SLOT(3)) */
++                           cpu_to_be16(PCI_DEVFN(3, 0)), /* Slot 3 */
++                           0, 0,
+                            0x7           /* PCI irq */);
+ }
  
- typedef struct BonitoState BonitoState;
+diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
+index c21de0ab805..f73d452bdce 100644
+--- a/hw/pci-host/uninorth.c
++++ b/hw/pci-host/uninorth.c
+@@ -70,10 +70,8 @@ static uint32_t unin_get_config_reg(uint32_t reg, uint32_t addr)
+         /* ... and then convert them to x86 format */
+         /* config pointer */
+         retval = (reg & (0xff - 7)) | (addr & 7);
+-        /* slot */
+-        retval |= slot << 11;
+-        /* fn */
+-        retval |= func << 8;
++        /* slot, fn */
++        retval |= PCI_DEVFN(slot, func) << 8;
+     }
  
+     trace_unin_get_config_reg(reg, addr, retval);
 -- 
 2.26.2
 

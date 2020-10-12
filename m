@@ -1,103 +1,103 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1153304lfa;
-        Mon, 12 Oct 2020 08:42:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJybcbgVDxMGKqaO4NZX+xl6CIUZgJSDmrW3ots06lg5VGnCTh1uo2L9YRvaXyrJGVvBJfRF
-X-Received: by 2002:a25:af41:: with SMTP id c1mr35657462ybj.213.1602517328731;
-        Mon, 12 Oct 2020 08:42:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602517328; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1153398lfa;
+        Mon, 12 Oct 2020 08:42:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy4pE3VhREwXqFmOcIW3JDr/EdfNHT3xPcg9fVE7IhZGpVtcGb+bhLes69OBhEdugiHL05g
+X-Received: by 2002:a25:d481:: with SMTP id m123mr5608116ybf.142.1602517337140;
+        Mon, 12 Oct 2020 08:42:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602517337; cv=none;
         d=google.com; s=arc-20160816;
-        b=l92mVWHfG/SxPjhUbgOk+dbTr+SfD5yUSoLzCik5gn1s6gHe4cWrdqcOjWZpciL7FE
-         Ao6qXa37b9rKZ/gDJRg5smHsxQUZcCQuBDo52okvQ1cB3DvYrFpahpCzIue6KyvPLQkq
-         n6Kpaz8C7KHlqnNEbkxm5uzuS2P8wnLPcjmE/xdfh7vhzFQ+KfdSdSy8VoynSPCNMrk1
-         FbRrOvF8uN0p9BKuP4+TrLajtRp4JqjveT6MKAlehJy0WJ3/nW6pg/xQc2zAvDrxpg7N
-         R3C6Ph+NC4wrekl8Q1I3GHsfmKg9sdwBAIqeCwGJ8qTk+UZ1Sedz5l7V+s9zoCkEAEgS
-         INaw==
+        b=RaPZEP+k/RNktDtAU7yFEGBaBZOk8LCdyua+876Nown/6searP3q7Oxg3U+gtNBn2s
+         YAoz5d5HsUCZc+qmwfZgDCWjmFLPimOvAywkt5ggdQCpWI5KHzGzWhxrVrkl+1arLivy
+         ZRAjPAOiAbA0uiAKt4I+9KVf4CV+xH2Aj+KtobCCCf16/AIRB7EKTUieJP0iqDO2bE9J
+         SQaXXXo3V2HOQzxgemSHOeVn9FQ3S6+O4SwGLDw8KoNuuegu36KGDaFXcpIzjl4Brw9C
+         WpSvtMhsQbiVf1VOOKWbro+LT8UiM7a9rcwLVDtIHEtzy3Jyyf/nMq3YlrAuUnCGVyb4
+         4tig==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZKtxYGps5VFXsStAbHuqacbKwp4q81OIlKsuS5wAl+8=;
-        b=D6O7HPcnMWAwnd0g4be0DxET/Ro2UtkNzllIhgwa3U72CpcT0wFkJBKg8bmIFiWV2w
-         YNyepyvYyZ/hwjP1bhl+3c+Xti/3aoEd/k74MQC9mQis3avHLy2GJSNmBqBJ7jY61BzF
-         jNAPZZ61dmrOuXramSwsbnk72oLHUHI49arY10xGCBMn7ZRhAZbX+qxzwbNCQGDdRX1N
-         jKBlUnKXNtsmtWW7VPa5rRW46l1ttbQW/qx4oRUmC7LwpJXkQ36VxtYtAtlm5EfRvaZd
-         59g7RhgbR3PgmNOfwjPyvKGvc6Fs1x8viqQ95ZkZqIwqhzcpEXx9TYWEot23tH0VKWwI
-         6f4A==
+        bh=+rL5y+LPIlyoU3TM7H1gns6WWZrHXRx5K1wFTm/QiuM=;
+        b=D5MDxPJltV91Emk+AwLUiPERZ6PhW2RTq2EUBXGW6xEJ1RzsHTYt5QMixOgQldGcMO
+         nfL3lWUnFnEI7RKxR81tgi59UZaEC1Pguui9Rdoyf2+shaAtkBBexxp6rhnXR3/9YG1u
+         x77sKJe7XPXgefBMO1sLkEfBJ+QyelLA6YqKBURO/67AXrqcVzzvrQN4+ml36rrZHiyZ
+         GzZmbNZDszyaYf2Y4+nZHqeamaR2nWN6Ygq8DgI/sgn5OF9FGg3Tmn6Qm5LFOD0BCAPj
+         ag7BRdJmsTOcC2wdbKoIrHyKLJWGpg1AcsNaD9U54QRN/R0gkO1IEUlDVyHaSFA3stBs
+         05lQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oopoGJUo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iYSLRaPq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 191si14574509ybd.475.2020.10.12.08.42.08
+        by mx.google.com with ESMTPS id e64si6483961yba.232.2020.10.12.08.42.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:42:08 -0700 (PDT)
+        Mon, 12 Oct 2020 08:42:17 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=oopoGJUo;
+       dkim=pass header.i=@linaro.org header.s=google header.b=iYSLRaPq;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:50894 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51242 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRzxe-0007KZ-An
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:42:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56702)
+	id 1kRzxo-0007TV-Ej
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:42:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56882)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqF-0006nj-Qy
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:27 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:46363)
+ id 1kRzqM-00072M-9E
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:37 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:51186)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqD-0007I3-VZ
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:27 -0400
-Received: by mail-wr1-x442.google.com with SMTP id n6so19391221wrm.13
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:25 -0700 (PDT)
+ id 1kRzqK-0007KH-KC
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:33 -0400
+Received: by mail-wm1-x344.google.com with SMTP id 13so17525809wmf.0
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ZKtxYGps5VFXsStAbHuqacbKwp4q81OIlKsuS5wAl+8=;
- b=oopoGJUogC2SBAD0Fi+W7FkzqzSSo9fjMTFE3Li6I97azXcT8zr1SrPfoks+jqXoDX
- PF7vTkXgH/A7LTBYszojVWbJWKSGXNsDGV/e+9rB2GhfFBUA+xalI/o8zaGpzADwayyN
- lIVHQX3i5Os+2V6G/xiR5ka8Fa37X81BTjpTSRhYjPM72YxFepUGUKEcLXVPcjxAO1i2
- l+TxgbU7Jso+jWrn1NjOh97E7ebywvQ06MSCVbIsIjpvZt+hfrrPa5Xq/EwLvXzNoPia
- S9lXmIzztY3Ah0B8SnxRriHyzxpAYBZ2G4ER4LZ3QPOD768Iypn4eAIx508fhJfBX0wB
- GHRg==
+ bh=+rL5y+LPIlyoU3TM7H1gns6WWZrHXRx5K1wFTm/QiuM=;
+ b=iYSLRaPqYYm55PYEe2u/gTksh2DYtlQokYWvM4HiWEY591jCkZjXlvE9Mz6wVNvzdj
+ V7qOhCBqCi/pArufM/CE7v2jlImzg0wx76ZOQacNHpTAnJ0IBnhz9uC7sYU/GGebLldo
+ e0U3FfKg4ytb0CxgMN/hzId/Y41ZdOCl9g3kUV9OKgtUmDBP1KjXuTgGcKHSf6YljeyT
+ vU8p6NTtoHbUpBYKl8ighOGm7ygULVeUPcdqyFhRbEEFUxCcd4CFOFJbWbeIyB4V7xUJ
+ f7Qh1svo9X+M8jEY+XB7ucnTrVmhfEgEWP2RLVUexTHUU0UnDAQEriJptvFGpt+GRcI4
+ D5Ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZKtxYGps5VFXsStAbHuqacbKwp4q81OIlKsuS5wAl+8=;
- b=srr5n99RXZM9dqZHxoeV9wrxAcl9i4v5mFzEoYAa4zVQCGG65xQzrsGrcAtbtoHyr8
- scxXuz/4eRgB7nCsAMVaikHXaIr2zQ21mJwMrvhpVYlWEMDFkYPlBEL3YB7/T2tEHklR
- uPs5hrlOlV9B/aMWainewT5YL2jPDoNY/SuzAePCKq2od7ibzW6f7wUN18F7Vfn5vnlA
- ZuonWPvS2CJ6E/qWEH1h2uXQu2EkJp4z8uHLKLju3/7Fm45dgba/3J7RuE5j7UuvYgwz
- HuVzRKQyiOyLxm33c0zqFxB2y1JCkWVllPCvSF2v/DIg2skfoAJDkYtjuOfhQjvenRc6
- P+zA==
-X-Gm-Message-State: AOAM530bzrVIeEdiYDXDvphtK9STFWpHhBG2TBXdDMcQ1sYxjEbhfNch
- 0HQE5Q8NALnYqDsxVQ0WjkmYIkymnoxVAJvg
-X-Received: by 2002:adf:82e5:: with SMTP id 92mr29435427wrc.192.1602516864360; 
- Mon, 12 Oct 2020 08:34:24 -0700 (PDT)
+ bh=+rL5y+LPIlyoU3TM7H1gns6WWZrHXRx5K1wFTm/QiuM=;
+ b=cfMMl1Dif9tmAMECsu3s7ajHFWZh3VLIpKC+IldjDwfxr1yu96VI+gvEsLESmGU8sT
+ QMs9PlfCLivRMwftT47qfEZX8Rfve+qFh79kX8un9/bGBFbBzdYZDpz0WpwGFnJnCLMJ
+ O2IaOMtiuv1zZP+2g0/uXEzQ23SCCSIIkSKu4som9IyEWUymr3IoSg53tajmBTz/veMt
+ dYonlCMzOZRtH8mggQWZB08gDpceiQMIJSChjy4qiyKv5/ztUZAoOb8h55tUvn0xlBcF
+ XSTEULmkKvVC5HTUVa5Xa1oNK5d/RE6d7et6phduPIteEB/hm+GeJI9DTGD9BQu/vBAX
+ f23g==
+X-Gm-Message-State: AOAM530DRfxSneiPul2QxGAbuYeTA7mOfy8nk8JeiJ+q0AFHOk81yQ8t
+ 0DqYdwkm3pNgXvJf5WFGpckCg/SCVLEBnBpN
+X-Received: by 2002:a1c:6457:: with SMTP id y84mr11141811wmb.36.1602516871079; 
+ Mon, 12 Oct 2020 08:34:31 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.23
+ by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:23 -0700 (PDT)
+ Mon, 12 Oct 2020 08:34:30 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-5.1] hw/arm/netduino2,
- netduinoplus2: Set system_clock_scale
-Date: Mon, 12 Oct 2020 16:33:35 +0100
-Message-Id: <20201012153408.9747-13-peter.maydell@linaro.org>
+Subject: [PATCH] hw/timer/armv7m_systick: assert that board code set
+ system_clock_scale
+Date: Mon, 12 Oct 2020 16:33:41 +0100
+Message-Id: <20201012153408.9747-19-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
 References: <20201012153408.9747-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x442.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -122,76 +122,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: aWDL/fiZR/v3
+X-TUID: /wvK1Euovt6g
 
-The netduino2 and netduinoplus2 boards forgot to set the system_clock_scale
-global, which meant that if guest code used the systick timer in "use
-the processor clock" mode it would hang because time never advances.
+It is the responsibility of board code for an armv7m system to set
+system_clock_scale appropriately for the CPU speed of the core.
+If it forgets to do this, then QEMU will hang if the guest tries
+to use the systick timer in the "tick at the CPU clock frequency" mode.
 
-Set the global to match the documented CPU clock speed of these boards.
-Judging by the data sheet this is slightly simplistic because the
-SoC allows configuration of the SYSCLK source and frequency via the
-RCC (reset and clock control) module, but we don't model that.
+We forgot that in a couple of our boards (see commits ce4f70e81ed23c93f,
+e7e5a9595ab1136). Add an assertion in the systick reset method so
+we don't let any new boards in with the same bug.
 
-Fixes: https://bugs.launchpad.net/qemu/+bug/1876187
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-NB: tested with "make check" only...
+In the longer term we should make this a clocktree input and
+plumb it through the armv7m container and so on, but for the
+moment this assert() improves the current situation.
+---
+ hw/timer/armv7m_systick.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
- hw/arm/netduino2.c     | 10 ++++++++++
- hw/arm/netduinoplus2.c | 10 ++++++++++
- 2 files changed, 20 insertions(+)
-
-diff --git a/hw/arm/netduino2.c b/hw/arm/netduino2.c
-index 79e19392b56..8f103341443 100644
---- a/hw/arm/netduino2.c
-+++ b/hw/arm/netduino2.c
-@@ -30,10 +30,20 @@
- #include "hw/arm/stm32f205_soc.h"
- #include "hw/arm/boot.h"
- 
-+/* Main SYSCLK frequency in Hz (120MHz) */
-+#define SYSCLK_FRQ 120000000ULL
-+
- static void netduino2_init(MachineState *machine)
+diff --git a/hw/timer/armv7m_systick.c b/hw/timer/armv7m_systick.c
+index 74c58bcf245..a8cec7eb56b 100644
+--- a/hw/timer/armv7m_systick.c
++++ b/hw/timer/armv7m_systick.c
+@@ -202,6 +202,14 @@ static void systick_reset(DeviceState *dev)
  {
-     DeviceState *dev;
+     SysTickState *s = SYSTICK(dev);
  
 +    /*
-+     * TODO: ideally we would model the SoC RCC and let it handle
-+     * system_clock_scale, including its ability to define different
-+     * possible SYSCLK sources.
++     * Forgetting to set system_clock_scale is always a board code
++     * bug. We can't check this earlier because for some boards
++     * (like stellaris) it is not yet configured at the point where
++     * the systick device is realized.
 +     */
-+    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
++    assert(system_clock_scale != 0);
 +
-     dev = qdev_new(TYPE_STM32F205_SOC);
-     qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m3"));
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-diff --git a/hw/arm/netduinoplus2.c b/hw/arm/netduinoplus2.c
-index 958d21dd9f9..68abd3ec69d 100644
---- a/hw/arm/netduinoplus2.c
-+++ b/hw/arm/netduinoplus2.c
-@@ -30,10 +30,20 @@
- #include "hw/arm/stm32f405_soc.h"
- #include "hw/arm/boot.h"
- 
-+/* Main SYSCLK frequency in Hz (168MHz) */
-+#define SYSCLK_FRQ 168000000ULL
-+
- static void netduinoplus2_init(MachineState *machine)
- {
-     DeviceState *dev;
- 
-+    /*
-+     * TODO: ideally we would model the SoC RCC and let it handle
-+     * system_clock_scale, including its ability to define different
-+     * possible SYSCLK sources.
-+     */
-+    system_clock_scale = NANOSECONDS_PER_SECOND / SYSCLK_FRQ;
-+
-     dev = qdev_new(TYPE_STM32F405_SOC);
-     qdev_prop_set_string(dev, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+     s->control = 0;
+     s->reload = 0;
+     s->tick = 0;
 -- 
 2.20.1
 

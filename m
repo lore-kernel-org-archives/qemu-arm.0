@@ -1,102 +1,103 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1155250lfa;
-        Mon, 12 Oct 2020 08:44:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzO0ntM+WvnRkyQOlmdTrwhEC9aUgl0aA1zz6aflKdvIKMPbbuwsA1HOt4JZEBowIJGZW8T
-X-Received: by 2002:a25:2687:: with SMTP id m129mr32574642ybm.425.1602517491699;
-        Mon, 12 Oct 2020 08:44:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602517491; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1155326lfa;
+        Mon, 12 Oct 2020 08:44:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwUfYrgtDNsGvKXwi5FxsZgyid22xTS4Gi+5tPVqR3qTybhf4iftUKsICsZr3A6n9T7C5TN
+X-Received: by 2002:a25:4d46:: with SMTP id a67mr34728046ybb.227.1602517495960;
+        Mon, 12 Oct 2020 08:44:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602517495; cv=none;
         d=google.com; s=arc-20160816;
-        b=L8+7rgGeUlnupUh9JWN1XujhbYtp6yG9pi0gh/XPfwZ5k7mBdKOMTlh8qVtm9q2OCh
-         CY07J7dJFwFHhMkNFs3eZiCisu6un1UJQTpMSlpDptOUr8Yid+2yZW8+9UytGaayB16t
-         oBIBDh3CkxUQ3JlJwE4ZqlgEPiFNdfg+RuOxKqBNFHncEYjtgY/MdpAxTAaj9k+PV7zc
-         jh4u6oMdcKGG4TO0ToX0mjGpyKfAde3nKVnYg1VpgVOxbr64qZIUF+KhBZKTCXJqXq0Z
-         b/F8HpEmrPzUkmtJHVJBXH8fKuAJvY+TjG+CtCv7sMc57OBHKE8mIOhZvmNrceTBPfgZ
-         ot3w==
+        b=RCHAFBVtBBsHUU0cu+QsMDoI/fqbLdxxbKtlyjRNj66N0Hd6MBb8HR9h9Vo7TTFwXm
+         TBP5weGk48bABPCW0Z67IGV4bHuweaADIdVUPBKQJLQQ3KD5H5ZFxWjVzzmzojikPl77
+         UeYk+RR5FtQ2EU5WJ33MSsGHrCWrEpQfC/YvIYSx7zin5jcKOErTqHYI8Dd0/cjyl5We
+         OmOM1UbTRYuRNofwAklo7YAaOSInj5ZqLI+473fer50/t0zKaUkzLOYfsVTP+9MuInYi
+         XosE55jyTgjVL/yHnQMOgxno9Zq+WS2TEPGiaU0EF+DTeLm+Dm2m6sNbVEhqAUQ3E3H4
+         2bFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=bcorSBZXkBkW1mp/hqFvB6M1vX2DnTHEzjvxS98edmI=;
-        b=wsxSh08z4EHKAUnKOlOZXzlVzBXXn/93ApUjwLRltuh5liGj/NUDpaf7kZ+CXei5zr
-         +ecmlcsQu2Gv8VVHXHYI1dltASUglbP8NZan2rhZcvb0xcKyd6TGObE3hb+VTAX7Xuhf
-         tSd5O4H2oljWrjn+uKfIbWeylDxKkP98WYUu8BKAnkmrbzBDNGd6IMk3FohQNC6RPMva
-         1Cpp8/qX3kf7sS8ZX2XftsS/eJkIiiJvmxahEuTHxJ9XHJjt/8J1bT+O0slYVYh0qEZT
-         h/MUYLSj5saQbRvJnJBek6rRsQsfyT4N4KTmdwCZspq5u7ioWIm9LmaSc88b3PBqHJ1H
-         e61g==
+        bh=xCPWjLYyI6z3WFhhXaeYUbi5QZIddcoWl6SEfIfuuFs=;
+        b=C10R4l0K+3jBkVd0xWBWLrVnFZ06r9u3IhlxPPQptbe/jss8v8Tx7fGQwQQP9JTsuE
+         rsc0YbOZeR6uOagxDZjhGgxZKg0geLYMz1uRsW/mt4AletkZ/CDZfFn03D5le590Zbj3
+         GNXF32UWiTcj5GmmB/GzKASV/su3/fKsJneRoOxlI6vEnbguaHxxAggeDkUsic3UIMZc
+         aasrIa0hY3/+jgPDkyksqdidfU8fwtOzV+GNXTtv1tobdaYR/Grpmafa9ERQci+VExUO
+         7wyfXC10yq92uf7F5DlbYazK8eLypt2loaC8cK10WR/30od487FrYgVyM4wpPsuYADnk
+         MvUA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZDjU0n6i;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jvkUIDRC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g206si14916185ybg.441.2020.10.12.08.44.51
+        by mx.google.com with ESMTPS id t4si14402015ybp.211.2020.10.12.08.44.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:44:51 -0700 (PDT)
+        Mon, 12 Oct 2020 08:44:55 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=ZDjU0n6i;
+       dkim=pass header.i=@linaro.org header.s=google header.b=jvkUIDRC;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34004 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:34416 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kS00J-0003h6-0g
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:44:51 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57200)
+	id 1kS00N-0003rC-8L
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:44:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56848)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqj-0007Dc-2d
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:57 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f]:34177)
+ id 1kRzqK-0006ye-Oz
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:32 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:46364)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqe-0007Mg-Bk
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:56 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id l15so14002920wmh.1
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:42 -0700 (PDT)
+ id 1kRzqI-0007JZ-MO
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:32 -0400
+Received: by mail-wr1-x441.google.com with SMTP id n6so19391502wrm.13
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=bcorSBZXkBkW1mp/hqFvB6M1vX2DnTHEzjvxS98edmI=;
- b=ZDjU0n6i8Sv1A44uNzJhuxDJVq2BVk4udSxqhvl38awFaZoQFo49xDBI0z8zLTtfQt
- LQ6k1qQTN4JRVdqAgUSWWAfmzbFbyANL2abgbjAtpiy8UVkAq2pOPRtTPRWw4TEFOoEJ
- FkyazT/T0Z2vcrSrdOh0Ti2kMjtWCEwdkt/5mIWxWF+RQWMbS7g6suApGiBJgUYWv4h0
- S+unk0M6QB240smfCTD8tYSKA3KNRycPE9gRzDLErqiAJBaISOEByXo/M0i9bwivwFad
- kDut0U/eQAM70gRgiSH+Abg6eXxs9LM2HhcH80BIvqcBI/i7tm7/3JXeb8wm8kwMxA/0
- PsjQ==
+ bh=xCPWjLYyI6z3WFhhXaeYUbi5QZIddcoWl6SEfIfuuFs=;
+ b=jvkUIDRClN9EIrNy2RSdtWRPqcJKUB35LA78DZJ65CbJFay23p7wAmAtvMRKkwVIpq
+ j0+GyMO3ekHx2NzlGH+Hu9wWt9FXxGLOUkDTVSKRJa0NV/JNJ9ggidTuULb8wMRJ1PPT
+ 8eJ07v5t77Q1eUb58VmOQX+TU6wbNttw1+v5rer4GpwhucVMJ8ppyh7oqaDwHEQQwvSa
+ vyOaQVcjZeJsj9ggOBzoUk6D+QaRVIuPWHun2LKlWMnRvw0wfedq0OK5F85MgWPP7xMi
+ T7iUDyv0Lo5qbZklcQQuOjlmBAkxZeNcK4t24SC0U7TEOGkq85EDlnUvHflXkC96g78r
+ q4eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=bcorSBZXkBkW1mp/hqFvB6M1vX2DnTHEzjvxS98edmI=;
- b=mIPWKib8VSJanaBZ2ZHJiLO34JtmcsI6FNVmAgfhvJ8xj7xoXdNvpsvSw2gFD/ac5I
- IOtD0p/qZFdYoxeKU6cc4024g2EHWR2KpjUWGRdvJObllhfjwJKDRfLq6sVUAmOAQZ9Q
- Zub4jslx4afuwJeuSf2kDloxpD7hDcuWYNyyaafV6XMXs7x07OZnQ9OZ4/qseZwalbzf
- 3old54G6i3vD72Fo8kY7yEc8gkbe78TKnLUpuzU8hFAgH6bUYk1m5UB+kanu1jsou9DI
- wc0S/xnawb2SuHLZywELkzPy6YZfHa6UTjINzDnGyEzcWGkIvZf+FECCaPuMMs61bnqA
- QzVA==
-X-Gm-Message-State: AOAM5316yW2ebP0f0rgvN3xwMUI2DKV8/AoEV90ftdETNpkRcgG5NQTb
- dIaExJ335X1VveyofpFqRhsz8U7XMcNqllsU
-X-Received: by 2002:a1c:e256:: with SMTP id z83mr10909949wmg.37.1602516881543; 
- Mon, 12 Oct 2020 08:34:41 -0700 (PDT)
+ bh=xCPWjLYyI6z3WFhhXaeYUbi5QZIddcoWl6SEfIfuuFs=;
+ b=SqQ8w+N8YYAVGgNaePZvIBi09uj/M/FYC2khjKGa6vFlUIn4gtNMciTt9kG7wf+lm3
+ V0oAhG7cbwodAUp0n5xukb0IRi0EatJHoMtUQGqa0STdawdJuQCY1OvJ+9XT4Pp+iFGt
+ Sjoq76fPSeiU+Qr8aDSMSrIO0srCfr+B5TupA6IPzFrllRui4X+c2WEag/j0nMshBDzu
+ URqKxyMamHOsqvgKZ++tPPI73X17Pbw1Qj5TBVhB/7PbdxR0yD/xrMEqGvY685LfUy5S
+ HUHHoArG4Q7JFDP4wGJRUSg4jz0PEopo1nN+iH+Y3oYHxFnvmEmm2P+ivfFNac1sRtO4
+ 9UBA==
+X-Gm-Message-State: AOAM532KFgrm45x2WxendkuFEdQdaUo9v5Q2zEH2OWOxS3zupuobsmw8
+ kGjF8u9XVjIyP4rxCgQekAEaf7XjlGRyoTma
+X-Received: by 2002:adf:f841:: with SMTP id d1mr20555398wrq.297.1602516869112; 
+ Mon, 12 Oct 2020 08:34:29 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.40
+ by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:40 -0700 (PDT)
+ Mon, 12 Oct 2020 08:34:28 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-5.1] qapi/machine.json: Fix missing newline in doc comment
-Date: Mon, 12 Oct 2020 16:33:50 +0100
-Message-Id: <20201012153408.9747-28-peter.maydell@linaro.org>
+Subject: [PATCH] hw/intc/arm_gicv3_cpuif: Don't copy CPU's maintenance
+ interrupt
+Date: Mon, 12 Oct 2020 16:33:39 +0100
+Message-Id: <20201012153408.9747-17-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
 References: <20201012153408.9747-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -105,7 +106,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -121,39 +122,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7rdnxo2aUi6V
+X-TUID: LkH5zQOHLFp2
 
-In commit 176d2cda0dee9f4 we added the @die-id field
-to the CpuInstanceProperties struct, but in the process
-accidentally removed the newline between the doc-comment
-lines for @core-id and @thread-id.
+In gicv3_init_cpuif() we copy the ARMCPU gicv3_maintenance_interrupt
+into the GICv3CPUState struct's maintenance_irq field.  This will
+only work if the board happens to have already wired up the CPU
+maintenance IRQ before the GIC was realized.  Unfortunately this is
+not the case for the 'virt' board, and so the value that gets copied
+is NULL (since a qemu_irq is really a pointer to an IRQState struct
+under the hood).  The effect is that the CPU interface code never
+actually raises the maintenance in2Dterrupt line.
 
-Put the newline back in; this fixes a misformatting in the
-generated HTML QMP reference manual.
+Instead, since the GICv3CPUState has a pointer to the CPUState, make
+the dereference at the point where we want to raise the interrupt, to
+avoid an implicit requirement on board code to wire things up in a
+particular order.
 
+Reported-by: Jose Martins <josemartins90@gmail.com>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-Not very important but I've suggested for-5.1 as it's a safe
-docs fix. You can see the misrendered doc at
-https://www.qemu.org/docs/master/interop/qemu-qmp-ref.html#index-CpuInstanceProperties
 
- qapi/machine.json | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+QEMU's implementation here is a bit odd because we've put all the
+logic into the "GIC" device where in real hardware it's split between
+a GIC device and the CPU interface part in the CPU.  If we had
+arranged it in that way then we wouldn't have this odd bit of code
+where the GIC device needs to raise an IRQ line that belongs to the
+CPU.
 
-diff --git a/qapi/machine.json b/qapi/machine.json
-index f59144023ca..daede5ab149 100644
---- a/qapi/machine.json
-+++ b/qapi/machine.json
-@@ -825,7 +825,8 @@
- # @node-id: NUMA node ID the CPU belongs to
- # @socket-id: socket number within node/board the CPU belongs to
- # @die-id: die number within node/board the CPU belongs to (Since 4.1)
--# @core-id: core number within die the CPU belongs to# @thread-id: thread number within core the CPU belongs to
-+# @core-id: core number within die the CPU belongs to
-+# @thread-id: thread number within core the CPU belongs to
- #
- # Note: currently there are 5 properties that could be present
- #       but management should be prepared to pass through other
+Not sure why we've never noticed this bug previously with KVM as a
+guest, you'd think we'd have spotted "maintenance interrupts just
+don't work"...
+---
+ include/hw/intc/arm_gicv3_common.h | 1 -
+ hw/intc/arm_gicv3_cpuif.c          | 5 ++---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+index 0331b0ffdb8..91491a2f664 100644
+--- a/include/hw/intc/arm_gicv3_common.h
++++ b/include/hw/intc/arm_gicv3_common.h
+@@ -153,7 +153,6 @@ struct GICv3CPUState {
+     qemu_irq parent_fiq;
+     qemu_irq parent_virq;
+     qemu_irq parent_vfiq;
+-    qemu_irq maintenance_irq;
+ 
+     /* Redistributor */
+     uint32_t level;                  /* Current IRQ level */
+diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+index 08e000e33c6..43ef1d7a840 100644
+--- a/hw/intc/arm_gicv3_cpuif.c
++++ b/hw/intc/arm_gicv3_cpuif.c
+@@ -399,6 +399,7 @@ static void gicv3_cpuif_virt_update(GICv3CPUState *cs)
+     int irqlevel = 0;
+     int fiqlevel = 0;
+     int maintlevel = 0;
++    ARMCPU *cpu = ARM_CPU(cs->cpu);
+ 
+     idx = hppvi_index(cs);
+     trace_gicv3_cpuif_virt_update(gicv3_redist_affid(cs), idx);
+@@ -424,7 +425,7 @@ static void gicv3_cpuif_virt_update(GICv3CPUState *cs)
+ 
+     qemu_set_irq(cs->parent_vfiq, fiqlevel);
+     qemu_set_irq(cs->parent_virq, irqlevel);
+-    qemu_set_irq(cs->maintenance_irq, maintlevel);
++    qemu_set_irq(cpu->gicv3_maintenance_interrupt, maintlevel);
+ }
+ 
+ static uint64_t icv_ap_read(CPUARMState *env, const ARMCPRegInfo *ri)
+@@ -2624,8 +2625,6 @@ void gicv3_init_cpuif(GICv3State *s)
+             && cpu->gic_num_lrs) {
+             int j;
+ 
+-            cs->maintenance_irq = cpu->gicv3_maintenance_interrupt;
+-
+             cs->num_list_regs = cpu->gic_num_lrs;
+             cs->vpribits = cpu->gic_vpribits;
+             cs->vprebits = cpu->gic_vprebits;
 -- 
 2.20.1
 

@@ -1,102 +1,102 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1151438lfa;
-        Mon, 12 Oct 2020 08:39:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyckMk7+CaMzym5GWygiwWfiYNo6YoiKBPenTU0TYVYG/SULUBjPp/d0/S71eJCqUI9DuuA
-X-Received: by 2002:a25:19c4:: with SMTP id 187mr12791081ybz.226.1602517169070;
-        Mon, 12 Oct 2020 08:39:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602517169; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1152003lfa;
+        Mon, 12 Oct 2020 08:40:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzaErT7UuXqORpqV3w2w3GnU8kWwLMUnX76yqn0SrRMbJAm+KlhllAjX5j2hEua5EeKSeUb
+X-Received: by 2002:a25:2c0a:: with SMTP id s10mr11230487ybs.217.1602517218065;
+        Mon, 12 Oct 2020 08:40:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602517218; cv=none;
         d=google.com; s=arc-20160816;
-        b=CacU8EENRxFDC/YM1b/Kx/57XgQqJaXO52cK2JfzIPl3SBOnl9ttc++Y4pRNBba+Lk
-         SCE9zhmgj2D07V3M+YRLIxR1GVygX4HZD9FIpq65pWVH1kaFUmo0o6MAQmHIMfzlXY+9
-         Vt5PCHNWdEGV3aCE4e0RATSAmjPB0/vMrtpgG3RH9iKQMHaezCLjba4qrizOd7c42mM0
-         dIS84qhiGPMznmGSt6WZ219mHB0ZzcP3R5teDxRZGxt4M2fl1BvvtIuvvkuK28MlAXt9
-         7fF0ZD1XtFso6+H/4dLp6GyOTdN4II/7N7YXNXYAHKthaj+vO+aU/Lc//JAEuAhwhOCe
-         m5EA==
+        b=UoyNVbZhM7O1pmgcR0KLbMYL4V/m5KNU1tj4hHgcb1fH2qYm8NZMcDXl4+M87zW9L7
+         7xcCO3yB9fJZXYtS9MzCGU2OQ9uCnDw0hY8pYSWcg2RvyyzhqDB/eV1HWm85LaqAODzK
+         VlzeyMiK618DpytlXinqHTcqGqE8GrYSy45Yo3S55Ih4pSDOr5I22h0XpBlPi2DRSn12
+         yVDYVfB/mn99QMjyl3csqbDhWJQw1MFteY/T0hc9AZu9EyWCHeXL8TLLX3F4bMD/0789
+         1cHC9grOBtuhST3Z77IcYr/Z8lv7ciX9PepjXPi2UksWq6Ru9a/lgQjqTADl+namalhN
+         pV2g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=1jOZnrxRTG3Vn0Y7sOS02Z9FyMYbuYQPu1NRLX+duSw=;
-        b=bqgBwiIkFzP9Kb/ilB3BGiFvUdsME0o78IBpmsFFoax6xFDlSSEDLwGUnn0S/ugHwX
-         IHF8GcJMOVEWIl/FG95B2TwIMMKdSrOCJjkamp8qa82WhRUnlRb+ehtEYcNf0O2nU8zJ
-         S253dcicZwgF4YULyqr+qvX+GUvFVG64zKGP9tiVbQ/0ntOydzt3MIulNSh5GkDCB1hy
-         Nr9tS3HMRLLfEyYmxWQIElrajsVXI0QZ8y0Z5bdL7nAiGoTHduny5Ab/i+x7O+fkPJ9V
-         WcIdhYT+4umpn+inoejiyYCsAKdpOiTU4rwxPuu4TpxcKFyM5v4fCWQUNAve80qxvDyr
-         rb0w==
+        bh=6I9SMKjr6PmWwGXVMVs+FgMWnXt/xrUHEYtD8jIqzQE=;
+        b=L89mMVLu2WUyfDgx4iHrC1wm+f79rlZkHxez8n0OAnawVe5HRk018wU/YrmAecmbzf
+         mG+x+OUpte3rksh/0J3ugasvjmyF1FnPyQTk+Hlw6/0f2ok1SUAxHwaGogHtcaHqdWJr
+         HsjOOmyzLnsiRcNFYwd2h1ALJSioCosbb4FlKmXU8gPTHP00/G6WOdbNqHS62TZZt+Y8
+         OtmqFApJq0SS2ZfkUox8hKuqUbAnBjolFQUJeNIy1OYvqfLwjoxV0gOCBNNf9CMPJ1+3
+         MlVsh86GLvow50B1kdCSgI2+/qNLAQPf2jRY2QyyR1kG65Lnzpp+cPsi3SbiT4GLpeNS
+         5OzQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aAVbgCg7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tPyAQW57;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i32si14480526ybj.214.2020.10.12.08.39.28
+        by mx.google.com with ESMTPS id s201si1468206ybc.125.2020.10.12.08.40.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:39:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Oct 2020 08:40:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aAVbgCg7;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=tPyAQW57;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:45164 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47652 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRzv6-0004sx-3D
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:39:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56526)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kRzvt-0005ua-DK
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:40:17 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56578)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqA-0006ZX-7x
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:34:22 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434]:43197)
+ id 1kRzqC-0006ed-7D
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:24 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:34526)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzq8-0007G7-3j
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:34:21 -0400
-Received: by mail-wr1-x434.google.com with SMTP id g12so19669654wrp.10
- for <qemu-devel@nongnu.org>; Mon, 12 Oct 2020 08:34:19 -0700 (PDT)
+ id 1kRzqA-0007Go-DG
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:23 -0400
+Received: by mail-wr1-x443.google.com with SMTP id i1so13561613wro.1
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=1jOZnrxRTG3Vn0Y7sOS02Z9FyMYbuYQPu1NRLX+duSw=;
- b=aAVbgCg7ymYaysAV0+xZzfgRqAaSq1bwnaWSwioOXyCfZiNVpbJgNcRp4nIXDrf1RG
- zBSReKxmV+RB+GedK1vI2c493F4PObKrRh2eUg1LNZ2f61hCrRNzZthICmd/d4HzpRYx
- fX+hJYqVk3xZFl9sO6ODbtMl2NNb16x1hO1/6DsILrTUfyQZrnKA/P2dGyN4jp6zc3dC
- gUV7JbmmOlsMGJUV4H9YcQ0fNpiq1dFvrQ55/FZjH13mEJw3/SSI9uhIMZhNb7O7Tk8S
- 76Wbn8TK/cX4+rQ0L/aXJrKLIi+GA0GVdBmnkxCCRZ/iQmNDhnoKphIKGrP+jpmqC1tS
- 2xww==
+ bh=6I9SMKjr6PmWwGXVMVs+FgMWnXt/xrUHEYtD8jIqzQE=;
+ b=tPyAQW57KsDRbOr93Mg6m8QsfI33jkUUv749yVbo4mOsNQZk2Qznr1ltL3peF3Ntl5
+ Xhmr/+0qAovF/bCSxj8O3xW4+93hCaIr9EMucxd5Qm5zyqsTPXO0tyq19cR/nZE4d88/
+ YL7yxQbg2lh3GDU6RTzu4dTQGgX7Y3kYYi878YTrO0DzRDcUjm6VAsdkyth1nX7hgqzp
+ hWooGB4VPq3Mi7/+P4ljKrFxWL4PiNDk2ls11WBXd9s7C69b2XaHnAiAApUXV3kpj4DK
+ CYnqfqCwgfrQ50USmaIYB+mAOEf1KpV2xMtHznTlwJ8u7eXGfsEJVUfFAi8x9PyCQo2m
+ 000A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=1jOZnrxRTG3Vn0Y7sOS02Z9FyMYbuYQPu1NRLX+duSw=;
- b=qwBnZek1kgu9ndQ1Bd0GEH/U7Xtb2pHy0ZG6QrSF4CV1uVLsDPL1KvwI3KFq8jR5N9
- tdx9Dr80MVaHLz6+GqswAPdZbW2cIBiW4vH9M3JyWYp1io4JXjn4USJufvGhxFyCVi+E
- B51ssvS3N1j9Te+EdV9e3pU3KCKWI3QwTF3a1WsBQcd+a680z5nQsoGWQdbb5EcWwx/m
- cteR+n+lfYpsvP/pIohpMRYX8We8Sn7crqmTQsBsRbMPJE4jPKKkZAI+PbXW8QGxxwx8
- r7kSyMZgBTZdE4+H+ibZu1h3Z9/j3x+TxG8CGQvOA4DGkYKR78jAG2zcmtd2C4vXkcoz
- BsOA==
-X-Gm-Message-State: AOAM533BquDsvsvMgP2vBg31uWFeOXhIO/lrhX64YwWtQaBtJ4gh00+O
- 2izM3ATW0XtOj4ZiOrghStxAIg==
-X-Received: by 2002:adf:bbc6:: with SMTP id z6mr30663849wrg.298.1602516858701; 
- Mon, 12 Oct 2020 08:34:18 -0700 (PDT)
+ bh=6I9SMKjr6PmWwGXVMVs+FgMWnXt/xrUHEYtD8jIqzQE=;
+ b=LG8mReXjOA0Nr+GdLOHrIsSyjcf2yUk5hBrm6wgiLm1SzMakISAj8Sm/Hr2tSaMMqf
+ dnWkHWeGhT9ZQmagziOUc2IWCI46t619o/tp7nLypzh8cQCwd08PFcD9KkAcS0bS/UKD
+ qSsoIqlxuEIaqr1OOgmC8cShQhoBg2hy7uhuBQlPn83Wr+VGKF0BN778Vw3DzAWhHCpB
+ bVlMbtawHHBHAWTFYA7/0OiqU53zW0kSAbybvSNrg24DEnWc5a29jZKNHecmfnomE1mX
+ PlF3hjzHlPXzMAtnqC45BQpqgVhu9bUlv9ZVXvktIKs81GAAZe1Rm9laBwbRvK+Eyh51
+ Y1cg==
+X-Gm-Message-State: AOAM5324F1rU8kRSyiusnQmARGU//bFoMczPZCdBn/6WKi3c0LCvPDjA
+ Zj3Kw0zb/2NzEdz5KzbmSLSRiZMYzLEHqm4F
+X-Received: by 2002:adf:f043:: with SMTP id t3mr18402943wro.234.1602516860825; 
+ Mon, 12 Oct 2020 08:34:20 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.17
+ by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:18 -0700 (PDT)
+ Mon, 12 Oct 2020 08:34:20 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH] configure: Test that gio libs from pkg-config work
-Date: Mon, 12 Oct 2020 16:33:30 +0100
-Message-Id: <20201012153408.9747-8-peter.maydell@linaro.org>
+Subject: [PATCH for-5.1] docs/system/arm/virt: Document mte machine option
+Date: Mon, 12 Oct 2020 16:33:32 +0100
+Message-Id: <20201012153408.9747-10-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
 References: <20201012153408.9747-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -107,72 +107,46 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: GuKjyuDG9mFC
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: Y+Fj6/HGpfJc
 
-On some hosts (eg Ubuntu Bionic) pkg-config returns a set of
-libraries for gio-2.0 which don't actually work when compiling
-statically. (Specifically, the returned library string includes
--lmount, but not -lblkid which -lmount depends upon, so linking
-fails due to missing symbols.)
-
-Check that the libraries work, and don't enable gio if they don't,
-in the same way we do for gnutls.
+Commit 6a0b7505f1fd6769c which added documentation of the virt board
+crossed in the post with commit 6f4e1405b91da0d0 which added a new
+'mte' machine option. Update the docs to include the new option.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-I wanted a statically-linked system emulation binary (which, yes,
-I know is not really something we support :-)). I got one with
-suitably liberal use of --disable-foo configure options, and
-this was the only thing I couldn't work around that way.
-The patch is needed because there's no --disable-gio. I suppose
-we could add that instead (or as well)...
-Possibly meson offers a nicer way to do this, but this was
-simple and gnutls is doing the check this way already.
----
- configure | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+ docs/system/arm/virt.rst | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/configure b/configure
-index e8e8e984f24..cd79227d763 100755
---- a/configure
-+++ b/configure
-@@ -3762,13 +3762,21 @@ if test "$static" = yes && test "$mingw32" = yes; then
- fi
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 6621ab7205d..32dc5eb22ee 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -79,6 +79,10 @@ virtualization
+   Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
+   Arm Virtualization Extensions. The default is ``off``.
  
- if $pkg_config --atleast-version=$glib_req_ver gio-2.0; then
--    gio=yes
-     gio_cflags=$($pkg_config --cflags gio-2.0)
-     gio_libs=$($pkg_config --libs gio-2.0)
-     gdbus_codegen=$($pkg_config --variable=gdbus_codegen gio-2.0)
-     if [ ! -x "$gdbus_codegen" ]; then
-         gdbus_codegen=
-     fi
-+    # Check that the libraries actually work -- Ubuntu 18.04 ships
-+    # with pkg-config --static --libs data for gio-2.0 that is missing
-+    # -lblkid and will give a link error.
-+    write_c_skeleton
-+    if compile_prog "" "gio_libs" ; then
-+        gio=yes
-+    else
-+        gio=no
-+    fi
- else
-     gio=no
- fi
++mte
++  Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
++  Arm Memory Tagging Extensions. The default is ``off``.
++
+ highmem
+   Set ``on``/``off`` to enable/disable placing devices and RAM in physical
+   address space above 32 bits. The default is ``on`` for machine types
 -- 
 2.20.1
 

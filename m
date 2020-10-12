@@ -1,112 +1,106 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp793348lfa;
-        Sun, 11 Oct 2020 23:59:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxP85i8fj22g8E/DqlKaJ8plnDpKpybYnm00gze6fRXg2yYZabmU7doocy/pc7Uvy+giHCt
-X-Received: by 2002:a5b:d44:: with SMTP id f4mr29799530ybr.153.1602485958291;
-        Sun, 11 Oct 2020 23:59:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602485958; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp832793lfa;
+        Mon, 12 Oct 2020 01:08:11 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwqp8jL2afozYh3I5iCAVg3puc2MR87gPbGihDKo5cl5DR9kGgQM7g2ckpEZV2tBAQ3xC0F
+X-Received: by 2002:a25:aa53:: with SMTP id s77mr31275328ybi.413.1602490091449;
+        Mon, 12 Oct 2020 01:08:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602490091; cv=none;
         d=google.com; s=arc-20160816;
-        b=XEZej5dNd3Vx3doB/MmZWEV/X2sgXGomXZEWV4/WE5gWs/AsLdwmbtFNiSjVuwsc4z
-         +vLOUT6eJFEZmmfPqCc+tnDAmJ+1fUygI6t6ZEGIdUp90Ka4YbOMCdKfHsrQWPQE0Bns
-         n8BkBLAPcZfct9Tmu/38yUoWlM5e0tHTTOwfj2DvKJw6NsPD9NYk1H0AcOZUgs54BgA0
-         ba1t0XRG/zzg2Ub549Pr7jx2mEIK3FufhdBAgTXEk7xGoGjvk3WDonruZim+ZtgEXBEC
-         Z98gmHTvUzrZNw9sR8bNWXh5iQDU7s7zZB0585xAF/TlwXg8s156tzEj3jeW2Lfmlqrb
-         tZ3A==
+        b=QTEwblB4ScQlk2dUdz+xCJ1iVS4aM5HaFbT2vR7QZSXbD1aFe6dtLRo4sp91UoFI4S
+         rNoIgCOEaAvzMaCH1lT1Pupqz+DDZpZSQ9CXqBomJt4SKnp2wPpVD5LXso5lE59CzBD+
+         nDiT7o/aThIEcu+0T4BxIIKQQykth7Eaw1Tl7uRZ4eMgFzrURPDqjJvmm8jnuqaYvYSL
+         5OHNj+Vei7ipKbqBoCHyjVHsDV+9RU/uJy0GpdYTuCK/nWPgMJIKDwMR1rKMIC9RxjkX
+         3UWm2RfNPtgOubUDn/l/VrD2tgS2VZGyMkrSuSxs/RzQ6rAjklp61ViZIj/kheeli1fX
+         L4cg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=in4vP4P4euyhUmh7MBEkfRMo9+vEy+KLt+Y2qxkJRGE=;
-        b=ndbbj8TDDYM0cScJ67XlijOyjcLEbAQnt/GE0cQSKnKH6KqUmFqslSaEDUS/r+G+Px
-         T52aTEKCk/3MTNheCZrox+bc6yc93rlxuI69dA5UhhvPc702FwLa4mTTizohIMKperO3
-         9yNnxSYWu/JII8lac7x16hG6FcU4lNbTCMTldVst+8Gw2duKxYqjW15qKzkruVRCHGxB
-         wdUSdqXPMkwxUPXJGbjCvKhySHVhzCvh7LOqUWOob8nOWURLkBfxia3+11elMY/eRz3z
-         bX0ENsGYROTKs00PenlcXL1/IXyHHzbW2fttxsGs8SccOtbHkARkfHkqMxMIb+NWMNF0
-         hEJQ==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=BWDQO5aPrAfLfnQelq3/3NNlBK1si0DmmIdvr2r8kNg=;
+        b=boyfS0Yv1p9X9jg3WIUM3StjAU1kTy1P0G/C+91ijYDmZlo6MrMI9J0cqi9dP/A8Um
+         EwnSWwjKGa3AlQCaMqanvdSD43VUQd2heys6ErUNrD4hLBY+zJxRq/RmJ1GMhDJwIxo/
+         Pflm8z+2gOqL4hUkp0CFTgLNh+MrBWpGGOcE6QICF2MOgWyj3BTkmeMy5K3FnNBZADd6
+         j6Hxoz08qLxRNF9QFe3cb9SfQGTV+O8of8GjdTxux3AKCkcMrbN7KLAp1ecDz85Q5txg
+         1ekCZYjMQvV2eHhN83DSY3xDuKUuFd4g/xJqnH3KHivyksGsfI+nIt40RbmCUoNolF7r
+         QVMA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fdbh3ja1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IwbT+GU1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n204si1648930ybc.35.2020.10.11.23.59.18
+        by mx.google.com with ESMTPS id r4si14655480ybc.69.2020.10.12.01.08.11
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 11 Oct 2020 23:59:18 -0700 (PDT)
+        Mon, 12 Oct 2020 01:08:11 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fdbh3ja1;
+       dkim=pass header.i=@linaro.org header.s=google header.b=IwbT+GU1;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51584 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:49924 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRrng-0005IP-4l
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 02:59:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33814)
+	id 1kRssM-0006r5-SW
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 04:08:10 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46546)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRrnC-0005Eh-UF
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 02:58:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:41822)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRrnB-0005DA-1j
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 02:58:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602485924;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=in4vP4P4euyhUmh7MBEkfRMo9+vEy+KLt+Y2qxkJRGE=;
- b=fdbh3ja1aQgeMxcV2HCKQ5ZEN3HU7fjgfw2O0HteAvYHuU5UNp5ZZDQ2yKz5zIb4GD1/n+
- 5LN3+Slz6PdKgq1rM4z4bxOHZfXa20y81hpmuRMdeKygclvRPh7DYuupWmmoOIHtrYEmGG
- 9soW/WGm2Olx9mJZEGqdcrj/d2cVh+c=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-236-KUhBwydHNiWAXwqOISXQqw-1; Mon, 12 Oct 2020 02:58:40 -0400
-X-MC-Unique: KUhBwydHNiWAXwqOISXQqw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A159A107ACF8;
- Mon, 12 Oct 2020 06:58:38 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-113-22.ams2.redhat.com [10.36.113.22])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5D8825578D;
- Mon, 12 Oct 2020 06:58:28 +0000 (UTC)
-Subject: Re: [PATCH 4/4] tests/qtest: Replace magic value by
- NANOSECONDS_PER_SECOND definition
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- qemu-devel@nongnu.org
-References: <20201011194918.3219195-1-f4bug@amsat.org>
- <20201011194918.3219195-5-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <7067de64-2a42-07f5-a864-74d7524bee5f@redhat.com>
-Date: Mon, 12 Oct 2020 08:58:27 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kRssE-0006qo-QS
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 04:08:02 -0400
+Received: from mail-pl1-x642.google.com ([2607:f8b0:4864:20::642]:39895)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
+ id 1kRssC-0004pP-V2
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 04:08:02 -0400
+Received: by mail-pl1-x642.google.com with SMTP id y1so4627814plp.6
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 01:08:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=BWDQO5aPrAfLfnQelq3/3NNlBK1si0DmmIdvr2r8kNg=;
+ b=IwbT+GU1M44w/A02IZ6ldAQqSgsFDaNcgaQY5Er+GH0cfF8buW3/uVhsgiozAXh1PO
+ FBW3arADSVJguipvFIYs/c+sl2A7/zw8x0IKG/S79AY005INvpAw7vii+rFIXnBUfTvh
+ CDJgqFdOcMtBY7LldLEsptDn97K2ScIgoUtz/MzaKqW0nJFRpGxZOUv0aPNe9y5oGQ28
+ ZP/3kqiCqMtwSmuCUcOECcOlQy1UX5+8QHxCx7LP68lWC9PQrvEgvoGC4XuaV6ZRRdLG
+ VXL+HzmaiQalU5Jh0SHEg/OLMcPybRUYpYFmV6sYGkw/xQ6zwyPczKQ/KesEAoQQn10q
+ y5dw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=BWDQO5aPrAfLfnQelq3/3NNlBK1si0DmmIdvr2r8kNg=;
+ b=enyDaNob+gked6u4ZgJ5lAlvHooxpOhPzRG4Ugs/PswP09EmqXI1IiKfTNvd6qJPT9
+ vw3U0vdohNU8ZzjLTLpLQAjJBTCd6tGP1XStvV5HI+x5lvCjIq9tSBC9Lq/HEITzE03U
+ cFVkDkCKgoN/8TMDwZzXg+PI5BoMyAPNNNmfw2bsnN9RDJDS4i+OeyREJpECVGbXJEzF
+ +h5IkH/pVakMWvpRDzl0pCMTn4Er02NMT5b1KYI6djaXhNCsN8dp4g6i6LsH4r+QK1vs
+ xhpjB/Q0F1stAmtbaetXTcianaW39PCsvh39ORgnKU2BQ9Y9jkPE6nDEtfyzX8U80+BX
+ HgDg==
+X-Gm-Message-State: AOAM530Urchg8Pz8HCvhjaqj6InNdsp2lEEHulHcwSR3gmiTrwXxylGh
+ Bgl8+9edFeTx5d3BZPy8BK5Y5QnaBBda+VlPZ9iqlQ==
+X-Received: by 2002:a17:902:b595:b029:d4:db82:4403 with SMTP id
+ a21-20020a170902b595b02900d4db824403mr4334605pls.49.1602490078807; Mon, 12
+ Oct 2020 01:07:58 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201011194918.3219195-5-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:58:41
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
- RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <74151CBD-4750-4E68-9127-21076C019036@getmailspring.com>
+ <CAFEAcA9cZPgaHGuCs0J20YJ48V2eXHFFRsb9a56xFULjtFtn3g@mail.gmail.com>
+In-Reply-To: <CAFEAcA9cZPgaHGuCs0J20YJ48V2eXHFFRsb9a56xFULjtFtn3g@mail.gmail.com>
+From: Maxim Uvarov <maxim.uvarov@linaro.org>
+Date: Mon, 12 Oct 2020 11:07:48 +0300
+Message-ID: <CAD8XO3bE3PTrZjxHVWE3_7Dif_WXySSnQTU=kf_yekFrgf4J3g@mail.gmail.com>
+Subject: Re: Re%3A [PATCH v4 1%2F2] hw%2Fwatchdog%3A Implement SBSA watchdog
+ device&In-Reply-To=<CAD8XO3YmTC7fzxttg%3DQLMpJbg7uLogatxN7q7vf-iGZjyQLjjQ%40mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::642;
+ envelope-from=maxim.uvarov@linaro.org; helo=mail-pl1-x642.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -119,41 +113,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Cc: Shashi Mallela <shashi.mallela@linaro.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: SJ83cqEbBTuo
+X-TUID: sdRKhLNiYDEc
 
-On 11/10/2020 21.49, Philippe Mathieu-Daudé wrote:
-> Use self-explicit NANOSECONDS_PER_SECOND definition instead
-> of a magic value.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-> ---
->  tests/qtest/rtc-test.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/tests/qtest/rtc-test.c b/tests/qtest/rtc-test.c
-> index c7af34f6b1b..402ce2c6090 100644
-> --- a/tests/qtest/rtc-test.c
-> +++ b/tests/qtest/rtc-test.c
-> @@ -292,7 +292,7 @@ static void alarm_time(void)
->              break;
->          }
->  
-> -        clock_step(1000000000);
-> +        clock_step(NANOSECONDS_PER_SECOND);
->      }
->  
->      g_assert(get_irq(RTC_ISA_IRQ));
-> 
+> +static uint64_t sbsa_gwdt_rread(void *opaque, hwaddr addr, unsigned int size)
+> +{
+> +    uint32_t ret;
+> +
+> +    if (addr == SBSA_GWDT_WRR) {
+> +        /* watch refresh read has no effect and returns 0 */
+> +        ret = 0;
+> +    } else {
+> +        qemu_log_mask(LOG_GUEST_ERROR, "bad address in refresh frame read :"
+> +
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Then it has to be  uint32_t ret = 0;
 
+On Fri, 9 Oct 2020 at 20:51, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Fri, 9 Oct 2020 at 18:30, Shashi Mallela <shashi.mallela@linaro.org> wrote:
+> >
+> > The value being returned here is 0 (initialized to 0 at the beginning of read function).
+> > I have seen similar practices being followed in other qemu implementations like for example bcm2835_dma_read() in qemu/hw/dma/bcm2835_dma.c,a9_scu_read() in qemu/hw/misc/a9scu.c.
+> >
+> > Please confirm if you would still like to add specific value like 0xdeadbeef for bad read offset.
+>
+> Judging by the subject line you've mangled the headers on this
+> email so I'm not sure exactly what this was a reply to,
+> but in general QEMU doesn't do that kind of "return
+> specific marker values for bad register offsets". We
+> typically log it with a qemu_log_mask(LOG_GUEST_ERROR) and
+> return 0 (unless the h/w does something else).
+>
+> thanks
+> -- PMM

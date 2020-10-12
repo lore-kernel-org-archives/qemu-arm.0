@@ -1,111 +1,122 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1149402lfa;
-        Mon, 12 Oct 2020 08:36:36 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylIxppl4o6zc0tSQuHnJ+kbZn5bvjD3W7w+oYuQW+JeKZMuMk3KVdX4XkWZf60ceuTo6yL
-X-Received: by 2002:a25:df49:: with SMTP id w70mr26033846ybg.94.1602516996402;
-        Mon, 12 Oct 2020 08:36:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602516996; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1015114lfa;
+        Mon, 12 Oct 2020 05:49:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwfl31nEYbC3cEa7cvWDvPo7ixH4Dn0KfrwbjsEKDi6t4LsOCGjpgVbWkGfJemJr7EYU0dQ
+X-Received: by 2002:a25:d20d:: with SMTP id j13mr21227341ybg.188.1602506943638;
+        Mon, 12 Oct 2020 05:49:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602506943; cv=none;
         d=google.com; s=arc-20160816;
-        b=yGzPybZ0qt+yXnvoYZ4GGr6vkqwY6RVUJM2/eX7ZU0kd83Vcrj8a6pXD22/WWsjVZZ
-         j6/UXqlMdtw0OPC6tLqsC6oENo/E1aO4Sw7wI8r6xSgk7mDLAawIKrKc2IHlY40f9iRm
-         4+R/+ebNfQMssL7BbD5dp0ekNxfOhdrQqD3cfXqq9tPmuyV/oZ0n89qqyTfBEZhBAWsy
-         R/g2aT4n4Ibb3jXAL8rsd1xRqlMcggUG8n6556f7nVzVgJOCg18OYKrHJrGE9IgOx/5u
-         CYWeDE5h0uOCFTA5btpH3BfFv/v2W65jTt1WT3DVz3jepymy5ilIVainGY/QrIuVTbqe
-         wKgw==
+        b=Nuff4hLkNW7SN2j6B0kbusp25YJZlbb3Oo7dFcPiwztTg/iMZlEibKsijPDgs48ZEY
+         H1ZJAB4iIX7HEuGA4TFyjczqdhyWJq4rW6Ao8740XotDd8Ro6aSESoGsWeAi/R+oxrDa
+         e4ZmpPfZzjjY6bz/Og0DfgPzZMnqq739Qr7xUicVggbQlQ+4P0u2ONcMtbkUoyhIKYm+
+         XgB9UkMwFILn1ZUcNmIn6iJFQevWmMLOUWixqThDmUGD45e1HzQoXQRdlzothoQ/Yu2i
+         V5o2wlftWdQIyuJk7pjBo+EDvSXgHA1P9380K54kNMjYWvFzpWs41jVctSvJpFjoX9K7
+         jlAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=sKzcEV9wkONoPB+ynBHsD63nfFrJQCqRKP35Nd+BbUw=;
-        b=EgjDQzoYmVtWzBcY9g9UZ/Bacm5IqgbXs4ObZHD6qf8wt0vj/Y+VekyoiKyMbfghH3
-         HLrKe3PXsEgVhHPp5tlOT9DxtwreoF6e5OqEcvQUNvUCTar38QgEHSNPsWQhB+ryZ3vw
-         yxbLjd7yjwuXgvjWgNU7KwBZ3zwQkb5I6jQ5p8eGRfcla877KTpDJX2PLj49X/S09yZs
-         N/2bquuzjbTo6qRV1fPxiMqw2w5o4RXMyiR7zufYYHI9zeOZzsV5owr9zxpdnnajD2gP
-         as3gbO946WD6deJudBdM8263dAeXlNNoGG/MDySblOlhwrzhDcUrRABxVPEZbi/j7917
-         cp0g==
+        bh=afTxi5eJGUK9TCxtbNIddaNUCDX7pFC3c3DvHTcAqpY=;
+        b=G8PGxK58ZHhQr/g872Ke2qRjSjvqnMm9jqwc7QgSyUPpM+3Tmr9TTNIdPlWvkrawJV
+         IInV7nUCTA9AEItXX/vKDmHCwW2ZMUXGJ18jse7CM8N3/m8x2HlBYS/KIkbjbDVaTDOY
+         HHxXN9kqW1Rj002BtVZx307T35QX9kEMytzLGlwP8GCb839t+ZOY9XnBeJgGphyQewvd
+         z5viFE4n9lhpPt9s3XdpPRA3EY6kNJScrup9nsQmqaPAUzCZYx1E0EvGlSTu0SfASVks
+         iRgkagE9uRwdkM1hoVD6uwIpy0DAEdQEQ0igj9q2lhexsjvi9Vgd7GNwmuZ4ebCDcAVf
+         FpVA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aaJfPbVX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a0RIkySV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h23si17311970ybj.454.2020.10.12.08.36.36
+        by mx.google.com with ESMTPS id o143si14339978yba.39.2020.10.12.05.49.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:36:36 -0700 (PDT)
+        Mon, 12 Oct 2020 05:49:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=aaJfPbVX;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=a0RIkySV;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34198 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:55140 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRzsJ-0000Om-Op
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:36:35 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56472)
+	id 1kRxGA-0007m1-V4
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:49:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzq8-0006Vw-RX
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:34:20 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:39086)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzq6-0007Ec-Q3
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:34:20 -0400
-Received: by mail-wr1-x441.google.com with SMTP id y12so14319489wrp.6
- for <qemu-devel@nongnu.org>; Mon, 12 Oct 2020 08:34:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=sKzcEV9wkONoPB+ynBHsD63nfFrJQCqRKP35Nd+BbUw=;
- b=aaJfPbVX5qvkCUMpehoCvXStKyYH/TeJxcxt4vtP2dARW40Ki8TJndq6nJhn0lQig5
- IyZGhvR0TjpYLIe28G6N5CwXIPDtNh/NY6DLIVVVnzpJw7CWWekqhRIoSTkB6jPx6Y/D
- K1XUpLabtImzLy4nMI+jS4CY8EdVvGcXr7l9DTWFfB8Hj3KQdYbq/h2K2fPDeOIv+Sxg
- PrQdPF2LukI3Ahw0/NT5WnekczWwsL5wPkRkvS7KchGaiWyoko1bhq4dsp3f7kb5OLIX
- czQEqmLmqKTCuqZlGnwmomMbGiQrH0wQummw4CTjcdyNN3HxRZLHBFpTas3z+Ax8NlYG
- 0yTw==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCo-0005W1-OJ
+ for qemu-devel@nongnu.org; Mon, 12 Oct 2020 08:45:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:60964)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCn-00004y-1N
+ for qemu-devel@nongnu.org; Mon, 12 Oct 2020 08:45:34 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602506732;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=afTxi5eJGUK9TCxtbNIddaNUCDX7pFC3c3DvHTcAqpY=;
+ b=a0RIkySVoEBjFZcRPSurxBtRLGgyWPW2IOg2lN7wUDv4q+M9gxQp6t1ArhbZLmBt9ZWl6G
+ ygNcBHrUSNkQ8SG9OoDObl2lOkkvRBwQK0mG+JMDlY1xTcz6V6MfOJp3q2glREqmInfilQ
+ +Pp0/W5HQBsDtmXiwUPGYX6Bzp+NMPE=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-518-i2NSvxGNNo2nNrkNKnI9rw-1; Mon, 12 Oct 2020 08:45:27 -0400
+X-MC-Unique: i2NSvxGNNo2nNrkNKnI9rw-1
+Received: by mail-wr1-f71.google.com with SMTP id i1so1175190wrb.18
+ for <qemu-devel@nongnu.org>; Mon, 12 Oct 2020 05:45:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=sKzcEV9wkONoPB+ynBHsD63nfFrJQCqRKP35Nd+BbUw=;
- b=rfWcA5Kkvt1vF3hSTPM3z0olYUkp/fLWDLlpZBSIUKLmqZADl6zHmbNsR78hJEdB5c
- 7sXeCUCKAAe0WcUsm0slESA8UDUCZBmyvYg50BWDGcpVE9mu6j7wzkKcmf9dUI9FZjDf
- ng8DtMimAsFDjczRoLOKCeeXBViEkDhzMoJZ5Mk0lQPzUiwfhPW/ykPoASQ0b/KXeUJm
- HtyzJp1cskG6ASpYwX96Djki2B3XyGQRRy4WU6csvDv+wGbzJMzEH4RlwedZQWmonqYs
- cYeaA5e/78lcrTnjeUxWVGcJzMEA7U2/u1y+HJcvjtP7SwmI0NGiveVyTKPOvZ+/UkSS
- vaOw==
-X-Gm-Message-State: AOAM530bDa3lG8CPNITHxRx12M99Z/sXDWxEa8sAxLEU0XPXn8er6/Yt
- VkBMNO5lT38EZDFDNZKYrYXiTQ==
-X-Received: by 2002:adf:bbd2:: with SMTP id z18mr32721774wrg.166.1602516857554; 
- Mon, 12 Oct 2020 08:34:17 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.16
+ bh=afTxi5eJGUK9TCxtbNIddaNUCDX7pFC3c3DvHTcAqpY=;
+ b=VR9Tb6qE9tCpZmbk7OJlob5c+UHVQ6NnvENcGULhZFT3pe5ctNCLTliSb1eAnxhrd2
+ qIJnZV7Q2Hi8vJ3JGnby9cepuL5muleOB2BjRVxH+8PTXkJf3CTuUXRWpK8D2Gth4YN6
+ bhqa2anp84uJpkiAmI1gIu5VCfvhbJFOgBUlKB6TKuH48/VUCbawF33mWggMkcw2P+2+
+ AtQq4ZN7HipKuHwAYE4puTGEUnmjD2SaOw9UgxrpT3SNzBOf9ht+ec4Ry510dgb/rJV6
+ P5ZpmHYooZJTRgataEuN8sljc0ll3PCJqyowuBGPt1lHaN+qfbRgcF/4hS3TI07IJQsz
+ 7wYQ==
+X-Gm-Message-State: AOAM531LP7kVK5UX5XmJonAh+JbJE7G2ZjvrjSaQJYea97Ls/8SotJcv
+ EDc5fUfIWrI6KOpqQpRR0AiikjEdmkuiSY3nYNVGmxFMGuJZh+FatWRNhfzmv5Kh0qsELJbH01w
+ uRtNnC1MJ4IM6tDs=
+X-Received: by 2002:adf:df03:: with SMTP id y3mr10299492wrl.70.1602506726316; 
+ Mon, 12 Oct 2020 05:45:26 -0700 (PDT)
+X-Received: by 2002:adf:df03:: with SMTP id y3mr10299453wrl.70.1602506726102; 
+ Mon, 12 Oct 2020 05:45:26 -0700 (PDT)
+Received: from localhost.localdomain
+ (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id d2sm14916896wrq.34.2020.10.12.05.45.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:17 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH RISU] arm.risu, thumb.risu: Add v8.2 DP and FHM insns
-Date: Mon, 12 Oct 2020 16:33:29 +0100
-Message-Id: <20201012153408.9747-7-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
-References: <20201012153408.9747-1-peter.maydell@linaro.org>
+ Mon, 12 Oct 2020 05:45:25 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 3/5] hw/pci-host/uninorth: Use the PCI_FUNC() macro from
+ 'hw/pci/pci.h'
+Date: Mon, 12 Oct 2020 14:45:04 +0200
+Message-Id: <20201012124506.3406909-4-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20201012124506.3406909-1-philmd@redhat.com>
+References: <20201012124506.3406909-1-philmd@redhat.com>
 MIME-Version: 1.0
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:58:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,84 +129,48 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
+ Helge Deller <deller@gmx.de>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: TSL6+RUwDR9n
+X-TUID: rf1nLrm3PMKx
 
-Add coverage for the v8.2 DP and v8.2 FHM insns in the Neon extension
-space.  (We already had the v8.1 VQRDMLAH/VQRDLSH and the v8.3
-VCADD/VCMLA, so this brings the risu coverage into line with what
-QEMU has implemented so far.)
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+We already have a generic PCI_FUNC() macro in "hw/pci/pci.h" to
+extract the PCI function identifier, use it.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
-I added these patterns as part of testing for the first part
-of the Neon decodetree conversion and forgot I'd never sent out the
-risu patch for review.
+ hw/pci-host/uninorth.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- arm.risu   | 18 ++++++++++++++++++
- thumb.risu | 18 ++++++++++++++++++
- 2 files changed, 36 insertions(+)
-
-diff --git a/arm.risu b/arm.risu
-index c16d245..f8b6deb 100644
---- a/arm.risu
-+++ b/arm.risu
-@@ -861,6 +861,24 @@ VQRDMLAH_s  A1 1111001 q:1 1 d:1 size:2 vn:4 vd:4 1110 n:1 1 m:1 0 vm:4
- VQRDMLSH    A1 111100110 d:1 size:2 vn:4 vd:4 1100 n:1 q:1 m:1 1 vm:4
- VQRDMLSH_s  A1 1111001 q:1 1 d:1 size:2 vn:4 vd:4 1111 n:1 1 m:1 0 vm:4
+diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
+index 1ed1072eeb5..c21de0ab805 100644
+--- a/hw/pci-host/uninorth.c
++++ b/hw/pci-host/uninorth.c
+@@ -65,7 +65,7 @@ static uint32_t unin_get_config_reg(uint32_t reg, uint32_t addr)
+         if (slot == 32) {
+             slot = -1; /* XXX: should this be 0? */
+         }
+-        func = (reg >> 8) & 7;
++        func = PCI_FUNC(reg >> 8);
  
-+#
-+# ARMv8.2 extensions
-+#
-+@v8_2_dp
-+
-+VUDOT       A1 1111110 00 d:1 10 vn:4 vd:4 1101 n:1 q:1 m:1 1 vm:4
-+VSDOT       A1 1111110 00 d:1 10 vn:4 vd:4 1101 n:1 q:1 m:1 0 vm:4
-+
-+VUDOT_s     A1 11111110 0 d:1 10 vn:4 vd:4 1101 n:1 q:1 m:1 1 vm:4
-+VSDOT_s     A1 11111110 0 d:1 10 vn:4 vd:4 1101 n:1 q:1 m:1 0 vm:4
-+
-+@v8_2_fhm
-+
-+VFMAL       A1 1111110 00 d:1 10 vn:4 vd:4 1000 n:1 q:1 m:1 1 vm:4
-+VFMSL       A1 1111110 01 d:1 10 vn:4 vd:4 1000 n:1 q:1 m:1 1 vm:4
-+VFMAL_s     A1 11111110 0 d:1 00 vn:4 vd:4 1000 n:1 q:1 m:1 1 vm:4
-+VFMSL_s     A1 11111110 1 d:1 00 vn:4 vd:4 1000 n:1 q:1 m:1 1 vm:4
-+
- #
- # ARMv8.3 extensions
- #
-diff --git a/thumb.risu b/thumb.risu
-index b8afa59..357b791 100644
---- a/thumb.risu
-+++ b/thumb.risu
-@@ -449,6 +449,24 @@ VQRDMLAH_s  T1  111 q:1 11111 d:1 size:2 vn:4 vd:4 1110 n:1 1 m:1 0 vm:4
- VQRDMLSH    T1  111111110 d:1 size:2 vn:4 vd:4 1100 n:1 q:1 m:1 1 vm:4
- VQRDMLSH_s  T1  111 q:1 11111 d:1 size:2 vn:4 vd:4 1111 n:1 1 m:1 0 vm:4
- 
-+#
-+# ARMv8.2 extensions
-+#
-+@v8_2_dp
-+
-+VUDOT       A1 1111110 00 d:1 10 vn:4 vd:4 1101 n:1 q:1 m:1 1 vm:4
-+VSDOT       A1 1111110 00 d:1 10 vn:4 vd:4 1101 n:1 q:1 m:1 0 vm:4
-+
-+VUDOT_s     A1 11111110 0 d:1 10 vn:4 vd:4 1101 n:1 q:1 m:1 1 vm:4
-+VSDOT_s     A1 11111110 0 d:1 10 vn:4 vd:4 1101 n:1 q:1 m:1 0 vm:4
-+
-+@v8_2_fhm
-+
-+VFMAL       A1 1111110 00 d:1 10 vn:4 vd:4 1000 n:1 q:1 m:1 1 vm:4
-+VFMSL       A1 1111110 01 d:1 10 vn:4 vd:4 1000 n:1 q:1 m:1 1 vm:4
-+VFMAL_s     A1 11111110 0 d:1 00 vn:4 vd:4 1000 n:1 q:1 m:1 1 vm:4
-+VFMSL_s     A1 11111110 1 d:1 00 vn:4 vd:4 1000 n:1 q:1 m:1 1 vm:4
-+
- #
- # ARMv8.3 extensions
- #
+         /* ... and then convert them to x86 format */
+         /* config pointer */
 -- 
-2.20.1
+2.26.2
 

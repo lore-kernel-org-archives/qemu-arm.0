@@ -1,101 +1,100 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1014922lfa;
-        Mon, 12 Oct 2020 05:48:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRdD6GrB4Nv7GAp0bspEiURLL5BSSDLTFxaLpghFQfnTvhbPjW6YputnMRNOBPl7awlBmE
-X-Received: by 2002:a5b:70f:: with SMTP id g15mr13065546ybq.244.1602506930452;
-        Mon, 12 Oct 2020 05:48:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602506930; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1014952lfa;
+        Mon, 12 Oct 2020 05:48:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQvkwY9jGCQZKJdbwaZGKUw18YQJX7UZjMKC7Ah7PJR+LnWHMrD7ZEgv06BObBMHrVoq60
+X-Received: by 2002:a25:d7c4:: with SMTP id o187mr2792556ybg.363.1602506932672;
+        Mon, 12 Oct 2020 05:48:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602506932; cv=none;
         d=google.com; s=arc-20160816;
-        b=pi8h5QziNTQstPQzYl5Ncrudj3dVr1rd1/TvpzQhc/GGWR3y+GVlgQ4xtHG0rvABIA
-         JhpLucMzbOu3fUUn8k9hL7nQZ7MAaIN+s+mXTDsxJUlE/xj9MAY68y3tManj1Y9Ckx/i
-         xkpLi4YbULZlC0B4qyi9Lx0MDPOENRlemhpLWtdBHyVrGR+9cO6AMMwd3x1lr5Ils0O0
-         54LJYiKvTR2/tOvx+KviP18j+oSDnjWCP90SiNahR2mJWLC4yCdIX/Pus62+mR+X8P1I
-         1l2hkDG+QL+1u8cM9b4glMHxq5ZC6tsuwGRQNt2MjR9BqOyGW5gSYc5FEp21RrvNUT2E
-         7E7w==
+        b=t+sQR1cuh3rwB1FB+YS+OKHNafLRLM4UKzYQf5et0Czssy+Yv50EzjW8vZe3UNpt2k
+         XyKenxyZNar/T4E4P7GFqOpZmGVqx2j8BLuVVTLXDxddiKMhqJcPuDIwSvs1hC5uOKod
+         aZxoeaPMVG8GVaHCFci7xsx4QS2heJa0eUGHMhHCSTV99hvqRnN9VVSs8422cgKZnPWK
+         s41movlc0cG9R4Vbz9ZHgNMTr33dFPYGgThn79ZTuaZCN8qnz1b+kOWGFEgIVTNn+88V
+         bUbxEbKZq8Cg5mrxN1eYvs0y0F3NFCYNudEc8PMA0bCLxWOEr+JFUqVHT99bV2AbLBbg
+         IEnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=uEfJTmQm7IfbaNLnhhKiUk3mZKxHaYrO9aWEgNYf1LY=;
-        b=s8S/ZsukyfGQC23jexU1eXsKswkAEsN5Ta14riFOKRbZw7PBN6sqLFIsj1oTAI/Ppe
-         B5EUDN56sOA0gElyJ2Z0GHJxzvTX23m+8rRmJkO/UPGOVxRDeJXQ5MQsCWv0H+/JoQwZ
-         mPglOC2SvfBQ6pBCpWBDKvRHVZ/ZgwSiOCzr/exZWsfzDe2JENcANxKpqohyQMFl7GlH
-         AokKKTsFlWL2Z2CB8iryebbKTQywnA+zyGpnwH34likoQIqwKdbeSSZOTA/auazVR5up
-         1gvi5xUY9LKTysq/4e3aPyro6A3gqGyVzM+QR27UWWJELiPEyWIC9I1kNMwAADQS+CnO
-         QKlQ==
+        bh=xCNLhoelsRO4TCaFqCkPA59+Ay48720LqdAdNtyWtdc=;
+        b=g8ZEE27JHjvrGDlsWDcyzKXky4pQ//Fm2mvXXBp3mRbQno0GSWJHhmB66oOLpGw7YA
+         bbu+D/xQBrLwUhDdDYFX8eq81vSz8JxYiAsHHqo59o38E0FEUF13l/dpZ85JEfFU+mFZ
+         tRfoSwj12HM/Uj9+D6GSTTO3fSm0oBL3mv3JCO8HqiJZu3ZsWwsSTOjE9iwkgtcvVhw4
+         bDoqJLFfnj+pg8LT/6D1OrqYBG4yVTXnkX215Rb8E91W7UygQP5SLtAOa68T5yXEPVig
+         PVEOTDyShNmtXmYtc673AADidWN8/lp4mKw1wKsu/vD0oPOQotAOe57ESZL3bwvPZzMg
+         aBfA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i6qZgCEQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ME0qyA/3";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 197si1199602ybc.182.2020.10.12.05.48.50
+        by mx.google.com with ESMTPS id e79si2851462ybf.297.2020.10.12.05.48.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 05:48:50 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Oct 2020 05:48:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=i6qZgCEQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="ME0qyA/3";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:55582 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54508 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRxFx-0007z9-OH
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:48:49 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:33372)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kRxG0-0007Vg-13
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:48:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33504)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCh-0005De-Oi
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 08:45:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:24961)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCs-0005dv-JQ
+ for qemu-devel@nongnu.org; Mon, 12 Oct 2020 08:45:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:20510)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCg-0008Vo-6L
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 08:45:27 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCp-00005Q-Kn
+ for qemu-devel@nongnu.org; Mon, 12 Oct 2020 08:45:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602506725;
+ s=mimecast20190719; t=1602506734;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uEfJTmQm7IfbaNLnhhKiUk3mZKxHaYrO9aWEgNYf1LY=;
- b=i6qZgCEQ875udRWEeba6AQZW5gTzAMKjtYhajRPEjKMQ4u3b6eTEJp/VWh4k9e3Mr6ap39
- 86oVu9j4naArs7/i20TvK4KRyKXXclSczvdeDyuFAFdzzMVMH+o9Ay0NGV0sNHerO20VZV
- qng19FfoUj02qLtBJW8Na7otXYahs0I=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-389-eIVu4u_NMrKlGXBns0cJWQ-1; Mon, 12 Oct 2020 08:45:22 -0400
-X-MC-Unique: eIVu4u_NMrKlGXBns0cJWQ-1
-Received: by mail-wr1-f72.google.com with SMTP id n14so5759003wrp.1
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 05:45:21 -0700 (PDT)
+ bh=xCNLhoelsRO4TCaFqCkPA59+Ay48720LqdAdNtyWtdc=;
+ b=ME0qyA/3xFXlPM+JyqDYjndNjdg9M+Bi4xYmeOb4Xfq5nl7WTbN7ImIK16TkalixutE/IG
+ fU0zzkjB89xJIysW2YrWW3sqvSeypdbCUwKyuX+QmXULvqq1JUp8+LMl6nin+xFvoOqREc
+ 8eMRH+tkhjTdDZB0RzkDW2zUCj1F+Ao=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-49-keh6b2YDNhC6QHEkA2uQYA-1; Mon, 12 Oct 2020 08:45:33 -0400
+X-MC-Unique: keh6b2YDNhC6QHEkA2uQYA-1
+Received: by mail-wr1-f71.google.com with SMTP id y6so4514394wra.9
+ for <qemu-devel@nongnu.org>; Mon, 12 Oct 2020 05:45:32 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=uEfJTmQm7IfbaNLnhhKiUk3mZKxHaYrO9aWEgNYf1LY=;
- b=EVJ6/HzqtWFK8CdEPf/3CmcGPly0uT/7YP/ZaDY3NimDPaxGVuH44YgPRsO3YUh9SZ
- +OAJFZuou0nn0OCOpT4xUqDGJPaTB9OZO0Dx9MXgxud2bMoGDoPHZFIJWupl0Sr0BHAJ
- wjZEmHpYUioYI9fCA/FOwCXbBUDVWZa9QcKz5evmzpJxH78RnVBLNfbgTgMxXQQVjHi8
- N9jYoyPnB86QysDMby2SkOTxySEAY1dblsdyg06r45gacGpctSd/dWqWUvWBHk+HXLOa
- ZNgobBcocpPpcrC4nkfc6q49GY8znaveA+M3/PY0K0M6jXlFlilqbje5oZBU7WyECFrG
- EVgQ==
-X-Gm-Message-State: AOAM532nVFEs0McmXVE58fjjO6ulaUXs0YDCKFo1Rtrc9p+bC8aE/CPB
- koQX/Dr1iRrMzevKJGvdsY3AaVoJ+mVoC9Vm3fZ2qZdGaEvsxetvl5Y66IIiuwYB0Lp1W+CmMhL
- 1sZ/RaEDwMiSR
-X-Received: by 2002:adf:8b85:: with SMTP id o5mr16319176wra.104.1602506720840; 
- Mon, 12 Oct 2020 05:45:20 -0700 (PDT)
-X-Received: by 2002:adf:8b85:: with SMTP id o5mr16319151wra.104.1602506720677; 
- Mon, 12 Oct 2020 05:45:20 -0700 (PDT)
+ bh=xCNLhoelsRO4TCaFqCkPA59+Ay48720LqdAdNtyWtdc=;
+ b=nV9JSbEwm8hWQNLk6YXEAI1N/aGPXnka2lMDiTnx77MO11SIbQeOOTxpGRt3raqYiS
+ 7fApxuPIto+3QMoofWoJrniHn3nwpIitgbyr2YmayQqaazfVZJEQ2knG1NFPr1MX1i9D
+ wBivWhe4S5tTAk0PR++6zU2+osjczqkqSlBhv7ZTAxYEVtjzNgrwhhU7qhFlhSm4MkoA
+ f79oWp2uJKtAJItf14kaOzgBvUNOyanBa7S3DUnAZ8CXxYTfJJ9JnbK5c5URViQ8OxSC
+ BDL7BaapkPAE/vNfto2b6DUY6W+PrcmVoKl2K+AomRttg56w/iv+KC4bxtozLOddLJIj
+ rXKQ==
+X-Gm-Message-State: AOAM533XUpksocRp/1f35mkFeI/luSWLGKPSzxRQJ2XCyC+gpBmjHNem
+ ysOueQ4lpcb+hJHWvXxCghXUd8v6ijJEl9+u9S+lTZ6y8TU851ePXW88LUiKh6ZkIp71cR40Lip
+ l3JQV6QtBT+MgafU=
+X-Received: by 2002:a5d:4409:: with SMTP id z9mr29211364wrq.236.1602506731773; 
+ Mon, 12 Oct 2020 05:45:31 -0700 (PDT)
+X-Received: by 2002:a5d:4409:: with SMTP id z9mr29211331wrq.236.1602506731500; 
+ Mon, 12 Oct 2020 05:45:31 -0700 (PDT)
 Received: from localhost.localdomain
  (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id b5sm2564766wrs.97.2020.10.12.05.45.18
+ by smtp.gmail.com with ESMTPSA id l5sm24326366wrq.14.2020.10.12.05.45.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 05:45:20 -0700 (PDT)
+ Mon, 12 Oct 2020 05:45:30 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 2/5] hw/pci-host: Use the PCI_BUILD_BDF() macro from
- 'hw/pci/pci.h'
-Date: Mon, 12 Oct 2020 14:45:03 +0200
-Message-Id: <20201012124506.3406909-3-philmd@redhat.com>
+Subject: [PATCH 4/5] hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'
+Date: Mon, 12 Oct 2020 14:45:05 +0200
+Message-Id: <20201012124506.3406909-5-philmd@redhat.com>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201012124506.3406909-1-philmd@redhat.com>
 References: <20201012124506.3406909-1-philmd@redhat.com>
@@ -118,25 +117,23 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Huacai Chen <chenhc@lemote.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
+ Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
  Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
  Helge Deller <deller@gmx.de>, "Michael S. Tsirkin" <mst@redhat.com>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
  David Gibson <david@gibson.dropbear.id.au>,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
@@ -146,48 +143,131 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C2Ztzf4yK02j
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: yloJnHr0gFV6
 
 From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-We already have a generic PCI_BUILD_BDF() macro in "hw/pci/pci.h"
-to pack these values, use it.
+We already have a generic PCI_SLOT() macro in "hw/pci/pci.h"
+to extract the PCI slot identifier, use it.
 
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/pci-host/bonito.c   | 3 +--
- hw/pci-host/pnv_phb4.c | 2 +-
- 2 files changed, 2 insertions(+), 3 deletions(-)
+ hw/hppa/dino.c        | 2 +-
+ hw/i386/xen/xen-hvm.c | 2 +-
+ hw/isa/piix3.c        | 2 +-
+ hw/mips/gt64xxx_pci.c | 2 +-
+ hw/pci-host/bonito.c  | 2 +-
+ hw/pci-host/ppce500.c | 2 +-
+ hw/ppc/ppc4xx_pci.c   | 2 +-
+ hw/sh4/sh_pci.c       | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
 
+diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
+index 81053b5fb64..5b82c9440d1 100644
+--- a/hw/hppa/dino.c
++++ b/hw/hppa/dino.c
+@@ -496,7 +496,7 @@ static void dino_set_irq(void *opaque, int irq, int level)
+ 
+ static int dino_pci_map_irq(PCIDevice *d, int irq_num)
+ {
+-    int slot = d->devfn >> 3;
++    int slot = PCI_SLOT(d->devfn);
+ 
+     assert(irq_num >= 0 && irq_num <= 3);
+ 
+diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
+index f3ababf33b6..276254e6ca9 100644
+--- a/hw/i386/xen/xen-hvm.c
++++ b/hw/i386/xen/xen-hvm.c
+@@ -140,7 +140,7 @@ typedef struct XenIOState {
+ 
+ int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num)
+ {
+-    return irq_num + ((pci_dev->devfn >> 3) << 2);
++    return irq_num + (PCI_SLOT(pci_dev->devfn) << 2);
+ }
+ 
+ void xen_piix3_set_irq(void *opaque, int irq_num, int level)
+diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
+index 587850b8881..f46ccae25cf 100644
+--- a/hw/isa/piix3.c
++++ b/hw/isa/piix3.c
+@@ -361,7 +361,7 @@ type_init(piix3_register_types)
+ static int pci_slot_get_pirq(PCIDevice *pci_dev, int pci_intx)
+ {
+     int slot_addend;
+-    slot_addend = (pci_dev->devfn >> 3) - 1;
++    slot_addend = PCI_SLOT(pci_dev->devfn) - 1;
+     return (pci_intx + slot_addend) & 3;
+ }
+ 
+diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
+index e091bc4ed55..588e6f99301 100644
+--- a/hw/mips/gt64xxx_pci.c
++++ b/hw/mips/gt64xxx_pci.c
+@@ -982,7 +982,7 @@ static int gt64120_pci_map_irq(PCIDevice *pci_dev, int irq_num)
+ {
+     int slot;
+ 
+-    slot = (pci_dev->devfn >> 3);
++    slot = PCI_SLOT(pci_dev->devfn);
+ 
+     switch (slot) {
+     /* PIIX4 USB */
 diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-index abb3ee86769..b05295639a6 100644
+index b05295639a6..ee8b193e15b 100644
 --- a/hw/pci-host/bonito.c
 +++ b/hw/pci-host/bonito.c
-@@ -196,8 +196,7 @@ FIELD(BONGENCFG, PCIQUEUE,      12, 1)
- #define PCI_IDSEL_VIA686B          (1 << PCI_IDSEL_VIA686B_BIT)
+@@ -570,7 +570,7 @@ static int pci_bonito_map_irq(PCIDevice *pci_dev, int irq_num)
+ {
+     int slot;
  
- #define PCI_ADDR(busno , devno , funno , regno)  \
--    ((((busno) << 8) & 0xff00) + (((devno) << 3) & 0xf8) + \
--    (((funno) & 0x7) << 8) + (regno))
-+    ((PCI_BUILD_BDF(busno, PCI_DEVFN(devno , funno)) << 8) + (regno))
+-    slot = (pci_dev->devfn >> 3);
++    slot = PCI_SLOT(pci_dev->devfn);
  
- typedef struct BonitoState BonitoState;
+     switch (slot) {
+     case 5:   /* FULOONG2E_VIA_SLOT, SouthBridge, IDE, USB, ACPI, AC97, MC97 */
+diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
+index 9517aab913e..5ad1424b31a 100644
+--- a/hw/pci-host/ppce500.c
++++ b/hw/pci-host/ppce500.c
+@@ -342,7 +342,7 @@ static const MemoryRegionOps e500_pci_reg_ops = {
  
-diff --git a/hw/pci-host/pnv_phb4.c b/hw/pci-host/pnv_phb4.c
-index 03daf40a237..6328e985f81 100644
---- a/hw/pci-host/pnv_phb4.c
-+++ b/hw/pci-host/pnv_phb4.c
-@@ -889,7 +889,7 @@ static bool pnv_phb4_resolve_pe(PnvPhb4DMASpace *ds)
-     /* Read RTE */
-     bus_num = pci_bus_num(ds->bus);
-     addr = rtt & PHB_RTT_BASE_ADDRESS_MASK;
--    addr += 2 * ((bus_num << 8) | ds->devfn);
-+    addr += 2 * PCI_BUILD_BDF(bus_num, ds->devfn);
-     if (dma_memory_read(&address_space_memory, addr, &rte, sizeof(rte))) {
-         phb_error(ds->phb, "Failed to read RTT entry at 0x%"PRIx64, addr);
-         /* Set error bits ? fence ? ... */
+ static int mpc85xx_pci_map_irq(PCIDevice *pci_dev, int pin)
+ {
+-    int devno = pci_dev->devfn >> 3;
++    int devno = PCI_SLOT(pci_dev->devfn);
+     int ret;
+ 
+     ret = ppce500_pci_map_irq_slot(devno, pin);
+diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
+index 28724c06f88..e8789f64e80 100644
+--- a/hw/ppc/ppc4xx_pci.c
++++ b/hw/ppc/ppc4xx_pci.c
+@@ -243,7 +243,7 @@ static void ppc4xx_pci_reset(void *opaque)
+  * may need further refactoring for other boards. */
+ static int ppc4xx_pci_map_irq(PCIDevice *pci_dev, int irq_num)
+ {
+-    int slot = pci_dev->devfn >> 3;
++    int slot = PCI_SLOT(pci_dev->devfn);
+ 
+     trace_ppc4xx_pci_map_irq(pci_dev->devfn, irq_num, slot);
+ 
+diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
+index 73d2d0bccb0..734892f47c7 100644
+--- a/hw/sh4/sh_pci.c
++++ b/hw/sh4/sh_pci.c
+@@ -109,7 +109,7 @@ static const MemoryRegionOps sh_pci_reg_ops = {
+ 
+ static int sh_pci_map_irq(PCIDevice *d, int irq_num)
+ {
+-    return (d->devfn >> 3);
++    return PCI_SLOT(d->devfn);
+ }
+ 
+ static void sh_pci_set_irq(void *opaque, int irq_num, int level)
 -- 
 2.26.2
 

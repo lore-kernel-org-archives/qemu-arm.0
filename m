@@ -1,95 +1,95 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1160975lfa;
-        Mon, 12 Oct 2020 08:53:02 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwrhXm8g7JgrGebjHsrIszZuuN6h8YIly6uLsqdjywqjX3OIE+Bl4wyCQogfqUQNU1s8w6F
-X-Received: by 2002:a5b:f47:: with SMTP id y7mr31300394ybr.3.1602517982507;
-        Mon, 12 Oct 2020 08:53:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602517982; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1162017lfa;
+        Mon, 12 Oct 2020 08:54:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwNVNPE2K7KQrmCJNlKqpTnUPgPqz2OF2nngs+BvZK0Oo9lrQrCr9jLQfTbTgXMY+5AyvLl
+X-Received: by 2002:a25:b126:: with SMTP id g38mr12037808ybj.36.1602518079198;
+        Mon, 12 Oct 2020 08:54:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602518079; cv=none;
         d=google.com; s=arc-20160816;
-        b=QmLNRPAprhZkadRnRQMPVMME0MVvM3CdHaYFoYQLe4p+2P347AAJDmEQ2u7srC4TN9
-         rVOrHT8idxKVD9q6ojmobKAmpHf4dWXCorOnwXU3ga35qlZn9oS7FHT78QCmVewNaeS8
-         4u+fXJq/TKtlgdvAKDwhzN/Ywt2qNr+J1fQB5+7G4/VpTYHHlmQ6eM47PmeTAnOi0aVf
-         ztuzaOHdbKtzTm8IX3V8qHTu8QuzA+VvNMmE+aJXNJ2Jo2JulOiKDXLoe4Ld9EirLqrn
-         3d3WCrl2+4AwtVE0enTjg7GoRVd7qSLAE1nNOrrGjZ+kExYz0WfNHokkFLJ4pF147rM1
-         voiQ==
+        b=QxI5LwJeeiQtRI4QRa739pOJfKbojkTuuo70miNtXpTYx8FQIsQE26Yf4so46hUEmv
+         4fumk74t957sK1Bq83g1CHDlccvd9pH8AO3sm0ikUxUtWNRptOlPiFJF/psy/qvS9JZl
+         CZvkjCUXqOxjvwrUKpHdMk+lOlBmZZeGOINgCYW1Kqf2wO9a4gtQWvC72IGW0/+CZ9Mn
+         TiU9IG/Mr6Gfq7SVkof4svFpu2GjEs1y49wraEg9Th54ZNSQTnXaNnv4KoN46MyKMvpa
+         knC5siR+2d2GSsp8V6q24bI9rmAjXjvqWmjInOw0tFHjmt3XR2GZ03uuD5Zi+oNHby5Z
+         uDnA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=ZETMc4CfZhy2eJWBeDKW9CaWM4uEKiDWd22Cf9UUe+4=;
-        b=TmKrIa01WvFzkwhz9wGZbDxuXkuRZTIBxfC19O0NuL4hL6HuNKx9lcXxsbJoEAKjWE
-         qeE6KnxRgfPb6UnRWUm0yrOwoMtAjTTDIJkU5MUu+4i+IepSQ7tQBkcoMQ8uvG6y9ddB
-         Qw6QGqbqnBYz/UUziavJ6fP4LZWTJnGNZLusDymrKarRNO94ViQZ2MXAOkXd+NoZ4dHN
-         OWpa7neYVbx55h7LJLZnN4xtSKv/GFAEMfTLg45I/Tek1idkGjDj8LdXNY4UY6yHDD+Q
-         OG8gjfV7NOZOn/rwbP7rtG3YRH21JlTiJ29PmplVn/6dQ5HunEXd06HVPaHG3/Q8bOQm
-         qUaw==
+        bh=Y1ekWK8CJLvHrVxfCc2kYGCDX3fGw6jKhM4D+UOMVQU=;
+        b=Q8YluuR5bCu0WtyrcfQX/ngOutWw6giNZE5Myos9SPw8tzKY74NPj2NCPXThbasBF0
+         1KDiQwxotNno0eBYnyjReF5ow1zarVcfKOo5HGwPPXG7IwKk9zi+Bybit+DIqXN5tGrr
+         uTlVRzRAXUBV3SzyjC28s9JLtcRWLvzLEUt92r8O/PoWc1A0OQ4Myiq0ZaCzlae+b2dE
+         0Ic6mYkpbR6BTDPS8+Nv84tUhtGq2S1GN5Hvq9aC3OxssTuU3En0TpU69gTJ3D+QmSpg
+         CaTlrbtm9o8A5SBBjqqSy17zt8QvwhYgwdqeUt6DJNQYpAjrenYyaS2kbskc/BM0NTqF
+         IjwQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vHuergGq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YSrlsBno;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h30si15383986ybj.249.2020.10.12.08.53.02
+        by mx.google.com with ESMTPS id t97si14644666ybi.161.2020.10.12.08.54.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:53:02 -0700 (PDT)
+        Mon, 12 Oct 2020 08:54:39 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=vHuergGq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=YSrlsBno;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58880 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:36848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kS08D-00064o-Uu
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:53:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57236)
+	id 1kS09m-0000Dy-Jw
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:54:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57260)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqo-0007Hp-RN
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:35:02 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54880)
+ id 1kRzqq-0007LX-7x
+ for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:35:04 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40793)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqe-0007N9-EA
- for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:35:02 -0400
-Received: by mail-wm1-x342.google.com with SMTP id p15so17503210wmi.4
- for <qemu-devel@nongnu.org>; Mon, 12 Oct 2020 08:34:44 -0700 (PDT)
+ id 1kRzqe-0007NU-D8
+ for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:35:03 -0400
+Received: by mail-wm1-x342.google.com with SMTP id k18so17961294wmj.5
+ for <qemu-devel@nongnu.org>; Mon, 12 Oct 2020 08:34:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=ZETMc4CfZhy2eJWBeDKW9CaWM4uEKiDWd22Cf9UUe+4=;
- b=vHuergGqTQF/IwNUwneX8OnCvtqnJm9nqZW/mdXcDH4epnbcgjhO0QhuDO5V2HbxoQ
- Hfm1tmaRqjFcttGcfHV47BPAJSsiXHA/btiIr/JLPXQ6/mrAiQsq6diOa8Q6pe4a79Pd
- 7CpU9pmzpSB++BeedrpU0F6hFVIdPkYVJF0RiQ7GKqa8fE2HG/uPZRJ8pYiMKgWt6JDy
- 4GmisitabxDBAooyhUe+05iVsCB8qIgy8rTkKYhoJVp+t/LkKujBJSO9WhtTdoJNcofd
- 2tnQfkb6fDoGE+a/o6lwhyarUwdZ47tohAPeIlvQyRBNfCCLf2p/B8EFs/mUIB/7ExFi
- 62tQ==
+ bh=Y1ekWK8CJLvHrVxfCc2kYGCDX3fGw6jKhM4D+UOMVQU=;
+ b=YSrlsBnoQCz/hCGSqfuYdXKXQhZ80JQPJ4j/lDZO+r7fA8pu9fNnuzbEY1wyT/7zTI
+ QCU0qnRZmG64mcm98xhV04Hkw8DVouadiIE10n6+m238GqtUBxpeoqWS8HHhtJF4wrn0
+ kNBoyZj++YUv7m3S6h7HSzxjUHhA4yZ1iG69g3sb3wkw/M49RAS6jehxazLP2p+t9Sv/
+ V8MvxuxrOWoHxHNxSfDZDP+Td7yc2v+714iZkgEpa8W/seVaWX356rYfU93xgpLOF3Ai
+ eQu06ZqEWcJ0R9mXix/14P52wwSkmmCh8SR6zNHpASRWF2+M6x6Tqz5bud66x2RkXQL7
+ 6nFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=ZETMc4CfZhy2eJWBeDKW9CaWM4uEKiDWd22Cf9UUe+4=;
- b=jWEa94LMajmsUDFZ0j51BFyTtOwgACqQdnkuIXHE1jniRSSmkk5jYEhW87RjSwk2oe
- LLNmUAtHirt81XdnVhSqQ02HSYtk66JuQ+JqIM2lRjQAkW0cYxAxyZHV/SNleVl16HT3
- KWFxsj3PhLzZtoGFgcFZdaJKqlZtZXn0slX17jH9WhwND1iOetODpNJ78S/FoDQ3UFev
- Wm1BvWSEqpAniqEMYMpo9vmNSiY6h/t+zOS7b2ej2qe64tuajDjbqQakEZyu1epXfuah
- MHvALTekrB6+1G8sbGtBraM3Vmq+cKSVBF8nFhzwXJNvnuhBtMKQofvUsLsB6cfJzLtg
- BbbQ==
-X-Gm-Message-State: AOAM532OWIjdsMMm2A6PaAkeBU7bv5WqFs4fYVAhHw6aj+UvTwV5xE64
- kaMXcNYyq+Wc5VPhoqR23abb/VUtlxcXEpPS
-X-Received: by 2002:a7b:cb82:: with SMTP id m2mr12018508wmi.56.1602516884046; 
- Mon, 12 Oct 2020 08:34:44 -0700 (PDT)
+ bh=Y1ekWK8CJLvHrVxfCc2kYGCDX3fGw6jKhM4D+UOMVQU=;
+ b=b77jMKC2ucyBdMhb2CRYtd1cHGzLUnziZEGeXpxb+fMujI3qtxDZzKoV1BjJzIdUDh
+ cNBrPIsi0MKJkg4psDdWiUU4BkdoH9uutnqb2me6Dc6j4yagMlg75gGSoLG6ACL6PI35
+ 6SzMRC9UzCof0/L8VwFKGwuUcHF3LFehl2XjiqwfQhyKBlduMntW73p9dayTUmhKdQ2X
+ O0R8i5naWwMZYx1nEfP7Zcn8q3T6a9uSKjAB8M3QPJqdz03PgWurziZzAzJzjA5DrCrf
+ k/M82LYBZwqSnbWnL3Iao0OtIY71XI1i/hWuYxR8DH2uTi1Hg6m7BkOYyXWW9J96QeMY
+ JoaQ==
+X-Gm-Message-State: AOAM533rG5UOIvr9uOx9BQPsbyAZ0k8TFYlTavpBqMsQJhsdLMP89j/A
+ hpTMvMvmnD8i89yUrbyXB/f28w==
+X-Received: by 2002:a1c:a541:: with SMTP id o62mr11362675wme.90.1602516885118; 
+ Mon, 12 Oct 2020 08:34:45 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.42
+ by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:43 -0700 (PDT)
+ Mon, 12 Oct 2020 08:34:44 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Delete unused ARM_FEATURE_CRC
-Date: Mon, 12 Oct 2020 16:33:52 +0100
-Message-Id: <20201012153408.9747-30-peter.maydell@linaro.org>
+Subject: [PATCH] target/arm: Delete unused VFP_DREG macros
+Date: Mon, 12 Oct 2020 16:33:53 +0100
+Message-Id: <20201012153408.9747-31-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
 References: <20201012153408.9747-1-peter.maydell@linaro.org>
@@ -121,30 +121,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BoEbbxe2Ubif
+X-TUID: o7FG2iGixRMg
 
-In commit 962fcbf2efe57231a9f5df we converted the uses of the
-ARM_FEATURE_CRC bit to use the aa32_crc32 isar_feature test
-instead. However we forgot to remove the now-unused definition
-of the feature name in the enum. Delete it now.
+As part of the Neon decodetree conversion we removed all
+the uses of the VFP_DREG macros, but forgot to remove the
+macro definitions. Do so now.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h | 1 -
- 1 file changed, 1 deletion(-)
+ target/arm/translate.c | 15 ---------------
+ 1 file changed, 15 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 9e8ed423ea1..9d2845c1797 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1950,7 +1950,6 @@ enum arm_features {
-     ARM_FEATURE_V8,
-     ARM_FEATURE_AARCH64, /* supports 64 bit mode */
-     ARM_FEATURE_CBAR, /* has cp15 CBAR */
--    ARM_FEATURE_CRC, /* ARMv8 CRC instructions */
-     ARM_FEATURE_CBAR_RO, /* has cp15 CBAR and it is read-only */
-     ARM_FEATURE_EL2, /* has EL2 Virtualization support */
-     ARM_FEATURE_EL3, /* has EL3 Secure monitor support */
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index c39a929b938..27bf6cd8b51 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -2471,21 +2471,6 @@ static int disas_dsp_insn(DisasContext *s, uint32_t insn)
+     return 1;
+ }
+ 
+-#define VFP_REG_SHR(x, n) (((n) > 0) ? (x) >> (n) : (x) << -(n))
+-#define VFP_DREG(reg, insn, bigbit, smallbit) do { \
+-    if (dc_isar_feature(aa32_simd_r32, s)) { \
+-        reg = (((insn) >> (bigbit)) & 0x0f) \
+-              | (((insn) >> ((smallbit) - 4)) & 0x10); \
+-    } else { \
+-        if (insn & (1 << (smallbit))) \
+-            return 1; \
+-        reg = ((insn) >> (bigbit)) & 0x0f; \
+-    }} while (0)
+-
+-#define VFP_DREG_D(reg, insn) VFP_DREG(reg, insn, 12, 22)
+-#define VFP_DREG_N(reg, insn) VFP_DREG(reg, insn, 16,  7)
+-#define VFP_DREG_M(reg, insn) VFP_DREG(reg, insn,  0,  5)
+-
+ static inline bool use_goto_tb(DisasContext *s, target_ulong dest)
+ {
+ #ifndef CONFIG_USER_ONLY
 -- 
 2.20.1
 

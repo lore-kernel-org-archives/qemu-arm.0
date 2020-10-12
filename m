@@ -1,103 +1,103 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1168409lfa;
-        Mon, 12 Oct 2020 09:03:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxhNDMG89NLW/7YQ5raWWp59yiOq820nqQ1uB3XJVKyp8O55CxhP9HF2U0kCyzS7jerJR1l
-X-Received: by 2002:a25:ab31:: with SMTP id u46mr32097469ybi.161.1602518598692;
-        Mon, 12 Oct 2020 09:03:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602518598; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1169931lfa;
+        Mon, 12 Oct 2020 09:04:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyZNYwMn4ABBNcGT+Sbg7YqExScVffA5fmpBGHHXg0kY4TAOaB1B8uDLZ4CvgaUdENkfYZK
+X-Received: by 2002:a05:6102:9cd:: with SMTP id g13mr15100850vsi.44.1602518685771;
+        Mon, 12 Oct 2020 09:04:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602518685; cv=none;
         d=google.com; s=arc-20160816;
-        b=K2fH0C8KiBrcLrR1lCf3tpd9gtPrEWvHk2B+ycMSb/dpNhfI5qGRlof+uKV5CABjaM
-         ujteZvgxnAUVQpbvb5+jUsAJ6/IQqozsJfgNG4VJfNjEZN114YrGdKfBU+6d+awbVyvZ
-         wasCI0ikDVMIa+SNIDmK/jCP1RyJyQ6ADIH/sh0F4G8b9kWoEfVHca414TFuPUTrvETH
-         10nJZnmlARhNut4bi6GsE1W9WytXksu6t9+kbHkQ9naHgt6/7s7AwbrxND9RBJ69u/eY
-         ozXOGlr9YkK747RH0lt8Q4GvdVJp+FJRjkVhgVRNGLysiJQmZqIckXf+cbLD0CFiPq8v
-         Au3A==
+        b=MwcRg08xpCo5zZqKwEVrwD2PSZQo8+c7+gRczh0ruyPLk0h4tf6YMzdv+liqAIq2/W
+         HE2da4IK+RKdV0cpYovaGsy6EarnQaOmjBB5RuNI2Br2xzG4sA93HuypFs6H8tDDyt3/
+         aCiuctoKgPXUh6Y6KmfXYvnSSY8QeYYSvSUrYblKRC+crKlEbtXTijeLVaEunK7NMKmA
+         o4rOZ1E+7HXSTiBgLG5xWYgfZJ4gw1zDK5m1KjRX9IyqNPE8EYZcHKQjNHkGmNK/8GTj
+         MzMW7fYzP9/G+PEHfLo0IMiCuhT96X2ZJnn4OIxXZqD9gIu5CV7lqXz5yE0eRz+dO80z
+         1fbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=karobGThPUBbxRoaP+yKeLZSzAdIl7EhuaiEL3CMR4I=;
-        b=d8ZutfXY0UDaVdIQVk8yEVTA7W+qOF8Cha1yexU/HEkMTgpXrHlb+Bh9kCRgolIlDe
-         kYtlQAfsFUTXBHyr15snR/pMJVnR+5LosRhuxPZDJUp/RNHPx6Rg5x3dfbn1wk4wFTQx
-         kCSH4yRnvofV+lUeVZOYSED0X+XVgoaXb5FVmDsXomizMA07znJ4cxorOzUJmQEtc1E/
-         VhvJeDnhnNGlw77Qi+1AMw27Dk3GmBKBP0hEfDoIkKekXuc7XAZoTOqhdlsDkDKICzYf
-         qfvcI+pCZLxIJ01WQEFAD2WYCZd98ldXM4x2jCXDMGGYeTlfUtVcuJZ6PmGWyKXpdioT
-         k1jQ==
+        bh=pVy88bjQ6oUom6zlEL/l8GFHzZ3l3YhMBHhw5mIWpLU=;
+        b=mmhndhsML+bXLHLYNboBV07IEuoiphdGwPwAno++3vvuRsZV0LvavNhkqiYDfbndmW
+         Kxru9I8YjWKS8WzyVkmueUgI8LUYyj6nnaOtxS6awkJIc9k2IHI+su3f29svzb2E7w6i
+         EG+WvThYGt2Vx4JYsCO10gAVuSUS5G12vW2UohsMjL5L0Dk7zMNm/Xw5TCiGU7Ya7H1Z
+         i9QZnHG/UPt7flrfGzlx6aQDNhV2ZmWsZZSI/K4KQfw8KyiQvNyuceKYP3v9ev1KpDKx
+         Vg8fQu6mtW0e1FjlsfdaltX09r54GSTlnyIAhjSDtBEnpONW5wLGwOiYhUQq29F8u48g
+         azQA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pB1gdTf6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=UaSav1qT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b1si14333042ybi.303.2020.10.12.09.03.18
+        by mx.google.com with ESMTPS id u4si233343vsn.29.2020.10.12.09.04.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 09:03:18 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Oct 2020 09:04:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pB1gdTf6;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=pass header.i=@linaro.org header.s=google header.b=UaSav1qT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38250 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40936 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kS0IA-00044n-1g
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 12:03:18 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58150)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kS0JZ-0005AT-1q
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 12:04:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58090)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRztk-0003jc-P2
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:38:05 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:38399)
+ id 1kRzti-0003gD-9A
+ for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:38:02 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:36631)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRztf-0007mb-Gx
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:38:04 -0400
-Received: by mail-wm1-x344.google.com with SMTP id b127so5150042wmb.3
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:37:58 -0700 (PDT)
+ id 1kRzta-0007lu-DE
+ for qemu-devel@nongnu.org; Mon, 12 Oct 2020 11:38:01 -0400
+Received: by mail-wm1-x342.google.com with SMTP id e2so17980740wme.1
+ for <qemu-devel@nongnu.org>; Mon, 12 Oct 2020 08:37:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=karobGThPUBbxRoaP+yKeLZSzAdIl7EhuaiEL3CMR4I=;
- b=pB1gdTf6L1Hy1roe0BRvGPb8EXrIBhUrtaB+/QVj4KAv+etAljPqtZ+CMfpTatXXU5
- PTCmXyMsX4aaf0l5BqBHW3kztsLnAOd0qVsOhcIJ0kUzwZwYjF2BAat89k0XWk5ACnRU
- vQwGt3Jd5J5kRjfQyj1M7VDXP2S3XSngTGcFG1iu15ss+s2O0e5LuMg7i0BSrxFoZrwO
- uQ1mZ6k/zJAUJMNtX14faQ8iU6zgvT5mSMTNIQahGmw7BwHjH4gbMQ/WpTEJ3MwWYD8b
- 26SA9d9tEDuDqk/0WZIKLXnByjvlbI7a2HwilvbrUWVGqjsg7LtsrBjXe3Hb4b8zOaa7
- y6Hg==
+ bh=pVy88bjQ6oUom6zlEL/l8GFHzZ3l3YhMBHhw5mIWpLU=;
+ b=UaSav1qT/HF9VDXaf7GvktosHSLrfpM5XL+7ocwJoJ6W/6T0siB7ag0zifJ/3bnvJM
+ oAcYheet78yFETeTDYtaWXI02K+jWMHTzPKzKL4IcICDflysRfz67XeuCx4k6CLi19dd
+ /nwhqq2pTCtflxRWoc2hakUxWOz3YvliKcCmNktT3slVtgAWV2edPQjEeSCimBPwr8HA
+ 2vsteglTKaQKdKbM1WBv0v/PllACDdZ9rQr/59YADuAy6Y5mvIFhzhQvPt55IpFcc5b4
+ 9RWvp/lsi+SYqppMyPHsu3paOhxOMWCYEze4QbS4nNh6IggUEkvYuSVX150n9bWQMkKS
+ uaRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=karobGThPUBbxRoaP+yKeLZSzAdIl7EhuaiEL3CMR4I=;
- b=JK1FtGyslF80BZTzacLVguU/0hLeM0oeproPGlxre9AH7fmfqydrYEBgusQ+1AVTXK
- 5PZfjqrfW5hNI6ThDfi2mzD/eLupSXA0mqNpAwa9LGxDx7ztyjqQwYk0QvI7139GgF1A
- eEBN/Cpnz94GX4RJrD5EeGG6ZSybz4WIWApvxXH4KyT/0x8Yal9cU0eHLyCP/p/amors
- 5NCDfS+5AnmNQAd1JxxOpk3cZUM4p4puA61q53Dtr/xV2z3kVf/MgY20T2QLr/d2OY+U
- gdCT+Zgj6SBtsRYPkQbvIGStYybsv90SGcdG/AAxqIrQiuP+8/wHJVqa/gdXpGFNaaKI
- We1g==
-X-Gm-Message-State: AOAM532SbGswngWcjlAg9U6ez7L1aVH6euG3CrEDAsXtJFe+0vg/6uIO
- KTcYie83ttQPPD9MN56EF3Hjm7F9fnQZZE/g
-X-Received: by 2002:a1c:5a06:: with SMTP id o6mr11718388wmb.181.1602517077201; 
- Mon, 12 Oct 2020 08:37:57 -0700 (PDT)
+ bh=pVy88bjQ6oUom6zlEL/l8GFHzZ3l3YhMBHhw5mIWpLU=;
+ b=naPIOpIYZAvU5h5OC5ZCeyZZo3lHmsSx/zmdel5qEsdAyW+4qUA2291AUUXHEZsFfx
+ LI9Gv4Xiu6i9ncTpdwbnu9IsyV6kVl1pddrNuMUx71qdhlEv6CZOtTcvvYeawENcERMW
+ ymzs/1pbrYmUuRPBJJd9Olwk0ZEYW/POnp5GIh10cTCMrB5RyBw75SqMT2lgs4mhlHNV
+ 1bV+Isexali6Muu0ThIPBZIT7R+JcBo9kQk4uBxrGn4NQ+6K5puC0ejDg3Ur6tdlTU2c
+ c0d839xnVENI0O7Dl2Ef9kSvoMfchm3sCTlW/GANgaezy6bKfh5UnDHeXc7YVoDZT5TL
+ 9g1w==
+X-Gm-Message-State: AOAM531SOSkoQvMDncjZJB/bnymT3H82KIwfmGS/8Qvxnz+6AtGGgniw
+ oew+wg4I5KYtWcZE5lCqxQA0Ig==
+X-Received: by 2002:a1c:4d05:: with SMTP id o5mr11028771wmh.94.1602517073036; 
+ Mon, 12 Oct 2020 08:37:53 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y66sm7095961wmd.14.2020.10.12.08.37.56
+ by smtp.gmail.com with ESMTPSA id y66sm7095961wmd.14.2020.10.12.08.37.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:37:56 -0700 (PDT)
+ Mon, 12 Oct 2020 08:37:52 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 08/10] target/arm: Fix has_vfp/has_neon ID reg squashing for
- M-profile
-Date: Mon, 12 Oct 2020 16:37:44 +0100
-Message-Id: <20201012153746.9996-9-peter.maydell@linaro.org>
+Subject: [PATCH 04/10] target/arm: Make the t32 insn[25:23]=111 group
+ non-overlapping
+Date: Mon, 12 Oct 2020 16:37:40 +0100
+Message-Id: <20201012153746.9996-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201012153746.9996-1-peter.maydell@linaro.org>
 References: <20201012153746.9996-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x342.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -108,102 +108,100 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: R6PJEGNEHmhS
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: bq4kJPeNnnFE
 
-In arm_cpu_realizefn(), if the CPU has VFP or Neon disabled then we
-squash the ID register fields so that we don't advertise it to the
-guest.  This code was written for A-profile and needs some tweaks to
-work correctly on M-profile:
+The t32 decode has a group which represents a set of insns
+which overlap with B_cond_thumb because they have [25:23]=111
+(which is an invalid condition code field for the branch insn).
+This group is currently defined using the {} overlap-OK syntax,
+but it is almost entirely non-overlapping patterns. Switch
+it over to use a non-overlapping group.
 
- * A-profile only fields should not be zeroed on M-profile:
-   - MVFR0.FPSHVEC,FPTRAP
-   - MVFR1.SIMDLS,SIMDINT,SIMDSP,SIMDHP
-   - MVFR2.SIMDMISC
- * M-profile only fields should be zeroed on M-profile:
-   - MVFR1.FP16
+For this to be valid syntactically, CPS must move into the same
+overlapping-group as the hint insns (CPS vs hints was the
+only actual use of the overlap facility for the group).
 
-In particular, because MVFR1.SIMDHP on A-profile is the same field as
-MVFR1.FP16 on M-profile this code was incorrectly disabling FP16
-support on an M-profile CPU (where has_neon is always false).  This
-isn't a visible bug yet because we don't have any M-profile CPUs with
-FP16 support, but the change is necessary before we introduce any.
+The non-overlapping subgroup for CLREX/DSB/DMB/ISB/SB is no longer
+necessary and so we can remove it (promoting those insns to
+be members of the parent group).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.c | 29 ++++++++++++++++++-----------
- 1 file changed, 18 insertions(+), 11 deletions(-)
+Just a minor bit of tidying that I did while I was trying to
+work out whether the v8.1M loop/branch insns needed to go in
+this group. (As it turns out, they don't.)
+---
+ target/arm/t32.decode | 26 ++++++++++++--------------
+ 1 file changed, 12 insertions(+), 14 deletions(-)
 
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 056319859fb..186ee621a65 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1429,17 +1429,22 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         u = cpu->isar.mvfr0;
-         u = FIELD_DP32(u, MVFR0, FPSP, 0);
-         u = FIELD_DP32(u, MVFR0, FPDP, 0);
--        u = FIELD_DP32(u, MVFR0, FPTRAP, 0);
-         u = FIELD_DP32(u, MVFR0, FPDIVIDE, 0);
-         u = FIELD_DP32(u, MVFR0, FPSQRT, 0);
--        u = FIELD_DP32(u, MVFR0, FPSHVEC, 0);
-         u = FIELD_DP32(u, MVFR0, FPROUND, 0);
-+        if (!arm_feature(env, ARM_FEATURE_M)) {
-+            u = FIELD_DP32(u, MVFR0, FPTRAP, 0);
-+            u = FIELD_DP32(u, MVFR0, FPSHVEC, 0);
-+        }
-         cpu->isar.mvfr0 = u;
- 
-         u = cpu->isar.mvfr1;
-         u = FIELD_DP32(u, MVFR1, FPFTZ, 0);
-         u = FIELD_DP32(u, MVFR1, FPDNAN, 0);
-         u = FIELD_DP32(u, MVFR1, FPHP, 0);
-+        if (arm_feature(env, ARM_FEATURE_M)) {
-+            u = FIELD_DP32(u, MVFR1, FP16, 0);
-+        }
-         cpu->isar.mvfr1 = u;
- 
-         u = cpu->isar.mvfr2;
-@@ -1475,16 +1480,18 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-         u = FIELD_DP32(u, ID_ISAR6, FHM, 0);
-         cpu->isar.id_isar6 = u;
- 
--        u = cpu->isar.mvfr1;
--        u = FIELD_DP32(u, MVFR1, SIMDLS, 0);
--        u = FIELD_DP32(u, MVFR1, SIMDINT, 0);
--        u = FIELD_DP32(u, MVFR1, SIMDSP, 0);
--        u = FIELD_DP32(u, MVFR1, SIMDHP, 0);
--        cpu->isar.mvfr1 = u;
-+        if (!arm_feature(env, ARM_FEATURE_M)) {
-+            u = cpu->isar.mvfr1;
-+            u = FIELD_DP32(u, MVFR1, SIMDLS, 0);
-+            u = FIELD_DP32(u, MVFR1, SIMDINT, 0);
-+            u = FIELD_DP32(u, MVFR1, SIMDSP, 0);
-+            u = FIELD_DP32(u, MVFR1, SIMDHP, 0);
-+            cpu->isar.mvfr1 = u;
- 
--        u = cpu->isar.mvfr2;
--        u = FIELD_DP32(u, MVFR2, SIMDMISC, 0);
--        cpu->isar.mvfr2 = u;
-+            u = cpu->isar.mvfr2;
-+            u = FIELD_DP32(u, MVFR2, SIMDMISC, 0);
-+            cpu->isar.mvfr2 = u;
-+        }
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+index d8454bd814e..7d5e000e82c 100644
+--- a/target/arm/t32.decode
++++ b/target/arm/t32.decode
+@@ -296,8 +296,8 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+ {
+   # Group insn[25:23] = 111, which is cond=111x for the branch below,
+   # or unconditional, which would be illegal for the branch.
+-  {
+-    # Hints
++  [
++    # Hints, and CPS
+     {
+       YIELD      1111 0011 1010 1111 1000 0000 0000 0001
+       WFE        1111 0011 1010 1111 1000 0000 0000 0010
+@@ -310,20 +310,18 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+       # The canonical nop ends in 0000 0000, but the whole rest
+       # of the space is "reserved hint, behaves as nop".
+       NOP        1111 0011 1010 1111 1000 0000 ---- ----
++
++      # If imod == '00' && M == '0' then SEE "Hint instructions", above.
++      CPS        1111 0011 1010 1111 1000 0 imod:2 M:1 A:1 I:1 F:1 mode:5 \
++                 &cps
      }
  
-     if (!cpu->has_neon && !cpu->has_vfp) {
+-    # If imod == '00' && M == '0' then SEE "Hint instructions", above.
+-    CPS          1111 0011 1010 1111 1000 0 imod:2 M:1 A:1 I:1 F:1 mode:5 \
+-                 &cps
+-
+     # Miscellaneous control
+-    [
+-      CLREX      1111 0011 1011 1111 1000 1111 0010 1111
+-      DSB        1111 0011 1011 1111 1000 1111 0100 ----
+-      DMB        1111 0011 1011 1111 1000 1111 0101 ----
+-      ISB        1111 0011 1011 1111 1000 1111 0110 ----
+-      SB         1111 0011 1011 1111 1000 1111 0111 0000
+-    ]
++    CLREX        1111 0011 1011 1111 1000 1111 0010 1111
++    DSB          1111 0011 1011 1111 1000 1111 0100 ----
++    DMB          1111 0011 1011 1111 1000 1111 0101 ----
++    ISB          1111 0011 1011 1111 1000 1111 0110 ----
++    SB           1111 0011 1011 1111 1000 1111 0111 0000
+ 
+     # Note that the v7m insn overlaps both the normal and banked insn.
+     {
+@@ -351,7 +349,7 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+     HVC          1111 0111 1110 ....  1000 .... .... ....     \
+                  &i imm=%imm16_16_0
+     UDF          1111 0111 1111 ----  1010 ---- ---- ----
+-  }
++  ]
+   B_cond_thumb   1111 0. cond:4 ...... 10.0 ............      &ci imm=%imm21
+ }
+ 
 -- 
 2.20.1
 

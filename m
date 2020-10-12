@@ -1,89 +1,116 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3186647lfq;
-        Sat, 10 Oct 2020 07:00:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyHpqwPD3mQLEH8hGf8lssn/jD6y3RcZrS0R0qm0Ra8MvRzzOhDZwuIYWB2bn3DzXX/JCsX
-X-Received: by 2002:a25:4a03:: with SMTP id x3mr2870509yba.293.1602338407579;
-        Sat, 10 Oct 2020 07:00:07 -0700 (PDT)
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp912653lfa;
+        Mon, 12 Oct 2020 03:20:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwv8QF4e8ahBs5T9uy9rpW46EiAVnev3isjw3iwq8ZpNbtZvsbKdtuxA/CHD28clBqsFlbt
+X-Received: by 2002:a25:d348:: with SMTP id e69mr9278043ybf.55.1602498037791;
+        Mon, 12 Oct 2020 03:20:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602498037; cv=none;
+        d=google.com; s=arc-20160816;
+        b=jDpc7Yg7Hqq5zO7hqtPWhQRJDCpVVMUugBtV5oJ+yF/pcLGvE8mAc7mk9aMy56g/EG
+         vMA/AtoddEEQvv1kfYF1P6J05YYf4PQwm+V/q5sHyGNL0IpJrX+5u4FWApuNS8aD+qxf
+         nmwdsXCMo0zHho3B855yvslGoWQxSDrVzZiPaU2uZsUA/7Te/0NNAjXJiiLux5m1F5pH
+         sb/tscCMX4ghGUjnLKZxn2Rxgpk7fmHqSQbJXa2FbiKVpqUwS1q44nVU2E81zqXElW2K
+         SEIkncqpGFNgGyRI+UcyVR/v03KzyRDFnSa2kbFIRSLJHzd4sXtT/B1Rv184OvSCHtT2
+         bMfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=ZcYpi53PoO5CUyx/N+Zpk6I5SsI3xUxsG1Oj6npBByk=;
+        b=zSrUrKZ35iWhGi/D4r1Fr57TI0b3bexpCfBAOOu6GGsouL1/QVYYEr4+Z6EC8/w9Tc
+         gWwPi8V1RSBP56P5UKAOOU3BBNoabwdxBs+j+r1tpl9B4uiRfrTP6ZF5YqNgAlgltmF9
+         a+ZV2MBgsNNg4GGvNMkMyl4j27kiwI2tJudEB2pO2Ye69X8sMaZflSPq8iltAOT8Mqqa
+         mWfSAtDcvurr7qcvO4It8RrpARjStmT0XoLz2ZI8UQWHsH6iRAe1eeaIRGoRqwGr3PxQ
+         g49/tAt7TL5rr4g+jeyHfXgPsIrt+6g/beDFJU38nNlIjPx3SJ1zepY/YjgpbTyMgfoL
+         XHVg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ciWzv/nu";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l204si10269793ybb.134.2020.10.10.07.00.07
+        by mx.google.com with ESMTPS id t13si3629733ybp.359.2020.10.12.03.20.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 10 Oct 2020 07:00:07 -0700 (PDT)
+        Mon, 12 Oct 2020 03:20:37 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=Sa+9zNwq;
-       arc=fail (signature failed);
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="ciWzv/nu";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
-Received: from localhost ([::1]:56148 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:37312 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRFPq-00055q-RB
-	for alex.bennee@linaro.org; Sat, 10 Oct 2020 10:00:06 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40640)
+	id 1kRuwX-00033x-3l
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 06:20:37 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49876)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kRFN2-00012p-ES; Sat, 10 Oct 2020 09:57:12 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74]:43610)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1kRFMz-0004JN-GP; Sat, 10 Oct 2020 09:57:12 -0400
-Received: from sekoia-pc.home.lmichel.fr (sekoia-pc.home.lmichel.fr
- [192.168.61.100])
- by pharaoh.lmichel.fr (Postfix) with ESMTPS id 11E12C603D8;
- Sat, 10 Oct 2020 13:57:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1602338224;
- h=from:from:sender:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XLwlDIyHFc0C8pkaVLGy6Y49SxN2cz8QpoPh2p0BZHI=;
- b=Sa+9zNwq5AHs8KvvOTGjIMRQPpu6MQeea1U/F6pnI0DIFI8UOuswlAVtGRwZUFhUjgh950
- v7Rm184hj7156i0d9861FjJZhyzDCdT+PQO/zUCZGRKZOjvoW8jfQIYICzgq9muaLwVuzI
- BzyfE+qLwUDAnl6jwUbYycYDmTj48V+a2OCP0Lgb8w9qO0VVlVrlylgCSQQrkH9vESAf7G
- T61i0I+rOSU50gPlHdq3qRF0UslYwZ2wtThoxBbWwHaxOg7nDaUUFKcyVTXUYjvSTrQKvX
- nUyvtTCkXxyFekdUBiQqmmrbRHzJK42uEZ4X17nkpyrYfYnNZniDwM1fMIB9JA==
-From: Luc Michel <luc@lmichel.fr>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 06/15] hw/misc/bcm2835_cprman: add a PLL skeleton
- implementation
-Date: Sat, 10 Oct 2020 15:57:50 +0200
-Message-Id: <20201010135759.437903-7-luc@lmichel.fr>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201010135759.437903-1-luc@lmichel.fr>
-References: <20201010135759.437903-1-luc@lmichel.fr>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRutA-0006R6-5u; Mon, 12 Oct 2020 06:17:08 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42938)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kRut7-0004u1-8L; Mon, 12 Oct 2020 06:17:07 -0400
+Received: by mail-wr1-x443.google.com with SMTP id e18so18496274wrw.9;
+ Mon, 12 Oct 2020 03:17:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=ZcYpi53PoO5CUyx/N+Zpk6I5SsI3xUxsG1Oj6npBByk=;
+ b=ciWzv/nuoIqxe708TEr26XgvzVTHzz0Cv9oShIMsfP/2/+RDZlm4CY2h4eMmGynGwX
+ 3JJBiLpLjvk/T1klmQMMaKZTGOGfbFAA/LfEtptY5VgwWBnCw4P+sVrya8BWJ7zsAuhh
+ npo/c/L0fow6kXLmW8yThZw++69ykuHVfhUl5sogeKhAdtHudyiEzraoeKKATV/O0YVS
+ axuUQhQnfe2OwwfXaO0so2b4rZwwi60v3WSROQ7P1XTrFkNa1mnkbp8P2FEZvEG8dqFG
+ /Hfx4XqwtaUUUtediOAAKFl4uGJ+uWreOKq2YWbtbL3OqtGJlE9hqgFzmwsFbKoSB6mj
+ IFIQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=ZcYpi53PoO5CUyx/N+Zpk6I5SsI3xUxsG1Oj6npBByk=;
+ b=Zln3r0Io/nPv7q2clx8nZprGJvuArUENdWp341JOCV9rjHDJ5XjCi0ZmmAvUhxjdAk
+ f0orLXMuD7dWzNDBAxRMCn7HdZlIXMRky20hVnY9V1x5yLfhK+DXUHGZCHCZAoePYWKS
+ jmUXBHOodDMZsyiZB1S8zuJNEX6e7G6DmR3LwPUk32WTSBktIrqIRaCKZjMwgwRuvFdq
+ NoXv99djrCcRwexclm0EFfRiiGakg+JnQ6X5taH/Lvg0spgx9kEfA9s21ti7RSpbUR2J
+ hx8IHdfl0GO7ffmCrBG/Mi9kq1qKHfcALuVLKJhxaBCGjPBV34l8ytGUBFRt4uQxY7Nq
+ mDaQ==
+X-Gm-Message-State: AOAM531jTSRV96emtwoQBoS5qv+5e40LdmKttpTHGAQhv3pxugArx93G
+ 8kn0AvM7/NoxQA4RVj4PvkUHs9UkENk=
+X-Received: by 2002:a5d:518b:: with SMTP id k11mr28391098wrv.369.1602497822808; 
+ Mon, 12 Oct 2020 03:17:02 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id u63sm23305649wmb.13.2020.10.12.03.17.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 12 Oct 2020 03:17:02 -0700 (PDT)
+Subject: Re: [PATCH 1/3] hw/ssi/aspeed_smc: Rename max_slaves as max_devices
+To: Kevin Wolf <kwolf@redhat.com>
+References: <20201011210513.3253905-1-f4bug@amsat.org>
+ <20201011210513.3253905-2-f4bug@amsat.org>
+ <20201012100444.GB7777@merkur.fritz.box>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <5b707ead-286c-4a1b-fc0a-4af934686475@amsat.org>
+Date: Mon, 12 Oct 2020 12:17:01 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20201012100444.GB7777@merkur.fritz.box>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
- s=pharaoh; t=1602338224;
- h=from:from:sender:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XLwlDIyHFc0C8pkaVLGy6Y49SxN2cz8QpoPh2p0BZHI=;
- b=iiVFNJPshsfhotyQHl5Yt6KRsl5YdI2tPUDP5V99dnSGTV7gx9sOjYC+sC5hKLJXQEFVqD
- lPDEdaJ4V/kHu2sMnVQxKWPpE7J7AcOwR7aZ8Gf3d9Ekz03HuZjepKBJ4tqGT5EUvQyZ++
- 8Ma4RYcEnC1fsjMcS482rLLFJlVKDdsLLJMIqpul888cnRpnu4airZjCb5smvZNxFxw67D
- dotN9cHtAE2NRLKh0JJQIevOAqJRMVLwtbWDPDY4A/NZs/wgFy3BSrsua3s7lfmxkTyZjf
- bYW+W8fQ2EexB79UBc9CP36DVsrWY59FbzgrUmXoLEnqlFbRL8uJFjpnwH4ilA==
-ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1602338224; a=rsa-sha256; cv=none;
- b=gp2usRPS3GzReqkAnFhWy6ogHC64BxVoZRtY4QlfNRm7ADJIlkBHXNOqjdOxlKkIgry2okezlSN5Lv+9W+hnK/4nZ7tdhwpwC4oHonjC3IHOnTkmxh01+LMGAIlxqGuCtaP/0HVrW1LptFVufNiXzdAS/e89Nu/LTpvu8m6Y/flylpOEsbOx0d+72XBIN+avvjm18RbNTGJFmuTnQeOw+zvKLMBl/sOg8VuIfMRCBYMIlFDlFQZ0l/kPJHB1l+5eEHI4eirPRHEUU/7LajvwEetPQgrNBrBR0BsVMs94S3WTZoE4yb0o6HQgkMO6pzyxYsy0524CKs9p4QJ3k0QtTA==
-ARC-Authentication-Results: i=1;
-	pharaoh.lmichel.fr
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/10 07:32:09
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -96,448 +123,26 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Havard Skinnemoen <hskinnemoen@google.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
+ qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>, qemu-devel@nongnu.org,
+ Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ Joel Stanley <joel@jms.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Fd/WSOyeBKUE
+X-TUID: GNtCN6ZkGaAZ
 
-There are 5 PLLs in the CPRMAN, namely PLL A, C, D, H and B. All of them
-take the xosc clock as input and produce a new clock.
+On 10/12/20 12:04 PM, Kevin Wolf wrote:
+> Am 11.10.2020 um 23:05 hat Philippe Mathieu-DaudÃ© geschrieben:
+>> From: Philippe Mathieu-DaudÃ© <philmd@redhat.com>
+>>
+>> In order to use inclusive terminology, rename max_slaves
+>> as max_peripherals.
+> 
+> This is inconsistent with the subject line which talks about
+> "max_devices".
 
-This commit adds a skeleton implementation for the PLLs as sub-devices
-of the CPRMAN. The PLLs are instantiated and connected internally to the
-main oscillator.
-
-Each PLL has 6 registers : CM, A2W_CTRL, A2W_ANA[0,1,2,3], A2W_FRAC. A
-write to any of them triggers a call to the (not yet implemented)
-pll_update function.
-
-If the main oscillator changes frequency, an update is also triggered.
-
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
-Signed-off-by: Luc Michel <luc@lmichel.fr>
----
- include/hw/misc/bcm2835_cprman.h           |  29 +++++
- include/hw/misc/bcm2835_cprman_internals.h | 144 +++++++++++++++++++++
- hw/misc/bcm2835_cprman.c                   | 108 ++++++++++++++++
- 3 files changed, 281 insertions(+)
-
-diff --git a/include/hw/misc/bcm2835_cprman.h b/include/hw/misc/bcm2835_cprman.h
-index 8ae2d4d17c..5c442e6ff9 100644
---- a/include/hw/misc/bcm2835_cprman.h
-+++ b/include/hw/misc/bcm2835_cprman.h
-@@ -19,17 +19,46 @@ typedef struct BCM2835CprmanState BCM2835CprmanState;
- DECLARE_INSTANCE_CHECKER(BCM2835CprmanState, CPRMAN,
-                          TYPE_BCM2835_CPRMAN)
- 
- #define CPRMAN_NUM_REGS (0x2000 / sizeof(uint32_t))
- 
-+typedef enum CprmanPll {
-+    CPRMAN_PLLA = 0,
-+    CPRMAN_PLLC,
-+    CPRMAN_PLLD,
-+    CPRMAN_PLLH,
-+    CPRMAN_PLLB,
-+
-+    CPRMAN_NUM_PLL
-+} CprmanPll;
-+
-+typedef struct CprmanPllState {
-+    /*< private >*/
-+    DeviceState parent_obj;
-+
-+    /*< public >*/
-+    CprmanPll id;
-+
-+    uint32_t *reg_cm;
-+    uint32_t *reg_a2w_ctrl;
-+    uint32_t *reg_a2w_ana; /* ANA[0] .. ANA[3] */
-+    uint32_t prediv_mask; /* prediv bit in ana[1] */
-+    uint32_t *reg_a2w_frac;
-+
-+    Clock *xosc_in;
-+    Clock *out;
-+} CprmanPllState;
-+
- struct BCM2835CprmanState {
-     /*< private >*/
-     SysBusDevice parent_obj;
- 
-     /*< public >*/
-     MemoryRegion iomem;
- 
-+    CprmanPllState plls[CPRMAN_NUM_PLL];
-+
-     uint32_t regs[CPRMAN_NUM_REGS];
-     uint32_t xosc_freq;
- 
-     Clock *xosc;
- };
-diff --git a/include/hw/misc/bcm2835_cprman_internals.h b/include/hw/misc/bcm2835_cprman_internals.h
-index 8fcc6d1d09..340ad623bb 100644
---- a/include/hw/misc/bcm2835_cprman_internals.h
-+++ b/include/hw/misc/bcm2835_cprman_internals.h
-@@ -10,15 +10,159 @@
- #define HW_MISC_CPRMAN_INTERNALS_H
- 
- #include "hw/registerfields.h"
- #include "hw/misc/bcm2835_cprman.h"
- 
-+#define TYPE_CPRMAN_PLL "bcm2835-cprman-pll"
-+
-+DECLARE_INSTANCE_CHECKER(CprmanPllState, CPRMAN_PLL,
-+                         TYPE_CPRMAN_PLL)
-+
- /* Register map */
- 
-+/* PLLs */
-+REG32(CM_PLLA, 0x104)
-+    FIELD(CM_PLLA, LOADDSI0, 0, 1)
-+    FIELD(CM_PLLA, HOLDDSI0, 1, 1)
-+    FIELD(CM_PLLA, LOADCCP2, 2, 1)
-+    FIELD(CM_PLLA, HOLDCCP2, 3, 1)
-+    FIELD(CM_PLLA, LOADCORE, 4, 1)
-+    FIELD(CM_PLLA, HOLDCORE, 5, 1)
-+    FIELD(CM_PLLA, LOADPER, 6, 1)
-+    FIELD(CM_PLLA, HOLDPER, 7, 1)
-+    FIELD(CM_PLLx, ANARST, 8, 1)
-+REG32(CM_PLLC, 0x108)
-+    FIELD(CM_PLLC, LOADCORE0, 0, 1)
-+    FIELD(CM_PLLC, HOLDCORE0, 1, 1)
-+    FIELD(CM_PLLC, LOADCORE1, 2, 1)
-+    FIELD(CM_PLLC, HOLDCORE1, 3, 1)
-+    FIELD(CM_PLLC, LOADCORE2, 4, 1)
-+    FIELD(CM_PLLC, HOLDCORE2, 5, 1)
-+    FIELD(CM_PLLC, LOADPER, 6, 1)
-+    FIELD(CM_PLLC, HOLDPER, 7, 1)
-+REG32(CM_PLLD, 0x10c)
-+    FIELD(CM_PLLD, LOADDSI0, 0, 1)
-+    FIELD(CM_PLLD, HOLDDSI0, 1, 1)
-+    FIELD(CM_PLLD, LOADDSI1, 2, 1)
-+    FIELD(CM_PLLD, HOLDDSI1, 3, 1)
-+    FIELD(CM_PLLD, LOADCORE, 4, 1)
-+    FIELD(CM_PLLD, HOLDCORE, 5, 1)
-+    FIELD(CM_PLLD, LOADPER, 6, 1)
-+    FIELD(CM_PLLD, HOLDPER, 7, 1)
-+REG32(CM_PLLH, 0x110)
-+    FIELD(CM_PLLH, LOADPIX, 0, 1)
-+    FIELD(CM_PLLH, LOADAUX, 1, 1)
-+    FIELD(CM_PLLH, LOADRCAL, 2, 1)
-+REG32(CM_PLLB, 0x170)
-+    FIELD(CM_PLLB, LOADARM, 0, 1)
-+    FIELD(CM_PLLB, HOLDARM, 1, 1)
-+
-+REG32(A2W_PLLA_CTRL, 0x1100)
-+    FIELD(A2W_PLLx_CTRL, NDIV, 0, 10)
-+    FIELD(A2W_PLLx_CTRL, PDIV, 12, 3)
-+    FIELD(A2W_PLLx_CTRL, PWRDN, 16, 1)
-+    FIELD(A2W_PLLx_CTRL, PRST_DISABLE, 17, 1)
-+REG32(A2W_PLLC_CTRL, 0x1120)
-+REG32(A2W_PLLD_CTRL, 0x1140)
-+REG32(A2W_PLLH_CTRL, 0x1160)
-+REG32(A2W_PLLB_CTRL, 0x11e0)
-+
-+REG32(A2W_PLLA_ANA0, 0x1010)
-+REG32(A2W_PLLA_ANA1, 0x1014)
-+    FIELD(A2W_PLLx_ANA1, FB_PREDIV, 14, 1)
-+REG32(A2W_PLLA_ANA2, 0x1018)
-+REG32(A2W_PLLA_ANA3, 0x101c)
-+
-+REG32(A2W_PLLC_ANA0, 0x1030)
-+REG32(A2W_PLLC_ANA1, 0x1034)
-+REG32(A2W_PLLC_ANA2, 0x1038)
-+REG32(A2W_PLLC_ANA3, 0x103c)
-+
-+REG32(A2W_PLLD_ANA0, 0x1050)
-+REG32(A2W_PLLD_ANA1, 0x1054)
-+REG32(A2W_PLLD_ANA2, 0x1058)
-+REG32(A2W_PLLD_ANA3, 0x105c)
-+
-+REG32(A2W_PLLH_ANA0, 0x1070)
-+REG32(A2W_PLLH_ANA1, 0x1074)
-+    FIELD(A2W_PLLH_ANA1, FB_PREDIV, 11, 1)
-+REG32(A2W_PLLH_ANA2, 0x1078)
-+REG32(A2W_PLLH_ANA3, 0x107c)
-+
-+REG32(A2W_PLLB_ANA0, 0x10f0)
-+REG32(A2W_PLLB_ANA1, 0x10f4)
-+REG32(A2W_PLLB_ANA2, 0x10f8)
-+REG32(A2W_PLLB_ANA3, 0x10fc)
-+
-+REG32(A2W_PLLA_FRAC, 0x1200)
-+    FIELD(A2W_PLLx_FRAC, FRAC, 0, 20)
-+REG32(A2W_PLLC_FRAC, 0x1220)
-+REG32(A2W_PLLD_FRAC, 0x1240)
-+REG32(A2W_PLLH_FRAC, 0x1260)
-+REG32(A2W_PLLB_FRAC, 0x12e0)
-+
- /*
-  * This field is common to all registers. Each register write value must match
-  * the CPRMAN_PASSWORD magic value in its 8 MSB.
-  */
- FIELD(CPRMAN, PASSWORD, 24, 8)
- #define CPRMAN_PASSWORD 0x5a
- 
-+/* PLL init info */
-+typedef struct PLLInitInfo {
-+    const char *name;
-+    size_t cm_offset;
-+    size_t a2w_ctrl_offset;
-+    size_t a2w_ana_offset;
-+    uint32_t prediv_mask; /* Prediv bit in ana[1] */
-+    size_t a2w_frac_offset;
-+} PLLInitInfo;
-+
-+#define FILL_PLL_INIT_INFO(pll_)                \
-+    .cm_offset = R_CM_ ## pll_,                 \
-+    .a2w_ctrl_offset = R_A2W_ ## pll_ ## _CTRL, \
-+    .a2w_ana_offset = R_A2W_ ## pll_ ## _ANA0,  \
-+    .a2w_frac_offset = R_A2W_ ## pll_ ## _FRAC
-+
-+static const PLLInitInfo PLL_INIT_INFO[] = {
-+    [CPRMAN_PLLA] = {
-+        .name = "plla",
-+        .prediv_mask = R_A2W_PLLx_ANA1_FB_PREDIV_MASK,
-+        FILL_PLL_INIT_INFO(PLLA),
-+    },
-+    [CPRMAN_PLLC] = {
-+        .name = "pllc",
-+        .prediv_mask = R_A2W_PLLx_ANA1_FB_PREDIV_MASK,
-+        FILL_PLL_INIT_INFO(PLLC),
-+    },
-+    [CPRMAN_PLLD] = {
-+        .name = "plld",
-+        .prediv_mask = R_A2W_PLLx_ANA1_FB_PREDIV_MASK,
-+        FILL_PLL_INIT_INFO(PLLD),
-+    },
-+    [CPRMAN_PLLH] = {
-+        .name = "pllh",
-+        .prediv_mask = R_A2W_PLLH_ANA1_FB_PREDIV_MASK,
-+        FILL_PLL_INIT_INFO(PLLH),
-+    },
-+    [CPRMAN_PLLB] = {
-+        .name = "pllb",
-+        .prediv_mask = R_A2W_PLLx_ANA1_FB_PREDIV_MASK,
-+        FILL_PLL_INIT_INFO(PLLB),
-+    },
-+};
-+
-+#undef FILL_PLL_CHANNEL_INIT_INFO
-+
-+static inline void set_pll_init_info(BCM2835CprmanState *s,
-+                                     CprmanPllState *pll,
-+                                     CprmanPll id)
-+{
-+    pll->id = id;
-+    pll->reg_cm = &s->regs[PLL_INIT_INFO[id].cm_offset];
-+    pll->reg_a2w_ctrl = &s->regs[PLL_INIT_INFO[id].a2w_ctrl_offset];
-+    pll->reg_a2w_ana = &s->regs[PLL_INIT_INFO[id].a2w_ana_offset];
-+    pll->prediv_mask = PLL_INIT_INFO[id].prediv_mask;
-+    pll->reg_a2w_frac = &s->regs[PLL_INIT_INFO[id].a2w_frac_offset];
-+}
-+
- #endif
-diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
-index 57ab9910b5..b86f5901b8 100644
---- a/hw/misc/bcm2835_cprman.c
-+++ b/hw/misc/bcm2835_cprman.c
-@@ -46,10 +46,56 @@
- #include "hw/qdev-properties.h"
- #include "hw/misc/bcm2835_cprman.h"
- #include "hw/misc/bcm2835_cprman_internals.h"
- #include "trace.h"
- 
-+/* PLL */
-+
-+static void pll_update(CprmanPllState *pll)
-+{
-+    clock_update(pll->out, 0);
-+}
-+
-+static void pll_xosc_update(void *opaque)
-+{
-+    pll_update(CPRMAN_PLL(opaque));
-+}
-+
-+static void pll_init(Object *obj)
-+{
-+    CprmanPllState *s = CPRMAN_PLL(obj);
-+
-+    s->xosc_in = qdev_init_clock_in(DEVICE(s), "xosc-in", pll_xosc_update, s);
-+    s->out = qdev_init_clock_out(DEVICE(s), "out");
-+}
-+
-+static const VMStateDescription pll_vmstate = {
-+    .name = TYPE_CPRMAN_PLL,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (VMStateField[]) {
-+        VMSTATE_CLOCK(xosc_in, CprmanPllState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void pll_class_init(ObjectClass *klass, void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &pll_vmstate;
-+}
-+
-+static const TypeInfo cprman_pll_info = {
-+    .name = TYPE_CPRMAN_PLL,
-+    .parent = TYPE_DEVICE,
-+    .instance_size = sizeof(CprmanPllState),
-+    .class_init = pll_class_init,
-+    .instance_init = pll_init,
-+};
-+
-+
- /* CPRMAN "top level" model */
- 
- static uint64_t cprman_read(void *opaque, hwaddr offset,
-                             unsigned size)
- {
-@@ -64,10 +110,19 @@ static uint64_t cprman_read(void *opaque, hwaddr offset,
- 
-     trace_bcm2835_cprman_read(offset, r);
-     return r;
- }
- 
-+#define CASE_PLL_REGS(pll_)       \
-+    case R_CM_ ## pll_:           \
-+    case R_A2W_ ## pll_ ## _CTRL: \
-+    case R_A2W_ ## pll_ ## _ANA0: \
-+    case R_A2W_ ## pll_ ## _ANA1: \
-+    case R_A2W_ ## pll_ ## _ANA2: \
-+    case R_A2W_ ## pll_ ## _ANA3: \
-+    case R_A2W_ ## pll_ ## _FRAC
-+
- static void cprman_write(void *opaque, hwaddr offset,
-                          uint64_t value, unsigned size)
- {
-     BCM2835CprmanState *s = CPRMAN(opaque);
-     size_t idx = offset / sizeof(uint32_t);
-@@ -80,12 +135,35 @@ static void cprman_write(void *opaque, hwaddr offset,
-     value &= ~R_CPRMAN_PASSWORD_MASK;
- 
-     trace_bcm2835_cprman_write(offset, value);
-     s->regs[idx] = value;
- 
-+    switch (idx) {
-+    CASE_PLL_REGS(PLLA) :
-+        pll_update(&s->plls[CPRMAN_PLLA]);
-+        break;
-+
-+    CASE_PLL_REGS(PLLC) :
-+        pll_update(&s->plls[CPRMAN_PLLC]);
-+        break;
-+
-+    CASE_PLL_REGS(PLLD) :
-+        pll_update(&s->plls[CPRMAN_PLLD]);
-+        break;
-+
-+    CASE_PLL_REGS(PLLH) :
-+        pll_update(&s->plls[CPRMAN_PLLH]);
-+        break;
-+
-+    CASE_PLL_REGS(PLLB) :
-+        pll_update(&s->plls[CPRMAN_PLLB]);
-+        break;
-+    }
- }
- 
-+#undef CASE_PLL_REGS
-+
- static const MemoryRegionOps cprman_ops = {
-     .read = cprman_read,
-     .write = cprman_write,
-     .endianness = DEVICE_LITTLE_ENDIAN,
-     .valid = {
-@@ -104,27 +182,55 @@ static const MemoryRegionOps cprman_ops = {
- };
- 
- static void cprman_reset(DeviceState *dev)
- {
-     BCM2835CprmanState *s = CPRMAN(dev);
-+    size_t i;
- 
-     memset(s->regs, 0, sizeof(s->regs));
- 
-+    for (i = 0; i < CPRMAN_NUM_PLL; i++) {
-+        device_cold_reset(DEVICE(&s->plls[i]));
-+    }
-+
-     clock_update_hz(s->xosc, s->xosc_freq);
- }
- 
- static void cprman_init(Object *obj)
- {
-     BCM2835CprmanState *s = CPRMAN(obj);
-+    size_t i;
-+
-+    for (i = 0; i < CPRMAN_NUM_PLL; i++) {
-+        object_initialize_child(obj, PLL_INIT_INFO[i].name,
-+                                &s->plls[i], TYPE_CPRMAN_PLL);
-+        set_pll_init_info(s, &s->plls[i], i);
-+    }
- 
-     s->xosc = clock_new(obj, "xosc");
- 
-     memory_region_init_io(&s->iomem, obj, &cprman_ops,
-                           s, "bcm2835-cprman", 0x2000);
-     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
- }
- 
-+static void cprman_realize(DeviceState *dev, Error **errp)
-+{
-+    BCM2835CprmanState *s = CPRMAN(dev);
-+    size_t i;
-+
-+    for (i = 0; i < CPRMAN_NUM_PLL; i++) {
-+        CprmanPllState *pll = &s->plls[i];
-+
-+        clock_set_source(pll->xosc_in, s->xosc);
-+
-+        if (!qdev_realize(DEVICE(pll), NULL, errp)) {
-+            return;
-+        }
-+    }
-+}
-+
- static const VMStateDescription cprman_vmstate = {
-     .name = TYPE_BCM2835_CPRMAN,
-     .version_id = 1,
-     .minimum_version_id = 1,
-     .fields = (VMStateField[]) {
-@@ -140,10 +246,11 @@ static Property cprman_properties[] = {
- 
- static void cprman_class_init(ObjectClass *klass, void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-+    dc->realize = cprman_realize;
-     dc->reset = cprman_reset;
-     dc->vmsd = &cprman_vmstate;
-     device_class_set_props(dc, cprman_properties);
- }
- 
-@@ -156,8 +263,9 @@ static const TypeInfo cprman_info = {
- };
- 
- static void cprman_register_types(void)
- {
-     type_register_static(&cprman_info);
-+    type_register_static(&cprman_pll_info);
- }
- 
- type_init(cprman_register_types);
--- 
-2.28.0
-
+Ah I missed that change, thanks.

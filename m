@@ -1,138 +1,117 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp995164lfa;
-        Mon, 12 Oct 2020 05:19:45 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzU6Wrcrpz+r1xdGoRoMDI/YSFSKaG98ykfLsQ+jaBwbJHSbHANXHsbtLCUbUXBb5Zc+xKW
-X-Received: by 2002:a5b:46:: with SMTP id e6mr7648840ybp.295.1602505184998;
-        Mon, 12 Oct 2020 05:19:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602505184; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1012662lfa;
+        Mon, 12 Oct 2020 05:45:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx4rjVG0CymAiRiY23wao9wxAGScGgE0E67kI9PcSaPIFM+Lf94/BhMr4+yhsLollAXmsB+
+X-Received: by 2002:a25:dc13:: with SMTP id y19mr32650268ybe.405.1602506728454;
+        Mon, 12 Oct 2020 05:45:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602506728; cv=none;
         d=google.com; s=arc-20160816;
-        b=Sxg+dY1QHzqKD8NUYzwlOdehzEMJiMjHtiSL/9p/LYVxpre49OPCJSjqeeuzDmf5y4
-         Ux9oX8G944NB8FCwq6YsqlV1kCk/y5MvwPdiTp7yLscryOGGb8FhOWJXqSwor2zmjMNw
-         oO8llZv251CtmdJvv1WtIhB+MCpD6vmI1S66LyMZJZTV5Ukrtjvxc+XY4RA+XV4Ld9Pv
-         sJjBWofXLaezx0Sb3JOmEq1LyDszeBS/K9lBgq9ffABCghAcGX6/WxNM7WRKWwvAkPuF
-         0r3JuObBewAhcXpbA0WTeXgEdFICzDXFIS+Kw5KLeMnDcyeFjpMUTD6qaeQqRXH17ul8
-         nzag==
+        b=lJOULpIZc1ZddPraey8Z/P153bSMWyCOc0U8bYxX35/RO5AFUKIgsC3S8E6EZH1XWk
+         tcAxMuYgmUu4f5nFSAxR4kCB4IE3wCh08a9zFqLWxACKTE18PjOQRT//LQ3ibV8+SsL9
+         iEolHRy8ENXlbeSv6TDJD3g0zvJX52HV+RjriWFO8/fDVYizWFxW0yIh6X0ik2Tl1RGf
+         U9qRYDSL6xIzwMrsTm72+/XNgcVsZ9R+0sSqodO2QLCKyfV847i+SdtlCnVeC7+5ip57
+         csQMPqmSb4mJe3k1q4OUUyh1pEHvFpBrtSaiMA7ZwmuqRZAdsJD8lloOkWQQ7WYSF6Kl
+         YnqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject;
-        bh=UDSk4LIMhjkNe0FIKpqXlCNbIc/qrotbje803huKZ6M=;
-        b=uxqGNeP1gC8W5SDcCBwPkTG/5KJjDIWwzmhu74af6/Efc/GMBWP6huYnyIGJqFYL8o
-         HkQ9D5404nzGLLNb11Da4LDmzg+/I3M7G9vdBENnv8LsUbwywlG5jB4pz11gvsoeITSv
-         IQEgVrxdL8ikj3PH2DZGCYgjg8/jN+rAXAYg3PcQ8fUvnKE5QgU/E8w0bw1vdK0asK1q
-         lhIIPbTSrbeTqDHgCq7M9TXbQd52gIIJlFoyKCLuVkJOgLXsdEw827Y+xVvHIddVbZ7H
-         aNKsj383z2jEmDZsYly3LS9od1UHdWgYIGdjorgE5EQPhliC4lzm+Fj4tWBSxQbzJ90Q
-         IgZw==
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=0VfM6Y1Z4oOM9AviCLT3C6cOeCH1n4rJ8RPo235glro=;
+        b=JZ4U8xHZV9QBTLIJJ04fPYU5TtMxEZPgWefsYCsUvJjbB5Wrad4KImPML6OodTIRhc
+         sFb0PYaHWcAjttrnm4lNc13eXumfXiqwNMu9CF5OtNYduZeeQMN/BS/5hJdtMtprRQBS
+         Bmwx3gMpIp7ztw/ABEPiwVFF2Y5KpNIGTRmcv8mP9M98D0vevKI/QFmTFGAAaAE+t47K
+         38BRyzK6E9zIsMccHKkj70fWjzHqJl2Z4ReTBiZH0+ZZ9Bj4crPyd8pGZsEf/wVL0K1m
+         Jy4yyKLrS1fMYkrB+jmFp0VArzrS1uzXoY+xB1cIEW30iQHCmmpTkrcniqIPHzGKal62
+         TGGw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BqVfRC78;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w63si11834659ybw.476.2020.10.12.05.19.44
+        by mx.google.com with ESMTPS id d135si14194214ybh.2.2020.10.12.05.45.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 05:19:44 -0700 (PDT)
+        Mon, 12 Oct 2020 05:45:28 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51926 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=BqVfRC78;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48370 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRwno-00078q-Ck
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:19:44 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53786)
+	id 1kRxCh-0004nQ-Mw
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:45:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRwnX-000771-Ao; Mon, 12 Oct 2020 08:19:28 -0400
-Received: from mout.kundenserver.de ([212.227.126.133]:50915)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1kRwnT-0004sy-CL; Mon, 12 Oct 2020 08:19:27 -0400
-Received: from [192.168.100.1] ([82.252.141.186]) by mrelayeu.kundenserver.de
- (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
- 1MT7ip-1kuEUm3xlv-00UXNv; Mon, 12 Oct 2020 14:19:16 +0200
-Subject: Re: [PATCH] hw/rtc/twl92230: Silence warnings about missing
- fallthrough statements
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-References: <20201001182121.187122-1-thuth@redhat.com>
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
- 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
-Message-ID: <7cf3a5f8-f5fe-d299-ea77-e66c91a30c38@vivier.eu>
-Date: Mon, 12 Oct 2020 14:19:14 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCW-0004l6-3g
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 08:45:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:26184)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kRxCT-0008SM-6Q
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 08:45:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602506712;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=0VfM6Y1Z4oOM9AviCLT3C6cOeCH1n4rJ8RPo235glro=;
+ b=BqVfRC78Yay5r9pQAjHpfkB3ZhHu0D3ht7SN2G6igkXLk9HuQ31kutBfViW4f4sZmLeTJO
+ ebUxKFphxUSWueLzcWiC9BMVzbtr6r1rRCbn5AW8pETanUfjIDvXC480JHIOeD/LFk4U2l
+ IvWNSSJw9N6pJJgEVNrvwMdkg87ECMo=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-342-Xu7XeWRRNu2QooT2FffSQw-1; Mon, 12 Oct 2020 08:45:10 -0400
+X-MC-Unique: Xu7XeWRRNu2QooT2FffSQw-1
+Received: by mail-wm1-f70.google.com with SMTP id r19so5714061wmh.9
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 05:45:10 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=UtSObLJfNIzbJcrgKRU5Cu+zNLd9lEQsFGBvfOC7Lok=;
+ b=p2ehDc0Ppzv5FzWVJLh75e2C8uEEnynxXvqD18IgkNyYxsV2q8ngLUMCB25e2HoN+8
+ kSA5DVCjxdPq9U07zcORsE9+Hc1VefWXJfoQ9fxOBHTxA1WwS0/FYnvJyyNzZZq53agr
+ 2viXh3PeLhYQE+ppRfIW+6/xUGUXYgEz1yYjZ1b4PZASmjBoLt4qUC/QEE663350YO+v
+ mQtptp6VbMP0A4cNI7JjP8Yh0dDZR4HxTvSITwcnH1q0JeQB0EQgfAN7J+rWAiI1arPx
+ YIiXbBDnLD7ENEyIDkKFDljChRwjdSANVBoa2R2Ux1XLhV9W2Te+iOKI4p4L/GTA0VCi
+ WMHA==
+X-Gm-Message-State: AOAM531aK7ghLUUZgDBaV0MDVR7KkbHc3QjyRTnw3eNFURYeOytMBIDn
+ 32q8NfRjyuV4FDJXkVVHQDxBfaFl0Amw69pagrdIgSW/5pNvI1IqNdps1c00hYZG9IuT0ltMFtG
+ emP2w1ULeoJey
+X-Received: by 2002:a5d:46c1:: with SMTP id g1mr9137860wrs.101.1602506709371; 
+ Mon, 12 Oct 2020 05:45:09 -0700 (PDT)
+X-Received: by 2002:a5d:46c1:: with SMTP id g1mr9137815wrs.101.1602506709130; 
+ Mon, 12 Oct 2020 05:45:09 -0700 (PDT)
+Received: from localhost.localdomain
+ (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id d2sm14916054wrq.34.2020.10.12.05.45.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 12 Oct 2020 05:45:08 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+To: qemu-devel@nongnu.org
+Subject: [PATCH 0/5] hw: Use PCI macros from 'hw/pci/pci.h'
+Date: Mon, 12 Oct 2020 14:45:01 +0200
+Message-Id: <20201012124506.3406909-1-philmd@redhat.com>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-In-Reply-To: <20201001182121.187122-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: fr
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:v5lT4ks4I2ehu8tQEI5Rz8VtPZNhg390lvqrZMKvUtdZVdu8ZYQ
- Kb0D+JqqCJrl84kXqNUOjhF+5PrTsrbAmRAH9xoZzT4E1+W2WIFWPbFsVgubVki6tjMMYNL
- z6fEcxF81gC9RzstC/pGfm8vD1q2sW6ILK52Jt6Ow9IojXuV1yK2lyDK9+utlZHnuGRJS9A
- CTDGJS9CF0XvLmiwPjhMA==
-X-UI-Out-Filterresults: notjunk:1;V03:K0:v/PJnEeiD1k=:V1kivcpViqlboctEBSQsWK
- aFuCmFpRR8qd94nVq6EANn+lUXf1OQkhWh2mIns7weU3+FZqvyJswaDIlfBu+4nqu/3h6X7NJ
- L/i9uDaKpmX943ZRFskG7+SNqlh8a/G+wxXYYB6dYknzc1zjJJBUH6vAk2YU5bn3Oh1EmZL+V
- l+IzKvyUAd7z7gZct/ed8UMG4+Uuv2e2Q8RVX7cj59EJVpL7blTDmCkeTWbF5KXhUi1P8L39R
- JbLgJwcbIB6aAAdIEWaLKnUSOtBDKKyPzxUybuv8qAwzwpNi/n69MWDS0teDienzxmdzIC9KD
- ANagQDTbgKpwt8nJJZRZJDiCyR9UGQiMGKWfJwvJiM/uOAf6CujuOFrmJB7/W9oKuoMA8vQRR
- +mXlrWOYiIjNEA/SctoLggPgDfpTkifUUH3sDvK4THya6+1rk3Qp93uBhO8p+JgXF39xt254c
- jicU9dmHu5odiI7Sh57MLlO8tpaYpycFRFFhEoEy6W1L/YfZlZiHhDvD7QEHXZo28FVUte6ct
- PWV47cAoOj42UGzoJ6MsoTP8NlN5m3UmmYERdH88A1SPVTx8D6+i+EhPc2z9jQ5VfD5/nEjR8
- iKE6JAEEoJD3qllU2j3aZ3rd5Da9fIPKpj48A2WQ/+4pJcgMlZmkjc6hgJx1bU7/lUdpx6xR+
- FIFH71sCu0GEkGhmx289stkp0KcTRrmE5+u/9YakzGXxVKgyaMPOR9xPTZq0tCsRsxX37DB7y
- 9SF2LNxqiVuBYmQfG4qYYd2KWeisYh2CMLplCDUvJCFpdiJz50+aP8n8QUWhg9O12FsyZfmrn
- M6hCMT6tC0L2wLJrkrUzl5TTd1N/8adMm79XdiWMenaEMaoTwBzgobIj9QDC1/L7DmbMvPc
-Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 08:19:19
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:58:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -145,123 +124,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Huacai Chen <chenhc@lemote.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
+ Helge Deller <deller@gmx.de>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+ David Gibson <david@gibson.dropbear.id.au>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Richard Henderson <rth@twiddle.net>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: C7a68OMdjjFl
+X-TUID: E7GOD3ZuAleW
 
-Le 01/10/2020 à 20:21, Thomas Huth a écrit :
-> When compiling with -Werror=implicit-fallthrough, gcc complains about
-> missing fallthrough annotations in this file. Looking at the code,
-> the fallthrough is indeed wanted here, but instead of adding the
-> annotations, it can be done more efficiently by simply calculating
-> the offset with a subtraction instead of increasing a local variable
-> one by one.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/rtc/twl92230.c | 50 +++++++++++++++++++++++------------------------
->  1 file changed, 24 insertions(+), 26 deletions(-)
-> 
-> diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
-> index f838913b37..499f421932 100644
-> --- a/hw/rtc/twl92230.c
-> +++ b/hw/rtc/twl92230.c
-> @@ -271,37 +271,36 @@ static void menelaus_gpio_set(void *opaque, int line, int level)
->  static uint8_t menelaus_read(void *opaque, uint8_t addr)
->  {
->      MenelausState *s = (MenelausState *) opaque;
-> -    int reg = 0;
->  
->      switch (addr) {
->      case MENELAUS_REV:
->          return 0x22;
->  
-> -    case MENELAUS_VCORE_CTRL5: reg ++;
-> -    case MENELAUS_VCORE_CTRL4: reg ++;
-> -    case MENELAUS_VCORE_CTRL3: reg ++;
-> -    case MENELAUS_VCORE_CTRL2: reg ++;
-> +    case MENELAUS_VCORE_CTRL5:
-> +    case MENELAUS_VCORE_CTRL4:
-> +    case MENELAUS_VCORE_CTRL3:
-> +    case MENELAUS_VCORE_CTRL2:
->      case MENELAUS_VCORE_CTRL1:
-> -        return s->vcore[reg];
-> +        return s->vcore[addr - MENELAUS_VCORE_CTRL1];
->  
-> -    case MENELAUS_DCDC_CTRL3: reg ++;
-> -    case MENELAUS_DCDC_CTRL2: reg ++;
-> +    case MENELAUS_DCDC_CTRL3:
-> +    case MENELAUS_DCDC_CTRL2:
->      case MENELAUS_DCDC_CTRL1:
-> -        return s->dcdc[reg];
-> -
-> -    case MENELAUS_LDO_CTRL8: reg ++;
-> -    case MENELAUS_LDO_CTRL7: reg ++;
-> -    case MENELAUS_LDO_CTRL6: reg ++;
-> -    case MENELAUS_LDO_CTRL5: reg ++;
-> -    case MENELAUS_LDO_CTRL4: reg ++;
-> -    case MENELAUS_LDO_CTRL3: reg ++;
-> -    case MENELAUS_LDO_CTRL2: reg ++;
-> +        return s->dcdc[addr - MENELAUS_VCORE_CTRL1];
-> +
-> +    case MENELAUS_LDO_CTRL8:
-> +    case MENELAUS_LDO_CTRL7:
-> +    case MENELAUS_LDO_CTRL6:
-> +    case MENELAUS_LDO_CTRL5:
-> +    case MENELAUS_LDO_CTRL4:
-> +    case MENELAUS_LDO_CTRL3:
-> +    case MENELAUS_LDO_CTRL2:
->      case MENELAUS_LDO_CTRL1:
-> -        return s->ldo[reg];
-> +        return s->ldo[addr - MENELAUS_LDO_CTRL1];
->  
-> -    case MENELAUS_SLEEP_CTRL2: reg ++;
-> +    case MENELAUS_SLEEP_CTRL2:
->      case MENELAUS_SLEEP_CTRL1:
-> -        return s->sleep[reg];
-> +        return s->sleep[addr - MENELAUS_SLEEP_CTRL1];
->  
->      case MENELAUS_DEVICE_OFF:
->          return 0;
-> @@ -395,10 +394,10 @@ static uint8_t menelaus_read(void *opaque, uint8_t addr)
->      case MENELAUS_S2_PULL_DIR:
->          return s->pull[3];
->  
-> -    case MENELAUS_MCT_CTRL3: reg ++;
-> -    case MENELAUS_MCT_CTRL2: reg ++;
-> +    case MENELAUS_MCT_CTRL3:
-> +    case MENELAUS_MCT_CTRL2:
->      case MENELAUS_MCT_CTRL1:
-> -        return s->mmc_ctrl[reg];
-> +        return s->mmc_ctrl[addr - MENELAUS_MCT_CTRL1];
->      case MENELAUS_MCT_PIN_ST:
->          /* TODO: return the real Card Detect */
->          return 0;
-> @@ -418,7 +417,6 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
->  {
->      MenelausState *s = (MenelausState *) opaque;
->      int line;
-> -    int reg = 0;
->      struct tm tm;
->  
->      switch (addr) {
-> @@ -496,9 +494,9 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
->          s->ldo[7] = value & 3;
->          break;
->  
-> -    case MENELAUS_SLEEP_CTRL2: reg ++;
-> +    case MENELAUS_SLEEP_CTRL2:
->      case MENELAUS_SLEEP_CTRL1:
-> -        s->sleep[reg] = value;
-> +        s->sleep[addr - MENELAUS_SLEEP_CTRL1] = value;
->          break;
->  
->      case MENELAUS_DEVICE_OFF:
-> 
+Trivial patches using the generic PCI macros from "hw/pci/pci.h".=0D
+=0D
+Philippe Mathieu-Daud=C3=A9 (5):=0D
+  hw/pci-host/bonito: Make PCI_ADDR() macro more readable=0D
+  hw/pci-host: Use the PCI_BUILD_BDF() macro from 'hw/pci/pci.h'=0D
+  hw/pci-host/uninorth: Use the PCI_FUNC() macro from 'hw/pci/pci.h'=0D
+  hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'=0D
+  hw: Use the PCI_DEVFN() macro from 'hw/pci/pci.h'=0D
+=0D
+ hw/arm/virt.c          | 3 ++-=0D
+ hw/hppa/dino.c         | 2 +-=0D
+ hw/i386/xen/xen-hvm.c  | 2 +-=0D
+ hw/isa/piix3.c         | 2 +-=0D
+ hw/mips/gt64xxx_pci.c  | 2 +-=0D
+ hw/pci-host/bonito.c   | 5 ++---=0D
+ hw/pci-host/pnv_phb4.c | 2 +-=0D
+ hw/pci-host/ppce500.c  | 2 +-=0D
+ hw/pci-host/uninorth.c | 8 +++-----=0D
+ hw/ppc/ppc4xx_pci.c    | 2 +-=0D
+ hw/sh4/sh_pci.c        | 2 +-=0D
+ 11 files changed, 15 insertions(+), 17 deletions(-)=0D
+=0D
+--=20=0D
+2.26.2=0D
+=0D
 
-pplied to my trivial-patches branch.
-
-Thanks,
-Laurent

@@ -1,172 +1,159 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1791659lfq;
-        Fri, 2 Oct 2020 11:12:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzdQwbrRHTUVs22k/gJHCi1apohvj2jFZjoeDUnC/eORjQbIKFZhfYdA5evzk99E9AZWnot
-X-Received: by 2002:a25:6883:: with SMTP id d125mr4713234ybc.105.1601662332345;
-        Fri, 02 Oct 2020 11:12:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601662332; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp793348lfa;
+        Sun, 11 Oct 2020 23:59:18 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxP85i8fj22g8E/DqlKaJ8plnDpKpybYnm00gze6fRXg2yYZabmU7doocy/pc7Uvy+giHCt
+X-Received: by 2002:a5b:d44:: with SMTP id f4mr29799530ybr.153.1602485958291;
+        Sun, 11 Oct 2020 23:59:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602485958; cv=none;
         d=google.com; s=arc-20160816;
-        b=DUfnnYmepG1HU5XYGUh3zM5A8qF4Zigm74xXl19LhkCZpN8MPfpeJd3i5cZQrW14zG
-         w6kPZbqsH+Jg3s/7DTWuzk1Pb4JYpKaDG/vD/bQr+lgj2rPGgzV1+TqOZehAJ2sl2/RD
-         DFm1wwfNQqor96nqMg1LuyRquD456x7t/GOwOYS9WkLCtoCIAoJI5r9CD3DB17uYbO/s
-         5jSDsYpCI1SsN/yH+/FCOfoZntfRT2aCVFyLTV3tXQtZLcaKeqDfPt6Gpwk66JPN0jsQ
-         6J+bcgeILttgJudpuHM/qyERRymhEobJF4n1pDGlMGpGhODEka/EJ/fIunlUepwBZT/P
-         jxOQ==
+        b=XEZej5dNd3Vx3doB/MmZWEV/X2sgXGomXZEWV4/WE5gWs/AsLdwmbtFNiSjVuwsc4z
+         +vLOUT6eJFEZmmfPqCc+tnDAmJ+1fUygI6t6ZEGIdUp90Ka4YbOMCdKfHsrQWPQE0Bns
+         n8BkBLAPcZfct9Tmu/38yUoWlM5e0tHTTOwfj2DvKJw6NsPD9NYk1H0AcOZUgs54BgA0
+         ba1t0XRG/zzg2Ub549Pr7jx2mEIK3FufhdBAgTXEk7xGoGjvk3WDonruZim+ZtgEXBEC
+         Z98gmHTvUzrZNw9sR8bNWXh5iQDU7s7zZB0585xAF/TlwXg8s156tzEj3jeW2Lfmlqrb
+         tZ3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=oTau936JDmi68zMscEvO3SnFMJ5UWYiOUeAh8uEyVYs=;
-        b=srMVVDFs3N2vbBk9Qs7o2ZqU2twr6XpN2mKvtZmLvKHHfIuzFQZzfhTKXhJjWYxIC1
-         aOG/fbURr//GAkGgEWPHaCFNJyJCdu+0Ie8gGvXIaHmZM2xzfUKW+btb/zzdf+/LHGKh
-         FuS5XDfP8RjwqvOCmg2f+9f6PE+0WzE85CzPS0BE2PEduXWdMwF7K8+s6JoMr3R69JbS
-         pD2XfdxVVSsqMm+5vXKIcv4IOHhlUiAEU7Hz5j0/mtulicJdbVNZjXmFlieZLgQKpvax
-         dD+ctLBNjJsBuLlpAjwcGQQ/qP7++msvJdjqjFzvHrz80TMks/irkL6WfTAS4GFQP7to
-         a8qw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=in4vP4P4euyhUmh7MBEkfRMo9+vEy+KLt+Y2qxkJRGE=;
+        b=ndbbj8TDDYM0cScJ67XlijOyjcLEbAQnt/GE0cQSKnKH6KqUmFqslSaEDUS/r+G+Px
+         T52aTEKCk/3MTNheCZrox+bc6yc93rlxuI69dA5UhhvPc702FwLa4mTTizohIMKperO3
+         9yNnxSYWu/JII8lac7x16hG6FcU4lNbTCMTldVst+8Gw2duKxYqjW15qKzkruVRCHGxB
+         wdUSdqXPMkwxUPXJGbjCvKhySHVhzCvh7LOqUWOob8nOWURLkBfxia3+11elMY/eRz3z
+         bX0ENsGYROTKs00PenlcXL1/IXyHHzbW2fttxsGs8SccOtbHkARkfHkqMxMIb+NWMNF0
+         hEJQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JrWnoIFI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fdbh3ja1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u8si2565238ybj.264.2020.10.02.11.12.12
+        by mx.google.com with ESMTPS id n204si1648930ybc.35.2020.10.11.23.59.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 02 Oct 2020 11:12:12 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Sun, 11 Oct 2020 23:59:18 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=JrWnoIFI;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:41478 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fdbh3ja1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:51584 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kOPXP-0005ek-PP
-	for alex.bennee@linaro.org; Fri, 02 Oct 2020 14:12:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51864)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kRrng-0005IP-4l
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 02:59:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:33814)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kOPVw-0004he-KJ; Fri, 02 Oct 2020 14:10:40 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:36429)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kOPVv-0007Cc-0m; Fri, 02 Oct 2020 14:10:40 -0400
-Received: by mail-wm1-x343.google.com with SMTP id e2so2655478wme.1;
- Fri, 02 Oct 2020 11:10:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=oTau936JDmi68zMscEvO3SnFMJ5UWYiOUeAh8uEyVYs=;
- b=JrWnoIFISmwb7byO4ARGM8f4MeKI/bMTCRH6oDGM9X7j8J0h8nCLCHVlQB51/dwAwT
- HnF1YFhh6p9skliv8MgMQOaDNmp8haw3rGwAhXDQsCoeepYEQXebXIAO9sMzuyGduDqG
- hGHkIJ2UYu76EhCLhYpnEdB49RsUyEKrT2p3ksHxROU9EUPmNmBskTdiPpRK0JduYim1
- 0cxp0taVH/KVeCn9p5LtTTNfCzjQw7daC5ssjEbCweDtYvRo/pqP81PFBlAVqUFlf6Wx
- fXvHnA5JdlEBydsQO/L5Zc2A90mdpS8v7y8iqB2ig+w58b7vWrO6yGOhnpxtCOXStrpM
- prJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=oTau936JDmi68zMscEvO3SnFMJ5UWYiOUeAh8uEyVYs=;
- b=KX0mIatYOGMFIi/ezcXwQqNhNMTp51IUoe8W7XzymS6Th+Wpbr/SegA4xPohla+4ze
- x2ai6OwCigWWdwmLQ0wXgCRQGXBYCbIPuLKRYuYGjM/NsttucoYYHknpBHCK3Ih6xBCV
- 4kFi+z5+9falyqYGYnskEEecxxtzBpfIoucg2z6U7JQB4mw+KWxvKxpaHzucqvHCSbBx
- 6UwYrdGpAFkn5Jc2i7K4gCvLmW1YqncSZLkrXP/GIbyM+6Eq3C1nnCZ6Et4WF/WSPpLZ
- XazCgpx/ajY7uhlKraSo8xLe3tirvyL7yCkZSYnvfP0mdrwcNDyZ8J0tT1ZXQFR1Vfta
- +kCg==
-X-Gm-Message-State: AOAM531fCFuH8uOT6EDZWQhsZnkcIkMYkm3krYzAxNl2nnr8ubCkEI3v
- 7kNVoj41aPw7xBRj8gPdHAoeJLcqdPM=
-X-Received: by 2002:a05:600c:2906:: with SMTP id
- i6mr4304400wmd.48.1601662234847; 
- Fri, 02 Oct 2020 11:10:34 -0700 (PDT)
-Received: from localhost.localdomain (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id b8sm2615170wmb.4.2020.10.02.11.10.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2020 11:10:34 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org
-Subject: [PATCH] hw/char/bcm2835_aux: Allow less than 32-bit accesses
-Date: Fri,  2 Oct 2020 20:10:32 +0200
-Message-Id: <20201002181032.1899463-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRrnC-0005Eh-UF
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 02:58:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:41822)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kRrnB-0005DA-1j
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 02:58:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602485924;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=in4vP4P4euyhUmh7MBEkfRMo9+vEy+KLt+Y2qxkJRGE=;
+ b=fdbh3ja1aQgeMxcV2HCKQ5ZEN3HU7fjgfw2O0HteAvYHuU5UNp5ZZDQ2yKz5zIb4GD1/n+
+ 5LN3+Slz6PdKgq1rM4z4bxOHZfXa20y81hpmuRMdeKygclvRPh7DYuupWmmoOIHtrYEmGG
+ 9soW/WGm2Olx9mJZEGqdcrj/d2cVh+c=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-236-KUhBwydHNiWAXwqOISXQqw-1; Mon, 12 Oct 2020 02:58:40 -0400
+X-MC-Unique: KUhBwydHNiWAXwqOISXQqw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A159A107ACF8;
+ Mon, 12 Oct 2020 06:58:38 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-113-22.ams2.redhat.com [10.36.113.22])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5D8825578D;
+ Mon, 12 Oct 2020 06:58:28 +0000 (UTC)
+Subject: Re: [PATCH 4/4] tests/qtest: Replace magic value by
+ NANOSECONDS_PER_SECOND definition
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ qemu-devel@nongnu.org
+References: <20201011194918.3219195-1-f4bug@amsat.org>
+ <20201011194918.3219195-5-f4bug@amsat.org>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <7067de64-2a42-07f5-a864-74d7524bee5f@redhat.com>
+Date: Mon, 12 Oct 2020 08:58:27 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20201011194918.3219195-5-f4bug@amsat.org>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 02:58:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0PQ0fEB26yhW
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>, qemu-arm@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: SJ83cqEbBTuo
 
-The "BCM2835 ARM Peripherals" datasheet [*] chapter 2
-("Auxiliaries: UART1 & SPI1, SPI2"), list the register
-sizes as 3/8/16/32 bits. We assume this means this
-peripheral allows 8-bit accesses.
+On 11/10/2020 21.49, Philippe Mathieu-Daudé wrote:
+> Use self-explicit NANOSECONDS_PER_SECOND definition instead
+> of a magic value.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>  tests/qtest/rtc-test.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/qtest/rtc-test.c b/tests/qtest/rtc-test.c
+> index c7af34f6b1b..402ce2c6090 100644
+> --- a/tests/qtest/rtc-test.c
+> +++ b/tests/qtest/rtc-test.c
+> @@ -292,7 +292,7 @@ static void alarm_time(void)
+>              break;
+>          }
+>  
+> -        clock_step(1000000000);
+> +        clock_step(NANOSECONDS_PER_SECOND);
+>      }
+>  
+>      g_assert(get_irq(RTC_ISA_IRQ));
+> 
 
-This was not an issue until commit 5d971f9e67 which reverted
-("memory: accept mismatching sizes in memory_region_access_valid").
-
-The model is implemented as 32-bit accesses (see commit 97398d900c,
-all registers are 32-bit) so replace MemoryRegionOps.valid as
-MemoryRegionOps.impl, and re-introduce MemoryRegionOps.valid
-with a 8/32-bit range.
-
-[*] https://www.raspberrypi.org/app/uploads/2012/02/BCM2835-ARM-Peripherals.pdf
-
-Fixes: 97398d900c ("bcm2835_aux: add emulation of BCM2835 AUX (aka UART1) block")
-Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
----
-Noticed while running Trusted Firmware-A on the raspi3:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg680115.html
----
- hw/char/bcm2835_aux.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
-index ee3dd40e3c..dade2ab5fd 100644
---- a/hw/char/bcm2835_aux.c
-+++ b/hw/char/bcm2835_aux.c
-@@ -249,7 +249,9 @@ static const MemoryRegionOps bcm2835_aux_ops = {
-     .read = bcm2835_aux_read,
-     .write = bcm2835_aux_write,
-     .endianness = DEVICE_NATIVE_ENDIAN,
--    .valid.min_access_size = 4,
-+    .impl.min_access_size = 4,
-+    .impl.max_access_size = 4,
-+    .valid.min_access_size = 1,
-     .valid.max_access_size = 4,
- };
- 
--- 
-2.26.2
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 

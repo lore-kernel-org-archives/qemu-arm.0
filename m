@@ -1,103 +1,102 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1155326lfa;
-        Mon, 12 Oct 2020 08:44:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwUfYrgtDNsGvKXwi5FxsZgyid22xTS4Gi+5tPVqR3qTybhf4iftUKsICsZr3A6n9T7C5TN
-X-Received: by 2002:a25:4d46:: with SMTP id a67mr34728046ybb.227.1602517495960;
-        Mon, 12 Oct 2020 08:44:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602517495; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1155450lfa;
+        Mon, 12 Oct 2020 08:45:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJw5kzM2D9fSfUyCjKglh1SsopuNrpWGK7xdKJCHJV0Tnzu7BRNnutF7AbICCItjKc0grfn2
+X-Received: by 2002:a25:86d0:: with SMTP id y16mr4706364ybm.473.1602517503260;
+        Mon, 12 Oct 2020 08:45:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602517503; cv=none;
         d=google.com; s=arc-20160816;
-        b=RCHAFBVtBBsHUU0cu+QsMDoI/fqbLdxxbKtlyjRNj66N0Hd6MBb8HR9h9Vo7TTFwXm
-         TBP5weGk48bABPCW0Z67IGV4bHuweaADIdVUPBKQJLQQ3KD5H5ZFxWjVzzmzojikPl77
-         UeYk+RR5FtQ2EU5WJ33MSsGHrCWrEpQfC/YvIYSx7zin5jcKOErTqHYI8Dd0/cjyl5We
-         OmOM1UbTRYuRNofwAklo7YAaOSInj5ZqLI+473fer50/t0zKaUkzLOYfsVTP+9MuInYi
-         XosE55jyTgjVL/yHnQMOgxno9Zq+WS2TEPGiaU0EF+DTeLm+Dm2m6sNbVEhqAUQ3E3H4
-         2bFg==
+        b=EI+VGKxRjy86rQikHWXUNeaeogcCzp2ij9Tz3hx4UO0K7U5Gv93Il4+c4S3/wcAcjT
+         xBXbvrYLBUD1jN48IXrrSaTwCEhH0C4GGnncaiev5hMIHXyTxZe3L9AO6DFlKBVXocER
+         H8ZJULiy2sD+FGBpKBdjWAES7LARWbgYtYAls3oM9wD7PbGvJptcOQhZDgxqG2cHPO+T
+         kxJCBlTNBW/lsgIdbsj0qe1mog0CWeV7CaUuCIC0L+Ktz8L8kM7V3NKGzcwS+bnyD4Fr
+         blNtWnHeg9Kh2Q20gigxt2WRsCYF7QBuJcK0w8IwJ5tlV/vwbCcgU0XAwoJ+XLvQFABG
+         V3Tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=xCPWjLYyI6z3WFhhXaeYUbi5QZIddcoWl6SEfIfuuFs=;
-        b=C10R4l0K+3jBkVd0xWBWLrVnFZ06r9u3IhlxPPQptbe/jss8v8Tx7fGQwQQP9JTsuE
-         rsc0YbOZeR6uOagxDZjhGgxZKg0geLYMz1uRsW/mt4AletkZ/CDZfFn03D5le590Zbj3
-         GNXF32UWiTcj5GmmB/GzKASV/su3/fKsJneRoOxlI6vEnbguaHxxAggeDkUsic3UIMZc
-         aasrIa0hY3/+jgPDkyksqdidfU8fwtOzV+GNXTtv1tobdaYR/Grpmafa9ERQci+VExUO
-         7wyfXC10yq92uf7F5DlbYazK8eLypt2loaC8cK10WR/30od487FrYgVyM4wpPsuYADnk
-         MvUA==
+        bh=K3mgJCwncdqIipiYAU+wCrFh9fTPvR4OlTHmlok7qrM=;
+        b=wIuSH8Qz3AXBjozY6KU9kJHWGQ81SEO+MS614VvkPXdqdt68Hq9wRvcE4mTLBBqorD
+         P1jqVoUGgGaG4567wvBoaiVko45YWhITPoqpZ/wcDQ1kgwDy8qrfTF8kd4VZgScOpoV3
+         KUT3KQf02Hq5bwm3jKDVZeGiZqLNnIR6gAe7Mdq4Vtgt/1n0fNKftfWkSA+OZqWaW5Rq
+         bMNAd/gznK5CWx2kmgVOBq0hof4NXA5wnOL5Wdyw+2lZeUr+ZCdyI+dACW1WQaZdTHme
+         YKfnOO7ArhcbJqvzrh34qXSKndetWODXW882IZ7lbXDdBFxtxmw7DYe90jq2adeVp/bI
+         lBKA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jvkUIDRC;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Bj7+/FdZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4si14402015ybp.211.2020.10.12.08.44.55
+        by mx.google.com with ESMTPS id n3si5530891ybc.327.2020.10.12.08.45.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:44:55 -0700 (PDT)
+        Mon, 12 Oct 2020 08:45:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=jvkUIDRC;
+       dkim=pass header.i=@linaro.org header.s=google header.b="Bj7+/FdZ";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:34416 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35110 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kS00N-0003rC-8L
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:44:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56848)
+	id 1kS00U-00048X-DL
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:45:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57214)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqK-0006ye-Oz
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:32 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:46364)
+ id 1kRzql-0007F9-0I
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:35:00 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:44023)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqI-0007JZ-MO
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:32 -0400
-Received: by mail-wr1-x441.google.com with SMTP id n6so19391502wrm.13
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:30 -0700 (PDT)
+ id 1kRzqV-0007M3-Rv
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:58 -0400
+Received: by mail-wr1-x443.google.com with SMTP id g12so19670978wrp.10
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=xCPWjLYyI6z3WFhhXaeYUbi5QZIddcoWl6SEfIfuuFs=;
- b=jvkUIDRClN9EIrNy2RSdtWRPqcJKUB35LA78DZJ65CbJFay23p7wAmAtvMRKkwVIpq
- j0+GyMO3ekHx2NzlGH+Hu9wWt9FXxGLOUkDTVSKRJa0NV/JNJ9ggidTuULb8wMRJ1PPT
- 8eJ07v5t77Q1eUb58VmOQX+TU6wbNttw1+v5rer4GpwhucVMJ8ppyh7oqaDwHEQQwvSa
- vyOaQVcjZeJsj9ggOBzoUk6D+QaRVIuPWHun2LKlWMnRvw0wfedq0OK5F85MgWPP7xMi
- T7iUDyv0Lo5qbZklcQQuOjlmBAkxZeNcK4t24SC0U7TEOGkq85EDlnUvHflXkC96g78r
- q4eg==
+ bh=K3mgJCwncdqIipiYAU+wCrFh9fTPvR4OlTHmlok7qrM=;
+ b=Bj7+/FdZqB9RAzExmsmOiXmF94g68Yoq7B3rRbQNJoLxARocJgq7e+/cd3Z2EB+fPL
+ lpWhsjvXMp3+5/c9fVh1/3XC15ZLSRLegA8vP7gelQCXbn8DTXE5G2G2al0aUoZx70DX
+ SZBB+pR9jP5nZR9pDBKsJJ6qzPoioWGFHXPGPqab0MKX6tuQoBExGuoJNybh5c/WfY06
+ drAdICUToc0lzLUidzGmSPtruCnAGy6in3Gl6mK2CtVUqCzUB5pWomUcWh+QAwOqIj4U
+ FGtXqmWgKaRhWOTHQCzmB+WEgVamfhGNzaS8IvUAmm2IcI82hmLbXraSs4/3Qr9WS3Hq
+ s11g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=xCPWjLYyI6z3WFhhXaeYUbi5QZIddcoWl6SEfIfuuFs=;
- b=SqQ8w+N8YYAVGgNaePZvIBi09uj/M/FYC2khjKGa6vFlUIn4gtNMciTt9kG7wf+lm3
- V0oAhG7cbwodAUp0n5xukb0IRi0EatJHoMtUQGqa0STdawdJuQCY1OvJ+9XT4Pp+iFGt
- Sjoq76fPSeiU+Qr8aDSMSrIO0srCfr+B5TupA6IPzFrllRui4X+c2WEag/j0nMshBDzu
- URqKxyMamHOsqvgKZ++tPPI73X17Pbw1Qj5TBVhB/7PbdxR0yD/xrMEqGvY685LfUy5S
- HUHHoArG4Q7JFDP4wGJRUSg4jz0PEopo1nN+iH+Y3oYHxFnvmEmm2P+ivfFNac1sRtO4
- 9UBA==
-X-Gm-Message-State: AOAM532KFgrm45x2WxendkuFEdQdaUo9v5Q2zEH2OWOxS3zupuobsmw8
- kGjF8u9XVjIyP4rxCgQekAEaf7XjlGRyoTma
-X-Received: by 2002:adf:f841:: with SMTP id d1mr20555398wrq.297.1602516869112; 
- Mon, 12 Oct 2020 08:34:29 -0700 (PDT)
+ bh=K3mgJCwncdqIipiYAU+wCrFh9fTPvR4OlTHmlok7qrM=;
+ b=d3Z8XCTb9BAxmrLzESy5OAttzSaAjkdnvrwf2ixPcgKJAYisdAuLhV0X8BTJGWpO8j
+ foKl4gEGMH4UzMFfD8AwTtffoWwmBUGKE2oyzqdJuMAGHzVKG/blPnnMBK7urfRJP1hK
+ q2wWDn7ekLpeKODTVcMr170F1xpb4re7Ba6AiG8dtlBGxBsL0DTvAgWsGGa7Vi54Dxn5
+ l+BoHjW9wgGvx9umYMlQsmNwYalEBB3hLzFEaty9+m1G05+ZfgAJcPiCB8DoPq5nVXQ8
+ E8ZVTfTijqWjuu/or/Q3tdmNwZh7d85gbLKHemK1bg8fh7fIDNuzUe//peuECYjCb08w
+ +F5g==
+X-Gm-Message-State: AOAM5300Y+8HsGl4Dtzqij5NlCjksyiuH09xAIjlkOzSFEMYbAuUPlmV
+ 9Wia5rmyBvBvOz1Iv41peb3CltNekX6ongC4
+X-Received: by 2002:a5d:6a51:: with SMTP id t17mr14288975wrw.80.1602516877958; 
+ Mon, 12 Oct 2020 08:34:37 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.27
+ by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:28 -0700 (PDT)
+ Mon, 12 Oct 2020 08:34:37 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH] hw/intc/arm_gicv3_cpuif: Don't copy CPU's maintenance
- interrupt
-Date: Mon, 12 Oct 2020 16:33:39 +0100
-Message-Id: <20201012153408.9747-17-peter.maydell@linaro.org>
+Subject: [PATCH] msf2-soc, stellaris: Don't wire up SYSRESETREQ
+Date: Mon, 12 Oct 2020 16:33:47 +0100
+Message-Id: <20201012153408.9747-25-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
 References: <20201012153408.9747-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -106,7 +105,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,83 +121,93 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: LkH5zQOHLFp2
+X-TUID: +LCJlO1+4TVO
 
-In gicv3_init_cpuif() we copy the ARMCPU gicv3_maintenance_interrupt
-into the GICv3CPUState struct's maintenance_irq field.  This will
-only work if the board happens to have already wired up the CPU
-maintenance IRQ before the GIC was realized.  Unfortunately this is
-not the case for the 'virt' board, and so the value that gets copied
-is NULL (since a qemu_irq is really a pointer to an IRQState struct
-under the hood).  The effect is that the CPU interface code never
-actually raises the maintenance in2Dterrupt line.
+The MSF2 SoC model and the Stellaris board code both wire
+SYSRESETREQ up to a function that just invokes
+    qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+This is now the default action that the NVIC does if the line is
+not connected, so we can delete the handling code.
 
-Instead, since the GICv3CPUState has a pointer to the CPUState, make
-the dereference at the point where we want to raise the interrupt, to
-avoid an implicit requirement on board code to wire things up in a
-particular order.
-
-Reported-by: Jose Martins <josemartins90@gmail.com>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
+ hw/arm/msf2-soc.c  | 11 -----------
+ hw/arm/stellaris.c | 12 ------------
+ 2 files changed, 23 deletions(-)
 
-QEMU's implementation here is a bit odd because we've put all the
-logic into the "GIC" device where in real hardware it's split between
-a GIC device and the CPU interface part in the CPU.  If we had
-arranged it in that way then we wouldn't have this odd bit of code
-where the GIC device needs to raise an IRQ line that belongs to the
-CPU.
-
-Not sure why we've never noticed this bug previously with KVM as a
-guest, you'd think we'd have spotted "maintenance interrupts just
-don't work"...
----
- include/hw/intc/arm_gicv3_common.h | 1 -
- hw/intc/arm_gicv3_cpuif.c          | 5 ++---
- 2 files changed, 2 insertions(+), 4 deletions(-)
-
-diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
-index 0331b0ffdb8..91491a2f664 100644
---- a/include/hw/intc/arm_gicv3_common.h
-+++ b/include/hw/intc/arm_gicv3_common.h
-@@ -153,7 +153,6 @@ struct GICv3CPUState {
-     qemu_irq parent_fiq;
-     qemu_irq parent_virq;
-     qemu_irq parent_vfiq;
--    qemu_irq maintenance_irq;
+diff --git a/hw/arm/msf2-soc.c b/hw/arm/msf2-soc.c
+index 33ea7df342c..d2c29e82d13 100644
+--- a/hw/arm/msf2-soc.c
++++ b/hw/arm/msf2-soc.c
+@@ -30,7 +30,6 @@
+ #include "hw/irq.h"
+ #include "hw/arm/msf2-soc.h"
+ #include "hw/misc/unimp.h"
+-#include "sysemu/runstate.h"
+ #include "sysemu/sysemu.h"
  
-     /* Redistributor */
-     uint32_t level;                  /* Current IRQ level */
-diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
-index 08e000e33c6..43ef1d7a840 100644
---- a/hw/intc/arm_gicv3_cpuif.c
-+++ b/hw/intc/arm_gicv3_cpuif.c
-@@ -399,6 +399,7 @@ static void gicv3_cpuif_virt_update(GICv3CPUState *cs)
-     int irqlevel = 0;
-     int fiqlevel = 0;
-     int maintlevel = 0;
-+    ARMCPU *cpu = ARM_CPU(cs->cpu);
+ #define MSF2_TIMER_BASE       0x40004000
+@@ -59,13 +58,6 @@ static const int spi_irq[MSF2_NUM_SPIS] = { 2, 3 };
+ static const int uart_irq[MSF2_NUM_UARTS] = { 10, 11 };
+ static const int timer_irq[MSF2_NUM_TIMERS] = { 14, 15 };
  
-     idx = hppvi_index(cs);
-     trace_gicv3_cpuif_virt_update(gicv3_redist_affid(cs), idx);
-@@ -424,7 +425,7 @@ static void gicv3_cpuif_virt_update(GICv3CPUState *cs)
+-static void do_sys_reset(void *opaque, int n, int level)
+-{
+-    if (level) {
+-        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+-    }
+-}
+-
+ static void m2sxxx_soc_initfn(Object *obj)
+ {
+     MSF2State *s = MSF2_SOC(obj);
+@@ -130,9 +122,6 @@ static void m2sxxx_soc_realize(DeviceState *dev_soc, Error **errp)
+         return;
+     }
  
-     qemu_set_irq(cs->parent_vfiq, fiqlevel);
-     qemu_set_irq(cs->parent_virq, irqlevel);
--    qemu_set_irq(cs->maintenance_irq, maintlevel);
-+    qemu_set_irq(cpu->gicv3_maintenance_interrupt, maintlevel);
+-    qdev_connect_gpio_out_named(DEVICE(&s->armv7m.nvic), "SYSRESETREQ", 0,
+-                                qemu_allocate_irq(&do_sys_reset, NULL, 0));
+-
+     system_clock_scale = NANOSECONDS_PER_SECOND / s->m3clk;
+ 
+     for (i = 0; i < MSF2_NUM_UARTS; i++) {
+diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
+index 28eb15c76ca..5f9d0801807 100644
+--- a/hw/arm/stellaris.c
++++ b/hw/arm/stellaris.c
+@@ -18,7 +18,6 @@
+ #include "hw/boards.h"
+ #include "qemu/log.h"
+ #include "exec/address-spaces.h"
+-#include "sysemu/runstate.h"
+ #include "sysemu/sysemu.h"
+ #include "hw/arm/armv7m.h"
+ #include "hw/char/pl011.h"
+@@ -1206,14 +1205,6 @@ static void stellaris_adc_init(Object *obj)
+     qdev_init_gpio_in(dev, stellaris_adc_trigger, 1);
  }
  
- static uint64_t icv_ap_read(CPUARMState *env, const ARMCPRegInfo *ri)
-@@ -2624,8 +2625,6 @@ void gicv3_init_cpuif(GICv3State *s)
-             && cpu->gic_num_lrs) {
-             int j;
- 
--            cs->maintenance_irq = cpu->gicv3_maintenance_interrupt;
+-static
+-void do_sys_reset(void *opaque, int n, int level)
+-{
+-    if (level) {
+-        qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+-    }
+-}
 -
-             cs->num_list_regs = cpu->gic_num_lrs;
-             cs->vpribits = cpu->gic_vpribits;
-             cs->vprebits = cpu->gic_vprebits;
+ /* Board init.  */
+ static stellaris_board_info stellaris_boards[] = {
+   { "LM3S811EVB",
+@@ -1317,9 +1308,6 @@ static void stellaris_init(MachineState *ms, stellaris_board_info *board)
+     /* This will exit with an error if the user passed us a bad cpu_type */
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(nvic), &error_fatal);
+ 
+-    qdev_connect_gpio_out_named(nvic, "SYSRESETREQ", 0,
+-                                qemu_allocate_irq(&do_sys_reset, NULL, 0));
+-
+     if (board->dc1 & (1 << 16)) {
+         dev = sysbus_create_varargs(TYPE_STELLARIS_ADC, 0x40038000,
+                                     qdev_get_gpio_in(nvic, 14),
 -- 
 2.20.1
 

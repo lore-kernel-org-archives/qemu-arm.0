@@ -1,107 +1,152 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1173202lfa;
-        Mon, 12 Oct 2020 09:08:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxwpjW3V/1e7Tnq57uykmo8XnrQvJe2a+yBvi5v1tH32Qxf/c9rjg2zmWOwWQRofXDQlEPZ
-X-Received: by 2002:a05:6902:4c3:: with SMTP id v3mr34312272ybs.415.1602518907858;
-        Mon, 12 Oct 2020 09:08:27 -0700 (PDT)
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1174499lfa;
+        Mon, 12 Oct 2020 09:09:56 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwYoVCzZi9LiLp0opCexhWrdbqRF1g837AaDxDmA7JkFmRu9tCNpfMOeYZ0LnLPjGnzNg2w
+X-Received: by 2002:a25:c542:: with SMTP id v63mr32474621ybe.241.1602518995983;
+        Mon, 12 Oct 2020 09:09:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602518995; cv=none;
+        d=google.com; s=arc-20160816;
+        b=F9Qm1TuECNp/RZnrDrLDg3gV1NOHjlz+RWNXc/p737p7myl5bTDSuVX8MHw2lndK+X
+         64BuHDRBj8/2saYb5IOxBsuP/PA6dCMNwTBy0g1cxHfIMTp/QTbpbaqnyWc0sbO76Xev
+         FOsLMZ1QR7bCXRJKD94vFYniPw7QcQ/Uvy3U89QvY/fKJ5W6k5mSD5JVJdPi2yFnt2Jx
+         98cNT3srUZQQP95/itFPWtzDrgEjaNIjkWXk+hUzBj2a8Jzdoao7GLjE+Coe6LldbAgJ
+         feRQxZyDtkEcBFTgFJMTbAdrY2hXZpTQ4N5czWup/sxpDAj8hAKDTCa0qdZTxToXZAQ2
+         PzAA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
+         :list-post:list-archive:list-unsubscribe:list-id:precedence
+         :mime-version:references:message-id:in-reply-to:subject:to:date;
+        bh=7o7kzoeaHSeMaEwZWP0AbhY3A/zXk2LIHpJzfedKNvU=;
+        b=weN7AkeKC3GxHaXELUhh5wmnjPg4CVgZc464PUOWtZh4gMCE+2ASnWKUrp/++VYWrQ
+         JE8kKm18Gwvp6S5uQYF+RziuxhocXi0ZCAYI84Cbs0Bvn6ukH75UJfN4r4xqo//YcnEO
+         YsAFhuu+zWBE5OFshUEuhQuiimaCkNDK9eIH7v6clD/vQqg1cTIsXH4Qc4T61K9S3aVc
+         Zdc/LPn4Ujr5of0L+1jkverxI5SpYe8w3PY/2hr9DyC8UPlMC94x1eiYmNKYo56TQOD5
+         wv9WYElJNIDzcrUyNNJgkxZGqlb1u/0ItzXs1Qg6PUQ0VYg6gAAtBv6aknkLGwV35Y3B
+         GH/Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f32si5309013ybj.104.2020.10.12.09.08.27
+        by mx.google.com with ESMTPS id n131si5328277ybc.432.2020.10.12.09.09.55
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 09:08:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Oct 2020 09:09:55 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       arc=fail (signature failed);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55106 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:59846 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kS0N9-0002kY-6E
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 12:08:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59906)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kS0OZ-0004lj-Ao
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 12:09:55 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59400)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kS01F-0005BY-Uj; Mon, 12 Oct 2020 11:45:50 -0400
-Resent-Date: Mon, 12 Oct 2020 11:45:49 -0400
-Resent-Message-Id: <E1kS01F-0005BY-Uj@lists.gnu.org>
-Received: from sender4-of-o53.zoho.com ([136.143.188.53]:21318)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1kRzy6-0008Sk-LZ; Mon, 12 Oct 2020 11:42:34 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001]:61655)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <no-reply@patchew.org>)
- id 1kS01D-0000Ia-79; Mon, 12 Oct 2020 11:45:49 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1602517538; cv=none; 
- d=zohomail.com; s=zohoarc; 
- b=UgGbukkUR/wPfH3MzH0MrRTdzVHItqjSM63KgpsGWuzSfs4gpIprLd7bxLmN5MZNGWnBydO/S3M1buLTCkTWOaErnr2iFpo4xgSD0BWBnoRugPqqrQkYpHmRGmlPBe3R4oBjw20xV79XdRdxeghc5CJMC4bhjSXUUJPH+o0ZsG4=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com;
- s=zohoarc; t=1602517538;
- h=Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:MIME-Version:Message-ID:Reply-To:Subject:To;
- bh=PQ8yhp4woezLcxoQtPoIMtAa2Sr9dgUSvEI1e5BHmic=; 
- b=ChBSW0YXoVifVUY+KAUCETrVj/Jtoi6H1oz+UxqzyiHLNYZclm0aFMytGlEcEgcMuvK/5r1tPoWypMpVjFjXSAlkeK4Hx98zMfiKgi5Ygoctg8uKgRBqwzweYVmqnt+ZrsSIbrGwGRb10Sg93SpHZuWgc81bfCJuwyZneBJrDm0=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
- spf=pass  smtp.mailfrom=no-reply@patchew.org;
- dmarc=pass header.from=<no-reply@patchew.org>
- header.from=<no-reply@patchew.org>
-Received: from [172.17.0.3] (23.253.156.214 [23.253.156.214]) by
- mx.zohomail.com with SMTPS id 1602517537003574.3528256154505;
- Mon, 12 Oct 2020 08:45:37 -0700 (PDT)
-Subject: Re: [PATCH for-5.1] docs/system/arm/virt: Document mte machine option
-Message-ID: <160251753567.18344.11052124400267344488@66eaa9a8a123>
-In-Reply-To: <20201012153408.9747-10-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1kRzy3-0008OK-MJ; Mon, 12 Oct 2020 11:42:33 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 45C6A746335;
+ Mon, 12 Oct 2020 17:42:26 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 2306D74632C; Mon, 12 Oct 2020 17:42:26 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 21343746307;
+ Mon, 12 Oct 2020 17:42:26 +0200 (CEST)
+Date: Mon, 12 Oct 2020 17:42:26 +0200 (CEST)
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] Deprecate TileGX port
+In-Reply-To: <20201012153408.9747-2-peter.maydell@linaro.org>
+Message-ID: <d5d29e6-3fb9-927f-ae9e-67c67786391f@eik.bme.hu>
+References: <20201012153408.9747-1-peter.maydell@linaro.org>
+ <20201012153408.9747-2-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
-Resent-From: 
-From: no-reply@patchew.org
-To: peter.maydell@linaro.org
-Date: Mon, 12 Oct 2020 08:45:37 -0700 (PDT)
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.188.53; envelope-from=no-reply@patchew.org;
- helo=sender4-of-o53.zoho.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 11:45:43
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-Spam-Probability: 8%
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, richard.henderson@linaro.org, qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Zz387HX4zIy6
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel@nongnu.org
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to: BALATON Zoltan <balaton@eik.bme.hu>
+From: BALATON Zoltan via <qemu-devel@nongnu.org>
+X-TUID: laW4/l5j3mDv
 
-UGF0Y2hldyBVUkw6IGh0dHBzOi8vcGF0Y2hldy5vcmcvUUVNVS8yMDIwMTAxMjE1MzQwOC45NzQ3
-LTEwLXBldGVyLm1heWRlbGxAbGluYXJvLm9yZy8KCgoKSGksCgpUaGlzIHNlcmllcyBzZWVtcyB0
-byBoYXZlIHNvbWUgY29kaW5nIHN0eWxlIHByb2JsZW1zLiBTZWUgb3V0cHV0IGJlbG93IGZvcgpt
-b3JlIGluZm9ybWF0aW9uOgoKVHlwZTogc2VyaWVzCk1lc3NhZ2UtaWQ6IDIwMjAxMDEyMTUzNDA4
-Ljk3NDctMTAtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnClN1YmplY3Q6IFtQQVRDSCBmb3ItNS4x
-XSBkb2NzL3N5c3RlbS9hcm0vdmlydDogRG9jdW1lbnQgbXRlIG1hY2hpbmUgb3B0aW9uCgo9PT0g
-VEVTVCBTQ1JJUFQgQkVHSU4gPT09CiMhL2Jpbi9iYXNoCmdpdCByZXYtcGFyc2UgYmFzZSA+IC9k
-ZXYvbnVsbCB8fCBleGl0IDAKZ2l0IGNvbmZpZyAtLWxvY2FsIGRpZmYucmVuYW1lbGltaXQgMApn
-aXQgY29uZmlnIC0tbG9jYWwgZGlmZi5yZW5hbWVzIFRydWUKZ2l0IGNvbmZpZyAtLWxvY2FsIGRp
-ZmYuYWxnb3JpdGhtIGhpc3RvZ3JhbQouL3NjcmlwdHMvY2hlY2twYXRjaC5wbCAtLW1haWxiYWNr
-IGJhc2UuLgo9PT0gVEVTVCBTQ1JJUFQgRU5EID09PQoKVXBkYXRpbmcgM2M4Y2Y1YTljMjFmZjg3
-ODIxNjRkMWRlZjdmNDRiZDg4ODcxMzM4NApGcm9tIGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRjaGV3
-LXByb2plY3QvcWVtdQogKiBbbmV3IHRhZ10gICAgICAgICBwYXRjaGV3LzIwMjAxMDEyMTUzNDA4
-Ljk3NDctMTAtcGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnIC0+IHBhdGNoZXcvMjAyMDEwMTIxNTM0
-MDguOTc0Ny0xMC1wZXRlci5tYXlkZWxsQGxpbmFyby5vcmcKU3dpdGNoZWQgdG8gYSBuZXcgYnJh
-bmNoICd0ZXN0JwoKPT09IE9VVFBVVCBCRUdJTiA9PT0KY2hlY2twYXRjaC5wbDogbm8gcmV2aXNp
-b25zIHJldHVybmVkIGZvciByZXZsaXN0ICcxJwo9PT0gT1VUUFVUIEVORCA9PT0KClRlc3QgY29t
-bWFuZCBleGl0ZWQgd2l0aCBjb2RlOiAyNTUKCgpUaGUgZnVsbCBsb2cgaXMgYXZhaWxhYmxlIGF0
-Cmh0dHA6Ly9wYXRjaGV3Lm9yZy9sb2dzLzIwMjAxMDEyMTUzNDA4Ljk3NDctMTAtcGV0ZXIubWF5
-ZGVsbEBsaW5hcm8ub3JnL3Rlc3RpbmcuY2hlY2twYXRjaC8/dHlwZT1tZXNzYWdlLgotLS0KRW1h
-aWwgZ2VuZXJhdGVkIGF1dG9tYXRpY2FsbHkgYnkgUGF0Y2hldyBbaHR0cHM6Ly9wYXRjaGV3Lm9y
-Zy9dLgpQbGVhc2Ugc2VuZCB5b3VyIGZlZWRiYWNrIHRvIHBhdGNoZXctZGV2ZWxAcmVkaGF0LmNv
-bQ==
+On Mon, 12 Oct 2020, Peter Maydell wrote:
+> Deprecate our TileGX target support:
+> * we have no active maintainer for it
+> * it has had essentially no contributions (other than tree-wide cleanups
+>   and similar) since it was first added
+> * the Linux kernel dropped support in 2018, as has glibc
+>
+> Note the deprecation in the manual, but don't try to print a warning
+> when QEMU runs -- printing unsuppressable messages is more obtrusive
+> for linux-user mode than it would be for system-emulation mode, and
+> it doesn't seem worth trying to invent a new suppressible-error
+> system for linux-user just for this.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> We discussed dropping this target last year:
+> https://patchew.org/QEMU/20191012071210.13632-1-philmd@redhat.com/
+> and before that in 2018, when Chen told us he didn't have time
+> to work on tilegx any more:
+> https://lists.gnu.org/archive/html/qemu-devel/2018-03/msg03955.html
+> Given that tilegx is no longer in upstream Linux I think it makes sense
+> to finally deprecate-and-drop our linux-user support for it.
+>
+> docs/system/deprecated.rst | 11 +++++++++++
+> 1 file changed, 11 insertions(+)
+>
+> diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+> index 3a255591c34..e9097e089bb 100644
+> --- a/docs/system/deprecated.rst
+> +++ b/docs/system/deprecated.rst
+> @@ -387,6 +387,17 @@ The above, converted to the current supported format::
+>
+>   json:{"file.driver":"rbd", "file.pool":"rbd", "file.image":"name"}
+>
+> +linux-user mode CPUs
+> +--------------------
+> +
+> +``tilegx`` CPUs (since 5.1.0)
+> +'''''''''''''''''''''''''''''
+
+Is that 5.2?
+
+Regards,
+BALATON Zoltan
+
+> +
+> +The ``tilegx`` guest CPU support (which was only implemented in
+> +linux-user mode) is deprecated and will be removed in a future version
+> +of QEMU. Support for this CPU was removed from the upstream Linux
+> +kernel in 2018, and has also been dropped from glibc.
+> +
+> Related binaries
+> ----------------
+>
+>

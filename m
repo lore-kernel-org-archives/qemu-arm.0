@@ -1,103 +1,103 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1152121lfa;
-        Mon, 12 Oct 2020 08:40:27 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyuUrbSkAIJICDpU7s1RbcERh5fCwfJvNQ6EZffCTZU03V7GGbpGJ8Je+rBkAOpS/PKpIbe
-X-Received: by 2002:a25:d342:: with SMTP id e63mr10608111ybf.167.1602517226947;
-        Mon, 12 Oct 2020 08:40:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602517226; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1152342lfa;
+        Mon, 12 Oct 2020 08:40:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxh6wOjR9hpdBlWFD1sS0EFWF4YTytFqQyIpROnt2rfN+u5Egk5WcyGBFsMEYxKGo7C7Qft
+X-Received: by 2002:a25:2e01:: with SMTP id u1mr10215168ybu.461.1602517245718;
+        Mon, 12 Oct 2020 08:40:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602517245; cv=none;
         d=google.com; s=arc-20160816;
-        b=CyhMnf+vO6N6vAG1zGE8T2K5WlNcQmbVdiEGA9Zc2s5VRURU8NS9QoAMLjC97PGzoR
-         Lf+Or7OVrKeUMcJq3G76NkYU90zUhiGRadNgXj8WXMfzb2O3PRjVyW+JdKXbT7lrwww5
-         7yILK07khBuUIjgLWaBzBuH6I8hugxGB1Jbo3AvA5TaCAT9X7Qza20DJ9qgmxZK44cgJ
-         JTKaesgkB307eYTMq/Yqud8/p3GDPe7SRCxe3TzQXx/LMRoMD1oMmOru499Mh0BtBmlH
-         crR8Gglzjx+hHafu4DPaQ6Z6LO8SJX+3qkW7rCXSm9aiPh3jj9HkFJ+OLZh0ihxIjG/X
-         zUZQ==
+        b=sWtqR0sXN4yIfggrWR/xde0/pWE/EjctTIi+9imuvf9FtZNyLVg/YcrfumslfK20XU
+         qoxnRb9/i+36mEa55yOplG1yJgd3HwYGSO5JxEk4tV3Fa1pR5aVNYIgKRN1MN7aaxqfC
+         VxqfcBKD/pdcpN/3IloOEpXkv6dYma93nHaqdYIeDqVoQ9hzrGKxkUwThqOKGUgkOcEU
+         GTRUPhKcmMHxyO7ch/vlHUedn38jDbzZpbNeItfwB22S9a5bxt/C8QCHrrXGP1NzSfM0
+         5YPcwXqTcQXRGBRlmttJ+Mfeb9JGvuIqP31+j6c8yYTUlptIkHWnPyvvY67F1vGYwGHS
+         /1Ug==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=9dCI9vVIHjGOIU15u/YnihvSC4K6HLaW4rgzCu/bPQI=;
-        b=ul0iDUNxicBOQVk4xCGuszIvuSyGIQ/+XAoBPuYeVwuEP7OiEIRY3BeiaAeJ7tQFg9
-         8/hdRYgSY8f6Y2y6QVxx16LsbMKH2hBtXzWzk/FXhlNCYaCAGASGdgQ/TAw15z99JuW6
-         NZ44Cw4bDj9WSI9mvNieSvazQXMhno5UUn2wdae2O1bS4+AYNWoUsRGk5Tx29dnABUIA
-         DAp0+6/cPhxHK1kPtLjybExiNx1IfhA8UTgW09gdHQiJfpgO3lt7RjW2WFJfS9lP93pr
-         K0LQuLMqzRKi5GysWXagZL8N+PjtidVjCBSyAt9jWoErySQx+yj1EESwsu30yeASV+9e
-         EEFQ==
+        bh=nB/5rC0VVxktBcVawvErd/qrg+KIJA8SmLqeHRRk/Lw=;
+        b=vALnp/wum90EInU9U0ImNUG2LE/xtJyo6gB4+qPL4zPlFOgf7R8zOLfhiq6B84uU9t
+         +tfmxsFQYqcuJKiXkZD5rpOGziRw7Y0C3TDgbADeCNQuEhIcGTRlBP9eH1BtFI36PM6c
+         +eh8W7vX4tq3BHjR0nQzSnxpGtccP848hVP7YaPzVKAgxzf7Hwv8xSpRmWWL8AmuIiEF
+         4dqsqbmCD8A/R2W6p8xfhYVBNYCOTuQiIyoRrwVw2yDsUfhRmeI+PjXe0rpok8DVtkdy
+         90cD0nDXmc8kLv8sAbaCsHj0WsvD+GxfzlVt8jQHVMpj6deFgkmbpKinSBVeQG/rUzZC
+         xqYg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UkSP7IvR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nlR3bQta;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e7si15125872ybq.222.2020.10.12.08.40.26
+        by mx.google.com with ESMTPS id r3si1769752ybk.191.2020.10.12.08.40.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:40:26 -0700 (PDT)
+        Mon, 12 Oct 2020 08:40:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=UkSP7IvR;
+       dkim=pass header.i=@linaro.org header.s=google header.b=nlR3bQta;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47804 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48964 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRzw2-0005yA-AN
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:40:26 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56596)
+	id 1kRzwL-0006VW-2I
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:40:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56668)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqC-0006fo-JQ
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:24 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:36986)
+ id 1kRzqE-0006lA-NP
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:26 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:42798)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzq9-0007GQ-E3
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:24 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id h7so19712745wre.4
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:20 -0700 (PDT)
+ id 1kRzqB-0007HF-Fj
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:26 -0400
+Received: by mail-wr1-x443.google.com with SMTP id e18so19669344wrw.9
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=9dCI9vVIHjGOIU15u/YnihvSC4K6HLaW4rgzCu/bPQI=;
- b=UkSP7IvR3ZHZ0vB/gPLvDD39ym3SElSAtD6BQpwZggwMPzlDY/C4xvDMk82T8mJtCh
- w4ERaZvRFN+WqbGzhac5PynNnAb88fpGeKelbrfi5blZCuvazGR3yTPuddzujXtUjo9j
- KZoQ6qHR/D8Uv2cfFLyHH6wewMAz7IGejJDoDiK4BerSnK9waZ+50yVoVsa0C5u6wgv2
- 1I0JtCeOxMPXGX3i6O/RcaPLizTNK7Nv5ZmzVDB+nbDredWeSlBVTBtf96EE/D+Ae0UE
- WtfzhYIWdqbg5oNegwG6E2uEKmKH4k9Vc4TlXD3/SRtb83/DHYVoD6uXTGlyh7rYxFmK
- aXtw==
+ bh=nB/5rC0VVxktBcVawvErd/qrg+KIJA8SmLqeHRRk/Lw=;
+ b=nlR3bQtaTb75A/+lOyljTxIX/zlzaBrk5N4K5biR8DgXFQPBFuHCuJdcnoAtLSneTD
+ BnQ/UzVz3K6WXDVxbQwbFcIou5Up985dUHnpwODSDJ577bFZOQHIv1H71KXjufL5G0CT
+ YPjdTFil8NBC5lNZ0u28aSApEtCrZ5a+xSYoISzRAzESmc9JBTXH8eNKa2HzFONgTkvf
+ PxYfAHgSyf/hscCblsGfQWn3NWV0Dug2uraZlwYZm9tFZoHvUFIE9blC5xryb0UUnS/p
+ ijRTimX7XPVgkc71V9o0SlowpeROPT1D0wb5T3BVDaKKY2QrLroaCoyS7hd21J2N2Q5n
+ 2IhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=9dCI9vVIHjGOIU15u/YnihvSC4K6HLaW4rgzCu/bPQI=;
- b=mqPkaud+0hNE27dsP0f10NVmFNpbapVk0ngsXPLsigxD722PdD0Iwe6muWEEq+N+L3
- Ttk3Juig4wV5qxkKQootJbm0qC81pJLSBI3lZW+mpf6ByfSB90Ab8NeYyLH8Kui4TNt5
- 6Hs3N+VM3LXUL0/vMcKmc9/j22SqML/ZhV8atm4ei/WfGbAMKhwbLjvNE7Kpyc3GYst/
- LoEy9C33B2Wm0DdxQrD9hzaVeAZATo69Vf6ga4pNw+AscnNIFp79RkPBJ8gwJ+GE4enz
- HNiW2bRXMs0MYia33QjkRc1QA+JvRWq0xQIdBLFtfW1liZN+TpJMiWjZz8IMgdoXa91b
- Acyg==
-X-Gm-Message-State: AOAM530bLD0XeICuh57JDmPdDbrZ1hpYLKV3M73vMpfIKAdycE2o2RBm
- T3/s4iTx06xKxwGN8Y5/b5dEwmpC4voodOdQ
-X-Received: by 2002:adf:e741:: with SMTP id c1mr19303102wrn.16.1602516859770; 
- Mon, 12 Oct 2020 08:34:19 -0700 (PDT)
+ bh=nB/5rC0VVxktBcVawvErd/qrg+KIJA8SmLqeHRRk/Lw=;
+ b=s8GWxLAHZHBTrxAh4Qxvnp/AGoWe4JaBv50eZq7yP1dT/RDqF6mOrPAAfSzcukWgF9
+ EF9yvlxQdr3keR7hJ/fTbfwN9U2ES8A9rULJOm8xbY8qnO/rQlDvZ1FQzo/JW4zYR3BB
+ NPDJ/4eV/wx7e9jd6luO1DRCAqphixuIyP/yF9vzBHE321dfHxKkFfSihrP2b1N0UNVQ
+ HJuaY+RQeB5gkMwSwL9BJj9AFU0M8JY/RKzrsm1JhEc1DopzfAiNhF8M/QhmhXgdK5FN
+ VHm2dIm4qabRzj8ximhMeIX5jVbbb2nalLjlahg66AslY1QDzoEUIA9UI3fJlqIbckMJ
+ Keag==
+X-Gm-Message-State: AOAM531aZFw+wf5flJs4FNcPfmR5MhwJ1LEfOuOpbc6/7xKStqkDhIO5
+ 13QiUGBnuHnVdPBSvyhUt5fABCzQ4DF3pn0Y
+X-Received: by 2002:a5d:4d10:: with SMTP id z16mr11113890wrt.360.1602516861968; 
+ Mon, 12 Oct 2020 08:34:21 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.18
+ by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:19 -0700 (PDT)
+ Mon, 12 Oct 2020 08:34:21 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 01/10] decodetree: Fix codegen for non-overlapping group
- inside overlapping group
-Date: Mon, 12 Oct 2020 16:33:31 +0100
-Message-Id: <20201012153408.9747-9-peter.maydell@linaro.org>
+Subject: [PATCH for-5.1] hw/arm/armsse: Assert info->num_cpus is in-bounds in
+ armsse_realize()
+Date: Mon, 12 Oct 2020 16:33:33 +0100
+Message-Id: <20201012153408.9747-11-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
 References: <20201012153408.9747-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -106,7 +106,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,51 +122,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /zafoZ5iHBJH
+X-TUID: kCnQxJOucIuC
 
-For nested groups like:
+In armsse_realize() we have a loop over [0, info->num_cpus), which
+indexes into various fixed-size arrays in the ARMSSE struct.  This
+confuses Coverity, which warns that we might overrun those arrays
+(CID 1430326, 1430337, 1430371, 1430414, 1430430).  This can't
+actually happen, because the info struct is always one of the entries
+in the armsse_variants[] array and num_cpus is either 1 or 2; we also
+already assert in armsse_init() that num_cpus is not too large.
+However, adding an assert to armsse_realize() like the one in
+armsse_init() should help Coverity figure out that these code paths
+aren't possible.
 
-  {
-    [
-      pattern 1
-      pattern 2
-    ]
-    pattern 3
-  }
-
-the intended behaviour is that patterns 1 and 2 must not
-overlap with each other; if the insn matches neither then
-we fall through to pattern 3 as the next thing in the
-outer overlapping group.
-
-Currently we generate incorrect code for this situation,
-because in the code path for a failed match inside the
-inner non-overlapping group we generate a "return" statement,
-which causes decode to stop entirely rather than continuing
-to the next thing in the outer group.
-
-Generate a "break" instead, so that decode flow behaves
-as required for this nested group case.
-
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- scripts/decodetree.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/armsse.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/scripts/decodetree.py b/scripts/decodetree.py
-index 60fd3b5e5f6..c1bf3cfa85f 100644
---- a/scripts/decodetree.py
-+++ b/scripts/decodetree.py
-@@ -548,7 +548,7 @@ class Tree:
-             output(ind, '    /* ',
-                    str_match_bits(innerbits, innermask), ' */\n')
-             s.output_code(i + 4, extracted, innerbits, innermask)
--            output(ind, '    return false;\n')
-+            output(ind, '    break;\n')
-         output(ind, '}\n')
- # end Tree
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index 64fcab895f7..dcbff9bd8f4 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -452,6 +452,8 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+         return;
+     }
  
++    assert(info->num_cpus <= SSE_MAX_CPUS);
++
+     /* max SRAM_ADDR_WIDTH: 24 - log2(SRAM_NUM_BANK) */
+     assert(is_power_of_2(info->sram_banks));
+     addr_width_max = 24 - ctz32(info->sram_banks);
 -- 
 2.20.1
 

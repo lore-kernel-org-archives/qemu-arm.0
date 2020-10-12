@@ -1,111 +1,138 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1147839lfa;
-        Mon, 12 Oct 2020 08:34:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxFMFnKDf4B5Ml2Y/WAXaI9agUzns5LQNnqhh+uNyLruV1NNBSmDv3rH5mGSL/W1e7Aepgl
-X-Received: by 2002:a25:aa4b:: with SMTP id s69mr14155203ybi.435.1602516869721;
-        Mon, 12 Oct 2020 08:34:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602516869; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp995164lfa;
+        Mon, 12 Oct 2020 05:19:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzU6Wrcrpz+r1xdGoRoMDI/YSFSKaG98ykfLsQ+jaBwbJHSbHANXHsbtLCUbUXBb5Zc+xKW
+X-Received: by 2002:a5b:46:: with SMTP id e6mr7648840ybp.295.1602505184998;
+        Mon, 12 Oct 2020 05:19:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602505184; cv=none;
         d=google.com; s=arc-20160816;
-        b=KCMX/8qzLZUpBUN4y6FZdEjYeAilPrdMuvP3FBsIaabHJnlpefbdrwvmJe7pFrQwZr
-         OHBbGO9bU0U80smvyWEgpDSXcdTS4QHo+OfGaNQEyO/fII9Ah3Lt/jZch14ww5J0EntR
-         I7CfeKgCtLarGOjiZ481Ko9diSDcMVOPKNQFhwgcf/rv1azieaK5stVM6rRstHm2IezU
-         cHmgUuNqIoh47zzJMbcYIe8X2kFs1vdvjx/CPAO9q8UHan2iFhTrOTmHlb60/VQL++Eu
-         iJGgabQjMKlT3tksOffZpV1BsD2E06HMrBLeQqDwts4wGdXA0CxpZc4xIDXJkre3Etw+
-         Snug==
+        b=Sxg+dY1QHzqKD8NUYzwlOdehzEMJiMjHtiSL/9p/LYVxpre49OPCJSjqeeuzDmf5y4
+         Ux9oX8G944NB8FCwq6YsqlV1kCk/y5MvwPdiTp7yLscryOGGb8FhOWJXqSwor2zmjMNw
+         oO8llZv251CtmdJvv1WtIhB+MCpD6vmI1S66LyMZJZTV5Ukrtjvxc+XY4RA+XV4Ld9Pv
+         sJjBWofXLaezx0Sb3JOmEq1LyDszeBS/K9lBgq9ffABCghAcGX6/WxNM7WRKWwvAkPuF
+         0r3JuObBewAhcXpbA0WTeXgEdFICzDXFIS+Kw5KLeMnDcyeFjpMUTD6qaeQqRXH17ul8
+         nzag==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=jFGBpg8QTM0wW80ptrMfB2TplDyv41drpm/PS9njFvg=;
-        b=zxItIb9QJS0QYNK1pExnqOecsdDllpWD1oIcRaUm9QxAlvVwTNduacQWBwEWg8brYr
-         ILfDLY+ABVSIOR2O39DSo6c+O7dohZnv8Rq+cOgPzq6nSm2E5L7s4hwzATZ4Mwhy0Dih
-         BJDyDV2GVvQyZioraJbXVIm0eZowZtKD+oLgGSUUCS4O2ygJ7oYYtvSqS9hyOeUyXgSP
-         jZAi0SIO0O5iu7avVvfHyKiiXr74lYzPLf54FMQDa1IiQzf4wYFEa1sYg6jPFyNkMdOD
-         gRuRjb15phfyCYgYL4MXgd0FHG2l/4rfSSapm276erHWjxoS3xCc8HgwjfnM9pus4w0S
-         12Gw==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:autocrypt:from:references:to:subject;
+        bh=UDSk4LIMhjkNe0FIKpqXlCNbIc/qrotbje803huKZ6M=;
+        b=uxqGNeP1gC8W5SDcCBwPkTG/5KJjDIWwzmhu74af6/Efc/GMBWP6huYnyIGJqFYL8o
+         HkQ9D5404nzGLLNb11Da4LDmzg+/I3M7G9vdBENnv8LsUbwywlG5jB4pz11gvsoeITSv
+         IQEgVrxdL8ikj3PH2DZGCYgjg8/jN+rAXAYg3PcQ8fUvnKE5QgU/E8w0bw1vdK0asK1q
+         lhIIPbTSrbeTqDHgCq7M9TXbQd52gIIJlFoyKCLuVkJOgLXsdEw827Y+xVvHIddVbZ7H
+         aNKsj383z2jEmDZsYly3LS9od1UHdWgYIGdjorgE5EQPhliC4lzm+Fj4tWBSxQbzJ90Q
+         IgZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XV8umfJv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3si16021890yba.139.2020.10.12.08.34.29
+        by mx.google.com with ESMTPS id w63si11834659ybw.476.2020.10.12.05.19.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:34:29 -0700 (PDT)
+        Mon, 12 Oct 2020 05:19:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=XV8umfJv;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57120 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51926 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRzqG-0006Os-So
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:34:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56368)
+	id 1kRwno-00078q-Ck
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:19:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53786)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzq5-0006M4-0h
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:17 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:51183)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzq2-0007DT-Rv
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:16 -0400
-Received: by mail-wm1-x343.google.com with SMTP id 13so17525043wmf.0
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=jFGBpg8QTM0wW80ptrMfB2TplDyv41drpm/PS9njFvg=;
- b=XV8umfJvSJXqFbxT3gHEcYkxjJhgGsSJq6EUVHE9M319Gvvb1wDfJmmkKxohnrRNGx
- FPZ1Q6FopWRAyyhooxMI7rkzsbyfGWh7XCFH9SVl4jWNsGBd6m6hAl7AitZ01bH4tliF
- 0Y9ZxQ7Zlg2VPH1LW13E3B0Cxo5qU9mRgMvmn3GZBhQKnTaG8TkG7diEOmZEshogJulx
- SE4URXaOVbiNpM2JC+SICZ2chVIXIexHbm/mq+OsrGTn4RYVTMsniN+MlXEjeD883ynT
- /wE/TQSt2dkUsVg8Ka22il4bVeASf39mFNmmOZQa8qno2xzXzeWl/FlvX5xgbJ0UglLa
- RJXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=jFGBpg8QTM0wW80ptrMfB2TplDyv41drpm/PS9njFvg=;
- b=ZWH5HtjFbb5cOG0xyQDPtqRfl/GxNzoC2RbGTiVNumH4olt99ayif7ucHTUr5LKMzV
- XHw6yrmrmaQtDNnEDv7uiekjy+lRlA1YAl7QB7ut7sLGU6QYbKRwkP8VA9JsVoMmKK1r
- 5IBa2K8qfWy06ddhMRH+XZuapqhj2uluql2Yql5G2BX5byFLNw1cvJggtcN87lU0WO81
- zeOQRkYULRsEjrZHeaHmCt/VFD7lO7wz7tZHEIJzrM7cjV5vVjDwQE1LBYOOmGMsFYiE
- A2c5P1JzTFyVEGTo4q4x64oZUFe7WiZcv/XN+sgncC3yySGPLBchyrpPDJq4cSe/vcH0
- IOKA==
-X-Gm-Message-State: AOAM5302XwsJhJ2gb+H/2xk76xKG6ZfIZk2H9FyGT0cVSJbzWh5PjA6v
- hfCJCAZd8mVTlK6sNA/2MFJkEP6Af/QtOE5F
-X-Received: by 2002:a7b:c20a:: with SMTP id x10mr10758173wmi.29.1602516852533; 
- Mon, 12 Oct 2020 08:34:12 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:11 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] Deprecate Unicore32 port
-Date: Mon, 12 Oct 2020 16:33:25 +0100
-Message-Id: <20201012153408.9747-3-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
-References: <20201012153408.9747-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kRwnX-000771-Ao; Mon, 12 Oct 2020 08:19:28 -0400
+Received: from mout.kundenserver.de ([212.227.126.133]:50915)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1kRwnT-0004sy-CL; Mon, 12 Oct 2020 08:19:27 -0400
+Received: from [192.168.100.1] ([82.252.141.186]) by mrelayeu.kundenserver.de
+ (mreue012 [213.165.67.103]) with ESMTPSA (Nemesis) id
+ 1MT7ip-1kuEUm3xlv-00UXNv; Mon, 12 Oct 2020 14:19:16 +0200
+Subject: Re: [PATCH] hw/rtc/twl92230: Silence warnings about missing
+ fallthrough statements
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+References: <20201001182121.187122-1-thuth@redhat.com>
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; prefer-encrypt=mutual; keydata=
+ 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
+Message-ID: <7cf3a5f8-f5fe-d299-ea77-e66c91a30c38@vivier.eu>
+Date: Mon, 12 Oct 2020 14:19:14 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.11.0
 MIME-Version: 1.0
+In-Reply-To: <20201001182121.187122-1-thuth@redhat.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: fr
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x343.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Provags-ID: V03:K1:v5lT4ks4I2ehu8tQEI5Rz8VtPZNhg390lvqrZMKvUtdZVdu8ZYQ
+ Kb0D+JqqCJrl84kXqNUOjhF+5PrTsrbAmRAH9xoZzT4E1+W2WIFWPbFsVgubVki6tjMMYNL
+ z6fEcxF81gC9RzstC/pGfm8vD1q2sW6ILK52Jt6Ow9IojXuV1yK2lyDK9+utlZHnuGRJS9A
+ CTDGJS9CF0XvLmiwPjhMA==
+X-UI-Out-Filterresults: notjunk:1;V03:K0:v/PJnEeiD1k=:V1kivcpViqlboctEBSQsWK
+ aFuCmFpRR8qd94nVq6EANn+lUXf1OQkhWh2mIns7weU3+FZqvyJswaDIlfBu+4nqu/3h6X7NJ
+ L/i9uDaKpmX943ZRFskG7+SNqlh8a/G+wxXYYB6dYknzc1zjJJBUH6vAk2YU5bn3Oh1EmZL+V
+ l+IzKvyUAd7z7gZct/ed8UMG4+Uuv2e2Q8RVX7cj59EJVpL7blTDmCkeTWbF5KXhUi1P8L39R
+ JbLgJwcbIB6aAAdIEWaLKnUSOtBDKKyPzxUybuv8qAwzwpNi/n69MWDS0teDienzxmdzIC9KD
+ ANagQDTbgKpwt8nJJZRZJDiCyR9UGQiMGKWfJwvJiM/uOAf6CujuOFrmJB7/W9oKuoMA8vQRR
+ +mXlrWOYiIjNEA/SctoLggPgDfpTkifUUH3sDvK4THya6+1rk3Qp93uBhO8p+JgXF39xt254c
+ jicU9dmHu5odiI7Sh57MLlO8tpaYpycFRFFhEoEy6W1L/YfZlZiHhDvD7QEHXZo28FVUte6ct
+ PWV47cAoOj42UGzoJ6MsoTP8NlN5m3UmmYERdH88A1SPVTx8D6+i+EhPc2z9jQ5VfD5/nEjR8
+ iKE6JAEEoJD3qllU2j3aZ3rd5Da9fIPKpj48A2WQ/+4pJcgMlZmkjc6hgJx1bU7/lUdpx6xR+
+ FIFH71sCu0GEkGhmx289stkp0KcTRrmE5+u/9YakzGXxVKgyaMPOR9xPTZq0tCsRsxX37DB7y
+ 9SF2LNxqiVuBYmQfG4qYYd2KWeisYh2CMLplCDUvJCFpdiJz50+aP8n8QUWhg9O12FsyZfmrn
+ M6hCMT6tC0L2wLJrkrUzl5TTd1N/8adMm79XdiWMenaEMaoTwBzgobIj9QDC1/L7DmbMvPc
+Received-SPF: none client-ip=212.227.126.133; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 08:19:19
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,52 +145,123 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ZKIp0G/GpgoT
+X-TUID: C7a68OMdjjFl
 
-Deprecate our Unicore32 target support:
- * the Linux kernel dropped support for unicore32 in commit
-   05119217a9bd199c for its 5.9 release (with rationale in the
-   cover letter: https://lkml.org/lkml/2020/8/3/232 )
- * there is apparently no upstream toolchain that can create unicore32
-   binaries
- * the maintainer doesn't seem to have made any contributions to
-   QEMU since the port first landed in 2012
- * nobody else seems to have made changes to the unicore code except
-   for generic cleanups either
+Le 01/10/2020 à 20:21, Thomas Huth a écrit :
+> When compiling with -Werror=implicit-fallthrough, gcc complains about
+> missing fallthrough annotations in this file. Looking at the code,
+> the fallthrough is indeed wanted here, but instead of adding the
+> annotations, it can be done more efficiently by simply calculating
+> the offset with a subtraction instead of increasing a local variable
+> one by one.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/rtc/twl92230.c | 50 +++++++++++++++++++++++------------------------
+>  1 file changed, 24 insertions(+), 26 deletions(-)
+> 
+> diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
+> index f838913b37..499f421932 100644
+> --- a/hw/rtc/twl92230.c
+> +++ b/hw/rtc/twl92230.c
+> @@ -271,37 +271,36 @@ static void menelaus_gpio_set(void *opaque, int line, int level)
+>  static uint8_t menelaus_read(void *opaque, uint8_t addr)
+>  {
+>      MenelausState *s = (MenelausState *) opaque;
+> -    int reg = 0;
+>  
+>      switch (addr) {
+>      case MENELAUS_REV:
+>          return 0x22;
+>  
+> -    case MENELAUS_VCORE_CTRL5: reg ++;
+> -    case MENELAUS_VCORE_CTRL4: reg ++;
+> -    case MENELAUS_VCORE_CTRL3: reg ++;
+> -    case MENELAUS_VCORE_CTRL2: reg ++;
+> +    case MENELAUS_VCORE_CTRL5:
+> +    case MENELAUS_VCORE_CTRL4:
+> +    case MENELAUS_VCORE_CTRL3:
+> +    case MENELAUS_VCORE_CTRL2:
+>      case MENELAUS_VCORE_CTRL1:
+> -        return s->vcore[reg];
+> +        return s->vcore[addr - MENELAUS_VCORE_CTRL1];
+>  
+> -    case MENELAUS_DCDC_CTRL3: reg ++;
+> -    case MENELAUS_DCDC_CTRL2: reg ++;
+> +    case MENELAUS_DCDC_CTRL3:
+> +    case MENELAUS_DCDC_CTRL2:
+>      case MENELAUS_DCDC_CTRL1:
+> -        return s->dcdc[reg];
+> -
+> -    case MENELAUS_LDO_CTRL8: reg ++;
+> -    case MENELAUS_LDO_CTRL7: reg ++;
+> -    case MENELAUS_LDO_CTRL6: reg ++;
+> -    case MENELAUS_LDO_CTRL5: reg ++;
+> -    case MENELAUS_LDO_CTRL4: reg ++;
+> -    case MENELAUS_LDO_CTRL3: reg ++;
+> -    case MENELAUS_LDO_CTRL2: reg ++;
+> +        return s->dcdc[addr - MENELAUS_VCORE_CTRL1];
+> +
+> +    case MENELAUS_LDO_CTRL8:
+> +    case MENELAUS_LDO_CTRL7:
+> +    case MENELAUS_LDO_CTRL6:
+> +    case MENELAUS_LDO_CTRL5:
+> +    case MENELAUS_LDO_CTRL4:
+> +    case MENELAUS_LDO_CTRL3:
+> +    case MENELAUS_LDO_CTRL2:
+>      case MENELAUS_LDO_CTRL1:
+> -        return s->ldo[reg];
+> +        return s->ldo[addr - MENELAUS_LDO_CTRL1];
+>  
+> -    case MENELAUS_SLEEP_CTRL2: reg ++;
+> +    case MENELAUS_SLEEP_CTRL2:
+>      case MENELAUS_SLEEP_CTRL1:
+> -        return s->sleep[reg];
+> +        return s->sleep[addr - MENELAUS_SLEEP_CTRL1];
+>  
+>      case MENELAUS_DEVICE_OFF:
+>          return 0;
+> @@ -395,10 +394,10 @@ static uint8_t menelaus_read(void *opaque, uint8_t addr)
+>      case MENELAUS_S2_PULL_DIR:
+>          return s->pull[3];
+>  
+> -    case MENELAUS_MCT_CTRL3: reg ++;
+> -    case MENELAUS_MCT_CTRL2: reg ++;
+> +    case MENELAUS_MCT_CTRL3:
+> +    case MENELAUS_MCT_CTRL2:
+>      case MENELAUS_MCT_CTRL1:
+> -        return s->mmc_ctrl[reg];
+> +        return s->mmc_ctrl[addr - MENELAUS_MCT_CTRL1];
+>      case MENELAUS_MCT_PIN_ST:
+>          /* TODO: return the real Card Detect */
+>          return 0;
+> @@ -418,7 +417,6 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
+>  {
+>      MenelausState *s = (MenelausState *) opaque;
+>      int line;
+> -    int reg = 0;
+>      struct tm tm;
+>  
+>      switch (addr) {
+> @@ -496,9 +494,9 @@ static void menelaus_write(void *opaque, uint8_t addr, uint8_t value)
+>          s->ldo[7] = value & 3;
+>          break;
+>  
+> -    case MENELAUS_SLEEP_CTRL2: reg ++;
+> +    case MENELAUS_SLEEP_CTRL2:
+>      case MENELAUS_SLEEP_CTRL1:
+> -        s->sleep[reg] = value;
+> +        s->sleep[addr - MENELAUS_SLEEP_CTRL1] = value;
+>          break;
+>  
+>      case MENELAUS_DEVICE_OFF:
+> 
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-We last considered this back in 2018, but in the end both QEMU
-and the kernel gave the port a stay of execution; the maintenance
-situation doesn't seem to have improved, and now the kernel has
-dropped support and especially given the lack of a toolchain
-I think it's time to start the deprecation process here.
----
- docs/system/deprecated.rst | 8 ++++++++
- 1 file changed, 8 insertions(+)
+pplied to my trivial-patches branch.
 
-diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
-index 851dbdeb8ab..4c52098c707 100644
---- a/docs/system/deprecated.rst
-+++ b/docs/system/deprecated.rst
-@@ -416,6 +416,14 @@ The above, converted to the current supported format::
- linux-user mode CPUs
- --------------------
- 
-+``unicore32`` CPUs (since 5.2.0)
-+''''''''''''''''''''''''''''''''
-+
-+The ``unicore32`` guest CPU support is deprecated and will be removed in
-+a future version of QEMU. Support for this CPU was removed from the
-+upstream Linux kernel, and there is no available upstream toolchain
-+to build binaries for it.
-+
- ``tilegx`` CPUs (since 5.1.0)
- '''''''''''''''''''''''''''''
- 
--- 
-2.20.1
-
+Thanks,
+Laurent

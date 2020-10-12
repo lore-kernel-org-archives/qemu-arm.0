@@ -1,102 +1,103 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1152003lfa;
-        Mon, 12 Oct 2020 08:40:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzaErT7UuXqORpqV3w2w3GnU8kWwLMUnX76yqn0SrRMbJAm+KlhllAjX5j2hEua5EeKSeUb
-X-Received: by 2002:a25:2c0a:: with SMTP id s10mr11230487ybs.217.1602517218065;
-        Mon, 12 Oct 2020 08:40:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602517218; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1152121lfa;
+        Mon, 12 Oct 2020 08:40:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyuUrbSkAIJICDpU7s1RbcERh5fCwfJvNQ6EZffCTZU03V7GGbpGJ8Je+rBkAOpS/PKpIbe
+X-Received: by 2002:a25:d342:: with SMTP id e63mr10608111ybf.167.1602517226947;
+        Mon, 12 Oct 2020 08:40:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602517226; cv=none;
         d=google.com; s=arc-20160816;
-        b=UoyNVbZhM7O1pmgcR0KLbMYL4V/m5KNU1tj4hHgcb1fH2qYm8NZMcDXl4+M87zW9L7
-         7xcCO3yB9fJZXYtS9MzCGU2OQ9uCnDw0hY8pYSWcg2RvyyzhqDB/eV1HWm85LaqAODzK
-         VlzeyMiK618DpytlXinqHTcqGqE8GrYSy45Yo3S55Ih4pSDOr5I22h0XpBlPi2DRSn12
-         yVDYVfB/mn99QMjyl3csqbDhWJQw1MFteY/T0hc9AZu9EyWCHeXL8TLLX3F4bMD/0789
-         1cHC9grOBtuhST3Z77IcYr/Z8lv7ciX9PepjXPi2UksWq6Ru9a/lgQjqTADl+namalhN
-         pV2g==
+        b=CyhMnf+vO6N6vAG1zGE8T2K5WlNcQmbVdiEGA9Zc2s5VRURU8NS9QoAMLjC97PGzoR
+         Lf+Or7OVrKeUMcJq3G76NkYU90zUhiGRadNgXj8WXMfzb2O3PRjVyW+JdKXbT7lrwww5
+         7yILK07khBuUIjgLWaBzBuH6I8hugxGB1Jbo3AvA5TaCAT9X7Qza20DJ9qgmxZK44cgJ
+         JTKaesgkB307eYTMq/Yqud8/p3GDPe7SRCxe3TzQXx/LMRoMD1oMmOru499Mh0BtBmlH
+         crR8Gglzjx+hHafu4DPaQ6Z6LO8SJX+3qkW7rCXSm9aiPh3jj9HkFJ+OLZh0ihxIjG/X
+         zUZQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=6I9SMKjr6PmWwGXVMVs+FgMWnXt/xrUHEYtD8jIqzQE=;
-        b=L89mMVLu2WUyfDgx4iHrC1wm+f79rlZkHxez8n0OAnawVe5HRk018wU/YrmAecmbzf
-         mG+x+OUpte3rksh/0J3ugasvjmyF1FnPyQTk+Hlw6/0f2ok1SUAxHwaGogHtcaHqdWJr
-         HsjOOmyzLnsiRcNFYwd2h1ALJSioCosbb4FlKmXU8gPTHP00/G6WOdbNqHS62TZZt+Y8
-         OtmqFApJq0SS2ZfkUox8hKuqUbAnBjolFQUJeNIy1OYvqfLwjoxV0gOCBNNf9CMPJ1+3
-         MlVsh86GLvow50B1kdCSgI2+/qNLAQPf2jRY2QyyR1kG65Lnzpp+cPsi3SbiT4GLpeNS
-         5OzQ==
+        bh=9dCI9vVIHjGOIU15u/YnihvSC4K6HLaW4rgzCu/bPQI=;
+        b=ul0iDUNxicBOQVk4xCGuszIvuSyGIQ/+XAoBPuYeVwuEP7OiEIRY3BeiaAeJ7tQFg9
+         8/hdRYgSY8f6Y2y6QVxx16LsbMKH2hBtXzWzk/FXhlNCYaCAGASGdgQ/TAw15z99JuW6
+         NZ44Cw4bDj9WSI9mvNieSvazQXMhno5UUn2wdae2O1bS4+AYNWoUsRGk5Tx29dnABUIA
+         DAp0+6/cPhxHK1kPtLjybExiNx1IfhA8UTgW09gdHQiJfpgO3lt7RjW2WFJfS9lP93pr
+         K0LQuLMqzRKi5GysWXagZL8N+PjtidVjCBSyAt9jWoErySQx+yj1EESwsu30yeASV+9e
+         EEFQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tPyAQW57;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UkSP7IvR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s201si1468206ybc.125.2020.10.12.08.40.17
+        by mx.google.com with ESMTPS id e7si15125872ybq.222.2020.10.12.08.40.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 08:40:18 -0700 (PDT)
+        Mon, 12 Oct 2020 08:40:26 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=tPyAQW57;
+       dkim=pass header.i=@linaro.org header.s=google header.b=UkSP7IvR;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47652 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:47804 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRzvt-0005ua-DK
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:40:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56578)
+	id 1kRzw2-0005yA-AN
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 11:40:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56596)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqC-0006ed-7D
+ id 1kRzqC-0006fo-JQ
  for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:24 -0400
-Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:34526)
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d]:36986)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kRzqA-0007Go-DG
- for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:23 -0400
-Received: by mail-wr1-x443.google.com with SMTP id i1so13561613wro.1
- for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:21 -0700 (PDT)
+ id 1kRzq9-0007GQ-E3
+ for qemu-arm@nongnu.org; Mon, 12 Oct 2020 11:34:24 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id h7so19712745wre.4
+ for <qemu-arm@nongnu.org>; Mon, 12 Oct 2020 08:34:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=6I9SMKjr6PmWwGXVMVs+FgMWnXt/xrUHEYtD8jIqzQE=;
- b=tPyAQW57KsDRbOr93Mg6m8QsfI33jkUUv749yVbo4mOsNQZk2Qznr1ltL3peF3Ntl5
- Xhmr/+0qAovF/bCSxj8O3xW4+93hCaIr9EMucxd5Qm5zyqsTPXO0tyq19cR/nZE4d88/
- YL7yxQbg2lh3GDU6RTzu4dTQGgX7Y3kYYi878YTrO0DzRDcUjm6VAsdkyth1nX7hgqzp
- hWooGB4VPq3Mi7/+P4ljKrFxWL4PiNDk2ls11WBXd9s7C69b2XaHnAiAApUXV3kpj4DK
- CYnqfqCwgfrQ50USmaIYB+mAOEf1KpV2xMtHznTlwJ8u7eXGfsEJVUfFAi8x9PyCQo2m
- 000A==
+ bh=9dCI9vVIHjGOIU15u/YnihvSC4K6HLaW4rgzCu/bPQI=;
+ b=UkSP7IvR3ZHZ0vB/gPLvDD39ym3SElSAtD6BQpwZggwMPzlDY/C4xvDMk82T8mJtCh
+ w4ERaZvRFN+WqbGzhac5PynNnAb88fpGeKelbrfi5blZCuvazGR3yTPuddzujXtUjo9j
+ KZoQ6qHR/D8Uv2cfFLyHH6wewMAz7IGejJDoDiK4BerSnK9waZ+50yVoVsa0C5u6wgv2
+ 1I0JtCeOxMPXGX3i6O/RcaPLizTNK7Nv5ZmzVDB+nbDredWeSlBVTBtf96EE/D+Ae0UE
+ WtfzhYIWdqbg5oNegwG6E2uEKmKH4k9Vc4TlXD3/SRtb83/DHYVoD6uXTGlyh7rYxFmK
+ aXtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
  :references:mime-version:content-transfer-encoding;
- bh=6I9SMKjr6PmWwGXVMVs+FgMWnXt/xrUHEYtD8jIqzQE=;
- b=LG8mReXjOA0Nr+GdLOHrIsSyjcf2yUk5hBrm6wgiLm1SzMakISAj8Sm/Hr2tSaMMqf
- dnWkHWeGhT9ZQmagziOUc2IWCI46t619o/tp7nLypzh8cQCwd08PFcD9KkAcS0bS/UKD
- qSsoIqlxuEIaqr1OOgmC8cShQhoBg2hy7uhuBQlPn83Wr+VGKF0BN778Vw3DzAWhHCpB
- bVlMbtawHHBHAWTFYA7/0OiqU53zW0kSAbybvSNrg24DEnWc5a29jZKNHecmfnomE1mX
- PlF3hjzHlPXzMAtnqC45BQpqgVhu9bUlv9ZVXvktIKs81GAAZe1Rm9laBwbRvK+Eyh51
- Y1cg==
-X-Gm-Message-State: AOAM5324F1rU8kRSyiusnQmARGU//bFoMczPZCdBn/6WKi3c0LCvPDjA
- Zj3Kw0zb/2NzEdz5KzbmSLSRiZMYzLEHqm4F
-X-Received: by 2002:adf:f043:: with SMTP id t3mr18402943wro.234.1602516860825; 
- Mon, 12 Oct 2020 08:34:20 -0700 (PDT)
+ bh=9dCI9vVIHjGOIU15u/YnihvSC4K6HLaW4rgzCu/bPQI=;
+ b=mqPkaud+0hNE27dsP0f10NVmFNpbapVk0ngsXPLsigxD722PdD0Iwe6muWEEq+N+L3
+ Ttk3Juig4wV5qxkKQootJbm0qC81pJLSBI3lZW+mpf6ByfSB90Ab8NeYyLH8Kui4TNt5
+ 6Hs3N+VM3LXUL0/vMcKmc9/j22SqML/ZhV8atm4ei/WfGbAMKhwbLjvNE7Kpyc3GYst/
+ LoEy9C33B2Wm0DdxQrD9hzaVeAZATo69Vf6ga4pNw+AscnNIFp79RkPBJ8gwJ+GE4enz
+ HNiW2bRXMs0MYia33QjkRc1QA+JvRWq0xQIdBLFtfW1liZN+TpJMiWjZz8IMgdoXa91b
+ Acyg==
+X-Gm-Message-State: AOAM530bLD0XeICuh57JDmPdDbrZ1hpYLKV3M73vMpfIKAdycE2o2RBm
+ T3/s4iTx06xKxwGN8Y5/b5dEwmpC4voodOdQ
+X-Received: by 2002:adf:e741:: with SMTP id c1mr19303102wrn.16.1602516859770; 
+ Mon, 12 Oct 2020 08:34:19 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.19
+ by smtp.gmail.com with ESMTPSA id y10sm19675284wrq.73.2020.10.12.08.34.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 08:34:20 -0700 (PDT)
+ Mon, 12 Oct 2020 08:34:19 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH for-5.1] docs/system/arm/virt: Document mte machine option
-Date: Mon, 12 Oct 2020 16:33:32 +0100
-Message-Id: <20201012153408.9747-10-peter.maydell@linaro.org>
+Subject: [PATCH 01/10] decodetree: Fix codegen for non-overlapping group
+ inside overlapping group
+Date: Mon, 12 Oct 2020 16:33:31 +0100
+Message-Id: <20201012153408.9747-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
 In-Reply-To: <20201012153408.9747-1-peter.maydell@linaro.org>
 References: <20201012153408.9747-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::443;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x443.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -121,32 +122,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Y+Fj6/HGpfJc
+X-TUID: /zafoZ5iHBJH
 
-Commit 6a0b7505f1fd6769c which added documentation of the virt board
-crossed in the post with commit 6f4e1405b91da0d0 which added a new
-'mte' machine option. Update the docs to include the new option.
+For nested groups like:
 
+  {
+    [
+      pattern 1
+      pattern 2
+    ]
+    pattern 3
+  }
+
+the intended behaviour is that patterns 1 and 2 must not
+overlap with each other; if the insn matches neither then
+we fall through to pattern 3 as the next thing in the
+outer overlapping group.
+
+Currently we generate incorrect code for this situation,
+because in the code path for a failed match inside the
+inner non-overlapping group we generate a "return" statement,
+which causes decode to stop entirely rather than continuing
+to the next thing in the outer group.
+
+Generate a "break" instead, so that decode flow behaves
+as required for this nested group case.
+
+Suggested-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- docs/system/arm/virt.rst | 4 ++++
- 1 file changed, 4 insertions(+)
+ scripts/decodetree.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 6621ab7205d..32dc5eb22ee 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -79,6 +79,10 @@ virtualization
-   Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
-   Arm Virtualization Extensions. The default is ``off``.
+diff --git a/scripts/decodetree.py b/scripts/decodetree.py
+index 60fd3b5e5f6..c1bf3cfa85f 100644
+--- a/scripts/decodetree.py
++++ b/scripts/decodetree.py
+@@ -548,7 +548,7 @@ class Tree:
+             output(ind, '    /* ',
+                    str_match_bits(innerbits, innermask), ' */\n')
+             s.output_code(i + 4, extracted, innerbits, innermask)
+-            output(ind, '    return false;\n')
++            output(ind, '    break;\n')
+         output(ind, '}\n')
+ # end Tree
  
-+mte
-+  Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
-+  Arm Memory Tagging Extensions. The default is ``off``.
-+
- highmem
-   Set ``on``/``off`` to enable/disable placing devices and RAM in physical
-   address space above 32 bits. The default is ``on`` for machine types
 -- 
 2.20.1
 

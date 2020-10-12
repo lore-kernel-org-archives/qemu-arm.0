@@ -1,166 +1,185 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1018926lfa;
-        Mon, 12 Oct 2020 05:54:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwQ/WkZDfWZ8t9VHGBZevc4EKGmpv5PSvlINHZXyG5KxhbqRAQ/FaYWv4HycEUQlEwmq7ZK
-X-Received: by 2002:a25:360d:: with SMTP id d13mr31005930yba.362.1602507281621;
-        Mon, 12 Oct 2020 05:54:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602507281; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1019207lfa;
+        Mon, 12 Oct 2020 05:55:07 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/srZib0KWx6yIefNo9sgpm22Ky1H+F2y6ofW0nkOms1riEUz01YYgoBglvLbSV6cV2k3O
+X-Received: by 2002:a25:bd0c:: with SMTP id f12mr22323923ybk.392.1602507307068;
+        Mon, 12 Oct 2020 05:55:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602507307; cv=none;
         d=google.com; s=arc-20160816;
-        b=CUNLiSWPrH7SGhofMSc9E+PIjI80Uu2zMvsACRsFjglBiy1OjXzzFcsrlcZ7mVoWuj
-         6zsEZclRoa3pdDjpirASyegkOWYkrA63BusekyZVcj7wM4OZQrFFdPNXJ22ZxkOGI0R6
-         oMrGPXBGTcV1Ivrl7UE5exWLJRvXNX6lQQBdPoDAgGur7ZGLssL2rD3UJiOOHCBqujsO
-         j4vLUrrwbcYbZyTZksGpAvSqjNTFFvm9y4kCZfTPYnKg7IQ4e2yGhePGiIQr4JBwkAge
-         HavSIVZHu6S4JoaJne299VpBvIRvIjMIFZR6JzKShTCf8rkE1qvwOk544EmbXXSth8aa
-         fuJg==
+        b=OIU9lXMvelpFB7a+dvc1UNj9A30KBfHfG5JChR8UVA9wk1Bee0MBProLI+qo4WhCys
+         GxECkL34k93auMNwu3gKXNbXZh67CDXzc+60dMa4Fo/QBd6bufIQVFzJ2NHiflvkLK7x
+         4e3Mb5lFMI70IojD43XdhXrg4KEbxPJGSKQkPLSJ7g7L29ZGp2FsKNTuI+W84V8orvsq
+         3ol0j8/2e2nPDsDF2QK2Q3kG/GhEXy8IBzVhVuA7Dm/S3fknQfCkyFl0tNRRpOHB7xpc
+         gqqOY3Y3DDxFAL/zFmpNL9xy3Qj8SKBlnlR+ni5aSji+U56QrJCEnmgjZ6kpczC1hpck
+         +O+g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=iFs6emz6fGf+xQlicgZNk8cNGLeirUVE2ipQ9bTFfcw=;
-        b=YLNGoG1rDqb0v8rtw2rcr762t+8YHxjdByuVph6rvsZgCkgLjHUBZJhYpGNilaVGgU
-         K8P5sxR0yKTjG6M2h3d3h7pNhOYGXYRRIztb7NQjuLYHcyfdo3qj/0WsxpTObQ0ayw5H
-         jUobkF/oa+SadTRAn0icHaZDaKd/ohXlp/2PhP6TafLyCX+4Qqn9TDOj30qaYYB3I39V
-         zLKerf8PANIQc86srV794JFEphoTUMjC4+pJu/E+SPvane6NiiHT1JvxNMJGj8Jgb4nZ
-         tRB51HN1IdlwJhATNgTAj7GXzF7T/6E9VQpXRPnHMqgBwxiRF++YJLQEe0L4kN0al2D5
-         R+6A==
+        h=sender:errors-to:cc:reply-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:thread-index
+         :content-language:content-transfer-encoding:mime-version:message-id
+         :date:subject:in-reply-to:references:to:from:dkim-signature;
+        bh=cGxZviZhW7O5jqtJ0bZv9cnvWltQUpe03KlUpuYC5Pk=;
+        b=W/4bct66UPZjHgKf6I+oOl5GNW51l1T2D8xv+6pF8w6/DzDKbW/eshWgttzfhlezSB
+         OGdR5H4AHquimMLjkwnU6r+VxtL8q+msFLwmqfG80NkWHQLfnEsdVnoTTk2pOknW7Nm5
+         Dzr4dpXrmfBPpQ8koN92Zh9jDlVg6by6HvvAP67mn7lqBAJpcNv5QWdeFBNrCA+Jiw9K
+         mdjiG0YedV76c+2IXl/5NZKmBGOODWR69qSwUQ62kVRGnZnb1NSbWbDZJmlgkkakKO8/
+         vO97EgpGJvnMY704qS5npUGhdoGVezdnfoyxQFn61DFTm1SLjlp+0emycdaFmvnpSN4P
+         VWqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UdBxpfLp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J6jW6p6h;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j66si14553941ybb.93.2020.10.12.05.54.41
+        by mx.google.com with ESMTPS id n3si5149236ybc.327.2020.10.12.05.55.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 05:54:41 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Oct 2020 05:55:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UdBxpfLp;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:49284 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=J6jW6p6h;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:50686 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kRxLc-0000G7-Tq
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:54:41 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34710)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kRxM2-0000qt-EF
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 08:55:06 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35442)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRxH8-0002BN-Jt; Mon, 12 Oct 2020 08:50:02 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:35264)
+ (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
+ id 1kRxJE-0004bf-GO; Mon, 12 Oct 2020 08:52:12 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a]:37391)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kRxH6-0000i5-Jl; Mon, 12 Oct 2020 08:50:02 -0400
-Received: by mail-wr1-x441.google.com with SMTP id n15so19063539wrq.2;
- Mon, 12 Oct 2020 05:49:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xadimgnik@gmail.com>)
+ id 1kRxJ8-000162-5D; Mon, 12 Oct 2020 08:52:12 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id e22so23033852ejr.4;
+ Mon, 12 Oct 2020 05:52:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=iFs6emz6fGf+xQlicgZNk8cNGLeirUVE2ipQ9bTFfcw=;
- b=UdBxpfLpqcO6gsLuw7AjHeCoUN8MkW98il5/42IOG8OPQpTPw8M4R/zwcv0ZMeIj4e
- UY6UpJj2+3Yaisp18iYaF8gNl15rjMiT4ZRxMP7W5DKJxebai7SMZsoSnGxKXFIWCbwb
- +KlAd73sf3jhMCXSiUnYDHjCJcOGBVvG2jM505n2EpC4UC1PSC7cqTmKFdIPDsjPU9tc
- Hg10BIV0sogdIgHsehM1krukocI28DV/tpUv48aFQfo3DoriMhcMThlebTGuvwYCJH8m
- 3TNQU+vjR+1+k2I9eanneHzOj5L67XqAmLq+f39pQkiHU66ttOlEqrwYYFqvXAb/gZOU
- rFOw==
+ h=from:reply-to:to:cc:references:in-reply-to:subject:date:message-id
+ :mime-version:content-transfer-encoding:content-language
+ :thread-index; bh=cGxZviZhW7O5jqtJ0bZv9cnvWltQUpe03KlUpuYC5Pk=;
+ b=J6jW6p6hzHWOhTn5sd21PaYyZX8b8qC4clssFgX3c8w+3Lr4ULTcCq+fH6ZnydnPTR
+ OoSjfTZrwz3B1f4IDFsUz73av/D7osQPM0ZIkmn96OrJq4fLJSYWE1VSsiXOZcSRqNLm
+ c2Vw6gT9JIYUAtGl59LtZabKjNZO15dQrFsZfharwkYrOtpb76ojXJWmaCpBdJPZbX/+
+ OVcaZVufm6GyvZAo/7aWEXuYcTxuKYo65DdzKK4erP5VJ4U5yJs7nAktT/qd0EG8d7fl
+ EVU+AJicMA75lA/1Plu8+tyuGNmK9kx9EOzlzjakE1oUus+88px2HgdvFRLVc5tcdX+j
+ 8kzA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
- :mime-version:content-transfer-encoding;
- bh=iFs6emz6fGf+xQlicgZNk8cNGLeirUVE2ipQ9bTFfcw=;
- b=HZaz0icJV+eJ8DN54P7eP30amZLruPwdR46o+/YMBROgHH89JcxaQyC8d3TbLMDFLI
- GJNI2wXZsRUum71LltU3IA3NBpC++w2BRs/9dADkczS1PNs6qeRoi8NnFwhAXtMOYjEc
- bOjlqjNeeBSEjm74v3n9LRPL5F7glxxdrjCPgY6lf7rSBwpeLD24jv03330xEEKwVVuc
- 7jFY/neMAIgGYn0OfWcBQV7UInmUW5TniKKDsgfdI2OQc5JhEsMA3hSE73e0lArTUjpK
- KJ3v3nG6iFNe6fRMhETAk8v21G2mu+Lv5JiALm2/iHF5ffqBZEVqQ9u1BlxGQyt8Vqfa
- omhA==
-X-Gm-Message-State: AOAM530Dz9z0KIff1JFLQgjDyoK9JWZhX6FbqZidSbm+UXx6MVjffY1B
- BTjVp7tD9LrjNle0TQS7Jm3lsV6Qh20=
-X-Received: by 2002:adf:a551:: with SMTP id j17mr30236535wrb.217.1602506997537; 
- Mon, 12 Oct 2020 05:49:57 -0700 (PDT)
-Received: from localhost.localdomain
- (106.red-83-59-162.dynamicip.rima-tde.net. [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id p21sm23516472wmc.28.2020.10.12.05.49.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2020 05:49:56 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v2 0/3] hw/ssi: Rename SSI 'slave' as 'peripheral'
-Date: Mon, 12 Oct 2020 14:49:52 +0200
-Message-Id: <20201012124955.3409127-1-f4bug@amsat.org>
-X-Mailer: git-send-email 2.26.2
+ h=x-gm-message-state:from:reply-to:to:cc:references:in-reply-to
+ :subject:date:message-id:mime-version:content-transfer-encoding
+ :content-language:thread-index;
+ bh=cGxZviZhW7O5jqtJ0bZv9cnvWltQUpe03KlUpuYC5Pk=;
+ b=AaK1FF4rkI86HQCO+BwRURQn3BsIEln3QnaJKnQpoosTJaV4XQLUEZji3hTmHaRhFJ
+ rN4yy6y5G68/MDRc1HobvogojAGppb+2skCLVxQE3GEL2gg4+KscKN8B4eHcTNgqjDH8
+ btImIFeoCV6fILc6LQAHTCeWxNOKylknFkAcHSK0zOqQeMDirEZ4qASbkugooa96CMJk
+ OiikfEi1ovfYr2Iak264L22J5sQ0a2ggm865CfivTuhWlzS4852TzSXpMB051f310TTc
+ bdOxVOEOvi/odyjnhyw7Io8JsnpyQsnIXnIeugChTNnF1+CmHokf/1ziQi2ksBJ6wrTE
+ DwBQ==
+X-Gm-Message-State: AOAM530ysP0AYkcsfM+bP9T8D4mzM+S0iT5MlNBvXJ9BktfCQbo9EI/a
+ mQx276ncEXOaE3oEneEHF+8=
+X-Received: by 2002:a17:906:39ce:: with SMTP id
+ i14mr29164990eje.170.1602507123287; 
+ Mon, 12 Oct 2020 05:52:03 -0700 (PDT)
+Received: from CBGR90WXYV0 (54-240-197-239.amazon.com. [54.240.197.239])
+ by smtp.gmail.com with ESMTPSA id me12sm10516645ejb.108.2020.10.12.05.52.01
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 12 Oct 2020 05:52:02 -0700 (PDT)
+From: Paul Durrant <xadimgnik@gmail.com>
+X-Google-Original-From: "Paul Durrant" <paul@xen.org>
+To: =?utf-8?Q?'Philippe_Mathieu-Daud=C3=A9'?= <philmd@redhat.com>,
+ <qemu-devel@nongnu.org>
+References: <20201012124506.3406909-1-philmd@redhat.com>
+ <20201012124506.3406909-5-philmd@redhat.com>
+In-Reply-To: <20201012124506.3406909-5-philmd@redhat.com>
+Subject: RE: [PATCH 4/5] hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'
+Date: Mon, 12 Oct 2020 13:52:00 +0100
+Message-ID: <001301d6a096$7b3a3880$71aea980$@xen.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain;
+	charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-Mailer: Microsoft Outlook 16.0
+Content-Language: en-gb
+Thread-Index: AQIn0Xs2eWz4EZNtdpBYSFizYKd7hAIdwBpFqOCb0bA=
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=xadimgnik@gmail.com; helo=mail-ej1-x62a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -14
-X-Spam_score: -1.5
-X-Spam_bar: -
-X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
- Max Reitz <mreitz@redhat.com>, qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Joel Stanley <joel@jms.id.au>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pz4y/Ln5VK5R
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: paul@xen.org
+Cc: 'Peter Maydell' <peter.maydell@linaro.org>,
+ "'Michael S. Tsirkin'" <mst@redhat.com>,
+ 'Mark Cave-Ayland' <mark.cave-ayland@ilande.co.uk>,
+ 'Jiaxun Yang' <jiaxun.yang@flygoat.com>, 'Huacai Chen' <chenhc@lemote.com>,
+ 'Stefano Stabellini' <sstabellini@kernel.org>,
+ 'Yoshinori Sato' <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
+ 'Helge Deller' <deller@gmx.de>,
+ 'Aleksandar Markovic' <aleksandar.qemu.devel@gmail.com>,
+ 'Marcel Apfelbaum' <marcel.apfelbaum@gmail.com>,
+ 'Anthony Perard' <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
+ 'David Gibson' <david@gibson.dropbear.id.au>,
+ 'Aleksandar Rikalo' <aleksandar.rikalo@syrmia.com>,
+ 'Eduardo Habkost' <ehabkost@redhat.com>, qemu-arm@nongnu.org,
+ =?utf-8?Q?'C=C3=A9dric_Le_Goater'?= <clg@kaod.org>,
+ 'Richard Henderson' <rth@twiddle.net>,
+ =?utf-8?Q?'Philippe_Mathieu-Daud=C3=A9'?= <f4bug@amsat.org>,
+ qemu-ppc@nongnu.org, 'Paolo Bonzini' <pbonzini@redhat.com>,
+ 'Aurelien Jarno' <aurelien@aurel32.net>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: wFPkyQeLDgn7
 
-Since v1:=0D
-- Fixed patch #1 subject (Kevin)=0D
-=0D
-In order to use inclusive terminology, rename SSI 'slave' as=0D
-'peripheral', following the resolution Paolo pointed in [*]:=0D
-https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names/=0D
-=0D
-Candidate to be merged via the ARM or Trivial trees.=0D
-=0D
-[*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg739108.html=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (3):=0D
-  hw/ssi/aspeed_smc: Rename 'max_slaves' variable as 'max_peripherals'=0D
-  hw/ssi: Update coding style to make checkpatch.pl happy=0D
-  hw/ssi: Rename SSI 'slave' as 'peripheral'=0D
-=0D
- include/hw/misc/max111x.h   |  2 +-=0D
- include/hw/ssi/aspeed_smc.h |  2 +-=0D
- include/hw/ssi/ssi.h        | 56 +++++++++++++++++++------------------=0D
- hw/arm/spitz.c              | 32 ++++++++++-----------=0D
- hw/arm/stellaris.c          |  4 +--=0D
- hw/arm/tosa.c               | 12 ++++----=0D
- hw/arm/z2.c                 | 14 +++++-----=0D
- hw/block/m25p80.c           | 14 +++++-----=0D
- hw/display/ads7846.c        | 12 ++++----=0D
- hw/display/ssd0323.c        | 12 ++++----=0D
- hw/misc/max111x.c           | 18 ++++++------=0D
- hw/sd/ssi-sd.c              | 12 ++++----=0D
- hw/ssi/aspeed_smc.c         | 53 ++++++++++++++++++-----------------=0D
- hw/ssi/pl022.c              |  2 +-=0D
- hw/ssi/ssi.c                | 48 +++++++++++++++----------------=0D
- hw/ssi/xilinx_spips.c       |  7 +++--=0D
- 16 files changed, 152 insertions(+), 148 deletions(-)=0D
-=0D
--- =0D
-2.26.2=0D
-=0D
+> -----Original Message-----
+> From: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
+> Sent: 12 October 2020 13:45
+> To: qemu-devel@nongnu.org
+> Cc: Peter Maydell <peter.maydell@linaro.org>; qemu-ppc@nongnu.org; =
+qemu-trivial@nongnu.org; Paul
+> Durrant <paul@xen.org>; Aurelien Jarno <aurelien@aurel32.net>; =
+qemu-arm@nongnu.org; Philippe Mathieu-
+> Daud=C3=A9 <f4bug@amsat.org>; Michael S. Tsirkin <mst@redhat.com>; =
+Eduardo Habkost <ehabkost@redhat.com>;
+> Jiaxun Yang <jiaxun.yang@flygoat.com>; Yoshinori Sato =
+<ysato@users.sourceforge.jp>; C=C3=A9dric Le Goater
+> <clg@kaod.org>; David Gibson <david@gibson.dropbear.id.au>; Stefano =
+Stabellini
+> <sstabellini@kernel.org>; Helge Deller <deller@gmx.de>; Anthony Perard =
+<anthony.perard@citrix.com>;
+> Richard Henderson <rth@twiddle.net>; Aleksandar Markovic =
+<aleksandar.qemu.devel@gmail.com>; xen-
+> devel@lists.xenproject.org; Aleksandar Rikalo =
+<aleksandar.rikalo@syrmia.com>; Marcel Apfelbaum
+> <marcel.apfelbaum@gmail.com>; Mark Cave-Ayland =
+<mark.cave-ayland@ilande.co.uk>; Paolo Bonzini
+> <pbonzini@redhat.com>; Huacai Chen <chenhc@lemote.com>
+> Subject: [PATCH 4/5] hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'
+>=20
+> From: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+>=20
+> We already have a generic PCI_SLOT() macro in "hw/pci/pci.h"
+> to extract the PCI slot identifier, use it.
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+
+xen-hvm change...
+
+Acked-by: Paul Durrant <paul@xen.org>
+

@@ -1,91 +1,91 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2393417lfa;
-        Tue, 13 Oct 2020 16:09:28 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxV8Kv9VPdaPKG8LZHY3WQ1JWCBtFqNpVDWpKWwggjNfdEgMpYUJzKjWb86yXyyaOvYarG4
-X-Received: by 2002:a25:b68c:: with SMTP id s12mr2946296ybj.502.1602630568309;
-        Tue, 13 Oct 2020 16:09:28 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602630568; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2393443lfa;
+        Tue, 13 Oct 2020 16:09:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyXWnDBpCUjVdamwTmufODGxTF9uscnIieJT92BI6ytCMVnKgQloh+f3GMY5CNOpV4rBNNK
+X-Received: by 2002:a25:5985:: with SMTP id n127mr3300498ybb.53.1602630572293;
+        Tue, 13 Oct 2020 16:09:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602630572; cv=none;
         d=google.com; s=arc-20160816;
-        b=Fe9hVdVK5DQ7ikhbVzk8+tMHSh+EWwMK107ctIVUEqkWActh8txH1uE6dolAbIYXMv
-         TDkhKWRrtG1S5sINisXzJ6EkM9UnhZlJSPGG1HyYdTZ3ZztBruSolJ1qvz/tCrsCOg+T
-         R3LFErUUK4gn9f707Vof63A4rIF0caHqYA2mQrUc3ZTGo40ql72GYKz7IkOoaFRavjQD
-         mX97dmgRlL9Z5bZw7p/iDgd5RxOeyp5KrGC38sc1adJKfoM1ukuy8TPvd8L6N/VOi2xd
-         g/e7Q3JDZYPqTj6QLUHQY03ZyOw9ixdpSgXB92GT6gc+qrxN3dknaMoBujlaH+qOuWiW
-         4QEA==
+        b=o4SfyB7D1zvaA3x4JzeZKXKViVuXSsCS786MMwRKJGTNvWsR/k8dmkD9rYU0KgQZFS
+         EPUue68wEfiFV3swHZ8RjHL+4Mn74+chwRKNjsbplWfnZz45tzHV8WVI3NPb+TBH9fhY
+         Y7di02LsjWDToQDfQ04vaP/029/rntdQbHQ1LhFGjsWELtjZ/uW91iozlnVk8Kwjj7TJ
+         QHn+PoXIbVU+9VGRbrlrD9Vu21Qr8y0/S0o/PSinS+EtXcv+JzFdIsJ8M0O9odtkrwHb
+         +lmwunY+k+g0vMSpDL5eba4RMuAdt08F1M0kx/MYNunIQoGwZPz+HXu5L+dn5lh98Ffg
+         coww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=nFHqLdQ1LZr/q2BKzU1o9GdIbvc7LjYhDm97t9aU/Ro=;
-        b=ArNiBXtsbXECQMExHz5KtiH4n1c/aH0M5CH9x0hf2kTLgcf5mcW58FRKBADRVkw4KY
-         wWk46FYzVTvG3J4IgwklfwoD3Q/9uDtPjgoO1M9Wq+2k/l4bVpiS697HAjUykeL3vFt6
-         dM88A+CDrBGUNjhsXe9TvhjIL+h0uVc3kl5+TE0ye7/NMpdoU+WUcggK08rjSStoqJ4A
-         0CGR22GAnDREMOK1a9m+TRcnuiLsUjKncShdaFzS0p0byZqS9zgWLv21dK5lMfjGK6h7
-         Gxc/2JcnvxB1PExgZbDwQsZftsAhWZ3oDbITvXJuP4DVAlcmuwYvQm5/GOikPMBKapEj
-         TfVA==
+        bh=QTbX0B1zV000QcV8Vb8x3NBiMAjzCCHPhHUOANP/BZE=;
+        b=lgp/Ff38ynPI38pnNb2MLnhRzK66WAhOy2n4XosrSaLvvLnSzAOLRl42j6ni86zdOY
+         KC4r+qfvL903VEoq6Qm/NsvCuSCi6gZZGu85N80n1WLM+w2xZrveQqQz6N7O/jt+WJqy
+         KJJtPh1RKix9vm//fiUd9fxE9DOQDffBudXyhcIttde183lXgF1KpCrNut0XJB6LAdMq
+         cxahIoxCMLYcKEDGzgKWpgclTITc2HINQ0Vxhno0mH5tVrjg4z13m7IpJI/K68r5Qs0B
+         e7ddhZeur91v95OikEgXzrqGJHrRXAbX1/wrXQNHfjrpd8O8mArvDjPM+tYgAkY2HhIu
+         fDqw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TLGzn0Qm;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fueCo5ij;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r2si42334ybg.489.2020.10.13.16.09.28
+        by mx.google.com with ESMTPS id w194si1259083ybe.343.2020.10.13.16.09.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 13 Oct 2020 16:09:28 -0700 (PDT)
+        Tue, 13 Oct 2020 16:09:32 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TLGzn0Qm;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=fueCo5ij;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:44544 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44676 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kSTQ7-0002va-M7
-	for alex.bennee@linaro.org; Tue, 13 Oct 2020 19:09:27 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:37986)
+	id 1kSTQB-0002yu-Lj
+	for alex.bennee@linaro.org; Tue, 13 Oct 2020 19:09:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37874)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kSTMf-0006sf-W9
- for qemu-arm@nongnu.org; Tue, 13 Oct 2020 19:05:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:28739)
+ id 1kSTMW-0006ZH-1n
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2020 19:05:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:38938)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kSTMe-0003jp-7r
- for qemu-arm@nongnu.org; Tue, 13 Oct 2020 19:05:53 -0400
+ id 1kSTMQ-0003cQ-04
+ for qemu-arm@nongnu.org; Tue, 13 Oct 2020 19:05:41 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602630351;
+ s=mimecast20190719; t=1602630334;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nFHqLdQ1LZr/q2BKzU1o9GdIbvc7LjYhDm97t9aU/Ro=;
- b=TLGzn0Qm545KQRWmEExCeoWpojVdxSd9sNB7lnbIljACjXyuHPAjX1sdnH7EQScXHIg5Y4
- TcNWeosZ3LftB7yibfAy7JTlSDWLU0Fy1qm6czGPJFuj2O1K+OnteAlSeHiFCi2HuSDBl8
- wX+dYkpBOZcvMyIAEdjqrscjqrSiKkA=
+ bh=QTbX0B1zV000QcV8Vb8x3NBiMAjzCCHPhHUOANP/BZE=;
+ b=fueCo5ijqTTgrhlCJagVdUDLAnRwUYoPHsaSdDkwP62eXkMVXxHqkGj3r5JFcIcJ5W9NG1
+ +KLtgi4eID9zFnJEkm7SNtTeG31lfG9mFDJw7IufotOjCJzo1Ptf7+n2Hn7PG3za0ctmSY
+ mPJtN2g7HoES8raBF5OKE9TTfY5ynnE=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-263-nDWHKgk1NNGLyyIPI98Yhw-1; Tue, 13 Oct 2020 19:05:49 -0400
-X-MC-Unique: nDWHKgk1NNGLyyIPI98Yhw-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-15-q1vk8DkEMYWJraXRdFxkiA-1; Tue, 13 Oct 2020 19:05:30 -0400
+X-MC-Unique: q1vk8DkEMYWJraXRdFxkiA-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 83A531074659;
- Tue, 13 Oct 2020 23:05:47 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1F9EF1074657;
+ Tue, 13 Oct 2020 23:05:28 +0000 (UTC)
 Received: from localhost (ovpn-66-44.rdu2.redhat.com [10.10.66.44])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 43F5E19C71;
- Tue, 13 Oct 2020 23:05:40 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id AFD797666A;
+ Tue, 13 Oct 2020 23:05:20 +0000 (UTC)
 From: Eduardo Habkost <ehabkost@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 6/7] i386: Don't use default_cpu_version inside
- x86_cpu_definition_entry()
-Date: Tue, 13 Oct 2020 19:04:56 -0400
-Message-Id: <20201013230457.150630-7-ehabkost@redhat.com>
+Subject: [PATCH v2 3/7] i386: Replace x86_cpu_class_get_alias_of() with
+ x86_cpu_model_resolve_alias()
+Date: Tue, 13 Oct 2020 19:04:53 -0400
+Message-Id: <20201013230457.150630-4-ehabkost@redhat.com>
 In-Reply-To: <20201013230457.150630-1-ehabkost@redhat.com>
 References: <20201013230457.150630-1-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -102,7 +102,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -136,76 +136,74 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: arCgoMTQDXIC
+X-TUID: e6c3PtdRvQPk
 
-We will change query-cpu-definitions to have a new `machine`
-parameter.  Move the code that reads default_cpu_version to
-qmp_query_cpu_definitions() to make that easier to implement.
-
-This patch shouldn't introduce any behavior change.  Results of
-query-cpu-definition will be exactly the same.
+New function is very similar to the old function, but it just
+takes a X86CPUModel as argument, and its name makes its purpose
+clearer.
 
 Signed-off-by: Eduardo Habkost <ehabkost@redhat.com>
 ---
- target/i386/cpu.c | 23 +++++++++++++++--------
- 1 file changed, 15 insertions(+), 8 deletions(-)
+ target/i386/cpu.c | 33 +++++++++++++++++----------------
+ 1 file changed, 17 insertions(+), 16 deletions(-)
 
 diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index bf4b4a4812..0807d12ffa 100644
+index 43e633ddd3..2c8dd3fa32 100644
 --- a/target/i386/cpu.c
 +++ b/target/i386/cpu.c
-@@ -4990,11 +4990,16 @@ void x86_cpu_list(void)
+@@ -4170,6 +4170,21 @@ static X86CPUVersion x86_cpu_model_resolve_version(const X86CPUModel *model)
+     return v;
  }
  
- #ifndef CONFIG_USER_ONLY
-+typedef struct X86CPUDefinitionArgs {
-+    CpuDefinitionInfoList *cpu_list;
-+    X86CPUVersion default_version;
-+} X86CPUDefinitionArgs;
++/* Resolve CPU model alias to actual CPU model name */
++static char *x86_cpu_model_resolve_alias(const X86CPUModel *model)
++{
++    X86CPUVersion version;
 +
- static void x86_cpu_definition_entry(gpointer data, gpointer user_data)
++    if (!model->is_alias) {
++        return NULL;
++    }
++    version = x86_cpu_model_resolve_version(model);
++    if (version <= 0) {
++        return NULL;
++    }
++    return x86_cpu_versioned_model_name(model->cpudef, version);
++}
++
+ void x86_cpu_change_kvm_default(const char *prop, const char *value)
+ {
+     PropValue *pv;
+@@ -4913,20 +4928,6 @@ static char *x86_cpu_class_get_model_id(X86CPUClass *xc)
+     return r;
+ }
+ 
+-static char *x86_cpu_class_get_alias_of(X86CPUClass *cc)
+-{
+-    X86CPUVersion version;
+-
+-    if (!cc->model || !cc->model->is_alias) {
+-        return NULL;
+-    }
+-    version = x86_cpu_model_resolve_version(cc->model);
+-    if (version <= 0) {
+-        return NULL;
+-    }
+-    return x86_cpu_versioned_model_name(cc->model->cpudef, version);
+-}
+-
+ static void x86_cpu_list_entry(gpointer data, gpointer user_data)
  {
      ObjectClass *oc = data;
-     X86CPUClass *cc = X86_CPU_CLASS(oc);
--    CpuDefinitionInfoList **cpu_list = user_data;
-+    X86CPUDefinitionArgs *args = user_data;
-     CpuDefinitionInfoList *entry;
-     CpuDefinitionInfo *info;
- 
-@@ -5010,25 +5015,27 @@ static void x86_cpu_definition_entry(gpointer data, gpointer user_data)
+@@ -5002,8 +5003,8 @@ static void x86_cpu_definition_entry(gpointer data, gpointer user_data)
       * Old machine types won't report aliases, so that alias translation
       * doesn't break compatibility with previous QEMU versions.
       */
--    if (cc->model && default_cpu_version != CPU_VERSION_LEGACY) {
-+    if (cc->model && args->default_version != CPU_VERSION_LEGACY) {
-         info->alias_of = x86_cpu_model_resolve_alias(cc->model,
--                                                     default_cpu_version);
-+                                                     args->default_version);
+-    if (default_cpu_version != CPU_VERSION_LEGACY) {
+-        info->alias_of = x86_cpu_class_get_alias_of(cc);
++    if (cc->model && default_cpu_version != CPU_VERSION_LEGACY) {
++        info->alias_of = x86_cpu_model_resolve_alias(cc->model);
          info->has_alias_of = !!info->alias_of;
      }
- 
-     entry = g_malloc0(sizeof(*entry));
-     entry->value = info;
--    entry->next = *cpu_list;
--    *cpu_list = entry;
-+    entry->next = args->cpu_list;
-+    args->cpu_list = entry;
- }
- 
- CpuDefinitionInfoList *qmp_query_cpu_definitions(Error **errp)
- {
--    CpuDefinitionInfoList *cpu_list = NULL;
-+    X86CPUDefinitionArgs args = { .cpu_list = NULL };
-     GSList *list = get_sorted_cpu_model_list();
--    g_slist_foreach(list, x86_cpu_definition_entry, &cpu_list);
-+
-+    args.default_version = default_cpu_version;
-+    g_slist_foreach(list, x86_cpu_definition_entry, &args);
-     g_slist_free(list);
--    return cpu_list;
-+    return args.cpu_list;
- }
- #endif
  
 -- 
 2.28.0

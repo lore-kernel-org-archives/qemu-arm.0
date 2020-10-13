@@ -1,79 +1,79 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1492126lfa;
-        Mon, 12 Oct 2020 17:45:43 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwyZObKcjyoUGE/t95993eGT99eu7Jh7oaHzlBpIA/dPuZgbKKic2RR79cnB8vgWHFAELXE
-X-Received: by 2002:a25:23ca:: with SMTP id j193mr14740064ybj.520.1602549943450;
-        Mon, 12 Oct 2020 17:45:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602549943; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1493289lfa;
+        Mon, 12 Oct 2020 17:48:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJztFqU8j5QfgKrYv8MNpCybIgRxApSU71/yCIJ5Yi/Oh3UOVRz4MUb9P2xH4O4GZ+HQA79Y
+X-Received: by 2002:a25:2683:: with SMTP id m125mr32232742ybm.38.1602550083099;
+        Mon, 12 Oct 2020 17:48:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602550083; cv=none;
         d=google.com; s=arc-20160816;
-        b=OeNVguTdJjkwkmh6icXZnNz3vvQ4nL5HYBms7osMyf3trur5aNpovqx5BfYGEHmwf9
-         Z3XoyGd3Y4sqpRKJ/jJBxnp9OTWPyr1+j/jz2PMbHIFL9ahNhgKlSwn68rL4XzWNwiq+
-         r45zm+9CkFZ3Gl5fs6+jKhTO0RKfd3HpqwCZ3C0J8CydjtxJJzhEywtGUDlL8IdlkEHf
-         hQnVMOLeJPk3Q6hrW8y7haMXHZtRsKesB5ofQne9XKvu6hs/pxlC7bG1ogevAwcd/D24
-         GWhXyV8y5CveHI7du3PBFNKjujfJ4a68TBrNXSanBTpnHFA6klgLJwLAriaf1MZGhGna
-         1t1Q==
+        b=rXZ0dJVJGAZiwId9j3FFMWVdzvQf07wtwMQgRoVTL3V0LcmI/pU1L7ReZtIsMv9pel
+         YinNVCmhm4zslOXOEPd2/LozFJ3W1L/YL3zaqJQwG2gJAFp0Y0s9ATl6LJKzKVAg+73A
+         z9gmoZlbcXANU0+qqM8E3+ZPayeYQvrZfY3XqmwIMKSfp8+fgU9vH3sR9J8WZ7NbHRNx
+         i8xcD3Fw+2dYMkKSmUlBuG8U3GXCJ3kSSnctQHLYh0EQJ32Q0BIqdOwGz0Lt87rmaoAF
+         TP4XDdn/VlyKfeFMZRaWUBemEi3/LI1fqxVEHGJ1wBogOmmpgxxOjt3RB/0i2JglYpss
+         pAKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=L5eINGoXjXLhjjg6jZy/HbO1D98LIuwkMzXGMAlNiSY=;
-        b=hQibiVf014LTVprwdNeq2q76ZLkgb0yJqj6tp7uDqP1X9BgloZlJXFIGoV2zLl1yQa
-         Y5MOQDjdNQX2EQsZTcR30nHN5ClVZnKn8rnzjrNd68ysPZq2lW7cNE+g+HBPBUnBg3lN
-         G/TVfdeWRoWY4tWHRn9Z92Xz9MfnNNaDxilMss5DcBGNz+oEirZCwFLpSFe3Lxcc4sD/
-         /BjfXeIe47Bpu8+LIi/mdHL/oeegbvDgRGpo+84db75kT/XIJlAPoepwIFdjABaKoqKk
-         du2eVzdy5DcBoxRyfi5wskdkLVlxVwPTrnFDuwp3giDjGMwxRRSFky8grWyUTak75BM9
-         zgJw==
+        bh=XWrRpf5uvJYGE1X2RjPrQ8hxAMmWJN8v9gR6IQe73Rg=;
+        b=QbB0u8wq1C6hDUVs7P1mfCfRWdFyFWqmIl1jiibyWojQ5UOwyZKLK/yOVU6ouILPzU
+         0aIwGbc8UVc1eg48JVtWOp4nCNkkMRbaHKvYDre/L+BCSiZ85wVYlLVSXAU+w9FMbZ4o
+         u3NTJWVsERRRWvvT+YsRVmWdwHuEVKTen75oYoGbAzoIWXrEp6Uy+6ByGENLsNAKpRqU
+         xv9VmjZhs9OsZjttPWmDhul6AcolLNmk/3rn3Gyg3FefGZrtF0YU2VTzub4oWXoUmcAN
+         RF4fL06TynwwFHpVf3uR+88UcJO0k3OUOgLaFn5sjxueVDmOZB/K/qKG7eeKsiARhFwE
+         XSgg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Q5VlRYK4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="onlHrub/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z128si16992959ybf.45.2020.10.12.17.45.43
+        by mx.google.com with ESMTPS id y3si2437057yba.73.2020.10.12.17.48.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 12 Oct 2020 17:45:43 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 12 Oct 2020 17:48:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b=Q5VlRYK4;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:36438 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gibson.dropbear.id.au header.s=201602 header.b="onlHrub/";
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:41010 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kS8Ri-00027m-Le
-	for alex.bennee@linaro.org; Mon, 12 Oct 2020 20:45:42 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58448)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kS8Ty-0004AS-FF
+	for alex.bennee@linaro.org; Mon, 12 Oct 2020 20:48:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58474)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kS8RO-00024R-FF; Mon, 12 Oct 2020 20:45:22 -0400
-Received: from ozlabs.org ([203.11.71.1]:41699)
+ id 1kS8RS-00027M-I3; Mon, 12 Oct 2020 20:45:28 -0400
+Received: from bilbo.ozlabs.org ([2401:3900:2:1::2]:43927 helo=ozlabs.org)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dgibson@ozlabs.org>)
- id 1kS8RJ-0006nG-42; Mon, 12 Oct 2020 20:45:21 -0400
+ id 1kS8RP-0006tz-WF; Mon, 12 Oct 2020 20:45:25 -0400
 Received: by ozlabs.org (Postfix, from userid 1007)
- id 4C9GzQ3G7kz9sVD; Tue, 13 Oct 2020 11:45:06 +1100 (AEDT)
+ id 4C9GzQ4GrGz9sVK; Tue, 13 Oct 2020 11:45:06 +1100 (AEDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=gibson.dropbear.id.au; s=201602; t=1602549906;
- bh=FxmL8PgRV16Qjfh784pRUyyS19OMN6XPdKaH+2s3XQY=;
+ bh=+lALO7HgNrojm6+JDT1ennot8m6liZUo5GH8lT9O9Tg=;
  h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
- b=Q5VlRYK42GLi323qOU1U2uPXwSgfixA5nhvnab92FcUhIbuIY8qjKt+l9+W5lbOn1
- AHgXCUgkxM3LVkqXj64KOeWyIdTlj92EJnGgC7eQw5WtognVDjiZ3OPD6XO7UVi554
- hT6k9cyVoyI/u8szxx+DNJXmKPtBUd6/JwkI7Nw0=
-Date: Tue, 13 Oct 2020 11:43:30 +1100
+ b=onlHrub/sstF9DahVxIp6mc0qSOP4MEbM6deGOjZB9YlBmj2WNzKmC0iPNNmnvsv9
+ 3+A/PXljQDpjzjzwlgkz9u0xN3HKj1rcZ4tGm8+tZtJG2/Azwk2ffuCZKXG0rDP9jo
+ d1bf9D8mnrWnV5p4Cc2SRmbWrpeS5JlZ80Q3jcRc=
+Date: Tue, 13 Oct 2020 11:45:00 +1100
 From: David Gibson <david@gibson.dropbear.id.au>
 To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [PATCH 4/5] hw: Use the PCI_SLOT() macro from 'hw/pci/pci.h'
-Message-ID: <20201013004330.GI71119@yekko.fritz.box>
+Subject: Re: [PATCH 5/5] hw: Use the PCI_DEVFN() macro from 'hw/pci/pci.h'
+Message-ID: <20201013004500.GJ71119@yekko.fritz.box>
 References: <20201012124506.3406909-1-philmd@redhat.com>
- <20201012124506.3406909-5-philmd@redhat.com>
+ <20201012124506.3406909-6-philmd@redhat.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="D6z0c4W1rkZNF4Vu"
+ protocol="application/pgp-signature"; boundary="dwWFXG4JqVa0wfCP"
 Content-Disposition: inline
-In-Reply-To: <20201012124506.3406909-5-philmd@redhat.com>
-Received-SPF: pass client-ip=203.11.71.1; envelope-from=dgibson@ozlabs.org;
+In-Reply-To: <20201012124506.3406909-6-philmd@redhat.com>
+Received-SPF: pass client-ip=2401:3900:2:1::2; envelope-from=dgibson@ozlabs.org;
  helo=ozlabs.org
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/12 20:45:06
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -81,25 +81,23 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Huacai Chen <chenhc@lemote.com>,
- Stefano Stabellini <sstabellini@kernel.org>,
+ Huacai Chen <chenhc@lemote.com>, Stefano Stabellini <sstabellini@kernel.org>,
  Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-trivial@nongnu.org,
  Helge Deller <deller@gmx.de>, "Michael S. Tsirkin" <mst@redhat.com>,
  Aleksandar Markovic <aleksandar.qemu.devel@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Anthony Perard <anthony.perard@citrix.com>, xen-devel@lists.xenproject.org,
  Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
  Eduardo Habkost <ehabkost@redhat.com>, qemu-arm@nongnu.org,
@@ -108,146 +106,66 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Paul Durrant <paul@xen.org>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <f4bug@amsat.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 7DJZTHMCuhX6
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 7tCXHyixG2I2
 
 
---D6z0c4W1rkZNF4Vu
+--dwWFXG4JqVa0wfCP
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Oct 12, 2020 at 02:45:05PM +0200, Philippe Mathieu-Daud=E9 wrote:
+On Mon, Oct 12, 2020 at 02:45:06PM +0200, Philippe Mathieu-Daud=E9 wrote:
 > From: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 >=20
-> We already have a generic PCI_SLOT() macro in "hw/pci/pci.h"
-> to extract the PCI slot identifier, use it.
+> We already have a generic PCI_DEVFN() macro in "hw/pci/pci.h"
+> to pack the PCI slot/function identifiers, use it.
 >=20
 > Signed-off-by: Philippe Mathieu-Daud=E9 <f4bug@amsat.org>
 
-ppc parts
+ppc part
+
 Acked-by: David Gibson <david@gibson.dropbear.id.au>
 
 > ---
->  hw/hppa/dino.c        | 2 +-
->  hw/i386/xen/xen-hvm.c | 2 +-
->  hw/isa/piix3.c        | 2 +-
->  hw/mips/gt64xxx_pci.c | 2 +-
->  hw/pci-host/bonito.c  | 2 +-
->  hw/pci-host/ppce500.c | 2 +-
->  hw/ppc/ppc4xx_pci.c   | 2 +-
->  hw/sh4/sh_pci.c       | 2 +-
->  8 files changed, 8 insertions(+), 8 deletions(-)
+>  hw/arm/virt.c          | 3 ++-
+>  hw/pci-host/uninorth.c | 6 ++----
+>  2 files changed, 4 insertions(+), 5 deletions(-)
 >=20
-> diff --git a/hw/hppa/dino.c b/hw/hppa/dino.c
-> index 81053b5fb64..5b82c9440d1 100644
-> --- a/hw/hppa/dino.c
-> +++ b/hw/hppa/dino.c
-> @@ -496,7 +496,7 @@ static void dino_set_irq(void *opaque, int irq, int l=
-evel)
+> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+> index e465a988d68..f601ef0798c 100644
+> --- a/hw/arm/virt.c
+> +++ b/hw/arm/virt.c
+> @@ -1144,7 +1144,8 @@ static void create_pcie_irq_map(const VirtMachineSt=
+ate *vms,
+>                       full_irq_map, sizeof(full_irq_map));
 > =20
->  static int dino_pci_map_irq(PCIDevice *d, int irq_num)
->  {
-> -    int slot =3D d->devfn >> 3;
-> +    int slot =3D PCI_SLOT(d->devfn);
-> =20
->      assert(irq_num >=3D 0 && irq_num <=3D 3);
-> =20
-> diff --git a/hw/i386/xen/xen-hvm.c b/hw/i386/xen/xen-hvm.c
-> index f3ababf33b6..276254e6ca9 100644
-> --- a/hw/i386/xen/xen-hvm.c
-> +++ b/hw/i386/xen/xen-hvm.c
-> @@ -140,7 +140,7 @@ typedef struct XenIOState {
-> =20
->  int xen_pci_slot_get_pirq(PCIDevice *pci_dev, int irq_num)
->  {
-> -    return irq_num + ((pci_dev->devfn >> 3) << 2);
-> +    return irq_num + (PCI_SLOT(pci_dev->devfn) << 2);
+>      qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupt-map-mask",
+> -                           0x1800, 0, 0, /* devfn (PCI_SLOT(3)) */
+> +                           cpu_to_be16(PCI_DEVFN(3, 0)), /* Slot 3 */
+> +                           0, 0,
+>                             0x7           /* PCI irq */);
 >  }
 > =20
->  void xen_piix3_set_irq(void *opaque, int irq_num, int level)
-> diff --git a/hw/isa/piix3.c b/hw/isa/piix3.c
-> index 587850b8881..f46ccae25cf 100644
-> --- a/hw/isa/piix3.c
-> +++ b/hw/isa/piix3.c
-> @@ -361,7 +361,7 @@ type_init(piix3_register_types)
->  static int pci_slot_get_pirq(PCIDevice *pci_dev, int pci_intx)
->  {
->      int slot_addend;
-> -    slot_addend =3D (pci_dev->devfn >> 3) - 1;
-> +    slot_addend =3D PCI_SLOT(pci_dev->devfn) - 1;
->      return (pci_intx + slot_addend) & 3;
->  }
+> diff --git a/hw/pci-host/uninorth.c b/hw/pci-host/uninorth.c
+> index c21de0ab805..f73d452bdce 100644
+> --- a/hw/pci-host/uninorth.c
+> +++ b/hw/pci-host/uninorth.c
+> @@ -70,10 +70,8 @@ static uint32_t unin_get_config_reg(uint32_t reg, uint=
+32_t addr)
+>          /* ... and then convert them to x86 format */
+>          /* config pointer */
+>          retval =3D (reg & (0xff - 7)) | (addr & 7);
+> -        /* slot */
+> -        retval |=3D slot << 11;
+> -        /* fn */
+> -        retval |=3D func << 8;
+> +        /* slot, fn */
+> +        retval |=3D PCI_DEVFN(slot, func) << 8;
+>      }
 > =20
-> diff --git a/hw/mips/gt64xxx_pci.c b/hw/mips/gt64xxx_pci.c
-> index e091bc4ed55..588e6f99301 100644
-> --- a/hw/mips/gt64xxx_pci.c
-> +++ b/hw/mips/gt64xxx_pci.c
-> @@ -982,7 +982,7 @@ static int gt64120_pci_map_irq(PCIDevice *pci_dev, in=
-t irq_num)
->  {
->      int slot;
-> =20
-> -    slot =3D (pci_dev->devfn >> 3);
-> +    slot =3D PCI_SLOT(pci_dev->devfn);
-> =20
->      switch (slot) {
->      /* PIIX4 USB */
-> diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-> index b05295639a6..ee8b193e15b 100644
-> --- a/hw/pci-host/bonito.c
-> +++ b/hw/pci-host/bonito.c
-> @@ -570,7 +570,7 @@ static int pci_bonito_map_irq(PCIDevice *pci_dev, int=
- irq_num)
->  {
->      int slot;
-> =20
-> -    slot =3D (pci_dev->devfn >> 3);
-> +    slot =3D PCI_SLOT(pci_dev->devfn);
-> =20
->      switch (slot) {
->      case 5:   /* FULOONG2E_VIA_SLOT, SouthBridge, IDE, USB, ACPI, AC97, =
-MC97 */
-> diff --git a/hw/pci-host/ppce500.c b/hw/pci-host/ppce500.c
-> index 9517aab913e..5ad1424b31a 100644
-> --- a/hw/pci-host/ppce500.c
-> +++ b/hw/pci-host/ppce500.c
-> @@ -342,7 +342,7 @@ static const MemoryRegionOps e500_pci_reg_ops =3D {
-> =20
->  static int mpc85xx_pci_map_irq(PCIDevice *pci_dev, int pin)
->  {
-> -    int devno =3D pci_dev->devfn >> 3;
-> +    int devno =3D PCI_SLOT(pci_dev->devfn);
->      int ret;
-> =20
->      ret =3D ppce500_pci_map_irq_slot(devno, pin);
-> diff --git a/hw/ppc/ppc4xx_pci.c b/hw/ppc/ppc4xx_pci.c
-> index 28724c06f88..e8789f64e80 100644
-> --- a/hw/ppc/ppc4xx_pci.c
-> +++ b/hw/ppc/ppc4xx_pci.c
-> @@ -243,7 +243,7 @@ static void ppc4xx_pci_reset(void *opaque)
->   * may need further refactoring for other boards. */
->  static int ppc4xx_pci_map_irq(PCIDevice *pci_dev, int irq_num)
->  {
-> -    int slot =3D pci_dev->devfn >> 3;
-> +    int slot =3D PCI_SLOT(pci_dev->devfn);
-> =20
->      trace_ppc4xx_pci_map_irq(pci_dev->devfn, irq_num, slot);
-> =20
-> diff --git a/hw/sh4/sh_pci.c b/hw/sh4/sh_pci.c
-> index 73d2d0bccb0..734892f47c7 100644
-> --- a/hw/sh4/sh_pci.c
-> +++ b/hw/sh4/sh_pci.c
-> @@ -109,7 +109,7 @@ static const MemoryRegionOps sh_pci_reg_ops =3D {
-> =20
->  static int sh_pci_map_irq(PCIDevice *d, int irq_num)
->  {
-> -    return (d->devfn >> 3);
-> +    return PCI_SLOT(d->devfn);
->  }
-> =20
->  static void sh_pci_set_irq(void *opaque, int irq_num, int level)
+>      trace_unin_get_config_reg(reg, addr, retval);
 
 --=20
 David Gibson			| I'll have my music baroque, and my code
@@ -255,24 +173,24 @@ david AT gibson.dropbear.id.au	| minimalist, thank you.  NOT _the_ _other_
 				| _way_ _around_!
 http://www.ozlabs.org/~dgibson
 
---D6z0c4W1rkZNF4Vu
+--dwWFXG4JqVa0wfCP
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+E+DIACgkQbDjKyiDZ
-s5JM4g//S3eKSoztBYSfXaiJO/9rehJ7mK4hYgR5S2pvQTSFkf6LP+HJaCkVa0lE
-a4bUGSpR3bqHhGGYWF6ppIeGNowkD++B5YnsbeFaFVTxaRdDLY0WqcB6YnNVTU2Z
-LskxdcLYtuDddT+S+DU/4ZkC+nXSJyfqU9CTjFq2QuY+4TI4Zf4zeK9m375Oo6qN
-yUSBxj7pOiPy149ZF4tuIVBJy/WOijP5DUmz+I3xS/BqQecGuD2kQzRLGfC/oULr
-TaulgUcr35isuBXOoV9SfQpiLjhzK7Thp1twsSV60rbHKN8mK5uL1M4h8NdJqVmm
-ncct21mR6XQg5Zs/EB4ClFpa2IFKfCgDIA19wUUW627e1OAV8Xdb7OlLV7AkrB0i
-mdt6kGLrs0dOSXUqqDZP04NdDFx49Jp1tK9ZBspjw9nxiluNhpOYC1SuND2+lenf
-OiaZxMPNyIYKbCS1pfMGXyKsh8/qcf8M2RNtqdjRzKn2Odn9J+TFy6M7I6Y1VdTa
-nJbPVDkHKoqRkkehT4fzSSW72NYznbJVTPi/NuTsoWLy6hqFxTemkZWf8PcjLhLj
-X236DGBmExrBcFtPyuSV0iS2Nc8vxxzd+XiMUoAkPGmD9EWwU/++5S7HXm9PNrZ2
-QetxthxhIXdnOkIu/hzAFMaj+8ABa4LWmrVBtq1SZmi1hdka2do=
-=gg8r
+iQIzBAEBCAAdFiEEdfRlhq5hpmzETofcbDjKyiDZs5IFAl+E+IwACgkQbDjKyiDZ
+s5J+QQ//T4fQpDPR/JHRFc6LbsMxAjBTFaF0roQjm+CI8Md8/NY7ptdCqg1+GKy6
+eoEUInbZ/945BywYqGDOqWxu3/zJcpG+4spb5usgG+IKMT3N5xuUzKd+PBIaJilP
+JhB2UkcG5VhUOvf8FhbPGmAO/M6WYElXbtKGPy9/CLFLNXzWXiJ0MZy4TAAscpra
+M3Xz8Fs/lwFTNOQKFXD7BpuESdLdWy5jPMhODBx0H0OCrsr6ZnZcIXYlVUUi4K3f
+rLpdkhDyN1ZF2VeLYTslVEfMVCPHxSDFJRRONioEjpP6ELFnXAEvNqRmyYzF/a19
+FJ/5nB7L4wNXQ9rV5C6E72joI3nkjujeKZT8lfRSKcz17owRlIJrrwa9hbbxomy+
+G9dmE57lTw42mRCEd3nZgeq7CwBK0a5IfJOkt5WEriUMfHjRFyhCB5t7sqbaL5Aa
+NDCD7XZowgia7WmsZvAb/dMrjQpUCzya4OtR16TQ63W6wKC/pCr6lb/J+BS9RCu0
+mSdB2d1L/eItGWyJvGIHVbf7JSIY0pLYnkaM83E0QsXTKRABRzhQ6CBsK8URM6kh
+5HziPQxsVW1ZkJ27hfLKjbZwHshw7IgicYRCDCLa+WfcZQv750KiJq/ku/Gnjq59
+uy1uR5C2STlSxRSSNraOCu0u7ad0arUjhx/SNUtxXQBpQWAXBhI=
+=E6th
 -----END PGP SIGNATURE-----
 
---D6z0c4W1rkZNF4Vu--
+--dwWFXG4JqVa0wfCP--

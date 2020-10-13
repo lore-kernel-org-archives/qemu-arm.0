@@ -1,108 +1,118 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp1379736lfq;
-        Thu, 8 Oct 2020 07:09:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx4msusBc/lIxDQYahul97oD7JdqWiuFacqC5+xU1gEY9uTQmSbt3HfeH1kAIInNo8TZ/zo
-X-Received: by 2002:a25:4e55:: with SMTP id c82mr11238805ybb.416.1602166198769;
-        Thu, 08 Oct 2020 07:09:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602166198; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2129138lfa;
+        Tue, 13 Oct 2020 09:41:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzpdxuIa7ztp4clDYYcP6q5a6wWhtIr2egbIR/qAZngYdefC+uqWJLzHzZdnbShf1E/zPJ
+X-Received: by 2002:a25:cf56:: with SMTP id f83mr1039046ybg.171.1602607317383;
+        Tue, 13 Oct 2020 09:41:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602607317; cv=none;
         d=google.com; s=arc-20160816;
-        b=Ys7prXCn8tKcWGCiPC3niNuNHpGpwdo66f8rRvmlG1rXXJS2I+4ymZPdkB1wQp4hPw
-         /evFFLi+j1VzGeVoio21FVYiV5MK5b78ypnqwqgmXAbhHCQvflCNCncLebjSMcxdy6LB
-         mbkgv1I9QreU9wQQsn8BK5Kb3zvrXyr0GucY8WMKQrPlPZiFJq9ou2a3YWdmqsjUtQiV
-         V/H3+tIYVH6bFPDuYUWyUstIksxL3yj6A9GO6yO5Ux24U9xqtwI4Lmufs4l00IZe2RKS
-         sFFpMLhKPK3BL0wxaB+j6KTPWWciDpvbBuRrSv4rIKQsw15uIdaJP9GvM6I73YLJlYlF
-         ZWmA==
+        b=atSq/x8r2Yv9w/Ntm41GhT9wtyTdeJhvEtZ9PEJTvsOk7IHuoREmXv93VI68LYn9eW
+         NwVnohAxrL/0Arz1t9hCXLvGho0gZNmOY9+1eF2wt2k+WeB2UHG5fjtNaeiO2DJJ/tbM
+         0Kk89YXDfkTkwfJPOo0nF9uz4p7yQ3sGtrMXdS9EvMSFRgYuoodD4zQTE1m/JVOQCVrL
+         0pkD28KoJ345H7I1UztYTcEstgnXPMuOifeg2X8O2koBBx27K2nMlzOVdCuRO34Bbhb/
+         J+qdAPiq/0D0PcAasxMKYLen5Oczp9So+igi8IRWICvcx/xaWLRYiytGfnJg3GjbQhWm
+         3qKQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=mSm3GGy7mlOOJ0cpmeSKFrGrkfbZZ8dyTn0BC4S1V5s=;
-        b=RLwtSgcHjNkdvJTUbZSakboJYOiicKJpFSAprChyn1kgC2RRhLp2vXHzXQ7iBePpFj
-         b4BZrLvXyFkPTI7xZcRk2MEQ06GTwDxB3J6bBt09BSVRGLFhtsuAXNKhQgRFCVf7kJBA
-         Wzgj47W1zGcaNp408YzmM5xO4GHjjbQ3tsIRUzDtrqzamg7do/jV1ZI2cgocvjB939Rk
-         Fgh5vu3CXfoveYO+1m7XI6bVsYqUTdOd0we5b4nkSxyJJFXVA42l69H3ksLGFaxDcKP6
-         yzPquo1N11dDd0+allut0RibbBpFywcz7eJtdpPNVqIJt3TSLb+h/f4hB11EcJLHR6Ac
-         roJg==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=jZuOVfZXzmXfUNZZhGowe0arajdOtS7smUegqSksugA=;
+        b=Yohcg85NW1lferXRPIf8T08tSDxebgKDo4CM3RG++VRnxSun+L4pthAIOZ+4YgzKZU
+         xX84cZwQoCsFC9WprIsIEz4vl+Sw2WyHXTqtWcrcNTooVaroH/H+OYTFieYlSTgZyNY7
+         NiTdInDOVWvWJ3iE7E6hYK9rvwxehmW1VWGZYjeScmeE17/6aLF6YGmsEISe/qeWv6rf
+         uY2HgU225QARwg8WXYaXN3Ch5mkF8YB9089gRZ6Ueav0yD2zo0Trapl//JgMX3/JsiWu
+         C3D0au9Aw4e+PhoLupY/+680mOeToO7MxMy8NnDAifAkd3i8EF6I5kY1VvWNd2K5dBR5
+         8v+A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Fuo4iEJw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G9SaiOPm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e82si5112080ybb.357.2020.10.08.07.09.58
+        by mx.google.com with ESMTPS id s75si437556ybi.307.2020.10.13.09.41.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 08 Oct 2020 07:09:58 -0700 (PDT)
+        Tue, 13 Oct 2020 09:41:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=Fuo4iEJw;
+       dkim=pass header.i=@linaro.org header.s=google header.b=G9SaiOPm;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:57582 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:45960 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kQWcI-0005x3-5r
-	for alex.bennee@linaro.org; Thu, 08 Oct 2020 10:09:58 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34718)
+	id 1kSNN6-0006Uj-NQ
+	for alex.bennee@linaro.org; Tue, 13 Oct 2020 12:41:56 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54940)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kQWba-0005Wp-AF
- for qemu-devel@nongnu.org; Thu, 08 Oct 2020 10:09:14 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:44428)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kSNLh-0005Av-8X
+ for qemu-devel@nongnu.org; Tue, 13 Oct 2020 12:40:29 -0400
+Received: from mail-pl1-x644.google.com ([2607:f8b0:4864:20::644]:46310)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kQWbY-0003Y1-L6
- for qemu-devel@nongnu.org; Thu, 08 Oct 2020 10:09:14 -0400
-Received: by mail-ej1-x642.google.com with SMTP id a3so8272626ejy.11
- for <qemu-devel@nongnu.org>; Thu, 08 Oct 2020 07:09:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kSNLd-0004Ps-Pp
+ for qemu-devel@nongnu.org; Tue, 13 Oct 2020 12:40:28 -0400
+Received: by mail-pl1-x644.google.com with SMTP id d6so99886plo.13
+ for <qemu-devel@nongnu.org>; Tue, 13 Oct 2020 09:40:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=mSm3GGy7mlOOJ0cpmeSKFrGrkfbZZ8dyTn0BC4S1V5s=;
- b=Fuo4iEJwuMi0kh+z1dagFEg40BBaHJxKAM3wFyW6ZxoV2viPb0EhnzSWeXHvI9Cggj
- 2MJW/9nxOkn983NspJnHS5Afs3yA7Ox/noswocBvuxBWajAT+JFngWvlQi+LiiAshDQy
- KeJ8O/c4wjkPUqWVTgKRjnHscggBP6HgBes1bn+AQMMxQGrRmdP62X844agr6dXCyQJS
- 6NDjF6DA/AeVZ+eKnvETkZnFDtg9ntxwN7O3d229H8DWh4ba2GdsTziEDJGqsDb0uuWy
- ixCJ2BcmVDPrf/tA5eWkx5TftC4vkM+72XeOpXigtACGtfydfc96QqawtvaRznSW4eBl
- mkgg==
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=jZuOVfZXzmXfUNZZhGowe0arajdOtS7smUegqSksugA=;
+ b=G9SaiOPmJ12PQ3QSRrqsp6L+EolKTrwbjkx6wZQ7YuBNYTtt7ZlV2KEBTw3Gy683q9
+ ID5taL4KeeNWjEx/bUJrHszuMBwcpJ07arAMr3Nf2ZQbnqFARuPQ4y0UeaRAHPAOMe8X
+ nm2VmPvyd8los5ycYmGUYRNqT0nik7YtYsVXnfroh4mPZfdlTEP3OhAp4LzHBhEANkon
+ zLmo4mFAp1iY3PVgVhC6FenksKlonWYAGcF1eqtqppkATI7etiuYqpPed+/wOkMLFsGN
+ wL6zc0/9GGpHzGpfnJKswHPTYmiztI6KMtXPh1io0IfJR25Gkx2c2Qf0MwpJynq/4bUr
+ grWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=mSm3GGy7mlOOJ0cpmeSKFrGrkfbZZ8dyTn0BC4S1V5s=;
- b=Hh+fy/wKwPhCgmVcfan2PnnFFxlO42lxrrucFFbRlqG52Xj/8MjOIo8M0C0RdL3Dfn
- 9K5/6GmknKgmw6xHOF5KcLEV6R62WPeyxybrLus2QfiT2nJOW+9gb+v7yCbO69o9009R
- YLMOOOo+hKJJyFYVpNv69FoWz61cyXrZlqCc2FwdmCs63Z8FyUviM4r11qgmOv/bHJ/Q
- Q2E1f/VlUcTK+8CHDpPM20ZvnzuJPOdv2oZbqJMinaHlxDMAooJS9Zb0wvXCuZ/6l+XW
- RCRTQFMf1fNlzcgvXAFVobsoDwYqBThK3EOpSGeWJBY8pYcHozAfh2ZkwYLdugIEhF8x
- S1aQ==
-X-Gm-Message-State: AOAM533yQQmkjhzc64UyqvnFY8G4Duzev+HeYTo33OAS7UD9MmxytWax
- /YOIGdj/LjKdjoorFayXPlo4Y5HQLziuVrVIcri/rA==
-X-Received: by 2002:a17:906:ad87:: with SMTP id
- la7mr8872856ejb.85.1602166150950; 
- Thu, 08 Oct 2020 07:09:10 -0700 (PDT)
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=jZuOVfZXzmXfUNZZhGowe0arajdOtS7smUegqSksugA=;
+ b=stCts4YVHBlZPyi60uFrbaVtoQbjsEskQZ14Lg/5aK9QU3VC1OUXU/c5X19NPQbKVn
+ 0WUFOtVfsfLR8lSvPsYBywL1M3bZSQfMTASOBev98N4lEtTUUNUXaUMcJEEuICZaM8z+
+ SrQ04fTqJFx5uTFagshA9zenPvL+368mIVrclBpLwJ56hf2o0xdjzrPycZIERgO7Xpp1
+ jAX+NkZihPF1xAaB/Inyn1bJoWbkjY2viFf07MhaY0rb+CBHzq7vDQzC7wqG/He9DIrU
+ Pp1M9+xDWG49bIACUc+OQ/aim6WsK/aBMQyBH0BHgIxgY+ZRsJOf1g2To/hokKK4FDtX
+ J6Lw==
+X-Gm-Message-State: AOAM533jzV0O1QWpN0olvdEVQDSaSzI2Q459L9igjm74sQDKmZK9Zz1W
+ /VgBFzDVbffsO75KkG9i3bULSzyq36kNmQBZ
+X-Received: by 2002:a17:902:8307:b029:d3:89e2:7866 with SMTP id
+ bd7-20020a1709028307b02900d389e27866mr644910plb.42.1602607221979; 
+ Tue, 13 Oct 2020 09:40:21 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id 128sm132999pfd.110.2020.10.13.09.40.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Oct 2020 09:40:20 -0700 (PDT)
+Subject: Re: [PATCH 04/10] target/arm: Make the t32 insn[25:23]=111 group
+ non-overlapping
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20201012153746.9996-1-peter.maydell@linaro.org>
+ <20201012153746.9996-5-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <bad2de7a-68db-ad0a-0976-ebf475992e17@linaro.org>
+Date: Tue, 13 Oct 2020 09:40:19 -0700
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-References: <20201008024203.112303-1-shashi.mallela@linaro.org>
- <20201008024203.112303-2-shashi.mallela@linaro.org>
- <CAD8XO3ZRGqNbr1GM6jMAdhm=pPXXr6K7m_F0MKRDQMnrDw=yDA@mail.gmail.com>
- <CAFEAcA9QRJhorL1XtWBCQk9uo21OtMHUrH7ipG3tiFbOBGizPQ@mail.gmail.com>
- <CAD8XO3YaavVfz6yaAx2N95B8a87tkp=-GKt814Zou4e7B+cVvg@mail.gmail.com>
-In-Reply-To: <CAD8XO3YaavVfz6yaAx2N95B8a87tkp=-GKt814Zou4e7B+cVvg@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Oct 2020 15:08:59 +0100
-Message-ID: <CAFEAcA__EG5Ou9W0H24oEKFA9Ft11n6pjcSwD-ZG4Bir8=3Xhw@mail.gmail.com>
-Subject: Re: [PATCH v3 1/2] hw/watchdog: Implement SBSA watchdog device
-To: Maxim Uvarov <maxim.uvarov@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
+In-Reply-To: <20201012153746.9996-5-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::644;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x644.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,33 +125,38 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Shashi Mallela <shashi.mallela@linaro.org>,
- Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?Rados=C5=82aw_Biernacki?= <rad@semihalf.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 0gg69tZTzRyp
+X-TUID: TUx0S+YSuVy+
 
-On Thu, 8 Oct 2020 at 11:43, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
->
-> On Thu, 8 Oct 2020 at 13:27, Peter Maydell <peter.maydell@linaro.org> wrote:
-> >
-> > On Thu, 8 Oct 2020 at 11:21, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
-> > > Interesting why gcc does not warn on  64bit signed to 32bit unsigned
-> > > truncation here. Looks like it's too smart to understand
-> > > that value fits in 32 bits.
-> >
-> > What truncation? 1000000000 in decimal is 0x3B9ACA00 in hex:
-> > the number fits in an 32 bit integer without truncation.
+On 10/12/20 8:37 AM, Peter Maydell wrote:
+> The t32 decode has a group which represents a set of insns
+> which overlap with B_cond_thumb because they have [25:23]=111
+> (which is an invalid condition code field for the branch insn).
+> This group is currently defined using the {} overlap-OK syntax,
+> but it is almost entirely non-overlapping patterns. Switch
+> it over to use a non-overlapping group.
+> 
+> For this to be valid syntactically, CPS must move into the same
+> overlapping-group as the hint insns (CPS vs hints was the
+> only actual use of the overlap facility for the group).
+> 
+> The non-overlapping subgroup for CLREX/DSB/DMB/ISB/SB is no longer
+> necessary and so we can remove it (promoting those insns to
+> be members of the parent group).
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+> Just a minor bit of tidying that I did while I was trying to
+> work out whether the v8.1M loop/branch insns needed to go in
+> this group. (As it turns out, they don't.)
+> ---
+>  target/arm/t32.decode | 26 ++++++++++++--------------
+>  1 file changed, 12 insertions(+), 14 deletions(-)
 
-> I meant that LL is an long long int which is 64 bit size type. And
-> then you pass it to uint32_t.
+Nice cleanup, thanks.
 
-Yes, that's fine, because it fits. The LL ensures that if
-you do a calculation like:
- uint64_t max_timeout = 16 * NANOSECONDS_PER_SECOND;
-it isn't incorrectly done as 32-bit arithmetic.
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-thanks
--- PMM
+
+r~

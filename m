@@ -1,107 +1,105 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp512855lfa;
-        Wed, 14 Oct 2020 07:49:50 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJylB0IOCz2nHYTsFJJwZZogSS39R591oj/Au40PQDBIho2zhHJKbFVaJhMNXWby/t5irIWk
-X-Received: by 2002:a25:2683:: with SMTP id m125mr7117685ybm.38.1602686990834;
-        Wed, 14 Oct 2020 07:49:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602686990; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp629908lfa;
+        Wed, 14 Oct 2020 10:07:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzQcJnK1GnhLHE2wStf/8iQIGTFv/Ege0PXjVzOUur1cw5cOcBFDGmfeaRNtwDMEWEusznd
+X-Received: by 2002:a67:c292:: with SMTP id k18mr167192vsj.29.1602695270250;
+        Wed, 14 Oct 2020 10:07:50 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602695270; cv=none;
         d=google.com; s=arc-20160816;
-        b=Qz2GQDvSfnoO2lnKTiu/sL2Ik0D350phVNcE59vImhRW2XAi/tb/N2BnDAHwy4eOvN
-         38KKrtbRTB7CpMvpULAX/N/fRX4Ro2cMuC3KK5MXJr7iGw0jeqHxWZdWW8jEZHWaGE9/
-         XbNdNy6lUp+QtnJZ5+A2TY+4tz8Cis8RdFXj728M03XaTCOOFdH9pFjYOXvhaq+m24ah
-         dao4vWqxvbV7T/7YLD8qLqaemXGnZ20AQC0bUjdyeOnTWJN8KJdy4VtImk9rGju3KSfp
-         5SEbHOa81t3PalGWnuYdMRaKyp6zEAw/xdk9pH6EvlhisNwC/P8R3t/GSv2tFCxXQy4F
-         ooiQ==
+        b=nogY/TMrlBCHS2R+oECUD+Z094cZr+DjakP2RHyOilTruOE4YAb0PVeIPRdDOZzN5L
+         jiTKdf0CUwx5dUSm0cVcQ1IWqO1cFlwfvgWqb3Qf85aPiCQpbQwIgExuUiQ077amTeAU
+         nO3sPhzAeWhdzI/g+43kjHINBdCj9IiejLVvilXDYyHMEmtyVhA4A/NA7r2cTjDdUlmk
+         JaRFxGOqeyuJ+hqkjOuyPyKUYTKXzyKGehbjQR4stU1i2KYXmfQQtDo3ZFRkMtyb2mKK
+         ESs0wtr/B36X8VI9T3lAUpaoIGART1rOyUKyuLLK3+OsflkifWWKu9VDnoBgdZxylW7y
+         1UmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=zQzPKq16yu+wQNP+5HVfVrbp88hfbes34W28y1fwrAo=;
-        b=NcBxfdHl02+YMeeqip0G6tpHZZte3zx2IEjjMlWQMSIPlmwlgXo2rQZdLdURY+/UA/
-         eKoSSrtZ/r5YdxH1ZTEcSxTFvT+8kvWEauutP9ZYrUmh7A7JL/QeYR1oYaLcMK/FHlcX
-         B3E2iLYqAjhY0HZCRML+OnS3ILBcB5b/ocP45jIkOyMOjgjwJBfHxM2maVeaNgBxRqW/
-         mbnTc7y6cfMKCdKq/5wgxixmEUtB7h0f56LsdUFVqPBYOZFaJeKK8OGJIAIGTwmsCn4g
-         S8+iNeZY1WXqmP508rY7H7yG36mRtR6chmk4MFcmCi0QlVODCNqkVv/fYRdw+utb3LRh
-         p/Ng==
+        bh=sL+HD1EI5GNweuK0E+da96cBxu6MKG1kUw8ElPM9GJg=;
+        b=yw+6ucxHS7cNt+rrAUKiEXUTQY449a2k7+y3LSvm0Dav5ykyLzARuU2d47eK8gG45q
+         lpSmaq8+IDX8ClPlLNShR+5Tq4rwTCfeLXoWnlsYWblbMR3GuCLVYkuaklRLZefeUt9n
+         YDrFIcvXllxJ9tekiYc0PB66xGv+kcTWBCszgLL1pTEmpQZ8mP+Y1DpUfW3kxFIMXhnx
+         RqwQmzZFVIvWH3Mji0tlgzPTTWRqRXy3r0fGZc2jMsU1e13ZIIYnFk+mMxPC5eO19hkP
+         gtsOW29itPwPm0kzxO1fVlRekiVlSDb+ENNDSUzWMsS/hCbDc+XHFR7cNKJH+GnhjZ+D
+         B6cQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AYuQ+2mY;
+       dkim=fail header.i=@linaro.org header.s=google header.b="miPImp/6";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w3si3412533yba.109.2020.10.14.07.49.50
+        by mx.google.com with ESMTPS id b22si465838uan.212.2020.10.14.10.07.50
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 14 Oct 2020 07:49:50 -0700 (PDT)
+        Wed, 14 Oct 2020 10:07:50 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AYuQ+2mY;
+       dkim=fail header.i=@linaro.org header.s=google header.b="miPImp/6";
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43158 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:48864 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kSi6A-0000bv-3p
-	for alex.bennee@linaro.org; Wed, 14 Oct 2020 10:49:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40034)
+	id 1kSkFh-0007nn-EK
+	for alex.bennee@linaro.org; Wed, 14 Oct 2020 13:07:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43394)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kSi0g-00042n-RN; Wed, 14 Oct 2020 10:44:10 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:34244)
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1kSkCx-0005sf-Az
+ for qemu-devel@nongnu.org; Wed, 14 Oct 2020 13:04:59 -0400
+Received: from mail-ua1-x944.google.com ([2607:f8b0:4864:20::944]:37548)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kSi0a-0007Fs-I0; Wed, 14 Oct 2020 10:44:10 -0400
-Received: by mail-il1-x144.google.com with SMTP id p9so5460330ilr.1;
- Wed, 14 Oct 2020 07:44:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <shashi.mallela@linaro.org>)
+ id 1kSkCt-00012w-P7
+ for qemu-devel@nongnu.org; Wed, 14 Oct 2020 13:04:59 -0400
+Received: by mail-ua1-x944.google.com with SMTP id c7so1332562uaq.4
+ for <qemu-devel@nongnu.org>; Wed, 14 Oct 2020 10:04:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=zQzPKq16yu+wQNP+5HVfVrbp88hfbes34W28y1fwrAo=;
- b=AYuQ+2mYdRPu4kBaT98NJpBbzyeGJGXyuSvjFBu64ETEJMduLeeTfWgZRyj9bM4lso
- O/xN3atcuL6aFI8j2y7TyxnfFFpplbgpUP/a7eZu67wHa7O4q33Xwho0j5pfMCeWTAol
- 5heSCbkjE2Nu0TY2Dhm9Gqslan9EgeG7+RYv5TVg1Klz1OSmcH1Bv0753OEt0RoG6dux
- cMqO+YIADHkUB6ZO3zr+JgRBRG0fNAHQW4IObGpkdZ6zLro1XD/ypxy1geRFxqtqFwuM
- fs/bWXg2H0dnsNsJRlSVumyy0e3ke9mL+04QnQ9AoFkrFySjooFJDn9yfssI0O4Kh3LF
- BrGw==
+ :cc; bh=sL+HD1EI5GNweuK0E+da96cBxu6MKG1kUw8ElPM9GJg=;
+ b=miPImp/6U+tNc3KYPwWvQ8WE1pIj67VFP53Tcb+PnFVNWMRk1XB5vjcVHuUqtDsFBo
+ RbljaC+z3Uyajy0fdbT5nGwGKOVygJ5HOR584e00pdpcezkslFY0gcDGNpfg7aHxx0wo
+ oiDYwrNEpLcO1uE83v1c/4svugK0pv3xaFj7q3e4XkvoHzqovQ/9Yh1FiPKOoF78YkJY
+ Ja3irD+LlavoTZcBgu5Nz5DM//MfuREqc4LLZOGlNsOGgMOLFIpe+PsgGmOUmG7+K9m2
+ mRbL6j9ue9RAarNV1GpmOYMyrpx/ZnFkF+yb2h8tRrSxQYZ4NEOranKu+KjUp2mesHqt
+ Nj+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=zQzPKq16yu+wQNP+5HVfVrbp88hfbes34W28y1fwrAo=;
- b=nlg/T+Fn+15x8YZCDkq4qYy+PEMat8I+qSoss1jgiGSaSIaM+xCRwG3eRxTWUWGKYx
- fonY3UIdEYD7M9hK3FZSU/b7DHy1n5rwP0mCjM0d6lpdJUZ6C9k+ldRuM/+exiHXQrAw
- gMptpLVdt2gSnBo8hja79+nwbDUDbWKD+tB1d+Z6zoScCr6RzMj2safgcylVh2NFTyjf
- 9XPztappGmGXCiMjuaHRoYYQ2/bksxUnX1XclyDGY3DywTE63H+zvDtojzwpk6ZhgKIb
- bjg6xOGbD6eTo5Bu4rIoTvliChOTfKbjbgPjCtJ3XauoFGx8/EDAEAz97V/bd8vL5L2l
- UNSQ==
-X-Gm-Message-State: AOAM530RJwOHwSSHJPNhky7RMR5D88ZATbwK/lxy5lMca5dyGqfITJPz
- QtFNSsdm1HWGh5iefdUBbOYXpXibq3Bxm85bSww=
-X-Received: by 2002:a92:c5c2:: with SMTP id s2mr4357767ilt.177.1602686643126; 
- Wed, 14 Oct 2020 07:44:03 -0700 (PDT)
+ bh=sL+HD1EI5GNweuK0E+da96cBxu6MKG1kUw8ElPM9GJg=;
+ b=BQtxh7UqwJVaVfkZt6xM6OFTbl4ZXtzvWd5zC1NOtvrPyFWqpDtNgTGXGFrGYOhxMd
+ oC2BjVGZGVluXp10AtsUCq1xAL6bv6A/+8RhvEfDcXupAyAyrtj/6rmYmM/oYnXHygBB
+ 6RVx4kQUkUNLCz0Y4qc9nkAxZcCjsJOtVTxNyI2rpDIYrgHNZgweRrd2DyWesQBZejg4
+ Clwhs5PQM64n2uFtAvJY6xzXevDOKDdi+R8MAjtwaljq4jJVO2+y5YFjV5bZ6BybRpe4
+ RIg2itGlAdATnzNS4LlSgTs1dJrzVKtKSNX1bxXlBnCsc8qUpfFU96ngRJRRBQrt6+Mg
+ iWpw==
+X-Gm-Message-State: AOAM533bgAe5xz8jFa2KHRc7TPiJGoD7FTiZD3zqNIAPaA3tAn61r082
+ 4idTRDdqn2tr7HvHNb+0jhjV45AwvQ/ooT/oOtCTYA==
+X-Received: by 2002:ab0:3b0f:: with SMTP id n15mr347887uaw.82.1602695093930;
+ Wed, 14 Oct 2020 10:04:53 -0700 (PDT)
 MIME-Version: 1.0
-References: <20201012153408.9747-1-peter.maydell@linaro.org>
- <20201012153408.9747-13-peter.maydell@linaro.org>
- <CAKmqyKO-bRg0WcoqXnt1oaKtgzKTdajwJ-U2YfZh=PzvP77xug@mail.gmail.com>
- <CAKmqyKNpkFmXD+FJHXy4MGL03pUkXgWQLz6qPETB0TQBORwkFQ@mail.gmail.com>
- <CAFEAcA_WqxjOFkSmhoNnJUax9u6O6+fk6S-shWWjYK91RBBv5w@mail.gmail.com>
-In-Reply-To: <CAFEAcA_WqxjOFkSmhoNnJUax9u6O6+fk6S-shWWjYK91RBBv5w@mail.gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 14 Oct 2020 07:32:25 -0700
-Message-ID: <CAKmqyKNdzaZksnYkO5jNTM1L85tA-GHxv4ZL-rr=0arZ+ZYKpQ@mail.gmail.com>
-Subject: Re: [PATCH for-5.1] hw/arm/netduino2,
- netduinoplus2: Set system_clock_scale
-To: Peter Maydell <peter.maydell@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x144.google.com
+References: <20201013151631.30678-1-shashi.mallela@linaro.org>
+ <20201013151631.30678-3-shashi.mallela@linaro.org>
+ <20201014093119.inq2ut2srps2zfme@xora-monster>
+In-Reply-To: <20201014093119.inq2ut2srps2zfme@xora-monster>
+From: Shashi Mallela <shashi.mallela@linaro.org>
+Date: Wed, 14 Oct 2020 13:04:43 -0400
+Message-ID: <CAC15JE2hMrzpWWF-bS-fshoYx+BPehwxqJi-7uMUXSOj+Uh3GQ@mail.gmail.com>
+Subject: Re: [PATCH v5 2/2] hw/arm/sbsa-ref: add SBSA watchdog device
+To: Graeme Gregory <graeme@nuviainc.com>
+Content-Type: multipart/alternative; boundary="000000000000c1ecb405b1a48776"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::944;
+ envelope-from=shashi.mallela@linaro.org; helo=mail-ua1-x944.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -114,45 +112,358 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Leif Lindholm <leif@nuviainc.com>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Rados=C5=82aw_Biernacki?= <rad@semihalf.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qaaj+eSWc5jR
+X-TUID: Xtl2CsSsW+Ar
 
-On Wed, Oct 14, 2020 at 5:39 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Wed, 14 Oct 2020 at 01:42, Alistair Francis <alistair23@gmail.com> wrote:
+--000000000000c1ecb405b1a48776
+Content-Type: text/plain; charset="UTF-8"
+
+This was added as a placeholder for the virt requirement suggested by Maxim
+earlier.Agreed that this fdt otherwise has no significance for sbsa-ref
+platform nor is being used by ACPI table created for wdt.
+
+-Shashi
+
+On Wed, 14 Oct 2020 at 05:31, Graeme Gregory <graeme@nuviainc.com> wrote:
+
+> On Tue, Oct 13, 2020 at 11:16:31AM -0400, Shashi Mallela wrote:
+> > Included the newly implemented SBSA generic watchdog device model into
+> > SBSA platform
 > >
-> > On Tue, Oct 13, 2020 at 5:29 PM Alistair Francis <alistair23@gmail.com> wrote:
-> > >
-> > > On Mon, Oct 12, 2020 at 8:45 AM Peter Maydell <peter.maydell@linaro.org> wrote:
-> > > >
-> > > > The netduino2 and netduinoplus2 boards forgot to set the system_clock_scale
-> > > > global, which meant that if guest code used the systick timer in "use
-> > > > the processor clock" mode it would hang because time never advances.
-> > > >
-> > > > Set the global to match the documented CPU clock speed of these boards.
-> > > > Judging by the data sheet this is slightly simplistic because the
-> > > > SoC allows configuration of the SYSCLK source and frequency via the
-> > > > RCC (reset and clock control) module, but we don't model that.
-> > > >
-> > > > Fixes: https://bugs.launchpad.net/qemu/+bug/1876187
+> > Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
+> > ---
+> >  hw/arm/sbsa-ref.c | 50 +++++++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 50 insertions(+)
 > >
-> > Thanks for fixing this Peter.
+> > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+> > index 9c3a893bedfd..97ed41607119 100644
+> > --- a/hw/arm/sbsa-ref.c
+> > +++ b/hw/arm/sbsa-ref.c
+> > @@ -30,6 +30,7 @@
+> >  #include "exec/hwaddr.h"
+> >  #include "kvm_arm.h"
+> >  #include "hw/arm/boot.h"
+> > +#include "hw/arm/fdt.h"
+> >  #include "hw/block/flash.h"
+> >  #include "hw/boards.h"
+> >  #include "hw/ide/internal.h"
+> > @@ -40,6 +41,7 @@
+> >  #include "hw/qdev-properties.h"
+> >  #include "hw/usb.h"
+> >  #include "hw/char/pl011.h"
+> > +#include "hw/watchdog/wdt_sbsa_gwdt.h"
+> >  #include "net/net.h"
+> >  #include "qom/object.h"
+> >
+> > @@ -64,6 +66,9 @@ enum {
+> >      SBSA_GIC_DIST,
+> >      SBSA_GIC_REDIST,
+> >      SBSA_SECURE_EC,
+> > +    SBSA_GWDT,
+> > +    SBSA_GWDT_REFRESH,
+> > +    SBSA_GWDT_CONTROL,
+> >      SBSA_SMMU,
+> >      SBSA_UART,
+> >      SBSA_RTC,
+> > @@ -104,6 +109,8 @@ static const MemMapEntry sbsa_ref_memmap[] = {
+> >      [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
+> >      [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
+> >      [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
+> > +    [SBSA_GWDT_REFRESH] =       { 0x50010000, 0x00001000 },
+> > +    [SBSA_GWDT_CONTROL] =       { 0x50011000, 0x00001000 },
+> >      [SBSA_UART] =               { 0x60000000, 0x00001000 },
+> >      [SBSA_RTC] =                { 0x60010000, 0x00001000 },
+> >      [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
+> > @@ -133,6 +140,8 @@ static const int sbsa_ref_irqmap[] = {
+> >      [SBSA_SECURE_UART_MM] = 9,
+> >      [SBSA_AHCI] = 10,
+> >      [SBSA_EHCI] = 11,
+> > +    [SBSA_SMMU] = 12, /* ... to 15 */
+> > +    [SBSA_GWDT] = 16,
+> >  };
+> >
+> >  static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+> > @@ -141,6 +150,30 @@ static uint64_t
+> sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
+> >      return arm_cpu_mp_affinity(idx, clustersz);
+> >  }
+> >
+> > +static void create_wdt_fdt(SBSAMachineState *sms)
+> > +{
+> > +    char *nodename;
+> > +    const char compat[] = "arm,sbsa-gwdt";
+> > +
+> > +    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
+> > +    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
+> > +    int irq = sbsa_ref_irqmap[SBSA_GWDT];
+> > +
+> > +    nodename = g_strdup_printf("/watchdog@%" PRIx64, rbase);
+> > +    qemu_fdt_add_subnode(sms->fdt, nodename);
+> > +
+> > +    qemu_fdt_setprop(sms->fdt, nodename, "compatible",
+> > +                             compat, sizeof(compat));
+> > +    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
+> > +                                 2, rbase, 2, SBSA_GWDT_RMMIO_SIZE,
+> > +                                 2, cbase, 2, SBSA_GWDT_CMMIO_SIZE);
+> > +    qemu_fdt_setprop_cells(sms->fdt, nodename, "interrupts",
+> > +                                GIC_FDT_IRQ_TYPE_PPI, irq,
+> > +                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
+> > +    qemu_fdt_setprop_cell(sms->fdt, nodename, "timeout-sec", 30);
+> > +    g_free(nodename);
+> > +}
+> > +
 >
-> This is already in master (commit e7e5a9595ab) -- this email is
-
-I thought I saw that in the bug report, but I just assumed it was
-pointing to a branch.
-
-> one of a set of stale patchmails I sent out by mistake on Monday
-> when I mangled a git send-email command. Sorry for the confusion.
-
-Strange. No worries.
-
-Alistair
-
+> Is this actually used anywhere? I ask because SBSA-ref is not a FDT
+> booting machine and only uses FDT to transfer some dynamic info to
+> arm-tf/edk2 and is not a full description tree. Your ACPI patch in
+> edk2 certainly does not use this info.
 >
-> -- PMM
+> Graeme
+>
+>
+> >  /*
+> >   * Firmware on this machine only uses ACPI table to load OS, these
+> limited
+> >   * device tree nodes are just to let firmware know the info which
+> varies from
+> > @@ -219,6 +252,7 @@ static void create_fdt(SBSAMachineState *sms)
+> >
+> >          g_free(nodename);
+> >      }
+> > +    create_wdt_fdt(sms);
+> >  }
+> >
+> >  #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
+> > @@ -447,6 +481,20 @@ static void create_rtc(const SBSAMachineState *sms)
+> >      sysbus_create_simple("pl031", base, qdev_get_gpio_in(sms->gic,
+> irq));
+> >  }
+> >
+> > +static void create_wdt(const SBSAMachineState *sms)
+> > +{
+> > +    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
+> > +    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
+> > +    DeviceState *dev = qdev_new(TYPE_WDT_SBSA_GWDT);
+> > +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
+> > +    int irq = sbsa_ref_irqmap[SBSA_GWDT];
+> > +
+> > +    sysbus_realize_and_unref(s, &error_fatal);
+> > +    sysbus_mmio_map(s, 0, rbase);
+> > +    sysbus_mmio_map(s, 1, cbase);
+> > +    sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms->gic, irq));
+> > +}
+> > +
+> >  static DeviceState *gpio_key_dev;
+> >  static void sbsa_ref_powerdown_req(Notifier *n, void *opaque)
+> >  {
+> > @@ -730,6 +778,8 @@ static void sbsa_ref_init(MachineState *machine)
+> >
+> >      create_rtc(sms);
+> >
+> > +    create_wdt(sms);
+> > +
+> >      create_gpio(sms);
+> >
+> >      create_ahci(sms);
+> > --
+> > 2.18.4
+> >
+> >
+>
+
+--000000000000c1ecb405b1a48776
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>This was added as a placeholder for the virt requirem=
+ent suggested by=20
+Maxim earlier.Agreed that this fdt otherwise has no significance for=20
+sbsa-ref platform nor is being used by ACPI table created for wdt.</div><di=
+v><br></div><div>-Shashi<br></div></div><br><div class=3D"gmail_quote"><div=
+ dir=3D"ltr" class=3D"gmail_attr">On Wed, 14 Oct 2020 at 05:31, Graeme Greg=
+ory &lt;<a href=3D"mailto:graeme@nuviainc.com">graeme@nuviainc.com</a>&gt; =
+wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0=
+px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">On Tue, O=
+ct 13, 2020 at 11:16:31AM -0400, Shashi Mallela wrote:<br>
+&gt; Included the newly implemented SBSA generic watchdog device model into=
+<br>
+&gt; SBSA platform<br>
+&gt; <br>
+&gt; Signed-off-by: Shashi Mallela &lt;<a href=3D"mailto:shashi.mallela@lin=
+aro.org" target=3D"_blank">shashi.mallela@linaro.org</a>&gt;<br>
+&gt; ---<br>
+&gt;=C2=A0 hw/arm/sbsa-ref.c | 50 +++++++++++++++++++++++++++++++++++++++++=
+++++++<br>
+&gt;=C2=A0 1 file changed, 50 insertions(+)<br>
+&gt; <br>
+&gt; diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c<br>
+&gt; index 9c3a893bedfd..97ed41607119 100644<br>
+&gt; --- a/hw/arm/sbsa-ref.c<br>
+&gt; +++ b/hw/arm/sbsa-ref.c<br>
+&gt; @@ -30,6 +30,7 @@<br>
+&gt;=C2=A0 #include &quot;exec/hwaddr.h&quot;<br>
+&gt;=C2=A0 #include &quot;kvm_arm.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/arm/boot.h&quot;<br>
+&gt; +#include &quot;hw/arm/fdt.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/block/flash.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/boards.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/ide/internal.h&quot;<br>
+&gt; @@ -40,6 +41,7 @@<br>
+&gt;=C2=A0 #include &quot;hw/qdev-properties.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/usb.h&quot;<br>
+&gt;=C2=A0 #include &quot;hw/char/pl011.h&quot;<br>
+&gt; +#include &quot;hw/watchdog/wdt_sbsa_gwdt.h&quot;<br>
+&gt;=C2=A0 #include &quot;net/net.h&quot;<br>
+&gt;=C2=A0 #include &quot;qom/object.h&quot;<br>
+&gt;=C2=A0 <br>
+&gt; @@ -64,6 +66,9 @@ enum {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 SBSA_GIC_DIST,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 SBSA_GIC_REDIST,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 SBSA_SECURE_EC,<br>
+&gt; +=C2=A0 =C2=A0 SBSA_GWDT,<br>
+&gt; +=C2=A0 =C2=A0 SBSA_GWDT_REFRESH,<br>
+&gt; +=C2=A0 =C2=A0 SBSA_GWDT_CONTROL,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 SBSA_SMMU,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 SBSA_UART,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 SBSA_RTC,<br>
+&gt; @@ -104,6 +109,8 @@ static const MemMapEntry sbsa_ref_memmap[] =3D {<b=
+r>
+&gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_GIC_DIST] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0{ 0x40060000, 0x00010000 },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_GIC_REDIST] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0{ 0x40080000, 0x04000000 },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_SECURE_EC] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 { 0x50000000, 0x00001000 },<br>
+&gt; +=C2=A0 =C2=A0 [SBSA_GWDT_REFRESH] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0{ 0x5=
+0010000, 0x00001000 },<br>
+&gt; +=C2=A0 =C2=A0 [SBSA_GWDT_CONTROL] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0{ 0x5=
+0011000, 0x00001000 },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_UART] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0{ 0x60000000, 0x00001000 },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_RTC] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 { 0x60010000, 0x00001000 },<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_GPIO] =3D=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0{ 0x60020000, 0x00001000 },<br>
+&gt; @@ -133,6 +140,8 @@ static const int sbsa_ref_irqmap[] =3D {<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_SECURE_UART_MM] =3D 9,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_AHCI] =3D 10,<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 [SBSA_EHCI] =3D 11,<br>
+&gt; +=C2=A0 =C2=A0 [SBSA_SMMU] =3D 12, /* ... to 15 */<br>
+&gt; +=C2=A0 =C2=A0 [SBSA_GWDT] =3D 16,<br>
+&gt;=C2=A0 };<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, =
+int idx)<br>
+&gt; @@ -141,6 +150,30 @@ static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMach=
+ineState *sms, int idx)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 return arm_cpu_mp_affinity(idx, clustersz);<br>
+&gt;=C2=A0 }<br>
+&gt;=C2=A0 <br>
+&gt; +static void create_wdt_fdt(SBSAMachineState *sms)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 char *nodename;<br>
+&gt; +=C2=A0 =C2=A0 const char compat[] =3D &quot;arm,sbsa-gwdt&quot;;<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 hwaddr rbase =3D sbsa_ref_memmap[SBSA_GWDT_REFRESH].bas=
+e;<br>
+&gt; +=C2=A0 =C2=A0 hwaddr cbase =3D sbsa_ref_memmap[SBSA_GWDT_CONTROL].bas=
+e;<br>
+&gt; +=C2=A0 =C2=A0 int irq =3D sbsa_ref_irqmap[SBSA_GWDT];<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 nodename =3D g_strdup_printf(&quot;/watchdog@%&quot; PR=
+Ix64, rbase);<br>
+&gt; +=C2=A0 =C2=A0 qemu_fdt_add_subnode(sms-&gt;fdt, nodename);<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 qemu_fdt_setprop(sms-&gt;fdt, nodename, &quot;compatibl=
+e&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0compat, sizeof(compat));<br>
+&gt; +=C2=A0 =C2=A0 qemu_fdt_setprop_sized_cells(sms-&gt;fdt, nodename, &qu=
+ot;reg&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A02, rbase, 2, SBSA_GWDT_RMM=
+IO_SIZE,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A02, cbase, 2, SBSA_GWDT_CMM=
+IO_SIZE);<br>
+&gt; +=C2=A0 =C2=A0 qemu_fdt_setprop_cells(sms-&gt;fdt, nodename, &quot;int=
+errupts&quot;,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 GIC_FDT_IRQ_TYPE_PPI, irq,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 GIC_FDT_IRQ_FLAGS_LEVEL_HI);<br>
+&gt; +=C2=A0 =C2=A0 qemu_fdt_setprop_cell(sms-&gt;fdt, nodename, &quot;time=
+out-sec&quot;, 30);<br>
+&gt; +=C2=A0 =C2=A0 g_free(nodename);<br>
+&gt; +}<br>
+&gt; +<br>
+<br>
+Is this actually used anywhere? I ask because SBSA-ref is not a FDT<br>
+booting machine and only uses FDT to transfer some dynamic info to<br>
+arm-tf/edk2 and is not a full description tree. Your ACPI patch in<br>
+edk2 certainly does not use this info.<br>
+<br>
+Graeme<br>
+<br>
+<br>
+&gt;=C2=A0 /*<br>
+&gt;=C2=A0 =C2=A0* Firmware on this machine only uses ACPI table to load OS=
+, these limited<br>
+&gt;=C2=A0 =C2=A0* device tree nodes are just to let firmware know the info=
+ which varies from<br>
+&gt; @@ -219,6 +252,7 @@ static void create_fdt(SBSAMachineState *sms)<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 g_free(nodename);<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 }<br>
+&gt; +=C2=A0 =C2=A0 create_wdt_fdt(sms);<br>
+&gt;=C2=A0 }<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)<br>
+&gt; @@ -447,6 +481,20 @@ static void create_rtc(const SBSAMachineState *sm=
+s)<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 sysbus_create_simple(&quot;pl031&quot;, base, qdev=
+_get_gpio_in(sms-&gt;gic, irq));<br>
+&gt;=C2=A0 }<br>
+&gt;=C2=A0 <br>
+&gt; +static void create_wdt(const SBSAMachineState *sms)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 hwaddr rbase =3D sbsa_ref_memmap[SBSA_GWDT_REFRESH].bas=
+e;<br>
+&gt; +=C2=A0 =C2=A0 hwaddr cbase =3D sbsa_ref_memmap[SBSA_GWDT_CONTROL].bas=
+e;<br>
+&gt; +=C2=A0 =C2=A0 DeviceState *dev =3D qdev_new(TYPE_WDT_SBSA_GWDT);<br>
+&gt; +=C2=A0 =C2=A0 SysBusDevice *s =3D SYS_BUS_DEVICE(dev);<br>
+&gt; +=C2=A0 =C2=A0 int irq =3D sbsa_ref_irqmap[SBSA_GWDT];<br>
+&gt; +<br>
+&gt; +=C2=A0 =C2=A0 sysbus_realize_and_unref(s, &amp;error_fatal);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(s, 0, rbase);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_mmio_map(s, 1, cbase);<br>
+&gt; +=C2=A0 =C2=A0 sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms-&gt;gic, =
+irq));<br>
+&gt; +}<br>
+&gt; +<br>
+&gt;=C2=A0 static DeviceState *gpio_key_dev;<br>
+&gt;=C2=A0 static void sbsa_ref_powerdown_req(Notifier *n, void *opaque)<br=
+>
+&gt;=C2=A0 {<br>
+&gt; @@ -730,6 +778,8 @@ static void sbsa_ref_init(MachineState *machine)<b=
+r>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 create_rtc(sms);<br>
+&gt;=C2=A0 <br>
+&gt; +=C2=A0 =C2=A0 create_wdt(sms);<br>
+&gt; +<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 create_gpio(sms);<br>
+&gt;=C2=A0 <br>
+&gt;=C2=A0 =C2=A0 =C2=A0 create_ahci(sms);<br>
+&gt; -- <br>
+&gt; 2.18.4<br>
+&gt; <br>
+&gt; <br>
+</blockquote></div>
+
+--000000000000c1ecb405b1a48776--

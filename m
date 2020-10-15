@@ -1,116 +1,129 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp714521lfa;
-        Fri, 23 Oct 2020 10:35:34 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnEAapK8M5PqEHfQmdHZahY8gGR0F7GkesU5cM9u8RliHAxDO//EOTWYR8YJfAiL7LCNZs
-X-Received: by 2002:a05:622a:1d4:: with SMTP id t20mr3337136qtw.173.1603474534491;
-        Fri, 23 Oct 2020 10:35:34 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603474534; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp797659lfa;
+        Thu, 15 Oct 2020 11:02:33 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzAWVuAlcJhTxXY0lmH00MFywtwipX1IOskuiAmkbAvOi1qFtuLwmYg7qtOm09brWyJbp6s
+X-Received: by 2002:a25:fc0c:: with SMTP id v12mr6569999ybd.351.1602784953814;
+        Thu, 15 Oct 2020 11:02:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602784953; cv=none;
         d=google.com; s=arc-20160816;
-        b=qPRw7u4YABTbl7DZkZLqJGtDXkwA/2ifNCFm12p/arSS4p4wz48dVpg59vg37xx3bI
-         t/YHACRk6PLR4qPVD5oDtY3iZGFUFCixIuQMvL63EIcWUC75anE2/e34VNAovH1BFodG
-         RTRYNplLy/Rbdkx4EH6PeRmrZyJqcymhrjnPt/eC8DklEUn0INzJrev2ikSRGjy6Ml5/
-         julhceuptrtYbR1wtJdooujTwUnFgbbNqX+J8yQ+oj9LX0QtioFZ+rpSxYU9WnsbuzJN
-         0PC/jJgPWQK0FH3I+JogZtGpbBTTf0FzPOhFnu44cQho+B6ZkQFU5ZR4N0zNCIBMFVk4
-         SuHQ==
+        b=YW9EiTb2bp2QXNBJhWK11uEbNFarRLMAISKVycFwAT3ekvhxoHxYkEB2hI2CchQylH
+         IDOtCuls34CBh5G1XK6yyAMxr0tLB0IPJSHbNadrZSp5ETkST5A633fPmS/HQlbpevPk
+         R5CJ1irsmcTu/Gp3tlNrCdCm4tQFIcVbJhDGXusQSZWQs08ErtJnJqB600yzGfPYl/TR
+         Bfifs6tMf7ujnl013OaDguBbW5kcFV3bGU9IeZljGPvVVYSQxQw0Am9EiavPSpJBnsAq
+         V24aFk6u+EhGatl/m2dgw4fazCHzGbd5uNVNWdYiKZ7GW31oTlfYUtFr/QzrDjx86x5L
+         +tuA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=fNj5eXTv9uSww8Em5BotaPpbN3t9ohV8mupF1oepGKc=;
-        b=klHDu+PgN2HIHvuwgRA7TMoJnsKGV4OTUQTrsZlRZHA19pKW/PFAAfzBYLYD5h/MjJ
-         n4j+MRuxYsoiGAWnnAfF6x9XaxNZfgmj5NfeOdG1/Rz4HPiiXPOBDeh6KRbWNIyrNMrw
-         NQYY+ZNG4FpXkoA/v3iM6Swxi+ZzjJnNCQWFIg3/0tnVjRlTWySo/IcWjS4wDlMrndT+
-         rLAxZzOydK8WC6Du8NuSGS/s3c4dNMREjO7OCLa8h1U5Y0QtPLRML2PxfizAN9cRpeWm
-         y2zxcz0PUUCPo+YRC06vaYanR7WJEYK1mRoKE+TqRNySQRh4yo8+FxaDfMW9pc4QUKdR
-         z5kQ==
+        bh=Mag/Kcm/YoTzcvdAz05eCoVI8A8FD2AuRXcNnSFNPZI=;
+        b=A0orSwH90UOFAXiMurp5Iw0UXeJckyD1/t78y/KNEY78QYesNUIihKiSJtvjXllwN+
+         5C6PH6kbp2RTZRCV9Q3BT4LJGyzOYQ2P5bgwnQ9vvgvRPcPP66JODPaNvEN1k/FxAo3+
+         lCm9EjR0o8+U3wtakij+qkZQAI3DK6Oy8XXJPeozlLgAUvT6UyWsbJYFkTp053HQhjvp
+         bNkeaBVmaMEEbxz/XeSb7zYH02LAX3DFDtphZD5wfjQSv7xZpbisyjfcRG1PBIrTAaSu
+         1t9pyoSfo8d6hxal/o14A943THVRj7IxV/fR1vycToRvhiP16LBF1z/QeARTfOKz/BF6
+         aHEw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YzyXkEL1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SKIwHSjJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f12si1007725qtp.59.2020.10.23.10.35.34
+        by mx.google.com with ESMTPS id h6si4094016ybg.143.2020.10.15.11.02.33
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Oct 2020 10:35:34 -0700 (PDT)
+        Thu, 15 Oct 2020 11:02:33 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=YzyXkEL1;
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b=SKIwHSjJ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:39104 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:49376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kW0yT-0007ts-Sr
-	for alex.bennee@linaro.org; Fri, 23 Oct 2020 13:35:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36300)
+	id 1kT7aD-00067L-7D
+	for alex.bennee@linaro.org; Thu, 15 Oct 2020 14:02:33 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60724)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kW0yK-0007sR-Az; Fri, 23 Oct 2020 13:35:24 -0400
-Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:44343)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kW0yI-0001is-GS; Fri, 23 Oct 2020 13:35:24 -0400
-Received: by mail-wr1-x442.google.com with SMTP id t9so2922173wrq.11;
- Fri, 23 Oct 2020 10:35:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=fNj5eXTv9uSww8Em5BotaPpbN3t9ohV8mupF1oepGKc=;
- b=YzyXkEL1uJSfxjHsFprrnb1g503YnEWB83y/X7TVe39JUd3O2jKMwJGnFRJ8BxFEDF
- ObQlesC8ZqmGwKYlDzug0dD48M0vlD7APoUO1X6///NwffVXZL/TnMtv/4CftYBz8Eos
- 73VgBMTNoD8i5YSp3YweZugN7StYD/lw0mLt1lMOlDAvLriyhPVTs4JCvEqSlG/+pSA0
- Qar/ZuCc/1Sc3MgU3+N42YJbGjkauRZhtYThyvI83S5oxbrGtksjiCG/v6a1NXe5U9of
- JJUDFrHg9lmrMqUdctOnHEB6gi3QVi7oAog+oIhHudStGETydmzCy4l7OPKFBmdRR7vl
- ESyQ==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kT7Zn-00065n-EP
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2020 14:02:07 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:54232)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kT7Zl-0001xx-9M
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2020 14:02:07 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602784923;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Mag/Kcm/YoTzcvdAz05eCoVI8A8FD2AuRXcNnSFNPZI=;
+ b=SKIwHSjJ1Gc/RA91l5gd5dxzt64xSEQ8tx2Er3ub8bn9DQrneVHCCDmqQWCUzG/m429tgn
+ n6K2TzO3trQNF0HUCMU4jsJM+R1+ry9MUzDhPftCeRaWn+A9IAo9ntvWmPxSuMcpGEGyoa
+ sVvXosewbcP+1gJ1dyHx7XfZWl1OyMk=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-446-2LvA3gz0PVK5kQ-pdQmyOg-1; Thu, 15 Oct 2020 14:02:01 -0400
+X-MC-Unique: 2LvA3gz0PVK5kQ-pdQmyOg-1
+Received: by mail-wr1-f70.google.com with SMTP id 33so2441723wrf.22
+ for <qemu-arm@nongnu.org>; Thu, 15 Oct 2020 11:02:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=fNj5eXTv9uSww8Em5BotaPpbN3t9ohV8mupF1oepGKc=;
- b=kFJou2d/BiN9PVR0SP1zE1Mf3BOtb1DEikiOn3qLSsNhKP1mBhj4zUmBRpzM59/LlK
- N98x0iXFH0OmFTFIs5QKtIP4dpov3nL1GIAR0lnab08aeS0JnCNteGzdD3C4Xpqbr9wM
- 1RBhA/75Uq8vpxYzODq0EBGVAdmDwfExctOxGGN3b/glFKuwPjN4H+bLI94EB3krdiR3
- cfLO51XZUjy2AOd/KPDTuik0xhi8A07sSofCG/o3dfK7gIPHsQzWrjjzzimK8H7UVSRy
- 09osVXMBjk9s21gM6NBS5i8ywLItKkwpLEHUAbC89MDmJqVdRex3cVHY4p0KAjeZ3sBz
- GxnA==
-X-Gm-Message-State: AOAM531fETJMvdc4FIvPQOKxNqSdkiEY51kRyrBL3nAhimSfXXZkAZeE
- irD03GEng0qVwBWFGyCsDXg=
-X-Received: by 2002:adf:e447:: with SMTP id t7mr3749423wrm.384.1603474520619; 
- Fri, 23 Oct 2020 10:35:20 -0700 (PDT)
-Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
- [88.18.140.237])
- by smtp.gmail.com with ESMTPSA id g8sm5498228wma.36.2020.10.23.10.35.19
+ bh=Mag/Kcm/YoTzcvdAz05eCoVI8A8FD2AuRXcNnSFNPZI=;
+ b=B+EkyuMyq+uSyfnESaOg0otniDXiWC1GmVzj70y+shS/RmyeMYGKze1DsczFbyRSOe
+ gNQhD5lkrAWQGlJIJuG2LCOBmliS7E/RvEkEhKxuQraHuoQemXDUa4grdO/+l8s7xMox
+ 0A7H4HUeu9biUG3XJfoSHvxyv/rEpqZuQjm4vNOATxhKz/+MEG281b0P1hOhaeKylf/s
+ Epuh5kqYeKMETCa+7ixRvpMrflLMBsjnAOmFsqUeiR8aMPhmLLCsfJ/FOzzFghaPFG2m
+ 4whCI11HL2ZnJX9WRYNR/jQIl1AqHw7ndHKzUg5jY0R/0mHGPQatRzzUhGuRrUMrNC88
+ GhVA==
+X-Gm-Message-State: AOAM532uaJ9TfDGLz0qVutJ7YQ7tBtQxTT/aiSqq8daO/eHyRH93F/zg
+ QFPzbd8SMAqf04vf4cKbgq1DyyaBJJc0Zf1jJ5gkO7cED2zyf4k9QWU2KU7JpyqsUzB6KP8hC6q
+ NixRl1GtU+V8Z
+X-Received: by 2002:adf:eac6:: with SMTP id o6mr6046140wrn.117.1602784918898; 
+ Thu, 15 Oct 2020 11:01:58 -0700 (PDT)
+X-Received: by 2002:adf:eac6:: with SMTP id o6mr6046091wrn.117.1602784918551; 
+ Thu, 15 Oct 2020 11:01:58 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id l1sm57584wrb.1.2020.10.15.11.01.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Oct 2020 10:35:19 -0700 (PDT)
-Subject: Re: [PATCH v3 8/9] hw/arm/raspi: Add the Raspberry Pi Zero machine
-To: Igor Mammedov <imammedo@redhat.com>
-References: <20201018203358.1530378-1-f4bug@amsat.org>
- <20201018203358.1530378-9-f4bug@amsat.org>
- <20201023175130.50a379bd@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <af02ebea-0aeb-9e6a-5f79-95aeb10b1bb4@amsat.org>
-Date: Fri, 23 Oct 2020 19:35:19 +0200
+ Thu, 15 Oct 2020 11:01:57 -0700 (PDT)
+Subject: Re: [RFC 0/5] NVMe passthrough: Support 64kB page host
+To: Auger Eric <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanha@redhat.com,
+ fam@euphon.net, alex.williamson@redhat.com
+References: <20201015115252.15582-1-eric.auger@redhat.com>
+ <0a1ae4dd-064b-49c5-0669-04219646f616@redhat.com>
+ <d3ba4c98-67b8-0d38-378a-805fb02b3d40@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <920515f6-aae8-41fa-007a-701bdd6cdf1c@redhat.com>
+Date: Thu, 15 Oct 2020 20:01:56 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201023175130.50a379bd@redhat.com>
+In-Reply-To: <d3ba4c98-67b8-0d38-378a-805fb02b3d40@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::442;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.108,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/15 02:10:02
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.019, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,96 +136,57 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
- qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>,
- qemu-arm@nongnu.org, Luc Michel <luc.michel@greensocs.com>
+Cc: kwolf@redhat.com, mreitz@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 22f1VQIuezh3
+X-TUID: +IZ0zg63Ln9h
 
-Hi Igor,
-
-On 10/23/20 5:51 PM, Igor Mammedov wrote:
-> On Sun, 18 Oct 2020 22:33:57 +0200
-> Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+On 10/15/20 6:15 PM, Auger Eric wrote:
+> Hi Philippe,
 > 
->> Similarly to the Pi A, the Pi Zero uses a BCM2835 SoC (ARMv6Z core).
+> On 10/15/20 3:49 PM, Philippe Mathieu-Daudé wrote:
+>> On 10/15/20 1:52 PM, Eric Auger wrote:
+>>> This series allows NVMe passthrough on aarch64 with 64kB page host.
+>>> Addresses and sizes of buffers which are VFIO DMA mapped are
+>>> aligned with the host page size.
+>>>
+>>> nvme_register_buf() path is taken care of in this series
+>>> but it does not seem to prevent the use case from working.
+>>>
+>>> Best Regards
+>>>
+>>> Eric
+>>>
+>>> This series can be found at:
+>>> https://github.com/eauger/qemu/tree/nvme_64k_rfc
+>>>
+>>> This was tested on ARM only.
+>>>
+>>> Eric Auger (5):
+>>>     block/nvme: use some NVME_CAP_* macros
+>>>     block/nvme: Change size and alignment of IDENTIFY response buffer
+>>>     block/nvme: Change size and alignment of queue
+>>>     block/nvme: Change size and alignment of prp_list_pages
+>>>     block/nvme: Align iov's va and size on host page size
 >>
->> Example booting the machine using content from [*]:
->>
->>    $ qemu-system-arm -M raspi0 -serial stdio \
->>        -kernel raspberrypi/firmware/boot/kernel.img \
->>        -dtb raspberrypi/firmware/boot/bcm2708-rpi-zero.dtb \
->>        -append 'printk.time=0 earlycon=pl011,0x20201000 console=ttyAMA0'
->>    [    0.000000] Booting Linux on physical CPU 0x0
->>    [    0.000000] Linux version 4.19.118+ (dom@buildbot) (gcc version 4.9.3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1311 Mon Apr 27 14:16:15 BST 2020
->>    [    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 (ARMv7), cr=00c5387d
->>    [    0.000000] CPU: VIPT aliasing data cache, unknown instruction cache
->>    [    0.000000] OF: fdt: Machine model: Raspberry Pi Zero
->>    ...
->>
->> [*] http://archive.raspberrypi.org/debian/pool/main/r/raspberrypi-firmware/raspberrypi-kernel_1.20200512-2_armhf.deb
->>
->> Reviewed-by: Luc Michel <luc.michel@greensocs.com>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   hw/arm/raspi.c | 13 +++++++++++++
->>   1 file changed, 13 insertions(+)
->>
->> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
->> index 91a59d1d489..1510ca01afe 100644
->> --- a/hw/arm/raspi.c
->> +++ b/hw/arm/raspi.c
->> @@ -319,6 +319,15 @@ static void raspi_machine_class_common_init(MachineClass *mc,
->>       mc->default_ram_id = "ram";
->>   };
->>   
->> +static void raspi0_machine_class_init(ObjectClass *oc, void *data)
->> +{
->> +    MachineClass *mc = MACHINE_CLASS(oc);
->> +    RaspiMachineClass *rmc = RASPI_MACHINE_CLASS(oc);
->> +
->> +    rmc->board_rev = 0x900092;
+>> Since it is easier for me to rebase on top of your series,
+>> I'm including it in my work (fixing the checkpatch errors)
+>> and will repost block/nvme/ patches altogether.
 > 
-> shouldn't it be
-> 920092	Zero	1.2	512MB	Embest
-> or
-> 920093  Zero	1.3	512MB	Embest
+> There should be one warning (line exceeding 80 chars) but no error. I
+> can easily rebase/respin if you prefer.
 
-I took the value from the "New-style revision codes"
-table listed in hw/arm/raspi.c before the REV_CODE
-register definitions:
-
-https://www.raspberrypi.org/documentation/hardware/raspberrypi/revision-codes/README.md
-
-90009x's manufacturer is "Sony UK", 92009x is "Embest".
-I guess we don't care much the manufacturer :)
-
-The Revision 1.3 exposed the MIPI camera interface.
-As we don't model it, I prefer to use the 1.2 revision
-which matches better.
-
-I'll add this information in the commit description.
-
-Thanks for reviewing!
+Yes, warnings, no error. No need to respin.
 
 > 
->> +    raspi_machine_class_common_init(mc, rmc->board_rev);
->> +};
->> +
->>   static void raspi1ap_machine_class_init(ObjectClass *oc, void *data)
->>   {
->>       MachineClass *mc = MACHINE_CLASS(oc);
->> @@ -352,6 +361,10 @@ static void raspi3b_machine_class_init(ObjectClass *oc, void *data)
->>   
->>   static const TypeInfo raspi_machine_types[] = {
->>       {
->> +        .name           = MACHINE_TYPE_NAME("raspi0"),
->> +        .parent         = TYPE_RASPI_MACHINE,
->> +        .class_init     = raspi0_machine_class_init,
->> +    }, {
->>           .name           = MACHINE_TYPE_NAME("raspi1ap"),
->>           .parent         = TYPE_RASPI_MACHINE,
->>           .class_init     = raspi1ap_machine_class_init,
+> Thanks
 > 
+> Eric
+>>
+>> Regards,
+>>
+>> Phil.
+>>
+>>
 > 
+

@@ -1,116 +1,117 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp580110lfa;
-        Thu, 15 Oct 2020 06:31:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwX1ZEqLB+LoONvSvagGDHQpUx+ZpBaLunfEhzY+hIlJWV9a9q9+ckT7sSwCGbF/zolG7j9
-X-Received: by 2002:a25:d0cc:: with SMTP id h195mr4995203ybg.74.1602768708306;
-        Thu, 15 Oct 2020 06:31:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602768708; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp581639lfa;
+        Thu, 15 Oct 2020 06:33:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzjC3sA+Wa6K0WgU4OccLpggEVVVESblZpLfWS1gW+c03YPNbDcdtZyf6Kebs7T+xw44Oay
+X-Received: by 2002:a25:ba81:: with SMTP id s1mr5992972ybg.0.1602768816732;
+        Thu, 15 Oct 2020 06:33:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602768816; cv=none;
         d=google.com; s=arc-20160816;
-        b=1H/HvAKzxiTmoCngQkPiucgoRKtO6sQQn6bM9kkVhdn0uCCRTkYLwQgG3c/4UxmQa8
-         ps9Z5oL5s93dz6J3VDq36XWgZo9Ro/Oje2Si3gEw8T6q3VMFkRtTUqJH/el0PlDqi7R9
-         UDWyMLNcZ1Gb0/fAQfBdUFx4gweRy9CyunPivf6tqnXtMuw2J+f5r42Le/R65InvvY5x
-         fhnat/FFESH17JOfF8D8+BGO9X0klnYbDcLccNUPqNdE0tIkTbGYN3kXlsdrwARVYkW2
-         ghs4qpn5km/LOuhlvskx66c753yZvVZaOx8f/yWc39OPLRycCPSHIcJ9XxaM1rx6vZoY
-         6Siw==
+        b=uUfyxTr14fJN91A9H6iOCxoxKHOC2bwJkDARLyjBzDH4QWAVeUuzkXqpunddDRPQxD
+         HNYchUK5KdB7tlggR40UaccxE5y7pe0jyCn80gPssQqcU/rabW9aIsS7jaWyOTkhC+kJ
+         73koaXe89wQESzxf6u0xc6bIN/Xmx1eal225fia2MdLLV60GX+f+xMVW0JutVV5AZ8mR
+         K6TxslHy30ZTyDriFKeXhLb8To3cNvfbBXFiK2IqoNYWMzdBNGm3sarW32t4X8puK1BS
+         tbVCxSBenlIeAru2DC9ftwrtyZ/c+jkQpEpaMRin+7DtmMFTn/08SKhjBNeZwz5j1Oss
+         hIfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=wWIj/V+At6wGcT9oMPT+XqqE/jReRtUlFwmdw1Nr46E=;
-        b=SUvDNkj+7zSwgjwIS44jEa8yHUxRf+zwlS2Oro4tg8jmBBWAeMK6L+/hl3GHLAQdlH
-         zNsYLLTvKr4lVpIpFDPkDm33Bi/8CF/gHyT163EFxNef95TobEMgRdhpsNgndJm8MZUM
-         U7hs2XLybfZH4G6TdKoflMmrcJgKUApRnjpkO+RdRSpPaBLG8UJJ1UKxaL9hIr5WZtfI
-         uK5e2apuZkJAy4MjRD4dwvW2kTeDNZEWuVvMQvceOhc2wFHo8xrhiKmF7E3i46JuEWea
-         XSMaoVSESOyViGzvKRnNeRdwLJhv+WvPhoTKX+Ysvy2uQvHMuRrJLRGqGPgWKy7+UirG
-         E/5Q==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=zlH9AbW2nMap1YXCmxMKaftOvfQfspTNqbpp84Phbfw=;
+        b=jBInfPh5ME8DOioiZk2s1a8cfDXo+x9WYw05xHvgxdW/2p/LzOz8AnohCryCA2zKpW
+         ohWytbXamdMjmyd8PciwB2PIQ76/ireb1quqzXyAAnpFkW6cdYeuR4+TOKKisLmTN7pM
+         AsCHusShuxs+OGYxIC8f/zcvlWz7vQwEKbYvszYPBbuy6h3S4cu5fVJ1guJEF95GkK08
+         LGUJPj0nuuek4/HKf5j3Mca1xZ/naDx+K3xrCBxNaCAbbS2tqZeUoXq/rUuA+dLTCokN
+         +U1xZZpT51cCP0k2IpfNsGkpLoaEn5/ydFMcvkhfSEHefYQ/wwR+bYhXRiC/cw7Su/LR
+         dfXA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GPWdYpvY;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SLa84P2b;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f9si2569064ybf.366.2020.10.15.06.31.48
+        by mx.google.com with ESMTPS id q128si2540960ybc.121.2020.10.15.06.33.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Oct 2020 06:31:48 -0700 (PDT)
+        Thu, 15 Oct 2020 06:33:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GPWdYpvY;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=SLa84P2b;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47422 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:51402 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kT3MB-0004E2-Lo
-	for alex.bennee@linaro.org; Thu, 15 Oct 2020 09:31:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49384)
+	id 1kT3Nw-0005tQ-56
+	for alex.bennee@linaro.org; Thu, 15 Oct 2020 09:33:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49958)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kT3KB-0002vJ-7n
- for qemu-devel@nongnu.org; Thu, 15 Oct 2020 09:29:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:48866)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kT3MV-00058g-Vc
+ for qemu-devel@nongnu.org; Thu, 15 Oct 2020 09:32:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:25892)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kT3K9-0007Mm-Fx
- for qemu-devel@nongnu.org; Thu, 15 Oct 2020 09:29:42 -0400
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kT3MT-0007nv-V6
+ for qemu-devel@nongnu.org; Thu, 15 Oct 2020 09:32:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602768580;
+ s=mimecast20190719; t=1602768725;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wWIj/V+At6wGcT9oMPT+XqqE/jReRtUlFwmdw1Nr46E=;
- b=GPWdYpvY/Vl83raT55PHlxjiNkWkk9NOJsS28mZ2THIBbiMITyUEkRA4OTLg/s+j9P6ANF
- mz/YjL5/iRadcAGlDs1T6H7ttvqdo7PzplOy1mLcLDsehQh98TuK4cS5+xRnshRYgMk5BY
- 3+H9NOZ8vfWsUIKY5/HdoewtTF6CxZQ=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-159-rf5dbduvPeOCez_JewTb3g-1; Thu, 15 Oct 2020 09:29:37 -0400
-X-MC-Unique: rf5dbduvPeOCez_JewTb3g-1
-Received: by mail-wr1-f71.google.com with SMTP id r8so1887050wrp.5
- for <qemu-devel@nongnu.org>; Thu, 15 Oct 2020 06:29:37 -0700 (PDT)
+ bh=zlH9AbW2nMap1YXCmxMKaftOvfQfspTNqbpp84Phbfw=;
+ b=SLa84P2bYvFlC9f1OoAnak+e8It9NEkQolRA1/w99ne5EQ676ZV/cEGnU0a4u4V4ezCzLz
+ 3o6B1zOt01GMWtpeJ7dZXyOamZCBofNquuO92LW34RGNkNBiRwuRDlUi0xGqeo75FPPaLn
+ mxlRAQRjklhi5fJr8EN/lVluYuH89+4=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-545-_1ZDziPWNmSfM_-6YcO_BA-1; Thu, 15 Oct 2020 09:32:03 -0400
+X-MC-Unique: _1ZDziPWNmSfM_-6YcO_BA-1
+Received: by mail-wm1-f72.google.com with SMTP id c204so1869918wmd.5
+ for <qemu-devel@nongnu.org>; Thu, 15 Oct 2020 06:32:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ h=x-gm-message-state:subject:from:to:cc:references:message-id:date
  :user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=wWIj/V+At6wGcT9oMPT+XqqE/jReRtUlFwmdw1Nr46E=;
- b=ESxaf9lAoznujPlMbfbkuYoAEHkay6rA98Zs6na/W15DEfv87Iu9B+ByTTIUh1XIsN
- 2+DTqNZmtUIENArFlL24PZr7FGxEJRW8XuM+SzvRLA8G5UoFtGtC1VC7PzyYFIca1unu
- OeZKuxZ5Cn1u7R/cJ/sksnzwxbZmYs8WBZOQ3FYqXt/ODN/PzR7MZT0Q7cMU0WK4CRCm
- DGQvblIGP6IKUK+jz0gzAIHfTSkCOcMPoFtTShtGfomql1+VNi7oqqjtOfDBI7mOJjdd
- ZZYEQXHTyCevrUwPxqqD2HjB4OxN8i8VxD9CIhI+vK0RSzvK30EdCS9dt1aecJO8SQ3M
- v9iw==
-X-Gm-Message-State: AOAM5338oMqg/6MEdbFggNnXfDMPGG1uL0hD5vPHmjWVMFbr5G5WMaJS
- PbqGaTsoz7xnhEzk0PGilmb1NMma2cwkR1y1sPiV+ksrYsUtUtFEMSWChg3FQ9s9jkaHpSBVhl7
- X6GAVMghXCcmCn+8=
-X-Received: by 2002:adf:bc4a:: with SMTP id a10mr4402097wrh.253.1602768576576; 
- Thu, 15 Oct 2020 06:29:36 -0700 (PDT)
-X-Received: by 2002:adf:bc4a:: with SMTP id a10mr4402072wrh.253.1602768576330; 
- Thu, 15 Oct 2020 06:29:36 -0700 (PDT)
+ bh=zlH9AbW2nMap1YXCmxMKaftOvfQfspTNqbpp84Phbfw=;
+ b=ft8paauPhMfih93oc3x56ipScsYlRv/pSezc5xM9fWVRE1F1Plz915E32GTYBSksPd
+ MLtyNu1FaoFwQnnEUVpieD1aiDSsO4iDyyk8CQfIiWTddd/Amb/pLJ7KsG+j/rVM+PBP
+ 3u88pYRxEU56FKY2FHY/wgLNDJH8qMYvBdo2nROQdlRdbqlRfVa7IQdyUY4u/kXSxhKY
+ sJGZ8E2AlET4Y94jtk0SGsDWjzFLW3tuMeQAT2NXxHUQie3xLe+M7fdMxrDfD6j1nbmg
+ hqvkdjVk+DgLTw00hh+2c5yhTg5Wy5+tr8KMQXlYBYOpLc3bbu/4DJM75zfsfWeB03xT
+ BdbA==
+X-Gm-Message-State: AOAM530lMNtZ6zigxAnfjdZkyxo31tb56IbswNtUDakcM5xBhbdK3Lbu
+ E3b2WpSmIGDw7LPfwdDReusiRb8IHi6zISMh5jNXzfh/nuG1MYzm+pZJk/pjNVfSvMGaji5fjOR
+ pd9dsTHJr3zYhoDM=
+X-Received: by 2002:a5d:6904:: with SMTP id t4mr4628378wru.410.1602768722053; 
+ Thu, 15 Oct 2020 06:32:02 -0700 (PDT)
+X-Received: by 2002:a5d:6904:: with SMTP id t4mr4628355wru.410.1602768721850; 
+ Thu, 15 Oct 2020 06:32:01 -0700 (PDT)
 Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
  [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id a127sm4827909wmh.13.2020.10.15.06.29.34
+ by smtp.gmail.com with ESMTPSA id v4sm4405771wmg.35.2020.10.15.06.32.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Oct 2020 06:29:35 -0700 (PDT)
+ Thu, 15 Oct 2020 06:32:01 -0700 (PDT)
 Subject: Re: [RFC 1/5] block/nvme: use some NVME_CAP_* macros
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
 To: Eric Auger <eric.auger@redhat.com>, eric.auger.pro@gmail.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, stefanha@redhat.com,
  fam@euphon.net, alex.williamson@redhat.com
 References: <20201015115252.15582-1-eric.auger@redhat.com>
  <20201015115252.15582-2-eric.auger@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <ca512856-40a7-01a6-ec82-3a5b8c81b52a@redhat.com>
-Date: Thu, 15 Oct 2020 15:29:34 +0200
+ <ca512856-40a7-01a6-ec82-3a5b8c81b52a@redhat.com>
+Message-ID: <e479e77c-9061-22a4-eb57-3997a3a4910b@redhat.com>
+Date: Thu, 15 Oct 2020 15:32:00 +0200
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20201015115252.15582-2-eric.auger@redhat.com>
+In-Reply-To: <ca512856-40a7-01a6-ec82-3a5b8c81b52a@redhat.com>
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/15 02:38:26
@@ -138,37 +139,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: kwolf@redhat.com, mreitz@redhat.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P4NtYlKY6kfD
+X-TUID: qheM8pZGHkWK
 
-On 10/15/20 1:52 PM, Eric Auger wrote:
-> let's use NVME_CAP_DSTRD, NVME_CAP_MPSMIN and NVME_CAP_TO macros
+On 10/15/20 3:29 PM, Philippe Mathieu-Daudé wrote:
+> On 10/15/20 1:52 PM, Eric Auger wrote:
+>> let's use NVME_CAP_DSTRD, NVME_CAP_MPSMIN and NVME_CAP_TO macros
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>>   block/nvme.c | 6 +++---
+>>   1 file changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/block/nvme.c b/block/nvme.c
+>> index f4f27b6da7..e3d96f20d0 100644
+>> --- a/block/nvme.c
+>> +++ b/block/nvme.c
+>> @@ -728,10 +728,10 @@ static int nvme_init(BlockDriverState *bs, const 
+>> char *device, int namespace,
+>>           goto out;
+>>       }
+>> -    s->page_size = MAX(4096, 1 << (12 + ((cap >> 48) & 0xF)));
+>> -    s->doorbell_scale = (4 << (((cap >> 32) & 0xF))) / sizeof(uint32_t);
+>> +    s->page_size = MAX(4096, 1 << (12 + NVME_CAP_MPSMIN(cap)));
 > 
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->   block/nvme.c | 6 +++---
->   1 file changed, 3 insertions(+), 3 deletions(-)
+> Are you suggesting commit fad1eb68862 ("block/nvme: Use register
+> definitions from 'block/nvme.h'") is buggy?
+
+Buh I wonder how we missed that :/
+
 > 
-> diff --git a/block/nvme.c b/block/nvme.c
-> index f4f27b6da7..e3d96f20d0 100644
-> --- a/block/nvme.c
-> +++ b/block/nvme.c
-> @@ -728,10 +728,10 @@ static int nvme_init(BlockDriverState *bs, const char *device, int namespace,
->           goto out;
->       }
->   
-> -    s->page_size = MAX(4096, 1 << (12 + ((cap >> 48) & 0xF)));
-> -    s->doorbell_scale = (4 << (((cap >> 32) & 0xF))) / sizeof(uint32_t);
-> +    s->page_size = MAX(4096, 1 << (12 + NVME_CAP_MPSMIN(cap)));
-
-Are you suggesting commit fad1eb68862 ("block/nvme: Use register
-definitions from 'block/nvme.h'") is buggy?
-
-> +    s->doorbell_scale = (4 << ((NVME_CAP_DSTRD(cap)))) / sizeof(uint32_t);
->       bs->bl.opt_mem_alignment = s->page_size;
-> -    timeout_ms = MIN(500 * ((cap >> 24) & 0xFF), 30000);
-> +    timeout_ms = MIN(500 * NVME_CAP_TO(cap), 30000);
->   
->       /* Reset device to get a clean state. */
->       s->regs->ctrl.cc = cpu_to_le32(le32_to_cpu(s->regs->ctrl.cc) & 0xFE);
+>> +    s->doorbell_scale = (4 << ((NVME_CAP_DSTRD(cap)))) / 
+>> sizeof(uint32_t);
+>>       bs->bl.opt_mem_alignment = s->page_size;
+>> -    timeout_ms = MIN(500 * ((cap >> 24) & 0xFF), 30000);
+>> +    timeout_ms = MIN(500 * NVME_CAP_TO(cap), 30000);
+>>       /* Reset device to get a clean state. */
+>>       s->regs->ctrl.cc = cpu_to_le32(le32_to_cpu(s->regs->ctrl.cc) & 
+>> 0xFE);
+>>
 > 
 

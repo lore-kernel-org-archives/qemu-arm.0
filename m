@@ -1,309 +1,172 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp675176lfa;
-        Thu, 15 Oct 2020 08:22:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyl7zMae8G/9fbX1AYPv4MQqDehlAKfdDL+zGE9D/0xBbjyXkLKwMAdj/9i/3jjQV6HB7IZ
-X-Received: by 2002:aed:3f63:: with SMTP id q32mr4582397qtf.61.1602775371225;
-        Thu, 15 Oct 2020 08:22:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602775371; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp718414lfa;
+        Thu, 15 Oct 2020 09:15:55 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxhAkm/gs6vw50mWPSdpxq3LQP/V+/wsfKdX5+eqvt67lAVgBAF/RyrHkw5U6SZnAv2m3K8
+X-Received: by 2002:a67:f85a:: with SMTP id b26mr3136902vsp.35.1602778554939;
+        Thu, 15 Oct 2020 09:15:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602778554; cv=none;
         d=google.com; s=arc-20160816;
-        b=sghMPAT4kwPoSU6Rk/bbahwwKjX9YBQSM80SiYPL03scj77L+ForOjth7Hc5N5tjrS
-         Uehg2khc1NmA+cbYum1f8iZrwhu0GaI1E8zEYp5T6ZONEU42Jgily/zVq2/8Y3p1jFnY
-         a7hvE4Yg2Yukqeiy22YmBQN3JlOxiRBQEP1W93SDcN7A/gUrhHa7Ci/kq+uUSEnapBL7
-         tgna9+HCCV2sm+mMonBSAiRsxw9lHPDrGacPlUfqtDGxCkOO5GcSGNstHZBT85lsh+ue
-         M4CdTLLCsnjBvL4fSKMNH7VYiXglq4qeD4kMZ/TQEJkPBMaCY+ZPNxT+uQrp6g3BQJD2
-         HtIA==
+        b=J785fjDuht4i5RJZoZg0a9oWE99sUByZlAnxj50ZtqFVFfXgNXszpCYE9A99anXZO9
+         smZexelZIZ+jA7nIJjFXhIwk01bkWI0CPvcOWO4dB9ScubQ0DtS/5VVD8/2+EYTyoNao
+         zHvWmJtLpr+6Y+RwpEqN3k/F8gImSWw7HACUQj2IWctAhmJHQki7dHWpaKe3s5Tv6vNZ
+         hnNVX5wyNvVfE1qsI6Dp3ryrH+0zekKMWQ6vIU04P2/MVGgeeHXlXN0XP0P/YHbX/oln
+         DY55Lf8x4Xlrn7VHFHUVmR8iGFunKR4xSCmhKAN0i2o8D4l+VWfTIAaQQGKvg3iesj0Z
+         JOZw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=iCISf2StKejdRMvAE6JnWGeHvYzQyJimMoUGMeKPh/w=;
-        b=bqtMT2JBmr5GJRXvNfn12v9RJLoNqR4E1IWv4HnX0AA9PPrdtgLX2T+SZJiPXPOu8i
-         QvcwcAo+3kRrdHclvwESiaxfxu1WQBwWj5Iim3byf7oyNAIZkhUd/wLPHOB6kRaurGb+
-         es3ktx7qgnp1QMoAqUkRDOowS78zOPWatrTAhGLdemd3PfILYxilsncXMsc8muAZJ3ES
-         EhMUu5K41jZgWXLMmYhzi9PeQvBpviXtP9rNtzGbT0OnOYylUbsUMT4p/H4j2YNgHz1o
-         5uCw94Wo9ILHEcmIK5Z2kqUECTFoZOL4xlVZ2TDuVqfpLM1Xgu2NMyPAVLgYxrwYMXUG
-         ZNIw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=8ChIloslXbwzx5SwJ9bus+C0aUz+/NJpBANblR8W7fg=;
+        b=xtYsniC1MxghRGkSIPdZjRvTiGXhH/LWQQ+KI/JLGQTm3UG1pBSlIR9Oaq4KYsZee+
+         3f8seRPKgsaSzH492Bhz9/ZjKcJY+BX5RB8NL++ei7q4g9QKDhjNt/SwYvDvrm38hkgG
+         e1cwX5yswiAJbDJTwuNS5p2nLZPq2VB9KhHjgAKwtzR8HzbBD/vD450zgO8DTjpCF8k+
+         QdGSJNSZjnAMmtYXQZlTLtMBALKTcq1Crfp3Aqm7J1FwcnhhHEI0ARltWRdSKMNm6Pyq
+         NCEWe4fhMKPkyMw7+MMdlXVVXu2XbRBav2hHpiAG4oPpBQq/ppPsKYBicc9mNvq3pMO7
+         eDow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FtGGq0Y0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="a/oLvkE8";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o11si1626052qtr.37.2020.10.15.08.22.51
+        by mx.google.com with ESMTPS id j18si295276uan.261.2020.10.15.09.15.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Oct 2020 08:22:51 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Oct 2020 09:15:54 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=FtGGq0Y0;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39544 helo=lists1p.gnu.org)
+       dkim=pass header.i=@redhat.com header.s=mimecast20190719 header.b="a/oLvkE8";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:44422 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kT55e-0007qq-KI
-	for alex.bennee@linaro.org; Thu, 15 Oct 2020 11:22:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49804)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kT5v0-0006sU-AS
+	for alex.bennee@linaro.org; Thu, 15 Oct 2020 12:15:54 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35966)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
- id 1kT54G-0006Wf-LC
- for qemu-devel@nongnu.org; Thu, 15 Oct 2020 11:21:24 -0400
-Received: from mail-pl1-x643.google.com ([2607:f8b0:4864:20::643]:44730)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <maxim.uvarov@linaro.org>)
- id 1kT54E-0005yN-GU
- for qemu-devel@nongnu.org; Thu, 15 Oct 2020 11:21:24 -0400
-Received: by mail-pl1-x643.google.com with SMTP id h2so1775152pll.11
- for <qemu-devel@nongnu.org>; Thu, 15 Oct 2020 08:21:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=iCISf2StKejdRMvAE6JnWGeHvYzQyJimMoUGMeKPh/w=;
- b=FtGGq0Y0IxBuICU8RzUSCi3iVLbI3kehn7WqjPKMMSRRxqLKJYMpoEBfkZRhTjIrOX
- HIVBD972JHlfKL0lAOmYMuQRPLdzg6twKLyrOylDv5XJcbkEJH11XaBDy1N7rreRV0ud
- Sdvpvkrnw4ZRNBB2CGq3b0fmaIyZ5EJBW/AU74pxw/zc1FctamuIHWhw2guktjsO4D6s
- Kys5pMMLy9ZjpABQoG6ITqf0Lg7DXTF9Y14nR0HbyuE5V9qC/wGpHTaRlqSvUC0danDM
- OknV8qVCkkOWp7XQZx5b53rnTRviYB5FnKB5uJFE0GEzmqTwG3KaQiEF6lN/0ebQ0LTx
- S37w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=iCISf2StKejdRMvAE6JnWGeHvYzQyJimMoUGMeKPh/w=;
- b=AV4OsTqcnJc7j/ZIwt+uFi7qgKYDeOMG7uV/f4RCo3RuZeXaL6G/mdGnjnDL/lXzSb
- IAWgIueL7gjk/ZeK5sJabJP+siYDyFm9E51n6LWuEGUpoMnA0M2YSSQYtPWbhXnMCS3Q
- 5lcm1ni82htp7kK0oP8wtt6XoCqWIdn1qyWymorC/0gDCxzDCbNSTurnYutp+JukPrPD
- W7iiUsu0FdaLU6C3c49ZKFHuiMyZ6AmxBLmJe3337iSUNuA8TJTb31D1pkbJyjrIaUOi
- hW59eQ8WbZ+De8oTPJ4yRjGo5mjQi0xSpFJXDsD0S7E/nmeFS0a1oGAg3qiJHr2J8Uac
- QSAg==
-X-Gm-Message-State: AOAM532XoVS5gT0XXzPO7sKEpZYbECsjmcv4NptQgsTN75yxp7MtCsIj
- RdhkW9vVP644+Lq0ykXB0xS0R8GO4FbWRXP4IQYD0w==
-X-Received: by 2002:a17:90a:c58f:: with SMTP id
- l15mr4684512pjt.93.1602775280474; 
- Thu, 15 Oct 2020 08:21:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kT5ul-0006qY-TW
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2020 12:15:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:22842)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1kT5uh-00053E-Qo
+ for qemu-arm@nongnu.org; Thu, 15 Oct 2020 12:15:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1602778534;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=8ChIloslXbwzx5SwJ9bus+C0aUz+/NJpBANblR8W7fg=;
+ b=a/oLvkE8Uh/YOhO+BTZ6ro5R7wQY4Uw3r2w4dGlt7Lfllh0s4KUnMTKTkP+/u76sV7FR7T
+ tUtrk42AcUq5HZkiHEqGPWXYBrG0Yog/ZE8mqal4qLE4OnPllTwPNvkxp1xx1kZl16xsK5
+ f+KLhu3Xe6HK4866OkDM0eRsNMj+JoU=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-595-t4SPsqyeOeigr2XXlRbw_Q-1; Thu, 15 Oct 2020 12:15:31 -0400
+X-MC-Unique: t4SPsqyeOeigr2XXlRbw_Q-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1941412C6C1;
+ Thu, 15 Oct 2020 16:15:30 +0000 (UTC)
+Received: from [10.36.113.210] (ovpn-113-210.ams2.redhat.com [10.36.113.210])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 1533E100238E;
+ Thu, 15 Oct 2020 16:15:18 +0000 (UTC)
+Subject: Re: [RFC 0/5] NVMe passthrough: Support 64kB page host
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ stefanha@redhat.com, fam@euphon.net, alex.williamson@redhat.com
+References: <20201015115252.15582-1-eric.auger@redhat.com>
+ <0a1ae4dd-064b-49c5-0669-04219646f616@redhat.com>
+From: Auger Eric <eric.auger@redhat.com>
+Message-ID: <d3ba4c98-67b8-0d38-378a-805fb02b3d40@redhat.com>
+Date: Thu, 15 Oct 2020 18:15:16 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.5.0
 MIME-Version: 1.0
-References: <20201013151631.30678-1-shashi.mallela@linaro.org>
- <20201013151631.30678-3-shashi.mallela@linaro.org>
- <20201014093119.inq2ut2srps2zfme@xora-monster>
- <CAC15JE2hMrzpWWF-bS-fshoYx+BPehwxqJi-7uMUXSOj+Uh3GQ@mail.gmail.com>
- <20201015141044.loa6x4sv5552pe72@xora-monster>
-In-Reply-To: <20201015141044.loa6x4sv5552pe72@xora-monster>
-From: Maxim Uvarov <maxim.uvarov@linaro.org>
-Date: Thu, 15 Oct 2020 18:21:09 +0300
-Message-ID: <CAD8XO3Yb+GwC75k-OXenAkrXf=x6=ru6C0juzCsT+FQV3iPadw@mail.gmail.com>
-Subject: Re: [PATCH v5 2/2] hw/arm/sbsa-ref: add SBSA watchdog device
-To: Graeme Gregory <graeme@nuviainc.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::643;
- envelope-from=maxim.uvarov@linaro.org; helo=mail-pl1-x643.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+In-Reply-To: <0a1ae4dd-064b-49c5-0669-04219646f616@redhat.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eric.auger@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/15 02:38:26
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-1.019, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Shashi Mallela <shashi.mallela@linaro.org>,
- =?UTF-8?Q?Rados=C5=82aw_Biernacki?= <rad@semihalf.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Leif Lindholm <leif@nuviainc.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: P0fvjYnxqxvw
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: kwolf@redhat.com, mreitz@redhat.com
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ijZ3RMfxTLOG
 
-On Thu, 15 Oct 2020 at 17:12, Graeme Gregory <graeme@nuviainc.com> wrote:
->
-> On Wed, Oct 14, 2020 at 01:04:43PM -0400, Shashi Mallela wrote:
-> > This was added as a placeholder for the virt requirement suggested by Maxim
-> > earlier.Agreed that this fdt otherwise has no significance for sbsa-ref
-> > platform nor is being used by ACPI table created for wdt.
-> >
-> > -Shashi
-> >
-> > On Wed, 14 Oct 2020 at 05:31, Graeme Gregory <[1]graeme@nuviainc.com> wrote:
-> >
-> >     On Tue, Oct 13, 2020 at 11:16:31AM -0400, Shashi Mallela wrote:
-> >     > Included the newly implemented SBSA generic watchdog device model into
-> >     > SBSA platform
-> >     >
-> >     > Signed-off-by: Shashi Mallela <[2]shashi.mallela@linaro.org>
-> >     > ---
-> >     >  hw/arm/sbsa-ref.c | 50 +++++++++++++++++++++++++++++++++++++++++++++++
-> >     >  1 file changed, 50 insertions(+)
-> >     >
-> >     > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> >     > index 9c3a893bedfd..97ed41607119 100644
-> >     > --- a/hw/arm/sbsa-ref.c
-> >     > +++ b/hw/arm/sbsa-ref.c
-> >     > @@ -30,6 +30,7 @@
-> >     >  #include "exec/hwaddr.h"
-> >     >  #include "kvm_arm.h"
-> >     >  #include "hw/arm/boot.h"
-> >     > +#include "hw/arm/fdt.h"
-> >     >  #include "hw/block/flash.h"
-> >     >  #include "hw/boards.h"
-> >     >  #include "hw/ide/internal.h"
-> >     > @@ -40,6 +41,7 @@
-> >     >  #include "hw/qdev-properties.h"
-> >     >  #include "hw/usb.h"
-> >     >  #include "hw/char/pl011.h"
-> >     > +#include "hw/watchdog/wdt_sbsa_gwdt.h"
-> >     >  #include "net/net.h"
-> >     >  #include "qom/object.h"
-> >     >
-> >     > @@ -64,6 +66,9 @@ enum {
-> >     >      SBSA_GIC_DIST,
-> >     >      SBSA_GIC_REDIST,
-> >     >      SBSA_SECURE_EC,
-> >     > +    SBSA_GWDT,
-> >     > +    SBSA_GWDT_REFRESH,
-> >     > +    SBSA_GWDT_CONTROL,
-> >     >      SBSA_SMMU,
-> >     >      SBSA_UART,
-> >     >      SBSA_RTC,
-> >     > @@ -104,6 +109,8 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-> >     >      [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
-> >     >      [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
-> >     >      [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
-> >     > +    [SBSA_GWDT_REFRESH] =       { 0x50010000, 0x00001000 },
-> >     > +    [SBSA_GWDT_CONTROL] =       { 0x50011000, 0x00001000 },
-> >     >      [SBSA_UART] =               { 0x60000000, 0x00001000 },
-> >     >      [SBSA_RTC] =                { 0x60010000, 0x00001000 },
-> >     >      [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
-> >     > @@ -133,6 +140,8 @@ static const int sbsa_ref_irqmap[] = {
-> >     >      [SBSA_SECURE_UART_MM] = 9,
-> >     >      [SBSA_AHCI] = 10,
-> >     >      [SBSA_EHCI] = 11,
-> >     > +    [SBSA_SMMU] = 12, /* ... to 15 */
-> >     > +    [SBSA_GWDT] = 16,
-> >     >  };
->
-> I guess your patch was not based on master here? You should make sure
-> you are rebased to the latest version before sending.
->
-> >     >
-> >     >  static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
-> >     > @@ -141,6 +150,30 @@ static uint64_t sbsa_ref_cpu_mp_affinity
-> >     (SBSAMachineState *sms, int idx)
-> >     >      return arm_cpu_mp_affinity(idx, clustersz);
-> >     >  }
-> >     >
-> >     > +static void create_wdt_fdt(SBSAMachineState *sms)
-> >     > +{
-> >     > +    char *nodename;
-> >     > +    const char compat[] = "arm,sbsa-gwdt";
-> >     > +
-> >     > +    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
-> >     > +    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
-> >     > +    int irq = sbsa_ref_irqmap[SBSA_GWDT];
-> >     > +
-> >     > +    nodename = g_strdup_printf("/watchdog@%" PRIx64, rbase);
-> >     > +    qemu_fdt_add_subnode(sms->fdt, nodename);
-> >     > +
-> >     > +    qemu_fdt_setprop(sms->fdt, nodename, "compatible",
-> >     > +                             compat, sizeof(compat));
-> >     > +    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
-> >     > +                                 2, rbase, 2, SBSA_GWDT_RMMIO_SIZE,
-> >     > +                                 2, cbase, 2, SBSA_GWDT_CMMIO_SIZE);
-> >     > +    qemu_fdt_setprop_cells(sms->fdt, nodename, "interrupts",
-> >     > +                                GIC_FDT_IRQ_TYPE_PPI, irq,
-> >     > +                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> >     > +    qemu_fdt_setprop_cell(sms->fdt, nodename, "timeout-sec", 30);
-> >     > +    g_free(nodename);
-> >     > +}
-> >     > +
-> >
-> >     Is this actually used anywhere? I ask because SBSA-ref is not a FDT
-> >     booting machine and only uses FDT to transfer some dynamic info to
-> >     arm-tf/edk2 and is not a full description tree. Your ACPI patch in
-> >     edk2 certainly does not use this info.
-> >
->
+Hi Philippe,
 
-Greame, if sbsa-ref does not support non edk2 boot, i.e.
-arm-tf/optee/uboot-uefi, then it's better to remove here and we can
-add later for the virt machine.
+On 10/15/20 3:49 PM, Philippe Mathieu-Daudé wrote:
+> On 10/15/20 1:52 PM, Eric Auger wrote:
+>> This series allows NVMe passthrough on aarch64 with 64kB page host.
+>> Addresses and sizes of buffers which are VFIO DMA mapped are
+>> aligned with the host page size.
+>>
+>> nvme_register_buf() path is taken care of in this series
+>> but it does not seem to prevent the use case from working.
+>>
+>> Best Regards
+>>
+>> Eric
+>>
+>> This series can be found at:
+>> https://github.com/eauger/qemu/tree/nvme_64k_rfc
+>>
+>> This was tested on ARM only.
+>>
+>> Eric Auger (5):
+>>    block/nvme: use some NVME_CAP_* macros
+>>    block/nvme: Change size and alignment of IDENTIFY response buffer
+>>    block/nvme: Change size and alignment of queue
+>>    block/nvme: Change size and alignment of prp_list_pages
+>>    block/nvme: Align iov's va and size on host page size
+> 
+> Since it is easier for me to rebase on top of your series,
+> I'm including it in my work (fixing the checkpatch errors)
+> and will repost block/nvme/ patches altogether.
 
-> From your reply above I would propose this hunk and the call below are
-> removed. If its needed to virt thats a seperate discussion which I think
-> was already happening in another thread.
->
-Yep, agree.
+There should be one warning (line exceeding 80 chars) but no error. I
+can easily rebase/respin if you prefer.
 
-Maxim.
+Thanks
 
-> FOSS style is for inline replies not top posting FYI
->
-> Graeme
->
-> >     Graeme
-> >
-> >
-> >     >  /*
-> >     >   * Firmware on this machine only uses ACPI table to load OS, these
-> >     limited
-> >     >   * device tree nodes are just to let firmware know the info which varies
-> >     from
-> >     > @@ -219,6 +252,7 @@ static void create_fdt(SBSAMachineState *sms)
-> >     >
-> >     >          g_free(nodename);
-> >     >      }
-> >     > +    create_wdt_fdt(sms);
-> >     >  }
-> >     >
-> >     >  #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
-> >     > @@ -447,6 +481,20 @@ static void create_rtc(const SBSAMachineState *sms)
-> >     >      sysbus_create_simple("pl031", base, qdev_get_gpio_in(sms->gic,
-> >     irq));
-> >     >  }
-> >     >
-> >     > +static void create_wdt(const SBSAMachineState *sms)
-> >     > +{
-> >     > +    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
-> >     > +    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
-> >     > +    DeviceState *dev = qdev_new(TYPE_WDT_SBSA_GWDT);
-> >     > +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
-> >     > +    int irq = sbsa_ref_irqmap[SBSA_GWDT];
-> >     > +
-> >     > +    sysbus_realize_and_unref(s, &error_fatal);
-> >     > +    sysbus_mmio_map(s, 0, rbase);
-> >     > +    sysbus_mmio_map(s, 1, cbase);
-> >     > +    sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms->gic, irq));
-> >     > +}
-> >     > +
-> >     >  static DeviceState *gpio_key_dev;
-> >     >  static void sbsa_ref_powerdown_req(Notifier *n, void *opaque)
-> >     >  {
-> >     > @@ -730,6 +778,8 @@ static void sbsa_ref_init(MachineState *machine)
-> >     >
-> >     >      create_rtc(sms);
-> >     >
-> >     > +    create_wdt(sms);
-> >     > +
-> >     >      create_gpio(sms);
-> >     >
-> >     >      create_ahci(sms);
-> >     > --
-> >     > 2.18.4
-> >     >
-> >     >
-> >
-> >
-> > References:
-> >
-> > [1] mailto:graeme@nuviainc.com
-> > [2] mailto:shashi.mallela@linaro.org
->
+Eric
+> 
+> Regards,
+> 
+> Phil.
+> 
+> 
+

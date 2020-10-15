@@ -1,89 +1,88 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp501179lfa;
-        Thu, 15 Oct 2020 04:54:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxKER+UcVjEo9uVkbDOAgjUWzCODDpzA5nevRdl/O4A/2pd63vebBq5UNTtd9wFsdt5kTcL
-X-Received: by 2002:a37:8fc3:: with SMTP id r186mr3439745qkd.462.1602762869464;
-        Thu, 15 Oct 2020 04:54:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602762869; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp502259lfa;
+        Thu, 15 Oct 2020 04:56:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyl/LwvZPie0swAc6fRjxUv5rqg8KKmMhNvtBhkLBc1hJX9tMKUnYw7sZMXGx1ymSvUlJ5B
+X-Received: by 2002:a25:4ed7:: with SMTP id c206mr4828813ybb.256.1602762974325;
+        Thu, 15 Oct 2020 04:56:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602762974; cv=none;
         d=google.com; s=arc-20160816;
-        b=E6AhVz4JjDNoB638plqyBblnqH5FL5i0EAHiGuhaJci5BiHoUeIDvpn/T84pozclyh
-         1LPu0018QwUbW8gNk8US3vrV9iSlKpiWXnfdWTPZw6/+0SB9mGvW3XNPukaSz33Cglyk
-         WWaXJmvY0xt3NF8bV+1V8d5z3q0zRMecms7imOkijI7XCv3TmAAgG4Jpos+5mIacN/cW
-         mInOHaXyMURCDQ4OENRfuqZCwd0GLWmqswnDBfx3esdnWlZUejJFod59c4HiKn3IPsaK
-         BuFi4+E4WaOwbUOH49oExlveBijHlJm1bDkGfdRzywmwrRgyAExB76MwJpD2nc0Jrrln
-         WGDg==
+        b=qGaz4aG99WXulQ/Cayk/N+tMIn2hIBCyAQ/HspavI+i0mMQZkGImKzrYeLdrXs+Cbt
+         9KoDgyWJMhekUcq9fh9LukJ3mHVE7wN6yHc5F0FXeGPGPxM+1dy68hYoxpSk1jyOlkw8
+         i1rZVTMs1sMFiA5/mupgFlRk1NUhpfWPXjAl+SQpPVbLqsSThjsYKX/ZLBGWBpgmpU8A
+         fiaZ0WI/0A09PY+YfgNHoCsqdqS3KrvgN08ROTrn+SyfAI0WUZqgslZnLa4vaJR2tjAv
+         HrHyDHitUHUQviFzilUaAHQL7g1PN5mklUh7bVQOTTd51E/fFQdhpDSCkk6vTvZewDzh
+         ENRw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=05+UVqiqsXjy7Np70DZiepXxuaoYNbo+1ntJdcmVjao=;
-        b=L7+ixjsyuvlOqO4cG1v/LFw1Z49Yp4PLt9U00LLiXvtiBLe8Hw+d1Fn1n6V3Ms2t9B
-         dy+xKtESvZdr2MOkzwbvAErhnVl30fJvVUf4GL7XuTiWbQNrZzom9VU0DIGwkhgQBh3g
-         /ibi3hc2oEuyL3hCrK33rZH5UkPWmNlTmZalKj9skVDG0HrU42ta5Nn6CLmnY30sO5MN
-         yrPi9o8V1ssqBrUi+/pEiOQJhQLu32lxeBReoWJccUqDf12qwfagAWCW+lsLfBVDhSaI
-         n+DYJJ7Ml/MI8GzW31fmdhHvFcJmw/FVMeYhess5cQF/8JiIJ0czJDnFEW9mLPrwtme7
-         ADGg==
+        bh=VNPuxVO9rJzoSEMdXhnDc51fdnLWxanvWU6sjXozZto=;
+        b=eotdyN5/PRSlAOBJ0iqVFgPVCjfNfpGnXDJJ3BoAsh/1Bress/wUSyYFvEjAuerFEh
+         ff0EI0Tc06hOG4aHYEzMkFPU7MTbqxMvYEZmD0DzYJTogoCO/3r63r0UuwWMHQXOdwkW
+         eyrvHppiY3tPQ1PnFJshDnHdNTblZr/s+7Msn9bT5X9rPjmfnrysh1Y7Qnf5twvThZQC
+         OvQ2c76jGcmmSVM/OE9GJIvRgzvulxEHh+2apM1UdsS/B5AIN6n7gnYxIn4ZBZ474OsZ
+         0Xk9eBQVuZI+WllW3+5kUPsncBQE8JeQ5Cvi0b/zRU6eduSwMtb2fzGKqA64lkXfUJto
+         8xlA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cEzJ9kSy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RDYgIAep;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l61si1339602qtd.356.2020.10.15.04.54.29
+        by mx.google.com with ESMTPS id j13si2283129ybt.78.2020.10.15.04.56.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Oct 2020 04:54:29 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 15 Oct 2020 04:56:14 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=cEzJ9kSy;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RDYgIAep;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:51920 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56844 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kT1q0-0003I8-T1
-	for alex.bennee@linaro.org; Thu, 15 Oct 2020 07:54:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54126)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kT1rh-0005Os-N1
+	for alex.bennee@linaro.org; Thu, 15 Oct 2020 07:56:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54158)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kT1pe-0003GB-UA
- for qemu-arm@nongnu.org; Thu, 15 Oct 2020 07:54:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:47082)
+ id 1kT1pi-0003NM-Df
+ for qemu-devel@nongnu.org; Thu, 15 Oct 2020 07:54:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:56354)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1kT1pd-0003Ji-3z
- for qemu-arm@nongnu.org; Thu, 15 Oct 2020 07:54:06 -0400
+ id 1kT1pe-0003Jy-NV
+ for qemu-devel@nongnu.org; Thu, 15 Oct 2020 07:54:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1602762844;
+ s=mimecast20190719; t=1602762845;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=05+UVqiqsXjy7Np70DZiepXxuaoYNbo+1ntJdcmVjao=;
- b=cEzJ9kSy9+FgNnu5GNx8E9thGd5UfLgVUsyptSvV+vLztJyhPV8wsmol4Kz+7PClzFm+S6
- iP9ypX4iKd+fnyw5LKHGz73ptkJqKsRHQvJsvwiD8NxTpsKPU4WbxB5PabQ/UNfcenaZYM
- +CO6SHAPTxoYfbq14lVBsjPf/fbfjR8=
+ bh=VNPuxVO9rJzoSEMdXhnDc51fdnLWxanvWU6sjXozZto=;
+ b=RDYgIAeprQN+PzSkyEM+Lv0UOfW+WEmkA9Kc71RCUbY710NswfigwRbaEe3iUL6TQMvtDd
+ COuOdB6jGDcWy+af93GTbFclHb7lHRDuLNK/QzG/N8dJMUalxZUjrHPgnrWZeIAaAJRj52
+ ls+Aq1yhNYhxdiUcJZr5/wkHWBELaq8=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-496-Enp0q7MaN2eKQw0Q2h4Q3Q-1; Thu, 15 Oct 2020 07:54:02 -0400
-X-MC-Unique: Enp0q7MaN2eKQw0Q2h4Q3Q-1
+ us-mta-395-7wiEJ1vkNBqCitoIo_g8oA-1; Thu, 15 Oct 2020 07:54:04 -0400
+X-MC-Unique: 7wiEJ1vkNBqCitoIo_g8oA-1
 Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
  [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 5F102803646;
- Thu, 15 Oct 2020 11:54:00 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 1011B6414F;
+ Thu, 15 Oct 2020 11:54:03 +0000 (UTC)
 Received: from laptop.redhat.com (ovpn-113-210.ams2.redhat.com [10.36.113.210])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 6089C6EF51;
- Thu, 15 Oct 2020 11:53:47 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B6DC66EF51;
+ Thu, 15 Oct 2020 11:54:00 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, stefanha@redhat.com, fam@euphon.net,
  philmd@redhat.com, alex.williamson@redhat.com
-Subject: [RFC 2/5] block/nvme: Change size and alignment of IDENTIFY response
- buffer
-Date: Thu, 15 Oct 2020 13:52:49 +0200
-Message-Id: <20201015115252.15582-3-eric.auger@redhat.com>
+Subject: [RFC 3/5] block/nvme: Change size and alignment of queue
+Date: Thu, 15 Oct 2020 13:52:50 +0200
+Message-Id: <20201015115252.15582-4-eric.auger@redhat.com>
 In-Reply-To: <20201015115252.15582-1-eric.auger@redhat.com>
 References: <20201015115252.15582-1-eric.auger@redhat.com>
 MIME-Version: 1.0
@@ -94,81 +93,59 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eric.auger@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/15 02:10:02
+Received-SPF: pass client-ip=216.205.24.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/15 02:38:26
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: kwolf@redhat.com, mreitz@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 09tNbQwQ7LJ0
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: ivx0LJTEs+L4
 
 In preparation of 64kB host page support, let's change the size
-and alignment of the IDENTIFY command response buffer so that
-the VFIO DMA MAP succeeds. We align on the host page size.
+and alignment of the queue so that the VFIO DMA MAP succeeds.
+We align on the host page size.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- block/nvme.c | 10 ++++++----
- 1 file changed, 6 insertions(+), 4 deletions(-)
+ block/nvme.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/block/nvme.c b/block/nvme.c
-index e3d96f20d0..088ff1825a 100644
+index 088ff1825a..cf8ec200af 100644
 --- a/block/nvme.c
 +++ b/block/nvme.c
-@@ -513,19 +513,21 @@ static void nvme_identify(BlockDriverState *bs, int namespace, Error **errp)
-         .opcode = NVME_ADM_CMD_IDENTIFY,
-         .cdw10 = cpu_to_le32(0x1),
-     };
-+    size_t id_size = QEMU_ALIGN_UP(sizeof(*id), qemu_real_host_page_size);
+@@ -164,9 +164,9 @@ static void nvme_init_queue(BDRVNVMeState *s, NVMeQueue *q,
+     size_t bytes;
+     int r;
  
--    id = qemu_try_memalign(s->page_size, sizeof(*id));
-+    id = qemu_try_memalign(qemu_real_host_page_size, id_size);
-     if (!id) {
-         error_setg(errp, "Cannot allocate buffer for identify response");
-         goto out;
-     }
--    r = qemu_vfio_dma_map(s->vfio, id, sizeof(*id), true, &iova);
-+    r = qemu_vfio_dma_map(s->vfio, id, id_size, true, &iova);
-     if (r) {
-         error_setg(errp, "Cannot map buffer for DMA");
-         goto out;
-     }
- 
--    memset(id, 0, sizeof(*id));
-+    memset(id, 0, id_size);
-+
-     cmd.dptr.prp1 = cpu_to_le64(iova);
-     if (nvme_cmd_sync(bs, s->queues[INDEX_ADMIN], &cmd)) {
-         error_setg(errp, "Failed to identify controller");
-@@ -547,7 +549,7 @@ static void nvme_identify(BlockDriverState *bs, int namespace, Error **errp)
-     s->supports_write_zeroes = !!(oncs & NVME_ONCS_WRITE_ZEROES);
-     s->supports_discard = !!(oncs & NVME_ONCS_DSM);
- 
--    memset(id, 0, sizeof(*id));
-+    memset(id, 0, id_size);
-     cmd.cdw10 = 0;
-     cmd.nsid = cpu_to_le32(namespace);
-     if (nvme_cmd_sync(bs, s->queues[INDEX_ADMIN], &cmd)) {
+-    bytes = ROUND_UP(nentries * entry_bytes, s->page_size);
++    bytes = ROUND_UP(nentries * entry_bytes, qemu_real_host_page_size);
+     q->head = q->tail = 0;
+-    q->queue = qemu_try_memalign(s->page_size, bytes);
++    q->queue = qemu_try_memalign(qemu_real_host_page_size, bytes);
+     if (!q->queue) {
+         error_setg(errp, "Cannot allocate queue");
+         return;
 -- 
 2.21.3
 

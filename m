@@ -1,141 +1,139 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1780970lfa;
-        Fri, 16 Oct 2020 11:42:15 -0700 (PDT)
-X-Received: by 2002:a05:6a00:15d1:b029:155:5c2c:c28e with SMTP id o17-20020a056a0015d1b02901555c2cc28emr5167529pfu.3.1602873735371;
-        Fri, 16 Oct 2020 11:42:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602873735; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1780979lfa;
+        Fri, 16 Oct 2020 11:42:16 -0700 (PDT)
+X-Received: by 2002:a17:90a:4ece:: with SMTP id v14mr5661180pjl.70.1602873736645;
+        Fri, 16 Oct 2020 11:42:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602873736; cv=none;
         d=google.com; s=arc-20160816;
-        b=Wh5MZnZMAZYMJAGyi7xDtRwX+aHu99E5iuRnZdYzTPK3pBuyyzFF4UO5Kp88ozcHw/
-         y9OfvAPEnMlCI4zH77y27f0sggqIMaUUQF1Ke2jodDYXMlPIpzXwHzSEdoxhlCHJ9Few
-         n5KwzniXwRUm1sed6vzPhuyEqxZTRn/RgOaBe4Qx+kUmInNYKOVa7kI5MPqA4kh6iv13
-         hH1CvMWQBwZ/TkGIoskrCXDsxyviXbE04hSIOiH0uFHSLV3/CDvHSZCJ/IvEEJuv04/T
-         FieUi2v3dNfJS2XIBnz0Y5oa5jZTBA/Q6xbI/tTDShzFTBYAlZDRmKqi/mnRUGWR3Vox
-         PyQQ==
+        b=MChl3ovasM+9R33yV/kI5bzFWneMsexduSX70dwiba9JS7H+jt0oR+UwYaLwUbZPnk
+         0yulpGE3unTmO3uW5ujLB27BSob/igK6Kgo25KaV7v57bzxNBphTVPl9y+zgQDRXIid7
+         EMvfZd3P+TafPPQm/x6+wZEN7cPrUyRMjAjysxJ/4vRBgFQf21dBoYeeYv2fUmvWCO4N
+         Fu8e+Ufm4jJrrEYVP2Yd4oHqJU6Ut/c7xHkh2llyR4HEY56QmJlmYSFfTYrJTc59pmZT
+         33Bhj99gKOi5Gl6v/oTqn5ph0lFZXs9R4NdsURBdxcXampAx09oGGQQa0Dw7maFpBjJC
+         po7w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=8JkogZW08o4QbERarC4qat0jsqD9fmDjl7gKGBrUP6I=;
-        b=nbeRhXwD2oqlLgAvXsFpxPB/PB7LQ6CYU8//gHEyzswJm92fKXCFuK7Inpa+hK6kAD
-         AvR9zqbtGZsDYkCj7NiEKcEpS3iIn2NDWiiEAAMtPGiHbpggp1Ci0mAHtIkHrVhw+mgG
-         CldGo+7vQ1V19dF2ua5LFIsrVfb1TxZVY5dlUpveYj7p9PFmH6ViILDLtbegJwih2+6L
-         sZKZ3Xt7DWmjPCnTJ6ApQJgBErDu0X8j+FgmfJdGkuqyjEutIlLog0S3DvLeGoOP65UQ
-         J8UovH1yD7lMBE/kiX+pVroOtTgOdTf7WO+b8MHWWK7T8tcUnkCAkm6X4H7wCml6g+V4
-         bwLw==
+        bh=tcQiTVPZ4EDkEsGCvdGZmCD7eErMNKvjpgH4j/u5Y8I=;
+        b=gE12nO1Q+0qe3dOSOm0xwR3RVXy9SqBRv3FRvBtF8xDSr/LFPpa3Kf4M1xibeGRUaW
+         27eRgrDZDtcLasbTDFluOvbvKXPFStd5ZKkZg3aPx5muNanmIThGtanWngWb/QucRzYS
+         r+eGDQhsR24LqBiPDwZNNZK+yZe18jGVtIcESBNeiQg6aIzDJF593JHJI8vakfyWNB/i
+         E0VLx+x9aBEU7KQU8WGGshQwOOWTbXeP0ohxxrZKRsWXnGymSROS47BIwjVjQNTDwluA
+         CNDnBe+k0560Mjvq/ECGRR58R4ZJSAOJntC7f/uZZP8MKf0xQt0yImYmInmKlfRWkylo
+         ZBgA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pYxAmiXs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BIq43mfI;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id l65sor1510185pfd.29.2020.10.16.11.42.15
+        by mx.google.com with SMTPS id u14sor1714571pja.4.2020.10.16.11.42.16
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 16 Oct 2020 11:42:15 -0700 (PDT)
+        Fri, 16 Oct 2020 11:42:16 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=pYxAmiXs;
+       dkim=pass header.i=@linaro.org header.s=google header.b=BIq43mfI;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=8JkogZW08o4QbERarC4qat0jsqD9fmDjl7gKGBrUP6I=;
-        b=pYxAmiXsf+Pkx1zPHtkgQ26+gslMTryFI8G/wZfTj1+dfUuDy226R4InFWRwX41VFr
-         qxVN5dnY9q1VyMYdQUdvBFXNa61vjefdGUfsXW3kDRNUTroXLjF1J6+Uz9ERKKa54/OU
-         NCP8OCHvxUGbaCVvaqBtZiBOHosXeagmAUzbHlG2vIucJL59bb+w11+MNgTmObqeswiH
-         dzyyiOPXavsDxL5MXILiuUtQnYAK5FsrWg/5CwmckUPZ3M5dLrJ/TecdOSlBZdnSelp8
-         6c5NkJ6il+IBr0CNEsldRsDuElb/w4itX7tj7u0xB3Zf1RRKokiXxVNOQACIIfx04Ly6
-         Tivw==
+        bh=tcQiTVPZ4EDkEsGCvdGZmCD7eErMNKvjpgH4j/u5Y8I=;
+        b=BIq43mfIl6tPMcY1In/e2r93+woPXqHZoyGSA8eMLv2FIRvOtQ9a1kuUSIjsoN6lOI
+         T2jIycCPbQAcU2X/v2GBYGnWd2hsAaALrejJrmkjH3Hn9ZmDcqD6ohIhgcGO0P8yj2Fn
+         gHQALboLEEgdaKOOc3ooPWif2spFY+X1bhXIuivndCsynXb+e4Fclc6gwuEhnYbDESPX
+         n2rOhuXRaxFP5Mg7HTrtx6jz3YEVDtt2UVGHItxk/H0/PZSaoW/vUk5i6EYTyucAUMIL
+         ljl60noBwvmFXZfaJ8S3Q5wFBwUFnfNmFDyVZaqPkViQk9QflU+tpvYFfC1ZnRi6amZL
+         mNDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=8JkogZW08o4QbERarC4qat0jsqD9fmDjl7gKGBrUP6I=;
-        b=j1WcQ4CblNPp7kDHXeuuOL9F8Pkc1GE6H7usn355Kq+9rI44FVNyeJ/hMvtKuDQEyC
-         uwIevdktTW0b00vMo4I51h+qVhB+tNYGVwHaoBDY0A533KtkQf59r25beu7NJu+VlAWL
-         t3RLDm4mqXSdipeT/rBh+I96253Vb0sD/R8+TFulMk8PomDeNHbVSuN5VeEmfnYtCgHX
-         D0sKnJzsId1KCOzbSHeNFE3Gokvq+9Z2ohrOevZP35cSCLxPTZHyjwA92c8fEuSr+pFs
-         N00nr1izooXj+/SH+9QRQtdFh2sK8Nx0OelrD7WW4O70g5Fxt/QlPwKLAKAxWZ8Xlr+t
-         7EBA==
-X-Gm-Message-State: AOAM530tVtUml+aS+4sHJN+MRmBxJqUrYti5fq7AylxEXTrGRy1REmid
-	A4W88/o/6SZ6p1TwzWydN6Ad4vKl
-X-Google-Smtp-Source: ABdhPJwR5ETWzvZxN7kI3cwIm0wEq/IbQRHhQJbtb2EWfqMipSqa6orfExXnKpIzBmcVlNSemWa87Q==
-X-Received: by 2002:a62:16ce:0:b029:155:2e1d:9c06 with SMTP id 197-20020a6216ce0000b02901552e1d9c06mr5016448pfw.6.1602873734883;
-        Fri, 16 Oct 2020 11:42:14 -0700 (PDT)
+        bh=tcQiTVPZ4EDkEsGCvdGZmCD7eErMNKvjpgH4j/u5Y8I=;
+        b=Yz8DCPHMU5hiP8EB5zooafji/dpHWxfegdJqzD1tUR/xLhvshwmqXjVC7w/XrXLaq/
+         K7fuFd6TUGU2Lc/TzTsf/uaY0S+ckKhRrVAAf2/2irirsxeoxEBDMKjjoXuIWXAfastf
+         22XtwiC8gwysiGz2vx4qidwbiyPvHTC4wFavr0em6kR9woVjF41yd/c702JtV011+tI0
+         QLc7+aoXM8I+Vwkgs5617cphd3aJDHPjz2OYl/ItdVHZa5ZhalYxh/lcD4sws4J11T6t
+         fiEl28DWPIhGb4b5fsBaRD4TGN+bW+5Hz+sITogVaXNNLO5VFcwLLHZCJ3VA/wb/8cai
+         XmwQ==
+X-Gm-Message-State: AOAM532tYMSDb7dbqdBC6MC3zCHRqSu2Vxc7DA8LUoq0SQuz/1gvzN/t
+	p9cu4Xu5jAgg4tlbt+6hzvVY5cMf
+X-Google-Smtp-Source: ABdhPJyY6cd47FDfccdN3dhaPcSnA7qoUywjqtl2kuQYqDWbXvCmsDteT4ZxzTaHdA1rQXeo7n+OPw==
+X-Received: by 2002:a17:90a:8596:: with SMTP id m22mr5218160pjn.42.1602873736199;
+        Fri, 16 Oct 2020 11:42:16 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain ([71.212.141.89])
-        by smtp.gmail.com with ESMTPSA id c15sm3426011pgg.77.2020.10.16.11.42.13
+        by smtp.gmail.com with ESMTPSA id c15sm3426011pgg.77.2020.10.16.11.42.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Oct 2020 11:42:14 -0700 (PDT)
+        Fri, 16 Oct 2020 11:42:15 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	alex.bennee@linaro.org,
-	laurent@vivier.eu
-Subject: [PATCH v11 03/12] include/elf: Add defines related to GNU property notes for AArch64
-Date: Fri, 16 Oct 2020 11:41:58 -0700
-Message-Id: <20201016184207.786698-4-richard.henderson@linaro.org>
+	laurent@vivier.eu,
+	=?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Subject: [PATCH v11 04/12] linux-user/elfload: Avoid leaking interp_name using GLib memory API
+Date: Fri, 16 Oct 2020 11:41:59 -0700
+Message-Id: <20201016184207.786698-5-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201016184207.786698-1-richard.henderson@linaro.org>
 References: <20201016184207.786698-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: YpLnPyhELTvY
+X-TUID: 7G1+6tsipO9Y
 
-These are all of the defines required to parse
-GNU_PROPERTY_AARCH64_FEATURE_1_AND, copied from binutils.
-Other missing defines related to other GNU program headers
-and notes are elided for now.
+From: Philippe Mathieu-Daudé <f4bug@amsat.org>
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Fix an unlikely memory leak in load_elf_image().
+
+Fixes: bf858897b7 ("linux-user: Re-use load_elf_image for the main binary.")
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Message-Id: <20201003174944.1972444-1-f4bug@amsat.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- include/elf.h | 22 ++++++++++++++++++++++
- 1 file changed, 22 insertions(+)
+ linux-user/elfload.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/include/elf.h b/include/elf.h
-index c117a4d1ab..10126ff809 100644
---- a/include/elf.h
-+++ b/include/elf.h
-@@ -26,9 +26,13 @@ typedef int64_t  Elf64_Sxword;
- #define PT_NOTE    4
- #define PT_SHLIB   5
- #define PT_PHDR    6
-+#define PT_LOOS    0x60000000
-+#define PT_HIOS    0x6fffffff
- #define PT_LOPROC  0x70000000
- #define PT_HIPROC  0x7fffffff
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index f6022fd704..1a3150df7c 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -2584,13 +2584,13 @@ static void load_elf_image(const char *image_name, int image_fd,
+                 info->brk = vaddr_em;
+             }
+         } else if (eppnt->p_type == PT_INTERP && pinterp_name) {
+-            char *interp_name;
++            g_autofree char *interp_name = NULL;
  
-+#define PT_GNU_PROPERTY   (PT_LOOS + 0x474e553)
-+
- #define PT_MIPS_REGINFO   0x70000000
- #define PT_MIPS_RTPROC    0x70000001
- #define PT_MIPS_OPTIONS   0x70000002
-@@ -1657,6 +1661,24 @@ typedef struct elf64_shdr {
- #define NT_ARM_SYSTEM_CALL      0x404   /* ARM system call number */
- #define NT_ARM_SVE      0x405           /* ARM Scalable Vector Extension regs */
+             if (*pinterp_name) {
+                 errmsg = "Multiple PT_INTERP entries";
+                 goto exit_errmsg;
+             }
+-            interp_name = malloc(eppnt->p_filesz);
++            interp_name = g_malloc(eppnt->p_filesz);
+             if (!interp_name) {
+                 goto exit_perror;
+             }
+@@ -2609,7 +2609,7 @@ static void load_elf_image(const char *image_name, int image_fd,
+                 errmsg = "Invalid PT_INTERP entry";
+                 goto exit_errmsg;
+             }
+-            *pinterp_name = interp_name;
++            *pinterp_name = g_steal_pointer(&interp_name);
+ #ifdef TARGET_MIPS
+         } else if (eppnt->p_type == PT_MIPS_ABIFLAGS) {
+             Mips_elf_abiflags_v0 abiflags;
+@@ -2961,7 +2961,7 @@ int load_elf_binary(struct linux_binprm *bprm, struct image_info *info)
+     if (elf_interpreter) {
+         info->load_bias = interp_info.load_bias;
+         info->entry = interp_info.entry;
+-        free(elf_interpreter);
++        g_free(elf_interpreter);
+     }
  
-+/* Defined note types for GNU systems.  */
-+
-+#define NT_GNU_PROPERTY_TYPE_0  5       /* Program property */
-+
-+/* Values used in GNU .note.gnu.property notes (NT_GNU_PROPERTY_TYPE_0).  */
-+
-+#define GNU_PROPERTY_STACK_SIZE                 1
-+#define GNU_PROPERTY_NO_COPY_ON_PROTECTED       2
-+
-+#define GNU_PROPERTY_LOPROC                     0xc0000000
-+#define GNU_PROPERTY_HIPROC                     0xdfffffff
-+#define GNU_PROPERTY_LOUSER                     0xe0000000
-+#define GNU_PROPERTY_HIUSER                     0xffffffff
-+
-+#define GNU_PROPERTY_AARCH64_FEATURE_1_AND      0xc0000000
-+#define GNU_PROPERTY_AARCH64_FEATURE_1_BTI      (1u << 0)
-+#define GNU_PROPERTY_AARCH64_FEATURE_1_PAC      (1u << 1)
-+
- /*
-  * Physical entry point into the kernel.
-  *
+ #ifdef USE_ELF_CORE_DUMP
 -- 
 2.25.1

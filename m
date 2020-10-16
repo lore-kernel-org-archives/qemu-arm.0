@@ -1,198 +1,139 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp3903240lfq;
-        Mon, 5 Oct 2020 03:51:24 -0700 (PDT)
-X-Received: by 2002:a05:6402:8d3:: with SMTP id d19mr16262797edz.68.1601895084329;
-        Mon, 05 Oct 2020 03:51:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601895084; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1780910lfa;
+        Fri, 16 Oct 2020 11:42:10 -0700 (PDT)
+X-Received: by 2002:a17:902:9a84:b029:d3:8b4f:50d5 with SMTP id w4-20020a1709029a84b02900d38b4f50d5mr5554682plp.48.1602873730564;
+        Fri, 16 Oct 2020 11:42:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602873730; cv=none;
         d=google.com; s=arc-20160816;
-        b=V2aM4b9Vrxoga9FytOWlTZAHQwzLwdOst1UIo9tcsJyzyvAkc3/TErMwey/phdmvUw
-         JcMQUqyxlykTgcbmWffrgcrlFHArG3vK0F5HpEfYVNx9c2tbbx1dZPArxupr2B9pi0ul
-         Iz/XRojKSk0/cH5a0mv3y3Bi1fBhBePCsT2ZLT5e92IGmUbryjYsxxYXoLxnr85x9oNt
-         MsE4iPtoTrnhS+6+WGRW/v4qRHD83ZvwySUADN+i4rObhelATzmlU63Wt5DR3bnQTg8S
-         RcnTU/90FNlOgmnuuPwHEltewjutCcMu1XUCAAOIazVDd5yhR3sfZdLtcOTsvoD1aRZr
-         +2ZA==
+        b=rDNCpLO3f10jmGkG6UzazsnLvodJJgQ3djLy4AlhgkanetdejqGCWWxq++EpoJxfAU
+         Qf3fk3n3LPPjLDQIsou1snSyEdcaHr4BoUbVRyO/6ZBxp3EdApGaM6nWqsJX9mUcWXzG
+         VuXb+SQ5pA/4fg8mtbS50+oERaH2PVcnV6W6XlwN+UDgAQcEv7k8AxlAHO6DU9Tl4bKI
+         l1t0+qKKH7g9f2Pt8RGnmYlO52k7HNfubVn+JZRytmqrrzqWvlDQitStgszL3CPzoN75
+         e7dceF0CdCWvNjDo1PagtDDXs3dNvTmvkTpbOrbdybOUgMax6Ods4TQvb3OVK4i28a+x
+         JE6A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=content-transfer-encoding:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject:dkim-signature;
-        bh=zlomqrOhtPoc70L+vuBIPNvjCF/pYjLzg+HplJ0eKC0=;
-        b=wreBSTah43/aOlKxTym2Pz2qoy/JlnrIyyArwJAF2WfHFsVmb5Hsm/pjXo0sLNAwaa
-         RdWDP8R1nGbvCzlxvLGqR5WccmCghDOgxZ9RazDwNzCDEMhpBW+lXZlXXRFvqSdIPnX8
-         CS05CK+Jj1f4CdSnkxDQlDOYpA/GM/+bgdNhX1VR3nHzICfQ0lXOLxCTIickgtQwRATH
-         TN9v15mYYZ6vMhZB7zr/ztCIgQ3m5WcJ30MsSA1Zu+/Fjs+pIAYuQACMw8dD8vMBY5Ot
-         Wba4qkZuq1vfFYieRqdSJxZsyA/v00+dx9bqWPxnCLdxVDZaJKAE7YnoN5894X2eWlXY
-         W1Hw==
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:dkim-signature;
+        bh=I0n3SezFuJzE05AkRQW/o6Jz2n22t2TpjyOtThyQzb4=;
+        b=Z9t6arXoXc1/k6dYAw+GZlt+osZeqVR/WY3yXtREYMZG+vct4hxZ8rnUH9iGRl8S09
+         xq/gvQMrFpp882yttbFRL3Z3efMOIqvPhsUReoI86ADOQXutdVBOqS/0+t8EaV4yKN8F
+         1ZlvqXV0B0qqnUwSgD6Xry5CojU9VZ3T9uvHODrqHyrM7ggOS2nZwg0PxzqAhUFfyDs3
+         02lg6eqHLlVnkRyaaNxYvE65JxJBX2U4K1TzR2Br3Md8iVpb85B0mr7Qsp4eQlWYvc6O
+         3qyXnIacKGuefTQGNBqsV+WLEf/P0iMO8XJIX1GKp2XS+4tUh8KhqkxksKzTpNzLW5wW
+         Jefg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BLI0v3WD;
-       spf=pass (google.com: domain of 74cmonty@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=74cmonty@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <74cmonty@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id do13sor4709125ejc.14.2020.10.05.03.51.24
+       dkim=pass header.i=@linaro.org header.s=google header.b=iuy1AVBN;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <richard.henderson@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id b2sor1551055pgl.39.2020.10.16.11.42.10
+        for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Mon, 05 Oct 2020 03:51:24 -0700 (PDT)
-Received-SPF: pass (google.com: domain of 74cmonty@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Fri, 16 Oct 2020 11:42:10 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=BLI0v3WD;
-       spf=pass (google.com: domain of 74cmonty@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=74cmonty@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dkim=pass header.i=@linaro.org header.s=google header.b=iuy1AVBN;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=subject:to:cc:references:from:message-id:date:user-agent
-         :mime-version:in-reply-to:content-transfer-encoding;
-        bh=zlomqrOhtPoc70L+vuBIPNvjCF/pYjLzg+HplJ0eKC0=;
-        b=BLI0v3WDQskJrV4IrM0ybWiJfV3gQtMGNnVV1D9T2Bz6nSKIRXriLr9WF7J/DS6ViG
-         zkYqkNc78eD8OYKMU5zfk1nQX0JLjBw4thPvkN2KgYtUQMCDZ2k6PlozPYz8Ebu7UR/1
-         yVMihR0RvFfr21kocl7zoS4jkGS50fPAoV/Fs2HSsV6QkNKBxMMKtwticWCNY2miResK
-         MX7h12VkUQ2DWRPwUMCCoFXnVjoOhTRba76kPiE5KX7sWwtLCifCb6lKIs8O5G0hFzL3
-         XgdyvwKZ0hX0IPI3BN0kh+6WAcUMyfxerqcjB3EHeCnn2vQOSgmr1Wi7msC6Q0J/11II
-         f4XQ==
+        d=linaro.org; s=google;
+        h=from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=I0n3SezFuJzE05AkRQW/o6Jz2n22t2TpjyOtThyQzb4=;
+        b=iuy1AVBNvqbPAtssMl2XSpXJJmGsZsvrDj50t+B8BVPDbhn7ojirv0cUjuZnoOIpkL
+         DgZwUiHARdrv9AZQX8F5b5+OO0VPpVHTQ9JNTBMMyR9QpHR62+JP8G0Sn7fSV3ea6f2e
+         +hI7439b59gwbmeEILgXbwIti72lkhMBnGltKyy8K9JY8UbrywOjrqL1d5PphKjc367y
+         J2kBOHlkpGvMSeoBVEchzpULqgFScr2jYNa3iE9CrDo3uTVQdm7GDESkR7/wNl048fZm
+         fI/PBhmxxiFOzgvTSExG/cdVX4wuNy+aRNUREOu9Es84Ccnkwt7qaz0FpCYDXEbdDGU/
+         mvgw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
-        h=x-gm-message-state:subject:to:cc:references:from:message-id:date
-         :user-agent:mime-version:in-reply-to:content-transfer-encoding;
-        bh=zlomqrOhtPoc70L+vuBIPNvjCF/pYjLzg+HplJ0eKC0=;
-        b=Y96C7ETjpZh2Oh8b7fSXYOIzNxkT0P7RZRhZArBZLWPXyaIXv8V/1BI3IXZGLVA27E
-         Xgsb/feNKEmtzbZvr6r6tkYeflcZvlGk8BrE5nfPZgGwNBMGt949t3gkcNaXBVQzungN
-         UO+sr/lZJ3h1ctnExAnEDGijwaS7dbT4NzVBYPu+Uvo800gm5hxMSdr6swVOmAHkcxgE
-         VQjBdBdOYapSJnpj5fLHwElH+bovCbyUambhOay93tLpT5G9LcYWsM8ZRj7uSzKVpv54
-         s4pa3Gex8pXPzscYs4uSuPmbSpYOoaAehe70xy+1Kj7HXSnOUthxvBL3UAJi0Nod9rLJ
-         kbMw==
-X-Gm-Message-State: AOAM531bZAz6EatZ0rPxcVMlYzsAYejPTYs6mi2v+reuMSmpfO72maf8
-	OlL2hmqZG3mlf62pYz1LnxU=
-X-Google-Smtp-Source: ABdhPJwj9d/4ggZf13j2Iv+gSgLTGnY5Gjk5oF2jPz6ugiIQNa1CFlBC83g/Ubap//vkQc5eFxhAlg==
-X-Received: by 2002:a17:906:f14b:: with SMTP id gw11mr14663475ejb.41.1601895083880;
-        Mon, 05 Oct 2020 03:51:23 -0700 (PDT)
-Return-Path: <74cmonty@gmail.com>
-Received: from [10.16.55.97] ([193.16.224.1])
-        by smtp.gmail.com with ESMTPSA id d25sm8344254edq.52.2020.10.05.03.51.22
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 05 Oct 2020 03:51:23 -0700 (PDT)
-Subject: Re: Emulate Rpi with QEMU fails
-To: =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-References: <47dbcad4-3121-b1c3-06fa-abec7c353fb6@gmail.com>
- <87sgatanti.fsf@linaro.org>
- <CAFEAcA_ZMLV3DZ_R_SHvPLdEf=i-xpspD5itBmfYeqyMhgtLWQ@mail.gmail.com>
- <875z7p3t9e.fsf@linaro.org>
-From: Thomas Schneider <74cmonty@gmail.com>
-Message-ID: <e43be86d-1847-199f-4cbd-2e3bd124d70a@gmail.com>
-Date: Mon, 5 Oct 2020 12:51:21 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+        h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+         :content-transfer-encoding;
+        bh=I0n3SezFuJzE05AkRQW/o6Jz2n22t2TpjyOtThyQzb4=;
+        b=RGtvKDe+mJGyEURwwVhFpan5/DEXn031FxIAqUgHtWStYDE/rYygFYgGHPa/PB+tA+
+         x7VEuVVRl58cFrq930pPkhqB5rSRA245EHvAHIyLxLeOsXQxVqrPE6xn9wi9KX2z1z6i
+         90XEzMpKkTuJmcloL3Nmiqu+9J+W5TxAaFdOkAUoFbE46jdpmo/CVH9FZL9iQNqMcI/0
+         C3ftQ/ctctpgmjV4OiGJXDvKfCyYOyHS7reFqsUTAhkStaAcH2yxHqwm/aOtmp48TCvg
+         L0Dl0NOlhhQU7u+1DkvJxTRz0OuyiwjpqIEvP0es0DAo5V25n7s+z1ZcYF9Cx1a2C3Sz
+         /e0Q==
+X-Gm-Message-State: AOAM5323VWvnmAsAXAor8TmhQpm31Z3mGZ9k+AkxZjFo6FQkIInwXtxs
+	6hTteJpZeuo7dKJbFiKBZWBm0brJ
+X-Google-Smtp-Source: ABdhPJzIpFPgg5j6S3Obbh3WqLNDyBhiTBbeEYhFm73Qm2hlwrT64pTiPgqOpqxu+tx12g/LyTyUIg==
+X-Received: by 2002:a63:5f97:: with SMTP id t145mr4358892pgb.115.1602873729909;
+        Fri, 16 Oct 2020 11:42:09 -0700 (PDT)
+Return-Path: <richard.henderson@linaro.org>
+Received: from localhost.localdomain ([71.212.141.89])
+        by smtp.gmail.com with ESMTPSA id c15sm3426011pgg.77.2020.10.16.11.42.08
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 16 Oct 2020 11:42:08 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	peter.maydell@linaro.org,
+	alex.bennee@linaro.org,
+	laurent@vivier.eu
+Subject: [PATCH v11 00/12] linux-user: User support for AArch64 BTI
+Date: Fri, 16 Oct 2020 11:41:55 -0700
+Message-Id: <20201016184207.786698-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-In-Reply-To: <875z7p3t9e.fsf@linaro.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: 4plfr1EhGkbb
+X-TUID: L8uyTTWE2Sim
 
-Hello,
+The kernel abi for this was merged in v5.8, just as the qemu 5.1
+merge window was closing, so this slipped to the next dev cycle.
 
-thanks for your replies.
+Changes from v10:
+  * Include Phil's plug of interp_name memory leak.
+  * Convert error reporting to Error api.
+  * Mirror the kernel's code structure for parsing notes
+    (though Error means that it's not exactly the same).
+  * Split aarch64 stuff from basic note parsing patch.
 
-I must admit that I don't fully understand your analysis.
-However you made some conclusions that are correct.
-
-In fact I have found a Github repo 
-<https://github.com/dhruvvyas90/qemu-rpi-kernel> where a specific kernel 
-and versatile-pb are provided + instructions for lauching the emulation 
-with the original RPi image file:
-$ qemu-system-arm \
-   -M versatilepb \
-   -cpu arm1176 \
-   -m 256 \
-   -drive 
-"file=/.../2020-05-27-raspios-buster-lite-armhf.img,if=none,index=0,media=disk,format=raw,id=disk0" 
-\
-   -device 
-"virtio-blk-pci,drive=disk0,disable-modern=on,disable-legacy=off" \
-   -net "user,hostfwd=tcp::5022-:22" \
-   -dtb /.../versatile-pb-buster-5.4.51.dtb \
-   -kernel /.../kernel-qemu-5.4.51-buster \
-   -append 'root=/dev/vda2 panic=1' \
-   -no-reboot
-
-This means it is more recent than the Raspberry Pi Geek article, and the 
-emulation works.
-But I'm not sure if this usable considering the added models -M raspi2 
-and -M raspi3.
-
-Can you please advise how to proceed?
-
-In addition I would like to know if there's a memory limitation using 
-models -M raspi2 and -M raspi3?
-To my understanding there's a limitation to 256MB using -M versatilepb.
-If yes, I consider to another raw image located on host's temporary 
-filesystem and use this a swap in the client.
-
-And how can I make use of a client network device that is based on 
-host's tap device connected to a network bridge?
-
-THX
+Changes from v9:
+  * Split what is now patch 7 into 3 more (pmm).
+  * All prerequisites are now upstream.
 
 
-Am 05.10.2020 um 11:40 schrieb Alex Bennée:
-> Peter Maydell <peter.maydell@linaro.org> writes:
->
->> On Sun, 4 Oct 2020 at 18:44, Alex Bennée <alex.bennee@linaro.org> wrote:
->>> Thomas <74cmonty@gmail.com> writes:
->>>> I'm trying to emulate Rpi with QEMU.
->>>> I found
->>>> [url=1]this[/url]
->>>> arcticle in Raspberry Pi Geek documenting the steps including persistent
->>>> storage on host.
->>>>
->>>> However when starting the emulation with command
->>>> qemu-system-arm -M versatilepb -cpu arm1176 -m 256 -serial stdio -hda
->>>> 2020-08-20-raspios-buster-armhf-lite.img -net
->>>> "user,hostfwd=tcp::5022-:22" -dtb versatile-pb-buster.dtb -kernel
->>>> kernel-qemu-5.4.51-buster -append "root=/dev/sda2 rootfstype=ext4 rw
->>>> panic=1" -no-reboot
->>> Let's start with the fact you are using a versatilepb machine type with
->>> a versatilepb dtb and not the rasppi model.
->> Given the name of the kernel image, this probably actually *is*
->> built for versatilepb, or it wouldn't have got as far as failing
->> to mount the root partition. There seems to be a lot of confusion
->> in the raspberry pi community about the difference between
->> running the raspi userspace plus a for-versatilepb kernel
->> versus running a full raspi setup.
-> Ahh your German is considerably better than mine ;-) Looking more
-> closely at the blog it seems to be predicated on extracting a Raspbian
-> kernel which at least stands a fighting chance of being a multi_config
-> kernel - like the buster above.
->
-> I can see why these sorts of shenanigans used to be pulled when there
-> where no RaspPi models although if all you want to do is run an ARM user
-> space what's wrong with using linux-user for this sort of thing?
->
->> Anyway, failing to mount the rootfs and not listing any
->> sda devices is not a problem with the fstab, because the system
->> hasn't got as far as being able to mount the filesystem with a
->> fstab on it yet. One possibility is that the kernel is
->> missing the device drivers for either PCI or for the SCSI
->> controller that gets plugged in to versatilepb by default.
->>
->> My guess at the cause is that you're trying to boot a Linux 5.something
->> kernel and you've run into the issue described in this thread:
->> https://lists.gnu.org/archive/html/qemu-discuss/2020-09/msg00023.html
->> where the Linux 5.x sym53c8xx scsi driver is not compatible with QEMU's
->> emulation of that device. If that's the case then you should see
->> earlier in the kernel boot log error messages similar to the ones
->> that Roger reported. The fix would be either to use an older
->> kernel, or to change the QEMU commandline to use a different
->> SCSI controller (or to use a virtio block device).
-> Do we have any documentation for the RaspPi models? The acceptance tests
-> look like they support the inbuilt MMC/SD controller device:
->
->          kernel_command_line = (self.KERNEL_COMMON_COMMAND_LINE +
->                                 serial_kernel_cmdline[uart_id] +
->                                 ' root=/dev/mmcblk0p2 rootwait ' +
->                                 'dwc_otg.fiq_fsm_enable=0')
->
-> It would be useful to fill the hole in the documentation so gently steer
-> people away from these hybrid franken-machine approaches.
->
->> thanks
->> -- PMM
->
+r~
+
+
+Philippe Mathieu-Daudé (1):
+  linux-user/elfload: Avoid leaking interp_name using GLib memory API
+
+Richard Henderson (11):
+  linux-user/aarch64: Reset btype for signals
+  linux-user: Set PAGE_TARGET_1 for TARGET_PROT_BTI
+  include/elf: Add defines related to GNU property notes for AArch64
+  linux-user/elfload: Fix coding style in load_elf_image
+  linux-user/elfload: Adjust iteration over phdr
+  linux-user/elfload: Move PT_INTERP detection to first loop
+  linux-user/elfload: Use Error for load_elf_image
+  linux-user/elfload: Use Error for load_elf_interp
+  linux-user/elfload: Parse NT_GNU_PROPERTY_TYPE_0 notes
+  linux-user/elfload: Parse GNU_PROPERTY_AARCH64_FEATURE_1_AND
+  tests/tcg/aarch64: Add bti smoke tests
+
+ include/elf.h                     |  22 ++
+ include/exec/cpu-all.h            |   2 +
+ linux-user/qemu.h                 |   4 +
+ linux-user/syscall_defs.h         |   4 +
+ target/arm/cpu.h                  |   5 +
+ linux-user/aarch64/signal.c       |  10 +-
+ linux-user/elfload.c              | 326 +++++++++++++++++++++++++-----
+ linux-user/mmap.c                 |  16 ++
+ target/arm/translate-a64.c        |   6 +-
+ tests/tcg/aarch64/bti-1.c         |  62 ++++++
+ tests/tcg/aarch64/bti-2.c         | 108 ++++++++++
+ tests/tcg/aarch64/bti-crt.inc.c   |  51 +++++
+ tests/tcg/aarch64/Makefile.target |  10 +
+ tests/tcg/configure.sh            |   4 +
+ 14 files changed, 569 insertions(+), 61 deletions(-)
+ create mode 100644 tests/tcg/aarch64/bti-1.c
+ create mode 100644 tests/tcg/aarch64/bti-2.c
+ create mode 100644 tests/tcg/aarch64/bti-crt.inc.c
+
+-- 
+2.25.1

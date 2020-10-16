@@ -1,183 +1,383 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1781117lfa;
-        Fri, 16 Oct 2020 11:42:27 -0700 (PDT)
-X-Received: by 2002:a17:90b:3010:: with SMTP id hg16mr5102100pjb.21.1602873747469;
-        Fri, 16 Oct 2020 11:42:27 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602873747; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1781146lfa;
+        Fri, 16 Oct 2020 11:42:29 -0700 (PDT)
+X-Received: by 2002:a62:1a4c:0:b029:152:706d:dabb with SMTP id a73-20020a621a4c0000b0290152706ddabbmr5043866pfa.40.1602873748974;
+        Fri, 16 Oct 2020 11:42:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602873748; cv=none;
         d=google.com; s=arc-20160816;
-        b=eDEypOFPeAsANGtZsTUo2Tw0TquUjVvQkCrCuVKrSlFblf8aK0UG6KHlhetAyJ3gX1
-         T5IAMIg2RQSRRLL8cLz+co78nf90rIkjuQ5RIxihdcuyq2UUCVDZMPQxz2I8IhYfPM+o
-         gMgv1UfyPbMMHoRYeY+Mr3saym0otmLS+4W56unBQ3ZzJvvTbbcP9pzDAUId32QPbREf
-         z7DW3LuPSE2P+d70PeMm7fFSX81m3t1B+KvOdhQ4k0pkf1vxwzbinCgyAqAJ09yauqYV
-         ZgmclzgZz5zfUlnCfKJ/lV92o18VJBSQYETm15F2+K5llS53DoIdiCq6qrGUr9o5FKcQ
-         cjcw==
+        b=J2M9X/GGAAU4nlpu2O6ywAijqduUbYxrLyESL3zHC9YInr69H3nk1omgrkVagoxOIX
+         W08m6JcH6EzJroGQ/updgAZuKNiKClrpapRbis2Y4DanOohwAv+AF4xmZiw/1cSCa4zh
+         EyzdNAidL2pWfD6lZDhWedQQ1QFD7JCqeD9VYt3lCJJTBuKGvum0RLh+IV0eHfynPHtI
+         QVZA26xOeth4OMCVBrqy/zKBTsePEyKUa8Gdn0Q6nD9Zpj5u4rhljcxBLoYL4l93B5k/
+         g97tc2nPs+FBrU7OcOyUrgiibAkIRTSgRkODy5W3dvAsWtxZc7AJCh17qClDfSPFQ7Lf
+         HG5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=kGZNmudBhXIU/a8gp/KXcyIKcPKoqtSco3EGBov+V2s=;
-        b=Wt9CS6YNzf0pt2q4+dLKUXwqXxSLr1x1c8LNlBo+aAyNQdR87PIB27XmNKftcUQ9tI
-         87V0y3Qt/ZNmb6c+wtmou4ONX2xCSv7FPs5MxeJr18Yj3OB9ZE9RyFjdNiR0AvVAXI66
-         tmWC13Ch7uXBfI+HTeRaimXibX0thaUDosZCm+Pgb93sjIOfpk7xh2lR/MwX6tGBa1If
-         1CxJRykgCcHSEML/UZhwYP2ZE0Y3kcK6PMIDSA5fSlRmBVK0fnkj908sABQCqQM4Hmmz
-         9o3GlGiuYDAf/vpYQ1Vy3uDHYlJMx9d1n2v8DJuhZyR9i/y2Zzo12Ih96SgEdl6Prass
-         ZLIw==
+        bh=sxotxj6XB7hzF7JenULfKlm4NqUCIgIUU5zaZ0WIWOQ=;
+        b=JtJeUU+RVMvh4mUX/V5m+j2X3TmBt+IwdIG13Y9lSFUd3IOUUgzn+dklH+3HXQwSS4
+         0LHBknbfXs360dj/TEO0w6+vIInMgXLAVGNyvx7ESIQOMJhNAR5s3oHxmdYIWlmheVhb
+         2hSwRw0sbv6/Pkz4uqY0u/pySmRTTirHx1Vy4nQPP9Fuda5MzvlJK9P1MKhWNRbd66lM
+         uvfKXDNze0lgwwyviNlgFrep43JDtIkLZF95UTrT4Ojv/NjHRryHJW1lkDd2EiKvV1KW
+         AeOHdiR13zYIZuhRuLyTEyglIdqf7ngxJz9vKQJO4O7t25tnRU0NonOSCnLuOfFzNoep
+         cltg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KkQnKXqA;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yS2Jo41y;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id 16sor1490255pgr.86.2020.10.16.11.42.27
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id w2sor1718916pjv.43.2020.10.16.11.42.28
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 16 Oct 2020 11:42:27 -0700 (PDT)
-Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+        Fri, 16 Oct 2020 11:42:28 -0700 (PDT)
+Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KkQnKXqA;
-       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
+       dkim=pass header.i=@linaro.org header.s=google header.b=yS2Jo41y;
+       spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=kGZNmudBhXIU/a8gp/KXcyIKcPKoqtSco3EGBov+V2s=;
-        b=KkQnKXqAJpPxExziYSE5F6lME8UFZmYRo3UqCal0JjMWuckbI/lZHAC8pmcFSypTl+
-         uhIjZaE880M8+3VY+bZKUFcRPyNrUjOeX41+kFLMx/zTklG0CeQFyz7nBAYtwn5X6gXk
-         54yD+sIyPEXFmenJrYbpTeVYJgnCdqNwLLSPdFpn9haYsUmlsC50MTsUUwtYf/7SuAHX
-         V61+yiOUGhMAGP3I0dgZvbN9alrs+rGCME2qG1YhCnCLPTna+kOUvqYqymGt9KFf6W9h
-         NkmM/QExcb51nr1UqlE7Yd8qrY9/5fZciEtafXUA8WGadDId3yx807lpTkEO9n1TJCWi
-         cKHA==
+        bh=sxotxj6XB7hzF7JenULfKlm4NqUCIgIUU5zaZ0WIWOQ=;
+        b=yS2Jo41yV7EhlVhdqVxZ7EAubOw+rSsvov7dgPhqj481h70lP3dpb/mZwDCYW0hkP+
+         ZL3qx/vEyAcBsrtUOBNsbchYradWQl0z5ejy5foaLM9HNmPay7A7lmQ5gRAJH4/dbrrR
+         9CETd+4kfnNmFvMkM9bKqHcv9w19m5mdDAae/INUg2eqRjVHv2DCQ+Gskw1i+n0zZ470
+         zaQCZ3W3Uu3eNySOLxDtS0PVRaSIQK45Ipcfmhs0Y5Z4A46s2DHEo7oIoApyqlQR3ALr
+         Miw2jmcnQNFqjxo2A10TC+7dEZyyFsD78fuCBrzx62kMYNszMK1clGhI4LCs0Gc87/os
+         Iv1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=kGZNmudBhXIU/a8gp/KXcyIKcPKoqtSco3EGBov+V2s=;
-        b=D1bjH596EKBGmnaM6V7hP+mRuqOrSoK5diYsupG3VEwoM5Is9MXccRCfPNn7w/IKUc
-         J5HDETD8hYVbm+2kOkzduQ0uua0u/2miMhOQC9eDTN8f+uPy1L143bzqc/SKUqogIIa0
-         6B/WKIbqKGt57R58fnM1UNacRAG/v9KcAWZgWxKughrz56KHL2XsU2VoFujc1VGUAwYc
-         56kx6oB7JOMghLVbXeeaQGyWqDeJnsLSaA4GyENqvsdcOo+B+Kzyn/Egjot5o3U2VW4T
-         sua/WVqdpUCIPmKmwTYIMm9MC47x71JVhVL7Gmwr3npksnGunqTBm88AUHsrOMay36lE
-         +aHQ==
-X-Gm-Message-State: AOAM530GruENbjZeJxIouO7nXcVaxCdkfiibFlw8+LtvFDwSb8305WeK
-	EY/iofJiUUswA5ZKGosq74+e9dk7
-X-Google-Smtp-Source: ABdhPJzJge76pwJCxGj0+2oKCY6gqJLt3HoWJfSHXqqmhMmb41blUIl6ptCFBqumAjGTeYLG67IKhA==
-X-Received: by 2002:a63:e111:: with SMTP id z17mr4234127pgh.267.1602873746958;
-        Fri, 16 Oct 2020 11:42:26 -0700 (PDT)
+        bh=sxotxj6XB7hzF7JenULfKlm4NqUCIgIUU5zaZ0WIWOQ=;
+        b=IBm3+/DQnDSrSyZplXfd/JU1eZxvilwzBc4EaB1ziISHsYm3N6VcTiZGv6q49ULeeh
+         GWGm82W4CbNuqCsBAZoZlW9aQ0uwwInQGVHAMY5dNuFDBx8XnbqGGwg0VfCLIRzy4iNY
+         UunTm2ugi6UhPo0Z1X9TNZcFuTbPBtW/4F6SVLwZVYD18hmPslCurEb4dt2rbI5l7nWc
+         0EnnDzTKQYd6xO+wssgFxqsOs81TdMCT85IiuZcstC7JVs6LcCuBiZvl3ePyh9uT+l6P
+         Ncdl9d5pkpsNPHJJZSIwSsDOpj6DSIUbs7Ek72ujBDL7hIprhi1M3t/vyPUwMGka8Mah
+         b4gQ==
+X-Gm-Message-State: AOAM532FIItjmCl23rr04hNYfLYOiSLfPH0N1/8lIil9j5cCu1189eMb
+	eEqVBtQHD1S8kQTqaUWkweWN9M2y
+X-Google-Smtp-Source: ABdhPJzOnl5cpuWrA60i+NFXVU8zxCowjszm0rvCnuT52zUSguaWhUnTZN9+wwM+rH/Hmbd5zj2RZQ==
+X-Received: by 2002:a17:90a:be11:: with SMTP id a17mr5136520pjs.181.1602873748439;
+        Fri, 16 Oct 2020 11:42:28 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain ([71.212.141.89])
-        by smtp.gmail.com with ESMTPSA id c15sm3426011pgg.77.2020.10.16.11.42.25
+        by smtp.gmail.com with ESMTPSA id c15sm3426011pgg.77.2020.10.16.11.42.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Oct 2020 11:42:25 -0700 (PDT)
+        Fri, 16 Oct 2020 11:42:27 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	alex.bennee@linaro.org,
 	laurent@vivier.eu
-Subject: [PATCH v11 11/12] linux-user/elfload: Parse GNU_PROPERTY_AARCH64_FEATURE_1_AND
-Date: Fri, 16 Oct 2020 11:42:06 -0700
-Message-Id: <20201016184207.786698-12-richard.henderson@linaro.org>
+Subject: [PATCH v11 12/12] tests/tcg/aarch64: Add bti smoke tests
+Date: Fri, 16 Oct 2020 11:42:07 -0700
+Message-Id: <20201016184207.786698-13-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201016184207.786698-1-richard.henderson@linaro.org>
 References: <20201016184207.786698-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-TUID: ZrF7MEUALAKa
+X-TUID: zdodOqaiwv2O
 
-Use the new generic support for NT_GNU_PROPERTY_TYPE_0.
+The note test requires gcc 10 for -mbranch-protection=standard.
+The mmap test uses PROT_BTI and does not require special compiler support.
 
+Acked-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v11: Split out aarch64 bits from generic patch.
+v9: Expect and require gcc 10.
+v11: Squash mmap smoke test.
 ---
- linux-user/elfload.c | 48 ++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 46 insertions(+), 2 deletions(-)
+ tests/tcg/aarch64/bti-1.c         |  62 +++++++++++++++++
+ tests/tcg/aarch64/bti-2.c         | 108 ++++++++++++++++++++++++++++++
+ tests/tcg/aarch64/bti-crt.inc.c   |  51 ++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  10 +++
+ tests/tcg/configure.sh            |   4 ++
+ 5 files changed, 235 insertions(+)
+ create mode 100644 tests/tcg/aarch64/bti-1.c
+ create mode 100644 tests/tcg/aarch64/bti-2.c
+ create mode 100644 tests/tcg/aarch64/bti-crt.inc.c
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 428dcaa152..bf8c1bd253 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -1522,6 +1522,28 @@ static void elf_core_copy_regs(target_elf_gregset_t *regs,
- 
- #include "elf.h"
- 
-+/* We must delay the following stanzas until after "elf.h". */
-+#if defined(TARGET_AARCH64)
+diff --git a/tests/tcg/aarch64/bti-1.c b/tests/tcg/aarch64/bti-1.c
+new file mode 100644
+index 0000000000..61924f0d7a
+--- /dev/null
++++ b/tests/tcg/aarch64/bti-1.c
+@@ -0,0 +1,62 @@
++/*
++ * Branch target identification, basic notskip cases.
++ */
 +
-+static bool arch_parse_elf_property(uint32_t pr_type, uint32_t pr_datasz,
-+                                    const uint32_t *data,
-+                                    struct image_info *info,
-+                                    Error **errp)
++#include "bti-crt.inc.c"
++
++static void skip2_sigill(int sig, siginfo_t *info, ucontext_t *uc)
 +{
-+    if (pr_type == GNU_PROPERTY_AARCH64_FEATURE_1_AND) {
-+        if (pr_datasz != sizeof(uint32_t)) {
-+            error_setg(errp, "Ill-formed GNU_PROPERTY_AARCH64_FEATURE_1_AND");
-+            return false;
-+        }
-+        /* We will extract GNU_PROPERTY_AARCH64_FEATURE_1_BTI later. */
-+        info->note_flags = *data;
-+    }
-+    return true;
++    uc->uc_mcontext.pc += 8;
++    uc->uc_mcontext.pstate = 1;
 +}
-+#define ARCH_USE_GNU_PROPERTY 1
 +
-+#else
++#define NOP       "nop"
++#define BTI_N     "hint #32"
++#define BTI_C     "hint #34"
++#define BTI_J     "hint #36"
++#define BTI_JC    "hint #38"
 +
- static bool arch_parse_elf_property(uint32_t pr_type, uint32_t pr_datasz,
-                                     const uint32_t *data,
-                                     struct image_info *info,
-@@ -1531,6 +1553,8 @@ static bool arch_parse_elf_property(uint32_t pr_type, uint32_t pr_datasz,
- }
- #define ARCH_USE_GNU_PROPERTY 0
- 
++#define BTYPE_1(DEST) \
++    asm("mov %0,#1; adr x16, 1f; br x16; 1: " DEST "; mov %0,#0" \
++        : "=r"(skipped) : : "x16")
++
++#define BTYPE_2(DEST) \
++    asm("mov %0,#1; adr x16, 1f; blr x16; 1: " DEST "; mov %0,#0" \
++        : "=r"(skipped) : : "x16", "x30")
++
++#define BTYPE_3(DEST) \
++    asm("mov %0,#1; adr x15, 1f; br x15; 1: " DEST "; mov %0,#0" \
++        : "=r"(skipped) : : "x15")
++
++#define TEST(WHICH, DEST, EXPECT) \
++    do { WHICH(DEST); fail += skipped ^ EXPECT; } while (0)
++
++
++int main()
++{
++    int fail = 0;
++    int skipped;
++
++    /* Signal-like with SA_SIGINFO.  */
++    signal_info(SIGILL, skip2_sigill);
++
++    TEST(BTYPE_1, NOP, 1);
++    TEST(BTYPE_1, BTI_N, 1);
++    TEST(BTYPE_1, BTI_C, 0);
++    TEST(BTYPE_1, BTI_J, 0);
++    TEST(BTYPE_1, BTI_JC, 0);
++
++    TEST(BTYPE_2, NOP, 1);
++    TEST(BTYPE_2, BTI_N, 1);
++    TEST(BTYPE_2, BTI_C, 0);
++    TEST(BTYPE_2, BTI_J, 1);
++    TEST(BTYPE_2, BTI_JC, 0);
++
++    TEST(BTYPE_3, NOP, 1);
++    TEST(BTYPE_3, BTI_N, 1);
++    TEST(BTYPE_3, BTI_C, 1);
++    TEST(BTYPE_3, BTI_J, 0);
++    TEST(BTYPE_3, BTI_JC, 0);
++
++    return fail;
++}
+diff --git a/tests/tcg/aarch64/bti-2.c b/tests/tcg/aarch64/bti-2.c
+new file mode 100644
+index 0000000000..6dc8908b5a
+--- /dev/null
++++ b/tests/tcg/aarch64/bti-2.c
+@@ -0,0 +1,108 @@
++/*
++ * Branch target identification, basic notskip cases.
++ */
++
++#include <stdio.h>
++#include <signal.h>
++#include <string.h>
++#include <unistd.h>
++#include <sys/mman.h>
++
++#ifndef PROT_BTI
++#define PROT_BTI  0x10
 +#endif
 +
- struct exec
- {
-     unsigned int a_info;   /* Use macros N_MAGIC, etc for access */
-@@ -2545,7 +2569,7 @@ static void load_elf_image(const char *image_name, int image_fd,
-     struct elfhdr *ehdr = (struct elfhdr *)bprm_buf;
-     struct elf_phdr *phdr;
-     abi_ulong load_addr, load_bias, loaddr, hiaddr, error;
--    int i, retval;
-+    int i, retval, prot_exec;
-     Error *err = NULL;
- 
-     /* First of all, some simple consistency checks */
-@@ -2712,6 +2736,26 @@ static void load_elf_image(const char *image_name, int image_fd,
-     info->brk = 0;
-     info->elf_flags = ehdr->e_flags;
- 
-+    prot_exec = PROT_EXEC;
-+#ifdef TARGET_AARCH64
-+    /*
-+     * If the BTI feature is present, this indicates that the executable
-+     * pages of the startup binary should be mapped with PROT_BTI, so that
-+     * branch targets are enforced.
-+     *
-+     * The startup binary is either the interpreter or the static executable.
-+     * The interpreter is responsible for all pages of a dynamic executable.
-+     *
-+     * Elf notes are backward compatible to older cpus.
-+     * Do not enable BTI unless it is supported.
-+     */
-+    if ((info->note_flags & GNU_PROPERTY_AARCH64_FEATURE_1_BTI)
-+        && (pinterp_name == NULL || *pinterp_name == 0)
-+        && cpu_isar_feature(aa64_bti, ARM_CPU(thread_cpu))) {
-+        prot_exec |= TARGET_PROT_BTI;
++static void skip2_sigill(int sig, siginfo_t *info, void *vuc)
++{
++    ucontext_t *uc = vuc;
++    uc->uc_mcontext.pc += 8;
++    uc->uc_mcontext.pstate = 1;
++}
++
++#define NOP       "nop"
++#define BTI_N     "hint #32"
++#define BTI_C     "hint #34"
++#define BTI_J     "hint #36"
++#define BTI_JC    "hint #38"
++
++#define BTYPE_1(DEST)    \
++    "mov x1, #1\n\t"     \
++    "adr x16, 1f\n\t"    \
++    "br x16\n"           \
++"1: " DEST "\n\t"        \
++    "mov x1, #0"
++
++#define BTYPE_2(DEST)    \
++    "mov x1, #1\n\t"     \
++    "adr x16, 1f\n\t"    \
++    "blr x16\n"          \
++"1: " DEST "\n\t"        \
++    "mov x1, #0"
++
++#define BTYPE_3(DEST)    \
++    "mov x1, #1\n\t"     \
++    "adr x15, 1f\n\t"    \
++    "br x15\n"           \
++"1: " DEST "\n\t"        \
++    "mov x1, #0"
++
++#define TEST(WHICH, DEST, EXPECT) \
++    WHICH(DEST) "\n"              \
++    ".if " #EXPECT "\n\t"         \
++    "eor x1, x1," #EXPECT "\n"    \
++    ".endif\n\t"                  \
++    "add x0, x0, x1\n\t"
++
++extern char test_begin[], test_end[];
++
++asm("\n"
++"test_begin:\n\t"
++    BTI_C "\n\t"
++    "mov x2, x30\n\t"
++    "mov x0, #0\n\t"
++
++    TEST(BTYPE_1, NOP, 1)
++    TEST(BTYPE_1, BTI_N, 1)
++    TEST(BTYPE_1, BTI_C, 0)
++    TEST(BTYPE_1, BTI_J, 0)
++    TEST(BTYPE_1, BTI_JC, 0)
++
++    TEST(BTYPE_2, NOP, 1)
++    TEST(BTYPE_2, BTI_N, 1)
++    TEST(BTYPE_2, BTI_C, 0)
++    TEST(BTYPE_2, BTI_J, 1)
++    TEST(BTYPE_2, BTI_JC, 0)
++
++    TEST(BTYPE_3, NOP, 1)
++    TEST(BTYPE_3, BTI_N, 1)
++    TEST(BTYPE_3, BTI_C, 1)
++    TEST(BTYPE_3, BTI_J, 0)
++    TEST(BTYPE_3, BTI_JC, 0)
++
++    "ret x2\n"
++"test_end:"
++);
++
++int main()
++{
++    struct sigaction sa;
++
++    void *p = mmap(0, getpagesize(),
++                   PROT_EXEC | PROT_READ | PROT_WRITE | PROT_BTI,
++                   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
++    if (p == MAP_FAILED) {
++        perror("mmap");
++        return 1;
 +    }
-+#endif
 +
-     for (i = 0; i < ehdr->e_phnum; i++) {
-         struct elf_phdr *eppnt = phdr + i;
-         if (eppnt->p_type == PT_LOAD) {
-@@ -2725,7 +2769,7 @@ static void load_elf_image(const char *image_name, int image_fd,
-                 elf_prot |= PROT_WRITE;
-             }
-             if (eppnt->p_flags & PF_X) {
--                elf_prot |= PROT_EXEC;
-+                elf_prot |= prot_exec;
-             }
++    memset(&sa, 0, sizeof(sa));
++    sa.sa_sigaction = skip2_sigill;
++    sa.sa_flags = SA_SIGINFO;
++    if (sigaction(SIGILL, &sa, NULL) < 0) {
++        perror("sigaction");
++        return 1;
++    }
++
++    memcpy(p, test_begin, test_end - test_begin);
++    return ((int (*)(void))p)();
++}
+diff --git a/tests/tcg/aarch64/bti-crt.inc.c b/tests/tcg/aarch64/bti-crt.inc.c
+new file mode 100644
+index 0000000000..47805f4e35
+--- /dev/null
++++ b/tests/tcg/aarch64/bti-crt.inc.c
+@@ -0,0 +1,51 @@
++/*
++ * Minimal user-environment for testing BTI.
++ *
++ * Normal libc is not (yet) built with BTI support enabled,
++ * and so could generate a BTI TRAP before ever reaching main.
++ */
++
++#include <stdlib.h>
++#include <signal.h>
++#include <ucontext.h>
++#include <asm/unistd.h>
++
++int main(void);
++
++void _start(void)
++{
++    exit(main());
++}
++
++void exit(int ret)
++{
++    register int x0 __asm__("x0") = ret;
++    register int x8 __asm__("x8") = __NR_exit;
++
++    asm volatile("svc #0" : : "r"(x0), "r"(x8));
++    __builtin_unreachable();
++}
++
++/*
++ * Irritatingly, the user API struct sigaction does not match the
++ * kernel API struct sigaction.  So for simplicity, isolate the
++ * kernel ABI here, and make this act like signal.
++ */
++void signal_info(int sig, void (*fn)(int, siginfo_t *, ucontext_t *))
++{
++    struct kernel_sigaction {
++        void (*handler)(int, siginfo_t *, ucontext_t *);
++        unsigned long flags;
++        unsigned long restorer;
++        unsigned long mask;
++    } sa = { fn, SA_SIGINFO, 0, 0 };
++
++    register int x0 __asm__("x0") = sig;
++    register void *x1 __asm__("x1") = &sa;
++    register void *x2 __asm__("x2") = 0;
++    register int x3 __asm__("x3") = sizeof(unsigned long);
++    register int x8 __asm__("x8") = __NR_rt_sigaction;
++
++    asm volatile("svc #0"
++                 : : "r"(x0), "r"(x1), "r"(x2), "r"(x3), "r"(x8) : "memory");
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index e7249915e7..d7d33e293c 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -25,6 +25,16 @@ run-pauth-%: QEMU_OPTS += -cpu max
+ run-plugin-pauth-%: QEMU_OPTS += -cpu max
+ endif
  
-             vaddr = load_bias + eppnt->p_vaddr;
++# BTI Tests
++# bti-1 tests the elf notes, so we require special compiler support.
++ifneq ($(DOCKER_IMAGE)$(CROSS_CC_HAS_ARMV8_BTI),)
++AARCH64_TESTS += bti-1
++bti-1: CFLAGS += -mbranch-protection=standard
++bti-1: LDFLAGS += -nostdlib
++endif
++# bti-2 tests PROT_BTI, so no special compiler support required.
++AARCH64_TESTS += bti-2
++
+ # Semihosting smoke test for linux-user
+ AARCH64_TESTS += semihosting
+ run-semihosting: semihosting
+diff --git a/tests/tcg/configure.sh b/tests/tcg/configure.sh
+index be51bdb5a4..e1b70e25f2 100755
+--- a/tests/tcg/configure.sh
++++ b/tests/tcg/configure.sh
+@@ -240,6 +240,10 @@ for target in $target_list; do
+                -march=armv8.3-a -o $TMPE $TMPC; then
+                 echo "CROSS_CC_HAS_ARMV8_3=y" >> $config_target_mak
+             fi
++            if do_compiler "$target_compiler" $target_compiler_cflags \
++               -mbranch-protection=standard -o $TMPE $TMPC; then
++                echo "CROSS_CC_HAS_ARMV8_BTI=y" >> $config_target_mak
++            fi
+         ;;
+     esac
+ 
 -- 
 2.25.1

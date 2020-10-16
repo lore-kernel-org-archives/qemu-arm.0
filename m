@@ -1,113 +1,88 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1319680lfa;
-        Fri, 16 Oct 2020 01:37:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwjwOa/QlLH9hpgn7bsK0FNzadGe+PHJk//ppXc6LoWO5Q8c9N4WqjK19aBfbS24u1tZ4b3
-X-Received: by 2002:a25:fc0c:: with SMTP id v12mr3151816ybd.351.1602837451204;
-        Fri, 16 Oct 2020 01:37:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602837451; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1356376lfa;
+        Fri, 16 Oct 2020 02:40:37 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzd1IB64pRrx1Tm0VgYQDNTA6qR6fEjgrN9VdI0+sydAlSb8/P+JGmU2CijaHJcOy0ZMrYm
+X-Received: by 2002:a25:2fc3:: with SMTP id v186mr3665772ybv.448.1602841236934;
+        Fri, 16 Oct 2020 02:40:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602841236; cv=none;
         d=google.com; s=arc-20160816;
-        b=zW+YZq1pGC5biktk66pgM0F3xZVfXk4zIZPClK5YdVxc7ypTqUm17QzAAKkzEiFXeH
-         wRW0BfYOO1CrWf2PpMBoNMVtPefPjqXmWnu26Q9xg3MOIQvPethXeofYYQBIFE/aTXhG
-         FyCa1lsYua+j6fZbj4J3Ty8EDnUNB+4KEQ9mGyIC2+rDECgGVPK0mZx7VhaSrW/DW8Cj
-         w5Jmx2mTAb0BG7U14kRlCm5UBr2wljyOQsHWR/uYEmgwnK+GjmxaFn+6RoGUolCR4IKK
-         5Zyhc+PQPS5cJI9lYIcpa6lQsCJzs0xeSwaaJV1h9oa3YbNm8zsMQIUmZMLX97TUrqOO
-         AZFg==
+        b=O7hya89bAlm8cL8vUkBrQhNktPALTanpnfZ8r1bl6qw+oSoBuIh8uL0VWlqYr0Qvga
+         GVIobhojU7560m10n6lM3Ov9ZfgiptiAVQrqGby7khbFHoX+OD4zvweteqOyHkkpjd1Z
+         nGqF/2mT0tdrCucq9VIPL+U+kG6r23GMvF13DqJVEpXcc++uiXe9aEJPbsUzepgqrIF8
+         qPwkpsS2JO1peEw2fKZedsp6xNfNO9lkyXN3sGXy1/ZLBqPpHqTc9AJIhzuc53niA7NC
+         rheG7eNT2AElna6LZqRFOfV1StZX/L/Y8fnD/Pt/iKPX6LmE7JrtE6GuopaVMpWyc1i2
+         pWng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to:content-disposition
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=y5TQ1SPrhLl8T6HFL3GDAbxGb+VGvxgiIy/Uc18POBU=;
-        b=m5ywSNCunauv3gxBvDwJWDZKjnLkgmM83WXbtS4xnxXeeWbO9nt7YtwRW55m1JgjBv
-         nbJNSX9Pqy/vUIUiKw9NzvRAF/98PN+oI9ITVW5iAXY+ufwS4Dinj3VhqCo8ditdcSag
-         h8cO8eFxb+fvs63u5/qD9clF7Ycl055JjSNvbtAr3L1pcUTr6F56Cp7js/nKzPYu+tNs
-         F4WrKFY1RRC8viYmT6MSIWafCRkCEYOWRaQPbe8fEmTffre/gSintmb0zRvY9+zEkeSL
-         Gg8r8YJAcLjhOv/fjoKbQoACy0f+v3aN+v5MMorLXMZAJcSAw0oRU4Ux/bq25w6tRUM7
-         N1Ww==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=jWWuGWK/+rzh8KSA/ODNbWCS8wrBjk6ZYV5j3FVpPlE=;
+        b=lHTpxWWW9NHGEhfLDhKwIk6Q5W8bBHH017AzYsluzP9I87B5XkoX/qPIPSl8CodtB2
+         UgLg2nNj1D+myClj5Hcp8eUgxBb6x7CzI4ogqV4M8YJjTFA4SJUMlXziH3JqVzOdLYyH
+         I1IGlYph9vtyzPd0nfqUosb85rMEgttB4u6H0i2eddSybtbcN2gHSDYR4ytrNMo6gp82
+         fPKmgki7H/QKtqhZVs4wgQ1z1+npb9A00tDJA+ByIWvGfI8RnnKCUWr5VJmIqjRgw1Ue
+         lIlqQd59I47LbZbOUgXq6gy73lCgVzGQpRDf56+DGNTjZQz47hehRsB0NfOzxbssH6vX
+         bijw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="E/c397MT";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e186si1837047yba.62.2020.10.16.01.37.31
+        by mx.google.com with ESMTPS id w18si2344067ybm.192.2020.10.16.02.40.36
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 16 Oct 2020 01:37:31 -0700 (PDT)
+        Fri, 16 Oct 2020 02:40:36 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b="E/c397MT";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:58936 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52544 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kTLEw-0004CY-IB
-	for alex.bennee@linaro.org; Fri, 16 Oct 2020 04:37:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56448)
+	id 1kTME0-0004xN-9U
+	for alex.bennee@linaro.org; Fri, 16 Oct 2020 05:40:36 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44440)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
- id 1kTLEh-0004CH-Ks
- for qemu-arm@nongnu.org; Fri, 16 Oct 2020 04:37:15 -0400
-Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40130)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
- id 1kTLEf-0005LY-3x
- for qemu-arm@nongnu.org; Fri, 16 Oct 2020 04:37:15 -0400
-Received: by mail-wm1-x344.google.com with SMTP id k18so1922157wmj.5
- for <qemu-arm@nongnu.org>; Fri, 16 Oct 2020 01:37:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:in-reply-to;
- bh=y5TQ1SPrhLl8T6HFL3GDAbxGb+VGvxgiIy/Uc18POBU=;
- b=E/c397MTdNUh0EVfkCKoB3UhMmJhTJxr1YyOmfasJUmMH32eHq6VYsuA5xrEfTs1oS
- obMlz2LfGZyuqWL2dxiItkwUI4iQoN0BfzyQNeKpUcChp7CD3YUNfTngQz1wjKDj2zIi
- +AOFvJaLqQFxa+FyZ3y8AQW8NXNGwLxo8fG6t/+xbXTVq3BLRHx/4V8nXtC4VX7gslx+
- 9bQruxUTuFbdgJ7TyYEJ84GJWjh1lYWu3usDEKoJnj+AU6jYDYdBtIDdEKNytiCpLdj9
- TIvfHTtMcZZm19Uozd3tSVEyJ9TYMGSIHBt2Qsgfrzj+MW0un9Bt7Bdke+NfwNNZtcFV
- zD6w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:in-reply-to;
- bh=y5TQ1SPrhLl8T6HFL3GDAbxGb+VGvxgiIy/Uc18POBU=;
- b=pca7cMQXPvv3kRDbHpAS9QvqdrzA5rqD8D6dQV8KUZh2Lz6+aK9pWZ5CvUcRctkEVG
- SrLnLgmTFnPpVE7Cw54NPDJafvNNWY9ZP27DfhSOlnbd1kJrESDPcrE7uTEo1/eGhqcv
- ekYsR6dhy1FeYSqbaWdKTMw31t6k2asRdy4NZTgZ4xewyEcGk9LC3nG9Em6TdNu+tkV0
- xR4w9X5g4FcjTgxnjp/PG6QitihRRPEL494nUMoHDjXC4P40UtFiXJ4j6jd8XfE6y67+
- JYq3jF+OKdfER/XzWb30BczxID9b6vlibhb0BfvchP9i2p9gD9lH58YIJFxHBmUMoqQl
- Acag==
-X-Gm-Message-State: AOAM531Yvsbcl70S2GwRs5vsLCTPQdEBRpcgT/0FQEvn8H1aNglSDHQf
- GuKUQ9cREjzNRqTXEx6IKmv8dQ==
-X-Received: by 2002:a1c:81c9:: with SMTP id c192mr2543852wmd.1.1602837431358; 
- Fri, 16 Oct 2020 01:37:11 -0700 (PDT)
-Received: from xora-monster ([2a02:8010:64d6::1d89])
- by smtp.gmail.com with ESMTPSA id x3sm1903506wmi.45.2020.10.16.01.37.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 16 Oct 2020 01:37:10 -0700 (PDT)
-Date: Fri, 16 Oct 2020 09:37:08 +0100
-From: Graeme Gregory <graeme@nuviainc.com>
-To: Maxim Uvarov <maxim.uvarov@linaro.org>
-Subject: Re: [PATCH v5 2/2] hw/arm/sbsa-ref: add SBSA watchdog device
-Message-ID: <20201016083708.o7avkof5xqpdptia@xora-monster>
-References: <20201013151631.30678-1-shashi.mallela@linaro.org>
- <20201013151631.30678-3-shashi.mallela@linaro.org>
- <20201014093119.inq2ut2srps2zfme@xora-monster>
- <CAC15JE2hMrzpWWF-bS-fshoYx+BPehwxqJi-7uMUXSOj+Uh3GQ@mail.gmail.com>
- <20201015141044.loa6x4sv5552pe72@xora-monster>
- <CAD8XO3Yb+GwC75k-OXenAkrXf=x6=ru6C0juzCsT+FQV3iPadw@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kTMDp-0004x0-Tz; Fri, 16 Oct 2020 05:40:25 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:33812 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kTMDn-0006ey-3l; Fri, 16 Oct 2020 05:40:25 -0400
+Received: from DGGEMS406-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 7FD254A7224686EE586D;
+ Fri, 16 Oct 2020 17:40:12 +0800 (CST)
+Received: from [10.174.186.67] (10.174.186.67) by
+ DGGEMS406-HUB.china.huawei.com (10.3.19.206) with Microsoft SMTP Server id
+ 14.3.487.0; Fri, 16 Oct 2020 17:40:03 +0800
+Subject: Re: [RFC PATCH 00/12] hw/arm/virt: Introduce cpu and cache topology
+ support
+To: Andrew Jones <drjones@redhat.com>
+References: <20200917032033.2020-1-fangying1@huawei.com>
+ <678F3D1BB717D949B966B68EAEB446ED49E0BB94@dggemm526-mbx.china.huawei.com>
+ <20201013180840.yzkncsw34xvwtoll@kamzik.brq.redhat.com>
+ <7491ca46-92b2-09e0-67a8-55a90203b9cc@huawei.com>
+ <20201015075900.ukz3y6cl2vhwmctx@kamzik.brq.redhat.com>
+From: Ying Fang <fangying1@huawei.com>
+Message-ID: <4b9472ec-b90a-8b22-16ba-670e7298c9c9@huawei.com>
+Date: Fri, 16 Oct 2020 17:40:02 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAD8XO3Yb+GwC75k-OXenAkrXf=x6=ru6C0juzCsT+FQV3iPadw@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::344;
- envelope-from=graeme@nuviainc.com; helo=mail-wm1-x344.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <20201015075900.ukz3y6cl2vhwmctx@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.186.67]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=fangying1@huawei.com;
+ helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/16 05:40:13
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.019,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,201 +95,111 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Shashi Mallela <shashi.mallela@linaro.org>,
- =?utf-8?B?UmFkb3PFgmF3?= Biernacki <rad@semihalf.com>,
- QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Leif Lindholm <leif@nuviainc.com>
+Cc: "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "Chenzhendong \(alex\)" <alex.chen@huawei.com>,
+ "shannon.zhaosl@gmail.com" <shannon.zhaosl@gmail.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "alistair.francis@wdc.com" <alistair.francis@wdc.com>,
+ "Zengtao \(B\)" <prime.zeng@hisilicon.com>,
+ "imammedo@redhat.com" <imammedo@redhat.com>,
+ "valentin.schneider@arm.com" <valentin.schneider@arm.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: c0iQ1KIc4FZk
+X-TUID: ngIW8oJkcBAs
 
-On Thu, Oct 15, 2020 at 06:21:09PM +0300, Maxim Uvarov wrote:
-> On Thu, 15 Oct 2020 at 17:12, Graeme Gregory <graeme@nuviainc.com> wrote:
-> >
-> > On Wed, Oct 14, 2020 at 01:04:43PM -0400, Shashi Mallela wrote:
-> > > This was added as a placeholder for the virt requirement suggested by Maxim
-> > > earlier.Agreed that this fdt otherwise has no significance for sbsa-ref
-> > > platform nor is being used by ACPI table created for wdt.
-> > >
-> > > -Shashi
-> > >
-> > > On Wed, 14 Oct 2020 at 05:31, Graeme Gregory <[1]graeme@nuviainc.com> wrote:
-> > >
-> > >     On Tue, Oct 13, 2020 at 11:16:31AM -0400, Shashi Mallela wrote:
-> > >     > Included the newly implemented SBSA generic watchdog device model into
-> > >     > SBSA platform
-> > >     >
-> > >     > Signed-off-by: Shashi Mallela <[2]shashi.mallela@linaro.org>
-> > >     > ---
-> > >     >  hw/arm/sbsa-ref.c | 50 +++++++++++++++++++++++++++++++++++++++++++++++
-> > >     >  1 file changed, 50 insertions(+)
-> > >     >
-> > >     > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> > >     > index 9c3a893bedfd..97ed41607119 100644
-> > >     > --- a/hw/arm/sbsa-ref.c
-> > >     > +++ b/hw/arm/sbsa-ref.c
-> > >     > @@ -30,6 +30,7 @@
-> > >     >  #include "exec/hwaddr.h"
-> > >     >  #include "kvm_arm.h"
-> > >     >  #include "hw/arm/boot.h"
-> > >     > +#include "hw/arm/fdt.h"
-> > >     >  #include "hw/block/flash.h"
-> > >     >  #include "hw/boards.h"
-> > >     >  #include "hw/ide/internal.h"
-> > >     > @@ -40,6 +41,7 @@
-> > >     >  #include "hw/qdev-properties.h"
-> > >     >  #include "hw/usb.h"
-> > >     >  #include "hw/char/pl011.h"
-> > >     > +#include "hw/watchdog/wdt_sbsa_gwdt.h"
-> > >     >  #include "net/net.h"
-> > >     >  #include "qom/object.h"
-> > >     >
-> > >     > @@ -64,6 +66,9 @@ enum {
-> > >     >      SBSA_GIC_DIST,
-> > >     >      SBSA_GIC_REDIST,
-> > >     >      SBSA_SECURE_EC,
-> > >     > +    SBSA_GWDT,
-> > >     > +    SBSA_GWDT_REFRESH,
-> > >     > +    SBSA_GWDT_CONTROL,
-> > >     >      SBSA_SMMU,
-> > >     >      SBSA_UART,
-> > >     >      SBSA_RTC,
-> > >     > @@ -104,6 +109,8 @@ static const MemMapEntry sbsa_ref_memmap[] = {
-> > >     >      [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
-> > >     >      [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
-> > >     >      [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
-> > >     > +    [SBSA_GWDT_REFRESH] =       { 0x50010000, 0x00001000 },
-> > >     > +    [SBSA_GWDT_CONTROL] =       { 0x50011000, 0x00001000 },
-> > >     >      [SBSA_UART] =               { 0x60000000, 0x00001000 },
-> > >     >      [SBSA_RTC] =                { 0x60010000, 0x00001000 },
-> > >     >      [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
-> > >     > @@ -133,6 +140,8 @@ static const int sbsa_ref_irqmap[] = {
-> > >     >      [SBSA_SECURE_UART_MM] = 9,
-> > >     >      [SBSA_AHCI] = 10,
-> > >     >      [SBSA_EHCI] = 11,
-> > >     > +    [SBSA_SMMU] = 12, /* ... to 15 */
-> > >     > +    [SBSA_GWDT] = 16,
-> > >     >  };
-> >
-> > I guess your patch was not based on master here? You should make sure
-> > you are rebased to the latest version before sending.
-> >
-> > >     >
-> > >     >  static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
-> > >     > @@ -141,6 +150,30 @@ static uint64_t sbsa_ref_cpu_mp_affinity
-> > >     (SBSAMachineState *sms, int idx)
-> > >     >      return arm_cpu_mp_affinity(idx, clustersz);
-> > >     >  }
-> > >     >
-> > >     > +static void create_wdt_fdt(SBSAMachineState *sms)
-> > >     > +{
-> > >     > +    char *nodename;
-> > >     > +    const char compat[] = "arm,sbsa-gwdt";
-> > >     > +
-> > >     > +    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
-> > >     > +    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
-> > >     > +    int irq = sbsa_ref_irqmap[SBSA_GWDT];
-> > >     > +
-> > >     > +    nodename = g_strdup_printf("/watchdog@%" PRIx64, rbase);
-> > >     > +    qemu_fdt_add_subnode(sms->fdt, nodename);
-> > >     > +
-> > >     > +    qemu_fdt_setprop(sms->fdt, nodename, "compatible",
-> > >     > +                             compat, sizeof(compat));
-> > >     > +    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
-> > >     > +                                 2, rbase, 2, SBSA_GWDT_RMMIO_SIZE,
-> > >     > +                                 2, cbase, 2, SBSA_GWDT_CMMIO_SIZE);
-> > >     > +    qemu_fdt_setprop_cells(sms->fdt, nodename, "interrupts",
-> > >     > +                                GIC_FDT_IRQ_TYPE_PPI, irq,
-> > >     > +                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-> > >     > +    qemu_fdt_setprop_cell(sms->fdt, nodename, "timeout-sec", 30);
-> > >     > +    g_free(nodename);
-> > >     > +}
-> > >     > +
-> > >
-> > >     Is this actually used anywhere? I ask because SBSA-ref is not a FDT
-> > >     booting machine and only uses FDT to transfer some dynamic info to
-> > >     arm-tf/edk2 and is not a full description tree. Your ACPI patch in
-> > >     edk2 certainly does not use this info.
-> > >
-> >
-> 
-> Greame, if sbsa-ref does not support non edk2 boot, i.e.
-> arm-tf/optee/uboot-uefi, then it's better to remove here and we can
-> add later for the virt machine.
-> 
-It is not that it does not support it, it is as real hardware you will
-need to build the hardware knowledge into your firmware.
 
-Graeme
 
-> > From your reply above I would propose this hunk and the call below are
-> > removed. If its needed to virt thats a seperate discussion which I think
-> > was already happening in another thread.
-> >
-> Yep, agree.
+On 10/15/2020 3:59 PM, Andrew Jones wrote:
+> On Thu, Oct 15, 2020 at 10:07:16AM +0800, Ying Fang wrote:
+>>
+>>
+>> On 10/14/2020 2:08 AM, Andrew Jones wrote:
+>>> On Tue, Oct 13, 2020 at 12:11:20PM +0000, Zengtao (B) wrote:
+>>>> Cc valentin
+>>>>
+>>>>> -----Original Message-----
+>>>>> From: Qemu-devel
+>>>>> [mailto:qemu-devel-bounces+prime.zeng=hisilicon.com@nongnu.org]
+>>>>> On Behalf Of Ying Fang
+>>>>> Sent: Thursday, September 17, 2020 11:20 AM
+>>>>> To: qemu-devel@nongnu.org
+>>>>> Cc: peter.maydell@linaro.org; drjones@redhat.com; Zhanghailiang;
+>>>>> Chenzhendong (alex); shannon.zhaosl@gmail.com;
+>>>>> qemu-arm@nongnu.org; alistair.francis@wdc.com; fangying;
+>>>>> imammedo@redhat.com
+>>>>> Subject: [RFC PATCH 00/12] hw/arm/virt: Introduce cpu and cache
+>>>>> topology support
+>>>>>
+>>>>> An accurate cpu topology may help improve the cpu scheduler's
+>>>>> decision
+>>>>> making when dealing with multi-core system. So cpu topology
+>>>>> description
+>>>>> is helpful to provide guest with the right view. Cpu cache information
+>>>>> may
+>>>>> also have slight impact on the sched domain, and even userspace
+>>>>> software
+>>>>> may check the cpu cache information to do some optimizations. Thus
+>>>>> this patch
+>>>>> series is posted to provide cpu and cache topology support for arm.
+>>>>>
+>>>>> To make the cpu topology consistent with MPIDR, an vcpu ioctl
+>>>>
+>>>> For aarch64, the cpu topology don't depends on the MPDIR.
+>>>> See https://patchwork.kernel.org/patch/11744387/
+>>>>
+>>>
+>>> The topology should not be inferred from the MPIDR Aff fields,
+>>
+>> MPIDR is abused by ARM OEM manufactures. It is only used as a
+>> identifer for a specific cpu, not representation of the topology.
 > 
-> Maxim.
+> Right, which is why I stated topology should not be inferred from
+> it.
 > 
-> > FOSS style is for inline replies not top posting FYI
-> >
-> > Graeme
-> >
-> > >     Graeme
-> > >
-> > >
-> > >     >  /*
-> > >     >   * Firmware on this machine only uses ACPI table to load OS, these
-> > >     limited
-> > >     >   * device tree nodes are just to let firmware know the info which varies
-> > >     from
-> > >     > @@ -219,6 +252,7 @@ static void create_fdt(SBSAMachineState *sms)
-> > >     >
-> > >     >          g_free(nodename);
-> > >     >      }
-> > >     > +    create_wdt_fdt(sms);
-> > >     >  }
-> > >     >
-> > >     >  #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
-> > >     > @@ -447,6 +481,20 @@ static void create_rtc(const SBSAMachineState *sms)
-> > >     >      sysbus_create_simple("pl031", base, qdev_get_gpio_in(sms->gic,
-> > >     irq));
-> > >     >  }
-> > >     >
-> > >     > +static void create_wdt(const SBSAMachineState *sms)
-> > >     > +{
-> > >     > +    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
-> > >     > +    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
-> > >     > +    DeviceState *dev = qdev_new(TYPE_WDT_SBSA_GWDT);
-> > >     > +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
-> > >     > +    int irq = sbsa_ref_irqmap[SBSA_GWDT];
-> > >     > +
-> > >     > +    sysbus_realize_and_unref(s, &error_fatal);
-> > >     > +    sysbus_mmio_map(s, 0, rbase);
-> > >     > +    sysbus_mmio_map(s, 1, cbase);
-> > >     > +    sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms->gic, irq));
-> > >     > +}
-> > >     > +
-> > >     >  static DeviceState *gpio_key_dev;
-> > >     >  static void sbsa_ref_powerdown_req(Notifier *n, void *opaque)
-> > >     >  {
-> > >     > @@ -730,6 +778,8 @@ static void sbsa_ref_init(MachineState *machine)
-> > >     >
-> > >     >      create_rtc(sms);
-> > >     >
-> > >     > +    create_wdt(sms);
-> > >     > +
-> > >     >      create_gpio(sms);
-> > >     >
-> > >     >      create_ahci(sms);
-> > >     > --
-> > >     > 2.18.4
-> > >     >
-> > >     >
-> > >
-> > >
-> > > References:
-> > >
-> > > [1] mailto:graeme@nuviainc.com
-> > > [2] mailto:shashi.mallela@linaro.org
-> >
+>>
+>>> but MPIDR is the CPU identifier. When describing a topology
+>>> with ACPI or DT the CPU elements in the topology description
+>>> must map to actual CPUs. MPIDR is that mapping link. KVM
+>>> currently determines what the MPIDR of a VCPU is. If KVM
+>>
+>> KVM currently assigns MPIDR with vcpu->vcpu_id which mapped
+>> into affinity levels. See reset_mpidr in sys_regs.c
+> 
+> I know, but how KVM assigns MPIDRs today is not really important
+> to KVM userspace. KVM userspace shouldn't depend on a KVM
+> algorithm, as it could change.
+> 
+>>
+>>> userspace is going to determine the VCPU topology, then it
+>>> also needs control over the MPIDR values, otherwise it
+>>> becomes quite messy trying to get the mapping right.
+>> If we are going to control MPIDR, shall we assign MPIDR with
+>> vcpu_id or map topology hierarchy into affinity levels or any
+>> other link schema ?
+>>
+> 
+> We can assign them to whatever we want, as long as they're
+> unique and as long as Aff0 is assigned per the GIC requirements,
+> e.g. GICv3 requires that Aff0 be from 0 to 0xf. Also, when
+> pinning VCPUs to PCPUs we should ensure that MPIDRs with matching
+> Aff3,Aff2,Aff1 fields should actually be peers with respect to
+> the GIC.
+
+Still not clear why vCPU's MPIDR need to match pPCPU's GIC affinity.
+Maybe I should read spec for GICv3.
+
+> 
+> We shouldn't try to encode topology in the MPIDR in any way,
+> so we might as well simply increment a counter to assign them,
+> which could possibly be the same as the VCPU ID.
+
+Hmm, then we can leave it as it is.
+
+> 
+> Thanks,
+> drew
+> 
+> .
+> 

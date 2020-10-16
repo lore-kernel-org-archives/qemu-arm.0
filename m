@@ -1,152 +1,118 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5431985lfq;
-        Wed, 30 Sep 2020 04:34:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwQ7Ioo1ZWq8N5wDcC85niYkqIab4L6AJWXAAO/nh0b1toE6a/VZ3nBAt2RGDBp51glFyg6
-X-Received: by 2002:a25:d988:: with SMTP id q130mr2650702ybg.9.1601465673803;
-        Wed, 30 Sep 2020 04:34:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601465673; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1712758lfa;
+        Fri, 16 Oct 2020 10:11:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxpbx8g/8bOdI1cOMqVoMCj7GQbMMRJOK9JuyqRYOc1zfPpuXOCmosqqV3DspRE7VQRv2Fi
+X-Received: by 2002:a25:a48a:: with SMTP id g10mr6115557ybi.197.1602868281482;
+        Fri, 16 Oct 2020 10:11:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602868281; cv=none;
         d=google.com; s=arc-20160816;
-        b=kiQ8fHenr1OTE95Kb5luEUd03s83arZIyRLvRbs63g+nxFZKECH54HJCiv+awPs5j4
-         MUztOI2Xr2H0s06xGLjSb+A37iitU8W3X8QxUHKILzLJ5EPqvgcY1pEWpCAxoOTWYLQ3
-         ZV0mqBqaxwpqW+vzlAFR1l7xfXl+nyKYxEeqZXWvLHfKRALF223dYqhEqauff/UaPnWA
-         WCK7MQ2dvP9Wny0lYUkdGT0TSKhjGwPLw89UvcDyi5eFpDaxarhfzJbrIPcCxhqok/4r
-         84ZCflCF1GBhn8xnuWgkI2wWEZDfto9PVlc3TwGB1miCmBWQ0qXcse0GlRrkokrdnday
-         4K+Q==
+        b=P7ULIUsvlFS11XmLdRHhlQmvRIzdkdG73hrPaTDnogt8BPV20kb4K+JmvObGw7L1Br
+         9R4TYWiB+OYBW9CfLNa7MbI34Mk0UhgqIY3pDTfGFTJwSTsOSwMJw/vw5cIpM0OVglrE
+         25JBwgr6Wp12+tTD8uKUTWdx35H0GueCPBdZm8Pwk91NNVDh1WjQCeiDdmdNPMtE/18d
+         tuhwzIneEIaG59eNyH5G+LGrXBF4t9xXVJq4k9HOe6wYhk5anGlY++ncDufdZkLT4yIr
+         oqAbI9gfCnfNbLSmSeFLnHM/Pj864m2JcfpPH5H0YQ/aKl8sda7N4HwneLxc6s0GbFro
+         +CGQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:autocrypt:from:references:to:subject:dkim-signature;
-        bh=yGzZAb6CUUfvuB+rABpzetf5qwBH7y5IfxJJd8oY32Y=;
-        b=OyvnJYmyE1grm8/rXfFWfTdOA/NbklyTvFQU9q+juQmQg7d00xbjGd+SojAp9T2GHp
-         evWYb8DYuacJ1vGGRJxMyPnnZUzB6Mfjc4LuWpunztLBaIdMOCCZZuyx+ROwkxHGZAGb
-         IZk5+59y/3gQ2nWum10nix8Pqf3UGnqMp8hMDFxNh7q+r7CVZgDSWPF1q/g1r8hc1xsE
-         oATZFitXRMYCXBXPQrBLhYdZriIuR+fqxUKBh9mAdv5ZYI+SPAQ0Gd48iAcLEx8OZE4y
-         pRFTbEYeI8qJK61MROWqHyXa13Bxsdznlh/H6VFT0sFZ7BLvkF1iCNuqtiuwouFmPXaO
-         TLoQ==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=wVUU4UoRhrebVepMUeSCHeCzM5In/AAZ3lVuLCyImAk=;
+        b=BWoPDOZqAXsShBSSjW72EKEi8mqk3OdIE1eMhrpNBL4lMIXRI2MFqfoV2Jsaj2d2sW
+         MMb9Bau/xaVfko3aA9Q78y6Z80pyWvUix/FpU4VmOsS1docss4OdMYJoVRCo4Fzfz6pw
+         Wj7Lx0b5I1y1kvqfs/TjH62Nlh/x6YfUvLscdrNXwrICWygx6Z6Ob+m273Izs7AEb6QW
+         +5dv3ILZH4uJ26ateA5dlXo6IFKs/qh5/KW081dp3ve5zRtQMBcfGE3bJv0C2NaCa4KP
+         CkJSTqF+gjwX+MRAErxnwabvdcXP4+Fh39Hgr5iT5cqKzAbC+c9/6w5MCdM6CGzv3GcR
+         E/eA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KU05lpqw;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uhV4R58j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c3si1561421yba.139.2020.09.30.04.34.33
+        by mx.google.com with ESMTPS id k5si3359509ybt.440.2020.10.16.10.11.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Sep 2020 04:34:33 -0700 (PDT)
+        Fri, 16 Oct 2020 10:11:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=KU05lpqw;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=uhV4R58j;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37876 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38124 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNaNV-0007lG-2h
-	for alex.bennee@linaro.org; Wed, 30 Sep 2020 07:34:33 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34686)
+	id 1kTTGC-0002e4-S6
+	for alex.bennee@linaro.org; Fri, 16 Oct 2020 13:11:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35182)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNaNF-0007iz-8n
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 07:34:18 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:52580)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kNaN8-0004C1-Cm
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 07:34:15 -0400
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601465648;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=yGzZAb6CUUfvuB+rABpzetf5qwBH7y5IfxJJd8oY32Y=;
- b=KU05lpqwUylMBQ1JUI5o4oRuxy0X9Lre8EZyEEQ4VbZVH0cIIRuCVfsAjzNLSUPlV7q7AR
- 4LG5w34DXxWEAQTw0M5qJgvKKiur3V0Gtzes4e9oxoMkFaoG1ceP6yB6XuvKFpP8fEbYhD
- 4q6VgCcoqnr2/Zt2P+LCKOaEWZ+bR5Y=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-446-DQd6pszbNCa2Texz2Jq3bA-1; Wed, 30 Sep 2020 07:34:04 -0400
-X-MC-Unique: DQd6pszbNCa2Texz2Jq3bA-1
-Received: by mail-wm1-f71.google.com with SMTP id x6so514391wmi.1
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2020 04:34:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kTTFb-0002RO-9f; Fri, 16 Oct 2020 13:10:43 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:34934)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kTTFZ-0007E7-0I; Fri, 16 Oct 2020 13:10:42 -0400
+Received: by mail-wr1-x441.google.com with SMTP id n15so3789288wrq.2;
+ Fri, 16 Oct 2020 10:10:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=wVUU4UoRhrebVepMUeSCHeCzM5In/AAZ3lVuLCyImAk=;
+ b=uhV4R58jxh+uqRBmvv9eTWWG+KcptlLZh3YDQHTfXcgU0TskmXnzpKi+XaHa3E//K8
+ p4ljjJSieqHolmVvFMuAJlsTLQZoFB7LZMAz2c8WdjoiUS7Jzpn1Vd/FAAyoA6yEuSCg
+ 4I06MiNGnE6bTvWBz7wXuIrSDQt0vRMp907wAvPW6Xmh1qtTHmUVklpbHIBTrvEc3uBe
+ bczApGUWPWTpxVFYFzgLYAQn5OO/Op+IjCUE50jMr6MaJ2AzxsmXbILUt8kS3SUERAFr
+ d1FoM6x6tcbugT/dxYePXNWaSdaOaC+wLKP2g0rTyGrFGPuVMIgQz9ttD3oZHG26ZYvy
+ wIgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:autocrypt
- :message-id:date:user-agent:mime-version:in-reply-to
- :content-language:content-transfer-encoding;
- bh=yGzZAb6CUUfvuB+rABpzetf5qwBH7y5IfxJJd8oY32Y=;
- b=XEjpMPuKH0KQwB6L3e8ZS5u00cReK2h0TMxNowu8jLEk1qw7x9yka/9jVbPcGKf59F
- V1smGPPEZqpuTtpdVI98B/pwaTz/xGBvwgvlFinDB6R8KSnS7uni+c6TGguGFbPWXAmB
- jUeyWA/f1rOyI88FrWtDf455PCsQrMa4UXPvWH12GS2ze07sVdxKtR+QD3OWI1Zncf0i
- r8mW0NOpDprxYhL+WG4n/Oqn+4zQkr9KrLaa3TWbFdwm+yr9mvV38XiPkiis6JIvsixc
- CPAqZi+uiMAD+xl4iECkgEU+lRHB8D+jB0nzdGtGg3RegvNMX05sPoyFh9yv901JOPbT
- 4WqA==
-X-Gm-Message-State: AOAM5331MG8ulfRgNTyJV+b/NqbZYbXbWUjtByMTdaDT0NizIP3kHitE
- U3R64CsbS35a1KtrnmjY247fUVNsK8qzQosgEU6snTKLsG5mBEcfakAaetKLtttD7//tnS9gaXo
- 1ttWNkti02FWd
-X-Received: by 2002:adf:ab46:: with SMTP id r6mr2782764wrc.360.1601465643250; 
- Wed, 30 Sep 2020 04:34:03 -0700 (PDT)
-X-Received: by 2002:adf:ab46:: with SMTP id r6mr2782743wrc.360.1601465643018; 
- Wed, 30 Sep 2020 04:34:03 -0700 (PDT)
-Received: from [192.168.1.36] (74.red-83-53-161.dynamicip.rima-tde.net.
- [83.53.161.74])
- by smtp.gmail.com with ESMTPSA id 92sm2673330wra.19.2020.09.30.04.34.01
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=wVUU4UoRhrebVepMUeSCHeCzM5In/AAZ3lVuLCyImAk=;
+ b=YjNecTIwIJnP9cPg16v3qLo2D66wE5YXutyuWMgLlCzld7zJglvXmM1QYbrzT6KobM
+ rL3DCZVOzufVBdkmwXy8Le3cA6B5g82ho3KAmT6MlXqDmye/8KwChymOjPMN1CB/XWU6
+ VKStaHj/dPjJ3qLKB1aBMQtkyf7OVpG1AcNuH+XkE79KJCAG76OZP0xUQxFg5Q0gBExC
+ 2olNF2/dvXBQ5XUvpJbe8/zhtZ8FFoSxTqY+scscRUWg3i3+v1gVa8pPyBXC7wtxBzFx
+ cD3CpyZYgyvWmPIF4yXRSiz43uuSNQE6FKqsL4ZryMG8+eMFsFHzwPU0UX55ae9295E0
+ bWOg==
+X-Gm-Message-State: AOAM531U95BkKee9MyEUF7sQ2B4O/U0gKInFP7KcbBnRtjuXXGtOjVxf
+ qbQ5WWtvLmeJVObiGqWt3II=
+X-Received: by 2002:adf:fc0d:: with SMTP id i13mr5225528wrr.156.1602868238901; 
+ Fri, 16 Oct 2020 10:10:38 -0700 (PDT)
+Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
+ [83.59.162.106])
+ by smtp.gmail.com with ESMTPSA id 40sm4195024wrc.46.2020.10.16.10.10.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Sep 2020 04:34:02 -0700 (PDT)
-Subject: Re: [PATCH] hw/arm: Restrict APEI tables generation to the 'virt'
- machine
-To: Dongjiu Geng <gengdongjiu@huawei.com>, qemu-devel@nongnu.org
-References: <20200929125609.1088330-1-philmd@redhat.com>
- <12be4400-c37f-2b7f-2f15-f8700dad6003@huawei.com>
- <056736d8-dc89-a94b-7e76-93825492c957@redhat.com>
- <5b5e1b32-0e9b-8154-e645-9b922119db33@huawei.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Autocrypt: addr=philmd@redhat.com; keydata=
- mQINBDXML8YBEADXCtUkDBKQvNsQA7sDpw6YLE/1tKHwm24A1au9Hfy/OFmkpzo+MD+dYc+7
- bvnqWAeGweq2SDq8zbzFZ1gJBd6+e5v1a/UrTxvwBk51yEkadrpRbi+r2bDpTJwXc/uEtYAB
- GvsTZMtiQVA4kRID1KCdgLa3zztPLCj5H1VZhqZsiGvXa/nMIlhvacRXdbgllPPJ72cLUkXf
- z1Zu4AkEKpccZaJspmLWGSzGu6UTZ7UfVeR2Hcc2KI9oZB1qthmZ1+PZyGZ/Dy+z+zklC0xl
- XIpQPmnfy9+/1hj1LzJ+pe3HzEodtlVA+rdttSvA6nmHKIt8Ul6b/h1DFTmUT1lN1WbAGxmg
- CH1O26cz5nTrzdjoqC/b8PpZiT0kO5MKKgiu5S4PRIxW2+RA4H9nq7nztNZ1Y39bDpzwE5Sp
- bDHzd5owmLxMLZAINtCtQuRbSOcMjZlg4zohA9TQP9krGIk+qTR+H4CV22sWldSkVtsoTaA2
- qNeSJhfHQY0TyQvFbqRsSNIe2gTDzzEQ8itsmdHHE/yzhcCVvlUzXhAT6pIN0OT+cdsTTfif
- MIcDboys92auTuJ7U+4jWF1+WUaJ8gDL69ThAsu7mGDBbm80P3vvUZ4fQM14NkxOnuGRrJxO
- qjWNJ2ZUxgyHAh5TCxMLKWZoL5hpnvx3dF3Ti9HW2dsUUWICSQARAQABtDJQaGlsaXBwZSBN
- YXRoaWV1LURhdWTDqSAoUGhpbCkgPHBoaWxtZEByZWRoYXQuY29tPokCVQQTAQgAPwIbDwYL
- CQgHAwIGFQgCCQoLBBYCAwECHgECF4AWIQSJweePYB7obIZ0lcuio/1u3q3A3gUCXsfWwAUJ
- KtymWgAKCRCio/1u3q3A3ircD/9Vjh3aFNJ3uF3hddeoFg1H038wZr/xi8/rX27M1Vj2j9VH
- 0B8Olp4KUQw/hyO6kUxqkoojmzRpmzvlpZ0cUiZJo2bQIWnvScyHxFCv33kHe+YEIqoJlaQc
- JfKYlbCoubz+02E2A6bFD9+BvCY0LBbEj5POwyKGiDMjHKCGuzSuDRbCn0Mz4kCa7nFMF5Jv
- piC+JemRdiBd6102ThqgIsyGEBXuf1sy0QIVyXgaqr9O2b/0VoXpQId7yY7OJuYYxs7kQoXI
- 6WzSMpmuXGkmfxOgbc/L6YbzB0JOriX0iRClxu4dEUg8Bs2pNnr6huY2Ft+qb41RzCJvvMyu
- gS32LfN0bTZ6Qm2A8ayMtUQgnwZDSO23OKgQWZVglGliY3ezHZ6lVwC24Vjkmq/2yBSLakZE
- 6DZUjZzCW1nvtRK05ebyK6tofRsx8xB8pL/kcBb9nCuh70aLR+5cmE41X4O+MVJbwfP5s/RW
- 9BFSL3qgXuXso/3XuWTQjJJGgKhB6xXjMmb1J4q/h5IuVV4juv1Fem9sfmyrh+Wi5V1IzKI7
- RPJ3KVb937eBgSENk53P0gUorwzUcO+ASEo3Z1cBKkJSPigDbeEjVfXQMzNt0oDRzpQqH2vp
- apo2jHnidWt8BsckuWZpxcZ9+/9obQ55DyVQHGiTN39hkETy3Emdnz1JVHTU0Q==
-Message-ID: <4f2f3b35-a0a9-1a2e-4d14-b6aad728d6a6@redhat.com>
-Date: Wed, 30 Sep 2020 13:34:01 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.11.0
+ Fri, 16 Oct 2020 10:10:38 -0700 (PDT)
+Subject: Re: [PATCH v3 13/15] hw/misc/bcm2835_cprman: add sane reset values to
+ the registers
+To: Luc Michel <luc@lmichel.fr>
+References: <20201010135759.437903-1-luc@lmichel.fr>
+ <20201010135759.437903-14-luc@lmichel.fr>
+ <48280560-3642-5367-a46e-53548e77c748@amsat.org>
+ <20201011182608.gfmfvdioiyyaxrfq@sekoia-pc.home.lmichel.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <473818a2-b267-881f-b827-425a384a27bd@amsat.org>
+Date: Fri, 16 Oct 2020 19:10:37 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <5b5e1b32-0e9b-8154-e645-9b922119db33@huawei.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20201011182608.gfmfvdioiyyaxrfq@sekoia-pc.home.lmichel.fr>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 00:31:59
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.469,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.253,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -159,91 +125,202 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>, Xiang Zheng <zhengxiang9@huawei.com>,
- qemu-arm@nongnu.org, Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>, Laszlo Ersek <lersek@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Paul Zimmerman <pauldzim@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
+ Havard Skinnemoen <hskinnemoen@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ksIZO8i/wovX
+X-TUID: GG9uULq06hIW
 
-On 9/30/20 1:05 PM, Dongjiu Geng wrote:
-> 
-> On 2020/9/30 18:35, Philippe Mathieu-Daudé wrote:
->> On 9/30/20 7:08 AM, Dongjiu Geng wrote:
->>> On 2020/9/29 20:56, Philippe Mathieu-Daudé wrote:
->>>> As only the Virt machine uses the RAS Virtualization feature (see
->>>> commit 2afa8c8519: "hw/arm/virt: Introduce a RAS machine option"),
->>>> restrict the APEI tables generation code to the virt machine.
+On 10/11/20 8:26 PM, Luc Michel wrote:
+> On 18:18 Sat 10 Oct     , Philippe Mathieu-Daudé wrote:
+>> On 10/10/20 3:57 PM, Luc Michel wrote:
+>>> Those reset values have been extracted from a Raspberry Pi 3 model B
+>>> v1.2, using the 2020-08-20 version of raspios. The dump was done using
+>>> the debugfs interface of the CPRMAN driver in Linux (under
+>>> '/sys/kernel/debug/clk'). Each exposed clock tree stage (PLLs, channels
+>>> and muxes) can be observed by reading the 'regdump' file (e.g.
+>>> 'plla/regdump').
 >>>
->>> APEI is a generic feature for X86 and arm64.  X86 platform also can use it, although currently it was mainly
->>> used by ARM64. what is reason that we restrict APEI tables generation to the 'virt' machine?
->>
->> It is currently only selected on (all) the ARM machines, not the X86
->> ones. I am simply restricting it to the 'virt' machine which is the
->> single one enabling the RAS. Without RAS the table is not built, so
->> for the case of the SBSA-Ref machine this code is unreachable, no need
->> to select ACPI_APEI.
->>
->> When a X86 machine configure a RAS it will have to 'select ACPI_APEI'
->> to get it built (I'm not forbidding it, I'm restricting it to where
->> it is used).
-> 
-> Got it, thanks for the explanation.
-> 
-> Reviewed-by: Dongjiu Geng <gengdongjiu@huawei.com>
-
-Thanks, I'll reword the description, ...
-
-> 
-> BTW：There is a build test error, but it is seems do not related with this patch.
-> https://patchew.org/logs/20200929125609.1088330-1-philmd@redhat.com/testing.docker-quick@centos7/?type=message
-
-... and look at that error before posting.
-
-> 
->>
+>>> Those values are set by the Raspberry Pi firmware at boot time (Linux
+>>> expects them to be set when it boots up).
 >>>
->>>>
->>>> Fixes: aa16508f1d ("ACPI: Build related register address fields via hardware error fw_cfg blob")
->>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>>> ---
->>>> Cc: Laszlo Ersek <lersek@redhat.com>
->>>> Cc: Xiang Zheng <zhengxiang9@huawei.com>
->>>> Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>
->>>> Cc: Igor Mammedov <imammedo@redhat.com>
->>>> Cc: Dongjiu Geng <gengdongjiu@huawei.com>
->>>> Cc: Michael S. Tsirkin <mst@redhat.com>
->>>> ---
->>>>  default-configs/arm-softmmu.mak | 1 -
->>>>  hw/arm/Kconfig                  | 1 +
->>>>  2 files changed, 1 insertion(+), 1 deletion(-)
->>>>
->>>> diff --git a/default-configs/arm-softmmu.mak b/default-configs/arm-softmmu.mak
->>>> index 9a94ebd0be..08a32123b4 100644
->>>> --- a/default-configs/arm-softmmu.mak
->>>> +++ b/default-configs/arm-softmmu.mak
->>>> @@ -43,4 +43,3 @@ CONFIG_FSL_IMX7=y
->>>>  CONFIG_FSL_IMX6UL=y
->>>>  CONFIG_SEMIHOSTING=y
->>>>  CONFIG_ALLWINNER_H3=y
->>>> -CONFIG_ACPI_APEI=y
->>>> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
->>>> index f303c6bead..7d040827af 100644
->>>> --- a/hw/arm/Kconfig
->>>> +++ b/hw/arm/Kconfig
->>>> @@ -26,6 +26,7 @@ config ARM_VIRT
->>>>      select ACPI_MEMORY_HOTPLUG
->>>>      select ACPI_HW_REDUCED
->>>>      select ACPI_NVDIMM
->>>> +    select ACPI_APEI
->>>>  
->>>>  config CHEETAH
->>>>      bool
->>>>
+>>> Some stages are not exposed by the Linux driver (e.g. the PLL B). For
+>>> those, the reset values are unknown and left to 0 which implies a
+>>> disabled output.
 >>>
+>>> Once booted in QEMU, the final clock tree is very similar to the one
+>>> visible on real hardware. The differences come from some unimplemented
+>>> devices for which the driver simply disable the corresponding clock.
+>>>
+>>> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>>> Signed-off-by: Luc Michel <luc@lmichel.fr>
+>>> ---
+>>>    include/hw/misc/bcm2835_cprman_internals.h | 269 +++++++++++++++++++++
+>>>    hw/misc/bcm2835_cprman.c                   |  31 +++
+>>>    2 files changed, 300 insertions(+)
+>>>
+>>> diff --git a/include/hw/misc/bcm2835_cprman_internals.h b/include/hw/misc/bcm2835_cprman_internals.h
+>>> index a6e799075f..339759b307 100644
+>>> --- a/include/hw/misc/bcm2835_cprman_internals.h
+>>> +++ b/include/hw/misc/bcm2835_cprman_internals.h
+>>> @@ -745,6 +745,275 @@ static inline void set_clock_mux_init_info(BCM2835CprmanState *s,
+>>>        mux->reg_div = &s->regs[CLOCK_MUX_INIT_INFO[id].cm_offset + 1];
+>>>        mux->int_bits = CLOCK_MUX_INIT_INFO[id].int_bits;
+>>>        mux->frac_bits = CLOCK_MUX_INIT_INFO[id].frac_bits;
+>>>    }
+>>> +
+>>> +/*
+>>> + * Object reset info
+>>> + * Those values have been dumped from a Raspberry Pi 3 Model B v1.2 using the
+>>> + * clk debugfs interface in Linux.
+>>> + */
+>>> +typedef struct PLLResetInfo {
+>>> +    uint32_t cm;
+>>> +    uint32_t a2w_ctrl;
+>>> +    uint32_t a2w_ana[4];
+>>> +    uint32_t a2w_frac;
+>>> +} PLLResetInfo;
+>>> +
+>>> +static const PLLResetInfo PLL_RESET_INFO[] = {
+>>> +    [CPRMAN_PLLA] = {
+>>> +        .cm = 0x0000008a,
+>>> +        .a2w_ctrl = 0x0002103a,
+>>> +        .a2w_frac = 0x00098000,
+>>> +        .a2w_ana = { 0x00000000, 0x00144000, 0x00000000, 0x00000100 }
+>>> +    },
+>>> +
+>>> +    [CPRMAN_PLLC] = {
+>>> +        .cm = 0x00000228,
+>>> +        .a2w_ctrl = 0x0002103e,
+>>> +        .a2w_frac = 0x00080000,
+>>> +        .a2w_ana = { 0x00000000, 0x00144000, 0x00000000, 0x00000100 }
+>>> +    },
+>>> +
+>>> +    [CPRMAN_PLLD] = {
+>>> +        .cm = 0x0000020a,
+>>> +        .a2w_ctrl = 0x00021034,
+>>> +        .a2w_frac = 0x00015556,
+>>> +        .a2w_ana = { 0x00000000, 0x00144000, 0x00000000, 0x00000100 }
+>>> +    },
+>>> +
+>>> +    [CPRMAN_PLLH] = {
+>>> +        .cm = 0x00000000,
+>>> +        .a2w_ctrl = 0x0002102d,
+>>> +        .a2w_frac = 0x00000000,
+>>> +        .a2w_ana = { 0x00900000, 0x0000000c, 0x00000000, 0x00000000 }
+>>> +    },
+>>> +
+>>> +    [CPRMAN_PLLB] = {
+>>> +        /* unknown */
+>>> +        .cm = 0x00000000,
+>>> +        .a2w_ctrl = 0x00000000,
+>>> +        .a2w_frac = 0x00000000,
+>>> +        .a2w_ana = { 0x00000000, 0x00000000, 0x00000000, 0x00000000 }
+>>> +    }
+>>> +};
+>>> +
+>>> +typedef struct PLLChannelResetInfo {
+>>> +    /*
+>>> +     * Even though a PLL channel has a CM register, it shares it with its
+>>> +     * parent PLL. The parent already takes care of the reset value.
+>>> +     */
+>>> +    uint32_t a2w_ctrl;
+>>> +} PLLChannelResetInfo;
+>>> +
+>>> +static const PLLChannelResetInfo PLL_CHANNEL_RESET_INFO[] = {
+>>> +    [CPRMAN_PLLA_CHANNEL_DSI0] = { .a2w_ctrl = 0x00000100 },
+>>> +    [CPRMAN_PLLA_CHANNEL_CORE] = { .a2w_ctrl = 0x00000003 },
+>>> +    [CPRMAN_PLLA_CHANNEL_PER] = { .a2w_ctrl = 0x00000000 }, /* unknown */
+>>> +    [CPRMAN_PLLA_CHANNEL_CCP2] = { .a2w_ctrl = 0x00000100 },
+>>> +
+>>> +    [CPRMAN_PLLC_CHANNEL_CORE2] = { .a2w_ctrl = 0x00000100 },
+>>> +    [CPRMAN_PLLC_CHANNEL_CORE1] = { .a2w_ctrl = 0x00000100 },
+>>> +    [CPRMAN_PLLC_CHANNEL_PER] = { .a2w_ctrl = 0x00000002 },
+>>> +    [CPRMAN_PLLC_CHANNEL_CORE0] = { .a2w_ctrl = 0x00000002 },
+>>> +
+>>> +    [CPRMAN_PLLD_CHANNEL_DSI0] = { .a2w_ctrl = 0x00000100 },
+>>> +    [CPRMAN_PLLD_CHANNEL_CORE] = { .a2w_ctrl = 0x00000004 },
+>>> +    [CPRMAN_PLLD_CHANNEL_PER] = { .a2w_ctrl = 0x00000004 },
+>>> +    [CPRMAN_PLLD_CHANNEL_DSI1] = { .a2w_ctrl = 0x00000100 },
+>>> +
+>>> +    [CPRMAN_PLLH_CHANNEL_AUX] = { .a2w_ctrl = 0x00000004 },
+>>> +    [CPRMAN_PLLH_CHANNEL_RCAL] = { .a2w_ctrl = 0x00000000 },
+>>> +    [CPRMAN_PLLH_CHANNEL_PIX] = { .a2w_ctrl = 0x00000000 },
+>>> +
+>>> +    [CPRMAN_PLLB_CHANNEL_ARM] = { .a2w_ctrl = 0x00000000 }, /* unknown */
+>>> +};
+>>> +
+>>> +typedef struct ClockMuxResetInfo {
+>>> +    uint32_t cm_ctl;
+>>> +    uint32_t cm_div;
+>>> +} ClockMuxResetInfo;
+>>> +
+>>> +static const ClockMuxResetInfo CLOCK_MUX_RESET_INFO[] = {
+>>> +    [CPRMAN_CLOCK_GNRIC] = {
+>>> +        .cm_ctl = 0, /* unknown */
+>>> +        .cm_div = 0
+>>> +    },
+>>> +
+>> [...]
+>>> +};
+>>> +
+>>>    #endif
+>>> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+>>> index 7a7401963d..7e415a017c 100644
+>>> --- a/hw/misc/bcm2835_cprman.c
+>>> +++ b/hw/misc/bcm2835_cprman.c
+>>> @@ -51,10 +51,21 @@
+>>>    #include "hw/misc/bcm2835_cprman_internals.h"
+>>>    #include "trace.h"
+>>>    /* PLL */
+>>> +static void pll_reset(DeviceState *dev)
+>>> +{
+>>> +    CprmanPllState *s = CPRMAN_PLL(dev);
+>>> +    const PLLResetInfo *info = &PLL_RESET_INFO[s->id];
 >>
->> .
+>> Hmm so we overwrite various values from PLL_INIT_INFO.
+>>> +
+>>> +    *s->reg_cm = info->cm;
+>>> +    *s->reg_a2w_ctrl = info->a2w_ctrl;
+>>> +    memcpy(s->reg_a2w_ana, info->a2w_ana, sizeof(info->a2w_ana));
+>>> +    *s->reg_a2w_frac = info->a2w_frac;
 >>
+>> set_pll_init_info() can be simplified as:
+>>
+>>      pll->id = id;
+>>      pll->prediv_mask = PLL_INIT_INFO[id].prediv_mask;
+>>
+>> Or directly in cprman_init():
+>>
+>>      &s->plls[i]->id = i;
+>>      &s->plls[i]->prediv_mask = PLL_INIT_INFO[i].prediv_mask;
+>>
+>> And the rest directly implemented in pll_reset().
+>>
+>> Maybe not, but having pll_reset() added in patch #8/15
+>> "bcm2835_cprman: add a PLL channel skeleton implementation"
+>> would make this patch review easier ;)
 > 
+> Hi Phil,
+> 
+> I think there is a misunderstanding here:
+>    - set_xxx_init_info functions set (among others) register pointers
+>      to alias the common register array "regs" in BCM2835CprmanState.
+>      This is really an initialization step (in the sense of the QOM
+>      object). Those pointers won't move during the object's lifetime.
+>    - xxx_reset however (like e.g. xxx_update) _dereferences_ those
+>      pointers to access the registers data (in this case to set their
+>      reset values).
+> 
+> Doing so greatly decreases code complexity because:
+>    - read/write functions can directly access the common "regs" array
+>      without further decoding.
+>    - Each PLL shares a register with all its channels (A2W_CTRL). With
+>      this scheme, they simply all have a pointer aliasing the same data.
+>    - A lot a registers are unknown/unimplemented.
 
+OK, thanks for clarifying.
+(I wanted to split the boilerplate code from the dumped constants).

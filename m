@@ -1,297 +1,183 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1781078lfa;
-        Fri, 16 Oct 2020 11:42:25 -0700 (PDT)
-X-Received: by 2002:aa7:9af1:0:b029:152:6101:ad12 with SMTP id y17-20020aa79af10000b02901526101ad12mr4841375pfp.40.1602873745530;
-        Fri, 16 Oct 2020 11:42:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602873745; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1781117lfa;
+        Fri, 16 Oct 2020 11:42:27 -0700 (PDT)
+X-Received: by 2002:a17:90b:3010:: with SMTP id hg16mr5102100pjb.21.1602873747469;
+        Fri, 16 Oct 2020 11:42:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602873747; cv=none;
         d=google.com; s=arc-20160816;
-        b=RvS7jj5ZZzHgAlyl7ymF8xclaHteGDBZT1cT472dlKQfvdfdBxsI2otvE8OXbnUb0z
-         wEsxuqnQTKSY5d7n4ndB9FkmC2Qha2BxXYQ8ucVoaGL/GeTsC8EIOupa+hM4NEIFQSC5
-         q9t1YODU743DpBnkObst5D2Kh9wDgPxQ+caZMKBmR9jailVX2X24Ngxe3cfTTYXvBV09
-         SvVIzh5jANX1ngYjwTT0Tc08tsbxF1DxV0LdP9o/oDl2H4b5YJPFlUyHHdRGCbHoGd9H
-         iyhnt85lBiMfyzMNBerZs2GsW1cbVY0uOcy1pbTGZP6KdI1I0fsaE7GJnMVWUk1S2qAs
-         /wBg==
+        b=eDEypOFPeAsANGtZsTUo2Tw0TquUjVvQkCrCuVKrSlFblf8aK0UG6KHlhetAyJ3gX1
+         T5IAMIg2RQSRRLL8cLz+co78nf90rIkjuQ5RIxihdcuyq2UUCVDZMPQxz2I8IhYfPM+o
+         gMgv1UfyPbMMHoRYeY+Mr3saym0otmLS+4W56unBQ3ZzJvvTbbcP9pzDAUId32QPbREf
+         z7DW3LuPSE2P+d70PeMm7fFSX81m3t1B+KvOdhQ4k0pkf1vxwzbinCgyAqAJ09yauqYV
+         ZgmclzgZz5zfUlnCfKJ/lV92o18VJBSQYETm15F2+K5llS53DoIdiCq6qrGUr9o5FKcQ
+         cjcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:dkim-signature;
-        bh=uXEiXCwmZ4IatXzjo8oCm1sQVSclKFFXnkVflorhWjg=;
-        b=CX4Ln4R4LepeTmZkgP9QDpQpGpCk/pMtLtrs3WpaNNck/Sx5RhgUmIJ4cFxbpBkhuD
-         SjEmVY3eQbGjcU2NHOPxvKYazlCEQF0ymc/ccqZBaxU4AjOWKAiabFooof/vEAEhQb2N
-         +/Wb865catsGzVMB1DFIUqzb2URGaD+z7KhX4zFYWmUkx8MxHg9IDWGXARegq1IiFGLl
-         jb9SnbCiM4Pyjse621ADqnLzIrtKi8rAV5NFKOJsJeBjpQ81F4XlQGXGVC+Rh9UibtvI
-         heQGY5seMsHrC/sVgqWtmdsrTWwRryKOmdM95skOUP2XW17KSG5jf2ufAblqkNMFxgSg
-         ke9Q==
+        bh=kGZNmudBhXIU/a8gp/KXcyIKcPKoqtSco3EGBov+V2s=;
+        b=Wt9CS6YNzf0pt2q4+dLKUXwqXxSLr1x1c8LNlBo+aAyNQdR87PIB27XmNKftcUQ9tI
+         87V0y3Qt/ZNmb6c+wtmou4ONX2xCSv7FPs5MxeJr18Yj3OB9ZE9RyFjdNiR0AvVAXI66
+         tmWC13Ch7uXBfI+HTeRaimXibX0thaUDosZCm+Pgb93sjIOfpk7xh2lR/MwX6tGBa1If
+         1CxJRykgCcHSEML/UZhwYP2ZE0Y3kcK6PMIDSA5fSlRmBVK0fnkj908sABQCqQM4Hmmz
+         9o3GlGiuYDAf/vpYQ1Vy3uDHYlJMx9d1n2v8DJuhZyR9i/y2Zzo12Ih96SgEdl6Prass
+         ZLIw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bPf5xCPq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KkQnKXqA;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <richard.henderson@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p9sor1852276pjb.18.2020.10.16.11.42.25
+        by mx.google.com with SMTPS id 16sor1490255pgr.86.2020.10.16.11.42.27
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Fri, 16 Oct 2020 11:42:25 -0700 (PDT)
+        Fri, 16 Oct 2020 11:42:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=bPf5xCPq;
+       dkim=pass header.i=@linaro.org header.s=google header.b=KkQnKXqA;
        spf=pass (google.com: domain of richard.henderson@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=richard.henderson@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=from:to:cc:subject:date:message-id:in-reply-to:references
          :mime-version:content-transfer-encoding;
-        bh=uXEiXCwmZ4IatXzjo8oCm1sQVSclKFFXnkVflorhWjg=;
-        b=bPf5xCPqRF90jEQztTuX2AbkOBuzKtPES2JmlFdPHK44OOsRCmiRI/yaDfopNwCyYN
-         vwh6U7s7U18qjhN0ZAydje+hrZm7+0VCBNfbx86jd66rFEVffKVvAE8aF7qcnJdfp1uq
-         ZvYa2Z1QJ4IkYPUQiBAXrm+aUCBsMc8V8UfDFRXX8DdS87aXoKdCxN5nz5jmwZmQJnKu
-         BYOIGlaZY28R6W1csRrZAkJy/VvD5FdH3nqxzsbH5vPQFtiOvsJFTW+7hBCh9ZcYDOTU
-         JodcCvX/FceVbFJDoDC5bFpNZB6LHNVwdl50nsTkV6XD9EcUGSLdsxlI3c4CzbI0Fbpz
-         CJ6g==
+        bh=kGZNmudBhXIU/a8gp/KXcyIKcPKoqtSco3EGBov+V2s=;
+        b=KkQnKXqAJpPxExziYSE5F6lME8UFZmYRo3UqCal0JjMWuckbI/lZHAC8pmcFSypTl+
+         uhIjZaE880M8+3VY+bZKUFcRPyNrUjOeX41+kFLMx/zTklG0CeQFyz7nBAYtwn5X6gXk
+         54yD+sIyPEXFmenJrYbpTeVYJgnCdqNwLLSPdFpn9haYsUmlsC50MTsUUwtYf/7SuAHX
+         V61+yiOUGhMAGP3I0dgZvbN9alrs+rGCME2qG1YhCnCLPTna+kOUvqYqymGt9KFf6W9h
+         NkmM/QExcb51nr1UqlE7Yd8qrY9/5fZciEtafXUA8WGadDId3yx807lpTkEO9n1TJCWi
+         cKHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
          :references:mime-version:content-transfer-encoding;
-        bh=uXEiXCwmZ4IatXzjo8oCm1sQVSclKFFXnkVflorhWjg=;
-        b=s93iewW522bq+Y768gp1XafPzABE8hX4CvVgjSBF2H3VnbNxiKwWte6XikSdZb3mnM
-         SQkrw8ldQdCStkBDyWxeJfK1mMIH+XP212OADOt7xTwRH7MQfyWB7OHGSxKvU/gwD5lS
-         WSU2w2rgTXPtSW9pEvcxE0mRcToXPGG+xUlFZ/3n3sUad85xL+dcFj0BJQ9EObSfc6b6
-         +5rsUwgfnI90aAXaur2jFKJu/ybFvPCvC9HUcVgPQKTi0+lEAW5vEUhLB6Ifj8WWnpQa
-         PXZgnNS7hbtUC22s1Ko9uRzfo9u8Q61DCTTzIESwh0lGiUAGydrOlt5uRkAKU41Erw/j
-         UYMA==
-X-Gm-Message-State: AOAM533G9UU79NVcM8lettr2NIE7aDMOO/gCgqunZyaTrtj239prml25
-	QOMg0Anu1Kjgv9R7HQXsSoaiepcI
-X-Google-Smtp-Source: ABdhPJy9H5Dn8ChfSNqWtEuMUF/ixcqNo6yrM+L+78ts70mCtIyLSts9/sjGAZJ6uK8Ga3omDkXlqg==
-X-Received: by 2002:a17:90a:7486:: with SMTP id p6mr5477844pjk.162.1602873745012;
-        Fri, 16 Oct 2020 11:42:25 -0700 (PDT)
+        bh=kGZNmudBhXIU/a8gp/KXcyIKcPKoqtSco3EGBov+V2s=;
+        b=D1bjH596EKBGmnaM6V7hP+mRuqOrSoK5diYsupG3VEwoM5Is9MXccRCfPNn7w/IKUc
+         J5HDETD8hYVbm+2kOkzduQ0uua0u/2miMhOQC9eDTN8f+uPy1L143bzqc/SKUqogIIa0
+         6B/WKIbqKGt57R58fnM1UNacRAG/v9KcAWZgWxKughrz56KHL2XsU2VoFujc1VGUAwYc
+         56kx6oB7JOMghLVbXeeaQGyWqDeJnsLSaA4GyENqvsdcOo+B+Kzyn/Egjot5o3U2VW4T
+         sua/WVqdpUCIPmKmwTYIMm9MC47x71JVhVL7Gmwr3npksnGunqTBm88AUHsrOMay36lE
+         +aHQ==
+X-Gm-Message-State: AOAM530GruENbjZeJxIouO7nXcVaxCdkfiibFlw8+LtvFDwSb8305WeK
+	EY/iofJiUUswA5ZKGosq74+e9dk7
+X-Google-Smtp-Source: ABdhPJzJge76pwJCxGj0+2oKCY6gqJLt3HoWJfSHXqqmhMmb41blUIl6ptCFBqumAjGTeYLG67IKhA==
+X-Received: by 2002:a63:e111:: with SMTP id z17mr4234127pgh.267.1602873746958;
+        Fri, 16 Oct 2020 11:42:26 -0700 (PDT)
 Return-Path: <richard.henderson@linaro.org>
 Received: from localhost.localdomain ([71.212.141.89])
-        by smtp.gmail.com with ESMTPSA id c15sm3426011pgg.77.2020.10.16.11.42.23
+        by smtp.gmail.com with ESMTPSA id c15sm3426011pgg.77.2020.10.16.11.42.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Oct 2020 11:42:24 -0700 (PDT)
+        Fri, 16 Oct 2020 11:42:25 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	alex.bennee@linaro.org,
 	laurent@vivier.eu
-Subject: [PATCH v11 10/12] linux-user/elfload: Parse NT_GNU_PROPERTY_TYPE_0 notes
-Date: Fri, 16 Oct 2020 11:42:05 -0700
-Message-Id: <20201016184207.786698-11-richard.henderson@linaro.org>
+Subject: [PATCH v11 11/12] linux-user/elfload: Parse GNU_PROPERTY_AARCH64_FEATURE_1_AND
+Date: Fri, 16 Oct 2020 11:42:06 -0700
+Message-Id: <20201016184207.786698-12-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20201016184207.786698-1-richard.henderson@linaro.org>
 References: <20201016184207.786698-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-TUID: r52WxTxEEiii
+X-TUID: ZrF7MEUALAKa
 
-This is generic support, with the code disabled for all targets.
+Use the new generic support for NT_GNU_PROPERTY_TYPE_0.
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
-v9: Only map the startup executable with BTI; anything else must be
-    handled by the interpreter.
-v10: Split out preparatory patches (pmm).
-v11: Mirror(-ish) the kernel's code structure (pmm).
+v11: Split out aarch64 bits from generic patch.
 ---
- linux-user/qemu.h    |   4 ++
- linux-user/elfload.c | 157 +++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 161 insertions(+)
+ linux-user/elfload.c | 48 ++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 46 insertions(+), 2 deletions(-)
 
-diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 941ca99722..534753ca12 100644
---- a/linux-user/qemu.h
-+++ b/linux-user/qemu.h
-@@ -61,6 +61,10 @@ struct image_info {
-         abi_ulong       interpreter_loadmap_addr;
-         abi_ulong       interpreter_pt_dynamic_addr;
-         struct image_info *other_info;
-+
-+        /* For target-specific processing of NT_GNU_PROPERTY_TYPE_0. */
-+        uint32_t        note_flags;
-+
- #ifdef TARGET_MIPS
-         int             fp_abi;
-         int             interp_fp_abi;
 diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 04c04bc260..428dcaa152 100644
+index 428dcaa152..bf8c1bd253 100644
 --- a/linux-user/elfload.c
 +++ b/linux-user/elfload.c
-@@ -1522,6 +1522,15 @@ static void elf_core_copy_regs(target_elf_gregset_t *regs,
+@@ -1522,6 +1522,28 @@ static void elf_core_copy_regs(target_elf_gregset_t *regs,
  
  #include "elf.h"
  
++/* We must delay the following stanzas until after "elf.h". */
++#if defined(TARGET_AARCH64)
++
 +static bool arch_parse_elf_property(uint32_t pr_type, uint32_t pr_datasz,
 +                                    const uint32_t *data,
 +                                    struct image_info *info,
 +                                    Error **errp)
 +{
-+    g_assert_not_reached();
++    if (pr_type == GNU_PROPERTY_AARCH64_FEATURE_1_AND) {
++        if (pr_datasz != sizeof(uint32_t)) {
++            error_setg(errp, "Ill-formed GNU_PROPERTY_AARCH64_FEATURE_1_AND");
++            return false;
++        }
++        /* We will extract GNU_PROPERTY_AARCH64_FEATURE_1_BTI later. */
++        info->note_flags = *data;
++    }
++    return true;
 +}
-+#define ARCH_USE_GNU_PROPERTY 0
++#define ARCH_USE_GNU_PROPERTY 1
++
++#else
++
+ static bool arch_parse_elf_property(uint32_t pr_type, uint32_t pr_datasz,
+                                     const uint32_t *data,
+                                     struct image_info *info,
+@@ -1531,6 +1553,8 @@ static bool arch_parse_elf_property(uint32_t pr_type, uint32_t pr_datasz,
+ }
+ #define ARCH_USE_GNU_PROPERTY 0
+ 
++#endif
 +
  struct exec
  {
      unsigned int a_info;   /* Use macros N_MAGIC, etc for access */
-@@ -2373,6 +2382,150 @@ void probe_guest_base(const char *image_name, abi_ulong guest_loaddr,
-                   "@ 0x%" PRIx64 "\n", (uint64_t)guest_base);
- }
+@@ -2545,7 +2569,7 @@ static void load_elf_image(const char *image_name, int image_fd,
+     struct elfhdr *ehdr = (struct elfhdr *)bprm_buf;
+     struct elf_phdr *phdr;
+     abi_ulong load_addr, load_bias, loaddr, hiaddr, error;
+-    int i, retval;
++    int i, retval, prot_exec;
+     Error *err = NULL;
  
-+enum {
-+    /* The string "GNU\0" as a magic number. */
-+    GNU0_MAGIC = const_le32('G' | 'N' << 8 | 'U' << 16),
-+    NOTE_DATA_SZ = 1 * KiB,
-+    NOTE_NAME_SZ = 4,
-+    ELF_GNU_PROPERTY_ALIGN = ELF_CLASS == ELFCLASS32 ? 4 : 8,
-+};
-+
-+/*
-+ * Process a single gnu_property entry.
-+ * Return false for error.
-+ */
-+static bool parse_elf_property(const uint32_t *data, int *off, int datasz,
-+                               struct image_info *info, bool have_prev_type,
-+                               uint32_t *prev_type, Error **errp)
-+{
-+    uint32_t pr_type, pr_datasz, step;
-+
-+    if (*off > datasz || !QEMU_IS_ALIGNED(*off, ELF_GNU_PROPERTY_ALIGN)) {
-+        goto error_data;
-+    }
-+    datasz -= *off;
-+    data += *off / sizeof(uint32_t);
-+
-+    if (datasz < 2 * sizeof(uint32_t)) {
-+        goto error_data;
-+    }
-+    pr_type = data[0];
-+    pr_datasz = data[1];
-+    data += 2;
-+    datasz -= 2 * sizeof(uint32_t);
-+    step = ROUND_UP(pr_datasz, ELF_GNU_PROPERTY_ALIGN);
-+    if (step > datasz) {
-+        goto error_data;
-+    }
-+
-+    /* Properties are supposed to be unique and sorted on pr_type. */
-+    if (have_prev_type && pr_type <= *prev_type) {
-+        if (pr_type == *prev_type) {
-+            error_setg(errp, "Duplicate property in PT_GNU_PROPERTY");
-+        } else {
-+            error_setg(errp, "Unsorted property in PT_GNU_PROPERTY");
-+        }
-+        return false;
-+    }
-+    *prev_type = pr_type;
-+
-+    if (!arch_parse_elf_property(pr_type, pr_datasz, data, info, errp)) {
-+        return false;
-+    }
-+
-+    *off += 2 * sizeof(uint32_t) + step;
-+    return true;
-+
-+ error_data:
-+    error_setg(errp, "Ill-formed property in PT_GNU_PROPERTY");
-+    return false;
-+}
-+
-+/* Process NT_GNU_PROPERTY_TYPE_0. */
-+static bool parse_elf_properties(int image_fd,
-+                                 struct image_info *info,
-+                                 const struct elf_phdr *phdr,
-+                                 char bprm_buf[BPRM_BUF_SIZE],
-+                                 Error **errp)
-+{
-+    union {
-+        struct elf_note nhdr;
-+        uint32_t data[NOTE_DATA_SZ / sizeof(uint32_t)];
-+    } note;
-+
-+    int n, off, datasz;
-+    bool have_prev_type;
-+    uint32_t prev_type;
-+
-+    /* Unless the arch requires properties, ignore them. */
-+    if (!ARCH_USE_GNU_PROPERTY) {
-+        return true;
-+    }
-+
-+    /* If the properties are crazy large, that's too bad. */
-+    n = phdr->p_filesz;
-+    if (n > sizeof(note)) {
-+        error_setg(errp, "PT_GNU_PROPERTY too large");
-+        return false;
-+    }
-+    if (n < sizeof(note.nhdr)) {
-+        error_setg(errp, "PT_GNU_PROPERTY too small");
-+        return false;
-+    }
-+
-+    if (phdr->p_offset + n <= BPRM_BUF_SIZE) {
-+        memcpy(&note, bprm_buf + phdr->p_offset, n);
-+    } else {
-+        ssize_t len = pread(image_fd, &note, n, phdr->p_offset);
-+        if (len != n) {
-+            error_setg_errno(errp, errno, "Error reading file header");
-+            return false;
-+        }
-+    }
-+
+     /* First of all, some simple consistency checks */
+@@ -2712,6 +2736,26 @@ static void load_elf_image(const char *image_name, int image_fd,
+     info->brk = 0;
+     info->elf_flags = ehdr->e_flags;
+ 
++    prot_exec = PROT_EXEC;
++#ifdef TARGET_AARCH64
 +    /*
-+     * The contents of a valid PT_GNU_PROPERTY is a sequence
-+     * of uint32_t -- swap them all now.
++     * If the BTI feature is present, this indicates that the executable
++     * pages of the startup binary should be mapped with PROT_BTI, so that
++     * branch targets are enforced.
++     *
++     * The startup binary is either the interpreter or the static executable.
++     * The interpreter is responsible for all pages of a dynamic executable.
++     *
++     * Elf notes are backward compatible to older cpus.
++     * Do not enable BTI unless it is supported.
 +     */
-+#ifdef BSWAP_NEEDED
-+    for (int i = 0; i < n / 4; i++) {
-+        bswap32s(note.data + i);
++    if ((info->note_flags & GNU_PROPERTY_AARCH64_FEATURE_1_BTI)
++        && (pinterp_name == NULL || *pinterp_name == 0)
++        && cpu_isar_feature(aa64_bti, ARM_CPU(thread_cpu))) {
++        prot_exec |= TARGET_PROT_BTI;
 +    }
 +#endif
 +
-+    /*
-+     * Note that nhdr is 3 words, and that the "name" described by namesz
-+     * immediately follows nhdr and is thus at the 4th word.  Further, all
-+     * of the inputs to the kernel's round_up are multiples of 4.
-+     */
-+    if (note.nhdr.n_type != NT_GNU_PROPERTY_TYPE_0 ||
-+        note.nhdr.n_namesz != NOTE_NAME_SZ ||
-+        note.data[3] != GNU0_MAGIC) {
-+        error_setg(errp, "Invalid note in PT_GNU_PROPERTY");
-+        return false;
-+    }
-+    off = sizeof(note.nhdr) + NOTE_NAME_SZ;
-+
-+    datasz = note.nhdr.n_descsz + off;
-+    if (datasz > n) {
-+        error_setg(errp, "Invalid note size in PT_GNU_PROPERTY");
-+        return false;
-+    }
-+
-+    have_prev_type = false;
-+    prev_type = 0;
-+    while (1) {
-+        if (off == datasz) {
-+            return true;  /* end, exit ok */
-+        }
-+        if (!parse_elf_property(note.data, &off, datasz, info,
-+                                have_prev_type, &prev_type, errp)) {
-+            return false;
-+        }
-+        have_prev_type = true;
-+    }
-+}
-+
- /* Load an ELF image into the address space.
- 
-    IMAGE_NAME is the filename of the image, to use in error messages.
-@@ -2467,6 +2620,10 @@ static void load_elf_image(const char *image_name, int image_fd,
-                 goto exit_errmsg;
+     for (i = 0; i < ehdr->e_phnum; i++) {
+         struct elf_phdr *eppnt = phdr + i;
+         if (eppnt->p_type == PT_LOAD) {
+@@ -2725,7 +2769,7 @@ static void load_elf_image(const char *image_name, int image_fd,
+                 elf_prot |= PROT_WRITE;
              }
-             *pinterp_name = g_steal_pointer(&interp_name);
-+        } else if (eppnt->p_type == PT_GNU_PROPERTY) {
-+            if (!parse_elf_properties(image_fd, info, eppnt, bprm_buf, &err)) {
-+                goto exit_errmsg;
-+            }
-         }
-     }
+             if (eppnt->p_flags & PF_X) {
+-                elf_prot |= PROT_EXEC;
++                elf_prot |= prot_exec;
+             }
  
+             vaddr = load_bias + eppnt->p_vaddr;
 -- 
 2.25.1

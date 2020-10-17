@@ -1,131 +1,202 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp1609499lfb;
-        Wed, 6 May 2020 21:31:02 -0700 (PDT)
-X-Google-Smtp-Source: APiQypLvLJ7TMJdmrBM5tA3Xh9M7mT+91rWWXNdfXpcM576hqVfKZ4zxUNUMFsFLw0lUq+4qI4Py
-X-Received: by 2002:a05:6402:688:: with SMTP id f8mr10016038edy.233.1588825862037;
-        Wed, 06 May 2020 21:31:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1588825862; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2274156lfa;
+        Sat, 17 Oct 2020 03:01:32 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxfhDl5Elyd3dPtjxbkzluyj+x7/gss9sWSJBHxVv7QZlmcd69i7YZFEHz67x5TIdPFoaQ4
+X-Received: by 2002:a25:dec7:: with SMTP id v190mr10147324ybg.139.1602928892023;
+        Sat, 17 Oct 2020 03:01:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1602928892; cv=none;
         d=google.com; s=arc-20160816;
-        b=HUfXrfv9TelXTkes5L2Vbz/mBqxhss2LybgvbiyW2XXe5bt5PQEMzQt5/V7/nBH8Ku
-         4as3wn4ZkHvTdiWFr7IQC+6waam+KIrE8uTNrCH689Hj8v3FE5UuqHDWQ+eBqD6sQlKa
-         xpiL5V8rq1qL9aaAbOvtuDftKj0KAoqObcY/HMOF0i5tMn0k4pCOtaQfhHGN/GUr1TM3
-         0cA7bQEziWsLM1TytydsQIFVkXy02BHxLJTrkTsdBPIlCyOJvMFKUASDscsR4sV1M9gt
-         1MP6Xf3seMRmPw5vjkNpRsryEha15gzJS+seZIfJpcYhdhaN8T5dGTZDZ9rnGTYbN0ZS
-         zgZQ==
+        b=b3iRI6nBwhfYFQgNs27NaHM8EiHAFQ3fdcFtLm7gQmLniGLhuWtcK+OhIXcX6fmEoR
+         85LtY63JlUtaolyv5T0pBOta76ioUqqcP3y3Efww/1QDcUhS+yOHsdvq4GiBMwWLZduA
+         jxFu7cvYgXwhGfocbAfIea+dHp9UiCFsoRZLKv7rAwygiGNU8GoPiUr61qe+FUvdhgrW
+         8No1dAUKKfCnH5ooQ8xux2p0vDSgamK2aCKk+yGdMslORZJz/spWDaK4krJCEI8EWPtc
+         lkFUU1r0HvR30Fz3eNtdwN8jy2ehGULSbNdUS5yuGHKW2rD4z7RzPnFtc2ORq6+S7j2C
+         JBiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=list-id:precedence:sender:content-transfer-encoding
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:cc:to:subject;
-        bh=gEu6K94JtAUL/bBb5kpOWlzYnMnZF627uRfrWZCDY3A=;
-        b=ygqfJ9CQiPoDqPJEGg8lcGK5gFNWAb0IUdaJ20GhWmrGg1NNCiq1x3BwhX6yWkiQSg
-         X2CFCE6WNvrddVW99lV8BG+iWR/XSIFw74IPQSq7JRfik/nv0Zh0T1cqr3+PbW3UriKD
-         +ZaFrMhQk8EZJ/ADmP7m8bURgURLGtJXjoZv24cYXgNxKv1M3PKwqH84dBmdb8cuF3YA
-         TxmaWLdXi8IhbzZffljJDHwUzADhOKptKvucbhLQsvWbunoXFz870ZD7QIy/gA1Ii2e4
-         ATEDjrqRIutliJug9AjViFCjDuVgXum24z2qYa+EyAzVXNfQ7J9+cJ9w0QSKydpOS1+V
-         7JyA==
+         :message-id:references:to:from:subject:dkim-signature;
+        bh=yZ2p0awb4xdvIgsWalJxmwnxws+DJkEPDtd/7wvDzYo=;
+        b=whp0QzzGSQEUJpYNJ0Bsd0Khu23CU+8bOTTo9KSH4RXichvoGtFikbhnprxgPcYCUb
+         k7sgy7jBGz+l22Gfqu6FUTR6oiHRmDyUUhzrdXIzAO3kIJVgePHniQmt5iRT9hv0+GcL
+         xlilvb924RvnwzCFn9Jh6SezdXfnbrB5TGdOokBsWvwWazAYevt8RjPdfTslida/gj9l
+         BZQm1VXh1O1E4Xnd0WSpASPuxEu8HEusElNll6XLnbFiEyuNWaTK1ilpefGDfHZOy0eF
+         a36gjFol43UI4uWosk87uMmr9Dj+tzRDyM59bEmWl0X+5IctFtMBj99HAtD48etSmmFN
+         sjqQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Return-Path: <kvm-owner@vger.kernel.org>
-Received: from vger.kernel.org (vger.kernel.org. [23.128.96.18])
-        by mx.google.com with ESMTP id t27si2418957edt.42.2020.05.06.21.31.01;
-        Wed, 06 May 2020 21:31:02 -0700 (PDT)
-Received-SPF: pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) client-ip=23.128.96.18;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l4w5Dkxz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id o19si4587288ybg.370.2020.10.17.03.01.31
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 17 Oct 2020 03:01:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of kvm-owner@vger.kernel.org designates 23.128.96.18 as permitted sender) smtp.mailfrom=kvm-owner@vger.kernel.org
-Received: (majordomo@vger.kernel.org) by vger.kernel.org via listexpand
-        id S1725879AbgEGEbA (ORCPT <rfc822;naresh.kamboju@linaro.org>
-        + 5 others); Thu, 7 May 2020 00:31:00 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:3876 "EHLO huawei.com"
-        rhost-flags-OK-OK-OK-FAIL) by vger.kernel.org with ESMTP
-        id S1725783AbgEGEbA (ORCPT <rfc822;kvm@vger.kernel.org>);
-        Thu, 7 May 2020 00:31:00 -0400
-Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.59])
-        by Forcepoint Email with ESMTP id 7DC8BE60F56FF9613629;
-        Thu,  7 May 2020 12:30:58 +0800 (CST)
-Received: from [127.0.0.1] (10.142.68.147) by DGGEMS410-HUB.china.huawei.com
- (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Thu, 7 May 2020
- 12:30:50 +0800
-Subject: Re: [PATCH v25 00/10] Add ARMv8 RAS virtualization support in QEMU
-To:     "Michael S. Tsirkin" <mst@redhat.com>
-CC:     Peter Maydell <peter.maydell@linaro.org>,
-        Fam Zheng <fam@euphon.net>,
-        "Xiao Guangrong" <xiaoguangrong.eric@gmail.com>,
-        kvm-devel <kvm@vger.kernel.org>,
-        Marcelo Tosatti <mtosatti@redhat.com>,
-        QEMU Developers <qemu-devel@nongnu.org>,
-        Eduardo Habkost <ehabkost@redhat.com>,
-        Linuxarm <linuxarm@huawei.com>,
-        Shannon Zhao <shannon.zhaosl@gmail.com>,
-        Zheng Xiang <zhengxiang9@huawei.com>,
-        qemu-arm <qemu-arm@nongnu.org>,
-        Jonathan Cameron <Jonathan.Cameron@huawei.com>,
-        Paolo Bonzini <pbonzini@redhat.com>,
-        "Igor Mammedov" <imammedo@redhat.com>,
-        Richard Henderson <rth@twiddle.net>
-References: <20200410114639.32844-1-gengdongjiu@huawei.com>
- <CAFEAcA9oNuDf=bdSSE8mZWrB23+FegD5NeSAmu8dGWhB=adBQg@mail.gmail.com>
- <da3cbdfd-a75d-c87f-3ece-616278aa64d5@huawei.com>
- <20200506162439-mutt-send-email-mst@kernel.org>
-From:   gengdongjiu <gengdongjiu@huawei.com>
-Message-ID: <934931d5-b8c5-66db-db3d-ea19bdfc30f9@huawei.com>
-Date:   Thu, 7 May 2020 12:30:49 +0800
-User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:52.0) Gecko/20100101
- Thunderbird/52.3.0
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=l4w5Dkxz;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:51838 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kTj1n-0004xo-8P
+	for alex.bennee@linaro.org; Sat, 17 Oct 2020 06:01:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60198)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kTj0x-0004vH-SX; Sat, 17 Oct 2020 06:00:39 -0400
+Received: from mail-wr1-x443.google.com ([2a00:1450:4864:20::443]:35918)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kTj0w-0002ED-43; Sat, 17 Oct 2020 06:00:39 -0400
+Received: by mail-wr1-x443.google.com with SMTP id x7so6190640wrl.3;
+ Sat, 17 Oct 2020 03:00:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:from:to:cc:references:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=yZ2p0awb4xdvIgsWalJxmwnxws+DJkEPDtd/7wvDzYo=;
+ b=l4w5DkxziZuee4NTfbYvDyDbZDgU3sRG6cfMGArYCddMhzclzniZi9UilVbEUVZLdg
+ LT9kOWk5GA6FfE6Xg87Q84y4LsZ0H/3xOfeyaSUINaXLQ3+TOQnsY0geEBPPvMaPf/9u
+ bS9MWwHQZ/l82yBFS41z/je0HsxRI1QFrPYKMLhYb3srGsJ0qID4F574CWlPusdlMWsb
+ OV3WKs4iM/4LpsZYXB4UmYeFuCPg+6OoEeMHjrBPv5SGtfo7wUP2uVQ2D56XzfMMTzM3
+ VohYRm+fPdaaBMjs4vu1CuuUiNXrFYXGBZ2ihzjJ6TQJUan9O3tAunquKe9oocQvsT2n
+ DPBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=yZ2p0awb4xdvIgsWalJxmwnxws+DJkEPDtd/7wvDzYo=;
+ b=bs6PUfS3KpIgrtvEOLCSoK46MHmQkCfA2H1JS4OhthtDtg8eSiy3ygxOw7qG2wSXVb
+ 2/DZibr8NA0EJEa5RAivxHeZQiDnuFNWCyhGcEZYyaJyzj7xQZeGQEXnjJgxcI1w8/7z
+ 3oDmCrevM11VU0R3lW2r8tfSI6GYhwZCb35M+vWVJ/wownHGSL8/0DgKa4iForQZsIbN
+ BGr/8hhuyOUsMsU4IYDI9IJXO/NF1iKxsKwe7pYC4NTZL0FoWlyKotxI3jL8CPuuRgu5
+ Nf+IwCtHxJm9arrq7BtGQAbetpZA45ZXW9/pEreFv3+2dMciHNJN29CVv5McpbQfBFYq
+ cvBA==
+X-Gm-Message-State: AOAM5314BgIK+tuKeqKw/NYQSSzMWMDQxmd1EuX6fsOZVTydgSiv5nyx
+ 7Q5MlB9itTTNOf3WYLH2H+xTZMiZ6Rc=
+X-Received: by 2002:a05:6000:10c6:: with SMTP id
+ b6mr9616946wrx.10.1602928835270; 
+ Sat, 17 Oct 2020 03:00:35 -0700 (PDT)
+Received: from [192.168.1.36] (117.red-83-52-172.dynamicip.rima-tde.net.
+ [83.52.172.117])
+ by smtp.gmail.com with ESMTPSA id y185sm5996103wmb.29.2020.10.17.03.00.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 17 Oct 2020 03:00:34 -0700 (PDT)
+Subject: Re: [PATCH v3 08/15] hw/misc/bcm2835_cprman: add a PLL channel
+ skeleton implementation
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org
+References: <20201010135759.437903-1-luc@lmichel.fr>
+ <20201010135759.437903-9-luc@lmichel.fr>
+ <e6e2341a-6ccc-b1cc-6e25-b3d57e1cae6d@amsat.org>
+Message-ID: <ced8b284-1581-ecef-6b07-edee64ac3233@amsat.org>
+Date: Sat, 17 Oct 2020 12:00:33 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <20200506162439-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <e6e2341a-6ccc-b1cc-6e25-b3d57e1cae6d@amsat.org>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.142.68.147]
-X-CFilter-Loop: Reflected
-Sender: kvm-owner@vger.kernel.org
-Precedence: bulk
-List-ID: <kvm.vger.kernel.org>
-X-Mailing-List: kvm@vger.kernel.org
-X-TUID: wuyMKvXD0JWF
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::443;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x443.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.253,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Paul Zimmerman <pauldzim@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: La6lMhvbGA3a
 
-On 2020/5/7 4:25, Michael S. Tsirkin wrote:
-> On Wed, May 06, 2020 at 07:42:19PM +0800, gengdongjiu wrote:
->> On 2020/4/17 21:32, Peter Maydell wrote:
->>> On Fri, 10 Apr 2020 at 12:46, Dongjiu Geng <gengdongjiu@huawei.com> wrote:
->>>>
->>>> In the ARMv8 platform, the CPU error types includes synchronous external abort(SEA)
->>>> and SError Interrupt (SEI). If exception happens in guest, host does not know the detailed
->>>> information of guest, so it is expected that guest can do the recovery. For example, if an
->>>> exception happens in a guest user-space application, host does not know which application
->>>> encounters errors, only guest knows it.
->>>>
->>>> For the ARMv8 SEA/SEI, KVM or host kernel delivers SIGBUS to notify userspace.
->>>> After user space gets the notification, it will record the CPER into guest GHES
->>>> buffer and inject an exception or IRQ to guest.
->>>>
->>>> In the current implementation, if the type of SIGBUS is BUS_MCEERR_AR, we will
->>>> treat it as a synchronous exception, and notify guest with ARMv8 SEA
->>>> notification type after recording CPER into guest.
->>>
->>> Hi. I left a comment on patch 1. The other 3 patches unreviewed
->>> are 5, 6 and 8, which are all ACPI core code, so that's for
->>> MST, Igor or Shannon to review.
->>>
->>> Once those have been reviewed, please ping me if you want this
->>> to go via target-arm.next.
+On 10/10/20 6:05 PM, Philippe Mathieu-Daudé wrote:
+> On 10/10/20 3:57 PM, Luc Michel wrote:
+>> PLLs are composed of multiple channels. Each channel outputs one clock
+>> signal. They are modeled as one device taking the PLL generated clock as
+>> input, and outputting a new clock.
 >>
->> Hi Peter,
->>    Igor have reviewed all ACPI core code. whether you can apply this series to target-arm.next I can make another patches to solve your comments on patch1 and another APCI comment.
->> Thanks very much in advance.
-> 
-> Given it all starts with patch 1, it's probably easier to address the
-> comment and repost.
+>> A channel shares the CM register with its parent PLL, and has its own
+>> A2W_CTRL register. A write to the CM register will trigger an update of
+>> the PLL and all its channels, while a write to an A2W_CTRL channel
+>> register will update the required channel only.
+>>
+>> Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> Tested-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> Signed-off-by: Luc Michel <luc@lmichel.fr>
+>> ---
+>>   include/hw/misc/bcm2835_cprman.h           |  44 ++++++
+>>   include/hw/misc/bcm2835_cprman_internals.h | 146 +++++++++++++++++++
+>>   hw/misc/bcm2835_cprman.c                   | 155 +++++++++++++++++++--
+>>   3 files changed, 337 insertions(+), 8 deletions(-)
+[...]
 
-Ok, I will do it. thanks.
+>> +#define FILL_PLL_CHANNEL_INIT_INFO_common(pll_, channel_)            \
+>> +    .parent = CPRMAN_ ## pll_,                                       \
+>> +    .cm_offset = R_CM_ ## pll_,                                      \
+>> +    .cm_load_mask = R_CM_ ## pll_ ## _ ## LOAD ## channel_ ## _MASK, \
+>> +    .a2w_ctrl_offset = R_A2W_ ## pll_ ## _ ## channel_
+>> +
+>> +#define FILL_PLL_CHANNEL_INIT_INFO(pll_, channel_)                   \
+>> +    FILL_PLL_CHANNEL_INIT_INFO_common(pll_, channel_),               \
+>> +    .cm_hold_mask = R_CM_ ## pll_ ## _ ## HOLD ## channel_ ## _MASK, \
+>> +    .fixed_divider = 1
+>> +
+>> +#define FILL_PLL_CHANNEL_INIT_INFO_nohold(pll_, channel_) \
+>> +    FILL_PLL_CHANNEL_INIT_INFO_common(pll_, channel_),    \
+>> +    .cm_hold_mask = 0
+>> +
+>> +static PLLChannelInitInfo PLL_CHANNEL_INIT_INFO[] = {
+> 
+> Hmm I missed this static definition in an header.
+> As it is local and only include once, I'd prefer match the
+> rest of the source tree style and name it .c.inc:
+> 
+> -- >8 --
+> diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+> index 7e415a017c9..9d4c0ee6c73 100644
+> --- a/hw/misc/bcm2835_cprman.c
+> +++ b/hw/misc/bcm2835_cprman.c
+> @@ -48,7 +48,7 @@
+>   #include "migration/vmstate.h"
+>   #include "hw/qdev-properties.h"
+>   #include "hw/misc/bcm2835_cprman.h"
+> -#include "hw/misc/bcm2835_cprman_internals.h"
+> +#include "bcm2835_cprman_internals.c.inc"
+>   #include "trace.h"
+> 
+>   /* PLL */
+> diff --git a/include/hw/misc/bcm2835_cprman_internals.h 
+> b/hw/misc/bcm2835_cprman_internals.c.inc
+> similarity index 100%
+> rename from include/hw/misc/bcm2835_cprman_internals.h
+> rename to hw/misc/bcm2835_cprman_internals.c.inc
+> ---
 
-> 
-> 
->>>
->>> thanks
->>> -- PMM
->>>
->>> .
->>>
-> 
-> .
-> 
+This can be applied directly by Peter, or can
+be cleaned later. This is not a blocker to get
+this series merged.

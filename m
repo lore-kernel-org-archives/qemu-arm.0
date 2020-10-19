@@ -1,100 +1,103 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3957284lfa;
-        Mon, 19 Oct 2020 08:13:47 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw912DxM7OUDd6qPtxtsuliZ2KZBtOddtacwg4zDsP8fWibFtBvOsAKVvLoi/O01WzQjwYm
-X-Received: by 2002:a25:b8a:: with SMTP id 132mr249287ybl.88.1603120427722;
-        Mon, 19 Oct 2020 08:13:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603120427; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3957297lfa;
+        Mon, 19 Oct 2020 08:13:49 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyzV1IEEsPknJ7YwWOFQfMZMojMInGKKbFyy89v8l0ZATDFHNi6ptwT5WsKvG5BtuZbQVzf
+X-Received: by 2002:a25:b8b:: with SMTP id 133mr167033ybl.257.1603120429086;
+        Mon, 19 Oct 2020 08:13:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603120429; cv=none;
         d=google.com; s=arc-20160816;
-        b=VdtZIJvPPmxJjCkamHqkvIClqhVt15zN1Dqfd01vhb4HaWckkCSTmG8QXAilQveD8a
-         BUbirbXWAn5wqOBl5G6UN080hRW8eA5Nl3INkMCVIZK86i8eZaFjuMfIMOnYi0n6J0It
-         MBMwLhfFNwpaAwPDdQaceBy1CfgM0PSgPvbzu4n5B9qmZKhu4+ERlGVxcN4GW7B37ql6
-         C4gGfJ6GRiaL2i8kqCszu8p0J0y5eqeqUxpGc/QObaLfHJfXmWf8CB1bEpOHlts+z3wL
-         ji41EeWcHnZ9qbqRtRt//SxJhWdn2Us4PmgAYh5r0pX1H912rF0hXHjXtakK3DffrCKY
-         jL3g==
+        b=Pscf/V+H73TREENnG5WZbM44Dwbd229hkTeOOP/nTv5ES70olLKfrSEOXTbeEaxWGJ
+         oWw+KgS4adOZtTKu+6LbEV1wYooVTN2Ob1jgvQSGRy3253ia98X1mkcu5COo1heAz8Vp
+         XZ1a2r+xAY9kKfN4qIR7nrueqbfdDXLzfIhb4dtC2UjPhrw8iPcIWc/4EsFOzryyKXNu
+         fIW7ag0Ga2I8uNRlzUFh/xFaOAu8dWAvVHfnAw4BLvy3gNj06KV2hv6dvQQlqXEbx8KW
+         ilJkbp8+UpqrrmPwApooon56D3f67bjkImtjXZ0xuHx650WzqYcp8VKhROdcGmnMg0Hi
+         AMlg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=nfoR8sqiK+gHy7yD6/tEtbPtJxBhQTr1YZYkY4YxcN8=;
-        b=uc+TnRCCiwLlx72BMAzZbMrly1/kYUZmQvlQ5bzXkVQ5xrBDFHvZ0PxON7SvypTp/D
-         tF9ho8gn4QPhzrQI624aXPLsYu28EOPFh70Ntab0PhXQVj/JJggFk3M4vNRSuqWr/viN
-         SMWib7xgQ/X2XknKtXjDO9xv8sD7rko32oYMa34UsNRlgLLtWXbdGRc9zyRC0LHyHCdF
-         Efm5Z06EIfNemKZs3S/WwpqZ8PqWzhhdxa45UrnLsZEvtx/0WEL0txQfC/ho8FBC88p1
-         qILRg7FjJxkNKNyrjIzTfoqjDCkjcopOVmk3niCidN9eywBQW3Fl7OFHZPqNR1hrWd8G
-         2yeA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=kLCgJNRELMxG1PAWJwJlgP80Ymoy4kuq1bsu+yq9fEQ=;
+        b=M4gAeUQ+gRpfD6JY8Pf8YRlO0zdvpPFdmCfmzLqxY5dArAQDcPmVBOLeUreZndhiD6
+         qE5lAPrUBN4J00YY+2MTQf2X4PZuRmTgVAOhvABJ/qfVtEK7HirrFCobDYT/JYlIqh8p
+         /RKV6+W4UcPEzrgCveUcgO9eT5B0zAoZZzSXp5V6qfh9ndzhgP5HVd4DRKemx6q0bWta
+         Zsd58M6PbF0llnXAR0GlvgT6A7+DbBti9j5/yyq7T/JSU8RymLoQxa5+G65GeN0iJxe9
+         GaFtLHDuNi+LVa+Qnm6llgiYF1DmJMiwGvqr2un0kTQNV6Tj+/yfpFgUCH17Bx+3WCwS
+         IOLw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y11auK2B;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q8oKyXk8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v67si201737ybc.473.2020.10.19.08.13.47
+        by mx.google.com with ESMTPS id i13si268429ybp.288.2020.10.19.08.13.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Oct 2020 08:13:47 -0700 (PDT)
+        Mon, 19 Oct 2020 08:13:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Y11auK2B;
+       dkim=pass header.i=@linaro.org header.s=google header.b=q8oKyXk8;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53642 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:53778 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUWr5-0007iq-1K
-	for alex.bennee@linaro.org; Mon, 19 Oct 2020 11:13:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41872)
+	id 1kUWr6-0007m8-D6
+	for alex.bennee@linaro.org; Mon, 19 Oct 2020 11:13:48 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41994)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kUWqU-0006oO-L2
- for qemu-arm@nongnu.org; Mon, 19 Oct 2020 11:13:11 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e]:55138)
+ id 1kUWqZ-0006sS-0Z
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2020 11:13:15 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:43486)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kUWqQ-0002jV-QG
- for qemu-arm@nongnu.org; Mon, 19 Oct 2020 11:13:09 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id p15so173098wmi.4
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2020 08:13:05 -0700 (PDT)
+ id 1kUWqW-0002kM-6y
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2020 11:13:14 -0400
+Received: by mail-wr1-x441.google.com with SMTP id g12so99152wrp.10
+ for <qemu-arm@nongnu.org>; Mon, 19 Oct 2020 08:13:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=nfoR8sqiK+gHy7yD6/tEtbPtJxBhQTr1YZYkY4YxcN8=;
- b=Y11auK2Btu6HGbq/JcbQj2ZuW7uiSIFu5K4NND6lx00izU3s5sI3+JdZ5xbeRZHmDi
- QSoNXQY0zA6nQuYhrCj/vUCfte5jT/soKONi48uuUd7M0ePOdsU07NPtnN3MTAN69JRq
- fkMgZDGWRupGpNTcx9+Y/JolXcL+wdTWWY4UvysPUugm6Eg7NCsUQhAn3E8Q7u/yxWNY
- l9VdUjnWE2Y/ByQDSQ/PguMpODoKzwupH6Zr7y1kY4fVj9NlxgDdxxkX0rdqCv+6E9hX
- DHWXSaayIC0Ixy7A5xVAxIi6WQfXYnDmxOpi3We/0Qh5h38gcH4CwUcUG+n4YpPbK1cn
- yVAw==
+ h=from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=kLCgJNRELMxG1PAWJwJlgP80Ymoy4kuq1bsu+yq9fEQ=;
+ b=q8oKyXk8lShUd8g1quoB7Qr1ZdncnUXrAW3TcBPPd06bpvGw1ESIGJNfEKmubWDsyq
+ rsd0orW58GjAf4L7c2ewRj0aSlxh7xQEX2qOHiG/sQbCQlqde35mAiRvpiVKh2fLNveq
+ 7NyCVLEbKfc/oVjaqAOySWfb5qgrTJvCEKmHBuUMyNY7/R3X9SUbThLUHFFGQuHAI2uV
+ gOZnAfxlZX7WgMkQrq4iRWqFdGy6lXObIYz3ruBafJE5bkhVANow0FoRAP4ZZ8eZJ8Nz
+ CMO51IVl5Ky4xs9nbUH0Pdh5igYXVRJCmP5FA8LAq67hUoQ+JpXVdZdp1Qx+13ETt/n7
+ BHvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=nfoR8sqiK+gHy7yD6/tEtbPtJxBhQTr1YZYkY4YxcN8=;
- b=FoZZidEvr0EMj4J0m/+XajsJoeTahPChKmgSxA5VTwjM+b7jWdn+MgjMIf5zhbDBYF
- n/syPSplUboHZM/+hkxCd7ZnCGUVjmTRl06e6iBEhL77ailfr27pU/vfwFpXxfT4uHss
- hdGEZBH66Ys0KPYJd7aaFMxYeP1cFYTIJhOwPfCVP6PLxBQ/Y7xxyVIi30K14JaOmXjh
- pxW3ryUsOQWZpwK4OMAFQdtcNuCvXXB1sKH9kWErZm+R5bAMvhm06OMgZHzG6l4HbmX6
- T8HL1EBP5TFIQ2/6ktWVezndzGIwVTpZhPHRsQNY47zSX3X/WpoJn1OJKBRTLg7v1BtX
- vRXQ==
-X-Gm-Message-State: AOAM531HfTddxWvCxBzPtL/JDIV0pPJu0shASGpbpIbEB5gSAm95zmRH
- 2AkjEFu+mXVQilbmZaaobpP1tZsO0Y3TiA==
-X-Received: by 2002:a1c:e287:: with SMTP id
- z129mr17497050wmg.109.1603120383889; 
- Mon, 19 Oct 2020 08:13:03 -0700 (PDT)
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
+ :references:mime-version:content-transfer-encoding;
+ bh=kLCgJNRELMxG1PAWJwJlgP80Ymoy4kuq1bsu+yq9fEQ=;
+ b=DzU67wxRGA8UeRxM5PMVYOo+h7k/7W44hJZO/e21kZI+DZAyctXy725q4/U5hJ7r3H
+ j7iQ3xwhPk9qOX9sOfSXTkQZt9WspPpn20hwuTEIYVIsl/U5Hz2vqAPxKL7Zg9tgLzZA
+ +N/du3UrgX31de4097hx/0JPngf7AZM/3s+sqDX2b9HgYt0y9dIngSh+z1UBL0zOV4Ta
+ vRYQxAIfoTUn2PA4RoPGnzP3hmUGycsMMxqqAsRmZ5Tly2ECbDIQcjgrW6zOdOhCS+aM
+ 91+U8IDuJmWgnxWonmDwpUuClTvsjXvaMTbpVk29zUc4e3ur9I2t2S69LCc72FD8bPoJ
+ 9Fdg==
+X-Gm-Message-State: AOAM531zEmyIt4BhYe1LwUaN1E7B7eWR15QksDWqTUWwAB4RPnb6WIko
+ uFrai9T09fmyu3bYDbfuZmcvCZg/FTMjAg==
+X-Received: by 2002:a5d:480b:: with SMTP id l11mr20640042wrq.225.1603120388580; 
+ Mon, 19 Oct 2020 08:13:08 -0700 (PDT)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id y14sm309918wma.48.2020.10.19.08.13.02
+ by smtp.gmail.com with ESMTPSA id y14sm309918wma.48.2020.10.19.08.13.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2020 08:13:03 -0700 (PDT)
+ Mon, 19 Oct 2020 08:13:07 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 00/10] target/arm: Various v8.1M minor features
-Date: Mon, 19 Oct 2020 16:12:51 +0100
-Message-Id: <20201019151301.2046-1-peter.maydell@linaro.org>
+Subject: [PATCH v2 04/10] target/arm: Make the t32 insn[25:23]=111 group
+ non-overlapping
+Date: Mon, 19 Oct 2020 16:12:55 +0100
+Message-Id: <20201019151301.2046-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.20.1
+In-Reply-To: <20201019151301.2046-1-peter.maydell@linaro.org>
+References: <20201019151301.2046-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -119,51 +122,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: Richard Henderson <richard.henderson@linaro.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pWOMCOXiy20M
+X-TUID: /6r8t68HafLx
 
-This patchseries implements various minor v8.1M new features,
-notably the branch-future and low-overhead-loop extensions.
+The t32 decode has a group which represents a set of insns
+which overlap with B_cond_thumb because they have [25:23]=111
+(which is an invalid condition code field for the branch insn).
+This group is currently defined using the {} overlap-OK syntax,
+but it is almost entirely non-overlapping patterns. Switch
+it over to use a non-overlapping group.
 
-(None of this will get enabled until we have enough to implement
-a CPU model which has v8.1M, which will be the Cortex-M55, but
-as usual we can get stuff into the tree gradually.)
+For this to be valid syntactically, CPS must move into the same
+overlapping-group as the hint insns (CPS vs hints was the
+only actual use of the overlap facility for the group).
 
-Changes v1->v2:
- * added missing check that rm!=13 for CSEL decode
- * folded in gen_jmp_tb() fixup for DLS/WLS/LE patch
- * reversed sense of branch in trans_WLS
- * reworked set_fpscr changes as suggested by RTH
- * provide an env->v7m.ltpsize now (always 4 until
-   MVE implemented, but it avoids code changes later)
+The non-overlapping subgroup for CLREX/DSB/DMB/ISB/SB is no longer
+necessary and so we can remove it (promoting those insns to
+be members of the parent group).
 
-Unreviewed patches: 2, 7, 9, 10
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/t32.decode | 26 ++++++++++++--------------
+ 1 file changed, 12 insertions(+), 14 deletions(-)
 
-thanks
--- PMM
-
-Peter Maydell (10):
-  decodetree: Fix codegen for non-overlapping group inside overlapping
-    group
-  target/arm: Implement v8.1M NOCP handling
-  target/arm: Implement v8.1M conditional-select insns
-  target/arm: Make the t32 insn[25:23]=111 group non-overlapping
-  target/arm: Don't allow BLX imm for M-profile
-  target/arm: Implement v8.1M branch-future insns (as NOPs)
-  target/arm: Implement v8.1M low-overhead-loop instructions
-  target/arm: Fix has_vfp/has_neon ID reg squashing for M-profile
-  target/arm: Allow M-profile CPUs with FP16 to set FPSCR.FP16
-  target/arm: Implement FPSCR.LTPSIZE for M-profile LOB extension
-
- target/arm/cpu.h               |   8 ++
- target/arm/m-nocp.decode       |  10 +-
- target/arm/t32.decode          |  50 ++++++---
- target/arm/cpu.c               |  38 +++++--
- target/arm/translate.c         | 181 ++++++++++++++++++++++++++++++++-
- target/arm/vfp_helper.c        |  53 ++++++----
- scripts/decodetree.py          |   2 +-
- target/arm/translate-vfp.c.inc |  17 +++-
- 8 files changed, 305 insertions(+), 54 deletions(-)
-
+diff --git a/target/arm/t32.decode b/target/arm/t32.decode
+index d8454bd814e..7d5e000e82c 100644
+--- a/target/arm/t32.decode
++++ b/target/arm/t32.decode
+@@ -296,8 +296,8 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+ {
+   # Group insn[25:23] = 111, which is cond=111x for the branch below,
+   # or unconditional, which would be illegal for the branch.
+-  {
+-    # Hints
++  [
++    # Hints, and CPS
+     {
+       YIELD      1111 0011 1010 1111 1000 0000 0000 0001
+       WFE        1111 0011 1010 1111 1000 0000 0000 0010
+@@ -310,20 +310,18 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+       # The canonical nop ends in 0000 0000, but the whole rest
+       # of the space is "reserved hint, behaves as nop".
+       NOP        1111 0011 1010 1111 1000 0000 ---- ----
++
++      # If imod == '00' && M == '0' then SEE "Hint instructions", above.
++      CPS        1111 0011 1010 1111 1000 0 imod:2 M:1 A:1 I:1 F:1 mode:5 \
++                 &cps
+     }
+ 
+-    # If imod == '00' && M == '0' then SEE "Hint instructions", above.
+-    CPS          1111 0011 1010 1111 1000 0 imod:2 M:1 A:1 I:1 F:1 mode:5 \
+-                 &cps
+-
+     # Miscellaneous control
+-    [
+-      CLREX      1111 0011 1011 1111 1000 1111 0010 1111
+-      DSB        1111 0011 1011 1111 1000 1111 0100 ----
+-      DMB        1111 0011 1011 1111 1000 1111 0101 ----
+-      ISB        1111 0011 1011 1111 1000 1111 0110 ----
+-      SB         1111 0011 1011 1111 1000 1111 0111 0000
+-    ]
++    CLREX        1111 0011 1011 1111 1000 1111 0010 1111
++    DSB          1111 0011 1011 1111 1000 1111 0100 ----
++    DMB          1111 0011 1011 1111 1000 1111 0101 ----
++    ISB          1111 0011 1011 1111 1000 1111 0110 ----
++    SB           1111 0011 1011 1111 1000 1111 0111 0000
+ 
+     # Note that the v7m insn overlaps both the normal and banked insn.
+     {
+@@ -351,7 +349,7 @@ CLZ              1111 1010 1011 ---- 1111 .... 1000 ....      @rdm
+     HVC          1111 0111 1110 ....  1000 .... .... ....     \
+                  &i imm=%imm16_16_0
+     UDF          1111 0111 1111 ----  1010 ---- ---- ----
+-  }
++  ]
+   B_cond_thumb   1111 0. cond:4 ...... 10.0 ............      &ci imm=%imm21
+ }
+ 
 -- 
 2.20.1
 

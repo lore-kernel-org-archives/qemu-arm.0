@@ -1,109 +1,91 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3755845lfa;
-        Mon, 19 Oct 2020 03:54:18 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwe0mVz3cJNSL6amDypPMC+HI6l8DNwGems4MCLPxBOXO09iI4u0/IMV47SDE2GD60pEuMb
-X-Received: by 2002:a25:db8c:: with SMTP id g134mr10957301ybf.146.1603104858353;
-        Mon, 19 Oct 2020 03:54:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603104858; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3921961lfa;
+        Mon, 19 Oct 2020 07:30:44 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy+pIOurq1T0EeenGDk9JlHGqiyNE3db5kshGiCWffEKw2z/PD98uW0AKl8mIpD4ds1bCV5
+X-Received: by 2002:a25:c141:: with SMTP id r62mr21327153ybf.519.1603117844242;
+        Mon, 19 Oct 2020 07:30:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603117844; cv=none;
         d=google.com; s=arc-20160816;
-        b=y4LQ2rVUQGAWNHjP5t9wZro96KUsx2nh7nxmB+N2QxWfVYFBQa/b5g6UfluOpS9fQE
-         SFTb4MAWifdQaj7AWAH0w/IPcIrMNWn9tTbaF1PTGzdmMXKYwK9Dw1LeX9MWl8e8j1L/
-         EqHeh185SauwWDZWBOnbF3FjcbNvfbZNMNOKvtePNeGkUoT3XWATa5zH+Y2dNe1kv/Y+
-         J9UYYIylS43E+AbGKZkqq7oTVd84jvGpL1E3Wf9QCeD5wSAabGpazAxewHdKPIpm1NBq
-         RT3bAI3XIHxdwlBci6kQnminC7qWkTUOwGTyJ0LZ/IjSX+og88htb+Gxy0AqHgNkEuqM
-         /e4g==
+        b=spBCqQKwNJg43gFKEgWo9/EOGMR8w6vu3eDfU8gIo/3lqZp5pyF0OP0NHD9zmVhFbE
+         6alI82XW0oDPS0zIuedtkKHQv2LCNrwu8BrmYX/cA6+8VxwhMEQOMRvQZmVrUBxvulDq
+         o2D05tvIg01qhlb4GpNOhodw7QLDd7D6urYVM7Aqd7PiNYOLdsRSdVcWQM99wC4M58ni
+         L5L+UJp4Sj3Qn6FIgMjqIDBIyjhHS6vi9Ya20R/LpA0mZt9HQ9oMNvKXb5MJazHiU6vP
+         j7QEAlMRCV6QU910W6OPOBg6m7H/loAnGViXdObyHXoqOct5eCrMQ7/5fyl20N6LDa/v
+         DQ/w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=2EFiOg7D2B5V0bDgw9aEi/A66o6VokQxnytKxKGWgl8=;
-        b=ABYR9vXwCdPe55CSKKKa5qqyJGgXwaXHRWASdpp+ML/lY3cDSQkt7SV77ChrB4pT9l
-         eq2zHnf187fZy5aqxarrIJsaIhUJzFVJ27NuHlw0PHp8h7KsDt91YZbtfyxRnAbWmced
-         kBysI52zXjBXuOAgBljSxe+LU6kZa6fRa7Xffc/vHH+4vYSAXbNxvRjAfrunAWRrad6y
-         z5HAMIH4KD3f5/81xbz5RERtx5FrQxnCfQbnCE4gge+z8KaUvK9RXDlKESrkZwgrZmYx
-         BWryAw57k+g9P2SFXXiiIklWy/ymG9crCi0Nzcepa2S7kzzi2Bw5a2EJZ01yK9Gx18S8
-         VSSQ==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject;
+        bh=ShPPSslesquohhmLXupCG+SI0DnpYqFfWt5mGppVf9I=;
+        b=0eqdiFv3PlI2yj5TU8Xoc1XaOqq/FffdZszfTeVw3Znj1+KUkPpIOjC8j5Ec63POpU
+         uzoI51imDRI2aD40e6G2iNZ0ifTnVwrxLzwzuxdRBzlsHq9X4hV/jm7Ec8Si72yH3LN2
+         /tnZ49OVZ+EHBmIFpRlhGH5dVA3ffCewcL8T9ylE8iD6FHK1VEqR0Oi8ZV/i+S/tdwBG
+         cpiS4DWb1dDrub+Vy0xJ2bdc3YRwVSSylI5Ob6A+EG6wcOrtUaJENxOZDjfAOo/tw8yZ
+         kdHLvk3/h/9hJfCvybYGO7QsAtV9YxffuKdNiCXAx26nfE9s2PvMYNS31kzjzmP1UQso
+         slJA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J3vcUUnW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p127si9893919ybp.69.2020.10.19.03.54.18
+        by mx.google.com with ESMTPS id n184si126106ybc.457.2020.10.19.07.30.44
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Oct 2020 03:54:18 -0700 (PDT)
+        Mon, 19 Oct 2020 07:30:44 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=J3vcUUnW;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:54502 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:39658 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUSnx-0000rQ-Nq
-	for alex.bennee@linaro.org; Mon, 19 Oct 2020 06:54:17 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35084)
+	id 1kUWBP-0008LG-L6
+	for alex.bennee@linaro.org; Mon, 19 Oct 2020 10:30:43 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58728)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kUSep-0008OB-Nt
- for qemu-devel@nongnu.org; Mon, 19 Oct 2020 06:44:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34735)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kUSek-0000tj-J8
- for qemu-devel@nongnu.org; Mon, 19 Oct 2020 06:44:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603104282;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2EFiOg7D2B5V0bDgw9aEi/A66o6VokQxnytKxKGWgl8=;
- b=J3vcUUnWglipEpIZ+x1oxAqlCuK1Wj6cILFIlyxdZT6EeDAKHydtESatt6tTxOx+GCLv79
- y2DK4uLL/5Bl9bb+MauXpwtLOGF6xELO5WqY2Mhx5l6Uto+0dVsu+YGyfGm8b9Eb4zmDca
- 25V3n2IYWHBdHhtK01pFf2lHPhjj9s8=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-89-FQWYFocRNi--DyEG6KxriQ-1; Mon, 19 Oct 2020 06:44:40 -0400
-X-MC-Unique: FQWYFocRNi--DyEG6KxriQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 7B628186DD22;
- Mon, 19 Oct 2020 10:44:38 +0000 (UTC)
-Received: from eperezma.remote.csb (ovpn-113-59.ams2.redhat.com [10.36.113.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 90D1810013C4;
- Mon, 19 Oct 2020 10:44:16 +0000 (UTC)
-From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
-To: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v2 4/5] intel_iommu: Skip page walking on device iotlb
- invalidations
-Date: Mon, 19 Oct 2020 12:43:31 +0200
-Message-Id: <20201019104332.22033-5-eperezma@redhat.com>
-In-Reply-To: <20201019104332.22033-1-eperezma@redhat.com>
-References: <20201019104332.22033-1-eperezma@redhat.com>
+ (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
+ id 1kUWAz-0008Gl-RN; Mon, 19 Oct 2020 10:30:17 -0400
+Received: from szxga01-in.huawei.com ([45.249.212.187]:2942 helo=huawei.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <liangpeng10@huawei.com>)
+ id 1kUWAw-0005E8-Ty; Mon, 19 Oct 2020 10:30:17 -0400
+Received: from DGGEMM404-HUB.china.huawei.com (unknown [172.30.72.56])
+ by Forcepoint Email with ESMTP id DFA1D24EDF1DE6C1B84C;
+ Mon, 19 Oct 2020 22:30:05 +0800 (CST)
+Received: from dggema765-chm.china.huawei.com (10.1.198.207) by
+ DGGEMM404-HUB.china.huawei.com (10.3.20.212) with Microsoft SMTP Server (TLS)
+ id 14.3.487.0; Mon, 19 Oct 2020 22:30:05 +0800
+Received: from [10.174.185.187] (10.174.185.187) by
+ dggema765-chm.china.huawei.com (10.1.198.207) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id
+ 15.1.1913.5; Mon, 19 Oct 2020 22:30:05 +0800
+Subject: Re: [PATCH] microbit_i2c: Fix coredump when dump-vmstate
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+References: <20201019093401.2993833-1-liangpeng10@huawei.com>
+ <786deb83-b6f4-d778-d5ed-19f3901ad211@redhat.com>
+From: Peng Liang <liangpeng10@huawei.com>
+Message-ID: <def9291a-0ed9-0b47-e32e-53275a7302b3@huawei.com>
+Date: Mon, 19 Oct 2020 22:30:04 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:78.0) Gecko/20100101
+ Thunderbird/78.2.2
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <786deb83-b6f4-d778-d5ed-19f3901ad211@redhat.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 01:44:30
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Originating-IP: [10.174.185.187]
+X-ClientProxiedBy: dggeme711-chm.china.huawei.com (10.1.199.107) To
+ dggema765-chm.china.huawei.com (10.1.198.207)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.187;
+ envelope-from=liangpeng10@huawei.com; helo=huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 10:30:06
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,50 +98,50 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-ppc@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Avi Kivity <avi@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <rth@twiddle.net>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: peter.maydell@linaro.org, joel@jms.id.au, xiexiangyou@huawei.com,
+ zhang.zhanghailiang@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: qLc/UACIU+4R
+X-TUID: OHo+lu9Dakhu
 
-Although they didn't reach the notifier because of the filtering in
-memory_region_notify_iommu_one, the vt-d was still splitting huge
-memory invalidations in chunks. Skipping it.
+On 10/19/2020 6:35 PM, Philippe Mathieu-Daudé wrote:
+> On 10/19/20 11:34 AM, Peng Liang wrote:
+>> VMStateDescription.fields should be end with VMSTATE_END_OF_LIST().
+>> However, microbit_i2c_vmstate doesn't follow it.  Let's change it.
+> 
+> It might be easy to add a Coccinelle script to avoid future errors.
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> 
+>>
+>> Fixes: 9d68bf564e ("arm: Stub out NRF51 TWI magnetometer/accelerometer
+>> detection")
+>> Reported-by: Euler Robot <euler.robot@huawei.com>
+>> Signed-off-by: Peng Liang <liangpeng10@huawei.com>
+>> ---
+>>   hw/i2c/microbit_i2c.c | 1 +
+>>   1 file changed, 1 insertion(+)
+>>
+>> diff --git a/hw/i2c/microbit_i2c.c b/hw/i2c/microbit_i2c.c
+>> index 802473982082..e92f9f84ea81 100644
+>> --- a/hw/i2c/microbit_i2c.c
+>> +++ b/hw/i2c/microbit_i2c.c
+>> @@ -83,6 +83,7 @@ static const VMStateDescription microbit_i2c_vmstate
+>> = {
+>>       .fields = (VMStateField[]) {
+>>           VMSTATE_UINT32_ARRAY(regs, MicrobitI2CState,
+>> MICROBIT_I2C_NREGS),
+>>           VMSTATE_UINT32(read_idx, MicrobitI2CState),
+>> +        VMSTATE_END_OF_LIST()
+>>       },
+>>   };
+>>  
+> 
+> 
+> .
 
-This improves performance in case of netperf with vhost-net:
-* TCP_STREAM: From 1923.6Mbit/s to 2175.13Mbit/s (13%)
-* TCP_RR: From 8464.73 trans/s to 8932.703333 trans/s (5.5%)
-* UDP_RR: From 8562.08 trans/s to 9005.62/s (5.1%)
-* UDP_STREAM: No change observed (insignificant 0.1% improvement)
+Thanks! I'll try to add one.
 
-Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
----
- hw/i386/intel_iommu.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 6cc217742a..8f1ac137a6 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -1478,6 +1478,10 @@ static int vtd_sync_shadow_page_table(VTDAddressSpace *vtd_as)
-     VTDContextEntry ce;
-     IOMMUNotifier *n;
- 
-+    if (!(vtd_as->iommu.iommu_notify_flags & IOMMU_NOTIFIER_IOTLB_EVENTS)) {
-+        return 0;
-+    }
-+
-     ret = vtd_dev_to_context_entry(vtd_as->iommu_state,
-                                    pci_bus_num(vtd_as->bus),
-                                    vtd_as->devfn, &ce);
 -- 
-2.18.1
-
+Thanks,
+Peng

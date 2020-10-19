@@ -1,105 +1,109 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3752817lfa;
-        Mon, 19 Oct 2020 03:49:07 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyN2ctsFZfPQFk+okiZLYhtzTAh7TwAmOJFSzbXO4tDOPqY12hxnolU1Wywu3kPLIfmjAIj
-X-Received: by 2002:a25:d197:: with SMTP id i145mr20775612ybg.82.1603104547795;
-        Mon, 19 Oct 2020 03:49:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603104547; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3780057lfa;
+        Mon, 19 Oct 2020 04:26:43 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyHAFXdF8rq3MLN9zUhbSD5p4RxSX9A0VyMIYhewXzTpbufgo/mRaBsPMJ81Ohou3aoZ1bn
+X-Received: by 2002:a25:1f84:: with SMTP id f126mr21302057ybf.192.1603106803172;
+        Mon, 19 Oct 2020 04:26:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603106803; cv=none;
         d=google.com; s=arc-20160816;
-        b=rUHnorifqNnpLPMp4xGT/K41hI6NFnNG9v8W8MU6baeKz2Lq/miMhMQrtGBctz0qhO
-         swXLkKcgmPpKqiKOBu/F1vQYpL4dLkl+gOAWS8As+IS6n0neAKxiFPKuxv01KBk6V1bn
-         69MH8u7WC3M47N1k0Yd9PaXMEjQAOX/pvTHyubxgC2n5vhksc1EaaendgH312qhM5ELR
-         oQNPtBlreFce6qvX9nfCKG6ZBO/ahfYJAe/0bGemy7N22DQDp799yVZ2ss7v00e9V9KG
-         mb316rlP81B/gbZaYNfuuNvQg/GBEzHsdWvJLAUKN6T9ywJ8H32BrPvRA9Li2zTpAsPQ
-         jNRg==
+        b=U4Oijj43PMQaeEpM4SwfiF93Q9OusQb0/KjDzNVDiXbDBFA+WTYKxn0yKtmz1IvE0a
+         m34iI6stVtwP+Ravpjn67twvPLTkV/cwMp7lCmOJFr4qFj35tWpHkfj54ogMCDd6B+5y
+         xZ4iZUvPjynedVoj91R7M+n5aE9hOheEMkg4NsWX47QYN6vOz37OOWtaoMLJhCpDyl7R
+         cZglsGdL/uU31N8OdE+A7b3WyI78cZNmlWTme9cJ4jb7N8816h2Ycb+DrR6Z/smyAY5/
+         9ED/BkjzE3ZW7vhFN5HLg6MOMhHTi9kYQKXMa1BtUHuQpUiaA+FOE0etvqrdd/C/uSox
+         XU0A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=PBFEdwTIx1mYGL3oIUANUBf9mbY7EvKflju80+PQsLA=;
-        b=mGNtg6xgxsN/6SwZO3ze44EUuxr36yjGzeiN6BrOSyYbqvMFThO612LfFOh+jkj2wB
-         1pv7nDR7PbOMkaIMPC37dmJhdjauZyvb3/ZsaxNffwZG7TuXYeNyYyq8tXLX6zUaJKlW
-         Gs5dkyuBXhmdTuoDsH2/A0BY6Floo117CNilUW/Fa1OKDuPmpezJhvERxzarFNxbfKbu
-         xBXd2MJrNpwpNbn097+ok3+wfltFSJJZBlp6YL0zPfa3ohDMaHkaCO6SILVNGwh9hwDi
-         AXicQkfmfj63tKPSNCpe832NqAL1cq0CwcSKUzYlgFweUIf+olBUC9BmhYGhsdwfNuWU
-         +EfQ==
+        bh=OXeBoUdOo5NY6eTN5elXmFP20gkOzGyp6dljEkbwOz4=;
+        b=dS6g+ZdUsPhBcI+YggG4bnw2Pbevh3Xu4w5MUruY3JFpIsd4Q0co8GTg/ywmkX2fuP
+         +l04CE2h4Ns+TVaCjzUThgSHs3f7/H6a0Xzs1DeE2cFzlTUqnDt+mN4JgcGCW0WztKhh
+         dmKx/qdG+6JUe0jGb3StxZ/6CZNd6cnCrZ+5f10QZebQr4wdIGlZOYsI9En4qWpcEzou
+         QcHUDomu0a0A+SIs6YxetZnRQy22ZY3Qn0YZsvtBQ8XrkDaGdK4pgL1hj7vC5SL4tYWQ
+         14HwO4Wftpe4wFvUEc6Nfeo6EmNSXVtDFb39K+oy292wo7qb5Ou+A1s9UBzDI5uoXuT9
+         P7vA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eicbdo5J;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rOm4sgLF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a7si10709713ybq.371.2020.10.19.03.49.07
+        by mx.google.com with ESMTPS id x2si12017588ybk.122.2020.10.19.04.26.43
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Oct 2020 03:49:07 -0700 (PDT)
+        Mon, 19 Oct 2020 04:26:43 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=eicbdo5J;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=rOm4sgLF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40740 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:59374 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUSix-0003bn-7p
-	for alex.bennee@linaro.org; Mon, 19 Oct 2020 06:49:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34936)
+	id 1kUTJK-0007sX-Ik
+	for alex.bennee@linaro.org; Mon, 19 Oct 2020 07:26:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43824)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kUSeJ-0007tD-6t
- for qemu-arm@nongnu.org; Mon, 19 Oct 2020 06:44:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:34942)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
- id 1kUSeH-0000ri-11
- for qemu-arm@nongnu.org; Mon, 19 Oct 2020 06:44:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603104256;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=PBFEdwTIx1mYGL3oIUANUBf9mbY7EvKflju80+PQsLA=;
- b=eicbdo5JgC9vaAIwpqvSNWdK7EO2eAwsLJsnCPBRRo8CW5s0nIxcf5bhJw6sNK82cYogQO
- zqFJ4QjqyOkrfBVt/eYUx+KaFLvTqcwUCQtETCVxn3zYebPs27jpC1UFwKFBrLXVkzPc4H
- mpLds3d6NV0re+BDQuT/eATAruCVhtQ=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-358-6f003FrLNdCfARPcCJ6TVw-1; Mon, 19 Oct 2020 06:43:05 -0400
-X-MC-Unique: 6f003FrLNdCfARPcCJ6TVw-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
- [10.5.11.15])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C552F107464B;
- Mon, 19 Oct 2020 10:43:03 +0000 (UTC)
-Received: from eperezma.remote.csb (ovpn-113-59.ams2.redhat.com [10.36.113.59])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 5EB6E5577A;
- Mon, 19 Oct 2020 10:42:47 +0000 (UTC)
-From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
-To: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v2 0/5] memory: Skip assertion in
- memory_region_unregister_iommu_notifier
-Date: Mon, 19 Oct 2020 12:42:39 +0200
-Message-Id: <20201019104244.21830-1-eperezma@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kUTJC-0007sE-Fx; Mon, 19 Oct 2020 07:26:34 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:37832)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kUTJB-00066B-0o; Mon, 19 Oct 2020 07:26:34 -0400
+Received: by mail-wr1-x442.google.com with SMTP id h7so11004192wre.4;
+ Mon, 19 Oct 2020 04:26:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=OXeBoUdOo5NY6eTN5elXmFP20gkOzGyp6dljEkbwOz4=;
+ b=rOm4sgLFRXggPcf2uVYU+hOKGoG9BoYQ14AtneWNcEy+rvPhZDbnnVYQ8o9JnRFWpL
+ Fbr0kySRQtez7lszCR7OlgpRAzcOrBSVt0VyZiBVHs8r5++eO7tMNk1z5GlqrUVa4Bgj
+ e/b3+dvsbWAISESMXrH6IZZQl/xoEJLPxRdUmb38M+IDEfN75fIejc8YxcpU5EO2w0+f
+ wckNpXT0yIgbpHbzY3+/bqjTRr+y0I2L79hI0AOiX/B1CQQsp/ms5YBhl4MPg2Gq0Pjm
+ J+RewzURFVSmzIetiYYnhUEYnaLGLu8r5k69jW6u4qJrVulLn6QQCj74nAeVYDjryN/f
+ IFiQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :mime-version:content-transfer-encoding;
+ bh=OXeBoUdOo5NY6eTN5elXmFP20gkOzGyp6dljEkbwOz4=;
+ b=TFznO2IpO73VM4FJTBu/pnRj5Bt4dKrC1kn3Mxa9O6YwxDeaq7HKUpwhbF1LzdQlcw
+ R/0uut/8RkSR+yyREMxIEECzsCs60YHtPnO0DePGc8rieIfPR8Qf+x1HPkMWKfB+efoZ
+ rxtrmUL0mL0sDx9DktOf9LYy/6UpTlE3quKqSOHeXf4rAMd4m04+jmw9LhBhvtMJkNvA
+ lrgH6LjXTsgLSnS7L02ahEWXrgGClAwGn+ospmNxrRFF0MTOwaRiECS93wgdeAIKRapX
+ W0NuITxLU2xUdCSdq5hiV/ORZHRdp0LWVHu4rbFRQo3q0aeRU3a2jIydNqfvjdlxwT1X
+ gAyA==
+X-Gm-Message-State: AOAM531v6Lj36K9He14uUGTu1nkt1cdFI+JLMyh6OsIEnhxm3CWa0QDH
+ J6GS1SRKte9lai69kxXu+m2mGbAKo8w=
+X-Received: by 2002:adf:e891:: with SMTP id d17mr12813765wrm.218.1603106790729; 
+ Mon, 19 Oct 2020 04:26:30 -0700 (PDT)
+Received: from x1w.redhat.com (237.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.237])
+ by smtp.gmail.com with ESMTPSA id x1sm17249422wrl.41.2020.10.19.04.26.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 19 Oct 2020 04:26:30 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH] hw/misc/bcm2835_cprman: Make cprman_internals an included
+ source file
+Date: Mon, 19 Oct 2020 13:26:28 +0200
+Message-Id: <20201019112628.1653550-1-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=eperezma@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 01:44:30
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -112,211 +116,51 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
- Juan Quintela <quintela@redhat.com>, qemu-ppc@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Eric Auger <eric.auger@redhat.com>,
- qemu-arm@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Avi Kivity <avi@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
- David Gibson <david@gibson.dropbear.id.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Luc Michel <luc@lmichel.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Xmp1tuZnzwa+
+X-TUID: FF1XdQjcI+um
 
-I am able to hit this assertion when a Red Hat 7 guest virtio_net device
-raises an "Invalidation" of all the TLB entries. This happens in the
-guest's startup if 'intel_iommu=on' argument is passed to the guest
-kernel and right IOMMU/ATS devices are declared in qemu's command line.
+bcm2835_cprman_internals.h is only include by bcm2835_cprman.c
+and contains various static array definitions. Make it an
+included source file (using the .c.inc extension).
 
-Command line:
-/home/qemu/x86_64-softmmu/qemu-system-x86_64 -name \
-guest=rhel7-test,debug-threads=on -machine \
-pc-q35-5.1,accel=kvm,usb=off,dump-guest-core=off,kernel_irqchip=split \
--cpu \
-Broadwell,vme=on,ss=on,vmx=on,f16c=on,rdrand=on,hypervisor=on,arat=on,tsc-adjust=on,umip=on,arch-capabilities=on,xsaveopt=on,pdpe1gb=on,abm=on,skip-l1dfl-vmentry=on,rtm=on,hle=on \
--m 8096 -realtime mlock=off -smp 2,sockets=2,cores=1,threads=1 -uuid \
-d022ecbf-679e-4755-87ce-eb87fc5bbc5d -display none -no-user-config \
--nodefaults -rtc base=utc,driftfix=slew -global \
-kvm-pit.lost_tick_policy=delay -no-hpet -no-shutdown -global \
-ICH9-LPC.disable_s3=1 -global ICH9-LPC.disable_s4=1 -boot strict=on \
--device intel-iommu,intremap=on,device-iotlb=on -device \
-pcie-root-port,port=0x8,chassis=1,id=pci.1,bus=pcie.0,multifunction=on,addr=0x1 \
--device \
-pcie-root-port,port=0x9,chassis=2,id=pci.2,bus=pcie.0,addr=0x1.0x1 \
--device \
-pcie-root-port,port=0xa,chassis=3,id=pci.3,bus=pcie.0,addr=0x1.0x2 \
--device \
-pcie-root-port,port=0xb,chassis=4,id=pci.4,bus=pcie.0,addr=0x1.0x3 \
--device \
-pcie-root-port,port=0xc,chassis=5,id=pci.5,bus=pcie.0,addr=0x1.0x4 \
--device \
-pcie-root-port,port=0xd,chassis=6,id=pci.6,bus=pcie.0,addr=0x1.0x5 \
--device \
-pcie-root-port,port=0xe,chassis=7,id=pci.7,bus=pcie.0,addr=0x1.0x6 \
--device qemu-xhci,p2=15,p3=15,id=usb,bus=pci.2,addr=0x0 -device \
-virtio-serial-pci,id=virtio-serial0,bus=pci.3,addr=0x0 -drive \
-file=/home/virtio-test2.qcow2,format=qcow2,if=none,id=drive-virtio-disk0 \
--device \
-virtio-blk-pci,scsi=off,bus=pci.4,addr=0x0,drive=drive-virtio-disk0,id=virtio-disk0,bootindex=1 \
--netdev tap,id=hostnet0,vhost=on,vhostforce=on -device \
-virtio-net-pci,netdev=hostnet0,id=net0,mac=52:54:00:0d:1d:f2,bus=pci.1,addr=0x0,iommu_platform=on,ats=on \
--device virtio-balloon-pci,id=balloon0,bus=pci.5,addr=0x0 -object \
-rng-random,id=objrng0,filename=/dev/urandom -device \
-virtio-rng-pci,rng=objrng0,id=rng0,bus=pci.6,addr=0x0 -s -msg \
-timestamp=on
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+I'm sending this on top of:
+[PATCH v3 00/15] raspi: add the bcm2835 cprman clock manager
+to avoid a respin before soft freeze.
 
-Full backtrace:
- #0  0x00007ffff521370f in raise () at /lib64/libc.so.6
- #1  0x00007ffff51fdb25 in abort () at /lib64/libc.so.6
- #2  0x00007ffff51fd9f9 in _nl_load_domain.cold.0 () at /lib64/libc.so.6
- #3  0x00007ffff520bcc6 in .annobin_assert.c_end () at /lib64/libc.so.6
- #4  0x0000555555888171 in memory_region_notify_one (notifier=0x7ffde0487fa8,
-                                                    entry=0x7ffde5dfe200)
-                          at /home/qemu/memory.c:1918
- #5  0x0000555555888247 in memory_region_notify_iommu (iommu_mr=0x555556f6c0b0,
-                                                      iommu_idx=0, entry=...)
-                          at /home/qemu/memory.c:1941
- #6  0x0000555555951c8d in vtd_process_device_iotlb_desc (s=0x555557609000,
-                                                       inv_desc=0x7ffde5dfe2d0)
-                          at /home/qemu/hw/i386/intel_iommu.c:2468
- #7  0x0000555555951e6a in vtd_process_inv_desc (s=0x555557609000)
-                          at /home/qemu/hw/i386/intel_iommu.c:2531
- #8  0x0000555555951fa5 in vtd_fetch_inv_desc (s=0x555557609000)
-                          at /home/qemu/hw/i386/intel_iommu.c:2563
- #9  0x00005555559520e5 in vtd_handle_iqt_write (s=0x555557609000)
-                          at /home/qemu/hw/i386/intel_iommu.c:2590
- #10 0x0000555555952b45 in vtd_mem_write (opaque=0x555557609000, addr=136,
-                                         val=2688, size=4)
-                          at /home/qemu/hw/i386/intel_iommu.c:2837
- #11 0x0000555555883e17 in memory_region_write_accessor (mr=0x555557609330,
-                                                        addr=136,
-                                                        value=0x7ffde5dfe478,
-                                                        size=4,
-                                                        shift=0,
-                                                        mask=4294967295,
-                                                        attrs=...)
-                         at /home/qemu/memory.c:483
- #12 0x000055555588401d in access_with_adjusted_size (addr=136,
-                       value=0x7ffde5dfe478,
-                       size=4,
-                       access_size_min=4,
-                       access_size_max=8,
-                       access_fn=0x555555883d38 <memory_region_write_accessor>,
-                       mr=0x555557609330,
-                       attrs=...)
-                       at /home/qemu/memory.c:544
- #13 0x0000555555886f37 in memory_region_dispatch_write (mr=0x555557609330,
-                                                       addr=136,
-                                                       data=2688,
-                                                       op=MO_32,
-                                                       attrs=...)
-                         at /home/qemu/memory.c:1476
- #14 0x0000555555827a03 in flatview_write_continue (fv=0x7ffdd8503150,
-                                                   addr=4275634312,
-                                                   attrs=...,
-                                                   ptr=0x7ffff7ff0028,
-                                                   len=4,
-                                                   addr1=136,
-                                                   l=4,
-                                                   mr=0x555557609330)
-                          at /home/qemu/exec.c:3146
- #15 0x0000555555827b48 in flatview_write (fv=0x7ffdd8503150,
-                                          addr=4275634312,
-                                          attrs=...,
-                                          buf=0x7ffff7ff0028,
-                                          len=4)
-                          at /home/qemu/exec.c:3186
- #16 0x0000555555827e9d in address_space_write (
-                                      as=0x5555567ca640 <address_space_memory>,
-                                      addr=4275634312,
-                                      attrs=...,
-                                      buf=0x7ffff7ff0028,
-                                      len=4)
-                          at /home/qemu/exec.c:3277
- #17 0x0000555555827f0a in address_space_rw (
-                                      as=0x5555567ca640 <address_space_memory>,
-                                      addr=4275634312,
-                                      attrs=...,
-                                      buf=0x7ffff7ff0028,
-                                      len=4,
-                                      is_write=true)
-                          at /home/qemu/exec.c:3287
- #18 0x000055555589b633 in kvm_cpu_exec (cpu=0x555556b65640)
-                               at /home/qemu/accel/kvm/kvm-all.c:2511
- #19 0x0000555555876ba8 in qemu_kvm_cpu_thread_fn (arg=0x555556b65640)
-                               at /home/qemu/cpus.c:1284
- #20 0x0000555555dafff1 in qemu_thread_start (args=0x555556b8c3b0)
-                               at util/qemu-thread-posix.c:521
- #21 0x00007ffff55a62de in start_thread () at /lib64/libpthread.so.0
- #22 0x00007ffff52d7e83 in clone () at /lib64/libc.so.6
+This patch can be queued or squashed on top of patch #08/15:
+"bcm2835_cprman: add a PLL channel skeleton implementation"
 
-(gdb) frame 4
- #4  0x0000555555888171 in memory_region_notify_one
-                      (notifier=0x7ffde0487fa8, entry=0x7ffde5dfe200)
-                      at /home/qemu/memory.c:1918
-1918        assert(entry->iova >= notifier->start && entry_end <=
-notifier->end);
-(gdb) p *entry
-$1 = {target_as = 0x555556f6c050, iova = 0, translated_addr = 0,
-addr_mask = 18446744073709551615, perm = IOMMU_NONE}
---
+Based-on: <20201010135759.437903-1-luc@lmichel.fr>
+---
+ hw/misc/bcm2835_cprman.c                                        | 2 +-
+ .../misc/bcm2835_cprman_internals.c.inc                         | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename include/hw/misc/bcm2835_cprman_internals.h => hw/misc/bcm2835_cprman_internals.c.inc (100%)
 
-Tested with vhost-net and qemu driver, host<->guest communication.
-
-v2: * Delete underflow assertion
-    * Tested again rebased over ("3e407488349 Merge remote-tracking
-      branch 'remotes/rth/tags/pull-mb-20201014' into staging")
-
-v1: * IOMMU_NOTIFIER_ALL now includes IOMMU_NOTIFIER_DEVIOTLB_EVENTS
-      also. VFIO IOMMU notifier will register for all events (as before
-      of the patching)
-    * Cosmetic changes, like:
-      - Expand commit messages
-      - Better naming and checks
-      - Fix alignment issues
-      - Avoid an already present casting from `void *`
- at https://lists.gnu.org/archive/html/qemu-devel/2020-09/msg01505.html
-
-RFC v8: Fix use of "tmp" notification in memory.c:memory_region_notify_iommu_one
-
-v7: Add IOMMUTLBNotification, and move introduced "type" from
-    IOMMUTLBEntry to the former.
-
-v6: Introduce "type" field for IOMMUTLBEntry. Fill in all uses.
-    Update tests reports with more fine-tuning (CPU, RPS/XPS tunning).
-
-v5: Skip regular IOTLB notifications in dev_iotlb notifiers
-
-v4: Rename IOMMU_NOTIFIER_IOTLB -> IOMMU_NOTIFIER_DEVIOTLB.
-    Make vhost-net notifier just IOMMU_NOTIFIER_DEVIOTLB, not
-    IOMMU_NOTIFIER_UNMAP
-
-v3: Skip the assertion in case notifier is a IOTLB one, since they can manage
-    arbitrary ranges. Using a flag in the notifier for now, as Peter suggested.
-
-v2: Actually delete assertion instead of just commenting out using C99
-
-Eugenio Pérez (5):
-  memory: Rename memory_region_notify_one to
-    memory_region_notify_iommu_one
-  memory: Add IOMMUTLBEvent
-  memory: Add IOMMU_NOTIFIER_DEVIOTLB_UNMAP IOMMUTLBNotificationType
-  intel_iommu: Skip page walking on device iotlb invalidations
-  memory: Skip bad range assertion if notifier is DEVIOTLB_UNMAP type
-
- include/exec/memory.h | 40 ++++++++++---------
- hw/arm/smmu-common.c  | 13 +++---
- hw/arm/smmuv3.c       | 13 +++---
- hw/i386/intel_iommu.c | 92 +++++++++++++++++++++++++------------------
- hw/misc/tz-mpc.c      | 32 ++++++++-------
- hw/ppc/spapr_iommu.c  | 15 +++----
- hw/virtio/vhost.c     |  2 +-
- softmmu/memory.c      | 30 ++++++++------
- 8 files changed, 134 insertions(+), 103 deletions(-)
-
+diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+index 7e415a017c9..9d4c0ee6c73 100644
+--- a/hw/misc/bcm2835_cprman.c
++++ b/hw/misc/bcm2835_cprman.c
+@@ -48,7 +48,7 @@
+ #include "migration/vmstate.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/misc/bcm2835_cprman.h"
+-#include "hw/misc/bcm2835_cprman_internals.h"
++#include "bcm2835_cprman_internals.c.inc"
+ #include "trace.h"
+ 
+ /* PLL */
+diff --git a/include/hw/misc/bcm2835_cprman_internals.h b/hw/misc/bcm2835_cprman_internals.c.inc
+similarity index 100%
+rename from include/hw/misc/bcm2835_cprman_internals.h
+rename to hw/misc/bcm2835_cprman_internals.c.inc
 -- 
-2.18.1
+2.26.2
 

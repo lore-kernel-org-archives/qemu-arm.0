@@ -1,163 +1,166 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4005744lfa;
-        Mon, 19 Oct 2020 09:13:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzPm+DLOyPHwfcBtYJZTrZYUglEhpWchL7aIrfr+TZb5RhMlqrs/pKRmMhMg+5XrhOr9Q7v
-X-Received: by 2002:a25:75c5:: with SMTP id q188mr585288ybc.292.1603123996044;
-        Mon, 19 Oct 2020 09:13:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603123996; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3980277lfa;
+        Mon, 19 Oct 2020 08:42:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzWfQOyvON4b/sD5QrI4baYzj4CG3w/61/CNdE/IzhYQRXcIUljNBhXqJeSpaiAcch7hDtq
+X-Received: by 2002:a25:328a:: with SMTP id y132mr394134yby.306.1603122121739;
+        Mon, 19 Oct 2020 08:42:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603122121; cv=none;
         d=google.com; s=arc-20160816;
-        b=zJGaBAPCdsJPMpI+Bwup0J3zpQupbqZW1V/9g4GklMuS9gAYlfnYowVHSqfdrxouds
-         37jb7W4YcBAwQPcAsnCxuh+ets9npvlepOqEqP7Iz39QEcnGWJbs4Z5IONwsAf2aVHHb
-         wjiFcIjGqQ/4GMF+FYIrb7exe7hN/WJLOotxkdnEttrtRdz8lpuAy9l/EC7Fusq9KNcK
-         I+lQ7aD61oEnEzoyA5/UW60KT5cQ+l47v1l/WWY0cDO+WqkkryBUAwYVzwoiRQFBXsYl
-         94RXQH3wtiwIJhKNndGwGXGEQnZEZZVowc2ICpaXnpaI0AhSBQ/XTN1OYI2swNLhM2ew
-         wVVg==
+        b=BISon6doD6ZQeGPCGY3yrlKn8Q9unepWTsBEqoqBHQ6ei/b+6Sl6SIuYjhMbN0N3c7
+         v21CfLqrh3o/2PzbHRryHzum0R0SGG9F6Uc+FqT7O+8MoBdxd4vNgb6M/4+NteWXC8fE
+         bDn4e2niOATV+6EOBrSoIwKDO0eTDwOLka0BJXNqmhhLdWJju3472eJw+hpQjSdDDDwF
+         H4pRSnz9T2FIWe32elNELMCtoNNUyfNDjRjekFl896WTvZP+DfPE8dI7fuMUI8c4ekVY
+         vO3KNMkqACKXlv4weV+jL7YMlUZ0DxF1zidebNFAmi2u6KTmCSjo8Z4TGs14OPmxXS8g
+         MgAw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
          :message-id:from:references:to:subject:dkim-signature;
-        bh=GQpcYyIs6dBhaxIqbwXb8JwMFZPuxTa4HBaDcfLZq28=;
-        b=CGSBSGl72bju1Vo/0lXASBzr4Pq8y9GEfz2+9PgFoopJTqKuKD9xLQZrgLIPtYD6zR
-         yMbUDrDe23s+iAiBNBmVnxgHkrAkYWkJyj+EtQca9rZjqYp2zEvxh0K91K6/BZSljZtv
-         Qnn1rpMxZxfxkm6URoLFEfdXHqQff6JteB2CZOf+yZovZ/9EYZVQCUSg5IHuNYYOEV5b
-         wBC46Ajw8cBZNLIysY1Cn1vr728kFQq+bEm8uZF/D7IZBJ3fIK/j/d+LMCjYViX4rb+B
-         in7GBPOci6dSp5ciMet3jzyC6sLjrr32I55IZCHpJF2v566Jci6uYZ3+cup++vaRdapJ
-         NRPA==
+        bh=zUJJLuLH2B8vD9jiO5n3naJXQx6TK1Lz+NHOhom511Y=;
+        b=Mp7aOltYjVu4p+m/J9bmMyovuuQGz84SbSYlS8wBDEHD7gAr6tTCqfj/itPPGPpnwX
+         5i1XmxQGG2xbPyDTCmzCVesBwH0hTBwQJKK4ROFVm4Jxm5lCxEMXRFmAJK78kUEq8H3d
+         v0P/MuVRCv8a9Bs5cX/pp7GGdjBjxlbtf0vJgrp1adQfF+lLJcCs7FXMebrJlDP1/DEX
+         zRmSkT/CrdMK7elzbiBFqW93cMAg48MeaTIhPsJabhjXHWdHnJfMvve03SM8Tt4QZpPr
+         8JR5HYeaOUQHM6fCigUd63JIAY+iI9zi3ETZifRhRRljVKcMkIj8i05tUkiDRq8CUB+Y
+         crnQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="BDQ+bM/d";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@linaro.org header.s=google header.b=aV+YIUyQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 22si333740ybc.413.2020.10.19.09.13.15
+        by mx.google.com with ESMTPS id s63si301514ybb.335.2020.10.19.08.42.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Oct 2020 09:13:16 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Oct 2020 08:42:01 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="BDQ+bM/d";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34312 helo=lists1p.gnu.org)
+       dkim=pass header.i=@linaro.org header.s=google header.b=aV+YIUyQ;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59178 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUXmd-0002i4-EQ
-	for alex.bennee@linaro.org; Mon, 19 Oct 2020 12:13:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56894)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kUXIP-0000wP-69
+	for alex.bennee@linaro.org; Mon, 19 Oct 2020 11:42:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48174)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUXmL-0002c0-VZ
- for qemu-arm@nongnu.org; Mon, 19 Oct 2020 12:12:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:51855)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUXmH-0002li-NC
- for qemu-arm@nongnu.org; Mon, 19 Oct 2020 12:12:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603123972;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GQpcYyIs6dBhaxIqbwXb8JwMFZPuxTa4HBaDcfLZq28=;
- b=BDQ+bM/dpC7zmVoJZWlBfOsUihLuJc9/Jm/mjRHwyAYAcwWYLnq+UnQD5ctb3Vl9BSZEoj
- BHiLemYSQWENDwP6I9GmLdxWJbEqcZ0U+4T9W9QYSiFBCOjfh1c5p3NGeDWy6PpOlxPuf5
- EAlYoUi2iAqD/l6MheQGVwjFqpppjiY=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-474-mQ2tddmwMSmNtTsZTugByw-1; Mon, 19 Oct 2020 12:12:49 -0400
-X-MC-Unique: mQ2tddmwMSmNtTsZTugByw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
- [10.5.11.13])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 452331800D41;
- Mon, 19 Oct 2020 16:12:46 +0000 (UTC)
-Received: from thuth.remote.csb (dhcp-192-238.str.redhat.com [10.33.192.238])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BE9CB6EF5B;
- Mon, 19 Oct 2020 16:12:44 +0000 (UTC)
-Subject: Re: [PATCH] hw/arm/nseries: Fix loading kernel image on n8x0 machines
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kUXGX-0007qf-CI
+ for qemu-devel@nongnu.org; Mon, 19 Oct 2020 11:40:05 -0400
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444]:37864)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1kUXGV-0006Hp-5N
+ for qemu-devel@nongnu.org; Mon, 19 Oct 2020 11:40:05 -0400
+Received: by mail-pf1-x444.google.com with SMTP id 144so173677pfb.4
+ for <qemu-devel@nongnu.org>; Mon, 19 Oct 2020 08:40:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=subject:to:references:from:message-id:date:user-agent:mime-version
+ :in-reply-to:content-language:content-transfer-encoding;
+ bh=zUJJLuLH2B8vD9jiO5n3naJXQx6TK1Lz+NHOhom511Y=;
+ b=aV+YIUyQHsUGDZMW7DuIia2rKfJpH1B6DLVQMWgRX2SpOwnW8kczQtOzDKFo95Z7Dz
+ yyz/1ViIsc6WNt7sZfAFFALDuxPhzx+oarGiobKg9Vcf3Lzv6DQYBP6wcaz0iC1jPfw4
+ SjgBQisZ2G0ZCIrooX4y04E7wvU9GUTYURgPzCc0VhFd/fUF55jPQzkUWQepZiINZFSe
+ lHYKkOEisaC5gIkjBpGAY07kJCIrAPKRl3hb2JSM7rZ4rGppuXbd1Yoq1VirQStffMjO
+ 1BUcpG1FcqWfu0bzBRKnLxkHOTkc5e59SHYLY7LXkU7Am3+Bj2DFRhOm/LTzywMpNs/p
+ PZag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:subject:to:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=zUJJLuLH2B8vD9jiO5n3naJXQx6TK1Lz+NHOhom511Y=;
+ b=BJu93fh8+z2nbcsrBf3AMwZpq8XGZ+J/oCAvxjIhafkXdK/8MEF62HmqG75VWM7RjZ
+ v2iNdDJaPcTutcK5e3rO6Kvm1p5ulXiewqawEuoAhV8ZLGzNg6PD4V/jXVxK5WQEfDqO
+ 5pvNNGee4NuE2fJ0PN4XLEzlNU05Nxfg8KBsauPq2IbIKdocQsvxonb02p8TelP40J4T
+ cjAH/2XxTJ7bIQzf0DYlRWTYtFc7RJI/KcWTrHX5qw4w3RnoJC57v4UKqngHH27FgyS8
+ dEJd8g1PCnAqGg2aBJwjwqbxEYv/eMEgpWVuyAG4iWKCAvI7PTeaCJj+ybDSrROgYzeV
+ rzMw==
+X-Gm-Message-State: AOAM532P2ZdNnVRmFztQDwZstuuwy+PrvZu1RUKpvT+2+II07g8SpWsJ
+ y+LqALIDpwwhRiiF1CrjY8Y1SpId7HOIkw==
+X-Received: by 2002:a62:7657:0:b029:152:4d66:dcb with SMTP id
+ r84-20020a6276570000b02901524d660dcbmr182491pfc.74.1603122001215; 
+ Mon, 19 Oct 2020 08:40:01 -0700 (PDT)
+Received: from [192.168.1.11] ([71.212.141.89])
+ by smtp.gmail.com with ESMTPSA id q2sm185475pfu.193.2020.10.19.08.40.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 19 Oct 2020 08:40:00 -0700 (PDT)
+Subject: Re: [PATCH v2 07/10] target/arm: Implement v8.1M low-overhead-loop
+ instructions
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-References: <20201019095148.1602119-1-f4bug@amsat.org>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <918b0dbd-668c-a3ab-0819-cb77be5f32b9@redhat.com>
-Date: Mon, 19 Oct 2020 18:12:43 +0200
+References: <20201019151301.2046-1-peter.maydell@linaro.org>
+ <20201019151301.2046-8-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Message-ID: <862c3804-bcff-eac6-805e-150d4df643cf@linaro.org>
+Date: Mon, 19 Oct 2020 08:39:58 -0700
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <20201019095148.1602119-1-f4bug@amsat.org>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+In-Reply-To: <20201019151301.2046-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=utf-8
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 02:32:01
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x444.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Andrew Jones <drjones@redhat.com>,
- qemu-arm@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: J600ELTQbNoD
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: GQZjwWZzGv6Q
 
-On 19/10/2020 11.51, Philippe Mathieu-Daudé wrote:
-> Commit 7998beb9c2e removed the ram_size initialization in the
-> arm_boot_info structure, however it is used by arm_load_kernel().
+On 10/19/20 8:12 AM, Peter Maydell wrote:
+> v8.1M's "low-overhead-loop" extension has three instructions
+> for looping:
+>  * DLS (start of a do-loop)
+>  * WLS (start of a while-loop)
+>  * LE (end of a loop)
 > 
-> Initialize the field to fix:
+> The loop-start instructions are both simple operations to start a
+> loop whose iteration count (if any) is in LR.  The loop-end
+> instruction handles "decrement iteration count and jump back to loop
+> start"; it also caches the information about the branch back to the
+> start of the loop to improve performance of the branch on subsequent
+> iterations.
 > 
->   $ qemu-system-arm -M n800 -append 'console=ttyS1' \
->     -kernel meego-arm-n8x0-1.0.80.20100712.1431-vmlinuz-2.6.35~rc4-129.1-n8x0
->   qemu-system-arm: kernel 'meego-arm-n8x0-1.0.80.20100712.1431-vmlinuz-2.6.35~rc4-129.1-n8x0' is too large to fit in RAM (kernel size 1964608, RAM size 0)
+> As with the branch-future instructions, the architecture permits an
+> implementation to discard the LO_BRANCH_INFO cache at any time, and
+> QEMU takes the IMPDEF option to never set it in the first place
+> (equivalent to discarding it immediately), because for us a "real"
+> implementation would be unnecessary complexity.
 > 
-> Noticed while running the test introduced in commit 050a82f0c5b
-> ("tests/acceptance: Add a test for the N800 and N810 arm machines").
+> (This implementation only provides the simple looping constructs; the
+> vector extension MVE (Helium) adds some extra variants to handle
+> looping across vectors.  We'll add those later when we implement
+> MVE.)
 > 
-> Fixes: 7998beb9c2e ("arm/nseries: use memdev for RAM")
-> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  hw/arm/nseries.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-> index e48092ca047..76fd7fe9854 100644
-> --- a/hw/arm/nseries.c
-> +++ b/hw/arm/nseries.c
-> @@ -1318,6 +1318,7 @@ static void n8x0_init(MachineState *machine,
->          g_free(sz);
->          exit(EXIT_FAILURE);
->      }
-> +    binfo->ram_size = machine->ram_size;
->  
->      memory_region_add_subregion(get_system_memory(), OMAP2_Q2_BASE,
->                                  machine->ram);
-> 
+>  target/arm/t32.decode  |  8 ++++
+>  target/arm/translate.c | 93 +++++++++++++++++++++++++++++++++++++++++-
+>  2 files changed, 99 insertions(+), 2 deletions(-)
 
-Fixes the test in "make check-acceptance" for me:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-Tested-by: Thomas Huth <thuth@redhat.com>
+r~
 

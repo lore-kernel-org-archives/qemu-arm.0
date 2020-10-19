@@ -1,100 +1,95 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4133534lfa;
-        Mon, 19 Oct 2020 12:08:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwBXBA2r7dllOS59Uc7DIo3YRWWa1T/5eJ0Q10FM/mFuQgtQ4FheaEuHYk/KVgcstX1epK9
-X-Received: by 2002:a25:2155:: with SMTP id h82mr1027046ybh.321.1603134501183;
-        Mon, 19 Oct 2020 12:08:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603134501; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4151649lfa;
+        Mon, 19 Oct 2020 12:37:35 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJygb019bK9PLlzBsTc7C/MloE5buqvANDVxLN5zRLIlEQj/zlhFIt1/yLbNdW7n4n+fXr1H
+X-Received: by 2002:a25:73ce:: with SMTP id o197mr1275118ybc.462.1603136253737;
+        Mon, 19 Oct 2020 12:37:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603136253; cv=none;
         d=google.com; s=arc-20160816;
-        b=kg5odFPOxCBDlCePidghdxSKXHTnQtKxEZRxAvnrnnf6GPX7BPKj6W/004O9SkE5Vp
-         HUE/iL6UgtFHSd2/YkYsabQ0nI6B5MDYbUoTyKXWmnYlAH07pqnZsuDiflFMe1BpYaci
-         i1yGMesPCMZ42slxjdMSTWik1XhlyWfSSHz8/fygw95jcbOoF0oMTtmx25DOJmZAsVjI
-         O4QgXxMS8JjH/ej18DxH/J9+akF/77PSjcp5cpQsyFNEAzjWGGBjP47aiN3nC+ilHA6T
-         Iy9OfKsZ+r1Z4iV4XAu1gGR+GRPyaAaypRsTuBqOn23a9Yt22aWNRsOYyiDZLeNXDcg9
-         PbOA==
+        b=foO7V0xHvgRHdHrodCaf/3U3fmXPwTbveCY3IvaJEBAjK0LMr/1C7QTk4FcsjoWENq
+         FyKCJY0p2gxpc5cHHOj3j7ShTiN04DbVphDLt7W1+B+oqM8ayyG34WC0wVMFYcWXhScf
+         a+82sL9/SvFDM3+50kaUy/5naBEmw/n++HpjMDZUjFJm3lGUT4Ej5HUnC9T2pEpRWZQD
+         zvNhh+oapq8vaSZVDYlrLvB6CaGABpaLRB0+HaVweYQx3GTclkQGJOkJ+JWsBiel0o9I
+         wPw0oEPRm3KbdgPaUZ8fTun6DMyBqvuYfcokqxDDyxuEs/Inus6NIcW9QaMTH65uutOX
+         hOYQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=j5pk54uNqONM2yLrMyPPZQokvjsI/4SuiXncS3dHM5Y=;
-        b=mSuxmWFgCSrGClPQpi83mWti61PPd/PHHREncMQqW+W/08p5E3mzXOMHXFkij7hZRo
-         bnSTL/5Bc+eh1Dc/Zht980J0BZuV4Hh7UjcXb3cEgYy/vVMJ2w66y3tVLTEhkxns/EKm
-         vKPiT2fMaWfvofUNhwB0NrGWzUw4Ri2A9qte8+Zi6KeXlgBO7mxObkBk6Sn/hjadVrP0
-         g0vK7KbPQ5rdDYXKyVyLcYjADyKhQYhZAnDDt4b8yLQiWx2lVoAyZiqMeonRnb1JFepo
-         UUMi6s3nOVVm+GmUOxcE4u16pgtwWF5sYrosQ98UDKFYIiIvHVt2sz4cLaas+Zh2P2Yk
-         cUcw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=Uf34+TPp7X6A4oy9aBYdfipDoZufOSNHweGW5LvmJfA=;
+        b=O39pGgNizO7i7oPL/xhj9HCDk0qksl3rBu5j0J8PJH15dr3zdJqhGD1FQkqtkJ3Ioy
+         3lVoqmyVNL7Le5F0C3EleFCNG7NtbKuig/3kefRKsrrU93Jbmyc79i95gjuhqlc1wgJo
+         raHm2JLAI/kZt0h81TeEbmy1rJiHfY4zibILEmvNjoABx+F8icJG0Is38NAiMzr3ob5g
+         /r4QtCT0kU3uh/bICvrpKAadlak1Qs3sMqErNcDY/oEFZRZ2HyagJ4nWxg91m9qaOnc3
+         zqVbuukRMMpLZAiUtQ7F+gAl0I05oCDvANClYTb34OGCTAOLnP87jG70TaKIoNkjRtB9
+         0spw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JRyovOyf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@linaro.org header.s=google header.b=yNBhiyi8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s11si791265ybp.12.2020.10.19.12.08.21
+        by mx.google.com with ESMTPS id x81si841431ybb.120.2020.10.19.12.37.32
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 19 Oct 2020 12:08:21 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 19 Oct 2020 12:37:33 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JRyovOyf;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42240 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=yNBhiyi8;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:43694 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUaW4-0005Rl-JD
-	for alex.bennee@linaro.org; Mon, 19 Oct 2020 15:08:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42756)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kUayJ-0002nR-Uf
+	for alex.bennee@linaro.org; Mon, 19 Oct 2020 15:37:31 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48070)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kUaVh-0005N0-F3
- for qemu-arm@nongnu.org; Mon, 19 Oct 2020 15:07:57 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:40101)
+ id 1kUatI-0001Gx-4y
+ for qemu-devel@nongnu.org; Mon, 19 Oct 2020 15:32:20 -0400
+Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:40759)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kUaVf-0001at-Gb
- for qemu-arm@nongnu.org; Mon, 19 Oct 2020 15:07:56 -0400
-Received: by mail-wr1-x441.google.com with SMTP id h5so922815wrv.7
- for <qemu-arm@nongnu.org>; Mon, 19 Oct 2020 12:07:55 -0700 (PDT)
+ id 1kUatA-0004qH-Qc
+ for qemu-devel@nongnu.org; Mon, 19 Oct 2020 15:32:15 -0400
+Received: by mail-ed1-x542.google.com with SMTP id p13so506802edi.7
+ for <qemu-devel@nongnu.org>; Mon, 19 Oct 2020 12:32:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=j5pk54uNqONM2yLrMyPPZQokvjsI/4SuiXncS3dHM5Y=;
- b=JRyovOyfT4YAXvyMrpgxBi44RMyB/KUuV8+dNF1FhL8c+I8Gocv4zVO9Uh53Z1dJ6T
- eq6jv+kyjvDiMVwUYYwg9TqyzscY47DZPNCI8njyXLLes0ppzoEb/N6NEBLaIZflwZo4
- 1JaGYpa5hq+X3YrKkMm4nDetKq3coo6jMw+kP0HJGL4RX3CL4zioJaSpdRpaDb6VFA/G
- 0gwVIy5h+exWwMXENJmRcRxvMf/Lim8e9ghxz+P7w297R+uuvLl4oU341/FZb6HyiUVA
- 1JineKCTlhRs0Vl8ufVSCe8mZuzW5mmJgiOpSv2Vsmp5INWZy5yJHv/gRU9SgI6qFdkk
- C/0w==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=Uf34+TPp7X6A4oy9aBYdfipDoZufOSNHweGW5LvmJfA=;
+ b=yNBhiyi8HrH75EGlhBhwR90/TIs8uiKJVBE5uZHyQeTBXcHoH+/GkWWhku/v2GdIh0
+ pl0XzLwWI/P8OPtwv2gtcUTFTaWRmx2RROg1IylJJ9K1UNRreoGj3ZkgOuBxHdCQJ+Kl
+ gGyDtrtoCSZUM9I5E8Exvhzk46VnS2W5EhnnqwM0Ljn9CoXM6cb6VqHN14LwuizPM75y
+ ksmy9kzmDJHonENvXchDika8TEnOulVOi2k7QfQZ76vxOFLgSQlShf5fk2OQlQPjMckl
+ a6VhKYKx0S/9PVIwex8VDdSu7A4i3+yFC307qywc2BFAleVz3H8NNyYJW315pLGOAo6P
+ IvzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=j5pk54uNqONM2yLrMyPPZQokvjsI/4SuiXncS3dHM5Y=;
- b=LA/JijByDyj2gXKKm12PLExsQ96DVW9ydyPWbTgK/xwYSewXLmInb+R1kvLvQfRpS2
- y8w+aE9+IB5bTNYT/1LTXx0tv7Exvmjd2F9InAWf70IHsd/t07FNi8oJmZF48I/ma7XS
- g9PoCkKaW7BXBo7EuYfwmFxBo4FyS27dcU01GWG6qbyvFqO76GgI7PYcw7jYxNktqsrJ
- qWC9+iv/YTYjxnvyHS4Wqxre+it65jona2NyFuwe1/SK9NJK4AnDTl+6Q+z0YJ86e4AF
- b+VMHdaAponI9YQRsYGResv9gln1CKHWE2EdgP+2GWY61nkHfiHyf60CE8LjOBkojzC9
- sfHw==
-X-Gm-Message-State: AOAM531z7oNxAqol7JCCzj0bW79NHONASI/EzE0GWLXaxlQELodldZ09
- CpCXBTAdlxvMTHpx95bOGKSOVlCYlVfFiA==
-X-Received: by 2002:a5d:6a4f:: with SMTP id t15mr777519wrw.126.1603134473838; 
- Mon, 19 Oct 2020 12:07:53 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id c18sm833844wrt.10.2020.10.19.12.07.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 19 Oct 2020 12:07:53 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/trace-events: Fix misuse of '0x' prefix with '%d'
- format
-Date: Mon, 19 Oct 2020 20:07:51 +0100
-Message-Id: <20201019190751.24453-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=Uf34+TPp7X6A4oy9aBYdfipDoZufOSNHweGW5LvmJfA=;
+ b=sBUir80ae/4RVeua+Xn5CUhz51bsz2z5GLR8LSur1jxGkIVH1CxraDQFB/N0E6v0LT
+ rI0nNlsv+ICIjHYcnxzbL3zP7IVBm3teIans0MS0hy0Nfl6JwoV1cuG4OJR8Uz+utOsU
+ n7lqfdBWyFB22QG/NBtseNAvOPSEfHe3A0tjZonz+UpUTJkWu7lQTar7UlyxIo5aY8zm
+ YQq3JYNUUK4s1UO6RFSHiHH2YOJVeOXrOgEkBlInFUNEDX3/IU4s//0OCCl09PziuCFK
+ wYsek+bO59ReaMw8BngJWZFW7pRo3b1SCdIsbU1x2nNvAZRe1K952/xLtIZFr42B6jnU
+ FQdw==
+X-Gm-Message-State: AOAM533vD2oJLG8IECeUAndZM08p+kXECb3YKqQlDVQrjopilLmT4Tqp
+ I/gv4ZNnUuXQCfPABtKsX+vHb6rDtVs9n7YvX4QkAQ==
+X-Received: by 2002:aa7:c683:: with SMTP id n3mr1426520edq.146.1603135929335; 
+ Mon, 19 Oct 2020 12:32:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
+References: <20201010135759.437903-1-luc@lmichel.fr>
+ <CAFEAcA-F5WCv6We3V=kCV8vH79ko=KGHYWKLaxNVEd9HjFES3Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA-F5WCv6We3V=kCV8vH79ko=KGHYWKLaxNVEd9HjFES3Q@mail.gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 19 Oct 2020 20:31:58 +0100
+Message-ID: <CAFEAcA9fHTO2f_KdCnFvqhEOwTzOwtMf=EhKY=9S_5twpabaCg@mail.gmail.com>
+Subject: Re: [PATCH v3 00/15] raspi: add the bcm2835 cprman clock manager
+To: Luc Michel <luc@lmichel.fr>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::542;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x542.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -103,47 +98,52 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Eric Auger <eric.auger@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: hW5Gokr4JEny
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Paul Zimmerman <pauldzim@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: XW8aiceqJ2HE
 
-The smmuv3_cmdq_cfgi_ste_range trace event prints decimal values with
-an 0x prefix, which is confusing. We're printing a range of stream IDs
-here, which elsewhere we do in decimal, so use decimal here too and
-just drop the '0x' prefix.
+On Mon, 19 Oct 2020 at 16:45, Peter Maydell <peter.maydell@linaro.org> wrote:
+>
+> On Sat, 10 Oct 2020 at 14:57, Luc Michel <luc@lmichel.fr> wrote:
+> >
+> > v2 -> v3:
+> >   - patch 03: moved clock_new definition to hw/core/clock.c [Phil]
+> >   - patch 03: commit message typo [Clement]
+> >   - patch 10: clarifications around the CM_CTL/CM_DIBV mux registers.
+> >               reg_cm replaced with reg_ctl and reg_div. Add some
+> >               comments for clarity. [Phil]
+> >   - patch 10: fixed update_mux_from_cm not matching the CM_DIV offset
+> >               correctly. [Phil]
+> >   - patch 11: replaced manual bitfield extraction with extract32 [Phil]
+> >   - patch 11: added a visual representation of CM_DIV for clarity [Phil]
+> >   - patch 11: added a missing return in clock_mux_update.
+>
+>
+>
+> Applied to target-arm.next, thanks.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/trace-events | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Dropped again due to segv in 'make check' when running with
+clang sanitizer, which I gather from irc that you're looking
+into.
 
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index c8a4d80f6bd..806e1d89d2b 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -41,7 +41,7 @@ smmuv3_get_cd(uint64_t addr) "CD addr: 0x%"PRIx64
- smmuv3_decode_cd(uint32_t oas) "oas=%d"
- smmuv3_decode_cd_tt(int i, uint32_t tsz, uint64_t ttb, uint32_t granule_sz, bool had) "TT[%d]:tsz:%d ttb:0x%"PRIx64" granule_sz:%d had:%d"
- smmuv3_cmdq_cfgi_ste(int streamid) "streamid =%d"
--smmuv3_cmdq_cfgi_ste_range(int start, int end) "start=0x%d - end=0x%d"
-+smmuv3_cmdq_cfgi_ste_range(int start, int end) "start=%d - end=%d"
- smmuv3_cmdq_cfgi_cd(uint32_t sid) "streamid = %d"
- smmuv3_config_cache_hit(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache HIT for sid %d (hits=%d, misses=%d, hit rate=%d)"
- smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache MISS for sid %d (hits=%d, misses=%d, hit rate=%d)"
--- 
-2.20.1
-
+thanks
+-- PMM

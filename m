@@ -1,115 +1,109 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp811926lfa;
-        Thu, 15 Oct 2020 11:21:33 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnmM+YvII2SBHB4tu2PyEJTe22ufeVYPlFBnhymaG+GyEkxt8a6XhFCrgXT097HGyHvGXm
-X-Received: by 2002:a25:d412:: with SMTP id m18mr7756185ybf.253.1602786093416;
-        Thu, 15 Oct 2020 11:21:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602786093; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3750259lfa;
+        Mon, 19 Oct 2020 03:45:03 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxyQYwITEsgNVO0JkUKJ2m1H1gYl12bq+iTl6B+kqr8G5DdAPByTX2Y8+PgxIOk1j5dc8aT
+X-Received: by 2002:a25:df06:: with SMTP id w6mr20181334ybg.485.1603104302886;
+        Mon, 19 Oct 2020 03:45:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603104302; cv=none;
         d=google.com; s=arc-20160816;
-        b=K++30T9EaZYGKfA/zUCZhVF3f1Z3hFhJFHYqCm2WE0U3Lieb42kuL+daeyCrN5Rm0k
-         Wrsi795mkhMMDDj+b7k4jD0iqDtBhAccV+Be0eegR4sAKkrJ6yHAhstRexjGusNNw7Mx
-         o2cJZ/8YleFhEy40XklIMaf09P0baeuhgH4oSUhCPVMPyAAdGy2GEZe6pHP7jwZcDhGa
-         OHa4hsXjbgcB4dFFOympZ+0/AHDNy7SQiPhgCyj4KWtWJ3f1yuODLbExjWa/UaOl26eh
-         seMx9lA+3kI3eYd1uQaVg3PESDb297sUO0lS6c3jOgvDnXENQ2j1S7BMsfRYp+DEBHgI
-         4jvg==
+        b=VK2XWXeZmoWr6zU60QofmEcF8LHbOCnLLISxK0QkdlJYYI2KtzEp0dZxGqduZB1Dgx
+         mF6UZ3NYOp4hbt7JiflzS56iHqtVgWFK3UnOF5iL85ZfaA6FGS4LFzLna1Icbu4s5KpV
+         UIBy18cPHFUkdbC0YEDo2c1ufA+2EnSB8RVO0hbSs/NWszlfLVYRGb01U/oQ3GnrVTAB
+         +exfWzokQd1B0qonx2DXsGJWFUbucFjOMqpD7NkWnRHV4vYadwCkKL+2GjxbcbYr1LSC
+         MJRwcGYK6ujX+Kkmzq9CBibhYvCUn17ULaWYGKx++GOMREXKq3YQQjKa+FSy6cnfQXUt
+         TKKw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=yqQR97izdfxu1MtO/d3QJBJlyzmjifyUoAYszApGct4=;
-        b=WodnEGD/eO2nm+I/RUFzDl6y+6k9ZQROtUYHi2sFm4DZ5/eLQe0m7ZF49Dckuorujm
-         2CRXd8x2ZT/GmWjhhEcoZ31naODXMeknohzFCOPlYxjTjYOqolpFawdYX3cudKL7f10i
-         3iRiO4ltrdBW8zCh9reMcLGSoo9ntETsdnqnaPnberQSNwbo9rZ3ph7ELtebuNlhPqqE
-         oO6YLWLGHzlE1cRW1eyA0zagGtv8DJ33NrH0pccKbCnvmpIuE5yC9VuDgetvj30+HS1U
-         GlzPCFbNTvctjLVm+y2k025pA1DN/11dHcSz/q+p6q4lizO3MJhz261kozt4+ywkFanI
-         UM/w==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :dkim-signature;
+        bh=EBg7yTumPavB1ZmFZrCmAuxjArpJraj3MHMjrjoNE0Q=;
+        b=RuzerxcatVJSYtqfZL7ZFFsMKWeT4AC0gHEC6MkGnL3HbM8S38q20ZCQspvSFdzZqP
+         NJpV1AEoYrnUrH292hgQWwBynfSBFu1z1jW0PA36jmsRl2h/jGOk2EauQ6Hm70Yq5WrE
+         c0DIiIVUY5YzVGCUmMq3bXHF6q2rBsO868Qo0xkDHMagIj9b3sfLvEsb56aEcB+RAK0j
+         TJKRemxmnJEE/YdFi+vZEkLQr9iZsHPCqiOj/E61k1gbTjsduilzlKGGk7nHh+dKvXCa
+         6yjdzsDSkdZPhH8kPXoTojauu9uNja5QFmhtv6J6PjVQk8F0ZRyVnlFPCMygtUqHioK2
+         0fyg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E04ckrM9;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hifA8KyX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x7si3430427ybr.491.2020.10.15.11.21.33
+        by mx.google.com with ESMTPS id l132si9939463ybc.400.2020.10.19.03.45.02
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Oct 2020 11:21:33 -0700 (PDT)
+        Mon, 19 Oct 2020 03:45:02 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=E04ckrM9;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=hifA8KyX;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:59790 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:59998 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kT7sa-0006KJ-Pa
-	for alex.bennee@linaro.org; Thu, 15 Oct 2020 14:21:32 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:35724)
+	id 1kUSf0-00088e-8k
+	for alex.bennee@linaro.org; Mon, 19 Oct 2020 06:45:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:34826)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kT7ni-0003e5-2u; Thu, 15 Oct 2020 14:16:30 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:54849)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kT7ng-0003fE-7T; Thu, 15 Oct 2020 14:16:29 -0400
-Received: by mail-wm1-x342.google.com with SMTP id p15so77272wmi.4;
- Thu, 15 Oct 2020 11:16:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=yqQR97izdfxu1MtO/d3QJBJlyzmjifyUoAYszApGct4=;
- b=E04ckrM9iy0XRNxQe+ArtpR2J0ZjhIGYQf+c1+aPE044xGjNPs1EwWDTvGHT/3pN9b
- ugM8ezDJmOXC6jAMJcqrrQFp42vOB+/ywvJ/FY+q87KtcWD1Pu7A9Gyv9vn1RXwmqWrg
- Yy7zoRLEpWxyezlBAgDNBR3I18HJOFRcjlGoAVQ3sntXJGqMJSrHeS+8hUipdfKuDl8B
- QxPeNGVGrE5WkUJaElejupf2qTGd+BVHPzZGLHXhkA+Pd6Qu/I94CuoxsK0QcsSz8J1A
- PUtPdIbXGUKgzPSR53/GFoEo5mKW+W8Ss8dRgWOnl/mzR+DZwq7eEB3oXFDzN53XPuHr
- PHKA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=yqQR97izdfxu1MtO/d3QJBJlyzmjifyUoAYszApGct4=;
- b=F2iY3fh//qU9MjleiSWK4YcXi4zN0/6tS3puJoVpHSNqe6UJ4TSNo3fj5eznto+4vi
- 8JfOVojP3q8Wbxy11MDoDE9CbRZbXnuZXc7jv4mq6UNPHbLgIdAb+ZXOHhNZTxY98hoB
- 3XmJmqDnEwltKjQutVBRCJrAoLiO+0oz13Ed60WvWxYkfuC58u2ukuItvlcbfP/UjqEh
- +HMvnDtpMrLulyopG6sTC6CEOqQoKBvij5/A7muxEmTQBnBjsUAvt4KhKgP2CdhJqv3Q
- p81EOuZMw8bsqOszHOOGYZh2kIFAMDMV+Q2U8HXrAG/uM0XnA9KPpf2qbFxYtnxkiI5w
- EsDA==
-X-Gm-Message-State: AOAM53085EtoOgIsNAsv+QlLRWvrVyw+MOWnlRCJZPOatC0JYAJrX4By
- haw3UvuJtE3eggyNeUooNso=
-X-Received: by 2002:a1c:4e05:: with SMTP id g5mr78945wmh.162.1602785786188;
- Thu, 15 Oct 2020 11:16:26 -0700 (PDT)
-Received: from [192.168.1.36] (106.red-83-59-162.dynamicip.rima-tde.net.
- [83.59.162.106])
- by smtp.gmail.com with ESMTPSA id q9sm77297wrd.57.2020.10.15.11.16.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Oct 2020 11:16:25 -0700 (PDT)
-Subject: Re: [PATCH] ssi: Display chip select polarity in monitor 'info qtree'
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-To: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>
-References: <20200927091946.65491-1-f4bug@amsat.org>
- <290a4128-dd09-7f05-1f2d-0a0f607de28b@amsat.org>
-Message-ID: <d3c12ed9-9a7c-ff67-e8fa-c290ff396726@amsat.org>
-Date: Thu, 15 Oct 2020 20:16:24 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1kUSe8-0007g2-Fa
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2020 06:44:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:59182)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <eperezma@redhat.com>)
+ id 1kUSe4-0000oq-LG
+ for qemu-arm@nongnu.org; Mon, 19 Oct 2020 06:44:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603104238;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=EBg7yTumPavB1ZmFZrCmAuxjArpJraj3MHMjrjoNE0Q=;
+ b=hifA8KyXsiz5/m3pnBFbLCb4B5yoQ21pwn+4TQ1gH78L8DKGN0BnfsMT7Eo6omUdUsM+s7
+ Ix/3ohEymj71OxucG4CoVJ5jr0pZkxZJN+HRChOCHJVTmfFfwtQqZMArN42TKpQz/1FxC1
+ s5ockycSXp0966Yk1FLVrHDLK0IPspY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-371-LVCax-pWNSWKgy8R8hWnxA-1; Mon, 19 Oct 2020 06:43:57 -0400
+X-MC-Unique: LVCax-pWNSWKgy8R8hWnxA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 53BCD802B4C;
+ Mon, 19 Oct 2020 10:43:55 +0000 (UTC)
+Received: from eperezma.remote.csb (ovpn-113-59.ams2.redhat.com [10.36.113.59])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 335C610013C4;
+ Mon, 19 Oct 2020 10:43:51 +0000 (UTC)
+From: =?UTF-8?q?Eugenio=20P=C3=A9rez?= <eperezma@redhat.com>
+To: qemu-devel@nongnu.org, Peter Xu <peterx@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v2 1/5] memory: Rename memory_region_notify_one to
+ memory_region_notify_iommu_one
+Date: Mon, 19 Oct 2020 12:43:28 +0200
+Message-Id: <20201019104332.22033-2-eperezma@redhat.com>
+In-Reply-To: <20201019104332.22033-1-eperezma@redhat.com>
+References: <20201019104332.22033-1-eperezma@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <290a4128-dd09-7f05-1f2d-0a0f607de28b@amsat.org>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eperezma@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=eperezma@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/19 01:44:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.248,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.248, NICE_REPLY_A=-1.019,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -122,96 +116,138 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: "Edgar E . Iglesias" <edgar.iglesias@xilinx.com>, qemu-arm@nongnu.org,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Alistair Francis <alistair@alistair23.me>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Yan Zhao <yan.y.zhao@intel.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, qemu-ppc@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, Eric Auger <eric.auger@redhat.com>,
+ qemu-arm@nongnu.org,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ Avi Kivity <avi@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson <rth@twiddle.net>,
+ David Gibson <david@gibson.dropbear.id.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: e0pknr0DNCbc
+X-TUID: h8WmQoy3xnc5
 
-Cc'ing Markus for "Monitor" tree.
+Previous name didn't reflect the iommu operation.
 
-On 10/5/20 9:44 AM, Philippe Mathieu-Daudé wrote:
-> Hi Peter,
-> 
-> Can you take this patch via your qemu-arm tree please?
-> (most of SPI boards are ARM based)
-> 
-> On 9/27/20 11:19 AM, Philippe Mathieu-Daudé wrote:
->> It is sometime useful to verify a device chip select polarity
->> on a SPI bus. Since we have this information available, display
->> it in the 'info qtree' monitor output:
->>
->>    $ qemu-system-arm -M lm3s6965evb -monitor stdio -S
->>    (qemu) info qtree
->>    [...]
->>    dev: pl022, id ""
->>      gpio-out "sysbus-irq" 1
->>      mmio 0000000040008000/0000000000001000
->>      bus: ssi
->>        type SSI
->>        dev: ssd0323, id ""
->>          gpio-in "" 1
->>          gpio-in "ssi-gpio-cs" 1
->>          chip select polarity: high           <---
->>        dev: ssi-sd, id ""
->>          gpio-in "ssi-gpio-cs" 1
->>          chip select polarity: low            <---
->>          bus: sd-bus
->>            type sd-bus
->>            dev: sd-card, id ""
->>              spec_version = 2 (0x2)
->>              drive = "sd0"
->>              spi = true
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->>   hw/ssi/ssi.c | 22 ++++++++++++++++++++++
->>   1 file changed, 22 insertions(+)
->>
->> diff --git a/hw/ssi/ssi.c b/hw/ssi/ssi.c
->> index 4278d0e4440..4c9f8d66d23 100644
->> --- a/hw/ssi/ssi.c
->> +++ b/hw/ssi/ssi.c
->> @@ -17,6 +17,7 @@
->>   #include "migration/vmstate.h"
->>   #include "qemu/module.h"
->>   #include "qapi/error.h"
->> +#include "monitor/monitor.h"
->>   #include "qom/object.h"
->>   
->>   struct SSIBus {
->> @@ -26,10 +27,31 @@ struct SSIBus {
->>   #define TYPE_SSI_BUS "SSI"
->>   OBJECT_DECLARE_SIMPLE_TYPE(SSIBus, SSI_BUS)
->>   
->> +static void ssi_print_dev(Monitor *mon, DeviceState *dev, int indent)
->> +{
->> +    static const char *const polarity_s[] = {
->> +        [SSI_CS_NONE] = "unknown",
->> +        [SSI_CS_LOW]  = "low",
->> +        [SSI_CS_HIGH] = "high"
->> +    };
->> +    SSISlaveClass *ssc = SSI_SLAVE_GET_CLASS(dev);
->> +
->> +    monitor_printf(mon, "%*schip select polarity: %s\n",
->> +                   indent, "", polarity_s[ssc->cs_polarity]);
->> +}
->> +
->> +static void ssi_bus_class_init(ObjectClass *klass, void *data)
->> +{
->> +    BusClass *k = BUS_CLASS(klass);
->> +
->> +    k->print_dev = ssi_print_dev;
->> +}
->> +
->>   static const TypeInfo ssi_bus_info = {
->>       .name = TYPE_SSI_BUS,
->>       .parent = TYPE_BUS,
->>       .instance_size = sizeof(SSIBus),
->> +    .class_init = ssi_bus_class_init,
->>   };
->>   
->>   static void ssi_cs_default(void *opaque, int n, int level)
->>
-> 
+Signed-off-by: Eugenio Pérez <eperezma@redhat.com>
+Reviewed-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: David Gibson <david@gibson.dropbear.id.au>
+Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+---
+ include/exec/memory.h | 6 +++---
+ hw/arm/smmu-common.c  | 2 +-
+ hw/arm/smmuv3.c       | 2 +-
+ hw/i386/intel_iommu.c | 4 ++--
+ softmmu/memory.c      | 6 +++---
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 622207bde1..ac6bca1ba0 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -221,7 +221,7 @@ enum IOMMUMemoryRegionAttr {
+  * The IOMMU implementation must use the IOMMU notifier infrastructure
+  * to report whenever mappings are changed, by calling
+  * memory_region_notify_iommu() (or, if necessary, by calling
+- * memory_region_notify_one() for each registered notifier).
++ * memory_region_notify_iommu_one() for each registered notifier).
+  *
+  * Conceptually an IOMMU provides a mapping from input address
+  * to an output TLB entry. If the IOMMU is aware of memory transaction
+@@ -1300,7 +1300,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
+                                 IOMMUTLBEntry entry);
+ 
+ /**
+- * memory_region_notify_one: notify a change in an IOMMU translation
++ * memory_region_notify_iommu_one: notify a change in an IOMMU translation
+  *                           entry to a single notifier
+  *
+  * This works just like memory_region_notify_iommu(), but it only
+@@ -1311,7 +1311,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
+  *         replaces all old entries for the same virtual I/O address range.
+  *         Deleted entries have .@perm == 0.
+  */
+-void memory_region_notify_one(IOMMUNotifier *notifier,
++void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
+                               IOMMUTLBEntry *entry);
+ 
+ /**
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 3838db1395..88d2c454f0 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -472,7 +472,7 @@ static void smmu_unmap_notifier_range(IOMMUNotifier *n)
+     entry.perm = IOMMU_NONE;
+     entry.addr_mask = n->end - n->start;
+ 
+-    memory_region_notify_one(n, &entry);
++    memory_region_notify_iommu_one(n, &entry);
+ }
+ 
+ /* Unmap all notifiers attached to @mr */
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 0122700e72..0a893ae918 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -827,7 +827,7 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+     entry.addr_mask = num_pages * (1 << granule) - 1;
+     entry.perm = IOMMU_NONE;
+ 
+-    memory_region_notify_one(n, &entry);
++    memory_region_notify_iommu_one(n, &entry);
+ }
+ 
+ /* invalidate an asid/iova range tuple in all mr's */
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 749eb6ad63..56bab589d4 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -3497,7 +3497,7 @@ static void vtd_address_space_unmap(VTDAddressSpace *as, IOMMUNotifier *n)
+         /* This field is meaningless for unmap */
+         entry.translated_addr = 0;
+ 
+-        memory_region_notify_one(n, &entry);
++        memory_region_notify_iommu_one(n, &entry);
+ 
+         start += mask;
+         remain -= mask;
+@@ -3535,7 +3535,7 @@ static void vtd_address_space_refresh_all(IntelIOMMUState *s)
+ 
+ static int vtd_replay_hook(IOMMUTLBEntry *entry, void *private)
+ {
+-    memory_region_notify_one((IOMMUNotifier *)private, entry);
++    memory_region_notify_iommu_one((IOMMUNotifier *)private, entry);
+     return 0;
+ }
+ 
+diff --git a/softmmu/memory.c b/softmmu/memory.c
+index 403ff3abc9..f37a4569ac 100644
+--- a/softmmu/memory.c
++++ b/softmmu/memory.c
+@@ -1905,8 +1905,8 @@ void memory_region_unregister_iommu_notifier(MemoryRegion *mr,
+     memory_region_update_iommu_notify_flags(iommu_mr, NULL);
+ }
+ 
+-void memory_region_notify_one(IOMMUNotifier *notifier,
+-                              IOMMUTLBEntry *entry)
++void memory_region_notify_iommu_one(IOMMUNotifier *notifier,
++                                    IOMMUTLBEntry *entry)
+ {
+     IOMMUNotifierFlag request_flags;
+     hwaddr entry_end = entry->iova + entry->addr_mask;
+@@ -1942,7 +1942,7 @@ void memory_region_notify_iommu(IOMMUMemoryRegion *iommu_mr,
+ 
+     IOMMU_NOTIFIER_FOREACH(iommu_notifier, iommu_mr) {
+         if (iommu_notifier->iommu_idx == iommu_idx) {
+-            memory_region_notify_one(iommu_notifier, &entry);
++            memory_region_notify_iommu_one(iommu_notifier, &entry);
+         }
+     }
+ }
+-- 
+2.18.1
+

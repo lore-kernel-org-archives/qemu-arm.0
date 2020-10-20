@@ -1,63 +1,62 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4784017lfa;
-        Tue, 20 Oct 2020 06:21:56 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJy/xsZHzj1ILcb1ioJlGQp3Kg/lyjWZ9P6Y4SLs+i4g17RPn9HhheTS37ST6tku1hfGG4GB
-X-Received: by 2002:a25:b19f:: with SMTP id h31mr3683515ybj.112.1603200115996;
-        Tue, 20 Oct 2020 06:21:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603200115; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4784153lfa;
+        Tue, 20 Oct 2020 06:22:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzzJ7ilpxGzXOlgoanas8vdeQ8+l+nkVlri4vYer6bW3aYOohTWVkZVnoLbeHFkjfixuLbM
+X-Received: by 2002:a25:7c5:: with SMTP id 188mr3918481ybh.131.1603200126326;
+        Tue, 20 Oct 2020 06:22:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603200126; cv=none;
         d=google.com; s=arc-20160816;
-        b=duIpOdBMYJTcMMhn2wGBYI3q7N+s8MDktTd78q4ob8XcuC19ZlVH8umw1jej9vlZRz
-         Kqa4PEZ2DH6WKf08VC+tRllYiHo6Tvb5stvlS+y81T4xDz89KlugZdT5/9OrSsH9unvb
-         60KuRfKbyfmymmT0B/39j6TyfPQDNCvNCeGvy6e4kQ5YShpD3op6GwhG+Q5Y2gB1qKkA
-         zIutF0YzwdtgDizf3A1NMoZg+I/2ghf8JMlQTfUL01gEYZ9X4sw/hHl+9dq/fqgDAZWE
-         W8RMBgenT/WMj/cVE7XqOS2KnnAI6dV03zZny7yqrZOVXMyEUTkalZzK78qs8bTzVtkn
-         GXOw==
+        b=wAN55/zjslvL/m7Jup6itfUhzkm94wjL1g0m3ktjIh0elURr9JBJXgARLRT2IYR6Vi
+         pXy69D34SC2YB1z1wqVW7B1V8RzqgltjpqFBtTeVVLoYFotyML+89gt3FrhYU31SQO3/
+         WvrNa+lhxcVdUlueQZHLgrqpysfcGkPmklcYbXiErgH4hrPpC70PF4WUzSjUh+Cb38GQ
+         eNKDSF1cue1pBlNLn1ZIgruAiyT4HkwaoYJ8LsQFL6aC1FyNFovwYZ8M8mIY7B/kyjQo
+         o2S0EB5DvbAY+zJ/jWctp64ikVSl+PFJSgjTbWR5qkJ69iiVBa63bJ6XHqVsivlmahjZ
+         oSZg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=e1LJtuV9P59olwkEcpToTx59AeT+42JOFpAOO2/fjBU=;
-        b=OgZYB4gu4wBCRFnnS2YEtFSbnIOdRmp/ZqKAQZM+Upqhac5gV90QlqOZUXEZGLCuez
-         K9UrS23kwsaR0DZvB7DdqkXixrKXNuPXwzfg2rMRch+qTUMDHn9ttsRa+HHbw4SkdwXI
-         VhFI5slPig9WMJWpByv6HPsrldV7YP20JNdMijXTDsdJatXGBYqRMup4QRkrGhg5K6OG
-         fXLyAqpOISvi4v36z76iLTEm00NpG8OCM1pvyesItpA4fqCw0LGXVFCmKNtNPNSoQnlU
-         xYMgdQDY+8iQTyrF2kcDxgghI+JaceIWOmgRWVEv+Xe3bZTlg4obaX9W4NT5uIOAuclD
-         EqbA==
+        bh=iL7MCbwqGVoU1q+dcPxA2igQwOuVu+H+71SnaBwX7Sw=;
+        b=XzHx/BnrZrMy2hYGhPHhzEB44KMBbyenkJaXpC0FfPcraIe3Oikas945cUODNhKhxR
+         2+E/BlIqzmRK9Jm+tON51/DdVfIs+EQLB7hpvI0WJQl2gnWD23gnAJukqpNY0jvdBNv6
+         rzykaOMPjaoBWs7EwxVfAHkTSiuysl1T0AK0tNAf2PZ2obD4Ca+8AAmOMupGFfhUVMDR
+         VL7cZjNDEk+i//UYTUWbPuHDFKr+5Ft5t8Q1c3dbxLQc9M5EndnoHG+RjAtFJNRzp/1k
+         +ILzjnzeHCZl1BQ8mSeOFEKCmfB9ohWXc252/vOIcA4fAYfdnVRmQIwIhJEpD2ZK0HG0
+         pdpQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n184si1881637ybn.259.2020.10.20.06.21.55
+        by mx.google.com with ESMTPS id e34si1512717ybi.386.2020.10.20.06.22.06
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Oct 2020 06:21:55 -0700 (PDT)
+        Tue, 20 Oct 2020 06:22:06 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:37164 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38284 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUraN-00008U-Ct
-	for alex.bennee@linaro.org; Tue, 20 Oct 2020 09:21:55 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50586)
+	id 1kUraX-0000ax-IX
+	for alex.bennee@linaro.org; Tue, 20 Oct 2020 09:22:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50570)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kUrU9-0000N4-5z; Tue, 20 Oct 2020 09:15:29 -0400
-Received: from szxga04-in.huawei.com ([45.249.212.190]:5193 helo=huawei.com)
+ id 1kUrU8-0000M6-JN; Tue, 20 Oct 2020 09:15:29 -0400
+Received: from szxga06-in.huawei.com ([45.249.212.32]:48302 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kUrU0-00076T-Oc; Tue, 20 Oct 2020 09:15:28 -0400
-Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 46BB0DECF2B6B2EFEA11;
- Tue, 20 Oct 2020 21:15:07 +0800 (CST)
-Received: from localhost (10.174.186.67) by DGGEMS411-HUB.china.huawei.com
- (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
+ id 1kUrU0-00076d-Oe; Tue, 20 Oct 2020 09:15:28 -0400
+Received: from DGGEMS407-HUB.china.huawei.com (unknown [172.30.72.58])
+ by Forcepoint Email with ESMTP id 4D201BCECE48456486A5;
+ Tue, 20 Oct 2020 21:15:08 +0800 (CST)
+Received: from localhost (10.174.186.67) by DGGEMS407-HUB.china.huawei.com
+ (10.3.19.207) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
  21:15:00 +0800
 From: Ying Fang <fangying1@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [RFC PATCH v2 03/13] hw/arm/virt: Replace smp_parse with one that
- prefers cores
-Date: Tue, 20 Oct 2020 21:14:30 +0800
-Message-ID: <20201020131440.1090-4-fangying1@huawei.com>
+Subject: [RFC PATCH v2 04/13] device_tree: Add qemu_fdt_add_path
+Date: Tue, 20 Oct 2020 21:14:31 +0800
+Message-ID: <20201020131440.1090-5-fangying1@huawei.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 In-Reply-To: <20201020131440.1090-1-fangying1@huawei.com>
 References: <20201020131440.1090-1-fangying1@huawei.com>
@@ -66,9 +65,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.186.67]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
+Received-SPF: pass client-ip=45.249.212.32; envelope-from=fangying1@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 09:15:07
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 07:04:17
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -93,123 +92,97 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com,
  qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: HJUDTQLPl94Q
+X-TUID: ejeWhbqjkiFn
 
 From: Andrew Jones <drjones@redhat.com>
 
-The virt machine type has never used the CPU topology parameters, other
-than number of online CPUs and max CPUs. When choosing how to allocate
-those CPUs the default has been to assume cores. In preparation for
-using the other CPU topology parameters let's use an smp_parse that
-prefers cores over sockets. We can also enforce the topology matches
-max_cpus check because we have no legacy to preserve.
+qemu_fdt_add_path() works like qemu_fdt_add_subnode(), except
+it also adds any missing parent nodes. We also tweak an error
+message of qemu_fdt_add_subnode().
+
+We'll make use of the new function in a coming patch.
 
 Signed-off-by: Andrew Jones <drjones@redhat.com>
 ---
- hw/arm/virt.c | 76 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 76 insertions(+)
+ device_tree.c                | 45 ++++++++++++++++++++++++++++++++++--
+ include/sysemu/device_tree.h |  1 +
+ 2 files changed, 44 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ea24b576c6..ba902b53ba 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -78,6 +78,8 @@
- #include "hw/virtio/virtio-iommu.h"
- #include "hw/char/pl011.h"
- #include "qemu/guest-random.h"
-+#include "qapi/qmp/qerror.h"
-+#include "sysemu/replay.h"
+diff --git a/device_tree.c b/device_tree.c
+index b335dae707..c080909bb9 100644
+--- a/device_tree.c
++++ b/device_tree.c
+@@ -515,8 +515,8 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
  
- #define DEFINE_VIRT_MACHINE_LATEST(major, minor, latest) \
-     static void virt_##major##_##minor##_class_init(ObjectClass *oc, \
-@@ -2444,6 +2446,79 @@ static int virt_kvm_type(MachineState *ms, const char *type_str)
-     return requested_pa_size > 40 ? requested_pa_size : 0;
+     retval = fdt_add_subnode(fdt, parent, basename);
+     if (retval < 0) {
+-        error_report("FDT: Failed to create subnode %s: %s", name,
+-                     fdt_strerror(retval));
++        error_report("%s: Failed to create subnode %s: %s",
++                     __func__, name, fdt_strerror(retval));
+         exit(1);
+     }
+ 
+@@ -524,6 +524,47 @@ int qemu_fdt_add_subnode(void *fdt, const char *name)
+     return retval;
  }
  
 +/*
-+ * Unlike smp_parse() in hw/core/machine.c, we prefer cores over sockets,
-+ * e.g. '-smp 8' creates 1 socket with 8 cores.  Whereas '-smp 8' with
-+ * hw/core/machine.c's smp_parse() creates 8 sockets, each with 1 core.
-+ * Additionally, we can enforce the topology matches max_cpus check,
-+ * because we have no legacy to preserve.
++ * Like qemu_fdt_add_subnode(), but will add all missing
++ * subnodes in the path.
 + */
-+static void virt_smp_parse(MachineState *ms, QemuOpts *opts)
++int qemu_fdt_add_path(void *fdt, const char *path)
 +{
-+    if (opts) {
-+        unsigned cpus    = qemu_opt_get_number(opts, "cpus", 0);
-+        unsigned sockets = qemu_opt_get_number(opts, "sockets", 0);
-+        unsigned cores   = qemu_opt_get_number(opts, "cores", 0);
-+        unsigned threads = qemu_opt_get_number(opts, "threads", 0);
++    char *dupname, *basename, *p;
++    int parent, retval = -1;
 +
-+        /*
-+         * Compute missing values; prefer cores over sockets and
-+         * sockets over threads.
-+         */
-+        if (cpus == 0 || cores == 0) {
-+            sockets = sockets > 0 ? sockets : 1;
-+            threads = threads > 0 ? threads : 1;
-+            if (cpus == 0) {
-+                cores = cores > 0 ? cores : 1;
-+                cpus = cores * threads * sockets;
-+            } else {
-+                ms->smp.max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
-+                cores = ms->smp.max_cpus / (sockets * threads);
++    if (path[0] != '/') {
++        return retval;
++    }
++
++    parent = fdt_path_offset(fdt, "/");
++    p = dupname = g_strdup(path);
++
++    while (p) {
++        *p = '/';
++        basename = p + 1;
++        p = strchr(p + 1, '/');
++        if (p) {
++            *p = '\0';
++        }
++        retval = fdt_path_offset(fdt, dupname);
++        if (retval < 0 && retval != -FDT_ERR_NOTFOUND) {
++            error_report("%s: Invalid path %s: %s",
++                         __func__, path, fdt_strerror(retval));
++            exit(1);
++        } else if (retval == -FDT_ERR_NOTFOUND) {
++            retval = fdt_add_subnode(fdt, parent, basename);
++            if (retval < 0) {
++                break;
 +            }
-+        } else if (sockets == 0) {
-+            threads = threads > 0 ? threads : 1;
-+            sockets = cpus / (cores * threads);
-+            sockets = sockets > 0 ? sockets : 1;
-+        } else if (threads == 0) {
-+            threads = cpus / (cores * sockets);
-+            threads = threads > 0 ? threads : 1;
-+        } else if (sockets * cores * threads < cpus) {
-+            error_report("cpu topology: "
-+                         "sockets (%u) * cores (%u) * threads (%u) < "
-+                         "smp_cpus (%u)",
-+                         sockets, cores, threads, cpus);
-+            exit(1);
 +        }
-+
-+        ms->smp.max_cpus = qemu_opt_get_number(opts, "maxcpus", cpus);
-+
-+        if (ms->smp.max_cpus < cpus) {
-+            error_report("maxcpus must be equal to or greater than smp");
-+            exit(1);
-+        }
-+
-+        if (sockets * cores * threads != ms->smp.max_cpus) {
-+            error_report("cpu topology: "
-+                         "sockets (%u) * cores (%u) * threads (%u)"
-+                         "!= maxcpus (%u)",
-+                         sockets, cores, threads,
-+                         ms->smp.max_cpus);
-+            exit(1);
-+        }
-+
-+        ms->smp.cpus = cpus;
-+        ms->smp.cores = cores;
-+        ms->smp.threads = threads;
-+        ms->smp.sockets = sockets;
++        parent = retval;
 +    }
 +
-+    if (ms->smp.cpus > 1) {
-+        Error *blocker = NULL;
-+        error_setg(&blocker, QERR_REPLAY_NOT_SUPPORTED, "smp");
-+        replay_add_blocker(blocker);
-+    }
++    g_free(dupname);
++    return retval;
 +}
 +
- static void virt_machine_class_init(ObjectClass *oc, void *data)
+ void qemu_fdt_dumpdtb(void *fdt, int size)
  {
-     MachineClass *mc = MACHINE_CLASS(oc);
-@@ -2469,6 +2544,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
-     mc->cpu_index_to_instance_props = virt_cpu_index_to_props;
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a15");
-     mc->get_default_cpu_node_id = virt_get_default_cpu_node_id;
-+    mc->smp_parse = virt_smp_parse;
-     mc->kvm_type = virt_kvm_type;
-     assert(!mc->get_hotplug_handler);
-     mc->get_hotplug_handler = virt_machine_get_hotplug_handler;
+     const char *dumpdtb = qemu_opt_get(qemu_get_machine_opts(), "dumpdtb");
+diff --git a/include/sysemu/device_tree.h b/include/sysemu/device_tree.h
+index 982c89345f..15fb98af98 100644
+--- a/include/sysemu/device_tree.h
++++ b/include/sysemu/device_tree.h
+@@ -104,6 +104,7 @@ uint32_t qemu_fdt_get_phandle(void *fdt, const char *path);
+ uint32_t qemu_fdt_alloc_phandle(void *fdt);
+ int qemu_fdt_nop_node(void *fdt, const char *node_path);
+ int qemu_fdt_add_subnode(void *fdt, const char *name);
++int qemu_fdt_add_path(void *fdt, const char *path);
+ 
+ #define qemu_fdt_setprop_cells(fdt, node_path, property, ...)                 \
+     do {                                                                      \
 -- 
 2.23.0
 

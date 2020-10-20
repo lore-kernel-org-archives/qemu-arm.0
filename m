@@ -1,80 +1,80 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4867855lfa;
-        Tue, 20 Oct 2020 07:59:25 -0700 (PDT)
-X-Received: by 2002:a17:906:1c50:: with SMTP id l16mr3524571ejg.144.1603205964952;
-        Tue, 20 Oct 2020 07:59:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603205964; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5101238lfa;
+        Tue, 20 Oct 2020 13:09:42 -0700 (PDT)
+X-Received: by 2002:a17:906:1fc7:: with SMTP id e7mr5169312ejt.283.1603224582585;
+        Tue, 20 Oct 2020 13:09:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603224582; cv=none;
         d=google.com; s=arc-20160816;
-        b=L/ENs4SJLlyY0vVyVQjGHOCbXryZ8AMPjQpHqAWjIH4lO8mt6R3G0WvHRVgYMAEvNp
-         5YGzazBdb4poxXv1aEKY21FmZTnCXN+025b6E7MRA4+1mCgTIN/iWbSPdTMgXaR/UAOT
-         HdJOUyLyuA8ljHZBu/m2EnBFNeB5cKlMcn8mTDqc7DW00qmLB8QE2nGfz+g+xzu5bJaJ
-         lV56QqQSyRa59R7aL57fPAdBgvAUDZfxgLe/pTf27DZFL2OcLUWLOMeq202pl9OLIc3c
-         Xzyackv9PamIipBthfhcNsXyQZ4/dRH0enF9jycbjplf6eTQ/4Q+nd/GHwSybxZVhsvo
-         vheA==
+        b=iQWvFl5AS9uFHDnVYZF8FB4n66sSYPOkGzMmsgTWbJ3YKFTWGwoze9O+TotJ/qxZvc
+         JASlBTJ1FxYXdMhkvwgbYRkY28xq3bwfgbJhtNVEQDrmv4A95so0nAbNMOTOjairm9uB
+         pnpZsyyHTYYjhZNj2Fh/OQP8AF956NJO2vrB0WVHN7jNUxDFehtnUGIeEECpKP1lKYLJ
+         s+FhC/NShF3blXwMzSQNPHxNXEB6yrMtaIV5xnk/xS4lCt3I/4ce09deJ1xql88YS6Gx
+         yrb/pSRHrcfRJMTZSiG9WSAFa5QoOugO62pDgWW/9kOzT10N0/coLTRnwiJ/6YxzvfLf
+         VlFA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=7bkquVpcEoY4NqgXc3bLKM+R+Z+x8Z9TEoN7lITSYec=;
-        b=orz8LpTW5vUDzQHX6XKlM+QmCf9rP2ZB+tpyoTROITz4u/WHA7B81nzDWskRFHzVko
-         52GGvCkqPeHORcVGX56F+fwQznc0yhDqvaXkY6jhbClHv5IEfvNj8T72VZj7SVETq2zx
-         IVpcNTM0a/80uCvuqrPXOYrIec60fDCrmzNbaZumNSg8r0/GzLkIiqJQKyvRwZIRPT+d
-         xtNotsO0XpplaRx/qNiF6msURLP5kyavnwtarZd8NwuJTQKGB3l/KGCsZFHLsHpFgmTx
-         LxifGeUdHnte03yJWxct2ZmXGUxnK1Jwbg7RvPR68hgR7GM+SQMzZUf+WqXvL3dTtzey
-         /dhg==
+        bh=Sp1TpqpKZUEUMinzBTWcok5u1j2qfcRRULl9ZfNE/kw=;
+        b=fp6jaGNjAJYRy9bGe80atmtOW8VvnLvp8Tr46HmOeS3y3RlTj0odzCfssW7nyNhX0t
+         yW5jQXq5ooFqB/gU18Edmo3gbJpiJf7GOjcr5HceMlGWzw9wnfdJ6hjP6/rGpjeEFX5b
+         ie+Zik8lnfUkYCGMWp1icJ1f8XDZ9zIeHEuaZXJnhsJ+EUsFoMEo9M8EewcG+fRZVVHd
+         14wU4gOwgHf/ioZGCMbDtT4WvfbSB2ds/rJgJqrZqlZ5T5ZWvKLx/YRHP9Gyaq69kZL/
+         u46jkGG6omnNtXTln4jwhkRDIY0zwAw2l7KnH96vA4m0KDzNIZH6Mx2yeruBBEX7Mzgh
+         RwRw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Wtv8ZrF2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lDmNek6I;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <peter.maydell@linaro.org>
 Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id p27sor1301678ejc.69.2020.10.20.07.59.24
+        by mx.google.com with SMTPS id p26sor2450422edt.25.2020.10.20.13.09.42
         for <alex.bennee@linaro.org>
         (Google Transport Security);
-        Tue, 20 Oct 2020 07:59:24 -0700 (PDT)
+        Tue, 20 Oct 2020 13:09:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=Wtv8ZrF2;
+       dkim=pass header.i=@linaro.org header.s=google header.b=lDmNek6I;
        spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=linaro.org; s=google;
         h=mime-version:references:in-reply-to:from:date:message-id:subject:to
          :cc;
-        bh=7bkquVpcEoY4NqgXc3bLKM+R+Z+x8Z9TEoN7lITSYec=;
-        b=Wtv8ZrF2lwHUaqWYCidG6l9VKHHZXbuD6WHEtoXMw2gbonZbvEgCpl3nkBrEfm3dPp
-         IW61Y0BIZyOruefASV2QiKnc5ULC3HcnF8UOKQSNyTi+jS/mJyR6a9J8Z5uQtYcfkKvD
-         v2EIBI5QQJin5CuYIQCywQopnE5ayB0g9CrhmeBsCxlnWIuHW0dBQzaLqWakRCCCmUja
-         NNZ5SHICQaV1QpqWFGuDSg5I2EKKs715aBVUVt0YbMyko9lzU6kC1T5Tg/A7kMi+/8uL
-         BUrHB/aGbjvu1iP0Cgs+pyOKyCvroyi1Xezo3s8PKHI0V6WqxEMFwqHNTI0DZGiKPjhS
-         ulcg==
+        bh=Sp1TpqpKZUEUMinzBTWcok5u1j2qfcRRULl9ZfNE/kw=;
+        b=lDmNek6IYfLGpJxVhjVEmmU6fLVmWkhdCF+T2OyGYMN4YBLFTAyv91LkIReshRKfac
+         MWIPqAEzytiVMiD8jk4ZYb/dfCwAHhX27JQtH99FQsluFWiN+xesiPi+IRWx9d9KaOrq
+         VyiiAniMuMANVad9oufcQqcN021Ajl+JY50mcUfI4kfWU7uaq1zBrd+kgqNgF0zqWbUa
+         mlnSPEKszY9RKy1fc/WPY4hsEJK1yaa5QlREWsMf94uPG/TXNtmpetN4V+FB/AEw8uhK
+         4xiTnAdhzVAXUO78FY/OmLOlr0qPLJeXtT6+eh0aNbiAmNMyKPBwOluQvl6QjKhM3M23
+         zHGw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
         d=1e100.net; s=20161025;
         h=x-gm-message-state:mime-version:references:in-reply-to:from:date
          :message-id:subject:to:cc;
-        bh=7bkquVpcEoY4NqgXc3bLKM+R+Z+x8Z9TEoN7lITSYec=;
-        b=HeXHPkXxHfCg9fhkwDYt4rMieaVRs7PXot+9rXaoeqXr0KAzGrcD5zuCgFU0DuEyKf
-         KVX+9g5iPc+rHwxDp/UuGH9S/R9xWWUcVFRc5+mid13dBSNLOtzbXnB5G+YeZzc/czVD
-         XP/mzaEdBuz6p5nw7bKofnZtWq49YQp3YcUiEdO409dBhU4H6oSl2xsD/JKrsMRrdjqb
-         JCygRHFNycD5XWuW/wYm4lUN+mVkFv6AB+cJumhLmTW18m1ZValu7f44hBEiJMhWglTs
-         F8nu6EUKcXbFjTyjPntaZ0t9yunQRu0BG+gFv7m1vHTg91yEKsDX6UVwjZjfJGku8phW
-         f2ww==
-X-Gm-Message-State: AOAM530QfTnTiW/Kw7KmREidWQvwXiDnTR3xqG0tEyV1PwSuJJ3bRkBj
-	rP1xcII2swqk/MMRLcTGjsi81GBEVOiS4s8vetAh5P48
-X-Google-Smtp-Source: ABdhPJwiIWP4ZgP7rw2DvquwHSxNsrNS//2UKedOwf510yYoamEB8jw+BsyXTF7pZvQflUu6FcOQ7tXdpSCDmDX+XLo=
-X-Received: by 2002:a17:906:c7d9:: with SMTP id dc25mr3537819ejb.482.1603205964676;
- Tue, 20 Oct 2020 07:59:24 -0700 (PDT)
+        bh=Sp1TpqpKZUEUMinzBTWcok5u1j2qfcRRULl9ZfNE/kw=;
+        b=LHu9RsHtfTcIWzOPOKEw6HZ2SPhzhifZ9DnbNJv/bOFsC6x9jUOhx4v6kTYU8A7cQ5
+         PJ/lGssOO9x9xG0I7q3fIDZjB6rwtAtLwJh1xVdDY+b4iToFfPF88rHekGEb4fMH8CvP
+         +uJBdkQboDQd+tjJ/ukrSRej/YbLJM/hUYSa69IeEQQRaYTiIMok7tAYCK1erEEqlTq6
+         7zJxResKjHCD7KXvuWo61R2fSFQSDn++/ceVUKtxP+j+mynA+9lCq5zBFRU9/4ppxy/S
+         Xg48K18jlei3PQEu/c2+F5kfGssWsFOil0Ti9FZ08eR4RCE3I9NYt8KrW4gdj8zShEgN
+         9lVg==
+X-Gm-Message-State: AOAM532Di1LcnhXnKgFW3LtggMsOkRz1UaIgKmCJb9mDCMLxGafb3GXh
+	+imNPmIBvIpyh+d7h1kN9y2qCtXCHfWo/1O232Q97mAVM8Us2SUh
+X-Google-Smtp-Source: ABdhPJzXVH4UwDw/CFPjiRlyMeVHwOdmOVc2xI2+0yj2r4gXk2b8Yr3G4lFtLippT4jsaqkb67xuAuBQ9VwXxn39ap0=
+X-Received: by 2002:aa7:d79a:: with SMTP id s26mr4487917edq.251.1603224582227;
+ Tue, 20 Oct 2020 13:09:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <20201016184207.786698-1-richard.henderson@linaro.org>
 In-Reply-To: <20201016184207.786698-1-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Oct 2020 15:59:13 +0100
-Message-ID: <CAFEAcA9PAz0_r0HGqgcmXmFnB_of6f2X_QA4M=yV5WmoonFYbQ@mail.gmail.com>
+Date: Tue, 20 Oct 2020 21:09:30 +0100
+Message-ID: <CAFEAcA9d7h=LCKP7B3G+Wx5CUr41+bY9ziyycGamL0EsTMgxDQ@mail.gmail.com>
 Subject: Re: [PATCH v11 00/12] linux-user: User support for AArch64 BTI
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
 	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
 	Laurent Vivier <laurent@vivier.eu>
 Content-Type: text/plain; charset="UTF-8"
-X-TUID: +jDrKRdLgYYh
+X-TUID: r4VFxWf+ZGmv
 
 On Fri, 16 Oct 2020 at 19:42, Richard Henderson
 <richard.henderson@linaro.org> wrote:
@@ -92,10 +92,34 @@ On Fri, 16 Oct 2020 at 19:42, Richard Henderson
 > Changes from v9:
 >   * Split what is now patch 7 into 3 more (pmm).
 >   * All prerequisites are now upstream.
->
 
+Unfortunately the bti-2 test dumps core (x86-64 Linux host):
 
+make[2]: Entering directory
+'/home/petmay01/linaro/qemu-for-merges/build/all-linux-static/tests/tcg/aarch64-linux-user'
+timeout 60  /home/petmay01/linaro/qemu-for-merges/build/all-linux-static/qemu-aarch64
+-cpu max pauth-5 >  pauth-5.out
+make[2]: Leaving directory
+'/home/petmay01/linaro/qemu-for-merges/build/all-linux-static/tests/tcg/aarch64-linux-user'
+make[2]: Entering directory
+'/home/petmay01/linaro/qemu-for-merges/build/all-linux-static/tests/tcg/aarch64-linux-user'
+timeout 60  /home/petmay01/linaro/qemu-for-merges/build/all-linux-static/qemu-aarch64
+ bti-2 >  bti-2.out
+qemu: uncaught target signal 11 (Segmentation fault) - core dumped
+timeout: the monitored command dumped core
+Segmentation fault
+../Makefile.target:152: recipe for target 'run-bti-2' failed
+make[2]: *** [run-bti-2] Error 139
+make[2]: Leaving directory
+'/home/petmay01/linaro/qemu-for-merges/build/all-linux-static/tests/tcg/aarch64-linux-user'
+/home/petmay01/linaro/qemu-for-merges/tests/tcg/Makefile.qemu:85:
+recipe for target 'run-guest-tests' failed
+make[1]: *** [run-guest-tests] Error 2
+/home/petmay01/linaro/qemu-for-merges/tests/Makefile.include:61:
+recipe for target 'run-tcg-tests-aarch64-linux-user' failed
+make: *** [run-tcg-tests-aarch64-linux-user] Error 2
 
-Applied to target-arm.next, thanks.
+I've dropped the series from the pullreq.
 
+thanks
 -- PMM

@@ -1,62 +1,62 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4783424lfa;
-        Tue, 20 Oct 2020 06:21:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwo5AFWwjGHb6179e7gUGJsAz11mqEJomjZYJgVYOas/3uUNnU1J5SlNhMP/AFusQz9Grir
-X-Received: by 2002:a25:2406:: with SMTP id k6mr4236707ybk.491.1603200074159;
-        Tue, 20 Oct 2020 06:21:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603200074; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4783630lfa;
+        Tue, 20 Oct 2020 06:21:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJww9Q47YJgBkt9jzd8G6Acqts/GiEORml5IgwAkDPYr3h2WoxJjYwGRIq3cJQgJrMdsESf2
+X-Received: by 2002:a25:cbd3:: with SMTP id b202mr4127215ybg.354.1603200089023;
+        Tue, 20 Oct 2020 06:21:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603200089; cv=none;
         d=google.com; s=arc-20160816;
-        b=H14N643HmpFZaBM+0wcCbDOXPzuOXgfNWG6h9HdHAK3WvGwgbv8AfjDHzSKBPZwRcX
-         ss+HWKVCF0Uo+aYbxtFTED0yd8CjZB/V/uohPdXCWnBrq3gS9Is83jzQMqSnzBSexQvK
-         2iH/F4q/nSQbFpFeZEaOcTzfyqVnpTFB36RN4fVodZUQvjJ1MuGHCu+B5wMgYDWxCqkl
-         NHgG4f/ACHDPa8RrQpMLwxr2kAiEq2fGVDkN3COg/WqQ7ViVqTFXSIkHmxW8JtPmRomG
-         vPRKF4LOdb69OpAwK0Ouq1TByfXmzD27yT5AgY3bSd9s46DnemkpsWCB6wJwXxk2jhG/
-         nlCQ==
+        b=Dp/XLxcE0YVKZhC3gHW5v6xNXYwAv43kMH+eaXEeXIJ8N401BF/U1IhVptzYpilmoR
+         iMrARv5bYzTk1rGlGuH3oOjSOSDBTHD5oRfXM303FhtRG8+tDZCV0LxomjxjBaeaGX1B
+         WzWxZCr3DVBRtXfG4LAItzOY05bdOtkidC9EWBri4ZU3MKju48y1CCXVFvW5WU7E+q04
+         T9fXjoJrKGXja1wKjNIL/xpnN7BmMEcyCvmhfXo1RDJtZ+ojqKDV5LKRjfgafEhkB5Rj
+         I9HKOIxd1BU93J9kdAdIuPRdabKrU9OsqQF4UsANVg1Z3LvKfVsgeviTypZushqA3LRk
+         uZAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=yzePIkhbOEpepNFjlTuX7+kbwrvbpVrkAcicqe57K9Q=;
-        b=0A9zk6TsuuZY7jHE4Tpp4O/r11k1lUxVEvhFG5ZxCd7YTxJjkb+SYdFEfkyaah3UHL
-         EmwBRslHCTqxaMalEk3AKQ9q4vN9F6w1NZaC2Bt/1pi82aAucOOXV7G0xJe50gVFBbcG
-         bp8zIkVJOkqCtJPlNKOETXWYOkjpC2RGrH9vCk+wPoDBF8c5QIo787dcBKlGowrAbFjA
-         Xjd3Fkga5MXe3klWVKkxOvdCVJT3P90LZP/jSKuxBrKyR28GywV9mmKPya93v68ZvPHS
-         K7dgjOUpHwCnSdV3hkdsltcMjJcfSJqkVvylqPBguMWIp8f4P5PMkvmKarOE3weg8LLl
-         OLlA==
+        bh=tZ9AkKj3MEdRkKm+xN2xAVaUbFPpSbU4/S54aPIZqZY=;
+        b=dile2EA8sWiXqN1VQQDyek7W8kqo2QR6dY2MHi1RUgvWapQ3a/Cqq/X2aglQth3C9Y
+         sblKbiCA9I0fWx/HjOSM2wO2eHME7HnL+KpdsMB0uZWZlMGYRg+FJPKNX7XHvDGoV62e
+         vnAjehQKUH2VjNvsf3euvGgDORv4x7Mw9Tw+t5NYjOYDQjq87QX9EJpjggsbJrk23h+Y
+         XPo9o29ngVyyzx0rWCncGYBgih11LocLs4lYTLqqEpHRy9yQ170bhkgRxWNCpgBtDiv+
+         MZ9zwSo0AvjFxBzCDg9sOfE6lY1L+X0BnXLCf2g5Cy/uF2PA3bfG1oJy3XMR1WI7OufI
+         rx/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a1si1541481ybn.484.2020.10.20.06.21.13
+        by mx.google.com with ESMTPS id w124si1657111ybe.437.2020.10.20.06.21.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Oct 2020 06:21:14 -0700 (PDT)
+        Tue, 20 Oct 2020 06:21:29 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33952 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:35322 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUrZe-0007Ik-0H
-	for alex.bennee@linaro.org; Tue, 20 Oct 2020 09:21:11 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50528)
+	id 1kUrZw-0007rV-3q
+	for alex.bennee@linaro.org; Tue, 20 Oct 2020 09:21:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50562)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kUrU5-0000H8-6p; Tue, 20 Oct 2020 09:15:25 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:48472 helo=huawei.com)
+ id 1kUrU8-0000LP-8C; Tue, 20 Oct 2020 09:15:28 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5267 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kUrU0-00078C-Gv; Tue, 20 Oct 2020 09:15:24 -0400
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by Forcepoint Email with ESMTP id 0243AF11A9764F7FD849;
- Tue, 20 Oct 2020 21:15:15 +0800 (CST)
-Received: from localhost (10.174.186.67) by DGGEMS403-HUB.china.huawei.com
- (10.3.19.203) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
- 21:15:05 +0800
+ id 1kUrU0-000771-NW; Tue, 20 Oct 2020 09:15:27 -0400
+Received: from DGGEMS410-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id A19F2158F64A3A4CD05C;
+ Tue, 20 Oct 2020 21:15:10 +0800 (CST)
+Received: from localhost (10.174.186.67) by DGGEMS410-HUB.china.huawei.com
+ (10.3.19.210) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
+ 21:15:02 +0800
 From: Ying Fang <fangying1@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [RFC PATCH v2 11/13] hw/arm/virt: add fdt cache information
-Date: Tue, 20 Oct 2020 21:14:38 +0800
-Message-ID: <20201020131440.1090-12-fangying1@huawei.com>
+Subject: [RFC PATCH v2 06/13] hw/arm/virt: DT: add cpu-map
+Date: Tue, 20 Oct 2020 21:14:33 +0800
+Message-ID: <20201020131440.1090-7-fangying1@huawei.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 In-Reply-To: <20201020131440.1090-1-fangying1@huawei.com>
 References: <20201020131440.1090-1-fangying1@huawei.com>
@@ -65,9 +65,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.186.67]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=fangying1@huawei.com;
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=fangying1@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 07:04:17
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 09:15:07
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -93,132 +93,102 @@ Cc: peter.maydell@linaro.org, drjones@redhat.com,
  Ying Fang <fangying1@huawei.com>, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 3kKbpO9Vglje
+X-TUID: zL+ClN7E74TT
 
-Support devicetree CPU cache information descriptions
+From: Andrew Jones <drjones@redhat.com>
 
+Support devicetree CPU topology descriptions.
+
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Ying Fang <fangying1@huawei.com>
 ---
- hw/arm/virt.c | 92 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 92 insertions(+)
+ hw/arm/virt.c         | 40 +++++++++++++++++++++++++++++++++++++++-
+ include/hw/arm/virt.h |  1 +
+ 2 files changed, 40 insertions(+), 1 deletion(-)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index d23b941020..adcfa52854 100644
+index ff8a14439e..d23b941020 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -346,6 +346,89 @@ static void fdt_add_timer_nodes(const VirtMachineState *vms)
-                        GIC_FDT_IRQ_TYPE_PPI, ARCH_TIMER_NS_EL2_IRQ, irqflags);
- }
- 
-+static void fdt_add_l3cache_nodes(const VirtMachineState *vms)
-+{
-+    int i;
-+    const MachineState *ms = MACHINE(vms);
-+    ARMCPU *cpu = ARM_CPU(first_cpu);
-+    unsigned int smp_cores = ms->smp.cores;
-+    unsigned int sockets = ms->smp.max_cpus / smp_cores;
-+
-+    for (i = 0; i < sockets; i++) {
-+        char *nodename = g_strdup_printf("/cpus/l3-cache%d", i);
-+        qemu_fdt_add_subnode(vms->fdt, nodename);
-+        qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cache");
-+        qemu_fdt_setprop_string(vms->fdt, nodename, "cache-unified", "true");
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-level", 3);
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-size",
-+                              cpu->caches.l3_cache->size);
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-line-size",
-+                              cpu->caches.l3_cache->line_size);
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-sets",
-+                              cpu->caches.l3_cache->sets);
-+        qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-+                              qemu_fdt_alloc_phandle(vms->fdt));
-+        g_free(nodename);
-+    }
-+}
-+
-+static void fdt_add_l2cache_nodes(const VirtMachineState *vms)
-+{
-+    int i, j;
-+    const MachineState *ms = MACHINE(vms);
-+    unsigned int smp_cores = ms->smp.cores;
-+    signed int sockets = ms->smp.max_cpus / smp_cores;
-+    ARMCPU *cpu = ARM_CPU(first_cpu);
-+
-+    for (i = 0; i < sockets; i++) {
-+        char *next_path = g_strdup_printf("/cpus/l3-cache%d", i);
-+        for (j = 0; j < smp_cores; j++) {
-+            char *nodename = g_strdup_printf("/cpus/l2-cache%d",
-+                                  i * smp_cores + j);
-+            qemu_fdt_add_subnode(vms->fdt, nodename);
-+            qemu_fdt_setprop_string(vms->fdt, nodename, "compatible", "cache");
-+            qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-size",
-+                                  cpu->caches.l2_cache->size);
-+            qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-line-size",
-+                                  cpu->caches.l2_cache->line_size);
-+            qemu_fdt_setprop_cell(vms->fdt, nodename, "cache-sets",
-+                                  cpu->caches.l2_cache->sets);
-+            qemu_fdt_setprop_phandle(vms->fdt, nodename,
-+                                  "next-level-cache", next_path);
-+            qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-+                                  qemu_fdt_alloc_phandle(vms->fdt));
-+            g_free(nodename);
-+        }
-+        g_free(next_path);
-+    }
-+}
-+
-+static void fdt_add_l1cache_prop(const VirtMachineState *vms,
-+                            char *nodename, int cpu_index)
-+{
-+
-+    ARMCPU *cpu = ARM_CPU(qemu_get_cpu(cpu_index));
-+    CPUCaches caches = cpu->caches;
-+
-+    char *cachename = g_strdup_printf("/cpus/l2-cache%d", cpu_index);
-+
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "d-cache-size",
-+                          caches.l1d_cache->size);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "d-cache-line-size",
-+                          caches.l1d_cache->line_size);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "d-cache-sets",
-+                          caches.l1d_cache->sets);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "i-cache-size",
-+                          caches.l1i_cache->size);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "i-cache-line-size",
-+                          caches.l1i_cache->line_size);
-+    qemu_fdt_setprop_cell(vms->fdt, nodename, "i-cache-sets",
-+                          caches.l1i_cache->sets);
-+    qemu_fdt_setprop_phandle(vms->fdt, nodename, "next-level-cache",
-+                          cachename);
-+    g_free(cachename);
-+}
-+
- static void fdt_add_cpu_nodes(const VirtMachineState *vms)
- {
+@@ -351,9 +351,10 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
      int cpu;
-@@ -379,6 +462,11 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
-     qemu_fdt_setprop_cell(vms->fdt, "/cpus", "#address-cells", addr_cells);
-     qemu_fdt_setprop_cell(vms->fdt, "/cpus", "#size-cells", 0x0);
+     int addr_cells = 1;
+     const MachineState *ms = MACHINE(vms);
++    VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
  
-+    if (!vmc->ignore_cpu_topology) {
-+        fdt_add_l3cache_nodes(vms);
-+        fdt_add_l2cache_nodes(vms);
-+    }
-+
-     for (cpu = ms->smp.cpus - 1; cpu >= 0; cpu--) {
-         char *nodename = g_strdup_printf("/cpus/cpu@%d", cpu);
-         ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(cpu));
-@@ -408,6 +496,10 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
+     /*
+-     * From Documentation/devicetree/bindings/arm/cpus.txt
++     * See Linux Documentation/devicetree/bindings/arm/cpus.yaml
+      *  On ARM v8 64-bit systems value should be set to 2,
+      *  that corresponds to the MPIDR_EL1 register size.
+      *  If MPIDR_EL1[63:32] value is equal to 0 on all CPUs
+@@ -407,8 +408,42 @@ static void fdt_add_cpu_nodes(const VirtMachineState *vms)
                  ms->possible_cpus->cpus[cs->cpu_index].props.node_id);
          }
  
-+        if (!vmc->ignore_cpu_topology) {
-+            fdt_add_l1cache_prop(vms, nodename, cpu);
++        if (ms->smp.cpus > 1 && !vmc->ignore_cpu_topology) {
++            qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
++                                  qemu_fdt_alloc_phandle(vms->fdt));
 +        }
 +
-         if (ms->smp.cpus > 1 && !vmc->ignore_cpu_topology) {
-             qemu_fdt_setprop_cell(vms->fdt, nodename, "phandle",
-                                   qemu_fdt_alloc_phandle(vms->fdt));
+         g_free(nodename);
+     }
++
++    if (ms->smp.cpus > 1 && !vmc->ignore_cpu_topology) {
++        /*
++         * See Linux Documentation/devicetree/bindings/cpu/cpu-topology.txt
++         */
++        qemu_fdt_add_subnode(vms->fdt, "/cpus/cpu-map");
++
++        for (cpu = ms->smp.cpus - 1; cpu >= 0; cpu--) {
++            char *cpu_path = g_strdup_printf("/cpus/cpu@%d", cpu);
++            char *map_path;
++
++            if (ms->smp.threads > 1) {
++                map_path = g_strdup_printf(
++                            "/cpus/cpu-map/%s%d/%s%d/%s%d",
++                            "cluster", cpu / (ms->smp.cores * ms->smp.threads),
++                            "core", (cpu / ms->smp.threads) % ms->smp.cores,
++                            "thread", cpu % ms->smp.threads);
++            } else {
++                map_path = g_strdup_printf(
++                            "/cpus/cpu-map/%s%d/%s%d",
++                            "cluster", cpu / ms->smp.cores,
++                            "core", cpu % ms->smp.cores);
++            }
++            qemu_fdt_add_path(vms->fdt, map_path);
++            qemu_fdt_setprop_phandle(vms->fdt, map_path, "cpu", cpu_path);
++            g_free(map_path);
++            g_free(cpu_path);
++        }
++    }
+ }
+ 
+ static void fdt_add_its_gic_node(VirtMachineState *vms)
+@@ -2672,8 +2707,11 @@ DEFINE_VIRT_MACHINE_AS_LATEST(5, 3)
+ 
+ static void virt_machine_5_2_options(MachineClass *mc)
+ {
++    VirtMachineClass *vmc = VIRT_MACHINE_CLASS(OBJECT_CLASS(mc));
++
+     virt_machine_5_3_options(mc);
+     compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
++    vmc->ignore_cpu_topology = true;
+ }
+ DEFINE_VIRT_MACHINE(5, 2)
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 010f24f580..917bd8b645 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -118,6 +118,7 @@ typedef enum VirtGICType {
+ struct VirtMachineClass {
+     MachineClass parent;
+     bool disallow_affinity_adjustment;
++    bool ignore_cpu_topology;
+     bool no_its;
+     bool no_pmu;
+     bool claim_edge_triggered_timers;
 -- 
 2.23.0
 

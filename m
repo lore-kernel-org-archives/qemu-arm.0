@@ -1,143 +1,101 @@
-Received: by 2002:ac2:5042:0:0:0:0:0 with SMTP id a2csp2435693lfm;
-        Fri, 3 Jul 2020 05:50:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxx1WiRVY14pDJlShC+FScIGcR6XSqdg+zXif0cc6Y8YH6bAnfkj/4ZSieJ4fm3IBQ/qWjc
-X-Received: by 2002:a25:ce8a:: with SMTP id x132mr2204743ybe.423.1593780654866;
-        Fri, 03 Jul 2020 05:50:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1593780654; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4867855lfa;
+        Tue, 20 Oct 2020 07:59:25 -0700 (PDT)
+X-Received: by 2002:a17:906:1c50:: with SMTP id l16mr3524571ejg.144.1603205964952;
+        Tue, 20 Oct 2020 07:59:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603205964; cv=none;
         d=google.com; s=arc-20160816;
-        b=iprrsOH3jmcL60Mp/Y5PMuzc+CoB+s9g2lA4bKomwLOKyI5CmYEBoBnDnZ/D9zh+RU
-         mZvv5LzoD6uShrMzMUYR8y6uZyoUKmMUMq9YkxTT9ftcWI7+Mvt9MdYyV16+XtugSquY
-         AXKuONhWR88f8+qZKnlcFaNtnye0loGFycxeJrlY+QmeJ3cDPvmIKTx+yvgkgvkSwATl
-         yJCBKcNB8STmB/D9HterA4c9gq5CKz3SieiRz5epvWKC3r3ZNGD5kCJJn9VfhqSZKFKV
-         fENbfRh4/NbSCIC/qpTqefz7v4FsHPy+1nGUR/44lkXtuBNyXhC0z59c5qjNNXQgjcUE
-         1d1Q==
+        b=L/ENs4SJLlyY0vVyVQjGHOCbXryZ8AMPjQpHqAWjIH4lO8mt6R3G0WvHRVgYMAEvNp
+         5YGzazBdb4poxXv1aEKY21FmZTnCXN+025b6E7MRA4+1mCgTIN/iWbSPdTMgXaR/UAOT
+         HdJOUyLyuA8ljHZBu/m2EnBFNeB5cKlMcn8mTDqc7DW00qmLB8QE2nGfz+g+xzu5bJaJ
+         lV56QqQSyRa59R7aL57fPAdBgvAUDZfxgLe/pTf27DZFL2OcLUWLOMeq202pl9OLIc3c
+         Xzyackv9PamIipBthfhcNsXyQZ4/dRH0enF9jycbjplf6eTQ/4Q+nd/GHwSybxZVhsvo
+         vheA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from;
-        bh=UiV3falrmBXnsunpHwoAkLu/+4FGqBPMmmPfCz36HWI=;
-        b=hbHiVhOBAJFwbUvW8JVLncoRbonj9Rq4tlyxAbMNSYlqwLH9hyMNyEoZFWEFkc5EKn
-         fo9KsPIo8kIcGTcYcqezYc44120oxnPOA3FsOLK9WO4WjXCBg5nVRJ3V25nrDgRCmSVP
-         frW93+f33G4+o0yhsJfkTZdglpPbb/Odi9DiURZkL700vhjTy0cNOtyJRSAiVC4DKheR
-         ETvdgLdiVe7hrha3fBzkD7YJ2eJrw1+uwL9aPtXsrdkZ2zOfABQwHvzITYWVAkTpCrYk
-         AEAvA+gKPFgtOGVqWr27hpQ2iWH+Yoo7ZOAAkAXsTaixkB36Dpt8NXgpvZrjEZy2tUSO
-         hXVQ==
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=7bkquVpcEoY4NqgXc3bLKM+R+Z+x8Z9TEoN7lITSYec=;
+        b=orz8LpTW5vUDzQHX6XKlM+QmCf9rP2ZB+tpyoTROITz4u/WHA7B81nzDWskRFHzVko
+         52GGvCkqPeHORcVGX56F+fwQznc0yhDqvaXkY6jhbClHv5IEfvNj8T72VZj7SVETq2zx
+         IVpcNTM0a/80uCvuqrPXOYrIec60fDCrmzNbaZumNSg8r0/GzLkIiqJQKyvRwZIRPT+d
+         xtNotsO0XpplaRx/qNiF6msURLP5kyavnwtarZd8NwuJTQKGB3l/KGCsZFHLsHpFgmTx
+         LxifGeUdHnte03yJWxct2ZmXGUxnK1Jwbg7RvPR68hgR7GM+SQMzZUf+WqXvL3dTtzey
+         /dhg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s11si703953ybi.140.2020.07.03.05.50.53
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wtv8ZrF2;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
+        by mx.google.com with SMTPS id p27sor1301678ejc.69.2020.10.20.07.59.24
         for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 03 Jul 2020 05:50:54 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        (Google Transport Security);
+        Tue, 20 Oct 2020 07:59:24 -0700 (PDT)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=alibaba.com
-Received: from localhost ([::1]:57542 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1jrL9Z-0006tw-1O
-	for alex.bennee@linaro.org; Fri, 03 Jul 2020 08:50:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50386)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <guoheyi@linux.alibaba.com>)
- id 1jrIFB-0006jK-Vo; Fri, 03 Jul 2020 05:44:29 -0400
-Received: from out4436.biz.mail.alibaba.com ([47.88.44.36]:26366)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <guoheyi@linux.alibaba.com>)
- id 1jrIF5-0007Bp-4S; Fri, 03 Jul 2020 05:44:25 -0400
-X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R731e4; CH=green; DM=||false|;
- DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=e01e01422; MF=guoheyi@linux.alibaba.com;
- NM=1; PH=DS; RN=8; SR=0; TI=SMTPD_---0U1ZX4ow_1593769422; 
-Received: from
- laochao-HP-ProDesk-680-G1-TWR.hz.ali.com(mailfrom:guoheyi@linux.alibaba.com
- fp:SMTPD_---0U1ZX4ow_1593769422) by smtp.aliyun-inc.com(127.0.0.1);
- Fri, 03 Jul 2020 17:43:53 +0800
-From: Heyi Guo <guoheyi@linux.alibaba.com>
-To: qemu-devel@nongnu.org
-Subject: [RFC] virt/acpi: set PSCI flag even when psci_conduit is disabled
-Date: Fri,  3 Jul 2020 17:43:29 +0800
-Message-Id: <1593769409-13534-1-git-send-email-guoheyi@linux.alibaba.com>
-X-Mailer: git-send-email 2.7.4
-Received-SPF: pass client-ip=47.88.44.36;
- envelope-from=guoheyi@linux.alibaba.com; helo=out4436.biz.mail.alibaba.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/07/03 05:44:14
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10
-X-Spam_score_int: -105
-X-Spam_score: -10.6
-X-Spam_bar: ----------
-X-Spam_report: (-10.6 / 5.0 requ) BAYES_00=-1.9, ENV_AND_HDR_SPF_MATCH=-0.5,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001, UNPARSEABLE_RELAY=0.001,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=_AUTOLEARN
-X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 03 Jul 2020 08:50:45 -0400
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, yitian.ly@alibaba-inc.com,
- "Michael S. Tsirkin" <mst@redhat.com>, Shannon Zhao <shannon.zhaosl@gmail.com>,
- qemu-arm@nongnu.org, Heyi Guo <guoheyi@linux.alibaba.com>,
- Igor Mammedov <imammedo@redhat.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: KSuwJhAJwuSz
+       dkim=pass header.i=@linaro.org header.s=google header.b=Wtv8ZrF2;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc;
+        bh=7bkquVpcEoY4NqgXc3bLKM+R+Z+x8Z9TEoN7lITSYec=;
+        b=Wtv8ZrF2lwHUaqWYCidG6l9VKHHZXbuD6WHEtoXMw2gbonZbvEgCpl3nkBrEfm3dPp
+         IW61Y0BIZyOruefASV2QiKnc5ULC3HcnF8UOKQSNyTi+jS/mJyR6a9J8Z5uQtYcfkKvD
+         v2EIBI5QQJin5CuYIQCywQopnE5ayB0g9CrhmeBsCxlnWIuHW0dBQzaLqWakRCCCmUja
+         NNZ5SHICQaV1QpqWFGuDSg5I2EKKs715aBVUVt0YbMyko9lzU6kC1T5Tg/A7kMi+/8uL
+         BUrHB/aGbjvu1iP0Cgs+pyOKyCvroyi1Xezo3s8PKHI0V6WqxEMFwqHNTI0DZGiKPjhS
+         ulcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc;
+        bh=7bkquVpcEoY4NqgXc3bLKM+R+Z+x8Z9TEoN7lITSYec=;
+        b=HeXHPkXxHfCg9fhkwDYt4rMieaVRs7PXot+9rXaoeqXr0KAzGrcD5zuCgFU0DuEyKf
+         KVX+9g5iPc+rHwxDp/UuGH9S/R9xWWUcVFRc5+mid13dBSNLOtzbXnB5G+YeZzc/czVD
+         XP/mzaEdBuz6p5nw7bKofnZtWq49YQp3YcUiEdO409dBhU4H6oSl2xsD/JKrsMRrdjqb
+         JCygRHFNycD5XWuW/wYm4lUN+mVkFv6AB+cJumhLmTW18m1ZValu7f44hBEiJMhWglTs
+         F8nu6EUKcXbFjTyjPntaZ0t9yunQRu0BG+gFv7m1vHTg91yEKsDX6UVwjZjfJGku8phW
+         f2ww==
+X-Gm-Message-State: AOAM530QfTnTiW/Kw7KmREidWQvwXiDnTR3xqG0tEyV1PwSuJJ3bRkBj
+	rP1xcII2swqk/MMRLcTGjsi81GBEVOiS4s8vetAh5P48
+X-Google-Smtp-Source: ABdhPJwiIWP4ZgP7rw2DvquwHSxNsrNS//2UKedOwf510yYoamEB8jw+BsyXTF7pZvQflUu6FcOQ7tXdpSCDmDX+XLo=
+X-Received: by 2002:a17:906:c7d9:: with SMTP id dc25mr3537819ejb.482.1603205964676;
+ Tue, 20 Oct 2020 07:59:24 -0700 (PDT)
+MIME-Version: 1.0
+References: <20201016184207.786698-1-richard.henderson@linaro.org>
+In-Reply-To: <20201016184207.786698-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 20 Oct 2020 15:59:13 +0100
+Message-ID: <CAFEAcA9PAz0_r0HGqgcmXmFnB_of6f2X_QA4M=yV5WmoonFYbQ@mail.gmail.com>
+Subject: Re: [PATCH v11 00/12] linux-user: User support for AArch64 BTI
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+	Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+X-TUID: +jDrKRdLgYYh
 
-vms->psci_conduit being disabled only means PSCI is not implemented by
-qemu; it doesn't mean PSCI is not supported on this virtual machine.
-Actually vms->psci_conduit is set to disabled when vms->secure and
-firmware_loaded are both set, which means we will run ARM trusted
-firmware, which will definitely provide PSCI.
+On Fri, 16 Oct 2020 at 19:42, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> The kernel abi for this was merged in v5.8, just as the qemu 5.1
+> merge window was closing, so this slipped to the next dev cycle.
+>
+> Changes from v10:
+>   * Include Phil's plug of interp_name memory leak.
+>   * Convert error reporting to Error api.
+>   * Mirror the kernel's code structure for parsing notes
+>     (though Error means that it's not exactly the same).
+>   * Split aarch64 stuff from basic note parsing patch.
+>
+> Changes from v9:
+>   * Split what is now patch 7 into 3 more (pmm).
+>   * All prerequisites are now upstream.
+>
 
-The issue can be reproduced when running qemu in TCG mode with secure
-enabled, while using ARM trusted firmware + qemu virt UEFI as firmware
-binaries, and we can see secondary cores will not be waken up.
 
-Signed-off-by: Heyi Guo <guoheyi@linux.alibaba.com>
 
----
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org
----
- hw/arm/virt-acpi-build.c | 9 ++++++---
- 1 file changed, 6 insertions(+), 3 deletions(-)
+Applied to target-arm.next, thanks.
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 1384a2c..7622b97 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -728,13 +728,16 @@ static void build_fadt_rev5(GArray *table_data, BIOSLinker *linker,
-     };
- 
-     switch (vms->psci_conduit) {
--    case QEMU_PSCI_CONDUIT_DISABLED:
--        fadt.arm_boot_arch = 0;
--        break;
-     case QEMU_PSCI_CONDUIT_HVC:
-         fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT |
-                              ACPI_FADT_ARM_PSCI_USE_HVC;
-         break;
-+    /*
-+     * QEMU_PSCI_CONDUIT_DISABLED only means PSCI is not implemented by qemu,
-+     * but typically it will still be provided by secure firmware, and it should
-+     * use SMC as PSCI conduit.
-+     */
-+    case QEMU_PSCI_CONDUIT_DISABLED:
-     case QEMU_PSCI_CONDUIT_SMC:
-         fadt.arm_boot_arch = ACPI_FADT_ARM_PSCI_COMPLIANT;
-         break;
--- 
-2.7.4
-
+-- PMM

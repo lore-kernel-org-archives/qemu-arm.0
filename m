@@ -1,62 +1,62 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4785610lfa;
-        Tue, 20 Oct 2020 06:24:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyKbgOZ+3UQUVgrst/HAuzPcOKmo9kAv8DsLPR47TQbZcPLhBA5KTE76bfdwCRNsoKgA12W
-X-Received: by 2002:a25:bcc9:: with SMTP id l9mr3920970ybm.183.1603200240907;
-        Tue, 20 Oct 2020 06:24:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603200240; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4786518lfa;
+        Tue, 20 Oct 2020 06:25:06 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz/tssZ+vlOikOviJEkhwWhiwy7EyLuiBL9V4JPFWs9wVYEtnkamEsFEzOr54YV4qGzP3sr
+X-Received: by 2002:a25:bd0c:: with SMTP id f12mr3744272ybk.392.1603200305998;
+        Tue, 20 Oct 2020 06:25:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603200305; cv=none;
         d=google.com; s=arc-20160816;
-        b=e3pyznzfkjI4cu9ad6dWXPszb9+Q/hjkglSLXEInuSe/5p18zhutEmyXhevRJfU6Ae
-         hKn4flGNc4wBqWS02mNJai6oJi/wYCqtuGQdYYah1D0TBmKDBFP+e8i040LZgxZOhyRj
-         JSN4UQKgdijmj+m9s5o3YIDb6Y/KY0SYAXF+/g4Zb/TH7dEgiSnMPAM7nTMHhbA1OMm/
-         AXzTCxkpDVFPencJBhtZow9osQN2rZdRSV24tBe5fwMZhy9Xd9tOrmU7/S3eiQCoQGHC
-         TABNEIZjitWy65YNlM7vDcEPyG0qlRzg8fXdcyC0xUWtPhWjH5KXLBKDID2hVaE/bVu5
-         oNZQ==
+        b=NIuNXIVVR573gVjj1WENp8RPVTTaILH9C9pQ1MwU+FEr8J1RLXEyzlBhJfsJ6j/g8y
+         4Rs9zilAG0Pk8YNa1Ph99q1zvUq60sI0Hm8MXhBrs4D1xTEBkeqQxXYfi2zP4VSpWysa
+         PdJMwqxrQHHebV/3QJAYz/dKi3VnIC/BBsvvjYhRidI774RMCB/mHNjK5FttQOvcdKCO
+         uPoKAF79lCpryGa/AQAZYMcxlTZd6BgQ56tLKM8tjrnQUl1lqI2oJakOClYE5ccr/9eN
+         R8olqr2fSS9VQigw7C6RjfoDxWfQd7OaYgxBJYcioKC28DvrYACZTJOVveGAT8yiX0tt
+         JTqg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=rlA1JwXlCHl3HKsEGdgjONCFj1DwSSWDxWPIN2XsW1A=;
-        b=PvvvWOBoYh/jd74CnX4cwaH1r/yO6ICxjUGYHKBbyoHgFNm+DggiBWqdh4WD7M1Zr6
-         xInqiaojUi+U1NI9RLWCKDMDJMZZIGtPQboO0PdH2PxPpSUVDOANy/ghXv5c76ymj6Ll
-         u0kRWGeRebj+kiWcBrIO4/4axqBq6wqQJoX4g8yUyKwgierAn7pWTKhuueIkxDzvi5vR
-         nmRxjhu1F0lGbzj5G+7hTgWTD90dxxO6+gkPKvM6KSc7ghRMwxTljZB2s9HQVg0oyTSR
-         vBydXCiwgM+f5sfU59lXp7g27Gk8TckQ8bg5ppvuvvD29afHrYxuIKK2TjQxAM6DXsE3
-         zD7g==
+        bh=UlzFWyC2/8iQbmIB1tH8igpDPORz5t/IQSqj1TOs5Us=;
+        b=Ig9gRFAUyrA38xk/WqwvH4wLUImazTjDoZ0b9IueXjzOLpx+iqFaQY3gzVr1whkoDc
+         xCHafzhwqiJFqmrYAxprquusS0rVl8N1+GZGvb5izAvklO7pf6HH9bQHeCh/eRxQxA3Y
+         cstz5NhX+Fq0+KdVi+zJOlkwCN+IlGv7nCp08CfvPnUfZMjd0NTnV8Zn3mpU8Gc0Gqf0
+         k42wm0nS+AusgQ1gbOn8UX6nOXGZbnouBOHnVeaNwEqyeh4veUKnb5IA8fqsUjOUgG58
+         XhJaDa0k6uojBVHq0q+9E1WCxL6uRM8DRNxb4+8dPAk8IAYW9LMYuI48nOl/r/12xfMr
+         tMVg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v64si1911475ybe.40.2020.10.20.06.24.00
+        by mx.google.com with ESMTPS id l1si1718631ybp.485.2020.10.20.06.25.05
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Oct 2020 06:24:00 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 20 Oct 2020 06:25:05 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:44768 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:48806 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUrcO-0003Cx-8E
-	for alex.bennee@linaro.org; Tue, 20 Oct 2020 09:24:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50578)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kUrdR-0004qH-9X
+	for alex.bennee@linaro.org; Tue, 20 Oct 2020 09:25:05 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:50608)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kUrU8-0000N2-TT; Tue, 20 Oct 2020 09:15:29 -0400
-Received: from szxga06-in.huawei.com ([45.249.212.32]:48304 helo=huawei.com)
+ id 1kUrU9-0000OR-Sj; Tue, 20 Oct 2020 09:15:29 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:5268 helo=huawei.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kUrTy-00076c-Q6; Tue, 20 Oct 2020 09:15:28 -0400
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.59])
- by Forcepoint Email with ESMTP id 37B86F4A968219B23357;
- Tue, 20 Oct 2020 21:15:08 +0800 (CST)
+ id 1kUrU0-00077Q-Op; Tue, 20 Oct 2020 09:15:29 -0400
+Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.60])
+ by Forcepoint Email with ESMTP id 5270886DE4E3BFBC85C7;
+ Tue, 20 Oct 2020 21:15:13 +0800 (CST)
 Received: from localhost (10.174.186.67) by DGGEMS409-HUB.china.huawei.com
  (10.3.19.209) with Microsoft SMTP Server id 14.3.487.0; Tue, 20 Oct 2020
- 21:15:01 +0800
+ 21:15:03 +0800
 From: Ying Fang <fangying1@huawei.com>
 To: <qemu-devel@nongnu.org>
-Subject: [RFC PATCH v2 05/13] hw: add compat machines for 5.3
-Date: Tue, 20 Oct 2020 21:14:32 +0800
-Message-ID: <20201020131440.1090-6-fangying1@huawei.com>
+Subject: [RFC PATCH v2 09/13] hw/arm/virt-acpi-build: add PPTT table
+Date: Tue, 20 Oct 2020 21:14:36 +0800
+Message-ID: <20201020131440.1090-10-fangying1@huawei.com>
 X-Mailer: git-send-email 2.28.0.windows.1
 In-Reply-To: <20201020131440.1090-1-fangying1@huawei.com>
 References: <20201020131440.1090-1-fangying1@huawei.com>
@@ -65,9 +65,9 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-Originating-IP: [10.174.186.67]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.32; envelope-from=fangying1@huawei.com;
+Received-SPF: pass client-ip=45.249.212.191; envelope-from=fangying1@huawei.com;
  helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 07:04:17
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 09:15:07
 X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
@@ -76,248 +76,100 @@ X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
  RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: peter.maydell@linaro.org, drjones@redhat.com,
  zhang.zhanghailiang@huawei.com, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
  qemu-arm@nongnu.org, alistair.francis@wdc.com,
  Ying Fang <fangying1@huawei.com>, imammedo@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JhJbiG/XhGLO
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: WAZU8MMvkkyu
 
-Add 5.2 machine types for arm/i440fx/q35/s390x/spapr.
+Add the Processor Properties Topology Table (PPTT) to present CPU topology
+information to the guest.
 
+Signed-off-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Ying Fang <fangying1@huawei.com>
 ---
- hw/arm/virt.c              |  9 ++++++++-
- hw/core/machine.c          |  3 +++
- hw/i386/pc.c               |  3 +++
- hw/i386/pc_piix.c          | 15 ++++++++++++++-
- hw/i386/pc_q35.c           | 14 +++++++++++++-
- hw/ppc/spapr.c             | 15 +++++++++++++--
- hw/s390x/s390-virtio-ccw.c | 14 +++++++++++++-
- include/hw/boards.h        |  3 +++
- include/hw/i386/pc.h       |  3 +++
- 9 files changed, 73 insertions(+), 6 deletions(-)
+ hw/arm/virt-acpi-build.c | 42 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index ba902b53ba..ff8a14439e 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2665,10 +2665,17 @@ static void machvirt_machine_init(void)
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index fae5a26741..e1f3ea50ad 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -429,6 +429,42 @@ build_srat(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+                  "SRAT", table_data->len - srat_start, 3, NULL, NULL);
  }
- type_init(machvirt_machine_init);
  
-+static void virt_machine_5_3_options(MachineClass *mc)
++static void build_pptt(GArray *table_data, BIOSLinker *linker, MachineState *ms)
 +{
-+}
-+DEFINE_VIRT_MACHINE_AS_LATEST(5, 3)
++    int pptt_start = table_data->len;
++    int uid = 0, cpus = 0, socket;
++    unsigned int smp_cores = ms->smp.cores;
++    unsigned int smp_threads = ms->smp.threads;
 +
- static void virt_machine_5_2_options(MachineClass *mc)
- {
-+    virt_machine_5_3_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
- }
--DEFINE_VIRT_MACHINE_AS_LATEST(5, 2)
-+DEFINE_VIRT_MACHINE(5, 2)
- 
- static void virt_machine_5_1_options(MachineClass *mc)
- {
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 7e2f4ec08e..6dc77699a9 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -28,6 +28,9 @@
- #include "hw/mem/nvdimm.h"
- #include "migration/vmstate.h"
- 
-+GlobalProperty hw_compat_5_2[] = { };
-+const size_t hw_compat_5_2_len = G_N_ELEMENTS(hw_compat_5_2);
++    acpi_data_push(table_data, sizeof(AcpiTableHeader));
 +
- GlobalProperty hw_compat_5_1[] = {
-     { "vhost-scsi", "num_queues", "1"},
-     { "vhost-user-blk", "num-queues", "1"},
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index e87be5d29a..eaa046ff5d 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -97,6 +97,9 @@
- #include "trace.h"
- #include CONFIG_DEVICES
- 
-+GlobalProperty pc_compat_5_2[] = { };
-+const size_t pc_compat_5_2_len = G_N_ELEMENTS(pc_compat_5_2);
++    for (socket = 0; cpus < ms->possible_cpus->len; socket++) {
++        uint32_t socket_offset = table_data->len - pptt_start;
++        int core;
 +
- GlobalProperty pc_compat_5_1[] = {
-     { "ICH9-LPC", "x-smi-cpu-hotplug", "off" },
- };
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index 3c2ae0612b..01254090ce 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -426,7 +426,7 @@ static void pc_i440fx_machine_options(MachineClass *m)
-     machine_class_allow_dynamic_sysbus_dev(m, TYPE_VMBUS_BRIDGE);
- }
- 
--static void pc_i440fx_5_2_machine_options(MachineClass *m)
-+static void pc_i440fx_5_3_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_i440fx_machine_options(m);
-@@ -435,6 +435,19 @@ static void pc_i440fx_5_2_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_I440FX_MACHINE(v5_3, "pc-i440fx-5.3", NULL,
-+                      pc_i440fx_5_3_machine_options);
++        build_socket_hierarchy(table_data, 0, socket);
 +
-+static void pc_i440fx_5_2_machine_options(MachineClass *m)
-+{
-+    PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-+    pc_i440fx_machine_options(m);
-+    m->alias = NULL;
-+    m->is_default = false;
-+    compat_props_add(m->compat_props, hw_compat_5_2, hw_compat_5_2_len);
-+    compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
++        for (core = 0; core < smp_cores; core++) {
++            uint32_t core_offset = table_data->len - pptt_start;
++            int thread;
++
++            if (smp_threads <= 1) {
++                build_processor_hierarchy(table_data, 2, socket_offset, uid++);
++             } else {
++                build_processor_hierarchy(table_data, 0, socket_offset, core);
++                for (thread = 0; thread < smp_threads; thread++) {
++                    build_smt_hierarchy(table_data, core_offset, uid++);
++                }
++             }
++        }
++        cpus += smp_cores * smp_threads;
++    }
++
++    build_header(linker, table_data,
++                 (void *)(table_data->data + pptt_start), "PPTT",
++                 table_data->len - pptt_start, 2, NULL, NULL);
 +}
 +
- DEFINE_I440FX_MACHINE(v5_2, "pc-i440fx-5.2", NULL,
-                       pc_i440fx_5_2_machine_options);
+ /* GTDT */
+ static void
+ build_gtdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
+@@ -669,6 +705,7 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     unsigned dsdt, xsdt;
+     GArray *tables_blob = tables->table_data;
+     MachineState *ms = MACHINE(vms);
++    bool cpu_topology_enabled = !vmc->ignore_cpu_topology;
  
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index a3f4959c43..dd14803edb 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -344,7 +344,7 @@ static void pc_q35_machine_options(MachineClass *m)
-     m->max_cpus = 288;
- }
+     table_offsets = g_array_new(false, true /* clear */,
+                                         sizeof(uint32_t));
+@@ -688,6 +725,11 @@ void virt_acpi_build(VirtMachineState *vms, AcpiBuildTables *tables)
+     acpi_add_table(table_offsets, tables_blob);
+     build_madt(tables_blob, tables->linker, vms);
  
--static void pc_q35_5_2_machine_options(MachineClass *m)
-+static void pc_q35_5_3_machine_options(MachineClass *m)
- {
-     PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-     pc_q35_machine_options(m);
-@@ -352,6 +352,18 @@ static void pc_q35_5_2_machine_options(MachineClass *m)
-     pcmc->default_cpu_version = 1;
- }
- 
-+DEFINE_Q35_MACHINE(v5_3, "pc-q35-5.3", NULL,
-+                   pc_q35_5_3_machine_options);
++    if (cpu_topology_enabled) {
++        acpi_add_table(table_offsets, tables_blob);
++        build_pptt(tables_blob, tables->linker, ms);
++    }
 +
-+static void pc_q35_5_2_machine_options(MachineClass *m)
-+{
-+    PCMachineClass *pcmc = PC_MACHINE_CLASS(m);
-+    pc_q35_machine_options(m);
-+    m->alias = NULL;
-+    compat_props_add(m->compat_props, hw_compat_5_2, hw_compat_5_2_len);
-+    compat_props_add(m->compat_props, pc_compat_5_2, pc_compat_5_2_len);
-+}
-+
- DEFINE_Q35_MACHINE(v5_2, "pc-q35-5.2", NULL,
-                    pc_q35_5_2_machine_options);
- 
-diff --git a/hw/ppc/spapr.c b/hw/ppc/spapr.c
-index 2db810f73a..c292a3edd9 100644
---- a/hw/ppc/spapr.c
-+++ b/hw/ppc/spapr.c
-@@ -4511,15 +4511,26 @@ static void spapr_machine_latest_class_options(MachineClass *mc)
-     }                                                                \
-     type_init(spapr_machine_register_##suffix)
- 
-+/*
-+ * pseries-5.3
-+ */
-+static void spapr_machine_5_3_class_options(MachineClass *mc)
-+{
-+    /* Defaults for the latest behaviour inherited from the base class */
-+}
-+
-+DEFINE_SPAPR_MACHINE(5_3, "5.3", true);
-+
- /*
-  * pseries-5.2
-  */
- static void spapr_machine_5_2_class_options(MachineClass *mc)
- {
--    /* Defaults for the latest behaviour inherited from the base class */
-+    spapr_machine_5_3_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
- }
- 
--DEFINE_SPAPR_MACHINE(5_2, "5.2", true);
-+DEFINE_SPAPR_MACHINE(5_2, "5.2", false);
- 
- /*
-  * pseries-5.1
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 28266a3a35..bde084e13d 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -789,14 +789,26 @@ bool css_migration_enabled(void)
-     }                                                                         \
-     type_init(ccw_machine_register_##suffix)
- 
-+static void ccw_machine_5_3_instance_options(MachineState *machine)
-+{
-+}
-+
-+static void ccw_machine_5_3_class_options(MachineClass *mc)
-+{
-+}
-+DEFINE_CCW_MACHINE(5_3, "5.3", true);
-+
- static void ccw_machine_5_2_instance_options(MachineState *machine)
- {
-+    ccw_machine_5_3_instance_options(machine);
- }
- 
- static void ccw_machine_5_2_class_options(MachineClass *mc)
- {
-+    ccw_machine_5_3_class_options(mc);
-+    compat_props_add(mc->compat_props, hw_compat_5_2, hw_compat_5_2_len);
- }
--DEFINE_CCW_MACHINE(5_2, "5.2", true);
-+DEFINE_CCW_MACHINE(5_2, "5.2", false);
- 
- static void ccw_machine_5_1_instance_options(MachineState *machine)
- {
-diff --git a/include/hw/boards.h b/include/hw/boards.h
-index bf53e8a16e..f631c1799d 100644
---- a/include/hw/boards.h
-+++ b/include/hw/boards.h
-@@ -311,6 +311,9 @@ struct MachineState {
-     } \
-     type_init(machine_initfn##_register_types)
- 
-+extern GlobalProperty hw_compat_5_2[];
-+extern const size_t hw_compat_5_2_len;
-+
- extern GlobalProperty hw_compat_5_1[];
- extern const size_t hw_compat_5_1_len;
- 
-diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
-index 84639d0ebc..6f1531ed14 100644
---- a/include/hw/i386/pc.h
-+++ b/include/hw/i386/pc.h
-@@ -190,6 +190,9 @@ void pc_system_firmware_init(PCMachineState *pcms, MemoryRegion *rom_memory);
- void pc_madt_cpu_entry(AcpiDeviceIf *adev, int uid,
-                        const CPUArchIdList *apic_ids, GArray *entry);
- 
-+extern GlobalProperty pc_compat_5_2[];
-+extern const size_t pc_compat_5_2_len;
-+
- extern GlobalProperty pc_compat_5_1[];
- extern const size_t pc_compat_5_1_len;
+     acpi_add_table(table_offsets, tables_blob);
+     build_gtdt(tables_blob, tables->linker, vms);
  
 -- 
 2.23.0

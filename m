@@ -1,103 +1,103 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6064955lfa;
-        Wed, 21 Oct 2020 14:42:31 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyFOhy5wfThpW1JeRyv8YezjGsQ3TFZWPlyfq7WHGttFLHSzElDCvvck82Wb/fZUUulE1n3
-X-Received: by 2002:a25:9701:: with SMTP id d1mr7915515ybo.409.1603316551152;
-        Wed, 21 Oct 2020 14:42:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603316551; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6065512lfa;
+        Wed, 21 Oct 2020 14:43:45 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx3MdMuWVRlRXUSY75L9E5sJtz7wYRTOoHafbr//DWPfLRjKAPVlbvz/i2tVMmPvYxtFZvw
+X-Received: by 2002:a25:e407:: with SMTP id b7mr8650597ybh.280.1603316625395;
+        Wed, 21 Oct 2020 14:43:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603316625; cv=none;
         d=google.com; s=arc-20160816;
-        b=znp39F6LVyMQMLBUTQxY1G6xsiKfEjMOe0HWTNUgo82Bc/MnPTrEL1Ga7ZpzVjN6zw
-         Kx7MpaXDMQj8lPrsjfzSJBV/PGyh78plmkyR++RJOcTvDoDMwQjSzkyUwfRWgssGNfWj
-         ESaKL5Xe9yNc7X2FR1q16YkIvUCbqby8k7HxXily1B7hFAb7J4JEYBx33cFiaEeJ/Uv/
-         GY72/1OKSCYO6W3nnD3andYVmWBSEoCv9f84AqNKfYrvisdXnB6UVxlyL0pugSsFJuzp
-         xlrCMjvDZqkbyf1A4vl8dblraj5Xq/egn80Wz43ZzvqtJkFnHJ0xlSBL7DFRERtmYs5s
-         4NWA==
+        b=pT123xvV76UiWBlN7fEjYP1lzvXim4x5FnQOm81YvVg8sWMCOeRx6TreWdCuq5b7QB
+         wX2fGxkNl1oYUA1Mxtwr2cGPgArXX+Ez4nSaBa0scZzetihAFZzNDXn3pezdyoagBuLs
+         SOaMCx8v4Fwd2LaKRZREE/8h91qjUhf0Akp1FmHHqMq0HCpVzs0v8dJBrgxEWfkt64BD
+         IV7EWkP7NcYQPrrbC2c5yG8Ax0vRHn88TEarVck8kXFCqmAte874BvApl+oHn1coTdCa
+         AFm+2cR7vv6f2vK6Kl/Jhl3plerIkekz1UAevetpXoR1mXTNg06yGp9MDVyC7+G5PZ6Q
+         roDg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
          :list-archive:list-unsubscribe:list-id:precedence:cc:to:subject
          :references:mime-version:message-id:in-reply-to:date:dkim-signature;
-        bh=KSGYnvHVh4Jkj4aHgg8KUVtqULl0j/Hj/RFriWoAqkw=;
-        b=WxWFO0vgUxdSjxvujE2YFgO5FAboop6Xp8e5H3+fmgyeVnXq6z0WIuImcT5N4eJVBa
-         PhKyLWOOoqjrkgykeFtV8oDQg4YUFbgSXCud4ZB9hpkzYfjocao7DgH3D0CNW5q8Bm3a
-         ba8ITxFDpKfrsJO9ARpyzFhtqtLP0p/4GrPIS15o0yCzddwPiUjbjDZvPZm64BkcVgbo
-         G/NudvBYG9MryBNdCUKnxDGU21jJZ2XUw5Y3KzDw1wtCI94gTNCWR4ruZ42wHCw5aqeK
-         ROrVq5t4g12afUE9ueGSiy5OIcoWpRom01rLRth3I4HnBU6Zj5Nn/jU35G6k0AGEKSeB
-         Ih1A==
+        bh=fhT8RsF+vxQy3l+osAg+t0g/WthRj4Q2Paf4U2VxSFQ=;
+        b=kgwPFPZS0B2L2lbeBk9CqinoMLUvVExsodsSCDLBn6y+mhWhIzLwNQ3dJkQKM5UGjd
+         En5ElZU+HxdRV75oWJWRjeHLd1m9F+d9pDgJKQLhR6Yv+gWzbtUBCTMEwazD0LElexfJ
+         hJtxNsBAbP5CPZ7qaDP89dWbUx+Zt19LF1bnGAk0TYiQMc8oRUdGURMr7hR/f5OHoKrL
+         JtF4kP9JQZrEHLhRlArGvS1udyQjPHXK/tdLZ+nDbkDflnZnQvBkqHgJSlnCnX+8fun6
+         j/hMPB5qFmH0RzgMg4wNX4oPumKTqU2mC3Qe6HRF10hJ2ahpL3NUniUYcY7U1tbQaGF+
+         yvzA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=dceRjsNm;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=cHsp+BxL;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k15si3406746ybt.262.2020.10.21.14.42.30
+        by mx.google.com with ESMTPS id a205si3354896ybg.231.2020.10.21.14.43.45
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Oct 2020 14:42:31 -0700 (PDT)
+        Wed, 21 Oct 2020 14:43:45 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=dceRjsNm;
+       dkim=fail header.i=@google.com header.s=20161025 header.b=cHsp+BxL;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:53750 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:56380 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVLsM-00013I-3G
-	for alex.bennee@linaro.org; Wed, 21 Oct 2020 17:42:30 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48842)
+	id 1kVLtY-00027G-K3
+	for alex.bennee@linaro.org; Wed, 21 Oct 2020 17:43:44 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48856)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3uamQXwsKClI1C4277y68y708805y.w86Ay6E-xyFy578707E.8B0@flex--hskinnemoen.bounces.google.com>)
- id 1kVLm8-0003ZW-MC
- for qemu-devel@nongnu.org; Wed, 21 Oct 2020 17:36:04 -0400
-Received: from mail-pj1-x1049.google.com ([2607:f8b0:4864:20::1049]:54089)
+ <3vKmQXwsKClU4F75AA19B1A3BB381.zB9D19H-01I18ABA3AH.BE3@flex--hskinnemoen.bounces.google.com>)
+ id 1kVLm9-0003d6-Tf
+ for qemu-devel@nongnu.org; Wed, 21 Oct 2020 17:36:05 -0400
+Received: from mail-pf1-x44a.google.com ([2607:f8b0:4864:20::44a]:46667)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3uamQXwsKClI1C4277y68y708805y.w86Ay6E-xyFy578707E.8B0@flex--hskinnemoen.bounces.google.com>)
- id 1kVLm3-00037a-BY
- for qemu-devel@nongnu.org; Wed, 21 Oct 2020 17:36:04 -0400
-Received: by mail-pj1-x1049.google.com with SMTP id cl24so1909876pjb.3
- for <qemu-devel@nongnu.org>; Wed, 21 Oct 2020 14:35:54 -0700 (PDT)
+ <3vKmQXwsKClU4F75AA19B1A3BB381.zB9D19H-01I18ABA3AH.BE3@flex--hskinnemoen.bounces.google.com>)
+ id 1kVLm3-00037v-AW
+ for qemu-devel@nongnu.org; Wed, 21 Oct 2020 17:36:05 -0400
+Received: by mail-pf1-x44a.google.com with SMTP id j207so2019014pfd.13
+ for <qemu-devel@nongnu.org>; Wed, 21 Oct 2020 14:35:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=sender:date:in-reply-to:message-id:mime-version:references:subject
- :from:to:cc; bh=KSGYnvHVh4Jkj4aHgg8KUVtqULl0j/Hj/RFriWoAqkw=;
- b=dceRjsNm6+9eYi/PoMbwC+dP5UHw2UczNytY9xQwpH9PNHh39aPrHXPz+yjzitI/di
- zBSyVUvQaVeh1EQfp2YNYP5jLsM39kP4C6+yJtATau3v3TuX1Nbfg9mg8f9cxMX2asB0
- aYavAtfeSt4Nr4muiOK6TxeJuK0xYK77EApvk1HhVQkS+jVPNpGc5wFLIm5Cv6oVwhkC
- 6OvRFrz5rggHa1RMpihnwAk7E5OJaYONTeAJ8nwL7cDDHbP4Ap6Sen+MXrMrhRAkiM4r
- 46SmJhaGhxA2UfIaPcitjLB+B1gmGwN3nZP2zgTIju7n5fpc2mjQqtke9gOpg+iJJgpU
- WgXg==
+ :from:to:cc; bh=fhT8RsF+vxQy3l+osAg+t0g/WthRj4Q2Paf4U2VxSFQ=;
+ b=cHsp+BxL4hE5GPg5eVlC2b9QGGHAacZu8JccynpHR2RMdfi9B6ZPzNFW3GZ8vQ7BJj
+ 6KSafoHK/HHV48Gz86p7O6KeBqVBGSLSUL/vutGLeFA6Lro24v8KLgBIOr2lCuq7FyCe
+ 2AYPMrSjJ7JxJiC5vZw8zQhNrAZtyz9Cu/2pJ9TXG7Kj4hu0EyWyIktfNDX9jK59Has1
+ HZ79OTkehgiQmc/dzu+Kr6+SUQ2vd0TIS1YMpOwavSei2TlteTYZMG6rdZnfbnqAIHjB
+ L/ac+VVM8WB0BK/5XBjK6iWUT1qVe+/J3g6vE7QiLxtcHbpPRMRYcvQPLfiekt3+koka
+ 78MA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:date:in-reply-to:message-id:mime-version
  :references:subject:from:to:cc;
- bh=KSGYnvHVh4Jkj4aHgg8KUVtqULl0j/Hj/RFriWoAqkw=;
- b=e/yByZ5396bjQxv7Z/nNIX1qG+NqMVRwKh0X01HUq+nD5vc+uhGCqoiQFgOvikOvYy
- Xv9hxoVWAosr67ThSUqHQVsRotbH+kDWRGxnurfodzrL6pFs7S3vVqGAxJLvDN/HCGWp
- vSZ4PzTPhlCkW3o6oDVhxDad0JQGkavOYpnw0GmJNUAgq3tnSqNVe9WEIA1vWY2sucOu
- eSQ5tfyRlHcJm3vppCZ8rblV16FoB0r8WlD5vmktAN7rwr15k0Yv9uvDxcu4GEyAs2Ql
- 5tmFMFpXK+QiYfr32UnQeZVp+iHgb87voEpTiXvv706k1NL0slcu7qfJcl5MHC9q0+lv
- Tt2g==
-X-Gm-Message-State: AOAM531kW7m/eHKx2t/YoyAjdWite5h6kk0D/87koOJTIReEqGPyyrlt
- NZyUy0xKBd86MlOLuyGpxq+g5XM2cPYY+b2ZEQ==
+ bh=fhT8RsF+vxQy3l+osAg+t0g/WthRj4Q2Paf4U2VxSFQ=;
+ b=WLDL7qsrNgkMGwcu1hCYXPnRZmmGknzQeZHiOqnzXnsH5ygUJh8tMt28iiwoJita5p
+ xPRdhVLNkQyJqooKytS0XaPAKs0CgkLtxZI+knU1VOVpPtt7wSwq478KQTI1c2XAwrLe
+ YWOvqijv0SUDR/OQ06OlsNxRCarGRa616dR7JICDZMJ/WdaIv58BouSm7nOQjGpDE25l
+ hAHkN0seOKPcJh2HCnS0Jag4vSG8t8IkAyGdj+stSx/sTk2pvSiXgYQC5J6lPBebKt2o
+ TmFJd1sBCzGLAHjDuYovBRTU3hM1ZTiMKCve5Bc4ICEt5ejZTzwOL/aJ6aAffImPwUoG
+ mDcw==
+X-Gm-Message-State: AOAM531Y7GfQffcJxX6+hjdiF1yPh2usz3dJIlF6+VKd4VVY+AVFqVXk
+ GLJ7KotU8cXKYgk/ij22kBaxXpB5IMkHIwt5Ow==
 X-Received: from skybert.c.googlers.com ([fda3:e722:ac3:10:24:72f4:c0a8:3107])
  (user=hskinnemoen job=sendgmr) by
- 2002:aa7:83c9:0:b029:158:11ce:4672 with
- SMTP id j9-20020aa783c90000b029015811ce4672mr5316964pfn.23.1603316153592;
- Wed, 21 Oct 2020 14:35:53 -0700 (PDT)
-Date: Wed, 21 Oct 2020 14:35:42 -0700
+ 2002:a17:902:b40a:b029:d5:f77c:fb4e with
+ SMTP id x10-20020a170902b40ab02900d5f77cfb4emr5425161plr.14.1603316156978;
+ Wed, 21 Oct 2020 14:35:56 -0700 (PDT)
+Date: Wed, 21 Oct 2020 14:35:44 -0700
 In-Reply-To: <20201021213544.3399271-1-hskinnemoen@google.com>
-Message-Id: <20201021213544.3399271-4-hskinnemoen@google.com>
+Message-Id: <20201021213544.3399271-6-hskinnemoen@google.com>
 Mime-Version: 1.0
 References: <20201021213544.3399271-1-hskinnemoen@google.com>
 X-Mailer: git-send-email 2.29.0.rc1.297.gfa9743e501-goog
-Subject: [PATCH v2 3/5] hw/misc: Add npcm7xx random number generator
+Subject: [PATCH v2 5/5] hw/gpio: Add GPIO model for Nuvoton NPCM7xx
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
  kfting@nuvoton.com, venture@google.com, wuhaotsh@google.com, 
  Havard Skinnemoen <hskinnemoen@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1049;
- envelope-from=3uamQXwsKClI1C4277y68y708805y.w86Ay6E-xyFy578707E.8B0@flex--hskinnemoen.bounces.google.com;
- helo=mail-pj1-x1049.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::44a;
+ envelope-from=3vKmQXwsKClU4F75AA19B1A3BB381.zB9D19H-01I18ABA3AH.BE3@flex--hskinnemoen.bounces.google.com;
+ helo=mail-pf1-x44a.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -95
@@ -106,7 +106,7 @@ X-Spam_bar: ---------
 X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,348 +123,682 @@ Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Reply-to: Havard Skinnemoen <hskinnemoen@google.com>
 From: Havard Skinnemoen via <qemu-devel@nongnu.org>
-X-TUID: G5j+H4avYC7e
+X-TUID: tUjDd6wOVpVT
 
-The RNG module returns a byte of randomness when the Data Valid bit is
-set.
+The NPCM7xx chips have multiple GPIO controllers that are mostly
+identical except for some minor differences like the reset values of
+some registers. Each controller controls up to 32 pins.
 
-This implementation ignores the prescaler setting, and loads a new value
-into RNGD every time RNGCS is read while the RNG is enabled and random
-data is available.
-
-A qtest featuring some simple randomness tests is included.
+Each individual pin is modeled as a pair of unnamed GPIOs -- one for
+emitting the actual pin state, and one for driving the pin externally.
+Like the nRF51 GPIO controller, a gpio level may be negative, which
+means the pin is not driven, or floating.
 
 Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
 ---
- docs/system/arm/nuvoton.rst    |   2 +-
- include/hw/arm/npcm7xx.h       |   2 +
- include/hw/misc/npcm7xx_rng.h  |  34 ++++
- hw/arm/npcm7xx.c               |   7 +-
- hw/misc/npcm7xx_rng.c          | 180 +++++++++++++++++++++
- tests/qtest/npcm7xx_rng-test.c | 278 +++++++++++++++++++++++++++++++++
- hw/misc/meson.build            |   1 +
- hw/misc/trace-events           |   4 +
- tests/qtest/meson.build        |   1 +
- 9 files changed, 507 insertions(+), 2 deletions(-)
- create mode 100644 include/hw/misc/npcm7xx_rng.h
- create mode 100644 hw/misc/npcm7xx_rng.c
- create mode 100644 tests/qtest/npcm7xx_rng-test.c
+ docs/system/arm/nuvoton.rst     |   2 +-
+ include/hw/arm/npcm7xx.h        |   2 +
+ include/hw/gpio/npcm7xx_gpio.h  |  55 +++++
+ hw/arm/npcm7xx.c                |  80 ++++++
+ hw/gpio/npcm7xx_gpio.c          | 424 ++++++++++++++++++++++++++++++++
+ tests/qtest/npcm7xx_gpio-test.c | 385 +++++++++++++++++++++++++++++
+ hw/gpio/meson.build             |   1 +
+ hw/gpio/trace-events            |   7 +
+ tests/qtest/meson.build         |   1 +
+ 9 files changed, 956 insertions(+), 1 deletion(-)
+ create mode 100644 include/hw/gpio/npcm7xx_gpio.h
+ create mode 100644 hw/gpio/npcm7xx_gpio.c
+ create mode 100644 tests/qtest/npcm7xx_gpio-test.c
 
 diff --git a/docs/system/arm/nuvoton.rst b/docs/system/arm/nuvoton.rst
-index e3e1a3a3a7..4342434df4 100644
+index 99fc61c740..b00d405d52 100644
 --- a/docs/system/arm/nuvoton.rst
 +++ b/docs/system/arm/nuvoton.rst
-@@ -38,6 +38,7 @@ Supported devices
-  * DDR4 memory controller (dummy interface indicating memory training is done)
-  * OTP controllers (no protection features)
+@@ -40,11 +40,11 @@ Supported devices
   * Flash Interface Unit (FIU; no protection features)
-+ * Random Number Generator (RNG)
+  * Random Number Generator (RNG)
+  * USB host (USBH)
++ * GPIO controller
  
  Missing devices
  ---------------
-@@ -59,7 +60,6 @@ Missing devices
-  * Peripheral SPI controller (PSPI)
-  * Analog to Digital Converter (ADC)
-  * SD/MMC host
-- * Random Number Generator (RNG)
-  * PECI interface
-  * Pulse Width Modulation (PWM)
-  * Tachometer
+ 
+- * GPIO controller
+  * LPC/eSPI host-to-BMC interface, including
+ 
+    * Keyboard and mouse controller interface (KBCI)
 diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
-index 13106af215..761f9b987e 100644
+index aeee1beaaa..5469247e38 100644
 --- a/include/hw/arm/npcm7xx.h
 +++ b/include/hw/arm/npcm7xx.h
-@@ -21,6 +21,7 @@
+@@ -18,6 +18,7 @@
+ 
+ #include "hw/boards.h"
+ #include "hw/cpu/a9mpcore.h"
++#include "hw/gpio/npcm7xx_gpio.h"
  #include "hw/mem/npcm7xx_mc.h"
  #include "hw/misc/npcm7xx_clk.h"
  #include "hw/misc/npcm7xx_gcr.h"
-+#include "hw/misc/npcm7xx_rng.h"
- #include "hw/nvram/npcm7xx_otp.h"
- #include "hw/timer/npcm7xx_timer.h"
- #include "hw/ssi/npcm7xx_fiu.h"
-@@ -75,6 +76,7 @@ typedef struct NPCM7xxState {
-     NPCM7xxOTPState     key_storage;
+@@ -79,6 +80,7 @@ typedef struct NPCM7xxState {
      NPCM7xxOTPState     fuse_array;
      NPCM7xxMCState      mc;
-+    NPCM7xxRNGState     rng;
+     NPCM7xxRNGState     rng;
++    NPCM7xxGPIOState    gpio[8];
+     EHCISysBusState     ehci;
+     OHCISysBusState     ohci;
      NPCM7xxFIUState     fiu[2];
- } NPCM7xxState;
- 
-diff --git a/include/hw/misc/npcm7xx_rng.h b/include/hw/misc/npcm7xx_rng.h
+diff --git a/include/hw/gpio/npcm7xx_gpio.h b/include/hw/gpio/npcm7xx_gpio.h
 new file mode 100644
-index 0000000000..5e85fd439d
+index 0000000000..b1d771bd77
 --- /dev/null
-+++ b/include/hw/misc/npcm7xx_rng.h
-@@ -0,0 +1,34 @@
++++ b/include/hw/gpio/npcm7xx_gpio.h
+@@ -0,0 +1,55 @@
 +/*
-+ * Nuvoton NPCM7xx Random Number Generator.
++ * Nuvoton NPCM7xx General Purpose Input / Output (GPIO)
 + *
 + * Copyright 2020 Google LLC
 + *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * version 2 as published by the Free Software Foundation.
 + *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
 + */
-+#ifndef NPCM7XX_RNG_H
-+#define NPCM7XX_RNG_H
++#ifndef NPCM7XX_GPIO_H
++#define NPCM7XX_GPIO_H
 +
++#include "exec/memory.h"
 +#include "hw/sysbus.h"
 +
-+typedef struct NPCM7xxRNGState {
++/* Number of pins managed by each controller. */
++#define NPCM7XX_GPIO_NR_PINS (32)
++
++/*
++ * Number of registers in our device state structure. Don't change this without
++ * incrementing the version_id in the vmstate.
++ */
++#define NPCM7XX_GPIO_NR_REGS (0x80 / sizeof(uint32_t))
++
++typedef struct NPCM7xxGPIOState {
 +    SysBusDevice parent;
 +
-+    MemoryRegion iomem;
++    /* Properties to be defined by the SoC */
++    uint32_t reset_pu;
++    uint32_t reset_pd;
++    uint32_t reset_osrc;
++    uint32_t reset_odsc;
 +
-+    uint8_t rngcs;
-+    uint8_t rngd;
-+    uint8_t rngmode;
-+} NPCM7xxRNGState;
++    MemoryRegion mmio;
 +
-+#define TYPE_NPCM7XX_RNG "npcm7xx-rng"
-+#define NPCM7XX_RNG(obj) OBJECT_CHECK(NPCM7xxRNGState, (obj), TYPE_NPCM7XX_RNG)
++    qemu_irq irq;
++    qemu_irq output[NPCM7XX_GPIO_NR_PINS];
 +
-+#endif /* NPCM7XX_RNG_H */
++    uint32_t pin_level;
++    uint32_t ext_level;
++    uint32_t ext_driven;
++
++    uint32_t regs[NPCM7XX_GPIO_NR_REGS];
++} NPCM7xxGPIOState;
++
++#define TYPE_NPCM7XX_GPIO "npcm7xx-gpio"
++#define NPCM7XX_GPIO(obj) \
++    OBJECT_CHECK(NPCM7xxGPIOState, (obj), TYPE_NPCM7XX_GPIO)
++
++#endif /* NPCM7XX_GPIO_H */
 diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
-index c341dcab8b..cb4db41c54 100644
+index c1d122576b..47e2b6fc40 100644
 --- a/hw/arm/npcm7xx.c
 +++ b/hw/arm/npcm7xx.c
-@@ -44,6 +44,7 @@
- #define NPCM7XX_GCR_BA          (0xf0800000)
- #define NPCM7XX_CLK_BA          (0xf0801000)
- #define NPCM7XX_MC_BA           (0xf0824000)
-+#define NPCM7XX_RNG_BA          (0xf000b000)
+@@ -96,6 +96,14 @@ enum NPCM7xxInterrupt {
+     NPCM7XX_WDG2_IRQ,                   /* Timer Module 2 Watchdog */
+     NPCM7XX_EHCI_IRQ            = 61,
+     NPCM7XX_OHCI_IRQ            = 62,
++    NPCM7XX_GPIO0_IRQ           = 116,
++    NPCM7XX_GPIO1_IRQ,
++    NPCM7XX_GPIO2_IRQ,
++    NPCM7XX_GPIO3_IRQ,
++    NPCM7XX_GPIO4_IRQ,
++    NPCM7XX_GPIO5_IRQ,
++    NPCM7XX_GPIO6_IRQ,
++    NPCM7XX_GPIO7_IRQ,
+ };
  
- /* Internal AHB SRAM */
- #define NPCM7XX_RAM3_BA         (0xc0008000)
-@@ -256,6 +257,7 @@ static void npcm7xx_init(Object *obj)
-     object_initialize_child(obj, "otp2", &s->fuse_array,
-                             TYPE_NPCM7XX_FUSE_ARRAY);
-     object_initialize_child(obj, "mc", &s->mc, TYPE_NPCM7XX_MC);
-+    object_initialize_child(obj, "rng", &s->rng, TYPE_NPCM7XX_RNG);
+ /* Total number of GIC interrupts, including internal Cortex-A9 interrupts. */
+@@ -130,6 +138,55 @@ static const hwaddr npcm7xx_fiu3_flash_addr[] = {
+     0xb8000000, /* CS3 */
+ };
  
-     for (i = 0; i < ARRAY_SIZE(s->tim); i++) {
++static const struct {
++    hwaddr regs_addr;
++    uint32_t unconnected_pins;
++    uint32_t reset_pu;
++    uint32_t reset_pd;
++    uint32_t reset_osrc;
++    uint32_t reset_odsc;
++} npcm7xx_gpio[] = {
++    {
++        .regs_addr = 0xf0010000,
++        .reset_pu = 0xff03ffff,
++        .reset_pd = 0x00fc0000,
++    }, {
++        .regs_addr = 0xf0011000,
++        .unconnected_pins = 0x0000001e,
++        .reset_pu = 0xfefffe07,
++        .reset_pd = 0x010001e0,
++    }, {
++        .regs_addr = 0xf0012000,
++        .reset_pu = 0x780fffff,
++        .reset_pd = 0x07f00000,
++        .reset_odsc = 0x00700000,
++    }, {
++        .regs_addr = 0xf0013000,
++        .reset_pu = 0x00fc0000,
++        .reset_pd = 0xff000000,
++    }, {
++        .regs_addr = 0xf0014000,
++        .reset_pu = 0xffffffff,
++    }, {
++        .regs_addr = 0xf0015000,
++        .reset_pu = 0xbf83f801,
++        .reset_pd = 0x007c0000,
++        .reset_osrc = 0x000000f1,
++        .reset_odsc = 0x3f9f80f1,
++    }, {
++        .regs_addr = 0xf0016000,
++        .reset_pu = 0xfc00f801,
++        .reset_pd = 0x000007fe,
++        .reset_odsc = 0x00000800,
++    }, {
++        .regs_addr = 0xf0017000,
++        .unconnected_pins = 0xffffff00,
++        .reset_pu = 0x0000007f,
++        .reset_osrc = 0x0000007f,
++        .reset_odsc = 0x0000007f,
++    },
++};
++
+ static const struct {
+     const char *name;
+     hwaddr regs_addr;
+@@ -269,6 +326,10 @@ static void npcm7xx_init(Object *obj)
          object_initialize_child(obj, "tim[*]", &s->tim[i], TYPE_NPCM7XX_TIMER);
-@@ -374,6 +376,10 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-                        serial_hd(i), DEVICE_LITTLE_ENDIAN);
      }
  
-+    /* Random Number Generator. Cannot fail. */
-+    sysbus_realize(SYS_BUS_DEVICE(&s->rng), &error_abort);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->rng), 0, NPCM7XX_RNG_BA);
++    for (i = 0; i < ARRAY_SIZE(s->gpio); i++) {
++        object_initialize_child(obj, "gpio[*]", &s->gpio[i], TYPE_NPCM7XX_GPIO);
++    }
 +
-     /*
-      * Flash Interface Unit (FIU). Can fail if incorrect number of chip selects
-      * specified, but this is a programming error.
-@@ -412,7 +418,6 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
-     create_unimplemented_device("npcm7xx.vdmx",         0xe0800000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.pcierc",       0xe1000000,  64 * KiB);
-     create_unimplemented_device("npcm7xx.kcs",          0xf0007000,   4 * KiB);
--    create_unimplemented_device("npcm7xx.rng",          0xf000b000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.adc",          0xf000c000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.gfxi",         0xf000e000,   4 * KiB);
-     create_unimplemented_device("npcm7xx.gpio[0]",      0xf0010000,   4 * KiB);
-diff --git a/hw/misc/npcm7xx_rng.c b/hw/misc/npcm7xx_rng.c
+     object_initialize_child(obj, "ehci", &s->ehci, TYPE_NPCM7XX_EHCI);
+     object_initialize_child(obj, "ohci", &s->ohci, TYPE_SYSBUS_OHCI);
+ 
+@@ -389,6 +450,25 @@ static void npcm7xx_realize(DeviceState *dev, Error **errp)
+     sysbus_realize(SYS_BUS_DEVICE(&s->rng), &error_abort);
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->rng), 0, NPCM7XX_RNG_BA);
+ 
++    /* GPIO modules. Cannot fail. */
++    QEMU_BUILD_BUG_ON(ARRAY_SIZE(npcm7xx_gpio) != ARRAY_SIZE(s->gpio));
++    for (i = 0; i < ARRAY_SIZE(s->gpio); i++) {
++        Object *obj = OBJECT(&s->gpio[i]);
++
++        object_property_set_uint(obj, "reset-pullup",
++                                 npcm7xx_gpio[i].reset_pu, &error_abort);
++        object_property_set_uint(obj, "reset-pulldown",
++                                 npcm7xx_gpio[i].reset_pd, &error_abort);
++        object_property_set_uint(obj, "reset-osrc",
++                                 npcm7xx_gpio[i].reset_osrc, &error_abort);
++        object_property_set_uint(obj, "reset-odsc",
++                                 npcm7xx_gpio[i].reset_odsc, &error_abort);
++        sysbus_realize(SYS_BUS_DEVICE(obj), &error_abort);
++        sysbus_mmio_map(SYS_BUS_DEVICE(obj), 0, npcm7xx_gpio[i].regs_addr);
++        sysbus_connect_irq(SYS_BUS_DEVICE(obj), 0,
++                           npcm7xx_irq(s, NPCM7XX_GPIO0_IRQ + i));
++    }
++
+     /* USB Host */
+     object_property_set_bool(OBJECT(&s->ehci), "companion-enable", true,
+                              &error_abort);
+diff --git a/hw/gpio/npcm7xx_gpio.c b/hw/gpio/npcm7xx_gpio.c
 new file mode 100644
-index 0000000000..f650f3401f
+index 0000000000..3376901ab1
 --- /dev/null
-+++ b/hw/misc/npcm7xx_rng.c
-@@ -0,0 +1,180 @@
++++ b/hw/gpio/npcm7xx_gpio.c
+@@ -0,0 +1,424 @@
 +/*
-+ * Nuvoton NPCM7xx Random Number Generator.
++ * Nuvoton NPCM7xx General Purpose Input / Output (GPIO)
 + *
 + * Copyright 2020 Google LLC
 + *
-+ * This program is free software; you can redistribute it and/or modify it
-+ * under the terms of the GNU General Public License as published by the
-+ * Free Software Foundation; either version 2 of the License, or
-+ * (at your option) any later version.
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License
++ * version 2 as published by the Free Software Foundation.
 + *
-+ * This program is distributed in the hope that it will be useful, but WITHOUT
-+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License
-+ * for more details.
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
++ * GNU General Public License for more details.
 + */
 +
 +#include "qemu/osdep.h"
 +
-+#include "hw/misc/npcm7xx_rng.h"
++#include "hw/gpio/npcm7xx_gpio.h"
++#include "hw/irq.h"
++#include "hw/qdev-properties.h"
 +#include "migration/vmstate.h"
-+#include "qemu/bitops.h"
-+#include "qemu/guest-random.h"
++#include "qapi/error.h"
 +#include "qemu/log.h"
 +#include "qemu/module.h"
 +#include "qemu/units.h"
-+
 +#include "trace.h"
 +
-+#define NPCM7XX_RNG_REGS_SIZE   (4 * KiB)
++/* 32-bit register indices. */
++enum NPCM7xxGPIORegister {
++    NPCM7XX_GPIO_TLOCK1,
++    NPCM7XX_GPIO_DIN,
++    NPCM7XX_GPIO_POL,
++    NPCM7XX_GPIO_DOUT,
++    NPCM7XX_GPIO_OE,
++    NPCM7XX_GPIO_OTYP,
++    NPCM7XX_GPIO_MP,
++    NPCM7XX_GPIO_PU,
++    NPCM7XX_GPIO_PD,
++    NPCM7XX_GPIO_DBNC,
++    NPCM7XX_GPIO_EVTYP,
++    NPCM7XX_GPIO_EVBE,
++    NPCM7XX_GPIO_OBL0,
++    NPCM7XX_GPIO_OBL1,
++    NPCM7XX_GPIO_OBL2,
++    NPCM7XX_GPIO_OBL3,
++    NPCM7XX_GPIO_EVEN,
++    NPCM7XX_GPIO_EVENS,
++    NPCM7XX_GPIO_EVENC,
++    NPCM7XX_GPIO_EVST,
++    NPCM7XX_GPIO_SPLCK,
++    NPCM7XX_GPIO_MPLCK,
++    NPCM7XX_GPIO_IEM,
++    NPCM7XX_GPIO_OSRC,
++    NPCM7XX_GPIO_ODSC,
++    NPCM7XX_GPIO_DOS = 0x68 / sizeof(uint32_t),
++    NPCM7XX_GPIO_DOC,
++    NPCM7XX_GPIO_OES,
++    NPCM7XX_GPIO_OEC,
++    NPCM7XX_GPIO_TLOCK2 = 0x7c / sizeof(uint32_t),
++    NPCM7XX_GPIO_REGS_END,
++};
 +
-+#define NPCM7XX_RNGCS           (0x00)
-+#define NPCM7XX_RNGCS_CLKP(rv)      extract32(rv, 2, 4)
-+#define NPCM7XX_RNGCS_DVALID        BIT(1)
-+#define NPCM7XX_RNGCS_RNGE          BIT(0)
++#define NPCM7XX_GPIO_REGS_SIZE (4 * KiB)
 +
-+#define NPCM7XX_RNGD            (0x04)
-+#define NPCM7XX_RNGMODE         (0x08)
-+#define NPCM7XX_RNGMODE_NORMAL      (0x02)
++#define NPCM7XX_GPIO_LOCK_MAGIC1 (0xc0defa73)
++#define NPCM7XX_GPIO_LOCK_MAGIC2 (0xc0de1248)
 +
-+static bool npcm7xx_rng_is_enabled(NPCM7xxRNGState *s)
++static void npcm7xx_gpio_update_events(NPCM7xxGPIOState *s, uint32_t din_diff)
 +{
-+    return (s->rngcs & NPCM7XX_RNGCS_RNGE) &&
-+        (s->rngmode == NPCM7XX_RNGMODE_NORMAL);
++    uint32_t din_new = s->regs[NPCM7XX_GPIO_DIN];
++
++    /* Trigger on high level */
++    s->regs[NPCM7XX_GPIO_EVST] |= din_new & ~s->regs[NPCM7XX_GPIO_EVTYP];
++    /* Trigger on both edges */
++    s->regs[NPCM7XX_GPIO_EVST] |= (din_diff & s->regs[NPCM7XX_GPIO_EVTYP]
++                                   & s->regs[NPCM7XX_GPIO_EVBE]);
++    /* Trigger on rising edge */
++    s->regs[NPCM7XX_GPIO_EVST] |= (din_diff & din_new
++                                   & s->regs[NPCM7XX_GPIO_EVTYP]);
++
++    trace_npcm7xx_gpio_update_events(DEVICE(s)->canonical_path,
++                                     s->regs[NPCM7XX_GPIO_EVST],
++                                     s->regs[NPCM7XX_GPIO_EVEN]);
++    qemu_set_irq(s->irq, !!(s->regs[NPCM7XX_GPIO_EVST]
++                            & s->regs[NPCM7XX_GPIO_EVEN]));
 +}
 +
-+static uint64_t npcm7xx_rng_read(void *opaque, hwaddr offset, unsigned size)
++static void npcm7xx_gpio_update_pins(NPCM7xxGPIOState *s, uint32_t diff)
 +{
-+    NPCM7xxRNGState *s = opaque;
-+    uint64_t value = 0;
++    uint32_t drive_en;
++    uint32_t drive_lvl;
++    uint32_t not_driven;
++    uint32_t undefined;
++    uint32_t pin_diff;
++    uint32_t din_old;
 +
-+    switch (offset) {
-+    case NPCM7XX_RNGCS:
-+        /*
-+         * If the RNG is enabled, but we don't have any valid random data, try
-+         * obtaining some and update the DVALID bit accordingly.
-+         */
-+        if (!npcm7xx_rng_is_enabled(s)) {
-+            s->rngcs &= ~NPCM7XX_RNGCS_DVALID;
-+        } else if (!(s->rngcs & NPCM7XX_RNGCS_DVALID)) {
-+            uint8_t byte = 0;
++    /* Calculate level of each pin driven by GPIO controller. */
++    drive_lvl = s->regs[NPCM7XX_GPIO_DOUT] ^ s->regs[NPCM7XX_GPIO_POL];
++    /* If OTYP=1, only drive low (open drain) */
++    drive_en = s->regs[NPCM7XX_GPIO_OE] & ~(s->regs[NPCM7XX_GPIO_OTYP]
++                                            & drive_lvl);
++    /*
++     * If a pin is driven to opposite levels by the GPIO controller and the
++     * external driver, the result is undefined.
++     */
++    undefined = drive_en & s->ext_driven & (drive_lvl ^ s->ext_level);
++    if (undefined) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: pins have multiple drivers: 0x%" PRIx32 "\n",
++                      DEVICE(s)->canonical_path, undefined);
++    }
 +
-+            if (qemu_guest_getrandom(&byte, sizeof(byte), NULL) == 0) {
-+                s->rngd = byte;
-+                s->rngcs |= NPCM7XX_RNGCS_DVALID;
++    not_driven = ~(drive_en | s->ext_driven);
++    pin_diff = s->pin_level;
++
++    /* Set pins to externally driven level. */
++    s->pin_level = s->ext_level & s->ext_driven;
++    /* Set internally driven pins, ignoring any conflicts. */
++    s->pin_level |= drive_lvl & drive_en;
++    /* Pull up undriven pins with internal pull-up enabled. */
++    s->pin_level |= not_driven & s->regs[NPCM7XX_GPIO_PU];
++    /* Pins not driven, pulled up or pulled down are undefined */
++    undefined |= not_driven & ~(s->regs[NPCM7XX_GPIO_PU]
++                                | s->regs[NPCM7XX_GPIO_PD]);
++
++    /* If any pins changed state, update the outgoing GPIOs. */
++    pin_diff ^= s->pin_level;
++    pin_diff |= undefined & diff;
++    if (pin_diff) {
++        int i;
++
++        for (i = 0; i < NPCM7XX_GPIO_NR_PINS; i++) {
++            uint32_t mask = BIT(i);
++            if (pin_diff & mask) {
++                int level = (undefined & mask) ? -1 : !!(s->pin_level & mask);
++                trace_npcm7xx_gpio_set_output(DEVICE(s)->canonical_path,
++                                              i, level);
++                qemu_set_irq(s->output[i], level);
 +            }
 +        }
-+        value = s->rngcs;
++    }
++
++    /* Calculate new value of DIN after masking and polarity setting. */
++    din_old = s->regs[NPCM7XX_GPIO_DIN];
++    s->regs[NPCM7XX_GPIO_DIN] = ((s->pin_level & s->regs[NPCM7XX_GPIO_IEM])
++                                 ^ s->regs[NPCM7XX_GPIO_POL]);
++
++    /* See if any new events triggered because of all this. */
++    npcm7xx_gpio_update_events(s, din_old ^ s->regs[NPCM7XX_GPIO_DIN]);
++}
++
++static bool npcm7xx_gpio_is_locked(NPCM7xxGPIOState *s)
++{
++    return s->regs[NPCM7XX_GPIO_TLOCK1] == 1;
++}
++
++static uint64_t npcm7xx_gpio_regs_read(void *opaque, hwaddr addr,
++                                       unsigned int size)
++{
++    hwaddr reg = addr / sizeof(uint32_t);
++    NPCM7xxGPIOState *s = opaque;
++    uint64_t value = 0;
++
++    switch (reg) {
++    case NPCM7XX_GPIO_TLOCK1 ... NPCM7XX_GPIO_EVEN:
++    case NPCM7XX_GPIO_EVST ... NPCM7XX_GPIO_ODSC:
++        value = s->regs[reg];
 +        break;
-+    case NPCM7XX_RNGD:
-+        if (npcm7xx_rng_is_enabled(s) && s->rngcs & NPCM7XX_RNGCS_DVALID) {
-+            s->rngcs &= ~NPCM7XX_RNGCS_DVALID;
-+            value = s->rngd;
-+            s->rngd = 0;
-+        }
-+        break;
-+    case NPCM7XX_RNGMODE:
-+        value = s->rngmode;
++
++    case NPCM7XX_GPIO_EVENS ... NPCM7XX_GPIO_EVENC:
++    case NPCM7XX_GPIO_DOS ... NPCM7XX_GPIO_TLOCK2:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: read from write-only register 0x%" HWADDR_PRIx "\n",
++                      DEVICE(s)->canonical_path, addr);
 +        break;
 +
 +    default:
 +        qemu_log_mask(LOG_GUEST_ERROR,
 +                      "%s: read from invalid offset 0x%" HWADDR_PRIx "\n",
-+                      DEVICE(s)->canonical_path, offset);
++                      DEVICE(s)->canonical_path, addr);
 +        break;
 +    }
 +
-+    trace_npcm7xx_rng_read(offset, value, size);
++    trace_npcm7xx_gpio_read(DEVICE(s)->canonical_path, addr, value);
 +
 +    return value;
 +}
 +
-+static void npcm7xx_rng_write(void *opaque, hwaddr offset, uint64_t value,
-+                              unsigned size)
++static void npcm7xx_gpio_regs_write(void *opaque, hwaddr addr, uint64_t v,
++                                    unsigned int size)
 +{
-+    NPCM7xxRNGState *s = opaque;
++    hwaddr reg = addr / sizeof(uint32_t);
++    NPCM7xxGPIOState *s = opaque;
++    uint32_t value = v;
++    uint32_t diff;
 +
-+    trace_npcm7xx_rng_write(offset, value, size);
++    trace_npcm7xx_gpio_write(DEVICE(s)->canonical_path, addr, v);
 +
-+    switch (offset) {
-+    case NPCM7XX_RNGCS:
-+        s->rngcs &= NPCM7XX_RNGCS_DVALID;
-+        s->rngcs |= value & ~NPCM7XX_RNGCS_DVALID;
++    if (npcm7xx_gpio_is_locked(s)) {
++        switch (reg) {
++        case NPCM7XX_GPIO_TLOCK1:
++            if (s->regs[NPCM7XX_GPIO_TLOCK2] == NPCM7XX_GPIO_LOCK_MAGIC2 &&
++                value == NPCM7XX_GPIO_LOCK_MAGIC1) {
++                s->regs[NPCM7XX_GPIO_TLOCK1] = 0;
++                s->regs[NPCM7XX_GPIO_TLOCK2] = 0;
++            }
++            break;
++
++        case NPCM7XX_GPIO_TLOCK2:
++            s->regs[reg] = value;
++            break;
++
++        default:
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: write to locked register @ 0x%" HWADDR_PRIx "\n",
++                          DEVICE(s)->canonical_path, addr);
++            break;
++        }
++
++        return;
++    }
++
++    diff = s->regs[reg] ^ value;
++
++    switch (reg) {
++    case NPCM7XX_GPIO_TLOCK1:
++    case NPCM7XX_GPIO_TLOCK2:
++        s->regs[NPCM7XX_GPIO_TLOCK1] = 1;
++        s->regs[NPCM7XX_GPIO_TLOCK2] = 0;
 +        break;
-+    case NPCM7XX_RNGD:
++
++    case NPCM7XX_GPIO_DIN:
 +        qemu_log_mask(LOG_GUEST_ERROR,
 +                      "%s: write to read-only register @ 0x%" HWADDR_PRIx "\n",
-+                      DEVICE(s)->canonical_path, offset);
++                      DEVICE(s)->canonical_path, addr);
 +        break;
-+    case NPCM7XX_RNGMODE:
-+        s->rngmode = value;
++
++    case NPCM7XX_GPIO_POL:
++    case NPCM7XX_GPIO_DOUT:
++    case NPCM7XX_GPIO_OE:
++    case NPCM7XX_GPIO_OTYP:
++    case NPCM7XX_GPIO_PU:
++    case NPCM7XX_GPIO_PD:
++    case NPCM7XX_GPIO_IEM:
++        s->regs[reg] = value;
++        npcm7xx_gpio_update_pins(s, diff);
 +        break;
++
++    case NPCM7XX_GPIO_DOS:
++        s->regs[NPCM7XX_GPIO_DOUT] |= value;
++        npcm7xx_gpio_update_pins(s, value);
++        break;
++    case NPCM7XX_GPIO_DOC:
++        s->regs[NPCM7XX_GPIO_DOUT] &= ~value;
++        npcm7xx_gpio_update_pins(s, value);
++        break;
++    case NPCM7XX_GPIO_OES:
++        s->regs[NPCM7XX_GPIO_OE] |= value;
++        npcm7xx_gpio_update_pins(s, value);
++        break;
++    case NPCM7XX_GPIO_OEC:
++        s->regs[NPCM7XX_GPIO_OE] &= ~value;
++        npcm7xx_gpio_update_pins(s, value);
++        break;
++
++    case NPCM7XX_GPIO_EVTYP:
++    case NPCM7XX_GPIO_EVBE:
++    case NPCM7XX_GPIO_EVEN:
++        s->regs[reg] = value;
++        npcm7xx_gpio_update_events(s, 0);
++        break;
++
++    case NPCM7XX_GPIO_EVENS:
++        s->regs[NPCM7XX_GPIO_EVEN] |= value;
++        npcm7xx_gpio_update_events(s, 0);
++        break;
++    case NPCM7XX_GPIO_EVENC:
++        s->regs[NPCM7XX_GPIO_EVEN] &= ~value;
++        npcm7xx_gpio_update_events(s, 0);
++        break;
++
++    case NPCM7XX_GPIO_EVST:
++        s->regs[reg] &= ~value;
++        npcm7xx_gpio_update_events(s, 0);
++        break;
++
++    case NPCM7XX_GPIO_MP:
++    case NPCM7XX_GPIO_DBNC:
++    case NPCM7XX_GPIO_OSRC:
++    case NPCM7XX_GPIO_ODSC:
++        /* Nothing to do; just store the value. */
++        s->regs[reg] = value;
++        break;
++
++    case NPCM7XX_GPIO_OBL0:
++    case NPCM7XX_GPIO_OBL1:
++    case NPCM7XX_GPIO_OBL2:
++    case NPCM7XX_GPIO_OBL3:
++        s->regs[reg] = value;
++        qemu_log_mask(LOG_UNIMP, "%s: Blinking is not implemented\n",
++                      __func__);
++        break;
++
++    case NPCM7XX_GPIO_SPLCK:
++    case NPCM7XX_GPIO_MPLCK:
++        qemu_log_mask(LOG_UNIMP, "%s: Per-pin lock is not implemented\n",
++                      __func__);
++        break;
++
 +    default:
 +        qemu_log_mask(LOG_GUEST_ERROR,
 +                      "%s: write to invalid offset 0x%" HWADDR_PRIx "\n",
-+                      DEVICE(s)->canonical_path, offset);
++                      DEVICE(s)->canonical_path, addr);
 +        break;
 +    }
 +}
 +
-+static const MemoryRegionOps npcm7xx_rng_ops = {
-+    .read = npcm7xx_rng_read,
-+    .write = npcm7xx_rng_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
++static const MemoryRegionOps npcm7xx_gpio_regs_ops = {
++    .read = npcm7xx_gpio_regs_read,
++    .write = npcm7xx_gpio_regs_write,
++    .endianness = DEVICE_NATIVE_ENDIAN,
 +    .valid = {
-+        .min_access_size = 1,
++        .min_access_size = 4,
 +        .max_access_size = 4,
 +        .unaligned = false,
 +    },
 +};
 +
-+static void npcm7xx_rng_enter_reset(Object *obj, ResetType type)
++static void npcm7xx_gpio_set_input(void *opaque, int line, int level)
 +{
-+    NPCM7xxRNGState *s = NPCM7XX_RNG(obj);
++    NPCM7xxGPIOState *s = opaque;
 +
-+    s->rngcs = 0;
-+    s->rngd = 0;
-+    s->rngmode = 0;
++    trace_npcm7xx_gpio_set_input(DEVICE(s)->canonical_path, line, level);
++
++    g_assert(line >= 0 && line < NPCM7XX_GPIO_NR_PINS);
++
++    s->ext_driven = deposit32(s->ext_driven, line, 1, level >= 0);
++    s->ext_level = deposit32(s->ext_level, line, 1, level > 0);
++
++    npcm7xx_gpio_update_pins(s, BIT(line));
 +}
 +
-+static void npcm7xx_rng_init(Object *obj)
++static void npcm7xx_gpio_enter_reset(Object *obj, ResetType type)
 +{
-+    NPCM7xxRNGState *s = NPCM7XX_RNG(obj);
++    NPCM7xxGPIOState *s = NPCM7XX_GPIO(obj);
 +
-+    memory_region_init_io(&s->iomem, obj, &npcm7xx_rng_ops, s, "regs",
-+                          NPCM7XX_RNG_REGS_SIZE);
-+    sysbus_init_mmio(&s->parent, &s->iomem);
++    memset(s->regs, 0, sizeof(s->regs));
++
++    s->regs[NPCM7XX_GPIO_PU] = s->reset_pu;
++    s->regs[NPCM7XX_GPIO_PD] = s->reset_pd;
++    s->regs[NPCM7XX_GPIO_OSRC] = s->reset_osrc;
++    s->regs[NPCM7XX_GPIO_ODSC] = s->reset_odsc;
 +}
 +
-+static const VMStateDescription vmstate_npcm7xx_rng = {
-+    .name = "npcm7xx-rng",
++static void npcm7xx_gpio_hold_reset(Object *obj)
++{
++    NPCM7xxGPIOState *s = NPCM7XX_GPIO(obj);
++
++    npcm7xx_gpio_update_pins(s, -1);
++}
++
++static void npcm7xx_gpio_init(Object *obj)
++{
++    NPCM7xxGPIOState *s = NPCM7XX_GPIO(obj);
++    DeviceState *dev = DEVICE(obj);
++
++    memory_region_init_io(&s->mmio, obj, &npcm7xx_gpio_regs_ops, s,
++                          "regs", NPCM7XX_GPIO_REGS_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmio);
++    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->irq);
++
++    qdev_init_gpio_in(dev, npcm7xx_gpio_set_input, NPCM7XX_GPIO_NR_PINS);
++    qdev_init_gpio_out(dev, s->output, NPCM7XX_GPIO_NR_PINS);
++}
++
++static const VMStateDescription vmstate_npcm7xx_gpio = {
++    .name = "npcm7xx-gpio",
 +    .version_id = 0,
 +    .minimum_version_id = 0,
 +    .fields = (VMStateField[]) {
-+        VMSTATE_UINT8(rngcs, NPCM7xxRNGState),
-+        VMSTATE_UINT8(rngd, NPCM7xxRNGState),
-+        VMSTATE_UINT8(rngmode, NPCM7xxRNGState),
++        VMSTATE_UINT32(pin_level, NPCM7xxGPIOState),
++        VMSTATE_UINT32(ext_level, NPCM7xxGPIOState),
++        VMSTATE_UINT32(ext_driven, NPCM7xxGPIOState),
++        VMSTATE_UINT32_ARRAY(regs, NPCM7xxGPIOState, NPCM7XX_GPIO_NR_REGS),
 +        VMSTATE_END_OF_LIST(),
 +    },
 +};
 +
-+static void npcm7xx_rng_class_init(ObjectClass *klass, void *data)
++static Property npcm7xx_gpio_properties[] = {
++    /* Bit n set => pin n has pullup enabled by default. */
++    DEFINE_PROP_UINT32("reset-pullup", NPCM7xxGPIOState, reset_pu, 0),
++    /* Bit n set => pin n has pulldown enabled by default. */
++    DEFINE_PROP_UINT32("reset-pulldown", NPCM7xxGPIOState, reset_pd, 0),
++    /* Bit n set => pin n has high slew rate by default. */
++    DEFINE_PROP_UINT32("reset-osrc", NPCM7xxGPIOState, reset_osrc, 0),
++    /* Bit n set => pin n has high drive strength by default. */
++    DEFINE_PROP_UINT32("reset-odsc", NPCM7xxGPIOState, reset_odsc, 0),
++    DEFINE_PROP_END_OF_LIST(),
++};
++
++static void npcm7xx_gpio_class_init(ObjectClass *klass, void *data)
 +{
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    ResettableClass *reset = RESETTABLE_CLASS(klass);
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->desc = "NPCM7xx Random Number Generator";
-+    dc->vmsd = &vmstate_npcm7xx_rng;
-+    rc->phases.enter = npcm7xx_rng_enter_reset;
++    QEMU_BUILD_BUG_ON(NPCM7XX_GPIO_REGS_END > NPCM7XX_GPIO_NR_REGS);
++
++    dc->desc = "NPCM7xx GPIO Controller";
++    dc->vmsd = &vmstate_npcm7xx_gpio;
++    reset->phases.enter = npcm7xx_gpio_enter_reset;
++    reset->phases.hold = npcm7xx_gpio_hold_reset;
++    device_class_set_props(dc, npcm7xx_gpio_properties);
 +}
 +
-+static const TypeInfo npcm7xx_rng_types[] = {
++static const TypeInfo npcm7xx_gpio_types[] = {
 +    {
-+        .name = TYPE_NPCM7XX_RNG,
++        .name = TYPE_NPCM7XX_GPIO,
 +        .parent = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(NPCM7xxRNGState),
-+        .class_init = npcm7xx_rng_class_init,
-+        .instance_init = npcm7xx_rng_init,
++        .instance_size = sizeof(NPCM7xxGPIOState),
++        .class_init = npcm7xx_gpio_class_init,
++        .instance_init = npcm7xx_gpio_init,
 +    },
 +};
-+DEFINE_TYPES(npcm7xx_rng_types);
-diff --git a/tests/qtest/npcm7xx_rng-test.c b/tests/qtest/npcm7xx_rng-test.c
++DEFINE_TYPES(npcm7xx_gpio_types);
+diff --git a/tests/qtest/npcm7xx_gpio-test.c b/tests/qtest/npcm7xx_gpio-test.c
 new file mode 100644
-index 0000000000..da6e639bf6
+index 0000000000..1004cef812
 --- /dev/null
-+++ b/tests/qtest/npcm7xx_rng-test.c
-@@ -0,0 +1,278 @@
++++ b/tests/qtest/npcm7xx_gpio-test.c
+@@ -0,0 +1,385 @@
 +/*
-+ * QTest testcase for the Nuvoton NPCM7xx Random Number Generator
++ * QTest testcase for the Nuvoton NPCM7xx GPIO modules.
 + *
 + * Copyright 2020 Google LLC
 + *
@@ -480,306 +814,415 @@ index 0000000000..da6e639bf6
 + */
 +
 +#include "qemu/osdep.h"
-+
-+#include <math.h>
-+
 +#include "libqtest-single.h"
-+#include "qemu/bitops.h"
 +
-+#define RNG_BASE_ADDR   0xf000b000
++#define NR_GPIO_DEVICES (8)
++#define GPIO(x)         (0xf0010000 + (x) * 0x1000)
++#define GPIO_IRQ(x)     (116 + (x))
 +
-+/* Control and Status Register */
-+#define RNGCS   0x00
-+# define DVALID     BIT(1)  /* Data Valid */
-+# define RNGE       BIT(0)  /* RNG Enable */
-+/* Data Register */
-+#define RNGD    0x04
-+/* Mode Register */
-+#define RNGMODE 0x08
-+# define ROSEL_NORMAL   (2) /* RNG only works in this mode */
++/* GPIO registers */
++#define GP_N_TLOCK1     0x00
++#define GP_N_DIN        0x04 /* Data IN */
++#define GP_N_POL        0x08 /* Polarity */
++#define GP_N_DOUT       0x0c /* Data OUT */
++#define GP_N_OE         0x10 /* Output Enable */
++#define GP_N_OTYP       0x14
++#define GP_N_MP         0x18
++#define GP_N_PU         0x1c /* Pull-up */
++#define GP_N_PD         0x20 /* Pull-down */
++#define GP_N_DBNC       0x24 /* Debounce */
++#define GP_N_EVTYP      0x28 /* Event Type */
++#define GP_N_EVBE       0x2c /* Event Both Edge */
++#define GP_N_OBL0       0x30
++#define GP_N_OBL1       0x34
++#define GP_N_OBL2       0x38
++#define GP_N_OBL3       0x3c
++#define GP_N_EVEN       0x40 /* Event Enable */
++#define GP_N_EVENS      0x44 /* Event Set (enable) */
++#define GP_N_EVENC      0x48 /* Event Clear (disable) */
++#define GP_N_EVST       0x4c /* Event Status */
++#define GP_N_SPLCK      0x50
++#define GP_N_MPLCK      0x54
++#define GP_N_IEM        0x58 /* Input Enable */
++#define GP_N_OSRC       0x5c
++#define GP_N_ODSC       0x60
++#define GP_N_DOS        0x68 /* Data OUT Set */
++#define GP_N_DOC        0x6c /* Data OUT Clear */
++#define GP_N_OES        0x70 /* Output Enable Set */
++#define GP_N_OEC        0x74 /* Output Enable Clear */
++#define GP_N_TLOCK2     0x7c
 +
-+/* Number of bits to collect for randomness tests. */
-+#define TEST_INPUT_BITS  (128)
-+
-+static void rng_writeb(unsigned int offset, uint8_t value)
++static void gpio_unlock(int n)
 +{
-+    writeb(RNG_BASE_ADDR + offset, value);
-+}
-+
-+static uint8_t rng_readb(unsigned int offset)
-+{
-+    return readb(RNG_BASE_ADDR + offset);
-+}
-+
-+/* Disable RNG and set normal ring oscillator mode. */
-+static void rng_reset(void)
-+{
-+    rng_writeb(RNGCS, 0);
-+    rng_writeb(RNGMODE, ROSEL_NORMAL);
-+}
-+
-+/* Reset RNG and then enable it. */
-+static void rng_reset_enable(void)
-+{
-+    rng_reset();
-+    rng_writeb(RNGCS, RNGE);
-+}
-+
-+/* Wait until Data Valid bit is set. */
-+static bool rng_wait_ready(void)
-+{
-+    /* qemu_guest_getrandom may fail. Assume it won't fail 10 times in a row. */
-+    int retries = 10;
-+
-+    while (retries-- > 0) {
-+        if (rng_readb(RNGCS) & DVALID) {
-+            return true;
-+        }
++    if (readl(GPIO(n) + GP_N_TLOCK1) != 0) {
++        writel(GPIO(n) + GP_N_TLOCK2, 0xc0de1248);
++        writel(GPIO(n) + GP_N_TLOCK1, 0xc0defa73);
 +    }
-+
-+    return false;
 +}
 +
-+/*
-+ * Perform a frequency (monobit) test, as defined by NIST SP 800-22, on the
-+ * sequence in buf and return the P-value. This represents the probability of a
-+ * truly random sequence having the same proportion of zeros and ones as the
-+ * sequence in buf.
-+ *
-+ * An RNG which always returns 0x00 or 0xff, or has some bits stuck at 0 or 1,
-+ * will fail this test. However, an RNG which always returns 0x55, 0xf0 or some
-+ * other value with an equal number of zeroes and ones will pass.
-+ */
-+static double calc_monobit_p(const uint8_t *buf, unsigned int len)
++/* Restore the GPIO controller to a sensible default state. */
++static void gpio_reset(int n)
 +{
-+    unsigned int i;
-+    double s_obs;
-+    int sn = 0;
++    gpio_unlock(0);
 +
-+    for (i = 0; i < len; i++) {
-+        /*
-+         * Each 1 counts as 1, each 0 counts as -1.
-+         * s = cp - (8 - cp) = 2 * cp - 8
-+         */
-+        sn += 2 * ctpop8(buf[i]) - 8;
-+    }
-+
-+    s_obs = abs(sn) / sqrt(len * BITS_PER_BYTE);
-+
-+    return erfc(s_obs / sqrt(2));
++    writel(GPIO(n) + GP_N_EVEN, 0x00000000);
++    writel(GPIO(n) + GP_N_EVST, 0xffffffff);
++    writel(GPIO(n) + GP_N_POL, 0x00000000);
++    writel(GPIO(n) + GP_N_DOUT, 0x00000000);
++    writel(GPIO(n) + GP_N_OE, 0x00000000);
++    writel(GPIO(n) + GP_N_OTYP, 0x00000000);
++    writel(GPIO(n) + GP_N_PU, 0xffffffff);
++    writel(GPIO(n) + GP_N_PD, 0x00000000);
++    writel(GPIO(n) + GP_N_IEM, 0xffffffff);
 +}
 +
-+/*
-+ * Perform a runs test, as defined by NIST SP 800-22, and return the P-value.
-+ * This represents the probability of a truly random sequence having the same
-+ * number of runs (i.e. uninterrupted sequences of identical bits) as the
-+ * sequence in buf.
-+ */
-+static double calc_runs_p(const unsigned long *buf, unsigned int nr_bits)
++static void test_dout_to_din(void)
 +{
-+    unsigned int j;
-+    unsigned int k;
-+    int nr_ones = 0;
-+    int vn_obs = 0;
-+    double pi;
++    gpio_reset(0);
 +
-+    g_assert(nr_bits % BITS_PER_LONG == 0);
-+
-+    for (j = 0; j < nr_bits / BITS_PER_LONG; j++) {
-+        nr_ones += __builtin_popcountl(buf[j]);
-+    }
-+    pi = (double)nr_ones / nr_bits;
-+
-+    for (k = 0; k < nr_bits - 1; k++) {
-+        vn_obs += !(test_bit(k, buf) ^ test_bit(k + 1, buf));
-+    }
-+    vn_obs += 1;
-+
-+    return erfc(fabs(vn_obs - 2 * nr_bits * pi * (1.0 - pi))
-+                / (2 * sqrt(2 * nr_bits) * pi * (1.0 - pi)));
++    /* When output is enabled, DOUT should be reflected on DIN. */
++    writel(GPIO(0) + GP_N_OE, 0xffffffff);
++    /* PU and PD shouldn't have any impact on DIN. */
++    writel(GPIO(0) + GP_N_PU, 0xffff0000);
++    writel(GPIO(0) + GP_N_PD, 0x0000ffff);
++    writel(GPIO(0) + GP_N_DOUT, 0x12345678);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DOUT), ==, 0x12345678);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, 0x12345678);
 +}
 +
-+/*
-+ * Verifies that DVALID is clear, and RNGD reads zero, when RNGE is cleared,
-+ * and DVALID eventually becomes set when RNGE is set.
-+ */
-+static void test_enable_disable(void)
++static void test_pullup_pulldown(void)
 +{
-+    /* Disable: DVALID should not be set, and RNGD should read zero */
-+    rng_reset();
-+    g_assert_cmphex(rng_readb(RNGCS), ==, 0);
-+    g_assert_cmphex(rng_readb(RNGD), ==, 0);
++    gpio_reset(0);
 +
-+    /* Enable: DVALID should be set, but we can't make assumptions about RNGD */
-+    rng_writeb(RNGCS, RNGE);
-+    g_assert_true(rng_wait_ready());
-+    g_assert_cmphex(rng_readb(RNGCS), ==, DVALID | RNGE);
-+
-+    /* Disable: DVALID should not be set, and RNGD should read zero */
-+    rng_writeb(RNGCS, 0);
-+    g_assert_cmphex(rng_readb(RNGCS), ==, 0);
-+    g_assert_cmphex(rng_readb(RNGD), ==, 0);
++    /*
++     * When output is disabled, and PD is the inverse of PU, PU should be
++     * reflected on DIN. If PD is not the inverse of PU, the state of DIN is
++     * undefined, so we don't test that.
++     */
++    writel(GPIO(0) + GP_N_OE, 0x00000000);
++    /* DOUT shouldn't have any impact on DIN. */
++    writel(GPIO(0) + GP_N_DOUT, 0xffff0000);
++    writel(GPIO(0) + GP_N_PU, 0x23456789);
++    writel(GPIO(0) + GP_N_PD, ~0x23456789U);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_PU), ==, 0x23456789);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_PD), ==, ~0x23456789U);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, 0x23456789);
 +}
 +
-+/*
-+ * Verifies that the RNG only produces data when RNGMODE is set to 'normal'
-+ * ring oscillator mode.
-+ */
-+static void test_rosel(void)
++static void test_output_enable(void)
 +{
-+    rng_reset_enable();
-+    g_assert_true(rng_wait_ready());
-+    rng_writeb(RNGMODE, 0);
-+    g_assert_false(rng_wait_ready());
-+    rng_writeb(RNGMODE, ROSEL_NORMAL);
-+    g_assert_true(rng_wait_ready());
-+    rng_writeb(RNGMODE, 0);
-+    g_assert_false(rng_wait_ready());
++    gpio_reset(0);
++
++    /*
++     * With all pins weakly pulled down, and DOUT all-ones, OE should be
++     * reflected on DIN.
++     */
++    writel(GPIO(0) + GP_N_DOUT, 0xffffffff);
++    writel(GPIO(0) + GP_N_PU, 0x00000000);
++    writel(GPIO(0) + GP_N_PD, 0xffffffff);
++    writel(GPIO(0) + GP_N_OE, 0x3456789a);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_OE), ==, 0x3456789a);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, 0x3456789a);
++
++    writel(GPIO(0) + GP_N_OEC, 0x00030002);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_OE), ==, 0x34547898);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, 0x34547898);
++
++    writel(GPIO(0) + GP_N_OES, 0x0000f001);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_OE), ==, 0x3454f899);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, 0x3454f899);
 +}
 +
-+/*
-+ * Verifies that a continuous sequence of bits collected after enabling the RNG
-+ * satisfies a monobit test.
-+ */
-+static void test_continuous_monobit(void)
++static void test_open_drain(void)
 +{
-+    uint8_t buf[TEST_INPUT_BITS / BITS_PER_BYTE];
-+    unsigned int i;
++    gpio_reset(0);
 +
-+    rng_reset_enable();
-+    for (i = 0; i < sizeof(buf); i++) {
-+        g_assert_true(rng_wait_ready());
-+        buf[i] = rng_readb(RNGD);
-+    }
-+
-+    g_assert_cmpfloat(calc_monobit_p(buf, sizeof(buf)), >, 0.01);
++    /*
++     * Upper half of DOUT drives a 1 only if the corresponding bit in OTYP is
++     * not set. If OTYP is set, DIN is determined by PU/PD. Lower half of
++     * DOUT always drives a 0 regardless of OTYP; PU/PD have no effect.  When
++     * OE is 0, output is determined by PU/PD; OTYP has no effect.
++     */
++    writel(GPIO(0) + GP_N_OTYP, 0x456789ab);
++    writel(GPIO(0) + GP_N_OE, 0xf0f0f0f0);
++    writel(GPIO(0) + GP_N_DOUT, 0xffff0000);
++    writel(GPIO(0) + GP_N_PU, 0xff00ff00);
++    writel(GPIO(0) + GP_N_PD, 0x00ff00ff);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_OTYP), ==, 0x456789ab);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, 0xff900f00);
 +}
 +
-+/*
-+ * Verifies that a continuous sequence of bits collected after enabling the RNG
-+ * satisfies a runs test.
-+ */
-+static void test_continuous_runs(void)
++static void test_polarity(void)
 +{
-+    union {
-+        unsigned long l[TEST_INPUT_BITS / BITS_PER_LONG];
-+        uint8_t c[TEST_INPUT_BITS / BITS_PER_BYTE];
-+    } buf;
-+    unsigned int i;
++    gpio_reset(0);
 +
-+    rng_reset_enable();
-+    for (i = 0; i < sizeof(buf); i++) {
-+        g_assert_true(rng_wait_ready());
-+        buf.c[i] = rng_readb(RNGD);
-+    }
++    /*
++     * In push-pull mode, DIN should reflect DOUT because the signal is
++     * inverted in both directions.
++     */
++    writel(GPIO(0) + GP_N_OTYP, 0x00000000);
++    writel(GPIO(0) + GP_N_OE, 0xffffffff);
++    writel(GPIO(0) + GP_N_DOUT, 0x56789abc);
++    writel(GPIO(0) + GP_N_POL, 0x6789abcd);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_POL), ==, 0x6789abcd);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, 0x56789abc);
 +
-+    g_assert_cmpfloat(calc_runs_p(buf.l, sizeof(buf) * BITS_PER_BYTE), >, 0.01);
++    /*
++     * When turning off the drivers, DIN should reflect the inverse of the
++     * pulled-up lines.
++     */
++    writel(GPIO(0) + GP_N_OE, 0x00000000);
++    writel(GPIO(0) + GP_N_POL, 0xffffffff);
++    writel(GPIO(0) + GP_N_PU, 0x789abcde);
++    writel(GPIO(0) + GP_N_PD, ~0x789abcdeU);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, ~0x789abcdeU);
++
++    /*
++     * In open-drain mode, DOUT=1 will appear to drive the pin high (since DIN
++     * is inverted), while DOUT=0 will leave the pin floating.
++     */
++    writel(GPIO(0) + GP_N_OTYP, 0xffffffff);
++    writel(GPIO(0) + GP_N_OE, 0xffffffff);
++    writel(GPIO(0) + GP_N_PU, 0xffff0000);
++    writel(GPIO(0) + GP_N_PD, 0x0000ffff);
++    writel(GPIO(0) + GP_N_DOUT, 0xff00ff00);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, 0xff00ffff);
 +}
 +
-+/*
-+ * Verifies that the first data byte collected after enabling the RNG satisfies
-+ * a monobit test.
-+ */
-+static void test_first_byte_monobit(void)
++static void test_input_mask(void)
 +{
-+    /* Enable, collect one byte, disable. Repeat until we have 100 bits. */
-+    uint8_t buf[TEST_INPUT_BITS / BITS_PER_BYTE];
-+    unsigned int i;
++    gpio_reset(0);
 +
-+    rng_reset();
-+    for (i = 0; i < sizeof(buf); i++) {
-+        rng_writeb(RNGCS, RNGE);
-+        g_assert_true(rng_wait_ready());
-+        buf[i] = rng_readb(RNGD);
-+        rng_writeb(RNGCS, 0);
-+    }
-+
-+    g_assert_cmpfloat(calc_monobit_p(buf, sizeof(buf)), >, 0.01);
++    /* IEM=0 forces the input to zero before polarity inversion. */
++    writel(GPIO(0) + GP_N_OE, 0xffffffff);
++    writel(GPIO(0) + GP_N_DOUT, 0xff00ff00);
++    writel(GPIO(0) + GP_N_POL, 0xffff0000);
++    writel(GPIO(0) + GP_N_IEM, 0x87654321);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DIN), ==, 0xff9a4300);
 +}
 +
-+/*
-+ * Verifies that the first data byte collected after enabling the RNG satisfies
-+ * a runs test.
-+ */
-+static void test_first_byte_runs(void)
++static void test_temp_lock(void)
 +{
-+    /* Enable, collect one byte, disable. Repeat until we have 100 bits. */
-+    union {
-+        unsigned long l[TEST_INPUT_BITS / BITS_PER_LONG];
-+        uint8_t c[TEST_INPUT_BITS / BITS_PER_BYTE];
-+    } buf;
-+    unsigned int i;
++    gpio_reset(0);
 +
-+    rng_reset();
-+    for (i = 0; i < sizeof(buf); i++) {
-+        rng_writeb(RNGCS, RNGE);
-+        g_assert_true(rng_wait_ready());
-+        buf.c[i] = rng_readb(RNGD);
-+        rng_writeb(RNGCS, 0);
-+    }
++    writel(GPIO(0) + GP_N_DOUT, 0x98765432);
 +
-+    g_assert_cmpfloat(calc_runs_p(buf.l, sizeof(buf) * BITS_PER_BYTE), >, 0.01);
++    /* Make sure we're unlocked initially. */
++    g_assert_cmphex(readl(GPIO(0) + GP_N_TLOCK1), ==, 0);
++    /* Writing any value to TLOCK1 will lock. */
++    writel(GPIO(0) + GP_N_TLOCK1, 0);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_TLOCK1), ==, 1);
++    writel(GPIO(0) + GP_N_DOUT, 0xa9876543);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DOUT), ==, 0x98765432);
++    /* Now, try to unlock. */
++    gpio_unlock(0);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_TLOCK1), ==, 0);
++    writel(GPIO(0) + GP_N_DOUT, 0xa9876543);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DOUT), ==, 0xa9876543);
++
++    /* Try it again, but write TLOCK2 to lock. */
++    writel(GPIO(0) + GP_N_TLOCK2, 0);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_TLOCK1), ==, 1);
++    writel(GPIO(0) + GP_N_DOUT, 0x98765432);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DOUT), ==, 0xa9876543);
++    /* Now, try to unlock. */
++    gpio_unlock(0);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_TLOCK1), ==, 0);
++    writel(GPIO(0) + GP_N_DOUT, 0x98765432);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_DOUT), ==, 0x98765432);
++}
++
++static void test_events_level(void)
++{
++    gpio_reset(0);
++
++    writel(GPIO(0) + GP_N_EVTYP, 0x00000000);
++    writel(GPIO(0) + GP_N_DOUT, 0xba987654);
++    writel(GPIO(0) + GP_N_OE, 0xffffffff);
++    writel(GPIO(0) + GP_N_EVST, 0xffffffff);
++
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0xba987654);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_DOUT, 0x00000000);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0xba987654);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_EVST, 0x00007654);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0xba980000);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_EVST, 0xba980000);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x00000000);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++}
++
++static void test_events_rising_edge(void)
++{
++    gpio_reset(0);
++
++    writel(GPIO(0) + GP_N_EVTYP, 0xffffffff);
++    writel(GPIO(0) + GP_N_EVBE, 0x00000000);
++    writel(GPIO(0) + GP_N_DOUT, 0xffff0000);
++    writel(GPIO(0) + GP_N_OE, 0xffffffff);
++    writel(GPIO(0) + GP_N_EVST, 0xffffffff);
++
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x00000000);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_DOUT, 0xff00ff00);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x0000ff00);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_DOUT, 0x00ff0000);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x00ffff00);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_EVST, 0x0000f000);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x00ff0f00);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_EVST, 0x00ff0f00);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x00000000);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++}
++
++static void test_events_both_edges(void)
++{
++    gpio_reset(0);
++
++    writel(GPIO(0) + GP_N_EVTYP, 0xffffffff);
++    writel(GPIO(0) + GP_N_EVBE, 0xffffffff);
++    writel(GPIO(0) + GP_N_DOUT, 0xffff0000);
++    writel(GPIO(0) + GP_N_OE, 0xffffffff);
++    writel(GPIO(0) + GP_N_EVST, 0xffffffff);
++
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x00000000);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_DOUT, 0xff00ff00);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x00ffff00);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_DOUT, 0xef00ff08);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x10ffff08);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_EVST, 0x0000f000);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x10ff0f08);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++    writel(GPIO(0) + GP_N_EVST, 0x10ff0f08);
++    g_assert_cmphex(readl(GPIO(0) + GP_N_EVST), ==, 0x00000000);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(0)));
++}
++
++static void test_gpion_irq(gconstpointer test_data)
++{
++    intptr_t n = (intptr_t)test_data;
++
++    gpio_reset(n);
++
++    writel(GPIO(n) + GP_N_EVTYP, 0x00000000);
++    writel(GPIO(n) + GP_N_DOUT, 0x00000000);
++    writel(GPIO(n) + GP_N_OE, 0xffffffff);
++    writel(GPIO(n) + GP_N_EVST, 0xffffffff);
++    writel(GPIO(n) + GP_N_EVEN, 0x00000000);
++
++    /* Trigger an event; interrupts are masked. */
++    g_assert_cmphex(readl(GPIO(n) + GP_N_EVST), ==, 0x00000000);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
++    writel(GPIO(n) + GP_N_DOS, 0x00008000);
++    g_assert_cmphex(readl(GPIO(n) + GP_N_EVST), ==, 0x00008000);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
++
++    /* Unmask all event interrupts; verify that the interrupt fired. */
++    writel(GPIO(n) + GP_N_EVEN, 0xffffffff);
++    g_assert_true(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
++
++    /* Clear the current bit, set a new bit, irq stays asserted. */
++    writel(GPIO(n) + GP_N_DOC, 0x00008000);
++    g_assert_true(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
++    writel(GPIO(n) + GP_N_DOS, 0x00000200);
++    g_assert_true(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
++    writel(GPIO(n) + GP_N_EVST, 0x00008000);
++    g_assert_true(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
++
++    /* Mask/unmask the event that's currently active. */
++    writel(GPIO(n) + GP_N_EVENC, 0x00000200);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
++    writel(GPIO(n) + GP_N_EVENS, 0x00000200);
++    g_assert_true(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
++
++    /* Clear the input and the status bit, irq is deasserted. */
++    writel(GPIO(n) + GP_N_DOC, 0x00000200);
++    g_assert_true(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
++    writel(GPIO(n) + GP_N_EVST, 0x00000200);
++    g_assert_false(qtest_get_irq(global_qtest, GPIO_IRQ(n)));
 +}
 +
 +int main(int argc, char **argv)
 +{
 +    int ret;
++    int i;
 +
 +    g_test_init(&argc, &argv, NULL);
 +    g_test_set_nonfatal_assertions();
 +
-+    qtest_add_func("npcm7xx_rng/enable_disable", test_enable_disable);
-+    qtest_add_func("npcm7xx_rng/rosel", test_rosel);
-+    qtest_add_func("npcm7xx_rng/continuous/monobit", test_continuous_monobit);
-+    qtest_add_func("npcm7xx_rng/continuous/runs", test_continuous_runs);
-+    qtest_add_func("npcm7xx_rng/first_byte/monobit", test_first_byte_monobit);
-+    qtest_add_func("npcm7xx_rng/first_byte/runs", test_first_byte_runs);
++    qtest_add_func("/npcm7xx_gpio/dout_to_din", test_dout_to_din);
++    qtest_add_func("/npcm7xx_gpio/pullup_pulldown", test_pullup_pulldown);
++    qtest_add_func("/npcm7xx_gpio/output_enable", test_output_enable);
++    qtest_add_func("/npcm7xx_gpio/open_drain", test_open_drain);
++    qtest_add_func("/npcm7xx_gpio/polarity", test_polarity);
++    qtest_add_func("/npcm7xx_gpio/input_mask", test_input_mask);
++    qtest_add_func("/npcm7xx_gpio/temp_lock", test_temp_lock);
++    qtest_add_func("/npcm7xx_gpio/events/level", test_events_level);
++    qtest_add_func("/npcm7xx_gpio/events/rising_edge", test_events_rising_edge);
++    qtest_add_func("/npcm7xx_gpio/events/both_edges", test_events_both_edges);
++
++    for (i = 0; i < NR_GPIO_DEVICES; i++) {
++        g_autofree char *test_name =
++            g_strdup_printf("/npcm7xx_gpio/gpio[%d]/irq", i);
++        qtest_add_data_func(test_name, (void *)(intptr_t)i, test_gpion_irq);
++    }
 +
 +    qtest_start("-machine npcm750-evb");
++    qtest_irq_intercept_in(global_qtest, "/machine/soc/a9mpcore/gic");
 +    ret = g_test_run();
 +    qtest_end();
 +
 +    return ret;
 +}
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 793d45b1dc..7ffb44b587 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -59,6 +59,7 @@ softmmu_ss.add(when: 'CONFIG_MAINSTONE', if_true: files('mst_fpga.c'))
- softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files(
-   'npcm7xx_clk.c',
-   'npcm7xx_gcr.c',
-+  'npcm7xx_rng.c',
- ))
- softmmu_ss.add(when: 'CONFIG_OMAP', if_true: files(
-   'omap_clk.c',
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 6054f9adf3..b2f060ad77 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -118,6 +118,10 @@ npcm7xx_clk_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 " valu
- npcm7xx_gcr_read(uint64_t offset, uint32_t value) " offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
- npcm7xx_gcr_write(uint64_t offset, uint32_t value) "offset: 0x%04" PRIx64 " value: 0x%08" PRIx32
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 86cae9a0f3..5c0a7d7b95 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -6,6 +6,7 @@ softmmu_ss.add(when: 'CONFIG_PUV3', if_true: files('puv3_gpio.c'))
+ softmmu_ss.add(when: 'CONFIG_ZAURUS', if_true: files('zaurus.c'))
  
-+# npcm7xx_rng.c
-+npcm7xx_rng_read(uint64_t offset, uint64_t value, unsigned size) "offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
-+npcm7xx_rng_write(uint64_t offset, uint64_t value, unsigned size) "offset: 0x%04" PRIx64 " value: 0x%02" PRIx64 " size: %u"
+ softmmu_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpio.c'))
++softmmu_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_gpio.c'))
+ softmmu_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_gpio.c'))
+ softmmu_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_gpio.c'))
+ softmmu_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_gpio.c'))
+diff --git a/hw/gpio/trace-events b/hw/gpio/trace-events
+index 6e3f048745..46ab9323bd 100644
+--- a/hw/gpio/trace-events
++++ b/hw/gpio/trace-events
+@@ -1,5 +1,12 @@
+ # See docs/devel/tracing.txt for syntax documentation.
+ 
++# npcm7xx_gpio.c
++npcm7xx_gpio_read(const char *id, uint64_t offset, uint64_t value) " %s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
++npcm7xx_gpio_write(const char *id, uint64_t offset, uint64_t value) "%s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
++npcm7xx_gpio_set_input(const char *id, int32_t line, int32_t level) "%s line: %" PRIi32 " level: %" PRIi32
++npcm7xx_gpio_set_output(const char *id, int32_t line, int32_t level) "%s line: %" PRIi32 " level: %" PRIi32
++npcm7xx_gpio_update_events(const char *id, uint32_t evst, uint32_t even) "%s evst: 0x%08" PRIx32 " even: 0x%08" PRIx32
 +
- # stm32f4xx_syscfg.c
- stm32f4xx_syscfg_set_irq(int gpio, int line, int level) "Interupt: GPIO: %d, Line: %d; Level: %d"
- stm32f4xx_pulse_exti(int irq) "Pulse EXTI: %d"
+ # nrf51_gpio.c
+ nrf51_gpio_read(uint64_t offset, uint64_t r) "offset 0x%" PRIx64 " value 0x%" PRIx64
+ nrf51_gpio_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " value 0x%" PRIx64
 diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index f7b0e3ca9d..473935c3a8 100644
+index 473935c3a8..a60e719037 100644
 --- a/tests/qtest/meson.build
 +++ b/tests/qtest/meson.build
-@@ -140,6 +140,7 @@ qtests_arm = \
+@@ -138,6 +138,7 @@ qtests_arm = \
+   ['arm-cpu-features',
+    'microbit-test',
     'm25p80-test',
++   'npcm7xx_gpio-test',
     'npcm7xx_timer-test',
     'npcm7xx_watchdog_timer-test',
-+   'npcm7xx_rng-test',
-    'test-arm-mptimer',
-    'boot-serial-test',
-    'hexloader-test']
+    'npcm7xx_rng-test',
 -- 
 2.29.0.rc1.297.gfa9743e501-goog
 

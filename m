@@ -1,109 +1,107 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5320933lfa;
-        Tue, 20 Oct 2020 19:51:24 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzvCTDmGQlcCWqGDbucZVabfoVz8M4fP+oMm9LnCJdyjjw40nx8x67pfgV+lLu2mhh0mEQM
-X-Received: by 2002:a25:2389:: with SMTP id j131mr1953606ybj.25.1603248684104;
-        Tue, 20 Oct 2020 19:51:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603248684; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5564095lfa;
+        Wed, 21 Oct 2020 02:58:09 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwXtdLIIqLdabQTRVro2Q8EAKDaKqwcS4RUrzz9Lhvbyr6GfdP3DA+a6gDfD5ETUs8kYo3K
+X-Received: by 2002:a25:6609:: with SMTP id a9mr3893260ybc.375.1603274288900;
+        Wed, 21 Oct 2020 02:58:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603274288; cv=none;
         d=google.com; s=arc-20160816;
-        b=of2FWQ29lCwIIsq9XP2NObnEspP79UTz3hx5b28g8UX2PZjkDbSV9juRAg51vgQXk2
-         xhDDuwDbawzuxss70t55zam4bjJiRXkCFiZf4zoEhW65sA1bo/ZfV6REYJaHXH1Div5V
-         VN+pENmA8IKF1H0X9rnOEV+AQ51ePEt0w4siRApJtyJ0GOGgfJ8dnPi2bGAaLU/2S2Jb
-         BTeAm/acv8MwrnviFCJrVe/1zxtFPRuXACLB9Bg+hHxPGU1jy+VqSg5jF5LDHWVvuHFU
-         aFqf4n7JheaKNMr+vilo3SLq0rbF+gxvpv73ofUfTo6IL1U/LordM8T+SCzBwr0Slam7
-         lJdA==
+        b=cjpfoOW0R7XYHal7POTUy350xGmMNM5pA6AhwiAu2JgSvJN7WPw/28Be5hkNSbaTed
+         CoLcj58kfphiTNTtTW0dMZLqslY4T5YCEDdSzi9qkHXlOLpYygYNgT2FJCxiBcH/Ss5j
+         H3SZR+T+psCfjBVaTWR+iWSm7z5Q2zyBS/7aniheDrn6k7BgwOCzaXt1IeRHL2ovfygf
+         uGtxl/g3XHGaMb0vHWYkl2VGXnG+J5GrsrjMxOxTNC1t1tbFK/yZejrIe3G1biKKPIAJ
+         uSQE0/5sLOVY1rISGOqO5ne8syqM3o3+bPEpEw+Ke9QqfSA4qrWLt5D1UP0QXauzRWS2
+         JT5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:user-agent
-         :message-id:in-reply-to:date:references:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=Q7UQ83lvkhz8y4yCGNFKHslN96axvC+cl56JM2KezwA=;
-        b=bPt+JFtI+rJrBK6/wcQ2BU/ic1X6DE+El65O4MkAveOmrNh/mfxkKAzkq79lWraa3T
-         /UWWPeLZWn6B4lp9yCZnGZ4XKqWeHyHiIiz2p1rX+PTNlt/VH7UUKZ8Sni44JtKZAMZe
-         /X3EI3quzRv2RlSXJU8IUXSsALIm0cb4RsjTNHNFB5qzfCsQ4m83UPMLDvHAE/TYq7bD
-         vTU2vQsEY0mgqiXduJ1TWVeE3UlDAYsNmy/DkegN4UNVTcffl6nreeu3sou+POw+3MHX
-         BCfMNqATIeYh4GIjGsZBjBqoQGtzU1zZHfgWDmqPO7LF6m0Wo6wx//RWSqv0NZ0gvOYO
-         GHEg==
+        bh=YW79+lFpEFCqnEQQP8HwytXt4cTJ/sxB7WqwHgsmxdc=;
+        b=CMyctrmzQEvtnbbRGGy2a6VcauO4+IL9N1AAsdGm8LNnprGeg31Ga7B9AVqN2Z+98a
+         SxFwbFWuO1Nj7O7B56t5j4hhIGv5t0IKkxECW+M1QYkqynQ6Y198spxQPD1O2ga7S728
+         tkfxYHILYhogP2urzX8JyLFSyPkbLtZoEayKxQHziYfpIbNwO+NlFT8LxZ596UlYmLQx
+         1qauod94oAFMSSErp92pFy6hjqRsbbKVi0iN2jC4HYGJuIp+4L3Ize64oV9LnjGFNue2
+         4M8NiqRMiv5SdUARN9jyvq2vR8rbM15msNQF4IYbuvj8U5OHO3MzIZYJy83J/bwY2Vr+
+         cD/Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PruCc6BU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GwOpx1LF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 132si685971ybk.433.2020.10.20.19.51.23
+        by mx.google.com with ESMTPS id f32si1988180ybj.104.2020.10.21.02.58.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Oct 2020 19:51:24 -0700 (PDT)
+        Wed, 21 Oct 2020 02:58:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PruCc6BU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=GwOpx1LF;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39204 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:53192 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kV4Dj-0006Dp-Gi
-	for alex.bennee@linaro.org; Tue, 20 Oct 2020 22:51:23 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:34688)
+	id 1kVAsg-0003yS-Ja
+	for alex.bennee@linaro.org; Wed, 21 Oct 2020 05:58:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37594)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kV4DY-0006Dd-6E
- for qemu-arm@nongnu.org; Tue, 20 Oct 2020 22:51:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:30376)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1kV4DW-0003UH-6O
- for qemu-arm@nongnu.org; Tue, 20 Oct 2020 22:51:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603248668;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=Q7UQ83lvkhz8y4yCGNFKHslN96axvC+cl56JM2KezwA=;
- b=PruCc6BUIsqzLh7LdK8J2aldCoPXnJ/JtL2lBtgn7h41xDHDmYBWKEIIs9rillJJ40WIW6
- WlMJNSY1no2eBBCUPhYUa30a/WHWLIWK2H3If7jOdk5KvCR4RaVj48z0GWX+YCs292+eWG
- MTKGUNNgIutaC7souxb7ozn0Dgymgoc=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-420-PD1Or6FcPBG_lgJb0uad5w-1; Tue, 20 Oct 2020 22:51:06 -0400
-X-MC-Unique: PD1Or6FcPBG_lgJb0uad5w-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 2883C804036;
- Wed, 21 Oct 2020 02:51:01 +0000 (UTC)
-Received: from blackfin.pond.sub.org (ovpn-112-182.ams2.redhat.com
- [10.36.112.182])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D326D1002C0E;
- Wed, 21 Oct 2020 02:51:00 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 5A7641132A08; Wed, 21 Oct 2020 04:50:59 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH v2] hw/rtc/twl92230: Silence warnings about missing
- fallthrough statements
-References: <20201020105108.19733-1-thuth@redhat.com>
-Date: Wed, 21 Oct 2020 04:50:59 +0200
-In-Reply-To: <20201020105108.19733-1-thuth@redhat.com> (Thomas Huth's message
- of "Tue, 20 Oct 2020 12:51:08 +0200")
-Message-ID: <877drks358.fsf@dusky.pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/27.1 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kVAsO-0003w7-FM; Wed, 21 Oct 2020 05:57:48 -0400
+Received: from mail-yb1-xb29.google.com ([2607:f8b0:4864:20::b29]:46979)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kVAsM-0006is-Ll; Wed, 21 Oct 2020 05:57:48 -0400
+Received: by mail-yb1-xb29.google.com with SMTP id a4so1237575ybq.13;
+ Wed, 21 Oct 2020 02:57:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=YW79+lFpEFCqnEQQP8HwytXt4cTJ/sxB7WqwHgsmxdc=;
+ b=GwOpx1LFv2J5T8fTWozSy9p4O9djDY9Ym+p6ohR44eHa3+WKWPGxR4FZ6SLepfQwg5
+ 11cGA6eEzMiFuibtIqdesEcl8oi2tJYa6dnR56RMjUSD45UfWQFo5DRcPlVZU84lUFQr
+ pOIF9BHFWOb5FHLVAU7Ci8nJZ8/HhIJZSjU/tMRKEkxJLhQVzaokLdFb2ywUG31Lsx37
+ SRX0RcyWc5d6yrhX+U4C2QfvxzWRHGLiHncebZSI1CXfx5lM+ylbycx/lNs5cDdpQ7uk
+ SS2SH1Kh0kA0GyJf/YxFG0WoikSzmhoacBaqpBwFow1Qneb6rA2tAfVwhFj4vuF9R4JO
+ wmAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=YW79+lFpEFCqnEQQP8HwytXt4cTJ/sxB7WqwHgsmxdc=;
+ b=SCoro3kZtPS+vx/2LwJss3EjV48nvGbyDZfPxLYZsF1V5Ur+CL78+HtWnGvYV/kulX
+ tATiAbX0IvQ3ISYxgbpczC/QfujWebWx8R7cw4emMTql31TkjwNpdcxvjwLmN68lo6vY
+ 5I3y/RjW8lbJtS8RHJyYUh2oiWPOTPOCc5komQN95P9zXIsyPo5odJ9B/LpBCw40HIkN
+ 7h1SUD+lvbD6OqI6vEhmjSjX12xfqtg5zD6z7eeSH1GU45343WomsaWYENT7DbYyFOJF
+ nI/CN3NTqCOoUTeH9JzVCAoWBDXoMlTsZTXQv7aEpJA8QnMaRWWLbFmDekJaIVnlb8Zx
+ O2WQ==
+X-Gm-Message-State: AOAM5311jwVLgcVMl0+LWUyXNNFxquSvwSN/M4QU45DJOUr43nkzo8BB
+ se+eXaggSAuPh1AqcyjQ9hhM/3KZOl7Yp4w01Rk=
+X-Received: by 2002:a25:bb01:: with SMTP id z1mr4139098ybg.387.1603274264623; 
+ Wed, 21 Oct 2020 02:57:44 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=armbru@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 22:12:28
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+References: <20200821172916.1260954-1-f4bug@amsat.org>
+ <20200821172916.1260954-23-f4bug@amsat.org>
+ <e378932a-1de3-83c1-834f-ae6526604cb7@amsat.org>
+In-Reply-To: <e378932a-1de3-83c1-834f-ae6526604cb7@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Wed, 21 Oct 2020 17:57:33 +0800
+Message-ID: <CAEUhbmVFZ8aWdv48D8acdfFRp6WMYL6n=ENeo4hBZfmqE9TrDA@mail.gmail.com>
+Subject: Re: [PULL 22/23] hw/sd: Fix incorrect populated function switch
+ status data structure
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b29;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb29.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,64 +114,72 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Michael Walle <michael@walle.cc>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: lQ5S4X3MDnnl
+X-TUID: 5VIROSg00YGb
 
-Thomas Huth <thuth@redhat.com> writes:
+Hi Philippe,
 
-> When compiling with -Werror=implicit-fallthrough, gcc complains about
-> missing fallthrough annotations in this file. Looking at the code,
-> the fallthrough is indeed wanted here, but instead of adding the
-> annotations, it can be done more efficiently by simply calculating
-> the offset with a subtraction instead of increasing a local variable
-> one by one.
+On Tue, Oct 20, 2020 at 11:18 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.o=
+rg> wrote:
 >
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  v2: Fixed copy-n-paste bug
+> Hi Bin,
 >
->  hw/rtc/twl92230.c | 50 +++++++++++++++++++++++------------------------
->  1 file changed, 24 insertions(+), 26 deletions(-)
+> On 8/21/20 7:29 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > From: Bin Meng <bin.meng@windriver.com>
+> >
+> > At present the function switch status data structure bit [399:376]
+> > are wrongly pupulated. These 3 bytes encode function switch status
+> > for the 6 function groups, with 4 bits per group, starting from
+> > function group 6 at bit 399, then followed by function group 5 at
+> > bit 395, and so on.
+> >
+> > However the codes mistakenly fills in the function group 1 status
+> > at bit 399. This fixes the code logic.
+> >
+> > Fixes: a1bb27b1e9 ("SD card emulation (initial implementation)")
+> > Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > Tested-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+> > Message-Id: <1598021136-49525-1-git-send-email-bmeng.cn@gmail.com>
+> > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > ---
+> >   hw/sd/sd.c | 3 ++-
+> >   1 file changed, 2 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+> > index 7c9d956f113..805e21fc883 100644
+> > --- a/hw/sd/sd.c
+> > +++ b/hw/sd/sd.c
+> > @@ -807,11 +807,12 @@ static void sd_function_switch(SDState *sd, uint3=
+2_t arg)
+> >       sd->data[11] =3D 0x43;
+> >       sd->data[12] =3D 0x80;    /* Supported group 1 functions */
+> >       sd->data[13] =3D 0x03;
+> > +
+> >       for (i =3D 0; i < 6; i ++) {
+> >           new_func =3D (arg >> (i * 4)) & 0x0f;
+> >           if (mode && new_func !=3D 0x0f)
+> >               sd->function_group[i] =3D new_func;
+> > -        sd->data[14 + (i >> 1)] =3D new_func << ((i * 4) & 4);
+> > +        sd->data[16 - (i >> 1)] |=3D new_func << ((i % 2) * 4);
 >
-> diff --git a/hw/rtc/twl92230.c b/hw/rtc/twl92230.c
-> index f838913b37..50b97a1fce 100644
-> --- a/hw/rtc/twl92230.c
-> +++ b/hw/rtc/twl92230.c
-> @@ -271,37 +271,36 @@ static void menelaus_gpio_set(void *opaque, int line, int level)
->  static uint8_t menelaus_read(void *opaque, uint8_t addr)
->  {
->      MenelausState *s = (MenelausState *) opaque;
-> -    int reg = 0;
->  
->      switch (addr) {
->      case MENELAUS_REV:
->          return 0x22;
->  
-> -    case MENELAUS_VCORE_CTRL5: reg ++;
-> -    case MENELAUS_VCORE_CTRL4: reg ++;
-> -    case MENELAUS_VCORE_CTRL3: reg ++;
-> -    case MENELAUS_VCORE_CTRL2: reg ++;
-> +    case MENELAUS_VCORE_CTRL5:
-> +    case MENELAUS_VCORE_CTRL4:
-> +    case MENELAUS_VCORE_CTRL3:
-> +    case MENELAUS_VCORE_CTRL2:
->      case MENELAUS_VCORE_CTRL1:
-> -        return s->vcore[reg];
-> +        return s->vcore[addr - MENELAUS_VCORE_CTRL1];
+> This patch broke the orangepi machine, reproducible running
+> test_arm_orangepi_bionic:
+> https://www.mail-archive.com/qemu-devel@nongnu.org/msg739449.html
+>
+> Can you have a look?
 
-Suggest to count up instead of down:
+Yes, I can take a look. Could you please send more details on how to
+run "test_arm_orangepi_bionic"?
 
-       case MENELAUS_VCORE_CTRL1:
-  +    case MENELAUS_VCORE_CTRL2:
-  +    case MENELAUS_VCORE_CTRL3:
-  +    case MENELAUS_VCORE_CTRL4:
-  +    case MENELAUS_VCORE_CTRL5:
-  -        return s->vcore[reg];
-  +        return s->vcore[addr - MENELAUS_VCORE_CTRL1];
-
-[...]
-
+Regards,
+Bin

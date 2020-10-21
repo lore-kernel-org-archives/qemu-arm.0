@@ -1,133 +1,196 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp289230lfo;
-        Thu, 28 Jan 2021 06:55:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxSzh4miB6Zh/Gjs7yHNngYLCpAH4iyb4pKnk5gmCzgODYno9MoVEBAaYcVZyAgelF4H3bG
-X-Received: by 2002:a25:bf83:: with SMTP id l3mr22099123ybk.401.1611845751113;
-        Thu, 28 Jan 2021 06:55:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1611845751; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6063210lfa;
+        Wed, 21 Oct 2020 14:38:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx5BhEtxum3zbhc2pK1w3wkwMIOeSsgmWM7dGWnNcsSE/NK9B+C+6IuPsEV/YIaLKekPBFj
+X-Received: by 2002:a5b:ec2:: with SMTP id a2mr7871700ybs.13.1603316320503;
+        Wed, 21 Oct 2020 14:38:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603316320; cv=none;
         d=google.com; s=arc-20160816;
-        b=s8hXXJCSO9JNzJgeqrkO/BQQ9AeyFM2QQJ6PDU+ta8ZlsBcmQwFMVik5bA34tCppoY
-         Vw5hKSupokS5jISobyIZ0KBfctfm4sxXKq7a2/xZycpuH4o/Ni5mlTUMXFbXcrxoOCgN
-         uwibbPiigJqqdJVRcF9kPBduqr2KyOktMjgLC+RREiYzFLSqGQwAVT13mOXWZAILuLOK
-         E+3213Q33LiHi0p/o7nkCHLCKevB/NUVI6N9c3BeaBT/bKVk6omZqqV0i/msbg8wV5nd
-         TkbzpEh2X3WThQMRGTlijfrn6a+bhW63RT5ZrYNiku1jwxgbgQZBs2X7OmFr+i+PoW5a
-         1ZAg==
+        b=R5RQVBqgFjQuYh3TaZ3OOpdFDccS5Ll2PTeBVSK7xtJAztqA5rkVaE+98UzwhO2hQS
+         oO9HDOcn880FKcknRF/GZR/gCRcb21Li4m/qnk4PJJWMCrXEKU4HhC6SMP7h3vz6n9sj
+         Br89Bntw1dL6Fe0p2A+Hbev3lTqQ/LeS0A2rk1rXfDCDAQmbsUhyoJ8pSm8HtsZ5LEY5
+         5RCxY73ciGsjLw0tc39hnEEwTNHmpJE3hn5uKPgdAdXI1c5zC2CBNWD5RKuj3rWvcDiA
+         0zONqNNDj1+zvsEMrq4fE5FZV+kjOi57pcP6oK9m38XgBrJMfv4WtkuHC1rUmVM8SVcc
+         PSCA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:cc:list-subscribe:list-help
-         :list-post:list-archive:list-unsubscribe:list-id:precedence
-         :mime-version:message-id:date:subject:to:dkim-signature
-         :content-transfer-encoding;
-        bh=CwIzZY+icXAromiv5CRK9UyIyDpPAQZIjNKEhQpqmVI=;
-        b=HK1wWyj7PkuWdX4cf1ccRB445E2wnNMS7NUucYxrGFvXU5XiAkKcNDaQwhd3ZDwp6N
-         xSvnzs853sLXcvQpCLnQK3tt5GSev6hIh6zz7oKNxydPdbCt130CIZQEu7ax6s6kyj1f
-         5+u2Y/0XYo95wt/GZfW8MHSOv0dN8BoIGbvNjY9j9J1bzXAJI4OVjMDb81BOoYAcuDcW
-         Sxw9yUp/cMaIod/XMwOYyS87T/hYauABSWdiXcLD9U0DUuq6UsoHbNr1yLw5nFnMwVk6
-         LpKv30ABPVyHXSe9M2M+6VNBd1Ny1aJH7P0/UU2qyuR3QSxbgam1/lM8CNKbcoh42izn
-         DPqA==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:cc:to:subject
+         :mime-version:message-id:date:dkim-signature;
+        bh=ScjJWFhv2NX/VPNsattIHwK733aeo0c/y9UBZ2zVqfw=;
+        b=WSh+xAIk4h4Vi1dJi4ORo2jBLu2vSSh/shOnMvAP91CkhMJDtKsmu6yncy9EKeUzHr
+         nm9T5dYXXpQqnI/ZYU5fJZNUhHgVIFwxF968FxsG5Hm9tOAs8y340nj9huxzi4VpHqg/
+         5ANQr9mWrGON48r0p4g+6+7mxPFp7j9UAAR4nWf4DmugMmZFp/Ztn+jeZG0VlCQjmFPk
+         FYM2xdEpdxTta4w2OPhOj3FSNOI4E9b2MmvXXcL5W+czjVEpBQMDj4Pe2Aai2IO3YWfL
+         FznKlCATsfQqxfj6j5jnkqmOkWTuWxHk5risbLfXMJ5QRSEBtySrOrqFJTjwnPfUGzQk
+         XE6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gtri.gatech.edu header.s=unifiededge header.b=rExLeuKU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@google.com header.s=20161025 header.b=uUpwoPni;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s12si5982769ybk.80.2021.01.28.06.55.50
+        by mx.google.com with ESMTPS id y7si3673487ybp.54.2020.10.21.14.38.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 28 Jan 2021 06:55:51 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 21 Oct 2020 14:38:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gtri.gatech.edu header.s=unifiededge header.b=rExLeuKU;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@google.com header.s=20161025 header.b=uUpwoPni;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:57758 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43406 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l58i6-0001zV-G8
-	for alex.bennee@linaro.org; Thu, 28 Jan 2021 09:55:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46572)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kVLoZ-00054C-19
+	for alex.bennee@linaro.org; Wed, 21 Oct 2020 17:38:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48688)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
- id 1l58ZQ-0007bU-KC; Thu, 28 Jan 2021 09:46:52 -0500
-Received: from unifiededge.gtri.gatech.edu ([130.207.205.170]:20950)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Michael.Nawrocki@gtri.gatech.edu>)
- id 1l58ZM-0000c3-5H; Thu, 28 Jan 2021 09:46:52 -0500
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-DKIM-Signature: v=1; a=rsa-sha256; d=gtri.gatech.edu; s=unifiededge;
- c=simple/simple; t=1611844300; h=from:subject:to:date:message-id;
- bh=rgvmgdcyzggiCgfSXThLfGZq+ttZqivy+Z4oyt+0EFk=;
- b=rExLeuKUMJ1LJnvCombSZ1oNHXChZaV4MDSTkuxdCwRGHD9HXDqflhtg3Lo/I1Pog0P/te3FqA4
- KkUn7/2v4WzRKliLsNn68Ds1eKT+GRPBNh0zZjxqNMjgav7fXUaPwm4IutoaqrdASsu3opnr8mE3n
- Y21UeOyI90BTydWdivqleaHUWPjR45p/lm7P2LNJzE2qvXbIx4SPaj1AKmWwuQvFJpXdfPmIRUm/Y
- aHOdxyZtWVkwkp3loFZFAjfN+2qDpqOPqkknu2ZExEqz5O7GJdCWLvbcRmd73cZS9a79IHckAz48j
- rOBK6WNG27InYa7b5ZUQDXgLSzAU9iehNq8A==
-Received: from tybee.core.gtri.org (10.41.1.49) by exedge07.gtri.dmz
- (10.41.104.75) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256) id 15.2.721.2; Thu, 28 Jan 2021
- 09:31:40 -0500
-Received: from localhost.localdomain (10.41.0.30) by tybee.core.gtri.org
- (10.41.1.49) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256) id 15.1.2106.2; Thu, 28
- Jan 2021 09:31:40 -0500
-To: <qemu-arm@nongnu.org>
-Subject: [PATCH 0/1] target/arm: Fix SCR_EL3 migration issue
-Date: Thu, 28 Jan 2021 09:31:01 -0500
-Message-ID: <20210128143102.7834-1-michael.nawrocki@gtri.gatech.edu>
-X-Mailer: git-send-email 2.20.1
-MIME-Version: 1.0
-X-ClientProxiedBy: hatteras.core.gtri.org (10.41.22.72) To tybee.core.gtri.org
- (10.41.1.49)
-Received-SPF: pass client-ip=130.207.205.170;
- envelope-from=Michael.Nawrocki@gtri.gatech.edu;
- helo=unifiededge.gtri.gatech.edu
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3tamQXwsKCk4x80y33u24u3w44w1u.s426u2A-tuBu1343w3A.47w@flex--hskinnemoen.bounces.google.com>)
+ id 1kVLlx-0003DJ-OQ
+ for qemu-devel@nongnu.org; Wed, 21 Oct 2020 17:35:53 -0400
+Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a]:37583)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3tamQXwsKCk4x80y33u24u3w44w1u.s426u2A-tuBu1343w3A.47w@flex--hskinnemoen.bounces.google.com>)
+ id 1kVLlv-00036w-Ks
+ for qemu-devel@nongnu.org; Wed, 21 Oct 2020 17:35:53 -0400
+Received: by mail-pj1-x104a.google.com with SMTP id y7so1945220pjt.2
+ for <qemu-devel@nongnu.org>; Wed, 21 Oct 2020 14:35:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=sender:date:message-id:mime-version:subject:from:to:cc;
+ bh=ScjJWFhv2NX/VPNsattIHwK733aeo0c/y9UBZ2zVqfw=;
+ b=uUpwoPniT75PwzBJLexNgelXa6ohCcxW7YcuzwopeDxiz1GTT/egjmJH25vjcjUtfp
+ LdySthy9bDFFo+GiUvH/g6rj1ftK5UaYs3yUwRkfKfKuVEzqASOtp0eznfypsnhFqTT7
+ qxZ7LyvsxXxOnK1DvNFk6Xx5brppLYt8u6SQzTq10Yx2q+tbBMzyY3hRLLawo4WGXF1K
+ k+NXRx9MmX62pDgSYK3a76hWxkKshGQWStS4SXpph4Pk76Yz36kIAYIZfyqvvIcjDfma
+ U4Su1E/rkM/s9xcG0GYyBPjKKiM0hLkULBj91TI8XyJhfwg1XOlp17N9xrLCdyeLrJc0
+ rM4Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:date:message-id:mime-version:subject:from
+ :to:cc;
+ bh=ScjJWFhv2NX/VPNsattIHwK733aeo0c/y9UBZ2zVqfw=;
+ b=jZszJOuS2NBej6qhWn394p+sfiabbqyP7hLCa6rBK+Wyo8WtsD8hyezpsCx1uQagBc
+ /sWb7FMxB9fiSHhEnwYzfNEcmbUUJfo/xxHntL2KbMkcgDty00V+RSy4bZJYoupHkDbd
+ 8lBk7c9qbfyWhTNrszCvS84GjB3Ak7uzS4tj8wMCoejZceUxiRHkiIDxJhnaXgR6bGF2
+ J14dSexF6uEV8Zje7F9Uu0hK8fr41gEc5drtthCiVjUuqZnEXQokqXFEsXQfkOtrAFzU
+ tvXic5V10k+979DOQ95uBgM1zKagzYMf9b5T0xCrbTNssJOSXTPDxMdbpkH+Tg7xzx0v
+ B07A==
+X-Gm-Message-State: AOAM532TYsSEXCLrmNhz0md7NPizdEeMI07ZeTQxksidPTpjhVN1xLOJ
+ M/yk6BboQOqyQzGoFXZDxDupVjY86a51mXJwcQ==
+X-Received: from skybert.c.googlers.com ([fda3:e722:ac3:10:24:72f4:c0a8:3107])
+ (user=hskinnemoen job=sendgmr) by 2002:a17:90a:e00c:: with SMTP id
+ u12mr5240012pjy.185.1603316149176;
+ Wed, 21 Oct 2020 14:35:49 -0700 (PDT)
+Date: Wed, 21 Oct 2020 14:35:39 -0700
+Message-Id: <20201021213544.3399271-1-hskinnemoen@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.29.0.rc1.297.gfa9743e501-goog
+Subject: [PATCH v2 0/5] Additional NPCM7xx features, devices and tests
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
+ kfting@nuvoton.com, venture@google.com, wuhaotsh@google.com, 
+ Havard Skinnemoen <hskinnemoen@google.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
+ envelope-from=3tamQXwsKCk4x80y33u24u3w44w1u.s426u2A-tuBu1343w3A.47w@flex--hskinnemoen.bounces.google.com;
+ helo=mail-pj1-x104a.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, qemu-devel@nongnu.org,
- Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to:  Mike Nawrocki <michael.nawrocki@gtri.gatech.edu>
-From: michael.nawrocki--- via <qemu-arm@nongnu.org>
-X-TUID: EZnzhDJ7NciW
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to: Havard Skinnemoen <hskinnemoen@google.com>
+From: Havard Skinnemoen via <qemu-devel@nongnu.org>
+X-TUID: /hy78y9vglHT
 
-The SCR_EL3 register reset value (0)  and the value produced when
-writing 0 via the scr_write function (set as writefn in the register
-struct) differ. This causes migration to fail.
+This is an update to the initial NPCM7xx patch series adding
 
-I believe the solution is to specify a raw_writefn for that register.
+  - Watchdog timer support. This makes the reboot command work.
+  - Random Number Generator device.
+  - USB Host Controllers.
+  - GPIO Controllers.
 
-Failing invocation:
-$ qemu-system-arm -machine vexpress-a9 -cpu cortex-a9 -nographic
-QEMU 5.2.0 monitor - type 'help' for more information
-(qemu) migrate "exec:cat > img"
-(qemu) q
-$ qemu-system-arm -machine vexpress-a9 -cpu cortex-a9 -nographic -incoming "exec:cat img"
-qemu-system-arm: error while loading state for instance 0x0 of device 'cpu'
-qemu-system-arm: load of migration failed: Operation not permitted
+The watchdog was implemented by my new teammate Hao Wu. Expect to see more
+patches from him in the near future.
 
+This series has also been pushed to the npcm7xx-5.2-update branch of my github
+repository at
 
-Mike Nawrocki (1):
-  target/arm: Add raw_writefn to SCR_EL3 register
+  https://github.com/hskinnemoen/qemu
 
- target/arm/helper.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes since v1:
+
+  - Dropped the timer test since it's already applied (thanks Peter).
+  - Watchdog reset signaling is now using GPIOs instead of a custom API
+    (thanks Peter for suggesting, and Hao for implementing it).
+  - A few comment updates for the watchdog timer.
+  - VMState added to GPIO device.
+  - Missing VMstate terminator added to RNG device.
+  - Include order in RNG test fixed.
+
+Again, thanks a lot for reviewing!
+
+Havard
+
+Hao Wu (1):
+  hw/timer: Adding watchdog for NPCM7XX Timer.
+
+Havard Skinnemoen (4):
+  Move npcm7xx_timer_reached_zero call out of npcm7xx_timer_pause
+  hw/misc: Add npcm7xx random number generator
+  hw/arm/npcm7xx: Add EHCI and OHCI controllers
+  hw/gpio: Add GPIO model for Nuvoton NPCM7xx
+
+ docs/system/arm/nuvoton.rst               |   6 +-
+ hw/usb/hcd-ehci.h                         |   1 +
+ include/hw/arm/npcm7xx.h                  |   8 +
+ include/hw/gpio/npcm7xx_gpio.h            |  55 +++
+ include/hw/misc/npcm7xx_clk.h             |   2 +
+ include/hw/misc/npcm7xx_rng.h             |  34 ++
+ include/hw/timer/npcm7xx_timer.h          |  48 ++-
+ hw/arm/npcm7xx.c                          | 126 ++++++-
+ hw/gpio/npcm7xx_gpio.c                    | 424 ++++++++++++++++++++++
+ hw/misc/npcm7xx_clk.c                     |  28 ++
+ hw/misc/npcm7xx_rng.c                     | 180 +++++++++
+ hw/timer/npcm7xx_timer.c                  | 270 +++++++++++---
+ hw/usb/hcd-ehci-sysbus.c                  |  19 +
+ tests/qtest/npcm7xx_gpio-test.c           | 385 ++++++++++++++++++++
+ tests/qtest/npcm7xx_rng-test.c            | 278 ++++++++++++++
+ tests/qtest/npcm7xx_watchdog_timer-test.c | 313 ++++++++++++++++
+ MAINTAINERS                               |   1 +
+ hw/gpio/meson.build                       |   1 +
+ hw/gpio/trace-events                      |   7 +
+ hw/misc/meson.build                       |   1 +
+ hw/misc/trace-events                      |   4 +
+ tests/qtest/meson.build                   |   3 +
+ 22 files changed, 2133 insertions(+), 61 deletions(-)
+ create mode 100644 include/hw/gpio/npcm7xx_gpio.h
+ create mode 100644 include/hw/misc/npcm7xx_rng.h
+ create mode 100644 hw/gpio/npcm7xx_gpio.c
+ create mode 100644 hw/misc/npcm7xx_rng.c
+ create mode 100644 tests/qtest/npcm7xx_gpio-test.c
+ create mode 100644 tests/qtest/npcm7xx_rng-test.c
+ create mode 100644 tests/qtest/npcm7xx_watchdog_timer-test.c
 
 -- 
-2.20.1
+2.29.0.rc1.297.gfa9743e501-goog
 

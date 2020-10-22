@@ -1,92 +1,92 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6375499lfa;
-        Thu, 22 Oct 2020 01:26:55 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwD3fCtbSs9ZofnJKZIeynkaRb15udkpjOruet/03rKe16zgxObxGXGE5dQTUaFimt04hCf
-X-Received: by 2002:a25:740e:: with SMTP id p14mr1507914ybc.401.1603355215098;
-        Thu, 22 Oct 2020 01:26:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603355215; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6375533lfa;
+        Thu, 22 Oct 2020 01:26:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwAd+49gf4Rhi1/q6E7JNv8Ti+l8Yq0+SwuWgIlQRPy0wpOMZFni6ZQ5UUVhCVl7WeApR+m
+X-Received: by 2002:a25:4c43:: with SMTP id z64mr1548309yba.290.1603355217933;
+        Thu, 22 Oct 2020 01:26:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603355217; cv=none;
         d=google.com; s=arc-20160816;
-        b=YIyvCdE3PIuEdTkoQwDfkfGjUbqHvHDPS5pVYLiBve1sbOJBOWWL1qcNJKn17LuKOt
-         RiPMjT+7UNY0V3XGRmq5guAPpc9grfRYQEYClyS/WxFeeTYjUwfv9h9kQOaztghRm+0I
-         eYE9AzzkSh5gBLCe7UHKsdsB8suC7Ook7yYqMZwaBKKVtzM9B4+SUyI2xzoYvWibEZ9O
-         vtPtl6c0BEgTRQCoBjfprYXBIHThsRab8X7+pdo4xwiljiOeC1n6a2+Dvqc/hlgMQU+Y
-         QHAlQkbIyPciTRxHOz67WtmZ5hZLTO3IP+XUypgUbpdC3ppiV1FczqlZKybU0mM7qAUp
-         A5aQ==
+        b=u6dhnvGRdx2JiOVYEykJxAdDNc4Eh7mPfYdQUr07o6RxixOL5oW9xXiDRuZAphhooO
+         tNkwSgxtMQOdryxFiMgOEUb12R7qNzudoUQR9QcFNYNeQuFdLSyVpKZkJyKoJhNyDyHQ
+         AQsYAtWL6q+g+cNzJMZAxNJqKDQL/HmDRZriKLA3c8UxNoE7WG3yT/goD0k2kWHYNmei
+         yfmQuN0CKwEIMdroNYLR2nryVSY1nOtX9AXYFS39HAdcB+m2+lm3QvraxhYM7X0Uq/XN
+         IHQYfsyv8aV2KcYK2zY8GBfVjn3mm4Iw5gs5LXJAkmZ4V8hhoI9K+ofK1uyXrpkSfkfU
+         yJVg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=XD4dw2R3d9CjulMuyr2n4XX5/s6JuRNb97NWKT6eQTE=;
-        b=xBpc6PM5VqTw13YDm6+iUzPFb1sUfrLSRAfwMfMwgcf1j7yKv4HqbcDGT86rnkq5br
-         Equ6tpjspClDSeKafzneQYqln9TFeiqc5WIMdBqXuwnZIF/0Wch0QO+9ERfbFWdjqdBf
-         HQ70XLecLTt/A3uYDTumoIc4LXfJbiLSeaXwNWT6nHQI8SLXFbYT/F+jjAZY1NRDspaF
-         5q3KucIWacTV6HOH9IsiMHF5qWBoggAlwSnkNTa4Kp6EJgPQGEju3UM1PTG8QO1ES+lu
-         vftz+JmP07JyBAu+tRbFKwNPDi4HnmrbLRHqeO/UZjyKP4RCetmShrI42Eh35rXPYbHQ
-         iYXQ==
+        bh=hCQdChAQCcyhN8Dlzatt/sr54/BTy2eCSaPSjnCiuAk=;
+        b=I4dcCv24K29Ypttvn+U5r0+dwUGe0L2KOdGQRccWOlfxsSSm3V1hTu+lOSdDYMLgE5
+         vP5uMSZd7ryyoMQwlq/+kr21OqUvUwY3f+POuhx7j0ml+PoudRhPJIHXTW35Bh36pj1J
+         WafT3eQSXTWdnIf6TWu1c6TCKdPQdcIPDreaeLGT4BKsIKpFxZwM8aVc6SdFQM3HRBFx
+         +yTK+G/T7qraO4OSkhCvraYIHneV4ygf+Fk1e4NbVLLjtxIu3Ib/YGq4mhnIDXKcWlv0
+         OwYiVoGkk3HpIV/3SVMIGVN+aSn4olZLaDp54YhTMnYCmLflDp9rhqAeM5SHAREH0mBu
+         ukng==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=RhXfk7QW;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=brlWcWcP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s14si697324ybk.143.2020.10.22.01.26.54
+        by mx.google.com with ESMTPS id b12si601024ybg.190.2020.10.22.01.26.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Oct 2020 01:26:55 -0700 (PDT)
+        Thu, 22 Oct 2020 01:26:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=RhXfk7QW;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=brlWcWcP;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:57976 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:58210 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVVvy-0005jA-F9
-	for alex.bennee@linaro.org; Thu, 22 Oct 2020 04:26:54 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48372)
+	id 1kVVw1-0005ot-7c
+	for alex.bennee@linaro.org; Thu, 22 Oct 2020 04:26:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48396)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
- id 1kVVue-0004JM-27; Thu, 22 Oct 2020 04:25:32 -0400
-Received: from aserp2130.oracle.com ([141.146.126.79]:34168)
+ id 1kVVuf-0004L7-4R; Thu, 22 Oct 2020 04:25:33 -0400
+Received: from aserp2120.oracle.com ([141.146.126.78]:53572)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
- id 1kVVub-00069s-D3; Thu, 22 Oct 2020 04:25:31 -0400
-Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8P3a2114710;
- Thu, 22 Oct 2020 08:25:26 GMT
+ id 1kVVub-00069t-JD; Thu, 22 Oct 2020 04:25:32 -0400
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8OvPr168283;
+ Thu, 22 Oct 2020 08:25:25 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references : mime-version :
  content-type : content-transfer-encoding; s=corp-2020-01-29;
- bh=XD4dw2R3d9CjulMuyr2n4XX5/s6JuRNb97NWKT6eQTE=;
- b=RhXfk7QWGxWIcZlXsNrzrEJtJ3uoSseewoqROLFr31kCuXKADDN0GjWUczT4RP5Cx37i
- lC+gz/R8Nj+d6F+G+yTasbdj7v2S5OPUFSZartzNNp+rHHxymX6BwHjvWPVwEKlKkEFq
- MyeHqOSyj+BQhGeVMxo9Swzuy/oYjd81cxTtCFgZFvhhf6fMBtrVfQ4ImVuTUOlUuYoy
- 1iY2kF6kklrjcyg/VDdT1EUFP6zfJzIc57ekAQ0iXRJkVCpIx1Oc+R14/7pZeuzVhPmY
- lcZZ0SpJfygedbzo+JPvHJG0t3BPdX4JhTtX2dvdHTDG+vUJ2r1wSPFuq5CQcfNSjNvQ TQ== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2130.oracle.com with ESMTP id 347p4b4nw6-1
+ bh=hCQdChAQCcyhN8Dlzatt/sr54/BTy2eCSaPSjnCiuAk=;
+ b=brlWcWcPrOamM6i6Cn/T859qreXgf4XVvMYWowMyNEtzzkN1QDWNirW77EvguQiKYX/4
+ XPsvMak4a3l+vfnf+8I5F4soshQ/eVVyu1FmmQ7c9XnmE4D1CYXvTXO2NRnO0rncCzQB
+ KX78y3jle0ptePKyKOU3ndXxv5LvJ53uLAqbRT6LTGtVVCNPzocsLnD2Hx/XV/4VIDCR
+ ydSgqEkfeNg9RWvYosBLXRzkoxRVtHsjlypUP/C9LCU/43YRoy0B1vcRiEXqvMxCrdR2
+ R1kLPqKTi5UHPTkERSxuduAwRkGyg+sxfBRTP6jLlj5CJj9gGw4vZcxdnXKFh4rbYegB nQ== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 349jrpvpry-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 22 Oct 2020 08:25:26 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8G0Th024182;
+ Thu, 22 Oct 2020 08:25:25 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8G8NX094828;
  Thu, 22 Oct 2020 08:25:25 GMT
 Received: from userv0122.oracle.com (userv0122.oracle.com [156.151.31.75])
- by userp3020.oracle.com with ESMTP id 34ak19kdvc-1
+ by aserp3030.oracle.com with ESMTP id 348a6qbcp6-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
  Thu, 22 Oct 2020 08:25:25 +0000
 Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09M8PLY7000454;
- Thu, 22 Oct 2020 08:25:21 GMT
+ by userv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09M8PN0x000463;
+ Thu, 22 Oct 2020 08:25:23 GMT
 Received: from mihai.localdomain (/10.153.73.25)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 22 Oct 2020 01:25:21 -0700
+ with ESMTP ; Thu, 22 Oct 2020 01:25:23 -0700
 From: Mihai Carabas <mihai.carabas@oracle.com>
 To: peter.maydell@linaro.org, shannon.zhaosl@gmail.com, mst@redhat.com,
  imammedo@redhat.com
-Subject: [PATCH 1/8] hw/misc/pvpanic: Build the pvpanic device for any machine
-Date: Thu, 22 Oct 2020 10:42:49 +0300
-Message-Id: <1603352576-21671-2-git-send-email-mihai.carabas@oracle.com>
+Subject: [PATCH 2/8] hw/misc/pvpanic: Cosmetic renaming
+Date: Thu, 22 Oct 2020 10:42:50 +0300
+Message-Id: <1603352576-21671-3-git-send-email-mihai.carabas@oracle.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1603352576-21671-1-git-send-email-mihai.carabas@oracle.com>
 References: <1603352576-21671-1-git-send-email-mihai.carabas@oracle.com>
@@ -95,21 +95,21 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9781
  signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- mlxscore=0 phishscore=0
- spamscore=0 adultscore=0 mlxlogscore=999 malwarescore=0 bulkscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010220055
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxlogscore=999
+ bulkscore=0 spamscore=0 adultscore=0 suspectscore=1 mlxscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2010220055
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9781
  signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- priorityscore=1501
- clxscore=1015 malwarescore=0 mlxscore=0 bulkscore=0 lowpriorityscore=0
- phishscore=0 adultscore=0 mlxlogscore=999 impostorscore=0 spamscore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ lowpriorityscore=0
+ priorityscore=1501 impostorscore=0 adultscore=0 bulkscore=0 malwarescore=0
+ mlxlogscore=999 mlxscore=0 spamscore=0 suspectscore=1 clxscore=1011
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
  definitions=main-2010220056
-Received-SPF: pass client-ip=141.146.126.79;
- envelope-from=mihai.carabas@oracle.com; helo=aserp2130.oracle.com
+Received-SPF: pass client-ip=141.146.126.78;
+ envelope-from=mihai.carabas@oracle.com; helo=aserp2120.oracle.com
 X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/22 04:25:28
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -43
@@ -137,40 +137,117 @@ Cc: Mihai Carabas <mihai.carabas@oracle.com>, Peng Hao <peng.hao2@zte.com.cn>,
  qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nsman0jMOtOT
+X-TUID: Y00pB04OCnr6
 
 From: Philippe Mathieu-Daudé <philmd@redhat.com>
 
-The 'pvpanic' ISA device can be use by any machine with an ISA bus.
+To ease the MMIO device addition in the next patch, rename:
+- ISA_PVPANIC_DEVICE -> PVPANIC_ISA_DEVICE.
+- PVPanicState -> PVPanicISAState.
+- TYPE_PVPANIC -> TYPE_PVPANIC_ISA.
+- MemoryRegion io -> mr.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
 Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
 Signed-off-by: Mihai Carabas <mihai.carabas@oracle.com>
 ---
- hw/misc/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/misc/pvpanic.c         | 28 ++++++++++++++++------------
+ include/hw/misc/pvpanic.h |  2 +-
+ 2 files changed, 17 insertions(+), 13 deletions(-)
 
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 793d45b..cb250dd 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -11,6 +11,7 @@ softmmu_ss.add(when: 'CONFIG_TMP105', if_true: files('tmp105.c'))
- softmmu_ss.add(when: 'CONFIG_TMP421', if_true: files('tmp421.c'))
- softmmu_ss.add(when: 'CONFIG_UNIMP', if_true: files('unimp.c'))
- softmmu_ss.add(when: 'CONFIG_EMPTY_SLOT', if_true: files('empty_slot.c'))
-+softmmu_ss.add(when: 'CONFIG_PVPANIC', if_true: files('pvpanic.c'))
+diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
+index 598d547..2e085f4 100644
+--- a/hw/misc/pvpanic.c
++++ b/hw/misc/pvpanic.c
+@@ -30,9 +30,9 @@
+ #define PVPANIC_PANICKED        (1 << PVPANIC_F_PANICKED)
+ #define PVPANIC_CRASHLOADED     (1 << PVPANIC_F_CRASHLOADED)
  
- # ARM devices
- softmmu_ss.add(when: 'CONFIG_PL310', if_true: files('arm_l2x0.c'))
-@@ -90,7 +91,6 @@ softmmu_ss.add(when: 'CONFIG_IOTKIT_SYSINFO', if_true: files('iotkit-sysinfo.c')
- softmmu_ss.add(when: 'CONFIG_ARMSSE_CPUID', if_true: files('armsse-cpuid.c'))
- softmmu_ss.add(when: 'CONFIG_ARMSSE_MHU', if_true: files('armsse-mhu.c'))
+-typedef struct PVPanicState PVPanicState;
+-DECLARE_INSTANCE_CHECKER(PVPanicState, ISA_PVPANIC_DEVICE,
+-                         TYPE_PVPANIC)
++typedef struct PVPanicISAState PVPanicISAState;
++DECLARE_INSTANCE_CHECKER(PVPanicISAState, PVPANIC_ISA_DEVICE,
++                         TYPE_PVPANIC_ISA)
  
--softmmu_ss.add(when: 'CONFIG_PVPANIC', if_true: files('pvpanic.c'))
- softmmu_ss.add(when: 'CONFIG_AUX', if_true: files('auxbus.c'))
- softmmu_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_scu.c', 'aspeed_sdmc.c', 'aspeed_xdma.c'))
- softmmu_ss.add(when: 'CONFIG_MSF2', if_true: files('msf2-sysreg.c'))
+ static void handle_event(int event)
+ {
+@@ -56,10 +56,14 @@ static void handle_event(int event)
+ 
+ #include "hw/isa/isa.h"
+ 
+-struct PVPanicState {
++/*
++ * PVPanicISAState for ISA device and
++ * use ioport.
++ */
++struct PVPanicISAState {
+     ISADevice parent_obj;
+ 
+-    MemoryRegion io;
++    MemoryRegion mr;
+     uint16_t ioport;
+ };
+ 
+@@ -86,15 +90,15 @@ static const MemoryRegionOps pvpanic_ops = {
+ 
+ static void pvpanic_isa_initfn(Object *obj)
+ {
+-    PVPanicState *s = ISA_PVPANIC_DEVICE(obj);
++    PVPanicISAState *s = PVPANIC_ISA_DEVICE(obj);
+ 
+-    memory_region_init_io(&s->io, OBJECT(s), &pvpanic_ops, s, "pvpanic", 1);
++    memory_region_init_io(&s->mr, OBJECT(s), &pvpanic_ops, s, "pvpanic", 1);
+ }
+ 
+ static void pvpanic_isa_realizefn(DeviceState *dev, Error **errp)
+ {
+     ISADevice *d = ISA_DEVICE(dev);
+-    PVPanicState *s = ISA_PVPANIC_DEVICE(dev);
++    PVPanicISAState *s = PVPANIC_ISA_DEVICE(dev);
+     FWCfgState *fw_cfg = fw_cfg_find();
+     uint16_t *pvpanic_port;
+ 
+@@ -107,11 +111,11 @@ static void pvpanic_isa_realizefn(DeviceState *dev, Error **errp)
+     fw_cfg_add_file(fw_cfg, "etc/pvpanic-port", pvpanic_port,
+                     sizeof(*pvpanic_port));
+ 
+-    isa_register_ioport(d, &s->io, s->ioport);
++    isa_register_ioport(d, &s->mr, s->ioport);
+ }
+ 
+ static Property pvpanic_isa_properties[] = {
+-    DEFINE_PROP_UINT16(PVPANIC_IOPORT_PROP, PVPanicState, ioport, 0x505),
++    DEFINE_PROP_UINT16(PVPANIC_IOPORT_PROP, PVPanicISAState, ioport, 0x505),
+     DEFINE_PROP_END_OF_LIST(),
+ };
+ 
+@@ -125,9 +129,9 @@ static void pvpanic_isa_class_init(ObjectClass *klass, void *data)
+ }
+ 
+ static TypeInfo pvpanic_isa_info = {
+-    .name          = TYPE_PVPANIC,
++    .name          = TYPE_PVPANIC_ISA,
+     .parent        = TYPE_ISA_DEVICE,
+-    .instance_size = sizeof(PVPanicState),
++    .instance_size = sizeof(PVPanicISAState),
+     .instance_init = pvpanic_isa_initfn,
+     .class_init    = pvpanic_isa_class_init,
+ };
+diff --git a/include/hw/misc/pvpanic.h b/include/hw/misc/pvpanic.h
+index ae0c818..30e9f8f 100644
+--- a/include/hw/misc/pvpanic.h
++++ b/include/hw/misc/pvpanic.h
+@@ -17,7 +17,7 @@
+ 
+ #include "qom/object.h"
+ 
+-#define TYPE_PVPANIC "pvpanic"
++#define TYPE_PVPANIC_ISA "pvpanic"
+ 
+ #define PVPANIC_IOPORT_PROP "ioport"
+ 
 -- 
 1.8.3.1
 

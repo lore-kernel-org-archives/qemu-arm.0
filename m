@@ -1,186 +1,419 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp2206858lfo;
-        Fri, 5 Feb 2021 09:35:48 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy5MByI7c87oEKRc4v9n0pYAo5dEsD0JjlqSXfJ48K5iynsM/nIIXn1GLkj0CK8YnOTuE++
-X-Received: by 2002:a25:5f49:: with SMTP id h9mr7913802ybm.213.1612546548184;
-        Fri, 05 Feb 2021 09:35:48 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612546548; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6660557lfa;
+        Thu, 22 Oct 2020 08:20:29 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwnxrv2KnjRWC5Nhr6BnBNYC1YVx19GjVBMqb99amsLwi0bqXCdEndssYDSF3cB1Jc6trbz
+X-Received: by 2002:a25:a085:: with SMTP id y5mr3662485ybh.211.1603380029028;
+        Thu, 22 Oct 2020 08:20:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603380029; cv=none;
         d=google.com; s=arc-20160816;
-        b=uzFbY9t1A3deXKz0JGF+on2zu7SM6P2rJ8fB3KV6M+Frqd54XNm3xsLd5sL9Vjgur1
-         hjMU2blMtdpxW+4O5cSNRBUz9o29LGx2r74AeEdQZuQMP0vm1XSkY/aeSY2oARtOlSN7
-         j6elku00+OLEheAUzg+5ZnYgB0wcflbqCKUBVvowYqmhVyRbKHXkAZvRWpCa98bnHuaE
-         gRpa3umGe8a5pyLFmSfY4fixmsRTbTuNv2600OVh9vxq5TYjdCBMQj4dUGBVf09Wj0E/
-         9fO1iaoS+5xxfZ/tL1FrD5w4l+rRa+W5aIM6FEZCH7ISl+IpVFrKln4zcmZrR5cox7zF
-         jKRg==
+        b=Pnw3LhUF0L8lsJSK2ANMA4ONPWRu0K3P/+pilgsOEmALaey7iU75xhThO8nQ9dJsOx
+         e1EFPyJAX9BqX4zkVZu6qq5Q+D3VerxVh1jp+Aby0U8QDTf2bKe7pcdEoapqLt/WztlV
+         7SUOCnN4O/GLXjGIZwRWQ0vs+GlJJffsvYOwKkmVS9huE0t9iMz/3KVlpJrrACgpJtgp
+         +gRhfnfZClPV6ngfBj5hBbvACNGLjd1Ig67AjVipyVNlkOK6ASXBTgHQsYiBHdvrHyWD
+         ibDuONFo+ZY+itMrxsfHTnwCLVxpO8QL0tXsxd7AtgRKXSF5hOWCzfn+7CfcXtrCDzLp
+         yMDw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=va0A81ClB5F8EaAWROYYvDbctjGQ9fM8K2ZTOurTkG4=;
-        b=twBom/HeDBUdJibCAhNz0mgTS+5EOJCa01qDhV0adtSF9niz9vplbGwhzcNh8aSQzO
-         LDcSPw42xCHI99xzeNJRZ8JlYbzbsw7DgVwZxWnaIGa7HSE/3unpT9sPeR+xjicbzAXI
-         8mN6O3dBhmS5PCDg/hJeOA4cji+/ofbjQxXLkIqE5iApFo+THQGm/YHpmXuVSrxrxOUZ
-         wzlxtaKkMgDTU3ZMzDe6sZRmpy+Uy11GFPZEm58pSnQP60ouVhYzQJTfEhdGae3UgIht
-         mwntTKiZcWsUkiy0XjirFQWP8Cddd6GWpMLfnHI+hXECQzs3JjMjVrMwDwC9Cqh1+vhc
-         YSeg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=j4wcGv+O3CVKhhtMhUWejxRtOOG+VCmV3MOtkLdUNso=;
+        b=V+jFkDOJlXAk+tfFfN/DFnJruVVkIDV/VQOXLPSzqP9DTMaFFPXotKrqfoD4tViNy7
+         egFgNNubaw0WtiOcH34Otslo266xdB0lQulkpx8VrIv63Mn+0w/bPjSEVDmSf9iTqBba
+         LEKT83CXSIv3tLZ9+vndOzbNQ/9lwzjzci0ILIJB0SicNl7u2vJ9qY99+Qh3faD7B2d9
+         Coyi6Jxj1MKG63Wmh8Ryck5I+sOZKHBYuqzf0sm+lYeRpJcYlAlgag59gMf3tyRssNMS
+         DYVbU9U4o+2zdjSYJ6ffnzJUZvzuguAoHRGWtwchFDGZErb4i5AJx4NNnsHOuEmSRVir
+         az5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TTcdLbMw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AfrXh+Sy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p12si9901582ybl.295.2021.02.05.09.35.48
+        by mx.google.com with ESMTPS id 204si1383823ybe.176.2020.10.22.08.20.28
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 05 Feb 2021 09:35:48 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Oct 2020 08:20:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=TTcdLbMw;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:53156 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AfrXh+Sy;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39578 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l851H-0007pM-I5
-	for alex.bennee@linaro.org; Fri, 05 Feb 2021 12:35:47 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46160)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kVcOC-0001GD-Bi
+	for alex.bennee@linaro.org; Thu, 22 Oct 2020 11:20:28 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36706)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84Tb-0006lN-Nd
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:01:01 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330]:40921)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1kVcO2-0001Dv-Id; Thu, 22 Oct 2020 11:20:18 -0400
+Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:35412)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1l84T8-00043L-NT
- for qemu-devel@nongnu.org; Fri, 05 Feb 2021 12:00:59 -0500
-Received: by mail-wm1-x330.google.com with SMTP id c127so6433852wmf.5
- for <qemu-devel@nongnu.org>; Fri, 05 Feb 2021 09:00:29 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:in-reply-to:references:mime-version
- :content-transfer-encoding;
- bh=va0A81ClB5F8EaAWROYYvDbctjGQ9fM8K2ZTOurTkG4=;
- b=TTcdLbMweCBfuBARQyE3SgXm8z7P6eT37kQBiei0xUACTJXkaefHx3E5pE8m9lc71t
- 2T8BQNDcp2OpDguWB2iaeHOxH30YxoEXkk9idN6qxtysEJAJek3ybHj1edxmj6B43Aub
- wdmjEKQPc5n5ukAII2R7JmS/vTa7KxzZIW1osvEx3hhX5REPjdr6JBrMI+0XYTo5zYlc
- 8fvOtA8YjG8KSVjwok5BVqdDN0UwwciHxved2zwOnoTVkYytqNGp1Z55Y+q8u9nsEFGD
- jHMrWMi/yBdpV12koric9YsSL4UI6QmTSqai9hj4HDJaNJYQwq0wgxAHBjAFY4N90eoy
- N6wQ==
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1kVcNz-00032O-Lz; Thu, 22 Oct 2020 11:20:18 -0400
+Received: by mail-io1-xd43.google.com with SMTP id k6so2045862ior.2;
+ Thu, 22 Oct 2020 08:20:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=j4wcGv+O3CVKhhtMhUWejxRtOOG+VCmV3MOtkLdUNso=;
+ b=AfrXh+SymX82bUN9iZCL4XiOOX42IwlM6V+Cbuvn2Nu6h+IHMp/jlBRMiN0+8u/NDf
+ 2LNDZGEyTWegiWN7FMfCIzn3RHPFVq38Q4X4aW6txXJUjtaW7IJOhKFmYrs3I/f2Aic9
+ vg6AQzAlCX1LIOmsfpl8hGsoCJ0HM6Av2QP1EzA8wlz9jU8ig408xayTPwv7zfOwxTeg
+ txOs4urCYRrQG5A/a4ErhmmmESP8B7v5Xn8g5JNCE7dvjohgNblp1qJ4cifZJ4or159r
+ OJQYKMRCWfBo+JHbY/owrr5jK0425MdUuSHd/B0I4fzlvKgXcXp9YaZCqPLPC5m9yfhO
+ PuXQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=va0A81ClB5F8EaAWROYYvDbctjGQ9fM8K2ZTOurTkG4=;
- b=K9caKbvW1hpMwBU75sCk1CxvpqyHK+6qPFpdwrcr+fq34mnHJK29EuSx/2+7BvrgEv
- dMIyhGH5EB1GH5vMK9ugXVjAvKlpKdiCN7Q6VPzq8cF4UuhZKY34kyoY1KEnUDxQtlD2
- Itgm0bYBzZsDzWFCuO6W2FNjpphO5w2WpV9EmfYJJArlGW+l+ofpzfuvV+hszC4TzR3j
- o+/8WrrtpCOsAU7VV1AQZsrdzwb1bqEN2m+9tRSfZiM335yH/WQnw8jEyPkyZYNosie4
- L5F/hPFSURD7r3BB1QRvs2zSweUVnqf7sByJC7v8imRO1sJtJavbjToay0z5cTkouw1s
- bSHg==
-X-Gm-Message-State: AOAM533a79IYqrRrjw0oSB/CtqL9kiJVJpYQt9cUENZ8o+1RmT6keeqe
- lBalr2zT0nPza3pm6/qSeFC2vw7kKpveIw==
-X-Received: by 2002:a1c:a9d7:: with SMTP id s206mr4469059wme.42.1612544428262; 
- Fri, 05 Feb 2021 09:00:28 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id l11sm12200010wrt.23.2021.02.05.09.00.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 05 Feb 2021 09:00:27 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH 08/24] hw/arm/mps2-tz: Condition IRQ splitting on number of
- CPUs, not board type
-Date: Fri,  5 Feb 2021 17:00:03 +0000
-Message-Id: <20210205170019.25319-9-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
-In-Reply-To: <20210205170019.25319-1-peter.maydell@linaro.org>
-References: <20210205170019.25319-1-peter.maydell@linaro.org>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=j4wcGv+O3CVKhhtMhUWejxRtOOG+VCmV3MOtkLdUNso=;
+ b=rP9EximAveeqbXgxAk/yQgUY5S39bwM7zT97BuKhUrh1U1iTahUObHYWQThGwJ/plr
+ EcwzDJjbxv7asIYw015SVKvMaV5QFa9FhCjTCufveN8eI7SEROX/WTD8kJZBIPV0oP4j
+ WeQ3r66fmj8UbFSM+bHLJjlb0z2PlBndy5G0dEp1ASB9efL4iJxOyapZGKBf97beBX6K
+ xDfNLpU5dUCJMcEPy6OLP7V/QRG4Sd/kubz1/yTXxwkAfxIQR5wLuk2UFvNF9iD/lUiL
+ 8Sehffo/3GRnrpAe6RzNXK3LXWD6l8jSQqZ1IlDFZ6E3tbWz0ubYZU6+FwIg8KbGAWrJ
+ IIBA==
+X-Gm-Message-State: AOAM5325f81moznotNdOUhlOOKnNEHJDgtU4GGChypSe7pekvbcifb/n
+ PBMT9iZQBjBPgSJiX79g92H4+KAH42MZNo8X6lE=
+X-Received: by 2002:a05:6638:d49:: with SMTP id
+ d9mr2193232jak.85.1603380011700; 
+ Thu, 22 Oct 2020 08:20:11 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+References: <20200821172916.1260954-1-f4bug@amsat.org>
+ <20200821172916.1260954-23-f4bug@amsat.org>
+ <e378932a-1de3-83c1-834f-ae6526604cb7@amsat.org>
+ <CAEUhbmVFZ8aWdv48D8acdfFRp6WMYL6n=ENeo4hBZfmqE9TrDA@mail.gmail.com>
+ <a0ac3805-ec48-2a0e-6511-b142bfc6f214@amsat.org>
+ <CAEUhbmVLFJWND=KHexD12mrCMJSO3mcE6k7_tRE+v8pNZjhN_A@mail.gmail.com>
+In-Reply-To: <CAEUhbmVLFJWND=KHexD12mrCMJSO3mcE6k7_tRE+v8pNZjhN_A@mail.gmail.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Thu, 22 Oct 2020 17:20:00 +0200
+Message-ID: <CAPan3Wqx-psi6zgz3NyM1Hu_PHaGq4Nn3_RJf_zueqwXFNKuWg@mail.gmail.com>
+Subject: Re: [PULL 22/23] hw/sd: Fix incorrect populated function switch
+ status data structure
+To: Bin Meng <bmeng.cn@gmail.com>
+Content-Type: multipart/alternative; boundary="00000000000009956405b2440092"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-io1-xd43.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: kmCXOgYxjUZw
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>,
+ qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BVn+tBRIbGfs
 
-In the mps2-tz board code, we handle devices whose interrupt lines
-must be wired to all CPUs by creating IRQ splitter devices for the
-AN521, because it has 2 CPUs, but wiring the device IRQ directly to
-the SSE/IoTKit input for the AN505, which has only 1 CPU.
+--00000000000009956405b2440092
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-We can avoid making an explicit check on the board type constant by
-instead creating and using the IRQ splitters for any board with more
-than 1 CPU.  This avoids having to add extra cases to the
-conditionals every time we add new boards.
+Hi Bin, Philippe,
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
-This removes the only current user of mmc->fpga_type, but we're
-going to want it again later in the series.
----
- hw/arm/mps2-tz.c | 19 +++++++++----------
- 1 file changed, 9 insertions(+), 10 deletions(-)
+If im correct the acceptance tests for orange pi need to be run with a flag
+ARMBIAN_ARTIFACTS_CACHED set that explicitly allows them to be run using
+the armbian mirror. So if you pass that flag on the same command that
+Philippe gave, the rests should run.
 
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 94618ae54d2..4d8e42fa6b6 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -139,17 +139,14 @@ static void make_ram_alias(MemoryRegion *mr, const char *name,
- static qemu_irq get_sse_irq_in(MPS2TZMachineState *mms, int irqno)
- {
-     /* Return a qemu_irq which will signal IRQ n to all CPUs in the SSE. */
--    MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
-+    MachineClass *mc = MACHINE_GET_CLASS(mms);
- 
-     assert(irqno < MPS2TZ_NUMIRQ);
- 
--    switch (mmc->fpga_type) {
--    case FPGA_AN505:
--        return qdev_get_gpio_in_named(DEVICE(&mms->iotkit), "EXP_IRQ", irqno);
--    case FPGA_AN521:
-+    if (mc->max_cpus > 1) {
-         return qdev_get_gpio_in(DEVICE(&mms->cpu_irq_splitter[irqno]), 0);
--    default:
--        g_assert_not_reached();
-+    } else {
-+        return qdev_get_gpio_in_named(DEVICE(&mms->iotkit), "EXP_IRQ", irqno);
-     }
- }
- 
-@@ -437,10 +434,12 @@ static void mps2tz_common_init(MachineState *machine)
-     sysbus_realize(SYS_BUS_DEVICE(&mms->iotkit), &error_fatal);
- 
-     /*
--     * The AN521 needs us to create splitters to feed the IRQ inputs
--     * for each CPU in the SSE-200 from each device in the board.
-+     * If this board has more than one CPU, then we need to create splitters
-+     * to feed the IRQ inputs for each CPU in the SSE from each device in the
-+     * board. If there is only one CPU, we can just wire the device IRQ
-+     * directly to the SSE's IRQ input.
-      */
--    if (mmc->fpga_type == FPGA_AN521) {
-+    if (mc->max_cpus > 1) {
-         for (i = 0; i < MPS2TZ_NUMIRQ; i++) {
-             char *name = g_strdup_printf("mps2-irq-splitter%d", i);
-             SplitIRQ *splitter = &mms->cpu_irq_splitter[i];
--- 
-2.20.1
+I have a follow up question and Im interested to hear your opinion on that
+Philippe. Should we perhaps update the orange pi tests (and maybe others)
+so they use a reliable mirror that we can control, for example a github
+repo? I would be happy to create a repo for that, at least for the orange
+pi tests. But maybe there is already something planned as a more general
+solution for artifacts of other machines as well?
 
+regards,
+Niek
+
+Op do 22 okt. 2020 16:47 schreef Bin Meng <bmeng.cn@gmail.com>:
+
+> Hi Philippe,
+>
+> On Wed, Oct 21, 2020 at 6:07 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
+org>
+> wrote:
+> >
+> > On 10/21/20 11:57 AM, Bin Meng wrote:
+> > > Hi Philippe,
+> > >
+> > > On Tue, Oct 20, 2020 at 11:18 PM Philippe Mathieu-Daud=C3=A9 <
+> f4bug@amsat.org> wrote:
+> > >>
+> > >> Hi Bin,
+> > >>
+> > >> On 8/21/20 7:29 PM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > >>> From: Bin Meng <bin.meng@windriver.com>
+> > >>>
+> > >>> At present the function switch status data structure bit [399:376]
+> > >>> are wrongly pupulated. These 3 bytes encode function switch status
+> > >>> for the 6 function groups, with 4 bits per group, starting from
+> > >>> function group 6 at bit 399, then followed by function group 5 at
+> > >>> bit 395, and so on.
+> > >>>
+> > >>> However the codes mistakenly fills in the function group 1 status
+> > >>> at bit 399. This fixes the code logic.
+> > >>>
+> > >>> Fixes: a1bb27b1e9 ("SD card emulation (initial implementation)")
+> > >>> Signed-off-by: Bin Meng <bin.meng@windriver.com>
+> > >>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > >>> Tested-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
+> > >>> Message-Id: <1598021136-49525-1-git-send-email-bmeng.cn@gmail.com>
+> > >>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> > >>> ---
+> > >>>    hw/sd/sd.c | 3 ++-
+> > >>>    1 file changed, 2 insertions(+), 1 deletion(-)
+> > >>>
+> > >>> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
+> > >>> index 7c9d956f113..805e21fc883 100644
+> > >>> --- a/hw/sd/sd.c
+> > >>> +++ b/hw/sd/sd.c
+> > >>> @@ -807,11 +807,12 @@ static void sd_function_switch(SDState *sd,
+> uint32_t arg)
+> > >>>        sd->data[11] =3D 0x43;
+> > >>>        sd->data[12] =3D 0x80;    /* Supported group 1 functions */
+> > >>>        sd->data[13] =3D 0x03;
+> > >>> +
+> > >>>        for (i =3D 0; i < 6; i ++) {
+> > >>>            new_func =3D (arg >> (i * 4)) & 0x0f;
+> > >>>            if (mode && new_func !=3D 0x0f)
+> > >>>                sd->function_group[i] =3D new_func;
+> > >>> -        sd->data[14 + (i >> 1)] =3D new_func << ((i * 4) & 4);
+> > >>> +        sd->data[16 - (i >> 1)] |=3D new_func << ((i % 2) * 4);
+> > >>
+> > >> This patch broke the orangepi machine, reproducible running
+> > >> test_arm_orangepi_bionic:
+> > >> https://www.mail-archive.com/qemu-devel@nongnu.org/msg739449.html
+> > >>
+> > >> Can you have a look?
+> > >
+> > > Yes, I can take a look. Could you please send more details on how to
+> > > run "test_arm_orangepi_bionic"?
+> >
+> > Looking at the previous link, I think this should work:
+> >
+> > $ make check-venv qemu-system-arm
+> > $ AVOCADO_ALLOW_LARGE_STORAGE=3D1 \
+> >    tests/venv/bin/python -m \
+> >      avocado --show=3Dapp,console run \
+> >        run -t machine:orangepi-pc tests/acceptance
+> >
+>
+> I tried the above command in my build tree, and got:
+>
+> avocado run: error: unrecognized arguments: tests/acceptance
+> Perhaps a plugin is missing; run 'avocado plugins' to list the installed
+> ones
+>
+> I switched to `make check-acceptance` which seems to work, however not
+> for orangepi-pc related tests?
+>
+>  (09/32)
+> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
+:
+> SKIP: Test artifacts fetched from unreliable apt.armbian.com
+>  (10/32)
+> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
+_initrd:
+> SKIP: Test artifacts fetched from unreliable apt.armbian.com
+>  (11/32)
+> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
+_sd:
+> SKIP: Test artifacts fetched from unreliable apt.armbian.com
+>  (12/32)
+> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
+_bionic:
+> SKIP: storage limited
+>  (13/32)
+> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
+_uboot_netbsd9:
+> SKIP: storage limited
+>
+> Any ideas?
+>
+> Regards,
+> Bin
+>
+
+--00000000000009956405b2440092
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto">Hi Bin, Philippe,<div dir=3D"auto"><br></div><div dir=3D"=
+auto">If im correct the acceptance tests for orange pi need to be run with =
+a flag ARMBIAN_ARTIFACTS_CACHED set that explicitly allows them to be run u=
+sing the armbian mirror. So if you pass that flag on the same command that =
+Philippe gave, the rests should run.</div><div dir=3D"auto"><br></div><div =
+dir=3D"auto">I have a follow up question and Im interested to hear your opi=
+nion on that Philippe. Should we perhaps update the orange pi tests (and ma=
+ybe others) so they use a reliable mirror that we can control, for example =
+a github repo? I would be happy to create a repo for that, at least for the=
+ orange pi tests. But maybe there is already something planned as a more ge=
+neral solution for artifacts of other machines as well?</div><div dir=3D"au=
+to"><br></div><div dir=3D"auto">regards,</div><div dir=3D"auto">Niek</div><=
+/div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">O=
+p do 22 okt. 2020 16:47 schreef Bin Meng &lt;<a href=3D"mailto:bmeng.cn@gma=
+il.com">bmeng.cn@gmail.com</a>&gt;:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"=
+>Hi Philippe,<br>
+<br>
+On Wed, Oct 21, 2020 at 6:07 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"=
+mailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.or=
+g</a>&gt; wrote:<br>
+&gt;<br>
+&gt; On 10/21/20 11:57 AM, Bin Meng wrote:<br>
+&gt; &gt; Hi Philippe,<br>
+&gt; &gt;<br>
+&gt; &gt; On Tue, Oct 20, 2020 at 11:18 PM Philippe Mathieu-Daud=C3=A9 &lt;=
+<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4b=
+ug@amsat.org</a>&gt; wrote:<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; Hi Bin,<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; On 8/21/20 7:29 PM, Philippe Mathieu-Daud=C3=A9 wrote:<br>
+&gt; &gt;&gt;&gt; From: Bin Meng &lt;<a href=3D"mailto:bin.meng@windriver.c=
+om" target=3D"_blank" rel=3D"noreferrer">bin.meng@windriver.com</a>&gt;<br>
+&gt; &gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt; At present the function switch status data structure bit =
+[399:376]<br>
+&gt; &gt;&gt;&gt; are wrongly pupulated. These 3 bytes encode function swit=
+ch status<br>
+&gt; &gt;&gt;&gt; for the 6 function groups, with 4 bits per group, startin=
+g from<br>
+&gt; &gt;&gt;&gt; function group 6 at bit 399, then followed by function gr=
+oup 5 at<br>
+&gt; &gt;&gt;&gt; bit 395, and so on.<br>
+&gt; &gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt; However the codes mistakenly fills in the function group =
+1 status<br>
+&gt; &gt;&gt;&gt; at bit 399. This fixes the code logic.<br>
+&gt; &gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt; Fixes: a1bb27b1e9 (&quot;SD card emulation (initial imple=
+mentation)&quot;)<br>
+&gt; &gt;&gt;&gt; Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@wi=
+ndriver.com" target=3D"_blank" rel=3D"noreferrer">bin.meng@windriver.com</a=
+>&gt;<br>
+&gt; &gt;&gt;&gt; Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"m=
+ailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.org=
+</a>&gt;<br>
+&gt; &gt;&gt;&gt; Tested-by: Sai Pavan Boddu &lt;<a href=3D"mailto:sai.pava=
+n.boddu@xilinx.com" target=3D"_blank" rel=3D"noreferrer">sai.pavan.boddu@xi=
+linx.com</a>&gt;<br>
+&gt; &gt;&gt;&gt; Message-Id: &lt;<a href=3D"mailto:1598021136-49525-1-git-=
+send-email-bmeng.cn@gmail.com" target=3D"_blank" rel=3D"noreferrer">1598021=
+136-49525-1-git-send-email-bmeng.cn@gmail.com</a>&gt;<br>
+&gt; &gt;&gt;&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D=
+"mailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.o=
+rg</a>&gt;<br>
+&gt; &gt;&gt;&gt; ---<br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 hw/sd/sd.c | 3 ++-<br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 1 file changed, 2 insertions(+), 1 deletion(=
+-)<br>
+&gt; &gt;&gt;&gt;<br>
+&gt; &gt;&gt;&gt; diff --git a/hw/sd/sd.c b/hw/sd/sd.c<br>
+&gt; &gt;&gt;&gt; index 7c9d956f113..805e21fc883 100644<br>
+&gt; &gt;&gt;&gt; --- a/hw/sd/sd.c<br>
+&gt; &gt;&gt;&gt; +++ b/hw/sd/sd.c<br>
+&gt; &gt;&gt;&gt; @@ -807,11 +807,12 @@ static void sd_function_switch(SDSt=
+ate *sd, uint32_t arg)<br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[11] =3D 0x43;<br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[12] =3D 0x80;=C2=
+=A0 =C2=A0 /* Supported group 1 functions */<br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[13] =3D 0x03;<br>
+&gt; &gt;&gt;&gt; +<br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 for (i =3D 0; i &lt; 6; i ++) =
+{<br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 new_func =3D (ar=
+g &gt;&gt; (i * 4)) &amp; 0x0f;<br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (mode &amp;&a=
+mp; new_func !=3D 0x0f)<br>
+&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 sd=
+-&gt;function_group[i] =3D new_func;<br>
+&gt; &gt;&gt;&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[14 + (i &gt;&gt;=
+ 1)] =3D new_func &lt;&lt; ((i * 4) &amp; 4);<br>
+&gt; &gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[16 - (i &gt;&gt;=
+ 1)] |=3D new_func &lt;&lt; ((i % 2) * 4);<br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; This patch broke the orangepi machine, reproducible running<b=
+r>
+&gt; &gt;&gt; test_arm_orangepi_bionic:<br>
+&gt; &gt;&gt; <a href=3D"https://www.mail-archive.com/qemu-devel@nongnu.org=
+/msg739449.html" rel=3D"noreferrer noreferrer" target=3D"_blank">https://ww=
+w.mail-archive.com/qemu-devel@nongnu.org/msg739449.html</a><br>
+&gt; &gt;&gt;<br>
+&gt; &gt;&gt; Can you have a look?<br>
+&gt; &gt;<br>
+&gt; &gt; Yes, I can take a look. Could you please send more details on how=
+ to<br>
+&gt; &gt; run &quot;test_arm_orangepi_bionic&quot;?<br>
+&gt;<br>
+&gt; Looking at the previous link, I think this should work:<br>
+&gt;<br>
+&gt; $ make check-venv qemu-system-arm<br>
+&gt; $ AVOCADO_ALLOW_LARGE_STORAGE=3D1 \<br>
+&gt;=C2=A0 =C2=A0 tests/venv/bin/python -m \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 avocado --show=3Dapp,console run \<br>
+&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 run -t machine:orangepi-pc tests/acceptance=
+<br>
+&gt;<br>
+<br>
+I tried the above command in my build tree, and got:<br>
+<br>
+avocado run: error: unrecognized arguments: tests/acceptance<br>
+Perhaps a plugin is missing; run &#39;avocado plugins&#39; to list the inst=
+alled ones<br>
+<br>
+I switched to `make check-acceptance` which seems to work, however not<br>
+for orangepi-pc related tests?<br>
+<br>
+=C2=A0(09/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
+arm_orangepi:<br>
+SKIP: Test artifacts fetched from unreliable <a href=3D"http://apt.armbian.=
+com" rel=3D"noreferrer noreferrer" target=3D"_blank">apt.armbian.com</a><br=
+>
+=C2=A0(10/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
+arm_orangepi_initrd:<br>
+SKIP: Test artifacts fetched from unreliable <a href=3D"http://apt.armbian.=
+com" rel=3D"noreferrer noreferrer" target=3D"_blank">apt.armbian.com</a><br=
+>
+=C2=A0(11/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
+arm_orangepi_sd:<br>
+SKIP: Test artifacts fetched from unreliable <a href=3D"http://apt.armbian.=
+com" rel=3D"noreferrer noreferrer" target=3D"_blank">apt.armbian.com</a><br=
+>
+=C2=A0(12/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
+arm_orangepi_bionic:<br>
+SKIP: storage limited<br>
+=C2=A0(13/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
+arm_orangepi_uboot_netbsd9:<br>
+SKIP: storage limited<br>
+<br>
+Any ideas?<br>
+<br>
+Regards,<br>
+Bin<br>
+</blockquote></div>
+
+--00000000000009956405b2440092--

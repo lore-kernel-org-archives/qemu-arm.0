@@ -1,109 +1,115 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6634151lfa;
-        Thu, 22 Oct 2020 07:48:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxyOJLjORO+EbgONqGlkiscNbf14WusGKLiwwhlg6LtchKPi4BYcroGR6vMTHL59AX8uPUN
-X-Received: by 2002:a25:2006:: with SMTP id g6mr2454108ybg.199.1603378088238;
-        Thu, 22 Oct 2020 07:48:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603378088; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp16731lfa;
+        Thu, 22 Oct 2020 15:06:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxb95hJM6Nw2AMwra+wX0n4dGAmpe8RpWb6+7mI0FXKITZES118FccLQ6eTrP+Mh1Za5w+O
+X-Received: by 2002:a05:620a:4156:: with SMTP id k22mr3079392qko.441.1603404400358;
+        Thu, 22 Oct 2020 15:06:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603404400; cv=none;
         d=google.com; s=arc-20160816;
-        b=TAcodnCmxBoif74Wmc0ypeEK/xd5Syop4bRF9lAxvCAZwDyY6UCfBJLrPVuFVtXFhL
-         hH732Ge4YLUN8X5eA8ksnSUV5uw5M+Hd5gcxJma44D5pzStPXpAsZc7NqvECZhOFwfj1
-         yJDiE8v/JbOD4eRsMuvsXVPFSmfbKmHgf663jSTr+Hh2A5PVmpdfXCKgV0iR+9PlHJSe
-         kxJyzFUhHz1cM0oHWSmAjdUwM54k5ZDTjacK21oHo7ygmEpQRuyyJgXkUxNuZ7hEmmv5
-         eVAkpGfD4tYa786bKj7/MZ1EFHAJPTAQwp9ow45bCpMN1YESWrkzQtLOl8Xs5RWy6gDa
-         77Ww==
+        b=OSsjsnnYSNAnUMWEmriYz8FoLVEsEIJwEcXPiB4rGtjP+lMCmWBHTz16oYkfnQWKjC
+         ozK+/wZFlGK5MKtiEEfZYwW6u5705VsfctLldnnni46cDvuxv83qM++rC5PfyP0TvgY/
+         QEHPt78Rbn5W7JvMjTgApm9hup7jaQ8rYsQRAq3gyqKhn//E/UQBPrOBNu87tEY+L5Az
+         PqJIXIECUlNc8BBJF2EFRSi+V6vrICX6W1C/g5hgLQRyFfLcEaciSKLKQPXfKLZrVKPb
+         So4LDvg1eR+cVi8SeDO0wF3BoBh0rVK+lSnnv5dJ85A2c72PfNoqVoM0Lo/dejjOpyDx
+         /SMg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=b77JewTCsY5w3VE9r+PUJLALWnsFtRg3SpYh+MB1KOs=;
-        b=nGowcRJ1MHrMtbvyHqvq6hcnezRqmtd1tmuEr32RANJK/0MUr/Z1opGf1eMaAlJOrx
-         xAgPSciRo3jmtMNuJILP+xSaLkkDFZYJy9HoDmCzDIbsUnPJPenfoiICUG+ktyfDEwXD
-         O2pq9UaPTmVI9YZjNM83TyrD+CYL5kYcHncA6iGenX0rrSBK/hRySaehCTwimIDIpVnF
-         Bi24EL1DkNbn+tIcItMjF+wPU0uWtbVu2vZJicByfjdCxWMG/siHx4wkbibrHBpnLG3/
-         mv6eFd6NrowVpLYkvVnfxQYXItRG8WW3qEkgeGj8pmMozgHveBaEujUf7C2JZMI3iEoq
-         Yp+w==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=S9oCSIT0bPgiC34+L+hmIouoQfKPSNUNV3gEnPwikTg=;
+        b=kKkOWl3txKFyRuf8vQ4PXVvbDoIqk0fCdW2IS/mhJd1ByolBCy9z9vt6knA/xxL75u
+         i3iZUCnY4oY8oyYo3EtE/4vWdEjibS9YHm2iW2vL4VOyGcsNxe8qZO0BlAJ/079ie2eX
+         4BjHzdPTUVxVo1cf7joXQsKIc4HZa0RYo+cFKoLdVWZMGbpp0g2cL0n6nvMs2ZGpL9/w
+         Izd8o5EYqOGXCiNrs2FD18giu1RF0kzmGgJX8t8IRKhXP/WRD/BKmBAecGb48Be3lvkV
+         P/Lb/0inmpGf4TqenqdeqFZYYRpzzNRntne2DoS2A81/L8gNVynA3PvoE8oVqAvEyRdR
+         IrQw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rf9VtslC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UYCa3vo3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c9si1614427ybm.451.2020.10.22.07.48.08
+        by mx.google.com with ESMTPS id v21si1537097qtp.39.2020.10.22.15.06.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Oct 2020 07:48:08 -0700 (PDT)
+        Thu, 22 Oct 2020 15:06:40 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b=rf9VtslC;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UYCa3vo3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:60642 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38232 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVbst-0001Hg-L4
-	for alex.bennee@linaro.org; Thu, 22 Oct 2020 10:48:07 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54480)
+	id 1kVijH-0000QW-P4
+	for alex.bennee@linaro.org; Thu, 22 Oct 2020 18:06:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40674)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kVbsk-0001Gr-Le; Thu, 22 Oct 2020 10:47:58 -0400
-Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42]:35793)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kViiv-0000Q9-Qj; Thu, 22 Oct 2020 18:06:17 -0400
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:45715)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1kVbsi-0006KS-Re; Thu, 22 Oct 2020 10:47:58 -0400
-Received: by mail-yb1-xb42.google.com with SMTP id l15so1854219ybp.2;
- Thu, 22 Oct 2020 07:47:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kViit-00051E-O7; Thu, 22 Oct 2020 18:06:17 -0400
+Received: by mail-wr1-x441.google.com with SMTP id e17so5423190wru.12;
+ Thu, 22 Oct 2020 15:06:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=b77JewTCsY5w3VE9r+PUJLALWnsFtRg3SpYh+MB1KOs=;
- b=rf9VtslCxgsboWqOGqxztyXwy5pdSWSeiktu8JmuDdMtEb5xYj0w7rD//JbN2Z7OFy
- IDYGl/Nzzmg8wKUl+HHQyCInOd3+++uuiigxFqnLMyLQXdd1W2Rrka/1vg6HsVxxjAEP
- 4VVLSTObbIj3jLz6lDc6lvnFd3XtyesUvF+Bp6EWa2qWWeFTpl4Sggfl5uqAqthPrs+W
- /oIeH/mBrCntU3rTduAFwr45RJXghdGBDNnsVTYqrUESZpDTxnrk8Eh7vfgywZw5Fjdg
- 0pDDbw+vM4EpibYIWtig+ijR/UBWe8HQxMECSnDIHpzw/SSGgP08fN1sOVp3VbEO5vvY
- QUmw==
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=S9oCSIT0bPgiC34+L+hmIouoQfKPSNUNV3gEnPwikTg=;
+ b=UYCa3vo3mVxusJ2+lpJ5/54Cujw7jMcFBPJnidMMXEHNJ9NAwK4Asjh/RX3Zumra4s
+ /X4kaL76xQInFGFVjkhLptUeLhbxXrT4lCar0KE2rYnS2Mqttn/kenzk4g4scsSzEQVm
+ gG7fVNOzhhpA8acTrQbDnVGsdcSXGPTHmIApEpr3WNTBLPjpJWf3r0at6qkErRzXYd85
+ FWDHkzRI5xhLCjagGnkMunA38JLuQn19sd3lWjk5FLwZmRZoRQJDRrTD4k/9EvZMm4ED
+ vN2owbaxYiDnGt7BJLbicuXph6Fe27w01eLVQGljGtpsPjEYGWzwE7cVjkob7F2qOLxI
+ xayA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=b77JewTCsY5w3VE9r+PUJLALWnsFtRg3SpYh+MB1KOs=;
- b=ep4t/y5RxZ5YPFF2ok35/M58ln43HdtW1w3trVfveSqKxi0GKrezW/+e/GuKFW/v5d
- ziPfas8jrbBivL020ZRHObF4JApYRQPDy4YdWpQoYIfhKqcdJ4SSPn24vboV1ghwwinX
- XjFrBDcRahClqa8pfyAkL+dffpAIYfbalCmb9e4ob9ByDjIuqJQkdKjcyzdJRuHGtemr
- ptJ03E+JfJmxVkrF8chbucmh4ovw3/AAZmQRRA/9dlcJL0cPrGsk7CARPuxYH5q/McOt
- OahqHiRwLL5wzxd2W9JN+v5Y+HwbFxMFUzaMz20BFzLuZYW8LXzdRKjBkiwhMTsqhqB5
- Ny5A==
-X-Gm-Message-State: AOAM530b+Wuef+Yachu/bG3Y4hQaqt6Z3B/9w87yHviUcrQ2yvV7QfOa
- 9l1QMcNY6oh65+WkWdofSeL9Oo/BGLzJQX8VrPc=
-X-Received: by 2002:a25:386:: with SMTP id 128mr3519037ybd.122.1603378075129; 
- Thu, 22 Oct 2020 07:47:55 -0700 (PDT)
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=S9oCSIT0bPgiC34+L+hmIouoQfKPSNUNV3gEnPwikTg=;
+ b=oNmcVele0aqAZhL8Yw/ZqSvzPe/t5gmNeeZr7jcPaNOQEcevQ0AKGcnRipmN3xVZBf
+ t05Z+fvyE3ppdpnEbVp+cqF0YhhfI2eCVF9P8SkgkvHjjmJdyoo344nrTLWu7qMW0/Tl
+ tVgev7OKEONP6ZU0XlzoKxMHpJZn74O2C19dDHfhKsAlag+mvlWT+9TEYdHWVZRknSxt
+ D0QLzrSTNLHwbfQVxcydERoq7xA4jSV7ChhseUT5EHor2e0T3igU6D08B5K1eSlcDas2
+ kWA3DmKS36qpWsfwMqxw79tSUsMTMMx1abqs7CpvcJ4hIPTaxwfstyayJC+NUSm0h/id
+ iZRA==
+X-Gm-Message-State: AOAM530CLKRz7Ji/yAaPtLgpdHlwCHeLNdp6rfeRBj+twxb3WiYZm8JN
+ kNxeQtpSMlb0wvBuMpGAFpk=
+X-Received: by 2002:adf:ed06:: with SMTP id a6mr4604062wro.375.1603404373824; 
+ Thu, 22 Oct 2020 15:06:13 -0700 (PDT)
+Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.237])
+ by smtp.gmail.com with ESMTPSA id i14sm5777945wml.24.2020.10.22.15.06.12
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 22 Oct 2020 15:06:13 -0700 (PDT)
+Subject: Re: [PATCH v3 00/15] raspi: add the bcm2835 cprman clock manager
+To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org,
+ Guenter Roeck <linux@roeck-us.net>
+References: <20201010135759.437903-1-luc@lmichel.fr>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <f6c1ad96-ce36-e229-2a9d-d71070b82d82@amsat.org>
+Date: Fri, 23 Oct 2020 00:06:12 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-References: <20200821172916.1260954-1-f4bug@amsat.org>
- <20200821172916.1260954-23-f4bug@amsat.org>
- <e378932a-1de3-83c1-834f-ae6526604cb7@amsat.org>
- <CAEUhbmVFZ8aWdv48D8acdfFRp6WMYL6n=ENeo4hBZfmqE9TrDA@mail.gmail.com>
- <a0ac3805-ec48-2a0e-6511-b142bfc6f214@amsat.org>
-In-Reply-To: <a0ac3805-ec48-2a0e-6511-b142bfc6f214@amsat.org>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Thu, 22 Oct 2020 22:47:43 +0800
-Message-ID: <CAEUhbmVLFJWND=KHexD12mrCMJSO3mcE6k7_tRE+v8pNZjhN_A@mail.gmail.com>
-Subject: Re: [PULL 22/23] hw/sd: Fix incorrect populated function switch
- status data structure
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b42;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb42.google.com
+In-Reply-To: <20201010135759.437903-1-luc@lmichel.fr>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.107,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -116,114 +122,158 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
- Bin Meng <bin.meng@windriver.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Havard Skinnemoen <hskinnemoen@google.com>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Beniamino Galvani <b.galvani@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- Michael Walle <michael@walle.cc>
+ Paul Zimmerman <pauldzim@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: bWwcO8qdeOd7
+X-TUID: E8C3kakM59En
 
-Hi Philippe,
+Cc'ing Guenter who had a similar patch and might be interested
+to test :)
 
-On Wed, Oct 21, 2020 at 6:07 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g> wrote:
->
-> On 10/21/20 11:57 AM, Bin Meng wrote:
-> > Hi Philippe,
-> >
-> > On Tue, Oct 20, 2020 at 11:18 PM Philippe Mathieu-Daud=C3=A9 <f4bug@ams=
-at.org> wrote:
-> >>
-> >> Hi Bin,
-> >>
-> >> On 8/21/20 7:29 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> >>> From: Bin Meng <bin.meng@windriver.com>
-> >>>
-> >>> At present the function switch status data structure bit [399:376]
-> >>> are wrongly pupulated. These 3 bytes encode function switch status
-> >>> for the 6 function groups, with 4 bits per group, starting from
-> >>> function group 6 at bit 399, then followed by function group 5 at
-> >>> bit 395, and so on.
-> >>>
-> >>> However the codes mistakenly fills in the function group 1 status
-> >>> at bit 399. This fixes the code logic.
-> >>>
-> >>> Fixes: a1bb27b1e9 ("SD card emulation (initial implementation)")
-> >>> Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> >>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >>> Tested-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-> >>> Message-Id: <1598021136-49525-1-git-send-email-bmeng.cn@gmail.com>
-> >>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> >>> ---
-> >>>    hw/sd/sd.c | 3 ++-
-> >>>    1 file changed, 2 insertions(+), 1 deletion(-)
-> >>>
-> >>> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> >>> index 7c9d956f113..805e21fc883 100644
-> >>> --- a/hw/sd/sd.c
-> >>> +++ b/hw/sd/sd.c
-> >>> @@ -807,11 +807,12 @@ static void sd_function_switch(SDState *sd, uin=
-t32_t arg)
-> >>>        sd->data[11] =3D 0x43;
-> >>>        sd->data[12] =3D 0x80;    /* Supported group 1 functions */
-> >>>        sd->data[13] =3D 0x03;
-> >>> +
-> >>>        for (i =3D 0; i < 6; i ++) {
-> >>>            new_func =3D (arg >> (i * 4)) & 0x0f;
-> >>>            if (mode && new_func !=3D 0x0f)
-> >>>                sd->function_group[i] =3D new_func;
-> >>> -        sd->data[14 + (i >> 1)] =3D new_func << ((i * 4) & 4);
-> >>> +        sd->data[16 - (i >> 1)] |=3D new_func << ((i % 2) * 4);
-> >>
-> >> This patch broke the orangepi machine, reproducible running
-> >> test_arm_orangepi_bionic:
-> >> https://www.mail-archive.com/qemu-devel@nongnu.org/msg739449.html
-> >>
-> >> Can you have a look?
-> >
-> > Yes, I can take a look. Could you please send more details on how to
-> > run "test_arm_orangepi_bionic"?
->
-> Looking at the previous link, I think this should work:
->
-> $ make check-venv qemu-system-arm
-> $ AVOCADO_ALLOW_LARGE_STORAGE=3D1 \
->    tests/venv/bin/python -m \
->      avocado --show=3Dapp,console run \
->        run -t machine:orangepi-pc tests/acceptance
->
+patch 16/15 fixup:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg752113.html
 
-I tried the above command in my build tree, and got:
-
-avocado run: error: unrecognized arguments: tests/acceptance
-Perhaps a plugin is missing; run 'avocado plugins' to list the installed on=
-es
-
-I switched to `make check-acceptance` which seems to work, however not
-for orangepi-pc related tests?
-
- (09/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_o=
-rangepi:
-SKIP: Test artifacts fetched from unreliable apt.armbian.com
- (10/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_o=
-rangepi_initrd:
-SKIP: Test artifacts fetched from unreliable apt.armbian.com
- (11/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_o=
-rangepi_sd:
-SKIP: Test artifacts fetched from unreliable apt.armbian.com
- (12/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_o=
-rangepi_bionic:
-SKIP: storage limited
- (13/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_o=
-rangepi_uboot_netbsd9:
-SKIP: storage limited
-
-Any ideas?
-
-Regards,
-Bin
+On 10/10/20 3:57 PM, Luc Michel wrote:
+> v2 -> v3:
+>    - patch 03: moved clock_new definition to hw/core/clock.c [Phil]
+>    - patch 03: commit message typo [Clement]
+>    - patch 10: clarifications around the CM_CTL/CM_DIBV mux registers.
+>                reg_cm replaced with reg_ctl and reg_div. Add some
+>                comments for clarity. [Phil]
+>    - patch 10: fixed update_mux_from_cm not matching the CM_DIV offset
+>                correctly. [Phil]
+>    - patch 11: replaced manual bitfield extraction with extract32 [Phil]
+>    - patch 11: added a visual representation of CM_DIV for clarity [Phil]
+>    - patch 11: added a missing return in clock_mux_update.
+> 
+> v1 -> v2:
+>    - patch 05: Added a comment about MMIO .valid constraints [Phil]
+>    - patch 05: Added MMIO .impl [Phil]
+>    - patch 05: Moved init_internal_clock to the public clock API, renamed
+>      clock_new (new patch 03) [Phil]
+>    - patch 11: use muldiv64 for clock mux frequency output computation [Phil]
+>    - patch 11: add a check for null divisor (Phil: I dropped your r-b)
+>    - Typos, formatting, naming, style [Phil]
+> 
+> Patches without review: 03, 11, 13
+> 
+> Hi,
+> 
+> This series add the BCM2835 CPRMAN clock manager peripheral to the
+> Raspberry Pi machine.
+> 
+> Patches 1-4 are preliminary changes, patches 5-13 are the actual
+> implementation.
+> 
+> The two last patches add a clock input to the PL011 and
+> connect it to the CPRMAN.
+> 
+> This series has been tested with Linux 5.4.61 (the current raspios
+> version). It fixes the kernel Oops at boot time due to invalid UART
+> clock value, and other warnings/errors here and there because of bad
+> clocks or lack of CPRMAN.
+> 
+> Here is the clock tree as seen by Linux when booted in QEMU:
+> (/sys/kernel/debug/clk/clk_summary with some columns removed)
+> 
+>                          enable  prepare
+>     clock                 count    count          rate
+> -----------------------------------------------------
+>   otg                         0        0     480000000
+>   osc                         5        5      19200000
+>      gp2                      1        1         32768
+>      tsens                    0        0       1920000
+>      otp                      0        0       4800000
+>      timer                    0        0       1000002
+>      pllh                     4        4     864000000
+>         pllh_pix_prediv       1        1       3375000
+>            pllh_pix           0        0        337500
+>         pllh_aux              1        1     216000000
+>            vec                0        0     108000000
+>         pllh_rcal_prediv      1        1       3375000
+>            pllh_rcal          0        0        337500
+>      plld                     3        3    2000000024
+>         plld_dsi1             0        0       7812501
+>         plld_dsi0             0        0       7812501
+>         plld_per              3        3     500000006
+>            gp1                1        1      25000000
+>            uart               1        2      47999625
+>         plld_core             2        2     500000006
+>            sdram              0        0     166666668
+>      pllc                     3        3    2400000000
+>         pllc_per              1        1    1200000000
+>            emmc               0        0     200000000
+>         pllc_core2            0        0       9375000
+>         pllc_core1            0        0       9375000
+>         pllc_core0            2        2    1200000000
+>            vpu                1        1     700000000
+>               aux_spi2        0        0     700000000
+>               aux_spi1        0        0     700000000
+>               aux_uart        0        0     700000000
+>               peri_image      0        0     700000000
+>      plla                     2        2    2250000000
+>         plla_ccp2             0        0       8789063
+>         plla_dsi0             0        0       8789063
+>         plla_core             1        1     750000000
+>            h264               0        0     250000000
+>            isp                0        0     250000000
+>   dsi1p                       0        0             0
+>   dsi0p                       0        0             0
+>   dsi1e                       0        0             0
+>   dsi0e                       0        0             0
+>   cam1                        0        0             0
+>   cam0                        0        0             0
+>   dpi                         0        0             0
+>   tec                         0        0             0
+>   smi                         0        0             0
+>   slim                        0        0             0
+>   gp0                         0        0             0
+>   dft                         0        0             0
+>   aveo                        0        0             0
+>   pcm                         0        0             0
+>   pwm                         0        0             0
+>   hsm                         0        0             0
+> 
+> It shows small differences with real hardware due other missing
+> peripherals for which the driver turn the clock off (like tsens).
+> 
+> Luc Michel (15):
+>    hw/core/clock: provide the VMSTATE_ARRAY_CLOCK macro
+>    hw/core/clock: trace clock values in Hz instead of ns
+>    hw/core/clock: add the clock_new helper function
+>    hw/arm/raspi: fix CPRMAN base address
+>    hw/arm/raspi: add a skeleton implementation of the CPRMAN
+>    hw/misc/bcm2835_cprman: add a PLL skeleton implementation
+>    hw/misc/bcm2835_cprman: implement PLLs behaviour
+>    hw/misc/bcm2835_cprman: add a PLL channel skeleton implementation
+>    hw/misc/bcm2835_cprman: implement PLL channels behaviour
+>    hw/misc/bcm2835_cprman: add a clock mux skeleton implementation
+>    hw/misc/bcm2835_cprman: implement clock mux behaviour
+>    hw/misc/bcm2835_cprman: add the DSI0HSCK multiplexer
+>    hw/misc/bcm2835_cprman: add sane reset values to the registers
+>    hw/char/pl011: add a clock input
+>    hw/arm/bcm2835_peripherals: connect the UART clock
+> 
+>   include/hw/arm/bcm2835_peripherals.h       |    5 +-
+>   include/hw/arm/raspi_platform.h            |    5 +-
+>   include/hw/char/pl011.h                    |    1 +
+>   include/hw/clock.h                         |   18 +
+>   include/hw/misc/bcm2835_cprman.h           |  210 ++++
+>   include/hw/misc/bcm2835_cprman_internals.h | 1019 ++++++++++++++++++++
+>   hw/arm/bcm2835_peripherals.c               |   15 +-
+>   hw/char/pl011.c                            |   45 +
+>   hw/core/clock.c                            |   21 +-
+>   hw/misc/bcm2835_cprman.c                   |  808 ++++++++++++++++
+>   hw/char/trace-events                       |    1 +
+>   hw/core/trace-events                       |    4 +-
+>   hw/misc/meson.build                        |    1 +
+>   hw/misc/trace-events                       |    5 +
+>   14 files changed, 2146 insertions(+), 12 deletions(-)
+>   create mode 100644 include/hw/misc/bcm2835_cprman.h
+>   create mode 100644 include/hw/misc/bcm2835_cprman_internals.h
+>   create mode 100644 hw/misc/bcm2835_cprman.c
+> 

@@ -1,107 +1,107 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6660557lfa;
-        Thu, 22 Oct 2020 08:20:29 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwnxrv2KnjRWC5Nhr6BnBNYC1YVx19GjVBMqb99amsLwi0bqXCdEndssYDSF3cB1Jc6trbz
-X-Received: by 2002:a25:a085:: with SMTP id y5mr3662485ybh.211.1603380029028;
-        Thu, 22 Oct 2020 08:20:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603380029; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6725307lfa;
+        Thu, 22 Oct 2020 09:44:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJycoQWRHO8PdrxKgtD5/aFARyi92jgn3Hshd8n6EVs4n2WeVhqjPlhLf5wHfx2a7NGJjpz+
+X-Received: by 2002:a25:b316:: with SMTP id l22mr4481586ybj.395.1603385092628;
+        Thu, 22 Oct 2020 09:44:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603385092; cv=none;
         d=google.com; s=arc-20160816;
-        b=Pnw3LhUF0L8lsJSK2ANMA4ONPWRu0K3P/+pilgsOEmALaey7iU75xhThO8nQ9dJsOx
-         e1EFPyJAX9BqX4zkVZu6qq5Q+D3VerxVh1jp+Aby0U8QDTf2bKe7pcdEoapqLt/WztlV
-         7SUOCnN4O/GLXjGIZwRWQ0vs+GlJJffsvYOwKkmVS9huE0t9iMz/3KVlpJrrACgpJtgp
-         +gRhfnfZClPV6ngfBj5hBbvACNGLjd1Ig67AjVipyVNlkOK6ASXBTgHQsYiBHdvrHyWD
-         ibDuONFo+ZY+itMrxsfHTnwCLVxpO8QL0tXsxd7AtgRKXSF5hOWCzfn+7CfcXtrCDzLp
-         yMDw==
+        b=voy/wkp/40J0EKeRsSldMnTQ5spMvSqHNOo9LhfDBn/y8a4IXBxS0Sb0bVX/6v5zPB
+         b36e++DCDbRziHBA4NISQcHFHvFPystZcHTdOv4gydI9TrgXbPsg6x8nQ7ggUT9kTF5H
+         auK9bBcSsj3JYAi6lmmc3uzznah0H7fw/wbWVBYy9IxaEEvxIjT2MhdDCYjjK3Um46Zt
+         8knVPEOnFAzMKf3GoivHXAwohWsO3bFJVbFe6hBtIJFR9hnrP663x6ecokue9ChoeYov
+         YIveyLf0MXprRVzBvqQACBaWJWQXdF4a/yicHMPOb5dOqGJWohHOoTfz677pW4cBaGjo
+         p9og==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=j4wcGv+O3CVKhhtMhUWejxRtOOG+VCmV3MOtkLdUNso=;
-        b=V+jFkDOJlXAk+tfFfN/DFnJruVVkIDV/VQOXLPSzqP9DTMaFFPXotKrqfoD4tViNy7
-         egFgNNubaw0WtiOcH34Otslo266xdB0lQulkpx8VrIv63Mn+0w/bPjSEVDmSf9iTqBba
-         LEKT83CXSIv3tLZ9+vndOzbNQ/9lwzjzci0ILIJB0SicNl7u2vJ9qY99+Qh3faD7B2d9
-         Coyi6Jxj1MKG63Wmh8Ryck5I+sOZKHBYuqzf0sm+lYeRpJcYlAlgag59gMf3tyRssNMS
-         DYVbU9U4o+2zdjSYJ6ffnzJUZvzuguAoHRGWtwchFDGZErb4i5AJx4NNnsHOuEmSRVir
-         az5w==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=MbIpHBCwt6E/zRDH/KaZ6m6xgeXJwLyukVW4piGrJ7M=;
+        b=bbFyLjmdmMWympmaS19AGtWxfbLdeMDHw3KoyzDY/P3SSg+QtiA5YtwfYPU1waQSiD
+         2C4Rp4dPlrGzEIAsL7ZZxn3TYde/TUKGi/oCCFiMyFmFUcRXlMv/ySPdnjDroy5Se4Dw
+         Bcy6TBR6qDHm1eBA7UoRjzKJWrHjSvnv7PGSnSnI9LW+W7TBt4mD5BPkZz02VdtuaPVG
+         86C8cqhjThIowMAegaQJ15XV0k4HxoHACDrKZfT824vT87C5WauGg5+r6TqWvP8TSYSJ
+         5Ut9PNC2fkIvoGAS5ABE0mTB3owsThL1Uo6BAMBBdRjn8n2b4cORmvAaYLWNNG4KA4dD
+         sx6Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AfrXh+Sy;
+       dkim=pass header.i=@linaro.org header.s=google header.b=phtNzjuV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 204si1383823ybe.176.2020.10.22.08.20.28
+        by mx.google.com with ESMTPS id n16si1718108ybg.22.2020.10.22.09.44.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Oct 2020 08:20:29 -0700 (PDT)
+        Thu, 22 Oct 2020 09:44:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=AfrXh+Sy;
+       dkim=pass header.i=@linaro.org header.s=google header.b=phtNzjuV;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:39578 helo=lists1p.gnu.org)
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:53946 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVcOC-0001GD-Bi
-	for alex.bennee@linaro.org; Thu, 22 Oct 2020 11:20:28 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36706)
+	id 1kVdhs-0006sP-19
+	for alex.bennee@linaro.org; Thu, 22 Oct 2020 12:44:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57900)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1kVcO2-0001Dv-Id; Thu, 22 Oct 2020 11:20:18 -0400
-Received: from mail-io1-xd43.google.com ([2607:f8b0:4864:20::d43]:35412)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kVdhG-0006NR-CA
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2020 12:44:14 -0400
+Received: from mail-wm1-x344.google.com ([2a00:1450:4864:20::344]:40333)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1kVcNz-00032O-Lz; Thu, 22 Oct 2020 11:20:18 -0400
-Received: by mail-io1-xd43.google.com with SMTP id k6so2045862ior.2;
- Thu, 22 Oct 2020 08:20:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=j4wcGv+O3CVKhhtMhUWejxRtOOG+VCmV3MOtkLdUNso=;
- b=AfrXh+SymX82bUN9iZCL4XiOOX42IwlM6V+Cbuvn2Nu6h+IHMp/jlBRMiN0+8u/NDf
- 2LNDZGEyTWegiWN7FMfCIzn3RHPFVq38Q4X4aW6txXJUjtaW7IJOhKFmYrs3I/f2Aic9
- vg6AQzAlCX1LIOmsfpl8hGsoCJ0HM6Av2QP1EzA8wlz9jU8ig408xayTPwv7zfOwxTeg
- txOs4urCYRrQG5A/a4ErhmmmESP8B7v5Xn8g5JNCE7dvjohgNblp1qJ4cifZJ4or159r
- OJQYKMRCWfBo+JHbY/owrr5jK0425MdUuSHd/B0I4fzlvKgXcXp9YaZCqPLPC5m9yfhO
- PuXQ==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kVdhE-0007DT-Ma
+ for qemu-arm@nongnu.org; Thu, 22 Oct 2020 12:44:14 -0400
+Received: by mail-wm1-x344.google.com with SMTP id k18so3007877wmj.5
+ for <qemu-arm@nongnu.org>; Thu, 22 Oct 2020 09:44:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MbIpHBCwt6E/zRDH/KaZ6m6xgeXJwLyukVW4piGrJ7M=;
+ b=phtNzjuVaKqNQssqH6b4BhIVOE4kegLK8X3vrneF67Dmp8Nq76pJ9vVPpmuO08nJph
+ IvXOKOztjBkmjSmR5I6uN65btWX4Bt2e1dZChzrLd9vKffhwQU7OHJCwaUwednJWZZ3X
+ u3YKoDJ0ds11yYv2neGrHE7vyAXXrwnWNEIZpOa3G6XmL+v6STMRcvUqDdBD7fTqWQEi
+ zSxZlgH2oUXC9Ee2sxxaoSEQjxZ4LGSS5PNbSp8Y04iP1g0WyhEFz2HFp+QJk4un7Y4q
+ CR/Lv2nHaaL+1+4y2MYlYbL1ElKh7DVy1uv1adagJgZTqWpyg8oY9kUs7UniB7r+Xvu0
+ GXhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=j4wcGv+O3CVKhhtMhUWejxRtOOG+VCmV3MOtkLdUNso=;
- b=rP9EximAveeqbXgxAk/yQgUY5S39bwM7zT97BuKhUrh1U1iTahUObHYWQThGwJ/plr
- EcwzDJjbxv7asIYw015SVKvMaV5QFa9FhCjTCufveN8eI7SEROX/WTD8kJZBIPV0oP4j
- WeQ3r66fmj8UbFSM+bHLJjlb0z2PlBndy5G0dEp1ASB9efL4iJxOyapZGKBf97beBX6K
- xDfNLpU5dUCJMcEPy6OLP7V/QRG4Sd/kubz1/yTXxwkAfxIQR5wLuk2UFvNF9iD/lUiL
- 8Sehffo/3GRnrpAe6RzNXK3LXWD6l8jSQqZ1IlDFZ6E3tbWz0ubYZU6+FwIg8KbGAWrJ
- IIBA==
-X-Gm-Message-State: AOAM5325f81moznotNdOUhlOOKnNEHJDgtU4GGChypSe7pekvbcifb/n
- PBMT9iZQBjBPgSJiX79g92H4+KAH42MZNo8X6lE=
-X-Received: by 2002:a05:6638:d49:: with SMTP id
- d9mr2193232jak.85.1603380011700; 
- Thu, 22 Oct 2020 08:20:11 -0700 (PDT)
+ h=x-gm-message-state:from:to:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=MbIpHBCwt6E/zRDH/KaZ6m6xgeXJwLyukVW4piGrJ7M=;
+ b=Ao3TmKcU+usfvTulLGw/9WB6m85heqshA1ux8EizK3C9gneokiLxgsH+XHwsM1atIi
+ DwRBS4+SY6ZewevNtrHR3wbACOKK8kQiKmwJVku0sAiS1hjRe9/Qjk57v6I6WjXA97nf
+ 15o6ZdrbsnbvbUyXubpNNVmEzDUjgL3+NRfwhrSoRhTd/YAFtKRnFt5FwIeuHqSo5j41
+ W++2js0oCfj/af9BLU3j0Lrxk2EisiCDOyBNdOoiOmryv7Kj05ZBHOsfBqwrfDV79wY+
+ yQZgEgcI9TJbHAD+bpMNp76oD8KH9b0ydMzAxugR9O7Br5zGkTVyzzwwFifgoOouWABz
+ EZZg==
+X-Gm-Message-State: AOAM533+h6sxdQNEgUp/jWBO92YXVolIbfkKGy1CVOMauvWErvxOnZyN
+ Slfy0eEg7/7u7XiI89TMtOLLBL754qQ1wQ==
+X-Received: by 2002:a1c:8056:: with SMTP id b83mr3358841wmd.124.1603385050571; 
+ Thu, 22 Oct 2020 09:44:10 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id e20sm4480294wme.35.2020.10.22.09.44.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 22 Oct 2020 09:44:09 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] target/arm: Get correct MMU index for other-security-state
+Date: Thu, 22 Oct 2020 17:44:08 +0100
+Message-Id: <20201022164408.13214-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-References: <20200821172916.1260954-1-f4bug@amsat.org>
- <20200821172916.1260954-23-f4bug@amsat.org>
- <e378932a-1de3-83c1-834f-ae6526604cb7@amsat.org>
- <CAEUhbmVFZ8aWdv48D8acdfFRp6WMYL6n=ENeo4hBZfmqE9TrDA@mail.gmail.com>
- <a0ac3805-ec48-2a0e-6511-b142bfc6f214@amsat.org>
- <CAEUhbmVLFJWND=KHexD12mrCMJSO3mcE6k7_tRE+v8pNZjhN_A@mail.gmail.com>
-In-Reply-To: <CAEUhbmVLFJWND=KHexD12mrCMJSO3mcE6k7_tRE+v8pNZjhN_A@mail.gmail.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Thu, 22 Oct 2020 17:20:00 +0200
-Message-ID: <CAPan3Wqx-psi6zgz3NyM1Hu_PHaGq4Nn3_RJf_zueqwXFNKuWg@mail.gmail.com>
-Subject: Re: [PULL 22/23] hw/sd: Fix incorrect populated function switch
- status data structure
-To: Bin Meng <bmeng.cn@gmail.com>
-Content-Type: multipart/alternative; boundary="00000000000009956405b2440092"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d43;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-io1-xd43.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::344;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x344.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,305 +115,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
- Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
- Bin Meng <bin.meng@windriver.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
- Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>,
- qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BVn+tBRIbGfs
+X-TUID: KPtsK8ZcEYl/
 
---00000000000009956405b2440092
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+In arm_v7m_mmu_idx_for_secstate() we get the 'priv' level to pass to
+armv7m_mmu_idx_for_secstate_and_priv() by calling arm_current_el().
+This is incorrect when the security state being queried is not the
+current one, because arm_current_el() uses the current security state
+to determine which of the banked CONTROL.nPRIV bits to look at.
+The effect was that if (for instance) Secure state was in privileged
+mode but Non-Secure was not then we would return the wrong MMU index.
 
-Hi Bin, Philippe,
+The only places where we are using this function in a way that could
+trigger this bug are for the stack loads during a v8M function-return
+and for the instruction fetch of a v8M SG insn.
 
-If im correct the acceptance tests for orange pi need to be run with a flag
-ARMBIAN_ARTIFACTS_CACHED set that explicitly allows them to be run using
-the armbian mirror. So if you pass that flag on the same command that
-Philippe gave, the rests should run.
+Fix the bug by expanding out the M-profile version of the
+arm_current_el() logic inline so it can use the passed in secstate
+rather than env->v7m.secure.
 
-I have a follow up question and Im interested to hear your opinion on that
-Philippe. Should we perhaps update the orange pi tests (and maybe others)
-so they use a reliable mirror that we can control, for example a github
-repo? I would be happy to create a repo for that, at least for the orange
-pi tests. But maybe there is already something planned as a more general
-solution for artifacts of other machines as well?
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/m_helper.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-regards,
-Niek
+diff --git a/target/arm/m_helper.c b/target/arm/m_helper.c
+index 036454234c7..aad01ea0127 100644
+--- a/target/arm/m_helper.c
++++ b/target/arm/m_helper.c
+@@ -2719,7 +2719,8 @@ ARMMMUIdx arm_v7m_mmu_idx_for_secstate_and_priv(CPUARMState *env,
+ /* Return the MMU index for a v7M CPU in the specified security state */
+ ARMMMUIdx arm_v7m_mmu_idx_for_secstate(CPUARMState *env, bool secstate)
+ {
+-    bool priv = arm_current_el(env) != 0;
++    bool priv = arm_v7m_is_handler_mode(env) ||
++        !(env->v7m.control[secstate] & 1);
+ 
+     return arm_v7m_mmu_idx_for_secstate_and_priv(env, secstate, priv);
+ }
+-- 
+2.20.1
 
-Op do 22 okt. 2020 16:47 schreef Bin Meng <bmeng.cn@gmail.com>:
-
-> Hi Philippe,
->
-> On Wed, Oct 21, 2020 at 6:07 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
-org>
-> wrote:
-> >
-> > On 10/21/20 11:57 AM, Bin Meng wrote:
-> > > Hi Philippe,
-> > >
-> > > On Tue, Oct 20, 2020 at 11:18 PM Philippe Mathieu-Daud=C3=A9 <
-> f4bug@amsat.org> wrote:
-> > >>
-> > >> Hi Bin,
-> > >>
-> > >> On 8/21/20 7:29 PM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > >>> From: Bin Meng <bin.meng@windriver.com>
-> > >>>
-> > >>> At present the function switch status data structure bit [399:376]
-> > >>> are wrongly pupulated. These 3 bytes encode function switch status
-> > >>> for the 6 function groups, with 4 bits per group, starting from
-> > >>> function group 6 at bit 399, then followed by function group 5 at
-> > >>> bit 395, and so on.
-> > >>>
-> > >>> However the codes mistakenly fills in the function group 1 status
-> > >>> at bit 399. This fixes the code logic.
-> > >>>
-> > >>> Fixes: a1bb27b1e9 ("SD card emulation (initial implementation)")
-> > >>> Signed-off-by: Bin Meng <bin.meng@windriver.com>
-> > >>> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> > >>> Tested-by: Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>
-> > >>> Message-Id: <1598021136-49525-1-git-send-email-bmeng.cn@gmail.com>
-> > >>> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
-> > >>> ---
-> > >>>    hw/sd/sd.c | 3 ++-
-> > >>>    1 file changed, 2 insertions(+), 1 deletion(-)
-> > >>>
-> > >>> diff --git a/hw/sd/sd.c b/hw/sd/sd.c
-> > >>> index 7c9d956f113..805e21fc883 100644
-> > >>> --- a/hw/sd/sd.c
-> > >>> +++ b/hw/sd/sd.c
-> > >>> @@ -807,11 +807,12 @@ static void sd_function_switch(SDState *sd,
-> uint32_t arg)
-> > >>>        sd->data[11] =3D 0x43;
-> > >>>        sd->data[12] =3D 0x80;    /* Supported group 1 functions */
-> > >>>        sd->data[13] =3D 0x03;
-> > >>> +
-> > >>>        for (i =3D 0; i < 6; i ++) {
-> > >>>            new_func =3D (arg >> (i * 4)) & 0x0f;
-> > >>>            if (mode && new_func !=3D 0x0f)
-> > >>>                sd->function_group[i] =3D new_func;
-> > >>> -        sd->data[14 + (i >> 1)] =3D new_func << ((i * 4) & 4);
-> > >>> +        sd->data[16 - (i >> 1)] |=3D new_func << ((i % 2) * 4);
-> > >>
-> > >> This patch broke the orangepi machine, reproducible running
-> > >> test_arm_orangepi_bionic:
-> > >> https://www.mail-archive.com/qemu-devel@nongnu.org/msg739449.html
-> > >>
-> > >> Can you have a look?
-> > >
-> > > Yes, I can take a look. Could you please send more details on how to
-> > > run "test_arm_orangepi_bionic"?
-> >
-> > Looking at the previous link, I think this should work:
-> >
-> > $ make check-venv qemu-system-arm
-> > $ AVOCADO_ALLOW_LARGE_STORAGE=3D1 \
-> >    tests/venv/bin/python -m \
-> >      avocado --show=3Dapp,console run \
-> >        run -t machine:orangepi-pc tests/acceptance
-> >
->
-> I tried the above command in my build tree, and got:
->
-> avocado run: error: unrecognized arguments: tests/acceptance
-> Perhaps a plugin is missing; run 'avocado plugins' to list the installed
-> ones
->
-> I switched to `make check-acceptance` which seems to work, however not
-> for orangepi-pc related tests?
->
->  (09/32)
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
-:
-> SKIP: Test artifacts fetched from unreliable apt.armbian.com
->  (10/32)
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
-_initrd:
-> SKIP: Test artifacts fetched from unreliable apt.armbian.com
->  (11/32)
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
-_sd:
-> SKIP: Test artifacts fetched from unreliable apt.armbian.com
->  (12/32)
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
-_bionic:
-> SKIP: storage limited
->  (13/32)
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
-_uboot_netbsd9:
-> SKIP: storage limited
->
-> Any ideas?
->
-> Regards,
-> Bin
->
-
---00000000000009956405b2440092
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto">Hi Bin, Philippe,<div dir=3D"auto"><br></div><div dir=3D"=
-auto">If im correct the acceptance tests for orange pi need to be run with =
-a flag ARMBIAN_ARTIFACTS_CACHED set that explicitly allows them to be run u=
-sing the armbian mirror. So if you pass that flag on the same command that =
-Philippe gave, the rests should run.</div><div dir=3D"auto"><br></div><div =
-dir=3D"auto">I have a follow up question and Im interested to hear your opi=
-nion on that Philippe. Should we perhaps update the orange pi tests (and ma=
-ybe others) so they use a reliable mirror that we can control, for example =
-a github repo? I would be happy to create a repo for that, at least for the=
- orange pi tests. But maybe there is already something planned as a more ge=
-neral solution for artifacts of other machines as well?</div><div dir=3D"au=
-to"><br></div><div dir=3D"auto">regards,</div><div dir=3D"auto">Niek</div><=
-/div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">O=
-p do 22 okt. 2020 16:47 schreef Bin Meng &lt;<a href=3D"mailto:bmeng.cn@gma=
-il.com">bmeng.cn@gmail.com</a>&gt;:<br></div><blockquote class=3D"gmail_quo=
-te" style=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"=
->Hi Philippe,<br>
-<br>
-On Wed, Oct 21, 2020 at 6:07 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"=
-mailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.or=
-g</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On 10/21/20 11:57 AM, Bin Meng wrote:<br>
-&gt; &gt; Hi Philippe,<br>
-&gt; &gt;<br>
-&gt; &gt; On Tue, Oct 20, 2020 at 11:18 PM Philippe Mathieu-Daud=C3=A9 &lt;=
-<a href=3D"mailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4b=
-ug@amsat.org</a>&gt; wrote:<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; Hi Bin,<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; On 8/21/20 7:29 PM, Philippe Mathieu-Daud=C3=A9 wrote:<br>
-&gt; &gt;&gt;&gt; From: Bin Meng &lt;<a href=3D"mailto:bin.meng@windriver.c=
-om" target=3D"_blank" rel=3D"noreferrer">bin.meng@windriver.com</a>&gt;<br>
-&gt; &gt;&gt;&gt;<br>
-&gt; &gt;&gt;&gt; At present the function switch status data structure bit =
-[399:376]<br>
-&gt; &gt;&gt;&gt; are wrongly pupulated. These 3 bytes encode function swit=
-ch status<br>
-&gt; &gt;&gt;&gt; for the 6 function groups, with 4 bits per group, startin=
-g from<br>
-&gt; &gt;&gt;&gt; function group 6 at bit 399, then followed by function gr=
-oup 5 at<br>
-&gt; &gt;&gt;&gt; bit 395, and so on.<br>
-&gt; &gt;&gt;&gt;<br>
-&gt; &gt;&gt;&gt; However the codes mistakenly fills in the function group =
-1 status<br>
-&gt; &gt;&gt;&gt; at bit 399. This fixes the code logic.<br>
-&gt; &gt;&gt;&gt;<br>
-&gt; &gt;&gt;&gt; Fixes: a1bb27b1e9 (&quot;SD card emulation (initial imple=
-mentation)&quot;)<br>
-&gt; &gt;&gt;&gt; Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@wi=
-ndriver.com" target=3D"_blank" rel=3D"noreferrer">bin.meng@windriver.com</a=
->&gt;<br>
-&gt; &gt;&gt;&gt; Reviewed-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"m=
-ailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.org=
-</a>&gt;<br>
-&gt; &gt;&gt;&gt; Tested-by: Sai Pavan Boddu &lt;<a href=3D"mailto:sai.pava=
-n.boddu@xilinx.com" target=3D"_blank" rel=3D"noreferrer">sai.pavan.boddu@xi=
-linx.com</a>&gt;<br>
-&gt; &gt;&gt;&gt; Message-Id: &lt;<a href=3D"mailto:1598021136-49525-1-git-=
-send-email-bmeng.cn@gmail.com" target=3D"_blank" rel=3D"noreferrer">1598021=
-136-49525-1-git-send-email-bmeng.cn@gmail.com</a>&gt;<br>
-&gt; &gt;&gt;&gt; Signed-off-by: Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D=
-"mailto:f4bug@amsat.org" target=3D"_blank" rel=3D"noreferrer">f4bug@amsat.o=
-rg</a>&gt;<br>
-&gt; &gt;&gt;&gt; ---<br>
-&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 hw/sd/sd.c | 3 ++-<br>
-&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 1 file changed, 2 insertions(+), 1 deletion(=
--)<br>
-&gt; &gt;&gt;&gt;<br>
-&gt; &gt;&gt;&gt; diff --git a/hw/sd/sd.c b/hw/sd/sd.c<br>
-&gt; &gt;&gt;&gt; index 7c9d956f113..805e21fc883 100644<br>
-&gt; &gt;&gt;&gt; --- a/hw/sd/sd.c<br>
-&gt; &gt;&gt;&gt; +++ b/hw/sd/sd.c<br>
-&gt; &gt;&gt;&gt; @@ -807,11 +807,12 @@ static void sd_function_switch(SDSt=
-ate *sd, uint32_t arg)<br>
-&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[11] =3D 0x43;<br>
-&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[12] =3D 0x80;=C2=
-=A0 =C2=A0 /* Supported group 1 functions */<br>
-&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[13] =3D 0x03;<br>
-&gt; &gt;&gt;&gt; +<br>
-&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 for (i =3D 0; i &lt; 6; i ++) =
-{<br>
-&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 new_func =3D (ar=
-g &gt;&gt; (i * 4)) &amp; 0x0f;<br>
-&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 if (mode &amp;&a=
-mp; new_func !=3D 0x0f)<br>
-&gt; &gt;&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 sd=
--&gt;function_group[i] =3D new_func;<br>
-&gt; &gt;&gt;&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[14 + (i &gt;&gt;=
- 1)] =3D new_func &lt;&lt; ((i * 4) &amp; 4);<br>
-&gt; &gt;&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 sd-&gt;data[16 - (i &gt;&gt;=
- 1)] |=3D new_func &lt;&lt; ((i % 2) * 4);<br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; This patch broke the orangepi machine, reproducible running<b=
-r>
-&gt; &gt;&gt; test_arm_orangepi_bionic:<br>
-&gt; &gt;&gt; <a href=3D"https://www.mail-archive.com/qemu-devel@nongnu.org=
-/msg739449.html" rel=3D"noreferrer noreferrer" target=3D"_blank">https://ww=
-w.mail-archive.com/qemu-devel@nongnu.org/msg739449.html</a><br>
-&gt; &gt;&gt;<br>
-&gt; &gt;&gt; Can you have a look?<br>
-&gt; &gt;<br>
-&gt; &gt; Yes, I can take a look. Could you please send more details on how=
- to<br>
-&gt; &gt; run &quot;test_arm_orangepi_bionic&quot;?<br>
-&gt;<br>
-&gt; Looking at the previous link, I think this should work:<br>
-&gt;<br>
-&gt; $ make check-venv qemu-system-arm<br>
-&gt; $ AVOCADO_ALLOW_LARGE_STORAGE=3D1 \<br>
-&gt;=C2=A0 =C2=A0 tests/venv/bin/python -m \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 avocado --show=3Dapp,console run \<br>
-&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 run -t machine:orangepi-pc tests/acceptance=
-<br>
-&gt;<br>
-<br>
-I tried the above command in my build tree, and got:<br>
-<br>
-avocado run: error: unrecognized arguments: tests/acceptance<br>
-Perhaps a plugin is missing; run &#39;avocado plugins&#39; to list the inst=
-alled ones<br>
-<br>
-I switched to `make check-acceptance` which seems to work, however not<br>
-for orangepi-pc related tests?<br>
-<br>
-=C2=A0(09/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
-arm_orangepi:<br>
-SKIP: Test artifacts fetched from unreliable <a href=3D"http://apt.armbian.=
-com" rel=3D"noreferrer noreferrer" target=3D"_blank">apt.armbian.com</a><br=
->
-=C2=A0(10/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
-arm_orangepi_initrd:<br>
-SKIP: Test artifacts fetched from unreliable <a href=3D"http://apt.armbian.=
-com" rel=3D"noreferrer noreferrer" target=3D"_blank">apt.armbian.com</a><br=
->
-=C2=A0(11/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
-arm_orangepi_sd:<br>
-SKIP: Test artifacts fetched from unreliable <a href=3D"http://apt.armbian.=
-com" rel=3D"noreferrer noreferrer" target=3D"_blank">apt.armbian.com</a><br=
->
-=C2=A0(12/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
-arm_orangepi_bionic:<br>
-SKIP: storage limited<br>
-=C2=A0(13/32) tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_=
-arm_orangepi_uboot_netbsd9:<br>
-SKIP: storage limited<br>
-<br>
-Any ideas?<br>
-<br>
-Regards,<br>
-Bin<br>
-</blockquote></div>
-
---00000000000009956405b2440092--

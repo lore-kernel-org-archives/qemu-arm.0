@@ -1,107 +1,105 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6376013lfa;
-        Thu, 22 Oct 2020 01:28:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJyzu5e7negAnZrCNViEYJ6dwQ11e24qaUJFIUW7+0c1rf6qRrmomKiYGhv9kDG/KJSxGzUm
-X-Received: by 2002:a25:4e46:: with SMTP id c67mr1549478ybb.87.1603355281603;
-        Thu, 22 Oct 2020 01:28:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603355281; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6376895lfa;
+        Thu, 22 Oct 2020 01:29:50 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy/bMSH/fNkjDVLivLrL8ZdJDQlTtczQ1K3jdhdwYIvcKGgJWWN4SQu/XYouc/qXburAsSC
+X-Received: by 2002:a25:6585:: with SMTP id z127mr1976665ybb.33.1603355389971;
+        Thu, 22 Oct 2020 01:29:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603355389; cv=none;
         d=google.com; s=arc-20160816;
-        b=KNFCFEkTQ5HYVJMvkgck7IE9t6CfOWMk4RhoqEnWDhK0kqKG0LjT3OlVUYOsAQ7saf
-         KHd28wCgC8f4zESRJVvNK1yGjB5GMl617sjHkYhz5/bB2xrF0zFpdFZwxJSK35CVLR5q
-         soqgfHlAlTdj8QcZkRa1P6i3wSlwT4YXsC4AtvBRkGy9QtH1i+TfZa3Q4GV+Vna8S8DU
-         TSFT1AqsWj+byS6Fu0EATOV4vr3p6+EuLSj7RKF3BmChtiRDAwWv+FGiNJ3U78IfnZwd
-         XO/dC/JibBC44/PdYlPOw2cX3rW4bZJj09guWDwxr7UdbU/kOSy98bgytRKigaVqISBt
-         ftZw==
+        b=ZCvqwgk3eTG3jQfw2Wcj1RLM4+fSOjZaH+MpFRP/80Jrqptu4wY6u9NXUy2njAL0YP
+         n6RwdwNxZ6TVTFj97gZAx0j60FGS5BSCKduLVa7AwRKwOAv+6uEUSlWdZ/JUgpyQdWcL
+         3q92rCcWC3JMh8hBCJRmrihQnBcw0E2IQ2R/sJq+VWMkINDa7jEHYGuxss/V3BtJUtMa
+         GJuFK8lQodwHGztkM9z6/W/k4hda5nB2t4CkfgHLyJGEjWBuLWJkNb8RuyWc1djOOrFA
+         w22KhulpWyP0P1LAPLI/Z5y5gq/EoBZDn97RrL1ZHC5PSX111g3n4l2BRs/DoW1LsiSy
+         z+3Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=eQHLQiP0pOQUmU48nt08dYJM5zU3ME8PIvW/dXLfPa8=;
-        b=opIiogzdWbkpgeuNQ29ofActK+GGMNXG3cupQVB8j73rIh/VqrKvmOfkuRvhyn4Z4M
-         HOuUvGnJkl+UOYlRq1wUmWHdTnIROPFTuM683xskXcD3pDtj+KEWYK7CrAwmwgqxsJSG
-         seb4SDIMJnrLbtowTWoGgvSeOEnQiXma3Y9PeXcoLAaCgbSnlWItfCxP7JtEfstvVLxW
-         apcVaiVdkAa5tA5YK1SuaQuomrxhknkrYJ8HA6S1RppSXp5hwd6PtpbbtVS4jDe69/hf
-         dBE1AbG4aVpm79/EFMjYkHbeC0rdcxPnki3xgux+8s5eYFsiMw8DMUT5TGDSplc5J94j
-         RZkA==
+         :list-unsubscribe:list-id:precedence:references:in-reply-to
+         :message-id:date:subject:to:from:dkim-signature;
+        bh=P73tB6V8HboKqkNO+5D1J1iSewP3IjymN3EA3sKR3mI=;
+        b=CirX2F5VgnUBAkg1C1vuFTw1oS/R8CyDMCyADG/3r3y+yWMApUfsGLr+cmEjAVL0k+
+         cGLTZECssLGF6NsjT1SGO4hwPGEo7ITs6gEE5OYnY5DQcPApiO315d9UcqU+kHu/wtJF
+         6/1ILMj9wjlZIYPLak5fQupY3QHVsXzNEbzzOUPUodHNUvV1nNmvMqkxbvJPqkGmkCXv
+         F6F9wMw0bUPZuTvunK/WUKfn0Nc11gZxkYlFEOUN/lORgPyx52CdCsR/xX0S4Dg6phVt
+         siEj5b3F9lsu8TRw97VBQ4iHTmSX7nzjh+qKCnEvMI00sF+Xd9gCHVdHgvxKI9PzpAI5
+         e6XQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=AtnKBis5;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=EtkGSem9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j13si621490ybh.172.2020.10.22.01.28.01
+        by mx.google.com with ESMTPS id 66si584777ybz.39.2020.10.22.01.29.49
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Oct 2020 01:28:01 -0700 (PDT)
+        Thu, 22 Oct 2020 01:29:49 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=AtnKBis5;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=EtkGSem9;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:33610 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:37362 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVVx3-0007I0-0b
-	for alex.bennee@linaro.org; Thu, 22 Oct 2020 04:28:01 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48266)
+	id 1kVVyn-0000My-DT
+	for alex.bennee@linaro.org; Thu, 22 Oct 2020 04:29:49 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49312)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
- id 1kVVuZ-00049y-3a; Thu, 22 Oct 2020 04:25:27 -0400
-Received: from userp2120.oracle.com ([156.151.31.85]:42188)
+ id 1kVVwq-0007Xb-Vk; Thu, 22 Oct 2020 04:27:48 -0400
+Received: from userp2120.oracle.com ([156.151.31.85]:44444)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
- id 1kVVuW-00066a-5n; Thu, 22 Oct 2020 04:25:26 -0400
+ id 1kVVwo-00076J-9p; Thu, 22 Oct 2020 04:27:48 -0400
 Received: from pps.filterd (userp2120.oracle.com [127.0.0.1])
- by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8OEIA008774;
- Thu, 22 Oct 2020 08:25:18 GMT
+ by userp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8ODRg008760;
+ Thu, 22 Oct 2020 08:27:43 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
- subject : date : message-id : mime-version : content-type :
- content-transfer-encoding; s=corp-2020-01-29;
- bh=eQHLQiP0pOQUmU48nt08dYJM5zU3ME8PIvW/dXLfPa8=;
- b=AtnKBis5JpfwAIB8iCRuc2CcG45alolMJwgBQ6udgEyl8HL1BHXZS4oxrwPq+2W++K/+
- vI5dw54z8/mTQPph04wX37O3JFVickpJREpE4TH2gMTqXFrBF4B+oEZ5VQO+WTbO0azV
- IWxYoRieJ7MiEEBHLvv77e4azjBigurbw9YqPn0UCMi7X3aJcC8kJ5AHGXTxuh21y2Eo
- p9sVVThrP7p243DDY0Z8j0Td3AZWx9YZIIRtmqHrRwfps9O8SuuZalKNVH9SW9xFWJXD
- typlY+Khb/O89h/dhTJ4uGuz4dF+Tw7cCPIlsca1kCmavc43MbemNy0anA/VgUVWvvM3 2w== 
-Received: from aserp3020.oracle.com (aserp3020.oracle.com [141.146.126.70])
- by userp2120.oracle.com with ESMTP id 34ak16mvsf-1
+ subject : date : message-id : in-reply-to : references; s=corp-2020-01-29;
+ bh=P73tB6V8HboKqkNO+5D1J1iSewP3IjymN3EA3sKR3mI=;
+ b=EtkGSem9MnPRURgxNGpYS5WPtaE0WTY6BswM22CL0NrSDQdiU5MCMiUHOmavqdX1yCBy
+ G95zn2Hm3gNlW9/mYFf5yIw4HKEZrg95oT9tFUemYD42XmXAy2X/fsSqdsfHjpUzVcLJ
+ midjW3QvRjpdjfxJGYJgpBL5Hw5VJWhNTGXkDistuNcNIo/JkH6dEfW4PW9iqh7dUfjc
+ +g7b+u8GUvt5u0IjGY1l9wMHrzc6k8+d3QaTRkry0XvFC07+ltFDQiAL7qRl++LRK3QT
+ TjbkNH2Tih7vwwpvNfCTKNRA2gy3EzwEWCxRWHtXjlvp9HUlzIKu08l0tgBetxQpcsbN zA== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by userp2120.oracle.com with ESMTP id 34ak16mw97-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 22 Oct 2020 08:25:17 +0000
-Received: from pps.filterd (aserp3020.oracle.com [127.0.0.1])
- by aserp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8Fjif083192;
- Thu, 22 Oct 2020 08:25:17 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by aserp3020.oracle.com with ESMTP id 348ah0k2gq-1
+ Thu, 22 Oct 2020 08:27:42 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8G8aV094847;
+ Thu, 22 Oct 2020 08:25:42 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by aserp3030.oracle.com with ESMTP id 348a6qbcux-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 22 Oct 2020 08:25:17 +0000
+ Thu, 22 Oct 2020 08:25:42 +0000
 Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 09M8PG9A013938;
- Thu, 22 Oct 2020 08:25:16 GMT
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 09M8Peb6015325;
+ Thu, 22 Oct 2020 08:25:41 GMT
 Received: from mihai.localdomain (/10.153.73.25)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 22 Oct 2020 01:25:16 -0700
+ with ESMTP ; Thu, 22 Oct 2020 01:25:40 -0700
 From: Mihai Carabas <mihai.carabas@oracle.com>
 To: peter.maydell@linaro.org, shannon.zhaosl@gmail.com, mst@redhat.com,
  imammedo@redhat.com
-Subject: [PATCH 0/8] Add support for pvpanic mmio device
-Date: Thu, 22 Oct 2020 10:42:48 +0300
-Message-Id: <1603352576-21671-1-git-send-email-mihai.carabas@oracle.com>
+Subject: [PATCH 8/8] pvpanic: break dependency on ISA_BUS
+Date: Thu, 22 Oct 2020 10:42:56 +0300
+Message-Id: <1603352576-21671-9-git-send-email-mihai.carabas@oracle.com>
 X-Mailer: git-send-email 1.8.3.1
-MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+In-Reply-To: <1603352576-21671-1-git-send-email-mihai.carabas@oracle.com>
+References: <1603352576-21671-1-git-send-email-mihai.carabas@oracle.com>
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9781
  signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- mlxscore=0 phishscore=0
- malwarescore=0 spamscore=0 suspectscore=0 bulkscore=0 mlxlogscore=999
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010220055
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 malwarescore=0
+ mlxlogscore=999
+ bulkscore=0 spamscore=0 adultscore=0 suspectscore=0 mlxscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2010220055
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9781
  signatures=668682
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 bulkscore=0
  phishscore=0
- priorityscore=1501 clxscore=1011 malwarescore=0 mlxscore=0 adultscore=0
+ priorityscore=1501 clxscore=1015 malwarescore=0 mlxscore=0 adultscore=0
  lowpriorityscore=0 impostorscore=0 spamscore=0 mlxlogscore=999
  suspectscore=0 classifier=spam adjust=0 reason=mlx scancount=1
  engine=8.12.0-2009150000 definitions=main-2010220056
@@ -132,53 +130,73 @@ Cc: Mihai Carabas <mihai.carabas@oracle.com>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Cv04eLcVSbAI
+X-TUID: ZuTPzHY8AEMe
 
-The patchset was assembled from chuncks from some old patches from 2018 [1]
-which were left unmerged and some additions from me. Surprisingly their Linux
-kernel counterpart were merged (so the pvpanic driver from the kernel supports
-mmio).
+pvpanic is supported on ARM VIRT MACHINE as an MMIO device, no need for an ISA
+bus.
 
-I have seen the discussions about moving the pvpanic to PCI [1]. Those patches
-were sent but nothing happened. Also they are not trivial and require major
-modifications at the driver level also. Given the fact that we already have
-mmio driver support for pvpanic in the Linux kernel, I have sent these patches
-to ask again the maintainers if this can be merged.
+Signed-off-by: Mihai Carabas <mihai.carabas@oracle.com>
+---
+ hw/arm/Kconfig    | 1 +
+ hw/misc/Kconfig   | 2 +-
+ hw/misc/pvpanic.c | 4 ++++
+ 3 files changed, 6 insertions(+), 1 deletion(-)
 
-How to test this:
-/usr/bin/qemu-system-aarch64 \
-        -machine virt,gic-version=3,pvpanic=on
-
-There is a new property for machine virt called pvpanic which is by default
-turned off.
-
-[1] http://patchwork.ozlabs.org/project/qemu-devel/cover/1543865209-50994-1-git-send-email-peng.hao2@zte.com.cn/
-
-Mihai Carabas (1):
-  pvpanic: break dependency on ISA_BUS
-
-Peng Hao (5):
-  hw/misc/pvpanic: Add the MMIO interface
-  hw/arm/virt: Use the pvpanic device
-  hw/arm/virt: add pvpanic device in virt acpi table
-  hw/arm/virt: add configure interface for pvpanic-mmio
-  pvpanic : update pvpanic document
-
-Philippe Mathieu-Daudé (2):
-  hw/misc/pvpanic: Build the pvpanic device for any machine
-  hw/misc/pvpanic: Cosmetic renaming
-
- docs/specs/pvpanic.txt    | 12 ++++++-
- hw/arm/Kconfig            |  1 +
- hw/arm/virt-acpi-build.c  | 17 ++++++++++
- hw/arm/virt.c             | 47 +++++++++++++++++++++++++++
- hw/misc/Kconfig           |  2 +-
- hw/misc/meson.build       |  2 +-
- hw/misc/pvpanic.c         | 83 ++++++++++++++++++++++++++++++++++++++---------
- include/hw/arm/virt.h     |  2 ++
- include/hw/misc/pvpanic.h |  5 +--
- 9 files changed, 150 insertions(+), 21 deletions(-)
-
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index f303c6b..0dd570b 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -26,6 +26,7 @@ config ARM_VIRT
+     select ACPI_MEMORY_HOTPLUG
+     select ACPI_HW_REDUCED
+     select ACPI_NVDIMM
++    select PVPANIC
+ 
+ config CHEETAH
+     bool
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 3185456..5924e70 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -117,7 +117,7 @@ config IOTKIT_SYSINFO
+ 
+ config PVPANIC
+     bool
+-    depends on ISA_BUS
++    depends on ISA_BUS || ARM_VIRT
+ 
+ config AUX
+     bool
+diff --git a/hw/misc/pvpanic.c b/hw/misc/pvpanic.c
+index 136f1d6..a70adb8 100644
+--- a/hw/misc/pvpanic.c
++++ b/hw/misc/pvpanic.c
+@@ -105,6 +105,7 @@ static const MemoryRegionOps pvpanic_ops = {
+     },
+ };
+ 
++#ifdef CONFIG_ISA_BUS
+ static void pvpanic_isa_initfn(Object *obj)
+ {
+     PVPanicISAState *s = PVPANIC_ISA_DEVICE(obj);
+@@ -152,6 +153,7 @@ static TypeInfo pvpanic_isa_info = {
+     .instance_init = pvpanic_isa_initfn,
+     .class_init    = pvpanic_isa_class_init,
+ };
++#endif
+ 
+ static void pvpanic_mmio_initfn(Object *obj)
+ {
+@@ -180,7 +182,9 @@ static TypeInfo pvpanic_mmio_info = {
+ 
+ static void pvpanic_register_types(void)
+ {
++#ifdef CONFIG_ISA_BUS
+     type_register_static(&pvpanic_isa_info);
++#endif
+     type_register_static(&pvpanic_mmio_info);
+ }
+ 
 -- 
 1.8.3.1
 

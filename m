@@ -1,100 +1,100 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6379502lfa;
-        Thu, 22 Oct 2020 01:34:48 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzFJnx7qiQLLVbtz1spl4wodzkhsOXe3Es893NjVfoKuXXcyud0osFtyLNX1PKcWYmOwibb
-X-Received: by 2002:a25:d284:: with SMTP id j126mr1680977ybg.220.1603355688007;
-        Thu, 22 Oct 2020 01:34:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603355688; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6379589lfa;
+        Thu, 22 Oct 2020 01:34:57 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJznAvWBjTg+0HXZZM3SzjHh5029UmGISgkpOMpHqJLrRVD+c6Itav7Fds7wJl0F5iuTxd9D
+X-Received: by 2002:a25:5507:: with SMTP id j7mr1862277ybb.214.1603355697607;
+        Thu, 22 Oct 2020 01:34:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603355697; cv=none;
         d=google.com; s=arc-20160816;
-        b=1ErpNJGPxyDcbTrqDZHdVWrlPZarMBO/67793fB8sjdIISuUALcvyUWobtA6h/UECR
-         vtvT2gHTNt8q0efNzRKNX5irW6l+nc+cKPsmwa78b50knGa80gv4nqVJlkOTrIds3ITE
-         8pNpl5FXdRIvbH4RpdCE8jx1I5TpznHIFX7jr+VpnYjQU1uoR6Xg9miXUfPX+WAP6NTW
-         SsKylaC8fjufjQTrQQ8Fq1vyaLHK3ln7OgGrpCeZgOkkGTWO6ceIHoKqeYkZ3a1E6SYB
-         AHB7CdYAxzNk2Y4DBBzrXCuz1Ygpmogrkq8G7DKH5Xt/pvXbikm96oeRmg98hhuBl6Ne
-         8bpg==
+        b=v4N5saHunyCSZfQ9ub1HNth24oKDQOcIf/kQb5LJs3MHB8uUV3a171xIBeiEvKEVl8
+         w9d6IsaSNmKG2MbxkVhqT1X0tZkzG4w8WQVQ7fsKftHrQGLHYgQF50bpqAaN+dnC3FaG
+         XpPQ5Luv+63ZEqUuHtTsmOzp//eFmuUxHEIJnEbDoW1D4JNmS85KMXbze4enYdeRnDXw
+         yaUxAdTBp39YOSix2ExHQufgtHEJuayMFS9kBQkCvlwpWL7S1BDOVhRIGLcQ4iYIQIA0
+         m3IKY4wktkAddmgBze2FAr6BdfyYGDU4eyvw9eWd4iOfB8g7KJ2AyYhsziA12HkQQQ8p
+         XgIg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:references:in-reply-to
          :message-id:date:subject:to:from:dkim-signature;
-        bh=KSW4vd9JXP6+2XOuGpp+0xEta4oQs7CUNpzyXUTRHZw=;
-        b=n5dgzeMoyPBxJV4zHntokixjIuV7LId5sqmj/4251NGSTTsLhI2x/UylSub3tEeoKU
-         b0MceXCUZ71jqkh62Ij/5ik3covfZgKPCIfAwnjCmRf+xC2/+WPqQrjik2rTkNVJ5F5t
-         WIUOmdL2qfcxpj7NdaLC789LxVfJ84Xbg5ztd1qqIE+4EqbF29fQ4zNll7z585tZOhV9
-         fPQZ/8DHC8q2/TPChstA/7AjrCzqsGVmp4ZKZZdBvl6dcczDNBhKrrROI8MXQmEW8R4e
-         acXo+C6zFbcwMCSDZj4BscmOHUeRYgWfn6GrM2IBD10DTz0+Rrxn8u9GKrJwjh73uwPK
-         okeA==
+        bh=7PgDz6ev4tgSwNrsc81WnNOzRf2qcq5e7/7OU+vopX8=;
+        b=p5Bd4sxVtz6E5K5Pd0vTRTb1906ujHIuJ/Sfi45pY+Uv63PEwTUCeSRnNSdAAGcvBT
+         glK5QSm83D4aOz1SS6NyiJeH/fqLCuKmabr/J4wCA+RKNaOI4fJCaAl42aOKgt3AyhMg
+         N/PDCRwFyfnwLWC3ji/PTClqqChuNvs8d6Mqvows6x1A92ykh9SfF4RNcx5wsGPCUhtb
+         xSrKbi8VeTFxIt3Rsw8BKeVL9JOm/fZLwByrexFi95sYUY/TErYL9kg5CNlRhEGi0+YI
+         m2iW+G/TmCrsbOHyokZWk/I/dgh1hZLIMWRSb64NblRA35rl8ZH6IdQcMmaotpFAAfAi
+         neDQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=TjrKZ6Mu;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=rfDBbPfz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e3si611137ybq.456.2020.10.22.01.34.47
+        by mx.google.com with ESMTPS id b12si508624ybn.305.2020.10.22.01.34.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Oct 2020 01:34:47 -0700 (PDT)
+        Thu, 22 Oct 2020 01:34:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=TjrKZ6Mu;
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=rfDBbPfz;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:46194 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46538 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVW3b-0004H8-EQ
-	for alex.bennee@linaro.org; Thu, 22 Oct 2020 04:34:47 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48456)
+	id 1kVW3l-0004PS-1C
+	for alex.bennee@linaro.org; Thu, 22 Oct 2020 04:34:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48548)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
- id 1kVVui-0004SF-2c; Thu, 22 Oct 2020 04:25:36 -0400
-Received: from aserp2130.oracle.com ([141.146.126.79]:34230)
+ id 1kVVus-0004rH-D9; Thu, 22 Oct 2020 04:25:46 -0400
+Received: from aserp2130.oracle.com ([141.146.126.79]:34360)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
- id 1kVVug-0006Bw-62; Thu, 22 Oct 2020 04:25:35 -0400
+ id 1kVVuq-0006LC-JF; Thu, 22 Oct 2020 04:25:46 -0400
 Received: from pps.filterd (aserp2130.oracle.com [127.0.0.1])
- by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8PVeG114849;
- Thu, 22 Oct 2020 08:25:31 GMT
+ by aserp2130.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8OwsE114665;
+ Thu, 22 Oct 2020 08:25:41 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
  h=from : to : cc :
  subject : date : message-id : in-reply-to : references; s=corp-2020-01-29;
- bh=KSW4vd9JXP6+2XOuGpp+0xEta4oQs7CUNpzyXUTRHZw=;
- b=TjrKZ6MuYhsCmDFjv1NIIOnzKGlghDCOpBDg49CEXILnfZATEqpQuyyBQy3F+H6KupUV
- Gep+qBBVCuHFvmvq3j6UNNiG6fspsVs35NOWKzvExvGCUbZQbtkwmGms0C3soW1m6ti0
- yDv8fWjmlKRuwhgLZi7A6R7Et2T7f1gRK1rjJZaOqKjR8YlruYgnAMka6xiidkFD8t5z
- JbU7KsxvcuS0gHjsWcFaVePzApZcYwhFN507q6gHDPUncjSeIaZzPWCisNXX3KJ9wZjS
- jHTBqoW0p406yDCziya90dDewLkZXvaxd6NwUs3wuD5xXxk0SvbG2YcTExt8DwyB5CYU 3g== 
-Received: from userp3020.oracle.com (userp3020.oracle.com [156.151.31.79])
- by aserp2130.oracle.com with ESMTP id 347p4b4nwf-1
+ bh=7PgDz6ev4tgSwNrsc81WnNOzRf2qcq5e7/7OU+vopX8=;
+ b=rfDBbPfzZOTJs7ii95wpsnNXcD1YyAfBvBJc4d7OKcDo0ZJn9ccogVsy6d8A9B5KabC5
+ 3co8wjnHRmdP9QJPi75zX1o+iNwREgJ7qfMfzKKj/d5cOeVuSWmDc/mfjdBEtVhc0X2L
+ ZbSkV5V5KjYRybPnvtTm9LLGLkk08t5Oy9Fu4jEXbGGV+8aT3+NlBBPokyuptuCJIrcP
+ LbGmmRfqNGyCr4xbIFdhChnBf9O0F1oQFtr49FqXbofXZ0CsLHqYPQLmAmH54zH5LRo9
+ dFKn60jh431X+r0G0SlKA2lYMkzkIReq2zjvpYYH73L+DjFE+JVou4qHZAHKCL33kCWU 4A== 
+Received: from userp3030.oracle.com (userp3030.oracle.com [156.151.31.80])
+ by aserp2130.oracle.com with ESMTP id 347p4b4nwu-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Thu, 22 Oct 2020 08:25:31 +0000
-Received: from pps.filterd (userp3020.oracle.com [127.0.0.1])
- by userp3020.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8Fxb6024118;
- Thu, 22 Oct 2020 08:25:30 GMT
-Received: from aserv0121.oracle.com (aserv0121.oracle.com [141.146.126.235])
- by userp3020.oracle.com with ESMTP id 34ak19kdwm-1
+ Thu, 22 Oct 2020 08:25:40 +0000
+Received: from pps.filterd (userp3030.oracle.com [127.0.0.1])
+ by userp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09M8P4XM171199;
+ Thu, 22 Oct 2020 08:25:40 GMT
+Received: from userv0121.oracle.com (userv0121.oracle.com [156.151.31.72])
+ by userp3030.oracle.com with ESMTP id 348ahygys3-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 22 Oct 2020 08:25:30 +0000
+ Thu, 22 Oct 2020 08:25:40 +0000
 Received: from abhmp0003.oracle.com (abhmp0003.oracle.com [141.146.116.9])
- by aserv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 09M8PTb8013989;
- Thu, 22 Oct 2020 08:25:29 GMT
+ by userv0121.oracle.com (8.14.4/8.13.8) with ESMTP id 09M8Pdul015316;
+ Thu, 22 Oct 2020 08:25:39 GMT
 Received: from mihai.localdomain (/10.153.73.25)
  by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Thu, 22 Oct 2020 01:25:29 -0700
+ with ESMTP ; Thu, 22 Oct 2020 01:25:39 -0700
 From: Mihai Carabas <mihai.carabas@oracle.com>
 To: peter.maydell@linaro.org, shannon.zhaosl@gmail.com, mst@redhat.com,
  imammedo@redhat.com
-Subject: [PATCH 5/8] hw/arm/virt: add pvpanic device in virt acpi table
-Date: Thu, 22 Oct 2020 10:42:53 +0300
-Message-Id: <1603352576-21671-6-git-send-email-mihai.carabas@oracle.com>
+Subject: [PATCH 7/8] pvpanic : update pvpanic document
+Date: Thu, 22 Oct 2020 10:42:55 +0300
+Message-Id: <1603352576-21671-8-git-send-email-mihai.carabas@oracle.com>
 X-Mailer: git-send-email 1.8.3.1
 In-Reply-To: <1603352576-21671-1-git-send-email-mihai.carabas@oracle.com>
 References: <1603352576-21671-1-git-send-email-mihai.carabas@oracle.com>
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9781
  signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
- mlxscore=0 phishscore=0
- spamscore=0 adultscore=0 mlxlogscore=999 malwarescore=0 bulkscore=0
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
+ phishscore=0 bulkscore=0
+ malwarescore=0 spamscore=0 mlxlogscore=999 mlxscore=0 suspectscore=1
  classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010220055
+ definitions=main-2010220056
 X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9781
  signatures=668682
 X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=1
@@ -130,55 +130,56 @@ Cc: Mihai Carabas <mihai.carabas@oracle.com>, Peng Hao <peng.hao2@zte.com.cn>,
  qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: uCVv7niDFFqD
+X-TUID: /croAYsoexPY
 
 From: Peng Hao <peng.hao2@zte.com.cn>
 
-Add pvpanic device in virt acpi table, so when kernel command line
-uses acpi=force, kernel can get info from acpi table.
+Add mmio support info in docs/specs/pvpanic.txt.
 
 Reviewed-by: Andrew Jones <drjones@redhat.com>
 Signed-off-by: Peng Hao <peng.hao2@zte.com.cn>
 Signed-off-by: Mihai Carabas <mihai.carabas@oracle.com>
 ---
- hw/arm/virt-acpi-build.c | 17 +++++++++++++++++
- 1 file changed, 17 insertions(+)
+ docs/specs/pvpanic.txt | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 9747a64..f64bf89 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -87,6 +87,20 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
-     aml_append(scope, dev);
- }
+diff --git a/docs/specs/pvpanic.txt b/docs/specs/pvpanic.txt
+index a90fbca..b50140b 100644
+--- a/docs/specs/pvpanic.txt
++++ b/docs/specs/pvpanic.txt
+@@ -1,7 +1,7 @@
+ PVPANIC DEVICE
+ ==============
  
-+static void acpi_dsdt_add_pvpanic(Aml *scope, const MemMapEntry *pvpanic_memmap)
-+{
-+    Aml *dev = aml_device("PEVT");
-+    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0001")));
-+    aml_append(dev, aml_name_decl("_UID", aml_int(0)));
+-pvpanic device is a simulated ISA device, through which a guest panic
++pvpanic device is a simulated device, through which a guest panic
+ event is sent to qemu, and a QMP event is generated. This allows
+ management apps (e.g. libvirt) to be notified and respond to the event.
+ 
+@@ -9,6 +9,9 @@ The management app has the option of waiting for GUEST_PANICKED events,
+ and/or polling for guest-panicked RunState, to learn when the pvpanic
+ device has fired a panic event.
+ 
++The pvpanic device can be implemented as an ISA device (using IOPORT),
++or, since qemu 4.0, as a SYSBUS device (using MMIO).
 +
-+    Aml *crs = aml_resource_template();
-+    aml_append(crs, aml_memory32_fixed(pvpanic_memmap->base,
-+               pvpanic_memmap->size, AML_READ_WRITE));
+ ISA Interface
+ -------------
+ 
+@@ -24,6 +27,13 @@ bit 1: a guest panic has happened and will be handled by the guest;
+        the host should record it or report it, but should not affect
+        the execution of the guest.
+ 
++SYSBUS Interface
++----------------
 +
-+    aml_append(dev, aml_name_decl("_CRS", crs));
-+    aml_append(scope, dev);
-+}
++The SYSBUS interface is similar to the ISA interface except that it uses
++MMIO. For example, the arm virt machine could put the pvpanic device at
++[0x90b0000, 0x90b0001], where currently only the first byte is used.
 +
- static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
- {
-     Aml *dev = aml_device("FWCF");
-@@ -605,6 +619,9 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
-     if (vmc->acpi_expose_flash) {
-         acpi_dsdt_add_flash(scope, &memmap[VIRT_FLASH]);
-     }
-+    if (vms->pvpanic) {
-+        acpi_dsdt_add_pvpanic(scope, &memmap[VIRT_PVPANIC]);
-+    }
-     acpi_dsdt_add_fw_cfg(scope, &memmap[VIRT_FW_CFG]);
-     acpi_dsdt_add_virtio(scope, &memmap[VIRT_MMIO],
-                     (irqmap[VIRT_MMIO] + ARM_SPI_BASE), NUM_VIRTIO_TRANSPORTS);
+ ACPI Interface
+ --------------
+ 
 -- 
 1.8.3.1
 

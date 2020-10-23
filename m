@@ -1,196 +1,197 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp6063210lfa;
-        Wed, 21 Oct 2020 14:38:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx5BhEtxum3zbhc2pK1w3wkwMIOeSsgmWM7dGWnNcsSE/NK9B+C+6IuPsEV/YIaLKekPBFj
-X-Received: by 2002:a5b:ec2:: with SMTP id a2mr7871700ybs.13.1603316320503;
-        Wed, 21 Oct 2020 14:38:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603316320; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp356356lfa;
+        Fri, 23 Oct 2020 02:23:40 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzk3bhGDfvMF6n98F7sxCiQrVwWQrzjyKgMRbhcGkUv3dm/nFdVOasPkmBJf8ZoAjaZdaz9
+X-Received: by 2002:a25:2006:: with SMTP id g6mr1871259ybg.199.1603445020639;
+        Fri, 23 Oct 2020 02:23:40 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603445020; cv=none;
         d=google.com; s=arc-20160816;
-        b=R5RQVBqgFjQuYh3TaZ3OOpdFDccS5Ll2PTeBVSK7xtJAztqA5rkVaE+98UzwhO2hQS
-         oO9HDOcn880FKcknRF/GZR/gCRcb21Li4m/qnk4PJJWMCrXEKU4HhC6SMP7h3vz6n9sj
-         Br89Bntw1dL6Fe0p2A+Hbev3lTqQ/LeS0A2rk1rXfDCDAQmbsUhyoJ8pSm8HtsZ5LEY5
-         5RCxY73ciGsjLw0tc39hnEEwTNHmpJE3hn5uKPgdAdXI1c5zC2CBNWD5RKuj3rWvcDiA
-         0zONqNNDj1+zvsEMrq4fE5FZV+kjOi57pcP6oK9m38XgBrJMfv4WtkuHC1rUmVM8SVcc
-         PSCA==
+        b=y+8tdWSnfr6wz5Ib065SFpN2sGGNmE0pu6aAehaaB18dfd3VdZH8KJZ6gcknJSWfKM
+         y9ff/sDRu7juT6UF/df+jd7pI4JfFblV42ANjgi2XjVbkzjtnzvnd+cAA/rp+e1+NwHi
+         RxCwPS/kNQ4YNJlaZQDBSq/4AUn14+9zZ3BHM48m1vdpW1ZOKxSOzE84LhYHqrd1ed0b
+         SpedRGo0fil89jps7Fom7amLiENj53d8KN+8pyM0VLsTjKXrv+neRwAs9OQjerM4mB1E
+         dSL7ftfvaw5BTJlsYG55G4fvFBW28tkBZ73bMT3LrmRJGeQW+bYfPE2gR0pxQlOXvAbz
+         O41Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
-         :list-archive:list-unsubscribe:list-id:precedence:cc:to:subject
-         :mime-version:message-id:date:dkim-signature;
-        bh=ScjJWFhv2NX/VPNsattIHwK733aeo0c/y9UBZ2zVqfw=;
-        b=WSh+xAIk4h4Vi1dJi4ORo2jBLu2vSSh/shOnMvAP91CkhMJDtKsmu6yncy9EKeUzHr
-         nm9T5dYXXpQqnI/ZYU5fJZNUhHgVIFwxF968FxsG5Hm9tOAs8y340nj9huxzi4VpHqg/
-         5ANQr9mWrGON48r0p4g+6+7mxPFp7j9UAAR4nWf4DmugMmZFp/Ztn+jeZG0VlCQjmFPk
-         FYM2xdEpdxTta4w2OPhOj3FSNOI4E9b2MmvXXcL5W+czjVEpBQMDj4Pe2Aai2IO3YWfL
-         FznKlCATsfQqxfj6j5jnkqmOkWTuWxHk5risbLfXMJ5QRSEBtySrOrqFJTjwnPfUGzQk
-         XE6Q==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=6WcAI9LqJXniaPU6wS68WgkQq4afR52p4cXzIvB+4bY=;
+        b=k06hZ3vxO0k8C7Y5A9B6Ccui+Qte+0NGq3lEBndJpRBpiRbyPNND/2VLO5iTyGY8XK
+         dUUqFQMY0b4hvcCPJBAWOzzwC3cMobRhUdHV7IiQo+MQ7GwJfWnws6ydlTLGRrQa42ku
+         SCnaH920yQ+aiq4ToVo84PGHg5Ifz66D5S93eRkKhMGn9O0qnhaa1a4uh9XVvzT7mecZ
+         cb9UKs/lnVQyQl71Mgge/TwcGhtVrP10QbTWKcRVEKHCkv0/td7UKGNjxrmkAzGTjnwr
+         c/GTfqUwypks6DKE3mcjzf0FGjvoVUCQECeg+pfnFxlC5Uf/qQLoJDt/0xvz7AnBuVCp
+         Q32A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=uUpwoPni;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="JZk/xoY2";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id y7si3673487ybp.54.2020.10.21.14.38.40
+        by mx.google.com with ESMTPS id i17si992934ybm.64.2020.10.23.02.23.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 21 Oct 2020 14:38:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Fri, 23 Oct 2020 02:23:40 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@google.com header.s=20161025 header.b=uUpwoPni;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
-Received: from localhost ([::1]:43406 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="JZk/xoY2";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:37260 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVLoZ-00054C-19
-	for alex.bennee@linaro.org; Wed, 21 Oct 2020 17:38:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48688)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kVtIR-0007Pz-Lb
+	for alex.bennee@linaro.org; Fri, 23 Oct 2020 05:23:39 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56452)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3tamQXwsKCk4x80y33u24u3w44w1u.s426u2A-tuBu1343w3A.47w@flex--hskinnemoen.bounces.google.com>)
- id 1kVLlx-0003DJ-OQ
- for qemu-devel@nongnu.org; Wed, 21 Oct 2020 17:35:53 -0400
-Received: from mail-pj1-x104a.google.com ([2607:f8b0:4864:20::104a]:37583)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kVtIE-0007Pf-KC; Fri, 23 Oct 2020 05:23:26 -0400
+Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444]:39555)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3tamQXwsKCk4x80y33u24u3w44w1u.s426u2A-tuBu1343w3A.47w@flex--hskinnemoen.bounces.google.com>)
- id 1kVLlv-00036w-Ks
- for qemu-devel@nongnu.org; Wed, 21 Oct 2020 17:35:53 -0400
-Received: by mail-pj1-x104a.google.com with SMTP id y7so1945220pjt.2
- for <qemu-devel@nongnu.org>; Wed, 21 Oct 2020 14:35:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=sender:date:message-id:mime-version:subject:from:to:cc;
- bh=ScjJWFhv2NX/VPNsattIHwK733aeo0c/y9UBZ2zVqfw=;
- b=uUpwoPniT75PwzBJLexNgelXa6ohCcxW7YcuzwopeDxiz1GTT/egjmJH25vjcjUtfp
- LdySthy9bDFFo+GiUvH/g6rj1ftK5UaYs3yUwRkfKfKuVEzqASOtp0eznfypsnhFqTT7
- qxZ7LyvsxXxOnK1DvNFk6Xx5brppLYt8u6SQzTq10Yx2q+tbBMzyY3hRLLawo4WGXF1K
- k+NXRx9MmX62pDgSYK3a76hWxkKshGQWStS4SXpph4Pk76Yz36kIAYIZfyqvvIcjDfma
- U4Su1E/rkM/s9xcG0GYyBPjKKiM0hLkULBj91TI8XyJhfwg1XOlp17N9xrLCdyeLrJc0
- rM4Q==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kVtIC-0008Gd-Rz; Fri, 23 Oct 2020 05:23:26 -0400
+Received: by mail-wr1-x444.google.com with SMTP id y12so1005143wrp.6;
+ Fri, 23 Oct 2020 02:23:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=6WcAI9LqJXniaPU6wS68WgkQq4afR52p4cXzIvB+4bY=;
+ b=JZk/xoY2lAtCzpCM/W6AqoeoBOknlnn1ePqygyIhbmTUs8AUhOWGxiQGDAbcvp/0PH
+ x9We/ITPaCMiziJX0RtsqyirB1fjJnHqN2PnBmKesRjv9jyaLIXwBV3rv7N35xABHmCc
+ vu+r9Ab1gVKDwynBYkMN3dkqaMlD1BDZKq21XQmof8FEgfD+ijpM4XwfzD9bcOLOg7Nn
+ 7wHN8KNd7WnbtLIsfa8dXhOLJ6yIYVmpVITRGu+71RJOsir5iXmEdQ7h8tOvX0HBWeu5
+ mbNQYtwKB6EPiuy2h5mLyeskd/7NLnYs2GKMyGxmS3bYeT7ce0D7wqR+XdFwCq8ffZQ5
+ QW0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:date:message-id:mime-version:subject:from
- :to:cc;
- bh=ScjJWFhv2NX/VPNsattIHwK733aeo0c/y9UBZ2zVqfw=;
- b=jZszJOuS2NBej6qhWn394p+sfiabbqyP7hLCa6rBK+Wyo8WtsD8hyezpsCx1uQagBc
- /sWb7FMxB9fiSHhEnwYzfNEcmbUUJfo/xxHntL2KbMkcgDty00V+RSy4bZJYoupHkDbd
- 8lBk7c9qbfyWhTNrszCvS84GjB3Ak7uzS4tj8wMCoejZceUxiRHkiIDxJhnaXgR6bGF2
- J14dSexF6uEV8Zje7F9Uu0hK8fr41gEc5drtthCiVjUuqZnEXQokqXFEsXQfkOtrAFzU
- tvXic5V10k+979DOQ95uBgM1zKagzYMf9b5T0xCrbTNssJOSXTPDxMdbpkH+Tg7xzx0v
- B07A==
-X-Gm-Message-State: AOAM532TYsSEXCLrmNhz0md7NPizdEeMI07ZeTQxksidPTpjhVN1xLOJ
- M/yk6BboQOqyQzGoFXZDxDupVjY86a51mXJwcQ==
-X-Received: from skybert.c.googlers.com ([fda3:e722:ac3:10:24:72f4:c0a8:3107])
- (user=hskinnemoen job=sendgmr) by 2002:a17:90a:e00c:: with SMTP id
- u12mr5240012pjy.185.1603316149176;
- Wed, 21 Oct 2020 14:35:49 -0700 (PDT)
-Date: Wed, 21 Oct 2020 14:35:39 -0700
-Message-Id: <20201021213544.3399271-1-hskinnemoen@google.com>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.29.0.rc1.297.gfa9743e501-goog
-Subject: [PATCH v2 0/5] Additional NPCM7xx features, devices and tests
-To: peter.maydell@linaro.org
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, Avi.Fishman@nuvoton.com, 
- kfting@nuvoton.com, venture@google.com, wuhaotsh@google.com, 
- Havard Skinnemoen <hskinnemoen@google.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::104a;
- envelope-from=3tamQXwsKCk4x80y33u24u3w44w1u.s426u2A-tuBu1343w3A.47w@flex--hskinnemoen.bounces.google.com;
- helo=mail-pj1-x104a.google.com
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=6WcAI9LqJXniaPU6wS68WgkQq4afR52p4cXzIvB+4bY=;
+ b=lcsrGzRXJHTSZJfbsKaSbz7aab08EECyz3NCXW+yCBxDXs/+ag50DDddGLlCQ1hpx5
+ bYNtR6ePjIvoRG2J5jG0mi4zFolQR+HjAVQLTQEEwjAyH22acAEY1KnMVrhXLOhyX/N1
+ zHELnYyVQux1VVCdh+GMJ6gAEE7Hx5uIX7GwT2eD6GF8KfQXggV8NmMiAXe7fRGGm6es
+ aUlIbRSk8g4yka0Bo4/XSaeYzoBY8fvn4l2jlZqeUs13X4nevh5X405IkiC5vBRqUC++
+ Kj0vbjSFi1Kb3+KEDuRis3kQRmItxk7N5vQyDzIn/85GnUOUS3/kOSfYN5oiGUxFP5FQ
+ V0ZA==
+X-Gm-Message-State: AOAM531xTnpuzLslTzz4LrGk1kScsmO0xgwCzAdBFqj8WRFsqW7CGeld
+ 6GJkqtqsiWHzJUY0pj3otcK3QAx6WC0=
+X-Received: by 2002:adf:91a4:: with SMTP id 33mr1689539wri.170.1603445002235; 
+ Fri, 23 Oct 2020 02:23:22 -0700 (PDT)
+Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.237])
+ by smtp.gmail.com with ESMTPSA id l8sm2060367wrn.28.2020.10.23.02.23.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 23 Oct 2020 02:23:21 -0700 (PDT)
+Subject: Re: [PULL 22/23] hw/sd: Fix incorrect populated function switch
+ status data structure
+To: Bin Meng <bmeng.cn@gmail.com>, Niek Linnenbank <nieklinnenbank@gmail.com>
+References: <20200821172916.1260954-1-f4bug@amsat.org>
+ <20200821172916.1260954-23-f4bug@amsat.org>
+ <e378932a-1de3-83c1-834f-ae6526604cb7@amsat.org>
+ <CAEUhbmVFZ8aWdv48D8acdfFRp6WMYL6n=ENeo4hBZfmqE9TrDA@mail.gmail.com>
+ <a0ac3805-ec48-2a0e-6511-b142bfc6f214@amsat.org>
+ <CAEUhbmVLFJWND=KHexD12mrCMJSO3mcE6k7_tRE+v8pNZjhN_A@mail.gmail.com>
+ <CAPan3Wqx-psi6zgz3NyM1Hu_PHaGq4Nn3_RJf_zueqwXFNKuWg@mail.gmail.com>
+ <CAEUhbmXGbNNXkJYt8-sX_+nT_ReXoyerYaf+KROxx55-89wbHA@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <db561779-005b-c358-3e72-e1169ef49faf@amsat.org>
+Date: Fri, 23 Oct 2020 11:23:20 +0200
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
+MIME-Version: 1.0
+In-Reply-To: <CAEUhbmXGbNNXkJYt8-sX_+nT_ReXoyerYaf+KROxx55-89wbHA@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::444;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x444.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.107,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-Reply-to: Havard Skinnemoen <hskinnemoen@google.com>
-From: Havard Skinnemoen via <qemu-devel@nongnu.org>
-X-TUID: /hy78y9vglHT
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>,
+ qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: HMKR1Bdp3Ti1
 
-This is an update to the initial NPCM7xx patch series adding
+On 10/23/20 4:02 AM, Bin Meng wrote:
+> Hi Niek,
+> 
+> On Thu, Oct 22, 2020 at 11:20 PM Niek Linnenbank
+> <nieklinnenbank@gmail.com> wrote:
+>>
+>> Hi Bin, Philippe,
+>>
+>> If im correct the acceptance tests for orange pi need to be run with a flag ARMBIAN_ARTIFACTS_CACHED set that explicitly allows them to be run using the armbian mirror. So if you pass that flag on the same command that Philippe gave, the rests should run.
+> 
+> Thank you for the hints. Actually I noticed the environment variable
+> ARMBIAN_ARTIFACTS_CACHED when looking at the test codes, but after I
+> turned on the flag it still could not download the test asset from the
+> apt.armbian.com website.
 
-  - Watchdog timer support. This makes the reboot command work.
-  - Random Number Generator device.
-  - USB Host Controllers.
-  - GPIO Controllers.
+This patch could help you, but it use a different image [*]:
+https://www.mail-archive.com/qemu-devel@nongnu.org/msg737760.html
+(I haven't tested the image yet but I assume the same bug is present).
 
-The watchdog was implemented by my new teammate Hao Wu. Expect to see more
-patches from him in the near future.
+> 
+>> I have a follow up question and Im interested to hear your opinion on that Philippe. Should we perhaps update the orange pi tests (and maybe others) so they use a reliable mirror that we can control, for example a github repo? I would be happy to create a repo for that, at least for the orange pi tests. But maybe there is already something planned as a more general solution for artifacts of other machines as well?
 
-This series has also been pushed to the npcm7xx-5.2-update branch of my github
-repository at
+This is a technical debt between the Avocado and QEMU communities
+(or a misunderstanding?).
 
-  https://github.com/hskinnemoen/qemu
+QEMU community understood the Avocado caching would be an helpful
+feature, but it ended being more of a problem.
 
-Changes since v1:
 
-  - Dropped the timer test since it's already applied (thanks Peter).
-  - Watchdog reset signaling is now using GPIOs instead of a custom API
-    (thanks Peter for suggesting, and Hao for implementing it).
-  - A few comment updates for the watchdog timer.
-  - VMState added to GPIO device.
-  - Missing VMstate terminator added to RNG device.
-  - Include order in RNG test fixed.
+I.e. here Niek, Michael Roth and myself still have the image cached,
+so we can keep running the tests committed to the repository. You
+Bin can not, as the armbian mirror is not stable and remove the old
+image.
 
-Again, thanks a lot for reviewing!
+The old image (Armbian_19.11.3_Orangepipc_bionic_current_5.3.9.img)
+has been manually tested by Niek and myself, I enabled tracing and
+look at the SD packets for some time, was happy how the model worked
+and decided we should keep running a test with this particular image.
 
-Havard
+Armbian released new images, in particular the one Cleber sent in [*]:
+Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz. While it might
+work similarly, I haven't tested it, and don't have time to do again
+the same audit.
+ From my experience with the Raspberry Pi, these images never work the
+same way, as the Linux kernel evolves quickly with these kinda recent
+embedded boards. The QEMU raspi models have to emulate new devices
+(or complete current ones) every years, because Linux started to use
+a device differently, or started to use a part of the SoC that was not
+used before. Either the kernel doesn't boot, or there are side-effect
+later when userspace program is executed. PITA to debug TBH. For this
+reason I disagree with updating test images to the latest releases.
 
-Hao Wu (1):
-  hw/timer: Adding watchdog for NPCM7XX Timer.
-
-Havard Skinnemoen (4):
-  Move npcm7xx_timer_reached_zero call out of npcm7xx_timer_pause
-  hw/misc: Add npcm7xx random number generator
-  hw/arm/npcm7xx: Add EHCI and OHCI controllers
-  hw/gpio: Add GPIO model for Nuvoton NPCM7xx
-
- docs/system/arm/nuvoton.rst               |   6 +-
- hw/usb/hcd-ehci.h                         |   1 +
- include/hw/arm/npcm7xx.h                  |   8 +
- include/hw/gpio/npcm7xx_gpio.h            |  55 +++
- include/hw/misc/npcm7xx_clk.h             |   2 +
- include/hw/misc/npcm7xx_rng.h             |  34 ++
- include/hw/timer/npcm7xx_timer.h          |  48 ++-
- hw/arm/npcm7xx.c                          | 126 ++++++-
- hw/gpio/npcm7xx_gpio.c                    | 424 ++++++++++++++++++++++
- hw/misc/npcm7xx_clk.c                     |  28 ++
- hw/misc/npcm7xx_rng.c                     | 180 +++++++++
- hw/timer/npcm7xx_timer.c                  | 270 +++++++++++---
- hw/usb/hcd-ehci-sysbus.c                  |  19 +
- tests/qtest/npcm7xx_gpio-test.c           | 385 ++++++++++++++++++++
- tests/qtest/npcm7xx_rng-test.c            | 278 ++++++++++++++
- tests/qtest/npcm7xx_watchdog_timer-test.c | 313 ++++++++++++++++
- MAINTAINERS                               |   1 +
- hw/gpio/meson.build                       |   1 +
- hw/gpio/trace-events                      |   7 +
- hw/misc/meson.build                       |   1 +
- hw/misc/trace-events                      |   4 +
- tests/qtest/meson.build                   |   3 +
- 22 files changed, 2133 insertions(+), 61 deletions(-)
- create mode 100644 include/hw/gpio/npcm7xx_gpio.h
- create mode 100644 include/hw/misc/npcm7xx_rng.h
- create mode 100644 hw/gpio/npcm7xx_gpio.c
- create mode 100644 hw/misc/npcm7xx_rng.c
- create mode 100644 tests/qtest/npcm7xx_gpio-test.c
- create mode 100644 tests/qtest/npcm7xx_rng-test.c
- create mode 100644 tests/qtest/npcm7xx_watchdog_timer-test.c
-
--- 
-2.29.0.rc1.297.gfa9743e501-goog
-
+It would be nice to know QEMU works with the latest Armbian, but
+nobody popped up on the mailing list asking for it. I am personally
+happy enough using the 19.11 release for now.

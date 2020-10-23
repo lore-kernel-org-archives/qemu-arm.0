@@ -1,91 +1,91 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp291031lfa;
-        Fri, 23 Oct 2020 00:15:17 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJw0v1aKX6b3GUJtjn4VWpyoH/KQfNwbglQmBHBroXW3ePm+mmIxNf8RxJye0QZq1kitNyPo
-X-Received: by 2002:a05:6102:7a3:: with SMTP id x3mr492437vsg.12.1603437317102;
-        Fri, 23 Oct 2020 00:15:17 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603437317; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp291952lfa;
+        Fri, 23 Oct 2020 00:17:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzFFxYOl+R8uSBTZygVkFlP5a2Eaw/IDMf5gt9IYtTg9nNiwRXeQV1uprcwiUPDi++lbbfR
+X-Received: by 2002:a25:2c5:: with SMTP id 188mr1449404ybc.324.1603437423981;
+        Fri, 23 Oct 2020 00:17:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603437423; cv=none;
         d=google.com; s=arc-20160816;
-        b=HRhxL25fibq8Zvisza0Qu4H+BnIMJcnPp5Obo9MpbqVKPTiwuVV8fWd6nMLwBob6xr
-         5HUf4CUehrRYpWFYEa51IFbx2bymLA4whCJgAP7hxxWWB/mCu4yUTPsktxkGrL9sW5Y2
-         3A/P6T9/pOoSqIH4n6L78UuqGVhxHPaVYr6tgihiecinsXSynh1dBEGxLwwFlrf232Ep
-         1crY4ePx2a/rfl7qKshQq2GUASUi8tn79ixfHE+6SLTR4DrZHHmEUdxsUrxFIlYQ3Xyt
-         uARv+s5n3fFLk0cb8gAn81eUOSq6X7F8H6mrBaAueIH8WZPTIPRYWEPhG3CJiaYSp6Gx
-         6ihw==
+        b=ci9G+S9dZ9LGwz3+T0gPGadg1QkEDqC4OVaYx23uEpet53Nyfp1Py8d44t5/+V5s3P
+         dRDuM3GsaA4sBGsVwkfVfev/UyMQIKCzZ/eUte0dX1V308U+yJtSi9/o9DO1pHekgSK3
+         rlNxiR2LN9sNhbApnU8a+H2SJ6/zxWNYa8XAcj0F8YahTW7hXfbNXFvrPZxYR8UGbMiX
+         PzfEinUK2ewHR3rbqtimXILvYRXKSsEc9ic89UKANuqP04ui/khyeHpYakuSSTn8rV1J
+         nwgYM8dmXXLC5y4e5SEh/X00Qx5b/by+WY1SyI1RLxoGuWH8szdGSD3faA/YeMhIneo1
+         K99A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=chRhdyqhJeU3vaWtXMlHrEVu9ohXTyMhht/61+Hx6+4=;
-        b=JanmI7meiXMedZy6Fpb6FIe7CoSuNfP114taCjeNzrdAtU0Ul7bizM1VqHRS2nC0hr
-         sjy8V4Jv2cNF4dsl8mJ4E3kNm9vu9vBIXWFKYnJYp3GDbZ2VU9qfBr3MfHrtqk4cZu9O
-         zqDLfyc3C57NmF4YWVbN6odHjc1J9OV9AAWhNpEbgIH2Aa4CNRtn2AOiGQcpc3RwpZ8P
-         ths/BFSRaj0lvtjyCwzE5O2DsBHqk35bTvygFibowVc9LEUIu1jvyuLDS8JQaWkajOOz
-         ZG3htY1SSKgNLuGFGhQPnD51jKpStBtMPjazR6Z1zOjShQC42/X6ajJWVRdN+PjAwaph
-         Zfzg==
+        bh=sIRSitiRXV4ZAKDiiQHiW+bIFcGn9wQPWQBNLG4Ig0Q=;
+        b=cRkNeo0E9MCTOQy36ksS6JxHrLCpxcVxAIrnKLTehemirCLPBvLFZsDos6QJv1Fy2V
+         8/1v9FVcZ0GwbSr5rvvcq5kWowpzXspniDyHrq0jJWvs9YlpSiwAKU3Xn9kHvtKS0A3n
+         ywNSDKm7Cv1DYPbRgsXxJ/NZsw4RD57tWZrBXwUsCHdUdaDfd+N/UwwW2L2NffQtQ/Hm
+         D4SAWuzZR7SeM7diIRtbNj3H1Cf9k6oa6AkPPC3Vn1N6QxnRBTiMOFSx2KJGSlQBqdnO
+         LRVH4/2G5+xDY9etKbNGfg8hfxEGAIX9M1RueSoDb/14M94jAvhrePt2GpJWT/dtJJiL
+         k0Qw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=beUgTGMZ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RQwwo5hv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l22si55053vsn.426.2020.10.23.00.15.16
+        by mx.google.com with ESMTPS id w203si554957ybe.348.2020.10.23.00.17.03
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Oct 2020 00:15:17 -0700 (PDT)
+        Fri, 23 Oct 2020 00:17:03 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=beUgTGMZ;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=RQwwo5hv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49700 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:52704 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVrIC-0006KD-Dx
-	for alex.bennee@linaro.org; Fri, 23 Oct 2020 03:15:16 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60084)
+	id 1kVrJu-0007eD-T1
+	for alex.bennee@linaro.org; Fri, 23 Oct 2020 03:17:02 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60214)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kVrDk-0000yB-Ao
- for qemu-devel@nongnu.org; Fri, 23 Oct 2020 03:10:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:52175)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kVrDu-0001OV-Ri
+ for qemu-devel@nongnu.org; Fri, 23 Oct 2020 03:10:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:37053)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kVrDh-0003dk-Fr
- for qemu-devel@nongnu.org; Fri, 23 Oct 2020 03:10:39 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kVrDs-0003p1-VX
+ for qemu-devel@nongnu.org; Fri, 23 Oct 2020 03:10:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603437036;
+ s=mimecast20190719; t=1603437048;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=chRhdyqhJeU3vaWtXMlHrEVu9ohXTyMhht/61+Hx6+4=;
- b=beUgTGMZ8wR7LSW0VDDOb/SzrEfN5KhyvkAnMbPKoz3GE9G/cuiitKDqFDkDyfsQbeFEf3
- 2OK1MY1NunWxH0UpHjpN6PkGD1d9Q6mSI6tPftDpDFf2ppT+J24BXczMDa7D+V+tGwVwvb
- DS+3YGqGxDFnImhHLGizdnAXvT786Xw=
+ bh=sIRSitiRXV4ZAKDiiQHiW+bIFcGn9wQPWQBNLG4Ig0Q=;
+ b=RQwwo5hv910baFZ5UR3Ao74RlXSkh0KpeaP3yNBTOhVhBsOWm4+tS4zd9VWBJQ+5miWPr2
+ 4GIlhjDn6ha+a2+e9qqtZpMPzZEhU4VkcIdblxpilgG2bzNNMaZRLcDrYWO+BjvgWJZgzW
+ fmbbb5cIAZmZKdcAAQTUBQCNAzaAIsI=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-488-5COFfMteOtC3aBdiUWBckg-1; Fri, 23 Oct 2020 03:10:33 -0400
-X-MC-Unique: 5COFfMteOtC3aBdiUWBckg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-586-6yP6MddiOdqaLda54WtECw-1; Fri, 23 Oct 2020 03:10:43 -0400
+X-MC-Unique: 6yP6MddiOdqaLda54WtECw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 86899186DD41;
- Fri, 23 Oct 2020 07:10:31 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id DE4BD107B471;
+ Fri, 23 Oct 2020 07:10:41 +0000 (UTC)
 Received: from sirius.home.kraxel.org (ovpn-114-66.ams2.redhat.com
  [10.36.114.66])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 063995D9D5;
- Fri, 23 Oct 2020 07:10:23 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 7FE0610013D7;
+ Fri, 23 Oct 2020 07:10:32 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 41379204A1; Fri, 23 Oct 2020 09:10:22 +0200 (CEST)
+ id 54E5C204A7; Fri, 23 Oct 2020 09:10:22 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
-Subject: [PATCH 4/8] arm/virt: add device tree node for xhci
-Date: Fri, 23 Oct 2020 09:10:18 +0200
-Message-Id: <20201023071022.24916-5-kraxel@redhat.com>
+Subject: [PATCH 6/8] tests/acpi: add usb testcase for virt
+Date: Fri, 23 Oct 2020 09:10:20 +0200
+Message-Id: <20201023071022.24916-7-kraxel@redhat.com>
 In-Reply-To: <20201023071022.24916-1-kraxel@redhat.com>
 References: <20201023071022.24916-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -125,45 +125,49 @@ Cc: Laurent Vivier <lvivier@redhat.com>,
  Igor Mammedov <imammedo@redhat.com>, Richard Henderson <rth@twiddle.net>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: thXZ3P0cGwFH
+X-TUID: v9KQ7jXAFlRE
 
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- hw/arm/virt.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ tests/qtest/bios-tables-test.c | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index f2b34fd33be4..4319dd95ef78 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -812,7 +812,10 @@ static void create_rtc(const VirtMachineState *vms)
- static void create_xhci(const VirtMachineState *vms)
- {
-     hwaddr base = base_memmap[VIRT_XHCI].base;
-+    hwaddr size = base_memmap[VIRT_XHCI].size;
-     int irq = vms->irqmap[VIRT_XHCI];
-+    const char compat[] = "generic-xhci";
-+    char *nodename;
-     DeviceState *dev;
- 
-     dev = qdev_new(TYPE_XHCI_SYSBUS);
-@@ -823,6 +826,16 @@ static void create_xhci(const VirtMachineState *vms)
-     sysbus_realize(SYS_BUS_DEVICE(dev), &error_fatal);
-     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, base);
-     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, qdev_get_gpio_in(vms->gic, irq));
-+
-+    nodename = g_strdup_printf("/usb@%" PRIx64, base);
-+    qemu_fdt_add_subnode(vms->fdt, nodename);
-+    qemu_fdt_setprop(vms->fdt, nodename, "compatible", compat, sizeof(compat));
-+    qemu_fdt_setprop_sized_cells(vms->fdt, nodename, "reg",
-+                                 2, base, 2, size);
-+    qemu_fdt_setprop_cells(vms->fdt, nodename, "interrupts",
-+                           GIC_FDT_IRQ_TYPE_SPI, irq,
-+                           GIC_FDT_IRQ_FLAGS_LEVEL_HI);
-+    g_free(nodename);
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index 3830a40d1041..438cea38a177 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -1230,6 +1230,23 @@ static void test_acpi_virt_tcg(void)
+     free_test_data(&data);
  }
  
- static DeviceState *gpio_key_dev;
++static void test_acpi_virt_tcg_usb(void)
++{
++    test_data data = {
++        .machine = "virt",
++        .tcg_only = true,
++        .uefi_fl1 = "pc-bios/edk2-aarch64-code.fd",
++        .uefi_fl2 = "pc-bios/edk2-arm-vars.fd",
++        .cd = "tests/data/uefi-boot-images/bios-tables-test.aarch64.iso.qcow2",
++        .ram_start = 0x40000000ULL,
++        .scan_len = 128ULL * 1024 * 1024,
++    };
++
++    data.variant = ".usb";
++    test_acpi_one("-cpu cortex-a57 -machine usb=on", &data);
++    free_test_data(&data);
++}
++
+ int main(int argc, char *argv[])
+ {
+     const char *arch = qtest_get_arch();
+@@ -1277,6 +1294,7 @@ int main(int argc, char *argv[])
+         qtest_add_func("acpi/virt", test_acpi_virt_tcg);
+         qtest_add_func("acpi/virt/numamem", test_acpi_virt_tcg_numamem);
+         qtest_add_func("acpi/virt/memhp", test_acpi_virt_tcg_memhp);
++        qtest_add_func("acpi/virt/usb", test_acpi_virt_tcg_usb);
+     }
+     ret = g_test_run();
+     boot_sector_cleanup(disk);
 -- 
 2.27.0
 

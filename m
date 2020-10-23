@@ -1,100 +1,111 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4676371lfa;
-        Tue, 20 Oct 2020 04:00:54 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0XZzfOPnQRDYOWp8u4InUWjG3MZbRALYSMt9LGQdS0pfLpsvvsffn66r9uysPr7SFrag3
-X-Received: by 2002:a25:c287:: with SMTP id s129mr2911350ybf.489.1603191654046;
-        Tue, 20 Oct 2020 04:00:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603191654; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp826762lfa;
+        Fri, 23 Oct 2020 13:23:47 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxcfr8QL5wfNFMNQpOCTmM1MyECQGrpGJEKwFcs0YpjtxgtwXGjG3K3NJABU+0v0XXhubjC
+X-Received: by 2002:aed:26a6:: with SMTP id q35mr3859069qtd.10.1603484627574;
+        Fri, 23 Oct 2020 13:23:47 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603484627; cv=none;
         d=google.com; s=arc-20160816;
-        b=cNi9BuynFDugZre2KHIhmMQgdIetgvW1AXIcwl/U/MwS4WvIlbuvWUHhpZILOPS/m3
-         pxArpMf3Js1iE035BWmj1ofgLz6rmJ9LmLuPOnbNvxBshC7tlA49NIrTi/KIv8aaQ8hF
-         pBfQ0MGKTreNhloCwgvRFP48O7NphYMLuzWiRMjYgZ5iirGxSTq7u9O9NaoJPgFBi/Dz
-         54e8iOtTpvBov0lGdrkDigi00GgbCcW//C9XWZzpUj/vLh+4V6wuUWgA/YHK3IqEhXCx
-         /2UpmPEi8fQzFKKQ5NqsWW0MBjPvlVBzM40F+MchL23FdrTNtAz4E4b6JTZt//ur5ewX
-         DDEw==
+        b=WVt6CLuZFR9CoohMC5bWzMZdxYsTfAXDV2+mGWJKTYPpB3fAwH+4CSVSCezDYPUPvu
+         VLTRQLl7mGyqhsp64U1PX1vhCO4g+AmsJL87wXdHK0bP73tWYoS000ZsppHg/LMNBHA6
+         FY/KwbyQmUUfO8aPbEZLOrUT6KSpLTk+apVB5M03tf5n3wOmnQOjZN+keFh+zli6Hhv9
+         6XqYaHRu4VCO9+ipnH2hdA5LUHTLfJRMAXOKRVx3lFn/2L6E+3tBDncXakPS+BtNIbOp
+         dfwJm5z5g6dhklJ4JzFo4rC9TgYS9imHJXNnrQVVVD0cTJnvTWpzoteNnrCSELDyNd3K
+         jKcQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:message-id:date:subject:to:from
-         :dkim-signature;
-        bh=b8dt7Ngk6ivHozgFhpCN03VTvz2toPLe9gvyAeHfzlw=;
-        b=lXLtGWGL7yRYUcPP56RWX4RhR5uMD+C+J/0/XEOrOt9cAlGnR0uW6dXuP6HRQC+u+W
-         9mGRGTrEP3ccvKNbJIjVQt+zVM4X7xBwRQdDwnGWAmcB8f09mgOm1TrT5aRsuB4TAeub
-         rX3w1b+CZUdIGbDLL+bct50/ImU8w8u70d8V2h0Wjm0PbxkB9xz0a7WSYRzI2Eya48xK
-         nH5ciyg7SjnBvqndAhBBZWjGlw97rFqUkhMs/+Cqws6t0eHmBFDvMy/NGJ6aNYBK/hkv
-         +TnhbTgc6PHRhf7KTx7NswtyHBeGDNUZmoXwCLWNsE6fTuLzUusQ9Riu8mlOqvZWmdM7
-         knJA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:subject:organization:references:to:from:dkim-signature;
+        bh=Ihvi2mo5hD+NEe/DKlWqo3YO8djqorywMVnMJdYPyC8=;
+        b=L/A6AGKPkTRaiyp+6rJlqkwMGyZDbD/r5rv3WVP6Yk7WR2x0IMdtUltedkgHhC3TD8
+         hsSnKZbUkrl/yx/Ec2QiW7U8+fJe3mCZFwCOePrWSr78ZYg41MtAl9dN0nsF+VhdhqNv
+         hSFXpe6fVFpqBH+XZPCJazcKxEOcz8XzliJ9arzR1j5T2YHUhNxW+V1MgVME5Q2jclwY
+         2EOUtoqU5P/E2cg55OFfSLSIzUsLrj9ow7q4ye7EfyGLDoLclmlnwjK/whTLik6zMUC0
+         8xUfhJ1k6/vuIfUpvgHI0/0mRdpy5h2lSRiXBLN0HUkB8DtedPLgmy/LqEllSfD4VGcw
+         blow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L7Ijnuok;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TFm7aJda;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t19si1307702ybg.34.2020.10.20.04.00.53
+        by mx.google.com with ESMTPS id i1si1182684qvx.223.2020.10.23.13.23.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 20 Oct 2020 04:00:54 -0700 (PDT)
+        Fri, 23 Oct 2020 13:23:47 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=L7Ijnuok;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=TFm7aJda;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49300 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40482 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kUpNt-0002tT-CS
-	for alex.bennee@linaro.org; Tue, 20 Oct 2020 07:00:53 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48062)
+	id 1kW3bG-0004iB-Va
+	for alex.bennee@linaro.org; Fri, 23 Oct 2020 16:23:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41208)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUpMp-0002XX-TE
- for qemu-arm@nongnu.org; Tue, 20 Oct 2020 06:59:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:24863)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kW3b5-0004h5-SB
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2020 16:23:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:59066)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kUpMn-00064W-P4
- for qemu-arm@nongnu.org; Tue, 20 Oct 2020 06:59:47 -0400
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kW3b3-0005Vd-Dh
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2020 16:23:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603191583;
+ s=mimecast20190719; t=1603484612;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:content-type:content-type;
- bh=b8dt7Ngk6ivHozgFhpCN03VTvz2toPLe9gvyAeHfzlw=;
- b=L7Ijnuok6679WJmG49arGRnsBehrJfznbBnhKJcvReI9NCaQCD2ci2iu0WhS2I8zpxnJR4
- ukqKt+nE9MHxKq8yKV2ROGcxlR/cKfy1zqCsnMt+jD/ozhyZf48Wlk3cmz1mPQc44EaxRM
- /lRj/WHLY18WV7d094TTmSMGG+qxAKk=
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ihvi2mo5hD+NEe/DKlWqo3YO8djqorywMVnMJdYPyC8=;
+ b=TFm7aJdaEq1W4R6aipO0l7mZ58LhvxyUkTJGj6AE+KVYvqpSl03GlWLI9MPXJqGWH+m0QE
+ mQew6XCD9yRTQUm4AFFtcv5cXP7dGK8/xnmBPTKiIRd6mlT7mWcq0dr74mWO1gMa5u1QAl
+ EoNs94YCl9YlaKiR342w9MPuQnNKh0M=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-217-ZCzRoFVlPGKQkOnL5t2Krg-1; Tue, 20 Oct 2020 06:59:42 -0400
-X-MC-Unique: ZCzRoFVlPGKQkOnL5t2Krg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
+ us-mta-148-fcKcyCEmOqyTovmsibG5EQ-1; Fri, 23 Oct 2020 16:23:28 -0400
+X-MC-Unique: fcKcyCEmOqyTovmsibG5EQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
+ [10.5.11.11])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BD76064082;
- Tue, 20 Oct 2020 10:59:40 +0000 (UTC)
-Received: from thuth.com (dhcp-192-238.str.redhat.com [10.33.192.238])
- by smtp.corp.redhat.com (Postfix) with ESMTP id AD9485D9D2;
- Tue, 20 Oct 2020 10:59:39 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/highbank: Silence warnings about missing fallthrough
- statements
-Date: Tue, 20 Oct 2020 12:59:38 +0200
-Message-Id: <20201020105938.23209-1-thuth@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4C84E805F19;
+ Fri, 23 Oct 2020 20:23:26 +0000 (UTC)
+Received: from [10.3.113.7] (ovpn-113-7.phx2.redhat.com [10.3.113.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7B3BC5B4C1;
+ Fri, 23 Oct 2020 20:23:05 +0000 (UTC)
+From: Eric Blake <eblake@redhat.com>
+To: qemu-devel@nongnu.org
+References: <20201023183652.478921-1-eblake@redhat.com>
+ <20201023183652.478921-13-eblake@redhat.com>
+Organization: Red Hat, Inc.
+Subject: Re: [PATCH v5 12/12] qapi: Use QAPI_LIST_ADD() where possible
+Message-ID: <a8e32a7b-c895-5f3b-14ec-50e5af9426b1@redhat.com>
+Date: Fri, 23 Oct 2020 15:23:04 -0500
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
+MIME-Version: 1.0
+In-Reply-To: <20201023183652.478921-13-eblake@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="US-ASCII"
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=eblake@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/20 01:16:16
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 02:46:25
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.108, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -107,38 +118,64 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-trivial@nongnu.org, Rob Herring <robh@kernel.org>, qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ qemu-block@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ David Hildenbrand <david@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
+ Jiri Pirko <jiri@resnulli.us>, Eduardo Habkost <ehabkost@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ "open list:S390 KVM CPUs" <qemu-s390x@nongnu.org>, vsementsov@virtuozzo.com,
+ stefanha@redhat.com, David Gibson <david@gibson.dropbear.id.au>,
+ kwolf@redhat.com, "open list:GLUSTER" <integration@gluster.org>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
+ Max Reitz <mreitz@redhat.com>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tFGbWfcITYSh
+X-TUID: VgAkCp2y+Z8y
 
-When compiling with -Werror=implicit-fallthrough, gcc complains about
-missing fallthrough annotations in this file. Looking at the code,
-the fallthrough is very likely intended here, so add some comments
-to silence the compiler warnings.
+On 10/23/20 1:36 PM, Eric Blake wrote:
+> Anywhere we create a list of just one item or by prepending items
+> (typically because order doesn't matter), we can use the now-public
+> macro.  But places where we must keep the list in order by appending
+> remain open-coded.
+> 
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
+>  docs/devel/writing-qmp-commands.txt | 13 +++------
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/arm/highbank.c | 2 ++
- 1 file changed, 2 insertions(+)
+> +++ b/docs/devel/writing-qmp-commands.txt
+> @@ -531,15 +531,10 @@ TimerAlarmMethodList *qmp_query_alarm_methods(Error **errp)
+>      bool current = true;
+> 
+>      for (p = alarm_timers; p->name; p++) {
+> -        TimerAlarmMethodList *info = g_malloc0(sizeof(*info));
+> -        info->value = g_malloc0(sizeof(*info->value));
+> -        info->value->method_name = g_strdup(p->name);
+> -        info->value->current = current;
+> -
+> -        current = false;
+> -
+> -        info->next = method_list;
+> -        method_list = info;
+> +	TimerAlarmMethod *value = g_new0(TimerAlarmMethod, 1);
+> +        value->method_name = g_strdup(p->name);
 
-diff --git a/hw/arm/highbank.c b/hw/arm/highbank.c
-index da0510d7ce..f71087860d 100644
---- a/hw/arm/highbank.c
-+++ b/hw/arm/highbank.c
-@@ -92,10 +92,12 @@ static void hb_reset_secondary(ARMCPU *cpu, const struct arm_boot_info *info)
-         address_space_stl_notdirty(&address_space_memory,
-                                    SMP_BOOT_REG + 0x30, 0,
-                                    MEMTXATTRS_UNSPECIFIED, NULL);
-+        /* fallthrough */
-     case 3:
-         address_space_stl_notdirty(&address_space_memory,
-                                    SMP_BOOT_REG + 0x20, 0,
-                                    MEMTXATTRS_UNSPECIFIED, NULL);
-+        /* fallthrough */
-     case 2:
-         address_space_stl_notdirty(&address_space_memory,
-                                    SMP_BOOT_REG + 0x10, 0,
+Oops, tab damage.
+
 -- 
-2.18.2
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.           +1-919-301-3226
+Virtualization:  qemu.org | libvirt.org
 

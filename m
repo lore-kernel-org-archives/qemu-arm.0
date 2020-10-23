@@ -1,92 +1,91 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp752667lfa;
-        Fri, 23 Oct 2020 11:28:41 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJzhFQUOhJ98LOFRS0eY72tGnGT3aZEXCqzjT6vJ34bss5X7z7vX+DE2KshKJjIAhTGoxV96
-X-Received: by 2002:ac8:1c6d:: with SMTP id j42mr3649490qtk.29.1603477721507;
-        Fri, 23 Oct 2020 11:28:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603477721; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp757527lfa;
+        Fri, 23 Oct 2020 11:35:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJymMJLVMmjhcRJVsZBRxwwEIensW3X+WIQzz610duuGcoffBI19jc5zAwWF6EyvKwc4nJ+y
+X-Received: by 2002:a05:620a:809:: with SMTP id s9mr3703286qks.57.1603478121760;
+        Fri, 23 Oct 2020 11:35:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603478121; cv=none;
         d=google.com; s=arc-20160816;
-        b=lXo+izxEZOsGWyKPZtzoo6o61I1TdIXMpMdZMxBOr19fD3Lu2cybn5r95C3NFwyRRK
-         YQ6CEkeLq+r9O/aAMbXrF+Oo/vwCq7v1o70CpLTnt0cTONbjCERxURO3myS2IbUjfEYJ
-         oiISfAEXUuoC4A3BgRXE6u0IZkgU+TDchtPPEBhgWkQne7Kx816T31vnMsI3lZ11Nzkh
-         b3C/HQiisz/bf9MwdqdIAMvm8+cDSGa27Ynu8tWKZZTCpXGEsvzwRLX6H7Na09rXsT3c
-         GOIdP1IuDNNjxw/vxf+F2XIcBN68yOuVqyW5EKydFATKkUNNU9rArdY7facKdvptfVwK
-         dqrw==
+        b=RckP9gRnHLvXcHNYFNZTSdZWwlLc6PlrOeEfszUVXQFEphw6aX52aRy20RwPM8mPC8
+         6NUl/3XbRDFTHKHqa7CyDjQ+wkDdfvXITgp5ebOQq9DQ7mA2085NWEHoioFqnipEnELT
+         oUD9e8LlYo8g8mW511lLNv11KuLGhqwtrhesWmcqrOgoBQXW2cGjXXUYBvcQxsF8LDB7
+         ZMj81FS5010NowrYysdWQdEpYb8Y9dISJeHi39X22xG+00vlRzdz5+InqtIWAzZ6ZAB0
+         V693qvu7nhkEn5A1pw7NO0piJCLRSsyiUDkGQcjChx+GQyG5rbn7SDvkI/MrVS4joQOd
+         Ho9w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:subject:to:from:date
          :dkim-signature;
-        bh=3cWxhWBNOTr9nQOGGNr1g6wS5W2yBd07sYHZza77yOg=;
-        b=1FMllHfn+6tBOpAdDZHP+OBsTybSS+R+FgrYZPE1yQ2UI/WbbEJHIOaO6yisLa/Kwf
-         XV5TNTLpd4PCL3Eq7mhKG9rH4Np599la6JepOHCvcN96ejZ3AGV5y/b2HJvodl88GzOD
-         UHywLoFYjD10SJOtgq+J4fz/VCViGporpjT2V2Fg9I+UTLLkSojgeXRldP95GyNSS4bV
-         e1a6xtUQ4ciC5q8iw+Ss2YkqRqFztYnAIfs0kkSF4tCechf99yxazXnoop2Ycc5bpPxI
-         YbSr4jLcwIuOblC4njtCbgWu6KXlfCzkPFDtYnz9bfGRd2wzH4cKjY2TE+HTCa+mBzs+
-         Nwjw==
+        bh=54vRvNP2niJDvIDEZu13+zYc34Xn7omul0lVlg8bNo0=;
+        b=QqunR00D4dxX9ejNlgc67StA2zg6WWrwkBCrYin5/TKwfXYGM9iR2DB142tfiv/0ih
+         RdAqCZlhQZl+ZCjWRy8W7b8b0zi+VNa9FiBBrZddU8GD8bNaUhUd3X7iDoP+ae6xFKZJ
+         O4tMskY0qHtEcdxFwJ8pNDhmTcqB5d6WqPNm2V8C8QujhMT5ospbaoDipzATmKyl9Aod
+         NKCLnCdnaBVIAA9fC5qhlpgSx5UX0tvniafej1kxFQuJ1iOPIsmukvQUiOSasg0uyA01
+         HviIN9a5BXUFomnc/hEgogCoxFOZ2D/XAGMMeT3gIGyEHiCiKoa1wcSE7Xv0opiTbBzq
+         244g==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PA9ynki5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ykr3zp6x;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id o53si1058399qtk.293.2020.10.23.11.28.41
+        by mx.google.com with ESMTPS id k19si1300945qki.63.2020.10.23.11.35.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 23 Oct 2020 11:28:41 -0700 (PDT)
+        Fri, 23 Oct 2020 11:35:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=PA9ynki5;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ykr3zp6x;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37028 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43484 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kW1ns-0003q1-VI
-	for alex.bennee@linaro.org; Fri, 23 Oct 2020 14:28:40 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48118)
+	id 1kW1uL-00073V-6Z
+	for alex.bennee@linaro.org; Fri, 23 Oct 2020 14:35:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49754)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kW1lX-0001ms-R6
- for qemu-devel@nongnu.org; Fri, 23 Oct 2020 14:26:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:45957)
+ id 1kW1tk-00072y-Ro
+ for qemu-devel@nongnu.org; Fri, 23 Oct 2020 14:34:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:52934)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1kW1lT-0000AJ-P9
- for qemu-devel@nongnu.org; Fri, 23 Oct 2020 14:26:15 -0400
+ id 1kW1tj-00018x-Bv
+ for qemu-devel@nongnu.org; Fri, 23 Oct 2020 14:34:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603477570;
+ s=mimecast20190719; t=1603478082;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3cWxhWBNOTr9nQOGGNr1g6wS5W2yBd07sYHZza77yOg=;
- b=PA9ynki5LH7tcxzMeSaLU4wO7PlN/J72JYjn0c7rGQvANXadPuFcOe/eG5kHwW9YT8hyF4
- 9sLg6ghsDBItkNrvcMqlURdwLFgt1hExGv6KBjWJ7d1S8GO+/WYu31t83kkOaw+GOkF2ot
- ZdhC3bdsjgQvYVCZoFuTkPqKvhyY1BA=
+ bh=54vRvNP2niJDvIDEZu13+zYc34Xn7omul0lVlg8bNo0=;
+ b=Ykr3zp6xwhzbZiKHREGTVrZMQYuAKAAJV27TXlFiRNMl1Z9/U4MpqVffv6Z6UFVoxytBEB
+ s0eAxr1nbBxERteRqn4M0cETiiEEwAY26Zs8kXZ2FfYArafyXHHbvb9VMKHQ8TZ4Pzen1f
+ dLnyD4NYHNQvBylZZmpruRJlDjBewZY=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-145-doiJAT2xMeqHeZFUKPvXfQ-1; Fri, 23 Oct 2020 14:26:08 -0400
-X-MC-Unique: doiJAT2xMeqHeZFUKPvXfQ-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
+ us-mta-15-MbzMEwoJOkqfVeR6sQbnKQ-1; Fri, 23 Oct 2020 14:34:40 -0400
+X-MC-Unique: MbzMEwoJOkqfVeR6sQbnKQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.phx2.redhat.com
+ [10.5.11.13])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4AC941084C91;
- Fri, 23 Oct 2020 18:26:07 +0000 (UTC)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id BB08018C89CE;
+ Fri, 23 Oct 2020 18:34:39 +0000 (UTC)
 Received: from localhost (unknown [10.40.208.18])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 360D95C1CF;
- Fri, 23 Oct 2020 18:26:04 +0000 (UTC)
-Date: Fri, 23 Oct 2020 20:26:03 +0200
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CC91260DA0;
+ Fri, 23 Oct 2020 18:34:37 +0000 (UTC)
+Date: Fri, 23 Oct 2020 20:34:36 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Eduardo Habkost <ehabkost@redhat.com>
-Subject: Re: [PATCH 15/24] arm/virt: Register most properties as class
- properties
-Message-ID: <20201023202603.351fedee@redhat.com>
-In-Reply-To: <20200921221045.699690-16-ehabkost@redhat.com>
+Subject: Re: [PATCH 18/24] arm/cpu64: Register "aarch64" as class property
+Message-ID: <20201023203436.1f6d5d87@redhat.com>
+In-Reply-To: <20200921221045.699690-19-ehabkost@redhat.com>
 References: <20200921221045.699690-1-ehabkost@redhat.com>
- <20200921221045.699690-16-ehabkost@redhat.com>
+ <20200921221045.699690-19-ehabkost@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.13
 Authentication-Results: relay.mimecast.com;
  auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
 X-Mimecast-Spam-Score: 0
@@ -122,9 +121,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  John Snow <jsnow@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: X/yIdOQUq/pb
+X-TUID: XdMUN5XsQ8ea
 
-On Mon, 21 Sep 2020 18:10:36 -0400
+On Mon, 21 Sep 2020 18:10:39 -0400
 Eduardo Habkost <ehabkost@redhat.com> wrote:
 
 > Class properties make QOM introspection simpler and easier, as
@@ -139,121 +138,48 @@ Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 > Cc: qemu-arm@nongnu.org
 > Cc: qemu-devel@nongnu.org
 > ---
->  hw/arm/virt.c | 76 +++++++++++++++++++++++++++------------------------
->  1 file changed, 41 insertions(+), 35 deletions(-)
+>  target/arm/cpu64.c | 16 ++++++----------
+>  1 file changed, 6 insertions(+), 10 deletions(-)
 > 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index acf9bfbecea..d1ab660fa60 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -2443,6 +2443,47 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
->          NULL, NULL);
->      object_class_property_set_description(oc, "acpi",
->          "Enable ACPI");
-> +    object_class_property_add_bool(oc, "secure", virt_get_secure,
-> +                                   virt_set_secure);
-> +    object_class_property_set_description(oc, "secure",
-> +                                                "Set on/off to enable/disable the ARM "
-> +                                                "Security Extensions (TrustZone)");
-> +
-> +    object_class_property_add_bool(oc, "virtualization", virt_get_virt,
-> +                                   virt_set_virt);
-> +    object_class_property_set_description(oc, "virtualization",
-> +                                          "Set on/off to enable/disable emulating a "
-> +                                          "guest CPU which implements the ARM "
-> +                                          "Virtualization Extensions");
-> +
-> +    object_class_property_add_bool(oc, "highmem", virt_get_highmem,
-> +                                   virt_set_highmem);
-> +    object_class_property_set_description(oc, "highmem",
-> +                                          "Set on/off to enable/disable using "
-> +                                          "physical address space above 32 bits");
-> +
-> +    object_class_property_add_str(oc, "gic-version", virt_get_gic_version,
-> +                                  virt_set_gic_version);
-> +    object_class_property_set_description(oc, "gic-version",
-> +                                          "Set GIC version. "
-> +                                          "Valid values are 2, 3, host and max");
-> +
-> +    object_class_property_add_str(oc, "iommu", virt_get_iommu, virt_set_iommu);
-> +    object_class_property_set_description(oc, "iommu",
-> +                                          "Set the IOMMU type. "
-> +                                          "Valid values are none and smmuv3");
-> +
-> +    object_class_property_add_bool(oc, "ras", virt_get_ras,
-> +                                   virt_set_ras);
-> +    object_class_property_set_description(oc, "ras",
-> +                                          "Set on/off to enable/disable reporting host memory errors "
-> +                                          "to a KVM guest using ACPI and guest external abort exceptions");
-> +
-> +    object_class_property_add_bool(oc, "mte", virt_get_mte, virt_set_mte);
-> +    object_class_property_set_description(oc, "mte",
-> +                                          "Set on/off to enable/disable emulating a "
-> +                                          "guest CPU which implements the ARM "
-> +                                          "Memory Tagging Extension");
+> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+> index 3c2b3d95993..349c9fa3a3a 100644
+> --- a/target/arm/cpu64.c
+> +++ b/target/arm/cpu64.c
+> @@ -758,15 +758,6 @@ static void aarch64_cpu_set_aarch64(Object *obj, bool value, Error **errp)
+>      }
 >  }
 >  
->  static void virt_instance_init(Object *obj)
-> @@ -2455,34 +2496,13 @@ static void virt_instance_init(Object *obj)
->       * boot UEFI blobs which assume no TrustZone support.
->       */
->      vms->secure = false;
-> -    object_property_add_bool(obj, "secure", virt_get_secure,
-> -                             virt_set_secure);
-> -    object_property_set_description(obj, "secure",
-> -                                    "Set on/off to enable/disable the ARM "
-> -                                    "Security Extensions (TrustZone)");
+> -static void aarch64_cpu_initfn(Object *obj)
+> -{
+> -    object_property_add_bool(obj, "aarch64", aarch64_cpu_get_aarch64,
+> -                             aarch64_cpu_set_aarch64);
+> -    object_property_set_description(obj, "aarch64",
+> -                                    "Set on/off to enable/disable aarch64 "
+> -                                    "execution state ");
+> -}
+> -
+>  static void aarch64_cpu_finalizefn(Object *obj)
+>  {
+>  }
+> @@ -786,6 +777,12 @@ static void aarch64_cpu_class_init(ObjectClass *oc, void *data)
+>      cc->gdb_num_core_regs = 34;
+>      cc->gdb_core_xml_file = "aarch64-core.xml";
+>      cc->gdb_arch_name = aarch64_gdb_arch_name;
+> +
+> +    object_class_property_add_bool(oc, "aarch64", aarch64_cpu_get_aarch64,
+> +                                   aarch64_cpu_set_aarch64);
+> +    object_class_property_set_description(oc, "aarch64",
+> +                                          "Set on/off to enable/disable aarch64 "
+> +                                          "execution state ");
+>  }
 >  
->      /* EL2 is also disabled by default, for similar reasons */
->      vms->virt = false;
-> -    object_property_add_bool(obj, "virtualization", virt_get_virt,
-> -                             virt_set_virt);
-> -    object_property_set_description(obj, "virtualization",
-> -                                    "Set on/off to enable/disable emulating a "
-> -                                    "guest CPU which implements the ARM "
-> -                                    "Virtualization Extensions");
->  
->      /* High memory is enabled by default */
->      vms->highmem = true;
-> -    object_property_add_bool(obj, "highmem", virt_get_highmem,
-> -                             virt_set_highmem);
-> -    object_property_set_description(obj, "highmem",
-> -                                    "Set on/off to enable/disable using "
-> -                                    "physical address space above 32 bits");
->      vms->gic_version = VIRT_GIC_VERSION_NOSEL;
-> -    object_property_add_str(obj, "gic-version", virt_get_gic_version,
-> -                        virt_set_gic_version);
-> -    object_property_set_description(obj, "gic-version",
-> -                                    "Set GIC version. "
-> -                                    "Valid values are 2, 3, host and max");
->  
->      vms->highmem_ecam = !vmc->no_highmem_ecam;
->  
-> @@ -2500,26 +2520,12 @@ static void virt_instance_init(Object *obj)
->  
->      /* Default disallows iommu instantiation */
->      vms->iommu = VIRT_IOMMU_NONE;
-> -    object_property_add_str(obj, "iommu", virt_get_iommu, virt_set_iommu);
-> -    object_property_set_description(obj, "iommu",
-> -                                    "Set the IOMMU type. "
-> -                                    "Valid values are none and smmuv3");
->  
->      /* Default disallows RAS instantiation */
->      vms->ras = false;
-> -    object_property_add_bool(obj, "ras", virt_get_ras,
-> -                             virt_set_ras);
-> -    object_property_set_description(obj, "ras",
-> -                                    "Set on/off to enable/disable reporting host memory errors "
-> -                                    "to a KVM guest using ACPI and guest external abort exceptions");
->  
->      /* MTE is disabled by default.  */
->      vms->mte = false;
-> -    object_property_add_bool(obj, "mte", virt_get_mte, virt_set_mte);
-> -    object_property_set_description(obj, "mte",
-> -                                    "Set on/off to enable/disable emulating a "
-> -                                    "guest CPU which implements the ARM "
-> -                                    "Memory Tagging Extension");
->  
->      vms->irqmap = a15irqmap;
->  
+>  static void aarch64_cpu_instance_init(Object *obj)
+> @@ -823,7 +820,6 @@ static const TypeInfo aarch64_cpu_type_info = {
+>      .name = TYPE_AARCH64_CPU,
+>      .parent = TYPE_ARM_CPU,
+>      .instance_size = sizeof(ARMCPU),
+> -    .instance_init = aarch64_cpu_initfn,
+>      .instance_finalize = aarch64_cpu_finalizefn,
+>      .abstract = true,
+>      .class_size = sizeof(AArch64CPUClass),
 

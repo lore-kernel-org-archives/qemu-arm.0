@@ -1,113 +1,108 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp614073lfa;
-        Thu, 15 Oct 2020 07:11:16 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx190OILre4P6rjYRlXaqM4/rsChhpOEwC5gMkNGi/9t7kToDYPxOx7OxxQjwzkPeeUy1gH
-X-Received: by 2002:ac8:71cc:: with SMTP id i12mr4290844qtp.262.1602771075672;
-        Thu, 15 Oct 2020 07:11:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1602771075; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp654572lfa;
+        Fri, 23 Oct 2020 09:16:39 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwRcUlsjkdZNA+zdPIDdpXZXZAII2NsezYeD8gnSZKaNJHWYGiJds4/PoLfnPYRIm7wD4eU
+X-Received: by 2002:a0c:cd0e:: with SMTP id b14mr2985215qvm.3.1603469798849;
+        Fri, 23 Oct 2020 09:16:38 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603469798; cv=none;
         d=google.com; s=arc-20160816;
-        b=eUT/IONht/qwbaDHzWukwgMypwfQADtZXecIKXTW6xAe9+s8gJdup6/aMMLqrMXDaK
-         RxSnih4ODjGYxJMUCOF9kNEIY7uBh+2yMqghKaco7cA4oEZjyDgQ65TXECOAdKcobls9
-         b+qBsrSxBY/UVNvA9kvBtFzcOD1mH/tjhMBSYPoXgxFa/nB2NHgPfyYXpppavwXGUzeH
-         w8VscHqGwcTYm1KQoapXo/yf0UQyF65ek4Ly7RXjSxAKC2eHxmMkWrZ25mJaAfsg6NSP
-         kcJnLedUhaJCgAzF18+0oyHdQtqtlCcoDRFn/tsjv2Flcf5idiPRuu3olSNN490skkZ6
-         ezkQ==
+        b=Fz7ye4UfUEC8ZuTaZ6/nIGuNqNwo0Q1paLSZMzBeJrt9MFYCQGutIYB70GNmPN63oA
+         /ryELYEnB38GFuXm1QhyZ6kKO0HGoEXnr55V/V05vcBbE7RVZoGvlsnRZ9ObTpjAeRqV
+         dx8DdS/s8BnovC4JkyaDZNrwIusTyL1bkNGl/QSjwNLqaFCSLPkIMqStJm0Say/pYvUH
+         1temFFhkpCNic0JI/HU5AbxZMuHU4tT952kjClamkATfoU120ByjaA2rFVLkuPGXPnEK
+         ql5iPJCQ3ivDcJaUcbVi2bkJD8LuDJMGBvagmETZoV3WkX2KP33JH2JWA07Sz4Qql8T1
+         G85A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:in-reply-to
-         :content-transfer-encoding:content-disposition:mime-version
-         :references:message-id:subject:to:from:date:dkim-signature;
-        bh=G/aJJVHQ8/fi4jdi1B2ek6DYuKQ+3ktC2v9/rhdWNwg=;
-        b=P925RYsECgNGS00bMVUsMUZ7xppH9h/fJShIAI1Y9hLYnbkbIup053lZjFx+1MvSq+
-         ZkKGrjQnBx1ZZE8Crvd/dxPdRv8ffz1+jV76OXiJC5s7yIyW5pRsRx7qvBtwAV2StWXW
-         Hp/qu9364D6+E0PXBl42552AAn59L78qjJZxTc5mNKYRkxajv7M8OGJHWUpTJifpMuHz
-         voX1nLJMGOG+9/HgKfdk0J7dCKfib5qOPiULGzgQ6u17m/SBP+v1cOM0VHvsu41wZEQa
-         TjiUx/skCGdkPrMvYRoO8r4r/SsJXz++V7gINgVTevQ0fZssSCcI8qvJjTNhzVmTUBJj
-         qpVA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=rf5/DbVGf5xNwzm7YAsFh69eT8u+FhDSXb+hwn0eXSs=;
+        b=pn6BbbUv7SyfcSqpVgk2s9XCLJn4raDHRkWgWRVW9Yl48iEjKE8YyB2R6+xZp7xAQe
+         eow6Tg4RtA87NFtpxPnBvuA4GbM0loYR15tt4aORAKVXNBfB4A2JCVq2LoZUaA6QqZR1
+         HAweZq+8Jup9Urg5oXY+rgcYGkULra/GJXCXe7ZqvTrQjWMkiK17HdyyNCYoTyB1N+Q1
+         FhBl1vE/2lKNcI8A/vK1SgKXpp0LX6e13iWyFI7abMCeG7vFyG2XB29yCYEed5LtoYSa
+         vTBIfzWLTejxbE2L4MXPOdbAFU2CF80gsKWk8V6HDFFqqo0UqOCZRpArjHHxbpBI/1VS
+         /thg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=j9M9CI0B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LQgdsBLB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id q6si1419534qtw.389.2020.10.15.07.11.15
+        by mx.google.com with ESMTPS id k143si1060133qke.11.2020.10.23.09.16.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 15 Oct 2020 07:11:15 -0700 (PDT)
+        Fri, 23 Oct 2020 09:16:38 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@nuviainc-com.20150623.gappssmtp.com header.s=20150623 header.b=j9M9CI0B;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33462 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=LQgdsBLB;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:56740 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kT3yN-0004rY-1m
-	for alex.bennee@linaro.org; Thu, 15 Oct 2020 10:11:15 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60164)
+	id 1kVzk6-0003Y8-1g
+	for alex.bennee@linaro.org; Fri, 23 Oct 2020 12:16:38 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39350)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
- id 1kT3y0-0004qK-5P
- for qemu-arm@nongnu.org; Thu, 15 Oct 2020 10:10:53 -0400
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341]:50293)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <graeme@nuviainc.com>)
- id 1kT3xx-0004i0-7f
- for qemu-arm@nongnu.org; Thu, 15 Oct 2020 10:10:51 -0400
-Received: by mail-wm1-x341.google.com with SMTP id 13so3347094wmf.0
- for <qemu-arm@nongnu.org>; Thu, 15 Oct 2020 07:10:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=nuviainc-com.20150623.gappssmtp.com; s=20150623;
- h=date:from:to:cc:subject:message-id:references:mime-version
- :content-disposition:content-transfer-encoding:in-reply-to;
- bh=G/aJJVHQ8/fi4jdi1B2ek6DYuKQ+3ktC2v9/rhdWNwg=;
- b=j9M9CI0B1j6p1BTFsnD6ejJzf7nwy17OPvHONsIrvKDFfEoMjlCPTygtAx2ZUUtaWr
- glEgLRJB7fUjrwm8aXIhGDSf/FBbWOSCit7oYIEe6nFsihPqtV3NXRiyY9y6RmMJw+aN
- sW49p2EJuWyLFEXK5vbqpf+Hyb26Muwnl/yaxhocc3NbIDNe5QrOCSxYUodHNpLwszuI
- DCWmYLzmsHeqWBYiPyvTkcjUHBkggrfk1Y6uxfeUllcjqVNKNj45WZh5gSEeQq3vGfss
- xsQMN4bHrDb/HsdHrcV6fzk5AgtQsIiE4CxIWn1EC1n5HXjiRxyaF5GT22R7T1MQce5c
- WP4A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:date:from:to:cc:subject:message-id:references
- :mime-version:content-disposition:content-transfer-encoding
- :in-reply-to;
- bh=G/aJJVHQ8/fi4jdi1B2ek6DYuKQ+3ktC2v9/rhdWNwg=;
- b=X0hd0GMnaGQ910wC9+u4VlIRd+GP4pj/d9hGw3Yd4QklYLx31IFgvRdQm4dsmA+Rof
- 2/4D15VO97+JsjBP9mloBzXVMX26+OnFm/wGE7NAeyfubNoNjfMmoPDB3r0uYzfufj+f
- n3do4IDYBEWldEHmODlMVkiQC0oI8Vko148myBOWEKgLs0leOor68M3FTVz2bzmGt2+1
- cM9k8xSn5MPdaCjDEd06gVIgL//M51nNYyvWosRqaPaEx2mx8xPp0l1LKZYy3gi/kBro
- yDt8q0aQxaCdSivagvg9LCCK3+1gZlC+NkYAk4FZKMa0YJD/GLybVNKNZZKtNrmoH9IN
- rPrA==
-X-Gm-Message-State: AOAM531Z6eZgdAB5F4M8nFQgpXU8JHxAZvgUqFdYyHLclJ8xKPBn1MUJ
- HQRcSLLMAnFVqO9ZAHZfm2IpZg==
-X-Received: by 2002:a1c:87:: with SMTP id 129mr4175292wma.103.1602771046516;
- Thu, 15 Oct 2020 07:10:46 -0700 (PDT)
-Received: from xora-monster ([2a02:8010:64d6::1d89])
- by smtp.gmail.com with ESMTPSA id o3sm4891300wru.15.2020.10.15.07.10.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 15 Oct 2020 07:10:45 -0700 (PDT)
-Date: Thu, 15 Oct 2020 15:10:44 +0100
-From: Graeme Gregory <graeme@nuviainc.com>
-To: Shashi Mallela <shashi.mallela@linaro.org>
-Subject: Re: [PATCH v5 2/2] hw/arm/sbsa-ref: add SBSA watchdog device
-Message-ID: <20201015141044.loa6x4sv5552pe72@xora-monster>
-References: <20201013151631.30678-1-shashi.mallela@linaro.org>
- <20201013151631.30678-3-shashi.mallela@linaro.org>
- <20201014093119.inq2ut2srps2zfme@xora-monster>
- <CAC15JE2hMrzpWWF-bS-fshoYx+BPehwxqJi-7uMUXSOj+Uh3GQ@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1kVzM3-0003I1-Uk
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2020 11:51:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:41664)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1kVzM1-0004kL-6W
+ for qemu-arm@nongnu.org; Fri, 23 Oct 2020 11:51:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603468304;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=rf5/DbVGf5xNwzm7YAsFh69eT8u+FhDSXb+hwn0eXSs=;
+ b=LQgdsBLBptDqw01zI5HDaVSIHhX7uY/uG8+1zZorFgD7eEnwoNK+GkZm8ADkWki6Wi/2vi
+ 4XLAjBa6CNy9m88KecrxyUYjWSiftRZgDT3/v46TWl9nKwcgItlTJm3Zq5/HHYTceNtVIz
+ GLChbzT9GUXsUNfa4J+4ZNaNZXeUYos=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-407-QCsaEQK2PM27PIF4NnJKgQ-1; Fri, 23 Oct 2020 11:51:36 -0400
+X-MC-Unique: QCsaEQK2PM27PIF4NnJKgQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 28455804B71;
+ Fri, 23 Oct 2020 15:51:35 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A75DE1002C17;
+ Fri, 23 Oct 2020 15:51:32 +0000 (UTC)
+Date: Fri, 23 Oct 2020 17:51:30 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <f4bug@amsat.org>
+Subject: Re: [PATCH v3 8/9] hw/arm/raspi: Add the Raspberry Pi Zero machine
+Message-ID: <20201023175130.50a379bd@redhat.com>
+In-Reply-To: <20201018203358.1530378-9-f4bug@amsat.org>
+References: <20201018203358.1530378-1-f4bug@amsat.org>
+ <20201018203358.1530378-9-f4bug@amsat.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAC15JE2hMrzpWWF-bS-fshoYx+BPehwxqJi-7uMUXSOj+Uh3GQ@mail.gmail.com>
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=graeme@nuviainc.com; helo=mail-wm1-x341.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/23 01:44:00
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,181 +115,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Leif Lindholm <leif@nuviainc.com>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- =?utf-8?B?UmFkb3PFgmF3?= Biernacki <rad@semihalf.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
+ qemu-devel@nongnu.org, Andrew Baumann <Andrew.Baumann@microsoft.com>,
+ qemu-arm@nongnu.org, Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: k9zhsVNl1JT7
+X-TUID: anoMHxBHyHIG
 
-On Wed, Oct 14, 2020 at 01:04:43PM -0400, Shashi Mallela wrote:
-> This was added as a placeholder for the virt requirement suggested by Maxim
-> earlier.Agreed that this fdt otherwise has no significance for sbsa-ref
-> platform nor is being used by ACPI table created for wdt.
-> 
-> -Shashi
-> 
-> On Wed, 14 Oct 2020 at 05:31, Graeme Gregory <[1]graeme@nuviainc.com> wrote:
-> 
->     On Tue, Oct 13, 2020 at 11:16:31AM -0400, Shashi Mallela wrote:
->     > Included the newly implemented SBSA generic watchdog device model into
->     > SBSA platform
->     >
->     > Signed-off-by: Shashi Mallela <[2]shashi.mallela@linaro.org>
->     > ---
->     >  hw/arm/sbsa-ref.c | 50 +++++++++++++++++++++++++++++++++++++++++++++++
->     >  1 file changed, 50 insertions(+)
->     >
->     > diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
->     > index 9c3a893bedfd..97ed41607119 100644
->     > --- a/hw/arm/sbsa-ref.c
->     > +++ b/hw/arm/sbsa-ref.c
->     > @@ -30,6 +30,7 @@
->     >  #include "exec/hwaddr.h"
->     >  #include "kvm_arm.h"
->     >  #include "hw/arm/boot.h"
->     > +#include "hw/arm/fdt.h"
->     >  #include "hw/block/flash.h"
->     >  #include "hw/boards.h"
->     >  #include "hw/ide/internal.h"
->     > @@ -40,6 +41,7 @@
->     >  #include "hw/qdev-properties.h"
->     >  #include "hw/usb.h"
->     >  #include "hw/char/pl011.h"
->     > +#include "hw/watchdog/wdt_sbsa_gwdt.h"
->     >  #include "net/net.h"
->     >  #include "qom/object.h"
->     > 
->     > @@ -64,6 +66,9 @@ enum {
->     >      SBSA_GIC_DIST,
->     >      SBSA_GIC_REDIST,
->     >      SBSA_SECURE_EC,
->     > +    SBSA_GWDT,
->     > +    SBSA_GWDT_REFRESH,
->     > +    SBSA_GWDT_CONTROL,
->     >      SBSA_SMMU,
->     >      SBSA_UART,
->     >      SBSA_RTC,
->     > @@ -104,6 +109,8 @@ static const MemMapEntry sbsa_ref_memmap[] = {
->     >      [SBSA_GIC_DIST] =           { 0x40060000, 0x00010000 },
->     >      [SBSA_GIC_REDIST] =         { 0x40080000, 0x04000000 },
->     >      [SBSA_SECURE_EC] =          { 0x50000000, 0x00001000 },
->     > +    [SBSA_GWDT_REFRESH] =       { 0x50010000, 0x00001000 },
->     > +    [SBSA_GWDT_CONTROL] =       { 0x50011000, 0x00001000 },
->     >      [SBSA_UART] =               { 0x60000000, 0x00001000 },
->     >      [SBSA_RTC] =                { 0x60010000, 0x00001000 },
->     >      [SBSA_GPIO] =               { 0x60020000, 0x00001000 },
->     > @@ -133,6 +140,8 @@ static const int sbsa_ref_irqmap[] = {
->     >      [SBSA_SECURE_UART_MM] = 9,
->     >      [SBSA_AHCI] = 10,
->     >      [SBSA_EHCI] = 11,
->     > +    [SBSA_SMMU] = 12, /* ... to 15 */
->     > +    [SBSA_GWDT] = 16,
->     >  };
+On Sun, 18 Oct 2020 22:33:57 +0200
+Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org> wrote:
 
-I guess your patch was not based on master here? You should make sure
-you are rebased to the latest version before sending.
+> Similarly to the Pi A, the Pi Zero uses a BCM2835 SoC (ARMv6Z core).
+>=20
+> Example booting the machine using content from [*]:
+>=20
+>   $ qemu-system-arm -M raspi0 -serial stdio \
+>       -kernel raspberrypi/firmware/boot/kernel.img \
+>       -dtb raspberrypi/firmware/boot/bcm2708-rpi-zero.dtb \
+>       -append 'printk.time=3D0 earlycon=3Dpl011,0x20201000 console=3DttyA=
+MA0'
+>   [    0.000000] Booting Linux on physical CPU 0x0
+>   [    0.000000] Linux version 4.19.118+ (dom@buildbot) (gcc version 4.9.=
+3 (crosstool-NG crosstool-ng-1.22.0-88-g8460611)) #1311 Mon Apr 27 14:16:15=
+ BST 2020
+>   [    0.000000] CPU: ARMv6-compatible processor [410fb767] revision 7 (A=
+RMv7), cr=3D00c5387d
+>   [    0.000000] CPU: VIPT aliasing data cache, unknown instruction cache
+>   [    0.000000] OF: fdt: Machine model: Raspberry Pi Zero
+>   ...
+>=20
+> [*] http://archive.raspberrypi.org/debian/pool/main/r/raspberrypi-firmwar=
+e/raspberrypi-kernel_1.20200512-2_armhf.deb
+>=20
+> Reviewed-by: Luc Michel <luc.michel@greensocs.com>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>
+> ---
+>  hw/arm/raspi.c | 13 +++++++++++++
+>  1 file changed, 13 insertions(+)
+>=20
+> diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+> index 91a59d1d489..1510ca01afe 100644
+> --- a/hw/arm/raspi.c
+> +++ b/hw/arm/raspi.c
+> @@ -319,6 +319,15 @@ static void raspi_machine_class_common_init(MachineC=
+lass *mc,
+>      mc->default_ram_id =3D "ram";
+>  };
+> =20
+> +static void raspi0_machine_class_init(ObjectClass *oc, void *data)
+> +{
+> +    MachineClass *mc =3D MACHINE_CLASS(oc);
+> +    RaspiMachineClass *rmc =3D RASPI_MACHINE_CLASS(oc);
+> +
+> +    rmc->board_rev =3D 0x900092;
 
->     > 
->     >  static uint64_t sbsa_ref_cpu_mp_affinity(SBSAMachineState *sms, int idx)
->     > @@ -141,6 +150,30 @@ static uint64_t sbsa_ref_cpu_mp_affinity
->     (SBSAMachineState *sms, int idx)
->     >      return arm_cpu_mp_affinity(idx, clustersz);
->     >  }
->     > 
->     > +static void create_wdt_fdt(SBSAMachineState *sms)
->     > +{
->     > +    char *nodename;
->     > +    const char compat[] = "arm,sbsa-gwdt";
->     > +
->     > +    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
->     > +    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
->     > +    int irq = sbsa_ref_irqmap[SBSA_GWDT];
->     > +
->     > +    nodename = g_strdup_printf("/watchdog@%" PRIx64, rbase);
->     > +    qemu_fdt_add_subnode(sms->fdt, nodename);
->     > +
->     > +    qemu_fdt_setprop(sms->fdt, nodename, "compatible",
->     > +                             compat, sizeof(compat));
->     > +    qemu_fdt_setprop_sized_cells(sms->fdt, nodename, "reg",
->     > +                                 2, rbase, 2, SBSA_GWDT_RMMIO_SIZE,
->     > +                                 2, cbase, 2, SBSA_GWDT_CMMIO_SIZE);
->     > +    qemu_fdt_setprop_cells(sms->fdt, nodename, "interrupts",
->     > +                                GIC_FDT_IRQ_TYPE_PPI, irq,
->     > +                                GIC_FDT_IRQ_FLAGS_LEVEL_HI);
->     > +    qemu_fdt_setprop_cell(sms->fdt, nodename, "timeout-sec", 30);
->     > +    g_free(nodename);
->     > +}
->     > +
-> 
->     Is this actually used anywhere? I ask because SBSA-ref is not a FDT
->     booting machine and only uses FDT to transfer some dynamic info to
->     arm-tf/edk2 and is not a full description tree. Your ACPI patch in
->     edk2 certainly does not use this info.
-> 
+shouldn't it be=20
+920092=09Zero=091.2=09512MB=09Embest
+or
+920093  Zero=091.3=09512MB=09Embest
 
-From your reply above I would propose this hunk and the call below are
-removed. If its needed to virt thats a seperate discussion which I think
-was already happening in another thread.
+> +    raspi_machine_class_common_init(mc, rmc->board_rev);
+> +};
+> +
+>  static void raspi1ap_machine_class_init(ObjectClass *oc, void *data)
+>  {
+>      MachineClass *mc =3D MACHINE_CLASS(oc);
+> @@ -352,6 +361,10 @@ static void raspi3b_machine_class_init(ObjectClass *=
+oc, void *data)
+> =20
+>  static const TypeInfo raspi_machine_types[] =3D {
+>      {
+> +        .name           =3D MACHINE_TYPE_NAME("raspi0"),
+> +        .parent         =3D TYPE_RASPI_MACHINE,
+> +        .class_init     =3D raspi0_machine_class_init,
+> +    }, {
+>          .name           =3D MACHINE_TYPE_NAME("raspi1ap"),
+>          .parent         =3D TYPE_RASPI_MACHINE,
+>          .class_init     =3D raspi1ap_machine_class_init,
 
-FOSS style is for inline replies not top posting FYI
-
-Graeme
-
->     Graeme
-> 
-> 
->     >  /*
->     >   * Firmware on this machine only uses ACPI table to load OS, these
->     limited
->     >   * device tree nodes are just to let firmware know the info which varies
->     from
->     > @@ -219,6 +252,7 @@ static void create_fdt(SBSAMachineState *sms)
->     > 
->     >          g_free(nodename);
->     >      }
->     > +    create_wdt_fdt(sms);
->     >  }
->     > 
->     >  #define SBSA_FLASH_SECTOR_SIZE (256 * KiB)
->     > @@ -447,6 +481,20 @@ static void create_rtc(const SBSAMachineState *sms)
->     >      sysbus_create_simple("pl031", base, qdev_get_gpio_in(sms->gic,
->     irq));
->     >  }
->     > 
->     > +static void create_wdt(const SBSAMachineState *sms)
->     > +{
->     > +    hwaddr rbase = sbsa_ref_memmap[SBSA_GWDT_REFRESH].base;
->     > +    hwaddr cbase = sbsa_ref_memmap[SBSA_GWDT_CONTROL].base;
->     > +    DeviceState *dev = qdev_new(TYPE_WDT_SBSA_GWDT);
->     > +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
->     > +    int irq = sbsa_ref_irqmap[SBSA_GWDT];
->     > +
->     > +    sysbus_realize_and_unref(s, &error_fatal);
->     > +    sysbus_mmio_map(s, 0, rbase);
->     > +    sysbus_mmio_map(s, 1, cbase);
->     > +    sysbus_connect_irq(s, 0, qdev_get_gpio_in(sms->gic, irq));
->     > +}
->     > +
->     >  static DeviceState *gpio_key_dev;
->     >  static void sbsa_ref_powerdown_req(Notifier *n, void *opaque)
->     >  {
->     > @@ -730,6 +778,8 @@ static void sbsa_ref_init(MachineState *machine)
->     > 
->     >      create_rtc(sms);
->     > 
->     > +    create_wdt(sms);
->     > +
->     >      create_gpio(sms);
->     > 
->     >      create_ahci(sms);
->     > --
->     > 2.18.4
->     >
->     >
-> 
-> 
-> References:
-> 
-> [1] mailto:graeme@nuviainc.com
-> [2] mailto:shashi.mallela@linaro.org

@@ -1,279 +1,159 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp16731lfa;
-        Thu, 22 Oct 2020 15:06:40 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxb95hJM6Nw2AMwra+wX0n4dGAmpe8RpWb6+7mI0FXKITZES118FccLQ6eTrP+Mh1Za5w+O
-X-Received: by 2002:a05:620a:4156:: with SMTP id k22mr3079392qko.441.1603404400358;
-        Thu, 22 Oct 2020 15:06:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603404400; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp140920lfa;
+        Thu, 22 Oct 2020 19:03:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx/nqW0XDSOLthmR7W8zFyPLOuZ/7xTCgLaoHm4yiFNsIgQ43f2ULv9hcTCTe5/7RQ/2O8u
+X-Received: by 2002:ad4:44b3:: with SMTP id n19mr5269679qvt.39.1603418622078;
+        Thu, 22 Oct 2020 19:03:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603418622; cv=none;
         d=google.com; s=arc-20160816;
-        b=OSsjsnnYSNAnUMWEmriYz8FoLVEsEIJwEcXPiB4rGtjP+lMCmWBHTz16oYkfnQWKjC
-         ozK+/wZFlGK5MKtiEEfZYwW6u5705VsfctLldnnni46cDvuxv83qM++rC5PfyP0TvgY/
-         QEHPt78Rbn5W7JvMjTgApm9hup7jaQ8rYsQRAq3gyqKhn//E/UQBPrOBNu87tEY+L5Az
-         PqJIXIECUlNc8BBJF2EFRSi+V6vrICX6W1C/g5hgLQRyFfLcEaciSKLKQPXfKLZrVKPb
-         So4LDvg1eR+cVi8SeDO0wF3BoBh0rVK+lSnnv5dJ85A2c72PfNoqVoM0Lo/dejjOpyDx
-         /SMg==
+        b=e96VPb2Fu+eylMqKLPAhG6yoeqorEJyMJJV1YY2J4IKujUPwEHB9043GWhqinXyM5B
+         YmogDe7yKZaznhFUMpyqJ4nFaYVVSvytkUG4KJdawfZY5IGcn6IkpPYXacygz7uR9asZ
+         Em2aVD64Lm2+oDOKuWCvWkeC/rhFUSQ3J03q0CgmcbtOJSR62QAn5GZvYUjndTOBsu5g
+         LBqV1myWOFZUwE/MJKLjvRI+Yr/uU4XswQIoiPyccey8mjLugPzMQVny+SuNKNc0/AbY
+         WwqOVIo+qahCVAtz0CRIzE5wIxbsWSQShWXpfSdEYxvw+1tK56jXvpAmmYOkisou4I7y
+         3iDA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=S9oCSIT0bPgiC34+L+hmIouoQfKPSNUNV3gEnPwikTg=;
-        b=kKkOWl3txKFyRuf8vQ4PXVvbDoIqk0fCdW2IS/mhJd1ByolBCy9z9vt6knA/xxL75u
-         i3iZUCnY4oY8oyYo3EtE/4vWdEjibS9YHm2iW2vL4VOyGcsNxe8qZO0BlAJ/079ie2eX
-         4BjHzdPTUVxVo1cf7joXQsKIc4HZa0RYo+cFKoLdVWZMGbpp0g2cL0n6nvMs2ZGpL9/w
-         Izd8o5EYqOGXCiNrs2FD18giu1RF0kzmGgJX8t8IRKhXP/WRD/BKmBAecGb48Be3lvkV
-         P/Lb/0inmpGf4TqenqdeqFZYYRpzzNRntne2DoS2A81/L8gNVynA3PvoE8oVqAvEyRdR
-         IrQw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=MdNjEe8qDgX/ZT7aExW7njszeWmLIpE6Qcuh8bI/ozg=;
+        b=wszLzLmXFdY4yS6xBR96zKh06MLK6QVlCgD5K6FKFYDuROH4QvPBiE1vMbwfznmRQR
+         T7rz14XAnU4OhWA9zc9UUYDHNFH19bQtwhCzFWHlJ/9zRHGxF8aOk3OcS1jtXzlqdLum
+         MH7uesl0mofNZ9HRj8IXExRNqvWRHSDnH4PrIii6IUQVKvErjj3QqtwQWPLRzhPkVffJ
+         puEA+6cOZPc2nC7bFG4yOj+AJ6+GtUEsj/i/e3WVh27CqBwPQaI5NGkKABOwQINyxbyk
+         W0f7TdLgoQq1joNCyhZdhWi2oB+6XCKrr44Ul1uNkNoZZfpLtWBeEUC3aCl/OhtRaGB6
+         gtgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UYCa3vo3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DNUjm50o;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v21si1537097qtp.39.2020.10.22.15.06.40
+        by mx.google.com with ESMTPS id b18si47505qkc.367.2020.10.22.19.03.41
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 22 Oct 2020 15:06:40 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Thu, 22 Oct 2020 19:03:42 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=UYCa3vo3;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:38232 helo=lists1p.gnu.org)
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DNUjm50o;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:39164 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kVijH-0000QW-P4
-	for alex.bennee@linaro.org; Thu, 22 Oct 2020 18:06:39 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40674)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kVmQf-00082u-I4
+	for alex.bennee@linaro.org; Thu, 22 Oct 2020 22:03:41 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52376)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kViiv-0000Q9-Qj; Thu, 22 Oct 2020 18:06:17 -0400
-Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:45715)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kVmPr-00081w-7n; Thu, 22 Oct 2020 22:02:51 -0400
+Received: from mail-yb1-xb42.google.com ([2607:f8b0:4864:20::b42]:39862)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kViit-00051E-O7; Thu, 22 Oct 2020 18:06:17 -0400
-Received: by mail-wr1-x441.google.com with SMTP id e17so5423190wru.12;
- Thu, 22 Oct 2020 15:06:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kVmPp-0005m9-7d; Thu, 22 Oct 2020 22:02:50 -0400
+Received: by mail-yb1-xb42.google.com with SMTP id 67so3325750ybt.6;
+ Thu, 22 Oct 2020 19:02:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=S9oCSIT0bPgiC34+L+hmIouoQfKPSNUNV3gEnPwikTg=;
- b=UYCa3vo3mVxusJ2+lpJ5/54Cujw7jMcFBPJnidMMXEHNJ9NAwK4Asjh/RX3Zumra4s
- /X4kaL76xQInFGFVjkhLptUeLhbxXrT4lCar0KE2rYnS2Mqttn/kenzk4g4scsSzEQVm
- gG7fVNOzhhpA8acTrQbDnVGsdcSXGPTHmIApEpr3WNTBLPjpJWf3r0at6qkErRzXYd85
- FWDHkzRI5xhLCjagGnkMunA38JLuQn19sd3lWjk5FLwZmRZoRQJDRrTD4k/9EvZMm4ED
- vN2owbaxYiDnGt7BJLbicuXph6Fe27w01eLVQGljGtpsPjEYGWzwE7cVjkob7F2qOLxI
- xayA==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=MdNjEe8qDgX/ZT7aExW7njszeWmLIpE6Qcuh8bI/ozg=;
+ b=DNUjm50oKO1bcRFeCe5lMIVZ5hmxitiyeDB5n2t5TEZuN/7aSFq0OEDP7F36jBwiCm
+ wyFJJ85BdSMTt+wx1r8EpD7Ew6ogytxv+O3fIGTfroyBRg1z1rAtB58Fg+A74/ObE8uj
+ ZFZxx4M5ualnL1aYu5LzSKjs6gtk8Uwve0BRX7wNaFdOPZ+pZWCLovZNHVocLPtIkBxT
+ uoFnHUsk7UcUzYda9ewczBNzZhe2E+YQFJHx1p52EFBxbWYnTRwZm6H3hfgQWwgssS7y
+ uA5lPM7NjgfNXGMgbRt5NQrdXzSTA7MMO8wAKojV3P8Pq4sKMPET9Comhh4fmYVyfk5y
+ IzsA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=S9oCSIT0bPgiC34+L+hmIouoQfKPSNUNV3gEnPwikTg=;
- b=oNmcVele0aqAZhL8Yw/ZqSvzPe/t5gmNeeZr7jcPaNOQEcevQ0AKGcnRipmN3xVZBf
- t05Z+fvyE3ppdpnEbVp+cqF0YhhfI2eCVF9P8SkgkvHjjmJdyoo344nrTLWu7qMW0/Tl
- tVgev7OKEONP6ZU0XlzoKxMHpJZn74O2C19dDHfhKsAlag+mvlWT+9TEYdHWVZRknSxt
- D0QLzrSTNLHwbfQVxcydERoq7xA4jSV7ChhseUT5EHor2e0T3igU6D08B5K1eSlcDas2
- kWA3DmKS36qpWsfwMqxw79tSUsMTMMx1abqs7CpvcJ4hIPTaxwfstyayJC+NUSm0h/id
- iZRA==
-X-Gm-Message-State: AOAM530CLKRz7Ji/yAaPtLgpdHlwCHeLNdp6rfeRBj+twxb3WiYZm8JN
- kNxeQtpSMlb0wvBuMpGAFpk=
-X-Received: by 2002:adf:ed06:: with SMTP id a6mr4604062wro.375.1603404373824; 
- Thu, 22 Oct 2020 15:06:13 -0700 (PDT)
-Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
- [88.18.140.237])
- by smtp.gmail.com with ESMTPSA id i14sm5777945wml.24.2020.10.22.15.06.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 22 Oct 2020 15:06:13 -0700 (PDT)
-Subject: Re: [PATCH v3 00/15] raspi: add the bcm2835 cprman clock manager
-To: Luc Michel <luc@lmichel.fr>, qemu-devel@nongnu.org,
- Guenter Roeck <linux@roeck-us.net>
-References: <20201010135759.437903-1-luc@lmichel.fr>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <f6c1ad96-ce36-e229-2a9d-d71070b82d82@amsat.org>
-Date: Fri, 23 Oct 2020 00:06:12 +0200
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=MdNjEe8qDgX/ZT7aExW7njszeWmLIpE6Qcuh8bI/ozg=;
+ b=ITLELoO7+qtAwiMG7hXHt+XzvAcoSfaDTxCSkITTTct2ngT54XyPKdb0SjEQjKOwxx
+ +CmzgHUWGksr/2oZf7zGP9HBlghvRO8YP667gu0U7sZEapvmnL5EF2DKuOKoH3/skusS
+ 3+phzsw+FZpQHby7HpL5Y/emuY3lqpgkEEPXdeaoGBu97lw2sKnk54pGivA0If2T0Ud4
+ 6+5ho17AqCULCHFWIUuILJKer+y/MeRkPFobMUDTxoI/GFEFatjNaVQxNHf52CN9kvuw
+ hZ5vLcvbot3ZycGPcfQk11wy433G6ANCa6pMrhcEwqFNMQRLtZiTAU8PVGrI7IiY+rB6
+ zzoA==
+X-Gm-Message-State: AOAM533q/6nmY6JcKvhVW+2eA5PA3WZDF/nrGJHH6xTDKiiTVtJUhDKV
+ ZXivfVWAiGJourpLp+fDsQ3aLRf28lb38dH1dZc=
+X-Received: by 2002:a25:386:: with SMTP id 128mr310909ybd.122.1603418566061;
+ Thu, 22 Oct 2020 19:02:46 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201010135759.437903-1-luc@lmichel.fr>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::441;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x441.google.com
+References: <20200821172916.1260954-1-f4bug@amsat.org>
+ <20200821172916.1260954-23-f4bug@amsat.org>
+ <e378932a-1de3-83c1-834f-ae6526604cb7@amsat.org>
+ <CAEUhbmVFZ8aWdv48D8acdfFRp6WMYL6n=ENeo4hBZfmqE9TrDA@mail.gmail.com>
+ <a0ac3805-ec48-2a0e-6511-b142bfc6f214@amsat.org>
+ <CAEUhbmVLFJWND=KHexD12mrCMJSO3mcE6k7_tRE+v8pNZjhN_A@mail.gmail.com>
+ <CAPan3Wqx-psi6zgz3NyM1Hu_PHaGq4Nn3_RJf_zueqwXFNKuWg@mail.gmail.com>
+In-Reply-To: <CAPan3Wqx-psi6zgz3NyM1Hu_PHaGq4Nn3_RJf_zueqwXFNKuWg@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Fri, 23 Oct 2020 10:02:34 +0800
+Message-ID: <CAEUhbmXGbNNXkJYt8-sX_+nT_ReXoyerYaf+KROxx55-89wbHA@mail.gmail.com>
+Subject: Re: [PULL 22/23] hw/sd: Fix incorrect populated function switch
+ status data structure
+To: Niek Linnenbank <nieklinnenbank@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b42;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb42.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.107,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Havard Skinnemoen <hskinnemoen@google.com>,
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-block@nongnu.org,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ Bin Meng <bin.meng@windriver.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>,
  Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Paul Zimmerman <pauldzim@gmail.com>,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: E8C3kakM59En
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ Beniamino Galvani <b.galvani@gmail.com>, Michael Walle <michael@walle.cc>,
+ qemu-arm <qemu-arm@nongnu.org>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: rWCVX3Q3tXvZ
 
-Cc'ing Guenter who had a similar patch and might be interested
-to test :)
+Hi Niek,
 
-patch 16/15 fixup:
-https://www.mail-archive.com/qemu-devel@nongnu.org/msg752113.html
+On Thu, Oct 22, 2020 at 11:20 PM Niek Linnenbank
+<nieklinnenbank@gmail.com> wrote:
+>
+> Hi Bin, Philippe,
+>
+> If im correct the acceptance tests for orange pi need to be run with a fl=
+ag ARMBIAN_ARTIFACTS_CACHED set that explicitly allows them to be run using=
+ the armbian mirror. So if you pass that flag on the same command that Phil=
+ippe gave, the rests should run.
 
-On 10/10/20 3:57 PM, Luc Michel wrote:
-> v2 -> v3:
->    - patch 03: moved clock_new definition to hw/core/clock.c [Phil]
->    - patch 03: commit message typo [Clement]
->    - patch 10: clarifications around the CM_CTL/CM_DIBV mux registers.
->                reg_cm replaced with reg_ctl and reg_div. Add some
->                comments for clarity. [Phil]
->    - patch 10: fixed update_mux_from_cm not matching the CM_DIV offset
->                correctly. [Phil]
->    - patch 11: replaced manual bitfield extraction with extract32 [Phil]
->    - patch 11: added a visual representation of CM_DIV for clarity [Phil]
->    - patch 11: added a missing return in clock_mux_update.
-> 
-> v1 -> v2:
->    - patch 05: Added a comment about MMIO .valid constraints [Phil]
->    - patch 05: Added MMIO .impl [Phil]
->    - patch 05: Moved init_internal_clock to the public clock API, renamed
->      clock_new (new patch 03) [Phil]
->    - patch 11: use muldiv64 for clock mux frequency output computation [Phil]
->    - patch 11: add a check for null divisor (Phil: I dropped your r-b)
->    - Typos, formatting, naming, style [Phil]
-> 
-> Patches without review: 03, 11, 13
-> 
-> Hi,
-> 
-> This series add the BCM2835 CPRMAN clock manager peripheral to the
-> Raspberry Pi machine.
-> 
-> Patches 1-4 are preliminary changes, patches 5-13 are the actual
-> implementation.
-> 
-> The two last patches add a clock input to the PL011 and
-> connect it to the CPRMAN.
-> 
-> This series has been tested with Linux 5.4.61 (the current raspios
-> version). It fixes the kernel Oops at boot time due to invalid UART
-> clock value, and other warnings/errors here and there because of bad
-> clocks or lack of CPRMAN.
-> 
-> Here is the clock tree as seen by Linux when booted in QEMU:
-> (/sys/kernel/debug/clk/clk_summary with some columns removed)
-> 
->                          enable  prepare
->     clock                 count    count          rate
-> -----------------------------------------------------
->   otg                         0        0     480000000
->   osc                         5        5      19200000
->      gp2                      1        1         32768
->      tsens                    0        0       1920000
->      otp                      0        0       4800000
->      timer                    0        0       1000002
->      pllh                     4        4     864000000
->         pllh_pix_prediv       1        1       3375000
->            pllh_pix           0        0        337500
->         pllh_aux              1        1     216000000
->            vec                0        0     108000000
->         pllh_rcal_prediv      1        1       3375000
->            pllh_rcal          0        0        337500
->      plld                     3        3    2000000024
->         plld_dsi1             0        0       7812501
->         plld_dsi0             0        0       7812501
->         plld_per              3        3     500000006
->            gp1                1        1      25000000
->            uart               1        2      47999625
->         plld_core             2        2     500000006
->            sdram              0        0     166666668
->      pllc                     3        3    2400000000
->         pllc_per              1        1    1200000000
->            emmc               0        0     200000000
->         pllc_core2            0        0       9375000
->         pllc_core1            0        0       9375000
->         pllc_core0            2        2    1200000000
->            vpu                1        1     700000000
->               aux_spi2        0        0     700000000
->               aux_spi1        0        0     700000000
->               aux_uart        0        0     700000000
->               peri_image      0        0     700000000
->      plla                     2        2    2250000000
->         plla_ccp2             0        0       8789063
->         plla_dsi0             0        0       8789063
->         plla_core             1        1     750000000
->            h264               0        0     250000000
->            isp                0        0     250000000
->   dsi1p                       0        0             0
->   dsi0p                       0        0             0
->   dsi1e                       0        0             0
->   dsi0e                       0        0             0
->   cam1                        0        0             0
->   cam0                        0        0             0
->   dpi                         0        0             0
->   tec                         0        0             0
->   smi                         0        0             0
->   slim                        0        0             0
->   gp0                         0        0             0
->   dft                         0        0             0
->   aveo                        0        0             0
->   pcm                         0        0             0
->   pwm                         0        0             0
->   hsm                         0        0             0
-> 
-> It shows small differences with real hardware due other missing
-> peripherals for which the driver turn the clock off (like tsens).
-> 
-> Luc Michel (15):
->    hw/core/clock: provide the VMSTATE_ARRAY_CLOCK macro
->    hw/core/clock: trace clock values in Hz instead of ns
->    hw/core/clock: add the clock_new helper function
->    hw/arm/raspi: fix CPRMAN base address
->    hw/arm/raspi: add a skeleton implementation of the CPRMAN
->    hw/misc/bcm2835_cprman: add a PLL skeleton implementation
->    hw/misc/bcm2835_cprman: implement PLLs behaviour
->    hw/misc/bcm2835_cprman: add a PLL channel skeleton implementation
->    hw/misc/bcm2835_cprman: implement PLL channels behaviour
->    hw/misc/bcm2835_cprman: add a clock mux skeleton implementation
->    hw/misc/bcm2835_cprman: implement clock mux behaviour
->    hw/misc/bcm2835_cprman: add the DSI0HSCK multiplexer
->    hw/misc/bcm2835_cprman: add sane reset values to the registers
->    hw/char/pl011: add a clock input
->    hw/arm/bcm2835_peripherals: connect the UART clock
-> 
->   include/hw/arm/bcm2835_peripherals.h       |    5 +-
->   include/hw/arm/raspi_platform.h            |    5 +-
->   include/hw/char/pl011.h                    |    1 +
->   include/hw/clock.h                         |   18 +
->   include/hw/misc/bcm2835_cprman.h           |  210 ++++
->   include/hw/misc/bcm2835_cprman_internals.h | 1019 ++++++++++++++++++++
->   hw/arm/bcm2835_peripherals.c               |   15 +-
->   hw/char/pl011.c                            |   45 +
->   hw/core/clock.c                            |   21 +-
->   hw/misc/bcm2835_cprman.c                   |  808 ++++++++++++++++
->   hw/char/trace-events                       |    1 +
->   hw/core/trace-events                       |    4 +-
->   hw/misc/meson.build                        |    1 +
->   hw/misc/trace-events                       |    5 +
->   14 files changed, 2146 insertions(+), 12 deletions(-)
->   create mode 100644 include/hw/misc/bcm2835_cprman.h
->   create mode 100644 include/hw/misc/bcm2835_cprman_internals.h
->   create mode 100644 hw/misc/bcm2835_cprman.c
-> 
+Thank you for the hints. Actually I noticed the environment variable
+ARMBIAN_ARTIFACTS_CACHED when looking at the test codes, but after I
+turned on the flag it still could not download the test asset from the
+apt.armbian.com website.
+
+> I have a follow up question and Im interested to hear your opinion on tha=
+t Philippe. Should we perhaps update the orange pi tests (and maybe others)=
+ so they use a reliable mirror that we can control, for example a github re=
+po? I would be happy to create a repo for that, at least for the orange pi =
+tests. But maybe there is already something planned as a more general solut=
+ion for artifacts of other machines as well?
+>
+
+Regards,
+Bin

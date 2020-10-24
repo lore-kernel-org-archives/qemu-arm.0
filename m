@@ -1,108 +1,111 @@
-Received: by 2002:ac2:4c26:0:0:0:0:0 with SMTP id u6csp5340998lfq;
-        Wed, 30 Sep 2020 02:23:37 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwKq+AMGa/xMCDa65b785ySWAu/mg8BdArWyN10scDTuu5nzYGoX0xFPIBuGotRj8HQT6G6
-X-Received: by 2002:a25:e0d2:: with SMTP id x201mr2020644ybg.180.1601457817532;
-        Wed, 30 Sep 2020 02:23:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1601457817; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1487580lfa;
+        Sat, 24 Oct 2020 10:02:08 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz2354u+gMAU+9DaFNF3u47X+9s7z3Smy1B/mhFyUE1YHinCB/Jaz8jCVuBy5YnZqGVKIn+
+X-Received: by 2002:ac8:5783:: with SMTP id v3mr2344655qta.298.1603558928686;
+        Sat, 24 Oct 2020 10:02:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603558928; cv=none;
         d=google.com; s=arc-20160816;
-        b=M/5Ag0Q4YBHoNEPXsa+uiranXKDJAIm89fRtylpvUvTfBoE0PRORHMnXpqmW7rpcYm
-         3wH3sK28n/4Rjl6wEWP4S7pl02IFth81wB1i70fvFuI7zEXt3qbel0N5QNeyTlEz/xik
-         Y2EzRSnsTZfWpfYAwNjP61RFyKsnWldGfq2+uFJxmYgogIRIQj0ApuPZl6mr1LCOrfeP
-         EkxdtM3kk4t0dxy/+EPZPl8xOZ2ZnIJ703OF6E0oaV6q9TocwX4LGHngZitkNQSBQ7Y2
-         +UoFQActxs5qq+onu3NbdIXE0ZDG1m5qP0tMq7mzyaNZMsnRX9/KXCVqMWaZgoc4Oj+W
-         r70w==
+        b=UKBUqjNR6KuxltQTpFzF60hkVxcCFDRDACS35wV8w5nVtJYRcQucFKiv4fzxY3sGWd
+         5wcM/kt6RVQvJ44IzhlBizIARpmwQss5HjL5C3n6AXo6GKh3MY+ByB/QaWOqt4sRcW3b
+         rJcXdevhVoz4ApKKKjaiekGO2mN79rfbNTg2/6dteXKyumDZAQ/bodUjErSvhVIEB4I+
+         GxPtDJOH9KBwwrQUIouVQORtlIKVIvX0EYcvt3AoCl7xdwYkbppsp5SrrxnmPRpfo8Na
+         AFdk06d8kdgJkply0xYvR8WwWDTVz5O5w9EPb/XBCSEkH/vLnSkwxcnVhZ4Fqa/8+vQ/
+         EF3A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=owz3HwVppTAtTe1AsZH8ihXWtgDRkufigx8d3LlmVbc=;
-        b=0gn3+qFPv+3bVXMq5Pvco7t2bwLgxrQcQAnNKS3vy0ytobCluJbbc85SugLvCeQ+as
-         WQKv6RLaQgCphtCAV48wL7bexcKXFoQZSpTL80oEULJORxt+OL1YUbMLroCP0UnIVaMZ
-         3ojWg+IW2iArl/3kMv/If0wLdw3vRvMMSr0eUtZEYLUj3L6S8fuuj5i15s9fV7rNzevz
-         14U4guSmfFX41Xbti5tCCWhviBdkxPqY2KfxDWME6EhHfI1mxGrLH9vJuziKvz3lcDMP
-         r6IUts3jgluGwpx3UISUpUXKVL64XTJrMHxH5rIibtdiDc592SoV+r2ZdOJBTITLQB0m
-         fGxA==
+        bh=wZ942IpuEYn6heYqqSxOTzqAXYjCwIpQoTDS92tNWTM=;
+        b=o+tPNR5EIwc2wVvK2ANq5Tg2Mx01Y00YBibXPHrmKKxTGt3sBsp/m39dQPyKId87S9
+         LDW3ZBU4nr2NVWjVEpgQWoG13P5EV4X3UyLHSmgv+34em9kSBh3n/HiVWiltW5t2FUS0
+         ityago00/klh/aincPXrQ8Rs/Rkv14Qzul11QF6Gr3d3yPa29aC4A8AMo15N98QsoHs1
+         51/wcuf7k2rLKCRdv5nOaGUTS5UuVHz3CIKaIgMGtXq8ERXNlYM78QkFo9IcABu+8lGx
+         QANF9ri4zAEkeKVUPRM0cDE2N9fLWw0z0F5rd/y11RiVuri9m8fYKvGI1WE1+ph8fFw6
+         Blgw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=G1USCJgB;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NqH0bWuQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p124si1099447ybc.7.2020.09.30.02.23.37
+        by mx.google.com with ESMTPS id n10si2350252qtn.294.2020.10.24.10.02.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 30 Sep 2020 02:23:37 -0700 (PDT)
+        Sat, 24 Oct 2020 10:02:08 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=G1USCJgB;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NqH0bWuQ;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:58488 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:53632 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kNYKm-0007zb-Tr
-	for alex.bennee@linaro.org; Wed, 30 Sep 2020 05:23:36 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:32828)
+	id 1kWMvg-0007ak-46
+	for alex.bennee@linaro.org; Sat, 24 Oct 2020 13:02:08 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60698)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kNYKe-0007zO-IH
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 05:23:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:21927)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1kNYKc-0002GB-Ov
- for qemu-arm@nongnu.org; Wed, 30 Sep 2020 05:23:28 -0400
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1601457805;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=owz3HwVppTAtTe1AsZH8ihXWtgDRkufigx8d3LlmVbc=;
- b=G1USCJgBxu58nrzmX8v2N3ftzozPBEF9wMfpNUl72rBx5m7N0LoiPPP9QCTWfvVYXSEV14
- OitL4vUKDB118IuphwMjjcX3O/nNCRIRd3pzzROwszC+VPRORCs532PppWu4K3+J2HAFWj
- UgtpgxKrFaXRNBG6eqvJmpeIphTwAAo=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-408-s6MHC3INMpmnFhasMx4MxA-1; Wed, 30 Sep 2020 05:23:20 -0400
-X-MC-Unique: s6MHC3INMpmnFhasMx4MxA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id A270164082;
- Wed, 30 Sep 2020 09:23:19 +0000 (UTC)
-Received: from localhost (ovpn-114-33.ams2.redhat.com [10.36.114.33])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 245565D9D3;
- Wed, 30 Sep 2020 09:23:18 +0000 (UTC)
-Date: Wed, 30 Sep 2020 10:23:17 +0100
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v2 0/2] NVMe passthrough: Take into account host IOVA
- reserved regions
-Message-ID: <20200930092317.GD201070@stefanha-x1.localdomain>
-References: <20200929085550.30926-1-eric.auger@redhat.com>
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kWMvR-0007Wg-0T; Sat, 24 Oct 2020 13:01:53 -0400
+Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:39882)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kWMvK-0005iM-Pi; Sat, 24 Oct 2020 13:01:49 -0400
+Received: by mail-wm1-x343.google.com with SMTP id d3so6257427wma.4;
+ Sat, 24 Oct 2020 10:01:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
+ :mime-version:content-transfer-encoding;
+ bh=wZ942IpuEYn6heYqqSxOTzqAXYjCwIpQoTDS92tNWTM=;
+ b=NqH0bWuQhI18QiShv3wL2R6Dpbn83TbrxO/qmpEgHoUWeP25wRnQILwUMS8SwdCBDf
+ TxdbRfByVlDAua3pZXZ13OGFvNo1kjpXMHaSu8q0PWAKKGQWbRyznc3w5k/YkZfMOcua
+ 80nAFNDdUOyO6sYIClieI/9cWs/t6OGcbhT9d7x5+n6zTl9D32fJbn6uAGJ5Nnl6nWb4
+ +rAX+9NvfCcHwj/FKqebYr8wl8/IuMeX4D4n5oHG0U3uDwzlKLF+LaOrXz2f/4PJreXV
+ tNKrmGJz/MQFZvjlh2pOCsnKtRo5X33MPDzhHchRqJxZQYIx7VyWLoAjKwChkjlgPFX3
+ vqpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
+ :in-reply-to:references:mime-version:content-transfer-encoding;
+ bh=wZ942IpuEYn6heYqqSxOTzqAXYjCwIpQoTDS92tNWTM=;
+ b=hs1iHYPMyqOAjB4fT7bOUg1exAlaWfEYGk91X4dpFUiKsIvwvGSxuMs3Ro7Rc5uMG0
+ DhZLmr5LTc+bFhPTrgVbPvJchP3JMI4MP46WxYTXi1DrXfHfCkLHU4CIkEsu+Bll2Ar8
+ dDsm+gJ/afIB9BzE0OWEAU0jT6sjz0QXuhK7eR4B4HNEutJbywFTsUAaVc1toYNpasHp
+ EbaM0K/KASlLNZwc3YFXPdP32rVqUXo+RhoqnqZySPVsfJJ+0LBWSK3Qm2lQl1YXJWgh
+ FhUzPc3nH6oH0awIrBaW+Adnbqtkzmk6KnQUuchSmmMWW3kf9cBk4QUkwwdZdFyuSJXv
+ pSMg==
+X-Gm-Message-State: AOAM533TTXEDYkCuRsY9GwHPkjmKyRu1YozvIcWIaJIw1A1aSw5Sfaeb
+ TsmWIA+FySFf1uRxBZBkDr5uv9COk+U=
+X-Received: by 2002:a1c:2b83:: with SMTP id r125mr7737637wmr.168.1603558904865; 
+ Sat, 24 Oct 2020 10:01:44 -0700 (PDT)
+Received: from localhost.localdomain (237.red-88-18-140.staticip.rima-tde.net.
+ [88.18.140.237])
+ by smtp.gmail.com with ESMTPSA id v123sm10402821wme.7.2020.10.24.10.01.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 24 Oct 2020 10:01:44 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+To: qemu-devel@nongnu.org
+Subject: [PATCH v4 3/9] hw/arm/bcm2836: Introduce BCM283XClass::core_count
+Date: Sat, 24 Oct 2020 19:01:21 +0200
+Message-Id: <20201024170127.3592182-4-f4bug@amsat.org>
+X-Mailer: git-send-email 2.26.2
+In-Reply-To: <20201024170127.3592182-1-f4bug@amsat.org>
+References: <20201024170127.3592182-1-f4bug@amsat.org>
 MIME-Version: 1.0
-In-Reply-To: <20200929085550.30926-1-eric.auger@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=stefanha@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="RYJh/3oyKhIjGcML"
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/09/30 00:31:59
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::343;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -14
+X-Spam_score: -1.5
+X-Spam_bar: -
+X-Spam_report: (-1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,85 +118,60 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: fam@euphon.net, lvivier@redhat.com, cohuck@redhat.com,
- qemu-devel@nongnu.org, mreitz@redhat.com, alex.williamson@redhat.com,
- qemu-arm@nongnu.org, kwolf@redhat.com, philmd@redhat.com,
- eric.auger.pro@gmail.com
+Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>, qemu-arm@nongnu.org,
+ Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: yo6vlD1XL2Ep
+X-TUID: QZjxvA1plCIZ
 
---RYJh/3oyKhIjGcML
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+The BCM2835 has only one core. Introduce the core_count field to
+be able to use values different than BCM283X_NCPUS (4).
 
-On Tue, Sep 29, 2020 at 10:55:48AM +0200, Eric Auger wrote:
-> The current IOVA allocator allocates within the [0x10000, 1ULL << 39]
-> window, without paying attention to the host IOVA reserved regions.
-> This prevents NVMe passthtrough from working on ARM as the fixed
-> IOVAs rapidly grow up to the MSI reserved region [0x8000000, 0x8100000]
-> causing some VFIO MAP DMA failures. This series collects the usable
-> IOVA regions using VFIO GET_INFO (this requires the host to support
-> VFIO_IOMMU_TYPE1_INFO_CAP_IOVA_RANGE) and rework the fixed and
-> temporary IOVA allocators to avoid those latter.
->=20
-> For the time being we do not change the arbitrary min/max IOVAs.
-> In theory they could be dynamically determined but the kernel
-> currently fails to expose some HW limitations described in the ACPI
-> tables (such as PCI root complex Device Memory Address Size Limit).
-> See kernel thread related to "[RFC 0/3] iommu: Reserved regions for
-> IOVAs beyond dma_mask and iommu aperture" for more details:
-> https://lkml.org/lkml/2020/9/28/1102
->=20
-> Best Regards
->=20
-> Eric
->=20
-> This series can be found at:
-> https://github.com/eauger/qemu/tree/nvme_resv_v2
->=20
-> This was tested on ARM only.
->=20
-> History:
-> v1 -> v2:
-> - remove "util/vfio-helpers: Dynamically compute the min/max IOVA" to
->   relax the kernel dependency
-> - Fix cabapbility enumeration loop
-> - set s->usable_iova_ranges=3DNULL to avoid double free
-> - handle possible u64 wrap
->=20
-> Eric Auger (2):
->   util/vfio-helpers: Collect IOVA reserved regions
->   util/vfio-helpers: Rework the IOVA allocator to avoid IOVA reserved
->     regions
->=20
->  util/vfio-helpers.c | 129 +++++++++++++++++++++++++++++++++++++++++---
->  1 file changed, 123 insertions(+), 6 deletions(-)
->=20
-> --=20
-> 2.21.3
->=20
+Reviewed-by: Luc Michel <luc.michel@greensocs.com>
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+---
+ hw/arm/bcm2836.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-Thanks, applied to my block tree:
-https://github.com/stefanha/qemu/commits/block
-
-Stefan
-
---RYJh/3oyKhIjGcML
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAl90ToUACgkQnKSrs4Gr
-c8gAGwf/TJ37FKH9VTr7GZxX7+oYWcyUhmO3ECWC6G2/h8eTXHQ48T+oANfVbAuD
-tAPIYm0QqgPn0XTHBzdzASZq2f5RGokDqmqoBtxhrirokv4/ennyZUivgSunJ08/
-ERJPgdi9aM02/gWhYf/L9JNS/EJNfWOCgq2W7MAMU4Sq9zEAQ6CQHpi4cJAR6w/2
-PyskYk8GMA5AlCP94g38oLEIKveXX7lEdFtuVo+A93OP7XsKJKiqgZmlLStZrBMu
-mRCtyWVnxbTBzHGvchJj0T9xuo77n1zJs1FvyOCthvM8OLKyg6NYA8OhOGRMqD7x
-NALPNsrZPKOC2qlLkLQ66nVTP9Q42w==
-=P5el
------END PGP SIGNATURE-----
-
---RYJh/3oyKhIjGcML--
+diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
+index 8f921d8e904..c5d46a8e805 100644
+--- a/hw/arm/bcm2836.c
++++ b/hw/arm/bcm2836.c
+@@ -23,6 +23,7 @@ typedef struct BCM283XClass {
+     /*< public >*/
+     const char *name;
+     const char *cpu_type;
++    unsigned core_count;
+     hwaddr peri_base; /* Peripheral base address seen by the CPU */
+     hwaddr ctrl_base; /* Interrupt controller and mailboxes etc. */
+     int clusterid;
+@@ -39,7 +40,7 @@ static void bcm2836_init(Object *obj)
+     BCM283XClass *bc = BCM283X_GET_CLASS(obj);
+     int n;
+ 
+-    for (n = 0; n < BCM283X_NCPUS; n++) {
++    for (n = 0; n < bc->core_count; n++) {
+         object_initialize_child(obj, "cpu[*]", &s->cpu[n].core,
+                                 bc->cpu_type);
+     }
+@@ -149,6 +150,7 @@ static void bcm2836_class_init(ObjectClass *oc, void *data)
+     BCM283XClass *bc = BCM283X_CLASS(oc);
+ 
+     bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-a7");
++    bc->core_count = BCM283X_NCPUS;
+     bc->peri_base = 0x3f000000;
+     bc->ctrl_base = 0x40000000;
+     bc->clusterid = 0xf;
+@@ -163,6 +165,7 @@ static void bcm2837_class_init(ObjectClass *oc, void *data)
+     BCM283XClass *bc = BCM283X_CLASS(oc);
+ 
+     bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-a53");
++    bc->core_count = BCM283X_NCPUS;
+     bc->peri_base = 0x3f000000;
+     bc->ctrl_base = 0x40000000;
+     bc->clusterid = 0x0;
+-- 
+2.26.2
 

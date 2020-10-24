@@ -1,101 +1,101 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1487580lfa;
-        Sat, 24 Oct 2020 10:02:08 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz2354u+gMAU+9DaFNF3u47X+9s7z3Smy1B/mhFyUE1YHinCB/Jaz8jCVuBy5YnZqGVKIn+
-X-Received: by 2002:ac8:5783:: with SMTP id v3mr2344655qta.298.1603558928686;
-        Sat, 24 Oct 2020 10:02:08 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603558928; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1488007lfa;
+        Sat, 24 Oct 2020 10:02:48 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxQ7To29595b2OdbS+T8ePTD5sjotQlfZmlRwqKN9W+AxZiAUnlzJnXwo54UtWlDrBnWQWP
+X-Received: by 2002:aed:27dc:: with SMTP id m28mr7984403qtg.12.1603558968070;
+        Sat, 24 Oct 2020 10:02:48 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603558968; cv=none;
         d=google.com; s=arc-20160816;
-        b=UKBUqjNR6KuxltQTpFzF60hkVxcCFDRDACS35wV8w5nVtJYRcQucFKiv4fzxY3sGWd
-         5wcM/kt6RVQvJ44IzhlBizIARpmwQss5HjL5C3n6AXo6GKh3MY+ByB/QaWOqt4sRcW3b
-         rJcXdevhVoz4ApKKKjaiekGO2mN79rfbNTg2/6dteXKyumDZAQ/bodUjErSvhVIEB4I+
-         GxPtDJOH9KBwwrQUIouVQORtlIKVIvX0EYcvt3AoCl7xdwYkbppsp5SrrxnmPRpfo8Na
-         AFdk06d8kdgJkply0xYvR8WwWDTVz5O5w9EPb/XBCSEkH/vLnSkwxcnVhZ4Fqa/8+vQ/
-         EF3A==
+        b=tgAt45WZjFgAFZK7Zm2A9b1alfPhcGM2AddaBeXF1enY7EHOPQPto0rVcfLkkEj11t
+         gkW4ws7l6bFUXelTx5rRT8k9tF5SY9ExB48DwzHgSwllxQgGalciMUR8sVTqGClw8paJ
+         GDaoPCa4i4IS5EWfHllQN29cLwGh0r8N/KUgznuaa+00pwjc9iu7AkN0LNmf9yLK/jVX
+         yHggQx45gDL3ixWYbO/Q4CQKUWsApH8KR3dJngnfOAZ4k9XVLfc71DbNgrl+iCca0Mdv
+         c/3pUo/0Mu/r6HMF5v3OM9OViwoPWBoS240zz+DF356Q0SlvNca+VA7g5rOkWlByorYI
+         ifJA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=wZ942IpuEYn6heYqqSxOTzqAXYjCwIpQoTDS92tNWTM=;
-        b=o+tPNR5EIwc2wVvK2ANq5Tg2Mx01Y00YBibXPHrmKKxTGt3sBsp/m39dQPyKId87S9
-         LDW3ZBU4nr2NVWjVEpgQWoG13P5EV4X3UyLHSmgv+34em9kSBh3n/HiVWiltW5t2FUS0
-         ityago00/klh/aincPXrQ8Rs/Rkv14Qzul11QF6Gr3d3yPa29aC4A8AMo15N98QsoHs1
-         51/wcuf7k2rLKCRdv5nOaGUTS5UuVHz3CIKaIgMGtXq8ERXNlYM78QkFo9IcABu+8lGx
-         QANF9ri4zAEkeKVUPRM0cDE2N9fLWw0z0F5rd/y11RiVuri9m8fYKvGI1WE1+ph8fFw6
-         Blgw==
+        bh=jViLzsnHUVqtQxwtvYdFxDUn3i00wRweHY3mgJ2gUEU=;
+        b=T8zkzgN1jXZONHXSPIsCI6AHutXYSuXnUe+MIAOF5kvwJ8jAudbRMgYwqF2IWXauqT
+         UPjadY3PFoxcRRez3Dnu/cvuKfvghL2LYVYx5RgZtZWyd619vOIFCXM4ZNdoq3Qy45OL
+         skFgPS1cACU8TwCpzynHMyshJ78kVxIepr27UZkqjXNG7ZM1VBqvsSypxAqSihIp3ymF
+         w/SDF7EAzaQTwRmkqnf6Nk4di8wlzwIGWhR8nH7cwM+m1PEPGhKut7RHwqV7Bgi7/ctD
+         bw65ktiT94EvnssWqakxJYoBCFTnsoFJaeSWq9b805HQ1yIM+Anp8thX3eB3aiDviLMf
+         DRYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NqH0bWuQ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VeP+A1Tm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id n10si2350252qtn.294.2020.10.24.10.02.08
+        by mx.google.com with ESMTPS id g191si2541687qke.192.2020.10.24.10.02.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 24 Oct 2020 10:02:08 -0700 (PDT)
+        Sat, 24 Oct 2020 10:02:48 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NqH0bWuQ;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=VeP+A1Tm;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:53632 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:54376 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kWMvg-0007ak-46
-	for alex.bennee@linaro.org; Sat, 24 Oct 2020 13:02:08 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:60698)
+	id 1kWMwJ-0007w0-Gb
+	for alex.bennee@linaro.org; Sat, 24 Oct 2020 13:02:47 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60796)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kWMvR-0007Wg-0T; Sat, 24 Oct 2020 13:01:53 -0400
-Received: from mail-wm1-x343.google.com ([2a00:1450:4864:20::343]:39882)
+ id 1kWMvb-0007rP-CR; Sat, 24 Oct 2020 13:02:03 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e]:41153)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kWMvK-0005iM-Pi; Sat, 24 Oct 2020 13:01:49 -0400
-Received: by mail-wm1-x343.google.com with SMTP id d3so6257427wma.4;
- Sat, 24 Oct 2020 10:01:46 -0700 (PDT)
+ id 1kWMvZ-0005jO-LC; Sat, 24 Oct 2020 13:02:03 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id s9so6435681wro.8;
+ Sat, 24 Oct 2020 10:02:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=wZ942IpuEYn6heYqqSxOTzqAXYjCwIpQoTDS92tNWTM=;
- b=NqH0bWuQhI18QiShv3wL2R6Dpbn83TbrxO/qmpEgHoUWeP25wRnQILwUMS8SwdCBDf
- TxdbRfByVlDAua3pZXZ13OGFvNo1kjpXMHaSu8q0PWAKKGQWbRyznc3w5k/YkZfMOcua
- 80nAFNDdUOyO6sYIClieI/9cWs/t6OGcbhT9d7x5+n6zTl9D32fJbn6uAGJ5Nnl6nWb4
- +rAX+9NvfCcHwj/FKqebYr8wl8/IuMeX4D4n5oHG0U3uDwzlKLF+LaOrXz2f/4PJreXV
- tNKrmGJz/MQFZvjlh2pOCsnKtRo5X33MPDzhHchRqJxZQYIx7VyWLoAjKwChkjlgPFX3
- vqpw==
+ bh=jViLzsnHUVqtQxwtvYdFxDUn3i00wRweHY3mgJ2gUEU=;
+ b=VeP+A1Tmec+wj1jeXHD8Sf3QTn1W0VCUwazXf6q2qSVuJR4Wl1oBmykHvjagxEMcoK
+ ZuizRKOZpC4e3j+B/T/zxzzEVBtwzqWN7/JoDd4IBTcsluRDfuVEOjT0dVQXGHRiQdpU
+ Te9WZx9Hjwm588b1eqUD1aeH9oRml55gAoEXjS6bXq4wwZeVE8klZjH4bnzoftfxOhCR
+ 74410V0X5925V6WEYB9zhCN15JBGOjtIzZT8f9osyCV8W3c0niCqhzV5DvJUuNEwrvik
+ 1y8DtU7ii+ru+BRmTLhVNG0QHYmtFwanDrQ522y8BOPdS7KDPqKXfQKxZCMVK6h4Ihbq
+ Zfgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=wZ942IpuEYn6heYqqSxOTzqAXYjCwIpQoTDS92tNWTM=;
- b=hs1iHYPMyqOAjB4fT7bOUg1exAlaWfEYGk91X4dpFUiKsIvwvGSxuMs3Ro7Rc5uMG0
- DhZLmr5LTc+bFhPTrgVbPvJchP3JMI4MP46WxYTXi1DrXfHfCkLHU4CIkEsu+Bll2Ar8
- dDsm+gJ/afIB9BzE0OWEAU0jT6sjz0QXuhK7eR4B4HNEutJbywFTsUAaVc1toYNpasHp
- EbaM0K/KASlLNZwc3YFXPdP32rVqUXo+RhoqnqZySPVsfJJ+0LBWSK3Qm2lQl1YXJWgh
- FhUzPc3nH6oH0awIrBaW+Adnbqtkzmk6KnQUuchSmmMWW3kf9cBk4QUkwwdZdFyuSJXv
- pSMg==
-X-Gm-Message-State: AOAM533TTXEDYkCuRsY9GwHPkjmKyRu1YozvIcWIaJIw1A1aSw5Sfaeb
- TsmWIA+FySFf1uRxBZBkDr5uv9COk+U=
-X-Received: by 2002:a1c:2b83:: with SMTP id r125mr7737637wmr.168.1603558904865; 
- Sat, 24 Oct 2020 10:01:44 -0700 (PDT)
+ bh=jViLzsnHUVqtQxwtvYdFxDUn3i00wRweHY3mgJ2gUEU=;
+ b=S4p8FbtjUeuazCZrfyo5P4qjOp+ZPBr7MGDse1kD7fsxOr7KZ75n/JtwjoDsvJ+xDP
+ 7zXw6R2ugnvUxeAI6SgHBcd6Dn4BvFIiTYBBuhirPTod3FtMuHUpw5x7viChGb0lRehz
+ VNR5WisQVehQBVhfkAaq7M3zP/dujVaUvqcPxsWGwD4JYWjNimarGK3qXFbusXJk4OMe
+ aLoYHCpJFs2PVzQDKV0pJpk1snu5RKN0aSAP5LjVWE2RRaT1lZnvUHd2r44o0IB/PDan
+ wnG5NHFFZyVM9fg3w/cPxUHx18qNnEm5gXBjJ6xjLeVmxMKa3FO6ao+owrUNczR6hxV2
+ PWRg==
+X-Gm-Message-State: AOAM531hORNY+yvHpa17kr5x8WaSMFRrR1Vm5JA6K7XLskiYVQUqOJ5n
+ sUgay88uqaHIoTOPmDl5OmEauY6ybW0=
+X-Received: by 2002:a5d:6cae:: with SMTP id a14mr8898011wra.187.1603558919740; 
+ Sat, 24 Oct 2020 10:01:59 -0700 (PDT)
 Received: from localhost.localdomain (237.red-88-18-140.staticip.rima-tde.net.
  [88.18.140.237])
- by smtp.gmail.com with ESMTPSA id v123sm10402821wme.7.2020.10.24.10.01.43
+ by smtp.gmail.com with ESMTPSA id f139sm11676791wme.47.2020.10.24.10.01.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 24 Oct 2020 10:01:44 -0700 (PDT)
+ Sat, 24 Oct 2020 10:01:59 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v4 3/9] hw/arm/bcm2836: Introduce BCM283XClass::core_count
-Date: Sat, 24 Oct 2020 19:01:21 +0200
-Message-Id: <20201024170127.3592182-4-f4bug@amsat.org>
+Subject: [PATCH v4 6/9] hw/arm/bcm2836: Introduce the BCM2835 SoC
+Date: Sat, 24 Oct 2020 19:01:24 +0200
+Message-Id: <20201024170127.3592182-7-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201024170127.3592182-1-f4bug@amsat.org>
 References: <20201024170127.3592182-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::343;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x343.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42e.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -124,54 +124,107 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Luc Michel <luc@lmichel.fr>,
  Luc Michel <luc.michel@greensocs.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QZjxvA1plCIZ
-
-The BCM2835 has only one core. Introduce the core_count field to
-be able to use values different than BCM283X_NCPUS (4).
+X-TUID: 9n50+LNOR0Ka
 
 Reviewed-by: Luc Michel <luc.michel@greensocs.com>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/bcm2836.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ include/hw/arm/bcm2836.h |  1 +
+ hw/arm/bcm2836.c         | 34 ++++++++++++++++++++++++++++++++++
+ hw/arm/raspi.c           |  2 ++
+ 3 files changed, 37 insertions(+)
 
+diff --git a/include/hw/arm/bcm2836.h b/include/hw/arm/bcm2836.h
+index 43e9f8cd0ef..6f90cabfa3a 100644
+--- a/include/hw/arm/bcm2836.h
++++ b/include/hw/arm/bcm2836.h
+@@ -26,6 +26,7 @@ OBJECT_DECLARE_TYPE(BCM283XState, BCM283XClass, BCM283X)
+  * them, code using these devices should always handle them via the
+  * BCM283x base class, so they have no BCM2836(obj) etc macros.
+  */
++#define TYPE_BCM2835 "bcm2835"
+ #define TYPE_BCM2836 "bcm2836"
+ #define TYPE_BCM2837 "bcm2837"
+ 
 diff --git a/hw/arm/bcm2836.c b/hw/arm/bcm2836.c
-index 8f921d8e904..c5d46a8e805 100644
+index 7d975cf2f53..de7ade2878e 100644
 --- a/hw/arm/bcm2836.c
 +++ b/hw/arm/bcm2836.c
-@@ -23,6 +23,7 @@ typedef struct BCM283XClass {
-     /*< public >*/
-     const char *name;
-     const char *cpu_type;
-+    unsigned core_count;
-     hwaddr peri_base; /* Peripheral base address seen by the CPU */
-     hwaddr ctrl_base; /* Interrupt controller and mailboxes etc. */
-     int clusterid;
-@@ -39,7 +40,7 @@ static void bcm2836_init(Object *obj)
-     BCM283XClass *bc = BCM283X_GET_CLASS(obj);
-     int n;
+@@ -89,6 +89,25 @@ static bool bcm283x_common_realize(DeviceState *dev, Error **errp)
+     return true;
+ }
  
--    for (n = 0; n < BCM283X_NCPUS; n++) {
-+    for (n = 0; n < bc->core_count; n++) {
-         object_initialize_child(obj, "cpu[*]", &s->cpu[n].core,
-                                 bc->cpu_type);
-     }
-@@ -149,6 +150,7 @@ static void bcm2836_class_init(ObjectClass *oc, void *data)
-     BCM283XClass *bc = BCM283X_CLASS(oc);
++static void bcm2835_realize(DeviceState *dev, Error **errp)
++{
++    BCM283XState *s = BCM283X(dev);
++
++    if (!bcm283x_common_realize(dev, errp)) {
++        return;
++    }
++
++    if (!qdev_realize(DEVICE(&s->cpu[0].core), NULL, errp)) {
++        return;
++    }
++
++    /* Connect irq/fiq outputs from the interrupt controller. */
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 0,
++            qdev_get_gpio_in(DEVICE(&s->cpu[0].core), ARM_CPU_IRQ));
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->peripherals), 1,
++            qdev_get_gpio_in(DEVICE(&s->cpu[0].core), ARM_CPU_FIQ));
++}
++
+ static void bcm2836_realize(DeviceState *dev, Error **errp)
+ {
+     BCM283XState *s = BCM283X(dev);
+@@ -159,6 +178,17 @@ static void bcm283x_class_init(ObjectClass *oc, void *data)
+     dc->user_creatable = false;
+ }
  
-     bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-a7");
-+    bc->core_count = BCM283X_NCPUS;
-     bc->peri_base = 0x3f000000;
-     bc->ctrl_base = 0x40000000;
-     bc->clusterid = 0xf;
-@@ -163,6 +165,7 @@ static void bcm2837_class_init(ObjectClass *oc, void *data)
-     BCM283XClass *bc = BCM283X_CLASS(oc);
++static void bcm2835_class_init(ObjectClass *oc, void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    BCM283XClass *bc = BCM283X_CLASS(oc);
++
++    bc->cpu_type = ARM_CPU_TYPE_NAME("arm1176");
++    bc->core_count = 1;
++    bc->peri_base = 0x20000000;
++    dc->realize = bcm2835_realize;
++};
++
+ static void bcm2836_class_init(ObjectClass *oc, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(oc);
+@@ -189,6 +219,10 @@ static void bcm2837_class_init(ObjectClass *oc, void *data)
  
-     bc->cpu_type = ARM_CPU_TYPE_NAME("cortex-a53");
-+    bc->core_count = BCM283X_NCPUS;
-     bc->peri_base = 0x3f000000;
-     bc->ctrl_base = 0x40000000;
-     bc->clusterid = 0x0;
+ static const TypeInfo bcm283x_types[] = {
+     {
++        .name           = TYPE_BCM2835,
++        .parent         = TYPE_BCM283X,
++        .class_init     = bcm2835_class_init,
++    }, {
+         .name           = TYPE_BCM2836,
+         .parent         = TYPE_BCM283X,
+         .class_init     = bcm2836_class_init,
+diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
+index b5b30f0f38f..30fafa59ecb 100644
+--- a/hw/arm/raspi.c
++++ b/hw/arm/raspi.c
+@@ -70,6 +70,7 @@ FIELD(REV_CODE, MEMORY_SIZE,       20, 3);
+ FIELD(REV_CODE, STYLE,             23, 1);
+ 
+ typedef enum RaspiProcessorId {
++    PROCESSOR_ID_BCM2835 = 0,
+     PROCESSOR_ID_BCM2836 = 1,
+     PROCESSOR_ID_BCM2837 = 2,
+ } RaspiProcessorId;
+@@ -78,6 +79,7 @@ static const struct {
+     const char *type;
+     int cores_count;
+ } soc_property[] = {
++    [PROCESSOR_ID_BCM2835] = {TYPE_BCM2835, 1},
+     [PROCESSOR_ID_BCM2836] = {TYPE_BCM2836, BCM283X_NCPUS},
+     [PROCESSOR_ID_BCM2837] = {TYPE_BCM2837, BCM283X_NCPUS},
+ };
 -- 
 2.26.2
 

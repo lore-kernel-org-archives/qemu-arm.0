@@ -1,104 +1,106 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2190035lfa;
-        Sun, 25 Oct 2020 09:24:58 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx/L/aCHNrvsCVQuhmMdj5fvYAQJyL21VYi373yXRdFhCAR67pKwdldgpCgKXOJet/1SlgN
-X-Received: by 2002:a05:620a:897:: with SMTP id b23mr13344161qka.184.1603643097812;
-        Sun, 25 Oct 2020 09:24:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603643097; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2216377lfa;
+        Sun, 25 Oct 2020 10:12:21 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzC+//6h2tliyum1eT3fM/F0iU0vsjml4i3XUcMYBGEvT4PNlIkMBBfFx8nlGoVX22RsXgY
+X-Received: by 2002:a37:a1d0:: with SMTP id k199mr953559qke.54.1603645941722;
+        Sun, 25 Oct 2020 10:12:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603645941; cv=none;
         d=google.com; s=arc-20160816;
-        b=eKiEbrJODkMFg03Ahrz/r79hVQtLRWqkV+vwGINfDtiuxCmskjlYGdabSumEEba88v
-         vGY9ShsJmVrKuMutXd4IQzzATN+45C/Hsxdy08oWfMZyj4Yh0My4J1sXVqRx8Yd7hksC
-         4iqU2z2T1CZPdtvEtLNE1P0THAvMcr+HOwpzNAP6hYGO0cjzyxF5n4vWIVdfU/yQaQ6y
-         zCluYqIXt5Lpv/HiAd9lG15jpJ89b49E0Y/bOBypaggUwdx4TFCsa8dFSmchprQuVQQS
-         z0aHoKGbygWPJizIzRwkLfafTJ0dSRBS7Pvqma9PsXSmhbHLsNx7YgFJswDUEqEQ4AaU
-         FHYA==
+        b=rqONCwEUUBDgCsrSDAsolM3gIBE3gWZqpe/FQOURMf0KS/q1mCVQ74nh8qP7MuKNkf
+         B3LLri8BEpSxS7fDrRnbJ0EdYKnGKEkrAVTOIFs5uubQTR0kgqQm+UO5fuq0dahRJ+5c
+         WMU7fJYaZtyJ7703jBcp9ldCeP1QoiXLgAON66R2cMr2jLUxM6suH6uj3l+hiFRPj3Vj
+         wcTt6XJQ8H5HGKbsVUwWDOuP1geUhe7Nrn4QavO0O/MDsvhTUIhj/wkSllu78VAEMZ5D
+         r+QSF6PIV7mApXFPn8JJIHt/aOY3m1yzScSEBi5mic/KykkAm7bk+Y7qZYKhv7qQIZVt
+         9SxA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=WsAyD3ZiWS/7YfRroLPs2vCeM9O/uHDvc4R0hnn4d9Q=;
-        b=0T+v/G1doyp7r78bqQvUWWbMh161vYXZYMf7uSCyB5Le8jxJYA9ielLE2TDXLE0YLD
-         1+elGl1FTRfePjqNoxccDrAyPrtS54xR192/WPHSURaYwb0a7syIaOuGLqqzoNrdiEj4
-         LOqc6SEtIYjgGaNJCgPe7pUOkIJypL+eR1/HHIYMqYrML2tqVDQ3uCWTS1ycCuUjBjXM
-         yYkSft7gZA5uL/aQNYBU54Zwbfsz829Lp2N/XuZqNeFiPnPMROIJxEM2GbhQwWSrMx7z
-         hR8LbMY8pNfohHtzHUHosQ+prC7tRlL7d/z/MbyhCw53JGJYhAmZkymYXQgmYCag/4pI
-         1tbg==
+        bh=Vd33Ya5kSanbify5LT3+0Cylm/k5c9A9c+nmqEvQ2j4=;
+        b=CR3IdagEHfYS7zFyHoV3+ZSzxN3ek3ARlJEFnxnF0G+fq/yYdgiRtvmPmUWOw7LcZy
+         5dbVRh5gwdbO4TWu0agphNiI6SDa/3aray7iH+CmCBm3v+GoNZJeF9jCSPJY1LspeUa+
+         nGpUjrnm4IbqgGWrrCHUVlVm4vn4/+3s89xfnYJl6n+HyE4nR7KnjNIF5L+/vLGcGVPf
+         yHElb91ewB7M6V8r3r31yBEUlFFWnHtXiPwx2PDmb8E9fZ6UBDuMozqHH/3o2SxpkIAx
+         5Neduuopmi1rAFAiXCbKo4mxc6ZN2AVsbUnxXr2rrCNYtPbKSnwgw3x0igao0xcGzNT6
+         n8mQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b3tck0O6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="KmMpMJ/U";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id v20si4155263qto.25.2020.10.25.09.24.57
+        by mx.google.com with ESMTPS id t20si4380732qvv.125.2020.10.25.10.12.21
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Oct 2020 09:24:57 -0700 (PDT)
+        Sun, 25 Oct 2020 10:12:21 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=b3tck0O6;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="KmMpMJ/U";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:50540 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:50468 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kWipF-0004HI-7U
-	for alex.bennee@linaro.org; Sun, 25 Oct 2020 12:24:57 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56204)
+	id 1kWjZ7-0001Ig-47
+	for alex.bennee@linaro.org; Sun, 25 Oct 2020 13:12:21 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:37402)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1kWioR-0004H2-Gb; Sun, 25 Oct 2020 12:24:08 -0400
-Received: from mail-il1-x144.google.com ([2607:f8b0:4864:20::144]:42783)
+ id 1kWjYx-0001Hd-60; Sun, 25 Oct 2020 13:12:11 -0400
+Received: from mail-il1-x141.google.com ([2607:f8b0:4864:20::141]:44599)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1kWioO-0001Yp-SG; Sun, 25 Oct 2020 12:24:07 -0400
-Received: by mail-il1-x144.google.com with SMTP id c11so2906155iln.9;
- Sun, 25 Oct 2020 09:24:04 -0700 (PDT)
+ id 1kWjYu-00076N-S1; Sun, 25 Oct 2020 13:12:10 -0400
+Received: by mail-il1-x141.google.com with SMTP id z2so6009789ilh.11;
+ Sun, 25 Oct 2020 10:12:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=WsAyD3ZiWS/7YfRroLPs2vCeM9O/uHDvc4R0hnn4d9Q=;
- b=b3tck0O6+SP2dep0g5bF3wdHV8laoxnVpzyQ3nep9dlVYhuM400Pt2BLI8RdTMsobZ
- bxi1n3OXfBSn6WPC7VngrlGicubUBeyLiqW4TznbCyEVkwqjZzvjp0ZaYGac1sNRCWuC
- oyetGjn4jCQijiW+NDIHthElro8+Gkw7Hb4I/vLpwKco9vQY3LzSLseM9VXnDKFVnuqy
- 2ZyxJo+Yx3fJ+dtpD1IiYlwRz/dzF9ZgRfCUR5Enht1ZvgXtb7U6ixEk6EyXkG96+eCr
- /LE1FCmQvztbmw+FOy5e6T/7vRfEEiq4HqZNvT3vpX0lwzS8UEX0Dc1GVpUxDcYd/2VT
- H9wQ==
+ :cc; bh=Vd33Ya5kSanbify5LT3+0Cylm/k5c9A9c+nmqEvQ2j4=;
+ b=KmMpMJ/U2Pg7iY6V2CGj8KtIXodNQ0ItLLrkgffm2J8KvDrWynSVl0MCh9p+3Dkf3Q
+ kCjdc0Q6q9DMlDE7rzEg4vpddStYepdbHnbbySYf+wHQr1O0QMvVU2HUnoIeET8+FDHI
+ HLJFHX2BPCswRB8YW6BvynhnMqA0LnrvZWOlzjrPkBHfIseojS733Ue0jJP2I4T9esob
+ tCckUXZUUdaQONzODIL6z84aBElCW4qmQDH+touMaQm/BFM98RGCwwmq32FwaIeuQ1uX
+ a20mUmIooArEhr8e1FOIFAD39d9YS+rtlmBYhh/bZxmNso0+fkvziJSZlLpQchn+WcRS
+ sJQQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=WsAyD3ZiWS/7YfRroLPs2vCeM9O/uHDvc4R0hnn4d9Q=;
- b=JjVFHxs4OesX0KJCXlyccIgymCiwvKjwjeVgH3Eaq/hr/JM7yxInGQcgLSrt7g9zTJ
- 0QJTpH/7JwO82kKxKsouItIQpVveclL1pcT9eQLb+2JZvlkANtk99jlJuweDHChPbtLW
- J/FIoVNv1keglsVcLSi3pT0cFQuyJmF7bahkNVW4g4j1fJdnDZjHLFGmF3AFumP0Z9R3
- 2SqndQMxfpTcS+bIki5c+BEM/PK59jsNEbqHfkYj/pM3w+2CT+VdrPqYHao4TkGKKep3
- c1Uxi4QXGJ0PDHv+P0rmppexaDSJKYtVrm7YjTuEVxAiNg7cVPwTZ18hp2xB2y1Pljbu
- Psgw==
-X-Gm-Message-State: AOAM530DKrmmR86wWVT/t10wppnJ2ADiwtolxRZWSh3/ac0Hvi2KvdYY
- nqWy+sx2Gpk7rRb9JRu7UVdA/MaZkNY5rFeZrn8=
-X-Received: by 2002:a92:85d5:: with SMTP id f204mr6975424ilh.45.1603643043458; 
- Sun, 25 Oct 2020 09:24:03 -0700 (PDT)
+ bh=Vd33Ya5kSanbify5LT3+0Cylm/k5c9A9c+nmqEvQ2j4=;
+ b=i1F6jcKlfhwLAIBeCJUkHLhaXfEIWjOVypxnK2JENiXrNbk2d7Q9YxzWVIulVlucwc
+ GEGX0xx5K1VwTC9BIKbmUzkvZJiaYoMTesvt5Op/KXqeqSKIYpN32VhRVQOHGgccE/h9
+ I4fTeqMt4IxWHbkBsYobNhewR++d5JVofgdjE8DQqxNaWVU/nZTDIuHmCNNUb2ncdaoU
+ p0J2VbM0Bmx0TsMQVadtleW51yq/ELPhzxbC93u3bWNIA3s1m6uvwNqTvZCWX+23rS5l
+ oddq1ovIeKdi1CeXcbqgX3mAQeyOEQdsisLSukuvbMs8fSaIflOdRa9tLHZ+x9gPmZW/
+ AohA==
+X-Gm-Message-State: AOAM531E/fGLws32g5tfiy52mv8MKJ3XRpfo1bxt1GmFWcpifWrUme7p
+ EWKsneHgwle7Jv416saajmkKRAaC7wvgFQmLl2w=
+X-Received: by 2002:a05:6e02:507:: with SMTP id
+ d7mr7898801ils.67.1603645927435; 
+ Sun, 25 Oct 2020 10:12:07 -0700 (PDT)
 MIME-Version: 1.0
 References: <20201024215200.494209-1-nieklinnenbank@gmail.com>
  <fd949ad0-f7fd-561e-33d8-57133a9afd31@amsat.org>
  <3bb92403-f955-d887-a301-1ff38259b49f@amsat.org>
-In-Reply-To: <3bb92403-f955-d887-a301-1ff38259b49f@amsat.org>
+ <CAPan3WoC8W1-P0i=7zj98nq+EEiVfG3KZZRVhOjsJ=yZGeLF4Q@mail.gmail.com>
+In-Reply-To: <CAPan3WoC8W1-P0i=7zj98nq+EEiVfG3KZZRVhOjsJ=yZGeLF4Q@mail.gmail.com>
 From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Mon, 26 Oct 2020 00:48:13 +0100
-Message-ID: <CAPan3WoC8W1-P0i=7zj98nq+EEiVfG3KZZRVhOjsJ=yZGeLF4Q@mail.gmail.com>
+Date: Sun, 25 Oct 2020 18:11:56 +0100
+Message-ID: <CAPan3WoK47g=bXDFv57YygDTDQegTk2UbE_EH-EBghKKk+3JwA@mail.gmail.com>
 Subject: Re: [PATCH] tests/acceptance: expand Orange Pi PC SD images for
  NetBSD, Armbian above nearest power of two
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
-Content-Type: multipart/alternative; boundary="000000000000f3b2ed05b2813d15"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::144;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-il1-x144.google.com
+Content-Type: multipart/alternative; boundary="000000000000d9b41b05b281e923"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::141;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-il1-x141.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9, DATE_IN_FUTURE_06_12=1.947,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_FROM=0.001, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,162 +117,196 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Bin Meng <bin.meng@windriver.com>,
  QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: cjZvlOO7fMH5
+X-TUID: TVTPV3w/tE2E
 
---000000000000f3b2ed05b2813d15
+--000000000000d9b41b05b281e923
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Hello Philippe,
+Hi Philippe,
 
-On Sun, Oct 25, 2020 at 1:11 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
-g>
-wrote:
+I've tested the patch by Bin on the 2G & Sd blocksize issue, see my
+response there.
+   https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg07318.html
 
-> On 10/25/20 2:31 AM, Philippe Mathieu-Daud=C3=A9 wrote:
-> > Hi Niek,
-> >
-> > On 10/24/20 11:52 PM, Niek Linnenbank wrote:
-> >> The acceptance tests for the Orange Pi PC need to expand the SD card
-> >> images
-> >> to a size which is a power of two. As Qemu uses the size of the SD
-> >> image file
-> >> as well for the size of the emulated SD card, this can sometimes give
-> >> problems
-> >> for guests that assume a certain minimum size of the SD card.
-> >>
-> >> This commit resolves the following acceptance test error for the
-> >> NetBSD 9.0 test
-> >> of the Orange Pi PC by increasing the size of the expanded SD card
-> >> image to two times
-> >> the nearest power of two:
-> >>
-> >>     (5/5)
-> >>
-> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
-_uboot_netbsd9:
->
-> >> |console: U-Boot SPL 2020.01+dfsg-1 (Jan 08 2020 - 08:19:44 +0000)
-> >>    console: DRAM: 1024 MiB
-> >>    console: Failed to set core voltage! Can't set CPU frequency
-> >>    /console: Trying to boot from MMC1
-> >>    console: U-Boot 2020.01+dfsg-1 (Jan 08 2020 - 08:19:44 +0000)
-> >> Allwinner Technology
-> >>    ...
-> >>    console: Starting kernel ...
-> >>    console: [   1.0000000] NetBSD/evbarm (fdt) booting ...
-> >>    ...
-> >>    console: [   1.3300167] sdmmc0: SD card status: 4-bit, C0
-> >>    console: [   1.3300167] ld0 at sdmmc0:
-> >> <0xaa:0x5859:QEMU!:0x01:0xdeadbeef:0x062>
-> >
-> > The test has this comment:
-> >
-> >     # This test download a 304MB compressed image and expand it to 2GB
-> >
-> > Once uncompressed the image is ~1.2GB before rounding to 2GB.
-> >
-> >>    console: [   1.3430678] ld0: 1024 MB, 1040 cyl, 32 head, 63 sec,
-> >> 512 bytes/sect x 2097152 sectors
-> >
-> > Why the card appears as 1GB??     ^^^^^^^
->
-
-Very well spotted Philippe. Indeed that is strange and is probably also why
-we are getting these issues.
-
-
-> >
-> > Can you try reverting commit 6d2d4069c47?
-> > ("sd: Correct the maximum size of a Standard Capacity SD Memory Card")
->
->
-I've tried your suggestion and indeed for the NetBSD 9.0 test, reverting
-6d2d4069c47 resolves the error for NetBSD 9.0.
-But the armbian tests fail with this output:
-
- (4/6)
-tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi_b=
-ionic_19_11:
-/console: DRAM: 1024 MiB
-console: Failed to set core voltage! Can't set CPU frequency
-console: Trying to boot from MMC1
-console: U-Boot 2019.04-armbian (Nov 18 2019 - 23:08:35 +0100) Allwinner
-Technology
-console: CPU:   Allwinner H3 (SUN8I 0000)
-...
-console: Autoboot in 1 seconds, press <Space> to stop
-/console: switch to partitions #0, OK
-console: mmc0 is current device
-...
-console: Loading Device Tree to 49757000, end 497c6fff ... OK
-console: Starting kernel ...
-console: Uncompressing Linux... done, booting the kernel.
-/console: [  149.045498] debugfs: Directory '1c22c00.codec' with parent 'H3
-Audio Codec' already present!
-INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout
-reached\nOriginal status: ERROR\n
-
-The 'setenv extraargs' isn't done when 'Autoboot in' appears, which is why
-there is much less output from the kernel.
-And it looks like that is because 'U-Boot SPL' isn't printed in the output
-so the python test is still waiting for that.
-
-However with the new patch submitted by Bin just now on the list, all tests
-are passing again like before, including the new 20.08 armbian test:
-  https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg07318.html
-
-(I'll reply to that message shortly)
+So probably we do not need the patch I send here.
 
 Regards,
 Niek
 
+On Mon, Oct 26, 2020 at 12:48 AM Niek Linnenbank <nieklinnenbank@gmail.com>
+wrote:
 
-
-> Now I remember, I hit the similar problem 2 years ago :S
+> Hello Philippe,
 >
-> See the description of the C_SIZE field in CSD register:
+> On Sun, Oct 25, 2020 at 1:11 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.=
+org>
+> wrote:
 >
->    "To indicate 2 GByte card, BLOCK_LEN shall be 1024 bytes."
+>> On 10/25/20 2:31 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+>> > Hi Niek,
+>> >
+>> > On 10/24/20 11:52 PM, Niek Linnenbank wrote:
+>> >> The acceptance tests for the Orange Pi PC need to expand the SD card
+>> >> images
+>> >> to a size which is a power of two. As Qemu uses the size of the SD
+>> >> image file
+>> >> as well for the size of the emulated SD card, this can sometimes give
+>> >> problems
+>> >> for guests that assume a certain minimum size of the SD card.
+>> >>
+>> >> This commit resolves the following acceptance test error for the
+>> >> NetBSD 9.0 test
+>> >> of the Orange Pi PC by increasing the size of the expanded SD card
+>> >> image to two times
+>> >> the nearest power of two:
+>> >>
+>> >>     (5/5)
+>> >>
+>> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangep=
+i_uboot_netbsd9:
+>>
+>> >> |console: U-Boot SPL 2020.01+dfsg-1 (Jan 08 2020 - 08:19:44 +0000)
+>> >>    console: DRAM: 1024 MiB
+>> >>    console: Failed to set core voltage! Can't set CPU frequency
+>> >>    /console: Trying to boot from MMC1
+>> >>    console: U-Boot 2020.01+dfsg-1 (Jan 08 2020 - 08:19:44 +0000)
+>> >> Allwinner Technology
+>> >>    ...
+>> >>    console: Starting kernel ...
+>> >>    console: [   1.0000000] NetBSD/evbarm (fdt) booting ...
+>> >>    ...
+>> >>    console: [   1.3300167] sdmmc0: SD card status: 4-bit, C0
+>> >>    console: [   1.3300167] ld0 at sdmmc0:
+>> >> <0xaa:0x5859:QEMU!:0x01:0xdeadbeef:0x062>
+>> >
+>> > The test has this comment:
+>> >
+>> >     # This test download a 304MB compressed image and expand it to 2GB
+>> >
+>> > Once uncompressed the image is ~1.2GB before rounding to 2GB.
+>> >
+>> >>    console: [   1.3430678] ld0: 1024 MB, 1040 cyl, 32 head, 63 sec,
+>> >> 512 bytes/sect x 2097152 sectors
+>> >
+>> > Why the card appears as 1GB??     ^^^^^^^
+>>
 >
-> This model uses a fixed BLOCK_LEN =3D 512 bytes.
+> Very well spotted Philippe. Indeed that is strange and is probably also
+> why we are getting these issues.
 >
-> >
-> >>    console: [   1.4102580] ld0: 4-bit width, High-Speed/SDR25, 50.000
-> MHz
-> >>    console: [   2.0674392] WARNING: 4 errors while detecting hardware;
-> >> check system log.
-> >>    console: [   2.0674392] boot device: ld0
-> >>    console: [   2.0775401] root on ld0a dumps on ld0b
-> >>    console: [   2.0977679] vfs_mountroot: can't open root device
-> >>    console: [   2.0977679] cannot mount root, error =3D 6
-> >>    INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
-> >> Timeout reached.
-> >>
-> >> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-> >> Based-on: ("[RFC PATCH 0/4] tests/acceptance: Test U-Boot/Linux from
-> >> Armbian 20.08 on Orange Pi PC")
-> >> ---
-> >>   tests/acceptance/boot_linux_console.py | 10 +++++-----
-> >>   1 file changed, 5 insertions(+), 5 deletions(-)
-> >
 >
-
+>> >
+>> > Can you try reverting commit 6d2d4069c47?
+>> > ("sd: Correct the maximum size of a Standard Capacity SD Memory Card")
+>>
+>>
+> I've tried your suggestion and indeed for the NetBSD 9.0 test, reverting
+> 6d2d4069c47 resolves the error for NetBSD 9.0.
+> But the armbian tests fail with this output:
+>
+>  (4/6)
+> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orangepi=
+_bionic_19_11:
+> /console: DRAM: 1024 MiB
+> console: Failed to set core voltage! Can't set CPU frequency
+> console: Trying to boot from MMC1
+> console: U-Boot 2019.04-armbian (Nov 18 2019 - 23:08:35 +0100) Allwinner
+> Technology
+> console: CPU:   Allwinner H3 (SUN8I 0000)
+> ...
+> console: Autoboot in 1 seconds, press <Space> to stop
+> /console: switch to partitions #0, OK
+> console: mmc0 is current device
+> ...
+> console: Loading Device Tree to 49757000, end 497c6fff ... OK
+> console: Starting kernel ...
+> console: Uncompressing Linux... done, booting the kernel.
+> /console: [  149.045498] debugfs: Directory '1c22c00.codec' with parent
+> 'H3 Audio Codec' already present!
+> INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred: Timeout
+> reached\nOriginal status: ERROR\n
+>
+> The 'setenv extraargs' isn't done when 'Autoboot in' appears, which is wh=
+y
+> there is much less output from the kernel.
+> And it looks like that is because 'U-Boot SPL' isn't printed in the outpu=
+t
+> so the python test is still waiting for that.
+>
+> However with the new patch submitted by Bin just now on the list, all
+> tests are passing again like before, including the new 20.08 armbian test=
+:
+>   https://lists.gnu.org/archive/html/qemu-devel/2020-10/msg07318.html
+>
+> (I'll reply to that message shortly)
+>
+> Regards,
+> Niek
+>
+>
+>
+>> Now I remember, I hit the similar problem 2 years ago :S
+>>
+>> See the description of the C_SIZE field in CSD register:
+>>
+>>    "To indicate 2 GByte card, BLOCK_LEN shall be 1024 bytes."
+>>
+>> This model uses a fixed BLOCK_LEN =3D 512 bytes.
+>>
+>> >
+>> >>    console: [   1.4102580] ld0: 4-bit width, High-Speed/SDR25, 50.000
+>> MHz
+>> >>    console: [   2.0674392] WARNING: 4 errors while detecting hardware=
+;
+>> >> check system log.
+>> >>    console: [   2.0674392] boot device: ld0
+>> >>    console: [   2.0775401] root on ld0a dumps on ld0b
+>> >>    console: [   2.0977679] vfs_mountroot: can't open root device
+>> >>    console: [   2.0977679] cannot mount root, error =3D 6
+>> >>    INTERRUPTED: Test interrupted by SIGTERM\nRunner error occurred:
+>> >> Timeout reached.
+>> >>
+>> >> Signed-off-by: Niek Linnenbank <nieklinnenbank@gmail.com>
+>> >> Based-on: ("[RFC PATCH 0/4] tests/acceptance: Test U-Boot/Linux from
+>> >> Armbian 20.08 on Orange Pi PC")
+>> >> ---
+>> >>   tests/acceptance/boot_linux_console.py | 10 +++++-----
+>> >>   1 file changed, 5 insertions(+), 5 deletions(-)
+>> >
+>>
+>
+>
+> --
+> Niek Linnenbank
+>
+>
 
 --=20
 Niek Linnenbank
 
---000000000000f3b2ed05b2813d15
+--000000000000d9b41b05b281e923
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><div dir=3D"ltr">Hello Philippe,<br></div><br><div class=
-=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Oct 25, 2020=
- at 1:11 PM Philippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.o=
-rg">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
-;padding-left:1ex">On 10/25/20 2:31 AM, Philippe Mathieu-Daud=C3=A9 wrote:<=
-br>
+<div dir=3D"ltr"><div>Hi Philippe,</div><div><br></div><div>I&#39;ve tested=
+ the patch by Bin on the 2G &amp; Sd blocksize issue, see my response there=
+.<br></div><div>=C2=A0=C2=A0 <a href=3D"https://lists.gnu.org/archive/html/=
+qemu-devel/2020-10/msg07318.html">https://lists.gnu.org/archive/html/qemu-d=
+evel/2020-10/msg07318.html</a></div><div><br></div><div>So probably we do n=
+ot need the patch I send here.<br></div><div><br></div><div>Regards,</div><=
+div>Niek<br></div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" cla=
+ss=3D"gmail_attr">On Mon, Oct 26, 2020 at 12:48 AM Niek Linnenbank &lt;<a h=
+ref=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&gt; wr=
+ote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px=
+ 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex"><div dir=3D=
+"ltr"><div dir=3D"ltr">Hello Philippe,<br></div><br><div class=3D"gmail_quo=
+te"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Oct 25, 2020 at 1:11 PM P=
+hilippe Mathieu-Daud=C3=A9 &lt;<a href=3D"mailto:f4bug@amsat.org" target=3D=
+"_blank">f4bug@amsat.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail=
+_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204=
+,204);padding-left:1ex">On 10/25/20 2:31 AM, Philippe Mathieu-Daud=C3=A9 wr=
+ote:<br>
 &gt; Hi Niek,<br>
 &gt; <br>
 &gt; On 10/24/20 11:52 PM, Niek Linnenbank wrote:<br>
@@ -358,12 +394,12 @@ nted in the output so the python test is still waiting for that.</div><div>=
 <br></div><div>However with the new patch submitted by Bin just now on the =
 list, all tests are passing again like before, including the new 20.08 armb=
 ian test:</div><div>=C2=A0 <a href=3D"https://lists.gnu.org/archive/html/qe=
-mu-devel/2020-10/msg07318.html">https://lists.gnu.org/archive/html/qemu-dev=
-el/2020-10/msg07318.html</a></div><div><br></div><div>(I&#39;ll reply to th=
-at message shortly)</div><div><br></div><div>Regards,</div><div>Niek<br></d=
-iv><div><br></div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
-=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
--left:1ex">
+mu-devel/2020-10/msg07318.html" target=3D"_blank">https://lists.gnu.org/arc=
+hive/html/qemu-devel/2020-10/msg07318.html</a></div><div><br></div><div>(I&=
+#39;ll reply to that message shortly)</div><div><br></div><div>Regards,</di=
+v><div>Niek<br></div><div><br></div><div>=C2=A0</div><blockquote class=3D"g=
+mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
+,204,204);padding-left:1ex">
 Now I remember, I hit the similar problem 2 years ago :S<br>
 <br>
 See the description of the C_SIZE field in CSD register:<br>
@@ -400,8 +436,10 @@ ux from <br>
 &gt;&gt; =C2=A0 tests/acceptance/boot_linux_console.py | 10 +++++-----<br>
 &gt;&gt; =C2=A0 1 file changed, 5 insertions(+), 5 deletions(-)<br>
 &gt; <br>
+</blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr"><div dir=
+=3D"ltr"><div>Niek Linnenbank<br><br></div></div></div></div>
 </blockquote></div><br clear=3D"all"><br>-- <br><div dir=3D"ltr" class=3D"g=
 mail_signature"><div dir=3D"ltr"><div>Niek Linnenbank<br><br></div></div></=
-div></div>
+div>
 
---000000000000f3b2ed05b2813d15--
+--000000000000d9b41b05b281e923--

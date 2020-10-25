@@ -1,113 +1,107 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2075596lfa;
-        Sun, 25 Oct 2020 06:14:57 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx+5AJepzB/YAoYwdwqwvJyYg0vx4/7Z/wC0MlagGeO+epqMg8suTAPgfsAvh8g0lNCNoue
-X-Received: by 2002:ac8:5c94:: with SMTP id r20mr11170828qta.292.1603631697230;
-        Sun, 25 Oct 2020 06:14:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603631697; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2157970lfa;
+        Sun, 25 Oct 2020 08:31:42 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzRwV/3GeYKhS/AeygN4jVsZ4oOfg/m+ywWdg4WtTDzUxm/i9KQdc7aZ9Xy0tR+XWlhjPWV
+X-Received: by 2002:a37:6407:: with SMTP id y7mr11221150qkb.404.1603639902684;
+        Sun, 25 Oct 2020 08:31:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603639902; cv=none;
         d=google.com; s=arc-20160816;
-        b=zRfo2N6cxoaEVBhH6lxdF32DIZXltV7cWFAu1mb/TJAp6g1ncp5vyFdItghnIDEA9V
-         7iqEfEr3GITpyzBbOjVG4lKQSmza/QY1cdFiq96PQiv5qGd53MFHlE1XsNWapEDM+SrI
-         UdCwQlV2ETo+6619sqq+6EQfo6LXL3GbArHkLd7V49A0cr2n21M8vPhk5YbS4BVNzTtb
-         SPqePVYzzd0T2Hjc3vUSzRLsTAtoU5GkwHDDrj5gyDY2b4EeHXjk/ldvbBORTUdE7aXT
-         KXdAQs3Sp/kbMBBgPrcnDMwJygUmaHFPwFerLz7nj21cmD747PsHu5h8Wu9IK8yw3DOG
-         zSfQ==
+        b=kuRG75nRNqzM3PQoUn2I1PRMe7sveFzB7XsmmPGK8aEvxEObdHErviYh80GKeeeeEW
+         XMZ+Am3D+Y1TW9k+/GOmoVnx1lbHFud2R3fF93HptivkQjvNy2PRsI9Jg8DT7PbxsmMX
+         kjcYE0XP2jgDmccMvpzTOUq+gEa2V5aHAyomTQM0EB+/W5YbUiWav0df3+Wkwx/nk+pC
+         JqMfmdakh6Y4pOh6D1c9MtPSQlMv+kU1E1nHLRahosdR33HgkGRLu9kmgqCEQ13+Otij
+         JwgpAX/hKX78h/8yTtApB2W+epnlUItjDG3dJ0eSo3QXQSpFF2xMpcRDT4SOHStbpTSJ
+         Dbyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:references:in-reply-to:message-id:date:subject:to:from
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=23AGIYOjutcJfv1ctNotYBakQrdg8uSFPn1/2ih38R8=;
-        b=WV8W2tQl9O+FD+Xp5PSutFvPhZSuhPPXmzT+L4BP6aUW9yOCshKBq4+EGohz24N5sH
-         aFTSs0ymwJ4wHl1sm+0kAUuxcqFyU0rGHao7ccXfXVvtBvwxB1fWkok0DqWmN6kqAO36
-         NUno4GQ0UdbKxxgO5sP5erihcqeFwF/qRk6ZyBZWZXzPSqiFAhEsJdvO2C+XniRA9Hxl
-         2G5/XiglRKoE1trsFeC0vv42dyNPPl6nr5RbKgBO27xGDUb9gNo/iz1kkExu6x0ScQjM
-         jDih7n1J5DZgrx3hZ5Ptu67vkOycH7xAgfQRfmYaZ9RiWSsQRBjooMuck8NmelNhoNg1
-         adZg==
+        bh=8k9W7heNWf310LbU1MGkloWciXvS7ZYGJRs1ES0KcV0=;
+        b=O7yZXuZfZwOO7hhrDrc0jcuqgHKXwOW0wFU1l4ZstjieNDaS2DEMd5NVIc8Vhgdbov
+         mg+lX6Fw6CiGdn7z+0COoO6A1WbFKxhXxNlJJ2rf09/l9sTKMAIZxu3Z3f3TTJVO9zwS
+         1Wuc4ZsuxSWTDAQ1l6YnA8EdXZ8NtcXNk9TfBT6pj2J3Fessexxvr+iCOumoWnwX3d/B
+         dW8vMGN+l2Sx6X2Y7rxjb7KjfoIL+85Ihp4q5J0hRdJu86JZKmuBNN1AWCEK4XyEERUA
+         uDFUgBiPXjtEQoAc+WxTI3L9aIfKE92YM2+KQq42o13TX1mFKVtfXd3D4DraAcEcqgOB
+         Ds4A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=Y7dUSpnU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jto3EeFw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w4si4337359qka.213.2020.10.25.06.14.57
+        by mx.google.com with ESMTPS id f14si4739453qko.42.2020.10.25.08.31.42
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 25 Oct 2020 06:14:57 -0700 (PDT)
+        Sun, 25 Oct 2020 08:31:42 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@bytedance-com.20150623.gappssmtp.com header.s=20150623 header.b=Y7dUSpnU;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=Jto3EeFw;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=bytedance.com
-Received: from localhost ([::1]:36988 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+Received: from localhost ([::1]:52742 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kWfrM-0000SB-JI
-	for alex.bennee@linaro.org; Sun, 25 Oct 2020 09:14:56 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41022)
+	id 1kWhzi-0007Z8-3q
+	for alex.bennee@linaro.org; Sun, 25 Oct 2020 11:31:42 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46930)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
- id 1kWfrC-0000Mc-Gi
- for qemu-arm@nongnu.org; Sun, 25 Oct 2020 09:14:46 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429]:34636)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kWhzC-0007Y2-34; Sun, 25 Oct 2020 11:31:10 -0400
+Received: from mail-yb1-xb41.google.com ([2607:f8b0:4864:20::b41]:36839)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wangzhiqiang.bj@bytedance.com>)
- id 1kWfr6-0002NN-Ss
- for qemu-arm@nongnu.org; Sun, 25 Oct 2020 09:14:44 -0400
-Received: by mail-pf1-x429.google.com with SMTP id e10so4635190pfj.1
- for <qemu-arm@nongnu.org>; Sun, 25 Oct 2020 06:14:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bytedance-com.20150623.gappssmtp.com; s=20150623;
- h=from:to:cc:subject:date:message-id:in-reply-to:references
- :mime-version:content-transfer-encoding;
- bh=23AGIYOjutcJfv1ctNotYBakQrdg8uSFPn1/2ih38R8=;
- b=Y7dUSpnUwk1ZwIW4Y2x/5sL6/dnZ1WuvkoiQvRgK4luNpRKKLT2jpuCBmlDbEqU5Cy
- J+oRTZdgy3Zc6or8Fkn3r5l/zdN1smAIcO6xIbXW4Y6LjMsYcD4i3jz2AfumpbdTbydD
- xMkkLJECGN1xozJ4436ocU5rnfekuwCmtVSLdABsLGFr+wQMwVoqQb51nC+5KriOFKf3
- pCJiYRizK+YmXKxNj6YQjW/3VGaCoFfOuXQ3fu0bTCP9D4BFM8wXDvxxn3D1P1QeE9Ce
- yg+ybXOLHK9Q5A51g3IbBjRgUfLeqsMjqR9LZM3M0tsRrqi58HLJipUnuhsiTg4dIaeo
- WpgQ==
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1kWhz8-00042C-Vp; Sun, 25 Oct 2020 11:31:09 -0400
+Received: by mail-yb1-xb41.google.com with SMTP id f140so5567815ybg.3;
+ Sun, 25 Oct 2020 08:31:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=8k9W7heNWf310LbU1MGkloWciXvS7ZYGJRs1ES0KcV0=;
+ b=Jto3EeFw+PHl1DnoR+jSTqDM/nBIs61S0gTpeux6rBr3SB1bF+bEV8pSGPiQxVARqk
+ TnsynWYFdZ/YCF8sbNp094fngLfFsmW9IpHL7pzGbSeu0HxqdXgLPIDIWNjw9kXGsRRa
+ nEQDYbyliONqXnxqePDk4TQdLsxkdjaFYevRgsg9864rWe6nT/ge0khAr0NR/dYzF1yF
+ DfYRSmxdc/r9LA2MzHFlX/mCgb8Jsla5TR4oVzkU61QWND0WUMXSRc+V1SM04PZ/1EiO
+ 6u4M6w3iS8mrwC49Jk7Pa58NZ+PlPgcHSu1bFkIXtEQFMuVsYfzv+CMTGiBOKzuwU+/k
+ mkWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=23AGIYOjutcJfv1ctNotYBakQrdg8uSFPn1/2ih38R8=;
- b=gs5boLtmefZZJRlIFfoybQsZnPRo4MKcHON04JbPpucGtXpmFWd0f76+xtlnNHlbC8
- z6L/SLR7A3m8XsNr/hbaHgE9F0tYArwa5lSwVfv0hutwHv6zHJ1IGFd66SGfyAm78u65
- ETX+ezm6NKvZblMrw+sV4NYGt6UdOrGWyhrtwNad3K31X7P8cuEf82BpQj826iF7w8Qv
- a1E9Qds4I3gVaROmk7uoNJyfYm8cTpehbL8sRyU4V/U2axurADzgn/gY91ZMglFOjfqm
- p4EPmSrOJZO0Z0dB77xtq8E86G7aknY9+2tzImES+RkA18rg0yGGdnh8CMv3ndp4Vswd
- nHcA==
-X-Gm-Message-State: AOAM533ra97hl7iMP5JikyT5og0MZhn9UtK8+pMMTZm8qqh1Dwoi5ihH
- Dgoin9mvyP7quEyKEKVe5pp4mg==
-X-Received: by 2002:a62:7942:0:b029:162:bf9f:6457 with SMTP id
- u63-20020a6279420000b0290162bf9f6457mr2742748pfc.59.1603631679392; 
- Sun, 25 Oct 2020 06:14:39 -0700 (PDT)
-Received: from localhost ([103.136.220.131])
- by smtp.gmail.com with ESMTPSA id y1sm9813364pjl.12.2020.10.25.06.14.38
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Sun, 25 Oct 2020 06:14:39 -0700 (PDT)
-From: John Wang <wangzhiqiang.bj@bytedance.com>
-To: clg@kaod.org, xuxiaohan@bytedance.com, yulei.sh@bytedance.com,
- joel@jms.id.au, f4bug@amsat.org
-Subject: [PATCH v3 2/2] aspeed: Add support for the g220a-bmc board
-Date: Sun, 25 Oct 2020 13:14:35 +0000
-Message-Id: <20201025131435.144-2-wangzhiqiang.bj@bytedance.com>
-X-Mailer: git-send-email 2.17.1
-In-Reply-To: <20201025131435.144-1-wangzhiqiang.bj@bytedance.com>
-References: <20201025131435.144-1-wangzhiqiang.bj@bytedance.com>
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=8k9W7heNWf310LbU1MGkloWciXvS7ZYGJRs1ES0KcV0=;
+ b=OAvuUceFGg0yHY9O8g5AsxCqefSwbgbfontdYO4LcCVumafMZ3YTNuUMyNqxqcJyHf
+ hsYxmc0ep+v8Us2jeO2Ce7cIcoiwn7Vm/uVyRdy0R01ENA7srToHsnEIMBU2EPrxoonC
+ mqQjAafwNlKZvTmGdtDFWU/fPhE4TL2pV96kXkzt+HuG15vCXzL/gFag5jgtXN7OhdSs
+ Ryl2AL5D3GhdkvwQh98G18SAPOmdhDnclcPCOttecoT6GJY8YLhHCP955GjjvayVrvAh
+ MwRwH7zOvMiyS0YbYo34TMWC9yIGCbF9C4XD5q7zngY+B4GT0sCB322FdtYkbSlIcn64
+ E86g==
+X-Gm-Message-State: AOAM533g6QPJ/HL/xoCWhJ/ro08LRiRw1r4hjh9k56T7otVAlaRmZov3
+ gKKqmgDhb0g73nPsyW8FtH6mvkH4aNYWZH8Cc/U=
+X-Received: by 2002:a25:4113:: with SMTP id o19mr15190094yba.314.1603639865575; 
+ Sun, 25 Oct 2020 08:31:05 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=wangzhiqiang.bj@bytedance.com; helo=mail-pf1-x429.google.com
+References: <20201024215200.494209-1-nieklinnenbank@gmail.com>
+ <fd949ad0-f7fd-561e-33d8-57133a9afd31@amsat.org>
+ <3bb92403-f955-d887-a301-1ff38259b49f@amsat.org>
+In-Reply-To: <3bb92403-f955-d887-a301-1ff38259b49f@amsat.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sun, 25 Oct 2020 23:30:54 +0800
+Message-ID: <CAEUhbmV9Q-+4zF62xwq4dHdBCiwOU43dnJKvdYEx10Wg=H8POw@mail.gmail.com>
+Subject: Re: [PATCH] tests/acceptance: expand Orange Pi PC SD images for
+ NetBSD, Armbian above nearest power of two
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b41;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yb1-xb41.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -120,120 +114,81 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>, Bin Meng <bin.meng@windriver.com>,
+ "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: wMui+ev8wCI9
+X-TUID: OA1lc290xJUt
 
-G220A is a 2 socket x86 motherboard supported by OpenBMC.
-Strapping configuration was obtained from hardware.
+On Sun, Oct 25, 2020 at 8:13 PM Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.or=
+g> wrote:
+>
+> On 10/25/20 2:31 AM, Philippe Mathieu-Daud=C3=A9 wrote:
+> > Hi Niek,
+> >
+> > On 10/24/20 11:52 PM, Niek Linnenbank wrote:
+> >> The acceptance tests for the Orange Pi PC need to expand the SD card
+> >> images
+> >> to a size which is a power of two. As Qemu uses the size of the SD
+> >> image file
+> >> as well for the size of the emulated SD card, this can sometimes give
+> >> problems
+> >> for guests that assume a certain minimum size of the SD card.
+> >>
+> >> This commit resolves the following acceptance test error for the
+> >> NetBSD 9.0 test
+> >> of the Orange Pi PC by increasing the size of the expanded SD card
+> >> image to two times
+> >> the nearest power of two:
+> >>
+> >>     (5/5)
+> >> tests/acceptance/boot_linux_console.py:BootLinuxConsole.test_arm_orang=
+epi_uboot_netbsd9:
+> >> |console: U-Boot SPL 2020.01+dfsg-1 (Jan 08 2020 - 08:19:44 +0000)
+> >>    console: DRAM: 1024 MiB
+> >>    console: Failed to set core voltage! Can't set CPU frequency
+> >>    /console: Trying to boot from MMC1
+> >>    console: U-Boot 2020.01+dfsg-1 (Jan 08 2020 - 08:19:44 +0000)
+> >> Allwinner Technology
+> >>    ...
+> >>    console: Starting kernel ...
+> >>    console: [   1.0000000] NetBSD/evbarm (fdt) booting ...
+> >>    ...
+> >>    console: [   1.3300167] sdmmc0: SD card status: 4-bit, C0
+> >>    console: [   1.3300167] ld0 at sdmmc0:
+> >> <0xaa:0x5859:QEMU!:0x01:0xdeadbeef:0x062>
+> >
+> > The test has this comment:
+> >
+> >     # This test download a 304MB compressed image and expand it to 2GB
+> >
+> > Once uncompressed the image is ~1.2GB before rounding to 2GB.
+> >
+> >>    console: [   1.3430678] ld0: 1024 MB, 1040 cyl, 32 head, 63 sec,
+> >> 512 bytes/sect x 2097152 sectors
+> >
+> > Why the card appears as 1GB??     ^^^^^^^
+> >
+> > Can you try reverting commit 6d2d4069c47?
+> > ("sd: Correct the maximum size of a Standard Capacity SD Memory Card")
+>
+> Now I remember, I hit the similar problem 2 years ago :S
+>
+> See the description of the C_SIZE field in CSD register:
+>
+>    "To indicate 2 GByte card, BLOCK_LEN shall be 1024 bytes."
 
-Signed-off-by: John Wang <wangzhiqiang.bj@bytedance.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Joel Stanley <joel@jms.id.au>
----
-v3:
-  - No changes
-v2:
-  - No changes
----
- hw/arm/aspeed.c | 60 +++++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 60 insertions(+)
+Ah, yes! 2 GiB is special in the spec. Thanks Philippe!
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index bdb981d2f8..04c8ad2bcd 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -120,6 +120,20 @@ struct AspeedMachineState {
-         SCU_AST2500_HW_STRAP_ACPI_ENABLE |                              \
-         SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER))
- 
-+#define G220A_BMC_HW_STRAP1 (                                      \
-+        SCU_AST2500_HW_STRAP_SPI_AUTOFETCH_ENABLE |                     \
-+        SCU_AST2500_HW_STRAP_GPIO_STRAP_ENABLE |                        \
-+        SCU_AST2500_HW_STRAP_UART_DEBUG |                               \
-+        SCU_AST2500_HW_STRAP_RESERVED28 |                               \
-+        SCU_AST2500_HW_STRAP_DDR4_ENABLE |                              \
-+        SCU_HW_STRAP_2ND_BOOT_WDT |                                     \
-+        SCU_HW_STRAP_VGA_CLASS_CODE |                                   \
-+        SCU_HW_STRAP_LPC_RESET_PIN |                                    \
-+        SCU_HW_STRAP_SPI_MODE(SCU_HW_STRAP_SPI_MASTER) |                \
-+        SCU_AST2500_HW_STRAP_SET_AXI_AHB_RATIO(AXI_AHB_RATIO_2_1) |     \
-+        SCU_HW_STRAP_VGA_SIZE_SET(VGA_64M_DRAM) |                       \
-+        SCU_AST2500_HW_STRAP_RESERVED1)
-+
- /* Witherspoon hardware value: 0xF10AD216 (but use romulus definition) */
- #define WITHERSPOON_BMC_HW_STRAP1 ROMULUS_BMC_HW_STRAP1
- 
-@@ -559,6 +573,30 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
-     /* Bus 11: TODO ucd90160@64 */
- }
- 
-+static void g220a_bmc_i2c_init(AspeedMachineState *bmc)
-+{
-+    AspeedSoCState *soc = &bmc->soc;
-+    DeviceState *dev;
-+
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 3),
-+                                         "emc1413", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 12),
-+                                         "emc1413", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+
-+    dev = DEVICE(i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 13),
-+                                         "emc1413", 0x4c));
-+    object_property_set_int(OBJECT(dev), "temperature0", 31000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature1", 28000, &error_abort);
-+    object_property_set_int(OBJECT(dev), "temperature2", 20000, &error_abort);
-+}
-+
- static bool aspeed_get_mmio_exec(Object *obj, Error **errp)
- {
-     return ASPEED_MACHINE(obj)->mmio_exec;
-@@ -798,6 +836,24 @@ static void aspeed_machine_tacoma_class_init(ObjectClass *oc, void *data)
-         aspeed_soc_num_cpus(amc->soc_name);
- };
- 
-+static void aspeed_machine_g220a_class_init(ObjectClass *oc, void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Bytedance G220A BMC (ARM1176)";
-+    amc->soc_name  = "ast2500-a1";
-+    amc->hw_strap1 = G220A_BMC_HW_STRAP1;
-+    amc->fmc_model = "n25q512a";
-+    amc->spi_model = "mx25l25635e";
-+    amc->num_cs    = 2;
-+    amc->macs_mask  = ASPEED_MAC1_ON | ASPEED_MAC2_ON;
-+    amc->i2c_init  = g220a_bmc_i2c_init;
-+    mc->default_ram_size = 1024 * MiB;
-+    mc->default_cpus = mc->min_cpus = mc->max_cpus =
-+        aspeed_soc_num_cpus(amc->soc_name);
-+};
-+
- static const TypeInfo aspeed_machine_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-@@ -835,6 +891,10 @@ static const TypeInfo aspeed_machine_types[] = {
-         .name          = MACHINE_TYPE_NAME("tacoma-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-         .class_init    = aspeed_machine_tacoma_class_init,
-+    }, {
-+        .name          = MACHINE_TYPE_NAME("g220a-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_g220a_class_init,
-     }, {
-         .name          = TYPE_ASPEED_MACHINE,
-         .parent        = TYPE_MACHINE,
--- 
-2.17.1
+>
+> This model uses a fixed BLOCK_LEN =3D 512 bytes.
+>
 
+Niek, could you please try the following patch?
+http://patchwork.ozlabs.org/project/qemu-devel/patch/20201025152357.11865-1=
+-bmeng.cn@gmail.com/
+
+Regards,
+Bin

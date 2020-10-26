@@ -1,106 +1,104 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3051529lfa;
-        Mon, 26 Oct 2020 10:08:22 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxJIlFNrzh2ieIIOFYmhzO+jcH+isdEi6Wgt0LINZl3jYfec0RQ9/06C5L67Q7ssbjdBpfs
-X-Received: by 2002:ac8:7b5b:: with SMTP id m27mr17703902qtu.153.1603732101953;
-        Mon, 26 Oct 2020 10:08:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603732101; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3053597lfa;
+        Mon, 26 Oct 2020 10:11:02 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyiTdbnOOEnRGX2l4NfBbPtqTIfH7CNstfieyP0cqNghYYaWyM8IYBsKhWwSCGDO9rZ4FYw
+X-Received: by 2002:a0c:e9ca:: with SMTP id q10mr18140371qvo.19.1603732261955;
+        Mon, 26 Oct 2020 10:11:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603732261; cv=none;
         d=google.com; s=arc-20160816;
-        b=uwjMUO5DeXxWOJDRBfQTnGkcaad7ImlA3FXAYBhxe43ZFlhHM69u1SyL981Y6n2gQt
-         iEXvx31DbkhPM+wlguyCzYrjkOthzCWDMPP/Ty5iYBLYWpmeSOYAPaHpJrFF0NG9uZkz
-         fR7PWDzFa909y67VfKeuBqhyGSg4CA8ApmR0dhsqr5t2JqpwMROal3jTiVhwyv0lpatV
-         mxbT/TiuxiBBxyj5zMlOH0lyw3BrSIh58dBWrhzd3MKARgL0N17ZnN2P8hT1ujekmSHP
-         4Y8jqIl6+hs7Nef5fnc6Zu4dVaNUjql1nMK7cQPeqenJu2wR+IYU6iBk+AKn+AXQpYQ2
-         Xu+Q==
+        b=1DDRG1oJu6CgDxi1EtUvh6kLhv3S6WqRNdJANnrGVIljUfDPUG0LQutnr4K3vCPQEb
+         vOu9k4x5vMMEM0bj7rlmQ/MWoa+thh/ClCjYWbk5TUVnR1bedrSogV3pXB4VGUe2kSAn
+         S2wTAcy5OjCo6EMgHpJpY/uElA8FEIF79jJ+BKuinHiaKnxUi6amPVcbEMKcR4oknjvw
+         T1XAd93c3GVaLT42E1KDiw7mgsW11oe+B4TmpLIU/IR6enSnmFSIvx7yk+WOBOQt7pqO
+         3lB0DnROCgeODUwJKFGVcxGvWhc9tA7chTan9G4dXrwIzV8xuDO1kzGb6O4Am1HV/oXa
+         6jyg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:references:to:from:subject:dkim-signature;
-        bh=YtILxrTiQyFvjXojSK8Xu46NkvXLNpokkJRzWpf6lec=;
-        b=0Rc3Cvv2zEKFsBPIUmkCMSEgOzQTn173hdrin2G5YmpkNYNU2fn+9vhz5dw35bs3I+
-         yA5XPjA/fFIoWKjcoG/KSl1vN4Tord8fxXoUNMBiW9LGOgQ8sg1qWAVC2uVlSx4W30iQ
-         LBXR2k2MC6X80AwpiUeooULWBUaSq4PRGBE/NggxgUCww2+wotTMNAlcowpklq71xylD
-         tclIu9avli95/k4oX+LFEMbpE59hLR7Kv5EH6xgr02MIp1J2t/2WfKJ+cjL8iKxrN0u1
-         hSQl/f/m+qF9npnTfuBnoaGGLmND74CsrHCcPI4pjnMsSBEZgIaYaKu+oX9XoSkbVnxf
-         I5Uw==
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=tIszaKGNqPIJV+sN1CBQl0wxddGCvwGIsfIqZ8Fa/m4=;
+        b=FWuxA9s6i1SAvL6kWO0JPKsLHqrMMCUVYYchF6eW6/YPP71holqgeNqv6IzRloW2Lb
+         3Vh48ruX361ynGFeeo2+vfK4e/dLf64/XIqnTLPcqPitxOu35UwKx03BOdF175dQiDMJ
+         p+pksgx428ZzRmd/i7GvbJap3APwHSBSIVYUOnzStUiHzRvdM5b95fvFC1Pke8yQpGT4
+         z3he7Fs1O478saK1w+lEmKMEOKFE5YpHtV8xV1yFSAZbt3KdhdwZfVSu7V5OOYYZcAgs
+         sWUTgoysmlsIodnj8VPgNI188aRbv0PnvVe2vq0oCxajU7K/bPY+cCreLNAbMcVSQaPN
+         svpg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DnWBcbAY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="qGr20bG/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id b23si6128021qta.74.2020.10.26.10.08.21
+        by mx.google.com with ESMTPS id t12si6115638qtr.160.2020.10.26.10.11.01
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Oct 2020 10:08:21 -0700 (PDT)
+        Mon, 26 Oct 2020 10:11:01 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=DnWBcbAY;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b="qGr20bG/";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:53298 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:60848 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kX5yn-0002nG-8x
-	for alex.bennee@linaro.org; Mon, 26 Oct 2020 13:08:21 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45462)
+	id 1kX61N-00065w-79
+	for alex.bennee@linaro.org; Mon, 26 Oct 2020 13:11:01 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:45694)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kX5wd-0000Nw-I1; Mon, 26 Oct 2020 13:06:07 -0400
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:45504)
+ id 1kX5xN-0001F5-ST; Mon, 26 Oct 2020 13:06:53 -0400
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:47009)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kX5wa-0006cO-8d; Mon, 26 Oct 2020 13:06:07 -0400
-Received: by mail-ej1-x644.google.com with SMTP id dt13so14661808ejb.12;
- Mon, 26 Oct 2020 10:06:02 -0700 (PDT)
+ id 1kX5xM-0006hx-6a; Mon, 26 Oct 2020 13:06:53 -0400
+Received: by mail-ed1-x543.google.com with SMTP id 33so10166666edq.13;
+ Mon, 26 Oct 2020 10:06:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:from:to:cc:references:message-id:date:user-agent
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
  :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=YtILxrTiQyFvjXojSK8Xu46NkvXLNpokkJRzWpf6lec=;
- b=DnWBcbAYi2O6L7inVEEY8MywOdFVWOHIR5v0A08RcjkjEv7Bbntqulm1x+bL1ES9FP
- 3R0Py4thBhXkesc++TLxMoff2O68YFlUTIpUOpbicBVb1EmIrcBEM75ej4izL7YDNgwA
- SIW4I/rFhtIY+84LpgYT6JJKcrSbwlIQfJPm6sIXJFN6idZuDjNCLB5guWzWOzWXxBiX
- 9iuhMiORZkrkp2O8hKY2F76F6LAx+FpRu90dXKw5bfy2dU/6WxYF2NlwreYGolGqCHjs
- BedTNfPq2GjyP6uo0l+qKaYxCuB5fARVq4zqdxv4CvlgdHcPTp5talRLhVb8GwwH7uiA
- zBJA==
+ bh=tIszaKGNqPIJV+sN1CBQl0wxddGCvwGIsfIqZ8Fa/m4=;
+ b=qGr20bG/TSjViAUsd41E96HADy2RA3qz+0YtWTQw+NjlZB4iG4REj1/fqOsS2a1udB
+ hfdk9qmHJUBWMIcDeqvqr09eGVOOr1aul5Dxse225fv1AeUvVFaJn42vnOBbtqMWQ2jd
+ hebqxRKyewhgbrU+TGVlQteril8XxO997sS8xVEimo1Ze5K7ffft9a+8pv+duJLZ7gGr
+ NYY7mw6XyotiNUaW104xl9pb4aBcsNL7Vu3Y0gYWSooRQp29+BHWiYOYeclIlPzw8RN/
+ c6zsQMbPJzV90FOT7TdWDP0o7V6E9vvYbkNX5OlVXbatCXKEBYd030t3tSrIfwnOXcRg
+ 7DiA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:from:to:cc:references:message-id
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
  :date:user-agent:mime-version:in-reply-to:content-language
  :content-transfer-encoding;
- bh=YtILxrTiQyFvjXojSK8Xu46NkvXLNpokkJRzWpf6lec=;
- b=D+CJjNGv64b3K1e7IqJU+VFfcjL/7gUHvHK7Lwr5zQZhGX1Ak/sCK+m83zNSKW6Hao
- ThpH+u6/amdpBE7BGld2zALie48WJAX3Tb/jKC2w8nK1iH1kDFzrTITuivrAa1TfIYLq
- i1KqPd0ppjPjzFSevWOutyU4vXrp5UJHGGVTooKHHwokKF5mNTA5d/LJRSM7rzIchk1I
- dJeV6e4WDffJK3N6gkI9IWTnXuMy8GH4efMHOXF6kohPmMoJqCLrShehM2WOMSVt+t0U
- yZYZknk4UnIOKcgO9IqyD9VXXg0Y3Kbw6GC72HIEq1R4N/lHtU9jCOeGjzbSBnOFLpdw
- H3oQ==
-X-Gm-Message-State: AOAM530qbEfe3mEdpMBxK8KuZ4tTo4EwlNYqrupOG04HJZ4lqOIhOR7P
- frgWJjJd7nAOYwnBBQTBbTM=
-X-Received: by 2002:a17:906:aecf:: with SMTP id
- me15mr17433570ejb.423.1603731958795; 
- Mon, 26 Oct 2020 10:05:58 -0700 (PDT)
+ bh=tIszaKGNqPIJV+sN1CBQl0wxddGCvwGIsfIqZ8Fa/m4=;
+ b=LgCqrao73J1k6VReAFqQwQS9TCGGJvs2HbZAMYtJeewXm2xPmA24KHfo8HAwPVo8nh
+ qAIg5z86Y1EO5Xp7Omf/OcfeiWR03oqkESvsD49l+TFjdxp7daVmOmjb0cX3pVCHSkFy
+ kdQk6X75SDKRMbxjxELFgzIFjw9NWxZHKA39tANeASPPTqAIaRTGY4ShijpvxA1QiWnC
+ CKEktCPnqcL8FxtE/E1Pct2L0idjv4GYGphBuJXF2eRj8K8iMxjmT0AOB6A5KUBGETXz
+ GXGrOpFdY+9cZC8JJaQaC0AznJWZrfDW22SQvsPAp0yCQ3AmW01/tY7VLnNKkKxsEn3j
+ A2AQ==
+X-Gm-Message-State: AOAM531Tx84QvZ4pzJsr0oCnBpvuL1WejY9DUTt7WcHZcODpZcDV5A1U
+ TbZBJLEc9BhbEqXvY8IB3Wg=
+X-Received: by 2002:a50:d69e:: with SMTP id r30mr16303216edi.383.1603732010427; 
+ Mon, 26 Oct 2020 10:06:50 -0700 (PDT)
 Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
  [88.18.140.237])
- by smtp.gmail.com with ESMTPSA id cw15sm6202168ejb.47.2020.10.26.10.05.56
+ by smtp.gmail.com with ESMTPSA id b6sm5777172edu.21.2020.10.26.10.06.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 26 Oct 2020 10:05:57 -0700 (PDT)
-Subject: Re: [PATCH v2 0/3] hw/ssi: Rename SSI 'slave' as 'peripheral'
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+ Mon, 26 Oct 2020 10:06:49 -0700 (PDT)
+Subject: Re: [PATCH] docs/system: Deprecate raspi2/raspi3 machine aliases
 To: qemu-devel@nongnu.org
-References: <20201012124955.3409127-1-f4bug@amsat.org>
- <e15493bf-f31e-daf2-d216-b9d67ea638b1@amsat.org>
-Message-ID: <11aef83d-64ae-8954-e61f-911282896455@amsat.org>
-Date: Mon, 26 Oct 2020 18:05:55 +0100
+References: <20201019082121.1544550-1-f4bug@amsat.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <490c9656-a7ee-6988-472f-e8e7d909d9e1@amsat.org>
+Date: Mon, 26 Oct 2020 18:06:48 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
  Thunderbird/78.3.1
 MIME-Version: 1.0
-In-Reply-To: <e15493bf-f31e-daf2-d216-b9d67ea638b1@amsat.org>
+In-Reply-To: <20201019082121.1544550-1-f4bug@amsat.org>
 Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ej1-x644.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::543;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x543.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -36
@@ -123,54 +121,42 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-block@nongnu.org, Andrew Jeffery <andrew@aj.id.au>,
- Alistair Francis <alistair@alistair23.me>, Max Reitz <mreitz@redhat.com>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org, Joel Stanley <joel@jms.id.au>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>
+Cc: libvir-list@redhat.com, qemu-arm@nongnu.org,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: JYHw5RQHX8pF
+X-TUID: IptAix1D5LBd
 
-ping^2?
+Ping? (patch Acked).
 
-On 10/19/20 6:04 PM, Philippe Mathieu-Daudé wrote:
-> Ping for review?
+On 10/19/20 10:21 AM, Philippe Mathieu-Daudé wrote:
+> Since commit aa35ec2213b ("hw/arm/raspi: Use more
+> specific machine names") the raspi2/raspi3 machines
+> have been renamed as raspi2b/raspi3b.
 > 
-> On 10/12/20 2:49 PM, Philippe Mathieu-Daudé wrote:
->> Since v1:
->> - Fixed patch #1 subject (Kevin)
->>
->> In order to use inclusive terminology, rename SSI 'slave' as
->> 'peripheral', following the resolution Paolo pointed in [*]:
->> https://www.oshwa.org/a-resolution-to-redefine-spi-signal-names/
->>
->> Candidate to be merged via the ARM or Trivial trees.
->>
->> [*] https://www.mail-archive.com/qemu-devel@nongnu.org/msg739108.html
->>
->> Philippe Mathieu-Daudé (3):
->>    hw/ssi/aspeed_smc: Rename 'max_slaves' variable as 'max_peripherals'
->>    hw/ssi: Update coding style to make checkpatch.pl happy
->>    hw/ssi: Rename SSI 'slave' as 'peripheral'
->>
->>   include/hw/misc/max111x.h   |  2 +-
->>   include/hw/ssi/aspeed_smc.h |  2 +-
->>   include/hw/ssi/ssi.h        | 56 +++++++++++++++++++------------------
->>   hw/arm/spitz.c              | 32 ++++++++++-----------
->>   hw/arm/stellaris.c          |  4 +--
->>   hw/arm/tosa.c               | 12 ++++----
->>   hw/arm/z2.c                 | 14 +++++-----
->>   hw/block/m25p80.c           | 14 +++++-----
->>   hw/display/ads7846.c        | 12 ++++----
->>   hw/display/ssd0323.c        | 12 ++++----
->>   hw/misc/max111x.c           | 18 ++++++------
->>   hw/sd/ssi-sd.c              | 12 ++++----
->>   hw/ssi/aspeed_smc.c         | 53 ++++++++++++++++++-----------------
->>   hw/ssi/pl022.c              |  2 +-
->>   hw/ssi/ssi.c                | 48 +++++++++++++++----------------
->>   hw/ssi/xilinx_spips.c       |  7 +++--
->>   16 files changed, 152 insertions(+), 148 deletions(-)
->>
+> As more Raspberry Pi 2/3 models are emulated, in order
+> to avoid confusion deprecate the raspi2/raspi3 machine
+> aliases.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+> ---
+>   docs/system/deprecated.rst | 5 +++++
+>   1 file changed, 5 insertions(+)
+> 
+> diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+> index 905628f3a0c..f0c7aaeb2ff 100644
+> --- a/docs/system/deprecated.rst
+> +++ b/docs/system/deprecated.rst
+> @@ -355,6 +355,11 @@ This machine has been renamed ``fuloong2e``.
+>   These machine types are very old and likely can not be used for live migration
+>   from old QEMU versions anymore. A newer machine type should be used instead.
+>   
+> +Raspberry Pi ``raspi2`` and ``raspi3`` machines (since 5.2)
+> +'''''''''''''''''''''''''''''''''''''
+> +
+> +These machines have been respectively renamed ``raspi2b`` and ``raspi3b``.
+> +
+>   Device options
+>   --------------
+>   
 > 

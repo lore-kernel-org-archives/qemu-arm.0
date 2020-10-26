@@ -1,230 +1,179 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4056495lfa;
-        Mon, 2 Nov 2020 08:13:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyTL57qDszf7DagnOhv7SY9xklPAY0GcH+tmabsffEI3RDQaeQu2UzSm4oJRBegmq4Zqwfq
-X-Received: by 2002:ad4:424f:: with SMTP id l15mr9647031qvq.31.1604333600405;
-        Mon, 02 Nov 2020 08:13:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604333600; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2894711lfa;
+        Mon, 26 Oct 2020 06:52:05 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx5/tEbYXGV/OWWXRtL16WbcTP/CZBklKgEQAwqriTxtHNszyHlYO002oF4bRLQPyPIolxf
+X-Received: by 2002:ad4:4701:: with SMTP id k1mr13844191qvz.47.1603720324942;
+        Mon, 26 Oct 2020 06:52:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603720324; cv=none;
         d=google.com; s=arc-20160816;
-        b=I0batWaQPyhydva2S1eRvYA/2lx/GJooXkqxWfx0XG94vrV9Ln+qsS+WcrXR8GTMwV
-         d5ZTkXWMUwZMHCIydLQ65tXcIQBkuCXMzg1zvb0QLXMokFVznckOiztZTCF7VLDclVVR
-         2VsWQYwkqL8UJ1Qc3hvZGTdiwEZ++Etjef7B8dqladsxS3jlSgh+1VgD/itSCuAd9xYH
-         ewDBVRu5+TQ7TniDxlKDmsPmjq8cm6sZnJiX3GKc35n0wxThnc70b2ryX0g/ZbhmZv71
-         nP0YvwFFxRpIsQ64RU09qCOOCgu/peYbYSFTwrklw8dw6wu0h9kFL4l878mhgkDp3Nn5
-         670Q==
+        b=v8tsumah890awuDMTmAcDxjNs2aOUlYsR/1AifSDZwu164Chjfu1TSAtDt/4J3018T
+         d/ybcr4lOLzEKXlbDMHuCy+7Su/6XKGtRTbaABpNl+68Emt+N73hCZoY8JqMTnqtsJat
+         kw/W9CIwtAQ9u3qXmPV6hn/rsEl0YyWzmOY2Op1md1xFzJbdjlssdWYb9AQzJuAhdEGO
+         AgQOYZr3KrHyP9ZoD1ksyo7yR1bX+7Ta9y4Q/lTWkGbS1USZ/jXiyny/UTzg0BY8W7sQ
+         TFOJHVTfSvAxku2NwkPFb1N7EapdGECQ9UU9tPQ1J8lc7LGLYS8rUbyjUJ33qVm0/rTN
+         SWSQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
-         :mime-version:references:message-id:subject:to:from:date
-         :dkim-signature;
-        bh=C1LGVF7RvKSYCsbRfBNpYuojOvVveAb1QVOu49WXKKc=;
-        b=mGewHIM6Z/aryJP7G/YBg/n/l2i3BUTF8yBBrXHP7extHaSlrA5v1fJwBbFMOEJwIY
-         rR4UmnRUcU+C48vJOgPN0OWipjtZSY8qr1ZZo3nVIiL9YO+3YE9LwUAwks6+MPKckLgR
-         jE5cOSVCtCczWRnSJE3Exrxo4+A/e2h9/Zuv9EOfr+8Ino2H0shn7jLEHYwnBDyh5xcm
-         s8iOH2Giy+URYljk+aAdeF2gq7tkmQqAfZfJT4id/7kvjoQmYvVV7fISF00BUqgkUxtk
-         BetJgrqnFF8zBW8GrNsRKQUznkCdNjLTzI+KAidFW4C1jZsWedNm/4RpF+DO6RJMLbRT
-         J2ow==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=auub1rovbp8q0GUEyFyhFiazXj7YK8IRFXOXS11Xue4=;
+        b=Ckr2dkrQSGGb34KhDzkeBFQXKcyIZ14TqUR9rYRWqjF9atJNRiBjcv6TaxfwPrhBjr
+         BotR6LO0B/9sn9CITC99e6kXkpSFluyKCbBUbFZVDbvYO9v5wah0BuELS8hZC9vtkTXC
+         mpU7C3EfBIISagvm8EGVMp/cnBXCXIWo1//455b/xE42n5OlZr030vam+hOfwQIsuUvm
+         TJmkFeQ/vyvNMaHWFEZTHjBMALEOgQqV/CPEwq7iwMBnkAQnZBRIAurK64AApM79kf65
+         e45KuGuYAAiQi3GOAbU5dFBvZcxPUgFCwz3d+6OBH1hxZdXlgnKGvXs6t7boby+3BgIn
+         ugZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mmmuj3sV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=h4yVeNbV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id m60si5735725qva.23.2020.11.02.08.13.20
+        by mx.google.com with ESMTPS id w22si3758689qvf.208.2020.10.26.06.52.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Nov 2020 08:13:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 26 Oct 2020 06:52:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Mmmuj3sV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:35312 helo=lists1p.gnu.org)
+       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=h4yVeNbV;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+Received: from localhost ([::1]:35276 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZcSN-0002ZA-SL
-	for alex.bennee@linaro.org; Mon, 02 Nov 2020 11:13:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39168)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kX2up-0005NL-Te
+	for alex.bennee@linaro.org; Mon, 26 Oct 2020 09:52:03 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:39386)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <crosa@redhat.com>) id 1kZcRd-0002RP-GL
- for qemu-devel@nongnu.org; Mon, 02 Nov 2020 11:12:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:57136)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <crosa@redhat.com>) id 1kZcRb-0006ig-KL
- for qemu-devel@nongnu.org; Mon, 02 Nov 2020 11:12:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604333550;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=C1LGVF7RvKSYCsbRfBNpYuojOvVveAb1QVOu49WXKKc=;
- b=Mmmuj3sVEe8lrlHji04oConR23ujq8QKpJ+mDIQnzytEB/MNDhWJi7QBHsKolGqYX2/52E
- 8oMH6vE+Ip5EcuDdsugxQDJ4fXdE6GXjXZZiORf740f/sQojkmzbU1qMlIZ9cwgrh/dmeP
- V+tXnyIuMQmAjHjXIupzyxgFzaCFuEI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-190-s2x4-DXdOBOzWJ19BxpeEw-1; Mon, 02 Nov 2020 11:12:26 -0500
-X-MC-Unique: s2x4-DXdOBOzWJ19BxpeEw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.phx2.redhat.com
- [10.5.11.11])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 37DC11006C9E;
- Mon,  2 Nov 2020 16:12:24 +0000 (UTC)
-Received: from localhost.localdomain (ovpn-119-55.rdu2.redhat.com
- [10.10.119.55])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id DCACB5B4A9;
- Mon,  2 Nov 2020 16:12:17 +0000 (UTC)
-Date: Mon, 2 Nov 2020 11:12:16 -0500
-From: Cleber Rosa <crosa@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@redhat.com>
-Subject: Re: [RFC PATCH-for-5.2? 4/5] tests/acceptance: Only run tests tagged
- 'gating-ci' on GitLab CI
-Message-ID: <20201102161216.GA3021311@localhost.localdomain>
-References: <20201102144245.2134077-1-philmd@redhat.com>
- <20201102144245.2134077-5-philmd@redhat.com>
- <f40e30a8-7be3-3f02-352a-9e5f60446d25@redhat.com>
+ (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
+ id 1kX2u8-0005KY-AC; Mon, 26 Oct 2020 09:51:20 -0400
+Received: from aserp2120.oracle.com ([141.146.126.78]:38860)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
+ id 1kX2u5-0001hu-Bz; Mon, 26 Oct 2020 09:51:19 -0400
+Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
+ by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09QDnIFd068914;
+ Mon, 26 Oct 2020 13:51:10 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
+ h=subject : to : cc :
+ references : from : message-id : date : mime-version : in-reply-to :
+ content-type : content-transfer-encoding; s=corp-2020-01-29;
+ bh=auub1rovbp8q0GUEyFyhFiazXj7YK8IRFXOXS11Xue4=;
+ b=h4yVeNbVLs6kThH5LQ+nrp7UFQWfguDLUaWY6Ki3WyYImBOCEsRv3typc15osgEzRJcp
+ BEi3WuzuZSXtzE9RZBTOOMf46CNmSiR/VMZM6A96PeNfDjH5wi+XwuoNjrAjEMagJmSF
+ rroDkbC074ByPPF1UqZ6ML5Ye7wBHvVEfxNoQ35zGZkJmKU7/UX8RHeXUVaCRTL7jVre
+ c0FjAI7HCSj82aYd+tEzoYPCvgTtBXvIdypSRgEUPG2vKHa436HLKf2E/arIk/jTrlSa
+ PTvMl7M1TKKlBMlbiUtu3/opIwlp/QPTFehCv2eBqWh3xnkejJ34EsMgbUk6kvUJCSl6 5Q== 
+Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
+ by aserp2120.oracle.com with ESMTP id 34cc7kmpmk-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
+ Mon, 26 Oct 2020 13:51:09 +0000
+Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
+ by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09QDoOXk152672;
+ Mon, 26 Oct 2020 13:51:09 GMT
+Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
+ by aserp3030.oracle.com with ESMTP id 34cwuk87h1-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 26 Oct 2020 13:51:09 +0000
+Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
+ by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09QDp7TE004625;
+ Mon, 26 Oct 2020 13:51:08 GMT
+Received: from [192.168.248.100] (/86.120.250.68)
+ by default (Oracle Beehive Gateway v4.0)
+ with ESMTP ; Mon, 26 Oct 2020 06:51:02 -0700
+Subject: Re: [PATCH 0/8] Add support for pvpanic mmio device
+To: Peter Maydell <peter.maydell@linaro.org>
+References: <1603352576-21671-1-git-send-email-mihai.carabas@oracle.com>
+ <CAFEAcA9n3T5MrBp2RbOQGWBptV5ObCssF00ygK8TDieP+V1Srg@mail.gmail.com>
+From: Mihai Carabas <mihai.carabas@oracle.com>
+Message-ID: <a6065386-a844-9d06-21ca-57baa98c8caf@oracle.com>
+Date: Mon, 26 Oct 2020 15:50:59 +0200
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.12.1
 MIME-Version: 1.0
-In-Reply-To: <f40e30a8-7be3-3f02-352a-9e5f60446d25@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.11
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=crosa@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="x+6KMIRAuhnl3hBn"
-Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=crosa@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 03:02:24
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+In-Reply-To: <CAFEAcA9n3T5MrBp2RbOQGWBptV5ObCssF00ygK8TDieP+V1Srg@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9785
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
+ mlxscore=0 bulkscore=0
+ spamscore=0 adultscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
+ definitions=main-2010260100
+X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9785
+ signatures=668682
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 adultscore=0
+ malwarescore=0 spamscore=0 clxscore=1015 mlxscore=0 suspectscore=0
+ priorityscore=1501 impostorscore=0 bulkscore=0 phishscore=0
+ mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2009150000 definitions=main-2010260100
+Received-SPF: pass client-ip=141.146.126.78;
+ envelope-from=mihai.carabas@oracle.com; helo=aserp2120.oracle.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 09:51:11
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -65
+X-Spam_score: -6.6
+X-Spam_bar: ------
+X-Spam_report: (-6.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-2.167, RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, Thomas Huth <thuth@redhat.com>,
- "Daniel P . Berrange" <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Sarah Harris <S.E.Harris@kent.ac.uk>,
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, Fabien Chouteau <chouteau@adacore.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>, Antony Pavlov <antonynpavlov@gmail.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rSRiUvxuPAeP
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: +ZQybcIF6v/6
 
---x+6KMIRAuhnl3hBn
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 10/22/2020 1:17 PM, Peter Maydell wrote:
+> On Thu, 22 Oct 2020 at 09:25, Mihai Carabas <mihai.carabas@oracle.com> wrote:
+>> The patchset was assembled from chuncks from some old patches from 2018 [1]
+>> which were left unmerged and some additions from me. Surprisingly their Linux
+>> kernel counterpart were merged (so the pvpanic driver from the kernel supports
+>> mmio).
+>>
+>> I have seen the discussions about moving the pvpanic to PCI [1]. Those patches
+>> were sent but nothing happened. Also they are not trivial and require major
+>> modifications at the driver level also. Given the fact that we already have
+>> mmio driver support for pvpanic in the Linux kernel, I have sent these patches
+>> to ask again the maintainers if this can be merged.
+> 
+> I'm afraid the answer is still the same. You need to provide
+> a convincing argument for why this needs to be an MMIO
+> device rather than a PCI device. I really don't want to
+> add MMIO devices to the virt board if I can avoid it,
+> because they're all extra code and potential extra
+> security boundary attack surface. PCI devices are guest
+> probeable and user-pluggable so they're almost always
+> nicer to use than MMIO.
+> 
 
-On Mon, Nov 02, 2020 at 03:59:12PM +0100, Philippe Mathieu-Daud=E9 wrote:
-> On 11/2/20 3:42 PM, Philippe Mathieu-Daud=E9 wrote:
-> > To avoid breaking our CI each time a test is added, switch from the
-> > "run all but disable some" to "only run the tagged tests on CI".
-> > This way we can add a test to the repository, and promote it to
-> > 'gating-ci' once it is proven stable enough.
-> >=20
-> > Signed-off-by: Philippe Mathieu-Daud=E9 <philmd@redhat.com>
-> > ---
-> >=20
-> > TODO: where to add documentation?
-> >=20
-> > - docs/devel/testing.rst (too big, split?)
-> > - tests/acceptance/README.rst
-> >=20
-> > ---
-> >  tests/Makefile.include | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >=20
-> > diff --git a/tests/Makefile.include b/tests/Makefile.include
-> > index 3a0524ce740..f39ba760c17 100644
-> > --- a/tests/Makefile.include
-> > +++ b/tests/Makefile.include
-> > @@ -126,7 +126,7 @@ check-acceptance: check-venv $(TESTS_RESULTS_DIR) g=
-et-vm-images
-> >              $(TESTS_VENV_DIR)/bin/python -m avocado \
-> >              --show=3D$(AVOCADO_SHOW) run --job-results-dir=3D$(TESTS_R=
-ESULTS_DIR) \
-> >              --filter-by-tags-include-empty --filter-by-tags-include-em=
-pty-key \
-> > -            $(AVOCADO_TAGS) \
-> > +            $(AVOCADO_TAGS) -t gating-ci \
->=20
-> This doesn't work as expected, since we have:
->=20
-> AVOCADO_TAGS=3D$(patsubst %-softmmu,-t arch:%, $(filter
-> %-softmmu,$(TARGET_DIRS)))
->=20
-> And avocado '-t' works as logical OR, not logical AND.
->=20
-> OTOH it seems this variable predate the auto-skip feature
-> (when a binary is not present).
->=20
-> So I'll test this instead, which is simpler:
->=20
-> -- >8 --
-> @@ -90,7 +90,7 @@ TESTS_RESULTS_DIR=3D$(BUILD_DIR)/tests/results
->  # Any number of command separated loggers are accepted.  For more
->  # information please refer to "avocado --help".
->  AVOCADO_SHOW=3Dapp
-> -AVOCADO_TAGS=3D$(patsubst %-softmmu,-t arch:%, $(filter
-> %-softmmu,$(TARGET_DIRS)))
-> +AVOCADO_TAGS=3D-t gating-ci
->
+Thank you for your input.
 
-But you can *add* to the resulting list with the arches, and then you get a
-logical AND.  So it'd end up as:
+The reason why pvpanic should be MMIO is that is a special device which 
+is not used commonly by the user (aka VM), it is not need to be 
+hot-plugable and it does not have a hardware correspondent to be a PCI 
+device. Another reason is that MMIO support was accepted in the kernel 
+driver and it is pretty useless there without a device.
 
- -t arch:x86_64,gating-ci -t arch:aarch64,gating-ci [...]
+I know it seems that I want to get this on the short-path, but at this 
+point having a kernel driver in the upstream and no device to test it 
+against it is pretty weird.
 
-To avoid having only "gating-ci" tests running on other environments that
-call "make check-acceptance", we can look at the environment variable that
-GitLab CI sets and optionally include the "gating-ci" tag.
-
-Regards,
-- Cleber.
-
---x+6KMIRAuhnl3hBn
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAEBCAAdFiEEeruW64tGuU1eD+m7ZX6NM6XyCfMFAl+gL90ACgkQZX6NM6Xy
-CfOzGQ/+NHrQ8+9cYrL48uxExVv4BYYs2U2KNGFFl2BMwm+tvh7o3YSDDjMQKUgj
-oNaVUb7GuMRXrBJZ0GqsXwtYgMYzeL085O7tjQ7qmoCzA5zCohMOYhfJCxHtIgez
-kOooeyNXk099hkVCf1js6Y9In/9jpbN/VoKr+Fst6EEk0UaHQaSiNqpEmJ8njzxT
-qpZR55EO2AzshK8na5vV/RQp5Pdm6EQngyc5P2vuAVakqYXc7uARmfTBsaUTa/oR
-fm/51L2RO6PBhrK6xqC5AyoTQ/Ihl4OsSJfHgvqYa6/RkBpUuXHagDpoDyMpqHW/
-U5beZX/TawPUYw/ShnA7OVa4DJpVvWMX9M+3pynum+ycPMj6r+dNfi4lEFPnrGBO
-D7uUOfdn6BJKnrl0iTdxiQn9SVr1QCJ1ykPK7D+bnpUY1G2THDNqtQV3YBJyqHIm
-6e5KNoB3hbP+41/7hiGp9X05VQh29fPYd/66mysXk0DmSQyAZB5ewtC5hFspsi51
-Kf3uk2FVBhIrVGibE84HWJns3DJdosJNAY9y0rCoKeEsNkltXCn/bqG7GPjghUs2
-KL3QAyNGJZuMlWS6mfbAFuMj5HxrHAmBoBnhUw1889XpPrt07iJOyQNJ5f6ko0nS
-65M1bLhfHwwYk+GZb+ZFQIe/jDRxy9Rx4n7GsbV+I1KxwK9ik18=
-=RkQD
------END PGP SIGNATURE-----
-
---x+6KMIRAuhnl3hBn--
-
+Thank you,
+Mihai

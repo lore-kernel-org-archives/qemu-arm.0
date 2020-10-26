@@ -1,126 +1,105 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2894711lfa;
-        Mon, 26 Oct 2020 06:52:05 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx5/tEbYXGV/OWWXRtL16WbcTP/CZBklKgEQAwqriTxtHNszyHlYO002oF4bRLQPyPIolxf
-X-Received: by 2002:ad4:4701:: with SMTP id k1mr13844191qvz.47.1603720324942;
-        Mon, 26 Oct 2020 06:52:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603720324; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3029340lfa;
+        Mon, 26 Oct 2020 09:39:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyKxpiu9x3CKdk/a8sUOeiYJGmxwVS9HEu/UHuvVD9AOT3zvjQGHiz7MSV6ewXTmLuwUxZ1
+X-Received: by 2002:a0c:a4c5:: with SMTP id x63mr14293929qvx.58.1603730344612;
+        Mon, 26 Oct 2020 09:39:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603730344; cv=none;
         d=google.com; s=arc-20160816;
-        b=v8tsumah890awuDMTmAcDxjNs2aOUlYsR/1AifSDZwu164Chjfu1TSAtDt/4J3018T
-         d/ybcr4lOLzEKXlbDMHuCy+7Su/6XKGtRTbaABpNl+68Emt+N73hCZoY8JqMTnqtsJat
-         kw/W9CIwtAQ9u3qXmPV6hn/rsEl0YyWzmOY2Op1md1xFzJbdjlssdWYb9AQzJuAhdEGO
-         AgQOYZr3KrHyP9ZoD1ksyo7yR1bX+7Ta9y4Q/lTWkGbS1USZ/jXiyny/UTzg0BY8W7sQ
-         TFOJHVTfSvAxku2NwkPFb1N7EapdGECQ9UU9tPQ1J8lc7LGLYS8rUbyjUJ33qVm0/rTN
-         SWSQ==
+        b=THUODUM4VdSf2T7E/MHugekulZINznUJrjzuZUD9j48URntJ2s7qRK27aMccaynhlM
+         XhoFjwolQXInmMOveOSj8QABja6in/MqIbviAYzpnwXWMxn2gtrbvL/vn3lfve5vlmWI
+         eEYCKt67Vpx4gKyaLkRjpPk2R9yOFKWWYch5K1o/kl/O0rPLkXhCCDZV4OLRF3SX646l
+         RvTj7/K6fQU3g/4T8hq9HIq/m5Bc6FgnALPSgsm4uwEq7L/U/a0P+pkxbv8mRgFuXuEf
+         Z1MhnKwLZkZM4C8l4AhZvrlC6xijtyw+88SYIEAfDY6WoqKV7VYy70LONSk4mSZFgXG0
+         2clw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=auub1rovbp8q0GUEyFyhFiazXj7YK8IRFXOXS11Xue4=;
-        b=Ckr2dkrQSGGb34KhDzkeBFQXKcyIZ14TqUR9rYRWqjF9atJNRiBjcv6TaxfwPrhBjr
-         BotR6LO0B/9sn9CITC99e6kXkpSFluyKCbBUbFZVDbvYO9v5wah0BuELS8hZC9vtkTXC
-         mpU7C3EfBIISagvm8EGVMp/cnBXCXIWo1//455b/xE42n5OlZr030vam+hOfwQIsuUvm
-         TJmkFeQ/vyvNMaHWFEZTHjBMALEOgQqV/CPEwq7iwMBnkAQnZBRIAurK64AApM79kf65
-         e45KuGuYAAiQi3GOAbU5dFBvZcxPUgFCwz3d+6OBH1hxZdXlgnKGvXs6t7boby+3BgIn
-         ugZw==
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=DI53dgFPkps8h/TY5y041PBMFl/Ix4XWl8lmpI6++jY=;
+        b=Z9MfobYwlmaxqR+fuIGW3Ht/T99Q7OMHriECkKmreNkCRwaFKAg+p6bH8mb/aaxTdJ
+         7dry+q683AiS6Q6Z7ZXgt4O1gvGTEYP6Kmt8byZweKuMRm9z2zVU85Pw3GuEHhvq9G+G
+         LVPQTEyzgCu5OpaR0x4MPyUSylhnRPNxG3yf8BgCSxKuy3l4i48+CRJzvTijeho3/U4j
+         XSdXHo5stlGn33YeTPrZZDT0elPjKU3vI7oAypqfFUrPNgmLLxBKzFSGN9SFWtEds0bN
+         B6+ZJpVOURo5KWV/ACgSu1/JyWj4+GL4jQkhdPhjT4fFQFdBZmaN0tl+oRT3A3SW+dJl
+         4L0w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=h4yVeNbV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pJXbGOJ0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id w22si3758689qvf.208.2020.10.26.06.52.04
+        by mx.google.com with ESMTPS id p6si5819488qkh.312.2020.10.26.09.39.04
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Oct 2020 06:52:04 -0700 (PDT)
+        Mon, 26 Oct 2020 09:39:04 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@oracle.com header.s=corp-2020-01-29 header.b=h4yVeNbV;
+       dkim=fail header.i=@linaro.org header.s=google header.b=pJXbGOJ0;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=oracle.com
-Received: from localhost ([::1]:35276 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:52712 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kX2up-0005NL-Te
-	for alex.bennee@linaro.org; Mon, 26 Oct 2020 09:52:03 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39386)
+	id 1kX5WS-0003UZ-21
+	for alex.bennee@linaro.org; Mon, 26 Oct 2020 12:39:04 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:35872)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
- id 1kX2u8-0005KY-AC; Mon, 26 Oct 2020 09:51:20 -0400
-Received: from aserp2120.oracle.com ([141.146.126.78]:38860)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mihai.carabas@oracle.com>)
- id 1kX2u5-0001hu-Bz; Mon, 26 Oct 2020 09:51:19 -0400
-Received: from pps.filterd (aserp2120.oracle.com [127.0.0.1])
- by aserp2120.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09QDnIFd068914;
- Mon, 26 Oct 2020 13:51:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com;
- h=subject : to : cc :
- references : from : message-id : date : mime-version : in-reply-to :
- content-type : content-transfer-encoding; s=corp-2020-01-29;
- bh=auub1rovbp8q0GUEyFyhFiazXj7YK8IRFXOXS11Xue4=;
- b=h4yVeNbVLs6kThH5LQ+nrp7UFQWfguDLUaWY6Ki3WyYImBOCEsRv3typc15osgEzRJcp
- BEi3WuzuZSXtzE9RZBTOOMf46CNmSiR/VMZM6A96PeNfDjH5wi+XwuoNjrAjEMagJmSF
- rroDkbC074ByPPF1UqZ6ML5Ye7wBHvVEfxNoQ35zGZkJmKU7/UX8RHeXUVaCRTL7jVre
- c0FjAI7HCSj82aYd+tEzoYPCvgTtBXvIdypSRgEUPG2vKHa436HLKf2E/arIk/jTrlSa
- PTvMl7M1TKKlBMlbiUtu3/opIwlp/QPTFehCv2eBqWh3xnkejJ34EsMgbUk6kvUJCSl6 5Q== 
-Received: from aserp3030.oracle.com (aserp3030.oracle.com [141.146.126.71])
- by aserp2120.oracle.com with ESMTP id 34cc7kmpmk-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=FAIL);
- Mon, 26 Oct 2020 13:51:09 +0000
-Received: from pps.filterd (aserp3030.oracle.com [127.0.0.1])
- by aserp3030.oracle.com (8.16.0.42/8.16.0.42) with SMTP id 09QDoOXk152672;
- Mon, 26 Oct 2020 13:51:09 GMT
-Received: from aserv0122.oracle.com (aserv0122.oracle.com [141.146.126.236])
- by aserp3030.oracle.com with ESMTP id 34cwuk87h1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 26 Oct 2020 13:51:09 +0000
-Received: from abhmp0020.oracle.com (abhmp0020.oracle.com [141.146.116.26])
- by aserv0122.oracle.com (8.14.4/8.14.4) with ESMTP id 09QDp7TE004625;
- Mon, 26 Oct 2020 13:51:08 GMT
-Received: from [192.168.248.100] (/86.120.250.68)
- by default (Oracle Beehive Gateway v4.0)
- with ESMTP ; Mon, 26 Oct 2020 06:51:02 -0700
-Subject: Re: [PATCH 0/8] Add support for pvpanic mmio device
-To: Peter Maydell <peter.maydell@linaro.org>
-References: <1603352576-21671-1-git-send-email-mihai.carabas@oracle.com>
- <CAFEAcA9n3T5MrBp2RbOQGWBptV5ObCssF00ygK8TDieP+V1Srg@mail.gmail.com>
-From: Mihai Carabas <mihai.carabas@oracle.com>
-Message-ID: <a6065386-a844-9d06-21ca-57baa98c8caf@oracle.com>
-Date: Mon, 26 Oct 2020 15:50:59 +0200
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.12.1
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kX5Qw-000587-SH
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2020 12:33:23 -0400
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:40384)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kX5Qt-000200-AT
+ for qemu-arm@nongnu.org; Mon, 26 Oct 2020 12:33:22 -0400
+Received: by mail-ej1-x643.google.com with SMTP id z5so14509229ejw.7
+ for <qemu-arm@nongnu.org>; Mon, 26 Oct 2020 09:33:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=DI53dgFPkps8h/TY5y041PBMFl/Ix4XWl8lmpI6++jY=;
+ b=pJXbGOJ0idyZzT6rBH9Lt8m+PdlZePfNpNtF3gGKrocKmeTnpb/jWDZ9gnaMo2DCta
+ 42STIfKSSVdvt4LOhvsjRlo3T9eWFYjcpcX+K526bXb8uF6L7oG9Ux7rwerhh8t84mmd
+ bQ6Xp7Cjfb5X/Ami9VcC5Yl/Q7GtP1GA1dwoJoJBWmEgcs090Zg2yTeyGBxWycb3ir14
+ GS9AEXEnJ1JZNCVL+VLTOz/lB9rEPCkGANsNQNG4aVjPHcYz1oY14eCy9OZDyIJQsqvH
+ ocRndUHoh8lRG29p3i6lI6dAGX3M52TdfF0NZobA1jeHar+lBmU75ZPzdlViuUkS30hp
+ kCfw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=DI53dgFPkps8h/TY5y041PBMFl/Ix4XWl8lmpI6++jY=;
+ b=RAA1DvJrxZeYYyCrFzC3lrjQydU+gyhcqF026PbNKuXcDbQnuEZ46BbEsfn1M/OJ+b
+ ERNFRk86c5muQ+gZGcpZrKCh8q+VZ/PLESLmY7PxkDqqQTYqbCL10xLq+UXxvrKJ+k6F
+ OS7R0Pw3eJp+xsadxOsQi/O57rOYxAERkh0iXYzOhjexHRYPteKEYYKiZImxKdewV78V
+ ON/6tJxXmiuFlKE74IWNJxaYMYqox8AFzdNUslFsCoZp8y3IuzjIsDwxRf2I2mhq4CLX
+ N1LetNjS3FoAdg5hksbggWwUPQytrxdBZwwS8I+/skTBcTbtaf7FghnqRoPBygtuQcY0
+ BmdQ==
+X-Gm-Message-State: AOAM533YtUsqal7KHMib7xLH1+oXpV36eAt4TV4/bVgxLj4cQX8x6GHI
+ w8VTBkAtND0RLb7lgn4aGFfaVBSmOQcJqUK1HxiYBg==
+X-Received: by 2002:a17:906:af8d:: with SMTP id
+ mj13mr16141276ejb.85.1603729997270; 
+ Mon, 26 Oct 2020 09:33:17 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA9n3T5MrBp2RbOQGWBptV5ObCssF00ygK8TDieP+V1Srg@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Language: en-US
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9785
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 phishscore=0
- mlxscore=0 bulkscore=0
- spamscore=0 adultscore=0 malwarescore=0 mlxlogscore=999 suspectscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2009150000
- definitions=main-2010260100
-X-Proofpoint-Virus-Version: vendor=nai engine=6000 definitions=9785
- signatures=668682
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
- lowpriorityscore=0 adultscore=0
- malwarescore=0 spamscore=0 clxscore=1015 mlxscore=0 suspectscore=0
- priorityscore=1501 impostorscore=0 bulkscore=0 phishscore=0
- mlxlogscore=999 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2009150000 definitions=main-2010260100
-Received-SPF: pass client-ip=141.146.126.78;
- envelope-from=mihai.carabas@oracle.com; helo=aserp2120.oracle.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/26 09:51:11
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -65
-X-Spam_score: -6.6
-X-Spam_bar: ------
-X-Spam_report: (-6.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.167, RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20201023160057.21543-1-shashi.mallela@linaro.org>
+ <20201023160057.21543-2-shashi.mallela@linaro.org>
+In-Reply-To: <20201023160057.21543-2-shashi.mallela@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 26 Oct 2020 16:33:05 +0000
+Message-ID: <CAFEAcA9AeG6U1rCHuSSJctBafwMu+h1-8x5OgF==QdWs2SBM4A@mail.gmail.com>
+Subject: Re: [PATCH v7 1/2] hw/watchdog: Implement SBSA watchdog device
+To: Shashi Mallela <shashi.mallela@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x643.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -133,47 +112,116 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Shannon Zhao <shannon.zhaosl@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>, "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Leif Lindholm <leif@nuviainc.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-arm <qemu-arm@nongnu.org>, Radoslaw Biernacki <rad@semihalf.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: +ZQybcIF6v/6
+X-TUID: eJ8RF2LpIVIN
 
-On 10/22/2020 1:17 PM, Peter Maydell wrote:
-> On Thu, 22 Oct 2020 at 09:25, Mihai Carabas <mihai.carabas@oracle.com> wrote:
->> The patchset was assembled from chuncks from some old patches from 2018 [1]
->> which were left unmerged and some additions from me. Surprisingly their Linux
->> kernel counterpart were merged (so the pvpanic driver from the kernel supports
->> mmio).
->>
->> I have seen the discussions about moving the pvpanic to PCI [1]. Those patches
->> were sent but nothing happened. Also they are not trivial and require major
->> modifications at the driver level also. Given the fact that we already have
->> mmio driver support for pvpanic in the Linux kernel, I have sent these patches
->> to ask again the maintainers if this can be merged.
-> 
-> I'm afraid the answer is still the same. You need to provide
-> a convincing argument for why this needs to be an MMIO
-> device rather than a PCI device. I really don't want to
-> add MMIO devices to the virt board if I can avoid it,
-> because they're all extra code and potential extra
-> security boundary attack surface. PCI devices are guest
-> probeable and user-pluggable so they're almost always
-> nicer to use than MMIO.
-> 
+On Fri, 23 Oct 2020 at 17:01, Shashi Mallela <shashi.mallela@linaro.org> wrote:
+>
+> Generic watchdog device model implementation as per ARM SBSA v6.0
+>
+> Signed-off-by: Shashi Mallela <shashi.mallela@linaro.org>
 
-Thank you for your input.
+Thanks for the respin; only a couple of minor issues left.
 
-The reason why pvpanic should be MMIO is that is a special device which 
-is not used commonly by the user (aka VM), it is not need to be 
-hot-plugable and it does not have a hardware correspondent to be a PCI 
-device. Another reason is that MMIO support was accepted in the kernel 
-driver and it is pretty useless there without a device.
+General note: you implement WS0 with an external qemu_irq line.
+You correctly call qemu_set_irq(s->irq, 1) when you set the WS0
+bit in sbsa_gwdt_timer_sysinterrupt(), but you also need to lower
+the line by calling qemu_set_irq(s->irq, 0) whenever WS0 is cleared.
+(The exception to this is that you mustn't call qemu_set_irq()
+in the sysbus reset method, because it can confuse the device
+on the other end of the irq line which is also going to be
+resetting.)
 
-I know it seems that I want to get this on the short-path, but at this 
-point having a kernel driver in the upstream and no device to test it 
-against it is pretty weird.
+Otherwise I just have some minor nits about bit operation style.
 
-Thank you,
-Mihai
+> +static void sbsa_gwdt_write(void *opaque, hwaddr offset, uint64_t data,
+> +                             unsigned size) {
+> +    SBSA_GWDTState *s = SBSA_GWDT(opaque);
+> +    bool enable;
+> +
+> +    switch (offset) {
+> +    case SBSA_GWDT_WCS:
+> +        enable = data & SBSA_GWDT_WCS_EN;
+> +        if (enable) {
+> +            s->wcs |= SBSA_GWDT_WCS_EN;
+> +        } else {
+> +            s->wcs &= ~SBSA_GWDT_WCS_EN;
+> +        }
+> +        s->wcs &= ~SBSA_GWDT_WCS_WS0;
+> +        s->wcs &= ~SBSA_GWDT_WCS_WS1;
+
+These 8 lines are a long-winded way to write:
+
+  /* All writes clear WS0 and WS1 */
+  s->wcs = data & SBSA_GWDT_WCS_EN;
+
+> +        sbsa_gwdt_update_timer(s, EXPLICIT_REFRESH);
+> +        break;
+> +
+> +    case SBSA_GWDT_WOR:
+> +        /*
+> +         * store the lower 32 bits of WOR for now.
+> +         * explicit refresh to be triggered on upper 16 bits
+> +         * being written to WORU register (that follows this write)
+> +         */
+
+There's nothing in the spec that I can see that obliges the guest
+to write the high half last. I think you should call the
+timer update function and clear WS0/WS1 for a write here as well
+as one to WORU.
+
+> +        s->worl = data;
+> +        break;
+> +
+> +    case SBSA_GWDT_WORU:
+> +        s->woru = data & SBSA_GWDT_WOR_MASK;
+> +        s->wcs &= ~SBSA_GWDT_WCS_WS0;
+> +        s->wcs &= ~SBSA_GWDT_WCS_WS1;
+
+You might as well combine these into one line:
+           s->wcs &= ~(SBSA_GWDT_WCS_WS0 | SBSA_GWDT_WCS_WS1);
+(same applies for the same code in the SBSA_GWDT_WRR write handling.)
+
+> +        sbsa_gwdt_update_timer(s, EXPLICIT_REFRESH);
+> +        break;
+> +
+> +    case SBSA_GWDT_WCV:
+> +        s->wcvl = data;
+> +        break;
+> +
+> +    case SBSA_GWDT_WCVU:
+> +        s->wcvu = data;
+> +        break;
+> +
+> +    default:
+> +        qemu_log_mask(LOG_GUEST_ERROR, "bad address in control frame write :"
+> +                " 0x%x\n", (int)offset);
+> +    }
+> +    return;
+> +}
+> +
+> +static void wdt_sbsa_gwdt_reset(DeviceState *dev)
+> +{
+> +    SBSA_GWDTState *s = SBSA_GWDT(dev);
+> +
+> +    timer_del(s->timer);
+> +
+> +    s->wcs &= ~SBSA_GWDT_WCS_EN;
+> +    s->wcs &= ~SBSA_GWDT_WCS_WS0;
+> +    s->wcs &= ~SBSA_GWDT_WCS_WS1;
+
+Just saying s->wcs = 0; is clearer than clearing all
+the bits one by one.
+
+> +    s->wcvl = 0;
+> +    s->wcvu = 0;
+> +    s->worl = 0;
+> +    s->woru = 0;
+> +    s->id = SBSA_GWDT_ID;
+> +}
+
+thanks
+-- PMM

@@ -1,95 +1,94 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3198059lfa;
-        Mon, 26 Oct 2020 13:43:25 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJypd6VscRa/bDQ14Nt7sm558MlHJECJWfrz5Qyn1KfWxPtRPDyAtkGzCrGpL7feDAogFGkB
-X-Received: by 2002:ac8:64a:: with SMTP id e10mr17405446qth.142.1603745004930;
-        Mon, 26 Oct 2020 13:43:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603745004; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3096309lfa;
+        Mon, 26 Oct 2020 11:09:14 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx8nJXgwUwgko8zEjBSGOfwiZgNx87eO3tZw3SOePohJxHezvCmoQVlCX5Gp6NFZ3icy4SI
+X-Received: by 2002:ac8:94e:: with SMTP id z14mr18379251qth.190.1603735754649;
+        Mon, 26 Oct 2020 11:09:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603735754; cv=none;
         d=google.com; s=arc-20160816;
-        b=F9ZrnRT5bHW4UHeA3Nowr9NBpxobM78uwLr455HpsgHfO7JXBac0YBvVyUHDcmCojI
-         1WfXo8wVpTxkYDah4loAYfgysXezt0wJTuc7asGlQnqbC6BhqMSQ8Pc7SHmCfy/ZOinT
-         4hfOIik4dyLxTkgkL47YgFSuEhIMciHtxAixRwMfZr20IMI2laND+JHusXeLsGgbcnkO
-         NQKbQyOoHxlNFYsDYclk3xHLzW+KrwkJqZZWPnypco1CQ7+pIjbtGObYh/MGckOWsJ2/
-         KmC0+XnpD+yaOXereNtzwcfRVoxdeI2sEpOfJVFrK0fYzd7mQPcCZzAakKt8d/OP09xR
-         zltQ==
+        b=TeXEBVaAY2dYi3wmqaxtKztpCZVjYwcIn0zLYqCjqmefFylpYN3DCc+e7kK4XyYSXI
+         LiHWDZVpjTfUz64sHR0rlancQ6X4t3lgGflxwlNwEnUHv60RaTR/JXra9vUU+WnZUAkT
+         2p56WAl2Sqj+VhjHAlJmyZelMuTJ+UAUg6URCtMH5Puqiucr5UFcg5ahaHcAdcTzq17R
+         v0duSNG3h5x0dxPU1Skh9qQEXSETOz0FhVezsdfFqubiYnmfvp4ZGUImTEsyJGnRKlAF
+         LDjoCrN/sLWjEpSroLDI83WoodgeFO1YhhyaoBjPStGGZlpwDKy8dRP8b4jjpf+aX6C2
+         /ACg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=iU+ZRCG+AFRiE68g8Pl07JSs3G5DgNs8ih7zug8A1HQ=;
-        b=lPQRmm6rkHD3qOI3vg86mt2XYo8pcdS5s/FGgWVus/jyirRSgDl/WLzzOv60y+QYOe
-         jH1CayBKxumIlLl1ZllVK51tB6Tglb8gl1+9TxtySrlqDra7KREZDGRgbB9ahGdERucj
-         dfeBgKYtNqXsyKd5UTgm8XT+Nw9cCzGrwR8i3Ulf/pm9+oOH2QsIbHLyTg/KdyE/K6Ib
-         2BfiXTl0wmnIN/Ryx3eAgQjIi8VbeaVj1ClXo10beGP/NgEqtCGD+hSKyXWKwwwPLgRr
-         gFXzdkklQzvZCIaze0Dt0u67GyawhEmTvmsJWHTnK2N2e1jzC+b+J4bn3WnHJnrGc/jl
-         Tlng==
+        bh=55eyuk42pE0LCxXjckrKgBEEyBU4OQQsjW8M+YVDNtI=;
+        b=Rl6+LoAHfFHuoNwWg3MA1KNvg+Tjglyi7QXcaIWMkpq4P8/BzLsYRppVQfaXkCrly6
+         tGJssFqn4uy3xUF65HSbqHAvaik65B06hU0b3LmIUaqjgXJbKBLIPZOVmx49gcRCsiz0
+         SpzHvSiRRbSFObKaemQ8lKgxdTTNVttecV+12MWfnRDp+kiBpv/NRHiNUIL1uf4U8D7/
+         VuFyR6wB0zIAmLBgRTwTFHqnRZzFDuwiRte/cqy7DI7PSiFokI36LYsDf/E1j4j7RwMU
+         ao/F/0g3Vr1/lmZ15AXyhqaDn5w6jGlORTzeKS2/IVPP7HcpWtyI8cD4HOJVdm8Cwla6
+         Xwow==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PWzEIHvP;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZgpWtk03;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id u10si6249673qvk.170.2020.10.26.13.43.24
+        by mx.google.com with ESMTPS id g19si6853289qtm.202.2020.10.26.11.09.14
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Oct 2020 13:43:24 -0700 (PDT)
+        Mon, 26 Oct 2020 11:09:14 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=PWzEIHvP;
+       dkim=fail header.i=@linaro.org header.s=google header.b=ZgpWtk03;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:54960 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:58620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kX9Ku-0000kQ-B5
-	for alex.bennee@linaro.org; Mon, 26 Oct 2020 16:43:24 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48704)
+	id 1kX6vg-00024S-7o
+	for alex.bennee@linaro.org; Mon, 26 Oct 2020 14:09:13 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:53240)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kX9KM-0000kA-MR
- for qemu-devel@nongnu.org; Mon, 26 Oct 2020 16:42:50 -0400
-Received: from mail-ej1-x642.google.com ([2a00:1450:4864:20::642]:37825)
+ id 1kX6MB-0000km-0g
+ for qemu-devel@nongnu.org; Mon, 26 Oct 2020 13:32:31 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:42026)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kX9KJ-0002yX-DP
- for qemu-devel@nongnu.org; Mon, 26 Oct 2020 16:42:50 -0400
-Received: by mail-ej1-x642.google.com with SMTP id p9so15728387eji.4
- for <qemu-devel@nongnu.org>; Mon, 26 Oct 2020 13:42:46 -0700 (PDT)
+ id 1kX6M9-0001yF-DN
+ for qemu-devel@nongnu.org; Mon, 26 Oct 2020 13:32:30 -0400
+Received: by mail-ed1-x535.google.com with SMTP id v19so10279743edx.9
+ for <qemu-devel@nongnu.org>; Mon, 26 Oct 2020 10:32:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to;
- bh=iU+ZRCG+AFRiE68g8Pl07JSs3G5DgNs8ih7zug8A1HQ=;
- b=PWzEIHvPW+VznJn19AVD7Bx+08i5IAOS2/6PE9JbTfLk6xl/cwYiX64tlup1eXpJF1
- jirFSe4y4RBvPOT101PHq5wwsVROBTjiJ6dZR6z397LnMnhPlx7boOid2NNVJFbI0mki
- n4Fo2lX3swyRIjT07qrxui8Xpln1JCdxpJqORpQp66ISL04KzeVITlDNEwDcdmwBVoUw
- AgWpdXUcDl1EUGNVfZ7d7J/XsGNm/Q9VcS9SXvMPj7T7IAbELTESHuFw5ulQ54qIoOb6
- 6kBlVO/foCIVb1cQVx++WO38bcZDlNG16Va3G0A0IrMilTjo7bUPfDT3N0F8k+H7d312
- uR4g==
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=55eyuk42pE0LCxXjckrKgBEEyBU4OQQsjW8M+YVDNtI=;
+ b=ZgpWtk03XcGWI3LJmox6frTtNbuBqsuKYDvvScWYFsMIbjb2Dt8aTCknk2EtPm7Med
+ QlaITMsHAXAhGxdY5KRR0CB/9AyrAMnyg5WhuXlQcpfJ6g9WX8kfX19+5B/0HS3UOMO1
+ zDh8jwCO2lvZH+68ph7qyNf827LeGrSftFP/qYM0/YT066DBWS9UpwFFrV573SXG5Vlp
+ UzlTK4B1z4QU8pYfaNlOC1os8gyl2iwkXJI6MHB4knt1Y0LkKDCSXz3ArQyFo6AdNJvf
+ hXqwoSCcAxEM+dszHSzrXfQb9dLggeMfNoxdJ2Nbw39dI7d2iSdVjBoRZx9sjtXHErsV
+ k3Jw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to;
- bh=iU+ZRCG+AFRiE68g8Pl07JSs3G5DgNs8ih7zug8A1HQ=;
- b=LCAGn0g96Q/SLfimmguyXSbAyM6rjFzxcrIRou9aRoKtmQMhDQjfknObIGyjAN+ovL
- anTzGSj3C8zPJSkPAMqDf5uAUSTp2PxDPxZ6D+/lVH51NmnMDJZDVVLGiwofgwKQ8J4f
- 2/3kMGGNqYUcoRyLCSC63tIys/AhUe2FpG9DplJEOjgYJdOQW9H0gCS/0TrJvC423av+
- 87qzTIWIzPNL8QIOIInElzrH1kAs5g3puY05ge+VFU+eS0yLzoppuqvcSEFV1lBwW2wE
- G680/OcjP5anmCOCmxxNyTrmZN2leJ5vu9yqtzjDUe2GNGFeNQ4WlSrS+KsD7d4Z6t3Q
- KhgQ==
-X-Gm-Message-State: AOAM5323xq+15++tyLF0hkMsNYD8ZRrY+S5Pk49vtr2JKB2zhQDQciNk
- VtId1kxwSxkLkxoDzpxypA0yNogrWKydrrPlLl0MZ2r35eM=
-X-Received: by 2002:a17:906:af8d:: with SMTP id
- mj13mr17134664ejb.85.1603744965414; 
- Mon, 26 Oct 2020 13:42:45 -0700 (PDT)
+ :message-id:subject:to:cc;
+ bh=55eyuk42pE0LCxXjckrKgBEEyBU4OQQsjW8M+YVDNtI=;
+ b=Rd9FodTK4ksRDu0I553oWvCy+3UiXYJNexyVkVh1ktSQapQh0tAu+077zLcZzwN+UF
+ Ks1Mr4ghRmQmCs9wpPzTZN9g5gUAHTHQyeqjWQ/ptqSXbf8zodMM0xzwTZjA3/4nZ1hj
+ qo3R1CN1XBZDWQMWWvDBOadv2lAO/moH3ITbF7GJOaEsmro9XfnJX9LOLhCkHnwhpZbR
+ uNxwV39TGVQLijJPphR8nIsRtU5+R3UWAJO6iA1wR5m+FLmhsVRMHuJJ/RNocFTZHLMU
+ 8ldPIkvrROygE0yq5850rHEyuDPy4P+G74+hquZWG6rq1vZj0YgCvVC5JJgyexs5o4vi
+ YU6g==
+X-Gm-Message-State: AOAM532sGJKQKCWp8rmuAFgGT5vFD/ugLd402eEKrkWw2BpwIQY04NJW
+ sCVNHH2AvEZ3gjPOsEYdrsL7pIW5puNDZtZRt/IXCA==
+X-Received: by 2002:aa7:d699:: with SMTP id d25mr8936039edr.44.1603733547775; 
+ Mon, 26 Oct 2020 10:32:27 -0700 (PDT)
 MIME-Version: 1.0
-References: <20201015151829.14656-1-peter.maydell@linaro.org>
-In-Reply-To: <20201015151829.14656-1-peter.maydell@linaro.org>
+References: <20201026172219.GA5733@habkost.net>
+In-Reply-To: <20201026172219.GA5733@habkost.net>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 26 Oct 2020 20:42:34 +0000
-Message-ID: <CAFEAcA8g-n4gqy0Az7cBsQJqcQpsc_vH2=VatqqdRt034YD5JQ@mail.gmail.com>
-Subject: Re: [PATCH 0/2] armv7m_systick: Rewrite to use ptimers
-To: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Date: Mon, 26 Oct 2020 17:32:16 +0000
+Message-ID: <CAFEAcA96=ng8_SsVq0V3O8nvJkSFc+FZBATXmhok+hj1vOeELQ@mail.gmail.com>
+Subject: Re: Dynamic instance properties in TYPE_ARM_CPU
+To: Eduardo Habkost <ehabkost@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::642;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x642.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -111,79 +110,64 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ John Snow <jsnow@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ Markus Armbruster <armbru@redhat.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: QvQ2Y85RA4t4
+X-TUID: iwVV+NDuMPrU
 
-Ping for review ?
+On Mon, 26 Oct 2020 at 17:22, Eduardo Habkost <ehabkost@redhat.com> wrote:
+> I've been trying to clean up the qdev property code (to bridge
+> the gaps between qdev and QOM, and between QOM and QAPI), and
+> I've noticed that TYPE_ARM_CPU is the only remaining user of
+> qdev_property_add_static().
+>
+> qdev_property_add_static() has a misleading name: it won't
+> register a static property.  It is actually a hack to use a
+> static Property variable (defined using DEFINE_PROP*), but
+> register it as a dynamic instance property.
+>
+> Dynamic instance properties make introspection hard.  What can we
+> do to get rid of them in TYPE_ARM_CPU?
+
+I'm in principle in favour of this because the Arm handling
+of this is a bit odd and it would make sense to bring it
+into line with how other parts of QEMU work. (Do other CPU
+architectures just provide the properties on all CPUs?)
+
+> Can we just register all the properties unconditionally, and
+> error out on realize if the requested CPU configuration is
+> incompatible with the available CPU features?
+
+I think you would probably also need to check for and
+adjust board/SoC code which assumes that presence of a
+property implies that it's OK to set it, eg this in virt.c:
+
+        if (object_property_find(cpuobj, "reset-cbar")) {
+            object_property_set_int(cpuobj, "reset-cbar",
+                                    vms->memmap[VIRT_CPUPERIPHS].base,
+                                    &error_abort);
+        }
+
+or which uses presence-of-property as its check for
+"does the CPU support this feature", eg this;
+                /*
+                 * The property exists only if MemTag is supported.
+                 * If it is, we must allocate the ram to back that up.
+                 */
+                if (!object_property_find(cpuobj, "tag-memory")) {
+                    error_report("MTE requested, but not supported "
+                                 "by the guest CPU");
+                    exit(1);
+                }
+
+> The following properties are registered as dynamic instance
+> properties at arm_cpu_post_init():
+> "cntfrq", "reset-cbar", "reset-hivecs", "rvbar", "has_el2",
+> "has_el3", "cfgend", "vfp", "neon", "dsp", "has-mpu",
+> "pmsav7-dregion", "secure-memory", "pmu", "idau", "init-svtor",
+> "tag-memory", "secure-tag-memory".
 
 thanks
 -- PMM
-
-On Thu, 15 Oct 2020 at 16:18, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> This patch series rewrites our implementation of the armv7m systick
-> timer to use ptimers.
->
-> The armv7m systick timer is a 24-bit decrementing, wrap-on-zero,
-> clear-on-write counter.  Our current implementation has various bugs
-> and dubious workarounds in it (for instance see
-> https://bugs.launchpad.net/qemu/+bug/1872237).
->
-> We have an implementation of a simple decrementing counter and we put
-> a lot of effort into making sure it handles the interesting corner
-> cases (like "spend a cycle at 0 before reloading"), so rather than
-> trying to fix these all over again in systick's hand-rolled countdown
-> code it's much simpler to just rewrite it to use a ptimer.
->
-> Unfortunately this is a migration compatibility break, which will
-> affect all M-profile boards.
->
-> Among other bugs, this fixes
-> https://bugs.launchpad.net/qemu/+bug/1872237 : now writes to SYST_CVR
-> when the timer is enabled correctly do nothing; when the timer is
-> enabled via SYST_CSR.ENABLE, the ptimer code will (because of
-> POLICY_NO_IMMEDIATE_RELOAD) arrange that after one timer tick the
-> counter is reloaded from SYST_RVR and then counts down from there, as
-> the architecture requires.
->
-> Side note: the trace from the test program in LP1872237 won't look
-> quite like it does on the hardware: under QEMU the "waiting for 1000
-> ms" debug printing generally reports a SYST_CVR value of 0.  This is
-> because QEMU's emulated CPU is comparatively fast and our systick has a
-> hard-wired value of 1MHz for the frequency of the 'external reference
-> clock', which means that execution of the guest code reaches "read
-> SYST_CVR" before the first tick of the timer clock after enabling of
-> the timer (which is where the reload of SYST_CVR from SYST_RVR is
-> required).  The exception is the first iteration, where the time QEMU
-> takes to translate the guest code is enough that the timer tick
-> happens before the register read.  You can also get the timer tick to
-> win the race by fiddling around with the -icount option (which
-> effectively is slowing down the emulated CPU speed).
->
-> Some day we should model both the 'system_clock_scale' (ie the CPU
-> clock frequency) and the 'external reference clock' as QEMU clock
-> source/sinks so that board code can specify the correct reference
-> clock frequency.
->
-> Patch 1 is a minor tweak to the ptimer code to suppress a spurious
-> warning message for the "timer callback function disabled the ptimer"
-> case, which the systick timer uses.  Patch 2 is the actual
-> conversion.
->
-> thanks
-> -- PMM
->
->
-> Peter Maydell (2):
->   hw/core/ptimer: Support ptimer being disabled by timer callback
->   hw/timer/armv7m_systick: Rewrite to use ptimers
->
->  include/hw/timer/armv7m_systick.h |   3 +-
->  hw/core/ptimer.c                  |   4 +
->  hw/timer/armv7m_systick.c         | 124 +++++++++++++-----------------
->  3 files changed, 58 insertions(+), 73 deletions(-)
->
-> --
-> 2.20.1
->

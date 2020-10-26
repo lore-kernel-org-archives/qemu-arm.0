@@ -1,94 +1,96 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3096309lfa;
-        Mon, 26 Oct 2020 11:09:14 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx8nJXgwUwgko8zEjBSGOfwiZgNx87eO3tZw3SOePohJxHezvCmoQVlCX5Gp6NFZ3icy4SI
-X-Received: by 2002:ac8:94e:: with SMTP id z14mr18379251qth.190.1603735754649;
-        Mon, 26 Oct 2020 11:09:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603735754; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3060649lfa;
+        Mon, 26 Oct 2020 10:20:36 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz5C4X9kPIlgNu/ahdYyQmgLnk7/vv12RZdyvXZ4PITdkWXsBHlQFdipdVzMmMMm0nBuVi1
+X-Received: by 2002:ae9:f44a:: with SMTP id z10mr18600846qkl.247.1603732835975;
+        Mon, 26 Oct 2020 10:20:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603732835; cv=none;
         d=google.com; s=arc-20160816;
-        b=TeXEBVaAY2dYi3wmqaxtKztpCZVjYwcIn0zLYqCjqmefFylpYN3DCc+e7kK4XyYSXI
-         LiHWDZVpjTfUz64sHR0rlancQ6X4t3lgGflxwlNwEnUHv60RaTR/JXra9vUU+WnZUAkT
-         2p56WAl2Sqj+VhjHAlJmyZelMuTJ+UAUg6URCtMH5Puqiucr5UFcg5ahaHcAdcTzq17R
-         v0duSNG3h5x0dxPU1Skh9qQEXSETOz0FhVezsdfFqubiYnmfvp4ZGUImTEsyJGnRKlAF
-         LDjoCrN/sLWjEpSroLDI83WoodgeFO1YhhyaoBjPStGGZlpwDKy8dRP8b4jjpf+aX6C2
-         /ACg==
+        b=npXkaprFFcMC2PMfsFHHWiGQQ+XQmtQFdrQsusbUrco3bq026lcIg40jyZeSm6FqE3
+         gWc23hw2h0e2CsNmMFkpf5ym+NpN53yHp1cS7Mj3fATBxmLoKzP43Y1IGcJXMvZ8mApX
+         tISKoM+l9k3rdZMkJKg+5ORyDcpF6tSAYvEMao8vFKIHVQuKwNdKKip+OcGc5+ZsdkBX
+         ofGnquN5bIV7X5nZox84RhLtof11x7sm3449DBceywWtbXfp93c06TDMneNChJ4jvKcQ
+         pGvvz7gsl2/Xvll9OYE2XiTF0AuM/yoKbuPqfevuL/vqT5aL5vuS9WrbaLHvydrxPSvv
+         X2qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=55eyuk42pE0LCxXjckrKgBEEyBU4OQQsjW8M+YVDNtI=;
-        b=Rl6+LoAHfFHuoNwWg3MA1KNvg+Tjglyi7QXcaIWMkpq4P8/BzLsYRppVQfaXkCrly6
-         tGJssFqn4uy3xUF65HSbqHAvaik65B06hU0b3LmIUaqjgXJbKBLIPZOVmx49gcRCsiz0
-         SpzHvSiRRbSFObKaemQ8lKgxdTTNVttecV+12MWfnRDp+kiBpv/NRHiNUIL1uf4U8D7/
-         VuFyR6wB0zIAmLBgRTwTFHqnRZzFDuwiRte/cqy7DI7PSiFokI36LYsDf/E1j4j7RwMU
-         ao/F/0g3Vr1/lmZ15AXyhqaDn5w6jGlORTzeKS2/IVPP7HcpWtyI8cD4HOJVdm8Cwla6
-         Xwow==
+        bh=BHvjmRW36opP6fRGjg2aSmK/k1J/rM5sk+EbpicADBQ=;
+        b=Laeiy1RrToxwboXK6U8/g/YtB/8aoq2SGCwaHb/bQejHPgXsLQaxfWd2ROCz0houeD
+         G69XcpWw5C0VFlxMXCfhBWtt/gkjxAtSBM+/kPUeCWoKR02KJxrmrFYPKMdk/EPeb5jy
+         fGQMMiLLS962ewMDyN9sjiOtaCSIK9w3oTldtUgjde5qXJCGvzQUAVqFv4k0IwBZEtr0
+         8+am3x4A/YMyWS8YImXV9gvv5Xg/msiW1QvrGbq5IFegnmZICISL2hE61WVQgNCQimP+
+         OpJBznt5nmJ1wv2AGahscixg2rQA5RU80+O5r3jziicyaNJFp4DzZXFoGjnYDDYihiVa
+         1nAg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZgpWtk03;
+       dkim=fail header.i=@linaro.org header.s=google header.b=l9F20NEB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g19si6853289qtm.202.2020.10.26.11.09.14
+        by mx.google.com with ESMTPS id o23si6354892qtt.94.2020.10.26.10.20.35
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 26 Oct 2020 11:09:14 -0700 (PDT)
+        Mon, 26 Oct 2020 10:20:35 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=ZgpWtk03;
+       dkim=fail header.i=@linaro.org header.s=google header.b=l9F20NEB;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:58620 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:57620 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kX6vg-00024S-7o
-	for alex.bennee@linaro.org; Mon, 26 Oct 2020 14:09:13 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:53240)
+	id 1kX6Ad-0008P8-CV
+	for alex.bennee@linaro.org; Mon, 26 Oct 2020 13:20:35 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:48800)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kX6MB-0000km-0g
- for qemu-devel@nongnu.org; Mon, 26 Oct 2020 13:32:31 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535]:42026)
+ id 1kX676-0005Ps-DR
+ for qemu-devel@nongnu.org; Mon, 26 Oct 2020 13:16:56 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533]:35502)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kX6M9-0001yF-DN
- for qemu-devel@nongnu.org; Mon, 26 Oct 2020 13:32:30 -0400
-Received: by mail-ed1-x535.google.com with SMTP id v19so10279743edx.9
- for <qemu-devel@nongnu.org>; Mon, 26 Oct 2020 10:32:29 -0700 (PDT)
+ id 1kX672-0008AD-TB
+ for qemu-devel@nongnu.org; Mon, 26 Oct 2020 13:16:56 -0400
+Received: by mail-ed1-x533.google.com with SMTP id w25so10243701edx.2
+ for <qemu-devel@nongnu.org>; Mon, 26 Oct 2020 10:16:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=55eyuk42pE0LCxXjckrKgBEEyBU4OQQsjW8M+YVDNtI=;
- b=ZgpWtk03XcGWI3LJmox6frTtNbuBqsuKYDvvScWYFsMIbjb2Dt8aTCknk2EtPm7Med
- QlaITMsHAXAhGxdY5KRR0CB/9AyrAMnyg5WhuXlQcpfJ6g9WX8kfX19+5B/0HS3UOMO1
- zDh8jwCO2lvZH+68ph7qyNf827LeGrSftFP/qYM0/YT066DBWS9UpwFFrV573SXG5Vlp
- UzlTK4B1z4QU8pYfaNlOC1os8gyl2iwkXJI6MHB4knt1Y0LkKDCSXz3ArQyFo6AdNJvf
- hXqwoSCcAxEM+dszHSzrXfQb9dLggeMfNoxdJ2Nbw39dI7d2iSdVjBoRZx9sjtXHErsV
- k3Jw==
+ :cc; bh=BHvjmRW36opP6fRGjg2aSmK/k1J/rM5sk+EbpicADBQ=;
+ b=l9F20NEBhBeSOCZWmCT765OzQKQxWjeLkrrGrsvLCTmrK2rPIWzIPwmnkC4b2UYkEC
+ zUQZr+w+EpOK4oBlbed9OTfcZKTsJrLc4oXc8whVyBMjssMMSIZIhZn2IWoMD+Yd5raK
+ BtKa7sCsDzGM5vg2ZZ81rzgc+QrevJnB2fmbAnMBE3Uui6QL8a40Vh3jhwbXKvQoXS2A
+ rJQ0i1fb6mzEgLBFucJmF3Z7XeGWJBfgQua47AOz52C8rbpNcSs6AhEaPTdfspXxmqWi
+ Cy7MQppf6tWp6Hcf009coFbBvaXd/WGbki1JT8R+8RXsC+R42/JIk4VDetS1mjxIYU24
+ gKCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=55eyuk42pE0LCxXjckrKgBEEyBU4OQQsjW8M+YVDNtI=;
- b=Rd9FodTK4ksRDu0I553oWvCy+3UiXYJNexyVkVh1ktSQapQh0tAu+077zLcZzwN+UF
- Ks1Mr4ghRmQmCs9wpPzTZN9g5gUAHTHQyeqjWQ/ptqSXbf8zodMM0xzwTZjA3/4nZ1hj
- qo3R1CN1XBZDWQMWWvDBOadv2lAO/moH3ITbF7GJOaEsmro9XfnJX9LOLhCkHnwhpZbR
- uNxwV39TGVQLijJPphR8nIsRtU5+R3UWAJO6iA1wR5m+FLmhsVRMHuJJ/RNocFTZHLMU
- 8ldPIkvrROygE0yq5850rHEyuDPy4P+G74+hquZWG6rq1vZj0YgCvVC5JJgyexs5o4vi
- YU6g==
-X-Gm-Message-State: AOAM532sGJKQKCWp8rmuAFgGT5vFD/ugLd402eEKrkWw2BpwIQY04NJW
- sCVNHH2AvEZ3gjPOsEYdrsL7pIW5puNDZtZRt/IXCA==
-X-Received: by 2002:aa7:d699:: with SMTP id d25mr8936039edr.44.1603733547775; 
- Mon, 26 Oct 2020 10:32:27 -0700 (PDT)
+ bh=BHvjmRW36opP6fRGjg2aSmK/k1J/rM5sk+EbpicADBQ=;
+ b=EGDxW8xHas2OrkQiDYE7369ue4tMwo2uXOVK32raYvmkjHkhppXdWZGxy9oMMcFVWj
+ JHWGtkuc0tXifIblFglQZRBE6aw+QbijvQJQvYTXU5+gV6HzZgFjKWb0ujXNgiv/zFOn
+ Fpl043zMD4rH9zzxAj98dqKaMON7p+/7s0qe5iHIhRNKz73r/Zro4FksX9ujMZstO/k/
+ 2M4H4hnIbcFZj2paDnDEKc7mb7x/yiCtlEWsOhVo/txENAwSWcJVo7D44Rs7EuZf7b56
+ josMInabwsAVX5YNdGJoQ8EmICHnDL+nFhCpNDaKjdNcQgHkeMcmovMyf2eKRagHeMGG
+ Vc4g==
+X-Gm-Message-State: AOAM531UASt/CQDWdA5XxheaRbGYjkLyKmCk5Hat5j2hDLMgwOOmtxKH
+ vB/ofqbBXEQDjKk9TMW1k2yQG402MvVhlLHFnvzNHQ==
+X-Received: by 2002:aa7:c683:: with SMTP id n3mr16461024edq.146.1603732611257; 
+ Mon, 26 Oct 2020 10:16:51 -0700 (PDT)
 MIME-Version: 1.0
-References: <20201026172219.GA5733@habkost.net>
-In-Reply-To: <20201026172219.GA5733@habkost.net>
+References: <20201019091508.197-1-yuzenghui@huawei.com>
+ <8afdbde3-5b5f-0237-d311-32974cf58a14@redhat.com>
+In-Reply-To: <8afdbde3-5b5f-0237-d311-32974cf58a14@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 26 Oct 2020 17:32:16 +0000
-Message-ID: <CAFEAcA96=ng8_SsVq0V3O8nvJkSFc+FZBATXmhok+hj1vOeELQ@mail.gmail.com>
-Subject: Re: Dynamic instance properties in TYPE_ARM_CPU
-To: Eduardo Habkost <ehabkost@redhat.com>
+Date: Mon, 26 Oct 2020 17:16:39 +0000
+Message-ID: <CAFEAcA-281bGKytZEZSSYsnVBmRUzgQ8HPg=eHH+vYgR7TSqVg@mail.gmail.com>
+Subject: Re: [PATCH] [RFC] hw/arm/smmuv3: Set the restoration priority of the
+ vSMMUv3 explicitly
+To: Auger Eric <eric.auger@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x533.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
@@ -97,7 +99,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,64 +112,26 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
- John Snow <jsnow@redhat.com>, QEMU Developers <qemu-devel@nongnu.org>,
- Markus Armbruster <armbru@redhat.com>
+Cc: Zenghui Yu <yuzenghui@huawei.com>, wanghaibin.wang@huawei.com,
+ qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: iwVV+NDuMPrU
+X-TUID: GBmIMOMdPhk5
 
-On Mon, 26 Oct 2020 at 17:22, Eduardo Habkost <ehabkost@redhat.com> wrote:
-> I've been trying to clean up the qdev property code (to bridge
-> the gaps between qdev and QOM, and between QOM and QAPI), and
-> I've noticed that TYPE_ARM_CPU is the only remaining user of
-> qdev_property_add_static().
+On Mon, 26 Oct 2020 at 17:03, Auger Eric <eric.auger@redhat.com> wrote:
 >
-> qdev_property_add_static() has a misleading name: it won't
-> register a static property.  It is actually a hack to use a
-> static Property variable (defined using DEFINE_PROP*), but
-> register it as a dynamic instance property.
+> Hi Zenghui,
 >
-> Dynamic instance properties make introspection hard.  What can we
-> do to get rid of them in TYPE_ARM_CPU?
+> On 10/19/20 11:15 AM, Zenghui Yu wrote:
+> > Ensure the vSMMUv3 will be restored before all PCIe devices so that DMA
+> > translation can work properly during migration.
+>
+> Sorry I missed this patch. good catch!
+>
+> Acked-by: Eric Auger <eric.auger@redhat.com>
 
-I'm in principle in favour of this because the Arm handling
-of this is a bit odd and it would make sense to bring it
-into line with how other parts of QEMU work. (Do other CPU
-architectures just provide the properties on all CPUs?)
 
-> Can we just register all the properties unconditionally, and
-> error out on realize if the requested CPU configuration is
-> incompatible with the available CPU features?
 
-I think you would probably also need to check for and
-adjust board/SoC code which assumes that presence of a
-property implies that it's OK to set it, eg this in virt.c:
+Applied to target-arm.next, thanks.
 
-        if (object_property_find(cpuobj, "reset-cbar")) {
-            object_property_set_int(cpuobj, "reset-cbar",
-                                    vms->memmap[VIRT_CPUPERIPHS].base,
-                                    &error_abort);
-        }
-
-or which uses presence-of-property as its check for
-"does the CPU support this feature", eg this;
-                /*
-                 * The property exists only if MemTag is supported.
-                 * If it is, we must allocate the ram to back that up.
-                 */
-                if (!object_property_find(cpuobj, "tag-memory")) {
-                    error_report("MTE requested, but not supported "
-                                 "by the guest CPU");
-                    exit(1);
-                }
-
-> The following properties are registered as dynamic instance
-> properties at arm_cpu_post_init():
-> "cntfrq", "reset-cbar", "reset-hivecs", "rvbar", "has_el2",
-> "has_el3", "cfgend", "vfp", "neon", "dsp", "has-mpu",
-> "pmsav7-dregion", "secure-memory", "pmu", "idau", "init-svtor",
-> "tag-memory", "secure-tag-memory".
-
-thanks
 -- PMM

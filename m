@@ -1,145 +1,180 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp1723160lfb;
-        Fri, 13 Nov 2020 13:23:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzHBix2uY55hywi9aAIkl66bG+8B39q9WYUOuOtja1lmtj1gf7DyZcauPtQgA2wSPSIz40E
-X-Received: by 2002:a5b:ace:: with SMTP id a14mr5859593ybr.325.1605302615038;
-        Fri, 13 Nov 2020 13:23:35 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1605302615; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3545516lfa;
+        Mon, 26 Oct 2020 23:57:26 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwspw97pI2uxepfk61ZPz0v4axhyZl4UMV0eg3MkMuno7cX9lLWK8H2jrvusZlz/gL5vaJp
+X-Received: by 2002:a25:e54:: with SMTP id 81mr1109698ybo.56.1603781846372;
+        Mon, 26 Oct 2020 23:57:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603781846; cv=none;
         d=google.com; s=arc-20160816;
-        b=eXnRkggTCx1dj83It7Rqxi6IuMhZfWu9dgyK1OIV0kBgceXVGdUGjNwox60hS/LZ+N
-         F4uSrUFIMoOpFOnltdft1PX8iOaMyh2PybKZYc2U32HQe/E00P3BmjdxUppUlk1NpaZo
-         wFUNLp4JLNJnwbmRXDWi2qN5zrbq+xEwvZChJsGhZoDBVJhLAi0BvGa8chv8/nrS/a0D
-         MdxllPLe4hEzCMUBOgZ3/0uHL8gUFADQTOqJV1cChqBkg53UEsEJXF9RTObCTVLhk6P+
-         /Rj3Qlp7d/Ks6QRi2YaSidy7ycc7EfvkPDwfAjLHaUzLqT8zTzo94JNKZ1kqlF+E94MW
-         IR+A==
+        b=G6F419V3PEBJj/g6dMQZhuF70hj7MeNM3cMknDOSsW8TndQpbhKEsnOgRkYsaBt51n
+         Lt6NivXCQc/S6WP6Yyojjj005lvKZvWs6gdupCrAZozlN7dn4jf5B767MB/uB5BD9TD+
+         PQtefyGlJCFCW2AQK912FXz2qDxJ8H8WPT20JwLy8re1YajIq3bA087rUjuev2kKolHy
+         HSp/idCtxN5yBgOHem56G5SV11GHG8ywU8Q5Z5v5YQWzNPM+Xo2NEIovSpE+vadjB8Ot
+         U8w752ifBFzrRDUKWdWOuLWxGahytFEJK+/iNcCpcRGn98JOy3p7oE7allaJwJ607wmF
+         ju0g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=1z2TQOjD4yoRTyAbO1fFLqWdCztBSj3wYN/Z/5fwMno=;
-        b=CWhCsYs1K8cRaWZjjUyDmERrj7GmtlK4UGQyCJUT1I8JTzKXG4lnk4AT4Ig6TdPHgC
-         B20goFvVBYZYFjQ8oKF7tNJQ+579pUyigB5x0Gm7V1lXlBk33TdcDMbuQUn1u7ZA2Dmc
-         k074LdWet8dU+ZNQGa9UFvuOhVXZ03ykhTgFdjSS73JKrjpqxtTyrKgFPiXER4rDu4RC
-         Jt5tyxkfw5cawfF0qkXhSDCWBPUJ+AZdCvWiRDYiVVZFid3Wo1FkVqYBlePz0xigpXWh
-         ukppEzsOgoJoK1/m3zpkBYvsb7DkKn/1roUiZKvs9xG7yQU2NqbfMc7HSTuWdgLmBioP
-         It0w==
+         :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
+         :mime-version:references:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=cjJ+fnfLw0yG27JqRqzoRy45hsKEOPxRf3O0DmrIim4=;
+        b=fARHwLosTHY7xd5bs+Lc0CcT//MSOxCXCifjKrTJyBrs2bj2Z546lBJ1cD1lAyO1+E
+         hODpN74JqVxd7JYPinNDHfAFg/5GiwNsXAquUH4mJW1Wh1TWRfL996NEwlSA3IFHCLGh
+         Xsh1ZFSiKkTF+W9SuhcgJM2oe5XK1bBL9aVj3rwknXqUkFDJB1yfAx5eWZY78VnVZAYQ
+         z+/pp9vZvVqB3jEbdbJ267H8JRI1B3hGXKR/kMSREDjXje1O9g/0UMSGoKoEoCrZO9G6
+         XbNySiq1NF+nQLQAbLFW2GsWFYIMF6dBDsj2mUSmXrSg1ws9sZHkPlDo3QRPWlUCkgEF
+         UVvA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="L1+Msx/z";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GyGKCnXT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f88si12778526ybi.75.2020.11.13.13.23.34
+        by mx.google.com with ESMTPS id w64si548078yba.356.2020.10.26.23.57.26
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 13 Nov 2020 13:23:35 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 26 Oct 2020 23:57:26 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b="L1+Msx/z";
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:36964 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=GyGKCnXT;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:39494 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kdgXe-0005tW-DB
-	for alex.bennee@linaro.org; Fri, 13 Nov 2020 16:23:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56210)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kXIv7-0004OG-Nw
+	for alex.bennee@linaro.org; Tue, 27 Oct 2020 02:57:25 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:44284)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kdgSu-0003A9-AQ
- for qemu-arm@nongnu.org; Fri, 13 Nov 2020 16:18:41 -0500
-Received: from mail-pg1-x542.google.com ([2607:f8b0:4864:20::542]:42780)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kdgSr-0005XR-EX
- for qemu-arm@nongnu.org; Fri, 13 Nov 2020 16:18:39 -0500
-Received: by mail-pg1-x542.google.com with SMTP id i13so8106541pgm.9
- for <qemu-arm@nongnu.org>; Fri, 13 Nov 2020 13:18:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=1z2TQOjD4yoRTyAbO1fFLqWdCztBSj3wYN/Z/5fwMno=;
- b=L1+Msx/zPaZWM5og28DxwKLsTameZAkhrFm9bnLHkNk+We/yCBHbaJqAX0Ch3xLh7x
- ssvCQn7juTgBObm67LQn4KELvH3TFAcbpo3yvha7NgiinGNdX1VvWIgux9DL0FJ59L7u
- l1xSeBls+WSdzK8BfGrKBBLHZ4axT/NwpXrRroOEIKXjtt5s2GfiO/jUq91PQlaY94N+
- AMtJlBAnpyysZvkABmqJh2k7QZrulwi8FQUE8s7ZG+sOVwqbOzNW9UnEdMjSH14tI59z
- FafQGuUEvdP0gjKMYJ7SBrH7q4Uje37NjPsoMPR+MmzzXga9LJBTAS7MXwzE5km2qdDR
- XfTw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=1z2TQOjD4yoRTyAbO1fFLqWdCztBSj3wYN/Z/5fwMno=;
- b=tqwKj2b9T7zmr1xf5smE01g+EHejiC81vm/qacbhojSg1JLkHMn7rnIRlODCgu45wq
- x4AELe0PRIHhjLXrcXAAcEk3PrzhC1qxotJ/GRxUyjkMByza9eH2azqQTdE8gJz6hCev
- urgS9YMGGzQEG+5p7n9EEKNuZfk7u3RM3bKs8393gN2+noMFfI+BvgGG06stL9tviadH
- 5IrkkuxF1Be2l8Q/iSi67BNH03HX44U7UBYmIQpdPJO5gFCNha4ZLP9nNZp4r9xl0frs
- UOrtS1RBIq17N8iBfaU0faqNLs0eM+Sl9zfXX6s7vH5FZz8+exWyZMSSP8+tZMoDyAPs
- /sfg==
-X-Gm-Message-State: AOAM533FCNc7AkJphOwQbm05rSXir1VW/1kVEToHTMlwZDshxfUKVv5f
- nNqDO7cLh0WsUS6HnAFSGADUHw==
-X-Received: by 2002:a17:90b:30d0:: with SMTP id
- hi16mr4665227pjb.144.1605302315516; 
- Fri, 13 Nov 2020 13:18:35 -0800 (PST)
-Received: from [192.168.1.11] ([71.212.141.89])
- by smtp.gmail.com with ESMTPSA id a3sm11077390pfd.58.2020.11.13.13.18.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 13 Nov 2020 13:18:34 -0800 (PST)
-Subject: Re: [PATCH 01/17] target/arm: remove redundant tests
-To: remi.denis.courmont@huawei.com, qemu-arm@nongnu.org
-References: <5554493.MhkbZ0Pkbq@basile.remlab.net>
- <20201109141020.27234-1-remi.denis.courmont@huawei.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <38693f30-7eb5-69db-b010-4471e0707699@linaro.org>
-Date: Fri, 13 Nov 2020 13:18:32 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kXIuM-0004NU-1T
+ for qemu-devel@nongnu.org; Tue, 27 Oct 2020 02:56:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:53287)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1kXIuI-0001hG-TA
+ for qemu-devel@nongnu.org; Tue, 27 Oct 2020 02:56:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1603781792;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=cjJ+fnfLw0yG27JqRqzoRy45hsKEOPxRf3O0DmrIim4=;
+ b=GyGKCnXTy+0yyv8BiuVYfUKLyg8YMR5xnVJQURfjl3jLIoAH2zngPiNPp875KX2X0yQDKm
+ 0m6zmfc4OHrC0D8ofVXJnjMUjbDWys8RM22MSQf2oN0oOfp5Xh1Q8hJvCQSvNvRCOgtZGV
+ WsGcixz7+UFLFCWzfKjGkPHMHszdhl0=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-186-b4qFGpgfMM-cwR1dA7NmWw-1; Tue, 27 Oct 2020 02:56:30 -0400
+X-MC-Unique: b4qFGpgfMM-cwR1dA7NmWw-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.phx2.redhat.com
+ [10.5.11.12])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D24D81006CA4;
+ Tue, 27 Oct 2020 06:56:28 +0000 (UTC)
+Received: from sirius.home.kraxel.org (ovpn-114-66.ams2.redhat.com
+ [10.36.114.66])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 2EF5E60FC2;
+ Tue, 27 Oct 2020 06:56:22 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 50AF39D0D; Tue, 27 Oct 2020 07:56:21 +0100 (CET)
+Date: Tue, 27 Oct 2020 07:56:21 +0100
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 0/8] arm/virt: add usb support
+Message-ID: <20201027065621.d7y7g2rtrdu3slyn@sirius.home.kraxel.org>
+References: <20201023071022.24916-1-kraxel@redhat.com>
+ <CAFEAcA-gEeHUJtuF9CX4XhXh6dnANNut-TJWz0nM8obAmMa3yA@mail.gmail.com>
+ <20201026070117.5ovcm4ep6iohjyfh@sirius.home.kraxel.org>
+ <CAFEAcA8vWzGQ3SG8bHzYwitqOat7fx71Kqs8tPQ8ZV6uWLHKXQ@mail.gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <20201109141020.27234-1-remi.denis.courmont@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::542;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x542.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+In-Reply-To: <CAFEAcA8vWzGQ3SG8bHzYwitqOat7fx71Kqs8tPQ8ZV6uWLHKXQ@mail.gmail.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.12
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=kraxel@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/27 01:06:07
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rNPfBVmapgx+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: Laurent Vivier <lvivier@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Sai Pavan Boddu <sai.pavan.boddu@xilinx.com>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Richard Henderson <rth@twiddle.net>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: l+sfR8OJC3At
 
-On 11/9/20 6:10 AM, remi.denis.courmont@huawei.com wrote:
-> From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+  Hi,
+
+> > Well, pci seems to come with some extra resource needs (see -M pc vs.
+> > -M q35 memory footprint differences discussed some months ago).  Thats
+> > why microvm started without pci support, and even now with pcie support
+> > added it is optional (and off by default).
 > 
-> In this context, the HCR value is the effective value, and thus is
-> zero in secure mode. The tests for HCR.{F,I}MO are sufficient.
-> 
-> Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-> ---
->  target/arm/cpu.c    |  8 ++++----
->  target/arm/helper.c | 10 ++++------
->  2 files changed, 8 insertions(+), 10 deletions(-)
+> I think PCI is too useful to discard.
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Discard is out of question of course.  I'd only add the option to
+disable it if not needed.
 
-r~
+> You can run anything you want (practically) via PCI. If we make it
+> optional then we're going to give ourselves the task of reimplementing
+> memory mapped versions of all the functionality it gives us,
+
+No.  Well, at least it would not be *my* plan to reach feature parity.
+I'm just trying to make available what we have.
+
+The mmio versions of usb host adapters are needed anyway to emulate some
+SoCs.  Describing them in device tree / ACPI is standardized so they
+just work without additional changes on the guest side.  So this is
+really just adding the device to the machine, adding a device tree node,
+adding a acpi dsdt entry (roughly a dozen lines of code each).
+
+Having virtio(-mmio) and usb is enough to cover alot of use cases.
+Especially on arm where virtio-gpu is the only display device option.
+
+> all of which is extra code and all of which adds to the
+> amount of stuff on the guest-to-QEMU security boundary.
+
+usb is off by default so it doesn't add anything unless you
+explicitly ask for it.
+
+Oh, and pci adds some non-trivial stuff to the guest-to-QEMU
+security boundary too ...
+
+> I think to be persuaded that no-PCI was a good idea I'd
+> want to at least see solid figures based on doing this
+> for Arm and on having put a lot of effort into slimming
+> down the PCI handling code/overhead in the guest and still
+> not being able to get near an MMIO setup. That is, try the
+> "improve the guest" approach first.
+
+Ok, fair enough.
+
+take care,
+  Gerd
+

@@ -1,166 +1,136 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4166032lfa;
-        Tue, 27 Oct 2020 13:44:31 -0700 (PDT)
-X-Received: by 2002:a05:6e02:111:: with SMTP id t17mr3620351ilm.79.1603831470955;
-        Tue, 27 Oct 2020 13:44:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603831470; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4212006lfa;
+        Tue, 27 Oct 2020 14:56:04 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx14p6gD/FyPAecHNPvb8stFDlbP5XfY9QtecAC3Za56We0+OeCyg8DQMNZvIfFUVxZDWEP
+X-Received: by 2002:a65:51c8:: with SMTP id i8mr3641565pgq.142.1603835763966;
+        Tue, 27 Oct 2020 14:56:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603835763; cv=none;
         d=google.com; s=arc-20160816;
-        b=ILNETI5a8iSH7W0pjZYV/93rRl+HpAc8gBDbd7B2owLTRBvrP0mhgCd2/9aO7+8zWH
-         rGDsBP2iNZmk66XrQX4UE8az7SSelUxbD350NavwDF4m8yje+7I4Z7XWLpe/uY74+EKF
-         rpZU55Z8CT82TZRgT4Rq1eBoklyk4Vbbl9toTh1oaTrdDFtrETRml18KMu7AKzaOlkoR
-         HkxpbcrT85zzj7NHNkHoFiqUsZsygwflvj8n9y0MmE8T17u4Z2W0tb7L41W+WaA/S4dj
-         xLcelSr0JRF8OlHwDLgwzGXzR2Nk12jw/KM9RX+7AfFP1yzSgC8XUQD0/Z1pbg5coatS
-         6f0A==
+        b=EE+5DnWMYeGipIjI4DHbHinLGvttmKy9XtNeqnmy58nTFO5mqrEkyuoe0ugYWJUvK7
+         X5DR3HdGWflwHtg9mTv6kD4QUqjNytQz6+LwufGt9xlAPARcVJSEy7TbZp6O3RxUEjpi
+         XM3eKmanKHeSWzeu/Pwel0gei+jCuCjY9qPIgF/t+NXlGlzRpVFpQKW2P5FrDjP1SUmh
+         u1psHkH5r7AheWCQDdkWNsf025BvJiiHIfXMYr6Hb7pdd16vgzDkVj8R9CAucb3yyuHQ
+         pIo2adYYUX4w9JJkMTli0U+u2GqnCb0f4XoQQcMSb0cyDQapHya5Wcn5vakPYOXV74QR
+         itWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=geKCiEuVs4Vr5RFHereyk+gtB55kHNUfsY0dTfRlKTU=;
-        b=PO2xzqTUhyUaEFvowmHpuBYpP2XZlYNqe04L0g2Hv9xUI2zHOS4N2K+ZX1GeVKwRBw
-         JqgtBh0naIKH0nq/q/9O/1sLuETVrNXRVCue1V0vjA5og+E4DfduLQDl11C5drEEvLtz
-         Kq2CV7ud63txWCGds2m3r9BH4t88AYlZGA5VXL2R6JNw2HT/1jcVMan1yVWgIayik45c
-         5ofKotZMYCY+45cJhEbLN6mNmy3UQBPDX5VIu6XLGH//51TOTn0eWxeBfIda2db/DQoh
-         xxLotR5BVKhTkNGMrjGTsYD5jERAOpk2h4u2K8l/V2D5oymBXmpDGyN38aUd8hBuulei
-         ZXoA==
+        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
+         :from:dkim-signature:dkim-signature;
+        bh=Sz74ry0FfCdAGhiILIHiuiAdWUtHfrG1cZXfWE/3Znk=;
+        b=x0+1uLCwQi6l+8ztV846QFu3QBJksNv8Lc4o2rH4giumTHlogtWEhnW0Rb+d87tGYB
+         xVCQkcGnTGSUIiVzGYEKZwcFz02lUerTnGkKgyhZu0wF7XqofxnZ6mCt5ynYpqWFpMJA
+         9OVdPz7PJdSszwfCbpn6/rC5VTSZqHdJG5ZK3EcRaeFWmKKEvyII6jZNDU58LgSD94HN
+         5LFdA2btESoBWOk09vhZp5HQa5QrZ+GD3nuiUYIyN+q+XLfIMKvbH9E3giWTY0YZfayj
+         D4DwC9ufj8dDnJG0jT07jNik9y+A2EF2m7kNUuAOyE3Up/78rnCEKob9yOXAC7Bm6bML
+         oKHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="IWGM/oVb";
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <alistair23@gmail.com>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id l69sor1892670ill.44.2020.10.27.13.44.30
-        (Google Transport Security);
-        Tue, 27 Oct 2020 13:44:30 -0700 (PDT)
-Received-SPF: pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=cAx+ERVB;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=cAx+ERVB;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Return-Path: <keithp@keithp.com>
+Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
+        by mx.google.com with ESMTPS id f14si2459564pfn.212.2020.10.27.14.56.03
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Oct 2020 14:56:03 -0700 (PDT)
+Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@gmail.com header.s=20161025 header.b="IWGM/oVb";
-       spf=pass (google.com: domain of alistair23@gmail.com designates 209.85.220.65 as permitted sender) smtp.mailfrom=alistair23@gmail.com;
-       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20161025;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=geKCiEuVs4Vr5RFHereyk+gtB55kHNUfsY0dTfRlKTU=;
-        b=IWGM/oVbSNgJ4SPQ0iYUo96HuJjPDiDezcjt1bWKy01J9BJHWEo8VkwYyxAOOQ+egt
-         PUWYxcoS/b+n9GJtEhRw2yZqBWPnKITadQGwAAhCo0U3pr2jH/K1lT0HJ2VklAjQ1Oh5
-         DJchF2rTHZJrzqxcLZLGkW+CKfY7i6BR4LQylSGy4nn7cAfCU+8KQG/TAt1Oj/ViWl0d
-         R9S8+ujgqDJNyMjHFLFlUq/lMQyFX1O+6j7D6o1hPcTI9mRgMs+Y0P0PdNwtzUxFq6C6
-         3NTA1RKzC8d2qZGwkC31P9Nu7J9fm6gGQUeTgCZvn+9QB+h2sWTMHCMs7fmrt7mjD9AN
-         3Ftg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=geKCiEuVs4Vr5RFHereyk+gtB55kHNUfsY0dTfRlKTU=;
-        b=SP9NhzhPpGp1OywfNDmh0SKk56m/EDYaHmN7uT8wvtrY4akHzLdruKORCFr4PSmkMQ
-         xEaoa51FvwcDpd5zC3erSN01zJ5UZTE4+GDffy07a9lTfXV/oHTT/UPvFiuettlFsyUx
-         WVxRtzgwIor9FnzpWMjRiRnVF4+2gWWTyqCfpRmRN37H1k324WQBoAHiwv0NpIK3mCI8
-         W7t5BUVJV5e6V/zbdRomxecjNvn6/AEMM/SFiVo67XdSgJcnjhZmq/wiMI+nKhfl3vHz
-         8R8AE/D46Fx2THdvp/Kx4kolXVy2CRwyJaLU0QCeiicet6UKw5kzEb8F/kFMKPPe63mb
-         Vk4g==
-X-Gm-Message-State: AOAM531q+ca8QzX4i+gCGUMROk/gAQqQxnWnq4vAa5ogsu4eTP74xm5l
-	8GwLfa0vLQEas8/yvrDHkR7BWL9ZhasCJ8za8mE=
-X-Google-Smtp-Source: ABdhPJwnqLZsLikrq+Hmvm9NLslm4HdoWMQ4BnKfLW2n0tA+GJETTLLbMb1eCw5FGI0UgjDSbbcVpx/TWZors3eW29M=
-X-Received: by 2002:a05:6e02:c:: with SMTP id h12mr3585818ilr.177.1603831470526;
- Tue, 27 Oct 2020 13:44:30 -0700 (PDT)
+       dkim=pass header.i=@keithp.com header.s=mail header.b=cAx+ERVB;
+       dkim=pass header.i=@keithp.com header.s=mail header.b=cAx+ERVB;
+       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
+Received: from localhost (localhost [127.0.0.1])
+	by elaine.keithp.com (Postfix) with ESMTP id D45213F2DD88;
+	Tue, 27 Oct 2020 14:56:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1603835762; bh=LFRed8aLrEhFr9/H0YfC2FHgLemVaokq/v9X3p0bp+M=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=cAx+ERVBgsVYaJnPv1wxQ10jPAhBgdInxCU9S6Dw0zhIeHuZd78D4Y3YcHRUDVrJ5
+	 dVF4t29HTGEOm9UpWQBKqT/p4q0i63o1wizr80O0d7oCm/2U5Tq4sdfnvsjGSLJH42
+	 T0qQpkbgiBvA+rmLU+kyeTLVQPigF8n4fdFmtjgM6kiAYM4WDAfUlsQmZp5w0vdrXQ
+	 ZJ+1fFrsUuO7N0BzPofOaPjRyMqENXReCyBLDgm/D9ewYvt+C1IC7weuXWTMMck0Qj
+	 ECsQTciR8kdTOB3c3YwVzqZ6pVoJBaOVXcdBntyzdeZ8bbi5E9XhlRZPrHOq1DnRB/
+	 5ZTbLTNGETOSg==
+X-Virus-Scanned: Debian amavisd-new at keithp.com
+Received: from elaine.keithp.com ([127.0.0.1])
+	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
+	with LMTP id Q0jRHPqt_1AB; Tue, 27 Oct 2020 14:56:02 -0700 (PDT)
+Received: from keithp.com (koto.keithp.com [10.0.0.2])
+	by elaine.keithp.com (Postfix) with ESMTPSA id 6F4573F2DD87;
+	Tue, 27 Oct 2020 14:56:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
+	t=1603835762; bh=LFRed8aLrEhFr9/H0YfC2FHgLemVaokq/v9X3p0bp+M=;
+	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
+	b=cAx+ERVBgsVYaJnPv1wxQ10jPAhBgdInxCU9S6Dw0zhIeHuZd78D4Y3YcHRUDVrJ5
+	 dVF4t29HTGEOm9UpWQBKqT/p4q0i63o1wizr80O0d7oCm/2U5Tq4sdfnvsjGSLJH42
+	 T0qQpkbgiBvA+rmLU+kyeTLVQPigF8n4fdFmtjgM6kiAYM4WDAfUlsQmZp5w0vdrXQ
+	 ZJ+1fFrsUuO7N0BzPofOaPjRyMqENXReCyBLDgm/D9ewYvt+C1IC7weuXWTMMck0Qj
+	 ECsQTciR8kdTOB3c3YwVzqZ6pVoJBaOVXcdBntyzdeZ8bbi5E9XhlRZPrHOq1DnRB/
+	 5ZTbLTNGETOSg==
+Received: by keithp.com (Postfix, from userid 1000)
+	id 419C21582210; Tue, 27 Oct 2020 14:56:02 -0700 (PDT)
+From: "Keith Packard" <keithp@keithp.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Laurent Vivier <laurent@vivier.eu>, qemu-arm
+ <qemu-arm@nongnu.org>, Palmer Dabbelt <palmer@dabbelt.com>, Alistair
+ Francis <Alistair.Francis@wdc.com>, Sagar Karandikar
+ <sagark@eecs.berkeley.edu>, Bastian Koppelmann
+ <kbastian@mail.uni-paderborn.de>, "open list:RISC-V"
+ <qemu-riscv@nongnu.org>
+Subject: Re: [PATCH 1/4] semihosting: Move ARM semihosting code to shared
+ directories
+In-Reply-To: <CAFEAcA-0_WLMP1Y1sgcu7Ng+0w8Ovt9DVWzYU8ZA_FA2+bwcUw@mail.gmail.com>
+References: <20201026212853.92880-1-keithp@keithp.com>
+ <20201026212853.92880-2-keithp@keithp.com>
+ <CAFEAcA-0_WLMP1Y1sgcu7Ng+0w8Ovt9DVWzYU8ZA_FA2+bwcUw@mail.gmail.com>
+Date: Tue, 27 Oct 2020 14:56:01 -0700
+Message-ID: <87pn53e3ke.fsf@keithp.com>
 MIME-Version: 1.0
-References: <20201026212853.92880-1-keithp@keithp.com> <20201026212853.92880-2-keithp@keithp.com>
-In-Reply-To: <20201026212853.92880-2-keithp@keithp.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 27 Oct 2020 13:32:40 -0700
-Message-ID: <CAKmqyKPFAz=UhDAYC7frbeNgPOUYST_wcKO5u_5hugwRRZanMg@mail.gmail.com>
-Subject: Re: [PATCH 1/4] semihosting: Move ARM semihosting code to shared directories
-To: Keith Packard <keithp@keithp.com>
-Cc: "qemu-devel@nongnu.org Developers" <qemu-devel@nongnu.org>, =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
-	Laurent Vivier <laurent@vivier.eu>, Peter Maydell <peter.maydell@linaro.org>, 
-	qemu-arm <qemu-arm@nongnu.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
-	Alistair Francis <Alistair.Francis@wdc.com>, Sagar Karandikar <sagark@eecs.berkeley.edu>, 
-	Bastian Koppelmann <kbastian@mail.uni-paderborn.de>, "open list:RISC-V" <qemu-riscv@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: ySgos8n6085j
+Content-Type: multipart/signed; boundary="=-=-=";
+	micalg=pgp-sha256; protocol="application/pgp-signature"
+X-TUID: H7ppNiHBgGqp
 
-On Mon, Oct 26, 2020 at 2:34 PM Keith Packard via <qemu-devel@nongnu.org> wrote:
->
-> This commit renames two files which provide ARM semihosting support so
-> that they can be shared by other architectures:
->
->  1. target/arm/arm-semi.c     -> hw/semihosting/common-semi.c
->  2. linux-user/arm/semihost.c -> linux-user/semihost.c
->
-> The build system was modified to reflect this change, but the contents
-> of the two files are unchanged.
->
-> Signed-off-by: Keith Packard <keithp@keithp.com>
+--=-=-=
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Alistair
+>> +specific_ss.add(when: 'CONFIG_TCG', if_true: files ('common-semi.c'))
+>
+> I think this adds this file to the compilation for all TCG targets;
+> you only want it for targets which have Arm-semihosting-ABI compatible
+> semihosting. (Various other targets either don't have semihosting
+> or have their own ABI.)
 
-> ---
->  target/arm/arm-semi.c => hw/semihosting/common-semi.c | 0
->  hw/semihosting/meson.build                            | 2 ++
->  linux-user/arm/meson.build                            | 3 ---
->  linux-user/meson.build                                | 2 ++
->  linux-user/{arm => }/semihost.c                       | 0
->  target/arm/meson.build                                | 2 --
->  6 files changed, 4 insertions(+), 5 deletions(-)
->  rename target/arm/arm-semi.c => hw/semihosting/common-semi.c (100%)
->  rename linux-user/{arm => }/semihost.c (100%)
->
-> diff --git a/target/arm/arm-semi.c b/hw/semihosting/common-semi.c
-> similarity index 100%
-> rename from target/arm/arm-semi.c
-> rename to hw/semihosting/common-semi.c
-> diff --git a/hw/semihosting/meson.build b/hw/semihosting/meson.build
-> index f40ac574c4..fbd2841e59 100644
-> --- a/hw/semihosting/meson.build
-> +++ b/hw/semihosting/meson.build
-> @@ -2,3 +2,5 @@ specific_ss.add(when: 'CONFIG_SEMIHOSTING', if_true: files(
->    'config.c',
->    'console.c',
->  ))
-> +
-> +specific_ss.add(when: 'CONFIG_TCG', if_true: files ('common-semi.c'))
-> diff --git a/linux-user/arm/meson.build b/linux-user/arm/meson.build
-> index 432984b58e..5a93c925cf 100644
-> --- a/linux-user/arm/meson.build
-> +++ b/linux-user/arm/meson.build
-> @@ -1,6 +1,3 @@
-> -linux_user_ss.add(when: 'TARGET_AARCH64', if_true: files('semihost.c'))
-> -linux_user_ss.add(when: 'TARGET_ARM', if_true: files('semihost.c'))
-> -
->  subdir('nwfpe')
->
->  syscall_nr_generators += {
-> diff --git a/linux-user/meson.build b/linux-user/meson.build
-> index 2b94e4ba24..2fdd12cee5 100644
-> --- a/linux-user/meson.build
-> +++ b/linux-user/meson.build
-> @@ -17,6 +17,8 @@ linux_user_ss.add(rt)
->  linux_user_ss.add(when: 'TARGET_HAS_BFLT', if_true: files('flatload.c'))
->  linux_user_ss.add(when: 'TARGET_I386', if_true: files('vm86.c'))
->
-> +linux_user_ss.add(when: 'TARGET_AARCH64', if_true: files('semihost.c'))
-> +linux_user_ss.add(when: 'TARGET_ARM', if_true: files('semihost.c'))
->
->  syscall_nr_generators = {}
->
-> diff --git a/linux-user/arm/semihost.c b/linux-user/semihost.c
-> similarity index 100%
-> rename from linux-user/arm/semihost.c
-> rename to linux-user/semihost.c
-> diff --git a/target/arm/meson.build b/target/arm/meson.build
-> index f5de2a77b8..15b936c101 100644
-> --- a/target/arm/meson.build
-> +++ b/target/arm/meson.build
-> @@ -32,8 +32,6 @@ arm_ss.add(files(
->  ))
->  arm_ss.add(zlib)
->
-> -arm_ss.add(when: 'CONFIG_TCG', if_true: files('arm-semi.c'))
-> -
->  arm_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c', 'kvm64.c'), if_false: files('kvm-stub.c'))
->
->  arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
-> --
-> 2.28.0
->
->
+Right. These should have been target-specific source sets so that the
+file was only added to those targets:
+
+        arm_ss.add(when: 'CONFIG_TCG', if_true: files ('common-semi.c'))
+        riscv_ss.add(files('common-semi.c'))
+
+This appears to work in my testing (building arm, risc-v and x86_64
+configs).
+
+=2D-=20
+=2Dkeith
+
+--=-=-=
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl+Yl3IACgkQ2yIaaQAA
+ABF23hAAshIh90c2syeOD7e72vZAmKyR3UdxiwRRaobis2M5HEosF8bVTuuYoP+Z
+TOE4wV1NK5Z0V2tWcLQ9cJwqwG467Idw5ZGQxgXwe/4D1jf7x9QZZiXhqgqdcb8A
++4AUkGLjFVZMn/hoOt7MWLhLSmBIu2AeZmEfdxEwZN67sb5db8kj1nL429+2g8J5
+8bYpoOsbWSGkrYWvm30QbLNiyzndSau0rErgbLf5cRbFDna/saKTKu+t5S+zXt1R
+BVu1rFUAD7QgICp8eTOtdmBIt5coNGbk6oQMBlj/TRVatWPl57L34rA+6l1/mrWc
+fQjBwe8+BHYxjNaSRN6mMYs/5CxcaNlPNXUTFI2TLIpy9IS6DzzuY2IjHw6qoaz8
+y5krhOXkkBQ3Q4riz7zpF/VlH+MEn+Ipmc1wMAgTT+3OP8cKropWIwk//qF00HMy
+oAkJpZrYNfTvyMVfHGseg3HvrySxsomMWq6X8StXqSG9Y99f3jCOvpL1bF2UCX0m
+lsBNAfU2F3kFcv96lB21tMy+ED9SgagV6q/kVzgiDOarGlxDr9MwHs88LvI2J9JL
+61pV/LIQIp1RueHtExqxQ5427e9uEP0f/c57gFUY/J296pDiVqwhe7aGPjlpZ998
+SMkwmYTRz1N4SPnnd9Bd5THWOyVtM/znBBmWXAd2qGRf+oQHXlw=
+=/2q0
+-----END PGP SIGNATURE-----
+--=-=-=--

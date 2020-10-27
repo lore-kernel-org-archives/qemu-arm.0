@@ -1,559 +1,228 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3793544lfa;
-        Tue, 27 Oct 2020 05:57:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwGWnw7sw8mtbXOOSJhJH3DS7dbKVdmKQxRlVTFGn8rqQN7Nn+lljlLcScpN31B0sSXLxty
-X-Received: by 2002:a0c:c187:: with SMTP id n7mr2176864qvh.19.1603803464016;
-        Tue, 27 Oct 2020 05:57:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603803464; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3834441lfa;
+        Tue, 27 Oct 2020 06:43:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyb5lqk7AZBB0oAjMT092HmjdrGmjOfpnZdVVkfPBHmBukwfU1ZB9S66H5RQVTy6JrpzLhO
+X-Received: by 2002:a05:6902:4f4:: with SMTP id w20mr3170124ybs.4.1603806197263;
+        Tue, 27 Oct 2020 06:43:17 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1603806197; cv=pass;
         d=google.com; s=arc-20160816;
-        b=FKPW26eMHl+y2uulAJRKUdJjg3Xm/NkUosKTHdXmT9eG/tfeJCD4Ol+BgDOUEsCXRg
-         Rl+Z7LWTbaNlXO8dhXx9TmlR+/rFnJXMKPfca1NdX6C81boiX+LkSOyPIr4uFIaNofhb
-         FdqSVZmS/3PS4HlANE+fDsZc1njWPWUE9BFlhMolYu1g4Uf6Eqmwu2nDg1/4eNKpj9Tj
-         pDKKTHuvUiBGO0ryYF1Ugp2t8+yF8F3mwZsEGCzqpMiVaeVRYRFSpdwNw8oAiSqEj3Gp
-         UnKzQkjMsdhnmnuAhIHkFR5XSUrzveELPJoQIUHlSzcIQr4/cn8iMFQChZwk7d5UP1/M
-         asRg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:subject:organization:from:references:to:dkim-signature;
-        bh=j1tmSouP9FgoLprIKqNcsQXgs78EzsKHxuFhXXG5kZI=;
-        b=zn2FvcmkdKVwR5m0l7fuvL4/7R7LB+lZAAF/IEkqEI31vGGbVKpTScmeh0epn1Emea
-         y6ZySzlePCWn7KD4L7t4Qr+hA1iLtYEbZ1Sv3QqH9NbCY0TNz4vhon7TyLtMEsar+Ab4
-         2jI37iMtjWgmJsrtXw/d3RIwlzbqhtcF8ruM8xTSXYCKlsVF70pDC8a6VHKHCnk4DqcF
-         3YFjpaXZLEP/ZRFjp/fieVxt4QcMIrZbuU2nek9Of8Ko1N78x3jyoFkBO0eFEk74v30m
-         +lfCaVcQu05JDn5rKedY4LmC6GMgm3g9Zdtz1v6vganW/DAFc5G8f40Vkott97t8TbtE
-         515Q==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=f3XRPqPL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+        b=jUfAVQKq7Ds0WNmLSDgBtKNhjV7pNngIx6F9sfXG9vvJyQaRoIvrm6F4/CyvNXZV/g
+         KTo6w/SM2u1DnwgcIyCQHJRDt7DTkiI1hetV0UkW3lr6EigQQ0D8k8vfoEIsSEGeasiw
+         JhDwf6MCGKm+0dY5YPzQazmHz5Pos7kaShtBnXuxzwyXuC7eJigQxviYDsnqRO1YBiJG
+         xS7TGVUm0l1UDQGJS1mukCLhvnw+7xaO07/2J39LzGqM+YEX2oogqYcdPh/EhRDilxLa
+         IE4uQt46QzP1UgAOK3m7nU+Kl5ln6Jrf7txBjSNC9WfRY+Q83MKt3nEc/HUO2w6tnpCZ
+         G/MQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-language:in-reply-to:user-agent
+         :date:message-id:from:references:cc:to:subject:dkim-signature;
+        bh=GCPFqlfT9Kwk8ANq/EHfpeX0xL2k5a/97uANnLnOBMo=;
+        b=oOYfGzMaLFhDxplfl29cbOxKUgrrGUUruLd3Z4wbupitAtJ3rngo3HWNRm8qUmfsOa
+         cQqpFiU9i6KKUeMxvMcL+yeoa84CCPHRNKt4mf+cJ3j6223HDaA6rSizbFucPQ7TLu0J
+         Wa7eXQlxuLeP6USocuJ8VCB1sejWAIOAKe8SxTgnPO7a2c32HYQW2rTlZ0OpX5M2/hZ+
+         cQRe8pEEdSx3wKsqDgnu/oNJAq1JTJbnSijxFM2o+3SXGEtBcq52xcIjRRVAJw1SZZ7c
+         PcvXTxUcshvc+ZyiD/CbE5yy3YYK9hlcSlucYaZc0I+8h8OZuCENL4LeA+OOTEfbFzvY
+         sL+Q==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=qVwk0hUU;
+       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=virtuozzo.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z15si746886qka.354.2020.10.27.05.57.43
+        by mx.google.com with ESMTPS id c127si1940493yba.167.2020.10.27.06.43.17
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Oct 2020 05:57:44 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Tue, 27 Oct 2020 06:43:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=f3XRPqPL;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:40226 helo=lists1p.gnu.org)
+       dkim=pass header.i=@virtuozzo.com header.s=selector2 header.b=qVwk0hUU;
+       arc=pass (i=1 spf=pass spfdomain=virtuozzo.com dkim=pass dkdomain=virtuozzo.com dmarc=pass fromdomain=virtuozzo.com);
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=virtuozzo.com
+Received: from localhost ([::1]:40826 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kXOXn-0005kW-DP
-	for alex.bennee@linaro.org; Tue, 27 Oct 2020 08:57:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:36352)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kXPFs-0004TW-I0
+	for alex.bennee@linaro.org; Tue, 27 Oct 2020 09:43:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:60018)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kXO6R-00029M-8e
- for qemu-arm@nongnu.org; Tue, 27 Oct 2020 08:29:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:33160)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1kXO6M-0003Tb-JJ
- for qemu-arm@nongnu.org; Tue, 27 Oct 2020 08:29:26 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603801760;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=j1tmSouP9FgoLprIKqNcsQXgs78EzsKHxuFhXXG5kZI=;
- b=f3XRPqPLztoy43yMKkuCq4+2xGwKMUc1LmgbA68uLGigtbiEJojbmoBa9ldKuRyyD6UmbM
- DoSWOYIc97HGRgVbSYFYWh06+HXgANbAgGZ/XxsGHT7RoOLObRYQtyLnte+yKm/xjZ44Hx
- oOk+owbYjnMqPKYkLyAfPQMZhY6p9nI=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-578-QIr2Vi7CNIi7T_xCOax94A-1; Tue, 27 Oct 2020 08:29:15 -0400
-X-MC-Unique: QIr2Vi7CNIi7T_xCOax94A-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
- [10.5.11.22])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id C17D2809DDA;
- Tue, 27 Oct 2020 12:29:11 +0000 (UTC)
-Received: from [10.3.112.145] (ovpn-112-145.phx2.redhat.com [10.3.112.145])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 739A41002388;
- Tue, 27 Oct 2020 12:28:49 +0000 (UTC)
-To: Markus Armbruster <armbru@redhat.com>
+ (Exim 4.90_1) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1kXPF0-00045C-Vk; Tue, 27 Oct 2020 09:42:23 -0400
+Received: from mail-eopbgr30098.outbound.protection.outlook.com
+ ([40.107.3.98]:53251 helo=EUR03-AM5-obe.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <vsementsov@virtuozzo.com>)
+ id 1kXPEx-0002EC-Jx; Tue, 27 Oct 2020 09:42:22 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=O0yEp5jrghcy5f3aSA+QJPYLLQywpegln0GQmTg4VdDy0xdIvXf2sSNOgrL1XwGGthXApMdZp29oNO2MMojHIm1TgzSSp3MREO7mGJ15P5UKPUQMb6iIm18Puo36aqBa5ts46klzCpxTcPN1A2wE0YHdAAyXMaOhS6wpUV4TpyRmbBAhWhJyEV2nKrGZcpznXsV6vkPQWTNBYFpT1il6l57plZ/ywEKxoqMq7BrdWyAWogP/HZmQ5U9ed3/pNGyL+V2c+LV7SSzv7senI5Gw8lsb2F7txLfbt02cQPUZjpZviCoU5TbeLdtP5hTgxo866FPg/KpEbj3Gd2irv8zo4A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GCPFqlfT9Kwk8ANq/EHfpeX0xL2k5a/97uANnLnOBMo=;
+ b=AjW+kb972DMfPxPKNoGx7HoGJE14qInOkzX0sYLa2R0rLKaJdnHY6gOILSVmJM/jabAxQk4w2XciBry2pW2g997mXd9Ouy1tDS31xSy4SEB3p++8UF2Rpa6NpeDBXRxkEZIuHZFtqC0C/4ELRTmAh97uQFmFxF/VloponQ2f39+hDKZImBe/n5SEUFJ5uy1n13ObWnm63KSoyiUIATdic3NN4T95BFL72j+AHbtDvY6FL7owaEdVA+PWCG9PdzH5ugMUxSr0d795qYn5Xw9zwmSMDWJrWXVHnEnEqHvcLyVrLUxf1hBbYdgJr27acJat6tov+SWyNTnQNMQ6teAKTQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
+ header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=GCPFqlfT9Kwk8ANq/EHfpeX0xL2k5a/97uANnLnOBMo=;
+ b=qVwk0hUUB43E6p7JLBk0yxkxFKKVzDjdcPjlwqNp+rsH7emmcQAHqU5jwI/tUO5SfBPrXW51ZC/abTX3NN2X2F6Tz0pUHavUhBeZagnXGFwQxRj2G4ZV+JMf2U/ZsoCUaGWt4tTMPr4pwv3tb9Ek7W40N1piP9O6scHUyCFQzSo=
+Authentication-Results: nongnu.org; dkim=none (message not signed)
+ header.d=none;nongnu.org; dmarc=none action=none header.from=virtuozzo.com;
+Received: from VI1PR08MB5503.eurprd08.prod.outlook.com (2603:10a6:803:137::19)
+ by VI1PR08MB2928.eurprd08.prod.outlook.com (2603:10a6:802:1e::30)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.22; Tue, 27 Oct
+ 2020 13:42:11 +0000
+Received: from VI1PR08MB5503.eurprd08.prod.outlook.com
+ ([fe80::c1ba:32cf:cd37:712c]) by VI1PR08MB5503.eurprd08.prod.outlook.com
+ ([fe80::c1ba:32cf:cd37:712c%9]) with mapi id 15.20.3455.037; Tue, 27 Oct 2020
+ 13:42:11 +0000
+Subject: Re: [PATCH v6 11/11] qapi: Use QAPI_LIST_ADD() where possible
+To: Eric Blake <eblake@redhat.com>, qemu-devel@nongnu.org
+Cc: kwolf@redhat.com, stefanha@redhat.com, armbru@redhat.com,
+ rjones@redhat.com, pkrempa@redhat.com, qemu-block@nongnu.org,
+ Max Reitz <mreitz@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, Jiri Pirko
+ <jiri@resnulli.us>, Jason Wang <jasowang@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Juan Quintela <quintela@redhat.com>,
+ "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
+ Michael Roth <mdroth@linux.vnet.ibm.com>,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Richard Henderson
+ <rth@twiddle.net>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
+ <f4bug@amsat.org>, Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ David Gibson <david@gibson.dropbear.id.au>, Halil Pasic
+ <pasic@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>,
+ Christian Borntraeger <borntraeger@de.ibm.com>,
+ Thomas Huth <thuth@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ "open list:GLUSTER" <integration@gluster.org>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
+ "open list:S390 KVM CPUs" <qemu-s390x@nongnu.org>
 References: <20201027050556.269064-1-eblake@redhat.com>
  <20201027050556.269064-12-eblake@redhat.com>
- <873620vv3i.fsf@dusky.pond.sub.org>
-From: Eric Blake <eblake@redhat.com>
-Organization: Red Hat, Inc.
-Subject: Re: [PATCH v6 11/11] qapi: Use QAPI_LIST_ADD() where possible
-Message-ID: <677f78ec-4897-558c-1f51-35b6215caf64@redhat.com>
-Date: Tue, 27 Oct 2020 07:28:48 -0500
+From: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
+Message-ID: <dd84c46b-916d-66b0-4e3f-23e4fa9a3f4d@virtuozzo.com>
+Date: Tue, 27 Oct 2020 16:42:05 +0300
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
-MIME-Version: 1.0
-In-Reply-To: <873620vv3i.fsf@dusky.pond.sub.org>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=eblake@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+ Thunderbird/78.4.0
+In-Reply-To: <20201027050556.269064-12-eblake@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/27 01:06:07
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [185.215.60.93]
+X-ClientProxiedBy: AM0PR01CA0136.eurprd01.prod.exchangelabs.com
+ (2603:10a6:208:168::41) To VI1PR08MB5503.eurprd08.prod.outlook.com
+ (2603:10a6:803:137::19)
+MIME-Version: 1.0
+X-MS-Exchange-MessageSentRepresentingType: 1
+Received: from [192.168.100.5] (185.215.60.93) by
+ AM0PR01CA0136.eurprd01.prod.exchangelabs.com (2603:10a6:208:168::41) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3477.23 via Frontend
+ Transport; Tue, 27 Oct 2020 13:42:07 +0000
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id: a2054311-d03b-4fb7-94ef-08d87a7e1b0f
+X-MS-TrafficTypeDiagnostic: VI1PR08MB2928:
+X-Microsoft-Antispam-PRVS: <VI1PR08MB2928A20038C751A365CEB54EC1160@VI1PR08MB2928.eurprd08.prod.outlook.com>
+X-MS-Oob-TLC-OOBClassifiers: OLM:5797;
+X-MS-Exchange-SenderADCheck: 1
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: synR/7A6pIfujENnbXD9RGAwI1GFoWRmbbYJ3AamtODze2NUHEh9SpIiM317CZRuM24Q8OIGrNDivwlE0sa8yIeJ3dLpCvGHjc2RI7VWnExyMkz1u2cVZZPWDd2bhg41dxUzhYEZmxRTG7PhIQgotUxAbbA/BjDw8qwk0vYlUFxQE5TfuFkiBGhjYPLSv9cj1hfL8VPZ+8jjNGCgrNYVd7giyHnHh62q0NnhnDoN3v+IxbCypDpPUW9rs6OShVb6STi/B2RQVm7SVLXrh2tThgu9sG2hL8zsIa+bkszUFkEG3EF3JqV5VOXUJR9Ycmzk4XvhGJos3yKFFpCE1p1LNJPwINmGwjCHwnhYwuSuleH+aLyidcF9+8kw2Bg0tQUC
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:VI1PR08MB5503.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(136003)(39850400004)(366004)(396003)(346002)(376002)(316002)(478600001)(54906003)(16576012)(8676002)(66476007)(66556008)(186003)(4326008)(16526019)(36756003)(26005)(2616005)(8936002)(66946007)(6486002)(86362001)(7406005)(83380400001)(2906002)(52116002)(7416002)(31686004)(5660300002)(31696002)(956004)(43740500002);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData: Ra8o9iw3JpZqMtV6lJNJjah7YFipxpcfH1kXekin4V50qyOXnK/Ba5+YiJMGHJa5xQ5BcdbMc9uSiqQToL5+3+h2Et3dgzDbOPv6h1VutC5WY2D05jjzStxwTuDO0pUq13JFsJ0WStce8PAAcmgj/jxrAPMoBJ6BfJHQMZaF6ynxsR5Xf66VN7/ciKhotD0j2Fz4xPcqnEfWm3lDWKS/3rIrB2Sa4c5bBBSg2Umg1ATWOVNFRn4JdcgrU/MJ+tcBo/yRytS3xY3gUQqBX9VfeRSlQGZhQ7dRma4Jh9dZje9WHb3eWmc1RC1Cz/25CJyZ37i4SdlwWVOSkOsl/S1hhcHBM24ClPAmG72m/dlz1ODOTN5/a+CGbl4HAF0PYZb2X6LVBCj37R7RskbGFldsihyl0+h4EVawCadSRCwQfIO7ML0zIrCVttIPC7PiyZn8seqL4DjcgAY/MC9OCOg/a/+580lSeoSXKCmAKyIAYIAO1WIuqgv+2f2QKurTS/4+4xSO1UWXalqpH5rgn5z42d4hsiHUL1pv1nTgrk2xj0MRoGJp7FPralRuB1GjJZAa1Vy8vh1lGNnW1S7sd/mE1UNoiuc+OhN4aNbCLk8sLdX7YTue9TPode52kaYlj4FmhOvmwRQ9nSs2ESMO2bBVOw==
+X-OriginatorOrg: virtuozzo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: a2054311-d03b-4fb7-94ef-08d87a7e1b0f
+X-MS-Exchange-CrossTenant-AuthSource: VI1PR08MB5503.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Oct 2020 13:42:11.2753 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: nNYcsgpr8CABDxYXeZsGv8qH08P5/FqsWeV2VwfBxW6aL7WDZH7HNl2N5a4r1P5xUtxeRI47y/dF0OTeqBinTl/yRs42e/jgxhAgD97aSyQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI1PR08MB2928
+Received-SPF: pass client-ip=40.107.3.98;
+ envelope-from=vsementsov@virtuozzo.com;
+ helo=EUR03-AM5-obe.outbound.protection.outlook.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/27 09:42:12
+X-ACL-Warn: Detected OS   = Windows NT kernel [generic] [fuzzy]
 X-Spam_score_int: -42
 X-Spam_score: -4.3
 X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.167, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MSGID_FROM_MTA_HEADER=0.001, NICE_REPLY_A=-2.167, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, pkrempa@redhat.com,
- "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
- qemu-devel@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- Juan Quintela <quintela@redhat.com>, David Hildenbrand <david@redhat.com>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@de.ibm.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <rth@twiddle.net>, Thomas Huth <thuth@redhat.com>,
- Jiri Pirko <jiri@resnulli.us>, Eduardo Habkost <ehabkost@redhat.com>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- "open list:S390 KVM CPUs" <qemu-s390x@nongnu.org>, vsementsov@virtuozzo.com,
- stefanha@redhat.com, David Gibson <david@gibson.dropbear.id.au>,
- kwolf@redhat.com, "open list:GLUSTER" <integration@gluster.org>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Cornelia Huck <cohuck@redhat.com>, rjones@redhat.com,
- Max Reitz <mreitz@redhat.com>, "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:PowerPC TCG CPUs" <qemu-ppc@nongnu.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Aurelien Jarno <aurelien@aurel32.net>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: YnUGYZYL9IeN
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: 9tGjFzKrY77N
 
-On 10/27/20 5:09 AM, Markus Armbruster wrote:
-> Eric Blake <eblake@redhat.com> writes:
+27.10.2020 08:05, Eric Blake wrote:
+> Anywhere we create a list of just one item or by prepending items
+> (typically because order doesn't matter), we can use the now-public
+> macro.  But places where we must keep the list in order by appending
+> remain open-coded.
 > 
->> Anywhere we create a list of just one item or by prepending items
->> (typically because order doesn't matter), we can use the now-public
->> macro.  But places where we must keep the list in order by appending
->> remain open-coded.
-> 
-> Should we rename the macro to QAPI_LIST_PREPEND()?
+> Signed-off-by: Eric Blake <eblake@redhat.com>
+> ---
 
-That would make sense if we add a counterpart QAPI_LIST_APPEND.
+[..]
 
 > 
-> How many places append?  If it's more than just a few, an attempt to
-> factor out the common code is in order.  Not in this patch, of course.
-> Not even in this series.
-
-Quite a few.  The most common pattern for appending is like this from
-qemu-img.c:
-
-ImageInfoList *head = NULL, *elem;
-ImageInfoList **last = &head;
-...
-while (...) {
-    elem = g_new0(ImageInfoList, 1);
-    elem->value = info;
-    *last = elem;
-    last = &elem->next;
-}
-
-although I saw several other patterns as well.  And we frequently have
-this comment, such as from block/qapi.c:
-        /* XXX: waiting for the qapi to support qemu-queue.h types */
-
-Several of the existing append spots could be switched to prepend with
-no change to semantics (the resulting list would be presented to the
-user in the opposite order, but the semantics of that item were a set
-rather than an ordered list so other than tweaking the testsuite, it
-would not matter), while others absolutely have to append to maintain
-correct order.
-
-Part of me wonders if it would be worth adjusting the QAPI generator to
-create a head and tail pointer for _every_ FOOList member, rather than
-just a head pointer.  Or to create a function for an O(n) reversal of an
-existing list, then flipping spots to construct lists in reverse order
-followed by a list reverse (no change in big-O complexity, more code
-reuse, but slightly more CPU time). But as you observe, that quickly
-goes beyond the scope of this series.
-
-
->> +++ b/docs/devel/writing-qmp-commands.txt
->> @@ -531,15 +531,10 @@ TimerAlarmMethodList *qmp_query_alarm_methods(Error **errp)
->>      bool current = true;
->>
->>      for (p = alarm_timers; p->name; p++) {
->> -        TimerAlarmMethodList *info = g_malloc0(sizeof(*info));
-
-[1]
-
->> -        info->value = g_malloc0(sizeof(*info->value));
-
-[2]
-
->> -        info->value->method_name = g_strdup(p->name);
->> -        info->value->current = current;
->> -
->> -        current = false;
->> -
->> -        info->next = method_list;
->> -        method_list = info;
->> +	TimerAlarmMethod *value = g_new0(TimerAlarmMethod, 1);
+> diff --git a/docs/devel/writing-qmp-commands.txt b/docs/devel/writing-qmp-commands.txt
+> index 46a6c48683f5..3e11eeaa1893 100644
+> --- a/docs/devel/writing-qmp-commands.txt
+> +++ b/docs/devel/writing-qmp-commands.txt
+> @@ -531,15 +531,10 @@ TimerAlarmMethodList *qmp_query_alarm_methods(Error **errp)
+>       bool current = true;
 > 
-> Can just as well use g_new(), as QAPI_LIST_ADD() will set both members
-> of @value.  Same elsewhere.
+>       for (p = alarm_timers; p->name; p++) {
+> -        TimerAlarmMethodList *info = g_malloc0(sizeof(*info));
+> -        info->value = g_malloc0(sizeof(*info->value));
+> -        info->value->method_name = g_strdup(p->name);
+> -        info->value->current = current;
+> -
+> -        current = false;
 
-Not quite.  Allocation [1] can use g_new() instead of g_malloc0()
-because we fill both members of info, but allocation [2] is unchanged by
-this code transformation (I did not want to research whether the code
-was filling all members of info->value (probably true, but it was
-unrelated to my rewrite).  Switching to QAPI_LIST_ADD is what moves
-allocation [1] into the macro (where it indeed uses g_new), but
-QAPI_LIST_ADD has no impact on the contents of value in allocation [2]
-(which is the only allocation left locally in this hunk).
+You need to keep this line, otherwise logic is broken.
 
-However, the fact that I changed from g_malloc0(sizeof(*info->value)) to
-g_new0(TimerAlarmMethod, 1), instead of keeping it as
-g_malloc0(sizeof(*value)), is indeed a case of me doing a bit more than
-a strict mechanical conversion; this was one of the hunks I touched
-earlier in my audit.
-
-
->> @@ -655,15 +656,9 @@ static int qemu_gluster_parse_json(BlockdevOptionsGluster *gconf,
->>              qemu_opts_del(opts);
->>          }
->>
->> -        if (gconf->server == NULL) {
->> -            gconf->server = g_new0(SocketAddressList, 1);
->> -            gconf->server->value = gsconf;
->> -            curr = gconf->server;
->> -        } else {
->> -            curr->next = g_new0(SocketAddressList, 1);
->> -            curr->next->value = gsconf;
->> -            curr = curr->next;
->> -        }
->> +        *curr = g_new0(SocketAddressList, 1);
->> +        (*curr)->value = gsconf;
->> +        curr = &(*curr)->next;
->>          gsconf = NULL;
->>
->>          qobject_unref(backing_options);
+> -
+> -        info->next = method_list;
+> -        method_list = info;
+> +	TimerAlarmMethod *value = g_new0(TimerAlarmMethod, 1);
+> +        value->method_name = g_strdup(p->name);
+> +        value->current = current;
+> +        QAPI_LIST_ADD(method_list, value);
+>       }
 > 
-> The change to qemu_gluster_parse_json() looks unrelated.
-
-Indeed, this is also one of the earlier files I touched, where I saw
-that our 'append' pattern can be simplified, but it's separate from the
-'prepend' pattern that this patch should be touching.  I guess I'll need
-to clean this patch up to be more strictly mechanical.
-
-> 
->> diff --git a/chardev/char.c b/chardev/char.c
->> index 78553125d311..8dd7ef4c5935 100644
->> --- a/chardev/char.c
->> +++ b/chardev/char.c
->> @@ -776,15 +776,14 @@ static int qmp_query_chardev_foreach(Object *obj, void *data)
->>  {
->>      Chardev *chr = CHARDEV(obj);
->>      ChardevInfoList **list = data;
->> -    ChardevInfoList *info = g_malloc0(sizeof(*info));
->> +    ChardevInfo *value;
->>
->> -    info->value = g_malloc0(sizeof(*info->value));
->> -    info->value->label = g_strdup(chr->label);
->> -    info->value->filename = g_strdup(chr->filename);
->> -    info->value->frontend_open = chr->be && chr->be->fe_open;
->> +    value = g_malloc0(sizeof(*value));
-> 
-> You could use an initializer instead, like you do in the next hunk.  Up
-> to you.
-
-Yeah, the further I got into the manual audit, the less I was rewriting
-code to minimize lines, such as consistently initializing variables at
-their declaration.
-
->> +++ b/hw/core/machine.c
->> @@ -492,11 +492,7 @@ static void machine_set_nvdimm_persistence(Object *obj, const char *value,
->>
->>  void machine_class_allow_dynamic_sysbus_dev(MachineClass *mc, const char *type)
->>  {
->> -    strList *item = g_new0(strList, 1);
->> -
->> -    item->value = g_strdup(type);
->> -    item->next = mc->allowed_dynamic_sysbus_devices;
->> -    mc->allowed_dynamic_sysbus_devices = item;
->> +    QAPI_LIST_ADD(mc->allowed_dynamic_sysbus_devices, g_strdup(type));
-> 
-> Side effect in a macro argument.  Works, because QAPI_LIST_ADD() expands
-> @element exactly once.  Sure we want to rely on it?
-> 
-> If yes, please add a contract to QAPI_LIST_ADD() that documents it.
-
-Multiple instances depend on it, so yes, I think it's worth documenting.
-
-> 
-> More instances below.
-
-Indeed.
+>       return method_list;
 
 
->> +++ b/hw/net/rocker/rocker_fp.c
->> @@ -51,14 +51,14 @@ bool fp_port_get_link_up(FpPort *port)
->>      return !qemu_get_queue(port->nic)->link_down;
->>  }
->>
->> -void fp_port_get_info(FpPort *port, RockerPortList *info)
->> +void fp_port_get_info(FpPort *port, RockerPort *value)
->>  {
->> -    info->value->name = g_strdup(port->name);
->> -    info->value->enabled = port->enabled;
->> -    info->value->link_up = fp_port_get_link_up(port);
->> -    info->value->speed = port->speed;
->> -    info->value->duplex = port->duplex;
->> -    info->value->autoneg = port->autoneg;
->> +    value->name = g_strdup(port->name);
->> +    value->enabled = port->enabled;
->> +    value->link_up = fp_port_get_link_up(port);
->> +    value->speed = port->speed;
->> +    value->duplex = port->duplex;
->> +    value->autoneg = port->autoneg;
->>  }
-> 
-> This cleanup of fp_port_get_info() could be a separate patch.  Up to
-> you.
-> 
-> You could move the allocation into fp_port_get_info(), like this:
-> 
->    RockerPort *fp_port_get_info(FpPort *port)
->    {
->        RockerPort *value = g_malloc0(sizeof(*value));
-> 
->        value->name = g_strdup(port->name);
->        value->enabled = port->enabled;
->        value->link_up = fp_port_get_link_up(port);
->        value->speed = port->speed;
->        value->duplex = port->duplex;
->        value->autoneg = port->autoneg;
->        return value;
->    }
-> 
-> Also up to you.
-
-Yeah, I thought about splitting that one out.  I think you've convinced
-me it is worth it.
-
->> +++ b/monitor/hmp-cmds.c
->> @@ -1248,7 +1248,8 @@ void hmp_migrate_set_capability(Monitor *mon, const QDict *qdict)
->>      const char *cap = qdict_get_str(qdict, "capability");
->>      bool state = qdict_get_bool(qdict, "state");
->>      Error *err = NULL;
->> -    MigrationCapabilityStatusList *caps = g_malloc0(sizeof(*caps));
->> +    MigrationCapabilityStatusList *caps = NULL;
->> +    MigrationCapabilityStatus *value = NULL;
-> 
-> No need to initialize @value.
-> 
->>      int val;
->>
->>      val = qapi_enum_parse(&MigrationCapability_lookup, cap, -1, &err);
->> @@ -1256,10 +1257,10 @@ void hmp_migrate_set_capability(Monitor *mon, const QDict *qdict)
->>          goto end;
->>      }
->>
->> -    caps->value = g_malloc0(sizeof(*caps->value));
->> -    caps->value->capability = val;
->> -    caps->value->state = state;
->> -    caps->next = NULL;
->> +    value = g_malloc0(sizeof(*value));
->> +    value->capability = val;
->> +    value->state = state;
->> +    QAPI_LIST_ADD(caps, value);
->>      qmp_migrate_set_capabilities(caps, &err);
->>
->>  end:
->        qapi_free_MigrationCapabilityStatusList(caps);
-> 
-> This could be moved before the label now.  No need to initialize @caps
-> to null then.  Up to you.
-> 
->        hmp_handle_error(mon, err);
->    }
-> 
-
-Since the conversion was all manual, I don't mind making it look nicer,
-when it is still minimally invasive.
-
-> 
->> diff --git a/qemu-img.c b/qemu-img.c
->> index 2103507936ea..4cfa8bccc5e7 100644
->> --- a/qemu-img.c
->> +++ b/qemu-img.c
->> @@ -1643,14 +1643,13 @@ static void do_dirty_bitmap_merge(const char *dst_node, const char *dst_name,
->>                                    Error **errp)
->>  {
->>      BlockDirtyBitmapMergeSource *merge_src;
->> -    BlockDirtyBitmapMergeSourceList *list;
->> +    BlockDirtyBitmapMergeSourceList *list = NULL;
->>
->>      merge_src = g_new0(BlockDirtyBitmapMergeSource, 1);
->>      merge_src->type = QTYPE_QDICT;
->>      merge_src->u.external.node = g_strdup(src_node);
->>      merge_src->u.external.name = g_strdup(src_name);
->> -    list = g_new0(BlockDirtyBitmapMergeSourceList, 1);
->> -    list->value = merge_src;
->> +    QAPI_LIST_ADD(list, merge_src);
->>      qmp_block_dirty_bitmap_merge(dst_node, dst_name, list, errp);
->>      qapi_free_BlockDirtyBitmapMergeSourceList(list);
->>  }
->> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
->> index 3bffee99d4c9..06540425ded2 100644
->> --- a/qga/commands-posix.c
->> +++ b/qga/commands-posix.c
->> @@ -1211,7 +1211,7 @@ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
->>  {
->>      FsMountList mounts;
->>      struct FsMount *mount;
->> -    GuestFilesystemInfoList *new, *ret = NULL;
->> +    GuestFilesystemInfoList *ret = NULL;
->>      Error *local_err = NULL;
->>
->>      QTAILQ_INIT(&mounts);
->> @@ -1224,10 +1224,7 @@ GuestFilesystemInfoList *qmp_guest_get_fsinfo(Error **errp)
->>      QTAILQ_FOREACH(mount, &mounts, next) {
->>          g_debug("Building guest fsinfo for '%s'", mount->dirname);
->>
->> -        new = g_malloc0(sizeof(*ret));
-> 
-> Ugh!  Glad you get rid of this.
-
-Yep, C++ reserved words as a C variable name is always awkward.  It was
-fun cleaning that up (several places in this patch).
-
-
->> +++ b/qga/commands-win32.c
->> @@ -926,10 +926,8 @@ static GuestDiskAddressList *build_guest_disk_info(char *guid, Error **errp)
->>                  error_free(local_err);
->>                  goto out;
->>              }
->> -            list = g_malloc0(sizeof(*list));
->> -            list->value = disk;
->> +            QAPI_LIST_ADD(list, disk);
->>              disk = NULL;
->> -            list->next = NULL;
->>              goto out;
-> 
-> Both old and new code tacitly rely on @list being empty.  Okay.
-
-This was population of a single element into list (so prepending vs.
-appending doesn't matter, and we can use the prepend macro), while...
-
-> 
->>          } else {
->>              error_setg_win32(errp, GetLastError(),
-> 
-> Did you miss the spot where we add to this list?
-> 
->        /* Go through each extent */
->        for (i = 0; i < extents->NumberOfDiskExtents; i++) {
->            disk = g_malloc0(sizeof(GuestDiskAddress));
-> 
->            /* Disk numbers directly correspond to numbers used in UNCs
->             *
->             * See documentation for DISK_EXTENT:
->             * https://docs.microsoft.com/en-us/windows/desktop/api/winioctl/ns-winioctl-_disk_extent
->             *
->             * See also Naming Files, Paths and Namespaces:
->             * https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#win32-device-namespaces
->             */
->            disk->has_dev = true;
->            disk->dev = g_strdup_printf("\\\\.\\PhysicalDrive%lu",
->                                        extents->Extents[i].DiskNumber);
-> 
->            get_single_disk_info(extents->Extents[i].DiskNumber, disk, &local_err);
->            if (local_err) {
->                error_propagate(errp, local_err);
->                goto out;
->            }
->            cur_item = g_malloc0(sizeof(*list));
->            cur_item->value = disk;
->            disk = NULL;
->            cur_item->next = list;
-> --->       list = cur_item;
->        }
-
-This is appending, not prepending.  Using the macro here would have
-reversed the multi-element list seen by the user.  I did not check
-whether the QMP is documenting that particular list more as a set (where
-order does not matter, so prepending is fine) or as an ordered list, but
-instead conservatively left it to appending.  As we said earlier,
-further cleanups of all append places may be worth its own later series.
-
->> +++ b/qom/qom-qmp-cmds.c
->> @@ -46,14 +46,12 @@ ObjectPropertyInfoList *qmp_qom_list(const char *path, Error **errp)
->>
->>      object_property_iter_init(&iter, obj);
->>      while ((prop = object_property_iter_next(&iter))) {
->> -        ObjectPropertyInfoList *entry = g_malloc0(sizeof(*entry));
->> +        ObjectPropertyInfo *value = g_malloc0(sizeof(ObjectPropertyInfo));
->>
->> -        entry->value = g_malloc0(sizeof(ObjectPropertyInfo));
->> -        entry->next = props;
->> -        props = entry;
->> +        QAPI_LIST_ADD(props, value);
->>
->> -        entry->value->name = g_strdup(prop->name);
->> -        entry->value->type = g_strdup(prop->type);
->> +        value->name = g_strdup(prop->name);
->> +        value->type = g_strdup(prop->type);
-> 
-> This is the minimally invasive patch.  Best to stick to minimal in a big
-> series like this one, to ease review as much as possible.
-> 
-> If that wasn't an issue, I'd suggest finishing the list element before
-> inserting it into the list:
-> 
->         ObjectPropertyInfo *value = g_malloc0(sizeof(ObjectPropertyInfo));
-> 
->         value->name = g_strdup(prop->name);
->         value->type = g_strdup(prop->type);
->         QAPI_LIST_ADD(props, value);
-> 
-> There might be more instances.
-
-Agreed (both that sticking to minimally invasive is good, and on the
-fact that this patch points out a number of future potential cleanups).
-
-> 
-> The macro definitely makes the code easier to read.  Yes, please!
-> 
-> The patch feels almost ready.
-
-Thanks for the careful review!
-
-Right now, my thoughts are to get 1-10 into 5.2, then turn this one
-patch into a more-complete series for post-5.2 that address more cases
-of QAPI list management (splitting this patch into at least 3 based on
-the comments above, then new patches to make appending use more
-consistent patterns before adding macros to ease that as well).
 
 -- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.           +1-919-301-3226
-Virtualization:  qemu.org | libvirt.org
-
+Best regards,
+Vladimir

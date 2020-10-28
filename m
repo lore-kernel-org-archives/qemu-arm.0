@@ -1,101 +1,94 @@
-Received: by 2002:a19:ee01:0:0:0:0:0 with SMTP id g1csp3102512lfb;
-        Mon, 18 May 2020 07:46:26 -0700 (PDT)
-X-Received: by 2002:a9d:3f44:: with SMTP id m62mr11879970otc.38.1589813186531;
-        Mon, 18 May 2020 07:46:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1589813186; cv=none;
-        d=google.com; s=arc-20160816;
-        b=iAcvs33nvhKV88kfatrfgr9bwg+my5w2Th1w/913vemME/oXzWnwa5utgwaCpJUjT1
-         Vu6d1XGVbOzOnkGKCI/Jc+QP/oMErk0N9L9AtzHaxHcZFTpi6PW/RkShppDkWnLkHUO9
-         BGAR1WcOOpsYDD8WBg4QvJkAj8nRAZV/RTOMxFAGmqeDyG153kdu2FyPJ4f0UIaGglZk
-         T1sZPYdpz8ZBEBtwMLZly1X7qT93PimErU0tjfkniWZpq9O3NJ8mTindn6t5OrUEKXP7
-         I750w5wbqnFiDePBJObiEq2Cc+jREFJGB/sB+YuxFQLEZXr99LzvRa6zdKvpNIL56ciD
-         Ux9Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Yg5Gk3dDviSnJiLkiL3wJMyhIIyqlq1pt8iO8sb2z3M=;
-        b=kj7b29UJLwe9b+YE2tBlYtHBhjqBvVgUbH7OXxlYTy2uFN4+M/nSVjBwbYGuN5uJbe
-         a1eMCeL0xpsmUyJ+Teo0e3D454v340vtHdcFH8BFkwAwRcJTypIw9pzs7DRT3W8eI9VH
-         rSEoB/vHNf0m34X1GAWLxdf+HEYxiDEOxcUhKs50mpmyDlkWdyd/vjcPT6CJk0YS9P0m
-         bO8cIPb2KSPQkcBevan+etUswanG8gWO64LgdKXwY5hSmxDzeB8dwd0PQFn0xE97WuSX
-         RamcDOLrwqz252VwLbNkOjIIJofO/AfZBThoVQclUEJ2Aww1yZocYGY1PE68+VJSv4Kp
-         SgCA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MavUC32T;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <peter.maydell@linaro.org>
-Received: from mail-sor-f65.google.com (mail-sor-f65.google.com. [209.85.220.65])
-        by mx.google.com with SMTPS id w11sor13730598oog.8.2020.05.18.07.46.26
-        for <alex.bennee@linaro.org>
-        (Google Transport Security);
-        Mon, 18 May 2020 07:46:26 -0700 (PDT)
-Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) client-ip=209.85.220.65;
-Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=MavUC32T;
-       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.65 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google;
-        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
-         :cc;
-        bh=Yg5Gk3dDviSnJiLkiL3wJMyhIIyqlq1pt8iO8sb2z3M=;
-        b=MavUC32TMJnMXk96KOjxjiFjv9y3DmwRH+8meCFVBlaBfNk/uJn9MMIupggQdUYp/w
-         XkyKi4uvlEl6MSzo74ab1mT3A4ogxIosyVyI9AW6SvzdyEtSQoeWMNKsSGnACIwLhzoF
-         dWqe86VCKujMrP6so7p6MstMsI1p8e+YicjYqJOGLOcbzmk/bNKIHWJHDwr9pyQRk/fW
-         Oamr9u3T5f4FrFzofWqLuVEPqRV7GTJ0BrkgNoMLK5yJ83pHacIthmMpD3ws1eiycO04
-         bhI51K7Pgloi1dp18aFintEcGUveQYWaSZzbzK50aZJszWdPubuJe/cYpt4xnk0GOho6
-         NGsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20161025;
-        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
-         :message-id:subject:to:cc;
-        bh=Yg5Gk3dDviSnJiLkiL3wJMyhIIyqlq1pt8iO8sb2z3M=;
-        b=BnrGga/9EStdcm38eAMfpm74wcxOvGsI++1NyiXuVZFQbWO+kCZNuHNfy8uCBhpiXz
-         HWRnD/bpB1eDB0707SmKqP9dHDMTmX71wdufDvxTPVD2arciT04U0iob2OAL8TRLzYxj
-         mJccanyrQkJj2wB2JE/mWA/rRcBzAK+DSo158pn6f27c6EszAesnlp/Ngqun3LUQNCnX
-         3mriDEqYx0CI0JoKAtH5RDABxGdllHcOiwsZfE3WIeSV/ayjByN7Z9U69gxEvoHVlTg/
-         mNhcu7I/9S/vvb7p49YFcwwUwDjJL1Z+ei2XLOfoGLXqWQ79v8i5CcJ37nOIwvCyKx92
-         31Qg==
-X-Gm-Message-State: AOAM532QtOxxI4+AtLXS3HN+hX+31BZxfW9Uqx3KNVt4zGy517H8ZU6Z
-	Ekw34brox+hXesse5llQXTmdg8L8D6N35Mi99nznHMuV
-X-Google-Smtp-Source: ABdhPJzSJUIDY0tuP5fZZX7BjSgprqLVb98gvRNXDQLbiwMH/OXQQO3SZOergSTsIhVECQ8sDRzp7bz04mP5nv3N6oM=
-X-Received: by 2002:a4a:3556:: with SMTP id w22mr13049640oog.20.1589813186025;
- Mon, 18 May 2020 07:46:26 -0700 (PDT)
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id p1sm5475227wrx.3.2020.10.28.04.16.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 28 Oct 2020 04:16:02 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 068941FF7E;
+	Wed, 28 Oct 2020 11:16:02 +0000 (GMT)
+References: <20201026212853.92880-1-keithp@keithp.com>
+ <20201026212853.92880-2-keithp@keithp.com>
+ <CAFEAcA-0_WLMP1Y1sgcu7Ng+0w8Ovt9DVWzYU8ZA_FA2+bwcUw@mail.gmail.com>
+ <87pn53e3ke.fsf@keithp.com>
+ <CAFEAcA8Sha5QYbO25dtzBZHoXUeiGVv8aojPFTMrst8nbVDAdg@mail.gmail.com>
+ <87k0vbdthq.fsf@keithp.com>
+User-agent: mu4e 1.5.6; emacs 28.0.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Keith Packard <keithp@keithp.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, QEMU Developers
+ <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org
+ <qemu-arm@nongnu.org>, Palmer Dabbelt <palmer@dabbelt.com>, "Alistair
+ Francis" <Alistair.Francis@wdc.com>, Sagar Karandikar
+ <sagark@eecs.berkeley.edu>, Bastian Koppelmann
+ <kbastian@mail.uni-paderborn.de>, "open list:RISC-V"
+ <qemu-riscv@nongnu.org>
+Subject: Re: [PATCH 1/4] semihosting: Move ARM semihosting code to shared
+ directories
+In-reply-to: <87k0vbdthq.fsf@keithp.com>
+Date: Wed, 28 Oct 2020 11:16:01 +0000
+Message-ID: <87lffqmwi6.fsf@linaro.org>
 MIME-Version: 1.0
-References: <20200312194219.24406-1-richard.henderson@linaro.org>
-In-Reply-To: <20200312194219.24406-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 18 May 2020 15:46:14 +0100
-Message-ID: <CAFEAcA-3YYciv1VZZdeYZOZYAgaRrTvPj6kHUbBv06-0otoGdw@mail.gmail.com>
-Subject: Re: [PATCH v6 00/42] target/arm: Implement ARMv8.5-MemTag, system mode
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>, 
-	=?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-X-TUID: uzDCLtSqjYW9
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-TUID: JnCj0XqHxaDP
 
-On Thu, 12 Mar 2020 at 19:42, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> I've done quite a lot of reorg since v5, so much so that I've dropped
-> most of the review tags that had been given.
->
-> There are a couple of major improvements to note:
->
-> * The effective ATA bit is in hflags, noting whether access to the
->   allocation tags is enabled by the OS.  This is moderately expensive
->   to compute, so it's better to hold on to that.  This allows trivial
->   inlining of some of the operations.
->
-> * Updates for SVE, and thus
->
-> Based-on: <20200311064420.30606-1-richard.henderson@linaro.org>
-> ("target/arm: sve load/store improvements")
 
-For clarity, given this is now 2 months old I'm just going to drop
-it from my to-review queue on the assumption that you'll do a
-rebase-and-resend at some point now the prereq patchset is in master.
+Keith Packard <keithp@keithp.com> writes:
 
-thanks
--- PMM
+> Peter Maydell <peter.maydell@linaro.org> writes:
+>
+>>>         arm_ss.add(when: 'CONFIG_TCG', if_true: files ('common-semi.c'))
+>>>         riscv_ss.add(files('common-semi.c'))
+>>>
+>>> This appears to work in my testing (building arm, risc-v and x86_64
+>>> configs).
+>>
+>> I'm not a kconfig expert but it might be preferable to have
+>> a new CONFIG_ for arm-semihosting-ABI which the relevant
+>> targets enable. Somebody else may be able to advise.
+>
+> The change above makes this do exactly what the old code did -- add this
+> file to the arm_ss sourceset whenever CONFIG_TCG is true. arm_ss is
+> only used to build ARM targets, so this file gets added only for those
+> targets. Here's what the patch to target/arm/meson.build and
+> hw/semihosting/meson.build looks like now.
+>
+> diff --git a/target/arm/meson.build b/target/arm/meson.build
+> index f5de2a77b8..15b936c101 100644
+> --- a/target/arm/meson.build
+> +++ b/target/arm/meson.build
+> @@ -32,8 +32,6 @@ arm_ss.add(files(
+>  ))
+>  arm_ss.add(zlib)
+>=20=20
+> -arm_ss.add(when: 'CONFIG_TCG', if_true: files('arm-semi.c'))
+> -
+>  arm_ss.add(when: 'CONFIG_KVM', if_true: files('kvm.c', 'kvm64.c'), if_fa=
+lse: files('kvm-stub.c'))
+>=20=20
+>  arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+>
+> diff --git a/hw/semihosting/meson.build b/hw/semihosting/meson.build
+> index f40ac574c4..26538e81e7 100644
+> --- a/hw/semihosting/meson.build
+> +++ b/hw/semihosting/meson.build
+> @@ -2,3 +2,5 @@ specific_ss.add(when: 'CONFIG_SEMIHOSTING', if_true: file=
+s(
+>    'config.c',
+>    'console.c',
+>  ))
+> +
+> +arm_ss.add(when: 'CONFIG_TCG', if_true: files ('common-semi.c'))
+
+I don't think we want arm specific adds in the common code. I think what
+Peter was suggesting is a new config symbol that only ARM and RISC
+define, e.g something like:
+
+  specific_ss.add(when: 'CONFIG_ARM_STYLE_SEMIHOSTING',
+                  if_true: files ('common-semi.c'))
+
+or some other suitably descriptive symbol. Otherwise you have to keep
+adding an foo_ss.add line for each architecture that wants it.
+
+--=20
+Alex Benn=C3=A9e

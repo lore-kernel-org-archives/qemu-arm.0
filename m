@@ -1,115 +1,106 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp810493lfa;
-        Wed, 28 Oct 2020 12:52:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxIe7N6gGsxixt+uyXcOPUY9u1aI/61susz/G7V7lnpwLy8MnLVWfxk4ZwNPx3n+gKhiUo/
-X-Received: by 2002:ad4:5192:: with SMTP id b18mr1120928qvp.14.1603914771241;
-        Wed, 28 Oct 2020 12:52:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603914771; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp831423lfa;
+        Wed, 28 Oct 2020 13:21:52 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJx0ZQTQeKRohkIE0LcWoNMEk4cclEr5Iwn1F3B1J0LsevsRySr/xq8zejDeh9OLy2XGqPQZ
+X-Received: by 2002:a25:6411:: with SMTP id y17mr1320769ybb.431.1603916512578;
+        Wed, 28 Oct 2020 13:21:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603916512; cv=none;
         d=google.com; s=arc-20160816;
-        b=dlhaX75XB6f6wDZnM85H6ve74apDXE1Y/LLaLcF0m+ThFQWIwTAsHyujzqEeCtCYsi
-         2u869o19TSKo5KatyNs5x2avh258BDYdn+qlvallXdfqUM+xamNiUXzZDneSY1YotBNR
-         v163f0XLkazQP1idklaYro9jMkkli4SxNGE+M9yvbEE/zpy2bG1eFxg3nFoUeucwWJVn
-         V17kkVRtq0jZvrcVydTKWYH+0nFqT+o/VoIKOa128xV5TKpOjVJz6hmEoX7lWR54RnP0
-         kYYpF+GuOwruNkSyn49QkFq9CNg1O//xqtw3vB88y3O1XIkeE3rhRxnE3x0eJWVa9hF7
-         OD/Q==
+        b=b7q0I5+5b+nBOE3Dv2SyN+4y1NzVho3GA8+ZvqTE8sEsrjpBAxznUCZPic8biKvihJ
+         GMsCYnowEA7LE6/gqmW+YniugTuJ9xzDz5anoe+T1LwbgBMosaEjSinEg9LgQ3V1ItMg
+         1cSxWK8Z5Pg/FEHjoNdeZX88PPMYRQDg/OrjI7EdpHUC0ccsB5zODo3Vc9eEQhBmJECG
+         sU3mSd/q7YuvcCzafLUSXrKHwzwTPkn1+yLYLo+eB44hXDIEW1PgmPezAICkv0ryOa5a
+         Rqw6efOJx6UCn9qSaR3bWnTDs7IaxIYknQ8/D6HSStZprrdeCqtXd0kfZJRFJCd81Lls
+         Q4xQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=3DVHJqPncYLTQ0Zr7d38lbdEhNA1N1MpZfkSs+R9RCI=;
-        b=nZyhTzBQY1hT2aCvFu6uFJGJ2h3doTPZe+RpvNYxBMgYDu08FPb8aBYtjtPX7b3cp8
-         lwxRt4w2mD9kJiNzqr07TbvXkNODasJj2i+alsTFCqaUGuBFW2qFA4cvHMO0PDOKP87Q
-         SWyQx1h3vJsjNVUARxeGjP4PSuQWjJoH7gY09kkKhKzSJFv7H43D+fj0yp4LpVivdPFH
-         2xeDjIZKu5Z3pld8n2smz4/3Ec6xa0H587OpkysoJNb/cyQzfLECFMHph1XK7kT78W6t
-         vE6K4U92IMjtyWUoaHc1ajMfrqTtmfcUNVTWenzgtWCFLhj/isODpdY5xkaNHvxaVYyM
-         98Jg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=9lGrMAj1QsIiuoujkX3zN8ZbB9FS9Jfq4Nhkt4pJR8s=;
+        b=sPDH6XwnfUrrvkHUIy7OMGvc6W+0cYeUkWFySbQHw0jlbNLwzJ9G1WkQW3ir8GPR9N
+         JIw9pyydiNye0rrSSMAvODiv6i2BYe/VLu2udmyL/AL7YBxkp0C/PbLc0hZuBgwZIqNJ
+         yy/OEbTvqU1lCWNiHw8Dqz8pWvrTt5+UsyYEX9kfKtDqZInEAk6C47G9kqORc4hR4fkt
+         GPoLL6fFYYhLdxD1zOfGKXuy+YhTFW1EEj8kjiVfn8wAZcix4/pMM2DvWq/vdijwXDgA
+         E1w6DIdVDRv9rym7lzhKyeiPC5GHwussg9CUUHRz3VCbvXETLITAqRIBnQHWanborel9
+         ODkg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ECKc0br3;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PqR4TcuF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id p3si336892qti.65.2020.10.28.12.52.51
+        by mx.google.com with ESMTPS id h6si623607ybq.341.2020.10.28.13.21.52
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Oct 2020 12:52:51 -0700 (PDT)
+        Wed, 28 Oct 2020 13:21:52 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=ECKc0br3;
+       dkim=fail header.i=@linaro.org header.s=google header.b=PqR4TcuF;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:45508 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kXrV4-0006ma-Lr
-	for alex.bennee@linaro.org; Wed, 28 Oct 2020 15:52:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44918)
+	id 1kXrxA-0003hd-04
+	for alex.bennee@linaro.org; Wed, 28 Oct 2020 16:21:52 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51496)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kXrTp-0005Vn-Kp; Wed, 28 Oct 2020 15:51:34 -0400
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:33238)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kXrw7-0003CV-Pi
+ for qemu-devel@nongnu.org; Wed, 28 Oct 2020 16:20:47 -0400
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:40835)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kXrTk-00041S-1G; Wed, 28 Oct 2020 15:51:32 -0400
-Received: by mail-ed1-x543.google.com with SMTP id v4so801905edi.0;
- Wed, 28 Oct 2020 12:51:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=3DVHJqPncYLTQ0Zr7d38lbdEhNA1N1MpZfkSs+R9RCI=;
- b=ECKc0br3wKpS3a6TiNDLSYC5gUMe+CkCoV3iXTTNvisCIlmHBBY12+9tY6dRPU8fuw
- pHncfwWuLsEMw9cY9mRz1xQLk8CJsVbJYgXUDFFPw9aCKBHpS0V4GtmR5KvNEleMxQxt
- YrIhSmevSwp00/vZmCZ2RefnlWRgN6lSnUHEBSfo2APti5JGeSBZXt7lHtjg6Y1cnlMW
- PlAlxXcIL0kJ6WbTy5y5kcPcW5rPpUAmf/SgFxGAai7WQLcsZPi+TluzMQb1GkP7qO2B
- 5NlkpZvuCT+lh698y12hQP30F+0Ywyp/SzYUe11yAa3mx//w8flgbgMvdzw1zedgihc8
- WFpg==
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kXrw6-00086l-15
+ for qemu-devel@nongnu.org; Wed, 28 Oct 2020 16:20:47 -0400
+Received: by mail-ej1-x643.google.com with SMTP id z5so719151ejw.7
+ for <qemu-devel@nongnu.org>; Wed, 28 Oct 2020 13:20:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc:content-transfer-encoding;
+ bh=9lGrMAj1QsIiuoujkX3zN8ZbB9FS9Jfq4Nhkt4pJR8s=;
+ b=PqR4TcuFyFPdv7NBat1OGiwnQbiMl8+Zgcl28nvfnRFFF4toZoYWuLcdT7cMFCLtg+
+ oWNhbh8dn7bRSH3N2yz372qiO4K2N3Zg1mQLgHEM2Fwg5/m+CNBPlAJrQEAHZZ7nBwr3
+ QcTXLHKQZzJxJaXQgHhwlWkJBBntlgXqtMV76BCIzuWAwGNarev3x1KmRJWoA+phvP5N
+ EiLuFmrrpSa2rbTuzW7pMKlljFg/IQaCLvIGrcpLm2co2TuYV3KPozEYXdf/x3bY8lCN
+ 4sQTHCvVvo1EueYw4TcyjERmJa+8O3kNAXfFwkldA99HLvl/Axea6d3QZufA0xWASKiZ
+ ZJxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=3DVHJqPncYLTQ0Zr7d38lbdEhNA1N1MpZfkSs+R9RCI=;
- b=pN2ggRMM8zv20crkDCzgaQKIJvviGQbbudskTHTHtHYHxTjVsBvdqMnVy6P3dq78Bj
- L3g9LAsCo229LmRMjVWq857WPW6rm6kOGIAn+ldv5EXNxHSZDSmaRlzjKhKY7I051e9y
- WeODj+q9sBUUYVvKpJsXb9JYX3pKucuularXgTxlBPfk1EAFHgDsc369lcy2fS+52V1S
- Ybn0OYWqm/7qrHgGLpTl4e3bSwGXXmpWbULi3TQL7YsA/tJdeiGmZOZoAeFL1ASfWZYc
- sC7JAEO117NEdzlDt42ErG/7Jf8sKfoABQIKkMNHK/nGDCEmToUck0NKP1bVxq/WgYwT
- zLMA==
-X-Gm-Message-State: AOAM530OqkOUjMoe5BoghPPZYMAiHnZiYxDP8V0dkV3uxm/nyrQ64y0a
- LXL1GpxgV8wmBqYZUgFzXXQ=
-X-Received: by 2002:aa7:c704:: with SMTP id i4mr544682edq.51.1603914685957;
- Wed, 28 Oct 2020 12:51:25 -0700 (PDT)
-Received: from [192.168.1.36] (237.red-88-18-140.staticip.rima-tde.net.
- [88.18.140.237])
- by smtp.gmail.com with ESMTPSA id p20sm272427ejd.78.2020.10.28.12.51.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 28 Oct 2020 12:51:25 -0700 (PDT)
-Subject: Re: [PATCH 2/2] target/arm: Fix VUDOT/VSDOT (scalar) on big-endian
- hosts
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-References: <20201028191712.4910-1-peter.maydell@linaro.org>
- <20201028191712.4910-3-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <b44e71d6-4321-59e5-2e5b-4dd5b17def9b@amsat.org>
-Date: Wed, 28 Oct 2020 20:51:23 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=9lGrMAj1QsIiuoujkX3zN8ZbB9FS9Jfq4Nhkt4pJR8s=;
+ b=p1IWqP00gQc7H78zlngeQgvM+fL4tC0pZE22MrZ1qKf9N8zBduvpoDU0i8lhSNdk+v
+ EXLiipAS1iC3aK0SupdJJqnWQusKy0zZ3V2OBS60YWC40gMiPh5aHJU2Hna/Ra8VU64h
+ XkkHWvrXNhnlytjMxQtye8/YhWyUVGHiZ933USvLhlYhurABviz1VrbkI+ZoFcYd6w9+
+ kTUa6raxvMjHJf8WhvtaggBNQ46kORbpd59XChP2p4JRRXOGwXGsyxl/5Eg1D/0lawGb
+ Z2LAFfVXeCRdP4/xU8xa4tcoJ/tB5g0EhwUoNgteXq08rvF4o+nZcH/iOFf0PGiBDjWt
+ te5A==
+X-Gm-Message-State: AOAM531yG463ULvAwu6MGlNj792E8edAMsnc+TX3R6Q73W5gecXatGTa
+ I/DI0dPK/R8zos5oT2mKLVYmqek/mVezoJQjfUAu7g==
+X-Received: by 2002:a17:906:3b59:: with SMTP id
+ h25mr912983ejf.56.1603916444230; 
+ Wed, 28 Oct 2020 13:20:44 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20201028191712.4910-3-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::543;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-ed1-x543.google.com
+References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
+ <20201028041819.2169003-3-kuhn.chenqun@huawei.com>
+In-Reply-To: <20201028041819.2169003-3-kuhn.chenqun@huawei.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 28 Oct 2020 20:20:33 +0000
+Message-ID: <CAFEAcA9uyKHO06aZaKSZefpq_eXs12E+AzHHNbL+=amcfq66Cg@mail.gmail.com>
+Subject: Re: [PATCH 2/9] hw/intc/arm_gicv3_kvm: silence the compiler warnings
+To: Chen Qun <kuhn.chenqun@huawei.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::643;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x643.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.921,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -124,29 +115,77 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ Gan Qixin <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: riO3xP0nJ/Pw
+X-TUID: q1nEjGEgMHtk
 
-On 10/28/20 8:17 PM, Peter Maydell wrote:
-> The helper functions for performing the udot/sdot operations against
-> a scalar were not using an address-swizzling macro when converting
-> the index of the scalar element into a pointer into the vm array.
-> This had no effect on little-endian hosts but meant we generated
-> incorrect results on big-endian hosts.
-> 
-> For these insns, the index is indexing over group of 4 8-bit values,
-> so 32 bits per indexed entity, and H4() is therefore what we want.
-> (For Neon the only possible input indexes are 0 and 1.)
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> I believe that gvec_udot_idx_h and gvec_sdot_idx_h are OK
-> because the index there is over groups of 4*16-bit values,
-> which are 64 bits each.
-> ---
->  target/arm/vec_helper.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+On Wed, 28 Oct 2020 at 04:19, Chen Qun <kuhn.chenqun@huawei.com> wrote:
+>
+> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warn=
+ing:
+> hw/intc/arm_gicv3_kvm.c: In function =E2=80=98kvm_arm_gicv3_put=E2=80=99:
+> hw/intc/arm_gicv3_kvm.c:484:13: warning: this statement may fall through =
+[-Wimplicit-fallthrough=3D]
+>              kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, true);
+>              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> hw/intc/arm_gicv3_kvm.c:485:9: note: here
+>          default:
+>          ^~~~~~~
+> hw/intc/arm_gicv3_kvm.c:495:13: warning: this statement may fall through =
+[-Wimplicit-fallthrough=3D]
+>              kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, true);
+>              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> hw/intc/arm_gicv3_kvm.c:496:9: note: here
+>          case 6:
+>          ^~~~
+> hw/intc/arm_gicv3_kvm.c:498:13: warning: this statement may fall through =
+[-Wimplicit-fallthrough=3D]
+>              kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, true);
+>              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> hw/intc/arm_gicv3_kvm.c:499:9: note: here
+>          default:
+>          ^~~~~~~
+>
+> hw/intc/arm_gicv3_kvm.c: In function =E2=80=98kvm_arm_gicv3_get=E2=80=99:
+> hw/intc/arm_gicv3_kvm.c:634:37: warning: this statement may fall through =
+[-Wimplicit-fallthrough=3D]
+>              c->icc_apr[GICV3_G0][2] =3D reg64;
+>              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+> hw/intc/arm_gicv3_kvm.c:635:9: note: here
+>          case 6:
+>          ^~~~
+> hw/intc/arm_gicv3_kvm.c:637:37: warning: this statement may fall through =
+[-Wimplicit-fallthrough=3D]
+>              c->icc_apr[GICV3_G0][1] =3D reg64;
+>              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+> hw/intc/arm_gicv3_kvm.c:638:9: note: here
+>          default:
+>          ^~~~~~~
+> hw/intc/arm_gicv3_kvm.c:648:39: warning: this statement may fall through =
+[-Wimplicit-fallthrough=3D]
+>              c->icc_apr[GICV3_G1NS][2] =3D reg64;
+>              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+> hw/intc/arm_gicv3_kvm.c:649:9: note: here
+>          case 6:
+>          ^~~~
+> hw/intc/arm_gicv3_kvm.c:651:39: warning: this statement may fall through =
+[-Wimplicit-fallthrough=3D]
+>              c->icc_apr[GICV3_G1NS][1] =3D reg64;
+>              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+> hw/intc/arm_gicv3_kvm.c:652:9: note: here
+>          default:
+>          ^~~~~~~
+>
+> Reported-by: Euler Robot <euler.robot@huawei.com>
+> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Yep, these are all intentionall fallthrough.
+
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM

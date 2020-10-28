@@ -1,95 +1,94 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp831423lfa;
-        Wed, 28 Oct 2020 13:21:52 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx0ZQTQeKRohkIE0LcWoNMEk4cclEr5Iwn1F3B1J0LsevsRySr/xq8zejDeh9OLy2XGqPQZ
-X-Received: by 2002:a25:6411:: with SMTP id y17mr1320769ybb.431.1603916512578;
-        Wed, 28 Oct 2020 13:21:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603916512; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp480315lfa;
+        Wed, 28 Oct 2020 06:08:17 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJyFQ1+xxhaRBEGMR0hxSUyIt4oT7GtTKUXRt/pvLVltuPOeuiEPdeiZnpyvnn/vjdXhJdRM
+X-Received: by 2002:a54:4199:: with SMTP id 25mr4982882oiy.50.1603890497175;
+        Wed, 28 Oct 2020 06:08:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603890497; cv=none;
         d=google.com; s=arc-20160816;
-        b=b7q0I5+5b+nBOE3Dv2SyN+4y1NzVho3GA8+ZvqTE8sEsrjpBAxznUCZPic8biKvihJ
-         GMsCYnowEA7LE6/gqmW+YniugTuJ9xzDz5anoe+T1LwbgBMosaEjSinEg9LgQ3V1ItMg
-         1cSxWK8Z5Pg/FEHjoNdeZX88PPMYRQDg/OrjI7EdpHUC0ccsB5zODo3Vc9eEQhBmJECG
-         sU3mSd/q7YuvcCzafLUSXrKHwzwTPkn1+yLYLo+eB44hXDIEW1PgmPezAICkv0ryOa5a
-         Rqw6efOJx6UCn9qSaR3bWnTDs7IaxIYknQ8/D6HSStZprrdeCqtXd0kfZJRFJCd81Lls
-         Q4xQ==
+        b=RF8kQFdlEm+xsm75fbi4ZUuuWX6CAiS/19ooKCQNnHWROHi7CR0HY3mhdIEWA36jLn
+         yKwpDphTTqMHHWNF+EvB1OHAXnucabvV02xAFXzvsse+uloIby9sApsg73MdKM5K7ixO
+         FKko1PSuzWPp1/vPTH5e6l+YYurXlzILyRFrZHdltE+m4QwQwnROuBrdyTI94JSD8bF/
+         MGIHpkC4jNnx/c/vSSQA6qt8iZixE0UaKA60ug1fcZRiKP5u6P6jueK3ohKPHx6KKFUm
+         HY7Vem7ccFRW3vNkFuoXpnHpE3x+vyyddyeCnVrENWPuBJMPSaqimE3hoZOY2tz5a4y/
+         kAeQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
          :subject:message-id:date:from:in-reply-to:references:mime-version
          :dkim-signature;
-        bh=9lGrMAj1QsIiuoujkX3zN8ZbB9FS9Jfq4Nhkt4pJR8s=;
-        b=sPDH6XwnfUrrvkHUIy7OMGvc6W+0cYeUkWFySbQHw0jlbNLwzJ9G1WkQW3ir8GPR9N
-         JIw9pyydiNye0rrSSMAvODiv6i2BYe/VLu2udmyL/AL7YBxkp0C/PbLc0hZuBgwZIqNJ
-         yy/OEbTvqU1lCWNiHw8Dqz8pWvrTt5+UsyYEX9kfKtDqZInEAk6C47G9kqORc4hR4fkt
-         GPoLL6fFYYhLdxD1zOfGKXuy+YhTFW1EEj8kjiVfn8wAZcix4/pMM2DvWq/vdijwXDgA
-         E1w6DIdVDRv9rym7lzhKyeiPC5GHwussg9CUUHRz3VCbvXETLITAqRIBnQHWanborel9
-         ODkg==
+        bh=jLIm5qwowyaNOtDHvKZ3loVnWhxmKmWaHmOXmo650Ek=;
+        b=MAzeGbi2n+v5/O0bsdA4NgJZ4FEYtNwmSo9fqHJBAZMYaPbcq0F6l8j+k+ZMJU2bK8
+         mbuSkq06zNR26r2Y0APYYpsG0h5dji1i705wLULztwR4DMKwN+JiFbPyrCjjzoapLXDO
+         2YYHmxXpdN+wNbY5tRnYqaRhbsJvhwH1jdOJNf13aky67Eu2NvYoAzBMXiBxz1fP/Rcl
+         fYqJQxsqR688zTaDUdHwp/+1KXmxPnL7jpzSdPO5qopJEJSD/HGjOE3N4lR4sP01HYez
+         YNCNUA0X9Ceq2JsOG9QEceDjbv5jJWMvFHqzFBRuadFbWEwUcOsOT5IV9YtbLbLxgYAl
+         wMsQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PqR4TcuF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=lR1UI+Yt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id h6si623607ybq.341.2020.10.28.13.21.52
+        by mx.google.com with ESMTPS id z11si4229955ybm.416.2020.10.28.06.08.16
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 28 Oct 2020 13:21:52 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 28 Oct 2020 06:08:17 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=PqR4TcuF;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dkim=fail header.i=@linaro.org header.s=google header.b=lR1UI+Yt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:47196 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:43658 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kXrxA-0003hd-04
-	for alex.bennee@linaro.org; Wed, 28 Oct 2020 16:21:52 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51496)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kXlBY-0000q1-Ff
+	for alex.bennee@linaro.org; Wed, 28 Oct 2020 09:08:16 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41434)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kXrw7-0003CV-Pi
- for qemu-devel@nongnu.org; Wed, 28 Oct 2020 16:20:47 -0400
-Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:40835)
+ id 1kXlBP-0000pi-OT
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2020 09:08:07 -0400
+Received: from mail-ej1-x643.google.com ([2a00:1450:4864:20::643]:34213)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kXrw6-00086l-15
- for qemu-devel@nongnu.org; Wed, 28 Oct 2020 16:20:47 -0400
-Received: by mail-ej1-x643.google.com with SMTP id z5so719151ejw.7
- for <qemu-devel@nongnu.org>; Wed, 28 Oct 2020 13:20:45 -0700 (PDT)
+ id 1kXlBN-0004vQ-Ka
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2020 09:08:07 -0400
+Received: by mail-ej1-x643.google.com with SMTP id gs25so7121361ejb.1
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2020 06:08:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
  :cc:content-transfer-encoding;
- bh=9lGrMAj1QsIiuoujkX3zN8ZbB9FS9Jfq4Nhkt4pJR8s=;
- b=PqR4TcuFyFPdv7NBat1OGiwnQbiMl8+Zgcl28nvfnRFFF4toZoYWuLcdT7cMFCLtg+
- oWNhbh8dn7bRSH3N2yz372qiO4K2N3Zg1mQLgHEM2Fwg5/m+CNBPlAJrQEAHZZ7nBwr3
- QcTXLHKQZzJxJaXQgHhwlWkJBBntlgXqtMV76BCIzuWAwGNarev3x1KmRJWoA+phvP5N
- EiLuFmrrpSa2rbTuzW7pMKlljFg/IQaCLvIGrcpLm2co2TuYV3KPozEYXdf/x3bY8lCN
- 4sQTHCvVvo1EueYw4TcyjERmJa+8O3kNAXfFwkldA99HLvl/Axea6d3QZufA0xWASKiZ
- ZJxw==
+ bh=jLIm5qwowyaNOtDHvKZ3loVnWhxmKmWaHmOXmo650Ek=;
+ b=lR1UI+Yt1hxzxMnAPC+AH0+zEl4DRLWdYe7SETqoVPQXBQM3WT9L6O7l0uwfphyDBE
+ x7By1UJ0ZYgp0mJF+kCfi53JbXlCfe1XdPLJoW4txBO2iV1TfU43t9b84cTTH35PG1J8
+ 82QfzjYP4Dv/J/XQSzdYO6K4atIIwS+6zvGvzP8gq+Z/JWoHz7Iq1Y3Ww9fudTZvTZlu
+ H4hMoZPOLxCcvovDIMroZ+d0wAwdS26qAzysurDt+z6nzRVV5l2+R+IB5drArtE98G9O
+ hzaw3VBw33G7Q0pb83J4kZmTAe131tq5iJvvxewm7frEU1ElsNe5ZTTQzSgXxAhBSn14
+ IsCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc:content-transfer-encoding;
- bh=9lGrMAj1QsIiuoujkX3zN8ZbB9FS9Jfq4Nhkt4pJR8s=;
- b=p1IWqP00gQc7H78zlngeQgvM+fL4tC0pZE22MrZ1qKf9N8zBduvpoDU0i8lhSNdk+v
- EXLiipAS1iC3aK0SupdJJqnWQusKy0zZ3V2OBS60YWC40gMiPh5aHJU2Hna/Ra8VU64h
- XkkHWvrXNhnlytjMxQtye8/YhWyUVGHiZ933USvLhlYhurABviz1VrbkI+ZoFcYd6w9+
- kTUa6raxvMjHJf8WhvtaggBNQ46kORbpd59XChP2p4JRRXOGwXGsyxl/5Eg1D/0lawGb
- Z2LAFfVXeCRdP4/xU8xa4tcoJ/tB5g0EhwUoNgteXq08rvF4o+nZcH/iOFf0PGiBDjWt
- te5A==
-X-Gm-Message-State: AOAM531yG463ULvAwu6MGlNj792E8edAMsnc+TX3R6Q73W5gecXatGTa
- I/DI0dPK/R8zos5oT2mKLVYmqek/mVezoJQjfUAu7g==
-X-Received: by 2002:a17:906:3b59:: with SMTP id
- h25mr912983ejf.56.1603916444230; 
- Wed, 28 Oct 2020 13:20:44 -0700 (PDT)
+ bh=jLIm5qwowyaNOtDHvKZ3loVnWhxmKmWaHmOXmo650Ek=;
+ b=Vj04FGh6LVA1CGRT1+XIKktZNB+qxR60rbjUYJLQ+ncyOSkm0bADZ35NnOlkXXTlsA
+ cHNMBqk5GpCXRVX7Yt9UdTI/9GvIQ0jne83FcQP1Mf5Izpx9rGxRCIF8OhxLYNcvXfxX
+ 3zb1boSMXOZaX4yx4YnDTPH71wOK6750Zj/KduOOFnMrPFPfDwyx6b52+nKOYDN1oWZX
+ U9rjXVx0DSw0dZF0IxtVrfni47bCh0ytClPi8txLrR6IceyJXSzBqYTFl55pQaPGm7aJ
+ L44zZknbcP2EysrVUQwokp24vPwDL06lpXEv/k2QPM1sneKDsxj8jXv0KiMa+QFSx7Ko
+ ftGw==
+X-Gm-Message-State: AOAM533m3QIdAJGPqPUacL2iGDWrD7dNeLF9eUfGxqa8M7qXO1ldHw5u
+ xR+fdBQhmGE5GI190KQujumlOgDHSqALkVUAd9uHqA==
+X-Received: by 2002:a17:906:3a97:: with SMTP id
+ y23mr7417488ejd.250.1603890483827; 
+ Wed, 28 Oct 2020 06:08:03 -0700 (PDT)
 MIME-Version: 1.0
-References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
- <20201028041819.2169003-3-kuhn.chenqun@huawei.com>
-In-Reply-To: <20201028041819.2169003-3-kuhn.chenqun@huawei.com>
+References: <20201026220624.60878-1-f4bug@amsat.org>
+In-Reply-To: <20201026220624.60878-1-f4bug@amsat.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 28 Oct 2020 20:20:33 +0000
-Message-ID: <CAFEAcA9uyKHO06aZaKSZefpq_eXs12E+AzHHNbL+=amcfq66Cg@mail.gmail.com>
-Subject: Re: [PATCH 2/9] hw/intc/arm_gicv3_kvm: silence the compiler warnings
-To: Chen Qun <kuhn.chenqun@huawei.com>
+Date: Wed, 28 Oct 2020 13:07:51 +0000
+Message-ID: <CAFEAcA-2+FerNXySJsUMesSeg36b7iuHYJN4L5CGE-VU+VHx5w@mail.gmail.com>
+Subject: Re: [PULL 0/7] LED API patches for 2020-10-26
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <f4bug@amsat.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2a00:1450:4864:20::643;
@@ -104,88 +103,61 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: zhanghailiang <zhang.zhanghailiang@huawei.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>, Andrew Jeffery <andrew@aj.id.au>,
  QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- Gan Qixin <ganqixin@huawei.com>, Euler Robot <euler.robot@huawei.com>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: q1nEjGEgMHtk
+ Joel Stanley <joel@jms.id.au>, Paolo Bonzini <pbonzini@redhat.com>,
+ Andrzej Zaborowski <balrogg@gmail.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: jZ9yRh0H9Ncg
 
-On Wed, 28 Oct 2020 at 04:19, Chen Qun <kuhn.chenqun@huawei.com> wrote:
+On Mon, 26 Oct 2020 at 22:06, Philippe Mathieu-Daud=C3=A9 <f4bug@amsat.org>=
+ wrote:
 >
-> When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warn=
-ing:
-> hw/intc/arm_gicv3_kvm.c: In function =E2=80=98kvm_arm_gicv3_put=E2=80=99:
-> hw/intc/arm_gicv3_kvm.c:484:13: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, true);
->              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> hw/intc/arm_gicv3_kvm.c:485:9: note: here
->          default:
->          ^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:495:13: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, true);
->              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> hw/intc/arm_gicv3_kvm.c:496:9: note: here
->          case 6:
->          ^~~~
-> hw/intc/arm_gicv3_kvm.c:498:13: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, true);
->              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-> hw/intc/arm_gicv3_kvm.c:499:9: note: here
->          default:
->          ^~~~~~~
+> The following changes since commit a5fac424c76d6401ecde4ecb7d846e656d0d6e=
+89:
 >
-> hw/intc/arm_gicv3_kvm.c: In function =E2=80=98kvm_arm_gicv3_get=E2=80=99:
-> hw/intc/arm_gicv3_kvm.c:634:37: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              c->icc_apr[GICV3_G0][2] =3D reg64;
->              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:635:9: note: here
->          case 6:
->          ^~~~
-> hw/intc/arm_gicv3_kvm.c:637:37: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              c->icc_apr[GICV3_G0][1] =3D reg64;
->              ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:638:9: note: here
->          default:
->          ^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:648:39: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              c->icc_apr[GICV3_G1NS][2] =3D reg64;
->              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:649:9: note: here
->          case 6:
->          ^~~~
-> hw/intc/arm_gicv3_kvm.c:651:39: warning: this statement may fall through =
-[-Wimplicit-fallthrough=3D]
->              c->icc_apr[GICV3_G1NS][1] =3D reg64;
->              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
-> hw/intc/arm_gicv3_kvm.c:652:9: note: here
->          default:
->          ^~~~~~~
+>   Merge remote-tracking branch 'remotes/stefanha-gitlab/tags/block-pull-r=
+eque=3D
+> st' into staging (2020-10-26 10:33:59 +0000)
 >
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/philmd/qemu.git tags/led-api-20201026
+>
+> for you to fetch changes up to 06972067c48fc21a47445b5d706368f1129f216f:
+>
+>   hw/arm/tosa: Replace fprintf() calls by LED devices (2020-10-26 13:44:5=
+8 +0=3D
+> 100)
+>
+> ----------------------------------------------------------------
+> API to model LED.
+>
+> CI jobs results:
+> . https://cirrus-ci.com/build/4879251751043072
+> . https://gitlab.com/philmd/qemu/-/pipelines/207661784
+> . https://travis-ci.org/github/philmd/qemu/builds/738958191
+> . https://app.shippable.com/github/philmd/qemu/runs/891/summary/console
+> ----------------------------------------------------------------
 
-Yep, these are all intentionall fallthrough.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Applied, thanks.
 
-thanks
+Please update the changelog at https://wiki.qemu.org/ChangeLog/5.2
+for any user-visible changes.
+
 -- PMM

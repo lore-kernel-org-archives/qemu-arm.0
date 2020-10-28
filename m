@@ -1,94 +1,80 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp95133lfa;
-        Tue, 27 Oct 2020 20:07:38 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJxJ831qYxS+zSw4JFzznP7Q8GrPE8q70507cafvVKF3XxiOrfGfrIXuzqc9/CnnKtEB1fWT
-X-Received: by 2002:a5b:790:: with SMTP id b16mr7688159ybq.48.1603854458317;
-        Tue, 27 Oct 2020 20:07:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603854458; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp135849lfa;
+        Tue, 27 Oct 2020 21:22:41 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwddUuU+pwy4sv4MIgMJvED3zrD0Y6rFsMn3m57vkwStHRifCCZXRLfPE8usTWKdB8ZWHGH
+X-Received: by 2002:a37:e0e:: with SMTP id 14mr5501828qko.455.1603858961024;
+        Tue, 27 Oct 2020 21:22:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603858961; cv=none;
         d=google.com; s=arc-20160816;
-        b=0pqSYYqYarvtn09qYiDgpm1HwVrusj8Z8wM9nX8RoN5xvSlobBpUi/JyIqDhjKNLOB
-         SkahZgg/SNaxY4ikV+iu+ur6oGM7SVtpfluEQUw2mDJq6v6POsplHcCBjRZttbCNBPOL
-         v2RsmdVtl0SwnOo24S5NG01JY0X4gD3k4A3sW/6muT8fmY9nIDGIQBg+rV8Y9n4C6s1t
-         /bqnd8J3X4DO676zYnME67zkTcVqZPdoP0LI5pdRvKYvEUpgoVBimiZPIDIX1Gx1yYJ2
-         RwdcKWyn9OrJDWR5KFT5P0s+sxek0dyVajOWYVcgEKfFFPBEuAL5auZcuoscCaeqHnrv
-         iEwA==
+        b=HyHJ7UOcrhuVOdEsMmLo7XY6XmPsjwSffhBQ+2Ipw82UCMsR9nmHblTHYsOP+Bt1nT
+         o8FSh8vIT6+Sy5aWpVCL7NIXCBX2+eB0U5ILz6lRjPuCXkuAC0/mplT+WVAZQgTJbXyv
+         +NQO+yRpGdbuP5/BIeP32URrHlIQ5CeHLlL/PFgCs65Uz+QH9YWCekwkszHBUPH55x0n
+         f5WWcA/e6R4lvPQER0TA7sGYMpI7yFIwYEEEyPb0vPTPMZxoFhCV3J0W6T9RK0UbHC4N
+         M1rZJ7nc9xWce7fZDio71QqbQOIc8V8O9XlMoURz78amvV86g4pb5sQc1NlKPBdT3GYe
+         Nz8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=bB3P4E1QnUB61642KGjjlF4nIL/mJBmxJiEctt/oBV0=;
-        b=i7jiFaXgz8QLoQ1yaLd/46VgUstANqWYRsJ9Chg06utfE+oAbLM8xtBqvGmLRGpJk0
-         FbXko1KgTXVfUsqdZ3OpMLYInJ2dIM50uToVnUl8E48ryJFt6+VL6EIKI9tOTOx0DmKO
-         bBq4NooF8KL8bKopwQ2WJV2bPw1QalZFM+dx5vwxQERBHg7B15lAfQpWZqwbcaJTKMc8
-         pzvX0p/wN4ss9oN/nhxLdWh05wRX+LVPzYeQsv8yVaAkdLFI0oqBfIBOh/fQNYGv2tMu
-         ZG1wQrmx4vnwTqQeMLETAGpPYM25klFJAyMpKtXG5AykJ4USuGQ/UD4pLNUayZGYabM1
-         D9Gw==
+        bh=iJ19WOixeyToGv4q8r6mviloAXq0ecBl+9C25Nrpi90=;
+        b=A2boc9zA0ZqLA/NA+M6NuIvG4zKNvomPrJOuPzhwmloWt6Feq21v7ECNXzp9kVmWPc
+         PZqSXHFIYilCXdVtGmst3J5WxxXufUgtiRrL0KFw3lKs8F0cF4FOC5B6yVxKTKanpW0d
+         HIv6mjoX+gdtKiBdJAFxg2doKeU9AcnSOCI84tB+wm3mDl1LVzpEI3mfsy9KhJ9G3vsS
+         4Hn2/9KU9fkG9zcWCvhjL1ty58p9MK7Skf3i+46eakhn9lll0C1yVZIbs9Zq1qjtR7jp
+         lME6u6RAJk2YN/sRmqZuD44K1J2JHIy5nQtcfqD6TaFLddI+tVJHyToCCSUb01B8TvM2
+         gHQw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id x8si3321381ybk.86.2020.10.27.20.07.38
+        by mx.google.com with ESMTPS id h22si2295254qkn.270.2020.10.27.21.22.40
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 27 Oct 2020 20:07:38 -0700 (PDT)
+        Tue, 27 Oct 2020 21:22:41 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59282 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:45792 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kXboH-00040G-ET
-	for alex.bennee@linaro.org; Tue, 27 Oct 2020 23:07:37 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58312)
+	id 1kXcyu-00059u-FH
+	for alex.bennee@linaro.org; Wed, 28 Oct 2020 00:22:40 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43488)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <osy86github@gmail.com>)
- id 1kXbns-0003iV-I8; Tue, 27 Oct 2020 23:07:12 -0400
-Received: from mail-pl1-f193.google.com ([209.85.214.193]:46829)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <osy86github@gmail.com>)
- id 1kXbnq-0006gU-D4; Tue, 27 Oct 2020 23:07:12 -0400
-Received: by mail-pl1-f193.google.com with SMTP id p17so40331pli.13;
- Tue, 27 Oct 2020 20:07:09 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:in-reply-to
- :references:mime-version:content-transfer-encoding;
- bh=bB3P4E1QnUB61642KGjjlF4nIL/mJBmxJiEctt/oBV0=;
- b=tvrpOocTzp5DshS5UO4oMhffBS/985F6tdYTgEsISf3ED7dPXodC5ChjfHMrZtDYcf
- NV8bOeuBxgzgke+j8oi9ZuJrXeDbGNBJD4Zd/droFCZuJfrbxAy5aOCNwhLHk1EwXuAM
- 0A5dryi7Cf3nyYVPguBFSpCLCqvykBxHXXC18JXsqQu7pscrgJkd6KqZK2srRGG+aiNM
- Utnbz9HFyvk6/n4Y3R4VPyxfBJyQhA0ViJnRQCkYFxJdo3LyksUdKjdJj5KtywKFFQdz
- H9EZCUbc/ctPXwDGd4sraWW3VUuCFNQJR3zRmzMofQ1emOOZRB1caFG3Oe/PwcexWcYB
- c6AQ==
-X-Gm-Message-State: AOAM532F5VeOe2ITzS1w6l6U2+luNZfDmGg0YpubNdXW023+ouJamJjY
- /Cu6145zMA4J+M7UsWKUokCtQZLPYps=
-X-Received: by 2002:a17:902:8eca:b029:d2:4276:1b2d with SMTP id
- x10-20020a1709028ecab02900d242761b2dmr5265696plo.17.1603854427943; 
- Tue, 27 Oct 2020 20:07:07 -0700 (PDT)
-Received: from localhost.localdomain ([73.93.155.93])
- by smtp.gmail.com with ESMTPSA id n6sm3407219pjj.34.2020.10.27.20.07.06
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 27 Oct 2020 20:07:07 -0700 (PDT)
-From: Joelle van Dyne <j@getutm.app>
-To: qemu-devel@nongnu.org
-Subject: [PATCH v3 3/7] qemu: add support for iOS host
-Date: Tue, 27 Oct 2020 20:06:57 -0700
-Message-Id: <20201028030701.14086-4-j@getutm.app>
-X-Mailer: git-send-email 2.28.0
-In-Reply-To: <20201028030701.14086-1-j@getutm.app>
-References: <20201028030701.14086-1-j@getutm.app>
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kXcvX-0001hy-05; Wed, 28 Oct 2020 00:19:11 -0400
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2302)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kuhn.chenqun@huawei.com>)
+ id 1kXcvU-0007aI-El; Wed, 28 Oct 2020 00:19:10 -0400
+Received: from DGGEMS401-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CLb1R3ZNDzkXyB;
+ Wed, 28 Oct 2020 12:19:07 +0800 (CST)
+Received: from huawei.com (10.175.104.175) by DGGEMS401-HUB.china.huawei.com
+ (10.3.19.201) with Microsoft SMTP Server id 14.3.487.0; Wed, 28 Oct 2020
+ 12:18:56 +0800
+From: Chen Qun <kuhn.chenqun@huawei.com>
+To: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+Subject: [PATCH 2/9] hw/intc/arm_gicv3_kvm: silence the compiler warnings
+Date: Wed, 28 Oct 2020 12:18:12 +0800
+Message-ID: <20201028041819.2169003-3-kuhn.chenqun@huawei.com>
+X-Mailer: git-send-email 2.23.0
+In-Reply-To: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
+References: <20201028041819.2169003-1-kuhn.chenqun@huawei.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=209.85.214.193;
- envelope-from=osy86github@gmail.com; helo=mail-pl1-f193.google.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/27 23:07:08
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Originating-IP: [10.175.104.175]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190;
+ envelope-from=kuhn.chenqun@huawei.com; helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/28 00:18:54
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,462 +87,121 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Marek Vasut <marex@denx.de>,
- "open list:Block layer core" <qemu-block@nongnu.org>,
- Jason Wang <jasowang@redhat.com>, Chris Wulff <crwulff@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Michael Roth <mdroth@linux.vnet.ibm.com>, Max Reitz <mreitz@redhat.com>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>, Joelle van Dyne <j@getutm.app>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Samuel Thibault <samuel.thibault@ens-lyon.org>,
- Laurent Vivier <laurent@vivier.eu>
+Cc: Peter Maydell <peter.maydell@linaro.org>, zhang.zhanghailiang@huawei.com,
+ qemu-arm@nongnu.org, ganqixin@huawei.com, Euler Robot <euler.robot@huawei.com>,
+ Chen Qun <kuhn.chenqun@huawei.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: WAp00ZGVD3tx
+X-TUID: l93RhL7HMpjS
 
-This introduces support for building for iOS hosts. When the correct Xcode
-toolchain is used, iOS host will be detected automatically.
+When using -Wimplicit-fallthrough in our CFLAGS, the compiler showed warning:
+hw/intc/arm_gicv3_kvm.c: In function ‘kvm_arm_gicv3_put’:
+hw/intc/arm_gicv3_kvm.c:484:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
+             kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, true);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/intc/arm_gicv3_kvm.c:485:9: note: here
+         default:
+         ^~~~~~~
+hw/intc/arm_gicv3_kvm.c:495:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
+             kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, true);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/intc/arm_gicv3_kvm.c:496:9: note: here
+         case 6:
+         ^~~~
+hw/intc/arm_gicv3_kvm.c:498:13: warning: this statement may fall through [-Wimplicit-fallthrough=]
+             kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, true);
+             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+hw/intc/arm_gicv3_kvm.c:499:9: note: here
+         default:
+         ^~~~~~~
 
-block: disable features not supported by iOS sandbox
-slirp: disable SMB features for iOS
-target: disable system() calls for iOS
-tcg: use sys_icache_invalidate() instead of GCC builtin for iOS
-tests: disable tests on iOS which uses system()
-Signed-off-by: Joelle van Dyne <j@getutm.app>
+hw/intc/arm_gicv3_kvm.c: In function ‘kvm_arm_gicv3_get’:
+hw/intc/arm_gicv3_kvm.c:634:37: warning: this statement may fall through [-Wimplicit-fallthrough=]
+             c->icc_apr[GICV3_G0][2] = reg64;
+             ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+hw/intc/arm_gicv3_kvm.c:635:9: note: here
+         case 6:
+         ^~~~
+hw/intc/arm_gicv3_kvm.c:637:37: warning: this statement may fall through [-Wimplicit-fallthrough=]
+             c->icc_apr[GICV3_G0][1] = reg64;
+             ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+hw/intc/arm_gicv3_kvm.c:638:9: note: here
+         default:
+         ^~~~~~~
+hw/intc/arm_gicv3_kvm.c:648:39: warning: this statement may fall through [-Wimplicit-fallthrough=]
+             c->icc_apr[GICV3_G1NS][2] = reg64;
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+hw/intc/arm_gicv3_kvm.c:649:9: note: here
+         case 6:
+         ^~~~
+hw/intc/arm_gicv3_kvm.c:651:39: warning: this statement may fall through [-Wimplicit-fallthrough=]
+             c->icc_apr[GICV3_G1NS][1] = reg64;
+             ~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~
+hw/intc/arm_gicv3_kvm.c:652:9: note: here
+         default:
+         ^~~~~~~
+
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Chen Qun <kuhn.chenqun@huawei.com>
 ---
- configure                      | 43 +++++++++++++++++++++++++++++++++-
- meson.build                    |  2 +-
- tcg/aarch64/tcg-target.h       |  7 ++++++
- block.c                        |  2 +-
- block/file-posix.c             | 31 ++++++++++++++----------
- net/slirp.c                    | 16 ++++++-------
- qga/commands-posix.c           |  6 +++++
- target/arm/arm-semi.c          |  2 ++
- target/m68k/m68k-semi.c        |  2 ++
- target/nios2/nios2-semi.c      |  2 ++
- tests/qtest/libqos/virtio-9p.c |  8 +++++++
- tests/qtest/meson.build        |  7 +++---
- 12 files changed, 101 insertions(+), 27 deletions(-)
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org
+---
+ hw/intc/arm_gicv3_kvm.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/configure b/configure
-index e211d11971..7fbaefc255 100755
---- a/configure
-+++ b/configure
-@@ -557,6 +557,19 @@ EOF
-   compile_object
- }
- 
-+check_ios() {
-+  cat > $TMPC <<EOF
-+#ifdef __APPLE__
-+#import "TargetConditionals.h"
-+#if !TARGET_OS_IPHONE
-+#error TARGET_OS_IPHONE not true
-+#endif
-+#endif
-+int main(void) { return 0; }
-+EOF
-+  compile_object
-+}
-+
- check_include() {
- cat > $TMPC <<EOF
- #include <$1>
-@@ -599,7 +612,11 @@ elif check_define __DragonFly__ ; then
- elif check_define __NetBSD__; then
-   targetos='NetBSD'
- elif check_define __APPLE__; then
--  targetos='Darwin'
-+  if check_ios ; then
-+    targetos='iOS'
-+  else
-+    targetos='Darwin'
-+  fi
- else
-   # This is a fatal error, but don't report it yet, because we
-   # might be going to just print the --help text, or it might
-@@ -776,6 +793,22 @@ Darwin)
-   # won't work when we're compiling with gcc as a C compiler.
-   QEMU_CFLAGS="-DOS_OBJECT_USE_OBJC=0 $QEMU_CFLAGS"
- ;;
-+iOS)
-+  bsd="yes"
-+  darwin="yes"
-+  ios="yes"
-+  if [ "$cpu" = "x86_64" ] ; then
-+    QEMU_CFLAGS="-arch x86_64 $QEMU_CFLAGS"
-+    QEMU_LDFLAGS="-arch x86_64 $QEMU_LDFLAGS"
-+  fi
-+  host_block_device_support="no"
-+  audio_drv_list=""
-+  audio_possible_drivers=""
-+  QEMU_LDFLAGS="-framework CoreFoundation $QEMU_LDFLAGS"
-+  # Disable attempts to use ObjectiveC features in os/object.h since they
-+  # won't work when we're compiling with gcc as a C compiler.
-+  QEMU_CFLAGS="-DOS_OBJECT_USE_OBJC=0 $QEMU_CFLAGS"
-+;;
- SunOS)
-   solaris="yes"
-   make="${MAKE-gmake}"
-@@ -5956,6 +5989,10 @@ if test "$darwin" = "yes" ; then
-   echo "CONFIG_DARWIN=y" >> $config_host_mak
- fi
- 
-+if test "$ios" = "yes" ; then
-+  echo "CONFIG_IOS=y" >> $config_host_mak
-+fi
-+
- if test "$solaris" = "yes" ; then
-   echo "CONFIG_SOLARIS=y" >> $config_host_mak
- fi
-@@ -6924,6 +6961,7 @@ echo "cpp_link_args = [${LDFLAGS:+$(meson_quote $LDFLAGS)}]" >> $cross
- echo "[binaries]" >> $cross
- echo "c = [$(meson_quote $cc)]" >> $cross
- test -n "$cxx" && echo "cpp = [$(meson_quote $cxx)]" >> $cross
-+test -n "$objcc" && echo "objc = [$(meson_quote $objcc)]" >> $cross
- echo "ar = [$(meson_quote $ar)]" >> $cross
- echo "nm = [$(meson_quote $nm)]" >> $cross
- echo "pkgconfig = [$(meson_quote $pkg_config_exe)]" >> $cross
-@@ -6942,6 +6980,9 @@ if test "$cross_compile" = "yes"; then
-     if test "$linux" = "yes" ; then
-         echo "system = 'linux'" >> $cross
-     fi
-+    if test "$darwin" = "yes" ; then
-+        echo "system = 'darwin'" >> $cross
-+    fi
-     case "$ARCH" in
-         i386|x86_64)
-             echo "cpu_family = 'x86'" >> $cross
-diff --git a/meson.build b/meson.build
-index e880274b7c..48c95150fe 100644
---- a/meson.build
-+++ b/meson.build
-@@ -176,7 +176,7 @@ if targetos == 'windows'
-                                       include_directories: include_directories('.'))
- elif targetos == 'darwin'
-   coref = dependency('appleframeworks', modules: 'CoreFoundation')
--  iokit = dependency('appleframeworks', modules: 'IOKit')
-+  iokit = dependency('appleframeworks', modules: 'IOKit', required: 'CONFIG_IOS' not in config_host)
-   cocoa = dependency('appleframeworks', modules: 'Cocoa', required: get_option('cocoa'))
- elif targetos == 'sunos'
-   socket = [cc.find_library('socket'),
-diff --git a/tcg/aarch64/tcg-target.h b/tcg/aarch64/tcg-target.h
-index f605257ed5..6b5b3216fa 100644
---- a/tcg/aarch64/tcg-target.h
-+++ b/tcg/aarch64/tcg-target.h
-@@ -149,12 +149,19 @@ typedef enum {
- #define TCG_TARGET_HAS_MEMORY_BSWAP     1
- 
- #if defined(__APPLE__)
-+void sys_icache_invalidate(void *start, size_t len);
- void sys_dcache_flush(void *start, size_t len);
- #endif
- 
- static inline void flush_icache_range(uintptr_t start, uintptr_t stop)
- {
-+#if defined(__APPLE__)
-+    sys_icache_invalidate((char *)start, stop - start);
-+#elif defined(__GNUC__)
-     __builtin___clear_cache((char *)start, (char *)stop);
-+#else
-+#error "Missing builtin to flush instruction cache"
-+#endif
- }
- 
- void tb_target_set_jmp_target(uintptr_t, uintptr_t, uintptr_t, uintptr_t);
-diff --git a/block.c b/block.c
-index 430edf79bb..5d49869d02 100644
---- a/block.c
-+++ b/block.c
-@@ -53,7 +53,7 @@
- #ifdef CONFIG_BSD
- #include <sys/ioctl.h>
- #include <sys/queue.h>
--#ifndef __DragonFly__
-+#if !defined(__DragonFly__) && !defined(CONFIG_IOS)
- #include <sys/disk.h>
- #endif
- #endif
-diff --git a/block/file-posix.c b/block/file-posix.c
-index 52f7c20525..5560fd20ac 100644
---- a/block/file-posix.c
-+++ b/block/file-posix.c
-@@ -181,7 +181,17 @@ typedef struct BDRVRawReopenState {
-     bool check_cache_dropped;
- } BDRVRawReopenState;
- 
--static int fd_open(BlockDriverState *bs);
-+static int fd_open(BlockDriverState *bs)
-+{
-+    BDRVRawState *s = bs->opaque;
-+
-+    /* this is just to ensure s->fd is sane (its called by io ops) */
-+    if (s->fd >= 0) {
-+        return 0;
-+    }
-+    return -EIO;
-+}
-+
- static int64_t raw_getlength(BlockDriverState *bs);
- 
- typedef struct RawPosixAIOData {
-@@ -252,6 +262,12 @@ static int raw_normalize_devicepath(const char **filename, Error **errp)
- }
- #endif
- 
-+#if defined(CONFIG_IOS)
-+static int probe_logical_blocksize(int fd, unsigned int *sector_size_p)
-+{
-+    return -ENOTSUP; /* not supported on iOS */
-+}
-+#else /* CONFIG_IOS */
- /*
-  * Get logical block size via ioctl. On success store it in @sector_size_p.
-  */
-@@ -284,6 +300,7 @@ static int probe_logical_blocksize(int fd, unsigned int *sector_size_p)
- 
-     return success ? 0 : -errno;
- }
-+#endif /* !CONFIG_IOS */
- 
- /**
-  * Get physical block size of @fd.
-@@ -2306,7 +2323,7 @@ again:
-         }
-         if (size == 0)
- #endif
--#if defined(__APPLE__) && defined(__MACH__)
-+#if !defined(CONFIG_IOS) && defined(__APPLE__) && defined(__MACH__)
-         {
-             uint64_t sectors = 0;
-             uint32_t sector_size = 0;
-@@ -3541,16 +3558,6 @@ hdev_co_ioctl(BlockDriverState *bs, unsigned long int req, void *buf)
- }
- #endif /* linux */
- 
--static int fd_open(BlockDriverState *bs)
--{
--    BDRVRawState *s = bs->opaque;
--
--    /* this is just to ensure s->fd is sane (its called by io ops) */
--    if (s->fd >= 0)
--        return 0;
--    return -EIO;
--}
--
- static coroutine_fn int
- hdev_co_pdiscard(BlockDriverState *bs, int64_t offset, int bytes)
- {
-diff --git a/net/slirp.c b/net/slirp.c
-index 77042e6df7..8413042c09 100644
---- a/net/slirp.c
-+++ b/net/slirp.c
-@@ -27,7 +27,7 @@
- #include "net/slirp.h"
- 
- 
--#ifndef _WIN32
-+#if !defined(_WIN32) && !defined(CONFIG_IOS)
- #include <pwd.h>
- #include <sys/wait.h>
- #endif
-@@ -90,7 +90,7 @@ typedef struct SlirpState {
-     Slirp *slirp;
-     Notifier poll_notifier;
-     Notifier exit_notifier;
--#ifndef _WIN32
-+#if !defined(_WIN32) && !defined(CONFIG_IOS)
-     gchar *smb_dir;
- #endif
-     GSList *fwd;
-@@ -103,7 +103,7 @@ static QTAILQ_HEAD(, SlirpState) slirp_stacks =
- static int slirp_hostfwd(SlirpState *s, const char *redir_str, Error **errp);
- static int slirp_guestfwd(SlirpState *s, const char *config_str, Error **errp);
- 
--#ifndef _WIN32
-+#if !defined(_WIN32) && !defined(CONFIG_IOS)
- static int slirp_smb(SlirpState *s, const char *exported_dir,
-                      struct in_addr vserver_addr, Error **errp);
- static void slirp_smb_cleanup(SlirpState *s);
-@@ -368,7 +368,7 @@ static int net_slirp_init(NetClientState *peer, const char *model,
-     struct in6_addr ip6_prefix;
-     struct in6_addr ip6_host;
-     struct in6_addr ip6_dns;
--#ifndef _WIN32
-+#if !defined(_WIN32) && !defined(CONFIG_IOS)
-     struct in_addr smbsrv = { .s_addr = 0 };
- #endif
-     NetClientState *nc;
-@@ -478,7 +478,7 @@ static int net_slirp_init(NetClientState *peer, const char *model,
-         return -1;
-     }
- 
--#ifndef _WIN32
-+#if !defined(_WIN32) && !defined(CONFIG_IOS)
-     if (vsmbserver && !inet_aton(vsmbserver, &smbsrv)) {
-         error_setg(errp, "Failed to parse SMB address");
-         return -1;
-@@ -593,7 +593,7 @@ static int net_slirp_init(NetClientState *peer, const char *model,
-             }
-         }
-     }
--#ifndef _WIN32
-+#if !defined(_WIN32) && !defined(CONFIG_IOS)
-     if (smb_export) {
-         if (slirp_smb(s, smb_export, smbsrv, errp) < 0) {
-             goto error;
-@@ -785,7 +785,7 @@ void hmp_hostfwd_add(Monitor *mon, const QDict *qdict)
- 
- }
- 
--#ifndef _WIN32
-+#if !defined(_WIN32) && !defined(CONFIG_IOS)
- 
- /* automatic user mode samba server configuration */
- static void slirp_smb_cleanup(SlirpState *s)
-@@ -900,7 +900,7 @@ static int slirp_smb(SlirpState* s, const char *exported_dir,
-     return 0;
- }
- 
--#endif /* !defined(_WIN32) */
-+#endif /* !defined(_WIN32) && !defined(CONFIG_IOS) */
- 
- static int guestfwd_can_read(void *opaque)
- {
-diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index 3bffee99d4..ebb63b2188 100644
---- a/qga/commands-posix.c
-+++ b/qga/commands-posix.c
-@@ -34,6 +34,12 @@
- 
- #ifndef CONFIG_HAS_ENVIRON
- #ifdef __APPLE__
-+#include "TargetConditionals.h"
-+#if !TARGET_OS_IPHONE && !TARGET_IPHONE_SIMULATOR
-+#define APPLE_USE_CRT_EXTERNS
-+#endif
-+#endif
-+#ifdef APPLE_USE_CRT_EXTERNS
- #include <crt_externs.h>
- #define environ (*_NSGetEnviron())
- #else
-diff --git a/target/arm/arm-semi.c b/target/arm/arm-semi.c
-index 8718fd0194..3704f19df6 100644
---- a/target/arm/arm-semi.c
-+++ b/target/arm/arm-semi.c
-@@ -891,6 +891,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-         return clock() / (CLOCKS_PER_SEC / 100);
-     case TARGET_SYS_TIME:
-         return set_swi_errno(env, time(NULL));
-+#if !defined(CONFIG_IOS) /* iOS does not have system() */
-     case TARGET_SYS_SYSTEM:
-         GET_ARG(0);
-         GET_ARG(1);
-@@ -907,6 +908,7 @@ target_ulong do_arm_semihosting(CPUARMState *env)
-             unlock_user(s, arg0, 0);
-             return ret;
-         }
-+#endif /* CONFIG_IOS */
-     case TARGET_SYS_ERRNO:
-         return get_swi_errno(env);
-     case TARGET_SYS_GET_CMDLINE:
-diff --git a/target/m68k/m68k-semi.c b/target/m68k/m68k-semi.c
-index 8e5fbfc8fa..6b8941839e 100644
---- a/target/m68k/m68k-semi.c
-+++ b/target/m68k/m68k-semi.c
-@@ -402,6 +402,7 @@ void do_m68k_semihosting(CPUM68KState *env, int nr)
-             result = isatty(arg0);
-         }
-         break;
-+#if !defined(CONFIG_IOS) /* iOS does not have system() */
-     case HOSTED_SYSTEM:
-         GET_ARG(0);
-         GET_ARG(1);
-@@ -420,6 +421,7 @@ void do_m68k_semihosting(CPUM68KState *env, int nr)
-             }
-         }
-         break;
-+#endif /* CONFIG_IOS */
-     case HOSTED_INIT_SIM:
- #if defined(CONFIG_USER_ONLY)
-         {
-diff --git a/target/nios2/nios2-semi.c b/target/nios2/nios2-semi.c
-index d7a80dd303..bb029070d3 100644
---- a/target/nios2/nios2-semi.c
-+++ b/target/nios2/nios2-semi.c
-@@ -426,6 +426,7 @@ void do_nios2_semihosting(CPUNios2State *env)
-             result = isatty(arg0);
-         }
-         break;
-+#if !defined(CONFIG_IOS) /* iOS does not have system() */
-     case HOSTED_SYSTEM:
-         GET_ARG(0);
-         GET_ARG(1);
-@@ -444,6 +445,7 @@ void do_nios2_semihosting(CPUNios2State *env)
-             }
-         }
-         break;
-+#endif
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR, "nios2-semihosting: unsupported "
-                       "semihosting syscall %d\n", nr);
-diff --git a/tests/qtest/libqos/virtio-9p.c b/tests/qtest/libqos/virtio-9p.c
-index d43647b3b7..cc7fb1bbbf 100644
---- a/tests/qtest/libqos/virtio-9p.c
-+++ b/tests/qtest/libqos/virtio-9p.c
-@@ -54,6 +54,7 @@ static void create_local_test_dir(void)
- }
- 
- /* Deletes directory previously created by create_local_test_dir(). */
-+#if !defined(CONFIG_IOS) /* iOS does not have system() */
- static void remove_local_test_dir(void)
- {
-     g_assert(local_test_path != NULL);
-@@ -64,6 +65,13 @@ static void remove_local_test_dir(void)
-     }
-     g_free(cmd);
- }
-+#else
-+static void remove_local_test_dir(void)
-+{
-+    fprintf(stderr, "Test not implemented for iOS\n");
-+    g_assert(0);
-+}
-+#endif
- 
- char *virtio_9p_test_path(const char *path)
- {
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index ba8ebeead6..20bfbb69c2 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -46,12 +46,11 @@ qtests_i386 = \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_ISA') ? ['tpm-tis-test'] : []) +              \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_ISA') ? ['tpm-tis-swtpm-test'] : []) +        \
-   (config_all_devices.has_key('CONFIG_RTL8139_PCI') ? ['rtl8139-test'] : []) +              \
-+  (not config_host.has_key('CONFIG_IOS') ? ['bios-tables-test', 'hd-geo-test'] : []) +      \
-   qtests_pci +                                                                              \
-   ['fdc-test',
-    'ide-test',
--   'hd-geo-test',
-    'boot-order-test',
--   'bios-tables-test',
-    'rtc-test',
-    'i440fx-test',
-    'fuzz-test',
-@@ -144,9 +143,9 @@ qtests_arm = \
-    'boot-serial-test',
-    'hexloader-test']
- 
--# TODO: once aarch64 TCG is fixed on ARM 32 bit host, make bios-tables-test unconditional
-+# TODO: once aarch64 TCG is fixed on ARM 32 bit host, make bios-tables-test unconditional (except on iOS)
- qtests_aarch64 = \
--  (cpu != 'arm' ? ['bios-tables-test'] : []) +                                                  \
-+  (cpu != 'arm' and not config_host.has_key('CONFIG_IOS') ? ['bios-tables-test'] : []) +        \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-test'] : []) +        \
-   (config_all_devices.has_key('CONFIG_TPM_TIS_SYSBUS') ? ['tpm-tis-device-swtpm-test'] : []) +  \
-   ['arm-cpu-features',
+diff --git a/hw/intc/arm_gicv3_kvm.c b/hw/intc/arm_gicv3_kvm.c
+index 187eb054e0..d040a5d1e9 100644
+--- a/hw/intc/arm_gicv3_kvm.c
++++ b/hw/intc/arm_gicv3_kvm.c
+@@ -478,9 +478,11 @@ static void kvm_arm_gicv3_put(GICv3State *s)
+             kvm_gicc_access(s, ICC_AP0R_EL1(3), ncpu, &reg64, true);
+             reg64 = c->icc_apr[GICV3_G0][2];
+             kvm_gicc_access(s, ICC_AP0R_EL1(2), ncpu, &reg64, true);
++            /* fall through */
+         case 6:
+             reg64 = c->icc_apr[GICV3_G0][1];
+             kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, true);
++            /* fall through */
+         default:
+             reg64 = c->icc_apr[GICV3_G0][0];
+             kvm_gicc_access(s, ICC_AP0R_EL1(0), ncpu, &reg64, true);
+@@ -492,9 +494,11 @@ static void kvm_arm_gicv3_put(GICv3State *s)
+             kvm_gicc_access(s, ICC_AP1R_EL1(3), ncpu, &reg64, true);
+             reg64 = c->icc_apr[GICV3_G1NS][2];
+             kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, true);
++            /* fall through */
+         case 6:
+             reg64 = c->icc_apr[GICV3_G1NS][1];
+             kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, true);
++            /* fall through */
+         default:
+             reg64 = c->icc_apr[GICV3_G1NS][0];
+             kvm_gicc_access(s, ICC_AP1R_EL1(0), ncpu, &reg64, true);
+@@ -631,9 +635,11 @@ static void kvm_arm_gicv3_get(GICv3State *s)
+             c->icc_apr[GICV3_G0][3] = reg64;
+             kvm_gicc_access(s, ICC_AP0R_EL1(2), ncpu, &reg64, false);
+             c->icc_apr[GICV3_G0][2] = reg64;
++            /* fall through */
+         case 6:
+             kvm_gicc_access(s, ICC_AP0R_EL1(1), ncpu, &reg64, false);
+             c->icc_apr[GICV3_G0][1] = reg64;
++            /* fall through */
+         default:
+             kvm_gicc_access(s, ICC_AP0R_EL1(0), ncpu, &reg64, false);
+             c->icc_apr[GICV3_G0][0] = reg64;
+@@ -645,9 +651,11 @@ static void kvm_arm_gicv3_get(GICv3State *s)
+             c->icc_apr[GICV3_G1NS][3] = reg64;
+             kvm_gicc_access(s, ICC_AP1R_EL1(2), ncpu, &reg64, false);
+             c->icc_apr[GICV3_G1NS][2] = reg64;
++            /* fall through */
+         case 6:
+             kvm_gicc_access(s, ICC_AP1R_EL1(1), ncpu, &reg64, false);
+             c->icc_apr[GICV3_G1NS][1] = reg64;
++            /* fall through */
+         default:
+             kvm_gicc_access(s, ICC_AP1R_EL1(0), ncpu, &reg64, false);
+             c->icc_apr[GICV3_G1NS][0] = reg64;
 -- 
-2.28.0
+2.27.0
 

@@ -1,133 +1,188 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp784168lfa;
-        Wed, 28 Oct 2020 12:14:59 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz3/j55R6uAjDwnqp/H91PcIUt/201IZYxERBdzdXLe0M1cPJyd55N9qfVl9br0IOoiGUok
-X-Received: by 2002:a05:6a00:dc:b029:162:2aab:41dc with SMTP id e28-20020a056a0000dcb02901622aab41dcmr773867pfj.54.1603912498818;
-        Wed, 28 Oct 2020 12:14:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603912498; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp838344lfa;
+        Wed, 28 Oct 2020 13:32:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJz3mxMXDkfAcNcF9BZ4h+R3vertXBMvP99+9DKPiVdNu016SzRA21KZI99IXWbtl2O1jxFx
+X-Received: by 2002:a92:5b42:: with SMTP id p63mr711389ilb.139.1603917151074;
+        Wed, 28 Oct 2020 13:32:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603917151; cv=none;
         d=google.com; s=arc-20160816;
-        b=cOKVsyOWqXyVYKajDuEtFFqcj+sNWAOoe7DgKsGPciahBwT9IWwtcLHvsK7FelzXGl
-         bMVuVzXOugUTIVn+bCCIfXcP0yuiYpkZA0pFFzHYYKdf/mkV/hTn9w2gcFiSkwG8MQ9+
-         1uPZ0dsryqXMMy0Su/3o9SUEQ49U5ogaNdlX0DaY1pGX9/n2UGGveeggszTc7mXjH2tT
-         3WO92u8nr6xhEi7Tms8XHPfXeKlc2/7c7QS0Mfb5oU/6sTx58vQJTPLToaB2FjaMRYgH
-         aaVSCn/1XZuyEZAE6Lg6/RkYJm8feFdJkvxUmtE7yaCEB7x2uKqKH/6AuiYAwLKIgtHk
-         nAPA==
+        b=clFdYImRWTMVLwgY7uNWbSOv/dMl9gSgofG+eb5URvQpEqvtObfVpJQ1Lo3FNW/XBW
+         3u+SoDxZIyRqhpA7g+bw34ayeBAiHbGCMjKY+qEt0tq9Z+sGzIIxMd7MYi01YF3Wp0rg
+         N2AYIJWN+niZPlLrBSFs9LWpzFzYBglBhmDvtknum3HtFUR8Eg2LW6LE1v1EtdBYTz6H
+         dCgdKkwvH2HFmLKVP8D0o4JpVl2yjqp4gjIu1ihCe6dCRAGjIcz6YNpuxGcB61lKDfL8
+         qfSoY1+3siky5IzWdvlsYhGQTVA+9k6zMRxtLsbFXwCJNvecSuXxUZFtNTPg4g0XEK+Q
+         Xa5w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=mime-version:message-id:date:references:in-reply-to:subject:cc:to
-         :from:dkim-signature:dkim-signature;
-        bh=F3WbULWDdUjJCrXSUslzisiza1MBoe4xUfkmq+73EwA=;
-        b=ZstPvj4F4vPJlRM/3bYlluA7ZPbzTZfvrNWDsnRD/4GBhZNk4O0CS7hnOIOJnhveYY
-         lNRyV0oS0ZS4PTPZNgVb+JukdYYVrmZT+sJGB+vCzQCuDSAY1F08WAXXLvMml+Hme6C0
-         YSXsog7IKRRb18vxhcmPEFtlyVDl8TJ/CUAQUiuqVYse10axnT7jeAdjhhyd9ZbaxfGi
-         LwrdSCoiMasW0GX5j4IjBWNUtU/iQOlZ9PAHJL6CPS7N8ipu3/y4bO1WY1ZM9AUSOAvB
-         +WILc+DwAEnk8OHP5vGJns72nlvNkie5GfeT6Ldk8pQcmxo5sLHEzG7aiZe3DJH+Y/dh
-         eRlw==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=A60WitzBwUcQrRVGfN8Ljoa+Za+envdNm8g+RcTq0wc=;
+        b=d79pN1tbGjW8ovd4q06boFmFSwsoEkDmJPK4eJqklzF6YQJRa0JV7hk95dqapw8/5Y
+         0FVlhOtfJ8gWRNLVO8L6tRfrqts12ZnpKQ5P5WN0FxCkEVRXu+q82Q1xbWgfjJoqnqpT
+         ahZBaGKHBbwNdN2+vRHwrOD+KzGa0G3xtzCYAwCeaSt0WCJWIWMQ0gBa35M7Tpxe9kEY
+         8gSj/MqvYY287sWJlCm5EYFkEqK3cMaTCnoguC61DTHPWj5s2Mb6Uu1OzbQYWPYO0SI4
+         onqR1R0OA6+EEsZs9UoQxVpJSvuRNAqdWvbafwhu//ccG7jYdrKpsW/HS9NH/HYdLSAU
+         9pLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=dLey65VJ;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=dLey65VJ;
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Return-Path: <keithp@keithp.com>
-Received: from elaine.keithp.com (home.keithp.com. [63.227.221.253])
-        by mx.google.com with ESMTPS id d9si249420pgj.241.2020.10.28.12.14.58
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Oct 2020 12:14:58 -0700 (PDT)
-Received-SPF: pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) client-ip=63.227.221.253;
+       dkim=fail header.i=@linaro.org header.s=google header.b=rk18SVW1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
+        by mx.google.com with ESMTPS id g3si793489jat.2.2020.10.28.13.32.30
+        for <alex.bennee@linaro.org>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Wed, 28 Oct 2020 13:32:31 -0700 (PDT)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=dLey65VJ;
-       dkim=pass header.i=@keithp.com header.s=mail header.b=dLey65VJ;
-       spf=pass (google.com: domain of keithp@keithp.com designates 63.227.221.253 as permitted sender) smtp.mailfrom=keithp@keithp.com;
-       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=keithp.com
-Received: from localhost (localhost [127.0.0.1])
-	by elaine.keithp.com (Postfix) with ESMTP id 9DCB43F2DDAC;
-	Wed, 28 Oct 2020 12:14:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1603912497; bh=15AVrp7vyPKovp+JUmmgOjjbkG5b36Rdgg5pRySikf4=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=dLey65VJwjuSS+DXkhpBWfbyHvLyQiOAeGulUDSP+Mang9Lldm3/qbzWrUha60GBY
-	 cAVHpxeU6fQSkLwWJpx2CiahvXOE1w3C/VBIiSjQv0ba0lnLe/u4SZiVEksGrw51FG
-	 UqgD6Bwy9gE3O2x9vo3OIE6ZEQI/1FpGWoA4y6pOmd8RmgO8l1lJSfN9YWeeNbXgZD
-	 T8NwO9c5N43A8DrmNZUtJXVcRvo6p5J1QXgFnPhBqONqaCBIVvm9yB4yY8+fTo2P5J
-	 /YRh77kr4eQ4SKCfWJtOfI3rRCHZBEmk1dlOJ34cCpGNu9Tb5fZfQm5cRbUjwB+iC/
-	 gLevWNNJeVIrQ==
-X-Virus-Scanned: Debian amavisd-new at keithp.com
-Received: from elaine.keithp.com ([127.0.0.1])
-	by localhost (elaine.keithp.com [127.0.0.1]) (amavisd-new, port 10024)
-	with LMTP id UGHBryi3ZMdv; Wed, 28 Oct 2020 12:14:57 -0700 (PDT)
-Received: from keithp.com (koto.keithp.com [10.0.0.2])
-	by elaine.keithp.com (Postfix) with ESMTPSA id 37F213F2DDAA;
-	Wed, 28 Oct 2020 12:14:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=keithp.com; s=mail;
-	t=1603912497; bh=15AVrp7vyPKovp+JUmmgOjjbkG5b36Rdgg5pRySikf4=;
-	h=From:To:Cc:Subject:In-Reply-To:References:Date:From;
-	b=dLey65VJwjuSS+DXkhpBWfbyHvLyQiOAeGulUDSP+Mang9Lldm3/qbzWrUha60GBY
-	 cAVHpxeU6fQSkLwWJpx2CiahvXOE1w3C/VBIiSjQv0ba0lnLe/u4SZiVEksGrw51FG
-	 UqgD6Bwy9gE3O2x9vo3OIE6ZEQI/1FpGWoA4y6pOmd8RmgO8l1lJSfN9YWeeNbXgZD
-	 T8NwO9c5N43A8DrmNZUtJXVcRvo6p5J1QXgFnPhBqONqaCBIVvm9yB4yY8+fTo2P5J
-	 /YRh77kr4eQ4SKCfWJtOfI3rRCHZBEmk1dlOJ34cCpGNu9Tb5fZfQm5cRbUjwB+iC/
-	 gLevWNNJeVIrQ==
-Received: by keithp.com (Postfix, from userid 1000)
-	id 074E41582210; Wed, 28 Oct 2020 12:14:57 -0700 (PDT)
-From: "Keith Packard" <keithp@keithp.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>, QEMU Developers
- <qemu-devel@nongnu.org>, Laurent Vivier <laurent@vivier.eu>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, Palmer Dabbelt
- <palmer@dabbelt.com>, Alistair
- Francis <Alistair.Francis@wdc.com>, Sagar Karandikar
- <sagark@eecs.berkeley.edu>, Bastian Koppelmann
- <kbastian@mail.uni-paderborn.de>, "open list:RISC-V"
- <qemu-riscv@nongnu.org>
-Subject: Re: [PATCH 1/4] semihosting: Move ARM semihosting code to shared
- directories
-In-Reply-To: <87lffqmwi6.fsf@linaro.org>
-References: <20201026212853.92880-1-keithp@keithp.com>
- <20201026212853.92880-2-keithp@keithp.com>
- <CAFEAcA-0_WLMP1Y1sgcu7Ng+0w8Ovt9DVWzYU8ZA_FA2+bwcUw@mail.gmail.com>
- <87pn53e3ke.fsf@keithp.com>
- <CAFEAcA8Sha5QYbO25dtzBZHoXUeiGVv8aojPFTMrst8nbVDAdg@mail.gmail.com>
- <87k0vbdthq.fsf@keithp.com> <87lffqmwi6.fsf@linaro.org>
-Date: Wed, 28 Oct 2020 12:14:56 -0700
-Message-ID: <87pn52cgcv.fsf@keithp.com>
+       dkim=fail header.i=@linaro.org header.s=google header.b=rk18SVW1;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:57680 helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kXs7S-000071-DB
+	for alex.bennee@linaro.org; Wed, 28 Oct 2020 16:32:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:54632)
+ by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kXs6v-00005Y-PI
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2020 16:31:57 -0400
+Received: from mail-ed1-x544.google.com ([2a00:1450:4864:20::544]:42665)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kXs6s-00019B-Jr
+ for qemu-arm@nongnu.org; Wed, 28 Oct 2020 16:31:57 -0400
+Received: by mail-ed1-x544.google.com with SMTP id v19so837631edx.9
+ for <qemu-arm@nongnu.org>; Wed, 28 Oct 2020 13:31:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+ :cc; bh=A60WitzBwUcQrRVGfN8Ljoa+Za+envdNm8g+RcTq0wc=;
+ b=rk18SVW1Dyv/PrlgmyN0i32GHExFumZ8sA099ubn7lYjDWtdamg0pJZ374nCSSP5ed
+ JZU4bRQdHG+vim7lH7r1uYcxdsyTCBmwCgnszdZq1R3+76JHt8x0wYmoGenkyK1/ttdv
+ V2lgjq/Eb0ddw384MrRumbzH97Ue1APrsLpNjboJXgefRrX5OnSjWCXlYU314F5c5s3T
+ oWkzQKVE8A26Hr2wnemM6NiTyuYQVVqbxBWslZCU8gpxfWOB4NtBPxe3neU4ujDs7z7h
+ tYuuB/mc1RYM5PoF/5hZSH/q2TUCJ5fGWJDPysFsIDjMUo7x5LPMAsyvJELYnmuZ7Xr/
+ oIYA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+ :message-id:subject:to:cc;
+ bh=A60WitzBwUcQrRVGfN8Ljoa+Za+envdNm8g+RcTq0wc=;
+ b=tfKQJCovaZGJkK0QqaAcWwpY4apNiRiWCzFHEt4B5hr36KqX98XdX26Pwlewyqfqbx
+ LHBvK2CTXAdHBQiexbtgqC8v8URFg8X6rFOB4cm2aMHrkVA2InHnmreVL82tGqSpiSn4
+ 3U1KTO22PJ2EwZl9s1lknWIRYwWyMX2tKmJcWQODXYiP7rOmmRQp0EB5ac94x4YrTMJP
+ amvgCCAQ3l0NzP8rOZcWXO1thD7u9DIdls+MqZkN8SEz9FvLugs/wKyteRVLZuK4F5uG
+ 6qTWwuRkluIZCZFdIBB85hxLd2D1Dq2Y2hfzuIJbArlDqLG2EmmMAQRZ9ltVVzAwZYgb
+ c4MA==
+X-Gm-Message-State: AOAM530adiingO5mkbo2QPlEqVNwUeCg5UBUkYVRxaGm/wSeanFe3h0J
+ xt8ZzSf+yRIeSyoNDXHW/5B3Xx9Pwd786l33+eyOVA==
+X-Received: by 2002:a50:f41a:: with SMTP id r26mr666265edm.251.1603917112827; 
+ Wed, 28 Oct 2020 13:31:52 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/signed; boundary="=-=-=";
-	micalg=pgp-sha256; protocol="application/pgp-signature"
-X-TUID: iOenRuvVso/C
+References: <20201028085918.14580-1-maxim.uvarov@linaro.org>
+In-Reply-To: <20201028085918.14580-1-maxim.uvarov@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 28 Oct 2020 20:31:41 +0000
+Message-ID: <CAFEAcA8_1w=4qdE_AJxUP-uPoFL=Fsg9hy62Lw7bLDjKzL9Vvg@mail.gmail.com>
+Subject: Re: [RFC PATCH] hw/arm/virt: use sbsa-ec for reboot and poweroff in
+ secure mode
+To: Maxim Uvarov <maxim.uvarov@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::544;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x544.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_action: no action
+X-BeenThere: qemu-arm@nongnu.org
+X-Mailman-Version: 2.1.23
+Precedence: list
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Graeme Gregory <graeme@nuviainc.com>,
+ =?UTF-8?Q?Fran=C3=A7ois_Ozog?= <francois.ozog@linaro.org>,
+ Radoslaw Biernacki <rad@semihalf.com>, QEMU Developers <qemu-devel@nongnu.org>,
+ tf-a@lists.trustedfirmware.org, qemu-arm <qemu-arm@nongnu.org>,
+ Leif Lindholm <leif@nuviainc.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: hXl/Fp3W+SGU
 
---=-=-=
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+On Wed, 28 Oct 2020 at 08:59, Maxim Uvarov <maxim.uvarov@linaro.org> wrote:
+>
+> If we're emulating EL3 then the EL3 guest firmware is responsible for
+> providing the PSCI ABI, including reboot, core power down, etc.
+> sbsa-ref machine has an embedded controller to do reboot, poweroff. Machine
+> virt,secure=on can reuse this code to do reboot inside ATF.
+>
+> Signed-off-by: Maxim Uvarov <maxim.uvarov@linaro.org>
 
-Alex Benn=C3=A9e <alex.bennee@linaro.org> writes:
+(I've cc'd the sbsa-ref machine maintainers.)
 
->   specific_ss.add(when: 'CONFIG_ARM_STYLE_SEMIHOSTING',
->                   if_true: files ('common-semi.c'))
+> ---
+>  Hello,
+>
+>  This patch implements reboot for the secure machine inside ATF firmware. I.e. current qemu
+>  patch should be used with [1] ATF patch. It looks like that Embedded Controller qemu
+>  driver (sbsa-ec) can be common and widely used for other emulated machines. While if
+>  there are plans to extend sbsa-ec then we might find some other solution.
+>
+>  So for the long term it looks like machine virt was used as an initial playground for secure
+>  firmware.  While the original intent was a runner for kvm guests. Relation between kvm guest
+>  and firmware  is not very clear now. If everyone agree it might be good solution to move secure
+>  firmware things from virt machine to bsa-ref and make this machine reference for secure boot,
+>  firmware updates  etc.
+>
+>  [1] https://github.com/muvarov/arm-trusted-firmware/commit/6d3339a0081f6f2b45d99bd7e1b67bcbce8f4e0e
 
-I've sent another version of the series using this plan. It does look a
-bit nicer as the only changes required when adding support to another
-target is to place this option in the config file.
 
-Thanks for the suggestion, and thanks for helping review this patch!
+Thanks for this patch. It is definitely a missing
+bit of functionality that we intend to allow virt to run
+EL3 guest code but don't provide a trigger-shutdown/reboot
+device that works in that setup.
 
-=2D-=20
-=2Dkeith
+I think the key question here is whether we want to implement
+this by:
+(1) providing the sbsa-ec device in the virt board
+(2) some other mechanism, eg a secure-only pl061 GPIO
+some of whose output pins can trigger shutdown or reboot
 
---=-=-=
-Content-Type: application/pgp-signature; name="signature.asc"
+The sbsa-ec device has the advantage of doing the
+shutdown/reboot functionality at the moment. The question
+I have for the sbsa-ref board folks is: what are your future
+plans for that device? If the idea is that it's going to end
+up stuffed full of sbsa-ref specific functionality that we
+wouldn't want to try to expose in the virt board, then we
+should probably go with the pl061 approach instead. But if
+it's not likely to grow new functionality then it might be
+simpler...
 
------BEGIN PGP SIGNATURE-----
+A couple of notes on this patch if we do go down that route:
+ * we would need to arrange to only add the new device for
+   new versions of the virt board (that is, the "virt-5.0"
+   machine must not have this device because it must look
+   like the version of "virt" that shipped with QEMU 5.0)
+ * the device needs to be mapped into the Secure address
+   space only, because Secure firmware wants control over
+   it and doesn't want to allow NS code to reboot the system
+   without asking the firmware
+ * it would need to be described in the DTB (and maybe also
+   ACPI tables? I forget whether we need to describe Secure-only
+  devices there)
 
-iQIzBAEBCAAdFiEEw4O3eCVWE9/bQJ2R2yIaaQAAABEFAl+ZwzAACgkQ2yIaaQAA
-ABFKfRAAoNNSBmk9FrsTXQWVoNV5Lee3o2z3Azr2etFFYs/2piRt9f0ewsZPJNn4
-sZKOI/G1ShBYsPKulb/JBWPsdh6uN7+8cr9GE8MGr7VIRsDZOxKJNh1cDSACVhva
-yxu8A4r4tjNDfTG4L/J8HPpOlTpqM459F3fAwEQoPkOtwOp7J9mMHKKcPgCCVoUe
-QzZHZZoDrrK3VQSvzgZPjVuBeFqrWrIyy9LETeMD6PYl7gwz+EJmjm+1/VbKU8dO
-pJ70JO7tECiF4ZMw/AjZKtPkl4HDaXvbn8ajyyJuUnKTpP0uywtw9vHyQl5za7ep
-b/2QzJF+HxircBU5t5VtPj6xT2C40KetqJBOB1ADroAQ2Xp5DJsQhKf+jxVulBv+
-qGIR/pK6ToGYnvUFxTP345dywInUp8WOcZ022ElnhFEdDLMz7iZUeCxTdg+QxXr4
-2GJewp5ij+bU8E4Py51+4r5MzuVVJwVnfQtt/RW0u2c78fj3Zzuk26yj4T1KkFQc
-3K+W9pqmxsJWlPbAto6OYz+ek/+VeG3wSu28KPclCmJE66Qmp3IEG6cPBamvcb2R
-cC6K3QEPpTjT2/nYSLRVisy+zsuWcjLD5OnLIhg/HS90Ge050r7pSWY3qmLUfPVA
-hbPUAb9QadLefOnbkjRhXbproOGEd90NJX+8gI+bqlYTltWhZxs=
-=pnGw
------END PGP SIGNATURE-----
---=-=-=--
+But let's find out if that's the route we want to take first.
+
+thanks
+-- PMM

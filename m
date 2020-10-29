@@ -1,60 +1,60 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp886949lfa;
-        Thu, 29 Oct 2020 13:25:21 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz8Zwq2W2dbFDHH6GAt02bc8DJWAHi06EyYkLqd+Q3N0FfZ1HgptfeZOMOwQPh1yvbHQcrE
-X-Received: by 2002:a5d:9602:: with SMTP id w2mr4911326iol.120.1604003121178;
-        Thu, 29 Oct 2020 13:25:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1604003121; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp887041lfa;
+        Thu, 29 Oct 2020 13:25:28 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzg5nrauDKsxA/iMdzbfuYL4lOOrmgbp4ZINEAxKcZsiWTW1ss1C++vlu+YR+RecAU8tsHD
+X-Received: by 2002:a02:b903:: with SMTP id v3mr5096196jan.40.1604003127890;
+        Thu, 29 Oct 2020 13:25:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1604003127; cv=none;
         d=google.com; s=arc-20160816;
-        b=HPUOG8nPN22G/WI//e2KnPNPFItL4KVvsS7C7vawq5cdztNxOlKNyPm+5rC5/3jDK+
-         rdI4VNMKEIsaMhJz5Let5owkSpIif4YQddS+xZBW7EUjIXBvj0NbkwiT4A7arMAnzLaC
-         Oj6mLqJYcOgCiUOtuy0qzA2RM6BvIuPzvvY2NNl6Wyr33AZpytSbDM67ZT/k9HAgr1AE
-         MW8kLqfhUT+Y3JhPufhsy77a9QZAglbvNDnkThGl/xhzLPTVqR8NbAw/2BVG4N5fXJ0X
-         NMhnecxMWYCEjNsOeYFhGevdITvpN3Pt9Ax1nEJNXuTyeKFo0qRXoxRPnSG501syREVx
-         bI4A==
+        b=DjKcCbDk4cRGzeJAD4yWC25/FRxjjLv5mhR6IwmXA7WDYA1sfRqLW2r+2GFQI1ut3C
+         3ZDQhKZ0p52H14daD8ZmQOEQfzFdFAJMEWvDBNcCNsOMqDj6IB2SISHTBCjwh6vCHJKB
+         LD9tTE5u56H6wu3Jgg+CzwMZfXQG+eHAeX06uq/ugMK0Tl5bLQf3/IzsOHjPTZiIOgA5
+         h2R+tsaGCzySHaxsHVRzf5LRjsU3t2JURue0zkrMVKCDm9sHSX+gPbzkgtwYrsXNrtig
+         jdGi2MGmAugPfUzWHgJh9YqxqFwzpK3EAKAN9WOkJltBAsmK0Efz8ygxwM6RzkQTKHL3
+         nhPQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:message-id:date:subject:to:from;
         bh=/tBmC3YcdW6vxWvQ+1fP/eEs6OdNbyx3lpcd5eWqJMk=;
-        b=Co4qlbJvFpNnUCFzWuOP4HtpAnT0lZfzCX1QBV0js5UlL9dOp8pUQCcB15FDzf5d+t
-         MkoJ5vMGLYONDWwFeLgslramdCPxXGXv1tsQTFn+Xn6hIyBm6kRFTc7Ccy0DbaiMXHJX
-         mPUTcqF9hyoJmOIO1LinOrpKikMHKzjVysGoaF+rQzdmN6bv1ZyrTTkRi5KI1ZWc1JuE
-         ijUy9dk/X476ctgSTb3spvm1Av7+MyOh9zeStvu13mmEJK0FEWTNF6ycuURscJIS1Z1k
-         HTaNYCx8qCIfkyVZVLGllSzElUltW1Apqt+D0BiaB1dyQEEzzKo9aa7PRlUuAlMp/pcl
-         BhCg==
+        b=IEozwI9sKMAwEgqQ9zchydqu6OhnbuXq/WCB8Sn56WYnVt+9J9EuR7I5sml17F3u3j
+         sloISHDAR2sNTDE9LgSK3wP8+5nlkJB0rPkI7CVAeJ0rYBT6cOX5iB3U4L7kQU3gyr4b
+         lZif1VstEmRbjiR0CGu9XVkNUVj/MZQ3HlK1xgkhTazNBVGSfuZpbfEqCK3SP2ZZotbh
+         lN/ejUxk+VSEmbeLNQzNZqyyLnDfafOqDl9gisQBGW8BFk54i8J4c/Hql1IoYxMviDcD
+         bOQOKoxIn8DoXg5g40jh5yAeCfJQNesoW2Zb92oruvVddAqDC7Q6gcMB2peiW5vwHF7C
+         DKjw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z8si3347444jan.5.2020.10.29.13.25.21
+        by mx.google.com with ESMTPS id d2si3652116ilu.65.2020.10.29.13.25.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Oct 2020 13:25:21 -0700 (PDT)
+        Thu, 29 Oct 2020 13:25:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:55058 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55326 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kYEU4-0000WN-HC
-	for alex.bennee@linaro.org; Thu, 29 Oct 2020 16:25:20 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51224)
+	id 1kYEUB-0000fu-84
+	for alex.bennee@linaro.org; Thu, 29 Oct 2020 16:25:27 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51292)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi@remlab.net>) id 1kYETx-0000W3-9x
- for qemu-arm@nongnu.org; Thu, 29 Oct 2020 16:25:13 -0400
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:48098
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>) id 1kYEU3-0000ax-Ci
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2020 16:25:19 -0400
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:48106
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <remi@remlab.net>) id 1kYETv-0002vj-8d
- for qemu-arm@nongnu.org; Thu, 29 Oct 2020 16:25:12 -0400
+ (envelope-from <remi@remlab.net>) id 1kYETz-0002xH-Lz
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2020 16:25:19 -0400
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 7B8085FC12
- for <qemu-arm@nongnu.org>; Thu, 29 Oct 2020 21:25:06 +0100 (CET)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 9FD445FC12
+ for <qemu-arm@nongnu.org>; Thu, 29 Oct 2020 21:25:14 +0100 (CET)
 From: remi@remlab.net
 To: qemu-arm@nongnu.org
 Subject: [PATCH 1/1] target/arm: fix LORID_EL1 access check
-Date: Thu, 29 Oct 2020 22:25:06 +0200
-Message-Id: <20201029202506.9209-1-remi@remlab.net>
+Date: Thu, 29 Oct 2020 22:25:14 +0200
+Message-Id: <20201029202514.9257-1-remi@remlab.net>
 X-Mailer: git-send-email 2.29.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -82,7 +82,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: ttlW/wAGlarO
+X-TUID: w2EpGeDGTTmY
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 

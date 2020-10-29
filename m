@@ -1,107 +1,107 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp444742lfa;
-        Thu, 29 Oct 2020 04:28:12 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwmCgNzEl04eJbbxTUdII0OJiaYekRs2J93scYgle0jrlCNHC/2RHlxKFr8i7zCqiF78iWy
-X-Received: by 2002:a05:6638:531:: with SMTP id j17mr3119556jar.69.1603970892655;
-        Thu, 29 Oct 2020 04:28:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603970892; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp567457lfa;
+        Thu, 29 Oct 2020 06:53:31 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwzZOCnVj1Inp5xAq4Cs+d++WDEu6AfWXz9HJDxbAeg1Sw/n9NQ05BhOCVsGBBV3pnU2jKu
+X-Received: by 2002:a25:c6d0:: with SMTP id k199mr6243548ybf.469.1603979611339;
+        Thu, 29 Oct 2020 06:53:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603979611; cv=none;
         d=google.com; s=arc-20160816;
-        b=LvJcToRujj05ewij40UGeFx4gfmS4tS7wg93HZpe9IKxbHzaqNJXOu5Gd578UWnmin
-         c6efl9trXgFD0FZA/cM+WfUq+Ecjjiax+zL9K3uf7WYnwa1hZ8kPffSOXnWwxIKq2QvU
-         sy9D9XqDriRhfUteLIkIvsPfuwfiXajG4zoZ6l3gZlrGn9GSc7RaoT/MPDf1OYd+li66
-         JXdZfimCMQ1pngp9/YMLJCP5anEnHG4iu97GbKQ45NuaoEGqo1Jsm6rtMJz+P3BglQjr
-         H5zIDCmUUpijQ+DO9pUbNpBeom8MJAxzrzEkxc5cnFQkUpdiGrhGafFuI42Riy6ZwL8l
-         Cl+A==
+        b=1B++3p3I6vk7Oz4s2waOL54CnwoLxl4RwuEdktCju79ftHO+VBdUwjdJLVvg+xaKcW
+         kYLwKOF0dapz8iDj8vgeJfHQejSL4+Vg7k0vyxZQdlUmfIkZiQ4kIYFgVmfNJEeqkCmg
+         xk6LcC1leXVNh0AuEH8hPz0SiiHQ4Tt6d4xrceGnaosfII0BmBfYvDIe4ZE/TT/6o6lJ
+         pjMpPK6eZQpVDcdUeU1loWMz6xbSGbTxNrchV6Ab5RBJjmp1X3rQNJSOr3NwH86Ah1zO
+         90Ld0sscmy6YeSbekFYXcqcYXYObeWPbSyxwONt8Gsxdkkg/RLaEmKbTq/wKaEG6FiZH
+         OhlA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=QRAzfMrRGwRRUzvgOK+sY9TBoKY4vb5n/jLZfIZGS5M=;
-        b=aCwb2xOAtRevWqA44BYqRK9D7rRt9cmUkanSqGkfz3Z6p+XYt7s6PC7q9hxLgn7DgT
-         pPEXLX4t1Gl1jpExlexue1E4ZjA4nZ5TSplbqiDG1x6BL2+qnPijDcop+Fs0faGwwWFp
-         jZ3k2zoQ4aGokgwzbzU0f58hFDmG0NmOnXq+ptLBk6LvdOkcZPr8x2UqaMBmh5IpFSJb
-         nLlEQMrq8lixp3vTuNTfqHTWsX+65+65iM06E+Gz7UAHGuMCn5o9q2ZSbHUf3+QM7HsI
-         IDWOoRxPphnJo7S0cHqfpf6ufQkiUs5yYx82ifSvXFnnqq+vIu1qe8J1kwzN0Goh9rVR
-         ViTQ==
+        bh=nJ7smN9h4w+RQLkvL/7YnTknBpJQaPkdOqf+xTeJpU4=;
+        b=dT/eV3FuPx7zGPJAFH1F5WBzBLJPfgjRuEAPqPsf8cw189e89a9o1V4zhrmVwrcoEr
+         RCB3rDNMsZSvfP/KA7zSqI6UQmZ7CjaBL/57K551b8gS8ERnwxm2fo+IV0gKLMFkG97v
+         dLxWObYwv9OyqiZo8HClKe68cynSmAf9on2O2iPJ6auQ1Da9gWIXhM0hPic9D9F0IBbv
+         1eT55Zlj0FGwNH16iehXF10MPuZj7D+EOtHT+AtjHsU46cAOgZeViiM2STpCEci0w2Qq
+         5O4z3iAlatCWD7xL2FB/S/7z7riiK8VPF+PfEiGTnPJrewpvPLNO3eRpJ0Kin03QQhaG
+         JHBQ==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Kp/esOVL";
+       dkim=fail header.i=@linaro.org header.s=google header.b=VRWFe7Sv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a61si2194094jai.52.2020.10.29.04.28.12
+        by mx.google.com with ESMTPS id j6si3089259ybh.462.2020.10.29.06.53.31
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Oct 2020 04:28:12 -0700 (PDT)
+        Thu, 29 Oct 2020 06:53:31 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b="Kp/esOVL";
+       dkim=fail header.i=@linaro.org header.s=google header.b=VRWFe7Sv;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:42748 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:44062 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kY66G-00079L-0i
-	for alex.bennee@linaro.org; Thu, 29 Oct 2020 07:28:12 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58882)
+	id 1kY8Ms-00047p-OD
+	for alex.bennee@linaro.org; Thu, 29 Oct 2020 09:53:30 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:43510)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kY651-0006WI-In
- for qemu-devel@nongnu.org; Thu, 29 Oct 2020 07:26:55 -0400
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:37931)
+ (Exim 4.90_1) (envelope-from <francois.ozog@linaro.org>)
+ id 1kY8LE-0003DG-Vo
+ for qemu-devel@nongnu.org; Thu, 29 Oct 2020 09:51:48 -0400
+Received: from mail-lj1-x244.google.com ([2a00:1450:4864:20::244]:47081)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kY64x-0005XL-6C
- for qemu-devel@nongnu.org; Thu, 29 Oct 2020 07:26:55 -0400
-Received: by mail-ej1-x644.google.com with SMTP id za3so3306467ejb.5
- for <qemu-devel@nongnu.org>; Thu, 29 Oct 2020 04:26:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <francois.ozog@linaro.org>)
+ id 1kY8LC-0001JW-H1
+ for qemu-devel@nongnu.org; Thu, 29 Oct 2020 09:51:48 -0400
+Received: by mail-lj1-x244.google.com with SMTP id 2so3119901ljj.13
+ for <qemu-devel@nongnu.org>; Thu, 29 Oct 2020 06:51:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=QRAzfMrRGwRRUzvgOK+sY9TBoKY4vb5n/jLZfIZGS5M=;
- b=Kp/esOVLxzC8hZV5EmW0iId5K2OLRxla57GwNICcIHExLz2Z0IYGGqJycjsMgKLnsQ
- mgl8eA9ockct9VNAcX2KdMrjyHG1uYVZ9qcC4SFrJ6RUlhykEGBmC/TnxSxFJNtKl3Eq
- 5quuGzl2nouQtfguq5MCX39+OgjYYofga2XkJIg43xQRvlj6idj290pp42xKL9TNEyJo
- 1kqs1ffvShu8itFVw+FWcWSNnkT8M38KJiYf9tLU3xvY0SKQ2xxoh+SsnmvLZOQh+9cQ
- Bh+bss6wuj2M3L3kvSnekCT3i/Gt0jcmZh5wmlYFq8F1XXF+D8g1F8xxKXrEyXJe6QGs
- 8CqQ==
+ :cc; bh=nJ7smN9h4w+RQLkvL/7YnTknBpJQaPkdOqf+xTeJpU4=;
+ b=VRWFe7SvZPvnTHjm2fzpvMvFZzOBq15GduGXqhJ9lLH6YktmqXSu3slnWIXOAiLTgo
+ JYIxLTNSit268zeneqU6p3JEuqo2w2u+6RY8chI6aJajslTDJjWdITY1i0l8lK6iEcPC
+ 1giHTVYd0XaPM9J9p1GQMZ0LaBpJ4SmDhkdJoQ0rFzu2HvPXkEn9grxKPEdWDIPVfE7F
+ gcRRozEfAzSzrCDYXMUWEWzFAJj4EeqOxOW8oY5UnnN6UqH5UChzO2aT+9Fu2GTXKATv
+ 3AQz/9zvffRZWqjNemMlh3HDsyVuuvogijLGYzOn+EcDAV/Mgx4DYbZXg1B+XS5Y81fN
+ AUsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
  :message-id:subject:to:cc;
- bh=QRAzfMrRGwRRUzvgOK+sY9TBoKY4vb5n/jLZfIZGS5M=;
- b=KPx/jXUwywp/y5jyalmtXXLbcr+22PsC/4Lj3rwWYFoca4mdvM8c1eXPqtuWiIOksk
- 7yYAkIQQupkfRkQ/eU6sprisAvkMnU9aRAVVTWnCPCCdYzkZ1LR+RaP3mGt24KTq7ezL
- vKmGbFlvy8bUeA1zk6IkE483eKnXMfPGPj9QYszHK1HO3D27B5o2sQHqXnn3kQTsWhAa
- Q+bnoRQU5W871ZB4BvG69MPXdyCS6uXqtM8hm+syWkZquYBwzdWaH3+os3Av3PR593cI
- OH8LwS1ZDUeXFUGWsRw799uwRbwTG4i3n51yfs66yZNFBCqvSOkPWN+sl/WwRSkPlpBE
- xOJg==
-X-Gm-Message-State: AOAM5300B9hBOc/A3V+7cLql5o7clPjsVGObnvtz4dl6L5ExG3P56aMH
- ae+SDtbWAhbchet4pc1QpreCk2LYHfK8wy2LlCK/Dw==
-X-Received: by 2002:a17:906:c7d9:: with SMTP id
- dc25mr3567421ejb.482.1603970805210; 
- Thu, 29 Oct 2020 04:26:45 -0700 (PDT)
+ bh=nJ7smN9h4w+RQLkvL/7YnTknBpJQaPkdOqf+xTeJpU4=;
+ b=eAn9InVOMXzL6qza8pJdkA8i3vkN7z9a4eTyJWUbf/xHlu6yGXRxArFXQf/hsqQOek
+ OnHsZbHsq0PaDh0/YmmqDSfSRs2YcxrvQJnYI2bKqi/BCaYDAXyiINpEczzDtQC7jbPh
+ W73u8U7Mp/exQ5Dp/cqTSU/U2Z2G8kEQOK1QSVPFoQyFtqlFLKq3k8l0qgRCJRhyEi7a
+ OqnCVJICdKgIHN3UW4fY/IQLYf0rTia3soQqCEmu4RZ1QU+i4U7fJhNCMmyoVEjxtMGd
+ 4oRrxwEognDYbIuoNABmmx2NAKIsIYcBVM/dwruw+cbbIVAcGfhs8dAkQ9EG8kadkGaT
+ 4osA==
+X-Gm-Message-State: AOAM5322L7dQ6moTaT5pedRtzK3oIJKo3BK+cK5DjMgvl3IM7P+SPHaB
+ MujaGBznRSZZTcIUpvVp87ACq+F27SwftxsFTvJVyA==
+X-Received: by 2002:a2e:9a98:: with SMTP id p24mr1912108lji.131.1603979502245; 
+ Thu, 29 Oct 2020 06:51:42 -0700 (PDT)
 MIME-Version: 1.0
 References: <20201028085918.14580-1-maxim.uvarov@linaro.org>
  <CAFEAcA8_1w=4qdE_AJxUP-uPoFL=Fsg9hy62Lw7bLDjKzL9Vvg@mail.gmail.com>
  <20201029111939.GI1664@vanye>
-In-Reply-To: <20201029111939.GI1664@vanye>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 29 Oct 2020 11:26:34 +0000
-Message-ID: <CAFEAcA8etCVD9QkG8+VNezF_5rX-CMVRV1tSjqwBT04yDvdM_Q@mail.gmail.com>
+ <CAFEAcA8etCVD9QkG8+VNezF_5rX-CMVRV1tSjqwBT04yDvdM_Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA8etCVD9QkG8+VNezF_5rX-CMVRV1tSjqwBT04yDvdM_Q@mail.gmail.com>
+From: =?UTF-8?Q?Fran=C3=A7ois_Ozog?= <francois.ozog@linaro.org>
+Date: Thu, 29 Oct 2020 14:51:30 +0100
+Message-ID: <CAHFG_=VggKS8x=GP9oX_hx2h5Fk6oo5391=dQvpznX39BpV1rg@mail.gmail.com>
 Subject: Re: [RFC PATCH] hw/arm/virt: use sbsa-ec for reboot and poweroff in
  secure mode
-To: Leif Lindholm <leif@nuviainc.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x644.google.com
+To: Peter Maydell <peter.maydell@linaro.org>
+Content-Type: multipart/alternative; boundary="000000000000756c4f05b2cf94f2"
+Received-SPF: pass client-ip=2a00:1450:4864:20::244;
+ envelope-from=francois.ozog@linaro.org; helo=mail-lj1-x244.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -115,59 +115,202 @@ List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
 Cc: Graeme Gregory <graeme@nuviainc.com>,
- =?UTF-8?Q?Fran=C3=A7ois_Ozog?= <francois.ozog@linaro.org>,
  Maxim Uvarov <maxim.uvarov@linaro.org>, Radoslaw Biernacki <rad@semihalf.com>,
  QEMU Developers <qemu-devel@nongnu.org>, tf-a@lists.trustedfirmware.org,
- qemu-arm <qemu-arm@nongnu.org>, ard.biesheuvel@arm.com
+ qemu-arm <qemu-arm@nongnu.org>, Ard Biesheuvel <ard.biesheuvel@arm.com>,
+ Leif Lindholm <leif@nuviainc.com>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: tTUCVd4e3mzm
+X-TUID: ZL+cCCxb5m4w
 
-On Thu, 29 Oct 2020 at 11:19, Leif Lindholm <leif@nuviainc.com> wrote:
+--000000000000756c4f05b2cf94f2
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Thu, 29 Oct 2020 at 12:26, Peter Maydell <peter.maydell@linaro.org>
+wrote:
+
+> On Thu, 29 Oct 2020 at 11:19, Leif Lindholm <leif@nuviainc.com> wrote:
+> >
+> > Hi Peter, (+Ard)
+> >
+> > Graeme is on holiday this week, and I would like his input.
 >
-> Hi Peter, (+Ard)
+> Sure. There's no rush here, as QEMU has just entered freeze for
+> 5.2, so at the very earliest patches for this feature wouldn't go
+> into master until mid-December.
 >
-> Graeme is on holiday this week, and I would like his input.
-
-Sure. There's no rush here, as QEMU has just entered freeze for
-5.2, so at the very earliest patches for this feature wouldn't go
-into master until mid-December.
-
-> On Wed, Oct 28, 2020 at 20:31:41 +0000, Peter Maydell wrote:
-> > A couple of notes on this patch if we do go down that route:
-> >  * we would need to arrange to only add the new device for
-> >    new versions of the virt board (that is, the "virt-5.0"
-> >    machine must not have this device because it must look
-> >    like the version of "virt" that shipped with QEMU 5.0)
-> >  * the device needs to be mapped into the Secure address
-> >    space only, because Secure firmware wants control over
-> >    it and doesn't want to allow NS code to reboot the system
-> >    without asking the firmware
-> >  * it would need to be described in the DTB (and maybe also
-> >    ACPI tables? I forget whether we need to describe Secure-only
-> >   devices there)
+> > On Wed, Oct 28, 2020 at 20:31:41 +0000, Peter Maydell wrote:
+> > > A couple of notes on this patch if we do go down that route:
+> > >  * we would need to arrange to only add the new device for
+> > >    new versions of the virt board (that is, the "virt-5.0"
+> > >    machine must not have this device because it must look
+> > >    like the version of "virt" that shipped with QEMU 5.0)
+> > >  * the device needs to be mapped into the Secure address
+> > >    space only, because Secure firmware wants control over
+> > >    it and doesn't want to allow NS code to reboot the system
+> > >    without asking the firmware
+> > >  * it would need to be described in the DTB (and maybe also
+> > >    ACPI tables? I forget whether we need to describe Secure-only
+> > >   devices there)
+> >
+> > Would it? Could it be something that goes into the virt spec?
+> > We don't consume ACPI in firmware (but TF-A will of course have access
+> > to the DT regardless).
 >
-> Would it? Could it be something that goes into the virt spec?
-> We don't consume ACPI in firmware (but TF-A will of course have access
-> to the DT regardless).
+> Well, for sbsa-ref it doesn't need to go into the DTB. For
+> virt we mandate that everything is described in the DTB
+> (and that secure firmware should consume the DTB to figure
+> out where things live), so whatever power-control device we
+> come up with would have to be described there. I'm less sure
+> about ACPI because I think that is used only for describing
+> the non-secure environment to the non-secure EL2/EL1 code
+> so it doesn't need to describe devices that aren't visible there.
+> But I'm not very familiar with ACPI, hence my uncertainty.
+>
+> > For sbsa-ref, I would ideally like to move to emulating communicating
+> > with an SCP over time, as opposed to TF-A directly controlling the EC.
+> > I am unsure if that leaves much opportunity for code sharing with
+> > virt.
+>
+Arm SystemReady now defines BSA as the generic hardware requirements for
+which S(erver)BSA is a special case. It feels like there are three use
+cases driving three different QEMU platforms:
+- virt =3D FW:{Qemu}, simple cloud native workloads,
+- sbsa =3D HW:{watchdog, random number generator, secure flash, TPM, BMC?..=
+.}
+FW:{EDK2, KASLR, SecureBoot capabilities} --> developer vehicle for sbbr
+- bsa =3D HW:{watchdog, random number generator, secure flash...}
+FW:{U-boot,TF-A, OP-TEE, firmwareTPM} --> developer vehicle for ebbr, may
+be automotive workloads to have virtual TAs/TPMs
+I also think that ultimately SCP (
+https://github.com/ARM-software/SCP-firmware) may end up running in the
+context of QEMU.
 
-Well, for sbsa-ref it doesn't need to go into the DTB. For
-virt we mandate that everything is described in the DTB
-(and that secure firmware should consume the DTB to figure
-out where things live), so whatever power-control device we
-come up with would have to be described there. I'm less sure
-about ACPI because I think that is used only for describing
-the non-secure environment to the non-secure EL2/EL1 code
-so it doesn't need to describe devices that aren't visible there.
-But I'm not very familiar with ACPI, hence my uncertainty.
+>
+> Yeah, that's the kind of complexity that we would want to avoid
+> in 'virt', I think.
+>
+> thanks
+> -- PMM
+>
 
-> For sbsa-ref, I would ideally like to move to emulating communicating
-> with an SCP over time, as opposed to TF-A directly controlling the EC.
-> I am unsure if that leaves much opportunity for code sharing with
-> virt.
 
-Yeah, that's the kind of complexity that we would want to avoid
-in 'virt', I think.
+--=20
+Fran=C3=A7ois-Fr=C3=A9d=C3=A9ric Ozog | *Director Linaro Edge & Fog Computi=
+ng Group*
+T: +33.67221.6485
+francois.ozog@linaro.org | Skype: ffozog
 
-thanks
--- PMM
+--000000000000756c4f05b2cf94f2
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Thu, 29 Oct 2020 at 12:26, Peter M=
+aydell &lt;<a href=3D"mailto:peter.maydell@linaro.org" target=3D"_blank">pe=
+ter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"gmail_q=
+uote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,2=
+04);padding-left:1ex">On Thu, 29 Oct 2020 at 11:19, Leif Lindholm &lt;<a hr=
+ef=3D"mailto:leif@nuviainc.com" target=3D"_blank">leif@nuviainc.com</a>&gt;=
+ wrote:<br>
+&gt;<br>
+&gt; Hi Peter, (+Ard)<br>
+&gt;<br>
+&gt; Graeme is on holiday this week, and I would like his input.<br>
+<br>
+Sure. There&#39;s no rush here, as QEMU has just entered freeze for<br>
+5.2, so at the very earliest patches for this feature wouldn&#39;t go<br>
+into master until mid-December.<br>
+<br>
+&gt; On Wed, Oct 28, 2020 at 20:31:41 +0000, Peter Maydell wrote:<br>
+&gt; &gt; A couple of notes on this patch if we do go down that route:<br>
+&gt; &gt;=C2=A0 * we would need to arrange to only add the new device for<b=
+r>
+&gt; &gt;=C2=A0 =C2=A0 new versions of the virt board (that is, the &quot;v=
+irt-5.0&quot;<br>
+&gt; &gt;=C2=A0 =C2=A0 machine must not have this device because it must lo=
+ok<br>
+&gt; &gt;=C2=A0 =C2=A0 like the version of &quot;virt&quot; that shipped wi=
+th QEMU 5.0)<br>
+&gt; &gt;=C2=A0 * the device needs to be mapped into the Secure address<br>
+&gt; &gt;=C2=A0 =C2=A0 space only, because Secure firmware wants control ov=
+er<br>
+&gt; &gt;=C2=A0 =C2=A0 it and doesn&#39;t want to allow NS code to reboot t=
+he system<br>
+&gt; &gt;=C2=A0 =C2=A0 without asking the firmware<br>
+&gt; &gt;=C2=A0 * it would need to be described in the DTB (and maybe also<=
+br>
+&gt; &gt;=C2=A0 =C2=A0 ACPI tables? I forget whether we need to describe Se=
+cure-only<br>
+&gt; &gt;=C2=A0 =C2=A0devices there)<br>
+&gt;<br>
+&gt; Would it? Could it be something that goes into the virt spec?<br>
+&gt; We don&#39;t consume ACPI in firmware (but TF-A will of course have ac=
+cess<br>
+&gt; to the DT regardless).<br>
+<br>
+Well, for sbsa-ref it doesn&#39;t need to go into the DTB. For<br>
+virt we mandate that everything is described in the DTB<br>
+(and that secure firmware should consume the DTB to figure<br>
+out where things live), so whatever power-control device we<br>
+come up with would have to be described there. I&#39;m less sure<br>
+about ACPI because I think that is used only for describing<br>
+the non-secure environment to the non-secure EL2/EL1 code<br>
+so it doesn&#39;t need to describe devices that aren&#39;t visible there.<b=
+r>
+But I&#39;m not very familiar with ACPI, hence my uncertainty.<br>
+<br>
+&gt; For sbsa-ref, I would ideally like to move to emulating communicating<=
+br>
+&gt; with an SCP over time, as opposed to TF-A directly controlling the EC.=
+<br>
+&gt; I am unsure if that leaves much opportunity for code sharing with<br>
+&gt; virt.<br></blockquote><div>Arm SystemReady now defines BSA as the gene=
+ric hardware requirements for which S(erver)BSA is a special=C2=A0case. It =
+feels like there are three use cases driving three different QEMU platforms=
+:</div><div>- virt =3D FW:{Qemu}, simple cloud native workloads, </div><div=
+>- sbsa =3D HW:{watchdog, random number generator, secure flash, TPM, BMC?.=
+..} FW:{EDK2, KASLR, SecureBoot capabilities} --&gt; developer vehicle for =
+sbbr</div><div>- bsa =3D HW:{watchdog, random number generator, secure flas=
+h...} FW:{U-boot,TF-A, OP-TEE, firmwareTPM} --&gt; developer=20
+
+vehicle
+
+for ebbr, may be automotive workloads to have virtual TAs/TPMs<br></div><di=
+v>I also think that ultimately SCP (<a href=3D"https://github.com/ARM-softw=
+are/SCP-firmware" target=3D"_blank">https://github.com/ARM-software/SCP-fir=
+mware</a>) may end up running in the context of QEMU.</div><blockquote clas=
+s=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid r=
+gb(204,204,204);padding-left:1ex">
+<br>
+Yeah, that&#39;s the kind of complexity that we would want to avoid<br>
+in &#39;virt&#39;, I think.<br>
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div><br clear=3D"all"><div><br></div>-- <br><div dir=3D"ltr"=
+><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=
+=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr"><div><div dir=3D"ltr">=
+<div><div><div><div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><table st=
+yle=3D"font-size:small" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><t=
+body><tr><td style=3D"padding-right:10px" valign=3D"top"><img src=3D"https:=
+//drive.google.com/a/linaro.org/uc?id=3D0BxTAygkus3RgQVhuNHMwUi1mYWc&amp;ex=
+port=3Ddownload" width=3D"96" height=3D"53"></td><td valign=3D"top"><table =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tbody><tr><td style=3D"fo=
+nt-family:Arial,Helvetica,&quot;Sans Serif&quot;;white-space:nowrap;font-si=
+ze:9pt;padding-top:0px;color:rgb(87,87,87)" valign=3D"top"><span style=3D"f=
+ont-weight:bold">Fran=C3=A7ois-Fr=C3=A9d=C3=A9ric Ozog</span>=C2=A0<span st=
+yle=3D"color:rgb(161,161,161)">|</span>=C2=A0<i>Director Linaro Edge &amp; =
+Fog Computing Group</i></td></tr><tr><td style=3D"font-family:Arial,Helveti=
+ca,&quot;Sans Serif&quot;;white-space:nowrap;font-size:9pt;padding-top:2px;=
+color:rgb(87,87,87)" valign=3D"top">T:=C2=A0<a value=3D"+393384075993" styl=
+e=3D"color:rgb(17,85,204)">+33.67221.6485</a><br><a href=3D"mailto:francois=
+.ozog@linaro.org" style=3D"color:rgb(87,87,87);text-decoration:none" target=
+=3D"_blank">francois.ozog@linaro.org</a>=C2=A0<span style=3D"color:rgb(161,=
+161,161)">|</span>=C2=A0Skype:=C2=A0ffozog</td></tr></tbody></table></td></=
+tr></tbody></table></div></div></div></div></div><div><div><br style=3D"fon=
+t-size:small"></div></div></div></div></div></div></div></div></div></div><=
+/div></div></div></div></div></div></div></div>
+
+--000000000000756c4f05b2cf94f2--

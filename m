@@ -1,106 +1,107 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp419396lfa;
-        Thu, 29 Oct 2020 03:57:51 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwKZVBxem+NBmr/mVJl6rva2yZ51Gg6BCuU8HbzeC3pm1FvGY8eGOhBF/Fz4uGypkm/8Vgb
-X-Received: by 2002:a5b:745:: with SMTP id s5mr4996290ybq.255.1603969071609;
-        Thu, 29 Oct 2020 03:57:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1603969071; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp724026lfa;
+        Thu, 29 Oct 2020 09:52:46 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJy6C89U3YRLxviITJLsT94SVbuFs8jHaL3X/IKNTghMZGkS5P+T4xUXR3gjPGmYbvaofK33
+X-Received: by 2002:a37:7104:: with SMTP id m4mr4585966qkc.252.1603990366487;
+        Thu, 29 Oct 2020 09:52:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1603990366; cv=none;
         d=google.com; s=arc-20160816;
-        b=BzatmtjR4ve/AecoOnDq1wSnnmSE1E5uDs2GWLDAF5Kyg8IJlk7Ke0OQ1ONQR9kAZp
-         /yXhOdMDOZ4v/uufsnGHznoGZGPyld4eEuMbz2LjjlWjqiECEIIMVBO6BzHXMEPcoLKZ
-         xVdC8zSTIsJfs0pTfui/iIDonemXdwopP6OuOWUI39+TdrItcEsIYWMNocF0eqpMvjfm
-         QfTRLOPgGwmCX+evtKg8qqWP/q4CTIdvg9GLbz3ex+cNaEAit/V0bH/6nmtZmgNeIi68
-         2QQnDo0MinTfrrHCfqp3Gy4jIrpqPkTljhn6AjIT5qlAZtm4xfb+1lDcKJBHaERrwhWm
-         u2vA==
+        b=MYHzwkA7lndpk+UYqN5wsGy479MleIZawnlOJNdPal0XWIQZHROaZpZPZTFLSg2Ekh
+         Ig9wfnAhdClft/btfuaT0U6tsJmuwcYrteZJfroUbr7khT35NJYRAykZG6l1SdM0Do9d
+         Cy93r0EpteUw3+9ni4nf7qSHX8s7WJk9MVkU0/FspAQbM9Tz5ebSXS5HpXguo3TdW1rm
+         60Ctn2s5Ez1c72Y7YFGXmMbWggb6CYiL8M/IVsYcgj8RZdiB91e9Rwwv3paDGx80gJMj
+         y6vNH5KGyibXMvFrzy8vi48+NiwNDs6sZ0xavO7/BYS1kzP/CcQeGYjZoFytMs2GseMo
+         k44w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-disposition:in-reply-to
          :mime-version:references:message-id:subject:to:from:date
          :dkim-signature;
-        bh=qUobfChgR8/6lkiRjzQNF0SVoDxhzLwdJ3Inz6If66c=;
-        b=A+mJEhcmnQIPgx3NlX/113L0L45EuS7IpCC2cY1lGLyTNBkCJbK3i5I3X2vz9r7n14
-         p6CEdJNs+ssrhBU4s+q3oJe3VOxEVMkY4vTdVXnvTMMqJCYwXjYfRVBjsEMCI8LFT4PE
-         JK8J52olaviJb6Ld+vti0OXs9wknUZaPQUk7WqGSE2u9VYjNgxpcYN9YRzVgmaU8MKWK
-         8vsh8BZhuiCeAJF8aDe6xV7mwzW/0Bf5tpQ/+dMYwwnUkbZM+PbzSukA7LmIFvR7vfqg
-         yCHKBgbH0Yf8irPeEukVphtwfR1lGMyuBt7jdIABUUm7EfAGwzH+qoLxDJ4PLTQ8UAzu
-         XE8A==
+        bh=hID93V/U/yw5FBDzPM8aHmV8Mo1wPCuIlof4W0/fv+s=;
+        b=qwFH3wp5LMk9gdYlmmevn1lfUAO8d6n4zUIytJ/Kyp3PcS5beZwnlYNZT+lAMSX5ha
+         Gt5h/VW9QnoN19j/41njPJgPfYrYPSgmsEtfHF1jnmAAfFYb9oxDCHbrNEuf2nlccMp/
+         5JVEwTmW6uzwZ01YencLIp/c33fJdeLyI9UL3Wvr4BeQX8f1sYZfty5nwHb5lQMlinmx
+         Yt+NAbyFa9QfdzEIPje8ZQnVbxrkOjge79pctCoPnRBfvmY4PFrLeIx3dqCnODm+XoBB
+         wvrH8Gzbz0UWPOB+54fux75I3m0r+h7mX7s7LU0r5bdQiGxfmc5Dxxq7W+SzrChPM/8E
+         CUHw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DR7jfy5A;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bRkXV3lb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 4si3113674ybe.256.2020.10.29.03.57.51
+        by mx.google.com with ESMTPS id j7si1999415qki.75.2020.10.29.09.52.46
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Thu, 29 Oct 2020 03:57:51 -0700 (PDT)
+        Thu, 29 Oct 2020 09:52:46 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=DR7jfy5A;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=bRkXV3lb;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:39444 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:55508 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kY5cs-0000jO-UP
-	for alex.bennee@linaro.org; Thu, 29 Oct 2020 06:57:50 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:50968)
+	id 1kYBAL-000766-P9
+	for alex.bennee@linaro.org; Thu, 29 Oct 2020 12:52:45 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59126)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kY5ck-0000hy-AU
- for qemu-arm@nongnu.org; Thu, 29 Oct 2020 06:57:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:41535)
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kYBAB-00075r-MR
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2020 12:52:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:56484)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1kY5ch-0003QW-Jz
- for qemu-arm@nongnu.org; Thu, 29 Oct 2020 06:57:41 -0400
+ (Exim 4.90_1) (envelope-from <drjones@redhat.com>)
+ id 1kYBA8-0008Rh-FK
+ for qemu-arm@nongnu.org; Thu, 29 Oct 2020 12:52:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1603969058;
+ s=mimecast20190719; t=1603990351;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=qUobfChgR8/6lkiRjzQNF0SVoDxhzLwdJ3Inz6If66c=;
- b=DR7jfy5AET3mKJm9NYcx8pbgELlrgSo+CFAT45BNHAhsKhhcbvujRndbX2enHJ7+bTNUHR
- eWhteK2e757vBJnVZIQ4ehaCgludi4Wk3EcyRXvErMA3laADEOjO4aZEhlVuGU9yU0Fyvh
- FjRFfYEuGkO6EBZ+U8xITAbCYF3U19o=
+ bh=hID93V/U/yw5FBDzPM8aHmV8Mo1wPCuIlof4W0/fv+s=;
+ b=bRkXV3lbatDs2XdDK/0oIia/n2Kdjz9wbNM1zQpuBvJqedfGf4k+dtB8wDWeUONIqGvs5i
+ 1JLK+Pp8XVNRnye9TgQNrbRoezcbkGbt11Rav8mpQfRkGtr0f6xKMb7HciRxkad277z89b
+ icUI5Sf8i1Mg34VzGvs2DXqKLA/VPrA=
 Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
  [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-522-KNxDxf-SPbCnGZgbaD-lSA-1; Thu, 29 Oct 2020 06:57:34 -0400
-X-MC-Unique: KNxDxf-SPbCnGZgbaD-lSA-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.phx2.redhat.com
- [10.5.11.23])
+ us-mta-499-kIVGKaRAO3efoDYtjxEfdQ-1; Thu, 29 Oct 2020 12:52:29 -0400
+X-MC-Unique: kIVGKaRAO3efoDYtjxEfdQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 700551900081;
- Thu, 29 Oct 2020 10:57:33 +0000 (UTC)
-Received: from localhost (ovpn-114-68.rdu2.redhat.com [10.10.114.68])
- by smtp.corp.redhat.com (Postfix) with ESMTP id CB0FC1974D;
- Thu, 29 Oct 2020 10:57:32 +0000 (UTC)
-Date: Thu, 29 Oct 2020 06:57:31 -0400
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Andrew Jones <drjones@redhat.com>
-Subject: Re: Dynamic instance properties in TYPE_ARM_CPU
-Message-ID: <20201029105731.GI5733@habkost.net>
-References: <20201026172219.GA5733@habkost.net>
- <20201029101627.umh4gqxiujwde4xp@kamzik.brq.redhat.com>
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id D32196D592;
+ Thu, 29 Oct 2020 16:52:27 +0000 (UTC)
+Received: from kamzik.brq.redhat.com (unknown [10.40.192.219])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7D7281002397;
+ Thu, 29 Oct 2020 16:52:24 +0000 (UTC)
+Date: Thu, 29 Oct 2020 17:52:21 +0100
+From: Andrew Jones <drjones@redhat.com>
+To: Ying Fang <fangying1@huawei.com>
+Subject: Re: [RFC PATCH v2 08/13] hw/acpi/aml-build: add processor hierarchy
+ node structure
+Message-ID: <20201029165221.agx27kp7dkihtq3m@kamzik.brq.redhat.com>
+References: <20201020131440.1090-1-fangying1@huawei.com>
+ <20201020131440.1090-9-fangying1@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20201029101627.umh4gqxiujwde4xp@kamzik.brq.redhat.com>
-X-Scanned-By: MIMEDefang 2.84 on 10.5.11.23
+In-Reply-To: <20201020131440.1090-9-fangying1@huawei.com>
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
 Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=drjones@redhat.com
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=drjones@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 01:47:28
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/10/29 00:47:54
 X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,58 +115,119 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>
+Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
+ qemu-devel@nongnu.org, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
+ Henglong Fan <fanhenglong@huawei.com>, alistair.francis@wdc.com,
+ qemu-arm@nongnu.org, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: EQ2kYaRamWfZ
+X-TUID: 90nWamx7Mg6V
 
-On Thu, Oct 29, 2020 at 11:16:27AM +0100, Andrew Jones wrote:
-> On Mon, Oct 26, 2020 at 01:22:19PM -0400, Eduardo Habkost wrote:
-> > I've been trying to clean up the qdev property code (to bridge
-> > the gaps between qdev and QOM, and between QOM and QAPI), and
-> > I've noticed that TYPE_ARM_CPU is the only remaining user of
-> > qdev_property_add_static().
-> > 
-> > qdev_property_add_static() has a misleading name: it won't
-> > register a static property.  It is actually a hack to use a
-> > static Property variable (defined using DEFINE_PROP*), but
-> > register it as a dynamic instance property.
-> > 
-> > Dynamic instance properties make introspection hard.  What can we
-> > do to get rid of them in TYPE_ARM_CPU?
-> > 
-> > Can we just register all the properties unconditionally, and
-> > error out on realize if the requested CPU configuration is
-> > incompatible with the available CPU features?
-> > 
-> > The following properties are registered as dynamic instance
-> > properties at arm_cpu_post_init():
-> > "cntfrq", "reset-cbar", "reset-hivecs", "rvbar", "has_el2",
-> > "has_el3", "cfgend", "vfp", "neon", "dsp", "has-mpu",
-> > "pmsav7-dregion", "secure-memory", "pmu", "idau", "init-svtor",
-> > "tag-memory", "secure-tag-memory".
+On Tue, Oct 20, 2020 at 09:14:35PM +0800, Ying Fang wrote:
+> Add the processor hierarchy node structures to build ACPI information
+> for CPU topology. Three helpers are introduced:
 > 
-> Hi Eduardo,
+> (1) build_socket_hierarchy for socket description structure
+> (2) build_processor_hierarchy for processor description structure
+> (3) build_smt_hierarchy for thread (logic processor) description structure
 > 
-> Are properties added at runtime with
+> Signed-off-by: Ying Fang <fangying1@huawei.com>
+> Signed-off-by: Henglong Fan <fanhenglong@huawei.com>
+> ---
+>  hw/acpi/aml-build.c         | 37 +++++++++++++++++++++++++++++++++++++
+>  include/hw/acpi/aml-build.h |  7 +++++++
+>  2 files changed, 44 insertions(+)
 > 
->   if (this_config_wants_this_property)
->     object_property_add(...)
+> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+> index 3792ba96ce..da3b41b514 100644
+> --- a/hw/acpi/aml-build.c
+> +++ b/hw/acpi/aml-build.c
+> @@ -1770,6 +1770,43 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms)
+>                   table_data->len - slit_start, 1, NULL, NULL);
+>  }
+>  
+> +/*
+> + * ACPI 6.3: 5.2.29.1 Processor hierarchy node structure (Type 0)
+> + */
+> +void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
+> +{
+> +    build_append_byte(tbl, 0);          /* Type 0 - processor */
+> +    build_append_byte(tbl, 20);         /* Length, no private resources */
+> +    build_append_int_noprefix(tbl, 0, 2);  /* Reserved */
+> +    build_append_int_noprefix(tbl, 1, 4);  /* Flags: Physical package */
+> +    build_append_int_noprefix(tbl, parent, 4);  /* Parent */
+> +    build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
+> +    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
+> +}
+> +
+> +void build_processor_hierarchy(GArray *tbl, uint32_t flags,
+> +                               uint32_t parent, uint32_t id)
+> +{
+> +    build_append_byte(tbl, 0);          /* Type 0 - processor */
+> +    build_append_byte(tbl, 20);         /* Length, no private resources */
+> +    build_append_int_noprefix(tbl, 0, 2);      /* Reserved */
+> +    build_append_int_noprefix(tbl, flags, 4);  /* Flags */
+> +    build_append_int_noprefix(tbl, parent, 4); /* Parent */
+> +    build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
+> +    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
+> +}
+> +
+> +void build_smt_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
+> +{
+> +    build_append_byte(tbl, 0);            /* Type 0 - processor */
+> +    build_append_byte(tbl, 20);           /* Length, add private resources */
+> +    build_append_int_noprefix(tbl, 0, 2); /* Reserved */
+> +    build_append_int_noprefix(tbl, 0x0e, 4);    /* Processor is a thread */
+> +    build_append_int_noprefix(tbl, parent , 4); /* parent */
+> +    build_append_int_noprefix(tbl, id, 4);      /* ACPI processor ID */
+> +    build_append_int_noprefix(tbl, 0, 4);       /* Num of private resources */
+> +}
+> +
+>  /* build rev1/rev3/rev5.1 FADT */
+>  void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>                  const char *oem_id, const char *oem_table_id)
+> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+> index fe0055fffb..56474835a7 100644
+> --- a/include/hw/acpi/aml-build.h
+> +++ b/include/hw/acpi/aml-build.h
+> @@ -437,6 +437,13 @@ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+>  
+>  void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
+>  
+> +void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
+> +
+> +void build_processor_hierarchy(GArray *tbl, uint32_t flags,
+> +                               uint32_t parent, uint32_t id);
+> +
+> +void build_smt_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
+> +
+>  void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>                  const char *oem_id, const char *oem_table_id);
+>  
+> -- 
+> 2.23.0
 > 
-> also considered dynamic instance properties? If so, then
-> arm as many more than the ones listed above. And, if not,
-> then it should be pretty easy to convert the ones listed
-> above to this if-want-add pattern.
+>
 
-Yeah, all object_property_add() calls are also dynamic instance
-properties.
+I don't think we need three 99% identical functions that only differ by a
+flags field, especially when one of the functions is the generic form that
+takes flags as an argument. At the very least this should be
 
-Being conditional makes them more difficult to convert to
-introspectable class properties (unless the condition is a
-function of class information only).
+void build_processor_hierarchy(tbl, flags, parent id)
+{
+  ...
+}
 
--- 
-Eduardo
+void build_socket_hierarchy(tbl, parent, id)
+{
+  build_processor_hierarchy(tbl, 1, parent, id);
+}
+
+void build_smt_hierarchy(tbl, parent, id)
+{
+  build_processor_hierarchy(tbl, 0xe, parent, id);
+}
+
+Thanks,
+drew
 

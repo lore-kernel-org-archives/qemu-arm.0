@@ -1,66 +1,65 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1384715lfa;
-        Fri, 30 Oct 2020 03:23:44 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJx7z3yNyZxzkpNtUV4XJwFdqL8+fUIgGM2bcdJRlNlBRJUlx6VD6f/8PlR5UelAOSL4KdcW
-X-Received: by 2002:a25:cc8e:: with SMTP id l136mr2453528ybf.10.1604053424448;
-        Fri, 30 Oct 2020 03:23:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1604053424; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1386685lfa;
+        Fri, 30 Oct 2020 03:26:27 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxXqOPhLHC6bOnXGlIDQ/0gEtfUmJPVnBY/o4ZoErQRPNGF+rIxRVAXAILqZfxWeZLXDgFY
+X-Received: by 2002:a25:c6d0:: with SMTP id k199mr2514984ybf.469.1604053587417;
+        Fri, 30 Oct 2020 03:26:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1604053587; cv=none;
         d=google.com; s=arc-20160816;
-        b=HlbiPO0fbhJcrc2NvMguZWnlZc0r8Cgw1hJKa/gwSEK5NSaU5v1IOImuC+fAuLJHqt
-         cJTltmqEHx6smK0Yefh7MZpGp/SucAkOYVD+5wdugjHpe2HWVdNLeXSxNL5VgjastI2p
-         ZYC8zIRV5vHr/IYuW+9cM7Akf28cN6Pog5HqTH1l8HGXJp8W89n0DBzrzHf6sWd1jSAH
-         ur3xGCi4SvkE6ahcf4n398GLThcWzbE6nillTkXVy84b8KI9Yz8b5e1Xju1z6ffuNguE
-         CDkOsUP3o0f/UKg79zRfD0c0SSY607Do633I771Dw8evyNIX8alhafqCgplcPY7A1fr9
-         0kNQ==
+        b=pvoKCJprL6uvAzPGG1sAL26mIye7HnEbmzsfYnEYMxUVMDD5RjukMvi4uReDOxWuDP
+         1flBinqffN3sYZQOKT+2tiNim44oR0SZfbfzZ6rG1bH7u705eCXBjOGdFdm3SFxm09XL
+         jKMD0eCgEyCzRtdJDy1CZ4vnpO5HztmAVbx5YnZTaMlK+1m097yd6IfaHM3zz5GzhnUc
+         Ct/QTQaGIyPfo900xZLuDpjmgwvh3Irfg26WVDlW5+SNNEWv1VNbaAOWE84NlXvTuAB3
+         sFEHXd41u7Fqh6eciUQlgop3RZntPHcOHQzgq5GjvcCI9PmQzKSAfGrOarh2Cj+xQkub
+         3f8w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :subject:to:mime-version:user-agent:from:date:message-id;
-        bh=tXOhGMLp11T4FBoAuXMD9efkChm01OXJA/64ag3kQRQ=;
-        b=CoC11TcYK8OudYxT1/V0gE0ez/sEnmC37emdM91w6yhZV41UD8sTjJOP4mwS9SiGT1
-         dMh49Tp4f+qUysi2c0I4R7EEFNPFEOQr17tzm8OCEz0dzTISCPImRmmKlyEBcdmzVTNd
-         /WaiUtlkcWbayvuxym/AS2NMAAjEUKbVNb39WINTfYRq9XFTTPiS4B8u0M0Nchye0lm/
-         ZpZSni5HfbZgORB9WfRzYRpsBWNJmkznNuH2gEz4IFBgug5Bm3TEr6bDMZiENVdSaPJ/
-         j4I4Atx/WkUqSSIR2CZS4k+jo7ftZeZT9DhbhaNqeJoirKgrsSW2GjnSmoYq7hwKXNJR
-         9vJw==
+        bh=7N8ONtTGRqPasbdDGyiUuQaX3v2H7HZ+BYp3xu5pvgA=;
+        b=jfouEhCWwutwQuMiczroA0iPmVG/mdBstfLizfl+YYMdcxPIxTSzlR4sFMLXDJYhXE
+         GI+mUO72Qg4lB+w9Zw4w2VWTpM7UatBFiz8rb1dPwzJVXbPLP54yIfPcL+A8N4IlQNyp
+         d/AFANn5J1JXrbw4613hcAhx0tFUak2gojbrLGivnNMotsKkAkf52mChlHRTiRXqkLOS
+         HI+WGqyqkqBOIWfbpP2m32CkvY8iGEg5DMb5SOlQSVRDO4oNHyPtG04lCOdaG3zppzY+
+         5+Ps+TV1auqSowF5/DTVW1SHalY3P4FfHxabzM0DoAgne1GlCJmh7NM7QJX/YV1MlneA
+         7lNw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id r3si5990344ybk.191.2020.10.30.03.23.44
+        by mx.google.com with ESMTPS id v198si6514079ybv.367.2020.10.30.03.26.27
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Oct 2020 03:23:44 -0700 (PDT)
+        Fri, 30 Oct 2020 03:26:27 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:33560 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:38332 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kYRZP-0004eM-R3
-	for alex.bennee@linaro.org; Fri, 30 Oct 2020 06:23:43 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:47066)
+	id 1kYRc2-0006tc-Ko
+	for alex.bennee@linaro.org; Fri, 30 Oct 2020 06:26:26 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:47242)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kYRYh-00044g-9N; Fri, 30 Oct 2020 06:22:59 -0400
-Received: from szxga05-in.huawei.com ([45.249.212.191]:2426)
+ id 1kYRZ7-0004ck-Ji; Fri, 30 Oct 2020 06:23:25 -0400
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2490)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kYRYe-00082C-U1; Fri, 30 Oct 2020 06:22:58 -0400
-Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CMz096vdNzLrL1;
- Fri, 30 Oct 2020 18:22:49 +0800 (CST)
+ id 1kYRZ5-0008Ij-QN; Fri, 30 Oct 2020 06:23:25 -0400
+Received: from DGGEMS405-HUB.china.huawei.com (unknown [172.30.72.60])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CMz0p4ByJzhd3m;
+ Fri, 30 Oct 2020 18:23:22 +0800 (CST)
 Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
- 14.3.487.0; Fri, 30 Oct 2020 18:22:45 +0800
-Message-ID: <5F9BE974.3040806@huawei.com>
-Date: Fri, 30 Oct 2020 18:22:44 +0800
+ DGGEMS405-HUB.china.huawei.com (10.3.19.205) with Microsoft SMTP Server id
+ 14.3.487.0; Fri, 30 Oct 2020 18:23:15 +0800
+Message-ID: <5F9BE993.4050406@huawei.com>
+Date: Fri, 30 Oct 2020 18:23:15 +0800
 From: AlexChen <alex.chen@huawei.com>
 User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
  rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-To: <i.mitsyanko@gmail.com>, <peter.maydell@linaro.org>
-Subject: [PATCH] hw/display/exynos4210_fimd: Fix potential NULL pointer
- dereference
+To: <peter.maydell@linaro.org>
+Subject: [PATCH] hw/display/omap_lcdc: Fix potential NULL pointer dereference
 Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
 X-Originating-IP: [10.174.187.138]
@@ -90,35 +89,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
 Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org, QEMU <qemu-devel@nongnu.org>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2QcpHt8PIT2D
+X-TUID: +I/RUm+z24Oj
 
-In exynos4210_fimd_update(), the pointer s is dereferenced before
+In omap_lcd_interrupts(), the pointer omap_lcd is dereferenced before
 being check if it is valid, which may lead to NULL pointer dereference.
-So move the assignment to global_width after checking that the s is valid
+So move the assignment to surface after checking that the omap_lcd is valid.
 
 Reported-by: Euler Robot <euler.robot@huawei.com>
 Signed-off-by: Alex Chen <alex.chen@huawei.com>
 ---
- hw/display/exynos4210_fimd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/display/omap_lcdc.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-index 4c16e1f5a0..a1179d2f89 100644
---- a/hw/display/exynos4210_fimd.c
-+++ b/hw/display/exynos4210_fimd.c
-@@ -1275,12 +1275,12 @@ static void exynos4210_fimd_update(void *opaque)
-     bool blend = false;
-     uint8_t *host_fb_addr;
-     bool is_dirty = false;
--    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
-
-     if (!s || !s->console || !s->enabled ||
-         surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
+diff --git a/hw/display/omap_lcdc.c b/hw/display/omap_lcdc.c
+index fa4a381db6..2941c5c67c 100644
+--- a/hw/display/omap_lcdc.c
++++ b/hw/display/omap_lcdc.c
+@@ -78,7 +78,7 @@ static void omap_lcd_interrupts(struct omap_lcd_panel_s *s)
+ static void omap_update_display(void *opaque)
+ {
+     struct omap_lcd_panel_s *omap_lcd = (struct omap_lcd_panel_s *) opaque;
+-    DisplaySurface *surface = qemu_console_surface(omap_lcd->con);
++    DisplaySurface *surface;
+     draw_line_func draw_line;
+     int size, height, first, last;
+     int width, linesize, step, bpp, frame_offset;
+@@ -89,6 +89,7 @@ static void omap_update_display(void *opaque)
          return;
      }
-+    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
-     exynos4210_update_resolution(s);
-     surface = qemu_console_surface(s->console);
 
++    surface = qemu_console_surface(omap_lcd->con);
+     frame_offset = 0;
+     if (omap_lcd->plm != 2) {
+         cpu_physical_memory_read(
 -- 
 2.19.1

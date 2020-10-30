@@ -1,111 +1,115 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1654905lfa;
-        Fri, 30 Oct 2020 08:44:01 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwFbTVVMM5EhDKlpbCqVc+FJwCq0yEQ7NOm+m51atO6c1I6JvnaSy3lnbfT+NwtHGe9AFWx
-X-Received: by 2002:ac8:2c21:: with SMTP id d30mr2712599qta.156.1604072641277;
-        Fri, 30 Oct 2020 08:44:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1604072641; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1662305lfa;
+        Fri, 30 Oct 2020 08:52:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzclvLspEXu+ulMPY4lS6Hb5EcJcQF6m0DdBWdJ5OVwfi4tVk6yPJOqBVCWH9Ey+Wy6Xm1u
+X-Received: by 2002:ac8:7454:: with SMTP id h20mr2742664qtr.34.1604073177941;
+        Fri, 30 Oct 2020 08:52:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1604073177; cv=none;
         d=google.com; s=arc-20160816;
-        b=A5T2VeamPncEjisPeegMP6f7cXynREA/Gqvlm5pS5b/2vTef9GZCAd+nHWSR4Zqx4X
-         uGfQvgy8WRmSCmcJd/Rr/aYETn/MrG2lIMDSTYGxKbqJAToDGyvMxYVeLhslyA9in3s4
-         ALq9P36oy+BIB56JdtT2CZ7j9WodpK5OMTBKYVGWYfWu7cRzLcsyKyDyWxyesS4BFf3h
-         siPeJ8s0mZAwhRGJKutZI6rsDB+0j4XbE2xJ/58LPQ9ZMAx4iANh+bL65IpBvkwUmm9L
-         TR/ywEOCcnTv7+5RlzXbSRXUs0OCQ+MhS1v6AA2XELElNqg6ar0D34K8ORTc5k1aRqel
-         03lw==
+        b=HiLCxTQWYp71NPi3qJBd0cuXQCJbqulV1PQBgAlpuQ/BI2zcPk7ZoD8fSfEr5o32D0
+         7blWkKM0XtUPcdoiannQMpLgta9Hz6hW5rRTsYko2Tz0AgRWOQggQgCviwDMCTDtpk8p
+         4cKCcaunOkmO5LPRGj1xDak/V9cg0V42oXU0Hz5JfPLUH6xBA43aFdLXlUh7yMWpqEJM
+         bdcK3mAeGBvja+kF7K3z7JsdNDXCL/2H0wkPKymSOC9zbXLfqUsYb8VpFVfYUnEBJbZS
+         U+txnZ34cc7xTsYUNuD0rZd+SXY4qKTIpwhEYwJZ7lvRlJ6+YIco3iipfMA/X7vxhfsK
+         YL8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:cc:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:dkim-signature;
-        bh=ie4q/AZ9xU5WHtB60yeUPPVLsiUe10Ly8FqHCFyuUbE=;
-        b=Di3CBW3Un+paVYq0LEc30pua//z7hm/f0Q6HwesX3foYfes2JtenWv1zU7A2VG3pmO
-         +2T7D2nUQzfOqQaVZgk3OO2Je0WT7Vv+Vrw6lPf5Yn38fIYKIYdig/mvINCv8yiGFjeK
-         +w+i9Hqc+gRcAjyQhu32h0Fxz1WtQV6s+nIDxQGn75io7nH7h/Lv52lJpWRNgXDp9ROz
-         +35cIg8bvaUTomUFaEnMSFxiukAfI/LmCA96h3Ivgjz83LUkq7eP6IDxddM2S6DsnLg/
-         u6Meep0UkDFwey90Tzbeu44bCpO/km1uWjqeDNDCcae1pUfZyZVQBpOxgnYmtI2fEUAa
-         KIxg==
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=Dvb7IQunz2aNgckCmay4cq8YoBKmrHgG6tBMb/zjLVs=;
+        b=0Cy4yA+OKPSLcgmQqqbnhVcMnAhg0YVtfNRkB+yOkIqjAUCHYS0m9rPT6W8PDrNm47
+         oCCZ4vkndgfNOAWSQucen86vo2Iw6sacdba+zqmoLPEHOw7OFK98V9BXHlOQiGcuuqa8
+         LWIrkLPcR+3FOBydkymhNd1MeygRYW8UpCSULsXgOG9J8PWwzGGOHUTTjQLPGN3en9hu
+         yvtAMJRfto8cXrBcDqGt4U3QG9DvAiGhLcQDGs1KSZAS8pj7G3Tzl88Kr67ucQKNElby
+         Jsy7TcajBdxXTvgFx3FNCSZ9QUg3cvjjGUbn5OFoocf9p2mAqlwlTyqLKZx84IrNxCh9
+         xlyw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=ZeHiA9xu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tTT9UvZt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g19si3643356qtu.259.2020.10.30.08.44.01
+        by mx.google.com with ESMTPS id n21si3973976qtp.256.2020.10.30.08.52.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Oct 2020 08:44:01 -0700 (PDT)
+        Fri, 30 Oct 2020 08:52:57 -0700 (PDT)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@google.com header.s=20161025 header.b=ZeHiA9xu;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=tTT9UvZt;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
-Received: from localhost ([::1]:51180 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
+Received: from localhost ([::1]:38960 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kYWZM-00067M-MC
-	for alex.bennee@linaro.org; Fri, 30 Oct 2020 11:44:00 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40244)
+	id 1kYWi1-000588-Dz
+	for alex.bennee@linaro.org; Fri, 30 Oct 2020 11:52:57 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10]:42324)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kYWZ7-00064e-P5
- for qemu-arm@nongnu.org; Fri, 30 Oct 2020 11:43:45 -0400
-Received: from mail-ua1-x942.google.com ([2607:f8b0:4864:20::942]:42842)
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kYWho-00056x-Mg; Fri, 30 Oct 2020 11:52:44 -0400
+Received: from mail-wr1-x442.google.com ([2a00:1450:4864:20::442]:43999)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
- id 1kYWZ4-0002US-GB
- for qemu-arm@nongnu.org; Fri, 30 Oct 2020 11:43:45 -0400
-Received: by mail-ua1-x942.google.com with SMTP id f15so1842774uaq.9
- for <qemu-arm@nongnu.org>; Fri, 30 Oct 2020 08:43:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=ie4q/AZ9xU5WHtB60yeUPPVLsiUe10Ly8FqHCFyuUbE=;
- b=ZeHiA9xuCRLjr0yZICr9NyhWdm1UDnSgajjLltADsIvH6GOQKVlTvcFVYzD8wllwM5
- MnUDCaeqJ0MN+1Or4Pz570UWBRAnJx5FnDGEEfTR4RG76vOPVmiYWoFyBe+gTUg/c2f8
- PTJNfegAKia9MSSHxeo2f36ukIptT0LRZ04kB+pzKOSEJi/Elq2EVqqDx09K0W8Lhf2U
- zj8+bksriKtuOQkhXHcK0HGPzG82nIZEf63WCHfewkka9Lgy/4nmuQR75sgonxfuy8XU
- ef/ALYLoc2CCEUvty3aNjaYku6WVj9yFRyuRlvSbX7fTlQkdHakHw14dO+KSMcXMWf/j
- OamA==
+ (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
+ id 1kYWhl-0003mt-1t; Fri, 30 Oct 2020 11:52:43 -0400
+Received: by mail-wr1-x442.google.com with SMTP id g12so6962362wrp.10;
+ Fri, 30 Oct 2020 08:52:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ h=sender:subject:to:cc:references:from:message-id:date:user-agent
+ :mime-version:in-reply-to:content-language:content-transfer-encoding;
+ bh=Dvb7IQunz2aNgckCmay4cq8YoBKmrHgG6tBMb/zjLVs=;
+ b=tTT9UvZtaH8WujdIcIuvVH47IsRuWHtlan0AAKQj6GtR44KsH3rSc/FjsKk/f5/l/g
+ a0nHXj5fbBNnPd6dRZ/cnNNxfgky29Qw6E2Eq7VKH9g8YbzS3m0kIkDbRym5esB3pGvL
+ iV+p575jSBuL9b7KhzGEcgdNx4JRcrnlk6TddJ1lQjKqNHWDdFgH6VgRDTZ7LzW5herf
+ DSONTrZRWqNrCiR28yBiTXh2E+Krwf6w/UlcluqVuSz4GB8TD9QA1TYjWQPPkYsQLzV0
+ sQ6udxRK9dJVZJg1+B3hWa6Rs5HRMkYsQC0jEtw7VJWaLDjFIT2ToIZdB0xP8trylxxR
+ gd0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=ie4q/AZ9xU5WHtB60yeUPPVLsiUe10Ly8FqHCFyuUbE=;
- b=XFOoIlPFBcJ3qd+n6YQj4CSSqYTZO4jWi8aseE52D8GnnkufL0SqWqChMApVtzUoYO
- odEXs3Eyg2gosd/Z8Kj7fRZl+MUgnvZIqOVrGE7os/L0IxO1F4HZbTQ8nxZrjrbcldYR
- 6UJqBrvFsdsdMpy0n2cEk9qU2Q/QhszZJhAk9trRKTQL9A6vgEDxYYPL1/bnbTYMcLzM
- 0V/ZgVVfuyKuVJBIk8nePcgWK8PP12AlJm2XhXHP9ro1W0pwK+EyBEzG3iHpzxrX+PjB
- qcFUm5niqWh/ajG0X18Z554y/3oLpE/MFmHmzvNM1AjNBtc3gd79lHfYIbgTRsGGAWuD
- XXIA==
-X-Gm-Message-State: AOAM532oEqBEINYL21wYMn5Gu2nhwAGIoooomcAQzFnvqzDnZB84zT65
- s7Of9xeeGVquhrDIwlsz7XelJrthxsbCVTrSAb/H+A==
-X-Received: by 2002:ab0:8b:: with SMTP id 11mr1930000uaj.15.1604072620640;
- Fri, 30 Oct 2020 08:43:40 -0700 (PDT)
-MIME-Version: 1.0
-References: <20201023210637.351238-1-hskinnemoen@google.com>
- <20201023210637.351238-5-hskinnemoen@google.com>
- <CAFEAcA_w5j47qz+L02H10UbmyxwD4sxHPu8h2mAinME08Mjkqw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_w5j47qz+L02H10UbmyxwD4sxHPu8h2mAinME08Mjkqw@mail.gmail.com>
-From: Havard Skinnemoen <hskinnemoen@google.com>
-Date: Fri, 30 Oct 2020 08:43:29 -0700
-Message-ID: <CAFQmdRaWBfRXJptN2xiT6x4_9GGEKivR5CGLkWtiX0vb1AYusQ@mail.gmail.com>
-Subject: Re: [PATCH v3 4/6] hw/misc: Add npcm7xx random number generator
+ h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
+ :date:user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=Dvb7IQunz2aNgckCmay4cq8YoBKmrHgG6tBMb/zjLVs=;
+ b=MN1HrbiEL5VHgw+/L5Hd3NMHTmXpp1lGTJ2r5GKs9apAF03xm+0L5IYdv1k83p84dq
+ uW0eIl6+UTKYlKK5AjyAPoft4l+3DG8n0pvuJdAwvq/lw0vSuGpFVDFnrfHdHaDHR8pp
+ ZMheiL/373FRBy9ClQ4kZjLrDUchFq+EtAZG7lzEjUkELIdi10rxUZnWIGMuTiM35R3e
+ UUWYyyYLE/R1QA8koJTjiS2mM7VNLMqjxqeSaLkoQGdoQzYITG56QTDaVMD+gT3nvtez
+ RZCXQdUD6zRlb3ZETiY42MOSUCFtgNxrHJQCvJ50x9iVnBbNiE9NdHTSEcfa/ztg/6zk
+ Kk+g==
+X-Gm-Message-State: AOAM532hVdSh22cXgRkal/JCIFUbQo7pO1Q1FqtG5bq7OI/sOEELHlMp
+ B1JFkTEmeQBhjz+b6nd7De4=
+X-Received: by 2002:adf:ef92:: with SMTP id d18mr3956610wro.420.1604073158170; 
+ Fri, 30 Oct 2020 08:52:38 -0700 (PDT)
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id u6sm4996680wmj.40.2020.10.30.08.52.36
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 30 Oct 2020 08:52:37 -0700 (PDT)
+Subject: Re: [PATCH] docs/system: Deprecate raspi2/raspi3 machine aliases
 To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
- CS20 KFTing <kfting@nuvoton.com>, 
- Patrick Venture <venture@google.com>, Hao Wu <wuhaotsh@google.com>,
- Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::942;
- envelope-from=hskinnemoen@google.com; helo=mail-ua1-x942.google.com
+References: <20201019082121.1544550-1-f4bug@amsat.org>
+ <CAFEAcA9tBN9mDsotycNHnh4cUVMaYtGJO8NBqgvATKw8fJ7i7g@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
+Message-ID: <877f333d-596c-4cdf-1df9-d832a34833eb@amsat.org>
+Date: Fri, 30 Oct 2020 16:52:35 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
+MIME-Version: 1.0
+In-Reply-To: <CAFEAcA9tBN9mDsotycNHnh4cUVMaYtGJO8NBqgvATKw8fJ7i7g@mail.gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::442;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x442.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.249,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.253,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -118,65 +122,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Libvirt <libvir-list@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>,
+ Andrew Baumann <Andrew.Baumann@microsoft.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: 2rS4X+oPoG96
+X-TUID: EfAFiGFCTTga
 
-On Fri, Oct 30, 2020 at 6:34 AM Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Fri, 23 Oct 2020 at 22:06, Havard Skinnemoen <hskinnemoen@google.com> wrote:
-> >
-> > The RNG module returns a byte of randomness when the Data Valid bit is
-> > set.
-> >
-> > This implementation ignores the prescaler setting, and loads a new value
-> > into RNGD every time RNGCS is read while the RNG is enabled and random
-> > data is available.
-> >
-> > A qtest featuring some simple randomness tests is included.
-> >
-> > Reviewed-by: Tyrone Ting <kfting@nuvoton.com>
-> > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> > Signed-off-by: Havard Skinnemoen <hskinnemoen@google.com>
->
-> I've just seen some intermittent failures on the rng tests
-> in this patch:
->
-> PASS 1 qtest-arm/npcm7xx_rng-test /arm/npcm7xx_rng/enable_disable
-> PASS 2 qtest-arm/npcm7xx_rng-test /arm/npcm7xx_rng/rosel
-> **
-> ERROR:../../tests/qtest/npcm7xx_rng-test.c:190:test_continuous_monobit:
-> assertion failed (calc_monobit_p(buf, sizeof(buf)) > 0.01):
-> (0.00800994233 > 0.01)
->
-> (on OSX)
->
-> and (on x86-64 Linux):
->
-> MALLOC_PERTURB_=${MALLOC_PERTURB_:-$(( ${RANDOM:-0} % 255 + 1))}
-> QTEST_QEMU_IMG=./qemu-img G_TEST_DBUS_DAEMON=/home/petmay01/li
-> naro/qemu-for-merges/tests/dbus-vmstate-daemon.sh
-> QTEST_QEMU_BINARY=./qemu-system-arm tests/qtest/npcm7xx_rng-test --tap
-> -k
-> PASS 1 qtest-arm/npcm7xx_rng-test /arm/npcm7xx_rng/enable_disable
-> PASS 2 qtest-arm/npcm7xx_rng-test /arm/npcm7xx_rng/rosel
-> PASS 3 qtest-arm/npcm7xx_rng-test /arm/npcm7xx_rng/continuous/monobit
-> **
-> ERROR:../../tests/qtest/npcm7xx_rng-test.c:211:test_continuous_runs:
-> assertion failed (calc_runs_p(buf.l, sizeof(buf) * BITS_PER_BYTE) >
-> 0.01): (0.00198053202 > 0.01)
->
->
-> Are these just "we got a bit unlucky in the values we got from
-> the RNG" ?
+On 10/30/20 3:33 PM, Peter Maydell wrote:
+> On Mon, 19 Oct 2020 at 09:23, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
+>>
+>> Since commit aa35ec2213b ("hw/arm/raspi: Use more
+>> specific machine names") the raspi2/raspi3 machines
+>> have been renamed as raspi2b/raspi3b.
+>>
+>> As more Raspberry Pi 2/3 models are emulated, in order
+>> to avoid confusion deprecate the raspi2/raspi3 machine
+>> aliases.
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+>> ---
+>>  docs/system/deprecated.rst | 5 +++++
+>>  1 file changed, 5 insertions(+)
+>>
+>> diff --git a/docs/system/deprecated.rst b/docs/system/deprecated.rst
+>> index 905628f3a0c..f0c7aaeb2ff 100644
+>> --- a/docs/system/deprecated.rst
+>> +++ b/docs/system/deprecated.rst
+>> @@ -355,6 +355,11 @@ This machine has been renamed ``fuloong2e``.
+>>  These machine types are very old and likely can not be used for live migration
+>>  from old QEMU versions anymore. A newer machine type should be used instead.
+>>
+>> +Raspberry Pi ``raspi2`` and ``raspi3`` machines (since 5.2)
+>> +'''''''''''''''''''''''''''''''''''''
+>> +
+>> +These machines have been respectively renamed ``raspi2b`` and ``raspi3b``.
+>> +
+> 
+> This isn't valid rST syntax, which requires the underlining to
+> be exactly the same length as the title string it underlines:
+> 
+> Warning, treated as error:
+> /home/petmay01/linaro/qemu-from-laptop/qemu/docs/system/deprecated.rst:348:Title
+> underline too short.
+> 
+> Raspberry Pi ``raspi2`` and ``raspi3`` machines (since 5.2)
+> '''''''''''''''''''''''''''''''''''''
+> 
+> I also think it would be helpful to have at least a sentence
+> saying why we've renamed the machines.
 
-Yes, it looks like the randomness is a little low.
-
-> If so, we probably need to disable these tests from the set
-> that we run in "make check" -- we can't really have "there's
-> a non-zero chance that the test fails" tests in our CI loop...
-
-Agree. Is there a way to disable the test by default, or should I send
-a patch to remove it?
-
-Havard
+I indeed forgot to run 'make man/html'.

@@ -1,94 +1,108 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3933692lfa;
-        Mon, 2 Nov 2020 05:35:51 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJycdfGml+LXiRTP1zaeOB3VnoT5JjuP5waX3xxukFx2yvPf0/ntUrOEwKIoKYNgK8awAhf5
-X-Received: by 2002:a05:620a:801:: with SMTP id s1mr6274651qks.206.1604324150688;
-        Mon, 02 Nov 2020 05:35:50 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604324150; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4019668lfa;
+        Mon, 2 Nov 2020 07:25:47 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxXpGBAqs18dMF861aYT9b8RVsOxbJNgul3DyIg88NJ+padm3WlRhBYK/XGxLH7fdz33Wzh
+X-Received: by 2002:a37:9a13:: with SMTP id c19mr15416055qke.126.1604330747736;
+        Mon, 02 Nov 2020 07:25:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604330747; cv=none;
         d=google.com; s=arc-20160816;
-        b=b7TxH/w0vSNYC9LeLC4W3v7j2B7SoPeQzSZEkOaGpUbCdc58iON5Sc+2W5bh2Gq3dK
-         0KUn69tNISQGVUBpkNuyGpyPv8aqzdnJoKmUTcuYdL0VvyBYVdgtgeFHca2EgRh8xmFn
-         cz4paVlTvUeHLhHormmINdmjiZ8Ya5UImXM/DsCe31yX9JhYFLYVyjUoEQjCvOwW/FhN
-         +sTVKZgC2A1sT7DE4EJrqHxyLxcMkyte0Bd4Ys+Ci3lRoNeHV8maXM2nQZwXvFnc5elT
-         97LpKHXudPc8iSWZCOLPXnhVDPLD5VV8MTWTPWY7fNBUkRQhwcQbmEJlMyagZdZlHbFG
-         l3zQ==
+        b=kC42U6MXzBpK1hHFtid1Qlib1sy68yRbwkndX9QYv2tcNr4QlNgL9rscHU2dinZJOq
+         EzUXIbHZNAPstr/IbH8f3J/mwDyltRx/Clu8BTcbltE74FvMm9lvfTNXttppzKoRE9FB
+         UiSvWkXHTMT1jSW1q1jOQ1Q4Ygx/7Afutkci8br/P+NwacMOWJeTXDam94WBzmOR9rKa
+         ln2eA8CQdjVBId/6CmaIdiMgZ8/iF6fgK8zM3awCzSDCsxdAfNLkaSWA062yi65f/O5k
+         Z98Uwh7X4TBUYJts1W/fHgJLxe55oTi73NThBcMml9z7glYY/GM0Nx5yJSBvGyzeK9Qi
+         OkAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-language:accept-language
-         :in-reply-to:references:message-id:date:thread-index:thread-topic
-         :subject:to:from;
-        bh=NyGBV2NvMQ8L/f/MczpTJRXGrlszl+GJ2YxFEaF5GKc=;
-        b=QsSmiAwCs93HhvSpm30Nk4ne3woX2IngHUpAchUJNDwkUF8YGK134ExdL5ydgo4Ytq
-         ANzcogBMhA86nRq7xGivFSlKUYGwYC+kMLWHgwjM8kJwRhKrxWjY4yULXrG2HYmfd/JE
-         R3lL2ECUjnhGScT3m9kP34BRBXxdEsAShjqe3zz4OUsgNOArFM5OachfK0hXQBAKIAGq
-         uC/cxgat7SXvTFKjR6Fw3DYd0TlsDg2QOEGZ2owetX7HZgyusUzuHRFrz4X0xWD6exBt
-         wawZIj3DmhEVTI9ptMjp5uioyqm04jWHETr7+GLyIjLb6EmH+QizDhhAgD8dOtqvBUdQ
-         XbdA==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:message-id:date:subject:to:from:dkim-signature;
+        bh=tOVjHBCUTdpVBGeIO9jNhl1R0X/cU6YKPF5ubl/f53w=;
+        b=YIWcQC4rCpeAPgHg4WXaKM6nfnYKVReq6Mggp0DQEBdBu6Aws7UD4yMfiJlf/vZuAr
+         tCUAQcD9YAvBW5UacjY5G41MxWBlxuYiD/6D2GWTir4dDEoHcN49GFY+hL4UwllSLTPU
+         ez7W+VPpw3Lo0slmoLmFWGC5qZ4oULqtDfXp9DfMQE1LYUM6ubBsmuJuzuGQ5hKg0SGm
+         IzalEMZURLdIOXW/b5Q42c9LwrvMqcXqpD7Te3DMbvNfueHeQmsOcP3aSyW4mHRjoOVe
+         SjLTkLiVz0L45PWeGU/l00cQrxLnA/xmYQc6UvgJcmU5FZkAjfbFnJIEx+fqwqcU5f4F
+         oVqA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+       dkim=fail header.i=@linaro.org header.s=google header.b=MRQfBfzt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k54si2437994qtb.405.2020.11.02.05.35.50
+        by mx.google.com with ESMTPS id w8si6157682qvl.103.2020.11.02.07.25.47
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Nov 2020 05:35:50 -0800 (PST)
+        Mon, 02 Nov 2020 07:25:47 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:59244 helo=lists1p.gnu.org)
+       dkim=fail header.i=@linaro.org header.s=google header.b=MRQfBfzt;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:47382 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZZzy-0000sT-5E
-	for alex.bennee@linaro.org; Mon, 02 Nov 2020 08:35:50 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46466)
+	id 1kZbiN-0003i0-4C
+	for alex.bennee@linaro.org; Mon, 02 Nov 2020 10:25:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52828)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi.denis.courmont@huawei.com>)
- id 1kZZza-0000rN-3Y; Mon, 02 Nov 2020 08:35:26 -0500
-Received: from lhrrgout.huawei.com ([185.176.76.210]:2125 helo=huawei.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <remi.denis.courmont@huawei.com>)
- id 1kZZzW-0004XY-LY; Mon, 02 Nov 2020 08:35:25 -0500
-Received: from lhreml723-chm.china.huawei.com (unknown [172.18.7.106])
- by Forcepoint Email with ESMTP id 824E2CEB982C5B6183D1;
- Mon,  2 Nov 2020 13:35:04 +0000 (GMT)
-Received: from lhreml727-chm.china.huawei.com (10.201.108.78) by
- lhreml723-chm.china.huawei.com (10.201.108.74) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.1913.5; Mon, 2 Nov 2020 13:35:04 +0000
-Received: from lhreml727-chm.china.huawei.com ([10.201.108.78]) by
- lhreml727-chm.china.huawei.com ([10.201.108.78]) with mapi id 15.01.1913.007; 
- Mon, 2 Nov 2020 13:35:04 +0000
-From: Remi Denis Courmont <remi.denis.courmont@huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Subject: RE: [PATCH 01/14] target/arm: add arm_is_el2_enabled() helper
-Thread-Topic: [PATCH 01/14] target/arm: add arm_is_el2_enabled() helper
-Thread-Index: AQHWsQhB3r8EiOh900GcB06pOPhjvKm0tEgAgAAi8KA=
-Date: Mon, 2 Nov 2020 13:35:04 +0000
-Message-ID: <2ea39469edfc4968b706826aa63a44c8@huawei.com>
-References: <2172054.ElGaqSPkdT@basile.remlab.net>
- <20201102105802.39332-1-remi.denis.courmont@huawei.com>
- <CAFEAcA9xhfhGToCXk9H+M5=HQKC91o-ED6eWTy32nvjwpFeJOg@mail.gmail.com>
- <CAFEAcA8xrk1Yd3GbkYRMjBwGjZ-f7bSp4gHGGk=tkhKNk5CqRQ@mail.gmail.com>
-In-Reply-To: <CAFEAcA8xrk1Yd3GbkYRMjBwGjZ-f7bSp4gHGGk=tkhKNk5CqRQ@mail.gmail.com>
-Accept-Language: fr-FR, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.202.66.212]
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kZbhi-00031r-CS
+ for qemu-arm@nongnu.org; Mon, 02 Nov 2020 10:25:06 -0500
+Received: from mail-wr1-x441.google.com ([2a00:1450:4864:20::441]:46198)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kZbha-0007zc-S1
+ for qemu-arm@nongnu.org; Mon, 02 Nov 2020 10:25:05 -0500
+Received: by mail-wr1-x441.google.com with SMTP id k10so13739010wrw.13
+ for <qemu-arm@nongnu.org>; Mon, 02 Nov 2020 07:24:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ h=from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=tOVjHBCUTdpVBGeIO9jNhl1R0X/cU6YKPF5ubl/f53w=;
+ b=MRQfBfzts61X2h0olj0xATIoGOjvf2UUVUtcF9cwHL9M/910ZGabOhReW+a8jPG0Uu
+ V0ORSBidldCTbp4nQy7fwzRS1HHIT8i/9oNkaVhGamqWNSqLJrijsUF+trAMlulPTkuv
+ nsax5Q18vHVouIvKNS2ODrnZuucNy4DY7j2I231B3Is3ICjTJi57W3cXbFeKVqEKJlvm
+ 5RUd31bBNKWhKAMzqyjxdY2RoQsPuyl2d9l7zUdn2R+O1vjzseHKK2Ni87tymVUL3JW7
+ 0njtw4IbSqHbjHtAFjfQm3YyqWgVM7LKeUTUJlT1GMPQ6K9+EuvSceQWunx+QR7F7K2K
+ paEQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20161025;
+ h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
+ :content-transfer-encoding;
+ bh=tOVjHBCUTdpVBGeIO9jNhl1R0X/cU6YKPF5ubl/f53w=;
+ b=sCf3WPEXzMNNq9rVKc2IxuNFwwngivadzRi5AbThZPqZAhK4Wi3NJcifpqzBWyAa30
+ m18+9IJucGwYIBbhSszK/3mNundmcz6kjkSBbb01RX84VurHggGsMZa2wODissiaR5Iz
+ J5oR9nTwJHMhQ2N2snAUhdO5yCsPD4xCtWTgEX5H8ENrLPZuJYJVmf/78K6Xq17C9kkA
+ KhpUZ3SsakhoN+Lm1M99VAQRbo865Whe8rWwY77IC+HJWKPCKx+q5py3QWkVlBy3W27D
+ lxSNHf3FP7OarNR3QvVWkyuGflFNnwhJNyQ1HNhQTy4ycsGqVilbtkSaKj7JHbHos54K
+ rVwQ==
+X-Gm-Message-State: AOAM530TJG5UD5+9BYdno9iG8TVM+1L+8qwwE7qmuUOcL5A+J3GSKKoN
+ r5E9z70txWeaopxIFw697j+NU1thoLLlAw==
+X-Received: by 2002:adf:bc0f:: with SMTP id s15mr21065035wrg.83.1604330696935; 
+ Mon, 02 Nov 2020 07:24:56 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
+ by smtp.gmail.com with ESMTPSA id 9sm12907632wmk.5.2020.11.02.07.24.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 02 Nov 2020 07:24:56 -0800 (PST)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Subject: [PATCH] tests/qtest/npcm7xx_rng-test: Disable randomness tests
+Date: Mon,  2 Nov 2020 15:24:54 +0000
+Message-Id: <20201102152454.8287-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=185.176.76.210;
- envelope-from=remi.denis.courmont@huawei.com; helo=huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 08:35:05
-X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::441;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x441.google.com
+X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
+ That's all we know.
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -101,17 +115,59 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
+Cc: Tyrone Ting <kfting@nuvoton.com>,
+ "Daniel P. Berrange" <berrange@redhat.com>,
+ Havard Skinnemoen <hskinnemoen@google.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: G9A6yPHGlkrC
+X-TUID: oup3hfeXLBFT
 
-SGksDQoNCj4gSSByZXBsaWVkIHRvIHRoaXMgYmVmb3JlIHRoZSBjb3ZlciBsZXR0ZXIgZXhwbGFp
-bmluZyB3aGF0IHRoZSBzZXJpZXMNCj4gaXMgZG9pbmcgYXJyaXZlZCBpbiBteSBpbmJveCwgc28g
-dGhlIHNlY29uZCBwYXJ0IG9mIG15IHN1Z2dlc3Rpb24NCj4gd291bGQgYmUgYSBiaXQgcG9pbnRs
-ZXNzLiBUaGUgZmlyc3QgcGFydCAobWVudGlvbmluZyB0aGUgbmFtZSBvZg0KPiB0aGUgcHNldWRv
-Y29kZSBmdW5jdGlvbikgc3RpbGwgc2VlbXMgd29ydGggZG9pbmcuDQoNClllYWggd2VsbCwgc29t
-ZSBzcGFtIGZpbHRlciBzZWVtcyB0byBoZWxwZWQgaXRzZWxmIHRvIHRoZSBvcmlnaW5hbCBjb3Zl
-ciBsZXR0ZXIsIGhhZCB0byByZXNlbmQgaXQsIHNvIEkgZmlndXJlZC4NCg0KQW5kIHRoZW4gaXQg
-c2VlbXMgSSBtYWRlIGEgYm9vYm9vIGFuZCBhY2NpZGVudGFsbHkgZHJvcHBlZCB0aGUgZmlyc3Qg
-cGF0Y2ggaW4gdGhlIHNlcmllcywgaGFuZGxpbmcgSENSLntGLEl9TU8gYml0cy4NCg0KDQo=
+The randomness tests in the NPCM7xx RNG test fail intermittently
+but fairly frequently. On my machine running the test in a loop:
+ while QTEST_QEMU_BINARY=./qemu-system-aarch64 ./tests/qtest/npcm7xx_rng-test; do true; done
+
+will fail in less than a minute with an error like:
+ERROR:../../tests/qtest/npcm7xx_rng-test.c:256:test_first_byte_runs:
+assertion failed (calc_runs_p(buf.l, sizeof(buf) * BITS_PER_BYTE) > 0.01): (0.00286205989 > 0.01)
+
+(Failures have been observed on all 4 of the randomness tests,
+not just first_byte_runs.)
+
+It's not clear why these tests are failing like this, but intermittent
+failures make CI and merge testing awkward, so disable running them
+unless a developer specifically sets QEMU_TEST_FLAKY_RNG_TESTS when
+running the test suite, until we work out the cause.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ tests/qtest/npcm7xx_rng-test.c | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
+
+diff --git a/tests/qtest/npcm7xx_rng-test.c b/tests/qtest/npcm7xx_rng-test.c
+index da6e639bf6f..e7cde85fbbc 100644
+--- a/tests/qtest/npcm7xx_rng-test.c
++++ b/tests/qtest/npcm7xx_rng-test.c
+@@ -265,10 +265,16 @@ int main(int argc, char **argv)
+ 
+     qtest_add_func("npcm7xx_rng/enable_disable", test_enable_disable);
+     qtest_add_func("npcm7xx_rng/rosel", test_rosel);
+-    qtest_add_func("npcm7xx_rng/continuous/monobit", test_continuous_monobit);
+-    qtest_add_func("npcm7xx_rng/continuous/runs", test_continuous_runs);
+-    qtest_add_func("npcm7xx_rng/first_byte/monobit", test_first_byte_monobit);
+-    qtest_add_func("npcm7xx_rng/first_byte/runs", test_first_byte_runs);
++    /*
++     * These tests fail intermittently; only run them on explicit
++     * request until we figure out why.
++     */
++    if (getenv("QEMU_TEST_FLAKY_RNG_TESTS")) {
++        qtest_add_func("npcm7xx_rng/continuous/monobit", test_continuous_monobit);
++        qtest_add_func("npcm7xx_rng/continuous/runs", test_continuous_runs);
++        qtest_add_func("npcm7xx_rng/first_byte/monobit", test_first_byte_monobit);
++        qtest_add_func("npcm7xx_rng/first_byte/runs", test_first_byte_runs);
++    }
+ 
+     qtest_start("-machine npcm750-evb");
+     ret = g_test_run();
+-- 
+2.20.1
+

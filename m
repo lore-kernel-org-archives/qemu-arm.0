@@ -1,121 +1,85 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3985633lfa;
-        Mon, 2 Nov 2020 06:43:23 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy4JJK9wmrAYa029DpNJCBDez3nhKvGBzruEfcbYovWhJm0pZ6YXJeMMc2h2oD8I6qVVPJ6
-X-Received: by 2002:aed:3147:: with SMTP id 65mr14937509qtg.295.1604328203253;
-        Mon, 02 Nov 2020 06:43:23 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604328203; cv=none;
-        d=google.com; s=arc-20160816;
-        b=E5fL1uza5dEfSxhGYd+xUw81lOM+DRvCvSyPVmtq7O/n2y06HSGeG0OWIfz08PDUsV
-         3y/ZQzMxgQ69oDyEYNfCcvx+Cx9olQVKDSNAj1fYWzoH2zFs1aUo8Zsp3eYs7surNWq0
-         8QZ9GYgNZxA8dYNkuGXuallUGIczEiMFltjM1yV7kCjImfKz6fELbWVwQc0qS7KbLDIx
-         7h3lwysMSpncaqPJMNol7UoMht1nq8OBqJ7hvnvR1bv25sBVKd1IqP24WM/VpHJgRlf7
-         7DJG/M7MCo7mU1hXP5S+fkQM6Vd6a8J+4iWBBrtcnPiYJOEYYN+uP8YHrdHDejgmMoYL
-         Rdlg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=YM2Fnfu4AC2/aWa6sBiYYE65XcwJew15+nCC/J3iCqg=;
-        b=GE4xu8HsGVu5LhRNKeQymsJllZjalByVdV5HfzvprgLwdLzkLRD4R/EbgyBzE2QzMA
-         0hWVB+PuZaXn1K+IY0iQjzpBToWU96finOn02HrK/qa0opsTfvz7INMnJB+F+epoZLWj
-         yIzOT+hkLldIktgajeesdiQB1hwYqFjHGkKrmqa7vF3YdldVyl9gevI/0dVcqyRJnJBw
-         /k3HeGZOlMNA2KlH7+8Vld5fprXxEqWETOJHlzwv6+c2IhkSFF2QmWkEWw4zKt4OdhFt
-         gX2jX6gZZ/Q6c+XV177red7K/9oLPYQ7cfpH/5tXEsSHI2wwp/62BYmMP22GhvzTCh94
-         6cGA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S58nul1a;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3966130lfa;
+        Mon, 2 Nov 2020 06:17:38 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzfE9ovKHEIF90kPcjmqe0C46PofHqU+LVDFL13dLWScskm+XSYfsk4n2gFDQrUIyMp6ka8
+X-Received: by 2002:a37:2753:: with SMTP id n80mr14905752qkn.353.1604326657592;
+        Mon, 02 Nov 2020 06:17:37 -0800 (PST)
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id k6si3874451qke.37.2020.11.02.06.43.23
+        by mx.google.com with ESMTPS id o4si5633954qtm.332.2020.11.02.06.17.37
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Nov 2020 06:43:23 -0800 (PST)
+        Mon, 02 Nov 2020 06:17:37 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S58nul1a;
+       dkim=fail header.i=@lmichel.fr header.s=pharaoh header.b=KFWc1GOb;
+       arc=fail (signature failed);
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:49722 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=lmichel.fr
+Received: from localhost ([::1]:54080 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZb3K-0001yo-Ky
-	for alex.bennee@linaro.org; Mon, 02 Nov 2020 09:43:22 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:42568)
+	id 1kZaeP-0007iZ-1i
+	for alex.bennee@linaro.org; Mon, 02 Nov 2020 09:17:37 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:36392)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZb2v-0001yX-4j
- for qemu-arm@nongnu.org; Mon, 02 Nov 2020 09:42:57 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:37249)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZb2s-00053g-ED
- for qemu-arm@nongnu.org; Mon, 02 Nov 2020 09:42:56 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604328172;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=YM2Fnfu4AC2/aWa6sBiYYE65XcwJew15+nCC/J3iCqg=;
- b=S58nul1aEvg45INUsVDz/Ti42MKiL419tesWbM+5f2j+tYW9/fvS4UpO4mvQ1tGvDrxBZq
- AgeczZYHfJxxwZy1q+Z9UsnDkgFFZ1h9xvylAX92izJvht5V3dZjGJUJblGS42rF13GVa3
- ZQDhzsYorhkr6v+p7xfM3CHnUgs1kOY=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-266-lSe0aVM1MZiabP-7TF4Few-1; Mon, 02 Nov 2020 09:42:51 -0500
-X-MC-Unique: lSe0aVM1MZiabP-7TF4Few-1
-Received: by mail-wr1-f71.google.com with SMTP id t14so6560962wrs.2
- for <qemu-arm@nongnu.org>; Mon, 02 Nov 2020 06:42:50 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=aNXmM6CNlrG0cs+CwnOFmLA6zd4E57Qt+UkaDTpFyhA=;
- b=g49DPLZnmoM4SdZ31SBCjQMdh4iiXiXRv03pV4xD+ahU/hFkTcnZ6lgRGMIBPoTQyt
- NFukf5AtPkxYgLMys5xINkOuJrnLG5AZ/XGytyDZhAOxBW35KDA3GwUVtPq4YXJHBmjw
- rbu20UPZLU+Y/ESvm6fhngVSeFcl3Isx+job8oA6lpOZoxCZhgQf8SF+u+OynACO4qek
- GbwwKAU7hGCWbU/zEO+2GIIrxqZKlPTnQd8acjz8BQYYqvXVG0EmXkGb6yj7tjIculKE
- UvdFG5MSmMn1FXYtzsD4FSuyBYdTilp9roNSzrXDMu1jFvyuBZf2lFyPcNCx7Ch8OK4p
- NAyA==
-X-Gm-Message-State: AOAM532hCGJ1YZwznUkuswMr8bmcaCzhOSr0xMO0RETdfygazuUlV/OD
- I9yMvXiFqMEpnRcqRTFLW/D6Q2P0/FOashHATVLAN+GL3sogb7ZbOadjSRvAXu70LNSbIrVEAL2
- OvDiupCUsDH4+
-X-Received: by 2002:a5d:4ed2:: with SMTP id s18mr20513827wrv.36.1604328169836; 
- Mon, 02 Nov 2020 06:42:49 -0800 (PST)
-X-Received: by 2002:a5d:4ed2:: with SMTP id s18mr20513787wrv.36.1604328169653; 
- Mon, 02 Nov 2020 06:42:49 -0800 (PST)
-Received: from localhost.localdomain (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id 3sm16242448wmd.19.2020.11.02.06.42.47
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Nov 2020 06:42:48 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
-To: "Daniel P . Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>
-Subject: [PATCH-for-5.2? 0/5] tests/acceptance: Only run tests tagged
- 'gating-ci' on GitLab CI
-Date: Mon,  2 Nov 2020 15:42:40 +0100
-Message-Id: <20201102144245.2134077-1-philmd@redhat.com>
-X-Mailer: git-send-email 2.26.2
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kZaeH-0007iJ-0B; Mon, 02 Nov 2020 09:17:29 -0500
+Received: from pharaoh.lmichel.fr ([149.202.28.74]:59700)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1kZaeE-00049R-7A; Mon, 02 Nov 2020 09:17:28 -0500
+Received: from localhost (sekoia-pc.home.lmichel.fr [192.168.61.100])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id DBD91C60011;
+ Mon,  2 Nov 2020 14:17:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1604326642;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qp0haXp9skMBrDWMipkfGnc7ZWhDc+b1zvHHdD+csw8=;
+ b=KFWc1GObrJSp9skTMAmV4nZRO88+hgm6JtDJy3haaCR/ChlOT/lT8Qb/3aad7W1edJnfw2
+ jtL8++jmqRBecpWfYqEG5aMPG3DlzhFo4F9r1fDVwaC20ECb/tdS3GU8CSiTQnJKaR8hTa
+ WdjhHoL69dA66MsyzofvH/Fp9ZDLBj2RWGZoR8rwC0QQmG/PGa5sstRcb5/nQwmZpq4phN
+ 9ff41TlQdrCG3FocUCvkfJ0DA8O91BAgzZRlZ6bF6igytcpKEHE0afJcdZBYw6fxcQUHyc
+ coUt/IdwlURl2mPS0vkrYIRZalCaJe9wJwXakEli1vv/Fojx8uUkMwQJZ5k3KA==
+Date: Mon, 2 Nov 2020 15:18:36 +0100
+From: Luc Michel <luc@lmichel.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] hw/intc/arm_gicv3_cpuif: Make GIC maintenance interrupts
+ work
+Message-ID: <20201102141836.6qla5tcp5afqb63e@sekoia-pc.home.lmichel.fr>
+References: <20201009153904.28529-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 03:02:24
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20201009153904.28529-1-peter.maydell@linaro.org>
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr;
+ s=pharaoh; t=1604326643;
+ h=from:from:sender:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=qp0haXp9skMBrDWMipkfGnc7ZWhDc+b1zvHHdD+csw8=;
+ b=bJnVuMT30izud7rIqG3qoY+C16RkPq0VhdzafPIFw0oajghMxQVAeSvG7RzeR2BhHHfLQV
+ JGZf1QnCjcE6j3vBYZJLJrsbF//7C+bRzLznK9eHjtGuMWGmjmiU4ffEzyP3ooHFWXWT7b
+ gtlz5QgBja+vb3sx7ebx7QUkLX+JQqddS1Sba9bBqe7EXWbeQaANGZBn0liqOiyXDFpeWy
+ DnFMHgQh0skbwJ66g44AQexczyKA+nBws7no+8jzd9deog0RPEw82fxaLvtmfsXR5mJ6W+
+ KWO7IcMnHv6re2vrfvfSoy5OmNtbrKDE9K8/VNDDAt2XJoZ33Ce42ugL1hek7A==
+ARC-Seal: i=1; s=pharaoh; d=lmichel.fr; t=1604326643; a=rsa-sha256; cv=none;
+ b=ViaW+96wZWcFJYbSiWYXaHaiJJpaJS0jYV0U5vSaJ9Opehl4/lx8jLYB4F2x34dxf/MncrAKRpF5ygsVOBTQTsclo1DMXm9BuOsO2v4IEJn0RnbNVCRtVmqeYCEBp9CTj0lFvqKZggeZWotitq7zpJRYVMA4IU6dBXRHc5tkJY8Rh50P+gkz750z9/ydKLdg8UxjH/NhBRA2xmkMTOQahtUdTuNB2eQ7LTzRfbW09Xh7qZAG9gNdkWyA44RnGrOdUakXQnEKcio9bE1Ax/8CJcXLAX+RywhnDRDzzRnzHaU6Q5Vy7GkcqdWgti4Llrwo+XbB0c3MLmuNIBzTBlufcA==
+ARC-Authentication-Results: i=1; ORIGINATING;
+ auth=pass smtp.auth=sekoia smtp.mailfrom=luc@lmichel.fr
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 08:49:30
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -128,62 +92,94 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>, Michael Rolnik <mrolnik@gmail.com>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Fabien Chouteau <chouteau@adacore.com>, Aurelien Jarno <aurelien@aurel32.net>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- qemu-ppc@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
- qemu-arm@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>
+Cc: Jose Martins <josemartins90@gmail.com>, Marc Zyngier <maz@kernel.org>,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: /iWRhatduvhx
+X-TUID: b2mAVR0TT9He
 
-This series try an idea from the CI BoF last week:=0D
-- allow adding all test to mainstream repository=0D
-- promote test to "gating" once it is proven stable=0D
-- only run 'gating-ci' on GitLab CI=0D
-=0D
-Philippe Mathieu-Daud=C3=A9 (5):=0D
-  tests/acceptance: Restrict virtio_check_params tests to X86 target=0D
-  tests/acceptance: Restore MIPS Malta multicore tests=0D
-  tests/acceptance: Skip incomplete virtio_version tests using '@skip'=0D
-  RFC tests/acceptance: Only run tests tagged 'gating-ci' on GitLab CI=0D
-  tests/acceptance: Let stable tests use the 'gating-ci' tag=0D
-=0D
- tests/Makefile.include                       |  2 +-=0D
- tests/acceptance/boot_linux.py               | 10 ++++--=0D
- tests/acceptance/boot_linux_console.py       | 38 ++++++++++++++++++++=0D
- tests/acceptance/cpu_queries.py              |  1 +=0D
- tests/acceptance/empty_cpu_model.py          |  3 ++=0D
- tests/acceptance/linux_initrd.py             |  4 +--=0D
- tests/acceptance/machine_arm_canona1100.py   |  1 +=0D
- tests/acceptance/machine_arm_integratorcp.py |  2 ++=0D
- tests/acceptance/machine_arm_n8x0.py         |  2 ++=0D
- tests/acceptance/machine_avr6.py             |  1 +=0D
- tests/acceptance/machine_m68k_nextcube.py    |  9 +++++=0D
- tests/acceptance/machine_mips_malta.py       |  6 ++--=0D
- tests/acceptance/machine_rx_gdbsim.py        |  3 --=0D
- tests/acceptance/machine_sparc64_sun4u.py    |  1 +=0D
- tests/acceptance/machine_sparc_leon3.py      |  1 +=0D
- tests/acceptance/migration.py                | 12 ++++++-=0D
- tests/acceptance/pc_cpu_hotplug_props.py     |  3 ++=0D
- tests/acceptance/ppc_prep_40p.py             |  3 +-=0D
- tests/acceptance/replay_kernel.py            | 17 +++++++--=0D
- tests/acceptance/version.py                  |  1 +=0D
- tests/acceptance/virtio_check_params.py      |  7 +++-=0D
- tests/acceptance/virtio_version.py           | 17 ++++++---=0D
- tests/acceptance/vnc.py                      |  9 +++++=0D
- tests/acceptance/x86_cpu_model_versions.py   |  1 +=0D
- 24 files changed, 133 insertions(+), 21 deletions(-)=0D
-=0D
---=20=0D
-2.26.2=0D
-=0D
+On 16:39 Fri 09 Oct     , Peter Maydell wrote:
+> In gicv3_init_cpuif() we copy the ARMCPU gicv3_maintenance_interrupt
+> into the GICv3CPUState struct's maintenance_irq field.  This will
+> only work if the board happens to have already wired up the CPU
+> maintenance IRQ before the GIC was realized.  Unfortunately this is
+> not the case for the 'virt' board, and so the value that gets copied
+> is NULL (since a qemu_irq is really a pointer to an IRQState struct
+> under the hood).  The effect is that the CPU interface code never
+> actually raises the maintenance interrupt line.
+> 
+> Instead, since the GICv3CPUState has a pointer to the CPUState, make
+> the dereference at the point where we want to raise the interrupt, to
+> avoid an implicit requirement on board code to wire things up in a
+> particular order.
+> 
+> Reported-by: Jose Martins <josemartins90@gmail.com>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
+Reviewed-by: Luc Michel <luc@lmichel.fr>
+
+> ---
+> 
+> QEMU's implementation here is a bit odd because we've put all the
+> logic into the "GIC" device where in real hardware it's split between
+> a GIC device and the CPU interface part in the CPU.  If we had
+> arranged it in that way then we wouldn't have this odd bit of code
+> where the GIC device needs to raise an IRQ line that belongs to the
+> CPU.
+> 
+> Not sure why we've never noticed this bug previously with KVM as a
+> guest, you'd think we'd have spotted "maintenance interrupts just
+> don't work"...
+> ---
+>  include/hw/intc/arm_gicv3_common.h | 1 -
+>  hw/intc/arm_gicv3_cpuif.c          | 5 ++---
+>  2 files changed, 2 insertions(+), 4 deletions(-)
+> 
+> diff --git a/include/hw/intc/arm_gicv3_common.h b/include/hw/intc/arm_gicv3_common.h
+> index 0331b0ffdb8..91491a2f664 100644
+> --- a/include/hw/intc/arm_gicv3_common.h
+> +++ b/include/hw/intc/arm_gicv3_common.h
+> @@ -153,7 +153,6 @@ struct GICv3CPUState {
+>      qemu_irq parent_fiq;
+>      qemu_irq parent_virq;
+>      qemu_irq parent_vfiq;
+> -    qemu_irq maintenance_irq;
+>  
+>      /* Redistributor */
+>      uint32_t level;                  /* Current IRQ level */
+> diff --git a/hw/intc/arm_gicv3_cpuif.c b/hw/intc/arm_gicv3_cpuif.c
+> index 08e000e33c6..43ef1d7a840 100644
+> --- a/hw/intc/arm_gicv3_cpuif.c
+> +++ b/hw/intc/arm_gicv3_cpuif.c
+> @@ -399,6 +399,7 @@ static void gicv3_cpuif_virt_update(GICv3CPUState *cs)
+>      int irqlevel = 0;
+>      int fiqlevel = 0;
+>      int maintlevel = 0;
+> +    ARMCPU *cpu = ARM_CPU(cs->cpu);
+>  
+>      idx = hppvi_index(cs);
+>      trace_gicv3_cpuif_virt_update(gicv3_redist_affid(cs), idx);
+> @@ -424,7 +425,7 @@ static void gicv3_cpuif_virt_update(GICv3CPUState *cs)
+>  
+>      qemu_set_irq(cs->parent_vfiq, fiqlevel);
+>      qemu_set_irq(cs->parent_virq, irqlevel);
+> -    qemu_set_irq(cs->maintenance_irq, maintlevel);
+> +    qemu_set_irq(cpu->gicv3_maintenance_interrupt, maintlevel);
+>  }
+>  
+>  static uint64_t icv_ap_read(CPUARMState *env, const ARMCPRegInfo *ri)
+> @@ -2624,8 +2625,6 @@ void gicv3_init_cpuif(GICv3State *s)
+>              && cpu->gic_num_lrs) {
+>              int j;
+>  
+> -            cs->maintenance_irq = cpu->gicv3_maintenance_interrupt;
+> -
+>              cs->num_list_regs = cpu->gic_num_lrs;
+>              cs->vpribits = cpu->gic_vpribits;
+>              cs->vprebits = cpu->gic_vprebits;
+> -- 
+> 2.20.1
+> 
+> 
+
+-- 

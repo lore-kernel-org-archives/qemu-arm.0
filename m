@@ -1,134 +1,195 @@
-Received: by 2002:a0c:eda5:0:0:0:0:0 with SMTP id h5csp4487551qvr;
-        Mon, 2 Nov 2020 09:28:06 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyHOYvUoYniqPv5Z0jmRzw2FJGl/7mvbdj35tV1OGs0PXIE+MWpzptEK7eHo+xINn3uw/Jf
-X-Received: by 2002:ad4:4b32:: with SMTP id s18mr11274529qvw.16.1604338085927;
-        Mon, 02 Nov 2020 09:28:05 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604338085; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4150714lfa;
+        Mon, 2 Nov 2020 10:22:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx/hHvnxwXHMfsrNmAFhL127+OEmiO2+CAu6/z3vBUQlrh/kCEAIacf2Fk26T7EWIo5cCqo
+X-Received: by 2002:a67:f54b:: with SMTP id z11mr5688216vsn.17.1604341345104;
+        Mon, 02 Nov 2020 10:22:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604341345; cv=none;
         d=google.com; s=arc-20160816;
-        b=zF5jpuZVoQ3w8db4UFPu/fK9qY+3jo6UUYnM8lQaz3U26YE8NtbT3TadXXY1YgudH4
-         FaSkBccGN91HG/dBw2Rk8OqiGRorB6oMo3Rs5JyD90BmQnLb7V4HVxKjqOmiA66W+pi9
-         4vQ4kUeVISbLAh/1T+MjBYy2PoB0IcwsL14W1Z4fIkVmj8FfhY0CA3iZYwu4zs9EdTdd
-         cP6Wt04hSU7F4nnw3+4n+4v0QLpKBuR+ppVmdsQ4EfzJ0Olz3czW0qxQq09b1SPrR+Zl
-         757kKK+5XunttvGxb2hVCIM7X+2oj5WDEp/8C3X/xfzsIjyK1fbD6TY+4lHvsZgmPkw0
-         uiFg==
+        b=zb86mzYpDxZENu2paXKo2SjQkjN7QpQ7o1ioUniDdohtDNQ5QgY7ePYUbfSFo34o3w
+         ay4+W7E/g7lY2mjydcKYfS+l2K8yazm2oP/5OQ7ZmO5HW6zRF3MtNa1EZJltTWiXni4X
+         Jj8c2RFeeA4qHaAdDpFAajRvbRTRPBYx/EuoabJy5J/LagrlNVPBSXKQZafKxUouDRa3
+         J+a1TWGsE0YSKyqQggj/RX+FUyGpsZF2Qrz/zrkYuazvdDXL2CeDjM63JgBG72rb4xCx
+         fkvCWZiuARlvFZhKvTLCx3LfmtDefZ/orrBvGYSqa4B/rEYrS1H14Dpp7jJRjGZgdydg
+         tFIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=dZIWI5JAmVyE/Zg7mnv1he/B+pFzgzRP2f5+f8UXVeE=;
-        b=wnkThdooOKLykwORYmULQQwBZikHECHVOJ2aMl62DQILrcvT6Uh1MzcANl09QCA55n
-         j98iW/jhP6BNry26iquAb15b0k3oiSO4t4o8SEHXa9FmYyzwL0j07ZVgU/QU1/r7q5CQ
-         mZTqziV2KZo1JSQKK3RYnnx8EfSu13E3Cjj/7ywvQBGxZVxuiRaVVzz2yyNHhDBUJRuc
-         Ux9+G5EKmJim7mfUot4NMZUWkF5+9tAllbsVhtADuu0AYPzzwfd0eBV9uutY1kZuHNSG
-         mgrgFKQO3xybPNiJPcJsoTrBmQ875jedDVDRD2Ncn/TP6jGIS6IVO2uWsFiQubdQBCXc
-         dBZA==
+        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:cc:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=zjgNfeKQMSknIQ9nsPnuFj8DLkcAZAMRQyaoOVtXyuw=;
+        b=Ixl2lPOygQqDvwqpAhXbtfmrJVxhLTL4jPpet6n2FRYZ7X/u/To4eMaASkQCq9dgCs
+         iUcjaBo1nysgtBOuMd3zARWgSVolbCGVbYL28fv8WxcpnDAKnAZZVWlaVcM7p+ebB/vK
+         blVbbOSXiw4QLfmE5S6fX3r0J0srhrnV5FOdqpDm7gm6j2G7D3xYehopRsttBHjyNzu2
+         HjtCu4jhqd/2YeVKnrV8zsA3384JGchwifa0vF2A7UKiuPXMF1BVIdAsMUC17h30xRy0
+         hf0lKCGjNtv7bSlPR4dvFqGhUNzSGMARjPlnqFBbgX3PJ9AX4C9oA/2E4N+aM8GYni01
+         iiYA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=So3w0U5f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=pass header.i=@google.com header.s=20161025 header.b=VKeDtOg6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id e13si2911752qtr.90.2020.11.02.09.28.05
+        by mx.google.com with ESMTPS id a4si2612267vsn.212.2020.11.02.10.22.24
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Nov 2020 09:28:05 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 02 Nov 2020 10:22:25 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=So3w0U5f;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:38780 helo=lists1p.gnu.org)
+       dkim=pass header.i=@google.com header.s=20161025 header.b=VKeDtOg6;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=google.com
+Received: from localhost ([::1]:45130 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZdcj-00077J-Dn
-	for alex.bennee@linaro.org; Mon, 02 Nov 2020 12:28:05 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:54686)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kZeTI-00036d-EP
+	for alex.bennee@linaro.org; Mon, 02 Nov 2020 13:22:24 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41446)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kZdP7-0006BL-Pm
- for qemu-arm@nongnu.org; Mon, 02 Nov 2020 12:14:01 -0500
-Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:40736)
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1kZeSi-0002zg-Sk
+ for qemu-devel@nongnu.org; Mon, 02 Nov 2020 13:21:50 -0500
+Received: from mail-ua1-x942.google.com ([2607:f8b0:4864:20::942]:36922)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kZdP5-0006rO-TD
- for qemu-arm@nongnu.org; Mon, 02 Nov 2020 12:14:01 -0500
-Received: by mail-ed1-x543.google.com with SMTP id p93so15097568edd.7
- for <qemu-arm@nongnu.org>; Mon, 02 Nov 2020 09:13:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
+ (Exim 4.90_1) (envelope-from <hskinnemoen@google.com>)
+ id 1kZeSg-00074Z-8I
+ for qemu-devel@nongnu.org; Mon, 02 Nov 2020 13:21:48 -0500
+Received: by mail-ua1-x942.google.com with SMTP id 52so4207484uaj.4
+ for <qemu-devel@nongnu.org>; Mon, 02 Nov 2020 10:21:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=dZIWI5JAmVyE/Zg7mnv1he/B+pFzgzRP2f5+f8UXVeE=;
- b=So3w0U5fdpsvZFRA6cgiFLFi6x9VbPjm4i/7SXgRkSW0Aw+a9NSZ+W+soDw5UFFDnv
- f0SwCTO8QF+XSRqbviEaz0Rc4q98b4i7Ji+c9mRY/Vg9aV7c3WxN3SDYxNYqjnqkwwHI
- opUNk23qAjuG3ck/3B6c79f+nNk8X0B+d+bdAKbF1ODPgbzyK8gyQM6CEI+3i2d7OQyF
- azvUjUvJL+FHSiPrg/AXUAiLaTg3izo3mCow24sycv5jdBbEOleSo2aHWAVZbn2TxgDA
- x7R1Ybc02IoMVYgcuy/4SSw+LD/IDtjFDx78kK3+R0clZPq+t5ARO8zn3iFMy8QAT+5i
- 9vcw==
+ :cc:content-transfer-encoding;
+ bh=zjgNfeKQMSknIQ9nsPnuFj8DLkcAZAMRQyaoOVtXyuw=;
+ b=VKeDtOg6uAu1hdHxOfzzL+vA7qb4mcuwPUOG5TzXIrLcxripZ5anUcJXJl7R/qhPmY
+ Zh0P51IeYQNz2sT+Itw14lzCx/oN23W3e07CVIb9ev8X3KZ9ddt9pswFsyMnYr/3ugsJ
+ jSvMx0ZMJ1seUAClHX6VO1MvIn4e8xQQ/zQhBkRJquwI6UAfPLS5pkVTyD8vJ366RKeT
+ vyqNDhv29aVjP5QcKKrRvodFUE76tmzCsX6iG4Sw7+yrYtHOZcvwXnm7gSBx7ewVbVw+
+ bkS1ubK0YAaUgevwhDi6Q7lkfER1yN6T0GPJ1F45eVHj7Gju0ul9h8+rYGoWUhjqjC9U
+ fdLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=dZIWI5JAmVyE/Zg7mnv1he/B+pFzgzRP2f5+f8UXVeE=;
- b=avLXvJGdBbbXyPUy0Rb3ObP6wIi1QfBkDIv7ugbq/6IxvKE98ov9fotRjSaJWfpDdI
- 0nz4swbPwDtcxxcDyguVyySf2+8bPsV08jLGofmhx7gJSo029Dg05GuyMDOkPu2jw6G4
- h+/IJYHtGUv8BTPhOkVd3fzetWYstzg3+zwcQUdYw/Ka2RgaaukE5T1ZrdGerxNG6XZ3
- QyeJZM5goxdhlNQhnQeopflbrTQy5nAaFqjF6q17kMX+6Ajhpvnih/p2XGDOiHtYjUHd
- Hxx5G+pSiBR/L6N3vg+kV4fofcyW+QxH0iRNfnqnqdrbg6rP497JgQQvWG1KLQrSFQYW
- 8RNA==
-X-Gm-Message-State: AOAM532Z6xq/IfD0bCXMAVNlhMtaqxRZ6oimLN72zP8JzsQfcuK6AASh
- 2mR81U4BRezJM7tYO6b3q6L8Wz3V2HsGQJ5DEVLvGA==
-X-Received: by 2002:aa7:d699:: with SMTP id d25mr17185489edr.44.1604337238390; 
- Mon, 02 Nov 2020 09:13:58 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=zjgNfeKQMSknIQ9nsPnuFj8DLkcAZAMRQyaoOVtXyuw=;
+ b=S86MnCGVwN/DNPnYeFAxjpGR9rhFp18OWUy62qMIcAaJY8piJ5KtKRMCyLY2vPWT7H
+ fFyNbyqwWxhqqnYmNB+0UHdyCAuCC+CDjxCF99L4nwhTRuPJiXczjsRUc3XyqLxy50dL
+ bkaJSCv+EyOIrSOVst5PSvY/DbnnNsTs2ibqkRrpm9hJYk1z8wg6xZ3leE1M7UYFqPpF
+ yrY2BYDlEROpbQYp6taI5LP59NPhvSV0swTilWEZA7+iSld3KNg4lvJ1vBjaVa+xLDPG
+ WDX4EFofLKS5Ez8XXimUJpP/6CoiaY+oMC510OItC3Almsql0SiB5naub/fFWzJjuSFU
+ wlwA==
+X-Gm-Message-State: AOAM531Lsam/hfVieS6CAr4+gkTdBXWn1UDg7md6632mhM/yDGU20yR/
+ 2bFTyxDVnJl0DhKCD26yp3lwkjoFS1xGW0inhLp+oA==
+X-Received: by 2002:ab0:36db:: with SMTP id v27mr1885580uau.66.1604341304327; 
+ Mon, 02 Nov 2020 10:21:44 -0800 (PST)
 MIME-Version: 1.0
 References: <20201023210637.351238-1-hskinnemoen@google.com>
  <20201023210637.351238-5-hskinnemoen@google.com>
  <CAFEAcA8YvmFA7=7+CGVpubVScuKPdy+OQdmJdfMD+Fmk+Hb0SA@mail.gmail.com>
  <CAFQmdRZOKLb6=NJoeY9U3eYq3rbG_OWGFDDZdGTf8vjVOA11TQ@mail.gmail.com>
-In-Reply-To: <CAFQmdRZOKLb6=NJoeY9U3eYq3rbG_OWGFDDZdGTf8vjVOA11TQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 2 Nov 2020 17:13:47 +0000
-Message-ID: <CAFEAcA-KxvtQGsH9yT9FrVnAu4cDWjMzPx_vGoBueGYhB8sziA@mail.gmail.com>
+ <CAFEAcA-KxvtQGsH9yT9FrVnAu4cDWjMzPx_vGoBueGYhB8sziA@mail.gmail.com>
+In-Reply-To: <CAFEAcA-KxvtQGsH9yT9FrVnAu4cDWjMzPx_vGoBueGYhB8sziA@mail.gmail.com>
+From: Havard Skinnemoen <hskinnemoen@google.com>
+Date: Mon, 2 Nov 2020 10:21:32 -0800
+Message-ID: <CAFQmdRYgd3eE3A_aoXvzFvbhVmz_Zc06xJvVgLOk6tDyZRbmNg@mail.gmail.com>
 Subject: Re: [PATCH v3 4/6] hw/misc: Add npcm7xx random number generator
-To: Havard Skinnemoen <hskinnemoen@google.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>, 
+ IS20 Avi Fishman <Avi.Fishman@nuvoton.com>,
+ CS20 KFTing <kfting@nuvoton.com>, 
+ Patrick Venture <venture@google.com>, Hao Wu <wuhaotsh@google.com>,
+ Thomas Huth <thuth@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::543;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x543.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::942;
+ envelope-from=hskinnemoen@google.com; helo=mail-ua1-x942.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Thomas Huth <thuth@redhat.com>, Patrick Venture <venture@google.com>,
- QEMU Developers <qemu-devel@nongnu.org>, Hao Wu <wuhaotsh@google.com>,
- CS20 KFTing <kfting@nuvoton.com>, qemu-arm <qemu-arm@nongnu.org>,
- IS20 Avi Fishman <Avi.Fishman@nuvoton.com>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vyes2g3nZnve
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: NQB0diZCejxL
 
-On Mon, 2 Nov 2020 at 16:50, Havard Skinnemoen <hskinnemoen@google.com> wrote:
-> But none of this is really specific to the RNG test, so I can remove
-> it if you prefer for consistency.
+On Mon, Nov 2, 2020 at 9:14 AM Peter Maydell <peter.maydell@linaro.org> wro=
+te:
+>
+> On Mon, 2 Nov 2020 at 16:50, Havard Skinnemoen <hskinnemoen@google.com> w=
+rote:
+> > But none of this is really specific to the RNG test, so I can remove
+> > it if you prefer for consistency.
+>
+> I would prefer us to be consistent. If you want to propose
+> don't-stop-on-asserts then we should set that consistently
+> at some higher level of the test suite, not in every
+> individual test.
 
-I would prefer us to be consistent. If you want to propose
-don't-stop-on-asserts then we should set that consistently
-at some higher level of the test suite, not in every
-individual test.
+OK, I will remove g_test_set_nonfatal_assertions from all the tests
+I've submitted.
 
-thanks
--- PMM
+As for the randomness failures, I did find a bug in the runs test, but
+fixing it doesn't make much of an impact on the flakiness.
+
+I've seen failures from both monobit and runs, both first_bit and
+continuous. So it doesn't look like there's a systemic problem
+anywhere.
+
+I dumped the random data on failure and put it through the
+https://github.com/Honno/coinflip/ implementation of monobit and runs,
+and after fixing the runs bug, they consistently produce the same P
+value. Here's one example that failed the qtest with P=3D0.000180106965:
+
+$ ./randomness_test.py e1 ec cc 55  29 5d c9 ac  85 45 ed 4b  b6 96 56 ab
+Monobit test:
+normalised diff  0.53
+p-value          0.596
+=E2=94=8C=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
+=94=AC=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
+=90
+=E2=94=82 value =E2=94=82 count =E2=94=82
+=E2=94=9C=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
+=94=BC=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
+=A4
+=E2=94=82 1     =E2=94=82    67 =E2=94=82
+=E2=94=82 0     =E2=94=82    61 =E2=94=82
+=E2=94=94=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=
+=94=B4=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=80=E2=94=
+=98
+
+Runs test:
+no. of runs  85
+p-value       0.0
+
+You can find the script at
+https://gist.github.com/hskinnemoen/41f7513ca228c2bac959c3b14e87025f
+
+Apparently, successive bits are toggling too often, producing too many
+runs of 1s or 0s. This will of course happen from time to time since
+the input is random. And the monobit test will fail if there are too
+many or too few 1s compared to zeroes, which is also something that
+can't really be prevented.
+
+While we can always tune this to happen less often, e.g. by dropping
+the P-value threshold or running the tests multiple times, we can
+never guarantee that a randomness test won't fail. So I suspect we
+should keep these tests disabled by default, but keep them available
+so that we can easily do a randomness test if there's any suspicion
+that the emulated RNG device produces bad data. Does that make sense?
+
+Havard

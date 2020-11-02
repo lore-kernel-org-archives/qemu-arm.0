@@ -1,60 +1,60 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3821065lfa;
-        Mon, 2 Nov 2020 02:58:22 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz+g1Nu961AZrmB8cszsPpJi/iE7SbdIsSHMYo5fLNwXpz/vOohFAEspGAvrkL96YLkiFJS
-X-Received: by 2002:a0c:e054:: with SMTP id y20mr21599271qvk.30.1604314702177;
-        Mon, 02 Nov 2020 02:58:22 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604314702; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3821163lfa;
+        Mon, 2 Nov 2020 02:58:30 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJznM2EEvaNNzV6IVcCVWr4ipDUoWRJgTctIiHI+rP7oIwjM59btzzY2BTNC/uZ6LY857Grs
+X-Received: by 2002:ae9:e907:: with SMTP id x7mr14654274qkf.38.1604314710533;
+        Mon, 02 Nov 2020 02:58:30 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604314710; cv=none;
         d=google.com; s=arc-20160816;
-        b=LIDw2pySrThhI12Frh8SpSgaTf7/av1uPfGYS64v7+4NG+nT8LCUP3gIQiQ0S5hwh5
-         INhfyOwexLBXiRppl6RfXBa4TKPUer005xay9WjLIzNfXrkGP1u0wGpGnoqz2O4H9unU
-         ZIp5OSAmRJ4uy60aWo5lFyc3rMdxnKaz3TX1xmWNvbDsycxFKygEkxzyJN8Hq4PIzRRC
-         wmkY+nALehn+9QpvdYGi4XD7XJ9pDT87t4Uezq/l8ewaGTqyykhizr9FeQUhDTLOzbEI
-         fqaN1loNhiGSQ4E3Qw8+QywxyJk5gbBEXcH6GLDm2mTNdkRQy2dk4r8fiuavduTeGnVC
-         BBkg==
+        b=B4UAMO0N+U5RA8XQ9yvEbaaxN6UfY/aydwa5HCdXi+Jai6aU4Iyq/b3gYDP9qa3PWQ
+         YSKJHmm6ezKuWuyRm5Kgg0mZz7mojgkYMkejPzB8QPFzMBylkcJRXl2ceZhGKWW0y6VB
+         quvZuHvD9lpa5VXol7W5jTV6eIzkdYFfmoFeLpDJNC9PMgQRdQGzVS143snAh6MRLyrW
+         hrhIgWiprRbHywc8GX/g2FT3/AX2rASWnyTCQ666LcSm1flrG+1E2rrWT7BVBxndz1Gx
+         uiduAGiU05CMV5P4OBj1KfvMsQPiCVNAAERnBYOVBsetL5/NLQyCLgXhuN/lIsih4u0L
+         6k/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from;
-        bh=qwWoTn17itmnjzAdJDfj1NXtZ90hE0kuhCCsK2XRtc4=;
-        b=cwTtKzxISMA3+eOyZGd9et+1K0Up7mSQqGddoWEr+rbS3nP8SNJF6oKP6Ma7lrOZ5p
-         deXbEfpX7aJmOTLUzGHxBKPj4bx0ELWVOGtmUudcnaFqGZjwiIhUfSMTq7GgMeZ975+L
-         QeQfaqctwSDTgEqDOnMfx6MTDJI1yQhg/z/wtd0vkUnhVb0cjKxwfLNc90fTnRSPmEG2
-         CG0Gc+dBJQdlGBPZSqXRr/01+95kCuq/Z0FOS9YKeqL+4U9glcGgfCAgeFRw8eAmxzj6
-         niSGqN3IEK9OOR0z0I0CZAmm7Te8NmLzqUcJml9zzwnnJVz6ppA+EwYah+B2nRaRdbzD
-         /Nwg==
+        bh=rWBtvFVcRAJUSqtfSC6hgshOPutax3KK3AWZxRyOv9Q=;
+        b=TKu58lAOnzAE2BVBNt5EA9xj9j5QSnHJCRTOQVoeo7PD8LUKYEJetspmG5iJ1NvQHQ
+         bJ2qlJmkJOnYO5JXPWsWnOHNRWpXVPUGDC98ucO1phZ1ElPkJX9sYtmvq/1ApC3GGPJ9
+         F0Rh3n09FZ9WDa+yCfmZSSEPFBtBK1FZeLWEW5OwxDfweuKlKb6KPq6+xhZDjuuLdcit
+         BZkZGaBWR7mwrTXXZmKzW2iEpDB25VD+twBkKv3Y3v8kEJYvV1Nto4cedByMZP7DUQdq
+         UmlshEv9hgMbiUU3Y4XZrPC8UMSDTw7O/ufYRmyCMasiexFZ/QQCfEfrwFtyM8QK4u5N
+         dSmQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id a8si8036458qkc.206.2020.11.02.02.58.22
+        by mx.google.com with ESMTPS id g9si3716579qtv.6.2020.11.02.02.58.30
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Nov 2020 02:58:22 -0800 (PST)
+        Mon, 02 Nov 2020 02:58:30 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:47844 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:48758 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZXXZ-0007Vz-Hk
-	for alex.bennee@linaro.org; Mon, 02 Nov 2020 05:58:21 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:38138)
+	id 1kZXXh-0007vp-Vf
+	for alex.bennee@linaro.org; Mon, 02 Nov 2020 05:58:29 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38102)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <remi@remlab.net>)
- id 1kZXXO-0007Rd-Vn; Mon, 02 Nov 2020 05:58:11 -0500
-Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:39542
+ id 1kZXXN-0007QR-QC; Mon, 02 Nov 2020 05:58:09 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:39544
  helo=ns207790.ip-94-23-215.eu)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <remi@remlab.net>)
- id 1kZXXL-0006iu-Up; Mon, 02 Nov 2020 05:58:10 -0500
+ id 1kZXXL-0006iy-TC; Mon, 02 Nov 2020 05:58:09 -0500
 Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
- by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id E5F085FFC9;
- Mon,  2 Nov 2020 11:58:02 +0100 (CET)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 36FA76002D;
+ Mon,  2 Nov 2020 11:58:03 +0100 (CET)
 From: remi.denis.courmont@huawei.com
 To: qemu-arm@nongnu.org
-Subject: [PATCH 03/14] target/arm: use arm_hcr_el2_eff() where applicable
-Date: Mon,  2 Nov 2020 12:57:51 +0200
-Message-Id: <20201102105802.39332-3-remi.denis.courmont@huawei.com>
+Subject: [PATCH 04/14] target/arm: factor MDCR_EL2 common handling
+Date: Mon,  2 Nov 2020 12:57:52 +0200
+Message-Id: <20201102105802.39332-4-remi.denis.courmont@huawei.com>
 X-Mailer: git-send-email 2.29.1
 In-Reply-To: <2172054.ElGaqSPkdT@basile.remlab.net>
 References: <2172054.ElGaqSPkdT@basile.remlab.net>
@@ -86,106 +86,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ct/DaXji89QG
+X-TUID: JgBbYVktQH6g
 
 From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-This will simplify accessing HCR conditionally in secure state.
+This adds a common helper to compute the effective value of MDCR_EL2.
+That is the actual value if EL2 is enabled in the current security
+context, or 0 elsewise.
 
 Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 ---
- target/arm/helper.c | 30 +++++++++++++++++-------------
- 1 file changed, 17 insertions(+), 13 deletions(-)
+ target/arm/helper.c | 38 ++++++++++++++++++++++----------------
+ 1 file changed, 22 insertions(+), 16 deletions(-)
 
 diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 70050134e0..f4822fab0c 100644
+index f4822fab0c..d0ee9ff3fc 100644
 --- a/target/arm/helper.c
 +++ b/target/arm/helper.c
-@@ -4435,16 +4435,16 @@ static CPAccessResult aa64_cacheop_pou_access(CPUARMState *env,
+@@ -538,6 +538,11 @@ static CPAccessResult access_trap_aa32s_el1(CPUARMState *env,
+     return CP_ACCESS_TRAP_UNCATEGORIZED;
+ }
  
- static int vae1_tlbmask(CPUARMState *env)
- {
--    /* Since we exclude secure first, we may read HCR_EL2 directly. */
--    if (arm_is_secure_below_el3(env)) {
--        return ARMMMUIdxBit_SE10_1 |
--               ARMMMUIdxBit_SE10_1_PAN |
--               ARMMMUIdxBit_SE10_0;
--    } else if ((env->cp15.hcr_el2 & (HCR_E2H | HCR_TGE))
--               == (HCR_E2H | HCR_TGE)) {
-+    uint64_t hcr = arm_hcr_el2_eff(env);
++static uint64_t arm_mdcr_el2_eff(CPUARMState *env)
++{
++    return arm_is_el2_enabled(env) ? env->cp15.mdcr_el2 : 0;
++}
 +
-+    if ((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)) {
-         return ARMMMUIdxBit_E20_2 |
-                ARMMMUIdxBit_E20_2_PAN |
-                ARMMMUIdxBit_E20_0;
-+    } else if (arm_is_secure_below_el3(env)) {
-+        return ARMMMUIdxBit_SE10_1 |
-+               ARMMMUIdxBit_SE10_1_PAN |
-+               ARMMMUIdxBit_SE10_0;
+ /* Check for traps to "powerdown debug" registers, which are controlled
+  * by MDCR.TDOSA
+  */
+@@ -545,11 +550,11 @@ static CPAccessResult access_tdosa(CPUARMState *env, const ARMCPRegInfo *ri,
+                                    bool isread)
+ {
+     int el = arm_current_el(env);
+-    bool mdcr_el2_tdosa = (env->cp15.mdcr_el2 & MDCR_TDOSA) ||
+-        (env->cp15.mdcr_el2 & MDCR_TDE) ||
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    bool mdcr_el2_tdosa = (mdcr_el2 & MDCR_TDOSA) || (mdcr_el2 & MDCR_TDE) ||
+         (arm_hcr_el2_eff(env) & HCR_TGE);
+ 
+-    if (el < 2 && mdcr_el2_tdosa && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && mdcr_el2_tdosa) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDOSA)) {
+@@ -565,11 +570,11 @@ static CPAccessResult access_tdra(CPUARMState *env, const ARMCPRegInfo *ri,
+                                   bool isread)
+ {
+     int el = arm_current_el(env);
+-    bool mdcr_el2_tdra = (env->cp15.mdcr_el2 & MDCR_TDRA) ||
+-        (env->cp15.mdcr_el2 & MDCR_TDE) ||
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    bool mdcr_el2_tdra = (mdcr_el2 & MDCR_TDRA) || (mdcr_el2 & MDCR_TDE) ||
+         (arm_hcr_el2_eff(env) & HCR_TGE);
+ 
+-    if (el < 2 && mdcr_el2_tdra && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && mdcr_el2_tdra) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
+@@ -585,11 +590,11 @@ static CPAccessResult access_tda(CPUARMState *env, const ARMCPRegInfo *ri,
+                                   bool isread)
+ {
+     int el = arm_current_el(env);
+-    bool mdcr_el2_tda = (env->cp15.mdcr_el2 & MDCR_TDA) ||
+-        (env->cp15.mdcr_el2 & MDCR_TDE) ||
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    bool mdcr_el2_tda = (mdcr_el2 & MDCR_TDA) || (mdcr_el2 & MDCR_TDE) ||
+         (arm_hcr_el2_eff(env) & HCR_TGE);
+ 
+-    if (el < 2 && mdcr_el2_tda && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && mdcr_el2_tda) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TDA)) {
+@@ -605,9 +610,9 @@ static CPAccessResult access_tpm(CPUARMState *env, const ARMCPRegInfo *ri,
+                                  bool isread)
+ {
+     int el = arm_current_el(env);
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
+ 
+-    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
+-        && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && (mdcr_el2 & MDCR_TPM)) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
+@@ -1348,12 +1353,12 @@ static CPAccessResult pmreg_access(CPUARMState *env, const ARMCPRegInfo *ri,
+      * trapping to EL2 or EL3 for other accesses.
+      */
+     int el = arm_current_el(env);
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
+ 
+     if (el == 0 && !(env->cp15.c9_pmuserenr & 1)) {
+         return CP_ACCESS_TRAP;
+     }
+-    if (el < 2 && (env->cp15.mdcr_el2 & MDCR_TPM)
+-        && !arm_is_secure_below_el3(env)) {
++    if (el < 2 && (mdcr_el2 & MDCR_TPM)) {
+         return CP_ACCESS_TRAP_EL2;
+     }
+     if (el < 3 && (env->cp15.mdcr_el3 & MDCR_TPM)) {
+@@ -1432,7 +1437,8 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
+     bool enabled, prohibited, filtered;
+     bool secure = arm_is_secure(env);
+     int el = arm_current_el(env);
+-    uint8_t hpmn = env->cp15.mdcr_el2 & MDCR_HPMN;
++    uint64_t mdcr_el2 = arm_mdcr_el2_eff(env);
++    uint8_t hpmn = mdcr_el2 & MDCR_HPMN;
+ 
+     if (!arm_feature(env, ARM_FEATURE_PMU)) {
+         return false;
+@@ -1442,13 +1448,13 @@ static bool pmu_counter_enabled(CPUARMState *env, uint8_t counter)
+             (counter < hpmn || counter == 31)) {
+         e = env->cp15.c9_pmcr & PMCRE;
      } else {
-         return ARMMMUIdxBit_E10_1 |
-                ARMMMUIdxBit_E10_1_PAN |
-@@ -9980,6 +9980,8 @@ static inline uint64_t regime_sctlr(CPUARMState *env, ARMMMUIdx mmu_idx)
- static inline bool regime_translation_disabled(CPUARMState *env,
-                                                ARMMMUIdx mmu_idx)
- {
-+    uint64_t hcr_el2;
-+
-     if (arm_feature(env, ARM_FEATURE_M)) {
-         switch (env->v7m.mpu_ctrl[regime_is_secure(env, mmu_idx)] &
-                 (R_V7M_MPU_CTRL_ENABLE_MASK | R_V7M_MPU_CTRL_HFNMIENA_MASK)) {
-@@ -9998,19 +10000,21 @@ static inline bool regime_translation_disabled(CPUARMState *env,
-         }
+-        e = env->cp15.mdcr_el2 & MDCR_HPME;
++        e = mdcr_el2 & MDCR_HPME;
      }
+     enabled = e && (env->cp15.c9_pmcnten & (1 << counter));
  
-+    hcr_el2 = arm_hcr_el2_eff(env);
-+
-     if (mmu_idx == ARMMMUIdx_Stage2) {
-         /* HCR.DC means HCR.VM behaves as 1 */
--        return (env->cp15.hcr_el2 & (HCR_DC | HCR_VM)) == 0;
-+        return (hcr_el2 & (HCR_DC | HCR_VM)) == 0;
-     }
- 
--    if (env->cp15.hcr_el2 & HCR_TGE) {
-+    if (hcr_el2 & HCR_TGE) {
-         /* TGE means that NS EL0/1 act as if SCTLR_EL1.M is zero */
-         if (!regime_is_secure(env, mmu_idx) && regime_el(env, mmu_idx) == 1) {
-             return true;
-         }
-     }
- 
--    if ((env->cp15.hcr_el2 & HCR_DC) && arm_mmu_idx_is_stage1_of_2(mmu_idx)) {
-+    if ((hcr_el2 & HCR_DC) && arm_mmu_idx_is_stage1_of_2(mmu_idx)) {
-         /* HCR.DC means SCTLR_EL1.M behaves as 0 */
-         return true;
-     }
-@@ -10361,7 +10365,7 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
-             fi->s1ptw = true;
-             return ~0;
-         }
--        if ((env->cp15.hcr_el2 & HCR_PTW) && (cacheattrs.attrs & 0xf0) == 0) {
-+        if ((arm_hcr_el2_eff(env) & HCR_PTW) && (cacheattrs.attrs & 0xf0) == 0) {
-             /*
-              * PTW set and S1 walk touched S2 Device memory:
-              * generate Permission fault.
-@@ -10794,7 +10798,7 @@ static uint8_t convert_stage2_attrs(CPUARMState *env, uint8_t s2attrs)
-     uint8_t hihint = 0, lohint = 0;
- 
-     if (hiattr != 0) { /* normal memory */
--        if ((env->cp15.hcr_el2 & HCR_CD) != 0) { /* cache disabled */
-+        if (arm_hcr_el2_eff(env) & HCR_CD) { /* cache disabled */
-             hiattr = loattr = 1; /* non-cacheable */
+     if (!secure) {
+         if (el == 2 && (counter < hpmn || counter == 31)) {
+-            prohibited = env->cp15.mdcr_el2 & MDCR_HPMD;
++            prohibited = mdcr_el2 & MDCR_HPMD;
          } else {
-             if (hiattr != 1) { /* Write-through or write-back */
-@@ -12111,7 +12115,7 @@ bool get_phys_addr(CPUARMState *env, target_ulong address,
-             }
- 
-             /* Combine the S1 and S2 cache attributes. */
--            if (env->cp15.hcr_el2 & HCR_DC) {
-+            if (arm_hcr_el2_eff(env) & HCR_DC) {
-                 /*
-                  * HCR.DC forces the first stage attributes to
-                  *  Normal Non-Shareable,
+             prohibited = false;
+         }
 -- 
 2.29.1
 

@@ -1,106 +1,129 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp2297586lfa;
-        Sat, 31 Oct 2020 02:48:10 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJz+ULsiBIYVqPbKz1/LqFN69bz3fGEHtEs8zB25F2tWJorVaqHF9fU0t0ftgC54KapHhYNs
-X-Received: by 2002:ac8:5741:: with SMTP id 1mr6220152qtx.33.1604137690209;
-        Sat, 31 Oct 2020 02:48:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1604137690; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3997139lfa;
+        Mon, 2 Nov 2020 06:59:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzxAXhFPMABf1IJrfiP7U/8oEleTHFKTG+A6JZHuX6A64rsyQWy6FEhMqPf5PthhHpm2gJj
+X-Received: by 2002:a37:6745:: with SMTP id b66mr14121331qkc.221.1604329178923;
+        Mon, 02 Nov 2020 06:59:38 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604329178; cv=none;
         d=google.com; s=arc-20160816;
-        b=DrGQcxQLLZkH41qj+N66kqSFV+cogcNo2EmhRTuFoh05gKOAP4D78Xqt8m9rrHd6kg
-         +1nMsjbfmT9dWkc4JiTkbNvXnkuvC1P6dAw2LdKtFRD2q1BoJHY+yJVGr7+q2eYZqLTQ
-         XtghkCcdXUiXZvzZu7jc06dp+4VXcajyiHCOgV+Bbvar2g3EqsSR+uGLiQ1ABP24tLtk
-         3400C4lbOIwG3WxcF2+GvtG38uSu9hUx8srgnJ49eICuM0nO1XgPJ1u87Bsq3MHoK4KI
-         HRiZYFwOVe2xwEO3hUOwEo+GpjHTUuLlzYl8aZBmOqrCFEhZ5T9ZM2+b6WnNGrUvX/O5
-         mRnA==
+        b=tcI3OwKTFZXxPdgeB79eKf1S666Yibz1Qwd88PtMG7Xgn/nmPVCzG3Nir+VTPHymnp
+         F48uIF+u4+sU8dhM7ecdf6BcCu8JaHrJq/nH0DCo3fSV6o/XiiJvWnGPEM/UM/jgRYnb
+         PNDq3D2mA9Qb3fkGoCQ3WLMhoQCcQcmudSGM7ZhfG1S0KIOEOfHbm+Qz+BaYBiWtLheA
+         GkIv95peto6UOZNxhbVo2x5RMOsx+nISJ4pZZLUYoY9W/Utrb4IdeRS639Kuz7VSYYDn
+         /ovVCQoZYuC+lBJx1NE3FHed6xPn+1P2N7MbA5plbhPzg/JwO6/jrb5hHl11gGKVnRiY
+         Tggg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=urG2kFZ3ce8Op/j8tESCCY+aOGYMljSJmXSJJ2Vr/XI=;
-        b=UvdP5keOUKuv+llbVc4qzDv1zxNypX4snJf+k4d+SE5ykAoxRF/G7OHFGNacB+0dXk
-         xaVO3Cfl6qzKxiBRGuzfgRceZH8Duez3JOAbyAEsSd48royVeuu48gF3RY2kv9Ik89kE
-         jlFMophCxC1LvaMJO1SKDmKKixvHqYVHKFObtSonLntaOFPoS2d/g2jf9NIWFNAuoA5e
-         I3NzJ279V9ByAbKlhGVPwIBgAnfgQaVX3dJm98TjU1EaScXwkgSGYqH3kauXO7X2xK29
-         vXGvYMT04/r4F3fxK3fFpSTG/iuPMLI9t+4E2FD5fFdYSS1r8S4jJqHx1/fDkc+3bTLX
-         W3hg==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=XdmDUDB2KsVatqCFQs3MMXSY2ZPPqVfNhlc61MSh75o=;
+        b=fgVUgL+F64a0yPl/Z77sN6d7N9fCOsnKESSNtH2hD6uLae5dQGgK8YMZ2T988g5Zdu
+         edE+jMrdMK7j9tmXWfKzbs6njOz2kEfy3uLSrTxoW4z/KkprD1sCHdvOVRnUk2Dtj7gF
+         DMWylc6N95J8HCZ0c7CRquecs/uwLjPUn8LBss4KRB8/aJ5ccSzfhAJd2VROyRXv98dM
+         St/e4njVGFIlz1M0/Mmn7AW1JCS+AOcxwxrq40ZAbbDzxpmdoinVILpkNV7ZoxjJINnw
+         oYCi2k42AdkpYOoU6TaAHZvqt9PSWJn1cx50EkE0/PkFCx86tL4Hxn2dRT1WZK/i0W/s
+         CHLA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NAdvUhJs;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=V9Jswmln;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id z1si5127185qkz.103.2020.10.31.02.48.10
+        by mx.google.com with ESMTPS id g8si8780385qtr.198.2020.11.02.06.59.38
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 31 Oct 2020 02:48:10 -0700 (PDT)
+        Mon, 02 Nov 2020 06:59:38 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=NAdvUhJs;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=V9Jswmln;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:49852 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:57886 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kYnUX-0000Oi-JO
-	for alex.bennee@linaro.org; Sat, 31 Oct 2020 05:48:09 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:45820)
+	id 1kZbJ4-0000JQ-9S
+	for alex.bennee@linaro.org; Mon, 02 Nov 2020 09:59:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:46308)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYnUA-0000Mw-8f
- for qemu-arm@nongnu.org; Sat, 31 Oct 2020 05:47:46 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:33211)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYnU8-00085q-DU
- for qemu-arm@nongnu.org; Sat, 31 Oct 2020 05:47:45 -0400
-Received: by mail-ed1-x542.google.com with SMTP id v4so9206272edi.0
- for <qemu-arm@nongnu.org>; Sat, 31 Oct 2020 02:47:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=urG2kFZ3ce8Op/j8tESCCY+aOGYMljSJmXSJJ2Vr/XI=;
- b=NAdvUhJsc9heM/Ik8kb4VHKedwI0Wz/vHNVaZMxVJGPulVHpcfEpPuXmCtm6f9C8Gt
- o5Bq/4yJoGVG75Jchs7tVPp4CEtmKGOiI49mzRknGcmlr8dkbE/z0dhELuxWunRg08YL
- 8KGWKlMwt81QfpTqHIbsM2hmqpjlsqrFbqZWcrib1K135szWIrXlltsgME0GKKxD5gPY
- NH+akUUc7P8kML6rOykkzZzOR+QxNPdwbLGWf7HZqklY/fHQGt4JrAuPEay/9wXB3Wtl
- bMILmrVk7C9lAn6bPPUXo+//18cu9qbu09stemF5VqjO+RMiSj4Roithna9STITbWhEL
- +cNg==
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZbIs-0000IV-AS
+ for qemu-arm@nongnu.org; Mon, 02 Nov 2020 09:59:26 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:58689)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZbIl-0002VN-Tg
+ for qemu-arm@nongnu.org; Mon, 02 Nov 2020 09:59:26 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604329158;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=XdmDUDB2KsVatqCFQs3MMXSY2ZPPqVfNhlc61MSh75o=;
+ b=V9JswmlnGaigefWjuK3X2OxnPIPUR61N2uCDwfpOoCOrYgiFJe834BkAcrFQLI999FtddO
+ 9s0OszjZufATy/Sdykh0GxyZQKdIfH8fDigexS+cCMa+7R41Uu+1GQhjkvm5b6M6yY9FV4
+ 63ipSzbHcE0LGt6pbRNiY2EGyGYS32w=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-203-DQI_alWHNxeWUZGK5NQsqg-1; Mon, 02 Nov 2020 09:59:16 -0500
+X-MC-Unique: DQI_alWHNxeWUZGK5NQsqg-1
+Received: by mail-wr1-f69.google.com with SMTP id t11so6546223wrv.10
+ for <qemu-arm@nongnu.org>; Mon, 02 Nov 2020 06:59:16 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=urG2kFZ3ce8Op/j8tESCCY+aOGYMljSJmXSJJ2Vr/XI=;
- b=Sk+TJSlPU+4MC8IBaq6gge9MC3LVMqDq12TNMHK/pzLLpxHYmq99139wCwhzRCpGTx
- iAwPOLqkbsBM0Qj7dTmuH1x0DC6ZtLcoMUumKiD0I6eY5a7z295PFTMxw8Fqv5NGyzK6
- AHIEy4MR2eOj0Bm4ShrqgSF1/EM5sVm+kfM5LFTpVEmSbKWMEvtvEyRzxoPFv3dlPUo6
- 1Ekwklj3zDzCUC0coDssCK+o8g0o6WKMf/NZTR2dgVJO5jMFPB3qIyaevy5Cap6GfpyN
- 1krsuVdB+lCajAbSOrj1YnO/nsltufpTBNr/34yxN0OM3MO9GaLWbQ8r5imD+OeSN6zC
- ffxw==
-X-Gm-Message-State: AOAM531JqBzZDOZXzpvBNXuEuKuFiF9uvZBWTqC7F8hwiqOrisclH19X
- jWPI+FWkYC/LeoSaXghis0EN/FKMSRrLBDb8+u7n4A==
-X-Received: by 2002:a05:6402:b35:: with SMTP id
- bo21mr7061428edb.52.1604137662703; 
- Sat, 31 Oct 2020 02:47:42 -0700 (PDT)
+ h=x-gm-message-state:subject:to:cc:references:from:message-id:date
+ :user-agent:mime-version:in-reply-to:content-language
+ :content-transfer-encoding;
+ bh=XdmDUDB2KsVatqCFQs3MMXSY2ZPPqVfNhlc61MSh75o=;
+ b=FpY7QdmALU/AHILwoTx2ju1EP1N7vYUx4kOvxAD+yGeUlL4d9WMjOqD43l+a2duam0
+ sti2UdUhbaJDDe/MkBccQ/4qYB4jstlkAy4bFvnP0KGRpOuihU9opSahnpecOhgdfXfq
+ M7eO+Up7HFtoIUU2KIph5MMV9qOIjrVgemeK/86b+Z+zl6YW/wt5OTfUZN7dKkhiNXcB
+ dpedEYZUyvmzyTOGi3N+nE4lLZ/shNTm/kfbJmRqFc19rP8NGFKUdLzibL1E8pUGFVpy
+ ZuBeHY/BqhdIyAubrDVY2pGr1+s0lqWG5So4Ib9zsd+pzfxmAeCGxOXfO6TfzQj48CX9
+ BcjA==
+X-Gm-Message-State: AOAM530HhxJnIusjK7Ssgijntzo+2f1NbTMOCnkaXE0qVV0VREhWPOht
+ Le+PUdhAxCMYf498asJqWb9VmTc/1v3TCS/oINoP7mKR3bGLP3Gds/29G4S0oTZNxm4iDOKFvee
+ ITYE1/DrDY63T
+X-Received: by 2002:a5d:420d:: with SMTP id n13mr20677190wrq.196.1604329155271; 
+ Mon, 02 Nov 2020 06:59:15 -0800 (PST)
+X-Received: by 2002:a5d:420d:: with SMTP id n13mr20677152wrq.196.1604329155073; 
+ Mon, 02 Nov 2020 06:59:15 -0800 (PST)
+Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
+ [83.42.66.234])
+ by smtp.gmail.com with ESMTPSA id v6sm22402553wrb.53.2020.11.02.06.59.13
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Nov 2020 06:59:14 -0800 (PST)
+Subject: Re: [RFC PATCH-for-5.2? 4/5] tests/acceptance: Only run tests tagged
+ 'gating-ci' on GitLab CI
+To: "Daniel P . Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Eduardo Habkost <ehabkost@redhat.com>
+References: <20201102144245.2134077-1-philmd@redhat.com>
+ <20201102144245.2134077-5-philmd@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
+Message-ID: <f40e30a8-7be3-3f02-352a-9e5f60446d25@redhat.com>
+Date: Mon, 2 Nov 2020 15:59:12 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
+ Thunderbird/78.3.1
 MIME-Version: 1.0
-References: <5F9BE974.3040806@huawei.com>
- <CAFEAcA_7xMjOTAWkk+k34oneB_KGCGk_hoBVMX-oDRMLZzR8Wg@mail.gmail.com>
- <5F9CD2AB.1060601@huawei.com>
-In-Reply-To: <5F9CD2AB.1060601@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 31 Oct 2020 09:47:31 +0000
-Message-ID: <CAFEAcA-ig-+T21OmbiRXhEZF6zpjsXXN=pm7Y=bj-P_d2SHFNg@mail.gmail.com>
-Subject: Re: [PATCH] hw/display/exynos4210_fimd: Fix potential NULL pointer
- dereference
-To: AlexChen <alex.chen@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x542.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+In-Reply-To: <20201102144245.2134077-5-philmd@redhat.com>
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 01:33:03
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -114,77 +137,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Igor Mitsyanko <i.mitsyanko@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU <qemu-devel@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sarah Harris <S.E.Harris@kent.ac.uk>, Michael Rolnik <mrolnik@gmail.com>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Fabien Chouteau <chouteau@adacore.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ KONRAD Frederic <frederic.konrad@adacore.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>, qemu-ppc@nongnu.org,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Paolo Bonzini <pbonzini@redhat.com>, Andrzej Zaborowski <balrogg@gmail.com>,
+ qemu-arm@nongnu.org, Antony Pavlov <antonynpavlov@gmail.com>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: x0CeTa/nK5kE
+X-TUID: 6RP5b0xryQne
 
-On Sat, 31 Oct 2020 at 02:57, AlexChen <alex.chen@huawei.com> wrote:
->
-> On 2020/10/30 22:28, Peter Maydell wrote:
-> > On Fri, 30 Oct 2020 at 10:23, AlexChen <alex.chen@huawei.com> wrote:
-> >>
-> >> In exynos4210_fimd_update(), the pointer s is dereferenced before
-> >> being check if it is valid, which may lead to NULL pointer dereference.
-> >> So move the assignment to global_width after checking that the s is valid
-> >>
-> >> Reported-by: Euler Robot <euler.robot@huawei.com>
-> >> Signed-off-by: Alex Chen <alex.chen@huawei.com>
-> >> ---
-> >>  hw/display/exynos4210_fimd.c | 2 +-
-> >>  1 file changed, 1 insertion(+), 1 deletion(-)
-> >>
-> >> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-> >> index 4c16e1f5a0..a1179d2f89 100644
-> >> --- a/hw/display/exynos4210_fimd.c
-> >> +++ b/hw/display/exynos4210_fimd.c
-> >> @@ -1275,12 +1275,12 @@ static void exynos4210_fimd_update(void *opaque)
-> >>      bool blend = false;
-> >>      uint8_t *host_fb_addr;
-> >>      bool is_dirty = false;
-> >> -    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
-> >>
-> >>      if (!s || !s->console || !s->enabled ||
-> >>          surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
-> >>          return;
-> >>      }
-> >> +    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
-> >>      exynos4210_update_resolution(s);
-> >>      surface = qemu_console_surface(s->console);
-> >
-> > Yep, this is a bug, but QEMU's coding style doesn't permit
-> > variable declarations in the middle of functions. You need
-> > to split the declaration (which stays where it is) and the
-> > initialization (which can moved down below the !s test.
-> >
-> Thans for your review. I have also considered this modification to be incompatible with
-> the QEMU's coding style. But the type of global_width is const int which cannot be
-> assigned once they are defined.
-> Could we define the global_width as int, such as this modification:
->
-> diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
-> index 4c16e1f5a0..34a960a976 100644
-> --- a/hw/display/exynos4210_fimd.c
-> +++ b/hw/display/exynos4210_fimd.c
-> @@ -1275,12 +1275,14 @@ static void exynos4210_fimd_update(void *opaque)
->      bool blend = false;
->      uint8_t *host_fb_addr;
->      bool is_dirty = false;
-> -    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
-> +    int global_width;
->
->      if (!s || !s->console || !s->enabled ||
->          surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
->          return;
->      }
-> +
-> +    global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
->      exynos4210_update_resolution(s);
->      surface = qemu_console_surface(s->console);
+On 11/2/20 3:42 PM, Philippe Mathieu-Daudé wrote:
+> To avoid breaking our CI each time a test is added, switch from the
+> "run all but disable some" to "only run the tagged tests on CI".
+> This way we can add a test to the repository, and promote it to
+> 'gating-ci' once it is proven stable enough.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+> ---
+> 
+> TODO: where to add documentation?
+> 
+> - docs/devel/testing.rst (too big, split?)
+> - tests/acceptance/README.rst
+> 
+> ---
+>  tests/Makefile.include | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/Makefile.include b/tests/Makefile.include
+> index 3a0524ce740..f39ba760c17 100644
+> --- a/tests/Makefile.include
+> +++ b/tests/Makefile.include
+> @@ -126,7 +126,7 @@ check-acceptance: check-venv $(TESTS_RESULTS_DIR) get-vm-images
+>              $(TESTS_VENV_DIR)/bin/python -m avocado \
+>              --show=$(AVOCADO_SHOW) run --job-results-dir=$(TESTS_RESULTS_DIR) \
+>              --filter-by-tags-include-empty --filter-by-tags-include-empty-key \
+> -            $(AVOCADO_TAGS) \
+> +            $(AVOCADO_TAGS) -t gating-ci \
 
-Yes, I think that would be fine.
+This doesn't work as expected, since we have:
 
-thanks
--- PMM
+AVOCADO_TAGS=$(patsubst %-softmmu,-t arch:%, $(filter
+%-softmmu,$(TARGET_DIRS)))
+
+And avocado '-t' works as logical OR, not logical AND.
+
+OTOH it seems this variable predate the auto-skip feature
+(when a binary is not present).
+
+So I'll test this instead, which is simpler:
+
+-- >8 --
+@@ -90,7 +90,7 @@ TESTS_RESULTS_DIR=$(BUILD_DIR)/tests/results
+ # Any number of command separated loggers are accepted.  For more
+ # information please refer to "avocado --help".
+ AVOCADO_SHOW=app
+-AVOCADO_TAGS=$(patsubst %-softmmu,-t arch:%, $(filter
+%-softmmu,$(TARGET_DIRS)))
++AVOCADO_TAGS=-t gating-ci
+
+ $(TESTS_VENV_DIR): $(TESTS_VENV_REQ)
+        $(call quiet-command, \
+---
+

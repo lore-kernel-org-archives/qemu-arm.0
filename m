@@ -1,76 +1,76 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp3340699lfb;
-        Sun, 22 Nov 2020 22:30:40 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJy0RMtl88i9TWJSmxySyaxISMinnd3/ePwRT6C6FAt4LxJ+keXwb/tNmSSET025rI8IkOhx
-X-Received: by 2002:a25:7608:: with SMTP id r8mr43574560ybc.131.1606113040737;
-        Sun, 22 Nov 2020 22:30:40 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1606113040; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3827032lfa;
+        Mon, 2 Nov 2020 03:05:58 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJylwSZqp4IHr41/Z7paokNVUeqL1QOWWcAxjfeHRFOyUhwGq3OmYt2vBCy8oDm5WkoCchgw
+X-Received: by 2002:a6b:b5c2:: with SMTP id e185mr10181878iof.106.1604315158114;
+        Mon, 02 Nov 2020 03:05:58 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604315158; cv=none;
         d=google.com; s=arc-20160816;
-        b=fBvreRBydDTl2iAN79BgNS2BHWyISToee3GhYPpqeAjE8SIgJ70DV/wObImhtfr943
-         JZSVj7E4XaXIHorDavgacMz8eTgf6/jEzXywmZ/Kq2Zcji8N/1OC+1r5lg6SGmkejfTJ
-         TpezvXbomC0s7DwVvILlZVa7nNswntiQ8n4ko0/W2hGiBcB/K/JINgOfnIXOPrghq1E/
-         33oQjaLrc1MbZKpR11qi9ZK54mpWEIvkTamq/UtSuq1JvwVJ2W57QmTiUXXksuuZI68L
-         zpM1K9oqlIh+qRg5TCSwC3Ekc8hLiEKivfke97oegNUJ8AZawNaZNtK+2vI8xAzCYfEx
-         HnaA==
+        b=rvTg4q3IsYuqehvLPXeJx0XjnRTDDjL83qDR37oA+KLQ6EZJD+jtXbwt3owxrkRyOE
+         o4IFxq0fPWQGBTsxevEbPEJ3P8i7dEmQs4/AT/qU5y+Khb8E0ClnX9UX2I7PXd42w4JK
+         2Dl+eV0iMDWRt8R7XvgXFSXULCqN3d19Nnv8IyECVII8san7AMar6StijF4ihtb87PHH
+         4j01yt8ZMJUnFxvj/b95XqeomldsHNnKlB2Ewru8TY+XxQ6rku1zMTmk5pBVx1DVG/ZD
+         pOdhb4ynweFoU2pzvTo1ly4YT6qbLx314XxNPbKM7AB3vbJXCwDRlR5xyAK4ByxL8ZUS
+         tbhg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version:message-id:date
-         :subject:to:from;
-        bh=MP6pD1QX/GCDRO1Bk4Fr58yYL7Ako2jzP3X2Ph2gy6M=;
-        b=I9EGRUizIolKLBW+/7T6JShebIZh/1fovOVrG7flvynwnIdFjunmJMIytLpoyqKMil
-         K/H39yBk34L7TLScNrsV1QVVWZzrUf+PlkS+U94od6L5PuXOuW6ViVJYXPCvt0blpPAF
-         O7aGKFKcCf95bGy1lz5MItvOxq9Rn0CanmeVVmQf32x7aC6Z2b23a0NXEANHHx8gfcw+
-         t3cPPPqTdsY4sxJbOSZcKf47Dovd7Vn7iPmfS3mSUMaAIEis9HUpt23zBWqykMxSj2Dm
-         zQNcfEU7NTsdmmM5VDMK8nQjjAdm3BYuZE0n5OPza/gSil6NuwMxDEfacu6v/+ezaf4W
-         Wulw==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=9t7a+rKp3sFy/5VT8tPfnXv9HKusMECLHCIf9eJRL+k=;
+        b=CV31EpqkHXQub7ORv9v+6Oz5VAieNDEjGwAkhGzESxKsLOrYWZiKavttShMN1CETrN
+         5qM8noBVpi0L4L8Bg+MxMiYY4ZbJ7zw3dOT7VziEZ/hgkU0wPflyYDYpeMsHM+Hehzj0
+         9GiSeUiCwIDZ+hJb1fkLWBBP8DTCeO85nRQgkclFK89I3ghQ/cTH204YzKSqj8qJW1A9
+         /iMizQe5PDgk8B16DEqcM2oRYLvNscooKgk/5n3GVwWki579SCUDqkwYPs3KOLN5TdoN
+         xQNIwETSF2oIY3pL8SqeQuPEfB3T/ASzW81PMUmUWB9S07jIzTAvCCi9wG5F7dDPKowe
+         oKkw==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t1si14010620ybt.432.2020.11.22.22.30.40
+        by mx.google.com with ESMTPS id l7si11101537jak.100.2020.11.02.03.05.57
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 22 Nov 2020 22:30:40 -0800 (PST)
+        Mon, 02 Nov 2020 03:05:58 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:53782 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46688 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kh5N2-0007u7-4I
-	for alex.bennee@linaro.org; Mon, 23 Nov 2020 01:30:40 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49076)
+	id 1kZXev-0001t6-Cn
+	for alex.bennee@linaro.org; Mon, 02 Nov 2020 06:05:57 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38310)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kh5Ms-0007rm-8N; Mon, 23 Nov 2020 01:30:30 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2799)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhukeqian1@huawei.com>)
- id 1kh5Mp-0005ZS-Ng; Mon, 23 Nov 2020 01:30:30 -0500
-Received: from DGGEMS403-HUB.china.huawei.com (unknown [172.30.72.60])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4Cfch83r1czkdbr;
- Mon, 23 Nov 2020 14:29:44 +0800 (CST)
-Received: from DESKTOP-5IS4806.china.huawei.com (10.174.187.37) by
- DGGEMS403-HUB.china.huawei.com (10.3.19.203) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 23 Nov 2020 14:30:02 +0800
-From: Keqian Zhu <zhukeqian1@huawei.com>
-To: <qemu-devel@nongnu.org>, Jason Wang <jasowang@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>
-Subject: [PATCH] net: Use correct default-path macro for downscript
-Date: Mon, 23 Nov 2020 14:29:54 +0800
-Message-ID: <20201123062954.9680-1-zhukeqian1@huawei.com>
-X-Mailer: git-send-email 2.8.4.windows.1
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kZXXl-0008R4-MG; Mon, 02 Nov 2020 05:58:33 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:39572
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kZXXj-0006my-Oh; Mon, 02 Nov 2020 05:58:33 -0500
+Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id 81B26605A6;
+ Mon,  2 Nov 2020 11:58:05 +0100 (CET)
+From: remi.denis.courmont@huawei.com
+To: qemu-arm@nongnu.org
+Subject: [PATCH 13/14] target/arm: add ARMv8.4-SEL2 extension
+Date: Mon,  2 Nov 2020 12:58:01 +0200
+Message-Id: <20201102105802.39332-13-remi.denis.courmont@huawei.com>
+X-Mailer: git-send-email 2.29.1
+In-Reply-To: <2172054.ElGaqSPkdT@basile.remlab.net>
+References: <2172054.ElGaqSPkdT@basile.remlab.net>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Originating-IP: [10.174.187.37]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190;
- envelope-from=zhukeqian1@huawei.com; helo=szxga04-in.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 05:57:15
+X-ACL-Warn: Detected OS   = ???
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -83,32 +83,189 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: wanghaibin.wang@huawei.com, qemu-arm@nongnu.org,
- Keqian Zhu <zhukeqian1@huawei.com>
+Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: it7zF94wNIE3
+X-TUID: 96Y/C80NzCvj
 
-Fixes: 63c4db4c2e6d (net: relocate paths to helpers and scripts)
-Signed-off-by: Keqian Zhu <zhukeqian1@huawei.com>
+From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+
+This adds handling for the SCR_EL3.EEL2 bit.
+
+A translation block flag is added in A32 mode to route exceptions
+correctly from AArch32 S-EL1 to (AArch64) S-EL2.
+
+Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 ---
- net/tap.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ target/arm/cpu.c       |  2 +-
+ target/arm/cpu.h       | 11 ++++++++---
+ target/arm/helper.c    | 19 +++++++++++++++++--
+ target/arm/translate.c |  6 ++++--
+ target/arm/translate.h |  1 +
+ 5 files changed, 31 insertions(+), 8 deletions(-)
 
-diff --git a/net/tap.c b/net/tap.c
-index c46ff66184..b8e5cca51c 100644
---- a/net/tap.c
-+++ b/net/tap.c
-@@ -951,7 +951,8 @@ free_fail:
-             script = default_script = get_relocated_path(DEFAULT_NETWORK_SCRIPT);
-         }
-         if (!downscript) {
--            downscript = default_downscript = get_relocated_path(DEFAULT_NETWORK_SCRIPT);
-+            downscript = default_downscript =
-+                                 get_relocated_path(DEFAULT_NETWORK_DOWN_SCRIPT);
-         }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 07492e9f9a..22d2177a9f 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -476,7 +476,7 @@ static inline bool arm_excp_unmasked(CPUState *cs, unsigned int excp_idx,
+              * masked from Secure state. The HCR and SCR settings
+              * don't affect the masking logic, only the interrupt routing.
+              */
+-            if (target_el == 3 || !secure) {
++            if (target_el == 3 || !secure || (env->cp15.scr_el3 & SCR_EEL2)) {
+                 unmasked = true;
+             }
+         } else {
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 495acf2d0a..3f2b0be1ba 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2059,7 +2059,10 @@ static inline bool arm_is_secure(CPUARMState *env)
+ static inline bool arm_is_el2_enabled(CPUARMState *env)
+ {
+     if (arm_feature(env, ARM_FEATURE_EL2)) {
+-        return !arm_is_secure_below_el3(env);
++        if (arm_is_secure_below_el3(env)) {
++            return (env->cp15.scr_el3 & SCR_EEL2) != 0;
++        }
++        return true;
+     }
+     return false;
+ }
+@@ -2106,7 +2109,8 @@ static inline bool arm_el_is_aa64(CPUARMState *env, int el)
+         return aa64;
+     }
  
-         if (tap->has_ifname) {
+-    if (arm_feature(env, ARM_FEATURE_EL3)) {
++    if (arm_feature(env, ARM_FEATURE_EL3) &&
++        ((env->cp15.scr_el3 & SCR_NS) || !(env->cp15.scr_el3 & SCR_EEL2))) {
+         aa64 = aa64 && (env->cp15.scr_el3 & SCR_RW);
+     }
+ 
+@@ -3267,7 +3271,7 @@ typedef ARMCPU ArchCPU;
+  * We put flags which are shared between 32 and 64 bit mode at the top
+  * of the word, and flags which apply to only one mode at the bottom.
+  *
+- *  31          20    18    14          9              0
++ *  31          20    19    14          9              0
+  * +--------------+-----+-----+----------+--------------+
+  * |              |     |   TBFLAG_A32   |              |
+  * |              |     +-----+----------+  TBFLAG_AM32 |
+@@ -3316,6 +3320,7 @@ FIELD(TBFLAG_A32, HSTR_ACTIVE, 16, 1)
+  * the same thing as the current security state of the processor!
+  */
+ FIELD(TBFLAG_A32, NS, 17, 1)
++FIELD(TBFLAG_A32, EEL2, 18, 1)
+ 
+ /*
+  * Bit usage when in AArch32 state, for M-profile only.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 74fd759d48..dd3c6b52c1 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -532,6 +532,9 @@ static CPAccessResult access_trap_aa32s_el1(CPUARMState *env,
+         return CP_ACCESS_OK;
+     }
+     if (arm_is_secure_below_el3(env)) {
++        if (env->cp15.scr_el3 & SCR_EEL2) {
++            return CP_ACCESS_TRAP_EL2;
++        }
+         return CP_ACCESS_TRAP_EL3;
+     }
+     /* This will be EL1 NS and EL2 NS, which just UNDEF */
+@@ -2030,6 +2033,9 @@ static void scr_write(CPUARMState *env, const ARMCPRegInfo *ri, uint64_t value)
+         if (cpu_isar_feature(aa64_pauth, cpu)) {
+             valid_mask |= SCR_API | SCR_APK;
+         }
++        if (cpu_isar_feature(aa64_sel2, cpu)) {
++            valid_mask |= SCR_EEL2;
++        }
+         if (cpu_isar_feature(aa64_mte, cpu)) {
+             valid_mask |= SCR_ATA;
+         }
+@@ -3390,13 +3396,16 @@ static CPAccessResult ats_access(CPUARMState *env, const ARMCPRegInfo *ri,
+                                  bool isread)
+ {
+     if (ri->opc2 & 4) {
+-        /* The ATS12NSO* operations must trap to EL3 if executed in
++        /* The ATS12NSO* operations must trap to EL3 or EL2 if executed in
+          * Secure EL1 (which can only happen if EL3 is AArch64).
+          * They are simply UNDEF if executed from NS EL1.
+          * They function normally from EL2 or EL3.
+          */
+         if (arm_current_el(env) == 1) {
+             if (arm_is_secure_below_el3(env)) {
++                if (env->cp15.scr_el3 & SCR_EEL2) {
++                    return CP_ACCESS_TRAP_UNCATEGORIZED_EL2;
++                }
+                 return CP_ACCESS_TRAP_UNCATEGORIZED_EL3;
+             }
+             return CP_ACCESS_TRAP_UNCATEGORIZED;
+@@ -5753,12 +5762,15 @@ static CPAccessResult nsacr_access(CPUARMState *env, const ARMCPRegInfo *ri,
+                                    bool isread)
+ {
+     /* The NSACR is RW at EL3, and RO for NS EL1 and NS EL2.
+-     * At Secure EL1 it traps to EL3.
++     * At Secure EL1 it traps to EL3 or EL2.
+      */
+     if (arm_current_el(env) == 3) {
+         return CP_ACCESS_OK;
+     }
+     if (arm_is_secure_below_el3(env)) {
++        if (env->cp15.scr_el3 & SCR_EEL2) {
++            return CP_ACCESS_TRAP_EL2;
++        }
+         return CP_ACCESS_TRAP_EL3;
+     }
+     /* Accesses from EL1 NS and EL2 NS are UNDEF for write but allow reads. */
+@@ -12903,6 +12915,9 @@ static uint32_t rebuild_hflags_common_32(CPUARMState *env, int fp_el,
+         flags = FIELD_DP32(flags, TBFLAG_ANY, BE_DATA, 1);
+     }
+     flags = FIELD_DP32(flags, TBFLAG_A32, NS, !access_secure_reg(env));
++    if (arm_is_secure_below_el3(env) && (env->cp15.scr_el3 & SCR_EEL2)) {
++        flags = FIELD_DP32(flags, TBFLAG_A32, EEL2, 1);
++    }
+ 
+     return rebuild_hflags_common(env, fp_el, mmu_idx, flags);
+ }
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 38371db540..3ec7ec7d1e 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -2703,9 +2703,10 @@ static bool msr_banked_access_decode(DisasContext *s, int r, int sysm, int rn,
+         }
+         if (s->current_el == 1) {
+             /* If we're in Secure EL1 (which implies that EL3 is AArch64)
+-             * then accesses to Mon registers trap to EL3
++             * then accesses to Mon registers trap to Secure EL2 if it exists
++             * otherwise EL3.
+              */
+-            exc_target = 3;
++            exc_target = s->sel2 ? 2 : 3;
+             goto undef;
+         }
+         break;
+@@ -8723,6 +8724,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+         dc->sctlr_b = FIELD_EX32(tb_flags, TBFLAG_A32, SCTLR_B);
+         dc->hstr_active = FIELD_EX32(tb_flags, TBFLAG_A32, HSTR_ACTIVE);
+         dc->ns = FIELD_EX32(tb_flags, TBFLAG_A32, NS);
++        dc->sel2 = FIELD_EX32(tb_flags, TBFLAG_A32, EEL2);
+         dc->vfp_enabled = FIELD_EX32(tb_flags, TBFLAG_A32, VFPEN);
+         if (arm_feature(env, ARM_FEATURE_XSCALE)) {
+             dc->c15_cpar = FIELD_EX32(tb_flags, TBFLAG_A32, XSCALE_CPAR);
+diff --git a/target/arm/translate.h b/target/arm/translate.h
+index 423b0e08df..bf3624791b 100644
+--- a/target/arm/translate.h
++++ b/target/arm/translate.h
+@@ -32,6 +32,7 @@ typedef struct DisasContext {
+     uint8_t tbid;      /* TBI1|TBI0 for data */
+     uint8_t tcma;      /* TCMA1|TCMA0 for MTE */
+     bool ns;        /* Use non-secure CPREG bank on access */
++    bool sel2;      /* Secure EL2 enabled (only used in AArch32) */
+     int fp_excp_el; /* FP exception EL or 0 if enabled */
+     int sve_excp_el; /* SVE exception EL or 0 if enabled */
+     int sve_len;     /* SVE vector length in bytes */
 -- 
-2.23.0
+2.29.1
 

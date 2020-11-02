@@ -1,169 +1,150 @@
-Received: by 2002:a19:e8d:0:0:0:0:0 with SMTP id 135csp3766904lfo;
-        Mon, 1 Feb 2021 13:32:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzMdoiLaOsk261LI4aV0eCCwkhrnWF1CwWh8uTKuAIxeSNd0yzmEWjOO2OprLN4DOtVCvWP
-X-Received: by 2002:a25:8590:: with SMTP id x16mr17350375ybk.435.1612215128223;
-        Mon, 01 Feb 2021 13:32:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1612215128; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3826908lfa;
+        Mon, 2 Nov 2020 03:05:48 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyMxXcHGJwiviovtoWM0v10xeagw3cSpnhoQdtL91Y80tUW0oueAfpOOa+AMR6pathhdkKN
+X-Received: by 2002:a02:cc3c:: with SMTP id o28mr10926852jap.107.1604315148188;
+        Mon, 02 Nov 2020 03:05:48 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604315148; cv=none;
         d=google.com; s=arc-20160816;
-        b=m5qi2idZVucyxWfROdpFLCGVDGclig7CtbdgB3tRT4ia4WkML0XDZfbSfwjKBii4NC
-         eB6FWllLuO0QT98yd0BAmzENz3yuH8YyGSTUsfVzwQTh6292FkCiLKW/vOgeoXCoofbx
-         whXvmhZABOeqIrWGnE8VHJc6her03NF7SHM8b9Wnfjs0dO2rmfRYpCNdeDhTMLca4gO6
-         WA9dQfFMGsKmFI0jPVrWQLRrmmmVag+YPFw6gA2dMGtrg5Ixt1Eii8AqTiDXe9txIPFy
-         EU8epF8zuXWi3sHxp1KT3xoFF8s9X0GB3dy6V/ri4E0RihL8LRxsK65/3kO0SMzbhgfD
-         d6PA==
+        b=rbfH5iF+hSTiQrMSpJ63Ty8GAXQFQXvUSTAruic+01o9ff2KK5gQqUh6Tc5RpWHJiW
+         frtdvTJ8hZ8NC3KHe0QyLhE/0urpGUkTJTb8oZLwVXlQeFT3YsvQ/4+BwGjtrYm5IUQo
+         pYtwJY8gIIn4vFC4saEeNEbvuzjphXgwnk8pFhTG2ebnLEzCXrxRVtTAPRg/oilD2FHx
+         DRkxlrHta+z63LVtCQG2KOdvXyYZbjLwdAy1UV5Wq8hsQ7MtGBVPyJMHWnQ41/4PZTCW
+         0Trk0nr1a0lbLmeXZqOTFvfCfsc7hKurM7i/syALfgIE2qhl4/zMHgDjHaD6joUl5t2A
+         8qww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-disposition:in-reply-to:mime-version:references:message-id
-         :subject:to:from:date:dkim-signature;
-        bh=F6a7owyi7kE7vggh++r5MmpR+z5K4iTujsROfQBdO74=;
-        b=M1s16p7NDG/KfPufp8fhnfoyFTT+8kTKK7e6FOl0zQWdHaK0bs7SaIRzN+0nuA03qF
-         praeYK/GJhXIUiwo6JKkjRbapsEevWLLwGQiRKM2Q0mCEgjk5HP9v5+BjBYGQzjHxjd8
-         KOueLZ0a1k4KsYStjIg3m49DJL/hZrT3oQeHhWH0sUR5NkJ54JGgkHB+CSmaDeK72egt
-         BgfqMWZcgBUNlELD4Tj9ew+CunGELwsrreDqSbuCFtk7mRhbLgquok8mXWhoLMX8fQiX
-         klnkn89t9PvtEYQQcTSySAHe0O32xeG3/WxavdZ/FKxrpUrEaJ3N51wSlH/WyVi9k9BK
-         ADnA==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=8nlDOBwbbM1tpcq/kq0RY333/L9lLsCjEJFwwIkDWoQ=;
+        b=l+IbZy8SasPzhKxFoCScuyNjCnOciptNi/bok7zGtDq3xV4WLzJFDwELegwM7LhhsC
+         IvJLj2OtCdPywv7nboQtSatAtPxKuQp72wWtb4Wzbl4sid2vjL4pb0H0V/8Fn/cyAOOm
+         MtUiMS+CH3BD+us+BrnuTOxzr0PCLBoj5io1VDer8BBv5D2qN5Vr/auxB5FO1dUKb1Jv
+         zJSyOSkCq6uHwl7nZXU8mMNhLvH2BdStnYFoGJssA+2yvm+DLQbMLXoI1+2hXM7b39wY
+         x+8AejPJyk2WfyNbt9IDIfzqk3DkFPNNwM/ZBKHABM4NQJjHXmNMXjztV1nAbu+sBzdg
+         I2zw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OFajsyIG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id j12si12864422ybj.387.2021.02.01.13.32.08
+        by mx.google.com with ESMTPS id x17si9687150ilh.87.2020.11.02.03.05.48
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 01 Feb 2021 13:32:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 02 Nov 2020 03:05:48 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=OFajsyIG;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:37394 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:45852 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l6gnn-000401-Fd
-	for alex.bennee@linaro.org; Mon, 01 Feb 2021 16:32:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:44028)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kZXel-0001Xe-F3
+	for alex.bennee@linaro.org; Mon, 02 Nov 2020 06:05:47 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38304)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1l6gn7-0003xE-76
- for qemu-devel@nongnu.org; Mon, 01 Feb 2021 16:31:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:51946)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <ehabkost@redhat.com>)
- id 1l6gn3-00060g-Tp
- for qemu-devel@nongnu.org; Mon, 01 Feb 2021 16:31:24 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1612215080;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=F6a7owyi7kE7vggh++r5MmpR+z5K4iTujsROfQBdO74=;
- b=OFajsyIG9qCrOfk+AZQv9dcVRTEl6i0tfWl2nQ6CN0ZI5A2ug0FSFoZnZ4szdsZuYehnZN
- hzXjHl7p0G4EpTfuF6ZxeZUK5wKCLCCufDorAnAUO5WXDzMii42FiT6f5yAVLb1kDS3TP5
- +sn6+bmpaeufH0p0Wv1UdeYIp8AaKxM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-38-Wa4X6_oxN6ybw5GTL734-A-1; Mon, 01 Feb 2021 16:31:17 -0500
-X-MC-Unique: Wa4X6_oxN6ybw5GTL734-A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.phx2.redhat.com
- [10.5.11.14])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 32E3A8049D0;
- Mon,  1 Feb 2021 21:31:15 +0000 (UTC)
-Received: from localhost (ovpn-3-197.rdu2.redhat.com [10.22.3.197])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 448535D9DC;
- Mon,  1 Feb 2021 21:31:05 +0000 (UTC)
-Date: Mon, 1 Feb 2021 16:31:04 -0500
-From: Eduardo Habkost <ehabkost@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH RFC 0/1] QOM type names and QAPI
-Message-ID: <20210201213104.GG3872207@habkost.net>
-References: <20210129081519.3848145-1-armbru@redhat.com>
- <CAFEAcA_O=48U_3p_mKeRRY99OsJCRSTJmOefDT1gbHVdyE_C0A@mail.gmail.com>
- <20210129121752.GJ4001740@redhat.com>
- <bacb8bab-2719-ae96-f1de-91e598b98abd@redhat.com>
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1kZXXl-0008QO-FJ; Mon, 02 Nov 2020 05:58:33 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:39566
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1kZXXj-0006mt-NI; Mon, 02 Nov 2020 05:58:33 -0500
+Received: from basile.remlab.net (ip6-localhost [IPv6:::1])
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTP id B88756038D;
+ Mon,  2 Nov 2020 11:58:04 +0100 (CET)
+From: remi.denis.courmont@huawei.com
+To: qemu-arm@nongnu.org
+Subject: [PATCH 10/14] target/arm: do S1_ptw_translate() before address space
+ lookup
+Date: Mon,  2 Nov 2020 12:57:58 +0200
+Message-Id: <20201102105802.39332-10-remi.denis.courmont@huawei.com>
+X-Mailer: git-send-email 2.29.1
+In-Reply-To: <2172054.ElGaqSPkdT@basile.remlab.net>
+References: <2172054.ElGaqSPkdT@basile.remlab.net>
 MIME-Version: 1.0
-In-Reply-To: <bacb8bab-2719-ae96-f1de-91e598b98abd@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.14
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=ehabkost@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=ehabkost@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -30
-X-Spam_score: -3.1
-X-Spam_bar: ---
-X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.351,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 05:57:15
+X-ACL-Warn: Detected OS   = ???
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- KONRAD Frederic <frederic.konrad@adacore.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Max Reitz <mreitz@redhat.com>,
- Qemu-block <qemu-block@nongnu.org>, Juan Quintela <quintela@redhat.com>,
- Andrey Smirnov <andrew.smirnov@gmail.com>,
- Markus Armbruster <armbru@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Dr. David Alan Gilbert" <dgilbert@redhat.com>,
- Fabien Chouteau <chouteau@adacore.com>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>, John Snow <jsnow@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
- Jean-Christophe DUBOIS <jcd@tribudubois.net>
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: Ymjx2iQaUiQn
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: qemu-devel@nongnu.org
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: qdozftu3Z4Ms
 
-On Fri, Jan 29, 2021 at 02:25:56PM +0100, Paolo Bonzini wrote:
-> On 29/01/21 13:17, Daniel P. Berrangé wrote:
-> > > On this one, my vote would be "no". "Versioned machine names
-> > > include the QEMU version number" is pretty well entrenched,
-> > > and requiring users to remember that when they want version 4.2
-> > > they need to remember some other way of writing it than "4.2"
-> > > seems rather unfriendly. And 550 uses of '.' is a lot.
-> > We can't make  keyval_parse() accept "/" instead of ".", but can
-> > we make it accept "/" in addition to ".", and then encourage "/"  ?
-> > 
-> > People simply wouldnt be able to use "." as keyval separator if
-> > they're using typenames containing "." (or would have to escape
-> > the typename.
-> 
-> '.' is much more common than '/', and is shared by about all programming
-> languages that have JSON-ish data structures natively.  So using '/' seems
-> decidedly worse to me.
+From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
 
-Worse than what, exactly?
+In the secure stage 2 translation regime, the VSTCR.SW and VTCR.NSW
+bits can invert the secure flag for pagetable walks. This patchset
+allows S1_ptw_translate() to change the non-secure bit.
 
-Accepting "/" when "." is ambiguous seems decidedly better than
-the following alternatives:
-- renaming machine types to names like "q35-5-0"; or
-- having to escape "." in the command line.
+Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+---
+ target/arm/helper.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 4c86e4f57c..7c70460e65 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -10403,7 +10403,7 @@ static bool get_level1_table_address(CPUARMState *env, ARMMMUIdx mmu_idx,
+ 
+ /* Translate a S1 pagetable walk through S2 if needed.  */
+ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+-                               hwaddr addr, MemTxAttrs txattrs,
++                               hwaddr addr, bool *is_secure,
+                                ARMMMUFaultInfo *fi)
+ {
+     ARMMMUIdx s2_mmu_idx;
+@@ -10415,6 +10415,9 @@ static hwaddr S1_ptw_translate(CPUARMState *env, ARMMMUIdx mmu_idx,
+         int s2prot;
+         int ret;
+         ARMCacheAttrs cacheattrs = {};
++        MemTxAttrs txattrs = {};
++
++        assert(!*is_secure); /* TODO: S-EL2 */
+ 
+         ret = get_phys_addr_lpae(env, addr, MMU_DATA_LOAD, s2_mmu_idx, false,
+                                  &s2pa, &txattrs, &s2prot, &s2size, fi,
+@@ -10453,9 +10456,9 @@ static uint32_t arm_ldl_ptw(CPUState *cs, hwaddr addr, bool is_secure,
+     AddressSpace *as;
+     uint32_t data;
+ 
++    addr = S1_ptw_translate(env, mmu_idx, addr, &is_secure, fi);
+     attrs.secure = is_secure;
+     as = arm_addressspace(cs, attrs);
+-    addr = S1_ptw_translate(env, mmu_idx, addr, attrs, fi);
+     if (fi->s1ptw) {
+         return 0;
+     }
+@@ -10482,9 +10485,9 @@ static uint64_t arm_ldq_ptw(CPUState *cs, hwaddr addr, bool is_secure,
+     AddressSpace *as;
+     uint64_t data;
+ 
++    addr = S1_ptw_translate(env, mmu_idx, addr, &is_secure, fi);
+     attrs.secure = is_secure;
+     as = arm_addressspace(cs, attrs);
+-    addr = S1_ptw_translate(env, mmu_idx, addr, attrs, fi);
+     if (fi->s1ptw) {
+         return 0;
+     }
 -- 
-Eduardo
+2.29.1
 

@@ -1,86 +1,80 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3573665lfa;
-        Sun, 1 Nov 2020 19:13:54 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzx0QayGSjhwN1EACquPrub9Iq1iY4X5IpT0riwLiVVTjGK6KKRFB6ZNJ+Xb2bKSJyUq4Mi
-X-Received: by 2002:a05:6214:162f:: with SMTP id e15mr20628370qvw.32.1604286834166;
-        Sun, 01 Nov 2020 19:13:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604286834; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp3615817lfa;
+        Sun, 1 Nov 2020 20:40:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx9f4mSRCExaYqek0fd9aSXYvMrygD9c1C5DYkPVv9moquVRkNUwEYEk2+TbfNPBLskZ85t
+X-Received: by 2002:a25:6dc6:: with SMTP id i189mr18408677ybc.299.1604292023431;
+        Sun, 01 Nov 2020 20:40:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604292023; cv=none;
         d=google.com; s=arc-20160816;
-        b=bQc3lcrPGn4L/f/dDfjk+GbEGnsb4yH5xnaKry+P64184I2XHI4nNRF6HCtP3+i4hc
-         hPa3Gd9gkF87QxQJKC3O8JE///nuZAnt5oPwuW1zoI1xtuGRKvgpBKeXYgDEMEt1UTUn
-         6Qvk2T3oKPxP3kl5rXmcrIOCX65O5bDRtN35H72V2xrZP/WYBrZF48lGbEdLCugL5r06
-         3cBU/u+8+hbq0V7UqV+8/O4bgEPIxTy06+Xj5pB1SL1IaHTA1m94iySRuKPyL7fd4V9J
-         3llFOSvUXfnfpIsZQrluf1Djs30y+Cpxb2IKjDrRNZhGg97m5Mhj728XjBZHxogSX9CG
-         4o6Q==
+        b=zV8UA+9a7Q0cBxs6ubCq+4lK0h88ttqCiC+YS/Ij85sESWAHjkcbG1p5DJYCYOm/tA
+         W8RCw3mentJhGtSjfamV2O0BUdk99Z6UOZywHjeAAc2MUGzw6enLy8J5ayaC5g6dy1bO
+         0cAT2JbLop0KYfad++Go01IfaGXKlJe3ymwCCtbMgOIDH4jS5qcH+ti2KRVaV60cVYUb
+         tWE65fm8Z6emP3NIbbLN8hAw0t0FdkGzsnyJLW7GYscDMnLLF1pGRQ5ozgcSVjvupDmC
+         uCf5kNxTrlT5AH9vjln3Qf5208vIwDw9AK2Jt/YtQDB2lhwcvrnsBpbtWCnWgM1eBm6q
+         ejHQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject;
-        bh=p8xUuwFKDowgMJo7+qjxCEnXaltRHXNpthA7EhHd4dg=;
-        b=HvcjYppX7plw96mPejk1as4/Og5yIMhxPvCX7h3IjkEbG7n4nGdq5OMWPw4MDgknAL
-         G+vYQYwDNqdP+TUTkuOLr1MVbGyfhhjBRdh7O2SJbMUAu8UdYgmNCS1BFV7xUdfjt7yd
-         uR6+PyEW0GDaDnKt/M6JHF5FewfXZi2xg82D2PKvh+63HioXxcsgIBHMsJWf7NcQ9dtA
-         QSBsX/xPCws6696ijumigLjQOPOwWVWgSCENdWGmLN+i5IWLH4vPvVvo4C6FqPgAmDjc
-         v9/Im2Hl00gCaqNfY5NNVT1sNNwBpFSXW3VemV/B3Z+BIIGAiVTs7iGLFmYIpzqtSfsD
-         /Amw==
+         :subject:to:mime-version:user-agent:from:date:message-id;
+        bh=ORfjUg/N/iwLjXM/hWlk+BKtRJcG7zxkH+tFmd9JSMc=;
+        b=OQ+jFVfEY/kRQFDsNE3uzZRB7vyLA/a8dzocwsi4nSJBg28X1i1QFicjx3X/2WGXBR
+         gd3m8ssNp8gp1ppvGbUANtzT+QjX71YG5xqJOl3DMfRUPO0YuRABIcbpriE1qIqk++B0
+         FaGAAWUI1laBxF8QocYz7BWYtW/GhKu+iSwBBwRFtaXDIppBgCK4TgzedOn5LHsTXTFs
+         fsyt3X4ZbhHAurrhtDHLYvBbwO72UI7wCS9tTEvOQjf0KJtObvvfZ69ylXOkfNRsZ6a1
+         0YXqjrAix+JMm/3vsqbd6mxkSc19ChY8+GagthJeKRfiEoDVujPG9fyQ47aiBbkXFSMu
+         RCbQ==
 ARC-Authentication-Results: i=1; mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id i21si2763460qkl.152.2020.11.01.19.13.54
+        by mx.google.com with ESMTPS id q2si14521297ybp.400.2020.11.01.20.40.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 01 Nov 2020 19:13:54 -0800 (PST)
+        Sun, 01 Nov 2020 20:40:23 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:50230 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:40492 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZQI5-0006u7-LW
-	for alex.bennee@linaro.org; Sun, 01 Nov 2020 22:13:53 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59948)
+	id 1kZRdm-0004WP-5o
+	for alex.bennee@linaro.org; Sun, 01 Nov 2020 23:40:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41220)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kZQHy-0006tt-Lq; Sun, 01 Nov 2020 22:13:46 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2315)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kZRdU-0004Vt-BQ; Sun, 01 Nov 2020 23:40:04 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2122)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
- id 1kZQHv-00054y-G2; Sun, 01 Nov 2020 22:13:46 -0500
-Received: from DGGEMS409-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CPdKT2S6wzkbQL;
- Mon,  2 Nov 2020 11:13:33 +0800 (CST)
-Received: from [10.174.186.67] (10.174.186.67) by
- DGGEMS409-HUB.china.huawei.com (10.3.19.209) with Microsoft SMTP Server id
- 14.3.487.0; Mon, 2 Nov 2020 11:13:25 +0800
-Subject: Re: [RFC PATCH v2 07/13] hw/arm/virt-acpi-build: distinguish possible
- and present cpus Message
-To: Andrew Jones <drjones@redhat.com>
-References: <20201020131440.1090-1-fangying1@huawei.com>
- <20201020131440.1090-8-fangying1@huawei.com>
- <20201029172016.rsgo4stjrkdr7j2r@kamzik.brq.redhat.com>
-From: Ying Fang <fangying1@huawei.com>
-Message-ID: <da7abc9a-873f-b968-e366-3bdcedbf81ef@huawei.com>
-Date: Mon, 2 Nov 2020 11:13:24 +0800
-User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kZRdR-0004ER-Uz; Sun, 01 Nov 2020 23:40:03 -0500
+Received: from DGGEMS402-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CPgDt4XDjz6yM6;
+ Mon,  2 Nov 2020 12:39:42 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS402-HUB.china.huawei.com (10.3.19.202) with Microsoft SMTP Server id
+ 14.3.487.0; Mon, 2 Nov 2020 12:39:37 +0800
+Message-ID: <5F9F8D88.9030102@huawei.com>
+Date: Mon, 2 Nov 2020 12:39:36 +0800
+From: AlexChen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-In-Reply-To: <20201029172016.rsgo4stjrkdr7j2r@kamzik.brq.redhat.com>
-Content-Type: text/plain; charset="utf-8"; format=flowed
-Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH V2] hw/display/exynos4210_fimd: Fix potential NULL pointer
+ dereference
+Content-Type: text/plain; charset="ISO-8859-1"
 Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.186.67]
+X-Originating-IP: [10.174.187.138]
 X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=fangying1@huawei.com;
- helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/01 22:13:36
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=alex.chen@huawei.com;
+ helo=szxga07-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/01 23:39:44
 X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
 X-Spam_score_int: -41
 X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -93,125 +87,41 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
- qemu-devel@nongnu.org, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
- qemu-arm@nongnu.org, alistair.francis@wdc.com, imammedo@redhat.com
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU <qemu-devel@nongnu.org>, zhang.zhanghailiang@huawei.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: AHWQgMxAxap6
+X-TUID: 1936UdSjFgLI
 
+In exynos4210_fimd_update(), the pointer s is dereferinced before
+being check if it is valid, which may lead to NULL pointer dereference.
+So move the assignment to global_width after checking that the s is valid.
 
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Alex Chen <alex.chen@huawei.com>
+---
+ hw/display/exynos4210_fimd.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-On 10/30/2020 1:20 AM, Andrew Jones wrote:
-> 
-> You need to remove 'Message' from the summary.
-> 
-> On Tue, Oct 20, 2020 at 09:14:34PM +0800, Ying Fang wrote:
->> When building ACPI tables regarding CPUs we should always build
->> them for the number of possible CPUs, not the number of present
->> CPUs. We then ensure only the present CPUs are enabled.
->>
->> Signed-off-by: Andrew Jones <drjones@redhat.com>
-> 
-> I guess my s-o-b is here because this is a rework of
-> 
-> https://github.com/rhdrjones/qemu/commit/b18d7a889f424b8a8679c43d7f4804fdeeeaf3fd
+diff --git a/hw/display/exynos4210_fimd.c b/hw/display/exynos4210_fimd.c
+index 4c16e1f5a0..34a960a976 100644
+--- a/hw/display/exynos4210_fimd.c
++++ b/hw/display/exynos4210_fimd.c
+@@ -1275,12 +1275,14 @@ static void exynos4210_fimd_update(void *opaque)
+     bool blend = false;
+     uint8_t *host_fb_addr;
+     bool is_dirty = false;
+-    const int global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
++    int global_width;
 
-The s-o-b is given since this one is based on your branch.
+     if (!s || !s->console || !s->enabled ||
+         surface_bits_per_pixel(qemu_console_surface(s->console)) == 0) {
+         return;
+     }
++
++    global_width = (s->vidtcon[2] & FIMD_VIDTCON2_SIZE_MASK) + 1;
+     exynos4210_update_resolution(s);
+     surface = qemu_console_surface(s->console);
 
-> 
-> I think it changed enough you could just drop my authorship. A
-> based-on comment in the commit message would be more than enough.
-
-Thanks. Will fix it. Hope it won't make you confused.
-
-> 
-> Comment on the patch below.
-> 
->> Signed-off-by: Ying Fang <fangying1@huawei.com>
->> ---
->>   hw/arm/virt-acpi-build.c | 17 ++++++++++++-----
->>   1 file changed, 12 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
->> index a222981737..fae5a26741 100644
->> --- a/hw/arm/virt-acpi-build.c
->> +++ b/hw/arm/virt-acpi-build.c
->> @@ -57,14 +57,18 @@
->>   
->>   #define ARM_SPI_BASE 32
->>   
->> -static void acpi_dsdt_add_cpus(Aml *scope, int cpus)
->> +static void acpi_dsdt_add_cpus(Aml *scope, VirtMachineState *vms)
->>   {
->>       uint16_t i;
->> +    CPUArchIdList *possible_cpus = MACHINE(vms)->possible_cpus;
->>   
->> -    for (i = 0; i < cpus; i++) {
->> +    for (i = 0; i < possible_cpus->len; i++) {
->>           Aml *dev = aml_device("C%.03X", i);
->>           aml_append(dev, aml_name_decl("_HID", aml_string("ACPI0007")));
->>           aml_append(dev, aml_name_decl("_UID", aml_int(i)));
->> +        if (possible_cpus->cpus[i].cpu == NULL) {
->> +            aml_append(dev, aml_name_decl("_STA", aml_int(0)));
->> +        }
->>           aml_append(scope, dev);
->>       }
->>   }
->> @@ -470,6 +474,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>       const int *irqmap = vms->irqmap;
->>       AcpiMadtGenericDistributor *gicd;
->>       AcpiMadtGenericMsiFrame *gic_msi;
->> +    int possible_cpus = MACHINE(vms)->possible_cpus->len;
->>       int i;
->>   
->>       acpi_data_push(table_data, sizeof(AcpiMultipleApicTable));
->> @@ -480,7 +485,7 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>       gicd->base_address = cpu_to_le64(memmap[VIRT_GIC_DIST].base);
->>       gicd->version = vms->gic_version;
->>   
->> -    for (i = 0; i < MACHINE(vms)->smp.cpus; i++) {
->> +    for (i = 0; i < possible_cpus; i++) {
->>           AcpiMadtGenericCpuInterface *gicc = acpi_data_push(table_data,
->>                                                              sizeof(*gicc));
->>           ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(i));
->> @@ -495,7 +500,9 @@ build_madt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>           gicc->cpu_interface_number = cpu_to_le32(i);
->>           gicc->arm_mpidr = cpu_to_le64(armcpu->mp_affinity);
->>           gicc->uid = cpu_to_le32(i);
->> -        gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
->> +        if (i < MACHINE(vms)->smp.cpus) {
-> 
-> Shouldn't this be
-
-Yes, Stupid mistake. Maybe it was lost when I am doing the rebase.
-Will fix that. Thanks for your patience in the reply and review.
-
-Ying Fang.
-> 
->          if (possible_cpus->cpus[i].cpu != NULL) {
-> 
->> +            gicc->flags = cpu_to_le32(ACPI_MADT_GICC_ENABLED);
->> +        }
->>   
->>           if (arm_feature(&armcpu->env, ARM_FEATURE_PMU)) {
->>               gicc->performance_interrupt = cpu_to_le32(PPI(VIRTUAL_PMU_IRQ));
->> @@ -599,7 +606,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker, VirtMachineState *vms)
->>        * the RTC ACPI device at all when using UEFI.
->>        */
->>       scope = aml_scope("\\_SB");
->> -    acpi_dsdt_add_cpus(scope, ms->smp.cpus);
->> +    acpi_dsdt_add_cpus(scope, vms);
->>       acpi_dsdt_add_uart(scope, &memmap[VIRT_UART],
->>                          (irqmap[VIRT_UART] + ARM_SPI_BASE));
->>       if (vmc->acpi_expose_flash) {
->> -- 
->> 2.23.0
->>
->>
-> 
-> Thanks,
-> drew
-> 
-> .
-> 
+-- 
+2.19.1

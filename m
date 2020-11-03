@@ -1,116 +1,107 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4968615lfa;
-        Tue, 3 Nov 2020 09:03:00 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzDiAC9qeqeDchpyX76tKXmXgemlMAW5/4sr03oyioL7Yy4oFXGNMw8PWuriTGjntWKm6aG
-X-Received: by 2002:a1c:2842:: with SMTP id o63mr76134wmo.59.1604422980017;
-        Tue, 03 Nov 2020 09:03:00 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604422980; cv=none;
+Received: by 2002:a0c:eda5:0:0:0:0:0 with SMTP id h5csp5118482qvr;
+        Tue, 3 Nov 2020 04:40:11 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyELd1BroV0EJvrVRgx8Sl4TDgAGkceJUcgysp4EFgY05gKiNoVF5BpyBbxpMc0rGTX32/i
+X-Received: by 2002:ac8:36bc:: with SMTP id a57mr15555297qtc.193.1604407210973;
+        Tue, 03 Nov 2020 04:40:10 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604407210; cv=none;
         d=google.com; s=arc-20160816;
-        b=kN2IMFPsa6JuRmVngE+nLmTDwki8x8XYHbcqdSKFbJjpMgB/ibODVhu8WivSlWNkXy
-         e4ZLxNSxMXQFd8Q6ptLtGc6uE3pedwnynLVgqBGFEMtvnokNnKRqLC/GNh4vtExOcG6s
-         cLQ21mmEI0kgVziqzAOFa7n2RFWkKlW2nq8SD+IzGjkObWFwHtO/EzrESnNYKX1QY74E
-         n/u6AtaEgpvzRWqqyLGCYu4BGlEPSU3rqauZMss2jwdArqRk3MyW3O5sVKPhbcn0RZPq
-         EIb/iUxBWFTV6RCNja5qf9c62tQ5n04MBUNHEUOhGj9ZlmNAW+BMh6QqMZPzxxAx/Jnn
-         DCnQ==
+        b=IRnnAvWZ5wvOvG5fXqIqDlT2AheqDczc2l+em1Ly59/16Y+joc9RCRF9g+TZ9jR65N
+         qMoZEJ5wm6qUJ7VY1s8yk3nLDFwc2iqjxf//nfM85QkNibUu18UDyCbsWe9wtgWQWl9x
+         ll1O1QRWAEtFcISC82ZjbASYh8pxS+sAXXrzd5bxcpgYFFa4neCEVU6lL7RUPgrvKS3i
+         MgttXwtlOHT0r6QBPDx91HucjBny0MlUrix1C4cNNWVX5i11nNgfxhvVgoZs8pxdxGOy
+         F2qMynYBSlh16iVZY2lXpaVCeGYgpZxml7g57j2HkyZNJmweHKObuthE8czgnpN/Kueh
+         kz9Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=K+WGWnzJYW4S2iI8/mx93AwJbjDQ0v4CrAPEeljIjTg=;
-        b=qUmMQxTd91FXq7BU3QjMJY2kOBbtzvRFp6xwSlxIuDnA5rLcfS7nSW9OYXS2WTo8UH
-         rThPTqfoi5Txz8B9rCNTDybIDBJyxhNnK9jKhdEnW3VCYHxHMjP8tpHIpXmgFen3rPDi
-         U5uvbPBIreHML6/1Th22sNo/Lq1OkAJfIwa4In8S+5IUVtq9hy9g06pBnTLvTATDkvzE
-         ipWXCVN9svk6Vgw52h7D0xCLXH5qn9ggjnw8DBMUSiHjiBqw1mtBiMUzXgL3e87XJFhl
-         Ak4BDAUP2BEo691EwcQiphBo3w76TnVdy96sl/u5/TeMHUPwocd9elKs+HgdWNpirFMx
-         CedQ==
+         :mime-version:references:in-reply-to:message-id:subject:to:from:date
+         :dkim-signature;
+        bh=UI6Y4+XlJlwrHvxocB3ncP7ba8NPybAEToiaJnoIIyI=;
+        b=Wbcwmx7SUWT3KmCDF1Y1SN7Qvu1QszKbQ98JW5Ojsyf5fvFp7eQGarFNMSO196wQUg
+         /ywJDIPMloQgO1cqfV5V7iu6WinhNP3gLib9D9ZJ5sSWoPVyJovAF3IomUKQJqnl8Ia0
+         3n/l9svYq0eL+eVaVHKmEwIPN49L5pB5KlzURb3gwRcnSIGHtwSS7CYIFF+HCEtlltZp
+         ZpAuEgIHe89MswW9eeQWg+S8RukC4HA3aRF19dCZlGnF3P931VGbDxY+69LuqQQqudqW
+         FEyEO1PFSekZaI7yWRgbj/LTbN+8wePfkoHN03l65Bi7fljhkptyJ9lz3jnE6foFFvEw
+         aQqg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KJCh7aJK;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ts3Ix3o3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l23si1020697wme.129.2020.11.03.09.02.59
+        by mx.google.com with ESMTPS id p4si10704850qke.280.2020.11.03.04.40.10
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Nov 2020 09:03:00 -0800 (PST)
+        Tue, 03 Nov 2020 04:40:10 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KJCh7aJK;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=Ts3Ix3o3;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39886 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:48090 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZzhz-00085W-1A
-	for alex.bennee@linaro.org; Tue, 03 Nov 2020 12:02:59 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:51190)
+	id 1kZvbe-0005bt-El
+	for alex.bennee@linaro.org; Tue, 03 Nov 2020 07:40:10 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:52052)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kZzg6-0005h5-Ec
- for qemu-arm@nongnu.org; Tue, 03 Nov 2020 12:01:02 -0500
-Received: from mail-pf1-x443.google.com ([2607:f8b0:4864:20::443]:40436)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1kZzg4-00085B-1H
- for qemu-arm@nongnu.org; Tue, 03 Nov 2020 12:01:01 -0500
-Received: by mail-pf1-x443.google.com with SMTP id 72so8050577pfv.7
- for <qemu-arm@nongnu.org>; Tue, 03 Nov 2020 09:00:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=K+WGWnzJYW4S2iI8/mx93AwJbjDQ0v4CrAPEeljIjTg=;
- b=KJCh7aJKI5EnlxloJ4ZPnSMBxccao4rWDqVyxz5LMOoMOiUCo4iSkJ89a2xJC63U75
- EDOwAtgFYdqUMyDoUJmb8OkuevOLyoOrGOsWXfBFZUBoNfY2k4uC7027gHRtGdMhnyf8
- CaBeh+xDH7LxHLVb74apmiACWVBCN28ff1/gtjvtnr9jEIiCWgne4dx/0OhSzeYPq23D
- s89JwzTYIPyAKgXnda4BYgS7Mrv1jSzIwPT9IGgrXf3THR0YOZQcDmJsd5vhl8nkMSZs
- L2l36Vo6KfG7qlDhqCjXIgnNegqKtHzlysZOrh2lwwi56Fjtw2qwWplZcuJNIv5VFRrY
- Cxmg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=K+WGWnzJYW4S2iI8/mx93AwJbjDQ0v4CrAPEeljIjTg=;
- b=JwwYggs2gEN0Wj3Z3wRP+BIKI1uq8Vdxkk05MZ3cue4A2TRXR0LbM9J33UJCgwwUJL
- QqoL2o1zvv+97u5FaRnIT51dDgVbmKce6oBNt9xny41halcS4D+UDRdJI2DIDhLijPxU
- jG1H5Z9dOjUf9lsDQJuWlCy0O0Fni5vIsPjXtvdBUit0zbo0w5uNVyqDyRiU2GLGgfwb
- 6HjuOvRE0a/7Ly3Xkd6rIMIs80FewTtpsEed7yBj23o+UwGRXpIeNdzOuiSUIho1rus3
- wYY0rOk8Qe7JiaMONastzof5Gfw+HH/MHAdNDrtz4m+TsVjKUugIEvTK+sldDUxERQOt
- nAZQ==
-X-Gm-Message-State: AOAM533TIbR2BkbpomCcs9nZ7K7sufHVUWS9jlAwhlQ9AzC/oANB8F/h
- y4qplMLFL0vylCKoAjnzOLFy1A==
-X-Received: by 2002:aa7:84d5:0:b029:18a:ae45:54bc with SMTP id
- x21-20020aa784d50000b029018aae4554bcmr15469760pfn.27.1604422856231; 
- Tue, 03 Nov 2020 09:00:56 -0800 (PST)
-Received: from [172.16.1.221] (76-14-210-194.or.wavecable.com. [76.14.210.194])
- by smtp.gmail.com with ESMTPSA id j24sm4042568pjn.9.2020.11.03.09.00.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Nov 2020 09:00:52 -0800 (PST)
-Subject: Re: [PATCH 04/14] target/arm: factor MDCR_EL2 common handling
-To: remi.denis.courmont@huawei.com, qemu-arm@nongnu.org
-References: <2172054.ElGaqSPkdT@basile.remlab.net>
- <20201102105802.39332-4-remi.denis.courmont@huawei.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <fe08bf17-ec53-582b-1d3f-bb78b2403691@linaro.org>
-Date: Tue, 3 Nov 2020 09:00:49 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1kZvb3-0005af-Kd
+ for qemu-arm@nongnu.org; Tue, 03 Nov 2020 07:39:33 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:50656)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1kZvb0-0006OM-NO
+ for qemu-arm@nongnu.org; Tue, 03 Nov 2020 07:39:33 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604407165;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=UI6Y4+XlJlwrHvxocB3ncP7ba8NPybAEToiaJnoIIyI=;
+ b=Ts3Ix3o3h8sV7RTCxennQ5YDR6aviviUMswXgDMyrv+5rs8PKBwbNzYbDkim8aXRi0iZCY
+ aNvqkQTIy0QrE4saQAGGxZKp4zAQDKTguLfydcADuFVE3o/d9k8MCOQXuI8MDKQkKLcz/y
+ kDd9K938EfEl7UJmrzCsLk/lpYJElCY=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-164-z2r4LVopP_-IEtFB6vhpUA-1; Tue, 03 Nov 2020 07:39:21 -0500
+X-MC-Unique: z2r4LVopP_-IEtFB6vhpUA-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.phx2.redhat.com
+ [10.5.11.22])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 4245180364D;
+ Tue,  3 Nov 2020 12:39:20 +0000 (UTC)
+Received: from localhost (unknown [10.40.208.69])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 3F47F1002D49;
+ Tue,  3 Nov 2020 12:39:16 +0000 (UTC)
+Date: Tue, 3 Nov 2020 13:39:13 +0100
+From: Igor Mammedov <imammedo@redhat.com>
+To: Ying Fang <fangying1@huawei.com>
+Subject: Re: Question on UEFI ACPI tables setup and probing on arm64
+Message-ID: <20201103133913.1fee3337@redhat.com>
+In-Reply-To: <ee3b7fdf-f6ba-cafc-5b44-42b0bcda01c5@huawei.com>
+References: <ee3b7fdf-f6ba-cafc-5b44-42b0bcda01c5@huawei.com>
 MIME-Version: 1.0
-In-Reply-To: <20201102105802.39332-4-remi.denis.courmont@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::443;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x443.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+X-Scanned-By: MIMEDefang 2.84 on 10.5.11.22
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=imammedo@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 01:02:05
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -123,24 +114,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, lersek@redhat.com,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "wangzhigang17@huawei.com" <wangzhigang17@huawei.com>, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oni6k2WXNbnO
+X-TUID: MIPZMfTqXVoW
 
-On 11/2/20 2:57 AM, remi.denis.courmont@huawei.com wrote:
-> From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
+On Fri, 30 Oct 2020 10:50:01 +0800
+Ying Fang <fangying1@huawei.com> wrote:
+
+> Hi,
 > 
-> This adds a common helper to compute the effective value of MDCR_EL2.
-> That is the actual value if EL2 is enabled in the current security
-> context, or 0 elsewise.
+> I have a question on UEFI/ACPI tables setup and probing on arm64 platform.
+
+CCing Laszlo,
+who might know how it's implemented.
+ 
+> Currently on arm64 platform guest can be booted with both fdt and ACPI
+> supported. If ACPI is enabled, [1] says the only defined method for
+> passing ACPI tables to the kernel is via the UEFI system configuration
+> table. So AFAIK, ACPI Should be dependent on UEFI.
 > 
-> Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-> ---
->  target/arm/helper.c | 38 ++++++++++++++++++++++----------------
->  1 file changed, 22 insertions(+), 16 deletions(-)
+> What's more [2] says UEFI kernel support on the ARM architectures
+> is only available through a *stub*. The stub populates the FDT /chosen
+> node with some UEFI parameters describing the UEFI location info.
+> 
+> So i dump /sys/firmware/fdt from the guest, it does have something like:
+> 
+> /dts-v1/;
+> 
+> / {
+> 	#size-cells = <0x02>;
+> 	#address-cells = <0x02>;
+> 
+> 	chosen {
+> 		linux,uefi-mmap-desc-ver = <0x01>;
+> 		linux,uefi-mmap-desc-size = <0x30>;
+> 		linux,uefi-mmap-size = <0x810>;
+> 		linux,uefi-mmap-start = <0x04 0x3c0ce018>;
+> 		linux,uefi-system-table = <0x04 0x3f8b0018>;
+> 		bootargs = "BOOT_IMAGE=/vmlinuz-4.19.90-2003.4.0.0036.oe1.aarch64 
+> root=/dev/mapper/openeuler-root ro rd.lvm.lv=openeuler/root 
+> rd.lvm.lv=openeuler/swap video=VGA-1:640x480-32@60me 
+> smmu.bypassdev=0x1000:0x17 smmu.bypassdev=0x1000:0x15 
+> crashkernel=1024M,high video=efifb:off video=VGA-1:640x480-32@60me";
+> 		linux,initrd-end = <0x04 0x3a85a5da>;
+> 		linux,initrd-start = <0x04 0x392f2000>;
+> 	};
+> };
+> 
+> But the question is that I did not see any code adding the uefi
+> in fdt chosen node in *arm_load_dtb* or anywhere else.
+> Qemu only maps the OVMF binary file into a pflash device.
+> So I'm really confused on how UEFI information is provided to
+> guest by qemu. Does anybody know of the details about it ?
+> 
+> [1] https://www.kernel.org/doc/html/latest/arm64/arm-acpi.html
+> [2] https://www.kernel.org/doc/Documentation/arm/uefi.rst
+> 
+> Thanks.
+> Ying
+> 
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~

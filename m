@@ -1,125 +1,86 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4413736lfa;
-        Mon, 2 Nov 2020 17:53:37 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyCkCspq1Jb/J+eLW7btLp2f4VDq1kqiPUos+ZkYCjIi5B1n41pWiagofSLFzXVh6BZIyZU
-X-Received: by 2002:aed:2141:: with SMTP id 59mr16921765qtc.117.1604368417189;
-        Mon, 02 Nov 2020 17:53:37 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604368417; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4426095lfa;
+        Mon, 2 Nov 2020 18:17:51 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJy0GKYqwD1nNcSYHYBqNeFchoavGh6KQhwbPz92Et4KYRdoI53RBlMx/6uBGY7+xJjqA6m9
+X-Received: by 2002:ac8:6b8d:: with SMTP id z13mr17275582qts.41.1604369871482;
+        Mon, 02 Nov 2020 18:17:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604369871; cv=none;
         d=google.com; s=arc-20160816;
-        b=StbWbGQUo6hCJNiAMUOqvB2ZzdEyP0qtiU14uvGsjxQPf54w8EkRoM7JRoeb97QNqp
-         rqdyrQ18kyioj7d+gkQKSTHS/C0/oPVEXUALeTCgXbg1nq9T98am5YetjWjpBXhZ5jSL
-         aNg2G4puRb7q9rgDEqlwXssVZ4Ft3Ggohzx38k/SnBgwuJmrDYjpidI5nPFpJPuDyzLf
-         0XQ83Wco1D9AR5jsg68zwuXo9JCqPZ74erKCih+2GqC/vCri4WNcSS4ss4T1c2UXpPgO
-         LyGk69bEuiUS5R4Q0MpTCHxxZVnbt3MuXJBLRw9tms0+reHPB/pZdm5n71NkTv8Wp4s9
-         VbAg==
+        b=xQp70avurlxDhA/KY5clD/bbKwXpoUAxlpi+uG1xBSZ5261HCB5MuhDADAmiBfANcA
+         +7beonXc8X4uaGRJJX5ddYbrFAd9Hj08d9zsEX3UqRUD/4GsKLQ4hNAnWClGjGP5WKYu
+         ABJ6qbVZw/schvgqf+Itx0KK82c6E2wDTkRQIK3RJMNmPY8zuZ4wQPyU4l8ITG+4AxGO
+         7uyD6PrAer1Y3VyIBm/7Xzuip/DLMs2eJzTtMsR41QzPHQW2KzGm/+Y32XpWSfZ+gSRo
+         KwjkmSarcPfUNH9VMPNVEFfLOybM8O5jppd7M/hzvat3AalUTPqGPDSKDTocz/unjVZd
+         1Hqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=yQh3j0ya4FkuELdIrOQG6llK5JJkZVpPImMv0NSBfXE=;
-        b=uHsRuTxAxsw3NHpA19f2xyoP7fdQauszxCx4AiXca5HuAWCQRGqE2lcZugLgejbTp5
-         8cCAx38/wL8f4sXxkE1oTZCSsWEwnrZnMbiTQT2ogQRRoNVxBjaitg9Aq1SNOj+ANXKO
-         iFcZZu8ppHFbr7clA6GRuG+4fZUzcSiNsVw43RBXSu1tTR0kJgM8YtoCl7kVnttW6Eko
-         aTLuiG3+osJ1PsBaJh3gSCl0ergh3v/MzCiVdwuYrDq5Rr82wdPRH+gVqcN16DpPBO5X
-         tn6lUGd4mjGr3c1gkEis6sHCA90ULp6k+m5XkVuSIpyEbSt97puYpHtQAgLddsz+ZlU+
-         ZFKA==
+         :message-id:from:references:to:subject;
+        bh=U/IFe3TiQZkYedYqmSFZTUSTn9CDh08U/jzyWBcqfzU=;
+        b=xkF/5b5oN8qmQQNLoGTHAoK1X4IcT4c81YMyQYjzq6IVbraYh/jsdUoDiTogingGQq
+         yX8rN+qpVDHLb/w1Bflw18v0rwBMuRRD87KUhEUnhfQL8NpmKCWupiO1bAVQZoG+4jMm
+         QID8sXGcWRP1IP1rMpQcpb3WLUR7e5SmFa20kv7XysAdjpIgcoIQYBGjynBz9aY8gbAt
+         gIa8iXbOg7EApAhU4/VUvq/HMZBqWCUgiV7i7Ier52QPINiN80ESh0Ghy3eULg3YaUH4
+         zZkV3dmQLMAwsWP0WUcxr/lEdaECYViRWf02YdtEamUnaqc5aLyk3cns51pqKgxckmjP
+         KebA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S2do1pkQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t4si10053519qvy.12.2020.11.02.17.53.37
+        by mx.google.com with ESMTPS id w4si10695900qkf.89.2020.11.02.18.17.51
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Mon, 02 Nov 2020 17:53:37 -0800 (PST)
+        Mon, 02 Nov 2020 18:17:51 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=S2do1pkQ;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:47962 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:55060 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZlVw-0001aE-Hp
-	for alex.bennee@linaro.org; Mon, 02 Nov 2020 20:53:36 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:59344)
+	id 1kZltO-0000XS-U4
+	for alex.bennee@linaro.org; Mon, 02 Nov 2020 21:17:50 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:38576)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZlV8-0001Zq-Vv
- for qemu-arm@nongnu.org; Mon, 02 Nov 2020 20:52:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:33633)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <philmd@redhat.com>) id 1kZlV0-0001lC-MA
- for qemu-arm@nongnu.org; Mon, 02 Nov 2020 20:52:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604368357;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=yQh3j0ya4FkuELdIrOQG6llK5JJkZVpPImMv0NSBfXE=;
- b=S2do1pkQJTJo2qLRPq3qLIuhOxCCD+/vz+Q6ovJdlDIYGoCRgJsEuSzj2TOZWXtcSLG/1I
- /UfTwDVToIPn1JjZ9o6OA0fvfimDIjntP9GcEV45+3AP0P26ZexPdjeJleTJgWMP85/yBh
- 40fR/oUzRmLDDrwo+zLhEdkB0irfoCE=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-427-vP9e4lEtPTShxVg7MYSC9A-1; Mon, 02 Nov 2020 20:52:33 -0500
-X-MC-Unique: vP9e4lEtPTShxVg7MYSC9A-1
-Received: by mail-wm1-f69.google.com with SMTP id z62so4805659wmb.1
- for <qemu-arm@nongnu.org>; Mon, 02 Nov 2020 17:52:33 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=yQh3j0ya4FkuELdIrOQG6llK5JJkZVpPImMv0NSBfXE=;
- b=Vvqf68FOujuRieK0mzZGv8B3gzx0aXIrmaTAzQPL9QK/TpdDuqSBPWHVnmIaD9gFPX
- 2jfBT92F89Dl4gudeYW/w2jbrPTzJ+EBudAk6HXhB9ThvS7RxOBSl9wCBpHePhvmMoIw
- Q/p23nlApSwhd5sL1uIUqS8InAaJk0FbOIxN95VNbsb3ZJW9j3Ceux1m+EQ2qPjwwJph
- 0/Zohgja0yqBVfkhb9x2oEalixJ6sXqv2dEsA3zxUkRCKoxPh40zq7TSl+AOD/olWi41
- WYvzNFT4npfnIg+RTdreEmqZOa10nEHDcaj6F4pqwGfVYzgiRSNPF5d6in1nUe0a7K+L
- rp4Q==
-X-Gm-Message-State: AOAM533bccwI3ghVSDzZq0PevgnDnKXTCWQ9OIcqjMejW7TpZqcOUxUz
- t7te9qQISjLWMsHm9f0H/WXJbj57ZNVvcGMpFjEuF8cFyf6DF4IPshRD+PLLNLi9y/FxW8Uv6RE
- G3rc8e9bJRoW6
-X-Received: by 2002:adf:fa4e:: with SMTP id y14mr22656931wrr.377.1604368352541; 
- Mon, 02 Nov 2020 17:52:32 -0800 (PST)
-X-Received: by 2002:adf:fa4e:: with SMTP id y14mr22656910wrr.377.1604368352245; 
- Mon, 02 Nov 2020 17:52:32 -0800 (PST)
-Received: from [192.168.1.36] (234.red-83-42-66.dynamicip.rima-tde.net.
- [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id f17sm1339282wme.22.2020.11.02.17.52.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 02 Nov 2020 17:52:31 -0800 (PST)
-Subject: Re: [PATCH 0/3] tests/qtest: npcm7xx test fixes
-To: Havard Skinnemoen <hskinnemoen@google.com>, peter.maydell@linaro.org
-References: <20201103011457.2959989-1-hskinnemoen@google.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>
-Message-ID: <d41219dd-6cac-f4a4-d559-27ac9b9d9554@redhat.com>
-Date: Tue, 3 Nov 2020 02:52:30 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.3.1
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kZlsM-0000WI-9k; Mon, 02 Nov 2020 21:16:48 -0500
+Received: from szxga07-in.huawei.com ([45.249.212.35]:2124)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <fangying1@huawei.com>)
+ id 1kZlsC-0004fk-5D; Mon, 02 Nov 2020 21:16:45 -0500
+Received: from DGGEMS408-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga07-in.huawei.com (SkyGuard) with ESMTP id 4CQD185FYkz71jM;
+ Tue,  3 Nov 2020 10:16:28 +0800 (CST)
+Received: from [10.174.186.67] (10.174.186.67) by
+ DGGEMS408-HUB.china.huawei.com (10.3.19.208) with Microsoft SMTP Server id
+ 14.3.487.0; Tue, 3 Nov 2020 10:16:22 +0800
+Subject: Re: [RFC PATCH v2 08/13] hw/acpi/aml-build: add processor hierarchy
+ node structure
+To: Andrew Jones <drjones@redhat.com>
+References: <20201020131440.1090-1-fangying1@huawei.com>
+ <20201020131440.1090-9-fangying1@huawei.com>
+ <20201029172458.kgeab6rkjrb6wtyw@kamzik.brq.redhat.com>
+From: Ying Fang <fangying1@huawei.com>
+Message-ID: <cc8fc8d7-3b7e-fac5-0b1d-3a1aa5674642@huawei.com>
+Date: Tue, 3 Nov 2020 10:16:22 +0800
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101
+ Thunderbird/68.7.0
 MIME-Version: 1.0
-In-Reply-To: <20201103011457.2959989-1-hskinnemoen@google.com>
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=philmd@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <20201029172458.kgeab6rkjrb6wtyw@kamzik.brq.redhat.com>
+Content-Type: text/plain; charset="utf-8"; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=216.205.24.124; envelope-from=philmd@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 20:52:37
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.186.67]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.35; envelope-from=fangying1@huawei.com;
+ helo=szxga07-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/02 20:47:30
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -132,33 +93,118 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, "Daniel P . Berrange" <berrange@redhat.com>,
- qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, zhang.zhanghailiang@huawei.com,
+ qemu-devel@nongnu.org, alex.chen@huawei.com, shannon.zhaosl@gmail.com,
+ Henglong Fan <fanhenglong@huawei.com>, alistair.francis@wdc.com,
+ qemu-arm@nongnu.org, imammedo@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: nQHez3TUzmO4
+X-TUID: j7/EViMAJ7Bn
 
-Cc'ing Daniel (patches 1-3) & Marc-André (2).
 
-On 11/3/20 2:14 AM, Havard Skinnemoen via wrote:
-> This series contains a fix for the randomness calculation in npcm7xx_rng-test.
-> It also makes test failures fatal. The last patch would have dumped the random
-> data to stderr if the randomness test fails, except now that failures are
-> fatal, it never actually gets a chance to do that.
-> 
-> It may not make sense to apply all three, but I'd definitely take (1), and I'll
-> leave it up to you whether to apply (2), (3) or both.
-> 
-> Havard Skinnemoen (3):
->   tests/qtest/npcm7xx_rng-test: count runs properly
->   tests/qtest/npcm7xx: Don't call g_test_set_nonfatal_assertions
->   tests/qtest/npcm7xx_rng-test: dump random data on failure
-> 
->  tests/qtest/npcm7xx_gpio-test.c           |  1 -
->  tests/qtest/npcm7xx_rng-test.c            | 15 +++++++++++++--
->  tests/qtest/npcm7xx_timer-test.c          |  1 -
->  tests/qtest/npcm7xx_watchdog_timer-test.c |  1 -
->  4 files changed, 13 insertions(+), 5 deletions(-)
-> 
 
+On 10/30/2020 1:24 AM, Andrew Jones wrote:
+> On Tue, Oct 20, 2020 at 09:14:35PM +0800, Ying Fang wrote:
+>> Add the processor hierarchy node structures to build ACPI information
+>> for CPU topology. Three helpers are introduced:
+>>
+>> (1) build_socket_hierarchy for socket description structure
+>> (2) build_processor_hierarchy for processor description structure
+>> (3) build_smt_hierarchy for thread (logic processor) description structure
+> 
+> I see now the reason to introduce three functions is because the last
+> patch adds different private resources. You should point that plan out
+> in this commit message.
+
+Yes, the private resources are used to describe cache hierarchy
+and it is variable among different topology level. I will point it
+out in the commit message to avoid any confusion.
+
+Thanks,
+Ying
+
+> 
+> Thanks,
+> drew
+> 
+>>
+>> Signed-off-by: Ying Fang <fangying1@huawei.com>
+>> Signed-off-by: Henglong Fan <fanhenglong@huawei.com>
+>> ---
+>>   hw/acpi/aml-build.c         | 37 +++++++++++++++++++++++++++++++++++++
+>>   include/hw/acpi/aml-build.h |  7 +++++++
+>>   2 files changed, 44 insertions(+)
+>>
+>> diff --git a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+>> index 3792ba96ce..da3b41b514 100644
+>> --- a/hw/acpi/aml-build.c
+>> +++ b/hw/acpi/aml-build.c
+>> @@ -1770,6 +1770,43 @@ void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms)
+>>                    table_data->len - slit_start, 1, NULL, NULL);
+>>   }
+>>   
+>> +/*
+>> + * ACPI 6.3: 5.2.29.1 Processor hierarchy node structure (Type 0)
+>> + */
+>> +void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
+>> +{
+>> +    build_append_byte(tbl, 0);          /* Type 0 - processor */
+>> +    build_append_byte(tbl, 20);         /* Length, no private resources */
+>> +    build_append_int_noprefix(tbl, 0, 2);  /* Reserved */
+>> +    build_append_int_noprefix(tbl, 1, 4);  /* Flags: Physical package */
+>> +    build_append_int_noprefix(tbl, parent, 4);  /* Parent */
+>> +    build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
+>> +    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
+>> +}
+>> +
+>> +void build_processor_hierarchy(GArray *tbl, uint32_t flags,
+>> +                               uint32_t parent, uint32_t id)
+>> +{
+>> +    build_append_byte(tbl, 0);          /* Type 0 - processor */
+>> +    build_append_byte(tbl, 20);         /* Length, no private resources */
+>> +    build_append_int_noprefix(tbl, 0, 2);      /* Reserved */
+>> +    build_append_int_noprefix(tbl, flags, 4);  /* Flags */
+>> +    build_append_int_noprefix(tbl, parent, 4); /* Parent */
+>> +    build_append_int_noprefix(tbl, id, 4);     /* ACPI processor ID */
+>> +    build_append_int_noprefix(tbl, 0, 4);  /* Number of private resources */
+>> +}
+>> +
+>> +void build_smt_hierarchy(GArray *tbl, uint32_t parent, uint32_t id)
+>> +{
+>> +    build_append_byte(tbl, 0);            /* Type 0 - processor */
+>> +    build_append_byte(tbl, 20);           /* Length, add private resources */
+>> +    build_append_int_noprefix(tbl, 0, 2); /* Reserved */
+>> +    build_append_int_noprefix(tbl, 0x0e, 4);    /* Processor is a thread */
+>> +    build_append_int_noprefix(tbl, parent , 4); /* parent */
+>> +    build_append_int_noprefix(tbl, id, 4);      /* ACPI processor ID */
+>> +    build_append_int_noprefix(tbl, 0, 4);       /* Num of private resources */
+>> +}
+>> +
+>>   /* build rev1/rev3/rev5.1 FADT */
+>>   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>>                   const char *oem_id, const char *oem_table_id)
+>> diff --git a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+>> index fe0055fffb..56474835a7 100644
+>> --- a/include/hw/acpi/aml-build.h
+>> +++ b/include/hw/acpi/aml-build.h
+>> @@ -437,6 +437,13 @@ void build_srat_memory(AcpiSratMemoryAffinity *numamem, uint64_t base,
+>>   
+>>   void build_slit(GArray *table_data, BIOSLinker *linker, MachineState *ms);
+>>   
+>> +void build_socket_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
+>> +
+>> +void build_processor_hierarchy(GArray *tbl, uint32_t flags,
+>> +                               uint32_t parent, uint32_t id);
+>> +
+>> +void build_smt_hierarchy(GArray *tbl, uint32_t parent, uint32_t id);
+>> +
+>>   void build_fadt(GArray *tbl, BIOSLinker *linker, const AcpiFadtData *f,
+>>                   const char *oem_id, const char *oem_table_id);
+>>   
+>> -- 
+>> 2.23.0
+>>
+>>
+> 
+> .
+> 

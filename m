@@ -1,139 +1,144 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp1579687lfa;
-        Fri, 30 Oct 2020 07:20:15 -0700 (PDT)
-X-Google-Smtp-Source: ABdhPJwRJxjqj6OV0q062O4YG0xrKGBCqhjLizJQhTGAifAI0qLSqNTsQYXWv/zQECD9EX0LB+2T
-X-Received: by 2002:aed:31e3:: with SMTP id 90mr2358663qth.300.1604067614986;
-        Fri, 30 Oct 2020 07:20:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1604067614; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4399977lfa;
+        Mon, 2 Nov 2020 17:25:29 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJx/+yo7XwY9X4aPKXXXHfWYVTCTZFN1en9dAL2lh1eXSGjmVxOoNsSzpqWFbsqp0o3AJYXA
+X-Received: by 2002:ac8:67d9:: with SMTP id r25mr17029413qtp.21.1604366729288;
+        Mon, 02 Nov 2020 17:25:29 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604366729; cv=none;
         d=google.com; s=arc-20160816;
-        b=UVjGEZ9cz5HqAMD5xZI1XUh8ccmWShLSRIOZId0qUY2xk2APGa7KChWmNvjRG7axju
-         742q1yEVUbvpYwpe7Kv1GwbeJvwiBIA3hYe96jyUdFKnrykZrW068tQ0lwI/COGqyhsw
-         QemKseb021hgjkQgnkoTN0+A7pe3FTqWlLAKj9/C6wXh0Q1dMvuJ1Qcwy4qnOL//08vW
-         vwVtQ/LtpHk9UnojpgRBTGa0SOyVVrS/uX6XOP+QziY8ekP9D8TgofOuWmBXt+QOelU/
-         4U93pnLHNFx7BYv6R8R9AYYUtWaSVFdvWa6EfbkcNre48Jk/BH+Dot2PkT3ZnJ0gxnND
-         CbkQ==
+        b=T4MVo+0VpcOYnI6CL4yYGqdHwgmNAyvrAS7rspuVZt6hqNHWM9+I/2Ujf63anxvt88
+         3xgR/myfsKweCf09KrcETKb6aeW4Ic5c6ZZ4lpYlV7Q0JSCpF5ZoPs2nIlKXkk/wRAbJ
+         jE3CuVoLMwXEclgGSWeE77XW1AAlagzFSdpp6fdLc8nhec5hCfIGwn94sqjaaSFXVGC0
+         IZQbnptvQ9DFVdM5fpt22NHi2Px/bs1oyiLZPNR6P1fre1wTnP+hKua1pZaete9JMXjg
+         qHAhZjIJMXHGXO8ukdDmluIAM5b2ZZ1CiVyBQuEKJZsE193nQibqm4fcGyRp4jks6Gu/
+         f5tg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
-         :subject:message-id:date:from:in-reply-to:references:mime-version
-         :dkim-signature;
-        bh=encGXGDBIxLLYt5MkaJe/Ez6hqIFN5D8qmeAtZb1mM0=;
-        b=ZNBBfUs/8gcNMIChLe+M7iPK7uOvuexBaz6v5nVe2FPP8UA4oqHJ+nfxDp1Mgmbo+7
-         vsTbQKJwxPRkIahuUK8n9psGSuoK6gUCi+w1YNtUbCkSPYhfY9PkGUXCtmsYgyOqh7Ly
-         oX9v/els6xCqEOc2Vkxe6TMF/aOxwvlMlf97gk3kgyO5D3Q7N22zpfoFLDTdNU28MzVs
-         JQuKaCRhdPbwPIygpsHcJlC3GTQp49SyWXv0yWsfrV7mH/yNExS0h+WD4h16QUxdjbCO
-         iIkDKG/40/Qf2W3Uf8ZFE2aR2AnyaGCellBnqZqFI8N3vLN8CQDwW1IjyPHERPoV1Rsu
-         CGpQ==
+        h=from:reply-to:sender:errors-to:list-subscribe:list-help:list-post
+         :list-archive:list-unsubscribe:list-id:precedence:cc:to:subject
+         :mime-version:message-id:date:dkim-signature;
+        bh=ycYciR5K+P3VjbKI2G6b346ExygldG2CPllhZ0dgAr8=;
+        b=hicoyzXSfSwDwVUjNEyvvYSiCzsIbR/H11y8Xos6gkG9/exP+ffzstIwtQbEiKvB9j
+         KF3vzg4AdjrMEMH1uzIkfAkGeb2pO2BenCgDu/6wfLCXp85p0v9yOWudE5dIr6joUS7m
+         tS+7+Zs66fxTjQMEZ8vd5kAmJ+Nv64TxEvfQHPMaXrQkw0+WMHfcP0dNl4trbSdCEnQq
+         77CbxWSv29+4/Kwg3+GoretQrd/xGhGVGzA7JIGpyDcnOhuMCt/OsQB9c4un8O+pzzqo
+         R7cLQWzUB2gSfMKFoWpjXqtz+QO6tWc3AAj2WBUywd/G6kr0jx8Vrr7hBL52gwJ4dKa2
+         z1og==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JJcDqgz1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@google.com header.s=20161025 header.b=F3pktjMm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t2si3610757qvr.156.2020.10.30.07.20.14
+        by mx.google.com with ESMTPS id z28si2173866qtb.366.2020.11.02.17.25.29
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Fri, 30 Oct 2020 07:20:14 -0700 (PDT)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Mon, 02 Nov 2020 17:25:29 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=JJcDqgz1;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:39734 helo=lists1p.gnu.org)
+       dkim=fail header.i=@google.com header.s=20161025 header.b=F3pktjMm;
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=nongnu.org
+Received: from localhost ([::1]:49344 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kYVGI-0003d2-Cb
-	for alex.bennee@linaro.org; Fri, 30 Oct 2020 10:20:14 -0400
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46560)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kZl4i-0005nt-Ld
+	for alex.bennee@linaro.org; Mon, 02 Nov 2020 20:25:28 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:51662)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYVAw-0006M5-Hy
- for qemu-arm@nongnu.org; Fri, 30 Oct 2020 10:14:42 -0400
-Received: from mail-ed1-x542.google.com ([2a00:1450:4864:20::542]:43643)
+ (Exim 4.90_1) (envelope-from
+ <3H6-gXwsKCgQlwomrriqsirksskpi.gsquiqy-hiziprsrkry.svk@flex--hskinnemoen.bounces.google.com>)
+ id 1kZkuu-000843-LL
+ for qemu-devel@nongnu.org; Mon, 02 Nov 2020 20:15:21 -0500
+Received: from mail-qv1-xf49.google.com ([2607:f8b0:4864:20::f49]:46637)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kYVAt-0007XQ-Ih
- for qemu-arm@nongnu.org; Fri, 30 Oct 2020 10:14:42 -0400
-Received: by mail-ed1-x542.google.com with SMTP id dn5so6774812edb.10
- for <qemu-arm@nongnu.org>; Fri, 30 Oct 2020 07:14:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc:content-transfer-encoding;
- bh=encGXGDBIxLLYt5MkaJe/Ez6hqIFN5D8qmeAtZb1mM0=;
- b=JJcDqgz1RZsbfxr1SinJqWwxP/VvwjXCZsrm3wUoddKZ7N3XElPj98yXhk/ONeJgLJ
- YVkfnPITkAcWn5aJZY6qJUYQBaGKRQcSDRr6cYgnJ+XACynxTjMKTE6m3LklJqMeG8M9
- QFv0qraHd+DW12wgtT4sxowIZFLIXKn/8t9/YcSBaKuM7VfDLUyeAwfgmHhsKx8EjjwT
- O+wDdocyEmm85uj/NUaCoqotl6Fl0oXVPGVrICTJ+ESmJjWJcjJxXCbDWQcAsZHruFWH
- BMrkfOzo3Mn4StMXJ4Z5G7UwuT3BbDm8My38R2gosege/UR+3Cw9+xVpbKiSBFvUQEWu
- KqWQ==
+ (Exim 4.90_1) (envelope-from
+ <3H6-gXwsKCgQlwomrriqsirksskpi.gsquiqy-hiziprsrkry.svk@flex--hskinnemoen.bounces.google.com>)
+ id 1kZkuo-0005m4-WD
+ for qemu-devel@nongnu.org; Mon, 02 Nov 2020 20:15:20 -0500
+Received: by mail-qv1-xf49.google.com with SMTP id s9so6780802qvt.13
+ for <qemu-devel@nongnu.org>; Mon, 02 Nov 2020 17:15:11 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=20161025;
+ h=sender:date:message-id:mime-version:subject:from:to:cc;
+ bh=ycYciR5K+P3VjbKI2G6b346ExygldG2CPllhZ0dgAr8=;
+ b=F3pktjMmfYXQT5zRCT+hrE1y5cWOQZ2Z29Lrj6r59PCX5TsodzC/txAIsk8LlK35XJ
+ 4dsxmcktrQSoi9nU83EQzxkg/k8+LMRNX0crk1ngRXP9/9c6N6oPzuQuHK/uVA3eaikX
+ SvniQPrH0Aa6+Qju1/pnnqdgjbSeDH4DMlfE7G7Wsi8S3dBtL3PSeZLpask4VAxq78nI
+ kbqxxaab46G7ac3fCYTX/1zlPHxx+F5C1FnlF8agoIx82IBfB4Y6XoUZdbJ3FSU+qmYE
+ EjI9aJVSEWKLfumtP312xXbUoxfni5djsdjybdCmZJQcV0/lsCyy8sC5Je099h6fJAQM
+ irJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc:content-transfer-encoding;
- bh=encGXGDBIxLLYt5MkaJe/Ez6hqIFN5D8qmeAtZb1mM0=;
- b=hu2F1Sm9SM2Ats+Gfuato+Y0m7N3NDjv1kIWhM1w+BYJo74QA5JyPrnqKYVKyfMUIP
- NCowwZ9n+dn+Gu/skybnlN5FubZKEQVs2ks/vJ19dn60Sax+1nrdyZ+7zOxPn9+S3xlq
- IHmJLs0W71VAo0qqpQQey+UcsOyzvVU+CW8P7VzulbZSnH2b0KNInDhZIcXnbYVECAzs
- rLrL9mwSF4dGlqxbA1Qk7AvHqtQCNON7X3/wxnjPv7ju636TWTJWT4JkSfNHGbOORMjs
- JPnyfRaQCuRYbdHJhY8PLWzAZEqOUIgxOpHE3Yz6AyfrAdJ+/bYZdSV2k70NOrLorOBK
- Tayg==
-X-Gm-Message-State: AOAM530yur6ZN6QAfbNnoys39XU9zeakdDuiO461GfaqmKK0W3jdo6rU
- KlYw+tFoxH3sgRbzkoF/KuNKw/FC/Mr0t3sahZtGUw==
-X-Received: by 2002:a05:6402:1482:: with SMTP id
- e2mr2695753edv.36.1604067276872; 
- Fri, 30 Oct 2020 07:14:36 -0700 (PDT)
-MIME-Version: 1.0
-References: <20201029202520.9313-1-remi@remlab.net>
-In-Reply-To: <20201029202520.9313-1-remi@remlab.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 30 Oct 2020 14:14:24 +0000
-Message-ID: <CAFEAcA-YA3JmNP_Q2p=VpvrxCq-MOiQoV8NpJdjO4YZ7iE_+Vw@mail.gmail.com>
-Subject: Re: [PATCH 1/1] target/arm: fix handling of HCR.FB
-To: =?UTF-8?Q?R=C3=A9mi_Denis=2DCourmont?= <remi@remlab.net>
+ h=x-gm-message-state:sender:date:message-id:mime-version:subject:from
+ :to:cc;
+ bh=ycYciR5K+P3VjbKI2G6b346ExygldG2CPllhZ0dgAr8=;
+ b=o6PqV6W8QMDhQkXx3BViTX7FQbaN5GR74yymlJldI8+HxhkMHMzH/4QLInFHeFEsQT
+ WoqlfgwsR7sYlZ4lqPOp0NEFPgApstziaT2i4XjzyntI9zcCIPkqPKP7Cx5geyQRtAWs
+ EVTOmv4UwgWK3Z1iyqPI7aH4VyvzvAUzKqrfCD8LmFptxAbBK0i+bJm6AnurYXiHgWK4
+ 6mH2Cz0UkAq7lodtqVK1XwBPwBvBOimhS4TgmexF8gDNmGWBMyRV5Al4QUM27In62yO1
+ cVj+wka3OykIB7vMSaCZAZrW7P27v3lE+bHfb+AbYmdM56GrFI8d1PwNQiw7zVLQ8QQ1
+ Pbhg==
+X-Gm-Message-State: AOAM530NPXXreiduA0FikhLuEWcGvOKRUq2ARt/TjJCPpTun74gi18jR
+ PNBzSfVLQ0is3ymOdEyxFlRbrcTo0RLYVp+X1Q==
+X-Received: from skybert.c.googlers.com ([fda3:e722:ac3:10:24:72f4:c0a8:3107])
+ (user=hskinnemoen job=sendgmr) by 2002:a0c:b525:: with SMTP id
+ d37mr25079076qve.31.1604366111190; Mon, 02 Nov 2020 17:15:11 -0800 (PST)
+Date: Mon,  2 Nov 2020 17:14:54 -0800
+Message-Id: <20201103011457.2959989-1-hskinnemoen@google.com>
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.29.1.341.ge80a0c044ae-goog
+Subject: [PATCH 0/3] tests/qtest: npcm7xx test fixes
+To: peter.maydell@linaro.org
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ Havard Skinnemoen <hskinnemoen@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::542;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x542.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f49;
+ envelope-from=3H6-gXwsKCgQlwomrriqsirksskpi.gsquiqy-hiziprsrkry.svk@flex--hskinnemoen.bounces.google.com;
+ helo=mail-qv1-xf49.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: fNs0vkYBv9hY
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+Reply-to: Havard Skinnemoen <hskinnemoen@google.com>
+From: Havard Skinnemoen via <qemu-devel@nongnu.org>
+X-TUID: BJffACEsqnwV
 
-On Thu, 29 Oct 2020 at 20:25, <remi@remlab.net> wrote:
->
-> From: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
->
-> HCR should be applied when NS is set, not when it is cleared.
->
-> Signed-off-by: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
-> ---
->  target/arm/helper.c | 5 ++---
->  1 file changed, 2 insertions(+), 3 deletions(-)
+This series contains a fix for the randomness calculation in npcm7xx_rng-test.
+It also makes test failures fatal. The last patch would have dumped the random
+data to stderr if the randomness test fails, except now that failures are
+fatal, it never actually gets a chance to do that.
 
-Applied to target-arm.next, thanks.
+It may not make sense to apply all three, but I'd definitely take (1), and I'll
+leave it up to you whether to apply (2), (3) or both.
 
-Could you cc future patches to qemu-devel as well as
-qemu-arm, please? The automatic patch-testing/harvesting
-tools and some people only subscribe to the main list.
+Havard Skinnemoen (3):
+  tests/qtest/npcm7xx_rng-test: count runs properly
+  tests/qtest/npcm7xx: Don't call g_test_set_nonfatal_assertions
+  tests/qtest/npcm7xx_rng-test: dump random data on failure
 
--- PMM
+ tests/qtest/npcm7xx_gpio-test.c           |  1 -
+ tests/qtest/npcm7xx_rng-test.c            | 15 +++++++++++++--
+ tests/qtest/npcm7xx_timer-test.c          |  1 -
+ tests/qtest/npcm7xx_watchdog_timer-test.c |  1 -
+ 4 files changed, 13 insertions(+), 5 deletions(-)
+
+-- 
+2.29.1.341.ge80a0c044ae-goog
+

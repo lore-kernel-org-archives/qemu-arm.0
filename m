@@ -1,107 +1,79 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4729793lfa;
-        Tue, 3 Nov 2020 03:51:28 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwethDRssapzGjbq4aWpFcG7qGsg9U1atT6nwmkjDxqwySJygpoI4xWWMluWD6oxgYGZ437
-X-Received: by 2002:a25:ae97:: with SMTP id b23mr29127287ybj.26.1604404288505;
-        Tue, 03 Nov 2020 03:51:28 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604404288; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp4730037lfa;
+        Tue, 3 Nov 2020 03:51:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz3aMA9fZfqWEuPX0tCeouvMzqNxA8ATL1ExEEjGNhpfRaoW3apUZjOrIuhnOzAwG0YQfna
+X-Received: by 2002:a5e:9244:: with SMTP id z4mr13930644iop.53.1604404314248;
+        Tue, 03 Nov 2020 03:51:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604404314; cv=none;
         d=google.com; s=arc-20160816;
-        b=ni+qRf2SWmbs1zyskFgVjAeWRS+5XNJ01oEeTTdD6mPnN4IXAM96FwMdJ3tTIqkgYI
-         Q/WLqdbZv9JXT+tuIfAS2KyZ45TDUiN0WkTqsH2Uy5ug7Z+Yhyf3KvgFq5weKA6x/ecX
-         XLRxlg9Bp2y6EPjDno5gNwF597lCkEwhJ8h0TAaahTS81Fa4U83i8sBpDFo5fUP1rm8d
-         oOntMPd+dvx/gCGx3ahww4Fg43TztspIDeB+s10bjhjwntx0NlLpjsWhQtrS3UI/3rcU
-         rZsNaGcf3xVupAaGeWJcm0kwzTN8pGifMFyqIKwbN8WmL7LQCaFlIZJ0Uovs4CjbYVyt
-         EX3g==
+        b=UtlTWI5Sb2J1Mt5uu7LqBXg9Kyex2Vp0gYBvyqB43P2tIqdVGFzPw4oVBBrUQbyjb2
+         ErUDOnsRLaf9uU9Ua/mbhCxEWQ/JCGUYmFTVSMEIhb0JxaqPON7IIZCD1h3izBx7ZTwG
+         3pGnKj4wRgFId37T5hgXLHQgvP0y324csN54xqiBJ+IsRIHgG/hb4pWsjhSp7Z3Uh5tS
+         BBiIgLN5Xtb3xnVSb/+WvWtvq7r99tHkd3sCgNZOv3uEGg2RqQXDJcaI3KzmbUV+nlHs
+         stnLOjhHpPJ/cNhLgz+i/ej5Olq2lBo/tK9oewUP2qGUkefUhPhKjGXrNFftbJCR4Haq
+         s1xw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:list-subscribe:list-help:list-post:list-archive
+        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=wfH8DgLEFheGCm4+olyiLAtiHOfKuRbs7i/BAfcD97k=;
-        b=f8hzfMK9QHZPTZfY2CGy54c2U2BRH23rfN2d36F56aO2YnG6VHJxuWhh0KoYiYcqIX
-         rnFRa24LVIcHoff7XItWPQ66QOSWJAzZZ3b7Ay5JfnTPvxnsJRupH1qX8Kdi4gJuCzUg
-         H3s1U/8VNbclgCPB1FtBQRgz2fsf8BLTkNQgbgpnvnvITg0KmQaILxqnc9kSe4HjEzjb
-         2q7w36YAH7Swle5nF1wUXMGskVKyuBTBZ6ENxs2wyNuuFPjdEUzM67JvImpDjyqYw16P
-         6+SUP21+a+S0dPINg0bMoElMfRS2OcV/WPjMemFfpjLsywypr8/2nkC+0UEDrsJYfgQ7
-         B5OQ==
+         :mime-version:references:in-reply-to:message-id:date:subject:to:from;
+        bh=nki9gEF8Ul29WN14ASCHJ8nXzOjpSekpT5V7VaK2ZIA=;
+        b=MmwG2gfbeSxbek1jJ1CvyIQYze67mUNulcXgMfhKPjatSqhcagoBSB+2p0HC5DJ7iu
+         2CSDvpiC6sTXr8sErKgyMEQsiCgdYVEk1mRqpGKZTYKYYSJmk/memeepjpFZzwVVkQHO
+         QmPwfpAC0VyQGAx4vwBdvWtUC/UxG/IcGDAG5/ltia9DyYFfzZUUjy146ZqejTnUcdYh
+         a9YRWVgPixU+qOGvjrHpqw+2Pm8x7ogZCOGKZv5LQCFmvCukjHVY45LkP/nkrpJ2fxQ/
+         bxKwejq/5CEv4wwTevLoV0wESlOdMsIqGXhMKEOVwSd1iIh1Di0XXM3OL8utINi1ZnRX
+         bHSg==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mQlHJ0ZV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id s201si18528101ybc.125.2020.11.03.03.51.28
+        by mx.google.com with ESMTPS id t20si11844093jaj.112.2020.11.03.03.51.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Nov 2020 03:51:28 -0800 (PST)
+        Tue, 03 Nov 2020 03:51:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=mQlHJ0ZV;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:60766 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:34186 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kZuqV-0004FQ-Qb
-	for alex.bennee@linaro.org; Tue, 03 Nov 2020 06:51:27 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:41676)
+	id 1kZuqv-0004yH-Ij
+	for alex.bennee@linaro.org; Tue, 03 Nov 2020 06:51:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:41050)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kZuoW-0002vB-RC
- for qemu-devel@nongnu.org; Tue, 03 Nov 2020 06:49:24 -0500
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342]:40828)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kZuoU-00066g-FJ
- for qemu-devel@nongnu.org; Tue, 03 Nov 2020 06:49:24 -0500
-Received: by mail-wm1-x342.google.com with SMTP id k18so12467621wmj.5
- for <qemu-devel@nongnu.org>; Tue, 03 Nov 2020 03:49:22 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wfH8DgLEFheGCm4+olyiLAtiHOfKuRbs7i/BAfcD97k=;
- b=mQlHJ0ZVCrHI4+FIfMriWgpSqi9oa6av7TdSdACHbdQ9V7wT0rcqU1uC6i46yqW1dE
- jvstVaLblrNgAs8uJvATMo6XWWqPMCyXOOgjY/y/d3zjjlXBLjzy02Cj5Qa99PkXDkSl
- tm2C1YEiHIBqfay0EEHfsOFgviAUkdZsWzYfa9HJNH71qmR+9Mhi2on7vpRCT8Wa2SON
- 0bLC9d6pxzV3f9uu9byfDInrWOK9hbGY/cRh6Icyc1UJUaoU8lLAtsBWCxxeHt2MIEAf
- zQZyST9WXFldjHcQJG0kO22O18Z6/krHLDBO9N3f/RwuHoMvT1PKFH4LXPjobtU7XQjE
- CkSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=wfH8DgLEFheGCm4+olyiLAtiHOfKuRbs7i/BAfcD97k=;
- b=sGhs+0Toh9ZFJhfMlIc8ryK0z3BET1AxFDuNgGiWkaARkDcCwn2eZaRp+LKZcJvkct
- nKZnonCM/p4DEcRB44zMg1LN/J946lgmRa24PjipFSkLapII7iszm80RyLfob2R46rNM
- JXsG0me7rgguO+ejWLClr8MkmoS9feGOJgwAvlNgM6pfK0OOJDIvVD8VDHd+6iuV/NdG
- KEzQeDyANY/VkggR8Kz/pZeBgVtciEgv4UsHzGz4FSIxcXjirQmUrbIj6oJJo8RbtXKB
- bXTAkdNKu8+6CnioHGZ2bbLGc2/y3YnysAUMk2dNwWugZjHKqqTwPvqGHWzPJOoZjfEx
- p9Yw==
-X-Gm-Message-State: AOAM530xv0ajAArg1zS8hp4juz0od5N0kj89WJCAPihEgTBBsUrXFKGn
- RUyivwj3qHcBPeG9+smYfXpyPw==
-X-Received: by 2002:a7b:c101:: with SMTP id w1mr3163253wmi.170.1604404160956; 
- Tue, 03 Nov 2020 03:49:20 -0800 (PST)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [81.2.115.148])
- by smtp.gmail.com with ESMTPSA id f13sm26434215wrp.12.2020.11.03.03.49.19
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 03 Nov 2020 03:49:20 -0800 (PST)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] hw/arm/nseries: Check return value from load_image_targphys()
-Date: Tue,  3 Nov 2020 11:49:18 +0000
-Message-Id: <20201103114918.11807-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.20.1
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kZump-0000hR-2W; Tue, 03 Nov 2020 06:47:39 -0500
+Received: from szxga05-in.huawei.com ([45.249.212.191]:2434)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhangxinhao1@huawei.com>)
+ id 1kZumm-0005X7-Ru; Tue, 03 Nov 2020 06:47:38 -0500
+Received: from DGGEMS411-HUB.china.huawei.com (unknown [172.30.72.59])
+ by szxga05-in.huawei.com (SkyGuard) with ESMTP id 4CQSgy07C6zLt5r;
+ Tue,  3 Nov 2020 19:47:26 +0800 (CST)
+Received: from huawei.com (10.175.101.6) by DGGEMS411-HUB.china.huawei.com
+ (10.3.19.211) with Microsoft SMTP Server id 14.3.487.0; Tue, 3 Nov 2020
+ 19:47:20 +0800
+From: Xinhao Zhang <zhangxinhao1@huawei.com>
+To: <qemu-devel@nongnu.org>
+Subject: [PATCH 3/3] target/arm: add space before the open parenthesis '('
+Date: Tue, 3 Nov 2020 19:45:29 +0800
+Message-ID: <20201103114529.638233-3-zhangxinhao1@huawei.com>
+X-Mailer: git-send-email 2.29.0-rc1
+In-Reply-To: <20201103114529.638233-1-zhangxinhao1@huawei.com>
+References: <20201103114529.638233-1-zhangxinhao1@huawei.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x342.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain
+X-Originating-IP: [10.175.101.6]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.191;
+ envelope-from=zhangxinhao1@huawei.com; helo=szxga05-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 06:47:30
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-devel@nongnu.org
@@ -115,57 +87,33 @@ List-Post: <mailto:qemu-devel@nongnu.org>
 List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
  <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: alex.chen@huawei.com, peter.maydell@linaro.org, qemu-arm@nongnu.org,
+ qemu-trivial@nongnu.org, dengkai1@huawei.com
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: pPlBmwk7Wbf6
+X-TUID: ydok3x+jJc9z
 
-The nseries machines have a codepath that allows them to load a
-secondary bootloader.  This code wasn't checking that the
-load_image_targphys() succeeded.  Check the return value and report
-the error to the user.
+Fix code style. Space required before the open parenthesis '('.
 
-While we're in the vicinity, fix the comment style of the
-comment documenting what this image load is doing.
-
-Fixes: Coverity CID 1192904
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Xinhao Zhang <zhangxinhao1@huawei.com>
+Signed-off-by: Kai Deng <dengkai1@huawei.com>
 ---
- hw/arm/nseries.c | 15 +++++++++++----
- 1 file changed, 11 insertions(+), 4 deletions(-)
+ target/arm/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index 76fd7fe9854..d49852c60d7 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -1380,7 +1380,8 @@ static void n8x0_init(MachineState *machine,
-         /* No, wait, better start at the ROM.  */
-         s->mpu->cpu->env.regs[15] = OMAP2_Q2_BASE + 0x400000;
- 
--        /* This is intended for loading the `secondary.bin' program from
-+        /*
-+         * This is intended for loading the `secondary.bin' program from
-          * Nokia images (the NOLO bootloader).  The entry point seems
-          * to be at OMAP2_Q2_BASE + 0x400000.
-          *
-@@ -1388,9 +1389,15 @@ static void n8x0_init(MachineState *machine,
-          * for them the entry point needs to be set to OMAP2_SRAM_BASE.
-          *
-          * The code above is for loading the `zImage' file from Nokia
--         * images.  */
--        load_image_targphys(option_rom[0].name, OMAP2_Q2_BASE + 0x400000,
--                            machine->ram_size - 0x400000);
-+         * images.
-+         */
-+        if (load_image_targphys(option_rom[0].name,
-+                                OMAP2_Q2_BASE + 0x400000,
-+                                machine->ram_size - 0x400000) < 0) {
-+            error_report("Failed to load secondary bootloader %s",
-+                         option_rom[0].name);
-+            exit(EXIT_FAILURE);
-+        }
- 
-         n800_setup_nolo_tags(nolo_tags);
-         cpu_physical_memory_write(OMAP2_SRAM_BASE, nolo_tags, 0x10000);
+diff --git a/target/arm/translate.c b/target/arm/translate.c
+index 38371db540..efa3b59d04 100644
+--- a/target/arm/translate.c
++++ b/target/arm/translate.c
+@@ -9094,7 +9094,7 @@ static void arm_tr_tb_stop(DisasContextBase *dcbase, CPUState *cpu)
+             - Hardware watchpoints.
+            Hardware breakpoints have already been handled and skip this code.
+          */
+-        switch(dc->base.is_jmp) {
++        switch (dc->base.is_jmp) {
+         case DISAS_NEXT:
+         case DISAS_TOO_MANY:
+             gen_goto_tb(dc, 1, dc->base.pc_next);
 -- 
-2.20.1
+2.29.0-rc1
 

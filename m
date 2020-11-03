@@ -1,116 +1,81 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5035855lfa;
-        Tue, 3 Nov 2020 10:32:46 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzVI0T5dXNiJlnbNv8ONX/tEZ/x5FI5qEFlNfDDpuIExo3relhmPcfoqOg6FRoWLzsn9vik
-X-Received: by 2002:a05:620a:5a2:: with SMTP id q2mr20965494qkq.335.1604428366352;
-        Tue, 03 Nov 2020 10:32:46 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604428366; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5046100lfa;
+        Tue, 3 Nov 2020 10:49:18 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyETZB8xsVu41Li8zww4akKKebFWh5+Jyq7OnZuoSbtP4OV+LTDF/IJD+qe8P11ZXoTmH7T
+X-Received: by 2002:a05:6214:1586:: with SMTP id m6mr28653532qvw.15.1604429358341;
+        Tue, 03 Nov 2020 10:49:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604429358; cv=none;
         d=google.com; s=arc-20160816;
-        b=SjY9y2sj4IMFhgjTmrNrc8qO1SWNI1jJLMb8KZFHVRabnKHzguiF/Okbwq3PqJulTs
-         YQ55jVrxZNIwH6WCS+iEljl68KA6ULHBAxM9pfpexnFOLVXGRXPq/iwpDC+eA2ZzOAiU
-         iU8HFurG9QxoeSWsaD8hUksS5TIu68W6naD/2gPC7Kfrpz7moR4QFXDYaDUupJFQjtul
-         qOUFUK1ytanVu2i+XA7Z533x8Cftzi6nGjWMcF0CfbEh10Ew8RJEoEBbilpB/acUWInU
-         nMSkGQ2/WX4Af3YHZ+XXzb4WpWtUyO3A9OKI0Gsfxjc1BCzQOqbICwxESojFjD52rzwJ
-         4chQ==
+        b=KqoeIFY8aDFb49XVe6xkskJHGzr0pXFFq1GXIwm0SBq4LIv5eAEMfsWkxJNwmwWXYe
+         FXouOCaSL8M6wH2gNACtE3MAkQmhrPYlUB3DNCtfQiD/B6u984mmXUcmaO3eSgP7vDot
+         EfgcKnGGrOzhGSBrHwC5iLhveRR7N/jquqnJlzX/GcFcIP62cVItYfTIbRnf2xCXCH+0
+         f/cuK9jiuVK8EBEDxNpGRZDdd8ARean4GDop3QrAhHtoR1GOkkENg2QzYBhwZC7w4EIR
+         cpB8n1+ZOpwuL0cVfBaSZbAsc4C7ZGHJt5p2ytbzYmdS0AqDQUrXwsd245+2eaqqistv
+         rMdg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=WyI+wdpZSvkibXURhsE4UtunQSLgk/mfEDbq38QxQDk=;
-        b=GOIEVazw9iV7UVliW7esJ8b2oqRlb4Q40fMTMZ7IyXvOjkZDSq4bBdkBJngmgPzlwx
-         UnYfVml3Qgplqn8fYrjIQcbnPrDIJqCdgove0E4AY8awMW06peiTps+P8Uxo/JoVu5Z6
-         KN+J0PGREzwVkiNqT0hqdr+XY/Cz2Y2U+P1l3rzgXd/FJYbbR/Nqvi9vWb6IGlp6vZav
-         1EmYdD8nVjREVKls+VkDe7YfCc/V9F/R+yFD5ghe876iolyOnFJMUAJRU60DedKdS4l5
-         FSaZUGlXv/S0kQz0G+qa1l7INny/dyyYqTlHsvoS2NEbUtKdOXAgTPUfaSOmWy6k4c7V
-         vy6A==
+         :mime-version:references:in-reply-to:organization:message-id:date
+         :subject:to:from;
+        bh=NWLPUclJ0cIFseZYK8+VeQFaqYOcTn3iA4bvnD0WD0I=;
+        b=0vF0WS8mAB7UKXssxNJQcnnBm7xrtG+HDezXZmLwYv6CKvu5krT30LrzFnK4MJCXQg
+         FqC9IYvUtHazBjxL1jOY4wvrGeb8zCiNRLGSmGDX/8Ctl9fyeixcon1c3nIDe5OyNxmH
+         PKCA0bkXpOVheEzIU85psHuhmMqnvnElKiPQy/EP0gUDPnWQiPv6SOAHohnQRquKW/Jl
+         R0E5pF2CbZXlE6uY96ljDHx6mH3A0tFW+lYUu0bw7a30YWTGmZtlI7E/LTpYE4ex7DCp
+         s+lING1tN28Ll/jElUO9RajHcFLjvvf3o6r5EzxOe8CV2d2XNNZprplTDTy8HY8pfd6t
+         D2qA==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KcQyb3iF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 194si10561308qkd.147.2020.11.03.10.32.46
+        by mx.google.com with ESMTPS id e187si10820968qkb.129.2020.11.03.10.49.18
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 03 Nov 2020 10:32:46 -0800 (PST)
+        Tue, 03 Nov 2020 10:49:18 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=pass header.i=@linaro.org header.s=google header.b=KcQyb3iF;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:44848 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:58560 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1ka16r-0000gv-OX
-	for alex.bennee@linaro.org; Tue, 03 Nov 2020 13:32:45 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:46228)
+	id 1ka1Mr-0007KC-Qy
+	for alex.bennee@linaro.org; Tue, 03 Nov 2020 13:49:17 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:49682)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ka16c-0000gf-4f
- for qemu-arm@nongnu.org; Tue, 03 Nov 2020 13:32:30 -0500
-Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541]:43936)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ka16Z-0007HM-7Q
- for qemu-arm@nongnu.org; Tue, 03 Nov 2020 13:32:29 -0500
-Received: by mail-pg1-x541.google.com with SMTP id r10so14329196pgb.10
- for <qemu-arm@nongnu.org>; Tue, 03 Nov 2020 10:32:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=WyI+wdpZSvkibXURhsE4UtunQSLgk/mfEDbq38QxQDk=;
- b=KcQyb3iFTdQ05J0LDLh3583K+jexl8NrWpv6TrYdDb9+cQhIh5ONglbtjQSXG9Spsa
- m9i5N2FoSWxVFxIbnUOoOGlnQPkuEfMWpIReIG2cmkdIDnDz5IQcTKD7xHf8ZwCSOQnf
- 0/Xo9xLKSs5pWzBw8sWjXHgPBfENyh1hpx+9uCKocOg4ZNHUcXe6inPLNlEa0Cp4giCq
- Y5dBdSc1m1Y1tFTlEuQuoHEFpr2GswAhuSmJ2jAHU8j0STrJPUurGntavlZ2LFly/aAk
- /K/Lto2vqErLQJvpPltclFEINbeYJWGTfOraaTe9h0nCc/znoq4DYxCeNruXF8NSaI1U
- C4dQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:subject:to:cc:references:from:message-id:date
- :user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=WyI+wdpZSvkibXURhsE4UtunQSLgk/mfEDbq38QxQDk=;
- b=Pb9d75qKEr6AasE6SWC7fNd8uahSAQCqGvsm6QHQoWsc0mIv4/+SdE7bF764s8W3eA
- 3xL+cpYSUxrjqGflPmW0SCEb2/6iR8yrb1NEYU2FvV0e+sdcIBto8xDQVuF9xr3ijf+Z
- ICIAizGBh4FTwHh8nmIEHE8O0LptMGBugT9DEUkwl6kkiB9Qn2R5H/EsXYA66ZmUk2/J
- VRJEeJeFustrsRQaWCi5nfJkEnRhtvuB/HMH2k9G0B1LEg0vs/alVR3YLETec63uyvQY
- XjmZocNxwMgLWzDmD/fu5SchXz4+YUJv2X0dadfILxBODmAoGmP3ag1GbV6PxQw87FeY
- 7lwA==
-X-Gm-Message-State: AOAM531dPpYSZkAwczBbI/JwccHXn9ajZR/IC26lvCxNGcsH1ncDchRV
- kjgFadvIBA86Zq7lyQxl/rcKOQ==
-X-Received: by 2002:a17:90a:468b:: with SMTP id
- z11mr468720pjf.157.1604428345363; 
- Tue, 03 Nov 2020 10:32:25 -0800 (PST)
-Received: from [172.16.1.221] (76-14-210-194.or.wavecable.com. [76.14.210.194])
- by smtp.gmail.com with ESMTPSA id v24sm15882848pgi.91.2020.11.03.10.32.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 03 Nov 2020 10:32:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <remi@remlab.net>)
+ id 1ka1Mj-0007Jc-4W; Tue, 03 Nov 2020 13:49:09 -0500
+Received: from poy.remlab.net ([2001:41d0:2:5a1a::]:56268
+ helo=ns207790.ip-94-23-215.eu)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <remi@remlab.net>)
+ id 1ka1Mg-0001JJ-4K; Tue, 03 Nov 2020 13:49:08 -0500
+Received: from basile.remlab.net (dzyqn8ypzhx7l91mxjsvy-3.rev.dnainternet.fi
+ [IPv6:2001:14ba:a01a:be01:9434:f69e:d553:3be2])
+ (Authenticated sender: remi)
+ by ns207790.ip-94-23-215.eu (Postfix) with ESMTPSA id BE0F95FAAA;
+ Tue,  3 Nov 2020 19:49:00 +0100 (CET)
+From: =?ISO-8859-1?Q?R=E9mi?= Denis-Courmont <remi.denis.courmont@huawei.com>
+To: qemu-arm@nongnu.org
 Subject: Re: [PATCH 08/14] target/arm: add MMU stage 1 for Secure EL2
-To: remi.denis.courmont@huawei.com, qemu-arm@nongnu.org
+Date: Tue, 03 Nov 2020 20:49:00 +0200
+Message-ID: <1674144.VLH7GnMWUR@basile.remlab.net>
+Organization: Huawei Technologies, Finland
+In-Reply-To: <e1bca2e0-d926-02cb-c462-5e9d64a51999@linaro.org>
 References: <2172054.ElGaqSPkdT@basile.remlab.net>
  <20201102105802.39332-8-remi.denis.courmont@huawei.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Message-ID: <e1bca2e0-d926-02cb-c462-5e9d64a51999@linaro.org>
-Date: Tue, 3 Nov 2020 10:32:21 -0800
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.10.0
+ <e1bca2e0-d926-02cb-c462-5e9d64a51999@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <20201102105802.39332-8-remi.denis.courmont@huawei.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x541.google.com
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2001:41d0:2:5a1a::; envelope-from=remi@remlab.net;
+ helo=ns207790.ip-94-23-215.eu
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 13:49:01
+X-ACL-Warn: Detected OS   = ???
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -126,130 +91,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Cc: qemu-devel@nongnu.org
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: vufG0oPiQ6+K
+X-TUID: lC+MOBtr/5Gu
 
-On 11/2/20 2:57 AM, remi.denis.courmont@huawei.com wrote:
-> From: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-> 
-> This adds the MMU indices for EL2 stage 1 in secure mode.
-> 
-> To keep code contained, which is largelly identical between secure and
-> non-secure modes, this patch introduces a secure bit for all new and
-> existing stage 1 translation regimes.
-> 
-> Signed-off-by: Rémi Denis-Courmont <remi.denis.courmont@huawei.com>
-> ---
->  target/arm/cpu-param.h     |   2 +-
->  target/arm/cpu.h           |  22 ++++--
->  target/arm/helper.c        | 143 ++++++++++++++++++++++++-------------
->  target/arm/internals.h     |  12 ++++
->  target/arm/translate-a64.c |   4 ++
->  5 files changed, 127 insertions(+), 56 deletions(-)
-> 
-> diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
-> index 6321385b46..0db5e37c17 100644
-> --- a/target/arm/cpu-param.h
-> +++ b/target/arm/cpu-param.h
-> @@ -29,6 +29,6 @@
->  # define TARGET_PAGE_BITS_MIN  10
->  #endif
->  
-> -#define NB_MMU_MODES 11
-> +#define NB_MMU_MODES 16
->  
->  #endif
-> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-> index 724b11ee57..3fbb70e273 100644
-> --- a/target/arm/cpu.h
-> +++ b/target/arm/cpu.h
-> @@ -2944,6 +2944,9 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
->  #define ARM_MMU_IDX_NOTLB 0x20  /* does not have a TLB */
->  #define ARM_MMU_IDX_M     0x40  /* M profile */
->  
-> +/* Meanings of the bits for A profile mmu idx values */
-> +#define ARM_MMU_IDX_A_S      0x8
-> +
->  /* Meanings of the bits for M profile mmu idx values */
->  #define ARM_MMU_IDX_M_PRIV   0x1
->  #define ARM_MMU_IDX_M_NEGPRI 0x2
-> @@ -2967,10 +2970,17 @@ typedef enum ARMMMUIdx {
->      ARMMMUIdx_E20_2      =  5 | ARM_MMU_IDX_A,
->      ARMMMUIdx_E20_2_PAN  =  6 | ARM_MMU_IDX_A,
->  
-> -    ARMMMUIdx_SE10_0     = 7 | ARM_MMU_IDX_A,
-> -    ARMMMUIdx_SE10_1     = 8 | ARM_MMU_IDX_A,
-> -    ARMMMUIdx_SE10_1_PAN = 9 | ARM_MMU_IDX_A,
-> -    ARMMMUIdx_SE3        = 10 | ARM_MMU_IDX_A,
-> +    ARMMMUIdx_SE10_0     = ARMMMUIdx_E10_0 | ARM_MMU_IDX_A_S,
-> +    ARMMMUIdx_SE20_0     = ARMMMUIdx_E20_0 | ARM_MMU_IDX_A_S,
-> +
-> +    ARMMMUIdx_SE10_1     = ARMMMUIdx_E10_1 | ARM_MMU_IDX_A_S,
-> +    ARMMMUIdx_SE10_1_PAN = ARMMMUIdx_E10_1_PAN | ARM_MMU_IDX_A_S,
-> +
-> +    ARMMMUIdx_SE2        = ARMMMUIdx_E2 | ARM_MMU_IDX_A_S,
-> +    ARMMMUIdx_SE20_2     = ARMMMUIdx_E20_2 | ARM_MMU_IDX_A_S,
-> +    ARMMMUIdx_SE20_2_PAN = ARMMMUIdx_E20_2_PAN | ARM_MMU_IDX_A_S,
-> +
-> +    ARMMMUIdx_SE3        = 15 | ARM_MMU_IDX_A,
+Le tiistaina 3. marraskuuta 2020, 20.32.21 EET Richard Henderson a =C3=A9cr=
+it :
+> On 11/2/20 2:57 AM, remi.denis.courmont@huawei.com wrote:
+> > From: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
+> >=20
+> > This adds the MMU indices for EL2 stage 1 in secure mode.
+> >=20
+> > To keep code contained, which is largelly identical between secure and
+> > non-secure modes, this patch introduces a secure bit for all new and
+> > existing stage 1 translation regimes.
+> >=20
+> > Signed-off-by: R=C3=A9mi Denis-Courmont <remi.denis.courmont@huawei.com>
+> > ---
+> >=20
+> >  target/arm/cpu-param.h     |   2 +-
+> >  target/arm/cpu.h           |  22 ++++--
+> >  target/arm/helper.c        | 143 ++++++++++++++++++++++++-------------
+> >  target/arm/internals.h     |  12 ++++
+> >  target/arm/translate-a64.c |   4 ++
+> >  5 files changed, 127 insertions(+), 56 deletions(-)
+> >=20
+> > diff --git a/target/arm/cpu-param.h b/target/arm/cpu-param.h
+> > index 6321385b46..0db5e37c17 100644
+> > --- a/target/arm/cpu-param.h
+> > +++ b/target/arm/cpu-param.h
+> > @@ -29,6 +29,6 @@
+> >=20
+> >  # define TARGET_PAGE_BITS_MIN  10
+> >  #endif
+> >=20
+> > -#define NB_MMU_MODES 11
+> > +#define NB_MMU_MODES 16
+> >=20
+> >  #endif
+> >=20
+> > diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> > index 724b11ee57..3fbb70e273 100644
+> > --- a/target/arm/cpu.h
+> > +++ b/target/arm/cpu.h
+> > @@ -2944,6 +2944,9 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool
+> > kvm_sync);>=20
+> >  #define ARM_MMU_IDX_NOTLB 0x20  /* does not have a TLB */
+> >  #define ARM_MMU_IDX_M     0x40  /* M profile */
+> >=20
+> > +/* Meanings of the bits for A profile mmu idx values */
+> > +#define ARM_MMU_IDX_A_S      0x8
+> > +
+> >=20
+> >  /* Meanings of the bits for M profile mmu idx values */
+> >  #define ARM_MMU_IDX_M_PRIV   0x1
+> >  #define ARM_MMU_IDX_M_NEGPRI 0x2
+> >=20
+> > @@ -2967,10 +2970,17 @@ typedef enum ARMMMUIdx {
+> >=20
+> >      ARMMMUIdx_E20_2      =3D  5 | ARM_MMU_IDX_A,
+> >      ARMMMUIdx_E20_2_PAN  =3D  6 | ARM_MMU_IDX_A,
+> >=20
+> > -    ARMMMUIdx_SE10_0     =3D 7 | ARM_MMU_IDX_A,
+> > -    ARMMMUIdx_SE10_1     =3D 8 | ARM_MMU_IDX_A,
+> > -    ARMMMUIdx_SE10_1_PAN =3D 9 | ARM_MMU_IDX_A,
+> > -    ARMMMUIdx_SE3        =3D 10 | ARM_MMU_IDX_A,
+> > +    ARMMMUIdx_SE10_0     =3D ARMMMUIdx_E10_0 | ARM_MMU_IDX_A_S,
+> > +    ARMMMUIdx_SE20_0     =3D ARMMMUIdx_E20_0 | ARM_MMU_IDX_A_S,
+> > +
+> > +    ARMMMUIdx_SE10_1     =3D ARMMMUIdx_E10_1 | ARM_MMU_IDX_A_S,
+> > +    ARMMMUIdx_SE10_1_PAN =3D ARMMMUIdx_E10_1_PAN | ARM_MMU_IDX_A_S,
+> > +
+> > +    ARMMMUIdx_SE2        =3D ARMMMUIdx_E2 | ARM_MMU_IDX_A_S,
+> > +    ARMMMUIdx_SE20_2     =3D ARMMMUIdx_E20_2 | ARM_MMU_IDX_A_S,
+> > +    ARMMMUIdx_SE20_2_PAN =3D ARMMMUIdx_E20_2_PAN | ARM_MMU_IDX_A_S,
+> > +
+> > +    ARMMMUIdx_SE3        =3D 15 | ARM_MMU_IDX_A,
+>=20
+> Hum.  So, we're adding 4 new mmu_idx, and increasing the mmu_idx count by=
+ 5.
+> The unused index would be 7 -- no non-secure el3.
+>=20
+> Is it worth reversing the S bit to NS, so that index 15 becomes the one t=
+hat
+> is unused, and so we don't actually have to add it to NB_MMU_MODES?
 
-Hum.  So, we're adding 4 new mmu_idx, and increasing the mmu_idx count by 5.
-The unused index would be 7 -- no non-secure el3.
+Possible. It would save a few hundred bytes from a quick glance.
 
-Is it worth reversing the S bit to NS, so that index 15 becomes the one that is
-unused, and so we don't actually have to add it to NB_MMU_MODES?
-
-> @@ -3649,7 +3655,7 @@ static void ats1h_write(CPUARMState *env, const ARMCPRegInfo *ri,
->  static CPAccessResult at_s1e2_access(CPUARMState *env, const ARMCPRegInfo *ri,
->                                       bool isread)
->  {
-> -    if (arm_current_el(env) == 3 && !(env->cp15.scr_el3 & SCR_NS)) {
-> +    if (arm_current_el(env) == 3 && !(env->cp15.scr_el3 & (SCR_NS|SCR_EEL2))) {
-
-This seems to belong to a different patch?
-
-> +        if (arm_is_secure_below_el3(env))
-> +            mask <<= ARM_MMU_IDX_A_S;
-
-Braces.
-
->      if (raw_read(env, ri) != value) {
-> -        tlb_flush_by_mmuidx(cs,
-> -                            ARMMMUIdxBit_E10_1 |
-> -                            ARMMMUIdxBit_E10_1_PAN |
-> -                            ARMMMUIdxBit_E10_0);
-> +        uint16_t mask = ARMMMUIdxBit_E10_1 |
-> +                        ARMMMUIdxBit_E10_1_PAN |
-> +                        ARMMMUIdxBit_E10_0;
-> +
-> +        if (arm_is_secure_below_el3(env))
-> +            mask <<= ARM_MMU_IDX_A_S;
-
-Again.  This appears to be an existing bug with SEL1?  Perhaps it should be
-split to a separate patch.
-
->      if ((hcr & (HCR_E2H | HCR_TGE)) == (HCR_E2H | HCR_TGE)) {
-> -        return ARMMMUIdxBit_E20_2 |
-> +        mask = ARMMMUIdxBit_E20_2 |
->                 ARMMMUIdxBit_E20_2_PAN |
->                 ARMMMUIdxBit_E20_0;
-> -    } else if (arm_is_secure_below_el3(env)) {
-> -        return ARMMMUIdxBit_SE10_1 |
-> -               ARMMMUIdxBit_SE10_1_PAN |
-> -               ARMMMUIdxBit_SE10_0;
->      } else {
-> -        return ARMMMUIdxBit_E10_1 |
-> +        mask = ARMMMUIdxBit_E10_1 |
->                 ARMMMUIdxBit_E10_1_PAN |
->                 ARMMMUIdxBit_E10_0;
->      }
-> +
-> +    if (arm_is_secure_below_el3(env)) {
-> +        mask <<= ARM_MMU_IDX_A_S;
-> +    }
-
-Likewise.
-
-The rest of the patch looks mechanically correct.
+It could also be argued that E2 and E20_2 should be one and the same. The=20
+regimes are distinct but they cannot coexist. The mode's TLB mode could be=
+=20
+flushed when HCR.E2H is flipped, I guess.
 
 
-r~
+=2D-=20
+R=C3=A9mi Denis-Courmont
+
+

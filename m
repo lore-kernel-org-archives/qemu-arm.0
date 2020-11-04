@@ -1,103 +1,188 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp138779lfb;
-        Wed, 4 Nov 2020 10:05:19 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyq0gn2v6KSYoX6R4D8dQtKNdjbswDF5Mpbw/vOiLd/xbojom7tCre1PZZrjXaEWtUUENM5
-X-Received: by 2002:aed:2067:: with SMTP id 94mr20189592qta.93.1604513119166;
-        Wed, 04 Nov 2020 10:05:19 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604513119; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp278097lfb;
+        Wed, 4 Nov 2020 13:41:08 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz7x+LMzRH3XScl9IRko7gr7N3vtFRVzL/9ouJo8/F1+ah4J5V6z0zMWyK4W591de0HDzxQ
+X-Received: by 2002:a37:7fc7:: with SMTP id a190mr197019qkd.337.1604526068471;
+        Wed, 04 Nov 2020 13:41:08 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1604526068; cv=pass;
         d=google.com; s=arc-20160816;
-        b=kOatRJaqMtN/R1XDwD8hZL4tt5Q8X/VFUFs7DdCCnWCuLEZoFj469+jvscA3CaFdH3
-         XNVsJno+S9tR6jaHsFTtVa023ZXmiZmuDXbQtw5ODqv3bcFd9iPjVU7jYVjrWY/Doy7q
-         OysQ0urAnxBnl8IlmoM+3xJCg2RjMekRitYflaf1ok81QbjwGHlQ1sQ6Z1q6BYNj+ZI1
-         celS9pt2aHVQcH+MkeM1m8oglmFcw0md7ZV/uvrfepiED8zXcCEpSwi0NA79Iy5/4Nf7
-         EfVpJ9csF6s5GcmmBeWhhthye7dH6b8YXynOTH63TzSOBaWpZG1zQ5Q7tyqnjZ3rse3+
-         l+vw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=PVLL7hWVzvlZ7rIJFryomeVteOEnfmpH+COl/GCVGID9oTCszxd1h3/sPZ1f3St8Ls
+         0TP5qNAA1cadSbS7wx1+GpIPHbi63hWviFGPU1Ls7d1b+yeMRZpvudQlpLuVN+xP7a/p
+         JXrrxoIzFnjRjxPM6Y81jAQBC4KB35kubWzc3iEyW04BnlWMoUzWP81tXUPZNJa8Y3dp
+         Lkeuu/YTdAGkAlmnv7wtO8SBozHHeVKRIxYAxPL9UDzqcAhPftUQAoU21L5XkKAePezd
+         klcKl3HlsfL11E9LgfFve4kpjDmICeVhE11Nn0X2njv/LpekO1CPonsjcKXEDThCDfj+
+         Qjfg==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=sI7TAhW2Sw37Yt5Y0QzVWuDziEmYYPc05s8hLAg4L6E=;
-        b=TdWHE6Tnruh6q+pJ8fullKcb2+BbYIIMbZi1dnxbrD4viDOVjD3iDsHP580KWcoBVX
-         crr+3tn9EGbvv4ATXrvT9NZO6o2If5nwF2ARewgHkIF9L8c96JSdFJxM8p5BKwIEWNxo
-         ++GQxi3OhCKfjLjUbf1DJ/qQBGqrDunn3kPjwHG6yJSrQP0hca5HJVuyGYu2/83ds5A5
-         e+b7Wd0bTuZDcVOcyb3XSAE5Mh0NSAajHuzdd4LEhQ2LyvXP3YN3gpyPlGv6WwoZmSMs
-         2yjhauDGSOUQ2DSBP8nKiseSMBBHOGjVYtvwN0B1GT+vjCLEDhY49aWdgqWiSdnXPPFL
-         TsKA==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OyDZ1kE9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+         :list-unsubscribe:list-id:precedence:mime-version
+         :content-transfer-encoding:content-id:user-agent:content-language
+         :accept-language:in-reply-to:references:message-id:date:thread-index
+         :thread-topic:subject:to:from:dkim-signature:ironport-phdr
+         :ironport-sdr:dkim-signature;
+        bh=SS7JC37GuJpw3LFXvYKagKRC9l3ILS0UCZgBZbcpCr0=;
+        b=MNlpM03taNWuyFEg1CfV2Qf22Mso3n1NsPTnC/dwa7IxsHjWbtWvSGhpizRvIohkGr
+         wA9/IafMzhLPKiwmMOxX/AfqLhoxz4NkD3wIWOXCf08g+W45OrMUpUMaM5ZBP7lOTGW4
+         PjxE1v20YPk2EZ5So4HbwdhiWiAMCXAxx09JmDYonkm3Y6YKBsHqujl3td11Ss9BWRRR
+         82DtxzlB84KQMY69lqX06AGWOmI0izdMrpVHaNQc8wdSXcJUutekHAu+DdFQ1BeckKKh
+         P8MAXKPwK2sZRxzClDUnorJ8GsCWwQW+bwM++5Mamh9MqFTcKlF91Etlflg09niJ7jqk
+         qZpw==
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=kQyajoJv;
+       dkim=pass header.i=@CSIROAU.onmicrosoft.com header.s=selector1-CSIROAU-onmicrosoft-com header.b=f+HjbVlt;
+       arc=pass (i=1 spf=pass spfdomain=data61.csiro.au dkim=pass dkdomain=data61.csiro.au dmarc=pass fromdomain=data61.csiro.au);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id f3si1657721qko.203.2020.11.04.10.05.18
+        by mx.google.com with ESMTPS id g3si692921qtv.101.2020.11.04.13.41.08
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Nov 2020 10:05:19 -0800 (PST)
+        Wed, 04 Nov 2020 13:41:08 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@linaro.org header.s=google header.b=OyDZ1kE9;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
-Received: from localhost ([::1]:40868 helo=lists1p.gnu.org)
+       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=kQyajoJv;
+       dkim=pass header.i=@CSIROAU.onmicrosoft.com header.s=selector1-CSIROAU-onmicrosoft-com header.b=f+HjbVlt;
+       arc=pass (i=1 spf=pass spfdomain=data61.csiro.au dkim=pass dkdomain=data61.csiro.au dmarc=pass fromdomain=data61.csiro.au);
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:38860 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kaN9q-0001JH-GL
-	for alex.bennee@linaro.org; Wed, 04 Nov 2020 13:05:18 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:43400)
+	id 1kaQWh-0004US-Ro
+	for alex.bennee@linaro.org; Wed, 04 Nov 2020 16:41:07 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:58264)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kaN9h-0001IP-EA
- for qemu-arm@nongnu.org; Wed, 04 Nov 2020 13:05:09 -0500
-Received: from mail-ej1-x644.google.com ([2a00:1450:4864:20::644]:43938)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1kaN9e-0004sH-Gb
- for qemu-arm@nongnu.org; Wed, 04 Nov 2020 13:05:09 -0500
-Received: by mail-ej1-x644.google.com with SMTP id k3so30972906ejj.10
- for <qemu-arm@nongnu.org>; Wed, 04 Nov 2020 10:05:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
- h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=sI7TAhW2Sw37Yt5Y0QzVWuDziEmYYPc05s8hLAg4L6E=;
- b=OyDZ1kE9xDzZQacxCdqTEw0dym2WiocLAxmad9kq2nprR1+dqi8QnU/F8deerS4c8B
- aRdynzoPl1jCQwTUbg7aNeUcoeIX45+jMlS/whVXZItJKZvC6SyTIT5iMpE1ytZqH7AG
- e6RDC/zky5oUXcTo6AkjIKw59o0mdScflj1vf6gyEcXkG6TNdPOsWCP2BrjMVwq2OxSS
- mtzN/lhjyzi3ITABOlF7qAnBrT+n022BkXyeDqBBHLqTW+/65jhxVu34KBkQy1F5NFjd
- mqsrLce6ttrXgp0bqPUsZTbsgasvPqwiXkzaYdfoBxxIOSV2ZxxE+p/+3twrEva+/yWo
- MA2g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=sI7TAhW2Sw37Yt5Y0QzVWuDziEmYYPc05s8hLAg4L6E=;
- b=MfQm1duKON3jhMWBvXw9ljPXsruEAHqX1kKRBH3KOrrzdiOChHxTdvGX+QBiomXqQe
- tk3xjpxawDaETI9qs8Nd0kVQKmgdHUBEwpSsxoWm86qGGSPlOHAAT7nMksjTFwQSVVBs
- OGVAfr3Cgg5yPER0rSTuqZ3/K/jEngJmwQGijrf/VNvRXhDRCKmCo2TrBmeVpak4mVCs
- 3l2YzKhDVexPXwpYweQ/Be439MGQ/uBXz7dD+lxRVKEMsqGGatHU8DN0zZMm1dU/2suL
- Th4d8qUInuM9A99QVrrzSTTy3/Sobu5MwhOTyRObkL6TobU7VmFm6M7QVLz3zdVs/92v
- Vsbw==
-X-Gm-Message-State: AOAM533oKGoz5fMwq3l6q2cQJ2/J0DUGnikpnyjGxvnZp86iI/lEQZJA
- hDrZs0ovZBA+uc3i//1mSWxZrBLXZ+0mlM6WFOHZPw==
-X-Received: by 2002:a17:906:7254:: with SMTP id
- n20mr25016901ejk.382.1604513104937; 
- Wed, 04 Nov 2020 10:05:04 -0800 (PST)
+ (Exim 4.90_1)
+ (envelope-from <prvs=570d0dfbe=Peter.Chubb@data61.csiro.au>)
+ id 1kaQW6-0004R2-S7; Wed, 04 Nov 2020 16:40:30 -0500
+Received: from act-mtaout3.csiro.au ([2405:b000:e00:257::7:39]:4124)
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1)
+ (envelope-from <prvs=570d0dfbe=Peter.Chubb@data61.csiro.au>)
+ id 1kaQW2-0006xn-Hz; Wed, 04 Nov 2020 16:40:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=data61.csiro.au; i=@data61.csiro.au; q=dns/txt;
+ s=dkim; t=1604526026; x=1636062026;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=RK1f5scDXi13F6cVkZNkJoRU8YmRVkO7W9pTxWWRk1o=;
+ b=kQyajoJvoUBwWMuQNNFPOEhhSVyQyRd0VpRzSN93kJuPmMknEaovIcUt
+ ktzH6iahpDK05ElW3oFPNftI7Q+Ux0uDMn20YvNks+b6/n/o7taSxwYyK
+ t/WXm5bxW114RrN945Gn93pXVyUsuDlDAgpFmruB8V9wV7HyOLguy/PBF I=;
+IronPort-SDR: aSU4wRk34IlDvKyKc7hWCIt70DG4E0vATj8pAL5pa6tYsIdzNsCnaW5pGip5Tz5J4MlESEqjr9
+ 0VrsXWpMqZVw==
+X-SBRS: 4.0
+IronPort-PHdr: =?us-ascii?q?9a23=3AFKU6OhcP5bcboY3xXbiAr4vclGMj4e+mNxMJ6p?=
+ =?us-ascii?q?chl7NFe7ii+JKnJkHE+PFxlwaTB9fb9vtbhuuQuKflCiQM4peE5XYFdpEEFx?=
+ =?us-ascii?q?oIkt4fkAFoBsmZQVb6I/jnY21ffoxCWVZp8mv9PR1TH8DzNF3Pq2K/7HgZHR?=
+ =?us-ascii?q?CsfQZwL/7+T4jVicn/3uuu+prVNgNPgjf1Yb57IBis6wvLscxDjYJ+I/hojB?=
+ =?us-ascii?q?DSo2FPPe1Llm4=3D?=
+X-IronPort-Anti-Spam-Filtered: true
+X-IronPort-Anti-Spam-Result: =?us-ascii?q?A+EyBABKH6NfjACwBSSYiIBxAISUgiR?=
+ =?us-ascii?q?iHgEBCxIMQIFRgVBRYhWBNgqHfAOpIQNUCwEBAQ0CHw4CBAEBAoEDg0UCgg0?=
+ =?us-ascii?q?CJTkFDQIDAQELAQEGAQEBAQEGBAICEAEBAQEphhEMg1SBBgEBAQEBAQEBAQE?=
+ =?us-ascii?q?BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEFAoEHBT4CAQMSKAYBATcBDwI?=
+ =?us-ascii?q?BCDYQECIlAgQOBSKDBAGCSwMtAQEEpVECgTuJXIE0gwQBAQV7hAsYghAJCQG?=
+ =?us-ascii?q?BLoJyikiCGxJ/NoJcPoQ+hXaTJ6R+BwECgm2JCpF/IoMGnmeeRZBxhFsCBAI?=
+ =?us-ascii?q?EBQIOAQEFgWyBeh1Pgz0JRxcCDY4fGoIRgUaKWHQCNgIGCgEBAwl8jDsBgRA?=
+ =?us-ascii?q?BAQ?=
+X-IPAS-Result: =?us-ascii?q?A+EyBABKH6NfjACwBSSYiIBxAISUgiRiHgEBCxIMQIFRg?=
+ =?us-ascii?q?VBRYhWBNgqHfAOpIQNUCwEBAQ0CHw4CBAEBAoEDg0UCgg0CJTkFDQIDAQELA?=
+ =?us-ascii?q?QEGAQEBAQEGBAICEAEBAQEphhEMg1SBBgEBAQEBAQEBAQEBAQEBAQEBAQEBA?=
+ =?us-ascii?q?QEBAQEBAQEBAQEBAQEBAQEFAoEHBT4CAQMSKAYBATcBDwIBCDYQECIlAgQOB?=
+ =?us-ascii?q?SKDBAGCSwMtAQEEpVECgTuJXIE0gwQBAQV7hAsYghAJCQGBLoJyikiCGxJ/N?=
+ =?us-ascii?q?oJcPoQ+hXaTJ6R+BwECgm2JCpF/IoMGnmeeRZBxhFsCBAIEBQIOAQEFgWyBe?=
+ =?us-ascii?q?h1Pgz0JRxcCDY4fGoIRgUaKWHQCNgIGCgEBAwl8jDsBgRABAQ?=
+Received: from exch4-mel.nexus.csiro.au ([IPv6:2405:b000:302:71::85:124])
+ by act-ironport-int.csiro.au with ESMTP/TLS/ECDHE-RSA-AES256-SHA384;
+ 05 Nov 2020 08:39:57 +1100
+Received: from exch2-mel.nexus.csiro.au (2405:b000:302:71::85:122) by
+ exch4-mel.nexus.csiro.au (2405:b000:302:71::85:124) with Microsoft SMTP
+ Server (TLS) id 15.0.1497.2; Thu, 5 Nov 2020 08:39:57 +1100
+Received: from exedge2.csiro.au (150.229.64.34) by exch2-mel.nexus.csiro.au
+ (138.194.85.122) with Microsoft SMTP Server (TLS) id 15.0.1497.2 via Frontend
+ Transport; Thu, 5 Nov 2020 08:39:57 +1100
+Received: from AUS01-SY3-obe.outbound.protection.outlook.com (104.47.117.58)
+ by exedge2.csiro.au (150.229.64.34) with Microsoft SMTP Server (TLS) id
+ 15.0.1497.2; Thu, 5 Nov 2020 08:39:52 +1100
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=XRxUltTc39c4awxNrY98Diy8pRAtkyd/sQdCHRboIM1ui47r+srX5O+dGwuIfqm0+msJEoEM84wFZJ3QuntN1M0bXI4BJFirQaaA3gsVyTiZyg5lcQT5B0fA/n6UPHHpHUV/pFkdGjqidCNpfO47WRNelIDAapffHoNRM2vlm9qwkbxQiuTEw0QlAzeK8SUfvN/qexaHmBBC2wIhSNw426TD0n2d8RT8Y/nBDgEcBGhsid8j32cS8wxSztlE7gMfnqdpDbSCOFLBHmipBzs0Nw6n8JWx0Se1z4HYmIR4Z9n1wmuVCGwyWTXU/5sXTzrwUz/4cVSJrX6YX1Hwe8wHJg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SS7JC37GuJpw3LFXvYKagKRC9l3ILS0UCZgBZbcpCr0=;
+ b=WspgV69+yVeOLDBxOWoxdNsAmFahxueGwZauWqWj4tCKWutyPW2CLXaupE15eM4w4pq0IoZNOsmryAfHR2JSr9V+3mT0UyDQDnAvNHuoTvby1YDb68ngmJeS3XFR9j+KnZGM/+5YtlDNTxoK4PExKjqFjTrhz+01cPw5nrzyyfM/WM5NbvFINaqtXVz86i2ibZvg+pN+cLvG8YvQtfjp5Uoosy0RA9C1cq3Ar6q8UviZ9uSJlB6/sIIrt4vTYovUsBXVf6zTS9aFGGEW6mohRrLhUlTI3IQCGbm7rjjYCUxUg0bBWErzALvSguYWVrzPYak5p2cQYYkwb0snM1j48A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=data61.csiro.au; dmarc=pass action=none
+ header.from=data61.csiro.au; dkim=pass header.d=data61.csiro.au; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=CSIROAU.onmicrosoft.com; s=selector1-CSIROAU-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=SS7JC37GuJpw3LFXvYKagKRC9l3ILS0UCZgBZbcpCr0=;
+ b=f+HjbVlt3CpITAdNkQYh7D66PjCgYKf6rha+c313Bqp/7WVCqzHjn1jAErfHI5M7YWdMS1dWHtBysB0Z/44M1L3vtxvCEnoc4mWe4UH2EPnOSTZWLPir/jnnQ9WYgb128hDLVJ8zf+R7DHr+iow68zgZGCRtoGah5+P/vFX1bfc=
+Received: from ME2PR01MB5203.ausprd01.prod.outlook.com (2603:10c6:220:4e::23)
+ by MEAPR01MB3718.ausprd01.prod.outlook.com (2603:10c6:201:3e::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3499.29; Wed, 4 Nov
+ 2020 21:39:55 +0000
+Received: from ME2PR01MB5203.ausprd01.prod.outlook.com
+ ([fe80::a8b3:f385:7f65:2d1]) by ME2PR01MB5203.ausprd01.prod.outlook.com
+ ([fe80::a8b3:f385:7f65:2d1%7]) with mapi id 15.20.3499.029; Wed, 4 Nov 2020
+ 21:39:55 +0000
+From: "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
+To: AlexChen <alex.chen@huawei.com>
+Subject: Re: [PATCH] ssi: Fix bad printf format specifiers
+Thread-Topic: [PATCH] ssi: Fix bad printf format specifiers
+Thread-Index: AQHWspSIWIQfoutEU0i8i4+gpfJha6m4gOIA
+Date: Wed, 4 Nov 2020 21:39:55 +0000
+Message-ID: <877dr06btl.wl-Peter.Chubb@data61.csiro.au>
+References: <5FA280F5.8060902@huawei.com>
+In-Reply-To: <5FA280F5.8060902@huawei.com>
+Accept-Language: en-AU, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM/1.14.9 (Goj?) APEL/10.8 Emacs/27.1 (x86_64-pc-linux-gnu) MULE/6.0
+ (HANACHIRUSATO)
+authentication-results: huawei.com; dkim=none (message not signed)
+ header.d=none; huawei.com; dmarc=none action=none header.from=data61.csiro.au; 
+x-originating-ip: [221.199.209.25]
+x-ms-publictraffictype: Email
+x-ms-office365-filtering-correlation-id: 9c513197-0b7b-46af-2cd9-08d8810a2b8a
+x-ms-traffictypediagnostic: MEAPR01MB3718:
+x-microsoft-antispam-prvs: <MEAPR01MB37186DF11E36BA35F413C98EBBEF0@MEAPR01MB3718.ausprd01.prod.outlook.com>
+x-ms-oob-tlc-oobclassifiers: OLM:291;
+x-ms-exchange-senderadcheck: 1
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: ckaA46EmOlxTBR2Zca28hyyXMrkrutL8MuPj0ja36dZyVdjEZ6wqSryCOUPAIHlXWalH7APTxckEqlnbHrpAAp6PzwoT1vCCGAA6sp6tJfHWkYCpaXMv7tdTeBUit3h4rIH2AlvIu/EXAobJ+CzTMtighqFSiIEXKX6ysU4IFa/5e06Loz0lJ90Ng6V/V9u0EcbsXzAzMTSRdRcGDaaOTuakaSDQdF+dhsacb0gYt4AwtdH5RXIEAST7xqZmbiz4Zkk88K/NoT3Ts4vKF+X38wgIjQpqPPl1sHAULnP99oFbE0J2PtO8/u6cs2PGPleNPn9Be5qeJND/ZXGf4+IrZUYus+mVtATj4NaMyQg4zhOTnFw7NopKj5WnxRa/FxoNegLrWTwWmqtfz/066XoS0dsBw6EXVGilI4wb7m8i7QbyRkSNAZJZH1pragwl/bDhq4LuUtrIwoq/qSy9xMvaHQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:ME2PR01MB5203.ausprd01.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(4636009)(366004)(346002)(39850400004)(396003)(136003)(376002)(2906002)(26005)(186003)(6916009)(4326008)(478600001)(316002)(6512007)(54906003)(966005)(8676002)(83080400002)(4744005)(71200400001)(86362001)(6486002)(76116006)(5660300002)(66446008)(91956017)(66556008)(66946007)(66476007)(8936002)(64756008)(6506007)(2616005);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata: z31YUjQzuJgKYBvawtcF0+UHIog9SimxseL2Qqk7sdOdKz6C39Suh+tI1u0QbDf8oDRc2gqj8a1umlznOYr4zbGlyMNPY2YrK3f1EAcnbzQ67fltp0J4ZAEwuHRF0mNNTI3RqKE6AhJxjWKtnElNk4jVCX36K95WytdjAv5n4jLBx4zluDVJbQUPI4VZivLtDW7xYgXTkHnLM20YNz0Ee5BIasqQ9IOZ2/8fGx46bu6W80JaE6eN52oxG+5/tSV/gN/Sau5b7b7ty7ihd67ZvbDBIQSs3QJUL5UaXswMeBfOXFesCFyNliPjTIc66DHQ9TEbicU/WQItc8Dac9SWUVDnxs21yarCf+Uy/yVzXmZhnfuRlil+9k5ARqBZdXboD7AD77fXKwQ8EjREOBsTOCwBqtVgv5BAH5FD/cjXqlHue6JOSS2TNGgz7/Xi4WuQ1IlIA2qurJ17UeDjCTfyn3el2j+XY+pLRyOG15JTL5I9Y+fJjL5Hq+oiHeFskPosYjcUsPp4Xsuf+fPnW1CxjrbJY/XOOSRR/0WRSX51W+MUnFZS/cybw8Zq0YvS72lFFVPF7Ki20P7uwLY2mjGtp31cvQVKhTPvnz1BIZUNchVztObbHn+V9RhPQhh9ss50klieKUhBnytfeydGaVi6Dw==
+x-ms-exchange-transport-forked: True
+Content-Type: text/plain; charset="us-ascii"
+Content-ID: <98E59C59EB2D8C4F988742F0F7816B87@ausprd01.prod.outlook.com>
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <20201103114529.638233-1-zhangxinhao1@huawei.com>
-In-Reply-To: <20201103114529.638233-1-zhangxinhao1@huawei.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 4 Nov 2020 18:04:53 +0000
-Message-ID: <CAFEAcA-EXS2czmGNePYcTPT+qJSp7jjHjECdaVRbwSda-zQOcg@mail.gmail.com>
-Subject: Re: [PATCH 1/3] target/arm: add spaces around operator
-To: Xinhao Zhang <zhangxinhao1@huawei.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::644;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x644.google.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: ME2PR01MB5203.ausprd01.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 9c513197-0b7b-46af-2cd9-08d8810a2b8a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2020 21:39:55.2487 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 0fe05593-19ac-4f98-adbf-0375fce7f160
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: wviMVDsBcmS2X2pWhtFV3NiT38w9OJPjLqJE91lp6KhiHWg7ra6ebVW0FrQYhW4Q
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MEAPR01MB3718
+X-OriginatorOrg: data61.csiro.au
+Received-SPF: pass client-ip=2405:b000:e00:257::7:39;
+ envelope-from=prvs=570d0dfbe=Peter.Chubb@data61.csiro.au;
+ helo=act-MTAout3.csiro.au
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -111,29 +196,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: AlexChen <alex.chen@huawei.com>, QEMU Trivial <qemu-trivial@nongnu.org>,
- qemu-arm <qemu-arm@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>,
- dengkai1@huawei.com
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ "zhang.zhanghailiang@huawei.com" <zhang.zhanghailiang@huawei.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ "alistair@alistair23.me" <alistair@alistair23.me>,
+ QEMU <qemu-devel@nongnu.org>, "jcd@tribudubois.net" <jcd@tribudubois.net>,
+ qemu-arm <qemu-arm@nongnu.org>,
+ "peter.chubb@nicta.com.au" <peter.chubb@nicta.com.au>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: t4+fv78Jdtlv
+X-TUID: NG+NipgC+38P
 
-On Tue, 3 Nov 2020 at 11:47, Xinhao Zhang <zhangxinhao1@huawei.com> wrote:
->
-> Fix code style. Operator needs spaces both sides.
+>>>>> "AlexChen" =3D=3D AlexChen  <alex.chen@huawei.com> writes:
 
-Thanks; I have applied this series to target-arm.next.
+AlexChen> We should use printf format specifier "%u" instead of "%d"
+AlexChen> for argument of type "unsigned int".
 
-For future patch submissions, please could you include a
-cover letter if you're submitting a series with more
-than one patch in it? (Single patches don't need a cover
-letter). The individual patches should all then be
-follow-ups to the cover letter (in the usual way that
-git format-patch --cover-letter sets up).
+AlexChen> Reported-by: Euler Robot <euler.robot@huawei.com>
+AlexChen>Signed-off-by: Alex Chen <alex.chen@huawei.com> ---
 
-(We document this and other conventions for our code
-submission process at:
-https://wiki.qemu.org/Contribute/SubmitAPatch )
+LGTM,
+add
+Reviewed-By: Peter Chubb <peter.chubb@data61.csiro.au>
 
-thanks
--- PMM
+--=20
+Peter Chubb            Tel: +61 2 9490 5852      http://ts.data61.csiro.au/
+Trustworthy Systems Group                                    CSIRO's Data61=

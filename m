@@ -1,163 +1,95 @@
-Received: by 2002:a19:6d5:0:0:0:0:0 with SMTP id 204csp47749lfg;
-        Tue, 23 Feb 2021 14:54:20 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJya18QBvXFjzcBD+KG02I0Arhdn5PqNbQC8xf3i8/YDeYVd++lCBl6NbNW3dWPwI/1aEc00
-X-Received: by 2002:a05:6e02:b4e:: with SMTP id f14mr20503777ilu.289.1614120860545;
-        Tue, 23 Feb 2021 14:54:20 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1614120860; cv=none;
-        d=google.com; s=arc-20160816;
-        b=aEGb7iBY1O5pnVN2Xog2oFr/s1BUp8nqlBS1ejWzAoMyKnF4+1ByROP6kzpwWav3qj
-         oRHw5nCfd6XvXBy4oIJEhsS6YAUpsK0VpR0SsuWhfsoE+Yj54nMOPlKm4i5694S2quiF
-         Waey6J4G56iJ2V4qOrKmuAHcv+m1t5wsn5FvyDBUQ+qatXwles7EEeUX0MbR6BaU67/7
-         Bu0JXc0NpiZTcXD9fGqsTpW0PjP2p3WkqenUAtnBeJyP4zDMXnqFlrU5RISsHe53UeWw
-         nmRY0DgbLrAbJM6BxV2q0Z/7aUKhl2VOcCc++oRNOJDAB23WlOi46Hty9kZ6V+k5D/V2
-         M70w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
-        h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :mime-version:message-id:date:subject:to:from:dkim-signature;
-        bh=hwxfonhHlGFVx69kT9RP5//Gc3YVzhRRMlYFkTlWsyY=;
-        b=C0L6Tq10bR2YpkFRNHdg2mgYOLo02wmuZ9NApMHQ9JhiPLZqVghSj90q3ijuKFvOH/
-         x6PPmML2yz0DtoY3Of7xI4IFZ34jpM1bgRgAodA/YtTvlzhpJp0kBLAeCbNFU73PS9CD
-         a60K5hg0BaF2l2Jc6Ms++/GEWL/xmTUMky7uBwI2FQKUSVlUyk+lB0AvL4IIqjmH70QO
-         qmWO6qTSX4RXDo4G4Uhv3UBIoo8dUQGYPI7DRqSVvgXsFAlOtDfMMMPmLVVe1dNOuR7K
-         yARl4ux0xG1g0sqfia6sPk+77gKLty5K21VnMjYBJ0/r+XKeN5fCb/e4MkdGuw75ByDj
-         YdSQ==
-ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RMIoNMAj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id l8si332124iln.49.2021.02.23.14.54.20
-        for <alex.bennee@linaro.org>
-        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Tue, 23 Feb 2021 14:54:20 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
-Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=RMIoNMAj;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:36744 helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1lEgZP-0002Bz-PQ
-	for alex.bennee@linaro.org; Tue, 23 Feb 2021 17:54:19 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:48036)
- by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lEgZ5-000284-Sq; Tue, 23 Feb 2021 17:53:59 -0500
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636]:41823)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1lEgZ3-00021V-Ka; Tue, 23 Feb 2021 17:53:59 -0500
-Received: by mail-ej1-x636.google.com with SMTP id lr13so49196ejb.8;
- Tue, 23 Feb 2021 14:53:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hwxfonhHlGFVx69kT9RP5//Gc3YVzhRRMlYFkTlWsyY=;
- b=RMIoNMAj5pvhLus3GS4TMqkh9kjPlMPYPoFXuexUpEli92lmC3s4P3DELoV4F/YYAO
- 7FA7Dr7ECmWQGcBxDklgkGp7ZH1sNPsd+VYJVmJtwC+vESFLzcWp+017DUGgrvSjU7lb
- vtzAuBVtgQZKaWZ9rA/D17tHyjXT2kuc3xTOWBE2BrvM6RbarWrmAgzOWkONwJZ3XSCa
- +luKXilpCtfO69kiR4oA6uxdUstKFRWF32p/YoQP9+4yofDy5GqP+E71SUUmE9zKnm0M
- O8MyhuaNCEH/rQi9E6Yb2AqWxjj1yH2HlSMq3rrVnmw2Ql5dml5NOjoCV0dAZF/G3896
- HNRw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:from:to:cc:subject:date:message-id:mime-version
- :content-transfer-encoding;
- bh=hwxfonhHlGFVx69kT9RP5//Gc3YVzhRRMlYFkTlWsyY=;
- b=QXw0mD3uQ8ucgezDX3DOVvtzlltnr5G7di3p1TTdi1Uj6Y4QGuegigEfxnEembr7Ly
- WEpy6r69dy8y9Jm4Dh0AEm1cN8JW5a9K1Z3bOVmt5hb5wiqrFd4ZLhtZQWmAEHPC5PBa
- RDwAgP01YgzhFPqiU5Bn8IKcJnMn/EXmzTcIaLyA0+6Crvkkcg4HIv/cPiM4qrbXlXtW
- y0HAOVowmOJ99Q+w22UGyVNnthUY+kg/csTW0k4gCgaMDUdV6n9UNz7cN+eXjIaev2Ec
- GjugoYUvBcNQUzmvj05nuswLXjMdNMoc7nt4iUGZX4NbUHV7g/iO1ki6cTV+m53OzkxI
- UBPg==
-X-Gm-Message-State: AOAM530yBDIRizkXtxoXVkaTzXc4I1Sy0vVVSvlyjRY0mSxVHcDKUiOO
- JkrWfEbnWXlVdTrDQ6zT/yVSyN+IYl8=
-X-Received: by 2002:a17:906:774d:: with SMTP id
- o13mr26426072ejn.70.1614120835104; 
- Tue, 23 Feb 2021 14:53:55 -0800 (PST)
-Received: from localhost.localdomain
- (2a02-a456-6be8-1-9f7b-4035-6320-cb66.fixed6.kpn.net.
- [2a02:a456:6be8:1:9f7b:4035:6320:cb66])
- by smtp.gmail.com with ESMTPSA id u15sm55752ejy.48.2021.02.23.14.53.54
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Feb 2021 14:53:54 -0800 (PST)
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Return-Path: <alex.bennee@linaro.org>
+Received: from zen.linaroharston ([51.148.130.216])
+        by smtp.gmail.com with ESMTPSA id u3sm3509429wro.33.2020.11.04.08.53.04
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Nov 2020 08:53:05 -0800 (PST)
+Received: from zen.lan (localhost [127.0.0.1])
+	by zen.linaroharston (Postfix) with ESMTP id 600761FF7E;
+	Wed,  4 Nov 2020 16:53:04 +0000 (GMT)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH v2 0/2] Allwinner H3 fixes for EMAC and acceptance tests
-Date: Tue, 23 Feb 2021 23:53:25 +0100
-Message-Id: <20210223225327.26700-1-nieklinnenbank@gmail.com>
-X-Mailer: git-send-email 2.25.1
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+	Graeme Gregory <graeme@nuviainc.com>,
+	Leif Lindholm <leif@nuviainc.com>,
+	Shashi Mallela <shashi.mallela@linaro.org>,
+	Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH v2] docs: add some notes on the sbsa-ref machine
+Date: Wed,  4 Nov 2020 16:52:54 +0000
+Message-Id: <20201104165254.24822-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.20.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-ej1-x636.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
-X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
-X-Mailman-Version: 2.1.23
-Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: peter.maydell@linaro.org, f4bug@amsat.org, b.galvani@gmail.com,
- Niek Linnenbank <nieklinnenbank@gmail.com>, qemu-arm@nongnu.org,
- Pavel.Dovgaluk@ispras.ru, crosa@redhat.com, philmd@redhat.com
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: sctZKEaK9vhs
+X-TUID: 9rbdmc1B7+KI
 
-The following are maintenance patches for the Allwinner H3. The first patch
-is a proposal to relocate the binary artifacts of the acceptance tests away
-from the apt.armbian.com domain. In the past we had problems with artifacts being
-removed, and now the recently added Armbian 20.08.1 image has been removed as well:
+We should at least document what this machine is about.
 
-$ wget https://dl.armbian.com/orangepipc/archive/Armbian_20.08.1_Orangepipc_bionic_current_5.8.5.img.xz
-Connecting to dl.armbian.com (dl.armbian.com)|2605:7900:20::5|:443... connected.
-...
-HTTP request sent, awaiting response... 404 Not Found
-2021-02-11 22:34:45 ERROR 404: Not Found.
+Reviewed-by: Graeme Gregory <graeme@nuviainc.com>
+Cc: Leif Lindholm <leif@nuviainc.com>
+Cc: Shashi Mallela <shashi.mallela@linaro.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-I've now added the artifacts to github as a short term solution:
-  https://github.com/nieklinnenbank/QemuArtifacts
+---
+v2
+  - reworded command line bit as per Leif
+  - s/cortex-a57 cpus/AArch64 CPUs/
+  - dropped the trailing .'s
+---
+ docs/system/arm/sbsa.rst   | 32 ++++++++++++++++++++++++++++++++
+ docs/system/target-arm.rst |  1 +
+ 2 files changed, 33 insertions(+)
+ create mode 100644 docs/system/arm/sbsa.rst
 
-The second patch is a fix for the EMAC that is used by the Allwinner H3 / Orange Pi PC machine.
-
-ChangeLog:
-
-v2:
- - added Reviewed-By tags
- - changed URL for artifacts to github.com/nieklinnenbank/QemuArtifacts
-
-Kind regards,
-
-Niek
-
-Niek Linnenbank (2):
-  tests/acceptance: replace unstable apt.armbian.com URLs for
-    orangepi-pc, cubieboard
-  hw/net/allwinner-sun8i-emac: traverse transmit queue using TX_CUR_DESC
-    register value
-
- hw/net/allwinner-sun8i-emac.c          | 58 ++++++++++++++------------
- tests/acceptance/boot_linux_console.py | 49 +++++++++-------------
- tests/acceptance/replay_kernel.py      |  6 +--
- 3 files changed, 53 insertions(+), 60 deletions(-)
-
+diff --git a/docs/system/arm/sbsa.rst b/docs/system/arm/sbsa.rst
+new file mode 100644
+index 0000000000..b8ecfdb62f
+--- /dev/null
++++ b/docs/system/arm/sbsa.rst
+@@ -0,0 +1,32 @@
++Arm Server Base System Architecture Reference board (``sbsa-ref``)
++==================================================================
++
++While the `virt` board is a generic board platform that doesn't match
++any real hardware the `sbsa-ref` board intends to look like real
++hardware. The `Server Base System Architecture
++<https://developer.arm.com/documentation/den0029/latest>` defines a
++minimum base line of hardware support and importantly how the firmware
++reports that to any operating system. It is a static system that
++reports a very minimal DT to the firmware for non-discoverable
++information about components affected by the qemu command line (i.e.
++cpus and memory). As a result it must have a firmware specifically
++built to expect a certain hardware layout (as you would in a real
++machine).
++
++It is intended to be a machine for developing firmware and testing
++standards compliance with operating systems.
++
++Supported devices
++"""""""""""""""""
++
++The sbsa-ref board supports:
++
++  - A configurable number of AArch64 CPUs
++  - GIC version 3
++  - System bus AHCI controller
++  - System bus EHCI controller
++  - CDROM and hard disc on AHCI bus
++  - E1000E ethernet card on PCIe bus
++  - VGA display adaptor on PCIe bus
++  - A generic SBSA watchdog device
++
+diff --git a/docs/system/target-arm.rst b/docs/system/target-arm.rst
+index fdcf25c237..9636f3fd00 100644
+--- a/docs/system/target-arm.rst
++++ b/docs/system/target-arm.rst
+@@ -79,6 +79,7 @@ undocumented; you can get a complete list by running
+    arm/mps2
+    arm/musca
+    arm/realview
++   arm/sbsa-ref
+    arm/versatile
+    arm/vexpress
+    arm/aspeed
 -- 
-2.25.1
-
+2.20.1

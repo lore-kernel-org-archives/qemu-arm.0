@@ -1,117 +1,88 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5622884lfa;
-        Wed, 4 Nov 2020 03:45:56 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJxXoV7Icfowh0FSLUt8dnp5QqhltjbkGlNkY1GtIQv1ge0C6qLXDNont4k6rZXHaRXl0i8K
-X-Received: by 2002:a25:cfcf:: with SMTP id f198mr35685737ybg.60.1604490356324;
-        Wed, 04 Nov 2020 03:45:56 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604490356; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp303691lfb;
+        Wed, 4 Nov 2020 14:28:39 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJwqMEkzMkfS0R8wMV2L+WaKNVPqC53mNY94uPzxmMK7iGHejYDWYre9gMqKSEi7SMZvplgG
+X-Received: by 2002:a25:bfcc:: with SMTP id q12mr51629ybm.194.1604528919274;
+        Wed, 04 Nov 2020 14:28:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604528919; cv=none;
         d=google.com; s=arc-20160816;
-        b=ejhDJFIbvmMF/c38P+kT5zCZtz7XIiIk+OLI8ThzPU/fgzEUEbUqYbuZtjkttizpZ1
-         UL/YfgPbsMdOKSPC0TjLxd+dAi2pz/MTdB32GWwZGBhMEPpjQ3QSx9+/mnRx2QvZnTRV
-         D6ejMzGaRBybOB9RFB29RLn2pGWDip+3lVpDLHs6Oubi7jt1IhvIQw6Q8WM0XiJsywTE
-         erJRoi8wVQpBX5IbbJcXt+9ACXriCuJD2TjOjoxYtsoRxoDWN9UbjbLm96m3pI39aKvg
-         ZSnoeBFWMZrC0mrnHt8VK1ENjLALey/mPWAgur8fka4drSPWIATihOv3agWTFI42yXPl
-         Z23Q==
+        b=BmrXTiMXjWHdzn0QkNElyTZ8inLTWB10tNRvLn1uUCf8d/e+So/dw+c03Ls5fBb7st
+         5yXYvssWXjDT/PT6JBiRv8P3sv5FgtEzx4wPlDv5yqEBXNMVm3U5IHwO5WzOL3OCWG5F
+         KkE9nnShLkOZLJLa6IHD7Xoq42SRECp0lBKE6TvQE2j2UAwG19w8ZJorPfw/VVXGiQ+i
+         gDyi+xnSQ4gkWajxc3TNa0ZQqVaxT5nAMysdoXelpDHWogKe/mci3NMWh2a1cFRJOrJT
+         9XcBo2s1ibj6FMztRlOKTEmqAAtb/hjesRY8gKjLpAB2OzSMFw1n+EvlzMCC3tCKFmBc
+         n0ww==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=nTz4BIu+lJhge0597cwPjRjpeauN6Tp6qnwXKuuktqA=;
-        b=g9gh8/8o3fiQPK3mNsJLjtdv0Qq/4tTO3eB9gdXZipgBZawrIiXAt372cXYh9kaCHa
-         xlpWKLbYxo3H2Kl73F32TN8L4ucwkw0q7AWE8CoAEcQvynNfWYevXQfVJvYH6IpGbDeD
-         NwCCKAEl96D/GJCp8Ah5DIXlFHcoaQs0cSvw39vkTibaec4OXRcGGB5Mf7jlauh5IZgO
-         rDX6lLjRH8kiEMMmBGCQdAWBbPsUMiRzCD6CQg75yluCjSvAreDn276c2wW8bM/xHgO+
-         vsj4HORUXsSdbsWdoQypdCNCDYV9D/TMcQZaYxryNDYNs287S9qYiWwAP8LqXmN76kEM
-         ODXw==
+         :message-id:from:references:to:subject;
+        bh=hEbL91Asn3qB5EGYAE7gCUhnoj8YyRHtE+UpCpQ170k=;
+        b=UTrGQebbfuycjlRWBCbs+WVbtTJet8VXOKblsQEeDjyvo/um00bPwRy8AiIe6BK8K+
+         svCx4Ntgqa0SZhKnckwhW6UvM39eb5ieaQsyu/Cnvdpn+bYsIH73nT2bRPqOqRGRdDTG
+         gZJGkwW64R48mIyp2exvIsLcdBYFg5oGukxmplNKAsffc7/63bUYfNaaI2ROPoOptCwl
+         K/8R1sdqJ5113n5j66LoKMMseVSpd3squNtJUZ962ZLdEPFGERukfrVz1vTamJiOCCZy
+         cN/d/lkM6WrR5llJ447+bIhkFVJgf3xGIkPxqU11bxX69U0ssKgQn3krsmMGOyrguN9D
+         PAZw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Mmu/2tHE";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=arm.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id t1si1962280ybk.378.2020.11.04.03.45.56
+        by mx.google.com with ESMTPS id d6si3447501ybk.337.2020.11.04.14.28.39
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Nov 2020 03:45:56 -0800 (PST)
+        Wed, 04 Nov 2020 14:28:39 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Mmu/2tHE";
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
-Received: from localhost ([::1]:34546 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=arm.com
+Received: from localhost ([::1]:59046 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kaHEh-0008G0-N6
-	for alex.bennee@linaro.org; Wed, 04 Nov 2020 06:45:55 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:56918)
+	id 1kaRGg-0007OE-Kf
+	for alex.bennee@linaro.org; Wed, 04 Nov 2020 17:28:38 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:32868)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaHEZ-0008Fh-CA
- for qemu-arm@nongnu.org; Wed, 04 Nov 2020 06:45:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:51612)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaHEX-0003ws-6Q
- for qemu-arm@nongnu.org; Wed, 04 Nov 2020 06:45:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1604490342;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=nTz4BIu+lJhge0597cwPjRjpeauN6Tp6qnwXKuuktqA=;
- b=Mmu/2tHEtakti+iCFCqHJYZvmxbdoGs7LljYIwihHEszq+9auzPdxSh9wGr5hxXrfPm330
- m4y1R95mzGmyQO7y96dKo2Bsr6dOW1kPhGE7Ng4tQX3kwHuCctTjJqojr0Rr/hNl/h/d1H
- XDpHqzQoL0Vk7MaDHjVL4xRoO+2Y7TM=
-Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
- [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
- us-mta-488-qZ4sCBukNpSS3mug1QO1Kw-1; Wed, 04 Nov 2020 06:45:41 -0500
-X-MC-Unique: qZ4sCBukNpSS3mug1QO1Kw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
- [10.5.11.16])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 34E8D1868426;
- Wed,  4 Nov 2020 11:45:38 +0000 (UTC)
-Received: from thuth.remote.csb (ovpn-112-151.ams2.redhat.com [10.36.112.151])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 57F0D5C1D0;
- Wed,  4 Nov 2020 11:45:27 +0000 (UTC)
-Subject: Re: [PATCH-for-5.2? 3/5] tests/acceptance: Skip incomplete
- virtio_version tests using '@skip'
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- "Daniel P . Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
-References: <20201102144245.2134077-1-philmd@redhat.com>
- <20201102144245.2134077-4-philmd@redhat.com>
- <6fd67527-b887-54c5-8de6-4f54c8d66934@redhat.com>
- <68b4585b-2cfd-7b24-af63-674d004d8e51@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Message-ID: <92822f0a-5b47-6772-9956-c050f736bbc3@redhat.com>
-Date: Wed, 4 Nov 2020 12:45:26 +0100
+ (Exim 4.90_1) (envelope-from <ard.biesheuvel@arm.com>)
+ id 1kaQmu-0003qA-9t; Wed, 04 Nov 2020 16:57:52 -0500
+Received: from foss.arm.com ([217.140.110.172]:36988)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <ard.biesheuvel@arm.com>)
+ id 1kaQmr-0000et-O7; Wed, 04 Nov 2020 16:57:51 -0500
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+ by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 08C4C14BF;
+ Wed,  4 Nov 2020 13:57:43 -0800 (PST)
+Received: from [192.168.1.81] (unknown [10.37.8.17])
+ by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id EA6273F719;
+ Wed,  4 Nov 2020 13:57:40 -0800 (PST)
+Subject: Re: Question on UEFI ACPI tables setup and probing on arm64
+To: Laszlo Ersek <lersek@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ying Fang <fangying1@huawei.com>
+References: <ee3b7fdf-f6ba-cafc-5b44-42b0bcda01c5@huawei.com>
+ <20201103133913.1fee3337@redhat.com>
+ <a79383a6-92d4-5b10-d143-414543caab70@redhat.com>
+From: Ard Biesheuvel <ard.biesheuvel@arm.com>
+Message-ID: <a21964bc-d603-9a3c-1012-627088688ce1@arm.com>
+Date: Wed, 4 Nov 2020 22:57:37 +0100
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
- Thunderbird/68.6.0
+ Thunderbird/68.10.0
 MIME-Version: 1.0
-In-Reply-To: <68b4585b-2cfd-7b24-af63-674d004d8e51@redhat.com>
-X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
-Authentication-Results: relay.mimecast.com;
- auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+In-Reply-To: <a79383a6-92d4-5b10-d143-414543caab70@redhat.com>
+Content-Type: text/plain; charset=utf-8; format=flowed
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 22:09:52
-X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=217.140.110.172;
+ envelope-from=ard.biesheuvel@arm.com; helo=foss.arm.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 16:57:43
+X-ACL-Warn: Detected OS   = Linux 3.11 and newer [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 04 Nov 2020 17:28:29 -0500
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
@@ -123,78 +94,71 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Sarah Harris <S.E.Harris@kent.ac.uk>,
- Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc@nongnu.org,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Fabien Chouteau <chouteau@adacore.com>,
- KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
- Michael Rolnik <mrolnik@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Aurelien Jarno <aurelien@aurel32.net>, Antony Pavlov <antonynpavlov@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Drew Jones <drjones@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "wangzhigang17@huawei.com" <wangzhigang17@huawei.com>, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: BWAtOrVHCLBC
+X-TUID: 3j2tc1uiq2yO
 
-On 04/11/2020 12.27, Philippe Mathieu-Daudé wrote:
-> On 11/4/20 12:13 PM, Thomas Huth wrote:
->> On 02/11/2020 15.42, Philippe Mathieu-Daudé wrote:
->>> Prefer skipping incomplete tests with the "@skip" keyword,
->>> rather than commenting the code.
->>>
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
->>> ---
->>>  tests/acceptance/virtio_version.py | 11 +++++++----
->>>  1 file changed, 7 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/tests/acceptance/virtio_version.py b/tests/acceptance/virtio_version.py
->>> index 33593c29dd0..187bbfa1f42 100644
->>> --- a/tests/acceptance/virtio_version.py
->>> +++ b/tests/acceptance/virtio_version.py
->>> @@ -140,17 +140,20 @@ def check_all_variants(self, qemu_devtype, virtio_devid):
->>>          self.assertIn('conventional-pci-device', trans_ifaces)
->>>          self.assertNotIn('pci-express-device', trans_ifaces)
->>>  
->>> +    @skip("virtio-blk requires 'driver' parameter")
->>
->> Shouldn't that be 'drive' instead of 'driver' ?
+On 11/4/20 10:46 PM, Laszlo Ersek wrote:
+...
 > 
-> No clue, this is the previous commented line.
+> (9) (Ard, please correct the below if necessary; thanks.)
 > 
->>
->>> +    def test_conventional_devs_driver(self):
->>> +        self.check_all_variants('virtio-blk-pci', VIRTIO_BLOCK)
->>> +
->>> +    @skip("virtio-9p requires 'fsdev' parameter")
->>> +    def test_conventional_devs_fsdev(self):
->>> +        self.check_all_variants('virtio-9p-pci', VIRTIO_9P)
->>>  
->>>      def test_conventional_devs(self):
->>>          self.check_all_variants('virtio-net-pci', VIRTIO_NET)
->>> -        # virtio-blk requires 'driver' parameter
->>> -        #self.check_all_variants('virtio-blk-pci', VIRTIO_BLOCK)
->>>          self.check_all_variants('virtio-serial-pci', VIRTIO_CONSOLE)
->>>          self.check_all_variants('virtio-rng-pci', VIRTIO_RNG)
->>>          self.check_all_variants('virtio-balloon-pci', VIRTIO_BALLOON)
->>>          self.check_all_variants('virtio-scsi-pci', VIRTIO_SCSI)
->>> -        # virtio-9p requires 'fsdev' parameter
->>> -        #self.check_all_variants('virtio-9p-pci', VIRTIO_9P)
->>
->> I think I'd prefer to keep the stuff commented ... otherwise it will show up
->> in the logs, giving the impression that you could run the tests somehow if
->> you just provided the right environment, which is just not possible right now.
+> The UEFI stub of the guest kernel (which is a UEFI application) uses a
+> device tree as its main communication channel to the (later-started)
+> kernel entry point, AIUI.
 > 
-> Well, we usually don't commit commented code like that.
-> If it is committed, it is important, then it has to show up in
-> the log. If you don't want it logged, why not remove it then?
+> The UEFI stub basically inverts the importance of the UEFI system table
+> versus the device tree -- the UEFI stub *converts* the UEFI system table
+> (the multitude of UEFI config tables) into a device tree. This is my
+> understanding anyway.
+> 
 
-Then I'd rather remove it. Or leave a comment saying "we cannot exercise
-virtio-9p-pci and virtio-blk-pci here (yet) since they need additional
-parameters to be set".
+Not entirely. The UEFI stub uses DT to communicate with the kernel 
+proper, just like a non-EFI bootloader does. There are two pieces of 
+information regarding EFI that the stub passes via the device tree:
+- the EFI system table address
+- the EFI memory map (address, size, descriptor size etc)
 
- Thomas
+(Aside: unfortunately, we cannot pass the latter information via a EFI 
+configuration table, given that we call SetVirtualAddressMap() in the 
+stub, which causes the config_tables member of the system table to be 
+converted into a virtual address. That virtual address can only be 
+converted into a physical address if we have access to the EFI memory map.)
 
+All other information passed between the EFI stub and the kernel proper 
+is passed via Linux-specific EFI configuration tables.
+
+> (9a) If ACPI was disabled on the QEMU command line, then the guest
+> kernel *adopts* the device tree that was forwarded to it in (6), via the
+> UEFI config table marked with DEVICE_TREE_GUID.
+> 
+
+Yes, although the EFI stub updates/augments it with the two data items 
+mentioned above, as well as the kernel command line, initrd base and 
+size and a KASLR seed [if enabled].
+
+> (9b) If ACPI was enabled on the QEMU command line, then the UEFI stub
+> creates a brand new (empty) device tree (AIUI).
+>
+
+... unless GRUB executed first and loaded a initrd, and passed this 
+information via the device tree. In this case, GRUB creates an empty DT 
+(Note that I posted the GRUB patches to implement LoadFile2 based initrd 
+loading just a week or so ago)
+
+> Either way, the UEFI system table is linked *under* the -- adopted or
+> new -- device tree, through the "chosen" node. And so, if ACPI was
+> enabled, the ACPI RSD PTR (coming from step (7)) becomes visible to the
+> kernel proper as well, through the UEFI config table with
+> ACPI_20_TABLE_GUID.
+> 
+> I believe this is implemented under "drivers/firmware/efi/libstub" in
+> the kernel tree.
+> 
+> Thanks,
+> Laszlo
+> 
 

@@ -1,133 +1,200 @@
-Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5570667lfa;
-        Wed, 4 Nov 2020 02:23:35 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJyUPJbJzNeUOW/vG7vgrgbhdx7efVIuC/PPlpbrNuPulMw1Zc7u+IEidoc2gnDRWsuHxcrh
-X-Received: by 2002:a25:d701:: with SMTP id o1mr33796753ybg.453.1604485414973;
-        Wed, 04 Nov 2020 02:23:34 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604485414; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5622884lfa;
+        Wed, 4 Nov 2020 03:45:56 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJxXoV7Icfowh0FSLUt8dnp5QqhltjbkGlNkY1GtIQv1ge0C6qLXDNont4k6rZXHaRXl0i8K
+X-Received: by 2002:a25:cfcf:: with SMTP id f198mr35685737ybg.60.1604490356324;
+        Wed, 04 Nov 2020 03:45:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604490356; cv=none;
         d=google.com; s=arc-20160816;
-        b=GVI2fzkothb3hRDR/O7e1BWqV/5KzgRcOKry5fN8//V+ff8AIFTy8EeNzT7tIzNrjN
-         7tDtdnvA43V97+WZeLyzBK11q1uFuq18JDGIgIvqmry774dCmHJEWaQFDUrCmbMrfhZn
-         04ZbJZTQ48zs4/n1eQGjKVjFBMzaDt1ytk81F5WZtZq8CeDeieos5nU7aCUO+BseSGaC
-         1p2LzMAFlPk2xigxkO+9/jOfzsCLPDsR95kk/31/mjkLqrh9SLhnFPATa8KkeLNfDpAL
-         z3+sLtA8juqnXNIll/9jdyijLwkoKOjbaJdViAUOg3qXdz2He+aAGnF3Rh3HB4UVDIdU
-         tgcg==
+        b=ejhDJFIbvmMF/c38P+kT5zCZtz7XIiIk+OLI8ThzPU/fgzEUEbUqYbuZtjkttizpZ1
+         UL/YfgPbsMdOKSPC0TjLxd+dAi2pz/MTdB32GWwZGBhMEPpjQ3QSx9+/mnRx2QvZnTRV
+         D6ejMzGaRBybOB9RFB29RLn2pGWDip+3lVpDLHs6Oubi7jt1IhvIQw6Q8WM0XiJsywTE
+         erJRoi8wVQpBX5IbbJcXt+9ACXriCuJD2TjOjoxYtsoRxoDWN9UbjbLm96m3pI39aKvg
+         ZSnoeBFWMZrC0mrnHt8VK1ENjLALey/mPWAgur8fka4drSPWIATihOv3agWTFI42yXPl
+         Z23Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :subject:to:mime-version:user-agent:from:date:message-id;
-        bh=LQgJfHkhpND8xb7tE1Rzp8oXApRPWA8xYWBn9kUc8mI=;
-        b=slUBnHpI5rcQF5UL9zaLzm1OjxJEg3/qaj5A7371WbyvufcOWPkQUh9LChr7ed6ZA6
-         87UhctE50zGuS6fodAbDORVa+EYTlNgSIFwlY2ur+hkmBquFk7Rzk4gHQSBLivd83lCk
-         T9b0f99QiFCJOPxJgrdCEqGttosG2dEVe1ivXn/AEBSKxdRC06USz2Vmjk7LqLk4Z2ry
-         nDA/yA1k2xPzdFSJiCqqU7ytXMYyUy+0Adr3Ki8ivRzrMaCUWhy46l4kK4/rZ2gwuqxJ
-         eJs4ArySHb3TaErqitRZwaG9Xn1GlTzm4gZPqthvCl5/JigSuybY242gw4D3FOc1Lo2J
-         3L5w==
+         :content-language:in-reply-to:mime-version:user-agent:date
+         :message-id:from:references:to:subject:dkim-signature;
+        bh=nTz4BIu+lJhge0597cwPjRjpeauN6Tp6qnwXKuuktqA=;
+        b=g9gh8/8o3fiQPK3mNsJLjtdv0Qq/4tTO3eB9gdXZipgBZawrIiXAt372cXYh9kaCHa
+         xlpWKLbYxo3H2Kl73F32TN8L4ucwkw0q7AWE8CoAEcQvynNfWYevXQfVJvYH6IpGbDeD
+         NwCCKAEl96D/GJCp8Ah5DIXlFHcoaQs0cSvw39vkTibaec4OXRcGGB5Mf7jlauh5IZgO
+         rDX6lLjRH8kiEMMmBGCQdAWBbPsUMiRzCD6CQg75yluCjSvAreDn276c2wW8bM/xHgO+
+         vsj4HORUXsSdbsWdoQypdCNCDYV9D/TMcQZaYxryNDYNs287S9qYiWwAP8LqXmN76kEM
+         ODXw==
 ARC-Authentication-Results: i=1; mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Mmu/2tHE";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id c12si2056163ybs.138.2020.11.04.02.23.34
+        by mx.google.com with ESMTPS id t1si1962280ybk.378.2020.11.04.03.45.56
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Nov 2020 02:23:34 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Nov 2020 03:45:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:51196 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b="Mmu/2tHE";
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:34546 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kaFx0-0003aP-B3
-	for alex.bennee@linaro.org; Wed, 04 Nov 2020 05:23:34 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:40846)
+	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kaHEh-0008G0-N6
+	for alex.bennee@linaro.org; Wed, 04 Nov 2020 06:45:55 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:56918)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kaFwV-0003YN-Td; Wed, 04 Nov 2020 05:23:03 -0500
-Received: from szxga04-in.huawei.com ([45.249.212.190]:2329)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
- id 1kaFwU-0002HK-5U; Wed, 04 Nov 2020 05:23:03 -0500
-Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
- by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CR2ls5FBLzkZZ8;
- Wed,  4 Nov 2020 18:22:49 +0800 (CST)
-Received: from [10.174.187.138] (10.174.187.138) by
- DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
- 14.3.487.0; Wed, 4 Nov 2020 18:22:45 +0800
-Message-ID: <5FA280F5.8060902@huawei.com>
-Date: Wed, 4 Nov 2020 18:22:45 +0800
-From: AlexChen <alex.chen@huawei.com>
-User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
- rv:17.0) Gecko/20130509 Thunderbird/17.0.6
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaHEZ-0008Fh-CA
+ for qemu-arm@nongnu.org; Wed, 04 Nov 2020 06:45:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([63.128.21.124]:51612)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1kaHEX-0003ws-6Q
+ for qemu-arm@nongnu.org; Wed, 04 Nov 2020 06:45:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604490342;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nTz4BIu+lJhge0597cwPjRjpeauN6Tp6qnwXKuuktqA=;
+ b=Mmu/2tHEtakti+iCFCqHJYZvmxbdoGs7LljYIwihHEszq+9auzPdxSh9wGr5hxXrfPm330
+ m4y1R95mzGmyQO7y96dKo2Bsr6dOW1kPhGE7Ng4tQX3kwHuCctTjJqojr0Rr/hNl/h/d1H
+ XDpHqzQoL0Vk7MaDHjVL4xRoO+2Y7TM=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-488-qZ4sCBukNpSS3mug1QO1Kw-1; Wed, 04 Nov 2020 06:45:41 -0500
+X-MC-Unique: qZ4sCBukNpSS3mug1QO1Kw-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.phx2.redhat.com
+ [10.5.11.16])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 34E8D1868426;
+ Wed,  4 Nov 2020 11:45:38 +0000 (UTC)
+Received: from thuth.remote.csb (ovpn-112-151.ams2.redhat.com [10.36.112.151])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 57F0D5C1D0;
+ Wed,  4 Nov 2020 11:45:27 +0000 (UTC)
+Subject: Re: [PATCH-for-5.2? 3/5] tests/acceptance: Skip incomplete
+ virtio_version tests using '@skip'
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
+ "Daniel P . Berrange" <berrange@redhat.com>, qemu-devel@nongnu.org,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Cleber Rosa <crosa@redhat.com>, Eduardo Habkost <ehabkost@redhat.com>
+References: <20201102144245.2134077-1-philmd@redhat.com>
+ <20201102144245.2134077-4-philmd@redhat.com>
+ <6fd67527-b887-54c5-8de6-4f54c8d66934@redhat.com>
+ <68b4585b-2cfd-7b24-af63-674d004d8e51@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Message-ID: <92822f0a-5b47-6772-9956-c050f736bbc3@redhat.com>
+Date: Wed, 4 Nov 2020 12:45:26 +0100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101
+ Thunderbird/68.6.0
 MIME-Version: 1.0
-To: <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>,
- <jcd@tribudubois.net>, <peter.chubb@nicta.com.au>
-Subject: [PATCH] ssi: Fix bad printf format specifiers
-Content-Type: text/plain; charset="ISO-8859-1"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.174.187.138]
-X-CFilter-Loop: Reflected
-Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
- helo=szxga04-in.huawei.com
-X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 05:21:16
-X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+In-Reply-To: <68b4585b-2cfd-7b24-af63-674d004d8e51@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.16
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=thuth@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=63.128.21.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 22:09:52
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-devel@nongnu.org
+X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-devel.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
-List-Post: <mailto:qemu-devel@nongnu.org>
-List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
- <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
- QEMU <qemu-devel@nongnu.org>, zhang.zhanghailiang@huawei.com
-Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: CAgY9zS7dRFl
+List-Id: <qemu-arm.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
+List-Post: <mailto:qemu-arm@nongnu.org>
+List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
+ <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Sarah Harris <S.E.Harris@kent.ac.uk>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>, qemu-ppc@nongnu.org,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Fabien Chouteau <chouteau@adacore.com>,
+ KONRAD Frederic <frederic.konrad@adacore.com>, qemu-arm@nongnu.org,
+ Michael Rolnik <mrolnik@gmail.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Aurelien Jarno <aurelien@aurel32.net>, Antony Pavlov <antonynpavlov@gmail.com>
+Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: BWAtOrVHCLBC
 
-We should use printf format specifier "%u" instead of "%d" for
-argument of type "unsigned int".
+On 04/11/2020 12.27, Philippe Mathieu-Daudé wrote:
+> On 11/4/20 12:13 PM, Thomas Huth wrote:
+>> On 02/11/2020 15.42, Philippe Mathieu-Daudé wrote:
+>>> Prefer skipping incomplete tests with the "@skip" keyword,
+>>> rather than commenting the code.
+>>>
+>>> Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+>>> ---
+>>>  tests/acceptance/virtio_version.py | 11 +++++++----
+>>>  1 file changed, 7 insertions(+), 4 deletions(-)
+>>>
+>>> diff --git a/tests/acceptance/virtio_version.py b/tests/acceptance/virtio_version.py
+>>> index 33593c29dd0..187bbfa1f42 100644
+>>> --- a/tests/acceptance/virtio_version.py
+>>> +++ b/tests/acceptance/virtio_version.py
+>>> @@ -140,17 +140,20 @@ def check_all_variants(self, qemu_devtype, virtio_devid):
+>>>          self.assertIn('conventional-pci-device', trans_ifaces)
+>>>          self.assertNotIn('pci-express-device', trans_ifaces)
+>>>  
+>>> +    @skip("virtio-blk requires 'driver' parameter")
+>>
+>> Shouldn't that be 'drive' instead of 'driver' ?
+> 
+> No clue, this is the previous commented line.
+> 
+>>
+>>> +    def test_conventional_devs_driver(self):
+>>> +        self.check_all_variants('virtio-blk-pci', VIRTIO_BLOCK)
+>>> +
+>>> +    @skip("virtio-9p requires 'fsdev' parameter")
+>>> +    def test_conventional_devs_fsdev(self):
+>>> +        self.check_all_variants('virtio-9p-pci', VIRTIO_9P)
+>>>  
+>>>      def test_conventional_devs(self):
+>>>          self.check_all_variants('virtio-net-pci', VIRTIO_NET)
+>>> -        # virtio-blk requires 'driver' parameter
+>>> -        #self.check_all_variants('virtio-blk-pci', VIRTIO_BLOCK)
+>>>          self.check_all_variants('virtio-serial-pci', VIRTIO_CONSOLE)
+>>>          self.check_all_variants('virtio-rng-pci', VIRTIO_RNG)
+>>>          self.check_all_variants('virtio-balloon-pci', VIRTIO_BALLOON)
+>>>          self.check_all_variants('virtio-scsi-pci', VIRTIO_SCSI)
+>>> -        # virtio-9p requires 'fsdev' parameter
+>>> -        #self.check_all_variants('virtio-9p-pci', VIRTIO_9P)
+>>
+>> I think I'd prefer to keep the stuff commented ... otherwise it will show up
+>> in the logs, giving the impression that you could run the tests somehow if
+>> you just provided the right environment, which is just not possible right now.
+> 
+> Well, we usually don't commit commented code like that.
+> If it is committed, it is important, then it has to show up in
+> the log. If you don't want it logged, why not remove it then?
 
-Reported-by: Euler Robot <euler.robot@huawei.com>
-Signed-off-by: Alex Chen <alex.chen@huawei.com>
----
- hw/ssi/imx_spi.c    | 2 +-
- hw/ssi/xilinx_spi.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+Then I'd rather remove it. Or leave a comment saying "we cannot exercise
+virtio-9p-pci and virtio-blk-pci here (yet) since they need additional
+parameters to be set".
 
-diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-index 7f703d8328..d8885ae454 100644
---- a/hw/ssi/imx_spi.c
-+++ b/hw/ssi/imx_spi.c
-@@ -53,7 +53,7 @@ static const char *imx_spi_reg_name(uint32_t reg)
-     case ECSPI_MSGDATA:
-         return  "ECSPI_MSGDATA";
-     default:
--        sprintf(unknown, "%d ?", reg);
-+        sprintf(unknown, "%u ?", reg);
-         return unknown;
-     }
- }
-diff --git a/hw/ssi/xilinx_spi.c b/hw/ssi/xilinx_spi.c
-index fec8817d94..49ff275593 100644
---- a/hw/ssi/xilinx_spi.c
-+++ b/hw/ssi/xilinx_spi.c
-@@ -142,7 +142,7 @@ static void xlx_spi_update_irq(XilinxSPI *s)
-        irq chain unless things really changed.  */
-     if (pending != s->irqline) {
-         s->irqline = pending;
--        DB_PRINT("irq_change of state %d ISR:%x IER:%X\n",
-+        DB_PRINT("irq_change of state %u ISR:%x IER:%X\n",
-                     pending, s->regs[R_IPISR], s->regs[R_IPIER]);
-         qemu_set_irq(s->irq, pending);
-     }
--- 
-2.19.1
+ Thomas
+
+

@@ -1,103 +1,108 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp74099lfb;
-        Wed, 4 Nov 2020 08:34:04 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJwLWKA5UJmw3czEz5gUQYKDkJBdO/Kkg3WZFN4bGB9tAOtANCg6aPm/+a+jvax+H7vjyeSw
-X-Received: by 2002:ac8:1287:: with SMTP id y7mr9639032qti.108.1604507644505;
-        Wed, 04 Nov 2020 08:34:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604507644; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp133187lfb;
+        Wed, 4 Nov 2020 09:58:23 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzo1Yefx+QhyV1a/QKOmpguot93W0bHPFV7W/IkTuluwHIAPTEhy4YSQKYuc4v+Laee+G1T
+X-Received: by 2002:a05:620a:13b8:: with SMTP id m24mr25572100qki.179.1604512702941;
+        Wed, 04 Nov 2020 09:58:22 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604512702; cv=none;
         d=google.com; s=arc-20160816;
-        b=LCZtyXkbmh/0jpHR4cH6S2tOJ2BD7YklUkuCz3xENK0M+3GEiPOxv8hLwdo82HoOcq
-         QXlJnRHsn7/6ltFGlczGzycjOX60N68XkX54COebgn5jgQy+t0ln55jdRuyY4NBwJUAI
-         O7vlQzIvji2A7ASsSAIHfsCbAdBJkYAer1uQMtZqhNd/d5wcGE34BnPj1QBT50lg6pRu
-         kcCFXXtzD/njNxta0T96uOowx2x0Dis1/CgFMzqPGz8xJth20Xe2OCNwA/mtVomdl14a
-         zRwfT0vWKAImxPaWs7ph+Co55JuSlmpdhBDCwp+HYk1UlYtmg+yucRC81oh35KWpU9QY
-         u31w==
+        b=MSrfrezZXLNH29/Fzqn0YBS7UoQ4yfDGK1P97YXiMUUXMVSiAuioYdxZCf1d3J/1cy
+         25V69VKNBdq6xeGG1KB9KmyQhKXHwc+UI9yWgg/sB884RQU3wb4QwEotmGNgxCdMVNMt
+         TzfR2FvVGtx7gqTHDlkpAeAvzdX8V6HYc/fbTcrbStA4spBaj5pZGpxuhPsOamtKuvMA
+         hlplOtshC6t2KIetcniKjE+c5CFq/mSh4oxzo6PS0mHWUOjK9ZvqB5JXY3s+Gb65+Dny
+         O6B6VzGn0QmAlXODKxwaSIce9Gv0li6EDwINfaSQvkIvv2igjyVOG+UTP4tB1O3MWfEQ
+         3vbw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=hqwmb6PrP8ZH8SWTlskXS7GXfl2EXLdVj41LHwfo5jc=;
-        b=iyOI7Z1xeaLRal9L4yEjC7EUEvXOZ8PczMDo1vpmbHOIoPtjazSBoKmC/e7u5NU0JF
-         MUkZTrpcY240RK8pFq38desm+JX9TFcpWxtRTwGRwJV3iF3RKcRDDJj7y0awHB+rYIDc
-         2OdvWvNoRpkroCdYeVk3qxM9QIDSpbUpkdK22WjMy2KuuB/VKiwmZlnEOy57hkksUdhu
-         qU5F2UNq/+V/5AAWpKWxamhfxKu+Bnka9qmWb7IvDVNncbLlGjyqQAHXRUYjAcSHiEc5
-         Ssmxo8YeVusQkoCMoQJBQLYBKw4JQFVQthxedOXWD3ftgX8Ytg4qR8iSXAsbfzIKHQpx
-         5o+Q==
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding:to
+         :subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=jKqnLeZ/soRP6JFVfVPo1dIj3et6wA0vrOMOsss4RRY=;
+        b=tjvUA6ezLkBBkIsi7o6duk55JFBymgLxXnv7Tfks0lGXW99DhPRZHSr2unjECvx/du
+         1nyOGHmp6PVN0b47Z56W4ggoRikXAG08OGhUCpKwAiP/FbwwwetrCcBPJzmCe8Ybz/zj
+         Uwq8e0QuBC+iBPSdV38OYcfJBsGKQJhp2rc3yQGNSeJWow7CDL4drkFuJfbeSxTA1EKc
+         XP916Q68CFG711eip5cdr4V6TaCO20Afj1D2li++M0qFEYsk0/WLRd2A4HfUN8VWnDX7
+         wez38GCFHYmagmctT8U6eRO+MmkIykPZYcZHVN03mXvAEqxPHaYqxdwBcH9FbP4eoX9z
+         gN3A==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NB59nJU8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=umPGdLgI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 8si1456131qka.193.2020.11.04.08.34.04
+        by mx.google.com with ESMTPS id k2si1719438qko.187.2020.11.04.09.58.22
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Nov 2020 08:34:04 -0800 (PST)
+        Wed, 04 Nov 2020 09:58:22 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=NB59nJU8;
+       dkim=fail header.i=@linaro.org header.s=google header.b=umPGdLgI;
        spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com
-Received: from localhost ([::1]:43376 helo=lists1p.gnu.org)
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Received: from localhost ([::1]:59590 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kaLjX-0004ZL-UX
-	for alex.bennee@linaro.org; Wed, 04 Nov 2020 11:34:03 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:49114)
+	id 1kaN38-0005Y8-Cr
+	for alex.bennee@linaro.org; Wed, 04 Nov 2020 12:58:22 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40378)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kaLjO-0004X4-L7; Wed, 04 Nov 2020 11:33:54 -0500
-Received: from mail-il1-x143.google.com ([2607:f8b0:4864:20::143]:33995)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kaN2k-0005Vz-TX
+ for qemu-arm@nongnu.org; Wed, 04 Nov 2020 12:58:00 -0500
+Received: from mail-ed1-x543.google.com ([2a00:1450:4864:20::543]:43075)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1kaLjM-0000r2-5c; Wed, 04 Nov 2020 11:33:54 -0500
-Received: by mail-il1-x143.google.com with SMTP id p2so5002047ilg.1;
- Wed, 04 Nov 2020 08:33:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1kaN2i-0003oX-7g
+ for qemu-arm@nongnu.org; Wed, 04 Nov 2020 12:57:58 -0500
+Received: by mail-ed1-x543.google.com with SMTP id b9so13164144edu.10
+ for <qemu-arm@nongnu.org>; Wed, 04 Nov 2020 09:57:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linaro.org; s=google;
  h=mime-version:references:in-reply-to:from:date:message-id:subject:to
- :cc; bh=hqwmb6PrP8ZH8SWTlskXS7GXfl2EXLdVj41LHwfo5jc=;
- b=NB59nJU80o5gEBh61X4PCFfbJzGBGOWlj6TuXeNwWO/NuRBIQ9WMtKvNxGxF3P4bEB
- zkBMHt3+5+Z85LNF9I53glrcdcBWdjIc8q1PZdoV+a03TTR1zZBp1QV5SbWZdF6BlAi5
- vj99CswShiN/rLbN19S4qmewmsncDZhqOPkkFYJKTgIpAH6zAHJB2NCHSPY+YgyPju7y
- TgxNph46mh3K9+ShNizXqBvFIlyrxyCxkoR2LAhiQ97uBqOO2CCppWDdJZ/Stp5xyrKG
- t0BcH61ULFdDcuvaG2TNBuf8/XEAu9Yiniyj5YZO6//XmHPkl2L3tJmoaFBOLRBZgypL
- g7fQ==
+ :cc:content-transfer-encoding;
+ bh=jKqnLeZ/soRP6JFVfVPo1dIj3et6wA0vrOMOsss4RRY=;
+ b=umPGdLgIickMRNQC6uGq5q8ilGMPvj1OPXYT1re+FFoZkpIRrQLZVEYdfCNLbs6zeN
+ anpsmpujcA7ZDNU2rPEqAWSEyxNfR08B6Blm68sWjZPsdJIQTT5VTJKUQfR4BV+4k5D4
+ 5BFzISDjSuvH6y2bWsHv9Ewyyy/s/eM6Z4oof0croVRfKuRueAinkRqf/Sh+Z/wp+QBo
+ Q3W3CkKfkzUP1cxLKUWFV46W/tsY9HBRN7US/HO4T7ymG+Zg4REfccg1ZY8I9bhz1Q6y
+ EtJRxDX2QEEm/XCHe18NHqmwvcmB6nRl1dCZgAw39NYu/xsjvFVJ0FA270OSsUWLU0gM
+ rWyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:mime-version:references:in-reply-to:from:date
- :message-id:subject:to:cc;
- bh=hqwmb6PrP8ZH8SWTlskXS7GXfl2EXLdVj41LHwfo5jc=;
- b=mNNzYP6DXmQn1r5+TNQ2khlDiJbDxckqiuxsTg9iWjA6F5c5kPTeaq2g7gPW5bsyRg
- IycGuzWCaOGjJaFArqem6m9uVHaRlCjBLPagI9yB0IYOMb/BoRiQra2u2dahwFGTHQzA
- dG0gun3WhDV0LHgKyiNZ2iTHgw+9zGB5q9F/75WyT27U+/nyk+vdEvDO0Je1T2QM0Xo7
- RF/OGzNS11aWcxth5gk1KSbGpAhk77RrD09knY5tL2+ClZV2WDwH46/wGgFWs4kctfzQ
- w/QTr5rUbeMpz+yJOSr17mYM9mnQXNZKAi0GM/KNYcfblpYRmiQJhPgPJSd1Gkwca456
- tIOw==
-X-Gm-Message-State: AOAM5310wWcj6L3EEJpeSRlQdfaCvTyDqREQ6wmq1I0EWCXO7tLdJgv3
- 2Wt/Yb99n/gERV5YQqm20TTel85xvOBzu1E1PuY=
-X-Received: by 2002:a05:6e02:f41:: with SMTP id
- y1mr19868790ilj.267.1604507630165; 
- Wed, 04 Nov 2020 08:33:50 -0800 (PST)
+ :message-id:subject:to:cc:content-transfer-encoding;
+ bh=jKqnLeZ/soRP6JFVfVPo1dIj3et6wA0vrOMOsss4RRY=;
+ b=tOowffd/6FwJs+64G5cW9K9VmjwgYSqHhXnHLpDnWuRHUwxkIuJCSKU9v8HKKApOUS
+ Mp3UmfhKEUnlkmc512OAp9lzGNPCox4Mz4K8C6H2xr/nzBU6nuFg9QxwnA7nlizLzktm
+ yXnj5J8udNu/wbLCLj54WD9xe+HW5s82BE5Gq/DgQsVxI9b6HuVShgmtoxMP7yBRzK2M
+ ySiTcgwXOILJ313RDVPLGwozVgfVxdlWqXhC7Djgfwr/0OowXkD5JKUGGPMWARZjf7p7
+ GpUoP1MTfg9GwvhjRrFv9tXh1M7BKFZLxVk1Y+FJkCOngKnqjLavTtUKBOjjN6Znn4Pv
+ JSmw==
+X-Gm-Message-State: AOAM5308olgIPWiSxL4xed+NbJ+hxHMcTCFjmJE7NN2QXZAHYMAeyxyC
+ 3ZbyvaCj4arUO1kAUZs1voQ13Wv6Yw2VEBxixwR23w==
+X-Received: by 2002:a05:6402:4c6:: with SMTP id
+ n6mr28823057edw.204.1604512674444; 
+ Wed, 04 Nov 2020 09:57:54 -0800 (PST)
 MIME-Version: 1.0
-References: <5FA280F5.8060902@huawei.com>
-In-Reply-To: <5FA280F5.8060902@huawei.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 4 Nov 2020 08:21:52 -0800
-Message-ID: <CAKmqyKOS4bALKNTA9wMK=HANz4Dc=fffq2pZafCxGFqsJ_LMkg@mail.gmail.com>
-Subject: Re: [PATCH] ssi: Fix bad printf format specifiers
-To: AlexChen <alex.chen@huawei.com>
+References: <20201104103343.30392-1-drjones@redhat.com>
+ <612eaae4-6e05-568e-01cc-a191bbb7c835@redhat.com>
+In-Reply-To: <612eaae4-6e05-568e-01cc-a191bbb7c835@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 4 Nov 2020 17:57:43 +0000
+Message-ID: <CAFEAcA93GCoVTSxW_64W_Fmut2O74UXZJGej4FE7g_atGa0VDw@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm/Kconfig: ARM_V7M depends on PTIMER
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@redhat.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::143;
- envelope-from=alistair23@gmail.com; helo=mail-il1-x143.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::543;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x543.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -110,59 +115,29 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Zhanghailiang <zhang.zhanghailiang@huawei.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- Alistair Francis <alistair@alistair23.me>, QEMU <qemu-devel@nongnu.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm <qemu-arm@nongnu.org>,
- Peter Chubb <peter.chubb@nicta.com.au>
+Cc: Andrew Jones <drjones@redhat.com>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU Developers <qemu-devel@nongnu.org>
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: oSmGD8RdBz90
+X-TUID: AltEp64iIrSO
 
-On Wed, Nov 4, 2020 at 2:23 AM AlexChen <alex.chen@huawei.com> wrote:
+On Wed, 4 Nov 2020 at 10:35, Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com=
+> wrote:
 >
-> We should use printf format specifier "%u" instead of "%d" for
-> argument of type "unsigned int".
+> On 11/4/20 11:33 AM, Andrew Jones wrote:
+> > commit 32bd322a0134 ("hw/timer/armv7m_systick: Rewrite to use ptimers")
+> > changed armv7m_systick to build on ptimers. Make sure we have ptimers
+> > in the build when building armv7m_systick.
+> >
+> > Signed-off-by: Andrew Jones <drjones@redhat.com>
+> > ---
+> >  hw/arm/Kconfig | 1 +
+> >  1 file changed, 1 insertion(+)
 >
-> Reported-by: Euler Robot <euler.robot@huawei.com>
-> Signed-off-by: Alex Chen <alex.chen@huawei.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@redhat.com>
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Alistair
 
-> ---
->  hw/ssi/imx_spi.c    | 2 +-
->  hw/ssi/xilinx_spi.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
-> index 7f703d8328..d8885ae454 100644
-> --- a/hw/ssi/imx_spi.c
-> +++ b/hw/ssi/imx_spi.c
-> @@ -53,7 +53,7 @@ static const char *imx_spi_reg_name(uint32_t reg)
->      case ECSPI_MSGDATA:
->          return  "ECSPI_MSGDATA";
->      default:
-> -        sprintf(unknown, "%d ?", reg);
-> +        sprintf(unknown, "%u ?", reg);
->          return unknown;
->      }
->  }
-> diff --git a/hw/ssi/xilinx_spi.c b/hw/ssi/xilinx_spi.c
-> index fec8817d94..49ff275593 100644
-> --- a/hw/ssi/xilinx_spi.c
-> +++ b/hw/ssi/xilinx_spi.c
-> @@ -142,7 +142,7 @@ static void xlx_spi_update_irq(XilinxSPI *s)
->         irq chain unless things really changed.  */
->      if (pending != s->irqline) {
->          s->irqline = pending;
-> -        DB_PRINT("irq_change of state %d ISR:%x IER:%X\n",
-> +        DB_PRINT("irq_change of state %u ISR:%x IER:%X\n",
->                      pending, s->regs[R_IPISR], s->regs[R_IPIER]);
->          qemu_set_irq(s->irq, pending);
->      }
-> --
-> 2.19.1
->
+Applied to target-arm.next, thanks.
+
+-- PMM

@@ -1,108 +1,95 @@
-Return-Path: <alex.bennee@linaro.org>
-Received: from zen.linaroharston ([51.148.130.216])
-        by smtp.gmail.com with ESMTPSA id a128sm3209068wmf.5.2020.11.04.09.44.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Nov 2020 09:44:23 -0800 (PST)
-Received: from zen (localhost [127.0.0.1])
-	by zen.linaroharston (Postfix) with ESMTP id 9B54B1FF7E;
-	Wed,  4 Nov 2020 17:44:22 +0000 (GMT)
-References: <CAMj1kXFDWJOt+m-nC8CdQ4WeAZmUkaB33fTiSz8TSczfu1c7Fw@mail.gmail.com>
- <87v9elax60.fsf@linaro.org>
- <CAMj1kXEOaHe4QvCbv8L+DKoRt=xX4UpUt8ef0o1OuK8aO6h3Jg@mail.gmail.com>
-User-agent: mu4e 1.5.6; emacs 28.0.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Ard Biesheuvel <ardb@kernel.org>
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, Richard
- Henderson <richard.henderson@linaro.org>
-Subject: Re: regression in TCG emulation of VTBL neon instruction
-In-reply-to: <CAMj1kXEOaHe4QvCbv8L+DKoRt=xX4UpUt8ef0o1OuK8aO6h3Jg@mail.gmail.com>
-Date: Wed, 04 Nov 2020 17:44:22 +0000
-Message-ID: <87pn4taufd.fsf@linaro.org>
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp128531lfb;
+        Wed, 4 Nov 2020 09:50:53 -0800 (PST)
+X-Received: by 2002:a17:906:2895:: with SMTP id o21mr27309766ejd.332.1604512253095;
+        Wed, 04 Nov 2020 09:50:53 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604512253; cv=none;
+        d=google.com; s=arc-20160816;
+        b=kxglmT4Zx6vwKJj9YoRWt3GWoBg2VPeDPPzlfoagSHKgRglxjfoZ9TYgdB/0M3U08x
+         0bLXgHlNFW6ggb7O9ZEgQXbac9Tmni6qwiJsfOl/mBrM5oimd04krM1GZypWZMylxjbh
+         K89elU/2e2jL46IQBNMHprv4fCBSZgyNEIZSY+FOa76S0ITNYl80+6a8th7CzVJS9eol
+         KZxJZjOMotKem9AuY3TFueDcVliHGEziwXG6ylXhl2xNiYukgedr9KrdMgVKvcjZqNyR
+         ECM+vSTnr3Oz/v/DSTY5omM7Tx7VQWZPAfuwBS+hIxzBkz8KM7GL/7FkPn/FThw/rYrx
+         f1dw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=LZrFG8C/ZJphPxKRy8oxOpZD7OQkjRU2pTkYWNElEKY=;
+        b=QTnDYpN068dJiu9h3ZTJEujqiFtP12D1XO+H8M8KyUqvhUYeyAKqmZzqO05iApmqZb
+         3ybiF8g7Xn+xF8XABupGICHscIkuZcShRi+NvHEFmf5N8qgnP1KU5VS2H0j3coA9AM6g
+         NKmPmiGH9RQnoVVLHXK9+edKWvWSHJBcszymaQAuRXLSY2higwmuXAzeN4aiq77YL1dc
+         KDsio2A/RscysIk8COGIjdr84DfXaSW5ZubbpRTvjcssG4Yb9AWRpLZFYj7D0cwAvnAV
+         mxGP+pc/AyNIZSckM3fZ7zSL/LwH4rT8xkH5TwkW2NF50GyNaepJhCWPwuOsoRlA/AkZ
+         lgrw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=utqJBBhP;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+Return-Path: <peter.maydell@linaro.org>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id o22sor1831482eji.3.2020.11.04.09.50.53
+        for <alex.bennee@linaro.org>
+        (Google Transport Security);
+        Wed, 04 Nov 2020 09:50:53 -0800 (PST)
+Received-SPF: pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@linaro.org header.s=google header.b=utqJBBhP;
+       spf=pass (google.com: domain of peter.maydell@linaro.org designates 209.85.220.41 as permitted sender) smtp.mailfrom=peter.maydell@linaro.org;
+       dmarc=pass (p=NONE sp=NONE dis=NONE) header.from=linaro.org
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google;
+        h=mime-version:references:in-reply-to:from:date:message-id:subject:to
+         :cc:content-transfer-encoding;
+        bh=LZrFG8C/ZJphPxKRy8oxOpZD7OQkjRU2pTkYWNElEKY=;
+        b=utqJBBhPbhMFUGsOvbKSRhKzCqqSv0HztQZVA3+r1/74+2iW3FjGnR5K3PJaRT3X+1
+         mHXvh6H7Vu7E7EbAGCUZ8nVEENuspeOr6I+nAJefXU+srg2X3aNm4L0R+DPBOxS1Z9Wn
+         egpgcae4zciabwY0cTRKli2p9dbIsHt5Rw4g6eQ1ohr4i5a87La6vK5hEFikRqOO1XaR
+         86lHacn4o+4ZYlKm+cGVaVNcEj/7ewpA/1SIAAuQZIjSEfXS+fAXrS3GqDVIzUdgjXPB
+         1bKMLcDYiHrJYEg9d4+ao4CJJRth7HFyw5DYWU064ZrdTzr/1Rr4OIfgN5XbAnw8ETq8
+         WaZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:mime-version:references:in-reply-to:from:date
+         :message-id:subject:to:cc:content-transfer-encoding;
+        bh=LZrFG8C/ZJphPxKRy8oxOpZD7OQkjRU2pTkYWNElEKY=;
+        b=LdN4KOVpR3qRtkLlSxVN9Oz6DQFt+VH1C86Gby/adq1JkL0ugQnb9KAH75kL9GClBf
+         KzdAKdUvbvIpGz7zwqHpwfvKSUssaldtm0BgZE4z6zK7tJh2iB1HnAZBx4zBEPl7leu0
+         TriotjMQYddaAj2D8W9CNexcx0vgeJfoJ8BSyrZDAjlqEZWWPge9zt3HUGXq47vmmW5E
+         c7idTapVF2GB4FM2Q0aEQ1LU672NmgdMqodwi/tOnERlcHRV9eeyNw/fuc3qn8QgyKo7
+         8Ym3/1wDDGDu4MAwvQMWMtSbeYQL6sDtv+qLWHU4zzAyN0fa/majtn3HN/lHoMqkZlIG
+         pLdg==
+X-Gm-Message-State: AOAM533HjAKIrPDHydRt+8HemF4aU4uqn/Hh4vZwXIc9L5j4G8sAsZHR
+	fXjXnri9c2pEkqaawbfnc/8LCv3mk4cb428O3YI4M1qBl3aQvQ==
+X-Google-Smtp-Source: ABdhPJyHp3QBweb1QP1CN4fLb+I+8o3BpHFzRiRyNq8MHi1mN+A1+IbBq5bij9SJ4g2NEHjpXGeQjMWYC4OiuU/iQkw=
+X-Received: by 2002:a17:906:7254:: with SMTP id n20mr24961772ejk.382.1604512252585;
+ Wed, 04 Nov 2020 09:50:52 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <CAMj1kXFDWJOt+m-nC8CdQ4WeAZmUkaB33fTiSz8TSczfu1c7Fw@mail.gmail.com>
+ <87v9elax60.fsf@linaro.org> <CAMj1kXEOaHe4QvCbv8L+DKoRt=xX4UpUt8ef0o1OuK8aO6h3Jg@mail.gmail.com>
+ <87pn4taufd.fsf@linaro.org>
+In-Reply-To: <87pn4taufd.fsf@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 4 Nov 2020 17:50:41 +0000
+Message-ID: <CAFEAcA8VNRTbSN4jowTzdZ-4fC+mKu+yEJ1nobo1CG668dLZWQ@mail.gmail.com>
+Subject: Re: regression in TCG emulation of VTBL neon instruction
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Ard Biesheuvel <ardb@kernel.org>, qemu-arm <qemu-arm@nongnu.org>, 
+	Richard Henderson <richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-TUID: +N2OPLlWYGgY
+X-TUID: IuMvnNsTaKQY
 
+On Wed, 4 Nov 2020 at 17:44, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
+e:
+> Just checking - what host are you on?
 
-Ard Biesheuvel <ardb@kernel.org> writes:
+Oh, good question -- what the TCG backend emits as vector
+operations or not will depend on the host CPU (eg whether
+it supports AVX1/AVX2/etc).
 
-> On Wed, 4 Nov 2020 at 17:45, Alex Benn=C3=A9e <alex.bennee@linaro.org> wr=
-ote:
->>
->>
->> Ard Biesheuvel <ardb@kernel.org> writes:
->>
->> > Hello all,
->> >
->> > I spotted an issue with the TCG emulation of VTBL instructions in 32-b=
-it mode.
->> >
->> > It seems that when using the 4 register version, indexes in the range
->> > [0x10 .. 0x1f] are not handled correctly, and I end up with all zero
->> > vectors in the output.
->> >
->> > For example, I am optimizing Linux's NEON ChaCha20 implementation to
->> > use overlapping loads and stores, and this requires the final cipher
->> > stream block to be shifted accordingly, using a sequence such as
->> >
->> > vtbl.8 d4, {q4-q5}, d4
->> > vtbl.8 d5, {q4-q5}, d5
->> > vtbl.8 d6, {q4-q5}, d6
->> > vtbl.8 d7, {q4-q5}, d7
->> >
->> > where q4-q5 contain 32 bytes of cipher stream, and d4-d7 contain a set
->> > of permutation vectors, where each value is in the range [0x0, 0x1f].
->> >
->> > The above works fine with older QEMU and KVM, but with recent QEMU,
->> > this fails, seemingly because d6 and d7 always turn up as all zeros.
->> >
->> > This can be reproduced by running the zImage I prepared [0] as follows:
->> >
->> > qemu-system-aarch64 -M virt -cpu cortex-a15 -m 2048 -net none
->> > -nographic -kernel arch/arm/boot/zImage
->> >
->> > and it will print the following (somewhere halfway down the kernel
->> > log) on the affected builds of QEMU:
->> >
->> > alg: skcipher: chacha20-neon encryption test failed (wrong result) on
->> > test vector 1, cfg=3D"in-place"
->> > alg: skcipher: xchacha20-neon encryption test failed (wrong result) on
->> > test vector 1, cfg=3D"in-place"
->> > alg: skcipher: xchacha12-neon encryption test failed (wrong result) on
->> > test vector 1, cfg=3D"in-place"
->>
->> I get:
->>
->> [    8.974879] testing speed of sync chacha20 (chacha20-neon) encryption
->> [    8.975230] tcrypt: test 0 (256 bit key, 16 byte blocks): 351309 oper=
-ations in 1 seconds (5620944 bytes)
->> [    9.967242] tcrypt: test 1 (256 bit key, 64 byte blocks): 383886 oper=
-ations in 1 seconds (24568704 bytes)
->> [   10.967103] tcrypt: test 2 (256 bit key, 256 byte blocks): 109213 ope=
-rations in 1 seconds (27958528 bytes)
->> [   11.967164] tcrypt: test 3 (256 bit key, 1024 byte blocks): 29061 ope=
-rations in 1 seconds (29758464 bytes)
->> [   12.967165] tcrypt: test 4 (256 bit key, 1420 byte blocks): 19577 ope=
-rations in 1 seconds (27799340 bytes)
->> [   13.967147] tcrypt: test 5 (256 bit key, 4096 byte blocks): 7217 oper=
-ations in 1 seconds (29560832 bytes)
->> [   14.972354] input: gpio-keys as /devices/platform/gpio-keys/input/inp=
-ut0
->> [   14.977272] uart-pl011 9000000.pl011: no DMA platform data
->> [   14.980208] VFS: Cannot open root device "(null)" or unknown-block(0,=
-0): error -6
->> [   14.980431] Please append a correct "root=3D" boot option; here are t=
-he available partitions:
->>
->> I wonder if it was a transient bug when stuff was converted to
->> decodetree and got fixed up later? Tested on HEAD @ 4c5b97bfd and @
->> e46912b66.
->>
->
-> I am seeing the issue on 700d20b49e303549 *and* on e46912b66f50b2d8,
-> after a clean rebuild.
+If the test case can be cut down to a Linux userspace
+program that can be run under the qemu-arm single-binary
+emulator that will probably also be easier to debug than
+"boot whole guest kernel and wait for it to get to a selftest".
 
-Just checking - what host are you on?
-
---=20
-Alex Benn=C3=A9e
+thanks
+-- PMM

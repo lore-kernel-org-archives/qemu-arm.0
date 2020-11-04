@@ -1,189 +1,108 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp278097lfb;
-        Wed, 4 Nov 2020 13:41:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJz7x+LMzRH3XScl9IRko7gr7N3vtFRVzL/9ouJo8/F1+ah4J5V6z0zMWyK4W591de0HDzxQ
-X-Received: by 2002:a37:7fc7:: with SMTP id a190mr197019qkd.337.1604526068471;
-        Wed, 04 Nov 2020 13:41:08 -0800 (PST)
-ARC-Seal: i=2; a=rsa-sha256; t=1604526068; cv=pass;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp281610lfb;
+        Wed, 4 Nov 2020 13:47:25 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJzq/EwozzFNOdIHTse+ix0pxQ/Mo3582VagNBkpk1UyC7PRapCVVJioEL95KY0Uty1OzQ/Z
+X-Received: by 2002:ac8:3612:: with SMTP id m18mr133235qtb.346.1604526445815;
+        Wed, 04 Nov 2020 13:47:25 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604526445; cv=none;
         d=google.com; s=arc-20160816;
-        b=PVLL7hWVzvlZ7rIJFryomeVteOEnfmpH+COl/GCVGID9oTCszxd1h3/sPZ1f3St8Ls
-         0TP5qNAA1cadSbS7wx1+GpIPHbi63hWviFGPU1Ls7d1b+yeMRZpvudQlpLuVN+xP7a/p
-         JXrrxoIzFnjRjxPM6Y81jAQBC4KB35kubWzc3iEyW04BnlWMoUzWP81tXUPZNJa8Y3dp
-         Lkeuu/YTdAGkAlmnv7wtO8SBozHHeVKRIxYAxPL9UDzqcAhPftUQAoU21L5XkKAePezd
-         klcKl3HlsfL11E9LgfFve4kpjDmICeVhE11Nn0X2njv/LpekO1CPonsjcKXEDThCDfj+
-         Qjfg==
-ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        b=YmdDC/k1D5LNcyE0vmctC9fJP7/wvrE2zTP7CdBXE/lSk1uy7TXRbVr/XQwhFo9rY0
+         X2Z/xWQkGIqY8U9ncfE+rFDMotYvY7Dhj0Mx9EkiWDr++j+SSMRFhuYQH5fakOKhIC03
+         STNBz/70wOLmDq1gB4Ug1pbO9C2E67gffD+Q1R2ORX1293SbTdcxBtfOpT9BQ4QIYGTm
+         9HLLaPP7KXUbiouicA61gEJ4GJr/Mx9WGMwHG42oxw29TNN6ooGVkmt4EDnM1xiigTxD
+         B8UqNY4WMJUxV/1AwFGAoyasuH//vDtwoS/aIuCXjCCTPWGpr3cMtcG3s7bdfnzIZX7Q
+         bZww==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
-         :list-unsubscribe:list-id:precedence:mime-version
-         :content-transfer-encoding:content-id:user-agent:content-language
-         :accept-language:in-reply-to:references:message-id:date:thread-index
-         :thread-topic:subject:to:from:dkim-signature:ironport-phdr
-         :ironport-sdr:dkim-signature;
-        bh=SS7JC37GuJpw3LFXvYKagKRC9l3ILS0UCZgBZbcpCr0=;
-        b=MNlpM03taNWuyFEg1CfV2Qf22Mso3n1NsPTnC/dwa7IxsHjWbtWvSGhpizRvIohkGr
-         wA9/IafMzhLPKiwmMOxX/AfqLhoxz4NkD3wIWOXCf08g+W45OrMUpUMaM5ZBP7lOTGW4
-         PjxE1v20YPk2EZ5So4HbwdhiWiAMCXAxx09JmDYonkm3Y6YKBsHqujl3td11Ss9BWRRR
-         82DtxzlB84KQMY69lqX06AGWOmI0izdMrpVHaNQc8wdSXcJUutekHAu+DdFQ1BeckKKh
-         P8MAXKPwK2sZRxzClDUnorJ8GsCWwQW+bwM++5Mamh9MqFTcKlF91Etlflg09niJ7jqk
-         qZpw==
-ARC-Authentication-Results: i=2; mx.google.com;
-       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=kQyajoJv;
-       dkim=pass header.i=@CSIROAU.onmicrosoft.com header.s=selector1-CSIROAU-onmicrosoft-com header.b=f+HjbVlt;
-       arc=pass (i=1 spf=pass spfdomain=data61.csiro.au dkim=pass dkdomain=data61.csiro.au dmarc=pass fromdomain=data61.csiro.au);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
+         :list-unsubscribe:list-id:precedence:content-transfer-encoding
+         :content-language:in-reply-to:mime-version:date:message-id:from
+         :references:to:subject:dkim-signature;
+        bh=7VfA75Wzi2zjZl6G2MaspB5yBKGQr8LDzaBPy6rJVzY=;
+        b=jaXsadO5cMmgPu4nr3zDVbIpZLVUkeInQUXW7AEaqtnh7mNKHtqO42nZhW+mU2vEtd
+         QaamIk4K1aAvaArZ5Z8E+uqqfcg32ZM2nTb73iFwBWe9Ne1wC4zFPOwoiqnxBFF6rQq5
+         ZOjRNzrYSjoZ9YDjp1pmrAf91oFQrxj1qwH8E9BJqanoij3HW81NKh5nJcqduDtw3+HN
+         Am9y2ZFx1HJAIWSUxSP/r3JEkxhsQOu5yG1+7+LcqNF3Kk1nGFDs9tAMad3dO7/kkQNz
+         Mw1XMVGbmiPaqoWUu+a4dCRwG0WDM0CoQ626X5Vc1YiQdeeaOSpySLPlug8Vx6Hg6Cps
+         LLeQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jTP27Vh3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
 Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g3si692921qtv.101.2020.11.04.13.41.08
+        by mx.google.com with ESMTPS id n1si2215301qkn.293.2020.11.04.13.47.25
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Wed, 04 Nov 2020 13:41:08 -0800 (PST)
+        Wed, 04 Nov 2020 13:47:25 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@data61.csiro.au header.s=dkim header.b=kQyajoJv;
-       dkim=pass header.i=@CSIROAU.onmicrosoft.com header.s=selector1-CSIROAU-onmicrosoft-com header.b=f+HjbVlt;
-       arc=pass (i=1 spf=pass spfdomain=data61.csiro.au dkim=pass dkdomain=data61.csiro.au dmarc=pass fromdomain=data61.csiro.au);
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org"
-Received: from localhost ([::1]:38860 helo=lists1p.gnu.org)
+       dkim=fail header.i=@redhat.com header.s=mimecast20190719 header.b=jTP27Vh3;
+       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=redhat.com
+Received: from localhost ([::1]:45134 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kaQWh-0004US-Ro
-	for alex.bennee@linaro.org; Wed, 04 Nov 2020 16:41:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:58264)
+	id 1kaQcn-0007PU-78
+	for alex.bennee@linaro.org; Wed, 04 Nov 2020 16:47:25 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:59358)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=570d0dfbe=Peter.Chubb@data61.csiro.au>)
- id 1kaQW6-0004R2-S7; Wed, 04 Nov 2020 16:40:30 -0500
-Received: from act-mtaout3.csiro.au ([2405:b000:e00:257::7:39]:4124)
- by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1)
- (envelope-from <prvs=570d0dfbe=Peter.Chubb@data61.csiro.au>)
- id 1kaQW2-0006xn-Hz; Wed, 04 Nov 2020 16:40:30 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=data61.csiro.au; i=@data61.csiro.au; q=dns/txt;
- s=dkim; t=1604526026; x=1636062026;
- h=from:to:cc:subject:date:message-id:references:
- in-reply-to:content-id:content-transfer-encoding: mime-version;
- bh=RK1f5scDXi13F6cVkZNkJoRU8YmRVkO7W9pTxWWRk1o=;
- b=kQyajoJvoUBwWMuQNNFPOEhhSVyQyRd0VpRzSN93kJuPmMknEaovIcUt
- ktzH6iahpDK05ElW3oFPNftI7Q+Ux0uDMn20YvNks+b6/n/o7taSxwYyK
- t/WXm5bxW114RrN945Gn93pXVyUsuDlDAgpFmruB8V9wV7HyOLguy/PBF I=;
-IronPort-SDR: aSU4wRk34IlDvKyKc7hWCIt70DG4E0vATj8pAL5pa6tYsIdzNsCnaW5pGip5Tz5J4MlESEqjr9
- 0VrsXWpMqZVw==
-X-SBRS: 4.0
-IronPort-PHdr: =?us-ascii?q?9a23=3AFKU6OhcP5bcboY3xXbiAr4vclGMj4e+mNxMJ6p?=
- =?us-ascii?q?chl7NFe7ii+JKnJkHE+PFxlwaTB9fb9vtbhuuQuKflCiQM4peE5XYFdpEEFx?=
- =?us-ascii?q?oIkt4fkAFoBsmZQVb6I/jnY21ffoxCWVZp8mv9PR1TH8DzNF3Pq2K/7HgZHR?=
- =?us-ascii?q?CsfQZwL/7+T4jVicn/3uuu+prVNgNPgjf1Yb57IBis6wvLscxDjYJ+I/hojB?=
- =?us-ascii?q?DSo2FPPe1Llm4=3D?=
-X-IronPort-Anti-Spam-Filtered: true
-X-IronPort-Anti-Spam-Result: =?us-ascii?q?A+EyBABKH6NfjACwBSSYiIBxAISUgiR?=
- =?us-ascii?q?iHgEBCxIMQIFRgVBRYhWBNgqHfAOpIQNUCwEBAQ0CHw4CBAEBAoEDg0UCgg0?=
- =?us-ascii?q?CJTkFDQIDAQELAQEGAQEBAQEGBAICEAEBAQEphhEMg1SBBgEBAQEBAQEBAQE?=
- =?us-ascii?q?BAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEFAoEHBT4CAQMSKAYBATcBDwI?=
- =?us-ascii?q?BCDYQECIlAgQOBSKDBAGCSwMtAQEEpVECgTuJXIE0gwQBAQV7hAsYghAJCQG?=
- =?us-ascii?q?BLoJyikiCGxJ/NoJcPoQ+hXaTJ6R+BwECgm2JCpF/IoMGnmeeRZBxhFsCBAI?=
- =?us-ascii?q?EBQIOAQEFgWyBeh1Pgz0JRxcCDY4fGoIRgUaKWHQCNgIGCgEBAwl8jDsBgRA?=
- =?us-ascii?q?BAQ?=
-X-IPAS-Result: =?us-ascii?q?A+EyBABKH6NfjACwBSSYiIBxAISUgiRiHgEBCxIMQIFRg?=
- =?us-ascii?q?VBRYhWBNgqHfAOpIQNUCwEBAQ0CHw4CBAEBAoEDg0UCgg0CJTkFDQIDAQELA?=
- =?us-ascii?q?QEGAQEBAQEGBAICEAEBAQEphhEMg1SBBgEBAQEBAQEBAQEBAQEBAQEBAQEBA?=
- =?us-ascii?q?QEBAQEBAQEBAQEBAQEBAQEFAoEHBT4CAQMSKAYBATcBDwIBCDYQECIlAgQOB?=
- =?us-ascii?q?SKDBAGCSwMtAQEEpVECgTuJXIE0gwQBAQV7hAsYghAJCQGBLoJyikiCGxJ/N?=
- =?us-ascii?q?oJcPoQ+hXaTJ6R+BwECgm2JCpF/IoMGnmeeRZBxhFsCBAIEBQIOAQEFgWyBe?=
- =?us-ascii?q?h1Pgz0JRxcCDY4fGoIRgUaKWHQCNgIGCgEBAwl8jDsBgRABAQ?=
-Received: from exch4-mel.nexus.csiro.au ([IPv6:2405:b000:302:71::85:124])
- by act-ironport-int.csiro.au with ESMTP/TLS/ECDHE-RSA-AES256-SHA384;
- 05 Nov 2020 08:39:57 +1100
-Received: from exch2-mel.nexus.csiro.au (2405:b000:302:71::85:122) by
- exch4-mel.nexus.csiro.au (2405:b000:302:71::85:124) with Microsoft SMTP
- Server (TLS) id 15.0.1497.2; Thu, 5 Nov 2020 08:39:57 +1100
-Received: from exedge2.csiro.au (150.229.64.34) by exch2-mel.nexus.csiro.au
- (138.194.85.122) with Microsoft SMTP Server (TLS) id 15.0.1497.2 via Frontend
- Transport; Thu, 5 Nov 2020 08:39:57 +1100
-Received: from AUS01-SY3-obe.outbound.protection.outlook.com (104.47.117.58)
- by exedge2.csiro.au (150.229.64.34) with Microsoft SMTP Server (TLS) id
- 15.0.1497.2; Thu, 5 Nov 2020 08:39:52 +1100
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=XRxUltTc39c4awxNrY98Diy8pRAtkyd/sQdCHRboIM1ui47r+srX5O+dGwuIfqm0+msJEoEM84wFZJ3QuntN1M0bXI4BJFirQaaA3gsVyTiZyg5lcQT5B0fA/n6UPHHpHUV/pFkdGjqidCNpfO47WRNelIDAapffHoNRM2vlm9qwkbxQiuTEw0QlAzeK8SUfvN/qexaHmBBC2wIhSNw426TD0n2d8RT8Y/nBDgEcBGhsid8j32cS8wxSztlE7gMfnqdpDbSCOFLBHmipBzs0Nw6n8JWx0Se1z4HYmIR4Z9n1wmuVCGwyWTXU/5sXTzrwUz/4cVSJrX6YX1Hwe8wHJg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SS7JC37GuJpw3LFXvYKagKRC9l3ILS0UCZgBZbcpCr0=;
- b=WspgV69+yVeOLDBxOWoxdNsAmFahxueGwZauWqWj4tCKWutyPW2CLXaupE15eM4w4pq0IoZNOsmryAfHR2JSr9V+3mT0UyDQDnAvNHuoTvby1YDb68ngmJeS3XFR9j+KnZGM/+5YtlDNTxoK4PExKjqFjTrhz+01cPw5nrzyyfM/WM5NbvFINaqtXVz86i2ibZvg+pN+cLvG8YvQtfjp5Uoosy0RA9C1cq3Ar6q8UviZ9uSJlB6/sIIrt4vTYovUsBXVf6zTS9aFGGEW6mohRrLhUlTI3IQCGbm7rjjYCUxUg0bBWErzALvSguYWVrzPYak5p2cQYYkwb0snM1j48A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=data61.csiro.au; dmarc=pass action=none
- header.from=data61.csiro.au; dkim=pass header.d=data61.csiro.au; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=CSIROAU.onmicrosoft.com; s=selector1-CSIROAU-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=SS7JC37GuJpw3LFXvYKagKRC9l3ILS0UCZgBZbcpCr0=;
- b=f+HjbVlt3CpITAdNkQYh7D66PjCgYKf6rha+c313Bqp/7WVCqzHjn1jAErfHI5M7YWdMS1dWHtBysB0Z/44M1L3vtxvCEnoc4mWe4UH2EPnOSTZWLPir/jnnQ9WYgb128hDLVJ8zf+R7DHr+iow68zgZGCRtoGah5+P/vFX1bfc=
-Received: from ME2PR01MB5203.ausprd01.prod.outlook.com (2603:10c6:220:4e::23)
- by MEAPR01MB3718.ausprd01.prod.outlook.com (2603:10c6:201:3e::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.3499.29; Wed, 4 Nov
- 2020 21:39:55 +0000
-Received: from ME2PR01MB5203.ausprd01.prod.outlook.com
- ([fe80::a8b3:f385:7f65:2d1]) by ME2PR01MB5203.ausprd01.prod.outlook.com
- ([fe80::a8b3:f385:7f65:2d1%7]) with mapi id 15.20.3499.029; Wed, 4 Nov 2020
- 21:39:55 +0000
-From: "Chubb, Peter (Data61, Kensington NSW)" <Peter.Chubb@data61.csiro.au>
-To: AlexChen <alex.chen@huawei.com>
-Subject: Re: [PATCH] ssi: Fix bad printf format specifiers
-Thread-Topic: [PATCH] ssi: Fix bad printf format specifiers
-Thread-Index: AQHWspSIWIQfoutEU0i8i4+gpfJha6m4gOIA
-Date: Wed, 4 Nov 2020 21:39:55 +0000
-Message-ID: <877dr06btl.wl-Peter.Chubb@data61.csiro.au>
-References: <5FA280F5.8060902@huawei.com>
-In-Reply-To: <5FA280F5.8060902@huawei.com>
-Accept-Language: en-AU, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-user-agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
- FLIM/1.14.9 (Goj?) APEL/10.8 Emacs/27.1 (x86_64-pc-linux-gnu) MULE/6.0
- (HANACHIRUSATO)
-authentication-results: huawei.com; dkim=none (message not signed)
- header.d=none; huawei.com; dmarc=none action=none header.from=data61.csiro.au; 
-x-originating-ip: [221.199.209.25]
-x-ms-publictraffictype: Email
-x-ms-office365-filtering-correlation-id: 9c513197-0b7b-46af-2cd9-08d8810a2b8a
-x-ms-traffictypediagnostic: MEAPR01MB3718:
-x-microsoft-antispam-prvs: <MEAPR01MB37186DF11E36BA35F413C98EBBEF0@MEAPR01MB3718.ausprd01.prod.outlook.com>
-x-ms-oob-tlc-oobclassifiers: OLM:291;
-x-ms-exchange-senderadcheck: 1
-x-microsoft-antispam: BCL:0;
-x-microsoft-antispam-message-info: ckaA46EmOlxTBR2Zca28hyyXMrkrutL8MuPj0ja36dZyVdjEZ6wqSryCOUPAIHlXWalH7APTxckEqlnbHrpAAp6PzwoT1vCCGAA6sp6tJfHWkYCpaXMv7tdTeBUit3h4rIH2AlvIu/EXAobJ+CzTMtighqFSiIEXKX6ysU4IFa/5e06Loz0lJ90Ng6V/V9u0EcbsXzAzMTSRdRcGDaaOTuakaSDQdF+dhsacb0gYt4AwtdH5RXIEAST7xqZmbiz4Zkk88K/NoT3Ts4vKF+X38wgIjQpqPPl1sHAULnP99oFbE0J2PtO8/u6cs2PGPleNPn9Be5qeJND/ZXGf4+IrZUYus+mVtATj4NaMyQg4zhOTnFw7NopKj5WnxRa/FxoNegLrWTwWmqtfz/066XoS0dsBw6EXVGilI4wb7m8i7QbyRkSNAZJZH1pragwl/bDhq4LuUtrIwoq/qSy9xMvaHQ==
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:ME2PR01MB5203.ausprd01.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(4636009)(366004)(346002)(39850400004)(396003)(136003)(376002)(2906002)(26005)(186003)(6916009)(4326008)(478600001)(316002)(6512007)(54906003)(966005)(8676002)(83080400002)(4744005)(71200400001)(86362001)(6486002)(76116006)(5660300002)(66446008)(91956017)(66556008)(66946007)(66476007)(8936002)(64756008)(6506007)(2616005);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata: z31YUjQzuJgKYBvawtcF0+UHIog9SimxseL2Qqk7sdOdKz6C39Suh+tI1u0QbDf8oDRc2gqj8a1umlznOYr4zbGlyMNPY2YrK3f1EAcnbzQ67fltp0J4ZAEwuHRF0mNNTI3RqKE6AhJxjWKtnElNk4jVCX36K95WytdjAv5n4jLBx4zluDVJbQUPI4VZivLtDW7xYgXTkHnLM20YNz0Ee5BIasqQ9IOZ2/8fGx46bu6W80JaE6eN52oxG+5/tSV/gN/Sau5b7b7ty7ihd67ZvbDBIQSs3QJUL5UaXswMeBfOXFesCFyNliPjTIc66DHQ9TEbicU/WQItc8Dac9SWUVDnxs21yarCf+Uy/yVzXmZhnfuRlil+9k5ARqBZdXboD7AD77fXKwQ8EjREOBsTOCwBqtVgv5BAH5FD/cjXqlHue6JOSS2TNGgz7/Xi4WuQ1IlIA2qurJ17UeDjCTfyn3el2j+XY+pLRyOG15JTL5I9Y+fJjL5Hq+oiHeFskPosYjcUsPp4Xsuf+fPnW1CxjrbJY/XOOSRR/0WRSX51W+MUnFZS/cybw8Zq0YvS72lFFVPF7Ki20P7uwLY2mjGtp31cvQVKhTPvnz1BIZUNchVztObbHn+V9RhPQhh9ss50klieKUhBnytfeydGaVi6Dw==
-x-ms-exchange-transport-forked: True
-Content-Type: text/plain; charset="us-ascii"
-Content-ID: <98E59C59EB2D8C4F988742F0F7816B87@ausprd01.prod.outlook.com>
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kaQcV-0007P9-Tp
+ for qemu-arm@nongnu.org; Wed, 04 Nov 2020 16:47:08 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([216.205.24.124]:50349)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_CBC_SHA1:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1kaQcR-0007uF-SV
+ for qemu-arm@nongnu.org; Wed, 04 Nov 2020 16:47:07 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1604526422;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7VfA75Wzi2zjZl6G2MaspB5yBKGQr8LDzaBPy6rJVzY=;
+ b=jTP27Vh3EJqimT3HdpQWTBlvZriNZI3/qXoND7HhF+mVkHbwSu2qhtHapkVw4iMWNopL8u
+ sBwL4TFJz31yMoce0MgVtPcNbLhvrVzLvSxYYtrCDOkTHobNy79KTY5T10PCdXcaHPYE04
+ 1Tn8GF7iUbfb7YcDoFRJNQw9TtZllGs=
+Received: from mimecast-mx01.redhat.com (mimecast-mx01.redhat.com
+ [209.132.183.4]) (Using TLS) by relay.mimecast.com with ESMTP id
+ us-mta-199-izsKXGCzP86ODJJSDc4Jmw-1; Wed, 04 Nov 2020 16:47:00 -0500
+X-MC-Unique: izsKXGCzP86ODJJSDc4Jmw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.phx2.redhat.com
+ [10.5.11.15])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx01.redhat.com (Postfix) with ESMTPS id 225338049C3;
+ Wed,  4 Nov 2020 21:46:59 +0000 (UTC)
+Received: from lacos-laptop-7.usersys.redhat.com (ovpn-112-163.ams2.redhat.com
+ [10.36.112.163])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A357A75129;
+ Wed,  4 Nov 2020 21:46:56 +0000 (UTC)
+Subject: Re: Question on UEFI ACPI tables setup and probing on arm64
+To: Igor Mammedov <imammedo@redhat.com>, Ying Fang <fangying1@huawei.com>
+References: <ee3b7fdf-f6ba-cafc-5b44-42b0bcda01c5@huawei.com>
+ <20201103133913.1fee3337@redhat.com>
+From: Laszlo Ersek <lersek@redhat.com>
+Message-ID: <a79383a6-92d4-5b10-d143-414543caab70@redhat.com>
+Date: Wed, 4 Nov 2020 22:46:55 +0100
 MIME-Version: 1.0
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: ME2PR01MB5203.ausprd01.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9c513197-0b7b-46af-2cd9-08d8810a2b8a
-X-MS-Exchange-CrossTenant-originalarrivaltime: 04 Nov 2020 21:39:55.2487 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 0fe05593-19ac-4f98-adbf-0375fce7f160
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: wviMVDsBcmS2X2pWhtFV3NiT38w9OJPjLqJE91lp6KhiHWg7ra6ebVW0FrQYhW4Q
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MEAPR01MB3718
-X-OriginatorOrg: data61.csiro.au
-Received-SPF: pass client-ip=2405:b000:e00:257::7:39;
- envelope-from=prvs=570d0dfbe=Peter.Chubb@data61.csiro.au;
- helo=act-MTAout3.csiro.au
-X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
- That's all we know.
+In-Reply-To: <20201103133913.1fee3337@redhat.com>
+X-Scanned-By: MIMEDefang 2.79 on 10.5.11.15
+Authentication-Results: relay.mimecast.com;
+ auth=pass smtp.auth=CUSA124A263 smtp.mailfrom=lersek@redhat.com
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=216.205.24.124; envelope-from=lersek@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/03 00:03:41
+X-ACL-Warn: Detected OS   = Linux 2.2.x-3.x [generic] [fuzzy]
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.23
@@ -196,29 +115,215 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- "zhang.zhanghailiang@huawei.com" <zhang.zhanghailiang@huawei.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>,
- "alistair@alistair23.me" <alistair@alistair23.me>,
- QEMU <qemu-devel@nongnu.org>, "jcd@tribudubois.net" <jcd@tribudubois.net>,
- qemu-arm <qemu-arm@nongnu.org>,
- "peter.chubb@nicta.com.au" <peter.chubb@nicta.com.au>
+Cc: Peter Maydell <peter.maydell@linaro.org>, Drew Jones <drjones@redhat.com>,
+ QEMU Developers <qemu-devel@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ "wangzhigang17@huawei.com" <wangzhigang17@huawei.com>,
+ "Ard Biesheuvel \(ARM address\)" <ard.biesheuvel@arm.com>, philmd@redhat.com
 Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: NG+NipgC+38P
+X-TUID: YUe534uyabmV
 
->>>>> "AlexChen" =3D=3D AlexChen  <alex.chen@huawei.com> writes:
++Ard, +Drew
 
-AlexChen> We should use printf format specifier "%u" instead of "%d"
-AlexChen> for argument of type "unsigned int".
+On 11/03/20 13:39, Igor Mammedov wrote:
+> On Fri, 30 Oct 2020 10:50:01 +0800
+> Ying Fang <fangying1@huawei.com> wrote:
+> 
+>> Hi,
+>>
+>> I have a question on UEFI/ACPI tables setup and probing on arm64 platform.
+> 
+> CCing Laszlo,
+> who might know how it's implemented.
+>  
+>> Currently on arm64 platform guest can be booted with both fdt and ACPI
+>> supported. If ACPI is enabled, [1] says the only defined method for
+>> passing ACPI tables to the kernel is via the UEFI system configuration
+>> table. So AFAIK, ACPI Should be dependent on UEFI.
 
-AlexChen> Reported-by: Euler Robot <euler.robot@huawei.com>
-AlexChen>Signed-off-by: Alex Chen <alex.chen@huawei.com> ---
+That's correct. The ACPI entry point (RSD PTR) on AARCH64 is defined in
+terms of UEFI.
 
-LGTM,
-add
-Reviewed-By: Peter Chubb <peter.chubb@data61.csiro.au>
+>>
+>> What's more [2] says UEFI kernel support on the ARM architectures
+>> is only available through a *stub*. The stub populates the FDT /chosen
+>> node with some UEFI parameters describing the UEFI location info.
 
---=20
-Peter Chubb            Tel: +61 2 9490 5852      http://ts.data61.csiro.au/
-Trustworthy Systems Group                                    CSIRO's Data61=
+Yes.
+
+>>
+>> So i dump /sys/firmware/fdt from the guest, it does have something like:
+>>
+>> /dts-v1/;
+>>
+>> / {
+>> 	#size-cells = <0x02>;
+>> 	#address-cells = <0x02>;
+>>
+>> 	chosen {
+>> 		linux,uefi-mmap-desc-ver = <0x01>;
+>> 		linux,uefi-mmap-desc-size = <0x30>;
+>> 		linux,uefi-mmap-size = <0x810>;
+>> 		linux,uefi-mmap-start = <0x04 0x3c0ce018>;
+>> 		linux,uefi-system-table = <0x04 0x3f8b0018>;
+>> 		bootargs = "BOOT_IMAGE=/vmlinuz-4.19.90-2003.4.0.0036.oe1.aarch64 
+>> root=/dev/mapper/openeuler-root ro rd.lvm.lv=openeuler/root 
+>> rd.lvm.lv=openeuler/swap video=VGA-1:640x480-32@60me 
+>> smmu.bypassdev=0x1000:0x17 smmu.bypassdev=0x1000:0x15 
+>> crashkernel=1024M,high video=efifb:off video=VGA-1:640x480-32@60me";
+>> 		linux,initrd-end = <0x04 0x3a85a5da>;
+>> 		linux,initrd-start = <0x04 0x392f2000>;
+>> 	};
+>> };
+>>
+>> But the question is that I did not see any code adding the uefi
+>> in fdt chosen node in *arm_load_dtb* or anywhere else.
+
+That's because the "UEFI stub" is a part of the guest kernel. It wraps
+the guest kernel image into a UEFI application binary. For a while, the
+guest kernel runs as a UEFI application, stashing some UEFI artifacts in
+*a* device tree, and then (after some other heavy lifting) jumping into
+the kernel proper.
+
+>> Qemu only maps the OVMF binary file into a pflash device.
+>> So I'm really confused on how UEFI information is provided to
+>> guest by qemu. Does anybody know of the details about it ?
+
+It's complex, unfortunately.
+
+(1) QEMU always generates a DTB for the guest firmware. This DTB is
+placed at the base of the guest RAM.
+
+See the arm_load_dtb() call in virt_machine_done() [hw/arm/virt.c] in
+QEMU. I think.
+
+
+(2) QEMU generates ACPI content, and exposes it via fw_cfg.
+
+See the virt_acpi_setup() call in the same virt_machine_done() function
+[hw/arm/virt.c] in QEMU.
+
+
+(3) The fw_cfg device itself is apparent to the guest firmware via the
+DTB from point (1). See the following steps in edk2:
+
+(3a) "ArmVirtPkg/Library/PlatformPeiLib/PlatformPeiLib.c"
+
+This saves the initial DTB (from the base of guest RAM, where it could
+be overwritten by whatever) to a dynamically allocated area. This
+"stashing" occurs early.
+
+(3b) "ArmVirtPkg/FdtClientDxe/FdtClientDxe.c"
+
+This driver exposes the (dynamically reallocated / copied) DTB via a
+custom UEFI protocol to the rest of the firmware. (This happens much
+later.) This protocol / driver can be considered the "owner" of the
+stashed DTB from (3a).
+
+(3c) "ArmVirtPkg/Library/QemuFwCfgLib/QemuFwCfgLib.c"
+
+This is the fw_cfg device access library, discovering the fw_cfg
+registers via the above UEFI protocol. The library is linked into each
+firmware module that needs fw_cfg access.
+
+
+(4) The firmware interprets QEMU's DTB for actual content (parsing
+values, configuring hardware, accessing devices).
+
+This occurs in a whole bunch of locations, mostly via consuming the
+custom protocol from (3b). Some info that's needed very early is parsed
+out of the DTB right in step (3a).
+
+
+(5) The guest firmware has a dedicated driver that checks whether QEMU
+was configured with ACPI enabled or disabled, and publishes that choice
+to the rest of the firmware. This is necessary because some firmware
+actions / infrastructure parts cannot (must not) proceed until this
+decision has been interpreted.
+
+See in edk2:
+
+- ArmVirtPkg/PlatformHasAcpiDtDxe
+
+This driver keys off of the presence of the "etc/table-loader" fw_cfg
+file, coming from step (2), using the fw_cfg access library from step (3c).
+
+If ACPI was enabled on the QEMU cmdline, then the rest of the firmware
+is "level-triggered" to proceed with the ACPI infrastructure.
+
+Otherwise, the rest of the firmware is "level-triggered" that DT was
+chosen for the OS.
+
+("Level-triggering" means the installation of custom NULL protocols,
+which permits drivers dependent on DT vs ACPI to be dispatched.)
+
+
+(6) If DT was selected (ACPI was disabled), per step (5), then
+FdtClientDxe (introduced under step (3b)) has another job: it forwards
+the original stashed DTB (see (3a)) to the guest OS.
+
+This "DTB forwarding" occurs through a particular UEFI config table; the
+GUID is B1B621D5-F19C-41A5-830B-D9152C69AAE0 -- known as
+DEVICE_TREE_GUID in the kernel ("include/linux/efi.h").
+
+See the OnPlatformHasDeviceTree() function in
+"ArmVirtPkg/FdtClientDxe/FdtClientDxe.c", in edk2.
+
+
+(7) If ACPI was selected instead, according to step (5), then through
+the fw_cfg access described in (3c), the guest firmware "blindly"
+processes the ACPI payload from QEMU (from step (2)).
+
+This "blind processing" means that the guest firmware runs the "ACPI
+linker/loader script" (the "etc/table-loader" fw_cfg file), installing a
+number of ACPI tables for the guest OS. The guest firmware does not
+interpret the ACPI tables.
+
+"Installing ACPI tables" ultimately means exposing stuff under the
+particular UEFI config table that stands for the RSD PTR -- the GUID is
+8868E871-E4F1-11D3-BC22-0080C73C8881. (Known as ACPI_20_TABLE_GUID in
+Linux, "include/linux/efi.h".)
+
+See the following in edk2:
+
+- OvmfPkg/AcpiPlatformDxe/QemuFwCfgAcpiPlatformDxe.inf
+
+In this case, the guest firmware does not forward QEMU's original DTB to
+the guest OS.
+
+
+(8) Ultimately, from the guest OS's point of view, a UEFI config table
+for *either* the RSD PTR (ACPI_20_TABLE_GUID) *or* QEMU's DTB
+(DEVICE_TREE_GUID) is going to exist.
+
+
+(9) (Ard, please correct the below if necessary; thanks.)
+
+The UEFI stub of the guest kernel (which is a UEFI application) uses a
+device tree as its main communication channel to the (later-started)
+kernel entry point, AIUI.
+
+The UEFI stub basically inverts the importance of the UEFI system table
+versus the device tree -- the UEFI stub *converts* the UEFI system table
+(the multitude of UEFI config tables) into a device tree. This is my
+understanding anyway.
+
+(9a) If ACPI was disabled on the QEMU command line, then the guest
+kernel *adopts* the device tree that was forwarded to it in (6), via the
+UEFI config table marked with DEVICE_TREE_GUID.
+
+(9b) If ACPI was enabled on the QEMU command line, then the UEFI stub
+creates a brand new (empty) device tree (AIUI).
+
+Either way, the UEFI system table is linked *under* the -- adopted or
+new -- device tree, through the "chosen" node. And so, if ACPI was
+enabled, the ACPI RSD PTR (coming from step (7)) becomes visible to the
+kernel proper as well, through the UEFI config table with
+ACPI_20_TABLE_GUID.
+
+I believe this is implemented under "drivers/firmware/efi/libstub" in
+the kernel tree.
+
+Thanks,
+Laszlo
+

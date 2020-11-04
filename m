@@ -1,185 +1,133 @@
-Received: by 2002:ac2:4c03:0:0:0:0:0 with SMTP id t3csp1908239lfq;
-        Sun, 17 Jan 2021 09:29:08 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJycqpAMdjP/+Mx/HMtup4oF7dae4hS1aJgQFbyR40NqFhsNXIotTFL7Du7txLBTqNtWcM4T
-X-Received: by 2002:a25:1d5:: with SMTP id 204mr23352918ybb.417.1610904548474;
-        Sun, 17 Jan 2021 09:29:08 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1610904548; cv=none;
+Received: by 2002:a19:6b17:0:0:0:0:0 with SMTP id d23csp5570667lfa;
+        Wed, 4 Nov 2020 02:23:35 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJyUPJbJzNeUOW/vG7vgrgbhdx7efVIuC/PPlpbrNuPulMw1Zc7u+IEidoc2gnDRWsuHxcrh
+X-Received: by 2002:a25:d701:: with SMTP id o1mr33796753ybg.453.1604485414973;
+        Wed, 04 Nov 2020 02:23:34 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604485414; cv=none;
         d=google.com; s=arc-20160816;
-        b=0FS4rCz5+nbv4BeV0jKfprShKvQ3AYiOlVcLb5zVhX4Gpj9Kr+ysJ3qLgA6809LptN
-         YmQfalL8EyDOxFkCqBBru7EDa1Lgtkp8TYsu7Bgz8AqtzVHKz/jRkY9m7IiITVsouo9M
-         GUDiGrAYwdhFyPiSdDPZWJHBArGTikf5zwpBenqHGc0YcIVmRnKAICpoBGKSELdv1vkg
-         0HSsx2HsiMT2KBvlLXwgcIihw9J36+MOJ+BZYnJv1DlENU35aCCbC+gnvyR6caHsrfCa
-         n2Tpu05nwoSRkv0vY40mVzcrtb3QNBnChUHYelTasCH004Wqmncgpv8xnlIiWZJfOYz6
-         b5vg==
+        b=GVI2fzkothb3hRDR/O7e1BWqV/5KzgRcOKry5fN8//V+ff8AIFTy8EeNzT7tIzNrjN
+         7tDtdnvA43V97+WZeLyzBK11q1uFuq18JDGIgIvqmry774dCmHJEWaQFDUrCmbMrfhZn
+         04ZbJZTQ48zs4/n1eQGjKVjFBMzaDt1ytk81F5WZtZq8CeDeieos5nU7aCUO+BseSGaC
+         1p2LzMAFlPk2xigxkO+9/jOfzsCLPDsR95kk/31/mjkLqrh9SLhnFPATa8KkeLNfDpAL
+         z3+sLtA8juqnXNIll/9jdyijLwkoKOjbaJdViAUOg3qXdz2He+aAGnF3Rh3HB4UVDIdU
+         tgcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
-         :content-language:in-reply-to:mime-version:user-agent:date
-         :message-id:from:references:to:subject:dkim-signature;
-        bh=wjL5E7Yxi5OMKSh3EgWuck0lfVOC8x4MHz5HEOfuN+g=;
-        b=Q322fLdvRaQwTKh7HhOGhhXZm1rVQNF9v6YDgRq0RE0z9Cky2BV5ExE+PeCM7Hkf1O
-         mpk8fiA7T7QqSWMMit20VDI2hD9HynwDzoA7EQpt/JoJcwXD56sUNYGFwrhaCS4WUwLA
-         EyOQSYtRuWuhBtk5nX51ep+TLD3yuoZGGrbj01wc6K1f7d1/nlmG4ibuO1EFCl4LITl6
-         vB+1Sz9EM2KKzVsnsFrNsUaR0dMr+xYUJY+Gr3wo6mQy5VHQk9h2ZdjSubyYjRFuK7nd
-         VJ1qHJA4FbZt18uj954FZWUzGPXppRiHrbkvv0p+SgSIOM8kfdOuwDnJrAS5nyiVui/g
-         cFnA==
+         :subject:to:mime-version:user-agent:from:date:message-id;
+        bh=LQgJfHkhpND8xb7tE1Rzp8oXApRPWA8xYWBn9kUc8mI=;
+        b=slUBnHpI5rcQF5UL9zaLzm1OjxJEg3/qaj5A7371WbyvufcOWPkQUh9LChr7ed6ZA6
+         87UhctE50zGuS6fodAbDORVa+EYTlNgSIFwlY2ur+hkmBquFk7Rzk4gHQSBLivd83lCk
+         T9b0f99QiFCJOPxJgrdCEqGttosG2dEVe1ivXn/AEBSKxdRC06USz2Vmjk7LqLk4Z2ry
+         nDA/yA1k2xPzdFSJiCqqU7ytXMYyUy+0Adr3Ki8ivRzrMaCUWhy46l4kK4/rZ2gwuqxJ
+         eJs4ArySHb3TaErqitRZwaG9Xn1GlTzm4gZPqthvCl5/JigSuybY242gw4D3FOc1Lo2J
+         3L5w==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=m1A13RzD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Return-Path: <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id 128si13785522ybd.395.2021.01.17.09.29.08
+        by mx.google.com with ESMTPS id c12si2056163ybs.138.2020.11.04.02.23.34
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sun, 17 Jan 2021 09:29:08 -0800 (PST)
-Received-SPF: pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
+        Wed, 04 Nov 2020 02:23:34 -0800 (PST)
+Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=m1A13RzD;
-       spf=pass (google.com: domain of qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org";
-       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:57930 helo=lists1p.gnu.org)
+       spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org"
+Received: from localhost ([::1]:51196 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
-	(envelope-from <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1l1BrP-0006hJ-U2
-	for alex.bennee@linaro.org; Sun, 17 Jan 2021 12:29:07 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:39158)
+	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
+	id 1kaFx0-0003aP-B3
+	for alex.bennee@linaro.org; Wed, 04 Nov 2020 05:23:34 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:40846)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1BrI-0006gs-FA; Sun, 17 Jan 2021 12:29:00 -0500
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b]:35069)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1l1BrG-0007df-Ne; Sun, 17 Jan 2021 12:29:00 -0500
-Received: by mail-wm1-x32b.google.com with SMTP id e15so5490513wme.0;
- Sun, 17 Jan 2021 09:28:57 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
- h=sender:subject:to:cc:references:from:message-id:date:user-agent
- :mime-version:in-reply-to:content-language:content-transfer-encoding;
- bh=wjL5E7Yxi5OMKSh3EgWuck0lfVOC8x4MHz5HEOfuN+g=;
- b=m1A13RzD2QmNYbjyP18xwQElSWd2g3MacTbZWlM2R9PKO0FJI1W43f5RznbZiWIwjh
- IpwyBARnFi7PcZnVZY5WiHYMmySLQWLZFTmW6IDdxmMd+TtmeDeRsHnUXi0LsI70H1jK
- X6uSi0p+RBiA1sv2i+pFWLzjuIx2iHWI/ZmnHxvt0ScaipIgV0DlGux3QbgjeUkPjyLF
- wp6MSnS35o0fEGTcQQQFbccbr2zie8vqp2vjD6Iy6ltGS6UFN+EPCpMiiHAnDS/oq+2b
- VYe3sDreMNzQjvuxc0353MD8WfSz1TLXa9X5qCEKp+KI44nIGnT/NpSIhz0nXocmA+TU
- 6GsA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20161025;
- h=x-gm-message-state:sender:subject:to:cc:references:from:message-id
- :date:user-agent:mime-version:in-reply-to:content-language
- :content-transfer-encoding;
- bh=wjL5E7Yxi5OMKSh3EgWuck0lfVOC8x4MHz5HEOfuN+g=;
- b=hhnLrioFjFGieIO8NhAdJH1uOKML59ahXCjB2PWWVrJEySC56ey+Ydev4hYxHgLs2m
- hqM0i/RTxEe25kxirtEQD6I3c/ndAJp5rwASrBkDyeukivdK+uKCFMxuxp4UQOi87xPY
- J7QDTUPKeuhjnPgE1G96AsB8q+WoNVJEaVkHhFDDNZ4QyPNO8JPugfbxQPQYZoSMVwzq
- ReH1tOL0PQ/FDuG9C86vQw/2sOE6KuDLiML0AfO48VDuu/SFI1QYWkGlL3iNvA3WRKU6
- 0V881JYUCt2io3/Y9SKN4P4+is4inKQvQo73eRK5feEURxPxgkJepBOPjWw4Ew5Osp6r
- umow==
-X-Gm-Message-State: AOAM531akbxr2rTQkBnADycGrN8LIJJdEII10ywe5zPzZKQl6aEnbxxc
- RzGxbv8RUpo+33ay9nXNZYg=
-X-Received: by 2002:a1c:5454:: with SMTP id p20mr517738wmi.128.1610904536020; 
- Sun, 17 Jan 2021 09:28:56 -0800 (PST)
-Received: from [192.168.1.36] (13.red-83-57-169.dynamicip.rima-tde.net.
- [83.57.169.13])
- by smtp.gmail.com with ESMTPSA id x17sm24097616wro.40.2021.01.17.09.28.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 17 Jan 2021 09:28:55 -0800 (PST)
-Subject: Re: [RFC PATCH 18/18] hw/core/qdev: Display warning for devices
- missing migration state
-To: Peter Maydell <peter.maydell@linaro.org>,
- "Dr . David Alan Gilbert" <dgilbert@redhat.com>
-References: <20200703201911.26573-1-f4bug@amsat.org>
- <20200703201911.26573-19-f4bug@amsat.org>
- <CAFEAcA98Wz2URx3Pt0YfaoQSPnnMT4wg6HBfzdDO4Zq+4fgT5g@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <f4bug@amsat.org>
-Message-ID: <a4a0c335-8ebf-4b22-b7ff-be59054b5705@amsat.org>
-Date: Sun, 17 Jan 2021 18:28:53 +0100
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101
- Thunderbird/78.6.0
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kaFwV-0003YN-Td; Wed, 04 Nov 2020 05:23:03 -0500
+Received: from szxga04-in.huawei.com ([45.249.212.190]:2329)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.chen@huawei.com>)
+ id 1kaFwU-0002HK-5U; Wed, 04 Nov 2020 05:23:03 -0500
+Received: from DGGEMS414-HUB.china.huawei.com (unknown [172.30.72.58])
+ by szxga04-in.huawei.com (SkyGuard) with ESMTP id 4CR2ls5FBLzkZZ8;
+ Wed,  4 Nov 2020 18:22:49 +0800 (CST)
+Received: from [10.174.187.138] (10.174.187.138) by
+ DGGEMS414-HUB.china.huawei.com (10.3.19.214) with Microsoft SMTP Server id
+ 14.3.487.0; Wed, 4 Nov 2020 18:22:45 +0800
+Message-ID: <5FA280F5.8060902@huawei.com>
+Date: Wed, 4 Nov 2020 18:22:45 +0800
+From: AlexChen <alex.chen@huawei.com>
+User-Agent: Mozilla/5.0 (Windows NT 6.2; WOW64;
+ rv:17.0) Gecko/20130509 Thunderbird/17.0.6
 MIME-Version: 1.0
-In-Reply-To: <CAFEAcA98Wz2URx3Pt0YfaoQSPnnMT4wg6HBfzdDO4Zq+4fgT5g@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.25,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25, NICE_REPLY_A=-0.252,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+To: <alistair@alistair23.me>, Peter Maydell <peter.maydell@linaro.org>,
+ <jcd@tribudubois.net>, <peter.chubb@nicta.com.au>
+Subject: [PATCH] ssi: Fix bad printf format specifiers
+Content-Type: text/plain; charset="ISO-8859-1"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.174.187.138]
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=45.249.212.190; envelope-from=alex.chen@huawei.com;
+ helo=szxga04-in.huawei.com
+X-detected-operating-system: by eggs.gnu.org: First seen = 2020/11/04 05:21:16
+X-ACL-Warn: Detected OS   = Linux 3.1-3.10 [fuzzy]
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-BeenThere: qemu-arm@nongnu.org
+X-BeenThere: qemu-devel@nongnu.org
 X-Mailman-Version: 2.1.23
 Precedence: list
-List-Id: <qemu-arm.nongnu.org>
-List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=unsubscribe>
-List-Archive: <https://lists.nongnu.org/archive/html/qemu-arm>
-List-Post: <mailto:qemu-arm@nongnu.org>
-List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
-List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
- <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Cc: Laurent Vivier <laurent@vivier.eu>, Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- Eduardo Habkost <ehabkost@redhat.com>, Juan Quintela <quintela@redhat.com>,
- Andrew Jeffery <andrew@aj.id.au>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- QEMU Developers <qemu-devel@nongnu.org>,
- Andrew Baumann <Andrew.Baumann@microsoft.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, qemu-arm <qemu-arm@nongnu.org>,
- =?UTF-8?Q?C=c3=a9dric_Le_Goater?= <clg@kaod.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Joel Stanley <joel@jms.id.au>
-Errors-To: qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org
-Sender: "Qemu-arm" <qemu-arm-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: o20mEcT5/JS+
+List-Id: <qemu-devel.nongnu.org>
+List-Unsubscribe: <https://lists.nongnu.org/mailman/options/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=unsubscribe>
+List-Archive: <https://lists.nongnu.org/archive/html/qemu-devel>
+List-Post: <mailto:qemu-devel@nongnu.org>
+List-Help: <mailto:qemu-devel-request@nongnu.org?subject=help>
+List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-devel>,
+ <mailto:qemu-devel-request@nongnu.org?subject=subscribe>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>, qemu-arm <qemu-arm@nongnu.org>,
+ QEMU <qemu-devel@nongnu.org>, zhang.zhanghailiang@huawei.com
+Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
+Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
+X-TUID: CAgY9zS7dRFl
 
-On 7/9/20 9:14 PM, Peter Maydell wrote:
-> On Fri, 3 Jul 2020 at 21:19, Philippe Mathieu-Daudé <f4bug@amsat.org> wrote:
->>
->> When built with --enable-qdev-debug, QEMU displays warnings
->> listing devices missing migration state:
->>
->>   $ qemu-system-arm -S -M spitz
->>   qemu-system-arm: warning: missing migration state for type: 'pxa270-c0-arm-cpu'
->>   qemu-system-arm: warning: missing migration state for type: 'serial'
->>   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-pcmcia'
->>   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-pcmcia'
->>   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-i2c-slave'
->>   qemu-system-arm: warning: missing migration state for type: 'pxa2xx-i2c-slave'
->>   qemu-system-arm: warning: missing migration state for type: 'ads7846'
->>   qemu-system-arm: warning: missing migration state for type: 'max1111'
->>
->> Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
->> ---
->> RFC because there might be something simpler than --enable-qdev-debug.
-> 
-> I think where we'd like to get to is installing a migration
-> blocker if the machine has any devices which don't have a vmsd.
-> But for that we'd need to be pretty sure we'd got all the devices
-> on machines where we care about migration, and we're clearly a
-> fair way from that (eg we need to do something about the
-> devices like the CPU which don't have a vmsd but handle their
-> migration some other way so they don't trigger the condition
-> for warning/migration-blocker).
+We should use printf format specifier "%u" instead of "%d" for
+argument of type "unsigned int".
 
-Dave made a comment about it, I'd rather let him have a look.
+Reported-by: Euler Robot <euler.robot@huawei.com>
+Signed-off-by: Alex Chen <alex.chen@huawei.com>
+---
+ hw/ssi/imx_spi.c    | 2 +-
+ hw/ssi/xilinx_spi.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-> I don't have a strong objection to this --enable-qdev-debug, I guess.
-> Another option halfway between this and a full migration-blocker
-> would be do a warn_report() for the relevant devices when savevm
-> tries to migrate them.
-
-OK. The problem is vmstate_save_state() is not qdev specific, it
-migrates a blob, which we can not report much about. I'll repost
-using 2 warnings.
-
-Thanks for your review,
-
-Phil.
+diff --git a/hw/ssi/imx_spi.c b/hw/ssi/imx_spi.c
+index 7f703d8328..d8885ae454 100644
+--- a/hw/ssi/imx_spi.c
++++ b/hw/ssi/imx_spi.c
+@@ -53,7 +53,7 @@ static const char *imx_spi_reg_name(uint32_t reg)
+     case ECSPI_MSGDATA:
+         return  "ECSPI_MSGDATA";
+     default:
+-        sprintf(unknown, "%d ?", reg);
++        sprintf(unknown, "%u ?", reg);
+         return unknown;
+     }
+ }
+diff --git a/hw/ssi/xilinx_spi.c b/hw/ssi/xilinx_spi.c
+index fec8817d94..49ff275593 100644
+--- a/hw/ssi/xilinx_spi.c
++++ b/hw/ssi/xilinx_spi.c
+@@ -142,7 +142,7 @@ static void xlx_spi_update_irq(XilinxSPI *s)
+        irq chain unless things really changed.  */
+     if (pending != s->irqline) {
+         s->irqline = pending;
+-        DB_PRINT("irq_change of state %d ISR:%x IER:%X\n",
++        DB_PRINT("irq_change of state %u ISR:%x IER:%X\n",
+                     pending, s->regs[R_IPISR], s->regs[R_IPIER]);
+         qemu_set_irq(s->irq, pending);
+     }
+-- 
+2.19.1

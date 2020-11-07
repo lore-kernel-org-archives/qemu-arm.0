@@ -1,102 +1,102 @@
-Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2352762lfb;
-        Sat, 7 Nov 2020 11:35:45 -0800 (PST)
-X-Google-Smtp-Source: ABdhPJzccCLAJSYFeZOJPsCJmCJeGav/21Pox/DlH00IIr29NXYPBvhJoMwDN2wfp4mUOlMJw6sa
-X-Received: by 2002:a05:622a:253:: with SMTP id c19mr6631731qtx.83.1604777745439;
-        Sat, 07 Nov 2020 11:35:45 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1604777745; cv=none;
+Received: by 2002:a19:ee0a:0:0:0:0:0 with SMTP id g10csp2352838lfb;
+        Sat, 7 Nov 2020 11:35:54 -0800 (PST)
+X-Google-Smtp-Source: ABdhPJz3a9Xm/KoVSj7RMgkxVz9xc5+KWPOVAHG4/NQgvs5h3mnTz9O4OkUrbU+m73DetqTsWb1L
+X-Received: by 2002:a05:620a:756:: with SMTP id i22mr7470706qki.172.1604777754365;
+        Sat, 07 Nov 2020 11:35:54 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1604777754; cv=none;
         d=google.com; s=arc-20160816;
-        b=f/3eF53oS7RaHN+RiAiTSFSoi0ObYbLidZpwgDIHC2EdNOTQHVWllLIYW98oV/+JvP
-         G3xRDGToc9kiwWDNqTV8jqmDai9+rRQgWN9vBGkGcrZ5EHtqMu0wF1qUMywdBJQLEIkS
-         F+iwvMy1N4EGY38SgA9Z6gJwtqDKrfWor6ALUM1bUSgKKr5lDyFub4nNt3lqKzCnKmn6
-         prf7eJQ0CjrtGNDabvLwwQ9T3S9tynuapaDEAwan1pkLhZkkFATiBAk1Y80VKzWoRwVu
-         Aw9PJuWbovHdt6Fr9Ji17gMeHaXCchiu0nfEQr0F1fCkDkAXvxBBNq5eJhKUzsFQo5yn
-         mA7A==
+        b=pbUjc83NhL1hqK45CET3UmYPEkCkVm3LAUfAMQy1IRXuZ3uxIhXvTGwlzATJgetV4a
+         Y7DUkSWDC0JdSZTos+DRmi/rkPCja3X45zxU0SIDNfQPfvWE2Hiqipn9jboEg0DW0eI0
+         4jNY9ANFYDITezBPolzeffEFFX5eetDE6xEeOs4JjuJIw01LI3LNbP32IF5/UlCmzVZz
+         cO7HV7XkH1bnsayACrfHc1Yc4t6zJMD5K0GnfwRh6Al4xb1LkYNoPVVtrcCyWOKWMYZs
+         ILXzWw/lTcxR7uSOHy8UCQufg+Ci/JJerRBUY9wNlDDeTSEIUhRJEUutADa7wlExS5z+
+         bPIw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
         h=sender:errors-to:cc:list-subscribe:list-help:list-post:list-archive
          :list-unsubscribe:list-id:precedence:content-transfer-encoding
          :mime-version:references:in-reply-to:message-id:date:subject:to:from
          :dkim-signature;
-        bh=fKsrMZT7rwVP28hdVbSgf4KB1wxqgtIDtqrq9k+6yOg=;
-        b=oJAGb+a3i7S9LhNpyWv/w2xYbPk1iJpBV4kF5QR670heNWoBfd1ycovKpznduiFoMl
-         yPulsQjWLakTQ8aNDXFhg/76SNuVyl8eWCOG9TH4JyZKYkL58c9FhzUP6/MoigpisziH
-         z4IG1ByvfnGEUkUX6bQwi8DHpwtqX4Q2yksZnWeyEIpVsPHPs2jOOdD74XYzPOttuqPf
-         lkPmkRWpWHSUHzfZievUb9bhQOzjFOUi2GKV9vG9+bwX3sdTcdhtQjS3X6qXeRCAi2Or
-         vLdj3gp+9yJqufxUi2wb5VkKbErAW2I/vLYtU503xsE/1fAB9M5NASkox82p4GVSbids
-         XXRg==
+        bh=IWHQ4zGNPskYzL/akHXO5stc1InHlH57u2pVf49lbSo=;
+        b=da8kbKEuOdVLKvqeTQI1DWYBPtVzeNW7dEx8YTEKMs5PCsS7BUo5YjG3+HO9I8eFDD
+         qzq2YIQjrM+eFFWch8KjHkgo8rMidIaYM6IaWVq4bY3aJPD+j44+SwHnZyC5/HSYNLtU
+         cUAJu3iRetOWIcaVzz3SZtavMVwWV/7G3hsGsOdCJbw9FkKUJmsTK3bKlec0M5B5SXTN
+         Cw1ImzwE13BvPA2CPiUuWJHmyF+ybhGwmoR7dvFSekRsnfQSozQ01/yCkzi02L/mdrUv
+         2cuE2PKlGdx2TKbbvoXoVzz8JRA5gXj8MUsX6IBsBloGTcbVu4s/9Jf2V4oeajY4Hjiw
+         zY0Q==
 ARC-Authentication-Results: i=1; mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bdB0wLKg;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=usdV4vQZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
 Return-Path: <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
 Received: from lists.gnu.org (lists.gnu.org. [209.51.188.17])
-        by mx.google.com with ESMTPS id g22si2524744qve.11.2020.11.07.11.35.45
+        by mx.google.com with ESMTPS id p21si2531555qkp.290.2020.11.07.11.35.54
         for <alex.bennee@linaro.org>
         (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
-        Sat, 07 Nov 2020 11:35:45 -0800 (PST)
+        Sat, 07 Nov 2020 11:35:54 -0800 (PST)
 Received-SPF: pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) client-ip=209.51.188.17;
 Authentication-Results: mx.google.com;
-       dkim=fail header.i=@gmail.com header.s=20161025 header.b=bdB0wLKg;
+       dkim=fail header.i=@gmail.com header.s=20161025 header.b=usdV4vQZ;
        spf=pass (google.com: domain of qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org designates 209.51.188.17 as permitted sender) smtp.mailfrom="qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org";
        dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=amsat.org
-Received: from localhost ([::1]:46350 helo=lists1p.gnu.org)
+Received: from localhost ([::1]:46520 helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>)
-	id 1kbTzx-0007qV-9w
-	for alex.bennee@linaro.org; Sat, 07 Nov 2020 14:35:41 -0500
-Received: from eggs.gnu.org ([2001:470:142:3::10]:57726)
+	id 1kbU09-0007vJ-Oz
+	for alex.bennee@linaro.org; Sat, 07 Nov 2020 14:35:53 -0500
+Received: from eggs.gnu.org ([2001:470:142:3::10]:57738)
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kbTyi-0007oz-Nl; Sat, 07 Nov 2020 14:34:24 -0500
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b]:43016)
+ id 1kbTyn-0007tZ-RW; Sat, 07 Nov 2020 14:34:29 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334]:55124)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <philippe.mathieu.daude@gmail.com>)
- id 1kbTyh-0008Lx-AL; Sat, 07 Nov 2020 14:34:24 -0500
-Received: by mail-wr1-x42b.google.com with SMTP id g12so4697549wrp.10;
- Sat, 07 Nov 2020 11:34:22 -0800 (PST)
+ id 1kbTym-0008MC-AR; Sat, 07 Nov 2020 14:34:29 -0500
+Received: by mail-wm1-x334.google.com with SMTP id d142so4549190wmd.4;
+ Sat, 07 Nov 2020 11:34:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.com; s=20161025;
  h=sender:from:to:cc:subject:date:message-id:in-reply-to:references
  :mime-version:content-transfer-encoding;
- bh=fKsrMZT7rwVP28hdVbSgf4KB1wxqgtIDtqrq9k+6yOg=;
- b=bdB0wLKgKeqQNIQWXtCwfxg1gRxWg1QTDuCX11JRwSWkFIYr/dr1dIC+drPY/xei9a
- z5jMV5Zf4qVe7aHs9brt5EQuovfZTNU1c0Me3p2xIUsTA+g8F3RMX11ZBbv24QONyTeF
- iWnGH0Fks2RGIQFxY4UN9CIWoyPChP080+ifu9seF+cUiiINqX+sO/sR1LOEn9x+aH1y
- meKSpCFTCispE+K2uKlgGT9lAmsy3qpJts942n0i6hw/tlIKutBysZhlS/DsGHCLYoiM
- KRRgkAjcq+oK4elsdqjnGbp+ZNpE/+txBkoRm0gN2CD2SCZka5ZHTyeaB07X13eoYw2E
- 7RGg==
+ bh=IWHQ4zGNPskYzL/akHXO5stc1InHlH57u2pVf49lbSo=;
+ b=usdV4vQZ1IclT8J7iUAbyQ7oGZe+DBjrkIvsyG/6y/WGIr7QrLNtVs8fdC1YNOzIm/
+ T5E9HwWtrYvYkRFYi/d8HnVP2RhxGYIOucLVl3AW1G9YYxxegty+xtofGNFbFlnlxRQp
+ Cq7q43ewAyqZ5mUr20//056ytxru/MP3OvY7OcJqaxxU133ium/lMbfnbGYPjJopV+3A
+ BaqV8/7amoP+D879Fun9tMuDsNM4aPTBI+DZ1jEAKdEcnuxvTQ5Fz5I5+NuAmDPakTRv
+ VymbX7SuL7QLYC4DGysGoOy0MTKDhiLndlao0RYyneg9ENUQ07RoVmj8F/ag8tUaOIgd
+ blXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20161025;
  h=x-gm-message-state:sender:from:to:cc:subject:date:message-id
  :in-reply-to:references:mime-version:content-transfer-encoding;
- bh=fKsrMZT7rwVP28hdVbSgf4KB1wxqgtIDtqrq9k+6yOg=;
- b=ILorpAmArmjxH858kxfDcH8nmGUG/0ExT39gHUO1jSQ80/eGGe7yhItJW/J1s4W0dv
- GvuZhyMW7N7iVtOrZYFETqV+pBoFjh6V1/dvdDtPfT0fw+XVK96Fug0wJndtwpJO3QFj
- 1Rr7+qVetvK5Z+0SawB/dWhHNdfFImlf7UClatgZ7wEKVOFq1U42BCkG3B3R9v9CBqbh
- 2sYwvehdMc+e5V6ITU0cWfN76/Av5LJhPFYDIGxVj65zfg7BfASuXbshkrWVYTSy3aRS
- dOl1k6ZNYnZntdYTbijho2B9TXlDAWSjBPJRNNCLrFDh/jMcsVG+abbeUoG9uQfwKhok
- lMMw==
-X-Gm-Message-State: AOAM531blyOoJgNyfX/2BSYTt3TKfvIbTD/1B6A4ufPokfe1uYwyvtWO
- sOisfl1czwIfp0m5RfSf3MBFwh8fRfA=
-X-Received: by 2002:adf:f349:: with SMTP id e9mr9194611wrp.110.1604777661433; 
- Sat, 07 Nov 2020 11:34:21 -0800 (PST)
+ bh=IWHQ4zGNPskYzL/akHXO5stc1InHlH57u2pVf49lbSo=;
+ b=rjIh9KoMECMW3EaJGXDy6c29dR7a7LePHMP13GJp4kei9xzMahe+anVJMW/leSKO+F
+ j3R0pJ+BgiwEf83j3AV5d3I4kOhQKtuKhEmVk2r0yUwrfjp09NkrqC+8vFovu3o2GNd9
+ YZ8Y2SPK6IQqkIsIpUGEmu9P+GQV0CJyDx9XSCUnVgPNQ/Dwizxo3X4ou1qXcTCwPoUc
+ 5ciDCjgi050aXl86zOb/gX6IpIJMKSjTu0OihwHMdOh/Hep2Hvwd9juzLApBq/OWG/mU
+ d7/XkszkJlQUwu5M/yu3f2XUgd09aMB7XZV9EaJKzLBIvQEEr5NNLxgY5OjOrxSe5XjQ
+ IrXw==
+X-Gm-Message-State: AOAM531G0HlAFdLN61RRIbRYqZpMbgPiVfiMiD1bkygnJ/HAJrPF49Y5
+ bMcM7lw8Om8ErazyBPYD43spkLjSgDk=
+X-Received: by 2002:a1c:80cb:: with SMTP id b194mr6113072wmd.73.1604777666245; 
+ Sat, 07 Nov 2020 11:34:26 -0800 (PST)
 Received: from localhost.localdomain (234.red-83-42-66.dynamicip.rima-tde.net.
  [83.42.66.234])
- by smtp.gmail.com with ESMTPSA id f7sm8132808wrx.64.2020.11.07.11.34.20
+ by smtp.gmail.com with ESMTPSA id s4sm194076wro.10.2020.11.07.11.34.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 07 Nov 2020 11:34:20 -0800 (PST)
+ Sat, 07 Nov 2020 11:34:25 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
 To: qemu-devel@nongnu.org
-Subject: [PATCH-for-5.2 3/5] hw/arm/nseries: Remove invalid/unnecessary
- n8x0_uart_setup()
-Date: Sat,  7 Nov 2020 20:34:01 +0100
-Message-Id: <20201107193403.436146-4-f4bug@amsat.org>
+Subject: [PATCH-for-5.2? 4/5] hw/arm/musicpal: Don't connect two qemu_irqs
+ directly to the same input
+Date: Sat,  7 Nov 2020 20:34:02 +0100
+Message-Id: <20201107193403.436146-5-f4bug@amsat.org>
 X-Mailer: git-send-email 2.26.2
 In-Reply-To: <20201107193403.436146-1-f4bug@amsat.org>
 References: <20201107193403.436146-1-f4bug@amsat.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philippe.mathieu.daude@gmail.com; helo=mail-wm1-x334.google.com
 X-detected-operating-system: by eggs.gnu.org: No matching host in p0f cache.
  That's all we know.
 X-Spam_score_int: -14
@@ -125,56 +125,86 @@ Cc: Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org, Jan Kiszka <jan.kiszka@web.de>
 Errors-To: qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org
 Sender: "Qemu-devel" <qemu-devel-bounces+alex.bennee=linaro.org@nongnu.org>
-X-TUID: rOoKuk6v/QJv
+X-TUID: W07ez344mCGF
 
-omap2420_mpu_init() introduced in commit 827df9f3c5f ("Add basic
-OMAP2 chip support") takes care of creating the 3 UARTs.
+The MusicPal board code connects both of the IRQ outputs of the UART
+to the same INTC qemu_irq. Connecting two qemu_irqs outputs directly
+to the same input is not valid as it produces subtly wrong behaviour
+(for instance if both the IRQ lines are high, and then one goes
+low, the INTC input will see this as a high-to-low transition
+even though the second IRQ line should still be holding it high).
 
-Then commit 58a26b477e9 ("Emulate a serial bluetooth HCI with H4+
-extensions and attach to n8x0's UART") added n8x0_uart_setup()
-which create the UART and connects it to an IRQ output,
-overwritting the existing peripheral and its IRQ connection.
-This is incorrect.
+This kind of wiring needs an explicitly created OR gate; add one.
 
-Fortunately we don't need to fix this, because commit 6da68df7f9b
-("hw/arm/nseries: Replace the bluetooth chardev with a "null"
-chardev") removed the use of this peripheral. We can simply
-remove the code.
-
+Inspired-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
 ---
- hw/arm/nseries.c | 11 -----------
- 1 file changed, 11 deletions(-)
+ hw/arm/musicpal.c | 17 +++++++++++++----
+ hw/arm/Kconfig    |  1 +
+ 2 files changed, 14 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index 76fd7fe9854..6215c18d627 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -789,16 +789,6 @@ static void n8x0_cbus_setup(struct n800_s *s)
-     cbus_attach(cbus, s->tahvo = tahvo_init(tahvo_irq, 1));
- }
+diff --git a/hw/arm/musicpal.c b/hw/arm/musicpal.c
+index 5eb3f969fb4..ebc3ec24ef7 100644
+--- a/hw/arm/musicpal.c
++++ b/hw/arm/musicpal.c
+@@ -27,6 +27,7 @@
+ #include "ui/console.h"
+ #include "hw/i2c/i2c.h"
+ #include "hw/irq.h"
++#include "hw/or-irq.h"
+ #include "hw/audio/wm8750.h"
+ #include "sysemu/block-backend.h"
+ #include "sysemu/runstate.h"
+@@ -77,8 +78,7 @@
+ #define MP_TIMER4_IRQ           7
+ #define MP_EHCI_IRQ             8
+ #define MP_ETH_IRQ              9
+-#define MP_UART1_IRQ            11
+-#define MP_UART2_IRQ            11
++#define MP_UART_SHARED_IRQ      11
+ #define MP_GPIO_IRQ             12
+ #define MP_RTC_IRQ              28
+ #define MP_AUDIO_IRQ            30
+@@ -1589,6 +1589,7 @@ static void musicpal_init(MachineState *machine)
+     ARMCPU *cpu;
+     qemu_irq pic[32];
+     DeviceState *dev;
++    DeviceState *uart_orgate;
+     DeviceState *i2c_dev;
+     DeviceState *lcd_dev;
+     DeviceState *key_dev;
+@@ -1627,9 +1628,17 @@ static void musicpal_init(MachineState *machine)
+                           pic[MP_TIMER2_IRQ], pic[MP_TIMER3_IRQ],
+                           pic[MP_TIMER4_IRQ], NULL);
  
--static void n8x0_uart_setup(struct n800_s *s)
--{
--    Chardev *radio = qemu_chr_new("bt-dummy-uart", "null", NULL);
--    /*
--     * Note: We used to connect N8X0_BT_RESET_GPIO and N8X0_BT_WKUP_GPIO
--     * here, but this code has been removed with the bluetooth backend.
--     */
--    omap_uart_attach(s->mpu->uart[BT_UART], radio);
--}
--
- static void n8x0_usb_setup(struct n800_s *s)
- {
-     SysBusDevice *dev;
-@@ -1362,7 +1352,6 @@ static void n8x0_init(MachineState *machine,
-     n8x0_spi_setup(s);
-     n8x0_dss_setup(s);
-     n8x0_cbus_setup(s);
--    n8x0_uart_setup(s);
-     if (machine_usb(machine)) {
-         n8x0_usb_setup(s);
-     }
+-    serial_mm_init(address_space_mem, MP_UART1_BASE, 2, pic[MP_UART1_IRQ],
++    /* Logically OR both UART IRQs together */
++    uart_orgate = DEVICE(object_new(TYPE_OR_IRQ));
++    object_property_set_int(OBJECT(uart_orgate), "num-lines", 2, &error_fatal);
++    qdev_realize_and_unref(uart_orgate, NULL, &error_fatal);
++    qdev_connect_gpio_out(DEVICE(uart_orgate), 0, pic[MP_UART_SHARED_IRQ]);
++
++    serial_mm_init(address_space_mem, MP_UART1_BASE, 2,
++                   qdev_get_gpio_in(uart_orgate, 0),
+                    1825000, serial_hd(0), DEVICE_NATIVE_ENDIAN);
+-    serial_mm_init(address_space_mem, MP_UART2_BASE, 2, pic[MP_UART2_IRQ],
++    serial_mm_init(address_space_mem, MP_UART2_BASE, 2,
++                   qdev_get_gpio_in(uart_orgate, 1),
+                    1825000, serial_hd(1), DEVICE_NATIVE_ENDIAN);
+ 
+     /* Register flash */
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index fdf4464b948..319916c310e 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -94,6 +94,7 @@ config MUSCA
+ 
+ config MUSICPAL
+     bool
++    select OR_IRQ
+     select BITBANG_I2C
+     select MARVELL_88W8618
+     select PTIMER
 -- 
 2.26.2
 
